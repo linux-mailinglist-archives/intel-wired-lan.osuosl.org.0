@@ -1,99 +1,105 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 066FA9A98AE
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Oct 2024 07:41:25 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9CA8480B02;
-	Tue, 22 Oct 2024 05:41:21 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id W7cXV8-pdYjC; Tue, 22 Oct 2024 05:41:20 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6A79B80AA7
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1729575680;
-	bh=eoXs8uqnVWKWeiFd3a64TtSa8qb62Ef9CI5GPGnqrdo=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=alVQ2+Twkhhgcc/qu5fjMU7s/vaiovcEbk458IZ7TxPNr9yp8F/pnSdzNqpkTgApu
-	 zT7sTZcVBSv5LghPu0SMpBYd7WO/v3W8QYZ2ERPS4UxNGmBEDFmcqk6k0200tmaagQ
-	 BhA3hC7qDNRl9nqx5/sxQiXzKupHcD+UwNf6lHO+VoiH37jyGC3sc03o7tXrePg+tr
-	 a9rs43rRHXKuZ4LOLOepDtRI3evpl6bG/V1nXgLM8Gsyz8ygSqGIouIl3MCjnUUKVx
-	 +PwRPFWxauyEOZR8SYnqEJsRRslJ4dLPkrQ608EfdETr8RAfXe3Imp0h6GN4xvAdX/
-	 DRFuNaFI6fAaA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6A79B80AA7;
-	Tue, 22 Oct 2024 05:41:20 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 664D4963
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2024 05:41:16 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 165819A98AA
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Oct 2024 07:41:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3CA8A60784
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2024 05:41:15 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 969876078F;
+	Tue, 22 Oct 2024 05:41:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id hKRg7pRIE7Hd for <intel-wired-lan@lists.osuosl.org>;
- Tue, 22 Oct 2024 05:41:12 +0000 (UTC)
+ id 5Tg4xBHjvin5; Tue, 22 Oct 2024 05:41:16 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C816760766
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1729575676;
+	bh=DocjpqjO2c+GlsMdilDgFODxeyxKInI1E5kBUDPiZ5Q=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=bKqlg2J0KeXtBVsYRoreHSDwJL5eXfhpvVM/XDzC6zYJBtQmon8IzIiA+C4iNqdGo
+	 6B8z4KSBTQwjRugL8p6o9aZuhVR1q7U7x0Q9POfm9V7SpOxtAUjDwW50uYeuWVmXIJ
+	 6Kw1Y9LHZjYtY3BUauoF29l7R+76Qk8qOOsHY6I9D+c6HnDkznf+xgdVZ4iUkV3jGt
+	 ZAuWDgvZyQZ6NQhFUsIo0caThuqOYoXlK+2F54FsKnUXxjtZJW1v3yE+r5vnS/c8tc
+	 TvpjUUOtE298cn42Ppz0iyBNE1tOstRvi/+sUAwFQRIVDlhDmgenVt46wHy/D2Ohfp
+	 gPft9qsSWCYRw==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id C816760766;
+	Tue, 22 Oct 2024 05:41:16 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 127E471F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2024 05:41:14 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id DFB4660784
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2024 05:41:13 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 7AorwQU4x-5o for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 22 Oct 2024 05:41:13 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
  helo=mgamail.intel.com; envelope-from=mateusz.polchlopek@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A4E7E60766
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A4E7E60766
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org F17286076D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F17286076D
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A4E7E60766
+ by smtp3.osuosl.org (Postfix) with ESMTPS id F17286076D
  for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2024 05:41:12 +0000 (UTC)
-X-CSE-ConnectionGUID: z4SMOXXFTMCr9ekVfuajHA==
-X-CSE-MsgGUID: ncBNm7pURPSG3U627rFOZw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11232"; a="33015589"
-X-IronPort-AV: E=Sophos;i="6.11,222,1725346800"; d="scan'208";a="33015589"
+X-CSE-ConnectionGUID: 7IsE8rhcQzydWHxjH5Hfnw==
+X-CSE-MsgGUID: 5XIQTVCxR2a+ltSHRD0tUA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11232"; a="33015591"
+X-IronPort-AV: E=Sophos;i="6.11,222,1725346800"; d="scan'208";a="33015591"
 Received: from orviesa003.jf.intel.com ([10.64.159.143])
  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  21 Oct 2024 22:41:12 -0700
-X-CSE-ConnectionGUID: S0Al3gnCRrmUGb+3EX9l1w==
-X-CSE-MsgGUID: 7CEvXZnNQBGNl6IhjeRPwg==
+X-CSE-ConnectionGUID: DH/3adH+QIeLq2Y9SljfLw==
+X-CSE-MsgGUID: vfO/5ROCTAewz5EW6ePHdQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; d="scan'208";a="84558078"
+X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; d="scan'208";a="84558081"
 Received: from irvmail002.ir.intel.com ([10.43.11.120])
  by orviesa003.jf.intel.com with ESMTP; 21 Oct 2024 22:41:09 -0700
 Received: from fedora.igk.intel.com (Metan_eth.igk.intel.com [10.123.220.124])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 843DF27BCA;
- Tue, 22 Oct 2024 06:41:07 +0100 (IST)
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 3184D27BCC;
+ Tue, 22 Oct 2024 06:41:08 +0100 (IST)
 From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-Date: Tue, 22 Oct 2024 07:41:07 -0400
-Message-Id: <20241022114121.61284-1-mateusz.polchlopek@intel.com>
+Cc: netdev@vger.kernel.org, Jacob Keller <jacob.e.keller@intel.com>,
+ Wojciech Drewek <wojciech.drewek@intel.com>,
+ Rahul Rameshbabu <rrameshbabu@nvidia.com>, Simon Horman <horms@kernel.org>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+Date: Tue, 22 Oct 2024 07:41:08 -0400
+Message-Id: <20241022114121.61284-2-mateusz.polchlopek@intel.com>
 X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20241022114121.61284-1-mateusz.polchlopek@intel.com>
+References: <20241022114121.61284-1-mateusz.polchlopek@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1729575672; x=1761111672;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=RhxsYHu4UcnKbtEwFAjVRy76QMqyckr7ihO1I6MDMoo=;
- b=SyqVpoiT8qnlTFhu6A5Y+kOgjS6VZ/tWHysewTy4r5etLF5jCG949Hes
- ju/wVxLL1D0OBks8lw1vn+aiiBAEqX7q1n/4zVYo5nbgdJCP6EaWU603F
- ev6u8qJIYHTseePFFxBzTthQ/RSoQF4F+uj4oSy1ICtpBF0z8mFSMi51Q
- TBsWGhimjgyCdZ0r22LBd/rBhTFhNN3P5pKyUCWElOlwzD4XDeweUZKre
- THbj14EoAErO1Lgwu1Z62QFqdp4cEN5IrFau3Y7k3lEmaNTYMAw5hQmOZ
- 6Xv8XRRHKAuApiqN+Fy7Yivx24H142uJJW3LgemRIDxvhJk0mYVccQATx
- g==;
+ t=1729575673; x=1761111673;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=KIfsD6eLRlOeuA87tLbvFnY2QJpEshXdPTamc4v4x0w=;
+ b=ez/LL2ymW2jMiKL35UrgdfkCTwW16A1z1NJTgS3JxdMLCybsG8xTKxfD
+ gq/+2pGdlIY8NVcnkW9bKf11RdWpYfzYd8gFjIMcK2H5bfukX52OcIHOZ
+ ZDxdQhTWwnk4IdfDqf07Dg6Y/OCi/UVHVW+KpRcPCIPzRD4yISJrXStjE
+ WDrdgcPDSKdrNtKay4K+Z9hfd/Ft3z07HIgfmzFglZT9aq3XZBo9U9oxk
+ AXAcigRDfSE/K+rfaJcVezVFdUTT+zS2mxi1jXSljNfGDhm4b7YA5a0KV
+ 2B7/ylKZTOaa2CqnRw5eX6ElC9az/DL39pT4bhrC1UOI+tFHoclleQBos
+ A==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=SyqVpoiT
-Subject: [Intel-wired-lan] [PATCH iwl-next v12 00/14] Add support for Rx
- timestamping for both ice and iavf drivers
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=ez/LL2ym
+Subject: [Intel-wired-lan] [PATCH iwl-next v12 01/14] virtchnl: add support
+ for enabling PTP on iAVF
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -109,160 +115,138 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Initially, during VF creation it registers the PTP clock in
-the system and negotiates with PF it's capabilities. In the
-meantime the PF enables the Flexible Descriptor for VF.
-Only this type of descriptor allows to receive Rx timestamps.
+From: Jacob Keller <jacob.e.keller@intel.com>
 
-Enabling virtual clock would be possible, though it would probably
-perform poorly due to the lack of direct time access.
+Add support for allowing a VF to enable PTP feature - Rx timestamps
 
-Enable timestamping should be done using userspace tools, e.g.
-hwstamp_ctl -i $VF -r 14
+The new capability is gated by VIRTCHNL_VF_CAP_PTP, which must be
+set by the VF to request access to the new operations. In addition, the
+VIRTCHNL_OP_1588_PTP_CAPS command is used to determine the specific
+capabilities available to the VF.
 
-In order to report the timestamps to userspace, the VF extends
-timestamp to 40b.
+This support includes the following additional capabilities:
 
-To support this feature the flexible descriptors and PTP part
-in iavf driver have been introduced.
+* Rx timestamps enabled in the Rx queues (when using flexible advanced
+  descriptors)
+* Read access to PHC time over virtchnl using
+  VIRTCHNL_OP_1588_PTP_GET_TIME
+
+Extra space is reserved in most structures to allow for future
+extension (like set clock, Tx timestamps).  Additional opcode numbers
+are reserved and space in the virtchnl_ptp_caps structure is
+specifically set aside for this.
+Additionally, each structure has some space reserved for future
+extensions to allow some flexibility.
+
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
+Reviewed-by: Rahul Rameshbabu <rrameshbabu@nvidia.com>
+Reviewed-by: Simon Horman <horms@kernel.org>
+Reviewed-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 ---
-v12:
-- small changes versus v11, fixed compilation warnings and errors and covered
-  Vadim's request about ptp_read_system_prets and ptp_read_system_postts()
-  in iavf_read_phc_indirect() function. Added stubs in iavf_ptp.h file depends
-  on CONFIG_PTP_1588_CLOCK config option.
+ include/linux/avf/virtchnl.h | 67 +++++++++++++++++++++++++++++++++++-
+ 1 file changed, 66 insertions(+), 1 deletion(-)
 
-v11:
-- addressed all comments from v10 done by Alexander L. Short list: changed some
-  logging functions (like pci_warn instead of dev_warn), fix RCT, fix indentation,
-  remove unnecessary comments and casts, change error codes where applicable,
-  remove ptp.initialized field in struct (now check for ptp.clock as Olek
-  suggested), invert condition in few places to avoid +1 indent level, function
-  iavf_ptp_do_aux_work made as static, add more descriptive kdoc for libeth
-  struct fields, restore ptype as a field in libeth struct, remove unused
-  defines, pass to specific functions quad word of descriptor instead of pass
-  rx_desc, add asserts to structs where applicable, return from fields extracting
-  functions when !fields.eop, refactor get VLAN tags, remove unnecessary empty
-  initialization of structs and few more. Please see v10 to compare all changes.
-https://lore.kernel.org/netdev/20241013154415.20262-1-mateusz.polchlopek@intel.com/
-
-v10:
-- only cosmetic changes, make every patch compile, fixing checkpatch issues
-https://lore.kernel.org/netdev/20240821121539.374343-1-wojciech.drewek@intel.com/
-
-v9:
-- another big refactor of code, again the list is too long to describe each change. Only
-  patch1 and patch12 has not been changed AFAIR. Please take a look on v8 and changes
-  requests from Alexander L. (in short - fixed structs paddings, aligns, optimized rx hot
-  path, renamed few structs, added "const" keyword where applicable, added kdoc comments
-  to newly introduced structs and defines, removed unnecessary casts, simplified few
-  functions and few more).
-https://lore.kernel.org/netdev/20240813125513.8212-1-mateusz.polchlopek@intel.com/
-
-v8:
-- big refactor to make code more optimised (too many changes to list them here, please
-  take a look on v7 patch9 and comments from Alexander L) - patch 11. Because of that I
-  decided to remove all gathered RB tags.
-- changed newly introduced spinlock aq_cmd_lock to mutex type to avoid deadlock - patch 7
-- adjusted function iavf_is_descriptor_done() to extract fields from descriptor in a new
-  way - patch 12
-- changed (and removed unused) defines that describe specific fields and bits in
-  descriptor
-https://lore.kernel.org/netdev/20240730091509.18846-1-mateusz.polchlopek@intel.com/
-
-v7:
-- changed .ndo_eth_ioctl to .ndo_hwtstamp_get and .ndo_hwtstamp_set
-  (according to Kuba's suggestion) - patch 11
-https://lore.kernel.org/netdev/20240604131400.13655-1-mateusz.polchlopek@intel.com/
-
-v6:
-- reordered tags
-- added RB tags where applicable
-- removed redundant instructions in ifs - patch 4 and patch 5
-- changed teardown to LIFO, adapter->ptp.initialized = false
-  moved to the top of function - patch 6
-- changed cpu-endianess for testing - patch 9
-- aligned to libeth changes - patch 9
-https://lore.kernel.org/netdev/20240528112301.5374-1-mateusz.polchlopek@intel.com/
-
-v5:
-- fixed all new issues generated by this series in kernel-doc
-https://lore.kernel.org/netdev/20240418052500.50678-1-mateusz.polchlopek@intel.com/
-
-v4:
-- fixed duplicated argument in iavf_virtchnl.c reported by coccicheck
-https://lore.kernel.org/netdev/20240410121706.6223-1-mateusz.polchlopek@intel.com/
-
-v3:
-- added RB in commit 6
-- removed inline keyword in commit 9
-- fixed sparse issues in commit 9 and commit 10
-- used GENMASK_ULL when possible in commit 9
-https://lore.kernel.org/netdev/20240403131927.87021-1-mateusz.polchlopek@intel.com/
-
-v2:
-- fixed warning related to wrong specifier to dev_err_once in
-  commit 7
-- fixed warnings related to unused variables in commit 9
-https://lore.kernel.org/netdev/20240327132543.15923-1-mateusz.polchlopek@intel.com/
-
-v1:
-- initial series
-https://lore.kernel.org/netdev/20240326115116.10040-1-mateusz.polchlopek@intel.com/
----
-
-Jacob Keller (10):
-  virtchnl: add support for enabling PTP on iAVF
-  virtchnl: add enumeration for the rxdid format
-  iavf: add support for negotiating flexible RXDID format
-  iavf: negotiate PTP capabilities
-  iavf: add initial framework for registering PTP clock
-  iavf: add support for indirect access to PHC time
-  iavf: periodically cache PHC time
-  iavf: refactor iavf_clean_rx_irq to support legacy and flex
-    descriptors
-  iavf: handle set and get timestamps ops
-  iavf: add support for Rx timestamps to hotpath
-
-Mateusz Polchlopek (3):
-  libeth: move idpf_rx_csum_decoded and idpf_rx_extracted
-  iavf: define Rx descriptors as qwords
-  iavf: Implement checking DD desc field
-
-Simei Su (1):
-  ice: support Rx timestamp on flex descriptor
-
- drivers/net/ethernet/intel/iavf/Makefile      |   2 +
- drivers/net/ethernet/intel/iavf/iavf.h        |  35 +-
- drivers/net/ethernet/intel/iavf/iavf_main.c   | 228 +++++++-
- drivers/net/ethernet/intel/iavf/iavf_ptp.c    | 485 ++++++++++++++++++
- drivers/net/ethernet/intel/iavf/iavf_ptp.h    |  47 ++
- drivers/net/ethernet/intel/iavf/iavf_trace.h  |   6 +-
- drivers/net/ethernet/intel/iavf/iavf_txrx.c   | 433 ++++++++++++----
- drivers/net/ethernet/intel/iavf/iavf_txrx.h   |  24 +-
- drivers/net/ethernet/intel/iavf/iavf_type.h   | 239 ++++-----
- drivers/net/ethernet/intel/iavf/iavf_types.h  |  34 ++
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 203 ++++++++
- drivers/net/ethernet/intel/ice/ice_base.c     |   3 -
- drivers/net/ethernet/intel/ice/ice_lib.c      |   5 +-
- drivers/net/ethernet/intel/ice/ice_ptp.c      |   4 +-
- drivers/net/ethernet/intel/ice/ice_ptp.h      |   8 +
- drivers/net/ethernet/intel/ice/ice_vf_lib.h   |   3 +
- drivers/net/ethernet/intel/ice/ice_virtchnl.c |  77 ++-
- drivers/net/ethernet/intel/ice/ice_virtchnl.h |   6 +
- .../intel/ice/ice_virtchnl_allowlist.c        |   7 +
- .../ethernet/intel/idpf/idpf_singleq_txrx.c   |  51 +-
- drivers/net/ethernet/intel/idpf/idpf_txrx.c   |  16 +-
- drivers/net/ethernet/intel/idpf/idpf_txrx.h   |  19 -
- include/linux/avf/virtchnl.h                  | 135 ++++-
- include/net/libeth/rx.h                       |  47 ++
- 24 files changed, 1786 insertions(+), 331 deletions(-)
- create mode 100644 drivers/net/ethernet/intel/iavf/iavf_ptp.c
- create mode 100644 drivers/net/ethernet/intel/iavf/iavf_ptp.h
- create mode 100644 drivers/net/ethernet/intel/iavf/iavf_types.h
-
-
-base-commit: af148a444def1452fb6a565d8d81d4e7bbe06c30
+diff --git a/include/linux/avf/virtchnl.h b/include/linux/avf/virtchnl.h
+index 13a11f3c09b8..92866e449b21 100644
+--- a/include/linux/avf/virtchnl.h
++++ b/include/linux/avf/virtchnl.h
+@@ -154,7 +154,10 @@ enum virtchnl_ops {
+ 	VIRTCHNL_OP_DISABLE_VLAN_STRIPPING_V2 = 55,
+ 	VIRTCHNL_OP_ENABLE_VLAN_INSERTION_V2 = 56,
+ 	VIRTCHNL_OP_DISABLE_VLAN_INSERTION_V2 = 57,
+-	/* opcode 57 - 65 are reserved */
++	/* opcode 58 and 59 are reserved */
++	VIRTCHNL_OP_1588_PTP_GET_CAPS = 60,
++	VIRTCHNL_OP_1588_PTP_GET_TIME = 61,
++	/* opcode 62 - 65 are reserved */
+ 	VIRTCHNL_OP_GET_QOS_CAPS = 66,
+ 	/* opcode 68 through 111 are reserved */
+ 	VIRTCHNL_OP_CONFIG_QUEUE_BW = 112,
+@@ -270,6 +273,7 @@ VIRTCHNL_CHECK_STRUCT_LEN(16, virtchnl_vsi_resource);
+ #define VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF		BIT(27)
+ #define VIRTCHNL_VF_OFFLOAD_FDIR_PF		BIT(28)
+ #define VIRTCHNL_VF_OFFLOAD_QOS			BIT(29)
++#define VIRTCHNL_VF_CAP_PTP			BIT(31)
+ 
+ #define VF_BASE_MODE_OFFLOADS (VIRTCHNL_VF_OFFLOAD_L2 | \
+ 			       VIRTCHNL_VF_OFFLOAD_VLAN | \
+@@ -1425,6 +1429,61 @@ struct virtchnl_fdir_del {
+ 
+ VIRTCHNL_CHECK_STRUCT_LEN(12, virtchnl_fdir_del);
+ 
++#define VIRTCHNL_1588_PTP_CAP_RX_TSTAMP		BIT(1)
++#define VIRTCHNL_1588_PTP_CAP_READ_PHC		BIT(2)
++
++/**
++ * struct virtchnl_ptp_caps - Defines the PTP caps available to the VF.
++ * @caps: On send, VF sets what capabilities it requests. On reply, PF
++ *        indicates what has been enabled for this VF. The PF shall not set
++ *        bits which were not requested by the VF.
++ * @rsvd: Reserved bits for future extension.
++ *
++ * Structure that defines the PTP capabilities available to the VF. The VF
++ * sends VIRTCHNL_OP_1588_PTP_GET_CAPS, and must fill in the ptp_caps field
++ * indicating what capabilities it is requesting. The PF will respond with the
++ * same message with the virtchnl_ptp_caps structure indicating what is
++ * enabled for the VF.
++ *
++ * VIRTCHNL_1588_PTP_CAP_RX_TSTAMP indicates that the VF receive queues have
++ * receive timestamps enabled in the flexible descriptors. Note that this
++ * requires a VF to also negotiate to enable advanced flexible descriptors in
++ * the receive path instead of the default legacy descriptor format.
++ *
++ * VIRTCHNL_1588_PTP_CAP_READ_PHC indicates that the VF may read the PHC time
++ * via the VIRTCHNL_OP_1588_PTP_GET_TIME command.
++ *
++ * Note that in the future, additional capability flags may be added which
++ * indicate additional extended support. All fields marked as reserved by this
++ * header will be set to zero. VF implementations should verify this to ensure
++ * that future extensions do not break compatibility.
++ */
++struct virtchnl_ptp_caps {
++	u32 caps;
++	u8 rsvd[44];
++};
++
++VIRTCHNL_CHECK_STRUCT_LEN(48, virtchnl_ptp_caps);
++
++/**
++ * struct virtchnl_phc_time - Contains the 64bits of PHC clock time in ns.
++ * @time: PHC time in nanoseconds
++ * @rsvd: Reserved for future extension
++ *
++ * Structure received with VIRTCHNL_OP_1588_PTP_GET_TIME. Contains the 64bits
++ * of PHC clock time in nanoseconds.
++ *
++ * VIRTCHNL_OP_1588_PTP_GET_TIME may be sent to request the current time of
++ * the PHC. This op is available in case direct access via the PHC registers
++ * is not available.
++ */
++struct virtchnl_phc_time {
++	u64 time;
++	u8 rsvd[8];
++};
++
++VIRTCHNL_CHECK_STRUCT_LEN(16, virtchnl_phc_time);
++
+ struct virtchnl_shaper_bw {
+ 	/* Unit is Kbps */
+ 	u32 committed;
+@@ -1757,6 +1816,12 @@ virtchnl_vc_validate_vf_msg(struct virtchnl_version_info *ver, u32 v_opcode,
+ 			}
+ 		}
+ 		break;
++	case VIRTCHNL_OP_1588_PTP_GET_CAPS:
++		valid_len = sizeof(struct virtchnl_ptp_caps);
++		break;
++	case VIRTCHNL_OP_1588_PTP_GET_TIME:
++		valid_len = sizeof(struct virtchnl_phc_time);
++		break;
+ 	/* These are always errors coming from the VF. */
+ 	case VIRTCHNL_OP_EVENT:
+ 	case VIRTCHNL_OP_UNKNOWN:
 -- 
 2.38.1
 
