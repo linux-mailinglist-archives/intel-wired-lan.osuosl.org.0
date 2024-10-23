@@ -1,74 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 50C819ACA6E
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Oct 2024 14:45:34 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A8EBF9ACA6D
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Oct 2024 14:45:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7FEBE60844;
-	Wed, 23 Oct 2024 12:45:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C13DB405D6;
+	Wed, 23 Oct 2024 12:45:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xRsmU0PoCiyw; Wed, 23 Oct 2024 12:45:28 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 7SPV1pOVkCjH; Wed, 23 Oct 2024 12:45:30 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DD0CE607FA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E764D40528
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1729687527;
-	bh=BCqvTZ/LEl7mGiOKdfu2qVXNBfZ8aoKGWtgmAca0QXQ=;
+	s=default; t=1729687530;
+	bh=aps5dQmNv32l4764c2tYsvN+fsXNVIkTuJE6q/+C9Hs=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=ihblV1w697n9+e3SMzsfdsRw/mQhFv1I73kgoXhx+w5hW17c3hrlwwTPywqx4+xHm
-	 mNllPWoCHnYRr30CTT7ZGl6yzpd86/awRjpkY/Kx2BPnJgYvNnyxfAFLWk7AnERL9J
-	 ZX5eyeGknQlzTp2XhgNn7R4IpTd2+IgcaLwVsxfmWf0i4FMj5BYqIhKXgfw9tdwU7o
-	 0T5JxZGozC3tRNDJUzxTb1V3NKuevyqezxJRyxc604YvtH8lQgV5NutQ/JHbxQtoH6
-	 YCMQ1Bny6csK31HSGV1+68sG15HsQN9H611ZHOhhA6P+90IpkNPEuHcPIkRPhWP6SV
-	 uTQPYE5sl76Ag==
+	b=JbucXelgLZDcKv0dZ82jzlfrZ+sMosudHO/Wa7eFFkCyOm9IMfSFCQO4SMcRZWMJe
+	 iclrnKQx1+bbwJ9xsgoP+Tlc7XJ/L4uTjP22G2keZAZvVtnLytNMPfNUzlrjX/yEwp
+	 z+5U3fDFlcMq+CTa9eq2hQc7kj4W1WWx7wz8kTKGJ9sJ4gNd94B5GMBTPngc2fC7dn
+	 bipqZ/D1MtKsdfPYxt/yMIRrIqcgyCOqN6BvGNwvbBnQpCE7jBgB7o5qeL3jOWRYTC
+	 Uf1pHaCLVJlJxDq1FX0ZEfXCfeQN2IrJWRQXGIHMVtPKHoUXJ8dOaS+90HSI33sXl4
+	 uTFeVfkepr4vg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DD0CE607FA;
-	Wed, 23 Oct 2024 12:45:27 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E764D40528;
+	Wed, 23 Oct 2024 12:45:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 2E2D759B4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2024 12:45:25 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id B096D59B4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2024 12:45:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0E13E40A02
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2024 12:45:25 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 90C8840A02
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2024 12:45:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mivDDinwcmb5 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Oct 2024 12:45:24 +0000 (UTC)
+ id ZNgpGxdTeRPE for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Oct 2024 12:45:26 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.9;
  helo=mgamail.intel.com; envelope-from=piotr.kwapulinski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 1C06A409FB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1C06A409FB
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 79B0340975
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 79B0340975
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1C06A409FB
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2024 12:45:23 +0000 (UTC)
-X-CSE-ConnectionGUID: Y8Y+bP27Qv+V/iQM5uwq5A==
-X-CSE-MsgGUID: QKAqMLLtR0KnnlrIlEvK2g==
-X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="51814153"
-X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; d="scan'208";a="51814153"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 79B0340975
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2024 12:45:26 +0000 (UTC)
+X-CSE-ConnectionGUID: bei9RqPWRy+VOpJKj3jrwQ==
+X-CSE-MsgGUID: ZbufMMDKTQecmquWmjtT/A==
+X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="51814170"
+X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; d="scan'208";a="51814170"
 Received: from orviesa010.jf.intel.com ([10.64.159.150])
  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Oct 2024 05:45:24 -0700
-X-CSE-ConnectionGUID: ZHoEkKNLQpSWrmy2LG771A==
-X-CSE-MsgGUID: dAEUJ/J6Snu5ClePSiu63g==
+ 23 Oct 2024 05:45:26 -0700
+X-CSE-ConnectionGUID: 9aqfdRgBSs+IAzq1TNHH9g==
+X-CSE-MsgGUID: Z7qqp0HdSiOF3wRXBcbujg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,226,1725346800"; d="scan'208";a="80119823"
+X-IronPort-AV: E=Sophos;i="6.11,226,1725346800"; d="scan'208";a="80119845"
 Received: from pkwapuli-mobl1.ger.corp.intel.com (HELO
  vbox-pkwap.ger.corp.intel.com) ([10.246.19.66])
- by orviesa010.jf.intel.com with ESMTP; 23 Oct 2024 05:45:23 -0700
+ by orviesa010.jf.intel.com with ESMTP; 23 Oct 2024 05:45:25 -0700
 From: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org,
-	Piotr Kwapulinski <piotr.kwapulinski@intel.com>
-Date: Wed, 23 Oct 2024 14:43:56 +0200
-Message-ID: <20241023124358.6967-6-piotr.kwapulinski@intel.com>
+Cc: netdev@vger.kernel.org, Piotr Kwapulinski <piotr.kwapulinski@intel.com>,
+ Simon Horman <horms@kernel.org>
+Date: Wed, 23 Oct 2024 14:43:57 +0200
+Message-ID: <20241023124358.6967-7-piotr.kwapulinski@intel.com>
 X-Mailer: git-send-email 2.43.5
 In-Reply-To: <20241023124358.6967-1-piotr.kwapulinski@intel.com>
 References: <20241023124358.6967-1-piotr.kwapulinski@intel.com>
@@ -76,25 +76,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1729687524; x=1761223524;
+ t=1729687526; x=1761223526;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=I3HHJCYyOawm3B2PrzYQZA6DulgXKucpF/TAE489InI=;
- b=SoFQuhMChhKhgvNvRQ0odutGZyBJKTBC09V0M2PlxWiHxvV8uU+vK7Np
- B+8V4HGE+jwS7co0GxyC+Z/a/mlf0Cwda1W3+H61uP9K3SH2JPe6YbkIk
- lZfHuGZtJRmmEW5sviw6vUn4nmIwE3FrW6pmX+heKk0mhXj6Z0G0L8UJd
- Xgt1gzvRArPLpY8agsOX2aCdVO78Cjut7OuWuipLiiJjKt6Wk+S5c6SY2
- UhGDQ0NtBNYSZjgPnWdK2MZYfjy9hqMO+7s5w5RDXDUhEM2oV5YR0onnP
- 8l+KUL4dCRadREiQkgiTT4rNcH+APua9RgcGuG6+V8lluM7BQnJdfnhwf
- A==;
+ bh=gay8YKWqKB5Vo7s5ss/WtgJlXanEHy0FtC9Q71hTvUY=;
+ b=kOFUJThVCF8vh7Q17633VpJw1cfkABZ3IuKrsF4Rus/DdL0/LwRnb6Gr
+ YJiA9mzQqzjsdbo82WzSfHMNDJZTQSlq4eBbTZI5LIZcuizpPAcq4A9F1
+ yaWQOnx56bENiB13SXZ1Y8zHgige3J9A9OjOLiIhqh7dCM7wp2DvL+4st
+ eZWq3eAFsCcCEOfXkjWdrSHVVsX+eJUN+5TZ0mdYdFjMuS0XuSuD/jovk
+ vmCEZg5eMheqeAzCN1VoVfT0rhrEcPYEoyf0ryTIcsaU3dlK0YwnnjmoJ
+ +WLDegjRfa6YRVs+GQg1ld5pKH8OLWzdBeG7kXXWTFx+ttPiwKHg4OsSC
+ w==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=SoFQuhMC
-Subject: [Intel-wired-lan] [PATCH iwl-next v10 5/7] ixgbe: Add ixgbe_x540
- multiple header inclusion protection
+ header.a=rsa-sha256 header.s=Intel header.b=kOFUJThV
+Subject: [Intel-wired-lan] [PATCH iwl-next v10 6/7] ixgbe: Clean up the E610
+ link management related code
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -110,33 +110,104 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Required to adopt x540 specific functions by E610 device.
+Required for enabling the link management in E610 device.
 
+Reviewed-by: Simon Horman <horms@kernel.org>
 Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
 ---
- drivers/net/ethernet/intel/ixgbe/ixgbe_x540.h | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 17 +++++++++++------
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c | 12 ++++++------
+ 2 files changed, 17 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.h
-index b69a680..6ed360c 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.h
-@@ -1,5 +1,8 @@
- /* SPDX-License-Identifier: GPL-2.0 */
--/* Copyright(c) 1999 - 2018 Intel Corporation. */
-+/* Copyright(c) 1999 - 2024 Intel Corporation. */
-+
-+#ifndef _IXGBE_X540_H_
-+#define _IXGBE_X540_H_
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index 6cb790b..af7f9494 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -236,6 +236,9 @@ static int ixgbe_get_parent_bus_info(struct ixgbe_adapter *adapter)
+  * bandwidth details should be gathered from the parent bus instead of from the
+  * device. Used to ensure that various locations all have the correct device ID
+  * checks.
++ *
++ * Return: true if information should be collected from the parent bus, false
++ *         otherwise
+  */
+ static inline bool ixgbe_pcie_from_parent(struct ixgbe_hw *hw)
+ {
+@@ -5532,7 +5535,9 @@ static void ixgbe_sfp_link_config(struct ixgbe_adapter *adapter)
+  * ixgbe_non_sfp_link_config - set up non-SFP+ link
+  * @hw: pointer to private hardware struct
+  *
+- * Returns 0 on success, negative on failure
++ * Configure non-SFP link.
++ *
++ * Return: 0 on success, negative on failure
+  **/
+ static int ixgbe_non_sfp_link_config(struct ixgbe_hw *hw)
+ {
+@@ -7221,11 +7226,11 @@ void ixgbe_update_stats(struct ixgbe_adapter *adapter)
+ 	for (i = 0; i < 16; i++) {
+ 		hwstats->qptc[i] += IXGBE_READ_REG(hw, IXGBE_QPTC(i));
+ 		hwstats->qprc[i] += IXGBE_READ_REG(hw, IXGBE_QPRC(i));
+-		if ((hw->mac.type == ixgbe_mac_82599EB) ||
+-		    (hw->mac.type == ixgbe_mac_X540) ||
+-		    (hw->mac.type == ixgbe_mac_X550) ||
+-		    (hw->mac.type == ixgbe_mac_X550EM_x) ||
+-		    (hw->mac.type == ixgbe_mac_x550em_a)) {
++		if (hw->mac.type == ixgbe_mac_82599EB ||
++		    hw->mac.type == ixgbe_mac_X540 ||
++		    hw->mac.type == ixgbe_mac_X550 ||
++		    hw->mac.type == ixgbe_mac_X550EM_x ||
++		    hw->mac.type == ixgbe_mac_x550em_a) {
+ 			hwstats->qbtc[i] += IXGBE_READ_REG(hw, IXGBE_QBTC_L(i));
+ 			IXGBE_READ_REG(hw, IXGBE_QBTC_H(i)); /* to clear */
+ 			hwstats->qbrc[i] += IXGBE_READ_REG(hw, IXGBE_QBRC_L(i));
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
+index a5f6449..7eeafc9 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
+@@ -3504,13 +3504,13 @@ static int ixgbe_reset_hw_X550em(struct ixgbe_hw *hw)
+ 	return status;
+ }
  
- #include "ixgbe_type.h"
+-/** ixgbe_set_ethertype_anti_spoofing_X550 - Enable/Disable Ethertype
++/** ixgbe_set_ethertype_anti_spoofing_x550 - Enable/Disable Ethertype
+  *	anti-spoofing
+  *  @hw:  pointer to hardware structure
+  *  @enable: enable or disable switch for Ethertype anti-spoofing
+  *  @vf: Virtual Function pool - VF Pool to set for Ethertype anti-spoofing
+  **/
+-static void ixgbe_set_ethertype_anti_spoofing_X550(struct ixgbe_hw *hw,
++static void ixgbe_set_ethertype_anti_spoofing_x550(struct ixgbe_hw *hw,
+ 						   bool enable, int vf)
+ {
+ 	int vf_target_reg = vf >> 3;
+@@ -3526,12 +3526,12 @@ static void ixgbe_set_ethertype_anti_spoofing_X550(struct ixgbe_hw *hw,
+ 	IXGBE_WRITE_REG(hw, IXGBE_PFVFSPOOF(vf_target_reg), pfvfspoof);
+ }
  
-@@ -17,3 +20,5 @@ int ixgbe_acquire_swfw_sync_X540(struct ixgbe_hw *hw, u32 mask);
- void ixgbe_release_swfw_sync_X540(struct ixgbe_hw *hw, u32 mask);
- void ixgbe_init_swfw_sync_X540(struct ixgbe_hw *hw);
- int ixgbe_init_eeprom_params_X540(struct ixgbe_hw *hw);
-+
-+#endif /* _IXGBE_X540_H_ */
+-/** ixgbe_set_source_address_pruning_X550 - Enable/Disbale src address pruning
++/** ixgbe_set_source_address_pruning_x550 - Enable/Disable src address pruning
+  *  @hw: pointer to hardware structure
+  *  @enable: enable or disable source address pruning
+  *  @pool: Rx pool to set source address pruning for
+  **/
+-static void ixgbe_set_source_address_pruning_X550(struct ixgbe_hw *hw,
++static void ixgbe_set_source_address_pruning_x550(struct ixgbe_hw *hw,
+ 						  bool enable,
+ 						  unsigned int pool)
+ {
+@@ -3830,9 +3830,9 @@ static int ixgbe_write_phy_reg_x550a(struct ixgbe_hw *hw, u32 reg_addr,
+ 	.set_mac_anti_spoofing		= &ixgbe_set_mac_anti_spoofing, \
+ 	.set_vlan_anti_spoofing		= &ixgbe_set_vlan_anti_spoofing, \
+ 	.set_source_address_pruning	= \
+-				&ixgbe_set_source_address_pruning_X550, \
++				&ixgbe_set_source_address_pruning_x550, \
+ 	.set_ethertype_anti_spoofing	= \
+-				&ixgbe_set_ethertype_anti_spoofing_X550, \
++				&ixgbe_set_ethertype_anti_spoofing_x550, \
+ 	.disable_rx_buff		= &ixgbe_disable_rx_buff_generic, \
+ 	.enable_rx_buff			= &ixgbe_enable_rx_buff_generic, \
+ 	.get_thermal_sensor_data	= NULL, \
 -- 
 2.43.0
 
