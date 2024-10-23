@@ -1,117 +1,96 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EC04E9ABB58
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Oct 2024 04:12:59 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9CE1F9ABBA5
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Oct 2024 04:39:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5F98A4053A;
-	Wed, 23 Oct 2024 02:12:58 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id EF6C04057F;
+	Wed, 23 Oct 2024 02:39:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id OollyiWO7NLn; Wed, 23 Oct 2024 02:12:57 +0000 (UTC)
+ id KEpypUIQRbYf; Wed, 23 Oct 2024 02:39:57 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AEF8340543
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 04C954057A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1729649577;
-	bh=5B9SJRSxpgH+a2QQDn/7m98ugDjbIUWnL6gLprauvRk=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=R97t08RcdmuvsfxUWfB60LMblQZwhtHqXwkfMNbip3HTUYynP7oh5ElSKYw7qTjwI
-	 4gE6+YbLDquFYqM51PxLZcZwVEeBpobKoOEFf+E3wVS2qSvyCjttK8NlXF11pyMa5O
-	 DOHAjbjzVrjwSRzFp6RWcySf5DNcY34diTzZL4kZcpwQR29zQ7ubVJ/giDtd6zd8ox
-	 Tuu79vA5cDsuwpt/ntFqROybqIeqobrCfe8uI3GMQ50wjghy9UvO+Hs1E4w3IFH7FJ
-	 pBjRUqQh2DcVQaL0Famy5Z5+yPpujoETUhPyLlKBZpucCY6c4ChqGeWNMSmzV+5+ag
-	 TnmitcFPUG8bQ==
+	s=default; t=1729651197;
+	bh=FQxL9J5jMZutr6EcO7eYENMPmD4xorAeJFA0Q1waCZw=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=vUno4sRwMOPuy7TKZaE/sw1VG7XaxmLFxMKRMj+RTY1WigHv79feMJz+RcEmviFIF
+	 DZxgLL7GSbjCkMtdq+YUG43YkgCoUa6C1phm0kpgDh9jFPOm3vxNpNVqFFhhjtswXs
+	 JCAcbO+HsWsTmOZeuGW/dJLxGZuH4/UQzLYterdGDl40HrJHZWjKxtIWorPdODDDwr
+	 jofvG6KQThcO2umWLD/kwD8GSo1PMiOyc+2Uxow0EuA2GK4+AkWW8ldAKNhhX8RG0B
+	 ylwNk32emO2pHbw1uKnkma4+fnm4ldOw9yvIcnUvr5BLzrp0ypTdd6AxiAJUv3Lpg+
+	 ZW4oMsIuXvf2g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AEF8340543;
-	Wed, 23 Oct 2024 02:12:57 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 04C954057A;
+	Wed, 23 Oct 2024 02:39:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 5760B59B4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2024 02:12:56 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 8F56A59B4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2024 02:39:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 45C43600B6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2024 02:12:56 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 7C5904063C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2024 02:39:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id fIUDTOhuXNpC for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Oct 2024 02:12:55 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::533; helo=mail-pg1-x533.google.com;
- envelope-from=richardcochran@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B2EA96006A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B2EA96006A
-Received: from mail-pg1-x533.google.com (mail-pg1-x533.google.com
- [IPv6:2607:f8b0:4864:20::533])
- by smtp3.osuosl.org (Postfix) with ESMTPS id B2EA96006A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2024 02:12:55 +0000 (UTC)
-Received: by mail-pg1-x533.google.com with SMTP id
- 41be03b00d2f7-656d8b346d2so4139787a12.2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2024 19:12:55 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1729649575; x=1730254375;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=5B9SJRSxpgH+a2QQDn/7m98ugDjbIUWnL6gLprauvRk=;
- b=E87Ij8i4P7JyZKRQgdTm0/0S45q/8jQY52i3mza3omtYt2eUjfvjH1Nf/Jq4NNvMMp
- 3AAf1CItHDwnhx34p8E4NOMdhNbIxl67boid+lVJYHIG88k+eiYPRU28RD9mxXo+NTgP
- t8Y9Fjtk9eMQ/rO7Dp1N0GB67bIAOcE0gY1kxECQpAOxeA2WechAhsxovwofq/JxBzjr
- Lr7vfj/flfo3NywBQ6iy80T1dCZiYu8Febfwsjb6FIH1XEIEZSK9898477go1QEaCPU3
- IydynfVD5UE+3Jr4rWDQ3NH7w0nivR+hOGAf8MV2Qsy/Ho+g+6QHvug43KjipL1Yr1bd
- dWjw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCURMKa1cOu5HWwDYG36mz3PjxcGO6YUOPuzdqEONrONIzmcwL22GvsTNBl+6DpIElHv8R9BoB06X5u0Ja8bFR0=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YyzPJfbD1AWKYBBhRMCSF3Au78fNpsq9RFOln+cPX/dmAAJ2L2b
- vTp5Gh+DEygCaN3LDeTmK7fAK8qCb45AKbEyuoKBW+Y3f/99QcpF
-X-Google-Smtp-Source: AGHT+IFGngh30tPnUsIitqRKW/TXZNiqX2UdKWf1av7Jf6M3yMXoiDLU5ZvkR2C/4+jJbiFyVtgfBw==
-X-Received: by 2002:a05:6a20:e68c:b0:1d5:1729:35ec with SMTP id
- adf61e73a8af0-1d978aeac65mr1157129637.7.1729649574879; 
- Tue, 22 Oct 2024 19:12:54 -0700 (PDT)
-Received: from hoboy.vegasvil.org ([2600:1700:2430:6f6f:e2d5:5eff:fea5:802f])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-2e76dfedbbfsm154240a91.56.2024.10.22.19.12.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 22 Oct 2024 19:12:54 -0700 (PDT)
-Date: Tue, 22 Oct 2024 19:12:46 -0700
-From: Richard Cochran <richardcochran@gmail.com>
-To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Message-ID: <ZxhbnvaxmV0njtMu@hoboy.vegasvil.org>
-References: <20241021141955.1466979-1-arkadiusz.kubalewski@intel.com>
- <20241021141955.1466979-2-arkadiusz.kubalewski@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Y74BSWSoLeG7 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Oct 2024 02:39:54 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.15;
+ helo=mgamail.intel.com; envelope-from=christopher.s.hall@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 2BB07405F1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2BB07405F1
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2BB07405F1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2024 02:39:53 +0000 (UTC)
+X-CSE-ConnectionGUID: AyPtSo0KQbaeMQa8+elygQ==
+X-CSE-MsgGUID: rIzrc+ZERmuXHDgZ4ZJHig==
+X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="32918031"
+X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; d="scan'208";a="32918031"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+ by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Oct 2024 19:39:53 -0700
+X-CSE-ConnectionGUID: prLyHlcnQyydZLLa4LTxmg==
+X-CSE-MsgGUID: FKILdsurRcG/+Tf5QWAbVg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,223,1725346800"; d="scan'208";a="80396816"
+Received: from timelab-spr11.ch.intel.com ([143.182.136.151])
+ by fmviesa010.fm.intel.com with ESMTP; 22 Oct 2024 19:39:52 -0700
+From: Chris H <christopher.s.hall@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: david.zage@intel.com, vinicius.gomes@intel.com, netdev@vger.kernel.org,
+ rodrigo.cadore@l-acoustics.com, vinschen@redhat.com
+Date: Wed, 23 Oct 2024 02:30:36 +0000
+Message-Id: <20241023023040.111429-1-christopher.s.hall@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241021141955.1466979-2-arkadiusz.kubalewski@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1729649575; x=1730254375; darn=lists.osuosl.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=5B9SJRSxpgH+a2QQDn/7m98ugDjbIUWnL6gLprauvRk=;
- b=Tz8bikLRQ4ByYiG3nFflv6qd4zcSTMMSVHCqLVJtn1Rai0+c6eFU7F4dcvwNQW32Qc
- A4KZRp9ay5Hljmzht5LE8QoMekkO0/zAjniH1nV8MncZZP0ZMUzAW9dnxESGLExKVGkD
- u9v84STO0khbiyf2StwbY6vJaKKnOOwRtHF0eAog50iouXhlrvivtBwfxYDixHXI7jtz
- cHTDVHf2pD5axquyx6TlKwhDzHk1dhH7QhtcfVHB0eyA7ymMHbc30/vZjinVjLlnp8Gn
- noZ9X5ZOCNg5PhOiB9TPRDVxAalg6l7n2Xh9BupPYq19aHSLsOXnuWoMCz8MApywouaE
- k9bA==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1729651195; x=1761187195;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=qCAPd+EKjSnUO6a+dnDXRPZ6SLhdHJyhlvsnFzp6X3Y=;
+ b=RA0m/Qutj8yCtpDGO7O5G7vldI5+hhhFHPMTGBiE/kABM1Fr0Q80LK5k
+ YEHCCeFD6aBigQrmFz6Jsb/+7huR1y4hd2k9zp05vB4FiLhgcxVpIxXNv
+ EGoQecL70wyasu3VgcRPlifzPMV8H8Jao7CeLCX/03CY/jr5gPXOhPjbx
+ PCUphjc7DREaVeZjsbXAqS6q+dxKxDUFu0tQBUYKP7TWyIstD1okCnkrJ
+ NVWRwI26pWl05J7MCamRs39syJAGc0TRDHnLA9C2+6wGX7dRtTHQsTAHu
+ RJ3syaNB63p22dCkdCT6f0IsaAwikmLoHR99mRcT9ZQmjATBeNF5UU6AJ
+ A==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=Tz8bikLR
-Subject: Re: [Intel-wired-lan] [PATCH net-next 1/2] ptp: add control over HW
- timestamp latch point
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=RA0m/Qut
+Subject: [Intel-wired-lan] [PATCH iwl-net v2 0/4] igc: Fix PTM timeout
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -127,12 +106,44 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Oct 21, 2024 at 04:19:54PM +0200, Arkadiusz Kubalewski wrote:
-> Currently HW support of PTP/timesync solutions in network PHY chips can be
-> implemented with two different approaches, the timestamp maybe latched
-> either at the beginning or after the Start of Frame Delimiter (SFD) [1].
+There have been sporadic reports of PTM timeouts using i225/i226 devices
 
-Why did 802.3-2012 change the definition of the time stamp position?
+These timeouts have been root caused to:
 
-Thanks,
-Richard
+1) Manipulating the PTM status register while PTM is enabled and triggered
+2) The hardware retrying too quickly when an inappropriate response is
+   received from the upstream device
+
+The issue can be reproduced with the following:
+
+$ sudo phc2sys -R 1000 -O 0 -i tsn0 -m
+
+Note: 1000 Hz (-R 1000) is unrealistically large, but provides a way to
+quickly reproduce the issue.
+
+PHC2SYS exits with:
+
+"ioctl PTP_OFFSET_PRECISE: Connection timed out" when the PTM transaction
+  fails
+
+Changelog:
+
+v1 -> v2: -Removed patch modifying PTM retry loop count
+      	  -Moved PTM mutex initialization from igc_reset() to igc_ptp_init()
+	   called once in igc_probe()
+
+
+Christopher S M Hall (4):
+  igc: Ensure the PTM cycle is reliably triggered
+  igc: Lengthen the hardware retry time to prevent timeouts
+  igc: Move ktime snapshot into PTM retry loop
+  igc: Add lock preventing multiple simultaneous PTM transactions
+
+ drivers/net/ethernet/intel/igc/igc.h         |  1 +
+ drivers/net/ethernet/intel/igc/igc_defines.h |  3 +-
+ drivers/net/ethernet/intel/igc/igc_ptp.c     | 98 ++++++++++++--------
+ 3 files changed, 62 insertions(+), 40 deletions(-)
+
+-- 
+2.34.1
+
