@@ -1,118 +1,111 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 74EE49ADB26
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Oct 2024 06:51:42 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B22809ADB9C
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Oct 2024 07:45:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2C48240363;
-	Thu, 24 Oct 2024 04:51:41 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4158481229;
+	Thu, 24 Oct 2024 05:45:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0s0RfeXawVPQ; Thu, 24 Oct 2024 04:51:40 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 1vN6rv9ZHi3A; Thu, 24 Oct 2024 05:45:32 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8364740309
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A050881210
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1729745500;
-	bh=GsILZh4krh0QXvX3a1dJzNvZ6BxeL6xSMOw+9+Av9C4=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=GElhZbg45woyYt4CMeN/z8SICpSXLWIEJmKML7M+L8NhAvr4FKWpmcXhrcm+k1Frj
-	 +bcfJiYdW4V5qTlDLezbAFakB1InJmjSRiua4EG5fKGx/cYTKd91mfIENjNkdixfyP
-	 BRlXs9pldJFc/+WrVRIezNVjArNL7Gl9XQ74XCV/h6eBjg2tKiRjyMTtqzlMo78V6x
-	 GcbyT0ScdRa/UEs0xhLAzS4G5NeB4JKlrH7L/5nUUORPPnFE9gYHDyPCYWz2xXhCQR
-	 caJw8E9qcO/4EtwBSFefivz0sk2wiMb5SiAP8Y3IslAdsZH2M+AzV0bONqd1IyoBf/
-	 pH8HbUjU6al0g==
+	s=default; t=1729748732;
+	bh=Z+yyo1TIYgMMh3a4MAR/ug/Ems+Ey9XMLLo9KFQKqZY=;
+	h=Date:From:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=HqG0Wa39xoReGM1VQghqjBfdcem324zmjfWJmurnF7A1jlkcFs/Om0uwhm3B4P84l
+	 6sRw843JfjoTAeDbApkXM3rjcyfrRx2w2eaCdvG3o2MH9HsqXWoC9uiKnvmYMhdOiL
+	 sJSWJw2pO24sc7Gl5zhyysnym4OHzeSFvYFbxeB2AFzavx41LqLcCc1gGiIMvt3ubO
+	 MHc0uLr7p/RbCm7VcBDcyxJM5AqgOUh2rOXhPTyI9kVItiMWZUSG7t02GLcCl1qq3o
+	 5UqEMflm7dgymEYYeaXV2XmwJ+QXqmkYbmJMjAuYki8CQxcv9nYuyScXkXoi9KKMSC
+	 QtOV3ohqhunAw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8364740309;
-	Thu, 24 Oct 2024 04:51:40 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A050881210;
+	Thu, 24 Oct 2024 05:45:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id AF1502073
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Oct 2024 04:51:38 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3818A27ED
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Oct 2024 05:45:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id AA8AA40251
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Oct 2024 04:51:38 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 15E944078D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Oct 2024 05:45:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id I8msOR_PutAU for <intel-wired-lan@lists.osuosl.org>;
- Thu, 24 Oct 2024 04:51:38 +0000 (UTC)
+ id 0CdrqiutsQaN for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 24 Oct 2024 05:45:30 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::429; helo=mail-pf1-x429.google.com;
+ client-ip=2607:f8b0:4864:20::102a; helo=mail-pj1-x102a.google.com;
  envelope-from=pjohnny0508@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org E6CA240363
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E6CA240363
-Received: from mail-pf1-x429.google.com (mail-pf1-x429.google.com
- [IPv6:2607:f8b0:4864:20::429])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E6CA240363
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Oct 2024 04:51:37 +0000 (UTC)
-Received: by mail-pf1-x429.google.com with SMTP id
- d2e1a72fcca58-71e5130832aso378475b3a.0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2024 21:51:37 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 34EF340716
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 34EF340716
+Received: from mail-pj1-x102a.google.com (mail-pj1-x102a.google.com
+ [IPv6:2607:f8b0:4864:20::102a])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 34EF340716
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Oct 2024 05:45:30 +0000 (UTC)
+Received: by mail-pj1-x102a.google.com with SMTP id
+ 98e67ed59e1d1-2e2a999b287so466856a91.0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Oct 2024 22:45:29 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1729745497; x=1730350297;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=GsILZh4krh0QXvX3a1dJzNvZ6BxeL6xSMOw+9+Av9C4=;
- b=L8OIydLYcSJ8DCi2nOmqC14FR9MxZ7dGt4NkN4EK4tssK3r3N/EC0V4OPvD8VM6nO4
- uuaSBJL9Uw74P3RUGnHGGhoP9mkgOeWAlY4U0UIjFp/9vBIZK4NHw236UIXaFMAWLXL3
- 5maLwFN1sOatElVrMzeMXYiVgqtcR6hgMCPCEAwgHP4GwoUlcs0IDW3JNFLIXrHkTsnS
- RiOSmA5VCR8umBRiUri9eUtKEQ+URNG+x6oNbqIT6i9c9oyAmzfy1pRzvY/jlGKTqu7b
- tfXcR61BrPCCE8DmSsvxnU1SYKkyhp0dHJx0Mb9016ln9wGCBVi0s01tZ7hGRhn459wX
- hZqg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUdeEms+VKhlrUDezVp23I0XojwHv8jKaoNN/i/wTE44zfoFcQ0/rXRSU/BC1HFdsbyAJABUbD+qqLbXc+Vc28=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YyOHB6jRp0DEhPHCRKx27IBc6Dl32/WRF2MLoc6BoAj3qccba9R
- 6K4WcOcDL696vUqhrcsYU0yeXIAzpDTuampbD9eXhXpkdhyBBvuJ
-X-Google-Smtp-Source: AGHT+IFacVlm7olQMQ4s01LEb04I6dC0tnNHEM49WuDR0xKRj3qy5Mww3b9mejfUY3UmbFG7pUZvww==
-X-Received: by 2002:a05:6a00:61c7:b0:71e:b1dc:f255 with SMTP id
- d2e1a72fcca58-72030babe15mr5017988b3a.9.1729745497150; 
- Wed, 23 Oct 2024 21:51:37 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1729748729; x=1730353529;
+ h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Z+yyo1TIYgMMh3a4MAR/ug/Ems+Ey9XMLLo9KFQKqZY=;
+ b=C6o9B43I4qSk/1ptb52axdjAkj/UPrOx6FoAy8abgkf3tIg6GthsNwMcj0PjFTJ4O7
+ X3OQsnV/oTwdT3v7CW5NXrM3o8k7jbjJk2/HhOoeXvF2+zNzGIAgjtgW+QTNPqbklHtU
+ CgvqgwBrf5n6qErjS/87cAU0k4MsvR57zUqNp4pTEeI+aTphDbM5zLHkCQBE3hM1qSmC
+ c4nU/RB8UZWFEyNmtnOfJN6CAzPPeWlJH9MT5LIGilbM+csn8nkhvFF4A1o84q+Bw1PT
+ IjsH0fmN/2DFG4JwSQB0qALVBbHaawKD0AWwqmWqMXq4y5Jzm1s5vWz2ZgUsx8AwGFJA
+ GmrQ==
+X-Gm-Message-State: AOJu0YzrVQ9qT3CU9VfOSMfZk8XoL7wxc+vWRx6vqlKBZc4gqoSxhWPt
+ DIA/OuR/nXVA5Mv8q/t5CkYHgWxZreWmXcHQvx079b0Cl15C+OuD
+X-Google-Smtp-Source: AGHT+IGMu0wQIJyQYyM3MtZTwmXTHeotULXZZLZmunxl49BuoVTVKzIpHI0TTzuue/lTyTnLwc7E2g==
+X-Received: by 2002:a05:6a20:c998:b0:1d5:10c1:4939 with SMTP id
+ adf61e73a8af0-1d978aeadf1mr5532925637.8.1729748729310; 
+ Wed, 23 Oct 2024 22:45:29 -0700 (PDT)
 Received: from Fantasy-Ubuntu ([2001:56a:7eb6:f700:c21b:c597:f9a6:3608])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-71ec132feb9sm7168856b3a.67.2024.10.23.21.51.35
+ 98e67ed59e1d1-2e76df7095dsm2532477a91.29.2024.10.23.22.45.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Oct 2024 21:51:36 -0700 (PDT)
-Date: Wed, 23 Oct 2024 22:51:34 -0600
+ Wed, 23 Oct 2024 22:45:28 -0700 (PDT)
+Date: Wed, 23 Oct 2024 23:45:26 -0600
 From: Johnny Park <pjohnny0508@gmail.com>
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-Cc: horms@kernel.org, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- andrew@lunn.ch, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, kernel-janitors@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Message-ID: <ZxnSVuqlXCHgeVKr@Fantasy-Ubuntu>
-References: <ZxhruNNXvQI-xUwE@Fantasy-Ubuntu>
- <ba58bbcd-079e-42b9-8e66-52b2626936e2@molgen.mpg.de>
+To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, andrew+netdev@lunn.ch, horms@kernel.org,
+ pmenzel@molgen.mpg.de
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Message-ID: <Zxne9hBl5E5VhKGm@Fantasy-Ubuntu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ba58bbcd-079e-42b9-8e66-52b2626936e2@molgen.mpg.de>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1729745497; x=1730350297; darn=lists.osuosl.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=GsILZh4krh0QXvX3a1dJzNvZ6BxeL6xSMOw+9+Av9C4=;
- b=Nsz3AsKK0jkA2UEoIHK6PhFwnoR9D/GzNgV2j3EfO1/Vfcol0uHjeTvsYKxzrdh8mX
- n17Ny7ToPidKgeXulGAW4Wwwrk7ZCOv/oZcmCsG+wUbCh/Kl0Vv9uhCl2++hXFcA3SQS
- CJmrXhIQmPrOQU/1gZ6Af9f1N4ythzwfiHD9W5vaxGuBveCRAVEuqMiuxWruVcfomrli
- QHjiAu8drCfHCofwAe/XCpNOvyKGk8F8XkfOJzrdF69KjtzrPzFKrPmpFUAvItNe41gU
- eYsgH8JmGkrozYlh/l5IKLU0C6yhHyH+WKnopC3sr4p+/8d8F62N0zoCz3C4DLXOtda/
- CuXg==
+ d=gmail.com; s=20230601; t=1729748729; x=1730353529; darn=lists.osuosl.org;
+ h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Z+yyo1TIYgMMh3a4MAR/ug/Ems+Ey9XMLLo9KFQKqZY=;
+ b=DezHihf36nQs4vReNwY9NZao0NmwTzG6R+pBzq3uC6nWRqnsCNBm1yRinameFYW93t
+ MdHWreOPCb7RCUAcrI9pwQHMlsf2q+Yry2B8+nRG4UK4ts1MSvb24+DBwLlr1I0vVSzu
+ VbZKkPkhoa71fj3Enip6+/unfba6lAddziCvuLAc167+JRvUKjWiD3pTjE1w3jWpVFHG
+ JOyjAGDCqpMWkr4uRtPmKVAr7CX7nJ/Ecw9E1LnR/BokwD9dIfyjvh99moutkAmqryHe
+ 2enBd+NXO2O90VaabMIT/2jcuaezmWUXwhU7WWjp6qHjs+ys1J+bsZ9LY/jCyjNg1qbJ
+ G6+w==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=Nsz3AsKK
-Subject: Re: [Intel-wired-lan] [PATCH v2 1/1] [net-next] igb: Fix spelling
- in igb_main.c
+ dkim=pass (2048-bit key,
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20230601 header.b=DezHihf3
+Subject: [Intel-wired-lan] [PATCH v3] [net-next] igb: Fix 2 typos in
+ comments in igb_main.c
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -128,28 +121,41 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Oct 23, 2024 at 10:04:45AM +0200, Paul Menzel wrote:
-> Dear Johnny,
-> 
-> 
-> Thank you for your patch. I recommend to put the information, that the typos
-> are only in comments, to the summary/title:
-> 
-> igb: Fix 2 typos in comments in igb_main.c
-> 
-> That way, skimming `git log --oneline` is more informative.
-> 
-> Am 23.10.24 um 05:21 schrieb Johnny Park:
-> > Simple patch that fix spelling mistakes in igb_main.c
-> 
-> fix*es*, but better use imperative mood:
-> 
-> Fix 2 spelling mistakes in comments `igb_main.c`.
-> 
-Hello Paul,
+Fix 2 spelling mistakes in comments in `igb_main.c`.
 
-I appreciate your comments, I'll address those in the new patch shortly.
+Signed-off-by: Johnny Park <pjohnny0508@gmail.com>
+---
+Changes in v3:
+  - Adjust commit message
 
-Thanks,
+Changes in v2:
+  - Fix spelling mor -> more
+---
+ drivers/net/ethernet/intel/igb/igb_main.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Johnny
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index 1ef4cb871452..fc587304b3c0 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -1204,7 +1204,7 @@ static int igb_alloc_q_vector(struct igb_adapter *adapter,
+ 	/* initialize pointer to rings */
+ 	ring = q_vector->ring;
+ 
+-	/* intialize ITR */
++	/* initialize ITR */
+ 	if (rxr_count) {
+ 		/* rx or rx/tx vector */
+ 		if (!adapter->rx_itr_setting || adapter->rx_itr_setting > 3)
+@@ -3906,7 +3906,7 @@ static void igb_remove(struct pci_dev *pdev)
+  *
+  *  This function initializes the vf specific data storage and then attempts to
+  *  allocate the VFs.  The reason for ordering it this way is because it is much
+- *  mor expensive time wise to disable SR-IOV than it is to allocate and free
++ *  more expensive time wise to disable SR-IOV than it is to allocate and free
+  *  the memory for the VFs.
+  **/
+ static void igb_probe_vfs(struct igb_adapter *adapter)
+-- 
+2.43.0
+
