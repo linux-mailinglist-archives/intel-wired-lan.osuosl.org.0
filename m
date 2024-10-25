@@ -1,101 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DE79E9B2DB3
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Oct 2024 11:59:30 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0D37B9B34D9
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Oct 2024 16:28:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 99B0940574;
-	Mon, 28 Oct 2024 10:59:29 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B554C4027E;
+	Mon, 28 Oct 2024 15:28:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YeMAKELXWyZl; Mon, 28 Oct 2024 10:59:28 +0000 (UTC)
+ id eXfNExiQfvsx; Mon, 28 Oct 2024 15:28:52 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DC17440576
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 87E8D402C0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1730113168;
-	bh=K3vp8DDoUnEBwTzH/GjwVmxdMRyjL/txAbe2VhMg0y0=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=UV+XhE1/pgHbZ4Lsynw7E7BO6KhxhpP3/GeXN5mexaQ9Ld0fWIjEMvwZ4twmZvkCM
-	 JH6W7HEdzf+oy8z6VQkkfCNK8BhFIVSNaxuBp954IyKWgXiS+T4wmFqSxrr9t+vkOT
-	 ylkCpdN4aL+tt+GiZnkLKC3BgyDBS7a5kHSB8lxGpJhEoCbK1VIghDT7GR9kQC+j3n
-	 lL/L+WR/eij9JV0elQAHputqjV8IVmf8HqO7z+c5yfVqNNkc0hCN3mID69cV1+mIYP
-	 YUIoLH6/V9wTo9adRtL+nBsuCK237sH8UDMO10ednOPQNAsCIyyQa/rAyMv3DFtt6U
-	 8tu6CJy236iig==
+	s=default; t=1730129332;
+	bh=F9dHd6m8ZcNVZ7XdszQeQMYVYlQDC+XhSGQ0pZS7xYE=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=gLzsIde2hNjS3gR6XreZ4w2Eq6Wkwjjx4hjhtwLf6jiiE+LS8p6n0HK05G8DU8ujA
+	 NL0Z8nuMHwO0gzqwOzWxMyC7bi6t88zx3HlpMNiYBFMnbUkVlwd4bFb20IVsU/bdge
+	 n7Tz5Yc6efyvce5ysRMm2V1MTZblGFh7y/VtFcjXK3JYvKOe/FMOt4tpg+hNFkAOIq
+	 rM6q7OIS30UR9PLNtPUWwmTa+k6W6YGokXJ2F2p9AyEF5dEgno+Czdz/01TQOtxl5f
+	 1JV6vUs5a+5Lbq9b85skWIXblvsn5wswWP8cRlizylJY38NDmIwOWT2wdFnQpLLJxm
+	 rj8RdWMcBKqxA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DC17440576;
-	Mon, 28 Oct 2024 10:59:27 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 87E8D402C0;
+	Mon, 28 Oct 2024 15:28:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id BA4854EC0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 10:59:25 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 596025C24
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Oct 2024 00:14:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A76F640574
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 10:59:25 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3A67881F61
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Oct 2024 00:14:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VFbS6y5U6i_G for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Oct 2024 10:59:24 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
- helo=mgamail.intel.com; envelope-from=mateusz.polchlopek@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org A868F4056D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A868F4056D
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A868F4056D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 10:59:24 +0000 (UTC)
-X-CSE-ConnectionGUID: VM1d35pzRcqw6NfgVcl27A==
-X-CSE-MsgGUID: +n8A0sKdSlC1t6oQNMbESw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11238"; a="17339465"
-X-IronPort-AV: E=Sophos;i="6.11,239,1725346800"; d="scan'208";a="17339465"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Oct 2024 03:59:23 -0700
-X-CSE-ConnectionGUID: lUAShk6GSrG4Pop881gKpg==
-X-CSE-MsgGUID: Vbf0X2bAQGW+xsLHFWU2tw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,239,1725346800"; d="scan'208";a="81904693"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmviesa010.fm.intel.com with ESMTP; 28 Oct 2024 03:59:22 -0700
-Received: from fedora.igk.intel.com (Metan_eth.igk.intel.com [10.123.220.124])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 7F3D527BC4;
- Mon, 28 Oct 2024 10:59:20 +0000 (GMT)
-From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: david.m.ertman@intel.com, netdev@vger.kernel.org,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Date: Mon, 28 Oct 2024 12:59:22 -0400
-Message-Id: <20241028165922.7188-1-mateusz.polchlopek@intel.com>
-X-Mailer: git-send-email 2.38.1
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id SwbddpkORWMN for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 26 Oct 2024 00:14:35 +0000 (UTC)
+X-Greylist: delayed 2431 seconds by postgrey-1.37 at util1.osuosl.org;
+ Sat, 26 Oct 2024 00:14:35 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 1867481F5C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1867481F5C
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=52.5.81.116;
+ helo=trager.us; envelope-from=lee@trager.us; receiver=<UNKNOWN> 
+Received: from trager.us (trager.us [52.5.81.116])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1867481F5C
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 26 Oct 2024 00:14:34 +0000 (UTC)
+Received: from c-76-104-255-50.hsd1.wa.comcast.net ([76.104.255.50]
+ helo=[192.168.1.226])
+ by trager.us with esmtpsa (TLSv1.3:TLS_AES_128_GCM_SHA256:128)
+ (Exim 4.92.3) (envelope-from <lee@trager.us>)
+ id 1t4ToW-0002GO-P3; Fri, 25 Oct 2024 23:33:52 +0000
+Message-ID: <597a68d6-2314-47a0-af9f-138e46387978@trager.us>
+Date: Fri, 25 Oct 2024 16:33:45 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1730113165; x=1761649165;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=3WNIz9CBumBGYrQn3zQyAt8oGW5m6Cywud9YFlm003Q=;
- b=ioYL5lXPDgPRyS8HgyoeBXFK20kOXruevAmajkz0N/vU6Kid2k9TJiel
- 7ofeCy4jPL0Dj29EZVzOXNqURa1Cg93C8H2Dv7iKp/FK4hE3679oCt1jP
- EUkkNoQszz3e8aFWuMKhx2PlBSusD4yyschQFSVI12ruMLS8FUrQUzGR/
- ohwssWcXKw0r12VLwUh2WIT7eRjzMr92Grb7YqhYXPwdi7Hxs8iTd74+e
- 6DIkrNUVrR0Cu/tER/fdMSvotXsZtVD6gX6tKBwDYlZmxw7G2iA001bfk
- 8tW+ZrCqhqHwyknp9QCqqgI7Eihx9I9o0SW9robruVis0oGxLdaVnI6Vx
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=ioYL5lXP
-Subject: [Intel-wired-lan] [PATCH iwl-net] ice: change q_index variable type
- to s16 to store -1 value
+User-Agent: Mozilla Thunderbird
+To: Rosen Penev <rosenp@gmail.com>, netdev@vger.kernel.org
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ open list <linux-kernel@vger.kernel.org>,
+ "open list:XDP (eXpress Data Path):Keyword:(?:b|_)xdp(?:b|_)"
+ <bpf@vger.kernel.org>
+References: <20241025203757.288367-1-rosenp@gmail.com>
+Content-Language: en-US
+From: Lee Trager <lee@trager.us>
+In-Reply-To: <20241025203757.288367-1-rosenp@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Mailman-Approved-At: Mon, 28 Oct 2024 15:28:50 +0000
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=trager.us
+Subject: Re: [Intel-wired-lan] [PATCHv2 net-next] net: freescale: use
+ ethtool string helpers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -111,81 +99,283 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fix Flow Director not allowing to re-map traffic to 0th queue when action
-is configured to drop (and vice versa).
+Cleans things up nicely :)
 
-The current implementation of ethtool callback in the ice driver forbids
-change Flow Director action from 0 to -1 and from -1 to 0 with an error,
-e.g:
+Reviewed-by: Lee Trager <lee@trager.us>
 
- # ethtool -U eth2 flow-type tcp4 src-ip 1.1.1.1 loc 1 action 0
- # ethtool -U eth2 flow-type tcp4 src-ip 1.1.1.1 loc 1 action -1
- rmgr: Cannot insert RX class rule: Invalid argument
-
-We set the value of `u16 q_index = 0` at the beginning of the function
-ice_set_fdir_input_set(). In case of "drop traffic" action (which is
-equal to -1 in ethtool) we store the 0 value. Later, when want to change
-traffic rule to redirect to queue with index 0 it returns an error
-caused by duplicate found.
-
-Fix this behaviour by change of the type of field `q_index` from u16 to s16
-in `struct ice_fdir_fltr`. This allows to store -1 in the field in case
-of "drop traffic" action. What is more, change the variable type in the
-function ice_set_fdir_input_set() and assign at the beginning the new
-`#define ICE_FDIR_NO_QUEUE_IDX` which is -1. Later, if the action is set
-to another value (point specific queue index) the variable value is
-overwritten in the function.
-
-Fixes: cac2a27cd9ab ("ice: Support IPv4 Flow Director filters")
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c | 3 ++-
- drivers/net/ethernet/intel/ice/ice_fdir.h         | 4 +++-
- 2 files changed, 5 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c b/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c
-index 5412eff8ef23..ee9862ddfe15 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c
-@@ -1830,11 +1830,12 @@ static int
- ice_set_fdir_input_set(struct ice_vsi *vsi, struct ethtool_rx_flow_spec *fsp,
- 		       struct ice_fdir_fltr *input)
- {
--	u16 dest_vsi, q_index = 0;
-+	s16 q_index = ICE_FDIR_NO_QUEUE_IDX;
- 	u16 orig_q_index = 0;
- 	struct ice_pf *pf;
- 	struct ice_hw *hw;
- 	int flow_type;
-+	u16 dest_vsi;
- 	u8 dest_ctl;
- 
- 	if (!vsi || !fsp || !input)
-diff --git a/drivers/net/ethernet/intel/ice/ice_fdir.h b/drivers/net/ethernet/intel/ice/ice_fdir.h
-index ab5b118daa2d..820023c0271f 100644
---- a/drivers/net/ethernet/intel/ice/ice_fdir.h
-+++ b/drivers/net/ethernet/intel/ice/ice_fdir.h
-@@ -53,6 +53,8 @@
-  */
- #define ICE_FDIR_IPV4_PKT_FLAG_MF		0x20
- 
-+#define ICE_FDIR_NO_QUEUE_IDX			-1
-+
- enum ice_fltr_prgm_desc_dest {
- 	ICE_FLTR_PRGM_DESC_DEST_DROP_PKT,
- 	ICE_FLTR_PRGM_DESC_DEST_DIRECT_PKT_QINDEX,
-@@ -186,7 +188,7 @@ struct ice_fdir_fltr {
- 	u16 flex_fltr;
- 
- 	/* filter control */
--	u16 q_index;
-+	s16 q_index;
- 	u16 orig_q_index;
- 	u16 dest_vsi;
- 	u8 dest_ctl;
-
-base-commit: 93e5920e5193241cb05caaa6421365fd8800f1b4
--- 
-2.38.1
-
+On 10/25/24 1:37 PM, Rosen Penev wrote:
+> The latter is the preferred way to copy ethtool strings.
+>
+> Avoids manually incrementing the pointer. Cleans up the code quite well.
+>
+> Signed-off-by: Rosen Penev <rosenp@gmail.com>
+> ---
+>   v2: fix wrong variable in for loop
+>   .../ethernet/freescale/dpaa/dpaa_ethtool.c    | 40 ++++++-------------
+>   .../ethernet/freescale/dpaa2/dpaa2-ethtool.c  | 15 +++----
+>   .../net/ethernet/freescale/dpaa2/dpaa2-mac.c  |  9 ++---
+>   .../net/ethernet/freescale/dpaa2/dpaa2-mac.h  |  2 +-
+>   .../freescale/dpaa2/dpaa2-switch-ethtool.c    |  9 ++---
+>   .../ethernet/freescale/enetc/enetc_ethtool.c  | 35 +++++-----------
+>   .../net/ethernet/freescale/gianfar_ethtool.c  |  8 ++--
+>   .../net/ethernet/freescale/ucc_geth_ethtool.c | 21 +++++-----
+>   8 files changed, 51 insertions(+), 88 deletions(-)
+>
+> diff --git a/drivers/net/ethernet/freescale/dpaa/dpaa_ethtool.c b/drivers/net/ethernet/freescale/dpaa/dpaa_ethtool.c
+> index b0060cf96090..9986f6e1f587 100644
+> --- a/drivers/net/ethernet/freescale/dpaa/dpaa_ethtool.c
+> +++ b/drivers/net/ethernet/freescale/dpaa/dpaa_ethtool.c
+> @@ -243,38 +243,24 @@ static void dpaa_get_ethtool_stats(struct net_device *net_dev,
+>   static void dpaa_get_strings(struct net_device *net_dev, u32 stringset,
+>   			     u8 *data)
+>   {
+> -	unsigned int i, j, num_cpus, size;
+> -	char string_cpu[ETH_GSTRING_LEN];
+> -	u8 *strings;
+> +	unsigned int i, j, num_cpus;
+>   
+> -	memset(string_cpu, 0, sizeof(string_cpu));
+> -	strings   = data;
+> -	num_cpus  = num_online_cpus();
+> -	size      = DPAA_STATS_GLOBAL_LEN * ETH_GSTRING_LEN;
+> +	num_cpus = num_online_cpus();
+>   
+>   	for (i = 0; i < DPAA_STATS_PERCPU_LEN; i++) {
+> -		for (j = 0; j < num_cpus; j++) {
+> -			snprintf(string_cpu, ETH_GSTRING_LEN, "%s [CPU %d]",
+> -				 dpaa_stats_percpu[i], j);
+> -			memcpy(strings, string_cpu, ETH_GSTRING_LEN);
+> -			strings += ETH_GSTRING_LEN;
+> -		}
+> -		snprintf(string_cpu, ETH_GSTRING_LEN, "%s [TOTAL]",
+> -			 dpaa_stats_percpu[i]);
+> -		memcpy(strings, string_cpu, ETH_GSTRING_LEN);
+> -		strings += ETH_GSTRING_LEN;
+> -	}
+> -	for (j = 0; j < num_cpus; j++) {
+> -		snprintf(string_cpu, ETH_GSTRING_LEN,
+> -			 "bpool [CPU %d]", j);
+> -		memcpy(strings, string_cpu, ETH_GSTRING_LEN);
+> -		strings += ETH_GSTRING_LEN;
+> +		for (j = 0; j < num_cpus; j++)
+> +			ethtool_sprintf(&data, "%s [CPU %d]",
+> +					dpaa_stats_percpu[i], j);
+> +
+> +		ethtool_sprintf(&data, "%s [TOTAL]", dpaa_stats_percpu[i]);
+>   	}
+> -	snprintf(string_cpu, ETH_GSTRING_LEN, "bpool [TOTAL]");
+> -	memcpy(strings, string_cpu, ETH_GSTRING_LEN);
+> -	strings += ETH_GSTRING_LEN;
+> +	for (i = 0; i < num_cpus; i++)
+> +		ethtool_sprintf(&data, "bpool [CPU %d]", i);
+> +
+> +	ethtool_puts(&data, "bpool [TOTAL]");
+>   
+> -	memcpy(strings, dpaa_stats_global, size);
+> +	for (i = 0; i < DPAA_STATS_GLOBAL_LEN; i++)
+> +		ethtool_puts(&data, dpaa_stats_global[i]);
+>   }
+>   
+>   static int dpaa_get_hash_opts(struct net_device *dev,
+> diff --git a/drivers/net/ethernet/freescale/dpaa2/dpaa2-ethtool.c b/drivers/net/ethernet/freescale/dpaa2/dpaa2-ethtool.c
+> index 7f476519b7ad..74ef77cb7078 100644
+> --- a/drivers/net/ethernet/freescale/dpaa2/dpaa2-ethtool.c
+> +++ b/drivers/net/ethernet/freescale/dpaa2/dpaa2-ethtool.c
+> @@ -217,20 +217,15 @@ static int dpaa2_eth_set_pauseparam(struct net_device *net_dev,
+>   static void dpaa2_eth_get_strings(struct net_device *netdev, u32 stringset,
+>   				  u8 *data)
+>   {
+> -	u8 *p = data;
+>   	int i;
+>   
+>   	switch (stringset) {
+>   	case ETH_SS_STATS:
+> -		for (i = 0; i < DPAA2_ETH_NUM_STATS; i++) {
+> -			strscpy(p, dpaa2_ethtool_stats[i], ETH_GSTRING_LEN);
+> -			p += ETH_GSTRING_LEN;
+> -		}
+> -		for (i = 0; i < DPAA2_ETH_NUM_EXTRA_STATS; i++) {
+> -			strscpy(p, dpaa2_ethtool_extras[i], ETH_GSTRING_LEN);
+> -			p += ETH_GSTRING_LEN;
+> -		}
+> -		dpaa2_mac_get_strings(p);
+> +		for (i = 0; i < DPAA2_ETH_NUM_STATS; i++)
+> +			ethtool_puts(&data, dpaa2_ethtool_stats[i]);
+> +		for (i = 0; i < DPAA2_ETH_NUM_EXTRA_STATS; i++)
+> +			ethtool_puts(&data, dpaa2_ethtool_extras[i]);
+> +		dpaa2_mac_get_strings(&data);
+>   		break;
+>   	}
+>   }
+> diff --git a/drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.c b/drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.c
+> index a69bb22c37ea..422ce13a7c94 100644
+> --- a/drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.c
+> +++ b/drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.c
+> @@ -558,15 +558,12 @@ int dpaa2_mac_get_sset_count(void)
+>   	return DPAA2_MAC_NUM_STATS;
+>   }
+>   
+> -void dpaa2_mac_get_strings(u8 *data)
+> +void dpaa2_mac_get_strings(u8 **data)
+>   {
+> -	u8 *p = data;
+>   	int i;
+>   
+> -	for (i = 0; i < DPAA2_MAC_NUM_STATS; i++) {
+> -		strscpy(p, dpaa2_mac_ethtool_stats[i], ETH_GSTRING_LEN);
+> -		p += ETH_GSTRING_LEN;
+> -	}
+> +	for (i = 0; i < DPAA2_MAC_NUM_STATS; i++)
+> +		ethtool_puts(data, dpaa2_mac_ethtool_stats[i]);
+>   }
+>   
+>   void dpaa2_mac_get_ethtool_stats(struct dpaa2_mac *mac, u64 *data)
+> diff --git a/drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.h b/drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.h
+> index c1ec9efd413a..53f8d106d11e 100644
+> --- a/drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.h
+> +++ b/drivers/net/ethernet/freescale/dpaa2/dpaa2-mac.h
+> @@ -49,7 +49,7 @@ void dpaa2_mac_disconnect(struct dpaa2_mac *mac);
+>   
+>   int dpaa2_mac_get_sset_count(void);
+>   
+> -void dpaa2_mac_get_strings(u8 *data);
+> +void dpaa2_mac_get_strings(u8 **data);
+>   
+>   void dpaa2_mac_get_ethtool_stats(struct dpaa2_mac *mac, u64 *data);
+>   
+> diff --git a/drivers/net/ethernet/freescale/dpaa2/dpaa2-switch-ethtool.c b/drivers/net/ethernet/freescale/dpaa2/dpaa2-switch-ethtool.c
+> index 6bc1988be311..a888f6e6e9b0 100644
+> --- a/drivers/net/ethernet/freescale/dpaa2/dpaa2-switch-ethtool.c
+> +++ b/drivers/net/ethernet/freescale/dpaa2/dpaa2-switch-ethtool.c
+> @@ -170,17 +170,16 @@ dpaa2_switch_ethtool_get_sset_count(struct net_device *netdev, int sset)
+>   static void dpaa2_switch_ethtool_get_strings(struct net_device *netdev,
+>   					     u32 stringset, u8 *data)
+>   {
+> -	u8 *p = data;
+> +	const char *str;
+>   	int i;
+>   
+>   	switch (stringset) {
+>   	case ETH_SS_STATS:
+>   		for (i = 0; i < DPAA2_SWITCH_NUM_COUNTERS; i++) {
+> -			memcpy(p, dpaa2_switch_ethtool_counters[i].name,
+> -			       ETH_GSTRING_LEN);
+> -			p += ETH_GSTRING_LEN;
+> +			str = dpaa2_switch_ethtool_counters[i].name;
+> +			ethtool_puts(&data, str);
+>   		}
+> -		dpaa2_mac_get_strings(p);
+> +		dpaa2_mac_get_strings(&data);
+>   		break;
+>   	}
+>   }
+> diff --git a/drivers/net/ethernet/freescale/enetc/enetc_ethtool.c b/drivers/net/ethernet/freescale/enetc/enetc_ethtool.c
+> index 2563eb8ac7b6..e1745b89362d 100644
+> --- a/drivers/net/ethernet/freescale/enetc/enetc_ethtool.c
+> +++ b/drivers/net/ethernet/freescale/enetc/enetc_ethtool.c
+> @@ -247,38 +247,25 @@ static int enetc_get_sset_count(struct net_device *ndev, int sset)
+>   static void enetc_get_strings(struct net_device *ndev, u32 stringset, u8 *data)
+>   {
+>   	struct enetc_ndev_priv *priv = netdev_priv(ndev);
+> -	u8 *p = data;
+>   	int i, j;
+>   
+>   	switch (stringset) {
+>   	case ETH_SS_STATS:
+> -		for (i = 0; i < ARRAY_SIZE(enetc_si_counters); i++) {
+> -			strscpy(p, enetc_si_counters[i].name, ETH_GSTRING_LEN);
+> -			p += ETH_GSTRING_LEN;
+> -		}
+> -		for (i = 0; i < priv->num_tx_rings; i++) {
+> -			for (j = 0; j < ARRAY_SIZE(tx_ring_stats); j++) {
+> -				snprintf(p, ETH_GSTRING_LEN, tx_ring_stats[j],
+> -					 i);
+> -				p += ETH_GSTRING_LEN;
+> -			}
+> -		}
+> -		for (i = 0; i < priv->num_rx_rings; i++) {
+> -			for (j = 0; j < ARRAY_SIZE(rx_ring_stats); j++) {
+> -				snprintf(p, ETH_GSTRING_LEN, rx_ring_stats[j],
+> -					 i);
+> -				p += ETH_GSTRING_LEN;
+> -			}
+> -		}
+> +		for (i = 0; i < ARRAY_SIZE(enetc_si_counters); i++)
+> +			ethtool_puts(&data, enetc_si_counters[i].name);
+> +		for (i = 0; i < priv->num_tx_rings; i++)
+> +			for (j = 0; j < ARRAY_SIZE(tx_ring_stats); j++)
+> +				ethtool_sprintf(&data, tx_ring_stats[j], i);
+> +		for (i = 0; i < priv->num_rx_rings; i++)
+> +			for (j = 0; j < ARRAY_SIZE(rx_ring_stats); j++)
+> +				ethtool_sprintf(&data, rx_ring_stats[j], i);
+>   
+>   		if (!enetc_si_is_pf(priv->si))
+>   			break;
+>   
+> -		for (i = 0; i < ARRAY_SIZE(enetc_port_counters); i++) {
+> -			strscpy(p, enetc_port_counters[i].name,
+> -				ETH_GSTRING_LEN);
+> -			p += ETH_GSTRING_LEN;
+> -		}
+> +		for (i = 0; i < ARRAY_SIZE(enetc_port_counters); i++)
+> +			ethtool_puts(&data, enetc_port_counters[i].name);
+> +
+>   		break;
+>   	}
+>   }
+> diff --git a/drivers/net/ethernet/freescale/gianfar_ethtool.c b/drivers/net/ethernet/freescale/gianfar_ethtool.c
+> index a99b95c4bcfb..781d92e703cb 100644
+> --- a/drivers/net/ethernet/freescale/gianfar_ethtool.c
+> +++ b/drivers/net/ethernet/freescale/gianfar_ethtool.c
+> @@ -115,12 +115,14 @@ static const char stat_gstrings[][ETH_GSTRING_LEN] = {
+>   static void gfar_gstrings(struct net_device *dev, u32 stringset, u8 * buf)
+>   {
+>   	struct gfar_private *priv = netdev_priv(dev);
+> +	int i;
+>   
+>   	if (priv->device_flags & FSL_GIANFAR_DEV_HAS_RMON)
+> -		memcpy(buf, stat_gstrings, GFAR_STATS_LEN * ETH_GSTRING_LEN);
+> +		for (i = 0; i < GFAR_STATS_LEN; i++)
+> +			ethtool_puts(&buf, stat_gstrings[i]);
+>   	else
+> -		memcpy(buf, stat_gstrings,
+> -		       GFAR_EXTRA_STATS_LEN * ETH_GSTRING_LEN);
+> +		for (i = 0; i < GFAR_EXTRA_STATS_LEN; i++)
+> +			ethtool_puts(&buf, stat_gstrings[i]);
+>   }
+>   
+>   /* Fill in an array of 64-bit statistics from various sources.
+> diff --git a/drivers/net/ethernet/freescale/ucc_geth_ethtool.c b/drivers/net/ethernet/freescale/ucc_geth_ethtool.c
+> index 601beb93d3b3..699f346faf5c 100644
+> --- a/drivers/net/ethernet/freescale/ucc_geth_ethtool.c
+> +++ b/drivers/net/ethernet/freescale/ucc_geth_ethtool.c
+> @@ -287,20 +287,17 @@ static void uec_get_strings(struct net_device *netdev, u32 stringset, u8 *buf)
+>   {
+>   	struct ucc_geth_private *ugeth = netdev_priv(netdev);
+>   	u32 stats_mode = ugeth->ug_info->statisticsMode;
+> +	int i;
+>   
+> -	if (stats_mode & UCC_GETH_STATISTICS_GATHERING_MODE_HARDWARE) {
+> -		memcpy(buf, hw_stat_gstrings, UEC_HW_STATS_LEN *
+> -			       	ETH_GSTRING_LEN);
+> -		buf += UEC_HW_STATS_LEN * ETH_GSTRING_LEN;
+> -	}
+> -	if (stats_mode & UCC_GETH_STATISTICS_GATHERING_MODE_FIRMWARE_TX) {
+> -		memcpy(buf, tx_fw_stat_gstrings, UEC_TX_FW_STATS_LEN *
+> -			       	ETH_GSTRING_LEN);
+> -		buf += UEC_TX_FW_STATS_LEN * ETH_GSTRING_LEN;
+> -	}
+> +	if (stats_mode & UCC_GETH_STATISTICS_GATHERING_MODE_HARDWARE)
+> +		for (i = 0; i < UEC_HW_STATS_LEN; i++)
+> +			ethtool_puts(&buf, hw_stat_gstrings[i]);
+> +	if (stats_mode & UCC_GETH_STATISTICS_GATHERING_MODE_FIRMWARE_TX)
+> +		for (i = 0; i < UEC_TX_FW_STATS_LEN; i++)
+> +			ethtool_puts(&buf, tx_fw_stat_gstrings[i]);
+>   	if (stats_mode & UCC_GETH_STATISTICS_GATHERING_MODE_FIRMWARE_RX)
+> -		memcpy(buf, rx_fw_stat_gstrings, UEC_RX_FW_STATS_LEN *
+> -			       	ETH_GSTRING_LEN);
+> +		for (i = 0; i < UEC_RX_FW_STATS_LEN; i++)
+> +			ethtool_puts(&buf, rx_fw_stat_gstrings[i]);
+>   }
+>   
+>   static void uec_get_ethtool_stats(struct net_device *netdev,
