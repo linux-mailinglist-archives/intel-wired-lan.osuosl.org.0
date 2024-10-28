@@ -1,67 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 947AC9B2C41
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Oct 2024 11:04:13 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C6AA89B2C42
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Oct 2024 11:04:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 447AF81B9A;
-	Mon, 28 Oct 2024 10:04:12 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8273281C18;
+	Mon, 28 Oct 2024 10:04:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HCTSFmn8SlfD; Mon, 28 Oct 2024 10:04:11 +0000 (UTC)
+ id 952GDZ504mWl; Mon, 28 Oct 2024 10:04:14 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 656B681AD7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D7F2581C11
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1730109851;
-	bh=QATwNj0hO1fHB2S+VsKGyhbCjwURMehM07aXNU9pHlI=;
+	s=default; t=1730109853;
+	bh=W0djqY1jDWfkBfSW8cf/LcL59BPEN9Bb0QoCysQWHnQ=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=vWgfnjI5guSU+bN9WUBiUJfjzOi+8qAxhBQnlq3Rij9lHplSewKsrcY7JcxDcfv0T
-	 iAiFxIVl9HweVOEe0EFJsMuRCqu5xjrxPuWM/wgeiE4HPaHWQktVN25WnSo9QPUo7F
-	 cFtkWHuTY6JI1kxV8znn7ErVokLEWhsD3DWQX4jEATG9v5XPyuQZXrjAY3LBeQNV4H
-	 uS71iXy7K1Uq+kQp5aIUdVANZGKInNrh5ZPccpI95nxO7k5pLPA9h9fTBQDnzeRUB/
-	 K0MjFdG1q0/qq8kX+IONkNldX+e9uwV3BDCJyPe8gdGwmuJpNrX5a1xrDAAJOOYTeO
-	 JyU3wcf7acMLQ==
+	b=78VmJOwmo0gSg/6X0EpeBsXaLJCAbBA9aZAPVvtTtLxgupl7lsilZF4Y5d/dM74Yw
+	 UUZoOT4tF6ynGiOEZPJxWYYD6qQo5leQlLY/ZJ1tec9Kknd9YyfyIgQeMxuuq+vcY/
+	 LRdFiWSvSAP2xdazZydDR+4IFPNGx1dECKLX7byxN/azr4IpFnGhAHYABFl+iu8ESJ
+	 y85d4T6GjR6mROoTE8BU/6O2pxA9C/jmE3muUddH7v7IgM+AveAbOhRCJ0ynHrNIx3
+	 ymXGpL38QyCbyW9zSabChXILuW0/xgRuvsDOE11vDedmg37M03C4CLGQzXrV0XWvgG
+	 JLF8hnn6idoGw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 656B681AD7;
-	Mon, 28 Oct 2024 10:04:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D7F2581C11;
+	Mon, 28 Oct 2024 10:04:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 2617F112A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 10:04:09 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 12746112A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 10:04:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0570E81AF4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 10:04:09 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 07A9981AD7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 10:04:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TDpMUTrNe_jP for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Oct 2024 10:04:06 +0000 (UTC)
+ id qx5vRySi_LB0 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Oct 2024 10:04:09 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
  helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 1603A81BF4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1603A81BF4
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 1BDB881BC6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1BDB881BC6
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1603A81BF4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 10:04:05 +0000 (UTC)
-X-CSE-ConnectionGUID: yKXv5ACqSUOOLtWdbMFOHg==
-X-CSE-MsgGUID: CoCa/etsQpyiP0Sk6IoGbw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="29560774"
-X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; d="scan'208";a="29560774"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1BDB881BC6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 10:04:09 +0000 (UTC)
+X-CSE-ConnectionGUID: 0COluNLHSsitSPUCCwLrIw==
+X-CSE-MsgGUID: Eln0hEd0QzuoeyplsqXu/A==
+X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="29560786"
+X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; d="scan'208";a="29560786"
 Received: from fmviesa004.fm.intel.com ([10.60.135.144])
  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Oct 2024 03:04:06 -0700
-X-CSE-ConnectionGUID: WDX9mUhEQVCMP31vSBG4jg==
-X-CSE-MsgGUID: 2213br3ATIC54IaAr/hqtw==
+ 28 Oct 2024 03:04:09 -0700
+X-CSE-ConnectionGUID: E9DZSBKKQW+O2Kin0CKJsw==
+X-CSE-MsgGUID: Ft+0CIXkRKW6flu1OrQ/cQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,238,1725346800"; d="scan'208";a="86182413"
+X-IronPort-AV: E=Sophos;i="6.11,238,1725346800"; d="scan'208";a="86182433"
 Received: from gk3153-dr2-r750-36946.igk.intel.com ([10.102.20.192])
- by fmviesa004.fm.intel.com with ESMTP; 28 Oct 2024 03:04:02 -0700
+ by fmviesa004.fm.intel.com with ESMTP; 28 Oct 2024 03:04:05 -0700
 From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: netdev@vger.kernel.org, pawel.chmielewski@intel.com,
@@ -70,8 +70,8 @@ Cc: netdev@vger.kernel.org, pawel.chmielewski@intel.com,
  wojciech.drewek@intel.com, nex.sw.ncis.nat.hpm.dev@intel.com,
  przemyslaw.kitszel@intel.com, jiri@resnulli.us, horms@kernel.org,
  David.Laight@ACULAB.COM
-Date: Mon, 28 Oct 2024 11:03:38 +0100
-Message-ID: <20241028100341.16631-7-michal.swiatkowski@linux.intel.com>
+Date: Mon, 28 Oct 2024 11:03:39 +0100
+Message-ID: <20241028100341.16631-8-michal.swiatkowski@linux.intel.com>
 X-Mailer: git-send-email 2.42.0
 In-Reply-To: <20241028100341.16631-1-michal.swiatkowski@linux.intel.com>
 References: <20241028100341.16631-1-michal.swiatkowski@linux.intel.com>
@@ -79,25 +79,24 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1730109847; x=1761645847;
+ t=1730109850; x=1761645850;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=7BP8c/pef1VbBNcKHtbC9B4fHfLEDSTLTMzwspCzCjc=;
- b=X3Zz1fxMiFdQQIFSn3mvaK3iZM2/s6t37CjR+BRbBl2NHAelJQrP4mFF
- +caFUElZdJ6LteGyeucq/8dJ17+B0KJxqaHCHg0oCRLlrBMn3hrE+REvE
- ec/EEQ3g2HaDteO0rWDGep2HHx+GTg1wmV/UOJTZ2W701WAPcQv0rtsZa
- /C97gPg08+SZt7NyOlTqYhc1ORMqeqMRjn7Z0KpCuwqzuu1McvGkWijQ3
- w3uXDZiU0nnLtCj0XZEEljkz+AEpOj/rWswnIKchr7i5ShboGjq/CKKSm
- 8ruHAabhqFQMyr53rnngU8NQra0sVyQTqvuJynAPKHAXWPPF/7jyVsNeZ
- Q==;
+ bh=cRsoRBdjmUo0A3THwZFFhYR6cQRwG8S0i1GkqYZXmtc=;
+ b=ifS1N0/a/pjXDf7inoiJp8LRfsbLttj+fB8MKId8wHmT8bFbPXQMq6ar
+ zZkQ2oP2Xhdow5XgM9tUB1CkacVVR7JZbHwpTtRY++fRM2tgQfUvGtAxe
+ 9aE9PVDDuokSdVV8FxRcyFD3MOtVsOJ49wKJXqWBajpyDBOsHrSOF0HEu
+ E2SiN3WAT7AV9r98DC3t5+IASmhCVjQJSVuTPRqb8CRtaSXo5VdLw5ddb
+ ANuirE28akDAbawt7Bk5JkXSbVVX7SRWM2yvZZrbV0VYFyptOPO/N+y/u
+ 6gXvhdDemAg924/y927m19d/QQpenWAjrWno7tCmCkGdRFh67+eZOSxN7
+ A==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=X3Zz1fxM
-Subject: [Intel-wired-lan] [iwl-next v6 6/9] ice: treat dyn_allowed only as
- suggestion
+ header.a=rsa-sha256 header.s=Intel header.b=ifS1N0/a
+Subject: [Intel-wired-lan] [iwl-next v6 7/9] ice: enable_rdma devlink param
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -113,123 +112,83 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-It can be needed to have some MSI-X allocated as static and rest as
-dynamic. For example on PF VSI. We want to always have minimum one MSI-X
-on it, because of that it is allocated as a static one, rest can be
-dynamic if it is supported.
+Implement enable_rdma devlink parameter to allow user to turn RDMA
+feature on and off.
 
-Change the ice_get_irq_res() to allow using static entries if they are
-free even if caller wants dynamic one.
+It is useful when there is no enough interrupts and user doesn't need
+RDMA feature.
 
-Adjust limit values to the new approach. Min and max in limit means the
-values that are valid, so decrease max and num_static by one.
-
-Set vsi::irq_dyn_alloc if dynamic allocation is supported.
-
-Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
+Reviewed-by: Jan Sokolowski <jan.sokolowski@intel.com>
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_irq.c | 25 ++++++++++++------------
- drivers/net/ethernet/intel/ice/ice_lib.c |  2 ++
- 2 files changed, 15 insertions(+), 12 deletions(-)
+ .../net/ethernet/intel/ice/devlink/devlink.c  | 19 +++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_lib.c      |  8 +++++++-
+ 2 files changed, 26 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_irq.c b/drivers/net/ethernet/intel/ice/ice_irq.c
-index 80c9ee2e64c1..d466d29b2ef1 100644
---- a/drivers/net/ethernet/intel/ice/ice_irq.c
-+++ b/drivers/net/ethernet/intel/ice/ice_irq.c
-@@ -45,7 +45,7 @@ static void ice_free_irq_res(struct ice_pf *pf, u16 index)
- /**
-  * ice_get_irq_res - get an interrupt resource
-  * @pf: board private structure
-- * @dyn_only: force entry to be dynamically allocated
-+ * @dyn_allowed: allow entry to be dynamically allocated
-  *
-  * Allocate new irq entry in the free slot of the tracker. Since xarray
-  * is used, always allocate new entry at the lowest possible index. Set
-@@ -53,11 +53,12 @@ static void ice_free_irq_res(struct ice_pf *pf, u16 index)
-  *
-  * Returns allocated irq entry or NULL on failure.
-  */
--static struct ice_irq_entry *ice_get_irq_res(struct ice_pf *pf, bool dyn_only)
-+static struct ice_irq_entry *ice_get_irq_res(struct ice_pf *pf,
-+					     bool dyn_allowed)
- {
--	struct xa_limit limit = { .max = pf->irq_tracker.num_entries,
-+	struct xa_limit limit = { .max = pf->irq_tracker.num_entries - 1,
- 				  .min = 0 };
--	unsigned int num_static = pf->irq_tracker.num_static;
-+	unsigned int num_static = pf->irq_tracker.num_static - 1;
- 	struct ice_irq_entry *entry;
- 	unsigned int index;
- 	int ret;
-@@ -66,9 +67,9 @@ static struct ice_irq_entry *ice_get_irq_res(struct ice_pf *pf, bool dyn_only)
- 	if (!entry)
- 		return NULL;
+diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink.c b/drivers/net/ethernet/intel/ice/devlink/devlink.c
+index 29c1fec4fa93..04daeb831f84 100644
+--- a/drivers/net/ethernet/intel/ice/devlink/devlink.c
++++ b/drivers/net/ethernet/intel/ice/devlink/devlink.c
+@@ -1579,6 +1579,19 @@ ice_devlink_msix_min_pf_validate(struct devlink *devlink, u32 id,
+ 	return 0;
+ }
  
--	/* skip preallocated entries if the caller says so */
--	if (dyn_only)
--		limit.min = num_static;
-+	/* only already allocated if the caller says so */
-+	if (!dyn_allowed)
-+		limit.max = num_static;
++static int ice_devlink_enable_rdma_validate(struct devlink *devlink, u32 id,
++					    union devlink_param_value val,
++					    struct netlink_ext_ack *extack)
++{
++	struct ice_pf *pf = devlink_priv(devlink);
++	bool new_state = val.vbool;
++
++	if (new_state && !test_bit(ICE_FLAG_RDMA_ENA, pf->flags))
++		return -EOPNOTSUPP;
++
++	return 0;
++}
++
+ enum ice_param_id {
+ 	ICE_DEVLINK_PARAM_ID_BASE = DEVLINK_PARAM_GENERIC_ID_MAX,
+ 	ICE_DEVLINK_PARAM_ID_TX_SCHED_LAYERS,
+@@ -1594,6 +1607,8 @@ static const struct devlink_param ice_dvl_rdma_params[] = {
+ 			      ice_devlink_enable_iw_get,
+ 			      ice_devlink_enable_iw_set,
+ 			      ice_devlink_enable_iw_validate),
++	DEVLINK_PARAM_GENERIC(ENABLE_RDMA, BIT(DEVLINK_PARAM_CMODE_DRIVERINIT),
++			      NULL, NULL, ice_devlink_enable_rdma_validate),
+ };
  
- 	ret = xa_alloc(&pf->irq_tracker.entries, &index, entry, limit,
- 		       GFP_KERNEL);
-@@ -78,7 +79,7 @@ static struct ice_irq_entry *ice_get_irq_res(struct ice_pf *pf, bool dyn_only)
- 		entry = NULL;
- 	} else {
- 		entry->index = index;
--		entry->dynamic = index >= num_static;
-+		entry->dynamic = index > num_static;
- 	}
+ static const struct devlink_param ice_dvl_msix_params[] = {
+@@ -1734,6 +1749,10 @@ int ice_devlink_register_params(struct ice_pf *pf)
+ 	devl_param_driverinit_value_set(devlink,
+ 					DEVLINK_PARAM_GENERIC_ID_MSIX_VEC_PER_PF_MIN,
+ 					value);
++	value.vbool = test_bit(ICE_FLAG_RDMA_ENA, pf->flags);
++	devl_param_driverinit_value_set(devlink,
++					DEVLINK_PARAM_GENERIC_ID_ENABLE_RDMA,
++					value);
  
- 	return entry;
-@@ -137,7 +138,7 @@ int ice_init_interrupt_scheme(struct ice_pf *pf)
- /**
-  * ice_alloc_irq - Allocate new interrupt vector
-  * @pf: board private structure
-- * @dyn_only: force dynamic allocation of the interrupt
-+ * @dyn_allowed: allow dynamic allocation of the interrupt
-  *
-  * Allocate new interrupt vector for a given owner id.
-  * return struct msi_map with interrupt details and track
-@@ -150,20 +151,20 @@ int ice_init_interrupt_scheme(struct ice_pf *pf)
-  * interrupt will be allocated with pci_msix_alloc_irq_at.
-  *
-  * Some callers may only support dynamically allocated interrupts.
-- * This is indicated with dyn_only flag.
-+ * This is indicated with dyn_allowed flag.
-  *
-  * On failure, return map with negative .index. The caller
-  * is expected to check returned map index.
-  *
-  */
--struct msi_map ice_alloc_irq(struct ice_pf *pf, bool dyn_only)
-+struct msi_map ice_alloc_irq(struct ice_pf *pf, bool dyn_allowed)
- {
- 	int sriov_base_vector = pf->sriov_base_vector;
- 	struct msi_map map = { .index = -ENOENT };
- 	struct device *dev = ice_pf_to_dev(pf);
- 	struct ice_irq_entry *entry;
- 
--	entry = ice_get_irq_res(pf, dyn_only);
-+	entry = ice_get_irq_res(pf, dyn_allowed);
- 	if (!entry)
- 		return map;
- 
+ 	return 0;
+ }
 diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index bf88785c0c8a..e833c25dc970 100644
+index e833c25dc970..c0dc1f48f5d6 100644
 --- a/drivers/net/ethernet/intel/ice/ice_lib.c
 +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -571,6 +571,8 @@ ice_vsi_alloc_def(struct ice_vsi *vsi, struct ice_channel *ch)
- 			return -ENOMEM;
- 	}
- 
-+	vsi->irq_dyn_alloc = pci_msix_can_alloc_dyn(vsi->back->pdev);
+@@ -833,7 +833,13 @@ bool ice_is_safe_mode(struct ice_pf *pf)
+  */
+ bool ice_is_rdma_ena(struct ice_pf *pf)
+ {
+-	return test_bit(ICE_FLAG_RDMA_ENA, pf->flags);
++	union devlink_param_value value;
++	int err;
 +
- 	switch (vsi->type) {
- 	case ICE_VSI_PF:
- 	case ICE_VSI_SF:
++	err = devl_param_driverinit_value_get(priv_to_devlink(pf),
++					      DEVLINK_PARAM_GENERIC_ID_ENABLE_RDMA,
++					      &value);
++	return err ? test_bit(ICE_FLAG_RDMA_ENA, pf->flags) : value.vbool;
+ }
+ 
+ /**
 -- 
 2.42.0
 
