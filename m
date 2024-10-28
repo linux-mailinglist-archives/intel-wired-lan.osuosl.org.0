@@ -2,213 +2,232 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 72A479B2C4E
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Oct 2024 11:06:04 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 30B769B2C79
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Oct 2024 11:13:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2CD1F60AAD;
-	Mon, 28 Oct 2024 10:06:03 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7291A60E06;
+	Mon, 28 Oct 2024 10:13:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id tubjCuDDSOq3; Mon, 28 Oct 2024 10:06:02 +0000 (UTC)
+ id ZCPDKK1t73eQ; Mon, 28 Oct 2024 10:13:15 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1567A60BA4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1948760DFE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1730109962;
-	bh=wGVwSLHtp/ojs2jDMTPo8L8P5dif8e6zDE/LAoE99LE=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1730110395;
+	bh=20OG6lenfavrf6MaChfFs1RdVmmi/rnUn+m26XGirvE=;
+	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=j9ZNu9B2qpPwux3cXGn9RZET/PO7PkaCGCUmu0fbYtJNQRqX9dMPGuG5bARiXImMx
-	 KvkxXnHlilF/L0LJxIXSOltcNhR4k9gcF9zfR6DUiNht2aMb/rM7UuuXDrnEGyURBk
-	 yu8gKBBhR9wO5NcTPo80pe9YnHwvspOXZyzOlQVq++sI0wLOHd+Ur7e5qzCsVbuu2P
-	 30mB8M3RFs/QTowVPI+u5CkYZweB7sdhNy9QgH/go2UzoS3Q//s7ShxW2SxnL4Pj9+
-	 LKdxq/sWNJsGwgkiaY0WMYm2oUY0OxCd5QayIYS39H266Gx6i/CB18vz5ewnnEln02
-	 KPmx/PO3jUqMA==
+	b=Hnp6UJfTeFdN/8CGjWIsc3TTzPfcXApZ03zzEEm0En1IOwvQQ5l6XD7dlrFpPBRyu
+	 muBqiD0hqlbHfNuqxmWIoaEY6ACZRsi3YRU5L3YAbQTY68ACQgZZazrqHhsdZbv9Yf
+	 Uixs/jXIFlA2wsY0Ko0VmqfRc7J5D+je+EzsT/mkcKvGDL3b/RwzMN822Tn7UPEECm
+	 fIUdcDmSMqBmld3D15DL7aedzS5IYa4Hx30xVDbD9LorqRcjFbLrc8QqHVhgLAkgtF
+	 P8op/rTmZEs3kdK+iQOgVenMCnxtj37W+ncsc2bzQIWwN2nUGdyrsAKL1zSfGU4dXy
+	 T/yTjFn3XWcgQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1567A60BA4;
-	Mon, 28 Oct 2024 10:06:02 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1948760DFE;
+	Mon, 28 Oct 2024 10:13:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 858A5112A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 10:05:59 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 04046AEE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 10:13:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8027A4089A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 10:05:59 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id E63F881F10
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 10:13:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0GlDhU1xdBGU for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Oct 2024 10:05:58 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
- helo=mgamail.intel.com; envelope-from=rafal.romanowski@intel.com;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id T-7Bu3JcrsUY for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Oct 2024 10:13:10 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
+ helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 14318408A7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 14318408A7
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 14318408A7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 10:05:57 +0000 (UTC)
-X-CSE-ConnectionGUID: 0j4BLVIDQGSADiltjcLS7w==
-X-CSE-MsgGUID: dk5xMfVgRx6j4TxyvFIahA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="40800497"
-X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; d="scan'208";a="40800497"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Oct 2024 03:05:57 -0700
-X-CSE-ConnectionGUID: zYcrrPEJTOiaNUl++z2gRg==
-X-CSE-MsgGUID: G400d7ZxRySq7G2xsK4n5w==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 7073781EFF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7073781EFF
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 7073781EFF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 10:13:09 +0000 (UTC)
+X-CSE-ConnectionGUID: TXQyxsw+TC2O6oQeIXxx+A==
+X-CSE-MsgGUID: WL2OHIy3SRCzyyOpAzgAYg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="29891113"
+X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; d="scan'208";a="29891113"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+ by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Oct 2024 03:13:04 -0700
+X-CSE-ConnectionGUID: RAGBedtzR3WNGR6qwS0RYQ==
+X-CSE-MsgGUID: uf67+c96TYiORETnEhFFfA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,238,1725346800"; d="scan'208";a="81731880"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
- by orviesa006.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 28 Oct 2024 03:05:23 -0700
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="6.11,239,1725346800"; d="scan'208";a="81673980"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by fmviesa008.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 28 Oct 2024 03:13:02 -0700
+Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Mon, 28 Oct 2024 03:05:22 -0700
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ 15.1.2507.39; Mon, 28 Oct 2024 03:13:02 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39 via Frontend Transport; Mon, 28 Oct 2024 03:05:22 -0700
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.44) by
- edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ 15.1.2507.39 via Frontend Transport; Mon, 28 Oct 2024 03:13:02 -0700
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.42) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Mon, 28 Oct 2024 03:05:21 -0700
+ 15.1.2507.39; Mon, 28 Oct 2024 03:13:02 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=NFBl9SzzjplxXm1SsKgZdx2l9SGSCevkG0ZANoU23bVgZFkB6n8KUQaosa/bpn/LymjO6B76P6KvP8bl0q2N0JeRC0ArNfQqWJwgSdjZoigy0wXG4SislqyAPDHBmkh1Udw0aiN72WYvEQXhkquVpnPSA0OYR6HOpw4NNoKC+kHX43WRkaI0NwvuwUmnnglh9N2g/52guWCv5xC+Uai5N8WKOMPuxssKbKOFYD7j54h5Fqykg3cHhXH1XuzoJHwNNUKnpsWg7Ac9mmT7ToqmASaMqFluJZ/ap9WsWpSKjAOQwuUympOzvhBr43gVNPz3VrW/8Kt8C9bo7HIZZwkntA==
+ b=e8ag03qTLdxU+npEDNwC8BidUL+gVQRX2eeSrhnAvUNH6Jv/PtVGWuZK0ZEIiXiYNOsBvJLnTg/ycoe1pXjP71dwywytovDYv4KvzWs49Xz7g48qx8bTNJT/892vjyaj8R7hBhBbicV+Z+qXGKeHmA/TzZD2fy7igo0eQei6PE2DVZCc6EhInaHiTW8xLKq6i6u+6P6HJsOG6hFZoKDtpan470rST1YLXq9qu9kuF9MDuy7OzUycUefzhyMqkRzrQz8Kn5tgX9Znf/QaRtvVmt0BxZS4NyB/w1q+hqo7gdC9RvFyaOuY6cF+9IMy+CDRvlHNB2Cd1rDpYuHN95voPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=wGVwSLHtp/ojs2jDMTPo8L8P5dif8e6zDE/LAoE99LE=;
- b=gTKjJUTjwEMJW0GHVPu9QbCpih8oDnjNR6KJFYnkGRULMb09XY56CiRW0Xscjqxk/rMBuTOV+RXqRBZBLdbCF4bK4euWXF2M7SBu8jHqW3LR6qfTJYNaXrxDks2Kq1qqEv06XESvD2Mq44f6oTW0E2dEPly0kKOfPpMc+Malez61biTgH4RRDsj2WG+Q4zNVIAPB4qTfHMv+6Lck70ql3u5KT2pvlrV2pCfvXm5NSqY48iG34XKgGSeMKFxdPemRsl9OPQ3pvQiSGt2RDjPJGq+e6Y+1GKTB7fEPcBGsU9CNm3bhT5ht57bpiZezpK8bAn4bLschs53cAQol4N3i4g==
+ bh=20OG6lenfavrf6MaChfFs1RdVmmi/rnUn+m26XGirvE=;
+ b=dFpKQeMzdnwFiZvmGmMtkwOndknzKBXjAksOxHZtjhRCVaOLG9aYpLDmtXLBp14Kk0f28oC3j3D+iHIkeZTT1G/WqErKPpiSyPQjEUBj8PDzgN8A4+Oeyscm2A9XFENQehLECFXfzhfi2R9TIY9q5i0SnvHRm3tn8fLRWzxzrOQmvf7Z1rOMtssezSs2mD65bCWCggS63fe/kQRMosz2mEFI3n+mSq0Nt9LHJO0jB03kMMFnHrLjYp9KxKrHgSuFlRlRxzdTZCy9qu3EM3V7E6KZoygLLeLyxlUGXkQcE4UeU5gX98dyrSeaJ46REr2rjI9uWXRpECB2/aESKURmIw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
-Received: from SJ0PR11MB5865.namprd11.prod.outlook.com (2603:10b6:a03:428::13)
- by SA1PR11MB8840.namprd11.prod.outlook.com (2603:10b6:806:469::11)
+Received: from MN6PR11MB8102.namprd11.prod.outlook.com (2603:10b6:208:46d::9)
+ by BY1PR11MB8030.namprd11.prod.outlook.com (2603:10b6:a03:522::21)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8093.21; Mon, 28 Oct
- 2024 10:05:19 +0000
-Received: from SJ0PR11MB5865.namprd11.prod.outlook.com
- ([fe80::b615:4475:b6d7:8bc5]) by SJ0PR11MB5865.namprd11.prod.outlook.com
- ([fe80::b615:4475:b6d7:8bc5%5]) with mapi id 15.20.8093.024; Mon, 28 Oct 2024
- 10:05:19 +0000
-From: "Romanowski, Rafal" <rafal.romanowski@intel.com>
-To: Diomidis Spinellis <dds@aueb.gr>, "Nguyen, Anthony L"
- <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
- <przemyslaw.kitszel@intel.com>
-CC: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH] ixgbe: Break include dependency cycle
-Thread-Index: AQHbIHR3kzROggvz5Uy9uoqHc36uPbKcADen
-Date: Mon, 28 Oct 2024 10:05:19 +0000
-Message-ID: <SJ0PR11MB58651AC933D3D32A943207EA8F4A2@SJ0PR11MB5865.namprd11.prod.outlook.com>
-References: <20241017085851.1800065-1-dds@aueb.gr>
-In-Reply-To: <20241017085851.1800065-1-dds@aueb.gr>
-Accept-Language: en-US
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8093.18; Mon, 28 Oct
+ 2024 10:12:55 +0000
+Received: from MN6PR11MB8102.namprd11.prod.outlook.com
+ ([fe80::15b2:ee05:2ae7:cfd6]) by MN6PR11MB8102.namprd11.prod.outlook.com
+ ([fe80::15b2:ee05:2ae7:cfd6%6]) with mapi id 15.20.8093.024; Mon, 28 Oct 2024
+ 10:12:55 +0000
+Message-ID: <ca89f03e-6dc1-44fa-bfd1-aac95ede0cbe@intel.com>
+Date: Mon, 28 Oct 2024 11:12:49 +0100
+User-Agent: Mozilla Thunderbird
+To: Rosen Penev <rosenp@gmail.com>
+CC: Tony Nguyen <anthony.l.nguyen@intel.com>, <netdev@vger.kernel.org>,
+ "Andrew Lunn" <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, "Eric Dumazet" <edumazet@google.com>, Jakub Kicinski
+ <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Alexei Starovoitov
+ <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard
+ Brouer <hawk@kernel.org>, "John Fastabend" <john.fastabend@gmail.com>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ open list <linux-kernel@vger.kernel.org>, "open list:XDP (eXpress Data
+ Path):Keyword:(?:b|_)xdp(?:b|_)" <bpf@vger.kernel.org>
+References: <20241025201713.286074-1-rosenp@gmail.com>
+From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SJ0PR11MB5865:EE_|SA1PR11MB8840:EE_
-x-ms-office365-filtering-correlation-id: 7bb9fd03-47f6-4e2f-63e2-08dcf738075e
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0; ARA:13230040|366016|376014|1800799024|38070700018;
-x-microsoft-antispam-message-info: =?iso-8859-1?Q?fIDxfuTGAjvUI9nBHGJ25ybQxDW4AzXR+lQuV2Rce6SP/gQq1aj1UOStxF?=
- =?iso-8859-1?Q?+mUYWAlTh8BQHUZfCQqVZFm2aoAYukresKYGJFD3lfCx/OdVbdh7MdsqJv?=
- =?iso-8859-1?Q?p2idNPX2gZLLk5cUR1yRFkq/uk3PnPebFYlgjL9skUtgfQxOBEPGKK1Sez?=
- =?iso-8859-1?Q?pFt7KqK7Mqq3dC+BsZHIlwEqxka8ml5vyfppDwef8b/rQCJ4wVgHvFoilY?=
- =?iso-8859-1?Q?ejDODkeFmERE7iG6eENTgJkzdVjB63r490hs+HjvUR8wnXEdXbi45fecWK?=
- =?iso-8859-1?Q?PP4XCQtnCumIMIySV+CYm47zPpDLjrnZ8/lyn0/YTCJfdPs4NVumgPHWnR?=
- =?iso-8859-1?Q?Z/LR3F8LAKxYZnfSzaexL0Crq7i8dhCeLGnbAaQXN+DtlNgBxntFr4C0ik?=
- =?iso-8859-1?Q?R4WCgXZsuvFcmbmmAOUt2fXTldi7HRXhPbkxdOZYFs7oeIuE95vwl4aAFC?=
- =?iso-8859-1?Q?5zGSUkQmIWp+0GaQbshryyFtR05oVtfuhQRI0Tufwo/AflzrFrTpvtVKCF?=
- =?iso-8859-1?Q?q2hAGXrNPjuT4g8jJGMgi344W04S/Ofl7QMVp+UnSaEc+CixUn6e/WCOfG?=
- =?iso-8859-1?Q?mbAcKvsSrGkYhE5EGFu6n47bq1x+yAmgMh4KMfbzpJ4n4Sl4akqxF726ur?=
- =?iso-8859-1?Q?RNFhNPZRMb4RQSbJuXsII9bBuGo3fuLD0OjkWo71BQ6OHmzHkU5GjLUzOu?=
- =?iso-8859-1?Q?F44wV6V1ZGC9S4FOHeYaAYIn1Ua82DvjbCsH9YDFgZDMIh55P6WSjP9nK3?=
- =?iso-8859-1?Q?E0EYimeUPwXQQS2e6A3AuXcHIQz4mDk5rqC31Pmgq5TE+HgHw2tkeRa/37?=
- =?iso-8859-1?Q?ECBh+HKE+s4fFTehSSpM2kZpGxm9kqHoRYUX9cPuuJ5TjZtO3hJKZNWcCj?=
- =?iso-8859-1?Q?+uMKJSSvviqG6sW92w0UBxeA2jVt73K1Z2ixz5z/TWklCVGKtRiomc5hBQ?=
- =?iso-8859-1?Q?d5EQ3JlsRGGb6yRnv848MIsrg/ujdQXp6HykFXzghQyuWfJFg+k3GGiZU1?=
- =?iso-8859-1?Q?KYx/kd5l3oRMEZ28iSDRi45LrNI/ND8OYdROpPETG0PEYeNETEC7+6w90V?=
- =?iso-8859-1?Q?ZIxn6q03oYCe5Fsgxsq7uQog8k44h5CPgmIT2bSoCaFxOAyRgT35cxJjpM?=
- =?iso-8859-1?Q?a2imI/HMoeqFG/oEkJo5Y1INmqsn1vuMl2f2gszUJpcDTs4PeAPAr2zE94?=
- =?iso-8859-1?Q?4qJHcN9iD9vPo5UBe6IdoADH+JF0bjALn1J1elrqklscOyUwlHSX8N6yMh?=
- =?iso-8859-1?Q?umepxU1fnoSAkuXDpKhuTlOK+825tUDR+9gCAI6sR1KjMyavpnIGKYlp4k?=
- =?iso-8859-1?Q?bvzh1q8+bbnNn44IHH11vI+hjy3zfono8SkUHmdANKX9C0uBzE/zUO1LsO?=
- =?iso-8859-1?Q?GE+lxg9DhEdrAmEaArlCDTM7xuDpUcNUAu5khazs0iJx5lozk/Q6o=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ0PR11MB5865.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(376014)(1800799024)(38070700018); DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?NHKXLrjJ+iSvxm6K3LCNlNoyyEgGawArcTxeZ/RbJJ/Hl8qBsXaNI7+ElT?=
- =?iso-8859-1?Q?dD9ZEb/daYelQXQLbdNpATVZk5Awjpau2V44qF+ZTLG2TpOhakDvs0ZxWb?=
- =?iso-8859-1?Q?JosSX3IOLedxVu/tN4sJQo9u38SSOjhE/w4p5yCY5DpxVM7d8gcEgqOBir?=
- =?iso-8859-1?Q?CTU4ZkN+EFjtj/5cIHZmWSao5OLEs7EHIhaKuFdfkCRVkhorGqIlYSE6au?=
- =?iso-8859-1?Q?FOQbJZ7f9dJe8VL44f6rxX9H8d2utbq1VTe9cM3mm92XS4773dpUa7NBgf?=
- =?iso-8859-1?Q?sd7KX5ko5I4aY5ClnyOekz08QLy2MFxrfLEyfHKQ0kkNTnQOMxoIVS1s6J?=
- =?iso-8859-1?Q?ll0oGElVuSp+ZSW2C0ZhdRm1rv5SuQXx26Ls0CrNhdN+Amv3lHsUev08Zg?=
- =?iso-8859-1?Q?QKksNhrTVa4v6cQEaCukYfeuSgcWpkCkrbUEkW5Sgffnu9c3/wlGXfOhAe?=
- =?iso-8859-1?Q?A6Qp3swYGplx5pjNlwKJv/S2yLXnwicjm0TR+HOBuApC2ADxQ5wrip0AwW?=
- =?iso-8859-1?Q?QyVqBgS32tV+an2D4ynBRMraVuASRlMbvE+q2DcoZKsQmrjjKsNLSu7+a3?=
- =?iso-8859-1?Q?n50sqUEZklqCjQGm+d9ct8xUAopkY2TJSSqReMda3TefhfPEnilYi5/1Uy?=
- =?iso-8859-1?Q?cmRSBULW9cMYnGx0VQ+loDv7ChcdREQrWjGZ0T1alRi5eukTp/uoqm3kDg?=
- =?iso-8859-1?Q?zZyH79hMqkK8H9OhBFIijAVzfujLjlpokpcuvqkFA1zspuTpO/zEpcD1QI?=
- =?iso-8859-1?Q?4MCeIf3swVU8HWi1bAalTgQzLJubkbG3NcfTlD67rOLqq2h0RbLaeH5C+W?=
- =?iso-8859-1?Q?oEVLyGACeWsM84/0mcldQkw9MflCWhT6N/Zf6sb4/1VhH7QHLi5giX467X?=
- =?iso-8859-1?Q?9kH2s7SFc3wrXhMeW2psj+252F2bGL2Qz7gKqBr9NFvoQFFCCtfFggp+wx?=
- =?iso-8859-1?Q?owWwUkbdcJ6oJg4arR1UVTtAGzUrcAUvjWlDQRRhNl447VCsj9Lcydqoan?=
- =?iso-8859-1?Q?FjbdhC+yIoYhFJuMGm4a2jhOpLNEtcG5SjHKtHFQc4NKfYPFSnA5Hl8L3n?=
- =?iso-8859-1?Q?ZMF8To6rbEQNqH1feHb1em6eVEbyT40FCiYk2GssoOzZPpQhYpeY99kft2?=
- =?iso-8859-1?Q?d3J0ijJnptQ86C+S2RMnm/nE8ACHXJ8RHFjbxe3XjVSAhnWpp5uPJg+s3i?=
- =?iso-8859-1?Q?UGqxAAXQEfYsMELQN3fQob7Sf+CDNjL33v5TSz/t37t4quwxVD5BaTwAJA?=
- =?iso-8859-1?Q?F3OJUC+b1YrBiHFPVlqVSA8O29RNr3huAQ3E1JTICXYxvyMx7FeXPw9Hjr?=
- =?iso-8859-1?Q?26NY5xGPC4texX/E6gbFF9DbCdGw2jhq6HbmsG7b+5QYKj7BIm+vPzJIZJ?=
- =?iso-8859-1?Q?f0mRdFCRyEokN2QI4mgHMdYbZNVup959UisLnp1Q5sFfKYTbjdvAxC49Rm?=
- =?iso-8859-1?Q?LKdjxGgmCZbJJQlZETowuAzea5HgeVVt3ORT3IdRUo7UfnKwgwgbxraBy+?=
- =?iso-8859-1?Q?FTDLwQhxYXj1CcnzDOEDCI5pZHzqYDENh566+FVbLfnbRlrnlsLJO0JF8Q?=
- =?iso-8859-1?Q?CjdypE5UYjxFHEN/oODcaCvaBGrAnRMjlcbRuVYVlU5PTLA9GeHqlx5U8V?=
- =?iso-8859-1?Q?NgNvI6ONGuSOnCMtzLI1uw9dW6aza4zH5OvRKTLA+g1clUjTDRQONqbw?=
- =?iso-8859-1?Q?=3D=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20241025201713.286074-1-rosenp@gmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: WA2P291CA0013.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d0:1e::14) To MN6PR11MB8102.namprd11.prod.outlook.com
+ (2603:10b6:208:46d::9)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MN6PR11MB8102:EE_|BY1PR11MB8030:EE_
+X-MS-Office365-Filtering-Correlation-Id: 95fbf5f8-e1b2-4483-2acd-08dcf73916da
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|366016|7416014|1800799024;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?RnBXZ0lUVTloZ2ZaR1FsVVlzdlJiWjRxNGcrS242aGxNdUg5WVlSaHk5S09q?=
+ =?utf-8?B?Nkt4Q1NDK2ZSSHlLWmVESncvNzZ3WS9OQ05rMnNzT0N3TEJ1b0o1RkpqMDJN?=
+ =?utf-8?B?dEFoMHZ0cWwxWCtxbW9aQ2tmZVF6bUVTUDU5YTVBU2FscHlVVVpwb3JEV0Jo?=
+ =?utf-8?B?VGhEQnN1UlZBSTYrMWxpbFZBeUQ1S0dSRkR4RDlSVDR1RGxiWlUwRUdiN1Vu?=
+ =?utf-8?B?U3B5SFJXamd1NEdoc2hGTkJ3MEJCa2tva2thZ3pWa3BuOHNDQjdGTlVOcjAw?=
+ =?utf-8?B?eUl3V256NVcxUXdxMk82QnBCYnRmdlJxdUVjMXhqU0ZvZnF2dXNnVDJrQnN5?=
+ =?utf-8?B?ZmE4U2pjeXNtdnJQZnN5NTJZMjFrU0RjdzVrYTRubGg3dXB5UXB2eGltZERI?=
+ =?utf-8?B?ekswRGpRV3g0aTlIcmJmKzI0MzVId1ltSFY3bnBKNi95UkRubjlEQW5SY3BV?=
+ =?utf-8?B?Zm1YVS9DQ09pL0RiT3FFeHlKa3FHd2FUQnliNENkTkY0NVk5OWs1a1Z6YTgv?=
+ =?utf-8?B?YmMxUmkxdG1DcEkwV2UrcmRSTi9oY0J5cEdxTnh1VEVzdElCMEkvOU9Qd00z?=
+ =?utf-8?B?YmtYMnZxcXNORDhOZGJSRlI1Q0RjNG9yQk5iaG4vd0JxRk9xOHlTc1cyUkhW?=
+ =?utf-8?B?dWEzZ2xqTEhnL2poR3B5N0tLSGI0eE5JK1E4ZjBZV1NnMFF5bmxla2RoMHF5?=
+ =?utf-8?B?cng0YkdlRW5HTGF6VWRjN3Iybk5YWnVRWWZNTTVLTXdjR1dqbjdxbU9mWmtQ?=
+ =?utf-8?B?ZnBsSUNrVHNuK0JwYnYzTnY1VUZMM3VxcVQ5TFJsWjFEMVlXZFdkejRTY0xi?=
+ =?utf-8?B?ZFMvckU3UzBmTU5iUmx2ZlVrSE9kS0Z6WUVoaWlCeEpEeWVJeWEzUTRWOXNR?=
+ =?utf-8?B?NSs1a3pFS0xoN1pjYllidUs4WjdZV2s0c3ZCbXhvQUhCTlFaZ0gxc3BaWHlV?=
+ =?utf-8?B?UGVqVjUvUW0ySWUrTG1TM3JJdzJYTFJFWXpENHVzRlNoSWhKeU9Td21SMEc4?=
+ =?utf-8?B?Q2tQL2FRL0t2dS9YeFAvb1ZJa1EyR3hVcS9Yd1F4TVBOa1RoT0REM3hiMXlR?=
+ =?utf-8?B?M3o1SzJxMmloUnFOajM4UGJkVzF6STVTelBUWFZUTVRxSFEvUHhiZllCY2Fk?=
+ =?utf-8?B?bEk2djE3dmgwc2JLZVA4SSswbUJCWS9hN0pUdDBOaStRVjBBSE1vV0hkRzkv?=
+ =?utf-8?B?UmhVblNFMHdFK2t5RUZGNTNEVXk1UTNGSTdNSHZhTGI3bWNIa2RFL1pycU1V?=
+ =?utf-8?B?emtLM1ZFRjdZcitSSHM1V0JTOWtqdGwrVXc2ZjNMeGhIVUNRRWpXTk45NE5Y?=
+ =?utf-8?B?TjdvNHZZa0ZpMVE5cU1UZHdQRWhJWHQzeDByRGwzaGo3K0VGSWpjRlZFeE1G?=
+ =?utf-8?B?Ly9Nc1NNNlM5VmtxOFhkV0pONytpUE9qYzUxRU5wZHBoVnJkY0pCN0s0cm1u?=
+ =?utf-8?B?VFhRRGF3QitQZ1BOdHRoRlRDTVZvdDdadXBxa0puUkMzSGVsRDZ5b2dmTnpl?=
+ =?utf-8?B?eTJmWXVYa3JzVW9WRDJKNUU4SytqOE5mRVg5T0FNTlVZRHFnS2NTSGxHczNi?=
+ =?utf-8?B?YXEyNnNaQ0dGMW9kWTdZV3BYOUxMakU0SkNVVzllVGZLa0ZDQWJva2U0eG5U?=
+ =?utf-8?B?a1l3Yk5sUkpoaUZwdmxPVDcrZzhudkxMRWtSK2N6VmVlWC84Z3JnQ25ZLzBV?=
+ =?utf-8?B?WERVT3lQS1ZhS2pEbUlISFhnNTlvVThmdS8yOUpyUDBkWWo1NW9xd1Yvc2Zm?=
+ =?utf-8?Q?4W/eJ0C/HAc2BQmyeba3tWf9rew3lKkC+V8anCL?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MN6PR11MB8102.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(366016)(7416014)(1800799024); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?VGhxVzk4OTFmQ0FUbDV3VFdMQ016cG00MHgyYjNpK203QiszUjM1YW5Xa09i?=
+ =?utf-8?B?WVJYZ2JwNDhraWpMbEx1Z3JRWjBvZHVNZzVXL1Z4d3FXTkVGcHNxRTdyVUVo?=
+ =?utf-8?B?WElDTnJ1TGxCbHZ0c0FIeW1mSmpmK3AxMTcwT0NyTVhSaENLandkSVRQenVq?=
+ =?utf-8?B?QTk3NWZuQ0xVL0dpRlBlU3VXUTZIbFRzTHQxZjlNVmY4RFI0R1ZQdjdxYXAw?=
+ =?utf-8?B?VzZFR1Z1b0lFYWFXbENhZk9ZRTF6MUhxdldzYWIzbGZqLzNHNC9RRmJQU3dL?=
+ =?utf-8?B?Wk45bk10ckl5UVFDRzRmOVMxcktiTXZxZWdWMy9FWTFEZ0VVSXJjRzF4VmtO?=
+ =?utf-8?B?clBRTEMxUmpvQno0eElMUFVEbmJPdTNRMHdjYzRYakkvY0VsN25neVRVcTZj?=
+ =?utf-8?B?bTlITW9OQlVCMFhlTk11U1RSQVUya3poZTdzMGM1azI4WWpmN3RTd1R6NURy?=
+ =?utf-8?B?bnovakNVRGc5bVZuZE83c1AxT29lTkZGUzU0TzFxUUY4VC9ZaVVnTG5HeUd4?=
+ =?utf-8?B?MzF2c3VpZVZvMlZIM0p0Y200b1kxd3N5UnppV0VSeUdNK0J0TkxaYlJ0N0Jo?=
+ =?utf-8?B?SjVDSzFkbjRYZ3lUTlZhNjBzaExYVFplbWZxVjNHQ3BjRmxRazJ6NklCeWRy?=
+ =?utf-8?B?eS9OZ1ZzYyt5UFNaWW4rT3hQdjZxMXB0ODc2SXI3K0IybVdaVjNpNmwxYS9w?=
+ =?utf-8?B?UzBUU3M1cy9NTE5EdlZqdkRaY2lqdWIvRUlOS3hGbnpJYTBwV3hPcjFoNU1z?=
+ =?utf-8?B?VjVCQTBMQVNaMUNYNkorckxzL2Vua1JIMGZDbGw3bENJb0VmNjY0aHVKVlI1?=
+ =?utf-8?B?ZUI2bkdid2Y1SE5kNGdiaGhqb09XSkdoWlFpUCtaSVA3dXJzelgyMkg1cU1a?=
+ =?utf-8?B?VTNmOHgyVTM2T1lscjZ5ZVpUREFZVXNYZTlUZktHVGVyelprNXJSQk80Tk4z?=
+ =?utf-8?B?dkhRU2dKUWgrNU1TWlFCK25FR1V2OVBmUEdzMlR0VE1PQTlINDAvdjNBcE5p?=
+ =?utf-8?B?ejRZS0pLNWkyWTA1RFNWdTU1SkdGb2MwNmtYQkNjSGhHSkZ2MUp2bmptZmVB?=
+ =?utf-8?B?UFluN2sxaWs3T1cyYUlqMW9NN3B2Vmw5TFluS1JZaHRwVkRrR1NwdmozNHd6?=
+ =?utf-8?B?bG9RQlFxWXJTWDJZYko3aUdudjJuamlCWnZ6bU5YTGVac29kdW1ETXJwQSth?=
+ =?utf-8?B?MVlhclk0Y24vMG5kYXYvODRvc2taM2RyUGFrSmZpcngxcVNwM3BkSUhMbVBM?=
+ =?utf-8?B?d29yZzdRR1FuQ0RnUW82eDU3dXZEVG03clVWWE94V0xzMFFXbnFtQ29GNkxR?=
+ =?utf-8?B?K2t5VnhHQ2VtSVcwd050djVlVk45ZnBNVExXTXpPK08zOUZkRHdlSlI4UGdr?=
+ =?utf-8?B?YlY2Umg2bVY1eCtqSm1QdmJWamlQRkNENzlyaFc3amFpRTkrR09OSzNEVHFu?=
+ =?utf-8?B?TTJPRWhNMVpwTjhhV2h6b3RESVovcTM4N2w4SWhhck12Z0p4VndDTFZSUEpG?=
+ =?utf-8?B?NnY3bStxVjdqZktYazJLWnNpcVE2YUxhVnY0UlNKYUJ6KzRHQzIvcldMd3Va?=
+ =?utf-8?B?bW1HYWhRVnpuT1JuajdHQWlSTUlxZE42K3lySjRaWkFQMWw1c3MxTnJZdFhu?=
+ =?utf-8?B?aVdnVk1HVWZuN09jbTZvZDl5UUhvck1YdHVsaUxTQ0FFbGZyaG5lWXJqTlVn?=
+ =?utf-8?B?Ym1hY3plbHFwd29FUlYvQkNOWEYxVjUxZDlOZlBES2lMUFJtdlNobXE1Z1cx?=
+ =?utf-8?B?SlVCOFh0ZTNlVndZQjRCOC9xOWRHb0Nkd1BYaTVXbXcxMGFzY3BRWW5UMms3?=
+ =?utf-8?B?c1VIQzlSQzFSZWRpZzd6NzZmZjlPTDBQT1ZCSWczYUpMTzV2Q0dOSktyVEVD?=
+ =?utf-8?B?eFYxU3hpVEE4dVpjei9McjB4WE5xaXRHZGgvL21aMUg2ZDlvN29QNWRGWHE0?=
+ =?utf-8?B?cWV1NG93bjUyTGVjazBud2lXVkRYN2M3ekI0TWRRSkJ2bkwxeUhJR2k1NU1h?=
+ =?utf-8?B?MExSZFgzb01ybjFwUmM3c0M4b0hUWUVGZlNZUU0xc3ZnUWIvM1l3WEpzbzhL?=
+ =?utf-8?B?U3EvSWg2bXEvMkRDalROcVJRdUR6UW51blpzTlZLMkxlZVdsdFhOeDZ3enFO?=
+ =?utf-8?B?ZlVaTWl5SE9SRkZNQ1BiWlh0YWtaeW9UMWx2TTFzRC83NzUvM2h6MEpvM0o3?=
+ =?utf-8?B?dEE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 95fbf5f8-e1b2-4483-2acd-08dcf73916da
+X-MS-Exchange-CrossTenant-AuthSource: MN6PR11MB8102.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB5865.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7bb9fd03-47f6-4e2f-63e2-08dcf738075e
-X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Oct 2024 10:05:19.3459 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: STDR+hFrT5twdgiLPv/rSc5UuwJfKeihWX+zUSyPKcbHyE5dQYy211vpY0BF5DYP/B3ENVi7j9ZTF85AXj+a7KqQnm625hBK03f2KEIfuCk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR11MB8840
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Oct 2024 10:12:54.9280 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: zEnQQdXPjDZTYw4wa+oGaq+9n8HolnCgyVEg+I8geQ5Fmk9Xykw4w7yr6BYTsrUNVfOYAf1GVfd2aETu9N2XAma8HXry/PE5iqPPPsVVEHA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY1PR11MB8030
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1730109958; x=1761645958;
- h=from:to:cc:subject:date:message-id:references:
+ t=1730110391; x=1761646391;
+ h=message-id:date:subject:to:cc:references:from:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=wGVwSLHtp/ojs2jDMTPo8L8P5dif8e6zDE/LAoE99LE=;
- b=kPBdil//x9Y5Zxh6XPchBRwIT4+DT9z7p4RUsT6OrgxwXtI/55W9FJQX
- DldxeF6jq44N1s7Wd7nCs22+P9QDiI9j+7bdPk6jvR616+luPFc+l4p12
- +t6BIn7xuX39kGGMgiHricHHaDmBDTyBeCBJPemc2f4R3RB87qPoWQ1Jo
- MGxxf/yZY4MSV2mGnDcG2wVZeC5cuxTUiMwpjNcSouB7+zc0rupnaaGQW
- rK7kCE8nG0MLMNY2XPmFWncZ71/f6IQubrFIrSfzcZ/c941/aF6yoXPk4
- sUw1wcSBmR1L+RuZn/Zv7MT2vPFx3cklhWwgacV0Fszve2a+yrGPtiDqF
+ bh=B8ExPmSr6q3IMugXvvmcWyTxZAasA32H249WSo7PWMs=;
+ b=gUduXjm9c7X3tR0eO+NjgqKO61mhv+R3w7+tnhWkc7SrmQJWZYDFswUa
+ VE5NYdZvxypvyiUlELmagdseAerLpsre92M19CVNwwlBJ4qE+oMOxRfu4
+ impHUPosqKiDQWNsZ34Z93fvPNy5+cXL8TL6SR3yGH3ayKzmz4/mo0fgo
+ 9GUwdy7FDJI9LFrUb5yrlsSvuDtmhcpFJmZOamBWuMZpzfVcQySUcoJgM
+ 5cK6qqfRTq3mnkmGKNqfTveiybvS6L/bR2wA3Ca33NFs9l2fmP1xUoEFs
+ eH7Zfdlhkq60Ae/FaWYK7Yd84tGBWXfReSliOI6rP08zfs5ThniE0c44h
  g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=kPBdil//
+ header.s=Intel header.b=gUduXjm9
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH] ixgbe: Break include dependency cycle
+Subject: Re: [Intel-wired-lan] [PATCHv2 net-next iwl-next] net: intel: use
+ ethtool string helpers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -224,209 +243,324 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From:=A0Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> on behalf of D=
-iomidis Spinellis <dds@aueb.gr>=0A=
-Sent:=A0Thursday, October 17, 2024 10:58 AM=0A=
-To:=A0Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw <=
-przemyslaw.kitszel@intel.com>=0A=
-Cc:=A0intel-wired-lan@lists.osuosl.org <intel-wired-lan@lists.osuosl.org>; =
-Diomidis Spinellis <dds@aueb.gr>=0A=
-Subject:=A0[Intel-wired-lan] [PATCH] ixgbe: Break include dependency cycle=
-=0A=
-=A0=0A=
-Header ixgbe_type.h includes ixgbe_mbx.h.=A0 Also, header=0A=
-ixgbe_mbx.h included ixgbe_type.h, thus introducing a circular=0A=
-dependency.=0A=
-=0A=
-- Remove ixgbe_mbx.h inclusion from ixgbe_type.h.=0A=
-=0A=
-- ixgbe_mbx.h requires the definition of struct ixgbe_mbx_operations=0A=
-=A0 so move its definition there. While at it, add missing argument=0A=
-=A0 identifier names.=0A=
-=0A=
-- Add required forward structure declarations.=0A=
-=0A=
-- Include ixgbe_mbx.h in the .c files that need it, for the=0A=
-=A0 following reasons:=0A=
-=0A=
-=A0 ixgbe_sriov.c uses ixgbe_check_for_msg=0A=
-=A0 ixgbe_main.c uses ixgbe_init_mbx_params_pf=0A=
-=A0 ixgbe_82599.c uses mbx_ops_generic=0A=
-=A0 ixgbe_x540.c uses mbx_ops_generic=0A=
-=A0 ixgbe_x550.c uses mbx_ops_generic=0A=
-=0A=
-Signed-off-by: Diomidis Spinellis <dds@aueb.gr>=0A=
----=0A=
-=A0drivers/net/ethernet/intel/ixgbe/ixgbe_82598.c |=A0 1 +=0A=
-=A0drivers/net/ethernet/intel/ixgbe/ixgbe_main.c=A0 |=A0 1 +=0A=
-=A0drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h=A0=A0 | 16 +++++++++++++++-=
-=0A=
-=A0drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c |=A0 1 +=0A=
-=A0drivers/net/ethernet/intel/ixgbe/ixgbe_type.h=A0 | 15 ++-------------=0A=
-=A0drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c=A0 |=A0 1 +=0A=
-=A0drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c=A0 |=A0 1 +=0A=
-=A07 files changed, 22 insertions(+), 14 deletions(-)=0A=
-=0A=
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_82598.c b/drivers/net/e=
-thernet/intel/ixgbe/ixgbe_82598.c=0A=
-index 283a23150a4d..4aaaea3b5f8f 100644=0A=
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_82598.c=0A=
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_82598.c=0A=
-@@ -6,6 +6,7 @@=0A=
-=A0#include <linux/sched.h>=0A=
-=A0=0A=
-=A0#include "ixgbe.h"=0A=
-+#include "ixgbe_mbx.h"=0A=
-=A0#include "ixgbe_phy.h"=0A=
-=A0=0A=
-=A0#define IXGBE_82598_MAX_TX_QUEUES 32=0A=
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/et=
-hernet/intel/ixgbe/ixgbe_main.c=0A=
-index 8b8404d8c946..c229a26fbbb7 100644=0A=
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c=0A=
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c=0A=
-@@ -43,6 +43,7 @@=0A=
-=A0#include "ixgbe.h"=0A=
-=A0#include "ixgbe_common.h"=0A=
-=A0#include "ixgbe_dcb_82599.h"=0A=
-+#include "ixgbe_mbx.h"=0A=
-=A0#include "ixgbe_phy.h"=0A=
-=A0#include "ixgbe_sriov.h"=0A=
-=A0#include "ixgbe_model.h"=0A=
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h b/drivers/net/eth=
-ernet/intel/ixgbe/ixgbe_mbx.h=0A=
-index bd205306934b..bf65e82b4c61 100644=0A=
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h=0A=
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h=0A=
-@@ -4,7 +4,7 @@=0A=
-=A0#ifndef _IXGBE_MBX_H_=0A=
-=A0#define _IXGBE_MBX_H_=0A=
-=A0=0A=
--#include "ixgbe_type.h"=0A=
-+#include <linux/types.h>=0A=
-=A0=0A=
-=A0#define IXGBE_VFMAILBOX_SIZE=A0=A0=A0=A0=A0=A0=A0 16 /* 16 32 bit words =
-- 64 bytes */=0A=
-=A0=0A=
-@@ -96,6 +96,8 @@ enum ixgbe_pfvf_api_rev {=0A=
-=A0#define IXGBE_VF_MBX_INIT_TIMEOUT 2000 /* number of retries on mailbox *=
-/=0A=
-=A0#define IXGBE_VF_MBX_INIT_DELAY=A0=A0 500=A0 /* microseconds between ret=
-ries */=0A=
-=A0=0A=
-+struct ixgbe_hw;=0A=
-+=0A=
-=A0int ixgbe_read_mbx(struct ixgbe_hw *, u32 *, u16, u16);=0A=
-=A0int ixgbe_write_mbx(struct ixgbe_hw *, u32 *, u16, u16);=0A=
-=A0int ixgbe_check_for_msg(struct ixgbe_hw *, u16);=0A=
-@@ -105,6 +107,18 @@ int ixgbe_check_for_rst(struct ixgbe_hw *, u16);=0A=
-=A0void ixgbe_init_mbx_params_pf(struct ixgbe_hw *);=0A=
-=A0#endif /* CONFIG_PCI_IOV */=0A=
-=A0=0A=
-+struct ixgbe_mbx_operations {=0A=
-+=A0=A0=A0=A0=A0=A0 int (*init_params)(struct ixgbe_hw *hw);=0A=
-+=A0=A0=A0=A0=A0=A0 int (*read)(struct ixgbe_hw *hw, u32 *msg, u16 size, u1=
-6 vf_number);=0A=
-+=A0=A0=A0=A0=A0=A0 int (*write)(struct ixgbe_hw *hw, u32 *msg, u16 size, u=
-16 vf_number);=0A=
-+=A0=A0=A0=A0=A0=A0 int (*read_posted)(struct ixgbe_hw *hw, u32 *msg, u16 s=
-ize, u16 mbx_id);=0A=
-+=A0=A0=A0=A0=A0=A0 int (*write_posted)(struct ixgbe_hw *hw, u32 *msg, u16 =
-size,=0A=
-+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0 u16 mbx_id);=0A=
-+=A0=A0=A0=A0=A0=A0 int (*check_for_msg)(struct ixgbe_hw *hw, u16 vf_number=
-);=0A=
-+=A0=A0=A0=A0=A0=A0 int (*check_for_ack)(struct ixgbe_hw *hw, u16 vf_number=
-);=0A=
-+=A0=A0=A0=A0=A0=A0 int (*check_for_rst)(struct ixgbe_hw *hw, u16 vf_number=
-);=0A=
-+};=0A=
-+=0A=
-=A0extern const struct ixgbe_mbx_operations mbx_ops_generic;=0A=
-=A0=0A=
-=A0#endif /* _IXGBE_MBX_H_ */=0A=
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c b/drivers/net/e=
-thernet/intel/ixgbe/ixgbe_sriov.c=0A=
-index e71715f5da22..9631559a5aea 100644=0A=
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c=0A=
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c=0A=
-@@ -18,6 +18,7 @@=0A=
-=A0=0A=
-=A0#include "ixgbe.h"=0A=
-=A0#include "ixgbe_type.h"=0A=
-+#include "ixgbe_mbx.h"=0A=
-=A0#include "ixgbe_sriov.h"=0A=
-=A0=0A=
-=A0#ifdef CONFIG_PCI_IOV=0A=
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/et=
-hernet/intel/ixgbe/ixgbe_type.h=0A=
-index 346e3d9114a8..9baccacd02a1 100644=0A=
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h=0A=
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h=0A=
-@@ -3601,19 +3601,6 @@ struct ixgbe_phy_info {=0A=
-=A0=A0=A0=A0=A0=A0=A0=A0 u32=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 nw_mng_if_sel;=0A=
-=A0};=0A=
-=A0=0A=
--#include "ixgbe_mbx.h"=0A=
--=0A=
--struct ixgbe_mbx_operations {=0A=
--=A0=A0=A0=A0=A0=A0 int (*init_params)(struct ixgbe_hw *hw);=0A=
--=A0=A0=A0=A0=A0=A0 int (*read)(struct ixgbe_hw *, u32 *, u16,=A0 u16);=0A=
--=A0=A0=A0=A0=A0=A0 int (*write)(struct ixgbe_hw *, u32 *, u16, u16);=0A=
--=A0=A0=A0=A0=A0=A0 int (*read_posted)(struct ixgbe_hw *, u32 *, u16,=A0 u1=
-6);=0A=
--=A0=A0=A0=A0=A0=A0 int (*write_posted)(struct ixgbe_hw *, u32 *, u16, u16)=
-;=0A=
--=A0=A0=A0=A0=A0=A0 int (*check_for_msg)(struct ixgbe_hw *, u16);=0A=
--=A0=A0=A0=A0=A0=A0 int (*check_for_ack)(struct ixgbe_hw *, u16);=0A=
--=A0=A0=A0=A0=A0=A0 int (*check_for_rst)(struct ixgbe_hw *, u16);=0A=
--};=0A=
--=0A=
-=A0struct ixgbe_mbx_stats {=0A=
-=A0=A0=A0=A0=A0=A0=A0=A0 u32 msgs_tx;=0A=
-=A0=A0=A0=A0=A0=A0=A0=A0 u32 msgs_rx;=0A=
-@@ -3623,6 +3610,8 @@ struct ixgbe_mbx_stats {=0A=
-=A0=A0=A0=A0=A0=A0=A0=A0 u32 rsts;=0A=
-=A0};=0A=
-=A0=0A=
-+struct ixgbe_mbx_operations;=0A=
-+=0A=
-=A0struct ixgbe_mbx_info {=0A=
-=A0=A0=A0=A0=A0=A0=A0=A0 const struct ixgbe_mbx_operations *ops;=0A=
-=A0=A0=A0=A0=A0=A0=A0=A0 struct ixgbe_mbx_stats stats;=0A=
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c b/drivers/net/et=
-hernet/intel/ixgbe/ixgbe_x540.c=0A=
-index f1ffa398f6df..81e1df83f136 100644=0A=
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c=0A=
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c=0A=
-@@ -6,6 +6,7 @@=0A=
-=A0#include <linux/sched.h>=0A=
-=A0=0A=
-=A0#include "ixgbe.h"=0A=
-+#include "ixgbe_mbx.h"=0A=
-=A0#include "ixgbe_phy.h"=0A=
-=A0#include "ixgbe_x540.h"=0A=
-=A0=0A=
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c b/drivers/net/et=
-hernet/intel/ixgbe/ixgbe_x550.c=0A=
-index a5f644934445..d9a8cf018d3b 100644=0A=
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c=0A=
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c=0A=
-@@ -4,6 +4,7 @@=0A=
-=A0#include "ixgbe_x540.h"=0A=
-=A0#include "ixgbe_type.h"=0A=
-=A0#include "ixgbe_common.h"=0A=
-+#include "ixgbe_mbx.h"=0A=
-=A0#include "ixgbe_phy.h"=0A=
-=A0=0A=
-=A0static int ixgbe_setup_kr_speed_x550em(struct ixgbe_hw *, ixgbe_link_spe=
-ed);=0A=
---=0A=
-2.39.5=0A=
-=0A=
-=0A=
-=0A=
-Tested-by: Rafal Romanowski <rafal.romanowski@intel.com>=0A=
-=0A=
+On 10/25/24 22:17, Rosen Penev wrote:
+> The latter is the preferred way to copy ethtool strings.
+> 
+> Avoids manually incrementing the pointer. Cleans up the code quite well.
+> 
+> Signed-off-by: Rosen Penev <rosenp@gmail.com>
+> ---
+>   v2: add iwl-next tag. use inline int in for loops.
+>   .../net/ethernet/intel/e1000/e1000_ethtool.c  | 10 ++---
+>   drivers/net/ethernet/intel/e1000e/ethtool.c   | 14 +++----
+>   .../net/ethernet/intel/fm10k/fm10k_ethtool.c  | 10 ++---
+>   .../net/ethernet/intel/i40e/i40e_ethtool.c    |  6 +--
+>   drivers/net/ethernet/intel/ice/ice_ethtool.c  | 37 +++++++++++--------
+>   drivers/net/ethernet/intel/igb/igb_ethtool.c  | 35 ++++++++++--------
+>   drivers/net/ethernet/intel/igbvf/ethtool.c    | 10 ++---
+>   drivers/net/ethernet/intel/igc/igc_ethtool.c  | 36 +++++++++---------
+>   .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  | 32 ++++++++--------
+
+for ice, igb, igc, and ixgbe the current code already uses ethtool
+string helpers, and in many places you are just changing variable name,
+"p" to "data", I would rather avoid that.
+
+sorry for not spotting that earlier, and apologies that we have so many
+drivers to fix up in the first place
+
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> index 2924ac61300d..62a152be8180 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> @@ -83,7 +83,7 @@ static const char ice_gstrings_test[][ETH_GSTRING_LEN] = {
+>   	"Link test   (on/offline)",
+>   };
+>   
+> -#define ICE_TEST_LEN (sizeof(ice_gstrings_test) / ETH_GSTRING_LEN)
+> +#define ICE_TEST_LEN ARRAY_SIZE(ice_gstrings_test)
+>   
+>   /* These PF_STATs might look like duplicates of some NETDEV_STATs,
+>    * but they aren't. This device is capable of supporting multiple
+> @@ -1481,48 +1481,53 @@ static void
+>   __ice_get_strings(struct net_device *netdev, u32 stringset, u8 *data,
+>   		  struct ice_vsi *vsi)
+>   {
+> +	const char *str;
+>   	unsigned int i;
+> -	u8 *p = data;
+>   
+>   	switch (stringset) {
+>   	case ETH_SS_STATS:
+> -		for (i = 0; i < ICE_VSI_STATS_LEN; i++)
+> -			ethtool_puts(&p, ice_gstrings_vsi_stats[i].stat_string);
+> +		for (i = 0; i < ICE_VSI_STATS_LEN; i++) {
+> +			str = ice_gstrings_vsi_stats[i].stat_string;
+> +			ethtool_puts(&data, str);
+> +		}
+>   
+>   		if (ice_is_port_repr_netdev(netdev))
+>   			return;
+>   
+>   		ice_for_each_alloc_txq(vsi, i) {
+> -			ethtool_sprintf(&p, "tx_queue_%u_packets", i);
+> -			ethtool_sprintf(&p, "tx_queue_%u_bytes", i);
+> +			ethtool_sprintf(&data, "tx_queue_%u_packets", i);
+> +			ethtool_sprintf(&data, "tx_queue_%u_bytes", i);
+>   		}
+>   
+>   		ice_for_each_alloc_rxq(vsi, i) {
+> -			ethtool_sprintf(&p, "rx_queue_%u_packets", i);
+> -			ethtool_sprintf(&p, "rx_queue_%u_bytes", i);
+> +			ethtool_sprintf(&data, "rx_queue_%u_packets", i);
+> +			ethtool_sprintf(&data, "rx_queue_%u_bytes", i);
+>   		}
+>   
+>   		if (vsi->type != ICE_VSI_PF)
+>   			return;
+>   
+> -		for (i = 0; i < ICE_PF_STATS_LEN; i++)
+> -			ethtool_puts(&p, ice_gstrings_pf_stats[i].stat_string);
+> +		for (i = 0; i < ICE_PF_STATS_LEN; i++) {
+> +			str = ice_gstrings_pf_stats[i].stat_string;
+> +			ethtool_puts(&data, str);
+> +		}
+>   
+>   		for (i = 0; i < ICE_MAX_USER_PRIORITY; i++) {
+> -			ethtool_sprintf(&p, "tx_priority_%u_xon.nic", i);
+> -			ethtool_sprintf(&p, "tx_priority_%u_xoff.nic", i);
+> +			ethtool_sprintf(&data, "tx_priority_%u_xon.nic", i);
+> +			ethtool_sprintf(&data, "tx_priority_%u_xoff.nic", i);
+>   		}
+>   		for (i = 0; i < ICE_MAX_USER_PRIORITY; i++) {
+> -			ethtool_sprintf(&p, "rx_priority_%u_xon.nic", i);
+> -			ethtool_sprintf(&p, "rx_priority_%u_xoff.nic", i);
+> +			ethtool_sprintf(&data, "rx_priority_%u_xon.nic", i);
+> +			ethtool_sprintf(&data, "rx_priority_%u_xoff.nic", i);
+>   		}
+>   		break;
+>   	case ETH_SS_TEST:
+> -		memcpy(data, ice_gstrings_test, ICE_TEST_LEN * ETH_GSTRING_LEN);
+> +		for (i = 0; i < ICE_TEST_LEN; i++)
+> +			ethtool_puts(&data, ice_gstrings_test[i]);
+>   		break;
+>   	case ETH_SS_PRIV_FLAGS:
+>   		for (i = 0; i < ICE_PRIV_FLAG_ARRAY_SIZE; i++)
+> -			ethtool_puts(&p, ice_gstrings_priv_flags[i].name);
+> +			ethtool_puts(&data, ice_gstrings_priv_flags[i].name);
+>   		break;
+>   	default:
+>   		break;
+
+really no need to git-blame touch most of the code here
+
+> diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+> index ca6ccbc13954..c4a8712389af 100644
+> --- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
+> +++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+> @@ -123,7 +123,7 @@ static const char igb_gstrings_test[][ETH_GSTRING_LEN] = {
+>   	[TEST_LOOP] = "Loopback test  (offline)",
+>   	[TEST_LINK] = "Link test   (on/offline)"
+>   };
+> -#define IGB_TEST_LEN (sizeof(igb_gstrings_test) / ETH_GSTRING_LEN)
+> +#define IGB_TEST_LEN ARRAY_SIZE(igb_gstrings_test)
+>   
+>   static const char igb_priv_flags_strings[][ETH_GSTRING_LEN] = {
+>   #define IGB_PRIV_FLAGS_LEGACY_RX	BIT(0)
+> @@ -2347,35 +2347,38 @@ static void igb_get_ethtool_stats(struct net_device *netdev,
+>   static void igb_get_strings(struct net_device *netdev, u32 stringset, u8 *data)
+>   {
+>   	struct igb_adapter *adapter = netdev_priv(netdev);
+> -	u8 *p = data;
+> +	const char *str;
+>   	int i;
+>   
+>   	switch (stringset) {
+>   	case ETH_SS_TEST:
+> -		memcpy(data, igb_gstrings_test, sizeof(igb_gstrings_test));
+> +		for (i = 0; i < IGB_TEST_LEN; i++)
+> +			ethtool_puts(&data, igb_gstrings_test[i]);
+>   		break;
+>   	case ETH_SS_STATS:
+>   		for (i = 0; i < IGB_GLOBAL_STATS_LEN; i++)
+> -			ethtool_puts(&p, igb_gstrings_stats[i].stat_string);
+> -		for (i = 0; i < IGB_NETDEV_STATS_LEN; i++)
+> -			ethtool_puts(&p, igb_gstrings_net_stats[i].stat_string);
+> +			ethtool_puts(&data, igb_gstrings_stats[i].stat_string);
+> +		for (i = 0; i < IGB_NETDEV_STATS_LEN; i++) {
+> +			str = igb_gstrings_net_stats[i].stat_string;
+> +			ethtool_puts(&data, str);
+> +		}
+>   		for (i = 0; i < adapter->num_tx_queues; i++) {
+> -			ethtool_sprintf(&p, "tx_queue_%u_packets", i);
+> -			ethtool_sprintf(&p, "tx_queue_%u_bytes", i);
+> -			ethtool_sprintf(&p, "tx_queue_%u_restart", i);
+> +			ethtool_sprintf(&data, "tx_queue_%u_packets", i);
+> +			ethtool_sprintf(&data, "tx_queue_%u_bytes", i);
+> +			ethtool_sprintf(&data, "tx_queue_%u_restart", i);
+>   		}
+>   		for (i = 0; i < adapter->num_rx_queues; i++) {
+> -			ethtool_sprintf(&p, "rx_queue_%u_packets", i);
+> -			ethtool_sprintf(&p, "rx_queue_%u_bytes", i);
+> -			ethtool_sprintf(&p, "rx_queue_%u_drops", i);
+> -			ethtool_sprintf(&p, "rx_queue_%u_csum_err", i);
+> -			ethtool_sprintf(&p, "rx_queue_%u_alloc_failed", i);
+> +			ethtool_sprintf(&data, "rx_queue_%u_packets", i);
+> +			ethtool_sprintf(&data, "rx_queue_%u_bytes", i);
+> +			ethtool_sprintf(&data, "rx_queue_%u_drops", i);
+> +			ethtool_sprintf(&data, "rx_queue_%u_csum_err", i);
+> +			ethtool_sprintf(&data, "rx_queue_%u_alloc_failed", i);
+>   		}
+>   		/* BUG_ON(p - data != IGB_STATS_LEN * ETH_GSTRING_LEN); */
+>   		break;
+>   	case ETH_SS_PRIV_FLAGS:
+> -		memcpy(data, igb_priv_flags_strings,
+> -		       IGB_PRIV_FLAGS_STR_LEN * ETH_GSTRING_LEN);
+> +		for (i = 0; i < IGB_PRIV_FLAGS_STR_LEN; i++)
+> +			ethtool_puts(&data, igb_priv_flags_strings[i]);
+>   		break;
+>   	}
+>   }
+
+ditto
+
+> diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> index 5b0c6f433767..7b118fb7097b 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> @@ -104,7 +104,7 @@ static const char igc_gstrings_test[][ETH_GSTRING_LEN] = {
+>   	[TEST_LINK] = "Link test   (on/offline)"
+>   };
+>   
+> -#define IGC_TEST_LEN (sizeof(igc_gstrings_test) / ETH_GSTRING_LEN)
+> +#define IGC_TEST_LEN ARRAY_SIZE(igc_gstrings_test)
+>   
+>   #define IGC_GLOBAL_STATS_LEN	\
+>   	(sizeof(igc_gstrings_stats) / sizeof(struct igc_stats))
+> @@ -763,36 +763,38 @@ static void igc_ethtool_get_strings(struct net_device *netdev, u32 stringset,
+>   				    u8 *data)
+>   {
+>   	struct igc_adapter *adapter = netdev_priv(netdev);
+> -	u8 *p = data;
+> +	const char *str;
+>   	int i;
+>   
+>   	switch (stringset) {
+>   	case ETH_SS_TEST:
+> -		memcpy(data, *igc_gstrings_test,
+> -		       IGC_TEST_LEN * ETH_GSTRING_LEN);
+> +		for (i = 0; i < IGC_TEST_LEN; i++)
+> +			ethtool_puts(&data, igc_gstrings_test[i]);
+>   		break;
+>   	case ETH_SS_STATS:
+>   		for (i = 0; i < IGC_GLOBAL_STATS_LEN; i++)
+> -			ethtool_puts(&p, igc_gstrings_stats[i].stat_string);
+> -		for (i = 0; i < IGC_NETDEV_STATS_LEN; i++)
+> -			ethtool_puts(&p, igc_gstrings_net_stats[i].stat_string);
+> +			ethtool_puts(&data, igc_gstrings_stats[i].stat_string);
+> +		for (i = 0; i < IGC_NETDEV_STATS_LEN; i++) {
+> +			str = igc_gstrings_net_stats[i].stat_string;
+> +			ethtool_puts(&data, str);
+> +		}
+>   		for (i = 0; i < adapter->num_tx_queues; i++) {
+> -			ethtool_sprintf(&p, "tx_queue_%u_packets", i);
+> -			ethtool_sprintf(&p, "tx_queue_%u_bytes", i);
+> -			ethtool_sprintf(&p, "tx_queue_%u_restart", i);
+> +			ethtool_sprintf(&data, "tx_queue_%u_packets", i);
+> +			ethtool_sprintf(&data, "tx_queue_%u_bytes", i);
+> +			ethtool_sprintf(&data, "tx_queue_%u_restart", i);
+>   		}
+>   		for (i = 0; i < adapter->num_rx_queues; i++) {
+> -			ethtool_sprintf(&p, "rx_queue_%u_packets", i);
+> -			ethtool_sprintf(&p, "rx_queue_%u_bytes", i);
+> -			ethtool_sprintf(&p, "rx_queue_%u_drops", i);
+> -			ethtool_sprintf(&p, "rx_queue_%u_csum_err", i);
+> -			ethtool_sprintf(&p, "rx_queue_%u_alloc_failed", i);
+> +			ethtool_sprintf(&data, "rx_queue_%u_packets", i);
+> +			ethtool_sprintf(&data, "rx_queue_%u_bytes", i);
+> +			ethtool_sprintf(&data, "rx_queue_%u_drops", i);
+> +			ethtool_sprintf(&data, "rx_queue_%u_csum_err", i);
+> +			ethtool_sprintf(&data, "rx_queue_%u_alloc_failed", i);
+>   		}
+>   		/* BUG_ON(p - data != IGC_STATS_LEN * ETH_GSTRING_LEN); */
+>   		break;
+>   	case ETH_SS_PRIV_FLAGS:
+> -		memcpy(data, igc_priv_flags_strings,
+> -		       IGC_PRIV_FLAGS_STR_LEN * ETH_GSTRING_LEN);
+> +		for (i = 0; i < IGC_PRIV_FLAGS_STR_LEN; i++)
+> +			ethtool_puts(&data, igc_priv_flags_strings[i]);
+>   		break;
+>   	}
+>   }
+
+ditto
+
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+> index 9482e0cca8b7..b3b2e38c2ae6 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+> @@ -129,7 +129,7 @@ static const char ixgbe_gstrings_test[][ETH_GSTRING_LEN] = {
+>   	"Interrupt test (offline)", "Loopback test  (offline)",
+>   	"Link test   (on/offline)"
+>   };
+> -#define IXGBE_TEST_LEN sizeof(ixgbe_gstrings_test) / ETH_GSTRING_LEN
+> +#define IXGBE_TEST_LEN ARRAY_SIZE(ixgbe_gstrings_test)
+>   
+>   static const char ixgbe_priv_flags_strings[][ETH_GSTRING_LEN] = {
+>   #define IXGBE_PRIV_FLAGS_LEGACY_RX	BIT(0)
+> @@ -1409,38 +1409,40 @@ static void ixgbe_get_ethtool_stats(struct net_device *netdev,
+>   static void ixgbe_get_strings(struct net_device *netdev, u32 stringset,
+>   			      u8 *data)
+>   {
+> +	const char *str;
+>   	unsigned int i;
+> -	u8 *p = data;
+>   
+>   	switch (stringset) {
+>   	case ETH_SS_TEST:
+>   		for (i = 0; i < IXGBE_TEST_LEN; i++)
+> -			ethtool_puts(&p, ixgbe_gstrings_test[i]);
+> +			ethtool_puts(&data, ixgbe_gstrings_test[i]);
+>   		break;
+>   	case ETH_SS_STATS:
+> -		for (i = 0; i < IXGBE_GLOBAL_STATS_LEN; i++)
+> -			ethtool_puts(&p, ixgbe_gstrings_stats[i].stat_string);
+> +		for (i = 0; i < IXGBE_GLOBAL_STATS_LEN; i++) {
+> +			str = ixgbe_gstrings_stats[i].stat_string;
+> +			ethtool_puts(&data, str);
+> +		}
+>   		for (i = 0; i < netdev->num_tx_queues; i++) {
+> -			ethtool_sprintf(&p, "tx_queue_%u_packets", i);
+> -			ethtool_sprintf(&p, "tx_queue_%u_bytes", i);
+> +			ethtool_sprintf(&data, "tx_queue_%u_packets", i);
+> +			ethtool_sprintf(&data, "tx_queue_%u_bytes", i);
+>   		}
+>   		for (i = 0; i < IXGBE_NUM_RX_QUEUES; i++) {
+> -			ethtool_sprintf(&p, "rx_queue_%u_packets", i);
+> -			ethtool_sprintf(&p, "rx_queue_%u_bytes", i);
+> +			ethtool_sprintf(&data, "rx_queue_%u_packets", i);
+> +			ethtool_sprintf(&data, "rx_queue_%u_bytes", i);
+>   		}
+>   		for (i = 0; i < IXGBE_MAX_PACKET_BUFFERS; i++) {
+> -			ethtool_sprintf(&p, "tx_pb_%u_pxon", i);
+> -			ethtool_sprintf(&p, "tx_pb_%u_pxoff", i);
+> +			ethtool_sprintf(&data, "tx_pb_%u_pxon", i);
+> +			ethtool_sprintf(&data, "tx_pb_%u_pxoff", i);
+>   		}
+>   		for (i = 0; i < IXGBE_MAX_PACKET_BUFFERS; i++) {
+> -			ethtool_sprintf(&p, "rx_pb_%u_pxon", i);
+> -			ethtool_sprintf(&p, "rx_pb_%u_pxoff", i);
+> +			ethtool_sprintf(&data, "rx_pb_%u_pxon", i);
+> +			ethtool_sprintf(&data, "rx_pb_%u_pxoff", i);
+>   		}
+>   		/* BUG_ON(p - data != IXGBE_STATS_LEN * ETH_GSTRING_LEN); */
+>   		break;
+>   	case ETH_SS_PRIV_FLAGS:
+> -		memcpy(data, ixgbe_priv_flags_strings,
+> -		       IXGBE_PRIV_FLAGS_STR_LEN * ETH_GSTRING_LEN);
+> +		for (i = 0; i < IXGBE_PRIV_FLAGS_STR_LEN; i++)
+> +			ethtool_puts(&data, ixgbe_priv_flags_strings[i]);
+>   	}
+>   }
+>   
+
+ditto here
