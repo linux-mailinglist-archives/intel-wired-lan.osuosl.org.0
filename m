@@ -2,149 +2,240 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E4DFB9B39A5
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Oct 2024 19:52:15 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 96CCB9B39B1
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Oct 2024 19:54:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E30864056B;
-	Mon, 28 Oct 2024 18:52:12 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 46C3E4059F;
+	Mon, 28 Oct 2024 18:54:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id K7t_XS-537oN; Mon, 28 Oct 2024 18:52:12 +0000 (UTC)
+ id 0tox2Di1UtVK; Mon, 28 Oct 2024 18:54:07 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D8792401A3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 333004058A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1730141531;
-	bh=x499EQiG2Wmo1EmlB324vwf45OQNiIQd6JHEbQS0ZZ0=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1730141647;
+	bh=isVGouseWroNVsvsN1h9KwN6LHRPXQezwH+MAB1ChoY=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=HugpD04ZaEK70QRCSex/nEuhc6R+hIwkLIjUDlADhDrq/TrNXmcdMET4uCyEsuRbp
-	 NUji5mtZMpSNHPDueLWctt608GoPvJl25WX/2sdvI8JsfodbWlcfqd8YlGTEIehdQ7
-	 EL9403C1vYwcw0eN5yxEilk06QOBx3QchX9YEzYqDoGzPnVPWGUi+bB+RhRsvHtDH5
-	 RMF5tqOqBhcu2sDgfL1ujGR9cFyCwznH5KuevIe4NM7IpCnbjILRTN/Wz6km7Ppo6T
-	 l/8l4Si6QyL4eqvqdqSGPaKKCoJrnF/OcHKw/IcIGgKDZIZxfRwS/JFghZrxIl0fZx
-	 Q1Ec+fnKWu56w==
+	b=lup7erF7YJhruCfNjzXIdQmaBZCNZu0XPfoOTngVBqAbIvac3tW73fSxIg6uY2+8Y
+	 jzh4vuR3p2lTNj1TmpZsEMTldsGUJSeF3GlTSSHB7pQ5WqTZeCvDP2LClcZxOEQCMP
+	 l8Q/0t759vbMN3QGEorbEKPQZmz+zaSHZWRxsVTqcRynDS4vscYnrLjpie7MSnUL5J
+	 HZYrbgfxaiuRu8fxB3DlBPdrnmJcWlVragpQS1uyzeBN2HJpQqW6myT7CbatevnkbT
+	 IOj7p3AJVWcQeaiMl+dkg2uS174vHzOClEcrVuMviYKtC4cKgX1fJS4KNAHDeX1a/I
+	 OxFqfHaW31DPQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D8792401A3;
-	Mon, 28 Oct 2024 18:52:10 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 333004058A;
+	Mon, 28 Oct 2024 18:54:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 229CAAEE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 18:52:09 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id D40A04EC0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 18:54:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0F2A440289
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 18:52:09 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id C23CF40979
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 18:54:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pTqQHlChVDyg for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Oct 2024 18:52:07 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::336; helo=mail-ot1-x336.google.com;
- envelope-from=jdamato@fastly.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 04721408EA
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 04721408EA
-Received: from mail-ot1-x336.google.com (mail-ot1-x336.google.com
- [IPv6:2607:f8b0:4864:20::336])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 04721408EA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 18:52:06 +0000 (UTC)
-Received: by mail-ot1-x336.google.com with SMTP id
- 46e09a7af769-71811c7eb8dso2187264a34.0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 11:52:06 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730141525; x=1730746325;
- h=in-reply-to:content-disposition:mime-version:references
- :mail-followup-to:message-id:subject:to:from:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=x499EQiG2Wmo1EmlB324vwf45OQNiIQd6JHEbQS0ZZ0=;
- b=NaMYY52tTTFXTiCD5EepnStTqEEEtSNc9f8xtsB8YbJkQ+FTgGuMMwOB+jBuzv7Ql9
- zHGkZHa4d5hAOVHE9olflPyUC0uHL2fGxnc5Txxgh8e2hrHOVhiuZ5oaHnJLAr5YcFhC
- qYjgICAYp/cnOoO3OoNAs32jLooptGUg7lybMy/pVldSizatQ2GdZ9uuPQMjBDo5g1v3
- r1F6dcTQL6dB96cgLWFPCssK4r06kgn8pLGOtwjnq9cmdHQ+mo9cNjEf50gVa3Ak7Zx3
- LFQ+4d1lmo4WdDzkECTOPyD8lI3y8sQNTzZhSKL4gzXoyB3GbWCZXRip44iWQ3usyoMH
- tcJg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXWkuRQZX9sHLj3fTt+lkTp6bkTLs3vA0Je1bRzNuGL4xSV5UjQKpYacq23yPY0ESahHBWOyAAyjH7HD+oL5/4=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Ywh1u//wxImzbk0egHeuxEIsnCn8Yc3lwjOMawP0hOfnVkwctBh
- nqvWKtJY9zLA1Se2ZqkyHscBCI9uz4gclN4zgnYBhaiWC+f7Ik8xEy9oTOwyJLhKvHtw7Zt3hZm
- 8
-X-Google-Smtp-Source: AGHT+IEZR/gF4/j9FU35yRUYoMuV73t1c1oyFaI+RLQe2U6webVUSu1hPPVgOwfuPAwgI/xzDKuJQw==
-X-Received: by 2002:a05:6a20:cfa7:b0:1cf:6d20:4d6 with SMTP id
- adf61e73a8af0-1d9a83d5a7bmr12156551637.16.1730141514826; 
- Mon, 28 Oct 2024 11:51:54 -0700 (PDT)
-Received: from LQ3V64L9R2 (c-24-6-151-244.hsd1.ca.comcast.net. [24.6.151.244])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-7205793175bsm6116781b3a.48.2024.10.28.11.51.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 28 Oct 2024 11:51:54 -0700 (PDT)
-Date: Mon, 28 Oct 2024 11:51:51 -0700
-From: Joe Damato <jdamato@fastly.com>
-To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "Keller, Jacob E" <jacob.e.keller@intel.com>,
- "kurt@linutronix.de" <kurt@linutronix.de>,
- "Gomes, Vinicius" <vinicius.gomes@intel.com>,
- "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
- "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- open list <linux-kernel@vger.kernel.org>,
+ id JpnJbc5xNN36 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Oct 2024 18:54:04 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
+ helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 5381340966
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5381340966
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5381340966
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Oct 2024 18:54:03 +0000 (UTC)
+X-CSE-ConnectionGUID: gysohoooQfqijHewL7kdEQ==
+X-CSE-MsgGUID: /OdGDpF8Qo6fDiucgVdFgQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="47215203"
+X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; d="scan'208";a="47215203"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Oct 2024 11:54:03 -0700
+X-CSE-ConnectionGUID: t8F6/5trSrucMDXdUZalQQ==
+X-CSE-MsgGUID: v0429yNOQh243m66uSeqoA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,239,1725346800"; d="scan'208";a="81636104"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by orviesa009.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 28 Oct 2024 11:54:03 -0700
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Mon, 28 Oct 2024 11:54:02 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Mon, 28 Oct 2024 11:54:02 -0700
+Received: from NAM04-MW2-obe.outbound.protection.outlook.com (104.47.73.176)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Mon, 28 Oct 2024 11:54:02 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=QNa42N9w1BbkVjOxtw2zWzyM0dvHbHoAcrnLv6blkDaFMOmrCEHon1Rd2qA4nVyScrrbc+IB3Y18jj0Iub1yI05HR81KhWGivexIYRTO/c5BQ5vDPVNn4U6wI9N1li49yYJLocnWLx+QBM0HNehbtm6+vokobI2K2eoqikmsYGI9szdSkXp1xODcIY86Q/cLEFVKXSGwrfm/IxUM9/8A9fn5QTz988PZ0mN1YELmAgwlJsDteNE4PemDiio8+gcwaFdCerksM4Az4sabB2tgV+txrCkGPTZ7M9KwLP8rfXI1TwlQYUR8DVLAV7QPpt65kO8EUvPTCTVsNhik7ILQ0A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=isVGouseWroNVsvsN1h9KwN6LHRPXQezwH+MAB1ChoY=;
+ b=lQUbnua9f/ZqR8jJJATh4nawP08J2sSC29NByc9qN4Sxm3HD5RNWP/TodjFAMzXI7zHwty/nhgqhtfcPczcxQ9hgGCJ+DCv8VTBuUDE89KpiXBsIwB5DCWmVPrsDkm8/2y/2sbDLWjJxTRULElJPFOMeKoDLXGqABwPlrufb3GAl8CN0zueBAfnZoGuV1pnoFiwEzS90Or0uuefueOX2Qq37axAd7f4TXwezvPnJFfpmdpe/5fvmp9Ynk2vU/tqlV3N/dUAxZOl2uHSNLKRzuKNbxbs4hkxBsFcjxw1ELu+XulcDhogkvLev1/oWtzHK/r6ksqnK6+CIfUl3IeSxVQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
+ by MN2PR11MB4551.namprd11.prod.outlook.com (2603:10b6:208:269::9)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8093.23; Mon, 28 Oct
+ 2024 18:53:59 +0000
+Received: from CO1PR11MB5089.namprd11.prod.outlook.com
+ ([fe80::7de8:e1b1:a3b:b8a8]) by CO1PR11MB5089.namprd11.prod.outlook.com
+ ([fe80::7de8:e1b1:a3b:b8a8%4]) with mapi id 15.20.8093.025; Mon, 28 Oct 2024
+ 18:53:59 +0000
+Message-ID: <529d08d7-94ee-43da-904e-cf89823a59fb@intel.com>
+Date: Mon, 28 Oct 2024 11:53:55 -0700
+User-Agent: Mozilla Thunderbird
+To: Joe Damato <jdamato@fastly.com>, "Lifshits, Vitaly"
+ <vitaly.lifshits@intel.com>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>, "kurt@linutronix.de" <kurt@linutronix.de>, "Gomes,
+ Vinicius" <vinicius.gomes@intel.com>, "Nguyen, Anthony L"
+ <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
+ <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David
+ S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "Jakub
+ Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "Alexei
+ Starovoitov" <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ "Jesper Dangaard Brouer" <hawk@kernel.org>, John Fastabend
+ <john.fastabend@gmail.com>, "moderated list:INTEL ETHERNET DRIVERS"
+ <intel-wired-lan@lists.osuosl.org>, open list <linux-kernel@vger.kernel.org>, 
  "open list:XDP (eXpress Data Path)" <bpf@vger.kernel.org>,
- stanislaw.gruszka@linux.intel.com
-Message-ID: <Zx_dRzBBtPK1pbDl@LQ3V64L9R2>
-Mail-Followup-To: Joe Damato <jdamato@fastly.com>,
- "Lifshits, Vitaly" <vitaly.lifshits@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "Keller, Jacob E" <jacob.e.keller@intel.com>,
- "kurt@linutronix.de" <kurt@linutronix.de>,
- "Gomes, Vinicius" <vinicius.gomes@intel.com>,
- "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
- "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- open list <linux-kernel@vger.kernel.org>,
- "open list:XDP (eXpress Data Path)" <bpf@vger.kernel.org>,
- stanislaw.gruszka@linux.intel.com
+ <stanislaw.gruszka@linux.intel.com>
 References: <20241022215246.307821-1-jdamato@fastly.com>
  <20241022215246.307821-3-jdamato@fastly.com>
  <d7799132-7e4a-0ac2-cbda-c919ce434fe2@intel.com>
  <Zx-yzhq4unv0gsVX@LQ3V64L9R2> <Zx-1BhZlXRQCImex@LQ3V64L9R2>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Language: en-US
+From: Jacob Keller <jacob.e.keller@intel.com>
 In-Reply-To: <Zx-1BhZlXRQCImex@LQ3V64L9R2>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fastly.com; s=google; t=1730141525; x=1730746325; darn=lists.osuosl.org;
- h=in-reply-to:content-disposition:mime-version:references
- :mail-followup-to:message-id:subject:to:from:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=x499EQiG2Wmo1EmlB324vwf45OQNiIQd6JHEbQS0ZZ0=;
- b=AJWFSlRIj86+gHM9JIvqYW9sb5vGRyXIlZRlhP0UNJyFygYbR4HLbppjulRTlm3rAn
- XWKsdvEOfTZTkY5lEPB6KHXyR36Wr4mIw2tX+N+nIlb80wWAeYoS5EbtBfhe6pMyNfn1
- JSK41EFaO1iS39Ry5NbVbt12pc2etL/h8FALo=
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: SJ0PR05CA0204.namprd05.prod.outlook.com
+ (2603:10b6:a03:330::29) To CO1PR11MB5089.namprd11.prod.outlook.com
+ (2603:10b6:303:9b::16)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CO1PR11MB5089:EE_|MN2PR11MB4551:EE_
+X-MS-Office365-Filtering-Correlation-Id: a66eb47c-07cf-4d15-2cde-08dcf781e1c9
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|366016|376014|7416014|921020; 
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?cWZtSDNpaEZtVHBvTVN3Q2xmUkVHUkFYeGs5SndFVExLZUd2RUg0RnBJMnkr?=
+ =?utf-8?B?ODd1N05lTzE4R0l5MUxydXgySndWQ1RBOERqNm83cE8zNlBNZnh5eS8rN0d5?=
+ =?utf-8?B?VG5VMkdjZkR1Vk5hZFo5OUIrbzY0MEVMUjNZU0p2R2xQclVQVHJEWjRZSFVJ?=
+ =?utf-8?B?MER4aklqdnhIL0RmclNmc1JwdUJxS2tPSHVrNGJwc0FNKzB1Mmp2alpiSXpI?=
+ =?utf-8?B?UENLbjlsWmVQNEM5NndOaGFRRzRlNWtBS2hreDg0ZHA3SlJ6UjIrN0t2MGUr?=
+ =?utf-8?B?YzIwTVNPQkdMMUhCbjRwVDgyTEhjN1lrbnMxblBVNjlIM1kyU3JwN1NxNUZx?=
+ =?utf-8?B?ZWhrMGtsaDk5V1VDQkVISDI1TFpEMWhLWk1FSkNFRXBXMnY3V0I5NW1LWisw?=
+ =?utf-8?B?SzBneWZHcVJUMjlleHdTd1JrN3QwTmpLSmgxNTZzMGVPN1ZFUXhMNFo3WEJO?=
+ =?utf-8?B?bFNFM1ROWGQyNmxTT0NJODFpZ0NpVHBlTFg4eEhmRTZtUzRGUWUwY1ZMWWlT?=
+ =?utf-8?B?UERjc1g5WFVMMFJ0T096ZS9pa2NwVElRblU0dEkwNjZZd1Z1TVRrSVJ1clRM?=
+ =?utf-8?B?NHRCVE5QSGdiNTd4OG54SmVPZVJkcW5HbWI3L3B0VlBnakR0V0dxUEpEREpv?=
+ =?utf-8?B?UFV1SWZWaU55ZGg5M3h1aXhpWkxsUVpCbVYyWXFtV2hMV25pMlBpY1NSOXVL?=
+ =?utf-8?B?dzVUN3A1RFlXenRpWnVlbFFFNmZ3dGhmeHhXVFJIb3pvVmM0Z1Rud0duQW5N?=
+ =?utf-8?B?M01YVXN1cHFkbHhsYnhlSnB2TWRvbVZxbWh2VzhwV21TWUJVWlYzQlJKUHNy?=
+ =?utf-8?B?dWtaUDBPRjc3cWI5VWxIQkI1Q0ZNMVJiTmNXcjg2SkVrRXkya1BoTXB6MW5P?=
+ =?utf-8?B?aUNwSlRnV1hGVCtmMnl0Yks3SkMwNFhzV1M5dTU4ajExUEJvVVlTMU9JejNr?=
+ =?utf-8?B?VmY2SndIMU02RWdWb2hKUFNGWDRrd29aY056R0lrRmFBdzEwd0xTVFFHL3g2?=
+ =?utf-8?B?OWU0M2RMS2xuUDE3b3EwNXhEUTgrSGc1Q0FNN2JYV2cwVjRrUlQ5WmZxL0hi?=
+ =?utf-8?B?aHdOY29naG9uODRVL3Zuc2JKakIvdDd6YzM3eW1wK1lxYjdKQ0orZklwVlVM?=
+ =?utf-8?B?eTJDNS9Wa1AyU20vU1NZeS95WVJDaXl5aGh0bTZjZEZkaGtvbTFYb2VUQ1Zw?=
+ =?utf-8?B?QS9lTDdFa2tJVmVFWDQzT1cvRUgrOWhtcWxvTnJoWGM0SXRYcjc5V2N3OC9o?=
+ =?utf-8?B?QzREbHNzSnc0OHVSMnhTWVVMaW9paENDTStQMVhuS1grWmswV2Y4cWVGT1Ev?=
+ =?utf-8?B?NUNQT2FPRDhkYmJsVURNbms4U2xvMzgzdmlPc1poZTZHUnk5UVpBN2pGMVBu?=
+ =?utf-8?B?dkxucUVhMEIxbjNoU3R3YXFkQXdyaUtma0tHNGNGY0pGK1hSOXpNWm9aaUM3?=
+ =?utf-8?B?RzRwcVpodDVGQkVobldRNEtCSjVQTmd4TG5tVDBUWDUxMVQrVWxnSjk2ZlR6?=
+ =?utf-8?B?dmoxWTUzYTlQRTZwS1dWTEp5WlMyUmtSU01zS1R5UEl0R1ppMGRRMURVMHI1?=
+ =?utf-8?B?SURBZHVKQVFsSXh1N2RWNDVpMzNWYlZUY3BEUUF2ci9MWnVjeFVlc205a3Jn?=
+ =?utf-8?B?Z0ZRNFVYSVVLZ25uVmxXNWhYV3RQbFBBSlJhdFhKbGxEcGROREZ3MW5FMjhz?=
+ =?utf-8?B?a3VsTTZGNVU4TndqMldoc2doSzdwc01na0RVSHA1ZWJ1VVhISmxuNWllUWEy?=
+ =?utf-8?B?Y0pQQTBtN01tOG50bzlzNXp3NDBVTmlRSE1tU3BMV3VyTm5ZR1oybTZ0SHAy?=
+ =?utf-8?Q?v6wXpAH39Q64mYPY9WSPYGo6GLYjmK200roQ0=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CO1PR11MB5089.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(376014)(7416014)(921020); DIR:OUT; SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YjlQYmljYlNmMTE0TFFXd3pEL1lNUVlsWU94UHNiYkpqSzZ2MXZIQVhBQlAw?=
+ =?utf-8?B?Y0RyUjAzTEFVTUkrWUt1d1RTRzVWNXdJNXpMakR5M2Nnc1o3YWtiOUc5U1hQ?=
+ =?utf-8?B?dS9xc3czYUZYeVBJM0o3MmtUWWl2cmZlNytJL0ZCdnV1WFh0R05ldWNrY3dI?=
+ =?utf-8?B?U0NCeVBqWTJHT0FCQ1pDYjZ2SnlCVzQ3WVRMZDNBNjRkWk9MTEwvTlRWZ0xT?=
+ =?utf-8?B?c3EyYzJYTitBUXl3cHhpRDhxWDN5WUZtTlNIeEU4elFzSytrRDZjNmNTQkdG?=
+ =?utf-8?B?RGNFaTZwUU1kUE5FUjRyTDFtV1c4YVVEUjVHbnFxS21wbWx3bnNjWUx6eHhJ?=
+ =?utf-8?B?QUZVQ2FiVVhaYjBzWHhVdTZnckhpaWlFcm8zdGtrSlFPRjc0UExiZlQxWE94?=
+ =?utf-8?B?aFM0YjVTSWJ4bWRMYXN0cXovNmNabkJYdmZLdkpRQndyVEx0bkZUdUI0VC9M?=
+ =?utf-8?B?aEkranJFWU50NVJqYm9EYmVweDRTTlNZenJDWFJhYnFyQUVFWlFqR0NCVjcr?=
+ =?utf-8?B?eGR0Z0p2bDVuU1A1S21OY1JlMmJVcEY1aFBKODBJNFgwV2dGVi9OQmdqOVpm?=
+ =?utf-8?B?WVZwcjRCZVc0eURrQVp3MGVpeVRqS21UMnE5MzZpOGJvdHgydnVkOUg5TTlC?=
+ =?utf-8?B?WWd4aHNId09DWitmU01rODlmTE9YcXZtWlZYVFgvU2NBcWI0dGxDblJWbHBh?=
+ =?utf-8?B?YURzbXFvMkFCL0RyeVNjTTBOSHdRMnI3eFByNmZqaG5pTzZDeXlKOEEvNTRn?=
+ =?utf-8?B?SEw5MzdWWjhTV1d1YlUrRXJMNEJUeisvaE5zbVhaaCs4YzFUWnY2WXl6MGs2?=
+ =?utf-8?B?dFZ0bVJjQmxBT3JJdWRZUHYyMFNwOGNISG1rb0tldHFnV0ZMU0V6a3M1Yllv?=
+ =?utf-8?B?aGRLQmF5cy9aOEt3WVNGZ2luUnowa1FxblpPSllaWE93RHlwMlhEclFJejgv?=
+ =?utf-8?B?bUpCSzVROGNGTXhNNVRleDhycUJrRnVsUUZMUUZ0eDFjWUJJdVRaSXNQaVpB?=
+ =?utf-8?B?ZEZjc3VCK0RlUlE1eWovbTNLWFdlOHBmVXhZV1RGeHRodWdFUThDaTZVVzlS?=
+ =?utf-8?B?Wlo5ZS90ajlxK3RFQ2RVeWluejVYQnc5Q0kxTGZiOWk4YVVGeG9NYXhsTm1Z?=
+ =?utf-8?B?UkRSUXRKbDgzSVc2NmhKVlJxQWpHSzNrYStGc1UwZElybnAwV3o2anc4eG9r?=
+ =?utf-8?B?Q1dxTHpKeDNWNjgyQVRVZmdGbzIzVWh5Wkg3dW8zb2RJckJ6aHJ4RDJ3SUxT?=
+ =?utf-8?B?NXU0VFdOS2oya0d3YWtRM3FHMERFRkM2SUYxY1FvWEhVdHNwOWRsOFA1TTJx?=
+ =?utf-8?B?THRoemhQSUVyTTJocGk2NWJqOFFHL1V3RDhZVjdzeGpCM09zdmNEZWd0QXBI?=
+ =?utf-8?B?QStPRmdFaWdXNitmelN2ZDMvOXhSQUNLZEV6V3FRNHcwYmZNUzZFQ2IxN2p3?=
+ =?utf-8?B?V2JJK05ZdStDakpSeTZqdUxuMmN6OURUUjEyOTcxY0I2ME5FT09aaGdNWUxZ?=
+ =?utf-8?B?bURhTFA2bWVnWDQ0SFpWQm9UVFE3eTBJV2JVbktMRm12QW5qNUNrc2pRWXlu?=
+ =?utf-8?B?d3p0b2taN3EvTnc5Y3llbG1EYjZieTJiU0ttSnN6bmlwb090SGEzNWo0U0xt?=
+ =?utf-8?B?dVdWU0hNZFhjd2Q4ZndTVUE0ZExGTzFZRDBMQnZDS0o4UEJJamJPSzVlRXp3?=
+ =?utf-8?B?UjlIYStyMUs4Zm9UYWlKZXQvQTZxWUFOM2xsdGo1N2RRTWU1bFJpTlVPbHBi?=
+ =?utf-8?B?akMzaGl2djBNb0tVd2FFRHQzUlA1OXB2Z0J0aUNqaTlITnU4ZnIzbVNQYnJz?=
+ =?utf-8?B?cGZpb1BLL3EwaERMNnd1c1hYRWNsZHRDckVnZml1ZHJTYUNKaHJXUUl6YlNn?=
+ =?utf-8?B?U2JDQi9SZ3JlZGd4NVB0Yit1K1J0S2hUaC9ta1Y5QUhPZE9XMFVaNlBVV1h5?=
+ =?utf-8?B?QUNyaVhQTkladWtpd0xPczV3d2NYNlpxZEVIVlR4ZVFqUGlVbnQ2dFJoSVY5?=
+ =?utf-8?B?OC82WE9EQXVDdHZVSjN2RHJXOWdEa2dRRW1iUVVHelRsL0c0TWdWRWtVTG9G?=
+ =?utf-8?B?dGJ6V1Z1ZVZZQis4RmVEN0dRak9XU0R6dGxJcDU1WW90b0hWbjUwbzMzZ1JF?=
+ =?utf-8?B?TVFPUkE3cjAzQkhrbkNEMFlJZm4yMG4zdnpxNm13ZEZPRStPbEVqL004aVVi?=
+ =?utf-8?B?cEE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: a66eb47c-07cf-4d15-2cde-08dcf781e1c9
+X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Oct 2024 18:53:59.1858 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: t6hmPH9u5lZoe2p3fRYtKz4DsO1rJXmaNBf1KTG8yxCossOZwaVmpz4CrV28ujDS8nz8ucVkWHDkJvLDwBH6RWakuITKp//e2Oa83jhRofM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4551
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1730141644; x=1761677644;
+ h=message-id:date:subject:to:references:from:in-reply-to:
+ content-transfer-encoding:mime-version;
+ bh=VZ0e1DQ0PMafaMGfDAEc/KikTp4SZDuohQnh0BzK31w=;
+ b=fE/Gbx/kODLjkQ9AtQtsmVoWz8vs1BE3bYj5C9G8g0F49UIzrVmHGtkp
+ lIOadCqK678qnua71EH96/eSskB+6vwqiC9tQq7pFsTOAc8tCKGaRfycv
+ G3Q1UEwAYzbTeWWmJMBuegyTeEouFTz5lCSq0mGidI4ifB3hwavDRsgbZ
+ HdG+dbJGMXX9uQH8f8zt2K7fIUQe3yDE4YG3nwY2EFC5S+8SHC4VED0h3
+ rYGVLmXDwfpatlaND2NMsfvvmblt1EpLoMM+4vszUYH4Sfi7UY+/dCvL+
+ IMAwz3weQ19scplv8Bynx4H27zILeAING0M+DNjid0M7VEWt5sUPS8t6p
+ A==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=fastly.com
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=fastly.com header.i=@fastly.com header.a=rsa-sha256
- header.s=google header.b=AJWFSlRI
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=fE/Gbx/k
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
 Subject: Re: [Intel-wired-lan] [iwl-next v4 2/2] igc: Link queues to NAPI
  instances
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -162,226 +253,9 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Oct 28, 2024 at 09:00:06AM -0700, Joe Damato wrote:
-> On Mon, Oct 28, 2024 at 08:50:38AM -0700, Joe Damato wrote:
-> > On Sun, Oct 27, 2024 at 11:49:33AM +0200, Lifshits, Vitaly wrote:
-> > > 
-> > > On 10/23/2024 12:52 AM, Joe Damato wrote:
-> > > > Link queues to NAPI instances via netdev-genl API so that users can
-> > > > query this information with netlink. Handle a few cases in the driver:
-> > > >    1. Link/unlink the NAPIs when XDP is enabled/disabled
-> > > >    2. Handle IGC_FLAG_QUEUE_PAIRS enabled and disabled
-> > > > 
-> > > > Example output when IGC_FLAG_QUEUE_PAIRS is enabled:
-> > > > 
-> > > > $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
-> > > >                           --dump queue-get --json='{"ifindex": 2}'
-> > > > 
-> > > > [{'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'rx'},
-> > > >   {'id': 1, 'ifindex': 2, 'napi-id': 8194, 'type': 'rx'},
-> > > >   {'id': 2, 'ifindex': 2, 'napi-id': 8195, 'type': 'rx'},
-> > > >   {'id': 3, 'ifindex': 2, 'napi-id': 8196, 'type': 'rx'},
-> > > >   {'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'tx'},
-> > > >   {'id': 1, 'ifindex': 2, 'napi-id': 8194, 'type': 'tx'},
-> > > >   {'id': 2, 'ifindex': 2, 'napi-id': 8195, 'type': 'tx'},
-> > > >   {'id': 3, 'ifindex': 2, 'napi-id': 8196, 'type': 'tx'}]
-> > > > 
-> > > > Since IGC_FLAG_QUEUE_PAIRS is enabled, you'll note that the same NAPI ID
-> > > > is present for both rx and tx queues at the same index, for example
-> > > > index 0:
-> > > > 
-> > > > {'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'rx'},
-> > > > {'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'tx'},
-> > > > 
-> > > > To test IGC_FLAG_QUEUE_PAIRS disabled, a test system was booted using
-> > > > the grub command line option "maxcpus=2" to force
-> > > > igc_set_interrupt_capability to disable IGC_FLAG_QUEUE_PAIRS.
-> > > > 
-> > > > Example output when IGC_FLAG_QUEUE_PAIRS is disabled:
-> > > > 
-> > > > $ lscpu | grep "On-line CPU"
-> > > > On-line CPU(s) list:      0,2
-> > > > 
-> > > > $ ethtool -l enp86s0  | tail -5
-> > > > Current hardware settings:
-> > > > RX:		n/a
-> > > > TX:		n/a
-> > > > Other:		1
-> > > > Combined:	2
-> > > > 
-> > > > $ cat /proc/interrupts  | grep enp
-> > > >   144: [...] enp86s0
-> > > >   145: [...] enp86s0-rx-0
-> > > >   146: [...] enp86s0-rx-1
-> > > >   147: [...] enp86s0-tx-0
-> > > >   148: [...] enp86s0-tx-1
-> > > > 
-> > > > 1 "other" IRQ, and 2 IRQs for each of RX and Tx, so we expect netlink to
-> > > > report 4 IRQs with unique NAPI IDs:
-> > > > 
-> > > > $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
-> > > >                           --dump napi-get --json='{"ifindex": 2}'
-> > > > [{'id': 8196, 'ifindex': 2, 'irq': 148},
-> > > >   {'id': 8195, 'ifindex': 2, 'irq': 147},
-> > > >   {'id': 8194, 'ifindex': 2, 'irq': 146},
-> > > >   {'id': 8193, 'ifindex': 2, 'irq': 145}]
-> > > > 
-> > > > Now we examine which queues these NAPIs are associated with, expecting
-> > > > that since IGC_FLAG_QUEUE_PAIRS is disabled each RX and TX queue will
-> > > > have its own NAPI instance:
-> > > > 
-> > > > $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
-> > > >                           --dump queue-get --json='{"ifindex": 2}'
-> > > > [{'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'rx'},
-> > > >   {'id': 1, 'ifindex': 2, 'napi-id': 8194, 'type': 'rx'},
-> > > >   {'id': 0, 'ifindex': 2, 'napi-id': 8195, 'type': 'tx'},
-> > > >   {'id': 1, 'ifindex': 2, 'napi-id': 8196, 'type': 'tx'}]
-> > > > 
-> > > > Signed-off-by: Joe Damato <jdamato@fastly.com>
-> > > > Acked-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-> > > > ---
-> > > >   v4:
-> > > >     - Add rtnl_lock/rtnl_unlock in two paths: igc_resume and
-> > > >       igc_io_error_detected. The code added to the latter is inspired by
-> > > >       a similar implementation in ixgbe's ixgbe_io_error_detected.
-> > > > 
-> > > >   v3:
-> > > >     - Replace igc_unset_queue_napi with igc_set_queue_napi(adapater, i,
-> > > >       NULL), as suggested by Vinicius Costa Gomes
-> > > >     - Simplify implemention of igc_set_queue_napi as suggested by Kurt
-> > > >       Kanzenbach, with a tweak to use ring->queue_index
-> > > > 
-> > > >   v2:
-> > > >     - Update commit message to include tests for IGC_FLAG_QUEUE_PAIRS
-> > > >       disabled
-> > > >     - Refactored code to move napi queue mapping and unmapping to helper
-> > > >       functions igc_set_queue_napi and igc_unset_queue_napi
-> > > >     - Adjust the code to handle IGC_FLAG_QUEUE_PAIRS disabled
-> > > >     - Call helpers to map/unmap queues to NAPIs in igc_up, __igc_open,
-> > > >       igc_xdp_enable_pool, and igc_xdp_disable_pool
-> > > > 
-> > > >   drivers/net/ethernet/intel/igc/igc.h      |  2 ++
-> > > >   drivers/net/ethernet/intel/igc/igc_main.c | 41 ++++++++++++++++++++---
-> > > >   drivers/net/ethernet/intel/igc/igc_xdp.c  |  2 ++
-> > > >   3 files changed, 40 insertions(+), 5 deletions(-)
-> > > > 
-> > > > diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-> > > > index eac0f966e0e4..b8111ad9a9a8 100644
-> > > > --- a/drivers/net/ethernet/intel/igc/igc.h
-> > > > +++ b/drivers/net/ethernet/intel/igc/igc.h
-> > > > @@ -337,6 +337,8 @@ struct igc_adapter {
-> > > >   	struct igc_led_classdev *leds;
-> > > >   };
-> > > > +void igc_set_queue_napi(struct igc_adapter *adapter, int q_idx,
-> > > > +			struct napi_struct *napi);
-> > > >   void igc_up(struct igc_adapter *adapter);
-> > > >   void igc_down(struct igc_adapter *adapter);
-> > > >   int igc_open(struct net_device *netdev);
-> > > > diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-> > > > index 7964bbedb16c..04aa216ef612 100644
-> > > > --- a/drivers/net/ethernet/intel/igc/igc_main.c
-> > > > +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-> > > > @@ -4948,6 +4948,22 @@ static int igc_sw_init(struct igc_adapter *adapter)
-> > > >   	return 0;
-> > > >   }
-> > > > +void igc_set_queue_napi(struct igc_adapter *adapter, int vector,
-> > > > +			struct napi_struct *napi)
-> > > > +{
-> > > > +	struct igc_q_vector *q_vector = adapter->q_vector[vector];
-> > > > +
-> > > > +	if (q_vector->rx.ring)
-> > > > +		netif_queue_set_napi(adapter->netdev,
-> > > > +				     q_vector->rx.ring->queue_index,
-> > > > +				     NETDEV_QUEUE_TYPE_RX, napi);
-> > > > +
-> > > > +	if (q_vector->tx.ring)
-> > > > +		netif_queue_set_napi(adapter->netdev,
-> > > > +				     q_vector->tx.ring->queue_index,
-> > > > +				     NETDEV_QUEUE_TYPE_TX, napi);
-> > > > +}
-> > > > +
-> > > >   /**
-> > > >    * igc_up - Open the interface and prepare it to handle traffic
-> > > >    * @adapter: board private structure
-> > > > @@ -4955,6 +4971,7 @@ static int igc_sw_init(struct igc_adapter *adapter)
-> > > >   void igc_up(struct igc_adapter *adapter)
-> > > >   {
-> > > >   	struct igc_hw *hw = &adapter->hw;
-> > > > +	struct napi_struct *napi;
-> > > >   	int i = 0;
-> > > >   	/* hardware has been reset, we need to reload some things */
-> > > > @@ -4962,8 +4979,11 @@ void igc_up(struct igc_adapter *adapter)
-> > > >   	clear_bit(__IGC_DOWN, &adapter->state);
-> > > > -	for (i = 0; i < adapter->num_q_vectors; i++)
-> > > > -		napi_enable(&adapter->q_vector[i]->napi);
-> > > > +	for (i = 0; i < adapter->num_q_vectors; i++) {
-> > > > +		napi = &adapter->q_vector[i]->napi;
-> > > > +		napi_enable(napi);
-> > > > +		igc_set_queue_napi(adapter, i, napi);
-> > > > +	}
-> > > >   	if (adapter->msix_entries)
-> > > >   		igc_configure_msix(adapter);
-> > > > @@ -5192,6 +5212,7 @@ void igc_down(struct igc_adapter *adapter)
-> > > >   	for (i = 0; i < adapter->num_q_vectors; i++) {
-> > > >   		if (adapter->q_vector[i]) {
-> > > >   			napi_synchronize(&adapter->q_vector[i]->napi);
-> > > > +			igc_set_queue_napi(adapter, i, NULL);
-> > > >   			napi_disable(&adapter->q_vector[i]->napi);
-> > > >   		}
-> > > >   	}
-> > > > @@ -6021,6 +6042,7 @@ static int __igc_open(struct net_device *netdev, bool resuming)
-> > > >   	struct igc_adapter *adapter = netdev_priv(netdev);
-> > > >   	struct pci_dev *pdev = adapter->pdev;
-> > > >   	struct igc_hw *hw = &adapter->hw;
-> > > > +	struct napi_struct *napi;
-> > > >   	int err = 0;
-> > > >   	int i = 0;
-> > > > @@ -6056,8 +6078,11 @@ static int __igc_open(struct net_device *netdev, bool resuming)
-> > > >   	clear_bit(__IGC_DOWN, &adapter->state);
-> > > > -	for (i = 0; i < adapter->num_q_vectors; i++)
-> > > > -		napi_enable(&adapter->q_vector[i]->napi);
-> > > > +	for (i = 0; i < adapter->num_q_vectors; i++) {
-> > > > +		napi = &adapter->q_vector[i]->napi;
-> > > > +		napi_enable(napi);
-> > > > +		igc_set_queue_napi(adapter, i, napi);
-> > > > +	}
-> > > >   	/* Clear any pending interrupts. */
-> > > >   	rd32(IGC_ICR);
-> > > > @@ -7385,7 +7410,9 @@ static int igc_resume(struct device *dev)
-> > > >   	wr32(IGC_WUS, ~0);
-> > > >   	if (netif_running(netdev)) {
-> > > > +		rtnl_lock();
-> > > 
-> > > This change will bring back the deadlock issue that was fixed in commit:
-> > > 6f31d6b: "igc: Refactor runtime power management flow".
-> > 
-> > OK, thanks for letting me know.
-> > 
-> > I think I better understand what the issue is. It seems that:
-> > 
-> > - igc_resume can be called with rtnl held via ethtool (which I
-> >   didn't know), which calls __igc_open
-> > - __igc_open re-enables NAPIs and re-links queues to NAPI IDs (which
-> >   requires rtnl)
-> > 
-> > so, it seems like the rtnl_lock() I've added to igc_resume is
-> > unnecessary.
-> > 
-> > I suppose I don't know all of the paths where the pm functions can
-> > be called -- are there others where RTNL is _not_ already held?
-> > 
-> > I looked at e1000e and it seems that driver does not re-enable NAPIs
-> > in its resume path and thus does not suffer from the same issue as
-> > igc.
-> > 
-> > So my questions are:
-> > 
-> >   1. Are there are other contexts where igc_resume is called where
-> >      RTNL is not held?
-> > 
-> >   2. If the answer is that RTNL is always held when igc_resume is
-> >      called, then I can send a v5 that removes the
-> >      rtnl_lock/rtnl_unlock. What do you think?
+
+
+On 10/28/2024 9:00 AM, Joe Damato wrote:
 > 
 > I see, so it looks like there is:
 >    - resume
@@ -403,67 +277,13 @@ On Mon, Oct 28, 2024 at 09:00:06AM -0700, Joe Damato wrote:
 > Does anyone know if: resume (not runtime_resume) already holds RTNL?
 > I'll try to take a look and see, but I am not very familiar with PM.
 
-Well, I took a look and I'm probably wrong, but here's my
-assessment:
+I believe the resume doesn't hold RTNL, as its part of the core device
+code, which is not networking specific. It shouldn't be acquiring RTNL
+since that is a network specific lock.
 
-- runtime_suspend can happen via ethtool or netlink when rtnl is
-  held, so rtnl_lock will deadlock as pointed out above
+I believe the code you posted as v5 should resolve this, and makes sense
+to me.
 
-- suspend happens via device_suspend in kernel/power/main.c, so I
-  think taking rtnl is safe for "regular" suspend. Other drivers
-  (like bnxt) seem to take rtnl in their "regular" suspend
-  callbacks.
+Thanks for digging into this :)
 
-If the above assessment is correct, I think this change should fix
-the issue Vitaly mentioned and I'll submit this as part of v5. It
-adds a wrapper to tell igc_resume to either hold rtnl or not
-depending on whether it's called from runtime_suspend or suspend.
-
-I'll submit this as v5 shortly, and my apologies on my lack of
-knowledge of PM; I am happy to perform any sort of testing on my igc
-device you folks think would help verify that this is working
-properly.
-
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 04aa216ef612..051a0cdb1143 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -7367,7 +7367,7 @@ static void igc_deliver_wake_packet(struct net_device *netdev)
-        netif_rx(skb);
- }
-
--static int igc_resume(struct device *dev)
-+static int __igc_do_resume(struct device *dev, bool need_rtnl)
- {
-        struct pci_dev *pdev = to_pci_dev(dev);
-        struct net_device *netdev = pci_get_drvdata(pdev);
-@@ -7410,9 +7410,11 @@ static int igc_resume(struct device *dev)
-        wr32(IGC_WUS, ~0);
-
-        if (netif_running(netdev)) {
--               rtnl_lock();
-+               if (need_rtnl)
-+                       rtnl_lock();
-                err = __igc_open(netdev, true);
--               rtnl_unlock();
-+               if (need_rtnl)
-+                       rtnl_unlock();
-                if (!err)
-                        netif_device_attach(netdev);
-        }
-@@ -7420,9 +7422,14 @@ static int igc_resume(struct device *dev)
-        return err;
- }
-
-+static int igc_resume(struct device *dev)
-+{
-+       return __igc_do_resume(dev, true);
-+}
-+
- static int igc_runtime_resume(struct device *dev)
- {
--       return igc_resume(dev);
-+       return __igc_do_resume(dev, false);
- }
-
- static int igc_suspend(struct device *dev)
+-Jake
