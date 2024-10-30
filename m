@@ -1,82 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BA8F49B68F0
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Oct 2024 17:15:10 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C27089B693E
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Oct 2024 17:34:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 44F668136D;
-	Wed, 30 Oct 2024 16:15:09 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ajo7uyo4nIIg; Wed, 30 Oct 2024 16:15:08 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9B8B181373
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1730304908;
-	bh=0XXDir8f+Ye+PjdydaZ7Dgj1EdDs9coVsC/0Mxj1Js8=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=sbYeMmftaU4beV1GPvpb1QExfE0i7MPGF3JlEnze/AdivoBorVntVPV0yAEAF/Ibq
-	 /rEF55qENOM0xx9ULnLCrabXqDPYb4qCSQLAUdlFCVqepDNDgH8vFsrP5GQX2PkcB7
-	 wGUN7P4wbjMp+lG71HGiWg7Wae3P1zyr54n18PODWoi3NcIVcDgxM1IUTp46Syq89O
-	 1FzF5sCvNppXad8AiE5EDlKKs0awI1ncUcHXUZI1mX/7YP1mcfBXqNrC/HyV+ZDcy/
-	 +JFu4dbXQAmQohad+snu4wYhs7PSVpAICeB7Rc0Ds9fQzhNAOHW2Io00Fjp1IwWOre
-	 7U9Las0To+KTw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9B8B181373;
-	Wed, 30 Oct 2024 16:15:08 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 72F4D5E4F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Oct 2024 16:13:53 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5908A60A87
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Oct 2024 16:13:53 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E4975608AD;
+	Wed, 30 Oct 2024 16:34:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CLH2VYRhQylG for <intel-wired-lan@lists.osuosl.org>;
- Wed, 30 Oct 2024 16:13:52 +0000 (UTC)
-X-Greylist: delayed 400 seconds by postgrey-1.37 at util1.osuosl.org;
- Wed, 30 Oct 2024 16:13:52 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 3307660A81
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3307660A81
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=217.11.55.87;
- helo=james.theweblords.de; envelope-from=pegro@friiks.de; receiver=<UNKNOWN> 
-Received: from james.theweblords.de (james.theweblords.de [217.11.55.87])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3307660A81
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Oct 2024 16:13:51 +0000 (UTC)
-Received: (qmail 17590 invoked by uid 210); 30 Oct 2024 16:07:09 -0000
-X-Qmail-Scanner-Diagnostics: from 129.233.181.227
- (petronios@theweblords.de@129.233.181.227) by james (envelope-from
- <pegro@friiks.de>, uid 201) with qmail-scanner-2.10st 
- (mhr: 1.0. spamassassin: 4.0.0. perlscan: 2.10st.  
- Clear:RC:1(129.233.181.227):. 
- Processed in 0.073649 secs); 30 Oct 2024 16:07:09 -0000
-Received: from unknown (HELO james.theweblords.de)
- (petronios@theweblords.de@129.233.181.227)
- by james.theweblords.de with ESMTPA; 30 Oct 2024 16:07:09 -0000
-From: pegro@friiks.de
-To: intel-wired-lan@lists.osuosl.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>
-Cc: netdev@vger.kernel.org,
-	=?UTF-8?q?Peter=20Gro=C3=9Fe?= <pegro@friiks.de>
-Date: Wed, 30 Oct 2024 17:06:43 +0100
-Message-Id: <20241030160643.9950-1-pegro@friiks.de>
-X-Mailer: git-send-email 2.34.1
+ id pAdYmsxNH7tL; Wed, 30 Oct 2024 16:34:34 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4A0D260770
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1730306074;
+	bh=/gjHJyBJM9BAClx7Mo/NvwcRLxg6d+FLv4msSrfkF0k=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=ezconOF+BCQHo/SAuUyS6SFKhwkb10ebSL4OKtNFEbEs90A7Zp2ShS3S+zHAOWxuu
+	 s1fS54MQrAE0IF2W6BRehQUIfEFJV5GPFkGK+e1lUlGKluyVg6hWXqQEqcIhuLdIyi
+	 SKOTHU8lNmmNcN8BjMf7MQxiGF6pRsRE0H8K2upZBy3irgIca47L4I6rR38MF3DHA4
+	 vjGqe8qcvNAha5ZyCsIS+p40Z2ItCtpWhSY35u+Ajeyf+3P6IUro4gJIi0z+txYcOS
+	 /cVYecZdBd/QuHthRouAov1om1hvKSTmtLlnGErT/I1U5MwUWTPmsQLPC5qyMlZXON
+	 ALxD8fKB9bAvw==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4A0D260770;
+	Wed, 30 Oct 2024 16:34:34 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 0F54E5E4F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Oct 2024 16:34:33 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id E405140328
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Oct 2024 16:34:32 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 2REkEie6MEjg for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 30 Oct 2024 16:34:31 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org E35644032F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E35644032F
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E35644032F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Oct 2024 16:34:30 +0000 (UTC)
+Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id BB557600AA6A1;
+ Wed, 30 Oct 2024 17:34:13 +0100 (CET)
+Message-ID: <fa6a5bf6-5401-48d9-bda6-08d17c0bad68@molgen.mpg.de>
+Date: Wed, 30 Oct 2024 17:34:13 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+To: =?UTF-8?Q?Peter_Gro=C3=9Fe?= <pegro@friiks.de>
+Cc: intel-wired-lan@lists.osuosl.org,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
+References: <20241030160643.9950-1-pegro@friiks.de>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20241030160643.9950-1-pegro@friiks.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Mailman-Approved-At: Wed, 30 Oct 2024 16:15:07 +0000
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=friiks.de
-Subject: [Intel-wired-lan] [PATCH iwl-net] i40e: Fix handling changed priv
- flags
+ header.from=molgen.mpg.de
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] i40e: Fix handling changed
+ priv flags
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -92,38 +90,59 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Peter Große <pegro@friiks.de>
+[Cc: +Przemek who succeeded Jesse]
 
-After assembling the new private flags on a PF, the operation to determine
-the changed flags uses the wrong bitmaps. Instead of xor-ing orig_flags with
-new_flags, it uses the still unchanged pf->flags, thus changed_flags is always 0.
+Dear Peter,
 
-Fix it by using the corrent bitmaps.
 
-The issue was discovered while debugging why disabling source pruning
-stopped working with release 6.7. Although the new flags will be copied to
-pf->flags later on in that function, source pruning requires a reset of the PF,
-which was skipped due to this bug.
+Thank you very much for your patch. Some minor comments.
 
-Fixes: 70756d0a4727 ("i40e: Use DECLARE_BITMAP for flags and hw_features fields in i40e_pf")
-Signed-off-by: Peter Große <pegro@friiks.de>
----
- drivers/net/ethernet/intel/i40e/i40e_ethtool.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Am 30.10.24 um 17:06 schrieb pegro@friiks.de:
+> From: Peter Große <pegro@friiks.de>
+> 
+> After assembling the new private flags on a PF, the operation to determine
+> the changed flags uses the wrong bitmaps. Instead of xor-ing orig_flags with
+> new_flags, it uses the still unchanged pf->flags, thus changed_flags is always 0.
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-index c841779713f6..016c0ae6b36f 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-@@ -5306,7 +5306,7 @@ static int i40e_set_priv_flags(struct net_device *dev, u32 flags)
- 	}
- 
- flags_complete:
--	bitmap_xor(changed_flags, pf->flags, orig_flags, I40E_PF_FLAGS_NBITS);
-+	bitmap_xor(changed_flags, new_flags, orig_flags, I40E_PF_FLAGS_NBITS);
- 
- 	if (test_bit(I40E_FLAG_FW_LLDP_DIS, changed_flags))
- 		reset_needed = I40E_PF_RESET_AND_REBUILD_FLAG;
--- 
-2.34.1
+It’d be great if you reflowed for 75 characters per line.
 
+> Fix it by using the corrent bitmaps.
+
+corre*c*t
+
+> The issue was discovered while debugging why disabling source pruning
+> stopped working with release 6.7. Although the new flags will be copied to
+> pf->flags later on in that function, source pruning requires a reset of the PF,
+> which was skipped due to this bug.
+
+If you have the actual commands handy to reproduce it, that’d be great 
+to have in the commit message.
+
+> Fixes: 70756d0a4727 ("i40e: Use DECLARE_BITMAP for flags and hw_features fields in i40e_pf")
+> Signed-off-by: Peter Große <pegro@friiks.de>
+> ---
+>   drivers/net/ethernet/intel/i40e/i40e_ethtool.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+> index c841779713f6..016c0ae6b36f 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+> @@ -5306,7 +5306,7 @@ static int i40e_set_priv_flags(struct net_device *dev, u32 flags)
+>   	}
+>   
+>   flags_complete:
+> -	bitmap_xor(changed_flags, pf->flags, orig_flags, I40E_PF_FLAGS_NBITS);
+> +	bitmap_xor(changed_flags, new_flags, orig_flags, I40E_PF_FLAGS_NBITS);
+>   
+>   	if (test_bit(I40E_FLAG_FW_LLDP_DIS, changed_flags))
+>   		reset_needed = I40E_PF_RESET_AND_REBUILD_FLAG;
+
+With the style fixes above:
+
+Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+
+
+Kind regards,
+
+Paul
