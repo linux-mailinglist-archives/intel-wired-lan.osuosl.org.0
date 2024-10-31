@@ -1,84 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E5D89B946A
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  1 Nov 2024 16:30:48 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1122D9B946B
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  1 Nov 2024 16:30:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D355281EE4;
-	Fri,  1 Nov 2024 15:30:46 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2271A40665;
+	Fri,  1 Nov 2024 15:30:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id SCAfmn-d3OHy; Fri,  1 Nov 2024 15:30:46 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 8lVLJFVnk8LY; Fri,  1 Nov 2024 15:30:47 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 120D481826
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0404140675
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1730475046;
-	bh=FthgIjAqLOLHlW+bbPCASseCj6Y1lbUXeoQ5RfEPC2g=;
+	s=default; t=1730475047;
+	bh=yuVL5XevAlSQZiTVvR3V3r/+5ebo7kY9AfDcEkuoaT4=;
 	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=qmK9YwXw+OSz2QbPa3ZqHvmeCwxz6iAvYBUmHqe2zOajT160nr12eQ2LQNG8MCgED
-	 otBm6zRv4jREEjjvD/VLkyAr0Jl2dZEnqyL5R+b3xbcOkOUKRl3EusmMMP7fnNJ7Es
-	 zzXRFQYISXJyP6I1Yq7iZOy65qHWDEboVCEmKsge83XifalFw/Q1IhnILulNqqoDle
-	 0YA+9uoTKjxW93zH9hZWcBNU/PpH8YyHiJpCghtzUGG/9hwW1H6KDdeKDT9q2cfgBp
-	 mvH9gTW4D4u8sybjFyAUhnzgfkcVcyWPHPX+wmAd0yeQS12sudaak9QO30vjeNqf1y
-	 7VhsWeAsyIwvw==
+	b=6ApShU9kEKTvgqtSw9ksKAFE+XX1Ji+75CFcyWAGgj5nIP4lMAE0qLqTwYc4Rv5QZ
+	 TxUrhjPHxdpcvFaHghu0DqXyrmnKe4MR4hxScL5ogIhoi+Q7DkwMbOxDJAhELkHfOE
+	 8zsR+89hHh4avZwscZ6g6WZr3YHN/59z8dhKPBx4orAQvgM4XYe6zbSeeqhbgjtnEa
+	 j3dlzhjOtXdVzlDp7GFMnZJtIzOuHmcAsBNyLhPiYvqzC3y52iaeFNlcSCypKEAmkE
+	 OSpN5NNjCITA6/Brz4Z7LQ0RVh6Te/JGjWcKL7fdrX4Tsuo3Jh052im5JWX+SFxQkl
+	 0KepPnaKJOOCQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 120D481826;
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0404140675;
 	Fri,  1 Nov 2024 15:30:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 2ADAD5E4F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 17:16:00 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id EAB3F5E50
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 17:17:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0BBCD60AFD
- for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 17:16:00 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id CC5826073E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 17:17:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Tty4qgBAscB8 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 31 Oct 2024 17:15:59 +0000 (UTC)
+ id fooPFZeIyEtV for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 31 Oct 2024 17:17:32 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::230; helo=mail-lj1-x230.google.com;
+ client-ip=2a00:1450:4864:20::429; helo=mail-wr1-x429.google.com;
  envelope-from=florian.fainelli@broadcom.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D040F60A89
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D040F60A89
-Received: from mail-lj1-x230.google.com (mail-lj1-x230.google.com
- [IPv6:2a00:1450:4864:20::230])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D040F60A89
- for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 17:15:58 +0000 (UTC)
-Received: by mail-lj1-x230.google.com with SMTP id
- 38308e7fff4ca-2fb58980711so11577491fa.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 10:15:58 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C55D460B04
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C55D460B04
+Received: from mail-wr1-x429.google.com (mail-wr1-x429.google.com
+ [IPv6:2a00:1450:4864:20::429])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C55D460B04
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 17:17:31 +0000 (UTC)
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-37d4d1b48f3so771900f8f.1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 10:17:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730394956; x=1730999756;
+ d=1e100.net; s=20230601; t=1730395050; x=1730999850;
  h=content-transfer-encoding:in-reply-to:autocrypt:from
  :content-language:references:cc:to:subject:user-agent:mime-version
  :date:message-id:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=FthgIjAqLOLHlW+bbPCASseCj6Y1lbUXeoQ5RfEPC2g=;
- b=et3I7BfGOmarKfQRCvOp5tXxra3RPihY1Fz6zs0lBV8QW2YER8Ou8Qnz9FX3skyJnR
- /TIhwfL0Q1wNnT/vgVMPy/NZpUPpvRz8lso+5eHYE3tproCfHyA1h+TMp2nd/M7Tk3TP
- hwQ6+wnqlEMIIoEHWquYmXyrBs3RSBDXX73j0d2IjMYbOVYJ7jVOse618g9YqyJ+LrL4
- NGwSOknM7c6sp69dGJjvu2u1+iM1R0cbv8n6y4TmbfVjVKfm3QNX6NciWQYcatkm6hJk
- Pu2YdwT6JbHoV7iT7LBo2h2b/MAJnVhwLhMuc9bmO5g0witS8RtBRZstmqJKku37SDd7
- 8dIw==
-X-Gm-Message-State: AOJu0Yz6V1WCXi2uc0bzyWDlt6Azmls64NDJ5BHZjnqXlp2eDsz/Pukd
- 48byIA6TbEeILLzjSlLAyI4Yme6fMnLAU54RN5j627TqTtJ0GSURLF55mJO5/g==
-X-Google-Smtp-Source: AGHT+IH9MeS0Ax989nuL+76nnyjmZEpJ6kAlmbQ9fbTl6gSc7YUojU8nnLTZuojFuuIYn0X+UAcr8A==
-X-Received: by 2002:a05:651c:1504:b0:2fb:5014:abf9 with SMTP id
- 38308e7fff4ca-2fcbe04f0bamr96395301fa.31.1730394954583; 
- Thu, 31 Oct 2024 10:15:54 -0700 (PDT)
+ bh=yuVL5XevAlSQZiTVvR3V3r/+5ebo7kY9AfDcEkuoaT4=;
+ b=LmURuMnUCULWNQpeHiQwqBBY3+QQk8xGVf6A1irzF3kgMnV402zSmXwjMM2uTzR0t5
+ K7MIKu5b7MnrPBV4CP9W5ONydeg2555YsngI+UfJeOkzbP1inQZ47oF2tLg5pcaz+jJi
+ aePDV24evt6ktyoEDTlfUMWdVL5c8nouVpRwQ/oN/NS1amlOHguuv4mV3F4Xt00yA+9A
+ gdfxKkW37FFH8bYH01N9ly+rhf+iD+24jjBoBdrSY05f0Z87Cz3OxlZyTDmf4Mcjz9yK
+ HrJwYcSOsL5VQPwzSY3Z8yCbiik5ArydaSzkgR4qHBezaxD9C/tbk6Olda2o9PJpm2O2
+ 5lMw==
+X-Gm-Message-State: AOJu0Yz9Np1N5rAEhDllq5apDbDp21YLDA6D5xhP7OeIdnkFrpCIIUEh
+ UexRaMGEUhntWgh0W6WF0L3B+yZgKSwnNlxmIBV5y5Xd5As3YUYotKHMZE+kDA==
+X-Google-Smtp-Source: AGHT+IFjT29yi5SX0dw1nHhzoYLJGP+01L3NL5a3fZUFudXflNMBcjs32Cnleu5VTb7EMdHUUlSccA==
+X-Received: by 2002:a05:6000:ac1:b0:37d:3280:203a with SMTP id
+ ffacd0b85a97d-381b7057644mr5887676f8f.10.1730395049620; 
+ Thu, 31 Oct 2024 10:17:29 -0700 (PDT)
 Received: from [10.67.48.245] ([192.19.223.252])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4327d69845csm32794345e9.47.2024.10.31.10.15.44
+ ffacd0b85a97d-381c10b7c08sm2713960f8f.17.2024.10.31.10.17.19
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 31 Oct 2024 10:15:53 -0700 (PDT)
-Message-ID: <d9c01354-853c-459b-9da4-3c1d77102749@broadcom.com>
-Date: Thu, 31 Oct 2024 10:15:38 -0700
+ Thu, 31 Oct 2024 10:17:28 -0700 (PDT)
+Message-ID: <5ab60ad8-5625-41d3-b20a-4137a8f4c19a@broadcom.com>
+Date: Thu, 31 Oct 2024 10:17:17 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 To: Caleb Sander Mateos <csander@purestorage.com>,
@@ -116,6 +116,7 @@ Cc: intel-wired-lan@lists.osuosl.org, linux-arm-kernel@lists.infradead.org,
  linux-rdma@vger.kernel.org, netdev@vger.kernel.org,
  oss-drivers@corigine.com, virtualization@lists.linux.dev
 References: <20241031002326.3426181-1-csander@purestorage.com>
+ <20241031002326.3426181-2-csander@purestorage.com>
 Content-Language: en-US
 From: Florian Fainelli <florian.fainelli@broadcom.com>
 Autocrypt: addr=florian.fainelli@broadcom.com; keydata=
@@ -150,28 +151,27 @@ Autocrypt: addr=florian.fainelli@broadcom.com; keydata=
  MIlnaE6V0U8f5zNHB7Y46yJjjYT/Ds1TJo3pvwevDWPvv6rdBeV07D9s43frUS6xYd1uFxHC
  7dZYWJjZmyUf5evr1W1gCgwLXG0PEi9n3qmz1lelQ8lSocmvxBKtMbX/OKhAfuP/iIwnTsww
  95A2SaPiQZA51NywV8OFgsN0ITl2PlZ4Tp9hHERDe6nQCsNI/Us=
-In-Reply-To: <20241031002326.3426181-1-csander@purestorage.com>
+In-Reply-To: <20241031002326.3426181-2-csander@purestorage.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-Mailman-Approved-At: Fri, 01 Nov 2024 15:30:43 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=broadcom.com; s=google; t=1730394956; x=1730999756; darn=lists.osuosl.org;
+ d=broadcom.com; s=google; t=1730395050; x=1730999850; darn=lists.osuosl.org;
  h=content-transfer-encoding:in-reply-to:autocrypt:from
  :content-language:references:cc:to:subject:user-agent:mime-version
  :date:message-id:from:to:cc:subject:date:message-id:reply-to;
- bh=FthgIjAqLOLHlW+bbPCASseCj6Y1lbUXeoQ5RfEPC2g=;
- b=MfgVY/oHVvy0j854TxGAoiToh5PS42ngM8MmpLFWNNNwpgJRSFhXeN86kQu3hFXCTq
- +OUGLQzswoLg2Dfxxef8jLQ2dCQwClD8FU0dbiRxdXTpKQIrAX6Sbjc/BNuUlX1lPkBR
- j0ajVdMhs1/kNIuyZyhLVEk94h8T69eJbTeqM=
+ bh=yuVL5XevAlSQZiTVvR3V3r/+5ebo7kY9AfDcEkuoaT4=;
+ b=AQ5Q/E05fgvXDr7naKiMHSyouxA90TkYcH1P9Q5ITpfvYzuJvk92gYe1FxcgrIkywh
+ ZhN6q19NizlCuveY3gMm7cYnWwHDDZrsV/IdMoPEONfUAhwnDAFiquBLF6PnCraLTVRc
+ QPQJBnwwQJPTNQ869Quq32hM/kIsW+t7+WsQo=
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=broadcom.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=broadcom.com header.i=@broadcom.com header.a=rsa-sha256
- header.s=google header.b=MfgVY/oH
-Subject: Re: [Intel-wired-lan] [resend PATCH 1/2] dim: make dim_calc_stats()
- inputs const pointers
+ dkim=pass (1024-bit key) header.d=broadcom.com header.i=@broadcom.com
+ header.a=rsa-sha256 header.s=google header.b=AQ5Q/E05
+Subject: Re: [Intel-wired-lan] [resend PATCH 2/2] dim: pass dim_sample to
+ net_dim() by reference
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -188,11 +188,42 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 On 10/30/24 17:23, Caleb Sander Mateos wrote:
-> Make the start and end arguments to dim_calc_stats() const pointers
-> to clarify that the function does not modify their values.
+> net_dim() is currently passed a struct dim_sample argument by value.
+> struct dim_sample is 24 bytes. Since this is greater 16 bytes, x86-64
+> passes it on the stack. All callers have already initialized dim_sample
+> on the stack, so passing it by value requires pushing a duplicated copy
+> to the stack. Either witing to the stack and immediately reading it, or
+> perhaps dereferencing addresses relative to the stack pointer in a chain
+> of push instructions, seems to perform quite poorly.
+> 
+> In a heavy TCP workload, mlx5e_handle_rx_dim() consumes 3% of CPU time,
+> 94% of which is attributed to the first push instruction to copy
+> dim_sample on the stack for the call to net_dim():
+> // Call ktime_get()
+>    0.26 |4ead2:   call   4ead7 <mlx5e_handle_rx_dim+0x47>
+> // Pass the address of struct dim in %rdi
+>         |4ead7:   lea    0x3d0(%rbx),%rdi
+> // Set dim_sample.pkt_ctr
+>         |4eade:   mov    %r13d,0x8(%rsp)
+> // Set dim_sample.byte_ctr
+>         |4eae3:   mov    %r12d,0xc(%rsp)
+> // Set dim_sample.event_ctr
+>    0.15 |4eae8:   mov    %bp,0x10(%rsp)
+> // Duplicate dim_sample on the stack
+>   94.16 |4eaed:   push   0x10(%rsp)
+>    2.79 |4eaf1:   push   0x10(%rsp)
+>    0.07 |4eaf5:   push   %rax
+> // Call net_dim()
+>    0.21 |4eaf6:   call   4eafb <mlx5e_handle_rx_dim+0x6b>
+> 
+> To allow the caller to reuse the struct dim_sample already on the stack,
+> pass the struct dim_sample by reference to net_dim().
 > 
 > Signed-off-by: Caleb Sander Mateos <csander@purestorage.com>
 
-Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com>
+Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com> 
+#bcm{sysport,genet}.c
+
+Thanks!
 -- 
 Florian
