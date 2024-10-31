@@ -2,142 +2,121 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B68B09B810E
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 31 Oct 2024 18:20:14 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 46C7B9B84DD
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 31 Oct 2024 22:03:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5C6DC408F8;
-	Thu, 31 Oct 2024 17:20:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7A71640C2F;
+	Thu, 31 Oct 2024 21:03:39 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4Bz4tx7kVINd; Thu, 31 Oct 2024 17:20:12 +0000 (UTC)
+ id u0NJd-OVlCnh; Thu, 31 Oct 2024 21:03:38 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 10089408BA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5435140BEF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1730395212;
-	bh=SKkFDkzIEBItD3yNbuSEm7Az14lr6rR23lccwnGeVnE=;
+	s=default; t=1730408618;
+	bh=PzQXq7XhxpTP+PwRlgBStzXT4waoPXFXg/qtJ44GAfA=;
 	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=lDFb2EAXcpCPFRdvurQPbQbLVFLUtkFIDpEhzOoSZC6Gcpha59VzR/Y/WD0csclge
-	 VyzF5keOB/h+Z1Up9RsOkwYVRIYIt93qYzGFs79B6PP1pFSaB5qIzp+7PvZroNmsGI
-	 BMyLmMDqI1FIdfxB84BM8OEHCZvs96V1UaxxASBYnwU3CuTH8QhbtT9JWCBZfXd/Wx
-	 ARAIcqrAQgMA/FBPHdeNSzHWVth0nFh2cpgrefVW8jF8UvVttCuObETHafutxiCEIS
-	 dvZOIPVfSEA5yc1Bcsce5mS3jFdcB6Tf1zXS+WtEFiY7LylNApcY4+EQIijeu+xpSo
-	 IGUA9aJ8hq6oA==
+	b=l7p3Uw2NosGNVYLOrLT0BaWhSJ2qAg4KYpCylMgbPfzPgxxdEBeXBpE+REu9iqrPp
+	 O45Vir/4g6eYpCkFyN9sb8C3p16EqVn0pNqGHtsQP8NRxTvLRONo61WLHY2FsJYGbJ
+	 Cmrs2CVZqr3IVQOrftwusDRH5OsQF1hyNXERo2V0n8jSu/3/PcYBfOfBtY+0icxu2v
+	 33eAv4/1NorUYzRhT6COnOgp2LbMvCV5ETbSpq4AJ8kf2E5i49qHRPlQM2NhRVPVIn
+	 0kQ6uZ6itEF+44Q5C13ZPijP8ss2zsBJovQ8m22hxukhkRz/OAI6OezwUZlnEgA9/S
+	 3D2NamyNoBFHQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 10089408BA;
-	Thu, 31 Oct 2024 17:20:12 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5435140BEF;
+	Thu, 31 Oct 2024 21:03:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 8F91D5E50
- for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 17:20:09 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 75F41494E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 21:03:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7195C81815
- for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 17:20:09 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 630A540F2F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 21:03:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id J9Qrv294MCq8 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 31 Oct 2024 17:20:08 +0000 (UTC)
-Received-SPF: Permerror (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::102b; helo=mail-pj1-x102b.google.com;
- envelope-from=csander@purestorage.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 561A98183D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 561A98183D
-Received: from mail-pj1-x102b.google.com (mail-pj1-x102b.google.com
- [IPv6:2607:f8b0:4864:20::102b])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 561A98183D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 17:20:07 +0000 (UTC)
-Received: by mail-pj1-x102b.google.com with SMTP id
- 98e67ed59e1d1-2e2b4110341so132597a91.1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 10:20:07 -0700 (PDT)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id szHme7bnuXPm for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 31 Oct 2024 21:03:35 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::1129; helo=mail-yw1-x1129.google.com;
+ envelope-from=rosenp@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 0608940F28
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0608940F28
+Received: from mail-yw1-x1129.google.com (mail-yw1-x1129.google.com
+ [IPv6:2607:f8b0:4864:20::1129])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 0608940F28
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 21:03:34 +0000 (UTC)
+Received: by mail-yw1-x1129.google.com with SMTP id
+ 00721157ae682-6ea339a41f1so12157237b3.2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 14:03:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730395206; x=1731000006;
+ d=1e100.net; s=20230601; t=1730408613; x=1731013413;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=SKkFDkzIEBItD3yNbuSEm7Az14lr6rR23lccwnGeVnE=;
- b=n/QmTh0HNZV5TIA8l5UyTYlGN00Ry8ITEtGfZ/W7rWsBC9aQFpjGhtu3NZFXrCCYAG
- uTvPPu97uSL7tUxVJrZ38OSaeGMH3fU33RtAwdifQS+u+0hQEV5zPDloxQBtHn0Rcqik
- OWLeHSz756ki8RQFaUCN4wing2MIbtgudyUe+SnmK6sUbbPRymdz+MuacS6ualzGqN9J
- 4U+eakPEM8TGQbahyF3RCEB+FLIBr0s60aNO1G+wcEwr98eu5XoPQ8qvVQjbsZXijWzQ
- COwXiAamI/CwOTabTOP461q+41Ji0giMB9jsy3u4g38XgY+CZjmoBXjrQst3C8ffigYh
- fKFA==
+ bh=PzQXq7XhxpTP+PwRlgBStzXT4waoPXFXg/qtJ44GAfA=;
+ b=e17W0Zm5rCx5CNc7hyaHhRWYSyGqZu/+lWJPHXUEWF+9slI+wwaFSSpRBG8+6mDlJw
+ hegx8uKtLs9A6s720n3EwGg+oMScocsNUDyp6/XTTFphAHkWbUR9T/7ot1rh+2hin5a/
+ zSXM/Wsw6jN0MQ01h/LqXWeB+Wcrrg056MzZYsLOcSmCzvo9bEX/vBoeongIntULkBnE
+ 7j/kij9AHmPeJ3b32tZWm2TVf6l1X1/HKYcrWC2X4n6FUuv6zGauRqZHl/8yNrkKd/AN
+ QxcXQsK2/UJDOxyNtin7kms5RXxgjqsG6+0mVpAKq4QTzt758+45ZhoYLa10LZrbt/kW
+ GiWQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUeThMGOcbeUjSf5nGpbCRUaBDsWrcGsKf0GyvTF8ptdNPpaXJCK5zy6S8NuiUnU4fxbvzuWGJYrm6TnIgEDm4=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yz105F6B1YyNBjK1aljwwZM7OW1I6WLV36Qn/tGGXV3c3iZ7zBJ
- Vq7A8Eudc7wYdSQviFr8crI0zEkQaqA2TQ8Se7qC441EAjz493iXdeEl4QYYWCMAVSGsO0+P/Bi
- 9hT32QJRlcQoPkfmN5fboiWf7FVMCDW2JUJtmkA==
-X-Google-Smtp-Source: AGHT+IH6t05mbCPluyw/Zm7bZ8Y86vIuSvJgupQimK2c7oAZcHqEQQGqxSncMtgAi8PvmdylJnQUlmy+Sc53Mt/5SYg=
-X-Received: by 2002:a17:90b:3003:b0:2e2:b45d:bbb9 with SMTP id
- 98e67ed59e1d1-2e8f11bfd7bmr9879885a91.6.1730395206352; Thu, 31 Oct 2024
- 10:20:06 -0700 (PDT)
+ AJvYcCUWn3sQ6+21JDMMtU+7Et81DOFkOnfYYT+zeY7AhWMt72Sc0vG2o9mRaARpA1m1MXIBxeSIRnUYwkOf19s1KoM=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YxFFG/5tIBNFt3FPNHEUkFmdel9tQ1jYArGbV5BF+oCgFt74dmG
+ ejOm9jqUokNdtbLKSQAwynuNyUXAxjgU9EUPVO5JkO4uG33aZcXoNV80i+QUQAt85KyB6pjK5kS
+ zZT0HMg54Pukl7J5EY8gmOlrBy5s=
+X-Google-Smtp-Source: AGHT+IHy8DQ1HGI9zkUS8yokJKso/acy/GTv8smDz5u00ITmraTSJlnFkEub2JffNHXzVENVysSrQhtA0eFO1024aTA=
+X-Received: by 2002:a05:690c:4513:b0:6ea:3075:1fb5 with SMTP id
+ 00721157ae682-6ea525205e0mr57010167b3.33.1730408613135; Thu, 31 Oct 2024
+ 14:03:33 -0700 (PDT)
 MIME-Version: 1.0
-References: <20241031002326.3426181-1-csander@purestorage.com>
- <20241031002326.3426181-2-csander@purestorage.com>
- <ZyN8xpq5C36Tg9rz@LouisNoVo>
-In-Reply-To: <ZyN8xpq5C36Tg9rz@LouisNoVo>
-From: Caleb Sander <csander@purestorage.com>
-Date: Thu, 31 Oct 2024 10:19:55 -0700
-Message-ID: <CADUfDZoba9hNOBU7TT+0K6BYiYzVkZ_awt751g6HBm+-cCZf8w@mail.gmail.com>
-To: Louis Peens <louis.peens@corigine.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Arthur Kiyanovski <akiyano@amazon.com>, Brett Creeley <brett.creeley@amd.com>, 
- Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
- Christophe Leroy <christophe.leroy@csgroup.eu>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, 
- David Arinzon <darinzon@amazon.com>, "David S. Miller" <davem@davemloft.net>, 
- Doug Berger <opendmb@gmail.com>, Eric Dumazet <edumazet@google.com>, 
- =?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>, 
- Felix Fietkau <nbd@nbd.name>, Florian Fainelli <florian.fainelli@broadcom.com>,
- Geetha sowjanya <gakula@marvell.com>, hariprasad <hkelam@marvell.com>, 
- Jakub Kicinski <kuba@kernel.org>, Jason Wang <jasowang@redhat.com>,
- Jonathan Corbet <corbet@lwn.net>, 
- Leon Romanovsky <leon@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>, 
- Mark Lee <Mark-MC.Lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Michael Chan <michael.chan@broadcom.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Noam Dagan <ndagan@amazon.com>, Paolo Abeni <pabeni@redhat.com>, 
- Przemek Kitszel <przemyslaw.kitszel@intel.com>, Roy Pledge <Roy.Pledge@nxp.com>,
- Saeed Bishara <saeedb@amazon.com>, Saeed Mahameed <saeedm@nvidia.com>, 
- Sean Wang <sean.wang@mediatek.com>, Shannon Nelson <shannon.nelson@amd.com>, 
- Shay Agroskin <shayagr@amazon.com>, Simon Horman <horms@kernel.org>, 
- Subbaraya Sundeep <sbhatta@marvell.com>, Sunil Goutham <sgoutham@marvell.com>, 
- Tal Gilboa <talgi@nvidia.com>, Tariq Toukan <tariqt@nvidia.com>, 
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Vladimir Oltean <vladimir.oltean@nxp.com>, 
- Xuan Zhuo <xuanzhuo@linux.alibaba.com>, intel-wired-lan@lists.osuosl.org, 
- linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linuxppc-dev@lists.ozlabs.org, linux-rdma@vger.kernel.org, 
- netdev@vger.kernel.org, oss-drivers@corigine.com, 
- virtualization@lists.linux.dev
+References: <20241025201713.286074-1-rosenp@gmail.com>
+ <ca89f03e-6dc1-44fa-bfd1-aac95ede0cbe@intel.com>
+ <CAKxU2N9hhwfdZN28kTDf3qUT8GXuxLDPFsA04jBaJSWqPRaHqQ@mail.gmail.com>
+ <59f4a6e6-23ad-4f99-b168-047f1d0d801a@intel.com>
+In-Reply-To: <59f4a6e6-23ad-4f99-b168-047f1d0d801a@intel.com>
+From: Rosen Penev <rosenp@gmail.com>
+Date: Thu, 31 Oct 2024 14:03:22 -0700
+Message-ID: <CAKxU2N9gE_OZgfmTimMUcN=-P-SMSyFfCkHCd9xLqXKGabNtyw@mail.gmail.com>
+To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, 
+ Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, 
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, 
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ open list <linux-kernel@vger.kernel.org>, 
+ "open list:XDP (eXpress Data Path):Keyword:(?:b|_)xdp(?:b|_)"
+ <bpf@vger.kernel.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=purestorage.com; s=google2022; t=1730395206; x=1731000006;
- darn=lists.osuosl.org; 
+ d=gmail.com; s=20230601; t=1730408613; x=1731013413; darn=lists.osuosl.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=SKkFDkzIEBItD3yNbuSEm7Az14lr6rR23lccwnGeVnE=;
- b=WgcHiKlrNOg6kA9SeT6/8GbE+wlyTeFg3wzWU8RRf5us81VvCP1YXhd9ijmMJhSP8r
- NIrgJEd0SbLs3kyhPNgYIObS0d/gBsN3dOCfBj36XFnY1xAw5XI8boUIW+K0XBzhuQ1n
- PbTj/6UnfX8Q6IM0txSD2gX1TrjakQ4k3ix0j0+PuCc6vXES5loWWf+8qGukkFR/p1x6
- Dz0CzN1CLaSCT8Z3MOLmPOrwPjCbVceH8TQoDxVYk8Q/MH3sDvgwgCLu4KuxSNrTN+nM
- /RbtZrQ11yqoxno/btEmLI9lp9hmX/hUtpwuA8VqJrnNwVyO47TAv9pBQmX/oPPWRxk8
- uLZg==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=purestorage.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=purestorage.com header.i=@purestorage.com
- header.a=rsa-sha256 header.s=google2022 header.b=WgcHiKlr
-Subject: Re: [Intel-wired-lan] [resend PATCH 2/2] dim: pass dim_sample to
- net_dim() by reference
+ bh=PzQXq7XhxpTP+PwRlgBStzXT4waoPXFXg/qtJ44GAfA=;
+ b=GrSx0V9S8DGj8eon3muIZ4bwyICGky0fEtvM1uKbwdQ47BBi0rrWWODpgd+oSGQIv4
+ N03n3xX0Fh89myH0tS1yHPZFIuGu1kj43liRRzJoO1PXibxbpN9E3al4A8LSWSb357M4
+ D6d4eQaAv7jonFma/7USpxiah//N8jdv0WDdO/nBmer5z8PtMhwZchwsw/Hgw7lxEIFC
+ QgFRFGvJzaWqWAmyN9YE0zyiFDMLfoJeFzgmVh/u6K59YJdID0h+1yWvpZnzWBcSKh6k
+ N1Gi+330OMbmi5EgNF7PzTcKme5/cq4kpJEIL5JgyQMb8WUHlojfwCwl3SSv0TnyTeDC
+ D3FQ==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20230601 header.b=GrSx0V9S
+Subject: Re: [Intel-wired-lan] [PATCHv2 net-next iwl-next] net: intel: use
+ ethtool string helpers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -153,149 +132,155 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Oct 31, 2024 at 5:49=E2=80=AFAM Louis Peens <louis.peens@corigine.c=
-om> wrote:
+On Thu, Oct 31, 2024 at 12:46=E2=80=AFAM Przemek Kitszel
+<przemyslaw.kitszel@intel.com> wrote:
 >
-> On Wed, Oct 30, 2024 at 06:23:26PM -0600, Caleb Sander Mateos wrote:
-> > net_dim() is currently passed a struct dim_sample argument by value.
-> > struct dim_sample is 24 bytes. Since this is greater 16 bytes, x86-64
-> > passes it on the stack. All callers have already initialized dim_sample
-> > on the stack, so passing it by value requires pushing a duplicated copy
-> > to the stack. Either witing to the stack and immediately reading it, or
-> > perhaps dereferencing addresses relative to the stack pointer in a chai=
-n
-> > of push instructions, seems to perform quite poorly.
-> >
-> > In a heavy TCP workload, mlx5e_handle_rx_dim() consumes 3% of CPU time,
-> > 94% of which is attributed to the first push instruction to copy
-> > dim_sample on the stack for the call to net_dim():
-> > // Call ktime_get()
-> >   0.26 |4ead2:   call   4ead7 <mlx5e_handle_rx_dim+0x47>
-> > // Pass the address of struct dim in %rdi
-> >        |4ead7:   lea    0x3d0(%rbx),%rdi
-> > // Set dim_sample.pkt_ctr
-> >        |4eade:   mov    %r13d,0x8(%rsp)
-> > // Set dim_sample.byte_ctr
-> >        |4eae3:   mov    %r12d,0xc(%rsp)
-> > // Set dim_sample.event_ctr
-> >   0.15 |4eae8:   mov    %bp,0x10(%rsp)
-> > // Duplicate dim_sample on the stack
-> >  94.16 |4eaed:   push   0x10(%rsp)
-> >   2.79 |4eaf1:   push   0x10(%rsp)
-> >   0.07 |4eaf5:   push   %rax
-> > // Call net_dim()
-> >   0.21 |4eaf6:   call   4eafb <mlx5e_handle_rx_dim+0x6b>
-> >
-> > To allow the caller to reuse the struct dim_sample already on the stack=
+> On 10/30/24 23:52, Rosen Penev wrote:
+> > On Mon, Oct 28, 2024 at 3:13=E2=80=AFAM Przemek Kitszel
+> > <przemyslaw.kitszel@intel.com> wrote:
+> >>
+> >> On 10/25/24 22:17, Rosen Penev wrote:
+> >>> The latter is the preferred way to copy ethtool strings.
+> >>>
+> >>> Avoids manually incrementing the pointer. Cleans up the code quite we=
+ll.
+> >>>
+> >>> Signed-off-by: Rosen Penev <rosenp@gmail.com>
+> >>> ---
+> >>>    v2: add iwl-next tag. use inline int in for loops.
+> >>>    .../net/ethernet/intel/e1000/e1000_ethtool.c  | 10 ++---
+> >>>    drivers/net/ethernet/intel/e1000e/ethtool.c   | 14 +++----
+> >>>    .../net/ethernet/intel/fm10k/fm10k_ethtool.c  | 10 ++---
+> >>>    .../net/ethernet/intel/i40e/i40e_ethtool.c    |  6 +--
+> >>>    drivers/net/ethernet/intel/ice/ice_ethtool.c  | 37 +++++++++++----=
+----
+> >>>    drivers/net/ethernet/intel/igb/igb_ethtool.c  | 35 ++++++++++-----=
+---
+> >>>    drivers/net/ethernet/intel/igbvf/ethtool.c    | 10 ++---
+> >>>    drivers/net/ethernet/intel/igc/igc_ethtool.c  | 36 +++++++++------=
+---
+> >>>    .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  | 32 ++++++++-------=
+-
+> >>
+> >> for ice, igb, igc, and ixgbe the current code already uses ethtool
+> >> string helpers, and in many places you are just changing variable name=
 ,
-> > pass the struct dim_sample by reference to net_dim().
+> >> "p" to "data", I would rather avoid that.
+> > well, since I'm cleaning some of this code up, might as well get rid
+> > of variables. That was suggested to me with other similar patches.
+> >>
+> >> sorry for not spotting that earlier, and apologies that we have so man=
+y
+> >> drivers to fix up in the first place
+> >>
+> >>> diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/n=
+et/ethernet/intel/ice/ice_ethtool.c
+> >>> index 2924ac61300d..62a152be8180 100644
+> >>> --- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> >>> +++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> >>> @@ -83,7 +83,7 @@ static const char ice_gstrings_test[][ETH_GSTRING_L=
+EN] =3D {
+> >>>        "Link test   (on/offline)",
+> >>>    };
+> >>>
+> >>> -#define ICE_TEST_LEN (sizeof(ice_gstrings_test) / ETH_GSTRING_LEN)
+> >>> +#define ICE_TEST_LEN ARRAY_SIZE(ice_gstrings_test)
+> >>>
+> >>>    /* These PF_STATs might look like duplicates of some NETDEV_STATs,
+> >>>     * but they aren't. This device is capable of supporting multiple
+> >>> @@ -1481,48 +1481,53 @@ static void
+> >>>    __ice_get_strings(struct net_device *netdev, u32 stringset, u8 *da=
+ta,
+> >>>                  struct ice_vsi *vsi)
+> >>>    {
+> >>> +     const char *str;
+> >>>        unsigned int i;
+> >>> -     u8 *p =3D data;
+> >>>
+> >>>        switch (stringset) {
+> >>>        case ETH_SS_STATS:
+> >>> -             for (i =3D 0; i < ICE_VSI_STATS_LEN; i++)
+> >>> -                     ethtool_puts(&p, ice_gstrings_vsi_stats[i].stat=
+_string);
+> >>> +             for (i =3D 0; i < ICE_VSI_STATS_LEN; i++) {
+> >>> +                     str =3D ice_gstrings_vsi_stats[i].stat_string;
+> >>> +                     ethtool_puts(&data, str);
+> >>> +             }
+> >>>
+> >>>                if (ice_is_port_repr_netdev(netdev))
+> >>>                        return;
+> >>>
+> >>>                ice_for_each_alloc_txq(vsi, i) {
+> >>> -                     ethtool_sprintf(&p, "tx_queue_%u_packets", i);
+> >>> -                     ethtool_sprintf(&p, "tx_queue_%u_bytes", i);
+> >>> +                     ethtool_sprintf(&data, "tx_queue_%u_packets", i=
+);
+> >>> +                     ethtool_sprintf(&data, "tx_queue_%u_bytes", i);
+> >>>                }
+> >>>
+> >>>                ice_for_each_alloc_rxq(vsi, i) {
+> >>> -                     ethtool_sprintf(&p, "rx_queue_%u_packets", i);
+> >>> -                     ethtool_sprintf(&p, "rx_queue_%u_bytes", i);
+> >>> +                     ethtool_sprintf(&data, "rx_queue_%u_packets", i=
+);
+> >>> +                     ethtool_sprintf(&data, "rx_queue_%u_bytes", i);
+> >>>                }
+> >>>
+> >>>                if (vsi->type !=3D ICE_VSI_PF)
+> >>>                        return;
+> >>>
+> >>> -             for (i =3D 0; i < ICE_PF_STATS_LEN; i++)
+> >>> -                     ethtool_puts(&p, ice_gstrings_pf_stats[i].stat_=
+string);
+> >>> +             for (i =3D 0; i < ICE_PF_STATS_LEN; i++) {
+> >>> +                     str =3D ice_gstrings_pf_stats[i].stat_string;
+> >>> +                     ethtool_puts(&data, str);
+> >>> +             }
+> >>>
+> >>>                for (i =3D 0; i < ICE_MAX_USER_PRIORITY; i++) {
+> >>> -                     ethtool_sprintf(&p, "tx_priority_%u_xon.nic", i=
+);
+> >>> -                     ethtool_sprintf(&p, "tx_priority_%u_xoff.nic", =
+i);
+> >>> +                     ethtool_sprintf(&data, "tx_priority_%u_xon.nic"=
+, i);
+> >>> +                     ethtool_sprintf(&data, "tx_priority_%u_xoff.nic=
+", i);
+> >>>                }
+> >>>                for (i =3D 0; i < ICE_MAX_USER_PRIORITY; i++) {
+> >>> -                     ethtool_sprintf(&p, "rx_priority_%u_xon.nic", i=
+);
+> >>> -                     ethtool_sprintf(&p, "rx_priority_%u_xoff.nic", =
+i);
+> >>> +                     ethtool_sprintf(&data, "rx_priority_%u_xon.nic"=
+, i);
+> >>> +                     ethtool_sprintf(&data, "rx_priority_%u_xoff.nic=
+", i);
+> >>>                }
+> >>>                break;
+> >>>        case ETH_SS_TEST:
+> >>> -             memcpy(data, ice_gstrings_test, ICE_TEST_LEN * ETH_GSTR=
+ING_LEN);
+> >>> +             for (i =3D 0; i < ICE_TEST_LEN; i++)
+> >>> +                     ethtool_puts(&data, ice_gstrings_test[i]);
+> >>>                break;
+> >>>        case ETH_SS_PRIV_FLAGS:
+> >>>                for (i =3D 0; i < ICE_PRIV_FLAG_ARRAY_SIZE; i++)
+> >>> -                     ethtool_puts(&p, ice_gstrings_priv_flags[i].nam=
+e);
+> >>> +                     ethtool_puts(&data, ice_gstrings_priv_flags[i].=
+name);
+> >>>                break;
+> >>>        default:
+> >>>                break;
+> >>
+> >> really no need to git-blame touch most of the code here>
 > >
-> > Signed-off-by: Caleb Sander Mateos <csander@purestorage.com>
-> > ---
-> >  Documentation/networking/net_dim.rst                   |  2 +-
-> >  drivers/net/ethernet/amazon/ena/ena_netdev.c           |  2 +-
-> >  drivers/net/ethernet/broadcom/bcmsysport.c             |  2 +-
-> >  drivers/net/ethernet/broadcom/bnxt/bnxt.c              |  4 ++--
-> >  drivers/net/ethernet/broadcom/genet/bcmgenet.c         |  2 +-
-> >  drivers/net/ethernet/freescale/enetc/enetc.c           |  2 +-
-> >  drivers/net/ethernet/hisilicon/hns3/hns3_enet.c        |  4 ++--
-> >  drivers/net/ethernet/intel/ice/ice_txrx.c              |  4 ++--
-> >  drivers/net/ethernet/intel/idpf/idpf_txrx.c            |  4 ++--
-> >  drivers/net/ethernet/marvell/octeontx2/nic/otx2_txrx.c |  2 +-
-> >  drivers/net/ethernet/mediatek/mtk_eth_soc.c            |  4 ++--
-> >  drivers/net/ethernet/mellanox/mlx5/core/en_txrx.c      |  4 ++--
-> >  drivers/net/ethernet/netronome/nfp/nfd3/dp.c           |  4 ++--
-> >  drivers/net/ethernet/netronome/nfp/nfdk/dp.c           |  4 ++--
-> >  drivers/net/ethernet/pensando/ionic/ionic_txrx.c       |  2 +-
-> >  drivers/net/virtio_net.c                               |  2 +-
-> >  drivers/soc/fsl/dpio/dpio-service.c                    |  2 +-
-> >  include/linux/dim.h                                    |  2 +-
-> >  lib/dim/net_dim.c                                      | 10 +++++-----
-> >  19 files changed, 31 insertions(+), 31 deletions(-)
-> >
-> --- snip --
+> > Actually the function should be taking a double pointer here I think
+> > in case something gets called after it in the main function.
+> I mean that both @p and @data are (u8 *).
+> I'm fine getting rid of tmp var, and updating the originally passed
+> argument is fine. But you could achieve it by just changing param name.
 >
-> > diff --git a/drivers/net/ethernet/netronome/nfp/nfd3/dp.c b/drivers/net=
-/ethernet/netronome/nfp/nfd3/dp.c
-> > index d215efc6cad0..f1c6c47564b1 100644
-> > --- a/drivers/net/ethernet/netronome/nfp/nfd3/dp.c
-> > +++ b/drivers/net/ethernet/netronome/nfp/nfd3/dp.c
-> > @@ -1177,11 +1177,11 @@ int nfp_nfd3_poll(struct napi_struct *napi, int=
- budget)
-> >                       pkts =3D r_vec->rx_pkts;
-> >                       bytes =3D r_vec->rx_bytes;
-> >               } while (u64_stats_fetch_retry(&r_vec->rx_sync, start));
-> >
-> >               dim_update_sample(r_vec->event_ctr, pkts, bytes, &dim_sam=
-ple);
-> > -             net_dim(&r_vec->rx_dim, dim_sample);
-> > +             net_dim(&r_vec->rx_dim, &dim_sample);
-> >       }
-> >
-> >       if (r_vec->nfp_net->tx_coalesce_adapt_on && r_vec->tx_ring) {
-> >               struct dim_sample dim_sample =3D {};
-> >               unsigned int start;
-> > @@ -1192,11 +1192,11 @@ int nfp_nfd3_poll(struct napi_struct *napi, int=
- budget)
-> >                       pkts =3D r_vec->tx_pkts;
-> >                       bytes =3D r_vec->tx_bytes;
-> >               } while (u64_stats_fetch_retry(&r_vec->tx_sync, start));
-> >
-> >               dim_update_sample(r_vec->event_ctr, pkts, bytes, &dim_sam=
-ple);
-> > -             net_dim(&r_vec->tx_dim, dim_sample);
-> > +             net_dim(&r_vec->tx_dim, &dim_sample);
-> >       }
-> >
-> >       return pkts_polled;
-> >  }
-> >
-> > diff --git a/drivers/net/ethernet/netronome/nfp/nfdk/dp.c b/drivers/net=
-/ethernet/netronome/nfp/nfdk/dp.c
-> > index dae5af7d1845..ebeb6ab4465c 100644
-> > --- a/drivers/net/ethernet/netronome/nfp/nfdk/dp.c
-> > +++ b/drivers/net/ethernet/netronome/nfp/nfdk/dp.c
-> > @@ -1287,11 +1287,11 @@ int nfp_nfdk_poll(struct napi_struct *napi, int=
- budget)
-> >                       pkts =3D r_vec->rx_pkts;
-> >                       bytes =3D r_vec->rx_bytes;
-> >               } while (u64_stats_fetch_retry(&r_vec->rx_sync, start));
-> >
-> >               dim_update_sample(r_vec->event_ctr, pkts, bytes, &dim_sam=
-ple);
-> > -             net_dim(&r_vec->rx_dim, dim_sample);
-> > +             net_dim(&r_vec->rx_dim, &dim_sample);
-> >       }
-> >
-> >       if (r_vec->nfp_net->tx_coalesce_adapt_on && r_vec->tx_ring) {
-> >               struct dim_sample dim_sample =3D {};
-> >               unsigned int start;
-> > @@ -1302,11 +1302,11 @@ int nfp_nfdk_poll(struct napi_struct *napi, int=
- budget)
-> >                       pkts =3D r_vec->tx_pkts;
-> >                       bytes =3D r_vec->tx_bytes;
-> >               } while (u64_stats_fetch_retry(&r_vec->tx_sync, start));
-> >
-> >               dim_update_sample(r_vec->event_ctr, pkts, bytes, &dim_sam=
-ple);
-> > -             net_dim(&r_vec->tx_dim, dim_sample);
-> > +             net_dim(&r_vec->tx_dim, &dim_sample);
-> >       }
-> >
-> >       return pkts_polled;
-> >  }
-> --- snip ---
->
-> Hi Caleb. Looks like a fair enough update to me in general, but I am not =
-an
-> expert on 'dim'. For the corresponding nfp driver changes feel free to ad=
-d:
->
-> Signed-off-by: Louis Peens <louis.peens@corigine.com>
-
-Hi Louis,
-Thanks for the review. Did you mean "Reviewed-by"? If there was a
-change you were suggesting, I missed it.
-
-Best,
-Caleb
+> BTW I guess it was @p to fit into 80 chars more easily ;)
+Yeah I think so too.
