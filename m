@@ -1,73 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 202949B7E33
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 25F1F9B7E34
 	for <lists+intel-wired-lan@lfdr.de>; Thu, 31 Oct 2024 16:20:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3766860AC9;
-	Thu, 31 Oct 2024 15:20:16 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CB651406A2;
+	Thu, 31 Oct 2024 15:20:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4_6ERwsleR1u; Thu, 31 Oct 2024 15:20:15 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id xCkkBSqR7q9w; Thu, 31 Oct 2024 15:20:17 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 68C9C60AD2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 692D840728
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1730388015;
-	bh=pX0HrTTm7HCYLgahgZX3qc/QSX+GT80c5O9hkkRw0k8=;
+	s=default; t=1730388016;
+	bh=WoFjgW9eW5wIbQI7j7GG6H0KZounKoos8uxOTfFjJI8=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=lDe9CgFRA9IGSNWY9lYIh5hTFxaY+sztRsP0EBrl6xj6uK32XwMPUB6ZlRh2+fs1n
-	 cWgByGWmK1h5DhREmMTbLbsuVSgpHC1eYOEFHNqnd8SeJqTzsCD+yNAqq79T6C5LCE
-	 oS1jJcftwzAIgXTxzgGOQAP/ZVArUgJZ69j6qJsi1o5fUkLiwTpAi9EsgSqQk10db1
-	 QTl3TD9go37qVYoWNdespYKA+X23va/12CIfWNU/unH2I5qTps6D5+8ByQWbpl4VID
-	 lwhZ34z0OUzhHHUvDIwqf00zlavt9G4eBsPZ+K7M/9PvCZSOXgN7OcbMrYE5AjoLUN
-	 6yJZp+zI8detw==
+	b=Do3AryYMUVfCpyemeR1vO36SLFpFXqlyIbXcG58S6U1QLsaK3fFupsI5aw9+G//BD
+	 7tAxjFXa0/D+KRqRH4VAfvGL8S991MXkTTVrtXaw5sjI1GReGBQG/XfzC+hBM9YL+p
+	 NWrEZCNrjAv62kJ2ljMY51SUHVk4goA5DlSTeQBdE3s+rWlZBxyVPEAdKxXyP2/M60
+	 yWctBxje9XJ1KnQU1RX4dupfOby8htj3nPZxMDoU0QX0clny4cfd8n2cxmEgFjZIgW
+	 jbFEuI0nQvvaeA7YTVv9dh96HfN8XtfiuBt5I6zdketMKJluT9gZ2MbRyN4a/1PTGZ
+	 H0YOBHiRVXUhw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 68C9C60AD2;
-	Thu, 31 Oct 2024 15:20:15 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 692D840728;
+	Thu, 31 Oct 2024 15:20:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 339C2494E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 06:00:17 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 37CCB494E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 06:00:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0576560900
+ by smtp3.osuosl.org (Postfix) with ESMTP id 316056081C
  for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 06:00:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dzxsigDqbIH1 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 31 Oct 2024 06:00:14 +0000 (UTC)
+ id 0dP8p7G0LoNa for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 31 Oct 2024 06:00:15 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
  helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org F034E608FB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F034E608FB
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 421F9607BE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 421F9607BE
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
- by smtp3.osuosl.org (Postfix) with ESMTPS id F034E608FB
- for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 06:00:13 +0000 (UTC)
-X-CSE-ConnectionGUID: t66lGRujQyKrDzNhPo8WIg==
-X-CSE-MsgGUID: qslY/zm2QF6XURIZEs6/tQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="30272914"
-X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; d="scan'208";a="30272914"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 421F9607BE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 06:00:15 +0000 (UTC)
+X-CSE-ConnectionGUID: xTo8pawDQkWnpDQGMtQp6A==
+X-CSE-MsgGUID: 566R8910TOiOoFt4q7Ll1A==
+X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="30272927"
+X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; d="scan'208";a="30272927"
 Received: from fmviesa007.fm.intel.com ([10.60.135.147])
  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Oct 2024 23:00:14 -0700
-X-CSE-ConnectionGUID: 7wwz33LMQzS7GO/vxF3PRw==
-X-CSE-MsgGUID: HZDAcR/nS+SbesStu1tJag==
+ 30 Oct 2024 23:00:15 -0700
+X-CSE-ConnectionGUID: /Vn9IotMQ1+lOF6Qy5Xjcw==
+X-CSE-MsgGUID: F746RiXBQIOi6aLYDqi3dw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,247,1725346800"; d="scan'208";a="82183636"
+X-IronPort-AV: E=Sophos;i="6.11,247,1725346800"; d="scan'208";a="82183642"
 Received: from gk3153-dr2-r750-36946.igk.intel.com ([10.102.20.192])
- by fmviesa007.fm.intel.com with ESMTP; 30 Oct 2024 23:00:12 -0700
+ by fmviesa007.fm.intel.com with ESMTP; 30 Oct 2024 23:00:14 -0700
 From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: netdev@vger.kernel.org,
 	sridhar.samudrala@intel.com
-Date: Thu, 31 Oct 2024 07:00:08 +0100
-Message-ID: <20241031060009.38979-3-michal.swiatkowski@linux.intel.com>
+Date: Thu, 31 Oct 2024 07:00:09 +0100
+Message-ID: <20241031060009.38979-4-michal.swiatkowski@linux.intel.com>
 X-Mailer: git-send-email 2.42.0
 In-Reply-To: <20241031060009.38979-1-michal.swiatkowski@linux.intel.com>
 References: <20241031060009.38979-1-michal.swiatkowski@linux.intel.com>
@@ -76,24 +76,25 @@ Content-Transfer-Encoding: 8bit
 X-Mailman-Approved-At: Thu, 31 Oct 2024 15:20:09 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1730354414; x=1761890414;
+ t=1730354416; x=1761890416;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=ah4ER9uuaDuiKqExVX2njPkUq8+DKNu+ToTM9QJUQk8=;
- b=OqqEo72EG9RO8KTGougtis8VzTqy2xhGJNeFIwX6M7ch5IZLdMmuFVJc
- EJul2irbCAZuS5IHswY+1Vux3pYBhiQiMnMh1HQUQsiO2s+tpT23pldUs
- DZtXPeQLKMuSwpLNf5VlYM5WBCQ3Tk+euNkSdIkf1gWrzPN/SKEcQAXlw
- 3kAmH4/5VwQ1W2E1ivouXyDGvPNlhjfboVCwkBMOnbmkAgNRfM5orkA+I
- jOY0bfUEfE8AJT2V15nMn88U5F4E7TL5zMVLMmV1iNsU11KPFMYDKfYd9
- Hry/KGSBNfV8ZYcLXHJCZ6/fMEt5X2zK7Uwuueod2gBd27anjC24G5aUN
+ bh=wAF3JYpaJMaVVvrRpeHUKgd/P9Xv1gBYJiwvPM/V6tg=;
+ b=HhzQMpTA339PR8kcIWvWhxw5aIF5TgPmIyo4n4SXfFrj8ahVhLLekQlu
+ /EDkxkcqQrCOFiwd/Muhio+YMheAtPpgInZyNlp0m5jx1bU0RACC7g5Sg
+ Lrb0qQm846hQum5blO+YBUeDGAxmJSTTXXWnT9XMBwYZ3CIr/iYtwMAF7
+ N8gnuV+b/fOfoWpMSvJ+CtWMxIKYtnar9C0m2N/g9/gbow57rFlhGYf/b
+ H+u47jVyHSSGmh4WfQf8RvKyb2GGxvRHDsh3hYxyFn2oDywJTLAvRhH3C
+ TNGCWo2U3pMbzwP6mEY4J58ZTfdh5q7cgk9xUz9JvK0tUkmU94tcAHW0e
  Q==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=OqqEo72E
-Subject: [Intel-wired-lan] [iwl-next v1 2/3] ice: ethtool support for SF
+ header.a=rsa-sha256 header.s=Intel header.b=HhzQMpTA
+Subject: [Intel-wired-lan] [iwl-next v1 3/3] ice: allow changing SF VSI
+ queues number
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -109,85 +110,182 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Initial support for subfunction device. Mostly it is sharing the same
-ethtool ops as the PF, however, define new ops structure to support
-only needed part of ethtool ops.
+Move setting number of Rx and Tx queues to the separate functions and
+use it in SF case.
 
-Define new function for getting stats length as subfunction VSI have
-less stats available than PF one.
+Adjust getting max Rx and Tx queues for SF usecase.
 
 Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
 Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 28 ++++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_sf_eth.c  |  1 +
- 2 files changed, 29 insertions(+)
+ drivers/net/ethernet/intel/ice/ice_ethtool.c | 37 +++++++-----
+ drivers/net/ethernet/intel/ice/ice_lib.c     | 63 ++++++++++++--------
+ 2 files changed, 60 insertions(+), 40 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index b552439fc1f9..9e2f20ed55d5 100644
+index 9e2f20ed55d5..c68f7796b83e 100644
 --- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
 +++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -47,6 +47,7 @@ static int ice_q_stats_len(struct net_device *netdev)
- 		 / sizeof(u64))
- #define ICE_ALL_STATS_LEN(n)	(ICE_PF_STATS_LEN + ICE_PFC_STATS_LEN + \
- 				 ICE_VSI_STATS_LEN + ice_q_stats_len(n))
-+#define ICE_SF_STATS_LEN(n)	(ICE_VSI_STATS_LEN + ice_q_stats_len(n))
+@@ -3786,22 +3786,31 @@ ice_get_ts_info(struct net_device *dev, struct kernel_ethtool_ts_info *info)
  
- static const struct ice_stats ice_gstrings_vsi_stats[] = {
- 	ICE_VSI_STAT("rx_unicast", eth_stats.rx_unicast),
-@@ -4431,6 +4432,16 @@ static int ice_repr_get_sset_count(struct net_device *netdev, int sset)
+ /**
+  * ice_get_max_txq - return the maximum number of Tx queues for in a PF
+- * @pf: PF structure
++ * @vsi: VSI structure
+  */
+-static int ice_get_max_txq(struct ice_pf *pf)
++static int ice_get_max_txq(struct ice_vsi *vsi)
+ {
+-	return min3(pf->num_lan_msix, (u16)num_online_cpus(),
+-		    (u16)pf->hw.func_caps.common_cap.num_txq);
++	u16 num_queues = vsi->back->num_lan_msix;
++
++	if (vsi->max_io_eqs)
++		num_queues = vsi->max_io_eqs;
++	return min3(num_queues, (u16)num_online_cpus(),
++		    (u16)vsi->back->hw.func_caps.common_cap.num_txq);
+ }
+ 
+ /**
+  * ice_get_max_rxq - return the maximum number of Rx queues for in a PF
+- * @pf: PF structure
++ * @vsi: VSI structure
+  */
+-static int ice_get_max_rxq(struct ice_pf *pf)
++static int ice_get_max_rxq(struct ice_vsi *vsi)
+ {
+-	return min3(pf->num_lan_msix, (u16)num_online_cpus(),
+-		    (u16)pf->hw.func_caps.common_cap.num_rxq);
++	u16 num_queues = vsi->back->num_lan_msix;
++
++	if (vsi->max_io_eqs)
++		num_queues = vsi->max_io_eqs;
++
++	return min3(num_queues, (u16)num_online_cpus(),
++		    (u16)vsi->back->hw.func_caps.common_cap.num_rxq);
+ }
+ 
+ /**
+@@ -3839,8 +3848,8 @@ ice_get_channels(struct net_device *dev, struct ethtool_channels *ch)
+ 	struct ice_pf *pf = vsi->back;
+ 
+ 	/* report maximum channels */
+-	ch->max_rx = ice_get_max_rxq(pf);
+-	ch->max_tx = ice_get_max_txq(pf);
++	ch->max_rx = ice_get_max_rxq(vsi);
++	ch->max_tx = ice_get_max_txq(vsi);
+ 	ch->max_combined = min_t(int, ch->max_rx, ch->max_tx);
+ 
+ 	/* report current channels */
+@@ -3958,14 +3967,14 @@ static int ice_set_channels(struct net_device *dev, struct ethtool_channels *ch)
+ 			   vsi->tc_cfg.numtc);
+ 		return -EINVAL;
+ 	}
+-	if (new_rx > ice_get_max_rxq(pf)) {
++	if (new_rx > ice_get_max_rxq(vsi)) {
+ 		netdev_err(dev, "Maximum allowed Rx channels is %d\n",
+-			   ice_get_max_rxq(pf));
++			   ice_get_max_rxq(vsi));
+ 		return -EINVAL;
+ 	}
+-	if (new_tx > ice_get_max_txq(pf)) {
++	if (new_tx > ice_get_max_txq(vsi)) {
+ 		netdev_err(dev, "Maximum allowed Tx channels is %d\n",
+-			   ice_get_max_txq(pf));
++			   ice_get_max_txq(vsi));
+ 		return -EINVAL;
+ 	}
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 01220e21cc81..64a6152eaaef 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -157,6 +157,32 @@ static void ice_vsi_set_num_desc(struct ice_vsi *vsi)
  	}
  }
  
-+static int ice_sf_get_sset_count(struct net_device *netdev, int sset)
++static void ice_vsi_set_num_txqs(struct ice_vsi *vsi, u16 def_qs)
 +{
-+	switch (sset) {
-+	case ETH_SS_STATS:
-+		return ICE_SF_STATS_LEN(netdev);
-+	default:
-+		return -EOPNOTSUPP;
++	if (vsi->req_txq) {
++		vsi->alloc_txq = vsi->req_txq;
++		vsi->num_txq = vsi->req_txq;
++	} else {
++		vsi->alloc_txq = min_t(u16, def_qs, (u16)num_online_cpus());
 +	}
 +}
 +
- #define ICE_I2C_EEPROM_DEV_ADDR		0xA0
- #define ICE_I2C_EEPROM_DEV_ADDR2	0xA2
- #define ICE_MODULE_TYPE_SFP		0x03
-@@ -4870,6 +4881,23 @@ void ice_set_ethtool_repr_ops(struct net_device *netdev)
- 	netdev->ethtool_ops = &ice_ethtool_repr_ops;
- }
- 
-+static const struct ethtool_ops ice_ethtool_sf_ops = {
-+	.get_drvinfo		= ice_get_drvinfo,
-+	.get_link		= ethtool_op_get_link,
-+	.get_channels		= ice_get_channels,
-+	.set_channels		= ice_set_channels,
-+	.get_ringparam		= ice_get_ringparam,
-+	.set_ringparam		= ice_set_ringparam,
-+	.get_strings		= ice_get_strings,
-+	.get_ethtool_stats	= ice_get_ethtool_stats,
-+	.get_sset_count		= ice_sf_get_sset_count,
-+};
-+
-+void ice_set_ethtool_sf_ops(struct net_device *netdev)
++static void ice_vsi_set_num_rxqs(struct ice_vsi *vsi, bool rss_ena, u16 def_qs)
 +{
-+	netdev->ethtool_ops = &ice_ethtool_sf_ops;
++	/* only 1 Rx queue unless RSS is enabled */
++	if (rss_ena) {
++		vsi->alloc_rxq = 1;
++		return;
++	}
++
++	if (vsi->req_rxq) {
++		vsi->alloc_rxq = vsi->req_rxq;
++		vsi->num_rxq = vsi->req_rxq;
++	} else {
++		vsi->alloc_rxq = min_t(u16, def_qs, (u16)num_online_cpus());
++	}
 +}
 +
  /**
-  * ice_set_ethtool_ops - setup netdev ethtool ops
-  * @netdev: network interface device structure
-diff --git a/drivers/net/ethernet/intel/ice/ice_sf_eth.c b/drivers/net/ethernet/intel/ice/ice_sf_eth.c
-index 1a2c94375ca7..d63492c25949 100644
---- a/drivers/net/ethernet/intel/ice/ice_sf_eth.c
-+++ b/drivers/net/ethernet/intel/ice/ice_sf_eth.c
-@@ -58,6 +58,7 @@ static int ice_sf_cfg_netdev(struct ice_dynamic_port *dyn_port,
- 	eth_hw_addr_set(netdev, dyn_port->hw_addr);
- 	ether_addr_copy(netdev->perm_addr, dyn_port->hw_addr);
- 	netdev->netdev_ops = &ice_sf_netdev_ops;
-+	ice_set_ethtool_sf_ops(netdev);
- 	SET_NETDEV_DEVLINK_PORT(netdev, devlink_port);
+  * ice_vsi_set_num_qs - Set number of queues, descriptors and vectors for a VSI
+  * @vsi: the VSI being configured
+@@ -174,31 +200,13 @@ static void ice_vsi_set_num_qs(struct ice_vsi *vsi)
  
- 	err = register_netdev(netdev);
+ 	switch (vsi_type) {
+ 	case ICE_VSI_PF:
+-		if (vsi->req_txq) {
+-			vsi->alloc_txq = vsi->req_txq;
+-			vsi->num_txq = vsi->req_txq;
+-		} else {
+-			vsi->alloc_txq = min3(pf->num_lan_msix,
+-					      ice_get_avail_txq_count(pf),
+-					      (u16)num_online_cpus());
+-		}
+-
++		ice_vsi_set_num_txqs(vsi, min(pf->num_lan_msix,
++					      ice_get_avail_txq_count(pf)));
+ 		pf->num_lan_tx = vsi->alloc_txq;
+ 
+-		/* only 1 Rx queue unless RSS is enabled */
+-		if (!test_bit(ICE_FLAG_RSS_ENA, pf->flags)) {
+-			vsi->alloc_rxq = 1;
+-		} else {
+-			if (vsi->req_rxq) {
+-				vsi->alloc_rxq = vsi->req_rxq;
+-				vsi->num_rxq = vsi->req_rxq;
+-			} else {
+-				vsi->alloc_rxq = min3(pf->num_lan_msix,
+-						      ice_get_avail_rxq_count(pf),
+-						      (u16)num_online_cpus());
+-			}
+-		}
+-
++		ice_vsi_set_num_rxqs(vsi, !test_bit(ICE_FLAG_RSS_ENA, pf->flags),
++				     min(pf->num_lan_msix,
++					 ice_get_avail_rxq_count(pf)));
+ 		pf->num_lan_rx = vsi->alloc_rxq;
+ 
+ 		vsi->num_q_vectors = min_t(int, pf->num_lan_msix,
+@@ -206,9 +214,12 @@ static void ice_vsi_set_num_qs(struct ice_vsi *vsi)
+ 						 vsi->alloc_txq));
+ 		break;
+ 	case ICE_VSI_SF:
+-		vsi->alloc_txq = 1;
+-		vsi->alloc_rxq = 1;
+-		vsi->num_q_vectors = 1;
++		ice_vsi_set_num_txqs(vsi, min(vsi->max_io_eqs,
++					      ice_get_avail_txq_count(pf)));
++		ice_vsi_set_num_rxqs(vsi, !test_bit(ICE_FLAG_RSS_ENA, pf->flags),
++				     min(vsi->max_io_eqs,
++					 ice_get_avail_rxq_count(pf)));
++		vsi->num_q_vectors = max_t(int, vsi->alloc_rxq, vsi->alloc_txq);
+ 		vsi->irq_dyn_alloc = true;
+ 		break;
+ 	case ICE_VSI_VF:
 -- 
 2.42.0
 
