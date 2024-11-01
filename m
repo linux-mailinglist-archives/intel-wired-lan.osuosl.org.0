@@ -2,122 +2,95 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1D5519B85CD
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 31 Oct 2024 22:58:24 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DC6CE9B88B4
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  1 Nov 2024 02:40:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A91AE60C0A;
-	Thu, 31 Oct 2024 21:58:22 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 845B560A3D;
+	Fri,  1 Nov 2024 01:40:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5fYLyDWYWxc6; Thu, 31 Oct 2024 21:58:22 +0000 (UTC)
+ id zOayBp1P-R2X; Fri,  1 Nov 2024 01:40:31 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 09C6360BF9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 498D760A92
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1730411902;
-	bh=CSBZyzb21Wct1l11Sz0DybMSdtPJ3nHRtrI7+9b+O0Y=;
-	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
+	s=default; t=1730425231;
+	bh=pcLfwCXbeXq58MIzZzjWh6H0ga0e04uNZrMRDUK7SKU=;
+	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=0Xff++Rp4qUUtSZuFI1++T5Qad01QSqi55q+ioI1fTGmf6sHo+xrY+u6Lb0JKxTeL
-	 WD9OOjJ/iNaYnStLUjxY0EZ5lRcLvBqnWCU10ONYLdfogDZWc2ZIHISsbJ8FNx505j
-	 4odBx2quvwked16sOK5m++wWR23lYBwBsAyYO/cQPrtMqd5qxvnbkajKFRGf9Qjwky
-	 N177CfpOVEiroE4+JAYyFnu5Bdh91PmUwEUatfdDUNyN7ZlPdNRuKh0IK993qF1n8n
-	 PUWZk/WF8+JtLwHiocrFQGCCrKU94yVmQddqc2v25/Kr5qxkzw5b04ICMAVHRlmama
-	 /WQqxKbcfRH5A==
+	b=Kdp132IosAJr4YPEpBWctjXQQ4DqFeaH1orUdRPIzZoM/An6d3e3xg6a8kPGYBql9
+	 8mPw+CCtv+u8X/JfqH9qv61w7vUtCLtL1G80FLvrela0tKTBD5AFL92+3rNocIR3Fg
+	 U7SPQcUhJjhJemb/iYYANGwMAsPuMiLULBpFNUmYQM4KdVhpH2ySYnM/j33JjZmNgz
+	 b0oIi+LST4SrNVUxU2Fsrh97f5pbh/W62tbOJtG6u0ZstU3gG73iNvk527za84iG4b
+	 BTZGfZPH32hCvkd1cFtprGuaTnvJ8ScHZbPl/ktsjaBjjAagXd04SkWVN2zAxSg89a
+	 lVcXjyR8PULoQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 09C6360BF9;
-	Thu, 31 Oct 2024 21:58:22 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 498D760A92;
+	Fri,  1 Nov 2024 01:40:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 602625E4F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 21:58:20 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 1E6AD5E4F
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Nov 2024 01:40:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 40E7F40909
- for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 21:58:20 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 18A594018B
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Nov 2024 01:40:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9PAlkvMtoFHU for <intel-wired-lan@lists.osuosl.org>;
- Thu, 31 Oct 2024 21:58:19 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=mschmidt@redhat.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id HaMQxA3I-EWF for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  1 Nov 2024 01:40:28 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=patchwork-bot+netdevbpf@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 51CDB408FE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 51CDB408FE
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 51CDB408FE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 21:58:18 +0000 (UTC)
-Received: from mail-oi1-f200.google.com (mail-oi1-f200.google.com
- [209.85.167.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-594-lXxjVRMVMTirqiUz5eWp4Q-1; Thu, 31 Oct 2024 17:58:16 -0400
-X-MC-Unique: lXxjVRMVMTirqiUz5eWp4Q-1
-Received: by mail-oi1-f200.google.com with SMTP id
- 5614622812f47-3e61c30daf2so206897b6e.3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Oct 2024 14:58:16 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730411895; x=1731016695;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=CSBZyzb21Wct1l11Sz0DybMSdtPJ3nHRtrI7+9b+O0Y=;
- b=OeUyKQY3KaBLM0GsgAxvvaRMorcPAJJzdlIItSbVsaoKD73qwPd16mE1w50joJwM9i
- EV4zrX9P9uClnbQcR/RDa0bm3KghpSiry4v0tk0N2/HvAY+LHTPyclvv+oCjfEpS9zBO
- W6k3NFmpoQUupuSeHLPe/aRSBb9ayROzZzLTlOKyBnMHDannOVzrVKRSlFssWTTk+qOr
- gXgG46PYnI9oS52bAn+0E1raF72Q7G7ex7q1Oea63/Il5RXFDZyQ8AhyMaXPmyTdA2EV
- RcyQan5h7L0EvVDw1iUuN7vHO6rpCRb0BAtz2DuhaWHoLa3Il4/kFNJvi7NzEOIodgWp
- Ga4A==
-X-Gm-Message-State: AOJu0YwqMBRlsRhFXcAyXNoRzbsLjknwNumNF/nRRFgPOUHI107UYMvK
- ikKFkQVxh5E4uT81wZP3d78wp/ML4tCVTCd/MeoYD4GmCvlUaJqH8HGPJ9tREoj8+1m8kaKZiBY
- UDTHqmg8xs/TuP306Ay9x/pHfVsGvAixSnfTICLZHnW1yeYk16IOgE7MgIQCgYDIVmbocpe87Zr
- 74jCr9AK9SmMSGuz3MHhiaS4e1qXeKd7iglhqRxqrpT7700l0WnA==
-X-Received: by 2002:a05:6870:8a07:b0:27b:9f8b:277b with SMTP id
- 586e51a60fabf-29051dd5067mr4336576fac.14.1730411894826; 
- Thu, 31 Oct 2024 14:58:14 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IESNcTMa68P7z7o0tSurldw54FQv2CVU4AtiyglGrHtbDB/d3JICxvbApHzc4NkM3WzWVTF+14/wa3eO27u+34=
-X-Received: by 2002:a05:6870:8a07:b0:27b:9f8b:277b with SMTP id
- 586e51a60fabf-29051dd5067mr4336566fac.14.1730411894541; Thu, 31 Oct 2024
- 14:58:14 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 1C6D540142
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1C6D540142
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1C6D540142
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Nov 2024 01:40:27 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 085A35CAF22;
+ Fri,  1 Nov 2024 01:39:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8436CC4CEC3;
+ Fri,  1 Nov 2024 01:40:25 +0000 (UTC)
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+ by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id
+ AE04F380AC02; Fri,  1 Nov 2024 01:40:34 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-References: <20241028100341.16631-1-michal.swiatkowski@linux.intel.com>
- <20241028100341.16631-3-michal.swiatkowski@linux.intel.com>
-In-Reply-To: <20241028100341.16631-3-michal.swiatkowski@linux.intel.com>
-From: Michal Schmidt <mschmidt@redhat.com>
-Date: Thu, 31 Oct 2024 22:58:03 +0100
-Message-ID: <CADEbmW1EzEVGZnxEQOUngTRKVnQQnU4mpsOoe_E0SeojcF3D6w@mail.gmail.com>
-To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
- pawel.chmielewski@intel.com, sridhar.samudrala@intel.com, 
- jacob.e.keller@intel.com, pio.raczynski@gmail.com, konrad.knitter@intel.com, 
- marcin.szycik@intel.com, wojciech.drewek@intel.com, 
- nex.sw.ncis.nat.hpm.dev@intel.com, przemyslaw.kitszel@intel.com, 
- jiri@resnulli.us, horms@kernel.org, David.Laight@aculab.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1730411897;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=CSBZyzb21Wct1l11Sz0DybMSdtPJ3nHRtrI7+9b+O0Y=;
- b=ENxtWT27jaTxHMHtb3Dbd5k6Z6T6iAhgiWyWeXqpcp5Au8IY14T5YuLXWqtbIAZKY1/ibB
- yQB6pEXmyzWeg0twIcT1mKLuyc1x7+ghvzfhp3df0bipfIh59FHHzgSGvusFFQ0x4KXg8I
- m2ootMIskRMYMPONNc5IbIqii6IksHk=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=ENxtWT27
-Subject: Re: [Intel-wired-lan] [iwl-next v6 2/9] ice: devlink PF MSI-X max
- and min parameter
+Content-Transfer-Encoding: 8bit
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <173042523324.2147711.14478562238628999014.git-patchwork-notify@kernel.org>
+Date: Fri, 01 Nov 2024 01:40:33 +0000
+References: <20241025203757.288367-1-rosenp@gmail.com>
+In-Reply-To: <20241025203757.288367-1-rosenp@gmail.com>
+To: Rosen Penev <rosenp@gmail.com>
+Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
+ przemyslaw.kitszel@intel.com, andrew+netdev@lunn.ch, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, ast@kernel.org,
+ daniel@iogearbox.net, hawk@kernel.org, john.fastabend@gmail.com,
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
+ bpf@vger.kernel.org
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1730425225;
+ bh=GRJEKlHR8b5LRnU1kiPmGCbmnJ+WuP/4OUML9P8ReSQ=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=oo13IK6r88xnNUO39oWyLkPf+uNIZKckf/WYWg06gzci3wkMnwAfc2N4hx4QvaXzi
+ fRDrwpjrAm/yXBgXBZYIRGoL3V5bhCqyYcs4z4sAZEpON5ASNYfzgta3yhhSeypvL9
+ +TKJ34gK907pDjTR9t+wA8fEueJzdaJSL8YAYcqQ80WP4HG2jik86bj48GnjgIde3E
+ NVWxn4hVl0xbpkIuGskXgsYKsJuFeBGyJccEUdN7bdi31diQtdgG+rJf3FJDyVorTs
+ cxeWLTrZ5GQkdRonTkAilng2rlKIbaKXXMXT4WigoO92Qa58Vw6GAuRTLBbffh3PZj
+ LW3uYa2WJujXA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=oo13IK6r
+Subject: Re: [Intel-wired-lan] [PATCHv2 net-next] net: freescale: use
+ ethtool string helpers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -133,55 +106,36 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Oct 28, 2024 at 11:04=E2=80=AFAM Michal Swiatkowski
-<michal.swiatkowski@linux.intel.com> wrote:
->
-> Use generic devlink PF MSI-X parameter to allow user to change MSI-X
-> range.
->
-> Add notes about this parameters into ice devlink documentation.
->
-> Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
-> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Hello:
+
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Fri, 25 Oct 2024 13:37:57 -0700 you wrote:
+> The latter is the preferred way to copy ethtool strings.
+> 
+> Avoids manually incrementing the pointer. Cleans up the code quite well.
+> 
+> Signed-off-by: Rosen Penev <rosenp@gmail.com>
 > ---
->  Documentation/networking/devlink/ice.rst      | 11 +++
->  .../net/ethernet/intel/ice/devlink/devlink.c  | 83 ++++++++++++++++++-
->  drivers/net/ethernet/intel/ice/ice.h          |  7 ++
->  drivers/net/ethernet/intel/ice/ice_irq.c      |  7 ++
->  4 files changed, 107 insertions(+), 1 deletion(-)
->
-...
-> @@ -1526,6 +1548,37 @@ static int ice_devlink_local_fwd_validate(struct d=
-evlink *devlink, u32 id,
->         return 0;
->  }
->
-> +static int
-> +ice_devlink_msix_max_pf_validate(struct devlink *devlink, u32 id,
-> +                                union devlink_param_value val,
-> +                                struct netlink_ext_ack *extack)
-> +{
-> +       struct ice_pf *pf =3D devlink_priv(devlink);
-> +
-> +       if (val.vu16 > pf->hw.func_caps.common_cap.num_msix_vectors ||
-> +           val.vu16 < pf->msix.min) {
-> +               NL_SET_ERR_MSG_MOD(extack, "Value is invalid");
-> +               return -EINVAL;
-> +       }
-> +
-> +       return 0;
-> +}
-> +
-> +static int
-> +ice_devlink_msix_min_pf_validate(struct devlink *devlink, u32 id,
-> +                                union devlink_param_value val,
-> +                                struct netlink_ext_ack *extack)
-> +{
-> +       struct ice_pf *pf =3D devlink_priv(devlink);
-> +
-> +       if (val.vu16 <=3D ICE_MIN_MSIX || val.vu16 > pf->msix.max) {
+>  v2: fix wrong variable in for loop
+>  .../ethernet/freescale/dpaa/dpaa_ethtool.c    | 40 ++++++-------------
+>  .../ethernet/freescale/dpaa2/dpaa2-ethtool.c  | 15 +++----
+>  .../net/ethernet/freescale/dpaa2/dpaa2-mac.c  |  9 ++---
+>  .../net/ethernet/freescale/dpaa2/dpaa2-mac.h  |  2 +-
+>  .../freescale/dpaa2/dpaa2-switch-ethtool.c    |  9 ++---
+>  .../ethernet/freescale/enetc/enetc_ethtool.c  | 35 +++++-----------
+>  .../net/ethernet/freescale/gianfar_ethtool.c  |  8 ++--
+>  .../net/ethernet/freescale/ucc_geth_ethtool.c | 21 +++++-----
+>  8 files changed, 51 insertions(+), 88 deletions(-)
 
-Shouldn't this be "<" instead of "<=3D" ?
+Here is the summary with links:
+  - [PATCHv2,net-next] net: freescale: use ethtool string helpers
+    https://git.kernel.org/netdev/net-next/c/f611cc38925b
 
-Michal
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
