@@ -1,80 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DEE699B9D86
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  2 Nov 2024 07:54:10 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id EE1189BA0D2
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  2 Nov 2024 15:38:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DF898410D7;
-	Sat,  2 Nov 2024 06:54:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 10DC2614F6;
+	Sat,  2 Nov 2024 14:38:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8Wb1YYtlVdJx; Sat,  2 Nov 2024 06:54:08 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 7vz_m5fXTyTc; Sat,  2 Nov 2024 14:38:27 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E48FB40B8F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 519D5614F7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1730530448;
-	bh=tbHHu1F2Z76KbBx7HyGk4i8jHpTi9hemBRlpZPp/PG0=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1730558307;
+	bh=zUVr3RaTW1/6+H+Bzn86+8cBXg3VrQ4PPLbG/nDMbXA=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=B45BQCUDJ7Z2B3RFlCcXOzrMaEMeDDpqx+6E5LthmR0Sltrth78dFiJlMkkfvTDDh
-	 DiNmNZST2vHZNHwoMxaBmyZ9rPJDuY4ycmo3Fi/ozkfOS3ADWPQhXjfiSzMxxPMFA0
-	 sQ01/LpMzkY7qrjio3H3xpDv9QagkeA8W228aexLXeUpH+Q80ZtGgZfppuuoDD20uB
-	 Fug5oY3K/wIVveMLmpehRRczcrRdjc7L6TTI9on/IkSMTIlkKL6j5LhlERRPwQ22Dg
-	 cztAviZMe4/hDKKxETwwQcA3a/TNzlNPkii0xzhP5D76Y1Gzntfr8m2e09DC8tKfsN
-	 tuRzIUiC9x+MA==
+	b=viazMNg+aq9Dr+JVScDGu+hHFeuOFnVXAx+QysHSPfKdvFctxIE0jJMFBIxFx+5EG
+	 GqqTxCRqy46wyk1FmKNhGbiSLiJpcsiV3oNWbUhLM/ahxK+hGUlUKkJa60QHS1GQZX
+	 PxfPlJQC5hVsyqFn/hqD6wsBHsetlrDAag7RwUwuymu+7IhO2FOsnXPcypx44EgIS0
+	 XX+FeNPfMUjSDIoQyNzfl/EOiX9aUN8PoHbnLD7b9yPZdS5NyG3AwY+wwwN5aPwiMt
+	 4JT9+IHaDKKhySwkvxpqeQ/nwpmSB2ePzWTCunNyGCBTLPvCBbzTVSZKjsv0h4yztf
+	 /5Uv1m61ScKhA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E48FB40B8F;
-	Sat,  2 Nov 2024 06:54:07 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 519D5614F7;
+	Sat,  2 Nov 2024 14:38:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 58948979
- for <intel-wired-lan@lists.osuosl.org>; Sat,  2 Nov 2024 06:54:05 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 87AA7979
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  2 Nov 2024 14:38:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3885A410D2
- for <intel-wired-lan@lists.osuosl.org>; Sat,  2 Nov 2024 06:54:05 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 76787820E5
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  2 Nov 2024 14:38:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 57hLx2iVQytp for <intel-wired-lan@lists.osuosl.org>;
- Sat,  2 Nov 2024 06:54:03 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 050D4410C3
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 050D4410C3
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 050D4410C3
- for <intel-wired-lan@lists.osuosl.org>; Sat,  2 Nov 2024 06:54:01 +0000 (UTC)
-Received: from [192.168.0.2] (ip5f5af2cf.dynamic.kabel-deutschland.de
- [95.90.242.207])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 844B461E5FE05;
- Sat, 02 Nov 2024 07:53:44 +0100 (CET)
-Message-ID: <4458eca8-f0e8-485f-9b7d-d5d17105d090@molgen.mpg.de>
-Date: Sat, 2 Nov 2024 07:53:43 +0100
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id V8d4T1X3_P7l for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  2 Nov 2024 14:38:25 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org C8224820D1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C8224820D1
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id C8224820D1
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  2 Nov 2024 14:38:24 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id EDE355C0F6C;
+ Sat,  2 Nov 2024 14:37:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ABF18C4CEC3;
+ Sat,  2 Nov 2024 14:38:21 +0000 (UTC)
+Date: Sat, 2 Nov 2024 14:38:18 +0000
+From: Simon Horman <horms@kernel.org>
+To: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, david.m.ertman@intel.com,
+ netdev@vger.kernel.org, Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Message-ID: <20241102143818.GM1838431@kernel.org>
+References: <20241028165922.7188-1-mateusz.polchlopek@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Jacob Keller <jacob.e.keller@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, Yifei Liu <yifei.l.liu@oracle.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-References: <20241101-jk-ixgbevf-mailbox-v1-5-fixes-v1-0-f556dc9a66ed@intel.com>
- <20241101-jk-ixgbevf-mailbox-v1-5-fixes-v1-2-f556dc9a66ed@intel.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20241101-jk-ixgbevf-mailbox-v1-5-fixes-v1-2-f556dc9a66ed@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net 2/2] ixgbe: downgrade logging
- of unsupported VF API version to debug
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241028165922.7188-1-mateusz.polchlopek@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1730558303;
+ bh=+N+p9T5iVSPg9AVXsMwjJAI3S/vgv/iNp2VTOBZkfdw=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=RtI2VunKTSYj7mLSSq4wP/VDU7Sc8KNK9EzVrMeMqqQsiitcFGJpAhyVxVfCZiNh+
+ DbS2eKYCc/3PxwylDoDR/ZYFQHTnO2EwK1l16icDEd2lyBmpf1dtTulbDxnUp00CTr
+ H/7h9Gz5EnZ71DR1oD0tz6JAS5VtlI7s1AYpUZb5QLI6t2ogChLF5zKZ2hSgZNi/nE
+ Xbt9npfTeCSEkfkuQ8QkzzQ8tpK4gvRA51AkxBdlLah7LecAHqSrlWXwTd0w9sZ+i+
+ G7/3qrCNcstaGc/8e7NDSufO8LiYYRi6V2IwNmtVVO30JH4qQJ038qnECNBPRDJy2f
+ kstrBSFjPH00A==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=RtI2VunK
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] ice: change q_index variable
+ type to s16 to store -1 value
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -90,80 +100,40 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Jacob,
-
-
-Thank you for the patch.
-
-Am 02.11.24 um 00:05 schrieb Jacob Keller:
-> The ixgbe PF driver logs an info message when a VF attempts to negotiate an
-> API version which it does not support:
+On Mon, Oct 28, 2024 at 12:59:22PM -0400, Mateusz Polchlopek wrote:
+> Fix Flow Director not allowing to re-map traffic to 0th queue when action
+> is configured to drop (and vice versa).
 > 
->    VF 0 requested invalid api version 6
+> The current implementation of ethtool callback in the ice driver forbids
+> change Flow Director action from 0 to -1 and from -1 to 0 with an error,
+> e.g:
 > 
-> The ixgbevf driver attempts to load with mailbox API v1.5, which is
-> required for best compatibility with other hosts such as the ESX VMWare PF.
+>  # ethtool -U eth2 flow-type tcp4 src-ip 1.1.1.1 loc 1 action 0
+>  # ethtool -U eth2 flow-type tcp4 src-ip 1.1.1.1 loc 1 action -1
+>  rmgr: Cannot insert RX class rule: Invalid argument
 > 
-> The Linux PF only supports API v1.4, and does not currently have support
-> for the v1.5 API.
+> We set the value of `u16 q_index = 0` at the beginning of the function
+> ice_set_fdir_input_set(). In case of "drop traffic" action (which is
+> equal to -1 in ethtool) we store the 0 value. Later, when want to change
+> traffic rule to redirect to queue with index 0 it returns an error
+> caused by duplicate found.
 > 
-> The logged message can confuse users, as the v1.5 API is valid, but just
-> happens to not currently be supported by the Linux PF.
+> Fix this behaviour by change of the type of field `q_index` from u16 to s16
+> in `struct ice_fdir_fltr`. This allows to store -1 in the field in case
+> of "drop traffic" action. What is more, change the variable type in the
+> function ice_set_fdir_input_set() and assign at the beginning the new
+> `#define ICE_FDIR_NO_QUEUE_IDX` which is -1. Later, if the action is set
+> to another value (point specific queue index) the variable value is
+> overwritten in the function.
 > 
-> Downgrade the info message to a debug message, and fix the language to
-> use 'unsupported' instead of 'invalid' to improve message clarity.
-> 
-> Long term, we should investigate whether the improvements in the v1.5 API
-> make sense for the Linux PF, and if so implement them properly. This may
-> require yet another API version to resolve issues with negotiating IPSEC
-> offload support.
-
-It’d be great if you described the exact test setup for how to reproduce it.
-
-> Reported-by: Yifei Liu <yifei.l.liu@oracle.com>
-
-Do you have an Link: for this report?
-
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+> Fixes: cac2a27cd9ab ("ice: Support IPv4 Flow Director filters")
 > Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> ---
->   drivers/net/ethernet/intel/ixgbe/ixgbe_common.h | 2 ++
->   drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c  | 2 +-
->   2 files changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_common.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_common.h
-> index 6493abf189de..6639069ad528 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_common.h
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_common.h
-> @@ -194,6 +194,8 @@ u32 ixgbe_read_reg(struct ixgbe_hw *hw, u32 reg);
->   	dev_err(&adapter->pdev->dev, format, ## arg)
->   #define e_dev_notice(format, arg...) \
->   	dev_notice(&adapter->pdev->dev, format, ## arg)
-> +#define e_dbg(msglvl, format, arg...) \
-> +	netif_dbg(adapter, msglvl, adapter->netdev, format, ## arg)
->   #define e_info(msglvl, format, arg...) \
->   	netif_info(adapter, msglvl, adapter->netdev, format, ## arg)
->   #define e_err(msglvl, format, arg...) \
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
-> index e71715f5da22..20415c1238ef 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
-> @@ -1047,7 +1047,7 @@ static int ixgbe_negotiate_vf_api(struct ixgbe_adapter *adapter,
->   		break;
->   	}
->   
-> -	e_info(drv, "VF %d requested invalid api version %u\n", vf, api);
-> +	e_dbg(drv, "VF %d requested unsupported api version %u\n", vf, api);
+> Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 
-Is there a way to translate `api` to the API version scheme used in the 
-commit message? So, 1.5 instead of 6? Maybe also add, that only the v1.4 
-API is supported?
+This looks good, although I am interested to know what the maximum value
+for q_index is. And, considering unsigned values are used elsewhere, if
+using 0xffff within this driver was considered instead of -1.
 
->   
->   	return -1;
->   }
+That notwithstanding,
 
-
-Kind regards,
-
-Paul
+Reviewed-by: Simon Horman <horms@kernel.org>
