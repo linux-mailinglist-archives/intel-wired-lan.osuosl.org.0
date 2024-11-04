@@ -2,230 +2,93 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D46F89BB440
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Nov 2024 13:11:26 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id F3CC79BB44E
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Nov 2024 13:13:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D74BF404AA;
-	Mon,  4 Nov 2024 12:11:23 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6436940401;
+	Mon,  4 Nov 2024 12:13:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7qlwVdCSBIdi; Mon,  4 Nov 2024 12:11:23 +0000 (UTC)
+ id Yo_yaE4hnR9U; Mon,  4 Nov 2024 12:13:47 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BF16240233
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8C01A404A8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1730722282;
-	bh=UAffMPwihF5Zxnr//L4RmMhGmmBb8tqVt/+iUAQXfDg=;
-	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=4FNNMSOZnV+7uAgAbqmLgz0lYddmTY8ZAFQlxW60R1kV+MsDaQoPVNFFIfj7AuN6V
-	 anoYbcVJI59Qq2jWd1Sk2hFeCnTNcgw0lRrbUvD1wXTSN7FbNFgNw3NpKFLRU+stxB
-	 T8eihJVOkD6jOys5eynAHGcsk71dEUgKMHjHMiAvrlQnjiE7U39DtKtzZhFK3NQ84W
-	 rNmwFikYVvOphSAKS6b/WTWQ6UL4qei6TG6JP7OCCPl0rYDkJnRfRvesrfH7+OXt7B
-	 ESAYZ8u21tp4eVxcfkw1noaVQrqQ53tKn2XOJfPN0IReGpM7ex+id5aUaCMWv17xZ1
-	 UEtAT/l6NPNyA==
+	s=default; t=1730722426;
+	bh=34TlPRA/89aHGoxVcy8IW3IEu/Nk+88bZN4MchJN0Og=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=fHkTMHN1z10xoEKTFyvHQOd2jTsU92/fDdofdkoxID1V/llncXDUlKg9BuVPCQQs2
+	 scqgTq3gPKO22eOLDD5/i06y6RBdbScHzlFb0Fq4B/EhblhY22oLn6GVtO+gaBqsun
+	 lUBThbggOcR/UEoQ9zaxMPnqZ+Pj1MuLTu5ye3zcNUFqFr0N4KnyWAeXPisFceHF0c
+	 GyLoaFj9pxhep6WIHhK9wGPJSEbvYydNT12dcQS8mGCSJBx9SZ0uKtECYiglu5Npdv
+	 aHqciiXkS4To939keEDgE73flylJlPFC7nR9/dokCea8VCeNGLhlDsSWyuweZXhx2o
+	 eV+x6Ti3DF1dg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BF16240233;
-	Mon,  4 Nov 2024 12:11:22 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8C01A404A8;
+	Mon,  4 Nov 2024 12:13:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 9F2F7723
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 12:11:20 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3AE26723
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 12:13:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7EF5C40291
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 12:11:20 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 1B23540425
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 12:13:45 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id DdX2fdUfieH4 for <intel-wired-lan@lists.osuosl.org>;
- Mon,  4 Nov 2024 12:11:18 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
- helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id dn1P0GUEScsH for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  4 Nov 2024 12:13:43 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.18;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 7A9AC400A6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7A9AC400A6
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 7A9AC400A6
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 12:11:18 +0000 (UTC)
-X-CSE-ConnectionGUID: R8dNpIxPQKCfTKNGZNwS3w==
-X-CSE-MsgGUID: 2KegUDUnQMqxHd6ZMYYFog==
-X-IronPort-AV: E=McAfee;i="6700,10204,11245"; a="18032775"
-X-IronPort-AV: E=Sophos;i="6.11,257,1725346800"; d="scan'208";a="18032775"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
- by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Nov 2024 04:11:17 -0800
-X-CSE-ConnectionGUID: oTMOw5TxSnuoK0/O+zvdvA==
-X-CSE-MsgGUID: ua9plT7CQV6Dfb2mGb+qYg==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org B96EB40401
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B96EB40401
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.18])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B96EB40401
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 12:13:42 +0000 (UTC)
+X-CSE-ConnectionGUID: oFogaxw5SBqJkCfNUOcAuA==
+X-CSE-MsgGUID: oGTL+gFbRcSMY8nrlAF7UA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11245"; a="29843651"
+X-IronPort-AV: E=Sophos;i="6.11,257,1725346800"; d="scan'208";a="29843651"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Nov 2024 04:13:42 -0800
+X-CSE-ConnectionGUID: oyDCYbIeSFW3/oxJVuyhFA==
+X-CSE-MsgGUID: JaKOdBq/QMqV5na1sMcsLw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,257,1725346800"; d="scan'208";a="88766947"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by orviesa004.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 04 Nov 2024 04:11:16 -0800
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Mon, 4 Nov 2024 04:11:15 -0800
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39 via Frontend Transport; Mon, 4 Nov 2024 04:11:15 -0800
-Received: from NAM02-DM3-obe.outbound.protection.outlook.com (104.47.56.40) by
- edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Mon, 4 Nov 2024 04:11:15 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=zQlkpuNAnc3hzrAr3JR8YV3yIlx4BlC18CWEdzpP/lKyRYPENvSY3KAFPmddOQ9rQEyR5q7Kw1las4M0nV5O1W0m8juZ+getuLzxSvv3kXJH9S2NYAB9jfdAcW/XaPqQ1mhLxq2TDjqFfAN7zmb/CScRKHKb0x9S5ym335yWWlEl5U9dOuqsEK3HIXcaE/Ae+eIiIJJMmZjVMF9U8vDKtzo2gch9CYlSTfMbdZjX5vvcWytg2reswa+1iXnPzmInvNIRVQxFKty0zcyDY61KyeNRHWs9hPznvrlDwl7oWBUCMPk0EWHVLDaT0IKT6GefMJXnAnq3T+5Sz3qMrE2Rvw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=UAffMPwihF5Zxnr//L4RmMhGmmBb8tqVt/+iUAQXfDg=;
- b=ig+azztuhdaNRlxEcKtC7CBH7r0CgKuqcungTa38SkjGnDxY/R2f323ZIVP30p2pNfyT+corsh44iPXr6iXvmXtpYTvfA1o1oKy6Ur/mkLoSb8oSoz4QsVh/r0gvA6/xdDhfzPW3hikqmJguQbhAnd/OiiFJjNFrncx6em4uhJUJeCzIXRmFsQheEIm0SRYG9bJB2o4lUymPfnP4maQG8byUEXpM3xBmeZJvinWOptutZoiqx3uJxY62yVq6c7qftlvsQzTWVbgspwsITLu+UrB0RoTj7ayNGSxyMFc7Bi66aR0uvsC4EYVjyHtG/Jf3i9eDbdHiJcWG/Q1Ah03vXQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from CH0PR11MB8086.namprd11.prod.outlook.com (2603:10b6:610:190::8)
- by DM4PR11MB6239.namprd11.prod.outlook.com (2603:10b6:8:a7::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8114.31; Mon, 4 Nov
- 2024 12:11:12 +0000
-Received: from CH0PR11MB8086.namprd11.prod.outlook.com
- ([fe80::984b:141d:2923:8ae3]) by CH0PR11MB8086.namprd11.prod.outlook.com
- ([fe80::984b:141d:2923:8ae3%6]) with mapi id 15.20.8114.015; Mon, 4 Nov 2024
- 12:11:12 +0000
-Message-ID: <599eebcb-32db-4035-bd57-93ec723dbd43@intel.com>
-Date: Mon, 4 Nov 2024 13:11:07 +0100
-User-Agent: Mozilla Thunderbird
-To: =?UTF-8?Q?Peter_Gro=C3=9Fe?= <pegro@friiks.de>
-CC: Paul Menzel <pmenzel@molgen.mpg.de>, <intel-wired-lan@lists.osuosl.org>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, <netdev@vger.kernel.org>, "Sasha
- Levin" <sashal@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-References: <cf6dd743-759e-4db9-8811-fd1520262412@molgen.mpg.de>
- <20241030172224.30548-1-pegro@friiks.de>
- <03b7d4ef-1e1e-4b9e-84b6-1ff4a5b92b29@molgen.mpg.de>
- <2d6b0d54-57d3-4f3b-833c-8490aa63490d@intel.com>
- <20241031171133.00001507@friiks.de>
-From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Content-Language: en-US
-In-Reply-To: <20241031171133.00001507@friiks.de>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: WA2P291CA0013.POLP291.PROD.OUTLOOK.COM
- (2603:10a6:1d0:1e::14) To CH0PR11MB8086.namprd11.prod.outlook.com
- (2603:10b6:610:190::8)
+X-IronPort-AV: E=Sophos;i="6.11,257,1725346800"; d="scan'208";a="83525753"
+Received: from gk3153-dr2-r750-36946.igk.intel.com ([10.102.20.192])
+ by orviesa009.jf.intel.com with ESMTP; 04 Nov 2024 04:13:38 -0800
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon,  4 Nov 2024 13:13:28 +0100
+Message-ID: <20241104121337.129287-1-michal.swiatkowski@linux.intel.com>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH0PR11MB8086:EE_|DM4PR11MB6239:EE_
-X-MS-Office365-Filtering-Correlation-Id: 737958b2-fa6a-46c1-9299-08dcfcc9c602
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|1800799024|366016;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?Y210V0Fid2QzWTJXRmViRUMwRU94U3JPQU8yVWxvYVdoWE84czEwUDJEOXFS?=
- =?utf-8?B?Tnl1RytSdEJBN1oxajFlNXZyNFFCZWhzS0JTMjFvNUZ3QUVsYlJ4d0JHRGZJ?=
- =?utf-8?B?cWpqWkJiTW44UCt3S3lGU2FKcEFzcVRzUnhTUWRQeTV2TVNYdCtnQkE0MitH?=
- =?utf-8?B?T1QwbDJrRHZmLzFOUFU2TUY1cTQ1Rkw0a1BHTHFGOHAvYStoa2NpNHVmME5p?=
- =?utf-8?B?ZkVSNFlHZEJuc1BQT0ZFWDIwdDNYU29Gcks0MlA1ZWhCaTVuRk8wSjRhd3F3?=
- =?utf-8?B?WTVxZmRla05vcVphNUtkK1NtR3NPdGlsSzMzOGF4M3NCOC8zcU1ZUmNUTW0v?=
- =?utf-8?B?Yi9DaWNGbzkzVFpXN2c1Rkh6ejBoaU9zdGpvSURKQ0NBT2hXNE9zTG8zSXZ3?=
- =?utf-8?B?a05DS0xKZE9WSUlDS0lUNzNRdUgyQ2d0eGtZVkt0WjVhZllDZTFtS2R1L09r?=
- =?utf-8?B?UmNhTVVpdG5JSW5Fbk1vTzR3YWVCYy9uQTJPZ1ZKVnFDZlAvbm96YXpFQ29q?=
- =?utf-8?B?WUJWN2NmcE93dkwyOU5jWlBBS3djWlFkUjdUSjBnN04vL2JkVHhPRWNMeWRv?=
- =?utf-8?B?KzNMM1gvMFo5NjVwRGthWFJBTFhWbHgzWVAyQUM2RjVWOVVZakVMd1h1R1F3?=
- =?utf-8?B?a0FMR2lIUTNjSTRTa0ZkN0YrUlg4aC95dWY2aWsxbk1qT0VNYll3RitGc3RR?=
- =?utf-8?B?MTRaR2p2cnFnKy9nNUtsc0hJaHY3R21UWS8rc0xoTEhZdVpYS3dZaU9FUjJW?=
- =?utf-8?B?M1Bsbno2WVdKeUVzcnYxMTYzSXBFYitMazQrZEpzNGRoWnpmd21pdlBpUkt3?=
- =?utf-8?B?SjVFVnFxdkpZVFlYNU01NUMvenZtb0tzMUlzVjlGUGhyQXBTbi8vWFhIaVZt?=
- =?utf-8?B?L0NuZW1odFVRUW56eTQrUE1ER0UzMU1hRmRodkNRS29EODlHODVzR1NZc0RU?=
- =?utf-8?B?ZFJMdjBld1NGMVJHb1ZFSm9kQTh3N1VqUmlYSVpmNkhQV2dOUlVSTENCRW9B?=
- =?utf-8?B?MExyTDM2TmVQYll5T0pVbWh6UVcwTTI0V01PQ0hiZEZEWG8zYUJsOWVCT05U?=
- =?utf-8?B?Yy9VektoenE3QXVmZkZJTXQ5S2QxRnowYWx6c2JNVEtIRE1FMzc5SXpsWVFU?=
- =?utf-8?B?VldLcEk3OXoyd1BsNlRXcS9oTmZPalV5RnVkVmRJNWhXc2hXWTRkV3J1bUky?=
- =?utf-8?B?bkFPTWtkbzhIR0llV3lyZ0ttR005WWJUcHNRdk1RRDJHT2lGa3diTDVwdHdT?=
- =?utf-8?B?dmtQb1R6QmF3MVFaT21BYXFiQWJQUThZdnV0aDhtb3JtZkV5UkVHMEVZTlNh?=
- =?utf-8?B?bHdqK1ZmYmJXZnRia2Z0aXZ0RXV0ZURSSFI5dnZhNWU1SzRoNCtmWFB1V29P?=
- =?utf-8?B?SmN3T1JTWkJsc3pSV0dPWmsya2NuTCt6bVB4OGdBZ1NBQ2xRVHYrd2dSeTRG?=
- =?utf-8?B?bXpQaTF2WHhVYjhLajFaaE14MFhxbStnZGxTWkk2anh1RnB3UmtvdENDZFRj?=
- =?utf-8?B?TENQdHpjQUEycnkwWmVaZ2VzclkybnhJRGZtVjBZemFwYUdIc1FWZEhSNm5J?=
- =?utf-8?B?YzR3Vml1NnE4V0o3Z3hrekh3bDBpUjRMcWJjSUMreGNVS3k4UjFURUZyc3p0?=
- =?utf-8?B?ZHhZN29DUEFYZGI2L1BxMTJ4TTVFNjBDbFR3SHZ4ZldJcFBpY0xsT3JFUCs4?=
- =?utf-8?B?NTZleUszRnEzQ0pnZ1NmM2ZSS2ZONlFMNEtrbDZlZThXRElyZFZZblZhZ09N?=
- =?utf-8?Q?jVVRxS14nqQ3ggwqjyyCepnEiky2OBoJOuhdXQt?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH0PR11MB8086.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(1800799024)(366016); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?djFrSjQ2aXRSUXF5NGpBaHpXS0pVcUN0WkFScG1ZUnhjanJPSEtSZ1pCTUZt?=
- =?utf-8?B?NkdtOEdaOFhsOEpGK1BNR2p2cE03NTY5RXQ1eGxMOG9UakdMb203cDJzRmxl?=
- =?utf-8?B?YkJTV1NrVFF3ei9zWTlsNER2SEFiSXljVXA0L0FPK1ZwQ1ZNWnBrY1h0NTBk?=
- =?utf-8?B?L2hOZzBlWDEyVm5RTUkrK21HcC91SmNEbGVMMC9SaU9wYXlranpJbzQvYW8z?=
- =?utf-8?B?bTBlQzJXRHZhZmh6djVGM284cDdvdGpoT1NybWZ6WStqa2tuQytVME8wM3Va?=
- =?utf-8?B?eGQ0NzRhemY4enlLdnZyZ1NBUWtrdGxVL0NYMHgrZnEvWkppT3g0bDk3NjNK?=
- =?utf-8?B?RFJQc3AyRnZaZHdDVHBEMUJmMmltVlJqRHdHNXN2NGtFaktqc0RvVmREdFdM?=
- =?utf-8?B?MHNMWUppR3ZVcTVEMFd2ZkFMS3RqTlhrWDhMY00wZHBiaEF0dFJRUFlrZDJG?=
- =?utf-8?B?ei9NUVd5bVhrV1lhbGFIRjg5ODNSaXd6ZzFmMVFWcHNoZjdYZVRkU2FIcW9R?=
- =?utf-8?B?cCtDamY1QzMwdkJhVVZ2dlM2NXFnd3F0TkJIcno1Rm9wZis1QnRBMi96YmNP?=
- =?utf-8?B?QzQ5TmVKQjF2eXNoMktKeG82amZJaUhuelJTQWx6Wm4vNXlwOENKU3RMV21Z?=
- =?utf-8?B?Wkl6SjZoVUsvUlRYZ2I1TUdBeGlyZlYyYllnRjNnM0ZpOGQxOWtSSkZpcGFs?=
- =?utf-8?B?b0RzVVZmRUdVdHZJcDkwRHlzNVhIUWUyTys0RTJ4UTdHV2tBeDNMV2lBaUtO?=
- =?utf-8?B?OVpmdkxvd2RkUlhocWNMdWEyVEhCRUI5Q0xrcExUVitHclFVVndFNkpTU2dZ?=
- =?utf-8?B?RDdWSDBVREFaQ0lDeFZVU0FSSFRNeUxhWTVaMjUzeXY0aFpyaTQ1YnB3eDMz?=
- =?utf-8?B?eXpuRVZBQTFaWVc3MFFBZzZWQWtpWmtRcERrTXRjMU52dkd3Y2ZHV3pIWWU5?=
- =?utf-8?B?SnhhL3g3ZEdHTTFLODMyblJlYXpjRVl3R05BYXBFL2RLcTJFUkRnbVp2UU11?=
- =?utf-8?B?cjlFSlIxWnp5MUZFN2NYa1c0MlZrbFFib3d5VjBBQUdOdXM0LzRnYVBHYW0x?=
- =?utf-8?B?RTBjV0ZTWUZTNm9PZmVRVFE2ZlQzcHlYU1RLUDF1NlppODlCcEN2OU5GM3JB?=
- =?utf-8?B?Lzh6eUVucUtKd0NuV3RwZ3B4R2RrdUY4dG9PNEJML0FYLzNtQzlTdmhaeTFt?=
- =?utf-8?B?bHFiTksyZEVZR2V6aGM0Nndza09tYjA2bDVEekxTbDJZL0ZXK0MwZVlUT1dO?=
- =?utf-8?B?bHpDcWFzOVExOVJkQzAyZ25kOW5kMVVtcGtzSTBjY1ZyV01oTkw1U1FIREJn?=
- =?utf-8?B?K2pwN3h1MERUVDlNcUhDS0hNQlRKdlNzZ0VBNmpNRDJyWGZHRVl4b3hIdFU5?=
- =?utf-8?B?eWVFOUJOaGtLR2VWTmNDQS8zdE90Q3BlcjhlakpDWjQ3YkVpZUZTd2s0WGdK?=
- =?utf-8?B?MCtTTlhBQ0psN3Nkb2lib2ZqNUdub2p2b1pIbXVFTSs0MHNuNW5SemIzd3BM?=
- =?utf-8?B?Z1hOWVBiNkJYQnNZSEw4dEtUa1JGMGZnSm0rd3dTVEIxalp6OEY0THB0NFAr?=
- =?utf-8?B?TnJZUjlYaGtVWkgzc0xHQnY4cERCNzhqKzdEZzdiTm4xcVhlWVE0aWhIWmJI?=
- =?utf-8?B?SFU3TFloRFV3Z2ZVeHh5KzhCbGZTL2lMK0treCtId2QyOU04SEQ3ci9Uc0Yw?=
- =?utf-8?B?VUJuUE5WSjNpbFcrWno5OXN6N2xPWWhralQrZzZGdkFYTm1hSVZxSUVVSTRS?=
- =?utf-8?B?aHlZTXk5MDg2bGJVN0NsQUhJbmhraW93WnNYVGJYOEI2SVYvbktPTk1oSFpy?=
- =?utf-8?B?UWZnZjVxVHM1aW1aR1dSWlhYKzdxL3J3eStOT0VZQWpZZjRTTFhSMTF1MU5X?=
- =?utf-8?B?V1ZJVzZ0bjdteUd1M09QOXdjNVB6ejRkQ2x0WWlodlpPTGhrODlXTmdxZnA2?=
- =?utf-8?B?Zko1cDVyQXA5UFVqQ3hxdmJwS2tGMld6QmtldFhVMWpENkxiTlltTkpzVCtt?=
- =?utf-8?B?SlZhenNCTjg2SzE1bUVPeXJTWi82eTRsV1RFWXF3NWJJa3d0WDFwaUhrMlFk?=
- =?utf-8?B?Mmd3YjkzNFgyVUt6dnBnZG5nRHBiN21HcEtJVXVuN01NSXlkS1ZmaGRnNnR0?=
- =?utf-8?B?VGN5VjIrNzNzd1lIRGh5YjVkYlFPNXRheGl0SmZsWGsxRXYwdmxhTUwvRnQw?=
- =?utf-8?B?bEE9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 737958b2-fa6a-46c1-9299-08dcfcc9c602
-X-MS-Exchange-CrossTenant-AuthSource: CH0PR11MB8086.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Nov 2024 12:11:12.1528 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: BnDOKUuEVbfeP8t1nzehT0lsM28N1L5A6QuaHpMnsQYEAJXwdP7TtZPRvvugx7Qar8RHYAOOWfT8Y+FcHb4S2WAH+ADd0OmDdAhfEs68ImY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB6239
-X-OriginatorOrg: intel.com
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1730722279; x=1762258279;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=oROd5SwZUyTZsJ7eXjEA78hDlRNFd5wRCrQsemtV1CI=;
- b=P+x/D4mzECkCcoeteVB/KZGS9t/F7u0tgal5m2znNzok6awJpbRUProZ
- +8SpRDhtgq8mfpy4jwwomc+1g0uHA7KFEjsfQmS95hXt4hDNIUKKcQhPD
- bYMhYRmZ5fzZ4I/RhUcz9KnQ5dy4s71DMYSCKlBXxqLgGh9LFHcz/wEEg
- hsFlxJDfdbaLQNU2cGMTlxrC6U9cTd3a4lJd32GehmXfpWTrb9DmaFPT9
- kJfZPoai2WkzAGJ8hQgVbkUPuyghdWDtB+OTPSycbhJVh+p/TlL1YEI8j
- GP6a4NSg6lAmidp3nxHmO+gCta8WrVzTKG5PK+kIxHTUgbw2Lh53Ugbec
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1730722423; x=1762258423;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=RRr76WmKyGUVdIz4I0PDU/3yIiEp1D6bi8SQrTq4vOY=;
+ b=CnjuehXpTD3kLHJ+bxHrpi4ZCuzNGGC99HzMkUuIOCUHHcgQn+E9+U4P
+ vvC/aTR0CoO7TIbrFk9r3FX5HCBnQwHKALaWczuqSk/IfPgSEVgLOqENM
+ 1js52v1izhp7v5U7kBr2v/cbmT7VtOTMHT73q0M62BPzwqODa7oQauD3Z
+ XEUk1jecrvP0G0ntDK5QO5pzNTyU5yWtMR0e+b8C5ce/KFzg/JywTFshE
+ wdwesknA/3bEWqaT6AHsRoEt5cRrh8HRxgVhrv3v8nXRAX8LjyEN1iMtR
+ rGmylwASXaW3FR7W01ri0eMOZjd1pJ+NamXYjxk1ap+zNuD38W4hwkwul
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=P+x/D4mz
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] i40e: Fix handling changed
- priv flags
+ header.s=Intel header.b=CnjuehXp
+Subject: [Intel-wired-lan] [iwl-next v7 0/9] ice: managing MSI-X in driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -238,55 +101,165 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: pmenzel@molgen.mpg.de, wojciech.drewek@intel.com, marcin.szycik@intel.com,
+ netdev@vger.kernel.org, konrad.knitter@intel.com, pawel.chmielewski@intel.com,
+ horms@kernel.org, David.Laight@ACULAB.COM, nex.sw.ncis.nat.hpm.dev@intel.com,
+ pio.raczynski@gmail.com, sridhar.samudrala@intel.com, jacob.e.keller@intel.com,
+ jiri@resnulli.us, przemyslaw.kitszel@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 10/31/24 17:11, Peter Große wrote:
-> Am Thu, 31 Oct 2024 08:34:36 +0100
-> schrieb Przemek Kitszel <przemyslaw.kitszel@intel.com>:
-> 
->>>> Fixes: 70756d0a4727 ("i40e: Use DECLARE_BITMAP for flags and
->>>> hw_features fields in i40e_pf")
->>>> Signed-off-by: Peter Große <pegro@friiks.de>
->>
->> Both the code change and the Fixes: tag are correct, thank you!
->> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> 
-> Great to hear :)
-> 
-> Would this be material for stable?
-> 
-> I hope to avoid building my own kernel and just use a hwe kernel of Ubuntu.
+Hi,
 
-I believe so. Especially that you have a Fixes: tag, it's easy to tell
-if this patch should be backported to given stable tree.
-This happens outside of the Intel, after the patch will be eventually
-applied to net tree.
+It is another try to allow user to manage amount of MSI-X used for each
+feature in ice. First was via devlink resources API, it wasn't accepted
+in upstream. Also static MSI-X allocation using devlink resources isn't
+really user friendly.
 
-There is an option to CC stable directly, or even point out to what
-kernels your patch should be backported to. But in easy cases, I like to
-keep it "automatic", thanks to Sasha Levin and Greg KH.
+This try is using more dynamic way. "Dynamic" across whole kernel when
+platform supports it and "dynamic" across the driver when not.
 
-Than OS Vendors will get it down from there.
+To achieve that reuse global devlink parameter pf_msix_max and
+pf_msix_min. It fits how ice hardware counts MSI-X. In case of ice amount
+of MSI-X reported on PCI is a whole MSI-X for the card (with MSI-X for
+VFs also). Having pf_msix_max allow user to statically set how many
+MSI-X he wants on PF and how many should be reserved for VFs.
 
-> 
-> 
->> BTW, we obey netdev rules on IWL ML - next revision only after 24-48h
->> and send as standalone series (instead of In-reply-to) - no need to
->> repost this time of course
-> 
-> Sorry, I'm new to submitting patches here.
-> 
-> Is there anything else I need to do?
+pf_msix_min is used to set minimum number of MSI-X with which ice driver
+should probe correctly.
 
-for IWL patches: Intel VAL will test it out (will reach to you in case
-of any issues), then Tony will bundle it together with other fixes to
-send to net (process is the same for next-, with minor details)
+Meaning of this field in case of dynamic vs static allocation:
+- on system with dynamic MSI-X allocation support
+ * alloc pf_msix_min as static, rest will be allocated dynamically
+- on system without dynamic MSI-X allocation support
+ * try alloc pf_msix_max as static, minimum acceptable result is
+ pf_msix_min
 
-so you could just wait for this fix to be backported to stable
+As Jesse and Piotr suggested pf_msix_max and pf_msix_min can (an
+probably should) be stored in NVM. This patchset isn't implementing
+that.
 
-> 
-> Kind regards
-> Peter
-> 
+Dynamic (kernel or driver) way means that splitting MSI-X across the
+RDMA and eth in case there is a MSI-X shortage isn't correct. Can work
+when dynamic is only on driver site, but can't when dynamic is on kernel
+site.
+
+Let's remove this code and move to MSI-X allocation feature by feature.
+If there is no more MSI-X for a feature, a feature is working with less
+MSI-X or it is turned off.
+
+There is a regression here. With MSI-X splitting user can run RDMA and
+eth even on system with not enough MSI-X. Now only eth will work. RDMA
+can be turned on by changing number of PF queues (lowering) and reprobe
+RDMA driver.
+
+Example:
+72 CPU number, eth, RDMA and flow director (1 MSI-X), 1 MSI-X for OICR
+on PF, and 1 more for RDMA. Card is using 1 + 72 + 1 + 72 + 1 = 147.
+
+We set pf_msix_min = 2, pf_msix_max = 128
+
+OICR: 1
+eth: 72
+flow director: 1
+RDMA: 128 - 74 = 54
+
+We can change number of queues on pf to 36 and do devlink reinit
+
+OICR: 1
+eth: 36
+RDMA: 73
+flow director: 1
+
+We can also (implemented in "ice: enable_rdma devlink param") turned
+RDMA off.
+
+OICR: 1
+eth: 72
+RDMA: 0 (turned off)
+flow director: 1
+
+After this changes we have a static base vector for SRIOV (SIOV probably
+in the feature). Last patch from this series is simplifying managing VF
+MSI-X code based on static vector.
+
+Now changing queues using ethtool is also changing MSI-X. If there is
+enough MSI-X it is always one to one. When there is not enough there
+will be more queues than MSI-X. There is a lack of ability to set how
+many queues should be used per MSI-X. Maybe we should introduce another
+ethtool param for it? Sth like queues_per_vector?
+
+v6 --> v7: [6]
+ * use vu32 for devlink MSI-X parameters instead of u16 (patch 2)
+ * < instead of <= for MSI-X min parameter validation (patch 2)
+ * use u32 for MSI-X values (patch 2, 8)
+
+v5 --> v6: [5]
+ * set default MSI-X max value based on needs instead of const define
+   (patch 3)
+
+v4 --> v5: [4]
+ * count combined queues in ethtool for case the vectors aren't mapped
+   1:1 to queues (patch 1)
+ * change min_t to min where the casting isn't needed (and can hide
+   problems) (patch 4)
+ * load msix_max and msix_min value after devlink reload; it accidentally
+   wasn't added after removing loading in probe path to mitigate error
+   from devl_para_driverinit...() (patch 2)
+ * add documentation in develink/ice for new parameters (patch 2)
+
+v3 --> v4: [3]
+ * drop unnecessary text in devlink validation comments
+ * assume that devl_param_driverinit...() shouldn't return error in
+   normal execution path
+
+v2 --> v3: [2]
+ * move flow director init before RDMA init
+ * fix unrolling RDMA MSI-X allocation
+ * add comment in commit message about lowering control RDMA MSI-X
+   amount
+
+v1 --> v2: [1]
+ * change permanent MSI-X cmode parameters to driverinit
+ * remove locking during devlink parameter registration (it is now
+   locked for whole init/deinit part)
+
+[6] https://lore.kernel.org/netdev/20241028100341.16631-1-michal.swiatkowski@linux.intel.com/
+[5] https://lore.kernel.org/netdev/20241024121230.5861-1-michal.swiatkowski@linux.intel.com/T/#t
+[4] https://lore.kernel.org/netdev/20240930120402.3468-1-michal.swiatkowski@linux.intel.com/
+[3] https://lore.kernel.org/netdev/20240808072016.10321-1-michal.swiatkowski@linux.intel.com/
+[2] https://lore.kernel.org/netdev/20240801093115.8553-1-michal.swiatkowski@linux.intel.com/
+[1] https://lore.kernel.org/netdev/20240213073509.77622-1-michal.swiatkowski@linux.intel.com/
+
+
+Michal Swiatkowski (9):
+  ice: count combined queues using Rx/Tx count
+  ice: devlink PF MSI-X max and min parameter
+  ice: remove splitting MSI-X between features
+  ice: get rid of num_lan_msix field
+  ice, irdma: move interrupts code to irdma
+  ice: treat dyn_allowed only as suggestion
+  ice: enable_rdma devlink param
+  ice: simplify VF MSI-X managing
+  ice: init flow director before RDMA
+
+ Documentation/networking/devlink/ice.rst      |  11 +
+ drivers/infiniband/hw/irdma/hw.c              |   2 -
+ drivers/infiniband/hw/irdma/main.c            |  46 ++-
+ drivers/infiniband/hw/irdma/main.h            |   3 +
+ .../net/ethernet/intel/ice/devlink/devlink.c  | 102 ++++++-
+ drivers/net/ethernet/intel/ice/ice.h          |  21 +-
+ drivers/net/ethernet/intel/ice/ice_base.c     |  10 +-
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  |   9 +-
+ drivers/net/ethernet/intel/ice/ice_idc.c      |  64 +---
+ drivers/net/ethernet/intel/ice/ice_irq.c      | 275 ++++++------------
+ drivers/net/ethernet/intel/ice/ice_irq.h      |  13 +-
+ drivers/net/ethernet/intel/ice/ice_lib.c      |  35 ++-
+ drivers/net/ethernet/intel/ice/ice_main.c     |   6 +-
+ drivers/net/ethernet/intel/ice/ice_sriov.c    | 154 +---------
+ include/linux/net/intel/iidc.h                |   2 +
+ 15 files changed, 328 insertions(+), 425 deletions(-)
+
+-- 
+2.42.0
 
