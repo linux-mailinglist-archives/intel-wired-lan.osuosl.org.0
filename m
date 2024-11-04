@@ -1,118 +1,120 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A1BA49BB9FF
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Nov 2024 17:17:02 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2DB689BB926
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Nov 2024 16:41:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CD5F940218;
-	Mon,  4 Nov 2024 16:17:00 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VYSphUmmfNNJ; Mon,  4 Nov 2024 16:16:59 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6595A403AD
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1730737019;
-	bh=wk8LyHWtMu8L87/2eeYa33MmxCMRwkuycxwL7Q1RHjk=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=jBU+si7VJz/MMemV6Ng5HTXlVjaXnksw6Dkb/3vaqe71Dt9eKRZSp+EKiCkY22J6e
-	 9N+fyaMBv2VrBNadyJlGh6W8AfDZNdCbPneu9qAox0/dKCiMVpqFGXotmcwPcb3RgG
-	 esW4eTZSSz0KdbeWQ6ezvQIlFSV88d0drGW9y4MgWfu3pQYQAaJlScQsGZYWcAqREz
-	 ABj2/jwlrg3lLKNLSTMIfsYq0jMopwEb6CnXFLVhdkyqX0tZQMg63ZQpHgkcz/PB0u
-	 lp6GIwsKY4rSxD1oCpD5ZpsJieMDEs115Ii1znuWBdiaHTmeZR+i7MIOETevMEio2c
-	 hT5RDn0VQuPJw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6595A403AD;
-	Mon,  4 Nov 2024 16:16:59 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id E2101962
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 02:52:27 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D0B9280E0B
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 02:52:27 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3544D80F01;
+	Mon,  4 Nov 2024 15:41:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id GMoa2Rgt-VZb for <intel-wired-lan@lists.osuosl.org>;
- Mon,  4 Nov 2024 02:52:25 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=115.124.30.113;
- helo=out30-113.freemail.mail.aliyun.com;
- envelope-from=xuanzhuo@linux.alibaba.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org AC26280E06
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AC26280E06
-Received: from out30-113.freemail.mail.aliyun.com
- (out30-113.freemail.mail.aliyun.com [115.124.30.113])
- by smtp1.osuosl.org (Postfix) with ESMTPS id AC26280E06
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 02:52:21 +0000 (UTC)
-Received: from localhost(mailfrom:xuanzhuo@linux.alibaba.com
- fp:SMTPD_---0WIZn7Ws_1730688734 cluster:ay36) by smtp.aliyun-inc.com;
- Mon, 04 Nov 2024 10:52:15 +0800
-Message-ID: <1730688721.0028145-5-xuanzhuo@linux.alibaba.com>
-Date: Mon, 4 Nov 2024 10:52:01 +0800
-From: Xuan Zhuo <xuanzhuo@linux.alibaba.com>
-To: Caleb Sander Mateos <csander@purestorage.com>
-Cc: Caleb Sander Mateos <csander@purestorage.com>,
- intel-wired-lan@lists.osuosl.org, linux-arm-kernel@lists.infradead.org,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linuxppc-dev@lists.ozlabs.org,
- linux-rdma@vger.kernel.org, netdev@vger.kernel.org,
- oss-drivers@corigine.com, virtualization@lists.linux.dev,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Arthur Kiyanovski <akiyano@amazon.com>,
- Brett Creeley <brett.creeley@amd.com>,
- Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
- Christophe Leroy <christophe.leroy@csgroup.eu>,
- Claudiu Manoil <claudiu.manoil@nxp.com>,
- David Arinzon <darinzon@amazon.com>,
- "David S. Miller" <davem@davemloft.net>, Doug Berger <opendmb@gmail.com>,
- Eric Dumazet <edumazet@google.com>,
- =?utf-8?q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>,
- Felix Fietkau <nbd@nbd.name>,
- Florian Fainelli <florian.fainelli@broadcom.com>,
- Geetha sowjanya <gakula@marvell.com>, hariprasad <hkelam@marvell.com>,
- Jakub Kicinski <kuba@kernel.org>, Jason Wang <jasowang@redhat.com>,
- Jonathan Corbet <corbet@lwn.net>, Leon Romanovsky <leon@kernel.org>,
- Lorenzo Bianconi <lorenzo@kernel.org>,
- Louis Peens <louis.peens@corigine.com>,
- Mark Lee <Mark-MC.Lee@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Michael Chan <michael.chan@broadcom.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Noam Dagan <ndagan@amazon.com>,
- Paolo Abeni <pabeni@redhat.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Roy Pledge <Roy.Pledge@nxp.com>, Saeed Bishara <saeedb@amazon.com>,
- Saeed Mahameed <saeedm@nvidia.com>, Sean Wang <sean.wang@mediatek.com>,
- Shannon Nelson <shannon.nelson@amd.com>,
- Shay Agroskin <shayagr@amazon.com>, Simon Horman <horms@kernel.org>,
- Subbaraya Sundeep <sbhatta@marvell.com>,
- Sunil Goutham <sgoutham@marvell.com>, Tal Gilboa <talgi@nvidia.com>,
- Tariq Toukan <tariqt@nvidia.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Vladimir Oltean <vladimir.oltean@nxp.com>
-References: <20241031002326.3426181-1-csander@purestorage.com>
- <20241031002326.3426181-2-csander@purestorage.com>
-In-Reply-To: <20241031002326.3426181-2-csander@purestorage.com>
-X-Mailman-Approved-At: Mon, 04 Nov 2024 16:16:56 +0000
+ id yRgyFCzmfngR; Mon,  4 Nov 2024 15:41:08 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 52C7680F04
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1730734867;
+	bh=lS1nNVVujw4czQIQmdBkpFCJWF8p7dDW3pFP3fBwFhk=;
+	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=lrY7dm90jmo3tz7qcmuTjnrhmPTvMsLBbw/9RJcX3mbzdGl8GIxbmmXkzGDdNcm0h
+	 EIyloiq5G2KTrjsC9yBkIEmPco9F1MMmswdbyFS1Bcd1L2A9w3jXFbpUccIkkHXvLG
+	 cTnpES60mYkmEhTGm6mRuoCrt7tUrShRxom05c1v6FfV2a1IoFhCvCyfedD3Bj7erV
+	 G0vdWztm85Z3JUhdiXYowpIjS/pbC3KvAIokOAcYU8W4G/RqUrRObIAlmp6KicwLSO
+	 HvqSpuF5c+zO5CtiTTGRy8/Y7FosPltomPeDcEExKJ4VzuwlFiqwsESayJ+pVIYZTH
+	 YJmGDB1nTmOeA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 52C7680F04;
+	Mon,  4 Nov 2024 15:41:07 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 345DD962
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 15:41:05 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2253580F01
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 15:41:05 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id iulyCHKJTefw for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  4 Nov 2024 15:41:04 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=mschmidt@redhat.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org C863780EFE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C863780EFE
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id C863780EFE
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 15:41:03 +0000 (UTC)
+Received: from mail-oo1-f69.google.com (mail-oo1-f69.google.com
+ [209.85.161.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-134-ivw9GV0gOZyTk_5p_ETY8Q-1; Mon, 04 Nov 2024 10:41:00 -0500
+X-MC-Unique: ivw9GV0gOZyTk_5p_ETY8Q-1
+Received: by mail-oo1-f69.google.com with SMTP id
+ 006d021491bc7-5eb5ee84601so219450eaf.0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 04 Nov 2024 07:41:00 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1730734859; x=1731339659;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=lS1nNVVujw4czQIQmdBkpFCJWF8p7dDW3pFP3fBwFhk=;
+ b=iL4Oevg2X4s4dWP1agf+wGj4iqoh4A7kBfkiT0cKT3KxOmt5bEC23dKAotg/1eKPkf
+ D/3796gW5F1u4iIftde+rEw6ZyZHYOC4a/FmygG9wFhx/YkPzk/32qhJh75DLAzMI6fS
+ E/DJrPJtfwSIr9yjC6LTvNsQjVI9GpOCwscv639+kDQZFxxRjLNm3ZlPf9DE2QcRCdYx
+ z974Ex6uPwG5Z6YvzjQKLLqcQq6EiRkFpjv9qW30KJnJ/3iAdugcQCDYzoAaA6e8EmmE
+ STX29hpk5WQfpB54HzR9kKyJGUlIawRkUNr/zcaCBiM+44t6WP41vTS0OqsKoNI66tgE
+ lARQ==
+X-Gm-Message-State: AOJu0Yy+ELxEpJin4Ctu2sTidIuuSfy1vSHHhPOJHT8R9RKpN6TJXDe9
+ T2ohvQD8gRyaqAUj5aQOFKvnZohev33q9HiLTPuUQucXfkve9G1nd5bnitZCYqAhRN0/JtfCDuW
+ yvMwElDzqNEGrCoChAxzLPUrVbpiGMQl6IoWwGsukI2fi2k3W28zxMDRu4KjTeIFLAIwa9wK68M
+ WRIZ104+KIWcWgi7Sr4F4P2AB0Kh+YhY6fiH3YoexI4Q==
+X-Received: by 2002:a05:6871:5821:b0:277:db1c:7c6a with SMTP id
+ 586e51a60fabf-29051bfbe99mr7491036fac.7.1730734859267; 
+ Mon, 04 Nov 2024 07:40:59 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHTHLgRF7sGR/rUzhL1v/h/ffLFUH/U2Lp7nPDCAr0VVi+CE0aKcH1ds8xUsJODdXa6+Bi8CubOdtJMMguHlqg=
+X-Received: by 2002:a05:6871:5821:b0:277:db1c:7c6a with SMTP id
+ 586e51a60fabf-29051bfbe99mr7491025fac.7.1730734858819; Mon, 04 Nov 2024
+ 07:40:58 -0800 (PST)
+MIME-Version: 1.0
+References: <20241029123637.1974604-1-aleksandr.loktionov@intel.com>
+In-Reply-To: <20241029123637.1974604-1-aleksandr.loktionov@intel.com>
+From: Michal Schmidt <mschmidt@redhat.com>
+Date: Mon, 4 Nov 2024 16:40:47 +0100
+Message-ID: <CADEbmW1rJdFZ0ccpo-YLv0W8zQsr9-2eMnncDgR-tE+On0TX5g@mail.gmail.com>
+To: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com, 
+ netdev@vger.kernel.org, Jan Sokolowski <jan.sokolowski@intel.com>, 
+ Padraig J Connolly <padraig.j.connolly@intel.com>, maciej.fijalkowski@intel.com,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linux.alibaba.com; s=default;
- t=1730688738; h=Message-ID:Subject:Date:From:To;
- bh=wk8LyHWtMu8L87/2eeYa33MmxCMRwkuycxwL7Q1RHjk=;
- b=nlJji580RyeDQ0V5/Jzeu4jNpkdiT3M+JZfwMietHDPXzIXQAiv8CQXkCGktLHHJbjNXVfBdKX+fGY7a6AoWLUG5oqGXKyoEkHUJBSTyQK1ttLXMlc/PrzP0/9xNLP/vAOQPHKRDFUwxPve4flUxVEKUeF+P4gXkFdcQpqTBARg=
+ d=redhat.com; 
+ s=mimecast20190719; t=1730734861;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=lS1nNVVujw4czQIQmdBkpFCJWF8p7dDW3pFP3fBwFhk=;
+ b=HBq1/FRcIDCmenz3rr9j30/d1YSDloT69ZyWbPxIrSfqGnNbMpPSUjMkSX6Ki/qidGYSgl
+ zyE9PrMQjOiQNYjeFPKLlXwhpIVX8Cy3NTxxGCg9iDR+4vKc9uQO3yYcJP4UtqkVQw7guy
+ +YqM6SmIS3uu3yZ9yly7F1SkOWfriYs=
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=linux.alibaba.com
+ header.from=redhat.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=linux.alibaba.com header.i=@linux.alibaba.com
- header.a=rsa-sha256 header.s=default header.b=nlJji580
-Subject: Re: [Intel-wired-lan] [resend PATCH 2/2] dim: pass dim_sample to
- net_dim() by reference
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=HBq1/FRc
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4444] i40e: add ability to
+ reset VF for Tx and Rx MDD events
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -128,515 +130,376 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 30 Oct 2024 18:23:26 -0600, Caleb Sander Mateos <csander@purestorage.com> wrote:
-> net_dim() is currently passed a struct dim_sample argument by value.
-> struct dim_sample is 24 bytes. Since this is greater 16 bytes, x86-64
-> passes it on the stack. All callers have already initialized dim_sample
-> on the stack, so passing it by value requires pushing a duplicated copy
-> to the stack. Either witing to the stack and immediately reading it, or
-> perhaps dereferencing addresses relative to the stack pointer in a chain
-> of push instructions, seems to perform quite poorly.
+On Tue, Oct 29, 2024 at 1:36=E2=80=AFPM Aleksandr Loktionov
+<aleksandr.loktionov@intel.com> wrote:
+> Implement "mdd-auto-reset-vf" priv-flag to handle Tx and Rx MDD events fo=
+r VFs.
+> This flag is also used in other network adapters like ICE.
 >
-> In a heavy TCP workload, mlx5e_handle_rx_dim() consumes 3% of CPU time,
-> 94% of which is attributed to the first push instruction to copy
-> dim_sample on the stack for the call to net_dim():
-> // Call ktime_get()
->   0.26 |4ead2:   call   4ead7 <mlx5e_handle_rx_dim+0x47>
-> // Pass the address of struct dim in %rdi
->        |4ead7:   lea    0x3d0(%rbx),%rdi
-> // Set dim_sample.pkt_ctr
->        |4eade:   mov    %r13d,0x8(%rsp)
-> // Set dim_sample.byte_ctr
->        |4eae3:   mov    %r12d,0xc(%rsp)
-> // Set dim_sample.event_ctr
->   0.15 |4eae8:   mov    %bp,0x10(%rsp)
-> // Duplicate dim_sample on the stack
->  94.16 |4eaed:   push   0x10(%rsp)
->   2.79 |4eaf1:   push   0x10(%rsp)
->   0.07 |4eaf5:   push   %rax
-> // Call net_dim()
->   0.21 |4eaf6:   call   4eafb <mlx5e_handle_rx_dim+0x6b>
+> Usage:
+> - "on"  - The problematic VF will be automatically reset
+>           if a malformed descriptor is detected.
+> - "off" - The problematic VF will be disabled.
 >
-> To allow the caller to reuse the struct dim_sample already on the stack,
-> pass the struct dim_sample by reference to net_dim().
+> In cases where a VF sends malformed packets classified as malicious, it c=
+an
+> cause the Tx queue to freeze, rendering it unusable for several minutes. =
+When
+> an MDD event occurs, this new implementation allows for a graceful VF res=
+et to
+> quickly restore operational state.
 >
-> Signed-off-by: Caleb Sander Mateos <csander@purestorage.com>
+> Currently, VF iqueues are disabled if an MDD event occurs. This patch add=
+s the
 
+s/iqueues/queues/
 
-For virtio-net:
+> ability to reset the VF if a Tx or Rx MDD event occurs. It also includes =
+MDD
+> event logging throttling to avoid dmesg pollution and unifies the format =
+of
+> Tx and Rx MDD messages.
+>
+> Note: Standard message rate limiting functions like dev_info_ratelimited(=
+)
+> do not meet our requirements. Custom rate limiting is implemented,
+> please see the code for details.
 
-Reviewed-by: Xuan Zhuo <xuanzhuo@linux.alibaba.com>
+I am not opposed to the custom rate-limiting, but have you also
+considered struct ratelimit_state, ratelimit_state_{init,exit}(),
+__ratelimit()?
 
-
+> Co-developed-by: Jan Sokolowski <jan.sokolowski@intel.com>
+> Signed-off-by: Jan Sokolowski <jan.sokolowski@intel.com>
+> Co-developed-by: Padraig J Connolly <padraig.j.connolly@intel.com>
+> Signed-off-by:  Padraig J Connolly <padraig.j.connolly@intel.com>
+> Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 > ---
->  Documentation/networking/net_dim.rst                   |  2 +-
->  drivers/net/ethernet/amazon/ena/ena_netdev.c           |  2 +-
->  drivers/net/ethernet/broadcom/bcmsysport.c             |  2 +-
->  drivers/net/ethernet/broadcom/bnxt/bnxt.c              |  4 ++--
->  drivers/net/ethernet/broadcom/genet/bcmgenet.c         |  2 +-
->  drivers/net/ethernet/freescale/enetc/enetc.c           |  2 +-
->  drivers/net/ethernet/hisilicon/hns3/hns3_enet.c        |  4 ++--
->  drivers/net/ethernet/intel/ice/ice_txrx.c              |  4 ++--
->  drivers/net/ethernet/intel/idpf/idpf_txrx.c            |  4 ++--
->  drivers/net/ethernet/marvell/octeontx2/nic/otx2_txrx.c |  2 +-
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c            |  4 ++--
->  drivers/net/ethernet/mellanox/mlx5/core/en_txrx.c      |  4 ++--
->  drivers/net/ethernet/netronome/nfp/nfd3/dp.c           |  4 ++--
->  drivers/net/ethernet/netronome/nfp/nfdk/dp.c           |  4 ++--
->  drivers/net/ethernet/pensando/ionic/ionic_txrx.c       |  2 +-
->  drivers/net/virtio_net.c                               |  2 +-
->  drivers/soc/fsl/dpio/dpio-service.c                    |  2 +-
->  include/linux/dim.h                                    |  2 +-
->  lib/dim/net_dim.c                                      | 10 +++++-----
->  19 files changed, 31 insertions(+), 31 deletions(-)
+>  drivers/net/ethernet/intel/i40e/i40e.h        |   4 +-
+>  .../net/ethernet/intel/i40e/i40e_debugfs.c    |   2 +-
+>  .../net/ethernet/intel/i40e/i40e_ethtool.c    |   2 +
+>  drivers/net/ethernet/intel/i40e/i40e_main.c   | 105 ++++++++++++++++--
+>  .../ethernet/intel/i40e/i40e_virtchnl_pf.c    |   2 +-
+>  .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |  11 +-
+>  6 files changed, 111 insertions(+), 15 deletions(-)
 >
-> diff --git a/Documentation/networking/net_dim.rst b/Documentation/networking/net_dim.rst
-> index 8908fd7b0a8d..4377998e6826 100644
-> --- a/Documentation/networking/net_dim.rst
-> +++ b/Documentation/networking/net_dim.rst
-> @@ -154,11 +154,11 @@ usage is not complete but it should make the outline of the usage clear.
->  	dim_update_sample(my_entity->events,
->  		          my_entity->packets,
->  		          my_entity->bytes,
->  		          &dim_sample);
->  	/* Call net DIM */
-> -	net_dim(&my_entity->dim, dim_sample);
-> +	net_dim(&my_entity->dim, &dim_sample);
->  	...
->    }
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/etherne=
+t/intel/i40e/i40e.h
+> index d546567..6d6683c 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e.h
+> +++ b/drivers/net/ethernet/intel/i40e/i40e.h
+> @@ -87,6 +87,7 @@ enum i40e_state {
+>         __I40E_SERVICE_SCHED,
+>         __I40E_ADMINQ_EVENT_PENDING,
+>         __I40E_MDD_EVENT_PENDING,
+> +       __I40E_MDD_VF_PRINT_PENDING,
+>         __I40E_VFLR_EVENT_PENDING,
+>         __I40E_RESET_RECOVERY_PENDING,
+>         __I40E_TIMEOUT_RECOVERY_PENDING,
+> @@ -190,6 +191,7 @@ enum i40e_pf_flags {
+>          */
+>         I40E_FLAG_TOTAL_PORT_SHUTDOWN_ENA,
+>         I40E_FLAG_VF_VLAN_PRUNING_ENA,
+> +       I40E_FLAG_MDD_AUTO_RESET_VF,
+>         I40E_PF_FLAGS_NBITS,            /* must be last */
+>  };
 >
->    /* My entity's initialization function (my_entity was already allocated) */
->    int my_driver_init_my_entity(struct my_driver_entity *my_entity, ...)
-> diff --git a/drivers/net/ethernet/amazon/ena/ena_netdev.c b/drivers/net/ethernet/amazon/ena/ena_netdev.c
-> index 96df20854eb9..63c8a2328142 100644
-> --- a/drivers/net/ethernet/amazon/ena/ena_netdev.c
-> +++ b/drivers/net/ethernet/amazon/ena/ena_netdev.c
-> @@ -1381,11 +1381,11 @@ static void ena_adjust_adaptive_rx_intr_moderation(struct ena_napi *ena_napi)
->  	dim_update_sample(rx_ring->non_empty_napi_events,
->  			  rx_ring->rx_stats.cnt,
->  			  rx_ring->rx_stats.bytes,
->  			  &dim_sample);
+> @@ -571,7 +573,7 @@ struct i40e_pf {
+>         int num_alloc_vfs;      /* actual number of VFs allocated */
+>         u32 vf_aq_requests;
+>         u32 arq_overflows;      /* Not fatal, possibly indicative of prob=
+lems */
+> -
+> +       unsigned long last_printed_mdd_jiffies; /* MDD message rate limit=
+ */
+>         /* DCBx/DCBNL capability for PF that indicates
+>          * whether DCBx is managed by firmware or host
+>          * based agent (LLDPAD). Also, indicates what
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c b/drivers/net=
+/ethernet/intel/i40e/i40e_debugfs.c
+> index abf624d..6a697bf 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
+> @@ -721,7 +721,7 @@ static void i40e_dbg_dump_vf(struct i40e_pf *pf, int =
+vf_id)
+>                 dev_info(&pf->pdev->dev, "vf %2d: VSI id=3D%d, seid=3D%d,=
+ qps=3D%d\n",
+>                          vf_id, vf->lan_vsi_id, vsi->seid, vf->num_queue_=
+pairs);
+>                 dev_info(&pf->pdev->dev, "       num MDD=3D%lld\n",
+> -                        vf->num_mdd_events);
+> +                        vf->mdd_tx_events.count + vf->mdd_rx_events.coun=
+t);
+>         } else {
+>                 dev_info(&pf->pdev->dev, "invalid VF id %d\n", vf_id);
+>         }
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net=
+/ethernet/intel/i40e/i40e_ethtool.c
+> index 1d0d2e5..d146575 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+> @@ -459,6 +459,8 @@ static const struct i40e_priv_flags i40e_gstrings_pri=
+v_flags[] =3D {
+>         I40E_PRIV_FLAG("base-r-fec", I40E_FLAG_BASE_R_FEC, 0),
+>         I40E_PRIV_FLAG("vf-vlan-pruning",
+>                        I40E_FLAG_VF_VLAN_PRUNING_ENA, 0),
+> +       I40E_PRIV_FLAG("mdd-auto-reset-vf",
+> +                      I40E_FLAG_MDD_AUTO_RESET_VF, 0),
+>  };
 >
-> -	net_dim(&ena_napi->dim, dim_sample);
-> +	net_dim(&ena_napi->dim, &dim_sample);
->
->  	rx_ring->per_napi_packets = 0;
+>  #define I40E_PRIV_FLAGS_STR_LEN ARRAY_SIZE(i40e_gstrings_priv_flags)
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/et=
+hernet/intel/i40e/i40e_main.c
+> index cbcfada..07f0a91 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> @@ -11189,22 +11189,91 @@ static void i40e_handle_reset_warning(struct i4=
+0e_pf *pf, bool lock_acquired)
+>         i40e_reset_and_rebuild(pf, false, lock_acquired);
 >  }
 >
->  void ena_unmask_interrupt(struct ena_ring *tx_ring,
-> diff --git a/drivers/net/ethernet/broadcom/bcmsysport.c b/drivers/net/ethernet/broadcom/bcmsysport.c
-> index caff6e87a488..031e9e0cca53 100644
-> --- a/drivers/net/ethernet/broadcom/bcmsysport.c
-> +++ b/drivers/net/ethernet/broadcom/bcmsysport.c
-> @@ -1027,11 +1027,11 @@ static int bcm_sysport_poll(struct napi_struct *napi, int budget)
->  	}
->
->  	if (priv->dim.use_dim) {
->  		dim_update_sample(priv->dim.event_ctr, priv->dim.packets,
->  				  priv->dim.bytes, &dim_sample);
-> -		net_dim(&priv->dim.dim, dim_sample);
-> +		net_dim(&priv->dim.dim, &dim_sample);
->  	}
->
->  	return work_done;
->  }
->
-> diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt.c b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
-> index 6dd6541d8619..ca42b81133d7 100644
-> --- a/drivers/net/ethernet/broadcom/bnxt/bnxt.c
-> +++ b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
-> @@ -3100,11 +3100,11 @@ static int bnxt_poll(struct napi_struct *napi, int budget)
->
->  		dim_update_sample(cpr->event_ctr,
->  				  cpr->rx_packets,
->  				  cpr->rx_bytes,
->  				  &dim_sample);
-> -		net_dim(&cpr->dim, dim_sample);
-> +		net_dim(&cpr->dim, &dim_sample);
->  	}
->  	return work_done;
->  }
->
->  static int __bnxt_poll_cqs(struct bnxt *bp, struct bnxt_napi *bnapi, int budget)
-> @@ -3231,11 +3231,11 @@ static int bnxt_poll_p5(struct napi_struct *napi, int budget)
->
->  		dim_update_sample(cpr->event_ctr,
->  				  cpr_rx->rx_packets,
->  				  cpr_rx->rx_bytes,
->  				  &dim_sample);
-> -		net_dim(&cpr->dim, dim_sample);
-> +		net_dim(&cpr->dim, &dim_sample);
->  	}
->  	return work_done;
->  }
->
->  static void bnxt_free_tx_skbs(struct bnxt *bp)
-> diff --git a/drivers/net/ethernet/broadcom/genet/bcmgenet.c b/drivers/net/ethernet/broadcom/genet/bcmgenet.c
-> index 10966ab15373..53a949eb9180 100644
-> --- a/drivers/net/ethernet/broadcom/genet/bcmgenet.c
-> +++ b/drivers/net/ethernet/broadcom/genet/bcmgenet.c
-> @@ -2403,11 +2403,11 @@ static int bcmgenet_rx_poll(struct napi_struct *napi, int budget)
->  	}
->
->  	if (ring->dim.use_dim) {
->  		dim_update_sample(ring->dim.event_ctr, ring->dim.packets,
->  				  ring->dim.bytes, &dim_sample);
-> -		net_dim(&ring->dim.dim, dim_sample);
-> +		net_dim(&ring->dim.dim, &dim_sample);
->  	}
->
->  	return work_done;
->  }
->
-> diff --git a/drivers/net/ethernet/freescale/enetc/enetc.c b/drivers/net/ethernet/freescale/enetc/enetc.c
-> index c09370eab319..05dedea6185a 100644
-> --- a/drivers/net/ethernet/freescale/enetc/enetc.c
-> +++ b/drivers/net/ethernet/freescale/enetc/enetc.c
-> @@ -716,11 +716,11 @@ static void enetc_rx_net_dim(struct enetc_int_vector *v)
->
->  	dim_update_sample(v->comp_cnt,
->  			  v->rx_ring.stats.packets,
->  			  v->rx_ring.stats.bytes,
->  			  &dim_sample);
-> -	net_dim(&v->rx_dim, dim_sample);
-> +	net_dim(&v->rx_dim, &dim_sample);
->  }
->
->  static int enetc_bd_ready_count(struct enetc_bdr *tx_ring, int ci)
->  {
->  	int pi = enetc_rd_reg_hot(tx_ring->tcir) & ENETC_TBCIR_IDX_MASK;
-> diff --git a/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c b/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c
-> index 4cbc4d069a1f..43377a7b2426 100644
-> --- a/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c
-> +++ b/drivers/net/ethernet/hisilicon/hns3/hns3_enet.c
-> @@ -4446,11 +4446,11 @@ static void hns3_update_rx_int_coalesce(struct hns3_enet_tqp_vector *tqp_vector)
->  	if (!rx_group->coal.adapt_enable)
->  		return;
->
->  	dim_update_sample(tqp_vector->event_cnt, rx_group->total_packets,
->  			  rx_group->total_bytes, &sample);
-> -	net_dim(&rx_group->dim, sample);
-> +	net_dim(&rx_group->dim, &sample);
->  }
->
->  static void hns3_update_tx_int_coalesce(struct hns3_enet_tqp_vector *tqp_vector)
->  {
->  	struct hns3_enet_ring_group *tx_group = &tqp_vector->tx_group;
-> @@ -4459,11 +4459,11 @@ static void hns3_update_tx_int_coalesce(struct hns3_enet_tqp_vector *tqp_vector)
->  	if (!tx_group->coal.adapt_enable)
->  		return;
->
->  	dim_update_sample(tqp_vector->event_cnt, tx_group->total_packets,
->  			  tx_group->total_bytes, &sample);
-> -	net_dim(&tx_group->dim, sample);
-> +	net_dim(&tx_group->dim, &sample);
->  }
->
->  static int hns3_nic_common_poll(struct napi_struct *napi, int budget)
->  {
->  	struct hns3_nic_priv *priv = netdev_priv(napi->dev);
-> diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-> index 8208055d6e7f..5d2d7736fd5f 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-> @@ -1350,18 +1350,18 @@ static void ice_net_dim(struct ice_q_vector *q_vector)
->
->  	if (ITR_IS_DYNAMIC(tx)) {
->  		struct dim_sample dim_sample;
->
->  		__ice_update_sample(q_vector, tx, &dim_sample, true);
-> -		net_dim(&tx->dim, dim_sample);
-> +		net_dim(&tx->dim, &dim_sample);
->  	}
->
->  	if (ITR_IS_DYNAMIC(rx)) {
->  		struct dim_sample dim_sample;
->
->  		__ice_update_sample(q_vector, rx, &dim_sample, false);
-> -		net_dim(&rx->dim, dim_sample);
-> +		net_dim(&rx->dim, &dim_sample);
->  	}
->  }
->
+> +/**
+> + * i40e_print_vf_mdd_event - print VF Tx/Rx malicious driver detect even=
+t
+> + * @pf: board private structure
+> + * @vf: pointer to the VF structure
+> + * @is_tx: true - for Tx event, false - for  Rx
+> + */
+> +static void i40e_print_vf_mdd_event(struct i40e_pf *pf, struct i40e_vf *=
+vf,
+> +                                      bool is_tx)
+> +{
+> +       dev_err(&pf->pdev->dev, is_tx ?
+> +               "%lld Tx Malicious Driver Detection events detected on PF=
+ %d VF %d MAC %pm. mdd-auto-reset-vfs=3D%s\n" :
+> +               "%lld Rx Malicious Driver Detection events detected on PF=
+ %d VF %d MAC %pm. mdd-auto-reset-vfs=3D%s\n",
+> +               vf->mdd_rx_events.count,
+> +               pf->hw.pf_id,
+> +               vf->vf_id,
+> +               vf->default_lan_addr.addr,
+> +               test_bit(I40E_FLAG_MDD_AUTO_RESET_VF, pf->flags) ? "on" :=
+ "off");
+> +}
+> +
+> +/**
+> + * i40e_print_vfs_mdd_events - print VFs malicious driver detect event
+> + * @pf: pointer to the PF structure
+> + *
+> + * Called from i40e_handle_mdd_event to rate limit and print VFs MDD eve=
+nts.
+> + */
+> +static void i40e_print_vfs_mdd_events(struct i40e_pf *pf)
+> +{
+> +       unsigned int i;
+> +
+> +       /* check that there are pending MDD events to print */
+> +       if (!test_and_clear_bit(__I40E_MDD_VF_PRINT_PENDING, pf->state))
+> +               return;
+> +
+> +       /* VF MDD event logs are rate limited to one second intervals */
+> +       if (time_is_after_jiffies(pf->last_printed_mdd_jiffies + HZ * 1))
+> +               return;
+> +
+> +       pf->last_printed_mdd_jiffies =3D jiffies;
+> +
+> +       for (i =3D 0; i < pf->num_alloc_vfs; i++) {
+> +               struct i40e_vf *vf =3D &pf->vf[i];
+> +               bool is_printed =3D false;
+> +
+> +               /* only print Rx MDD event message if there are new event=
+s */
+> +               if (vf->mdd_rx_events.count !=3D vf->mdd_rx_events.last_p=
+rinted) {
+> +                       vf->mdd_rx_events.last_printed =3D vf->mdd_rx_eve=
+nts.count;
+> +                       i40e_print_vf_mdd_event(pf, vf, false);
+> +                       is_printed =3D true;
+> +               }
+> +
+> +               /* only print Tx MDD event message if there are new event=
+s */
+> +               if (vf->mdd_tx_events.count !=3D vf->mdd_tx_events.last_p=
+rinted) {
+> +                       vf->mdd_tx_events.last_printed =3D vf->mdd_tx_eve=
+nts.count;
+> +                       i40e_print_vf_mdd_event(pf, vf, true);
+> +                       is_printed =3D true;
+> +               }
+> +
+> +               if (is_printed && !test_bit(I40E_FLAG_MDD_AUTO_RESET_VF, =
+pf->flags))
+> +                       dev_info(&pf->pdev->dev,
+> +                                "Use PF Control I/F to re-enable the VF =
+#%d\n",
+> +                                i);
+> +       }
+> +}
+> +
 >  /**
->   * ice_buildreg_itr - build value for writing to the GLINT_DYN_CTL register
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-> index d4e6f0e10487..da2a5becf62f 100644
-> --- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-> +++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-> @@ -3677,11 +3677,11 @@ static void idpf_net_dim(struct idpf_q_vector *q_vector)
->  		} while (u64_stats_fetch_retry(&txq->stats_sync, start));
->  	}
->
->  	idpf_update_dim_sample(q_vector, &dim_sample, &q_vector->tx_dim,
->  			       packets, bytes);
-> -	net_dim(&q_vector->tx_dim, dim_sample);
-> +	net_dim(&q_vector->tx_dim, &dim_sample);
->
->  check_rx_itr:
->  	if (!IDPF_ITR_IS_DYNAMIC(q_vector->rx_intr_mode))
->  		return;
->
-> @@ -3696,11 +3696,11 @@ static void idpf_net_dim(struct idpf_q_vector *q_vector)
->  		} while (u64_stats_fetch_retry(&rxq->stats_sync, start));
->  	}
->
->  	idpf_update_dim_sample(q_vector, &dim_sample, &q_vector->rx_dim,
->  			       packets, bytes);
-> -	net_dim(&q_vector->rx_dim, dim_sample);
-> +	net_dim(&q_vector->rx_dim, &dim_sample);
->  }
->
->  /**
->   * idpf_vport_intr_update_itr_ena_irq - Update itr and re-enable MSIX interrupt
->   * @q_vector: q_vector for which itr is being updated and interrupt enabled
-> diff --git a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_txrx.c b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_txrx.c
-> index 933e18ba2fb2..7aaf32e9aa95 100644
-> --- a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_txrx.c
-> +++ b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_txrx.c
-> @@ -525,11 +525,11 @@ static void otx2_adjust_adaptive_coalese(struct otx2_nic *pfvf, struct otx2_cq_p
->
->  	dim_update_sample(pfvf->napi_events,
->  			  rx_frames + tx_frames,
->  			  rx_bytes + tx_bytes,
->  			  &dim_sample);
-> -	net_dim(&cq_poll->dim, dim_sample);
-> +	net_dim(&cq_poll->dim, &dim_sample);
->  }
->
->  int otx2_napi_handler(struct napi_struct *napi, int budget)
->  {
->  	struct otx2_cq_queue *rx_cq = NULL;
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index f01ceee5f02d..53485142938c 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -2225,11 +2225,11 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
->
->  	eth->rx_packets += done;
->  	eth->rx_bytes += bytes;
->  	dim_update_sample(eth->rx_events, eth->rx_packets, eth->rx_bytes,
->  			  &dim_sample);
-> -	net_dim(&eth->rx_dim, dim_sample);
-> +	net_dim(&eth->rx_dim, &dim_sample);
->
->  	if (xdp_flush)
->  		xdp_do_flush();
->
->  	return done;
-> @@ -2375,11 +2375,11 @@ static int mtk_poll_tx(struct mtk_eth *eth, int budget)
->  	if (state.txq)
->  		netdev_tx_completed_queue(state.txq, state.done, state.bytes);
->
->  	dim_update_sample(eth->tx_events, eth->tx_packets, eth->tx_bytes,
->  			  &dim_sample);
-> -	net_dim(&eth->tx_dim, dim_sample);
-> +	net_dim(&eth->tx_dim, &dim_sample);
->
->  	if (mtk_queue_stopped(eth) &&
->  	    (atomic_read(&ring->free_count) > ring->thresh))
->  		mtk_wake_queue(eth);
->
-> diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en_txrx.c b/drivers/net/ethernet/mellanox/mlx5/core/en_txrx.c
-> index 5873fde65c2e..417098f0b2bb 100644
-> --- a/drivers/net/ethernet/mellanox/mlx5/core/en_txrx.c
-> +++ b/drivers/net/ethernet/mellanox/mlx5/core/en_txrx.c
-> @@ -53,11 +53,11 @@ static void mlx5e_handle_tx_dim(struct mlx5e_txqsq *sq)
->
->  	if (unlikely(!test_bit(MLX5E_SQ_STATE_DIM, &sq->state)))
->  		return;
->
->  	dim_update_sample(sq->cq.event_ctr, stats->packets, stats->bytes, &dim_sample);
-> -	net_dim(sq->dim, dim_sample);
-> +	net_dim(sq->dim, &dim_sample);
->  }
->
->  static void mlx5e_handle_rx_dim(struct mlx5e_rq *rq)
->  {
->  	struct mlx5e_rq_stats *stats = rq->stats;
-> @@ -65,11 +65,11 @@ static void mlx5e_handle_rx_dim(struct mlx5e_rq *rq)
->
->  	if (unlikely(!test_bit(MLX5E_RQ_STATE_DIM, &rq->state)))
->  		return;
->
->  	dim_update_sample(rq->cq.event_ctr, stats->packets, stats->bytes, &dim_sample);
-> -	net_dim(rq->dim, dim_sample);
-> +	net_dim(rq->dim, &dim_sample);
->  }
->
->  void mlx5e_trigger_irq(struct mlx5e_icosq *sq)
->  {
->  	struct mlx5_wq_cyc *wq = &sq->wq;
-> diff --git a/drivers/net/ethernet/netronome/nfp/nfd3/dp.c b/drivers/net/ethernet/netronome/nfp/nfd3/dp.c
-> index d215efc6cad0..f1c6c47564b1 100644
-> --- a/drivers/net/ethernet/netronome/nfp/nfd3/dp.c
-> +++ b/drivers/net/ethernet/netronome/nfp/nfd3/dp.c
-> @@ -1177,11 +1177,11 @@ int nfp_nfd3_poll(struct napi_struct *napi, int budget)
->  			pkts = r_vec->rx_pkts;
->  			bytes = r_vec->rx_bytes;
->  		} while (u64_stats_fetch_retry(&r_vec->rx_sync, start));
->
->  		dim_update_sample(r_vec->event_ctr, pkts, bytes, &dim_sample);
-> -		net_dim(&r_vec->rx_dim, dim_sample);
-> +		net_dim(&r_vec->rx_dim, &dim_sample);
->  	}
->
->  	if (r_vec->nfp_net->tx_coalesce_adapt_on && r_vec->tx_ring) {
->  		struct dim_sample dim_sample = {};
->  		unsigned int start;
-> @@ -1192,11 +1192,11 @@ int nfp_nfd3_poll(struct napi_struct *napi, int budget)
->  			pkts = r_vec->tx_pkts;
->  			bytes = r_vec->tx_bytes;
->  		} while (u64_stats_fetch_retry(&r_vec->tx_sync, start));
->
->  		dim_update_sample(r_vec->event_ctr, pkts, bytes, &dim_sample);
-> -		net_dim(&r_vec->tx_dim, dim_sample);
-> +		net_dim(&r_vec->tx_dim, &dim_sample);
->  	}
->
->  	return pkts_polled;
->  }
->
-> diff --git a/drivers/net/ethernet/netronome/nfp/nfdk/dp.c b/drivers/net/ethernet/netronome/nfp/nfdk/dp.c
-> index dae5af7d1845..ebeb6ab4465c 100644
-> --- a/drivers/net/ethernet/netronome/nfp/nfdk/dp.c
-> +++ b/drivers/net/ethernet/netronome/nfp/nfdk/dp.c
-> @@ -1287,11 +1287,11 @@ int nfp_nfdk_poll(struct napi_struct *napi, int budget)
->  			pkts = r_vec->rx_pkts;
->  			bytes = r_vec->rx_bytes;
->  		} while (u64_stats_fetch_retry(&r_vec->rx_sync, start));
->
->  		dim_update_sample(r_vec->event_ctr, pkts, bytes, &dim_sample);
-> -		net_dim(&r_vec->rx_dim, dim_sample);
-> +		net_dim(&r_vec->rx_dim, &dim_sample);
->  	}
->
->  	if (r_vec->nfp_net->tx_coalesce_adapt_on && r_vec->tx_ring) {
->  		struct dim_sample dim_sample = {};
->  		unsigned int start;
-> @@ -1302,11 +1302,11 @@ int nfp_nfdk_poll(struct napi_struct *napi, int budget)
->  			pkts = r_vec->tx_pkts;
->  			bytes = r_vec->tx_bytes;
->  		} while (u64_stats_fetch_retry(&r_vec->tx_sync, start));
->
->  		dim_update_sample(r_vec->event_ctr, pkts, bytes, &dim_sample);
-> -		net_dim(&r_vec->tx_dim, dim_sample);
-> +		net_dim(&r_vec->tx_dim, &dim_sample);
->  	}
->
->  	return pkts_polled;
->  }
->
-> diff --git a/drivers/net/ethernet/pensando/ionic/ionic_txrx.c b/drivers/net/ethernet/pensando/ionic/ionic_txrx.c
-> index 0eeda7e502db..2ac59564ded1 100644
-> --- a/drivers/net/ethernet/pensando/ionic/ionic_txrx.c
-> +++ b/drivers/net/ethernet/pensando/ionic/ionic_txrx.c
-> @@ -926,11 +926,11 @@ static void ionic_dim_update(struct ionic_qcq *qcq, int napi_mode)
->  	}
->
->  	dim_update_sample(qcq->cq.bound_intr->rearm_count,
->  			  pkts, bytes, &dim_sample);
->
-> -	net_dim(&qcq->dim, dim_sample);
-> +	net_dim(&qcq->dim, &dim_sample);
->  }
->
->  int ionic_tx_napi(struct napi_struct *napi, int budget)
->  {
->  	struct ionic_qcq *qcq = napi_to_qcq(napi);
-> diff --git a/drivers/net/virtio_net.c b/drivers/net/virtio_net.c
-> index 792e9eadbfc3..869586c17ffd 100644
-> --- a/drivers/net/virtio_net.c
-> +++ b/drivers/net/virtio_net.c
-> @@ -2802,11 +2802,11 @@ static void virtnet_rx_dim_update(struct virtnet_info *vi, struct receive_queue
->  	dim_update_sample(rq->calls,
->  			  u64_stats_read(&rq->stats.packets),
->  			  u64_stats_read(&rq->stats.bytes),
->  			  &cur_sample);
->
-> -	net_dim(&rq->dim, cur_sample);
-> +	net_dim(&rq->dim, &cur_sample);
->  	rq->packets_in_napi = 0;
->  }
->
->  static int virtnet_poll(struct napi_struct *napi, int budget)
->  {
-> diff --git a/drivers/soc/fsl/dpio/dpio-service.c b/drivers/soc/fsl/dpio/dpio-service.c
-> index b811446e0fa5..0b60ed16297c 100644
-> --- a/drivers/soc/fsl/dpio/dpio-service.c
-> +++ b/drivers/soc/fsl/dpio/dpio-service.c
-> @@ -889,10 +889,10 @@ void dpaa2_io_update_net_dim(struct dpaa2_io *d, __u64 frames, __u64 bytes)
->
->  	d->bytes += bytes;
->  	d->frames += frames;
->
->  	dim_update_sample(d->event_ctr, d->frames, d->bytes, &dim_sample);
-> -	net_dim(&d->rx_dim, dim_sample);
-> +	net_dim(&d->rx_dim, &dim_sample);
->
->  	spin_unlock(&d->dim_lock);
->  }
->  EXPORT_SYMBOL(dpaa2_io_update_net_dim);
-> diff --git a/include/linux/dim.h b/include/linux/dim.h
-> index 84579a50ae7f..06543fd40fcc 100644
-> --- a/include/linux/dim.h
-> +++ b/include/linux/dim.h
-> @@ -423,11 +423,11 @@ struct dim_cq_moder net_dim_get_def_tx_moderation(u8 cq_period_mode);
+>   * i40e_handle_mdd_event
+>   * @pf: pointer to the PF structure
 >   *
->   * Called by the consumer.
->   * This is the main logic of the algorithm, where data is processed in order
->   * to decide on next required action.
->   */
-> -void net_dim(struct dim *dim, struct dim_sample end_sample);
-> +void net_dim(struct dim *dim, const struct dim_sample *end_sample);
+>   * Called from the MDD irq handler to identify possibly malicious vfs
+>   **/
+>  static void i40e_handle_mdd_event(struct i40e_pf *pf)
+>  {
+>         struct i40e_hw *hw =3D &pf->hw;
+>         bool mdd_detected =3D false;
+>         struct i40e_vf *vf;
+>         u32 reg;
+>         int i;
 >
->  /* RDMA DIM */
+> -       if (!test_bit(__I40E_MDD_EVENT_PENDING, pf->state))
+> +       if (!test_and_clear_bit(__I40E_MDD_EVENT_PENDING, pf->state)) {
+> +               /* Since the VF MDD event logging is rate limited, check =
+if
+> +                * there are pending MDD events.
+> +                */
+> +               i40e_print_vfs_mdd_events(pf);
+
+Can there ever be anything to print here? i40e_print_vfs_mdd_events()
+is also called at the end of i40e_handle_mdd_event(). It always clears
+the __I40E_MDD_VF_PRINT_PENDING bit. So how can the bit ever remain
+set between invocations? In fact, shouldn't the bit be a local
+variable of this function instead of a pf->state bit?
+
+>                 return;
+> +       }
 >
->  /*
->   * RDMA DIM profile:
-> diff --git a/lib/dim/net_dim.c b/lib/dim/net_dim.c
-> index d7e7028e9b19..d6aa09a979b3 100644
-> --- a/lib/dim/net_dim.c
-> +++ b/lib/dim/net_dim.c
-> @@ -345,33 +345,33 @@ static bool net_dim_decision(struct dim_stats *curr_stats, struct dim *dim)
->  		dim->prev_stats = *curr_stats;
+>         /* find what triggered the MDD event */
+>         reg =3D rd32(hw, I40E_GL_MDET_TX);
+> @@ -11248,36 +11317,50 @@ static void i40e_handle_mdd_event(struct i40e_p=
+f *pf)
 >
->  	return dim->profile_ix != prev_ix;
+>         /* see if one of the VFs needs its hand slapped */
+>         for (i =3D 0; i < pf->num_alloc_vfs && mdd_detected; i++) {
+> +               bool is_mdd_on_tx =3D false;
+> +               bool is_mdd_on_rx =3D false;
+> +
+>                 vf =3D &(pf->vf[i]);
+>                 reg =3D rd32(hw, I40E_VP_MDET_TX(i));
+>                 if (reg & I40E_VP_MDET_TX_VALID_MASK) {
+> +                       set_bit(__I40E_MDD_VF_PRINT_PENDING, pf->state);
+>                         wr32(hw, I40E_VP_MDET_TX(i), 0xFFFF);
+> -                       vf->num_mdd_events++;
+> -                       dev_info(&pf->pdev->dev, "TX driver issue detecte=
+d on VF %d\n",
+> -                                i);
+> -                       dev_info(&pf->pdev->dev,
+> -                                "Use PF Control I/F to re-enable the VF\=
+n");
+> +                       vf->mdd_tx_events.count++;
+>                         set_bit(I40E_VF_STATE_DISABLED, &vf->vf_states);
+> +                       is_mdd_on_tx =3D true;
+>                 }
+>
+>                 reg =3D rd32(hw, I40E_VP_MDET_RX(i));
+>                 if (reg & I40E_VP_MDET_RX_VALID_MASK) {
+> +                       set_bit(__I40E_MDD_VF_PRINT_PENDING, pf->state);
+>                         wr32(hw, I40E_VP_MDET_RX(i), 0xFFFF);
+> -                       vf->num_mdd_events++;
+> -                       dev_info(&pf->pdev->dev, "RX driver issue detecte=
+d on VF %d\n",
+> -                                i);
+> -                       dev_info(&pf->pdev->dev,
+> -                                "Use PF Control I/F to re-enable the VF\=
+n");
+> +                       vf->mdd_rx_events.count++;
+>                         set_bit(I40E_VF_STATE_DISABLED, &vf->vf_states);
+> +                       is_mdd_on_rx =3D true;
+> +               }
+> +
+> +               if ((is_mdd_on_tx || is_mdd_on_rx) &&
+> +                   test_bit(I40E_FLAG_MDD_AUTO_RESET_VF, pf->flags)) {
+> +                       /* VF MDD event counters will be cleared by
+> +                        * reset, so print the event prior to reset.
+> +                        */
+> +                       if (is_mdd_on_rx)
+> +                               i40e_print_vf_mdd_event(pf, vf, false);
+> +                       if (is_mdd_on_tx)
+> +                               i40e_print_vf_mdd_event(pf, vf, true);
+
+I see there's no rate-limiting applied here. Is this intentional?
+
+> +
+> +                       i40e_vc_reset_vf(vf, true);
+>                 }
+>         }
+>
+>         /* re-enable mdd interrupt cause */
+>         clear_bit(__I40E_MDD_EVENT_PENDING, pf->state);
+
+Can you remove this 2nd clearing of the __I40E_MDD_EVENT_PENDING bit?
+If the interrupt handler detects a MDD event while we're still
+printing the message about the previous one, we don't want to forget
+it by clearing it here.
+
+Michal
+
+>         reg =3D rd32(hw, I40E_PFINT_ICR0_ENA);
+>         reg |=3D  I40E_PFINT_ICR0_ENA_MAL_DETECT_MASK;
+>         wr32(hw, I40E_PFINT_ICR0_ENA, reg);
+>         i40e_flush(hw);
+> +
+> +       i40e_print_vfs_mdd_events(pf);
 >  }
 >
-> -void net_dim(struct dim *dim, struct dim_sample end_sample)
-> +void net_dim(struct dim *dim, const struct dim_sample *end_sample)
+>  /**
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers=
+/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+> index 662622f..5b4618e 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+> @@ -216,7 +216,7 @@ void i40e_vc_notify_vf_reset(struct i40e_vf *vf)
+>   * @notify_vf: notify vf about reset or not
+>   * Reset VF handler.
+>   **/
+> -static void i40e_vc_reset_vf(struct i40e_vf *vf, bool notify_vf)
+> +void i40e_vc_reset_vf(struct i40e_vf *vf, bool notify_vf)
 >  {
->  	struct dim_stats curr_stats;
->  	u16 nevents;
+>         struct i40e_pf *pf =3D vf->pf;
+>         int i;
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h b/drivers=
+/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+> index 66f95e2..5cf74f1 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+> @@ -64,6 +64,12 @@ struct i40evf_channel {
+>         u64 max_tx_rate; /* bandwidth rate allocation for VSIs */
+>  };
 >
->  	switch (dim->state) {
->  	case DIM_MEASURE_IN_PROGRESS:
->  		nevents = BIT_GAP(BITS_PER_TYPE(u16),
-> -				  end_sample.event_ctr,
-> +				  end_sample->event_ctr,
->  				  dim->start_sample.event_ctr);
->  		if (nevents < DIM_NEVENTS)
->  			break;
-> -		if (!dim_calc_stats(&dim->start_sample, &end_sample, &curr_stats))
-> +		if (!dim_calc_stats(&dim->start_sample, end_sample, &curr_stats))
->  			break;
->  		if (net_dim_decision(&curr_stats, dim)) {
->  			dim->state = DIM_APPLY_NEW_PROFILE;
->  			schedule_work(&dim->work);
->  			break;
->  		}
->  		fallthrough;
->  	case DIM_START_MEASURE:
-> -		dim_update_sample(end_sample.event_ctr, end_sample.pkt_ctr,
-> -				  end_sample.byte_ctr, &dim->start_sample);
-> +		dim_update_sample(end_sample->event_ctr, end_sample->pkt_ctr,
-> +				  end_sample->byte_ctr, &dim->start_sample);
->  		dim->state = DIM_MEASURE_IN_PROGRESS;
->  		break;
->  	case DIM_APPLY_NEW_PROFILE:
->  		break;
->  	}
+> +struct i40e_mdd_vf_events {
+> +       u64 count;      /* total count of Rx|Tx events */
+> +       /* count number of the last printed event */
+> +       u64 last_printed;
+> +};
+> +
+>  /* VF information structure */
+>  struct i40e_vf {
+>         struct i40e_pf *pf;
+> @@ -92,7 +98,9 @@ struct i40e_vf {
+>
+>         u8 num_queue_pairs;     /* num of qps assigned to VF vsis */
+>         u8 num_req_queues;      /* num of requested qps */
+> -       u64 num_mdd_events;     /* num of mdd events detected */
+> +       /* num of mdd tx and rx events detected */
+> +       struct i40e_mdd_vf_events mdd_rx_events;
+> +       struct i40e_mdd_vf_events mdd_tx_events;
+>
+>         unsigned long vf_caps;  /* vf's adv. capabilities */
+>         unsigned long vf_states;        /* vf's runtime states */
+> @@ -120,6 +128,7 @@ int i40e_alloc_vfs(struct i40e_pf *pf, u16 num_alloc_=
+vfs);
+>  int i40e_vc_process_vf_msg(struct i40e_pf *pf, s16 vf_id, u32 v_opcode,
+>                            u32 v_retval, u8 *msg, u16 msglen);
+>  int i40e_vc_process_vflr_event(struct i40e_pf *pf);
+> +void i40e_vc_reset_vf(struct i40e_vf *vf, bool notify_vf);
+>  bool i40e_reset_vf(struct i40e_vf *vf, bool flr);
+>  bool i40e_reset_all_vfs(struct i40e_pf *pf, bool flr);
+>  void i40e_vc_notify_vf_reset(struct i40e_vf *vf);
 > --
-> 2.45.2
+> 2.25.1
 >
+>
+
