@@ -2,68 +2,68 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 70B689BACEE
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Nov 2024 08:06:03 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 80B829BACF1
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Nov 2024 08:06:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0F8F180E2A;
-	Mon,  4 Nov 2024 07:06:02 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 355CF80E4F;
+	Mon,  4 Nov 2024 07:06:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id lLhfMFs_hrBy; Mon,  4 Nov 2024 07:06:01 +0000 (UTC)
+ id wVMGihVH06TC; Mon,  4 Nov 2024 07:06:30 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F048080E2B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DDAA780E46
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1730703961;
-	bh=1GhlvC1GgC/O17CX2IjtCivF/gfQBbIjLn2b6yc7s6M=;
+	s=default; t=1730703989;
+	bh=2dmbjJjgDxxkw9bKG3zU9X26WmZ/xm7OwmEyuEtayfg=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=rfLBzjKCOMX9QYdX2943oIKaEV3FB5jOyWE4X6JUNdQ8C4bpEwSn3cW8tolZOxkD5
-	 79IFd2qOkq1s0vU0r0ZsCftpkfd9ZNMipW/sEcoszdStBzvz6AVhoCtqf1HTGimFgC
-	 vyLdQQSDT2bULEJuLRIcVftbZ2577aPoLuG5lp11PfLGyg3K4evYBqUnoTTXUAh5dj
-	 UkdZsACz/z1WagUk9xoIwCAVLB07O9320H1VjryQjol37Gyfa7B1jMexsFl92/dS2X
-	 k5sT+Z5Bt5mjf30KXD+LubICpKxhl/HS+6QFhS6aVjtfztl3fpZbdu9hupkvT8xMCw
-	 gLuwOCvvY9QcA==
+	b=tRPLXdGrmHWVo9uAvslfk4Wg57Fd22Y4uJnb4fYxH+LZ3q9KSKw4X+B296umD26k+
+	 7h/EhcilWXeEhTvnJDLB9XJWhgEXAJqoOLH+WRYkqrbg56Nwwoxiqv6HE+hy5ZOiFf
+	 DM18LhWuIgWtfDPQVj8eFnKdUcMFZ1A/02VUZWS5wlSGdD/I4oEAMy8qusCgrUXQQ0
+	 j/6DHy7NDIwoj0tV171gu9Q9U1/Yn9bRkYC/re35y0thlI92mDgwDHOXA57pYrX4A6
+	 MQJPB7STjsXwB93YOagyDxaVcq7jEUpA+LIWxMeFh2fNTFKT2oOtYskvz5uKytk9/s
+	 TTL8A1RvO4W4A==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id F048080E2B;
-	Mon,  4 Nov 2024 07:06:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DDAA780E46;
+	Mon,  4 Nov 2024 07:06:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 46745723
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 07:05:59 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id A27A2723
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 07:06:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 297944038D
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 07:05:59 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B7CCE606A0
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 07:06:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YIl0LHciT0MG for <intel-wired-lan@lists.osuosl.org>;
- Mon,  4 Nov 2024 07:05:58 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id xK--hBwu-PMw for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  4 Nov 2024 07:06:25 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
  helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 9588D4038A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9588D4038A
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D7434606CA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D7434606CA
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 9588D4038A
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 07:05:57 +0000 (UTC)
-X-CSE-ConnectionGUID: zRv66LHiTManFSKUx9SFYA==
-X-CSE-MsgGUID: z0jnFv6WSj2sf1xr93YSkA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11245"; a="29802998"
-X-IronPort-AV: E=Sophos;i="6.11,256,1725346800"; d="scan'208";a="29802998"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D7434606CA
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 07:06:24 +0000 (UTC)
+X-CSE-ConnectionGUID: Ive+G+NeRfCFVivv5FP87Q==
+X-CSE-MsgGUID: AmDj5hLkTGuxGyh1Jvy81Q==
+X-IronPort-AV: E=McAfee;i="6700,10204,11245"; a="29803039"
+X-IronPort-AV: E=Sophos;i="6.11,256,1725346800"; d="scan'208";a="29803039"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Nov 2024 23:05:55 -0800
-X-CSE-ConnectionGUID: gEFhI0EtToa9+XMJ4dXerw==
-X-CSE-MsgGUID: OXWA+pODR1e8c9O+B0vUfw==
+ 03 Nov 2024 23:06:24 -0800
+X-CSE-ConnectionGUID: oLws9DsbS2OEvLygqrdNZQ==
+X-CSE-MsgGUID: GBG8FY2tRG6HbmcNDMAgcg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,256,1725346800"; d="scan'208";a="83694153"
+X-IronPort-AV: E=Sophos;i="6.11,256,1725346800"; d="scan'208";a="114353201"
 Received: from mev-dev.igk.intel.com ([10.237.112.144])
- by orviesa006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Nov 2024 23:05:52 -0800
-Date: Mon, 4 Nov 2024 08:02:51 +0100
+ by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Nov 2024 23:06:21 -0800
+Date: Mon, 4 Nov 2024 08:03:25 +0100
 From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 To: Michal Schmidt <mschmidt@redhat.com>
 Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
@@ -73,35 +73,35 @@ Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
  wojciech.drewek@intel.com, nex.sw.ncis.nat.hpm.dev@intel.com,
  przemyslaw.kitszel@intel.com, jiri@resnulli.us, horms@kernel.org,
  David.Laight@aculab.com
-Message-ID: <ZyhxmxnxPcLk2ZcX@mev-dev.igk.intel.com>
+Message-ID: <ZyhxvW7K6v7QxD3H@mev-dev.igk.intel.com>
 References: <20241028100341.16631-1-michal.swiatkowski@linux.intel.com>
  <20241028100341.16631-3-michal.swiatkowski@linux.intel.com>
- <CADEbmW0=G8u7Y8L2fFTzan8S+Uz04nAMC+-dkj-rQb_izK88pg@mail.gmail.com>
+ <CADEbmW1EzEVGZnxEQOUngTRKVnQQnU4mpsOoe_E0SeojcF3D6w@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CADEbmW0=G8u7Y8L2fFTzan8S+Uz04nAMC+-dkj-rQb_izK88pg@mail.gmail.com>
+In-Reply-To: <CADEbmW1EzEVGZnxEQOUngTRKVnQQnU4mpsOoe_E0SeojcF3D6w@mail.gmail.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1730703958; x=1762239958;
+ t=1730703985; x=1762239985;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:content-transfer-encoding:in-reply-to;
- bh=azFTpuczehSXJyqxDMebUsmcImEct5dony72l2EVluo=;
- b=K0iVySts+yjnBMxJ08l+L8chcgPg2OloykSXAfA4BboAXbr04YDkRO+a
- egfrzDKBVwj5qReVaX4Ul/cE9bgPhKhsMqPXNYBBsjjQZBA58n9muFCka
- RdMKJ5wREJgo7u26R7O0rdyeDo98JE+vYrkxp04dpGBNgiKpfHTXMe0nN
- 3jVRB+D0YMEuQSsMaa1557IBuMGxtW1IAdgZCF6ApybybwfZOWZP2o2vK
- C7WipIco1XejDiiA4dGRMpGDCd/0eVRae0Vnmet4Q8cuocO8ufn+Pcvu4
- CYWRRywlh/6XZeNTPLpe8zbhstf77byEgxO98nrBQZvWhjKiMlPi/yla0
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=+RAwMr8vrqq84TRRwWGlgaTIO1VwU9BaNK6EaWxUsu8=;
+ b=YuYrAs2rkD4ZlLKmGPN5gKkG8I/SAjTZG1EBAMv9nJr3wg5zWfOHOzk/
+ mDtgGcAAEpydivtr5P6txq9Upnlfz59YVyGIcOsdvzv5Z1RoJuRRmlS88
+ Bn8B+GETFs/pmtZuq5hNYqp0L9rCqS2J/FVufAdVY64AktjuDqG8yqNPv
+ sM0X7TX6MIeHAErNmPkFkMLw8U9EPNH5Z5h80GAIFuB7JnomUOC4yejpL
+ z2ZgyrWRt66FIfraI8LntQPuBDc7liMOpe/IsMDBKnCwacxK9DUm/Edv2
+ U2PMXjui38zSqElYJQ6Ca1BBewnOgonhDKlxgFbFAFVeFzQk5k567wFwn
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=K0iVySts
+ header.s=Intel header.b=YuYrAs2r
 Subject: Re: [Intel-wired-lan] [iwl-next v6 2/9] ice: devlink PF MSI-X max
  and min parameter
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -119,7 +119,7 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Oct 31, 2024 at 10:48:37PM +0100, Michal Schmidt wrote:
+On Thu, Oct 31, 2024 at 10:58:03PM +0100, Michal Schmidt wrote:
 > On Mon, Oct 28, 2024 at 11:04 AM Michal Swiatkowski
 > <michal.swiatkowski@linux.intel.com> wrote:
 > >
@@ -137,68 +137,7 @@ On Thu, Oct 31, 2024 at 10:48:37PM +0100, Michal Schmidt wrote:
 > >  drivers/net/ethernet/intel/ice/ice_irq.c      |  7 ++
 > >  4 files changed, 107 insertions(+), 1 deletion(-)
 > >
-> > diff --git a/Documentation/networking/devlink/ice.rst b/Documentation/networking/devlink/ice.rst
-> > index e3972d03cea0..792e9f8c846a 100644
-> > --- a/Documentation/networking/devlink/ice.rst
-> > +++ b/Documentation/networking/devlink/ice.rst
-> > @@ -69,6 +69,17 @@ Parameters
-> >
-> >         To verify that value has been set:
-> >         $ devlink dev param show pci/0000:16:00.0 name tx_scheduling_layers
-> > +   * - ``msix_vec_per_pf_max``
-> > +     - driverinit
-> > +     - Set the max MSI-X that can be used by the PF, rest can be utilized for
-> > +       SRIOV. The range is from min value set in msix_vec_per_pf_min to
-> > +       2k/number of ports.
-> > +   * - ``msix_vec_per_pf_min``
-> > +     - driverinit
-> > +     - Set the min MSI-X that will be used by the PF. This value inform how many
-> > +       MSI-X will be allocated statically. The range is from 2 to value set
-> > +       in msix_vec_per_pf_max.
-> > +
-> >  .. list-table:: Driver specific parameters implemented
-> >      :widths: 5 5 90
-> >
-> > diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink.c b/drivers/net/ethernet/intel/ice/devlink/devlink.c
-> > index d1b9ccec5e05..29c1fec4fa93 100644
-> > --- a/drivers/net/ethernet/intel/ice/devlink/devlink.c
-> > +++ b/drivers/net/ethernet/intel/ice/devlink/devlink.c
-> > @@ -1198,6 +1198,25 @@ static int ice_devlink_set_parent(struct devlink_rate *devlink_rate,
-> >         return status;
-> >  }
-> >
-> > +static void ice_set_min_max_msix(struct ice_pf *pf)
-> > +{
-> > +       struct devlink *devlink = priv_to_devlink(pf);
-> > +       union devlink_param_value val;
-> > +       int err;
-> > +
-> > +       err = devl_param_driverinit_value_get(devlink,
-> > +                                             DEVLINK_PARAM_GENERIC_ID_MSIX_VEC_PER_PF_MIN,
-> > +                                             &val);
-> > +       if (!err)
-> > +               pf->msix.min = val.vu16;
-> > +
-> > +       err = devl_param_driverinit_value_get(devlink,
-> > +                                             DEVLINK_PARAM_GENERIC_ID_MSIX_VEC_PER_PF_MAX,
-> > +                                             &val);
-> > +       if (!err)
-> > +               pf->msix.max = val.vu16;
-> > +}
-> > +
-> >  /**
-> >   * ice_devlink_reinit_up - do reinit of the given PF
-> >   * @pf: pointer to the PF struct
-> > @@ -1207,6 +1226,9 @@ static int ice_devlink_reinit_up(struct ice_pf *pf)
-> >         struct ice_vsi *vsi = ice_get_main_vsi(pf);
-> >         int err;
-> >
-> > +       /* load MSI-X values */
-> > +       ice_set_min_max_msix(pf);
-> > +
-> >         err = ice_init_hw(&pf->hw);
-> >         if (err) {
-> >                 dev_err(ice_pf_to_dev(pf), "ice_init_hw failed: %d\n", err);
+> ...
 > > @@ -1526,6 +1548,37 @@ static int ice_devlink_local_fwd_validate(struct devlink *devlink, u32 id,
 > >         return 0;
 > >  }
@@ -227,75 +166,11 @@ On Thu, Oct 31, 2024 at 10:48:37PM +0100, Michal Schmidt wrote:
 > > +       struct ice_pf *pf = devlink_priv(devlink);
 > > +
 > > +       if (val.vu16 <= ICE_MIN_MSIX || val.vu16 > pf->msix.max) {
-> > +               NL_SET_ERR_MSG_MOD(extack, "Value is invalid");
-> > +               return -EINVAL;
-> > +       }
-> > +
-> > +       return 0;
-> > +}
-> > +
-> >  enum ice_param_id {
-> >         ICE_DEVLINK_PARAM_ID_BASE = DEVLINK_PARAM_GENERIC_ID_MAX,
-> >         ICE_DEVLINK_PARAM_ID_TX_SCHED_LAYERS,
-> > @@ -1543,6 +1596,15 @@ static const struct devlink_param ice_dvl_rdma_params[] = {
-> >                               ice_devlink_enable_iw_validate),
-> >  };
-> >
-> > +static const struct devlink_param ice_dvl_msix_params[] = {
-> > +       DEVLINK_PARAM_GENERIC(MSIX_VEC_PER_PF_MAX,
-> > +                             BIT(DEVLINK_PARAM_CMODE_DRIVERINIT),
-> > +                             NULL, NULL, ice_devlink_msix_max_pf_validate),
-> > +       DEVLINK_PARAM_GENERIC(MSIX_VEC_PER_PF_MIN,
-> > +                             BIT(DEVLINK_PARAM_CMODE_DRIVERINIT),
-> > +                             NULL, NULL, ice_devlink_msix_min_pf_validate),
-> > +};
-> > +
-> >  static const struct devlink_param ice_dvl_sched_params[] = {
-> >         DEVLINK_PARAM_DRIVER(ICE_DEVLINK_PARAM_ID_TX_SCHED_LAYERS,
-> >                              "tx_scheduling_layers",
-> > @@ -1644,6 +1706,7 @@ void ice_devlink_unregister(struct ice_pf *pf)
-> >  int ice_devlink_register_params(struct ice_pf *pf)
-> >  {
-> >         struct devlink *devlink = priv_to_devlink(pf);
-> > +       union devlink_param_value value;
-> >         struct ice_hw *hw = &pf->hw;
-> >         int status;
-> >
-> > @@ -1652,11 +1715,27 @@ int ice_devlink_register_params(struct ice_pf *pf)
-> >         if (status)
-> >                 return status;
-> >
-> > +       status = devl_params_register(devlink, ice_dvl_msix_params,
-> > +                                     ARRAY_SIZE(ice_dvl_msix_params));
-> > +       if (status)
-> > +               return status;
-> > +
-> >         if (hw->func_caps.common_cap.tx_sched_topo_comp_mode_en)
-> >                 status = devl_params_register(devlink, ice_dvl_sched_params,
-> >                                               ARRAY_SIZE(ice_dvl_sched_params));
-> > +       if (status)
-> > +               return status;
-> >
-> > -       return status;
-> > +       value.vu16 = pf->msix.max;
-> > +       devl_param_driverinit_value_set(devlink,
-> > +                                       DEVLINK_PARAM_GENERIC_ID_MSIX_VEC_PER_PF_MAX,
-> > +                                       value);
-> > +       value.vu16 = pf->msix.min;
-> > +       devl_param_driverinit_value_set(devlink,
-> > +                                       DEVLINK_PARAM_GENERIC_ID_MSIX_VEC_PER_PF_MIN,
-> > +                                       value);
-> > +
-> > +       return 0;
-> >  }
 > 
-> 
-> The type of the devlink parameters msix_vec_per_pf_{min,max} is
-> specified as u32, so you must use value.vu32 everywhere you work with
-> them, not vu16.
+> Shouldn't this be "<" instead of "<=" ?
 > 
 
-I will change it.
+Yeah, will fix.
 
 > Michal
 > 
