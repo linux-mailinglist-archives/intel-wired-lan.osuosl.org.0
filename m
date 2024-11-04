@@ -2,107 +2,80 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE8E99BAED2
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Nov 2024 09:58:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 06EC49BAF2D
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Nov 2024 10:10:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3896B606B3;
-	Mon,  4 Nov 2024 08:58:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3CF6960667;
+	Mon,  4 Nov 2024 09:10:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ydVCZrv0hj3y; Mon,  4 Nov 2024 08:58:19 +0000 (UTC)
+ id bDyTFpLgtZHd; Mon,  4 Nov 2024 09:10:25 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 977C660682
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 40D2060682
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1730710699;
-	bh=fOKmCxycDlf7GLnm1KtEkgjsbi8WHP37Yj1Sa2CnxNE=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1730711425;
+	bh=LW8DGPfEs7HnHAYYmLN2R9mC4VbYzskoc6TF8bDoAnw=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=cTe106JrnwRVhilH3mqO/Ftkcbwoyq8yGyhF3VjAyX2SQc2GlT5uu4cy39IMtkbru
-	 VHzM6vTK8XeoFrL/60aKpoj+TqCOe+JXrErbhPIWgJRQm9Rwh0LYgIEaQBl7L+CvdN
-	 wMWRB7XOn8hs1nKLb92tN3KclL6NTeQD9nEDn3B8OPcxrw1UHr0Wg/7mExUBz7qrOi
-	 fGK/kXq1svMvuRUfs5dZ0JG7vHaMkFEiivzu4iLIMAFVx7cHHoxOZ5bdVJ29OjE291
-	 47bdlxoRHp901ZYBi3uy8+/7g2VIuE65S7TMr3ruubOUtbYasPBoMZObKxtaTDorBi
-	 fOo+d8ftXmSPw==
+	 Cc:From;
+	b=sdfym7hIrfySpWilFdP6W6cDjICiTuNP5C0pK8mf7RMmJe9/28lSPFfRjsp125Mi2
+	 89ssjjHIhQOaQAHRx9zQm3HFI4G5grZTruwwOOVnI23k/cJlzaLrKHa2HrAIoHRJlX
+	 hLDZol8+Z9XpfCr1Xa7+AOjVnVt2CGIkF7AMm+4Rpse5TNcEG5h4NPECErRBS1sXGp
+	 5Uukli5/aIIaKh7/0UOx99lY4REN6X0C3gKS+UeL8y17KvcyztH2fnoKEj5/UbxjTZ
+	 TLMGrhOak1RdUCNJ6afU2klS0A4Pd3deTyzXKUE447KOWqEmmhzc0alTJitjfZ1Bpw
+	 4PLM2uee6XrXA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 977C660682;
-	Mon,  4 Nov 2024 08:58:19 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 40D2060682;
+	Mon,  4 Nov 2024 09:10:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id CFF5DB8
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 08:58:17 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 75DEF723
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 09:10:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 583F86058C
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 08:58:17 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 56B1B605C4
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 09:10:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id GT50qFgtnxsB for <intel-wired-lan@lists.osuosl.org>;
- Mon,  4 Nov 2024 08:58:16 +0000 (UTC)
-X-Greylist: delayed 405 seconds by postgrey-1.37 at util1.osuosl.org;
- Mon, 04 Nov 2024 08:58:14 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6DFC4605A9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6DFC4605A9
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=185.58.85.151;
- helo=eu-smtp-delivery-151.mimecast.com; envelope-from=david.laight@aculab.com;
+ id cDNkYl3hOrBs for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  4 Nov 2024 09:10:22 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
  receiver=<UNKNOWN> 
-Received: from eu-smtp-delivery-151.mimecast.com
- (eu-smtp-delivery-151.mimecast.com [185.58.85.151])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6DFC4605A9
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 08:58:13 +0000 (UTC)
-Received: from AcuMS.aculab.com (156.67.243.121 [156.67.243.121]) by
- relay.mimecast.com with ESMTP with both STARTTLS and AUTH (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- uk-mta-96-WZK9QpgdPQ-pFjUIMEnDYg-1; Mon, 04 Nov 2024 08:51:26 +0000
-X-MC-Unique: WZK9QpgdPQ-pFjUIMEnDYg-1
-Received: from AcuMS.Aculab.com (10.202.163.6) by AcuMS.aculab.com
- (10.202.163.6) with Microsoft SMTP Server (TLS) id 15.0.1497.48; Mon, 4 Nov
- 2024 08:51:25 +0000
-Received: from AcuMS.Aculab.com ([::1]) by AcuMS.aculab.com ([::1]) with mapi
- id 15.00.1497.048; Mon, 4 Nov 2024 08:51:25 +0000
-From: David Laight <David.Laight@ACULAB.COM>
-To: 'Michal Swiatkowski' <michal.swiatkowski@linux.intel.com>, Michal Schmidt
- <mschmidt@redhat.com>
-CC: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "pawel.chmielewski@intel.com" <pawel.chmielewski@intel.com>,
- "sridhar.samudrala@intel.com" <sridhar.samudrala@intel.com>,
- "jacob.e.keller@intel.com" <jacob.e.keller@intel.com>,
- "pio.raczynski@gmail.com" <pio.raczynski@gmail.com>,
- "konrad.knitter@intel.com" <konrad.knitter@intel.com>,
- "marcin.szycik@intel.com" <marcin.szycik@intel.com>,
- "wojciech.drewek@intel.com" <wojciech.drewek@intel.com>,
- "nex.sw.ncis.nat.hpm.dev@intel.com" <nex.sw.ncis.nat.hpm.dev@intel.com>,
- "przemyslaw.kitszel@intel.com" <przemyslaw.kitszel@intel.com>,
- "jiri@resnulli.us" <jiri@resnulli.us>, "horms@kernel.org" <horms@kernel.org>
-Thread-Topic: [Intel-wired-lan] [iwl-next v6 2/9] ice: devlink PF MSI-X max
- and min parameter
-Thread-Index: AQHbLogBIclfjUnNDkKuhxeYRHRRbbKmzwWw
-Date: Mon, 4 Nov 2024 08:51:25 +0000
-Message-ID: <ad5bf0e312d44737a18c076ab2990924@AcuMS.aculab.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 0B125605A9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0B125605A9
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0B125605A9
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 09:10:20 +0000 (UTC)
+Received: from [192.168.0.53] (unknown [95.90.234.35])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 45DB261E5FE05;
+ Mon, 04 Nov 2024 10:09:31 +0100 (CET)
+Message-ID: <840b32a0-9346-4576-97ba-17af12eb4db4@molgen.mpg.de>
+Date: Mon, 4 Nov 2024 10:09:30 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+To: David Laight <David.Laight@ACULAB.COM>,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 References: <20241028100341.16631-1-michal.swiatkowski@linux.intel.com>
  <20241028100341.16631-3-michal.swiatkowski@linux.intel.com>
  <CADEbmW0=G8u7Y8L2fFTzan8S+Uz04nAMC+-dkj-rQb_izK88pg@mail.gmail.com>
  <ZyhxmxnxPcLk2ZcX@mev-dev.igk.intel.com>
-In-Reply-To: <ZyhxmxnxPcLk2ZcX@mev-dev.igk.intel.com>
-Accept-Language: en-GB, en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [10.202.205.107]
-MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: aculab.com
+ <ad5bf0e312d44737a18c076ab2990924@AcuMS.aculab.com>
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: base64
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <ad5bf0e312d44737a18c076ab2990924@AcuMS.aculab.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=ACULAB.COM
-Subject: Re: [Intel-wired-lan] [iwl-next v6 2/9] ice: devlink PF MSI-X max
- and min parameter
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
+Subject: [Intel-wired-lan] Small Integers: Big Penalty (was: [iwl-next v6
+ 2/9] ice: devlink PF MSI-X max and min parameter)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -115,19 +88,42 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: wojciech.drewek@intel.com, marcin.szycik@intel.com, netdev@vger.kernel.org,
+ konrad.knitter@intel.com, pawel.chmielewski@intel.com, horms@kernel.org,
+ intel-wired-lan@lists.osuosl.org, nex.sw.ncis.nat.hpm.dev@intel.com,
+ pio.raczynski@gmail.com, sridhar.samudrala@intel.com, jacob.e.keller@intel.com,
+ jiri@resnulli.us, przemyslaw.kitszel@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RnJvbTogTWljaGFsIFN3aWF0a293c2tpDQo+IFNlbnQ6IDA0IE5vdmVtYmVyIDIwMjQgMDc6MDMN
-Ci4uLg0KPiA+IFRoZSB0eXBlIG9mIHRoZSBkZXZsaW5rIHBhcmFtZXRlcnMgbXNpeF92ZWNfcGVy
-X3BmX3ttaW4sbWF4fSBpcw0KPiA+IHNwZWNpZmllZCBhcyB1MzIsIHNvIHlvdSBtdXN0IHVzZSB2
-YWx1ZS52dTMyIGV2ZXJ5d2hlcmUgeW91IHdvcmsgd2l0aA0KPiA+IHRoZW0sIG5vdCB2dTE2Lg0K
-PiA+DQo+IA0KPiBJIHdpbGwgY2hhbmdlIGl0Lg0KDQpZb3UgYWxzbyBuZWVkIGEgcHJldHR5IGdv
-b2QgcmVhc29uIHRvIHVzZSB1MTYgYW55d2hlcmUgYXQgYWxsLg0KSnVzdCBiZWNhdXNlIHRoZSBk
-b21haW4gb2YgdGhlIHZhbHVlIGlzIHNtYWxsIGRvZXNuJ3QgbWVhbiB0aGUNCmJlc3QgdHlwZSBp
-c24ndCBbdW5zaWduZWRdIGludC4NCg0KQW55IGFyaXRobWV0aWMgKHBhcnRpY3VsYXJseSBvbiBu
-b24geDg2KSBpcyBsaWtlbHkgdG8gaW5jcmVhc2UNCnRoZSBjb2RlIHNpemUgYWJvdmUgYW55IHBl
-cmNlaXZlZCBkYXRhIHNhdmluZy4NCg0KCURhdmlkDQoNCi0NClJlZ2lzdGVyZWQgQWRkcmVzcyBM
-YWtlc2lkZSwgQnJhbWxleSBSb2FkLCBNb3VudCBGYXJtLCBNaWx0b24gS2V5bmVzLCBNSzEgMVBU
-LCBVSw0KUmVnaXN0cmF0aW9uIE5vOiAxMzk3Mzg2IChXYWxlcykNCg==
+Dear David, dear Michal,
 
+
+Am 04.11.24 um 09:51 schrieb David Laight:
+> From: Michal Swiatkowski
+>> Sent: 04 November 2024 07:03
+> ...
+>>> The type of the devlink parameters msix_vec_per_pf_{min,max} is
+>>> specified as u32, so you must use value.vu32 everywhere you work with
+>>> them, not vu16.
+>>>
+>>
+>> I will change it.
+> 
+> You also need a pretty good reason to use u16 anywhere at all.
+> Just because the domain of the value is small doesn't mean the
+> best type isn't [unsigned] int.
+> 
+> Any arithmetic (particularly on non x86) is likely to increase
+> the code size above any perceived data saving.
+
+In 2012 Scott Duplichan wrote *Small Integers: Big Penalty* [1]. Of 
+course you always should measure yourself.
+
+
+Kind regards,
+
+Paul
+
+
+[1]: https://notabs.org/coding/smallIntsBigPenalty.htm
