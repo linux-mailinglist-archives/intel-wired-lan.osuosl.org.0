@@ -1,220 +1,109 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 74C589BAC20
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Nov 2024 06:43:03 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 70B689BACEE
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Nov 2024 08:06:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 224666062F;
-	Mon,  4 Nov 2024 05:43:01 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0F8F180E2A;
+	Mon,  4 Nov 2024 07:06:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NB_P1kL_e-F0; Mon,  4 Nov 2024 05:43:00 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id lLhfMFs_hrBy; Mon,  4 Nov 2024 07:06:01 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2DC4B60635
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F048080E2B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1730698980;
-	bh=8glZJldve0DQTxmrMjC7NWwPCjnMCvUgF80pGfUV0O0=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1730703961;
+	bh=1GhlvC1GgC/O17CX2IjtCivF/gfQBbIjLn2b6yc7s6M=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=FUKNgOEbHXWx2TqsW9MZGTZosHo/ASfQdPRwTKlIgrNXnSF1PF/lucL3KkSC+Yc7i
-	 6Qq2Z587VjJ1Qvu7cn8CntB+rZx56dUUXJ3Q3ECjAbI+kjl3H++099Da0TiKRtCurH
-	 3LuFkeB7a/nIxdq5QMM4tWO23ZTvnwCe1DHMjMFW79Chvruqn12O66cll/o40EWvbB
-	 orCEV86TDcBSFHEAuol8k/CKM3sCzjPVNeijQ4yaDh61MQCSLoYbOPjTq+8UUWuab4
-	 xyb6d0/xX1jJ7bGgA7TW5NAEWeXl5EJWb4lCeShs8bPgKIsZ1tbjZc1R3uVm0HA6U9
-	 +MZj3R4YgI95w==
+	b=rfLBzjKCOMX9QYdX2943oIKaEV3FB5jOyWE4X6JUNdQ8C4bpEwSn3cW8tolZOxkD5
+	 79IFd2qOkq1s0vU0r0ZsCftpkfd9ZNMipW/sEcoszdStBzvz6AVhoCtqf1HTGimFgC
+	 vyLdQQSDT2bULEJuLRIcVftbZ2577aPoLuG5lp11PfLGyg3K4evYBqUnoTTXUAh5dj
+	 UkdZsACz/z1WagUk9xoIwCAVLB07O9320H1VjryQjol37Gyfa7B1jMexsFl92/dS2X
+	 k5sT+Z5Bt5mjf30KXD+LubICpKxhl/HS+6QFhS6aVjtfztl3fpZbdu9hupkvT8xMCw
+	 gLuwOCvvY9QcA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2DC4B60635;
-	Mon,  4 Nov 2024 05:43:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id F048080E2B;
+	Mon,  4 Nov 2024 07:06:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 184C9962
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 05:42:58 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 46745723
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 07:05:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id EBCA060612
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 05:42:57 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 297944038D
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 07:05:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id cKHHDTeFV93g for <intel-wired-lan@lists.osuosl.org>;
- Mon,  4 Nov 2024 05:42:57 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
- helo=mgamail.intel.com; envelope-from=himasekharx.reddy.pucha@intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id YIl0LHciT0MG for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  4 Nov 2024 07:05:58 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D1DC9605C8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D1DC9605C8
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D1DC9605C8
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 05:42:56 +0000 (UTC)
-X-CSE-ConnectionGUID: 7rakaza8RiKt8gkUhln3lQ==
-X-CSE-MsgGUID: 68mHOvH/S12pJpHeaRrb3Q==
-X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="30559104"
-X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; d="scan'208";a="30559104"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
- by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Nov 2024 21:42:55 -0800
-X-CSE-ConnectionGUID: qC1jThQcQem6GFFO2PVvZg==
-X-CSE-MsgGUID: mOWfJcKMR3WoP93n0b/VBA==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 9588D4038A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9588D4038A
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9588D4038A
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Nov 2024 07:05:57 +0000 (UTC)
+X-CSE-ConnectionGUID: zRv66LHiTManFSKUx9SFYA==
+X-CSE-MsgGUID: z0jnFv6WSj2sf1xr93YSkA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11245"; a="29802998"
+X-IronPort-AV: E=Sophos;i="6.11,256,1725346800"; d="scan'208";a="29802998"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+ by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Nov 2024 23:05:55 -0800
+X-CSE-ConnectionGUID: gEFhI0EtToa9+XMJ4dXerw==
+X-CSE-MsgGUID: OXWA+pODR1e8c9O+B0vUfw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,256,1725346800"; d="scan'208";a="84359118"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by orviesa008.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 03 Nov 2024 21:42:54 -0800
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Sun, 3 Nov 2024 21:42:54 -0800
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39 via Frontend Transport; Sun, 3 Nov 2024 21:42:54 -0800
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.48) by
- edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Sun, 3 Nov 2024 21:42:54 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=UXLhW6i8zAY0tdi9eoILjWsM7jhu7vSHoFJ0D2xgzA0EPFgYQ2OFGs2xeoA9PbthPPjlIGB3h23rt/lLfUq7Rw5og65v4eKmPpNAg/A6DWgtCmOjuk+EmPva/NtlruYZx+x6PzIsOSo272hMP0tCns7lH02ePCv7sXAGQ8hHy74VtN1njAKd9lpbQ8+/6HZqv3d71fVALyuaRRZKLaOPoQmD2gFr3AlQ74gqoglVtjQR5OV2SLRtPS23/qXrrTqTV3d32jesogIs9NwmWJZWu4EmMuK99KU/LZU29KaebOKvJhf+36/qUV6E6/en/HpjR89gx5der5hXo15EgvzQuA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8glZJldve0DQTxmrMjC7NWwPCjnMCvUgF80pGfUV0O0=;
- b=xTVcc6RDzl6FkGcZUTLPl+QTWWe/eRyMW6foV1aWw+M1qkWxeL2RSxPTmv4XvhE/ybtXHOq0BL7eVagmEYv9GzFH90uL3Mg64A8DwZTLyKc1IBbSoVxTUM1D/lkforyktzr98f55ptMNwJ0rJZJu6lT7ZhIPVZAuyboBbQld4OmNkQlTrClFINSQUV5YBx32+BDcU2O+3cQdA18takAMrNxc+dx+owiRiEaxOtRDsmHrwdrCVJzT2TguondnX11wtFsTnJkLX3c9mGmKOgu2wDWW6FmnlZy7nDq+II6pxWaZRwqO7QeXkn7P03bxH997KVtKAI0c2YYPHG+NEr/KQw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from IA0PR11MB8419.namprd11.prod.outlook.com (2603:10b6:208:48b::22)
- by DM4PR11MB7279.namprd11.prod.outlook.com (2603:10b6:8:109::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8114.30; Mon, 4 Nov
- 2024 05:42:45 +0000
-Received: from IA0PR11MB8419.namprd11.prod.outlook.com
- ([fe80::f1cb:2c2f:e082:c0d]) by IA0PR11MB8419.namprd11.prod.outlook.com
- ([fe80::f1cb:2c2f:e082:c0d%2]) with mapi id 15.20.8114.028; Mon, 4 Nov 2024
- 05:42:45 +0000
-From: "Pucha, HimasekharX Reddy" <himasekharx.reddy.pucha@intel.com>
-To: "Damato, Joe" <jdamato@fastly.com>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>
-CC: "Damato, Joe" <jdamato@fastly.com>, "Nguyen, Anthony L"
- <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
- <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David
- S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "Jakub
- Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "moderated
- list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>, open list
- <linux-kernel@vger.kernel.org>
-Thread-Topic: [Intel-wired-lan] [PATCH intel-next] ice: Add support for
- persistent NAPI config
-Thread-Index: AQHbJAmkDhWGOD6U3k+eTTF5bGjATbKmr20A
-Date: Mon, 4 Nov 2024 05:42:45 +0000
-Message-ID: <IA0PR11MB8419CB331AECAA4FBC593C13BD512@IA0PR11MB8419.namprd11.prod.outlook.com>
-References: <20241021223551.508030-1-jdamato@fastly.com>
-In-Reply-To: <20241021223551.508030-1-jdamato@fastly.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: IA0PR11MB8419:EE_|DM4PR11MB7279:EE_
-x-ms-office365-filtering-correlation-id: 4ab9c644-d6bb-47e6-e11a-08dcfc938255
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0; ARA:13230040|376014|366016|1800799024|38070700018;
-x-microsoft-antispam-message-info: =?us-ascii?Q?Wu7IttC4a6M8w5TZz94+f2QJ88yMq88EtZ3enBMmbIju6aOXZkDWNUQaZT3c?=
- =?us-ascii?Q?8ZSntRBo4YOPVuADBu4p3yFz1gCFdGjl5VJa+SJF3BHbdSs/crTiToZ92tKm?=
- =?us-ascii?Q?a/eHuV+bBsX1QID2bPQLivTWjkxUA9XrjZsYM6AeYIZSaNn95+dBUr6CYYkx?=
- =?us-ascii?Q?JUIRIeAAjfJOqCou7M0H52r/ZIcZ67dpJGafn27uzUqfr1Evx9kVpLS5BYVa?=
- =?us-ascii?Q?HNjeSXhQxp+EWZMmA9NRQ7Xz5U17q7B2+83l5EuEgLuyDuNNveIQGUCtewJJ?=
- =?us-ascii?Q?kMowWRJoVVbNkFx/WvuGRMZnLUWzBiNhlztTyLPSHgIvUULI+BVmYopTu2zy?=
- =?us-ascii?Q?/vO45fzYmBmcHR3wRFzlj/0FUzkMmZVjtWzOpocloORX4OMpk5yugIo/ftha?=
- =?us-ascii?Q?9bdKmSF37nS30l3tbGcyrOYtvCvBw8y988b80ejozc7Zq7garEWa3sNQ5cGf?=
- =?us-ascii?Q?D4UqqU7ci/JSMV4ZkiC5nNmgLy2S4dq/nCerdXOlkNChUF4nfE+jDUJD5Ocm?=
- =?us-ascii?Q?gUirj8Y3VJI0duxev88JLXN6vkMgC3WnBN8fJGs2PfG/f7KKE8/0cgIkd8mU?=
- =?us-ascii?Q?u8u1mJpfae/r6shHxH5AGDC/jAJgkqlNx6mB+kJqYfnVr6XPUvnbblK2Vg3p?=
- =?us-ascii?Q?2bTlw6RJUXv4fkCb22sjITVG3dvgPk2W+E/dNu9vvwYGwt2kjMtI20k9d8Nw?=
- =?us-ascii?Q?/oSJyWaLvaityuFVfEiqFOuJ/iL/eCNd7xHeN3ec9nC1f3gCfBV7R7rcBcAz?=
- =?us-ascii?Q?eqZtWwqZPziVJv7UMnUT/PnexpHSAUoilDK/jdvDylkggUjLCSCAYFBOwpVb?=
- =?us-ascii?Q?hdPopC2keiWoMUJQRdoS2rsaS4rgSCpbN5pynCa+OJX9nvDMVbUxzCKDL3C6?=
- =?us-ascii?Q?zbcAsY0p4p6XrL9O1t52sjVqnyBdReRqBSnhXgTJg8wRD1TW+ThZnXjy2NHb?=
- =?us-ascii?Q?W3DgBgt9IEOurvHt26tS5h9BcvEtsjnSZK0wA3s+SaayU3yo82oO84W2S2sZ?=
- =?us-ascii?Q?BqHJZZWr0d2yR+1IdJcBteNNfRsQ1sqCjiv52pxyxmvWbq1jWRCAuFI39ACu?=
- =?us-ascii?Q?Yw9k3VsyMx3dkAR0G7DlBo37a4tIt7lXZbbQeeNs77j64qKwxFhzx+8rGmiN?=
- =?us-ascii?Q?xiCDvs7F9MpuQrD2S1ARJgl7cpuWyfcQ+Mq7VQOBiJwnj6pR8c2v5DzMDPCF?=
- =?us-ascii?Q?FVqK7hvAk9x85OzQYrzPJdtmOMaW6eokBJaFqKvZOVCVVOLZQ3LygMMBC5+n?=
- =?us-ascii?Q?XszTd7WcSivCBRN94N5SIAcxyEEO5rIklcrD5SrGhgp0L2Ul1K1smjMb6cme?=
- =?us-ascii?Q?ncps3IKfSGpSjFWHKcHk9WX5BYspLHRE0HU0mUgNn3oidJQdBeIcR3NHx8xF?=
- =?us-ascii?Q?tZ+cBOk=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:IA0PR11MB8419.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(366016)(1800799024)(38070700018); DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?6rOYWdVVH/gSM38jyiZfF/uzx1f5Y3/AYxnt5qbRLX+hj3gVJmh0n5sHcg6s?=
- =?us-ascii?Q?VZv4IIZXGEK+Jp4QtbWpwHehe+XVthtQVTI2xjd1Ynt6fkcLdORrimGTHukt?=
- =?us-ascii?Q?PPr27hM92LjlidbiJoKCYjlo1OP5TkmGEvOavHC+0uK9QyDqLWHkJ+u6gxI4?=
- =?us-ascii?Q?zTgxWuiDpqt4n/2x6CcgicKn8RitdpyFdFuLy+1hmQ6da3fEDXEJtIIBTsz+?=
- =?us-ascii?Q?+RWd/QUoeK2pdMHoKCbY0IWqh47P5SM7wji/dfXOe4NrV3bpMDiq7E5KMOad?=
- =?us-ascii?Q?4gV76mz/izbY/IXWGDsjr0KdmVQJaTcIoidCuePDMUQMCoYA5wcSl9xOwYcS?=
- =?us-ascii?Q?udHpqmr+AqXbSTjdlWHW15bK1IDhdNcT6v8LnfMMgyAdk+NaXytdQoKoX8FQ?=
- =?us-ascii?Q?QXHtYdfPJlgpYyEPCxypD1qRsMe2HE6B02jzU/AN8cFsKDT3cHHz4ZCkLEcD?=
- =?us-ascii?Q?5v+J5Ksnz97phourB+vRMjFIh8QFe3GyBTy42n62fcOCYek4PihJ/Npo4yiJ?=
- =?us-ascii?Q?Mop1bSoeNPR0wxBCTaIf9LccW3+lwKsP5tzxeahag4TZmbo/eEPZe1+YfSjN?=
- =?us-ascii?Q?D2E+fWv4vsqFffseHPwZcdT6Da4kIJj9EGuLfHIhVjDK6EccZBqj/n4OC9Wi?=
- =?us-ascii?Q?qMe4JEDLI3jFYVLAOwhUzC33R7leZF30WFsNafzrHpOPVUn0eBzPthFTQ5/+?=
- =?us-ascii?Q?dGSqSzlvPCMk6SfjXl+3jZ2eVgN/Si2cVR2vYN7l8fy/ygvOZRnjyOT1+TjB?=
- =?us-ascii?Q?UPsj4K5xqktstpvw2gu2zh3S7ASiKqEkSuW8deYaI6WR9eCjEoqebOGzzWcR?=
- =?us-ascii?Q?v+yYA5smbZWkD39ne9npny/8YogpSbZxbnW3Qo0/SVldvh0L74NxW8LVrYRS?=
- =?us-ascii?Q?ZXhos/EMY/QnC0d8+Ljois9TKiFFMykgwxns34gCmeDbpZtBigDperce6loR?=
- =?us-ascii?Q?pJI/Il8ITjkVEmKHGAcZDSAHYn+SsZu8Qsr4HEHOG4CBvRYNolAZK4q1SkjS?=
- =?us-ascii?Q?HTL5l5KeMeN6qogMeIgjDZKdouVU3KzXEs3vK5M/mXQHFRPE65Z+Ks0tOiql?=
- =?us-ascii?Q?+LwNckOVyPwTDy842/SW7jctMMjX3oFUWxYaHRSqVsowID5fwW7kasuRUoz5?=
- =?us-ascii?Q?ltZAffUoApvbrzPzYn8I1lFf+IOzNNPQ5upVNRb7r7M8KSW8WrZcWSC9vAmR?=
- =?us-ascii?Q?EAr0ldkNgNDkmGBNdgR5Do7SRJ7Uac+5ZkS0BYEmBSnqwf91spjpRl2aX6a1?=
- =?us-ascii?Q?HIqL34y1UzA74OhXS2gHOnI6bn5NL8FVymOblbc2+3Z5wsjVkoeVvOk6T98D?=
- =?us-ascii?Q?PAcnRt0tYuXmUtFMdGZmL0v7co3TaL9/L5+61Ig6xaO7dOaG/FNgpzR1mu8c?=
- =?us-ascii?Q?uKGpkPkBXXuuGZF/xWvP8qacbvm19Ua2zK1LX91u+1cG0Mq+ss8sZ9Cg7TMg?=
- =?us-ascii?Q?YWVR1LtAVTOBRdCvLNIekdlI2Z0CiaXi6nXJJUzI3APHAqqLDUMwURA3Ez+i?=
- =?us-ascii?Q?kSo9Xi2lXSfcQAq6YTtKEvqPqO1xXsIqsOaLuwJ2S1+/RBks8gEW+j95KugT?=
- =?us-ascii?Q?Fg64MpezlBdsIsj/iynR/Fox0yBq/K/PAsU8I4jo05A2KkZJvmWp3Uy7P2cz?=
- =?us-ascii?Q?4A=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+X-IronPort-AV: E=Sophos;i="6.11,256,1725346800"; d="scan'208";a="83694153"
+Received: from mev-dev.igk.intel.com ([10.237.112.144])
+ by orviesa006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Nov 2024 23:05:52 -0800
+Date: Mon, 4 Nov 2024 08:02:51 +0100
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: Michal Schmidt <mschmidt@redhat.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ pawel.chmielewski@intel.com, sridhar.samudrala@intel.com,
+ jacob.e.keller@intel.com, pio.raczynski@gmail.com,
+ konrad.knitter@intel.com, marcin.szycik@intel.com,
+ wojciech.drewek@intel.com, nex.sw.ncis.nat.hpm.dev@intel.com,
+ przemyslaw.kitszel@intel.com, jiri@resnulli.us, horms@kernel.org,
+ David.Laight@aculab.com
+Message-ID: <ZyhxmxnxPcLk2ZcX@mev-dev.igk.intel.com>
+References: <20241028100341.16631-1-michal.swiatkowski@linux.intel.com>
+ <20241028100341.16631-3-michal.swiatkowski@linux.intel.com>
+ <CADEbmW0=G8u7Y8L2fFTzan8S+Uz04nAMC+-dkj-rQb_izK88pg@mail.gmail.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: IA0PR11MB8419.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4ab9c644-d6bb-47e6-e11a-08dcfc938255
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Nov 2024 05:42:45.6196 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: aLkq1lAj/6G2sMnSLtQlVt9sX3VN+lARwYin37ktebYuu0dG/Wc9/nbNtx5DYki6Er7uRxK7yRWGgDKUxr7NhNJ0ESIlDToy6UeWrVZaK5POdbkeqhfHQvS43TGS6qHR
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB7279
-X-OriginatorOrg: intel.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CADEbmW0=G8u7Y8L2fFTzan8S+Uz04nAMC+-dkj-rQb_izK88pg@mail.gmail.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1730698977; x=1762234977;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=Q1g7su0TNDpjG997xXMTF9jXl/S/+2dPUS9fX6C7aIk=;
- b=ApRQZk3Dy4v6uJ6s6aEY3xwIqCgFmGi2vsuKZnDYw5WX4zhsCB1mubQF
- 6jp1/JP3tPkpUa4Yr6KZmjHS6OT3E582tXqx6l7n0DhvgJoZXPmJF51qk
- A/JceBbp4h0EehYEor0H96UOjv9mg/TqJpX8mYQMTOW+FUlQRP23jXvNP
- Ori1JwkTZtqcLuAmixPQ4ybKMJbMV39HwGhgWinS+ImEJqwn4Ecrs5kHy
- 0RuKwv6J/yU7hjBmq1Pad3jEXUm6ZemSaHwYVviI3sxVHaD5r4IIaH/Ef
- uxN93d/U9A7oD//axdJkUVH6/BWWgd4MVVnn+E5W65XbH4fMdsaqqLCDG
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1730703958; x=1762239958;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:content-transfer-encoding:in-reply-to;
+ bh=azFTpuczehSXJyqxDMebUsmcImEct5dony72l2EVluo=;
+ b=K0iVySts+yjnBMxJ08l+L8chcgPg2OloykSXAfA4BboAXbr04YDkRO+a
+ egfrzDKBVwj5qReVaX4Ul/cE9bgPhKhsMqPXNYBBsjjQZBA58n9muFCka
+ RdMKJ5wREJgo7u26R7O0rdyeDo98JE+vYrkxp04dpGBNgiKpfHTXMe0nN
+ 3jVRB+D0YMEuQSsMaa1557IBuMGxtW1IAdgZCF6ApybybwfZOWZP2o2vK
+ C7WipIco1XejDiiA4dGRMpGDCd/0eVRae0Vnmet4Q8cuocO8ufn+Pcvu4
+ CYWRRywlh/6XZeNTPLpe8zbhstf77byEgxO98nrBQZvWhjKiMlPi/yla0
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=ApRQZk3D
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH intel-next] ice: Add support for
- persistent NAPI config
+ header.s=Intel header.b=K0iVySts
+Subject: Re: [Intel-wired-lan] [iwl-next v6 2/9] ice: devlink PF MSI-X max
+ and min parameter
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -230,146 +119,183 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of J=
-oe Damato
-> Sent: 22 October 2024 04:06
-> To: netdev@vger.kernel.org
-> Cc: Damato, Joe <jdamato@fastly.com>; Nguyen, Anthony L <anthony.l.nguyen=
-@intel.com>; Kitszel, Przemyslaw <przemyslaw.kitszel@intel.com>; Andrew Lun=
-n <andrew+netdev@lunn.ch>; David S. Miller <davem@davemloft.net>; Eric Duma=
-zet <edumazet@google.com>; Jakub Kicinski <kuba@kernel.org>; Paolo Abeni <p=
-abeni@redhat.com>; moderated list:INTEL ETHERNET DRIVERS <intel-wired-lan@l=
-ists.osuosl.org>; open list <linux-kernel@vger.kernel.org>
-> Subject: [Intel-wired-lan] [PATCH intel-next] ice: Add support for persis=
-tent NAPI config
->
-> Use netif_napi_add_config to assign persistent per-NAPI config when initi=
-alizing NAPIs. This preserves NAPI config settings when queue counts are ad=
-justed.
->
-> Tested with an E810-2CQDA2 NIC.
->
-> Begin by setting the queue count to 4:
->
-> $ sudo ethtool -L eth4 combined 4
->
-> Check the queue settings:
->
-> $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
->                          --dump napi-get --json=3D'{"ifindex": 4}'
-> [{'defer-hard-irqs': 0,
->   'gro-flush-timeout': 0,
->   'id': 8452,
->   'ifindex': 4,
->   'irq': 2782},
->  {'defer-hard-irqs': 0,
->   'gro-flush-timeout': 0,
->   'id': 8451,
->   'ifindex': 4,
->   'irq': 2781},
->  {'defer-hard-irqs': 0,
->   'gro-flush-timeout': 0,
->   'id': 8450,
->   'ifindex': 4,
->   'irq': 2780},
->  {'defer-hard-irqs': 0,
->   'gro-flush-timeout': 0,
->   'id': 8449,
->   'ifindex': 4,
->   'irq': 2779}]
->
-> Now, set the queue with NAPI ID 8451 to have a gro-flush-timeout of
-> 1111:
->
-> $ sudo ./tools/net/ynl/cli.py \
->             --spec Documentation/netlink/specs/netdev.yaml \
->             --do napi-set --json=3D'{"id": 8451, "gro-flush-timeout": 111=
-1}'
-> None
->
-> Check that worked:
->
-> $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
->                          --dump napi-get --json=3D'{"ifindex": 4}'
-> [{'defer-hard-irqs': 0,
->   'gro-flush-timeout': 0,
->   'id': 8452,
->   'ifindex': 4,
->   'irq': 2782},
->  {'defer-hard-irqs': 0,
->   'gro-flush-timeout': 1111,
->   'id': 8451,
->   'ifindex': 4,
->   'irq': 2781},
->  {'defer-hard-irqs': 0,
->   'gro-flush-timeout': 0,
->   'id': 8450,
->   'ifindex': 4,
->   'irq': 2780},
->  {'defer-hard-irqs': 0,
->   'gro-flush-timeout': 0,
->   'id': 8449,
->   'ifindex': 4,
->   'irq': 2779}]
->
-> Now reduce the queue count to 2, which would destroy the queue with NAPI =
-ID 8451:
->
-> $ sudo ethtool -L eth4 combined 2
->
-> Check the queue settings, noting that NAPI ID 8451 is gone:
->
-> $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
->                         --dump napi-get --json=3D'{"ifindex": 4}'
-> [{'defer-hard-irqs': 0,
->   'gro-flush-timeout': 0,
->   'id': 8450,
->   'ifindex': 4,
->   'irq': 2780},
->  {'defer-hard-irqs': 0,
->   'gro-flush-timeout': 0,
->   'id': 8449,
->   'ifindex': 4,
->   'irq': 2779}]
->
-> Now, increase the number of queues back to 4:
->
-> $ sudo ethtool -L eth4 combined 4
->
-> Dump the settings, expecting to see the same NAPI IDs as above and for NA=
-PI ID 8451 to have its gro-flush-timeout set to 1111:
->=20
-> $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
->                          --dump napi-get --json=3D'{"ifindex": 4}'
-> [{'defer-hard-irqs': 0,
->   'gro-flush-timeout': 0,
->   'id': 8452,
->   'ifindex': 4,
->   'irq': 2782},
->  {'defer-hard-irqs': 0,
->   'gro-flush-timeout': 1111,
->   'id': 8451,
->   'ifindex': 4,
->   'irq': 2781},
->  {'defer-hard-irqs': 0,
->   'gro-flush-timeout': 0,
->   'id': 8450,
->   'ifindex': 4,
->   'irq': 2780},
->  {'defer-hard-irqs': 0,
->   'gro-flush-timeout': 0,
->   'id': 8449,
->   'ifindex': 4,
->   'irq': 2779}]
->
-> Signed-off-by: Joe Damato <jdamato@fastly.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_base.c | 3 ++-  drivers/net/ethernet/=
-intel/ice/ice_lib.c  | 6 ++++--
->  2 files changed, 6 insertions(+), 3 deletions(-)
->
+On Thu, Oct 31, 2024 at 10:48:37PM +0100, Michal Schmidt wrote:
+> On Mon, Oct 28, 2024 at 11:04 AM Michal Swiatkowski
+> <michal.swiatkowski@linux.intel.com> wrote:
+> >
+> > Use generic devlink PF MSI-X parameter to allow user to change MSI-X
+> > range.
+> >
+> > Add notes about this parameters into ice devlink documentation.
+> >
+> > Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
+> > Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> > ---
+> >  Documentation/networking/devlink/ice.rst      | 11 +++
+> >  .../net/ethernet/intel/ice/devlink/devlink.c  | 83 ++++++++++++++++++-
+> >  drivers/net/ethernet/intel/ice/ice.h          |  7 ++
+> >  drivers/net/ethernet/intel/ice/ice_irq.c      |  7 ++
+> >  4 files changed, 107 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/Documentation/networking/devlink/ice.rst b/Documentation/networking/devlink/ice.rst
+> > index e3972d03cea0..792e9f8c846a 100644
+> > --- a/Documentation/networking/devlink/ice.rst
+> > +++ b/Documentation/networking/devlink/ice.rst
+> > @@ -69,6 +69,17 @@ Parameters
+> >
+> >         To verify that value has been set:
+> >         $ devlink dev param show pci/0000:16:00.0 name tx_scheduling_layers
+> > +   * - ``msix_vec_per_pf_max``
+> > +     - driverinit
+> > +     - Set the max MSI-X that can be used by the PF, rest can be utilized for
+> > +       SRIOV. The range is from min value set in msix_vec_per_pf_min to
+> > +       2k/number of ports.
+> > +   * - ``msix_vec_per_pf_min``
+> > +     - driverinit
+> > +     - Set the min MSI-X that will be used by the PF. This value inform how many
+> > +       MSI-X will be allocated statically. The range is from 2 to value set
+> > +       in msix_vec_per_pf_max.
+> > +
+> >  .. list-table:: Driver specific parameters implemented
+> >      :widths: 5 5 90
+> >
+> > diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink.c b/drivers/net/ethernet/intel/ice/devlink/devlink.c
+> > index d1b9ccec5e05..29c1fec4fa93 100644
+> > --- a/drivers/net/ethernet/intel/ice/devlink/devlink.c
+> > +++ b/drivers/net/ethernet/intel/ice/devlink/devlink.c
+> > @@ -1198,6 +1198,25 @@ static int ice_devlink_set_parent(struct devlink_rate *devlink_rate,
+> >         return status;
+> >  }
+> >
+> > +static void ice_set_min_max_msix(struct ice_pf *pf)
+> > +{
+> > +       struct devlink *devlink = priv_to_devlink(pf);
+> > +       union devlink_param_value val;
+> > +       int err;
+> > +
+> > +       err = devl_param_driverinit_value_get(devlink,
+> > +                                             DEVLINK_PARAM_GENERIC_ID_MSIX_VEC_PER_PF_MIN,
+> > +                                             &val);
+> > +       if (!err)
+> > +               pf->msix.min = val.vu16;
+> > +
+> > +       err = devl_param_driverinit_value_get(devlink,
+> > +                                             DEVLINK_PARAM_GENERIC_ID_MSIX_VEC_PER_PF_MAX,
+> > +                                             &val);
+> > +       if (!err)
+> > +               pf->msix.max = val.vu16;
+> > +}
+> > +
+> >  /**
+> >   * ice_devlink_reinit_up - do reinit of the given PF
+> >   * @pf: pointer to the PF struct
+> > @@ -1207,6 +1226,9 @@ static int ice_devlink_reinit_up(struct ice_pf *pf)
+> >         struct ice_vsi *vsi = ice_get_main_vsi(pf);
+> >         int err;
+> >
+> > +       /* load MSI-X values */
+> > +       ice_set_min_max_msix(pf);
+> > +
+> >         err = ice_init_hw(&pf->hw);
+> >         if (err) {
+> >                 dev_err(ice_pf_to_dev(pf), "ice_init_hw failed: %d\n", err);
+> > @@ -1526,6 +1548,37 @@ static int ice_devlink_local_fwd_validate(struct devlink *devlink, u32 id,
+> >         return 0;
+> >  }
+> >
+> > +static int
+> > +ice_devlink_msix_max_pf_validate(struct devlink *devlink, u32 id,
+> > +                                union devlink_param_value val,
+> > +                                struct netlink_ext_ack *extack)
+> > +{
+> > +       struct ice_pf *pf = devlink_priv(devlink);
+> > +
+> > +       if (val.vu16 > pf->hw.func_caps.common_cap.num_msix_vectors ||
+> > +           val.vu16 < pf->msix.min) {
+> > +               NL_SET_ERR_MSG_MOD(extack, "Value is invalid");
+> > +               return -EINVAL;
+> > +       }
+> > +
+> > +       return 0;
+> > +}
+> > +
+> > +static int
+> > +ice_devlink_msix_min_pf_validate(struct devlink *devlink, u32 id,
+> > +                                union devlink_param_value val,
+> > +                                struct netlink_ext_ack *extack)
+> > +{
+> > +       struct ice_pf *pf = devlink_priv(devlink);
+> > +
+> > +       if (val.vu16 <= ICE_MIN_MSIX || val.vu16 > pf->msix.max) {
+> > +               NL_SET_ERR_MSG_MOD(extack, "Value is invalid");
+> > +               return -EINVAL;
+> > +       }
+> > +
+> > +       return 0;
+> > +}
+> > +
+> >  enum ice_param_id {
+> >         ICE_DEVLINK_PARAM_ID_BASE = DEVLINK_PARAM_GENERIC_ID_MAX,
+> >         ICE_DEVLINK_PARAM_ID_TX_SCHED_LAYERS,
+> > @@ -1543,6 +1596,15 @@ static const struct devlink_param ice_dvl_rdma_params[] = {
+> >                               ice_devlink_enable_iw_validate),
+> >  };
+> >
+> > +static const struct devlink_param ice_dvl_msix_params[] = {
+> > +       DEVLINK_PARAM_GENERIC(MSIX_VEC_PER_PF_MAX,
+> > +                             BIT(DEVLINK_PARAM_CMODE_DRIVERINIT),
+> > +                             NULL, NULL, ice_devlink_msix_max_pf_validate),
+> > +       DEVLINK_PARAM_GENERIC(MSIX_VEC_PER_PF_MIN,
+> > +                             BIT(DEVLINK_PARAM_CMODE_DRIVERINIT),
+> > +                             NULL, NULL, ice_devlink_msix_min_pf_validate),
+> > +};
+> > +
+> >  static const struct devlink_param ice_dvl_sched_params[] = {
+> >         DEVLINK_PARAM_DRIVER(ICE_DEVLINK_PARAM_ID_TX_SCHED_LAYERS,
+> >                              "tx_scheduling_layers",
+> > @@ -1644,6 +1706,7 @@ void ice_devlink_unregister(struct ice_pf *pf)
+> >  int ice_devlink_register_params(struct ice_pf *pf)
+> >  {
+> >         struct devlink *devlink = priv_to_devlink(pf);
+> > +       union devlink_param_value value;
+> >         struct ice_hw *hw = &pf->hw;
+> >         int status;
+> >
+> > @@ -1652,11 +1715,27 @@ int ice_devlink_register_params(struct ice_pf *pf)
+> >         if (status)
+> >                 return status;
+> >
+> > +       status = devl_params_register(devlink, ice_dvl_msix_params,
+> > +                                     ARRAY_SIZE(ice_dvl_msix_params));
+> > +       if (status)
+> > +               return status;
+> > +
+> >         if (hw->func_caps.common_cap.tx_sched_topo_comp_mode_en)
+> >                 status = devl_params_register(devlink, ice_dvl_sched_params,
+> >                                               ARRAY_SIZE(ice_dvl_sched_params));
+> > +       if (status)
+> > +               return status;
+> >
+> > -       return status;
+> > +       value.vu16 = pf->msix.max;
+> > +       devl_param_driverinit_value_set(devlink,
+> > +                                       DEVLINK_PARAM_GENERIC_ID_MSIX_VEC_PER_PF_MAX,
+> > +                                       value);
+> > +       value.vu16 = pf->msix.min;
+> > +       devl_param_driverinit_value_set(devlink,
+> > +                                       DEVLINK_PARAM_GENERIC_ID_MSIX_VEC_PER_PF_MIN,
+> > +                                       value);
+> > +
+> > +       return 0;
+> >  }
+> 
+> 
+> The type of the devlink parameters msix_vec_per_pf_{min,max} is
+> specified as u32, so you must use value.vu32 everywhere you work with
+> them, not vu16.
+> 
 
-Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com> (A Co=
-ntingent worker at Intel)
+I will change it.
 
+> Michal
+> 
