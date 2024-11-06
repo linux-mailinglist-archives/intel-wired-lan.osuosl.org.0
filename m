@@ -1,67 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BC7009BDAFE
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Nov 2024 02:12:50 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 72CAD9BDB00
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Nov 2024 02:13:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A9F65405F3;
-	Wed,  6 Nov 2024 01:12:48 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 298D74061D;
+	Wed,  6 Nov 2024 01:12:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uXc_EFRB_v9Y; Wed,  6 Nov 2024 01:12:47 +0000 (UTC)
+ id 0c6_6mt_dMZL; Wed,  6 Nov 2024 01:12:55 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BF953405E1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E676A405D5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1730855566;
-	bh=nUcReB5nANh8Bkf1/JAM5in5YxoMHdg2TQnB9qYxfh8=;
+	s=default; t=1730855575;
+	bh=tzn1sPJbDxZKnmhV3BXhnQXCAiZjvWbAoIhhrqfp78g=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=t7VXa8mu5gLvbG9ePuA05Weiu6MNifpGiuoBsEY+ZzWwhCkfD4UFC0+u5qhSFw/Gy
-	 f2eei7nOYepQf+sXlUmtYF/9xZNw/wlNah+HRMbWMMA33lfMq0GUjYIw9VffCSvKq8
-	 WmDVKH9XQ873Fq+VVzckpThKgC134gOkr/E/qtUK0jdW7+SMdjjI0KUKS//C+r9QIG
-	 04/29aHnmOxX6PxZ0uaKCvtX4n9E+Cd1stkwp/fslEms1CpVIvpKyjSiyjxk9yw+kB
-	 8e7/seTlMfslbQJyt0FkkLiPejDzA3o9gBJpu0nyaW/SD3l2dLp8w6ck8nzS69zz44
-	 rqIF+wwyd0PtA==
+	b=Yg8XSVF7lxoDXChG+BBz+A/N0WGhz2aBPFU1xK7lpxcF/QQyLdDmBfr6y5xfOXsgN
+	 NOKj5lUKrtnL6qKpR8jnSjk2l4+WFNZYxuiLOGzsDjpLpTx7qA6XLSS8cnNBQDLS1p
+	 sIi83/UNWzDSJm9ugXJKUMvXDvyRSumSyubtvbMWAMNGLez0r5kZaBOTz6B7kZwcGT
+	 VKayro4wXnC8kZK1E+gEbpFFqoLyXKzdTHNqyKNVaeN7gEDaAvJyeqGTQtt4gouFMy
+	 cp8dl7+xR9V+SRSQTeHmW6p2HiwJeUhshp+CmHQgOisT9Ei8THuZzkn409GIANlJXn
+	 RAoHtPcsQZ/0w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BF953405E1;
-	Wed,  6 Nov 2024 01:12:46 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E676A405D5;
+	Wed,  6 Nov 2024 01:12:54 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 70D0FB8
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2024 01:12:44 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id B4D203B
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2024 01:12:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 6BCAB606FF
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2024 01:12:44 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id A33B860704
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2024 01:12:52 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xWxnXuNmINgz for <intel-wired-lan@lists.osuosl.org>;
- Wed,  6 Nov 2024 01:12:43 +0000 (UTC)
+ id 5YDArZ9-1smn for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  6 Nov 2024 01:12:47 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
  helo=mgamail.intel.com; envelope-from=arkadiusz.kubalewski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 36D9960704
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 36D9960704
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B763F606FF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B763F606FF
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 36D9960704
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2024 01:12:43 +0000 (UTC)
-X-CSE-ConnectionGUID: PEIcubdeRYS/16K+O2PQQw==
-X-CSE-MsgGUID: DcdWgXhFStu3NXzaygVvXw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11247"; a="18254736"
-X-IronPort-AV: E=Sophos;i="6.11,261,1725346800"; d="scan'208";a="18254736"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B763F606FF
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2024 01:12:46 +0000 (UTC)
+X-CSE-ConnectionGUID: RNByPimLRBeuOt0ob0DKEQ==
+X-CSE-MsgGUID: loGjeLK1QK68hqAjmrTl8A==
+X-IronPort-AV: E=McAfee;i="6700,10204,11247"; a="18254767"
+X-IronPort-AV: E=Sophos;i="6.11,261,1725346800"; d="scan'208";a="18254767"
 Received: from fmviesa008.fm.intel.com ([10.60.135.148])
  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Nov 2024 17:12:43 -0800
-X-CSE-ConnectionGUID: i2ASyNUtSjWTM+TvM7G6YA==
-X-CSE-MsgGUID: de0MYXnGRDybWJoSYeyJDg==
+ 05 Nov 2024 17:12:46 -0800
+X-CSE-ConnectionGUID: xEOV3UogSKqou3OpRiUuqg==
+X-CSE-MsgGUID: 93TWSWv/Rb6U/eR9zWtyRA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,261,1725346800"; d="scan'208";a="84362774"
+X-IronPort-AV: E=Sophos;i="6.11,261,1725346800"; d="scan'208";a="84362797"
 Received: from amlin-018-114.igk.intel.com ([10.102.18.114])
- by fmviesa008.fm.intel.com with ESMTP; 05 Nov 2024 17:12:40 -0800
+ by fmviesa008.fm.intel.com with ESMTP; 05 Nov 2024 17:12:43 -0800
 From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 To: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org
@@ -70,8 +70,8 @@ Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
  pabeni@redhat.com, richardcochran@gmail.com,
  Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
  Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Date: Wed,  6 Nov 2024 02:07:55 +0100
-Message-Id: <20241106010756.1588973-2-arkadiusz.kubalewski@intel.com>
+Date: Wed,  6 Nov 2024 02:07:56 +0100
+Message-Id: <20241106010756.1588973-3-arkadiusz.kubalewski@intel.com>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20241106010756.1588973-1-arkadiusz.kubalewski@intel.com>
 References: <20241106010756.1588973-1-arkadiusz.kubalewski@intel.com>
@@ -79,25 +79,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1730855563; x=1762391563;
+ t=1730855567; x=1762391567;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=sRqIeC9+dnls9oNcS5WQYz2lL4Vk7+TkC4x83Vkrp88=;
- b=WkbVNIokZAgikGgOdhIUyUIdXnZgwXdTIS6nTytOPAJQthcKmn4zWs7U
- S0dUsl//mxML+p0jM4070Agcp33t0X5wNiMTze5RMSTZsFHg09m8FXG6G
- LfhiGu8o3FOf5qxuZBzngRjZYs8BLqJgIgWCkVlDkaKUU7IUFJErL4g8K
- VzvRNvzpuS8guOyqXeTLi4R0QJgQpgMzB+CkrXqRufWdONOvrepFE2z7d
- k3vUGGvH/scAcFHoWBvf9L7ko5sA1DDjd/CrTNUk6BiTAfkKywbW8EelC
- r34keUrnL62z7xWt+OO9/xfrgRyRCgaCUv1zbEekbefSCyCyF/BP2j9nJ
- A==;
+ bh=4HF3rwA/AvxO3Knhf+XcS3MMF6XDQAoU3kzYc67y7fw=;
+ b=gOovRyxmE0qQBXomfWWopldou2NQeFXPjdKtENpjyNxC3cyOlu+t7lDD
+ F4ElqBm2+jrbcSW3ZFQPtcFmtcYKwEffoxWegl6HXuIdgw587LU2cJqA1
+ kAzZ1HxL2yEX7jpGMZgnw68cWDHSgK6oLD0E8J50wr4V2nfTUfI4b+q+N
+ i6JqS7bMlaXp6V8SwrlPMPT9TVY0C0R3i3+OIOltmRobU8etM8iah50qm
+ aPmukA35bHWdeTs/KYNmfQvQmue/slf0rsrbPEHUBszoY6GZTw451kfV7
+ eVIULZfGA76WOcLjUcDq3McBLGwGqTy4uI06m+VMN6MMBHS9WvJAi6HCU
+ g==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=WkbVNIok
-Subject: [Intel-wired-lan] [PATCH net-next v3 1/2] ptp: add control over HW
- timestamp latch point
+ header.a=rsa-sha256 header.s=Intel header.b=gOovRyxm
+Subject: [Intel-wired-lan] [PATCH net-next v3 2/2] ice: ptp: add control
+ over HW timestamp latch point
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -113,198 +113,180 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Currently HW support of ptp/timesync solutions in network PHY chips can be
-implemented with two different approaches, the timestamp maybe latched
-either at the beginning or after the Start of Frame Delimiter (SFD) [1].
-
-Allow ptp device drivers to provide user with control over the HW
-timestamp latch point with ptp sysfs ABI. Provide a new file under sysfs
-ptp device (/sys/class/ptp/ptp<N>/ts_point). The file is available for the
-user, if the device driver implements at least one of newly provided
-callbacks. If the file is not provided the user shall find a PHY timestamp
-latch point within the HW vendor specification.
-
-The file is designed for root user/group access only, as the read for
-regular user could impact performance of the ptp device.
+Allow user to control the latch point of ptp HW timestamps in E825
+devices.
 
 Usage, examples:
 
 ** Obtain current state:
-$ cat /sys/class/ptp/ptp<N>/ts_point
+$ cat /sys/class/net/eth<N>/device/ptp/ts_point
 Command returns enum/integer:
 * 1 - timestamp latched by PHY at the beginning of SFD,
 * 2 - timestamp latched by PHY after the SFD,
 * None - callback returns error to the user.
 
 ** Configure timestamp latch point at the beginning of SFD:
-$ echo 1 > /sys/class/ptp/ptp<N>/ts_point
+$ echo 1 > /sys/class/net/eth<N>/device/ptp/ts_point
 
 ** Configure timestamp latch point after the SFD:
-$ echo 2 > /sys/class/ptp/ptp<N>/ts_point
-
-[1] https://www.ieee802.org/3/cx/public/april20/tse_3cx_01_0420.pdf
+$ echo 2 > /sys/class/net/eth<N>/device/ptp/ts_point
 
 Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 ---
 v3:
-- max value of enum ptp_ts_point is also enumerated,
-- move enum ptp_ts_point to uapi,
-- add NONE value to enum ptp_ts_point, to make clear that value was
-  not provided, thus allow further extension of ethtool netlink.
+- improve readability, for "nothing to do" logic
+- /s/PTP/ptp
+- remove 'tx' from docs description
 ---
- Documentation/ABI/testing/sysfs-ptp | 12 ++++++++
- drivers/ptp/ptp_sysfs.c             | 44 +++++++++++++++++++++++++++++
- include/linux/ptp_clock_kernel.h    | 12 ++++++++
- include/uapi/linux/ptp_clock.h      | 18 ++++++++++++
- 4 files changed, 86 insertions(+)
+ drivers/net/ethernet/intel/ice/ice_ptp.c    | 44 +++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 60 +++++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h |  2 +
+ 3 files changed, 106 insertions(+)
 
-diff --git a/Documentation/ABI/testing/sysfs-ptp b/Documentation/ABI/testing/sysfs-ptp
-index 9c317ac7c47a..063b3e20386e 100644
---- a/Documentation/ABI/testing/sysfs-ptp
-+++ b/Documentation/ABI/testing/sysfs-ptp
-@@ -140,3 +140,15 @@ Description:
- 		PPS events to the Linux PPS subsystem. To enable PPS
- 		events, write a "1" into the file. To disable events,
- 		write a "0" into the file.
-+
-+What:		/sys/class/ptp/ptp<N>/ts_point
-+Date:		October 2024
-+Contact:	Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-+Description:
-+		This file provides control over the point in time in
-+		which the HW timestamp is latched. As specified in IEEE
-+		802.3cx, the latch point can be either at the beginning
-+		or after the end of Start of Frame Delimiter (SFD).
-+		Value "1" means the timestamp is latched at the
-+		beginning of the SFD. Value "2" means that timestamp is
-+		latched after the end of SFD.
-diff --git a/drivers/ptp/ptp_sysfs.c b/drivers/ptp/ptp_sysfs.c
-index 6b1b8f57cd95..2f3f28edbbfd 100644
---- a/drivers/ptp/ptp_sysfs.c
-+++ b/drivers/ptp/ptp_sysfs.c
-@@ -28,6 +28,46 @@ static ssize_t max_phase_adjustment_show(struct device *dev,
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+index a999fface272..c351c9707394 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+@@ -2509,6 +2509,48 @@ static int ice_ptp_parse_sdp_entries(struct ice_pf *pf, __le16 *entries,
+ 	return 0;
  }
- static DEVICE_ATTR_RO(max_phase_adjustment);
- 
-+static ssize_t ts_point_show(struct device *dev, struct device_attribute *attr,
-+			     char *page)
-+{
-+	struct ptp_clock *ptp = dev_get_drvdata(dev);
-+	enum ptp_ts_point point;
-+	int err;
-+
-+	if (!ptp->info->get_ts_point)
-+		return -EOPNOTSUPP;
-+	err = ptp->info->get_ts_point(ptp->info, &point);
-+	if (err)
-+		return err;
-+
-+	return sysfs_emit(page, "%d\n", point);
-+}
-+
-+static ssize_t ts_point_store(struct device *dev, struct device_attribute *attr,
-+			      const char *buf, size_t count)
-+{
-+	struct ptp_clock *ptp = dev_get_drvdata(dev);
-+	enum ptp_ts_point point;
-+	int err;
-+	u8 val;
-+
-+	if (!ptp->info->set_ts_point)
-+		return -EOPNOTSUPP;
-+	if (kstrtou8(buf, 0, &val))
-+		return -EINVAL;
-+	if (val <= PTP_TS_POINT_NONE || val > PTP_TS_POINT_MAX)
-+		return -EINVAL;
-+	point = val;
-+
-+	err = ptp->info->set_ts_point(ptp->info, point);
-+	if (err)
-+		return err;
-+
-+	return count;
-+}
-+static DEVICE_ATTR(ts_point, 0660, ts_point_show, ts_point_store);
-+
- #define PTP_SHOW_INT(name, var)						\
- static ssize_t var##_show(struct device *dev,				\
- 			   struct device_attribute *attr, char *page)	\
-@@ -335,6 +375,7 @@ static struct attribute *ptp_attrs[] = {
- 	&dev_attr_pps_enable.attr,
- 	&dev_attr_n_vclocks.attr,
- 	&dev_attr_max_vclocks.attr,
-+	&dev_attr_ts_point.attr,
- 	NULL
- };
- 
-@@ -363,6 +404,9 @@ static umode_t ptp_is_attribute_visible(struct kobject *kobj,
- 	} else if (attr == &dev_attr_max_phase_adjustment.attr) {
- 		if (!info->adjphase || !info->getmaxphase)
- 			mode = 0;
-+	} else if (attr == &dev_attr_ts_point.attr) {
-+		if (!info->get_ts_point && !info->set_ts_point)
-+			mode = 0;
- 	}
- 
- 	return mode;
-diff --git a/include/linux/ptp_clock_kernel.h b/include/linux/ptp_clock_kernel.h
-index c892d22ce0a7..d48619c7c60a 100644
---- a/include/linux/ptp_clock_kernel.h
-+++ b/include/linux/ptp_clock_kernel.h
-@@ -159,6 +159,14 @@ struct ptp_system_timestamp {
-  *                scheduling time (>=0) or negative value in case further
-  *                scheduling is not required.
-  *
-+ * @set_ts_point: Request change of timestamp latch point, as the timestamp
-+ *                could be latched at the beginning or after the end of start
-+ *                frame delimiter (SFD), as described in IEEE 802.3cx
-+ *                specification.
-+ *
-+ * @get_ts_point: Obtain the timestamp measurement latch point, counterpart of
-+ *                .set_ts_point() for getting currently configured value.
-+ *
-  * Drivers should embed their ptp_clock_info within a private
-  * structure, obtaining a reference to it using container_of().
-  *
-@@ -195,6 +203,10 @@ struct ptp_clock_info {
- 	int (*verify)(struct ptp_clock_info *ptp, unsigned int pin,
- 		      enum ptp_pin_function func, unsigned int chan);
- 	long (*do_aux_work)(struct ptp_clock_info *ptp);
-+	int (*set_ts_point)(struct ptp_clock_info *ptp,
-+			    enum ptp_ts_point point);
-+	int (*get_ts_point)(struct ptp_clock_info *ptp,
-+			    enum ptp_ts_point *point);
- };
- 
- struct ptp_clock;
-diff --git a/include/uapi/linux/ptp_clock.h b/include/uapi/linux/ptp_clock.h
-index 18eefa6d93d6..11a9dad9db00 100644
---- a/include/uapi/linux/ptp_clock.h
-+++ b/include/uapi/linux/ptp_clock.h
-@@ -253,4 +253,22 @@ struct ptp_extts_event {
- 	unsigned int rsv[2];     /* Reserved for future use. */
- };
  
 +/**
-+ * enum ptp_ts_point - possible timestamp latch points (IEEE 802.3cx)
++ * ice_get_ts_point - get the timestamp latch point
++ * @info: the driver's ptp info structure
++ * @point: returns the configured timestamp latch point
 + *
-+ * @PTP_TS_POINT_NONE: no timestamp latch point was provided
-+ * @PTP_TS_POINT_SFD: timestamp latched at the beginning of sending Start
-+ *		      of Frame Delimiter (SFD)
-+ * @PTP_TS_POINT_POST_SFD: timestamp latched after the end of sending Start
-+ *			   of Frame Delimiter (SFD)
++ * Return: 0 on success, negative on failure.
 + */
-+enum ptp_ts_point {
-+	PTP_TS_POINT_NONE = 0,
-+	PTP_TS_POINT_SFD,
-+	PTP_TS_POINT_POST_SFD,
++static int ice_get_ts_point(struct ptp_clock_info *info,
++			    enum ptp_ts_point *point)
++{
++	struct ice_pf *pf = ptp_info_to_pf(info);
++	struct ice_hw *hw = &pf->hw;
++	int ret;
 +
-+	/* private: */
-+	PTP_TS_POINT_MAX
-+};
++	ice_ptp_lock(hw);
++	ret = ice_ptp_hw_ts_point_get(hw, point);
++	ice_ptp_unlock(hw);
 +
- #endif
++	return ret;
++}
++
++/**
++ * ice_set_ts_point - set the timestamp latch point
++ * @info: the driver's ptp info structure
++ * @point: requested timestamp latch point
++ *
++ * Return: 0 on success, negative on failure.
++ */
++static int ice_set_ts_point(struct ptp_clock_info *info,
++			    enum ptp_ts_point point)
++{
++	struct ice_pf *pf = ptp_info_to_pf(info);
++	struct ice_hw *hw = &pf->hw;
++	int ret;
++
++	ice_ptp_lock(hw);
++	ret = ice_ptp_hw_ts_point_set(hw, point);
++	ice_ptp_unlock(hw);
++
++	return ret;
++}
++
+ /**
+  * ice_ptp_set_funcs_e82x - Set specialized functions for E82X support
+  * @pf: Board private structure
+@@ -2529,6 +2571,8 @@ static void ice_ptp_set_funcs_e82x(struct ice_pf *pf)
+ 	if (ice_is_e825c(&pf->hw)) {
+ 		pf->ptp.ice_pin_desc = ice_pin_desc_e825c;
+ 		pf->ptp.info.n_pins = ICE_PIN_DESC_ARR_LEN(ice_pin_desc_e825c);
++		pf->ptp.info.set_ts_point = ice_set_ts_point;
++		pf->ptp.info.get_ts_point = ice_get_ts_point;
+ 	} else {
+ 		pf->ptp.ice_pin_desc = ice_pin_desc_e82x;
+ 		pf->ptp.info.n_pins = ICE_PIN_DESC_ARR_LEN(ice_pin_desc_e82x);
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+index dfd49732bd5b..06c32f180932 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+@@ -6320,3 +6320,63 @@ int ice_cgu_get_output_pin_state_caps(struct ice_hw *hw, u8 pin_id,
+ 
+ 	return 0;
+ }
++
++/**
++ * ice_ptp_hw_ts_point_get - check if timestamps are latched on/post SFD
++ * @hw: pointer to the HW struct
++ * @point: return the configured timestamp latch point
++ *
++ * Verify if HW timestamping point is configured to latch at the beginning or
++ * post of SFD (Start of Frame Delimiter)
++ *
++ * Return: 0 on success, negative on error
++ */
++int ice_ptp_hw_ts_point_get(struct ice_hw *hw, enum ptp_ts_point *point)
++{
++	u8 port = hw->port_info->lport;
++	u32 val;
++	int err;
++
++	err = ice_read_mac_reg_eth56g(hw, port, PHY_MAC_XIF_MODE, &val);
++	if (err)
++		return err;
++	if (val & PHY_MAC_XIF_TS_SFD_ENA_M)
++		*point = PTP_TS_POINT_SFD;
++	else
++		*point = PTP_TS_POINT_POST_SFD;
++
++	return err;
++}
++
++/**
++ * ice_ptp_hw_ts_point_set - configure timestamping on/post SFD
++ * @hw: pointer to the HW struct
++ * @point: requested timestamp latch point
++ *
++ * Configure timestamping to measure at the beginning/post SFD (Start of Frame
++ * Delimiter)
++ *
++ * Return: 0 on success, negative on error
++ */
++int ice_ptp_hw_ts_point_set(struct ice_hw *hw, enum ptp_ts_point point)
++{
++	u8 port = hw->port_info->lport;
++	int err, val;
++
++	err = ice_read_mac_reg_eth56g(hw, port, PHY_MAC_XIF_MODE, &val);
++	if (err)
++		return err;
++	if ((val & PHY_MAC_XIF_TS_SFD_ENA_M) && point == PTP_TS_POINT_SFD)
++		return -EINVAL;
++	if (!(val & PHY_MAC_XIF_TS_SFD_ENA_M) &&
++	    point == PTP_TS_POINT_POST_SFD)
++		return -EINVAL;
++	if (point == PTP_TS_POINT_SFD)
++		val |= PHY_MAC_XIF_TS_SFD_ENA_M;
++	else if (point == PTP_TS_POINT_POST_SFD)
++		val &= ~PHY_MAC_XIF_TS_SFD_ENA_M;
++	else
++		return -EINVAL;
++
++	return ice_write_mac_reg_eth56g(hw, port, PHY_MAC_XIF_MODE, val);
++}
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
+index 47af7c5c79b8..5e4edaee063e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
++++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
+@@ -348,6 +348,8 @@ void ice_ptp_init_hw(struct ice_hw *hw);
+ int ice_get_phy_tx_tstamp_ready(struct ice_hw *hw, u8 block, u64 *tstamp_ready);
+ int ice_ptp_one_port_cmd(struct ice_hw *hw, u8 configured_port,
+ 			 enum ice_ptp_tmr_cmd configured_cmd);
++int ice_ptp_hw_ts_point_get(struct ice_hw *hw, enum ptp_ts_point *point);
++int ice_ptp_hw_ts_point_set(struct ice_hw *hw, enum ptp_ts_point point);
+ 
+ /* E822 family functions */
+ int ice_read_quad_reg_e82x(struct ice_hw *hw, u8 quad, u16 offset, u32 *val);
 -- 
 2.38.1
 
