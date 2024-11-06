@@ -2,89 +2,95 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B1F8E9BF482
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Nov 2024 18:45:30 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 022BA9BF5CF
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Nov 2024 19:58:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EAB7F60A9B;
-	Wed,  6 Nov 2024 17:45:28 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6E9B4608EF;
+	Wed,  6 Nov 2024 18:58:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id e4yX06r7cRcT; Wed,  6 Nov 2024 17:45:28 +0000 (UTC)
+ id MEDg6pOOEaMF; Wed,  6 Nov 2024 18:58:53 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3483160A9D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AF71560753
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1730915128;
-	bh=UxOA/rfjI1KE6q3W8gj1BUxMxZg7BxDAt4RAStM8cQA=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=vwV+YxzouemAUNWay8P1VybQjSTDCwnwM2Ndc18iGm9XLrg3SNItCd/pBS+TkTiei
-	 eXYx4ewUFDgM4ShdtLQvOJwEw2E9di5J5eXOb2baYr9M0kXt4k138lkAEJ/QUxJaSd
-	 oqCe8r+YX3tNjxADHIZLzG3gMbtcJmVC89l1uvvOo4cmuH/5+vOWXgjTqumkuXNaFE
-	 bueZds7SxvWciP0Ym85nQZcz230lvEyqz3+bBexqTq6aMTN8VjTzUTikvBF+jAKTNE
-	 9DTQ10+pLRjNIbSn1aQS/XUyLD3mJmI30l0EQ2DprO9gPD0UKbV6rS7HenRQ5Jht5L
-	 PkkDNTJsOBw7w==
+	s=default; t=1730919533;
+	bh=jN/PCCq0wU9LpJ7QpjzxSSU8sGVAw73+KTKyescbLYo=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=G8vGPhVG+zamBc6fLWj8XbZLARp+BWG3Et/RDEf22ia4RiRmqL4j7Oq6cwB0gzAP0
+	 ABp12RAdBSUoH+X5RmpRqQSv7IzLYBh+Uu5MegbWpWaGnE4IQNN0N/HvWw0GqPbx/i
+	 uMJG/5PzhsgRdiO+tY0Ry1GjkGP157whyKwSxYmLsrcUdsUuTDD1886QISk+na5+Ng
+	 kxId0WAcIeLIlahUI4w8dPociJglyB7f3gXmdvMPbI/LzD/uK4+XbI4rM3HlNipn4Z
+	 mwr9wUrUptjFpm0A+LqprsPTE75g1hwHM8lw+N9E44T0WePFIX8ZylbIO+UjnHsw4P
+	 J/9VWTm4h6L5g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3483160A9D;
-	Wed,  6 Nov 2024 17:45:28 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id AF71560753;
+	Wed,  6 Nov 2024 18:58:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id C7FC9B8
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2024 17:45:25 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 13E3427D1
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2024 18:58:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B400E40896
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2024 17:45:25 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id E59F060731
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2024 18:58:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id fxvUq3g5k-KL for <intel-wired-lan@lists.osuosl.org>;
- Wed,  6 Nov 2024 17:45:23 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
- helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 33C3240895
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 33C3240895
-Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 33C3240895
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2024 17:45:22 +0000 (UTC)
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
- (envelope-from <andrew@lunn.ch>)
- id 1t8k5m-00CMZo-Fe; Wed, 06 Nov 2024 18:45:18 +0100
-Date: Wed, 6 Nov 2024 18:45:18 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- richardcochran@gmail.com,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Message-ID: <d20d8265-4263-4408-8448-4338a268d537@lunn.ch>
-References: <20241106010756.1588973-1-arkadiusz.kubalewski@intel.com>
- <20241106010756.1588973-2-arkadiusz.kubalewski@intel.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id qPtpWJ3Wk_aQ for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  6 Nov 2024 18:58:51 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
+ helo=mgamail.intel.com; envelope-from=christopher.s.hall@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 3132D6072E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3132D6072E
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3132D6072E
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2024 18:58:50 +0000 (UTC)
+X-CSE-ConnectionGUID: MJAIRcrJRt2xKs5a0Ibs6A==
+X-CSE-MsgGUID: FOOHTkWkTQqniONZEluB1Q==
+X-IronPort-AV: E=McAfee;i="6700,10204,11248"; a="30959458"
+X-IronPort-AV: E=Sophos;i="6.11,263,1725346800"; d="scan'208";a="30959458"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+ by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Nov 2024 10:58:50 -0800
+X-CSE-ConnectionGUID: Ph0lnBW0T2eTSVFoAPMMTQ==
+X-CSE-MsgGUID: HVxW13hSRaykkM1ysO4ItA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,263,1725346800"; d="scan'208";a="89813788"
+Received: from timelab-spr11.ch.intel.com ([143.182.136.151])
+ by orviesa004.jf.intel.com with ESMTP; 06 Nov 2024 10:56:39 -0800
+From: Christopher S M Hall <christopher.s.hall@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: david.zage@intel.com, vinicius.gomes@intel.com, netdev@vger.kernel.org,
+ rodrigo.cadore@l-acoustics.com, vinschen@redhat.com
+Date: Wed,  6 Nov 2024 18:47:16 +0000
+Message-Id: <20241106184722.17230-1-christopher.s.hall@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241106010756.1588973-2-arkadiusz.kubalewski@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; d=lunn.ch; 
- s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
- Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
- Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
- bh=UxOA/rfjI1KE6q3W8gj1BUxMxZg7BxDAt4RAStM8cQA=; b=bckz7RTNCff3o2N0qC4BrW5JJU
- t/NSlxrsd+A4IZiqBPho+pn1msHV/R9j4murPChVT9pvz2n/KWHwQPw9bbpmOHohQVi4yWa4W48Nx
- Z+sC2x4pxCgPMEbO9uSl0nDw3qEeV+BB5OSFFMDDDOnoLm5P0txnjkLVwplDdMhfGPY4=;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1730919531; x=1762455531;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=SDI/0rzwiJm+GJEizqtwZHkTsAwZppo4C3xkG2bUSXM=;
+ b=iau+yy8UbafMNtOG/q2zowJeV55gKRNM5O0svFBJrgHk/DjRBJkwGHtZ
+ UQWfalT7ydduDNfqxlrTdxdczVVKIk83C8Xk3+u6J+xwwThRIjMhMsXw1
+ oTk6bxXYWFfG74F1IWQB0bu3OwKrjoDXXs1Zj0Y03Dnjs5lShsDGiN6hq
+ H5F8iYRO9LQ2Q+wimt5LOSrqbwTts3t6szKg2Zsl4Owb09FiMIyQlxiT8
+ h67khtFyBeGf1KZ3kamh2y2rDsvICxl2IN+G2rPRUCzSTbiTV+haVHC6h
+ h4usHNqWxXk3OXyIFV3SaNLcL089yOGyXA4tKNd8dt9Um1D1STRxDT1eM
+ w==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=lunn.ch
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256
- header.s=20171124 header.b=bckz7RTN
-Subject: Re: [Intel-wired-lan] [PATCH net-next v3 1/2] ptp: add control over
- HW timestamp latch point
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=iau+yy8U
+Subject: [Intel-wired-lan] [PATCH iwl-net v3 0/6] igc: Fix PTM timeout
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -100,47 +106,72 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Nov 06, 2024 at 02:07:55AM +0100, Arkadiusz Kubalewski wrote:
-> Currently HW support of ptp/timesync solutions in network PHY chips can be
-> implemented with two different approaches, the timestamp maybe latched
-> either at the beginning or after the Start of Frame Delimiter (SFD) [1].
-> 
-> Allow ptp device drivers to provide user with control over the HW
-> timestamp latch point with ptp sysfs ABI. Provide a new file under sysfs
-> ptp device (/sys/class/ptp/ptp<N>/ts_point). The file is available for the
-> user, if the device driver implements at least one of newly provided
-> callbacks. If the file is not provided the user shall find a PHY timestamp
-> latch point within the HW vendor specification.
-> 
-> The file is designed for root user/group access only, as the read for
-> regular user could impact performance of the ptp device.
-> 
-> Usage, examples:
-> 
-> ** Obtain current state:
-> $ cat /sys/class/ptp/ptp<N>/ts_point
-> Command returns enum/integer:
-> * 1 - timestamp latched by PHY at the beginning of SFD,
-> * 2 - timestamp latched by PHY after the SFD,
-> * None - callback returns error to the user.
+There have been sporadic reports of PTM timeouts using i225/i226 devices
 
--EOPNOTSUPP would be more conventional, not None.
+These timeouts have been root caused to:
 
-> 
-> ** Configure timestamp latch point at the beginning of SFD:
-> $ echo 1 > /sys/class/ptp/ptp<N>/ts_point
-> 
-> ** Configure timestamp latch point after the SFD:
-> $ echo 2 > /sys/class/ptp/ptp<N>/ts_point
+1) Manipulating the PTM status register while PTM is enabled and triggered
+2) The hardware retrying too quickly when an inappropriate response is
+   received from the upstream device
 
-and i assume these also return -EOPNOTSUPP if it is not supported.
+The issue can be reproduced with the following:
 
-And a dumb question, why should i care where the latch point is? Why
-would i want to change it? Richard always says that you cannot trust
-the kernel to have the same latency from kernel to kernel version
-because driver developers like to tweak the latency, invalidating all
-measurements the user has done when setting up their ptp4l
-daemon. This just seems like yet another way to break my ptp4l
-configuration.
+$ sudo phc2sys -R 1000 -O 0 -i tsn0 -m
 
-	Andrew
+Note: 1000 Hz (-R 1000) is unrealistically large, but provides a way to
+quickly reproduce the issue.
+
+PHC2SYS exits with:
+
+"ioctl PTP_OFFSET_PRECISE: Connection timed out" when the PTM transaction
+  fails
+
+Additional problem description tested by:
+Corinna Vinschen <vinschen@redhat.com>
+
+  This patch also fixes a hang in igc_probe() when loading the igc
+  driver in the kdump kernel on systems supporting PTM.
+
+  The igc driver running in the base kernel enables PTM trigger in
+  igc_probe().  Therefore the driver is always in PTM trigger mode,
+  except in brief periods when manually triggering a PTM cycle.
+
+  When a crash occurs, the NIC is reset while PTM trigger is enabled.
+  Due to a hardware problem, the NIC is subsequently in a bad busmaster
+  state and doesn't handle register reads/writes.  When running
+  igc_probe() in the kdump kernel, the first register access to a NIC
+  register hangs driver probing and ultimately breaks kdump.
+
+  With this patch, igc has PTM trigger disabled most of the time,
+  and the trigger is only enabled for very brief (10 - 100 us) periods
+  when manually triggering a PTM cycle.  Chances that a crash occurs
+  during a PTM trigger are not zero, but extremly reduced.
+
+
+Changelog:
+
+v1 -> v2: -Removed patch modifying PTM retry loop count
+      	  -Moved PTM mutex initialization from igc_reset() to igc_ptp_init()
+	   called once in igc_probe()
+v2 -> v3: -Added mutex_destroy() to clean up PTM lock
+	  -Added missing checks for PTP enabled flag called from igc_main.c
+	  -Cleanup PTP module if probe fails
+	  -Wrap all access to PTM registers with PTM lock/unlock
+
+Christopher S M Hall (6):
+  igc: Ensure the PTM cycle is reliably triggered
+  igc: Lengthen the hardware retry time to prevent timeouts
+  igc: Move ktime snapshot into PTM retry loop
+  igc: Handle the IGC_PTP_ENABLED flag correctly
+  igc: Cleanup PTP module if probe fails
+  igc: Add lock preventing multiple simultaneous PTM transactions
+
+ drivers/net/ethernet/intel/igc/igc.h         |   1 +
+ drivers/net/ethernet/intel/igc/igc_defines.h |   3 +-
+ drivers/net/ethernet/intel/igc/igc_main.c    |   1 +
+ drivers/net/ethernet/intel/igc/igc_ptp.c     | 113 ++++++++++++-------
+ 4 files changed, 78 insertions(+), 40 deletions(-)
+
+-- 
+2.34.1
+
