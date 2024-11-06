@@ -1,79 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A24F9BE5AB
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Nov 2024 12:38:10 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 848759BE5A9
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Nov 2024 12:38:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2E897811E5;
-	Wed,  6 Nov 2024 11:38:04 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B8B40608D2;
+	Wed,  6 Nov 2024 11:38:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id tktNup6m5sQ9; Wed,  6 Nov 2024 11:38:03 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id STZAjUiFmKvH; Wed,  6 Nov 2024 11:38:04 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 61488811D6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4F08C608DA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1730893083;
-	bh=FJhdQP4gYXQvp4RoJp9Jq2fAojIbW+yplZ+uXQRu1sI=;
+	s=default; t=1730893084;
+	bh=KHpCpD6Cj2UWjDeB6hP885RHgAPo1jGfx4bMdzojfGY=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=wY8VyDT2wmq4poEhEFwsLIo5JozAtm7L2+NGLKyz+awOB7CqBrHuUzOHRcBaGL0d9
-	 RepuRvy7Qi82wvn8r3YNRNGI6XLe+VMpGK6fFBrl/Kg3oBSFO6GKWThK2Rv1vfblLa
-	 3RplbKBhJbU59Yg5crfh41ZF6pDg+LCAddClVmeSQH7PndbB+xT8c+y8+vAP4k/G28
-	 5VGoJj31OSgQBjnIa6rOGZj8dIGTbLQmElan4ZhcRAjHuShTRaolyAUG8p4KIeu9zu
-	 fKeh2ylPeJfFd0TVrHNB1RwqXLjHeZ+jH1mMCR0GFlF/Sjt3Y/9ZGQAambfgEF/Vps
-	 TagXK8bXPXLPA==
+	b=ilvE9HLErEOnxg77BA0esCx89cYDUD5Qieb59kemzHlR/eLTvh6nSONdkzx8slrPG
+	 ok6NU2SrKKdwMPpBqDbmaiiSuMiH/nZKmesOVY1960JOQDgIL8R5NfX4nO5u4LhDkS
+	 ch7SYkg3adR455ZB3CL4I+5AitQ+wwz/sLJL6LRd3mU84sZ+sjb4XIyshx5wCbbZ5m
+	 6UYMvTds9K6hKN9bKZnch/VGDh+3sU2eF2BFXbBf/CszcbdPafDtQLuAUTB6xjNArO
+	 2shvvaCGavpQHPiRhn0GuU3LNeywGcVZKqS43cfxdalY+3Ra8LR637U85dNXs9dFdE
+	 8CMQqNJdkcZxw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 61488811D6;
-	Wed,  6 Nov 2024 11:38:03 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4F08C608DA;
+	Wed,  6 Nov 2024 11:38:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 2AD0E27D1
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 702D83B
  for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2024 11:37:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 17ABF40278
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6B085608D0
  for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2024 11:37:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 12qigUKdUMZA for <intel-wired-lan@lists.osuosl.org>;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id m3P0U1MWIT5K for <intel-wired-lan@lists.osuosl.org>;
  Wed,  6 Nov 2024 11:37:56 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
  helo=mgamail.intel.com; envelope-from=mateusz.polchlopek@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org D223B40329
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D223B40329
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 27EDE608A9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 27EDE608A9
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D223B40329
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 27EDE608A9
  for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2024 11:37:55 +0000 (UTC)
-X-CSE-ConnectionGUID: wKNeqTUvSVuS9IQ8G8Vm6Q==
-X-CSE-MsgGUID: a01H7+gGRv6yNoyjymtMiQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="30455521"
-X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; d="scan'208";a="30455521"
+X-CSE-ConnectionGUID: oQ8LkUPRQlagDZY0agBPMg==
+X-CSE-MsgGUID: Csg1vVgbRWCDz5rKJHaUcQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="30455524"
+X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; d="scan'208";a="30455524"
 Received: from orviesa001.jf.intel.com ([10.64.159.141])
  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  06 Nov 2024 03:37:55 -0800
-X-CSE-ConnectionGUID: MN+UheMLSRaNvCgvmwmbxQ==
-X-CSE-MsgGUID: huv/RjFoR3aJjR/s1PVi7Q==
+X-CSE-ConnectionGUID: /SyCREsCQZqfw6MecTYYHg==
+X-CSE-MsgGUID: SnASZNKcSkizfsNf4JIaTg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,262,1725346800"; d="scan'208";a="122020138"
+X-IronPort-AV: E=Sophos;i="6.11,262,1725346800"; d="scan'208";a="122020142"
 Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by orviesa001.jf.intel.com with ESMTP; 06 Nov 2024 03:37:52 -0800
+ by orviesa001.jf.intel.com with ESMTP; 06 Nov 2024 03:37:53 -0800
 Received: from fedora.igk.intel.com (Metan_eth.igk.intel.com [10.123.220.124])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 929D52FC49;
- Wed,  6 Nov 2024 11:37:51 +0000 (GMT)
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 6A21F2FC51;
+ Wed,  6 Nov 2024 11:37:52 +0000 (GMT)
 From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, Jacob Keller <jacob.e.keller@intel.com>,
- Wojciech Drewek <wojciech.drewek@intel.com>,
- Simon Horman <horms@kernel.org>,
- Rafal Romanowski <rafal.romanowski@intel.com>,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-Date: Wed,  6 Nov 2024 12:37:25 -0500
-Message-Id: <20241106173731.4272-9-mateusz.polchlopek@intel.com>
+Cc: netdev@vger.kernel.org, Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Rafal Romanowski <rafal.romanowski@intel.com>
+Date: Wed,  6 Nov 2024 12:37:26 -0500
+Message-Id: <20241106173731.4272-10-mateusz.polchlopek@intel.com>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20241106173731.4272-1-mateusz.polchlopek@intel.com>
 References: <20241106173731.4272-1-mateusz.polchlopek@intel.com>
@@ -84,22 +82,22 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1730893076; x=1762429076;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=b6zXC/mUJYJ5COFx5tnpM998HiHUroUgSPl0cMferBs=;
- b=eRZutY/NgvZ5tnDNbfP4LEhSgX69mAZJ4smP4EUPqls0whaTXMkc3lhA
- y4+EWz4dV80Yi+uGKZ3r9NgE8rf9IBnaMr8hRpc1Fvq1buvtwcll2Z5ww
- Qt81CPublIk7plf/7OZ2MiXEzFeSKhMD50UAIV97f5VUxrJDAudIgB+nj
- hVzJClYFmc25Hqx+1zOGbHDACIbwGalH0j01/YTKZogDZvlCJNJgCNU1R
- 5Ma34fgIm9T03gOsUIty+ypUvi2/bTVbVO0ohioKkacNz8AmK5K7pEl1v
- n6YbIhw5zbADc9xX8mzpBZ/r9yUfUjIrG+rya8Mc9RSTWJIPtcRVzMdtj
+ bh=7Kteu9RbbiWDjlclZp8LBalHejpmf8T6dptDvY+vgVM=;
+ b=bjxKCn96/efaeFzC1zCcLy7zIadwpHEr+cWC6K/H90kRuSFCXBDqAi5H
+ yYfcdQPoffqmVk1vQdvFymvh/1BuVDnF9ENWzL38xUet/zUiwogswkfy3
+ zuAVAxQX2UzeEY9BPKiH/bim6iJygBsunOva4O8ZAUWOIBW6P/uY+03Ll
+ yN34B4I/Ued8Q30zOzc+k+kUFEdw53Z6i38NWhgfQioHgX6uR+FoJOxL+
+ zLigSq/KzhUD8rvUhHsehHXt2OCwdMtpJpJg3jDYn/qeBh1ha/R7zDG9r
+ N5xFydFHl5pvX50yUwPdkv7bzeeGNg5mWoHPuXflwfAGanps+n4SjZFZ3
  w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=eRZutY/N
-Subject: [Intel-wired-lan] [PATCH iwl-next v13 08/14] iavf: periodically
- cache PHC time
+ header.a=rsa-sha256 header.s=Intel header.b=bjxKCn96
+Subject: [Intel-wired-lan] [PATCH iwl-next v13 09/14] libeth: move
+ idpf_rx_csum_decoded and idpf_rx_extracted
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -115,116 +113,329 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jacob Keller <jacob.e.keller@intel.com>
+Structs idpf_rx_csum_decoded and idpf_rx_extracted are used both in
+idpf and iavf Intel drivers. Change the prefix from idpf_* to libeth_*
+and move mentioned structs to libeth's rx.h header file.
 
-The Rx timestamps reported by hardware may only have 32 bits of storage
-for nanosecond time. These timestamps cannot be directly reported to the
-Linux stack, as it expects 64bits of time.
+Adjust usage in idpf driver.
 
-To handle this, the timestamps must be extended using an algorithm that
-calculates the corrected 64bit timestamp by comparison between the PHC
-time and the timestamp. This algorithm requires the PHC time to be
-captured within ~2 seconds of when the timestamp was captured.
-
-Instead of trying to read the PHC time in the Rx hotpath, the algorithm
-relies on a cached value that is periodically updated.
-
-Keep this cached time up to date by using the PTP .do_aux_work kthread
-function.
-
-The iavf_ptp_do_aux_work will reschedule itself about twice a second,
-and will check whether or not the cached PTP time needs to be updated.
-If so, it issues a VIRTCHNL_OP_1588_PTP_GET_TIME to request the time
-from the PF. The jitter and latency involved with this command aren't
-important, because the cached time just needs to be kept up to date
-within about ~2 seconds.
-
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
-Reviewed-by: Simon Horman <horms@kernel.org>
+Suggested-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 Tested-by: Rafal Romanowski <rafal.romanowski@intel.com>
-Co-developed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 ---
- drivers/net/ethernet/intel/iavf/iavf_ptp.c | 53 ++++++++++++++++++++++
- 1 file changed, 53 insertions(+)
+ .../ethernet/intel/idpf/idpf_singleq_txrx.c   | 51 ++++++++++---------
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c   | 16 +++---
+ drivers/net/ethernet/intel/idpf/idpf_txrx.h   | 19 -------
+ include/net/libeth/rx.h                       | 47 +++++++++++++++++
+ 4 files changed, 82 insertions(+), 51 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_ptp.c b/drivers/net/ethernet/intel/iavf/iavf_ptp.c
-index b9a341e98a98..c2e0d27552b0 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_ptp.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_ptp.c
-@@ -158,6 +158,56 @@ static int iavf_ptp_gettimex64(struct ptp_clock_info *info,
- 	return iavf_read_phc_indirect(adapter, ts, sts);
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
+index dfd7cf1d9aa0..eae1b6f474e6 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
+@@ -595,7 +595,7 @@ static bool idpf_rx_singleq_is_non_eop(const union virtchnl2_rx_desc *rx_desc)
+  */
+ static void idpf_rx_singleq_csum(struct idpf_rx_queue *rxq,
+ 				 struct sk_buff *skb,
+-				 struct idpf_rx_csum_decoded csum_bits,
++				 struct libeth_rx_csum csum_bits,
+ 				 struct libeth_rx_pt decoded)
+ {
+ 	bool ipv4, ipv6;
+@@ -661,10 +661,10 @@ static void idpf_rx_singleq_csum(struct idpf_rx_queue *rxq,
+  *
+  * Return: parsed checksum status.
+  **/
+-static struct idpf_rx_csum_decoded
++static struct libeth_rx_csum
+ idpf_rx_singleq_base_csum(const union virtchnl2_rx_desc *rx_desc)
+ {
+-	struct idpf_rx_csum_decoded csum_bits = { };
++	struct libeth_rx_csum csum_bits = { };
+ 	u32 rx_error, rx_status;
+ 	u64 qword;
+ 
+@@ -696,10 +696,10 @@ idpf_rx_singleq_base_csum(const union virtchnl2_rx_desc *rx_desc)
+  *
+  * Return: parsed checksum status.
+  **/
+-static struct idpf_rx_csum_decoded
++static struct libeth_rx_csum
+ idpf_rx_singleq_flex_csum(const union virtchnl2_rx_desc *rx_desc)
+ {
+-	struct idpf_rx_csum_decoded csum_bits = { };
++	struct libeth_rx_csum csum_bits = { };
+ 	u16 rx_status0, rx_status1;
+ 
+ 	rx_status0 = le16_to_cpu(rx_desc->flex_nic_wb.status_error0);
+@@ -798,7 +798,7 @@ idpf_rx_singleq_process_skb_fields(struct idpf_rx_queue *rx_q,
+ 				   u16 ptype)
+ {
+ 	struct libeth_rx_pt decoded = rx_q->rx_ptype_lkup[ptype];
+-	struct idpf_rx_csum_decoded csum_bits;
++	struct libeth_rx_csum csum_bits;
+ 
+ 	/* modifies the skb - consumes the enet header */
+ 	skb->protocol = eth_type_trans(skb, rx_q->netdev);
+@@ -891,6 +891,7 @@ bool idpf_rx_singleq_buf_hw_alloc_all(struct idpf_rx_queue *rx_q,
+  * idpf_rx_singleq_extract_base_fields - Extract fields from the Rx descriptor
+  * @rx_desc: the descriptor to process
+  * @fields: storage for extracted values
++ * @ptype: pointer that will store packet type
+  *
+  * Decode the Rx descriptor and extract relevant information including the
+  * size and Rx packet type.
+@@ -900,20 +901,21 @@ bool idpf_rx_singleq_buf_hw_alloc_all(struct idpf_rx_queue *rx_q,
+  */
+ static void
+ idpf_rx_singleq_extract_base_fields(const union virtchnl2_rx_desc *rx_desc,
+-				    struct idpf_rx_extracted *fields)
++				    struct libeth_rqe_info *fields, u32 *ptype)
+ {
+ 	u64 qword;
+ 
+ 	qword = le64_to_cpu(rx_desc->base_wb.qword1.status_error_ptype_len);
+ 
+-	fields->size = FIELD_GET(VIRTCHNL2_RX_BASE_DESC_QW1_LEN_PBUF_M, qword);
+-	fields->rx_ptype = FIELD_GET(VIRTCHNL2_RX_BASE_DESC_QW1_PTYPE_M, qword);
++	fields->len = FIELD_GET(VIRTCHNL2_RX_BASE_DESC_QW1_LEN_PBUF_M, qword);
++	*ptype = FIELD_GET(VIRTCHNL2_RX_BASE_DESC_QW1_PTYPE_M, qword);
  }
  
-+/**
-+ * iavf_ptp_cache_phc_time - Cache PHC time for performing timestamp extension
-+ * @adapter: private adapter structure
-+ *
-+ * Periodically cache the PHC time in order to allow for timestamp extension.
-+ * This is required because the Tx and Rx timestamps only contain 32bits of
-+ * nanoseconds. Timestamp extension allows calculating the corrected 64bit
-+ * timestamp. This algorithm relies on the cached time being within ~1 second
-+ * of the timestamp.
-+ */
-+static void iavf_ptp_cache_phc_time(struct iavf_adapter *adapter)
-+{
-+	if (!time_is_before_jiffies(adapter->ptp.cached_phc_updated + HZ))
-+		return;
-+
-+	/* The response from virtchnl will store the time into
-+	 * cached_phc_time.
-+	 */
-+	iavf_send_phc_read(adapter);
-+}
-+
-+/**
-+ * iavf_ptp_do_aux_work - Perform periodic work required for PTP support
-+ * @info: PTP clock info structure
-+ *
-+ * Handler to take care of periodic work required for PTP operation. This
-+ * includes the following tasks:
-+ *
-+ *   1) updating cached_phc_time
-+ *
-+ *      cached_phc_time is used by the Tx and Rx timestamp flows in order to
-+ *      perform timestamp extension, by carefully comparing the timestamp
-+ *      32bit nanosecond timestamps and determining the corrected 64bit
-+ *      timestamp value to report to userspace. This algorithm only works if
-+ *      the cached_phc_time is within ~1 second of the Tx or Rx timestamp
-+ *      event. This task periodically reads the PHC time and stores it, to
-+ *      ensure that timestamp extension operates correctly.
-+ *
-+ * Returns: time in jiffies until the periodic task should be re-scheduled.
-+ */
-+static long iavf_ptp_do_aux_work(struct ptp_clock_info *info)
-+{
-+	struct iavf_adapter *adapter = iavf_clock_to_adapter(info);
-+
-+	iavf_ptp_cache_phc_time(adapter);
-+
-+	/* Check work about twice a second */
-+	return msecs_to_jiffies(500);
-+}
-+
  /**
-  * iavf_ptp_register_clock - Register a new PTP for userspace
-  * @adapter: private adapter structure
-@@ -176,6 +226,7 @@ static int iavf_ptp_register_clock(struct iavf_adapter *adapter)
- 		 KBUILD_MODNAME, dev_name(dev));
- 	ptp_info->owner = THIS_MODULE;
- 	ptp_info->gettimex64 = iavf_ptp_gettimex64;
-+	ptp_info->do_aux_work = iavf_ptp_do_aux_work;
- 
- 	clock = ptp_clock_register(ptp_info, dev);
- 	if (IS_ERR(clock))
-@@ -219,6 +270,8 @@ void iavf_ptp_init(struct iavf_adapter *adapter)
- 
- 		rx_ring->ptp = &adapter->ptp;
- 	}
-+
-+	ptp_schedule_worker(adapter->ptp.clock, 0);
+  * idpf_rx_singleq_extract_flex_fields - Extract fields from the Rx descriptor
+  * @rx_desc: the descriptor to process
+  * @fields: storage for extracted values
++ * @ptype: pointer that will store packet type
+  *
+  * Decode the Rx descriptor and extract relevant information including the
+  * size and Rx packet type.
+@@ -923,12 +925,12 @@ idpf_rx_singleq_extract_base_fields(const union virtchnl2_rx_desc *rx_desc,
+  */
+ static void
+ idpf_rx_singleq_extract_flex_fields(const union virtchnl2_rx_desc *rx_desc,
+-				    struct idpf_rx_extracted *fields)
++				    struct libeth_rqe_info *fields, u32 *ptype)
+ {
+-	fields->size = FIELD_GET(VIRTCHNL2_RX_FLEX_DESC_PKT_LEN_M,
+-				 le16_to_cpu(rx_desc->flex_nic_wb.pkt_len));
+-	fields->rx_ptype = FIELD_GET(VIRTCHNL2_RX_FLEX_DESC_PTYPE_M,
+-				     le16_to_cpu(rx_desc->flex_nic_wb.ptype_flex_flags0));
++	fields->len = FIELD_GET(VIRTCHNL2_RX_FLEX_DESC_PKT_LEN_M,
++				le16_to_cpu(rx_desc->flex_nic_wb.pkt_len));
++	*ptype = FIELD_GET(VIRTCHNL2_RX_FLEX_DESC_PTYPE_M,
++			   le16_to_cpu(rx_desc->flex_nic_wb.ptype_flex_flags0));
  }
+ 
+ /**
+@@ -936,17 +938,18 @@ idpf_rx_singleq_extract_flex_fields(const union virtchnl2_rx_desc *rx_desc,
+  * @rx_q: Rx descriptor queue
+  * @rx_desc: the descriptor to process
+  * @fields: storage for extracted values
++ * @ptype: pointer that will store packet type
+  *
+  */
+ static void
+ idpf_rx_singleq_extract_fields(const struct idpf_rx_queue *rx_q,
+ 			       const union virtchnl2_rx_desc *rx_desc,
+-			       struct idpf_rx_extracted *fields)
++			       struct libeth_rqe_info *fields, u32 *ptype)
+ {
+ 	if (rx_q->rxdids == VIRTCHNL2_RXDID_1_32B_BASE_M)
+-		idpf_rx_singleq_extract_base_fields(rx_desc, fields);
++		idpf_rx_singleq_extract_base_fields(rx_desc, fields, ptype);
+ 	else
+-		idpf_rx_singleq_extract_flex_fields(rx_desc, fields);
++		idpf_rx_singleq_extract_flex_fields(rx_desc, fields, ptype);
+ }
+ 
+ /**
+@@ -966,9 +969,10 @@ static int idpf_rx_singleq_clean(struct idpf_rx_queue *rx_q, int budget)
+ 
+ 	/* Process Rx packets bounded by budget */
+ 	while (likely(total_rx_pkts < (unsigned int)budget)) {
+-		struct idpf_rx_extracted fields = { };
++		struct libeth_rqe_info fields = { };
+ 		union virtchnl2_rx_desc *rx_desc;
+ 		struct idpf_rx_buf *rx_buf;
++		u32 ptype;
+ 
+ 		/* get the Rx desc from Rx queue based on 'next_to_clean' */
+ 		rx_desc = &rx_q->rx[ntc];
+@@ -989,16 +993,16 @@ static int idpf_rx_singleq_clean(struct idpf_rx_queue *rx_q, int budget)
+ 		 */
+ 		dma_rmb();
+ 
+-		idpf_rx_singleq_extract_fields(rx_q, rx_desc, &fields);
++		idpf_rx_singleq_extract_fields(rx_q, rx_desc, &fields, &ptype);
+ 
+ 		rx_buf = &rx_q->rx_buf[ntc];
+-		if (!libeth_rx_sync_for_cpu(rx_buf, fields.size))
++		if (!libeth_rx_sync_for_cpu(rx_buf, fields.len))
+ 			goto skip_data;
+ 
+ 		if (skb)
+-			idpf_rx_add_frag(rx_buf, skb, fields.size);
++			idpf_rx_add_frag(rx_buf, skb, fields.len);
+ 		else
+-			skb = idpf_rx_build_skb(rx_buf, fields.size);
++			skb = idpf_rx_build_skb(rx_buf, fields.len);
+ 
+ 		/* exit if we failed to retrieve a buffer */
+ 		if (!skb)
+@@ -1033,8 +1037,7 @@ static int idpf_rx_singleq_clean(struct idpf_rx_queue *rx_q, int budget)
+ 		total_rx_bytes += skb->len;
+ 
+ 		/* protocol */
+-		idpf_rx_singleq_process_skb_fields(rx_q, skb,
+-						   rx_desc, fields.rx_ptype);
++		idpf_rx_singleq_process_skb_fields(rx_q, skb, rx_desc, ptype);
+ 
+ 		/* send completed skb up the stack */
+ 		napi_gro_receive(rx_q->pp->p.napi, skb);
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+index 34f4118c7bc0..a8989dd98272 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+@@ -2895,7 +2895,7 @@ idpf_rx_hash(const struct idpf_rx_queue *rxq, struct sk_buff *skb,
+  * skb->protocol must be set before this function is called
+  */
+ static void idpf_rx_csum(struct idpf_rx_queue *rxq, struct sk_buff *skb,
+-			 struct idpf_rx_csum_decoded csum_bits,
++			 struct libeth_rx_csum csum_bits,
+ 			 struct libeth_rx_pt decoded)
+ {
+ 	bool ipv4, ipv6;
+@@ -2923,7 +2923,7 @@ static void idpf_rx_csum(struct idpf_rx_queue *rxq, struct sk_buff *skb,
+ 	if (unlikely(csum_bits.l4e))
+ 		goto checksum_fail;
+ 
+-	if (csum_bits.raw_csum_inv ||
++	if (!csum_bits.raw_csum_valid ||
+ 	    decoded.inner_prot == LIBETH_RX_PT_INNER_SCTP) {
+ 		skb->ip_summed = CHECKSUM_UNNECESSARY;
+ 		return;
+@@ -2946,10 +2946,10 @@ static void idpf_rx_csum(struct idpf_rx_queue *rxq, struct sk_buff *skb,
+  *
+  * Return: parsed checksum status.
+  **/
+-static struct idpf_rx_csum_decoded
++static struct libeth_rx_csum
+ idpf_rx_splitq_extract_csum_bits(const struct virtchnl2_rx_flex_desc_adv_nic_3 *rx_desc)
+ {
+-	struct idpf_rx_csum_decoded csum = { };
++	struct libeth_rx_csum csum = { };
+ 	u8 qword0, qword1;
+ 
+ 	qword0 = rx_desc->status_err0_qw0;
+@@ -2965,9 +2965,9 @@ idpf_rx_splitq_extract_csum_bits(const struct virtchnl2_rx_flex_desc_adv_nic_3 *
+ 			       qword1);
+ 	csum.ipv6exadd = FIELD_GET(VIRTCHNL2_RX_FLEX_DESC_ADV_STATUS0_IPV6EXADD_M,
+ 				   qword0);
+-	csum.raw_csum_inv =
+-		le16_get_bits(rx_desc->ptype_err_fflags0,
+-			      VIRTCHNL2_RX_FLEX_DESC_ADV_RAW_CSUM_INV_M);
++	csum.raw_csum_valid =
++		!le16_get_bits(rx_desc->ptype_err_fflags0,
++			       VIRTCHNL2_RX_FLEX_DESC_ADV_RAW_CSUM_INV_M);
+ 	csum.raw_csum = le16_to_cpu(rx_desc->misc.raw_cs);
+ 
+ 	return csum;
+@@ -3060,7 +3060,7 @@ static int
+ idpf_rx_process_skb_fields(struct idpf_rx_queue *rxq, struct sk_buff *skb,
+ 			   const struct virtchnl2_rx_flex_desc_adv_nic_3 *rx_desc)
+ {
+-	struct idpf_rx_csum_decoded csum_bits;
++	struct libeth_rx_csum csum_bits;
+ 	struct libeth_rx_pt decoded;
+ 	u16 rx_ptype;
+ 
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+index 9c1fe84108ed..b59aa7d8de2c 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
++++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+@@ -213,25 +213,6 @@ enum idpf_tx_ctx_desc_eipt_offload {
+ 	IDPF_TX_CTX_EXT_IP_IPV4         = 0x3
+ };
+ 
+-/* Checksum offload bits decoded from the receive descriptor. */
+-struct idpf_rx_csum_decoded {
+-	u32 l3l4p : 1;
+-	u32 ipe : 1;
+-	u32 eipe : 1;
+-	u32 eudpe : 1;
+-	u32 ipv6exadd : 1;
+-	u32 l4e : 1;
+-	u32 pprs : 1;
+-	u32 nat : 1;
+-	u32 raw_csum_inv : 1;
+-	u32 raw_csum : 16;
+-};
+-
+-struct idpf_rx_extracted {
+-	unsigned int size;
+-	u16 rx_ptype;
+-};
+-
+ #define IDPF_TX_COMPLQ_CLEAN_BUDGET	256
+ #define IDPF_TX_MIN_PKT_LEN		17
+ #define IDPF_TX_DESCS_FOR_SKB_DATA_PTR	1
+diff --git a/include/net/libeth/rx.h b/include/net/libeth/rx.h
+index 43574bd6612f..ab05024be518 100644
+--- a/include/net/libeth/rx.h
++++ b/include/net/libeth/rx.h
+@@ -198,6 +198,53 @@ struct libeth_rx_pt {
+ 	enum xdp_rss_hash_type			hash_type:16;
+ };
+ 
++/**
++ * struct libeth_rx_csum - checksum offload bits decoded from the Rx descriptor
++ * @l3l4p: detectable L3 and L4 integrity check is processed by the hardware
++ * @ipe: IP checksum error
++ * @eipe: external (outermost) IP header (only for tunels)
++ * @eudpe: external (outermost) UDP checksum error (only for tunels)
++ * @ipv6exadd: IPv6 header with extension headers
++ * @l4e: L4 integrity error
++ * @pprs: set for packets that skip checksum calculation in the HW pre parser
++ * @nat: the packet is a UDP tunneled packet
++ * @raw_csum_valid: set if raw checksum is valid
++ * @pad: padding to naturally align raw_csum field
++ * @raw_csum: raw checksum
++ */
++struct libeth_rx_csum {
++	u32					l3l4p:1;
++	u32					ipe:1;
++	u32					eipe:1;
++	u32					eudpe:1;
++	u32					ipv6exadd:1;
++	u32					l4e:1;
++	u32					pprs:1;
++	u32					nat:1;
++
++	u32					raw_csum_valid:1;
++	u32					pad:7;
++	u32					raw_csum:16;
++};
++
++/**
++ * struct libeth_rqe_info - receive queue element info
++ * @len: packet length
++ * @ptype: packet type based on types programmed into the device
++ * @eop: whether it's the last fragment of the packet
++ * @rxe: MAC errors: CRC, Alignment, Oversize, Undersizes, Length error
++ * @vlan: C-VLAN or S-VLAN tag depending on the VLAN offload configuration
++ */
++struct libeth_rqe_info {
++	u32					len;
++
++	u32					ptype:14;
++	u32					eop:1;
++	u32					rxe:1;
++
++	u32					vlan:16;
++};
++
+ void libeth_rx_pt_gen_hash_type(struct libeth_rx_pt *pt);
  
  /**
 -- 
