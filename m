@@ -1,91 +1,113 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B3579BE32E
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Nov 2024 10:54:01 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E01A9BE556
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Nov 2024 12:15:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 027D2606C8;
-	Wed,  6 Nov 2024 09:54:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4DF7080B7A;
+	Wed,  6 Nov 2024 11:15:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uzFVfXuLyUeU; Wed,  6 Nov 2024 09:53:59 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id zulwCMQaJgo7; Wed,  6 Nov 2024 11:15:01 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 39688608A1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D0D4980B8B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1730886839;
-	bh=LMxbCHgkkvx5XhMu4SkqdL5emWrivIpJuB42LR9Yen4=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=28E8HMpGudKN+nEEQz9ixqPR4GobqPvMVrqvQXB9TxW8SgJjLOBG/SpIlkcvi5MrH
-	 0TovS4d9dTZNy5Qk/9cxuSSIU36FkqCcNI6Gu2lvDCIocY254BgabXYJJbuGaGeEdO
-	 XpqhZX6X8E5Cr1/dt0PIheSzJB5ihILtngOOhZRzmBuAMxVasjIwKwfcfuXz7BMpa6
-	 WPoMS5ocn5JJ9/JB1hX+VeZMw4D++F88akBYh9WJRi8Pm7deaN8xuMFXbALalaAevc
-	 I7xyUTDPmxImugTC6Rha1uln+yGWoucOPpYhHpcDzcKDud/KXLFxPG68tQCODRIgoj
-	 ey63qVXAqskpw==
+	s=default; t=1730891701;
+	bh=q/pUhWBxmCDgwQYzUjg0jWk3qPOCCQzEzMOB8Ax5AVQ=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=s8fdXIaX52mzWxBoD4ag9imRvwAM8g+pNI3ud9iQ8qHo6/ZpwWsR/CVM1gZ7xJorg
+	 sUlJfaMhGdGsAcoqAqzxOnCDlbRY8l2vqu34nQ3VOaXokRzhODy9cLp8Vpmqin41Qp
+	 e0RqU/fc5ACZeT2TMcA13VFUAt8+oy5ssORPM90vIE4zABtq//qLJwN7OVUDVl7nuf
+	 gnbGh3jUhRWNBApakD7IsqR+csuzzQasChZlsUcGzqkp3VrLWaI4bRtPpuhQrc010O
+	 ohgVaYrWy+CTxa7BXDwYNPh2hRrTJPvYMSjjRoL2P8ixA3VbSWHnbEEPmVE4067DGp
+	 phNDZllKWrcfg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 39688608A1;
-	Wed,  6 Nov 2024 09:53:59 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D0D4980B8B;
+	Wed,  6 Nov 2024 11:15:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 5FE843B
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2024 09:53:56 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 24CF3B8
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2024 11:15:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 40D3760676
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2024 09:53:56 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 1F1F160A64
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2024 11:15:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id L6Yd-ujFNqUG for <intel-wired-lan@lists.osuosl.org>;
- Wed,  6 Nov 2024 09:53:55 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 972ED60652
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 972ED60652
-Received: from nyc.source.kernel.org (nyc.source.kernel.org
- [IPv6:2604:1380:45d1:ec00::3])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 972ED60652
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2024 09:53:55 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id 3D6BCA42B64;
- Wed,  6 Nov 2024 09:51:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DDE18C4CECD;
- Wed,  6 Nov 2024 09:53:52 +0000 (UTC)
-Date: Wed, 6 Nov 2024 09:53:50 +0000
-From: Simon Horman <horms@kernel.org>
-To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- sridhar.samudrala@intel.com
-Message-ID: <20241106095350.GJ4507@kernel.org>
-References: <20241031060009.38979-1-michal.swiatkowski@linux.intel.com>
- <20241031060009.38979-2-michal.swiatkowski@linux.intel.com>
+ id QgqyTogFuwE4 for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  6 Nov 2024 11:14:59 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=wander@redhat.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 64E5960A54
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 64E5960A54
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 64E5960A54
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Nov 2024 11:14:58 +0000 (UTC)
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-18-6LJtl8SbP8eoyf92emu2Kw-1; Wed,
+ 06 Nov 2024 06:14:52 -0500
+X-MC-Unique: 6LJtl8SbP8eoyf92emu2Kw-1
+X-Mimecast-MFC-AGG-ID: 6LJtl8SbP8eoyf92emu2Kw
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 51797196CE34; Wed,  6 Nov 2024 11:14:42 +0000 (UTC)
+Received: from wcosta-thinkpadt14gen4.rmtbr.csb (unknown [10.22.80.50])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id C23FB1955F41; Wed,  6 Nov 2024 11:14:33 +0000 (UTC)
+From: Wander Lairson Costa <wander@redhat.com>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Clark Williams <clrkwllms@kernel.org>,
+ Steven Rostedt <rostedt@goodmis.org>, Simon Horman <horms@kernel.org>,
+ Wander Lairson Costa <wander@redhat.com>,
+ Jacob Keller <jacob.e.keller@intel.com>,
+ intel-wired-lan@lists.osuosl.org (moderated list:INTEL ETHERNET DRIVERS),
+ netdev@vger.kernel.org (open list:NETWORKING DRIVERS),
+ linux-kernel@vger.kernel.org (open list),
+ linux-rt-devel@lists.linux.dev (open list:Real-time Linux
+ (PREEMPT_RT):Keyword:PREEMPT_RT)
+Cc: tglx@linutronix.de
+Date: Wed,  6 Nov 2024 08:14:26 -0300
+Message-ID: <20241106111427.7272-1-wander@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241031060009.38979-2-michal.swiatkowski@linux.intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1730886833;
- bh=bPepb+/BgfiR6bYytxcaRaPssEkGU1xCaygb9x+TGik=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=JSfFNmNQN6bbBo3K1K4YytOYVWdAtrS2O0ewxrIUQ3317WiNL0A+gzKNNkoIsYSwJ
- OGpH6H0oGG9PXsjl/vj6sq3+iwLJKECncsGT5vgW4TWwmcjHrk4u6yjpY9ZWkJu3PC
- jYW4z5Jku1drRdlMqAwjgwVv2eRyTOyrVuojSK+2b8IXV+vbY43kjCzcu8C7FFlHCp
- YFetnctpz/B5n+V1RLKMV7DC/9/52CCkjI4Alj3Zq3Xpbyhdv96Ehf3p6Cg4PIet5e
- G0LCOFPTQfwu2igLqfty4Ad08YPP68QSzs1V13hkGq5oSJ+ks29BFl2lPiN9acC3Wu
- SvzOedS2KvHyA==
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1730891697;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=q/pUhWBxmCDgwQYzUjg0jWk3qPOCCQzEzMOB8Ax5AVQ=;
+ b=QsLWH5KIyrtU8qJ61PLGFYaX9m5oWE8bfhtRSnS7PtpCCVcn3fCgaunoMNVC7vhjubLo0l
+ IugeU/fwxul2trwWNYJRZAJG2q2ntWbBgniNtmF9hoCVo63p0gC1CZc6KuBJKfidJhyUke
+ 1x+WZSm7XP/wVdtud16/FABL3tiYNSQ=
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
+ dmarc=pass (p=none dis=none)
+ header.from=redhat.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=JSfFNmNQ
-Subject: Re: [Intel-wired-lan] [iwl-next v1 1/3] ice: support max_io_eqs for
- subfunction
+ dkim=pass (1024-bit key,
+ unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
+ header.s=mimecast20190719 header.b=QsLWH5KI
+Subject: [Intel-wired-lan] [PATCH v2 1/4] Revert "igb: Disable threaded IRQ
+ for igb_msix_other"
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -101,67 +123,38 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Oct 31, 2024 at 07:00:07AM +0100, Michal Swiatkowski wrote:
-> Implement get and set for the maximum IO event queues for SF.
-> It is used to derive the maximum number of Rx/Tx queues on subfunction
-> device.
-> 
-> If the value isn't set when activating set it to the low default value.
-> 
-> Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
-> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> ---
->  drivers/net/ethernet/intel/ice/devlink/port.c | 37 +++++++++++++++++++
->  drivers/net/ethernet/intel/ice/ice.h          |  2 +
->  2 files changed, 39 insertions(+)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/devlink/port.c b/drivers/net/ethernet/intel/ice/devlink/port.c
+This reverts commit 338c4d3902feb5be49bfda530a72c7ab860e2c9f.
 
-...
+Sebastian noticed the ISR indirectly acquires spin_locks, which are
+sleeping locks under PREEMPT_RT, which leads to kernel splats.
 
-> @@ -548,6 +575,14 @@ ice_activate_dynamic_port(struct ice_dynamic_port *dyn_port,
->  	if (dyn_port->active)
->  		return 0;
->  
-> +	if (!dyn_port->vsi->max_io_eqs) {
-> +		err = ice_devlink_port_fn_max_io_eqs_set(&dyn_port->devlink_port,
-> +							 ICE_SF_DEFAULT_EQS,
-> +							 extack);
+Fixes: 338c4d3902feb ("igb: Disable threaded IRQ for igb_msix_other")
+Reported-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+Signed-off-by: Wander Lairson Costa <wander@redhat.com>
 
-Hi Michal,
+---
 
-I am a little confused about the relationship between this,
-where ICE_SF_DEFAULT_EQS is 8, and the following check in
-ice_devlink_port_fn_max_io_eqs_set().
+Changelog:
 
-	if (max_io_eqs > num_online_cpus()) {
-		NL_SET_ERR_MSG_MOD(extack, "Supplied value out of range");
-		return -EINVAL;
-	}
+v2: Add the Fixes tag
+Signed-off-by: Wander Lairson Costa <wander@redhat.com>
+---
+ drivers/net/ethernet/intel/igb/igb_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-What is the behaviour on systems with more than 8 online CPUs?
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index b83df5f94b1f5..f1d0881687233 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -907,7 +907,7 @@ static int igb_request_msix(struct igb_adapter *adapter)
+ 	int i, err = 0, vector = 0, free_vector = 0;
+ 
+ 	err = request_irq(adapter->msix_entries[vector].vector,
+-			  igb_msix_other, IRQF_NO_THREAD, netdev->name, adapter);
++			  igb_msix_other, 0, netdev->name, adapter);
+ 	if (err)
+ 		goto err_out;
+ 
+-- 
+2.47.0
 
-> +		if (err)
-> +			return err;
-> +	}
-> +
->  	err = ice_sf_eth_activate(dyn_port, extack);
->  	if (err)
->  		return err;
-
-...
-
-> diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-> index 70d5294a558c..ca0739625d3b 100644
-> --- a/drivers/net/ethernet/intel/ice/ice.h
-> +++ b/drivers/net/ethernet/intel/ice/ice.h
-> @@ -109,6 +109,7 @@
->  #define ICE_Q_WAIT_MAX_RETRY	(5 * ICE_Q_WAIT_RETRY_LIMIT)
->  #define ICE_MAX_LG_RSS_QS	256
->  #define ICE_INVAL_Q_INDEX	0xffff
-> +#define ICE_SF_DEFAULT_EQS	8
->  
->  #define ICE_MAX_RXQS_PER_TC		256	/* Used when setting VSI context per TC Rx queues */
->  
-
-...
