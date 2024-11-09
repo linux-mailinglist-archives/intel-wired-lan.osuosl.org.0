@@ -1,99 +1,102 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 680CB9C28A4
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  9 Nov 2024 01:12:21 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0EF9541C2C;
-	Sat,  9 Nov 2024 00:12:20 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0oKKTp2HqoYv; Sat,  9 Nov 2024 00:12:19 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 53BD241B90
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1731111139;
-	bh=cTGsEnC+x2qdEGQUXkKOT6leuBMBc0bavbYkK0ksVKs=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=OJu/SLCam3Rxf9jxIq7m+siB+3y0757ooJqAuqK/XPxKW1XEUCsNOMShO81lXbGVK
-	 8G6VO75uBr9GEuZm6THQOQ9+3J65Cz7JI4FqTDvJHRtifRddQ5LVL84IaQy1niUD32
-	 tYk+U43KWUCimZuraneYBAwZZ53nQZk192DaR7AxED2mmMLF3nOxK3p6ia0iTkZK5o
-	 agsIF+9sM8uV0RWJmLNLJjA6viifZ/wgwUWIh0SaD1B45MbmMZSa+XBA6LlOxJVQxE
-	 M9kbtxSpi6IlEqNBPjOKv/xKBTfuDDzHkYYBSVqSqD9ChJEvDoJ/kNNujUERQ91tcQ
-	 BShBk8HOFKhdw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 53BD241B90;
-	Sat,  9 Nov 2024 00:12:19 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 52978978
- for <intel-wired-lan@lists.osuosl.org>; Sat,  9 Nov 2024 00:12:17 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 648179C28A6
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  9 Nov 2024 01:12:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 40E4F8453F
- for <intel-wired-lan@lists.osuosl.org>; Sat,  9 Nov 2024 00:12:17 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0F5C88453C;
+	Sat,  9 Nov 2024 00:12:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ENly7T9cwCko for <intel-wired-lan@lists.osuosl.org>;
- Sat,  9 Nov 2024 00:12:16 +0000 (UTC)
+ id Ps-16MLHCeuK; Sat,  9 Nov 2024 00:12:22 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2F7798453F
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1731111142;
+	bh=mCUgmfeiM6oB8m+NtTu6NShz8he3D6jNT6PyoU8027I=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=DXkf5GOlJSfcbwDFO6J1rxlJvWXa2l60gcI1LGLpTuU3NpqNg2E4lYPpx05KZPQRZ
+	 IUJveIt2g/OVTr7A9PIyF37pO5OpFfQ1TxuAQJWePzUBnQJBe7mtwJ6WMFFt3pb1fU
+	 y6pajh/ava62sDJdSStyPWJALc9wu/SR/UrTtOcDCz/mmuWsUE0iRJF4FOaECtgCY8
+	 +2ffTzL4xQoDFY2jv/g8x8qSc14nwguFX+Fd0LXg0J/sG0cpDrdNeYUjIe0PyK5pBM
+	 U7Xn71Y2SspsRokx/NdlcvJKebohWckS8JxuWKgmGlniGibLFcWjc7pqm4GHD3MDLK
+	 39UL/Uxr+T7Vw==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2F7798453F;
+	Sat,  9 Nov 2024 00:12:22 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3B30FC2
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  9 Nov 2024 00:12:20 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1D40B845DE
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  9 Nov 2024 00:12:20 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id K28EbKl58GqW for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  9 Nov 2024 00:12:18 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
  helo=mgamail.intel.com; envelope-from=ahmed.zaki@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 76BFD8453C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 76BFD8453C
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org F194B8453F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F194B8453F
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 76BFD8453C
- for <intel-wired-lan@lists.osuosl.org>; Sat,  9 Nov 2024 00:12:16 +0000 (UTC)
-X-CSE-ConnectionGUID: y/hqdm+ZQhKMv/4EYkswfQ==
-X-CSE-MsgGUID: 1KBS8ZC+S2axQgXTaDFv9g==
-X-IronPort-AV: E=McAfee;i="6700,10204,11250"; a="34795115"
-X-IronPort-AV: E=Sophos;i="6.12,139,1728975600"; d="scan'208";a="34795115"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id F194B8453F
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  9 Nov 2024 00:12:17 +0000 (UTC)
+X-CSE-ConnectionGUID: /eCfnjsrRqeI4xt8jyfLNw==
+X-CSE-MsgGUID: DSxvotsgSMCAiiMYZnetvA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11250"; a="34795119"
+X-IronPort-AV: E=Sophos;i="6.12,139,1728975600"; d="scan'208";a="34795119"
 Received: from orviesa004.jf.intel.com ([10.64.159.144])
  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Nov 2024 16:12:15 -0800
-X-CSE-ConnectionGUID: cMNijbVZTEazeUYG85+Srw==
-X-CSE-MsgGUID: IdRgU1DMSK6/rv0GppaE7Q==
+ 08 Nov 2024 16:12:18 -0800
+X-CSE-ConnectionGUID: HYqb+TBpR0CzVg8VxpdyYw==
+X-CSE-MsgGUID: cOOkK1WeRf6CKkr+GLhphQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,139,1728975600"; d="scan'208";a="90905914"
+X-IronPort-AV: E=Sophos;i="6.12,139,1728975600"; d="scan'208";a="90905950"
 Received: from dneilan-mobl1.ger.corp.intel.com (HELO azaki-desk1.intel.com)
  ([10.245.245.163])
  by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Nov 2024 16:12:14 -0800
+ 08 Nov 2024 16:12:16 -0800
 From: Ahmed Zaki <ahmed.zaki@intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: netdev@vger.kernel.org,
-	Ahmed Zaki <ahmed.zaki@intel.com>
-Date: Fri,  8 Nov 2024 17:12:04 -0700
-Message-ID: <20241109001206.213581-1-ahmed.zaki@intel.com>
+ Sudheer Mogilappagari <sudheer.mogilappagari@intel.com>,
+ Ahmed Zaki <ahmed.zaki@intel.com>
+Date: Fri,  8 Nov 2024 17:12:05 -0700
+Message-ID: <20241109001206.213581-2-ahmed.zaki@intel.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20241109001206.213581-1-ahmed.zaki@intel.com>
+References: <20241109001206.213581-1-ahmed.zaki@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1731111136; x=1762647136;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=AjITPXx4oPzInPimR27fMUr+z7wdtMLtKa2dw61+mdE=;
- b=J4j0WWfdsaiP2AU9tGoCt1JMLX05NMWscwYUfRTgYd1QnzdlYUFcFliD
- ViFP/KRILFTMuneBcWM3Jml14+UjHn7xcHnUwCWPyZHIfWn+I0v/2Pj/7
- xCyT0IdQLEf/vA5/rL98OsZ+Xqhb/FeJDdurQvbLl3RByNKR6G4YcouVB
- 9Ys47prZl9KzcLZbc0wHb2qJWnk9Se4g+NbVK9pEc8WXnRpqIyvWoEpfL
- 4bREzm88NbGgYwyT0zKD19OFf5scTWSw35ZnBoxFW3gnJ5srTAD2fcwnL
- PKg2bT63sfwLHCCCjbbsQLFD2WXm+9/eCasPfoxVPwvsSPght4kkgAqXg
+ t=1731111138; x=1762647138;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=KroSfN1M0r4HiUrYKVPYXdflVlrOxeZYUJfX7KDpK4c=;
+ b=J/8B94TYdHZ+5/kyE9lDvLYn8onJ1ISOm8d/rKVqG8VApxzRfMpEU/Ae
+ L7EyKB+JBL16gRiJkoaD3HJSGvk96nHSLuUDheqWaGUdIQfxTsWNybBG9
+ nqE315m0WEz8BZz0eDVOD7zIj72Mi3ZGdiXRVZWse/gZ7say7s1WLiHXR
+ foc8FpLcEngxHbWpUliqW8p8MR0SxVsbcLMaoTid4R2D4pQqCQ14nykln
+ qErmBSw5fXpluDZrejg7aEvLoraueTBqb3JWCs3eLsrEIkJ1OhjU4p4F6
+ R1zKji1MmpPPphoHmtGfPhzzkUz7sYKRG8kaiIuOJ/kRvlKlxuVVY/eC/
  Q==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=J4j0WWfd
-Subject: [Intel-wired-lan] [PATCH iwl-net 0/2] idpf: Preserve IRQ affinity
- and sync IRQ
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=J/8B94TY
+Subject: [Intel-wired-lan] [PATCH iwl-net 1/2] idpf: preserve IRQ affinity
+ settings across resets
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -109,19 +112,118 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Currently the IRQ affinity settings fallback to defaults when interface
-goes through a soft reset. Use irq_set_affinity_notifier() callbacks to
-fix it. Also, wait for pending IRQ handler before interrupt configuration
-is removed.
+From: Sudheer Mogilappagari <sudheer.mogilappagari@intel.com>
 
-Sudheer Mogilappagari (2):
-  idpf: preserve IRQ affinity settings across resets
-  idpf: finish pending IRQ handling before freeing interrupt
+Currently the IRQ affinity settings are getting lost when interface
+goes through a soft reset (due to MTU configuration, changing number
+of queues etc). Use irq_set_affinity_notifier() callbacks to keep
+the IRQ affinity info in sync between driver and kernel.
 
- drivers/net/ethernet/intel/idpf/idpf_txrx.c | 36 +++++++++++++++++++--
+Fixes: d4d558718266 ("idpf: initialize interrupts and enable vport")
+Reviewed-by: Ahmed Zaki <ahmed.zaki@intel.com>
+Signed-off-by: Sudheer Mogilappagari <sudheer.mogilappagari@intel.com>
+Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
+---
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c | 35 +++++++++++++++++++--
  drivers/net/ethernet/intel/idpf/idpf_txrx.h |  6 +++-
- 2 files changed, 39 insertions(+), 3 deletions(-)
+ 2 files changed, 38 insertions(+), 3 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+index a8989dd98272..82e0e3698f10 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+@@ -3583,7 +3583,7 @@ static void idpf_vport_intr_rel_irq(struct idpf_vport *vport)
+ 		irq_num = adapter->msix_entries[vidx].vector;
+ 
+ 		/* clear the affinity_mask in the IRQ descriptor */
+-		irq_set_affinity_hint(irq_num, NULL);
++		irq_set_affinity_notifier(irq_num, NULL);
+ 		kfree(free_irq(irq_num, q_vector));
+ 	}
+ }
+@@ -3723,6 +3723,33 @@ void idpf_vport_intr_update_itr_ena_irq(struct idpf_q_vector *q_vector)
+ 	writel(intval, q_vector->intr_reg.dyn_ctl);
+ }
+ 
++/**
++ * idpf_irq_affinity_notify - Callback for affinity changes
++ * @notify: context as to what irq was changed
++ * @mask: the new affinity mask
++ *
++ * Callback function registered via irq_set_affinity_notifier function
++ * so that river can receive changes to the irq affinity masks.
++ */
++static void
++idpf_irq_affinity_notify(struct irq_affinity_notify *notify,
++			 const cpumask_t *mask)
++{
++	struct idpf_q_vector *q_vector =
++		container_of(notify, struct idpf_q_vector, affinity_notify);
++
++	cpumask_copy(q_vector->affinity_mask, mask);
++}
++
++/**
++ * idpf_irq_affinity_release - Callback for affinity notifier release
++ * @ref: internal core kernel usage
++ *
++ * Callback function registered via irq_set_affinity_notifier function
++ * to inform the driver that it will no longer receive notifications.
++ */
++static void idpf_irq_affinity_release(struct kref __always_unused *ref) {}
++
+ /**
+  * idpf_vport_intr_req_irq - get MSI-X vectors from the OS for the vport
+  * @vport: main vport structure
+@@ -3730,6 +3757,7 @@ void idpf_vport_intr_update_itr_ena_irq(struct idpf_q_vector *q_vector)
+ static int idpf_vport_intr_req_irq(struct idpf_vport *vport)
+ {
+ 	struct idpf_adapter *adapter = vport->adapter;
++	struct irq_affinity_notify *affinity_notify;
+ 	const char *drv_name, *if_name, *vec_name;
+ 	int vector, err, irq_num, vidx;
+ 
+@@ -3763,7 +3791,10 @@ static int idpf_vport_intr_req_irq(struct idpf_vport *vport)
+ 			goto free_q_irqs;
+ 		}
+ 		/* assign the mask for this irq */
+-		irq_set_affinity_hint(irq_num, q_vector->affinity_mask);
++		affinity_notify = &q_vector->affinity_notify;
++		affinity_notify->notify = idpf_irq_affinity_notify;
++		affinity_notify->release = idpf_irq_affinity_release;
++		irq_set_affinity_notifier(irq_num, affinity_notify);
+ 	}
+ 
+ 	return 0;
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+index b59aa7d8de2c..48cb58d14eff 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
++++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+@@ -379,6 +379,7 @@ struct idpf_intr_reg {
+  * @rx_itr_idx: RX ITR index
+  * @v_idx: Vector index
+  * @affinity_mask: CPU affinity mask
++ * @affinity_notify: struct with callbacks for notification of affinity changes
+  */
+ struct idpf_q_vector {
+ 	__cacheline_group_begin_aligned(read_mostly);
+@@ -416,12 +417,15 @@ struct idpf_q_vector {
+ 	u16 v_idx;
+ 
+ 	cpumask_var_t affinity_mask;
++	struct irq_affinity_notify affinity_notify;
+ 	__cacheline_group_end_aligned(cold);
+ };
++
+ libeth_cacheline_set_assert(struct idpf_q_vector, 112,
+ 			    24 + sizeof(struct napi_struct) +
+ 			    2 * sizeof(struct dim),
+-			    8 + sizeof(cpumask_var_t));
++			    8 + sizeof(cpumask_var_t) +
++			    sizeof(struct irq_affinity_notify));
+ 
+ struct idpf_rx_queue_stats {
+ 	u64_stats_t packets;
 -- 
 2.43.0
 
