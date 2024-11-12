@@ -1,85 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9301B9C59AD
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Nov 2024 14:56:40 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5717E402DE;
-	Tue, 12 Nov 2024 13:56:37 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id O5KHt6x7Skkk; Tue, 12 Nov 2024 13:56:36 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 615A640152
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1731419796;
-	bh=vXCHDy2CtTq3ikpCtPUS/yL5SNnsohYV9UYTVkJYPjo=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=Z9/c88thOI/vzOFKdJi9plwPYnzdn9sXoh9X0mkBbmZiQ++cIcBhWWhxgf5sxiI+t
-	 0Wjvm4fotQrLrU6umWaXe9lAkw4JUKL7d6QUKtEbirLIQf+XFsXIZZt6lv3IDAqrh/
-	 4pqlDLnpuBXJfA7kpUH2aTGj1E/TQuqb6ZfMmzscEUa1wk7QYc6wwz5UqbdnL4c7Dt
-	 WgwLbDjQud6a9DWc/2pB6fAvWsEkhK+p0f8jlR5uqV6bG15h0Kh9ZNFrmnQtrQ4puJ
-	 4XgViSc6WS70+uVsTC+hQCWizLqAHVf5GG04kw8reWzEVCmZ58W199L9oFFJTsJDRL
-	 oRxY7Pkl1jPGQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 615A640152;
-	Tue, 12 Nov 2024 13:56:36 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 6F2C8D8F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Nov 2024 13:56:34 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B7B1D9C59B1
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Nov 2024 14:56:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6AE918105B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Nov 2024 13:56:34 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2E06280EF8;
+	Tue, 12 Nov 2024 13:56:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id hq2Pu4yNVaIJ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Nov 2024 13:56:33 +0000 (UTC)
+ id VLQjkJzJZUOM; Tue, 12 Nov 2024 13:56:55 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 77F318105B
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1731419815;
+	bh=z6GJIfsl8L+Awni2vauytFSpkySMXcNGaJ2BvaXXMQw=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=XgSg6i/dTf7DG8snO9AHFucp3k27rR0MIr5HYiLDD0dRTEz57ptyPq7FaPmkP1dX1
+	 OrEc2hOGaznkfxaKk2cKEzGtFBB4pc1zGNyMyvoT4ZNwwM8mHxMqvE/xDu08pjuuHq
+	 N4CoOCpsko/wXSA++kKEDgVgMlRt4QegugUKK4GX8CizDoNzjUrvSGrUsYNumnhcMd
+	 gqXQYZdtxmfEiznzHFalX7EFC8tgLb70vpDaqL+qHeYg/q1pB9kCm16Fjlk8+uq9Or
+	 bhmH1yIec1HX3vi3HvdMnuriJ22e0hJnlpx8qwMN4MfDKBukQpHxPczfyCHzmrWx2d
+	 db6u6wbO5Ppbw==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 77F318105B;
+	Tue, 12 Nov 2024 13:56:55 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 35A87D8F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Nov 2024 13:56:53 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1774380C19
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Nov 2024 13:56:53 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id SfPjbEXRgEPA for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Nov 2024 13:56:52 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::233; helo=mail-lj1-x233.google.com;
+ client-ip=2a00:1450:4864:20::134; helo=mail-lf1-x134.google.com;
  envelope-from=razor@blackwall.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org DC3AD80C19
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DC3AD80C19
-Received: from mail-lj1-x233.google.com (mail-lj1-x233.google.com
- [IPv6:2a00:1450:4864:20::233])
- by smtp1.osuosl.org (Postfix) with ESMTPS id DC3AD80C19
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Nov 2024 13:56:32 +0000 (UTC)
-Received: by mail-lj1-x233.google.com with SMTP id
- 38308e7fff4ca-2fb49510250so49188051fa.0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Nov 2024 05:56:32 -0800 (PST)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3D02A80EF8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3D02A80EF8
+Received: from mail-lf1-x134.google.com (mail-lf1-x134.google.com
+ [IPv6:2a00:1450:4864:20::134])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3D02A80EF8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Nov 2024 13:56:52 +0000 (UTC)
+Received: by mail-lf1-x134.google.com with SMTP id
+ 2adb3069b0e04-53a0c160b94so6846829e87.2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Nov 2024 05:56:52 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731419791; x=1732024591;
+ d=1e100.net; s=20230601; t=1731419810; x=1732024610;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=vXCHDy2CtTq3ikpCtPUS/yL5SNnsohYV9UYTVkJYPjo=;
- b=lJv9VUsupvYqKXsmo2fT8yM+lrJfXKVGJ3l3PCJTww84QahzILEhQr9FgtjPFWoIGG
- NSTcjVcHeUOa+SpC4hjBytlP0HSjPNXD1YbzLeTeO3YJAglWY3qfOHUG9i1lZhgas9n4
- LAeIiHE0pCvxOaDdEWk65/UIGBOVtDJ4z9iX2ofz6v+7AHcuHqjeJeHNgfjeZgTcfC67
- R7Dd0BweHye6v02f1qC/IriKeUl4GjIrUJH4GiFKO76tXe34HbsTq1NlymNI2fHCcHi2
- zknYOIRMjnvmDJ2FwTJHKM5INwjBZM0vwq1a6I7WBiorodnPEcVQjh1OWZjh0HF4umVr
- Ngbg==
+ bh=z6GJIfsl8L+Awni2vauytFSpkySMXcNGaJ2BvaXXMQw=;
+ b=hD4tHplWFp6HzT5zCN9olbIF3SRg8KoRCYiz+hqzMXVjrjWVH/Ftkh6zJlBRdmUslw
+ acx/hbM8Oc18/XDYO5sr7nCEoMDWuwfu78lUOeBcczkMI7ngegpsVjqaoIA2bGbvSk8R
+ fVgiB3m9mbTmo1kscrj14Kwl8PYSOuPgcXTDqVwwuDEpei30cbgGnicPYHTyB8AQz5Yz
+ Xe5Plwf8JSineQdHkPgtlbhgChCvOPeBzG7GhayfHq0eZlb3MDkGmGdwpVP0FBnH5hAa
+ 8bFMRKPyTPR6cY8AsRAgn+e9RQ53S+bSQM+jY8CgksyLYirA7TRgzvv9LWzgzFsPGbqo
+ kMZA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXjp2sRvt3ZoqMBdUtb9x2YLhuZPxvFiF7cEdbkNfUiHxV4ZTH22HEMG07nMVB84AeS1LQseks5SeCXrWIJwnE=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YxmMeB8S4mYq6pcEXffxBxY2JPAP0uBlM4HrfAEPbLUyiyhJ00D
- FzKkLnU16AMRX6R4VD4mBpldFI/muA013maWJqP3T+cwql9YYC4inqZSoOjoWIs=
-X-Google-Smtp-Source: AGHT+IFy5to0zem2CGYWJ4nSEZBhjBFKges/bowKsAqGZ5MejK3x4Ly1MEhGM+xRA91JqWSwPT899g==
-X-Received: by 2002:a05:651c:221d:b0:2fb:4d7e:b942 with SMTP id
- 38308e7fff4ca-2ff2021c20amr72273991fa.10.1731419790579; 
- Tue, 12 Nov 2024 05:56:30 -0800 (PST)
+ AJvYcCVueLdP99v8X9lhLuMXjur7y4PQCTw5OZQGbWKr23lv/8mBV1RFA5uEmWHagJqjRYnqWn6Zd3/QRCjkj5RPcgI=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyoAsQNEBKH+IJ0KzNWpjR+C5yNQP5W4UGlfBmOQLQyvpsQDhvz
+ OjwXFxHnNi79Ecaua0HHkRgS13v8/ik18+dKiOVqxXthQpXz8SMILmW8+YyC5hU=
+X-Google-Smtp-Source: AGHT+IHOF4VYkC1Kg9QmW1uZS8lsVgKoN0pd0sATWDdzVSP/M3Xfx+BY8yEfFd2p1qhzXQFX+yWURg==
+X-Received: by 2002:a05:6512:3dac:b0:535:645b:fb33 with SMTP id
+ 2adb3069b0e04-53d862b358cmr8000838e87.2.1731419809953; 
+ Tue, 12 Nov 2024 05:56:49 -0800 (PST)
 Received: from [192.168.1.128] ([62.205.150.185])
  by smtp.gmail.com with ESMTPSA id
- 38308e7fff4ca-2ff179d4b37sm20078811fa.102.2024.11.12.05.56.28
+ 2adb3069b0e04-53d82678ec6sm1884152e87.50.2024.11.12.05.56.48
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 Nov 2024 05:56:29 -0800 (PST)
-Message-ID: <cdebfe36-5306-42c1-aa89-c60b168b2c49@blackwall.org>
-Date: Tue, 12 Nov 2024 15:56:28 +0200
+ Tue, 12 Nov 2024 05:56:49 -0800 (PST)
+Message-ID: <c0bcb7fb-6e52-45af-a115-7d10375047bf@blackwall.org>
+Date: Tue, 12 Nov 2024 15:56:47 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 To: Petr Machata <petrm@nvidia.com>, "David S. Miller" <davem@davemloft.net>, 
@@ -94,34 +94,33 @@ Cc: Simon Horman <horms@kernel.org>, Ido Schimmel <idosch@nvidia.com>,
  Kuniyuki Iwashima <kuniyu@amazon.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
  bridge@lists.linux.dev
 References: <cover.1731342342.git.petrm@nvidia.com>
- <2afc1da2e9cd2dc348975b0fe250682e74990719.1731342342.git.petrm@nvidia.com>
+ <8153c15a3a5d341642e8c176cfb0d32e4be3efeb.1731342342.git.petrm@nvidia.com>
 Content-Language: en-US
 From: Nikolay Aleksandrov <razor@blackwall.org>
-In-Reply-To: <2afc1da2e9cd2dc348975b0fe250682e74990719.1731342342.git.petrm@nvidia.com>
+In-Reply-To: <8153c15a3a5d341642e8c176cfb0d32e4be3efeb.1731342342.git.petrm@nvidia.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=blackwall-org.20230601.gappssmtp.com; s=20230601; t=1731419791; x=1732024591;
+ d=blackwall-org.20230601.gappssmtp.com; s=20230601; t=1731419810; x=1732024610;
  darn=lists.osuosl.org; 
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=vXCHDy2CtTq3ikpCtPUS/yL5SNnsohYV9UYTVkJYPjo=;
- b=0hBvz+NuHpz33DZJW9y11roAFqDpb8oMtnewLMusJ8SrhBcL3P9b5Bty3jce4B+6Xq
- 7XXNKuY2ioPhJWZndI2J74eciHIvRp7toRgJgvMdndMzGQw1I44xV6L8zdVNgBkbsC78
- YRMXK4q0TeEqbbA3kqkUeJKf0pzYdx+Dknm3cC0xGmusu41EwCsZ0yx5G1RXOVhLqRUc
- GuSXrPEE7ylvDLBfr2pH1wytFPh7w4OPMhUisHY9q/OGG87rYMuVVJGJ895Z6ZmSNf86
- Ni/IdPMlj/CGbKuAmTOjuq5ljQLC2q1tdyNT3ub4nSIE63sLjHM0+UDwCcZ9m/Z9gWXc
- Uaww==
+ bh=z6GJIfsl8L+Awni2vauytFSpkySMXcNGaJ2BvaXXMQw=;
+ b=ifhHVimPsgwBRJv8/y7BJ4Jy5Y6HXGMqbj2yQjrKNLLsvad+V64M6/eZr5wdt8ssMG
+ 06NynQILl9BYeLQGKQ/+RFxcQ0pzKbnnbDtahk+2zHG46FDQoYAkNMJzcnrty6HV307y
+ iJEJI16ps8uAlSXA5e1uesJkrEOVdQpoakPQo/DdMco9F92WtlAYqcGwHE0vS+8nHeEQ
+ VySwIOjqUbpXDwlBoLf+zy/VSg+jL0Py9aJNqtdiIPu5542eRsOyjfgZuigHgILTgCEt
+ V7Wb1TwF2j5Su/MgvehkfIZPBXsa/eebs6FaiXlon6O24nZpEavJ2sbRXNpkSsbrgxpl
+ FWRQ==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=blackwall.org
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=blackwall-org.20230601.gappssmtp.com
+ dkim=pass (2048-bit key) header.d=blackwall-org.20230601.gappssmtp.com
  header.i=@blackwall-org.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=0hBvz+Nu
-Subject: Re: [Intel-wired-lan] [PATCH net-next v3 1/7] ndo_fdb_add: Add a
+ header.s=20230601 header.b=ifhHVimP
+Subject: Re: [Intel-wired-lan] [PATCH net-next v3 2/7] ndo_fdb_del: Add a
  parameter to report whether notification was sent
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -139,31 +138,15 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 On 11/11/24 19:08, Petr Machata wrote:
-> Currently when FDB entries are added to or deleted from a VXLAN netdevice,
-> the VXLAN driver emits one notification, including the VXLAN-specific
-> attributes. The core however always sends a notification as well, a generic
-> one. Thus two notifications are unnecessarily sent for these operations. A
-> similar situation comes up with bridge driver, which also emits
-> notifications on its own:
-> 
->  # ip link add name vx type vxlan id 1000 dstport 4789
->  # bridge monitor fdb &
->  [1] 1981693
->  # bridge fdb add de:ad:be:ef:13:37 dev vx self dst 192.0.2.1
->  de:ad:be:ef:13:37 dev vx dst 192.0.2.1 self permanent
->  de:ad:be:ef:13:37 dev vx self permanent
-> 
-> In order to prevent this duplicity, add a paremeter to ndo_fdb_add,
-> bool *notified. The flag is primed to false, and if the callee sends a
-> notification on its own, it sets it to true, thus informing the core that
-> it should not generate another notification.
+> In a similar fashion to ndo_fdb_add, which was covered in the previous
+> patch, add the bool *notified argument to ndo_fdb_del. Callees that send a
+> notification on their own set the flag to true.
 > 
 > Signed-off-by: Petr Machata <petrm@nvidia.com>
 > Reviewed-by: Amit Cohen <amcohen@nvidia.com>
 > ---
 > 
 > Notes:
-> CC: Simon Horman <horms@kernel.org>
 > CC: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 > CC: intel-wired-lan@lists.osuosl.org
 > CC: UNGLinuxDriver@microchip.com
@@ -174,22 +157,18 @@ On 11/11/24 19:08, Petr Machata wrote:
 > CC: Nikolay Aleksandrov <razor@blackwall.org>
 > CC: bridge@lists.linux.dev
 > 
->  drivers/net/ethernet/intel/i40e/i40e_main.c      |  3 ++-
 >  drivers/net/ethernet/intel/ice/ice_main.c        |  4 +++-
->  drivers/net/ethernet/intel/igb/igb_main.c        |  2 +-
->  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c    |  2 +-
 >  drivers/net/ethernet/mscc/ocelot_net.c           |  2 +-
 >  drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c |  2 +-
 >  drivers/net/macvlan.c                            |  2 +-
 >  drivers/net/vxlan/vxlan_core.c                   |  5 ++++-
->  include/linux/netdevice.h                        |  5 ++++-
->  net/bridge/br_fdb.c                              | 12 +++++++-----
+>  include/linux/netdevice.h                        |  9 +++++++--
+>  net/bridge/br_fdb.c                              | 15 ++++++++-------
 >  net/bridge/br_private.h                          |  2 +-
->  net/core/rtnetlink.c                             |  9 ++++++---
->  12 files changed, 32 insertions(+), 18 deletions(-)
+>  net/core/rtnetlink.c                             | 11 ++++++++---
+>  9 files changed, 34 insertions(+), 18 deletions(-)
 > 
 
-LGTM,
 Reviewed-by: Nikolay Aleksandrov <razor@blackwall.org>
 
 
