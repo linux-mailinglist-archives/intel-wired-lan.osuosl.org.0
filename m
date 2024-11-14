@@ -1,178 +1,223 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 506179C8C92
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Nov 2024 15:12:35 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 00CD49C8C87
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Nov 2024 15:11:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0A15384445;
-	Thu, 14 Nov 2024 14:12:34 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A6E67843D6;
+	Thu, 14 Nov 2024 14:11:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id fYDFJSDnv4NS; Thu, 14 Nov 2024 14:12:33 +0000 (UTC)
+ id lBynxeb-9Kd0; Thu, 14 Nov 2024 14:11:15 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6315D84436
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CF49484436
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1731593552;
-	bh=NwY7H7wbLDRBQoPdoxvLNc4yqPbJeK2DnAdyRGvD5fc=;
-	h=From:To:CC:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1731593474;
+	bh=0LfxpFfcwqkfqnYYdnbxR1MfhgWXfor5zHi1TKlrvyI=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=zNJUhtxTEfSrLK4eCk7vYQIFO61kM8/1ORuhImKfVShDdt57Hmdswd1Dni34KSCXi
-	 BhbrgXd/fIRaYykt7QknkK04JDMzOhxeZILnLDUC6jLoVHeLTRftzi1EmPAKXSGd4Q
-	 84U7pKOxH+EYmaFI+JSnTUynhk6etQMIoo0/tqx+c5npDxS9HQeVF6cQTPO9vEwSGM
-	 mBu2rVcKoPtrlqZJjqCdiAvmbk7gmwhds3ieWp3EpmWZdDOUkXWT9I/atqb+y+xF3o
-	 LM3Z83t1GEuFbmKx2AUebTXZqTfkZPcyvTkFMsoaXAHTnz/TKCji61/mUACcIaJ6Qx
-	 PLof959825BGw==
+	b=wJCmCIFbVttCo26BEngY4PMwc40SbRqd2p7vOCjyetjmAEYXbUbmq8iG8i1eROyvE
+	 Gi/1ffuculH4OZz1TbHqz9ZFKFd7HHBC7038HU1doTHeHZ6uxfqTokCBTgXUZBflNZ
+	 eVyP4Mv9acciIwaCYYRkCmp7OJqXtA8P1GDbGdfyS+GseYgyeh+ue+aze1XcnVUUSn
+	 oLS6j20Yhkjhki84BqgQ/UVMEXICQr0+S/USSUmgkXSAn7iuXyF7iL09LfKiAe0Osn
+	 x5MS7ypPzUMRU+RGQehczFS406K+ZKhHjidTNMtAtI/0d/1vKtJPPD24GlzPhLMxS7
+	 7tILCwK9fyssg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6315D84436;
-	Thu, 14 Nov 2024 14:12:32 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CF49484436;
+	Thu, 14 Nov 2024 14:11:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 15EF5972
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2024 14:12:30 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 191E96C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2024 14:11:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 03BE460A6C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2024 14:12:30 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 135684077D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2024 14:11:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id tJvRn2-gmbHz for <intel-wired-lan@lists.osuosl.org>;
- Thu, 14 Nov 2024 14:12:29 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.223.57;
- helo=nam11-dm6-obe.outbound.protection.outlook.com;
- envelope-from=petrm@nvidia.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C5BAC60733
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C5BAC60733
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam11on2057.outbound.protection.outlook.com [40.107.223.57])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C5BAC60733
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2024 14:12:28 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id CgCL_jYsWZLU for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 14 Nov 2024 14:11:12 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.15;
+ helo=mgamail.intel.com; envelope-from=himasekharx.reddy.pucha@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 1B7C840784
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1B7C840784
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.15])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 1B7C840784
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2024 14:11:11 +0000 (UTC)
+X-CSE-ConnectionGUID: oNsqhkesRbyjHVCF/wek5Q==
+X-CSE-MsgGUID: Fmss4Is7TUaIGqvhqsViaQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11256"; a="31642030"
+X-IronPort-AV: E=Sophos;i="6.12,154,1728975600"; d="scan'208";a="31642030"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Nov 2024 06:11:08 -0800
+X-CSE-ConnectionGUID: wH6y8qvzQbmjo8rd6UKnaA==
+X-CSE-MsgGUID: ydKRPNHBSDiWeoT88EKRtg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,154,1728975600"; d="scan'208";a="119150930"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by fmviesa001.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 14 Nov 2024 06:11:05 -0800
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Thu, 14 Nov 2024 06:11:04 -0800
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Thu, 14 Nov 2024 06:11:04 -0800
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.170)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Thu, 14 Nov 2024 06:11:04 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=uHfld3ZvofgjLpAF0u+F5pLtvbw+5J8W+S7gQSrP0jX7rTtNfDOhHf1I2O22tTHK+WO7cBdsDudZDRjdgtzNQ87z7+mi4r0GPnSchd330hJbPQTGGt1AD1nKnwk7YHawQp/qtxkco40Zzax9dKxeV3r+Wxem4hrHIhAMfaRKux+HhJjeiP2KYvXIfKzZV0FjgwyGEK8YGUlBVaC64vmLORynT9+vfbC/PYIqsppUBgeBmmmX0ahOA3PdbDJsu6mFyFit78bgddaVGR0bu689NKTh31dj0sk2tTxQcz0QWHY1DxGhvNBawQcFdlJZ5lkNb/OfuxXV8FtxLJOUpAerMA==
+ b=ShX4xirkY8wfry06u4SRFSLILYwSD6Nch8EXrmUJ6H09fZUX/tOfksevmrzElvCUOTkkb01kCNviCbwSek7FvhRs2VYBQeMpBZJGKwto9S4p4o2jZs2abrjP2xcW2Rb6UlEK6u+XPG0IEHpr2caAdRoZxPGdZyeAv5ys2P3LYecgcOnU5beQIkopSduul6TfBOY14++DQFt/kXdZk/GqRfgvuqZI33THRxuRU7ibcMDdAelVwZhw4om/UCSpCfHNhoT3tJT9UXK5GiDbqnCB22IqA8elJzLR3RYGX+eMBWuuTLXf6X+49/5Inf3D7zyy2jA+yGT6pa6nIiCuetFDSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=NwY7H7wbLDRBQoPdoxvLNc4yqPbJeK2DnAdyRGvD5fc=;
- b=gHISWa2ptEHkJRXFlviAlDcXOvWVZ5CErHnNGclPXLu1BDymLe3Lo39z8wPghCRX+rZhk047frLhZR9YL3vK1g4ESf024votbNWlnzNKxQ2jLB+7NQ1vob4+l2zEDUeFVRk9caaezDN9gMDFCP2qohVsSANWj7giavS+75+HJl6b1c824FicnK7xL/Dc7osCSqcOUrrpKjbgtb1mMnEZTrUBGJieorfxQ+r4NE9J9ozBZloeufq2mQcntDoF2ztHMyJrSfIyiIl2kJsZH3msDuyFwuvJr6iOQWV3egP/AMgdR9AI2umRM/lVEpna6Wb8++gxH8G4+MLSp0H3qD8uyA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=davemloft.net smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-Received: from CH5P222CA0009.NAMP222.PROD.OUTLOOK.COM (2603:10b6:610:1ee::25)
- by CH2PR12MB4037.namprd12.prod.outlook.com (2603:10b6:610:7a::20)
- with Microsoft SMTP Server (version=TLS1_2,
+ bh=0LfxpFfcwqkfqnYYdnbxR1MfhgWXfor5zHi1TKlrvyI=;
+ b=MRHBUePjv7H1Tenj+I02GPnJj6OITG1P/3vuTUUF/LzNf9aoOoYliDDfqkyVc7UdcUmzAhRun2GpdeAJgov3QpcFLwrDpDYrUwQI7+JpNQnCBJhwqc98vfVkOMGLSVitGkTpinaBengUWiyIfm1G44j5A+If4GjV9P9plGrolLV+7tRShvIn736u/MNF0n7Q/k4qc2+1adGA6U1M+WkbSyk2Cgfh7YSZguwxU8Zyju9nE2N/7dbHn5BAYlqF+mfkykKcq4ZepZOLnPKxD68voWmnJLbrUU/BHptDdi7CrEoYTUZkpGBQrxiIOnHBYTa2lgO032YWa8ZYiXXISM4eQg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from CYYPR11MB8429.namprd11.prod.outlook.com (2603:10b6:930:c2::15)
+ by DM4PR11MB6120.namprd11.prod.outlook.com (2603:10b6:8:af::11) with
+ Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8158.18; Thu, 14 Nov
- 2024 14:12:21 +0000
-Received: from DS3PEPF000099D6.namprd04.prod.outlook.com
- (2603:10b6:610:1ee:cafe::49) by CH5P222CA0009.outlook.office365.com
- (2603:10b6:610:1ee::25) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8158.17 via Frontend
- Transport; Thu, 14 Nov 2024 14:12:21 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- DS3PEPF000099D6.mail.protection.outlook.com (10.167.17.7) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8158.14 via Frontend Transport; Thu, 14 Nov 2024 14:12:20 +0000
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Thu, 14 Nov
- 2024 06:12:07 -0800
-Received: from fedora.mtl.com (10.126.231.35) by rnnvmail201.nvidia.com
- (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Thu, 14 Nov
- 2024 06:11:58 -0800
-From: Petr Machata <petrm@nvidia.com>
-To: "David S. Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
- <pabeni@redhat.com>, <netdev@vger.kernel.org>
-CC: Simon Horman <horms@kernel.org>, Ido Schimmel <idosch@nvidia.com>, "Petr
- Machata" <petrm@nvidia.com>, Amit Cohen <amcohen@nvidia.com>, Vladimir Oltean
- <vladimir.oltean@nxp.com>, Andy Roulin <aroulin@nvidia.com>,
- <mlxsw@nvidia.com>, Nikolay Aleksandrov <razor@blackwall.org>, "Przemek
- Kitszel" <przemyslaw.kitszel@intel.com>, <intel-wired-lan@lists.osuosl.org>,
- <UNGLinuxDriver@microchip.com>, Manish Chopra <manishc@marvell.com>,
- <GR-Linux-NIC-Dev@marvell.com>, Kuniyuki Iwashima <kuniyu@amazon.com>,
- "Andrew Lunn" <andrew+netdev@lunn.ch>, <bridge@lists.linux.dev>
-Date: Thu, 14 Nov 2024 15:09:54 +0100
-Message-ID: <06b1acf4953ef0a5ed153ef1f32d7292044f2be6.1731589511.git.petrm@nvidia.com>
-X-Mailer: git-send-email 2.47.0
-In-Reply-To: <cover.1731589511.git.petrm@nvidia.com>
-References: <cover.1731589511.git.petrm@nvidia.com>
+ 2024 14:11:02 +0000
+Received: from CYYPR11MB8429.namprd11.prod.outlook.com
+ ([fe80::4f97:ad9d:79a9:899f]) by CYYPR11MB8429.namprd11.prod.outlook.com
+ ([fe80::4f97:ad9d:79a9:899f%6]) with mapi id 15.20.8137.027; Thu, 14 Nov 2024
+ 14:11:02 +0000
+From: "Pucha, HimasekharX Reddy" <himasekharx.reddy.pucha@intel.com>
+To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+CC: "pmenzel@molgen.mpg.de" <pmenzel@molgen.mpg.de>, "Drewek, Wojciech"
+ <wojciech.drewek@intel.com>, "Szycik, Marcin" <marcin.szycik@intel.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Knitter, Konrad"
+ <konrad.knitter@intel.com>, "Chmielewski, Pawel"
+ <pawel.chmielewski@intel.com>, "horms@kernel.org" <horms@kernel.org>,
+ "David.Laight@ACULAB.COM" <David.Laight@ACULAB.COM>, NEX SW NCIS NAT HPM DEV
+ <nex.sw.ncis.nat.hpm.dev@intel.com>, "pio.raczynski@gmail.com"
+ <pio.raczynski@gmail.com>, "Samudrala, Sridhar"
+ <sridhar.samudrala@intel.com>, "Keller, Jacob E" <jacob.e.keller@intel.com>,
+ "jiri@resnulli.us" <jiri@resnulli.us>, "Kitszel, Przemyslaw"
+ <przemyslaw.kitszel@intel.com>
+Thread-Topic: [Intel-wired-lan] [iwl-next v7 9/9] ice: init flow director
+ before RDMA
+Thread-Index: AQHbLrMfvhqWC65610GM/Obir2p8CrK24HEw
+Date: Thu, 14 Nov 2024 14:11:01 +0000
+Message-ID: <CYYPR11MB8429E8CA7BF7585DDEC6B60CBD5B2@CYYPR11MB8429.namprd11.prod.outlook.com>
+References: <20241104121337.129287-1-michal.swiatkowski@linux.intel.com>
+ <20241104121337.129287-10-michal.swiatkowski@linux.intel.com>
+In-Reply-To: <20241104121337.129287-10-michal.swiatkowski@linux.intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CYYPR11MB8429:EE_|DM4PR11MB6120:EE_
+x-ms-office365-filtering-correlation-id: 84432d38-d6de-468d-b3f8-08dd04b62bb6
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|376014|1800799024|366016|38070700018;
+x-microsoft-antispam-message-info: =?us-ascii?Q?3bbMQDpHTscJTYpRSOKTVv6VJyFa7v2JmSle6fR8UHdAkv9iY881S7NJtR9w?=
+ =?us-ascii?Q?8UPFBTrpt8y5nKOiU9ZY9V8XAbvzp3EwMRWGbwpxRHOQyZ7f62stdlOzrtQ9?=
+ =?us-ascii?Q?aZVR3s5ty12LoZnwmY4TVaiiKDL1BuJ/Ujzot7T5FvVQkxLyAKZYZ5uI72AP?=
+ =?us-ascii?Q?RUtoiwgagk2SbrO93MpofFpYZEGEOVCPFNh7qujyUlbjz1q0jeb5KUPTivPA?=
+ =?us-ascii?Q?0D7RjFch2prdSUeTZsHODTRuuH85sA+5/5xjuG/2c/o8c7ywZADr1YIHgHYx?=
+ =?us-ascii?Q?y077VRkFGzeYzQc83f4UwFUUx9kOUMKSwBECVcY/lWi8LEtDKoNPbuBiUwH9?=
+ =?us-ascii?Q?Lxz+ECaLbLXHdBKeo7i+8evs1khXLAxH6parjjp/rvCZQdi/9xL7xCw/84Cx?=
+ =?us-ascii?Q?ea5+l4Q8u9T8E/IAnbS2/gDU62BcJnbgkC/NKZZo3JUME81ni4tmX/9SUc+h?=
+ =?us-ascii?Q?MMI+UJxX9TdYiQtYXILwFwNF/6dVQwExigiTdLsqN0Tru2VWCk97Xuv0nj0u?=
+ =?us-ascii?Q?uVlgbllPow7xJJ9oyQscbq1rJZlBhGLkdEaWvuva7ZbH5aJY+wUIKAY2PUYA?=
+ =?us-ascii?Q?sxbJHon4Tuer2R6kXQg3OOjl2wrNtyMOKkUiUEKRqTuTYWPjWZ+pDc6k6DwD?=
+ =?us-ascii?Q?nZPYW802S8QXqU+WWSkTC91pRDOkYMvVSyuFeFvWL1OPaI9MJev59GzpH6U6?=
+ =?us-ascii?Q?+M2uqaEggJWmr7jeDwDVTwkaa3MLrebV3olnjQNByKyAgEVMupi+ETcEf+Mb?=
+ =?us-ascii?Q?gR8+7hBMPmG8+y4FrdC4LNgeCDJq8icnmKgNxdrx+FUy3Q0Mydou8fCAxqE6?=
+ =?us-ascii?Q?e3CB+XbZ0rDRSq6sqMxM04anztXs6uhGsFCeX7//2KfDFkNcJQcqjjml4rJo?=
+ =?us-ascii?Q?orn+vJ9+wsSX55GV4U2OQqvJi5pqEGO/uHxPoUq8myEPunb++TRWjrs/spr4?=
+ =?us-ascii?Q?KHv6NGIzfeYH7UzgH9DZHXz5CBBfy8PgCHXHOSI0g4adwBaWDZZouD5PEj7z?=
+ =?us-ascii?Q?fPTAFiPn6YLfRj9WHR4KnGYg+LipCZIx2bYWNfOFEZpzwBz2f4uPmZSNbfI3?=
+ =?us-ascii?Q?axx2fhpsxX6Qyu3dJFa8epZHJB5IywEds4IY4/h8e/LCRa/Mfs/cRD05+KjV?=
+ =?us-ascii?Q?MDxAYyzNxT3vK8bGeUImq4qRqSQCrxfFFbR54LeliOU5MlT+rXs0lSLHuxQz?=
+ =?us-ascii?Q?PDlvlEtZQnJ7zh9aR+myVb5MHLwv0/E4K8XL6VwVdYKxCHipXPJMINsd7BVa?=
+ =?us-ascii?Q?nMz153fhFB/YjKO7BpFRCsn+xJBf28lU5kBg2Hzea10dIj7veQ6No+BecQtB?=
+ =?us-ascii?Q?0CRFVHYJ9kOPE/08tMdW4JmLoQQu3yMzki4tqhrq10mWr7VbQITuSG08Mi/7?=
+ =?us-ascii?Q?WVz31TY=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CYYPR11MB8429.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(1800799024)(366016)(38070700018); DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?iWzaa+ItxG1KVmE23/+5Rb7ePT842b/03xg/XjJUGSGLw3snBeSrG0mkCLOE?=
+ =?us-ascii?Q?+RbIjisXbtD3I0DnGxKUllUzMGGElJxJgnMYC9iX53YM/UIogLzY95X8IZ8a?=
+ =?us-ascii?Q?c+iV36pXvxQX/37tQ/V3tFkkjzDx4D0DRY3I2VyhKCfFNy2DKyNHC2upEIEc?=
+ =?us-ascii?Q?oyarbLm+1+pJx3IimzXRyvVcvw6iU7SHPYaQlqVV1JEjb0+FqtJHvlXiBoGs?=
+ =?us-ascii?Q?8dOhCvyxVHUTSTEAG9eitulm+JG9bqwMbpTI+Dm5LAeKXA5mQGWcmxnTJHrT?=
+ =?us-ascii?Q?VonYtiqNUeff5VVbXe5ndAUtKe3nTDloCZP7HoxoYuXxJsUz6JY+it6biiva?=
+ =?us-ascii?Q?vOhT2JsaRmOm0lQT4i1vUGyooc/4UyggpJBZnhl9o/IWOI4JBwNYQdHAvgp2?=
+ =?us-ascii?Q?WrcuT+XVfopTgFG8bzw68Ny8hJhyBKxUl34r0OvWxjwJywlrjDL6sCqp8rk+?=
+ =?us-ascii?Q?kviSXv6R3k/BqOxY8qgz5IVnsrvwEmMaQv148B9tobQctwIS9gy1CfpSAHnj?=
+ =?us-ascii?Q?LPidhgNIQji07WXWATDsWIk903S15ZSSu1bc8N1LQBJCeVznIpWKPnapyI+Z?=
+ =?us-ascii?Q?LDyQjYO8bSFbIs8z4suw/IfcoJlHFxB8Pk8bZMmzJfu8FjokV7Wnq+Mi89XK?=
+ =?us-ascii?Q?SJwY1SKAZzAcX7hxa5X7pCTVbe/pEewL5ZJ7rqGdYyXyt1wcWv80+LbWMRV6?=
+ =?us-ascii?Q?QltkAUzZHwTwloRry2GIMr0ce7axBP1xiQuegaimPUQTTnlP3EVO0YvOjKJb?=
+ =?us-ascii?Q?Wptyo4mJdKy95PMdy9pqbC8vRWISi2bIwVni3RVbqB5Yl6wXHBwXg8qlDdTE?=
+ =?us-ascii?Q?rd4CHJxbcD5+Hr1roiQfdnPQVlFxma9fUs+jlZkRktQxgVDh6ijbi3QWU8cm?=
+ =?us-ascii?Q?GcEXm3x4LaJ3M+C08avQGq/TgZonx28/zRfVzGaEEl18TTe8u8wU/S44z0MB?=
+ =?us-ascii?Q?NRw3BbfrBPlJP7udlJdaHLXl1ySoah1lSBjOF5/8fwJZo9JagbvCUPaAp6Dn?=
+ =?us-ascii?Q?zS4vVNnkHnyp4Grb04ARKkAHsPP6k/gqLH/T0ikoosJcp9/5vkkTlfJgtlae?=
+ =?us-ascii?Q?EOZMq4WZ/fApkM+gEUQXtumlm0eOuzFCuHZSA8lrEMimU4+WA8wfhxedJFbs?=
+ =?us-ascii?Q?9Ww3/AOQilkbmBtxjsKJcI+BT9sxeWCL6Mm+xHoaHrotNCNDbHwpHPHc6vlw?=
+ =?us-ascii?Q?JjDNwedJpEsFKFaBqHgxvkVaBOkEStof5L5yGmS2NJoo4NVo/ysE61p5PwVD?=
+ =?us-ascii?Q?k69/ricHcNqenGHB2/Rk21AURjCxHNHc8AyiedvIifViBP1EVFemQL/vpKJO?=
+ =?us-ascii?Q?kIADaI+iodvyhQ3CMgpSny8xsF0ALMNcUjtNJzwNgtaOBpXluYfJsOjUgBMZ?=
+ =?us-ascii?Q?9/ysLV0TBWlEmCb1GeFAtethyCcAVJmZ4lA2+h7I68CIDhUC4y+/+hrSYUMD?=
+ =?us-ascii?Q?hZblp0aMjpKC/WeI027GQfXBzMCBl84b+iFBSMJAbvsJvPRPJ0gcrRGJN232?=
+ =?us-ascii?Q?6ab0HM064aiHC9dwzXeJ/lfvkDFx/OFhiMbJ8qiDZRta6XF7knoRjN76wO7E?=
+ =?us-ascii?Q?p82BoMRZkQYC68G7d8lwQB4Ju9Rhw7v0+z+8Pkdvrw/qUgilVYjCLUPXBe2D?=
+ =?us-ascii?Q?yw=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.126.231.35]
-X-ClientProxiedBy: rnnvmail203.nvidia.com (10.129.68.9) To
- rnnvmail201.nvidia.com (10.129.68.8)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS3PEPF000099D6:EE_|CH2PR12MB4037:EE_
-X-MS-Office365-Filtering-Correlation-Id: ee566b62-3097-42ce-c485-08dd04b65ad5
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|82310400026|36860700013|7416014|376014; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?01pKrL+gDD6iq2BwrVYT0V499t5F0Wx3XrzoH8tJpRzwL7o+wUczF0DRO4MR?=
- =?us-ascii?Q?Xpo4Fs+P0lIs8fYm4vhDXvd/jux++GYP6DylVa0zAQw/+/fpaajdaRIdkJIe?=
- =?us-ascii?Q?6ahVeu9jrltN//0HSf5yBKw1A5Ww6Qr+nylgN77cZQNVDpLcaig+Vr/Tfr6q?=
- =?us-ascii?Q?LolDoYtsJY5H9Iw1dBlAKPFUxVewzk0/1vpY187hkxoXcBc2hkCjCelETmYH?=
- =?us-ascii?Q?pr7CMlZGazKx7ffRyUlyic/bCaPI+w1tBtlq+bXO4BhDHbDvdv67CPzz1RdM?=
- =?us-ascii?Q?qlFK9JTBzTwZXzN8QvaJ1gajaZUtzEhUWfwR8JDVYV4L2crVddQDvTYWX452?=
- =?us-ascii?Q?1nEwcIA7VVjBeom3psnPMHJV0sdmSf6WrWXW+SFfcOm6AS5eecCUNY5yxa9G?=
- =?us-ascii?Q?f0NusZHFCilf6sIHGlFGBoX5in1SA2ucwnHuijdz06bc8JZcVKu+aG4c8ZsT?=
- =?us-ascii?Q?Rmu/7klZz+Klm36ir9+Wd6QrCi/1NvoHYad1GSdEh27HxfVKKVOqxCMdrDYH?=
- =?us-ascii?Q?QVi8yDczwenidBHZrAKR41Kp3EA7W3voyhVl5WP4kDeQUS0E1SXxDupz8dso?=
- =?us-ascii?Q?iB5JmfhBrlgmgIjHYW5JDdBVxy/u9cMxDcPiy9/f8l+c/I2+ghm7lb1R4FIA?=
- =?us-ascii?Q?+bEm5aTmCMKQnsOhwGPsfgFOu48fxzdumYcXLPxsB4iQMxA3BfaufT7B6Fb6?=
- =?us-ascii?Q?XnCx/vyFewnitl8XaMWxXQ5vbpDtW53qcbQUZjmQxViBrrEBGDof3d5iF1xE?=
- =?us-ascii?Q?yczhk2CGTwmQ+zbd8INoIDcagTa0bD6qZWdR3vYvn+0yyePmRYIrINRxtEwb?=
- =?us-ascii?Q?V01l6kR35BW9xA9/OtuhrhbaArUko5SjsOc5cdnVQ7l8d6pNuzRFCcizt1kz?=
- =?us-ascii?Q?wumUIvfXE/M8YC6xx0294uBkJ4Drxq7hfJWHXb049AAlswZsAqvWUloZLxoO?=
- =?us-ascii?Q?igzvvEFMldpf67W0OaejpUF9Br5Q0S9ca27nOg/Emjlr1OGQaR3lDsDjB/aM?=
- =?us-ascii?Q?mYJJF4ISQn3Tzatw/lAW1ybAmBhZomPzRySOuzABDexFV7cmoIT+gIMKoVBv?=
- =?us-ascii?Q?NkG7nNqvnQkhMY+Uzd32Iyegd+96dPz2Jr5C+WswSgL3NSFAJkP4225S3MhY?=
- =?us-ascii?Q?IBk4DEMp9+j8AzZHsFDzxG8GDOoAcxW2yiAlntVZwV4DnP6YxM1mklng9MVO?=
- =?us-ascii?Q?f/Q/YUkWdgpaifD/roe6Vt6ro2MRmQfd2G04nynG4Zo34npVPJA/tOLpJydl?=
- =?us-ascii?Q?oYOeQ552TDLP8rxW2RvK/zSVMpeiKuu3yLTwtLKpPRSm0ez70cQ0/ITz2DM8?=
- =?us-ascii?Q?qcZ0iPGzz+fS8O8JJ0gSK5U4Llgl8vHI3bfGxb/AReFW2nHjzIkaaP1ZIf1j?=
- =?us-ascii?Q?MAONphQ9/Rgwx8r6y6qLDRnFBCM4FGzeB/Lq+akT4kNBnNGS9Q=3D=3D?=
-X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(1800799024)(82310400026)(36860700013)(7416014)(376014); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Nov 2024 14:12:20.9590 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: ee566b62-3097-42ce-c485-08dd04b65ad5
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: DS3PEPF000099D6.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR12MB4037
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=Nvidia.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=NwY7H7wbLDRBQoPdoxvLNc4yqPbJeK2DnAdyRGvD5fc=;
- b=speYvi+esYcu/grUl0Qi9NSAD7mjijECYzNSs99bXYAzRSi5d7yqjf5B68LkZ76noz5HKBYIZKX5kJF49NO4BvgHN0Zvbv2aqTc2bhlQFPVD78V6sCmqbWO0rDVrCSErg2lRa1jD4mwVeILXvJ2nvWJeIEyJ4fQUQKF75LJT+IMaigh2j3I4K5rO6gLa52mjHxVNkiTTWnJILyF5aGea92hoivMjf05+8GPg3Lf/vLb4oQgiQNQl2Pbj2WWauKlIAxzWNUjbppVhkQbxSVvPky4ivdkb+OOaHD+Ke+bG+15//pWy9V54NYBcIkeE/bT9M9lpd+o2YZ3Hp+zOrAVF9Q==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=nvidia.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=Nvidia.com header.i=@Nvidia.com header.a=rsa-sha256
- header.s=selector2 header.b=speYvi+e
-Subject: [Intel-wired-lan] [PATCH net-next v4 2/7] ndo_fdb_del: Add a
- parameter to report whether notification was sent
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CYYPR11MB8429.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 84432d38-d6de-468d-b3f8-08dd04b62bb6
+X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Nov 2024 14:11:01.9946 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: t0lkvlsK7JQ5sU9U5KHOZW21/RFbt99IUJId34Bk8BX0Vi2SaofgCKsRcCU1toUPlkDECC2115JDOoNjFwr2fOmzL3Ffcjp6nHRWIEkzy6Xyb2iNokdBMKzVSrCVVVFn
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB6120
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1731593472; x=1763129472;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=xZhrvF7IIwLSvnHChi7iVRUDTtegcJhZ0ZcxT3RX/SU=;
+ b=XsDv52AatgXP+/1RFKPKa05jxA/jnHINJqi/kMpk6Bcjldn6ejPv+A+o
+ No5pVk4NG69K/PoZn3B5Qy1LfX/Fad7ivGop7X3Pw04Sh1Rp3eyvRvnbC
+ dB0EJWp6I5UBtmAFB34xMLO24NuYjwMsSqIzyr0PCvbUGXRP5jRGdWnT5
+ +laXOBCyzYKd9ciuJOROSaS+lzT2tcT1WJg87iOYzFpBqTyijXm85KULn
+ hgwLqYB3MC90/ucAYrhvFjykaFyJwp+eE9Q8yngj/QTk737PaVPkGdkYY
+ 3iAz3u40vm2pl6XGbZpEh5/rrPr1utw+I/cFaahtz14xwXcoXL1QSAWeZ
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=XsDv52Aa
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [iwl-next v7 9/9] ice: init flow director
+ before RDMA
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -188,270 +233,32 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-In a similar fashion to ndo_fdb_add, which was covered in the previous
-patch, add the bool *notified argument to ndo_fdb_del. Callees that send a
-notification on their own set the flag to true.
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of M=
+ichal Swiatkowski
+> Sent: 04 November 2024 17:44
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: pmenzel@molgen.mpg.de; Drewek, Wojciech <wojciech.drewek@intel.com>; =
+Szycik, Marcin <marcin.szycik@intel.com>; netdev@vger.kernel.org; Knitter, =
+Konrad <konrad.knitter@intel.com>; Chmielewski, Pawel <pawel.chmielewski@in=
+tel.com>; horms@kernel.org; David.Laight@ACULAB.COM; NEX SW NCIS NAT HPM DE=
+V <nex.sw.ncis.nat.hpm.dev@intel.com>; pio.raczynski@gmail.com; Samudrala, =
+Sridhar <sridhar.samudrala@intel.com>; Keller, Jacob E <jacob.e.keller@inte=
+l.com>; jiri@resnulli.us; Kitszel, Przemyslaw <przemyslaw.kitszel@intel.com=
+>
+> Subject: [Intel-wired-lan] [iwl-next v7 9/9] ice: init flow director befo=
+re RDMA
+>
+> Flow director needs only one MSI-X. Load it before RDMA to save MSI-X for=
+ it.
+>
+> Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
+> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_main.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+>
 
-Signed-off-by: Petr Machata <petrm@nvidia.com>
-Reviewed-by: Amit Cohen <amcohen@nvidia.com>
-Reviewed-by: Nikolay Aleksandrov <razor@blackwall.org>
----
-
-Notes:
-CC: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-CC: intel-wired-lan@lists.osuosl.org
-CC: UNGLinuxDriver@microchip.com
-CC: Manish Chopra <manishc@marvell.com>
-CC: GR-Linux-NIC-Dev@marvell.com
-CC: Kuniyuki Iwashima <kuniyu@amazon.com>
-CC: Andrew Lunn <andrew+netdev@lunn.ch>
-CC: Nikolay Aleksandrov <razor@blackwall.org>
-CC: bridge@lists.linux.dev
-
- drivers/net/ethernet/intel/ice/ice_main.c        |  4 +++-
- drivers/net/ethernet/mscc/ocelot_net.c           |  2 +-
- drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c |  2 +-
- drivers/net/macvlan.c                            |  2 +-
- drivers/net/vxlan/vxlan_core.c                   |  5 ++++-
- include/linux/netdevice.h                        |  9 +++++++--
- net/bridge/br_fdb.c                              | 15 ++++++++-------
- net/bridge/br_private.h                          |  2 +-
- net/core/rtnetlink.c                             | 11 ++++++++---
- 9 files changed, 34 insertions(+), 18 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index c875036f654b..b79848fe2a9e 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -6166,12 +6166,14 @@ ice_fdb_add(struct ndmsg *ndm, struct nlattr __always_unused *tb[],
-  * @dev: the net device pointer
-  * @addr: the MAC address entry being added
-  * @vid: VLAN ID
-+ * @notified: whether notification was emitted
-  * @extack: netlink extended ack
-  */
- static int
- ice_fdb_del(struct ndmsg *ndm, __always_unused struct nlattr *tb[],
- 	    struct net_device *dev, const unsigned char *addr,
--	    __always_unused u16 vid, struct netlink_ext_ack *extack)
-+	    __always_unused u16 vid, bool *notified,
-+	    struct netlink_ext_ack *extack)
- {
- 	int err;
- 
-diff --git a/drivers/net/ethernet/mscc/ocelot_net.c b/drivers/net/ethernet/mscc/ocelot_net.c
-index 4f15ba2c5525..558e03301aa8 100644
---- a/drivers/net/ethernet/mscc/ocelot_net.c
-+++ b/drivers/net/ethernet/mscc/ocelot_net.c
-@@ -744,7 +744,7 @@ static int ocelot_port_fdb_add(struct ndmsg *ndm, struct nlattr *tb[],
- static int ocelot_port_fdb_del(struct ndmsg *ndm, struct nlattr *tb[],
- 			       struct net_device *dev,
- 			       const unsigned char *addr, u16 vid,
--			       struct netlink_ext_ack *extack)
-+			       bool *notified, struct netlink_ext_ack *extack)
- {
- 	struct ocelot_port_private *priv = netdev_priv(dev);
- 	struct ocelot_port *ocelot_port = &priv->port;
-diff --git a/drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c b/drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c
-index 2484cebd97d4..eb69121df726 100644
---- a/drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c
-+++ b/drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c
-@@ -367,7 +367,7 @@ static int qlcnic_set_mac(struct net_device *netdev, void *p)
- 
- static int qlcnic_fdb_del(struct ndmsg *ndm, struct nlattr *tb[],
- 			struct net_device *netdev,
--			const unsigned char *addr, u16 vid,
-+			const unsigned char *addr, u16 vid, bool *notified,
- 			struct netlink_ext_ack *extack)
- {
- 	struct qlcnic_adapter *adapter = netdev_priv(netdev);
-diff --git a/drivers/net/macvlan.c b/drivers/net/macvlan.c
-index dfb462e63248..fed4fe2a4748 100644
---- a/drivers/net/macvlan.c
-+++ b/drivers/net/macvlan.c
-@@ -1049,7 +1049,7 @@ static int macvlan_fdb_add(struct ndmsg *ndm, struct nlattr *tb[],
- 
- static int macvlan_fdb_del(struct ndmsg *ndm, struct nlattr *tb[],
- 			   struct net_device *dev,
--			   const unsigned char *addr, u16 vid,
-+			   const unsigned char *addr, u16 vid, bool *notified,
- 			   struct netlink_ext_ack *extack)
- {
- 	struct macvlan_dev *vlan = netdev_priv(dev);
-diff --git a/drivers/net/vxlan/vxlan_core.c b/drivers/net/vxlan/vxlan_core.c
-index 09c1d27e11d3..edef32a593c3 100644
---- a/drivers/net/vxlan/vxlan_core.c
-+++ b/drivers/net/vxlan/vxlan_core.c
-@@ -1319,7 +1319,7 @@ int __vxlan_fdb_delete(struct vxlan_dev *vxlan,
- /* Delete entry (via netlink) */
- static int vxlan_fdb_delete(struct ndmsg *ndm, struct nlattr *tb[],
- 			    struct net_device *dev,
--			    const unsigned char *addr, u16 vid,
-+			    const unsigned char *addr, u16 vid, bool *notified,
- 			    struct netlink_ext_ack *extack)
- {
- 	struct vxlan_dev *vxlan = netdev_priv(dev);
-@@ -1341,6 +1341,9 @@ static int vxlan_fdb_delete(struct ndmsg *ndm, struct nlattr *tb[],
- 				 true);
- 	spin_unlock_bh(&vxlan->hash_lock[hash_index]);
- 
-+	if (!err)
-+		*notified = true;
-+
- 	return err;
- }
- 
-diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
-index 6a7fd191e1ee..ecc686409161 100644
---- a/include/linux/netdevice.h
-+++ b/include/linux/netdevice.h
-@@ -1254,8 +1254,11 @@ struct netdev_net_notifier {
-  *	notification(s). Otherwise core will send a generic one.
-  * int (*ndo_fdb_del)(struct ndmsg *ndm, struct nlattr *tb[],
-  *		      struct net_device *dev,
-- *		      const unsigned char *addr, u16 vid)
-+ *		      const unsigned char *addr, u16 vid
-+ *		      bool *notified, struct netlink_ext_ack *extack);
-  *	Deletes the FDB entry from dev corresponding to addr.
-+ *	Callee shall set *notified to true if it sent any appropriate
-+ *	notification(s). Otherwise core will send a generic one.
-  * int (*ndo_fdb_del_bulk)(struct nlmsghdr *nlh, struct net_device *dev,
-  *			   struct netlink_ext_ack *extack);
-  * int (*ndo_fdb_dump)(struct sk_buff *skb, struct netlink_callback *cb,
-@@ -1533,7 +1536,9 @@ struct net_device_ops {
- 					       struct nlattr *tb[],
- 					       struct net_device *dev,
- 					       const unsigned char *addr,
--					       u16 vid, struct netlink_ext_ack *extack);
-+					       u16 vid,
-+					       bool *notified,
-+					       struct netlink_ext_ack *extack);
- 	int			(*ndo_fdb_del_bulk)(struct nlmsghdr *nlh,
- 						    struct net_device *dev,
- 						    struct netlink_ext_ack *extack);
-diff --git a/net/bridge/br_fdb.c b/net/bridge/br_fdb.c
-index 5f29958f3ddd..82bac2426631 100644
---- a/net/bridge/br_fdb.c
-+++ b/net/bridge/br_fdb.c
-@@ -1287,7 +1287,7 @@ int br_fdb_add(struct ndmsg *ndm, struct nlattr *tb[],
- 
- static int fdb_delete_by_addr_and_port(struct net_bridge *br,
- 				       const struct net_bridge_port *p,
--				       const u8 *addr, u16 vlan)
-+				       const u8 *addr, u16 vlan, bool *notified)
- {
- 	struct net_bridge_fdb_entry *fdb;
- 
-@@ -1296,18 +1296,19 @@ static int fdb_delete_by_addr_and_port(struct net_bridge *br,
- 		return -ENOENT;
- 
- 	fdb_delete(br, fdb, true);
-+	*notified = true;
- 
- 	return 0;
- }
- 
- static int __br_fdb_delete(struct net_bridge *br,
- 			   const struct net_bridge_port *p,
--			   const unsigned char *addr, u16 vid)
-+			   const unsigned char *addr, u16 vid, bool *notified)
- {
- 	int err;
- 
- 	spin_lock_bh(&br->hash_lock);
--	err = fdb_delete_by_addr_and_port(br, p, addr, vid);
-+	err = fdb_delete_by_addr_and_port(br, p, addr, vid, notified);
- 	spin_unlock_bh(&br->hash_lock);
- 
- 	return err;
-@@ -1316,7 +1317,7 @@ static int __br_fdb_delete(struct net_bridge *br,
- /* Remove neighbor entry with RTM_DELNEIGH */
- int br_fdb_delete(struct ndmsg *ndm, struct nlattr *tb[],
- 		  struct net_device *dev,
--		  const unsigned char *addr, u16 vid,
-+		  const unsigned char *addr, u16 vid, bool *notified,
- 		  struct netlink_ext_ack *extack)
- {
- 	struct net_bridge_vlan_group *vg;
-@@ -1339,19 +1340,19 @@ int br_fdb_delete(struct ndmsg *ndm, struct nlattr *tb[],
- 	}
- 
- 	if (vid) {
--		err = __br_fdb_delete(br, p, addr, vid);
-+		err = __br_fdb_delete(br, p, addr, vid, notified);
- 	} else {
- 		struct net_bridge_vlan *v;
- 
- 		err = -ENOENT;
--		err &= __br_fdb_delete(br, p, addr, 0);
-+		err &= __br_fdb_delete(br, p, addr, 0, notified);
- 		if (!vg || !vg->num_vlans)
- 			return err;
- 
- 		list_for_each_entry(v, &vg->vlan_list, vlist) {
- 			if (!br_vlan_should_use(v))
- 				continue;
--			err &= __br_fdb_delete(br, p, addr, v->vid);
-+			err &= __br_fdb_delete(br, p, addr, v->vid, notified);
- 		}
- 	}
- 
-diff --git a/net/bridge/br_private.h b/net/bridge/br_private.h
-index ebfc59049ec1..9853cfbb9d14 100644
---- a/net/bridge/br_private.h
-+++ b/net/bridge/br_private.h
-@@ -853,7 +853,7 @@ void br_fdb_update(struct net_bridge *br, struct net_bridge_port *source,
- 
- int br_fdb_delete(struct ndmsg *ndm, struct nlattr *tb[],
- 		  struct net_device *dev, const unsigned char *addr, u16 vid,
--		  struct netlink_ext_ack *extack);
-+		  bool *notified, struct netlink_ext_ack *extack);
- int br_fdb_delete_bulk(struct nlmsghdr *nlh, struct net_device *dev,
- 		       struct netlink_ext_ack *extack);
- int br_fdb_add(struct ndmsg *nlh, struct nlattr *tb[], struct net_device *dev,
-diff --git a/net/core/rtnetlink.c b/net/core/rtnetlink.c
-index f31b2436cde5..dd142f444659 100644
---- a/net/core/rtnetlink.c
-+++ b/net/core/rtnetlink.c
-@@ -4701,11 +4701,13 @@ static int rtnl_fdb_del(struct sk_buff *skb, struct nlmsghdr *nlh,
- 	if ((!ndm->ndm_flags || ndm->ndm_flags & NTF_MASTER) &&
- 	    netif_is_bridge_port(dev)) {
- 		struct net_device *br_dev = netdev_master_upper_dev_get(dev);
-+		bool notified = false;
- 
- 		ops = br_dev->netdev_ops;
- 		if (!del_bulk) {
- 			if (ops->ndo_fdb_del)
--				err = ops->ndo_fdb_del(ndm, tb, dev, addr, vid, extack);
-+				err = ops->ndo_fdb_del(ndm, tb, dev, addr, vid,
-+						       &notified, extack);
- 		} else {
- 			if (ops->ndo_fdb_del_bulk)
- 				err = ops->ndo_fdb_del_bulk(nlh, dev, extack);
-@@ -4719,10 +4721,13 @@ static int rtnl_fdb_del(struct sk_buff *skb, struct nlmsghdr *nlh,
- 
- 	/* Embedded bridge, macvlan, and any other device support */
- 	if (ndm->ndm_flags & NTF_SELF) {
-+		bool notified = false;
-+
- 		ops = dev->netdev_ops;
- 		if (!del_bulk) {
- 			if (ops->ndo_fdb_del)
--				err = ops->ndo_fdb_del(ndm, tb, dev, addr, vid, extack);
-+				err = ops->ndo_fdb_del(ndm, tb, dev, addr, vid,
-+						       &notified, extack);
- 			else
- 				err = ndo_dflt_fdb_del(ndm, tb, dev, addr, vid);
- 		} else {
-@@ -4733,7 +4738,7 @@ static int rtnl_fdb_del(struct sk_buff *skb, struct nlmsghdr *nlh,
- 		}
- 
- 		if (!err) {
--			if (!del_bulk)
-+			if (!del_bulk && !notified)
- 				rtnl_fdb_notify(dev, addr, vid, RTM_DELNEIGH,
- 						ndm->ndm_state);
- 			ndm->ndm_flags &= ~NTF_SELF;
--- 
-2.45.0
+Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com> (A Co=
+ntingent worker at Intel)
 
