@@ -1,118 +1,119 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E6879C937B
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Nov 2024 21:53:46 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 279EE9C9390
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Nov 2024 21:57:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B577C605E4;
-	Thu, 14 Nov 2024 20:53:44 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 67445605EF;
+	Thu, 14 Nov 2024 20:57:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id JBftk4DDoog1; Thu, 14 Nov 2024 20:53:44 +0000 (UTC)
+ id ORubDMAcOYsS; Thu, 14 Nov 2024 20:57:11 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DDF44605C0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B4EE260678
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1731617623;
-	bh=xs4vJU+kzHF8AXBXurcYgn4Nl7S3rirwZKa799ggXkk=;
+	s=default; t=1731617831;
+	bh=sDHRZd0HO3yKe5La4wlVf9arfCmAo/lcCm4r66g+uFA=;
 	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=jUlMn/ayr37TJEGlJlzDr5FjQ4qFmkHQa8USloM0qU7QRpgsGb05sqeT1p8ciD46u
-	 W/HW8HngftvHhOIzcjg1j1G41Qcp2CY8goyEbGZ9l9rBGBuxAr6wqgUuacIIzaiHDT
-	 fxRgTwbqEAZD4S/f1o/Y+hZza56DkhBCPDtM5VxfXQWZ46pI9Tw9SlKZs3E68tJUzV
-	 RRqvKyPVVN+5bjIEVajNX229zcMuBJNb/ujdGicGgP37sZ2cwsdPd+2R0cgFmSycyJ
-	 jBkbD21PHKn93UGev5C157any9rcWJ10BIQ9EFvPs5XVzaH5Mb9f0NnDVNsCjtF+eW
-	 i4htI+sWiYNFA==
+	b=eynrPkj/P5vJqIOcSt+NpkZ9Z/M+WWm514uyJW2LxMu+68qJsvEXjs6mck1JAK2jm
+	 EHGAOphXatfVQQlcFMnHcw+2stbE2kTzUy3skQyksWxxzTGCJ/43E4VzEyQePW4HLE
+	 As2JEUw7mjHSkT3DXHiLaszgfII0AH0y0bd72D/VrsgU07NuUUobeglrdkBxzAMr4h
+	 Hs+0MLAOKA1ISgMQ05N8+INXygPnM3D2BH296JvwTe+xrkkNbukAA4nufT+WGilm5K
+	 hTawZ8cnPPwReEeKl9TlHpPNpd5/Rq1/B2z0Kx8tUPrRstuN4Gbn5sBnREjD2rfMs3
+	 3YjvkFdVvvRXg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DDF44605C0;
-	Thu, 14 Nov 2024 20:53:43 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B4EE260678;
+	Thu, 14 Nov 2024 20:57:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id C2A78968
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2024 20:53:42 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id DCE571ED5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2024 20:57:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id BD6FC405C9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2024 20:53:42 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id D7B59406EC
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2024 20:57:09 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CWlGnCzo_fLB for <intel-wired-lan@lists.osuosl.org>;
- Thu, 14 Nov 2024 20:53:41 +0000 (UTC)
+ id HBVCB_O7HVVI for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 14 Nov 2024 20:57:09 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::f33; helo=mail-qv1-xf33.google.com;
+ client-ip=2607:f8b0:4864:20::a29; helo=mail-vk1-xa29.google.com;
  envelope-from=willemdebruijn.kernel@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 39E92405C1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 39E92405C1
-Received: from mail-qv1-xf33.google.com (mail-qv1-xf33.google.com
- [IPv6:2607:f8b0:4864:20::f33])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 39E92405C1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2024 20:53:40 +0000 (UTC)
-Received: by mail-qv1-xf33.google.com with SMTP id
- 6a1803df08f44-6cbf340fccaso8645846d6.1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2024 12:53:40 -0800 (PST)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D1313405C1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D1313405C1
+Received: from mail-vk1-xa29.google.com (mail-vk1-xa29.google.com
+ [IPv6:2607:f8b0:4864:20::a29])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D1313405C1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2024 20:57:08 +0000 (UTC)
+Received: by mail-vk1-xa29.google.com with SMTP id
+ 71dfb90a1353d-513de426863so434571e0c.0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2024 12:57:08 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731617620; x=1732222420;
+ d=1e100.net; s=20230601; t=1731617827; x=1732222627;
  h=content-transfer-encoding:mime-version:subject:references
  :in-reply-to:message-id:cc:to:from:date:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=xs4vJU+kzHF8AXBXurcYgn4Nl7S3rirwZKa799ggXkk=;
- b=UhWkAALrEbqjXCY17ZAWFmdCU5K6d7unBuCP/lB4URCmwST9rwLWV3s7DpkLf7kgum
- M1un3gAuDHwj1BUFEWXPRzK0iiWs1E6IU5AZUkvj1yg58KXA0lW8jadf2jzAFZbR0mI/
- ZFT2wHlNx81Y1ud+GwvrAI04S5UGpgo8qFwVPljeR2FrnuczbwOpD/cx6HIPnfpiBVaX
- MYBXEPRx5H9QSMouZJMPOC0+ZaiDsy3NRQXEdB1oprEy9OQUdKYTHSsz7k2k/wLWssqH
- qIf3wvYWEl6+4lSgCVHOWzOL8nUro/70DoQ44H4gjHaURiN3h+lmk9eBjBhiHmBG9Li8
- dIAQ==
+ bh=sDHRZd0HO3yKe5La4wlVf9arfCmAo/lcCm4r66g+uFA=;
+ b=qZ4+or3u8hlbj4YC26fQL+hAAsYD6gTsKBMPHqrpMm2KjA5NWONnRL8JnjDL4eoaWn
+ 0eCLM/B/pRCuRIdLL5ySHLt4+soUFYVoYVuuyU1385qdbHjbDMh7k2GnH8Kq+B0+PJT3
+ /UPZex2EvKmAqB9bnvLT88/UCO9SPJOoC6bVxhMtepJLvzLsMZak2Z2lYFDoE1mhAPoL
+ z4oMu81YtVou7/OozntRko9+idehIXfQR0YPIMiEd+FZuQZh7L98cEhpVMZ7xmZjJYcb
+ 4k15juNtrMG8QjwcxRNihojlvRN5KZQqVgq8xOBV22Et+3yU4lq6/bdsYK1mMYYlRkrj
+ sgJw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVQwhg6OdXd/HKuUTpmPe5tCrwJI7rLP8PAUJXgXHCKRjNuGMik7Ksh/ERzOwn/DmrlPxc6x83YgLOs4YUdAPE=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YxEO3dmxujxfLZLauSSZYCpmfR2zmnBqJKJukdAEGsWN/DGUS3K
- NYTI1F5jyTHOJF0N5ppHe983NPLIa/PXOUbUThXcS62Fp12Y7Z2gsHNW7Q==
-X-Google-Smtp-Source: AGHT+IExxThiz8yFS4GkRT/sNi3iT0zykfKtcp3oEj5kKylvkfzu62N9oX/R4KU5BT0e6LXKmdRB1Q==
-X-Received: by 2002:a05:6214:27c5:b0:6cb:9a1c:cfae with SMTP id
- 6a1803df08f44-6d3e8fcb392mr76737136d6.6.1731617619727; 
- Thu, 14 Nov 2024 12:53:39 -0800 (PST)
+ AJvYcCU1DDJAnijp09qjv8VtWF5NlSK1o+fHAUETGv5rLWHaJxncQkgDoz9U458xa93RUN3jkLWYTM7PhMC0UZrrqh8=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YxDkSxRzcedkv/7A8QgA5frkL/HOpc63hDrDJXIZ8HhFKi5FmOD
+ 1oIRG6UBVvThEsA/a1KsObbyiAhiAyPhnySAjh4/q0w1MoQOhHLU
+X-Google-Smtp-Source: AGHT+IF6v0PkMl7E7WRPqXN9CkYVVvMdcbpjFhr4UxsHqJ2uMXEYyNMaD/a190OwMlGOhFBPcQ4psw==
+X-Received: by 2002:a05:6122:789:b0:50c:4707:df0 with SMTP id
+ 71dfb90a1353d-51477ebdddbmr719640e0c.5.1731617827303; 
+ Thu, 14 Nov 2024 12:57:07 -0800 (PST)
 Received: from localhost (250.4.48.34.bc.googleusercontent.com. [34.48.4.250])
  by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-6d3f94882ebsm3813656d6.10.2024.11.14.12.53.39
+ af79cd13be357-7b35ca305a5sm88865585a.71.2024.11.14.12.57.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 Nov 2024 12:53:39 -0800 (PST)
-Date: Thu, 14 Nov 2024 15:53:38 -0500
+ Thu, 14 Nov 2024 12:57:06 -0800 (PST)
+Date: Thu, 14 Nov 2024 15:57:06 -0500
 From: Willem de Bruijn <willemdebruijn.kernel@gmail.com>
-To: Milena Olech <milena.olech@intel.com>, 
- intel-wired-lan@lists.osuosl.org
+To: Vadim Fedorenko <vadim.fedorenko@linux.dev>, 
+ Milena Olech <milena.olech@intel.com>, intel-wired-lan@lists.osuosl.org
 Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com, 
- przemyslaw.kitszel@intel.com, Milena Olech <milena.olech@intel.com>, 
+ przemyslaw.kitszel@intel.com, 
  Alexander Lobakin <aleksander.lobakin@intel.com>
-Message-ID: <67366352c2c5b_3379ce29475@willemb.c.googlers.com.notmuch>
-In-Reply-To: <20241113154616.2493297-10-milena.olech@intel.com>
+Message-ID: <6736642260849_3379ce29445@willemb.c.googlers.com.notmuch>
+In-Reply-To: <ebf7e086-829e-4266-bef5-b4d746aea45c@linux.dev>
 References: <20241113154616.2493297-1-milena.olech@intel.com>
- <20241113154616.2493297-10-milena.olech@intel.com>
+ <20241113154616.2493297-5-milena.olech@intel.com>
+ <ebf7e086-829e-4266-bef5-b4d746aea45c@linux.dev>
 Mime-Version: 1.0
 Content-Type: text/plain;
  charset=utf-8
 Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1731617620; x=1732222420; darn=lists.osuosl.org;
+ d=gmail.com; s=20230601; t=1731617827; x=1732222627; darn=lists.osuosl.org;
  h=content-transfer-encoding:mime-version:subject:references
  :in-reply-to:message-id:cc:to:from:date:from:to:cc:subject:date
  :message-id:reply-to;
- bh=xs4vJU+kzHF8AXBXurcYgn4Nl7S3rirwZKa799ggXkk=;
- b=EWFZgSVoWPc42ctQR4i4OQbBE5oakc2Ii3fw3XuPP0T2w6dd/CX9ORAyTy8omaaCpi
- tSCuKDIu2HzHfATLPQbvTGGeqElFjitrucV3pXsBqBNGyKdmZniBSOzx02oWosfK3Y1c
- 8TCp+7IaNqWmsg+CiEGtFIRnZFL4J6lnLIitOLXKfcmgtAuySZGUgVGmdTLyQuOvp804
- 6tXpoaRESaWcOCLehdiNroteYD12ZpBvhmnomFANrZqsYa2/Ik9PYy3q/O1nJdLlfnCU
- pAykHNds4MydCCD3Zf/yfv685/7eWjUaAo6I6w+SzgO60XLymle7GRXmWooAk7HluhMV
- zAgQ==
+ bh=sDHRZd0HO3yKe5La4wlVf9arfCmAo/lcCm4r66g+uFA=;
+ b=eh/H4sRgROYFW2QMS5ESjBXfLwcsH82DYQ+3wh0EtDTUbl8v4bR5/Ltnwqn5q4bU1G
+ L4qnRj5y+HBH9UBEUa0qrC3nSObmBdAgo1+go0WQNuMRWuLZ9l1OOxL0WzuJH4e13v8a
+ MEfo9J4ePF5PcOZAOBfI9b+5GUnR9HpCE0SZsC0G2ok4k2RS0/lTCm4RudjPERHu6cYo
+ DTGecGywP59+AGdurVphHCZOCHhQMMVFSxE+//IrdtIqSSfFfzfpmr90r61HXfsOQdgL
+ IYDS0MxTfrLZsCHLQ7RWnz+bNrB+q3g+cGxoGgqqahgTmNBBmabm6ZadfNRN7oyJNUo1
+ Dr8A==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=EWFZgSVo
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net 09/10] idpf: add support for
- Rx timestamping
+ header.a=rsa-sha256 header.s=20230601 header.b=eh/H4sRg
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net 04/10] idpf: negotiate PTP
+ capabilies and get PTP clock
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -128,107 +129,42 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Milena Olech wrote:
-> Add Rx timestamp function when the Rx timestamp value is read directly
-> from the Rx descriptor. Add supported Rx timestamp modes.
+Vadim Fedorenko wrote:
+
+> > +/**
+> > + * idpf_ptp_read_src_clk_reg_direct - Read directly the main timer value
+> > + * @adapter: Driver specific private structure
+> > + * @sts: Optional parameter for holding a pair of system timestamps from
+> > + *	 the system clock. Will be ignored when NULL is given.
+> > + *
+> > + * Return: the device clock time on success, -errno otherwise.
+> > + */
+> > +static u64 idpf_ptp_read_src_clk_reg_direct(struct idpf_adapter *adapter,
+> > +					    struct ptp_system_timestamp *sts)
+> > +{
+> > +	struct idpf_ptp *ptp = adapter->ptp;
+> > +	u32 hi, lo;
+> > +
+> > +	/* Read the system timestamp pre PHC read */
+> > +	ptp_read_system_prets(sts);
+> > +
+> > +	idpf_ptp_enable_shtime(adapter);
+> > +	lo = readl(ptp->dev_clk_regs.dev_clk_ns_l);
+> > +
+> > +	/* Read the system timestamp post PHC read */
+> > +	ptp_read_system_postts(sts);
+> > +
+> > +	hi = readl(ptp->dev_clk_regs.dev_clk_ns_h);
+> > +
+> > +	return ((u64)hi << 32) | lo;
+> > +}
 > 
-> Reviewed-by: Alexander Lobakin <aleksander.lobakin@intel.com>
-> Signed-off-by: Milena Olech <milena.olech@intel.com>
-> ---
->  drivers/net/ethernet/intel/idpf/idpf_ptp.c  | 74 ++++++++++++++++++++-
->  drivers/net/ethernet/intel/idpf/idpf_txrx.c | 30 +++++++++
->  drivers/net/ethernet/intel/idpf/idpf_txrx.h |  7 +-
->  3 files changed, 109 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf_ptp.c b/drivers/net/ethernet/intel/idpf/idpf_ptp.c
-> index f34642d10768..f9f7613f2a6d 100644
-> --- a/drivers/net/ethernet/intel/idpf/idpf_ptp.c
-> +++ b/drivers/net/ethernet/intel/idpf/idpf_ptp.c
-> @@ -317,12 +317,41 @@ static int idpf_ptp_gettimex64(struct ptp_clock_info *info,
->  	return 0;
->  }
->  
-> +/**
-> + * idpf_ptp_update_phctime_rxq_grp - Update the cached PHC time for a given Rx
-> + *				     queue group.
+> Am I right that idpf_ptp_enable_shtime() "freezes" the time in clk
+> registers and you can be sure that no changes will happen while you are
+> doing 2 transactions? If yes, then what does unfreeze it? Or does it
+> just copy new values to the registers and they will stay until the next
+> command?
 
-Why does each receive group have a separate cached value?
-They're all caches of the same device clock.
+Yep, these are shadow registers.
 
-> + * @grp: receive queue group in which Rx timestamp is enabled
-> + * @split: Indicates whether the queue model is split or single queue
-> + * @systime: Cached system time
-> + */
-> +static void
-> +idpf_ptp_update_phctime_rxq_grp(const struct idpf_rxq_group *grp, bool split,
-> +				u64 systime)
-> +{
-> +	struct idpf_rx_queue *rxq;
-> +	u16 i;
-> +
-> +	if (!split) {
-> +		for (i = 0; i < grp->singleq.num_rxq; i++) {
-> +			rxq = grp->singleq.rxqs[i];
-> +			if (rxq)
-> +				WRITE_ONCE(rxq->cached_phc_time, systime);
-> +		}
-> +	} else {
-> +		for (i = 0; i < grp->splitq.num_rxq_sets; i++) {
-> +			rxq = &grp->splitq.rxq_sets[i]->rxq;
-> +			if (rxq)
-> +				WRITE_ONCE(rxq->cached_phc_time, systime);
-> +		}
-> +	}
-> +}
-> +
-
-> +/**
-> + * idpf_ptp_set_rx_tstamp - Enable or disable Rx timestamping
-> + * @vport: Virtual port structure
-> + * @rx_filter: bool value for whether timestamps are enabled or disabled
-> + */
-> +static void idpf_ptp_set_rx_tstamp(struct idpf_vport *vport, int rx_filter)
-> +{
-> +	vport->tstamp_config.rx_filter = rx_filter;
-> +
-> +	if (rx_filter == HWTSTAMP_FILTER_NONE)
-> +		return;
-
-Should this clear the bit if it was previously set, instead of returning immediately?
-> +
-> +	for (u16 i = 0; i < vport->num_rxq_grp; i++) {
-> +		struct idpf_rxq_group *grp = &vport->rxq_grps[i];
-> +		u16 j;
-> +
-> +		if (idpf_is_queue_model_split(vport->rxq_model)) {
-> +			for (j = 0; j < grp->singleq.num_rxq; j++)
-> +				idpf_queue_set(PTP, grp->singleq.rxqs[j]);
-> +		} else {
-> +			for (j = 0; j < grp->splitq.num_rxq_sets; j++)
-> +				idpf_queue_set(PTP,
-> +					       &grp->splitq.rxq_sets[j]->rxq);
-> +		}
-> +	}
-> +}
-
-> +static void
-> +idpf_rx_hwtstamp(const struct idpf_rx_queue *rxq,
-> +		 const struct virtchnl2_rx_flex_desc_adv_nic_3 *rx_desc,
-> +		 struct sk_buff *skb)
-> +{
-> +	u64 cached_time, ts_ns;
-> +	u32 ts_high;
-> +
-> +	if (!(rx_desc->ts_low & VIRTCHNL2_RX_FLEX_TSTAMP_VALID))
-> +		return;
-> +
-> +	cached_time = READ_ONCE(rxq->cached_phc_time);
-> +
-> +	ts_high = le32_to_cpu(rx_desc->ts_high);
-> +	ts_ns = idpf_ptp_tstamp_extend_32b_to_64b(cached_time, ts_high);
-> +
-> +	*skb_hwtstamps(skb) = (struct skb_shared_hwtstamps) {
-> +		.hwtstamp = ns_to_ktime(ts_ns),
-> +	};
-
-Simpler: skb_hwtstamps(skb)->hwtstamp = ns_to_ktime(ts_ns);
+I guess they remain until overwritten on the next latch.
