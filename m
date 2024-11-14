@@ -1,91 +1,214 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9FDF59C8B1A
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Nov 2024 13:52:34 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1062C9C8C49
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Nov 2024 14:59:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5ADFC406FD;
-	Thu, 14 Nov 2024 12:52:33 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id cV1Tkvfvx0vs; Thu, 14 Nov 2024 12:52:32 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A28594068B
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1731588751;
-	bh=FU7jZhdMJfK2f8b0/vGuJmbkIVylWUoX/z9l2OAzrwE=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=97dTGyewPQmKXQsSSujKnZAjvq1/1tiPBnuuEglGCuZO/8u5Fjm/4AFgw3Bp1v4wI
-	 ez+SZkiFCoFNutpl9pix+BMUuoh1BUJ9v7ph7F/oGDswr95jvfbyRGnsNItE8xCTlb
-	 bbX0lMi8HnNuYnrMb1TGvwt3wB3EgmWp4OGDDagVxrwYSqXmTf4EVFdxY6jZVr9KAz
-	 fE2DBOItN185dPPMwBZOKcEwPDcGfXFcMqmjAEWJY9frbmZn4RJ8iCwwzi6zHHscZh
-	 XNKOdtU5+uqvBv7o2hg9eeOxNGIB7MH0JLNjbVDdPfGeUl9IcOqvAWqCqWKuYTzqgH
-	 ZnUfAxZsTnsqg==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A28594068B;
-	Thu, 14 Nov 2024 12:52:31 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 3BFE9972
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2024 12:52:30 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2AD8E8413C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2024 12:52:30 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9638D845C6;
+	Thu, 14 Nov 2024 13:58:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2vxfGqGhdx-W for <intel-wired-lan@lists.osuosl.org>;
- Thu, 14 Nov 2024 12:52:29 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2001:41d0:1004:224b::b2; helo=out-178.mta0.migadu.com;
- envelope-from=vadim.fedorenko@linux.dev; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org CED7B84137
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CED7B84137
-Received: from out-178.mta0.migadu.com (out-178.mta0.migadu.com
- [IPv6:2001:41d0:1004:224b::b2])
- by smtp1.osuosl.org (Postfix) with ESMTPS id CED7B84137
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2024 12:52:28 +0000 (UTC)
-Message-ID: <2dc0096d-93be-42f9-b646-e74c3b36126c@linux.dev>
-Date: Thu, 14 Nov 2024 12:52:13 +0000
-MIME-Version: 1.0
-To: Milena Olech <milena.olech@intel.com>, intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, Josh Hay <joshua.a.hay@intel.com>,
- Alexander Lobakin <aleksander.lobakin@intel.com>
-References: <20241113154616.2493297-1-milena.olech@intel.com>
- <20241113154616.2493297-9-milena.olech@intel.com>
+ id lLTke6NHM6yD; Thu, 14 Nov 2024 13:58:46 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6975E84677
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1731592718;
+	bh=3yEvpp4LqA84i3av4dETcwl8AwjuwuOAy+AByqAsBck=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=wxxesdS4fyO047m6qh6djcAmF3ezH0aTGy2aT6bT3IQDc0tFQQ2KnI2bFD7r4HWbF
+	 tCUneOn8mV8CcUKLl5R6iK89XwKA/yJ/giX7laPGO01gwVGxovfu2la7ZccnG8bmoU
+	 l/0anI1H3+LW/aJyppg4fP7gOT9lI2kwNqzp2VyyJD4DtMho2y1etD1b72NG0K/y8A
+	 vqApJ64LcqvbUw8XNSAvIsth2oiNUWJJJYASjju4uvZbhGpLU+MJFQpOvL9mpj2EFT
+	 52TZkMLLQvK3I2ffm0uaIEmYdGaOH2kYFVCSTnYGtjnpskr91gmpsOEhNTkQB4azVG
+	 n4Cm12QzrMswA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6975E84677;
+	Thu, 14 Nov 2024 13:58:38 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 7DB776C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2024 13:58:35 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4E0BB84600
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2024 13:58:35 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id YwuVksNIeNab for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 14 Nov 2024 13:58:33 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
+ helo=mgamail.intel.com; envelope-from=himasekharx.reddy.pucha@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org AE70E8460D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AE70E8460D
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id AE70E8460D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Nov 2024 13:58:23 +0000 (UTC)
+X-CSE-ConnectionGUID: uODP8cbqQUe1PH4/GFqtUw==
+X-CSE-MsgGUID: k/uM5GffQ3yw4bVLGSh3BA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11256"; a="56929294"
+X-IronPort-AV: E=Sophos;i="6.12,154,1728975600"; d="scan'208";a="56929294"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Nov 2024 05:57:46 -0800
+X-CSE-ConnectionGUID: ypiQb1moRiulfv3yNdrv1g==
+X-CSE-MsgGUID: nQ9xJAuSR0CpViDEQC6Afg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,154,1728975600"; d="scan'208";a="93161878"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by orviesa005.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 14 Nov 2024 05:57:46 -0800
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Thu, 14 Nov 2024 05:57:45 -0800
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Thu, 14 Nov 2024 05:57:45 -0800
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.47) by
+ edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Thu, 14 Nov 2024 05:57:45 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=JfQovsNkOXj5YPdJyhbA/+NlD9Nil7Zo5b9Ggxo8V+aJHDWzWK5xjEiNoS1ou7gl0il2Wnq5p7+t5alZWOVy7ek37/TCPqC06rDdrZ67vqVfry/C8wcB/hQsKc0GjKK9qN13j7tJl48czqoVDb70vmTvdLZB7OK+CIHoRmUXwORkWLrIRP1s7GrRabun/HL9JT27zVyphdc+6iaO5enG1+LTd1ZHbXqhAswMUowaCbaxBE7njwjgDyE7zclbyQs0/wrgnbbXzaulfGUB43bFWPgg31LmfLDKu6ipairWSdk2D8ibomlTnYYH+d3y0mHl4uclyz4EgODUDPK99+sYlg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=3yEvpp4LqA84i3av4dETcwl8AwjuwuOAy+AByqAsBck=;
+ b=NjVjEtEA4c+yvjeZM4AtFX7DMnjzG4pojTVsffmWVSCWN8HNuRrsoBCAPB/AkidFoJZPyS9wOQ31vrEDfNufdhIJGt8LGSE1et4rq+ItJM5n8GopCEh+/cH5LoVLnrGe24GlsbwOekneJJul//E4a1AERrVuoOmOmzVVyOHBagwQiZvh1oEyylqU+C4nuncUtXBn7LZybzmV+U5r94liskyMSqfasAO19WcdUXaPsFMfZvn2Qa6X88xiMlBCco3B1oxjsY0Irc9/4eKXL47YscDoPMBM9gQs6ZuZMyMQhq2iRHe+o61j09PhqUQqmMVeIbvHyUb1k+Nv5osYj0a7/A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from CYYPR11MB8429.namprd11.prod.outlook.com (2603:10b6:930:c2::15)
+ by LV8PR11MB8678.namprd11.prod.outlook.com (2603:10b6:408:20b::16)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8137.29; Thu, 14 Nov
+ 2024 13:57:38 +0000
+Received: from CYYPR11MB8429.namprd11.prod.outlook.com
+ ([fe80::4f97:ad9d:79a9:899f]) by CYYPR11MB8429.namprd11.prod.outlook.com
+ ([fe80::4f97:ad9d:79a9:899f%6]) with mapi id 15.20.8137.027; Thu, 14 Nov 2024
+ 13:57:37 +0000
+From: "Pucha, HimasekharX Reddy" <himasekharx.reddy.pucha@intel.com>
+To: "Greenwalt, Paul" <paul.greenwalt@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+CC: "Greenwalt, Paul" <paul.greenwalt@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH linux-firmware v1 1/3] ice: update ice
+ DDP package to ice-1.3.41.0
+Thread-Index: AQHbMjBILYtBqejQYUyMMdPt8bnnHrK21X6A
+Date: Thu, 14 Nov 2024 13:57:37 +0000
+Message-ID: <CYYPR11MB8429786ADA0120BCF3DAD1B5BD5B2@CYYPR11MB8429.namprd11.prod.outlook.com>
+References: <20241108223643.2614087-1-paul.greenwalt@intel.com>
+ <20241108223643.2614087-2-paul.greenwalt@intel.com>
+In-Reply-To: <20241108223643.2614087-2-paul.greenwalt@intel.com>
+Accept-Language: en-US
 Content-Language: en-US
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
- include these headers.
-From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-In-Reply-To: <20241113154616.2493297-9-milena.olech@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Migadu-Flow: FLOW_OUT
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linux.dev; s=key1; t=1731588740;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FU7jZhdMJfK2f8b0/vGuJmbkIVylWUoX/z9l2OAzrwE=;
- b=apCBXg2ALM49EFUZcQeV6PRKkABkqa9/borFrBssOXWor7UynpmAJdjd0SVXAcEeblYb89
- EBvxE//DKav7HVg/Uf12OwfIjTgziZ/hds6AdGs/SuSNMBgMN6is9+03Dg0IQ7MHcZKiFv
- xp2GVs+nHopAkHgqa/AqJlyEirVsZGY=
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CYYPR11MB8429:EE_|LV8PR11MB8678:EE_
+x-ms-office365-filtering-correlation-id: 4430a741-04d2-43f7-ce8b-08dd04b44c61
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|1800799024|366016|376014|38070700018;
+x-microsoft-antispam-message-info: =?us-ascii?Q?mczJSy15qRJIcTsWmBZlnyLkrTmV3bWFbFtDLzyxVj16XYbfN292SSv5R/iT?=
+ =?us-ascii?Q?h1z0PH3pp+l7UVGJOuap+EeOcIFdrfqIfDsGF4CQOvrYZQs3herbBqn/d1Zj?=
+ =?us-ascii?Q?fT45fuqt9lUsA8MYxm7Z0hSgaIF1BIDCZ5i8iaFrcuq0MUeM1YqSNjClKNt0?=
+ =?us-ascii?Q?Ai3dONlMeaawRV1+eO2kS+0sImP8Xu2ryzuzQ2jaoJ1dlzAdVqb5BnF1MEPb?=
+ =?us-ascii?Q?QcATESWNEp20w9643uyTwlzzzL/HMYxi0EnyJ85BP9N7UoEzY6qGYXwOZ0b+?=
+ =?us-ascii?Q?Fi9yJNCKKoQr/vN4D0tmIqvKjCzBpSDX4ZOqigF+BPyjNf3m9IlzL1kkPkBh?=
+ =?us-ascii?Q?YZNo22Mqb0YhNQNRSYjgf3AP6Na0zZ/mewg7Uuczx4KAlh1nsDYxsK4k+027?=
+ =?us-ascii?Q?fxLmVubCs+WSIkRussoh8GcHRWiefI1PWmfxyDD0sD6jOix6HmbzPWWjl+Qb?=
+ =?us-ascii?Q?8yDzDr9atAfQVCrHZedwf3t1RyUw1XIT6SgVDM99FkTnhJ6VONcFwhXJvRKz?=
+ =?us-ascii?Q?YC/H7D3A6zQv7zH63wOePFPijfUXyxHo0DJjQCihCHS3smKBlIoHBgrUlHVm?=
+ =?us-ascii?Q?Vdj1P2G2kR/uzh6xOd0dYYcdQCfoJumnaoAJxGw0ku+/GfFvNO+qz+e35Xv8?=
+ =?us-ascii?Q?f9viMgVqM1M7H21pj186BlAMLnY4ZxYObeo3sBao8WvvN2ebDfCFWKcqgnlS?=
+ =?us-ascii?Q?KGXw5LHqfaHIH65kDRfJgpjMsVTG9V0bTL4y1s6KJPsCObwLssOw6YNzZVTk?=
+ =?us-ascii?Q?s+LBc/CsZPkZzl/EvyAcQbe3vqjyr9LQQcKWaRlph6YY2GJXRP8HpdRgJaOE?=
+ =?us-ascii?Q?NyEUmcH7Rd0PdshqKNQi0nLgjjoIdKbxNymZhWNzFZq1z0/iRGK6Wbz15oJp?=
+ =?us-ascii?Q?wVMWvPAnfa6BysScIJJDVpkJd+IQMghJJ9mxteT4DHBk6F03t+wayQjFwuqW?=
+ =?us-ascii?Q?/HMvki0+hnz/pAS1KoPy+HjMzJVPzfxotQz975TfZ/SQCpHr++eN2fZPQCKG?=
+ =?us-ascii?Q?wPrV1udnppOlh8wuFtFcYrrR4HTAf7F7X7CtZizW19zzmBHCPlPIMtxx/UBM?=
+ =?us-ascii?Q?tpolRvUE3x1XFDzvlntV713llEo6SXiagMrFR8bm32SlLtvQtO2CZ56c62L7?=
+ =?us-ascii?Q?TLBvDIBXCReB7LYifqqd586GFQyLnaXBO89I2CYU2vXHdfUKDh8oAr2Ch343?=
+ =?us-ascii?Q?YvKZDuzTeEiTcxJId+hImk2Jsaes/rdOkVq11jRv+efm8x8OnnB3WsasHsI5?=
+ =?us-ascii?Q?2KIWuxZuLAkPxJ2+6GqjS8J1llGePog8Vq5R1ru93ffQvyA3ga6Jr5jmsWo2?=
+ =?us-ascii?Q?rco6zDPg0vT5Sbg/9OlUREGGDQc0Elo2WqV5nj4sRRPfd0j/I4lI1lNa4R3p?=
+ =?us-ascii?Q?gKvCKOA=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CYYPR11MB8429.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(376014)(38070700018); DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?ZBRcdRLbQHEf7fp4Mf6ZTi2mS0K6INOxs2Ltkv48+EgN3tVJuug52ZrVj1tl?=
+ =?us-ascii?Q?DoG04PIGBmfH/sR4hWBwj+ydN+cdPV4XcJNAwNoRwVqpANgXSj7hkMGG81TI?=
+ =?us-ascii?Q?MfyJeHf5L8XLuJdhDF+kkFicTSSpmvI+RTF0dfAFc2R+p0GQJE1QrTKJl3IV?=
+ =?us-ascii?Q?L3KC+GfzkJNxawgcyqEUrgoANc6QCPRDg4rit6N0AclXyeiKwzumCu9BCQoG?=
+ =?us-ascii?Q?mE84haZzK9djHarhFyYZWmZ/k2pxbRs3xcIx6vT6czs/qwQiBIwgmPf+sh3M?=
+ =?us-ascii?Q?LBezPYbQhUMPdhWdgxLOHs66ciIoXIMFJ1VLHfvblmSzJTbvRNlk7cQJDzqQ?=
+ =?us-ascii?Q?sVfKna97n3T3bSbIu1mx+f1K6Nzub3NjhvH8TLQCYepPpMOgM8mXlcbF4IzX?=
+ =?us-ascii?Q?t1F/EioIaXJNDfBMbc06R5UqQ2QUFLCA/osHHAsXmipWYSlpBXGdMoCYFr5Y?=
+ =?us-ascii?Q?mj3zSAIFLu9uQcR7BeDoHnbAh9oVqoHIMCxKjfc7FaS2hJQ+rPcK+uNlmkxb?=
+ =?us-ascii?Q?8bOVMbk5kUfFerGgny12T17oATOHoQxTTTB5KDBk3ZkZYFbd5rMDH9zVMzJC?=
+ =?us-ascii?Q?cXHuIMPIufddLaWAuj0Y+csL/2HMAdsECux04qDMDM3DLTino6txSjOYuG4i?=
+ =?us-ascii?Q?WpOC5a5Qg3oJMQ8tzbzanl3MWG2N6IlU1279lbIWZwFCkmBuzI4wfcr3FR/V?=
+ =?us-ascii?Q?bNRB+otmdFgH6kEtAwiiG4BErPCppLsriuSS2NgPw/3aunEeOLBq5XZuIJOq?=
+ =?us-ascii?Q?rF4RKByVvZaJIS03WN9RF4eLDu7ouAqBOVixgvzb8qcHPTFoioUd4UUq6H9t?=
+ =?us-ascii?Q?djSMUNuLkK38rb+Rn2bniNGCOmuNd0vSSCrzoyA1HcSJH4uknidkCCytsVQh?=
+ =?us-ascii?Q?bZXJEcU4Q3bbrcy5GPb8iW3NIRrRVegiAZzo2syjDVQ+UPbeSqvSm/ANQB3n?=
+ =?us-ascii?Q?FGp+YX9uflcTHwZN/9qzbxryDXqjbl2dgniu8EqSzn6gyrXaNeCrdn/ZWxZa?=
+ =?us-ascii?Q?BIDWciaG+Meh0CX0UyJDtC3iyLhzV0nAuVhpe1kZ+4n/gB/PdGKfZE1d8IJi?=
+ =?us-ascii?Q?7V0MFyIIwFiY074crs4aAP/NsJyXZIj03JZlNaE6h9BHpeB4Rhoq9EpIMUOD?=
+ =?us-ascii?Q?ZijRYFkD3xYAk1D12VKbEnEQdmQ9UtRBSEXoiCJdnMB26ZvBxQnM81aSf5Wo?=
+ =?us-ascii?Q?wTE0I4OhGPUwBNcS1uQRepTut+4Ku4OuiNhi67fPb4oHhL6Tqc09W3FrDlKd?=
+ =?us-ascii?Q?HXAQNfbYR/9xjMpOZ6RqeAg3PST/zlKI270EAVo0TPwbf6TycL3mJrXNTpSh?=
+ =?us-ascii?Q?NWIYK6WCKwRooyWQmd+oslNVxL6Z2S/vKpAUbcWOV4RKgqnKYNiyzJdo5Ujx?=
+ =?us-ascii?Q?ftLDPeaEw2+qOiVqOCdYVsbceVyQqKujg/zDhlxYybmMcEsJRj1MuS/RZN6k?=
+ =?us-ascii?Q?owKirsWtEc3jUJf+rjdiNGqk54Zyq2VnZzRqjlLp4NzW839OVWBS4KFn+fbd?=
+ =?us-ascii?Q?kZCp8Lzbbo2qCkZpKBg8TwI3t8IqtH5WI3yf0ieZATitipcQ0txLE4ioFzsM?=
+ =?us-ascii?Q?A69iirMgkXl2nB8dbVNVgkW9zn7zPDRaB0/am8YaOvbfdfnzpZaiSHFxbNeL?=
+ =?us-ascii?Q?eA=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CYYPR11MB8429.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4430a741-04d2-43f7-ce8b-08dd04b44c61
+X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Nov 2024 13:57:37.8420 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: bnzkUMrAIyroWUvSsssMyQZDAjnlCxJt9MXjhQ4it0RgsAGOiyqvpwq7mL9FLjPazr8X3FkxbWH2fSvCUJp6WwlkVAnZ0IPmfL41Fc1oDJzjXDqVBfg5gfEZsHfQ9Wmm
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV8PR11MB8678
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1731592704; x=1763128704;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=iEoJgYIAgJzoDoirUDI4M/FvEJDDNbJ8tJOwxLAAS8U=;
+ b=AMzKjS6prH8uYM0zs/OM/48YjoPZePAhKHrOcXHiwbcfAZPIZrC6Schj
+ Aj1/nQxqarw5yg8U7jqpubeLeJzcfxfhWsGQ1Fyx/O/wsQl5uZcrQtiYY
+ J6mJTm0tmfwQp5CetMc1HxN2Blbx1ItFbz1sqlkaC3aIK0xRIPgf4QnVY
+ h0hiOfnVwaFnjtgrKvcfSmMgb2eQqaTHUOtZI9vGrYC5s3Piw1A2ZMJ+V
+ e4hhmJgzCwx5BHpp3FDMzbUW6rk5l0vv37Qe5MIPsqI8NidXg7MscIfV6
+ oY71T/w5AZ3sLle5t4zRkO7B0yvIQWB48igXxrMev482c00JDXZ1c+hXo
+ g==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=linux.dev
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256
- header.s=key1 header.b=apCBXg2A
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net 08/10] idpf: add Tx timestamp
- flows
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=AMzKjS6p
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH linux-firmware v1 1/3] ice: update ice
+ DDP package to ice-1.3.41.0
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -101,365 +224,33 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 13/11/2024 15:46, Milena Olech wrote:
-> Add functions to request Tx timestamp for the PTP packets, read the Tx
-> timestamp when the completion tag for that packet is being received,
-> extend the Tx timestamp value and set the supported timestamping modes.
-> 
-> Tx timestamp is requested for the PTP packets by setting a TSYN bit and
-> index value in the Tx context descriptor. The driver assumption is that
-> the Tx timestamp value is ready to be read when the completion tag is
-> received. Then the driver schedules delayed work and the Tx timestamp
-> value read is requested through virtchnl message. At the end, the Tx
-> timestamp value is extended to 64-bit and provided back to the skb.
-> 
-> Co-developed-by: Josh Hay <joshua.a.hay@intel.com>
-> Signed-off-by: Josh Hay <joshua.a.hay@intel.com>
-> Reviewed-by: Alexander Lobakin <aleksander.lobakin@intel.com>
-> Signed-off-by: Milena Olech <milena.olech@intel.com>
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of P=
+aul Greenwalt
+> Sent: 09 November 2024 04:07
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: Greenwalt, Paul <paul.greenwalt@intel.com>
+> Subject: [Intel-wired-lan] [PATCH linux-firmware v1 1/3] ice: update ice =
+DDP package to ice-1.3.41.0
+>
+> Update ice DDP package file to the latest version: ice-1.3.41.0
+>
+> Highlight of changes since ice-1.3.36.0:
+>
+> - Add support for Intel E830 series driver using a dual segment package
+>   with one sgement for E810 and one for E830, which increases the package
+>   size.
+> - Add support for 192B max header length.
+>
+> Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
 > ---
->   drivers/net/ethernet/intel/idpf/idpf.h        |   4 +
->   .../net/ethernet/intel/idpf/idpf_ethtool.c    |  63 +++++
->   .../net/ethernet/intel/idpf/idpf_lan_txrx.h   |  13 +-
->   drivers/net/ethernet/intel/idpf/idpf_lib.c    |  40 +++
->   drivers/net/ethernet/intel/idpf/idpf_ptp.c    | 265 +++++++++++++++++-
->   drivers/net/ethernet/intel/idpf/idpf_ptp.h    |  57 ++++
->   drivers/net/ethernet/intel/idpf/idpf_txrx.c   | 136 ++++++++-
->   drivers/net/ethernet/intel/idpf/idpf_txrx.h   |  10 +-
->   .../net/ethernet/intel/idpf/idpf_virtchnl.c   |   6 +-
->   .../ethernet/intel/idpf/idpf_virtchnl_ptp.c   | 232 +++++++++++++++
->   10 files changed, 813 insertions(+), 13 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf.h b/drivers/net/ethernet/intel/idpf/idpf.h
-> index 1135be31b97c..76ae7f3980e6 100644
-> --- a/drivers/net/ethernet/intel/idpf/idpf.h
-> +++ b/drivers/net/ethernet/intel/idpf/idpf.h
-> @@ -293,6 +293,8 @@ struct idpf_port_stats {
->    * @link_up: True if link is up
->    * @sw_marker_wq: workqueue for marker packets
->    * @tx_tstamp_caps: The capabilities negotiated for Tx timestamping
-> + * @tstamp_config: The Tx tstamp config
-> + * @tstamp_task: Tx timestamping task
->    */
->   struct idpf_vport {
->   	u16 num_txq;
-> @@ -339,6 +341,8 @@ struct idpf_vport {
->   	wait_queue_head_t sw_marker_wq;
->   
->   	struct idpf_ptp_vport_tx_tstamp_caps *tx_tstamp_caps;
-> +	struct hwtstamp_config tstamp_config;
-> +	struct work_struct tstamp_task;
->   };
->   
->   /**
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
-> index 59b1a1a09996..9b6ca4c1b3a1 100644
-> --- a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
-> +++ b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
-> @@ -2,6 +2,7 @@
->   /* Copyright (C) 2023 Intel Corporation */
->   
->   #include "idpf.h"
-> +#include "idpf_ptp.h"
->   
->   /**
->    * idpf_get_rxnfc - command to get RX flow classification rules
-> @@ -1312,6 +1313,67 @@ static int idpf_get_link_ksettings(struct net_device *netdev,
->   	return 0;
->   }
->   
-> +/**
-> + * idpf_set_timestamp_filters - Set the supported timestamping mode
-> + * @vport: Virtual port structure
-> + * @info: ethtool timestamping info structure
-> + *
-> + * Set the Tx/Rx timestamp filters.
-> + */
-> +static void idpf_set_timestamp_filters(const struct idpf_vport *vport,
-> +				       struct kernel_ethtool_ts_info *info)
-> +{
-> +	if (!vport->tx_tstamp_caps ||
-> +	    vport->adapter->ptp->tx_tstamp_access == IDPF_PTP_NONE)
-> +		return;
-> +
-> +	info->so_timestamping = SOF_TIMESTAMPING_TX_SOFTWARE |
-> +				SOF_TIMESTAMPING_RX_SOFTWARE |
-> +				SOF_TIMESTAMPING_SOFTWARE |
-> +				SOF_TIMESTAMPING_TX_HARDWARE |
-> +				SOF_TIMESTAMPING_RX_HARDWARE |
-> +				SOF_TIMESTAMPING_RAW_HARDWARE;
-> +
-> +	info->tx_types = BIT(HWTSTAMP_TX_OFF) | BIT(HWTSTAMP_TX_ON);
-> +}
-> +
-> +/**
-> + * idpf_get_ts_info - Get device PHC association
-> + * @netdev: network interface device structure
-> + * @info: ethtool timestamping info structure
-> + *
-> + * Return: 0 on success, -errno otherwise.
-> + */
-> +static int idpf_get_ts_info(struct net_device *netdev,
-> +			    struct kernel_ethtool_ts_info *info)
-> +{
-> +	struct idpf_vport *vport;
-> +	int err = 0;
-> +
-> +	idpf_vport_ctrl_lock(netdev);
-> +	vport = idpf_netdev_to_vport(netdev);
-> +
-> +	if (!vport->adapter->ptp) {
-> +		err = -EOPNOTSUPP;
-> +		goto unlock;
-> +	}
-> +
-> +	idpf_set_timestamp_filters(vport, info);
-> +
-> +	if (idpf_is_cap_ena(vport->adapter, IDPF_OTHER_CAPS, VIRTCHNL2_CAP_PTP) &&
-> +	    vport->adapter->ptp->clock) {
-> +		info->phc_index = ptp_clock_index(vport->adapter->ptp->clock);
-> +	} else {
-> +		pci_dbg(vport->adapter->pdev, "PTP clock not detected\n");
-> +		err = ethtool_op_get_ts_info(netdev, info);
-> +	}
-> +
-> +unlock:
-> +	idpf_vport_ctrl_unlock(netdev);
-> +
-> +	return err;
-> +}
-> +
->   static const struct ethtool_ops idpf_ethtool_ops = {
->   	.supported_coalesce_params = ETHTOOL_COALESCE_USECS |
->   				     ETHTOOL_COALESCE_USE_ADAPTIVE,
-> @@ -1336,6 +1398,7 @@ static const struct ethtool_ops idpf_ethtool_ops = {
->   	.get_ringparam		= idpf_get_ringparam,
->   	.set_ringparam		= idpf_set_ringparam,
->   	.get_link_ksettings	= idpf_get_link_ksettings,
-> +	.get_ts_info		= idpf_get_ts_info,
->   };
->   
->   /**
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf_lan_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_lan_txrx.h
-> index 8c7f8ef8f1a1..7492d1713243 100644
-> --- a/drivers/net/ethernet/intel/idpf/idpf_lan_txrx.h
-> +++ b/drivers/net/ethernet/intel/idpf/idpf_lan_txrx.h
-> @@ -282,7 +282,18 @@ struct idpf_flex_tx_tso_ctx_qw {
->   	u8 flex;
->   };
->   
-> -struct idpf_flex_tx_ctx_desc {
-> +union idpf_flex_tx_ctx_desc {
-> +	/* DTYPE = IDPF_TX_DESC_DTYPE_CTX (0x01) */
-> +	struct {
-> +		__le64 qw0;
-> +#define IDPF_TX_CTX_L2TAG2_M	GENMASK_ULL(47, 32)
-> +		__le64 qw1;
-> +#define IDPF_TX_CTX_DTYPE_M	GENMASK_ULL(3, 0)
-> +#define IDPF_TX_CTX_CMD_M	GENMASK_ULL(15, 4)
-> +#define IDPF_TX_CTX_TSYN_REG_M	GENMASK_ULL(47, 30)
-> +#define IDPF_TX_CTX_MSS_M	GENMASK_ULL(50, 63)
-> +	} tsyn;
-> +
->   	/* DTYPE = IDPF_TX_DESC_DTYPE_FLEX_TSO_CTX (0x05) */
->   	struct {
->   		struct idpf_flex_tx_tso_ctx_qw qw0;
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-> index b4fbb99bfad2..467f380c8fd4 100644
-> --- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
-> +++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-> @@ -3,6 +3,7 @@
->   
->   #include "idpf.h"
->   #include "idpf_virtchnl.h"
-> +#include "idpf_ptp.h"
->   
->   static const struct net_device_ops idpf_netdev_ops;
->   
-> @@ -2305,6 +2306,44 @@ static int idpf_set_mac(struct net_device *netdev, void *p)
->   	return err;
->   }
->   
-> +/**
-> + * idpf_eth_ioctl - Access the hwtstamp interface
-> + * @netdev: network interface device structure
-> + * @ifr: interface request data
-> + * @cmd: ioctl command
-> + *
-> + * Return: 0 on success, negative otherwise.
-> + */
-> +static int idpf_eth_ioctl(struct net_device *netdev, struct ifreq *ifr, int cmd)
-> +{
-> +	struct idpf_vport *vport;
-> +	int err;
-> +
-> +	idpf_vport_ctrl_lock(netdev);
-> +	vport = idpf_netdev_to_vport(netdev);
-> +
-> +	if (!idpf_ptp_get_vport_tstamp_capability(vport)) {
-> +		idpf_vport_ctrl_unlock(netdev);
-> +		return -EOPNOTSUPP;
-> +	}
-> +
-> +	switch (cmd) {
-> +	case SIOCGHWTSTAMP:
-> +		err = idpf_ptp_get_ts_config(vport, ifr);
-> +		break;
-> +	case SIOCSHWTSTAMP:
-> +		err = idpf_ptp_set_ts_config(vport, ifr);
-> +		break;
-> +	default:
-> +		err = -EOPNOTSUPP;
-> +		break;
-> +	}
-> +
-> +	idpf_vport_ctrl_unlock(netdev);
-> +
-> +	return err;
-> +}
-> +
->   /**
->    * idpf_alloc_dma_mem - Allocate dma memory
->    * @hw: pointer to hw struct
-> @@ -2351,4 +2390,5 @@ static const struct net_device_ops idpf_netdev_ops = {
->   	.ndo_get_stats64 = idpf_get_stats64,
->   	.ndo_set_features = idpf_set_features,
->   	.ndo_tx_timeout = idpf_tx_timeout,
-> +	.ndo_eth_ioctl = idpf_eth_ioctl,
+>  WHENCE                                        |   4 ++--
+>  .../{ice-1.3.36.0.pkg =3D> ice-1.3.41.0.pkg}    | Bin 692776 -> 1352580 =
+bytes
+>  2 files changed, 2 insertions(+), 2 deletions(-)  rename intel/ice/ddp/{=
+ice-1.3.36.0.pkg =3D> ice-1.3.41.0.pkg} (50%)
+>
 
-ioctl interface is deprecated, should not add any new drivers with it.
-It's better to use .ndo_hwtamp_get/.ndo_hwstamp_set
+Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com> (A Co=
+ntingent worker at Intel)
 
->   };
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf_ptp.c b/drivers/net/ethernet/intel/idpf/idpf_ptp.c
-> index 997528176b0f..f34642d10768 100644
-> --- a/drivers/net/ethernet/intel/idpf/idpf_ptp.c
-> +++ b/drivers/net/ethernet/intel/idpf/idpf_ptp.c
-> @@ -317,6 +317,37 @@ static int idpf_ptp_gettimex64(struct ptp_clock_info *info,
->   	return 0;
->   }
->   
-> +/**
-> + * idpf_ptp_update_cached_phctime - Update the cached PHC time values
-> + * @adapter: Driver specific private structure
-> + *
-> + * This function updates the system time values which are cached in the adapter
-> + * structure.
-> + *
-> + * This function must be called periodically to ensure that the cached value
-> + * is never more than 2 seconds old.
-> + *
-> + * Return 0 on success, negative otherwise.
-> + */
-> +static int idpf_ptp_update_cached_phctime(struct idpf_adapter *adapter)
-> +{
-> +	u64 systime;
-> +	int err;
-> +
-> +	err = idpf_ptp_read_src_clk_reg(adapter, &systime, NULL);
-> +	if (err)
-> +		return -EACCES;
-> +
-> +	/* Update the cached PHC time stored in the adapter structure.
-> +	 * These values are used to extend Tx timestamp values to 64 bit
-> +	 * expected by the stack.
-> +	 */
-> +	WRITE_ONCE(adapter->ptp->cached_phc_time, systime);
-> +	WRITE_ONCE(adapter->ptp->cached_phc_jiffies, jiffies);
-> +
-> +	return 0;
-> +}
-> +
->   /**
->    * idpf_ptp_settime64 - Set the time of the clock
->    * @info: the driver's PTP info structure
-> @@ -347,6 +378,11 @@ static int idpf_ptp_settime64(struct ptp_clock_info *info,
->   		return err;
->   	}
->   
-> +	err = idpf_ptp_update_cached_phctime(adapter);
-> +	if (err)
-> +		pci_warn(adapter->pdev,
-> +			 "Unable to immediately update cached PHC time\n");
-> +
->   	return 0;
->   }
->   
-> @@ -402,6 +438,11 @@ static int idpf_ptp_adjtime(struct ptp_clock_info *info, s64 delta)
->   		return err;
->   	}
->   
-> +	err = idpf_ptp_update_cached_phctime(adapter);
-> +	if (err)
-> +		pci_warn(adapter->pdev,
-> +			 "Unable to immediately update cached PHC time\n");
-> +
->   	return 0;
->   }
->   
-> @@ -465,6 +506,196 @@ static int idpf_ptp_gpio_enable(struct ptp_clock_info *info,
->   	return -EOPNOTSUPP;
->   }
->   
-> +/**
-> + * idpf_ptp_tstamp_extend_32b_to_64b - Convert a 32b nanoseconds Tx timestamp
-> + *				       to 64b.
-> + * @cached_phc_time: recently cached copy of PHC time
-> + * @in_timestamp: Ingress/egress 32b nanoseconds timestamp value
-> + *
-> + * Hardware captures timestamps which contain only 32 bits of nominal
-> + * nanoseconds, as opposed to the 64bit timestamps that the stack expects.
-> + *
-> + * Return: Tx timestamp value extended to 64 bits based on cached PHC time.
-> + */
-> +u64 idpf_ptp_tstamp_extend_32b_to_64b(u64 cached_phc_time, u32 in_timestamp)
-> +{
-> +	u32 delta, phc_lo;
-> +	u64 ns;
-> +
-> +	phc_lo = lower_32_bits(cached_phc_time);
-> +	delta = in_timestamp - phc_lo;
-> +
-> +	if (delta > S32_MAX) {
-> +		delta = phc_lo - in_timestamp;
-> +		ns = cached_phc_time - delta;
-> +	} else {
-> +		ns = cached_phc_time + delta;
-> +	}
-> +
-> +	return ns;
-> +}
-> +
-> +/**
-> + * idpf_ptp_extend_ts - Convert a 40b timestamp to 64b nanoseconds
-> + * @adapter: Driver specific private structure
-> + * @in_tstamp: Ingress/egress timestamp value
-> + *
-> + * It is assumed that the caller verifies the timestamp is valid prior to
-> + * calling this function.
-> + *
-> + * Extract the 32bit nominal nanoseconds and extend them. Use the cached PHC
-> + * time stored in the device private PTP structure as the basis for timestamp
-> + * extension.
-> + *
-> + * Return: Tx timestamp value extended to 64 bits.
-> + */
-> +u64 idpf_ptp_extend_ts(const struct idpf_adapter *adapter, u64 in_tstamp)
-> +{
-> +	unsigned long discard_time;
-> +
-> +	discard_time = adapter->ptp->cached_phc_jiffies + 2 * HZ;
-> +
-> +	if (time_is_before_jiffies(discard_time))
-> +		return 0;
-
-It might be a good idea to count such events, just to provide at least
-some information to the client regarding zero timestamp?
-
-> +
-> +	return idpf_ptp_tstamp_extend_32b_to_64b(adapter->ptp->cached_phc_time,
-> +						 lower_32_bits(in_tstamp));
-> +}
-
-
-[... skip ...]
