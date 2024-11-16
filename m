@@ -1,99 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A4AA9CFA37
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Nov 2024 23:40:13 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D5F3860E2A;
-	Fri, 15 Nov 2024 22:40:11 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9VJk42dE4iWu; Fri, 15 Nov 2024 22:40:11 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2D597605D7
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1731710411;
-	bh=+Ek8GZMqSIHsbViNoOmI/afu8qDdzMVOCvqTdcyOFGw=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=w6uYJZY+++CJje9pqRjYdjGiodz8bm7FtUM0s5fZbms1fFXf01kXUBi+kbaptrkFj
-	 6ymGlu0b5x/9PY3ghzzVXPpKBXZVTspi3+ty1/rFLSHkEfRDcWoJYwogotj05C6Mke
-	 OjpOJRY4Eo+Ny+HBWoQxGtqOIGG1rBK5ChXVivfVCx1BkSi8qkaQyzP7TwaZI9oI3d
-	 L6cBdjVKrnHenrancLpvfJG/8Vboqso16zoRqB9hjagwHH2nH6PFIuefOplJf3PpXe
-	 sJdmJ+7B84JR1gPPMGSjohzwFtSXAIEKUyQ4d94oANrMpdpQ6cQ8N3I0rAYL2K8icQ
-	 keeQdZx9dl+ow==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2D597605D7;
-	Fri, 15 Nov 2024 22:40:11 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 6954427DF
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Nov 2024 18:54:35 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 982409D1530
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Nov 2024 17:19:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 57D5F80AC4
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Nov 2024 18:54:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9D0DD84B44;
+	Mon, 18 Nov 2024 16:19:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9qoZE4ScrYVz for <intel-wired-lan@lists.osuosl.org>;
- Fri, 15 Nov 2024 18:54:34 +0000 (UTC)
-X-Greylist: delayed 470 seconds by postgrey-1.37 at util1.osuosl.org;
- Fri, 15 Nov 2024 18:54:34 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3F512809F6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3F512809F6
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2001:41d0:203:375::b4; helo=out-180.mta1.migadu.com;
- envelope-from=jesse.brandeburg@linux.dev; receiver=<UNKNOWN> 
-Received: from out-180.mta1.migadu.com (out-180.mta1.migadu.com
- [IPv6:2001:41d0:203:375::b4])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3F512809F6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Nov 2024 18:54:34 +0000 (UTC)
-Message-ID: <45ce4333-57da-4c32-ad06-c368d90b1328@linux.dev>
-Date: Fri, 15 Nov 2024 10:46:33 -0800
+ id P8biPT5uNrIj; Mon, 18 Nov 2024 16:19:23 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5E9B084B32
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1731946763;
+	bh=MOwl+3RRY6hxipxxoc7tx76VBhuRwRCiipNgIx+NOyw=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=E/IdkbDIp1tux+2SZnFCSkYU8C5KQI9Ok6swlvl/qhxwRAmSTmA8aCmsCg+p81+vs
+	 yq58xvF5gQ/FmYw+sz58j+X27OaaEYHh11fY4s97/ChLPOt0njSJjq8MFA95n9zHGH
+	 xXRVQK+jEjUVNdFDtMs43cV3oLOTkfJRoowjXfhD3o6jJgcqbmJp5Gyv4TC0KD2Lnu
+	 5A9EWh8ts6rgk4rexxw21UMltJHW6YTf52J5r8GUSqVqbooEOD4vRsdEvN7ENN4W66
+	 GbJq/cfBUvyfbIGhu35L42QLajQLDR4pTa0bpXUgW6v5hQnx7ya2LwSC+1bLNb2CTy
+	 5XuKNdCuEKapg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5E9B084B32;
+	Mon, 18 Nov 2024 16:19:23 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 057091EB8
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Nov 2024 15:41:40 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id E81D880AC3
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Nov 2024 15:41:39 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id si0XnPn5k17H for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 16 Nov 2024 15:41:39 +0000 (UTC)
+X-Greylist: delayed 1012 seconds by postgrey-1.37 at util1.osuosl.org;
+ Sat, 16 Nov 2024 15:41:38 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org D171880C50
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D171880C50
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=2a00:1098:5b::1;
+ helo=mx.treblig.org; envelope-from=linux@treblig.org; receiver=<UNKNOWN> 
+Received: from mx.treblig.org (mx.treblig.org [IPv6:2a00:1098:5b::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D171880C50
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Nov 2024 15:41:38 +0000 (UTC)
+Received: from localhost ([127.0.0.1] helo=dalek.home.treblig.org)
+ by mx.treblig.org with esmtp (Exim 4.96)
+ (envelope-from <linux@treblig.org>) id 1tCKf4-000ISC-1X;
+ Sat, 16 Nov 2024 15:24:34 +0000
+From: linux@treblig.org
+To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, netdev@vger.kernel.org
+Cc: intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
+ "Dr. David Alan Gilbert" <linux@treblig.org>
+Date: Sat, 16 Nov 2024 15:24:33 +0000
+Message-ID: <20241116152433.96262-1-linux@treblig.org>
+X-Mailer: git-send-email 2.47.0
 MIME-Version: 1.0
-To: "Ertman, David M" <david.m.ertman@intel.com>,
- "jbrandeb@kernel.org" <jbrandeb@kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>
-Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
- "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-References: <20241114000105.703740-1-jbrandeb@kernel.org>
- <IA1PR11MB619459AFADE5BB3A515C0577DD5B2@IA1PR11MB6194.namprd11.prod.outlook.com>
-Content-Language: en-US
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
- include these headers.
-From: Jesse Brandeburg <jesse.brandeburg@linux.dev>
-In-Reply-To: <IA1PR11MB619459AFADE5BB3A515C0577DD5B2@IA1PR11MB6194.namprd11.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Migadu-Flow: FLOW_OUT
-X-Mailman-Approved-At: Fri, 15 Nov 2024 22:40:09 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linux.dev; s=key1; t=1731696401;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=+Ek8GZMqSIHsbViNoOmI/afu8qDdzMVOCvqTdcyOFGw=;
- b=a3aSdSCBDEfbuHo20XXAjfSzxgH0naWNRG5aRe8DOIKWSvHNMhTJRRdHbO/i0Ih3akEBES
- LOUEAX2eR42bRGlkJTruanZCRku7uKChPbOwJVtwEecYMmTzBh6v/InGWZ0nL9oALBozlR
- DRlAZ9uCJpzBKW6x5XC4Cr9bsa+VybQ=
+Content-Transfer-Encoding: 8bit
+X-Mailman-Approved-At: Mon, 18 Nov 2024 16:19:21 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; d=treblig.org
+ ; s=bytemarkmx; h=MIME-Version:Message-ID:Date:Subject:From:Content-Type:From
+ :Subject; bh=MOwl+3RRY6hxipxxoc7tx76VBhuRwRCiipNgIx+NOyw=; b=jQklbqBFpGHK1wDK
+ vjkNxGjl6RAxQS9DO47Bsw2jtozWJttx6ZB4jIWFlJpRpK2hNZYeXEoBPiHntqEqgMk9qr2S/wkHf
+ KFXGqkrQlvZZQb1C5b2aVG7h281MAvIwN4fJLGZ/XMB8chosS6aQ1TEYKVGY0kgkd9/ptY8Ltux5i
+ 31krpcPcsyNjVqGoyQK2ZAMS/Sx4xTEOmrKbY3KkScxEkXyJd4Q7IaUr8onugrJJxkhE7NoGStCVZ
+ gnlOo56gLspSWEXJqxFtkgS1G2k3KYAmuIZ5zGjEdPLB1is79sYeK4RQY/0ITaMb3Gq3vcpRtpysx
+ bH+o5fdUxvaPTEFXuA==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=linux.dev
+ header.from=treblig.org
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256
- header.s=key1 header.b=a3aSdSCB
-Subject: Re: [Intel-wired-lan] [PATCH net v1] ice: do not reserve resources
- for RDMA when disabled
+ dkim=pass (2048-bit key,
+ unprotected) header.d=treblig.org header.i=@treblig.org header.a=rsa-sha256
+ header.s=bytemarkmx header.b=jQklbqBF
+Subject: [Intel-wired-lan] [PATCH net-next] intel/fm10k: Remove unused
+ fm10k_iov_msg_mac_vlan_pf
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -109,30 +98,164 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 11/14/24 10:06 AM, Ertman, David M wrote:
->>   	case ICE_AQC_CAPS_RDMA:
->> -		caps->rdma = (number == 1);
->> +		if (IS_ENABLED(CONFIG_INFINIBAND_IRDMA))
->> +			caps->rdma = (number == 1);
->>   		ice_debug(hw, ICE_DBG_INIT, "%s: rdma = %d\n", prefix,
-> 
-> The HW caps struct should always accurately reflect the capabilities of the HW being probed.  Since this
+From: "Dr. David Alan Gilbert" <linux@treblig.org>
 
-why must it accurately reflect the capability of the hardware? The 
-driver state and capability is a reflection of the combination of both, 
-so I'm not sure what the point of your statement.
+fm10k_iov_msg_mac_vlan_pf() has been unused since 2017's
+commit 1f5c27e52857 ("fm10k: use the MAC/VLAN queue for VF<->PF MAC/VLAN
+requests")
 
-> is a kernel configuration (i.e. software) consideration, the more appropriate approach would be to control
-> the PF flag "ICE_FLAG_RDMA_ENA" based on the kernel CONFIG setting.
+Remove it.
 
-I started making the changes you suggested, but the ICE_FLAG_RDMA_ENA is 
-blindly set by the LAG code, if the cap.rdma is enabled. see 
-ice_set_rdma_cap(). This means the disable won't stick.
+Signed-off-by: Dr. David Alan Gilbert <linux@treblig.org>
+---
+ drivers/net/ethernet/intel/fm10k/fm10k_pf.c | 120 --------------------
+ drivers/net/ethernet/intel/fm10k/fm10k_pf.h |   2 -
+ 2 files changed, 122 deletions(-)
 
-Unless I'm misunderstanding something, ICE_FLAG_RDMA_ENA is used both as 
-a gate and as a state, which is a design issue. This leaves no choice 
-but to implement the way I did in this v1 patch. Do you see any other 
-option to make a simple change that is safe for backporting to stable?
+diff --git a/drivers/net/ethernet/intel/fm10k/fm10k_pf.c b/drivers/net/ethernet/intel/fm10k/fm10k_pf.c
+index 98861cc6df7c..b9dd7b719832 100644
+--- a/drivers/net/ethernet/intel/fm10k/fm10k_pf.c
++++ b/drivers/net/ethernet/intel/fm10k/fm10k_pf.c
+@@ -1179,126 +1179,6 @@ s32 fm10k_iov_select_vid(struct fm10k_vf_info *vf_info, u16 vid)
+ 		return vid;
+ }
+ 
+-/**
+- *  fm10k_iov_msg_mac_vlan_pf - Message handler for MAC/VLAN request from VF
+- *  @hw: Pointer to hardware structure
+- *  @results: Pointer array to message, results[0] is pointer to message
+- *  @mbx: Pointer to mailbox information structure
+- *
+- *  This function is a default handler for MAC/VLAN requests from the VF.
+- *  The assumption is that in this case it is acceptable to just directly
+- *  hand off the message from the VF to the underlying shared code.
+- **/
+-s32 fm10k_iov_msg_mac_vlan_pf(struct fm10k_hw *hw, u32 **results,
+-			      struct fm10k_mbx_info *mbx)
+-{
+-	struct fm10k_vf_info *vf_info = (struct fm10k_vf_info *)mbx;
+-	u8 mac[ETH_ALEN];
+-	u32 *result;
+-	int err = 0;
+-	bool set;
+-	u16 vlan;
+-	u32 vid;
+-
+-	/* we shouldn't be updating rules on a disabled interface */
+-	if (!FM10K_VF_FLAG_ENABLED(vf_info))
+-		err = FM10K_ERR_PARAM;
+-
+-	if (!err && !!results[FM10K_MAC_VLAN_MSG_VLAN]) {
+-		result = results[FM10K_MAC_VLAN_MSG_VLAN];
+-
+-		/* record VLAN id requested */
+-		err = fm10k_tlv_attr_get_u32(result, &vid);
+-		if (err)
+-			return err;
+-
+-		set = !(vid & FM10K_VLAN_CLEAR);
+-		vid &= ~FM10K_VLAN_CLEAR;
+-
+-		/* if the length field has been set, this is a multi-bit
+-		 * update request. For multi-bit requests, simply disallow
+-		 * them when the pf_vid has been set. In this case, the PF
+-		 * should have already cleared the VLAN_TABLE, and if we
+-		 * allowed them, it could allow a rogue VF to receive traffic
+-		 * on a VLAN it was not assigned. In the single-bit case, we
+-		 * need to modify requests for VLAN 0 to use the default PF or
+-		 * SW vid when assigned.
+-		 */
+-
+-		if (vid >> 16) {
+-			/* prevent multi-bit requests when PF has
+-			 * administratively set the VLAN for this VF
+-			 */
+-			if (vf_info->pf_vid)
+-				return FM10K_ERR_PARAM;
+-		} else {
+-			err = fm10k_iov_select_vid(vf_info, (u16)vid);
+-			if (err < 0)
+-				return err;
+-
+-			vid = err;
+-		}
+-
+-		/* update VSI info for VF in regards to VLAN table */
+-		err = hw->mac.ops.update_vlan(hw, vid, vf_info->vsi, set);
+-	}
+-
+-	if (!err && !!results[FM10K_MAC_VLAN_MSG_MAC]) {
+-		result = results[FM10K_MAC_VLAN_MSG_MAC];
+-
+-		/* record unicast MAC address requested */
+-		err = fm10k_tlv_attr_get_mac_vlan(result, mac, &vlan);
+-		if (err)
+-			return err;
+-
+-		/* block attempts to set MAC for a locked device */
+-		if (is_valid_ether_addr(vf_info->mac) &&
+-		    !ether_addr_equal(mac, vf_info->mac))
+-			return FM10K_ERR_PARAM;
+-
+-		set = !(vlan & FM10K_VLAN_CLEAR);
+-		vlan &= ~FM10K_VLAN_CLEAR;
+-
+-		err = fm10k_iov_select_vid(vf_info, vlan);
+-		if (err < 0)
+-			return err;
+-
+-		vlan = (u16)err;
+-
+-		/* notify switch of request for new unicast address */
+-		err = hw->mac.ops.update_uc_addr(hw, vf_info->glort,
+-						 mac, vlan, set, 0);
+-	}
+-
+-	if (!err && !!results[FM10K_MAC_VLAN_MSG_MULTICAST]) {
+-		result = results[FM10K_MAC_VLAN_MSG_MULTICAST];
+-
+-		/* record multicast MAC address requested */
+-		err = fm10k_tlv_attr_get_mac_vlan(result, mac, &vlan);
+-		if (err)
+-			return err;
+-
+-		/* verify that the VF is allowed to request multicast */
+-		if (!(vf_info->vf_flags & FM10K_VF_FLAG_MULTI_ENABLED))
+-			return FM10K_ERR_PARAM;
+-
+-		set = !(vlan & FM10K_VLAN_CLEAR);
+-		vlan &= ~FM10K_VLAN_CLEAR;
+-
+-		err = fm10k_iov_select_vid(vf_info, vlan);
+-		if (err < 0)
+-			return err;
+-
+-		vlan = (u16)err;
+-
+-		/* notify switch of request for new multicast address */
+-		err = hw->mac.ops.update_mc_addr(hw, vf_info->glort,
+-						 mac, vlan, set);
+-	}
+-
+-	return err;
+-}
+-
+ /**
+  *  fm10k_iov_supported_xcast_mode_pf - Determine best match for xcast mode
+  *  @vf_info: VF info structure containing capability flags
+diff --git a/drivers/net/ethernet/intel/fm10k/fm10k_pf.h b/drivers/net/ethernet/intel/fm10k/fm10k_pf.h
+index 8e814df709d2..ad3696893cb1 100644
+--- a/drivers/net/ethernet/intel/fm10k/fm10k_pf.h
++++ b/drivers/net/ethernet/intel/fm10k/fm10k_pf.h
+@@ -99,8 +99,6 @@ extern const struct fm10k_tlv_attr fm10k_err_msg_attr[];
+ 
+ s32 fm10k_iov_select_vid(struct fm10k_vf_info *vf_info, u16 vid);
+ s32 fm10k_iov_msg_msix_pf(struct fm10k_hw *, u32 **, struct fm10k_mbx_info *);
+-s32 fm10k_iov_msg_mac_vlan_pf(struct fm10k_hw *, u32 **,
+-			      struct fm10k_mbx_info *);
+ s32 fm10k_iov_msg_lport_state_pf(struct fm10k_hw *, u32 **,
+ 				 struct fm10k_mbx_info *);
+ 
+-- 
+2.47.0
 
-Thanks,
-Jesse
