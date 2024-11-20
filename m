@@ -1,221 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1CD119D2CEA
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Nov 2024 18:47:49 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 21C2C9D34DD
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Nov 2024 08:56:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 457EF4EC25;
-	Tue, 19 Nov 2024 17:47:47 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2SL5aTGogUFe; Tue, 19 Nov 2024 17:47:46 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 535AF4EC28
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1732038466;
-	bh=q+YxILbNFfY6/Mf5EFK1qWVrdFxqzW5hEmCnrK7iXl0=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=3q9S9TBnRkJ22TVZid9xT2ZU/TnPeISMcFlxnu3qhQwK7AD8dfXCBsKq6ZuNn8y6w
-	 CHxI3/1OyFpuu+wQ9SDJz8H07H9Im/Xjfx5wDn9JTRwGWqPu1MlWNyvBosX+BQ96r8
-	 AcaTgr7RftvMwJ6JcLOCSKFFy67cGd0g3ZB37U5UA/1kK3zf7wo+e4T7UQZxGOs8U1
-	 K+lN7lQ2os7stlnmGGq2NJYFvnu9Wj2XMy5fShbggoBejViCLh1dKA7WA1v463zCFN
-	 lmWItgiuyaGh0vFFR6nwb9ZyOiv83fI8H68yA5ixfoSJJczPc1ox1mvvDvW/US76Pp
-	 Cj6JgczqKZZjw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 535AF4EC28;
-	Tue, 19 Nov 2024 17:47:46 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 98C7ADB2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Nov 2024 17:47:43 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 86D9E6FA13
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Nov 2024 17:47:43 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6507B606C5;
+	Wed, 20 Nov 2024 07:56:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id nXd3yKYMLb5c for <intel-wired-lan@lists.osuosl.org>;
- Tue, 19 Nov 2024 17:47:42 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
- helo=mgamail.intel.com; envelope-from=himasekharx.reddy.pucha@intel.com;
+ id ND7NRBSRNbcn; Wed, 20 Nov 2024 07:56:02 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A80C0614C7
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1732089362;
+	bh=TRNDG2pyaaHxl/g8rTII6FkKjlDIrSBV4ymcXh4+x54=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=0ppBdJpkH+zPgjwx7LGcE4kbExE5HZgO6EGHOwR42kV3i1r75q8nyFWLXtRKJFEEx
+	 rTXEVPuWVRNdvtwtDGipRMO4kBX5EpoZxMkMxCymjC51kdeStlOasU06YS0MAEsRx5
+	 m+cOIBY9murs28H04pJ9WnQv8cME8FTanbmo29Hks7VTZ+huvdDmBdzaPRYpE5ELUt
+	 kbryac99VnNMeI7nlr9rsnqeyjnkuawI+v8dCe4Z2cIvIR7ObTnWFadM/BxK1oQY4H
+	 qxblei16jL9MjDnX+R4qpGyo5kIeV6VIUMjud1Z7Fmt/YkCFZ3KOOHgK6LTV50Ypu7
+	 2lbsAITquQcbg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id A80C0614C7;
+	Wed, 20 Nov 2024 07:56:02 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 2E358DB3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Nov 2024 07:56:01 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 07FFA40920
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Nov 2024 07:56:01 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ypRIGotoVp3R for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 20 Nov 2024 07:55:59 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
+ helo=mgamail.intel.com; envelope-from=arkadiusz.kubalewski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 69E396F751
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 69E396F751
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 69E396F751
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Nov 2024 17:47:42 +0000 (UTC)
-X-CSE-ConnectionGUID: fU78VzbDSXWl/ZRSWc2MGw==
-X-CSE-MsgGUID: +2FgBwYKSJyXMlP0WB3lwQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11261"; a="31994878"
-X-IronPort-AV: E=Sophos;i="6.12,166,1728975600"; d="scan'208";a="31994878"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
- by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Nov 2024 09:47:41 -0800
-X-CSE-ConnectionGUID: vwRit+ljQLC/1nB1oISCcQ==
-X-CSE-MsgGUID: K47lagfPSuCG10UCRcMlsw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 5EDD74023C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5EDD74023C
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5EDD74023C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Nov 2024 07:55:59 +0000 (UTC)
+X-CSE-ConnectionGUID: WztcDMJFTgaOQRrmJhQI3w==
+X-CSE-MsgGUID: n2DDXwclR+SZArfq5MX45g==
+X-IronPort-AV: E=McAfee;i="6700,10204,11261"; a="32381948"
+X-IronPort-AV: E=Sophos;i="6.12,169,1728975600"; d="scan'208";a="32381948"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+ by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Nov 2024 23:55:58 -0800
+X-CSE-ConnectionGUID: eEAgKmNRQNi3xKI2j+nOJg==
+X-CSE-MsgGUID: mF/peicRQhSY8tRkTvZLGg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,166,1728975600"; d="scan'208";a="120504886"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by orviesa002.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 19 Nov 2024 09:47:41 -0800
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Tue, 19 Nov 2024 09:47:40 -0800
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39 via Frontend Transport; Tue, 19 Nov 2024 09:47:40 -0800
-Received: from NAM04-BN8-obe.outbound.protection.outlook.com (104.47.74.49) by
- edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 19 Nov 2024 09:47:39 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=RxsGIsmNQCo9BMkVtg4rLDOtcI/CUImMswAqSU367Tf1GfOl/463QZmXeVaLay8dAtYxCuLpouKrjcpDTveMXbfONYQ9RGMOTM51D2baE0tBci62pYdBfP98v7pKQDKwhqVY2N0IDPjk/gbXh9oWTe7asqt9G6ThD3sva2HJoU4MJeRN26uCsrv7GY05dQOmblUfrCwDHSA2uoR+aUc8iGt0LtZvJEwFdjTz1wOMz9ls9+CPtFzlAu6PIE3MKCihAOh2JaW2rORw4xgwqqmCFuDMwCMswNZ4D7gD7PTbYEdWw1wPjThtoxm7yGDIndyN81utHWDTZeHhnEBKSfAqEw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=q+YxILbNFfY6/Mf5EFK1qWVrdFxqzW5hEmCnrK7iXl0=;
- b=gyUUwq8WJl11dd05aQQocX6JNnlKw87VvS/4yV2fvg4kFNPgMsT8wNdOrHS9pd7qV6khDQ2fUOmP9wMIfY9xsXW0BrN76KUJ2rDmXy/qzEw25iOLcOLMRXeSU5hhWVKwVSGlNBqU1fRxH6U/BLanjt6m4gT8WBoh0tcG59n2b03iRlk//eU1Cs58Omfb6c9egzPv3/L4944dLoLyG3ZE05ze5hdW+V+Mf6HHW9hw01Whk964kwh8aTl1G+sHdlSaOyq0B2P0Q9RgLrDwajDyb6YDzLimbZYldZR4NJbnTow2wthySModio1haQNcP4g/+Dcz7MmIY0L1iPWlo0aBMg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from CYYPR11MB8429.namprd11.prod.outlook.com (2603:10b6:930:c2::15)
- by CH3PR11MB7771.namprd11.prod.outlook.com (2603:10b6:610:125::6)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8158.23; Tue, 19 Nov
- 2024 17:47:34 +0000
-Received: from CYYPR11MB8429.namprd11.prod.outlook.com
- ([fe80::4f97:ad9d:79a9:899f]) by CYYPR11MB8429.namprd11.prod.outlook.com
- ([fe80::4f97:ad9d:79a9:899f%6]) with mapi id 15.20.8158.023; Tue, 19 Nov 2024
- 17:47:34 +0000
-From: "Pucha, HimasekharX Reddy" <himasekharx.reddy.pucha@intel.com>
-To: Yuan Can <yuancan@huawei.com>, "Nguyen, Anthony L"
- <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
- <przemyslaw.kitszel@intel.com>, "andrew+netdev@lunn.ch"
- <andrew+netdev@lunn.ch>, "davem@davemloft.net" <davem@davemloft.net>,
- "edumazet@google.com" <edumazet@google.com>, "kuba@kernel.org"
- <kuba@kernel.org>, "pabeni@redhat.com" <pabeni@redhat.com>,
- "alexander.h.duyck@intel.com" <alexander.h.duyck@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>
-Thread-Topic: [Intel-wired-lan] [PATCH net v2] igb: Fix potential invalid
- memory access in igb_init_module()
-Thread-Index: AQHbJUSYuVJ1mVBeokqAaN0OHQSMrLK/C2FA
-Date: Tue, 19 Nov 2024 17:47:34 +0000
-Message-ID: <CYYPR11MB84296892DE03F1E61C55252DBD202@CYYPR11MB8429.namprd11.prod.outlook.com>
-References: <20241023121048.26905-1-yuancan@huawei.com>
-In-Reply-To: <20241023121048.26905-1-yuancan@huawei.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CYYPR11MB8429:EE_|CH3PR11MB7771:EE_
-x-ms-office365-filtering-correlation-id: 36c297de-72e6-40c2-17de-08dd08c23fa6
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|1800799024|366016|921020|38070700018; 
-x-microsoft-antispam-message-info: =?us-ascii?Q?ePYAVNAQX+mj91ZsZZEjox9ZBbLXwazqmJNLy6q+ADqX4J+pRN9+CQbg8X9q?=
- =?us-ascii?Q?68+wgVJM0mGdr7QfC/Q5lKbb17z102I6S2sZti8b1hUuJuOyXRRajYggp996?=
- =?us-ascii?Q?yWNPVlkK5Qu/fMYolHEplo5Ixbkb7/oBBzh49xd5HtXCtGgexDR93wpOMlLi?=
- =?us-ascii?Q?5YvyF0BXLS7H2yp/brGmS6t89iHfIKrbuvjsl8ev3zCY+baLr0hCs7BJl1l7?=
- =?us-ascii?Q?y7bh0GCYp3pDoObW38zBCCUY2cnd+8xZNaNa8jdEAOJScJwLSfEoi9kR7LuA?=
- =?us-ascii?Q?mkrCwNl5V/T7dqn6Ee9aFDV7ZgLG2h33J7JNuiyS/Bx1NYhoO9l3SDJvc5jH?=
- =?us-ascii?Q?AEnad5IaITcAL22Y0/YTIEjTew9ddkfzP8ZgNSDFCoXTTuErLyH7aq30/Olq?=
- =?us-ascii?Q?02w7NY+BfzjnvpRs269i9AWOk5DLMFCKHryCnGhlCjZp4IYykUCpmSYsjTJL?=
- =?us-ascii?Q?zr98BYCkPnKyWmQpGc9ZlHwcrAV7n37FRS90VUXTB9QIjtL74S3dxN0oJURy?=
- =?us-ascii?Q?3Wqc0Kn2tfEHrCOw0j3jyp/ZC84cxUWfG1sYHWBiaxQvPEY4Kxaap2vUBQZT?=
- =?us-ascii?Q?NK70y2wJ+xmubXdrqYsY2wJd31KDyNc+wUky92Czf6MoKeu57uK/gPeUodIc?=
- =?us-ascii?Q?nkzrViLxQkigYhTv1Ai8MCJ6Y12lUbd6HcMjzucJ+7bu26RloYEy1ownvTDm?=
- =?us-ascii?Q?aSHdAS+P5f4u/ieQ1MqZjb1EoHZV+Nosne7woQ/CNJP6mp4P2zkb2yHcCaY4?=
- =?us-ascii?Q?c3cA+WsgVf0UlyeScORzQD/8aYExQ+IU/d4HFNV2ldRb6R2rYQn/Hir80wVM?=
- =?us-ascii?Q?wah8LfXRhvlk0kpXp2y80eZJB07VK/p066BGPaubgD4dYZ2Qb9wb2U28hKa0?=
- =?us-ascii?Q?XGQ576OK1KrGoBRDTKYeXAiSjR9cUwCQQ1SeZhS5ZKWpUM3x7qUNnG2D5YLK?=
- =?us-ascii?Q?n+GqwaLEiw19P0vOJpQrwOYcu5sVMiqwYMaHDVDcATfUIgZD670gkHcmzo9x?=
- =?us-ascii?Q?a17Achj8wPW7rbdiSad9N8NSqpgPe929pq4xIV+P5wj4t6F+ywZnxfIVbLOU?=
- =?us-ascii?Q?x7oCuO+iXkG8H6NoUM9x6wXMyWfCTG9LJ6EI6ymt5mICWaOFbbF29ZNb0AgE?=
- =?us-ascii?Q?2dOhjGO6SwR2UgkLf3m/5huFB4kg+/TOF/dUF4+KPE3STeE4oH4zO5Hzlh9a?=
- =?us-ascii?Q?lPmMgVR2vgjmU8KgtQUMDP5gxylIbWZo4lwCVq0FbRpAQldwRWw/6JR5KZ2J?=
- =?us-ascii?Q?AhS4MJd+Hg2kspA6RoCeNQcG6Y7t6I7zXShGa/xI00VE3TQ+mgAr+/BXeqLH?=
- =?us-ascii?Q?KXlUDPAR8mJvhrLcfZOsozfNYjveS8uIRi3TQBm94tYRR+jyycAFdxCD3WJb?=
- =?us-ascii?Q?FP35yNmPDGi7UQvGQ0XGUQ48fAOv?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CYYPR11MB8429.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(1800799024)(366016)(921020)(38070700018); DIR:OUT;
- SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?ZSNqTkaFAKNZZbuDA8quf4dIG5DTN5SjrgW1P8rBlrrtWpZ2RjXLxZmY/oAu?=
- =?us-ascii?Q?0h45GfhAclvsa20Xx1YMGBk5k4UU12nt0/7pqnhtAJBQ6nfDKIWeALB9Vo+o?=
- =?us-ascii?Q?seArL1P1a3d9D2NAX8QpnnlwS+nwOOD9qUH9Rw33qoBSbsg+VsdRXgyj9PPE?=
- =?us-ascii?Q?djA8toHVOyxEpR+2YXh871wboPxemTPgbt8tF6sRHCEJUEEIAcwlOvLAmy0p?=
- =?us-ascii?Q?JieQKwbCGwgVqJJcG/cfo7K5PaPPKDFeJ5DSr0TOB3Bxj4lTl/J6h1Rzeo+r?=
- =?us-ascii?Q?pACLKaZWC41pzvaA76UpfoRXGdOvQg8OO9NYGDU4B7u6hfolcUqgHwpnXTOE?=
- =?us-ascii?Q?CsRxhk2/XdTvSJJ0/vEASt6GclCvicCmcA9OlhS8vPLjvxaYrc8JQ9tFBOfd?=
- =?us-ascii?Q?ZmrwkJOq9yp5mI8+RdvOPyVoIqEOGry90m81esW5F60q88tM1iL3lqsKZvGV?=
- =?us-ascii?Q?ZelhupoanyEtpAmaVGgZhtrIFuv7bVshh3cQscgnqnVexslnDL/1NEYXpQp1?=
- =?us-ascii?Q?VH1+0ROA57+Mh4YFTsQ5eNrmfUHCOodt6GxwXCZSWGn68sL+EsG8zjuu0A6W?=
- =?us-ascii?Q?HMxzScLTrwTpqrYauac/b1z928YcJUvahmumAh4eUuhKIszyLWAPAFzL1QBJ?=
- =?us-ascii?Q?E3Qj9CkhhKJ5MR1VChrMw4LckXTRL0g8q5+SkaeXA6SWlN9eU77DzYrS4s3K?=
- =?us-ascii?Q?JJnfQXbSBvZEygcj+N1bUdbrLiKm5hr22YkebaNjWJMPSf0nFzom1ZM4cniS?=
- =?us-ascii?Q?LhVklUqePyvLJ1k0tydyHT5vr9gThOfqUSg1eL3AcJKXLj+v9xQgmXXl5eGE?=
- =?us-ascii?Q?i6eJzVZ0+xjAvp56nDlXzlvo4CGBIiC45Dqd221aONs1z8lBKv86QHkZeywy?=
- =?us-ascii?Q?ajjHNXIiKlViMNuYEcUdsD9hSkfoAgw76fOhAgVk4b3esz5cFFonqgJ0vuCp?=
- =?us-ascii?Q?+qV6DQ6zvsuQeJdqSbdsGj1Mqlgyneb2sQvwMm50Jweog0ClJJkN2UKObFNn?=
- =?us-ascii?Q?n1k7aF6ZaRkpLWjZyPJjKsnFpX0KplIBHPXj9R8WdBLNlIh8y52Fh64e83AZ?=
- =?us-ascii?Q?VsBOdKmL0d8YltL6cIAOaaL0myTk1S0IcqE/3gTS+v5tBihK2kQb6J19yJP0?=
- =?us-ascii?Q?/wVl0fIctdBAbnWRXMVmFjjp2Y/INXFFDAHZnDVHvIcmRfVQUgzwsKRil9Zh?=
- =?us-ascii?Q?dIN/d26M8XQ60X7JJHPJYk8NrE0RHnocnZ1ZtLJG4V9NT2REKEBi5OSUApE+?=
- =?us-ascii?Q?QNiESYDjESjCK4jphFnsmHogi5+pGW3WGa0Ae9xzxmzfz8gDtdpNDmO0ujNl?=
- =?us-ascii?Q?V2hvUgmcs0lRBHwqcDTGF4z/d08+TcYxFKGWnbtvLo5V58L2wjGiXj/AZnct?=
- =?us-ascii?Q?zderi3BktVHekPW+p1CkGzp0IEUmRHuG1gAVh4CxM6KkCV6WKGSNM8Dm1U4X?=
- =?us-ascii?Q?3D3AfCZ5s3ERyk5fK3L2DslmJvx4p3v30uTL3xUFmD5l/hF2wEocPfW4kqcY?=
- =?us-ascii?Q?Zp06JHBrEoreuKT7ZVHfN4oZ6gMufhGBN6vuYW5eq/xwB3WuOeKULGks/xa5?=
- =?us-ascii?Q?QsSfA4XavhuOx6w7HXWHYRFufoUbokG22oFZ2AX91BULDvSGZR48rMYKFwkL?=
- =?us-ascii?Q?yQ=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+X-IronPort-AV: E=Sophos;i="6.12,169,1728975600"; d="scan'208";a="89984155"
+Received: from amlin-018-114.igk.intel.com ([10.102.18.114])
+ by fmviesa008.fm.intel.com with ESMTP; 19 Nov 2024 23:55:57 -0800
+From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org,
+ Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Date: Wed, 20 Nov 2024 08:51:12 +0100
+Message-Id: <20241120075112.1662138-1-arkadiusz.kubalewski@intel.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CYYPR11MB8429.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 36c297de-72e6-40c2-17de-08dd08c23fa6
-X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Nov 2024 17:47:34.0827 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 1ulBOqHAvblSqrGEVwfNsX7Cv1myZSNI+/th+0wxD2D4BVGh6sKzUjv07J7LSXcZwVmUHs6oz034M2A+YLZ/QjuyweRt4VYVyb67kIDDn261dZpYpYidluT7dhKYIvr3
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR11MB7771
-X-OriginatorOrg: intel.com
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1732038463; x=1763574463;
- h=from:to:subject:date:message-id:references:in-reply-to:
- content-transfer-encoding:mime-version;
- bh=n0ZoAc1B3LrJE04HYaypcD4IFNJHyX5PvPbqPsEZurY=;
- b=Aapgydw6ilhKuIiIo7HzdHzL7fB4/rybp49aoycRWoDYMb6yicRBm9NU
- eVGMA9YbCnKYb//nwJXg0+KHY66SlP5aq0TQceYSkfabJAgojw0OhGkYY
- fMHsNbNoVoC+rvbjhoTLDyWVLyB0KJYMyef+gfD9I0RWZ2wSI6m5Qv0Qp
- FlmGCkICrXF1PyEBCVRH7Uc89/M1vy5TdkoiT8mTVljX7nHYo/NEsh7eD
- hwfzF5x6oHAMb8nTwPY/HnH36Fh8mYFk9ePzsXSBI7oCUqI5/gKEmdWpD
- 7dxO0aTL+5UbNnwpHAmnhAvDCUCTi1kBEi/47Pp273m2pWbXAUO8qu0BG
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1732089359; x=1763625359;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=ymgRt1r8OSosi9epgbbUpFLxfOaNFCyEGnN/25izfP0=;
+ b=IEMzsPieMzYS2Ut91ZmlywKVv0H551f3O+pDbxPMxGn2HG/d9Y0dfc+F
+ 79ZthEfYscK7B5fWGJkMuh6TTKPFi5vBDVXuSp+VH6IrnebLLbusTjx+A
+ wu/IB5U23wAtN4cwp6FugvDSldpKAy4aOjwg+RcN6mI83kkVn/5lMeadg
+ MtUF6MjmLHdkMS3aZ428ak29RgUEbuS46cg7DgJiBr8kCuUQ/AHZW5+vc
+ n31Dn9DdBOwa9Mc8bTR0liSf7DiWH3UHynwjfzO2Y3TigAAovBp+GwgD0
+ 2/ss+88mWjkWz8CSD6v+YW1AUkMQCRqueS5R0LujIgDXfaS49eE/VF6a/
+ A==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=Aapgydw6
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net v2] igb: Fix potential invalid
- memory access in igb_init_module()
+ header.s=Intel header.b=IEMzsPie
+Subject: [Intel-wired-lan] [PATCH iwl-net] ice: fix max values for dpll pin
+ phase adjust
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -231,34 +108,144 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Y=
-uan Can
-> Sent: 23 October 2024 17:41
-> To: Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw <=
-przemyslaw.kitszel@intel.com>; andrew+netdev@lunn.ch; davem@davemloft.net; =
-edumazet@google.com; kuba@kernel.org; pabeni@redhat.com; alexander.h.duyck@=
-intel.com; intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org
-> Cc: yuancan@huawei.com
-> Subject: [Intel-wired-lan] [PATCH net v2] igb: Fix potential invalid memo=
-ry access in igb_init_module()
->
-> The pci_register_driver() can fail and when this happened, the dca_notifi=
-er needs to be unregistered, otherwise the dca_notifier can be called when =
-igb fails to install, resulting to invalid memory access.
->
-> Fixes: bbd98fe48a43 ("igb: Fix DCA errors and do not use context index fo=
-r 82576")
-> Signed-off-by: Yuan Can <yuancan@huawei.com>
-> ---
-> Changes since v1:
-> - Change fix tag to bbd98fe48a43.
-> - Change target branch to net.
-> ---
->  drivers/net/ethernet/intel/igb/igb_main.c | 4 ++++
->  1 file changed, 4 insertions(+)
->
+Mask admin command returned max phase adjust value for both input and
+output pins. Only 31 bits are relevant, last released data sheet wrongly
+points that 32 bits are valid - see [1] 3.2.6.4.1 Get CCU Capabilities
+Command for reference. Fix of the datasheet itself is in progress.
 
-Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com> (A Co=
-ntingent worker at Intel)
+Fix the min/max assignment logic, previously the value was wrongly
+considered as negative value due to most significant bit being set.
+
+Example of previous broken behavior:
+$ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/dpll.yaml \
+--do pin-get --json '{"id":1}'| grep phase-adjust
+ 'phase-adjust': 0,
+ 'phase-adjust-max': 16723,
+ 'phase-adjust-min': -16723,
+
+Correct behavior with the fix:
+$ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/dpll.yaml \
+--do pin-get --json '{"id":1}'| grep phase-adjust
+ 'phase-adjust': 0,
+ 'phase-adjust-max': 2147466925,
+ 'phase-adjust-min': -2147466925,
+
+[1] https://cdrdv2.intel.com/v1/dl/getContent/613875?explicitVersion=true
+
+Fixes: 90e1c90750d7 ("ice: dpll: implement phase related callbacks")
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+---
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  2 ++
+ drivers/net/ethernet/intel/ice/ice_dpll.c     | 35 ++++++++++++-------
+ 2 files changed, 25 insertions(+), 12 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+index 547c96b9c1d5..80f3dfd27124 100644
+--- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
++++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+@@ -2239,6 +2239,8 @@ struct ice_aqc_get_pkg_info_resp {
+ 	struct ice_aqc_get_pkg_info pkg_info[];
+ };
+ 
++#define ICE_AQC_GET_CGU_MAX_PHASE_ADJ	GENMASK(30, 0)
++
+ /* Get CGU abilities command response data structure (indirect 0x0C61) */
+ struct ice_aqc_get_cgu_abilities {
+ 	u8 num_inputs;
+diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.c b/drivers/net/ethernet/intel/ice/ice_dpll.c
+index d5ad6d84007c..38e151c7ea23 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dpll.c
++++ b/drivers/net/ethernet/intel/ice/ice_dpll.c
+@@ -2064,6 +2064,18 @@ static int ice_dpll_init_worker(struct ice_pf *pf)
+ 	return 0;
+ }
+ 
++/**
++ * ice_dpll_phase_range_set - initialize phase adjust range helper
++ * @range: pointer to phase adjust range struct to be initialized
++ * @phase_adj: a value to be used as min(-)/max(+) boundary
++ */
++static void ice_dpll_phase_range_set(struct dpll_pin_phase_adjust_range *range,
++				     u32 phase_adj)
++{
++	range->min = -phase_adj;
++	range->max = phase_adj;
++}
++
+ /**
+  * ice_dpll_init_info_pins_generic - initializes generic pins info
+  * @pf: board private structure
+@@ -2105,8 +2117,8 @@ static int ice_dpll_init_info_pins_generic(struct ice_pf *pf, bool input)
+ 	for (i = 0; i < pin_num; i++) {
+ 		pins[i].idx = i;
+ 		pins[i].prop.board_label = labels[i];
+-		pins[i].prop.phase_range.min = phase_adj_max;
+-		pins[i].prop.phase_range.max = -phase_adj_max;
++		ice_dpll_phase_range_set(&pins[i].prop.phase_range,
++					 phase_adj_max);
+ 		pins[i].prop.capabilities = cap;
+ 		pins[i].pf = pf;
+ 		ret = ice_dpll_pin_state_update(pf, &pins[i], pin_type, NULL);
+@@ -2152,6 +2164,7 @@ ice_dpll_init_info_direct_pins(struct ice_pf *pf,
+ 	struct ice_hw *hw = &pf->hw;
+ 	struct ice_dpll_pin *pins;
+ 	unsigned long caps;
++	u32 phase_adj_max;
+ 	u8 freq_supp_num;
+ 	bool input;
+ 
+@@ -2159,11 +2172,13 @@ ice_dpll_init_info_direct_pins(struct ice_pf *pf,
+ 	case ICE_DPLL_PIN_TYPE_INPUT:
+ 		pins = pf->dplls.inputs;
+ 		num_pins = pf->dplls.num_inputs;
++		phase_adj_max = pf->dplls.input_phase_adj_max;
+ 		input = true;
+ 		break;
+ 	case ICE_DPLL_PIN_TYPE_OUTPUT:
+ 		pins = pf->dplls.outputs;
+ 		num_pins = pf->dplls.num_outputs;
++		phase_adj_max = pf->dplls.output_phase_adj_max;
+ 		input = false;
+ 		break;
+ 	default:
+@@ -2188,19 +2203,13 @@ ice_dpll_init_info_direct_pins(struct ice_pf *pf,
+ 				return ret;
+ 			caps |= (DPLL_PIN_CAPABILITIES_PRIORITY_CAN_CHANGE |
+ 				 DPLL_PIN_CAPABILITIES_STATE_CAN_CHANGE);
+-			pins[i].prop.phase_range.min =
+-				pf->dplls.input_phase_adj_max;
+-			pins[i].prop.phase_range.max =
+-				-pf->dplls.input_phase_adj_max;
+ 		} else {
+-			pins[i].prop.phase_range.min =
+-				pf->dplls.output_phase_adj_max;
+-			pins[i].prop.phase_range.max =
+-				-pf->dplls.output_phase_adj_max;
+ 			ret = ice_cgu_get_output_pin_state_caps(hw, i, &caps);
+ 			if (ret)
+ 				return ret;
+ 		}
++		ice_dpll_phase_range_set(&pins[i].prop.phase_range,
++					 phase_adj_max);
+ 		pins[i].prop.capabilities = caps;
+ 		ret = ice_dpll_pin_state_update(pf, &pins[i], pin_type, NULL);
+ 		if (ret)
+@@ -2308,8 +2317,10 @@ static int ice_dpll_init_info(struct ice_pf *pf, bool cgu)
+ 	dp->dpll_idx = abilities.pps_dpll_idx;
+ 	d->num_inputs = abilities.num_inputs;
+ 	d->num_outputs = abilities.num_outputs;
+-	d->input_phase_adj_max = le32_to_cpu(abilities.max_in_phase_adj);
+-	d->output_phase_adj_max = le32_to_cpu(abilities.max_out_phase_adj);
++	d->input_phase_adj_max = le32_to_cpu(abilities.max_in_phase_adj) &
++		ICE_AQC_GET_CGU_MAX_PHASE_ADJ;
++	d->output_phase_adj_max = le32_to_cpu(abilities.max_out_phase_adj) &
++		ICE_AQC_GET_CGU_MAX_PHASE_ADJ;
+ 
+ 	alloc_size = sizeof(*d->inputs) * d->num_inputs;
+ 	d->inputs = kzalloc(alloc_size, GFP_KERNEL);
+
+base-commit: a76d2631397d9331132688105313d8e3da8f4010
+-- 
+2.38.1
 
