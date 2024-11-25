@@ -1,106 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1A3A09D8D57
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 25 Nov 2024 21:19:45 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0387D9D8F4E
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Nov 2024 00:51:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 515AE61631;
-	Mon, 25 Nov 2024 20:19:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 10BD7402ED;
+	Mon, 25 Nov 2024 23:51:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VEV5yu4sF8V1; Mon, 25 Nov 2024 20:19:42 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id csvMaTIMx8Ek; Mon, 25 Nov 2024 23:51:56 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A91E56162A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4B03E40282
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1732565982;
-	bh=gvj8/daT4bm/MSDyzdQKh+TSEjqs2Vm77FYymcFX+dw=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=XtBO1Pble+WqlCOy+tXFA0M+zOB1WR2og4MaFIwhnULJtFYYxqHBXF7xPHSCKtEZh
-	 ACnUGeEBFS+k9f4bng71ijx2WmNi62f2Byga3Y+mYu1DrcRDQrYD/2Y2db0YX10M6/
-	 2fVmMI1YEfpCWGvBciT9zuF01cB4XyfYs9TxxBXypYvOlEkEA1Tp3Ylx+wGp+8QaNq
-	 XUSe/FAlkGH86rcMPPMc1T2xChHq/HM6wHcltZnQJmc60S0WPQkm9llqqQwQzt9oDf
-	 njBq0IUU7z7z48OqD3tRA7Zrw4HBqRlu/W9i2AN4M46222bHoBprtYYnrdhbkZDXz0
-	 RhNROIfjwAD8Q==
+	s=default; t=1732578716;
+	bh=XCGGwe4JM/rlFrrZiCYLqUtPqNoBjyfe81+iSxHxYjA=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=92rBeM8qmnPs0kizhzMFNMYUVhSMpEyohVi3JXyxmlCRKViLX7Mdedp1wpJkt17Cl
+	 BQVSBMDd+UqlH6IHrfGWnvRnBio0wjiweYXsLqWlszZDiL0kV/TNr1yg5R3wKKP8o7
+	 LOHmxdloiJB46hGEvA2lowWcqZnxrcYfloSzIHhA/cvGU6WJexOdP4oD2XwO7GU7gu
+	 EPhUCIhoxlBvHlohOhE80LBqnnpeJsiGQE/oaFG7Z3tLeiA5vpjbzec4k9rY6Fdh3h
+	 ublPjkO7s3PaTVz9kqcwjKUnOcQGAFQrausU+Gl1wgri4o9juegL7GUZsT2kJ78+HF
+	 PA8r5ypJKlesw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A91E56162A;
-	Mon, 25 Nov 2024 20:19:42 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4B03E40282;
+	Mon, 25 Nov 2024 23:51:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 396ED4961
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2024 20:19:41 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id A0554281F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2024 23:51:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 26C3980A5F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2024 20:19:41 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7A92F40256
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2024 23:51:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TI4hMRSFEguL for <intel-wired-lan@lists.osuosl.org>;
- Mon, 25 Nov 2024 20:19:40 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
- helo=mgamail.intel.com; envelope-from=martyna.szapar-mudlaw@linux.intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id yu_2F5j3NT1a for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 25 Nov 2024 23:51:52 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
+ helo=mgamail.intel.com; envelope-from=joshua.a.hay@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0B98480A57
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0B98480A57
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0B98480A57
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2024 20:19:39 +0000 (UTC)
-X-CSE-ConnectionGUID: iFNMS7cjQnmIgxEcjYAGHA==
-X-CSE-MsgGUID: gcBHtonhRMOXsOHIvLbELA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11267"; a="36624740"
-X-IronPort-AV: E=Sophos;i="6.12,183,1728975600"; d="scan'208";a="36624740"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
- by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Nov 2024 12:19:38 -0800
-X-CSE-ConnectionGUID: OgSz/mjLSXGkoj2itWL4uw==
-X-CSE-MsgGUID: +CZ+MvLnQ6eBVsIJpgvNVA==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 9B95C40206
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9B95C40206
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9B95C40206
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2024 23:51:51 +0000 (UTC)
+X-CSE-ConnectionGUID: uEr59p0yTcGU0KNESDe8BQ==
+X-CSE-MsgGUID: GWkR2lSFQR2Ee548vTIOfA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11267"; a="44108294"
+X-IronPort-AV: E=Sophos;i="6.12,184,1728975600"; d="scan'208";a="44108294"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+ by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Nov 2024 15:51:51 -0800
+X-CSE-ConnectionGUID: YdIOPK/AQGW0qjCv1KVWug==
+X-CSE-MsgGUID: 96wT6VuZQE+skIbvjNrXHQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,183,1728975600"; d="scan'208";a="122238582"
-Received: from mszapar-mobl1.ger.corp.intel.com (HELO [10.245.84.66])
- ([10.245.84.66])
- by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Nov 2024 12:19:37 -0800
-Message-ID: <c661b2cb-871e-48da-80e6-df7d011024fd@linux.intel.com>
-Date: Mon, 25 Nov 2024 21:19:22 +0100
+X-IronPort-AV: E=Sophos;i="6.12,184,1728975600"; d="scan'208";a="92239622"
+Received: from dcskidmo-m40.jf.intel.com ([10.166.241.13])
+ by orviesa008.jf.intel.com with ESMTP; 25 Nov 2024 15:51:50 -0800
+From: Joshua Hay <joshua.a.hay@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: przemyslaw.kitszel@intel.com, michal.kubiak@intel.com,
+ aleksander.lobakin@intel.com, madhu.chittim@intel.com,
+ netdev@vger.kernel.org, Joshua Hay <joshua.a.hay@intel.com>
+Date: Mon, 25 Nov 2024 15:58:53 -0800
+Message-Id: <20241125235855.64850-1-joshua.a.hay@intel.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>
-References: <20241122121317.2117826-1-martyna.szapar-mudlaw@linux.intel.com>
- <DM4PR11MB61173CA962D7D88040365DA082232@DM4PR11MB6117.namprd11.prod.outlook.com>
-Content-Language: en-US
-From: "Szapar-Mudlaw, Martyna" <martyna.szapar-mudlaw@linux.intel.com>
-In-Reply-To: <DM4PR11MB61173CA962D7D88040365DA082232@DM4PR11MB6117.namprd11.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1732565980; x=1764101980;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=KJlb6x3NhUymu+6Y8syLqBjVhnjn19yo6hROLMRBuDM=;
- b=JA4ybip3CQbrGkBFtnW4J60RknnFn98o2IJtwK8MY6sITvMyYPI2nkqv
- 5g+zsNzMTgu+xa2KOJMo6o+ZHZzLXnM7b8O/kA0HWCks9adYesEe7zhiV
- pZCny96KiIfK/CzMWFeDURDgWSBLuMRfKFxcVcXgfrrHAG1oS8vvw0RBI
- 0pVPcc30o+3WHMIC1nPWQ8N8BCQ9LxCZtFkA3cYEJvD7VmV4/eVEq6BbH
- ZumZoLngQMYZU3UKkFbUmwQsqoqEBWZ93lkUaYu7PGjFobSp6QiN18D8j
- 9/ErgFLtFQ/Z3P1wq5caYvT2vbgL8OS1DWLHIT7Y91uf7bQXRi31Zh5g3
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1732578713; x=1764114713;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=vkih/UZod11dYlMo8JC2SR5Tm5sdnhTeyfXh3OixoCo=;
+ b=kUDfde6Y5e9TqbJPGrVqlfU0pMQjMucqo5OUrC3O7VE5Y1TC0nVxIw3d
+ LZUH0EOj38+V1HEhfgTg434SlU/PvuKtVMgMb0Iuqng17YmgUu4eSTJnc
+ vRiIq7qWEfnMAacklrsy1RIE8MBJBAvYQCDv0ELO6MPB4fd8MxCbYwJPv
+ t1ikhxa1rBP6YduApp9D7RnCAI+vOTrzBxg171BGtZCEVpF/UMevKkyrb
+ HKiSGj07qs4cJkNSV8itNcLQEeAw99Gg96FBwJDpT6RJcZ+RpmwDcIEcJ
+ mtQvnEV0t0lnWn10VoyI387Cj+M0pZw1ydEOCrBVMUXdoeR9m31BL9MiL
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=JA4ybip3
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ixgbe: Enable XDP support
- when SRIOV is enabled
+ header.s=Intel header.b=kUDfde6Y
+Subject: [Intel-wired-lan] [PATCH iwl-net 0/2] idpf: trigger SW interrupt
+ when exiting wb_on_itr mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -116,56 +108,20 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+This patch series introduces SW triggered interrupt support for idpf,
+then uses said interrupt to fix a race condition between completion
+writebacks and re-enabling interrupts.
 
-On 11/22/2024 4:56 PM, Fijalkowski, Maciej wrote:
->> Remove the check that prevents XDP support when SRIOV is enabled.
->> There is no reason to completely forbid the user from using XDP
->> with SRIOV.
-> I think we need some more context here in commit message.
-> ixgbe HW was really short on HW queues that's why probably this restriction
-> was introduced in the first place.
->
-> Now I believe that driver has an ability to share XDP Tx resources with locking
-> being involved and that's why you can relax the previous limitation.
->
-> Correct?
+Joshua Hay (2):
+  idpf: add support for SW triggered interrupts
+  idpf: trigger SW interrupt when exiting wb_on_itr mode
 
-Right, ixgbe hardware has a limited number of hw queues. There is 
-locking in place now. The reasoning behind this change is to give users 
-the flexibility to use XDP with SRIOV, there may be use cases for such 
-constrained scenarios, where this tradeoff is acceptable...
+ drivers/net/ethernet/intel/idpf/idpf_dev.c    |  3 ++
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c   | 30 ++++++++++++-------
+ drivers/net/ethernet/intel/idpf/idpf_txrx.h   |  8 ++++-
+ drivers/net/ethernet/intel/idpf/idpf_vf_dev.c |  3 ++
+ 4 files changed, 33 insertions(+), 11 deletions(-)
 
-I'll update commit msg.
+-- 
+2.39.2
 
->
->> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
->> Signed-off-by: Martyna Szapar-Mudlaw <martyna.szapar-
->> mudlaw@linux.intel.com>
->>
->> ---
->>
->> Added CC netdev
->>
->> ---
->>   drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 3 ---
->>   1 file changed, 3 deletions(-)
->>
->> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
->> b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
->> index 459a539cf8db..a07e28107a42 100644
->> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
->> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
->> @@ -10637,9 +10637,6 @@ static int ixgbe_xdp_setup(struct net_device
->> *dev, struct bpf_prog *prog)
->>   	bool need_reset;
->>   	int num_queues;
->>
->> -	if (adapter->flags & IXGBE_FLAG_SRIOV_ENABLED)
->> -		return -EINVAL;
->> -
->>   	if (adapter->flags & IXGBE_FLAG_DCB_ENABLED)
->>   		return -EINVAL;
->>
->> --
->> 2.36.1
->>
