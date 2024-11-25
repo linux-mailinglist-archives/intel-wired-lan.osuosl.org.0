@@ -1,74 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4E5BB9D8F4F
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Nov 2024 00:51:59 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C29C9D8F50
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Nov 2024 00:52:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D3EC260A4C;
-	Mon, 25 Nov 2024 23:51:57 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id F3E3240337;
+	Mon, 25 Nov 2024 23:51:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id rxwU81gBwdTX; Mon, 25 Nov 2024 23:51:57 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id AFvSoxJq9P1O; Mon, 25 Nov 2024 23:51:59 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1682D60899
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DFB5A40574
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1732578717;
-	bh=FkfaPT2KsG8Ow5MeIBXZ5op32UhNzkV+oe+7lXGMSeU=;
+	s=default; t=1732578719;
+	bh=WC0OjeZ6u3wctyAh97d/czMZgYgw9iYNQyLEVxw3DeM=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=pGZ6P6xRwkbwmvmYUL6rETNcItbM2MHT0bviThSSQKXYLYUwmsa6urJhbwGrWj59i
-	 e4Tc46x2PN4yunHSM/UkkrE7Ze7wERMwRK23TDgkWoM2/Yjp7j7i1mSaC4aScN6LLr
-	 Te7YjjuN99m6DaJk8iViXxgCVNyHnxJBCuNa98XhYugYs9Nl+sityJjN+cU/4V/SeA
-	 L3uU72ymmHopMBjr6PJ8N4YkOs/ebBkhJPN7lInncM7FVG9yy/niJYOnDlmpyX72Ao
-	 8Zs5+jEWOrMJrJt7E1uEj/qR+DYAYZeo9qj5KlZXBFuVmzhIqMGaIQ4/1YIA+wN62q
-	 +9lI078tltGNA==
+	b=CYIIxcYmVoQ8h0zuUzSQNrD4xzoYA8QqAC6h7IkDlEJOGFaDsbb8GEVaCZQSsOAjx
+	 BxOA7F1s0R+yPS3hYlBoSgpsLn7tMguiBxQt1ukSLY4y1sMfKtcmncNlo3x9SkZ7or
+	 xdT0laocMTOHkPYukoKf7lSFwFnAh+turdiE/6WkozAAm3K5gaHo6RcS8pHWBAPn/o
+	 uwWptUb/rxK2YQoH/Blr51ahxbBWEOac/SS8gzCbs7pdcTHN3iAp1R5eU7aF1GKIuE
+	 oeCY2WhRuer+4oMoz17LXS//2E7umnPiDNucw8ZXmHzPRTiRK8PBMtBTCtmHLrfCwq
+	 F3Aw0oUyrw1GQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1682D60899;
-	Mon, 25 Nov 2024 23:51:57 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DFB5A40574;
+	Mon, 25 Nov 2024 23:51:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id D0A434E8F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2024 23:51:53 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 2E4C44961
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2024 23:51:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B1DDA60702
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2024 23:51:53 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0F5DD400F8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2024 23:51:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3X-zcFe5y2rF for <intel-wired-lan@lists.osuosl.org>;
- Mon, 25 Nov 2024 23:51:53 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id JpRPisfWh1WG for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 25 Nov 2024 23:51:54 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
  helo=mgamail.intel.com; envelope-from=joshua.a.hay@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C01C96062B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C01C96062B
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org ED4084011B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ED4084011B
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C01C96062B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2024 23:51:52 +0000 (UTC)
-X-CSE-ConnectionGUID: BUkEqeY/QQunJPqzbLAb2w==
-X-CSE-MsgGUID: MscPssWhQpSyLEybnGHysQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11267"; a="44108297"
-X-IronPort-AV: E=Sophos;i="6.12,184,1728975600"; d="scan'208";a="44108297"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id ED4084011B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Nov 2024 23:51:53 +0000 (UTC)
+X-CSE-ConnectionGUID: 3wmhRW5WTBSolwYOKG7Zow==
+X-CSE-MsgGUID: +8GuPZo6TeSKkaIzQDqN7g==
+X-IronPort-AV: E=McAfee;i="6700,10204,11267"; a="44108300"
+X-IronPort-AV: E=Sophos;i="6.12,184,1728975600"; d="scan'208";a="44108300"
 Received: from orviesa008.jf.intel.com ([10.64.159.148])
  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Nov 2024 15:51:52 -0800
-X-CSE-ConnectionGUID: K3V+x2kcTLqnZ+ndJcgMzQ==
-X-CSE-MsgGUID: +kokG/I9QIiHRRh0FCO27g==
+ 25 Nov 2024 15:51:53 -0800
+X-CSE-ConnectionGUID: Mm8ohnSfRKKePUGUyfe13g==
+X-CSE-MsgGUID: gOhpcJkcQhiHzuofj0uFbw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,184,1728975600"; d="scan'208";a="92239627"
+X-IronPort-AV: E=Sophos;i="6.12,184,1728975600"; d="scan'208";a="92239631"
 Received: from dcskidmo-m40.jf.intel.com ([10.166.241.13])
- by orviesa008.jf.intel.com with ESMTP; 25 Nov 2024 15:51:52 -0800
+ by orviesa008.jf.intel.com with ESMTP; 25 Nov 2024 15:51:53 -0800
 From: Joshua Hay <joshua.a.hay@intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: przemyslaw.kitszel@intel.com, michal.kubiak@intel.com,
  aleksander.lobakin@intel.com, madhu.chittim@intel.com,
  netdev@vger.kernel.org, Joshua Hay <joshua.a.hay@intel.com>
-Date: Mon, 25 Nov 2024 15:58:54 -0800
-Message-Id: <20241125235855.64850-2-joshua.a.hay@intel.com>
+Date: Mon, 25 Nov 2024 15:58:55 -0800
+Message-Id: <20241125235855.64850-3-joshua.a.hay@intel.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20241125235855.64850-1-joshua.a.hay@intel.com>
 References: <20241125235855.64850-1-joshua.a.hay@intel.com>
@@ -76,26 +76,26 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1732578713; x=1764114713;
+ t=1732578714; x=1764114714;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=uGdnYzxKg5GKHi0/ysL3ebuO6MTfJE1bncXU0G0FT9I=;
- b=Isbem7ZmBOav8YDEGy2jiGmgOWAH2X5WYI4cVYtTdrNbg9JPUjDtHbz5
- o8/aS3ETi93q2HmdplF9+ITvn0OJGA4X08hGn0jfsiSlfy6fdGi+OHa6B
- msaJ3jE2Xjz8R5TqijWMoywMNCr0pONCKM/bbZ5lGGkwtHiqWv6wM6j9V
- D3fzzHgzpFW8vdp3zjRhWziHLH7YJ//GxZGE6JLjsNx13GDpO1fdswJww
- Mf9cC3qI687c1Jl7NASHd+s6lV/AQ3uAPjmE7q6pptc3NGU4PuRqM7dhe
- SBgtp5mPZzQaNHdo/mLNlmWNQJQ6mkc/9mrtrqu4DoZ8ViOaunlcU+CtO
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=oKmrbFBW91xqVYvbebB/vpZoCPgp9Bu1WvEqBD4XIfA=;
+ b=hht2hV30sHHLJT39mlYFwWIkYNZnwvQACI5wdk+bfJgoopMhVBVFCsA6
+ eE6rnrgIPtAfJx5a8F+TbVb2fKc7q5DnUELZp7GAoRUttdPR9G5JjFI/0
+ ShY5eQdiy/70IdzmA9dXZE80EqJogy5Yp/JaU7vbsCAV5rZlhrJl0rzvg
+ GpvymuNAOlxuSnHCiYeOkyjFoUHahjUcyPvGqRpjpuyqlFPGJ18CSxFN6
+ 64KTILz2IJ+ICmTQqi49YOD7OsBlFZmTzLWu1q456slvd7oc25r2pySIp
+ u5aEtrHHFH4giB2WYE4NU7/GbtoDZ3SsDhT/OS6sJBuZCBGXbHUfzwsjn
+ g==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=Isbem7Zm
-Subject: [Intel-wired-lan] [PATCH iwl-net 1/2] idpf: add support for SW
- triggered interrupts
+ header.s=Intel header.b=hht2hV30
+Subject: [Intel-wired-lan] [PATCH iwl-net 2/2] idpf: trigger SW interrupt
+ when exiting wb_on_itr mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -111,90 +111,95 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-SW triggered interrupts are guaranteed to fire after their timer
-expires, unlike Tx and Rx interrupts which will only fire after the
-timer expires _and_ a descriptor write back is available to be processed
-by the driver.
+There is a race condition between exiting wb_on_itr and completion write
+backs. For example, we are in wb_on_itr mode and a Tx completion is
+generated by HW, ready to be written back, as we are re-enabling
+interrupts:
 
-Add the necessary fields, defines, and initializations to enable a SW
-triggered interrupt in the vector's dyn_ctl register.
+	HW                      SW
+	|                       |
+	|			| idpf_tx_splitq_clean_all
+	|                       | napi_complete_done
+	|			|
+	| tx_completion_wb 	| idpf_vport_intr_update_itr_ena_irq
 
+That tx_completion_wb happens before the vector is fully re-enabled.
+Continuing with this example, it is a UDP stream and the
+tx_completion_wb is the last one in the flow (there are no rx packets).
+Because the HW generated the completion before the interrupt is fully
+enabled, the HW will not fire the interrupt once the timer expires and
+the write back will not happen. NAPI poll won't be called.  We have
+indicated we're back in interrupt mode but nothing else will trigger the
+interrupt. Therefore, the completion goes unprocessed, triggering a Tx
+timeout.
+
+To mitigate this, fire a SW triggered interrupt upon exiting wb_on_itr.
+This interrupt will catch the rogue completion and avoid the timeout.
+Add logic to set the appropriate bits in the vector's dyn_ctl register.
+
+Fixes: 9c4a27da0ecc ("idpf: enable WB_ON_ITR")
 Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
 Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
 ---
- drivers/net/ethernet/intel/idpf/idpf_dev.c    | 3 +++
- drivers/net/ethernet/intel/idpf/idpf_txrx.h   | 8 +++++++-
- drivers/net/ethernet/intel/idpf/idpf_vf_dev.c | 3 +++
- 3 files changed, 13 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c | 30 ++++++++++++++-------
+ 1 file changed, 20 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_dev.c b/drivers/net/ethernet/intel/idpf/idpf_dev.c
-index 6c913a703df6..41e4bd49402a 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_dev.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_dev.c
-@@ -101,6 +101,9 @@ static int idpf_intr_reg_init(struct idpf_vport *vport)
- 		intr->dyn_ctl_itridx_s = PF_GLINT_DYN_CTL_ITR_INDX_S;
- 		intr->dyn_ctl_intrvl_s = PF_GLINT_DYN_CTL_INTERVAL_S;
- 		intr->dyn_ctl_wb_on_itr_m = PF_GLINT_DYN_CTL_WB_ON_ITR_M;
-+		intr->dyn_ctl_swint_trig_m = PF_GLINT_DYN_CTL_SWINT_TRIG_M;
-+		intr->dyn_ctl_sw_itridx_ena_m =
-+			PF_GLINT_DYN_CTL_SW_ITR_INDX_ENA_M;
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+index a8989dd98272..9558b90469c8 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+@@ -3604,21 +3604,32 @@ static void idpf_vport_intr_dis_irq_all(struct idpf_vport *vport)
+ /**
+  * idpf_vport_intr_buildreg_itr - Enable default interrupt generation settings
+  * @q_vector: pointer to q_vector
+- * @type: itr index
+- * @itr: itr value
+  */
+-static u32 idpf_vport_intr_buildreg_itr(struct idpf_q_vector *q_vector,
+-					const int type, u16 itr)
++static u32 idpf_vport_intr_buildreg_itr(struct idpf_q_vector *q_vector)
+ {
+-	u32 itr_val;
++	u32 itr_val = q_vector->intr_reg.dyn_ctl_intena_m;
++	int type = IDPF_NO_ITR_UPDATE_IDX;
++	u16 itr = 0;
++
++	if (q_vector->wb_on_itr) {
++		/*
++		 * Trigger a software interrupt when exiting wb_on_itr, to make
++		 * sure we catch any pending write backs that might have been
++		 * missed due to interrupt state transition.
++		 */
++
++		itr_val |= q_vector->intr_reg.dyn_ctl_swint_trig_m |
++			   q_vector->intr_reg.dyn_ctl_sw_itridx_ena_m;
++		type = IDPF_SW_ITR_UPDATE_IDX;
++		itr = IDPF_ITR_20K;
++	}
  
- 		spacing = IDPF_ITR_IDX_SPACING(reg_vals[vec_id].itrn_index_spacing,
- 					       IDPF_PF_ITR_IDX_SPACING);
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-index b59aa7d8de2c..cd9a20c9cc7f 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-@@ -335,6 +335,8 @@ struct idpf_vec_regs {
-  * @dyn_ctl_itridx_m: Mask for ITR index
-  * @dyn_ctl_intrvl_s: Register bit offset for ITR interval
-  * @dyn_ctl_wb_on_itr_m: Mask for WB on ITR feature
-+ * @dyn_ctl_sw_itridx_ena_m: Mask for SW ITR index
-+ * @dyn_ctl_swint_trig_m: Mask for dyn_ctl SW triggered interrupt enable
-  * @rx_itr: RX ITR register
-  * @tx_itr: TX ITR register
-  * @icr_ena: Interrupt cause register offset
-@@ -348,6 +350,8 @@ struct idpf_intr_reg {
- 	u32 dyn_ctl_itridx_m;
- 	u32 dyn_ctl_intrvl_s;
- 	u32 dyn_ctl_wb_on_itr_m;
-+	u32 dyn_ctl_sw_itridx_ena_m;
-+	u32 dyn_ctl_swint_trig_m;
- 	void __iomem *rx_itr;
- 	void __iomem *tx_itr;
- 	void __iomem *icr_ena;
-@@ -418,7 +422,7 @@ struct idpf_q_vector {
- 	cpumask_var_t affinity_mask;
- 	__cacheline_group_end_aligned(cold);
- };
--libeth_cacheline_set_assert(struct idpf_q_vector, 112,
-+libeth_cacheline_set_assert(struct idpf_q_vector, 120,
- 			    24 + sizeof(struct napi_struct) +
- 			    2 * sizeof(struct dim),
- 			    8 + sizeof(cpumask_var_t));
-@@ -452,6 +456,8 @@ struct idpf_tx_queue_stats {
- #define IDPF_ITR_IS_DYNAMIC(itr_mode) (itr_mode)
- #define IDPF_ITR_TX_DEF		IDPF_ITR_20K
- #define IDPF_ITR_RX_DEF		IDPF_ITR_20K
-+/* Index used for 'SW ITR' update in DYN_CTL register */
-+#define IDPF_SW_ITR_UPDATE_IDX	2
- /* Index used for 'No ITR' update in DYN_CTL register */
- #define IDPF_NO_ITR_UPDATE_IDX	3
- #define IDPF_ITR_IDX_SPACING(spacing, dflt)	(spacing ? spacing : dflt)
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c b/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
-index aad62e270ae4..aba828abcb17 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
-@@ -101,6 +101,9 @@ static int idpf_vf_intr_reg_init(struct idpf_vport *vport)
- 		intr->dyn_ctl_itridx_s = VF_INT_DYN_CTLN_ITR_INDX_S;
- 		intr->dyn_ctl_intrvl_s = VF_INT_DYN_CTLN_INTERVAL_S;
- 		intr->dyn_ctl_wb_on_itr_m = VF_INT_DYN_CTLN_WB_ON_ITR_M;
-+		intr->dyn_ctl_swint_trig_m = VF_INT_DYN_CTLN_SWINT_TRIG_M;
-+		intr->dyn_ctl_sw_itridx_ena_m =
-+			VF_INT_DYN_CTLN_SW_ITR_INDX_ENA_M;
+ 	itr &= IDPF_ITR_MASK;
+ 	/* Don't clear PBA because that can cause lost interrupts that
+ 	 * came in while we were cleaning/polling
+ 	 */
+-	itr_val = q_vector->intr_reg.dyn_ctl_intena_m |
+-		  (type << q_vector->intr_reg.dyn_ctl_itridx_s) |
+-		  (itr << (q_vector->intr_reg.dyn_ctl_intrvl_s - 1));
++	itr_val |= (type << q_vector->intr_reg.dyn_ctl_itridx_s) |
++		   (itr << (q_vector->intr_reg.dyn_ctl_intrvl_s - 1));
  
- 		spacing = IDPF_ITR_IDX_SPACING(reg_vals[vec_id].itrn_index_spacing,
- 					       IDPF_VF_ITR_IDX_SPACING);
+ 	return itr_val;
+ }
+@@ -3716,9 +3727,8 @@ void idpf_vport_intr_update_itr_ena_irq(struct idpf_q_vector *q_vector)
+ 	/* net_dim() updates ITR out-of-band using a work item */
+ 	idpf_net_dim(q_vector);
+ 
++	intval = idpf_vport_intr_buildreg_itr(q_vector);
+ 	q_vector->wb_on_itr = false;
+-	intval = idpf_vport_intr_buildreg_itr(q_vector,
+-					      IDPF_NO_ITR_UPDATE_IDX, 0);
+ 
+ 	writel(intval, q_vector->intr_reg.dyn_ctl);
+ }
 -- 
 2.39.2
 
