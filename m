@@ -1,97 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 08FC89DF1E8
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 30 Nov 2024 17:05:04 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 84E569DF1F9
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 30 Nov 2024 17:18:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9452E6146E;
-	Sat, 30 Nov 2024 16:05:01 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7A4B471902;
+	Sat, 30 Nov 2024 16:18:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kLU6T1DkwcvB; Sat, 30 Nov 2024 16:05:00 +0000 (UTC)
+ id ocNI3MpmoUrs; Sat, 30 Nov 2024 16:18:46 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 74A3D61470
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 69F3870CB8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1732982700;
-	bh=CU8Ha8lvwzrUL3wklZxNnby9TbqM0AQPddb/sVDz+Hg=;
+	s=default; t=1732983151;
+	bh=KQnAV9ciNVpSQs1aLyGbW3u8bpvwKMWP9G257k4h8lI=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=Ynud8HohmJR+36snEtH6oENqvgjsFytcFVrEEZ9Nd0PTRNVgNJLIlNsV89+sNwTuD
-	 YGZyvvB/fvooWExdnv/RCg8fVx4PFKc24BmfCxS79wq6PzfiVRgwhzICyiQFNT62tI
-	 Xq6Ve3YDEF0Am6qJ/77+L7+2LqJfsbH+s5nU8xuPs9T6aQYsnNZ0KA6Pfd3OpOHdFO
-	 0bSZzRCY43etYJ6RHvXTzOYOEAPRXryTDhfVdCgDJvdDEi9TLMMYXBacvLaLjI3MVt
-	 nAzuEFW/4zSQOZxQA0EnWvvAXY1GLg3nzPaW3eyMVRY9ypMSY20BXU+Joo0qtFGCop
-	 Kv/48bngknf8A==
+	b=V7YLj3GI6g2+FymM3ZYJKL/sCoHrnmljbFZ7BhJv6/k1aftVQNSXh917YYSxnPL2S
+	 q3CP1j4/Y4MJQ67aCr3sf2dwpP3MdIDjAv6S9/Z+iQ7rLY5urrDjI3evLuDMRYxlu5
+	 935BpxwO5MBT7ZVQ6mhvWswrHVq+qV4EHIyeoGc4+YjYm2aAWQEotYW/j8s04OZVJt
+	 tuWWPQccUoPdxuTgbCQ2TpoC6Tyqrmj6vGW/+B+ZSZ69guLCoPLlip68WMeZ5SWlXQ
+	 9V7CmqKUiO4IQOBZEShFlLxUg470aXkEIf5whXSZuisEws/Vs9eILd47/eBPvZ6uP4
+	 BV9UJNGe0u3Dg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 74A3D61470;
-	Sat, 30 Nov 2024 16:05:00 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 69F3870CB8;
+	Sat, 30 Nov 2024 16:12:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 71267712
- for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Nov 2024 16:04:58 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id BC7436C
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Nov 2024 16:11:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5F9728179D
- for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Nov 2024 16:04:58 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id A78E885A7A
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Nov 2024 16:11:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dTpkjBUie8EA for <intel-wired-lan@lists.osuosl.org>;
- Sat, 30 Nov 2024 16:04:57 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::134; helo=mail-lf1-x134.google.com;
- envelope-from=razor@blackwall.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 9C7B68200C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9C7B68200C
-Received: from mail-lf1-x134.google.com (mail-lf1-x134.google.com
- [IPv6:2a00:1450:4864:20::134])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 9C7B68200C
- for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Nov 2024 16:04:56 +0000 (UTC)
-Received: by mail-lf1-x134.google.com with SMTP id
- 2adb3069b0e04-53dde4f0f23so2869717e87.3
- for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Nov 2024 08:04:56 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1732982694; x=1733587494;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=CU8Ha8lvwzrUL3wklZxNnby9TbqM0AQPddb/sVDz+Hg=;
- b=D3340Cf6PlIgTYvPt1g93eOo9XjsGqzJ5o3TmFPs6QszEZTWNUjwbj1bEHyj85UWjN
- 8yt2j1HRfGSoBnIm9gv13KFQk2ndSgBg+1yCocSuJ6YLKIFfyNrSjC033zCIlY62DdZ5
- Kpq4rlFszWVqmcD9/4sGtYGxzlyalKsyI3K6E6BedXNRI6Pnbk6fYhJVxWbpLJlZMIl+
- FDE3IKm5X1E6884U81j7TfJbohvtts1vqDXlW3rup/tgDDnJ31OffPyg6QO8RzyHCozw
- 3LMvK77mvQt7x4BfdsKpnT/tUdUekAInPuWXbKlvEhLKtHj+HOUXJJ/NZlyUtQlwIQ+C
- VI5A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXgqupdZGoypiKxYnb8d7rYWi/NHB+QuNCVVm9ZT2lwmr0qQWuFDDnVk6HIM/8mywJy+bVaXm3vwYnAku+X9Fc=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yw3fv/reoLWzUYn1RUoZ8k3fwuubbSczbmKdl1pKSiUMYcinvc5
- OhYlT+XUDPQnQS+01KE9M2nnsrCNvTIan+verrd8AdkeIE65A2PqIx/LTVmKl+U=
-X-Gm-Gg: ASbGnctfVWnlfh0iAkRgcE/8qSrmk08/8Bd5yXL+RjeXoOLvsYD8qMWqmlT3srEVH3y
- /yaeaWwXZVqHFlrnLfWVxN1T78FQUyOfNS96V+VpmEtGfjCepQGPPRN4hWZtSW56FEqptfoOHc1
- KSCaNpc8tr4+bXsf7w4KeFgj7W2mH5LvhgE/MK9B+Lh35ulbzoLumozroYXgN99ReHvSwxAknpz
- hpKN16E6F6ICKS2ytaJ/UXmC5adG7my05Z7z0i92kcPT1I=
-X-Google-Smtp-Source: AGHT+IHL4oeMU03kLmQ2L0BR3qVJKTiAVIsSPE3HICpdb/3DuaV9c9TIe/hHbGxSndbZ9+FTqZL6rQ==
-X-Received: by 2002:a05:6512:3990:b0:53d:eefc:2b48 with SMTP id
- 2adb3069b0e04-53df00dc9bamr8384254e87.33.1732982694015; 
- Sat, 30 Nov 2024 08:04:54 -0800 (PST)
-Received: from localhost ([217.199.122.82]) by smtp.gmail.com with ESMTPSA id
- 2adb3069b0e04-53df646f2adsm808857e87.114.2024.11.30.08.04.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 30 Nov 2024 08:04:53 -0800 (PST)
-Date: Sat, 30 Nov 2024 18:04:52 +0200
-From: Nikolay Aleksandrov <razor@blackwall.org>
-To: Andy Strohman <andrew@andrewstrohman.com>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ id Kx30Bk3Qihgu for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 30 Nov 2024 16:11:40 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.103.54;
+ helo=eur03-vi1-obe.outbound.protection.outlook.com;
+ envelope-from=vladimir.oltean@nxp.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4457684A50
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4457684A50
+Received: from EUR03-VI1-obe.outbound.protection.outlook.com
+ (mail-vi1eur03on2054.outbound.protection.outlook.com [40.107.103.54])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4457684A50
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Nov 2024 16:08:44 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=lmKbFyYAywVggJy9u1erV3upbJKtykdgAYcjGN8Py9EuJLG4otyd600pl8deHIFtNaGF+WSi8bUsPXzM33eAJB9SAZZ/OY20Ep9Md6pQQuhu/+QKqoJ9u8lvcDOmCmW4qSAMUCI6KZFOQGJdmUE1Zce57bqISlqrIHTkmqaRAvnl3b6aRQ2ytewyYziVHyBu1eRMveeFCVwXvGHbe8Uw4Pbt46TFdkEVRzYPZmBK77u3DLelOpDdCqvdK5OF8fCC3bEZtWx9HzvSC3DV78LQbiPPfgUGa1pPEIBBdr2eXnjZ3CDQDOWXIuc3zglEqGLHj8wN5JS5Uztw+TqrmSi/Mg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=KQnAV9ciNVpSQs1aLyGbW3u8bpvwKMWP9G257k4h8lI=;
+ b=h0nDa9OTA2zHGw5lMZOAeGlQn69mn0gJeoY3uYeqKnxMeY0c+dIQo7JW7fTkiappsT5J+9gAZmi4IkcNVqomvRxZGSIOxpjG9fv/sQH6Z7KTspez3B0mKJQnicaL2IGQs3FH7pQW/yE6lMMeWf+EagEcEOiIkaE0i+Tqkub0IkdcyNYF2zrW+MG4Ddj7kg40egT92ZGQo0DF+EibhsH0ciw1VV09Rn81iVwSVms8jfA9sOQcdMcckAHJlqSrg/82gtm1JB4wZgnEy8LHfWIBC5Zhbc9EBpMTmpfyqt/bM/HnmtXOmGZsIqP0jgN7GdGaPn0j1Gb2Q/2ikObplLvTkA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+Received: from AM8PR04MB7779.eurprd04.prod.outlook.com (2603:10a6:20b:24b::14)
+ by AS8PR04MB8497.eurprd04.prod.outlook.com (2603:10a6:20b:340::17)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8207.16; Sat, 30 Nov
+ 2024 16:08:19 +0000
+Received: from AM8PR04MB7779.eurprd04.prod.outlook.com
+ ([fe80::7417:d17f:8d97:44d2]) by AM8PR04MB7779.eurprd04.prod.outlook.com
+ ([fe80::7417:d17f:8d97:44d2%6]) with mapi id 15.20.8207.017; Sat, 30 Nov 2024
+ 16:08:19 +0000
+Date: Sat, 30 Nov 2024 18:08:15 +0200
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+To: Nikolay Aleksandrov <razor@blackwall.org>
+Cc: Andy Strohman <andrew@andrewstrohman.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
  Andrew Lunn <andrew+netdev@lunn.ch>,
  "David S. Miller" <davem@davemloft.net>,
  Eric Dumazet <edumazet@google.com>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
  Ido Schimmel <idosch@nvidia.com>, Petr Machata <petrm@nvidia.com>,
- Vladimir Oltean <vladimir.oltean@nxp.com>,
  Claudiu Manoil <claudiu.manoil@nxp.com>,
  Alexandre Belloni <alexandre.belloni@bootlin.com>,
  UNGLinuxDriver@microchip.com, Shahed Shaikh <shshaikh@marvell.com>,
@@ -102,32 +90,101 @@ Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
  Roopa Prabhu <roopa@nvidia.com>, intel-wired-lan@lists.osuosl.org,
  netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-trace-kernel@vger.kernel.org, bridge@lists.linux.dev
-Message-ID: <Z0s3pDGGE0zXq0UE@penguin>
+Message-ID: <20241130160815.4n5hnr44v6ea3m44@skbuf>
 References: <20241130000802.2822146-1-andrew@andrewstrohman.com>
-MIME-Version: 1.0
+ <Z0s3pDGGE0zXq0UE@penguin>
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20241130000802.2822146-1-andrew@andrewstrohman.com>
+In-Reply-To: <Z0s3pDGGE0zXq0UE@penguin>
+X-ClientProxiedBy: VI1P190CA0008.EURP190.PROD.OUTLOOK.COM
+ (2603:10a6:802:2b::21) To AM8PR04MB7779.eurprd04.prod.outlook.com
+ (2603:10a6:20b:24b::14)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM8PR04MB7779:EE_|AS8PR04MB8497:EE_
+X-MS-Office365-Filtering-Correlation-Id: 947dd67c-c642-48c5-6e68-08dd11593505
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|366016|1800799024;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?JB8XYRkOfEA4X+Fx9LV4Q94pfBgyS+p3teDfcTesRLO12g/wlLlzuNFVErEC?=
+ =?us-ascii?Q?ApjWGM3eyxa/J6jvwkwg+1wY7uyUmYpAeqBgJCmYIeUtNfJuFEthawegMnmY?=
+ =?us-ascii?Q?gcWahVqueimApfilJ3fpdmrjyhLdbdVtZi7Or0mCYib5C0pgepcOQtcKXu5h?=
+ =?us-ascii?Q?8RaRWFAfD8DjjWyVk8WQFSgObkxPzo6NdtivOqtMxvXV9Ap+v3+7RyAxJjLR?=
+ =?us-ascii?Q?CkmUUSbgS7PJ4KoK/P9YIRedhzCp5UrBrnBcqvV7ZjBqYDMLP4iVUqQDDBVS?=
+ =?us-ascii?Q?NVc3Bw843fiiL3nlLSAVwaWU0BjKwkUMURF/KjBnTzF8PPWSCq5NAsh3ABoj?=
+ =?us-ascii?Q?DrDS5SVchpqDe5LdIjpwaYod7DuMm89GUIY8W71EKP2uECoFBp3WJmRAmZyt?=
+ =?us-ascii?Q?4IMc7BY9lwjHByg8ATvUMmQ+dUNLF4JRrzAoBN0m/OQjscRguemhNzMHj5tH?=
+ =?us-ascii?Q?SxfgPSCX0JFmvjHoD4fyMwZ+kkDhb4bRtfRnGt1+1ZxYMQGy9Qx8N7kFI9zc?=
+ =?us-ascii?Q?32BbS2gH4x2iAvl0j6N0HNjWhst6izDPi6Li8SrJS3M+itc2maNieC38Y1zX?=
+ =?us-ascii?Q?/MDROtHYbPGGa+XmwuNcPbFfwDLrA6GRyB5f410ufl82FSxqWv8GI2yWjhh4?=
+ =?us-ascii?Q?N+2o6G/cQbARgCldBiQNqPOWs3drh8o6qFBGZpBDzSrWnEEomMjZva5S9T1d?=
+ =?us-ascii?Q?tsl6uhvEORj7XYELyxYYnkm/CcdQoS/uWAnyhCjzq+0DlHQoNfjquOK2mSi3?=
+ =?us-ascii?Q?gp5dpBBuvUVhGf/Iftu19AkNjhgh6HrUJGCU7klaEzy78NSv49u2sfLj7d/7?=
+ =?us-ascii?Q?dFbxWJHBj+MG/a81dj/rHNBdAk+bZGyf7Hl+j12qrMhnoT/aV/pBvfckuKS+?=
+ =?us-ascii?Q?qZXqNhs39yX/MyJcKltPQCEb+INlJ9POFyxEmtR18cBAoPfx6lAFcIXGo/NX?=
+ =?us-ascii?Q?1t11e7LE4qXBIAtJglI7oYU67Vp92PO/l80/C6rOig/IBQFLDa90pHN9cYMn?=
+ =?us-ascii?Q?gfGGxbLEHxkpaDZvXnTS9C2yL32Mvr6Erc9AKEc1/+IZ+RJajR4r9RrSuUEF?=
+ =?us-ascii?Q?Y9Uc0TCxFrABWnaOhvcV1UpsUE5NU3ZmEM1VK0Z13n9ULu98VDqOe59zZK1p?=
+ =?us-ascii?Q?rCetuQ+5epVFRNtJJJMPX8Apnf88JcspURhKD/jI7H94amhM9w1Mt0aI/8VK?=
+ =?us-ascii?Q?zEx4ZnnK1G3ZEX1u1sxKFcOrQrHR+a7RIy96KPkh6AiDvpZcCx6jzFTq8AYd?=
+ =?us-ascii?Q?5rTEHrHJBTUMiEKFJP1FlKvKo9PpRgxSJGzrwAQ74LCAtGlNigPxnlESYaRQ?=
+ =?us-ascii?Q?63kXaiJjmGFQN1JJZLu54KX5PET/dJvwFSjeHybeMKmAqw=3D=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:AM8PR04MB7779.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(7416014)(366016)(1800799024); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?3dgz0qwOh0ZmqNL1B+RW+C8yQL9Wgzu3mB8drSd+RosEdq90izVJokpHRWpP?=
+ =?us-ascii?Q?2R1kWWI5zonq6F8Bn+lSkFvmU8VuwNX+LLLmbYlYlfPcd39ND6MAoo9s/wkD?=
+ =?us-ascii?Q?bsKlDxRyneTS0Hd+dyb9td5m3GO8SP4ddyWYffR7BbGjDhJBZGuk4Ezvk29H?=
+ =?us-ascii?Q?ufTXrZ+bwKv8mCHRfFiiGhtsUxBy3oWFeGIIzpyE6CzHeZ2CgmnAjRVE+K5C?=
+ =?us-ascii?Q?HnG195N/qELUnwInI3mOhDPNn3JWH4bAiEAWw4sN9DlySW9p4PyGQ/xGfqQ1?=
+ =?us-ascii?Q?5jwJdsTcXJo420UiZRlC6pQJXAzk8NKFnWM7iDsjpU4kbbsxNnfiim8a8G5T?=
+ =?us-ascii?Q?iKRIkc1/2xxVqQSgOd9elfh5cXZS0B/mwNsteePZtUzQrFY9IvpQxzCNeXyH?=
+ =?us-ascii?Q?k62CpyiFM2fR6j2vJ6esw7FEJlBxKfQmWZDI5yw1psVvhoA006iMTWbFqIR8?=
+ =?us-ascii?Q?jb7vSpgsk1kL4j8Nl/n3Hp1Uil369vusa/DoLKNE2xUACpuLbj5DnEYx1j4H?=
+ =?us-ascii?Q?zggJWXDGPxrV/8Q8tZrXdbbLlP6aTV/a0uq+jsnt2wXo8LB4dAp3y3eIOpIs?=
+ =?us-ascii?Q?0gYbk58BU/8yzNf32BY1Lm7G39kXkD1TBtmWvO2yAyvLADjC6rDkMd7LRtET?=
+ =?us-ascii?Q?eOawPegyyhsGz213OfSLCqNItPsCGK9pD6NghqHNxSuMc7+vMyhqZRXKuJln?=
+ =?us-ascii?Q?Pz3IL3/e/8xK/vTfhFQysv90SZMsHEj2pPU0bxtuJMzHt6tDJ9QMg14udEmI?=
+ =?us-ascii?Q?RCNFvOdrP2sGgBHc4zjewEACAEsHzwsVyq0AvjsHE8cNHYR18Z8TopPacmx6?=
+ =?us-ascii?Q?av4gEiZ+2GTMclm4gQOAmkykjNAVYuWVfEmG7nUYzjGKIWNjaOStEhWLOXlg?=
+ =?us-ascii?Q?UF6sClZxfRl+oU5Mh1w2MDD+PWp5MUibwXC5a6aB02nwrzhxHRJyOCC7hZ4i?=
+ =?us-ascii?Q?tXqMnkNY2kre8eHi38cpybFEr49n80U8oldf6hKVxBNm9WbIJezlHwWO0Qzp?=
+ =?us-ascii?Q?HTpXHvyZMArp1QVVrccUmg8bzPD8QM+N7VYqj51fB4x9GvUhRYmMLu8xo9MW?=
+ =?us-ascii?Q?90jrPiAKz/Gu6xz2gruj6YDIzYsNpqK8zTz+Xz5VOh7+sHyZMZ6ze66Mjbga?=
+ =?us-ascii?Q?X4cVgq7mFB3ZjWivonEWfSDiNyUDiwgxhO5S/kDttmSG4sApuR4WEtrt3KP5?=
+ =?us-ascii?Q?Gim5N20ZXtapdneYdQ7uLdmbNnw5v0Z/JzWFWkb32kjCjMCCdTn26tiR7zpi?=
+ =?us-ascii?Q?i2BIER6zGliQj9QIO9Az8QATVG+v41xGR/Jsmiy9sf9ZN1CZ4Bklm7NJNzuw?=
+ =?us-ascii?Q?brwYp9amh7QxkOSk2c4SfhE94ncVsLmQ2YA1CcT+EY0u5KS2+XPV0thJhKbg?=
+ =?us-ascii?Q?+Reh40rC74GLh7XiUQVfDoDt4b3dQJvpSZUyfoiVJz/vHrdldlLVhGfU4evS?=
+ =?us-ascii?Q?A1W40RyWo60x71/xpqevdDNKUzelksbwx2lmo3WTGJe86/fKdgKzcYJ0gawc?=
+ =?us-ascii?Q?sI9avDffPZRNSmRF/wQoQ/eo3W0H6o7ULMSYSZj6chXOvJyFELhhWOyOgI1V?=
+ =?us-ascii?Q?5B6faC2ZiW8TT/Cs+/KD2n6EEXWsqsj47kRDYdZVQqbUYXTY6j99roXWzviX?=
+ =?us-ascii?Q?Mg=3D=3D?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 947dd67c-c642-48c5-6e68-08dd11593505
+X-MS-Exchange-CrossTenant-AuthSource: AM8PR04MB7779.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Nov 2024 16:08:19.6854 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: zxPTX63rVHMRM9o+6maucdUDReXuKu/y0tXzM2noKXkcJgiPEndb8vlT85IPElQAfyvLJHPgxHjiugD19jfuPA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR04MB8497
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=blackwall-org.20230601.gappssmtp.com; s=20230601; t=1732982694; x=1733587494;
- darn=lists.osuosl.org; 
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=CU8Ha8lvwzrUL3wklZxNnby9TbqM0AQPddb/sVDz+Hg=;
- b=fQ/bLKZrPtfXFwskfQWe20iPhWQ4LUy1n98st5BD2NgR0/Dktt8vD47WSPyzI04AkP
- iailShxv4gF0m+OHYi0LTpoayz53HQqHER0bwxEyElZInnsqKGWu+kFZKujMs8/YnkIF
- MtB+H8jRE1e/8T8P4wElJ0XK/5CThAkiFangiJ7dTB0fJBSJ7zg9Cxze5ZpZUimU0sp6
- 9RN7m8irX2LWfOW0EiWU2GADD+IkowEB7rNHlgWcn5c0d8Cjl30QA6/oWQLbHR+C4Hde
- ydon4jmp0TWL1zU14N3gvJ+kPAIhYTk1OLlP7BqDGuEOJJF74p45ip6sJkf8myPzZUCz
- 5QuA==
+ d=nxp.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=KQnAV9ciNVpSQs1aLyGbW3u8bpvwKMWP9G257k4h8lI=;
+ b=A62ZsQP9oQlOubY4pKeAgfqVSctHJliLbxqfhl8bW7Gq11kcJ2+8d1jb+oOn1QWSxwQg/VMTV8p+5Ph0XTn6XSzH96DycAqsRs7Fn5NEzuJ+KX4KxlMrn703e4D+BbPXaGaWQsJF5KvebiNwoMwNRHJe5T6jhmxL1hOS6CYMZ5SGZJs3iDCTu1+zGB8/dQC/suycXtrqPROSXPPMvQoJUhkSkIKMoZYvga4Zl1to8ztBQWkWpxDjLLzTQ5nL7Ze20j9ryrPvgShApxi4Zszf8VKaSmpYvnCfM+V/fEXBdcj8cF8YbYGI97wbBO9avNtCPWQWXxtimheUmH27m76ApQ==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=blackwall.org
+ dmarc=pass (p=none dis=none)
+ header.from=nxp.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=blackwall-org.20230601.gappssmtp.com
- header.i=@blackwall-org.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=fQ/bLKZr
+ unprotected) header.d=nxp.com header.i=@nxp.com header.a=rsa-sha256
+ header.s=selector1 header.b=A62ZsQP9
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
 Subject: Re: [Intel-wired-lan] [PATCH net-next] bridge: Make the FDB
  consider inner tag for Q-in-Q
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -145,118 +202,22 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sat, Nov 30, 2024 at 12:07:57AM +0000, Andy Strohman wrote:
-> 802.1q networks with IVL (independent VLAN learning) can
-> tolerate duplicate MACs as long as the duplicates
-> reside in different VLANs. Similarly, IVL networks
-> allow for L2 hairpining where different VLANs are
-> used for each side of the hairpin in order to not
-> confuse the intermediate bridge's FDBs.
+On Sat, Nov 30, 2024 at 06:04:52PM +0200, Nikolay Aleksandrov wrote:
+> Hi,
+> This patch makes fdb lookups slower for everybody, ruins the nice key alignment,
+> increases the key memory usage and adds more complexity for a corner case, especially
+> having 2 different hosts with identical macs sounds weird. Fdb matching on both tags
+> isn't a feature I've heard of, I don't know if there are switches that support it.
+> Could you point to anywhere in the specs that such support is mentioned?
+> Also could you please give more details about the use case? Maybe we can help you solve
+> your problem without impacting everyone. Perhaps we can mix vlan-aware bridge and tc
+> to solve it. As it stands I'm against adding such matching, but I'd love to hear what
+> other people think.
 > 
-> When these types of networks are inter-connected
-> using 802.1ad or Q-in-Q, only the outer VLAN tag is
-> considered by the 802.1ad bridge during FDB lookup.
-> 
-> While traffic segregation by inner and outer VID works as
-> expected, the inner VLAN's independent VLAN learning can
-> be defeated.
-> 
-> The following example describes the issue in terms of
-> duplicate MACS in different VLANs. But, the same concept
-> described in this example also applies L2 hairpining via
-> different VLANs.
-> 
->                  _______________________
->                 |  .1ad bridge          |
-> 	        |_______________________|
->            PVID3|      PVID3|      PVID3|
->                 |           |           |
-> TAGGED:        7|          8|          8|
->             ____|____  _____|___   _____|___
->            | .1q br 1| |.1q br 2|  |.1q br 3|
->            |_________| |________|  |________|
->          PVID7 |      PVID8 |      PVID8|
->              HOST A       HOST B      HOST C
-> 
-> The above diagram depicts a .1ad bridge that has "pvid 3
-> untagged" configured for every member port. These member ports are
-> connected to .1q bridges, named 1, 2 and 3. .1q br 1 allows VID 7 tagged
-> on its port facing the .1ad bridge. .1q bridge 2 and 3 allow
-> VID 8 tagged on their ports that face the .1ad bridge. Host A
-> is connected to .1q br 1 via a port that is configured as "pvid 7
-> untagged". Host B and C are connected to bridges via ports
-> configured as "pvid 8 untagged".
-> 
-> Prior to this change, if host A has the same (duplicate) MAC
-> address as host B, this can disrupt communication between
-> host B and host C. This happens because the .1ad bridge
-> will see the duplicate MAC behind two of its ports
-> within the same VID (3). It's not examining the inner VLAN to
-> know that the hosts are actually reside within in different
-> L2 segments.
-> 
-> With this change, the .1ad bridge uses both the inner and outer VID
-> when looking up the FDB. With this technique, host B and C are
-> able to communicate without disruptions due to the duplicate MAC
-> assigned to host A.
-> 
-> Here is an example FDB dump on a .1ad bridge that is configured like
-> the above diagram:
-> 
-> root@OpenWrt:~# bridge fdb show dynamic
-> f4:a4:54:80:93:2f dev lan3 vlan 3 inner vlan 8 master br-lan
-> f4:a4:54:81:7a:90 dev lan1 vlan 3 inner vlan 7 master br-lan
-> f4:a4:54:81:7a:90 dev lan2 vlan 3 inner vlan 8 master br-lan
-> 
-> Note how duplicate MAC f4:a4:54:81:7a:90 is behind both lan1 and
-> lan2. This FDB dump shows two entries with the same MAC and
-> the same 802.1ad VLAN, 3. Prior to this change, only one fdb entry
-> per MAC/VID would be possible. As such, the bridge would have
-> issues forwarding. After this change, these entries are understood
-> to be distinct as they pertain to different inner vlans, and
-> therefore separate L2 segments.
-> 
-> Signed-off-by: Andy Strohman <andrew@andrewstrohman.com>
-> ---
->  drivers/net/ethernet/intel/i40e/i40e_main.c   |   4 +-
->  drivers/net/ethernet/intel/ice/ice_main.c     |   6 +-
->  drivers/net/ethernet/intel/igb/igb_main.c     |   4 +-
->  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |   4 +-
->  .../ethernet/mellanox/mlxsw/spectrum_router.c |   4 +-
->  .../ethernet/mellanox/mlxsw/spectrum_span.c   |   4 +-
->  .../mellanox/mlxsw/spectrum_switchdev.c       |   2 +-
->  drivers/net/ethernet/mscc/ocelot_net.c        |   4 +-
->  .../net/ethernet/qlogic/qlcnic/qlcnic_main.c  |   8 +-
->  drivers/net/macvlan.c                         |   4 +-
->  drivers/net/vxlan/vxlan_core.c                |   6 +-
->  include/linux/if_bridge.h                     |   4 +-
->  include/linux/netdevice.h                     |   6 +-
->  include/linux/rtnetlink.h                     |   4 +-
->  include/trace/events/bridge.h                 |  20 ++--
->  include/uapi/linux/if_link.h                  |   1 +
->  include/uapi/linux/neighbour.h                |   1 +
->  net/bridge/br_arp_nd_proxy.c                  |   8 +-
->  net/bridge/br_device.c                        |  11 +-
->  net/bridge/br_fdb.c                           | 107 ++++++++++--------
->  net/bridge/br_input.c                         |  22 ++--
->  net/bridge/br_netlink.c                       |  18 ++-
->  net/bridge/br_private.h                       |  25 ++--
->  net/bridge/br_vlan.c                          |  34 +++++-
->  net/core/neighbour.c                          |   1 +
->  net/core/rtnetlink.c                          |  58 ++++++----
->  26 files changed, 227 insertions(+), 143 deletions(-)
-> 
+> Cheers,
+>  Nik
 
-Hi,
-This patch makes fdb lookups slower for everybody, ruins the nice key alignment,
-increases the key memory usage and adds more complexity for a corner case, especially
-having 2 different hosts with identical macs sounds weird. Fdb matching on both tags
-isn't a feature I've heard of, I don't know if there are switches that support it.
-Could you point to anywhere in the specs that such support is mentioned?
-Also could you please give more details about the use case? Maybe we can help you solve
-your problem without impacting everyone. Perhaps we can mix vlan-aware bridge and tc
-to solve it. As it stands I'm against adding such matching, but I'd love to hear what
-other people think.
-
-Cheers,
- Nik
+Correct, I was also going to plan asking Andy what is his plan on making
+switchdev digest this. The switch ASICs I'm most familiar with can learn
+on inner VID or outer VID, but not both. Like you, I'm also not sure
+what 802.1Q says about FDB entries with 2 associated VIDs.
