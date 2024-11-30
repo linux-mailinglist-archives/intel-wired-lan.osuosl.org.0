@@ -1,124 +1,120 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 89BF29DE9F1
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Nov 2024 16:48:40 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E0C369DEF0C
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 30 Nov 2024 06:48:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3B763607EF;
-	Fri, 29 Nov 2024 15:48:39 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7BD82407BB;
+	Sat, 30 Nov 2024 05:48:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Idl3O_4JAyep; Fri, 29 Nov 2024 15:48:38 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id zOmTi5OVetKX; Sat, 30 Nov 2024 05:48:37 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8392360803
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D123F407BC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1732895318;
-	bh=9fZmFquivfpsRX4ovRuebdXrWSPlFb6167yx7/D4Gv8=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1732945716;
+	bh=aXu1+vMK6eJkPs6Tb8tIbkyWKGGXG1t4nO8Xe9yiWX0=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=uHD47pt2rNGxXIgrzaoudfPcvKciXhdcSozurhLX6/cyZN3twMxKINcKV4+OTdQHq
-	 5CmI64P1gFM/DZL6HVWcn30NETJoBS9vJLenqgO0X5GGqvIuNmm+cAgvAGNPex9CHr
-	 29iZ6dclBYbaGXQteTFIb3r69cOLDsvINGtOyCPbyz+wBnfEOtr+tbErl/3U4gxnb4
-	 88HAow2xvVgSSfFZHBnE4aIioGEc621UOrRlcaJ1JgFpJM56tnr3b18TlRIpv0Lkhn
-	 2wmK7fmFgoYxlNV/ZM26K6eL/wRX1aVipk5B2gGUfhTB/RX0a1/cMZB5jehiscMk3/
-	 sjQTTXCy3fCIw==
+	b=aYWqZAVlhLGR1dsTySNVLWVhT89cUJiKdtDNNwV9/m+pCFbu5QRjjwE5DZXVBwspb
+	 avcbyGlJlVMRGy1r7Vn4PwNbFjeQgOLdhTz0Ux6stnbghZTxJ3bKil5mAzJAfYDuCZ
+	 DqxJqzlQSilv6/pxxK9RcCT17isrw/uZ59pFg693iG+/IaSV1M5bI/BVmNrWEAkFT9
+	 pLf/0vRJbpqEovCHuTxlB1c+x2k+y9EoH12eRd3eqCStiaS62csZYhdHOvZVa3OdkJ
+	 We2Xo9ijlGDM5GWeNEv0QaziA3uqwr+fvCroG+2CBr/OXTseuGtmo1LdgyT+Db0KZE
+	 ZDaqqSPsafBzw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8392360803;
-	Fri, 29 Nov 2024 15:48:38 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D123F407BC;
+	Sat, 30 Nov 2024 05:48:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 28AB671F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Nov 2024 15:48:37 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 6336A712
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Nov 2024 05:48:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1753F60799
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Nov 2024 15:48:37 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 44468407BB
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Nov 2024 05:48:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id l-3odYkWBr1b for <intel-wired-lan@lists.osuosl.org>;
- Fri, 29 Nov 2024 15:48:36 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::736; helo=mail-qk1-x736.google.com;
- envelope-from=willemdebruijn.kernel@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 3C503605F9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3C503605F9
-Received: from mail-qk1-x736.google.com (mail-qk1-x736.google.com
- [IPv6:2607:f8b0:4864:20::736])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3C503605F9
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Nov 2024 15:48:36 +0000 (UTC)
-Received: by mail-qk1-x736.google.com with SMTP id
- af79cd13be357-7b15467f383so141647585a.3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Nov 2024 07:48:36 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1732895314; x=1733500114;
- h=content-transfer-encoding:mime-version:subject:references
- :in-reply-to:message-id:cc:to:from:date:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=9fZmFquivfpsRX4ovRuebdXrWSPlFb6167yx7/D4Gv8=;
- b=KFSE10P4qnuR+tXFy2XiAvtJR/9vzETYKgspYsexjP+ROe5gQUx1/brKXICLf6oXFl
- 1x4SYRQLDvW5zMcQEaQjIUk1kRjnQkW9gzl7Zdg8hiKdvOVSxjA8fs2Svr9oHdd3N9XS
- AaJyfz5CDntOhD09OW2s1SI8H7GpV7IRqxbaHjaUbnhQCV7rSbwRZXZ3vESwXjeBY4Tm
- +CDC9HpMTqAjIZtUA41ur9SxgiY7frwXhxiPkJlcZQqggCzYhMFh2BvsIrmm4y6IdUy2
- kclVXqXtMLaFdY9ZT8HjLIkS6NBkgZ9YfuyYjvsRvQgv5rzGIJ5XqEap/CilkmuJk9jI
- r6gA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXElfTPe7KXEufBrS6xsjqr5AekzNAAS8BAJZmM3Bxyh204CSoduMIIw0VG/GSvWelmR0Z5KEGel38W4b6Nzv8=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yxl6Fr2MmRHSZq6WcMzsBA5GrT21v1oj5KWgcz5bAxyO9aIe+z3
- iQzkAwjKvYloBbGHSWLTT06JRpZM1KjQi1oqUoNFGO93YHiuyCw8
-X-Gm-Gg: ASbGncvxMI0DxxUIZiWsELWF74OI3RAN3FLSke/xBYVd2Cvgav6So3D5uGBsWJhsjPo
- eVO38iKUNwu4s/bfTyH+o57wf0GojoeJcxL2AE234il60l2H7hq5fOtHSt1kEMGpsYx96EQYsee
- 1rHxLspWRx6J4MNrDY6BFgWyvydrFY5mI+uJM2VrsqDyR+u3gluM69Bl5zQyZYM6jzrDd2765bM
- 2h7xKbVwyA/YAO6XwIx0qMFZxWo2ve32lnTsVyF8L1iT2PW4Zg6HIOvGdXTjSggbvX4vSXIZqiN
- ZPEbfcXVGM4R02Pyhnplfw==
-X-Google-Smtp-Source: AGHT+IGC0M0tgAcIG7IBoef9nUKFozo8QRmbCfwEMu3jKIF4G/ftFfQgV4H1+wEcw6ICac2x9IABig==
-X-Received: by 2002:a05:6214:a6d:b0:6d8:8256:41d7 with SMTP id
- 6a1803df08f44-6d88256548dmr59309366d6.33.1732895314141; 
- Fri, 29 Nov 2024 07:48:34 -0800 (PST)
-Received: from localhost (250.4.48.34.bc.googleusercontent.com. [34.48.4.250])
- by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-6d880e81c86sm10972986d6.106.2024.11.29.07.48.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Nov 2024 07:48:33 -0800 (PST)
-Date: Fri, 29 Nov 2024 10:48:33 -0500
-From: Willem de Bruijn <willemdebruijn.kernel@gmail.com>
-To: Milena Olech <milena.olech@intel.com>, 
- intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com, 
- przemyslaw.kitszel@intel.com, Milena Olech <milena.olech@intel.com>, 
- Alexander Lobakin <aleksander.lobakin@intel.com>
-Message-ID: <6749e251407f0_23772a2948f@willemb.c.googlers.com.notmuch>
-In-Reply-To: <20241126035849.6441-10-milena.olech@intel.com>
-References: <20241126035849.6441-1-milena.olech@intel.com>
- <20241126035849.6441-10-milena.olech@intel.com>
-Mime-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1732895314; x=1733500114; darn=lists.osuosl.org;
- h=content-transfer-encoding:mime-version:subject:references
- :in-reply-to:message-id:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=9fZmFquivfpsRX4ovRuebdXrWSPlFb6167yx7/D4Gv8=;
- b=hfc0Ve5J3YYKmmNPDymmk4Vww2Wix6fKSZ94MaBahSieL6OUGRuZvOk7FZWiUbOyIk
- Mc/gPMKngnnsxogsMOUd32qOndwbo/Vx5Q6U3qJlUsAO1ks/uBJ3gzCTaee7xlaZgv3D
- ewXh7RYMHPq3M7aCyMCalf8arLnZrAXR9/An01y2klFxDfTzTEpaMLReN64K+wTZtVut
- 1fRnzqfqGqgZTPUUqSvq/1zazcIh646xXkag2GzzFEzeL1xOqA9BaTnHhbmL80l9fYc4
- /VStOdblFOnb48/w/n79TsH7i2SH4+eJwtdoWl2zbGr7PveXk7h4+vIpAAImwWDjFXra
- AQcw==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id mVODTTeexDTh for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 30 Nov 2024 05:48:34 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org B78AB407B0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B78AB407B0
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B78AB407B0
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Nov 2024 05:48:33 +0000 (UTC)
+X-CSE-ConnectionGUID: l5nDsaU3So+c5RPK59JSYQ==
+X-CSE-MsgGUID: bK0UWIVCSnmhWPVYr/v6yA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11271"; a="33299904"
+X-IronPort-AV: E=Sophos;i="6.12,197,1728975600"; d="scan'208";a="33299904"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+ by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Nov 2024 21:48:32 -0800
+X-CSE-ConnectionGUID: FXvhDrQBTAu3VqVCqlvLPw==
+X-CSE-MsgGUID: B/pukYGWRnKC5J2rNJpL+Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,197,1728975600"; d="scan'208";a="92804226"
+Received: from lkp-server02.sh.intel.com (HELO 36a1563c48ff) ([10.239.97.151])
+ by fmviesa008.fm.intel.com with ESMTP; 29 Nov 2024 21:48:26 -0800
+Received: from kbuild by 36a1563c48ff with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1tHGL9-00007T-1A;
+ Sat, 30 Nov 2024 05:48:23 +0000
+Date: Sat, 30 Nov 2024 13:47:38 +0800
+From: kernel test robot <lkp@intel.com>
+To: Andy Strohman <andrew@andrewstrohman.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Ido Schimmel <idosch@nvidia.com>, Petr Machata <petrm@nvidia.com>,
+ Vladimir Oltean <vladimir.oltean@nxp.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ UNGLinuxDriver@microchip.com, Shahed Shaikh <shshaikh@marvell.com>,
+ Manish Chopra <manishc@marvell.com>, GR-Linux-NIC-Dev@marvell.com,
+ Simon Horman <horms@kernel.org>, Steven Rostedt <rostedt@goodmis.org>,
+ Masami Hiramatsu <mhiramat@kernel.org>,
+ Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
+ Roopa Prabhu <roopa@nvidia.com>, Nikolay Aleksandrov <razor@blackwall.org>
+Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org,
+ Andy Strohman <andrew@andrewstrohman.com>,
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
+ linux-trace-kernel@vger.kernel.org, bridge@lists.linux.dev
+Message-ID: <202411301325.5uGYbi6q-lkp@intel.com>
+References: <20241130000802.2822146-1-andrew@andrewstrohman.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241130000802.2822146-1-andrew@andrewstrohman.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1732945714; x=1764481714;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=drGWNSrEydr7H0DEuuYjrcKDU4y0qKHm3EoNDN1Dzqw=;
+ b=TCreZH2Lo6iy7IzrhWviLg2NcjYfmMUJew5eDa7RpVvky2VMLqckndNb
+ 8UgyJmMxvwHCc4IFzNnZgnDKCmzqh8OUZn9sQ3Yv6/0Grv354oKRR0AZi
+ tK0mrg/nG8LVDZHtwnOOJM1TqjCZHm86kfhHnLsqZGsEMPCE+KWWmja7W
+ ujThqKuqnOqjRI2kOSWXZRmidbOzS2XqytVnuFC3e6jb1ZNf+IEHKvlgP
+ 2B5afPVaAonYHz4qG2BX7s6Zp8TzwnvZUrrYjQkltorllbfUhmILmLhqx
+ r80/ntOxXgzIXkb2/ZLHCvi3xgLXmHQzJo8HtIDmic1uRBIvURxUmXnLI
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=hfc0Ve5J
-Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-next 09/10] idpf: add support
- for Rx timestamping
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=TCreZH2L
+Subject: Re: [Intel-wired-lan] [PATCH net-next] bridge: Make the FDB
+ consider inner tag for Q-in-Q
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -134,53 +130,88 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Milena Olech wrote:
-> Add Rx timestamp function when the Rx timestamp value is read directly
-> from the Rx descriptor. In order to extend the Rx timestamp value to 64
-> bit in hot path, the PHC time is cached in the receive groups.
-> Add supported Rx timestamp modes.
-> 
-> Reviewed-by: Alexander Lobakin <aleksander.lobakin@intel.com>
-> Signed-off-by: Milena Olech <milena.olech@intel.com>
-> ---
-> v1 -> v2: extend commit message
-> 
->  drivers/net/ethernet/intel/idpf/idpf_ptp.c  | 77 ++++++++++++++++++++-
->  drivers/net/ethernet/intel/idpf/idpf_txrx.c | 30 ++++++++
->  drivers/net/ethernet/intel/idpf/idpf_txrx.h |  7 +-
->  3 files changed, 111 insertions(+), 3 deletions(-)
-> 
-> +/**
-> + * idpf_ptp_set_rx_tstamp - Enable or disable Rx timestamping
-> + * @vport: Virtual port structure
-> + * @rx_filter: bool value for whether timestamps are enabled or disabled
-> + */
-> +static void idpf_ptp_set_rx_tstamp(struct idpf_vport *vport, int rx_filter)
-> +{
-> +	vport->tstamp_config.rx_filter = rx_filter;
-> +
-> +	if (rx_filter == HWTSTAMP_FILTER_NONE)
-> +		return;
-> +
+Hi Andy,
 
-Same question as v1:
+kernel test robot noticed the following build warnings:
 
-Should this clear the bit if it was previously set, instead of
-returning immediately?
+[auto build test WARNING on net-next/main]
 
-If not, why not. The function comment says enable or disable.
+url:    https://github.com/intel-lab-lkp/linux/commits/Andy-Strohman/bridge-Make-the-FDB-consider-inner-tag-for-Q-in-Q/20241130-080335
+base:   net-next/main
+patch link:    https://lore.kernel.org/r/20241130000802.2822146-1-andrew%40andrewstrohman.com
+patch subject: [PATCH net-next] bridge: Make the FDB consider inner tag for Q-in-Q
+config: alpha-allyesconfig (https://download.01.org/0day-ci/archive/20241130/202411301325.5uGYbi6q-lkp@intel.com/config)
+compiler: alpha-linux-gcc (GCC) 14.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241130/202411301325.5uGYbi6q-lkp@intel.com/reproduce)
 
-> +	for (u16 i = 0; i < vport->num_rxq_grp; i++) {
-> +		struct idpf_rxq_group *grp = &vport->rxq_grps[i];
-> +		u16 j;
-> +
-> +		if (idpf_is_queue_model_split(vport->rxq_model)) {
-> +			for (j = 0; j < grp->singleq.num_rxq; j++)
-> +				idpf_queue_set(PTP, grp->singleq.rxqs[j]);
-> +		} else {
-> +			for (j = 0; j < grp->splitq.num_rxq_sets; j++)
-> +				idpf_queue_set(PTP,
-> +					       &grp->splitq.rxq_sets[j]->rxq);
-> +		}
-> +	}
-> +}
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202411301325.5uGYbi6q-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+>> drivers/net/ethernet/intel/i40e/i40e_main.c:13106: warning: Function parameter or struct member 'inner_vid' not described in 'i40e_ndo_fdb_add'
+--
+>> drivers/net/ethernet/intel/ice/ice_main.c:6167: warning: Function parameter or struct member 'inner_vid' not described in 'ice_fdb_add'
+>> drivers/net/ethernet/intel/ice/ice_main.c:6208: warning: Function parameter or struct member 'inner_vid' not described in 'ice_fdb_del'
+
+
+vim +13106 drivers/net/ethernet/intel/i40e/i40e_main.c
+
+1f224ad2f76028 Neerav Parikh    2014-02-12  13089  
+2f90ade661b3bd Jesse Brandeburg 2014-11-20  13090  /**
+2f90ade661b3bd Jesse Brandeburg 2014-11-20  13091   * i40e_ndo_fdb_add - add an entry to the hardware database
+2f90ade661b3bd Jesse Brandeburg 2014-11-20  13092   * @ndm: the input from the stack
+2f90ade661b3bd Jesse Brandeburg 2014-11-20  13093   * @tb: pointer to array of nladdr (unused)
+2f90ade661b3bd Jesse Brandeburg 2014-11-20  13094   * @dev: the net device pointer
+2f90ade661b3bd Jesse Brandeburg 2014-11-20  13095   * @addr: the MAC address entry being added
+f5254429e1756a Jacob Keller     2018-04-20  13096   * @vid: VLAN ID
+2f90ade661b3bd Jesse Brandeburg 2014-11-20  13097   * @flags: instructions from stack about fdb operation
+4b42fbc6bd8f73 Petr Machata     2024-11-14  13098   * @notified: whether notification was emitted
+b50f7bca5e83d9 Jesse Brandeburg 2020-09-25  13099   * @extack: netlink extended ack, unused currently
+2f90ade661b3bd Jesse Brandeburg 2014-11-20  13100   */
+4ba0dea5b17369 Greg Rose        2014-03-06  13101  static int i40e_ndo_fdb_add(struct ndmsg *ndm, struct nlattr *tb[],
+4ba0dea5b17369 Greg Rose        2014-03-06  13102  			    struct net_device *dev,
+eae5d6a6f80427 Andy Strohman    2024-11-30  13103  			    const unsigned char *addr, u16 vid, u16 inner_vid,
+4b42fbc6bd8f73 Petr Machata     2024-11-14  13104  			    u16 flags, bool *notified,
+87b0984ebfabaf Petr Machata     2019-01-16  13105  			    struct netlink_ext_ack *extack)
+4ba0dea5b17369 Greg Rose        2014-03-06 @13106  {
+4ba0dea5b17369 Greg Rose        2014-03-06  13107  	struct i40e_netdev_priv *np = netdev_priv(dev);
+4ba0dea5b17369 Greg Rose        2014-03-06  13108  	struct i40e_pf *pf = np->vsi->back;
+4ba0dea5b17369 Greg Rose        2014-03-06  13109  	int err = 0;
+4ba0dea5b17369 Greg Rose        2014-03-06  13110  
+70756d0a4727fe Ivan Vecera      2023-11-13  13111  	if (!test_bit(I40E_FLAG_SRIOV_ENA, pf->flags))
+4ba0dea5b17369 Greg Rose        2014-03-06  13112  		return -EOPNOTSUPP;
+4ba0dea5b17369 Greg Rose        2014-03-06  13113  
+eae5d6a6f80427 Andy Strohman    2024-11-30  13114  	if (vid || inner_vid) {
+65891feac27e26 Or Gerlitz       2014-12-14  13115  		pr_info("%s: vlans aren't supported yet for dev_uc|mc_add()\n", dev->name);
+65891feac27e26 Or Gerlitz       2014-12-14  13116  		return -EINVAL;
+65891feac27e26 Or Gerlitz       2014-12-14  13117  	}
+65891feac27e26 Or Gerlitz       2014-12-14  13118  
+4ba0dea5b17369 Greg Rose        2014-03-06  13119  	/* Hardware does not support aging addresses so if a
+4ba0dea5b17369 Greg Rose        2014-03-06  13120  	 * ndm_state is given only allow permanent addresses
+4ba0dea5b17369 Greg Rose        2014-03-06  13121  	 */
+4ba0dea5b17369 Greg Rose        2014-03-06  13122  	if (ndm->ndm_state && !(ndm->ndm_state & NUD_PERMANENT)) {
+4ba0dea5b17369 Greg Rose        2014-03-06  13123  		netdev_info(dev, "FDB only supports static addresses\n");
+4ba0dea5b17369 Greg Rose        2014-03-06  13124  		return -EINVAL;
+4ba0dea5b17369 Greg Rose        2014-03-06  13125  	}
+4ba0dea5b17369 Greg Rose        2014-03-06  13126  
+4ba0dea5b17369 Greg Rose        2014-03-06  13127  	if (is_unicast_ether_addr(addr) || is_link_local_ether_addr(addr))
+4ba0dea5b17369 Greg Rose        2014-03-06  13128  		err = dev_uc_add_excl(dev, addr);
+4ba0dea5b17369 Greg Rose        2014-03-06  13129  	else if (is_multicast_ether_addr(addr))
+4ba0dea5b17369 Greg Rose        2014-03-06  13130  		err = dev_mc_add_excl(dev, addr);
+4ba0dea5b17369 Greg Rose        2014-03-06  13131  	else
+4ba0dea5b17369 Greg Rose        2014-03-06  13132  		err = -EINVAL;
+4ba0dea5b17369 Greg Rose        2014-03-06  13133  
+4ba0dea5b17369 Greg Rose        2014-03-06  13134  	/* Only return duplicate errors if NLM_F_EXCL is set */
+4ba0dea5b17369 Greg Rose        2014-03-06  13135  	if (err == -EEXIST && !(flags & NLM_F_EXCL))
+4ba0dea5b17369 Greg Rose        2014-03-06  13136  		err = 0;
+4ba0dea5b17369 Greg Rose        2014-03-06  13137  
+4ba0dea5b17369 Greg Rose        2014-03-06  13138  	return err;
+4ba0dea5b17369 Greg Rose        2014-03-06  13139  }
+4ba0dea5b17369 Greg Rose        2014-03-06  13140  
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
