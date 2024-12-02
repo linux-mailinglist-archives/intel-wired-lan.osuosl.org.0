@@ -1,192 +1,107 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 84E569DF1F9
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 30 Nov 2024 17:18:50 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E89EB9DFCEC
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  2 Dec 2024 10:21:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7A4B471902;
-	Sat, 30 Nov 2024 16:18:47 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EB2D96068F;
+	Mon,  2 Dec 2024 09:21:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ocNI3MpmoUrs; Sat, 30 Nov 2024 16:18:46 +0000 (UTC)
+ id Jkq0oGICf5_X; Mon,  2 Dec 2024 09:20:59 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 69F3870CB8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1D38960787
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1732983151;
-	bh=KQnAV9ciNVpSQs1aLyGbW3u8bpvwKMWP9G257k4h8lI=;
+	s=default; t=1733131259;
+	bh=kyWYPsy0L1Wynqk4O8s1j2cNudXLdrkkcDjZYI973Xw=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=V7YLj3GI6g2+FymM3ZYJKL/sCoHrnmljbFZ7BhJv6/k1aftVQNSXh917YYSxnPL2S
-	 q3CP1j4/Y4MJQ67aCr3sf2dwpP3MdIDjAv6S9/Z+iQ7rLY5urrDjI3evLuDMRYxlu5
-	 935BpxwO5MBT7ZVQ6mhvWswrHVq+qV4EHIyeoGc4+YjYm2aAWQEotYW/j8s04OZVJt
-	 tuWWPQccUoPdxuTgbCQ2TpoC6Tyqrmj6vGW/+B+ZSZ69guLCoPLlip68WMeZ5SWlXQ
-	 9V7CmqKUiO4IQOBZEShFlLxUg470aXkEIf5whXSZuisEws/Vs9eILd47/eBPvZ6uP4
-	 BV9UJNGe0u3Dg==
+	b=RI/mk2moxe2utSlVAMXjcNym/9aTsxwZJluKvrTVe9+Eg86Zde9lqgAVymqYiysi5
+	 Pb2b1oyYH0rv3mOyTDLHiUL5fc2GZdAPLaJY2StOnlyOuhBXjVTIMn3sA41+Jpyg8S
+	 2drhBHtexRwYxqyFpZinGTL/8R6/AyTRnC/WzQ2AGbznnUsHs0mQMXFOHheVBXficg
+	 QLHuewGia89x8NGTEF63lgo50HyZaOskLZ7vejfJ7UTvVfQfWW7b+vFWWRacVDjkzc
+	 gMK4v4XxgmaGmA1QXtN/y1oZjZsh4PRoo31y880dpwcOGXhf36Pyp9MjSp//+FI4FB
+	 HUDraDLvVXmnQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 69F3870CB8;
-	Sat, 30 Nov 2024 16:12:31 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1D38960787;
+	Mon,  2 Dec 2024 09:20:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id BC7436C
- for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Nov 2024 16:11:41 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id B01301DAA
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Dec 2024 09:20:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A78E885A7A
- for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Nov 2024 16:11:41 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9D5C340566
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Dec 2024 09:20:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Kx30Bk3Qihgu for <intel-wired-lan@lists.osuosl.org>;
- Sat, 30 Nov 2024 16:11:40 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.103.54;
- helo=eur03-vi1-obe.outbound.protection.outlook.com;
- envelope-from=vladimir.oltean@nxp.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4457684A50
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4457684A50
-Received: from EUR03-VI1-obe.outbound.protection.outlook.com
- (mail-vi1eur03on2054.outbound.protection.outlook.com [40.107.103.54])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4457684A50
- for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Nov 2024 16:08:44 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=lmKbFyYAywVggJy9u1erV3upbJKtykdgAYcjGN8Py9EuJLG4otyd600pl8deHIFtNaGF+WSi8bUsPXzM33eAJB9SAZZ/OY20Ep9Md6pQQuhu/+QKqoJ9u8lvcDOmCmW4qSAMUCI6KZFOQGJdmUE1Zce57bqISlqrIHTkmqaRAvnl3b6aRQ2ytewyYziVHyBu1eRMveeFCVwXvGHbe8Uw4Pbt46TFdkEVRzYPZmBK77u3DLelOpDdCqvdK5OF8fCC3bEZtWx9HzvSC3DV78LQbiPPfgUGa1pPEIBBdr2eXnjZ3CDQDOWXIuc3zglEqGLHj8wN5JS5Uztw+TqrmSi/Mg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=KQnAV9ciNVpSQs1aLyGbW3u8bpvwKMWP9G257k4h8lI=;
- b=h0nDa9OTA2zHGw5lMZOAeGlQn69mn0gJeoY3uYeqKnxMeY0c+dIQo7JW7fTkiappsT5J+9gAZmi4IkcNVqomvRxZGSIOxpjG9fv/sQH6Z7KTspez3B0mKJQnicaL2IGQs3FH7pQW/yE6lMMeWf+EagEcEOiIkaE0i+Tqkub0IkdcyNYF2zrW+MG4Ddj7kg40egT92ZGQo0DF+EibhsH0ciw1VV09Rn81iVwSVms8jfA9sOQcdMcckAHJlqSrg/82gtm1JB4wZgnEy8LHfWIBC5Zhbc9EBpMTmpfyqt/bM/HnmtXOmGZsIqP0jgN7GdGaPn0j1Gb2Q/2ikObplLvTkA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-Received: from AM8PR04MB7779.eurprd04.prod.outlook.com (2603:10a6:20b:24b::14)
- by AS8PR04MB8497.eurprd04.prod.outlook.com (2603:10a6:20b:340::17)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8207.16; Sat, 30 Nov
- 2024 16:08:19 +0000
-Received: from AM8PR04MB7779.eurprd04.prod.outlook.com
- ([fe80::7417:d17f:8d97:44d2]) by AM8PR04MB7779.eurprd04.prod.outlook.com
- ([fe80::7417:d17f:8d97:44d2%6]) with mapi id 15.20.8207.017; Sat, 30 Nov 2024
- 16:08:19 +0000
-Date: Sat, 30 Nov 2024 18:08:15 +0200
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: Nikolay Aleksandrov <razor@blackwall.org>
-Cc: Andy Strohman <andrew@andrewstrohman.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Ido Schimmel <idosch@nvidia.com>, Petr Machata <petrm@nvidia.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- UNGLinuxDriver@microchip.com, Shahed Shaikh <shshaikh@marvell.com>,
- Manish Chopra <manishc@marvell.com>, GR-Linux-NIC-Dev@marvell.com,
- Simon Horman <horms@kernel.org>, Steven Rostedt <rostedt@goodmis.org>,
- Masami Hiramatsu <mhiramat@kernel.org>,
- Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
- Roopa Prabhu <roopa@nvidia.com>, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-trace-kernel@vger.kernel.org, bridge@lists.linux.dev
-Message-ID: <20241130160815.4n5hnr44v6ea3m44@skbuf>
-References: <20241130000802.2822146-1-andrew@andrewstrohman.com>
- <Z0s3pDGGE0zXq0UE@penguin>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 1qNy9P4PuTeJ for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  2 Dec 2024 09:20:55 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org C68644055F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C68644055F
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C68644055F
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Dec 2024 09:20:54 +0000 (UTC)
+X-CSE-ConnectionGUID: lDR9bKxTSNmlgjyXj666Sw==
+X-CSE-MsgGUID: b0psGCyRQeKXkpFtyDTKFA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11273"; a="33033902"
+X-IronPort-AV: E=Sophos;i="6.12,201,1728975600"; d="scan'208";a="33033902"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+ by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Dec 2024 01:20:54 -0800
+X-CSE-ConnectionGUID: uoZkUQJVTKKE6rSvFQxFWg==
+X-CSE-MsgGUID: g+MelOORRsyPg0A13ZBgmQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,201,1728975600"; d="scan'208";a="92716714"
+Received: from mev-dev.igk.intel.com ([10.237.112.144])
+ by fmviesa006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Dec 2024 01:20:50 -0800
+Date: Mon, 2 Dec 2024 10:17:53 +0100
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: Pawel Chmielewski <pawel.chmielewski@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, pmenzel@molgen.mpg.de,
+ wojciech.drewek@intel.com, marcin.szycik@intel.com,
+ netdev@vger.kernel.org, rafal.romanowski@intel.com,
+ konrad.knitter@intel.com, horms@kernel.org, David.Laight@aculab.com,
+ nex.sw.ncis.nat.hpm.dev@intel.com, pio.raczynski@gmail.com,
+ sridhar.samudrala@intel.com, jacob.e.keller@intel.com,
+ jiri@resnulli.us, przemyslaw.kitszel@intel.com
+Message-ID: <Z017QVzVrZkPg181@mev-dev.igk.intel.com>
+References: <20241114122009.97416-5-michal.swiatkowski@linux.intel.com>
+ <20241118101630.2936711-1-pawel.chmielewski@intel.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Z0s3pDGGE0zXq0UE@penguin>
-X-ClientProxiedBy: VI1P190CA0008.EURP190.PROD.OUTLOOK.COM
- (2603:10a6:802:2b::21) To AM8PR04MB7779.eurprd04.prod.outlook.com
- (2603:10a6:20b:24b::14)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM8PR04MB7779:EE_|AS8PR04MB8497:EE_
-X-MS-Office365-Filtering-Correlation-Id: 947dd67c-c642-48c5-6e68-08dd11593505
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|366016|1800799024;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?JB8XYRkOfEA4X+Fx9LV4Q94pfBgyS+p3teDfcTesRLO12g/wlLlzuNFVErEC?=
- =?us-ascii?Q?ApjWGM3eyxa/J6jvwkwg+1wY7uyUmYpAeqBgJCmYIeUtNfJuFEthawegMnmY?=
- =?us-ascii?Q?gcWahVqueimApfilJ3fpdmrjyhLdbdVtZi7Or0mCYib5C0pgepcOQtcKXu5h?=
- =?us-ascii?Q?8RaRWFAfD8DjjWyVk8WQFSgObkxPzo6NdtivOqtMxvXV9Ap+v3+7RyAxJjLR?=
- =?us-ascii?Q?CkmUUSbgS7PJ4KoK/P9YIRedhzCp5UrBrnBcqvV7ZjBqYDMLP4iVUqQDDBVS?=
- =?us-ascii?Q?NVc3Bw843fiiL3nlLSAVwaWU0BjKwkUMURF/KjBnTzF8PPWSCq5NAsh3ABoj?=
- =?us-ascii?Q?DrDS5SVchpqDe5LdIjpwaYod7DuMm89GUIY8W71EKP2uECoFBp3WJmRAmZyt?=
- =?us-ascii?Q?4IMc7BY9lwjHByg8ATvUMmQ+dUNLF4JRrzAoBN0m/OQjscRguemhNzMHj5tH?=
- =?us-ascii?Q?SxfgPSCX0JFmvjHoD4fyMwZ+kkDhb4bRtfRnGt1+1ZxYMQGy9Qx8N7kFI9zc?=
- =?us-ascii?Q?32BbS2gH4x2iAvl0j6N0HNjWhst6izDPi6Li8SrJS3M+itc2maNieC38Y1zX?=
- =?us-ascii?Q?/MDROtHYbPGGa+XmwuNcPbFfwDLrA6GRyB5f410ufl82FSxqWv8GI2yWjhh4?=
- =?us-ascii?Q?N+2o6G/cQbARgCldBiQNqPOWs3drh8o6qFBGZpBDzSrWnEEomMjZva5S9T1d?=
- =?us-ascii?Q?tsl6uhvEORj7XYELyxYYnkm/CcdQoS/uWAnyhCjzq+0DlHQoNfjquOK2mSi3?=
- =?us-ascii?Q?gp5dpBBuvUVhGf/Iftu19AkNjhgh6HrUJGCU7klaEzy78NSv49u2sfLj7d/7?=
- =?us-ascii?Q?dFbxWJHBj+MG/a81dj/rHNBdAk+bZGyf7Hl+j12qrMhnoT/aV/pBvfckuKS+?=
- =?us-ascii?Q?qZXqNhs39yX/MyJcKltPQCEb+INlJ9POFyxEmtR18cBAoPfx6lAFcIXGo/NX?=
- =?us-ascii?Q?1t11e7LE4qXBIAtJglI7oYU67Vp92PO/l80/C6rOig/IBQFLDa90pHN9cYMn?=
- =?us-ascii?Q?gfGGxbLEHxkpaDZvXnTS9C2yL32Mvr6Erc9AKEc1/+IZ+RJajR4r9RrSuUEF?=
- =?us-ascii?Q?Y9Uc0TCxFrABWnaOhvcV1UpsUE5NU3ZmEM1VK0Z13n9ULu98VDqOe59zZK1p?=
- =?us-ascii?Q?rCetuQ+5epVFRNtJJJMPX8Apnf88JcspURhKD/jI7H94amhM9w1Mt0aI/8VK?=
- =?us-ascii?Q?zEx4ZnnK1G3ZEX1u1sxKFcOrQrHR+a7RIy96KPkh6AiDvpZcCx6jzFTq8AYd?=
- =?us-ascii?Q?5rTEHrHJBTUMiEKFJP1FlKvKo9PpRgxSJGzrwAQ74LCAtGlNigPxnlESYaRQ?=
- =?us-ascii?Q?63kXaiJjmGFQN1JJZLu54KX5PET/dJvwFSjeHybeMKmAqw=3D=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:AM8PR04MB7779.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(7416014)(366016)(1800799024); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?3dgz0qwOh0ZmqNL1B+RW+C8yQL9Wgzu3mB8drSd+RosEdq90izVJokpHRWpP?=
- =?us-ascii?Q?2R1kWWI5zonq6F8Bn+lSkFvmU8VuwNX+LLLmbYlYlfPcd39ND6MAoo9s/wkD?=
- =?us-ascii?Q?bsKlDxRyneTS0Hd+dyb9td5m3GO8SP4ddyWYffR7BbGjDhJBZGuk4Ezvk29H?=
- =?us-ascii?Q?ufTXrZ+bwKv8mCHRfFiiGhtsUxBy3oWFeGIIzpyE6CzHeZ2CgmnAjRVE+K5C?=
- =?us-ascii?Q?HnG195N/qELUnwInI3mOhDPNn3JWH4bAiEAWw4sN9DlySW9p4PyGQ/xGfqQ1?=
- =?us-ascii?Q?5jwJdsTcXJo420UiZRlC6pQJXAzk8NKFnWM7iDsjpU4kbbsxNnfiim8a8G5T?=
- =?us-ascii?Q?iKRIkc1/2xxVqQSgOd9elfh5cXZS0B/mwNsteePZtUzQrFY9IvpQxzCNeXyH?=
- =?us-ascii?Q?k62CpyiFM2fR6j2vJ6esw7FEJlBxKfQmWZDI5yw1psVvhoA006iMTWbFqIR8?=
- =?us-ascii?Q?jb7vSpgsk1kL4j8Nl/n3Hp1Uil369vusa/DoLKNE2xUACpuLbj5DnEYx1j4H?=
- =?us-ascii?Q?zggJWXDGPxrV/8Q8tZrXdbbLlP6aTV/a0uq+jsnt2wXo8LB4dAp3y3eIOpIs?=
- =?us-ascii?Q?0gYbk58BU/8yzNf32BY1Lm7G39kXkD1TBtmWvO2yAyvLADjC6rDkMd7LRtET?=
- =?us-ascii?Q?eOawPegyyhsGz213OfSLCqNItPsCGK9pD6NghqHNxSuMc7+vMyhqZRXKuJln?=
- =?us-ascii?Q?Pz3IL3/e/8xK/vTfhFQysv90SZMsHEj2pPU0bxtuJMzHt6tDJ9QMg14udEmI?=
- =?us-ascii?Q?RCNFvOdrP2sGgBHc4zjewEACAEsHzwsVyq0AvjsHE8cNHYR18Z8TopPacmx6?=
- =?us-ascii?Q?av4gEiZ+2GTMclm4gQOAmkykjNAVYuWVfEmG7nUYzjGKIWNjaOStEhWLOXlg?=
- =?us-ascii?Q?UF6sClZxfRl+oU5Mh1w2MDD+PWp5MUibwXC5a6aB02nwrzhxHRJyOCC7hZ4i?=
- =?us-ascii?Q?tXqMnkNY2kre8eHi38cpybFEr49n80U8oldf6hKVxBNm9WbIJezlHwWO0Qzp?=
- =?us-ascii?Q?HTpXHvyZMArp1QVVrccUmg8bzPD8QM+N7VYqj51fB4x9GvUhRYmMLu8xo9MW?=
- =?us-ascii?Q?90jrPiAKz/Gu6xz2gruj6YDIzYsNpqK8zTz+Xz5VOh7+sHyZMZ6ze66Mjbga?=
- =?us-ascii?Q?X4cVgq7mFB3ZjWivonEWfSDiNyUDiwgxhO5S/kDttmSG4sApuR4WEtrt3KP5?=
- =?us-ascii?Q?Gim5N20ZXtapdneYdQ7uLdmbNnw5v0Z/JzWFWkb32kjCjMCCdTn26tiR7zpi?=
- =?us-ascii?Q?i2BIER6zGliQj9QIO9Az8QATVG+v41xGR/Jsmiy9sf9ZN1CZ4Bklm7NJNzuw?=
- =?us-ascii?Q?brwYp9amh7QxkOSk2c4SfhE94ncVsLmQ2YA1CcT+EY0u5KS2+XPV0thJhKbg?=
- =?us-ascii?Q?+Reh40rC74GLh7XiUQVfDoDt4b3dQJvpSZUyfoiVJz/vHrdldlLVhGfU4evS?=
- =?us-ascii?Q?A1W40RyWo60x71/xpqevdDNKUzelksbwx2lmo3WTGJe86/fKdgKzcYJ0gawc?=
- =?us-ascii?Q?sI9avDffPZRNSmRF/wQoQ/eo3W0H6o7ULMSYSZj6chXOvJyFELhhWOyOgI1V?=
- =?us-ascii?Q?5B6faC2ZiW8TT/Cs+/KD2n6EEXWsqsj47kRDYdZVQqbUYXTY6j99roXWzviX?=
- =?us-ascii?Q?Mg=3D=3D?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 947dd67c-c642-48c5-6e68-08dd11593505
-X-MS-Exchange-CrossTenant-AuthSource: AM8PR04MB7779.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Nov 2024 16:08:19.6854 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: zxPTX63rVHMRM9o+6maucdUDReXuKu/y0tXzM2noKXkcJgiPEndb8vlT85IPElQAfyvLJHPgxHjiugD19jfuPA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR04MB8497
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nxp.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=KQnAV9ciNVpSQs1aLyGbW3u8bpvwKMWP9G257k4h8lI=;
- b=A62ZsQP9oQlOubY4pKeAgfqVSctHJliLbxqfhl8bW7Gq11kcJ2+8d1jb+oOn1QWSxwQg/VMTV8p+5Ph0XTn6XSzH96DycAqsRs7Fn5NEzuJ+KX4KxlMrn703e4D+BbPXaGaWQsJF5KvebiNwoMwNRHJe5T6jhmxL1hOS6CYMZ5SGZJs3iDCTu1+zGB8/dQC/suycXtrqPROSXPPMvQoJUhkSkIKMoZYvga4Zl1to8ztBQWkWpxDjLLzTQ5nL7Ze20j9ryrPvgShApxi4Zszf8VKaSmpYvnCfM+V/fEXBdcj8cF8YbYGI97wbBO9avNtCPWQWXxtimheUmH27m76ApQ==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=nxp.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+In-Reply-To: <20241118101630.2936711-1-pawel.chmielewski@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1733131255; x=1764667255;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=IdCpZ4hyHlY0LgniJQ5FhaRcGla8RSFsYoaeRGloUb4=;
+ b=a3YJQCVlxn8AiNZauTXsIf70EnfCt70ClGQKEPaqJMS1WgpMw/kkDx8g
+ xHK/OofurTpNPO3BdECq9OjScoGmiR2FeM9NJwu7E+GyZfxxs+lgXGaK9
+ qTd4qJJRwP9gwBXh9UKnSZWE+fh1y/rn1kDWTr56sWI16k/huQGeR3YHH
+ cl891Tc9Jzadak8Q48kqjYS68ToiBUP3a45UCkIe21oS8aaiVz/zh+uv2
+ LODfWUIPIAE/TuDnzEaMWwPj2mzbDeFun+dd7RlcUeg4FxyO9Yi+uhNuE
+ Rsm+UUrbrlFpa77cINDAB+UQtvxN79zM97MprIQG7wfnveADAgE46Jsxq
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=nxp.com header.i=@nxp.com header.a=rsa-sha256
- header.s=selector1 header.b=A62ZsQP9
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next] bridge: Make the FDB
- consider inner tag for Q-in-Q
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=a3YJQCVl
+Subject: Re: [Intel-wired-lan] [PATCH 4/8] ice,
+ irdma: move interrupts code to irdma
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -202,22 +117,312 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sat, Nov 30, 2024 at 06:04:52PM +0200, Nikolay Aleksandrov wrote:
-> Hi,
-> This patch makes fdb lookups slower for everybody, ruins the nice key alignment,
-> increases the key memory usage and adds more complexity for a corner case, especially
-> having 2 different hosts with identical macs sounds weird. Fdb matching on both tags
-> isn't a feature I've heard of, I don't know if there are switches that support it.
-> Could you point to anywhere in the specs that such support is mentioned?
-> Also could you please give more details about the use case? Maybe we can help you solve
-> your problem without impacting everyone. Perhaps we can mix vlan-aware bridge and tc
-> to solve it. As it stands I'm against adding such matching, but I'd love to hear what
-> other people think.
+On Mon, Nov 18, 2024 at 11:16:30AM +0100, Pawel Chmielewski wrote:
+> From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 > 
-> Cheers,
->  Nik
+> Move responsibility of MSI-X requesting for RDMA feature from ice driver
+> to irdma driver. It is done to allow simple fallback when there is not
+> enough MSI-X available.
+> 
+> Change amount of MSI-X used for control from 4 to 1, as it isn't needed
+> to have more than one MSI-X for this purpose.
+> 
+> Reduce the maximum number of interrupts requested by irdma to 64.
+> This improves the overall utilization of interrupts by the base driver
+> for systems with a large number of cores.
+> 
+> Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
+> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> Signed-off-by: Pawel Chmielewski <pawel.chmielewski@intel.com>
+> ---
+> Proposed change for a v8 of original patch:
+>  - Add a limit of 64 of MSI-X for RDMA, as suggested in [1]
+> 
+> [1]: https://lore.kernel.org/netdev/5eca295e-1675-4779-b0d6-ec8a7550516f@intel.com/
 
-Correct, I was also going to plan asking Andy what is his plan on making
-switchdev digest this. The switch ASICs I'm most familiar with can learn
-on inner VID or outer VID, but not both. Like you, I'm also not sure
-what 802.1Q says about FDB entries with 2 associated VIDs.
+For RDMA I can do it here, but I need to have performance data from
+someone suggesting that 64 is enough (maybe even less can be enough).
+
+> ---
+>  drivers/infiniband/hw/irdma/hw.c         |  2 -
+>  drivers/infiniband/hw/irdma/main.c       | 50 +++++++++++++++++-
+>  drivers/infiniband/hw/irdma/main.h       |  4 ++
+>  drivers/net/ethernet/intel/ice/ice.h     |  1 -
+>  drivers/net/ethernet/intel/ice/ice_idc.c | 64 ++++++------------------
+>  drivers/net/ethernet/intel/ice/ice_irq.c |  3 +-
+>  include/linux/net/intel/iidc.h           |  2 +
+>  7 files changed, 70 insertions(+), 56 deletions(-)
+> 
+> diff --git a/drivers/infiniband/hw/irdma/hw.c b/drivers/infiniband/hw/irdma/hw.c
+> index ad50b77282f8..69ce1862eabe 100644
+> --- a/drivers/infiniband/hw/irdma/hw.c
+> +++ b/drivers/infiniband/hw/irdma/hw.c
+> @@ -498,8 +498,6 @@ static int irdma_save_msix_info(struct irdma_pci_f *rf)
+>  	iw_qvlist->num_vectors = rf->msix_count;
+>  	if (rf->msix_count <= num_online_cpus())
+>  		rf->msix_shared = true;
+> -	else if (rf->msix_count > num_online_cpus() + 1)
+> -		rf->msix_count = num_online_cpus() + 1;
+>  
+>  	pmsix = rf->msix_entries;
+>  	for (i = 0, ceq_idx = 0; i < rf->msix_count; i++, iw_qvinfo++) {
+> diff --git a/drivers/infiniband/hw/irdma/main.c b/drivers/infiniband/hw/irdma/main.c
+> index 3f13200ff71b..f538f4923825 100644
+> --- a/drivers/infiniband/hw/irdma/main.c
+> +++ b/drivers/infiniband/hw/irdma/main.c
+> @@ -206,6 +206,47 @@ static void irdma_lan_unregister_qset(struct irdma_sc_vsi *vsi,
+>  		ibdev_dbg(&iwdev->ibdev, "WS: LAN free_res for rdma qset failed.\n");
+>  }
+>  
+> +static int irdma_init_interrupts(struct irdma_pci_f *rf, struct ice_pf *pf)
+> +{
+> +	int i;
+> +
+> +	rf->msix_count = num_online_cpus() + IRDMA_NUM_AEQ_MSIX;
+> +
+> +	if (rf->msix_count > IRDMA_MAX_MSIX)
+> +		rf->msix_count = IRDMA_MAX_MSIX;
+> +
+> +	rf->msix_entries = kcalloc(rf->msix_count, sizeof(*rf->msix_entries),
+> +				   GFP_KERNEL);
+> +	if (!rf->msix_entries)
+> +		return -ENOMEM;
+> +
+> +	for (i = 0; i < rf->msix_count; i++)
+> +		if (ice_alloc_rdma_qvector(pf, &rf->msix_entries[i]))
+> +			break;
+> +
+> +	if (i < IRDMA_MIN_MSIX) {
+> +		for (; i > 0; i--)
+> +			ice_free_rdma_qvector(pf, &rf->msix_entries[i]);
+> +
+> +		kfree(rf->msix_entries);
+> +		return -ENOMEM;
+> +	}
+> +
+> +	rf->msix_count = i;
+> +
+> +	return 0;
+> +}
+> +
+> +static void irdma_deinit_interrupts(struct irdma_pci_f *rf, struct ice_pf *pf)
+> +{
+> +	int i;
+> +
+> +	for (i = 0; i < rf->msix_count; i++)
+> +		ice_free_rdma_qvector(pf, &rf->msix_entries[i]);
+> +
+> +	kfree(rf->msix_entries);
+> +}
+> +
+>  static void irdma_remove(struct auxiliary_device *aux_dev)
+>  {
+>  	struct iidc_auxiliary_dev *iidc_adev = container_of(aux_dev,
+> @@ -216,6 +257,7 @@ static void irdma_remove(struct auxiliary_device *aux_dev)
+>  
+>  	irdma_ib_unregister_device(iwdev);
+>  	ice_rdma_update_vsi_filter(pf, iwdev->vsi_num, false);
+> +	irdma_deinit_interrupts(iwdev->rf, pf);
+>  
+>  	pr_debug("INIT: Gen2 PF[%d] device remove success\n", PCI_FUNC(pf->pdev->devfn));
+>  }
+> @@ -230,9 +272,7 @@ static void irdma_fill_device_info(struct irdma_device *iwdev, struct ice_pf *pf
+>  	rf->gen_ops.unregister_qset = irdma_lan_unregister_qset;
+>  	rf->hw.hw_addr = pf->hw.hw_addr;
+>  	rf->pcidev = pf->pdev;
+> -	rf->msix_count =  pf->num_rdma_msix;
+>  	rf->pf_id = pf->hw.pf_id;
+> -	rf->msix_entries = &pf->msix_entries[pf->rdma_base_vector];
+>  	rf->default_vsi.vsi_idx = vsi->vsi_num;
+>  	rf->protocol_used = pf->rdma_mode & IIDC_RDMA_PROTOCOL_ROCEV2 ?
+>  			    IRDMA_ROCE_PROTOCOL_ONLY : IRDMA_IWARP_PROTOCOL_ONLY;
+> @@ -281,6 +321,10 @@ static int irdma_probe(struct auxiliary_device *aux_dev, const struct auxiliary_
+>  	irdma_fill_device_info(iwdev, pf, vsi);
+>  	rf = iwdev->rf;
+>  
+> +	err = irdma_init_interrupts(rf, pf);
+> +	if (err)
+> +		goto err_init_interrupts;
+> +
+>  	err = irdma_ctrl_init_hw(rf);
+>  	if (err)
+>  		goto err_ctrl_init;
+> @@ -311,6 +355,8 @@ static int irdma_probe(struct auxiliary_device *aux_dev, const struct auxiliary_
+>  err_rt_init:
+>  	irdma_ctrl_deinit_hw(rf);
+>  err_ctrl_init:
+> +	irdma_deinit_interrupts(rf, pf);
+> +err_init_interrupts:
+>  	kfree(iwdev->rf);
+>  	ib_dealloc_device(&iwdev->ibdev);
+>  
+> diff --git a/drivers/infiniband/hw/irdma/main.h b/drivers/infiniband/hw/irdma/main.h
+> index 9f0ed6e84471..53a20f2dd681 100644
+> --- a/drivers/infiniband/hw/irdma/main.h
+> +++ b/drivers/infiniband/hw/irdma/main.h
+> @@ -117,6 +117,10 @@ extern struct auxiliary_driver i40iw_auxiliary_drv;
+>  
+>  #define IRDMA_IRQ_NAME_STR_LEN (64)
+>  
+> +#define IRDMA_NUM_AEQ_MSIX	1
+> +#define IRDMA_MIN_MSIX		2
+> +#define IRDMA_MAX_MSIX		64
+> +
+>  enum init_completion_state {
+>  	INVALID_STATE = 0,
+>  	INITIAL_STATE,
+> diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+> index bde04595b592..71525bf4918e 100644
+> --- a/drivers/net/ethernet/intel/ice/ice.h
+> +++ b/drivers/net/ethernet/intel/ice/ice.h
+> @@ -96,7 +96,6 @@
+>  #define ICE_MIN_LAN_OICR_MSIX	1
+>  #define ICE_MIN_MSIX		(ICE_MIN_LAN_TXRX_MSIX + ICE_MIN_LAN_OICR_MSIX)
+>  #define ICE_FDIR_MSIX		2
+> -#define ICE_RDMA_NUM_AEQ_MSIX	4
+>  #define ICE_NO_VSI		0xffff
+>  #define ICE_VSI_MAP_CONTIG	0
+>  #define ICE_VSI_MAP_SCATTER	1
+> diff --git a/drivers/net/ethernet/intel/ice/ice_idc.c b/drivers/net/ethernet/intel/ice/ice_idc.c
+> index 145b27f2a4ce..bab3e81cad5d 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_idc.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_idc.c
+> @@ -228,61 +228,34 @@ void ice_get_qos_params(struct ice_pf *pf, struct iidc_qos_params *qos)
+>  }
+>  EXPORT_SYMBOL_GPL(ice_get_qos_params);
+>  
+> -/**
+> - * ice_alloc_rdma_qvectors - Allocate vector resources for RDMA driver
+> - * @pf: board private structure to initialize
+> - */
+> -static int ice_alloc_rdma_qvectors(struct ice_pf *pf)
+> +int ice_alloc_rdma_qvector(struct ice_pf *pf, struct msix_entry *entry)
+>  {
+> -	if (ice_is_rdma_ena(pf)) {
+> -		int i;
+> -
+> -		pf->msix_entries = kcalloc(pf->num_rdma_msix,
+> -					   sizeof(*pf->msix_entries),
+> -						  GFP_KERNEL);
+> -		if (!pf->msix_entries)
+> -			return -ENOMEM;
+> +	struct msi_map map = ice_alloc_irq(pf, true);
+>  
+> -		/* RDMA is the only user of pf->msix_entries array */
+> -		pf->rdma_base_vector = 0;
+> -
+> -		for (i = 0; i < pf->num_rdma_msix; i++) {
+> -			struct msix_entry *entry = &pf->msix_entries[i];
+> -			struct msi_map map;
+> +	if (map.index < 0)
+> +		return -ENOMEM;
+>  
+> -			map = ice_alloc_irq(pf, false);
+> -			if (map.index < 0)
+> -				break;
+> +	entry->entry = map.index;
+> +	entry->vector = map.virq;
+>  
+> -			entry->entry = map.index;
+> -			entry->vector = map.virq;
+> -		}
+> -	}
+>  	return 0;
+>  }
+> +EXPORT_SYMBOL_GPL(ice_alloc_rdma_qvector);
+>  
+>  /**
+>   * ice_free_rdma_qvector - free vector resources reserved for RDMA driver
+>   * @pf: board private structure to initialize
+> + * @entry: MSI-X entry to be removed
+>   */
+> -static void ice_free_rdma_qvector(struct ice_pf *pf)
+> +void ice_free_rdma_qvector(struct ice_pf *pf, struct msix_entry *entry)
+>  {
+> -	int i;
+> -
+> -	if (!pf->msix_entries)
+> -		return;
+> -
+> -	for (i = 0; i < pf->num_rdma_msix; i++) {
+> -		struct msi_map map;
+> +	struct msi_map map;
+>  
+> -		map.index = pf->msix_entries[i].entry;
+> -		map.virq = pf->msix_entries[i].vector;
+> -		ice_free_irq(pf, map);
+> -	}
+> -
+> -	kfree(pf->msix_entries);
+> -	pf->msix_entries = NULL;
+> +	map.index = entry->entry;
+> +	map.virq = entry->vector;
+> +	ice_free_irq(pf, map);
+>  }
+> +EXPORT_SYMBOL_GPL(ice_free_rdma_qvector);
+>  
+>  /**
+>   * ice_adev_release - function to be mapped to AUX dev's release op
+> @@ -382,12 +355,6 @@ int ice_init_rdma(struct ice_pf *pf)
+>  		return -ENOMEM;
+>  	}
+>  
+> -	/* Reserve vector resources */
+> -	ret = ice_alloc_rdma_qvectors(pf);
+> -	if (ret < 0) {
+> -		dev_err(dev, "failed to reserve vectors for RDMA\n");
+> -		goto err_reserve_rdma_qvector;
+> -	}
+>  	pf->rdma_mode |= IIDC_RDMA_PROTOCOL_ROCEV2;
+>  	ret = ice_plug_aux_dev(pf);
+>  	if (ret)
+> @@ -395,8 +362,6 @@ int ice_init_rdma(struct ice_pf *pf)
+>  	return 0;
+>  
+>  err_plug_aux_dev:
+> -	ice_free_rdma_qvector(pf);
+> -err_reserve_rdma_qvector:
+>  	pf->adev = NULL;
+>  	xa_erase(&ice_aux_id, pf->aux_idx);
+>  	return ret;
+> @@ -412,6 +377,5 @@ void ice_deinit_rdma(struct ice_pf *pf)
+>  		return;
+>  
+>  	ice_unplug_aux_dev(pf);
+> -	ice_free_rdma_qvector(pf);
+>  	xa_erase(&ice_aux_id, pf->aux_idx);
+>  }
+> diff --git a/drivers/net/ethernet/intel/ice/ice_irq.c b/drivers/net/ethernet/intel/ice/ice_irq.c
+> index 1a7d446ab5f1..80c9ee2e64c1 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_irq.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_irq.c
+> @@ -84,11 +84,12 @@ static struct ice_irq_entry *ice_get_irq_res(struct ice_pf *pf, bool dyn_only)
+>  	return entry;
+>  }
+>  
+> +#define ICE_RDMA_AEQ_MSIX 1
+>  static int ice_get_default_msix_amount(struct ice_pf *pf)
+>  {
+>  	return ICE_MIN_LAN_OICR_MSIX + num_online_cpus() +
+>  	       (test_bit(ICE_FLAG_FD_ENA, pf->flags) ? ICE_FDIR_MSIX : 0) +
+> -	       (ice_is_rdma_ena(pf) ? num_online_cpus() + ICE_RDMA_NUM_AEQ_MSIX : 0);
+> +	       (ice_is_rdma_ena(pf) ? num_online_cpus() + ICE_RDMA_AEQ_MSIX : 0);
+>  }
+>  
+>  /**
+> diff --git a/include/linux/net/intel/iidc.h b/include/linux/net/intel/iidc.h
+> index 1c1332e4df26..13274c3def66 100644
+> --- a/include/linux/net/intel/iidc.h
+> +++ b/include/linux/net/intel/iidc.h
+> @@ -78,6 +78,8 @@ int ice_del_rdma_qset(struct ice_pf *pf, struct iidc_rdma_qset_params *qset);
+>  int ice_rdma_request_reset(struct ice_pf *pf, enum iidc_reset_type reset_type);
+>  int ice_rdma_update_vsi_filter(struct ice_pf *pf, u16 vsi_id, bool enable);
+>  void ice_get_qos_params(struct ice_pf *pf, struct iidc_qos_params *qos);
+> +int ice_alloc_rdma_qvector(struct ice_pf *pf, struct msix_entry *entry);
+> +void ice_free_rdma_qvector(struct ice_pf *pf, struct msix_entry *entry);
+>  
+>  /* Structure representing auxiliary driver tailored information about the core
+>   * PCI dev, each auxiliary driver using the IIDC interface will have an
+> -- 
+> 2.37.3
+> 
