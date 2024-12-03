@@ -1,101 +1,93 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CCD549E1CC8
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Dec 2024 13:53:18 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 27C539E203F
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Dec 2024 15:56:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0214D40708;
-	Tue,  3 Dec 2024 12:53:16 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3A0228443F;
+	Tue,  3 Dec 2024 14:56:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id h2QvV-7fIfLC; Tue,  3 Dec 2024 12:53:15 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id TDDaK7hK2V6v; Tue,  3 Dec 2024 14:56:19 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 37B25405EF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4937484439
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1733230395;
-	bh=cqgTLQzeNXN1w8MNikd9mWoeWyqluFhi2uFC2JJVcr4=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=UYKwqF9KB0ON03gC/TCOvs1HEEvaAGexMTRLrlC47TbHF38we3sdO7Q8E/Wsj2AGx
-	 1f9Pl+xyJ9mVrfy2PmDjBfjWwEcP9VVCOxZPbqj/YI14/LDOXpSdsT6PyGmGG4bVzZ
-	 S3X63C4zNHaS02D+vDFxte9ZjBbL//urK2qLaMaxqQ2fDWVTkvm8eIEJnw12y0TjHW
-	 4wrlqqrA+nf0Yaw0qBoOuizAI9xrkggfuJJzdatQTAt9gkLnhmAroCGOSc6SFiM3H9
-	 FmBVydIix+yNqQECYamsaapki7bScreQ1dXczc21hS3yzIziX6bePvyga6m55/CMnK
-	 vfLw3YAtoRe1A==
+	s=default; t=1733237779;
+	bh=eq8DWWZ55QG5F86mG4rQ1ZRcAQVL7lh9nYk30wftW7w=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=R3hvBLJFEOVGXM/EyzS0wZZDcbmKXvQh1AOSpYQJEcg0IhO0JI3zc2FMWSk/rFjeL
+	 buynprN9CILw9O5VcCWjd8VJkN90nGpVepevJtF79zZ+htqpD5wj1vKD1mRRQXvozR
+	 3svBM7Hp39d4TwRnVrTvPE72Fmw4Qtzwt8hOTPXTSjUduXxHfivK/1bn9kQC6gpzDB
+	 GmHy3FT6oj7MVJmHRFvNFAbKiYPesnxuuZ7vwAOmBsvnNUt4npS7KrygjK4nEUlJqP
+	 gwtC9uGmnigC2/05xHcpl9+tZu7DG7ND1dzvyees3QgU0ALC2VLxTx2g8I65IhvfXD
+	 uTV33NpbIRJfg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 37B25405EF;
-	Tue,  3 Dec 2024 12:53:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4937484439;
+	Tue,  3 Dec 2024 14:56:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id A14A860
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Dec 2024 12:53:12 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3E82C60
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Dec 2024 14:56:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8EC2E405E6
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Dec 2024 12:53:12 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2C9C2605C6
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Dec 2024 14:56:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id qjWw5x-OCsnx for <intel-wired-lan@lists.osuosl.org>;
- Tue,  3 Dec 2024 12:53:11 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
- helo=mgamail.intel.com; envelope-from=mateusz.polchlopek@intel.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 5bDcTxm0tKqH for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  3 Dec 2024 14:56:16 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=147.75.193.91;
+ helo=nyc.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 77F07405E1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 77F07405E1
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 77F07405E1
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Dec 2024 12:53:11 +0000 (UTC)
-X-CSE-ConnectionGUID: 1qM6SdNaR8qmu7htdip9fA==
-X-CSE-MsgGUID: NGfAjJpZSL+1/f0pEXBWsg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11274"; a="44050230"
-X-IronPort-AV: E=Sophos;i="6.12,205,1728975600"; d="scan'208";a="44050230"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Dec 2024 04:53:11 -0800
-X-CSE-ConnectionGUID: VRscLp6ZRf6blZMEZARRuw==
-X-CSE-MsgGUID: loQUAiFPRYysEB1/DNNWog==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,205,1728975600"; d="scan'208";a="93889624"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmviesa009.fm.intel.com with ESMTP; 03 Dec 2024 04:53:09 -0800
-Received: from fedora.igk.intel.com (Metan_eth.igk.intel.com [10.123.220.124])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 7BFDC2FC55;
- Tue,  3 Dec 2024 12:53:08 +0000 (GMT)
-From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
-Date: Tue,  3 Dec 2024 13:52:55 +0100
-Message-Id: <20241203125255.115651-1-mateusz.polchlopek@intel.com>
-X-Mailer: git-send-email 2.38.1
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 318C2605AF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 318C2605AF
+Received: from nyc.source.kernel.org (nyc.source.kernel.org [147.75.193.91])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 318C2605AF
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Dec 2024 14:56:16 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by nyc.source.kernel.org (Postfix) with ESMTP id 5B328A416B8;
+ Tue,  3 Dec 2024 14:54:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AF395C4CED6;
+ Tue,  3 Dec 2024 14:56:12 +0000 (UTC)
+Date: Tue, 3 Dec 2024 14:56:10 +0000
+From: Simon Horman <horms@kernel.org>
+To: Milena Olech <milena.olech@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Emil Tantilov <emil.s.tantilov@intel.com>,
+ Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+Message-ID: <20241203145610.GE9361@kernel.org>
+References: <20241126035849.6441-1-milena.olech@intel.com>
+ <20241126035849.6441-8-milena.olech@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241126035849.6441-8-milena.olech@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1733230392; x=1764766392;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=wgLQ8u7KRuTAl2laukrQT/h3e2tgwbSrvwrFG+FY6iU=;
- b=gpIXZ1lGKdDPf9oAmJwL0fW1rUwD2pMUCFoK8TtIFpm0J1QXIJo1Neii
- SN8uw+ny4SxdPdfuhdxIkykK6qq8D09B1NIZrcbmY5A4pmoTaCIcTSKFY
- ey9Rlcv7PNfpQDvWVdSTyBNmIeruCQELYt6F/PMDXBax4Zak1EZT2mNoi
- 5bYqOk89qaB+jFP1wM2l+eeDes1njrEyPEgwVol8qJNSYvb6hk6o9jPyL
- p6vta/RgYT/pWE7lETBen1T9ccEw8KiU72iiOQ4n36YYAoNQq2P8+0Qwe
- GCjW5HaiuQXxeAnvURyHKrjqbXqKqk7L3zTpRwzW4Krfmdg+Dub74tzAf
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=kernel.org; s=k20201202; t=1733237774;
+ bh=vzQli8dvz+E9BCqg5gOlBZoTLEI1uKbE/xAKVWFJlfc=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=j10rnBshmdtDmXMQ56P2qlcaD0O8YWM0HiX/kgycpwW6nY8FlwmULY3P92/gd3GAE
+ PPkH2pDmoQQ50Uuf/5Eve8ghI8iV++W0trybzDAOF35p/M/BsO5v2SSwTHl9zkgnPd
+ hrRw+aWFk1WBbB2MHRlWl0qKJk8J2SoncqgdRTD/60iCuNTrfuwRM1tq6GckNWmqrK
+ UtwKc4cwR9YqO61UPaoDq+D6q4Sjitx1crWlpUlQL1dUl3ui/hQyJ32ZqmDL2gHkT0
+ nsKZFNlPo4RstZTCj84dCvw/E5I8wM+e/2RubSxHG7lgAf0W9xkHyskFuGNNsYaiRM
+ pNIzsM8NlNjAA==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=gpIXZ1lG
-Subject: [Intel-wired-lan] [PATCH iwl-next v1] ice: Extend ethtool reset
- support
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=j10rnBsh
+Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-next 07/10] idpf: add Tx
+ timestamp capabilities negotiation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -111,29 +103,145 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Extend the job done in:
-commit b699c81af068 ("ice: Implement ethtool reset support")
-by adding ethtool reset function for safe mode ops structure.
+On Tue, Nov 26, 2024 at 04:58:53AM +0100, Milena Olech wrote:
+> Tx timestamp capabilities are negotiated for the uplink Vport.
+> Driver receives information about the number of available Tx timestamp
+> latches, the size of Tx timestamp value and the set of indexes used
+> for Tx timestamping.
+> 
+> Add function to get the Tx timestamp capabilities and parse the uplink
+> vport flag.
+> 
+> Reviewed-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+> Co-developed-by: Emil Tantilov <emil.s.tantilov@intel.com>
+> Signed-off-by: Emil Tantilov <emil.s.tantilov@intel.com>
+> Co-developed-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+> Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+> Signed-off-by: Milena Olech <milena.olech@intel.com>
+> ---
+> v1 -> v2: change the idpf_for_each_vport macro
 
-Suggested-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Reviewed-by: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
-Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 1 +
- 1 file changed, 1 insertion(+)
+Hi Milena,
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index b552439fc1f9..d338a5ee8ab2 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -4841,6 +4841,7 @@ static const struct ethtool_ops ice_ethtool_safe_mode_ops = {
- 	.set_ringparam		= ice_set_ringparam,
- 	.nway_reset		= ice_nway_reset,
- 	.get_channels		= ice_get_channels,
-+	.reset			= ice_ethtool_reset,
- };
- 
- /**
--- 
-2.38.1
+Some minor nits from my side.
 
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_ptp.h b/drivers/net/ethernet/intel/idpf/idpf_ptp.h
+> index e7ccdcbdbd47..057d1c546417 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_ptp.h
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_ptp.h
+> @@ -83,6 +83,70 @@ struct idpf_ptp_secondary_mbx {
+>  	bool valid:1;
+>  };
+>  
+> +/**
+> + * enum idpf_ptp_tx_tstamp_state - Tx timestamp states
+> + * @IDPF_PTP_FREE: Tx timestamp index free to use
+> + * @IDPF_PTP_REQUEST: Tx timestamp index set to the Tx descriptor
+> + * @IDPF_PTP_READ_VALUE: Tx timestamp value ready to be read
+> + */
+> +enum idpf_ptp_tx_tstamp_state {
+> +	IDPF_PTP_FREE,
+> +	IDPF_PTP_REQUEST,
+> +	IDPF_PTP_READ_VALUE,
+> +};
+> +
+> +/**
+> + * struct idpf_ptp_tx_tstamp_status - Parameters to track Tx timestamp
+> + * @skb: the pointer to the SKB that received the completion tag
+> + * @state: the state of the Tx timestamp
+> + */
+> +struct idpf_ptp_tx_tstamp_status {
+> +	struct sk_buff *skb;
+> +	enum idpf_ptp_tx_tstamp_state state;
+> +};
+> +
+> +/**
+> + * struct idpf_ptp_tx_tstamp - Parameters for Tx timestamping
+> + * @list_member: the list member strutcure
+
+nit: structure
+
+     Flagged by checkpatch.pl --codespell
+
+> + * @tx_latch_reg_offset_l: Tx tstamp latch low register offset
+> + * @tx_latch_reg_offset_h: Tx tstamp latch high register offset
+> + * @skb: the pointer to the SKB for this timestamp request
+> + * @tstamp: the Tx tstamp value
+> + * @idx: the index of the Tx tstamp
+> + */
+> +struct idpf_ptp_tx_tstamp {
+> +	struct list_head list_member;
+> +	u32 tx_latch_reg_offset_l;
+> +	u32 tx_latch_reg_offset_h;
+> +	struct sk_buff *skb;
+> +	u64 tstamp;
+> +	u32 idx;
+> +};
+
+...
+
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+
+...
+
+> @@ -3154,6 +3157,14 @@ void idpf_vport_init(struct idpf_vport *vport, struct idpf_vport_max_q *max_q)
+>  	idpf_vport_alloc_vec_indexes(vport);
+>  
+>  	vport->crc_enable = adapter->crc_enable;
+> +
+> +	if (!(vport_msg->vport_flags &
+> +	      le16_to_cpu(VIRTCHNL2_VPORT_UPLINK_PORT)))
+
+I think this should be cpu_to_le16.
+
+Flagged by Sparse.
+
+> +		return;
+> +
+> +	err = idpf_ptp_get_vport_tstamps_caps(vport);
+> +	if (err)
+> +		pci_dbg(vport->adapter->pdev, "Tx timestamping not supported\n");
+>  }
+>  
+>  /**
+
+...
+
+> diff --git a/drivers/net/ethernet/intel/idpf/virtchnl2.h b/drivers/net/ethernet/intel/idpf/virtchnl2.h
+> index 44a5ee84ed60..fdeebc621bdb 100644
+> --- a/drivers/net/ethernet/intel/idpf/virtchnl2.h
+> +++ b/drivers/net/ethernet/intel/idpf/virtchnl2.h
+> @@ -569,6 +569,14 @@ struct virtchnl2_queue_reg_chunks {
+>  };
+>  VIRTCHNL2_CHECK_STRUCT_LEN(8, virtchnl2_queue_reg_chunks);
+>  
+> +/**
+> + * enum virtchnl2_vport_flags - Vport flags that indicate vport capabilities.
+> + * @VIRTCHNL2_VPORT_UPLINK_PORT: Representatives of underlying physical ports
+> + */
+> +enum virtchnl2_vport_flags {
+> +	VIRTCHNL2_VPORT_UPLINK_PORT	= BIT(0),
+> +};
+> +
+>  /**
+>   * struct virtchnl2_create_vport - Create vport config info.
+>   * @vport_type: See enum virtchnl2_vport_type.
+> @@ -620,7 +628,7 @@ struct virtchnl2_create_vport {
+>  	__le16 max_mtu;
+>  	__le32 vport_id;
+>  	u8 default_mac_addr[ETH_ALEN];
+> -	__le16 pad;
+> +	__le16 vport_flags;
+
+The kernel doc for this structure, which is immediately above the
+structure, should also be updated.
+
+Flagged by ./scripts/kernel-doc -none
+
+>  	__le64 rx_desc_ids;
+>  	__le64 tx_desc_ids;
+>  	u8 pad1[72];
+> -- 
+> 2.31.1
+> 
+> 
