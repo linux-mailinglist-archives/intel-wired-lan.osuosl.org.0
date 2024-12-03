@@ -1,131 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3C30C9E0844
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  2 Dec 2024 17:19:08 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D469681FD2;
-	Mon,  2 Dec 2024 16:19:06 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id nuSPH9lbH_al; Mon,  2 Dec 2024 16:19:06 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 00C9E81FAE
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1733156346;
-	bh=+lZDk59n4UHv5yZ4bNmxMnAKZtUzjiM3soOA0zJRIR8=;
-	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=Prlhq/I3w5m1aYFUWWMMQW8G/TCRdmFf7FU1Vq5dV63IMu8MRbCFsEETnT/ipUMjO
-	 KLZNNOyhIRkd0aR3GeaBPWKRi0NWsv5mh0zlXk5hlnWZQmz59SKWsrM2Wcbs4u7+tr
-	 ojsWHSu7JdL/FbEF6oVNC6End+vm5vfsiGjexEMt5KnqN/nIspfGBL364UCHyIp/CW
-	 hhSsmZDprnBuy/aE+svwBkHqEpDb5/tZQhenTAw89iMn29uQt8sKieyJScNOocUJa2
-	 ZZp257f0AkI2v6LqPKeTAVNkGPLDFWOOSu4m+rGQOgC3dkTUGuQKIcFxlUka48l7Ze
-	 3nrWgrAaE1dfQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 00C9E81FAE;
-	Mon,  2 Dec 2024 16:19:05 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id EA75E60
- for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Nov 2024 23:03:36 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6062F9E139E
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Dec 2024 07:58:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D7F94403D9
- for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Nov 2024 23:03:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6ECD640217;
+	Tue,  3 Dec 2024 06:58:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pv-ob3HQ-cdq for <intel-wired-lan@lists.osuosl.org>;
- Sat, 30 Nov 2024 23:03:36 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::b35; helo=mail-yb1-xb35.google.com;
- envelope-from=andrew@andrewstrohman.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org BCCA5403DE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BCCA5403DE
-Received: from mail-yb1-xb35.google.com (mail-yb1-xb35.google.com
- [IPv6:2607:f8b0:4864:20::b35])
- by smtp4.osuosl.org (Postfix) with ESMTPS id BCCA5403DE
- for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Nov 2024 23:03:35 +0000 (UTC)
-Received: by mail-yb1-xb35.google.com with SMTP id
- 3f1490d57ef6-e3970ac2dddso2348974276.2
- for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Nov 2024 15:03:35 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733007814; x=1733612614;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=+lZDk59n4UHv5yZ4bNmxMnAKZtUzjiM3soOA0zJRIR8=;
- b=PdjJ/x4Lw0nEy8KyvRFIKGiq5osbks8XLTrIHZzsJe3NCIob3HLJLtmeymfeYQTdb8
- 8XQZTX25Rz1uvi5TQg7PYYCZ4vcoLaqO2VfhQPci5tdXxvLTiwJOSdQHaR2Zm5YhlblO
- 2PgpLOolY49DpzYFYB/V/b8QHb3TC+eGnE2byiJmG3GQJSG5Xdi5hDFgn205K2xFUrA1
- TK7De5nUko2wtuWxO2shSsGI1tzPHs1H9vH5ho3lM/IrPrhBwESBqtsRyQPNTEoE98Rh
- o4f1YJw1om4a1UIxz/HSn2QmbTv5A/sGn034htNYBHfzpnv7FuVP5oQSpZmE7dq4mBZJ
- Xu+w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWENh5sL0E+2l3GDfPu74aqa5mvqTp7YNd1Sv5gqlboNyMSxGiuQ5dLEwBgODCSsxT8AGHgtW6lwzBUNS681GA=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YygxYECtIyIkScHTBh8OiHG76Fx8gCOVUof6gZMslYrT0P+v1Tl
- SmhY+x9kABU5OWM1ytDDL048iFNu5Xvw+MjHIQIGSaY+WJuF7kgeDOZyGGCG/dcY8LOxcQSn+3P
- DbjjUndNFGfmYKrs5Z3nJIg9POkLRRUonEz3NEQ==
-X-Gm-Gg: ASbGncs0jJ1aWza+iqUTJCJt/pImTMqfsmYlgEnMjHfWIG/EVNZ0N/G2uf3XvTCZZ1V
- Z3mrOmxIxsvpzZSnIdOKPYC2/gFLV6KI=
-X-Google-Smtp-Source: AGHT+IH81R4XFg2CPj0gwX0HCIBF9TK4lO6eQU9i9Eh6UvUy1XLoSg/49272JtHDhspwSlHmAL7DhLTLqjgun/Hp2yM=
-X-Received: by 2002:a05:6902:1549:b0:e38:c692:14a4 with SMTP id
- 3f1490d57ef6-e395b93b17dmr15727852276.36.1733007813990; Sat, 30 Nov 2024
- 15:03:33 -0800 (PST)
+ id 3FWpTpfZe5GJ; Tue,  3 Dec 2024 06:58:27 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 145A740710
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1733209107;
+	bh=hwJX2Y/YFwuAvvbuVVY1iLnmJzckUekHgcYXofOjAps=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=k7V1p/QEDZoB4Sh1YwBeyKPDR0M1zRnCGMt5PVyeCSYPPsf5y1t9rTlJRnEgVK0zT
+	 eb5WDYp1YL5a6rbfprfK4i7dMtBmTJ9J8ogCwZEie/jRPe9d3IuKTApiQnIJJuTzqx
+	 bYJy+DCAiy0RPJYMgrAPLuv2ASVlkPkbdphi4EsrasgqyAdh8/rjsBnv+I22Lzu7+b
+	 /DRepBF876Kjbjq4Zq3HK1qqZwhGhFTHtkzYJSWYO772zX1m1M8fSxzgVIyXL0O32T
+	 9Nq/e2NojsbG1LxG5GDJfijGhf/M5WctV+8tBs2GoiiDWHbSYPyODHqlhLrJ9ZAu00
+	 XUthzLVzM1Ruw==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 145A740710;
+	Tue,  3 Dec 2024 06:58:27 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 7E2262365
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Dec 2024 06:58:25 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 68A73405C7
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Dec 2024 06:58:25 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id st69qOekxB4Q for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  3 Dec 2024 06:58:24 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 7CE13403AD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7CE13403AD
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7CE13403AD
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Dec 2024 06:58:23 +0000 (UTC)
+X-CSE-ConnectionGUID: 2BYp5hcUQFGpMoSoAP4SCw==
+X-CSE-MsgGUID: MviX2qBmT8qMmvQkB2z9bg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11274"; a="33330459"
+X-IronPort-AV: E=Sophos;i="6.12,204,1728975600"; d="scan'208";a="33330459"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+ by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Dec 2024 22:58:22 -0800
+X-CSE-ConnectionGUID: nN48hy6oTzqhGx52p6NnBg==
+X-CSE-MsgGUID: 3YNjMIcoRkuG+RfntT9pkg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,204,1728975600"; d="scan'208";a="93673670"
+Received: from gk3153-dr2-r750-36946.igk.intel.com ([10.102.20.192])
+ by fmviesa010.fm.intel.com with ESMTP; 02 Dec 2024 22:58:18 -0800
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue,  3 Dec 2024 07:58:08 +0100
+Message-ID: <20241203065817.13475-1-michal.swiatkowski@linux.intel.com>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-References: <20241130000802.2822146-1-andrew@andrewstrohman.com>
- <Z0s3pDGGE0zXq0UE@penguin> <20241130160815.4n5hnr44v6ea3m44@skbuf>
-In-Reply-To: <20241130160815.4n5hnr44v6ea3m44@skbuf>
-From: Andrew Strohman <andrew@andrewstrohman.com>
-Date: Sat, 30 Nov 2024 15:03:23 -0800
-Message-ID: <CAA8ajJ=Grm47nKZ+Yp-TEXAFfyoDOkJ9Kbc+NnUOx6ehg0o=vg@mail.gmail.com>
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
-Cc: Nikolay Aleksandrov <razor@blackwall.org>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, 
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Ido Schimmel <idosch@nvidia.com>, 
- Petr Machata <petrm@nvidia.com>, Claudiu Manoil <claudiu.manoil@nxp.com>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>, UNGLinuxDriver@microchip.com,
- Shahed Shaikh <shshaikh@marvell.com>, Manish Chopra <manishc@marvell.com>,
- GR-Linux-NIC-Dev@marvell.com, 
- Simon Horman <horms@kernel.org>, Steven Rostedt <rostedt@goodmis.org>, 
- Masami Hiramatsu <mhiramat@kernel.org>,
- Mathieu Desnoyers <mathieu.desnoyers@efficios.com>, 
- Roopa Prabhu <roopa@nvidia.com>, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-trace-kernel@vger.kernel.org, 
- bridge@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
-X-Mailman-Approved-At: Mon, 02 Dec 2024 16:19:01 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=andrewstrohman-com.20230601.gappssmtp.com; s=20230601; t=1733007814;
- x=1733612614; darn=lists.osuosl.org; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=+lZDk59n4UHv5yZ4bNmxMnAKZtUzjiM3soOA0zJRIR8=;
- b=F7lkmAmhvY3LiqM98eYoBkERmOorkv4NVrYO7BfrZQMXvaE+fGUn2aHwgfHzER/wnd
- rkZc96QkwtJfBBcsew2ld/3L0VjEXk4lf7HOFgzCtnSUctIdfJMHyosOiZGgJhx3GNb3
- dt+aNqpucpWAGT1/SGAJjzcNH9gbBpgdsvoKuVe+zINGWCZNRnknrl+dM+8BAoVjTJ5k
- yjCOgP/b6OfiVbzbLkQawPAHLr9eQ77/o9b9CDP/RPsuLP3vsL67Ti/c4U0IsTkyNB7y
- YvTH9CwcBl4mo9OaP9x0/mS5cU66xNjxq1xUhC6+X2jjEHIJjL4VTyzTZmaACCO/9XVN
- j25w==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1733209103; x=1764745103;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=m7WjI6nwHce7B+Dt0tXOtDlBdaAbIGqHWDR7PhiBjjo=;
+ b=RUtz5e4fjgvPDftecE3z+upmJrytv4C1DdpZX65GtL84tr2Pwc67hj5N
+ VXO3Qju3NlnnrTZrLxG+cUeCECsr2QFxoxVXOTA45LHs5B+l1NQ0w//Ev
+ eP+oa97mHPRNGNu+3z406N0F/kGtfStflZy3t5zQmAFHGgCGwxuJIr6Wr
+ hvYxrzWI7EcLzGlDHwOcCHlKen8RyImq0uzH4xvlkEHfo9avU6uJjphvR
+ itYBi7WBjx6auwDpyFSckzGR4u2EnT6lxIMcHzPsqs/LJjAfmleurkVZZ
+ w03shybjKb3IElxIgi0lv/lg0bqGwicEz+d3pIH/UFsOhWkrb+IdxqvXa
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=andrewstrohman.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=andrewstrohman-com.20230601.gappssmtp.com
- header.i=@andrewstrohman-com.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=F7lkmAmh
-Subject: Re: [Intel-wired-lan] [PATCH net-next] bridge: Make the FDB
- consider inner tag for Q-in-Q
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=RUtz5e4f
+Subject: [Intel-wired-lan] [iwl-next v9 0/9] ice: managing MSI-X in driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -138,37 +101,175 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: himasekharx.reddy.pucha@intel.com, pmenzel@molgen.mpg.de,
+ wojciech.drewek@intel.com, marcin.szycik@intel.com, netdev@vger.kernel.org,
+ rafal.romanowski@intel.com, konrad.knitter@intel.com,
+ pawel.chmielewski@intel.com, horms@kernel.org, David.Laight@ACULAB.COM,
+ nex.sw.ncis.nat.hpm.dev@intel.com, pio.raczynski@gmail.com,
+ sridhar.samudrala@intel.com, jacob.e.keller@intel.com, jiri@resnulli.us,
+ przemyslaw.kitszel@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Vladimir,
+Hi,
 
- Thanks for the review.
+It is another try to allow user to manage amount of MSI-X used for each
+feature in ice. First was via devlink resources API, it wasn't accepted
+in upstream. Also static MSI-X allocation using devlink resources isn't
+really user friendly.
 
-> I was also going to plan asking Andy what is his plan on making
-> switchdev digest this.
+This try is using more dynamic way. "Dynamic" across whole kernel when
+platform supports it and "dynamic" across the driver when not.
 
-Since switchdev switches don't seem to support this, I wasn't planning on
-making switchdev digest this. I was thinking that it should just
-be disabled for those hardware switches.
+To achieve that reuse global devlink parameter pf_msix_max and
+pf_msix_min. It fits how ice hardware counts MSI-X. In case of ice amount
+of MSI-X reported on PCI is a whole MSI-X for the card (with MSI-X for
+VFs also). Having pf_msix_max allow user to statically set how many
+MSI-X he wants on PF and how many should be reserved for VFs.
 
+pf_msix_min is used to set minimum number of MSI-X with which ice driver
+should probe correctly.
 
->The switch ASICs I'm most familiar with can learn
-> on inner VID or outer VID, but not both.
+Meaning of this field in case of dynamic vs static allocation:
+- on system with dynamic MSI-X allocation support
+ * alloc pf_msix_min as static, rest will be allocated dynamically
+- on system without dynamic MSI-X allocation support
+ * try alloc pf_msix_max as static, minimum acceptable result is
+ pf_msix_min
 
-I don't know of a switch ASIC that supports this.
+As Jesse and Piotr suggested pf_msix_max and pf_msix_min can (an
+probably should) be stored in NVM. This patchset isn't implementing
+that.
 
-Is that a problem? I thought that it would be OK to add features to
-a software bridge that don't exist in any hardware bridge.
+Dynamic (kernel or driver) way means that splitting MSI-X across the
+RDMA and eth in case there is a MSI-X shortage isn't correct. Can work
+when dynamic is only on driver site, but can't when dynamic is on kernel
+site.
 
-I've tried to see if anyone else was facing this same problem.
-All I found were concerns about the fact that the provider bridge
-needed to learn all the customer's MACs.  As a result, it looks
-like 802.1Qay was created.
+Let's remove this code and move to MSI-X allocation feature by feature.
+If there is no more MSI-X for a feature, a feature is working with less
+MSI-X or it is turned off.
 
-It seems that 802.1Qay is primarily addressing a concern about TCAM
-limitations, and decoupling the provider and customer networks.
-I think it's possible that 802.1Qay has inadvertently
-fixed this issue for provider backbone bridges. But for my use case,
-I'm not concerned about TCAM usage. I just want isolation between
-the inner vlans.
+There is a regression here. With MSI-X splitting user can run RDMA and
+eth even on system with not enough MSI-X. Now only eth will work. RDMA
+can be turned on by changing number of PF queues (lowering) and reprobe
+RDMA driver.
+
+Example:
+72 CPU number, eth, RDMA and flow director (1 MSI-X), 1 MSI-X for OICR
+on PF, and 1 more for RDMA. Card is using 1 + 72 + 1 + 72 + 1 = 147.
+
+We set pf_msix_min = 2, pf_msix_max = 128
+
+OICR: 1
+eth: 72
+flow director: 1
+RDMA: 128 - 74 = 54
+
+We can change number of queues on pf to 36 and do devlink reinit
+
+OICR: 1
+eth: 36
+RDMA: 73
+flow director: 1
+
+We can also (implemented in "ice: enable_rdma devlink param") turned
+RDMA off.
+
+OICR: 1
+eth: 72
+RDMA: 0 (turned off)
+flow director: 1
+
+After this changes we have a static base vector for SRIOV (SIOV probably
+in the feature). Last patch from this series is simplifying managing VF
+MSI-X code based on static vector.
+
+Now changing queues using ethtool is also changing MSI-X. If there is
+enough MSI-X it is always one to one. When there is not enough there
+will be more queues than MSI-X. There is a lack of ability to set how
+many queues should be used per MSI-X. Maybe we should introduce another
+ethtool param for it? Sth like queues_per_vector?
+
+v8 --> v9: [8]
+ * add tested-by tags
+ * v8 was send incorrect, fix it here
+
+v7 --> v8: [7]
+ * fix unrolling in devlink parameters register function (patch 2)
+
+v6 --> v7: [6]
+ * use vu32 for devlink MSI-X parameters instead of u16 (patch 2)
+ * < instead of <= for MSI-X min parameter validation (patch 2)
+ * use u32 for MSI-X values (patch 2, 8)
+
+v5 --> v6: [5]
+ * set default MSI-X max value based on needs instead of const define
+   (patch 3)
+
+v4 --> v5: [4]
+ * count combined queues in ethtool for case the vectors aren't mapped
+   1:1 to queues (patch 1)
+ * change min_t to min where the casting isn't needed (and can hide
+   problems) (patch 4)
+ * load msix_max and msix_min value after devlink reload; it accidentally
+   wasn't added after removing loading in probe path to mitigate error
+   from devl_para_driverinit...() (patch 2)
+ * add documentation in develink/ice for new parameters (patch 2)
+
+v3 --> v4: [3]
+ * drop unnecessary text in devlink validation comments
+ * assume that devl_param_driverinit...() shouldn't return error in
+   normal execution path
+
+v2 --> v3: [2]
+ * move flow director init before RDMA init
+ * fix unrolling RDMA MSI-X allocation
+ * add comment in commit message about lowering control RDMA MSI-X
+   amount
+
+v1 --> v2: [1]
+ * change permanent MSI-X cmode parameters to driverinit
+ * remove locking during devlink parameter registration (it is now
+   locked for whole init/deinit part)
+
+[8] https://lore.kernel.org/netdev/20241114122009.97416-1-michal.swiatkowski@linux.intel.com/
+[7] https://lore.kernel.org/netdev/20241104121337.129287-1-michal.swiatkowski@linux.intel.com/
+[6] https://lore.kernel.org/netdev/20241028100341.16631-1-michal.swiatkowski@linux.intel.com/
+[5] https://lore.kernel.org/netdev/20241024121230.5861-1-michal.swiatkowski@linux.intel.com/T/#t
+[4] https://lore.kernel.org/netdev/20240930120402.3468-1-michal.swiatkowski@linux.intel.com/
+[3] https://lore.kernel.org/netdev/20240808072016.10321-1-michal.swiatkowski@linux.intel.com/
+[2] https://lore.kernel.org/netdev/20240801093115.8553-1-michal.swiatkowski@linux.intel.com/
+[1] https://lore.kernel.org/netdev/20240213073509.77622-1-michal.swiatkowski@linux.intel.com/
+
+Michal Swiatkowski (9):
+  ice: count combined queues using Rx/Tx count
+  ice: devlink PF MSI-X max and min parameter
+  ice: remove splitting MSI-X between features
+  ice: get rid of num_lan_msix field
+  ice, irdma: move interrupts code to irdma
+  ice: treat dyn_allowed only as suggestion
+  ice: enable_rdma devlink param
+  ice: simplify VF MSI-X managing
+  ice: init flow director before RDMA
+
+ Documentation/networking/devlink/ice.rst      |  11 +
+ drivers/infiniband/hw/irdma/main.h            |   3 +
+ drivers/net/ethernet/intel/ice/ice.h          |  21 +-
+ drivers/net/ethernet/intel/ice/ice_irq.h      |  13 +-
+ include/linux/net/intel/iidc.h                |   2 +
+ drivers/infiniband/hw/irdma/hw.c              |   2 -
+ drivers/infiniband/hw/irdma/main.c            |  46 ++-
+ .../net/ethernet/intel/ice/devlink/devlink.c  | 109 +++++++
+ drivers/net/ethernet/intel/ice/ice_base.c     |  10 +-
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  |   9 +-
+ drivers/net/ethernet/intel/ice/ice_idc.c      |  64 +---
+ drivers/net/ethernet/intel/ice/ice_irq.c      | 275 ++++++------------
+ drivers/net/ethernet/intel/ice/ice_lib.c      |  35 ++-
+ drivers/net/ethernet/intel/ice/ice_main.c     |   6 +-
+ drivers/net/ethernet/intel/ice/ice_sriov.c    | 154 +---------
+ 15 files changed, 336 insertions(+), 424 deletions(-)
+
+-- 
+2.42.0
+
