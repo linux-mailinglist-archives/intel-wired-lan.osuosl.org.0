@@ -1,99 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8CBFE9E3B31
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Dec 2024 14:22:41 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7BC3C9E3CBF
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Dec 2024 15:31:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2C949402BA;
-	Wed,  4 Dec 2024 13:22:40 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3812E84087;
+	Wed,  4 Dec 2024 14:31:31 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Hx2PawqiYHdn; Wed,  4 Dec 2024 14:31:30 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7A1BC820C0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1733322690;
+	bh=n5oiZEQDRWTpBhTxrVhS2F8OsbSw78JvMuX2SskZN6E=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=P5q5P/bad7j0scThOnabVC9uIH1lhUoJGghWA3pzE7BvVou6mUFJ23KdlDTOiRWLD
+	 qa5k23cAtotleN5HEim4hpKFVrx2WXWAa346y2QeBUlGyBRLzVo303otCsCfwd6do2
+	 5WF0RVBBrbW4RsOMNWWIkyFapY17XWVwPeD7DRkbIk+LC5BQ6kHTEEgBDmq53L3AWo
+	 Ef/dCcJodby7RcStntj2poM84VscQsA0fTxYzu+1DW8Xb/jdWvd3Fo9jlCYOXEY+PD
+	 t2Uicqu4+uaN//muVmkBJF2UdoN+24lMoNycZcNskZm+SNjyX/ktJji82IqsE93VnJ
+	 pCg91nmiJTmyg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7A1BC820C0;
+	Wed,  4 Dec 2024 14:31:30 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id B48721DC8
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Dec 2024 14:31:28 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9479F4089A
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Dec 2024 14:31:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id J5z9vyfiA1Hr; Wed,  4 Dec 2024 13:22:39 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DD68141296
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1733318558;
-	bh=4vcBDFQdposYhhPO91bOZvvLyf//hM5R3o1P1ZVEy2Y=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=KGLzP3iRm2dpI2PvDoZrXdEFPohTUIh+wIfPCHunAHAtKEw+MRA6x/e2IY4QVJFCj
-	 LVlcZF9YfzwOAML6Ksw6sT4dpaRU0AsMhTPQgsL8KY5GMUXeo71oLV6UqdLOGOMRFE
-	 4JT988J8uWUbLeTZ3jB5/EZWdFaOutd1dZRk0rRbjEwmamJjRafzs91BG8XfS3tD1P
-	 2obBxRkNNl6kVwmWydEfTgtMyy4nGM0GGm8gQAX5SkdvIC6v70JrziM1JLX0gaD3qS
-	 Nb4yqa+mtYbSsoR/uIZwtEXm2ionjG75wyajzh9KX5pftkCeESfLBYr9IpA1BYI0Ck
-	 OS8AuZQbUOa0w==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DD68141296;
-	Wed,  4 Dec 2024 13:22:38 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 8D8BD1DAA
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Dec 2024 13:22:36 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6EB1540042
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Dec 2024 13:22:36 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8eOBRNQEc755 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Dec 2024 13:22:35 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
- helo=mgamail.intel.com; envelope-from=przemyslaw.korba@intel.com;
+ id VYUoQOnYLoUL for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Dec 2024 14:31:27 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
+ helo=mgamail.intel.com; envelope-from=piotr.kwapulinski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 000D140585
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 000D140585
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 000D140585
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Dec 2024 13:22:33 +0000 (UTC)
-X-CSE-ConnectionGUID: Nu4dnXGuSe2KTtXBgeClXQ==
-X-CSE-MsgGUID: Yiof9IgpReegChaUfTb2mA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11276"; a="44193993"
-X-IronPort-AV: E=Sophos;i="6.12,207,1728975600"; d="scan'208";a="44193993"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
- by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Dec 2024 05:22:33 -0800
-X-CSE-ConnectionGUID: Jzkjqa9qQRyWhIwNsfSBgA==
-X-CSE-MsgGUID: NhqA2S8TR6e75c5kZdSRAg==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 61C80407D5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 61C80407D5
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 61C80407D5
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Dec 2024 14:31:27 +0000 (UTC)
+X-CSE-ConnectionGUID: lgv5jrLRSmymoOymbWZ+/Q==
+X-CSE-MsgGUID: zYg7ICEWTyOLuC+AFI8kTA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11276"; a="44621544"
+X-IronPort-AV: E=Sophos;i="6.12,207,1728975600"; d="scan'208";a="44621544"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+ by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Dec 2024 06:31:27 -0800
+X-CSE-ConnectionGUID: /6gRdQ5oSHiC8z9W7Bhi3w==
+X-CSE-MsgGUID: AYLHQ7xUQ5297gIrBAuoRA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; d="scan'208";a="98785944"
-Received: from pae-dbg-r750-02-263.igk.intel.com ([172.28.191.215])
- by orviesa003.jf.intel.com with ESMTP; 04 Dec 2024 05:22:30 -0800
-From: Przemyslaw Korba <przemyslaw.korba@intel.com>
+X-IronPort-AV: E=Sophos;i="6.12,207,1728975600"; d="scan'208";a="93456119"
+Received: from pkwapuli-mobl1.ger.corp.intel.com (HELO
+ vbox-pkwap.ger.corp.intel.com) ([10.245.87.141])
+ by fmviesa006.fm.intel.com with ESMTP; 04 Dec 2024 06:31:25 -0800
+From: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, richardcochran@gmail.com, andrew@lunn.ch,
- olteanv@gmail.com, milena.olech@intel.com, pmenzel@molgen.mpg.de,
- Przemyslaw Korba <przemyslaw.korba@intel.com>
-Date: Wed,  4 Dec 2024 14:22:18 +0100
-Message-Id: <20241204132218.1060616-1-przemyslaw.korba@intel.com>
-X-Mailer: git-send-email 2.31.1
+Cc: netdev@vger.kernel.org,
+	Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+Date: Wed,  4 Dec 2024 15:31:04 +0100
+Message-ID: <20241204143112.29411-1-piotr.kwapulinski@intel.com>
+X-Mailer: git-send-email 2.43.5
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1733318555; x=1764854555;
+ t=1733322688; x=1764858688;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=xjbVOAw11UkVjMBe9c9V269dVjQ70I1jCvLYv7Db78c=;
- b=R4iDTa4JCISpWJhc6v2fGk1r/UqDEkEicBaOpcJWf8kQRWTISj3g88VT
- uiIWR+GtyVckPm4PvsD9T60h/encbA9AqMPoHKK3Hbkjlh+evETokGBi3
- /Rp/6riwoGY+0ykQ/N2zcuWEi81I0aP3JflsfYwiRGr5G0rPns2Iz+Ng+
- srLopBnitas6X6xY33xo1votEsA/fnZWcjeRsBFL7aMsRJPrneABCpui1
- aPjqys/Ym0qSj2DM6mLWg++s4DqOvlw2rM+53GIdPkLsfzbU8kh8Bxyed
- H82nkK/U4NDGExbPEIAnsLnzWuu93eFUZMB0vH6c7sTuvh2qjV6f1PP3r
- Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=ylekp1q9dXOocIdM2S7qJGupqIGIZ+5pqILllRble4c=;
+ b=ARRDfhujwvYpuzrT6ko368rju3r8zYA3Ez59Mw2hvVwgKLVeGlSNzx/G
+ tBtLqu9lDvLH1iZorzLj+yXiA7DrRRnmo25UkkJ1v0xdBb7RKKujnFItA
+ S90nChTcUv1/HItgpU0bh9FC3V8J2VLd6ybmdKUn3UcLWf43VTLaWva+x
+ +l85ZElks72Z70yvAR+lIYwCzsfdrWbvtUNTItBkzuX+qNUie8QBKDXLV
+ dHgr16vB8JjMtQEJGUQgXwIqldK59KpUeqZGLHG4xHaCwAqUpvdbM9OpR
+ A0H9WtjbBHfwqZrmAd7/PyhFLJ72fFkJDlWjtFyFIog1IF4dKNyxRPLOg
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=R4iDTa4J
-Subject: [Intel-wired-lan] [PATCH iwl-net v2] ice: fix incorrect PHY
- settings for 100 GB/s
+ header.s=Intel header.b=ARRDfhuj
+Subject: [Intel-wired-lan] [PATCH iwl-next v11 0/8] ixgbe: Add support for
+ Intel(R) E610 device
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -109,64 +108,98 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-ptp4l application reports too high offset when ran on E823 device
-with a 100GB/s link. Those values cannot go under 100ns, like in a
-working case when using 100 GB/s cable.
+Add initial support for Intel(R) E610 Series of network devices. The E610
+is based on X550 but adds firmware managed link, enhanced security
+capabilities and support for updated server manageability.
 
-This is due to incorrect frequency settings on the PHY clocks for
-100 GB/s speed. Changes are introduced to align with the internal
-hardware documentation, and correctly initialize frequency in PHY
-clocks with the frequency values that are in our HW spec.
+This patch series adds low level support for the following features and
+enables link management.
 
-To reproduce the issue run ptp4l as a Time Receiver on E823 device,
-and observe the offset, which will never approach values seen
-in the PTP working case.
+Piotr Kwapulinski (8):
+  ixgbe: Add support for E610 FW Admin Command Interface
+  ixgbe: Add support for E610 device capabilities detection
+  ixgbe: Add link management support for E610 device
+  ixgbe: Add support for NVM handling in E610 device
+  ixgbe: Add support for EEPROM dump in E610 device
+  ixgbe: Add ixgbe_x540 multiple header inclusion protection
+  ixgbe: Clean up the E610 link management related code
+  ixgbe: Enable link management in E610 device
 
-Reproduction output:
-ptp4l -i enp137s0f3 -m -2 -s -f /etc/ptp4l_8275.conf
-ptp4l[5278.775]: master offset      12470 s2 freq  +41288 path delay -3002
-ptp4l[5278.837]: master offset      10525 s2 freq  +39202 path delay -3002
-ptp4l[5278.900]: master offset     -24840 s2 freq  -20130 path delay -3002
-ptp4l[5278.963]: master offset      10597 s2 freq  +37908 path delay -3002
-ptp4l[5279.025]: master offset       8883 s2 freq  +36031 path delay -3002
-ptp4l[5279.088]: master offset       7267 s2 freq  +34151 path delay -3002
-ptp4l[5279.150]: master offset       5771 s2 freq  +32316 path delay -3002
-ptp4l[5279.213]: master offset       4388 s2 freq  +30526 path delay -3002
-ptp4l[5279.275]: master offset     -30434 s2 freq  -28485 path delay -3002
-ptp4l[5279.338]: master offset     -28041 s2 freq  -27412 path delay -3002
-ptp4l[5279.400]: master offset       7870 s2 freq  +31118 path delay -3002
+ drivers/net/ethernet/intel/ixgbe/Makefile     |    4 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe.h      |   13 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_82599.c    |    3 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_common.c   |   25 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_dcb_nl.c   |    3 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 2653 +++++++++++++++++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h |   81 +
+ .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  |    6 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c  |    3 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  436 ++-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.c  |    4 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c  |    5 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_type.h |   72 +-
+ .../ethernet/intel/ixgbe/ixgbe_type_e610.h    | 1075 +++++++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c |   12 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x540.h |    7 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c |   29 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x550.h |   20 +
+ 18 files changed, 4404 insertions(+), 47 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+ create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
+ create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
+ create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_x550.h
 
-Fixes: 3a7496234d17 ("ice: implement basic E822 PTP support")
-Reviewed-by: Milena Olech <milena.olech@intel.com>
-Signed-off-by: Przemyslaw Korba <przemyslaw.korba@intel.com>
----
-Changelog:
-v2:
-change commit message
-v1:
-https://lore.kernel.org/intel-wired-lan/20241126102311.344972-1-przemyslaw.korba@intel.com/
----
- drivers/net/ethernet/intel/ice/ice_ptp_consts.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_consts.h b/drivers/net/ethernet/intel/ice/ice_ptp_consts.h
-index 6620642077bb..bdb1020147d1 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_consts.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_consts.h
-@@ -761,9 +761,9 @@ const struct ice_vernier_info_e82x e822_vernier[NUM_ICE_PTP_LNK_SPD] = {
- 		/* rx_desk_rsgb_par */
- 		644531250, /* 644.53125 MHz Reed Solomon gearbox */
- 		/* tx_desk_rsgb_pcs */
--		644531250, /* 644.53125 MHz Reed Solomon gearbox */
-+		390625000, /* 390.625 MHz Reed Solomon gearbox */
- 		/* rx_desk_rsgb_pcs */
--		644531250, /* 644.53125 MHz Reed Solomon gearbox */
-+		390625000, /* 390.625 MHz Reed Solomon gearbox */
- 		/* tx_fixed_delay */
- 		1620,
- 		/* pmd_adj_divisor */
-
-base-commit: 6ef5f61a4aa7d4df94a855a44f996bff08b0be83
 -- 
-2.31.1
+Add dedicated patch for EEPROM dump.
+
+v1 -> v2:
+  - fix for no previous prototypes for ixgbe_set_fw_drv_ver_x550,
+    ixgbe_set_ethertype_anti_spoofing_x550 and
+    ixgbe_set_source_address_pruning_x550
+  - fix variable type mismatch: u16, u32, u64
+  - fix inaccurate doc for ixgbe_aci_desc
+  - remove extra buffer allocation in ixgbe_aci_send_cmd_execute
+  - replace custom loops with generic fls64 in ixgbe_get_media_type_e610
+  - add buffer caching and optimization in ixgbe_aci_send_cmd
+v2 -> v3:
+  - revert ixgbe_set_eee_capable inlining
+  - update copyright date
+v3 -> v4:
+  - cleanup local variables in ixgbe_get_num_per_func
+  - remove redundant casting in ixgbe_aci_disable_rxen
+v4 -> v5:
+  - remove unnecessary structure members initialization
+  - remove unnecessary casting
+  - fix comments
+v5 -> v6:
+  - create dedicated patch for ixgbe_x540 multiple header inclusion protection
+  - extend debug messages
+  - add descriptive constant for Receive Address Registers
+  - remove unrelated changes
+  - create dedicated patch for code cleanup
+  - remove and cleanup of some conditions
+  - spelling fixes
+v6 -> v7:
+  - rebase to adopt recent Makefile "ixgbe-y" changes
+v7 -> v8:
+  - implement more clear execution flow in ixgbe_aci_list_caps(),
+    ixgbe_discover_func_caps(), ixgbe_get_link_status(),
+    ixgbe_fc_autoneg_e610(), ixgbe_disable_rx_e610() and
+    ixgbe_setup_phy_link_e610()
+  - make use of FIELD_PREP macro in ixgbe_is_media_cage_present()
+v8 -> v9:
+  - tune-up auto-negotiation advertised link speeds at driver load
+  - update the method of pending events detection
+  - update the way of discovering device and function capabilities
+  - update the parameter set-up for the firmware-controlled PHYs
+  - fix port down after driver reload
+v9 -> v10:
+  - clean-up redundant automatic variables
+  - optimize return statements
+v10 -> v11:
+  - add support for EEPROM dump
+  - use little endian type in admin commands
+  - fix link status message based on FW link events
+
+2.43.0
 
