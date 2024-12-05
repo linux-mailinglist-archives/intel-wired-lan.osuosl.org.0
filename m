@@ -2,107 +2,135 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 63B669E4B3B
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Dec 2024 01:38:16 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 00E5B9E4BAF
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Dec 2024 02:14:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0285A4079D;
-	Thu,  5 Dec 2024 00:38:15 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2229141446;
+	Thu,  5 Dec 2024 01:14:52 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Q4VAUXpLYwGS; Thu,  5 Dec 2024 00:38:14 +0000 (UTC)
+ id RwJDXLKfBZBm; Thu,  5 Dec 2024 01:14:51 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7552C4079B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BAEDC4143E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1733359093;
-	bh=5uAFtQOQ4wI+u493i9WWzuDC+rdqkXpVIozUQpa72R8=;
-	h=From:To:Cc:In-Reply-To:References:Date:Subject:List-Id:
+	s=default; t=1733361290;
+	bh=xfZMYXPm/XnOBhZKHxlljIg3cpKjNn+y0on19a7NN2Q=;
+	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=6/NIGKULh2SVqXaw24Q5XCufZ8TfUvXTMMnTwMBkDoUXVWG3QRD0tEISPP5CKsJu6
-	 YO8wobhU3YtWCuZjhgqmSCeaihNK17AssanWw72fWUKfxZnOhRsE8mce4iSr7usnPT
-	 Fnjna6cIk3iYFDQzlzF7TZvLKN10gi5qLYuUJfGHd35rkEG/J4oOWOkq/qgDUrkqql
-	 BZpo66CQVJYBMh7OF9K4POooCGYkvS0HDPeraQMwcRhNeLOsXM7QgRbEfa9UhO0SxK
-	 MyNXRj9nB0RxVMsqyINJDZABAYqpyc0FZFUEp3Ae3jv+tWuJLV+rm+lJW66mUZvQ+4
-	 VOxc+6z1Jz9Qg==
+	b=zG/YLMn9xSYQtGt2ewEEh4BQ3tqJ8jQPgZL7U/SRxrh3A+G0GHxQCb5KwtdSBGMMm
+	 LcI8YwTGlftvqvR1cgEd6V3WByKiTL77FFNGJWM//vN9PZpCljRv41j8su7PvOLfwb
+	 oHaASZ3ggwrdjzM7s+4Hwd13ttbD9BwSF3ypaIJCU3yQhxAIeDYiFElgb1oo8fRGkN
+	 2n6lglP5Cpn/dpKDgM6HC1ZFZEzw9u8P8bjVptQZZtypW+CZ8eLK0OHTOOv/Sr/blq
+	 pieMhg54QKIDd7NRLyueCHcovSF5wlzm94anac2GgkwuVxtz3t5DEKCGeTEussintB
+	 i99ZkBXwfwCdw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7552C4079B;
-	Thu,  5 Dec 2024 00:38:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BAEDC4143E;
+	Thu,  5 Dec 2024 01:14:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id E49A5AE8
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 00:38:11 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id C796B1DD1
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 01:14:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D031B4076C
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 00:38:11 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id A6E0C41438
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 01:14:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id shCrb3iK2nd2 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  5 Dec 2024 00:38:10 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
- helo=mgamail.intel.com; envelope-from=vinicius.gomes@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 8630640796
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8630640796
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 8630640796
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 00:38:10 +0000 (UTC)
-X-CSE-ConnectionGUID: IZg0uf4aQiurH5CQacYyJg==
-X-CSE-MsgGUID: PxeHS0O0SKCJJ/Am06WrPw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11276"; a="33566521"
-X-IronPort-AV: E=Sophos;i="6.12,208,1728975600"; d="scan'208";a="33566521"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
- by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Dec 2024 16:38:09 -0800
-X-CSE-ConnectionGUID: bgfxqTM4QCGuyUxOLRDMHw==
-X-CSE-MsgGUID: caqkOxw8TQ2sQqysq2/IHQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,208,1728975600"; d="scan'208";a="99003015"
-Received: from dgramcko-desk.amr.corp.intel.com (HELO vcostago-mobl3)
- ([10.124.223.250])
- by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Dec 2024 16:38:08 -0800
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: Song Yoong Siang <yoong.siang.song@intel.com>, Alexei Starovoitov
- <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, "David S .
- Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Jesper
- Dangaard Brouer <hawk@kernel.org>, John Fastabend
- <john.fastabend@gmail.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>, Andrew Lunn
- <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
- <pabeni@redhat.com>, Richard Cochran <richardcochran@gmail.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, bpf@vger.kernel.org
-In-Reply-To: <20241204120233.3148482-1-yoong.siang.song@intel.com>
-References: <20241204120233.3148482-1-yoong.siang.song@intel.com>
-Date: Wed, 04 Dec 2024 16:38:07 -0800
-Message-ID: <87wmgfvua8.fsf@intel.com>
+ id 5Xiys5J1Xb77 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  5 Dec 2024 01:14:47 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::b2e; helo=mail-yb1-xb2e.google.com;
+ envelope-from=andrew@andrewstrohman.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org C473341390
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C473341390
+Received: from mail-yb1-xb2e.google.com (mail-yb1-xb2e.google.com
+ [IPv6:2607:f8b0:4864:20::b2e])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C473341390
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 01:14:46 +0000 (UTC)
+Received: by mail-yb1-xb2e.google.com with SMTP id
+ 3f1490d57ef6-e39779a268bso683724276.1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 04 Dec 2024 17:14:46 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1733361285; x=1733966085;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=xfZMYXPm/XnOBhZKHxlljIg3cpKjNn+y0on19a7NN2Q=;
+ b=jaB5ZT1o5K2NvoPzd9atTqeVQRl6sKoZi18iGy7FES4sgbptN4Fo0H4/v9vvesYQkP
+ Tg04/vx88r4lWC2hqX8CdmiHXr3tmBiGk7sQs0BF0GpvzzTKEqNxycUdf1jPQ4PVVymS
+ RSX3GenZH3ZrqY4kPfpRQdV9aSmjY+rwAv+6ZfbgBNH/NkaXHyjZ13jTW0S602WpxWwl
+ ZNYrP1eHX10QsAiw9EG4htixkR56ZyXyWjDwyDaVIjN2kfVueVy4ug6Nv7Ee2np5jezH
+ zpXbQZ6nsqentPjhLKMmx7wvOSAwfWXVl8GWKGoRjElimjc6wSICpwjtm06KJxhkmYuV
+ ulZA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUACvksp4cUqPtMhqkmK8y88co85x4AyXJenptx3JcVtRfkWk6fVrkK1zi7F/AJaeLiX61UnTLyBGIWO25AoxY=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YwHjvmJaU4fBNa1AQ1I3z2MwvcUIP3C7mNf7mddZuvTQtE1xI8F
+ g3vuH1Lnqe1hNz+4DiOOfyqdgpN9LtFVN+W01vAhnBcOqnXIKPNlCNkWZ0Rg4MRqsCU2P0pnHYL
+ 3V36DS23LRH8ssyYG9TXGoq4IOCRonNaETfvuqw==
+X-Gm-Gg: ASbGnctvG1O9PCT/JykUc9Tvxbmv0K8WMCb1qzzugTQ2uedWVq6QIrN0ExXrVgEUbLi
+ 2+sI19nR3gzXrmiAnhmUPLXTlYIVgtpU=
+X-Google-Smtp-Source: AGHT+IHA0+z3aYrs1oHL7bfJ5mmSCDhOEW1KC+mJa23OdZXviguzJEU7KjVhNJq4otCChADvbWMuAWS+kWh7228uAqM=
+X-Received: by 2002:a05:6902:2b01:b0:e38:230d:aee0 with SMTP id
+ 3f1490d57ef6-e39f2338efdmr1688035276.23.1733361285485; Wed, 04 Dec 2024
+ 17:14:45 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1733359091; x=1764895091;
- h=from:to:cc:subject:in-reply-to:references:date:
- message-id:mime-version;
- bh=10K0kt3qulMGZi30OdMQv6XXrGRmT0E1cUH//lIKnVY=;
- b=KROQWjd6hgWmwG1Y35m1HUVMwgVQR88DUhbZv3u4EPLiWiMTrFcB8GNj
- 52KfhOJRJHNdOoNqmpSXKu6s5xul8Ye6wO4sAPXT8eK2MmKoAMrHZLc7S
- ML5w6ryyhvrx0FM7eYTC+/STdH0Om7xm8k1xfXuuY6NQuyQ9pBH4naijA
- 7N9x5WkV3N/qS7YsjGbf3Uzf8yIeedxjYIO7xkwNOyWZx3xk7pNs1GByr
- X6IvONHO99jwwgEihFcOUCiE/hNw3UDdeFsXntZ2Omc3gMqmfQ+rOEJOr
- ZBQAWY8GZH01gIzt8a8LM+DEGdSotfLyINO9S1R8kyhmNyJYxA+QvHrOo
- g==;
+References: <20241130000802.2822146-1-andrew@andrewstrohman.com>
+ <Z0s3pDGGE0zXq0UE@penguin>
+ <CAA8ajJmn-jWTweDMO48y7Dtk3XPEhnH0QbFj5J5RH4KgXog4ZQ@mail.gmail.com>
+ <20241202100635.hkowskequgsrqqkf@skbuf>
+ <CAA8ajJkPzpGRXO6tX5CkgX7DjGwR6bPyT4AXjZ0z8kXBk8Vr_g@mail.gmail.com>
+ <20241204084817.g7tort3v3gwdzeic@skbuf>
+ <CAA8ajJnRPB=KRcDpQiAJww3Apv6ZGqWaAg5stSjOE99BOmkCjg@mail.gmail.com>
+ <20241204105645.vwhnwyp3gyq5av4m@skbuf>
+In-Reply-To: <20241204105645.vwhnwyp3gyq5av4m@skbuf>
+From: Andrew Strohman <andrew@andrewstrohman.com>
+Date: Wed, 4 Dec 2024 17:14:34 -0800
+Message-ID: <CAA8ajJn0+tBL=5YtuJt5Y6NKWKf_sEctq6Jm=h_Jht4DDnBRkw@mail.gmail.com>
+To: Vladimir Oltean <vladimir.oltean@nxp.com>
+Cc: Nikolay Aleksandrov <razor@blackwall.org>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Ido Schimmel <idosch@nvidia.com>, 
+ Petr Machata <petrm@nvidia.com>, Claudiu Manoil <claudiu.manoil@nxp.com>, 
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, UNGLinuxDriver@microchip.com,
+ Shahed Shaikh <shshaikh@marvell.com>, Manish Chopra <manishc@marvell.com>,
+ GR-Linux-NIC-Dev@marvell.com, 
+ Simon Horman <horms@kernel.org>, Steven Rostedt <rostedt@goodmis.org>, 
+ Masami Hiramatsu <mhiramat@kernel.org>,
+ Mathieu Desnoyers <mathieu.desnoyers@efficios.com>, 
+ Roopa Prabhu <roopa@nvidia.com>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-trace-kernel@vger.kernel.org, 
+ bridge@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=andrewstrohman-com.20230601.gappssmtp.com; s=20230601; t=1733361285;
+ x=1733966085; darn=lists.osuosl.org; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=xfZMYXPm/XnOBhZKHxlljIg3cpKjNn+y0on19a7NN2Q=;
+ b=ymUJFBSAkaMjYHpu+J2jiARgYAXvGV0Zd0XuR4l24iwIwNyc4NkdcgZvcSSduzxhKd
+ oGl9uGq6klV6b3OCP4lngdHV3GyG2VVaWnqkFCHX8YpRMvqZatkL88d6faASzyqBO1Jj
+ RsXP4TpgtShXIYOr5hzA4FcRWM6O8lLym26dkMHRZ6eCnRv8gxw+jtJCjR11hx4WMykl
+ wx+DvDaa2mDpCllmUZPdaMttux72Hj0B8SbxvU42EUcN7qXKyGi5l/CaZyVcJI2+c6+F
+ J/rQ7VQwT35xMIli+QMIcglhr9M6cxCTSEPhvWyFVWCh7Uq7zCzfEmypa+QYBfCm1ZEz
+ P/Vw==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
+ dmarc=none (p=none dis=none)
+ header.from=andrewstrohman.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=KROQWjd6
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 1/1] igc: Improve
- XDP_SETUP_PROG process
+ unprotected) header.d=andrewstrohman-com.20230601.gappssmtp.com
+ header.i=@andrewstrohman-com.20230601.gappssmtp.com header.a=rsa-sha256
+ header.s=20230601 header.b=ymUJFBSA
+Subject: Re: [Intel-wired-lan] [PATCH net-next] bridge: Make the FDB
+ consider inner tag for Q-in-Q
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -118,225 +146,107 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Song Yoong Siang <yoong.siang.song@intel.com> writes:
+> Here the same thing. The 802.1ad bridge has the same PVID on all ports.
+> Why does the FDB lookup have to be as complex as to take 2 VIDs into
+> consideration, instead of just the inner one?
 
-> Improve XDP_SETUP_PROG process by avoiding unnecessary link down/up event
-> and hardware device reset.
->
+In all my examples I'm using the same PVID, because that's a required
+condition for the issue to happen. I omit that the other .1ad ports in
+could have different .1ad VIDs configured for them, to focus
+on the concept I'm trying to describe.
 
-Some examples of problems that these hardware resets are causing would
-be good.
+But other VIDs can be configured on other ports. So, there could be
+collisions of .1q VIDs across different .1ad VIDs. As such,
+I don't want to ignore the outer VID during FDB lookup.
 
-> Signed-off-by: Song Yoong Siang <yoong.siang.song@intel.com>
-> ---
+In my use case (topology-sim) the test fabric consists of .1ad bridges
+that are connected to networking equipment under test.
 
-The duplication of code doesn't look that good. Initialization is
-tricky, it seems to make it easy to update one place and forget to
-update the other.
+The topology-sim user configures virtual ethernet cables (point to point)
+and/or L2 IVL ethernet segments between multiple devices under test. They do
+this to construct an arbitrary ethernet topology that they want to test.
+topology-sim assigns / maps each one of these  L2 segments to a unique
+.1ad VID.  This is how it keeps the "virtual wires" from interfering with each
+other.
 
-A couple of ideas:
- - separate the code into functions that can be used from the "usual"
- igc_open()/igc_close() flow;
- - it seems that igc_close()/igc_open() are too big a hammer for
- installing a new XDP program: what do we really need? (my mental model
- is: 1. stop new traffic from going into any queue; 2. wait for any
- packets "in progress"; 3. install the program; 4. resume operations;
- what else?)
+So if one virtual wire (ie .1ad vid 3) is connecting to a switch under test
+that is emitting frames with .1q vid 7, I want this virtual wire
+to be independent from another virtual wire (ie .1ad vid 4) that is also
+emitting frame with .lq7 vid 7.
 
->  drivers/net/ethernet/intel/igc/igc.h      |   2 +
->  drivers/net/ethernet/intel/igc/igc_main.c | 138 ++++++++++++++++++++++
->  drivers/net/ethernet/intel/igc/igc_xdp.c  |   4 +-
->  3 files changed, 142 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-> index eac0f966e0e4..b1e46fcaae1a 100644
-> --- a/drivers/net/ethernet/intel/igc/igc.h
-> +++ b/drivers/net/ethernet/intel/igc/igc.h
-> @@ -341,6 +341,8 @@ void igc_up(struct igc_adapter *adapter);
->  void igc_down(struct igc_adapter *adapter);
->  int igc_open(struct net_device *netdev);
->  int igc_close(struct net_device *netdev);
-> +void igc_xdp_open(struct net_device *netdev);
-> +void igc_xdp_close(struct net_device *netdev);
->  int igc_setup_tx_resources(struct igc_ring *ring);
->  int igc_setup_rx_resources(struct igc_ring *ring);
->  void igc_free_tx_resources(struct igc_ring *ring);
-> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-> index 27872bdea9bd..098529a80b88 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_main.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-> @@ -6145,6 +6145,144 @@ int igc_close(struct net_device *netdev)
->  	return 0;
->  }
->  
-> +void igc_xdp_open(struct net_device *netdev)
-> +{
-> +	struct igc_adapter *adapter = netdev_priv(netdev);
-> +	struct pci_dev *pdev = adapter->pdev;
-> +	struct igc_hw *hw = &adapter->hw;
-> +	int err = 0;
-> +	int i = 0;
-> +
-> +	/* disallow open during test */
-> +	if (test_bit(__IGC_TESTING, &adapter->state))
-> +		return;
-> +
-> +	pm_runtime_get_sync(&pdev->dev);
-> +
-> +	igc_ptp_reset(adapter);
-> +
-> +	/* allocate transmit descriptors */
-> +	err = igc_setup_all_tx_resources(adapter);
-> +	if (err)
-> +		goto err_setup_tx;
-> +
-> +	/* allocate receive descriptors */
-> +	err = igc_setup_all_rx_resources(adapter);
-> +	if (err)
-> +		goto err_setup_rx;
-> +
-> +	igc_setup_tctl(adapter);
-> +	igc_setup_rctl(adapter);
-> +	igc_configure_tx(adapter);
-> +	igc_configure_rx(adapter);
-> +	igc_rx_fifo_flush_base(&adapter->hw);
-> +
-> +	/* call igc_desc_unused which always leaves
-> +	 * at least 1 descriptor unused to make sure
-> +	 * next_to_use != next_to_clean
-> +	 */
-> +	for (i = 0; i < adapter->num_rx_queues; i++) {
-> +		struct igc_ring *ring = adapter->rx_ring[i];
-> +
-> +		if (ring->xsk_pool)
-> +			igc_alloc_rx_buffers_zc(ring, igc_desc_unused(ring));
-> +		else
-> +			igc_alloc_rx_buffers(ring, igc_desc_unused(ring));
-> +	}
-> +
-> +	err = igc_request_irq(adapter);
-> +	if (err)
-> +		goto err_req_irq;
-> +
-> +	clear_bit(__IGC_DOWN, &adapter->state);
-> +
-> +	for (i = 0; i < adapter->num_q_vectors; i++)
-> +		napi_enable(&adapter->q_vector[i]->napi);
-> +
-> +	/* Clear any pending interrupts. */
-> +	rd32(IGC_ICR);
-> +	igc_irq_enable(adapter);
-> +
-> +	pm_runtime_put(&pdev->dev);
-> +
-> +	netif_tx_start_all_queues(netdev);
-> +	netif_carrier_on(netdev);
-> +
-> +	return;
-> +
-> +err_req_irq:
-> +	igc_release_hw_control(adapter);
-> +	igc_power_down_phy_copper_base(&adapter->hw);
-> +	igc_free_all_rx_resources(adapter);
-> +err_setup_rx:
-> +	igc_free_all_tx_resources(adapter);
-> +err_setup_tx:
-> +	igc_reset(adapter);
-> +	pm_runtime_put(&pdev->dev);
-> +}
-> +
-> +void igc_xdp_close(struct net_device *netdev)
-> +{
-> +	struct igc_adapter *adapter = netdev_priv(netdev);
-> +	struct pci_dev *pdev = adapter->pdev;
-> +	struct igc_hw *hw = &adapter->hw;
-> +	u32 tctl, rctl;
-> +	int i = 0;
-> +
-> +	WARN_ON(test_bit(__IGC_RESETTING, &adapter->state));
-> +
-> +	pm_runtime_get_sync(&pdev->dev);
-> +
-> +	set_bit(__IGC_DOWN, &adapter->state);
-> +
-> +	igc_ptp_suspend(adapter);
-> +
-> +	if (pci_device_is_present(pdev)) {
-> +		/* disable receives in the hardware */
-> +		rctl = rd32(IGC_RCTL);
-> +		wr32(IGC_RCTL, rctl & ~IGC_RCTL_EN);
-> +		/* flush and sleep below */
-> +	}
-> +	/* set trans_start so we don't get spurious watchdogs during reset */
-> +	netif_trans_update(netdev);
-> +
-> +	netif_carrier_off(netdev);
-> +	netif_tx_stop_all_queues(netdev);
-> +
-> +	if (pci_device_is_present(pdev)) {
-> +		/* disable transmits in the hardware */
-> +		tctl = rd32(IGC_TCTL);
-> +		tctl &= ~IGC_TCTL_EN;
-> +		wr32(IGC_TCTL, tctl);
-> +		/* flush both disables and wait for them to finish */
-> +		wrfl();
-> +		usleep_range(10000, 20000);
-> +
-> +		igc_irq_disable(adapter);
-> +	}
-> +
-> +	for (i = 0; i < adapter->num_q_vectors; i++) {
-> +		if (adapter->q_vector[i]) {
-> +			napi_synchronize(&adapter->q_vector[i]->napi);
-> +			napi_disable(&adapter->q_vector[i]->napi);
-> +		}
-> +	}
-> +
-> +	del_timer_sync(&adapter->watchdog_timer);
-> +	del_timer_sync(&adapter->phy_info_timer);
-> +
-> +	igc_disable_all_tx_rings_hw(adapter);
-> +	igc_clean_all_tx_rings(adapter);
-> +	igc_clean_all_rx_rings(adapter);
-> +
-> +	igc_free_irq(adapter);
-> +
-> +	igc_free_all_tx_resources(adapter);
-> +	igc_free_all_rx_resources(adapter);
-> +
-> +	pm_runtime_put_sync(&pdev->dev);
-> +}
-> +
->  /**
->   * igc_ioctl - Access the hwtstamp interface
->   * @netdev: network interface device structure
-> diff --git a/drivers/net/ethernet/intel/igc/igc_xdp.c b/drivers/net/ethernet/intel/igc/igc_xdp.c
-> index 869815f48ac1..f1d6ab56ab54 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_xdp.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_xdp.c
-> @@ -25,7 +25,7 @@ int igc_xdp_set_prog(struct igc_adapter *adapter, struct bpf_prog *prog,
->  
->  	need_update = !!adapter->xdp_prog != !!prog;
->  	if (if_running && need_update)
-> -		igc_close(dev);
-> +		igc_xdp_close(dev);
->  
->  	old_prog = xchg(&adapter->xdp_prog, prog);
->  	if (old_prog)
-> @@ -37,7 +37,7 @@ int igc_xdp_set_prog(struct igc_adapter *adapter, struct bpf_prog *prog,
->  		xdp_features_clear_redirect_target(dev);
->  
->  	if (if_running && need_update)
-> -		igc_open(dev);
-> +		igc_xdp_open(dev);
->  
->  	return 0;
->  }
-> -- 
-> 2.34.1
->
->
+I acknowledge that we shouldn't make this upstream change just for topology-sim,
+considering that I'm the only user of it. But these same problems
+can affect, for example, metro ethernet carriers that use .1ad vlan stacking
+to differentiate between their different customer's sites. I'm not
+trying to claim that
+metro ethernet carriers would be inclined to use this feature -- I'm just
+providing another example to point out that this same concept applies to
+use cases outside of topology-sim, because toplogy-sim uses VLAN
+stacking in a typical, conventional way.
 
-Cheers,
--- 
-Vinicius
+I'll now proceed to go over my hairpin example,
+https://docs.google.com/drawings/d/1FybJP3UyCPxVQRGxAqGztO4Qc5mgXclV4m-QEyfUFQ8
+in more detail. I think that it will help demonstrate why I want
+to consider the inner tags. It's an example about a circuitous network
+path where the same packet can enter the same .1ad bridge multiple
+times, with the same .1ad VID, but different inner .1q VIDs.
+
+Like I mentioned before, this network is contrived. I've never seen
+this done, and don't expect that it is a common topology. But my
+goal is to prevent connectivity issues that only arise due to how
+topology-sim constructs the virtual L2 ethernet segments.
+
+The network under test has a bridge mode firewall that is used to inspect
+traffic as it passes from some subset of a L2 segment to another subset
+of the same L2 segment. The way that the network operator achieve this
+goal is by creating separate VLANs for each subset of the L2 segment
+that need firewall interjection. This way, communicate between these
+different subsets are forced though the firewall. The firewall bridges
+the two VLANs to merge them into one L2 segment, one broadcast
+domain.
+
+Say the topology-sim user wants to interconnect two .q1 bridges via
+a virtual Ethernet connection. topology-sim accomplishes this by setting
+the same PVID for both ports that that face these .q1 switches under test.
+
+Let's follow what happens when a packets it transmitted from A towards
+B.
+
+When the frame is emitted from ".lq #1", heading toward the .1ad switch,
+it is .1q tagged as 7.  When the .1ad bridge receives the frame, it will
+associate it with .1ad vid 3 and .1q vid 7 can be seen in the packet,
+if desired.
+At this point, the .1ad bridge can either learn that A is behind it's
+left port, for
+.1ad vid 3 (current implementation), or it can learn that
+A is behind the left port only for .1ad vid 3 + inner .1a vid 7
+(proposed functionality).
+When the frame leaves the .1ad switch heading toward
+".1q #2", it will just have .1q vid 7 tag. ".1q #2" sends the packet
+to the firewall,
+via its left port, untagged. The firewall bridges the frame, and
+therefore transmits
+out its right port to ".1q #2", untagged.  ".1q #2" transmits toward
+.1ad with .1q tag
+8. When the .1ad bridge receives the frame, it will associate it with
+.1ad vid 3 and the inner .1q vid 8 can be seen in the packet if
+desired. At this point,
+the .1ad bridge can either learn that A is behind its right port, for
+.1ad vid 3 or it can
+learn that A is behind it's right port, for .1ad vid 3 + .1q inner vid 8.
+
+Without my change, the .1ad switch's fdb entry for A's mac, .1ad vid 3, would
+flip continuously between the left and right port.
+
+With my change, for .1ad vid 3, the .1ad bridge will always forward
+packets destined
+to host A's MAC to the right if the inner vid is 8 and will always
+forward host A's MAC
+to the left when the inner vid is 7.
+
+I hope this example explains why I want to look at the inner VID. The
+fact that we can have
+inner VID collisions for different outer vids, drives the need to examine the
+outer VID. This is why, collectively I want to consider MAC + inner + outer.
+
+Does that make sense?
