@@ -1,136 +1,225 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 00E5B9E4BAF
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Dec 2024 02:14:53 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D3AC9E4C69
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Dec 2024 03:45:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2229141446;
-	Thu,  5 Dec 2024 01:14:52 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C4F19846A6;
+	Thu,  5 Dec 2024 02:45:18 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RwJDXLKfBZBm; Thu,  5 Dec 2024 01:14:51 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id HMS1SJ4kvRbI; Thu,  5 Dec 2024 02:45:18 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BAEDC4143E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1019F841B4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1733361290;
-	bh=xfZMYXPm/XnOBhZKHxlljIg3cpKjNn+y0on19a7NN2Q=;
-	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
+	s=default; t=1733366718;
+	bh=2BX+a03YSOWwa5L3Q+MioDY0SalLwrd8PGINkwYybu0=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=zG/YLMn9xSYQtGt2ewEEh4BQ3tqJ8jQPgZL7U/SRxrh3A+G0GHxQCb5KwtdSBGMMm
-	 LcI8YwTGlftvqvR1cgEd6V3WByKiTL77FFNGJWM//vN9PZpCljRv41j8su7PvOLfwb
-	 oHaASZ3ggwrdjzM7s+4Hwd13ttbD9BwSF3ypaIJCU3yQhxAIeDYiFElgb1oo8fRGkN
-	 2n6lglP5Cpn/dpKDgM6HC1ZFZEzw9u8P8bjVptQZZtypW+CZ8eLK0OHTOOv/Sr/blq
-	 pieMhg54QKIDd7NRLyueCHcovSF5wlzm94anac2GgkwuVxtz3t5DEKCGeTEussintB
-	 i99ZkBXwfwCdw==
+	b=24yldjEWY/j+Sb2VKdNckrJjfhtxqObFOrmoPE1eUTLL/zibk4qBw18vvnbpcMGZh
+	 mPqfm0P4syDO6U4Lwpwen0lR2E7jhJi0eg9Y7lmckBWZ225Q3m20SoiUMad4vsZKf1
+	 1zuQPAyXWte/GPPgR4q/fkqGAShm/UcKl0S3diVeWPSJol7uY8Nf4uRXQpIpV94sgs
+	 GuJgpCJlDJme5X+1uj1suqHIExaZjCItFNsY9cNGgbJHJQfacAeHPGYV4bF7+xFx9N
+	 7FyE0FQ3eyoTfrM1/o5AIJsC5SxQTzAYEhvG6AiJhsFvHhhvGyquZfeRGW4V5wdPyF
+	 iefXszHnQgMqg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BAEDC4143E;
-	Thu,  5 Dec 2024 01:14:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1019F841B4;
+	Thu,  5 Dec 2024 02:45:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id C796B1DD1
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 01:14:48 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id C0A6F1DD9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 02:45:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A6E0C41438
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 01:14:48 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id AB70240ED1
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 02:45:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5Xiys5J1Xb77 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  5 Dec 2024 01:14:47 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::b2e; helo=mail-yb1-xb2e.google.com;
- envelope-from=andrew@andrewstrohman.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org C473341390
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C473341390
-Received: from mail-yb1-xb2e.google.com (mail-yb1-xb2e.google.com
- [IPv6:2607:f8b0:4864:20::b2e])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C473341390
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 01:14:46 +0000 (UTC)
-Received: by mail-yb1-xb2e.google.com with SMTP id
- 3f1490d57ef6-e39779a268bso683724276.1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 04 Dec 2024 17:14:46 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733361285; x=1733966085;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=xfZMYXPm/XnOBhZKHxlljIg3cpKjNn+y0on19a7NN2Q=;
- b=jaB5ZT1o5K2NvoPzd9atTqeVQRl6sKoZi18iGy7FES4sgbptN4Fo0H4/v9vvesYQkP
- Tg04/vx88r4lWC2hqX8CdmiHXr3tmBiGk7sQs0BF0GpvzzTKEqNxycUdf1jPQ4PVVymS
- RSX3GenZH3ZrqY4kPfpRQdV9aSmjY+rwAv+6ZfbgBNH/NkaXHyjZ13jTW0S602WpxWwl
- ZNYrP1eHX10QsAiw9EG4htixkR56ZyXyWjDwyDaVIjN2kfVueVy4ug6Nv7Ee2np5jezH
- zpXbQZ6nsqentPjhLKMmx7wvOSAwfWXVl8GWKGoRjElimjc6wSICpwjtm06KJxhkmYuV
- ulZA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUACvksp4cUqPtMhqkmK8y88co85x4AyXJenptx3JcVtRfkWk6fVrkK1zi7F/AJaeLiX61UnTLyBGIWO25AoxY=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YwHjvmJaU4fBNa1AQ1I3z2MwvcUIP3C7mNf7mddZuvTQtE1xI8F
- g3vuH1Lnqe1hNz+4DiOOfyqdgpN9LtFVN+W01vAhnBcOqnXIKPNlCNkWZ0Rg4MRqsCU2P0pnHYL
- 3V36DS23LRH8ssyYG9TXGoq4IOCRonNaETfvuqw==
-X-Gm-Gg: ASbGnctvG1O9PCT/JykUc9Tvxbmv0K8WMCb1qzzugTQ2uedWVq6QIrN0ExXrVgEUbLi
- 2+sI19nR3gzXrmiAnhmUPLXTlYIVgtpU=
-X-Google-Smtp-Source: AGHT+IHA0+z3aYrs1oHL7bfJ5mmSCDhOEW1KC+mJa23OdZXviguzJEU7KjVhNJq4otCChADvbWMuAWS+kWh7228uAqM=
-X-Received: by 2002:a05:6902:2b01:b0:e38:230d:aee0 with SMTP id
- 3f1490d57ef6-e39f2338efdmr1688035276.23.1733361285485; Wed, 04 Dec 2024
- 17:14:45 -0800 (PST)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id yMWzANhIdzu3 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  5 Dec 2024 02:45:12 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
+ helo=mgamail.intel.com; envelope-from=yoong.siang.song@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 7A94F40BE3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7A94F40BE3
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7A94F40BE3
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 02:45:12 +0000 (UTC)
+X-CSE-ConnectionGUID: RHfAKzcSRTCZDv3yAYTb6A==
+X-CSE-MsgGUID: LQUGYs5MT22KtfQzMSPGhA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11276"; a="32998515"
+X-IronPort-AV: E=Sophos;i="6.12,209,1728975600"; d="scan'208";a="32998515"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+ by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Dec 2024 18:45:06 -0800
+X-CSE-ConnectionGUID: uAc/ZB04SIK8gckAGpw+Nw==
+X-CSE-MsgGUID: Xe3y4JIjSzKnMdhiQuJ4Yw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,209,1728975600"; d="scan'208";a="93797365"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by orviesa010.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 04 Dec 2024 18:45:06 -0800
+Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Wed, 4 Dec 2024 18:45:05 -0800
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Wed, 4 Dec 2024 18:45:05 -0800
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.169)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Wed, 4 Dec 2024 18:45:04 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=tJmA3u3O2IYO7K6tj7E7BzEspjFHO6BPdXN9AEUbNWcIZWE8hUzxue2b2REZ8wh0yHFFiGh1esjeRi9GdLgCz6vmLk6mranb8porWceqZ/puvSRBbq6XInqn3xd4IiQkHHVHXENbIfxEW7ZfLP7VHSmx0+Fk7hB9f+B6QsbDuTxznUvwnYJZ+BVQuAQwv3ft2TO2tIPLvIue1H+g7jDoyk/mcp94o6G/2el8R+FBOgfDkhcXOZwucoeiDzsu+g3mZssuN86KNZ45guckBrmxdJfj9iq7QpxuYz+R7x9l5e70GLIUbUBogoQKk4or3jnhIj2EgR2eFqN6hnBH1rypsw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=2BX+a03YSOWwa5L3Q+MioDY0SalLwrd8PGINkwYybu0=;
+ b=rSO7TpMDOYHQ2wXqQammO5dfmoTlGJYXxYZc2OuTpePmLeF9Jfqh37UTqaDt0g+Ms0a29hi+hzH1GRrg8tQCelrelFaro1ZhKOcI+mht7BN+LomihV0ITkAbBOMAIw2q6L6Vr+hXEeZ09aO0Eh4prIrKk+1CLnvSb4BnLYG/OpIoL6aYYK0teAr600hcQo2reCfDg1O3oHIwlHClIq+mD8uNVZytIYoi+J5b/TYMeKa/b6uSOPgjv102lO7eVyNSDJI7oSzBrsTE+WXebvowRFiP9NaS4igc6XfY6wNtse8zXjQD8GPEO9yDnH/kV/HcjgxKMGvIioE4Z8L+wwUzrQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from PH0PR11MB5830.namprd11.prod.outlook.com (2603:10b6:510:129::20)
+ by CY5PR11MB6487.namprd11.prod.outlook.com (2603:10b6:930:31::17)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8207.18; Thu, 5 Dec
+ 2024 02:45:02 +0000
+Received: from PH0PR11MB5830.namprd11.prod.outlook.com
+ ([fe80::c80d:3b17:3f40:10d6]) by PH0PR11MB5830.namprd11.prod.outlook.com
+ ([fe80::c80d:3b17:3f40:10d6%7]) with mapi id 15.20.8230.010; Thu, 5 Dec 2024
+ 02:45:01 +0000
+From: "Song, Yoong Siang" <yoong.siang.song@intel.com>
+To: "Gomes, Vinicius" <vinicius.gomes@intel.com>, Alexei Starovoitov
+ <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, "David S . Miller"
+ <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, "Jesper Dangaard
+ Brouer" <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>,
+ "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
+ <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "Eric
+ Dumazet" <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, "Richard
+ Cochran" <richardcochran@gmail.com>
+CC: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "bpf@vger.kernel.org" <bpf@vger.kernel.org>
+Thread-Topic: [PATCH iwl-next 1/1] igc: Improve XDP_SETUP_PROG process
+Thread-Index: AQHbRkSDFElQ1g4Y8Uq3OPOpHrjao7LWz16AgAAQZJA=
+Date: Thu, 5 Dec 2024 02:45:01 +0000
+Message-ID: <PH0PR11MB5830F1658AB3F74BBA2C9634D8302@PH0PR11MB5830.namprd11.prod.outlook.com>
+References: <20241204120233.3148482-1-yoong.siang.song@intel.com>
+ <87wmgfvua8.fsf@intel.com>
+In-Reply-To: <87wmgfvua8.fsf@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PH0PR11MB5830:EE_|CY5PR11MB6487:EE_
+x-ms-office365-filtering-correlation-id: f8923717-2700-4fcb-3b10-08dd14d6d0ff
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|366016|7416014|376014|1800799024|921020|38070700018; 
+x-microsoft-antispam-message-info: =?us-ascii?Q?5TBLLZoq+5obfM++yYAeWliUcrg/YxyAs5YsaRC6sHbrBILq6dWUUwBNBlMm?=
+ =?us-ascii?Q?EnXMi7QqDQJob9cHqb66uBdVZk/ZR1J2gGt1RdrCOwi9UWqUPXM0YI81eLJj?=
+ =?us-ascii?Q?qTJRjfNw1NJkrKno5D8Y3CRLFzHzHaAUoldK6rr0Kv/8Ts9IPm1699Y4Osdo?=
+ =?us-ascii?Q?sx+hSfdEaLxHjNrsZhgvOzwydQR6EzRbWDqBxEndNLOBu157QDModfMz+Otq?=
+ =?us-ascii?Q?PD0rIF8LS4r5CghuxMPp1ylzfC9gDWhMpHbz2KTUvITHw244S0By11q/DvmF?=
+ =?us-ascii?Q?GazecKX/bPKFls8Ge6xGlsmeQOBbTse1eUFOxLAf2t2xC/0D4bn19O4vzZXq?=
+ =?us-ascii?Q?7MtNvuTwPHB/e+qCBspsPVvOuOQYy8t/30RdkKmFLoK568BFLF5a+nSGjpKy?=
+ =?us-ascii?Q?gEJ6wnC3zIEDlSAWJTZw21KD/tpk+3JnfkJgcuyMJtmIlO2E/Ucvka0dTJBn?=
+ =?us-ascii?Q?TLCC9CmHVlVTOI9gWSpMrA7AENaoVrO8otGXB5P6F9GpmR3pdtPOZ3DNg/cU?=
+ =?us-ascii?Q?NxeSrjqB7j/mEeL0loxDgo6HhZWDUX8QYHlGfQ4UKDsXgAZeviVKRFWfxVHK?=
+ =?us-ascii?Q?UWinU3GE5vTSfg524bdWdWFfFnPI8UHGS4BGlfwMUD3HgF+tL/Hw8IFtRdna?=
+ =?us-ascii?Q?lBqSvqu8xPK2PsEw7uIggJNrX5mkJbVdKqtrvfk4QYx4+L8/R2n9GzdXzaA3?=
+ =?us-ascii?Q?vtNoVufGs35ugnCO0gMwf1+3qMRoGvUoG4gTREDAhNZDiQr9Qb5K3gKQKJt0?=
+ =?us-ascii?Q?1a8PvSrEzA6biQ3jjU8b/RBeRkJEs9IajOdJf+1aWvo3RDs+P4azKTGNwchj?=
+ =?us-ascii?Q?JgzcNCu6YnCALhqRmCrQC+387RvMeuzk8fJiUqGkiCDoOUaEBBCzhjNvk08e?=
+ =?us-ascii?Q?e/TC5dbqXXYFUzO1iz7rS3TWPKKWQwqyRzVtmM3R2nInCh4OnU5eQpfQ6M6a?=
+ =?us-ascii?Q?MjiQJ0sLpVRz1Yop142Dm/MuaE2293a67SlE2n79rA29bh3KX0VPMzhLkUSM?=
+ =?us-ascii?Q?ArTDIjfMPHSiJaKlm4nppP7jxgdUBRFuWsQ59DpwBpkUAaYpwJBiLDAU+zSs?=
+ =?us-ascii?Q?O61TLef1wNJTexi8pvou0DcT4b+YHSdBYiDBtHKLCOB+DB7X4hUxWRlMGiMh?=
+ =?us-ascii?Q?m9WJ2nABToMCFGFSv4S5uZZcib0koAJ+8sficJWXWsAWG9SWGUR0Sk7zTIVc?=
+ =?us-ascii?Q?wqp3DSuK9rsaGTSeqHz8snr4EMVDFFb5Ja11jmtjBhEnvTiZHJHjtUXkHwCj?=
+ =?us-ascii?Q?L29tqTiQadEY3WJ0wGuDqpcTlfAnuqQVwLPMTCdpyxCYooL50euaUl3En8Ng?=
+ =?us-ascii?Q?O8zvUrz48bPfmHrSPpG4F0oFYVM/9W2jYuhSZMQIlJ21SPoNjVJFd42L1s1T?=
+ =?us-ascii?Q?zM2BW+3qy2p9uRYJicWOpQrfY6vdNUpQjc6KGNNFDLChKxDKxC1TLYo93XxH?=
+ =?us-ascii?Q?00l6C0HdHmg=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR11MB5830.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(7416014)(376014)(1800799024)(921020)(38070700018);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?W3vQlTdACeHGHqSmPl5YYutX6/QqxIDCnz5gpkmFhUDxrMqviAghx9asDzvI?=
+ =?us-ascii?Q?t7F86qCpZLuGfCu8gkc7Rqv5At4EtXJ7bSUuKBryPM4apNr6hHEvSo/NVQBj?=
+ =?us-ascii?Q?iVHoWjvSPQ1/Q9T+X/28xt19hqPN6/ysDJppn7fHU9Q3NJrbvQnCR90JpkOG?=
+ =?us-ascii?Q?eSac++nIc3TSQHjxQFrRF+f781cNA1AIKHx9LNc3CXYpXOIbZKEk74CAXsp+?=
+ =?us-ascii?Q?tNT14tM7OW4SLLWRtW5ju+Sdn72bg9+Sqh8iZzBeVG+2adtJ4uRp6WyRIZch?=
+ =?us-ascii?Q?2Pqo1wa0VjWLJ//s9PNhjN81CtbaiqDVdzTOGnlGrJMXUcdjPKCPjPEp8DOc?=
+ =?us-ascii?Q?TGBhrQ5IZfbI75QMRnkvTGnUnwkHrPyseBRr1iSUZ/ibJzmjGzCmD5NV/5/J?=
+ =?us-ascii?Q?k4uuDgIyL+gOpxBcZdJ2zxluz3uCb8JPxTRozJ6tUC+DU7At6A7AYgHmKyu2?=
+ =?us-ascii?Q?bdW+J95gT7vZ/+8CSVHXAzQYbkwVXwzkEKwlordSP1MIcurPDdA9m4kdIA3K?=
+ =?us-ascii?Q?b1GtK8gDG0kwmM1bq3wMiGxA84YxclccN7HsXYMMgSog+WpvRBqDx8iFhuHl?=
+ =?us-ascii?Q?fUNYXoXTMXMXHRG4vMRF4e4I8B2/cbT7YD9l3WwYR8RT3uIJgyloCAw6+ak9?=
+ =?us-ascii?Q?75VpMN70qn3bP6QRiEb7hPuLC5VHsYIY8nETcc8tVurf1R7aLqycAohgfLh4?=
+ =?us-ascii?Q?Lpq9dmN/xNslPlgtsbCa3eIzFRBoY7oviMC4ePUCcC2lhOi3EFOIuRCvdsJ0?=
+ =?us-ascii?Q?fewjCRUST/htn/l6RMWojYUnOXHFRq/RXwwfXH4mueQiwj9tY6tftVtR9L9Y?=
+ =?us-ascii?Q?Lia5DnaEYPA7eUSmmQEW0lnf+rVL1IXcamQ0ajvasQfBgA7AZsgZaZ2wWqQi?=
+ =?us-ascii?Q?ZZ/MicyXhktFwL90G15AADEhoi1iFtv+qqJyr8iRNXO5X6GssMwDudD4iofD?=
+ =?us-ascii?Q?mlJaOntje+eJ64by0JavEZdrs4gFHtKtvJjlJ6bkpgkXxMWlKpAKAzJhCWp7?=
+ =?us-ascii?Q?0bUhIySKw7ZXi4eRLnuCOvkWMhpigmLGeQmAOp5SkjSPkls0O/mPygxQwWlX?=
+ =?us-ascii?Q?3VRvsxRQcmHmEmt0ZQpCFO7Q+hitycrUpLt5BHwqBlSlc7xa60IlhOjtDAXM?=
+ =?us-ascii?Q?fKnZ/ctwqZbprfe5SMk8HY0bsWvgjlg/cpqAhqE/S/7Zqri0P72Zl84QrspN?=
+ =?us-ascii?Q?DskV5cevRifGul/TWvijqE3pvqAgdTgGwNU7rYNc9IiUZ7HF5IYUdyUKBSFI?=
+ =?us-ascii?Q?0aIKcJ1YBEL/SVnJ5xobEkZWa3cq1GtI6jnd4bBW7TozbxIkcZKAVASc3gMm?=
+ =?us-ascii?Q?YTCPuFWBaSxr64M9VSHQQQRNvhQMZgWVXRmPZQ7BBwixRvGLf0NnJ1BHM/zZ?=
+ =?us-ascii?Q?i/USMotMDQZsuM3If5KP8op4ONT9uKix/le1PLZu7IOLH4YTIU4+AGi5LW82?=
+ =?us-ascii?Q?G1sDyLpVOmFNioruvoFvXxhIZypO3o5IkTlP4J7ciMvxfv3mXwjyvvZuJdFL?=
+ =?us-ascii?Q?vQxCItVQzPgClc7CmtmHZWcRM4HvH07vNUIqeDYyHDde8/kYvx8OstGxOmBA?=
+ =?us-ascii?Q?Wepvzyhe9w+WMWbXryaOH4vhbD9GLWHSG88BOSaiBnnxcoZZ+9OKj+Ohpte5?=
+ =?us-ascii?Q?sQ=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-References: <20241130000802.2822146-1-andrew@andrewstrohman.com>
- <Z0s3pDGGE0zXq0UE@penguin>
- <CAA8ajJmn-jWTweDMO48y7Dtk3XPEhnH0QbFj5J5RH4KgXog4ZQ@mail.gmail.com>
- <20241202100635.hkowskequgsrqqkf@skbuf>
- <CAA8ajJkPzpGRXO6tX5CkgX7DjGwR6bPyT4AXjZ0z8kXBk8Vr_g@mail.gmail.com>
- <20241204084817.g7tort3v3gwdzeic@skbuf>
- <CAA8ajJnRPB=KRcDpQiAJww3Apv6ZGqWaAg5stSjOE99BOmkCjg@mail.gmail.com>
- <20241204105645.vwhnwyp3gyq5av4m@skbuf>
-In-Reply-To: <20241204105645.vwhnwyp3gyq5av4m@skbuf>
-From: Andrew Strohman <andrew@andrewstrohman.com>
-Date: Wed, 4 Dec 2024 17:14:34 -0800
-Message-ID: <CAA8ajJn0+tBL=5YtuJt5Y6NKWKf_sEctq6Jm=h_Jht4DDnBRkw@mail.gmail.com>
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
-Cc: Nikolay Aleksandrov <razor@blackwall.org>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, 
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Ido Schimmel <idosch@nvidia.com>, 
- Petr Machata <petrm@nvidia.com>, Claudiu Manoil <claudiu.manoil@nxp.com>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>, UNGLinuxDriver@microchip.com,
- Shahed Shaikh <shshaikh@marvell.com>, Manish Chopra <manishc@marvell.com>,
- GR-Linux-NIC-Dev@marvell.com, 
- Simon Horman <horms@kernel.org>, Steven Rostedt <rostedt@goodmis.org>, 
- Masami Hiramatsu <mhiramat@kernel.org>,
- Mathieu Desnoyers <mathieu.desnoyers@efficios.com>, 
- Roopa Prabhu <roopa@nvidia.com>, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-trace-kernel@vger.kernel.org, 
- bridge@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=andrewstrohman-com.20230601.gappssmtp.com; s=20230601; t=1733361285;
- x=1733966085; darn=lists.osuosl.org; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=xfZMYXPm/XnOBhZKHxlljIg3cpKjNn+y0on19a7NN2Q=;
- b=ymUJFBSAkaMjYHpu+J2jiARgYAXvGV0Zd0XuR4l24iwIwNyc4NkdcgZvcSSduzxhKd
- oGl9uGq6klV6b3OCP4lngdHV3GyG2VVaWnqkFCHX8YpRMvqZatkL88d6faASzyqBO1Jj
- RsXP4TpgtShXIYOr5hzA4FcRWM6O8lLym26dkMHRZ6eCnRv8gxw+jtJCjR11hx4WMykl
- wx+DvDaa2mDpCllmUZPdaMttux72Hj0B8SbxvU42EUcN7qXKyGi5l/CaZyVcJI2+c6+F
- J/rQ7VQwT35xMIli+QMIcglhr9M6cxCTSEPhvWyFVWCh7Uq7zCzfEmypa+QYBfCm1ZEz
- P/Vw==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=andrewstrohman.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5830.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f8923717-2700-4fcb-3b10-08dd14d6d0ff
+X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Dec 2024 02:45:01.8108 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: j9o7T8z0cHj96/J6ylWyGt0tqZDAu3uwt0+fc1QpzWAB/US5K5cD0O9fD9F6djOdW5X5KHah1Q7Ylv07OurSMZviR8IgR0XNe8eWfVRpqKc=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR11MB6487
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1733366712; x=1764902712;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=2BX+a03YSOWwa5L3Q+MioDY0SalLwrd8PGINkwYybu0=;
+ b=ThaaOMfuhfkbX2qJ7XAKkLwjL5l3dL73jHN1nPdHzT9DvBpj9EKJ6R/n
+ WAT40KalNP6lTt3AnVXxkIZEGw2ouNYAAYs6BNqpIryZIgxPGQqT7cZ55
+ tmItMsBNSNIA8veEHWtroLWJ4rcextBKIOreDvQgvi/b01qV6eI/TBOdN
+ FnhHZ1+lRg0Tn6liGpI9ij4m0KWT9PqO58/bZcUZt5t5p5I1N0wGh3sps
+ k44gFz+vFnV0zncGgO9jMB7DB1qeBMw7Ianrm93+vKDlSPFqLvbC/bzmL
+ pUf2utvlQVwRPTHO8qpcbUQJpHmdKtLYXVQcdml9WzGN8nOdNnviz7KwJ
+ g==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=andrewstrohman-com.20230601.gappssmtp.com
- header.i=@andrewstrohman-com.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=ymUJFBSA
-Subject: Re: [Intel-wired-lan] [PATCH net-next] bridge: Make the FDB
- consider inner tag for Q-in-Q
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=ThaaOMfu
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 1/1] igc: Improve
+ XDP_SETUP_PROG process
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -146,107 +235,55 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> Here the same thing. The 802.1ad bridge has the same PVID on all ports.
-> Why does the FDB lookup have to be as complex as to take 2 VIDs into
-> consideration, instead of just the inner one?
+On Thursday, December 5, 2024 8:38 AM, Gomes, Vinicius <vinicius.gomes@inte=
+l.com> wrote:
+>Song Yoong Siang <yoong.siang.song@intel.com> writes:
+>
+>> Improve XDP_SETUP_PROG process by avoiding unnecessary link down/up even=
+t
+>> and hardware device reset.
+>>
+>
+>Some examples of problems that these hardware resets are causing would
+>be good.
+>
 
-In all my examples I'm using the same PVID, because that's a required
-condition for the issue to happen. I omit that the other .1ad ports in
-could have different .1ad VIDs configured for them, to focus
-on the concept I'm trying to describe.
+Sure, maybe I can give an example of "before" and "after" behavior
+on ptp4l clock sync log in commit msg in next submission.
 
-But other VIDs can be configured on other ports. So, there could be
-collisions of .1q VIDs across different .1ad VIDs. As such,
-I don't want to ignore the outer VID during FDB lookup.
+>> Signed-off-by: Song Yoong Siang <yoong.siang.song@intel.com>
+>> ---
+>
+>The duplication of code doesn't look that good. Initialization is
+>tricky, it seems to make it easy to update one place and forget to
+>update the other.
+>
 
-In my use case (topology-sim) the test fabric consists of .1ad bridges
-that are connected to networking equipment under test.
+The original idea of this patch is to avoid huge changes on
+igc_open/igc_close functions. But I agree with you that
+duplication of code is challenging to maintain. I will create
+common function whenever necessary in next submission.
 
-The topology-sim user configures virtual ethernet cables (point to point)
-and/or L2 IVL ethernet segments between multiple devices under test. They do
-this to construct an arbitrary ethernet topology that they want to test.
-topology-sim assigns / maps each one of these  L2 segments to a unique
-.1ad VID.  This is how it keeps the "virtual wires" from interfering with each
-other.
+>A couple of ideas:
+> - separate the code into functions that can be used from the "usual"
+> igc_open()/igc_close() flow;
+> - it seems that igc_close()/igc_open() are too big a hammer for
+> installing a new XDP program: what do we really need? (my mental model
+> is: 1. stop new traffic from going into any queue; 2. wait for any
+> packets "in progress"; 3. install the program; 4. resume operations;
+> what else?)
 
-So if one virtual wire (ie .1ad vid 3) is connecting to a switch under test
-that is emitting frames with .1q vid 7, I want this virtual wire
-to be independent from another virtual wire (ie .1ad vid 4) that is also
-emitting frame with .lq7 vid 7.
+I think will need to reallocate DMA resource, if user enable XDP pool first=
+,
+then only setup XDP prog. Maybe I can reuse the reset sequence in
+igc_xdp_enable_pool(). I will study further.
 
-I acknowledge that we shouldn't make this upstream change just for topology-sim,
-considering that I'm the only user of it. But these same problems
-can affect, for example, metro ethernet carriers that use .1ad vlan stacking
-to differentiate between their different customer's sites. I'm not
-trying to claim that
-metro ethernet carriers would be inclined to use this feature -- I'm just
-providing another example to point out that this same concept applies to
-use cases outside of topology-sim, because toplogy-sim uses VLAN
-stacking in a typical, conventional way.
+[...]
+>
+>Cheers,
+>--
+>Vinicius
 
-I'll now proceed to go over my hairpin example,
-https://docs.google.com/drawings/d/1FybJP3UyCPxVQRGxAqGztO4Qc5mgXclV4m-QEyfUFQ8
-in more detail. I think that it will help demonstrate why I want
-to consider the inner tags. It's an example about a circuitous network
-path where the same packet can enter the same .1ad bridge multiple
-times, with the same .1ad VID, but different inner .1q VIDs.
+Thanks & Regards
+Siang
 
-Like I mentioned before, this network is contrived. I've never seen
-this done, and don't expect that it is a common topology. But my
-goal is to prevent connectivity issues that only arise due to how
-topology-sim constructs the virtual L2 ethernet segments.
-
-The network under test has a bridge mode firewall that is used to inspect
-traffic as it passes from some subset of a L2 segment to another subset
-of the same L2 segment. The way that the network operator achieve this
-goal is by creating separate VLANs for each subset of the L2 segment
-that need firewall interjection. This way, communicate between these
-different subsets are forced though the firewall. The firewall bridges
-the two VLANs to merge them into one L2 segment, one broadcast
-domain.
-
-Say the topology-sim user wants to interconnect two .q1 bridges via
-a virtual Ethernet connection. topology-sim accomplishes this by setting
-the same PVID for both ports that that face these .q1 switches under test.
-
-Let's follow what happens when a packets it transmitted from A towards
-B.
-
-When the frame is emitted from ".lq #1", heading toward the .1ad switch,
-it is .1q tagged as 7.  When the .1ad bridge receives the frame, it will
-associate it with .1ad vid 3 and .1q vid 7 can be seen in the packet,
-if desired.
-At this point, the .1ad bridge can either learn that A is behind it's
-left port, for
-.1ad vid 3 (current implementation), or it can learn that
-A is behind the left port only for .1ad vid 3 + inner .1a vid 7
-(proposed functionality).
-When the frame leaves the .1ad switch heading toward
-".1q #2", it will just have .1q vid 7 tag. ".1q #2" sends the packet
-to the firewall,
-via its left port, untagged. The firewall bridges the frame, and
-therefore transmits
-out its right port to ".1q #2", untagged.  ".1q #2" transmits toward
-.1ad with .1q tag
-8. When the .1ad bridge receives the frame, it will associate it with
-.1ad vid 3 and the inner .1q vid 8 can be seen in the packet if
-desired. At this point,
-the .1ad bridge can either learn that A is behind its right port, for
-.1ad vid 3 or it can
-learn that A is behind it's right port, for .1ad vid 3 + .1q inner vid 8.
-
-Without my change, the .1ad switch's fdb entry for A's mac, .1ad vid 3, would
-flip continuously between the left and right port.
-
-With my change, for .1ad vid 3, the .1ad bridge will always forward
-packets destined
-to host A's MAC to the right if the inner vid is 8 and will always
-forward host A's MAC
-to the left when the inner vid is 7.
-
-I hope this example explains why I want to look at the inner VID. The
-fact that we can have
-inner VID collisions for different outer vids, drives the need to examine the
-outer VID. This is why, collectively I want to consider MAC + inner + outer.
-
-Does that make sense?
