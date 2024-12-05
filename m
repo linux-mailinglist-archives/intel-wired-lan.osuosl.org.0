@@ -1,94 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7933B9E4DE5
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Dec 2024 08:03:56 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D97F9E5010
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Dec 2024 09:45:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1617A60855;
-	Thu,  5 Dec 2024 07:03:55 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 82HF6LD-wl1F; Thu,  5 Dec 2024 07:03:54 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9F16160858
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1733382233;
-	bh=74B16UC6GjVvR57aeQjCWZawXKHSdNczltCiOSSErtc=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=k3c+YCacMLhKK2+Ik1BSU3S+1CvJ12IGgm9HDVPk+w1mCBh0TNjYgEgfCOHi7/Sps
-	 uTbdPDAk6PcHTwB1os8TG3QD4Y5yVYYhgFromFDI1pANMIcXQN39ibwYsQnmwZXHpD
-	 j8LAmkUuB8U2tOwRmY08cLtM5vtqZlRfIBOWO1JKI3r5rMudAxgNOcGIRoDh/ru/Lv
-	 hx0AXLcY2JuFc78KZ8U27/3SCaiANZ1m8xeMFDRXsluS/SW4cqZZcT+7vnp9XwSI4S
-	 doFCBB1Cj1Hqgc4MiWuA6uuXriCtEmsWXqm5E95ie/P5BWOICgNnL++jcV0iytJ4BB
-	 QHfi35J+Xa89A==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9F16160858;
-	Thu,  5 Dec 2024 07:03:53 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 92273AE8
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 07:03:50 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 70EDA407AF
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 07:03:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E467541552;
+	Thu,  5 Dec 2024 08:45:04 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id aRWmDzTPdzmC for <intel-wired-lan@lists.osuosl.org>;
- Thu,  5 Dec 2024 07:03:49 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org CD88D408B1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CD88D408B1
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id CD88D408B1
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 07:03:48 +0000 (UTC)
-X-CSE-ConnectionGUID: cKjEwo/wRt+m9qgHH2jfnA==
-X-CSE-MsgGUID: sQY3Sy/SRJGSXrfQIvExoQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11276"; a="44154596"
-X-IronPort-AV: E=Sophos;i="6.12,209,1728975600"; d="scan'208";a="44154596"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
- by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Dec 2024 23:03:48 -0800
-X-CSE-ConnectionGUID: 2E9kXBUQTkugzbVVp4u7+Q==
-X-CSE-MsgGUID: 1eptQ3zBRkWQioGeubGeKQ==
+ id n0lUZ1wt-m7A; Thu,  5 Dec 2024 08:45:04 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CA2A641553
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1733388303;
+	bh=JQ/BLIfyYMs5h+scgrHDUck6AAk6AYbUuJXrNbOXrJw=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=45mp6BDXgJqX6PL59xWO9c4WCRDwd/ZNmnqWWfI/B2xGXF7fs7nI9DSVTSiZND/ov
+	 45Kdko6h21ezRkH8X2uoz1m8oDfTddzW2eGhX9YgnXycRFQ7s6xQZBJoCzXLgkCMoy
+	 Rtnbxe+EsQjyRYM5ryG7QlS6vryf6WaFB4teiLWV+ATDFPj12zXQNOK6Oz58eWwea+
+	 OlcEs8RlXRak8/jciXgrSy9s2vXXO6Pnn5b6zrDOp8fAIGAN4Hf5GADtylXdyzLnGB
+	 VyNxz1QOSzU/5ulEHvxJM3T/NPNtJAfLlL8d3CGebwVOYQRYx+J4mvMt4WWcITf5et
+	 OZpZpMNEPoJnA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id CA2A641553;
+	Thu,  5 Dec 2024 08:45:03 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 0460E1DD1
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 08:45:02 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id E56EA60B49
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 08:45:01 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id p_XwJTxCvNbq for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  5 Dec 2024 08:45:01 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
+ helo=mgamail.intel.com; envelope-from=piotr.kwapulinski@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 9A27660B17
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9A27660B17
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 9A27660B17
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 08:45:00 +0000 (UTC)
+X-CSE-ConnectionGUID: mhv7zvBJRUKlHU7wWW3wkg==
+X-CSE-MsgGUID: Ps6SNJ0HS+ee++QT4TdVEg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11276"; a="37623114"
+X-IronPort-AV: E=Sophos;i="6.12,209,1728975600"; d="scan'208";a="37623114"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+ by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Dec 2024 00:44:59 -0800
+X-CSE-ConnectionGUID: HYw9iRdMThiIbL84a5sSPA==
+X-CSE-MsgGUID: 4qM3osZUTl6kTHi+jV9IUA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,209,1728975600"; d="scan'208";a="98815286"
-Received: from lkp-server02.sh.intel.com (HELO 1f5a171d57e2) ([10.239.97.151])
- by fmviesa004.fm.intel.com with ESMTP; 04 Dec 2024 23:03:47 -0800
-Received: from kbuild by 1f5a171d57e2 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1tJ5to-0003vE-0Z
- for intel-wired-lan@lists.osuosl.org; Thu, 05 Dec 2024 07:03:44 +0000
-Date: Thu, 05 Dec 2024 15:00:34 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202412051524.vHGdTAiu-lkp@intel.com>
-User-Agent: s-nail v14.9.24
+X-IronPort-AV: E=Sophos;i="6.12,209,1728975600"; d="scan'208";a="94863952"
+Received: from pkwapuli-mobl1.ger.corp.intel.com (HELO
+ vbox-pkwap.ger.corp.intel.com) ([10.246.2.76])
+ by orviesa008.jf.intel.com with ESMTP; 05 Dec 2024 00:44:58 -0800
+From: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org,
+	Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+Date: Thu,  5 Dec 2024 09:44:42 +0100
+Message-ID: <20241205084450.4651-1-piotr.kwapulinski@intel.com>
+X-Mailer: git-send-email 2.43.5
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1733382229; x=1764918229;
- h=date:from:to:subject:message-id;
- bh=Y/iLJNr1ITCsrpSNAm9Um0tk7oUjvgRCp7wzaEpHhfc=;
- b=kRADJpweJubSxBZ5G+XQCLhUo9SeWQWviFmGDgKdO4PYw5It2wOC9wde
- EB4C6EYFKcZittyrYO7GWWGGm0sSBbVG81H5+1meVHEcJnylGWF/gJIjT
- PhCzVs2bRXT2tnaKswdqdejx88Ic/2GB8EgFS0VNAICRIiBBLAUmCaWWl
- 2StTYzeiLos1hHvVXe1yYQgr1u8BkYsCIfZUPjK04QYfFKROLLZYG7MuP
- +GR6+pZWPnhfV0q1Hd4EePtDddLilZDikJPIJJelKLufYEAcl9zj01GRq
- 2S7uyp96dG0aIda5JYzFgqHeodi6Ks5NZV4WGE4S1S4vEeSOXwtsDz/R6
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1733388300; x=1764924300;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=++auwdWGqOBL7xPQ1S/5rKB89GYBl2+ivEQFgMw4iWU=;
+ b=nZBhJePiKQhipqgjFJokwMKhCOk0+bSxGRiPYrhvaYL4n7KCGSHIdU/0
+ uu6tTFWLLIKa+IfRqMnUzAc7xtX1ab9xTrGXahWCp3sdQhU3hswKA8AIo
+ 5USAfuELcDbVtGpxA7M9iWr14xEqocdfqCKnZnSJHcUUDu+REqHPLhHb5
+ cHzCE8Om369inmu5ogzO+0K3ZeqXxUWYDmG/8xhXUuahKLbqA+fqMMjAK
+ wn7mAjrBz8PrHG8ocaY1ukYRf9msn8lf9HcWn6CJ77yLsTv9gFYNmUOnH
+ dKGpsPDFxbHOYgVq0DBzHB6c0nDmLS86m0wyKS2PRH5BPwrPP2ahNfYhc
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=kRADJpwe
-Subject: [Intel-wired-lan] [tnguy-next-queue:main] BUILD SUCCESS
- bb18265c3aba92b91a1355609769f3e967b65dee
+ header.s=Intel header.b=nZBhJePi
+Subject: [Intel-wired-lan] [PATCH iwl-next v12 0/8] ixgbe: Add support for
+ Intel(R) E610 device
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,228 +108,99 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git main
-branch HEAD: bb18265c3aba92b91a1355609769f3e967b65dee  r8169: remove support for chip version 11
+Add initial support for Intel(R) E610 Series of network devices. The E610
+is based on X550 but adds firmware managed link, enhanced security
+capabilities and support for updated server manageability.
 
-elapsed time: 1619m
+This patch series adds low level support for the following features and
+enables link management.
 
-configs tested: 209
-configs skipped: 8
+Piotr Kwapulinski (8):
+  ixgbe: Add support for E610 FW Admin Command Interface
+  ixgbe: Add support for E610 device capabilities detection
+  ixgbe: Add link management support for E610 device
+  ixgbe: Add support for NVM handling in E610 device
+  ixgbe: Add support for EEPROM dump in E610 device
+  ixgbe: Add ixgbe_x540 multiple header inclusion protection
+  ixgbe: Clean up the E610 link management related code
+  ixgbe: Enable link management in E610 device
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+ drivers/net/ethernet/intel/ixgbe/Makefile     |    4 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe.h      |   13 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_82599.c    |    3 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_common.c   |   25 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_dcb_nl.c   |    3 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 2655 +++++++++++++++++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h |   81 +
+ .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  |    6 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c  |    3 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  436 ++-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.c  |    4 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c  |    5 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_type.h |   72 +-
+ .../ethernet/intel/ixgbe/ixgbe_type_e610.h    | 1074 +++++++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c |   12 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x540.h |    7 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c |   29 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x550.h |   20 +
+ 18 files changed, 4405 insertions(+), 47 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+ create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
+ create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
+ create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_x550.h
 
-tested configs:
-alpha                             allnoconfig    gcc-14.2.0
-alpha                            allyesconfig    clang-20
-arc                              alldefconfig    clang-20
-arc                              allmodconfig    clang-20
-arc                               allnoconfig    gcc-14.2.0
-arc                              allyesconfig    clang-20
-arc                          axs101_defconfig    clang-18
-arc                          axs101_defconfig    clang-20
-arc                          axs103_defconfig    clang-20
-arc                        nsimosci_defconfig    clang-20
-arc                            randconfig-001    clang-20
-arc                            randconfig-001    gcc-13.2.0
-arc                   randconfig-001-20241205    clang-20
-arc                            randconfig-002    clang-20
-arc                            randconfig-002    gcc-13.2.0
-arc                   randconfig-002-20241205    clang-20
-arc                           tb10x_defconfig    clang-20
-arc                        vdk_hs38_defconfig    gcc-14.2.0
-arm                              allmodconfig    clang-20
-arm                               allnoconfig    gcc-14.2.0
-arm                              allyesconfig    clang-20
-arm                       aspeed_g4_defconfig    gcc-14.2.0
-arm                         assabet_defconfig    gcc-14.2.0
-arm                         at91_dt_defconfig    clang-20
-arm                            dove_defconfig    gcc-14.2.0
-arm                          exynos_defconfig    gcc-14.2.0
-arm                            hisi_defconfig    gcc-14.2.0
-arm                       imx_v4_v5_defconfig    clang-18
-arm                           imxrt_defconfig    clang-20
-arm                      integrator_defconfig    clang-20
-arm                        keystone_defconfig    clang-20
-arm                         lpc18xx_defconfig    clang-20
-arm                            mps2_defconfig    clang-20
-arm                       multi_v4t_defconfig    clang-20
-arm                        multi_v7_defconfig    gcc-14.2.0
-arm                         mv78xx0_defconfig    clang-17
-arm                           omap1_defconfig    clang-20
-arm                         orion5x_defconfig    clang-20
-arm                          pxa910_defconfig    clang-20
-arm                          pxa910_defconfig    gcc-14.2.0
-arm                            randconfig-001    clang-20
-arm                            randconfig-001    gcc-14.2.0
-arm                   randconfig-001-20241205    clang-20
-arm                            randconfig-002    clang-20
-arm                            randconfig-002    gcc-14.2.0
-arm                   randconfig-002-20241205    clang-20
-arm                            randconfig-003    clang-20
-arm                   randconfig-003-20241205    clang-20
-arm                            randconfig-004    clang-20
-arm                            randconfig-004    gcc-14.2.0
-arm                   randconfig-004-20241205    clang-20
-arm                        realview_defconfig    clang-20
-arm                           sama7_defconfig    clang-20
-arm                          sp7021_defconfig    clang-20
-arm                        spear3xx_defconfig    clang-20
-arm                           spitz_defconfig    gcc-14.2.0
-arm                       versatile_defconfig    clang-20
-arm                    vt8500_v6_v7_defconfig    clang-20
-arm                         wpcm450_defconfig    gcc-14.2.0
-arm64                            alldefconfig    gcc-14.2.0
-arm64                            allmodconfig    clang-20
-arm64                             allnoconfig    gcc-14.2.0
-arm64                          randconfig-001    clang-20
-arm64                          randconfig-001    gcc-14.2.0
-arm64                 randconfig-001-20241205    clang-20
-arm64                          randconfig-002    clang-20
-arm64                          randconfig-002    gcc-14.2.0
-arm64                 randconfig-002-20241205    clang-20
-arm64                          randconfig-003    clang-15
-arm64                          randconfig-003    clang-20
-arm64                 randconfig-003-20241205    clang-20
-arm64                          randconfig-004    clang-20
-arm64                 randconfig-004-20241205    clang-20
-csky                              allnoconfig    gcc-14.2.0
-hexagon                          alldefconfig    clang-20
-hexagon                          allmodconfig    clang-20
-hexagon                           allnoconfig    gcc-14.2.0
-hexagon                          allyesconfig    clang-20
-i386                 buildonly-randconfig-001    gcc-12
-i386        buildonly-randconfig-001-20241205    clang-19
-i386                 buildonly-randconfig-002    gcc-12
-i386        buildonly-randconfig-002-20241205    clang-19
-i386                 buildonly-randconfig-003    gcc-12
-i386        buildonly-randconfig-003-20241205    clang-19
-i386                 buildonly-randconfig-004    gcc-12
-i386        buildonly-randconfig-004-20241205    clang-19
-i386                 buildonly-randconfig-005    gcc-12
-i386        buildonly-randconfig-005-20241205    clang-19
-i386                 buildonly-randconfig-006    gcc-12
-i386        buildonly-randconfig-006-20241205    clang-19
-loongarch                        alldefconfig    gcc-14.2.0
-loongarch                        allmodconfig    gcc-14.2.0
-loongarch                         allnoconfig    gcc-14.2.0
-m68k                             allmodconfig    gcc-14.2.0
-m68k                              allnoconfig    gcc-14.2.0
-m68k                             allyesconfig    gcc-14.2.0
-m68k                       m5249evb_defconfig    gcc-14.2.0
-m68k                            mac_defconfig    gcc-14.2.0
-m68k                          multi_defconfig    gcc-14.2.0
-m68k                           virt_defconfig    clang-20
-microblaze                       allmodconfig    gcc-14.2.0
-microblaze                        allnoconfig    gcc-14.2.0
-microblaze                       allyesconfig    gcc-14.2.0
-mips                              allnoconfig    gcc-14.2.0
-mips                          ath25_defconfig    gcc-14.2.0
-mips                          ath79_defconfig    clang-20
-mips                         bigsur_defconfig    clang-17
-mips                          eyeq6_defconfig    clang-20
-mips                           ip22_defconfig    gcc-14.2.0
-mips                           jazz_defconfig    clang-20
-mips                          rb532_defconfig    clang-17
-mips                   sb1250_swarm_defconfig    clang-20
-nios2                         3c120_defconfig    clang-20
-nios2                             allnoconfig    gcc-14.2.0
-openrisc                         alldefconfig    clang-20
-openrisc                          allnoconfig    clang-20
-openrisc                         allyesconfig    gcc-14.2.0
-parisc                           allmodconfig    gcc-14.2.0
-parisc                            allnoconfig    clang-20
-parisc                           allyesconfig    gcc-14.2.0
-parisc                generic-32bit_defconfig    clang-20
-powerpc                    adder875_defconfig    clang-20
-powerpc                     akebono_defconfig    gcc-14.2.0
-powerpc                          allmodconfig    gcc-14.2.0
-powerpc                           allnoconfig    clang-20
-powerpc                          allyesconfig    gcc-14.2.0
-powerpc                      chrp32_defconfig    gcc-14.2.0
-powerpc                      cm5200_defconfig    clang-20
-powerpc                   currituck_defconfig    clang-20
-powerpc                       ebony_defconfig    clang-18
-powerpc                          g5_defconfig    gcc-14.2.0
-powerpc                    ge_imp3a_defconfig    clang-18
-powerpc                    ge_imp3a_defconfig    clang-20
-powerpc                       holly_defconfig    clang-20
-powerpc                        icon_defconfig    gcc-14.2.0
-powerpc                  iss476-smp_defconfig    clang-20
-powerpc                 linkstation_defconfig    clang-18
-powerpc                      mgcoge_defconfig    clang-20
-powerpc                     mpc5200_defconfig    gcc-14.2.0
-powerpc                 mpc8313_rdb_defconfig    clang-20
-powerpc                 mpc8313_rdb_defconfig    gcc-14.2.0
-powerpc                 mpc834x_itx_defconfig    gcc-14.2.0
-powerpc                 mpc837x_rdb_defconfig    clang-20
-powerpc                    mvme5100_defconfig    gcc-14.2.0
-powerpc                     redwood_defconfig    clang-20
-powerpc                     skiroot_defconfig    clang-20
-powerpc                     tqm8548_defconfig    clang-20
-powerpc                     tqm8555_defconfig    clang-20
-powerpc                        warp_defconfig    clang-17
-riscv                            allmodconfig    gcc-14.2.0
-riscv                             allnoconfig    clang-20
-riscv                            allyesconfig    gcc-14.2.0
-riscv                    nommu_k210_defconfig    clang-20
-riscv                    nommu_virt_defconfig    clang-20
-s390                             allmodconfig    gcc-14.2.0
-s390                              allnoconfig    clang-20
-s390                             allyesconfig    gcc-14.2.0
-sh                               allmodconfig    gcc-14.2.0
-sh                                allnoconfig    gcc-14.2.0
-sh                               allyesconfig    gcc-14.2.0
-sh                        dreamcast_defconfig    clang-17
-sh                        dreamcast_defconfig    gcc-14.2.0
-sh                ecovec24-romimage_defconfig    clang-18
-sh                         ecovec24_defconfig    clang-20
-sh                          kfr2r09_defconfig    clang-20
-sh                          landisk_defconfig    gcc-14.2.0
-sh                          lboxre2_defconfig    gcc-14.2.0
-sh                     magicpanelr2_defconfig    gcc-14.2.0
-sh                            migor_defconfig    gcc-14.2.0
-sh                          polaris_defconfig    gcc-14.2.0
-sh                          r7780mp_defconfig    gcc-14.2.0
-sh                          rsk7201_defconfig    clang-20
-sh                          rsk7264_defconfig    gcc-14.2.0
-sh                   rts7751r2dplus_defconfig    clang-20
-sh                           se7206_defconfig    clang-17
-sh                           se7721_defconfig    gcc-14.2.0
-sh                           se7722_defconfig    clang-17
-sh                           se7780_defconfig    gcc-14.2.0
-sh                             sh03_defconfig    clang-20
-sh                   sh7724_generic_defconfig    clang-20
-sh                   sh7724_generic_defconfig    gcc-14.2.0
-sh                        sh7757lcr_defconfig    gcc-14.2.0
-sh                             shx3_defconfig    clang-20
-sh                            titan_defconfig    clang-20
-sh                          urquell_defconfig    gcc-14.2.0
-sparc                            alldefconfig    clang-18
-sparc                            allmodconfig    gcc-14.2.0
-sparc                             allnoconfig    gcc-14.2.0
-um                               allmodconfig    clang-20
-um                                allnoconfig    clang-20
-um                               allyesconfig    clang-20
-x86_64               buildonly-randconfig-001    gcc-12
-x86_64      buildonly-randconfig-001-20241205    clang-19
-x86_64               buildonly-randconfig-002    gcc-12
-x86_64      buildonly-randconfig-002-20241205    clang-19
-x86_64               buildonly-randconfig-003    gcc-12
-x86_64      buildonly-randconfig-003-20241205    clang-19
-x86_64               buildonly-randconfig-004    gcc-12
-x86_64      buildonly-randconfig-004-20241205    clang-19
-x86_64               buildonly-randconfig-005    gcc-12
-x86_64      buildonly-randconfig-005-20241205    clang-19
-x86_64               buildonly-randconfig-006    gcc-12
-x86_64      buildonly-randconfig-006-20241205    clang-19
-xtensa                            allnoconfig    gcc-14.2.0
-xtensa                  audio_kc705_defconfig    clang-20
-xtensa                  cadence_csp_defconfig    gcc-14.2.0
-xtensa                generic_kc705_defconfig    clang-20
-xtensa                          iss_defconfig    gcc-14.2.0
-xtensa                    xip_kc705_defconfig    gcc-14.2.0
+-- 
+v1 -> v2:
+  - fix for no previous prototypes for ixgbe_set_fw_drv_ver_x550,
+    ixgbe_set_ethertype_anti_spoofing_x550 and
+    ixgbe_set_source_address_pruning_x550
+  - fix variable type mismatch: u16, u32, u64
+  - fix inaccurate doc for ixgbe_aci_desc
+  - remove extra buffer allocation in ixgbe_aci_send_cmd_execute
+  - replace custom loops with generic fls64 in ixgbe_get_media_type_e610
+  - add buffer caching and optimization in ixgbe_aci_send_cmd
+v2 -> v3:
+  - revert ixgbe_set_eee_capable inlining
+  - update copyright date
+v3 -> v4:
+  - cleanup local variables in ixgbe_get_num_per_func
+  - remove redundant casting in ixgbe_aci_disable_rxen
+v4 -> v5:
+  - remove unnecessary structure members initialization
+  - remove unnecessary casting
+  - fix comments
+v5 -> v6:
+  - create dedicated patch for ixgbe_x540 multiple header inclusion protection
+  - extend debug messages
+  - add descriptive constant for Receive Address Registers
+  - remove unrelated changes
+  - create dedicated patch for code cleanup
+  - remove and cleanup of some conditions
+  - spelling fixes
+v6 -> v7:
+  - rebase to adopt recent Makefile "ixgbe-y" changes
+v7 -> v8:
+  - implement more clear execution flow in ixgbe_aci_list_caps(),
+    ixgbe_discover_func_caps(), ixgbe_get_link_status(),
+    ixgbe_fc_autoneg_e610(), ixgbe_disable_rx_e610() and
+    ixgbe_setup_phy_link_e610()
+  - make use of FIELD_PREP macro in ixgbe_is_media_cage_present()
+v8 -> v9:
+  - tune-up auto-negotiation advertised link speeds at driver load
+  - update the method of pending events detection
+  - update the way of discovering device and function capabilities
+  - update the parameter set-up for the firmware-controlled PHYs
+  - fix port down after driver reload
+v9 -> v10:
+  - clean-up redundant automatic variables
+  - optimize return statements
+v10 -> v11:
+  - add support for EEPROM dump
+  - use little endian type in admin commands
+  - fix link status message based on FW link events
+v11 -> v12:
+  - add early return from ixgbe_read_sr_buf_aci()
+  - comment formatting fixes
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.43.0
+
