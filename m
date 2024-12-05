@@ -1,76 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9370C9E5015
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Dec 2024 09:46:01 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D9CF29E5017
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Dec 2024 09:46:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DB2E184706;
-	Thu,  5 Dec 2024 08:45:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7A0E660B67;
+	Thu,  5 Dec 2024 08:46:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kSzf9QStqh8J; Thu,  5 Dec 2024 08:45:57 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id nEOyfKAd769j; Thu,  5 Dec 2024 08:45:59 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AD3608470D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9955860B68
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1733388356;
-	bh=+y6iv4aeC1PY3Dd5j/mspLfywpR86f8ghKdrwH33hC8=;
+	s=default; t=1733388359;
+	bh=6QNsj4K+RuQ3NYyFX9/Js49ZYdoFD9nybxFXMPe3vpg=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=KyEDKmGugWV6e6RTRy6Lh8zkAMadxWbFe/9ECHIcgQK1kvXLwL7k9rEauut3Faxzo
-	 ++F0yEJ0P5bySSeT1zmPhTY/LtbbnnZ7bJkbG4borkLzyu1XyOtsIGLECuQEZ0ZR38
-	 nCejqvz+M42R+AxPLNoyWq5RpesGtToNL3TGwUdkIqepMOmmNbffnlVQPRzqQOV6lm
-	 77K1/GW4gAI95fDR7N6Q5WUMqBXyGcl6bcUPPl1gJA/J2v2Ne8sCfqmclp5O+TedlZ
-	 0budKqsuNtLVq+v44cr2hRv8uIhNUR7s8C4BCrlUD40GKhIdLwoeT0LYWLIXmiYSMe
-	 jHJ5BUeLCYKwQ==
+	b=ii91j9+cd/e+T5wB7TJtQwkn0m3g+wJbkAmcRuLdCT7VcOzM/+pLtHn3Nk5UYyD0j
+	 SC26fj6Lrm8fNsbQG5a74587zd6haB9XPkk6LWXUsRIvW/cTpqN7FD9+ISnXjRxByd
+	 UqMZCdFk6ifrL3BkfbBDuCfY8Cg+tvUyd1+4IgZCjXhBbNh5u6HMjd0Cyd7oCBEKQv
+	 836fRfZ3FCVn/U6nBE0GP/kExoB/fl4hN6P4OTcv3pgdP8J1X8cSX+7lXyH6rt5ud4
+	 vlkAe5BneweNhMDX0S52INOlyZ6wTXGiD6uA0RgPwro41ZIiXmrYcqOZgsn+auCQAU
+	 cwiUpb5H8eA1Q==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AD3608470D;
-	Thu,  5 Dec 2024 08:45:56 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9955860B68;
+	Thu,  5 Dec 2024 08:45:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 10D3C1DD1
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 08:45:54 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id A9661AE8
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 08:45:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id F2B6241561
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 08:45:53 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8C62A4156A
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 08:45:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id lSRyDpi9bhNy for <intel-wired-lan@lists.osuosl.org>;
- Thu,  5 Dec 2024 08:45:52 +0000 (UTC)
+ id t7CMR-Jo0KVA for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  5 Dec 2024 08:45:55 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
  helo=mgamail.intel.com; envelope-from=piotr.kwapulinski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 1A50C4155E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1A50C4155E
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D70584155E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D70584155E
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1A50C4155E
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 08:45:52 +0000 (UTC)
-X-CSE-ConnectionGUID: FT8kh+TDTUSe4eFHZgGS2g==
-X-CSE-MsgGUID: XJ3vLmP9QqqGPqpCvWkvBQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11276"; a="37623240"
-X-IronPort-AV: E=Sophos;i="6.12,209,1728975600"; d="scan'208";a="37623240"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D70584155E
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Dec 2024 08:45:54 +0000 (UTC)
+X-CSE-ConnectionGUID: XQc/+M1oSkiOUerqU2VZJA==
+X-CSE-MsgGUID: Boks3GdNRcKXNc3TdzCDSw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11276"; a="37623245"
+X-IronPort-AV: E=Sophos;i="6.12,209,1728975600"; d="scan'208";a="37623245"
 Received: from orviesa008.jf.intel.com ([10.64.159.148])
  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Dec 2024 00:45:52 -0800
-X-CSE-ConnectionGUID: i6NrgkqBQ5Sqv3VTxC+VkQ==
-X-CSE-MsgGUID: meB5D+obSraBs8bn4Rxr1g==
+ 05 Dec 2024 00:45:54 -0800
+X-CSE-ConnectionGUID: uP2OFR1OShCaaTMicwobyw==
+X-CSE-MsgGUID: XEeKaRnOS3eXJodZO+4ruQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,209,1728975600"; d="scan'208";a="94864127"
+X-IronPort-AV: E=Sophos;i="6.12,209,1728975600"; d="scan'208";a="94864137"
 Received: from pkwapuli-mobl1.ger.corp.intel.com (HELO
  vbox-pkwap.ger.corp.intel.com) ([10.246.2.76])
- by orviesa008.jf.intel.com with ESMTP; 05 Dec 2024 00:45:49 -0800
+ by orviesa008.jf.intel.com with ESMTP; 05 Dec 2024 00:45:52 -0800
 From: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: netdev@vger.kernel.org, Piotr Kwapulinski <piotr.kwapulinski@intel.com>,
  Stefan Wegrzyn <stefan.wegrzyn@intel.com>,
  Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
- Jan Sokolowski <jan.sokolowski@intel.com>, Simon Horman <horms@kernel.org>
-Date: Thu,  5 Dec 2024 09:44:44 +0100
-Message-ID: <20241205084450.4651-3-piotr.kwapulinski@intel.com>
+ Jan Glaza <jan.glaza@intel.com>
+Date: Thu,  5 Dec 2024 09:44:45 +0100
+Message-ID: <20241205084450.4651-4-piotr.kwapulinski@intel.com>
 X-Mailer: git-send-email 2.43.5
 In-Reply-To: <20241205084450.4651-1-piotr.kwapulinski@intel.com>
 References: <20241205084450.4651-1-piotr.kwapulinski@intel.com>
@@ -78,25 +78,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1733388352; x=1764924352;
+ t=1733388355; x=1764924355;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=KFDDl9W3efhcSfINVE30FUm3Pdlo340EYstsRlm1U8w=;
- b=iHfzJg/SjEL8mVVmJVIo6ff6ybrJIbugLN6lnYyL7fRJwVFiMOYdnmxA
- dY2LkhHK1GnKr26EvTXdBME069+g/EpvY0KpgueI8t7GNGvtF6V/bs5Un
- WIveyNMRCS5w8aZ0gLaYG5dac0OjBsgpeP8WSxohDsVblxpExTVXlAsWq
- NbfR50qXFzC1PqjtrL3X2kJvkaaqjkhySgr3XtpyxF6RjmLVncwDxGxqS
- /SCRLQkb9+dgXpG3s7d1RYVVs4VNG1teeYKceLP/t1rU6uls6tIvTNYkI
- XZNrSOpXKEkWXd/1Toq1AIpv3xBBiBV4trPzkC09SZx31UxRM4LyrH8Hh
- A==;
+ bh=AeV8ZG3zXLBinHDSh2mO04Fs6YSmJ9aA/5siqFKoQQ0=;
+ b=oE+d1T9YpOi7NhbPlcefdRr1HVqhrZJTSMcReMW4e5N4Y/8AvEmlwgyX
+ VV25fewd/voRFiAB/TpGmw4DaQgcglG+CxaTM1QZB2n6BmgYk5KdV27Wu
+ +SxKo26xLqt/jcfpCpC2DqzMIhhGY6Avcq0OrdqafMdvdbCaAQgSk7hVN
+ ZahPw4yeh5rYPOTGfYNdPNc+qS3/0TZApBXb4Is/+CKP83XiOXGud/Ozy
+ 4vz20tgnrEnJA5RMLeo5rk/t9Y07pY/cGx+X9tRnVYhtSFym/9BVgNmrz
+ znTU1eZKQDVSRXmiMqU0vUj6jEb7ESy6g+LW6xSCBmbPAuYWL5TGYNYPG
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=iHfzJg/S
-Subject: [Intel-wired-lan] [PATCH iwl-next v12 2/8] ixgbe: Add support for
- E610 device capabilities detection
+ header.a=rsa-sha256 header.s=Intel header.b=oE+d1T9Y
+Subject: [Intel-wired-lan] [PATCH iwl-next v12 3/8] ixgbe: Add link
+ management support for E610 device
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -112,610 +112,1168 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add low level support for E610 device capabilities detection. The
-capabilities are discovered via the Admin Command Interface. Discover the
-following capabilities:
-- function caps: vmdq, dcb, rss, rx/tx qs, msix, nvm, orom, reset
-- device caps: vsi, fdir, 1588
-- phy caps
+Add low level link management support for E610 device. Link management
+operations are handled via the Admin Command Interface. Add the following
+link management operations:
+- get link capabilities
+- set up link
+- get media type
+- get link status, link status events
+- link power management
 
 Co-developed-by: Stefan Wegrzyn <stefan.wegrzyn@intel.com>
 Signed-off-by: Stefan Wegrzyn <stefan.wegrzyn@intel.com>
 Co-developed-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-Reviewed-by: Jan Sokolowski <jan.sokolowski@intel.com>
-Reviewed-by: Simon Horman <horms@kernel.org>
+Reviewed-by: Jan Glaza <jan.glaza@intel.com>
 Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
 ---
- drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 529 ++++++++++++++++++
- drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h |  12 +
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |   7 +
- 3 files changed, 548 insertions(+)
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 1079 +++++++++++++++++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h |   32 +
+ .../ethernet/intel/ixgbe/ixgbe_type_e610.h    |    1 +
+ 3 files changed, 1112 insertions(+)
 
 diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-index e1bab11..1e4e8d2 100644
+index 1e4e8d2..1c50005 100644
 --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
 +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-@@ -494,3 +494,532 @@ void ixgbe_release_res(struct ixgbe_hw *hw, enum ixgbe_aci_res_ids res)
- 		total_delay++;
- 	}
+@@ -1023,3 +1023,1082 @@ void ixgbe_copy_phy_caps_to_cfg(struct ixgbe_aci_cmd_get_phy_caps_data *caps,
+ 	cfg->module_compliance_enforcement =
+ 		caps->module_compliance_enforcement;
  }
 +
 +/**
-+ * ixgbe_parse_e610_caps - Parse common device/function capabilities
++ * ixgbe_aci_set_phy_cfg - set PHY configuration
 + * @hw: pointer to the HW struct
-+ * @caps: pointer to common capabilities structure
-+ * @elem: the capability element to parse
-+ * @prefix: message prefix for tracing capabilities
++ * @cfg: structure with PHY configuration data to be set
 + *
-+ * Given a capability element, extract relevant details into the common
-+ * capability structure.
-+ *
-+ * Return: true if the capability matches one of the common capability ids,
-+ * false otherwise.
-+ */
-+static bool ixgbe_parse_e610_caps(struct ixgbe_hw *hw,
-+				  struct ixgbe_hw_caps *caps,
-+				  struct ixgbe_aci_cmd_list_caps_elem *elem,
-+				  const char *prefix)
-+{
-+	u32 logical_id = le32_to_cpu(elem->logical_id);
-+	u32 phys_id = le32_to_cpu(elem->phys_id);
-+	u32 number = le32_to_cpu(elem->number);
-+	u16 cap = le16_to_cpu(elem->cap);
-+
-+	switch (cap) {
-+	case IXGBE_ACI_CAPS_VALID_FUNCTIONS:
-+		caps->valid_functions = number;
-+		break;
-+	case IXGBE_ACI_CAPS_SRIOV:
-+		caps->sr_iov_1_1 = (number == 1);
-+		break;
-+	case IXGBE_ACI_CAPS_VMDQ:
-+		caps->vmdq = (number == 1);
-+		break;
-+	case IXGBE_ACI_CAPS_DCB:
-+		caps->dcb = (number == 1);
-+		caps->active_tc_bitmap = logical_id;
-+		caps->maxtc = phys_id;
-+		break;
-+	case IXGBE_ACI_CAPS_RSS:
-+		caps->rss_table_size = number;
-+		caps->rss_table_entry_width = logical_id;
-+		break;
-+	case IXGBE_ACI_CAPS_RXQS:
-+		caps->num_rxq = number;
-+		caps->rxq_first_id = phys_id;
-+		break;
-+	case IXGBE_ACI_CAPS_TXQS:
-+		caps->num_txq = number;
-+		caps->txq_first_id = phys_id;
-+		break;
-+	case IXGBE_ACI_CAPS_MSIX:
-+		caps->num_msix_vectors = number;
-+		caps->msix_vector_first_id = phys_id;
-+		break;
-+	case IXGBE_ACI_CAPS_NVM_VER:
-+		break;
-+	case IXGBE_ACI_CAPS_MAX_MTU:
-+		caps->max_mtu = number;
-+		break;
-+	case IXGBE_ACI_CAPS_PCIE_RESET_AVOIDANCE:
-+		caps->pcie_reset_avoidance = (number > 0);
-+		break;
-+	case IXGBE_ACI_CAPS_POST_UPDATE_RESET_RESTRICT:
-+		caps->reset_restrict_support = (number == 1);
-+		break;
-+	case IXGBE_ACI_CAPS_EXT_TOPO_DEV_IMG0:
-+	case IXGBE_ACI_CAPS_EXT_TOPO_DEV_IMG1:
-+	case IXGBE_ACI_CAPS_EXT_TOPO_DEV_IMG2:
-+	case IXGBE_ACI_CAPS_EXT_TOPO_DEV_IMG3:
-+	{
-+		u8 index = cap - IXGBE_ACI_CAPS_EXT_TOPO_DEV_IMG0;
-+
-+		caps->ext_topo_dev_img_ver_high[index] = number;
-+		caps->ext_topo_dev_img_ver_low[index] = logical_id;
-+		caps->ext_topo_dev_img_part_num[index] =
-+			FIELD_GET(IXGBE_EXT_TOPO_DEV_IMG_PART_NUM_M, phys_id);
-+		caps->ext_topo_dev_img_load_en[index] =
-+			(phys_id & IXGBE_EXT_TOPO_DEV_IMG_LOAD_EN) != 0;
-+		caps->ext_topo_dev_img_prog_en[index] =
-+			(phys_id & IXGBE_EXT_TOPO_DEV_IMG_PROG_EN) != 0;
-+		break;
-+	}
-+	default:
-+		/* Not one of the recognized common capabilities */
-+		return false;
-+	}
-+
-+	return true;
-+}
-+
-+/**
-+ * ixgbe_parse_valid_functions_cap - Parse IXGBE_ACI_CAPS_VALID_FUNCTIONS caps
-+ * @hw: pointer to the HW struct
-+ * @dev_p: pointer to device capabilities structure
-+ * @cap: capability element to parse
-+ *
-+ * Parse IXGBE_ACI_CAPS_VALID_FUNCTIONS for device capabilities.
-+ */
-+static void
-+ixgbe_parse_valid_functions_cap(struct ixgbe_hw *hw,
-+				struct ixgbe_hw_dev_caps *dev_p,
-+				struct ixgbe_aci_cmd_list_caps_elem *cap)
-+{
-+	dev_p->num_funcs = hweight32(le32_to_cpu(cap->number));
-+}
-+
-+/**
-+ * ixgbe_parse_vf_dev_caps - Parse IXGBE_ACI_CAPS_VF device caps
-+ * @hw: pointer to the HW struct
-+ * @dev_p: pointer to device capabilities structure
-+ * @cap: capability element to parse
-+ *
-+ * Parse IXGBE_ACI_CAPS_VF for device capabilities.
-+ */
-+static void ixgbe_parse_vf_dev_caps(struct ixgbe_hw *hw,
-+				    struct ixgbe_hw_dev_caps *dev_p,
-+				    struct ixgbe_aci_cmd_list_caps_elem *cap)
-+{
-+	dev_p->num_vfs_exposed = le32_to_cpu(cap->number);
-+}
-+
-+/**
-+ * ixgbe_parse_vsi_dev_caps - Parse IXGBE_ACI_CAPS_VSI device caps
-+ * @hw: pointer to the HW struct
-+ * @dev_p: pointer to device capabilities structure
-+ * @cap: capability element to parse
-+ *
-+ * Parse IXGBE_ACI_CAPS_VSI for device capabilities.
-+ */
-+static void ixgbe_parse_vsi_dev_caps(struct ixgbe_hw *hw,
-+				     struct ixgbe_hw_dev_caps *dev_p,
-+				     struct ixgbe_aci_cmd_list_caps_elem *cap)
-+{
-+	dev_p->num_vsi_allocd_to_host = le32_to_cpu(cap->number);
-+}
-+
-+/**
-+ * ixgbe_parse_fdir_dev_caps - Parse IXGBE_ACI_CAPS_FD device caps
-+ * @hw: pointer to the HW struct
-+ * @dev_p: pointer to device capabilities structure
-+ * @cap: capability element to parse
-+ *
-+ * Parse IXGBE_ACI_CAPS_FD for device capabilities.
-+ */
-+static void ixgbe_parse_fdir_dev_caps(struct ixgbe_hw *hw,
-+				      struct ixgbe_hw_dev_caps *dev_p,
-+				      struct ixgbe_aci_cmd_list_caps_elem *cap)
-+{
-+	dev_p->num_flow_director_fltr = le32_to_cpu(cap->number);
-+}
-+
-+/**
-+ * ixgbe_parse_dev_caps - Parse device capabilities
-+ * @hw: pointer to the HW struct
-+ * @dev_p: pointer to device capabilities structure
-+ * @buf: buffer containing the device capability records
-+ * @cap_count: the number of capabilities
-+ *
-+ * Helper device to parse device (0x000B) capabilities list. For
-+ * capabilities shared between device and function, this relies on
-+ * ixgbe_parse_e610_caps.
-+ *
-+ * Loop through the list of provided capabilities and extract the relevant
-+ * data into the device capabilities structured.
-+ */
-+static void ixgbe_parse_dev_caps(struct ixgbe_hw *hw,
-+				 struct ixgbe_hw_dev_caps *dev_p,
-+				 void *buf, u32 cap_count)
-+{
-+	struct ixgbe_aci_cmd_list_caps_elem *cap_resp;
-+	u32 i;
-+
-+	cap_resp = (struct ixgbe_aci_cmd_list_caps_elem *)buf;
-+
-+	memset(dev_p, 0, sizeof(*dev_p));
-+
-+	for (i = 0; i < cap_count; i++) {
-+		u16 cap = le16_to_cpu(cap_resp[i].cap);
-+
-+		ixgbe_parse_e610_caps(hw, &dev_p->common_cap, &cap_resp[i],
-+				      "dev caps");
-+
-+		switch (cap) {
-+		case IXGBE_ACI_CAPS_VALID_FUNCTIONS:
-+			ixgbe_parse_valid_functions_cap(hw, dev_p,
-+							&cap_resp[i]);
-+			break;
-+		case IXGBE_ACI_CAPS_VF:
-+			ixgbe_parse_vf_dev_caps(hw, dev_p, &cap_resp[i]);
-+			break;
-+		case IXGBE_ACI_CAPS_VSI:
-+			ixgbe_parse_vsi_dev_caps(hw, dev_p, &cap_resp[i]);
-+			break;
-+		case  IXGBE_ACI_CAPS_FD:
-+			ixgbe_parse_fdir_dev_caps(hw, dev_p, &cap_resp[i]);
-+			break;
-+		default:
-+			/* Don't list common capabilities as unknown */
-+			break;
-+		}
-+	}
-+}
-+
-+/**
-+ * ixgbe_parse_vf_func_caps - Parse IXGBE_ACI_CAPS_VF function caps
-+ * @hw: pointer to the HW struct
-+ * @func_p: pointer to function capabilities structure
-+ * @cap: pointer to the capability element to parse
-+ *
-+ * Extract function capabilities for IXGBE_ACI_CAPS_VF.
-+ */
-+static void ixgbe_parse_vf_func_caps(struct ixgbe_hw *hw,
-+				     struct ixgbe_hw_func_caps *func_p,
-+				     struct ixgbe_aci_cmd_list_caps_elem *cap)
-+{
-+	func_p->num_allocd_vfs = le32_to_cpu(cap->number);
-+	func_p->vf_base_id = le32_to_cpu(cap->logical_id);
-+}
-+
-+/**
-+ * ixgbe_get_num_per_func - determine number of resources per PF
-+ * @hw: pointer to the HW structure
-+ * @max: value to be evenly split between each PF
-+ *
-+ * Determine the number of valid functions by going through the bitmap returned
-+ * from parsing capabilities and use this to calculate the number of resources
-+ * per PF based on the max value passed in.
-+ *
-+ * Return: the number of resources per PF or 0, if no PH are available.
-+ */
-+static u32 ixgbe_get_num_per_func(struct ixgbe_hw *hw, u32 max)
-+{
-+#define IXGBE_CAPS_VALID_FUNCS_M	GENMASK(7, 0)
-+	u8 funcs = hweight8(hw->dev_caps.common_cap.valid_functions &
-+			    IXGBE_CAPS_VALID_FUNCS_M);
-+
-+	return funcs ? (max / funcs) : 0;
-+}
-+
-+/**
-+ * ixgbe_parse_vsi_func_caps - Parse IXGBE_ACI_CAPS_VSI function caps
-+ * @hw: pointer to the HW struct
-+ * @func_p: pointer to function capabilities structure
-+ * @cap: pointer to the capability element to parse
-+ *
-+ * Extract function capabilities for IXGBE_ACI_CAPS_VSI.
-+ */
-+static void ixgbe_parse_vsi_func_caps(struct ixgbe_hw *hw,
-+				      struct ixgbe_hw_func_caps *func_p,
-+				      struct ixgbe_aci_cmd_list_caps_elem *cap)
-+{
-+	func_p->guar_num_vsi = ixgbe_get_num_per_func(hw, IXGBE_MAX_VSI);
-+}
-+
-+/**
-+ * ixgbe_parse_func_caps - Parse function capabilities
-+ * @hw: pointer to the HW struct
-+ * @func_p: pointer to function capabilities structure
-+ * @buf: buffer containing the function capability records
-+ * @cap_count: the number of capabilities
-+ *
-+ * Helper function to parse function (0x000A) capabilities list. For
-+ * capabilities shared between device and function, this relies on
-+ * ixgbe_parse_e610_caps.
-+ *
-+ * Loop through the list of provided capabilities and extract the relevant
-+ * data into the function capabilities structured.
-+ */
-+static void ixgbe_parse_func_caps(struct ixgbe_hw *hw,
-+				  struct ixgbe_hw_func_caps *func_p,
-+				  void *buf, u32 cap_count)
-+{
-+	struct ixgbe_aci_cmd_list_caps_elem *cap_resp;
-+	u32 i;
-+
-+	cap_resp = (struct ixgbe_aci_cmd_list_caps_elem *)buf;
-+
-+	memset(func_p, 0, sizeof(*func_p));
-+
-+	for (i = 0; i < cap_count; i++) {
-+		u16 cap = le16_to_cpu(cap_resp[i].cap);
-+
-+		ixgbe_parse_e610_caps(hw, &func_p->common_cap,
-+				      &cap_resp[i], "func caps");
-+
-+		switch (cap) {
-+		case IXGBE_ACI_CAPS_VF:
-+			ixgbe_parse_vf_func_caps(hw, func_p, &cap_resp[i]);
-+			break;
-+		case IXGBE_ACI_CAPS_VSI:
-+			ixgbe_parse_vsi_func_caps(hw, func_p, &cap_resp[i]);
-+			break;
-+		default:
-+			/* Don't list common capabilities as unknown */
-+			break;
-+		}
-+	}
-+}
-+
-+/**
-+ * ixgbe_aci_list_caps - query function/device capabilities
-+ * @hw: pointer to the HW struct
-+ * @buf: a buffer to hold the capabilities
-+ * @buf_size: size of the buffer
-+ * @cap_count: if not NULL, set to the number of capabilities reported
-+ * @opc: capabilities type to discover, device or function
-+ *
-+ * Get the function (0x000A) or device (0x000B) capabilities description from
-+ * firmware and store it in the buffer.
-+ *
-+ * If the cap_count pointer is not NULL, then it is set to the number of
-+ * capabilities firmware will report. Note that if the buffer size is too
-+ * small, it is possible the command will return -ENOMEM. The
-+ * cap_count will still be updated in this case. It is recommended that the
-+ * buffer size be set to IXGBE_ACI_MAX_BUFFER_SIZE (the largest possible
-+ * buffer that firmware could return) to avoid this.
++ * Set the various PHY configuration parameters supported on the Port
++ * using ACI command (0x0601).
++ * One or more of the Set PHY config parameters may be ignored in an MFP
++ * mode as the PF may not have the privilege to set some of the PHY Config
++ * parameters.
 + *
 + * Return: the exit code of the operation.
-+ * Exit code of -ENOMEM means the buffer size is too small.
 + */
-+int ixgbe_aci_list_caps(struct ixgbe_hw *hw, void *buf, u16 buf_size,
-+			u32 *cap_count, enum ixgbe_aci_opc opc)
++int ixgbe_aci_set_phy_cfg(struct ixgbe_hw *hw,
++			  struct ixgbe_aci_cmd_set_phy_cfg_data *cfg)
 +{
-+	struct ixgbe_aci_cmd_list_caps *cmd;
 +	struct ixgbe_aci_desc desc;
 +	int err;
 +
-+	cmd = &desc.params.get_cap;
-+
-+	if (opc != ixgbe_aci_opc_list_func_caps &&
-+	    opc != ixgbe_aci_opc_list_dev_caps)
++	if (!cfg)
 +		return -EINVAL;
 +
-+	ixgbe_fill_dflt_direct_cmd_desc(&desc, opc);
-+	err = ixgbe_aci_send_cmd(hw, &desc, buf, buf_size);
++	/* Ensure that only valid bits of cfg->caps can be turned on. */
++	cfg->caps &= IXGBE_ACI_PHY_ENA_VALID_MASK;
 +
-+	if (cap_count)
-+		*cap_count = le32_to_cpu(cmd->count);
++	ixgbe_fill_dflt_direct_cmd_desc(&desc, ixgbe_aci_opc_set_phy_cfg);
++	desc.params.set_phy.lport_num = hw->bus.func;
++	desc.flags |= cpu_to_le16(IXGBE_ACI_FLAG_RD);
++
++	err = ixgbe_aci_send_cmd(hw, &desc, cfg, sizeof(*cfg));
++	if (!err)
++		hw->phy.curr_user_phy_cfg = *cfg;
 +
 +	return err;
 +}
 +
 +/**
-+ * ixgbe_discover_dev_caps - Read and extract device capabilities
-+ * @hw: pointer to the hardware structure
-+ * @dev_caps: pointer to device capabilities structure
-+ *
-+ * Read the device capabilities and extract them into the dev_caps structure
-+ * for later use.
-+ *
-+ * Return: the exit code of the operation.
-+ */
-+int ixgbe_discover_dev_caps(struct ixgbe_hw *hw,
-+			    struct ixgbe_hw_dev_caps *dev_caps)
-+{
-+	u8 *cbuf __free(kfree);
-+	u32 cap_count;
-+	int err;
-+
-+	cbuf = kzalloc(IXGBE_ACI_MAX_BUFFER_SIZE, GFP_KERNEL);
-+	if (!cbuf)
-+		return -ENOMEM;
-+	/* Although the driver doesn't know the number of capabilities the
-+	 * device will return, we can simply send a 4KB buffer, the maximum
-+	 * possible size that firmware can return.
-+	 */
-+	cap_count = IXGBE_ACI_MAX_BUFFER_SIZE /
-+		    sizeof(struct ixgbe_aci_cmd_list_caps_elem);
-+
-+	err = ixgbe_aci_list_caps(hw, cbuf, IXGBE_ACI_MAX_BUFFER_SIZE,
-+				  &cap_count,
-+				  ixgbe_aci_opc_list_dev_caps);
-+	if (err)
-+		return err;
-+
-+	ixgbe_parse_dev_caps(hw, dev_caps, cbuf, cap_count);
-+
-+	return 0;
-+}
-+
-+/**
-+ * ixgbe_discover_func_caps - Read and extract function capabilities
-+ * @hw: pointer to the hardware structure
-+ * @func_caps: pointer to function capabilities structure
-+ *
-+ * Read the function capabilities and extract them into the func_caps structure
-+ * for later use.
-+ *
-+ * Return: the exit code of the operation.
-+ */
-+int ixgbe_discover_func_caps(struct ixgbe_hw *hw,
-+			     struct ixgbe_hw_func_caps *func_caps)
-+{
-+	u8 *cbuf __free(kfree);
-+	u32 cap_count;
-+	int err;
-+
-+	cbuf = kzalloc(IXGBE_ACI_MAX_BUFFER_SIZE, GFP_KERNEL);
-+	if (!cbuf)
-+		return -ENOMEM;
-+
-+	/* Although the driver doesn't know the number of capabilities the
-+	 * device will return, we can simply send a 4KB buffer, the maximum
-+	 * possible size that firmware can return.
-+	 */
-+	cap_count = IXGBE_ACI_MAX_BUFFER_SIZE /
-+		    sizeof(struct ixgbe_aci_cmd_list_caps_elem);
-+
-+	err = ixgbe_aci_list_caps(hw, cbuf, IXGBE_ACI_MAX_BUFFER_SIZE,
-+				  &cap_count,
-+				  ixgbe_aci_opc_list_func_caps);
-+	if (err)
-+		return err;
-+
-+	ixgbe_parse_func_caps(hw, func_caps, cbuf, cap_count);
-+
-+	return 0;
-+}
-+
-+/**
-+ * ixgbe_get_caps - get info about the HW
-+ * @hw: pointer to the hardware structure
-+ *
-+ * Retrieve both device and function capabilities.
-+ *
-+ * Return: the exit code of the operation.
-+ */
-+int ixgbe_get_caps(struct ixgbe_hw *hw)
-+{
-+	int err;
-+
-+	err = ixgbe_discover_dev_caps(hw, &hw->dev_caps);
-+	if (err)
-+		return err;
-+
-+	return ixgbe_discover_func_caps(hw, &hw->func_caps);
-+}
-+
-+/**
-+ * ixgbe_aci_disable_rxen - disable RX
++ * ixgbe_aci_set_link_restart_an - set up link and restart AN
 + * @hw: pointer to the HW struct
++ * @ena_link: if true: enable link, if false: disable link
 + *
-+ * Request a safe disable of Receive Enable using ACI command (0x000C).
++ * Function sets up the link and restarts the Auto-Negotiation over the link.
 + *
 + * Return: the exit code of the operation.
 + */
-+int ixgbe_aci_disable_rxen(struct ixgbe_hw *hw)
++int ixgbe_aci_set_link_restart_an(struct ixgbe_hw *hw, bool ena_link)
 +{
-+	struct ixgbe_aci_cmd_disable_rxen *cmd;
++	struct ixgbe_aci_cmd_restart_an *cmd;
 +	struct ixgbe_aci_desc desc;
 +
-+	cmd = &desc.params.disable_rxen;
++	cmd = &desc.params.restart_an;
 +
-+	ixgbe_fill_dflt_direct_cmd_desc(&desc, ixgbe_aci_opc_disable_rxen);
++	ixgbe_fill_dflt_direct_cmd_desc(&desc, ixgbe_aci_opc_restart_an);
 +
++	cmd->cmd_flags = IXGBE_ACI_RESTART_AN_LINK_RESTART;
 +	cmd->lport_num = hw->bus.func;
++	if (ena_link)
++		cmd->cmd_flags |= IXGBE_ACI_RESTART_AN_LINK_ENABLE;
++	else
++		cmd->cmd_flags &= ~IXGBE_ACI_RESTART_AN_LINK_ENABLE;
 +
 +	return ixgbe_aci_send_cmd(hw, &desc, NULL, 0);
 +}
 +
 +/**
-+ * ixgbe_aci_get_phy_caps - returns PHY capabilities
++ * ixgbe_is_media_cage_present - check if media cage is present
 + * @hw: pointer to the HW struct
-+ * @qual_mods: report qualified modules
-+ * @report_mode: report mode capabilities
-+ * @pcaps: structure for PHY capabilities to be filled
 + *
-+ * Returns the various PHY capabilities supported on the Port
-+ * using ACI command (0x0600).
++ * Identify presence of media cage using the ACI command (0x06E0).
++ *
++ * Return: true if media cage is present, else false. If no cage, then
++ * media type is backplane or BASE-T.
++ */
++static bool ixgbe_is_media_cage_present(struct ixgbe_hw *hw)
++{
++	struct ixgbe_aci_cmd_get_link_topo *cmd;
++	struct ixgbe_aci_desc desc;
++
++	cmd = &desc.params.get_link_topo;
++
++	ixgbe_fill_dflt_direct_cmd_desc(&desc, ixgbe_aci_opc_get_link_topo);
++
++	cmd->addr.topo_params.node_type_ctx =
++		FIELD_PREP(IXGBE_ACI_LINK_TOPO_NODE_CTX_M,
++			   IXGBE_ACI_LINK_TOPO_NODE_CTX_PORT);
++
++	/* Set node type. */
++	cmd->addr.topo_params.node_type_ctx |=
++		FIELD_PREP(IXGBE_ACI_LINK_TOPO_NODE_TYPE_M,
++			   IXGBE_ACI_LINK_TOPO_NODE_TYPE_CAGE);
++
++	/* Node type cage can be used to determine if cage is present. If AQC
++	 * returns error (ENOENT), then no cage present. If no cage present then
++	 * connection type is backplane or BASE-T.
++	 */
++	return ixgbe_aci_get_netlist_node(hw, cmd, NULL, NULL);
++}
++
++/**
++ * ixgbe_get_media_type_from_phy_type - Gets media type based on phy type
++ * @hw: pointer to the HW struct
++ *
++ * Try to identify the media type based on the phy type.
++ * If more than one media type, the ixgbe_media_type_unknown is returned.
++ * First, phy_type_low is checked, then phy_type_high.
++ * If none are identified, the ixgbe_media_type_unknown is returned
++ *
++ * Return: type of a media based on phy type in form of enum.
++ */
++static enum ixgbe_media_type
++ixgbe_get_media_type_from_phy_type(struct ixgbe_hw *hw)
++{
++	struct ixgbe_link_status *hw_link_info;
++
++	if (!hw)
++		return ixgbe_media_type_unknown;
++
++	hw_link_info = &hw->link.link_info;
++	if (hw_link_info->phy_type_low && hw_link_info->phy_type_high)
++		/* If more than one media type is selected, report unknown */
++		return ixgbe_media_type_unknown;
++
++	if (hw_link_info->phy_type_low) {
++		/* 1G SGMII is a special case where some DA cable PHYs
++		 * may show this as an option when it really shouldn't
++		 * be since SGMII is meant to be between a MAC and a PHY
++		 * in a backplane. Try to detect this case and handle it
++		 */
++		if (hw_link_info->phy_type_low == IXGBE_PHY_TYPE_LOW_1G_SGMII &&
++		    (hw_link_info->module_type[IXGBE_ACI_MOD_TYPE_IDENT] ==
++		    IXGBE_ACI_MOD_TYPE_BYTE1_SFP_PLUS_CU_ACTIVE ||
++		    hw_link_info->module_type[IXGBE_ACI_MOD_TYPE_IDENT] ==
++		    IXGBE_ACI_MOD_TYPE_BYTE1_SFP_PLUS_CU_PASSIVE))
++			return ixgbe_media_type_da;
++
++		switch (hw_link_info->phy_type_low) {
++		case IXGBE_PHY_TYPE_LOW_1000BASE_SX:
++		case IXGBE_PHY_TYPE_LOW_1000BASE_LX:
++		case IXGBE_PHY_TYPE_LOW_10GBASE_SR:
++		case IXGBE_PHY_TYPE_LOW_10GBASE_LR:
++		case IXGBE_PHY_TYPE_LOW_25GBASE_SR:
++		case IXGBE_PHY_TYPE_LOW_25GBASE_LR:
++			return ixgbe_media_type_fiber;
++		case IXGBE_PHY_TYPE_LOW_10G_SFI_AOC_ACC:
++		case IXGBE_PHY_TYPE_LOW_25G_AUI_AOC_ACC:
++			return ixgbe_media_type_fiber;
++		case IXGBE_PHY_TYPE_LOW_100BASE_TX:
++		case IXGBE_PHY_TYPE_LOW_1000BASE_T:
++		case IXGBE_PHY_TYPE_LOW_2500BASE_T:
++		case IXGBE_PHY_TYPE_LOW_5GBASE_T:
++		case IXGBE_PHY_TYPE_LOW_10GBASE_T:
++		case IXGBE_PHY_TYPE_LOW_25GBASE_T:
++			return ixgbe_media_type_copper;
++		case IXGBE_PHY_TYPE_LOW_10G_SFI_DA:
++		case IXGBE_PHY_TYPE_LOW_25GBASE_CR:
++		case IXGBE_PHY_TYPE_LOW_25GBASE_CR_S:
++		case IXGBE_PHY_TYPE_LOW_25GBASE_CR1:
++			return ixgbe_media_type_da;
++		case IXGBE_PHY_TYPE_LOW_25G_AUI_C2C:
++			if (ixgbe_is_media_cage_present(hw))
++				return ixgbe_media_type_aui;
++			fallthrough;
++		case IXGBE_PHY_TYPE_LOW_1000BASE_KX:
++		case IXGBE_PHY_TYPE_LOW_2500BASE_KX:
++		case IXGBE_PHY_TYPE_LOW_2500BASE_X:
++		case IXGBE_PHY_TYPE_LOW_5GBASE_KR:
++		case IXGBE_PHY_TYPE_LOW_10GBASE_KR_CR1:
++		case IXGBE_PHY_TYPE_LOW_10G_SFI_C2C:
++		case IXGBE_PHY_TYPE_LOW_25GBASE_KR:
++		case IXGBE_PHY_TYPE_LOW_25GBASE_KR1:
++		case IXGBE_PHY_TYPE_LOW_25GBASE_KR_S:
++			return ixgbe_media_type_backplane;
++		}
++	} else {
++		switch (hw_link_info->phy_type_high) {
++		case IXGBE_PHY_TYPE_HIGH_10BASE_T:
++			return ixgbe_media_type_copper;
++		}
++	}
++	return ixgbe_media_type_unknown;
++}
++
++/**
++ * ixgbe_update_link_info - update status of the HW network link
++ * @hw: pointer to the HW struct
++ *
++ * Update the status of the HW network link.
 + *
 + * Return: the exit code of the operation.
 + */
-+int ixgbe_aci_get_phy_caps(struct ixgbe_hw *hw, bool qual_mods, u8 report_mode,
-+			   struct ixgbe_aci_cmd_get_phy_caps_data *pcaps)
++int ixgbe_update_link_info(struct ixgbe_hw *hw)
 +{
-+	struct ixgbe_aci_cmd_get_phy_caps *cmd;
-+	u16 pcaps_size = sizeof(*pcaps);
-+	struct ixgbe_aci_desc desc;
++	struct ixgbe_aci_cmd_get_phy_caps_data *pcaps __free(kfree) = NULL;
++	struct ixgbe_link_status *li;
 +	int err;
 +
-+	cmd = &desc.params.get_phy;
-+
-+	if (!pcaps || (report_mode & ~IXGBE_ACI_REPORT_MODE_M))
++	if (!hw)
 +		return -EINVAL;
 +
-+	ixgbe_fill_dflt_direct_cmd_desc(&desc, ixgbe_aci_opc_get_phy_caps);
++	li = &hw->link.link_info;
 +
-+	if (qual_mods)
-+		cmd->param0 |= cpu_to_le16(IXGBE_ACI_GET_PHY_RQM);
++	err = ixgbe_aci_get_link_info(hw, true, NULL);
++	if (err)
++		return err;
 +
-+	cmd->param0 |= cpu_to_le16(report_mode);
-+	err = ixgbe_aci_send_cmd(hw, &desc, pcaps, pcaps_size);
++	if (!(li->link_info & IXGBE_ACI_MEDIA_AVAILABLE))
++		return 0;
 +
-+	if (!err && report_mode == IXGBE_ACI_REPORT_TOPO_CAP_MEDIA) {
-+		hw->phy.phy_type_low = le64_to_cpu(pcaps->phy_type_low);
-+		hw->phy.phy_type_high = le64_to_cpu(pcaps->phy_type_high);
-+		memcpy(hw->link.link_info.module_type, &pcaps->module_type,
-+		       sizeof(hw->link.link_info.module_type));
++	pcaps =	kzalloc(sizeof(*pcaps), GFP_KERNEL);
++	if (!pcaps)
++		return -ENOMEM;
++
++	err = ixgbe_aci_get_phy_caps(hw, false, IXGBE_ACI_REPORT_TOPO_CAP_MEDIA,
++				     pcaps);
++
++	if (!err)
++		memcpy(li->module_type, &pcaps->module_type,
++		       sizeof(li->module_type));
++
++	return err;
++}
++
++/**
++ * ixgbe_get_link_status - get status of the HW network link
++ * @hw: pointer to the HW struct
++ * @link_up: pointer to bool (true/false = linkup/linkdown)
++ *
++ * Variable link_up is true if link is up, false if link is down.
++ * The variable link_up is invalid if status is non zero. As a
++ * result of this call, link status reporting becomes enabled
++ *
++ * Return: the exit code of the operation.
++ */
++int ixgbe_get_link_status(struct ixgbe_hw *hw, bool *link_up)
++{
++	if (!hw || !link_up)
++		return -EINVAL;
++
++	if (hw->link.get_link_info) {
++		int err = ixgbe_update_link_info(hw);
++
++		if (err)
++			return err;
++	}
++
++	*link_up = hw->link.link_info.link_info & IXGBE_ACI_LINK_UP;
++
++	return 0;
++}
++
++/**
++ * ixgbe_aci_get_link_info - get the link status
++ * @hw: pointer to the HW struct
++ * @ena_lse: enable/disable LinkStatusEvent reporting
++ * @link: pointer to link status structure - optional
++ *
++ * Get the current Link Status using ACI command (0x607).
++ * The current link can be optionally provided to update
++ * the status.
++ *
++ * Return: the link status of the adapter.
++ */
++int ixgbe_aci_get_link_info(struct ixgbe_hw *hw, bool ena_lse,
++			    struct ixgbe_link_status *link)
++{
++	struct ixgbe_aci_cmd_get_link_status_data link_data = { 0 };
++	struct ixgbe_aci_cmd_get_link_status *resp;
++	struct ixgbe_link_status *li_old, *li;
++	struct ixgbe_fc_info *hw_fc_info;
++	struct ixgbe_aci_desc desc;
++	bool tx_pause, rx_pause;
++	u8 cmd_flags;
++	int err;
++
++	if (!hw)
++		return -EINVAL;
++
++	li_old = &hw->link.link_info_old;
++	li = &hw->link.link_info;
++	hw_fc_info = &hw->fc;
++
++	ixgbe_fill_dflt_direct_cmd_desc(&desc, ixgbe_aci_opc_get_link_status);
++	cmd_flags = (ena_lse) ? IXGBE_ACI_LSE_ENA : IXGBE_ACI_LSE_DIS;
++	resp = &desc.params.get_link_status;
++	resp->cmd_flags = cpu_to_le16(cmd_flags);
++	resp->lport_num = hw->bus.func;
++
++	err = ixgbe_aci_send_cmd(hw, &desc, &link_data, sizeof(link_data));
++	if (err)
++		return err;
++
++	/* Save off old link status information. */
++	*li_old = *li;
++
++	/* Update current link status information. */
++	li->link_speed = le16_to_cpu(link_data.link_speed);
++	li->phy_type_low = le64_to_cpu(link_data.phy_type_low);
++	li->phy_type_high = le64_to_cpu(link_data.phy_type_high);
++	li->link_info = link_data.link_info;
++	li->link_cfg_err = link_data.link_cfg_err;
++	li->an_info = link_data.an_info;
++	li->ext_info = link_data.ext_info;
++	li->max_frame_size = le16_to_cpu(link_data.max_frame_size);
++	li->fec_info = link_data.cfg & IXGBE_ACI_FEC_MASK;
++	li->topo_media_conflict = link_data.topo_media_conflict;
++	li->pacing = link_data.cfg & (IXGBE_ACI_CFG_PACING_M |
++				      IXGBE_ACI_CFG_PACING_TYPE_M);
++
++	/* Update fc info. */
++	tx_pause = !!(link_data.an_info & IXGBE_ACI_LINK_PAUSE_TX);
++	rx_pause = !!(link_data.an_info & IXGBE_ACI_LINK_PAUSE_RX);
++	if (tx_pause && rx_pause)
++		hw_fc_info->current_mode = ixgbe_fc_full;
++	else if (tx_pause)
++		hw_fc_info->current_mode = ixgbe_fc_tx_pause;
++	else if (rx_pause)
++		hw_fc_info->current_mode = ixgbe_fc_rx_pause;
++	else
++		hw_fc_info->current_mode = ixgbe_fc_none;
++
++	li->lse_ena = !!(le16_to_cpu(resp->cmd_flags) &
++			 IXGBE_ACI_LSE_IS_ENABLED);
++
++	/* Save link status information. */
++	if (link)
++		*link = *li;
++
++	/* Flag cleared so calling functions don't call AQ again. */
++	hw->link.get_link_info = false;
++
++	return 0;
++}
++
++/**
++ * ixgbe_aci_set_event_mask - set event mask
++ * @hw: pointer to the HW struct
++ * @port_num: port number of the physical function
++ * @mask: event mask to be set
++ *
++ * Set the event mask using ACI command (0x0613).
++ *
++ * Return: the exit code of the operation.
++ */
++int ixgbe_aci_set_event_mask(struct ixgbe_hw *hw, u8 port_num, u16 mask)
++{
++	struct ixgbe_aci_cmd_set_event_mask *cmd;
++	struct ixgbe_aci_desc desc;
++
++	cmd = &desc.params.set_event_mask;
++
++	ixgbe_fill_dflt_direct_cmd_desc(&desc, ixgbe_aci_opc_set_event_mask);
++
++	cmd->lport_num = port_num;
++
++	cmd->event_mask = cpu_to_le16(mask);
++	return ixgbe_aci_send_cmd(hw, &desc, NULL, 0);
++}
++
++/**
++ * ixgbe_configure_lse - enable/disable link status events
++ * @hw: pointer to the HW struct
++ * @activate: true for enable lse, false otherwise
++ * @mask: event mask to be set; a set bit means deactivation of the
++ * corresponding event
++ *
++ * Set the event mask and then enable or disable link status events
++ *
++ * Return: the exit code of the operation.
++ */
++int ixgbe_configure_lse(struct ixgbe_hw *hw, bool activate, u16 mask)
++{
++	int err;
++
++	err = ixgbe_aci_set_event_mask(hw, (u8)hw->bus.func, mask);
++	if (err)
++		return err;
++
++	/* Enabling link status events generation by fw. */
++	return ixgbe_aci_get_link_info(hw, activate, NULL);
++}
++
++/**
++ * ixgbe_get_media_type_e610 - Gets media type
++ * @hw: pointer to the HW struct
++ *
++ * In order to get the media type, the function gets PHY
++ * capabilities and later on use them to identify the PHY type
++ * checking phy_type_high and phy_type_low.
++ *
++ * Return: the type of media in form of ixgbe_media_type enum
++ * or ixgbe_media_type_unknown in case of an error.
++ */
++enum ixgbe_media_type ixgbe_get_media_type_e610(struct ixgbe_hw *hw)
++{
++	struct ixgbe_aci_cmd_get_phy_caps_data pcaps;
++	int rc;
++
++	rc = ixgbe_update_link_info(hw);
++	if (rc)
++		return ixgbe_media_type_unknown;
++
++	/* If there is no link but PHY (dongle) is available SW should use
++	 * Get PHY Caps admin command instead of Get Link Status, find most
++	 * significant bit that is set in PHY types reported by the command
++	 * and use it to discover media type.
++	 */
++	if (!(hw->link.link_info.link_info & IXGBE_ACI_LINK_UP) &&
++	    (hw->link.link_info.link_info & IXGBE_ACI_MEDIA_AVAILABLE)) {
++		int highest_bit;
++
++		/* Get PHY Capabilities */
++		rc = ixgbe_aci_get_phy_caps(hw, false,
++					    IXGBE_ACI_REPORT_TOPO_CAP_MEDIA,
++					    &pcaps);
++		if (rc)
++			return ixgbe_media_type_unknown;
++
++		highest_bit = fls64(le64_to_cpu(pcaps.phy_type_high));
++		if (highest_bit) {
++			hw->link.link_info.phy_type_high =
++				BIT_ULL(highest_bit - 1);
++			hw->link.link_info.phy_type_low = 0;
++		} else {
++			highest_bit = fls64(le64_to_cpu(pcaps.phy_type_low));
++			if (highest_bit)
++				hw->link.link_info.phy_type_low =
++					BIT_ULL(highest_bit - 1);
++		}
++	}
++
++	/* Based on link status or search above try to discover media type. */
++	hw->phy.media_type = ixgbe_get_media_type_from_phy_type(hw);
++
++	return hw->phy.media_type;
++}
++
++/**
++ * ixgbe_setup_link_e610 - Set up link
++ * @hw: pointer to hardware structure
++ * @speed: new link speed
++ * @autoneg_wait: true when waiting for completion is needed
++ *
++ * Set up the link with the specified speed.
++ *
++ * Return: the exit code of the operation.
++ */
++int ixgbe_setup_link_e610(struct ixgbe_hw *hw, ixgbe_link_speed speed,
++			  bool autoneg_wait)
++{
++	/* Simply request FW to perform proper PHY setup */
++	return hw->phy.ops.setup_link_speed(hw, speed, autoneg_wait);
++}
++
++/**
++ * ixgbe_check_link_e610 - Determine link and speed status
++ * @hw: pointer to hardware structure
++ * @speed: pointer to link speed
++ * @link_up: true when link is up
++ * @link_up_wait_to_complete: bool used to wait for link up or not
++ *
++ * Determine if the link is up and the current link speed
++ * using ACI command (0x0607).
++ *
++ * Return: the exit code of the operation.
++ */
++int ixgbe_check_link_e610(struct ixgbe_hw *hw, ixgbe_link_speed *speed,
++			  bool *link_up, bool link_up_wait_to_complete)
++{
++	int err;
++	u32 i;
++
++	if (!speed || !link_up)
++		return -EINVAL;
++
++	/* Set get_link_info flag to ensure that fresh
++	 * link information will be obtained from FW
++	 * by sending Get Link Status admin command.
++	 */
++	hw->link.get_link_info = true;
++
++	/* Update link information in adapter context. */
++	err = ixgbe_get_link_status(hw, link_up);
++	if (err)
++		return err;
++
++	/* Wait for link up if it was requested. */
++	if (link_up_wait_to_complete && !(*link_up)) {
++		for (i = 0; i < hw->mac.max_link_up_time; i++) {
++			msleep(100);
++			hw->link.get_link_info = true;
++			err = ixgbe_get_link_status(hw, link_up);
++			if (err)
++				return err;
++			if (*link_up)
++				break;
++		}
++	}
++
++	/* Use link information in adapter context updated by the call
++	 * to ixgbe_get_link_status() to determine current link speed.
++	 * Link speed information is valid only when link up was
++	 * reported by FW.
++	 */
++	if (*link_up) {
++		switch (hw->link.link_info.link_speed) {
++		case IXGBE_ACI_LINK_SPEED_10MB:
++			*speed = IXGBE_LINK_SPEED_10_FULL;
++			break;
++		case IXGBE_ACI_LINK_SPEED_100MB:
++			*speed = IXGBE_LINK_SPEED_100_FULL;
++			break;
++		case IXGBE_ACI_LINK_SPEED_1000MB:
++			*speed = IXGBE_LINK_SPEED_1GB_FULL;
++			break;
++		case IXGBE_ACI_LINK_SPEED_2500MB:
++			*speed = IXGBE_LINK_SPEED_2_5GB_FULL;
++			break;
++		case IXGBE_ACI_LINK_SPEED_5GB:
++			*speed = IXGBE_LINK_SPEED_5GB_FULL;
++			break;
++		case IXGBE_ACI_LINK_SPEED_10GB:
++			*speed = IXGBE_LINK_SPEED_10GB_FULL;
++			break;
++		default:
++			*speed = IXGBE_LINK_SPEED_UNKNOWN;
++			break;
++		}
++	} else {
++		*speed = IXGBE_LINK_SPEED_UNKNOWN;
++	}
++
++	return 0;
++}
++
++/**
++ * ixgbe_get_link_capabilities_e610 - Determine link capabilities
++ * @hw: pointer to hardware structure
++ * @speed: pointer to link speed
++ * @autoneg: true when autoneg or autotry is enabled
++ *
++ * Determine speed and AN parameters of a link.
++ *
++ * Return: the exit code of the operation.
++ */
++int ixgbe_get_link_capabilities_e610(struct ixgbe_hw *hw,
++				     ixgbe_link_speed *speed,
++				     bool *autoneg)
++{
++	if (!speed || !autoneg)
++		return -EINVAL;
++
++	*autoneg = true;
++	*speed = hw->phy.speeds_supported;
++
++	return 0;
++}
++
++/**
++ * ixgbe_cfg_phy_fc - Configure PHY Flow Control (FC) data based on FC mode
++ * @hw: pointer to hardware structure
++ * @cfg: PHY configuration data to set FC mode
++ * @req_mode: FC mode to configure
++ *
++ * Configures PHY Flow Control according to the provided configuration.
++ *
++ * Return: the exit code of the operation.
++ */
++int ixgbe_cfg_phy_fc(struct ixgbe_hw *hw,
++		     struct ixgbe_aci_cmd_set_phy_cfg_data *cfg,
++		     enum ixgbe_fc_mode req_mode)
++{
++	u8 pause_mask = 0x0;
++
++	if (!cfg)
++		return -EINVAL;
++
++	switch (req_mode) {
++	case ixgbe_fc_full:
++		pause_mask |= IXGBE_ACI_PHY_EN_TX_LINK_PAUSE;
++		pause_mask |= IXGBE_ACI_PHY_EN_RX_LINK_PAUSE;
++		break;
++	case ixgbe_fc_rx_pause:
++		pause_mask |= IXGBE_ACI_PHY_EN_RX_LINK_PAUSE;
++		break;
++	case ixgbe_fc_tx_pause:
++		pause_mask |= IXGBE_ACI_PHY_EN_TX_LINK_PAUSE;
++		break;
++	default:
++		break;
++	}
++
++	/* Clear the old pause settings. */
++	cfg->caps &= ~(IXGBE_ACI_PHY_EN_TX_LINK_PAUSE |
++		IXGBE_ACI_PHY_EN_RX_LINK_PAUSE);
++
++	/* Set the new capabilities. */
++	cfg->caps |= pause_mask;
++
++	return 0;
++}
++
++/**
++ * ixgbe_setup_fc_e610 - Set up flow control
++ * @hw: pointer to hardware structure
++ *
++ * Set up flow control. This has to be done during init time.
++ *
++ * Return: the exit code of the operation.
++ */
++int ixgbe_setup_fc_e610(struct ixgbe_hw *hw)
++{
++	struct ixgbe_aci_cmd_get_phy_caps_data pcaps = { 0 };
++	struct ixgbe_aci_cmd_set_phy_cfg_data cfg = { 0 };
++	int err;
++
++	/* Get the current PHY config */
++	err = ixgbe_aci_get_phy_caps(hw, false,
++				     IXGBE_ACI_REPORT_ACTIVE_CFG, &pcaps);
++	if (err)
++		return err;
++
++	ixgbe_copy_phy_caps_to_cfg(&pcaps, &cfg);
++
++	/* Configure the set PHY data */
++	err = ixgbe_cfg_phy_fc(hw, &cfg, hw->fc.requested_mode);
++	if (err)
++		return err;
++
++	/* If the capabilities have changed, then set the new config */
++	if (cfg.caps != pcaps.caps) {
++		cfg.caps |= IXGBE_ACI_PHY_ENA_AUTO_LINK_UPDT;
++
++		err = ixgbe_aci_set_phy_cfg(hw, &cfg);
++		if (err)
++			return err;
 +	}
 +
 +	return err;
 +}
 +
 +/**
-+ * ixgbe_copy_phy_caps_to_cfg - Copy PHY ability data to configuration data
-+ * @caps: PHY ability structure to copy data from
-+ * @cfg: PHY configuration structure to copy data to
++ * ixgbe_fc_autoneg_e610 - Configure flow control
++ * @hw: pointer to hardware structure
 + *
-+ * Helper function to copy data from PHY capabilities data structure
-+ * to PHY configuration data structure
++ * Configure Flow Control.
 + */
-+void ixgbe_copy_phy_caps_to_cfg(struct ixgbe_aci_cmd_get_phy_caps_data *caps,
-+				struct ixgbe_aci_cmd_set_phy_cfg_data *cfg)
++void ixgbe_fc_autoneg_e610(struct ixgbe_hw *hw)
 +{
-+	if (!caps || !cfg)
++	int err;
++
++	/* Get current link err.
++	 * Current FC mode will be stored in the hw context.
++	 */
++	err = ixgbe_aci_get_link_info(hw, false, NULL);
++	if (err)
++		goto no_autoneg;
++
++	/* Check if the link is up */
++	if (!(hw->link.link_info.link_info & IXGBE_ACI_LINK_UP))
++		goto no_autoneg;
++
++	/* Check if auto-negotiation has completed */
++	if (!(hw->link.link_info.an_info & IXGBE_ACI_AN_COMPLETED))
++		goto no_autoneg;
++
++	hw->fc.fc_was_autonegged = true;
++	return;
++
++no_autoneg:
++	hw->fc.fc_was_autonegged = false;
++	hw->fc.current_mode = hw->fc.requested_mode;
++}
++
++/**
++ * ixgbe_disable_rx_e610 - Disable RX unit
++ * @hw: pointer to hardware structure
++ *
++ * Disable RX DMA unit on E610 with use of ACI command (0x000C).
++ *
++ * Return: the exit code of the operation.
++ */
++void ixgbe_disable_rx_e610(struct ixgbe_hw *hw)
++{
++	u32 rxctrl = IXGBE_READ_REG(hw, IXGBE_RXCTRL);
++	u32 pfdtxgswc;
++	int err;
++
++	if (!(rxctrl & IXGBE_RXCTRL_RXEN))
 +		return;
 +
-+	memset(cfg, 0, sizeof(*cfg));
-+	cfg->phy_type_low = caps->phy_type_low;
-+	cfg->phy_type_high = caps->phy_type_high;
-+	cfg->caps = caps->caps;
-+	cfg->low_power_ctrl_an = caps->low_power_ctrl_an;
-+	cfg->eee_cap = caps->eee_cap;
-+	cfg->eeer_value = caps->eeer_value;
-+	cfg->link_fec_opt = caps->link_fec_options;
-+	cfg->module_compliance_enforcement =
-+		caps->module_compliance_enforcement;
-+}
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
-index 18b831b..5c5a676 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
-@@ -15,5 +15,17 @@ void ixgbe_fill_dflt_direct_cmd_desc(struct ixgbe_aci_desc *desc, u16 opcode);
- int ixgbe_acquire_res(struct ixgbe_hw *hw, enum ixgbe_aci_res_ids res,
- 		      enum ixgbe_aci_res_access_type access, u32 timeout);
- void ixgbe_release_res(struct ixgbe_hw *hw, enum ixgbe_aci_res_ids res);
-+int ixgbe_aci_list_caps(struct ixgbe_hw *hw, void *buf, u16 buf_size,
-+			u32 *cap_count, enum ixgbe_aci_opc opc);
-+int ixgbe_discover_dev_caps(struct ixgbe_hw *hw,
-+			    struct ixgbe_hw_dev_caps *dev_caps);
-+int ixgbe_discover_func_caps(struct ixgbe_hw *hw,
-+			     struct ixgbe_hw_func_caps *func_caps);
-+int ixgbe_get_caps(struct ixgbe_hw *hw);
-+int ixgbe_aci_disable_rxen(struct ixgbe_hw *hw);
-+int ixgbe_aci_get_phy_caps(struct ixgbe_hw *hw, bool qual_mods, u8 report_mode,
-+			   struct ixgbe_aci_cmd_get_phy_caps_data *pcaps);
-+void ixgbe_copy_phy_caps_to_cfg(struct ixgbe_aci_cmd_get_phy_caps_data *caps,
-+				struct ixgbe_aci_cmd_set_phy_cfg_data *cfg);
- 
- #endif /* _IXGBE_E610_H_ */
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 371285a..0992775 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -42,6 +42,7 @@
- 
- #include "ixgbe.h"
- #include "ixgbe_common.h"
-+#include "ixgbe_e610.h"
- #include "ixgbe_dcb_82599.h"
- #include "ixgbe_mbx.h"
- #include "ixgbe_phy.h"
-@@ -10928,6 +10929,12 @@ static int ixgbe_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	if (err)
- 		goto err_sw_init;
- 
-+	if (adapter->hw.mac.type == ixgbe_mac_e610) {
-+		err = ixgbe_get_caps(&adapter->hw);
-+		if (err)
-+			dev_err(&pdev->dev, "ixgbe_get_caps failed %d\n", err);
++	pfdtxgswc = IXGBE_READ_REG(hw, IXGBE_PFDTXGSWC);
++	if (pfdtxgswc & IXGBE_PFDTXGSWC_VT_LBEN) {
++		pfdtxgswc &= ~IXGBE_PFDTXGSWC_VT_LBEN;
++		IXGBE_WRITE_REG(hw, IXGBE_PFDTXGSWC, pfdtxgswc);
++		hw->mac.set_lben = true;
++	} else {
++		hw->mac.set_lben = false;
 +	}
 +
- 	if (adapter->hw.mac.type == ixgbe_mac_82599EB)
- 		adapter->flags2 |= IXGBE_FLAG2_AUTO_DISABLE_VF;
++	err = ixgbe_aci_disable_rxen(hw);
++
++	/* If we fail - disable RX using register write */
++	if (err) {
++		rxctrl = IXGBE_READ_REG(hw, IXGBE_RXCTRL);
++		if (rxctrl & IXGBE_RXCTRL_RXEN) {
++			rxctrl &= ~IXGBE_RXCTRL_RXEN;
++			IXGBE_WRITE_REG(hw, IXGBE_RXCTRL, rxctrl);
++		}
++	}
++}
++
++/**
++ * ixgbe_init_phy_ops_e610 - PHY specific init
++ * @hw: pointer to hardware structure
++ *
++ * Initialize any function pointers that were not able to be
++ * set during init_shared_code because the PHY type was not known.
++ *
++ * Return: the exit code of the operation.
++ */
++int ixgbe_init_phy_ops_e610(struct ixgbe_hw *hw)
++{
++	struct ixgbe_mac_info *mac = &hw->mac;
++	struct ixgbe_phy_info *phy = &hw->phy;
++
++	if (mac->ops.get_media_type(hw) == ixgbe_media_type_copper)
++		phy->ops.set_phy_power = ixgbe_set_phy_power_e610;
++	else
++		phy->ops.set_phy_power = NULL;
++
++	/* Identify the PHY */
++	return phy->ops.identify(hw);
++}
++
++/**
++ * ixgbe_identify_phy_e610 - Identify PHY
++ * @hw: pointer to hardware structure
++ *
++ * Determine PHY type, supported speeds and PHY ID.
++ *
++ * Return: the exit code of the operation.
++ */
++int ixgbe_identify_phy_e610(struct ixgbe_hw *hw)
++{
++	struct ixgbe_aci_cmd_get_phy_caps_data pcaps;
++	u64 phy_type_low, phy_type_high;
++	int err;
++
++	/* Set PHY type */
++	hw->phy.type = ixgbe_phy_fw;
++
++	err = ixgbe_aci_get_phy_caps(hw, false,
++				     IXGBE_ACI_REPORT_TOPO_CAP_MEDIA, &pcaps);
++	if (err)
++		return err;
++
++	if (!(pcaps.module_compliance_enforcement &
++	      IXGBE_ACI_MOD_ENFORCE_STRICT_MODE)) {
++		/* Handle lenient mode */
++		err = ixgbe_aci_get_phy_caps(hw, false,
++					     IXGBE_ACI_REPORT_TOPO_CAP_NO_MEDIA,
++					     &pcaps);
++		if (err)
++			return err;
++	}
++
++	/* Determine supported speeds */
++	hw->phy.speeds_supported = IXGBE_LINK_SPEED_UNKNOWN;
++	phy_type_high = le64_to_cpu(pcaps.phy_type_high);
++	phy_type_low = le64_to_cpu(pcaps.phy_type_low);
++
++	if (phy_type_high & IXGBE_PHY_TYPE_HIGH_10BASE_T ||
++	    phy_type_high & IXGBE_PHY_TYPE_HIGH_10M_SGMII)
++		hw->phy.speeds_supported |= IXGBE_LINK_SPEED_10_FULL;
++	if (phy_type_low  & IXGBE_PHY_TYPE_LOW_100BASE_TX ||
++	    phy_type_low  & IXGBE_PHY_TYPE_LOW_100M_SGMII ||
++	    phy_type_high & IXGBE_PHY_TYPE_HIGH_100M_USXGMII)
++		hw->phy.speeds_supported |= IXGBE_LINK_SPEED_100_FULL;
++	if (phy_type_low  & IXGBE_PHY_TYPE_LOW_1000BASE_T  ||
++	    phy_type_low  & IXGBE_PHY_TYPE_LOW_1000BASE_SX ||
++	    phy_type_low  & IXGBE_PHY_TYPE_LOW_1000BASE_LX ||
++	    phy_type_low  & IXGBE_PHY_TYPE_LOW_1000BASE_KX ||
++	    phy_type_low  & IXGBE_PHY_TYPE_LOW_1G_SGMII    ||
++	    phy_type_high & IXGBE_PHY_TYPE_HIGH_1G_USXGMII)
++		hw->phy.speeds_supported |= IXGBE_LINK_SPEED_1GB_FULL;
++	if (phy_type_low  & IXGBE_PHY_TYPE_LOW_10GBASE_T       ||
++	    phy_type_low  & IXGBE_PHY_TYPE_LOW_10G_SFI_DA      ||
++	    phy_type_low  & IXGBE_PHY_TYPE_LOW_10GBASE_SR      ||
++	    phy_type_low  & IXGBE_PHY_TYPE_LOW_10GBASE_LR      ||
++	    phy_type_low  & IXGBE_PHY_TYPE_LOW_10GBASE_KR_CR1  ||
++	    phy_type_low  & IXGBE_PHY_TYPE_LOW_10G_SFI_AOC_ACC ||
++	    phy_type_low  & IXGBE_PHY_TYPE_LOW_10G_SFI_C2C     ||
++	    phy_type_high & IXGBE_PHY_TYPE_HIGH_10G_USXGMII)
++		hw->phy.speeds_supported |= IXGBE_LINK_SPEED_10GB_FULL;
++
++	/* 2.5 and 5 Gbps link speeds must be excluded from the
++	 * auto-negotiation set used during driver initialization due to
++	 * compatibility issues with certain switches. Those issues do not
++	 * exist in case of E610 2.5G SKU device (0x57b1).
++	 */
++	if (!hw->phy.autoneg_advertised &&
++	    hw->device_id != IXGBE_DEV_ID_E610_2_5G_T)
++		hw->phy.autoneg_advertised = hw->phy.speeds_supported;
++
++	if (phy_type_low  & IXGBE_PHY_TYPE_LOW_2500BASE_T   ||
++	    phy_type_low  & IXGBE_PHY_TYPE_LOW_2500BASE_X   ||
++	    phy_type_low  & IXGBE_PHY_TYPE_LOW_2500BASE_KX  ||
++	    phy_type_high & IXGBE_PHY_TYPE_HIGH_2500M_SGMII ||
++	    phy_type_high & IXGBE_PHY_TYPE_HIGH_2500M_USXGMII)
++		hw->phy.speeds_supported |= IXGBE_LINK_SPEED_2_5GB_FULL;
++
++	if (!hw->phy.autoneg_advertised &&
++	    hw->device_id == IXGBE_DEV_ID_E610_2_5G_T)
++		hw->phy.autoneg_advertised = hw->phy.speeds_supported;
++
++	if (phy_type_low  & IXGBE_PHY_TYPE_LOW_5GBASE_T  ||
++	    phy_type_low  & IXGBE_PHY_TYPE_LOW_5GBASE_KR ||
++	    phy_type_high & IXGBE_PHY_TYPE_HIGH_5G_USXGMII)
++		hw->phy.speeds_supported |= IXGBE_LINK_SPEED_5GB_FULL;
++
++	/* Set PHY ID */
++	memcpy(&hw->phy.id, pcaps.phy_id_oui, sizeof(u32));
++
++	hw->phy.eee_speeds_supported = IXGBE_LINK_SPEED_10_FULL |
++				       IXGBE_LINK_SPEED_100_FULL |
++				       IXGBE_LINK_SPEED_1GB_FULL;
++	hw->phy.eee_speeds_advertised = hw->phy.eee_speeds_supported;
++
++	return 0;
++}
++
++/**
++ * ixgbe_identify_module_e610 - Identify SFP module type
++ * @hw: pointer to hardware structure
++ *
++ * Identify the SFP module type.
++ *
++ * Return: the exit code of the operation.
++ */
++int ixgbe_identify_module_e610(struct ixgbe_hw *hw)
++{
++	bool media_available;
++	u8 module_type;
++	int err;
++
++	err = ixgbe_update_link_info(hw);
++	if (err)
++		return err;
++
++	media_available =
++		(hw->link.link_info.link_info & IXGBE_ACI_MEDIA_AVAILABLE);
++
++	if (media_available) {
++		hw->phy.sfp_type = ixgbe_sfp_type_unknown;
++
++		/* Get module type from hw context updated by
++		 * ixgbe_update_link_info()
++		 */
++		module_type = hw->link.link_info.module_type[IXGBE_ACI_MOD_TYPE_IDENT];
++
++		if ((module_type & IXGBE_ACI_MOD_TYPE_BYTE1_SFP_PLUS_CU_PASSIVE) ||
++		    (module_type & IXGBE_ACI_MOD_TYPE_BYTE1_SFP_PLUS_CU_ACTIVE)) {
++			hw->phy.sfp_type = ixgbe_sfp_type_da_cu;
++		} else if (module_type & IXGBE_ACI_MOD_TYPE_BYTE1_10G_BASE_SR) {
++			hw->phy.sfp_type = ixgbe_sfp_type_sr;
++		} else if ((module_type & IXGBE_ACI_MOD_TYPE_BYTE1_10G_BASE_LR) ||
++			   (module_type & IXGBE_ACI_MOD_TYPE_BYTE1_10G_BASE_LRM)) {
++			hw->phy.sfp_type = ixgbe_sfp_type_lr;
++		}
++	} else {
++		hw->phy.sfp_type = ixgbe_sfp_type_not_present;
++		return -ENOENT;
++	}
++
++	return 0;
++}
++
++/**
++ * ixgbe_setup_phy_link_e610 - Sets up firmware-controlled PHYs
++ * @hw: pointer to hardware structure
++ *
++ * Set the parameters for the firmware-controlled PHYs.
++ *
++ * Return: the exit code of the operation.
++ */
++int ixgbe_setup_phy_link_e610(struct ixgbe_hw *hw)
++{
++	struct ixgbe_aci_cmd_get_phy_caps_data pcaps;
++	struct ixgbe_aci_cmd_set_phy_cfg_data pcfg;
++	u8 rmode = IXGBE_ACI_REPORT_TOPO_CAP_MEDIA;
++	u64 sup_phy_type_low, sup_phy_type_high;
++	u64 phy_type_low = 0, phy_type_high = 0;
++	int err;
++
++	err = ixgbe_aci_get_link_info(hw, false, NULL);
++	if (err)
++		return err;
++
++	/* If media is not available get default config. */
++	if (!(hw->link.link_info.link_info & IXGBE_ACI_MEDIA_AVAILABLE))
++		rmode = IXGBE_ACI_REPORT_DFLT_CFG;
++
++	err = ixgbe_aci_get_phy_caps(hw, false, rmode, &pcaps);
++	if (err)
++		return err;
++
++	sup_phy_type_low = le64_to_cpu(pcaps.phy_type_low);
++	sup_phy_type_high = le64_to_cpu(pcaps.phy_type_high);
++
++	/* Get Active configuration to avoid unintended changes. */
++	err = ixgbe_aci_get_phy_caps(hw, false, IXGBE_ACI_REPORT_ACTIVE_CFG,
++				     &pcaps);
++	if (err)
++		return err;
++
++	ixgbe_copy_phy_caps_to_cfg(&pcaps, &pcfg);
++
++	if (hw->phy.autoneg_advertised & IXGBE_LINK_SPEED_10_FULL) {
++		phy_type_high |= IXGBE_PHY_TYPE_HIGH_10BASE_T;
++		phy_type_high |= IXGBE_PHY_TYPE_HIGH_10M_SGMII;
++	}
++	if (hw->phy.autoneg_advertised & IXGBE_LINK_SPEED_100_FULL) {
++		phy_type_low  |= IXGBE_PHY_TYPE_LOW_100BASE_TX;
++		phy_type_low  |= IXGBE_PHY_TYPE_LOW_100M_SGMII;
++		phy_type_high |= IXGBE_PHY_TYPE_HIGH_100M_USXGMII;
++	}
++	if (hw->phy.autoneg_advertised & IXGBE_LINK_SPEED_1GB_FULL) {
++		phy_type_low  |= IXGBE_PHY_TYPE_LOW_1000BASE_T;
++		phy_type_low  |= IXGBE_PHY_TYPE_LOW_1000BASE_SX;
++		phy_type_low  |= IXGBE_PHY_TYPE_LOW_1000BASE_LX;
++		phy_type_low  |= IXGBE_PHY_TYPE_LOW_1000BASE_KX;
++		phy_type_low  |= IXGBE_PHY_TYPE_LOW_1G_SGMII;
++		phy_type_high |= IXGBE_PHY_TYPE_HIGH_1G_USXGMII;
++	}
++	if (hw->phy.autoneg_advertised & IXGBE_LINK_SPEED_2_5GB_FULL) {
++		phy_type_low  |= IXGBE_PHY_TYPE_LOW_2500BASE_T;
++		phy_type_low  |= IXGBE_PHY_TYPE_LOW_2500BASE_X;
++		phy_type_low  |= IXGBE_PHY_TYPE_LOW_2500BASE_KX;
++		phy_type_high |= IXGBE_PHY_TYPE_HIGH_2500M_SGMII;
++		phy_type_high |= IXGBE_PHY_TYPE_HIGH_2500M_USXGMII;
++	}
++	if (hw->phy.autoneg_advertised & IXGBE_LINK_SPEED_5GB_FULL) {
++		phy_type_low  |= IXGBE_PHY_TYPE_LOW_5GBASE_T;
++		phy_type_low  |= IXGBE_PHY_TYPE_LOW_5GBASE_KR;
++		phy_type_high |= IXGBE_PHY_TYPE_HIGH_5G_USXGMII;
++	}
++	if (hw->phy.autoneg_advertised & IXGBE_LINK_SPEED_10GB_FULL) {
++		phy_type_low  |= IXGBE_PHY_TYPE_LOW_10GBASE_T;
++		phy_type_low  |= IXGBE_PHY_TYPE_LOW_10G_SFI_DA;
++		phy_type_low  |= IXGBE_PHY_TYPE_LOW_10GBASE_SR;
++		phy_type_low  |= IXGBE_PHY_TYPE_LOW_10GBASE_LR;
++		phy_type_low  |= IXGBE_PHY_TYPE_LOW_10GBASE_KR_CR1;
++		phy_type_low  |= IXGBE_PHY_TYPE_LOW_10G_SFI_AOC_ACC;
++		phy_type_low  |= IXGBE_PHY_TYPE_LOW_10G_SFI_C2C;
++		phy_type_high |= IXGBE_PHY_TYPE_HIGH_10G_USXGMII;
++	}
++
++	/* Mask the set values to avoid requesting unsupported link types. */
++	phy_type_low &= sup_phy_type_low;
++	pcfg.phy_type_low = cpu_to_le64(phy_type_low);
++	phy_type_high &= sup_phy_type_high;
++	pcfg.phy_type_high = cpu_to_le64(phy_type_high);
++
++	if (pcfg.phy_type_high != pcaps.phy_type_high ||
++	    pcfg.phy_type_low != pcaps.phy_type_low ||
++	    pcfg.caps != pcaps.caps) {
++		pcfg.caps |= IXGBE_ACI_PHY_ENA_LINK;
++		pcfg.caps |= IXGBE_ACI_PHY_ENA_AUTO_LINK_UPDT;
++
++		err = ixgbe_aci_set_phy_cfg(hw, &pcfg);
++		if (err)
++			return err;
++	}
++
++	return 0;
++}
++
++/**
++ * ixgbe_set_phy_power_e610 - Control power for copper PHY
++ * @hw: pointer to hardware structure
++ * @on: true for on, false for off
++ *
++ * Set the power on/off of the PHY
++ * by getting its capabilities and setting the appropriate
++ * configuration parameters.
++ *
++ * Return: the exit code of the operation.
++ */
++int ixgbe_set_phy_power_e610(struct ixgbe_hw *hw, bool on)
++{
++	struct ixgbe_aci_cmd_get_phy_caps_data phy_caps = { 0 };
++	struct ixgbe_aci_cmd_set_phy_cfg_data phy_cfg = { 0 };
++	int err;
++
++	err = ixgbe_aci_get_phy_caps(hw, false,
++				     IXGBE_ACI_REPORT_ACTIVE_CFG,
++				     &phy_caps);
++	if (err)
++		return err;
++
++	ixgbe_copy_phy_caps_to_cfg(&phy_caps, &phy_cfg);
++
++	if (on)
++		phy_cfg.caps &= ~IXGBE_ACI_PHY_ENA_LOW_POWER;
++	else
++		phy_cfg.caps |= IXGBE_ACI_PHY_ENA_LOW_POWER;
++
++	/* PHY is already in requested power mode. */
++	if (phy_caps.caps == phy_cfg.caps)
++		return 0;
++
++	phy_cfg.caps |= IXGBE_ACI_PHY_ENA_LINK;
++	phy_cfg.caps |= IXGBE_ACI_PHY_ENA_AUTO_LINK_UPDT;
++
++	return ixgbe_aci_set_phy_cfg(hw, &phy_cfg);
++}
++
++/**
++ * ixgbe_enter_lplu_e610 - Transition to low power states
++ * @hw: pointer to hardware structure
++ *
++ * Configures Low Power Link Up on transition to low power states
++ * (from D0 to non-D0). Link is required to enter LPLU so avoid resetting the
++ * X557 PHY immediately prior to entering LPLU.
++ *
++ * Return: the exit code of the operation.
++ */
++int ixgbe_enter_lplu_e610(struct ixgbe_hw *hw)
++{
++	struct ixgbe_aci_cmd_get_phy_caps_data phy_caps = { 0 };
++	struct ixgbe_aci_cmd_set_phy_cfg_data phy_cfg = { 0 };
++	int err;
++
++	err = ixgbe_aci_get_phy_caps(hw, false,
++				     IXGBE_ACI_REPORT_ACTIVE_CFG,
++				     &phy_caps);
++	if (err)
++		return err;
++
++	ixgbe_copy_phy_caps_to_cfg(&phy_caps, &phy_cfg);
++
++	phy_cfg.low_power_ctrl_an |= IXGBE_ACI_PHY_EN_D3COLD_LOW_POWER_AUTONEG;
++
++	return ixgbe_aci_set_phy_cfg(hw, &phy_cfg);
++}
++
++/**
++ * ixgbe_aci_get_netlist_node - get a node handle
++ * @hw: pointer to the hw struct
++ * @cmd: get_link_topo AQ structure
++ * @node_part_number: output node part number if node found
++ * @node_handle: output node handle parameter if node found
++ *
++ * Get the netlist node and assigns it to
++ * the provided handle using ACI command (0x06E0).
++ *
++ * Return: the exit code of the operation.
++ */
++int ixgbe_aci_get_netlist_node(struct ixgbe_hw *hw,
++			       struct ixgbe_aci_cmd_get_link_topo *cmd,
++			       u8 *node_part_number, u16 *node_handle)
++{
++	struct ixgbe_aci_desc desc;
++
++	ixgbe_fill_dflt_direct_cmd_desc(&desc, ixgbe_aci_opc_get_link_topo);
++	desc.params.get_link_topo = *cmd;
++
++	if (ixgbe_aci_send_cmd(hw, &desc, NULL, 0))
++		return -EOPNOTSUPP;
++
++	if (node_handle)
++		*node_handle =
++			le16_to_cpu(desc.params.get_link_topo.addr.handle);
++	if (node_part_number)
++		*node_part_number = desc.params.get_link_topo.node_part_num;
++
++	return 0;
++}
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
+index 5c5a676..4a4f969 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
+@@ -27,5 +27,37 @@ int ixgbe_aci_get_phy_caps(struct ixgbe_hw *hw, bool qual_mods, u8 report_mode,
+ 			   struct ixgbe_aci_cmd_get_phy_caps_data *pcaps);
+ void ixgbe_copy_phy_caps_to_cfg(struct ixgbe_aci_cmd_get_phy_caps_data *caps,
+ 				struct ixgbe_aci_cmd_set_phy_cfg_data *cfg);
++int ixgbe_aci_set_phy_cfg(struct ixgbe_hw *hw,
++			  struct ixgbe_aci_cmd_set_phy_cfg_data *cfg);
++int ixgbe_aci_set_link_restart_an(struct ixgbe_hw *hw, bool ena_link);
++int ixgbe_update_link_info(struct ixgbe_hw *hw);
++int ixgbe_get_link_status(struct ixgbe_hw *hw, bool *link_up);
++int ixgbe_aci_get_link_info(struct ixgbe_hw *hw, bool ena_lse,
++			    struct ixgbe_link_status *link);
++int ixgbe_aci_set_event_mask(struct ixgbe_hw *hw, u8 port_num, u16 mask);
++int ixgbe_configure_lse(struct ixgbe_hw *hw, bool activate, u16 mask);
++enum ixgbe_media_type ixgbe_get_media_type_e610(struct ixgbe_hw *hw);
++int ixgbe_setup_link_e610(struct ixgbe_hw *hw, ixgbe_link_speed speed,
++			  bool autoneg_wait);
++int ixgbe_check_link_e610(struct ixgbe_hw *hw, ixgbe_link_speed *speed,
++			  bool *link_up, bool link_up_wait_to_complete);
++int ixgbe_get_link_capabilities_e610(struct ixgbe_hw *hw,
++				     ixgbe_link_speed *speed,
++				     bool *autoneg);
++int ixgbe_cfg_phy_fc(struct ixgbe_hw *hw,
++		     struct ixgbe_aci_cmd_set_phy_cfg_data *cfg,
++		     enum ixgbe_fc_mode req_mode);
++int ixgbe_setup_fc_e610(struct ixgbe_hw *hw);
++void ixgbe_fc_autoneg_e610(struct ixgbe_hw *hw);
++void ixgbe_disable_rx_e610(struct ixgbe_hw *hw);
++int ixgbe_init_phy_ops_e610(struct ixgbe_hw *hw);
++int ixgbe_identify_phy_e610(struct ixgbe_hw *hw);
++int ixgbe_identify_module_e610(struct ixgbe_hw *hw);
++int ixgbe_setup_phy_link_e610(struct ixgbe_hw *hw);
++int ixgbe_set_phy_power_e610(struct ixgbe_hw *hw, bool on);
++int ixgbe_enter_lplu_e610(struct ixgbe_hw *hw);
++int ixgbe_aci_get_netlist_node(struct ixgbe_hw *hw,
++			       struct ixgbe_aci_cmd_get_link_topo *cmd,
++			       u8 *node_part_number, u16 *node_handle);
  
+ #endif /* _IXGBE_E610_H_ */
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
+index 5978cb0..ecc3fc8 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
+@@ -652,6 +652,7 @@ struct ixgbe_aci_cmd_link_topo_params {
+ #define IXGBE_ACI_LINK_TOPO_NODE_TYPE_CLK_MUX	10
+ #define IXGBE_ACI_LINK_TOPO_NODE_TYPE_GPS	11
+ #define IXGBE_ACI_LINK_TOPO_NODE_CTX_S		4
++#define IXGBE_ACI_LINK_TOPO_NODE_CTX_M		GENMASK(7, 4)
+ #define IXGBE_ACI_LINK_TOPO_NODE_CTX_GLOBAL			0
+ #define IXGBE_ACI_LINK_TOPO_NODE_CTX_BOARD			1
+ #define IXGBE_ACI_LINK_TOPO_NODE_CTX_PORT			2
 -- 
 2.43.0
 
