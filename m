@@ -1,83 +1,99 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4FEBF9E9282
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Dec 2024 12:34:54 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 867DD9E9637
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Dec 2024 14:15:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 351A860A56;
-	Mon,  9 Dec 2024 11:34:51 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 469B881024;
+	Mon,  9 Dec 2024 13:15:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 64Rtnfn1JLN2; Mon,  9 Dec 2024 11:34:50 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id i1kRlYNCHsfm; Mon,  9 Dec 2024 13:15:49 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0906260A57
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E6B808105B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1733744090;
-	bh=QlE5PIdjQXaU9nhlyuUKtZ0KSfXE+WXwcaqUVy9eP7Y=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=cSliXbFZ/P42ULkCFm0Nwtyj2yMSJkdPPS7HFejs76ML55WPLY7AXBMwOZ1FHqYYq
-	 HW1Ow6VOrv0zBQjVJURdLm6cVGMLLA01FDs7AN964qzxroXOHxGbF9qtUbCETXHkKS
-	 v0rhWFeTg1lMyKA11E9X81iXgtM7mmJxNOgekKOcp7LMhx4vB19M5MEoRqfmID9sUW
-	 09I63MvfQwI9d8/jHbIminW+s21VUn09fWvTpbcy2KXNFYDZBpbxWvVWam+xOhNqVx
-	 7HLy4h247Y82OYva8OSdb8kk6OHhadSt596DMMq5FwgY6TZjr+VYbJPOVuuNg8uPs2
-	 M1OzJzx8S5rTA==
+	s=default; t=1733750149;
+	bh=Ta6qfqj3h7ofx4zGLzZ8ywuEEWcLnyFRUXyyMKsNQK0=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=WrWcHwWJzMxdbMlHDsEifOHLq8vwe+7L8gsT30KtcVMXjWbrfMDnj1iTH7twiCBLf
+	 BzwxsluqKkUa2tzc4qKA4dY95nteh/8EEnZwOV2kM/DVV06W3lyZ6ic/D1ttD5cbr/
+	 0z4f2WhLeADV/6CU8845gKqHBYqjJK2wxI3MIawGpOFuGE4msTWkMNuCQmpoPzZVdt
+	 pyi4D3NfdxvnPWZZ+utqZM9d4KnJM7IXw2fzKeHpqYnZRjZVq19/6n3MtxMN6nn/pR
+	 0SyjFCgAxcZim6jBrhlGs8p3Uzd1bGC756ZYiyogSXT0bnUHXrxFIAiCsu2//k9Xm6
+	 Y9KEg0gebo17Q==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0906260A57;
-	Mon,  9 Dec 2024 11:34:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E6B808105B;
+	Mon,  9 Dec 2024 13:15:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 27E7B979
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Dec 2024 11:34:47 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 483956F
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Dec 2024 13:15:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E7C69406B9
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Dec 2024 11:34:46 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2869440644
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Dec 2024 13:15:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id MO52n3AgCLj7 for <intel-wired-lan@lists.osuosl.org>;
- Mon,  9 Dec 2024 11:34:45 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id j3jzfS4pSpcC for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  9 Dec 2024 13:15:45 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.18;
+ helo=mgamail.intel.com; envelope-from=martyna.szapar-mudlaw@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5F367405C8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5F367405C8
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5F367405C8
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Dec 2024 11:34:43 +0000 (UTC)
-Received: from [192.168.0.224] (ip5f5aee8e.dynamic.kabel-deutschland.de
- [95.90.238.142])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 84D0861E6476B;
- Mon, 09 Dec 2024 12:34:09 +0100 (CET)
-Message-ID: <7c4f3165-df86-47e1-9fc4-7087accf4a68@molgen.mpg.de>
-Date: Mon, 9 Dec 2024 12:34:08 +0100
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A1A1440025
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A1A1440025
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.18])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A1A1440025
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Dec 2024 13:15:45 +0000 (UTC)
+X-CSE-ConnectionGUID: nf1dJC6bSXaEFbM1hDqfuw==
+X-CSE-MsgGUID: eny46t3SQH2mLTqQzi6Veg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11281"; a="33387380"
+X-IronPort-AV: E=Sophos;i="6.12,219,1728975600"; d="scan'208";a="33387380"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Dec 2024 05:15:26 -0800
+X-CSE-ConnectionGUID: upH4BBDWQw6YKV0qsT03pg==
+X-CSE-MsgGUID: dd1JiDxAQlmtXN0f/DQ3Qg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,219,1728975600"; d="scan'208";a="94934876"
+Received: from enterprise.igk.intel.com ([10.102.20.175])
+ by orviesa009.jf.intel.com with ESMTP; 09 Dec 2024 05:15:23 -0800
+From: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
+To: netdev@vger.kernel.org, andrew+netdev@lunn.ch, horms@kernel.org,
+ jiri@resnulli.us, stephen@networkplumber.org
+Cc: anthony.l.nguyen@intel.com, jacob.e.keller@intel.com,
+ przemyslaw.kitszel@intel.com, intel-wired-lan@lists.osuosl.org,
+ Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
+Date: Mon,  9 Dec 2024 14:14:50 +0100
+Message-ID: <20241209131450.137317-2-martyna.szapar-mudlaw@linux.intel.com>
+X-Mailer: git-send-email 2.47.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Gerhard Engleder <gerhard@engleder-embedded.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, kuba@kernel.org,
- edumazet@google.com, pabeni@redhat.com, Gerhard Engleder <eg@keba.com>,
- Vitaly Lifshits <vitaly.lifshits@intel.com>, linux-pci@vger.kernel.org,
- Bjorn Helgaas <bhelgaas@google.com>
-References: <20241208184950.8281-1-gerhard@engleder-embedded.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20241208184950.8281-1-gerhard@engleder-embedded.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1733750146; x=1765286146;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=OfsSxi1ioU/l1gn0t70Nt6sTdN6Vx9XfWhlSAt3Qeho=;
+ b=j1pr+Lkxbpb4RXSUyc7c+dKvPxG8tVQ/uwMfOwP7Qsl7qu6AyO1l+/q6
+ rRSRl7+QNnZbLZ/vrjSpzxWuLyplJ0fVjAWfYSKumHl13lt/83Ac/L5Tb
+ l1Lcx5MbEe8/kB79Q0LVbTfyTDJRH17CgFG53LrVmYea+6uyF3zHE+LC5
+ qXjOjhq8tQBurRlXMxi6X3yAfVB6+3ORu2Xk8viNJCuyX1xZK9qcrPDHV
+ ML6yyRXNGTKrcUCfYzVTZDDfrZofmA1VeGxFaLxMCiwU8iKMPLKEzxDpr
+ UekOz7hfDJsZIyBbbdJvieef6r/RaIkqPDCiId+NC6kX9U/dN3UqMVqYY
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] e1000e: Fix real-time
- violations on link up
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=j1pr+Lkx
+Subject: [Intel-wired-lan] [RFC 0/1] Proposal for new devlink command to
+ enforce firmware security
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -93,78 +109,111 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-[Cc: +PCI folks]
+RFC: Proposal for new devlink command to enforce firmware security
 
-Dear Gerhard,
+This RFC proposes addition of a new command to devlink API, providing a
+mechanism to enforce secure firmware versions at the user's request. 
+The primary goal is to enhance security by preventing the programming
+of firmware with a lower security revision value. This feature is
+particularly needed for Intel ice driver (and some other Intel drivers
+next) but will be generic enough for other drivers to implement as well
+for their purposes. Additionally, it proposes displaying the running
+firmware security revision value and the set firmware minimum security
+revision value in the output of the `devlink dev info` command for
+Intel ice driver. 
 
+Motivation
 
-Thank you for your patch.
+The E810 Ethernet controller provides a mechanism to prevent
+downgrading to firmware versions containing known security
+vulnerabilities. Specifically, the NVM components are signed
+with a security revision, E810 ensures that components with
+a lower security revision than the defined minimum cannot be loaded
+onto the device.
+Intel customers require that this action is not autonomous. Customers
+typically uses this feature only in the target deployments after
+finalizing testing of the new FW version. Autonomous action would
+require manufacturer direct access to card to downgrade image to
+previous stable version. By allowing the driver and user to manage the 
+firmware security revision value, we can provide a flexible and secure
+solution.
+Additionally, displaying the current and minimum security revision
+values in the `devlink dev info` command output will provide better
+visibility and management for users.
 
+Initial proposal for Minimum Security Revision update, via dedicated
+parameter, was initially part of first devlink update deployment,
+mechanism was questioned by community members [1]. However, Intel
+still needs this functionality thus we are proposing a different
+approach now to address the concerns raised previously. (In the last
+community proposal, community proposed to make a decision based on
+FW image - instead of dedicated parameter.)
 
-Am 08.12.24 um 19:49 schrieb Gerhard Engleder:
-> From: Gerhard Engleder <eg@keba.com>
-> 
-> From: Gerhard Engleder <eg@keba.com>
+Proposed design
 
-The from line is present twice. No idea, if git is going to remove both.
+New command, `devlink dev lock-firmware` (or `devlink dev guard-firmware`),
+will be added to devlink API. Implementation in devlink will be simple
+and generic, with no predefined operations, offering flexibility for drivers
+to define the firmware locking mechanism appropriate to the hardware's
+capabilities and security requirements. Running this command will allow
+ice driver to ensure firmware with lower security value downgrades are
+prevented.
 
-> Link down and up triggers update of MTA table. This update executes many
-> PCIe writes and a final flush. Thus, PCIe will be blocked until all writes
-> are flushed. As a result, DMA transfers of other targets suffer from delay
-> in the range of 50us. This results in timing violations on real-time
-> systems during link down and up of e1000e.
-> 
-> A flush after a low enough number of PCIe writes eliminates the delay
-> but also increases the time needed for MTA table update. The following
-> measurements were done on i3-2310E with e1000e for 128 MTA table entries:
-> 
-> Single flush after all writes: 106us
-> Flush after every write:       429us
-> Flush after every 2nd write:   266us
-> Flush after every 4th write:   180us
-> Flush after every 8th write:   141us
-> Flush after every 16th write:  121us
-> 
-> A flush after every 8th write delays the link up by 35us and the
-> negative impact to DMA transfers of other targets is still tolerable.
-> 
-> Execute a flush after every 8th write. This prevents overloading the
-> interconnect with posted writes.
-> 
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> CC: Vitaly Lifshits <vitaly.lifshits@intel.com>
-> Link: https://lore.kernel.org/netdev/f8fe665a-5e6c-4f95-b47a-2f3281aa0e6c@lunn.ch/T/
-> Signed-off-by: Gerhard Engleder <eg@keba.com>
-> ---
-> v2:
-> - remove PREEMPT_RT dependency (Andrew Lunn, Przemek Kitszel)
-> ---
->   drivers/net/ethernet/intel/e1000e/mac.c | 7 ++++++-
->   1 file changed, 6 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/e1000e/mac.c b/drivers/net/ethernet/intel/e1000e/mac.c
-> index d7df2a0ed629..7d1482a9effd 100644
-> --- a/drivers/net/ethernet/intel/e1000e/mac.c
-> +++ b/drivers/net/ethernet/intel/e1000e/mac.c
-> @@ -331,8 +331,13 @@ void e1000e_update_mc_addr_list_generic(struct e1000_hw *hw,
->   	}
->   
->   	/* replace the entire MTA table */
-> -	for (i = hw->mac.mta_reg_count - 1; i >= 0; i--)
-> +	for (i = hw->mac.mta_reg_count - 1; i >= 0; i--) {
->   		E1000_WRITE_REG_ARRAY(hw, E1000_MTA, i, hw->mac.mta_shadow[i]);
-> +
-> +		/* do not queue up too many writes */
-
-Maybe make the comment more elaborate?
-
-> +		if ((i % 8) == 0 && i != 0)
-> +			e1e_flush();
-> +	}
->   	e1e_flush();
->   }
+Add also changes to Intel ice driver to display security values
+via devlink dev info command running and set minimum. Also implement
+lock-firmware devlink op callback in ice driver to update firmware
+minimum security revision value.
 
 
-Kind regards,
+Example usage:
 
-Paul
+$ devlink dev info pci/0000:b1:00.0
+
+pci/0000:b1:00.0:
+  driver ice
+  serial_number 00-01-00-ff-ff-00-00-00
+  versions:
+      fixed:
+        fw.mgmt.min.srev 8
+        fw.undi.min.srev 8
+      running:
+        fw.mgmt.srev 9
+        fw.undi.srev 9
+        
+
+$ devlink dev lock-firmware pci/0000:03:00.0
+
+WARNING: This action will prevent downgrades to versions with lower the
+security version Are you sure you want to lock the firmware on device %s?. (y/N)
+>y
+
+$ devlink dev info pci/0000:03:00.0
+
+pci/0000:03:00.0:
+  driver ice
+  versions:
+      fixed:
+        fw.mgmt.min.srev 9
+        fw.undi.min.srev 9
+
+
+This feature is essential for the `ice` Ethernet driver (and other
+Intel drivers next) but is designed to be generic for other drivers
+to implement. Feedback and suggestions are welcome.
+
+[1] https://lore.kernel.org/netdev/20210203124112.67a1e1ee@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com/T/#u
+
+
+Martyna Szapar-Mudlaw (1):
+  devlink: add new devlink lock-firmware command
+
+ include/net/devlink.h        |  2 ++
+ include/uapi/linux/devlink.h |  2 ++
+ net/devlink/dev.c            | 13 +++++++++++++
+ net/devlink/netlink_gen.c    | 18 +++++++++++++++++-
+ net/devlink/netlink_gen.h    |  4 +++-
+ 5 files changed, 37 insertions(+), 2 deletions(-)
+
+-- 
+2.47.0
+
