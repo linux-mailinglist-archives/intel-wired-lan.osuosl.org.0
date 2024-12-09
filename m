@@ -1,94 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E15569E91E0
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Dec 2024 12:14:13 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4FEBF9E9282
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Dec 2024 12:34:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CF2D38101A;
-	Mon,  9 Dec 2024 11:14:10 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 351A860A56;
+	Mon,  9 Dec 2024 11:34:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id FMlTPeTDnaCs; Mon,  9 Dec 2024 11:14:10 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 64Rtnfn1JLN2; Mon,  9 Dec 2024 11:34:50 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0ABBB80DB3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0906260A57
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1733742850;
-	bh=1Bdu/HALJDoCXVfug/gWKnl62g/tVaBth73u213kufo=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1733744090;
+	bh=QlE5PIdjQXaU9nhlyuUKtZ0KSfXE+WXwcaqUVy9eP7Y=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=gzRTttKGGs2rO18pqpDy99+niHlIKWmn2jvPTLK8fsxXO1v0LwYKsSXbcRMb1NpCc
-	 uClWs4vBNAEtQCIXzvdmQx3zXc0OSqcv/OjFztYYEd23ndm9LlBYAiqW+5Ha/eBF5v
-	 8MlIR9zC51B2Kqe55m+mXXjnd9N2U1r+nhoM0b/ji5i+AHAX/C9xlENMog4GrTEcQo
-	 0D7xnUucmH0oAKdupXcFgiE0D/juC088QNZg8K21blNeeWrCVHNbWhrDmITpg4Jh1Z
-	 hBWFVaKQwxCG8DPkGLSLXQ6xsyIg+j6F6tmkGHDSscw2K3J/BxYIMvq53ie1w/qsZ5
-	 vJhTCo8U0oEXA==
+	b=cSliXbFZ/P42ULkCFm0Nwtyj2yMSJkdPPS7HFejs76ML55WPLY7AXBMwOZ1FHqYYq
+	 HW1Ow6VOrv0zBQjVJURdLm6cVGMLLA01FDs7AN964qzxroXOHxGbF9qtUbCETXHkKS
+	 v0rhWFeTg1lMyKA11E9X81iXgtM7mmJxNOgekKOcp7LMhx4vB19M5MEoRqfmID9sUW
+	 09I63MvfQwI9d8/jHbIminW+s21VUn09fWvTpbcy2KXNFYDZBpbxWvVWam+xOhNqVx
+	 7HLy4h247Y82OYva8OSdb8kk6OHhadSt596DMMq5FwgY6TZjr+VYbJPOVuuNg8uPs2
+	 M1OzJzx8S5rTA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0ABBB80DB3;
-	Mon,  9 Dec 2024 11:14:10 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0906260A57;
+	Mon,  9 Dec 2024 11:34:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 753AA979
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Dec 2024 11:14:07 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 27E7B979
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Dec 2024 11:34:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 55BC0402BE
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Dec 2024 11:14:07 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id E7C69406B9
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Dec 2024 11:34:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CkcY1zjdFA5t for <intel-wired-lan@lists.osuosl.org>;
- Mon,  9 Dec 2024 11:14:06 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=147.75.193.91;
- helo=nyc.source.kernel.org; envelope-from=horms@kernel.org;
+ id MO52n3AgCLj7 for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  9 Dec 2024 11:34:45 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org F3D2E402EC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F3D2E402EC
-Received: from nyc.source.kernel.org (nyc.source.kernel.org [147.75.193.91])
- by smtp4.osuosl.org (Postfix) with ESMTPS id F3D2E402EC
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Dec 2024 11:14:05 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id C5958A40B30;
- Mon,  9 Dec 2024 11:12:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9759CC4CED1;
- Mon,  9 Dec 2024 11:14:01 +0000 (UTC)
-Date: Mon, 9 Dec 2024 11:13:59 +0000
-From: Simon Horman <horms@kernel.org>
-To: Konrad Knitter <konrad.knitter@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, netdev@vger.kernel.org,
- kuba@kernel.org, pabeni@redhat.com, edumazet@google.com,
- davem@davemloft.net, andrew+netdev@lunn.ch,
- Sharon Haroni <sharon.haroni@intel.com>,
- Nicholas Nunley <nicholas.d.nunley@intel.com>,
- Brett Creeley <brett.creeley@intel.com>
-Message-ID: <20241209111359.GA2581@kernel.org>
-References: <20241204122738.114511-1-konrad.knitter@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5F367405C8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5F367405C8
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5F367405C8
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Dec 2024 11:34:43 +0000 (UTC)
+Received: from [192.168.0.224] (ip5f5aee8e.dynamic.kabel-deutschland.de
+ [95.90.238.142])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 84D0861E6476B;
+ Mon, 09 Dec 2024 12:34:09 +0100 (CET)
+Message-ID: <7c4f3165-df86-47e1-9fc4-7087accf4a68@molgen.mpg.de>
+Date: Mon, 9 Dec 2024 12:34:08 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241204122738.114511-1-konrad.knitter@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1733742844;
- bh=cjhEXeueBX1NeVabk8lXTMVekFREvlG2q8IWFYDSF2Y=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=meXzZQGJaf3cJW7U3u8ZVQeaKovguZYSnawlGko491TvcQ49zUhnLafyczucFVZYk
- R2bvkGhu5+azab62x8OdM/x6J943GoTJblzIlmtRFwlJccEEFlZFbqAnnl3nNZBBmY
- iFLM3jyirUhlEU1fqfjvMwyS1nX5MzX0LFPDT9r5eHCF/RVjDq4bgx4Mo1jquBI3eU
- 4vbu3Ok0vyABNkuXVfB9HJ0GNSubmTx1eSommaoUpv4ecY0Hq+kR6zDZJsQAGIlcMc
- NhCz1KsG4iTz8TdDgrdZWW7o5WuGyD/tNGM2NPUhCOs6BNICX40H9MlCPoPIeTANRd
- qBZROA6XLU3DQ==
+User-Agent: Mozilla Thunderbird
+To: Gerhard Engleder <gerhard@engleder-embedded.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ andrew+netdev@lunn.ch, davem@davemloft.net, kuba@kernel.org,
+ edumazet@google.com, pabeni@redhat.com, Gerhard Engleder <eg@keba.com>,
+ Vitaly Lifshits <vitaly.lifshits@intel.com>, linux-pci@vger.kernel.org,
+ Bjorn Helgaas <bhelgaas@google.com>
+References: <20241208184950.8281-1-gerhard@engleder-embedded.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20241208184950.8281-1-gerhard@engleder-embedded.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=meXzZQGJ
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] ice: fw and port health
- status
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] e1000e: Fix real-time
+ violations on link up
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,155 +93,78 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Dec 04, 2024 at 01:27:38PM +0100, Konrad Knitter wrote:
-> Firmware generates events for global events or port specific events.
-> 
-> Driver shall subscribe for health status events from firmware on supported
-> FW versions >= 1.7.6.
-> Driver shall expose those under specific health reporter, two new
-> reporters are introduced:
-> - FW health reporter shall represent global events (problems with the
-> image, recovery mode);
-> - Port health reporter shall represent port-specific events (module
-> failure).
-> 
-> Firmware only reports problems when those are detected, it does not store
-> active fault list.
-> Driver will hold only last global and last port-specific event.
-> Driver will report all events via devlink health report,
-> so in case of multiple events of the same source they can be reviewed
-> using devlink autodump feature.
-> 
-> $ devlink health
-> 
-> pci/0000:b1:00.3:
->   reporter fw
->     state healthy error 0 recover 0 auto_dump true
->   reporter port
->     state error error 1 recover 0 last_dump_date 2024-03-17
-> 	last_dump_time 09:29:29 auto_dump true
-> 
-> $ devlink health diagnose pci/0000:b1:00.3 reporter port
-> 
->   Syndrome: 262
->   Description: Module is not present.
->   Possible Solution: Check that the module is inserted correctly.
->   Port Number: 0
-> 
-> Tested on Intel Corporation Ethernet Controller E810-C for SFP
-> 
-> Co-developed-by: Sharon Haroni <sharon.haroni@intel.com>
-> Signed-off-by: Sharon Haroni <sharon.haroni@intel.com>
-> Co-developed-by: Nicholas Nunley <nicholas.d.nunley@intel.com>
-> Signed-off-by: Nicholas Nunley <nicholas.d.nunley@intel.com>
-> Co-developed-by: Brett Creeley <brett.creeley@intel.com>
-> Signed-off-by: Brett Creeley <brett.creeley@intel.com>
-> Signed-off-by: Konrad Knitter <konrad.knitter@intel.com>
+[Cc: +PCI folks]
 
-Hi Konrad,
+Dear Gerhard,
 
-Some minor feedback from my side.
 
-> diff --git a/drivers/net/ethernet/intel/ice/devlink/health.c b/drivers/net/ethernet/intel/ice/devlink/health.c
+Thank you for your patch.
 
-...
 
-> +/**
-> + * ice_process_health_status_event - Process the health status event from FW
-> + * @pf: pointer to the PF structure
-> + * @event: event structure containing the Health Status Event opcode
-> + *
-> + * Decode the Health Status Events and print the associated messages
-> + */
-> +void ice_process_health_status_event(struct ice_pf *pf, struct ice_rq_event_info *event)
-> +{
-> +	const struct ice_aqc_health_status_elem *health_info;
-> +	u16 count;
+Am 08.12.24 um 19:49 schrieb Gerhard Engleder:
+> From: Gerhard Engleder <eg@keba.com>
+> 
+> From: Gerhard Engleder <eg@keba.com>
+
+The from line is present twice. No idea, if git is going to remove both.
+
+> Link down and up triggers update of MTA table. This update executes many
+> PCIe writes and a final flush. Thus, PCIe will be blocked until all writes
+> are flushed. As a result, DMA transfers of other targets suffer from delay
+> in the range of 50us. This results in timing violations on real-time
+> systems during link down and up of e1000e.
+> 
+> A flush after a low enough number of PCIe writes eliminates the delay
+> but also increases the time needed for MTA table update. The following
+> measurements were done on i3-2310E with e1000e for 128 MTA table entries:
+> 
+> Single flush after all writes: 106us
+> Flush after every write:       429us
+> Flush after every 2nd write:   266us
+> Flush after every 4th write:   180us
+> Flush after every 8th write:   141us
+> Flush after every 16th write:  121us
+> 
+> A flush after every 8th write delays the link up by 35us and the
+> negative impact to DMA transfers of other targets is still tolerable.
+> 
+> Execute a flush after every 8th write. This prevents overloading the
+> interconnect with posted writes.
+> 
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> CC: Vitaly Lifshits <vitaly.lifshits@intel.com>
+> Link: https://lore.kernel.org/netdev/f8fe665a-5e6c-4f95-b47a-2f3281aa0e6c@lunn.ch/T/
+> Signed-off-by: Gerhard Engleder <eg@keba.com>
+> ---
+> v2:
+> - remove PREEMPT_RT dependency (Andrew Lunn, Przemek Kitszel)
+> ---
+>   drivers/net/ethernet/intel/e1000e/mac.c | 7 ++++++-
+>   1 file changed, 6 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/e1000e/mac.c b/drivers/net/ethernet/intel/e1000e/mac.c
+> index d7df2a0ed629..7d1482a9effd 100644
+> --- a/drivers/net/ethernet/intel/e1000e/mac.c
+> +++ b/drivers/net/ethernet/intel/e1000e/mac.c
+> @@ -331,8 +331,13 @@ void e1000e_update_mc_addr_list_generic(struct e1000_hw *hw,
+>   	}
+>   
+>   	/* replace the entire MTA table */
+> -	for (i = hw->mac.mta_reg_count - 1; i >= 0; i--)
+> +	for (i = hw->mac.mta_reg_count - 1; i >= 0; i--) {
+>   		E1000_WRITE_REG_ARRAY(hw, E1000_MTA, i, hw->mac.mta_shadow[i]);
 > +
-> +	health_info = (struct ice_aqc_health_status_elem *)event->msg_buf;
-> +	count = le16_to_cpu(event->desc.params.get_health_status.health_status_count);
-> +
-> +	if (count > (event->buf_len / sizeof(*health_info))) {
-> +		dev_err(ice_pf_to_dev(pf), "Received a health status event with invalid element count\n");
-> +		return;
+> +		/* do not queue up too many writes */
+
+Maybe make the comment more elaborate?
+
+> +		if ((i % 8) == 0 && i != 0)
+> +			e1e_flush();
 > +	}
-> +
-> +	for (int i = 0; i < count; i++) {
-> +		const struct ice_health_status *health_code;
-> +		u16 status_code;
-> +
-> +		status_code = le16_to_cpu(health_info->health_status_code);
-> +		health_code = ice_get_health_status(status_code);
-> +
-> +		if (health_code) {
-> +			switch (health_info->event_source) {
-> +			case ICE_AQC_HEALTH_STATUS_GLOBAL:
-> +				pf->health_reporters.fw_status = *health_info;
-> +				devlink_health_report(pf->health_reporters.fw,
-> +						      "FW syndrome reported", NULL);
-> +				break;
-> +			case ICE_AQC_HEALTH_STATUS_PF:
-> +			case ICE_AQC_HEALTH_STATUS_PORT:
-> +				pf->health_reporters.port_status = *health_info;
-> +				devlink_health_report(pf->health_reporters.port,
-> +						      "Port syndrome reported", NULL);
-> +				break;
-> +			default:
-> +				dev_err(ice_pf_to_dev(pf), "Health code with unknown source\n");
-> +			}
+>   	e1e_flush();
+>   }
 
-The type of health_info->event_source is __le16.
-But here it is being compared against host byte order values.
-That doesn't seem correct.
 
-Flagged by Sparse.
+Kind regards,
 
-> +		} else {
-> +			u32 data1, data2;
-> +			u16 source;
-> +
-> +			source = le16_to_cpu(health_info->event_source);
-> +			data1 = le32_to_cpu(health_info->internal_data1);
-> +			data2 = le32_to_cpu(health_info->internal_data2);
-> +			dev_dbg(ice_pf_to_dev(pf),
-> +				"Received internal health status code 0x%08x, source: 0x%08x, data1: 0x%08x, data2: 0x%08x",
-> +				status_code, source, data1, data2);
-> +		}
-> +		health_info++;
-> +	}
-> +}
-> +
->  /**
->   * ice_devlink_health_report - boilerplate to call given @reporter
->   *
-
-...
-
-> diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-> index faba09b9d880..9c61318d3027 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_common.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_common.c
-> @@ -6047,6 +6047,44 @@ bool ice_is_phy_caps_an_enabled(struct ice_aqc_get_phy_caps_data *caps)
->  	return false;
->  }
->  
-> +/**
-> + * ice_is_fw_health_report_supported
-
-Please consider including a short description here.
-
-Flagged by ./scripts/kernel-doc -Wall -none
-
-> + * @hw: pointer to the hardware structure
-> + *
-> + * Return: true if firmware supports health status reports,
-> + * false otherwise
-> + */
-> +bool ice_is_fw_health_report_supported(struct ice_hw *hw)
-> +{
-> +	return ice_is_fw_api_min_ver(hw, ICE_FW_API_HEALTH_REPORT_MAJ,
-> +				     ICE_FW_API_HEALTH_REPORT_MIN,
-> +				     ICE_FW_API_HEALTH_REPORT_PATCH);
-> +}
-
-...
+Paul
