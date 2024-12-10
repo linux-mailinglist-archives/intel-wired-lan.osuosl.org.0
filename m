@@ -2,103 +2,88 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4D5909EB048
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Dec 2024 12:57:11 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3261A9EB4DF
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Dec 2024 16:27:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 279D66090C;
-	Tue, 10 Dec 2024 11:57:07 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1DFCA60834;
+	Tue, 10 Dec 2024 15:27:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7bIW99xUucvf; Tue, 10 Dec 2024 11:57:06 +0000 (UTC)
+ id k2FH5t_1VXk1; Tue, 10 Dec 2024 15:27:14 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 27C0860904
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CDCB6607BD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1733831826;
-	bh=vXAReVcNU1KEvBnNekJ9+mC1nNnnEjByVc+AGlIC72E=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=72haLjbUq8aH2FnlYk3fT7bA7diKgYT2MSJAzGq+QSojbjQaq5I/I2hGOrlAR5rdr
-	 tHslT78TqZ/elhtPIMwTwGnCNKzDQK4N0ZTefI314uIe0IF5u0lLsTapMwOMix/Y9G
-	 Op/turmwNbPIq65bnzU1E1BVmLnze6oYw2VT80f48AbmyQ0gC9n4T8VVdZE/H9MVgL
-	 DTWFFKLwAzrcYm4npXKYckR/dhuShzAecMHqn0j8DearK6KDH02dw6u8aiPnMzBQIO
-	 0Ov4O2dpYbW3OsaUrE8h45ucL+HspoEZRJzK61ZulXjFdJ+NVe02nxVkIcsh4vbonM
-	 Ixr4ulBOD9XLQ==
+	s=default; t=1733844433;
+	bh=JkGC+5blfxmb5N5RD0EkxKR43LRovQ4tu/O9bsONPOQ=;
+	h=Date:From:To:Cc:In-Reply-To:Subject:List-Id:List-Unsubscribe:
+	 List-Archive:List-Post:List-Help:List-Subscribe:From;
+	b=9AKZO/MgBj1MVxELxGRhKnC/kj/tRsvGx23LiB7i+gEsp0ZfILgHMKMD6Eq5VqJzU
+	 6hMKKzhtUhJEygw0+KhKC80bX9AMHyX3HRVFmWGnIswN8Q3g7QayYb1AtYu99STc5V
+	 Do/q3gXG2RhjeO5qGcDtRGK1EoFqENhgU/hIV3upjV/zaJl/5cRSHAvUxkkfjyCKIv
+	 HfZnZ2fynz09VyNLbtoGpc2HGiLY78rmBM+8K2JUMPoqyjD/BZx8nxzeZWRGfLSc0G
+	 Vb5OVvUwAtSA7a9r2ugvzJMVQv3UHWGJekHjCNM0APIJLLh/Y9IItrSmF0LLnzfGcP
+	 p1Z4IdrGsPWug==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 27C0860904;
-	Tue, 10 Dec 2024 11:57:06 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CDCB6607BD;
+	Tue, 10 Dec 2024 15:27:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id E368EE11
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Dec 2024 11:57:03 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 8F7E0E11
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Dec 2024 15:27:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B1ECA408A9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Dec 2024 11:57:03 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 69F7960786
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Dec 2024 15:27:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3dHSr_IHECok for <intel-wired-lan@lists.osuosl.org>;
- Tue, 10 Dec 2024 11:57:02 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
- helo=mgamail.intel.com; envelope-from=mateusz.polchlopek@intel.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id aIlvejC0tlyA for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 Dec 2024 15:27:11 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=helgaas@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 7FD8F408A8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7FD8F408A8
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 7FD8F408A8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Dec 2024 11:57:02 +0000 (UTC)
-X-CSE-ConnectionGUID: xMO8ZlyHSXimle+pwiIz3w==
-X-CSE-MsgGUID: /uXelp60S0GkW7IZEd8+kw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11282"; a="37954879"
-X-IronPort-AV: E=Sophos;i="6.12,222,1728975600"; d="scan'208";a="37954879"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
- by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Dec 2024 03:57:02 -0800
-X-CSE-ConnectionGUID: 4O8P+dp1SIKQONr/Asa4MQ==
-X-CSE-MsgGUID: qVlaJWULQuicI7j0PYSbjQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,222,1728975600"; d="scan'208";a="100341171"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by orviesa005.jf.intel.com with ESMTP; 10 Dec 2024 03:56:58 -0800
-Received: from fedora.igk.intel.com (Metan_eth.igk.intel.com [10.123.220.124])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id EF9852FC51;
- Tue, 10 Dec 2024 11:56:56 +0000 (GMT)
-From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-To: intel-wired-lan@lists.osuosl.org,
-	anthony.l.nguyen@intel.com
-Cc: apw@canonical.com, joe@perches.com, dwaipayanray1@gmail.com,
- lukas.bulwahn@gmail.com, akpm@linux-foundation.org, willemb@google.com,
- edumazet@google.com, linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- Simon Horman <horms@kernel.org>
-Date: Tue, 10 Dec 2024 12:56:20 +0100
-Message-Id: <20241210115620.3141094-1-mateusz.polchlopek@intel.com>
-X-Mailer: git-send-email 2.38.1
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 7DF6A6068D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7DF6A6068D
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 7DF6A6068D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Dec 2024 15:27:11 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 986BC5C55AD;
+ Tue, 10 Dec 2024 15:26:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 951F7C4CEE1;
+ Tue, 10 Dec 2024 15:27:09 +0000 (UTC)
+Date: Tue, 10 Dec 2024 09:27:08 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Gerhard Engleder <gerhard@engleder-embedded.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ andrew+netdev@lunn.ch, davem@davemloft.net, kuba@kernel.org,
+ edumazet@google.com, pabeni@redhat.com, Gerhard Engleder <eg@keba.com>,
+ Vitaly Lifshits <vitaly.lifshits@intel.com>
+Message-ID: <20241210152708.GA3241347@bhelgaas>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241208184950.8281-1-gerhard@engleder-embedded.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1733831823; x=1765367823;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=+PGdy1a0YaWtqkwxhanaUKLDKgb00Z5XGEDcswMcHeQ=;
- b=FG5MXQKedHjQ54UiooZmmXs4mpyQwNthB8HVHYwH+wh93wx6rYGgTdnU
- Y+kufD86Fm2JOA9rKH1rv7yP6tf9Rk3aU0stLbt8wqWZDA7twbIi/q9tg
- CRigYtAqoKWkpvuKECsLQ/uxhHMd+OMMHHqRS1rs4yC07Xdl8ssh58yCl
- Q416dTvcS29BPnUecdb3UWQimsQ5WNT16GC6A3QXfKRV1Lw0lNT+JnD+I
- BPj/jO24ib86M7uZTo3NM53/tKpGYtTs9QB7yyzoYj4+fUV3Yiqx+gztK
- oYKPy0T+LiW5wb2QRRovccaEoC5Ksfj3GhR/hmld0R7i3AEAo8631tHbM
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=FG5MXQKe
-Subject: [Intel-wired-lan] [PATCH iwl-next] fixup! devlink: add
- devlink_fmsg_dump_skb() function
+ d=kernel.org; s=k20201202; t=1733844429;
+ bh=y4LgmUc7RvEv1C+QAjWWd7i3psGBaMi5PzDvn/ejtlM=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=YazBtt3eKTZEioZjvB/7KrOkFFytB879q5nzigXjfa5SVTuNPfHnTydupv0cQ9b+T
+ bFkyX5aE5FrURxMDx2nJELOie3VE8VB7+eLxMEcAoVPn4juJI7wrAbnkSBjb+7p35G
+ Rq5yuO1hJAvR/RXXQIgZyuo0k1kFSBMNBzruasXWAPNGJDKtlWPL+vzgKHUWCrFT8j
+ rn95C+YBIicfGVVCvDB60POEZDKp+rkVcrQOadKqw1wqLdiiGw0bgohuP1HwVfbkZy
+ zTp28VM7kVh9NJTk4CUZLG5/Ld9guLS6NsQT9JnJnaEIVYxOvBSHpRilmZRqzmIcpJ
+ uZdaW17OzMP+Q==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=YazBtt3e
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] e1000e: Fix real-time
+ violations on link up
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -114,38 +99,80 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello Tony!
+On Sun, Dec 08, 2024 at 07:49:50PM +0100, Gerhard Engleder wrote:
+> Link down and up triggers update of MTA table. This update executes many
+> PCIe writes and a final flush. Thus, PCIe will be blocked until all writes
+> are flushed. As a result, DMA transfers of other targets suffer from delay
+> in the range of 50us. This results in timing violations on real-time
+> systems during link down and up of e1000e.
 
-In the commit related to "devlink-health dump" the sparse reports new issue.
-It has been also reported some time ago by Simon:
-https://lore.kernel.org/netdev/20240822104007.GL2164@kernel.org/
+These look like PCIe memory writes (not config or I/O writes), which
+are posted and do not require Completions.  Generally devices should
+not delay acceptance of posted requests for more than 10us (PCIe r6.0,
+sec 2.3.1).
 
-Please squash this change into to devlink-health series, the link for the
-last sent version is here:
-https://lore.kernel.org/netdev/20240821133714.61417-1-przemyslaw.kitszel@intel.com/
+Since you mention DMA to/from other targets, maybe there's some kind
+of fairness issue in the interconnect, which would suggest a
+platform-specific issue that could happen with devices other than
+e1000e.
 
-Thanks in advance
-Mateusz
+I think it would be useful to get to the root cause of this, or at
+least mention the interconnect design where you saw the problem in
+case somebody trips over this issue with other devices.
 
-CC: Simon Horman <horms@kernel.org>
-Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
----
- net/devlink/health.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+The PCIe spec does have an implementation note that says drivers might
+need to restrict the programming model as you do here for designs that
+can't process posted requests fast enough.  If that's the case for
+e1000e, I would ask Intel whether other related devices might also be
+affected.
 
-diff --git a/net/devlink/health.c b/net/devlink/health.c
-index 3f6241d51007..57db6799722a 100644
---- a/net/devlink/health.c
-+++ b/net/devlink/health.c
-@@ -1270,7 +1270,7 @@ void devlink_fmsg_dump_skb(struct devlink_fmsg *fmsg, const struct sk_buff *skb)
- 			 has_trans ? skb_network_header_len(skb) : -1);
- 	devlink_fmsg_put(fmsg, "transport hdr",
- 			 has_trans ? skb->transport_header : -1);
--	devlink_fmsg_put(fmsg, "csum", skb->csum);
-+	devlink_fmsg_put(fmsg, "csum", (__force u32)skb->csum);
- 	devlink_fmsg_put(fmsg, "csum_ip_summed", (u8)skb->ip_summed);
- 	devlink_fmsg_put(fmsg, "csum_complete_sw", !!skb->csum_complete_sw);
- 	devlink_fmsg_put(fmsg, "csum_valid", !!skb->csum_valid);
--- 
-2.38.1
-
+> A flush after a low enough number of PCIe writes eliminates the delay
+> but also increases the time needed for MTA table update. The following
+> measurements were done on i3-2310E with e1000e for 128 MTA table entries:
+> 
+> Single flush after all writes: 106us
+> Flush after every write:       429us
+> Flush after every 2nd write:   266us
+> Flush after every 4th write:   180us
+> Flush after every 8th write:   141us
+> Flush after every 16th write:  121us
+> 
+> A flush after every 8th write delays the link up by 35us and the
+> negative impact to DMA transfers of other targets is still tolerable.
+> 
+> Execute a flush after every 8th write. This prevents overloading the
+> interconnect with posted writes.
+> 
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> CC: Vitaly Lifshits <vitaly.lifshits@intel.com>
+> Link: https://lore.kernel.org/netdev/f8fe665a-5e6c-4f95-b47a-2f3281aa0e6c@lunn.ch/T/
+> Signed-off-by: Gerhard Engleder <eg@keba.com>
+> ---
+> v2:
+> - remove PREEMPT_RT dependency (Andrew Lunn, Przemek Kitszel)
+> ---
+>  drivers/net/ethernet/intel/e1000e/mac.c | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/e1000e/mac.c b/drivers/net/ethernet/intel/e1000e/mac.c
+> index d7df2a0ed629..7d1482a9effd 100644
+> --- a/drivers/net/ethernet/intel/e1000e/mac.c
+> +++ b/drivers/net/ethernet/intel/e1000e/mac.c
+> @@ -331,8 +331,13 @@ void e1000e_update_mc_addr_list_generic(struct e1000_hw *hw,
+>  	}
+>  
+>  	/* replace the entire MTA table */
+> -	for (i = hw->mac.mta_reg_count - 1; i >= 0; i--)
+> +	for (i = hw->mac.mta_reg_count - 1; i >= 0; i--) {
+>  		E1000_WRITE_REG_ARRAY(hw, E1000_MTA, i, hw->mac.mta_shadow[i]);
+> +
+> +		/* do not queue up too many writes */
+> +		if ((i % 8) == 0 && i != 0)
+> +			e1e_flush();
+> +	}
+>  	e1e_flush();
+>  }
+>  
+> -- 
+> 2.39.2
+> 
