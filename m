@@ -1,107 +1,102 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 17A699ECBCA
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Dec 2024 13:15:31 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1165441318;
-	Wed, 11 Dec 2024 12:15:27 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZDP0jYEWLT0v; Wed, 11 Dec 2024 12:15:26 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3BFB8412F8
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1733919326;
-	bh=5DPThntGWNm+nKew/lhSmje09bhl4E+y9+OYpTdFLHE=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=PetlNBzPiZzD2wDb6K3PWWsAzUwuHy7/a4dzhFUkoyot+vOE9qftmuTQGu3ybwBe1
-	 HtRXnkhy+VfRWXiKgYvHLcn5XuqacFvhG79psOS0kpGVCWwMvFwjO9hRnIo2Evz6nv
-	 9rJ6DVOTUrcV3RLlt8qY+7Z8A4MPQ8BiZ4yzeOSzeueKrabXzeFamROS5TXUpCq20W
-	 9fWYD6c5k3pVeCQ8TmWx6zxAfGpbmQGW6xOOFLh98KHAmYGWpGijXNhrJMgkrM7mUo
-	 rcM4c8ygwA+5JliBIV9FP26KsiH7VAlLnGP3bUt+lhwmXTirLa3cEwls1czTHvRmKG
-	 Rpb/5JgQLvQvQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3BFB8412F8;
-	Wed, 11 Dec 2024 12:15:26 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id C30CCED2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Dec 2024 12:15:24 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8049A9ECD2A
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Dec 2024 14:28:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A3C01820CB
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Dec 2024 12:15:24 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B492D80E3A;
+	Wed, 11 Dec 2024 13:28:04 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id UOdlTirGI6cw for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 Dec 2024 12:15:24 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
- helo=mgamail.intel.com; envelope-from=martyna.szapar-mudlaw@linux.intel.com;
+ id LebyAoHfOGjg; Wed, 11 Dec 2024 13:28:03 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CBDBE80B30
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1733923683;
+	bh=cAeTSt4MomjSAG6yFK/FIFQ2tgj0pksWvKoS5iYjYZw=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=cuClJh3S0n+5niQT96JSe5f8K/6QuQgAOEDXL9nPL08uuyCNUS/0ckUyA8ArhyCGn
+	 +fhI33UcMtKi7n7dt/dPL1/Mr+gzZQp0+S+iVxMkt7mVmo2Txyes6gOET//cG4roM3
+	 6A9MUEszI2Xu4ZWnBwT6oM6uEfH2jCSs7wR3UbIRZwNK+uzKQhYIBQ0wH9rg2yj2xS
+	 zU0cGIgQ3edD2WbaDHhwEI7YFQpqA/GRlWnfAycUy1EMNhL/mtpLjLKn5mYplhmPt/
+	 Pjk+sJuUdlXrZBFwVnUmJdYMQZSyxSMsjUOaMtqPjnB0rVxarghepbA1MuF5Rw2+ZW
+	 se3UYy5Zqdp/g==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id CBDBE80B30;
+	Wed, 11 Dec 2024 13:28:03 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id D9821962
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Dec 2024 13:28:01 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id ADF1080B30
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Dec 2024 13:28:01 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id LnJVsVs5B1ed for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 Dec 2024 13:28:00 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
+ helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 72FCC81FD1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 72FCC81FD1
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 72FCC81FD1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Dec 2024 12:15:22 +0000 (UTC)
-X-CSE-ConnectionGUID: L7mCk/yYT8KLWC8SQNeqUA==
-X-CSE-MsgGUID: ADNd6dF0TBKBnNpL7wQhdw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11282"; a="45308432"
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="45308432"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
- by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Dec 2024 04:15:22 -0800
-X-CSE-ConnectionGUID: FcsnI6AJSMeDfa7OhXsNkw==
-X-CSE-MsgGUID: fs3OAwktTIO/c4be729g6w==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 9A40280DC4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9A40280DC4
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 9A40280DC4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Dec 2024 13:27:59 +0000 (UTC)
+X-CSE-ConnectionGUID: VC4xNLulQWGWkB4lCFB1xQ==
+X-CSE-MsgGUID: lrrd3Ly5QDmFNl0OexZL/g==
+X-IronPort-AV: E=McAfee;i="6700,10204,11282"; a="51718714"
+X-IronPort-AV: E=Sophos;i="6.12,225,1728975600"; d="scan'208";a="51718714"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+ by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Dec 2024 05:28:00 -0800
+X-CSE-ConnectionGUID: +UlZoILzTdWHQ2h5ZADubw==
+X-CSE-MsgGUID: OyAPTjnMSyWs17abjU8kiA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="99871971"
-Received: from mszapar-mobl1.ger.corp.intel.com (HELO [10.245.84.66])
- ([10.245.84.66])
- by fmviesa003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Dec 2024 04:15:19 -0800
-Message-ID: <b3b23f47-96d0-4cdc-a6fd-f7dd58a5d3c6@linux.intel.com>
-Date: Wed, 11 Dec 2024 13:15:06 +0100
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="100750081"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by orviesa005.jf.intel.com with ESMTP; 11 Dec 2024 05:27:57 -0800
+Received: from pkitszel-desk.tendawifi.com (unknown [10.245.246.31])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 19C922FC57;
+ Wed, 11 Dec 2024 13:27:54 +0000 (GMT)
+From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+To: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>
+Cc: netdev@vger.kernel.org, Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Dan Carpenter <dan.carpenter@linaro.org>,
+ Ahmed Zaki <ahmed.zaki@intel.com>,
+ Larysa Zaremba <larysa.zaremba@intel.com>
+Date: Wed, 11 Dec 2024 14:26:36 +0100
+Message-ID: <20241211132745.112536-2-przemyslaw.kitszel@intel.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: netdev@vger.kernel.org, andrew+netdev@lunn.ch, horms@kernel.org,
- jiri@resnulli.us, stephen@networkplumber.org, anthony.l.nguyen@intel.com,
- jacob.e.keller@intel.com, przemyslaw.kitszel@intel.com,
- intel-wired-lan@lists.osuosl.org
-References: <20241209131450.137317-2-martyna.szapar-mudlaw@linux.intel.com>
- <20241209153600.27bd07e1@kernel.org>
-Content-Language: en-US
-From: "Szapar-Mudlaw, Martyna" <martyna.szapar-mudlaw@linux.intel.com>
-In-Reply-To: <20241209153600.27bd07e1@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1733919323; x=1765455323;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=locpQUNjVQ3jou0lwGopIGFTac8u7H06gk9qV1Yj+JE=;
- b=T+Tva0gncMSDLgYDWx7B9edq3tnIA9vkm4p4Cknii8d1OKLjD0lpTQFx
- +qYqgWNn5GBVjhUO+BrUZWw4fnSoqlwwL1Us1tTDKqxGufm0GPdy8MwVb
- /eH6wzY0I0O62+Nphk7oGECgOSzDXzzptTeJd6Nyyu6RTib7DMjxII0R7
- ldzTZXjPbq9+HdLnXsv+xINSI6J6ycmP9qOibUScS8YkBazKI22Ym6a0J
- 24ooLNnn9ZKF0M3HFMYoeI09BBGXWDcwW7TniAvMP029F/0LBNI9thiWh
- l0O2RqmCuhY8VbfcLsalTfPdeuOSTwFI5tX4qABbxjjpx5xPmDk+qIfai
- g==;
+ t=1733923681; x=1765459681;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=BB6MYlp5Lzw9MQ32QhUcsEN/5sCNPgKSxkS5wq40AQA=;
+ b=ID7VIbE9IY/fbql+w4G499PnB6Ohp6iq9PkX9Wh02z86QEkvmz8pkI4+
+ 5kYyOkQD3OSYKvy6lImKDUrxLsJSUEmX4TUcYaQ+7DNPM3sucUDgRgvli
+ DrjW8QW7VUJsXVu1Dd0O8dEwMcpJmA9jSdT1KmeT3OA4Fngt10cyxGpYW
+ dFNEjpdxygiISpeHWDpSCiYSjXwrczLQaTGOL0OZsVDjZNVMmvBk9n1mF
+ RvMPLALz/uirmZzVQzYk92BPexW/HGXiNf/lOfifcrFZoQnHiNfmjGx3k
+ o8CJumPtrwHLLRvig5PufJMc6bC8IjB8+xRYxmzPKAJT0iTBeTsPxsqjI
+ A==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=T+Tva0gn
-Subject: Re: [Intel-wired-lan] [RFC 0/1] Proposal for new devlink command to
- enforce firmware security
+ header.s=Intel header.b=ID7VIbE9
+Subject: [Intel-wired-lan] [PATCH iwl-net] ice: fix ice_parser_rt::bst_key
+ array size
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -117,71 +112,108 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Fix &ice_parser_rt::bst_key size. It was wrongly set to 10 instead of 20
+in the initial impl commit (see Fixes tag). All usage code assumed it was
+of size 20. That was also the initial size present up to v2 of the intro
+series [2], but halved by v3 [3] refactor described as "Replace magic
+hardcoded values with macros." The introducing series was so big that
+some ugliness was unnoticed, same for bugs :/
 
+ICE_BST_KEY_TCAM_SIZE and ICE_BST_TCAM_KEY_SIZE were differing by one.
+There was tmp variable @j in the scope of edited function, but was not
+used in all places. This ugliness is now gone.
+I'm moving ice_parser_rt::pg_prio a few positions up, to fill up one of
+the holes in order to compensate for the added 10 bytes to the ::bst_key,
+resulting in the same size of the whole as prior to the fix, and miminal
+changes in the offsets of the fields.
 
-On 12/10/2024 12:36 AM, Jakub Kicinski wrote:
-> On Mon,  9 Dec 2024 14:14:50 +0100 Martyna Szapar-Mudlaw wrote:
->> Proposed design
->>
->> New command, `devlink dev lock-firmware` (or `devlink dev guard-firmware`),
->> will be added to devlink API. Implementation in devlink will be simple
->> and generic, with no predefined operations, offering flexibility for drivers
->> to define the firmware locking mechanism appropriate to the hardware's
->> capabilities and security requirements. Running this command will allow
->> ice driver to ensure firmware with lower security value downgrades are
->> prevented.
->>
->> Add also changes to Intel ice driver to display security values
->> via devlink dev info command running and set minimum. Also implement
->> lock-firmware devlink op callback in ice driver to update firmware
->> minimum security revision value.
-> 
-> devlink doesn't have a suitable security model. I don't think we should
-> be adding hacks since we're not security experts and standards like SPDM
-> exist.
-> 
-> I understand that customers ask for this but "security" is not a
-> checkbox, the whole certificate and version management is necessary.
-> 
+This fix obsoletes Ahmed's attempt at [1].
 
-Hi Jakub,
+[1] https://lore.kernel.org/intel-wired-lan/20240823230847.172295-1-ahmed.zaki@intel.com
+[2] https://lore.kernel.org/intel-wired-lan/20230605054641.2865142-13-junfeng.guo@intel.com
+[3] https://lore.kernel.org/intel-wired-lan/20230817093442.2576997-13-junfeng.guo@intel.com
 
-Thank you for your response. Apologies if any of earlier wording was 
-unclear or poorly chosen.
+Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
+Closes: https://lore.kernel.org/intel-wired-lan/b1fb6ff9-b69e-4026-9988-3c783d86c2e0@stanley.mountain
+Fixes: 9a4c07aaa0f5 ("ice: add parser execution main loop")
+CC: Ahmed Zaki <ahmed.zaki@intel.com>
+Reviewed-by: Larysa Zaremba <larysa.zaremba@intel.com>
+Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_parser.h    |  6 ++----
+ drivers/net/ethernet/intel/ice/ice_parser_rt.c | 12 +++++-------
+ 2 files changed, 7 insertions(+), 11 deletions(-)
 
-While this feature is needed for security reasons, its implementation in 
-the kernel isn't directly tied to kernel/driver security.
+diff --git a/drivers/net/ethernet/intel/ice/ice_parser.h b/drivers/net/ethernet/intel/ice/ice_parser.h
+index 6509d807627c..4f56d53d56b9 100644
+--- a/drivers/net/ethernet/intel/ice/ice_parser.h
++++ b/drivers/net/ethernet/intel/ice/ice_parser.h
+@@ -257,7 +257,6 @@ ice_pg_nm_cam_match(struct ice_pg_nm_cam_item *table, int size,
+ /*** ICE_SID_RXPARSER_BOOST_TCAM and ICE_SID_LBL_RXPARSER_TMEM sections ***/
+ #define ICE_BST_TCAM_TABLE_SIZE		256
+ #define ICE_BST_TCAM_KEY_SIZE		20
+-#define ICE_BST_KEY_TCAM_SIZE		19
+ 
+ /* Boost TCAM item */
+ struct ice_bst_tcam_item {
+@@ -401,7 +400,6 @@ u16 ice_xlt_kb_flag_get(struct ice_xlt_kb *kb, u64 pkt_flag);
+ #define ICE_PARSER_GPR_NUM	128
+ #define ICE_PARSER_FLG_NUM	64
+ #define ICE_PARSER_ERR_NUM	16
+-#define ICE_BST_KEY_SIZE	10
+ #define ICE_MARKER_ID_SIZE	9
+ #define ICE_MARKER_MAX_SIZE	\
+ 		(ICE_MARKER_ID_SIZE * BITS_PER_BYTE - 1)
+@@ -431,13 +429,13 @@ struct ice_parser_rt {
+ 	u8 pkt_buf[ICE_PARSER_MAX_PKT_LEN + ICE_PARSER_PKT_REV];
+ 	u16 pkt_len;
+ 	u16 po;
+-	u8 bst_key[ICE_BST_KEY_SIZE];
++	u8 bst_key[ICE_BST_TCAM_KEY_SIZE];
+ 	struct ice_pg_cam_key pg_key;
++	u8 pg_prio;
+ 	struct ice_alu *alu0;
+ 	struct ice_alu *alu1;
+ 	struct ice_alu *alu2;
+ 	struct ice_pg_cam_action *action;
+-	u8 pg_prio;
+ 	struct ice_gpr_pu pu;
+ 	u8 markers[ICE_MARKER_ID_SIZE];
+ 	bool protocols[ICE_PO_PAIR_SIZE];
+diff --git a/drivers/net/ethernet/intel/ice/ice_parser_rt.c b/drivers/net/ethernet/intel/ice/ice_parser_rt.c
+index dedf5e854e4b..d9c38ce27e4f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_parser_rt.c
++++ b/drivers/net/ethernet/intel/ice/ice_parser_rt.c
+@@ -125,22 +125,20 @@ static void ice_bst_key_init(struct ice_parser_rt *rt,
+ 	else
+ 		key[idd] = imem->b_kb.prio;
+ 
+-	idd = ICE_BST_KEY_TCAM_SIZE - 1;
++	idd = ICE_BST_TCAM_KEY_SIZE - 2;
+ 	for (i = idd; i >= 0; i--) {
+ 		int j;
+ 
+ 		j = ho + idd - i;
+ 		if (j < ICE_PARSER_MAX_PKT_LEN)
+-			key[i] = rt->pkt_buf[ho + idd - i];
++			key[i] = rt->pkt_buf[j];
+ 		else
+ 			key[i] = 0;
+ 	}
+ 
+-	ice_debug(rt->psr->hw, ICE_DBG_PARSER, "Generated Boost TCAM Key:\n");
+-	ice_debug(rt->psr->hw, ICE_DBG_PARSER, "%02X %02X %02X %02X %02X %02X %02X %02X %02X %02X\n",
+-		  key[0], key[1], key[2], key[3], key[4],
+-		  key[5], key[6], key[7], key[8], key[9]);
+-	ice_debug(rt->psr->hw, ICE_DBG_PARSER, "\n");
++	ice_debug_array_w_prefix(rt->psr->hw, ICE_DBG_PARSER,
++				 KBUILD_MODNAME "Generated Boost TCAM Key",
++				 key, ICE_BST_TCAM_KEY_SIZE);
+ }
+ 
+ static u16 ice_bit_rev_u16(u16 v, int len)
 
-The E810 Ethernet controller firmware provides a certain level of 
-security, which includes a mechanism to prevent firmware downgrades (to 
-past, less secure versions). However, it is the driver that needs to 
-initiate this mechanism. After "locking/fusing/freezing/guarding" (open 
-to name suggestions) the current firmware version, upgrades would still 
-be possible. The card itself handles firmware validation, including 
-verifying signatures and ensuring that only properly signed and accepted 
-firmware can be installed. Thus the firmware can only be upgraded to a 
-validated version that the card has approved.
+base-commit: 51a00be6a0994da2ba6b4ace3b7a0d9373b4b25e
+-- 
+2.46.0
 
-This patch does not aim to introduce a new security mechanism, rather, 
-it enables users to utilize the controller's existing functionality. 
-This feature is to provide users with a devlink interface to inform the 
-device that the currently loaded firmware can become the new minimal 
-version for the card. Users have specifically requested the ability to 
-make this step an independent part of their firmware update process.
-Leaving in-tree users without this capability exposes them to the risk 
-of downgrades to older, released by Intel, but potentially compromised 
-fw versions, and prevents the intended security protections of the 
-device from being utilized.
-On the other hand always enforcing this mechanism during firmware 
-update, could lead to poor customer experiences due to unintended 
-firmware behavior in specific workflows and is not accepted by Intel 
-customers.
-
-Devlink tool was proposed for this purpose, as it is designed for 
-administrative/root-level tasks such as this. Perhaps it would be more 
-appropriate to integrate the proposed implementation as a subcommand 
-(attribute) under the devlink flash API, which was the second considered 
-option, rather than keeping it as a separate devlink command?
-
-Thank you and best regards,
-Martyna
