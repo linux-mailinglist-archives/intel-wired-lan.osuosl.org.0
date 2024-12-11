@@ -1,102 +1,107 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8049A9ECD2A
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Dec 2024 14:28:10 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CA86A9ECD9A
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Dec 2024 14:46:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B492D80E3A;
-	Wed, 11 Dec 2024 13:28:04 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1FDEF41351;
+	Wed, 11 Dec 2024 13:46:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id LebyAoHfOGjg; Wed, 11 Dec 2024 13:28:03 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id tIyqw0O6PTCQ; Wed, 11 Dec 2024 13:46:15 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CBDBE80B30
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1CBFD41348
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1733923683;
-	bh=cAeTSt4MomjSAG6yFK/FIFQ2tgj0pksWvKoS5iYjYZw=;
+	s=default; t=1733924775;
+	bh=kTaJCn4DHMp/BC0WzpWzfyrvWig6U8LLdX/IshlAshw=;
 	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=cuClJh3S0n+5niQT96JSe5f8K/6QuQgAOEDXL9nPL08uuyCNUS/0ckUyA8ArhyCGn
-	 +fhI33UcMtKi7n7dt/dPL1/Mr+gzZQp0+S+iVxMkt7mVmo2Txyes6gOET//cG4roM3
-	 6A9MUEszI2Xu4ZWnBwT6oM6uEfH2jCSs7wR3UbIRZwNK+uzKQhYIBQ0wH9rg2yj2xS
-	 zU0cGIgQ3edD2WbaDHhwEI7YFQpqA/GRlWnfAycUy1EMNhL/mtpLjLKn5mYplhmPt/
-	 Pjk+sJuUdlXrZBFwVnUmJdYMQZSyxSMsjUOaMtqPjnB0rVxarghepbA1MuF5Rw2+ZW
-	 se3UYy5Zqdp/g==
+	b=oqjeyENXXAeX5y9JxQz22HeG5gwqqmonsAZ500cDt7ljHEfYd2et+9hAakxZxvaC0
+	 hhkmOlPOnMX36pEMdd9xPJJZ98P/3WHzZh+e9F2X/8MABAbFyeh1VFmsORVrz0EIAQ
+	 7qNVYKihuMxT6fNGW3dzVaHCRP3Lm6ftk8P61anwijCyoiaOeN7XwxJ+AIRrrylWWK
+	 yvDEFgb4BJe0d6hRynZVM3Tf7WxVQOFopxjyeHq14XJMJSxVvnnmsjcOp+9xK/U+Q8
+	 6ZXhsW+cneiLjDekYb5sEkM3+saKzXOz+4w5y84YdEknd/0jv8pUtrhoehbiQeHMC2
+	 4Ock9ojumoI/g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CBDBE80B30;
-	Wed, 11 Dec 2024 13:28:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1CBFD41348;
+	Wed, 11 Dec 2024 13:46:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id D9821962
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Dec 2024 13:28:01 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 43A1D962
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Dec 2024 13:46:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id ADF1080B30
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Dec 2024 13:28:01 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 228A16112C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Dec 2024 13:46:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id LnJVsVs5B1ed for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 Dec 2024 13:28:00 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
- helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id qGaJ9240Asu2 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 Dec 2024 13:46:10 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
+ helo=mgamail.intel.com; envelope-from=yoong.siang.song@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 9A40280DC4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9A40280DC4
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 9A40280DC4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Dec 2024 13:27:59 +0000 (UTC)
-X-CSE-ConnectionGUID: VC4xNLulQWGWkB4lCFB1xQ==
-X-CSE-MsgGUID: lrrd3Ly5QDmFNl0OexZL/g==
-X-IronPort-AV: E=McAfee;i="6700,10204,11282"; a="51718714"
-X-IronPort-AV: E=Sophos;i="6.12,225,1728975600"; d="scan'208";a="51718714"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
- by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Dec 2024 05:28:00 -0800
-X-CSE-ConnectionGUID: +UlZoILzTdWHQ2h5ZADubw==
-X-CSE-MsgGUID: OyAPTjnMSyWs17abjU8kiA==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C440561125
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C440561125
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C440561125
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Dec 2024 13:46:09 +0000 (UTC)
+X-CSE-ConnectionGUID: gqZQdhWOQFGh4ZtxX8qibg==
+X-CSE-MsgGUID: LvYsQpiLRIyzLxIlDiLh/w==
+X-IronPort-AV: E=McAfee;i="6700,10204,11282"; a="44912756"
+X-IronPort-AV: E=Sophos;i="6.12,225,1728975600"; d="scan'208";a="44912756"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+ by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Dec 2024 05:46:03 -0800
+X-CSE-ConnectionGUID: OLxoQH+DRBqZwHS+Zy/tYA==
+X-CSE-MsgGUID: FewiAaAbTiGaI8FZj+15Ag==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="100750081"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by orviesa005.jf.intel.com with ESMTP; 11 Dec 2024 05:27:57 -0800
-Received: from pkitszel-desk.tendawifi.com (unknown [10.245.246.31])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 19C922FC57;
- Wed, 11 Dec 2024 13:27:54 +0000 (GMT)
-From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-To: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>
-Cc: netdev@vger.kernel.org, Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Dan Carpenter <dan.carpenter@linaro.org>,
- Ahmed Zaki <ahmed.zaki@intel.com>,
- Larysa Zaremba <larysa.zaremba@intel.com>
-Date: Wed, 11 Dec 2024 14:26:36 +0100
-Message-ID: <20241211132745.112536-2-przemyslaw.kitszel@intel.com>
-X-Mailer: git-send-email 2.46.0
+X-IronPort-AV: E=Sophos;i="6.12,225,1728975600"; d="scan'208";a="95634672"
+Received: from p12ill20yoongsia.png.intel.com ([10.88.227.28])
+ by fmviesa007.fm.intel.com with ESMTP; 11 Dec 2024 05:45:59 -0800
+From: Song Yoong Siang <yoong.siang.song@intel.com>
+To: Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, bpf@vger.kernel.org
+Date: Wed, 11 Dec 2024 21:45:32 +0800
+Message-Id: <20241211134532.3489335-1-yoong.siang.song@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1733923681; x=1765459681;
+ t=1733924770; x=1765460770;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=BB6MYlp5Lzw9MQ32QhUcsEN/5sCNPgKSxkS5wq40AQA=;
- b=ID7VIbE9IY/fbql+w4G499PnB6Ohp6iq9PkX9Wh02z86QEkvmz8pkI4+
- 5kYyOkQD3OSYKvy6lImKDUrxLsJSUEmX4TUcYaQ+7DNPM3sucUDgRgvli
- DrjW8QW7VUJsXVu1Dd0O8dEwMcpJmA9jSdT1KmeT3OA4Fngt10cyxGpYW
- dFNEjpdxygiISpeHWDpSCiYSjXwrczLQaTGOL0OZsVDjZNVMmvBk9n1mF
- RvMPLALz/uirmZzVQzYk92BPexW/HGXiNf/lOfifcrFZoQnHiNfmjGx3k
- o8CJumPtrwHLLRvig5PufJMc6bC8IjB8+xRYxmzPKAJT0iTBeTsPxsqjI
+ bh=P2PQ2vFtUndMC7zzOBl61FW7HLiReXx8jF9TSzVoLxE=;
+ b=Y/LKFdFEfM5RH9tbLPmctoazcmK+0A3/UZDIJaQWGTN8rd3873W66i6N
+ iKAcOFQFvRyC4ZVerc85HUIuTnLK5cXyFTC00jJqs+/ijwUKIGDTM5hVh
+ +JtGs/Y4w+Wr+haoboT+6m64/pLHmcjlx6a80Ob3xS+fR0x7xEQj+AQwF
+ AJNou4Hsi4nFk3DGo4448AjRMyDDLLodv2Ozb2DV4CfwiS/qsCgcuq5gs
+ otoPJPAOZ3S3yrsF4Mj+kttiCTjZs7woj7Mc3TFFxWt8qnz7ZvG3+T54U
+ 69T3qwyndAXoszVTst4Oq8MxsOfoG9ulg9uw8+soyj2ffAuU39LJDMu10
  A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=ID7VIbE9
-Subject: [Intel-wired-lan] [PATCH iwl-net] ice: fix ice_parser_rt::bst_key
- array size
+ header.s=Intel header.b=Y/LKFdFE
+Subject: [Intel-wired-lan] [PATCH iwl-next v2 1/1] igc: Improve
+ XDP_SETUP_PROG process
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -112,108 +117,122 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fix &ice_parser_rt::bst_key size. It was wrongly set to 10 instead of 20
-in the initial impl commit (see Fixes tag). All usage code assumed it was
-of size 20. That was also the initial size present up to v2 of the intro
-series [2], but halved by v3 [3] refactor described as "Replace magic
-hardcoded values with macros." The introducing series was so big that
-some ugliness was unnoticed, same for bugs :/
+Improve XDP_SETUP_PROG process by avoiding unnecessary link down event.
 
-ICE_BST_KEY_TCAM_SIZE and ICE_BST_TCAM_KEY_SIZE were differing by one.
-There was tmp variable @j in the scope of edited function, but was not
-used in all places. This ugliness is now gone.
-I'm moving ice_parser_rt::pg_prio a few positions up, to fill up one of
-the holes in order to compensate for the added 10 bytes to the ::bst_key,
-resulting in the same size of the whole as prior to the fix, and miminal
-changes in the offsets of the fields.
+This patch is tested by using ip link set xdpdrv command to attach a simple
+XDP program which always return XDP_PASS.
 
-This fix obsoletes Ahmed's attempt at [1].
+Before this patch, attaching xdp program will cause ptp4l to lost sync for
+few seconds, as shown in ptp4l log below:
+  ptp4l[198.082]: rms    4 max    8 freq   +906 +/-   2 delay    12 +/-   0
+  ptp4l[199.082]: rms    3 max    4 freq   +906 +/-   3 delay    12 +/-   0
+  ptp4l[199.536]: port 1 (enp2s0): link down
+  ptp4l[199.536]: port 1 (enp2s0): SLAVE to FAULTY on FAULT_DETECTED (FT_UNSPECIFIED)
+  ptp4l[199.600]: selected local clock 22abbc.fffe.bb1234 as best master
+  ptp4l[199.600]: port 1 (enp2s0): assuming the grand master role
+  ptp4l[199.600]: port 1 (enp2s0): master state recommended in slave only mode
+  ptp4l[199.600]: port 1 (enp2s0): defaultDS.priority1 probably misconfigured
+  ptp4l[202.266]: port 1 (enp2s0): link up
+  ptp4l[202.300]: port 1 (enp2s0): FAULTY to LISTENING on INIT_COMPLETE
+  ptp4l[205.558]: port 1 (enp2s0): new foreign master 44abbc.fffe.bb2144-1
+  ptp4l[207.558]: selected best master clock 44abbc.fffe.bb2144
+  ptp4l[207.559]: port 1 (enp2s0): LISTENING to UNCALIBRATED on RS_SLAVE
+  ptp4l[208.308]: port 1 (enp2s0): UNCALIBRATED to SLAVE on MASTER_CLOCK_SELECTED
+  ptp4l[208.933]: rms  742 max 1303 freq   -195 +/- 682 delay    12 +/-   0
+  ptp4l[209.933]: rms  178 max  274 freq   +387 +/- 243 delay    12 +/-   0
 
-[1] https://lore.kernel.org/intel-wired-lan/20240823230847.172295-1-ahmed.zaki@intel.com
-[2] https://lore.kernel.org/intel-wired-lan/20230605054641.2865142-13-junfeng.guo@intel.com
-[3] https://lore.kernel.org/intel-wired-lan/20230817093442.2576997-13-junfeng.guo@intel.com
+After this patch, attaching xdp program no longer cause ptp4l to lost sync,
+as shown on ptp4l log below:
+  ptp4l[201.183]: rms    1 max    3 freq   +959 +/-   1 delay     8 +/-   0
+  ptp4l[202.183]: rms    1 max    3 freq   +961 +/-   2 delay     8 +/-   0
+  ptp4l[203.183]: rms    2 max    3 freq   +958 +/-   2 delay     8 +/-   0
+  ptp4l[204.183]: rms    3 max    5 freq   +961 +/-   3 delay     8 +/-   0
+  ptp4l[205.183]: rms    2 max    4 freq   +964 +/-   3 delay     8 +/-   0
 
-Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
-Closes: https://lore.kernel.org/intel-wired-lan/b1fb6ff9-b69e-4026-9988-3c783d86c2e0@stanley.mountain
-Fixes: 9a4c07aaa0f5 ("ice: add parser execution main loop")
-CC: Ahmed Zaki <ahmed.zaki@intel.com>
-Reviewed-by: Larysa Zaremba <larysa.zaremba@intel.com>
-Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Besides, before this patch, attaching xdp program will cause flood ping to
+loss 10 packets, as shown in ping statistics below:
+  --- 169.254.1.2 ping statistics ---
+  100000 packets transmitted, 99990 received, +6 errors, 0.01% packet loss, time 34001ms
+  rtt min/avg/max/mdev = 0.028/0.301/3104.360/13.838 ms, pipe 10, ipg/ewma 0.340/0.243 ms
+
+After this patch, attaching xdp program no longer cause flood ping to loss
+any packets, as shown in ping statistics below:
+  --- 169.254.1.2 ping statistics ---
+  100000 packets transmitted, 100000 received, 0% packet loss, time 32326ms
+  rtt min/avg/max/mdev = 0.027/0.231/19.589/0.155 ms, pipe 2, ipg/ewma 0.323/0.322 ms
+
+On the other hand, this patch is also tested with tools/testing/selftests/
+bpf/xdp_hw_metadata app to make sure XDP zero-copy is working fine with
+XDP Tx and Rx metadata. Below is the result of last packet after received
+10000 UDP packets with interval 1 ms:
+  poll: 1 (0) skip=0 fail=0 redir=10000
+  xsk_ring_cons__peek: 1
+  0x55881c7ef7a8: rx_desc[9999]->addr=8f110 addr=8f110 comp_addr=8f110 EoP
+  rx_hash: 0xFB9BB6A3 with RSS type:0x1
+  HW RX-time:   1733923136269470866 (sec:1733923136.2695) delta to User RX-time sec:0.0000 (43.280 usec)
+  XDP RX-time:   1733923136269482482 (sec:1733923136.2695) delta to User RX-time sec:0.0000 (31.664 usec)
+  No rx_vlan_tci or rx_vlan_proto, err=-95
+  0x55881c7ef7a8: ping-pong with csum=ab19 (want 315b) csum_start=34 csum_offset=6
+  0x55881c7ef7a8: complete tx idx=9999 addr=f010
+  HW TX-complete-time:   1733923136269591637 (sec:1733923136.2696) delta to User TX-complete-time sec:0.0001 (108.571 usec)
+  XDP RX-time:   1733923136269482482 (sec:1733923136.2695) delta to User TX-complete-time sec:0.0002 (217.726 usec)
+  HW RX-time:   1733923136269470866 (sec:1733923136.2695) delta to HW TX-complete-time sec:0.0001 (120.771 usec)
+  0x55881c7ef7a8: complete rx idx=10127 addr=8f110
+
+Signed-off-by: Song Yoong Siang <yoong.siang.song@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_parser.h    |  6 ++----
- drivers/net/ethernet/intel/ice/ice_parser_rt.c | 12 +++++-------
- 2 files changed, 7 insertions(+), 11 deletions(-)
+V2 changelog:
+ - show some examples of problem in commit msg. (Vinicius)
+ - igc_close()/igc_open() are too big a hammer for installing a new XDP
+   program. Only do we we really need. (Vinicius)
+---
+ drivers/net/ethernet/intel/igc/igc_xdp.c | 19 +++++++++++++++----
+ 1 file changed, 15 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_parser.h b/drivers/net/ethernet/intel/ice/ice_parser.h
-index 6509d807627c..4f56d53d56b9 100644
---- a/drivers/net/ethernet/intel/ice/ice_parser.h
-+++ b/drivers/net/ethernet/intel/ice/ice_parser.h
-@@ -257,7 +257,6 @@ ice_pg_nm_cam_match(struct ice_pg_nm_cam_item *table, int size,
- /*** ICE_SID_RXPARSER_BOOST_TCAM and ICE_SID_LBL_RXPARSER_TMEM sections ***/
- #define ICE_BST_TCAM_TABLE_SIZE		256
- #define ICE_BST_TCAM_KEY_SIZE		20
--#define ICE_BST_KEY_TCAM_SIZE		19
+diff --git a/drivers/net/ethernet/intel/igc/igc_xdp.c b/drivers/net/ethernet/intel/igc/igc_xdp.c
+index 869815f48ac1..64b04aad614c 100644
+--- a/drivers/net/ethernet/intel/igc/igc_xdp.c
++++ b/drivers/net/ethernet/intel/igc/igc_xdp.c
+@@ -14,6 +14,7 @@ int igc_xdp_set_prog(struct igc_adapter *adapter, struct bpf_prog *prog,
+ 	bool if_running = netif_running(dev);
+ 	struct bpf_prog *old_prog;
+ 	bool need_update;
++	int i;
  
- /* Boost TCAM item */
- struct ice_bst_tcam_item {
-@@ -401,7 +400,6 @@ u16 ice_xlt_kb_flag_get(struct ice_xlt_kb *kb, u64 pkt_flag);
- #define ICE_PARSER_GPR_NUM	128
- #define ICE_PARSER_FLG_NUM	64
- #define ICE_PARSER_ERR_NUM	16
--#define ICE_BST_KEY_SIZE	10
- #define ICE_MARKER_ID_SIZE	9
- #define ICE_MARKER_MAX_SIZE	\
- 		(ICE_MARKER_ID_SIZE * BITS_PER_BYTE - 1)
-@@ -431,13 +429,13 @@ struct ice_parser_rt {
- 	u8 pkt_buf[ICE_PARSER_MAX_PKT_LEN + ICE_PARSER_PKT_REV];
- 	u16 pkt_len;
- 	u16 po;
--	u8 bst_key[ICE_BST_KEY_SIZE];
-+	u8 bst_key[ICE_BST_TCAM_KEY_SIZE];
- 	struct ice_pg_cam_key pg_key;
-+	u8 pg_prio;
- 	struct ice_alu *alu0;
- 	struct ice_alu *alu1;
- 	struct ice_alu *alu2;
- 	struct ice_pg_cam_action *action;
--	u8 pg_prio;
- 	struct ice_gpr_pu pu;
- 	u8 markers[ICE_MARKER_ID_SIZE];
- 	bool protocols[ICE_PO_PAIR_SIZE];
-diff --git a/drivers/net/ethernet/intel/ice/ice_parser_rt.c b/drivers/net/ethernet/intel/ice/ice_parser_rt.c
-index dedf5e854e4b..d9c38ce27e4f 100644
---- a/drivers/net/ethernet/intel/ice/ice_parser_rt.c
-+++ b/drivers/net/ethernet/intel/ice/ice_parser_rt.c
-@@ -125,22 +125,20 @@ static void ice_bst_key_init(struct ice_parser_rt *rt,
- 	else
- 		key[idd] = imem->b_kb.prio;
- 
--	idd = ICE_BST_KEY_TCAM_SIZE - 1;
-+	idd = ICE_BST_TCAM_KEY_SIZE - 2;
- 	for (i = idd; i >= 0; i--) {
- 		int j;
- 
- 		j = ho + idd - i;
- 		if (j < ICE_PARSER_MAX_PKT_LEN)
--			key[i] = rt->pkt_buf[ho + idd - i];
-+			key[i] = rt->pkt_buf[j];
- 		else
- 			key[i] = 0;
+ 	if (dev->mtu > ETH_DATA_LEN) {
+ 		/* For now, the driver doesn't support XDP functionality with
+@@ -24,8 +25,13 @@ int igc_xdp_set_prog(struct igc_adapter *adapter, struct bpf_prog *prog,
  	}
  
--	ice_debug(rt->psr->hw, ICE_DBG_PARSER, "Generated Boost TCAM Key:\n");
--	ice_debug(rt->psr->hw, ICE_DBG_PARSER, "%02X %02X %02X %02X %02X %02X %02X %02X %02X %02X\n",
--		  key[0], key[1], key[2], key[3], key[4],
--		  key[5], key[6], key[7], key[8], key[9]);
--	ice_debug(rt->psr->hw, ICE_DBG_PARSER, "\n");
-+	ice_debug_array_w_prefix(rt->psr->hw, ICE_DBG_PARSER,
-+				 KBUILD_MODNAME "Generated Boost TCAM Key",
-+				 key, ICE_BST_TCAM_KEY_SIZE);
- }
+ 	need_update = !!adapter->xdp_prog != !!prog;
+-	if (if_running && need_update)
+-		igc_close(dev);
++	if (if_running && need_update) {
++		for (i = 0; i < adapter->num_rx_queues; i++) {
++			igc_disable_rx_ring(adapter->rx_ring[i]);
++			igc_disable_tx_ring(adapter->tx_ring[i]);
++			napi_disable(&adapter->rx_ring[i]->q_vector->napi);
++		}
++	}
  
- static u16 ice_bit_rev_u16(u16 v, int len)
-
-base-commit: 51a00be6a0994da2ba6b4ace3b7a0d9373b4b25e
+ 	old_prog = xchg(&adapter->xdp_prog, prog);
+ 	if (old_prog)
+@@ -36,8 +42,13 @@ int igc_xdp_set_prog(struct igc_adapter *adapter, struct bpf_prog *prog,
+ 	else
+ 		xdp_features_clear_redirect_target(dev);
+ 
+-	if (if_running && need_update)
+-		igc_open(dev);
++	if (if_running && need_update) {
++		for (i = 0; i < adapter->num_rx_queues; i++) {
++			napi_enable(&adapter->rx_ring[i]->q_vector->napi);
++			igc_enable_tx_ring(adapter->tx_ring[i]);
++			igc_enable_rx_ring(adapter->rx_ring[i]);
++		}
++	}
+ 
+ 	return 0;
+ }
 -- 
-2.46.0
+2.34.1
 
