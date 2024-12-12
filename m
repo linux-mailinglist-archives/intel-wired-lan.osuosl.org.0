@@ -1,94 +1,118 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A92D09EFF9D
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Dec 2024 23:59:01 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 67C139F0056
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Dec 2024 00:43:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 53C4461425;
-	Thu, 12 Dec 2024 22:59:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C169384549;
+	Thu, 12 Dec 2024 23:43:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id N7yi5U903XYA; Thu, 12 Dec 2024 22:58:59 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id cOnRWjNuMV_D; Thu, 12 Dec 2024 23:43:34 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 473E561415
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CCA3A844E4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1734044339;
-	bh=+cUdjHhcafCL2kjMPah5s7J4ytmXBPfi+KUQIxkCBJg=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	s=default; t=1734047013;
+	bh=gLVftiiQq4akEB+OBVvUaxKCKfRMsg/7Sv0m+78/QB4=;
+	h=Date:From:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=dDPkoPHB23Rqhm1emKA7/KcL1q360arzwjlhbv/kN3mknIAKbXTWJ4LsrKGPasEDV
-	 plIsfx0HAhxn15jWjjg20ykRTE0qDqnDbbImfi9Jt0rFMcuLLfxg3vm99rKjZl2rol
-	 qa3lqVVgHG0J4t+IktoXvBN3H5QK8rJWrOnV3h6zpYAGoK4GaxiJ4F92HQVVhXarjZ
-	 YL5Mhjfe7pQYoku5q0TbxmVOKdJjp4sFwlk2Yy2k3000IvUq9KhnA/xj8tCYHXaFVq
-	 y7eHMDZTcJuCqU24iUTgo9+iZ5IqYhJRZQFPi/nHI0+tmkN9PWC9M5m0SpHkk1sy18
-	 CJ1f5bcLaLwTQ==
+	b=9z4flHOytMVYDykWWlC/yU//hHFZKN7En8vY+MlCrlwcheXr/ExW7H7lZw/GavE70
+	 XfY/yZWEBvpylItfSqUg6g7cMDrf9ZQrmUOAq4zJKI9NcmY2OY1nFW6XACmyxMngZV
+	 dgmDaOXLuG57i2zhtvx0ArpjDg+uSMt+KkM+gW9Ug+4B24CjMRqjBNENs2sWKh9B/X
+	 c2txkmujOs6uYziErfgwylC/7jxZ1a+AG9z5w/3+FTxviUb154UeJ/2Rry/17iZC3s
+	 VgLjpx//uTDJX7ehbJknNwBke1+VI6YGBET4BZeGZgClxFv76p3U6xmtP/q/Kxyv9w
+	 dRfAuZbH1wcuQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 473E561415;
-	Thu, 12 Dec 2024 22:58:59 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CCA3A844E4;
+	Thu, 12 Dec 2024 23:43:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 28AEB1146
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Dec 2024 22:58:58 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 938F21146
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Dec 2024 23:33:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0953E401C2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Dec 2024 22:58:58 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 7388E40479
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Dec 2024 23:33:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dL2p57KgsD_D for <intel-wired-lan@lists.osuosl.org>;
- Thu, 12 Dec 2024 22:58:57 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D1723401EF
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D1723401EF
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D1723401EF
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Dec 2024 22:58:56 +0000 (UTC)
-X-CSE-ConnectionGUID: bRgjTFfkR7ObsWcCuN1sxw==
-X-CSE-MsgGUID: rp05/nk7SuqCzvM6doAq3w==
-X-IronPort-AV: E=McAfee;i="6700,10204,11284"; a="22075756"
-X-IronPort-AV: E=Sophos;i="6.12,229,1728975600"; d="scan'208";a="22075756"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
- by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Dec 2024 14:58:56 -0800
-X-CSE-ConnectionGUID: EkIJHwq/T0qencPTkrepSw==
-X-CSE-MsgGUID: WSSLpj2xT6SZ2EtWmqXUKQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="133743921"
-Received: from lkp-server01.sh.intel.com (HELO 82a3f569d0cb) ([10.239.97.150])
- by orviesa001.jf.intel.com with ESMTP; 12 Dec 2024 14:58:55 -0800
-Received: from kbuild by 82a3f569d0cb with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1tLs8y-000BSf-03
- for intel-wired-lan@lists.osuosl.org; Thu, 12 Dec 2024 22:58:52 +0000
-Date: Fri, 13 Dec 2024 06:58:17 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202412130612.2zzOJUca-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1734044337; x=1765580337;
- h=date:from:to:subject:message-id;
- bh=wHJsGUZaayATEYXEKZubuQSlen8/kks6ZS9//6VlO3c=;
- b=HoNswDveETyf3OuiMOiyWC0qqI0+NTRe3rsGI5mSEYRS29J+SM95xNUR
- 9Nk4v63bBNDxPK4PNObS30Fot5nwQOcBILyRWPOeDr1aGlTW+EkaFEyH+
- cxsqS9y8j47bQq19qpv3R1eMhiv3yrDwqzGKStEQTVdzBKuPtfr4U/p6/
- yt5KwLQiFi4pa5zo1CjRw8WsNRKB9iFJ3sIX+UwIHp3yTgJo72Ic7dNoQ
- 9+tYLB6pFfqXH9WMdWXivx88OsFrzLB0wHjy7L4goYce+j4UYBjWDVR1q
- wuwS7AvDqqVoR/kynfKxW0OtfK4t/QDDDpPB6Ug9G9FZN7wZuSdyequB1
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id dTt6PDGZnJKN for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 12 Dec 2024 23:33:58 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::44a; helo=mail-pf1-x44a.google.com;
+ envelope-from=35xjbzwckd3ozpgylttemmejc.amkglrcj-ugpcb-jyljgqrq.mqsmqj.mpe@flex--brianvv.bounces.google.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 5520540127
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5520540127
+Received: from mail-pf1-x44a.google.com (mail-pf1-x44a.google.com
+ [IPv6:2607:f8b0:4864:20::44a])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5520540127
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Dec 2024 23:33:58 +0000 (UTC)
+Received: by mail-pf1-x44a.google.com with SMTP id
+ d2e1a72fcca58-727c59ecb9fso1107196b3a.1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Dec 2024 15:33:58 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1734046437; x=1734651237;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=gLVftiiQq4akEB+OBVvUaxKCKfRMsg/7Sv0m+78/QB4=;
+ b=MaKk/7Hztup0C7nfTloY5w7xcgRl4NM7mLEcuT8TSJ7YZr5QGqhW4v8A6l85v74go3
+ mzwtZlZH9jp7oAA4O6JT3a9t4tHrkrhWxZ919ik6u1UhHghIrAoAqBFUmvLfZL0xcXz+
+ BqRZIyw5WrML3lMY5I2IO28LzVMjAbcWH9Rx4g1MDbPNmsgjXADgAHiw3MgSOZ7Ir7lY
+ b+NNKf0Z9jRNQDq+M2BU9Qd3uTjffvv0MXpVTKEN76gZMD0BIPI9gXMU2DUfySa6YEqk
+ tu6vmNd1KdvX18toWKKi/1C0KtyrXCOXptklyRmYK3Zk5vxomCnXuLgdII1IWOGybbho
+ VwHQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXgStzHoY7xGBId/4m1SRJFuLolvRb+Wuk7o5E9BtnuxAR5KPUwZ+HfY1+jE97sH1wq1tUTwKq0ATKOk7i4flA=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yzadl9tMKf1KrSF6is9EmQGGtsx5h8iUKu7fvR844gHUK29A8Qm
+ MAdD2yEF0mw5rhly/nf5ZNWZaTEc1x2lufCIZL1WYyCMsBB/T/zHFPDKkgqtCylpHgo2Nxw80Ih
+ p1nezzg==
+X-Google-Smtp-Source: AGHT+IGEXM7+fNeWc2fIXBSFJ8pi3T0k9Tu+WFppiiRiTyRZ3FGf2nCxK3Dn/BUITxXbwDo18e0BTVZea9s3
+X-Received: from pfbhs6.prod.google.com ([2002:a05:6a00:6906:b0:725:9e76:b700])
+ (user=brianvv job=prod-delivery.src-stubby-dispatcher) by
+ 2002:a05:6a00:895:b0:725:d9b6:3932
+ with SMTP id d2e1a72fcca58-7290c1df088mr644347b3a.15.1734046437615; Thu, 12
+ Dec 2024 15:33:57 -0800 (PST)
+Date: Thu, 12 Dec 2024 23:33:30 +0000
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.47.1.613.gc27f4b7a9f-goog
+Message-ID: <20241212233333.3743239-1-brianvv@google.com>
+From: Brian Vazquez <brianvv@google.com>
+To: Brian Vazquez <brianvv.kernel@gmail.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, 
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, intel-wired-lan@lists.osuosl.org
+Cc: David Decotigny <decot@google.com>, Vivek Kumar <vivekmr@google.com>, 
+ Anjali Singhai <anjali.singhai@intel.com>,
+ Sridhar Samudrala <sridhar.samudrala@intel.com>, 
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org, 
+ emil.s.tantilov@intel.com, Brian Vazquez <brianvv@google.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailman-Approved-At: Thu, 12 Dec 2024 23:43:32 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1734046437; x=1734651237; darn=lists.osuosl.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=gLVftiiQq4akEB+OBVvUaxKCKfRMsg/7Sv0m+78/QB4=;
+ b=qpwapGPSUOOrZRnNja1KOuHQTon9EE5r6dZ/89HF9FJ+P1V8+XzD+eM/oMoRzM4iTk
+ sewYP7NczyAKihvhc9vpVXl4AXN39lLlYqbwVW8PyFRfLfbqJGMIzC9W4qfl6LemHyjN
+ ljC0SCDnmAn9Go2zzE/1SqWZbA6u93QYbJtBYxRzA3wxMfEB8p+iq18e6tV1rTWzyqI+
+ IbXCIUh0Fv0AAr/2pJUMY0RgUfCyWPOcbQ4eNLOQjccwaTm4DI1zzEQuRPFcupCuz3mj
+ 256ky6/dVGuLPq49N5RWzKD84A5+L/LeOpm7yM2qxfatvrvAKDySe7EGsrxUDeW/lQDG
+ qL6Q==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=google.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=HoNswDve
-Subject: [Intel-wired-lan] [tnguy-next-queue:100GbE] BUILD SUCCESS
- 8bbcbcf3ad1decb8c088c4b39ec3958000b90d31
+ unprotected) header.d=google.com header.i=@google.com header.a=rsa-sha256
+ header.s=20230601 header.b=qpwapGPS
+Subject: [Intel-wired-lan] [iwl-next PATCH v3 0/3] IDPF Virtchnl: Enhance
+ error reporting & fix locking/workqueue issues
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,60 +128,44 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 100GbE
-branch HEAD: 8bbcbcf3ad1decb8c088c4b39ec3958000b90d31  ice: Add MDD logging via devlink health
+This patch series addresses several IDPF virtchnl issues:
 
-elapsed time: 1455m
+* Improved error reporting for better diagnostics.
+* Fixed locking sequence in virtchnl message handling to avoid potential race conditions.
+* Converted idpf workqueues to unbound to prevent virtchnl processing delays under heavy load.
 
-configs tested: 41
-configs skipped: 0
+Previously, CPU-bound kworkers for virtchnl processing could be starved,
+leading to transaction timeouts and connection failures.
+This was particularly problematic when IRQ traffic and user space processes contended for the same CPU. 
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+By making the workqueues unbound, we ensure virtchnl processing is not tied to a specific CPU,
+improving responsiveness even under high system load.
 
-tested configs:
-arc        randconfig-001-20241212    gcc-13.2.0
-arc        randconfig-002-20241212    gcc-13.2.0
-arm        randconfig-001-20241212    gcc-14.2.0
-arm        randconfig-002-20241212    clang-20
-arm        randconfig-003-20241212    clang-19
-arm        randconfig-004-20241212    clang-20
-arm64      randconfig-001-20241212    clang-20
-arm64      randconfig-002-20241212    clang-15
-arm64      randconfig-003-20241212    clang-20
-arm64      randconfig-004-20241212    gcc-14.2.0
-csky       randconfig-001-20241212    gcc-14.2.0
-csky       randconfig-002-20241212    gcc-14.2.0
-hexagon    randconfig-001-20241212    clang-14
-hexagon    randconfig-002-20241212    clang-16
-loongarch  randconfig-001-20241212    gcc-14.2.0
-loongarch  randconfig-002-20241212    gcc-14.2.0
-nios2      randconfig-001-20241212    gcc-14.2.0
-nios2      randconfig-002-20241212    gcc-14.2.0
-parisc     randconfig-001-20241212    gcc-14.2.0
-parisc     randconfig-002-20241212    gcc-14.2.0
-powerpc    randconfig-001-20241212    gcc-14.2.0
-powerpc    randconfig-002-20241212    clang-20
-powerpc    randconfig-003-20241212    clang-15
-powerpc64  randconfig-001-20241212    clang-20
-powerpc64  randconfig-002-20241212    gcc-14.2.0
-powerpc64  randconfig-003-20241212    gcc-14.2.0
-riscv      randconfig-001-20241212    clang-17
-riscv      randconfig-002-20241212    clang-20
-s390       randconfig-001-20241212    clang-18
-s390       randconfig-002-20241212    clang-20
-sh                    allmodconfig    gcc-14.2.0
-sh         randconfig-001-20241212    gcc-14.2.0
-sh         randconfig-002-20241212    gcc-14.2.0
-sparc      randconfig-001-20241212    gcc-14.2.0
-sparc      randconfig-002-20241212    gcc-14.2.0
-sparc64    randconfig-001-20241212    gcc-14.2.0
-sparc64    randconfig-002-20241212    gcc-14.2.0
-um         randconfig-001-20241212    gcc-12
-um         randconfig-002-20241212    clang-20
-xtensa     randconfig-001-20241212    gcc-14.2.0
-xtensa     randconfig-002-20241212    gcc-14.2.0
+---
+V3:
+ - Taking over Manoj's v2 series
+ - Dropped "idpf: address an rtnl lock splat in tx timeout recovery
+   path" it needs more rework and will be submitted later
+ - Addresed nit typo
+ - Addresed checkpatch.pl errors and warnings
+V2:
+ - Dropped patch from Willem
+ - RCS/RCT variable naming
+ - Improved commit message on feedback
+v1: https://lore.kernel.org/netdev/20240813182747.1770032-2-manojvishy@google.com/T/
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+
+Manoj Vishwanathan (2):
+  idpf: Acquire the lock before accessing the xn->salt
+  idpf: add more info during virtchnl transaction time out
+
+Marco Leogrande (1):
+  idpf: convert workqueues to unbound
+
+ drivers/net/ethernet/intel/idpf/idpf_main.c     | 15 ++++++++++-----
+ drivers/net/ethernet/intel/idpf/idpf_virtchnl.c | 16 +++++++++++-----
+ 2 files changed, 21 insertions(+), 10 deletions(-)
+
+-- 
+2.47.1.613.gc27f4b7a9f-goog
+
