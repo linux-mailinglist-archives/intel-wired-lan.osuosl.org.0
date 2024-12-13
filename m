@@ -1,94 +1,105 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA9449F0CBB
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Dec 2024 13:53:45 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B340B9F0CC1
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Dec 2024 13:55:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8DEC5417D1;
-	Fri, 13 Dec 2024 12:53:44 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 621B0614F9;
+	Fri, 13 Dec 2024 12:55:18 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id PURjxQjVmJq5; Fri, 13 Dec 2024 12:55:17 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 23EF5614FB
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1734094517;
+	bh=Hxpb47mmMSZXuTrZjQmDXxXCgvAqAmY0oXGS8L9xVxs=;
+	h=From:To:CC:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=EL/Lqfr4WCW9MfXQi1UFl3JlUq6CZ71ZV4CBmeB7be3of1bCXMWCZL/6g4Hs5SD0O
+	 Ety+rLEZXr9YnWujwnEztgqbwqzBdu1Yohyhe8CY7ewvcqON2sNny/N/hMmyoYw8bw
+	 emGhkNZ7pErHpiX5FXpZdRAUkd6dGcbCHbuqaOa4RYSA03HPjDi8NQLC8BZATeuSHK
+	 DTuRb+ruonJaNhA36XCTdGyLh8Z0SzcKl5sc9fQIRpWxbmuPUV7yCNVz8snOFIx8gW
+	 DA8BqcoO5pxL7TxsTOEL+ee/JmxpzFt55vIdLZf7Jr3hgeqTTTTcPuNuCRa7g85KMY
+	 NbQH3LJrUpFbQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 23EF5614FB;
+	Fri, 13 Dec 2024 12:55:17 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 746DCECD
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Dec 2024 12:55:15 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 62A15417D5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Dec 2024 12:55:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id r4P4mC6kJgx1; Fri, 13 Dec 2024 12:53:43 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A7570417D0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1734094422;
-	bh=pzVh31aWs2NP8LhqbDMfDSjESjxfi4CnNp83YjhQt4Q=;
-	h=From:To:CC:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=pM4dZB7+IlXI5nsnBeVuvM158WV9yQ4ViljKlCRChbfW0OdNtWePADejxNqmUjbmp
-	 FPU13lYMJbs545xs6X1swiu23NFWLBv3uA18kQaVMYMkIJ9mB0Sj8uvmMt0HIKavuj
-	 LZEKAF/3+h0IkUBrfKVZI1Bf0Y2WYEkaMuCOuj7bHTdDePq+HlZjmVYUFnB956zdXj
-	 HbeXSADOa2xHJnTnx02FNhkR193hpRlpZw2qNgjrWUecgE0LYO2uVu3ahAwPZ4Xe3E
-	 o23tzSRJS31Ar3dlNqtCSDRJqox9atxMJT4mxYIXmK88Lv+tedvrbMrOp03vI+ZfJy
-	 vu7vLY9srcBnA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A7570417D0;
-	Fri, 13 Dec 2024 12:53:42 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 15AAF1146
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Dec 2024 12:53:40 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E7C5E433CD
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Dec 2024 12:53:39 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RcvrnaaTxQ_F for <intel-wired-lan@lists.osuosl.org>;
- Fri, 13 Dec 2024 12:53:38 +0000 (UTC)
-X-Greylist: delayed 1143 seconds by postgrey-1.37 at util1.osuosl.org;
- Fri, 13 Dec 2024 12:53:35 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 3FCCF433CA
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3FCCF433CA
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.187;
- helo=szxga01-in.huawei.com; envelope-from=linyunsheng@huawei.com;
+ id 7_e1YjomCKhF for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 13 Dec 2024 12:55:14 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.191;
+ helo=szxga05-in.huawei.com; envelope-from=linyunsheng@huawei.com;
  receiver=<UNKNOWN> 
-Received: from szxga01-in.huawei.com (szxga01-in.huawei.com [45.249.212.187])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3FCCF433CA
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Dec 2024 12:53:35 +0000 (UTC)
-Received: from mail.maildlp.com (unknown [172.19.88.194])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Y8pcZ33WXzhZTt;
- Fri, 13 Dec 2024 20:31:58 +0800 (CST)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 95E7F417D8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 95E7F417D8
+Received: from szxga05-in.huawei.com (szxga05-in.huawei.com [45.249.212.191])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 95E7F417D8
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Dec 2024 12:55:11 +0000 (UTC)
+Received: from mail.maildlp.com (unknown [172.19.88.163])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Y8pg81S0Sz1JFFR;
+ Fri, 13 Dec 2024 20:34:12 +0800 (CST)
 Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
- by mail.maildlp.com (Postfix) with ESMTPS id 538CD140123;
- Fri, 13 Dec 2024 20:34:25 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 90437180042;
+ Fri, 13 Dec 2024 20:34:29 +0800 (CST)
 Received: from localhost.localdomain (10.90.30.45) by
  dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Fri, 13 Dec 2024 20:34:25 +0800
+ 15.2.1544.11; Fri, 13 Dec 2024 20:34:29 +0800
 From: Yunsheng Lin <linyunsheng@huawei.com>
 To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
 CC: <somnath.kotur@broadcom.com>, <liuyonglong@huawei.com>,
  <fanghaiqing@huawei.com>, <zhangkun09@huawei.com>, Yunsheng Lin
- <linyunsheng@huawei.com>, Alexander Lobakin <aleksander.lobakin@intel.com>,
- Robin Murphy <robin.murphy@arm.com>, Alexander Duyck
- <alexander.duyck@gmail.com>, Andrew Morton <akpm@linux-foundation.org>, IOMMU
- <iommu@lists.linux.dev>, MM <linux-mm@kvack.org>, Alexei Starovoitov
+ <linyunsheng@huawei.com>, Wei Fang <wei.fang@nxp.com>, Shenwei Wang
+ <shenwei.wang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, Andrew Lunn
+ <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, Jeroen de Borst
+ <jeroendb@google.com>, Praveen Kaligineedi <pkaligineedi@google.com>,
+ Shailend Chand <shailend@google.com>, Tony Nguyen
+ <anthony.l.nguyen@intel.com>, Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
+ Alexander Lobakin <aleksander.lobakin@intel.com>, Alexei Starovoitov
  <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard
- Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, <netdev@vger.kernel.org>,
- <intel-wired-lan@lists.osuosl.org>, <bpf@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>, Saeed
+ Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Tariq Toukan
+ <tariqt@nvidia.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen
+ <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Kalle Valo
+ <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Simon
+ Horman <horms@kernel.org>, Ilias Apalodimas <ilias.apalodimas@linaro.org>,
+ <imx@lists.linux.dev>, <netdev@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <intel-wired-lan@lists.osuosl.org>,
+ <bpf@vger.kernel.org>, <linux-rdma@vger.kernel.org>,
+ <linux-wireless@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>
-Date: Fri, 13 Dec 2024 20:27:31 +0800
-Message-ID: <20241213122739.4050137-1-linyunsheng@huawei.com>
+Date: Fri, 13 Dec 2024 20:27:32 +0800
+Message-ID: <20241213122739.4050137-2-linyunsheng@huawei.com>
 X-Mailer: git-send-email 2.30.0
+In-Reply-To: <20241213122739.4050137-1-linyunsheng@huawei.com>
+References: <20241213122739.4050137-1-linyunsheng@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.90.30.45]
 X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
  dggpemf200006.china.huawei.com (7.185.36.61)
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=huawei.com
-Subject: [Intel-wired-lan] [PATCH RFCv5 0/8] fix two bugs related to
- page_pool
+Subject: [Intel-wired-lan] [PATCH RFCv5 1/8] page_pool: introduce
+ page_pool_to_pp() API
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,121 +115,263 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This version is mainly to see if using page_pool_item metadata
-to keep track of all pages is the correct way to fix the dma
-API misuse problem.
+introduce page_pool_to_pp() API to avoid caller accessing
+page->pp directly.
 
-Note, it is not based on the latest net-next tree yet, but based
-on the below commit in net-next:
-commit da4fa00abe56 ("Merge branch 'mitigate-the-two-reallocations-issue-for-iptunnels'")
+Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
+---
+ drivers/net/ethernet/freescale/fec_main.c          |  8 +++++---
+ .../net/ethernet/google/gve/gve_buffer_mgmt_dqo.c  |  2 +-
+ drivers/net/ethernet/intel/iavf/iavf_txrx.c        |  6 ++++--
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c        | 14 +++++++++-----
+ drivers/net/ethernet/intel/libeth/rx.c             |  2 +-
+ drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c   |  3 ++-
+ drivers/net/netdevsim/netdev.c                     |  6 ++++--
+ drivers/net/wireless/mediatek/mt76/mt76.h          |  2 +-
+ include/net/libeth/rx.h                            |  3 ++-
+ include/net/page_pool/helpers.h                    |  5 +++++
+ net/core/skbuff.c                                  |  3 ++-
+ net/core/xdp.c                                     |  3 ++-
+ 12 files changed, 38 insertions(+), 19 deletions(-)
 
-From the below performance data, the overhead is avoided as much as possible
-for time_bench_page_pool01_fast_path() and time_bench_page_pool02_ptr_ring,
-and there is about 20ns overhead for time_bench_page_pool03_slow() for fixing
-the bug.
-
-Before this patchset:
-root@(none)$ insmod bench_page_pool_simple.ko
-root@(none)$ insmod bench_page_pool_simple.ko
-[   67.667196] bench_page_pool_simple: Loaded
-[   67.748321] time_bench: Type:for_loop Per elem: 0 cycles(tsc) 0.769 ns (step:0) - (measurement period time:0.076977910 sec time_interval:76977910) - (invoke count:100000000 tsc_interval:7697783)
-[   69.851812] time_bench: Type:atomic_inc Per elem: 2 cycles(tsc) 20.862 ns (step:0) - (measurement period time:2.086207700 sec time_interval:2086207700) - (invoke count:100000000 tsc_interval:208620764)
-[   70.019852] time_bench: Type:lock Per elem: 1 cycles(tsc) 15.015 ns (step:0) - (measurement period time:0.150151600 sec time_interval:150151600) - (invoke count:10000000 tsc_interval:15015154)
-[   70.691100] time_bench: Type:rcu Per elem: 0 cycles(tsc) 6.541 ns (step:0) - (measurement period time:0.654142450 sec time_interval:654142450) - (invoke count:100000000 tsc_interval:65414239)
-[   70.708119] bench_page_pool_simple: time_bench_page_pool01_fast_path(): Cannot use page_pool fast-path
-[   70.975262] time_bench: Type:no-softirq-page_pool01 Per elem: 2 cycles(tsc) 25.785 ns (step:0) - (measurement period time:0.257850110 sec time_interval:257850110) - (invoke count:10000000 tsc_interval:25785005)
-[   70.993931] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): Cannot use page_pool fast-path
-[   71.575053] time_bench: Type:no-softirq-page_pool02 Per elem: 5 cycles(tsc) 57.191 ns (step:0) - (measurement period time:0.571916900 sec time_interval:571916900) - (invoke count:10000000 tsc_interval:57191684)
-[   71.593722] bench_page_pool_simple: time_bench_page_pool03_slow(): Cannot use page_pool fast-path
-[   73.384560] time_bench: Type:no-softirq-page_pool03 Per elem: 17 cycles(tsc) 178.197 ns (step:0) - (measurement period time:1.781979820 sec time_interval:1781979820) - (invoke count:10000000 tsc_interval:178197975)
-[   73.403581] bench_page_pool_simple: pp_tasklet_handler(): in_serving_softirq fast-path
-[   73.411485] bench_page_pool_simple: time_bench_page_pool01_fast_path(): in_serving_softirq fast-path
-[   73.678410] time_bench: Type:tasklet_page_pool01_fast_path Per elem: 2 cycles(tsc) 25.780 ns (step:0) - (measurement period time:0.257807630 sec time_interval:257807630) - (invoke count:10000000 tsc_interval:25780758)
-[   73.697686] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): in_serving_softirq fast-path
-[   74.242807] time_bench: Type:tasklet_page_pool02_ptr_ring Per elem: 5 cycles(tsc) 53.608 ns (step:0) - (measurement period time:0.536089620 sec time_interval:536089620) - (invoke count:10000000 tsc_interval:53608957)
-[   74.261996] bench_page_pool_simple: time_bench_page_pool03_slow(): in_serving_softirq fast-path
-[   76.115762] time_bench: Type:tasklet_page_pool03_slow Per elem: 18 cycles(tsc) 184.508 ns (step:0) - (measurement period time:1.845082100 sec time_interval:1845082100) - (invoke count:10000000 tsc_interval:184508203)
-
-After this patchset:
-root@(none)$ insmod bench_page_pool_simple.ko
-[   88.665991] bench_page_pool_simple: Loaded
-[   88.747105] time_bench: Type:for_loop Per elem: 0 cycles(tsc) 0.769 ns (step:0) - (measurement period time:0.076981170 sec time_interval:76981170) - (invoke count:100000000 tsc_interval:7698109)
-[   91.585102] time_bench: Type:atomic_inc Per elem: 2 cycles(tsc) 28.206 ns (step:0) - (measurement period time:2.820699360 sec time_interval:2820699360) - (invoke count:100000000 tsc_interval:282069929)
-[   91.753048] time_bench: Type:lock Per elem: 1 cycles(tsc) 15.005 ns (step:0) - (measurement period time:0.150057320 sec time_interval:150057320) - (invoke count:10000000 tsc_interval:15005727)
-[   92.424306] time_bench: Type:rcu Per elem: 0 cycles(tsc) 6.541 ns (step:0) - (measurement period time:0.654151520 sec time_interval:654151520) - (invoke count:100000000 tsc_interval:65415145)
-[   92.441325] bench_page_pool_simple: time_bench_page_pool01_fast_path(): Cannot use page_pool fast-path
-[   92.696225] time_bench: Type:no-softirq-page_pool01 Per elem: 2 cycles(tsc) 24.560 ns (step:0) - (measurement period time:0.245607210 sec time_interval:245607210) - (invoke count:10000000 tsc_interval:24560715)
-[   92.714893] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): Cannot use page_pool fast-path
-[   93.336550] time_bench: Type:no-softirq-page_pool02 Per elem: 6 cycles(tsc) 61.245 ns (step:0) - (measurement period time:0.612451380 sec time_interval:612451380) - (invoke count:10000000 tsc_interval:61245127)
-[   93.355219] bench_page_pool_simple: time_bench_page_pool03_slow(): Cannot use page_pool fast-path
-[   95.402370] time_bench: Type:no-softirq-page_pool03 Per elem: 20 cycles(tsc) 203.828 ns (step:0) - (measurement period time:2.038286740 sec time_interval:2038286740) - (invoke count:10000000 tsc_interval:203828660)
-[   95.421395] bench_page_pool_simple: pp_tasklet_handler(): in_serving_softirq fast-path
-[   95.429301] bench_page_pool_simple: time_bench_page_pool01_fast_path(): in_serving_softirq fast-path
-[   95.684025] time_bench: Type:tasklet_page_pool01_fast_path Per elem: 2 cycles(tsc) 24.560 ns (step:0) - (measurement period time:0.245605490 sec time_interval:245605490) - (invoke count:10000000 tsc_interval:24560544)
-[   95.703301] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): in_serving_softirq fast-path
-[   96.401877] time_bench: Type:tasklet_page_pool02_ptr_ring Per elem: 6 cycles(tsc) 68.954 ns (step:0) - (measurement period time:0.689544160 sec time_interval:689544160) - (invoke count:10000000 tsc_interval:68954410)
-[   96.421065] bench_page_pool_simple: time_bench_page_pool03_slow(): in_serving_softirq fast-path
-[   98.496283] time_bench: Type:tasklet_page_pool03_slow Per elem: 20 cycles(tsc) 206.653 ns (step:0) - (measurement period time:2.066533210 sec time_interval:2066533210) - (invoke count:10000000 tsc_interval:206653316)
-
-1. https://lore.kernel.org/lkml/8067f204-1380-4d37-8ffd-007fc6f26738@kernel.org/T/
-
-CC: Alexander Lobakin <aleksander.lobakin@intel.com>
-CC: Robin Murphy <robin.murphy@arm.com>
-CC: Alexander Duyck <alexander.duyck@gmail.com>
-CC: Andrew Morton <akpm@linux-foundation.org>
-CC: IOMMU <iommu@lists.linux.dev>
-CC: MM <linux-mm@kvack.org>
-
-Change log:
-V5:
-  1. Support unlimit inflight pages.
-  2. Add some optimization to avoid the overhead of fixing bug.
-
-V4:
-  1. use scanning to do the unmapping
-  2. spilt dma sync skipping into separate patch
-
-V3:
-  1. Target net-next tree instead of net tree.
-  2. Narrow the rcu lock as the discussion in v2.
-  3. Check the ummapping cnt against the inflight cnt.
-
-V2:
-  1. Add a item_full stat.
-  2. Use container_of() for page_pool_to_pp().
-
-Yunsheng Lin (8):
-  page_pool: introduce page_pool_to_pp() API
-  page_pool: fix timing for checking and disabling napi_local
-  page_pool: fix IOMMU crash when driver has already unbound
-  page_pool: support unlimited number of inflight pages
-  page_pool: skip dma sync operation for inflight pages
-  page_pool: use list instead of ptr_ring for ring cache
-  page_pool: batch refilling pages to reduce atomic operation
-  page_pool: use list instead of array for alloc cache
-
- drivers/net/ethernet/freescale/fec_main.c     |   8 +-
- .../ethernet/google/gve/gve_buffer_mgmt_dqo.c |   2 +-
- drivers/net/ethernet/intel/iavf/iavf_txrx.c   |   6 +-
- drivers/net/ethernet/intel/idpf/idpf_txrx.c   |  14 +-
- drivers/net/ethernet/intel/libeth/rx.c        |   2 +-
- .../net/ethernet/mellanox/mlx5/core/en/xdp.c  |   3 +-
- drivers/net/netdevsim/netdev.c                |   6 +-
- drivers/net/wireless/mediatek/mt76/mt76.h     |   2 +-
- include/linux/mm_types.h                      |   2 +-
- include/linux/skbuff.h                        |   1 +
- include/net/libeth/rx.h                       |   3 +-
- include/net/netmem.h                          |  10 +-
- include/net/page_pool/helpers.h               |  11 +
- include/net/page_pool/types.h                 |  57 +-
- net/core/devmem.c                             |   4 +-
- net/core/netmem_priv.h                        |   5 +-
- net/core/page_pool.c                          | 660 ++++++++++++++----
- net/core/page_pool_priv.h                     |  12 +-
- net/core/skbuff.c                             |   3 +-
- net/core/xdp.c                                |   3 +-
- 20 files changed, 650 insertions(+), 164 deletions(-)
-
+diff --git a/drivers/net/ethernet/freescale/fec_main.c b/drivers/net/ethernet/freescale/fec_main.c
+index 1b55047c0237..98fce41d088c 100644
+--- a/drivers/net/ethernet/freescale/fec_main.c
++++ b/drivers/net/ethernet/freescale/fec_main.c
+@@ -1009,7 +1009,8 @@ static void fec_enet_bd_init(struct net_device *dev)
+ 				struct page *page = txq->tx_buf[i].buf_p;
+ 
+ 				if (page)
+-					page_pool_put_page(page->pp, page, 0, false);
++					page_pool_put_page(page_pool_to_pp(page),
++							   page, 0, false);
+ 			}
+ 
+ 			txq->tx_buf[i].buf_p = NULL;
+@@ -1549,7 +1550,7 @@ fec_enet_tx_queue(struct net_device *ndev, u16 queue_id, int budget)
+ 			xdp_return_frame_rx_napi(xdpf);
+ 		} else { /* recycle pages of XDP_TX frames */
+ 			/* The dma_sync_size = 0 as XDP_TX has already synced DMA for_device */
+-			page_pool_put_page(page->pp, page, 0, true);
++			page_pool_put_page(page_pool_to_pp(page), page, 0, true);
+ 		}
+ 
+ 		txq->tx_buf[index].buf_p = NULL;
+@@ -3311,7 +3312,8 @@ static void fec_enet_free_buffers(struct net_device *ndev)
+ 			} else {
+ 				struct page *page = txq->tx_buf[i].buf_p;
+ 
+-				page_pool_put_page(page->pp, page, 0, false);
++				page_pool_put_page(page_pool_to_pp(page),
++						   page, 0, false);
+ 			}
+ 
+ 			txq->tx_buf[i].buf_p = NULL;
+diff --git a/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c b/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
+index 403f0f335ba6..db5926152c72 100644
+--- a/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
++++ b/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
+@@ -210,7 +210,7 @@ void gve_free_to_page_pool(struct gve_rx_ring *rx,
+ 	if (!page)
+ 		return;
+ 
+-	page_pool_put_full_page(page->pp, page, allow_direct);
++	page_pool_put_full_page(page_pool_to_pp(page), page, allow_direct);
+ 	buf_state->page_info.page = NULL;
+ }
+ 
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+index 26b424fd6718..658d8f9a6abb 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+@@ -1050,7 +1050,8 @@ static void iavf_add_rx_frag(struct sk_buff *skb,
+ 			     const struct libeth_fqe *rx_buffer,
+ 			     unsigned int size)
+ {
+-	u32 hr = rx_buffer->page->pp->p.offset;
++	struct page_pool *pool = page_pool_to_pp(rx_buffer->page);
++	u32 hr = pool->p.offset;
+ 
+ 	skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buffer->page,
+ 			rx_buffer->offset + hr, size, rx_buffer->truesize);
+@@ -1067,7 +1068,8 @@ static void iavf_add_rx_frag(struct sk_buff *skb,
+ static struct sk_buff *iavf_build_skb(const struct libeth_fqe *rx_buffer,
+ 				      unsigned int size)
+ {
+-	u32 hr = rx_buffer->page->pp->p.offset;
++	struct page_pool *pool = page_pool_to_pp(rx_buffer->page);
++	u32 hr = pool->p.offset;
+ 	struct sk_buff *skb;
+ 	void *va;
+ 
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+index da2a5becf62f..38ad32678bcc 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+@@ -385,7 +385,8 @@ static void idpf_rx_page_rel(struct libeth_fqe *rx_buf)
+ 	if (unlikely(!rx_buf->page))
+ 		return;
+ 
+-	page_pool_put_full_page(rx_buf->page->pp, rx_buf->page, false);
++	page_pool_put_full_page(page_pool_to_pp(rx_buf->page), rx_buf->page,
++				false);
+ 
+ 	rx_buf->page = NULL;
+ 	rx_buf->offset = 0;
+@@ -3097,7 +3098,8 @@ idpf_rx_process_skb_fields(struct idpf_rx_queue *rxq, struct sk_buff *skb,
+ void idpf_rx_add_frag(struct idpf_rx_buf *rx_buf, struct sk_buff *skb,
+ 		      unsigned int size)
+ {
+-	u32 hr = rx_buf->page->pp->p.offset;
++	struct page_pool *pool = page_pool_to_pp(rx_buf->page);
++	u32 hr = pool->p.offset;
+ 
+ 	skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buf->page,
+ 			rx_buf->offset + hr, size, rx_buf->truesize);
+@@ -3129,8 +3131,10 @@ static u32 idpf_rx_hsplit_wa(const struct libeth_fqe *hdr,
+ 	if (!libeth_rx_sync_for_cpu(buf, copy))
+ 		return 0;
+ 
+-	dst = page_address(hdr->page) + hdr->offset + hdr->page->pp->p.offset;
+-	src = page_address(buf->page) + buf->offset + buf->page->pp->p.offset;
++	dst = page_address(hdr->page) + hdr->offset +
++		page_pool_to_pp(hdr->page)->p.offset;
++	src = page_address(buf->page) + buf->offset +
++		page_pool_to_pp(buf->page)->p.offset;
+ 	memcpy(dst, src, LARGEST_ALIGN(copy));
+ 
+ 	buf->offset += copy;
+@@ -3148,7 +3152,7 @@ static u32 idpf_rx_hsplit_wa(const struct libeth_fqe *hdr,
+  */
+ struct sk_buff *idpf_rx_build_skb(const struct libeth_fqe *buf, u32 size)
+ {
+-	u32 hr = buf->page->pp->p.offset;
++	u32 hr = page_pool_to_pp(buf->page)->p.offset;
+ 	struct sk_buff *skb;
+ 	void *va;
+ 
+diff --git a/drivers/net/ethernet/intel/libeth/rx.c b/drivers/net/ethernet/intel/libeth/rx.c
+index f20926669318..385afca0e61d 100644
+--- a/drivers/net/ethernet/intel/libeth/rx.c
++++ b/drivers/net/ethernet/intel/libeth/rx.c
+@@ -207,7 +207,7 @@ EXPORT_SYMBOL_NS_GPL(libeth_rx_fq_destroy, LIBETH);
+  */
+ void libeth_rx_recycle_slow(struct page *page)
+ {
+-	page_pool_recycle_direct(page->pp, page);
++	page_pool_recycle_direct(page_pool_to_pp(page), page);
+ }
+ EXPORT_SYMBOL_NS_GPL(libeth_rx_recycle_slow, LIBETH);
+ 
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
+index 94b291662087..78866b5473da 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
+@@ -716,7 +716,8 @@ static void mlx5e_free_xdpsq_desc(struct mlx5e_xdpsq *sq,
+ 				/* No need to check ((page->pp_magic & ~0x3UL) == PP_SIGNATURE)
+ 				 * as we know this is a page_pool page.
+ 				 */
+-				page_pool_recycle_direct(page->pp, page);
++				page_pool_recycle_direct(page_pool_to_pp(page),
++							 page);
+ 			} while (++n < num);
+ 
+ 			break;
+diff --git a/drivers/net/netdevsim/netdev.c b/drivers/net/netdevsim/netdev.c
+index 0be47fed4efc..088f4836a0e2 100644
+--- a/drivers/net/netdevsim/netdev.c
++++ b/drivers/net/netdevsim/netdev.c
+@@ -632,7 +632,8 @@ nsim_pp_hold_write(struct file *file, const char __user *data,
+ 		if (!ns->page)
+ 			ret = -ENOMEM;
+ 	} else {
+-		page_pool_put_full_page(ns->page->pp, ns->page, false);
++		page_pool_put_full_page(page_pool_to_pp(ns->page), ns->page,
++					false);
+ 		ns->page = NULL;
+ 	}
+ 	rtnl_unlock();
+@@ -831,7 +832,8 @@ void nsim_destroy(struct netdevsim *ns)
+ 
+ 	/* Put this intentionally late to exercise the orphaning path */
+ 	if (ns->page) {
+-		page_pool_put_full_page(ns->page->pp, ns->page, false);
++		page_pool_put_full_page(page_pool_to_pp(ns->page), ns->page,
++					false);
+ 		ns->page = NULL;
+ 	}
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 0b75a45ad2e8..94a277290909 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -1688,7 +1688,7 @@ static inline void mt76_put_page_pool_buf(void *buf, bool allow_direct)
+ {
+ 	struct page *page = virt_to_head_page(buf);
+ 
+-	page_pool_put_full_page(page->pp, page, allow_direct);
++	page_pool_put_full_page(page_pool_to_pp(page), page, allow_direct);
+ }
+ 
+ static inline void *
+diff --git a/include/net/libeth/rx.h b/include/net/libeth/rx.h
+index 43574bd6612f..beee7ddd77a5 100644
+--- a/include/net/libeth/rx.h
++++ b/include/net/libeth/rx.h
+@@ -137,7 +137,8 @@ static inline bool libeth_rx_sync_for_cpu(const struct libeth_fqe *fqe,
+ 		return false;
+ 	}
+ 
+-	page_pool_dma_sync_for_cpu(page->pp, page, fqe->offset, len);
++	page_pool_dma_sync_for_cpu(page_pool_to_pp(page), page, fqe->offset,
++				   len);
+ 
+ 	return true;
+ }
+diff --git a/include/net/page_pool/helpers.h b/include/net/page_pool/helpers.h
+index 793e6fd78bc5..1659f1995985 100644
+--- a/include/net/page_pool/helpers.h
++++ b/include/net/page_pool/helpers.h
+@@ -83,6 +83,11 @@ static inline u64 *page_pool_ethtool_stats_get(u64 *data, const void *stats)
+ }
+ #endif
+ 
++static inline struct page_pool *page_pool_to_pp(struct page *page)
++{
++	return page->pp;
++}
++
+ /**
+  * page_pool_dev_alloc_pages() - allocate a page.
+  * @pool:	pool from which to allocate
+diff --git a/net/core/skbuff.c b/net/core/skbuff.c
+index 6841e61a6bd0..54e8e7cf2bc9 100644
+--- a/net/core/skbuff.c
++++ b/net/core/skbuff.c
+@@ -1033,7 +1033,8 @@ bool napi_pp_put_page(netmem_ref netmem)
+ 	if (unlikely(!is_pp_netmem(netmem)))
+ 		return false;
+ 
+-	page_pool_put_full_netmem(netmem_get_pp(netmem), netmem, false);
++	page_pool_put_full_netmem(page_pool_to_pp(netmem_to_page(netmem)),
++				  netmem, false);
+ 
+ 	return true;
+ }
+diff --git a/net/core/xdp.c b/net/core/xdp.c
+index bcc5551c6424..e8582036b411 100644
+--- a/net/core/xdp.c
++++ b/net/core/xdp.c
+@@ -384,7 +384,8 @@ void __xdp_return(void *data, struct xdp_mem_info *mem, bool napi_direct,
+ 		/* No need to check ((page->pp_magic & ~0x3UL) == PP_SIGNATURE)
+ 		 * as mem->type knows this a page_pool page
+ 		 */
+-		page_pool_put_full_page(page->pp, page, napi_direct);
++		page_pool_put_full_page(page_pool_to_pp(page), page,
++					napi_direct);
+ 		break;
+ 	case MEM_TYPE_PAGE_SHARED:
+ 		page_frag_free(data);
 -- 
 2.33.0
 
