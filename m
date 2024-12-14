@@ -1,94 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 687919F2031
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Dec 2024 18:55:26 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 481409F209A
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Dec 2024 20:16:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F05EA608B4;
-	Sat, 14 Dec 2024 17:55:24 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7957260730;
+	Sat, 14 Dec 2024 19:16:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ckep1V6Dbn5W; Sat, 14 Dec 2024 17:55:24 +0000 (UTC)
+ id K9jKYZ3-j0DV; Sat, 14 Dec 2024 19:16:48 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 121AE6069A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 55C32606C7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1734198924;
-	bh=IqBw3cwg90RpcIQUENpjTaEkltSEinhor8KDcDWx+sI=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	s=default; t=1734203808;
+	bh=CbNvvOuIDSSAEC+SeiGuDXyQPJHTngc0I8oZ/GkCqsw=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=y2UsrcVuVj2d+fMFZNgvjNn/HyyoTyXTUBQ9AAXOfvjgqe+EiF4G9YutTSoZa7yej
-	 2dHwW5s3rfsSdi8MF/kPF7+mPxzgVHACtfsd16rDh7Mizu4qRVFSXSHDXKcbq/BPlN
-	 83z1qiZQY+47YuZR1X7I/mMIGShMZeY2XNfbQ1JjIjtE5VJhzNJ0ebscK5S2FjIruK
-	 AdLrfi58Dsp8gxpxRvTugvsmJy8i8++TpTL1rxdgjS8L0Un/+g6R5xe0trF/Rxjsbx
-	 Ap5N6OnqckuDRrRHeB7PHbYGsCUeU2HZGoqtl0DdYyZNVWscUQO+2MBFY3LT9EOtxP
-	 xsPMlhaUI3Bsg==
+	b=ZvE9+gter1bTbIfmzoU/fWiJq8iPieKsMyuXXUcg37xf61s+8bGpM5grTUVQ81KbV
+	 j/sfGwHdfzjw+d4LVsC6Wgc+Fbhrl8nGCAz+iUUYYSoM2S06YYm/In4XrrgU8J+zbS
+	 UmX2+ElGqaDZzQZhrPbnO6NBhFVLkeNFo5akIch0CZzMbpTYd9783mrjKl6oYXx+3r
+	 oM0kLDsLHDiewz1wipD+eIUnhaJ9S9JHxMfqnpQTnMOR5dp/blsMzu5460hx2WZ9uh
+	 fgNNk9bIMLCvRFDF3Na/+EJeMVi2tSshGXCXvB7WKJtwpkIgvxOoFb2/md66H5VDA2
+	 h/eyM8k/3kSDg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 121AE6069A;
-	Sat, 14 Dec 2024 17:55:24 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 55C32606C7;
+	Sat, 14 Dec 2024 19:16:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 13936CE
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Dec 2024 17:55:23 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id E687EC5
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Dec 2024 19:16:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0188E40042
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Dec 2024 17:55:23 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id C7E7F6067B
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Dec 2024 19:16:45 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ttR3h5Zmnok1 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 14 Dec 2024 17:55:22 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org B65BD40287
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B65BD40287
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B65BD40287
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Dec 2024 17:55:21 +0000 (UTC)
-X-CSE-ConnectionGUID: MtL4TcWlSpG5MpHMMgRkOg==
-X-CSE-MsgGUID: /AOMAgU+SYuj5CKgZ7HIlw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11286"; a="34777427"
-X-IronPort-AV: E=Sophos;i="6.12,234,1728975600"; d="scan'208";a="34777427"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Dec 2024 09:55:21 -0800
-X-CSE-ConnectionGUID: +TuEQjrnRmKXwfmFvLbwKA==
-X-CSE-MsgGUID: pRdGYQmLTUClzTCDDJMLYA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="101404473"
-Received: from lkp-server01.sh.intel.com (HELO 82a3f569d0cb) ([10.239.97.150])
- by fmviesa005.fm.intel.com with ESMTP; 14 Dec 2024 09:55:20 -0800
-Received: from kbuild by 82a3f569d0cb with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1tMWMH-000D7f-2o
- for intel-wired-lan@lists.osuosl.org; Sat, 14 Dec 2024 17:55:17 +0000
-Date: Sun, 15 Dec 2024 01:54:59 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202412150153.QMvG5z1J-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1734198922; x=1765734922;
- h=date:from:to:subject:message-id;
- bh=ZneDyjJhRwTwsQFKeXJ1UlpQOHec54xE/lIUGPqAQQY=;
- b=jLr6EBeNPuoIMbdKTSRtaO1CPCYsYjlGjYJCr53qXXYtb/X+nzwAz5cW
- y3/0XdTxQDix8WYh6qVn8VJIiDmqoo533kQ0nvWZoHEH93kTiAVCj2H+C
- ZsPuh2J1HHFRb1XEyc9wOSkdefV3aDigj7DSCaEAeO8sRSyPj9qLaR4Mz
- xS6QJzGft7i+Nj0vCFeWhGa1q1qf8g5gBO+2PoggbfQANubiIFJL3qLRX
- O70vSrisjVUXclBmCGmN5MbZKKySi6iEg11H8lqDODhL+eVfTcogzcIjI
- MMQgnGrICJi5ZHGYBwBf6dN4Q7OhAViUe3eSMsKyQAVngSm15H5/NDtnS
- Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id h39fctPfLLFb for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 14 Dec 2024 19:16:45 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=81.19.149.133;
+ helo=mx23lb.world4you.com; envelope-from=gerhard@engleder-embedded.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A7DC5606C7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A7DC5606C7
+Received: from mx23lb.world4you.com (mx23lb.world4you.com [81.19.149.133])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A7DC5606C7
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Dec 2024 19:16:44 +0000 (UTC)
+Received: from [88.117.62.55] (helo=hornet.engleder.at)
+ by mx23lb.world4you.com with esmtpsa (TLS1.2) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.97.1)
+ (envelope-from <gerhard@engleder-embedded.com>)
+ id 1tMXd0-000000003Nx-2xaL; Sat, 14 Dec 2024 20:16:38 +0100
+From: Gerhard Engleder <gerhard@engleder-embedded.com>
+To: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-pci@vger.kernel.org
+Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ andrew+netdev@lunn.ch, davem@davemloft.net, kuba@kernel.org,
+ edumazet@google.com, pabeni@redhat.com, bhelgaas@google.com,
+ pmenzel@molgen.mpg.de, Gerhard Engleder <eg@keba.com>,
+ Vitaly Lifshits <vitaly.lifshits@intel.com>
+Date: Sat, 14 Dec 2024 20:16:23 +0100
+Message-Id: <20241214191623.7256-1-gerhard@engleder-embedded.com>
+X-Mailer: git-send-email 2.39.2
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-AV-Do-Run: Yes
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; 
+ d=engleder-embedded.com; s=dkim11; h=Content-Transfer-Encoding:MIME-Version:
+ Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=CbNvvOuIDSSAEC+SeiGuDXyQPJHTngc0I8oZ/GkCqsw=; b=D4uzkZPhzpQ+KsbSnj003Zzv+g
+ xRY5gD0MZElcwDCc2Q4sP7REH6kYvccz0ZnyFVq1U0RaUeS3wCoIMOu8paX0tyEsyfvEBdmDsYCZR
+ YlceGdIHzhM7Rjdfj7QMXnd6c/WfzXi6ma3aaSoAws+PbDZD7haeBcNWHVtdfEBT+KYU=;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=jLr6EBeN
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- 46773e40fb01b6d76ab63618d1ebf6a7a79682c6
+ header.from=engleder-embedded.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=engleder-embedded.com header.i=@engleder-embedded.com
+ header.a=rsa-sha256 header.s=dkim11 header.b=D4uzkZPh
+Subject: [Intel-wired-lan] [PATCH iwl-next v3] e1000e: Fix real-time
+ violations on link up
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,75 +101,82 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: 46773e40fb01b6d76ab63618d1ebf6a7a79682c6  ice: do not configure destination override for switchdev
+From: Gerhard Engleder <eg@keba.com>
 
-elapsed time: 1457m
+Link down and up triggers update of MTA table. This update executes many
+PCIe writes and a final flush. Thus, PCIe will be blocked until all
+writes are flushed. As a result, DMA transfers of other targets suffer
+from delay in the range of 50us. This results in timing violations on
+real-time systems during link down and up of e1000e in combination with
+an Intel i3-2310E Sandy Bridge CPU.
 
-configs tested: 56
-configs skipped: 1
+The i3-2310E is quite old. Launched 2011 by Intel but still in use as
+robot controller. The exact root cause of the problem is unclear and
+this situation won't change as Intel support for this CPU has ended
+years ago. Our experience is that the number of posted PCIe writes needs
+to be limited at least for real-time systems. With posted PCIe writes a
+much higher throughput can be generated than with PCIe reads which
+cannot be posted. Thus, the load on the interconnect is much higher.
+Additionally, a PCIe read waits until all posted PCIe writes are done.
+Therefore, the PCIe read can block the CPU for much more than 10us if a
+lot of PCIe writes were posted before. Both issues are the reason why we
+are limiting the number of posted PCIe writes in row in general for our
+real-time systems, not only for this driver.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+A flush after a low enough number of posted PCIe writes eliminates the
+delay but also increases the time needed for MTA table update. The
+following measurements were done on i3-2310E with e1000e for 128 MTA
+table entries:
 
-tested configs:
-arc                  randconfig-001-20241214    gcc-13.2.0
-arc                  randconfig-002-20241214    gcc-13.2.0
-arm                  randconfig-001-20241214    gcc-14.2.0
-arm                  randconfig-002-20241214    clang-15
-arm                  randconfig-003-20241214    gcc-14.2.0
-arm                  randconfig-004-20241214    gcc-14.2.0
-arm64                randconfig-001-20241214    clang-15
-arm64                randconfig-002-20241214    clang-20
-arm64                randconfig-003-20241214    clang-15
-arm64                randconfig-004-20241214    gcc-14.2.0
-csky                 randconfig-001-20241214    gcc-14.2.0
-csky                 randconfig-002-20241214    gcc-14.2.0
-hexagon              randconfig-001-20241214    clang-20
-hexagon              randconfig-002-20241214    clang-14
-i386       buildonly-randconfig-001-20241214    gcc-12
-i386       buildonly-randconfig-002-20241214    gcc-12
-i386       buildonly-randconfig-003-20241214    clang-19
-i386       buildonly-randconfig-004-20241214    clang-19
-i386       buildonly-randconfig-005-20241214    gcc-11
-i386       buildonly-randconfig-006-20241214    gcc-12
-loongarch            randconfig-001-20241214    gcc-14.2.0
-loongarch            randconfig-002-20241214    gcc-14.2.0
-nios2                randconfig-001-20241214    gcc-14.2.0
-nios2                randconfig-002-20241214    gcc-14.2.0
-parisc               randconfig-001-20241214    gcc-14.2.0
-parisc               randconfig-002-20241214    gcc-14.2.0
-powerpc              randconfig-001-20241214    clang-20
-powerpc              randconfig-002-20241214    clang-15
-powerpc              randconfig-003-20241214    clang-20
-powerpc64            randconfig-001-20241214    gcc-14.2.0
-powerpc64            randconfig-003-20241214    clang-20
-riscv                randconfig-001-20241214    clang-20
-riscv                randconfig-002-20241214    clang-20
-s390                            allmodconfig    clang-19
-s390                            allyesconfig    gcc-14.2.0
-s390                 randconfig-001-20241214    gcc-14.2.0
-s390                 randconfig-002-20241214    gcc-14.2.0
-sh                              allmodconfig    gcc-14.2.0
-sh                              allyesconfig    gcc-14.2.0
-sh                   randconfig-001-20241214    gcc-14.2.0
-sh                   randconfig-002-20241214    gcc-14.2.0
-sparc                           allmodconfig    gcc-14.2.0
-sparc                randconfig-001-20241214    gcc-14.2.0
-sparc                randconfig-002-20241214    gcc-14.2.0
-sparc64              randconfig-001-20241214    gcc-14.2.0
-sparc64              randconfig-002-20241214    gcc-14.2.0
-um                   randconfig-001-20241214    clang-20
-um                   randconfig-002-20241214    clang-17
-x86_64     buildonly-randconfig-001-20241214    gcc-11
-x86_64     buildonly-randconfig-002-20241214    clang-19
-x86_64     buildonly-randconfig-003-20241214    gcc-12
-x86_64     buildonly-randconfig-004-20241214    gcc-12
-x86_64     buildonly-randconfig-005-20241214    gcc-12
-x86_64     buildonly-randconfig-006-20241214    clang-19
-xtensa               randconfig-001-20241214    gcc-14.2.0
-xtensa               randconfig-002-20241214    gcc-14.2.0
+Single flush after all writes: 106us
+Flush after every write:       429us
+Flush after every 2nd write:   266us
+Flush after every 4th write:   180us
+Flush after every 8th write:   141us
+Flush after every 16th write:  121us
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+A flush after every 8th write delays the link up by 35us and the
+negative impact to DMA transfers of other targets is still tolerable.
+
+Execute a flush after every 8th write. This prevents overloading the
+interconnect with posted writes.
+
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+CC: Vitaly Lifshits <vitaly.lifshits@intel.com>
+Link: https://lore.kernel.org/netdev/f8fe665a-5e6c-4f95-b47a-2f3281aa0e6c@lunn.ch/T/
+Signed-off-by: Gerhard Engleder <eg@keba.com>
+---
+v3:
+- mention problematic platform explicitly (Bjorn Helgaas)
+- improve comment (Paul Menzel)
+
+v2:
+- remove PREEMPT_RT dependency (Andrew Lunn, Przemek Kitszel)
+---
+ drivers/net/ethernet/intel/e1000e/mac.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/e1000e/mac.c b/drivers/net/ethernet/intel/e1000e/mac.c
+index d7df2a0ed629..0174c16bbb43 100644
+--- a/drivers/net/ethernet/intel/e1000e/mac.c
++++ b/drivers/net/ethernet/intel/e1000e/mac.c
+@@ -331,8 +331,15 @@ void e1000e_update_mc_addr_list_generic(struct e1000_hw *hw,
+ 	}
+ 
+ 	/* replace the entire MTA table */
+-	for (i = hw->mac.mta_reg_count - 1; i >= 0; i--)
++	for (i = hw->mac.mta_reg_count - 1; i >= 0; i--) {
+ 		E1000_WRITE_REG_ARRAY(hw, E1000_MTA, i, hw->mac.mta_shadow[i]);
++
++		/* do not queue up too many posted writes to prevent increased
++		 * latency for other devices on the interconnect
++		 */
++		if ((i % 8) == 0 && i != 0)
++			e1e_flush();
++	}
+ 	e1e_flush();
+ }
+ 
+-- 
+2.39.2
+
