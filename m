@@ -1,93 +1,132 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 579E19F36F8
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Dec 2024 18:05:59 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3FB799F3786
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Dec 2024 18:27:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 06F1C60C1F;
-	Mon, 16 Dec 2024 17:05:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EB6FB60E41;
+	Mon, 16 Dec 2024 17:26:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ykkyg6kxX5Sa; Mon, 16 Dec 2024 17:05:57 +0000 (UTC)
+ id tT5c4Hg5iuw3; Mon, 16 Dec 2024 17:26:57 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AF234605C8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4E0EC60B26
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1734368756;
-	bh=y0ycYAuMAPO9UXgHsm2RPG9h4UA+MMZz7iE/cCNoxJ4=;
+	s=default; t=1734370017;
+	bh=ws62IqXxwOmIXvue6QqDBdu01bZQNbrgvdYcyFWCQ+g=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=ppkKaGX0v7ciivgzuYHYfFaAlyAXsB37JlQkM2ztF6PtEmRM1gEQLlwb2619Vtm4e
-	 uC16XBRsBKaKZ9qeP0/deCaiY5517oIQ12pCWcLA1L/p8lZQtn9SXA6QQwvvtFBG4C
-	 Qzxm8b2Ca/lNUIscaqvmgBOHOgwpJiyH4Ju//47FnrKQquxSISOuztVEEpl3B+pn6Q
-	 Be4W/XfYbn8JWNvgJSkXh+ystFoE3/VmRGoK2th8WmsZXX7itZoY9Ju9Xj3hITt3f4
-	 uQSjeVdceqfpaIRCgAYOvU/fKyUphkEoN6/omEG8OW2uNMZhLJeGmUlD3f4jl5/Xci
-	 o8iRv9OEQBOaQ==
+	b=PfxRN4x1PKaiv2/HgDSz3/y2gFHU7bsovwimkAHeqsDw/bSyGQZSPXFlf2SbIoHoc
+	 QrPdNUCoAtGRTMXy3fG7q2Yny4bsR6NT7CrOGvoQckMDxOTzBEjaFPkT2mXRrsTwRQ
+	 9yFjdKsvwPYI8NHGXJC7FpCnjlqftQF9GWPh/vGHt/EXNG+zVfYWuNWqOmCLsL95+l
+	 2Hu2SZXXU3CjvIuivJcs/QFVoX1lRwKaJGvq8S8/hiNmOmJgbX4YPOk21CfrCzvOtB
+	 FVej79ckadrSGrpoDx0ongiSGyZRkrRshLEaFoGMBsCtlehxoQF5rX33KzirlArzQq
+	 8dKYjxNQSf9AA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AF234605C8;
-	Mon, 16 Dec 2024 17:05:56 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4E0EC60B26;
+	Mon, 16 Dec 2024 17:26:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id E6B41C5
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 17:05:54 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 9D11FCE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 17:26:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C25EA40714
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 17:05:54 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 90E1160E40
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 17:26:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id q0DgPvRDWVt0 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 16 Dec 2024 17:05:53 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 779D840710
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 779D840710
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 779D840710
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 17:05:53 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 29DF45C64C2;
- Mon, 16 Dec 2024 17:05:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 93F6DC4CED0;
- Mon, 16 Dec 2024 17:05:50 +0000 (UTC)
-Date: Mon, 16 Dec 2024 17:05:48 +0000
-From: Simon Horman <horms@kernel.org>
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org,
- Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
- Dan Carpenter <dan.carpenter@linaro.org>,
- Ahmed Zaki <ahmed.zaki@intel.com>,
- Larysa Zaremba <larysa.zaremba@intel.com>
-Message-ID: <20241216170548.GI780307@kernel.org>
-References: <20241211132745.112536-2-przemyslaw.kitszel@intel.com>
- <20241212163047.GA73795@kernel.org>
- <7367ea55-1607-4fd2-a392-13a9fe84167f@intel.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 2yFdKeuMAyVe for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 16 Dec 2024 17:26:55 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::32c; helo=mail-wm1-x32c.google.com;
+ envelope-from=olteanv@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org AB9E160B26
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AB9E160B26
+Received: from mail-wm1-x32c.google.com (mail-wm1-x32c.google.com
+ [IPv6:2a00:1450:4864:20::32c])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id AB9E160B26
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 17:26:54 +0000 (UTC)
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-436203f1203so3782415e9.2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 09:26:54 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1734370013; x=1734974813;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ws62IqXxwOmIXvue6QqDBdu01bZQNbrgvdYcyFWCQ+g=;
+ b=edLQopjtKXWX21yUUGfvL3cphGQhREWhVYPCqXhqU5oLoymDo/PxqDPODyFwg5N+bJ
+ ksqdYspVBlXWIGawti9sdTsxyc9wexe+e7LFRM8cmjQ1gMG6DR8+p42UEQyNtWko6Imz
+ hA2iBkj1yDNkTf1jBdYsxMEturKUtzCgOiVsj81rKIoZgKfzfjMDBaf/tu0hWFQ4O7GO
+ wgTLH0C1xgBZq7uOQEqeosYG9GupJGf/hSXkj6Fl+yTjUzXUvK3M6FfINeK9tf/qLTQr
+ 6Bt7d6xvV0SYk0zeaQLdcoSxwbQCwDFVCn8oiKaq079QkghimJAh2x1BpXZEDFoRfoqr
+ Vb7w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVCydn5/Eum6MOTBIz0Lz7prBuvhvEtX24M0WFB63KTw9FtKdJTBoSQ4c2VSC/pkN42scUKFV3Dgw8uUPGzswE=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YwnGsAnkLa9Dpghz18pem02pZVncXUcI/IrBJN54td4CD0z+eNq
+ prZT5yeUdKuC5qANFNXrwkJfo2VGP9WHn7ITKmUNeiBC6A36d6fN
+X-Gm-Gg: ASbGncv7yDrKPDPT3VY1OXdFIZbOfj4ebSiBSfPHPnyBmZpdAZBzdy7gU1dH+OCawGf
+ y0dFRS8A5GGdaAdwjaEdLRwJ56n2YodFE5S7KVay9dLJB0DVQci8+1WqraQMzm1mrTwdf1NmrUZ
+ 2iT7iMHSdjpdZKf46w2b/oiZW4Jjps20SoDJ01tKTcVzP6NkXySq7K9GJlEYdjLtb9NIx8tQ25Z
+ ZCJSpG4f666JRLrh0GL9zTnNPT73UjS/8m61y5w8wcC
+X-Google-Smtp-Source: AGHT+IHJMEc5NsNfUNm/SdMJ561r1AUdBtJzRijqI4fw/BK5BRf5cPDJKOpc00nhQoFK0zD4hEpV4Q==
+X-Received: by 2002:a05:600c:1c14:b0:42c:b55f:f4f with SMTP id
+ 5b1f17b1804b1-4362aaa97e7mr44822235e9.6.1734370012348; 
+ Mon, 16 Dec 2024 09:26:52 -0800 (PST)
+Received: from skbuf ([86.127.124.81]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-388c801a487sm8902263f8f.45.2024.12.16.09.26.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 16 Dec 2024 09:26:51 -0800 (PST)
+Date: Mon, 16 Dec 2024 19:26:48 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, bpf@vger.kernel.org
+Message-ID: <20241216172648.q3fxwaxdkvtjqrfn@skbuf>
+References: <20241216064720.931522-1-faizal.abdul.rahim@linux.intel.com>
+ <20241216064720.931522-1-faizal.abdul.rahim@linux.intel.com>
+ <20241216064720.931522-5-faizal.abdul.rahim@linux.intel.com>
+ <20241216064720.931522-5-faizal.abdul.rahim@linux.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <7367ea55-1607-4fd2-a392-13a9fe84167f@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1734368752;
- bh=o7V9eLY9EflcOwMEm3JOIuftFONI4Cv7WKHRUJrVVBU=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=fYTbq1Ftud10zREkEN0d1t9a+C9QD7pKRMxZQ8c9HfODl5JK1++u7cq2TWGMAeaqM
- InRBE9XJ4qoMzAGOUF6bspup5iLrbwhBjjij97CUnKIu0/RBON7bkb7ZuHlm5RDjWl
- FxtPPT+/3/kXO20t9BeXhdjE3uz9Z+pky0Ogm9EY/P/TiLs/ClHGlGEnxasxvKL3s8
- iUo8XF1Dy+78vg0m7SvPAtm1SQ8VnRZJg1iSWCDpw7J6GuKvoMvoDmYp8IiLZkWVAS
- px8Rj6WItDbopfMQTAWkJsmt50HjZsP5ekt9YQGWM9j0sUfGorduSYUU65pkiFsYNi
- sqEzSaNRf0wAw==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=fYTbq1Ft
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] ice: fix
- ice_parser_rt::bst_key array size
+In-Reply-To: <20241216064720.931522-5-faizal.abdul.rahim@linux.intel.com>
+ <20241216064720.931522-5-faizal.abdul.rahim@linux.intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1734370013; x=1734974813; darn=lists.osuosl.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=ws62IqXxwOmIXvue6QqDBdu01bZQNbrgvdYcyFWCQ+g=;
+ b=DmDBudwS9GVVurmEI5wjPGXABswxKKUG0598cmXaq4prgCCmM7QEvwTCXnL6ity9L4
+ 8o8pS6ejuq4XXt216Uweuruv3FucZL0+HCBoUidYTv515rlOh18CzmRFPKQeh2CTdl0i
+ YRZyJcifPVqp/Q5OhHVtWOhR6PQfSsfedJF6rqV+mc32kTC620ll93vWGk2Q3BZM6DQY
+ XTE6mrMQbE0SdVS7aoGgYR71dth89/1+wdSn5JFl8MJ5xQe3BguwEZTa3949z0vZwF0s
+ V0vd9eouOnIEiAkzbBUr+Rg8OOAeASeyTpP0y6agTonkZceVuNqzzTfrcTkah5lOM0es
+ nRiQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20230601 header.b=DmDBudwS
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 4/9] igc: Add support for
+ receiving frames with all zeroes address
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -103,95 +142,23 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Dec 16, 2024 at 06:58:35AM +0100, Przemek Kitszel wrote:
-> On 12/12/24 17:30, Simon Horman wrote:
-> > On Wed, Dec 11, 2024 at 02:26:36PM +0100, Przemek Kitszel wrote:
-> > > Fix &ice_parser_rt::bst_key size. It was wrongly set to 10 instead of 20
-> > > in the initial impl commit (see Fixes tag). All usage code assumed it was
-> > > of size 20. That was also the initial size present up to v2 of the intro
-> > > series [2], but halved by v3 [3] refactor described as "Replace magic
-> > > hardcoded values with macros." The introducing series was so big that
-> > > some ugliness was unnoticed, same for bugs :/
-> > > 
-> > > ICE_BST_KEY_TCAM_SIZE and ICE_BST_TCAM_KEY_SIZE were differing by one.
-> > > There was tmp variable @j in the scope of edited function, but was not
-> > > used in all places. This ugliness is now gone.
-> > > I'm moving ice_parser_rt::pg_prio a few positions up, to fill up one of
-> > > the holes in order to compensate for the added 10 bytes to the ::bst_key,
-> > > resulting in the same size of the whole as prior to the fix, and miminal
-> > > changes in the offsets of the fields.
-> > > 
-> > > This fix obsoletes Ahmed's attempt at [1].
-> > > 
-> > > [1] https://lore.kernel.org/intel-wired-lan/20240823230847.172295-1-ahmed.zaki@intel.com
-> > > [2] https://lore.kernel.org/intel-wired-lan/20230605054641.2865142-13-junfeng.guo@intel.com
-> > > [3] https://lore.kernel.org/intel-wired-lan/20230817093442.2576997-13-junfeng.guo@intel.com
-> > > 
-> > > Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
-> > > Closes: https://lore.kernel.org/intel-wired-lan/b1fb6ff9-b69e-4026-9988-3c783d86c2e0@stanley.mountain
-> > > Fixes: 9a4c07aaa0f5 ("ice: add parser execution main loop")
-> > > CC: Ahmed Zaki <ahmed.zaki@intel.com>
-> > > Reviewed-by: Larysa Zaremba <larysa.zaremba@intel.com>
-> > > Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> > 
-> > Hi Przemek,
-> > 
-> > I agree that these changes are good.  But I wonder if it would be best to
-> > only treat the update size of bst_key as a fix.
+On Mon, Dec 16, 2024 at 01:47:15AM -0500, Faizal Rahim wrote:
+> From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 > 
-> I was also wondering, to the point that my first version was with
-> all 20 key bytes debug-printed in the exact way as it was prior to the
-> patch. Would be fine to just drop the printing part?
+> The frame preemption verification (as defined by IEEE 802.3-2018
+> Section 99.4.3) handshake is done by the driver, the default
+> configuration of the driver is to only receive frames with the driver
+> address.
+> 
+> So, in preparation for that add a second address to the list of
+> acceptable addresses.
+> 
+> Because the frame preemption "verify_enable" toggle only affects the
+> transmission of verification frames, this needs to always be enabled.
+> As that address is invalid, the impact in practical scenarios should
+> be minimal. But still a bummer that we have to do this.
 
-Sorry, I didn't notice that the printing is updated to accommodate
-the larger key. So on a second review, I think the patch is fine,
-as long as a delimiter is added as noted in my previous email.
-
-> 
-> > 
-> > ...
-> > 
-> > > diff --git a/drivers/net/ethernet/intel/ice/ice_parser_rt.c b/drivers/net/ethernet/intel/ice/ice_parser_rt.c
-> > > index dedf5e854e4b..d9c38ce27e4f 100644
-> > > --- a/drivers/net/ethernet/intel/ice/ice_parser_rt.c
-> > > +++ b/drivers/net/ethernet/intel/ice/ice_parser_rt.c
-> > > @@ -125,22 +125,20 @@ static void ice_bst_key_init(struct ice_parser_rt *rt,
-> > >   	else
-> > >   		key[idd] = imem->b_kb.prio;
-> > > -	idd = ICE_BST_KEY_TCAM_SIZE - 1;
-> > > +	idd = ICE_BST_TCAM_KEY_SIZE - 2;
-> > >   	for (i = idd; i >= 0; i--) {
-> > >   		int j;
-> > >   		j = ho + idd - i;
-> > >   		if (j < ICE_PARSER_MAX_PKT_LEN)
-> > > -			key[i] = rt->pkt_buf[ho + idd - i];
-> > > +			key[i] = rt->pkt_buf[j];
-> > >   		else
-> > >   			key[i] = 0;
-> > >   	}
-> > > -	ice_debug(rt->psr->hw, ICE_DBG_PARSER, "Generated Boost TCAM Key:\n");
-> > > -	ice_debug(rt->psr->hw, ICE_DBG_PARSER, "%02X %02X %02X %02X %02X %02X %02X %02X %02X %02X\n",
-> > > -		  key[0], key[1], key[2], key[3], key[4],
-> > > -		  key[5], key[6], key[7], key[8], key[9]);
-> > > -	ice_debug(rt->psr->hw, ICE_DBG_PARSER, "\n");
-> > > +	ice_debug_array_w_prefix(rt->psr->hw, ICE_DBG_PARSER,
-> > > +				 KBUILD_MODNAME "Generated Boost TCAM Key",
-> > 
-> > Should there be a delimeter between KBUILD_MODNAME and "Generated ..." ?
-> > e.g.:
-> 
-> thank you :)
-> 
-> > 
-> > 				 KBUILD_MODNAME ": Generated Boost TCAM Key",
-> > 
-> > > +				 key, ICE_BST_TCAM_KEY_SIZE);
-> > >   }
-> > >   static u16 ice_bit_rev_u16(u16 v, int len)
-> > > 
-> > > base-commit: 51a00be6a0994da2ba6b4ace3b7a0d9373b4b25e
-> > > -- 
-> > > 2.46.0
-> > > 
-> > > 
-> 
+Stuff that happened since this patch was written: "ethtool --set-mm
+pmac-enabled on" exists. You don't have to accept verification frames if
+the pMAC is disabled. You can enable the reception of 00:00:00:00:00:00
+using that, and keep it off by default.
