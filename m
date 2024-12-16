@@ -1,124 +1,128 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2BB3E9F3518
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Dec 2024 16:57:43 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 076019F3543
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Dec 2024 17:05:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9F2F580D05;
-	Mon, 16 Dec 2024 15:57:34 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 33F3781DEE;
+	Mon, 16 Dec 2024 16:05:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RBl4etBYiblz; Mon, 16 Dec 2024 15:57:33 +0000 (UTC)
+ id 5G_AOv0VH4Zo; Mon, 16 Dec 2024 16:05:23 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8DD4780CF4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2A60481E78
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1734364653;
-	bh=GggK6Hg5aofy/l6GPtSv4OcqBaHliS9ouBKASQPpya4=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
+	s=default; t=1734365123;
+	bh=dG99stxxx20DSdS/lbls1Jk7NIYbcNyenoZoJZYfN7g=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=dltvjVTQ8WV8gq6TDy2OWGT1FlFkZ1ms4eqMOAnADAV2NVKSMYJJjw3Man1R906P7
-	 tmnh9GEiiED/CXClU7MqPnPg78GP9s6TpF57ZnTW3cAW2tPPcsubyrnDkZUJsKznXK
-	 YgFS180iWLiK/OJ9p8ZzkpSofoa+l/8aFhsmkF9M75fWMVrxXtobC1QXEdBVb9CPXL
-	 IYJWEr4Mbz1+dqKXRpXjeK34vOjMDFZtSAJI1w5wzA31XusAbq2ALObHR8cYydoCCc
-	 kClS5bnfgsA8JnBxDnV5DW5hwgWZNuwZp3IRprtYKnUyH0ctReJv1LnKO5rYCuNc29
-	 FjucKt6x6jFeQ==
+	 From;
+	b=2M2s5yAAs0dS0AyqnCd3JoGUeegQfadM4IXnn+S5m35kcURJRAVoHUlotBqaEwjIo
+	 632mtlf67yTT8HlpdAQNAYSosjUFWoVb1qjQQM2aOusT73vGWO40vCVDgpLtkP/uZO
+	 cw61DJXQ3WwubWxfr7+guADxytO6Ym2OYSdqUTF8pRck6sl9rtjtBZ6aN+cMCfdz8W
+	 oAUbJ/yJRbMPOswe028JT658IxO3unNt2kTq+yPHSSYDjrTxSQhpLUww+vPhROqQtw
+	 8bRJAc4zqyHw/1I/LeSg+FRk57k85BrGdXkS4sCIIuqg5GovkgeN94/dffZlJ3/khZ
+	 fm95a8itMFHog==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8DD4780CF4;
-	Mon, 16 Dec 2024 15:57:33 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2A60481E78;
+	Mon, 16 Dec 2024 16:05:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 345FDC1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 15:57:31 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 516F0C5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 16:05:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0E72040283
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 15:57:31 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3F7F860B4F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 16:05:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id aSQzmnVlPTSW for <intel-wired-lan@lists.osuosl.org>;
- Mon, 16 Dec 2024 15:57:29 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=mschmidt@redhat.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 48453404FD
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 48453404FD
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 48453404FD
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 15:57:28 +0000 (UTC)
-Received: from mail-ot1-f71.google.com (mail-ot1-f71.google.com
- [209.85.210.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-203-cNw-vNbvNL6yYUDY75Nnkg-1; Mon, 16 Dec 2024 10:57:26 -0500
-X-MC-Unique: cNw-vNbvNL6yYUDY75Nnkg-1
-X-Mimecast-MFC-AGG-ID: cNw-vNbvNL6yYUDY75Nnkg
-Received: by mail-ot1-f71.google.com with SMTP id
- 46e09a7af769-71e222441b7so708806a34.2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 07:57:26 -0800 (PST)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Jn2P2Sp7L3On for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 16 Dec 2024 16:05:19 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::330; helo=mail-wm1-x330.google.com;
+ envelope-from=olteanv@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 0BA316077F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0BA316077F
+Received: from mail-wm1-x330.google.com (mail-wm1-x330.google.com
+ [IPv6:2a00:1450:4864:20::330])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0BA316077F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 16:05:18 +0000 (UTC)
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-436284cdbe0so5185005e9.3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 08:05:18 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734364645; x=1734969445;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=GggK6Hg5aofy/l6GPtSv4OcqBaHliS9ouBKASQPpya4=;
- b=u/vqMpRelRVkasnCEOb7pUGj5adJFUJvJoE88/7Y87Fn/GLPGRmkbpxdaRhJjDPfci
- IiTkGE7Agf3A4LXdkN3GKJwYQs/nLOezN4ITKZ+25+s4YDaSCMpqdJoLCesDrHY/mEcX
- PtBYlMOwx/9fXyjHAa3i/ish9ZBicRTIdSdQkWue83VnKk1qvd9JmIC33UX5N5nlzkMy
- SYjG2/RVSEiqhsivLU3OfSX2+6HKFpdvsO4fhR2+KiK7LDGeG+VcRHzi++LJVPVa2roF
- mOgPKBqjdXYdJAwh0LZ9RenHpXwX8DZ8I3T8+iEm6A51aRlZp+6HnwHp0KWJ7EkaIj2u
- UDSg==
+ d=1e100.net; s=20230601; t=1734365117; x=1734969917;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=dG99stxxx20DSdS/lbls1Jk7NIYbcNyenoZoJZYfN7g=;
+ b=lRU6ffisPN5eGWnGFoVQ4ZxpnjvHupZYhRtkKKrBUcbW9zdVrco3gzLo3+c8T06GEt
+ Te+tEzEYZC4Fuw6zFalOZat9INC3WZQbL0J+F6YCM8xljx4hiqAuIqnb6EQSQ8M1s1+I
+ LebLchpDc5p3nlzX8eySHQ3oCEErhPqRq+2k+eqzDfRIBE0WGJUhp6KhtnUUrn9zJhzy
+ ngjWDU+mQN2PBtWuFhE1ilJ/k8hSkaTF1Pmtdm5k5WB42hWyeeheo3nAtA/5GBRTe3hc
+ 5JERAodf9sLtIXKkAiDAGkjStqrsostsn7cruNH1d70CHK9RXE+ED9aC5lZGCF6gRump
+ XTGg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVckbD5A6Sc6IHS1JG8DJjyTGRmBctAq4BFMEBqQUvMR7T9F+GOqjyVpJvwoVBOjiIbu2Ro0OKRlY16KysVnsM=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yw7SLX59z2jJ7GfPHz6bP/VMhikvf4q7q0IjIgG0E0HeVCvNHiz
- BNNY56U31NKEH5AcYsluDr/MhQF6x7R+IRNVgzuuXqzEMpFR2yPXR5mDnlTxkyrusUoYR/B7VjX
- HcPyl9nyCnfbu/UkTIuw+D+e0YrW3qxfxT4WmJl5OSBX0c65uiKqfiHdWDsnkqFkSSGVOqLHPVv
- D4U/lT+2SY83O5Gs5ckNSd/JCvFuewJcmOqYK+8fScgA==
-X-Gm-Gg: ASbGncs/1ePlvtMBQpa40t155c3rszMC/ZExOESOEJxpuKfFICbtWgGTlTXyon5a4XB
- zd7tx/zwTwUTLNQsq8dFzqynlKJsa+5p8N/B7gQ==
-X-Received: by 2002:a05:6870:a44a:b0:29e:79ce:933a with SMTP id
- 586e51a60fabf-2a3ac926e06mr2858378fac.12.1734364645404; 
- Mon, 16 Dec 2024 07:57:25 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGK1g/uqWSnnXcpZH9OFchKgNHws71LzECyhL9q8HUo0ekk6UxMypcTN7DdAw7xktTJzNxWHoKvpzSQOAMeTAY=
-X-Received: by 2002:a05:6870:a44a:b0:29e:79ce:933a with SMTP id
- 586e51a60fabf-2a3ac926e06mr2858370fac.12.1734364645104; Mon, 16 Dec 2024
- 07:57:25 -0800 (PST)
+ AJvYcCXuYZUCbE9DhOR8ThzihDjvDhoCnZadYUXdH6VZTpNQyqkCn+PlXVTiX008/DiiLP0YAkY0bVYN0ZEKwOOWIp8=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YxF74XShGM0Ol4WP7Qo3jO0PczSAYUlVGlRt/DhYQYEcuWMuzPc
+ Nb5a6RMonFp0A00xdlZUL7KNahHhoWPQ5dcFXyYo9s0k+HgiMdfK
+X-Gm-Gg: ASbGncvneoR3TCbWtk6GT1xQy3A6YAwS1S4WZqerrg96LaaokGyfRw29NQAMEtXtnVN
+ HoqvSZsX+LNqpaO9tkrlE2C6LdWh//iNM+Z+JjgzUDsqgregzbk7oFjIMvNWlRkyjBwqG4BQmAa
+ kRjj50cJrQdJqScdN75MQMRtvo+JgbkzLw6v5W3I2ZPQ1dIkmYRLkgh7OWMXhSUtz+8/zFRjeHi
+ FpVpJQOS08KDd7whpMMDqlg1WXUZGZEo2G73bZxLDUv
+X-Google-Smtp-Source: AGHT+IHYj/tJTjJciBlbThZka3fht5do0jmD0uAVpuX39xUUzlLX6XnsjobX3DJLyFyd+Ta+kfQJDw==
+X-Received: by 2002:a05:6000:1846:b0:37d:4aa2:5cfe with SMTP id
+ ffacd0b85a97d-38880ac5c89mr4680766f8f.6.1734365116394; 
+ Mon, 16 Dec 2024 08:05:16 -0800 (PST)
+Received: from skbuf ([86.127.124.81]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-436360159aasm88625815e9.6.2024.12.16.08.05.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 16 Dec 2024 08:05:15 -0800 (PST)
+Date: Mon, 16 Dec 2024 18:05:13 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, bpf@vger.kernel.org
+Message-ID: <20241216160513.24i4ehroff47iwzi@skbuf>
+References: <20241216064720.931522-1-faizal.abdul.rahim@linux.intel.com>
+ <20241216064720.931522-10-faizal.abdul.rahim@linux.intel.com>
 MIME-Version: 1.0
-References: <20241212153417.165919-1-mschmidt@redhat.com>
- <20241212153417.165919-3-mschmidt@redhat.com>
- <40d030d5-8d30-41b7-ae86-8baae6f594c5@intel.com>
-In-Reply-To: <40d030d5-8d30-41b7-ae86-8baae6f594c5@intel.com>
-From: Michal Schmidt <mschmidt@redhat.com>
-Date: Mon, 16 Dec 2024 16:57:13 +0100
-Message-ID: <CADEbmW10cLEeSm5qZDSXFVOkzM3k1-iHZTX62T3jAV7BV6A8uw@mail.gmail.com>
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: lNqOJBujraT10cc-N9Vt7NX6O8Gckd_GLrllWxw_2Ek_1734364645
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241216064720.931522-10-faizal.abdul.rahim@linux.intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1734364647;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=GggK6Hg5aofy/l6GPtSv4OcqBaHliS9ouBKASQPpya4=;
- b=QvALylanPOtkB8s42GJ7BqLt4/0oH4f+htD+bj2kEnPSfVDPlkZ1t0wcutDVFdyQAd7ewm
- A92B6KgETMSYMUYos4KWIY8p2IOXHrqCwWo0HCmzTPBYHeEdanc7GZ9aWTztV//yGFgz84
- C6OSxW3hwAD73YpKXgvxqvGxdcUF72s=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ d=gmail.com; s=20230601; t=1734365117; x=1734969917; darn=lists.osuosl.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=dG99stxxx20DSdS/lbls1Jk7NIYbcNyenoZoJZYfN7g=;
+ b=MlpgIviHV1hqCzPQRGFzBqnS6m4gZyxWKYRVmC8xylFjjW+LKdjFmaMPQcGhR5hXi+
+ ReYIiRle7/l9YYvsQsu6wZ4rCP16ro8gMz3vbWVrSdtFZdJ06iLjpPjRMk/hk+wFH0+v
+ qCjWOdVncV7E8Ih+v9qDmQaedKfUYZGjlpY1SJLkceqoGjIzO7CcUp44pLm4cZB1Hbdt
+ h9WhJ1QU6HHdecjfRN7+qaPYBC+yhVsROfBc4Um8znO/1nK3/uLlZwpHVoDY6+BJ+flS
+ tAPS6zjgsn8/Tv98sqpOBjPq/mlzgxqeziOFIXQNnZ5RquDCBqZNO46hDfC5YNoeY/4V
+ m7VA==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=QvALylan
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 2/3] ice: lower the latency
- of GNSS reads
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20230601 header.b=MlpgIviH
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 9/9] igc: Add support to get
+ frame preemption statistics via ethtool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -131,182 +135,165 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
- Karol Kolacinski <karol.kolacinski@intel.com>,
- intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Johan Hovold <johan@kernel.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Dec 16, 2024 at 6:39=E2=80=AFAM Przemek Kitszel
-<przemyslaw.kitszel@intel.com> wrote:
-> On 12/12/24 16:34, Michal Schmidt wrote:
-> > The E810 is connected to the u-blox GNSS module over I2C. The ice drive=
-r
-> > periodically (every ~20ms) sends AdminQ commands to poll the u-blox for
-> > available data. Most of the time, there's no data. When the u-blox
-> > finally responds that data is available, usually it's around 800 bytes.
-> > It can be more or less, depending on how many NMEA messages were
-> > configured using ubxtool. ice then proceeds to read all the data.
-> > AdminQ and I2C are slow. The reading is performed in chunks of 15 bytes=
-.
-> > ice reads all of the data before passing it to the kernel GNSS subsyste=
-m
-> > and onwards to userspace.
-> >
-> > Improve the NMEA message receiving latency. Pass each 15-bytes chunk to
-> > userspace as soon as it's received.
-> >
->
-> Thank you, overall it makes a good addition!
-> Please find some review feedback below.
->
-> > Tested-by: Miroslav Lichvar <mlichvar@redhat.com>
-> > Signed-off-by: Michal Schmidt <mschmidt@redhat.com>
-> > ---
-> >   drivers/net/ethernet/intel/ice/ice_gnss.c | 29 +++++++---------------=
--
-> >   drivers/net/ethernet/intel/ice/ice_gnss.h |  6 ++++-
-> >   2 files changed, 14 insertions(+), 21 deletions(-)
-> >
-> > diff --git a/drivers/net/ethernet/intel/ice/ice_gnss.c b/drivers/net/et=
-hernet/intel/ice/ice_gnss.c
-> > index 9b1f970f4825..7922311d2545 100644
-> > --- a/drivers/net/ethernet/intel/ice/ice_gnss.c
-> > +++ b/drivers/net/ethernet/intel/ice/ice_gnss.c
-> > @@ -88,10 +88,10 @@ static void ice_gnss_read(struct kthread_work *work=
-)
-> >       unsigned long delay =3D ICE_GNSS_POLL_DATA_DELAY_TIME;
-> >       unsigned int i, bytes_read, data_len, count;
-> >       struct ice_aqc_link_topo_addr link_topo;
-> > +     char buf[ICE_MAX_I2C_DATA_SIZE];
-> >       struct ice_pf *pf;
-> >       struct ice_hw *hw;
-> >       __be16 data_len_b;
-> > -     char *buf =3D NULL;
-> >       u8 i2c_params;
-> >       int err =3D 0;
-> >
-> > @@ -121,16 +121,6 @@ static void ice_gnss_read(struct kthread_work *wor=
-k)
-> >               goto requeue;
-> >
-> >       /* The u-blox has data_len bytes for us to read */
-> > -
-> > -     data_len =3D min_t(typeof(data_len), data_len, PAGE_SIZE);
->
-> prior to your patch, the buffer is too small when there is more than
-> PAGE_SIZE bytes to read, that warrants sending it as -net
-> There is not that much code here, and with your description it is easy
-> to follow, and the change is really "atomic" (send out each time instead
-> of just once at the end), no refactors, so feels nice for -net IMO.
+On Mon, Dec 16, 2024 at 01:47:20AM -0500, Faizal Rahim wrote:
+> Implemented "ethtool --include-statistics --show-mm" callback for IGC.
+> 
+> Tested preemption scenario to check preemption statistics:
+> 1) Trigger verification handshake on both boards:
+>     $ sudo ethtool --set-mm enp1s0 pmac-enabled on
+>     $ sudo ethtool --set-mm enp1s0 tx-enabled on
+>     $ sudo ethtool --set-mm enp1s0 verify-enabled on
+> 2) Set preemptible or express queue in taprio for tx board:
+>     $ sudo tc qdisc replace dev enp1s0 parent root handle 100 taprio \
+>       num_tc 4 map 0 1 2 3 0 0 0 0 0 0 0 0 0 0 0 0 \
+>       queues 1@0 1@1 1@2 1@3 base-time 0 sched-entry S F 100000 \
+>       fp E E P P
 
-OK, the next version will target -net.
+Hmm, the prio_tc_map pattern changed since the last time I looked at igc
+examples? It was in decreasing order before? How do you handle backwards
+compatibility with the Tx ring strict priority default configuration?
+I haven't downloaded the entire set locally, will do so later.
 
-> > -
-> > -     buf =3D (char *)get_zeroed_page(GFP_KERNEL);
-> > -     if (!buf) {
-> > -             err =3D -ENOMEM;
-> > -             goto requeue;
-> > -     }
-> > -
-> > -     /* Read received data */
-> >       for (i =3D 0; i < data_len; i +=3D bytes_read) {
-> >               unsigned int bytes_left =3D data_len - i;
-> >
-> > @@ -139,19 +129,18 @@ static void ice_gnss_read(struct kthread_work *wo=
-rk)
-> >
-> >               err =3D ice_aq_read_i2c(hw, link_topo, ICE_GNSS_UBX_I2C_B=
-US_ADDR,
-> >                                     cpu_to_le16(ICE_GNSS_UBX_EMPTY_DATA=
-),
-> > -                                   bytes_read, &buf[i], NULL);
-> > +                                   bytes_read, buf, NULL);
-> >               if (err)
-> > -                     goto free_buf;
-> > +                     goto requeue;
-> > +
-> > +             count =3D gnss_insert_raw(pf->gnss_dev, buf, bytes_read);
-> > +             if (count !=3D bytes_read)
->
-> Before there was nothing to do on this condition, but now it's in the
-> loop, so I would expect to either break or retry or otherwise recover
-> here. Just going with the next step of the loop when you have lost some
-> bytes feels wrong.
+> 3) Send large size packets on preemptible queue
+> 4) Send small size packets on express queue to preempt packets in
+>    preemptible queue
+> 5) Show preemption statistics on the receiving board:
+>    $ ethtool --include-statistics --show-mm enp1s0
+>      MAC Merge layer state for enp1s0:
+>      pMAC enabled: on
+>      TX enabled: on
+>      TX active: on
+>      TX minimum fragment size: 252
+>      RX minimum fragment size: 252
+>      Verify enabled: on
+>      Verify time: 128
+>      Max verify time: 128
+>      Verification status: SUCCEEDED
+>      Statistics:
+>      	MACMergeFrameAssErrorCount: 0
+> 	MACMergeFrameSmdErrorCount: 0
+> 	MACMergeFrameAssOkCount: 511
+> 	MACMergeFragCountRx: 764
+> 	MACMergeFragCountTx: 0
+> 	MACMergeHoldCount: 0
+> 
+> Co-developed-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+> Signed-off-by: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
+> ---
+>  drivers/net/ethernet/intel/igc/igc_ethtool.c | 40 ++++++++++++++++++++
+>  drivers/net/ethernet/intel/igc/igc_regs.h    | 19 ++++++++++
+>  2 files changed, 59 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> index 16aa6e4e1727..90a9dbb0d901 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> @@ -1835,6 +1835,45 @@ static int igc_ethtool_set_mm(struct net_device *netdev,
+>  	return igc_tsn_offload_apply(adapter);
+>  }
+>  
+> +/**
+> + * igc_ethtool_get_frame_ass_error - Get the frame assembly error count.
+> + * @dev: Pointer to the net_device structure.
+> + * @return: The count of frame assembly errors.
 
-Userspace should handle corrupt NMEA (or UBX) messages anyway. And in
-the driver we don't interpret the protocol, so we don't know where the
-next valid message starts. I don't see what else we can do.
+I may be wrong, but I think the syntax for kernel-doc is "Returns: "
 
-> Not sure how much about that case is theoretical,
-> perhaps API could be fixed instead.
+> + */
+> +static u64 igc_ethtool_get_frame_ass_error(struct net_device *dev)
+> +{
+> +	struct igc_adapter *adapter = netdev_priv(dev);
+> +	u32 ooo_smdc, ooo_frame_cnt, ooo_frag_cnt; /* Out of order statistics */
+> +	struct igc_hw *hw = &adapter->hw;
+> +	u32 miss_frame_frag_cnt;
+> +	u32 reg_value;
+> +
+> +	reg_value = rd32(IGC_PRMEXPRCNT);
+> +	ooo_smdc = reg_value & IGC_PRMEXPRCNT_OOO_SMDC;
+> +	ooo_frame_cnt = (reg_value & IGC_PRMEXPRCNT_OOO_FRAME_CNT)
+> +			 >> IGC_PRMEXPRCNT_OOO_FRAME_CNT_SHIFT;
+> +	ooo_frag_cnt = (reg_value & IGC_PRMEXPRCNT_OOO_FRAG_CNT)
+> +			>> IGC_PRMEXPRCNT_OOO_FRAG_CNT_SHIFT;
+> +	miss_frame_frag_cnt = (reg_value & IGC_PRMEXPRCNT_MISS_FRAME_FRAG_CNT)
+> +			      >> IGC_PRMEXPRCNT_MISS_FRAME_FRAG_CNT_SHIFT;
 
-It might be a good idea to change the gnss subsystem API to allow
-overwriting old buffered data, rather than reject new data.
-[+CC:Johan].
+Candidates for FIELD_GET()?
 
-> > +                     dev_dbg(ice_pf_to_dev(pf),
->
-> in case of v2, I would squash the first commit here, an "additional
-> paragraph" would be enough
+> +
+> +	return ooo_smdc + ooo_frame_cnt + ooo_frag_cnt + miss_frame_frag_cnt;
+> +}
+> +
+> +static void igc_ethtool_get_mm_stats(struct net_device *dev,
+> +				     struct ethtool_mm_stats *stats)
+> +{
+> +	struct igc_adapter *adapter = netdev_priv(dev);
+> +	struct igc_hw *hw = &adapter->hw;
+> +
+> +	stats->MACMergeFrameAssErrorCount = igc_ethtool_get_frame_ass_error(dev);
+> +	stats->MACMergeFrameSmdErrorCount = 0; /* Not available in IGC */
+> +	stats->MACMergeFrameAssOkCount = rd32(IGC_PRMPTDRCNT);
+> +	stats->MACMergeFragCountRx =  rd32(IGC_PRMEVNTRCNT);
+> +	stats->MACMergeFragCountTx = rd32(IGC_PRMEVNTTCNT);
+> +	stats->MACMergeHoldCount = 0; /* Not available in IGC */
 
-OK, I will squash the two patches.
+Don't report counters as zero when in reality you don't know.
 
-> > +                             "gnss_insert_raw ret=3D%d size=3D%d\n",
-> > +                             count, bytes_read);
-> >       }
-> >
-> > -     count =3D gnss_insert_raw(pf->gnss_dev, buf, i);
-> > -     if (count !=3D i)
-> > -             dev_dbg(ice_pf_to_dev(pf),
-> > -                     "gnss_insert_raw ret=3D%d size=3D%d\n",
-> > -                     count, i);
-> >       delay =3D ICE_GNSS_TIMER_DELAY_TIME;
-> > -free_buf:
-> > -     free_page((unsigned long)buf);
-> >   requeue:
-> >       kthread_queue_delayed_work(gnss->kworker, &gnss->read_work, delay=
-);
-> >       if (err)
-> > diff --git a/drivers/net/ethernet/intel/ice/ice_gnss.h b/drivers/net/et=
-hernet/intel/ice/ice_gnss.h
-> > index 15daf603ed7b..e0e939f1b102 100644
-> > --- a/drivers/net/ethernet/intel/ice/ice_gnss.h
-> > +++ b/drivers/net/ethernet/intel/ice/ice_gnss.h
-> > @@ -8,7 +8,11 @@
-> >   #define ICE_GNSS_POLL_DATA_DELAY_TIME       (HZ / 50) /* poll every 2=
-0 ms */
-> >   #define ICE_GNSS_TIMER_DELAY_TIME   (HZ / 10) /* 0.1 second per messa=
-ge */
-> >   #define ICE_GNSS_TTY_WRITE_BUF              250
-> > -#define ICE_MAX_I2C_DATA_SIZE                FIELD_MAX(ICE_AQC_I2C_DAT=
-A_SIZE_M)
-> > +/* ICE_MAX_I2C_DATA_SIZE is FIELD_MAX(ICE_AQC_I2C_DATA_SIZE_M).
-> > + * However, FIELD_MAX() does not evaluate to an integer constant expre=
-ssion,
-> > + * so it can't be used for the size of a non-VLA array.
-> > + */
-> > +#define ICE_MAX_I2C_DATA_SIZE                15
->
-> static_assert() is better than doc to say that two values are the same
+Just don't assign values to these. mm_prepare_data() -> ethtool_stats_init()
+presets them to 0xffffffffffffffff (ETHTOOL_STAT_NOT_SET), and
+mm_put_stats() -> mm_put_stat() detects whether they are still equal to
+this value, and if they are, does not report netlink attributes for them.
 
-Unfortunately, you can't use FIELD_MAX() in a static_assert(), for the
-same reason you can't use it for sizing an array. You'll get either
-"error: expression in static assertion is not constant", or "error:
-braced-group within expression allowed only inside a function",
-depending on where you put the static_assert().
+> +}
+> +
+>  static int igc_ethtool_get_link_ksettings(struct net_device *netdev,
+>  					  struct ethtool_link_ksettings *cmd)
+>  {
+> @@ -2124,6 +2163,7 @@ static const struct ethtool_ops igc_ethtool_ops = {
+>  	.get_channels		= igc_ethtool_get_channels,
+>  	.get_mm			= igc_ethtool_get_mm,
+>  	.set_mm			= igc_ethtool_set_mm,
+> +	.get_mm_stats		= igc_ethtool_get_mm_stats,
+>  	.set_channels		= igc_ethtool_set_channels,
+>  	.get_priv_flags		= igc_ethtool_get_priv_flags,
+>  	.set_priv_flags		= igc_ethtool_set_priv_flags,
+> diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
+> index 12ddc5793651..f40946cce35a 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_regs.h
+> +++ b/drivers/net/ethernet/intel/igc/igc_regs.h
+> @@ -222,6 +222,25 @@
+>  
+>  #define IGC_FTQF(_n)	(0x059E0 + (4 * (_n)))  /* 5-tuple Queue Fltr */
+>  
+> +/* Time sync registers - preemption statistics */
+> +#define IGC_PRMEVNTTCNT		0x04298	/* TX Preemption event counter */
+> +#define IGC_PRMEVNTRCNT		0x0429C	/* RX Preemption event counter */
+> +#define IGC_PRMPTDRCNT		0x04284	/* Good RX Preempted Packets */
+> +
+> + /* Preemption Exception Counter */
+> +#define IGC_PRMEXPRCNT					0x042A0
+> +/* Received out of order packets with SMD-C and NOT ReumeRx */
+> +#define IGC_PRMEXPRCNT_OOO_SMDC 0x000000FF
+> +/* Received out of order packets with SMD-C and wrong Frame CNT */
+> +#define IGC_PRMEXPRCNT_OOO_FRAME_CNT			0x0000FF00
+> +#define IGC_PRMEXPRCNT_OOO_FRAME_CNT_SHIFT		8
+> +/* Received out of order packets with SMD-C and wrong Frag CNT */
+> +#define IGC_PRMEXPRCNT_OOO_FRAG_CNT			0x00FF0000
+> +#define IGC_PRMEXPRCNT_OOO_FRAG_CNT_SHIFT		16
+> +/* Received packets with SMD-S and ReumeRx */
 
-I tried improving this some time ago:
-https://lore.kernel.org/lkml/20240515172732.288391-1-mschmidt@redhat.com/T/=
-#u
-... but it required some more work.
+What is ReumeRx?
 
-Michal
-
-> >   #define ICE_MAX_I2C_WRITE_BYTES             4
-> >
-> >   /* u-blox ZED-F9T specific definitions */
->
-
+> +#define IGC_PRMEXPRCNT_MISS_FRAME_FRAG_CNT		0xFF000000
+> +#define IGC_PRMEXPRCNT_MISS_FRAME_FRAG_CNT_SHIFT	24
+> +
+>  /* Transmit Scheduling Registers */
+>  #define IGC_TQAVCTRL		0x3570
+>  #define IGC_TXQCTL(_n)		(0x3344 + 0x4 * (_n))
+> -- 
+> 2.25.1
+> 
+> 
