@@ -1,87 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F2069F35F7
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Dec 2024 17:27:59 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 840029F35F8
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Dec 2024 17:28:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 09777810D7;
-	Mon, 16 Dec 2024 16:27:58 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5CFE8404E8;
+	Mon, 16 Dec 2024 16:28:09 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YlBwXsuz4OXH; Mon, 16 Dec 2024 16:27:57 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id olNAmvmxN4j1; Mon, 16 Dec 2024 16:28:08 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 34DF981113
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 78C764047E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1734366477;
-	bh=gW4H2/TOHS2zfDTwC9BxNBGpe/B9ZolBHNbHz0o02es=;
+	s=default; t=1734366488;
+	bh=OYgWfITDnmpKZmhpOQV+m1eaKNnm6ygQzblURMa5/eo=;
 	h=Date:In-Reply-To:References:From:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=umcoX4yoFGkwavFUvx7SxTRXKgO1JOCoCYUfnKQRqyeS7WXetpyPf+7GGWIRVYCbT
-	 2rgJsXSOMncnWONnigmXkG1EA8MjoGs85bnUSlvImA/EPcG/bnTPVR8mkdkuU2RVcy
-	 o7Md6f41bQmLY7pDCyHE2CD6lOiiIazeOaN1gssWbZkDevs1yE7exu1fA2or6NVu8G
-	 aD2Q1uqiRmNwvnhXxyvSeM9Cz0iSXWlRpQAwCnzxu6WoGfnDgh8bAlgl/+j/afBnEU
-	 k8Gcq6qeQV+ZmL/GXHop62CrWr1799jBLkoTwIvCoZpgLBOImDzT5TzHxcmLWI/rYg
-	 VACOZikMK486Q==
+	b=db976XV2tdUGJS99BawRutaLnhJz8ZiqvlcTK4yqoVwkvYHq6EQL+iVoKB6GoCRU7
+	 2YJxrTIhwE88mAJodoFpnllv41eZgXkQ11ldFkjSCVBguW/eEw/3qbbUcfddldQpN3
+	 yeOtVpWhhTDEblEnUvcPUbpjX2gygbAD4Ta7I1lXrIhCbZypVFLHUxL2jpPAdpBOjw
+	 nZU61uop1e0ORb2/gaiseH5aA9m9yEM3oFM7FHuzZQx19D8XDC9gQ1wr3xD6/B0juu
+	 mXt1Te4jutGaJ350OdtJUKMnr2TzGVMFU9yvolIsIqTaDpAIQ+Y+uzDjeX+7qvBZ+H
+	 1yEUQUafaw7hg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 34DF981113;
-	Mon, 16 Dec 2024 16:27:57 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 78C764047E;
+	Mon, 16 Dec 2024 16:28:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 42A85C1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 16:27:55 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id DECFBC1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 16:28:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 307976068D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 16:27:55 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id BD74840191
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 16:28:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id o6mIvbJQHG82 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 16 Dec 2024 16:27:54 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id DW2GaT6RFz62 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 16 Dec 2024 16:28:05 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::1049; helo=mail-pj1-x1049.google.com;
- envelope-from=3cvvgzwckd3yvlcuhppaiiafy.wigchnyf-qclyx-fuhfcmnm.imoimf.ila@flex--brianvv.bounces.google.com;
+ client-ip=2607:f8b0:4864:20::549; helo=mail-pg1-x549.google.com;
+ envelope-from=3e1vgzwckd4afvmerzzksskpi.gsqmrxip-0mvih-perpmwxw.swyswp.svk@flex--brianvv.bounces.google.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 59CAE60A47
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 59CAE60A47
-Received: from mail-pj1-x1049.google.com (mail-pj1-x1049.google.com
- [IPv6:2607:f8b0:4864:20::1049])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 59CAE60A47
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 16:27:54 +0000 (UTC)
-Received: by mail-pj1-x1049.google.com with SMTP id
- 98e67ed59e1d1-2ee8ced572eso4062871a91.0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 08:27:54 -0800 (PST)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 42F0C40449
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 42F0C40449
+Received: from mail-pg1-x549.google.com (mail-pg1-x549.google.com
+ [IPv6:2607:f8b0:4864:20::549])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 42F0C40449
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 16:28:04 +0000 (UTC)
+Received: by mail-pg1-x549.google.com with SMTP id
+ 41be03b00d2f7-8019860a003so2898503a12.1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 08:28:04 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734366474; x=1734971274;
+ d=1e100.net; s=20230601; t=1734366483; x=1734971283;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=gW4H2/TOHS2zfDTwC9BxNBGpe/B9ZolBHNbHz0o02es=;
- b=NlObZzZvf8eyXjOJxr89vljCXslowrEzI+RRMXWhgzeHI9BD8cglUQOW/Od7ejTzry
- UVgZceWXjisLIBo7ezf5j0g0CJpia6bAVQ9CoszDLldq8S7WP46t7vEQY5kipypHTQZn
- M3O5iA1Iz/DwZ8H+HEyuidPXGsqNh8qQxnOLwJdnOqwOMEmeoNXR8IEKgwaQNGsuZWmF
- RAF6vNLo67MCPWBi6tRr0xOE8vrXPXKhZCCWjE2iONUpYmaK76nGgy8Q2mYbZHNEhagX
- 2jQIoYRT+JaueJVHe6KrQcmCBFMdITMv0IrKh78e61EgUbBFWXNELTOQ22xgu8B6nwf1
- 9B4Q==
+ bh=OYgWfITDnmpKZmhpOQV+m1eaKNnm6ygQzblURMa5/eo=;
+ b=mthVC2OktEQvPcyuirRNJ/BQfJlnFRf9mZL9r0RS3RA7xvT2Ox/ScefcM358vKEF29
+ q1rsGsUIyy/kUrSv+8xm626WNFvpI6cHYGP0VdWjjg3VZOnQHqRLYb3J9nvx+BGQkMy1
+ QWC1lYUvad6OcwOKwfONRYYTX6QlBoQZtjaSVve+m9OYzcm0c0HzfWtodag2RSo+dHBE
+ NJ/cu1/GP1RwtYFiXquGFffmMOs6SJKWfAqvtm6XUL8BELS4gU/2NZz4elMTyBGgEMVF
+ NCu/335Kvcr3TFNDAah9rBt5afrRQiTW9t2BCTo9mNiX3RxUSSnZv+XD32vXNO+N/IPG
+ 3gRw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU/AV5zRZY2SanZuQw9OudLnfspPE111PwAig1y0S4HIoAPwcsJdBgb7W/HlKHBIdGus38Q1C22R/A5zGLyRP8=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzsLxg04LIyo/xNcJ2pVHcfkcrEqhLcwvg5SeORv63xLS/tHKXl
- jxoQyEoPOiOGgbJrN0aC6jSjGHFwryaNq8XB0Ax8Mah2LRrAMe4AEuT5sQQUhr99CAbCfdzY+Qz
- q9v008Q==
-X-Google-Smtp-Source: AGHT+IH+NcFqvSJGVZtZhakhKOrf/vnRiODHzmjmJUPUWT5kMvWkePf7WswTE1jLMuI8ih/KoplSGx6a3tO5
-X-Received: from pjl4.prod.google.com ([2002:a17:90b:2f84:b0:2ef:71b9:f22f])
+ AJvYcCVXLy8sB5F//Lr/4In2TnhjUxZMJIPGxa4tohpp7SY5NmF6uYMCR+T4wlLS9p5p1AvSN+i7YJ+EBdqhRm9tCnE=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yw2d1tMHveW/Kg9fMXWLCp9sYClNSOtPRuMQGRWRY/cN5oSxhEb
+ EBbFGEMDvv2P3VxU34/GM+p9LA722LShNaXINmywGhd0KkmV+3C9Z2Rpg6YYyW9RDLq8L0ApDQA
+ 0rNj44Q==
+X-Google-Smtp-Source: AGHT+IEDjElQVhdH295OadBi+xKcuOeHva8D7aDmG71K5yuV+Yg3mIJZGFiTDFqecjMyexx8SrTcYIANX3dQ
+X-Received: from pjvb16.prod.google.com ([2002:a17:90a:d890:b0:2ea:5613:4d5d])
  (user=brianvv job=prod-delivery.src-stubby-dispatcher) by
- 2002:a17:90b:5284:b0:2eb:140d:f6df
- with SMTP id 98e67ed59e1d1-2f28fa55c91mr18168313a91.1.1734366473766; Mon, 16
- Dec 2024 08:27:53 -0800 (PST)
-Date: Mon, 16 Dec 2024 16:27:34 +0000
+ 2002:a17:90b:4a50:b0:2ee:d35c:39ab
+ with SMTP id 98e67ed59e1d1-2f28fd6b60cmr16772482a91.22.1734366483591; Mon, 16
+ Dec 2024 08:28:03 -0800 (PST)
+Date: Mon, 16 Dec 2024 16:27:35 +0000
 In-Reply-To: <20241216162735.2047544-1-brianvv@google.com>
 Mime-Version: 1.0
 References: <20241216162735.2047544-1-brianvv@google.com>
 X-Mailer: git-send-email 2.47.1.613.gc27f4b7a9f-goog
-Message-ID: <20241216162735.2047544-3-brianvv@google.com>
+Message-ID: <20241216162735.2047544-4-brianvv@google.com>
 From: Brian Vazquez <brianvv@google.com>
 To: Brian Vazquez <brianvv.kernel@gmail.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>, 
@@ -93,30 +93,30 @@ Cc: David Decotigny <decot@google.com>, Vivek Kumar <vivekmr@google.com>,
  Anjali Singhai <anjali.singhai@intel.com>,
  Sridhar Samudrala <sridhar.samudrala@intel.com>, 
  linux-kernel@vger.kernel.org, netdev@vger.kernel.org, 
- emil.s.tantilov@intel.com, Marco Leogrande <leogrande@google.com>, 
- Manoj Vishwanathan <manojvishy@google.com>, Brian Vazquez <brianvv@google.com>,
- Jacob Keller <jacob.e.keller@intel.com>,
- Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+ emil.s.tantilov@intel.com, Manoj Vishwanathan <manojvishy@google.com>, 
+ Brian Vazquez <brianvv@google.com>, Jacob Keller <jacob.e.keller@intel.com>, 
+ Pavan Kumar Linga <pavan.kumar.linga@intel.com>,
+ Paul Menzel <pmenzel@molgen.mpg.de>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1734366474; x=1734971274; darn=lists.osuosl.org;
+ d=google.com; s=20230601; t=1734366483; x=1734971283; darn=lists.osuosl.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=gW4H2/TOHS2zfDTwC9BxNBGpe/B9ZolBHNbHz0o02es=;
- b=PWHXDtNUMT7uss9osu7pMwv+X+WX/W5gLwJETSi58AiJWxr80NAAfKX5LKhNDdQb6w
- sF+EDZlSjJDsY1GTgUFAf45aYMSy75Beii+JkI52zGUVlWWrLy+PiztdJ62tBPHZwK8A
- QtjD/VBuuga54XtIr1aJIMcazUblaAvstRKT0o0JkxKgIx7L+V6VU3CrLHSf0Z3dqzFx
- tncH/M4EDPHcN3fNjhG8pJegOBeLONWbv5R2xtYrGgdBh8B9GYwlI+egID5zUZ8X9QlK
- 7l17aRaPBbcPqSZkGxj6Bd4pgO5qoqArIbd1nJV+OTgz2HhbFHgjljPAYUEu9hYy5JGl
- oSZw==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=OYgWfITDnmpKZmhpOQV+m1eaKNnm6ygQzblURMa5/eo=;
+ b=TkfKRk016ZGdMtk6rHiqxl1S4LO9wIeVH9HgbWfFQthMAR7vrj2r1JxHXn2seFKpkn
+ DiQjfb08SbDmgk9CXHcHfBnthxz/GGmEGbkUB3rGkqwBdib6a7A4MZ6WOyGPf4nauft5
+ 5YnaD1ol44zCXS9G0yyh+v9+epO0FsqAz97fS+Tf9f8eBPPMMYsTMvw6UvULVjDyipU/
+ I6UyFkQuyTyjIumNCSMgQugOzi51YPlGOrqjGnt0SAit8MEWkEaiTnTA2rHsDL1gxdDa
+ DcWpVqFTpuF+Wx3IIfzvYCkjPwC4ifBwP9psJSVEUNBQ35X8QwYhw5QUxzxif6ULKFSA
+ NTXg==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=reject dis=none)
  header.from=google.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=google.com header.i=@google.com
- header.a=rsa-sha256 header.s=20230601 header.b=PWHXDtNU
-Subject: [Intel-wired-lan] [iwl-next PATCH v4 2/3] idpf: convert workqueues
- to unbound
+ header.a=rsa-sha256 header.s=20230601 header.b=TkfKRk01
+Subject: [Intel-wired-lan] [iwl-next PATCH v4 3/3] idpf: add more info
+ during virtchnl transaction timeout/salt mismatch
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -132,110 +132,61 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Marco Leogrande <leogrande@google.com>
+From: Manoj Vishwanathan <manojvishy@google.com>
 
-When a workqueue is created with `WQ_UNBOUND`, its work items are
-served by special worker-pools, whose host workers are not bound to
-any specific CPU. In the default configuration (i.e. when
-`queue_delayed_work` and friends do not specify which CPU to run the
-work item on), `WQ_UNBOUND` allows the work item to be executed on any
-CPU in the same node of the CPU it was enqueued on. While this
-solution potentially sacrifices locality, it avoids contention with
-other processes that might dominate the CPU time of the processor the
-work item was scheduled on.
+Add more information related to the transaction like cookie, vc_op,
+salt when transaction times out and include similar information
+when transaction salt does not match.
 
-This is not just a theoretical problem: in a particular scenario
-misconfigured process was hogging most of the time from CPU0, leaving
-less than 0.5% of its CPU time to the kworker. The IDPF workqueues
-that were using the kworker on CPU0 suffered large completion delays
-as a result, causing performance degradation, timeouts and eventual
-system crash.
+Info output for transaction timeout:
+-------------------
+(op:5015 cookie:45fe vc_op:5015 salt:45 timeout:60000ms)
+-------------------
 
-Tested:
+before it was:
 
-* I have also run a manual test to gauge the performance
-  improvement. The test consists of an antagonist process
-  (`./stress --cpu 2`) consuming as much of CPU 0 as possible. This
-  process is run under `taskset 01` to bind it to CPU0, and its
-  priority is changed with `chrt -pQ 9900 10000 ${pid}` and
-  `renice -n -20 ${pid}` after start.
+-------------------
+(op 5015, 60000ms)
+-------------------
 
-  Then, the IDPF driver is forced to prefer CPU0 by editing all calls
-  to `queue_delayed_work`, `mod_delayed_work`, etc... to use CPU 0.
-
-  Finally, `ktraces` for the workqueue events are collected.
-
-  Without the current patch, the antagonist process can force
-  arbitrary delays between `workqueue_queue_work` and
-  `workqueue_execute_start`, that in my tests were as high as
-  `30ms`. With the current patch applied, the workqueue can be
-  migrated to another unloaded CPU in the same node, and, keeping
-  everything else equal, the maximum delay I could see was `6us`.
-
-Fixes: 0fe45467a104 ("idpf: add create vport and netdev configuration")
-Signed-off-by: Marco Leogrande <leogrande@google.com>
 Signed-off-by: Manoj Vishwanathan <manojvishy@google.com>
 Signed-off-by: Brian Vazquez <brianvv@google.com>
 Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
 Reviewed-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
 ---
- drivers/net/ethernet/intel/idpf/idpf_main.c | 15 ++++++++++-----
- 1 file changed, 10 insertions(+), 5 deletions(-)
+ drivers/net/ethernet/intel/idpf/idpf_virtchnl.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_main.c b/drivers/net/ethernet/intel/idpf/idpf_main.c
-index 305958c4c230..da1e3525719f 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_main.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_main.c
-@@ -198,7 +198,8 @@ static int idpf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	pci_set_master(pdev);
- 	pci_set_drvdata(pdev, adapter);
- 
--	adapter->init_wq = alloc_workqueue("%s-%s-init", 0, 0,
-+	adapter->init_wq = alloc_workqueue("%s-%s-init",
-+					   WQ_UNBOUND | WQ_MEM_RECLAIM, 0,
- 					   dev_driver_string(dev),
- 					   dev_name(dev));
- 	if (!adapter->init_wq) {
-@@ -207,7 +208,8 @@ static int idpf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 		goto err_free;
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+index 13274544f7f4..fe5468f226f7 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+@@ -517,8 +517,10 @@ static ssize_t idpf_vc_xn_exec(struct idpf_adapter *adapter,
+ 		retval = -ENXIO;
+ 		goto only_unlock;
+ 	case IDPF_VC_XN_WAITING:
+-		dev_notice_ratelimited(&adapter->pdev->dev, "Transaction timed-out (op %d, %dms)\n",
+-				       params->vc_op, params->timeout_ms);
++		dev_notice_ratelimited(&adapter->pdev->dev,
++				       "Transaction timed-out (op:%d cookie:%04x vc_op:%d salt:%02x timeout:%dms)\n",
++				       params->vc_op, cookie, xn->vc_op,
++				       xn->salt, params->timeout_ms);
+ 		retval = -ETIME;
+ 		break;
+ 	case IDPF_VC_XN_COMPLETED_SUCCESS:
+@@ -615,8 +617,9 @@ idpf_vc_xn_forward_reply(struct idpf_adapter *adapter,
+ 	idpf_vc_xn_lock(xn);
+ 	salt = FIELD_GET(IDPF_VC_XN_SALT_M, msg_info);
+ 	if (xn->salt != salt) {
+-		dev_err_ratelimited(&adapter->pdev->dev, "Transaction salt does not match (%02x != %02x)\n",
+-				    xn->salt, salt);
++		dev_err_ratelimited(&adapter->pdev->dev, "Transaction salt does not match (exp:%d@%02x(%d) != got:%d@%02x)\n",
++				    xn->vc_op, xn->salt, xn->state,
++				    ctlq_msg->cookie.mbx.chnl_opcode, salt);
+ 		idpf_vc_xn_unlock(xn);
+ 		return -EINVAL;
  	}
- 
--	adapter->serv_wq = alloc_workqueue("%s-%s-service", 0, 0,
-+	adapter->serv_wq = alloc_workqueue("%s-%s-service",
-+					   WQ_UNBOUND | WQ_MEM_RECLAIM, 0,
- 					   dev_driver_string(dev),
- 					   dev_name(dev));
- 	if (!adapter->serv_wq) {
-@@ -216,7 +218,8 @@ static int idpf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 		goto err_serv_wq_alloc;
- 	}
- 
--	adapter->mbx_wq = alloc_workqueue("%s-%s-mbx", 0, 0,
-+	adapter->mbx_wq = alloc_workqueue("%s-%s-mbx",
-+					  WQ_UNBOUND | WQ_MEM_RECLAIM, 0,
- 					  dev_driver_string(dev),
- 					  dev_name(dev));
- 	if (!adapter->mbx_wq) {
-@@ -225,7 +228,8 @@ static int idpf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 		goto err_mbx_wq_alloc;
- 	}
- 
--	adapter->stats_wq = alloc_workqueue("%s-%s-stats", 0, 0,
-+	adapter->stats_wq = alloc_workqueue("%s-%s-stats",
-+					    WQ_UNBOUND | WQ_MEM_RECLAIM, 0,
- 					    dev_driver_string(dev),
- 					    dev_name(dev));
- 	if (!adapter->stats_wq) {
-@@ -234,7 +238,8 @@ static int idpf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 		goto err_stats_wq_alloc;
- 	}
- 
--	adapter->vc_event_wq = alloc_workqueue("%s-%s-vc_event", 0, 0,
-+	adapter->vc_event_wq = alloc_workqueue("%s-%s-vc_event",
-+					       WQ_UNBOUND | WQ_MEM_RECLAIM, 0,
- 					       dev_driver_string(dev),
- 					       dev_name(dev));
- 	if (!adapter->vc_event_wq) {
 -- 
 2.47.1.613.gc27f4b7a9f-goog
 
