@@ -2,104 +2,231 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8762B9F2C6D
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Dec 2024 09:56:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id ABBC99F2EF4
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Dec 2024 12:17:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 330CB60A92;
-	Mon, 16 Dec 2024 08:56:43 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0511D60B42;
+	Mon, 16 Dec 2024 11:17:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HzqotntMUWnR; Mon, 16 Dec 2024 08:56:42 +0000 (UTC)
+ id oRuEOAO3h_Jh; Mon, 16 Dec 2024 11:17:14 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 28C7760A4F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 76BE360A9D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1734339402;
-	bh=mZfDl39ZyvEkN80xL3ZbJVLNKnJ1FsoG68RMmKKeogg=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1734347833;
+	bh=ZmkeG9q/3lcDLQbRuxhRAh+3cD8Eh7B0qPN1ezRjAzE=;
+	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=o6/RhnhDCkkgivSMmS+Mnz4H5W+kVxPhZNr12vaj2L+MA60GWWJiRteLUNCurvQ9m
-	 McT6BcvtLap6J955fA3t/0N0KRVjM4zaVz7QVps3Mk67aH0MwnxZlGwRaK3n0W4Fxi
-	 FeA8/lIkqvumd5wW43DG+WPKZgZgV5ptc+/Reu8JTaDX5sxuSO+rzjCaBbqWQgXsH+
-	 i2MtiI4HvriYskgreCJ0dSNSdKSR6CY2MxB85JfrcO2qDuBiWA5cmfMC82/kUpFCAj
-	 OEpJlNsR2Gp14dW/3Wxv+usPf4s4Hw1+Kva8FhHZXomn/HPa6dh5MMJzguh8lpoKH3
-	 4v+AoSZbtVEOA==
+	b=x5hBCPGsXhUiuROgi398OxRA+2iYEFVpJ93PWzhSajeeu7k6c/XSHczwQFD3QYXQc
+	 kQv8QUr3HHuFqXZvXsFQfgTXELVDnhXv4JjH7lr2IU8Mds0Ut/yWomVwC7Zyul4LKr
+	 +lK4A1xJ8YXpjGerUFUAVA8mkN4p/7PwoOGwb9X2elHypn8q/KTRcCtp+ADjL+a003
+	 z6RmMFjbig+ZgniScufiuajhQxkhM2avz6sY38q0tpdfodQvJbTxUnTIg7UcgDy3Z7
+	 Wu/MLjNNldm0HjSXXlLZzkyBtuNeYXQ7ih+p8vr3q72/no84CyFx5PPBH5hPBoHGJn
+	 jD5BXtBZX12hw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 28C7760A4F;
-	Mon, 16 Dec 2024 08:56:42 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 76BE360A9D;
+	Mon, 16 Dec 2024 11:17:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 2E24CC5
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 08:56:40 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 5518EC1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 11:17:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 1D33B8149C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 08:56:40 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2EF2F40DFD
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 11:17:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id nkK0CMUWZB9x for <intel-wired-lan@lists.osuosl.org>;
- Mon, 16 Dec 2024 08:56:39 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
- helo=mgamail.intel.com; envelope-from=anton.nadezhdin@intel.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id kI59AfZhi32Q for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 16 Dec 2024 11:17:10 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
+ helo=mgamail.intel.com; envelope-from=vitaly.lifshits@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 325FC8149B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 325FC8149B
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 325FC8149B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 08:56:39 +0000 (UTC)
-X-CSE-ConnectionGUID: ZfroHgo3SpKbeIuzYaETNA==
-X-CSE-MsgGUID: eZk2JY5rTaG6/XPm6L3uyA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11287"; a="34942412"
-X-IronPort-AV: E=Sophos;i="6.12,238,1728975600"; d="scan'208";a="34942412"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
- by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Dec 2024 00:56:39 -0800
-X-CSE-ConnectionGUID: epeJ9FWTRayBOxL9da7WtQ==
-X-CSE-MsgGUID: N/pOBxCTR6aci/mngWVcQg==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 996E840C08
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 996E840C08
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 996E840C08
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 11:17:09 +0000 (UTC)
+X-CSE-ConnectionGUID: Hv0cD3MgQMa4o5zOTRTkFQ==
+X-CSE-MsgGUID: ObyOhErqTfy9jzZejfGj3A==
+X-IronPort-AV: E=McAfee;i="6700,10204,11287"; a="34872379"
+X-IronPort-AV: E=Sophos;i="6.12,238,1728975600"; d="scan'208";a="34872379"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+ by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Dec 2024 03:17:08 -0800
+X-CSE-ConnectionGUID: BuEJdJAVQoCyMCBoO4G75A==
+X-CSE-MsgGUID: rmgZBD1MSju75lCLNFEtZQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="102117202"
-Received: from host61.igk.intel.com ([10.123.220.61])
- by orviesa005.jf.intel.com with ESMTP; 16 Dec 2024 00:56:35 -0800
-From: Anton Nadezhdin <anton.nadezhdin@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, richardcochran@gmail.com,
- Jacob Keller <jacob.e.keller@intel.com>,
- Karol Kolacinski <karol.kolacinski@intel.com>,
- Milena Olech <milena.olech@intel.com>,
- Anton Nadezhdin <anton.nadezhdin@intel.com>
-Date: Mon, 16 Dec 2024 09:53:32 -0500
-Message-ID: <20241216145453.333745-6-anton.nadezhdin@intel.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20241216145453.333745-1-anton.nadezhdin@intel.com>
-References: <20241216145453.333745-1-anton.nadezhdin@intel.com>
+X-IronPort-AV: E=Sophos;i="6.12,238,1728975600"; d="scan'208";a="97732676"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by fmviesa009.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 16 Dec 2024 03:17:08 -0800
+Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.44; Mon, 16 Dec 2024 03:17:07 -0800
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.44 via Frontend Transport; Mon, 16 Dec 2024 03:17:07 -0800
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.41) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.44; Mon, 16 Dec 2024 03:17:06 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=cFACJgoRmkoaVP8rkDVR5VKm6xbK4zjFNZdWcSULhjtBh4FhIAGzDiVy+tOVIXtppbegg13dj+Cv3987hDgCoR9sRCkfUDkOP0WirYQxWgoLA3jEnaJ0TLFYWBlOYmJmMSAc9SlelCbJlnI9b5dzs9fm63pTd8PX/2RE6fdxN9RUZKSCUdJREOXSGklZsFir9D7mhgI7laIVGG+QSD/DA1LRrMdKHy/hxITmcopGieoFphUNxWCM5yg/6Hkreqo9/nX4yTpVHctvuV1BYmDJq0oHPWWNdYFjIm46VBTVKtjHpn4ecr99ywIMbA74/L11Q4/DsSVw31MKP5QoctdAUQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ZmkeG9q/3lcDLQbRuxhRAh+3cD8Eh7B0qPN1ezRjAzE=;
+ b=JhYcN+5DEu9o14RIs2Qq7Qort86X24wrrYkxUbCfrufapsPVvI98iXcpjLlhw6t1msYsFMiDgyf1J2OKDMY9VvrGi+g4j59hp1pJ61HGo3ZmL2aEGOZmx51nVql8+bmtXULRacDv5XALJJbGYHdbo0Vj6MS4o3dk8gsmBIaq3VCcR/XZh1+00T/xSpaS3t19KGV9ihiZRagHnoMuruFk8IqE0dSTpKxD7cQldOOHYZc4IsE98sSd933T8kymFpbFG+7bUQaeu377Uo6zEgTVoB7NNLhH6KK/lUECEKfOZ5bM5ei7T2gEzNulDMDA1xlki6hl1KKZ+P91Dyp9oXkqpQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from PH0PR11MB5949.namprd11.prod.outlook.com (2603:10b6:510:144::6)
+ by MN2PR11MB4680.namprd11.prod.outlook.com (2603:10b6:208:26d::12)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8251.21; Mon, 16 Dec
+ 2024 11:16:59 +0000
+Received: from PH0PR11MB5949.namprd11.prod.outlook.com
+ ([fe80::1c5d:e556:f779:e861]) by PH0PR11MB5949.namprd11.prod.outlook.com
+ ([fe80::1c5d:e556:f779:e861%3]) with mapi id 15.20.8251.015; Mon, 16 Dec 2024
+ 11:16:58 +0000
+Message-ID: <231abdb7-3b16-4c3c-be17-5d0e6a556f28@intel.com>
+Date: Mon, 16 Dec 2024 13:16:52 +0200
+User-Agent: Mozilla Thunderbird
+To: Gerhard Engleder <gerhard@engleder-embedded.com>,
+ <intel-wired-lan@lists.osuosl.org>, <netdev@vger.kernel.org>,
+ <linux-pci@vger.kernel.org>
+CC: <anthony.l.nguyen@intel.com>, <przemyslaw.kitszel@intel.com>,
+ <andrew+netdev@lunn.ch>, <davem@davemloft.net>, <kuba@kernel.org>,
+ <edumazet@google.com>, <pabeni@redhat.com>, <bhelgaas@google.com>,
+ <pmenzel@molgen.mpg.de>, Gerhard Engleder <eg@keba.com>
+References: <20241214191623.7256-1-gerhard@engleder-embedded.com>
+Content-Language: en-US
+From: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>
+In-Reply-To: <20241214191623.7256-1-gerhard@engleder-embedded.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: TL0P290CA0006.ISRP290.PROD.OUTLOOK.COM (2603:1096:950:5::9)
+ To PH0PR11MB5949.namprd11.prod.outlook.com
+ (2603:10b6:510:144::6)
 MIME-Version: 1.0
-Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
- 80-298 Gdansk - KRS 101882 - NIP 957-07-52-316
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH0PR11MB5949:EE_|MN2PR11MB4680:EE_
+X-MS-Office365-Filtering-Correlation-Id: 69bb534c-c9d4-4890-644c-08dd1dc32821
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|1800799024|7416014|366016;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?TXJiVjFTOGNMSW5aZ1RrREFta2JsRjFTUWNGaWRJMWxGRGhRdGluWkV5ZXR3?=
+ =?utf-8?B?aTd6eGE2anAwNk9IVUdJc1RoNURjSlRGdnRuUmVONXk4WlF5NUxQT3ozTmIx?=
+ =?utf-8?B?c3gxK1ozMWtabEo1MEI0VXdXdERPaTA0ajZJckxQOVJlZ3JCcjRQai9ZaTBl?=
+ =?utf-8?B?SG1XNXNpVU9NOWltS25GUFYzUDQ5QWdjZ1JqMERDTHI0NnlDOW1PcFFpczNY?=
+ =?utf-8?B?VFJYRnVKN202aU1LZGIzTFYyV2dNZ3lLcmdXalB0UUR0d2s0ZGs2YmkvaTEz?=
+ =?utf-8?B?YTJxdytSeE5vMzVqZVN6N0FEQm51MHpxaWZVejRnM1B6MjhEV3hyQUZ1WCtq?=
+ =?utf-8?B?L3pSSEVUMjdWbUZzeHFJV1VYUFhXZmJuRWRsdDdaTk5qVnoyVisxQ28wOHRH?=
+ =?utf-8?B?WkFxR1NEVnovWC85TkNnTVJ0WmZrbmNyMnRXalVNTThWcEF0OVlpdVIrTkoz?=
+ =?utf-8?B?cWJiRVFTZVc3MWlsbDJlSEp2R3Q2NjFLekQ1bGZ0LzNLbERncHo3RmRMSUZL?=
+ =?utf-8?B?VDZTRXIrbHdBV1VLV214d2s3dDRyV2ZReDZsWFJIb3NHT2hHQkxJL1hjNEZT?=
+ =?utf-8?B?VFcraW1FYWxNOG1nOTJYc2pHL0NTM09HR0pESkN1bUo0REJibUFEK1dad01E?=
+ =?utf-8?B?K2lqaGtyTk5XQ0ZKeHZhYS9ldkcwdVJtRTdWZTJqby9DUzhZUk5Md1BWcUFu?=
+ =?utf-8?B?RGxBNTlvcWcrQnhZSHh0RUxLcUltY1VqNjN0MFNJbVhpZTY1QWlOanplYk9a?=
+ =?utf-8?B?OE9BSkhEd1k5RU1KNVV4amFkU1dMZ3dTMVAyd3BqeUdoamxRc2czTUpVbzBr?=
+ =?utf-8?B?OTBBNi8yVHhTTXg5OG5wQmY2TGliZ3IwT3F6Y2I1eTJnelQ5RXRTMXRMOTlo?=
+ =?utf-8?B?SVdTQ2JvZHJGUmNkRVV3TElkYjJQeDlPVDBNY3V3WnAzMFNWUnNUM2h0U1ZJ?=
+ =?utf-8?B?VGduTVBkWUMxVlhwVVFWN0dERldiZFJYcXJQdmpHbnY4V29HWkxaY0J1Snhw?=
+ =?utf-8?B?c0R0YSs5NFZqa0ZKWVlZVmtteSs3bnNQOFZ1TFE2MHJsV1V5TFJhVnRuMlN1?=
+ =?utf-8?B?NnlyUUtIbHNzWTBxejBZUEF6dUJlVTVTUWxOTXI2WDk5UFpNU29PNWdYYnJJ?=
+ =?utf-8?B?b3JPaUlXZUdEcDdyRHlnYk1VaDFxS3dZZXdoeTlPQjVSeWlhZkp5eER3djhT?=
+ =?utf-8?B?UGF5Z2NCYjVYQU1DNGNQanc2dW1TSnpYMXhaWTV6VnlxWis3Ni9lUEVMb3NH?=
+ =?utf-8?B?M3lwcHgrMmE5TVIrQmp1M0RRRkRZZEoybVhQdWZnQzRBVHk0RW5QdVp1YTYz?=
+ =?utf-8?B?OXl6MlFPaDNvSUUvYjZDWTRCalNuTVFQM0pRU0d2Y0IraC9LTkxIbStzN2po?=
+ =?utf-8?B?cDdIRjBqZ0xTWHdyc0szc2wzb2tGM1NXSkxvTlVkcmJ4dUdqVG9lZnRlbUVO?=
+ =?utf-8?B?eWExTktrRWpYS2E0RHVLdkh6ZGdwOGZDYmtYVjVmdFMvNmlhNVZJbVJ1eHF0?=
+ =?utf-8?B?L2MzRGhCejV2cEpJQXdXUldkNUdqeHVaamJGeHpNcHUzNHJiY29yRG1hNW0w?=
+ =?utf-8?B?RnI0L1ZUWHhxN2NVUjFOVTZIS3pjRnBrZVVRZEZ3SmlsY2dtVGl3SE05L3Vk?=
+ =?utf-8?B?dEJpOE5qaU82eVhjOUNUTEpWTjRZamRudWN6c294RHZZeGxyZllud2ZEcUlY?=
+ =?utf-8?B?NjYvTG1rMkt4UHFtVUFHcGJDS3o2OEs5YnpmK2piU0FzTzY4Q1lEVUJRSmE5?=
+ =?utf-8?B?UTBSSGo5Z0E5N0hJenJDcUZQN1lkaFgxVkxTeVlaZFREcmJ2MDB0ZlRmWkVz?=
+ =?utf-8?B?RVI0K0ZkMGt2YkxCRThsUT09?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR11MB5949.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(1800799024)(7416014)(366016); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?T0g0anZYZEdlRHlVREk4NmdLUWp0L2VMNmt4SnlocmI5RkdKb3pnRWQrYVNQ?=
+ =?utf-8?B?Rks1VnltS1Nsb1Z4SG5vUDNVTU5RNXpmWTdkd2wyTHBLMHhRd2pqTGdOTFhY?=
+ =?utf-8?B?aUJVbklPQzdtbkY0aXNiaUp1QVgyZE0xTDZRZG1ycjRqZlg1ZDZvNDVQWWdk?=
+ =?utf-8?B?Rk1NR3o0ei9uNE8zN2N4Yi9Cb3ZQdGRtU3VyampJRTdxa0ZQRE1NSVNBTk51?=
+ =?utf-8?B?bHVoNGl3RHJpc2dUb0J3eTBVZGRnWjN6ZFEvRkJtNWpUanZBMGs1cjZ5WG04?=
+ =?utf-8?B?VEY3WnlpMzUxK2N1bUR1LzcyZTJDQjlNMlRXMUUwUlFaQ2NXNmlwRDMyMXAy?=
+ =?utf-8?B?c1pVRGxZVDJwZnJuVldqOVNwMkl6WUZBcWZDajhiWHUxWElBdkcwQjFQOEVa?=
+ =?utf-8?B?WHdYa21HbU5Camg3a1V4Rm1IYm96MUozQWRtN2dSRk9nUGtCQ2VCbVdBMHY3?=
+ =?utf-8?B?a3hHSlArOTlWcE5TdVNpV0R0Z2QzWWVmd1pwdHZsNG9mRUFLaDk5V3VZYTZy?=
+ =?utf-8?B?NkxsU2diaUJTRXZ6VGZCMGR1SXM3WjVuWmZSRDlNSGhFZGRHZVNRc3FWRWY3?=
+ =?utf-8?B?UU9haDMwZVc4dzdYN1d2M1JUdDQwSVlNVFFvSWxxd3l5ek9FbXV1L0s4SEtU?=
+ =?utf-8?B?a0UwTnFNSm8zSWpvV2NBbThwVkcvU28rNzFZMWI1WjBKWG9MMjZ6c2dCV1JF?=
+ =?utf-8?B?UVJjMGtGTS9hUm85LzNnUGRDUndtbzZ6U002VHVZeUEwSVB4aDhzMEgyUlR5?=
+ =?utf-8?B?ZWRZWndpRFA4dDdHUEJmd2F1NEd4TDhoRHlrYk5mQmxOdlVnSnk3Y1EyT0hI?=
+ =?utf-8?B?dEs4OTB2SGFYZGdSZ0gxOUFKMk1CaWplK1dVMkg3UzFYL2xwd2FnZUVaSE9W?=
+ =?utf-8?B?MTMrTWtIMmt5YjJFQkN3NmJhV1BRQ3p2aDFUcEdQNm9yTUk5VU95WmZpS01W?=
+ =?utf-8?B?b0hwK0JLa2ZVZkU1OHdUZ3h6dzVrMktKY1JnKzQ5SlJ1S0xMdG13ZEdFNmNh?=
+ =?utf-8?B?eWZENStCcERrSUd5disvN2pMb3NNY3Q0ZFV3MlRFdkYrc2ZWeXJxeFh1QVlQ?=
+ =?utf-8?B?ZXFheldwQlV0bTh4bDFraUlhTExMRG5oZ0NZenNTQkI3cUh3WFQ4a25TaW10?=
+ =?utf-8?B?RmtpTnRsQUpZZnlQR25taTMzN3grYkNtVnFYcDd6aUNJLzA4ZGVQQ0Zheldw?=
+ =?utf-8?B?N0xmMHVSNW5DVkVoeFk3MzZXV200aGpjZy96R0Q0YW10UlFnOEN5czFXSXhH?=
+ =?utf-8?B?NG5rb2RvYlhBUnp0UEw4VU9LRlYxeTlVZmZTaTd3QnRwRDlxUStNV1E1NGlK?=
+ =?utf-8?B?ZzlNeFF1VHlpZ2h4RURkY2JxUkl5dkw0bG5TdENFNUhKb3JZUXo3dTFFSldp?=
+ =?utf-8?B?Tit3WlFOY0xKM2wyVW1oaDlXR2lsbHdOR2s0VkxsdjJTd0d0UWNQTWN1ajlo?=
+ =?utf-8?B?UmlLSzQvdnIxN3QyYlZNT0xQblg3Rzd3RUJJbkh4cnhrS0loVSt3RmxKdjlo?=
+ =?utf-8?B?RE1rcTcxVkZKbzMwZE5ibkdOYnNtMVEwR2NBZFEvcEdheWh5dHdKNVNCSGxV?=
+ =?utf-8?B?aElIWnVLWDVpMVVKVXFuQkZLYmYzc0lnMGxEOXUwZjJnOXp3MjBoa243d0Y5?=
+ =?utf-8?B?OW1lRXlSb1JITUNRNk1UODYyMVJiYzRBZmlEeGhVU0NWS3hUa2NLWG5yaGFZ?=
+ =?utf-8?B?L1QxMEZTdHB0dWw4Tm1mZW9ya2V1NDk0M0tZNzVZQjVqaGd1bVlaL0R3ZG0y?=
+ =?utf-8?B?ejBSYTBFODRqWkcvUXA5OGF1VnlzNDRrOThDTURPZ1FyWDY5aW0zelEzRWV3?=
+ =?utf-8?B?akk5U1VoVzE1dVZpN0VsdThTenlLWUdLeWNQNXRsdmNkWW9NTzlZVXpSZmhm?=
+ =?utf-8?B?RGM4WXVMay9GcEl3REYrbGpvQmZwZUZ6Y2M0MkY0Q1ZlNUppUDB6U25ldXZv?=
+ =?utf-8?B?WWxrUWlxR3B0Y1J2dTZFZStlVW02SjVIMnQ0ZmxzQmF4RHVSR0FLUFBnNytu?=
+ =?utf-8?B?aUs1dE1GNDBlOFhRUk1EM01RaDJjN241emRaVHpKNE1na29ZT2Y4NDFiRWVO?=
+ =?utf-8?B?SnlVYlplWkRlYWhjaWJRWmtabDJyZi9SZkNtQW53RUFaeEh6QksrMlE4cXdL?=
+ =?utf-8?B?MkZSR2Jnbk8wSHN4MTk2ZEJjS0dCSUsxTGtVZk9sQ0w2eEtYQy8yZUYxNllZ?=
+ =?utf-8?B?MEE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 69bb534c-c9d4-4890-644c-08dd1dc32821
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5949.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Dec 2024 11:16:58.8578 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ou27iF8eswEnHnbdAXv0GbXVPigdPYLi5rccuQnS6oajfeS2HgIaEYYVtn+b9D9nEOzr3Hj4PSSVIzqP82xuy4uWJmatVJBNGVMPTJNocJs=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4680
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1734339399; x=1765875399;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=DNVGOgCPdH+PXAmdzSmDPyUonAg+hoHBvOKs56khk0w=;
- b=VBuVXY9j9s62wsiv5xhErxXDRyWiVWRI49j0JheLF+53BcKksGXA9Ocb
- R1Ew/8sPY0hlDhEzB9uepNv2elUBRgj1/Vt/ZR6pll1c59ZBYpAvGioO7
- 52keHCAAw7ayWoACX64gwuV4Ml5rfq+T5mCY/vPy3XmlWx7VHc7qHDRJS
- 7ehiExj2R28jaIo7yGc/I2MOOWioTsftLkekIJP4N1albIYOqXmUgZ2SW
- a3JXNIaBe4Rj34TDjgN8okGA8fd62zJ0NNRwDnubhaCPp3RvQgIXfcLSW
- jfYPipcZ9U1i3q6JqPSrfazpJWuogcy3dGTGJaJO9IJzYlL5X4cNhDjXr
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1734347829; x=1765883829;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=8+wedpxAleKTuJb4t75Hl2Hg3HnY8/cbVQIhH36ne88=;
+ b=nuEeu79Tm0PV7m46O5/2cMC8K7jABlIOQacMqxiNRL2B+Q74sQIx5wiy
+ NZxBriRGkHWjIX0vmniIDfVqrmbkEz5LDUb32UWm0qHRsdtVzF0Df2uz/
+ p4wfNdj/Vo6BjYJp9fUL39pwDmXLmkqafsigER8G+ZQMxQH3TbRRq63OE
+ kKXRbEC944NpV93+AKVaChkhSI1LeJQhFwiiKgrtX1Assa25rYL63KBpK
+ BhfKHP7YYOxbYdUtvb/wIR6Et0lWHSgcr5pgdskvKa0uillb9TxvI6FFH
+ D2oC9FgLc61lLS0jFJ+gA27iBS1aPcgoEB7h2LHOvHsF4jCdbAZkjltAV
+ A==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=VBuVXY9j
-Subject: [Intel-wired-lan] [PATCH iwl-next v2 5/5] ice: implement low
- latency PHY timer updates
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=nuEeu79T
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3] e1000e: Fix real-time
+ violations on link up
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -115,220 +242,94 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jacob Keller <jacob.e.keller@intel.com>
 
-Programming the PHY registers in preparation for an increment value change
-or a timer adjustment on E810 requires issuing Admin Queue commands for
-each PHY register. It has been found that the firmware Admin Queue
-processing occasionally has delays of tens or rarely up to hundreds of
-milliseconds. This delay cascades to failures in the PTP applications which
-depend on these updates being low latency.
 
-Consider a standard PTP profile with a sync rate of 16 times per second.
-This means there is ~62 milliseconds between sync messages. A complete
-cycle of the PTP algorithm
+On 12/14/2024 9:16 PM, Gerhard Engleder wrote:
+> From: Gerhard Engleder <eg@keba.com>
+> 
+> Link down and up triggers update of MTA table. This update executes many
+> PCIe writes and a final flush. Thus, PCIe will be blocked until all
+> writes are flushed. As a result, DMA transfers of other targets suffer
+> from delay in the range of 50us. This results in timing violations on
+> real-time systems during link down and up of e1000e in combination with
+> an Intel i3-2310E Sandy Bridge CPU.
+> 
+> The i3-2310E is quite old. Launched 2011 by Intel but still in use as
+> robot controller. The exact root cause of the problem is unclear and
+> this situation won't change as Intel support for this CPU has ended
+> years ago. Our experience is that the number of posted PCIe writes needs
+> to be limited at least for real-time systems. With posted PCIe writes a
+> much higher throughput can be generated than with PCIe reads which
+> cannot be posted. Thus, the load on the interconnect is much higher.
+> Additionally, a PCIe read waits until all posted PCIe writes are done.
+> Therefore, the PCIe read can block the CPU for much more than 10us if a
+> lot of PCIe writes were posted before. Both issues are the reason why we
+> are limiting the number of posted PCIe writes in row in general for our
+> real-time systems, not only for this driver.
+> 
+> A flush after a low enough number of posted PCIe writes eliminates the
+> delay but also increases the time needed for MTA table update. The
+> following measurements were done on i3-2310E with e1000e for 128 MTA
+> table entries:
+> 
+> Single flush after all writes: 106us
+> Flush after every write:       429us
+> Flush after every 2nd write:   266us
+> Flush after every 4th write:   180us
+> Flush after every 8th write:   141us
+> Flush after every 16th write:  121us
+> 
+> A flush after every 8th write delays the link up by 35us and the
+> negative impact to DMA transfers of other targets is still tolerable.
+> 
+> Execute a flush after every 8th write. This prevents overloading the
+> interconnect with posted writes.
+> 
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> CC: Vitaly Lifshits <vitaly.lifshits@intel.com>
+> Link: https://lore.kernel.org/netdev/f8fe665a-5e6c-4f95-b47a-2f3281aa0e6c@lunn.ch/T/
+> Signed-off-by: Gerhard Engleder <eg@keba.com>
+> ---
+> v3:
+> - mention problematic platform explicitly (Bjorn Helgaas)
+> - improve comment (Paul Menzel)
+> 
+> v2:
+> - remove PREEMPT_RT dependency (Andrew Lunn, Przemek Kitszel)
+> ---
+>   drivers/net/ethernet/intel/e1000e/mac.c | 9 ++++++++-
+>   1 file changed, 8 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/e1000e/mac.c b/drivers/net/ethernet/intel/e1000e/mac.c
+> index d7df2a0ed629..0174c16bbb43 100644
+> --- a/drivers/net/ethernet/intel/e1000e/mac.c
+> +++ b/drivers/net/ethernet/intel/e1000e/mac.c
+> @@ -331,8 +331,15 @@ void e1000e_update_mc_addr_list_generic(struct e1000_hw *hw,
+>   	}
+>   
+>   	/* replace the entire MTA table */
+> -	for (i = hw->mac.mta_reg_count - 1; i >= 0; i--)
+> +	for (i = hw->mac.mta_reg_count - 1; i >= 0; i--) {
+>   		E1000_WRITE_REG_ARRAY(hw, E1000_MTA, i, hw->mac.mta_shadow[i]);
+> +
+> +		/* do not queue up too many posted writes to prevent increased
+> +		 * latency for other devices on the interconnect
+> +		 */
+> +		if ((i % 8) == 0 && i != 0)
+> +			e1e_flush();
 
-1) Sync message (with Tx timestamp) from source
-2) Follow-up message from source
-3) Delay request (with Tx timestamp) from sink
-4) Delay response (with Rx timestamp of request) from source
-5) measure instantaneous clock offset
-6) request time adjustment via CLOCK_ADJTIME systemcall
 
-The Tx timestamps have a default maximum timeout of 10 milliseconds. If we
-assume that the maximum possible time is used, this leaves us with ~42
-milliseconds of processing time for a complete cycle.
+I would prefer to avoid adding this code to all devices, particularly 
+those that don't operate on real-time systems. Implementing this code 
+will introduce three additional MMIO transactions which will increase 
+the driver start time in various flows (up, probe, etc.).
 
-The CLOCK_ADJTIME system call is synchronous and will block until the
-driver completes its timer adjustment or frequency change.
+Is there a specific reason not to use if (IS_ENABLED(CONFIG_PREEMPT_RT)) 
+as Andrew initially suggested?
 
-If the writes to prepare the PHY timers get hit by a latency spike of 50
-milliseconds, then the PTP application will be delayed past the point where
-the next cycle should start. Packets from the next cycle may have already
-arrived and are waiting on the socket.
 
-In particular, LinuxPTP ptp4l may start complaining about missing an
-announce message from the source, triggering a fault. In addition, the
-clockcheck logic it uses may trigger. This clockcheck failure occurs
-because the timestamp captured by hardware is compared against a reading of
-CLOCK_MONOTONIC. It is assumed that the time when the Rx timestamp is
-captured and the read from CLOCK_MONOTONIC are relatively close together.
-This is not the case if there is a significant delay to processing the Rx
-packet.
-
-Newer firmware supports programming the PHY registers over a low latency
-interface which bypasses the Admin Queue. Instead, software writes to the
-REG_LL_PROXY_L and REG_LL_PROXY_H registers. Firmware reads these registers
-and then programs the PHY timers.
-
-Implement functions to use this interface when available to program the PHY
-timers instead of using the Admin Queue. This avoids the Admin Queue
-latency and ensures that adjustments happen within acceptable latency
-bounds.
-
-Co-developed-by: Karol Kolacinski <karol.kolacinski@intel.com>
-Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Reviewed-by: Milena Olech <milena.olech@intel.com>
-Signed-off-by: Anton Nadezhdin <anton.nadezhdin@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 105 ++++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h |   4 +
- 2 files changed, 109 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-index 7f646636adc2..3ad4fc926364 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-@@ -5102,6 +5102,55 @@ static int ice_ptp_prep_phy_time_e810(struct ice_hw *hw, u32 time)
- 	return 0;
- }
- 
-+/**
-+ * ice_ptp_prep_phy_adj_ll_e810 - Prep PHY ports for a time adjustment
-+ * @hw: pointer to HW struct
-+ * @adj: adjustment value to program
-+ *
-+ * Use the low latency firmware interface to program PHY time adjustment to
-+ * all PHY ports.
-+ *
-+ * Return: 0 on success, -EBUSY on timeout
-+ */
-+static int ice_ptp_prep_phy_adj_ll_e810(struct ice_hw *hw, s32 adj)
-+{
-+	const u8 tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
-+	struct ice_e810_params *params = &hw->ptp.phy.e810;
-+	unsigned long flags;
-+	u32 val;
-+	int err;
-+
-+	spin_lock_irqsave(&params->atqbal_wq.lock, flags);
-+
-+	/* Wait for any pending in-progress low latency interrupt */
-+	err = wait_event_interruptible_locked_irq(params->atqbal_wq,
-+						  !(params->atqbal_flags &
-+						    ATQBAL_FLAGS_INTR_IN_PROGRESS));
-+	if (err) {
-+		spin_unlock_irqrestore(&params->atqbal_wq.lock, flags);
-+		return err;
-+	}
-+
-+	wr32(hw, PF_SB_ATQBAH, adj);
-+	val = FIELD_PREP(REG_LL_PROXY_H_PHY_TMR_CMD_M, REG_LL_PROXY_H_PHY_TMR_CMD_ADJ) |
-+	      FIELD_PREP(REG_LL_PROXY_H_PHY_TMR_IDX_M, tmr_idx) | REG_LL_PROXY_H_EXEC;
-+	wr32(hw, PF_SB_ATQBAL, val);
-+
-+	/* Read the register repeatedly until the FW indicates completion */
-+	err = rd32_poll_timeout_atomic(hw, PF_SB_ATQBAL, val,
-+				       !FIELD_GET(REG_LL_PROXY_H_EXEC, val),
-+				       10, REG_LL_PROXY_H_TIMEOUT_US);
-+	if (err) {
-+		ice_debug(hw, ICE_DBG_PTP, "Failed to prepare PHY timer adjustment using low latency interface\n");
-+		spin_unlock_irqrestore(&params->atqbal_wq.lock, flags);
-+		return err;
-+	}
-+
-+	spin_unlock_irqrestore(&params->atqbal_wq.lock, flags);
-+
-+	return 0;
-+}
-+
- /**
-  * ice_ptp_prep_phy_adj_e810 - Prep PHY port for a time adjustment
-  * @hw: pointer to HW struct
-@@ -5120,6 +5169,9 @@ static int ice_ptp_prep_phy_adj_e810(struct ice_hw *hw, s32 adj)
- 	u8 tmr_idx;
- 	int err;
- 
-+	if (hw->dev_caps.ts_dev_info.ll_phy_tmr_update)
-+		return ice_ptp_prep_phy_adj_ll_e810(hw, adj);
-+
- 	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
- 
- 	/* Adjustments are represented as signed 2's complement values in
-@@ -5142,6 +5194,56 @@ static int ice_ptp_prep_phy_adj_e810(struct ice_hw *hw, s32 adj)
- 	return 0;
- }
- 
-+/**
-+ * ice_ptp_prep_phy_incval_ll_e810 - Prep PHY ports increment value change
-+ * @hw: pointer to HW struct
-+ * @incval: The new 40bit increment value to prepare
-+ *
-+ * Use the low latency firmware interface to program PHY time increment value
-+ * for all PHY ports.
-+ *
-+ * Return: 0 on success, -EBUSY on timeout
-+ */
-+static int ice_ptp_prep_phy_incval_ll_e810(struct ice_hw *hw, u64 incval)
-+{
-+	const u8 tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
-+	struct ice_e810_params *params = &hw->ptp.phy.e810;
-+	unsigned long flags;
-+	u32 val;
-+	int err;
-+
-+	spin_lock_irqsave(&params->atqbal_wq.lock, flags);
-+
-+	/* Wait for any pending in-progress low latency interrupt */
-+	err = wait_event_interruptible_locked_irq(params->atqbal_wq,
-+						  !(params->atqbal_flags &
-+						    ATQBAL_FLAGS_INTR_IN_PROGRESS));
-+	if (err) {
-+		spin_unlock_irqrestore(&params->atqbal_wq.lock, flags);
-+		return err;
-+	}
-+
-+	wr32(hw, PF_SB_ATQBAH, lower_32_bits(incval));
-+	val = FIELD_PREP(REG_LL_PROXY_H_PHY_TMR_CMD_M, REG_LL_PROXY_H_PHY_TMR_CMD_FREQ) |
-+	      FIELD_PREP(REG_LL_PROXY_H_TS_HIGH, (u8)upper_32_bits(incval)) |
-+	      FIELD_PREP(REG_LL_PROXY_H_PHY_TMR_IDX_M, tmr_idx) | REG_LL_PROXY_H_EXEC;
-+	wr32(hw, PF_SB_ATQBAL, val);
-+
-+	/* Read the register repeatedly until the FW indicates completion */
-+	err = rd32_poll_timeout_atomic(hw, PF_SB_ATQBAL, val,
-+				       !FIELD_GET(REG_LL_PROXY_H_EXEC, val),
-+				       10, REG_LL_PROXY_H_TIMEOUT_US);
-+	if (err) {
-+		ice_debug(hw, ICE_DBG_PTP, "Failed to prepare PHY timer increment using low latency interface\n");
-+		spin_unlock_irqrestore(&params->atqbal_wq.lock, flags);
-+		return err;
-+	}
-+
-+	spin_unlock_irqrestore(&params->atqbal_wq.lock, flags);
-+
-+	return 0;
-+}
-+
- /**
-  * ice_ptp_prep_phy_incval_e810 - Prep PHY port increment value change
-  * @hw: pointer to HW struct
-@@ -5157,6 +5259,9 @@ static int ice_ptp_prep_phy_incval_e810(struct ice_hw *hw, u64 incval)
- 	u8 tmr_idx;
- 	int err;
- 
-+	if (hw->dev_caps.ts_dev_info.ll_phy_tmr_update)
-+		return ice_ptp_prep_phy_incval_ll_e810(hw, incval);
-+
- 	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
- 	low = lower_32_bits(incval);
- 	high = upper_32_bits(incval);
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-index 35366207e91f..8442d1d60351 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-@@ -675,7 +675,11 @@ static inline bool ice_is_dual(struct ice_hw *hw)
- 
- /* Tx timestamp low latency read definitions */
- #define REG_LL_PROXY_H_TIMEOUT_US	2000
-+#define REG_LL_PROXY_H_PHY_TMR_CMD_M	GENMASK(7, 6)
-+#define REG_LL_PROXY_H_PHY_TMR_CMD_ADJ	0x1
-+#define REG_LL_PROXY_H_PHY_TMR_CMD_FREQ	0x2
- #define REG_LL_PROXY_H_TS_HIGH		GENMASK(23, 16)
-+#define REG_LL_PROXY_H_PHY_TMR_IDX_M	BIT(24)
- #define REG_LL_PROXY_H_TS_IDX		GENMASK(29, 24)
- #define REG_LL_PROXY_H_TS_INTR_ENA	BIT(30)
- #define REG_LL_PROXY_H_EXEC		BIT(31)
--- 
-2.42.0
+> +	}
+>   	e1e_flush();
+>   }
+>   
 
