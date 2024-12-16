@@ -1,67 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0CA2C9F2A55
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Dec 2024 07:49:22 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2F0239F2A59
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Dec 2024 07:49:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8EBDA40BD3;
-	Mon, 16 Dec 2024 06:49:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DDB8360A6B;
+	Mon, 16 Dec 2024 06:49:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CjjLjL09u8tM; Mon, 16 Dec 2024 06:49:19 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id WCnnQEDC_l1X; Mon, 16 Dec 2024 06:49:24 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8B8B6407B8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BCDC060A70
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1734331759;
-	bh=ZDbvtKk8f11VuhoPQVg3xxZy9EhtPhN8MUL9O47Zk1s=;
+	s=default; t=1734331763;
+	bh=TYDRxeeCJc7LcLc1xC8XUaNcCP1c90oMOmvKtkTwDC0=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=5Mv0LJVDRwMjrDwI2eMsnSgefIHjmboS/dxuLl5G2CXycnlH/Z6dYh8eBBVG8g9Vm
-	 vhCjmQ/RWHisg04QDijvZ8J46TG01K7c24zJkxGZx9uu3K4qg9qA3ABz2AZdEUJrhV
-	 SkaLxUD67wgAi/jcDF1Gr6Zl5wfMn0IRS6qg/mIUuD+9KnHC4lKU7KM0Kh1pnNOYOq
-	 ei/fCRfpW/CMzlQVDiH+kUZa4OmbSejk+qoyDxe57SAQ5rn/5OgNne6+5xP7XTniY/
-	 1EfBjep468lktKvQMsE08xAGXjhsAk4ZEEc+NQ0u3Kl6maKMsR53fomdPsmRO93Bhj
-	 LuYEa5i829feg==
+	b=ht66S9k1WCuHfPNdut854K0H+J26NnCIYSFh7+HBplO+OGV3WFC5AcgbAN9TnEJzX
+	 sSKKEfP6eariOC2ypTtZp2lWPcXKLuscshV2UthAJyquOkddJQdv2ZrojWunOf8CVY
+	 a45Fo5umzhWFf5P0GwEcR1NAyHXxFZUB9Jz8hqUg/GITwgsttSgMckefLMEMzmfwVD
+	 Ym1nQoMMAkAN2a3aORJldHiY5yTS0P2MiwgcmF26QtwbKimoiALMTwBtidWrWaXUXI
+	 ue5tfi4h1QZVaZvirTjQv2+R04rDqY52Zfke6epv6Oi2qxAypJJvAXJIkIUqw6Fjv1
+	 g3pAQ0EJIvcSw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8B8B6407B8;
-	Mon, 16 Dec 2024 06:49:19 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BCDC060A70;
+	Mon, 16 Dec 2024 06:49:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 13ECFC5
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 06:49:18 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 2A7F5C5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 06:49:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0292681BC6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 06:49:18 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0A99881BF5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 06:49:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id h4WbscVa92x1 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 16 Dec 2024 06:49:17 +0000 (UTC)
+ id 1HDvXvlMN1sd for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 16 Dec 2024 06:49:21 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
  helo=mgamail.intel.com; envelope-from=faizal.abdul.rahim@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 1553A81B8A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1553A81B8A
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 2B19A81BC6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2B19A81BC6
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1553A81B8A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 06:49:16 +0000 (UTC)
-X-CSE-ConnectionGUID: Lju510DuRPiJEPB+z0wRhQ==
-X-CSE-MsgGUID: tYUrSSyDSSiPYcsYHslrLw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11287"; a="34848262"
-X-IronPort-AV: E=Sophos;i="6.12,237,1728975600"; d="scan'208";a="34848262"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2B19A81BC6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 06:49:21 +0000 (UTC)
+X-CSE-ConnectionGUID: psDN+9PSRW+HhkJefidYRg==
+X-CSE-MsgGUID: O/3pUKSjT+6mAJ3o3o8M9Q==
+X-IronPort-AV: E=McAfee;i="6700,10204,11287"; a="34848273"
+X-IronPort-AV: E=Sophos;i="6.12,237,1728975600"; d="scan'208";a="34848273"
 Received: from fmviesa001.fm.intel.com ([10.60.135.141])
  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Dec 2024 22:49:17 -0800
-X-CSE-ConnectionGUID: Cf90MwRjSsOAGdFwxULHHg==
-X-CSE-MsgGUID: F7gvB9BPTM2O0qRtzmZAmQ==
+ 15 Dec 2024 22:49:21 -0800
+X-CSE-ConnectionGUID: q9eNcpKNR8q0nYi2da+eBQ==
+X-CSE-MsgGUID: CKt6U1j/TfWPRTe6NB0olw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="128101907"
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="128101929"
 Received: from mohdfai2-ilbpg12-1.png.intel.com ([10.88.227.73])
- by fmviesa001.fm.intel.com with ESMTP; 15 Dec 2024 22:49:13 -0800
+ by fmviesa001.fm.intel.com with ESMTP; 15 Dec 2024 22:49:17 -0800
 From: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
 To: Tony Nguyen <anthony.l.nguyen@intel.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
@@ -76,8 +76,8 @@ To: Tony Nguyen <anthony.l.nguyen@intel.com>,
 Cc: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
  linux-kernel@vger.kernel.org, bpf@vger.kernel.org
-Date: Mon, 16 Dec 2024 01:47:19 -0500
-Message-Id: <20241216064720.931522-9-faizal.abdul.rahim@linux.intel.com>
+Date: Mon, 16 Dec 2024 01:47:20 -0500
+Message-Id: <20241216064720.931522-10-faizal.abdul.rahim@linux.intel.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20241216064720.931522-1-faizal.abdul.rahim@linux.intel.com>
 References: <20241216064720.931522-1-faizal.abdul.rahim@linux.intel.com>
@@ -85,25 +85,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1734331757; x=1765867757;
+ t=1734331761; x=1765867761;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=fapdr+Qi+xkI++ng35zlxRw/Ys0YcVZKj85dRXTy3/I=;
- b=bQpFdQf4dvsi8ExgpvIyirB2Qw/YqKWYN7WE6EPgCcP7oAuLXwnj63LJ
- 9OVf+Lk4cEIStPpp7TkXhRH7ic4HcJWz6+m3hlfUdxHfZWKpN+czV0az9
- HRR5pZnMaRQJ2B7gxhBnomgJQT9s3nH7+1D2TYVJXdgSM/G/kd46Eh3C3
- zDiGarR1lz1C+DuN55+r0fl3AohuyZ6X6tK7TeoJXTjgaYbQf7H3b17eQ
- IpBc1WGQeoPbXvErJsgW47UwYIxwolB5gJ2FQg04gs+uYVQo5xLCfiSnB
- lYVchWp+wKmxthZgkvruqfGaLs6sv1hdJhrvE12Vxg38vOplM9UoiERnN
+ bh=GmF50IpDra1dgYb/XdxHNOCwP4kOlp3rid6eI8frReo=;
+ b=DLU6U5tjK6XWp4yMg0hfsR7g3ieq7swdkDIG5GY1yxDkcyaO7dNKT9hC
+ hmakq1N7I6T/FZQFdpgJ/dWziptAfhABQGW5UyGFuruE9R1lL7gWdoOui
+ 3h0agItNEfuVTb27u6bOBTJGJiMRCyR1XcC78mTCbjXDbDpof4g4Be6Mj
+ zXrMBYc86B2hJm6YLrqe/AEQ8Q3ZLEEyraFa1qZV8xJUpE0HAyGNctTjq
+ JEU2iWSsqJ/KtjIUjUS+tp29lROJuYE2HT4X0jYMKd4aGLgRQEtl45g9C
+ 9rkrhkIetrosZ0DL/MT/cPM91686/naRixCZ3CmQzlsOcQ/fkUZhuaFea
  A==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=bQpFdQf4
-Subject: [Intel-wired-lan] [PATCH iwl-next 8/9] igc: Add support to get MAC
- Merge data via ethtool
+ header.a=rsa-sha256 header.s=Intel header.b=DLU6U5tj
+Subject: [Intel-wired-lan] [PATCH iwl-next 9/9] igc: Add support to get
+ frame preemption statistics via ethtool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -119,138 +119,137 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Implement "ethtool --show-mm" callback for IGC.
+Implemented "ethtool --include-statistics --show-mm" callback for IGC.
 
-Tested with command:
-$ ethtool --show-mm enp1s0.
-  MAC Merge layer state for enp1s0:
-  pMAC enabled: on
-  TX enabled: on
-  TX active: on
-  TX minimum fragment size: 252
-  RX minimum fragment size: 252
-  Verify enabled: on
-  Verify time: 128
-  Max verify time: 128
-  Verification status: SUCCEEDED
+Tested preemption scenario to check preemption statistics:
+1) Trigger verification handshake on both boards:
+    $ sudo ethtool --set-mm enp1s0 pmac-enabled on
+    $ sudo ethtool --set-mm enp1s0 tx-enabled on
+    $ sudo ethtool --set-mm enp1s0 verify-enabled on
+2) Set preemptible or express queue in taprio for tx board:
+    $ sudo tc qdisc replace dev enp1s0 parent root handle 100 taprio \
+      num_tc 4 map 0 1 2 3 0 0 0 0 0 0 0 0 0 0 0 0 \
+      queues 1@0 1@1 1@2 1@3 base-time 0 sched-entry S F 100000 \
+      fp E E P P
+3) Send large size packets on preemptible queue
+4) Send small size packets on express queue to preempt packets in
+   preemptible queue
+5) Show preemption statistics on the receiving board:
+   $ ethtool --include-statistics --show-mm enp1s0
+     MAC Merge layer state for enp1s0:
+     pMAC enabled: on
+     TX enabled: on
+     TX active: on
+     TX minimum fragment size: 252
+     RX minimum fragment size: 252
+     Verify enabled: on
+     Verify time: 128
+     Max verify time: 128
+     Verification status: SUCCEEDED
+     Statistics:
+     	MACMergeFrameAssErrorCount: 0
+	MACMergeFrameSmdErrorCount: 0
+	MACMergeFrameAssOkCount: 511
+	MACMergeFragCountRx: 764
+	MACMergeFragCountTx: 0
+	MACMergeHoldCount: 0
 
-Verified that the fields value are retrieved correctly.
-
+Co-developed-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 Signed-off-by: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc.h         |  2 +-
- drivers/net/ethernet/intel/igc/igc_ethtool.c | 20 ++++++++++++
- drivers/net/ethernet/intel/igc/igc_tsn.c     | 33 ++++++++++++++++++++
- drivers/net/ethernet/intel/igc/igc_tsn.h     |  1 +
- 4 files changed, 55 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/igc/igc_ethtool.c | 40 ++++++++++++++++++++
+ drivers/net/ethernet/intel/igc/igc_regs.h    | 19 ++++++++++
+ 2 files changed, 59 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index fc1960925e28..3199da9b87ba 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -40,7 +40,7 @@ void igc_ethtool_set_ops(struct net_device *);
- 
- #define IGC_MAX_TX_TSTAMP_REGS		4
- 
--/* Verification state defined as per section 30.14.1.2 in 802.3br spec */
-+/* Verify state defined as per section 99.4.8, Figure 99-8 in 802.3br spec */
- enum verify_state {
- 	VERIFY_FAIL,
- 	INIT_VERIFICATION,
 diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index 7cde0e5a7320..16aa6e4e1727 100644
+index 16aa6e4e1727..90a9dbb0d901 100644
 --- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
 +++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -1782,6 +1782,25 @@ static int igc_ethtool_set_eee(struct net_device *netdev,
- 	return 0;
+@@ -1835,6 +1835,45 @@ static int igc_ethtool_set_mm(struct net_device *netdev,
+ 	return igc_tsn_offload_apply(adapter);
  }
  
-+static int igc_ethtool_get_mm(struct net_device *netdev,
-+			      struct ethtool_mm_state *cmd)
++/**
++ * igc_ethtool_get_frame_ass_error - Get the frame assembly error count.
++ * @dev: Pointer to the net_device structure.
++ * @return: The count of frame assembly errors.
++ */
++static u64 igc_ethtool_get_frame_ass_error(struct net_device *dev)
 +{
-+	struct igc_adapter *adapter = netdev_priv(netdev);
-+	struct fpe_t *fpe = &adapter->fpe;
++	struct igc_adapter *adapter = netdev_priv(dev);
++	u32 ooo_smdc, ooo_frame_cnt, ooo_frag_cnt; /* Out of order statistics */
++	struct igc_hw *hw = &adapter->hw;
++	u32 miss_frame_frag_cnt;
++	u32 reg_value;
 +
-+	cmd->tx_min_frag_size = fpe->tx_min_frag_size;
-+	cmd->rx_min_frag_size = fpe->tx_min_frag_size;
-+	cmd->pmac_enabled = fpe->pmac_enabled;
-+	cmd->verify_enabled = fpe->verify_enabled;
-+	cmd->verify_time = fpe->verify_time;
-+	cmd->tx_active = igc_fpe_is_tx_preempt_allowed(&adapter->fpe);
-+	cmd->tx_enabled = fpe->tx_enabled;
-+	cmd->verify_status = igc_fpe_get_verify_status(&adapter->fpe);
-+	cmd->max_verify_time = MAX_VERIFY_TIME;
++	reg_value = rd32(IGC_PRMEXPRCNT);
++	ooo_smdc = reg_value & IGC_PRMEXPRCNT_OOO_SMDC;
++	ooo_frame_cnt = (reg_value & IGC_PRMEXPRCNT_OOO_FRAME_CNT)
++			 >> IGC_PRMEXPRCNT_OOO_FRAME_CNT_SHIFT;
++	ooo_frag_cnt = (reg_value & IGC_PRMEXPRCNT_OOO_FRAG_CNT)
++			>> IGC_PRMEXPRCNT_OOO_FRAG_CNT_SHIFT;
++	miss_frame_frag_cnt = (reg_value & IGC_PRMEXPRCNT_MISS_FRAME_FRAG_CNT)
++			      >> IGC_PRMEXPRCNT_MISS_FRAME_FRAG_CNT_SHIFT;
 +
-+	return 0;
++	return ooo_smdc + ooo_frame_cnt + ooo_frag_cnt + miss_frame_frag_cnt;
 +}
 +
- static int igc_ethtool_set_mm(struct net_device *netdev,
- 			      struct ethtool_mm_cfg *cmd,
- 			      struct netlink_ext_ack *extack)
-@@ -2103,6 +2122,7 @@ static const struct ethtool_ops igc_ethtool_ops = {
- 	.set_rxfh		= igc_ethtool_set_rxfh,
- 	.get_ts_info		= igc_ethtool_get_ts_info,
++static void igc_ethtool_get_mm_stats(struct net_device *dev,
++				     struct ethtool_mm_stats *stats)
++{
++	struct igc_adapter *adapter = netdev_priv(dev);
++	struct igc_hw *hw = &adapter->hw;
++
++	stats->MACMergeFrameAssErrorCount = igc_ethtool_get_frame_ass_error(dev);
++	stats->MACMergeFrameSmdErrorCount = 0; /* Not available in IGC */
++	stats->MACMergeFrameAssOkCount = rd32(IGC_PRMPTDRCNT);
++	stats->MACMergeFragCountRx =  rd32(IGC_PRMEVNTRCNT);
++	stats->MACMergeFragCountTx = rd32(IGC_PRMEVNTTCNT);
++	stats->MACMergeHoldCount = 0; /* Not available in IGC */
++}
++
+ static int igc_ethtool_get_link_ksettings(struct net_device *netdev,
+ 					  struct ethtool_link_ksettings *cmd)
+ {
+@@ -2124,6 +2163,7 @@ static const struct ethtool_ops igc_ethtool_ops = {
  	.get_channels		= igc_ethtool_get_channels,
-+	.get_mm			= igc_ethtool_get_mm,
+ 	.get_mm			= igc_ethtool_get_mm,
  	.set_mm			= igc_ethtool_set_mm,
++	.get_mm_stats		= igc_ethtool_get_mm_stats,
  	.set_channels		= igc_ethtool_set_channels,
  	.get_priv_flags		= igc_ethtool_get_priv_flags,
-diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
-index efd2a9f676d8..919a7f088a72 100644
---- a/drivers/net/ethernet/intel/igc/igc_tsn.c
-+++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
-@@ -258,6 +258,39 @@ void igc_fpe_preprocess_verify_response(struct fpe_t *fpe, int smd_type)
- 	schedule_delayed_work(&fpe->verification_work, 0);
- }
+ 	.set_priv_flags		= igc_ethtool_set_priv_flags,
+diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
+index 12ddc5793651..f40946cce35a 100644
+--- a/drivers/net/ethernet/intel/igc/igc_regs.h
++++ b/drivers/net/ethernet/intel/igc/igc_regs.h
+@@ -222,6 +222,25 @@
  
-+enum ethtool_mm_verify_status igc_fpe_get_verify_status(const struct fpe_t *fpe)
-+{
-+	enum ethtool_mm_verify_status verify_status;
-+
-+	switch (fpe->verify_state) {
-+	case VERIFY_FAIL:
-+		verify_status = ETHTOOL_MM_VERIFY_STATUS_FAILED;
-+		break;
-+
-+	case INIT_VERIFICATION:
-+		if (fpe->verify_enabled)
-+			verify_status = ETHTOOL_MM_VERIFY_STATUS_INITIAL;
-+		else
-+			verify_status = ETHTOOL_MM_VERIFY_STATUS_DISABLED;
-+		break;
-+
-+	case VERIFIED:
-+		verify_status = ETHTOOL_MM_VERIFY_STATUS_SUCCEEDED;
-+		break;
-+
-+	case SEND_VERIFY:
-+	case WAIT_FOR_RESPONSE:
-+		verify_status = ETHTOOL_MM_VERIFY_STATUS_VERIFYING;
-+		break;
-+
-+	default:
-+		verify_status = ETHTOOL_MM_VERIFY_STATUS_UNKNOWN;
-+		break;
-+	}
-+
-+	return verify_status;
-+}
-+
- static bool is_any_launchtime(struct igc_adapter *adapter)
- {
- 	int i;
-diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.h b/drivers/net/ethernet/intel/igc/igc_tsn.h
-index 2b67ecae99c9..913f983652e4 100644
---- a/drivers/net/ethernet/intel/igc/igc_tsn.h
-+++ b/drivers/net/ethernet/intel/igc/igc_tsn.h
-@@ -13,6 +13,7 @@
- #define MAX_VERIFY_TIME			128
+ #define IGC_FTQF(_n)	(0x059E0 + (4 * (_n)))  /* 5-tuple Queue Fltr */
  
- int igc_fpe_get_smd_type(__le32 status_error);
-+enum ethtool_mm_verify_status igc_fpe_get_verify_status(const struct fpe_t *fpe);
- void igc_fpe_init(struct fpe_t *fpe);
- bool igc_fpe_is_tx_preempt_allowed(const struct fpe_t *fpe);
- bool igc_fpe_is_verify_or_response(int smd_type, unsigned int size);
++/* Time sync registers - preemption statistics */
++#define IGC_PRMEVNTTCNT		0x04298	/* TX Preemption event counter */
++#define IGC_PRMEVNTRCNT		0x0429C	/* RX Preemption event counter */
++#define IGC_PRMPTDRCNT		0x04284	/* Good RX Preempted Packets */
++
++ /* Preemption Exception Counter */
++#define IGC_PRMEXPRCNT					0x042A0
++/* Received out of order packets with SMD-C and NOT ReumeRx */
++#define IGC_PRMEXPRCNT_OOO_SMDC 0x000000FF
++/* Received out of order packets with SMD-C and wrong Frame CNT */
++#define IGC_PRMEXPRCNT_OOO_FRAME_CNT			0x0000FF00
++#define IGC_PRMEXPRCNT_OOO_FRAME_CNT_SHIFT		8
++/* Received out of order packets with SMD-C and wrong Frag CNT */
++#define IGC_PRMEXPRCNT_OOO_FRAG_CNT			0x00FF0000
++#define IGC_PRMEXPRCNT_OOO_FRAG_CNT_SHIFT		16
++/* Received packets with SMD-S and ReumeRx */
++#define IGC_PRMEXPRCNT_MISS_FRAME_FRAG_CNT		0xFF000000
++#define IGC_PRMEXPRCNT_MISS_FRAME_FRAG_CNT_SHIFT	24
++
+ /* Transmit Scheduling Registers */
+ #define IGC_TQAVCTRL		0x3570
+ #define IGC_TXQCTL(_n)		(0x3344 + 0x4 * (_n))
 -- 
 2.25.1
 
