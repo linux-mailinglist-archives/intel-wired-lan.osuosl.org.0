@@ -1,97 +1,127 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5BE939F39A8
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Dec 2024 20:23:16 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id EBAFD9F3A8A
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Dec 2024 21:13:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B059980ED8;
-	Mon, 16 Dec 2024 19:23:14 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C0C3D408F0;
+	Mon, 16 Dec 2024 20:13:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id QTIk_cPSJkO7; Mon, 16 Dec 2024 19:23:14 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 8TtuK0x-fiby; Mon, 16 Dec 2024 20:13:34 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EEC5D80EE1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9A110408F2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1734376994;
-	bh=jZMoa6c8V2RLO1SfPCDM3oUntBeI3z7ggEZ6Kaa61BY=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1734380013;
+	bh=61HxeimFlMEVl2KwPvPCcTKNZsDGn+ecl4uR0p2ZsAI=;
+	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=CyJiy/yN3sakT/iF5dzVP9bMDYqTmRixE/6DuUBmRyTCr/HpFHwb8ZjZrfpGE/jDX
-	 RlLpCRBtz7nEderBZ7mL/q6zdhpOF1zCRIMSjF+q3xEYoC/y77+3DCbjwQR7aK0kVt
-	 PchP/1y5Le2iRbT2QVku3IZm/YogNJ0bRSinwHozppov8ZjY0J4v3AEL47tvantnwZ
-	 Fc/CDK3VAqKjtX5i/MxoUNRjl6iZ+a+Il8lGF+UdEMFRiFZVBv4LOh9cEDPHR75xme
-	 Xup+2cJQO1/ffgWSPM6wKNaHQl9uOyMCUSx/nHF3KqePUVfO7PzElnubFuVzlSkKUU
-	 v5mpRb4KyKORA==
+	b=ozBZmGFt4h9+/DPdfNuxujoqE/nNHr8BHJXOtHMU+r+3hR+zynqcrTNRGVgTU1zA7
+	 doLGgaNJsl4R/b37vb5tliXfUDST0VKbAKcNQ5Iz7XWMNedDOyYUJNFuBkv8OZ1gjS
+	 cvpeEbq9uRtTl/w5lrVOYWsG1SjHvEuwYWST/dpRnnT8c6QtXWDAi65K7JyUt8DJsB
+	 6OF0bXPKb1oAIuNeN2JdEJaMWddNJ44VIYWLH8P4wFtzjulAnjhcyBerqsHMnZlm4+
+	 ytSigJ9R8ZSkaPybq72pFa04wIfSOUO2KT3x+M7gQ3wT4WE4TfmydR/QwkKyaxdPAE
+	 Rcd/XRdNYnMRw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EEC5D80EE1;
-	Mon, 16 Dec 2024 19:23:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9A110408F2;
+	Mon, 16 Dec 2024 20:13:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 75980CE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 19:23:12 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 6452DE3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 20:13:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 63B7580EB8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 19:23:12 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3244881E57
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 20:13:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ak0TesLKF-6t for <intel-wired-lan@lists.osuosl.org>;
- Mon, 16 Dec 2024 19:23:11 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=81.19.149.128;
- helo=mx18lb.world4you.com; envelope-from=gerhard@engleder-embedded.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 861A180EAD
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 861A180EAD
-Received: from mx18lb.world4you.com (mx18lb.world4you.com [81.19.149.128])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 861A180EAD
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 19:23:11 +0000 (UTC)
-Received: from [88.117.62.55] (helo=[10.0.0.160])
- by mx18lb.world4you.com with esmtpsa (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.97.1)
- (envelope-from <gerhard@engleder-embedded.com>)
- id 1tNGgM-000000003sc-1v0e; Mon, 16 Dec 2024 20:23:06 +0100
-Message-ID: <047738af-69af-49aa-ae91-7dbca40ae559@engleder-embedded.com>
-Date: Mon, 16 Dec 2024 20:23:04 +0100
+ id 1P7jzIY2Q7wA for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 16 Dec 2024 20:13:30 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::431; helo=mail-wr1-x431.google.com;
+ envelope-from=brianvv@google.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 21EB781C6E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 21EB781C6E
+Received: from mail-wr1-x431.google.com (mail-wr1-x431.google.com
+ [IPv6:2a00:1450:4864:20::431])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 21EB781C6E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 20:13:29 +0000 (UTC)
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-385de59c1a0so2998593f8f.2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 12:13:29 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1734380008; x=1734984808;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=61HxeimFlMEVl2KwPvPCcTKNZsDGn+ecl4uR0p2ZsAI=;
+ b=KaDzE7vtFuFXZ1zbf3JoF7W8IxobSDdVjtoHYrIdT2NDq6zglnq1TW1uDgkWWW944n
+ 7VJh6rHshYwf2H00vi5riVi1QSPGnYQhF56kcMV7VxOtzAguWWO+fGpOM1FJtGRhGCdm
+ 0e6EcraC+HaopRdRZVyG83cJfrb5THdl69zgE36av1IwOj9jIy5iNa63a3GqF9OHdrEw
+ ipokPsOZj0OJYXCV0z2V+ey3pWyiXq1AOa8SBToiP++Ezo2WbaK7beD+CB0RMlgRQp4h
+ HLt869dDYvLd2HRTaS8DlGkMyzQpYJEfhrNZF/VpguddIU3i1uHwTN5NE89ZjUAbEM3f
+ wv7w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVlea5BMXKdjMbmBaMuPrH76c/nYEhlRvIn5Z65I4tCWW2xU96OoD4waWEYnnrJlLrCGukjL/rMEzTcaWrr9+8=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yyr7qfJpKMuyd6ibEpqjVdGReZDKiKm91zCqTm4HAnya2RPOI8f
+ pFBj8X7TH46c4Hxi+DNxzKuICf55BsWfiKipCVKFgYBjHG0g7eRJYbCrMwnRkAlYgY8+BTsPK3Y
+ NUAOL3ixWON9picuClR6o8OCYLzk53mZPcq9+
+X-Gm-Gg: ASbGncvSWQFbNL5ocrsCHtZe7XS0B5jIKxSCWvUzv90TD5AKFZj1fK4f9zrOHKj5f2i
+ oBY2nxPjC1Lmwodkw5IYSpu3Zr4x/LmGt9sQ26XXRrK/gZO0s5l2f0jzvQSbl1Fjd6V9t3g==
+X-Google-Smtp-Source: AGHT+IFmlbX9xhNR1EJspR2ERQUcqblea1plJilcBHpQ2o55rePDoziJMVFfeClQNZNy/tF+ey1XIElWbRaT+lI6g58=
+X-Received: by 2002:a05:6000:4616:b0:385:dedb:a148 with SMTP id
+ ffacd0b85a97d-3888e0ac4f4mr11412043f8f.46.1734380006716; Mon, 16 Dec 2024
+ 12:13:26 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-pci@vger.kernel.org
-Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, kuba@kernel.org,
- edumazet@google.com, pabeni@redhat.com, bhelgaas@google.com,
- pmenzel@molgen.mpg.de, Gerhard Engleder <eg@keba.com>
-References: <20241214191623.7256-1-gerhard@engleder-embedded.com>
- <231abdb7-3b16-4c3c-be17-5d0e6a556f28@intel.com>
-Content-Language: en-US
-From: Gerhard Engleder <gerhard@engleder-embedded.com>
-In-Reply-To: <231abdb7-3b16-4c3c-be17-5d0e6a556f28@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-AV-Do-Run: Yes
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; 
- d=engleder-embedded.com; s=dkim11; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
- :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=jZMoa6c8V2RLO1SfPCDM3oUntBeI3z7ggEZ6Kaa61BY=; b=M/waF/MV2RXEMR3oDfl2pFU4iq
- eCYoR4hWa4ROygWywRg5W/MftFYY6131NEcb27QecaKxoeLI9xcay1k7Vcn2vnegBqY1OvgEe7GqI
- 1IX9dL7u1ymi3xQlc1ENqQ2K11b32B5npD5Zpjvb2yMUhVw4yeCQfIm3c0tfqj8x/rVU=;
+References: <20241216162735.2047544-1-brianvv@google.com>
+ <20241216162735.2047544-3-brianvv@google.com>
+ <b81501de-7dd3-4808-920e-14b2cc817038@intel.com>
+In-Reply-To: <b81501de-7dd3-4808-920e-14b2cc817038@intel.com>
+From: Brian Vazquez <brianvv@google.com>
+Date: Mon, 16 Dec 2024 15:13:15 -0500
+Message-ID: <CAMzD94QR-+408wf+dindhaw+NMJ1GK9W-4xuiJpY2FkhtMVLig@mail.gmail.com>
+To: Alexander Lobakin <aleksander.lobakin@intel.com>
+Cc: Brian Vazquez <brianvv.kernel@gmail.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, 
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, 
+ intel-wired-lan@lists.osuosl.org, David Decotigny <decot@google.com>, 
+ Vivek Kumar <vivekmr@google.com>, Anjali Singhai <anjali.singhai@intel.com>, 
+ Sridhar Samudrala <sridhar.samudrala@intel.com>, linux-kernel@vger.kernel.org, 
+ netdev@vger.kernel.org, emil.s.tantilov@intel.com, 
+ Marco Leogrande <leogrande@google.com>,
+ Manoj Vishwanathan <manojvishy@google.com>, 
+ Jacob Keller <jacob.e.keller@intel.com>,
+ Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1734380008; x=1734984808; darn=lists.osuosl.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=61HxeimFlMEVl2KwPvPCcTKNZsDGn+ecl4uR0p2ZsAI=;
+ b=EmpDNENvnZWvcbIE8I7NEvttGSQrviyTHIwkGhHi40pFltofJ7CSJyf24Pmz8uHSJv
+ THf5nvWvVjKUFalq0Ur11Uk4HpSZwDgUnJj55s9nkgHEyTFVc1AaItvgArZmACguuoJ3
+ 7F/9alDVzxsIe4LlFMpnuNjBOER5sDw6X/TE+dFPCq2ON/UoCokudVR4q+ai1u1M06eW
+ j31NOn+7FxYCwsYNjEjnDiT7AQG25mRA0x523w051fThzThvzz6APcSMQwtEZLUOaBUu
+ ASV8l3+bn6/asVTakAcwiayjUQpjjHK8T8CgyqHhubRhknWH+6YqEk6QeoHqfkbqRHmW
+ Y+8Q==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=engleder-embedded.com
+ dmarc=pass (p=reject dis=none)
+ header.from=google.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=engleder-embedded.com header.i=@engleder-embedded.com
- header.a=rsa-sha256 header.s=dkim11 header.b=M/waF/MV
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3] e1000e: Fix real-time
- violations on link up
+ dkim=pass (2048-bit key,
+ unprotected) header.d=google.com header.i=@google.com header.a=rsa-sha256
+ header.s=20230601 header.b=EmpDNENv
+Subject: Re: [Intel-wired-lan] [iwl-next PATCH v4 2/3] idpf: convert
+ workqueues to unbound
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -107,40 +137,46 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
->> @@ -331,8 +331,15 @@ void e1000e_update_mc_addr_list_generic(struct 
->> e1000_hw *hw,
->>       }
->>       /* replace the entire MTA table */
->> -    for (i = hw->mac.mta_reg_count - 1; i >= 0; i--)
->> +    for (i = hw->mac.mta_reg_count - 1; i >= 0; i--) {
->>           E1000_WRITE_REG_ARRAY(hw, E1000_MTA, i, hw->mac.mta_shadow[i]);
->> +
->> +        /* do not queue up too many posted writes to prevent increased
->> +         * latency for other devices on the interconnect
->> +         */
->> +        if ((i % 8) == 0 && i != 0)
->> +            e1e_flush();
-> 
-> 
-> I would prefer to avoid adding this code to all devices, particularly 
-> those that don't operate on real-time systems. Implementing this code 
-> will introduce three additional MMIO transactions which will increase 
-> the driver start time in various flows (up, probe, etc.).
-> 
-> Is there a specific reason not to use if (IS_ENABLED(CONFIG_PREEMPT_RT)) 
-> as Andrew initially suggested?
+On Mon, Dec 16, 2024 at 1:11=E2=80=AFPM Alexander Lobakin
+<aleksander.lobakin@intel.com> wrote:
+>
+> From: Brian Vazquez <brianvv@google.com>
+> Date: Mon, 16 Dec 2024 16:27:34 +0000
+>
+> > From: Marco Leogrande <leogrande@google.com>
+> >
+> > When a workqueue is created with `WQ_UNBOUND`, its work items are
+> > served by special worker-pools, whose host workers are not bound to
+> > any specific CPU. In the default configuration (i.e. when
+> > `queue_delayed_work` and friends do not specify which CPU to run the
+> > work item on), `WQ_UNBOUND` allows the work item to be executed on any
+> > CPU in the same node of the CPU it was enqueued on. While this
+> > solution potentially sacrifices locality, it avoids contention with
+> > other processes that might dominate the CPU time of the processor the
+> > work item was scheduled on.
+> >
+> > This is not just a theoretical problem: in a particular scenario
+> > misconfigured process was hogging most of the time from CPU0, leaving
+> > less than 0.5% of its CPU time to the kworker. The IDPF workqueues
+> > that were using the kworker on CPU0 suffered large completion delays
+> > as a result, causing performance degradation, timeouts and eventual
+> > system crash.
+>
+> Wasn't this inspired by [0]?
+>
+> [0]
+> https://lore.kernel.org/netdev/20241126035849.6441-11-milena.olech@intel.=
+com
 
-Andrew made two suggestions: IS_ENABLED(CONFIG_PREEMPT_RT) which I used
-in the first version after the RFC. And he suggested to check for a
-compromise between RT and none RT performance, as some distros might
-enable PREEMPT_RT in the future.
-Przemek suggested to remove the PREEMPT_RT check as "this change sounds
-reasonable also for the standard kernel" after the first version with
-IS_ENABLED(CONFIG_PREEMPT_RT).
+The root cause is exactly the same so I do see the similarity and I'm
+not surprised that both were addressed with a similar patch, we hit
+this problem some time ago and the first attempt to have this was in
+August [0].
 
-I used the PREEMPT_RT dependency to limit effects to real-time systems,
-to not make none real-time systems slower. But I could also follow the
-reasoning of Andrew and Przemek. With that said, I have no problem to
-add IS_ENABLED(CONFIG_PREEMPT_RT) again.
+[0]
+https://lore.kernel.org/netdev/20240813182747.1770032-4-manojvishy@google.c=
+om/
 
-Gerhard
+>
+> Thanks,
+> Olek
