@@ -2,97 +2,145 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 08CB19F3FE8
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Dec 2024 02:23:50 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id CE3949F4003
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Dec 2024 02:29:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5820F820D5;
-	Tue, 17 Dec 2024 01:23:48 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7EC5584886;
+	Tue, 17 Dec 2024 01:29:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Jkr3B6gKWyv6; Tue, 17 Dec 2024 01:23:47 +0000 (UTC)
+ id YpLvZ7jn56nC; Tue, 17 Dec 2024 01:29:48 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DDB93820BA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 91DF984887
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1734398626;
-	bh=kgVK7Pi+iLUlNjQqOZ3Ih/cMVmpqPOp3AWiutu7DN5Y=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=4CN5SxmeGFB9hPYir9tvPhOxgXPF6N6zYr82396SS8C4nOzCzHt4QY50BWo1AnCrY
-	 JYqjQo5MBmc1/5Mi+XbXu7sQna9z5V0OGyKtEKwnYQgpKhAmKfcXl4zm8NJy7Xab0Y
-	 eGreBjlsQpNWyJGDgujKvmxQMUwY6J/DLEPqHEkMdZr2+VUypEPR/jbY7CVTyS87p9
-	 Q1cvFkbrPJDqFK6l7KBoDjChiS7siGe7CD2JG+ItlC0k4fn8MWcMb64Vsw/EKI7VhT
-	 Jgwvp59FtS+tEIGIQwLj3s1+wjtgE7OhrYl5t5Zl80JKzqj0gmhiVZEDkKZySC++YX
-	 oH6iE3kLirwFw==
+	s=default; t=1734398988;
+	bh=e4oykdNzqp3U/ysHZwf9sZj7W3/zqo027MCN1jhVxxc=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=cXYb+v+/BQnIuB2SarMfy6RZrGuGndT9RW2q/X8FmYgeqOUl7r2qeva5ymo8TA/au
+	 NlQTKsHBTYcU1flFH+xZWlxh/YhFD0vF8KtCQjjX0PXitib79WH3Mk9Wv7p83wj7D+
+	 LXFRnuCliRkBsEKDq6KzbwnvMNOP5vRtKD/ebDuSJkYUiu4o3KkRX6O6IVxUtx/auf
+	 COJ19M90yyeAM+7iH/OJByYpNsmUTyvYfOgxHlxrof/p5UUL62gRmbUG/+9HoSh8J3
+	 CGwBs9fsx+d9+/UquqmVWkpK/d58y3Bm0y8pL9fhMLGeoKJ1P/jyR+jCdIHvL2WzhH
+	 G0K4bhQ5Iemsg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DDB93820BA;
-	Tue, 17 Dec 2024 01:23:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 91DF984887;
+	Tue, 17 Dec 2024 01:29:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 2A914CE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2024 01:23:45 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 2B4EACE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2024 01:29:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1816B41312
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2024 01:23:45 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0C3E684885
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2024 01:29:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id cAUQpGtqZLEg for <intel-wired-lan@lists.osuosl.org>;
- Tue, 17 Dec 2024 01:23:43 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
- helo=mgamail.intel.com; envelope-from=paul.greenwalt@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 7AA5741314
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7AA5741314
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 7AA5741314
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2024 01:23:43 +0000 (UTC)
-X-CSE-ConnectionGUID: qPlT81GGRvu8+FxgqkjnuA==
-X-CSE-MsgGUID: JvLBHA3gRBOvlI2X/zv5Rg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11288"; a="45419380"
-X-IronPort-AV: E=Sophos;i="6.12,240,1728975600"; d="scan'208";a="45419380"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
- by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Dec 2024 17:23:42 -0800
-X-CSE-ConnectionGUID: vj91dtQ6TQev3pHpZ8lyqw==
-X-CSE-MsgGUID: XPBzeQIZRUime93jsN0cuA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="134712661"
-Received: from unknown (HELO fedora.jf.intel.com) ([10.166.5.147])
- by orviesa001.jf.intel.com with ESMTP; 16 Dec 2024 17:23:42 -0800
-From: Paul Greenwalt <paul.greenwalt@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: kuba@kernel.org, Paul Greenwalt <paul.greenwalt@intel.com>,
- Alice Michael <alice.michael@intel.com>,
- Eric Joyner <eric.joyner@intel.com>
-Date: Mon, 16 Dec 2024 12:32:12 -0500
-Message-ID: <20241216173212.1157855-1-paul.greenwalt@intel.com>
-X-Mailer: git-send-email 2.45.0
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id cAMpJr88-eui for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 17 Dec 2024 01:29:46 +0000 (UTC)
+X-Greylist: delayed 387 seconds by postgrey-1.37 at util1.osuosl.org;
+ Tue, 17 Dec 2024 01:29:45 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 9713784880
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9713784880
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=185.125.188.122;
+ helo=smtp-relay-internal-0.canonical.com;
+ envelope-from=acelan.kao@canonical.com; receiver=<UNKNOWN> 
+Received: from smtp-relay-internal-0.canonical.com
+ (smtp-relay-internal-0.canonical.com [185.125.188.122])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 9713784880
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2024 01:29:45 +0000 (UTC)
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 8FB8D3F475
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Dec 2024 01:23:15 +0000 (UTC)
+Received: by mail-qk1-f197.google.com with SMTP id
+ af79cd13be357-7b6faab8334so632468885a.2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Dec 2024 17:23:15 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1734398594; x=1735003394;
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=e4oykdNzqp3U/ysHZwf9sZj7W3/zqo027MCN1jhVxxc=;
+ b=WN+ZLUlbbGtpJYE66mOMrKpap6JGfqDMIXr/AVTcb8q9A9Q1EMNcQNPuSvpN9IWP5x
+ jRWZSQ03jcu7hBWP4JqqKQPKFqBCSKbYYFqII7qSOMtbdiQNNr9LVPlJuakUKmSt7sbB
+ Ke5mTlvHymrlB5+zjYhnh/yw5U1/P2Kpjdmhhmdrcrt+Y9jvCSBBuW63Q4TR04XzyNJ6
+ 8eS1lmhV8gREEIA8/E2WaKQ5yX65UzAonlautLbSetMHOOhlv+s1KvTT+BMyXGLYuzM7
+ C4O9+EwCfktH0nVncYsxt0h/ldwbrjKsxoYXmWcgNb4iQPNZNpUX0e5GMQuvnZNcVTy5
+ L55g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVHJerUHgWeZ0BcoeG0TPyc6H6VNDZjwIt++vHXXa1YMTOFMBp8pGuA0oFftdyH60E4OauWyPr6wlhnZ7SsVOQ=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yy/RvtLgffChJ9uwk/JAvMBGSlveuc4ZwjPAjJrSSgtDyq4bhSh
+ tjQKwt/dnr/lo5pYxM5Z5naZGm+NGtJUtCzo+33pzCcj5DYnNKBRDP+mlpXuok7+48gqeUNCrBb
+ yUmHEYciYDtpaCAakonRCZa+ciV3pvRlZZVys+/bf132NB3rK0HN7JBjLnWZob1h/pw/KHfmugp
+ BGmZS624M=
+X-Gm-Gg: ASbGncvnj4ZTtL4QMdHaNG4RhK0vc9+R8y7fM9KcBf8R8/EQxMiULNMRT9WmXog/u7r
+ 4YGohVH0URor6EvA0Ye+ObKmazKPW67ptyORJRtoG64OPbszbbVo22dWV5p8CG7/DmWWPjpbFJO
+ fp2U/ToOxSnleNkEdO2CqP+cntHUdCWckaDYrkKXTV91AuWce1T6z+X9pu5DBOYVXJV1XjUgtul
+ nWUw54raf1KC47yB4muXyGpOUc8sOVRxNfdLWFK13+E4KRJhSojrOsAo++loy68STdOZbbu5aY3
+ m6gMiWwV7QVTlWhaZRf2W48KTVEAx8VepoM=
+X-Received: by 2002:a05:620a:2945:b0:7b6:cc37:cbf1 with SMTP id
+ af79cd13be357-7b8594a4703mr224591385a.23.1734398594472; 
+ Mon, 16 Dec 2024 17:23:14 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFJTAJ9XJb5Czh3X9+Wfy9QchOyDmnenuxFZ///v6qAtwPn/ytbeNIDSbXJAtA5rR8LFoKaYQ==
+X-Received: by 2002:a05:620a:2945:b0:7b6:cc37:cbf1 with SMTP id
+ af79cd13be357-7b8594a4703mr224588485a.23.1734398594162; 
+ Mon, 16 Dec 2024 17:23:14 -0800 (PST)
+Received: from acelan-precision5470 (211-75-139-220.hinet-ip.hinet.net.
+ [211.75.139.220]) by smtp.gmail.com with ESMTPSA id
+ af79cd13be357-7b7048c9f62sm274358485a.111.2024.12.16.17.23.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 16 Dec 2024 17:23:12 -0800 (PST)
+Date: Tue, 17 Dec 2024 09:23:05 +0800
+From: "Chia-Lin Kao (AceLan)" <acelan.kao@canonical.com>
+To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
+ Paolo Abeni <pabeni@redhat.com>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, Vitaly Lifshits <vitaly.lifshits@intel.com>
+Message-ID: <o6u6fr4znqfcznzq47jlqojdf34vdhardfypw3kl5y76pxjk6n@cxcp2mlsv62k>
+Mail-Followup-To: "Chia-Lin Kao (AceLan)" <acelan.kao@canonical.com>, 
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
+ Paolo Abeni <pabeni@redhat.com>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, Vitaly Lifshits <vitaly.lifshits@intel.com>
+References: <20241216051430.1606770-1-acelan.kao@canonical.com>
+ <a1c44976-9e88-4d58-bad8-34fd397ba626@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1734398623; x=1765934623;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=p0+FtkCfyyoJHSDzbx7Mo1p1ZH22xf1X0LiABvyilzY=;
- b=g8U+ZAsCD+H4EmJ36T7hq3ETZAB5cnkh3hLH8diC7wZ8ZVC0G2UCCYOl
- GRLuMeYa6YlJdMmkt/dQCWM1G+A6VQKIGNnn2qJqtJ/ChhWvrwVbO9MkF
- 9WHp2Cxbf/VpINzyTpcummFGyrBeU3N3qjKlpBNaa+51spbyeOz2NbVe3
- KhTLqJamkLEl7Gk0cB0TsV3x5xsjgr13V0w5OoOIenrtUBt3eY+YXYe9Q
- HIqHlzn+7WJxl2GgajQ11/h99nY2QVaz/2dKQk1LUrebZR08Dv1P6LXwz
- jWDaWktrBWT3nXETR/qVBVpA3Ui5z3gKLztaVf1oPm8a31yjXhfvinx4A
- w==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <a1c44976-9e88-4d58-bad8-34fd397ba626@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=canonical.com; s=20210705; t=1734398595;
+ bh=e4oykdNzqp3U/ysHZwf9sZj7W3/zqo027MCN1jhVxxc=;
+ h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+ Content-Type:In-Reply-To;
+ b=WmG2ExweBeYc9j4q8ntu/6PTbphV0nK5EgQsO2fvMBX7u8E0fiyvTDOFsJtGAVon9
+ 3pY15wlPq2wcmLwm2uTzxtM3zngF2DNZXujFc3+ceP/eqpQqHaEnE6v5lJL4JILNrU
+ DKeEJIFzb145enIaXV3v38bBf3m3cw/tkR2jHTTAXcRnmJRUUvRabrn54VXZasmhjL
+ 5x5rttLxctNPxKMym08B9xQU7NCBd17Tw2E84JILTDtC3ZBbN5IRaZo6+WWPambvBA
+ nE9zjDe6dVcclIqbvhszejXlSVwslCIxV53NK3wtlH2Bsud/PoJxh8oYueoO8OGMpy
+ e0xBVxOas8CDg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ header.from=canonical.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=g8U+ZAsC
-Subject: [Intel-wired-lan] [PATCH iwl-next v5] ice: Add E830 checksum
- offload support
+ unprotected) header.d=canonical.com header.i=@canonical.com
+ header.a=rsa-sha256 header.s=20210705 header.b=WmG2Exwe
+Subject: Re: [Intel-wired-lan] [PATCH] igc: Return early when failing to
+ read EECD register
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -108,293 +156,82 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-E830 supports raw receive and generic transmit checksum offloads.
+On Mon, Dec 16, 2024 at 06:53:10AM +0100, Przemek Kitszel wrote:
+> On 12/16/24 06:14, Chia-Lin Kao (AceLan) wrote:
+> > When booting with a dock connected, the igc driver can get stuck for ~40
+> > seconds if PCIe link is lost during initialization.
+> > 
+> > This happens because the driver access device after EECD register reads
+> > return all F's, indicating failed reads. Consequently, hw->hw_addr is set
+> > to NULL, which impacts subsequent rd32() reads. This leads to the driver
+> > hanging in igc_get_hw_semaphore_i225(), as the invalid hw->hw_addr
+> > prevents retrieving the expected value.
+> 
+> Than you very much for the patch and the analysis!
+> 
+> > 
+> > To address this, a validation check is added for the EECD register read
+> > result. If all F's are returned, indicating PCIe link loss, the driver
+> > will return -ENXIO immediately. This avoids the 40-second hang and
+> 
+> It is not clear from the patch what part of the driver will return
+> -ENXIO, you have put -ENODEV in the patch, but it's ignored anyway.
+I was thinking of using -ENODEV or -ENXIO, and I forgot to generate
+the patch again after I changed it to -ENXIO in the commit message.
+I'll fix this in v2.
+> 
+> > significantly improves boot time when using a dock with an igc NIC.
+> > 
+> > [    0.911913] igc 0000:70:00.0: enabling device (0000 -> 0002)
+> > [    0.912386] igc 0000:70:00.0: PTM enabled, 4ns granularity
+> > [    1.571098] igc 0000:70:00.0 (unnamed net_device) (uninitialized): PCIe link lost, device now detached
+> > [   43.449095] igc_get_hw_semaphore_i225: igc 0000:70:00.0 (unnamed net_device) (uninitialized): Driver can't access device - SMBI bit is set.
+> > [   43.449186] igc 0000:70:00.0: probe with driver igc failed with error -13
+> > [   46.345701] igc 0000:70:00.0: enabling device (0000 -> 0002)
+> > [   46.345777] igc 0000:70:00.0: PTM enabled, 4ns granularity
+> > 
+> 
+> Would be best if you could also attach the sequence after your fix.
+Sure
 
-Raw receive checksum support is provided by hardware calculating the
-checksum over the whole packet, regardless of type. The calculated
-checksum is provided to driver in the Rx flex descriptor. Then the driver
-assigns the checksum to skb->csum and sets skb->ip_summed to
-CHECKSUM_COMPLETE.
+> Please add a Fixes: tag.
+I'm not sure which commit should I add Fixes to.
 
-Generic transmit checksum support is provided by hardware calculating the
-checksum given two offsets: the start offset to begin checksum calculation,
-and the offset to insert the calculated checksum in the packet. Support is
-advertised to the stack using NETIF_F_HW_CSUM feature.
+> Please make [PATCH iwl-net] as a subject prefix. Please CC Vitaly.
+igc is an ethernet driver, should I also add iwl-net tag?
 
-E830 has the following limitations when both generic transmit checksum
-offload and TCP Segmentation Offload (TSO) are enabled:
+> (But please also wait a day prior to sending v2 for more feedback).
+> 
+> > Signed-off-by: Chia-Lin Kao (AceLan) <acelan.kao@canonical.com>
+> > ---
+> >   drivers/net/ethernet/intel/igc/igc_base.c | 4 ++++
+> >   1 file changed, 4 insertions(+)
+> > 
+> > diff --git a/drivers/net/ethernet/intel/igc/igc_base.c b/drivers/net/ethernet/intel/igc/igc_base.c
+> > index 9fae8bdec2a7..54ce60280765 100644
+> > --- a/drivers/net/ethernet/intel/igc/igc_base.c
+> > +++ b/drivers/net/ethernet/intel/igc/igc_base.c
+> > @@ -68,6 +68,10 @@ static s32 igc_init_nvm_params_base(struct igc_hw *hw)
+> 
+> This function is used only in igc_get_invariants_base(), which ignores
+> the return value you have added. I would expect it to propagate instead.
+You are right, looks like the patch fixes the issue accidentally.
+Return earlier in igc_get_invariants_base() skipping the rest of the
+settings. The part impacts the behavior is nvm->word_size will be 0.
+And then in igc_get_hw_semaphore_i225() the timeout value will become
+1. So that we won't hang for 40 seconds to wait for the timeout.
 
-1. Inner packet header modification is not supported. This restriction
-   includes the inability to alter TCP flags, such as the push flag. As a
-   result, this limitation can impact the receiver's ability to coalesce
-   packets, potentially degrading network throughput.
-2. The Maximum Segment Size (MSS) is limited to 1023 bytes, which prevents
-   support of Maximum Transmission Unit (MTU) greater than 1063 bytes.
-
-Therefore NETIF_F_HW_CSUM and NETIF_F_ALL_TSO features are mutually
-exclusive. NETIF_F_HW_CSUM hardware feature support is indicated but is not
-enabled by default. Instead, IP checksums and NETIF_F_ALL_TSO are the
-defaults. Enforcement of mutual exclusivity of NETIF_F_HW_CSUM and
-NETIF_F_ALL_TSO is done in ice_set_features(). Mutual exclusivity
-of IP checksums and NETIF_F_HW_CSUM is handled by netdev_fix_features().
-
-When NETIF_F_HW_CSUM is requested the provided skb->csum_start and
-skb->csum_offset are passed to hardware in the Tx context descriptor
-generic checksum (GCS) parameters. Hardware calculates the 1's complement
-from skb->csum_start to the end of the packet, and inserts the result in
-the packet at skb->csum_offset.
-
-Co-developed-by: Alice Michael <alice.michael@intel.com>
-Signed-off-by: Alice Michael <alice.michael@intel.com>
-Co-developed-by: Eric Joyner <eric.joyner@intel.com>
-Signed-off-by: Eric Joyner <eric.joyner@intel.com>
-Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
----
-Changelog:
-v1->v2
-- Update commit message with additional details.
-- Add newlines, and add params around
-- Return early from ice_fix_features() to avoid extra indentation and
-  large if block.
-- Move and change some defines.
-- replace htons and le16_t_cpu with swap16.
-- Use FIELD_PREP where possible.
-- Removed checksum valid bit check STATUS1_L2TAG2P_S. This check is not
-  needed since there is no situation which will return an error.
-v2->v3
-- Minor fixes in commit message.
-- Removed unused register defines in ice_hw_autogen.h.
-- Moved GCS and TSO feature fix to helper function
-  ice_fix_features_gcs(), and updated logic.
-- Update to align naming with related flags.
-v3->v4
-- Move a check for GCS and TSO mutual exclusivity from
-  ice_fix_features() to ice_set_features().
-v4->v5
-- Remove lingering GCS and TSO mutual exclusivity comments and code in
-  ice_fix_features().
-- Remove unused variable ICE_TX_FLAGS_RING_GCS.
-- Remove Tested-by and Signed-off-by tag due to changes to patch.
-- Use ICE_TX_GCS_DESC_TYPE_M and ICE_TX_GCS_DESC_CSUM_PSH in
-  ice_tx_csum() to set the GCS decriptor field type.
----
- drivers/net/ethernet/intel/ice/ice.h          |  1 +
- .../net/ethernet/intel/ice/ice_lan_tx_rx.h    |  9 +++++--
- drivers/net/ethernet/intel/ice/ice_lib.c      |  8 +++++-
- drivers/net/ethernet/intel/ice/ice_main.c     | 12 +++++++++
- drivers/net/ethernet/intel/ice/ice_txrx.c     | 27 ++++++++++++++++++-
- drivers/net/ethernet/intel/ice/ice_txrx.h     |  2 ++
- drivers/net/ethernet/intel/ice/ice_txrx_lib.c | 26 ++++++++++++++++++
- 7 files changed, 81 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 2f5d6f974185..0d2c80578633 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -203,6 +203,7 @@ enum ice_feature {
- 	ICE_F_SMA_CTRL,
- 	ICE_F_CGU,
- 	ICE_F_GNSS,
-+	ICE_F_GCS,
- 	ICE_F_ROCE_LAG,
- 	ICE_F_SRIOV_LAG,
- 	ICE_F_MBX_LIMIT,
-diff --git a/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h b/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
-index 611577ebc29d..5b98222fe27f 100644
---- a/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
-+++ b/drivers/net/ethernet/intel/ice/ice_lan_tx_rx.h
-@@ -229,7 +229,7 @@ struct ice_32b_rx_flex_desc_nic {
- 	__le16 status_error1;
- 	u8 flexi_flags2;
- 	u8 ts_low;
--	__le16 l2tag2_1st;
-+	__le16 raw_csum;
- 	__le16 l2tag2_2nd;
- 
- 	/* Qword 3 */
-@@ -500,10 +500,15 @@ enum ice_tx_desc_len_fields {
- struct ice_tx_ctx_desc {
- 	__le32 tunneling_params;
- 	__le16 l2tag2;
--	__le16 rsvd;
-+	__le16 gcs;
- 	__le64 qw1;
- };
- 
-+#define ICE_TX_GCS_DESC_START_M		GENMASK(7, 0)
-+#define ICE_TX_GCS_DESC_OFFSET_M	GENMASK(11, 8)
-+#define ICE_TX_GCS_DESC_TYPE_M		GENMASK(14, 12)
-+#define ICE_TX_GCS_DESC_CSUM_PSH	1
-+
- #define ICE_TXD_CTX_QW1_CMD_S	4
- #define ICE_TXD_CTX_QW1_CMD_M	(0x7FUL << ICE_TXD_CTX_QW1_CMD_S)
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index e07fc8851e1d..23d4b0677b21 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -1420,6 +1420,10 @@ static int ice_vsi_alloc_rings(struct ice_vsi *vsi)
- 		ring->dev = dev;
- 		ring->count = vsi->num_rx_desc;
- 		ring->cached_phctime = pf->ptp.cached_phc_time;
-+
-+		if (ice_is_feature_supported(pf, ICE_F_GCS))
-+			ring->flags |= ICE_RX_FLAGS_RING_GCS;
-+
- 		WRITE_ONCE(vsi->rx_rings[i], ring);
- 	}
- 
-@@ -3883,8 +3887,10 @@ void ice_init_feature_support(struct ice_pf *pf)
- 		break;
- 	}
- 
--	if (pf->hw.mac_type == ICE_MAC_E830)
-+	if (pf->hw.mac_type == ICE_MAC_E830) {
- 		ice_set_feature_support(pf, ICE_F_MBX_LIMIT);
-+		ice_set_feature_support(pf, ICE_F_GCS);
-+	}
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 89fa3d53d317..aa63c421595b 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -6567,6 +6567,18 @@ ice_set_features(struct net_device *netdev, netdev_features_t features)
- 	if (changed & NETIF_F_LOOPBACK)
- 		ret = ice_set_loopback(vsi, !!(features & NETIF_F_LOOPBACK));
- 
-+	/* Due to E830 hardware limitations, TSO (NETIF_F_ALL_TSO) with GCS
-+	 * (NETIF_F_HW_CSUM) is not supported.
-+	 */
-+	if (ice_is_feature_supported(pf, ICE_F_GCS) &&
-+	    ((features & NETIF_F_HW_CSUM) && (features & NETIF_F_ALL_TSO))) {
-+		if (netdev->features & NETIF_F_HW_CSUM)
-+			dev_err(ice_pf_to_dev(pf), "To enable TSO, you must first disable HW checksum.\n");
-+		else
-+			dev_err(ice_pf_to_dev(pf), "To enable HW checksum, you must first disable TSO.\n");
-+		return -EIO;
-+	}
-+
- 	return ret;
- }
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index 5d2d7736fd5f..85ae16f5ecc0 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -1753,6 +1753,7 @@ ice_tx_map(struct ice_tx_ring *tx_ring, struct ice_tx_buf *first,
- static
- int ice_tx_csum(struct ice_tx_buf *first, struct ice_tx_offload_params *off)
- {
-+	const struct ice_tx_ring *tx_ring = off->tx_ring;
- 	u32 l4_len = 0, l3_len = 0, l2_len = 0;
- 	struct sk_buff *skb = first->skb;
- 	union {
-@@ -1902,6 +1903,30 @@ int ice_tx_csum(struct ice_tx_buf *first, struct ice_tx_offload_params *off)
- 	l3_len = l4.hdr - ip.hdr;
- 	offset |= (l3_len / 4) << ICE_TX_DESC_LEN_IPLEN_S;
- 
-+	if ((tx_ring->netdev->features & NETIF_F_HW_CSUM) &&
-+	    !(first->tx_flags & ICE_TX_FLAGS_TSO) &&
-+	    !skb_csum_is_sctp(skb)) {
-+		/* Set GCS */
-+		u16 csum_start = (skb->csum_start - skb->mac_header) / 2;
-+		u16 csum_offset = skb->csum_offset / 2;
-+		u16 gcs_params;
-+
-+		gcs_params = FIELD_PREP(ICE_TX_GCS_DESC_START_M, csum_start) |
-+			     FIELD_PREP(ICE_TX_GCS_DESC_OFFSET_M, csum_offset) |
-+			     FIELD_PREP(ICE_TX_GCS_DESC_TYPE_M |
-+					ICE_TX_GCS_DESC_CSUM_PSH);
-+
-+		/* Unlike legacy HW checksums, GCS requires a context
-+		 * descriptor.
-+		 */
-+		off->cd_qw1 |= ICE_TX_DESC_DTYPE_CTX;
-+		off->cd_gcs_params = gcs_params;
-+		/* Fill out CSO info in data descriptors */
-+		off->td_offset |= offset;
-+		off->td_cmd |= cmd;
-+		return 1;
-+	}
-+
- 	/* Enable L4 checksum offloads */
- 	switch (l4_proto) {
- 	case IPPROTO_TCP:
-@@ -2383,7 +2408,7 @@ ice_xmit_frame_ring(struct sk_buff *skb, struct ice_tx_ring *tx_ring)
- 		/* setup context descriptor */
- 		cdesc->tunneling_params = cpu_to_le32(offload.cd_tunnel_params);
- 		cdesc->l2tag2 = cpu_to_le16(offload.cd_l2tag2);
--		cdesc->rsvd = cpu_to_le16(0);
-+		cdesc->gcs = cpu_to_le16(offload.cd_gcs_params);
- 		cdesc->qw1 = cpu_to_le64(offload.cd_qw1);
- 	}
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.h b/drivers/net/ethernet/intel/ice/ice_txrx.h
-index cb347c852ba9..5b0b54ac5c00 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.h
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.h
-@@ -193,6 +193,7 @@ struct ice_tx_offload_params {
- 	u32 td_l2tag1;
- 	u32 cd_tunnel_params;
- 	u16 cd_l2tag2;
-+	u16 cd_gcs_params;
- 	u8 header_len;
- };
- 
-@@ -367,6 +368,7 @@ struct ice_rx_ring {
- #define ICE_RX_FLAGS_RING_BUILD_SKB	BIT(1)
- #define ICE_RX_FLAGS_CRC_STRIP_DIS	BIT(2)
- #define ICE_RX_FLAGS_MULTIDEV		BIT(3)
-+#define ICE_RX_FLAGS_RING_GCS		BIT(4)
- 	u8 flags;
- 	/* CL5 - 5th cacheline starts here */
- 	struct xdp_rxq_info xdp_rxq;
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-index 2719f0e20933..45cfaabc41cb 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-@@ -80,6 +80,23 @@ ice_rx_hash_to_skb(const struct ice_rx_ring *rx_ring,
- 		libeth_rx_pt_set_hash(skb, hash, decoded);
- }
- 
-+/**
-+ * ice_rx_gcs - Set generic checksum in skb
-+ * @skb: skb currently being received and modified
-+ * @rx_desc: receive descriptor
-+ */
-+static void ice_rx_gcs(struct sk_buff *skb,
-+		       const union ice_32b_rx_flex_desc *rx_desc)
-+{
-+	const struct ice_32b_rx_flex_desc_nic *desc;
-+	u16 csum;
-+
-+	desc = (struct ice_32b_rx_flex_desc_nic *)rx_desc;
-+	skb->ip_summed = CHECKSUM_COMPLETE;
-+	csum = (__force u16)desc->raw_csum;
-+	skb->csum = csum_unfold((__force __sum16)swab16(csum));
-+}
-+
- /**
-  * ice_rx_csum - Indicate in skb if checksum is good
-  * @ring: the ring we care about
-@@ -107,6 +124,15 @@ ice_rx_csum(struct ice_rx_ring *ring, struct sk_buff *skb,
- 	rx_status0 = le16_to_cpu(rx_desc->wb.status_error0);
- 	rx_status1 = le16_to_cpu(rx_desc->wb.status_error1);
- 
-+	if ((ring->flags & ICE_RX_FLAGS_RING_GCS) &&
-+	    rx_desc->wb.rxdid == ICE_RXDID_FLEX_NIC &&
-+	    (decoded.inner_prot == LIBETH_RX_PT_INNER_TCP ||
-+	     decoded.inner_prot == LIBETH_RX_PT_INNER_UDP ||
-+	     decoded.inner_prot == LIBETH_RX_PT_INNER_ICMP)) {
-+		ice_rx_gcs(skb, rx_desc);
-+		return;
-+	}
-+
- 	/* check if HW has decoded the packet and checksum */
- 	if (!(rx_status0 & BIT(ICE_RX_FLEX_DESC_STATUS0_L3L4P_S)))
- 		return;
--- 
-2.45.0
-
+This patch is not perfect, I need to figure out another way to address
+the issue better.
+Please let me know if you got any ideas.
+Thanks.
+> 
+> >   	u32 eecd = rd32(IGC_EECD);
+> >   	u16 size;
+> > +	/* failed to read reg and got all F's */
+> > +	if (!(~eecd))
+> > +		return -ENODEV;
+> > +
+> >   	size = FIELD_GET(IGC_EECD_SIZE_EX_MASK, eecd);
+> >   	/* Added to a constant, "size" becomes the left-shift value
+> 
