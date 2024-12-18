@@ -1,97 +1,106 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3C0019F6E55
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Dec 2024 20:43:53 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id ED8766143D;
-	Wed, 18 Dec 2024 19:43:51 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id AZyqyNb1O9xU; Wed, 18 Dec 2024 19:43:51 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A5566614AA
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1734551030;
-	bh=r6siq0c5OvQV7pOu79hLNhx5/8LObOLe6yLaV358jZE=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=HCbgxlj8Kr42Xh+SX2yEiK+6w2BWYSeFEf+JuXD5NFdM0mOk0be5Y/9XsosiQA82c
-	 rr2At6V5Jw5eiqYs53NhVDA/iMYaxE6DmMNWFbhlK5ppOzMKepS4OykLnHx/mvtO23
-	 Kaur1BGLPIPJsxbN7D3JJg3uFQmCpXyKawXiCc3nxdwomMnJ/N9TyHOhyS5iNylm8L
-	 iZTiqAKHzyGiM5pYG70bNOabvWHSzcZqWJ1qfdzfhpJPgpqoFuYzj5WicOIlx+5JyE
-	 MrwxqpNuWRUmyb0cQpGGDL2SaDWfs1teChbma3OWNKDBYqRmcHzJnrFsQB+hRTRO3f
-	 QpKjaeI5M4Jpg==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A5566614AA;
-	Wed, 18 Dec 2024 19:43:50 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 4E5C6C0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Dec 2024 19:43:48 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id A8E3C9F6EA0
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Dec 2024 20:57:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2819484EA0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Dec 2024 19:43:48 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3BC9F81119;
+	Wed, 18 Dec 2024 19:57:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id z-EtaoKBXE2e for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Dec 2024 19:43:47 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=81.19.149.128;
- helo=mx18lb.world4you.com; envelope-from=gerhard@engleder-embedded.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0043384EA2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0043384EA2
-Received: from mx18lb.world4you.com (mx18lb.world4you.com [81.19.149.128])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0043384EA2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Dec 2024 19:43:46 +0000 (UTC)
-Received: from [88.117.62.55] (helo=[10.0.0.160])
- by mx18lb.world4you.com with esmtpsa (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.97.1)
- (envelope-from <gerhard@engleder-embedded.com>)
- id 1tNzxQ-0000000051R-2hCK; Wed, 18 Dec 2024 20:43:44 +0100
-Message-ID: <e9bd85fc-a682-4c60-9dfd-0829ca886889@engleder-embedded.com>
-Date: Wed, 18 Dec 2024 20:43:42 +0100
+ id SuAQqW8STGvP; Wed, 18 Dec 2024 19:57:30 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2CAC381026
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1734551850;
+	bh=Yy4Ii5jJxlGykTQHIBPqOSlSCzI4lRkwJxBidHEhIpw=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=cLnZ3uVdHHqgWWslo2G0tyKL5cFCHKeELl3pimI9KO5BATdlzdJnFpRhXsyalO0vR
+	 +gY0+vjU2iSKeKoht76++rfodVOOe0UfS6cBz8J59hIBuc1Arr1ShagQ/QMpivXXNq
+	 yYUW8qDQHGxqrfBAC3A7ilddY+fYTvlOIlfhpCaXMTJMJ7ePSlyk12kL5TYpvDhmPK
+	 a+o9d8uDSfNughZBWo75lhz0Fa28tbrZ843v0TWvwO0miihE4N5oR5vF0SHbRaZNDj
+	 Q/VaRMXoE34bHtKLadwOhy7jFvTqUfhCVukfsenGiPpOVJlgzDsv1yVM965B2lPRJ9
+	 THhTeHPxCLbpQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2CAC381026;
+	Wed, 18 Dec 2024 19:57:30 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 9C241C0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Dec 2024 19:57:28 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 69C1B80F6B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Dec 2024 19:57:28 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id f-UcnoV4zZyR for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Dec 2024 19:57:27 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 66FBB80E3A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 66FBB80E3A
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 66FBB80E3A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Dec 2024 19:57:26 +0000 (UTC)
+X-CSE-ConnectionGUID: XoQOCithSZGaEpQz9HRrHw==
+X-CSE-MsgGUID: 7HPAVOoMQhaLKU/3fpZMZQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11290"; a="38981109"
+X-IronPort-AV: E=Sophos;i="6.12,245,1728975600"; d="scan'208";a="38981109"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+ by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Dec 2024 11:57:26 -0800
+X-CSE-ConnectionGUID: R6HGhAR7S5G4Z5zm1RkpAw==
+X-CSE-MsgGUID: fCRAHulBS8iVV7ABURROHQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="102967539"
+Received: from lkp-server01.sh.intel.com (HELO 82a3f569d0cb) ([10.239.97.150])
+ by orviesa005.jf.intel.com with ESMTP; 18 Dec 2024 11:57:22 -0800
+Received: from kbuild by 82a3f569d0cb with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1tO0AZ-000Gb8-2X;
+ Wed, 18 Dec 2024 19:57:19 +0000
+Date: Thu, 19 Dec 2024 03:56:31 +0800
+From: kernel test robot <lkp@intel.com>
+To: Ahmed Zaki <ahmed.zaki@intel.com>, netdev@vger.kernel.org
+Cc: oe-kbuild-all@lists.linux.dev, intel-wired-lan@lists.osuosl.org,
+ andrew+netdev@lunn.ch, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, davem@davemloft.net, michael.chan@broadcom.com,
+ tariqt@nvidia.com, anthony.l.nguyen@intel.com,
+ przemyslaw.kitszel@intel.com, jdamato@fastly.com, shayd@nvidia.com,
+ akpm@linux-foundation.org, Ahmed Zaki <ahmed.zaki@intel.com>
+Message-ID: <202412190318.OR90xHNu-lkp@intel.com>
+References: <20241218165843.744647-3-ahmed.zaki@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: Alexander Lobakin <aleksander.lobakin@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-pci@vger.kernel.org, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, andrew+netdev@lunn.ch, davem@davemloft.net,
- kuba@kernel.org, edumazet@google.com, pabeni@redhat.com,
- bhelgaas@google.com, pmenzel@molgen.mpg.de, Gerhard Engleder <eg@keba.com>,
- Vitaly Lifshits <vitaly.lifshits@intel.com>
-References: <20241214191623.7256-1-gerhard@engleder-embedded.com>
- <9889f570-a2a0-4a71-b140-41278f1e8639@intel.com>
-From: Gerhard Engleder <gerhard@engleder-embedded.com>
-In-Reply-To: <9889f570-a2a0-4a71-b140-41278f1e8639@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-AV-Do-Run: Yes
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; 
- d=engleder-embedded.com; s=dkim11; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
- :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=r6siq0c5OvQV7pOu79hLNhx5/8LObOLe6yLaV358jZE=; b=ApQfajPjVyq0yNVpK2tHBtxQAH
- SYClV7vaTIJTUfTavKSHEZWqkZVIz+EDoYLjbR9jMbz2yHxsM2PnTEQIVxvQnGR2UI/3ioNS3RerT
- eQewkskPXaendgnoFoyd8sxhmgjhlA4cX4oDl/zthXuhdg3GCp7FoFcc+KmahY3RQKDw=;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241218165843.744647-3-ahmed.zaki@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1734551847; x=1766087847;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=dYweTV5AJyl8AG9T7K7pRgEiBrEQJN0995ZLP5q7Srk=;
+ b=nN9yU1jWfGQQ3bNvYa8VjMW7pSaNjKQCDI8jYRvle+CeM8upepzrUNYF
+ oXgldQQ/CaR3QpJ+9VCFDHfS6FhJrO57Rw1w9cR+HiOhFIVLiesOHQ8jF
+ X7pteBc4Hb+Yc5zz13LaiiqFunzc0Vr9D+M9IkU0MxyMhMHEUmSso4d/f
+ M5ZyFy0Kjsq6GzSQvl9uJrsheXMeSYYnfY0GMKsJ+puWZRt5kx6lG4QZh
+ rcFU7B4zRh7ReUBhXN6BMhBARMzZrucveIPIN9EGqz7bnsdlhzu981A+F
+ Fn52UUW3vouTOHHKN7XvDGT4BuVQ2t1LcGQnvbWyt+8V97NEvgZ0RS2lr
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=engleder-embedded.com
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=engleder-embedded.com
- header.i=@engleder-embedded.com header.a=rsa-sha256 header.s=dkim11
- header.b=ApQfajPj
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3] e1000e: Fix real-time
- violations on link up
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=nN9yU1jW
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 2/8] net: allow ARFS rmap
+ management in core
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -107,109 +116,51 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 18.12.24 16:23, Alexander Lobakin wrote:
-> From: Gerhard Engleder <gerhard@engleder-embedded.com>
-> Date: Sat, 14 Dec 2024 20:16:23 +0100
-> 
->> From: Gerhard Engleder <eg@keba.com>
->>
->> Link down and up triggers update of MTA table. This update executes many
->> PCIe writes and a final flush. Thus, PCIe will be blocked until all
->> writes are flushed. As a result, DMA transfers of other targets suffer
->> from delay in the range of 50us. This results in timing violations on
->> real-time systems during link down and up of e1000e in combination with
->> an Intel i3-2310E Sandy Bridge CPU.
->>
->> The i3-2310E is quite old. Launched 2011 by Intel but still in use as
->> robot controller. The exact root cause of the problem is unclear and
->> this situation won't change as Intel support for this CPU has ended
->> years ago. Our experience is that the number of posted PCIe writes needs
->> to be limited at least for real-time systems. With posted PCIe writes a
->> much higher throughput can be generated than with PCIe reads which
->> cannot be posted. Thus, the load on the interconnect is much higher.
->> Additionally, a PCIe read waits until all posted PCIe writes are done.
->> Therefore, the PCIe read can block the CPU for much more than 10us if a
->> lot of PCIe writes were posted before. Both issues are the reason why we
->> are limiting the number of posted PCIe writes in row in general for our
->> real-time systems, not only for this driver.
->>
->> A flush after a low enough number of posted PCIe writes eliminates the
->> delay but also increases the time needed for MTA table update. The
->> following measurements were done on i3-2310E with e1000e for 128 MTA
->> table entries:
->>
->> Single flush after all writes: 106us
->> Flush after every write:       429us
->> Flush after every 2nd write:   266us
->> Flush after every 4th write:   180us
->> Flush after every 8th write:   141us
->> Flush after every 16th write:  121us
->>
->> A flush after every 8th write delays the link up by 35us and the
->> negative impact to DMA transfers of other targets is still tolerable.
->>
->> Execute a flush after every 8th write. This prevents overloading the
->> interconnect with posted writes.
->>
->> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
->> CC: Vitaly Lifshits <vitaly.lifshits@intel.com>
->> Link: https://lore.kernel.org/netdev/f8fe665a-5e6c-4f95-b47a-2f3281aa0e6c@lunn.ch/T/
->> Signed-off-by: Gerhard Engleder <eg@keba.com>
->> ---
->> v3:
->> - mention problematic platform explicitly (Bjorn Helgaas)
->> - improve comment (Paul Menzel)
->>
->> v2:
->> - remove PREEMPT_RT dependency (Andrew Lunn, Przemek Kitszel)
->> ---
->>   drivers/net/ethernet/intel/e1000e/mac.c | 9 ++++++++-
->>   1 file changed, 8 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/net/ethernet/intel/e1000e/mac.c b/drivers/net/ethernet/intel/e1000e/mac.c
->> index d7df2a0ed629..0174c16bbb43 100644
->> --- a/drivers/net/ethernet/intel/e1000e/mac.c
->> +++ b/drivers/net/ethernet/intel/e1000e/mac.c
->> @@ -331,8 +331,15 @@ void e1000e_update_mc_addr_list_generic(struct e1000_hw *hw,
->>   	}
->>   
->>   	/* replace the entire MTA table */
->> -	for (i = hw->mac.mta_reg_count - 1; i >= 0; i--)
->> +	for (i = hw->mac.mta_reg_count - 1; i >= 0; i--) {
->>   		E1000_WRITE_REG_ARRAY(hw, E1000_MTA, i, hw->mac.mta_shadow[i]);
->> +
->> +		/* do not queue up too many posted writes to prevent increased
->> +		 * latency for other devices on the interconnect
->> +		 */
-> 
-> I think a multi-line comment should start with a capital letter and have
-> a '.' at the end of the sentence.
-> 
-> + netdev code doesn't have the special rule for multi-line comments,
-> they should look the same way as in the rest of the kernel:
-> 
-> 		/*
-> 		 * Do not queue up ...
-> 		 * latency ...
-> 		 */
+Hi Ahmed,
 
-Oh the preferred style changed, I missed that. Will be done.
+kernel test robot noticed the following build warnings:
 
->> +		if ((i % 8) == 0 && i != 0)
->> +			e1e_flush();
-> 
-> IIRC explicit `== 0` / `!= 0` are considered redundant.
-> 
-> 		if (!(i % 8) && i)
+[auto build test WARNING on net-next/main]
 
-You are right, will be changed.
+url:    https://github.com/intel-lab-lkp/linux/commits/Ahmed-Zaki/net-napi-add-irq_flags-to-napi-struct/20241219-010125
+base:   net-next/main
+patch link:    https://lore.kernel.org/r/20241218165843.744647-3-ahmed.zaki%40intel.com
+patch subject: [Intel-wired-lan] [PATCH net-next v2 2/8] net: allow ARFS rmap management in core
+config: arm-randconfig-002-20241219 (https://download.01.org/0day-ci/archive/20241219/202412190318.OR90xHNu-lkp@intel.com/config)
+compiler: arm-linux-gnueabi-gcc (GCC) 14.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241219/202412190318.OR90xHNu-lkp@intel.com/reproduce)
 
-> 
-> I'd also mention in the comment above that this means "flush each 8th
-> write" and why exactly 8.
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202412190318.OR90xHNu-lkp@intel.com/
 
-I will add that information to the comment.
+All warnings (new ones prefixed by >>):
 
-Thank you for the review!
+   In file included from net/core/dev.c:92:
+   include/linux/netdevice.h:361:1: error: empty enum is invalid
+     361 | };
+         | ^
+   include/linux/netdevice.h:367:1: error: empty enum is invalid
+     367 | };
+         | ^
+   net/core/dev.c: In function 'netif_napi_set_irq':
+>> net/core/dev.c:6710:14: warning: unused variable 'rc' [-Wunused-variable]
+    6710 |         int  rc;
+         |              ^~
 
-Gerhard
+
+vim +/rc +6710 net/core/dev.c
+
+  6707	
+  6708	void netif_napi_set_irq(struct napi_struct *napi, int irq, unsigned long flags)
+  6709	{
+> 6710		int  rc;
+  6711	
+  6712		napi->irq = irq;
+  6713		napi->irq_flags = flags;
+  6714	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
