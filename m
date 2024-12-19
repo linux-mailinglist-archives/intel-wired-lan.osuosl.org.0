@@ -1,94 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EDA109F707D
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Dec 2024 00:08:44 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id EEB989F78B7
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Dec 2024 10:45:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9F547425A5;
-	Wed, 18 Dec 2024 23:08:43 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A09E6844E2;
+	Thu, 19 Dec 2024 09:45:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5p-DGga13CcH; Wed, 18 Dec 2024 23:08:42 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id IhKtLsE9iHva; Thu, 19 Dec 2024 09:45:15 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 773004265E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D259A845B9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1734563321;
-	bh=aDp1/rWmZvGEGMw3mLkpAOqjC054vhgI+FM3vvkXO/o=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	s=default; t=1734601514;
+	bh=IqDHmhZ0z3V6usyWfFFWw976UFxSpKjwg4XY9hWbo8w=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=LO4IzX/IVzX6gutvsngFHMXGktBCB3Tlkm+Z/mDAGG0E80CJJrueK2mLa1ZlKXnIA
-	 HMZF7oykHxXLGsIVKZTsfg0ClLghlPIvQiYoXhAJxSMje6pzzig25HpivS3a+3XeP+
-	 RAF/ccNWwcSr86IAESs+aC4zZjtPnw9KtgeDK0dHRHmhAZSqgskrA4mzEDtMHEhx1p
-	 OTQpPfjdR6tnYBtKnM78HgU+yglWDHTPckxFCRujCxVLJXbmReIc4FqkugxCBqmixR
-	 Id5Pj8+toraP8cybEo0aa/sacLBaB0RxoznvckEDknx06LeGqcCHvBkR6oEsaW9dDM
-	 pp91uQlcRbI7g==
+	b=VchbRLRvQfWHbVWIGaqk4MA34UUmHoJu4tymz+xzysA995QRh/k5okDPLpYwgoxTI
+	 yObf76iYc4WUgdm/kVK7JRTHhh40pjqQ4cc+LFAStRComlKbb5jQhekTIbiWKH5l2B
+	 h8ic4DL8NyIwcZ+bXPRXB7ryU37nttGO5MVmoCbsBsc3DE47hWhc6vPBPgLPVAQzHn
+	 BYQE7lahG2Afk+kYxblxK1/R38YYbRVUYTkaHYkxh4ezhSGwOXd/6LmW5d1G6V4WxI
+	 2m6ysRsdjywmW6Z0Sl6zoIZvQP6mpGda38JhnogDj5r7zhtC0CIeBjySEwdmCjcBqm
+	 7q+vTtX4ej7AQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 773004265E;
-	Wed, 18 Dec 2024 23:08:41 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D259A845B9;
+	Thu, 19 Dec 2024 09:45:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 42E19E3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Dec 2024 23:08:40 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 0AA766C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Dec 2024 09:45:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 13E56402E7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Dec 2024 23:08:40 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id E460084605
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Dec 2024 09:45:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3bADDQwRywT0 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Dec 2024 23:08:39 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A97CC41B2A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A97CC41B2A
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A97CC41B2A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Dec 2024 23:08:38 +0000 (UTC)
-X-CSE-ConnectionGUID: uSkd4DR/TWqBLgdN0TqWQw==
-X-CSE-MsgGUID: 8PMyBC6wS/2C/IBFOIfeZg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11290"; a="38997591"
-X-IronPort-AV: E=Sophos;i="6.12,245,1728975600"; d="scan'208";a="38997591"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
- by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Dec 2024 15:08:37 -0800
-X-CSE-ConnectionGUID: BSbd+px1TiKs2TJGkU5cAg==
-X-CSE-MsgGUID: lu0k/tHvQUW53d84uXot+g==
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id fLtmyp-Noama for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 19 Dec 2024 09:45:10 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
+ helo=mgamail.intel.com; envelope-from=milena.olech@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4C188845D3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4C188845D3
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4C188845D3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Dec 2024 09:45:08 +0000 (UTC)
+X-CSE-ConnectionGUID: LZHQVpjkRhq9KpGJ2oAGBA==
+X-CSE-MsgGUID: y8JHT12SSHaGwx/HqTbOXw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11290"; a="45702375"
+X-IronPort-AV: E=Sophos;i="6.12,247,1728975600"; d="scan'208";a="45702375"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+ by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Dec 2024 01:45:08 -0800
+X-CSE-ConnectionGUID: G8U2usm0TdCUttNmPADPdA==
+X-CSE-MsgGUID: S8Ls4NAYQS6+osVTQr8ptA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,245,1728975600"; d="scan'208";a="128802030"
-Received: from lkp-server01.sh.intel.com (HELO 82a3f569d0cb) ([10.239.97.150])
- by orviesa002.jf.intel.com with ESMTP; 18 Dec 2024 15:08:36 -0800
-Received: from kbuild by 82a3f569d0cb with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1tO39d-000Gh0-1X
- for intel-wired-lan@lists.osuosl.org; Wed, 18 Dec 2024 23:08:33 +0000
-Date: Thu, 19 Dec 2024 07:08:22 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202412190717.Gql2LmWn-lkp@intel.com>
-User-Agent: s-nail v14.9.24
+X-IronPort-AV: E=Sophos;i="6.12,247,1728975600"; d="scan'208";a="98206455"
+Received: from unknown (HELO localhost.igk.intel.com) ([10.102.22.54])
+ by orviesa006.jf.intel.com with ESMTP; 19 Dec 2024 01:45:06 -0800
+From: Milena Olech <milena.olech@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
+ przemyslaw.kitszel@intel.com, Milena Olech <milena.olech@intel.com>
+Date: Thu, 19 Dec 2024 10:44:02 +0100
+Message-Id: <20241219094411.110082-1-milena.olech@intel.com>
+X-Mailer: git-send-email 2.31.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1734563319; x=1766099319;
- h=date:from:to:subject:message-id;
- bh=h8kDULa1f2+3AbIQaniI/sBi+SFp4C+foGPaWpHnldw=;
- b=XAB6o9eKGZh/SfTWL/NPTZhZ+uzikJV52fWqp2rM/IHsX32UXLrq9U1u
- /5Utbb4mHHZZqxN6GeZF0SQpXPS3MPmporC2P+Z9G0BJxKYLfjCYAMUAe
- PDTpxGxj+JsI1K5JRX5HCTjgRKMN6ZAD9xXbZET/W51NuRCwPM0ZKhv8Q
- 0iG5OqjVipmOrUV0gsssTV0Y5VHN/0XD/+o2fs0MJ65FZVLHm3vD2877N
- yUaUYMA/7wIW+xt5Lh+c+gOtQMGbw0xUUjoxDurvSvE5RU1/rYX0c5lVO
- B5iteyWUf7il1biZn6H+NzLlWtrVCCKvaRRF8PByHtNgwRDxhJZbHwTzj
- A==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1734601509; x=1766137509;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=OnSysRNRDBcDQ6Qn1zB9z0uy94irNy8/o0/Qw3+wCH4=;
+ b=RPGTuuzK6NbMk4g/N3mnNPfE0oruUE4eUkJAP4cPp6uLxtbj70vvVzl/
+ Vg5r+5e7M20g0y0+OfYCDvQXB0BlxiSPSJJ/FCxc1NC9IPzEYBLhUcNY3
+ qfsqBVSyPWg+WQTRGdWovZcVaqWTt6UnjVOCYHGorExhK6+rWRW6Lhtff
+ ZSM6zw8xCyprELpcua4/Y57egVnd2CgdFSy6PkgCj9hkgygdCBQ8UkKbG
+ JtV+cyjwTP0LP6vG5trC7zn4hfWG1DrzSKCAhlPDl2K6K8X7kdqTSRp+W
+ V4s9UT6Ze8AY1YIsMCh7HkWprgtvgOWplbqvenam0baRyzhYlhvxVptQa
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=XAB6o9eK
-Subject: [Intel-wired-lan] [tnguy-net-queue:200GbE] BUILD SUCCESS
- 0c1683c681681c14f4389e3bfa8de10baf242ba8
+ header.s=Intel header.b=RPGTuuzK
+Subject: [Intel-wired-lan] [PATCH v3 iwl-next 00/10] idpf: add initial PTP
+ support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,115 +107,84 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 200GbE
-branch HEAD: 0c1683c681681c14f4389e3bfa8de10baf242ba8  idpf: trigger SW interrupt when exiting wb_on_itr mode
+This patch series introduces support for Precision Time Protocol (PTP) to
+Intel(R) Infrastructure Data Path Function (IDPF) driver. PTP feature is
+supported when the PTP capability is negotiated with the Control
+Plane (CP). IDPF creates a PTP clock and sets a set of supported
+functions.
 
-elapsed time: 1445m
+During the PTP initialization, IDPF requests a set of PTP capabilities
+and receives a writeback from the CP with the set of supported options.
+These options are:
+- get time of the PTP clock
+- get cross timestamp
+- set the time of the PTP clock
+- adjust the PTP clock
+- Tx timestamping
 
-configs tested: 96
-configs skipped: 2
+Each feature is considered to have direct access, where the operations
+on PCIe BAR registers are allowed, or the mailbox access, where the
+virtchnl messages are used to perform any PTP action. Mailbox access
+means that PTP requests are sent to the CP through dedicated secondary
+mailbox and the CP reads/writes/modifies desired resource - PTP Clock
+or Tx timestamp registers.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Tx timestamp capabilities are negotiated only for vports that have
+UPLINK_VPORT flag set by the CP. Capabilities provide information about
+the number of available Tx timestamp latches, their indexes and size of
+the Tx timestamp value. IDPF requests Tx timestamp by setting the
+TSYN bit and the requested timestamp index in the context descriptor for
+the PTP packets. When the completion tag for that packet is received,
+IDPF schedules a worker to read the Tx timestamp value.
 
-tested configs:
-alpha                             allnoconfig    gcc-14.2.0
-arc                              allmodconfig    gcc-13.2.0
-arc                               allnoconfig    gcc-13.2.0
-arc                              allyesconfig    gcc-13.2.0
-arc                          axs103_defconfig    gcc-13.2.0
-arc                   randconfig-001-20241218    gcc-13.2.0
-arc                   randconfig-002-20241218    gcc-13.2.0
-arm                              allmodconfig    gcc-14.2.0
-arm                               allnoconfig    clang-17
-arm                              allyesconfig    gcc-14.2.0
-arm                           h3600_defconfig    gcc-14.2.0
-arm                   randconfig-001-20241218    clang-20
-arm                   randconfig-002-20241218    clang-19
-arm                   randconfig-003-20241218    clang-17
-arm                   randconfig-004-20241218    clang-19
-arm                          sp7021_defconfig    gcc-14.2.0
-arm                           spitz_defconfig    gcc-14.2.0
-arm64                            allmodconfig    clang-18
-arm64                             allnoconfig    gcc-14.2.0
-arm64                 randconfig-001-20241218    clang-20
-arm64                 randconfig-002-20241218    clang-20
-arm64                 randconfig-003-20241218    gcc-14.2.0
-arm64                 randconfig-004-20241218    gcc-14.2.0
-csky                              allnoconfig    gcc-14.2.0
-csky                  randconfig-001-20241218    gcc-14.2.0
-csky                  randconfig-002-20241218    gcc-14.2.0
-hexagon                           allnoconfig    clang-20
-hexagon               randconfig-001-20241218    clang-20
-hexagon               randconfig-002-20241218    clang-18
-i386                             allmodconfig    gcc-12
-i386                              allnoconfig    gcc-12
-i386        buildonly-randconfig-001-20241218    clang-19
-i386        buildonly-randconfig-002-20241218    clang-19
-i386        buildonly-randconfig-003-20241218    gcc-12
-i386        buildonly-randconfig-004-20241218    gcc-12
-i386        buildonly-randconfig-005-20241218    clang-19
-i386        buildonly-randconfig-006-20241218    clang-19
-i386                                defconfig    clang-19
-loongarch                        allmodconfig    gcc-14.2.0
-loongarch                         allnoconfig    gcc-14.2.0
-loongarch             randconfig-001-20241218    gcc-14.2.0
-loongarch             randconfig-002-20241218    gcc-14.2.0
-m68k                             allmodconfig    gcc-14.2.0
-m68k                              allnoconfig    gcc-14.2.0
-m68k                             allyesconfig    gcc-14.2.0
-m68k                        m5407c3_defconfig    gcc-14.2.0
-microblaze                       allmodconfig    gcc-14.2.0
-microblaze                        allnoconfig    gcc-14.2.0
-mips                              allnoconfig    gcc-14.2.0
-nios2                             allnoconfig    gcc-14.2.0
-nios2                 randconfig-001-20241218    gcc-14.2.0
-nios2                 randconfig-002-20241218    gcc-14.2.0
-openrisc                          allnoconfig    gcc-14.2.0
-parisc                            allnoconfig    gcc-14.2.0
-parisc                randconfig-001-20241218    gcc-14.2.0
-parisc                randconfig-002-20241218    gcc-14.2.0
-powerpc                           allnoconfig    gcc-14.2.0
-powerpc               randconfig-001-20241218    gcc-14.2.0
-powerpc               randconfig-002-20241218    clang-15
-powerpc               randconfig-003-20241218    clang-17
-powerpc64             randconfig-002-20241218    clang-20
-powerpc64             randconfig-003-20241218    gcc-14.2.0
-riscv                             allnoconfig    gcc-14.2.0
-riscv                 randconfig-001-20241218    gcc-14.2.0
-riscv                 randconfig-002-20241218    gcc-14.2.0
-s390                             allmodconfig    clang-19
-s390                              allnoconfig    clang-20
-s390                             allyesconfig    gcc-14.2.0
-s390                  randconfig-001-20241218    gcc-14.2.0
-s390                  randconfig-002-20241218    gcc-14.2.0
-sh                               allmodconfig    gcc-14.2.0
-sh                                allnoconfig    gcc-14.2.0
-sh                               allyesconfig    gcc-14.2.0
-sh                    randconfig-001-20241218    gcc-14.2.0
-sh                    randconfig-002-20241218    gcc-14.2.0
-sparc                            allmodconfig    gcc-14.2.0
-sparc                             allnoconfig    gcc-14.2.0
-sparc                 randconfig-001-20241218    gcc-14.2.0
-sparc                 randconfig-002-20241218    gcc-14.2.0
-sparc64               randconfig-001-20241218    gcc-14.2.0
-sparc64               randconfig-002-20241218    gcc-14.2.0
-um                                allnoconfig    clang-18
-um                    randconfig-001-20241218    gcc-12
-um                    randconfig-002-20241218    clang-17
-x86_64                           alldefconfig    gcc-12
-x86_64                            allnoconfig    clang-19
-x86_64      buildonly-randconfig-001-20241218    clang-19
-x86_64      buildonly-randconfig-002-20241218    clang-19
-x86_64      buildonly-randconfig-003-20241218    gcc-12
-x86_64      buildonly-randconfig-004-20241218    gcc-12
-x86_64      buildonly-randconfig-005-20241218    gcc-12
-x86_64      buildonly-randconfig-006-20241218    gcc-11
-x86_64                              defconfig    gcc-11
-xtensa                            allnoconfig    gcc-14.2.0
-xtensa                randconfig-001-20241218    gcc-14.2.0
-xtensa                randconfig-002-20241218    gcc-14.2.0
+Current implementation of the IDPF driver does not allow to get stable
+Tx timestamping, when more than 1 request per 1 second is sent to the
+driver. Debug is in progress, however PTP feature seems to be affected by
+the IDPF transmit flow, as the Tx timestamping relies on the completion
+tag.
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+v2 -> v3: fix minor issues, revert idpf_for_each_vport changes,
+extend idpf_ptp_set_rx_tstamp, split tstamp statistics
+v1 -> v2: add stats for timestamping, use ndo_hwtamp_get/set,
+fix minor spelling issues
+
+Milena Olech (10):
+  idpf: add initial PTP support
+  virtchnl: add PTP virtchnl definitions
+  idpf: move virtchnl structures to the header file
+  idpf: negotiate PTP capabilities and get PTP clock
+  idpf: add mailbox access to read PTP clock time
+  idpf: add PTP clock configuration
+  idpf: add Tx timestamp capabilities negotiation
+  idpf: add Tx timestamp flows
+  idpf: add support for Rx timestamping
+  idpf: change the method for mailbox workqueue allocation
+
+ drivers/net/ethernet/intel/idpf/Kconfig       |   1 +
+ drivers/net/ethernet/intel/idpf/Makefile      |   3 +
+ drivers/net/ethernet/intel/idpf/idpf.h        |  34 +
+ .../ethernet/intel/idpf/idpf_controlq_api.h   |   3 +
+ drivers/net/ethernet/intel/idpf/idpf_dev.c    |  14 +
+ .../net/ethernet/intel/idpf/idpf_ethtool.c    |  69 +-
+ .../ethernet/intel/idpf/idpf_lan_pf_regs.h    |   4 +
+ .../net/ethernet/intel/idpf/idpf_lan_txrx.h   |  13 +-
+ drivers/net/ethernet/intel/idpf/idpf_lib.c    |  47 +
+ drivers/net/ethernet/intel/idpf/idpf_main.c   |   8 +-
+ drivers/net/ethernet/intel/idpf/idpf_ptp.c    | 989 ++++++++++++++++++
+ drivers/net/ethernet/intel/idpf/idpf_ptp.h    | 351 +++++++
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c   | 169 ++-
+ drivers/net/ethernet/intel/idpf/idpf_txrx.h   |  18 +-
+ .../net/ethernet/intel/idpf/idpf_virtchnl.c   | 160 ++-
+ .../net/ethernet/intel/idpf/idpf_virtchnl.h   |  84 ++
+ .../ethernet/intel/idpf/idpf_virtchnl_ptp.c   | 677 ++++++++++++
+ drivers/net/ethernet/intel/idpf/virtchnl2.h   | 314 +++++-
+ 18 files changed, 2857 insertions(+), 101 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_ptp.c
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_ptp.h
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_virtchnl_ptp.c
+
+
+base-commit: 925d17a63a913ff2061aae2632d6f08ab6b07afc
+-- 
+2.31.1
+
