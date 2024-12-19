@@ -1,100 +1,103 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 931AC9F78D9
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Dec 2024 10:48:48 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 56A579F7AD8
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Dec 2024 12:59:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3EADC84993;
-	Thu, 19 Dec 2024 09:48:47 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 08AF2614C4;
+	Thu, 19 Dec 2024 11:59:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id WXavQrGCLANe; Thu, 19 Dec 2024 09:48:46 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Lbtron627t0g; Thu, 19 Dec 2024 11:59:30 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A2C5F845DB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AA6A7614D1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1734601726;
-	bh=/MtKPmqy23tc+LJYjQptMQaqrkmEtOgYDuowUcJpVb4=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=es6pXEVbh1ncPFqhrhGmnaj3Lr47e58d2szThgJEA20POFIKec6fmciVIfPLBLEe/
-	 vKfEDfBDz94yd3Q+G4jkeW0Injx9RnPCtj19QJEElftCh8uCSkankVZYtUyhFvT5wR
-	 EyG661SwOx5h3JzKqdiGiavYg3NA4mI19vJ+H4fr29JNNnvyOzlUBji8PsTPDbESpb
-	 CFI5b/C1u/54ngWXx2wC3KaoTfgyP8VGUX8rSF+cUIapMhJl8hHKzHUo6+ANCZ5wkZ
-	 vfVaKHLTGTm1XqN0wxyf8/kjbMcf7zNtLXqFZg3aIv+UsQT1SWfpcCGaXGLBPtGkMW
-	 hRNTP2yMSv44A==
+	s=default; t=1734609569;
+	bh=FAsQwQ7H5qZTRU32TFQHyL1XnQl6xzJbsDz+p7HbssA=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=eyJ6QutVQyz808hUhjxuuKRtGttMfsRoeTo9OZscbDGwXem7Mzwy4mv1V6jTKxYhG
+	 Tcg8BAwJjFM483x2t/ssPDqos9nc0KgjB/3KfBmycpT9Yb9S12/d8lw4O/e/ispzRt
+	 oWy7HCx+XgG7TEjhAM0SSqIUe/vDufffyK1ZmGGJ3fSVLUnCKE1CHEoGIpXpoD3OBO
+	 W7XGSLeB4NOvO5az99GPG48BlQWG5pCaUDvJzee3BkwCeldORfC4ZmR+YpBESG866L
+	 SyqWX9049tQnbS8lZagkFUfnprDpXalKcCL6M2l9SzalAIvLB9ssFQ9YPeZiWoYNYa
+	 wqBU3jbB9Q18g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A2C5F845DB;
-	Thu, 19 Dec 2024 09:48:46 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id AA6A7614D1;
+	Thu, 19 Dec 2024 11:59:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id A1287C0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Dec 2024 09:48:43 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 57C28CE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Dec 2024 11:59:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8E734404CF
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Dec 2024 09:48:43 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 520D141825
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Dec 2024 11:59:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id JOUh2yc29TLj for <intel-wired-lan@lists.osuosl.org>;
- Thu, 19 Dec 2024 09:48:42 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
- helo=mgamail.intel.com; envelope-from=milena.olech@intel.com;
+ id C_0biqZxZ_Nb for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 19 Dec 2024 11:59:11 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
+ helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 1B94940FE7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1B94940FE7
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1B94940FE7
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Dec 2024 09:48:42 +0000 (UTC)
-X-CSE-ConnectionGUID: bq/4y8weSBCoqSq3DQPvVw==
-X-CSE-MsgGUID: cVeoMSkVQYWMKEhktZSYGQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11290"; a="45702752"
-X-IronPort-AV: E=Sophos;i="6.12,247,1728975600"; d="scan'208";a="45702752"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Dec 2024 01:48:36 -0800
-X-CSE-ConnectionGUID: 1Vz41/1YQMicjP3Jg0B2qA==
-X-CSE-MsgGUID: VZq6iG+NReWgVHGEsKnSZA==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 98A01401E1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 98A01401E1
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 98A01401E1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Dec 2024 11:59:10 +0000 (UTC)
+X-CSE-ConnectionGUID: z+ZC/cOJTE+CPJ1G2I6hOQ==
+X-CSE-MsgGUID: dGLdhs7bTWqaSuah30qSLA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11290"; a="37957679"
+X-IronPort-AV: E=Sophos;i="6.12,247,1728975600"; d="scan'208";a="37957679"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+ by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Dec 2024 03:59:10 -0800
+X-CSE-ConnectionGUID: W5nWXNKZQr+VZNW5opciRQ==
+X-CSE-MsgGUID: PBhipDHvTtaLg0dTGXUPbg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,247,1728975600"; d="scan'208";a="98207316"
-Received: from unknown (HELO localhost.igk.intel.com) ([10.102.22.54])
- by orviesa006.jf.intel.com with ESMTP; 19 Dec 2024 01:48:34 -0800
-From: Milena Olech <milena.olech@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, Milena Olech <milena.olech@intel.com>,
- Alexander Lobakin <aleksander.lobakin@intel.com>
-Date: Thu, 19 Dec 2024 10:44:22 +0100
-Message-Id: <20241219094411.110082-11-milena.olech@intel.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20241219094411.110082-1-milena.olech@intel.com>
-References: <20241219094411.110082-1-milena.olech@intel.com>
+X-IronPort-AV: E=Sophos;i="6.12,247,1728975600"; d="scan'208";a="98000111"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by fmviesa007.fm.intel.com with ESMTP; 19 Dec 2024 03:59:08 -0800
+Received: from vecna.igk.intel.com (vecna.igk.intel.com [10.123.220.17])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id DC46F28778;
+ Thu, 19 Dec 2024 11:59:06 +0000 (GMT)
+From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+To: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>
+Cc: netdev@vger.kernel.org, Simon Horman <horms@kernel.org>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Dan Carpenter <dan.carpenter@linaro.org>,
+ Ahmed Zaki <ahmed.zaki@intel.com>,
+ Larysa Zaremba <larysa.zaremba@intel.com>
+Date: Thu, 19 Dec 2024 12:55:16 +0100
+Message-Id: <20241219115516.11708-1-przemyslaw.kitszel@intel.com>
+X-Mailer: git-send-email 2.39.3
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1734601722; x=1766137722;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=zof4/IAQexPAqzjLnsif5OGnaWtERuR/MyIlBNTSjK8=;
- b=HxwD8/x7+rRU6a2S1o1mGTjLzTLrsCO8cQqPLLzjeUeO/7h63pg+HgxE
- il//y130PPcCtDhU8HX3zSQfGd5YIh2eWjWi9o+HRa3hWh/pvWJulRCIi
- bm9OlKQ7sW4UeBsYCSRHF+kl2Q5sREqqTdEXHSClv4dO3hbSgdCOpp0/R
- u5WC6kSyvAz8pf+Xah5iihoqXH1vqpPXf7OoXYX+VoyYAE5zfB+XDMc/w
- bm7b5hX452vneL9Pk+mLj4IE2tf2tSsUxzGPFI24Az2k72YkvRiQIxQHu
- 3b2PEVZWLtbKEatS3VMxfSbTpJPzKDDhbyE2Dm+5FUqJQ8HtJbHPUyoMR
- w==;
+ t=1734609552; x=1766145552;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=+bdHV52BGeozxqr7FfB0hzqeypAkNCGVG+/cZlO10cM=;
+ b=JGnDfKCJBOoSSq5HK0BdQDoPhOvJ4qECdLMcx1xO4dJcWn0E3v1bO7do
+ o+RuTZI+Ee2DhsD3KGZJWxUO257bgTrW2HWnx51Yqrhrow8NzZEATzu0e
+ XNU5/5xq5lgq8/94VEeIX0q29nYniht8ZrcKCAhqinZbUV88QC0ykgZZe
+ 7AV/XYXJ/c1S+OIIHrcqwiQ5OReCnBY1tM8XWtZfWCd6k9qkt5vZZ2p5h
+ pbNlBC6qwb5CvAUTEddmZUJMRf8xz8g78RILiJ1O5XWuqe/wxd5Yigjvj
+ pJdJJymq0z0e0xRqTrKeJIcB6mK8AjC+kKKzzorUtCuHVp268mIsnVpRR
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=HxwD8/x7
-Subject: [Intel-wired-lan] [PATCH v3 iwl-next 10/10] idpf: change the method
- for mailbox workqueue allocation
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=JGnDfKCJ
+Subject: [Intel-wired-lan] [PATCH iwl-net v3] ice: fix
+ ice_parser_rt::bst_key array size
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -110,34 +113,116 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Since workqueues are created per CPU, the works scheduled to this
-workqueues are run on the CPU they were assigned. It may result in
-overloaded CPU that is not able to handle virtchnl messages in
-relatively short time. Allocating workqueue with WQ_UNBOUND and
-WQ_HIGHPRI flags allows scheduler to queue virtchl messages on less loaded
-CPUs, what eliminates delays.
+Fix &ice_parser_rt::bst_key size. It was wrongly set to 10 instead of 20
+in the initial impl commit (see Fixes tag). All usage code assumed it was
+of size 20. That was also the initial size present up to v2 of the intro
+series [2], but halved by v3 [3] refactor described as "Replace magic
+hardcoded values with macros." The introducing series was so big that
+some ugliness was unnoticed, same for bugs :/
 
-Reviewed-by: Alexander Lobakin <aleksander.lobakin@intel.com>
-Signed-off-by: Milena Olech <milena.olech@intel.com>
+ICE_BST_KEY_TCAM_SIZE and ICE_BST_TCAM_KEY_SIZE were differing by one.
+There was tmp variable @j in the scope of edited function, but was not
+used in all places. This ugliness is now gone.
+I'm moving ice_parser_rt::pg_prio a few positions up, to fill up one of
+the holes in order to compensate for the added 10 bytes to the ::bst_key,
+resulting in the same size of the whole as prior to the fix, and miminal
+changes in the offsets of the fields.
+
+Extend also the debug dump print of the key to cover all bytes. To not
+have string with 20 "%02x" and 20 params, switch to
+ice_debug_array_w_prefix().
+
+This fix obsoletes Ahmed's attempt at [1].
+
+[1] https://lore.kernel.org/intel-wired-lan/20240823230847.172295-1-ahmed.zaki@intel.com
+[2] https://lore.kernel.org/intel-wired-lan/20230605054641.2865142-13-junfeng.guo@intel.com
+[3] https://lore.kernel.org/intel-wired-lan/20230817093442.2576997-13-junfeng.guo@intel.com
+
+Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
+Closes: https://lore.kernel.org/intel-wired-lan/b1fb6ff9-b69e-4026-9988-3c783d86c2e0@stanley.mountain
+Fixes: 9a4c07aaa0f5 ("ice: add parser execution main loop")
+CC: Ahmed Zaki <ahmed.zaki@intel.com>
+Reviewed-by: Larysa Zaremba <larysa.zaremba@intel.com>
+Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 ---
- drivers/net/ethernet/intel/idpf/idpf_main.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+v3: mention printing change in commit msg, separate prefix from the debug log (Simon)
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_main.c b/drivers/net/ethernet/intel/idpf/idpf_main.c
-index cbfc8e7fb547..bb3bddf074f0 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_main.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_main.c
-@@ -220,8 +220,8 @@ static int idpf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 		goto err_serv_wq_alloc;
+v2: same as v3, but lacks code change :(
+
+v1: https://lore.kernel.org/intel-wired-lan/20241216170548.GI780307@kernel.org/T/#mbf984a0faa12a5bdb53460b150201fdd7cc1826a
+---
+ drivers/net/ethernet/intel/ice/ice_parser.h    |  6 ++----
+ drivers/net/ethernet/intel/ice/ice_parser_rt.c | 12 +++++-------
+ 2 files changed, 7 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_parser.h b/drivers/net/ethernet/intel/ice/ice_parser.h
+index 6509d807627c..4f56d53d56b9 100644
+--- a/drivers/net/ethernet/intel/ice/ice_parser.h
++++ b/drivers/net/ethernet/intel/ice/ice_parser.h
+@@ -257,7 +257,6 @@ ice_pg_nm_cam_match(struct ice_pg_nm_cam_item *table, int size,
+ /*** ICE_SID_RXPARSER_BOOST_TCAM and ICE_SID_LBL_RXPARSER_TMEM sections ***/
+ #define ICE_BST_TCAM_TABLE_SIZE		256
+ #define ICE_BST_TCAM_KEY_SIZE		20
+-#define ICE_BST_KEY_TCAM_SIZE		19
+ 
+ /* Boost TCAM item */
+ struct ice_bst_tcam_item {
+@@ -401,7 +400,6 @@ u16 ice_xlt_kb_flag_get(struct ice_xlt_kb *kb, u64 pkt_flag);
+ #define ICE_PARSER_GPR_NUM	128
+ #define ICE_PARSER_FLG_NUM	64
+ #define ICE_PARSER_ERR_NUM	16
+-#define ICE_BST_KEY_SIZE	10
+ #define ICE_MARKER_ID_SIZE	9
+ #define ICE_MARKER_MAX_SIZE	\
+ 		(ICE_MARKER_ID_SIZE * BITS_PER_BYTE - 1)
+@@ -431,13 +429,13 @@ struct ice_parser_rt {
+ 	u8 pkt_buf[ICE_PARSER_MAX_PKT_LEN + ICE_PARSER_PKT_REV];
+ 	u16 pkt_len;
+ 	u16 po;
+-	u8 bst_key[ICE_BST_KEY_SIZE];
++	u8 bst_key[ICE_BST_TCAM_KEY_SIZE];
+ 	struct ice_pg_cam_key pg_key;
++	u8 pg_prio;
+ 	struct ice_alu *alu0;
+ 	struct ice_alu *alu1;
+ 	struct ice_alu *alu2;
+ 	struct ice_pg_cam_action *action;
+-	u8 pg_prio;
+ 	struct ice_gpr_pu pu;
+ 	u8 markers[ICE_MARKER_ID_SIZE];
+ 	bool protocols[ICE_PO_PAIR_SIZE];
+diff --git a/drivers/net/ethernet/intel/ice/ice_parser_rt.c b/drivers/net/ethernet/intel/ice/ice_parser_rt.c
+index dedf5e854e4b..3995d662e050 100644
+--- a/drivers/net/ethernet/intel/ice/ice_parser_rt.c
++++ b/drivers/net/ethernet/intel/ice/ice_parser_rt.c
+@@ -125,22 +125,20 @@ static void ice_bst_key_init(struct ice_parser_rt *rt,
+ 	else
+ 		key[idd] = imem->b_kb.prio;
+ 
+-	idd = ICE_BST_KEY_TCAM_SIZE - 1;
++	idd = ICE_BST_TCAM_KEY_SIZE - 2;
+ 	for (i = idd; i >= 0; i--) {
+ 		int j;
+ 
+ 		j = ho + idd - i;
+ 		if (j < ICE_PARSER_MAX_PKT_LEN)
+-			key[i] = rt->pkt_buf[ho + idd - i];
++			key[i] = rt->pkt_buf[j];
+ 		else
+ 			key[i] = 0;
  	}
  
--	adapter->mbx_wq = alloc_workqueue("%s-%s-mbx", 0, 0,
--					  dev_driver_string(dev),
-+	adapter->mbx_wq = alloc_workqueue("%s-%s-mbx", WQ_UNBOUND | WQ_HIGHPRI,
-+					  0, dev_driver_string(dev),
- 					  dev_name(dev));
- 	if (!adapter->mbx_wq) {
- 		dev_err(dev, "Failed to allocate mailbox workqueue\n");
+-	ice_debug(rt->psr->hw, ICE_DBG_PARSER, "Generated Boost TCAM Key:\n");
+-	ice_debug(rt->psr->hw, ICE_DBG_PARSER, "%02X %02X %02X %02X %02X %02X %02X %02X %02X %02X\n",
+-		  key[0], key[1], key[2], key[3], key[4],
+-		  key[5], key[6], key[7], key[8], key[9]);
+-	ice_debug(rt->psr->hw, ICE_DBG_PARSER, "\n");
++	ice_debug_array_w_prefix(rt->psr->hw, ICE_DBG_PARSER,
++				 KBUILD_MODNAME ": Generated Boost TCAM Key",
++				 key, ICE_BST_TCAM_KEY_SIZE);
+ }
+ 
+ static u16 ice_bit_rev_u16(u16 v, int len)
 -- 
-2.31.1
+2.39.3
 
