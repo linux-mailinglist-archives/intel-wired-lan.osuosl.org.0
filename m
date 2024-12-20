@@ -1,135 +1,233 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id F02419F9236
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Dec 2024 13:30:03 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 575409F94DF
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Dec 2024 15:50:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3F4DD83CB4;
-	Fri, 20 Dec 2024 12:30:02 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0wkXyt7g-Utz; Fri, 20 Dec 2024 12:30:01 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AA4F083CB7
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1734697800;
-	bh=VmRCmaPkLkPswmKEyB/ZICUJHMBmUsSjq9Yct5NQ1ro=;
-	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=wegikTL/1FgCz348Ai/rcgnJjbunrygH54m4C8IPnpRqZoGwZalr2OhPskyI2O92D
-	 eK7N8E1jRXdsPG0AyprcoxDtnzQ1Le2SJDZuG0cc7hl8XIWPJ0HmgjfMES2WG/1VDn
-	 It3s1gDwIHZZZnDpGIoh90oIgn+colhFz5odfkyExjWRXdnoAHstMfcuP5MOKFpTlJ
-	 gUS+elKblTXfTAv/JI6Y0KyJ1U+0+bWm/J/uBqUr2CtfFhoc4rrJXDwzlBobZvEK/n
-	 yjwPXgAuoVUeRUaJR1njRv3ZefqjAmFyYCqA9lzCrEZMvvQbbybXgRKSfgj0wVe/Pv
-	 uc+bAm+YeN8ew==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AA4F083CB7;
-	Fri, 20 Dec 2024 12:30:00 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 88DE1730
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2024 12:29:58 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7769861177
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2024 12:29:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E988160659;
+	Fri, 20 Dec 2024 14:50:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id T1N9homqiAJ8 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 Dec 2024 12:29:57 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::b35; helo=mail-yb1-xb35.google.com;
- envelope-from=ilias.apalodimas@linaro.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1B56D6116F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1B56D6116F
-Received: from mail-yb1-xb35.google.com (mail-yb1-xb35.google.com
- [IPv6:2607:f8b0:4864:20::b35])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1B56D6116F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2024 12:29:56 +0000 (UTC)
-Received: by mail-yb1-xb35.google.com with SMTP id
- 3f1490d57ef6-e3dace03a73so1325650276.3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2024 04:29:56 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734697796; x=1735302596;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=VmRCmaPkLkPswmKEyB/ZICUJHMBmUsSjq9Yct5NQ1ro=;
- b=uXrs+0Kce16JjxNjlK9QUkFo78d/nf2AE22o2Bqx5l9erj4yJ04PKsYvtCWAViAV+U
- CbRVJDkHooK8H4sniCPVoIx24vkbrmCByqHOlj9NFrbCfzxD/kBcNmj94aiKezg/Jqag
- aPpteQ7Y6jW+HIu1BqiE6kVGfFwHrICO2HMgY9XmJBlDTB4KeKD4e+ow1S8ob3D5yCG9
- sbRWcds0ILKtzJ2VJl4lGeCJjqstiAFmqP8mFU60ocGAw89Zox1BnxsGy7y18NWFNjeM
- GSsuw0ejmX++FvaUeHRBGD7K4wIHX3z7TujLBzHsYkmuuEPD+l3rcX7IY8p8fIPZFNIC
- yhXQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXCtDubOzW8kURI6O54fhv61zQe2Tsv7N3jQuz5cRFnSeIv6HwevHjHwws+JtlCCq99H9PeTfkT1WXUCBbMeT0=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YytYalIMP5QtMh+VqRPCj2jmqncC/ZIAPSno5xrmbqnFkdpYBIw
- fjYrpbeBja54swoDOisnV8k6EYx4zh9368dXHQx8V9i+geKLKkj2jyQOSNQiTCegeBwu8tYq3oE
- BKMqTqUFcSCcTZjFG3KOKcPCz6l9q381yPODINg==
-X-Gm-Gg: ASbGncvByF0B5DuebFIQkb7U8V4VlDaWyJ09ansQotDOLzd4HNkv6sscYGgUasvXSAP
- dK7svsHVnhkrpueIYIJy7HJqgyCt2A36mVOKoew==
-X-Google-Smtp-Source: AGHT+IGSsUG4iSnRRcdUuCq27bUw63jRg+t86G+uWqSkEhiBTf+pNCH23b3m4irAGr9UmyGYIOuuYUx3ncEVJac77D0=
-X-Received: by 2002:a05:6902:982:b0:e3c:8ec9:c896 with SMTP id
- 3f1490d57ef6-e538c350d10mr1981319276.34.1734697795572; Fri, 20 Dec 2024
- 04:29:55 -0800 (PST)
+ id p1wmB4QgqGaM; Fri, 20 Dec 2024 14:50:51 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3DB4560E59
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1734706251;
+	bh=kjUqwHtUuPyz7Qi/meLy/bMO5QdCXMdDmbA03V+Q5b4=;
+	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=fc+iwZHXBwiVaDODjgZ9IX2Bk5AQDFtU486sNA8UASbzvu0CCDnRuZ0tOxubMIkoW
+	 xoM49c5ufYy9jNt/F4Z+lrFqT/jgkIfL0QhuObdW9W7eZL2VL7nZ3vByUc1RDUArKz
+	 67IpO3BcoPY9Pgkyhr6cQhZeJoUrbI2a9KlZLpVkbrm2ONhQmfkF6s1RczE+GY/czi
+	 CDYEA1pyqw0Gt5cZxY7p7zLPCY43TbUnXB+Tj4bPbfVExcqeKSkgruRXiCeo/zvK4R
+	 2ladVm1t9OrmoeU4TgHvlfU//3V7s0GgB4GhyjDvpbxjl3FoTAKaLwdYtVf7Nx5kjO
+	 Ux0lojPWosUuQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3DB4560E59;
+	Fri, 20 Dec 2024 14:50:51 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id F078C6C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2024 14:50:48 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id DB0F5409F5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2024 14:50:48 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ObS2Vck7j9Wi for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 20 Dec 2024 14:50:48 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
+ helo=mgamail.intel.com; envelope-from=ahmed.zaki@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A10394097B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A10394097B
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A10394097B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2024 14:50:47 +0000 (UTC)
+X-CSE-ConnectionGUID: 8rb5L/kpS521vBylpSVyXg==
+X-CSE-MsgGUID: zrc8BvybT5ir5HhW3lfouQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11292"; a="35473161"
+X-IronPort-AV: E=Sophos;i="6.12,251,1728975600"; d="scan'208";a="35473161"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+ by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Dec 2024 06:50:46 -0800
+X-CSE-ConnectionGUID: QQEYhGQmS1KpBhlHrZDCSg==
+X-CSE-MsgGUID: fYIrtLmPTJavX67IyPXBBQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,251,1728975600"; d="scan'208";a="98592323"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by orviesa006.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 20 Dec 2024 06:50:46 -0800
+Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.44; Fri, 20 Dec 2024 06:50:46 -0800
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.44 via Frontend Transport; Fri, 20 Dec 2024 06:50:46 -0800
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.48) by
+ edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.44; Fri, 20 Dec 2024 06:50:45 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=CtiyAIQpUV6K000kD7KcaoXyshwGfETTLjG5S8hcEgitDokQXbjTUgE93CavoZiM4rcHOjxArSNct32orBaJZAl8kCzt+WhoO26k7c/Gx9Sb4wJCmScrPJVPww7XWhYdWZLKzV0M5zj9z58Mca9GQDxpxzZc91C5jGWu4p5vyRby7R0RP2zJ/IrZuwtyJ9plXw0fhMalppBqXqnJcv5N8dAN6QcludqO8H6y39LwwlULikClJHyWkFdgPY8ap0swsyPsUG4pPEtGPW+RFmV6e1Meh/GYUoneOVI+Ewq5HBdFXA5FKoj84zfV3ZqzvxfvqsvWYe/pI27tnY4IHYAmSA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=kjUqwHtUuPyz7Qi/meLy/bMO5QdCXMdDmbA03V+Q5b4=;
+ b=nsCmpWmgzrpayfmho3ZY3MVlat+h4VTtpolZcUc7838tlJMTDpqvpIkwpVEhQiz8ywk8v1KQCV2SlHqYHTBtYR7qBQ1i+sSrp7sh0LfEnKCaN4rqdzV1pLdqU9uz5cN746gD3pKq/xadaCJIGXRdX8r0USsyQ0QMRUU9yymKMzR2tmAw787Q/ejc+60oUDgkeB0wZTo0mBF/3IGDIl+1P/J0gJv25F4pWoaylRHjWWQSnpX5sxfB1Nzr9ynsybW8osEfuCEYhHl/PqnEK/qsnXirSCdwmYPBCswZIPNqSVnTgV7qFUVUXbKNxH0+eUUKs4fCJSh5JKz9s67g4x0uVQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SN7PR11MB7420.namprd11.prod.outlook.com (2603:10b6:806:328::20)
+ by SA2PR11MB4858.namprd11.prod.outlook.com (2603:10b6:806:f9::10)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8251.16; Fri, 20 Dec
+ 2024 14:50:43 +0000
+Received: from SN7PR11MB7420.namprd11.prod.outlook.com
+ ([fe80::b8ba:be35:3903:118f]) by SN7PR11MB7420.namprd11.prod.outlook.com
+ ([fe80::b8ba:be35:3903:118f%7]) with mapi id 15.20.8272.013; Fri, 20 Dec 2024
+ 14:50:43 +0000
+Message-ID: <9e724101-bdef-4c14-926b-6e85722d8bee@intel.com>
+Date: Fri, 20 Dec 2024 07:50:33 -0700
+User-Agent: Mozilla Thunderbird
+To: Jakub Kicinski <kuba@kernel.org>
+CC: <netdev@vger.kernel.org>, <intel-wired-lan@lists.osuosl.org>,
+ <andrew+netdev@lunn.ch>, <edumazet@google.com>, <pabeni@redhat.com>,
+ <davem@davemloft.net>, <michael.chan@broadcom.com>, <tariqt@nvidia.com>,
+ <anthony.l.nguyen@intel.com>, <przemyslaw.kitszel@intel.com>,
+ <jdamato@fastly.com>, <shayd@nvidia.com>, <akpm@linux-foundation.org>
+References: <20241218165843.744647-1-ahmed.zaki@intel.com>
+ <20241218165843.744647-2-ahmed.zaki@intel.com>
+ <20241219193403.10a52305@kernel.org>
+Content-Language: en-US
+From: Ahmed Zaki <ahmed.zaki@intel.com>
+In-Reply-To: <20241219193403.10a52305@kernel.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: MW4PR03CA0327.namprd03.prod.outlook.com
+ (2603:10b6:303:dd::32) To SN7PR11MB7420.namprd11.prod.outlook.com
+ (2603:10b6:806:328::20)
 MIME-Version: 1.0
-References: <20241213122739.4050137-1-linyunsheng@huawei.com>
- <20241213122739.4050137-2-linyunsheng@huawei.com>
-In-Reply-To: <20241213122739.4050137-2-linyunsheng@huawei.com>
-From: Ilias Apalodimas <ilias.apalodimas@linaro.org>
-Date: Fri, 20 Dec 2024 14:29:19 +0200
-Message-ID: <CAC_iWj+3Q7CAS3xH9+zWA7nXdFNSJ-XMKQB3ZT0YvUQ-Q2gMCQ@mail.gmail.com>
-To: Yunsheng Lin <linyunsheng@huawei.com>
-Cc: davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com, 
- somnath.kotur@broadcom.com, liuyonglong@huawei.com, fanghaiqing@huawei.com, 
- zhangkun09@huawei.com, Wei Fang <wei.fang@nxp.com>, 
- Shenwei Wang <shenwei.wang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, 
- Jeroen de Borst <jeroendb@google.com>,
- Praveen Kaligineedi <pkaligineedi@google.com>, 
- Shailend Chand <shailend@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- Alexei Starovoitov <ast@kernel.org>, 
- Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>, 
- John Fastabend <john.fastabend@gmail.com>, Saeed Mahameed <saeedm@nvidia.com>, 
- Leon Romanovsky <leon@kernel.org>, Tariq Toukan <tariqt@nvidia.com>,
- Felix Fietkau <nbd@nbd.name>, 
- Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Kalle Valo <kvalo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Simon Horman <horms@kernel.org>, 
- imx@lists.linux.dev, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
- intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org, 
- linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1734697796; x=1735302596; darn=lists.osuosl.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=VmRCmaPkLkPswmKEyB/ZICUJHMBmUsSjq9Yct5NQ1ro=;
- b=A8qCcNkZnGqc7j///fJgimEsSmROjjxJLBXakfOLDugrxASLmnLwWBrpkKFiI7DuyS
- f/6awMsTkToEt7KWq2oJyLftr7cT8qzaWnLgQmYMtypfsEwe6bRx4h9s3o4EEcjnJEXT
- lfqmXAy6rGHYeOn8V/vd9Q1QBLfQ7mNXovzoMAeVFRDWxZc6qOcy6A+liSW4FP8gvJC+
- hqzY/Ms3kDCuUDTOCPgLWgGFyl0ljNR4FxAwnA0GcUw7/XWvHcEQMr/SXXj7Kdh6eYyE
- NBGzUPMgcx9/ApC74CEGeO41Dx3jzxx/02z8YRJ8T39RSaE97Yrfizf8m7X9oNzJY+/m
- Qjjg==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN7PR11MB7420:EE_|SA2PR11MB4858:EE_
+X-MS-Office365-Filtering-Correlation-Id: 364c1582-3427-4cf9-06f3-08dd2105adb8
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|7416014|376014|1800799024;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?aVJ2aVViWDJzdHlDNi9IS0pEaCt6MnRibkM0Tjhqc0VKLzlKNHR6cXNWaG8v?=
+ =?utf-8?B?bWNhdVAyWHdoa1ZpVE5pVWcyR01TYkExVGt6N3pFSXhNS1EzV2FSemJhaks1?=
+ =?utf-8?B?cjd5UUoyaE91NzhwVUZoSDVuSThnWTA3R3ErVkNYWk5ucEp0THBzWEcxTi83?=
+ =?utf-8?B?QjJlenlROVVrOVBEZkphME9xY09OR0FaNXVGeUgyR1VmNVhTSGM1OHRhRUE2?=
+ =?utf-8?B?UVltaUJNc3V2WVpvNHc5N3VzUk1CTTV0alVHZndhUDlFa1Myb1lBOXFVeVJN?=
+ =?utf-8?B?R28ydHRFN3NISU9YQUpWQWdvQ3RVUWxJd1plMU1qZEg2cldnRzJjSzJyeFlE?=
+ =?utf-8?B?ekdiL0ZtRXJ3dGZ3dzdjWGQ2dzdIREdIS1pSYTVuQmNBdXN4dlExbzZ3L29V?=
+ =?utf-8?B?Wm4rU3k4OXRuTWpGdWNHb3NPOVc1Tk03VW1iVmJYSGt2bzk0OEcvUTN6TzRt?=
+ =?utf-8?B?eGhMcXhwMUpMUnJ4YnJaNEZQVW15ZVVBZkxEMGdjRzVnRDBrQ3ZaVy84czRM?=
+ =?utf-8?B?ZEMzMThVRmhNK3FCMTRUSklrQUdCZEhzcGhNbXArVlNhb0hUSWpWMVQxc05r?=
+ =?utf-8?B?T3NQVmVlOVNaRFFNdXJjR0lVd1k3S1RxeTVIbC9neXlIM0xiZnRQWHN5YmN5?=
+ =?utf-8?B?V0I2VEZSaTNsVDJUTkNRTVFTQWFHcFA5dHAvMWRGakVqR1FQbkFaUWROYU91?=
+ =?utf-8?B?b3VFUzd1d3cvREk2c2E3UnJvT3ZKaTZpcHk3L2wvZzZzRUhCejYwczZsWjZH?=
+ =?utf-8?B?ZURzM2dnUWN5Z3gyYkNHczhDeWRZZnAyMzVxejZXY2U1RTNUZFRRclFvNGx6?=
+ =?utf-8?B?cFJZZ05Ca2NBK3NUandDOSt3dWo2QnpwWVA0OEtxQXh5Ti9YMUFWcWl4cGVh?=
+ =?utf-8?B?Q096ekxnSG41VGRoeWNlWnZtcitDclE5b1ZwY3JwQzZYbk1vRjVKOFB6TjRy?=
+ =?utf-8?B?aDNzUEFSMXNvZjVvcGpRNStOKzB5Ukp5TGJyUUFmWlkzM2Z3RmFRNm9uT2Rt?=
+ =?utf-8?B?b3RXY0JjV3dJZHRzZVYzU2NWQ0ZQdHoxQ2V6ZlBSaXlWMjlTRVkxOVdNdnZV?=
+ =?utf-8?B?YXBMS08zMVNxL3pkNDV3V1krR1EyT09mSnYzVjQ4OFJVNktoQ2lObzdFbkFT?=
+ =?utf-8?B?Y2hzRHkrL1FoVGc2cnNZandjajRPaW5xeFVobUo0czhHczZzVGxqZkhFSU1B?=
+ =?utf-8?B?ZDVGRHplVXR6a2NXeDNsVUtHQjBuQnhJZGNCdGR0UXBLdWU2VkRDbzBGTnY1?=
+ =?utf-8?B?bFJ4cnJrSFptWFZ1TjdHTmVXZk04TkhyRWR6bGhGMjNDazRVZTBncTBlZ0lZ?=
+ =?utf-8?B?OFpqQi9qNzBnMFZ2SFF1Yk5FUWc5ODZBeEZ6dXNNaTdWTHNnUC85ZTFVMlVu?=
+ =?utf-8?B?OEljYTFDSlFOTzZNOFY4UjdZN1pYTm5DeTBpU1J4L1JGdFh0WDdhQ1VKb0N4?=
+ =?utf-8?B?cy8xOTl4WTV6VmJ5TlMrSGkzSkRLUFJtdmJLNTJxLzE5TzcrTkgyOWZmN1Nl?=
+ =?utf-8?B?VzlqdnNWVzRqenlWaDFVbVZIL2RmM1RRdVBvUnNoTjNwZEtmUG5icFZFbDB2?=
+ =?utf-8?B?OFlJR0VZWENwNzZramVnNHBMcHhocThLRVU5RnRGcHRqalM1cGhLSG9Uem1r?=
+ =?utf-8?B?UFB0L0tqSFlHWS9kMHdYMHpVNGRXVnJCQTFlczdiMmd1cjBHTytFbkx2dzNL?=
+ =?utf-8?B?c2FFWFhGK2kxdHhSU3VhWDJINmh1c0t0NVZhQlFUUmozaWRpS24vRjR2UmIw?=
+ =?utf-8?B?RXp6RkIzQ1JMRnFMQmVSMXhmVTZqT3ZORGIwZDMzekR4YnlyRTlWQkdTMGc0?=
+ =?utf-8?B?ODR2YjJ5aU9xVWtDZlYrdVRtVFRHclJhR3I1a2NiSmd4QTFJQXpGRjNsbXBv?=
+ =?utf-8?Q?VbGY4zIhnh7Ni?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN7PR11MB7420.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(7416014)(376014)(1800799024); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?eWJ5emc2VktJUHUzWDYreE9sY3U1ZzVYTTZVczlraERVWUJNZjYwamczaVo3?=
+ =?utf-8?B?MFNwUjNPMzJwMnpkYStCUEhmdjBOV093T1RUZHN5Si9LVGhTKytCVHRWeTgz?=
+ =?utf-8?B?eUhvMDRKWnp1a3BJdnpQdDBWQjYvNGtpdk0yaG5UQW9VSUNJaTRtWVhWN0Y0?=
+ =?utf-8?B?bFp2bitIdVFIclBjeU1wK2dRc3pwNW9xeTRXMlI4aFlDSitYb1JhK0FhdHZN?=
+ =?utf-8?B?aittTWNkVDdwa3ZTdmpvZU4zVDlmQjNNTk9vVzJ4L01NTnFyRDIyY3liaDlz?=
+ =?utf-8?B?eENESy9kS1hhN0JhakZJcTZvQkQwMDdkL2ZQN3VtQUppMTY2bzRGL1ExR252?=
+ =?utf-8?B?dUtlQ3ZJUjJITzRqbENDRW9YcFhEdmtubDRIZzB1MldWWTQ0TEpZZldEeGRE?=
+ =?utf-8?B?OGg1TFMxTVA2a3hiUHpsd2lwc1N4L2RCZHJuZjlMekt3MUNZTng5bmsvU2xn?=
+ =?utf-8?B?TXVjN2M2OGpuZmlqZ3JjMFV4aUVJeDgrUFJBUnFPMXNOQVJlb25aRU1oZG1p?=
+ =?utf-8?B?RWdhMXpJRjM3VWpvUWl5WWJTdGk1a082NVJ1a0NBekN1Wmx3ZUF1Z0h6S2ZO?=
+ =?utf-8?B?d00xWDBFdFpmbUhPUUo3eHBxeGxBaGxHTDVpY1EzaFh3cW91c05wUlJYRzRL?=
+ =?utf-8?B?Z0trTXRXZ0dSZGNvb0hseERwcDFMSE1waG43VWFMeUh3Tm9LeDdsVFY1SGNx?=
+ =?utf-8?B?aEVId0lraWZJWTZkNDBiQ0ZBUHJocjhYUHdPWGVsUlkyVkd1amliVVBjeDV3?=
+ =?utf-8?B?aWl0KzZMRWZBaWdPS2NGaUJVOSt1b0VXdHRZOVgwRWorMkViOG5vZE9oZi9I?=
+ =?utf-8?B?YjdxeEJ4QlYvTktCenZNcXR1eXhTVXlxNjZNWWt6M1NKTnEyTlJpZ0gzWjRZ?=
+ =?utf-8?B?OWxmaVN2V2xGRmdHVlZRV1lwSlVnME1ENHdMY0FUUElqNzBTdFh3dWN1OFRS?=
+ =?utf-8?B?MzcwcFF0TG90VHg0bTFJSmwrbDNyQThxTDJSZGRvNVdQbG01WXZuWkpzcHk2?=
+ =?utf-8?B?aHQ1dTN3SkhLMk90SXNtU1doNXhiSkxYNHpmdmNlRHJ3WUZEWWpia1pTSEM0?=
+ =?utf-8?B?bVd1TnV3T1lQaUNEQWJ0Y09CMTlERDQ1Y21VU2lvdlJLdjVJc0psSW5vdEVQ?=
+ =?utf-8?B?Tm9McXNWRzV6WEZycXhudnBsVEtXVVFKVGgveXJpanEzaGRYcm45dU9rZTJp?=
+ =?utf-8?B?RzUzYWNwVVJhZzNRT2ZIcldrNE5RUjBJNGVLWEEvQmJRcGUxZ21UOEFSRlht?=
+ =?utf-8?B?eWdMOFhINnEwQUxqWkdDcVNSSlhXMUhmYnZqVFVxdEdVUmhmZFhLTzhhLzRJ?=
+ =?utf-8?B?Sk5ueVJnZXRlQVk5WG5FMnJXKysxb1VjVDloUlFSNkQySnZ1aURjcFlSZGtN?=
+ =?utf-8?B?TXhQN09rSlNaWnA5Y1IraVRhcDl1cUlVeUxIMEpUYTRqY3NiWlIrRWw1Wll5?=
+ =?utf-8?B?VEI1NHFxTVZ5MWFMUmtyR1ltQ3B0dndpZ0tjMkNWQ1JTQUtnemFuMkw5bVBD?=
+ =?utf-8?B?SGhpMDZPdDlhbzlCajIyUlE3RjNZNkNBYVRlSEtXTzlVc3hxY0R3V094Qk05?=
+ =?utf-8?B?RnMyT0tGN0lMTXhFS01YME5VaGJyNE85Ny9LWi9kVWlUVzZkcTZjV094bit3?=
+ =?utf-8?B?Z1E1eFd4RHFXcU9JaDhiRVdXTmZzY1NlUUhUN1N2cFhIK1RPUXVIYjlXRW5V?=
+ =?utf-8?B?TkxhZTNXSFZpOXVPQ0hQYVJVdXJ2ZG0xSHgyQjdlTzd6cFh6QVVIdWwzdUpZ?=
+ =?utf-8?B?VEVWS0hVWm5FTXQ2cVdCZHErSnliQ3VzTG1meVp1ejlqSVlxcks2bXFEL1Nm?=
+ =?utf-8?B?UnYycmZ4Zk9taFA1YVo1ZHA4THowL1RucTIwbnVDSnhqYlpqcWdxQXdEcnhv?=
+ =?utf-8?B?Y2hoMlZzQjRqVzBJSTAxajVqSUNNelI0NjFiZmFoYTZlb0xETGhEeGh0SDdw?=
+ =?utf-8?B?RXFzTGxibzZJUDhwME1KOXpPSFJvQW5YQk5BSjMySU92WWZkKzFQeElIamFK?=
+ =?utf-8?B?SXdSYzZETk1weVkzNWZSTVpNaEZscklGK0FRVWFUd0NtN0U4UlBCby8wR0dS?=
+ =?utf-8?B?RlhCNW5Sd210TkRHN1h1NG45bEljMGJKRmtyWHIyaWN6UVFESVYvK1pQMUdY?=
+ =?utf-8?Q?AwDV0AfRIj4MZ4wZRf1KnRKV+?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 364c1582-3427-4cf9-06f3-08dd2105adb8
+X-MS-Exchange-CrossTenant-AuthSource: SN7PR11MB7420.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Dec 2024 14:50:43.1169 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: NyThgThmhXYR00Enw9WwQlOpHxiF2lHmhmlRgpvBu8hzm/kl1yJYQJoVBFH/R4ootbbEfNWA60MQQ//0OlixhA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR11MB4858
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1734706248; x=1766242248;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=BbY2I6l4RwjCQym/TlJvAtA/egwx1S3JaQixcs3+NC0=;
+ b=H0il7liMEt3R44J7gW00xjNFIiFXHlAColbzpJKWEVS5o12rEHDOhtue
+ OXUsqUotxSykB/ucPBDHP4IiC5LRbAZz6Id9VaxRyt/m/i5ZSVc1XdpKD
+ YW9ez0Q1m2RjH3r88JWkOUnkZLoR25eaTZK0tQmvBtFQK6zQSWnIPEetq
+ l8s4Z2Ttu7RN0lL6usKPNufRD87XtsKpaJ5HdTzj/vx2toPxjZU1ZZXo7
+ qH2OFortp33I2TEfZAmqey0Ax6v5XBzhdQ2lmweGJixKcJe577CkvmeIh
+ 4rEEiiHMeNAmVBWJQDjGvnMT+rKkgPvyCx3FrcKWxpNkBVDaIYLzsqiCP
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=linaro.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256
- header.s=google header.b=A8qCcNkZ
-Subject: Re: [Intel-wired-lan] [PATCH RFCv5 1/8] page_pool: introduce
- page_pool_to_pp() API
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=H0il7liM
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 1/8] net: napi: add
+ irq_flags to napi struct
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -145,274 +243,42 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Yunsheng,
 
-On Fri, 13 Dec 2024 at 14:35, Yunsheng Lin <linyunsheng@huawei.com> wrote:
->
-> introduce page_pool_to_pp() API to avoid caller accessing
-> page->pp directly.
->
 
-I think we already have way too many abstractions, I'd say we need
-less not more. I don't know what others think, but I don't see what we
-gain from this
+On 2024-12-19 8:34 p.m., Jakub Kicinski wrote:
+> On Wed, 18 Dec 2024 09:58:36 -0700 Ahmed Zaki wrote:
+>> Add irq_flags to the napi struct. This will allow the drivers to choose
+>> how the core handles the IRQ assigned to the napi via
+>> netif_napi_set_irq().
+> 
+> I haven't read all the code, but I think the flag should be for the
+> netdev as a while, not NAPI by NAPI. In fact you can combine it with
+> allocating the map, too.
+> 
+> int netif_enable_cpu_rmap(dev, num_queues)
 
-Thanks
-/Ilias
-> Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
-> ---
->  drivers/net/ethernet/freescale/fec_main.c          |  8 +++++---
->  .../net/ethernet/google/gve/gve_buffer_mgmt_dqo.c  |  2 +-
->  drivers/net/ethernet/intel/iavf/iavf_txrx.c        |  6 ++++--
->  drivers/net/ethernet/intel/idpf/idpf_txrx.c        | 14 +++++++++-----
->  drivers/net/ethernet/intel/libeth/rx.c             |  2 +-
->  drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c   |  3 ++-
->  drivers/net/netdevsim/netdev.c                     |  6 ++++--
->  drivers/net/wireless/mediatek/mt76/mt76.h          |  2 +-
->  include/net/libeth/rx.h                            |  3 ++-
->  include/net/page_pool/helpers.h                    |  5 +++++
->  net/core/skbuff.c                                  |  3 ++-
->  net/core/xdp.c                                     |  3 ++-
->  12 files changed, 38 insertions(+), 19 deletions(-)
->
-> diff --git a/drivers/net/ethernet/freescale/fec_main.c b/drivers/net/ethernet/freescale/fec_main.c
-> index 1b55047c0237..98fce41d088c 100644
-> --- a/drivers/net/ethernet/freescale/fec_main.c
-> +++ b/drivers/net/ethernet/freescale/fec_main.c
-> @@ -1009,7 +1009,8 @@ static void fec_enet_bd_init(struct net_device *dev)
->                                 struct page *page = txq->tx_buf[i].buf_p;
->
->                                 if (page)
-> -                                       page_pool_put_page(page->pp, page, 0, false);
-> +                                       page_pool_put_page(page_pool_to_pp(page),
-> +                                                          page, 0, false);
->                         }
->
->                         txq->tx_buf[i].buf_p = NULL;
-> @@ -1549,7 +1550,7 @@ fec_enet_tx_queue(struct net_device *ndev, u16 queue_id, int budget)
->                         xdp_return_frame_rx_napi(xdpf);
->                 } else { /* recycle pages of XDP_TX frames */
->                         /* The dma_sync_size = 0 as XDP_TX has already synced DMA for_device */
-> -                       page_pool_put_page(page->pp, page, 0, true);
-> +                       page_pool_put_page(page_pool_to_pp(page), page, 0, true);
->                 }
->
->                 txq->tx_buf[index].buf_p = NULL;
-> @@ -3311,7 +3312,8 @@ static void fec_enet_free_buffers(struct net_device *ndev)
->                         } else {
->                                 struct page *page = txq->tx_buf[i].buf_p;
->
-> -                               page_pool_put_page(page->pp, page, 0, false);
-> +                               page_pool_put_page(page_pool_to_pp(page),
-> +                                                  page, 0, false);
->                         }
->
->                         txq->tx_buf[i].buf_p = NULL;
-> diff --git a/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c b/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
-> index 403f0f335ba6..db5926152c72 100644
-> --- a/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
-> +++ b/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
-> @@ -210,7 +210,7 @@ void gve_free_to_page_pool(struct gve_rx_ring *rx,
->         if (!page)
->                 return;
->
-> -       page_pool_put_full_page(page->pp, page, allow_direct);
-> +       page_pool_put_full_page(page_pool_to_pp(page), page, allow_direct);
->         buf_state->page_info.page = NULL;
->  }
->
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-> index 26b424fd6718..658d8f9a6abb 100644
-> --- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-> +++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-> @@ -1050,7 +1050,8 @@ static void iavf_add_rx_frag(struct sk_buff *skb,
->                              const struct libeth_fqe *rx_buffer,
->                              unsigned int size)
->  {
-> -       u32 hr = rx_buffer->page->pp->p.offset;
-> +       struct page_pool *pool = page_pool_to_pp(rx_buffer->page);
-> +       u32 hr = pool->p.offset;
->
->         skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buffer->page,
->                         rx_buffer->offset + hr, size, rx_buffer->truesize);
-> @@ -1067,7 +1068,8 @@ static void iavf_add_rx_frag(struct sk_buff *skb,
->  static struct sk_buff *iavf_build_skb(const struct libeth_fqe *rx_buffer,
->                                       unsigned int size)
->  {
-> -       u32 hr = rx_buffer->page->pp->p.offset;
-> +       struct page_pool *pool = page_pool_to_pp(rx_buffer->page);
-> +       u32 hr = pool->p.offset;
->         struct sk_buff *skb;
->         void *va;
->
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-> index da2a5becf62f..38ad32678bcc 100644
-> --- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-> +++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-> @@ -385,7 +385,8 @@ static void idpf_rx_page_rel(struct libeth_fqe *rx_buf)
->         if (unlikely(!rx_buf->page))
->                 return;
->
-> -       page_pool_put_full_page(rx_buf->page->pp, rx_buf->page, false);
-> +       page_pool_put_full_page(page_pool_to_pp(rx_buf->page), rx_buf->page,
-> +                               false);
->
->         rx_buf->page = NULL;
->         rx_buf->offset = 0;
-> @@ -3097,7 +3098,8 @@ idpf_rx_process_skb_fields(struct idpf_rx_queue *rxq, struct sk_buff *skb,
->  void idpf_rx_add_frag(struct idpf_rx_buf *rx_buf, struct sk_buff *skb,
->                       unsigned int size)
->  {
-> -       u32 hr = rx_buf->page->pp->p.offset;
-> +       struct page_pool *pool = page_pool_to_pp(rx_buf->page);
-> +       u32 hr = pool->p.offset;
->
->         skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buf->page,
->                         rx_buf->offset + hr, size, rx_buf->truesize);
-> @@ -3129,8 +3131,10 @@ static u32 idpf_rx_hsplit_wa(const struct libeth_fqe *hdr,
->         if (!libeth_rx_sync_for_cpu(buf, copy))
->                 return 0;
->
-> -       dst = page_address(hdr->page) + hdr->offset + hdr->page->pp->p.offset;
-> -       src = page_address(buf->page) + buf->offset + buf->page->pp->p.offset;
-> +       dst = page_address(hdr->page) + hdr->offset +
-> +               page_pool_to_pp(hdr->page)->p.offset;
-> +       src = page_address(buf->page) + buf->offset +
-> +               page_pool_to_pp(buf->page)->p.offset;
->         memcpy(dst, src, LARGEST_ALIGN(copy));
->
->         buf->offset += copy;
-> @@ -3148,7 +3152,7 @@ static u32 idpf_rx_hsplit_wa(const struct libeth_fqe *hdr,
->   */
->  struct sk_buff *idpf_rx_build_skb(const struct libeth_fqe *buf, u32 size)
->  {
-> -       u32 hr = buf->page->pp->p.offset;
-> +       u32 hr = page_pool_to_pp(buf->page)->p.offset;
->         struct sk_buff *skb;
->         void *va;
->
-> diff --git a/drivers/net/ethernet/intel/libeth/rx.c b/drivers/net/ethernet/intel/libeth/rx.c
-> index f20926669318..385afca0e61d 100644
-> --- a/drivers/net/ethernet/intel/libeth/rx.c
-> +++ b/drivers/net/ethernet/intel/libeth/rx.c
-> @@ -207,7 +207,7 @@ EXPORT_SYMBOL_NS_GPL(libeth_rx_fq_destroy, LIBETH);
->   */
->  void libeth_rx_recycle_slow(struct page *page)
->  {
-> -       page_pool_recycle_direct(page->pp, page);
-> +       page_pool_recycle_direct(page_pool_to_pp(page), page);
->  }
->  EXPORT_SYMBOL_NS_GPL(libeth_rx_recycle_slow, LIBETH);
->
-> diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-> index 94b291662087..78866b5473da 100644
-> --- a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-> +++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-> @@ -716,7 +716,8 @@ static void mlx5e_free_xdpsq_desc(struct mlx5e_xdpsq *sq,
->                                 /* No need to check ((page->pp_magic & ~0x3UL) == PP_SIGNATURE)
->                                  * as we know this is a page_pool page.
->                                  */
-> -                               page_pool_recycle_direct(page->pp, page);
-> +                               page_pool_recycle_direct(page_pool_to_pp(page),
-> +                                                        page);
->                         } while (++n < num);
->
->                         break;
-> diff --git a/drivers/net/netdevsim/netdev.c b/drivers/net/netdevsim/netdev.c
-> index 0be47fed4efc..088f4836a0e2 100644
-> --- a/drivers/net/netdevsim/netdev.c
-> +++ b/drivers/net/netdevsim/netdev.c
-> @@ -632,7 +632,8 @@ nsim_pp_hold_write(struct file *file, const char __user *data,
->                 if (!ns->page)
->                         ret = -ENOMEM;
->         } else {
-> -               page_pool_put_full_page(ns->page->pp, ns->page, false);
-> +               page_pool_put_full_page(page_pool_to_pp(ns->page), ns->page,
-> +                                       false);
->                 ns->page = NULL;
->         }
->         rtnl_unlock();
-> @@ -831,7 +832,8 @@ void nsim_destroy(struct netdevsim *ns)
->
->         /* Put this intentionally late to exercise the orphaning path */
->         if (ns->page) {
-> -               page_pool_put_full_page(ns->page->pp, ns->page, false);
-> +               page_pool_put_full_page(page_pool_to_pp(ns->page), ns->page,
-> +                                       false);
->                 ns->page = NULL;
->         }
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-> index 0b75a45ad2e8..94a277290909 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-> @@ -1688,7 +1688,7 @@ static inline void mt76_put_page_pool_buf(void *buf, bool allow_direct)
->  {
->         struct page *page = virt_to_head_page(buf);
->
-> -       page_pool_put_full_page(page->pp, page, allow_direct);
-> +       page_pool_put_full_page(page_pool_to_pp(page), page, allow_direct);
->  }
->
->  static inline void *
-> diff --git a/include/net/libeth/rx.h b/include/net/libeth/rx.h
-> index 43574bd6612f..beee7ddd77a5 100644
-> --- a/include/net/libeth/rx.h
-> +++ b/include/net/libeth/rx.h
-> @@ -137,7 +137,8 @@ static inline bool libeth_rx_sync_for_cpu(const struct libeth_fqe *fqe,
->                 return false;
->         }
->
-> -       page_pool_dma_sync_for_cpu(page->pp, page, fqe->offset, len);
-> +       page_pool_dma_sync_for_cpu(page_pool_to_pp(page), page, fqe->offset,
-> +                                  len);
->
->         return true;
->  }
-> diff --git a/include/net/page_pool/helpers.h b/include/net/page_pool/helpers.h
-> index 793e6fd78bc5..1659f1995985 100644
-> --- a/include/net/page_pool/helpers.h
-> +++ b/include/net/page_pool/helpers.h
-> @@ -83,6 +83,11 @@ static inline u64 *page_pool_ethtool_stats_get(u64 *data, const void *stats)
->  }
->  #endif
->
-> +static inline struct page_pool *page_pool_to_pp(struct page *page)
-> +{
-> +       return page->pp;
-> +}
-> +
->  /**
->   * page_pool_dev_alloc_pages() - allocate a page.
->   * @pool:      pool from which to allocate
-> diff --git a/net/core/skbuff.c b/net/core/skbuff.c
-> index 6841e61a6bd0..54e8e7cf2bc9 100644
-> --- a/net/core/skbuff.c
-> +++ b/net/core/skbuff.c
-> @@ -1033,7 +1033,8 @@ bool napi_pp_put_page(netmem_ref netmem)
->         if (unlikely(!is_pp_netmem(netmem)))
->                 return false;
->
-> -       page_pool_put_full_netmem(netmem_get_pp(netmem), netmem, false);
-> +       page_pool_put_full_netmem(page_pool_to_pp(netmem_to_page(netmem)),
-> +                                 netmem, false);
->
->         return true;
->  }
-> diff --git a/net/core/xdp.c b/net/core/xdp.c
-> index bcc5551c6424..e8582036b411 100644
-> --- a/net/core/xdp.c
-> +++ b/net/core/xdp.c
-> @@ -384,7 +384,8 @@ void __xdp_return(void *data, struct xdp_mem_info *mem, bool napi_direct,
->                 /* No need to check ((page->pp_magic & ~0x3UL) == PP_SIGNATURE)
->                  * as mem->type knows this a page_pool page
->                  */
-> -               page_pool_put_full_page(page->pp, page, napi_direct);
-> +               page_pool_put_full_page(page_pool_to_pp(page), page,
-> +                                       napi_direct);
->                 break;
->         case MEM_TYPE_PAGE_SHARED:
->                 page_frag_free(data);
-> --
-> 2.33.0
->
+int netif_enable_cpu_rmap(dev, num_vectors)
+
+> {
+> #ifdef CONFIG_RFS_ACCEL
+> 	WARN_ON(dev->rx_cpu_rmap);
+> 
+> 	dev->rx_cpu_rmap = alloc_irq_cpu_rmap(adapter->num_queues);
+> 	if ...
+> 	
+> 	dev->rx_cpu_rmap_auto = 1;
+> 	return 0;
+> #endif
+> }
+
+I was trying to avoid adding an extra function, but since this will 
+replace alloc_irq_cpu_rmap() I guess I can try. May be even use
+
+dev->netdev_ops->ndo_rx_flow_steer
+
+instead of dev->rx_cpu_rmap_auto.
+
+I will keep the flag in patch 4 (NAPI_IRQ_AFFINITY) per NAPI since it is 
+used in netif_napi_set_irq().
+
+Thanks for the review.
