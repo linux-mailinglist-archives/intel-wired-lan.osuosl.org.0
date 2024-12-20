@@ -1,96 +1,92 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id F1F299F8A02
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Dec 2024 03:10:06 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3F8319F8AA4
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Dec 2024 04:34:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E343180F0A;
-	Fri, 20 Dec 2024 02:10:04 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 712F360A79;
+	Fri, 20 Dec 2024 03:34:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NxLY6uIW6w_1; Fri, 20 Dec 2024 02:10:04 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id CSNL0yAj0m9t; Fri, 20 Dec 2024 03:34:10 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 00AC082EB6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D4D586090B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1734660604;
-	bh=HwoIkoSp5y3iaxw8z0JFDIwkrM/vRZZInjRSh46wxlA=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=CP7z1rlr7//DFo8MM1oOGL6aw1RHmzi2tzTD8ZTCkSmYisIvH/8RWekJ8LOtzKRA4
-	 YY2chyqFWlJWp4w04fYbfsVVD1u6AOo4uHkaz5a2yhs+iKIUFAEoWfSpyie6QGtWz4
-	 YcAJHtlJ16zsq54oKsoyLGFkNOeM0aQMnWy6T8Lt7jgV/3kfOKAUjCx6DfVyuUzJ3A
-	 XJQ6x1x5NeoIB/YogBy9Yg8MgtxvWH/ja5M9BOXXcPpnmyJX+oNZ16bgeXawOeP+z0
-	 5UTVLR2Y2yslLDU2or3cLPAF5cyCaCF2ReVN0KVhAd/rK5Zz6H2tsVTlyJwlKtibl6
-	 jQhlAvgAW9TKQ==
+	s=default; t=1734665649;
+	bh=xtjFVOGgHAEmi1+b+9PzJxSYQGTA09jde1pYIPDv7SQ=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=2BHBWpqwfrRI53soa2+ufOuyS2D2dhjlSrTOCBbuJhXQyNPpuMTnmLrVDNL475VWX
+	 T55L0UOrKxF6h1BEgRjrbmLzTkri6aHK+viJJtSbdkowqKY8/7FcyLn+wT59URxJIx
+	 halqAWJbrdhbwyAwmvCdZdOTsedGTEa0XVGN8PIPbVqOeOcIgZ977J4xRmKxU81Bm6
+	 3gHJ5wJnGDycnorlyhu9FzanA1hg1hl6L4njuafJUaBCfR48GIEDNjMDtpcirQEzRd
+	 7ik98vcgJyPIL99A8btbjqizcVq2/Dpva4sFefEswnODPUMgxpMeMVAWY8rHzS4KDu
+	 tmulTnTSvstDw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 00AC082EB6;
-	Fri, 20 Dec 2024 02:10:03 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D4D586090B;
+	Fri, 20 Dec 2024 03:34:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id C91E96C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2024 02:10:01 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 97264920
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2024 03:34:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B466182BC0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2024 02:10:01 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 63B2183A86
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2024 03:34:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id OOKFMwtj3DuG for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 Dec 2024 02:10:00 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
- helo=mgamail.intel.com; envelope-from=emil.s.tantilov@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org B3C5682B97
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B3C5682B97
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
- by smtp1.osuosl.org (Postfix) with ESMTPS id B3C5682B97
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2024 02:10:00 +0000 (UTC)
-X-CSE-ConnectionGUID: JGbqfbilR1mxKnbtYQwn1g==
-X-CSE-MsgGUID: FEd2XMhwTjWCIgfFQ/tGKg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11291"; a="46584558"
-X-IronPort-AV: E=Sophos;i="6.12,249,1728975600"; d="scan'208";a="46584558"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
- by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Dec 2024 18:09:59 -0800
-X-CSE-ConnectionGUID: N2nHVguGTTqbiqtgjxiErA==
-X-CSE-MsgGUID: VS2EUpFaT2WyQgtGRPtdtw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,249,1728975600"; d="scan'208";a="98177588"
-Received: from estantil-desk.jf.intel.com ([10.166.241.24])
- by fmviesa006.fm.intel.com with ESMTP; 19 Dec 2024 18:09:58 -0800
-From: Emil Tantilov <emil.s.tantilov@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, larysa.zaremba@intel.com, decot@google.com,
- willemb@google.com, anthony.l.nguyen@intel.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- aleksander.lobakin@intel.com
-Date: Thu, 19 Dec 2024 18:09:32 -0800
-Message-Id: <20241220020932.32545-1-emil.s.tantilov@intel.com>
-X-Mailer: git-send-email 2.17.2
+ id 3CRjK1eElJSP for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 20 Dec 2024 03:34:06 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=147.75.193.91;
+ helo=nyc.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 9D66783A88
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9D66783A88
+Received: from nyc.source.kernel.org (nyc.source.kernel.org [147.75.193.91])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 9D66783A88
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2024 03:34:06 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by nyc.source.kernel.org (Postfix) with ESMTP id 9356BA42A34;
+ Fri, 20 Dec 2024 03:32:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 52CC4C4CECE;
+ Fri, 20 Dec 2024 03:34:04 +0000 (UTC)
+Date: Thu, 19 Dec 2024 19:34:03 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Ahmed Zaki <ahmed.zaki@intel.com>
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ andrew+netdev@lunn.ch, edumazet@google.com, pabeni@redhat.com,
+ davem@davemloft.net, michael.chan@broadcom.com, tariqt@nvidia.com,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ jdamato@fastly.com, shayd@nvidia.com, akpm@linux-foundation.org
+Message-ID: <20241219193403.10a52305@kernel.org>
+In-Reply-To: <20241218165843.744647-2-ahmed.zaki@intel.com>
+References: <20241218165843.744647-1-ahmed.zaki@intel.com>
+ <20241218165843.744647-2-ahmed.zaki@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1734660601; x=1766196601;
- h=from:to:cc:subject:date:message-id;
- bh=zeN4QCvtvaNWkOgM6yi3udrMDEAwBJzTCF0k4+EYssw=;
- b=ADyDzkSMrni0q2dzD3FgrAThMrsgIgR9fo7FqLzCJ/e4DvARQ7RuGecx
- jwGe5Sn2K2Czv1heWF0SKkJEhqCBqux+uRDMEOxtk3iB7OhJ78s1+RMy4
- KU4OxsBmkIcdOnkw7W7yLzNmLx/Y30rr08URaNMBroL3GVRwykX70Hy3W
- niNXSooE/oGwCZ5l+7NGKAAor15K8Q8yREc/rLDIBuUcoRLlz2oGLdT45
- wZC2O6q7t1gKG5t6JvCPW7Jg9OkNGE4tlPRQApYFjriWjr9+Ako386HeL
- Ajcr+uLY3quZaJF2WOykIW7PjLw8tph4yb/iZsJBc/s59ac9cos4qnJ+8
- A==;
+ d=kernel.org; s=k20201202; t=1734665644;
+ bh=+yhg/J/H/JiyymzZN5RtIGJ4fNLEM2C3IiQXtZlZygs=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=eIDyX5vefJ7R9llhkmTQR8tb5gdBkhk3eHdcPjgBmo0jL9eQCTMoXLXzwKc9xj3bI
+ T2RbozKXv2dwB4aPYwnccgAWnB598+nFM+74w+la35okW6F4n1GISD7DDDrwo4phXs
+ blEs/Ruyh5e2XednQ8XfwNBBGjQb+0ueXb4kb4QpaaBabmsqzcxYQPSDSCRDYbOdct
+ mrBluDPil4eOFLVICDPApmRxN2Y0WAs5hV+m6QwKj52ZIKj1lyNHDTlsqf637K3kxm
+ Ju/NTxD50AOC6512QYulfPGD5YUPQsY1R1lu5hdYTWIpOqNLXnaLM+ZvIoL755z1Oj
+ Z8SQoHBq6J/lg==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=ADyDzkSM
-Subject: [Intel-wired-lan] [PATCH iwl-net v2] idpf: fix transaction timeouts
- on reset
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=eIDyX5ve
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 1/8] net: napi: add
+ irq_flags to napi struct
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -106,58 +102,42 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Restore the call to idpf_vc_xn_shutdown() at the beginning of
-idpf_vc_core_deinit() provided the function is not called on remove.
-In the reset path the mailbox is destroyed, leading to all transactions
-timing out.
+On Wed, 18 Dec 2024 09:58:36 -0700 Ahmed Zaki wrote:
+> Add irq_flags to the napi struct. This will allow the drivers to choose
+> how the core handles the IRQ assigned to the napi via
+> netif_napi_set_irq().
 
-Fixes: 09d0fb5cb30e ("idpf: deinit virtchnl transaction manager after vport and vectors")
-Reviewed-by: Larysa Zaremba <larysa.zaremba@intel.com>
-Signed-off-by: Emil Tantilov <emil.s.tantilov@intel.com>
----
-Changelog:
-v2:
-- Assigned the current state of REMOVE_IN_PROG flag to a boolean
-  variable, to be checked instead of reading the flag twice.
-- Updated the description to clarify the reason for the timeouts on
-  reset is due to the mailbox being destroyed.
+I haven't read all the code, but I think the flag should be for the
+netdev as a while, not NAPI by NAPI. In fact you can combine it with
+allocating the map, too.
 
-v1:
-https://lore.kernel.org/intel-wired-lan/20241218014417.3786-1-emil.s.tantilov@intel.com/
+int netif_enable_cpu_rmap(dev, num_queues)
+{
+#ifdef CONFIG_RFS_ACCEL
+	WARN_ON(dev->rx_cpu_rmap);
 
-Testing hints:
-echo 1 > /sys/class/net/<netif>/device/reset
----
- drivers/net/ethernet/intel/idpf/idpf_virtchnl.c | 11 ++++++++++-
- 1 file changed, 10 insertions(+), 1 deletion(-)
+	dev->rx_cpu_rmap = alloc_irq_cpu_rmap(adapter->num_queues);
+	if ...
+	
+	dev->rx_cpu_rmap_auto = 1;
+	return 0;
+#endif
+}
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-index d46c95f91b0d..7639d520b806 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-@@ -3077,12 +3077,21 @@ int idpf_vc_core_init(struct idpf_adapter *adapter)
-  */
- void idpf_vc_core_deinit(struct idpf_adapter *adapter)
- {
-+	bool remove_in_prog;
-+
- 	if (!test_bit(IDPF_VC_CORE_INIT, adapter->flags))
- 		return;
- 
-+	/* Avoid transaction timeouts when called during reset */
-+	remove_in_prog = test_bit(IDPF_REMOVE_IN_PROG, adapter->flags);
-+	if (!remove_in_prog)
-+		idpf_vc_xn_shutdown(adapter->vcxn_mngr);
-+
- 	idpf_deinit_task(adapter);
- 	idpf_intr_rel(adapter);
--	idpf_vc_xn_shutdown(adapter->vcxn_mngr);
-+
-+	if (remove_in_prog)
-+		idpf_vc_xn_shutdown(adapter->vcxn_mngr);
- 
- 	cancel_delayed_work_sync(&adapter->serv_task);
- 	cancel_delayed_work_sync(&adapter->mbx_task);
--- 
-2.17.2
+void netif_disable_cpu_rmap(dev)
+{
+	dev->rx_cpu_rmap_auto = 0;
+	free_irq_cpu_rmap(dev->rx_cpu_rmap);
+}
 
+Then in the NAPI code you just:
+
+void netif_napi_set_irq(...)
+{
+	...
+
+	if (napi->dev->rx_cpu_rmap_auto) {
+		err = irq_cpu_rmap_add(napi->dev->rx_cpu_rmap, irq);
+		...
+	}
+}
