@@ -1,143 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id F3EB49FB358
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Dec 2024 17:53:06 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BA0459FB35A
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Dec 2024 17:53:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 95738606C2;
-	Mon, 23 Dec 2024 16:53:05 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 65D8881327;
+	Mon, 23 Dec 2024 16:53:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id bpsbCE8aceSq; Mon, 23 Dec 2024 16:53:05 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id LrNLcshw0JE1; Mon, 23 Dec 2024 16:53:06 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E3B16606DA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C8B258132A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1734972784;
-	bh=rl2GUGW1SKIB73yuGvAyVPoBfBy5XbBiVj4hV5yN+VI=;
-	h=From:To:Cc:In-Reply-To:References:Date:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=OeMAg2ZblSY0h5Y+HPCpgr6GKGfh73ob8tm7DBTiuxvFGKIKEDX7valH/55qwl9rN
-	 QP2J7u0OQJKt1VHRXsCuZpMvYerC1Vcm/+i1HSIeNi7vxALZGjoqct4dwmd2fpvYv0
-	 SIWb5HgO/IipdBF6SvxORVJBM6VO/ILHb1ci882ucbbeB4ollx9tGjKWFRJ4H08vIA
-	 Z5UuKs968d3537yrXtVf13eGIrsPKvqedX9YAN4vHiSleD9Exi/3H7cSpMWfMQ2Fuu
-	 gNhk4IUZjuWSQwragtlLwKcNwd8OpkyFIcyw6Ha8aF+1pQc94qbPJOSevYKLv7Pg/G
-	 ShDjNQZRdeNjg==
+	s=default; t=1734972785;
+	bh=4XEfUiCWTdjfEDBb+3Klu13mqoKYsVj++5zC5UiO6l4=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=Wgw60GVXKErTrEsO3UVGeyi+moNSdZfZP7yeQcCIUQ00OD3m2hxT6wNtpM1LvAJEc
+	 WIMg+VP+jPPzGiS8LiddbSyUxW4L9+f5qT56eoVITBlQb5L6QoycTv8/gByzn9jq9B
+	 +NTTxZdzubJO5GZ4MQis9bq2hCCW1kZi/G8y+Prtm6ebHAWllNgFbUYcsQHCYB8s1w
+	 NoMz/emclg7XDxcoSwbjJ8pGA8CH0eGhj9rnVXNYqnTq7tPpKTGyh4w28w9CrtwbDg
+	 UGTPeoISllNtmPkMd9G9P2eP/O8xHarWL2Jfg9QpohhrZXjZBGXtyXG3RnTShkQm71
+	 0Bb5KDj2b5ZDg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E3B16606DA;
-	Mon, 23 Dec 2024 16:53:04 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C8B258132A;
+	Mon, 23 Dec 2024 16:53:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id BA957730
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2024 17:27:41 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id A51A55E
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 22 Dec 2024 23:55:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4F17740048
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2024 17:27:41 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8832D4012A
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 22 Dec 2024 23:55:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kMMbgTSs2FIp for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 Dec 2024 17:27:40 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::42d; helo=mail-wr1-x42d.google.com;
- envelope-from=srinivas.kandagatla@linaro.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 437E641107
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 437E641107
-Received: from mail-wr1-x42d.google.com (mail-wr1-x42d.google.com
- [IPv6:2a00:1450:4864:20::42d])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 437E641107
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2024 17:27:40 +0000 (UTC)
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-3862d16b4f5so1519570f8f.0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Dec 2024 09:27:40 -0800 (PST)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id DnpmbOZ0sc4P for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 22 Dec 2024 23:55:22 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=209.85.166.208;
+ helo=mail-il1-f208.google.com;
+ envelope-from=36kzozwkbabsjpqb1cc5i1gg94.7ff7c5lj5i3fek5ek.3fd@m3kw2wvrgufz5godrsrytgd7.apphosting.bounces.google.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org EB4D0400F3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EB4D0400F3
+Received: from mail-il1-f208.google.com (mail-il1-f208.google.com
+ [209.85.166.208])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id EB4D0400F3
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 22 Dec 2024 23:55:21 +0000 (UTC)
+Received: by mail-il1-f208.google.com with SMTP id
+ e9e14a558f8ab-3a815ab079cso75343915ab.0
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 22 Dec 2024 15:55:21 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734715658; x=1735320458;
- h=content-transfer-encoding:mime-version:date:message-id:subject
- :references:in-reply-to:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=rl2GUGW1SKIB73yuGvAyVPoBfBy5XbBiVj4hV5yN+VI=;
- b=LR4H4nfLSfz0zCRxfWxcIb5msJkQ+GRw73P7P2L2LvRJIpPkXZ7bZEHSmalwQQ1ke1
- +f2l5xXwD8IlBIxCRhePfDAp8qla2/FQKtSgVyXXGJ1GTt32Raic3/TacDR3nhq6MoFR
- RNQoNT9XpDTZqKdWjA3n5C22kS726K5+JBDVQFK/AlBKOfp8g13cqOmaKFcdnfyBoPoJ
- Kfze89tqGqtRlIduHdmy7k6Mw/746MB8pPeX1AWiYkDC9Xb/Ktk2LCfhJ3fGCFJ46SAO
- VCB6adKc0HsOuVA0cX98O1gytm+myHKHKuH8T1XjxxQBYU7lN/oOm1teEoqF9RQDoUFb
- S4jw==
+ d=1e100.net; s=20230601; t=1734911721; x=1735516521;
+ h=to:from:subject:message-id:date:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=4XEfUiCWTdjfEDBb+3Klu13mqoKYsVj++5zC5UiO6l4=;
+ b=UfVTzwTLzwHAsK+WFhJObC6scRYcb1cmzoyzehWDLuipDiRVEJtexyEtPZTIYTQ92T
+ MhdbKHoQtZXpsEInsbwgv53R6Tyi0j0XYkk/viK4QUj2L+a5vz71LrKuZx/lU01xI7Q4
+ 5Vn9CRUA4j8kCtW/JgrGK4hC/YC+lHths11GPXVXgPA7RrPc9bsagy9qKd2yAdT9OLWc
+ PMeYN1xlzNWBn6bHCBEn+1GkThzlugwbbDtrS4Iqo8WFbYyndTCZ/CCKXG/xHTdw4DBn
+ gS063vaFI7gF8ICQMvgCqcGMVWB+k5pKpTQVVudZM4qXQEkSULM2NFZ9gvrZYVS2F1gE
+ udzQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUSIvflbERLCIo3801sV5GyMjpbSwuWe09h9pgQqEuYUD4PUCoSyjFz2W54fsaSV+smaj0zgxFhw/HIB/SJ1n0=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yxa+w8e2vnOpj9BpICEF3ARkrtPx5h2DotRJgQRSy80+SQgiIFB
- 32nZc3eOy2AiZomiyzfo8HCOr96kmRFeGzNUj8GrIZ/OozXeZcfH6q+iLvk3tqE=
-X-Gm-Gg: ASbGncvudntC5Oa38VPq9ygCJGFC1QIBjofEyZtx+hnNBwQ8xdpRhDyM8PjCHYu/Kfw
- ykuRKViqg616q4As6i/4c6hkqqkHeajGIdcgZMcXw3DO26Li5lLKTxfAK8WrPHBFRzgHda7NQHE
- jgnnn7XjQstdp6U6NI0ZW4t72f/JcQt1JsnI36JSzFjR1o4skVLcufzxdDgfJUEP4nADBdbVGGs
- Rl9pmNNT4ZAceKfBKuOK6ckcIxDXT14yv3wD/NlFbiBTr+LC1bRetBIc7ZEPcyA/5zYb8He7PU=
-X-Google-Smtp-Source: AGHT+IHQofl14bIpVpiQqz6qAEwAjKsEmWVjRCOjis6wH9jKfvKMjWLHCbYlsDgmYPDOjR7ci+Y7xw==
-X-Received: by 2002:a5d:47c3:0:b0:388:cacf:24b0 with SMTP id
- ffacd0b85a97d-38a1a1f7253mr6745803f8f.2.1734715658179; 
- Fri, 20 Dec 2024 09:27:38 -0800 (PST)
-Received: from [192.168.68.114] ([5.133.47.210])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38a1c89e357sm4642915f8f.72.2024.12.20.09.27.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Dec 2024 09:27:37 -0800 (PST)
-From: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-To: linux-gpio@vger.kernel.org, Julia Lawall <Julia.Lawall@inria.fr>
-Cc: kernel-janitors@vger.kernel.org, audit@vger.kernel.org, 
- linux-mtd@lists.infradead.org, Zhihao Cheng <chengzhihao1@huawei.com>, 
- "Rafael J. Wysocki" <rafael@kernel.org>, linux-arm-msm@vger.kernel.org, 
- linux-pci@vger.kernel.org, dri-devel@lists.freedesktop.org, 
- linux-usb@vger.kernel.org, linux-mm@kvack.org, 
- maple-tree@lists.infradead.org, alsa-devel@alsa-project.org, 
- Sanyog Kale <sanyog.r.kale@intel.com>, 
- Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, dccp@vger.kernel.org, 
- linux-fsdevel@vger.kernel.org, Jan Kara <jack@suse.cz>, 
- drbd-dev@lists.linbit.com, linux-sound@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-omap@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org, 
- nvdimm@lists.linux.dev, linux-leds@vger.kernel.org, 
- Nicholas Piggin <npiggin@gmail.com>, 
- Christophe Leroy <christophe.leroy@csgroup.eu>, 
- Naveen N Rao <naveen@kernel.org>, Madhavan Srinivasan <maddy@linux.ibm.com>, 
- linuxppc-dev@lists.ozlabs.org, tipc-discussion@lists.sourceforge.net, 
- Robin Murphy <robin.murphy@arm.com>, iommu@lists.linux.dev, 
- Mathieu Desnoyers <mathieu.desnoyers@efficios.com>, 
- linux-trace-kernel@vger.kernel.org, Neil Brown <neilb@suse.de>, 
- Olga Kornievskaia <okorniev@redhat.com>, Dai Ngo <Dai.Ngo@oracle.com>, 
- Tom Talpey <tom@talpey.com>, linux-nfs@vger.kernel.org, 
- amd-gfx@lists.freedesktop.org, linux-wireless@vger.kernel.org, 
- intel-wired-lan@lists.osuosl.org
-In-Reply-To: <20240930112121.95324-1-Julia.Lawall@inria.fr>
-References: <20240930112121.95324-1-Julia.Lawall@inria.fr>
-Message-Id: <173471565665.227782.7244101246430956449.b4-ty@linaro.org>
-Date: Fri, 20 Dec 2024 17:27:36 +0000
+ AJvYcCWqnDZ+U3elJlJ8ieXf484+6mwFPjIr4GOs0SxVnAvrwrJom7/ZiSUI6j/wWICOYdzoMvAt6xCBIuLQTMop6Js=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YweOy2xQpoknX7Q9UC5DIxd44Szxj4BAn9t94805Wz4wK8JDq1T
+ STDKLlU7ZchHpw6WOoyL66wx/E4FX3d7LXIG4krKG6TXKNcmqAB9ZdA7XuTv0yzgkBwry9nJz0e
+ UxeE4iFI93085zwIJwygQhnpWn/deTgMlomqyIpJPe+a5+rbz5UcGaxo=
+X-Google-Smtp-Source: AGHT+IGCGcvwSUusj5gvGzq2GbdCO+sZdqqOlFIpC7HjMzw99X8rDSDme5f5SQnOH/5EKrbwIZfzXGCofVWCV3mMSlhZsJaBVIog
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.12.2
+X-Received: by 2002:a05:6e02:1a2c:b0:3a7:6f5a:e5c7 with SMTP id
+ e9e14a558f8ab-3c2d14d23d2mr88935825ab.4.1734911720791; Sun, 22 Dec 2024
+ 15:55:20 -0800 (PST)
+Date: Sun, 22 Dec 2024 15:55:20 -0800
+X-Google-Appengine-App-Id: s~syzkaller
+X-Google-Appengine-App-Id-Alias: syzkaller
+Message-ID: <6768a6e8.050a0220.2f3838.000f.GAE@google.com>
+From: syzbot <syzbot+1bd718f8eea824d2d157@syzkaller.appspotmail.com>
+To: andrew+netdev@lunn.ch, anthony.l.nguyen@intel.com, davem@davemloft.net, 
+ edumazet@google.com, intel-wired-lan@lists.osuosl.org, kuba@kernel.org, 
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org, pabeni@redhat.com, 
+ przemyslaw.kitszel@intel.com, syzkaller-bugs@googlegroups.com
+Content-Type: text/plain; charset="UTF-8"
 X-Mailman-Approved-At: Mon, 23 Dec 2024 16:53:02 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1734715658; x=1735320458; darn=lists.osuosl.org;
- h=content-transfer-encoding:mime-version:date:message-id:subject
- :references:in-reply-to:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=rl2GUGW1SKIB73yuGvAyVPoBfBy5XbBiVj4hV5yN+VI=;
- b=lgQiAHQNTVuczgkLoND3j8nApcUeWGO6YLkUil0HMHavh8f7GG0zw8uYbgFBybaQvq
- IHuwUQp4C7QIY7nAEJ/tdGG4uxGuPCuiB9j/9glECEzLBLoAa/O5lhOC9EDQCplMzt49
- ABVhZFi8YbV2wEQ/gIJB35JRkRrePQOuExspRXv8qf+TV1MymhrBk55JpY9CtbgA40QX
- f1M9KYxUtr8JB93Ig6QJ72S+NJD8dsixl6sFyoW16SPO0sTQj4j3EX6HFQLCobMGydqv
- Ji2V8uOXY8b/KIFuJr/WaBNvK6U2++DBwVQ/XhAjyfsmZdZqMWtb/P5tgYUyQD9oLEIy
- uVjg==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=linaro.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256
- header.s=google header.b=lgQiAHQN
-Subject: Re: [Intel-wired-lan] (subset) [PATCH 00/35] Reorganize kerneldoc
- parameter names
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=syzkaller.appspotmail.com
+Subject: [Intel-wired-lan] [syzbot] [intel-wired-lan?] WARNING in
+ e1000_rx_checksum
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -153,26 +105,81 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Hello,
 
-On Mon, 30 Sep 2024 13:20:46 +0200, Julia Lawall wrote:
-> Reorganize kerneldoc parameter names to match the parameter
-> order in the function header.
-> 
-> The misordered cases were identified using the following
-> Coccinelle semantic patch:
-> 
-> // <smpl>
-> @initialize:ocaml@
-> @@
-> 
-> [...]
+syzbot found the following issue on:
 
-Applied, thanks!
+HEAD commit:    c061cf420ded Merge tag 'trace-v6.13-rc3' of git://git.kern..
+git tree:       upstream
+console output: https://syzkaller.appspot.com/x/log.txt?x=14dfc2df980000
+kernel config:  https://syzkaller.appspot.com/x/.config?x=4f1586bab1323870
+dashboard link: https://syzkaller.appspot.com/bug?extid=1bd718f8eea824d2d157
+compiler:       gcc (Debian 12.2.0-14) 12.2.0, GNU ld (GNU Binutils for Debian) 2.40
 
-[31/35] slimbus: messaging: Reorganize kerneldoc parameter names
-        commit: 52d3d7f7a77ee9afc6a846b415790e13e1434847
+Unfortunately, I don't have any reproducer for this issue yet.
 
-Best regards,
--- 
-Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Downloadable assets:
+disk image (non-bootable): https://storage.googleapis.com/syzbot-assets/7feb34a89c2a/non_bootable_disk-c061cf42.raw.xz
+vmlinux: https://storage.googleapis.com/syzbot-assets/ac4941665683/vmlinux-c061cf42.xz
+kernel image: https://storage.googleapis.com/syzbot-assets/7d5addcac95a/bzImage-c061cf42.xz
 
+IMPORTANT: if you fix the issue, please add the following tag to the commit:
+Reported-by: syzbot+1bd718f8eea824d2d157@syzkaller.appspotmail.com
+
+------------[ cut here ]------------
+WARNING: CPU: 1 PID: 29 at ./include/linux/skbuff.h:5126 skb_checksum_none_assert include/linux/skbuff.h:5126 [inline]
+WARNING: CPU: 1 PID: 29 at ./include/linux/skbuff.h:5126 e1000_rx_checksum.constprop.0+0x176/0x1e0 drivers/net/ethernet/intel/e1000/e1000_main.c:3954
+Modules linked in:
+CPU: 1 UID: 0 PID: 29 Comm: ksoftirqd/1 Not tainted 6.13.0-rc3-syzkaller-00062-gc061cf420ded #0
+Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS 1.16.3-debian-1.16.3-2~bpo12+1 04/01/2014
+RIP: 0010:skb_checksum_none_assert include/linux/skbuff.h:5126 [inline]
+RIP: 0010:e1000_rx_checksum.constprop.0+0x176/0x1e0 drivers/net/ethernet/intel/e1000/e1000_main.c:3954
+Code: 00 00 00 00 fc ff df 80 3c 02 00 75 76 48 83 85 b0 04 00 00 01 5b 5d 41 5c 41 5d 41 5e 41 5f e9 20 7b 3b fb e8 1b 7b 3b fb 90 <0f> 0b 90 e9 e7 fe ff ff e8 0d 7b 3b fb 48 8d bd a8 04 00 00 48 b8
+RSP: 0018:ffffc900006878e0 EFLAGS: 00010246
+RAX: 0000000000000000 RBX: 0000000000000007 RCX: ffffffff865e991c
+RDX: ffff88801deb8000 RSI: ffffffff865e9a35 RDI: 0000000000000001
+RBP: ffff888108168d80 R08: 0000000000000001 R09: 0000000000000000
+R10: 0000000000000020 R11: 0000000000000000 R12: ffff88805120a140
+R13: 0000000000000020 R14: ffff88805120a1c0 R15: 0000000000000000
+FS:  0000000000000000(0000) GS:ffff88806a700000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007ffdcc27d098 CR3: 0000000046c5e000 CR4: 0000000000352ef0
+DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+Call Trace:
+ <TASK>
+ e1000_clean_jumbo_rx_irq+0xf3e/0x28c0 drivers/net/ethernet/intel/e1000/e1000_main.c:4275
+ e1000_clean+0x9d6/0x2700 drivers/net/ethernet/intel/e1000/e1000_main.c:3807
+ __napi_poll.constprop.0+0xb7/0x550 net/core/dev.c:6883
+ napi_poll net/core/dev.c:6952 [inline]
+ net_rx_action+0xa94/0x1010 net/core/dev.c:7074
+ handle_softirqs+0x213/0x8f0 kernel/softirq.c:561
+ run_ksoftirqd kernel/softirq.c:950 [inline]
+ run_ksoftirqd+0x3a/0x60 kernel/softirq.c:942
+ smpboot_thread_fn+0x661/0xa30 kernel/smpboot.c:164
+ kthread+0x2c1/0x3a0 kernel/kthread.c:389
+ ret_from_fork+0x45/0x80 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1a/0x30 arch/x86/entry/entry_64.S:244
+ </TASK>
+
+
+---
+This report is generated by a bot. It may contain errors.
+See https://goo.gl/tpsmEJ for more information about syzbot.
+syzbot engineers can be reached at syzkaller@googlegroups.com.
+
+syzbot will keep track of this issue. See:
+https://goo.gl/tpsmEJ#status for how to communicate with syzbot.
+
+If the report is already addressed, let syzbot know by replying with:
+#syz fix: exact-commit-title
+
+If you want to overwrite report's subsystems, reply with:
+#syz set subsystems: new-subsystem
+(See the list of subsystem names on the web dashboard)
+
+If the report is a duplicate of another one, reply with:
+#syz dup: exact-subject-of-another-report
+
+If you want to undo deduplication, reply with:
+#syz undup
