@@ -2,111 +2,110 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB6449FA9AE
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Dec 2024 04:13:32 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C9049FA9B1
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Dec 2024 04:14:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5FA5481230;
-	Mon, 23 Dec 2024 03:13:29 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C43AF81230;
+	Mon, 23 Dec 2024 03:14:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id d87S0cJaO-3u; Mon, 23 Dec 2024 03:13:28 +0000 (UTC)
+ id qhEYrFms__5u; Mon, 23 Dec 2024 03:14:26 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 834858122B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DC8A78122A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1734923608;
-	bh=B4pjxDSM+DcMLLynoEGMGtNM2B1I1D/Av+LkGx7Ngik=;
+	s=default; t=1734923665;
+	bh=fb+O/vo4qRnwBEJd94ccUJyULtdZZg8lqcloipJeh+A=;
 	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=cfB+dVUDrlmjWp6kivFt1/ntBL4K2uDYXVw3OKQw6RzYeSVG2qpoamjUhEXPZx4/k
-	 sp6zb/Lu+0CAesEtxd2Qs+jyOMJl+cwxGvynIfe2SM1DKuGv6ED/F/Vctklbz5i/Db
-	 YFEn7R7ZgBsWp2m7290GZizI7S9kZmsdMBU/ECku+OUr7XsVVOAqaTeCUfRxwUQnDk
-	 pqGMUy8pQodHSjkkQ6KvNgWpqNUwzOlaJd3SOTjOnQRWp18fDT7gNrw5eWpMQpNlNb
-	 H6xtp9JaF80qnjRKbiZpEBzS9tJ8TRA5wW08dVc3TuGAuNPpmpExTiSBLUlEJkbCVm
-	 UTOpcYNFY1oQg==
+	b=kd4GbngmQmQ2nhGtNgaooKe49kBW5yOZ8hWJetxhxGCze7XgOqOlMxuioE78oryz/
+	 VXQEcErlO+ctb0DiFto+pqDPOqLFByKdKiJZzjt48xSXMqkj1lAdEVg2MYZK/XKUlV
+	 qc/k19MLSk7uOTikXGMO5cKFFWRYtir6eU5GwGncQP1ClaR05zeN8rj1tOM3Rvk6yB
+	 htfPJxPXXDkdGI+pp6CTCk1M/Fg4SNO7s6ttDWnYebmzX9/6a6RhaGSuodaXW6bHKl
+	 sDVhNNM1vgbvxUlTD8cwgw6ItkJQ2ywdxQs7Rjk29oHe/PZlHHBbhAPr8BCPzDkOsC
+	 IrCrDUtXlIgTw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 834858122B;
-	Mon, 23 Dec 2024 03:13:28 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DC8A78122A;
+	Mon, 23 Dec 2024 03:14:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 569DE5E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Dec 2024 03:13:26 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3D499D3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Dec 2024 03:14:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5021140395
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Dec 2024 03:13:26 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1E3DE81224
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Dec 2024 03:14:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CaP0d2_-CKuo for <intel-wired-lan@lists.osuosl.org>;
- Mon, 23 Dec 2024 03:13:25 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ARuR4Fyb37fw for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 23 Dec 2024 03:14:23 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::532; helo=mail-ed1-x532.google.com;
+ client-ip=2a00:1450:4864:20::52c; helo=mail-ed1-x52c.google.com;
  envelope-from=kalesh-anakkur.purayil@broadcom.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 267B3402D0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 267B3402D0
-Received: from mail-ed1-x532.google.com (mail-ed1-x532.google.com
- [IPv6:2a00:1450:4864:20::532])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 267B3402D0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Dec 2024 03:13:25 +0000 (UTC)
-Received: by mail-ed1-x532.google.com with SMTP id
- 4fb4d7f45d1cf-5cecbddb574so5908137a12.1
- for <intel-wired-lan@lists.osuosl.org>; Sun, 22 Dec 2024 19:13:24 -0800 (PST)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 1586181225
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1586181225
+Received: from mail-ed1-x52c.google.com (mail-ed1-x52c.google.com
+ [IPv6:2a00:1450:4864:20::52c])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1586181225
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Dec 2024 03:14:22 +0000 (UTC)
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-5d3e9f60bf4so6094331a12.3
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 22 Dec 2024 19:14:22 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734923603; x=1735528403;
+ d=1e100.net; s=20230601; t=1734923661; x=1735528461;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=B4pjxDSM+DcMLLynoEGMGtNM2B1I1D/Av+LkGx7Ngik=;
- b=F3wuTWjk9qb+HLqEbQLIsXjzDdvphuU1Jzm+mz7JqFEs0qWaR2mOTiS4vLr8+To8B4
- vJ2CWa94dJd4iTlLNHFU4JfDe4SXIycMvjKUwT6pFN42VjL0VJlBg/hjq5HToBAidUmZ
- A0ZnlEACSkzw/yodDw+vM2QOvQEQNEckJEJzsq4OWZQTz6pYwP+R01txwOV9I+QXEIkV
- xnB+fYt5Df8xU9N3oPpZB5jVv+iZ0vxZaJvOGJ/raua8mLJKWRGRiuMERyOZV1m2eOkZ
- u1PIMhIqFt9E8E+k9hRQdehDitSgHZZvYKKKQrahmopLjMijSY7/rMjYwEYAis0Mp6NV
- nVjA==
+ bh=fb+O/vo4qRnwBEJd94ccUJyULtdZZg8lqcloipJeh+A=;
+ b=cZ2SLJQgWGHHqvUHx7ijNQYuAbNkrDK0CCCHrWJyhCCG13xASaCeAiTYP+5/CwKv7F
+ ryowtRxw6eO9WH1oQEW8b6eq1or9mKmndXfTsYTba0sSK1jNer7vteqSFF3ZrzeAdaNd
+ X0BZmUcbs0oxV03Rib4sQd7JQb8hzk8aSERAp7cq88vjdRoyCQEA+DwbtXXrSYkQDdXH
+ LI6baHdOXMqHV8VVfZpGU3iPIWtc19et4RYtCTJ0srqp/vRiy4VesyimFPELZEMHeUgG
+ mbLIZ3ltsMSG0/zqbUHhVfdV4QDRWXMFUlaObaRRv2oJ6jmGXT4+fkECOzrebuifTwWr
+ KvLA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVN75akdSzerJW6CNzJTXh3xoMufwH20DIDRG8NueYWyUp70ZsZXq0NMkM5vvmnrgcQzFUzknBuewZR90DjfNc=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzzjwtbIbqLaAjFTfJlVXTrpvr4RjBN+AHtbSh5i4Afeijrb0MI
- Has8lYOBRVOzAcVH40dWUSdQBybjdmR+aTzN2OFuLNFhwSsbKk8YTgm05y7uBHLsmS97j4/VLIg
- OcCBes2vWvPvR223eDedodF0BLTah4WnelBcK
-X-Gm-Gg: ASbGncvIw2t82Aqxj6TnpV7DsSrkWbNjLC9liXYv9nQkKm8P8W9KJdAIMVlTI1nLKKM
- ChayXeAcAy3qKktJtW7RMdXx1y99Bdzjpy03uVg==
-X-Google-Smtp-Source: AGHT+IEQyj9TMw7LhVo4VAWnNj7pFwjpI7dDDAd+AhkX7/Veq+GOyXQHUljEMFFJj85ZmL5R2oicdju+7wXwsqcRMVs=
-X-Received: by 2002:a05:6402:2346:b0:5d3:bc1d:e56b with SMTP id
- 4fb4d7f45d1cf-5d81ddfdf76mr8557605a12.16.1734923602972; Sun, 22 Dec 2024
- 19:13:22 -0800 (PST)
+ AJvYcCUy5e+4fsyZrqP98sXo06sADgGObCedfIRtXsfiurlCOsgi6ySGJ8/4DL/kg4D7ZtOKVGeg2FrQoIbrm/qjaWg=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YzOHv+2VDDmzPnQJvsMljqiEf2pY4CxZEHkShPJSnOPLdf0lS/Y
+ KmD54zIIdg6aP8cW8x9NksmZ1BWL2gYVkywfSXpVhHuhKev+dzxgEh4uYPIWkyFiGuA/kLGSDfV
+ y1GrFQPDBKU0hfIPJZQNVuOWFVdnac3Gtt8LQ
+X-Gm-Gg: ASbGnctgga5K0tLZxzsMeqIfwezRQLZhxd6rrHeTmBhtw7wdTvnfaQRdlNPQ/hu7n4i
+ 0mulQkMB+GkymTby/+PLFE6W91va7CRjnSsdXFQ==
+X-Google-Smtp-Source: AGHT+IHxO77EM89XXu3+PrxJkyGU4aTzLyfi+ny6uVCmpZgAfclR4GYJRfKranc9rAdVc6ceU9IcbNSJIcHApHSvZL0=
+X-Received: by 2002:a05:6402:270d:b0:5d0:bcdd:ffa8 with SMTP id
+ 4fb4d7f45d1cf-5d81dd83b92mr8932953a12.1.1734923661095; Sun, 22 Dec 2024
+ 19:14:21 -0800 (PST)
 MIME-Version: 1.0
 References: <20241221184247.118752-1-linux@treblig.org>
- <20241221184247.118752-3-linux@treblig.org>
-In-Reply-To: <20241221184247.118752-3-linux@treblig.org>
+ <20241221184247.118752-8-linux@treblig.org>
+In-Reply-To: <20241221184247.118752-8-linux@treblig.org>
 From: Kalesh Anakkur Purayil <kalesh-anakkur.purayil@broadcom.com>
-Date: Mon, 23 Dec 2024 08:43:11 +0530
-Message-ID: <CAH-L+nP5yX=PmmQ_G=4_988+QTNWSQ0fe2FZV7pvqrBq3XHB+g@mail.gmail.com>
+Date: Mon, 23 Dec 2024 08:44:08 +0530
+Message-ID: <CAH-L+nNkzX7419b3K24v_AzbiH5uc_tQ_hNSvVCZmps_LerUdA@mail.gmail.com>
 To: linux@treblig.org
 Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com, 
  andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com, 
  kuba@kernel.org, pabeni@redhat.com, intel-wired-lan@lists.osuosl.org, 
  netdev@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: multipart/signed; protocol="application/pkcs7-signature";
- micalg=sha-256; boundary="00000000000016e7af0629e76128"
+ micalg=sha-256; boundary="0000000000008dc5d60629e7642b"
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=broadcom.com; s=google; t=1734923603; x=1735528403; darn=lists.osuosl.org;
+ d=broadcom.com; s=google; t=1734923661; x=1735528461; darn=lists.osuosl.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=B4pjxDSM+DcMLLynoEGMGtNM2B1I1D/Av+LkGx7Ngik=;
- b=TWO0vr/i7txYlNwqudmERzwyZ8lZufam4Eqh3McHsB57kngEw3wXs7FVFDHp7zoZ14
- OgxuerTr20dBrs7Iy9hSC0blAX+8H1cpPj6LkoHGZfvJEO08HnFw2iSJtS/MIp0cEG5v
- qXHwvo+HMcMx8p1Ardisc4EVq+HOtuUxmmmAo=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=fb+O/vo4qRnwBEJd94ccUJyULtdZZg8lqcloipJeh+A=;
+ b=LeKD+tlPUR4gtFENJQ+jBAw74TFBC9mcBZ3OhfWFB5Knd+iLIJgb8XCGQTMKxlPMPR
+ UCjuSX7QU/EBolnPV87VoOqWzomUctCVJdMOIdyBJToMmKCECVLp0kLrXqqE5Yo5SvMB
+ IPke/U081PTnbIbCDfT56hpGJyvEODyWsBNso=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=broadcom.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=broadcom.com header.i=@broadcom.com header.a=rsa-sha256
- header.s=google header.b=TWO0vr/i
-Subject: Re: [Intel-wired-lan] [RFC net-next 2/9] i40e: Remove unused
- i40e_blink_phy_link_led
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (1024-bit key) header.d=broadcom.com header.i=@broadcom.com
+ header.a=rsa-sha256 header.s=google header.b=LeKD+tlP
+Subject: Re: [Intel-wired-lan] [RFC net-next 7/9] i40e: Remove unused
+ i40e_commit_partition_bw_setting
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -122,17 +121,16 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---00000000000016e7af0629e76128
+--0000000000008dc5d60629e7642b
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Sun, Dec 22, 2024 at 12:16=E2=80=AFAM <linux@treblig.org> wrote:
+On Sun, Dec 22, 2024 at 12:15=E2=80=AFAM <linux@treblig.org> wrote:
 >
 > From: "Dr. David Alan Gilbert" <linux@treblig.org>
 >
-> i40e_blink_phy_link_led() was added in 2016 by
-> commit fd077cd3399b ("i40e: Add functions to blink led on 10GBaseT PHY")
->
+> i40e_commit_partition_bw_setting() was added in 2017 by
+> commit 4fc8c6763957 ("i40e: genericize the partition bandwidth control")
 > but hasn't been used.
 >
 > Remove it.
@@ -147,7 +145,7 @@ Reviewed-by: Kalesh AP <kalesh-anakkur.purayil@broadcom.com>
 Regards,
 Kalesh AP
 
---00000000000016e7af0629e76128
+--0000000000008dc5d60629e7642b
 Content-Type: application/pkcs7-signature; name="smime.p7s"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="smime.p7s"
@@ -219,13 +217,13 @@ a30CvRuhokNO6Jzh7ZFtjKVMzYas3oo6HXgA+slRszMu4pc+fRPO41FHjeDM76e6P5OnthhnD+NY
 x6xokUN65DN1bn2MkeNs0nQpizDqd0QxggJtMIICaQIBATBrMFsxCzAJBgNVBAYTAkJFMRkwFwYD
 VQQKExBHbG9iYWxTaWduIG52LXNhMTEwLwYDVQQDEyhHbG9iYWxTaWduIEdDQyBSMyBQZXJzb25h
 bFNpZ24gMiBDQSAyMDIwAgw3wUUJsDUiPdpordMwDQYJYIZIAWUDBAIBBQCggdQwLwYJKoZIhvcN
-AQkEMSIEICmTqAPivZb3am1cEFGGl9T2CWiCN4EuhnOOO3xrBeWAMBgGCSqGSIb3DQEJAzELBgkq
-hkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTI0MTIyMzAzMTMyM1owaQYJKoZIhvcNAQkPMVwwWjAL
+AQkEMSIEIJ4YtiwOcOUJJT8CdJOz//s2IL0MeYk5CeiKEGfgqATAMBgGCSqGSIb3DQEJAzELBgkq
+hkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTI0MTIyMzAzMTQyMVowaQYJKoZIhvcNAQkPMVwwWjAL
 BglghkgBZQMEASowCwYJYIZIAWUDBAEWMAsGCWCGSAFlAwQBAjAKBggqhkiG9w0DBzALBgkqhkiG
-9w0BAQowCwYJKoZIhvcNAQEHMAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQBoLCugULzA
-Y2EN+ojVy1Ca3eR/XTmSMqXvbLt9Edft6lFfI3aNM0K4pjQRpb+XP4GLNJ78YrjYyMugsliB9Nju
-XaDlOU/20PGyGxyDcx98MB8wYAPbDD/H2ANFmNMVv5KPSPnB5WYPcWGrJFh+hM6FjviaJ2DvZ2j6
-gvWrTevoMRhoFtH8d1qxYmSk8rsruuLE7Tt/weCx+PV7h1WVLCYdRDcGgXkE3BAusQyWnwEi92vX
-qE0UflGhj4HDEWdIFWJJ0YN/6BuG/SMrZ0A0LPIfoK8t9CXT8thbfPnw7+37iFDlrxijGA9t5qS4
-Yloyraq6maJf/3c7+A1hPQGhi6ha
---00000000000016e7af0629e76128--
+9w0BAQowCwYJKoZIhvcNAQEHMAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQC76v+K8PHP
+mTNjDxWTRCcXcruRVDu+rQp7+Pm2g0IDGGFqMUMxAHEy03yy2OtKkGSKhdNv3Dmbzn1FDhcNRFoW
+aNoaKu4okTQ4a0+RA9OpyuJgWykEByMdIAsbzYrX9ky0B4T9YKqUKjYq/3GWBR6ByUri1JJhAIlE
+FAx9k9jygpAxCl6zLeInxaet3lYOuO1U/IqKNjsC+nYN1ZK6/0Wkz/F2gbXgZGhPwe4OKzPoPWIZ
+khl7edcgsjjDcCHnI0AMQig3c4LVCceKVumtAxEn0GG63K2tBIJMs8khJ0yR+hZjAylkaZD4w+HB
+hULTjjUjRciTT8GUHoolD0m0b39N
+--0000000000008dc5d60629e7642b--
