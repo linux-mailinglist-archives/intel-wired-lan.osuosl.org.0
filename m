@@ -1,111 +1,117 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C9049FA9B1
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Dec 2024 04:14:28 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A969F9FABEC
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Dec 2024 10:23:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C43AF81230;
-	Mon, 23 Dec 2024 03:14:26 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 537F5606EA;
+	Mon, 23 Dec 2024 09:23:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id qhEYrFms__5u; Mon, 23 Dec 2024 03:14:26 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id c7jdAPqHYimD; Mon, 23 Dec 2024 09:23:40 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DC8A78122A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AA0BE6074F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1734923665;
-	bh=fb+O/vo4qRnwBEJd94ccUJyULtdZZg8lqcloipJeh+A=;
-	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
+	s=default; t=1734945819;
+	bh=GvVeIHl7hRHv0Agb6FjIJJ4/C0evoVWnyTEUydFMw34=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=kd4GbngmQmQ2nhGtNgaooKe49kBW5yOZ8hWJetxhxGCze7XgOqOlMxuioE78oryz/
-	 VXQEcErlO+ctb0DiFto+pqDPOqLFByKdKiJZzjt48xSXMqkj1lAdEVg2MYZK/XKUlV
-	 qc/k19MLSk7uOTikXGMO5cKFFWRYtir6eU5GwGncQP1ClaR05zeN8rj1tOM3Rvk6yB
-	 htfPJxPXXDkdGI+pp6CTCk1M/Fg4SNO7s6ttDWnYebmzX9/6a6RhaGSuodaXW6bHKl
-	 sDVhNNM1vgbvxUlTD8cwgw6ItkJQ2ywdxQs7Rjk29oHe/PZlHHBbhAPr8BCPzDkOsC
-	 IrCrDUtXlIgTw==
+	b=Nt9foMhTAvIrwCwBs1GtEGof+jGSmXB6M0gP81yEO4QATDXizMq/UelKoS2pWpexW
+	 Bb1f+wlcNGXj6rm4kut57LRAYTC04qHfPYrB/KXhhbNGl8NX1AfA2nFyTowzMn7cXC
+	 v7afLTkF8F9yHEox0185AjrmIRWs9gl/fCg6dF8PsVWedS7rL9Pgydb7T0kvoZbqzc
+	 DiVw3tQ4nDXbXRNlUkXvEUxQoHdSy4D858y9XTyO662AtdDGRLh39f1au71g+vadkn
+	 YRDrNDzHJUhheW/TlOlPuTHueGmNDwiDkquCWcM4Ga6FRY3inegMG87N4+FSA18SCF
+	 /lrnlZt9LSWgQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DC8A78122A;
-	Mon, 23 Dec 2024 03:14:25 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id AA0BE6074F;
+	Mon, 23 Dec 2024 09:23:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 3D499D3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Dec 2024 03:14:24 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id BB32AD8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Dec 2024 09:23:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 1E3DE81224
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Dec 2024 03:14:24 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id A8AC840535
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Dec 2024 09:23:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ARuR4Fyb37fw for <intel-wired-lan@lists.osuosl.org>;
- Mon, 23 Dec 2024 03:14:23 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::52c; helo=mail-ed1-x52c.google.com;
- envelope-from=kalesh-anakkur.purayil@broadcom.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 1586181225
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1586181225
-Received: from mail-ed1-x52c.google.com (mail-ed1-x52c.google.com
- [IPv6:2a00:1450:4864:20::52c])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1586181225
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Dec 2024 03:14:22 +0000 (UTC)
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-5d3e9f60bf4so6094331a12.3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 22 Dec 2024 19:14:22 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734923661; x=1735528461;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=fb+O/vo4qRnwBEJd94ccUJyULtdZZg8lqcloipJeh+A=;
- b=cZ2SLJQgWGHHqvUHx7ijNQYuAbNkrDK0CCCHrWJyhCCG13xASaCeAiTYP+5/CwKv7F
- ryowtRxw6eO9WH1oQEW8b6eq1or9mKmndXfTsYTba0sSK1jNer7vteqSFF3ZrzeAdaNd
- X0BZmUcbs0oxV03Rib4sQd7JQb8hzk8aSERAp7cq88vjdRoyCQEA+DwbtXXrSYkQDdXH
- LI6baHdOXMqHV8VVfZpGU3iPIWtc19et4RYtCTJ0srqp/vRiy4VesyimFPELZEMHeUgG
- mbLIZ3ltsMSG0/zqbUHhVfdV4QDRWXMFUlaObaRRv2oJ6jmGXT4+fkECOzrebuifTwWr
- KvLA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUy5e+4fsyZrqP98sXo06sADgGObCedfIRtXsfiurlCOsgi6ySGJ8/4DL/kg4D7ZtOKVGeg2FrQoIbrm/qjaWg=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzOHv+2VDDmzPnQJvsMljqiEf2pY4CxZEHkShPJSnOPLdf0lS/Y
- KmD54zIIdg6aP8cW8x9NksmZ1BWL2gYVkywfSXpVhHuhKev+dzxgEh4uYPIWkyFiGuA/kLGSDfV
- y1GrFQPDBKU0hfIPJZQNVuOWFVdnac3Gtt8LQ
-X-Gm-Gg: ASbGnctgga5K0tLZxzsMeqIfwezRQLZhxd6rrHeTmBhtw7wdTvnfaQRdlNPQ/hu7n4i
- 0mulQkMB+GkymTby/+PLFE6W91va7CRjnSsdXFQ==
-X-Google-Smtp-Source: AGHT+IHxO77EM89XXu3+PrxJkyGU4aTzLyfi+ny6uVCmpZgAfclR4GYJRfKranc9rAdVc6ceU9IcbNSJIcHApHSvZL0=
-X-Received: by 2002:a05:6402:270d:b0:5d0:bcdd:ffa8 with SMTP id
- 4fb4d7f45d1cf-5d81dd83b92mr8932953a12.1.1734923661095; Sun, 22 Dec 2024
- 19:14:21 -0800 (PST)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id hBIVb4m-ty05 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 23 Dec 2024 09:23:36 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
+ helo=mgamail.intel.com; envelope-from=faizal.abdul.rahim@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C215F40147
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C215F40147
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C215F40147
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Dec 2024 09:23:35 +0000 (UTC)
+X-CSE-ConnectionGUID: pJnpq5QST4+/oU0a7SRoKQ==
+X-CSE-MsgGUID: cOj1q1NFTCiYt/TFQ4zM4g==
+X-IronPort-AV: E=McAfee;i="6700,10204,11294"; a="39342520"
+X-IronPort-AV: E=Sophos;i="6.12,256,1728975600"; d="scan'208";a="39342520"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Dec 2024 01:23:34 -0800
+X-CSE-ConnectionGUID: XpVJBZqeTji3kMi+jNQG4A==
+X-CSE-MsgGUID: kg2Y2h+sTlqcGvVMNLXWnw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="122435984"
+Received: from mohdfai2-mobl.gar.corp.intel.com (HELO [10.247.22.166])
+ ([10.247.22.166])
+ by fmviesa002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Dec 2024 01:23:30 -0800
+Message-ID: <ef07ba7e-eb61-495b-8abc-a46d675302d4@linux.intel.com>
+Date: Mon, 23 Dec 2024 17:23:27 +0800
 MIME-Version: 1.0
-References: <20241221184247.118752-1-linux@treblig.org>
- <20241221184247.118752-8-linux@treblig.org>
-In-Reply-To: <20241221184247.118752-8-linux@treblig.org>
-From: Kalesh Anakkur Purayil <kalesh-anakkur.purayil@broadcom.com>
-Date: Mon, 23 Dec 2024 08:44:08 +0530
-Message-ID: <CAH-L+nNkzX7419b3K24v_AzbiH5uc_tQ_hNSvVCZmps_LerUdA@mail.gmail.com>
-To: linux@treblig.org
-Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com, 
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com, 
- kuba@kernel.org, pabeni@redhat.com, intel-wired-lan@lists.osuosl.org, 
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org
-Content-Type: multipart/signed; protocol="application/pkcs7-signature";
- micalg=sha-256; boundary="0000000000008dc5d60629e7642b"
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=broadcom.com; s=google; t=1734923661; x=1735528461; darn=lists.osuosl.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=fb+O/vo4qRnwBEJd94ccUJyULtdZZg8lqcloipJeh+A=;
- b=LeKD+tlPUR4gtFENJQ+jBAw74TFBC9mcBZ3OhfWFB5Knd+iLIJgb8XCGQTMKxlPMPR
- UCjuSX7QU/EBolnPV87VoOqWzomUctCVJdMOIdyBJToMmKCECVLp0kLrXqqE5Yo5SvMB
- IPke/U081PTnbIbCDfT56hpGJyvEODyWsBNso=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=broadcom.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=broadcom.com header.i=@broadcom.com
- header.a=rsa-sha256 header.s=google header.b=LeKD+tlP
-Subject: Re: [Intel-wired-lan] [RFC net-next 7/9] i40e: Remove unused
- i40e_commit_partition_bw_setting
+User-Agent: Mozilla Thunderbird
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S . Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, bpf@vger.kernel.org
+References: <20241216064720.931522-1-faizal.abdul.rahim@linux.intel.com>
+ <20241216064720.931522-1-faizal.abdul.rahim@linux.intel.com>
+ <20241216064720.931522-6-faizal.abdul.rahim@linux.intel.com>
+ <20241216064720.931522-6-faizal.abdul.rahim@linux.intel.com>
+ <20241216181339.zcnnqna2nc73sdgh@skbuf>
+Content-Language: en-US
+From: "Abdul Rahim, Faizal" <faizal.abdul.rahim@linux.intel.com>
+In-Reply-To: <20241216181339.zcnnqna2nc73sdgh@skbuf>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1734945815; x=1766481815;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=NOgNNrM3BWUsucXKrh8CtWNXkv+qSrOnDFok2szQa+s=;
+ b=hhqnRlMqBnweHkQpmBFbfq0tx0QDKZNZrnpZOLvmeGm2B98N5VtkOaFZ
+ 9XWqD/wgM/zYjQri2XzEOW28fVcrdtK02f5MJaX1PPZaNvjoB1f99owgQ
+ lE7n86HcyK4TwA9yl2z73YMM1qG4xh12ZZFaNJMT17MukfduUIuI/VoE3
+ MzHx9/HctI9ehW/mXwtsOS0cFfArO2ei0HmC87bxhtnjlOqoDvkfQoK48
+ wRPAK9++QlR4/NK715GNLRJk4dFU4D44+IL1OrhUirZ8DrnH7LuQGfNMp
+ 5kfs8Q4ffjoUnm63E8Mc4JrDtaxhZcNJdpVWsxMCB2+hmsM0WhYZyFG0c
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=hhqnRlMq
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 5/9] igc: Add support to set
+ MAC Merge data via ethtool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -121,109 +127,302 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---0000000000008dc5d60629e7642b
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-On Sun, Dec 22, 2024 at 12:15=E2=80=AFAM <linux@treblig.org> wrote:
->
-> From: "Dr. David Alan Gilbert" <linux@treblig.org>
->
-> i40e_commit_partition_bw_setting() was added in 2017 by
-> commit 4fc8c6763957 ("i40e: genericize the partition bandwidth control")
-> but hasn't been used.
->
-> Remove it.
->
-> Signed-off-by: Dr. David Alan Gilbert <linux@treblig.org>
+Hi Vladimir,
 
-LGTM,
-Reviewed-by: Kalesh AP <kalesh-anakkur.purayil@broadcom.com>
+On 17/12/2024 2:13 am, Vladimir Oltean wrote:
+> On Mon, Dec 16, 2024 at 01:47:16AM -0500, Faizal Rahim wrote:
+>> Created fpe_t struct to store MAC Merge data and implement the
+>> "ethtool --set-mm" callback. The fpe_t struct will host other frame
+>> preemption related data in future patches.
+>>
+>> The following fields are used to set IGC register:
+>> a) pmac_enabled -> TQAVCTRL.PREEMPT_ENA
+>>     This global register sets the preemption scheme, controlling
+>>     preemption capabilities in transmit and receive directions, as well as
+>>     the verification handshake capability.
+> 
+> I'm sorry, I'm not able to mentally translate this explanation into
+> something technical. Which capabilities are we talking about, that this
+> bit controls? I'm not clear what it does. The kernel-doc description of
+> pmac_enabled is much more succinct (and at the same time, appears to
+> contradict this much more elaborate yet unclear description).
+> 
+
+Sorry for the unclear explanation, I was having trouble summarizing what it 
+does.
+
+Snippets of what TQAVCTRL.PREEMPT_ENA does from i226 documentation:
+
+RX:
+When preemption is enabled by the PREEMPT_ENA flag in TQAVCTRL register, 
+Express traffic is routed to the high priority packet buffer and Best 
+Effort traffic is routed to the low priority packet buffer.				
+The receive unit re-assemble the received fragments back to whole packets. 
+It classifies the incoming mPackets as whole packets or packets fragments 
+that should be re-assembled. Classification is done based on the SMD, 
+Fragment Count and the CRC. Foxville categorizes received packets by SMD 
+only when preemption is enabled by the TQAVCTRL.PREEMPT_ENA.
+
+TX:
+TQAVCTRL.PREEMPT_ENA (Enables the transmit preemption state machine): This 
+is a dynamic parameter that can be set while the transmit unit is active. 
+Setting takes affect at whole packet boundaries.
+Preemptable: Each transmit queue can be set as Preemptive - eTXQ for 
+express traffic or Preemptable pTXQ for non-Express traffic. The pTXQs can 
+be preempted by The eTXQs when preemption is enabled by the 
+TQAVCTRL.PREEMPT_ENA
 
 
---=20
-Regards,
-Kalesh AP
+Based on my testing, this register bit needs to be enabled for the i226 to 
+receive verify/response frames, which is why I added the phrase 
+"verification handshake capability."
 
---0000000000008dc5d60629e7642b
-Content-Type: application/pkcs7-signature; name="smime.p7s"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename="smime.p7s"
-Content-Description: S/MIME Cryptographic Signature
+Do you think I should omit the explanation of TQAVCTRL.PREEMPT_ENA ?
+Or would it be better for me to attempt to summarize it more clearly in the 
+next version? Hmmm.
 
-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
-riBJ/K1AFUjRAjFhGV64l++td7dkmnq/X8ET75ti+w1s4FRpFqkD2m7pg5NxdsZphYIXAgMBAAGj
-QjBAMA4GA1UdDwEB/wQEAwIBBjAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBSP8Et/qC5FJK5N
-UPpjmove4t0bvDANBgkqhkiG9w0BAQsFAAOCAQEAS0DbwFCq/sgM7/eWVEVJu5YACUGssxOGhigH
-M8pr5nS5ugAtrqQK0/Xx8Q+Kv3NnSoPHRHt44K9ubG8DKY4zOUXDjuS5V2yq/BKW7FPGLeQkbLmU
-Y/vcU2hnVj6DuM81IcPJaP7O2sJTqsyQiunwXUaMld16WCgaLx3ezQA3QY/tRG3XUyiXfvNnBB4V
-14qWtNPeTCekTBtzc3b0F5nCH3oO4y0IrQocLP88q1UOD5F+NuvDV0m+4S4tfGCLw0FREyOdzvcy
-a5QBqJnnLDMfOjsl0oZAzjsshnjJYS8Uuu7bVW/fhO4FCU29KNhyztNiUGUe65KXgzHZs7XKR1g/
-XzCCBWowggRSoAMCAQICDDfBRQmwNSI92mit0zANBgkqhkiG9w0BAQsFADBbMQswCQYDVQQGEwJC
-RTEZMBcGA1UEChMQR2xvYmFsU2lnbiBudi1zYTExMC8GA1UEAxMoR2xvYmFsU2lnbiBHQ0MgUjMg
-UGVyc29uYWxTaWduIDIgQ0EgMjAyMDAeFw0yMjA5MTAwODI5NTZaFw0yNTA5MTAwODI5NTZaMIGi
-MQswCQYDVQQGEwJJTjESMBAGA1UECBMJS2FybmF0YWthMRIwEAYDVQQHEwlCYW5nYWxvcmUxFjAU
-BgNVBAoTDUJyb2FkY29tIEluYy4xHzAdBgNVBAMTFkthbGVzaCBBbmFra3VyIFB1cmF5aWwxMjAw
-BgkqhkiG9w0BCQEWI2thbGVzaC1hbmFra3VyLnB1cmF5aWxAYnJvYWRjb20uY29tMIIBIjANBgkq
-hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxnv1Reaeezfr6NEmg3xZlh4cz9m7QCN13+j4z1scrX+b
-JfnV8xITT5yvwdQv3R3p7nzD/t29lTRWK3wjodUd2nImo6vBaH3JbDwleIjIWhDXLNZ4u7WIXYwx
-aQ8lYCdKXRsHXgGPY0+zSx9ddpqHZJlHwcvas3oKnQN9WgzZtsM7A8SJefWkNvkcOtef6bL8Ew+3
-FBfXmtsPL9I2vita8gkYzunj9Nu2IM+MnsP7V/+Coy/yZDtFJHp30hDnYGzuOhJchDF9/eASvE8T
-T1xqJODKM9xn5xXB1qezadfdgUs8k8QAYyP/oVBafF9uqDudL6otcBnziyDBQdFCuAQN7wIDAQAB
-o4IB5DCCAeAwDgYDVR0PAQH/BAQDAgWgMIGjBggrBgEFBQcBAQSBljCBkzBOBggrBgEFBQcwAoZC
-aHR0cDovL3NlY3VyZS5nbG9iYWxzaWduLmNvbS9jYWNlcnQvZ3NnY2NyM3BlcnNvbmFsc2lnbjJj
-YTIwMjAuY3J0MEEGCCsGAQUFBzABhjVodHRwOi8vb2NzcC5nbG9iYWxzaWduLmNvbS9nc2djY3Iz
-cGVyc29uYWxzaWduMmNhMjAyMDBNBgNVHSAERjBEMEIGCisGAQQBoDIBKAowNDAyBggrBgEFBQcC
-ARYmaHR0cHM6Ly93d3cuZ2xvYmFsc2lnbi5jb20vcmVwb3NpdG9yeS8wCQYDVR0TBAIwADBJBgNV
-HR8EQjBAMD6gPKA6hjhodHRwOi8vY3JsLmdsb2JhbHNpZ24uY29tL2dzZ2NjcjNwZXJzb25hbHNp
-Z24yY2EyMDIwLmNybDAuBgNVHREEJzAlgSNrYWxlc2gtYW5ha2t1ci5wdXJheWlsQGJyb2FkY29t
-LmNvbTATBgNVHSUEDDAKBggrBgEFBQcDBDAfBgNVHSMEGDAWgBSWM9HmWBdbNHWKgVZk1b5I3qGP
-zzAdBgNVHQ4EFgQUI3+tdStI+ABRGSqksMsiCmO9uDAwDQYJKoZIhvcNAQELBQADggEBAGfe1o9b
-4wUud0FMjb/FNdc433meL15npjdYWUeioHdlCGB5UvEaMGu71QysfoDOfUNeyO9YKp0h0fm7clvo
-cBqeWe4CPv9TQbmLEtXKdEpj5kFZBGmav69mGTlu1A9KDQW3y0CDzCPG2Fdm4s73PnkwvemRk9E2
-u9/kcZ8KWVeS+xq+XZ78kGTKQ6Wii3dMK/EHQhnDfidadoN/n+x2ySC8yyDNvy81BocnblQzvbuB
-a30CvRuhokNO6Jzh7ZFtjKVMzYas3oo6HXgA+slRszMu4pc+fRPO41FHjeDM76e6P5OnthhnD+NY
-x6xokUN65DN1bn2MkeNs0nQpizDqd0QxggJtMIICaQIBATBrMFsxCzAJBgNVBAYTAkJFMRkwFwYD
-VQQKExBHbG9iYWxTaWduIG52LXNhMTEwLwYDVQQDEyhHbG9iYWxTaWduIEdDQyBSMyBQZXJzb25h
-bFNpZ24gMiBDQSAyMDIwAgw3wUUJsDUiPdpordMwDQYJYIZIAWUDBAIBBQCggdQwLwYJKoZIhvcN
-AQkEMSIEIJ4YtiwOcOUJJT8CdJOz//s2IL0MeYk5CeiKEGfgqATAMBgGCSqGSIb3DQEJAzELBgkq
-hkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTI0MTIyMzAzMTQyMVowaQYJKoZIhvcNAQkPMVwwWjAL
-BglghkgBZQMEASowCwYJYIZIAWUDBAEWMAsGCWCGSAFlAwQBAjAKBggqhkiG9w0DBzALBgkqhkiG
-9w0BAQowCwYJKoZIhvcNAQEHMAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQC76v+K8PHP
-mTNjDxWTRCcXcruRVDu+rQp7+Pm2g0IDGGFqMUMxAHEy03yy2OtKkGSKhdNv3Dmbzn1FDhcNRFoW
-aNoaKu4okTQ4a0+RA9OpyuJgWykEByMdIAsbzYrX9ky0B4T9YKqUKjYq/3GWBR6ByUri1JJhAIlE
-FAx9k9jygpAxCl6zLeInxaet3lYOuO1U/IqKNjsC+nYN1ZK6/0Wkz/F2gbXgZGhPwe4OKzPoPWIZ
-khl7edcgsjjDcCHnI0AMQig3c4LVCceKVumtAxEn0GG63K2tBIJMs8khJ0yR+hZjAylkaZD4w+HB
-hULTjjUjRciTT8GUHoolD0m0b39N
---0000000000008dc5d60629e7642b--
+
+>> b) tx_min_frag_size -> TQAVCTRL.MIN_FRAG
+>>     Global register to set minimum fragments.
+> 
+> When you say "global register", you mean global as opposed to what?
+> Per station interface?
+
+As opposed to something like a "queue context parameter".
+In the i226 documentation, the terms "global parameter" and "queue context 
+parameter" are commonly used. "Global" refers to NIC-wide settings, whereas 
+"queue context" refers to parameters specific to a particular TX queue. I 
+thought it would be useful to highlight this distinction for the reader, 
+and it aligns with the style of explanation used in the i226 documentation.
+
+Would it be better to remove the word "Global"?
+
+>> diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+>> index 817838677817..1954561ec4aa 100644
+>> --- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
+>> +++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+>> @@ -8,6 +8,7 @@
+>>   
+>>   #include "igc.h"
+>>   #include "igc_diag.h"
+>> +#include "igc_tsn.h"
+>>   
+>>   /* forward declaration */
+>>   struct igc_stats {
+>> @@ -1781,6 +1782,34 @@ static int igc_ethtool_set_eee(struct net_device *netdev,
+>>   	return 0;
+>>   }
+>>   
+>> +static int igc_ethtool_set_mm(struct net_device *netdev,
+>> +			      struct ethtool_mm_cfg *cmd,
+>> +			      struct netlink_ext_ack *extack)
+>> +{
+>> +	struct igc_adapter *adapter = netdev_priv(netdev);
+>> +	struct fpe_t *fpe = &adapter->fpe;
+>> +
+>> +	if (cmd->tx_min_frag_size < IGC_TX_MIN_FRAG_SIZE ||
+>> +	    cmd->tx_min_frag_size > IGC_TX_MAX_FRAG_SIZE)
+>> +		NL_SET_ERR_MSG_MOD(extack,
+>> +				   "Invalid value for tx-min-frag-size");
+> 
+> Shouldn't the execution actually stop here with an error code?
+> 
+I initially stop execution, but then I figured if the other parameters are 
+set correctly, the feature could still work since this field has a valid 
+default value set.
+
+I'll update it to stop execution then.
+
+>> +	else
+>> +		fpe->verify_time = cmd->verify_time;
+>> +
+>> +	fpe->tx_enabled = cmd->tx_enabled;
+>> +	fpe->pmac_enabled = cmd->pmac_enabled;
+>> +	fpe->verify_enabled = cmd->verify_enabled;
+>> +
+>> +	return igc_tsn_offload_apply(adapter);
+> 
+> hmm, igc_tsn_offload_apply() is a function which always returns zero.
+> It seems more natural to make it return void.
+> 
+
+You mean, to make igc_tsn_offload_apply() return void ?
+
+Currently, igc_tsn_offload_apply() calls igc_tsn_reset(), which can return 
+a non-zero value, but igc_tsn_offload_apply() doesn't use that result and 
+always returns zero. It seems more logical to modify 
+igc_tsn_offload_apply() to handle the return value from igc_tsn_reset().
+
+What do you think ?
+
+But... should this change be in this series though ?
+
+
+>> diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
+>> index 5cd54ce435b9..b968c02f5fee 100644
+>> --- a/drivers/net/ethernet/intel/igc/igc_tsn.c
+>> +++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
+>> @@ -194,12 +210,22 @@ static void igc_tsn_set_retx_qbvfullthreshold(struct igc_adapter *adapter)
+>>   	wr32(IGC_RETX_CTL, retxctl);
+>>   }
+>>   
+>> +static u8 igc_fpe_get_frag_size_mult(const struct fpe_t *fpe)
+>> +{
+>> +	u32 tx_min_frag_size = fpe->tx_min_frag_size;
+>> +	u8 mult = (tx_min_frag_size / 64) - 1;
+>> +
+>> +	return clamp_t(u8, mult, IGC_MIN_FOR_TX_MIN_FRAG,
+>> +		       IGC_MAX_FOR_TX_MIN_FRAG);
+>> +}
+> 
+> If you translate the continuous range of TX fragment sizes into
+> discrete multipliers because that's what the hardware works with, why
+> don't you just reject the non-multiple values using
+> ethtool_mm_frag_size_min_to_add(), and at the same time use the output
+> of that function directly to obtain your multiplier? IIUC it gets you
+> the same result.
+> 
+
+Yeah, I can reuse ethtool_mm_frag_size_min_to_add(), but it will need some 
+modifications. See my reply below
+
+>> diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.h b/drivers/net/ethernet/intel/igc/igc_tsn.h
+>> index 98ec845a86bf..08e7582f257e 100644
+>> --- a/drivers/net/ethernet/intel/igc/igc_tsn.h
+>> +++ b/drivers/net/ethernet/intel/igc/igc_tsn.h
+>> @@ -4,6 +4,15 @@
+>>   #ifndef _IGC_TSN_H_
+>>   #define _IGC_TSN_H_
+>>   
+>> +/* IGC_TX_MIN_FRAG_SIZE is based on the MIN_FRAG field in Section 8.12.2 of the
+>> + * SW User Manual.
+>> + */
+>> +#define IGC_TX_MIN_FRAG_SIZE		68
+>> +#define IGC_TX_MAX_FRAG_SIZE		260
+> 
+> Odd. Is there a link to this manual (for I225 I suppose)? Standard values are 60, 124, 188, 252.
+> Maybe the methodology for calculating these is used here? As things stand,
+> if the driver reports these values, IIUC, openlldp gets confused and communicates
+> a LLDP_8023_ADD_ETH_CAPS_ADD_FRAG_SIZE value to the link partner which is higher
+> than it could have been (68 is rounded up to the next standard TX fragment size,
+> which is 124). So the link partner will preempt in larger chunks and this will
+> not reduce latency as much.
+>> Regarding the TX minimum fragment size, I’m currently looking into it. After
+>> speaking with the i226 hardware owners (Shalev Avi), I realized I may have
+>> misunderstood the fragment size details. Avi mentioned that the i226
+>> supports fragment sizes of 64, 128, 192, and 256 bytes (without mCRC).
+>> However, these values are still 4 bytes larger than the standard you
+>> mentioned.
+> 
+> Yes, the standard I mention is 802.1Q section 99.4.4 Transmit processing:
+> 
+> The earliest starting position of preemption is controlled by the addFragSize
+> variable. Preemption does not occur until at least 64 x (1 + addFragSize) – 4
+> octets of the preemptable frame have been sent. The addFragSize variable is set
+> to the value of the addFragSize field in the received Additional Ethernet
+> Capabilities TLV (see 79.3.7).
+> 
+> The preemptableFragSize state machine variable says that the MAC can
+> preempt as soon as enough octets have been put on to wire so as to have
+> a fixed minimum length (by default, a valid Ethernet packet). You're
+> saying that the i226 MAC performs preemption at least 4 octets later
+> than the standard says it could.
+> 
+>> Avi provided the following explanation for these sizes:
+>>
+>> "The i226 always performs preemption on 16-byte boundaries. Once we read a
+>> 16-byte line from the internal packet buffer memory, we transmit it entirely
+>> before deciding on preemption. This avoids keeping partial bytes from the
+>> 16-byte line, ensuring that we continue with the preempted frame only after
+>> finishing the current 16-byte line."
+> 
+> User space assumes that, when it gets an addFragSize over LLDP from the
+> link partner, it can program the local transmitter to preempt at that
+> fragment size, and that the operation will succeed. The formula to
+> translate from addFragSize to preemptableFragSize is standard. There is
+> no mechanism built into the UAPI for user space to guess, if programming
+> a standard value failed, what other custom value could work.
+> 
+> I guess that leaves 2 options:
+> (1) accept and report the standard values, but "secretly" preempt later
+>      than expected
+> (2) accept any values in the discrete range, and round them up to the
+>      first value supported by the NIC, then report that non-standard
+>      value. Then keep this as a quirk isolated to the current generation
+>      of NICs, and be better with new drivers which accept standard values
+>      and don't do any rounding.
+> 
+> I think I prefer seeing the latter variant. I'm trying to think if this
+> is going to cause problems with openlldp or with the lldp_change_add_frag_size()
+> selftest, but I think it's generally safe. That test only checks that
+> LLDP reacts to the addFragSize of the link partner by programming its
+> local addFragSize to the same value. It doesn't check that the
+> tx-min-frag-size is exactly equal to the formula derived from that
+> addFragSize.
+
+Thanks for the suggestion! I was actually about to suggest option 2 myself, 
+but you got there first.
+
+To recap:
+
+Standard range: 60, 124, 188, 252 (without mCRC).
+i226 range: 64, 128, 192, 256 (without mCRC).
+
+The current IGC_TX_MIN_FRAG_SIZE is incorrectly set to 68 due to our 
+misinterpretation of the i226 documentation:
+"The minimum size for non-final preempted fragments is 64 * (1 + MIN_FRAG) 
++ 4 (mCRC)."
+
+The calculation above is for the fragment size on the wire, including mCRC. 
+For the TX preemption point and pure fragment size, mCRC should not be 
+included, as confirmed by the hardware owner.
+
+On RX, i226 can handle any size, even the standard minimum of 60 octets 
+(without mCRC).
+
+What would be ideal for i226:
+Min frag user set 60:64 → Multiplier = 0.
+Min frag user set 65:128 → Multiplier = 1.
+(And so on)
+
+To make this work and reuse the existing code, we’d need to tweak these two 
+functions:
+ethtool_mm_frag_size_add_to_min(val_min, xxx)
+ethtool_mm_frag_size_min_to_add(xx)
+
+With the current code, if I pass 64 octets as val_min to 
+ethtool_mm_frag_size_add_to_min(), it returns error.
+
+Proposed modification:
+Add a new parameter to ethtool_mm_frag_size_min_to_add() - maybe let's call 
+it dev_min_tx_frag_len.
+
+Set dev_min_tx_frag_len = 64 for i226, 60 for other drivers.
+This field will be used to:
+(1) modify the calculation in ethtool_mm_frag_size_min_to_add()
+(2) as a warning prompt to user when the value is not standard, done in 
+ethtool_mm_frag_size_add_to_min()
+
+I was thinking (1) would modify the existing:
+u32 ethtool_mm_frag_size_add_to_min(u32 val_add)
+{
+	return (ETH_ZLEN + ETH_FCS_LEN) * (1 + val_add) - ETH_FCS_LEN;
+}
+
+To something like:
+u32 ethtool_mm_frag_size_add_to_min(u32 val_add, u32 dev_min_tx_frag_len)
+{
+     return dev_min_tx_frag_len + (val_add * 64);
+}
+
+So this will yield:
+Standard range (dev_min_tx_frag_len = 60): 60, 124, 188, 252
+i226 range (dev_min_tx_frag_len = 64): 64, 128, 192, 256
+
+But what's not so nice is, the rest of other drivers have to set this new 
+param when calling ethtool_mm_frag_size_add_to_min().
+
+Is something like this okay ? I'm open to better suggestion.
+
+
