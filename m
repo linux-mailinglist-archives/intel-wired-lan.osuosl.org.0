@@ -1,184 +1,112 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E25A69FA4F9
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 22 Dec 2024 10:24:14 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 831659FA9A9
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Dec 2024 04:10:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5BB0F811BF;
-	Sun, 22 Dec 2024 09:24:13 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2C796607A4;
+	Mon, 23 Dec 2024 03:10:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HQ5HoJ2-n86I; Sun, 22 Dec 2024 09:24:12 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ar7hKtigljBI; Mon, 23 Dec 2024 03:10:52 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E4082811C0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 50CAC60663
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1734859452;
-	bh=OE8iGFY6+W6DsTrKDmbDdEggSFPQ9XwVoMWv2Wtzm4M=;
-	h=Date:From:To:CC:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1734923452;
+	bh=cA4RCTmJeAkqm4P0XLM407EXa7gTI1IGJ6woD6IQn40=;
+	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=225I7eT0Pw+ELzJqfdkFhihkCzCLYRJkBfaR36QU2gzWytibL6luW9rhL5fYlDaCS
-	 JyqwaUbr+Vwbl+kl7lGpY+aROWguGfQgzco6hhlDl9t4OMNnThPy4Fum5qpikcZe8z
-	 5FMjOG1jSbZlMTVgOY9S6V/P5VncjWqMNrLZRrsyNvSBhKH1kBalUDdNByHwyceL32
-	 ccLfiCVLmYzPSlxMePiF08mm+a2wWZVBQpauQ5TMBfxoAnfD//aMop2Du6pmeqsdFb
-	 9ErDAGBhucFr/t/Z6glPhO186r0rNWgpIj5K2+Z0batBb6gUSZhaRzcDTxynZn6TAH
-	 f+LHiO0QjeIZg==
+	b=KVZ1a80WvJTSy0KU3B7f3bQCbGDN2aGwWOMqblrbM/dlSCTQKg1WwIFBnttLlmjQI
+	 yjboGTBiiCsbCXj6Pw7plmDqpzaq3oPj8E1ZQLM3a4LIwOvN9Wm33KOYFMF02LHoih
+	 L6CtKhCR9dkLsrQ0iifj/zKthJhj2HOKJk0XUN1N34nI3VGXLokEzzGYMgwLNpAWIm
+	 C9rfttxp4ED/KcM8lomjHYn99in7zciHHiW1oB60jaaV9y7ILvEyRLE0CFQKW4TemO
+	 7blK8cDr5D5hO7eibVb2InKgeQ1UjDTmEr4CU1aFX3prA35T7sNOpMXtGE0+wm+cfK
+	 Pu/lyqPUZ6vZA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E4082811C0;
-	Sun, 22 Dec 2024 09:24:11 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 50CAC60663;
+	Mon, 23 Dec 2024 03:10:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 8BEBBD3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 22 Dec 2024 09:24:09 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 2317DD3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Dec 2024 03:10:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6A26A40E37
- for <intel-wired-lan@lists.osuosl.org>; Sun, 22 Dec 2024 09:24:09 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 09EE9414CE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Dec 2024 03:10:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZUt1s57sQVDK for <intel-wired-lan@lists.osuosl.org>;
- Sun, 22 Dec 2024 09:24:08 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.243.82;
- helo=nam12-dm6-obe.outbound.protection.outlook.com;
- envelope-from=shayd@nvidia.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D605740B38
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D605740B38
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam12on2082.outbound.protection.outlook.com [40.107.243.82])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D605740B38
- for <intel-wired-lan@lists.osuosl.org>; Sun, 22 Dec 2024 09:24:07 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=u3ubq6P1wbJv8BjXS/c0sHwSlhcuItnNd0cZgSAihykShAj2aBnjH74SKSOz1u+nUReCF5PXLtC4C6vdS63c8FwOiSPapp42j82M9yVw4vR18nRz2grgYs8G4UkJTEM1ZGl4n//WpVSkqnSOesf/vPGcfrHwu1mH77MvarmxOhT4oxpcxuCt3m+bHd/1gf15Twy4VP8nqANUv0sIgJCJLOlJNYtk62+eo4mHE/MHkZPbVE/sKQTGvuw0k1g2v8XFx+Vc8kNLm1cezkYbOv5TOQXAGhOMrYZs6EcBdoL1eLw+Z1/B9im7YXt4OYWE1zFsIjeWTqyTHMbNTs5a87Dxhg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=OE8iGFY6+W6DsTrKDmbDdEggSFPQ9XwVoMWv2Wtzm4M=;
- b=NxzavcwJe1dW7G0cF2PHwxqlmtDMf8qWsBWMPYRSP/ZgSuJeB8XGJMkxPrH638Qq5MKy+kYBcewSUMFCSHbzLJ8ayJymjp7D822gAVyOOV+6uTz4ROBDG13CNHVAT2CG4OAIgXN1pbnvxI0Df11Da1bRCITL5CiI/18eCL2jaVC/398bqO7w4O0OolyP/nDxgrRdonZK27wFjKKf7W2Cie0LwYa6Iorgs7l8cpkbwkqn3MCcSlI5NlbBwwSaVpqp7EZ++XVE4q06iYmCoo2sj/n+jYZqnI2LaIPapFgvEZJloL3ysgxNNFqRYE8C4Cguqu08Gv1SPGrl3IRxyjE2pg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-Received: from PH7P220CA0128.NAMP220.PROD.OUTLOOK.COM (2603:10b6:510:327::15)
- by CH2PR12MB4117.namprd12.prod.outlook.com (2603:10b6:610:ae::13)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8272.20; Sun, 22 Dec
- 2024 09:23:56 +0000
-Received: from CY4PEPF0000EE37.namprd05.prod.outlook.com
- (2603:10b6:510:327:cafe::d4) by PH7P220CA0128.outlook.office365.com
- (2603:10b6:510:327::15) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.8272.17 via Frontend Transport; Sun,
- 22 Dec 2024 09:23:56 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- CY4PEPF0000EE37.mail.protection.outlook.com (10.167.242.43) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8293.12 via Frontend Transport; Sun, 22 Dec 2024 09:23:55 +0000
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Sun, 22 Dec
- 2024 01:23:45 -0800
-Received: from [172.27.61.65] (10.126.230.35) by rnnvmail201.nvidia.com
- (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Sun, 22 Dec
- 2024 01:23:40 -0800
-Message-ID: <58e58bb6-730f-4167-9f86-92ea8ec17019@nvidia.com>
-Date: Sun, 22 Dec 2024 11:23:31 +0200
+ id aqY64sFHnD4s for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 23 Dec 2024 03:10:49 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::52a; helo=mail-ed1-x52a.google.com;
+ envelope-from=kalesh-anakkur.purayil@broadcom.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 76C5B414CB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 76C5B414CB
+Received: from mail-ed1-x52a.google.com (mail-ed1-x52a.google.com
+ [IPv6:2a00:1450:4864:20::52a])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 76C5B414CB
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Dec 2024 03:10:47 +0000 (UTC)
+Received: by mail-ed1-x52a.google.com with SMTP id
+ 4fb4d7f45d1cf-5d3dce16a3dso6699456a12.1
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 22 Dec 2024 19:10:47 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1734923446; x=1735528246;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=cA4RCTmJeAkqm4P0XLM407EXa7gTI1IGJ6woD6IQn40=;
+ b=bfqpWme7XwkrFHcKrtoqBmEnnDIf9i3VI7wc4IiBoto6lR6XavveTXzsaQT0DRiLlK
+ 5/zRpRVCDCIZceg+dtP1wn62kT48wO5XVX14K1QkRHEFubMe53e7mWvIwncPKUoSdWFk
+ F2HaGipYnG+m0cIvaWQ5kBXV2wKCCWZUiBFxlvtQYwg9Mf5AVXhFAgGucLoWW8xpr08o
+ 69OU8GUnlpUqHycqhCC+3viFMsCo4eSCyd7nHwUq4bAiaPntlMf/t9rM3aJJNPWYJIzI
+ VJBBlciaYzWtgRzU/tnm9XCcuCU8V1emQxWobTehY3Zjt2DOHbiIFafHmiOUIq/U68FE
+ Wsew==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWMPgxDJg1XUFWy+E45bMNST903qzsgWxw2Sh973G0EEyUzj8k3zCbwwbAlB+pTwctDny4yv+oQV+nENwK/Xmw=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyT/1W9IFIq8w2/NlvhQ2xqnOgD+iyc3637mpTKVLw8S+ySGVNO
+ 3LuKAPa2paw5DpLrC+i1DyfSHT4ZYb89pwt4oToZRjsqtiuErbK82fOVoSOb3tKTCOMvyqjkAmv
+ lz0v/way5Gz5wt+gnSLsIwS72P5W2YhihBTqJ
+X-Gm-Gg: ASbGncspWq4MLq3TEPDq/myh3olLQlSy1UDUh6zOHuMdY2vZavQ9XyutcM1DeKyjbDe
+ rIHTIaqr4GFcmK12YoOZE3LHKAStbadQwlVA4qg==
+X-Google-Smtp-Source: AGHT+IHuw+hKz7c1y5zvIxErsZLHFpx6nJqsn8BpUslIWHydTCdfrsV4VUrOJQ7P8kDOmTUn6+DtXrtish/FOB/jGdY=
+X-Received: by 2002:a05:6402:42c3:b0:5d4:1c66:d783 with SMTP id
+ 4fb4d7f45d1cf-5d81e335468mr9210305a12.0.1734923445823; Sun, 22 Dec 2024
+ 19:10:45 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Shay Drori <shayd@nvidia.com>
-To: Ahmed Zaki <ahmed.zaki@intel.com>, <netdev@vger.kernel.org>
-CC: <intel-wired-lan@lists.osuosl.org>, <andrew+netdev@lunn.ch>,
- <edumazet@google.com>, <kuba@kernel.org>, <pabeni@redhat.com>,
- <davem@davemloft.net>, <michael.chan@broadcom.com>, <tariqt@nvidia.com>,
- <anthony.l.nguyen@intel.com>, <przemyslaw.kitszel@intel.com>,
- <jdamato@fastly.com>, <akpm@linux-foundation.org>
-References: <20241218165843.744647-1-ahmed.zaki@intel.com>
-Content-Language: en-US
-In-Reply-To: <20241218165843.744647-1-ahmed.zaki@intel.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.126.230.35]
-X-ClientProxiedBy: rnnvmail201.nvidia.com (10.129.68.8) To
- rnnvmail201.nvidia.com (10.129.68.8)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY4PEPF0000EE37:EE_|CH2PR12MB4117:EE_
-X-MS-Office365-Filtering-Correlation-Id: 99f841df-d98e-444d-cb9e-08dd226a5bda
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|82310400026|376014|1800799024|7416014|36860700013|7053199007; 
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?eGIvcXh0a0ZyM25uK1oxRnQyVmpsRlZ6OUsySkJDVCtzeVdLbDEyWDRXY2FG?=
- =?utf-8?B?WEtTSjdGQWxucTRCWnNxdkg1QUdsR1JqOFcraWJ3QlMxeWQxK3p0aVBmUHNy?=
- =?utf-8?B?NFAvNElsSGZnWUJoUUJSZ0gxQjNvQXZzUXNzWUdwazBra2ZaaFhCSS94QnFU?=
- =?utf-8?B?aWNvdEVtSG9OVjRycUdacTJaREN0YUxEMVJoazRJYjZKYmkxQllSNk5qcDhV?=
- =?utf-8?B?ZDNidkRRNWJaL3IyOHlxOHdCL0ZaQXliOTVqM04vb3Ftc0cva1hrSUZMMGpp?=
- =?utf-8?B?cy9Ick1CS3pCa2k3RFF3ZEp6TEpkOS9aQVBXYnRLVk9ONnNPQkFPeWtraCtv?=
- =?utf-8?B?MmpHc29EODBsMnZKVFhjc1V1aUpGMGw4UXJadEZGRGV5NTdNc2hqRW9xd1ZC?=
- =?utf-8?B?U3dDTTI4ZkZxTFFkTjliYVdlRE14Z21EZTFQdHk1NVBIdkUzZkFwWElWeEFK?=
- =?utf-8?B?MTFSVkVwNE5CbUpjSzRQL0ZUTlNvVzdudzhkakhhdkloMWNPOTNIM0NvNSt2?=
- =?utf-8?B?b1lZbkp0M0RGbS9ETDJERXU5U2wzVVpsVDFKdnlFZkZiczlFWGI3cHNqRjV2?=
- =?utf-8?B?WWsxVzRqdzhDak9ndTJxdUJlQTZjTFpTblIzUkpBa0psMnlWTTNVTWtRaTFC?=
- =?utf-8?B?VHY5SUYxS3hKWmdydWY0YW9VVkYyM0paTi9UamVHaXBOU3QvZU1YS29qejB3?=
- =?utf-8?B?ZGFjR0I4VEkrWmJxNDd3djJpTmM1cFduZEVYbXczL2F0bHN3MS9jcDgzdzlp?=
- =?utf-8?B?dUNEWDA3VmZhVHFBVWhNelI4dmdLOU5ZV1cwYTg3TDIxZWhDSVBNSzc0Z0h5?=
- =?utf-8?B?aHo2QzdhZGVQckxWK1RBaWdvRDFLYjRWM1hlMC9iVHBsLzgraU5wdTFmenFu?=
- =?utf-8?B?Y3JlZ01Lam5WaDIwbzVZNTE3NEtMM2pQc1cvM2RsRjFiNFhhcWJrY0tycW94?=
- =?utf-8?B?Ry84K1lCZkhzREphVTluRGx6UUgrRmVGQzJnOUFJMUJiUnRBUkdDWkZyOXl6?=
- =?utf-8?B?M1AxelZCbisrY0ZIS05xMlNkWERkQ3BMK0xHekJ0TlV2S29vYWxtK1dKUVc5?=
- =?utf-8?B?QnFlR0U3N0Zrc2tnb2ZMZHN0blRLM0pqRzd0d2loVGhsSkFOcThHazhmL2xz?=
- =?utf-8?B?bmdqL0wxZ1JOaCsrZlR1Q2N4WDRYajVVZG1MYVd1bmoxYTNmMG5SOS9SSzBp?=
- =?utf-8?B?dXJtK3o0Z0pFZlhFUDNMMjlJS3AydURvVkdCdkNaQ3hsTCtDU1YwOXFZYTZ6?=
- =?utf-8?B?MEpENFI5cHdTS1dTakJkVmJ0Nk1IVUZvNUIzcTY2TDEzdHlFcFNlQmpIUCto?=
- =?utf-8?B?WkRDa2VYVEdvTUJJTEZkNmRUMUw0RFUyeWMwenE2NHRJWGpZWU9mK2p4b1NC?=
- =?utf-8?B?S3NpMjQzK21tak1XZTJ5SXV1VGswR1FOTUZ6VnUveXljVnJpcGVGbFZCVXpx?=
- =?utf-8?B?SGlXQWkxY0hVa1MrRTZiejY2SDBoYmN6NGtKZkdRQ0phdjA3VTdhb3VGYVhC?=
- =?utf-8?B?WEJCSzhnT25pMWxLM2YvbGluTjdSKzFRWDYzMGFZcUFYVW9WQzN3SE8rVmI5?=
- =?utf-8?B?ZzhuVk5UNTJmZURKQjZkYUtibEdLNmxGa2x0bDkxRlRRemhUVFdsWWQxMFhR?=
- =?utf-8?B?R2kvZXlTSldpS0liN3FISUJxMzJ4UTM2eHJDR21nejZEeGx4d21FSEVVM2E2?=
- =?utf-8?B?QlhnYnRCbFNGNk93bGVZTWo1bU1ER0RXaHZYK3Y2OWJnbk5BQ0paRFNBWkg5?=
- =?utf-8?B?OVZSZ01PclJXN0EyWGdZU3V1MzRXcSszd3dSd3ltM0JCTGt6WmZkVHZTaUly?=
- =?utf-8?B?Wm52b1BUcnhXWm1KV3ZLK2tsd2htUGFNcGM4cjJwV05zUVFBaUdOdlZLb1Yz?=
- =?utf-8?B?KzB6K3N2UkhYQW1mTlhZT1lVa1h1SEJXdTdNTGE0ck9iQTJXMVR4ejV1UUxC?=
- =?utf-8?B?M085NlRwcGVTVXpiMGM2NXJwNDhMODgweGg3L2czWVBabGNJS3FrbUhsNTd2?=
- =?utf-8?Q?sILe9Qxb4YVIgsV2FDLNcktfulox6A=3D?=
-X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
- SFS:(13230040)(82310400026)(376014)(1800799024)(7416014)(36860700013)(7053199007);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Dec 2024 09:23:55.8015 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 99f841df-d98e-444d-cb9e-08dd226a5bda
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000EE37.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR12MB4117
+References: <20241221184247.118752-1-linux@treblig.org>
+ <20241221184247.118752-10-linux@treblig.org>
+In-Reply-To: <20241221184247.118752-10-linux@treblig.org>
+From: Kalesh Anakkur Purayil <kalesh-anakkur.purayil@broadcom.com>
+Date: Mon, 23 Dec 2024 08:40:33 +0530
+Message-ID: <CAH-L+nPvNahmiinQVkZveidM4wbsRAP++8O-2pzuuHou-WNTQw@mail.gmail.com>
+To: linux@treblig.org
+Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com, 
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com, 
+ kuba@kernel.org, pabeni@redhat.com, intel-wired-lan@lists.osuosl.org, 
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: multipart/signed; protocol="application/pkcs7-signature";
+ micalg=sha-256; boundary="000000000000b8e8bf0629e7575d"
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=Nvidia.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OE8iGFY6+W6DsTrKDmbDdEggSFPQ9XwVoMWv2Wtzm4M=;
- b=ak42AiVsmfEsFOuhlAzWa7OvEiaTMB4hMjb08Rql2GRV/fl5W138ZFiB2XfZ5hsoBdjdPvK05RN9ZZMtPXAq9aVllMDKuxtEXLWFbTmGr3UHiyDjmU2uTZrPshUsatJxW/e1WPQzlPJTQH8YawyGhtkP/EoEU5o9GP2RXll3rsbucHdmLMUQzH9FnHFj/TTRp0+cpeQQLsFNjE93JbRTsv2fYSyygZj/UcWdBByPZ28CfdvDeSiSrELDVHcCaRmoeKkNkvu6CBTkyb8W2TknBkRLAlh3YCrpy48P8OIKxCJOAyHroe+qacANqlqf/TKmy3rmsisov1Q1GhV1Xc67sA==
+ d=broadcom.com; s=google; t=1734923446; x=1735528246; darn=lists.osuosl.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=cA4RCTmJeAkqm4P0XLM407EXa7gTI1IGJ6woD6IQn40=;
+ b=goFTiH3ThWbhsL1dk36jxbywT0XZH3l+9mE1o5TDxQym6Pry/62Cl9SZb6tllaXuDm
+ GyWx2BDBwSIV/dObr8BgPzglJgu4pp/RkE4f58q+LPTPhWp+QWP6JcWdZULZQJQEG7M6
+ /nyq2Lwwint9PlYzEedwchlXuC536qeD0C6tg=
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=nvidia.com
+ dmarc=pass (p=quarantine dis=none)
+ header.from=broadcom.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=Nvidia.com header.i=@Nvidia.com header.a=rsa-sha256
- header.s=selector2 header.b=ak42AiVs
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 0/8] net: napi: add CPU
- affinity to napi->config
+ dkim=pass (1024-bit key,
+ unprotected) header.d=broadcom.com header.i=@broadcom.com header.a=rsa-sha256
+ header.s=google header.b=goFTiH3T
+Subject: Re: [Intel-wired-lan] [RFC net-next 9/9] i40e: Remove unused
+ i40e_dcb_hw_get_num_tc
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -194,95 +122,109 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+--000000000000b8e8bf0629e7575d
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Sun, Dec 22, 2024 at 12:15=E2=80=AFAM <linux@treblig.org> wrote:
+>
+> From: "Dr. David Alan Gilbert" <linux@treblig.org>
+>
+> The last useof i40e_dcb_hw_get_num_tc() was removed in 2022 by
+> commit fe20371578ef ("Revert "i40e: Fix reset bw limit when DCB enabled
+> with 1 TC"")
+>
+> Remove it.
+>
+> Signed-off-by: Dr. David Alan Gilbert <linux@treblig.org>
+
+LGTM,
+Reviewed-by: Kalesh AP <kalesh-anakkur.purayil@broadcom.com>
 
 
-On 18/12/2024 18:58, Ahmed Zaki wrote:
-> External email: Use caution opening links or attachments
-> 
-> 
-> Move the IRQ affinity management to the napi struct. All drivers that are
-> already using netif_napi_set_irq() are modified to the new API. Except
-> mlx5 because it is implementing IRQ pools and moving to the new API does
-> not seem trivial.
-> 
-> Tested on bnxt, ice and idpf.
-> ---
-> Opens: is cpu_online_mask the best default mask? drivers do this differently
+--=20
+Regards,
+Kalesh AP
 
-cpu_online_mask is not the best default mask for IRQ affinity management.
-Here are two reasons:
-- Performance Gains from Driver-Specific CPU Assignment: Many drivers
-   assign different CPUs to each IRQ to optimize performance. This plays
-a crucial role in CPU utilization.
-- Impact of NUMA Node Distance on Traffic Performance: NUMA topology
-   plays a crucial role in IRQ performance. Assigning IRQs to CPUs on
-   the same NUMA node as the associated device minimizes latency caused
-   by remote memory access.[1]
+--000000000000b8e8bf0629e7575d
+Content-Type: application/pkcs7-signature; name="smime.p7s"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Description: S/MIME Cryptographic Signature
 
-[1]
-for more details on NUMA preference, you can look at commit 
-2acda57736de1e486036b90a648e67a3599080a1
-
-
-> 
-> v2:
->      - Also move the ARFS IRQ affinity management from drivers to core. Via
->        netif_napi_set_irq(), drivers can ask the core to add the IRQ to the
->        ARFS rmap (already allocated by the driver).
-> 
-> RFC -> v1:
->      - https://lore.kernel.org/netdev/20241210002626.366878-1-ahmed.zaki@intel.com/
->      - move static inline affinity functions to net/dev/core.c
->      - add the new napi->irq_flags (patch 1)
->      - add code changes to bnxt, mlx4 and ice.
-> 
-> Ahmed Zaki (8):
->    net: napi: add irq_flags to napi struct
->    net: allow ARFS rmap management in core
->    lib: cpu_rmap: allow passing a notifier callback
->    net: napi: add CPU affinity to napi->config
->    bnxt: use napi's irq affinity
->    ice: use napi's irq affinity
->    idpf: use napi's irq affinity
->    mlx4: use napi's irq affinity
-> 
->   drivers/net/ethernet/amazon/ena/ena_netdev.c  | 21 ++---
->   drivers/net/ethernet/broadcom/bnxt/bnxt.c     | 51 +++--------
->   drivers/net/ethernet/broadcom/bnxt/bnxt.h     |  2 -
->   drivers/net/ethernet/broadcom/tg3.c           |  2 +-
->   drivers/net/ethernet/cisco/enic/enic_main.c   |  3 +-
->   drivers/net/ethernet/google/gve/gve_utils.c   |  2 +-
->   .../net/ethernet/hisilicon/hns3/hns3_enet.c   |  2 +-
->   drivers/net/ethernet/intel/e1000/e1000_main.c |  2 +-
->   drivers/net/ethernet/intel/e1000e/netdev.c    |  2 +-
->   drivers/net/ethernet/intel/ice/ice.h          |  3 -
->   drivers/net/ethernet/intel/ice/ice_arfs.c     | 10 +--
->   drivers/net/ethernet/intel/ice/ice_base.c     |  7 +-
->   drivers/net/ethernet/intel/ice/ice_lib.c      | 14 +--
->   drivers/net/ethernet/intel/ice/ice_main.c     | 44 ----------
->   drivers/net/ethernet/intel/idpf/idpf_txrx.c   | 19 ++--
->   drivers/net/ethernet/intel/idpf/idpf_txrx.h   |  6 +-
->   drivers/net/ethernet/mellanox/mlx4/en_cq.c    |  8 +-
->   .../net/ethernet/mellanox/mlx4/en_netdev.c    | 33 +------
->   drivers/net/ethernet/mellanox/mlx4/eq.c       | 24 +----
->   drivers/net/ethernet/mellanox/mlx4/main.c     | 42 +--------
->   drivers/net/ethernet/mellanox/mlx4/mlx4.h     |  1 -
->   drivers/net/ethernet/mellanox/mlx4/mlx4_en.h  |  1 -
->   .../net/ethernet/mellanox/mlx5/core/en_main.c |  2 +-
->   .../net/ethernet/mellanox/mlx5/core/pci_irq.c |  2 +-
->   drivers/net/ethernet/meta/fbnic/fbnic_txrx.c  |  3 +-
->   drivers/net/ethernet/qlogic/qede/qede_main.c  | 28 +++---
->   drivers/net/ethernet/sfc/falcon/efx.c         |  9 ++
->   drivers/net/ethernet/sfc/falcon/nic.c         | 10 ---
->   drivers/net/ethernet/sfc/nic.c                |  2 +-
->   drivers/net/ethernet/sfc/siena/efx_channels.c |  9 ++
->   drivers/net/ethernet/sfc/siena/nic.c          | 10 ---
->   include/linux/cpu_rmap.h                      | 13 ++-
->   include/linux/netdevice.h                     | 23 ++++-
->   lib/cpu_rmap.c                                | 20 ++---
->   net/core/dev.c                                | 87 ++++++++++++++++++-
->   35 files changed, 215 insertions(+), 302 deletions(-)
-> 
-> --
-> 2.43.0
-> 
+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
+riBJ/K1AFUjRAjFhGV64l++td7dkmnq/X8ET75ti+w1s4FRpFqkD2m7pg5NxdsZphYIXAgMBAAGj
+QjBAMA4GA1UdDwEB/wQEAwIBBjAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBSP8Et/qC5FJK5N
+UPpjmove4t0bvDANBgkqhkiG9w0BAQsFAAOCAQEAS0DbwFCq/sgM7/eWVEVJu5YACUGssxOGhigH
+M8pr5nS5ugAtrqQK0/Xx8Q+Kv3NnSoPHRHt44K9ubG8DKY4zOUXDjuS5V2yq/BKW7FPGLeQkbLmU
+Y/vcU2hnVj6DuM81IcPJaP7O2sJTqsyQiunwXUaMld16WCgaLx3ezQA3QY/tRG3XUyiXfvNnBB4V
+14qWtNPeTCekTBtzc3b0F5nCH3oO4y0IrQocLP88q1UOD5F+NuvDV0m+4S4tfGCLw0FREyOdzvcy
+a5QBqJnnLDMfOjsl0oZAzjsshnjJYS8Uuu7bVW/fhO4FCU29KNhyztNiUGUe65KXgzHZs7XKR1g/
+XzCCBWowggRSoAMCAQICDDfBRQmwNSI92mit0zANBgkqhkiG9w0BAQsFADBbMQswCQYDVQQGEwJC
+RTEZMBcGA1UEChMQR2xvYmFsU2lnbiBudi1zYTExMC8GA1UEAxMoR2xvYmFsU2lnbiBHQ0MgUjMg
+UGVyc29uYWxTaWduIDIgQ0EgMjAyMDAeFw0yMjA5MTAwODI5NTZaFw0yNTA5MTAwODI5NTZaMIGi
+MQswCQYDVQQGEwJJTjESMBAGA1UECBMJS2FybmF0YWthMRIwEAYDVQQHEwlCYW5nYWxvcmUxFjAU
+BgNVBAoTDUJyb2FkY29tIEluYy4xHzAdBgNVBAMTFkthbGVzaCBBbmFra3VyIFB1cmF5aWwxMjAw
+BgkqhkiG9w0BCQEWI2thbGVzaC1hbmFra3VyLnB1cmF5aWxAYnJvYWRjb20uY29tMIIBIjANBgkq
+hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxnv1Reaeezfr6NEmg3xZlh4cz9m7QCN13+j4z1scrX+b
+JfnV8xITT5yvwdQv3R3p7nzD/t29lTRWK3wjodUd2nImo6vBaH3JbDwleIjIWhDXLNZ4u7WIXYwx
+aQ8lYCdKXRsHXgGPY0+zSx9ddpqHZJlHwcvas3oKnQN9WgzZtsM7A8SJefWkNvkcOtef6bL8Ew+3
+FBfXmtsPL9I2vita8gkYzunj9Nu2IM+MnsP7V/+Coy/yZDtFJHp30hDnYGzuOhJchDF9/eASvE8T
+T1xqJODKM9xn5xXB1qezadfdgUs8k8QAYyP/oVBafF9uqDudL6otcBnziyDBQdFCuAQN7wIDAQAB
+o4IB5DCCAeAwDgYDVR0PAQH/BAQDAgWgMIGjBggrBgEFBQcBAQSBljCBkzBOBggrBgEFBQcwAoZC
+aHR0cDovL3NlY3VyZS5nbG9iYWxzaWduLmNvbS9jYWNlcnQvZ3NnY2NyM3BlcnNvbmFsc2lnbjJj
+YTIwMjAuY3J0MEEGCCsGAQUFBzABhjVodHRwOi8vb2NzcC5nbG9iYWxzaWduLmNvbS9nc2djY3Iz
+cGVyc29uYWxzaWduMmNhMjAyMDBNBgNVHSAERjBEMEIGCisGAQQBoDIBKAowNDAyBggrBgEFBQcC
+ARYmaHR0cHM6Ly93d3cuZ2xvYmFsc2lnbi5jb20vcmVwb3NpdG9yeS8wCQYDVR0TBAIwADBJBgNV
+HR8EQjBAMD6gPKA6hjhodHRwOi8vY3JsLmdsb2JhbHNpZ24uY29tL2dzZ2NjcjNwZXJzb25hbHNp
+Z24yY2EyMDIwLmNybDAuBgNVHREEJzAlgSNrYWxlc2gtYW5ha2t1ci5wdXJheWlsQGJyb2FkY29t
+LmNvbTATBgNVHSUEDDAKBggrBgEFBQcDBDAfBgNVHSMEGDAWgBSWM9HmWBdbNHWKgVZk1b5I3qGP
+zzAdBgNVHQ4EFgQUI3+tdStI+ABRGSqksMsiCmO9uDAwDQYJKoZIhvcNAQELBQADggEBAGfe1o9b
+4wUud0FMjb/FNdc433meL15npjdYWUeioHdlCGB5UvEaMGu71QysfoDOfUNeyO9YKp0h0fm7clvo
+cBqeWe4CPv9TQbmLEtXKdEpj5kFZBGmav69mGTlu1A9KDQW3y0CDzCPG2Fdm4s73PnkwvemRk9E2
+u9/kcZ8KWVeS+xq+XZ78kGTKQ6Wii3dMK/EHQhnDfidadoN/n+x2ySC8yyDNvy81BocnblQzvbuB
+a30CvRuhokNO6Jzh7ZFtjKVMzYas3oo6HXgA+slRszMu4pc+fRPO41FHjeDM76e6P5OnthhnD+NY
+x6xokUN65DN1bn2MkeNs0nQpizDqd0QxggJtMIICaQIBATBrMFsxCzAJBgNVBAYTAkJFMRkwFwYD
+VQQKExBHbG9iYWxTaWduIG52LXNhMTEwLwYDVQQDEyhHbG9iYWxTaWduIEdDQyBSMyBQZXJzb25h
+bFNpZ24gMiBDQSAyMDIwAgw3wUUJsDUiPdpordMwDQYJYIZIAWUDBAIBBQCggdQwLwYJKoZIhvcN
+AQkEMSIEIDt57hYOWpqxidnGXlZ4Gle/ZNw6O+n0j8nAj74INWy+MBgGCSqGSIb3DQEJAzELBgkq
+hkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTI0MTIyMzAzMTA0NlowaQYJKoZIhvcNAQkPMVwwWjAL
+BglghkgBZQMEASowCwYJYIZIAWUDBAEWMAsGCWCGSAFlAwQBAjAKBggqhkiG9w0DBzALBgkqhkiG
+9w0BAQowCwYJKoZIhvcNAQEHMAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQAz7kDO/6o6
+WJIlQor06Rbk64EoWKqzArm88at5hQDbwAOy//BdigtrhZRX4JZMvVPFcL0BptNNEGSzopkyFLcv
+O8/XLcTcF8pKJQCbHMiiS8a/f54bgaiMeXpxKr6TwLcqjhbkq+iNonsz8XrKwTLq3/3zXgVfkJ/0
+mYThy7grDzaSMKnnqgXfI6UAUfnOOQ7yxOq7uGnerG2jyfR7V0E5bQ2BUYNhJ+VYW4XVE9OewIlU
+TrlklaIAAxGGJ6fA0rr7vp0IRN5giWdNt5iOXCLm9itM55VGtA7rnlKNm12KEngZQWlpkZbsCeFY
+w/qtixBNWaG6Ok9V9g20wPXionql
+--000000000000b8e8bf0629e7575d--
