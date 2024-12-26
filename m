@@ -1,135 +1,136 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B7CB99FB652
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Dec 2024 22:43:55 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 03DF49FCB28
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 26 Dec 2024 14:25:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2302A812F9;
-	Mon, 23 Dec 2024 21:43:54 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D672C80FEF;
+	Thu, 26 Dec 2024 13:25:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XEeNBkUzCHig; Mon, 23 Dec 2024 21:43:53 +0000 (UTC)
+ id jgarWMgL9M8O; Thu, 26 Dec 2024 13:25:05 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 64966812F3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B8F5B80FB8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1734990233;
-	bh=eJINGdpDwCDG3ewzWN9k9REq0fQ7Kv+5EsDRsZO4yDQ=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1735219504;
+	bh=XT1lRnhXlXD21/E0zejBEol4+u5gRnt3P8KO+08FkPg=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=sKbbG/Yvm8Pzh3lMRat2ijy40YtLf/XUjHsb4GtVHRVUO3AiCl9Bw4AHSiqDbBOko
-	 B864mqKCBvEHUh/28hCzJkTqSS7JZ8u9vqAv3gkCeCZkcmFIl1AFX4ZMOITEN1Vz/A
-	 D7HSUKJXOpwlw6oeGJYSlKFVrEMFn1X5wcjMv8XR0pghgDn1WUSy8DlU0rQEuVeZoH
-	 0yjF7hwOu1ywqMYPjiaiaTfbtMikvZ7B99OPKsSBp9ST1kaE4Vxs6ltUD0Eo71D2tQ
-	 uGyenO1mruF0FMnm47BKvEnbiGVlUMfJ9Z5aDcQLKuG0mf4O8WeVMomc6aWtZHWjiQ
-	 0KkMcWeceaZww==
+	b=HXjh1e14G7beK/wEyiIBZ4wHjbEph9Tu9KOhrSRG5JWnqucEWlczJ/i5zw+WVj1en
+	 SptblOnJM/1hvNYiA1dVD070OtizzsNjYj677k6OH+z28u67BSiDBhxQ+RN82Dreh8
+	 G9xsGwtgd+XKsToFQwmcTZ5iEvUHdNm5kodGGXRiyLFarf/OeSNNAobHu8au3c77Ni
+	 ispO+szj7nwDOzUjlpSCCYQjZIfcFI5I9h77jEz562jg9Xu7zJrF6sySpKN3RfeTIB
+	 dagAs60tcSCP33UVlWPPNDCavsb5NP3ra3F6eBzIoaVBwVrcdQVyL/ZieRV/5yGPTf
+	 k9tc8Ot3VouEg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 64966812F3;
-	Mon, 23 Dec 2024 21:43:53 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B8F5B80FB8;
+	Thu, 26 Dec 2024 13:25:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 7BE90757
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Dec 2024 21:43:51 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id CBE24F15
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Dec 2024 13:25:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 49DC0812F3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Dec 2024 21:43:51 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9F0766069A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Dec 2024 13:25:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XE0p6LpoABJC for <intel-wired-lan@lists.osuosl.org>;
- Mon, 23 Dec 2024 21:43:50 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::32c; helo=mail-wm1-x32c.google.com;
- envelope-from=olteanv@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 34CC9812F2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 34CC9812F2
-Received: from mail-wm1-x32c.google.com (mail-wm1-x32c.google.com
- [IPv6:2a00:1450:4864:20::32c])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 34CC9812F2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Dec 2024 21:43:50 +0000 (UTC)
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-4361aa6e517so6407265e9.2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Dec 2024 13:43:49 -0800 (PST)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id VebpJKpY8WHN for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 26 Dec 2024 13:25:01 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=wcosta@redhat.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 775D060619
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 775D060619
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 775D060619
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Dec 2024 13:24:59 +0000 (UTC)
+Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com
+ [209.85.216.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-447-u3MaMtogOtedqGGIZsx8MQ-1; Thu, 26 Dec 2024 08:24:56 -0500
+X-MC-Unique: u3MaMtogOtedqGGIZsx8MQ-1
+X-Mimecast-MFC-AGG-ID: u3MaMtogOtedqGGIZsx8MQ
+Received: by mail-pj1-f71.google.com with SMTP id
+ 98e67ed59e1d1-2ef909597d9so11835952a91.3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Dec 2024 05:24:56 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734990228; x=1735595028;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=eJINGdpDwCDG3ewzWN9k9REq0fQ7Kv+5EsDRsZO4yDQ=;
- b=lJEBmc+cYOfrS/wykkMCkKEdH+CXbxA78B4xbzDTuGB+xPUKuzqONzXiJqLvpDTN8J
- Hdj7JI0tQXfRlCjxWSAm8zXsTM2o/PvMdkNC8ESyZl/fc//sn27GGwajIMS82Wq5uJEg
- b+C9k2PMNstKy/yuWGdU0tqHJYrGyg12nRa6kZYV5QqLj6qhJDyNXBxF+5eHh4qYc405
- Loz5oWU3ZV4GW0w8HEumpJLP9FYRqHL6ZtQJevLHCAbGHvFfnA7JYmejzUT28seDC0zX
- Mc3hqNUGVbR3I6kSYO6tbWM3JxTb9N7GcW0pHJ9O2lwbez9evf4KUhelnJc0jdB+LNGZ
- hdhg==
+ d=1e100.net; s=20230601; t=1735219495; x=1735824295;
+ h=content-transfer-encoding:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=XT1lRnhXlXD21/E0zejBEol4+u5gRnt3P8KO+08FkPg=;
+ b=ub6e+T65WcxJVqQfLVAr6HMZ56CvnmZ43H9iwAZVs8waDGkkTV+UMi2y7Iw5SprTEN
+ QbcxD4yyLqegFeupaScw0OlfbKbNjlCEtW8wJdu7IOI8IkY9J2KUu+FQoCKhxuhD8pPf
+ Jq9tble1RXwsASfJojN6uMo71CKMDLQf5IiMpMg91fspgouqYHWECZNxSTEty2h4w5qe
+ VQ98TeLEN1gZc+DukSYBI3g7+ufMEPsOnXA98z3yFCm1XByDyxGzmV8A6rjXnjRb+bpr
+ TNmo6XoLz7nKhjEOIWrtXU09akS32CBgsrj2gk6dEhbCZsVA9DdHzr+QtRgxaDi9BdfQ
+ Mybg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXOP1sjH057MsxDr0Q9Nf49KVa/rO0tyuwxa5tPIj6Sz1rkWNBwQNqykP8rfJ1MzplaTmX/jgPRgRV58wTgfWg=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YyU3ayBqZVnuqUA05YShR5tt3Jkwh1YH4w8s+e/X+/gHIogXXjP
- fx8Y/wrrZhM6/MmejCTnooytUDa/Ag3xBOen3//UoFw8VuRNFqp5
-X-Gm-Gg: ASbGncsasF7sEPmLtZVUTOLX/ovN0XL9ewcbvvzctsvVLe0nuZ3hWu7CIGECo+SFbW/
- Oq/PGQn9kS2Pb/+1hL9iAEaZKq6Z9WOpD5SmUKLvPjXuByS7gLVq8XP5gxBXRl3Mw5iwAz29+Xa
- pO1SNipB3IlI47VkwKRlD5iWr1RJ4tPMOyL6o+t4fDZdrYiJzCU7hj5UHDHHFPilxaotb8Rk+Yi
- W/1ndsniC/0HbEG1JpNxfxmkp91UbfSDwAvMMYrOF/U
-X-Google-Smtp-Source: AGHT+IHL4I7TGBfT9Dfs3U2q5y6UKuVcMOivINOhCJ4rodXMGa1Ob/wIQjBOw7XqflRGuJN4X3cDbA==
-X-Received: by 2002:a05:6000:70a:b0:385:faaa:9cfe with SMTP id
- ffacd0b85a97d-38a223f82e8mr5051691f8f.12.1734990227688; 
- Mon, 23 Dec 2024 13:43:47 -0800 (PST)
-Received: from skbuf ([86.127.124.81]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38a1c8330d4sm12226921f8f.29.2024.12.23.13.43.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Dec 2024 13:43:46 -0800 (PST)
-Date: Mon, 23 Dec 2024 23:43:43 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: "Abdul Rahim, Faizal" <faizal.abdul.rahim@linux.intel.com>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>,
- Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, bpf@vger.kernel.org
-Message-ID: <20241223214343.dbmhbj7cr7pfbeub@skbuf>
-References: <20241216064720.931522-1-faizal.abdul.rahim@linux.intel.com>
- <20241216064720.931522-1-faizal.abdul.rahim@linux.intel.com>
- <20241216064720.931522-6-faizal.abdul.rahim@linux.intel.com>
- <20241216064720.931522-6-faizal.abdul.rahim@linux.intel.com>
- <20241216181339.zcnnqna2nc73sdgh@skbuf>
- <ef07ba7e-eb61-495b-8abc-a46d675302d4@linux.intel.com>
+ AJvYcCXrsWE81OKEYOYKEWIGU0jb+Alrtw8yVKMRxUdoioxa1IJlHh001+PgjNAjT6o9ManaDeYneO7G2po7twrPCng=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Ywwyk6wslilHQl6g/SvXum6kY17j7omE9pgweW1KewbMM5e/S03
+ 2MbYYXHKzWjKJzot3hpcHPgQ1PAAiPfq4fZjLrLqaXeiT4tv7z6b2u2cf/ZLi/Vrdj7GV6Rqrtm
+ XrjylIFHanRy0/TIyAKUval0Q0+gZBTcmyE3+tiFKYxwmAxtIm7CgTKm4G97gwTKEky1DtH/kUI
+ /Smku0Odxkkts1Jx4dV30LrSsbARPVjYjt6oRr+0Q06w==
+X-Gm-Gg: ASbGnctqZTG+kOstKeDR5x2opYTIivF8cSFgdviBOR+mio1eq0sPxbIxJhsCe18xYV1
+ tuvbL+saG9s1hGILVMddcIhmm90nP5JWBKrSjog==
+X-Received: by 2002:a17:90b:534b:b0:2ee:c91a:acf7 with SMTP id
+ 98e67ed59e1d1-2f452dfccdcmr34514429a91.4.1735219495457; 
+ Thu, 26 Dec 2024 05:24:55 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGu5/eqaIpVwwwa50DqmMKrB39NKhlZwdLHtsYGthsNbvbf6Td7aNviqn3EUtwWhqMcPArYWUXX5P9Nsr3evBk=
+X-Received: by 2002:a17:90b:534b:b0:2ee:c91a:acf7 with SMTP id
+ 98e67ed59e1d1-2f452dfccdcmr34514409a91.4.1735219495183; Thu, 26 Dec 2024
+ 05:24:55 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <ef07ba7e-eb61-495b-8abc-a46d675302d4@linux.intel.com>
+References: <20241204114229.21452-1-wander@redhat.com>
+In-Reply-To: <20241204114229.21452-1-wander@redhat.com>
+From: Wander Lairson Costa <wander@redhat.com>
+Date: Thu, 26 Dec 2024 10:24:43 -0300
+Message-ID: <CAAq0SUmVn57F5hc=iJkS1-8WPrguOcEYrirZ7hFgiFxhcTCowQ@mail.gmail.com>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Clark Williams <clrkwllms@kernel.org>, 
+ Steven Rostedt <rostedt@goodmis.org>, Jeff Garzik <jgarzik@redhat.com>, 
+ Auke Kok <auke-jan.h.kok@intel.com>, 
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>, 
+ "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
+ open list <linux-kernel@vger.kernel.org>, 
+ "open list:Real-time Linux (PREEMPT_RT):Keyword:PREEMPT_RT"
+ <linux-rt-devel@lists.linux.dev>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: jZoUnkKjpOiXqUSLgqNw-ujur-P3mfoTL1EG-lmth7I_1735219495
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1734990228; x=1735595028; darn=lists.osuosl.org;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:from:to
- :cc:subject:date:message-id:reply-to;
- bh=eJINGdpDwCDG3ewzWN9k9REq0fQ7Kv+5EsDRsZO4yDQ=;
- b=ipjka0Q+otUZkJ0+VlA8sQBX0WQeCjtkVUmYGq1ndEHhc/47aram8dgN7LnfuE62Xu
- D6pfGGprYyxtFvGRlpXS3FcBmArjExX8BBcPU7MS1HQ9pMosiJmwF+BmmEzgGkkA6vAZ
- +az44bWhDY1GeZBB5NdfOlX9z23rfNSVFOSwOEwaC2CiJKgToPEwtabh6f6iqPDKgHY2
- PWi4jQqdTj5b3CMGpLiTS0iW/D+V55AJQdlEE5EWKnuRFpgKqg4cJ+pG96EnV+VfRAeM
- 5jh4OBgl4/ANVzGA8zfAaT5eqpEylqcUMZSgFlTdGCyRJTWOLuQBzRTZn8cynwaURogl
- CbLw==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ d=redhat.com; 
+ s=mimecast20190719; t=1735219498;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=XT1lRnhXlXD21/E0zejBEol4+u5gRnt3P8KO+08FkPg=;
+ b=c6xQuj7s/NlFTY4CILLKQFdIcXFWNRgKLSQTomGgqUzm9z/jfOZjxX91XO3ha6SLAxJtru
+ wcptxBGpWUq/0FdzTWOZnPxYWRMFZTyenBJxYR3AblSkuLgA2kneuP71WOIukSlnDPXNXp
+ JpZPeR8i/af7KBHZCHN5TcUpefMD9nM=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=ipjka0Q+
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 5/9] igc: Add support to set
- MAC Merge data via ethtool
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
+ header.s=mimecast20190719 header.b=c6xQuj7s
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net 0/4] igb: fix igb_msix_other()
+ handling for PREEMPT_RT
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -145,75 +146,69 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Faizal,
+On Wed, Dec 4, 2024 at 8:43=E2=80=AFAM Wander Lairson Costa <wander@redhat.=
+com> wrote:
+>
+> This is the second attempt at fixing the behavior of igb_msix_other()
+> for PREEMPT_RT. The previous attempt [1] was reverted [2] following
+> concerns raised by Sebastian [3].
+>
+> The initial approach proposed converting vfs_lock to a raw_spinlock,
+> a minor change intended to make it safe. However, it became evident
+> that igb_rcv_msg_from_vf() invokes kcalloc with GFP_ATOMIC,
+> which is unsafe in interrupt context on PREEMPT_RT systems.
+>
+> To address this, the solution involves splitting igb_msg_task()
+> into two parts:
+>
+>     * One part invoked from the IRQ context.
+>     * Another part called from the threaded interrupt handler.
+>
+> To accommodate this, vfs_lock has been restructured into a double
+> lock: a spinlock_t and a raw_spinlock_t. In the revised design:
+>
+>     * igb_disable_sriov() locks both spinlocks.
+>     * Each part of igb_msg_task() locks the appropriate spinlock for
+>     its execution context.
+>
+> It is worth noting that the double lock mechanism is only active under
+> PREEMPT_RT. For non-PREEMPT_RT builds, the additional raw_spinlock_t
+> field is ommited.
+>
+> If the extra raw_spinlock_t field can be tolerated under
+> !PREEMPT_RT (even though it remains unused), we can eliminate the
+> need for #ifdefs and simplify the code structure.
+>
+> I will be on vacation from December 7th to Christmas and will address
+> review comments upon my return.
+>
+> If possible, I kindly request the Intel team to perform smoke tests
+> on both stock and realtime kernels to catch any potential issues with
+> this patch series.
+>
+> Cheers,
+> Wander
+>
+> [1] https://lore.kernel.org/all/20240920185918.616302-2-wander@redhat.com=
+/
+> [2] https://lore.kernel.org/all/20241104124050.22290-1-wander@redhat.com/
+> [3] https://lore.kernel.org/all/20241104110708.gFyxRFlC@linutronix.de/
+>
+>
+> Wander Lairson Costa (4):
+>   igb: narrow scope of vfs_lock in SR-IOV cleanup
+>   igb: introduce raw vfs_lock to igb_adapter
+>   igb: split igb_msg_task()
+>   igb: fix igb_msix_other() handling for PREEMPT_RT
+>
+>  drivers/net/ethernet/intel/igb/igb.h      |   4 +
+>  drivers/net/ethernet/intel/igb/igb_main.c | 160 +++++++++++++++++++---
+>  2 files changed, 148 insertions(+), 16 deletions(-)
+>
+> --
+> 2.47.0
+>
 
-On Mon, Dec 23, 2024 at 05:23:27PM +0800, Abdul Rahim, Faizal wrote:
-> To recap:
-> 
-> Standard range: 60, 124, 188, 252 (without mCRC).
-> i226 range: 64, 128, 192, 256 (without mCRC).
-> 
-> The current IGC_TX_MIN_FRAG_SIZE is incorrectly set to 68 due to our
-> misinterpretation of the i226 documentation:
-> "The minimum size for non-final preempted fragments is 64 * (1 + MIN_FRAG) +
-> 4 (mCRC)."
-> 
-> The calculation above is for the fragment size on the wire, including mCRC.
-> For the TX preemption point and pure fragment size, mCRC should not be
-> included, as confirmed by the hardware owner.
-> 
-> On RX, i226 can handle any size, even the standard minimum of 60 octets
-> (without mCRC).
-> 
-> What would be ideal for i226:
-> Min frag user set 60:64 → Multiplier = 0.
-> Min frag user set 65:128 → Multiplier = 1.
-> (And so on)
-> 
-> To make this work and reuse the existing code, we’d need to tweak these two
-> functions:
-> ethtool_mm_frag_size_add_to_min(val_min, xxx)
-> ethtool_mm_frag_size_min_to_add(xx)
-> 
-> With the current code, if I pass 64 octets as val_min to
-> ethtool_mm_frag_size_add_to_min(), it returns error.
-> 
-> Proposed modification:
-> Add a new parameter to ethtool_mm_frag_size_min_to_add() - maybe let's call
-> it dev_min_tx_frag_len.
-> 
-> Set dev_min_tx_frag_len = 64 for i226, 60 for other drivers.
-> This field will be used to:
-> (1) modify the calculation in ethtool_mm_frag_size_min_to_add()
-> (2) as a warning prompt to user when the value is not standard, done in
-> ethtool_mm_frag_size_add_to_min()
-> 
-> I was thinking (1) would modify the existing:
-> u32 ethtool_mm_frag_size_add_to_min(u32 val_add)
-> {
-> 	return (ETH_ZLEN + ETH_FCS_LEN) * (1 + val_add) - ETH_FCS_LEN;
-> }
-> 
-> To something like:
-> u32 ethtool_mm_frag_size_add_to_min(u32 val_add, u32 dev_min_tx_frag_len)
-> {
->     return dev_min_tx_frag_len + (val_add * 64);
-> }
-> 
-> So this will yield:
-> Standard range (dev_min_tx_frag_len = 60): 60, 124, 188, 252
-> i226 range (dev_min_tx_frag_len = 64): 64, 128, 192, 256
-> 
-> But what's not so nice is, the rest of other drivers have to set this new
-> param when calling ethtool_mm_frag_size_add_to_min().
-> 
-> Is something like this okay ? I'm open to better suggestion.
+I had requested Red Hat Network QA to run regression tests on this,
+and they recently reported that no issues were found.
 
-I'm taking a break probably for the rest of the year, and spending time
-for the Christmas holidays mostly off lists.
-
-I didn't look through all your replies. Just regarding the one quoted
-above: just don't use the ethtool_mm_frag_size_add_to_min() and
-ethtool_mm_frag_size_min_to_add() helpers if they aren't useful as-is.
-They are designed for a standardized NIC implementation. They are opt-in
-from driver code for a reason.
