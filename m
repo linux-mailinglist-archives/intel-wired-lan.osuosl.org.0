@@ -1,120 +1,99 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5D309FE9D3
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 30 Dec 2024 19:27:53 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D39F99FEE9B
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 31 Dec 2024 10:52:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 30D5940236;
-	Mon, 30 Dec 2024 18:27:52 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4542B408AB;
+	Tue, 31 Dec 2024 09:52:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Gw-kGv91yLr4; Mon, 30 Dec 2024 18:27:50 +0000 (UTC)
+ id QmQBuuCtd4ZM; Tue, 31 Dec 2024 09:52:18 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CD826402F3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7423B408A7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1735583270;
-	bh=cWwGlGKRBHUWO/a7dKvlUTDhtDD+VetBHtkfDGNAz2Y=;
+	s=default; t=1735638738;
+	bh=joerHJta4PiHy0Ek+q8+UWYD567HhxRUpImqMKjlaMI=;
 	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=LkbqifujA6Sf89E83t5YSlsezZI60sGYTE8Isu0yfwoY8RfbXTbpGHKxB5aFSEvF8
-	 G4JuAzylFxlZwGsj/Tfz2LvN8AasNcKdnbJOzVRsGmXswHbOP/ZK6LjCwt6fxeoe4k
-	 tyeTPDLXu2cQrsJHmk8I2QO65SrARgECPvKJNVlBtqHBJ5zXssbQ0iQ1S6ZY1Yjvt8
-	 SNnJ6bYvMeszKwDY3nMrOBtYqmCdEaIXrX13LZBjPN3XSrljypbskn1f89F1cZTmi8
-	 fJyCH8K1BoqWS/5nh6LnabQtedhDNcCoMIFGZQoOaDQ+v5eSUPp16QN6aN0dqzNMIf
-	 ONot670/knz2A==
+	b=XnKVjlV/h+LjI9U+2soBfW1gqSNbi5Hb0rd/4kmIEUn/ymyZehJgCPASf3U0Uxkqy
+	 CInctaGKyH0zpxiHWvFQoaSaStZ8nycA/cC8XWZnizFxyjUYKnGzhB00MMIL1kq4d7
+	 xzcc121R3ZS2Nl/shBR6jXPJX3L7WijftHGRWPAblGiu8vKiPsQseSHxUAgMmkjqhm
+	 h8msDkKH3DZzg5JvQ1X3S7rhk7o980MOrqRY7a/kJ/hVG+rE53biqWSLwlyBisANDc
+	 /Jln6C77kQJVFSVDDLlxciqV90d5jRYKUR6/mWxZ0DCQvLeMoV+cKRu+4rXhZ/bVDj
+	 Y9qpBas2vrylQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CD826402F3;
-	Mon, 30 Dec 2024 18:27:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7423B408A7;
+	Tue, 31 Dec 2024 09:52:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id E4522E0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Dec 2024 03:55:17 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id D3D9B968
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Dec 2024 09:52:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id C008E40272
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Dec 2024 03:55:17 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B074D60A88
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Dec 2024 09:52:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id jYo07gUo-TcL for <intel-wired-lan@lists.osuosl.org>;
- Fri, 27 Dec 2024 03:55:16 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::62f; helo=mail-pl1-x62f.google.com;
- envelope-from=yue.zhao@shopee.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 3985640245
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3985640245
-Received: from mail-pl1-x62f.google.com (mail-pl1-x62f.google.com
- [IPv6:2607:f8b0:4864:20::62f])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3985640245
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Dec 2024 03:55:15 +0000 (UTC)
-Received: by mail-pl1-x62f.google.com with SMTP id
- d9443c01a7336-2167141dfa1so80238315ad.1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Dec 2024 19:55:15 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1735271715; x=1735876515;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=cWwGlGKRBHUWO/a7dKvlUTDhtDD+VetBHtkfDGNAz2Y=;
- b=MTSwL/V8UrPEuAEz3atIlTt008atMvdE/4gJe4uQ9oTSfH68lIPq7NmRVBdNULNb7R
- wJCTT8ezeXTXnt0jR+9lH+v5IhNLVwqhnZ4tlb7Jx16lVpjzBvgrEm+JofKas1fPUloH
- aOlvPdJVh56eQSnjTLzdMLN278k2CShIOpuGw0Scnu1XlJkpyoJ2Qzt2pdCKv4m913s7
- 6SgqOEjfvOX+gCj9XgsEXbhgVuqh2llkA+tb3kwnGMG7yeS1Iv+XjrHvut+1LrZtNRYB
- ZpjUIWY2r7mChaBj2ZiIPPt4puvwkhP0rAMjHw2WKqyqTaRMO9YQNUs1vkadLXSLAwl3
- E80Q==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXdGDzT8yvN5Zh3Sh136kvyuL9pWoZxZSlOangh1KaB922m6C3ls8MZ60rKSofQ6g9O8bN+eEbreiEFKBII5cE=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YxnT39ECQ3Q/mZ+oqQl85shzLe9Y/MDhRRwEG4vesRqB3Q59Xpc
- v2qWvAXoCKZcBRPSARfjJl/qcLgEQNwHYp7aU4p0LhjxJ6QzdfR5oKd++0jFN8Y=
-X-Gm-Gg: ASbGncvQlHHC0+AVIB+1ofigAQ5Owz3h7ihzppldX/7V0FB51HKo8eyjFl1+NFEgQPi
- X2Y15qHGRaI8dYbaBPxUERXXt5Ag2lxtmAhxqk8i/DugTvoM50mMK+QOsDYEcrb8pWZqaOER9lR
- fOYwnghR/CDocWI9cfioqCMnF3QviC0xNF9HB48BKz88cq6rlP/mzAxb9nQ39iAVEkZukFqKyal
- gf6cGR5mSWEAnvlMj4QCejbwQdUWnjX7n9to8nj3Q3/3vmUez3QmzbRgMxxsmfJNWXPd2idrakk
- hSZXC4IHvCOYNUE=
-X-Google-Smtp-Source: AGHT+IHDuLIcbu0hPHGa/G2uQ8mI4bKwiPV1xjD49qtnVtNbj/ofNv3MK+JAbrl4vueOmhZWxI6HCw==
-X-Received: by 2002:a17:903:2a87:b0:216:3f6e:fabd with SMTP id
- d9443c01a7336-219da5cc2d0mr445657615ad.7.1735271715370; 
- Thu, 26 Dec 2024 19:55:15 -0800 (PST)
-Received: from R4NDHT277M.cn.corp.seagroup.com ([143.92.118.3])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-842b229c48fsm10606252a12.26.2024.12.26.19.55.11
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 26 Dec 2024 19:55:14 -0800 (PST)
-From: Yue Zhao <yue.zhao@shopee.com>
-To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- andrew+netdev@lunn.ch, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org
-Cc: chunguang.xu@shopee.com, haifeng.xu@shopee.com,
- Yue Zhao <yue.zhao@shopee.com>
-Date: Fri, 27 Dec 2024 11:54:59 +0800
-Message-Id: <20241227035459.90602-1-yue.zhao@shopee.com>
-X-Mailer: git-send-email 2.39.5 (Apple Git-154)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 3mu98imRiy92 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 31 Dec 2024 09:52:15 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
+ helo=mgamail.intel.com; envelope-from=mateusz.polchlopek@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org EE1E6608CA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EE1E6608CA
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id EE1E6608CA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Dec 2024 09:52:14 +0000 (UTC)
+X-CSE-ConnectionGUID: PYTIPS1iQlGx4IxBsv2wEg==
+X-CSE-MsgGUID: +f+iM4aXSfu2h3R+JXK1vQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11301"; a="35821812"
+X-IronPort-AV: E=Sophos;i="6.12,279,1728975600"; d="scan'208";a="35821812"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+ by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Dec 2024 01:52:14 -0800
+X-CSE-ConnectionGUID: EZN/LjbjQfuJBGpga3mkeA==
+X-CSE-MsgGUID: 0zD24EPZTXmrfT9M6jMNIg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,279,1728975600"; d="scan'208";a="101515664"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by fmviesa009.fm.intel.com with ESMTP; 31 Dec 2024 01:52:13 -0800
+Received: from metan.igk.intel.com (metan.igk.intel.com [10.123.220.124])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id D9D672876E;
+ Tue, 31 Dec 2024 09:52:11 +0000 (GMT)
+From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+Date: Tue, 31 Dec 2024 10:50:44 +0100
+Message-Id: <20241231095044.433940-1-mateusz.polchlopek@intel.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mailman-Approved-At: Mon, 30 Dec 2024 18:27:46 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=shopee.com; s=shopee.com; t=1735271715; x=1735876515; darn=lists.osuosl.org; 
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=cWwGlGKRBHUWO/a7dKvlUTDhtDD+VetBHtkfDGNAz2Y=;
- b=Y6baA87p9JnpOGMjfq19xACNJuF3myij+embr7EazqACxWBvbXbdvF1EBiJ6TWoF5M
- 2wfSjcDZc215fS7W4Ud3fhY2zFyN03HccNcrTPbLpYgx/DVGKH7gvlqQL3yPMIsBeM9x
- BAJApBmDc5/Qlmg1vFP4LRmvA1Q99q7bbWEusLvYtrvMcIo6ffA1WOOFaLpvsIC9+p2x
- AufbHsOJH3fQhv2DV9/a4AB4BpOF8Fy+BhLGpw0VXifGFGG16HA6Z5ge+cpBre0fiv9L
- HfZkcQNRsOLTl3sZMSMiCyy3mzsBuH9SwEwHULnPyQfBNNxX4KhQp5NEa5ubw1/2x8ZH
- t/PQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=shopee.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1735638735; x=1767174735;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=trPPlrmkaokGszHUJ2Zza6/CiedOSJPQxAu/cKcQe6w=;
+ b=EwR8XuTQX8M43Ay47AVmvvAUqAGZuRMBUv/LpxdVeWY5vHRgC3hYniGn
+ tsMgi/egRVqlN0SQVFkWbhS7U7jlQkTt0oFYrXlbpNfcAqTRjuFUwL/B6
+ swBv2grS6sb0/TbAJqwWSKbacX1sO5qeZ7SjjGuB5wt2FLSzvJWPgSHsH
+ tnWR+uqXxpoYnsh9M9mdsv9crATSDbg7iqFQXZCj0RNAghCAkTvTYQdm/
+ kYCWsDGmku62hjgvnDXnefX0yYY4kIboqoo5sZk93OnIpC3ByYpKNRqur
+ q88E3xwKvB3aN352qlN2E6Hotf6RF9bxbAeqFsqFlbhfOlfNUVmhGjWzN
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=shopee.com header.i=@shopee.com header.a=rsa-sha256
- header.s=shopee.com header.b=Y6baA87p
-Subject: [Intel-wired-lan] [PATCH] i40e: Disable i40e PCIe AER on system
- reboot
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=EwR8XuTQ
+Subject: [Intel-wired-lan] [PATCH iwl-net v1] ice: remove invalid parameter
+ of equalizer
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -130,166 +109,62 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Disable PCIe AER on the i40e device on system reboot on a limited
-list of Dell PowerEdge systems. This prevents a fatal PCIe AER event
-on the i40e device during the ACPI _PTS (prepare to sleep) method for
-S5 on those systems. The _PTS is invoked by acpi_enter_sleep_state_prep()
-as part of the kernel's reboot sequence as a result of commit
-38f34dba806a ("PM: ACPI: reboot: Reinstate S5 for reboot").
+It occurred that in the commit 70838938e89c ("ice: Implement driver
+functionality to dump serdes equalizer values") the invalid DRATE parameter
+for reading has been added. The output of the command:
 
-We first noticed this abnormal reboot issue in tg3 device, and there
-is a similar patch about disable PCIe AER to fix hardware error during
-reboot. The hardware error in tg3 device has gone after we apply this
-patch below.
+  $ ethtool -d <ethX>
 
-https://lore.kernel.org/lkml/20241129203640.54492-1-lszubowi@redhat.com/T/
+returns the garbage value in the place where DRATE value should be
+stored.
 
-So we try to disable PCIe AER on the i40e device in the similar way.
+Remove mentioned parameter to prevent return of corrupted data to
+userspace.
 
-hardware crash dmesg log:
-
-ACPI: PM: Preparing to enter system sleep state S5
-{1}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 5
-{1}[Hardware Error]: event severity: fatal
-{1}[Hardware Error]:  Error 0, type: fatal
-{1}[Hardware Error]:   section_type: PCIe error
-{1}[Hardware Error]:   port_type: 0, PCIe end point
-{1}[Hardware Error]:   version: 3.0
-{1}[Hardware Error]:   command: 0x0006, status: 0x0010
-{1}[Hardware Error]:   device_id: 0000:05:00.1
-{1}[Hardware Error]:   slot: 0
-{1}[Hardware Error]:   secondary_bus: 0x00
-{1}[Hardware Error]:   vendor_id: 0x8086, device_id: 0x1572
-{1}[Hardware Error]:   class_code: 020000
-{1}[Hardware Error]:   aer_uncor_status: 0x00100000, aer_uncor_mask: 0x00018000
-{1}[Hardware Error]:   aer_uncor_severity: 0x000ef030
-{1}[Hardware Error]:   TLP Header: 40000001 0000000f 90028090 00000000
-Kernel panic - not syncing: Fatal hardware error!
-Hardware name: Dell Inc. PowerEdge C4140/08Y2GR, BIOS 2.21.1 12/12/2023
-Call Trace:
- <NMI>
- dump_stack_lvl+0x48/0x70
- dump_stack+0x10/0x20
- panic+0x1b4/0x3a0
- __ghes_panic+0x6c/0x70
- ghes_in_nmi_queue_one_entry.constprop.0+0x1ee/0x2c0
- ghes_notify_nmi+0x5e/0xe0
- nmi_handle+0x62/0x160
- default_do_nmi+0x4c/0x150
- exc_nmi+0x140/0x1f0
- end_repeat_nmi+0x16/0x67
-RIP: 0010:intel_idle_irq+0x70/0xf0
- </NMI>
- <TASK>
- cpuidle_enter_state+0x91/0x6f0
- cpuidle_enter+0x2e/0x50
- call_cpuidle+0x23/0x60
- cpuidle_idle_call+0x11d/0x190
- do_idle+0x82/0xf0
- cpu_startup_entry+0x2a/0x30
- rest_init+0xc2/0xf0
- arch_call_rest_init+0xe/0x30
- start_kernel+0x34f/0x440
- x86_64_start_reservations+0x18/0x30
- x86_64_start_kernel+0xbf/0x110
- secondary_startup_64_no_verify+0x18f/0x19b
- </TASK>
-
-Fixes: 38f34dba806a ("PM: ACPI: reboot: Reinstate S5 for reboot")
-Signed-off-by: Yue Zhao <yue.zhao@shopee.com>
+Fixes: 70838938e89c ("ice: Implement driver functionality to dump serdes equalizer values")
+Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_main.c | 64 +++++++++++++++++++++
- 1 file changed, 64 insertions(+)
+ drivers/net/ethernet/intel/ice/ice_adminq_cmd.h | 1 -
+ drivers/net/ethernet/intel/ice/ice_ethtool.c    | 1 -
+ drivers/net/ethernet/intel/ice/ice_ethtool.h    | 1 -
+ 3 files changed, 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 0e1d9e2fbf38..80e66e4e90f7 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -8,6 +8,7 @@
- #include <linux/module.h>
- #include <net/pkt_cls.h>
- #include <net/xdp_sock_drv.h>
-+#include <linux/dmi.h>
- 
- /* Local includes */
- #include "i40e.h"
-@@ -16608,6 +16609,56 @@ static void i40e_pci_error_resume(struct pci_dev *pdev)
- 	i40e_io_resume(pf);
- }
- 
-+/* Systems where ACPI _PTS (Prepare To Sleep) S5 will result in a fatal
-+ * PCIe AER event on the i40e device if the i40e device is not, or cannot
-+ * be, powered down.
-+ */
-+static const struct dmi_system_id i40e_restart_aer_quirk_table[] = {
-+	{
-+		.matches = {
-+			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
-+			DMI_MATCH(DMI_PRODUCT_NAME, "PowerEdge C4140"),
-+		},
-+	},
-+	{
-+		.matches = {
-+			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
-+			DMI_MATCH(DMI_PRODUCT_NAME, "PowerEdge R440"),
-+		},
-+	},
-+	{
-+		.matches = {
-+			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
-+			DMI_MATCH(DMI_PRODUCT_NAME, "PowerEdge R540"),
-+		},
-+	},
-+	{
-+		.matches = {
-+			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
-+			DMI_MATCH(DMI_PRODUCT_NAME, "PowerEdge R640"),
-+		},
-+	},
-+	{
-+		.matches = {
-+			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
-+			DMI_MATCH(DMI_PRODUCT_NAME, "PowerEdge R650"),
-+		},
-+	},
-+	{
-+		.matches = {
-+			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
-+			DMI_MATCH(DMI_PRODUCT_NAME, "PowerEdge R740"),
-+		},
-+	},
-+	{
-+		.matches = {
-+			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
-+			DMI_MATCH(DMI_PRODUCT_NAME, "PowerEdge R750"),
-+		},
-+	},
-+	{}
-+};
-+
- /**
-  * i40e_shutdown - PCI callback for shutting down
-  * @pdev: PCI device information struct
-@@ -16654,6 +16705,19 @@ static void i40e_shutdown(struct pci_dev *pdev)
- 	i40e_clear_interrupt_scheme(pf);
- 	rtnl_unlock();
- 
-+	if (system_state == SYSTEM_RESTART &&
-+		dmi_first_match(i40e_restart_aer_quirk_table) &&
-+		pdev->current_state <= PCI_D3hot) {
-+		/* Disable PCIe AER on the i40e to avoid a fatal
-+		 * error during this system restart.
-+		 */
-+		pcie_capability_clear_word(pdev, PCI_EXP_DEVCTL,
-+					   PCI_EXP_DEVCTL_CERE |
-+					   PCI_EXP_DEVCTL_NFERE |
-+					   PCI_EXP_DEVCTL_FERE |
-+					   PCI_EXP_DEVCTL_URRE);
-+	}
-+
- 	if (system_state == SYSTEM_POWER_OFF) {
- 		pci_wake_from_d3(pdev, pf->wol_en);
- 		pci_set_power_state(pdev, PCI_D3hot);
+diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+index 3bf05b135b35..73756dbfc77f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
++++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+@@ -1498,7 +1498,6 @@ struct ice_aqc_dnl_equa_param {
+ #define ICE_AQC_RX_EQU_POST1 (0x12 << ICE_AQC_RX_EQU_SHIFT)
+ #define ICE_AQC_RX_EQU_BFLF (0x13 << ICE_AQC_RX_EQU_SHIFT)
+ #define ICE_AQC_RX_EQU_BFHF (0x14 << ICE_AQC_RX_EQU_SHIFT)
+-#define ICE_AQC_RX_EQU_DRATE (0x15 << ICE_AQC_RX_EQU_SHIFT)
+ #define ICE_AQC_RX_EQU_CTLE_GAINHF (0x20 << ICE_AQC_RX_EQU_SHIFT)
+ #define ICE_AQC_RX_EQU_CTLE_GAINLF (0x21 << ICE_AQC_RX_EQU_SHIFT)
+ #define ICE_AQC_RX_EQU_CTLE_GAINDC (0x22 << ICE_AQC_RX_EQU_SHIFT)
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index 3072634bf049..f241493a6ac8 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -710,7 +710,6 @@ static int ice_get_tx_rx_equa(struct ice_hw *hw, u8 serdes_num,
+ 		{ ICE_AQC_RX_EQU_POST1, rx, &ptr->rx_equ_post1 },
+ 		{ ICE_AQC_RX_EQU_BFLF, rx, &ptr->rx_equ_bflf },
+ 		{ ICE_AQC_RX_EQU_BFHF, rx, &ptr->rx_equ_bfhf },
+-		{ ICE_AQC_RX_EQU_DRATE, rx, &ptr->rx_equ_drate },
+ 		{ ICE_AQC_RX_EQU_CTLE_GAINHF, rx, &ptr->rx_equ_ctle_gainhf },
+ 		{ ICE_AQC_RX_EQU_CTLE_GAINLF, rx, &ptr->rx_equ_ctle_gainlf },
+ 		{ ICE_AQC_RX_EQU_CTLE_GAINDC, rx, &ptr->rx_equ_ctle_gaindc },
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.h b/drivers/net/ethernet/intel/ice/ice_ethtool.h
+index 8f2ad1c172c0..23b2cfbc9684 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.h
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.h
+@@ -15,7 +15,6 @@ struct ice_serdes_equalization_to_ethtool {
+ 	int rx_equ_post1;
+ 	int rx_equ_bflf;
+ 	int rx_equ_bfhf;
+-	int rx_equ_drate;
+ 	int rx_equ_ctle_gainhf;
+ 	int rx_equ_ctle_gainlf;
+ 	int rx_equ_ctle_gaindc;
 -- 
-2.39.5 (Apple Git-154)
+2.38.1
 
