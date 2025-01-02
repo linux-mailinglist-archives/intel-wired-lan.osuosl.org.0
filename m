@@ -1,87 +1,100 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 58DF09FFCF8
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Jan 2025 18:42:02 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 57DB69FFF36
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Jan 2025 20:04:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EB3BF40504;
-	Thu,  2 Jan 2025 17:41:57 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7738380E16;
+	Thu,  2 Jan 2025 19:04:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VF69aTD5EaeN; Thu,  2 Jan 2025 17:41:57 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id MYU4vGeygc8M; Thu,  2 Jan 2025 19:04:21 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5D25940422
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9D12E80E0A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1735839717;
-	bh=7AmYte8oTBIV4rhftXrsFRb4h3cQ6cpdyY2nNfyPAUo=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=N+64A5KZrF6Bq/LpqI3YXjfZIPpRggVla5Wmr9JI1Lx7jxsaQva/MazYdkLHyCE/j
-	 6KwMbLAl9Gmi3uqc2VSlhhK8d9EK1IHpxrp5/ADUTiN2ZY67SPokb7miY3cIiMUfYg
-	 ys3BLja0EU1ujMlytLMlgd8ExP3ESJRSF0oHaJUDUinWC32ak3xwK5b6jG6sdeZHI9
-	 uQ/Wbi/KC/0lsn2fWPRBB4fQtZdXz9A3Sl2VFxjUYjh2d6aUGaVtXchn9ZiIWf0pvR
-	 fP3F4c/P/d76IZPC49zp/EoOK3tRgqJMAtJaO6A2zH65YagEbjLdPh3wDG969Eh9NP
-	 HaL4ANWJsdnaQ==
+	s=default; t=1735844661;
+	bh=R6Wak4GZSzjwNIo9WIqn2nbICIeAkLb0L0QzfBNlD68=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=i2k1tPDZg940JXHT7olC9C37r0vDlS0vPG+5pe2fDrmir/77QX1Kug9XQF9+wDTgq
+	 7ftJxDruEt34PIp2TSNvMHkj/Pri8xRlhQRYF6Y7M9gc7f5F8mczGLSvoKQecS7FPd
+	 9oyiKBvxmX5U4iLtWYBTwMclMXmbVkJf+Ejm1F3vLS4kPPB0dPmce5xRQz4Y5d1LDt
+	 L+CczL1zmwD0J7qB/LRHjmRt5ZOMHhOlQPm+6hlUXICYbTUTHyBFLS2i7LfrASHLIY
+	 Rw6D/tfpaxB1EbYHqOU7x+ntaF2goZbf65LQGR3+ZzEZRoVJYljMiSwoejgnHBmXXc
+	 EKdn+GtyYRx4A==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5D25940422;
-	Thu,  2 Jan 2025 17:41:57 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9D12E80E0A;
+	Thu,  2 Jan 2025 19:04:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id D259AF24
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jan 2025 17:41:53 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 4DC13F24
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jan 2025 19:04:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B268A40353
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jan 2025 17:41:53 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2DE86408E1
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jan 2025 19:04:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Toiiem_bzUUc for <intel-wired-lan@lists.osuosl.org>;
- Thu,  2 Jan 2025 17:41:53 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=2a00:1098:5b::1;
- helo=mx.treblig.org; envelope-from=linux@treblig.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org BC20240343
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BC20240343
-Received: from mx.treblig.org (mx.treblig.org [IPv6:2a00:1098:5b::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id BC20240343
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jan 2025 17:41:52 +0000 (UTC)
-Received: from localhost ([127.0.0.1] helo=dalek.home.treblig.org)
- by mx.treblig.org with esmtp (Exim 4.96)
- (envelope-from <linux@treblig.org>) id 1tTPCb-007u04-2Q;
- Thu, 02 Jan 2025 17:41:45 +0000
-From: linux@treblig.org
-To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- "Dr. David Alan Gilbert" <linux@treblig.org>
-Date: Thu,  2 Jan 2025 17:41:42 +0000
-Message-ID: <20250102174142.200700-4-linux@treblig.org>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250102174142.200700-1-linux@treblig.org>
-References: <20250102174142.200700-1-linux@treblig.org>
+ id U6ptjRXULnp3 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  2 Jan 2025 19:04:17 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
+ helo=mgamail.intel.com; envelope-from=marcin.szycik@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 55AF6408D9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 55AF6408D9
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 55AF6408D9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jan 2025 19:04:16 +0000 (UTC)
+X-CSE-ConnectionGUID: iPyy0qguQs+sWRuBx04Svw==
+X-CSE-MsgGUID: hxeqmgOqRSCvPzyM53OnAQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11303"; a="40019450"
+X-IronPort-AV: E=Sophos;i="6.12,286,1728975600"; d="scan'208";a="40019450"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+ by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Jan 2025 11:04:16 -0800
+X-CSE-ConnectionGUID: Y3NyWuBmRJGvJxsIpf//hA==
+X-CSE-MsgGUID: ThdaegfGTGWQjhR7osT41A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,286,1728975600"; d="scan'208";a="106449225"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by fmviesa004.fm.intel.com with ESMTP; 02 Jan 2025 11:04:14 -0800
+Received: from mystra-4.igk.intel.com (mystra-4.igk.intel.com [10.123.220.40])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 2BCD32FC57;
+ Thu,  2 Jan 2025 19:04:13 +0000 (GMT)
+From: Marcin Szycik <marcin.szycik@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, Marcin Szycik <marcin.szycik@linux.intel.com>,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Date: Thu,  2 Jan 2025 20:07:52 +0100
+Message-ID: <20250102190751.7691-2-marcin.szycik@linux.intel.com>
+X-Mailer: git-send-email 2.45.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; d=treblig.org
- ; s=bytemarkmx; h=MIME-Version:Message-ID:Date:Subject:From:Content-Type:From
- :Subject; bh=7AmYte8oTBIV4rhftXrsFRb4h3cQ6cpdyY2nNfyPAUo=; b=eZX1CAuydvfqHvVp
- PRoGyZI90PuSx8iEZoNUzUIp99xN7QQ6NEca7FKzdfEjGqJwVlPiranManolBAyuUG7/GZ72w39lc
- fLA122L4mlaQiGqg0BFoZ5xGeAoY/ZwQjZ5xgJN8kGw6IsEa36rYr/TqRIbh2/OThUo25zSa3fA1B
- 2jKrg3rJAssXlGdSyed7Mwk8LvkvDkjhgROdp2S3qH+MRJlJsRu1qnvlG/Nxxyg9s0C7TKRQtPQUQ
- 0EC906u1aPudUTFqKkv35iijvsOw2jHwupiLtSjmiPBBLJ5VYM/hSoPv22t6nlMzj8n7CqC2Z2q06
- j3KksT/A+aHEJi7nGA==;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1735844656; x=1767380656;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=dQtlI0STkRC2aJGltzLuuXjG6WT1FUsuLiTVb/iXk8s=;
+ b=SHsBWYezCd5I7+ba/7rDMe8v+T3GHVviqZ87NpDted92vUP6OWAYgX+q
+ dFBSBlL/n1YnNvkuT2t42JmqP1syN+h9U0MOm68YdXPcXDfrY/g8uO6X4
+ cntlmKUHpZN0zC8HJtPXdT/AqR6uqQHzH8kyfjo7/HErT0nVygZ0P63e+
+ MIPdnTVEgetHvC8yjK/Id1gW33phRtcrmEVDaOmjhT5NY3r6yohDgu0Ge
+ d+SyGmbc/Wsg43T1qFXR0r+8jOIvNemO7yj3zKuD4mWq1xhYUuP8GuI9D
+ N7Fb8xBnVnmp1H9Yt6myMNBXv59wtuNE/hQkWwMXtMXx/SUBn3h5uBfzs
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=treblig.org
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=treblig.org header.i=@treblig.org
- header.a=rsa-sha256 header.s=bytemarkmx header.b=eZX1CAuy
-Subject: [Intel-wired-lan] [PATCH net-next 3/3] igc: Remove unused
- igc_read/write_pcie_cap_reg
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=SHsBWYez
+Subject: [Intel-wired-lan] [PATCH iwl-net] ice: Fix switchdev slow-path in
+ LAG
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -97,68 +110,105 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: "Dr. David Alan Gilbert" <linux@treblig.org>
+Ever since removing switchdev control VSI and using PF for port
+representor Tx/Rx, switchdev slow-path has been working improperly after
+failover in SR-IOV LAG. LAG assumes that the first uplink to be added to
+the aggregate will own VFs and have switchdev configured. After
+failing-over to the other uplink, representors are still configured to
+Tx through the uplink they are set up on, which fails because that
+uplink is now down.
 
-The last uses of igc_read_pcie_cap_reg() and igc_write_pcie_cap_reg()
-were removed in 2019 by
-commit 16ecd8d9af26 ("igc: Remove the obsolete workaround")
+On failover, update all PRs on primary uplink to use the currently
+active uplink for Tx. Call netif_keep_dst(), as the secondary uplink
+might not be in switchdev mode. Also make sure to call
+ice_eswitch_set_target_vsi() if uplink is in LAG.
 
-Remove them.
+On the Rx path, representors are already working properly, because
+default Tx from VFs is set to PF owning the eswitch. After failover the
+same PF is receiving traffic from VFs, even though link is down.
 
-Signed-off-by: Dr. David Alan Gilbert <linux@treblig.org>
+Fixes: defd52455aee ("ice: do Tx through PF netdev in slow-path")
+Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_hw.h   |  3 ---
- drivers/net/ethernet/intel/igc/igc_main.c | 25 -----------------------
- 2 files changed, 28 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_lag.c  | 27 +++++++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_txrx.c |  4 +++-
+ 2 files changed, 30 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_hw.h b/drivers/net/ethernet/intel/igc/igc_hw.h
-index 7ec7e395020b..be8a49a86d09 100644
---- a/drivers/net/ethernet/intel/igc/igc_hw.h
-+++ b/drivers/net/ethernet/intel/igc/igc_hw.h
-@@ -279,7 +279,4 @@ struct net_device *igc_get_hw_dev(struct igc_hw *hw);
- #define hw_dbg(format, arg...) \
- 	netdev_dbg(igc_get_hw_dev(hw), format, ##arg)
+diff --git a/drivers/net/ethernet/intel/ice/ice_lag.c b/drivers/net/ethernet/intel/ice/ice_lag.c
+index 1ccb572ce285..22371011c249 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lag.c
++++ b/drivers/net/ethernet/intel/ice/ice_lag.c
+@@ -1000,6 +1000,28 @@ static void ice_lag_link(struct ice_lag *lag)
+ 	netdev_info(lag->netdev, "Shared SR-IOV resources in bond are active\n");
+ }
  
--s32  igc_read_pcie_cap_reg(struct igc_hw *hw, u32 reg, u16 *value);
--s32  igc_write_pcie_cap_reg(struct igc_hw *hw, u32 reg, u16 *value);
--
- #endif /* _IGC_HW_H_ */
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 9c92673a7240..f58cd6940434 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -6779,31 +6779,6 @@ static const struct net_device_ops igc_netdev_ops = {
- 	.ndo_get_tstamp		= igc_get_tstamp,
- };
++/**
++ * ice_lag_config_eswitch - configure eswitch to work with LAG
++ * @lag: lag info struct
++ * @netdev: active network interface device struct
++ *
++ * Updates all port representors in eswitch to use @netdev for Tx.
++ *
++ * Configures the netdev to keep dst metadata (also used in representor Tx).
++ * This is required for an uplink without switchdev mode configured.
++ */
++static void ice_lag_config_eswitch(struct ice_lag *lag,
++				   struct net_device *netdev)
++{
++	struct ice_repr *repr;
++	unsigned long id;
++
++	xa_for_each(&lag->pf->eswitch.reprs, id, repr)
++		repr->dst->u.port_info.lower_dev = netdev;
++
++	netif_keep_dst(netdev);
++}
++
+ /**
+  * ice_lag_unlink - handle unlink event
+  * @lag: LAG info struct
+@@ -1021,6 +1043,9 @@ static void ice_lag_unlink(struct ice_lag *lag)
+ 			ice_lag_move_vf_nodes(lag, act_port, pri_port);
+ 		lag->primary = false;
+ 		lag->active_port = ICE_LAG_INVALID_PORT;
++
++		/* Config primary's eswitch back to normal operation. */
++		ice_lag_config_eswitch(lag, lag->netdev);
+ 	} else {
+ 		struct ice_lag *primary_lag;
  
--/* PCIe configuration access */
--s32 igc_read_pcie_cap_reg(struct igc_hw *hw, u32 reg, u16 *value)
--{
--	struct igc_adapter *adapter = hw->back;
--
--	if (!pci_is_pcie(adapter->pdev))
--		return -IGC_ERR_CONFIG;
--
--	pcie_capability_read_word(adapter->pdev, reg, value);
--
--	return IGC_SUCCESS;
--}
--
--s32 igc_write_pcie_cap_reg(struct igc_hw *hw, u32 reg, u16 *value)
--{
--	struct igc_adapter *adapter = hw->back;
--
--	if (!pci_is_pcie(adapter->pdev))
--		return -IGC_ERR_CONFIG;
--
--	pcie_capability_write_word(adapter->pdev, reg, *value);
--
--	return IGC_SUCCESS;
--}
--
- u32 igc_rd32(struct igc_hw *hw, u32 reg)
- {
- 	struct igc_adapter *igc = container_of(hw, struct igc_adapter, hw);
+@@ -1419,6 +1444,7 @@ static void ice_lag_monitor_active(struct ice_lag *lag, void *ptr)
+ 				ice_lag_move_vf_nodes(lag, prim_port,
+ 						      event_port);
+ 			lag->active_port = event_port;
++			ice_lag_config_eswitch(lag, event_netdev);
+ 			return;
+ 		}
+ 
+@@ -1428,6 +1454,7 @@ static void ice_lag_monitor_active(struct ice_lag *lag, void *ptr)
+ 		/* new active port */
+ 		ice_lag_move_vf_nodes(lag, lag->active_port, event_port);
+ 		lag->active_port = event_port;
++		ice_lag_config_eswitch(lag, event_netdev);
+ 	} else {
+ 		/* port not set as currently active (e.g. new active port
+ 		 * has already claimed the nodes and filters
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
+index 5d2d7736fd5f..f1c06c227dc5 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
+@@ -2368,7 +2368,9 @@ ice_xmit_frame_ring(struct sk_buff *skb, struct ice_tx_ring *tx_ring)
+ 					ICE_TXD_CTX_QW1_CMD_S);
+ 
+ 	ice_tstamp(tx_ring, skb, first, &offload);
+-	if (ice_is_switchdev_running(vsi->back) && vsi->type != ICE_VSI_SF)
++	if ((ice_is_switchdev_running(vsi->back) ||
++	     ice_lag_is_switchdev_running(vsi->back)) &&
++	    vsi->type != ICE_VSI_SF)
+ 		ice_eswitch_set_target_vsi(skb, &offload);
+ 
+ 	if (offload.cd_qw1 & ICE_TX_DESC_DTYPE_CTX) {
 -- 
-2.47.1
+2.45.0
 
