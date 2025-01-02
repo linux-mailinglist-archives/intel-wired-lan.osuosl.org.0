@@ -1,99 +1,122 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D39F99FEE9B
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 31 Dec 2024 10:52:20 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 46C129FF5E0
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Jan 2025 04:53:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4542B408AB;
-	Tue, 31 Dec 2024 09:52:19 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 330EE40241;
+	Thu,  2 Jan 2025 03:53:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id QmQBuuCtd4ZM; Tue, 31 Dec 2024 09:52:18 +0000 (UTC)
+ id HP8KaKSrEC3F; Thu,  2 Jan 2025 03:53:14 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7423B408A7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7EF6640233
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1735638738;
-	bh=joerHJta4PiHy0Ek+q8+UWYD567HhxRUpImqMKjlaMI=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	s=default; t=1735789994;
+	bh=IvaCHiysk/cukfyPyKRBsGPePbIYTzKM+yFnyaXVpHA=;
+	h=Date:To:Cc:From:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=XnKVjlV/h+LjI9U+2soBfW1gqSNbi5Hb0rd/4kmIEUn/ymyZehJgCPASf3U0Uxkqy
-	 CInctaGKyH0zpxiHWvFQoaSaStZ8nycA/cC8XWZnizFxyjUYKnGzhB00MMIL1kq4d7
-	 xzcc121R3ZS2Nl/shBR6jXPJX3L7WijftHGRWPAblGiu8vKiPsQseSHxUAgMmkjqhm
-	 h8msDkKH3DZzg5JvQ1X3S7rhk7o980MOrqRY7a/kJ/hVG+rE53biqWSLwlyBisANDc
-	 /Jln6C77kQJVFSVDDLlxciqV90d5jRYKUR6/mWxZ0DCQvLeMoV+cKRu+4rXhZ/bVDj
-	 Y9qpBas2vrylQ==
+	b=kjZIO6Sh+HG7syxNmmjqGTvF8cfibAA1Ecc6atIOPdEc+x1fa2jcATZvUK4mHxIv6
+	 R+tM2aee4DwNoeG+cSeWAhl8Jd/kEJAkjnr/FkQZI90i1t15f0GDalVQ66GQDkR1Hn
+	 I2Vj/aZ+nl/sOMgGecgP4D8gqzaHY7mpGa3+Q6RioX4QrMTALhaz0J3IqpZ7KqFkDf
+	 EaoH+PKVgdS0Hpxp/AkB9xg6VcRkkIH5qr1YB1cKHTJKJQ/XgVK2ec4zu22eNEoCqD
+	 c1doWI/VVJez1MsbF6A5wvx1wPOz60i2yw0e6nFtDRQMuLAhXJTGW+AmzNFnVHMh2m
+	 L4uxBRU47ToWA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7423B408A7;
-	Tue, 31 Dec 2024 09:52:18 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7EF6640233;
+	Thu,  2 Jan 2025 03:53:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id D3D9B968
- for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Dec 2024 09:52:15 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 9B852F27
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jan 2025 03:53:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B074D60A88
- for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Dec 2024 09:52:15 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8348A4021F
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jan 2025 03:53:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3mu98imRiy92 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 31 Dec 2024 09:52:15 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
- helo=mgamail.intel.com; envelope-from=mateusz.polchlopek@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org EE1E6608CA
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EE1E6608CA
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
- by smtp3.osuosl.org (Postfix) with ESMTPS id EE1E6608CA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Dec 2024 09:52:14 +0000 (UTC)
-X-CSE-ConnectionGUID: PYTIPS1iQlGx4IxBsv2wEg==
-X-CSE-MsgGUID: +f+iM4aXSfu2h3R+JXK1vQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11301"; a="35821812"
-X-IronPort-AV: E=Sophos;i="6.12,279,1728975600"; d="scan'208";a="35821812"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Dec 2024 01:52:14 -0800
-X-CSE-ConnectionGUID: EZN/LjbjQfuJBGpga3mkeA==
-X-CSE-MsgGUID: 0zD24EPZTXmrfT9M6jMNIg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,279,1728975600"; d="scan'208";a="101515664"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmviesa009.fm.intel.com with ESMTP; 31 Dec 2024 01:52:13 -0800
-Received: from metan.igk.intel.com (metan.igk.intel.com [10.123.220.124])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id D9D672876E;
- Tue, 31 Dec 2024 09:52:11 +0000 (GMT)
-From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-Date: Tue, 31 Dec 2024 10:50:44 +0100
-Message-Id: <20241231095044.433940-1-mateusz.polchlopek@intel.com>
-X-Mailer: git-send-email 2.38.1
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id WwjV-sYh1cjx for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  2 Jan 2025 03:53:11 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::631; helo=mail-pl1-x631.google.com;
+ envelope-from=haifeng.xu@shopee.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 8221240218
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8221240218
+Received: from mail-pl1-x631.google.com (mail-pl1-x631.google.com
+ [IPv6:2607:f8b0:4864:20::631])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8221240218
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jan 2025 03:53:11 +0000 (UTC)
+Received: by mail-pl1-x631.google.com with SMTP id
+ d9443c01a7336-219f8263ae0so106688425ad.0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 01 Jan 2025 19:53:11 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1735789991; x=1736394791;
+ h=content-transfer-encoding:subject:from:cc:to:user-agent
+ :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=IvaCHiysk/cukfyPyKRBsGPePbIYTzKM+yFnyaXVpHA=;
+ b=XqGJ2KIfbhDsIMTsDNkvFSIjRsqM/FgH+JyurPnCHV+Z/AvQgIFbpEdvV2y6krJ0cn
+ N/59p9XcNk+9PuVAZSpoeGyfNxQ62Y23olx4tAxNwl76f9eyxUVJpktZ0SVnpE84wSv+
+ +ldjU4NvOG+5t0vsF9fi0s0NIA+ObGzORIfVzLX+6Bol5vWDezSGOJF5WlwO5ua9YOJ+
+ buElx4TeD6FJJyl3HH+YNCKupxhUL8d+TsQ5zC+WQyFZZgglrEHk1rphZgQcJbd/YTLm
+ 5YbQc/sP/vl8cEDsc1wfUWrTceB1yJRoIYhSx9lXlQaB5AiP9PSTk0ga4WOmFwrVho2d
+ XlRQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVruMoevwYd+k8jecGx2aQgsM+k8+GEgCcZPXCbQW3IBFKA/NZ6bpqXdGntf///4frgO7RwiafQ/4sh5h/oSgs=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YxP5+aOz44Hbf18UcsAdqkKR9OdLi2/WKLgJpY8ProTrVzWSYFN
+ KlmwmDhbiPGYsu7IY2wg64HdcKsqHf3+u7nQzziR6TqcYBhzFwHmTitZ0+vBqDs=
+X-Gm-Gg: ASbGncsddMEfIsKygDYizheUEnUZpgMEMTFUm2GdmhtPTa5gTX1B2SAtCacZMrFYVW5
+ yfi/WqLF9L2CQZFscfHvedZGbDahWYoumjkyn4LfFwvIelN9HHnXZi4pNiFV2tsb7oip56Wam79
+ A/ZHi3TRH+dZhrp3kFF8jY1RM051N17hV80H9mlsuz8YYVt8m0fwtPVrZxJlEh3oDZqrCNEEY8V
+ DEOoGxtukAs+d7hwS/TPREracI0WtZ91BwPdmHwHg40KMcpeUW/veyx/0APHQgtS3Pj4vnGcb9P
+ P8lyTzS7VcEt/EqIKv0tRDM8CvaaXESFQbaLYndn
+X-Google-Smtp-Source: AGHT+IFrrh50rCp6cHG8qhSvTaRfta3Aascv2hZcykC2O0A/TWJBEw1M2DipNVGd8VFMavzOXczOXw==
+X-Received: by 2002:a05:6a20:7f99:b0:1e0:cfc0:df34 with SMTP id
+ adf61e73a8af0-1e5e0470226mr65407285637.16.1735789990624; 
+ Wed, 01 Jan 2025 19:53:10 -0800 (PST)
+Received: from [10.54.24.59] (static-ip-148-99-134-202.rev.dyxnet.com.
+ [202.134.99.148]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-72aad8dbbf6sm23254920b3a.111.2025.01.01.19.53.07
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 01 Jan 2025 19:53:10 -0800 (PST)
+Message-ID: <da83df12-d7e2-41fe-a303-290640e2a4a4@shopee.com>
+Date: Thu, 2 Jan 2025 11:53:05 +0800
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1735638735; x=1767174735;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=trPPlrmkaokGszHUJ2Zza6/CiedOSJPQxAu/cKcQe6w=;
- b=EwR8XuTQX8M43Ay47AVmvvAUqAGZuRMBUv/LpxdVeWY5vHRgC3hYniGn
- tsMgi/egRVqlN0SQVFkWbhS7U7jlQkTt0oFYrXlbpNfcAqTRjuFUwL/B6
- swBv2grS6sb0/TbAJqwWSKbacX1sO5qeZ7SjjGuB5wt2FLSzvJWPgSHsH
- tnWR+uqXxpoYnsh9M9mdsv9crATSDbg7iqFQXZCj0RNAghCAkTvTYQdm/
- kYCWsDGmku62hjgvnDXnefX0yYY4kIboqoo5sZk93OnIpC3ByYpKNRqur
- q88E3xwKvB3aN352qlN2E6Hotf6RF9bxbAeqFsqFlbhfOlfNUVmhGjWzN
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+User-Agent: Mozilla Thunderbird
+To: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ ", Przemek Kitszel" <przemyslaw.kitszel@intel.com>,
+ ", \"David S. Miller\"" <davem@davemloft.net>,
+ ", Eric Dumazet" <edumazet@google.com>, ", Jakub Kicinski"
+ <kuba@kernel.org>, ", Paolo Abeni" <pabeni@redhat.com>
+Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org
+From: Haifeng Xu <haifeng.xu@shopee.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=shopee.com; s=shopee.com; t=1735789991; x=1736394791; darn=lists.osuosl.org; 
+ h=content-transfer-encoding:subject:from:cc:to:user-agent
+ :mime-version:date:message-id:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=IvaCHiysk/cukfyPyKRBsGPePbIYTzKM+yFnyaXVpHA=;
+ b=fcRVLE/cAep0QgoMQuywO5oGKcbli78Tlr5UEZnvpN9AlAsS56vg2P4WMpd2/+dpx1
+ IX8iMaxcW/9Rv0uECqoewNLRld8TbfPFHCQbi3BmVfx+AA00W7IWnLhOY9mFwU1x5OB6
+ RRlypTvGFhCl05Ok9i2hc0KmaO8Rcgcr5Y3iTDnOql8VeiLoGNEmS6l6oDG8W33wFd4Z
+ qZt9KrhDisr/j/pHcS5/DdGle2boyvBnku6aX8wps7L6rb2Tfshpst9oZ0RD+B8vtD8U
+ Io3PpAKlHFpePzlMLsvCn9XU2sFKH/Kg7pcztg6Zaw6hWcboR7yy3rz3gJbqxxgpG0Ai
+ I3nQ==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=shopee.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=EwR8XuTQ
-Subject: [Intel-wired-lan] [PATCH iwl-net v1] ice: remove invalid parameter
- of equalizer
+ unprotected) header.d=shopee.com header.i=@shopee.com header.a=rsa-sha256
+ header.s=shopee.com header.b=fcRVLE/c
+Subject: [Intel-wired-lan] =?utf-8?b?W1F1ZXN0aW9uXSBpeGdiZe+8mk1lY2hhbmlz?=
+ =?utf-8?q?m_of_RSS?=
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -109,62 +132,29 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-It occurred that in the commit 70838938e89c ("ice: Implement driver
-functionality to dump serdes equalizer values") the invalid DRATE parameter
-for reading has been added. The output of the command:
+Hi masters,
 
-  $ ethtool -d <ethX>
+	We use the Intel Corporation 82599ES NIC in our production environment. And it has 63 rx queues, every rx queue interrupt is processed by a single cpu.
+	The RSS configuration can be seen as follow:
 
-returns the garbage value in the place where DRATE value should be
-stored.
+	RX flow hash indirection table for eno5 with 63 RX ring(s):
+	0:      0     1     2     3     4     5     6     7
+	8:      8     9    10    11    12    13    14    15
+	16:      0     1     2     3     4     5     6     7
+	24:      8     9    10    11    12    13    14    15
+	32:      0     1     2     3     4     5     6     7
+	40:      8     9    10    11    12    13    14    15
+	48:      0     1     2     3     4     5     6     7
+	56:      8     9    10    11    12    13    14    15
+	64:      0     1     2     3     4     5     6     7
+	72:      8     9    10    11    12    13    14    15
+	80:      0     1     2     3     4     5     6     7
+	88:      8     9    10    11    12    13    14    15
+	96:      0     1     2     3     4     5     6     7
+	104:      8     9    10    11    12    13    14    15
+	112:      0     1     2     3     4     5     6     7
+	120:      8     9    10    11    12    13    14    15
 
-Remove mentioned parameter to prevent return of corrupted data to
-userspace.
+	The maximum number of RSS queues is 16. So I have some questions about this. Will other cpus except 0~15 receive the rx interrupts? 
 
-Fixes: 70838938e89c ("ice: Implement driver functionality to dump serdes equalizer values")
-Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_adminq_cmd.h | 1 -
- drivers/net/ethernet/intel/ice/ice_ethtool.c    | 1 -
- drivers/net/ethernet/intel/ice/ice_ethtool.h    | 1 -
- 3 files changed, 3 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-index 3bf05b135b35..73756dbfc77f 100644
---- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-@@ -1498,7 +1498,6 @@ struct ice_aqc_dnl_equa_param {
- #define ICE_AQC_RX_EQU_POST1 (0x12 << ICE_AQC_RX_EQU_SHIFT)
- #define ICE_AQC_RX_EQU_BFLF (0x13 << ICE_AQC_RX_EQU_SHIFT)
- #define ICE_AQC_RX_EQU_BFHF (0x14 << ICE_AQC_RX_EQU_SHIFT)
--#define ICE_AQC_RX_EQU_DRATE (0x15 << ICE_AQC_RX_EQU_SHIFT)
- #define ICE_AQC_RX_EQU_CTLE_GAINHF (0x20 << ICE_AQC_RX_EQU_SHIFT)
- #define ICE_AQC_RX_EQU_CTLE_GAINLF (0x21 << ICE_AQC_RX_EQU_SHIFT)
- #define ICE_AQC_RX_EQU_CTLE_GAINDC (0x22 << ICE_AQC_RX_EQU_SHIFT)
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 3072634bf049..f241493a6ac8 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -710,7 +710,6 @@ static int ice_get_tx_rx_equa(struct ice_hw *hw, u8 serdes_num,
- 		{ ICE_AQC_RX_EQU_POST1, rx, &ptr->rx_equ_post1 },
- 		{ ICE_AQC_RX_EQU_BFLF, rx, &ptr->rx_equ_bflf },
- 		{ ICE_AQC_RX_EQU_BFHF, rx, &ptr->rx_equ_bfhf },
--		{ ICE_AQC_RX_EQU_DRATE, rx, &ptr->rx_equ_drate },
- 		{ ICE_AQC_RX_EQU_CTLE_GAINHF, rx, &ptr->rx_equ_ctle_gainhf },
- 		{ ICE_AQC_RX_EQU_CTLE_GAINLF, rx, &ptr->rx_equ_ctle_gainlf },
- 		{ ICE_AQC_RX_EQU_CTLE_GAINDC, rx, &ptr->rx_equ_ctle_gaindc },
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.h b/drivers/net/ethernet/intel/ice/ice_ethtool.h
-index 8f2ad1c172c0..23b2cfbc9684 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.h
-@@ -15,7 +15,6 @@ struct ice_serdes_equalization_to_ethtool {
- 	int rx_equ_post1;
- 	int rx_equ_bflf;
- 	int rx_equ_bfhf;
--	int rx_equ_drate;
- 	int rx_equ_ctle_gainhf;
- 	int rx_equ_ctle_gainlf;
- 	int rx_equ_ctle_gaindc;
--- 
-2.38.1
-
+	In our production environment, cpu 16~62 also receive the rx interrupts. Was our RSS misconfigured?
