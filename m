@@ -1,88 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 50BF09FFCCE
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Jan 2025 18:37:42 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2A4679FFCEB
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  2 Jan 2025 18:40:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8977E405DD;
-	Thu,  2 Jan 2025 17:37:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C6B2E60723;
+	Thu,  2 Jan 2025 17:40:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HkkCo24fj0_z; Thu,  2 Jan 2025 17:37:40 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id AyAdOdq81GYa; Thu,  2 Jan 2025 17:40:14 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E3DD7403F4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2DBB96078F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1735839459;
-	bh=x615MsWYT5rVAxhQdHYSvyCEahENSJGHVCkwtBCOTXQ=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=mTJHM9Qyi8ScV1OMLrvBzleVTUhgl//HxoJPiu9W21m+8wHXuw3ON7h10ljefgkYv
-	 2O3OTdqKBk3N9KCYGrCWpCY0HJ6fPaYTIUxTq7b3X7yukvHfVj8tjGe302P8zY1S3J
-	 vUv4OEJa44Hy2F8xQm/REoNw6ym0pqTBUWEKZ6ZGKd1quCtBNUr9d8swAZcYG5Hs+a
-	 CaJrz5lEWs4156BC9nQXFsOhGF2z1whA9pl35nK2GAhZGckC5tpYwveH5wKKR6pa7x
-	 YCSsKpH9N7u+THWlNpTXnwGEYiz9P3GG9Yon7vwIfsEHtWnxlk50+r4nN6YKFX+XB4
-	 9szoV+DnOjT+A==
+	s=default; t=1735839614;
+	bh=kNbPgneaX7GZilz8mvKDzcGBDi52SBp2xJS4zJPPs40=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=umj9+Z9bSncfzgRACXr4fvMIh8TH7k7eWysfc7wu47nkdh/ERhkG6Uyi3sVL29tPI
+	 FAg0IdmPT1dwAYYfuv3C9r/Iww9z8vPvoPKzoSHZ0uSffWGqYI95HndP8lnXF+11Lw
+	 Nm+3gSt9WbvQ5rVvDnP9ZxpKgjRAKrj7u6BV3wsTWCNiWZWFzkluvFFjKs9ai4KXT2
+	 u4vD9hQ3LvwYusHxzZBm2ezlkKWX3p0pupQul6uUnjPqdh4Y5JQGzLCm5/SQXhxVs6
+	 YIN1HJWibS1L5sHbX8MUD1e24GlzPF+juSYFjh7Ox0Prh4loDD6iTY6I7IA5M+wSPi
+	 X6HlkiOzvGeYQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E3DD7403F4;
-	Thu,  2 Jan 2025 17:37:39 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2DBB96078F;
+	Thu,  2 Jan 2025 17:40:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 2FDBFF27
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jan 2025 17:37:35 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 06B48F27
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jan 2025 17:40:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C7A15804F2
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jan 2025 17:37:33 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id D84E140522
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jan 2025 17:40:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ykFS6lb32fQS for <intel-wired-lan@lists.osuosl.org>;
- Thu,  2 Jan 2025 17:37:33 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Uj9_nwb_5MJg for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  2 Jan 2025 17:40:11 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=2a00:1098:5b::1;
  helo=mx.treblig.org; envelope-from=linux@treblig.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 1807F804F6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1807F804F6
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org CEE1040527
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CEE1040527
 Received: from mx.treblig.org (mx.treblig.org [IPv6:2a00:1098:5b::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1807F804F6
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jan 2025 17:37:33 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id CEE1040527
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jan 2025 17:40:10 +0000 (UTC)
 Received: from localhost ([127.0.0.1] helo=dalek.home.treblig.org)
  by mx.treblig.org with esmtp (Exim 4.96)
- (envelope-from <linux@treblig.org>) id 1tTP8Q-007tod-0s;
- Thu, 02 Jan 2025 17:37:26 +0000
+ (envelope-from <linux@treblig.org>) id 1tTPAx-007ty0-28;
+ Thu, 02 Jan 2025 17:40:03 +0000
 From: linux@treblig.org
 To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
  andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
  kuba@kernel.org, pabeni@redhat.com, intel-wired-lan@lists.osuosl.org
 Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- "Dr. David Alan Gilbert" <linux@treblig.org>,
- Kalesh AP <kalesh-anakkur.purayil@broadcom.com>
-Date: Thu,  2 Jan 2025 17:37:17 +0000
-Message-ID: <20250102173717.200359-10-linux@treblig.org>
+ "Dr. David Alan Gilbert" <linux@treblig.org>
+Date: Thu,  2 Jan 2025 17:40:02 +0000
+Message-ID: <20250102174002.200538-1-linux@treblig.org>
 X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250102173717.200359-1-linux@treblig.org>
-References: <20250102173717.200359-1-linux@treblig.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
  c=relaxed/relaxed; d=treblig.org
  ; s=bytemarkmx; h=MIME-Version:Message-ID:Date:Subject:From:Content-Type:From
- :Subject; bh=x615MsWYT5rVAxhQdHYSvyCEahENSJGHVCkwtBCOTXQ=; b=pI3yzMfoc3/Xy+X0
- pwVR84LxUrBZzincoftsfsOd1Q3GFgsRXOKxRp1djNOsUS+8mX8m52xuiBSzPwhkfqYk37XnhqSGm
- xs/lcqjVckGcpjOej8XQU994Y1/tlOA8Wy/0rK35M7zHE76f70LESr8qtgPZ6uhKB1g61BURp5YMW
- iOV/AQsweLIEt4XbslW3zhgtq0Tec57QK3LoyIzlZPQnGMjz5/P9fYSxZshYM3rrX/Os00pHRpkJH
- QGWk+BNbAqPb56n2rMmFOO2oD+wQKdg8dwVMBqhi/bA7HGuk6yRarpREMaYGPgV5W2PjXoYjVsOaN
- /TAgvkVKzRe+D6Pj+w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ :Subject; bh=kNbPgneaX7GZilz8mvKDzcGBDi52SBp2xJS4zJPPs40=; b=UGBNNMY5S2N65FfU
+ VuLFvGVF9UjUbk9MztliPzB4Wtoij4RwOQpPAByMJPyFrKngzigb9sFVmL1M3oSb7s/CzhOxgoCzz
+ BWMxHlK2W1xqbI2Bv2fz66oEXLLd3kGa1aRoVFP76Z6SVEw61ZNFAxMIiYxr4/w6FUdjWe2iup4jH
+ fMMYaGTk13QstT/IW3gBbK0so0Wz5H/ZcwG6bRFq7GQ309UF+p/NqFyV5cQdRRwrmRGCl5Bgahb57
+ 7cPX27akYtIeDNb13grTcSOcLfwLiF/qWNNaKcuThdZHDreKQjTImoSRp8seWdCN5mT1HPZURmDUK
+ dpEQbGrkwDt7PIQGzQ==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=treblig.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=treblig.org header.i=@treblig.org
- header.a=rsa-sha256 header.s=bytemarkmx header.b=pI3yzMfo
-Subject: [Intel-wired-lan] [PATCH net-next 9/9] i40e: Remove unused
- i40e_dcb_hw_get_num_tc
+ header.a=rsa-sha256 header.s=bytemarkmx header.b=UGBNNMY5
+Subject: [Intel-wired-lan] [PATCH net-next] ixgbevf: Remove unused
+ ixgbevf_hv_mbx_ops
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -100,55 +96,53 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: "Dr. David Alan Gilbert" <linux@treblig.org>
 
-The last useof i40e_dcb_hw_get_num_tc() was removed in 2022 by
-commit fe20371578ef ("Revert "i40e: Fix reset bw limit when DCB enabled
-with 1 TC"")
+The const struct ixgbevf_hv_mbx_ops was added in 2016 as part of
+commit c6d45171d706 ("ixgbevf: Support Windows hosts (Hyper-V)")
+
+but has remained unused.
+
+The functions it references are still referenced elsewhere.
 
 Remove it.
 
 Signed-off-by: Dr. David Alan Gilbert <linux@treblig.org>
-Reviewed-by: Kalesh AP <kalesh-anakkur.purayil@broadcom.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_dcb.c | 13 -------------
- drivers/net/ethernet/intel/i40e/i40e_dcb.h |  1 -
- 2 files changed, 14 deletions(-)
+ drivers/net/ethernet/intel/ixgbevf/ixgbevf.h |  1 -
+ drivers/net/ethernet/intel/ixgbevf/mbx.c     | 12 ------------
+ 2 files changed, 13 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_dcb.c b/drivers/net/ethernet/intel/i40e/i40e_dcb.c
-index 8db1eb0c1768..352e957443fd 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_dcb.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_dcb.c
-@@ -1490,19 +1490,6 @@ void i40e_dcb_hw_set_num_tc(struct i40e_hw *hw, u8 num_tc)
- 	wr32(hw, I40E_PRTDCB_GENC, reg);
- }
+diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf.h b/drivers/net/ethernet/intel/ixgbevf/ixgbevf.h
+index 130cb868774c..a43cb500274e 100644
+--- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf.h
++++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf.h
+@@ -439,7 +439,6 @@ extern const struct ixgbevf_info ixgbevf_82599_vf_hv_info;
+ extern const struct ixgbevf_info ixgbevf_X540_vf_hv_info;
+ extern const struct ixgbevf_info ixgbevf_X550_vf_hv_info;
+ extern const struct ixgbevf_info ixgbevf_X550EM_x_vf_hv_info;
+-extern const struct ixgbe_mbx_operations ixgbevf_hv_mbx_ops;
  
--/**
-- * i40e_dcb_hw_get_num_tc
-- * @hw: pointer to the hw struct
-- *
-- * Returns number of traffic classes configured in HW
-- **/
--u8 i40e_dcb_hw_get_num_tc(struct i40e_hw *hw)
--{
--	u32 reg = rd32(hw, I40E_PRTDCB_GENC);
+ /* needed by ethtool.c */
+ extern const char ixgbevf_driver_name[];
+diff --git a/drivers/net/ethernet/intel/ixgbevf/mbx.c b/drivers/net/ethernet/intel/ixgbevf/mbx.c
+index a55dd978f7ca..24d0237e7a99 100644
+--- a/drivers/net/ethernet/intel/ixgbevf/mbx.c
++++ b/drivers/net/ethernet/intel/ixgbevf/mbx.c
+@@ -505,15 +505,3 @@ const struct ixgbe_mbx_operations ixgbevf_mbx_ops_legacy = {
+ 	.check_for_ack	= ixgbevf_check_for_ack_vf,
+ 	.check_for_rst	= ixgbevf_check_for_rst_vf,
+ };
 -
--	return FIELD_GET(I40E_PRTDCB_GENC_NUMTC_MASK, reg);
--}
--
- /**
-  * i40e_dcb_hw_rx_ets_bw_config
-  * @hw: pointer to the hw struct
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_dcb.h b/drivers/net/ethernet/intel/i40e/i40e_dcb.h
-index d76497566e40..d5662c639c41 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_dcb.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_dcb.h
-@@ -253,7 +253,6 @@ void i40e_dcb_hw_rx_cmd_monitor_config(struct i40e_hw *hw,
- void i40e_dcb_hw_pfc_config(struct i40e_hw *hw,
- 			    u8 pfc_en, u8 *prio_tc);
- void i40e_dcb_hw_set_num_tc(struct i40e_hw *hw, u8 num_tc);
--u8 i40e_dcb_hw_get_num_tc(struct i40e_hw *hw);
- void i40e_dcb_hw_rx_ets_bw_config(struct i40e_hw *hw, u8 *bw_share,
- 				  u8 *mode, u8 *prio_type);
- void i40e_dcb_hw_rx_up2tc_config(struct i40e_hw *hw, u8 *prio_tc);
+-/* Mailbox operations when running on Hyper-V.
+- * On Hyper-V, PF/VF communication is not through the
+- * hardware mailbox; this communication is through
+- * a software mediated path.
+- * Most mail box operations are noop while running on
+- * Hyper-V.
+- */
+-const struct ixgbe_mbx_operations ixgbevf_hv_mbx_ops = {
+-	.init_params	= ixgbevf_init_mbx_params_vf,
+-	.check_for_rst	= ixgbevf_check_for_rst_vf,
+-};
 -- 
 2.47.1
 
