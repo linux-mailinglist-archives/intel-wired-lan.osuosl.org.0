@@ -1,85 +1,92 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AEC11A0195E
-	for <lists+intel-wired-lan@lfdr.de>; Sun,  5 Jan 2025 13:29:05 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5E96E80F94;
-	Sun,  5 Jan 2025 12:29:04 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id nFVtpOgdwXct; Sun,  5 Jan 2025 12:29:03 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B0E5680F75
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1736080143;
-	bh=kcui1YFlovpQ1x2BkMAS53C/vo7CjqHBMemv//uHBFU=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=BZ/EnB03nPacj7LnP7DLBYCqAJAUuB+WVmq73J+9VbSb/M5uMifCfrNBTEakTJ7z6
-	 Nd94Xt/+I3Q6UuyFvrc03rUjF/17h52yFpM9j/8s+rbkgrEMv5os3yycorYEYKRHXj
-	 WkPlEs6ADir8PW30+7qrOY5s9ygwei0ASYZgxc21elesNYQtAnUxhNcKQcdOnf/MEz
-	 reyjaqowb3QApJAAIb9uikmrtorHZDFnk/znKP6i6Gapgw3w61MI8LRnG3z7O2cy3d
-	 x6BvN35XyDwYmlP+eu7DTZIYmbsUnX4lhzvJaKZeBKl74DO52GGtEsHrlx4h4ysopo
-	 Qbz5Fa+JlZeVw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B0E5680F75;
-	Sun,  5 Jan 2025 12:29:03 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 5CB93DB4
- for <intel-wired-lan@lists.osuosl.org>; Sun,  5 Jan 2025 12:29:02 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E264A01961
+	for <lists+intel-wired-lan@lfdr.de>; Sun,  5 Jan 2025 13:29:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4AF0740561
- for <intel-wired-lan@lists.osuosl.org>; Sun,  5 Jan 2025 12:29:02 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DE37E40598;
+	Sun,  5 Jan 2025 12:29:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id eqEj7CNoK_u7 for <intel-wired-lan@lists.osuosl.org>;
- Sun,  5 Jan 2025 12:29:01 +0000 (UTC)
+ id hIAk9fhM8ped; Sun,  5 Jan 2025 12:29:49 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E3ACB40561
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1736080189;
+	bh=hJaegaA4URsS9dJNooiDBvKtyhjiY7wAcR6BnE5DN4Y=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=I5lxV+6ibslpjSNg7Q6EjdgY1pfStW5Z7n/r2Ng3bwjfF2iM/9NIXASZUickwa43D
+	 VxFEJTVtvFmtb25MtC1riGZyOCDyqQrs62cl1pwtBMnT0VB2FuhjBLvBnuQk4yEi9n
+	 NkGxRRtyU0mkMVyuFIxJQInw9WVuC7JNc2MVWXWe3i/+c9FqPX1MOoitjN+BywjPXG
+	 +1jgTD7k/H6Op8ivveVbjkzQxjrcJTi1en+1Liwm0ScwLUlIuv4riXIaKxm/6F2h+z
+	 77C8D/n0DE4fjiOCSlgSzDrEKUfEsFJ6q/YZ01EZ0lDz3YyuDQqjsOCEwfjfkFEDS2
+	 vnrpMzASYRHMA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id E3ACB40561;
+	Sun,  5 Jan 2025 12:29:48 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 2EB676B
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  5 Jan 2025 12:29:47 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 12845600B8
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  5 Jan 2025 12:29:47 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id f9D91jnul463 for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  5 Jan 2025 12:29:46 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=2a00:1098:5b::1;
- helo=mx.treblig.org; envelope-from=linux@treblig.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 40C7A40300
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 40C7A40300
+ helo=mx.treblig.org; envelope-from=dg@treblig.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1BD226062B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1BD226062B
 Received: from mx.treblig.org (mx.treblig.org [IPv6:2a00:1098:5b::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 40C7A40300
- for <intel-wired-lan@lists.osuosl.org>; Sun,  5 Jan 2025 12:29:00 +0000 (UTC)
-Received: from localhost ([127.0.0.1] helo=dalek.home.treblig.org)
- by mx.treblig.org with esmtp (Exim 4.96)
- (envelope-from <linux@treblig.org>) id 1tUPkO-008DTD-1h;
- Sun, 05 Jan 2025 12:28:48 +0000
-From: linux@treblig.org
-To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1BD226062B
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  5 Jan 2025 12:29:45 +0000 (UTC)
+Received: from dg by mx.treblig.org with local (Exim 4.96)
+ (envelope-from <dg@treblig.org>) id 1tUPlE-008DUi-0O;
+ Sun, 05 Jan 2025 12:29:40 +0000
+Date: Sun, 5 Jan 2025 12:29:40 +0000
+From: "Dr. David Alan Gilbert" <linux@treblig.org>
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
  andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, kys@microsoft.com,
- intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- "Dr. David Alan Gilbert" <linux@treblig.org>
-Date: Sun,  5 Jan 2025 12:28:47 +0000
-Message-ID: <20250105122847.27341-1-linux@treblig.org>
-X-Mailer: git-send-email 2.47.1
+ pabeni@redhat.com, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Message-ID: <Z3p7NDKTrMpm0Y_-@gallifrey>
+References: <20250102174002.200538-1-linux@treblig.org>
+ <20250104081532.3af26fa1@kernel.org> <Z3muiBPv30Dsp8m5@gallifrey>
+ <20250104165440.080a9c7b@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <20250104165440.080a9c7b@kernel.org>
+X-Chocolate: 70 percent or better cocoa solids preferably
+X-Operating-System: Linux/6.1.0-21-amd64 (x86_64)
+X-Uptime: 12:29:05 up 241 days, 23:43,  1 user,  load average: 0.00, 0.00, 0.00
+User-Agent: Mutt/2.2.12 (2023-09-09)
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
  c=relaxed/relaxed; d=treblig.org
- ; s=bytemarkmx; h=MIME-Version:Message-ID:Date:Subject:From:Content-Type:From
- :Subject; bh=kcui1YFlovpQ1x2BkMAS53C/vo7CjqHBMemv//uHBFU=; b=V7KHXts378VGKH0M
- RnBxCEbkOPio4oWuMoJXxDstN4/j8JFvzJxRuZ6bEH7y5WoyfINhTnYA/vVhrkDEaBhvhCJE32DI0
- +oTAe3VQ0Dg8GxQ0R8W8aORZ6LIqwghm3s1pRZDMhjtsuyYwdzMWvZFgbcwS/8Vs0F1EPjVB1ERRh
- 1J1CovdvR6N8Trwt9vkO550F9nV2Wi2xEV974fwPeuX5bnIDyv/tZlDMjBsPX3i6momp42Cj/HcpA
- U2x4xBGK6IfYESkrQhEMeKpdZJUtL+LyHEzOwyR0eEy6JsRnEgYS11QUTADZd1S0KwtSHGOGEjQyF
- zxIxinPqaptGz5VzJQ==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ ; s=bytemarkmx; h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
+ :Subject; bh=hJaegaA4URsS9dJNooiDBvKtyhjiY7wAcR6BnE5DN4Y=; b=RT38Wv/+pIhkwVsh
+ TztEav7fSMMaGGEapV+WZLY09llb2RyHeaauQtQXaJO3Iqvt0LC70sb0LbGaljMuNaP0KGOllUqQx
+ ItI+7jZIhybussrp3Yvo2Nc8OLrptPA/3eaDp/UmBxJiF+hgaJFdVigEsCN0aQ6aa2E30aKFgOBEz
+ fLSTQXk6c6QPzRt+7zgVPvxh5c2IzgpRdwLIozzC3BSNt1vAmUxGl/V8SMPn6zSj87aYyZOzXbeDQ
+ FifaaTMmkdZ8PDhsxAvq0EYdHoSpSdgkmHqp1J9X7vovFl2DTV+5yoQLljAelYLklaAJ9+XpsbngU
+ O247T9IS7ScYGFO+LA==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=treblig.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=treblig.org header.i=@treblig.org header.a=rsa-sha256
- header.s=bytemarkmx header.b=V7KHXts3
-Subject: [Intel-wired-lan] [PATCH net-next v2] ixgbevf: Remove unused
+ header.s=bytemarkmx header.b=RT38Wv/+
+Subject: Re: [Intel-wired-lan] [PATCH net-next] ixgbevf: Remove unused
  ixgbevf_hv_mbx_ops
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -96,55 +103,34 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: "Dr. David Alan Gilbert" <linux@treblig.org>
+* Jakub Kicinski (kuba@kernel.org) wrote:
+> On Sat, 4 Jan 2025 21:56:24 +0000 Dr. David Alan Gilbert wrote:
+> > > This one doesn't apply, reportedly.  
+> > 
+> > Hmm, do you have a link to that report, or to which tree I should try
+> > applying it to.
+> 
+> net-next, the tree in the subject prefix:
+> 
+> $ git checkout net-next/main
+> $ wget 'https://lore.kernel.org/all/20250102174002.200538-1-linux@treblig.org/raw'
+> Saving 'raw'
+> $ git am raw
+> Applying: ixgbevf: Remove unused ixgbevf_hv_mbx_ops
+> error: patch failed: drivers/net/ethernet/intel/ixgbevf/ixgbevf.h:439
+> error: drivers/net/ethernet/intel/ixgbevf/ixgbevf.h: patch does not apply
+> Patch failed at 0001 ixgbevf: Remove unused ixgbevf_hv_mbx_ops
 
-The const struct ixgbevf_hv_mbx_ops was added in 2016 as part of
-commit c6d45171d706 ("ixgbevf: Support Windows hosts (Hyper-V)")
+Just sent:
+Subject: [PATCH net-next v2] ixgbevf: Remove unused ixgbevf_hv_mbx_ops
+Message-ID: <20250105122847.27341-1-linux@treblig.org>
 
-but has remained unused.
+on top of a few hour old net-next.
 
-The functions it references are still referenced elsewhere.
+Dave
 
-Remove it.
-
-Signed-off-by: Dr. David Alan Gilbert <linux@treblig.org>
----
- drivers/net/ethernet/intel/ixgbevf/ixgbevf.h |  1 -
- drivers/net/ethernet/intel/ixgbevf/mbx.c     | 12 ------------
- 2 files changed, 13 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf.h b/drivers/net/ethernet/intel/ixgbevf/ixgbevf.h
-index 9b37f354d78c..4384e892f967 100644
---- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf.h
-+++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf.h
-@@ -443,7 +443,6 @@ extern const struct ixgbevf_info ixgbevf_X540_vf_hv_info;
- extern const struct ixgbevf_info ixgbevf_X550_vf_hv_info;
- extern const struct ixgbevf_info ixgbevf_X550EM_x_vf_hv_info;
- extern const struct ixgbevf_info ixgbevf_e610_vf_hv_info;
--extern const struct ixgbe_mbx_operations ixgbevf_hv_mbx_ops;
- 
- /* needed by ethtool.c */
- extern const char ixgbevf_driver_name[];
-diff --git a/drivers/net/ethernet/intel/ixgbevf/mbx.c b/drivers/net/ethernet/intel/ixgbevf/mbx.c
-index a55dd978f7ca..24d0237e7a99 100644
---- a/drivers/net/ethernet/intel/ixgbevf/mbx.c
-+++ b/drivers/net/ethernet/intel/ixgbevf/mbx.c
-@@ -505,15 +505,3 @@ const struct ixgbe_mbx_operations ixgbevf_mbx_ops_legacy = {
- 	.check_for_ack	= ixgbevf_check_for_ack_vf,
- 	.check_for_rst	= ixgbevf_check_for_rst_vf,
- };
--
--/* Mailbox operations when running on Hyper-V.
-- * On Hyper-V, PF/VF communication is not through the
-- * hardware mailbox; this communication is through
-- * a software mediated path.
-- * Most mail box operations are noop while running on
-- * Hyper-V.
-- */
--const struct ixgbe_mbx_operations ixgbevf_hv_mbx_ops = {
--	.init_params	= ixgbevf_init_mbx_params_vf,
--	.check_for_rst	= ixgbevf_check_for_rst_vf,
--};
 -- 
-2.47.1
-
+ -----Open up your eyes, open up your mind, open up your code -------   
+/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
+\        dave @ treblig.org |                               | In Hex /
+ \ _________________________|_____ http://www.treblig.org   |_______/
