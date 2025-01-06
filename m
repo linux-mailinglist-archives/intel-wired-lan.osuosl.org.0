@@ -1,92 +1,96 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7CA0DA02353
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Jan 2025 11:44:56 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A3C66A02416
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Jan 2025 12:18:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DDB5B404CC;
-	Mon,  6 Jan 2025 10:44:54 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C21B6606DE;
+	Mon,  6 Jan 2025 11:18:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9GhpFDnuxX5T; Mon,  6 Jan 2025 10:44:54 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id leVCLswqWs8L; Mon,  6 Jan 2025 11:18:02 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BBDEC4049F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 96EA660706
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1736160293;
-	bh=SfwtnNJC4GWPAi9ycf6yP1XKH6caklV70mz2yVDUcxY=;
+	s=default; t=1736162282;
+	bh=/34oumIQD8q+x4BN58XzFKHbQHRSrS13ejCl4PCvYQQ=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=z9wMv41taZ2mo2QWnymBnvglWEYb78xHXe9u6jkunynEjrOddXCbEuFDWA3b+KKRy
-	 Z/Gj1lGKhmV+5/wywD+hCVhlAeS/G0mzsLCvLAfZri3fR7u+ZWWYHfkbzUxIoDhcRW
-	 PQrM8NADh0NyxZ/5FA9f3BHEsbVD0/7d56PCqlkYo4F4c5e10aobDSymxg2w5aWzc3
-	 +5aFJWCvsmXnUS2N7d55GE6vyNU7nqqOKKy1pvmE+H8PsFedV3DXfwxvvnb/Bpnjw4
-	 LNYCgu2YZ/JdB/2xQAODJtxlJFdq8Ux7+R6NZrF/dj8ldQZcg3H3Bkc+zyhvhdFyO7
-	 zRipbxONuINJg==
+	b=fs2QkbrjY9KkxxrnDhKClYqWI2XbRIqQri7w1s2tXl3G1RSfTs/RcOXm2CAqk1Zjw
+	 55JjZFQPEydyjq5c+lR/6XHVYymtHy+1PItLBQkCwrnST1wW403IcmeTb2H+66RSAs
+	 btMN4YKS2BxC0dUjaAg72TWoFShXL/98qwe7CCTWR0xJh14sihacWusuuFHYW7IJo3
+	 Kh7gsAm9BjhbjreUaDcsHP3mbimyZH771knQQtPZRN0hscwz4lC2UqVlF8RDxC9lg1
+	 5TNuqkOWQzi51E35HjAywlaehIxEgDCMNQ6wazah42zkE6q+2ybjWZSW7PTyGnC62H
+	 lEEkGLJQ0VWeg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BBDEC4049F;
-	Mon,  6 Jan 2025 10:44:53 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 96EA660706;
+	Mon,  6 Jan 2025 11:18:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id C326FD92
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2025 10:44:51 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 84D0A6B
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2025 11:18:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A763740352
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2025 10:44:51 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6527060093
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2025 11:18:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pmT2uAsim9mp for <intel-wired-lan@lists.osuosl.org>;
- Mon,  6 Jan 2025 10:44:50 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id xmgtD13mmnon for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  6 Jan 2025 11:17:59 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
  envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org A64BD40362
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A64BD40362
-Received: from nyc.source.kernel.org (nyc.source.kernel.org
- [IPv6:2604:1380:45d1:ec00::3])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A64BD40362
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2025 10:44:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 7AE00606D0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7AE00606D0
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 7AE00606D0
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2025 11:17:59 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id B5C06A41444;
- Mon,  6 Jan 2025 10:43:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB27BC4CEE0;
- Mon,  6 Jan 2025 10:44:46 +0000 (UTC)
-Date: Mon, 6 Jan 2025 10:44:44 +0000
+ by dfw.source.kernel.org (Postfix) with ESMTP id 195BC5C581B;
+ Mon,  6 Jan 2025 11:17:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD17EC4CED2;
+ Mon,  6 Jan 2025 11:17:54 +0000 (UTC)
+Date: Mon, 6 Jan 2025 11:17:52 +0000
 From: Simon Horman <horms@kernel.org>
-To: Emil Tantilov <emil.s.tantilov@intel.com>
+To: Gerhard Engleder <gerhard@engleder-embedded.com>
 Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- larysa.zaremba@intel.com, decot@google.com, willemb@google.com,
- anthony.l.nguyen@intel.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- aleksander.lobakin@intel.com
-Message-ID: <20250106104444.GB4068@kernel.org>
-References: <20241220020932.32545-1-emil.s.tantilov@intel.com>
+ linux-pci@vger.kernel.org, anthony.l.nguyen@intel.com,
+ przemyslaw.kitszel@intel.com, andrew+netdev@lunn.ch,
+ davem@davemloft.net, kuba@kernel.org, edumazet@google.com,
+ pabeni@redhat.com, bhelgaas@google.com, pmenzel@molgen.mpg.de,
+ aleksander.lobakin@intel.com, Gerhard Engleder <eg@keba.com>,
+ Vitaly Lifshits <vitaly.lifshits@intel.com>,
+ Avigail Dahan <avigailx.dahan@intel.com>
+Message-ID: <20250106111752.GC4068@kernel.org>
+References: <20241219192743.4499-1-gerhard@engleder-embedded.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20241220020932.32545-1-emil.s.tantilov@intel.com>
+In-Reply-To: <20241219192743.4499-1-gerhard@engleder-embedded.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1736160289;
- bh=AWEemNc0raKKH2Kwou+f+1lTew6hT8lUQDDjqNXpkYU=;
+ d=kernel.org; s=k20201202; t=1736162278;
+ bh=Bq/pnYFsE3I0zcZZpfR6gK1mHvcQk7XJiDVsVg9HHp8=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=abI/2IcLyUSdp0uLJFdfrPKPqudyuCYfQ8X6peVfNIrIif9rlaUa7do2SrtSpDuQw
- VdVFMNfsb+0bfqSyfziDL6Pdk6qRuL6gIV9yCPoMV6QvyC/tb5Sko15cYe2Lhu1P0i
- yJutXWyXaFRwQhLQ5zNbWakgbV75wgZLdQi/gw06prOr79RGH8CYs/wrOlFdZmX55x
- MczEgi3g0+lo/5OYsxTXKiR+rkEoNYVG4o3X3ns0wgjI0K0WA58rs0MnIPDX5hJiPU
- K/OHEFINy7iSYm6CqkchLdoIN25A04DG3TyfW8MfQonoZ/jnLI/ZOmauhc5Fz7MZe9
- rY+yG9R9iz1mg==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=dkoWukeZLZpW6My59uxEtxmpR/C2wLXqnd1z45Hh1LA2mF4lvSpFmt5B5ksd5T9k2
+ w58W5Rjb/0f7p8WhfxOspSAFj51pbAzF2DJY3LGovSAfOzbsMsuyk9IiGiA8U8E72R
+ cslPFw98C1KUF4tnGeg7G5XztgDx5k9rjZC70dZJ797YWKOANrKCxp9qhqhZfNMEdr
+ PXEQ6NYfBxkhjxP2xuWL45f93uF8FA01OJBelznH0Irbq8mEk/vHGR5gKJMJR3Ijcu
+ ZSqc9LM4fcxzh+mHHUQPwMMIJNYpsCcZlvpfafLQD46Hi3jA+RjqJCYUHuiWDwjHNY
+ bY4iEJcBXckNg==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=abI/2IcL
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] idpf: fix transaction
- timeouts on reset
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=dkoWukeZ
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4] e1000e: Fix real-time
+ violations on link up
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -102,30 +106,65 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Dec 19, 2024 at 06:09:32PM -0800, Emil Tantilov wrote:
-> Restore the call to idpf_vc_xn_shutdown() at the beginning of
-> idpf_vc_core_deinit() provided the function is not called on remove.
-> In the reset path the mailbox is destroyed, leading to all transactions
-> timing out.
+On Thu, Dec 19, 2024 at 08:27:43PM +0100, Gerhard Engleder wrote:
+> From: Gerhard Engleder <eg@keba.com>
 > 
-> Fixes: 09d0fb5cb30e ("idpf: deinit virtchnl transaction manager after vport and vectors")
-> Reviewed-by: Larysa Zaremba <larysa.zaremba@intel.com>
-> Signed-off-by: Emil Tantilov <emil.s.tantilov@intel.com>
+> Link down and up triggers update of MTA table. This update executes many
+> PCIe writes and a final flush. Thus, PCIe will be blocked until all
+> writes are flushed. As a result, DMA transfers of other targets suffer
+> from delay in the range of 50us. This results in timing violations on
+> real-time systems during link down and up of e1000e in combination with
+> an Intel i3-2310E Sandy Bridge CPU.
+> 
+> The i3-2310E is quite old. Launched 2011 by Intel but still in use as
+> robot controller. The exact root cause of the problem is unclear and
+> this situation won't change as Intel support for this CPU has ended
+> years ago. Our experience is that the number of posted PCIe writes needs
+> to be limited at least for real-time systems. With posted PCIe writes a
+> much higher throughput can be generated than with PCIe reads which
+> cannot be posted. Thus, the load on the interconnect is much higher.
+> Additionally, a PCIe read waits until all posted PCIe writes are done.
+> Therefore, the PCIe read can block the CPU for much more than 10us if a
+> lot of PCIe writes were posted before. Both issues are the reason why we
+> are limiting the number of posted PCIe writes in row in general for our
+> real-time systems, not only for this driver.
+> 
+> A flush after a low enough number of posted PCIe writes eliminates the
+> delay but also increases the time needed for MTA table update. The
+> following measurements were done on i3-2310E with e1000e for 128 MTA
+> table entries:
+> 
+> Single flush after all writes: 106us
+> Flush after every write:       429us
+> Flush after every 2nd write:   266us
+> Flush after every 4th write:   180us
+> Flush after every 8th write:   141us
+> Flush after every 16th write:  121us
+> 
+> A flush after every 8th write delays the link up by 35us and the
+> negative impact to DMA transfers of other targets is still tolerable.
+> 
+> Execute a flush after every 8th write. This prevents overloading the
+> interconnect with posted writes.
+> 
+> Signed-off-by: Gerhard Engleder <eg@keba.com>
+> Link: https://lore.kernel.org/netdev/f8fe665a-5e6c-4f95-b47a-2f3281aa0e6c@lunn.ch/T/
+> CC: Vitaly Lifshits <vitaly.lifshits@intel.com>
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Tested-by: Avigail Dahan <avigailx.dahan@intel.com>
 > ---
-> Changelog:
+> v4:
+> - add PREEMPT_RT dependency again (Vitaly Lifshits)
+> - fix comment styple (Alexander Lobakin)
+> - add to comment each 8th and explain why (Alexander Lobakin)
+> - simplify check for every 8th write (Alexander Lobakin)
+> 
+> v3:
+> - mention problematic platform explicitly (Bjorn Helgaas)
+> - improve comment (Paul Menzel)
+> 
 > v2:
-> - Assigned the current state of REMOVE_IN_PROG flag to a boolean
->   variable, to be checked instead of reading the flag twice.
-> - Updated the description to clarify the reason for the timeouts on
->   reset is due to the mailbox being destroyed.
-> 
-> v1:
-> https://lore.kernel.org/intel-wired-lan/20241218014417.3786-1-emil.s.tantilov@intel.com/
-> 
-> Testing hints:
-> echo 1 > /sys/class/net/<netif>/device/reset
-
-Thanks for the update,
+> - remove PREEMPT_RT dependency (Andrew Lunn, Przemek Kitszel)
 
 Reviewed-by: Simon Horman <horms@kernel.org>
 
