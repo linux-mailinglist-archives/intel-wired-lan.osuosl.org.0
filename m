@@ -1,89 +1,92 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D19A2A02485
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Jan 2025 12:46:50 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 222EEA0262B
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Jan 2025 14:08:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8BBB0404B6;
-	Mon,  6 Jan 2025 11:46:49 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8022980DB1;
+	Mon,  6 Jan 2025 13:08:36 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id vLqESxMkqAM2; Mon,  6 Jan 2025 13:08:35 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1190C80B26
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1736168915;
+	bh=KAqTZzyLh2OzYWJWUu9ZL0c/kx4w81BRupQ6dX1z6vk=;
+	h=From:To:CC:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=f1K5kghVQ8XLqHhcnr8FVmYoeTLHt0OssEpjrP0HLlzXCerBnwL78y1PKd/2Q/ikl
+	 409J6pMhOYUI53S7W0bOQYCsEkIJIJ/xQYp2nLRF2tB0ktqLzUSg2hNgbxjS97N/QI
+	 1RouW8i8lbP0yOL0vqJNhLQXN7XjMDiXY48kJYu4s5gIrgUDvxCiQDKquUFq1y20Z2
+	 p6w9jJWe7iWBP7VGOGzyEBmh4cPVlPK90ICn8UvNiK0v3sXJz8FZLWY2da22hDbZbs
+	 iC9UMFSa94G3gSZxw6hx5BfyNIsPUfRMWu9elpz0x2MaIYxQENuYKblEqAPUFqNTsX
+	 ZtheBztqR5Mig==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1190C80B26;
+	Mon,  6 Jan 2025 13:08:35 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 5415C6B
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2025 13:08:33 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 353A6401C6
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2025 13:08:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id wdXeeDmycRcD; Mon,  6 Jan 2025 11:46:48 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B24F94049A
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1736164008;
-	bh=2kfWNAHcCOHi/DBM0B37XoBD1xlJd9n+HLWnl4Qy07s=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=S06nuZ/tGZOW0ER4jLhXg8p/r1WumtoGegz1v0dk/V2luWJTd7AK8nukERVvOfVTY
-	 Zs6uRmDK+q2G4xpDWiGkqbIVJAVY5mwh00NX/6dFwXdQg1jwQOp4UoIVp8ohPnaF03
-	 W38UIn0b4ZsPmfO/dNzH8/Qk4NcpmFR9/u3CKn6uLpRokZiQfVoRZ2YuQaqRQXdBo2
-	 LslZ8LWpWN++vEezFSXh4dU8XJHQlvnPTBK8r7qndnVH5n9HRZ/f1AAaOlfQheIZdl
-	 hhJ0c3KX2P+lQ+sy9MhTecJiFvBlFzkpz4CC1TknNH7fr2soY3GRzlSncrssI0SW5k
-	 X7TRT2CcJBTNw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B24F94049A;
-	Mon,  6 Jan 2025 11:46:48 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 4F810DB4
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2025 11:46:47 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 304BD400F9
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2025 11:46:47 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pmZf-CmyJDMx for <intel-wired-lan@lists.osuosl.org>;
- Mon,  6 Jan 2025 11:46:46 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
+ id KdTZ2srVYdep for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  6 Jan 2025 13:08:31 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.190;
+ helo=szxga04-in.huawei.com; envelope-from=linyunsheng@huawei.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 474EE400B9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 474EE400B9
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 474EE400B9
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2025 11:46:46 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 689115C581B;
- Mon,  6 Jan 2025 11:46:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5AC4C4CED2;
- Mon,  6 Jan 2025 11:46:43 +0000 (UTC)
-Date: Mon, 6 Jan 2025 11:46:41 +0000
-From: Simon Horman <horms@kernel.org>
-To: Paul Greenwalt <paul.greenwalt@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
- netdev@vger.kernel.org, Alice Michael <alice.michael@intel.com>,
- Eric Joyner <eric.joyner@intel.com>
-Message-ID: <20250106114641.GI4068@kernel.org>
-References: <20241218091145.240373-1-paul.greenwalt@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 818FE4018B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 818FE4018B
+Received: from szxga04-in.huawei.com (szxga04-in.huawei.com [45.249.212.190])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 818FE4018B
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2025 13:08:29 +0000 (UTC)
+Received: from mail.maildlp.com (unknown [172.19.163.44])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4YRZDy2wvJz22kfq;
+ Mon,  6 Jan 2025 21:06:10 +0800 (CST)
+Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
+ by mail.maildlp.com (Postfix) with ESMTPS id 6A902140135;
+ Mon,  6 Jan 2025 21:08:23 +0800 (CST)
+Received: from localhost.localdomain (10.90.30.45) by
+ dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.11; Mon, 6 Jan 2025 21:08:23 +0800
+From: Yunsheng Lin <linyunsheng@huawei.com>
+To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
+CC: <liuyonglong@huawei.com>, <fanghaiqing@huawei.com>,
+ <zhangkun09@huawei.com>, Yunsheng Lin <linyunsheng@huawei.com>, Alexander
+ Lobakin <aleksander.lobakin@intel.com>, Robin Murphy <robin.murphy@arm.com>,
+ Alexander Duyck <alexander.duyck@gmail.com>, Andrew Morton
+ <akpm@linux-foundation.org>, IOMMU <iommu@lists.linux.dev>, MM
+ <linux-mm@kvack.org>, Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann
+ <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, John
+ Fastabend <john.fastabend@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, <netdev@vger.kernel.org>,
+ <intel-wired-lan@lists.osuosl.org>, <bpf@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Date: Mon, 6 Jan 2025 21:01:08 +0800
+Message-ID: <20250106130116.457938-1-linyunsheng@huawei.com>
+X-Mailer: git-send-email 2.30.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241218091145.240373-1-paul.greenwalt@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1736164005;
- bh=5ZSPwqoLzQxrvlYZ22fMOJZBbUCBFLwgI7F0pVMEugE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=UzguXv6MyGcNriC4c7uI8/fljcWS14cKvGVSfQoHV5Vo1/ao5lHtLguur1fih2V4V
- vPxeGrOdjZruVQofcIqCXS8r0DjcznKO0FU0UK+xDif47xRKn38aFLHI4GW0wZdAKA
- lC+In8fkyH/AHip6CW9cnncC1fQkWOGzs2IpVCTRS0NLPhxSdghGuzbNSTnfrd/R9q
- n4BCZ1hBbAjB1iYoLvt3yXapQXa+par8MirE8Vau/5XAjZFk1qFk87/eLY5/RyhmX5
- 8zv50TZFdAe/TiUbcU4zszZxzVhKDXRrFra8FW7B3Hx+DMRVbWseNnLJZG6Fo/FG3Y
- iwLPXpLuR+dyQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.90.30.45]
+X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+ dggpemf200006.china.huawei.com (7.185.36.61)
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=UzguXv6M
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v6] ice: Add E830 checksum
- offload support
+ header.from=huawei.com
+Subject: [Intel-wired-lan] [PATCH net-next v6 0/8] fix two bugs related to
+ page_pool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -99,48 +102,118 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Dec 18, 2024 at 04:11:45AM -0500, Paul Greenwalt wrote:
-> E830 supports raw receive and generic transmit checksum offloads.
-> 
-> Raw receive checksum support is provided by hardware calculating the
-> checksum over the whole packet, regardless of type. The calculated
-> checksum is provided to driver in the Rx flex descriptor. Then the driver
-> assigns the checksum to skb->csum and sets skb->ip_summed to
-> CHECKSUM_COMPLETE.
-> 
-> Generic transmit checksum support is provided by hardware calculating the
-> checksum given two offsets: the start offset to begin checksum calculation,
-> and the offset to insert the calculated checksum in the packet. Support is
-> advertised to the stack using NETIF_F_HW_CSUM feature.
-> 
-> E830 has the following limitations when both generic transmit checksum
-> offload and TCP Segmentation Offload (TSO) are enabled:
-> 
-> 1. Inner packet header modification is not supported. This restriction
->    includes the inability to alter TCP flags, such as the push flag. As a
->    result, this limitation can impact the receiver's ability to coalesce
->    packets, potentially degrading network throughput.
-> 2. The Maximum Segment Size (MSS) is limited to 1023 bytes, which prevents
->    support of Maximum Transmission Unit (MTU) greater than 1063 bytes.
-> 
-> Therefore NETIF_F_HW_CSUM and NETIF_F_ALL_TSO features are mutually
-> exclusive. NETIF_F_HW_CSUM hardware feature support is indicated but is not
-> enabled by default. Instead, IP checksums and NETIF_F_ALL_TSO are the
-> defaults. Enforcement of mutual exclusivity of NETIF_F_HW_CSUM and
-> NETIF_F_ALL_TSO is done in ice_set_features(). Mutual exclusivity
-> of IP checksums and NETIF_F_HW_CSUM is handled by netdev_fix_features().
-> 
-> When NETIF_F_HW_CSUM is requested the provided skb->csum_start and
-> skb->csum_offset are passed to hardware in the Tx context descriptor
-> generic checksum (GCS) parameters. Hardware calculates the 1's complement
-> from skb->csum_start to the end of the packet, and inserts the result in
-> the packet at skb->csum_offset.
-> 
-> Co-developed-by: Alice Michael <alice.michael@intel.com>
-> Signed-off-by: Alice Michael <alice.michael@intel.com>
-> Co-developed-by: Eric Joyner <eric.joyner@intel.com>
-> Signed-off-by: Eric Joyner <eric.joyner@intel.com>
-> Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
+This patchset fix a possible time window problem for page_pool and
+the dma API misuse problem as mentioned in [1], and try to avoid the
+overhead of the fixing using some optimization.
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+From the below performance data, the overhead is not so obvious
+due to performance variations for time_bench_page_pool01_fast_path()
+and time_bench_page_pool02_ptr_ring, and there is about 20ns overhead
+for time_bench_page_pool03_slow() for fixing the bug.
+
+Before this patchset:
+root@(none)$ insmod bench_page_pool_simple.ko
+[  323.367627] bench_page_pool_simple: Loaded
+[  323.448747] time_bench: Type:for_loop Per elem: 0 cycles(tsc) 0.769 ns (step:0) - (measurement period time:0.076997150 sec time_interval:76997150) - (invoke count:100000000 tsc_interval:7699707)
+[  324.812884] time_bench: Type:atomic_inc Per elem: 1 cycles(tsc) 13.468 ns (step:0) - (measurement period time:1.346855130 sec time_interval:1346855130) - (invoke count:100000000 tsc_interval:134685507)
+[  324.980875] time_bench: Type:lock Per elem: 1 cycles(tsc) 15.010 ns (step:0) - (measurement period time:0.150101270 sec time_interval:150101270) - (invoke count:10000000 tsc_interval:15010120)
+[  325.652195] time_bench: Type:rcu Per elem: 0 cycles(tsc) 6.542 ns (step:0) - (measurement period time:0.654213000 sec time_interval:654213000) - (invoke count:100000000 tsc_interval:65421294)
+[  325.669215] bench_page_pool_simple: time_bench_page_pool01_fast_path(): Cannot use page_pool fast-path
+[  325.974848] time_bench: Type:no-softirq-page_pool01 Per elem: 2 cycles(tsc) 29.633 ns (step:0) - (measurement period time:0.296338200 sec time_interval:296338200) - (invoke count:10000000 tsc_interval:29633814)
+[  325.993517] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): Cannot use page_pool fast-path
+[  326.576636] time_bench: Type:no-softirq-page_pool02 Per elem: 5 cycles(tsc) 57.391 ns (step:0) - (measurement period time:0.573911820 sec time_interval:573911820) - (invoke count:10000000 tsc_interval:57391174)
+[  326.595307] bench_page_pool_simple: time_bench_page_pool03_slow(): Cannot use page_pool fast-path
+[  328.422661] time_bench: Type:no-softirq-page_pool03 Per elem: 18 cycles(tsc) 181.849 ns (step:0) - (measurement period time:1.818495880 sec time_interval:1818495880) - (invoke count:10000000 tsc_interval:181849581)
+[  328.441681] bench_page_pool_simple: pp_tasklet_handler(): in_serving_softirq fast-path
+[  328.449584] bench_page_pool_simple: time_bench_page_pool01_fast_path(): in_serving_softirq fast-path
+[  328.755031] time_bench: Type:tasklet_page_pool01_fast_path Per elem: 2 cycles(tsc) 29.632 ns (step:0) - (measurement period time:0.296327910 sec time_interval:296327910) - (invoke count:10000000 tsc_interval:29632785)
+[  328.774308] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): in_serving_softirq fast-path
+[  329.578579] time_bench: Type:tasklet_page_pool02_ptr_ring Per elem: 7 cycles(tsc) 79.523 ns (step:0) - (measurement period time:0.795236560 sec time_interval:795236560) - (invoke count:10000000 tsc_interval:79523650)
+[  329.597769] bench_page_pool_simple: time_bench_page_pool03_slow(): in_serving_softirq fast-path
+[  331.507501] time_bench: Type:tasklet_page_pool03_slow Per elem: 19 cycles(tsc) 190.104 ns (step:0) - (measurement period time:1.901047510 sec time_interval:1901047510) - (invoke count:10000000 tsc_interval:190104743)
+
+After this patchset:
+root@(none)$ insmod bench_page_pool_simple.ko
+[  138.634758] bench_page_pool_simple: Loaded
+[  138.715879] time_bench: Type:for_loop Per elem: 0 cycles(tsc) 0.769 ns (step:0) - (measurement period time:0.076972720 sec time_interval:76972720) - (invoke count:100000000 tsc_interval:7697265)
+[  140.079897] time_bench: Type:atomic_inc Per elem: 1 cycles(tsc) 13.467 ns (step:0) - (measurement period time:1.346735370 sec time_interval:1346735370) - (invoke count:100000000 tsc_interval:134673531)
+[  140.247841] time_bench: Type:lock Per elem: 1 cycles(tsc) 15.005 ns (step:0) - (measurement period time:0.150055080 sec time_interval:150055080) - (invoke count:10000000 tsc_interval:15005497)
+[  140.919072] time_bench: Type:rcu Per elem: 0 cycles(tsc) 6.541 ns (step:0) - (measurement period time:0.654125000 sec time_interval:654125000) - (invoke count:100000000 tsc_interval:65412493)
+[  140.936091] bench_page_pool_simple: time_bench_page_pool01_fast_path(): Cannot use page_pool fast-path
+[  141.246985] time_bench: Type:no-softirq-page_pool01 Per elem: 3 cycles(tsc) 30.159 ns (step:0) - (measurement period time:0.301598160 sec time_interval:301598160) - (invoke count:10000000 tsc_interval:30159812)
+[  141.265654] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): Cannot use page_pool fast-path
+[  141.976265] time_bench: Type:no-softirq-page_pool02 Per elem: 7 cycles(tsc) 70.140 ns (step:0) - (measurement period time:0.701405780 sec time_interval:701405780) - (invoke count:10000000 tsc_interval:70140573)
+[  141.994933] bench_page_pool_simple: time_bench_page_pool03_slow(): Cannot use page_pool fast-path
+[  144.018945] time_bench: Type:no-softirq-page_pool03 Per elem: 20 cycles(tsc) 201.514 ns (step:0) - (measurement period time:2.015141210 sec time_interval:2015141210) - (invoke count:10000000 tsc_interval:201514113)
+[  144.037966] bench_page_pool_simple: pp_tasklet_handler(): in_serving_softirq fast-path
+[  144.045870] bench_page_pool_simple: time_bench_page_pool01_fast_path(): in_serving_softirq fast-path
+[  144.205045] time_bench: Type:tasklet_page_pool01_fast_path Per elem: 1 cycles(tsc) 15.005 ns (step:0) - (measurement period time:0.150056510 sec time_interval:150056510) - (invoke count:10000000 tsc_interval:15005645)
+[  144.224320] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): in_serving_softirq fast-path
+[  144.916044] time_bench: Type:tasklet_page_pool02_ptr_ring Per elem: 6 cycles(tsc) 68.269 ns (step:0) - (measurement period time:0.682693070 sec time_interval:682693070) - (invoke count:10000000 tsc_interval:68269300)
+[  144.935234] bench_page_pool_simple: time_bench_page_pool03_slow(): in_serving_softirq fast-path
+[  146.997684] time_bench: Type:tasklet_page_pool03_slow Per elem: 20 cycles(tsc) 205.376 ns (step:0) - (measurement period time:2.053766310 sec time_interval:2053766310) - (invoke count:10000000 tsc_interval:205376624)
+
+1. https://lore.kernel.org/lkml/8067f204-1380-4d37-8ffd-007fc6f26738@kernel.org/T/
+
+CC: Alexander Lobakin <aleksander.lobakin@intel.com>
+CC: Robin Murphy <robin.murphy@arm.com>
+CC: Alexander Duyck <alexander.duyck@gmail.com>
+CC: Andrew Morton <akpm@linux-foundation.org>
+CC: IOMMU <iommu@lists.linux.dev>
+CC: MM <linux-mm@kvack.org>
+
+Change log:
+V6:
+  1. Repost based on latest net-next.
+  2. Rename page_pool_to_pp() to page_pool_get_pp().
+
+V5:
+  1. Support unlimit inflight pages.
+  2. Add some optimization to avoid the overhead of fixing bug.
+
+V4:
+  1. use scanning to do the unmapping
+  2. spilt dma sync skipping into separate patch
+
+V3:
+  1. Target net-next tree instead of net tree.
+  2. Narrow the rcu lock as the discussion in v2.
+  3. Check the ummapping cnt against the inflight cnt.
+
+V2:
+  1. Add a item_full stat.
+  2. Use container_of() for page_pool_to_pp().
+
+Yunsheng Lin (8):
+  page_pool: introduce page_pool_get_pp() API
+  page_pool: fix timing for checking and disabling napi_local
+  page_pool: fix IOMMU crash when driver has already unbound
+  page_pool: support unlimited number of inflight pages
+  page_pool: skip dma sync operation for inflight pages
+  page_pool: use list instead of ptr_ring for ring cache
+  page_pool: batch refilling pages to reduce atomic operation
+  page_pool: use list instead of array for alloc cache
+
+ drivers/net/ethernet/freescale/fec_main.c     |   8 +-
+ .../ethernet/google/gve/gve_buffer_mgmt_dqo.c |   2 +-
+ drivers/net/ethernet/intel/iavf/iavf_txrx.c   |   6 +-
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c   |  14 +-
+ drivers/net/ethernet/intel/libeth/rx.c        |   2 +-
+ .../net/ethernet/mellanox/mlx5/core/en/xdp.c  |   3 +-
+ drivers/net/netdevsim/netdev.c                |   6 +-
+ drivers/net/wireless/mediatek/mt76/mt76.h     |   2 +-
+ include/linux/mm_types.h                      |   2 +-
+ include/linux/skbuff.h                        |   1 +
+ include/net/libeth/rx.h                       |   3 +-
+ include/net/netmem.h                          |  24 +-
+ include/net/page_pool/helpers.h               |  11 +
+ include/net/page_pool/types.h                 |  63 +-
+ net/core/devmem.c                             |   4 +-
+ net/core/netmem_priv.h                        |   5 +-
+ net/core/page_pool.c                          | 660 ++++++++++++++----
+ net/core/page_pool_priv.h                     |  12 +-
+ 18 files changed, 664 insertions(+), 164 deletions(-)
+
+-- 
+2.33.0
 
