@@ -1,93 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 188C9A0324A
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Jan 2025 22:50:23 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3156BA03396
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Jan 2025 00:52:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 887D8812C4;
-	Mon,  6 Jan 2025 21:50:21 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B6CAD607FE;
+	Mon,  6 Jan 2025 23:52:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8dcdugsrHzP4; Mon,  6 Jan 2025 21:50:20 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id XPA-gcUcjN1j; Mon,  6 Jan 2025 23:52:02 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AAB79812D8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0F5406080F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1736200220;
-	bh=tqOKdSX+jaXqxzFXFhv10UfPRenhiBeUCEO8Ow94lbc=;
-	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
+	s=default; t=1736207522;
+	bh=h+t1a+Wcy+KRp/X70C+xsAph3Osz6Q09Wwfd7it6d6E=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=6T0GOl9BQ6Iig0Fa2/OZZWVILySFKBOCLLDiU2Q6ljK+I5Nons+GUGWWgwEy5g6oT
-	 KPhFKUYrzjjQnp9gJKVNrgQhxeZhasKDite1uk5E3etk1ajilwIaoGj7Gl6TUllvhn
-	 xwQq64pWW5b21mGOXOKeGWKjJr1k616FdvIZgAeRwyfe+/fuhyCwuZTi4pVffOgKJT
-	 a7aICuY59Kmpx2FW5l72luE68SHbB4iJCQ2sTA0NR0Tc7wIYBvvISsTIgnQAL12bjc
-	 ixFpEEaul8O9tIdXNF+7UOM20QmthyjdsoYf1aH+/2YiA2M62xbGLGcVdHR7Sr9GWz
-	 AGF3Z7G63tQTA==
+	b=U5sPPTmcExePab7OGjO0usMqXfsVy1J8hjbpe04wmu4lC4ooBxhBkt6uc8jraos4p
+	 4zrBdUFKwEa7z1ByBGTO4gOkntT0V00n5aizILEmc5VlbmhM0F31iVQMa3barYsMj9
+	 UICzRExIdhjXCKEzKgaR8VPRDi4zB6rT/wnG8NeqKuQ4UFi+bA33wAJRHEYT6+tZaR
+	 DZ8I8ycUSO9lWaQJChRj/O8cm7l5eu3Uv2MtXOtdLkG1GSQscvphEOQDj8wjIwvH+5
+	 VBQTDp0/7qdEH8LrufJkC2qKq3XYB+rRTn/1ANcR9NsQP5gd6ggcNegMT4NTzH88eh
+	 U8ynNZIJbvT1w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AAB79812D8;
-	Mon,  6 Jan 2025 21:50:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0F5406080F;
+	Mon,  6 Jan 2025 23:52:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id BC1DEF1E
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2025 21:50:18 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 0B3396B
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2025 23:51:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id AAC40812C4
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2025 21:50:18 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id D9CD781300
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2025 23:51:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vcZL2bXWW37z for <intel-wired-lan@lists.osuosl.org>;
- Mon,  6 Jan 2025 21:50:17 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
- envelope-from=patchwork-bot+netdevbpf@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 18E11812D8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 18E11812D8
-Received: from nyc.source.kernel.org (nyc.source.kernel.org
- [IPv6:2604:1380:45d1:ec00::3])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 18E11812D8
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2025 21:50:16 +0000 (UTC)
+ id StsnnptRqhvs for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  6 Jan 2025 23:51:58 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=147.75.193.91;
+ helo=nyc.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A85A3812FD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A85A3812FD
+Received: from nyc.source.kernel.org (nyc.source.kernel.org [147.75.193.91])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id A85A3812FD
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jan 2025 23:51:58 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id D1B9EA41EAC;
- Mon,  6 Jan 2025 21:48:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 54241C4CEE2;
- Mon,  6 Jan 2025 21:50:15 +0000 (UTC)
-Received: from [10.30.226.235] (localhost [IPv6:::1])
- by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id
- ADCDB380A97E; Mon,  6 Jan 2025 21:50:37 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+ by nyc.source.kernel.org (Postfix) with ESMTP id 58059A41F79;
+ Mon,  6 Jan 2025 23:50:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1DAA0C4CED2;
+ Mon,  6 Jan 2025 23:51:56 +0000 (UTC)
+Date: Mon, 6 Jan 2025 15:51:54 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Yunsheng Lin <linyunsheng@huawei.com>
+Cc: <davem@davemloft.net>, <pabeni@redhat.com>, <liuyonglong@huawei.com>,
+ <fanghaiqing@huawei.com>, <zhangkun09@huawei.com>, Alexander Lobakin
+ <aleksander.lobakin@intel.com>, Robin Murphy <robin.murphy@arm.com>,
+ Alexander Duyck <alexander.duyck@gmail.com>, Andrew Morton
+ <akpm@linux-foundation.org>, IOMMU <iommu@lists.linux.dev>, MM
+ <linux-mm@kvack.org>, Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann
+ <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, John
+ Fastabend <john.fastabend@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, <netdev@vger.kernel.org>,
+ <intel-wired-lan@lists.osuosl.org>, <bpf@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Message-ID: <20250106155154.7c349c67@kernel.org>
+In-Reply-To: <20250106130116.457938-1-linyunsheng@huawei.com>
+References: <20250106130116.457938-1-linyunsheng@huawei.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <173620023624.3628195.9876367005194137334.git-patchwork-notify@kernel.org>
-Date: Mon, 06 Jan 2025 21:50:36 +0000
-References: <20250102174142.200700-1-linux@treblig.org>
-In-Reply-To: <20250102174142.200700-1-linux@treblig.org>
-To: Dr. David Alan Gilbert <linux@treblig.org>
-Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1736200215;
- bh=R0r9M5LonzpOpsq/gji7YTTeW+Me6k2FVCsZTHKVObg=;
- h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=s4r7BUgyTrHVK7VhEvW9W6TePNY6fZ47gPLAVX8+3+Fyt/MFxBmGVEt5hKGi/KM8F
- jHotgaYsi/2OunpXhWQQfxGbFeWwGNU98I+dmLiBs8KGoYfEp2vi18lwxmL4h+CrQ1
- bK3EF4rZBd5UXyGl6ujOJRPZSDFzyH7P9Lb6zHqxtddMD/AVUtMCO67toDQD96Zv55
- d1bQzrZraN9tK4lVw37wFBq3o7Yp0VUyac8aIjqmTNKp4BWzqnXIhssgIEcHRmzbon
- C1Z1VFlYEdyat5FU1Z2AmNziWmN+maw+LPSYO9Q+TPHIJPG7cAeDiTF9+NUknteXPu
- fLh8NYrFxxjdQ==
+ d=kernel.org; s=k20201202; t=1736207516;
+ bh=Fu660IWX5S6t38fvF4BJ3mJpDywwH3eUN5CgaE2RF48=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=THtnK84Q3Oz/4hr7raXMxtb5YnvUsRTP0Z19d7W1LrVc020uM7dHfZQfaxiTBglrb
+ 0uuuv4Ij3lvMxNaYs2U4xkdM1Mx/sGjqu1JF+EzVap0/mx7qJl607iIVwFe7HlG/s7
+ X14tjNK13QKsu2ZiViNL1koaVJB20ifxb0W3EaYPXmPLvd3Yw+D43CTpT1bSdEobVq
+ enX3QqiM+fai2TD9PUP4jYCjrP+vp1tAnLo3Mv9k74nhRw+qMFF8RVBP1HKE/Gn7Dh
+ zUjVlCwE6j30/RjhJSLQ4oMUTU+dCUPoDR1ZtkaF7VWo4Bdbpz0SfAdBVCoaM5Jkwm
+ nSJEIl5AN0w9g==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=s4r7BUgy
-Subject: Re: [Intel-wired-lan] [PATCH net-next 0/3] igc deadcoding
+ header.a=rsa-sha256 header.s=k20201202 header.b=THtnK84Q
+Subject: Re: [Intel-wired-lan] [PATCH net-next v6 0/8] fix two bugs related
+ to page_pool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -103,33 +108,20 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello:
-
-This series was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
-
-On Thu,  2 Jan 2025 17:41:39 +0000 you wrote:
-> From: "Dr. David Alan Gilbert" <linux@treblig.org>
+On Mon, 6 Jan 2025 21:01:08 +0800 Yunsheng Lin wrote:
+> This patchset fix a possible time window problem for page_pool and
+> the dma API misuse problem as mentioned in [1], and try to avoid the
+> overhead of the fixing using some optimization.
 > 
-> Hi,
->   This set removes some functions that are entirely unused
-> and have been since ~2018.
-> 
-> Build tested.
-> 
-> [...]
+> From the below performance data, the overhead is not so obvious
+> due to performance variations for time_bench_page_pool01_fast_path()
+> and time_bench_page_pool02_ptr_ring, and there is about 20ns overhead
+> for time_bench_page_pool03_slow() for fixing the bug.
 
-Here is the summary with links:
-  - [net-next,1/3] igc: Remove unused igc_acquire/release_nvm
-    https://git.kernel.org/netdev/net-next/c/b37dba891b17
-  - [net-next,2/3] igc: Remove unused igc_read/write_pci_cfg wrappers
-    https://git.kernel.org/netdev/net-next/c/121c3c6bc661
-  - [net-next,3/3] igc: Remove unused igc_read/write_pcie_cap_reg
-    https://git.kernel.org/netdev/net-next/c/c75889081366
+This appears to make the selftest from the drivers/net target implode.
 
-You are awesome, thank you!
+[   20.227775][  T218] BUG: KASAN: use-after-free in page_pool_item_uninit+0x100/0x130
+
+Running the ping.py tests should be enough to repro.
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+pw-bot: cr
