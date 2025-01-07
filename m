@@ -1,94 +1,150 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6228EA04419
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Jan 2025 16:20:03 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 53BF8A04715
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Jan 2025 17:50:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0C1A8403D5;
-	Tue,  7 Jan 2025 15:20:02 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A851560662;
+	Tue,  7 Jan 2025 16:50:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uXWHDkNgTtXQ; Tue,  7 Jan 2025 15:20:01 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id lUbL1v4kS2G9; Tue,  7 Jan 2025 16:50:16 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8F8F4403D2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B3D9E60740
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1736263200;
-	bh=k9nmAA0vAWjbsIRQ0ZXnrSTl57LEvftCGNEfDKj+7DQ=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=6hMg7sUDs/Rofv8q/4zMRbX6Ro03RwxtQVCqOckPfkw0Y3y3EfD5zrTVTb6FaNgx3
-	 ub8UzyuhRoFaMAJkcMqZQjxnU929hm0ykZsfl2Nii+e5gOwLeHLIv232qyaX6ilizc
-	 CoF30mpEibEs1kqoDunz+BP+Jq0dhwIiJhJ5dMknJGaKMDmIxX/uoyLg5CWOcZJ8yQ
-	 0G21FkM1INIG0vik2Ym8LJptl120lRaoZV1Fn3UA1x1HvJjJ3rTgr4T4c3NgY3yG0Q
-	 vCAQP1++OcgjHp6PW5ngBkORZ/DozrZtcEPDKeWj83aQRnvqLAXvtPsQLlHcjhWsOp
-	 174Na2lvpEAJw==
+	s=default; t=1736268616;
+	bh=1kkw8OsqKUstZ6+HR7QBUZKdgqA2L6g+toZ/3deeQ/o=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=Nk1aM+hDcvWhSrm6p6Uvy67WwbrIWm0dci3oF+6QTOhTbxv4vwfFnPBK7SaLhrWXl
+	 wx8so81zuNZ4ABlcQwUmZ94L3UJ3bbcS2UCR9MTI/0xwquywjZu00z4XkWWIV75KJf
+	 +OQTfrW66w9REKBiinA7itpUL8CqZPq3zVsMxoBWceFrIl4Zy+/QNchDHlm2AfZboq
+	 L1BzgVB5tLz7PASA5uZ6jlPGEW3+ZYj4pjxXaLvPqoLS3fU/f9AYiZyH7SnLwZDRDJ
+	 4PVPbGTq0UJFGjGfTbut6xbws+xDXgEgeUHLTRpzQfxnz7we+APeTFEkWEfmf8297W
+	 qI4yYR1OdDuxQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8F8F4403D2;
-	Tue,  7 Jan 2025 15:20:00 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B3D9E60740;
+	Tue,  7 Jan 2025 16:50:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 540B0DB4
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Jan 2025 15:19:58 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 033CE7AA
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Jan 2025 16:50:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 22276403A2
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Jan 2025 15:19:58 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id D838A812DA
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Jan 2025 16:50:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id qIIdK4Z3UN24 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  7 Jan 2025 15:19:54 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.18;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org DB333402D0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DB333402D0
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.18])
- by smtp2.osuosl.org (Postfix) with ESMTPS id DB333402D0
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Jan 2025 15:19:53 +0000 (UTC)
-X-CSE-ConnectionGUID: vhD3Y0HGSZGXt1cms3N6vA==
-X-CSE-MsgGUID: 8YD6XBTETkCGg670nc+T+w==
-X-IronPort-AV: E=McAfee;i="6700,10204,11308"; a="35746160"
-X-IronPort-AV: E=Sophos;i="6.12,295,1728975600"; d="scan'208";a="35746160"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
- by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jan 2025 07:19:53 -0800
-X-CSE-ConnectionGUID: XX1FlY42S/6AsMFu/Ye2sw==
-X-CSE-MsgGUID: /xbF5wlfSQmLvZG04uzWVw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,295,1728975600"; d="scan'208";a="133646580"
-Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
- by orviesa002.jf.intel.com with ESMTP; 07 Jan 2025 07:19:52 -0800
-Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1tVBMz-000EsJ-2e
- for intel-wired-lan@lists.osuosl.org; Tue, 07 Jan 2025 15:19:49 +0000
-Date: Tue, 07 Jan 2025 23:19:44 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202501072337.YIzkbbQ0-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1736263194; x=1767799194;
- h=date:from:to:subject:message-id;
- bh=CsDFNNbXwztDrTf4FYCihYDSkYqkjRns/J6XAs5g0fM=;
- b=FwZ3/fLvSL76xuDaoUEBwN+DbegeiAF7BM6BTH6bh7kKyO/tGBc3/Y8/
- P+KcSAsjNRnfqr74GAVS2ZoZrY/yqwB5KkpgGWcAsyObXa9WtGIyuvZFi
- xp/nbjUDvL30D3ZNYHK7FRkXzZsO9T3Cp3RlaMJh6Gb1aa4w/J9UyX3oE
- GuXqxMKP+K2d1y6NKSX5hY38FXLCOunZHxM4Hr/6A4KKDFt+LDCZ+PbH6
- NLo2Y98MGPJpaIuyaNPqVtV7gmDZyaffZiwk75L4g5AvTWodRw25kti2b
- 6AvAJLoDQSLynMQJNvfoH+f2kqOhm4sydO4oqh6GQmvaRCso4I8mrZex8
- Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id yDvy_fqrvB7H for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  7 Jan 2025 16:50:14 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::62d; helo=mail-pl1-x62d.google.com;
+ envelope-from=stfomichev@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org D078A80C51
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D078A80C51
+Received: from mail-pl1-x62d.google.com (mail-pl1-x62d.google.com
+ [IPv6:2607:f8b0:4864:20::62d])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D078A80C51
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Jan 2025 16:50:13 +0000 (UTC)
+Received: by mail-pl1-x62d.google.com with SMTP id
+ d9443c01a7336-2166f1e589cso13838215ad.3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 07 Jan 2025 08:50:13 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1736268613; x=1736873413;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=1kkw8OsqKUstZ6+HR7QBUZKdgqA2L6g+toZ/3deeQ/o=;
+ b=J5WwGE2jbIbB3OCStcv8g4977s3cA+5hUAYxnigTkzfq2vxkCDDtx4eRCAo8SpavR/
+ QhWcrBxaelT4KVME+MpmXRCBS07nQo+8EKtpJPxsuPwrAWwEDEgdmQePIKws4sxo+y8w
+ yo9wB2exFLFfRvKofZWaFZeMBQWvBZGiQ03Zt8Cmn+Dv+EENYGw6Kb7DbpapndxWggBF
+ RPCRzNw3AM6GPLqMbhgXbF69qGLxAUeQC/J+tPITnVXAD1TE/sZ0PuODSeqaFIdmrApy
+ tvUGEaGgHDtKb8ioNuZdhYyXFc7fUE+JrPvhM42GHt7WY8ER7oi2gfJhOCNzCbZFjyVj
+ 9tKQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXoieew73dgsYCjSDAQrWOcLQ0RoQ90d6/NN7apZHZvmP0GPD3q3Kt2DxflXm5SpoLUNVfj8D+bG9egs32OFeQ=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YzYpiPr0pVudZX2jU/Jsz9G5uuolHlan/UDRzaELxyU+0UOefQ8
+ XqiYeUZuarxpjJUYySrhcEOcHmbB8cHzouWTt8AdQ5Ub8e/Clrw=
+X-Gm-Gg: ASbGnctSWAagtQCPmc0i0X9eNvDDICRBFgSD8GjB+Af1Pfb3N89oz4KOwXl7A/9pW6Z
+ sfTYnysOPXtEmSmdhtmYnEG4s+xBVYlTsdVkfR6ldoNWbC27ev+wdqZJxXMoU6X9cxE16A7L6/i
+ lPrSyuP1mThlgIrMPEwtkxcP0PMTXTt3uo0CRNKfKg+S04OJM6VP2e5es5yTee5fCiskXThKuKK
+ Qv9pMHnF2j/E0abc6hDT5UoLlqkEW0FkCdYxGjC40E8reAP2DB3icuY
+X-Google-Smtp-Source: AGHT+IFENMHtBxMqOYbLnyZklK8TxKhy57F1FhvRUtYUInQIrUA9rU8ymAx4xYOehq+j+0FGzA2uug==
+X-Received: by 2002:a17:903:41d1:b0:217:8557:5246 with SMTP id
+ d9443c01a7336-219e6f4979amr721019265ad.55.1736268612929; 
+ Tue, 07 Jan 2025 08:50:12 -0800 (PST)
+Received: from localhost ([2601:646:9e00:f56e:123b:cea3:439a:b3e3])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-219dc9f7d83sm314319215ad.226.2025.01.07.08.50.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 07 Jan 2025 08:50:12 -0800 (PST)
+Date: Tue, 7 Jan 2025 08:50:11 -0800
+From: Stanislav Fomichev <stfomichev@gmail.com>
+To: Song Yoong Siang <yoong.siang.song@intel.com>
+Cc: "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Simon Horman <horms@kernel.org>, Willem de Bruijn <willemb@google.com>,
+ Florian Bezdeka <florian.bezdeka@siemens.com>,
+ Donald Hunter <donald.hunter@gmail.com>,
+ Jonathan Corbet <corbet@lwn.net>, Bjorn Topel <bjorn@kernel.org>,
+ Magnus Karlsson <magnus.karlsson@intel.com>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Jonathan Lemon <jonathan.lemon@gmail.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, Joe Damato <jdamato@fastly.com>,
+ Stanislav Fomichev <sdf@fomichev.me>,
+ Xuan Zhuo <xuanzhuo@linux.alibaba.com>,
+ Mina Almasry <almasrymina@google.com>, Daniel Jurgens <danielj@nvidia.com>,
+ Amritha Nambiar <amritha.nambiar@intel.com>,
+ Andrii Nakryiko <andrii@kernel.org>, Eduard Zingerman <eddyz87@gmail.com>,
+ Mykola Lysenko <mykolal@fb.com>,
+ Martin KaFai Lau <martin.lau@linux.dev>, Song Liu <song@kernel.org>,
+ Yonghong Song <yonghong.song@linux.dev>,
+ KP Singh <kpsingh@kernel.org>, Hao Luo <haoluo@google.com>,
+ Jiri Olsa <jolsa@kernel.org>, Shuah Khan <shuah@kernel.org>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-doc@vger.kernel.org, bpf@vger.kernel.org,
+ linux-kselftest@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org,
+ intel-wired-lan@lists.osuosl.org, xdp-hints@xdp-project.net
+Message-ID: <Z31bQ6xEkyQvbutN@mini-arch>
+References: <20250106135606.9704-1-yoong.siang.song@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20250106135606.9704-1-yoong.siang.song@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1736268613; x=1736873413; darn=lists.osuosl.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=1kkw8OsqKUstZ6+HR7QBUZKdgqA2L6g+toZ/3deeQ/o=;
+ b=APXcv3jhi5D2KxrQz8NcHDVVk4DZc4I4XStS06MiYBPd4SuK7EzWZMMxLZfUcNW/D7
+ U0SKLZWNvl3iSK/JZzvZSJTPBhZ/B+Laly9qJu/1QO5rm9iDJX3cTmU9HcWle3onTypO
+ StkQb0ga+MRBe1gUqmmW+VMm2OF2zSkmVGtpXvHN146Y9h3Z9YVzl4esNF0jFNtGAvCk
+ IdXr8QFl82zi4eWzM/i2J7p6q0b3E+6mXj7PLqZbsKbxudmX1AwfkLYpKzM8sbrK2oTT
+ ymagDztORTGzwqJ9ybnsMZfVwhv0E9B35puvnmshJLK/5CdKPiMQ42zYUC/wOmCBUWlC
+ j0Aw==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=FwZ3/fLv
-Subject: [Intel-wired-lan] [tnguy-next-queue:1GbE] BUILD SUCCESS
- 091156701a410affb64ea521f5ed69e646a4d34b
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20230601 header.b=APXcv3jh
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next v4 1/4] xsk: Add launch time
+ hardware offload support to XDP Tx metadata
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,125 +160,129 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 1GbE
-branch HEAD: 091156701a410affb64ea521f5ed69e646a4d34b  intel/fm10k: Remove unused fm10k_iov_msg_mac_vlan_pf
+On 01/06, Song Yoong Siang wrote:
+> Extend the XDP Tx metadata framework so that user can requests launch time
+> hardware offload, where the Ethernet device will schedule the packet for
+> transmission at a pre-determined time called launch time. The value of
+> launch time is communicated from user space to Ethernet driver via
+> launch_time field of struct xsk_tx_metadata.
+> 
+> Suggested-by: Stanislav Fomichev <sdf@google.com>
+> Signed-off-by: Song Yoong Siang <yoong.siang.song@intel.com>
+> ---
+>  Documentation/netlink/specs/netdev.yaml      |  4 ++
+>  Documentation/networking/xsk-tx-metadata.rst | 64 ++++++++++++++++++++
+>  include/net/xdp_sock.h                       | 10 +++
+>  include/net/xdp_sock_drv.h                   |  1 +
+>  include/uapi/linux/if_xdp.h                  | 10 +++
+>  include/uapi/linux/netdev.h                  |  3 +
+>  net/core/netdev-genl.c                       |  2 +
+>  net/xdp/xsk.c                                |  3 +
+>  tools/include/uapi/linux/if_xdp.h            | 10 +++
+>  tools/include/uapi/linux/netdev.h            |  3 +
+>  10 files changed, 110 insertions(+)
+> 
+> diff --git a/Documentation/netlink/specs/netdev.yaml b/Documentation/netlink/specs/netdev.yaml
+> index cbb544bd6c84..e59c8a14f7d1 100644
+> --- a/Documentation/netlink/specs/netdev.yaml
+> +++ b/Documentation/netlink/specs/netdev.yaml
+> @@ -70,6 +70,10 @@ definitions:
+>          name: tx-checksum
+>          doc:
+>            L3 checksum HW offload is supported by the driver.
+> +      -
+> +        name: tx-launch-time
+> +        doc:
+> +          Launch time HW offload is supported by the driver.
+>    -
+>      name: queue-type
+>      type: enum
+> diff --git a/Documentation/networking/xsk-tx-metadata.rst b/Documentation/networking/xsk-tx-metadata.rst
+> index e76b0cfc32f7..3cec089747ce 100644
+> --- a/Documentation/networking/xsk-tx-metadata.rst
+> +++ b/Documentation/networking/xsk-tx-metadata.rst
+> @@ -50,6 +50,10 @@ The flags field enables the particular offload:
+>    checksum. ``csum_start`` specifies byte offset of where the checksumming
+>    should start and ``csum_offset`` specifies byte offset where the
+>    device should store the computed checksum.
+> +- ``XDP_TXMD_FLAGS_LAUNCH_TIME``: requests the device to schedule the
+> +  packet for transmission at a pre-determined time called launch time. The
+> +  value of launch time is indicated by ``launch_time`` field of
+> +  ``union xsk_tx_metadata``.
+>  
+>  Besides the flags above, in order to trigger the offloads, the first
+>  packet's ``struct xdp_desc`` descriptor should set ``XDP_TX_METADATA``
+> @@ -65,6 +69,65 @@ In this case, when running in ``XDK_COPY`` mode, the TX checksum
+>  is calculated on the CPU. Do not enable this option in production because
+>  it will negatively affect performance.
+>  
+> +Launch Time
+> +===========
+> +
+> +The value of the requested launch time should be based on the device's PTP
+> +Hardware Clock (PHC) to ensure accuracy. AF_XDP takes a different data path
+> +compared to the ETF queuing discipline, which organizes packets and delays
+> +their transmission. Instead, AF_XDP immediately hands off the packets to
+> +the device driver without rearranging their order or holding them prior to
+> +transmission. In scenarios where the launch time offload feature is
+> +disabled, the device driver is expected to disregard the launch time
+> +request. For correct interpretation and meaningful operation, the launch
+> +time should never be set to a value larger than the farthest programmable
+> +time in the future (the horizon). Different devices have different hardware
+> +limitations on the launch time offload feature.
+> +
+> +stmmac driver
+> +-------------
+> +
+> +For stmmac, TSO and launch time (TBS) features are mutually exclusive for
+> +each individual Tx Queue. By default, the driver configures Tx Queue 0 to
+> +support TSO and the rest of the Tx Queues to support TBS. The launch time
+> +hardware offload feature can be enabled or disabled by using the tc-etf
+> +command to call the driver's ndo_setup_tc() callback.
+> +
+> +The value of the launch time that is programmed in the Enhanced Normal
+> +Transmit Descriptors is a 32-bit value, where the most significant 8 bits
+> +represent the time in seconds and the remaining 24 bits represent the time
+> +in 256 ns increments. The programmed launch time is compared against the
+> +PTP time (bits[39:8]) and rolls over after 256 seconds. Therefore, the
+> +horizon of the launch time for dwmac4 and dwxlgmac2 is 128 seconds in the
+> +future.
+> +
+> +The stmmac driver maintains FIFO behavior and does not perform packet
+> +reordering. This means that a packet with a launch time request will block
+> +other packets in the same Tx Queue until it is transmitted.
+> +
+> +igc driver
+> +----------
+> +
+> +For igc, all four Tx Queues support the launch time feature. The launch
+> +time hardware offload feature can be enabled or disabled by using the
+> +tc-etf command to call the driver's ndo_setup_tc() callback. When entering
+> +TSN mode, the igc driver will reset the device and create a default Qbv
+> +schedule with a 1-second cycle time, with all Tx Queues open at all times.
+> +
+> +The value of the launch time that is programmed in the Advanced Transmit
+> +Context Descriptor is a relative offset to the starting time of the Qbv
+> +transmission window of the queue. The Frst flag of the descriptor can be
+> +set to schedule the packet for the next Qbv cycle. Therefore, the horizon
+> +of the launch time for i225 and i226 is the ending time of the next cycle
+> +of the Qbv transmission window of the queue. For example, when the Qbv
+> +cycle time is set to 1 second, the horizon of the launch time ranges
+> +from 1 second to 2 seconds, depending on where the Qbv cycle is currently
+> +running.
+> +
+> +The igc driver maintains FIFO behavior and does not perform packet
+> +reordering. This means that a packet with a launch time request will block
+> +other packets in the same Tx Queue until it is transmitted.
 
-elapsed time: 1003m
+Since two devices we initially support are using FIFO mode, should we more
+explicitly target this case? Maybe even call netdev features
+tx-launch-time-fifo? In the future, if/when we get support timing-wheel-like
+queues, we can export another tx-launch-time-wheel?
 
-configs tested: 106
-configs skipped: 1
+It seems important for the userspace to know which mode it's running.
+In a fifo mode, it might make sense to allocate separate queues
+for scheduling things far into the future/etc.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-tested configs:
-alpha                             allnoconfig    gcc-14.2.0
-alpha                            allyesconfig    gcc-14.2.0
-arc                              allmodconfig    gcc-13.2.0
-arc                               allnoconfig    gcc-13.2.0
-arc                              allyesconfig    gcc-13.2.0
-arc                   randconfig-001-20250107    gcc-13.2.0
-arc                   randconfig-002-20250107    gcc-13.2.0
-arm                              allmodconfig    gcc-14.2.0
-arm                               allnoconfig    clang-17
-arm                              allyesconfig    gcc-14.2.0
-arm                   randconfig-001-20250107    clang-20
-arm                   randconfig-002-20250107    clang-19
-arm                   randconfig-003-20250107    clang-20
-arm                   randconfig-004-20250107    gcc-14.2.0
-arm64                            allmodconfig    clang-18
-arm64                             allnoconfig    gcc-14.2.0
-arm64                 randconfig-001-20250107    clang-15
-arm64                 randconfig-002-20250107    clang-20
-arm64                 randconfig-003-20250107    gcc-14.2.0
-arm64                 randconfig-004-20250107    gcc-14.2.0
-csky                              allnoconfig    gcc-14.2.0
-csky                  randconfig-001-20250107    gcc-14.2.0
-csky                  randconfig-002-20250107    gcc-14.2.0
-hexagon                          allmodconfig    clang-20
-hexagon                           allnoconfig    clang-20
-hexagon                          allyesconfig    clang-18
-hexagon               randconfig-001-20250107    clang-20
-hexagon               randconfig-002-20250107    clang-20
-i386                             allmodconfig    gcc-12
-i386                              allnoconfig    gcc-12
-i386                             allyesconfig    gcc-12
-i386        buildonly-randconfig-001-20250107    clang-19
-i386        buildonly-randconfig-002-20250107    clang-19
-i386        buildonly-randconfig-003-20250107    clang-19
-i386        buildonly-randconfig-004-20250107    gcc-12
-i386        buildonly-randconfig-005-20250107    gcc-12
-i386        buildonly-randconfig-006-20250107    clang-19
-i386                                defconfig    clang-19
-loongarch                        allmodconfig    gcc-14.2.0
-loongarch                         allnoconfig    gcc-14.2.0
-loongarch             randconfig-001-20250107    gcc-14.2.0
-loongarch             randconfig-002-20250107    gcc-14.2.0
-m68k                             allmodconfig    gcc-14.2.0
-m68k                              allnoconfig    gcc-14.2.0
-m68k                             allyesconfig    gcc-14.2.0
-microblaze                       allmodconfig    gcc-14.2.0
-microblaze                        allnoconfig    gcc-14.2.0
-microblaze                       allyesconfig    gcc-14.2.0
-mips                              allnoconfig    gcc-14.2.0
-nios2                             allnoconfig    gcc-14.2.0
-nios2                 randconfig-001-20250107    gcc-14.2.0
-nios2                 randconfig-002-20250107    gcc-14.2.0
-openrisc                          allnoconfig    gcc-14.2.0
-openrisc                         allyesconfig    gcc-14.2.0
-parisc                           allmodconfig    gcc-14.2.0
-parisc                            allnoconfig    gcc-14.2.0
-parisc                           allyesconfig    gcc-14.2.0
-parisc                randconfig-001-20250107    gcc-14.2.0
-parisc                randconfig-002-20250107    gcc-14.2.0
-powerpc                          allmodconfig    gcc-14.2.0
-powerpc                           allnoconfig    gcc-14.2.0
-powerpc                          allyesconfig    clang-16
-powerpc               randconfig-001-20250107    gcc-14.2.0
-powerpc               randconfig-002-20250107    gcc-14.2.0
-powerpc               randconfig-003-20250107    clang-20
-powerpc64             randconfig-001-20250107    clang-15
-powerpc64             randconfig-002-20250107    clang-20
-powerpc64             randconfig-003-20250107    clang-20
-riscv                            allmodconfig    clang-20
-riscv                             allnoconfig    gcc-14.2.0
-riscv                            allyesconfig    clang-20
-riscv                 randconfig-001-20250107    clang-15
-riscv                 randconfig-002-20250107    gcc-14.2.0
-s390                             allmodconfig    clang-19
-s390                              allnoconfig    clang-20
-s390                             allyesconfig    gcc-14.2.0
-s390                  randconfig-001-20250107    gcc-14.2.0
-s390                  randconfig-002-20250107    clang-20
-sh                               allmodconfig    gcc-14.2.0
-sh                                allnoconfig    gcc-14.2.0
-sh                               allyesconfig    gcc-14.2.0
-sh                    randconfig-001-20250107    gcc-14.2.0
-sh                    randconfig-002-20250107    gcc-14.2.0
-sparc                            allmodconfig    gcc-14.2.0
-sparc                             allnoconfig    gcc-14.2.0
-sparc                 randconfig-001-20250107    gcc-14.2.0
-sparc                 randconfig-002-20250107    gcc-14.2.0
-sparc64               randconfig-001-20250107    gcc-14.2.0
-sparc64               randconfig-002-20250107    gcc-14.2.0
-um                               allmodconfig    clang-20
-um                                allnoconfig    clang-18
-um                               allyesconfig    gcc-12
-um                    randconfig-001-20250107    gcc-12
-um                    randconfig-002-20250107    clang-20
-x86_64                            allnoconfig    clang-19
-x86_64                           allyesconfig    clang-19
-x86_64      buildonly-randconfig-001-20250107    clang-19
-x86_64      buildonly-randconfig-002-20250107    gcc-12
-x86_64      buildonly-randconfig-003-20250107    clang-19
-x86_64      buildonly-randconfig-004-20250107    gcc-12
-x86_64      buildonly-randconfig-005-20250107    clang-19
-x86_64      buildonly-randconfig-006-20250107    clang-19
-x86_64                              defconfig    gcc-11
-xtensa                            allnoconfig    gcc-14.2.0
-xtensa                randconfig-001-20250107    gcc-14.2.0
-xtensa                randconfig-002-20250107    gcc-14.2.0
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Thoughts? No code changes required, just more explicitly state the
+expectations.
