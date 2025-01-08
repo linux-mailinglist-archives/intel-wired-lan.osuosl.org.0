@@ -1,107 +1,109 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4FC50A05707
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Jan 2025 10:38:19 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 98CA1A05817
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 Jan 2025 11:25:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7A82D40152;
-	Wed,  8 Jan 2025 09:38:05 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 22BF5403B5;
+	Wed,  8 Jan 2025 10:25:42 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HrC3FW1R2hp8; Wed,  8 Jan 2025 09:38:04 +0000 (UTC)
+ id 1KvmoyCCqEBE; Wed,  8 Jan 2025 10:25:41 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 85DAE40340
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 34B6A403A6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1736329084;
-	bh=qKe7JjbSYfgWqNHSmSkEK91ZLwUX2k6CBF3+8wJnztI=;
-	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1736331941;
+	bh=wDnajRGAKSDjhPvwubZBuXDZ5LOIoIGh7ZTlin0DXQc=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=4LwrHzBI27HwHFgykK8ZLw7A7orW1fcNUr9w1m+1MJDjl/+zpqI9oel1LgONHUupR
-	 SiDY9RN6uBukX9qPeYxAYDZl6WDT58TBH7LaNWYJVR4NXnA1YxQXhtmMEXSwEEic9J
-	 brTVKTrVsTQ62GJNZmK6zmZ0eTjsqu8Rzt9xRbzANq5456Et22vKjFNfBKiymlkLUt
-	 Yg5nZQxE20ErLW+P2+ZruK5JVUdwtP+Wvwvm4XJeXy5rDVGt9q4t32F9W/mbsHhaxL
-	 +qDCvnnbLHudtvbCVgwIZ91kbGyBCRWwSTo93HUYDc7iB50M5uXflIa+hnujhzyKvv
-	 cGkQmsRbucVyA==
+	b=TMRbvxZdcWJAgx4p0L/nmH9h6TqVMMZ6bc/DIc/Vqh6Vb0dSm9B7XljTOFrO9yQdw
+	 47o+/FTcvXhbvV9sNGvNmiIJVM/gyp3v6wWYcKBQD+LVmwmYfbGGLt7AWuwKDZteMB
+	 xMBh5iK0XGUiS16tw1gd72tBKZWSGzE3IK4LVRRkEUlQB8R89ZOjMbCE568sZ2dfxn
+	 b31zddVzdHDECNjwedhKnGIqbLgB1kq1sXmjiFgust39xUslgc2iRoQds1xoRb4tmE
+	 EzKGTRPAiHJOZD5cselFLrqXWSLOUARGuoXJZDTCyuGTHHWykHvQzrd1Z5IDrvK+M9
+	 FuIfjucQs/MKg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 85DAE40340;
-	Wed,  8 Jan 2025 09:38:04 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 34B6A403A6;
+	Wed,  8 Jan 2025 10:25:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id D496F1FF7
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jan 2025 09:38:02 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id D07477AA
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jan 2025 10:25:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id CED7380B02
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jan 2025 09:38:02 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id B199E80E00
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jan 2025 10:25:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id D1O0JoCb3Bms for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 Jan 2025 09:38:02 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.255;
- helo=szxga08-in.huawei.com; envelope-from=linyunsheng@huawei.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 75AC780B07
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 75AC780B07
-Received: from szxga08-in.huawei.com (szxga08-in.huawei.com [45.249.212.255])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 75AC780B07
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jan 2025 09:38:01 +0000 (UTC)
-Received: from mail.maildlp.com (unknown [172.19.88.194])
- by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4YSjRV6mV3z1W3jT;
- Wed,  8 Jan 2025 17:34:14 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
- by mail.maildlp.com (Postfix) with ESMTPS id A9BDB14035E;
- Wed,  8 Jan 2025 17:37:56 +0800 (CST)
-Received: from [10.67.120.129] (10.67.120.129) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Wed, 8 Jan 2025 17:37:55 +0800
-Message-ID: <f86d3fe9-f508-4463-8587-b001979d70c4@huawei.com>
-Date: Wed, 8 Jan 2025 17:37:55 +0800
+ id zxNSBoUfu5Gc for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 Jan 2025 10:25:38 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
+ envelope-from=bigeasy@linutronix.de; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org AB39080DD5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AB39080DD5
+Received: from galois.linutronix.de (Galois.linutronix.de
+ [IPv6:2a0a:51c0:0:12e:550::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id AB39080DD5
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Jan 2025 10:25:37 +0000 (UTC)
+Date: Wed, 8 Jan 2025 11:25:32 +0100
+From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+To: Wander Lairson Costa <wander@redhat.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Clark Williams <clrkwllms@kernel.org>,
+ Steven Rostedt <rostedt@goodmis.org>, Jeff Garzik <jgarzik@redhat.com>,
+ Auke Kok <auke-jan.h.kok@intel.com>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
+ open list <linux-kernel@vger.kernel.org>,
+ "open list:Real-time Linux (PREEMPT_RT):Keyword:PREEMPT_RT"
+ <linux-rt-devel@lists.linux.dev>
+Message-ID: <20250108102532.VWnKWvoo@linutronix.de>
+References: <20241204114229.21452-1-wander@redhat.com>
+ <20250107135106.WWrtBMXY@linutronix.de>
+ <taea3z7nof4szjir2azxsjtbouymqxyy4draa3hz35zbacqeeq@t3uidpha64k7>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Jesper Dangaard Brouer <hawk@kernel.org>, <davem@davemloft.net>,
- <kuba@kernel.org>, <pabeni@redhat.com>
-CC: <liuyonglong@huawei.com>, <fanghaiqing@huawei.com>,
- <zhangkun09@huawei.com>, Wei Fang <wei.fang@nxp.com>, Shenwei Wang
- <shenwei.wang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>, Andrew Lunn
- <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, Jeroen de Borst
- <jeroendb@google.com>, Praveen Kaligineedi <pkaligineedi@google.com>,
- Shailend Chand <shailend@google.com>, Tony Nguyen
- <anthony.l.nguyen@intel.com>, Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
- Alexander Lobakin <aleksander.lobakin@intel.com>, Alexei Starovoitov
- <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, John Fastabend
- <john.fastabend@gmail.com>, Saeed Mahameed <saeedm@nvidia.com>, Leon
- Romanovsky <leon@kernel.org>, Tariq Toukan <tariqt@nvidia.com>, Felix Fietkau
- <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee
- <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Sean Wang
- <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Simon Horman <horms@kernel.org>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>, <imx@lists.linux.dev>,
- <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <intel-wired-lan@lists.osuosl.org>, <bpf@vger.kernel.org>,
- <linux-rdma@vger.kernel.org>, <linux-wireless@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-References: <20250106130116.457938-1-linyunsheng@huawei.com>
- <20250106130116.457938-2-linyunsheng@huawei.com>
- <02896f96-57dd-47d5-8fa0-8a8aed30fa9a@kernel.org>
-Content-Language: en-US
-From: Yunsheng Lin <linyunsheng@huawei.com>
-In-Reply-To: <02896f96-57dd-47d5-8fa0-8a8aed30fa9a@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.67.120.129]
-X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
- dggpemf200006.china.huawei.com (7.185.36.61)
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <taea3z7nof4szjir2azxsjtbouymqxyy4draa3hz35zbacqeeq@t3uidpha64k7>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020; t=1736331934;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=wDnajRGAKSDjhPvwubZBuXDZ5LOIoIGh7ZTlin0DXQc=;
+ b=fLHf7FbT3jWUtCXukcFugRf7ux0GvEBZXQ34F2GvVNuc6jEJ6rXMIk/0gbPcnh0QRsBBik
+ ZH3ffOAdXx+jQw2l6IeTrNWgg4FU5MHoOEwT287dgYnqqSJWIUTD6cRPVO8UKO9Ufn9J5w
+ ehxwrnAXOzEB4s0xNBLeeZ+okyETfb/JnSQV19TJaCce5Bq5qkWXtx2N/HoXaQVPExCWYd
+ DUXQZDkYJeGLmv5kowwshjtQfXIdKuSNEVCe4Ous4tlx5uwjYq7uwCF4OeMMgd/JaA+Tgk
+ YgLrZEhseffjCsdUyTy2iZPW94HHqYtGQXu6L9dZUOuHXkgk5UdJ8XYS5SEBxg==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1736331934;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=wDnajRGAKSDjhPvwubZBuXDZ5LOIoIGh7ZTlin0DXQc=;
+ b=d+X1qumv8hLSPmGBE0V0HlJlSOVx7RABGGcSIKPjRWBa0lKe6iTmFw0d4lqxcYHkZ+W+MA
+ ZAWAW8hRoCIhoXDg==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=huawei.com
-Subject: Re: [Intel-wired-lan] [PATCH net-next v6 1/8] page_pool: introduce
- page_pool_get_pp() API
+ dmarc=pass (p=none dis=none)
+ header.from=linutronix.de
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
+ header.a=rsa-sha256 header.s=2020 header.b=fLHf7FbT; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=d+X1qumv
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net 0/4] igb: fix igb_msix_other()
+ handling for PREEMPT_RT
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -117,44 +119,85 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2025/1/7 22:52, Jesper Dangaard Brouer wrote:
+On 2025-01-07 15:52:47 [-0300], Wander Lairson Costa wrote:
+> On Tue, Jan 07, 2025 at 02:51:06PM +0100, Sebastian Andrzej Siewior wrote:
+> > On 2024-12-04 08:42:23 [-0300], Wander Lairson Costa wrote:
+> > > This is the second attempt at fixing the behavior of igb_msix_other()
+> > > for PREEMPT_RT. The previous attempt [1] was reverted [2] following
+> > > concerns raised by Sebastian [3].
+> > > 
+> > > The initial approach proposed converting vfs_lock to a raw_spinlock,
+> > > a minor change intended to make it safe. However, it became evident
+> > > that igb_rcv_msg_from_vf() invokes kcalloc with GFP_ATOMIC,
+> > > which is unsafe in interrupt context on PREEMPT_RT systems.
+> > > 
+> > > To address this, the solution involves splitting igb_msg_task()
+> > > into two parts:
+> > > 
+> > >     * One part invoked from the IRQ context.
+> > >     * Another part called from the threaded interrupt handler.
+> > > 
+> > > To accommodate this, vfs_lock has been restructured into a double
+> > > lock: a spinlock_t and a raw_spinlock_t. In the revised design:
+> > > 
+> > >     * igb_disable_sriov() locks both spinlocks.
+> > >     * Each part of igb_msg_task() locks the appropriate spinlock for
+> > >     its execution context.
+> > 
+> > - Is this limited to PREEMPT_RT or does it also occur on PREEMPT systems
+> >   with threadirqs? And if this is PREEMPT_RT only, why?
 > 
-> On 06/01/2025 14.01, Yunsheng Lin wrote:
->> introduce page_pool_get_pp() API to avoid caller accessing
->> page->pp directly.
->>
-> [...]
+> PREEMPT systems configured to use threadirqs should be affected as well,
+> although I never tested with this configuration. Honestly, until now I wasn't
+> aware of the possibility of a non PREEMPT_RT kernel with threaded IRQs by default.
+
+If the issue is indeed the use of threaded interrupts then the fix
+should not be limited to be PREEMPT_RT only.
+
+> > - What causes the failure? I see you reworked into two parts to behave
+> >   similar to what happens without threaded interrupts. There is still no
+> >   explanation for it. Is there a timing limit or was there another
+> >   register operation which removed the mailbox message?
+> > 
 > 
->> diff --git a/include/net/page_pool/helpers.h b/include/net/page_pool/helpers.h
->> index 543f54fa3020..9c4dbd2289b1 100644
->> --- a/include/net/page_pool/helpers.h
->> +++ b/include/net/page_pool/helpers.h
->> @@ -83,6 +83,11 @@ static inline u64 *page_pool_ethtool_stats_get(u64 *data, const void *stats)
->>   }
->>   #endif
->>   +static inline struct page_pool *page_pool_get_pp(struct page *page)
->> +{
->> +    return page->pp;
->> +}
+> I explained the root cause of the issue in the last commit. Maybe I should
+> have added the explanation to the cover letter as well.  Anyway, here is a
+> partial verbatim copy of it:
 > 
-> IMHO the function name "page_pool_get_pp" is problematic. As calling it "get" indicate to me that we are taking some reference on the pp object. Is this you plan in later patches?
+> "During testing of SR-IOV, Red Hat QE encountered an issue where the
+> ip link up command intermittently fails for the igbvf interfaces when
+> using the PREEMPT_RT variant. Investigation revealed that
+> e1000_write_posted_mbx returns an error due to the lack of an ACK
+> from e1000_poll_for_ack.
 
-No, this patchset is not going to taking some reference on the pp object.
+That ACK would have come if it would poll longer?
 
+> The underlying issue arises from the fact that IRQs are threaded by
+> default under PREEMPT_RT. While the exact hardware details are not
+> available, it appears that the IRQ handled by igb_msix_other must
+> be processed before e1000_poll_for_ack times out. However,
+> e1000_write_posted_mbx is called with preemption disabled, leading
+> to a scenario where the IRQ is serviced only after the failure of
+> e1000_write_posted_mbx."
+
+Where is this disabled preemption coming from? This should be one of the
+ops.write_posted() calls, right? I've been looking around and don't see
+anything obvious.
+Couldn't you wait for an event instead of polling?
+
+> The call chain from igb_msg_task():
 > 
-> If it is simply a dereference of page->pp ... then we could call it page2pp ?
-
-Before this version page_pool_to_pp() is used, this version renamed it to
-page_pool_get_pp() as there is an exising netmem_get_pp() in patch 3, which
-is also simply a dereference of netmem->pp, using page_pool_to_pp() does not
-seem consistent with netmem from API naming point.
-
-> ... but I'm uncertain why we need this change.
-
-This patch is added to make patch 3 more reviewable as page->pp is renamed to
-page->pp_item in patch 3. If there is no helper added in this patch, patch 3
-might need to touch all the places touched in this patch too.
-
+> igb_msg_task
+> 	igb_rcv_msg_from_vf
+> 		igb_set_vf_multicasts
+> 			igb_set_rx_mode
+> 				igb_write_mc_addr_list
+> 					kmalloc
 > 
-> --Jesper
-> 
+> Cannot happen from interrupt context under PREEMPT_RT. So this part of
+> the interrupt handler is deferred to a threaded IRQ handler.
+>
+> > > Cheers,
+> > > Wander
+
+Sebastian
