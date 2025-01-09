@@ -1,156 +1,114 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 21A80A07EF4
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Jan 2025 18:40:17 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 582BEA07F26
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Jan 2025 18:45:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BC06540718;
-	Thu,  9 Jan 2025 17:40:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 11608830D7;
+	Thu,  9 Jan 2025 17:45:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id SU-LvvrwRiXN; Thu,  9 Jan 2025 17:40:15 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id S5x_ELjaObiZ; Thu,  9 Jan 2025 17:45:20 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D60DF4071C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3ECBB830A7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1736444414;
-	bh=tWpZAtZ5fwsLcgO5aqlcO3OYh1NgLbgjWHyNFFao33Y=;
+	s=default; t=1736444720;
+	bh=ITDbkQWE/hIVhZw2Nq8W6mx+3e492XIMVSSt0BOfbNU=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=uFIjBVlzeHgUS5/oFQbeR4up99SoMFqzoc6ZTivlMRZssNwFryyaJ6/ArWJceNOJj
-	 UUJDLrzESxfElV7NGgsbt9mu3xTehTLivc2FZD2HNZFsL1iEiuHP8qQNYO6GnLBJDm
-	 ZNyzpOTTia1a3CkmDrlgCJ+Ai5j0t7Vp9x/awXcZ6JzrHr35SSH0NvaACmVlHslcKL
-	 FMMvK2n3IsvETcVIm5LZ+9e+pEwoeCs/4UgPjaaVDb97yQbYqZxVN2WB1T1b7TJyy9
-	 9/YmpTgJw3DYRnB0Ul3K7/0M74yTOIpdKWOF8sqrM0JoyA1jpmAZjHWLIgFN0e4GOb
-	 B+ZsD42bmn8Nw==
+	b=YR9RpuvZKwMlnAFQnbTV5Z2RBJqR5YLpBAVpkvV4Can00b3///AjVIbutjW9BFqeQ
+	 k0dV152EnyMQaaUX+qQ9gTaaTq28aQU7xxwYZr6/3RTLyoE5MXNhC8GkaOeyXa37FR
+	 DEZtJO+yGiq6hkUKgcuPEmwAuThlWl2kJwrc+KlSAkgP1/ZFfrn5B260MBEfntox4T
+	 yRy9yYk+N02T6K6A3Yzi0RbIQXscoCfmpBMXDShzDuY0TY6w402NP4rfMQfB9Me7VQ
+	 mKaEPwwANY1YGNyS54Tll0glx19tzXTf9S2OOZkpjtnXYRm3hXY6BMfVui8u8b4NCF
+	 BavVKXbkOrtGw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D60DF4071C;
-	Thu,  9 Jan 2025 17:40:14 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3ECBB830A7;
+	Thu,  9 Jan 2025 17:45:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 50052940
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2025 17:40:13 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 9E627942
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2025 17:45:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3B24E40312
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2025 17:40:13 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7E8514071D
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2025 17:45:18 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8vDMC4pPneic for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 Jan 2025 17:40:12 +0000 (UTC)
+ id 2uHBpmsQU17W for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  9 Jan 2025 17:45:17 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::1029; helo=mail-pj1-x1029.google.com;
- envelope-from=stfomichev@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 52101402E6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 52101402E6
-Received: from mail-pj1-x1029.google.com (mail-pj1-x1029.google.com
- [IPv6:2607:f8b0:4864:20::1029])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 52101402E6
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2025 17:40:12 +0000 (UTC)
-Received: by mail-pj1-x1029.google.com with SMTP id
- 98e67ed59e1d1-2efb17478adso1946950a91.1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 09 Jan 2025 09:40:12 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736444411; x=1737049211;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=tWpZAtZ5fwsLcgO5aqlcO3OYh1NgLbgjWHyNFFao33Y=;
- b=r1XQp/33QhpwWanB2w2100yNjlP49nF+rIIPWzOOnvRGdKk5R52S4B2mQUp9TbcASg
- /F/aWHdA7OtXw9gLMWm55wPCurie6iRZc+uV4xP5Q5wosROOC6NFgOlPOmGasllV/J94
- SfNby+NVugFgroK+xT1j9jsrNxagbBkjSs7K7fOTFxnyEZzvImGduqdMNNZ4pEACzn6z
- FmuGBE22iKjCxxOWAeieQUo24b+1dM+sRNTiYJktf27AxHNeT8AdGxWVi/7Ubu21OY3r
- Hj0KP/4SFhXGVI+t1eU9JB455F4imArprz8ECjHDOfq8lCAxUeo6gLNrjt6+2t3L+CEK
- 0pgA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV57wiOO0X84Qmk/J034M71yVwRFGCDIP+0oOmDBwSIoCnN1KZQMygqMmSk8zDF+HftNWQxGGxaa5Tz2h+zp80=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YwnaeT9aO6GzWs86qxf/NDQ75qXgJlsv1COkF2ANlQBq0Dm6ATR
- Sn0CJqvWHaUYx+aYbDpD8++XRGRoL7MSaKCAkA3jidohjwUZPEU=
-X-Gm-Gg: ASbGncsUVn+FSJBnU8ba3tN/tl+MC/Y/8JBfg8aY3XoQqA+fF41Kd0br/+ehsvo/Ikr
- OLdXJmS/TQpi9MTKBqshI8VdwzaClw7mfbKo/sF87vx/8wiAoksBccbEuxn0ij3Rv3r6sRn9vYB
- lND5IRev+FZD6NKUjmM2RZHZq36DuQG6uxAAENI8yAu/9hYcInTDrmoMBS6+dBpyvoz4EaRf1CE
- h7J7c/3gHNDG4S4MPLhNqtc0LZ1vQDpb5yeWNkBv1LKXa5Cm+VwCl32
-X-Google-Smtp-Source: AGHT+IEZHpA+1As7rYRP/wbYTv7BBI8EycFV1R1kQaORb6ULu5g6y7WttO6FZ+OmR/qIEMsz9TCzbg==
-X-Received: by 2002:a17:90a:d887:b0:2ea:7cd5:4ad6 with SMTP id
- 98e67ed59e1d1-2f5490dbefemr9659697a91.32.1736444411540; 
- Thu, 09 Jan 2025 09:40:11 -0800 (PST)
-Received: from localhost ([2601:646:9e00:f56e:123b:cea3:439a:b3e3])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-2f5593d0911sm1848116a91.8.2025.01.09.09.40.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 09 Jan 2025 09:40:11 -0800 (PST)
-Date: Thu, 9 Jan 2025 09:40:10 -0800
-From: Stanislav Fomichev <stfomichev@gmail.com>
-To: "Song, Yoong Siang" <yoong.siang.song@intel.com>
-Cc: "David S . Miller" <davem@davemloft.net>,
+ client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
+ envelope-from=bigeasy@linutronix.de; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 6E66440718
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6E66440718
+Received: from galois.linutronix.de (Galois.linutronix.de
+ [IPv6:2a0a:51c0:0:12e:550::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6E66440718
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2025 17:45:17 +0000 (UTC)
+Date: Thu, 9 Jan 2025 18:45:12 +0100
+From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+To: Wander Lairson Costa <wander@redhat.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
  Eric Dumazet <edumazet@google.com>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Simon Horman <horms@kernel.org>, Willem de Bruijn <willemb@google.com>,
- "Bezdeka, Florian" <florian.bezdeka@siemens.com>,
- Donald Hunter <donald.hunter@gmail.com>,
- Jonathan Corbet <corbet@lwn.net>, Bjorn Topel <bjorn@kernel.org>,
- "Karlsson, Magnus" <magnus.karlsson@intel.com>,
- "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>,
- Jonathan Lemon <jonathan.lemon@gmail.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>,
- "Damato, Joe" <jdamato@fastly.com>, Stanislav Fomichev <sdf@fomichev.me>,
- Xuan Zhuo <xuanzhuo@linux.alibaba.com>,
- Mina Almasry <almasrymina@google.com>, Daniel Jurgens <danielj@nvidia.com>,
- Amritha Nambiar <amritha.nambiar@intel.com>,
- Andrii Nakryiko <andrii@kernel.org>, Eduard Zingerman <eddyz87@gmail.com>,
- Mykola Lysenko <mykolal@fb.com>,
- Martin KaFai Lau <martin.lau@linux.dev>, Song Liu <song@kernel.org>,
- Yonghong Song <yonghong.song@linux.dev>,
- KP Singh <kpsingh@kernel.org>, Hao Luo <haoluo@google.com>,
- Jiri Olsa <jolsa@kernel.org>, Shuah Khan <shuah@kernel.org>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Jose Abreu <joabreu@synopsys.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
- "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
- "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
- "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
- "linux-stm32@st-md-mailman.stormreply.com"
- <linux-stm32@st-md-mailman.stormreply.com>, 
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "xdp-hints@xdp-project.net" <xdp-hints@xdp-project.net>
-Message-ID: <Z4AJ-pIyAUbXJJpx@mini-arch>
-References: <20250106135606.9704-1-yoong.siang.song@intel.com>
- <Z31bQ6xEkyQvbutN@mini-arch>
- <PH0PR11MB5830D33B679A0ACD3FD6E23CD8132@PH0PR11MB5830.namprd11.prod.outlook.com>
+ Clark Williams <clrkwllms@kernel.org>,
+ Steven Rostedt <rostedt@goodmis.org>, Jeff Garzik <jgarzik@redhat.com>,
+ Auke Kok <auke-jan.h.kok@intel.com>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
+ open list <linux-kernel@vger.kernel.org>,
+ "open list:Real-time Linux (PREEMPT_RT):Keyword:PREEMPT_RT"
+ <linux-rt-devel@lists.linux.dev>
+Message-ID: <20250109174512.At7ZERjU@linutronix.de>
+References: <20241204114229.21452-1-wander@redhat.com>
+ <20250107135106.WWrtBMXY@linutronix.de>
+ <taea3z7nof4szjir2azxsjtbouymqxyy4draa3hz35zbacqeeq@t3uidpha64k7>
+ <20250108102532.VWnKWvoo@linutronix.de>
+ <CAAq0SUnoS45Fctkzj4t4OxT=9qm9Bg8zu79=S3DUL_jcoLbC-A@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <PH0PR11MB5830D33B679A0ACD3FD6E23CD8132@PH0PR11MB5830.namprd11.prod.outlook.com>
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <CAAq0SUnoS45Fctkzj4t4OxT=9qm9Bg8zu79=S3DUL_jcoLbC-A@mail.gmail.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1736444411; x=1737049211; darn=lists.osuosl.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=tWpZAtZ5fwsLcgO5aqlcO3OYh1NgLbgjWHyNFFao33Y=;
- b=SK3BZGmOV9Cr9Co0Ynj5JRMpsNjXQhzkxIqzd00KwNKRndiIDAaLGxCisCGT2HST3S
- Y2zqRgLzr7WcTi1ejT3AsmxCsP3GIhXsAqYBpXxi79+cAYD+d+nepUh2QDZqqsjt7Wxn
- ETldhp/GxZRLhxJ6rJaZPXchyVTVqyfQbyHTuZHD51MG7pPrPqNqTyXz6+eU1Q45+LnV
- jkcLljg7FK3Ss1P7+TDuBIvAV5CHVsyJ+Lv5Pmday9OpjNGIFi2d5GJEYuFmQgr0+tiz
- Ij30IcGvmtw/1VCQh7Qg1W/V/ks1X+2qSD4dJFrhv+XzzHGmD+FxMNF8JVuyU2YXEXLZ
- bvjA==
+ d=linutronix.de; s=2020; t=1736444714;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ITDbkQWE/hIVhZw2Nq8W6mx+3e492XIMVSSt0BOfbNU=;
+ b=wTdOlWbQ91hilUGbM16VU/8j5nkkTWdg5HJnuFCuQd/GAZAaWr+puLg3RtzuPF9cZXz+YX
+ WkcVIjtFD+P4FdlEYxMNVG6JQ3Tc/wA3nrh/vIUDJ6OklF2IMhByt4DRQibSdUk6ByTpDq
+ z2hchp5Z3Vmsqf1hWtdcHsdwjL2VuYCViTG9bnReSk4/27uV0sWHrbIPMalIESqSmtyaQl
+ apXWsvjNjQpe28NHY1NLXpbmzSESTdHVy1Bqwrj24zApmWSu54gICF47aXNErnKTlBoH2u
+ jgrtrBWmuKwchINQNd0UOt2ozMkbJySorYKiV0dsniatCnvepE7coKSI3kjhaA==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1736444714;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ITDbkQWE/hIVhZw2Nq8W6mx+3e492XIMVSSt0BOfbNU=;
+ b=yT3+jiuCw+WM1LYsNIad/JIuKA14d7jM3TedjhRkLbOSCxz3HARUlqSyEd5ZS4roS/3Eca
+ N2TekSHFJbNwaeCg==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
+ header.from=linutronix.de
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=SK3BZGmO
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next v4 1/4] xsk: Add launch time
- hardware offload support to XDP Tx metadata
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=wTdOlWbQ; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=yT3+jiuC
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net 0/4] igb: fix igb_msix_other()
+ handling for PREEMPT_RT
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -166,23 +124,59 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 01/09, Song, Yoong Siang wrote:
-> On Wednesday, January 8, 2025 12:50 AM, Stanislav Fomichev <stfomichev@gmail.com> wrote:
-> >On 01/06, Song Yoong Siang wrote:
-> >> Extend the XDP Tx metadata framework so that user can requests launch time
-> >> hardware offload, where the Ethernet device will schedule the packet for
-> >> transmission at a pre-determined time called launch time. The value of
-> >> launch time is communicated from user space to Ethernet driver via
-> >> launch_time field of struct xsk_tx_metadata.
-> >>
-> >> Suggested-by: Stanislav Fomichev <sdf@google.com>
-> 
-> Hi Stanislav Fomichev,
-> 
-> Thanks for your review comments.
-> I notice that you have two emails:
-> sdf@google.com & stfomichev@gmail.com
-> 
-> Which one I should use in the suggested-by tag?
+On 2025-01-09 13:46:47 [-0300], Wander Lairson Costa wrote:
+> > If the issue is indeed the use of threaded interrupts then the fix
+> > should not be limited to be PREEMPT_RT only.
+> >
+> Although I was not aware of this scenario, the patch should work for it a=
+s well,
+> as I am forcing it to run in interrupt context. I will test it to confirm.
 
-google.com should be bouncing now. sdf@fomichev.me is preferred.
+If I remember correctly there were "ifdef preempt_rt" things in it.
+
+> > > > - What causes the failure? I see you reworked into two parts to beh=
+ave
+> > > >   similar to what happens without threaded interrupts. There is sti=
+ll no
+> > > >   explanation for it. Is there a timing limit or was there another
+> > > >   register operation which removed the mailbox message?
+> > > >
+> > >
+> > > I explained the root cause of the issue in the last commit. Maybe I s=
+hould
+> > > have added the explanation to the cover letter as well.  Anyway, here=
+ is a
+> > > partial verbatim copy of it:
+> > >
+> > > "During testing of SR-IOV, Red Hat QE encountered an issue where the
+> > > ip link up command intermittently fails for the igbvf interfaces when
+> > > using the PREEMPT_RT variant. Investigation revealed that
+> > > e1000_write_posted_mbx returns an error due to the lack of an ACK
+> > > from e1000_poll_for_ack.
+> >
+> > That ACK would have come if it would poll longer?
+> >
+> No, the service wouldn't be serviced while polling.
+
+Hmm.=20
+
+> > > The underlying issue arises from the fact that IRQs are threaded by
+> > > default under PREEMPT_RT. While the exact hardware details are not
+> > > available, it appears that the IRQ handled by igb_msix_other must
+> > > be processed before e1000_poll_for_ack times out. However,
+> > > e1000_write_posted_mbx is called with preemption disabled, leading
+> > > to a scenario where the IRQ is serviced only after the failure of
+> > > e1000_write_posted_mbx."
+> >
+> > Where is this disabled preemption coming from? This should be one of the
+> > ops.write_posted() calls, right? I've been looking around and don't see
+> > anything obvious.
+>=20
+> I don't remember if I found the answer by looking at the code or by
+> looking at the ftrace flags.
+> I am currently on sick leave with covid. I can check it when I come back.
+
+Don't worry, get better first. I'm kind of off myself. I'm not sure if I
+have the hardware needed to setup so I can look at it=E2=80=A6
+
+Sebastian
