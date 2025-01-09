@@ -1,98 +1,136 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD156A06A74
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Jan 2025 02:54:59 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 926C9A06C01
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 Jan 2025 04:27:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5D57C60895;
-	Thu,  9 Jan 2025 01:54:58 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CE90580F5C;
+	Thu,  9 Jan 2025 03:27:02 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id s440mh9R3JDK; Thu,  9 Jan 2025 03:27:02 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 277CB80F33
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1736393222;
+	bh=vzuVW+OPCT+RHQ0ks4dicbQ5JZOeyDFGTM+oaD9Mb3E=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=nPxGwSo4ucYt+BtoJCF8gKLKvBqwBNtYVeS0cZwL4Oi4IOhKW2vZWps2gfHnBbhMO
+	 Q9aHbNaxE7sy1HS56wiWHOsM6NU0L4RDVIVQae1rMDN7llmDeoIcGHGPZ+BrW8ilVx
+	 gU14uM3dt9p2Z39BIbPs6gd/8tUsb8uJkQ11fp1IJwq3ruy900NTeJN6QhR832DTNC
+	 QoDIuUpfuPbdBoxFOFEHkLPvwUb02mq7fgovq499c18V5/wn4lu62PuQGBC714qoSU
+	 AC/KfMds6bZn6q9EyVz6Zmd1vgBIiZYrd/s9eUcPSDvlxmwXMrlfI0WARCWBtOLfNT
+	 Y+BRHX8mphKeg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 277CB80F33;
+	Thu,  9 Jan 2025 03:27:02 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 5C10D7AA
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2025 03:27:00 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 252F860859
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2025 03:27:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xL7kyOJYiS04; Thu,  9 Jan 2025 01:54:57 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 928346089A
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1736387697;
-	bh=vpAdwO+freg6qOXNGmvIkKqh9w9+M7dJ8sYayrAWI38=;
-	h=To:References:From:Date:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=bjSO23u97PH6gjurXpNeSt/FgipxkI5Zug17tii84fLrOLF+zLm3PQZrqUdSVZJMl
-	 KzEenCFJWO6gzcUZAd8ppNMqyoCDbWjcIfW5cgVfQvhk2bK1Gx8UAx3i0DfMBMZP1c
-	 PoPWwszEXdLkaKaoXAcJUYERcvHgrtPbuUcQc2d7PUYfncFrsEz6j4yqCh5S2sMS1a
-	 vVBz2R9kjhug0FEs4P8JrepOV2pxWByD0tRfnqYNzaRCxQv03/o2wtA9WPVM181AoH
-	 d9f44W3k9Q0aCUXcSoiaKY/S5Bk/rH3nwuVAtG+JHF2g6ndO3OVX5M8vZyKUPVid86
-	 AXVC9a9WYpFwA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 928346089A;
-	Thu,  9 Jan 2025 01:54:57 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id EB6F17AA
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2025 01:54:55 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D23D240949
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2025 01:54:55 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VCkl1EXVeYPv for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 Jan 2025 01:54:54 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=114.242.206.163;
- helo=mail.loongson.cn; envelope-from=zhanghongchen@loongson.cn;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org BD3A84025B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BD3A84025B
-Received: from mail.loongson.cn (mail.loongson.cn [114.242.206.163])
- by smtp2.osuosl.org (Postfix) with ESMTP id BD3A84025B
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2025 01:54:52 +0000 (UTC)
-Received: from loongson.cn (unknown [111.207.111.194])
- by gateway (Coremail) with SMTP id _____8AxfaxkLH9n6FJgAA--.3828S3;
- Thu, 09 Jan 2025 09:54:44 +0800 (CST)
-Received: from [10.180.13.176] (unknown [111.207.111.194])
- by front1 (Coremail) with SMTP id qMiowMBx38dkLH9nkHkaAA--.44590S3;
- Thu, 09 Jan 2025 09:54:44 +0800 (CST)
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-References: <20240131115823.541317-1-mschmidt@redhat.com>
- <e6f59bda-9de8-3d30-3f37-3ab1ec047715@loongson.cn>
- <54c34e2c-82f9-4513-8429-9ea19215551a@intel.com>
-From: Hongchen Zhang <zhanghongchen@loongson.cn>
-Message-ID: <f3f4f561-8402-d030-2ee9-38a80662168d@loongson.cn>
-Date: Thu, 9 Jan 2025 09:54:44 +0800
-User-Agent: Mozilla/5.0 (X11; Linux loongarch64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ id 8vj6nW3WjtgU for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  9 Jan 2025 03:26:59 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::633; helo=mail-pl1-x633.google.com;
+ envelope-from=haifeng.xu@shopee.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 062FB6087A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 062FB6087A
+Received: from mail-pl1-x633.google.com (mail-pl1-x633.google.com
+ [IPv6:2607:f8b0:4864:20::633])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 062FB6087A
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Jan 2025 03:26:58 +0000 (UTC)
+Received: by mail-pl1-x633.google.com with SMTP id
+ d9443c01a7336-21631789fcdso20645555ad.1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 08 Jan 2025 19:26:58 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1736393218; x=1736998018;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to:subject
+ :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=vzuVW+OPCT+RHQ0ks4dicbQ5JZOeyDFGTM+oaD9Mb3E=;
+ b=avp7NDTfwsDk0b+e2pWD64VKY3BFDobdt5wi3fMmRjlahmmA9KQpmiaVPRCuHIRPmv
+ 2yeQpCn54zTlQcq0+80ItZOLXvYwGU4eNi1oJnOFlOB0BlFcaW4S2KtEyJSC31ps4FV+
+ CYN3KhbNJtidRytf8Co/FaxbDi/vU28ur8LH3i4jYDEeaRGFYIcrfQVKC4fMOS8b5wXh
+ qPi/qMfsJE+iI+3YJNBUZkIYLcTFhYd8bOPlkBwj815zxoRNBrOQG4beVJt6XULQ21tA
+ 6nhWpsQPoL/ZpMfKQk0lJywo4cYFNzPFysPR9iFj1AoflrdQvKi1Gfn0Ie/GrLIcYwQ0
+ f9kQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVjAIuKjQvnKutsZDgXOkdJVCn6YHajQb9E6RNpag1aYui5w1Wp0vDiA/R6wRXy0FwBH1/8zS7cWpMh1Sb5rs8=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YwwfspGunc6dq2FfFGfro5/Yn+FbcxH0XgOOX4CDhwim9kiB2cU
+ pINtYUGGx1pGD9Bd1guiFqm36+RmW4C1UiPKFOAFWes/EGtN+31wZyBZ+FRTREI=
+X-Gm-Gg: ASbGncvk/K0lV3jrxEFrYPJrwRbcpRimv6IIecZIS5Jk2ZGluF3S12f2HOEuI0GVnmv
+ SwbYUkRNEAbJLMNK4eJZGn8YUke3nGEgwitmcsFR8m75ScMGTSKZGIND2OvfljfxS75TqQafTKA
+ 2eSC+poZFE07JdJdFI637HL4OxQ+ktOw3MZ3e8aIfc13bp2g0jIStzejKrUZro9MVtihlGapYHt
+ aIveOEp7YzhQqEyDEKDLSIcFk24mKck556k+MFvCTN6IFZTFtuJs1KLiXnmwAh+1vULjnrn6y5T
+ mkkEj1+3J/GJQPcHW4M/y60rLDdv6IzmI1a7fzCn
+X-Google-Smtp-Source: AGHT+IEkDKkKZMDtdD5Juv0GWBv1ipKP+wto2lLIwnmxILwjlfimkoSSXpONvzILV/4efJhapoRqsA==
+X-Received: by 2002:a05:6a21:9017:b0:1e1:b023:6c89 with SMTP id
+ adf61e73a8af0-1e89cb8f314mr2249602637.15.1736393218401; 
+ Wed, 08 Jan 2025 19:26:58 -0800 (PST)
+Received: from [10.54.24.59] (static-ip-148-99-134-202.rev.dyxnet.com.
+ [202.134.99.148]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-72aad848020sm36008714b3a.81.2025.01.08.19.26.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 08 Jan 2025 19:26:57 -0800 (PST)
+Message-ID: <0d625c8b-f1e0-4562-aee0-b4cbc8fc5737@shopee.com>
+Date: Thu, 9 Jan 2025 11:26:52 +0800
 MIME-Version: 1.0
-In-Reply-To: <54c34e2c-82f9-4513-8429-9ea19215551a@intel.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: qMiowMBx38dkLH9nkHkaAA--.44590S3
-X-CM-SenderInfo: x2kd0w5krqwupkhqwqxorr0wxvrqhubq/1tbiAQERB2d+-8QDJgAAsR
-X-Coremail-Antispam: 1Uk129KBj93XoW7ZFyDGw4fZrW7ZFy3ZF4rXrc_yoW8ArWUpF
- 1rtF4a9rs8tw18Ar4S934jgr4FkasrGasIy398tw15JF47Ar13Ar4xGa1UGFn5Xa1fuF4I
- kw4Sqr9xWayDAagCm3ZEXasCq-sJn29KB7ZKAUJUUUU8529EdanIXcx71UUUUU7KY7ZEXa
- sCq-sGcSsGvfJ3Ic02F40EFcxC0VAKzVAqx4xG6I80ebIjqfuFe4nvWSU5nxnvy29KBjDU
- 0xBIdaVrnRJUUUvYb4IE77IF4wAFF20E14v26r1j6r4UM7CY07I20VC2zVCF04k26cxKx2
- IYs7xG6rWj6s0DM7CIcVAFz4kK6r106r15M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48v
- e4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_Gr0_Xr1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI
- 0_Gr0_Cr1l84ACjcxK6I8E87Iv67AKxVWxJr0_GcWl84ACjcxK6I8E87Iv6xkF7I0E14v2
- 6F4UJVW0owAS0I0E0xvYzxvE52x082IY62kv0487Mc804VCY07AIYIkI8VC2zVCFFI0UMc
- 02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWUGVWUXwAv7VC2z280aVAF
- wI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r4UM4x0Y48IcVAKI48JMxk0xIA0c2IEe2xFo4
- CEbIxvr21l42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG
- 67AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r1q6r43MI
- IYrxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2IY6xkF7I0E
- 14v26r1j6r4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVWUJV
- W8JwCI42IY6I8E87Iv6xkF7I0E14v26r1j6r4UYxBIdaVFxhVjvjDU0xZFpf9x07URa0PU
- UUUU=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=loongson.cn
-Subject: Re: [Intel-wired-lan] [PATCH net] ice: fix unaligned access in
- ice_create_lag_recipe
+User-Agent: Mozilla Thunderbird
+To: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Edward Cree <ecree.xilinx@gmail.com>, Eric Dumazet <edumazet@google.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ "Kwapulinski, Piotr" <piotr.kwapulinski@intel.com>
+Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
+References: <da83df12-d7e2-41fe-a303-290640e2a4a4@shopee.com>
+ <CANn89iKVVS=ODm9jKnwG0d_FNUJ7zdYxeDYDyyOb74y3ELJLdA@mail.gmail.com>
+ <c2c94aa3-c557-4a74-82fc-d88821522a8f@shopee.com>
+ <CANn89iLZQOegmzpK5rX0p++utV=XaxY8S-+H+zdeHzT3iYjXWw@mail.gmail.com>
+ <b9c88c0f-7909-43a3-8229-2b0ce7c68c10@shopee.com>
+ <87e945f6-2811-0ddb-1666-06accd126efb@gmail.com>
+ <0d98fed8-38e3-4118-82c9-26cefeb5ee7a@shopee.com>
+ <32775382-9079-4652-9cd5-ff0aa6b5fd9e@intel.com>
+ <1ade15b1-f533-4cc6-8522-2d725532e251@shopee.com>
+ <bb5dbf24-ef80-4220-8b07-40eed9ac15ae@intel.com>
+From: Haifeng Xu <haifeng.xu@shopee.com>
+In-Reply-To: <bb5dbf24-ef80-4220-8b07-40eed9ac15ae@intel.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=shopee.com; s=shopee.com; t=1736393218; x=1736998018; darn=lists.osuosl.org; 
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to:subject
+ :user-agent:mime-version:date:message-id:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=vzuVW+OPCT+RHQ0ks4dicbQ5JZOeyDFGTM+oaD9Mb3E=;
+ b=XOkRrxLOlS0ukkC6IQIziSeckUNRXxmCuiZiPM/HD4MducAkhE1wUeMPbcK2xD1ZO/
+ 7id9RIAaW3xLM4BtxZRjMoafSNZGzYBkWrtt/ScLx5cEyEGYuV7BvrweIDFiXDPgIHCg
+ 2YcgrDtVvoJ0xH9XyZbqoGRiRiKCBfFIwr8bzceFgEotqk/tbcwp1dNHL8rXJzwRaZIE
+ ZW3JvK45HwUTEXjw8hBYHswjW1JjxdUE4pmSbUAwWCEBhPCz0iAXZ4JPeOt3vai/BtET
+ Oq8Bs/Q+9cEmBweA737On6McK1QAq5jiu2XumeFKCJcsziB+62XwzzUG6kPla+VCY4Hr
+ tnEw==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=shopee.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=shopee.com header.i=@shopee.com header.a=rsa-sha256
+ header.s=shopee.com header.b=XOkRrxLO
+Subject: Re: [Intel-wired-lan] 
+ =?utf-8?b?W1F1ZXN0aW9uXSBpeGdiZe+8mk1lY2hhbmlz?=
+ =?utf-8?q?m_of_RSS?=
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -105,54 +143,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Daniel Machon <daniel.machon@microchip.com>, netdev@vger.kernel.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Dave Ertman <david.m.ertman@intel.com>, intel-wired-lan@lists.osuosl.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Przemek,
-On 2025/1/8 下午4:59, Przemek Kitszel wrote:
-> On 1/8/25 04:09, Hongchen Zhang wrote:
 
->> Hi Michal,
->> On 2024/1/31 pm 7:58, Michal Schmidt wrote:
->>> new_rcp->recipe_bitmap was written to as if it were an aligned bitmap.
->>> It is an 8-byte array, but aligned only to 4.
->>> Use put_unaligned to set its value.
->>>
->>> Additionally, values in ice commands are typically in little-endian.
->>> I assume the recipe bitmap should be too, so use the *_le64 conversion.
->>> I don't have a big-endian system with ice to test this.
->>>
->>> I tested that the driver does not crash when probing on aarch64 anymore,
->>> which is good enough for me. I don't know if the LAG feature actually
->>> works.
->>>
->>> This is what the crash looked like without the fix:
-> 
->>> [   17.599142] Call trace:
->>> [   17.599143]  ice_create_lag_recipe.constprop.0+0xbc/0x11c [ice]
->>> [   17.599172]  ice_init_lag+0xcc/0x22c [ice]
->>> [   17.599201]  ice_init_features+0x160/0x2b4 [ice]
->>> [   17.599230]  ice_probe+0x2d0/0x30c [ice]
->>> [   17.599258]  local_pci_probe+0x58/0xb0
->>> [   17.599262]  work_for_cpu_fn+0x20/0x30
-> 
->> I encountered the same problem on a LoongArch LS3C6000 machine. Can 
->> this patch be merged now?
-> 
-> What kernel base do you use?, we have merged the Steven Patches long ago
-My test is based on 6.6.61 which contains Steven's patch:
-  8ec08ba97fab 2024-05-07  ice: Refactor FW data type and fix bitmap 
-casting issue [Steven Zou]
 
-It seems that Steven's patch can not solve the unaligned access problem 
-caused by new_rcp->recipe_bitmap, So is Michal's patch (may need some 
-change in ice_add_sw_recipe()) still needed?
+On 2025/1/9 05:06, Tony Nguyen wrote:
+> 
+> 
+> On 1/7/2025 7:36 PM, Haifeng Xu wrote:
+>>
+>>
+>> On 2025/1/8 01:16, Tony Nguyen wrote:
+> 
+> ...
+> 
+>>>
+>>> What's your ntuple filter setting? If it's off, I suspect it may be the Flow Director ATR (Application Targeting Routing) feature which will utilize all queues. I believe if you turn on ntuple filters this will turn that feature off.
+>>
+>> Yes, our ntuple filter setting is off. After turning on the ntuple filters, I compare the delta of recieved packets,
+>> only 0~15 rx rings are non-zero, other rx rings are zero.
+>>
+>> If we want to spread the packets across 0~62, how can we tune the NIC setting?
+>> we have enabled 63 rx queues, irq_affinity and rx-flow-hash, but the 0~15 cpu
+>> received more packets than others.
+> 
+> As Jakub mentioned earlier, HW RSS is only supported on this device for 16 queues. ATR will steer bi-directional traffic to utilize additional queues, however, once its exhausted it will fallback to RSS, which is why CPUs 0-15 are receiving more traffic than the others. I'm not aware of a way to evenly spread the traffic beyond the 16 HW supported RSS queues for this device.
 
--- 
-Best Regards
-Hongchen Zhang
+Ok, thanks!
+
+> 
+> Thanks,
+> Tony
+> 
+>> Thanks!
+> 
+> 
 
