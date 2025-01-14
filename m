@@ -1,222 +1,102 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EAB90A106A9
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Jan 2025 13:33:40 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 09DF9A10966
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Jan 2025 15:31:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2B6FE60B04;
-	Tue, 14 Jan 2025 12:33:39 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9B5A8413C0;
+	Tue, 14 Jan 2025 14:31:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id BLbX2clMgMhz; Tue, 14 Jan 2025 12:33:38 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 0VMYudv8sD8O; Tue, 14 Jan 2025 14:31:42 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9540960EA8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 35736413C1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1736858017;
-	bh=AgBktJ/XcZo6iL7xosrpBHCs7vXGUDY/0iFzlmkjL7A=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1736865101;
+	bh=Rk/G0mLCFnUI3KlbP5wsWzIpWaG2yl/PR/05VMSh4dI=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=Xqo0WTG08qJIGqbUlke3uNOblYtVQ12oI+d20gZ1PK6gAk77sgVRfsYF88Q2Vako4
-	 YkDUVoYzMhGCIBwWB3vRi7JD4ki0sWdLMMir+gjGaP8PRRQR2FOBUorPadjGMy/0z2
-	 bWJnjDs47CuFeMHlm+DhPZ17U006eBqAVK5vZnGtVMNXsVhDWp6puBHIMCE6W0z2hB
-	 FN+AcnoIt1/uvFc8KkdOinLooD+yMh+1CsgsfKINhqYUfxc8fjlI05RcGQbqgf8reE
-	 RX5tQ2FzPv0kzCB4UrLSDxlT8yoxB07XWoKHsz6qmDw8FlbLdbhz03BDoxp51Qgu6w
-	 7nRk/Yrp3j1lQ==
+	b=t7t7YXmTX33pmGoqCBqtj3qQLhLrX9qoHxFq46RQycdKpS5Oi+wZc97r+4ivuB/bL
+	 OiysrRlhYQDZVqGJ6gTWiDKOwDeIHao0VV5/gENamiTZP5MLq03so1bbNv+RXg7Y/1
+	 UAzMyZvhrb4OGuCaQYH36vY6VfML4beAGzlX7e3PIjopYIkt/KZ1gLSg3akHQYcU7m
+	 +iih5D62KA+OA9++85W9264Cy7BAoDcdcgwEfhEN/uUuxjuGb41VIJVBaQrKNh2qsV
+	 LY3LTtpe0J2xsJP+GCstevcLyITLdKRATZss8Qs4UFLJPwjMN0QvqJCO5m1iRhEiYm
+	 83gut8mXu3znw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9540960EA8;
-	Tue, 14 Jan 2025 12:33:37 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 35736413C1;
+	Tue, 14 Jan 2025 14:31:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 40F2DB89
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jan 2025 12:33:36 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 0CD43B8B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jan 2025 14:31:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2F27D82F76
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jan 2025 12:33:36 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id EE4BE83EC7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jan 2025 14:31:39 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mejHSu-Yrl1k for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Jan 2025 12:33:35 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.9;
- helo=mgamail.intel.com; envelope-from=piotr.kwapulinski@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org BAF7380AD3
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BAF7380AD3
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
- by smtp1.osuosl.org (Postfix) with ESMTPS id BAF7380AD3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jan 2025 12:33:34 +0000 (UTC)
-X-CSE-ConnectionGUID: wLRjgjVqQO+G7l7OsIps9A==
-X-CSE-MsgGUID: 0OEE13ZMQfqw024LtcxvSg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11314"; a="59634525"
-X-IronPort-AV: E=Sophos;i="6.12,314,1728975600"; d="scan'208";a="59634525"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
- by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Jan 2025 04:33:32 -0800
-X-CSE-ConnectionGUID: YtffefKIRu2yLjh7x3Lplw==
-X-CSE-MsgGUID: qHk2ddiCTqeWFXme+9xKpQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="108852986"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by fmviesa003.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 14 Jan 2025 04:33:32 -0800
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.44; Tue, 14 Jan 2025 04:33:31 -0800
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.44 via Frontend Transport; Tue, 14 Jan 2025 04:33:31 -0800
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.46) by
- edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Tue, 14 Jan 2025 04:33:30 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Zl4WBVqZMo1UpP9qgHdjn0OofdYScU1ccBnwKP5QCVvFklg+/NVKSMwXEzuLJay9VTGDtaZ3o1IlJbymBlGS5jxvHSMiJNLsKJ8tPXDo9Nk2m4h6xEMw1CXHAp2uXIvGvl3aW1sK4bo4gyxjB5zWVhdj3NFFdkMun/FPtmVT+o3jHJ2fLPny2QaxgMFosc4xP+YOlQyQcFMjg5KXGklvL4zbMYb4TZajhfuVdm6BYNpCXFAqI3FVsDr/wM/s8iWCRz0NnnVzQb4LGxdv1juNQLCAcW65z/hbttP9TJicCv5Gy2FAGocjSBKcTeqN4bHKgn3VFS9qeNtPQ7luaGfwbQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=AgBktJ/XcZo6iL7xosrpBHCs7vXGUDY/0iFzlmkjL7A=;
- b=Yp28K9WzbEdTCDL9lRI1LRwUtdV6G5sZC+t48rCACt322oxxbpKBRTLAblU+GjFDdDUm1KEmZUzoRBM5nW7Satsa1mob+wQhiuXZ96wBSq9+/N3BU+la8OqCnGnF3Ydz7bGk0NaczgdRAMqpaOS/5Jo/vKpBrsfB928TufTsYk8K8yeqpUsDfNprIRUqjAY7YvzftHEzjbspbo2DNq3IKpRhdggTj+Syt9LpIrLUMH1P594DLQN0htt/eJwFtwXHszkbUPABGnD+cJ3AEBEWjmWc2MClX4RDIXAbzWEnuMhOoxyR2tbrSZg2G2L/YHSIVdnjzP5Jh9oFKN3ei6v8vg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DM6PR11MB4610.namprd11.prod.outlook.com (2603:10b6:5:2ab::19)
- by PH7PR11MB6547.namprd11.prod.outlook.com (2603:10b6:510:211::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8335.17; Tue, 14 Jan
- 2025 12:32:48 +0000
-Received: from DM6PR11MB4610.namprd11.prod.outlook.com
- ([fe80::c24a:5ab8:133d:cb04]) by DM6PR11MB4610.namprd11.prod.outlook.com
- ([fe80::c24a:5ab8:133d:cb04%7]) with mapi id 15.20.8356.010; Tue, 14 Jan 2025
- 12:32:48 +0000
-From: "Kwapulinski, Piotr" <piotr.kwapulinski@intel.com>
-To: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>
-CC: "andrew+netdev@lunn.ch" <andrew+netdev@lunn.ch>, "Nguyen, Anthony L"
- <anthony.l.nguyen@intel.com>, "davem@davemloft.net" <davem@davemloft.net>,
- "edumazet@google.com" <edumazet@google.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "kuba@kernel.org" <kuba@kernel.org>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>, "pabeni@redhat.com" <pabeni@redhat.com>, "Kitszel,
- Przemyslaw" <przemyslaw.kitszel@intel.com>, "Swiatkowski, Michal"
- <michal.swiatkowski@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH net-next] ixgbe: Remove redundant
- self-assignments in ACI command execution
-Thread-Index: AQHbZhp9vaVrVKveiESvwrSGpq3QFLMWMbag
-Date: Tue, 14 Jan 2025 12:32:47 +0000
-Message-ID: <DM6PR11MB46100E03855B13F00F9B6E64F3182@DM6PR11MB4610.namprd11.prod.outlook.com>
-References: <DM6PR11MB4610108A2FA01B48969501D8F31F2@DM6PR11MB4610.namprd11.prod.outlook.com>
- <Z4WuXmWcOwlNAZUt@HOME-PC>
-In-Reply-To: <Z4WuXmWcOwlNAZUt@HOME-PC>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DM6PR11MB4610:EE_|PH7PR11MB6547:EE_
-x-ms-office365-filtering-correlation-id: ff0dd1ae-5dbb-478f-d09d-08dd34978dc1
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|1800799024|376014|38070700018|7053199007; 
-x-microsoft-antispam-message-info: =?us-ascii?Q?dsmuoqZ64wjPR1rvMtTr141IpjcO/gqNoiOviYXC8uy+JxQm1ZfOe6DI66f7?=
- =?us-ascii?Q?bceg+IY41yuEagayE5Pd/5RIc+nzRhSP5eARsPyEfQQMm9eCrHoEV5FCkBUP?=
- =?us-ascii?Q?R4Z3h93HuBLrrcygYThMhWaqSnqEgEgjseCh7oTUI8T1x+HS5nXyT3jq4F5s?=
- =?us-ascii?Q?oqtdv4Ed8187u+lnlGUePMs0ClEGCEvK9A3KhhkxlgX4LQG9DZod7zFk8hjR?=
- =?us-ascii?Q?coDnxh64RALKLhMTv9Xjb5dkobthl+aAR6f8VpY81uovwlnpp8ct4iD/6ibz?=
- =?us-ascii?Q?ZJ7aI9YsWxwb6bwtM6bbOlQvPn8NdwTcYdos0EPEJk0r70nj9vtNpW5ZdNE2?=
- =?us-ascii?Q?gjgz1IPkp7iepeWD54OjqXulVKj1W+46xQ09ll5Vb1LkmAXmXktCqnhqh89P?=
- =?us-ascii?Q?sGGXXOyD3/piVIeXIZ94CIE7aI4Bcwg+bjpMQlwSSsRwdh+/yzX/Du58IiaK?=
- =?us-ascii?Q?6MmN3QISN5gVqnhh6gPAbTLFam/pV9GbJndem0dOnWgSxAMX1yVqaDl290Ty?=
- =?us-ascii?Q?Lj2K1tTdZnzvWzfzk7I++HjJIRApbWTplksmVZ1b5X95fGWC0ZzqJ6vlzDwu?=
- =?us-ascii?Q?404NWJkwTF/jqU3tqCrUxULeLOpBDceP86S240TQEwBH0GsGckzlVpHKh6NS?=
- =?us-ascii?Q?S26xewRxlbzgaoVX6e4ICAgD1IYGWa/z3KejsA5+Ph1JnIttHoIeduBluUPr?=
- =?us-ascii?Q?Ufn/zZEGG/dDfo4wpv7zfY1BiKXjhV8bi9OfEl6gozcaXeaglTSrBtQiaacM?=
- =?us-ascii?Q?MBbxinTUFHDZeG4/1s5uh5dPzW7ooSpWe16puJ7IEp0Wr04MuoScjjz39B1k?=
- =?us-ascii?Q?0jxVX/aI0jtRSXf7KGVLbl7kH7R6McpeMO0RxaElq4N90HmM6wFUg4e5ltT6?=
- =?us-ascii?Q?U+CvXtxWydpWTOYHJB13wFjvZUzzpiaEYwSabbiEyVU/fVTKrkaPDN1JyHFq?=
- =?us-ascii?Q?VohzmN+WLZCjPcgOr0vm3IRYpIA0izKomKgH19G9qtXjl15KnvxmdIXqwTRr?=
- =?us-ascii?Q?iftrwYPwfumUxT5rgMxvPpm81pY2/qbCl7zejfolI/u0KAaoVY1BI8n6Vbvg?=
- =?us-ascii?Q?DJroQ72CEkVoqiRVu/LL9Gp/XEHWOlMZ0asrAV9gfzcGxogbzDLFBZwKdd+v?=
- =?us-ascii?Q?uiP/49X7sPt7RnwRt4VQA0AoK5/O9pesyyHhrckmnmYD6yD0xt8KpKQWnMlW?=
- =?us-ascii?Q?I/4PZk2ZUYDLc8Y2LgOE6nhZ2L9m4fZ+DzjG+a25GwNOHe5MhIB1Ne7STXq9?=
- =?us-ascii?Q?XnGzWIkX6P+4YsmcY2DiaN9NGr33n9ykSNM4HLpL7qLUrNtp9nJ1Dqh9KPp8?=
- =?us-ascii?Q?5+Xgg721j7yN1QN0imXLj3dKVUP3x3D4CbLG1+JqFgE+2oiKYV7iseHiEPb5?=
- =?us-ascii?Q?789QamcHYK6o8PiuJQTuPWtmC0l1?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR11MB4610.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(1800799024)(376014)(38070700018)(7053199007); DIR:OUT;
- SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?0OPi3p+YFi2aImDDvJWqs6tBGXhBEwdAFqvf9ezHDOp0orlj+GK7LSsCTiSg?=
- =?us-ascii?Q?0KZAzjHuYmTyBqa1Jq9varTgRJg604250t3IwRnwbmi0URXBNSExtMaWCxVs?=
- =?us-ascii?Q?QD8PFikugW/NuMHiXArPGDmoM1wy8J7NKArLGfbdg1LysWEjVMc0vTr7Nnw/?=
- =?us-ascii?Q?h8KO2Y65ORw1MwkpH8TyPIBJnhw242w4h8THEenZHPB8WZeiZy5Wu8+gL4+4?=
- =?us-ascii?Q?UmhDMoh/GySa4P9JtIY3K1dlEXk15GL2Zt4phY+OULzGAxH3vUH05Z8NzphM?=
- =?us-ascii?Q?hIi9NQMCYYBhdVrc45z6ZzSvv8WQgfkErC9XOn7YRf+sVqY8AvRjYu/hs9oq?=
- =?us-ascii?Q?5UtGEs2ZhllKA0OPZ4dkLnqMUQRVvlmglebCE/rTUmW+JanMKaboNvZxCS6x?=
- =?us-ascii?Q?JDvQPSpHwCjR/hYNQum2pEssaz1EAgpLn9hI1eXkkiFaE9+KQ3pv4iO0/rhw?=
- =?us-ascii?Q?FrdDrZdiWg7amrcwqsDOAKHRa851qz4MyaiLqTqKYCzCNmnZAIaFEl34TIuL?=
- =?us-ascii?Q?vPpZ9+GnjtxVk3cIWi2onT8gDlNrTCaDkL0weDIwq+WWet/CqkHVp20BphXW?=
- =?us-ascii?Q?wiIo8ZrYTVsHY9kvF66L9e3FUAQEqeRi224lR4/fSCoVoT000k8aQq8hbV94?=
- =?us-ascii?Q?NZYhTwOJLw40xesU7uipkdqgrApVV2+0OZ9c/luoE79w7kd6IkmRkrvs9cf9?=
- =?us-ascii?Q?9pdsn9b49DyZdncm/NnvlFKKCv7lXgFnSAK8NN00gGXtjBkkiUn/PV3CZ/Ll?=
- =?us-ascii?Q?WfEzxq/LCh43WS7/bW6QYXyXUobckZ7SdsEkyhIxX1YzaLAAuqCcv8hGUYHp?=
- =?us-ascii?Q?mMm7nYFMtMnB/8kFhA24eFelYEJEYjkhjUE9C2MVX6mJ7xbHJYOdU/DdqWMM?=
- =?us-ascii?Q?V6vPhK++EAC2UTvKrj740OgcyfCrbHIoE4prwO9JXgrDoFviE6rrYwBvd8si?=
- =?us-ascii?Q?wme+KFC6U9ZFlv1sl4uGjUaARLgvCfDy6nstJcD2720QGxT9TIutCeFko3VF?=
- =?us-ascii?Q?vRm9IlY7y90r+af9TVHYFC0KKdRnBmxPVyrMHZ1Dk6uLATMq6hWkZb02ReBm?=
- =?us-ascii?Q?g+kwNshu0hHbE+w1ezGDjy0WCy62R5RDxTAdVabbckDB/G2Ts2dFYWPgEmyq?=
- =?us-ascii?Q?2H/bTS6fWzOjqUYScSIHyso6LPIqg0ukDJX+vdXIPSyrxstGrxZeD+fNXxc8?=
- =?us-ascii?Q?75HyomItZFZbcIvvpWOjmMFAxZOkR4A3lK5Nb4V9JhMWZSCGgz75tAitoXBT?=
- =?us-ascii?Q?JWrUatkcKI+qWgHAaIMIEQXf4ISGVI2VGR/yvtwB/BhLau2vq3stvP4p8mh+?=
- =?us-ascii?Q?IHS1GT0HBKSSvss6+gUm2U5hjdegmAxoTnN+QYMWHKwcaxwTOGz9CaGQLv24?=
- =?us-ascii?Q?RE5hPPUw2fIV8YPh2FqzhzM/+YB6za+BNq3SeJzwE9CEPxdKfWAc8Os7impm?=
- =?us-ascii?Q?JynMivmlc5ki5WdMlt0H2EEI+XNun6fjX3rIBj7n6/KZa2VZMnXDi+xwJJeO?=
- =?us-ascii?Q?EJi1hCHK0VzDYCfR+gdyILyOuzjGBIC4C1slI6N4NvN8kuTZVcLRoJFXqPAO?=
- =?us-ascii?Q?oIM4SiWQXbC/FAgt1FWIF10dzBkRINbHz12wGS5+?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ id REVSnABON3xW for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Jan 2025 14:31:38 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=147.75.193.91;
+ helo=nyc.source.kernel.org; envelope-from=hawk@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 442DD83BD2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 442DD83BD2
+Received: from nyc.source.kernel.org (nyc.source.kernel.org [147.75.193.91])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 442DD83BD2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jan 2025 14:31:38 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by nyc.source.kernel.org (Postfix) with ESMTP id 9BE7EA41275;
+ Tue, 14 Jan 2025 14:29:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2784EC4CEDD;
+ Tue, 14 Jan 2025 14:31:30 +0000 (UTC)
+Message-ID: <3c8e4f86-87e2-470d-84d8-86c70b3e2fcc@kernel.org>
+Date: Tue, 14 Jan 2025 15:31:28 +0100
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB4610.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ff0dd1ae-5dbb-478f-d09d-08dd34978dc1
-X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Jan 2025 12:32:47.8907 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 95zOA6RDiu9lg3OwWlVynhl0bmbmqIHkm+tPJScf+JHJqoLH8bu8dd1KvDBJaSlnJblbJBVwSiIT2V5mx57dQDEqNOIejuNKUKqYkdzTZ3k=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB6547
-X-OriginatorOrg: intel.com
+User-Agent: Mozilla Thunderbird
+To: Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
+ kuba@kernel.org, pabeni@redhat.com
+Cc: zhangkun09@huawei.com, liuyonglong@huawei.com, fanghaiqing@huawei.com,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Alexander Duyck <alexander.duyck@gmail.com>,
+ Andrew Morton <akpm@linux-foundation.org>, IOMMU <iommu@lists.linux.dev>,
+ MM <linux-mm@kvack.org>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ bpf@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20250110130703.3814407-1-linyunsheng@huawei.com>
+Content-Language: en-US
+From: Jesper Dangaard Brouer <hawk@kernel.org>
+In-Reply-To: <20250110130703.3814407-1-linyunsheng@huawei.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1736858014; x=1768394014;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=US5L5hx3BvN2ZVuuOSbcTAZXWZ4Al/I23A559+941T4=;
- b=ZsqFRklSnY10Qj5YMFa+Ool8dfgrsqbbTJtixD5XlU0xC2WYeWol6qzE
- XYtIn0T/5DdRbk+3j2exvHI5VFX+G55LD5CIJsOzQcIBcuAvnRILwxdVs
- 6kkEzOPT4HSilXfcn4aXPahtdDFhUwPlWPjK5FSohgOdo5Xw+GjScWEVp
- 7R3NAPu1KmxOLICFIzQyw50SJhivM6r48j0rLgx195jhsLpHy0fRgNuL5
- Gnx39t1sbysYpf4nqjdgQvdWNCbZGds9lbz7UyZJc4zlaz6Ookgp+uqle
- ZwuMJbLX7C5uQwVFjbNPBg5QBGt+DdrMDpO2bvPDxSXIGaQPM8Q0A6jbD
- w==;
+ d=kernel.org; s=k20201202; t=1736865096;
+ bh=VU+nLEgBl+YFJkoUv1eElekBu6BwOmDALua6tx+orpo=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=QEtX7U3/ak1me7Fh/IOKx2eWije06zBsdu54WkuYgovrWPxbLz2NBgPtvo1bHlJkx
+ qsSj7wTdsfrNbU7M8DywqPKHQUGhsEciFB4JuAU06IaOXYhuh44utmCTi/fOg+rLzp
+ mCTBnWIVcVYl/PQGV8vitwvv+6uGzb4eMn8wrT1v7SuG7x0DNk02YAYOOOc70+qv60
+ 2rxT1sLWMEx4ct2T1z6sQgoH65L99EqU0Xh9fXUeiclQNW+0WIrdVrH3qcw76Pje3C
+ ZMpqTTqBZTCQZDwSTHzEw/n0Jtjm6Br5Fnm1yd9rpeRn3L4fb9HJ53wbB+wNxnRCEf
+ Qly7CofQ8+xaw==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=ZsqFRklS
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next] ixgbe: Remove redundant
- self-assignments in ACI command execution
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=QEtX7U3/
+Subject: Re: [Intel-wired-lan] [PATCH net-next v7 0/8] fix two bugs related
+ to page_pool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -232,166 +112,253 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
->-----Original Message-----
->From: Dheeraj Reddy Jonnalagadda <dheeraj.linuxdev@gmail.com>=20
->Sent: Tuesday, January 14, 2025 1:23 AM
->To: Kwapulinski, Piotr <piotr.kwapulinski@intel.com>
->Cc: andrew+netdev@lunn.ch; Nguyen, Anthony L <anthony.l.nguyen@intel.com>;=
- davem@davemloft.net; edumazet@google.com; intel-wired-lan@lists.osuosl.org=
-; kuba@kernel.org; linux-kernel@vger.kernel.org; netdev@vger.kernel.org; pa=
-beni@redhat.com; Kitszel, Przemyslaw <przemyslaw.kitszel@intel.com>; Swiatk=
-owski, Michal <michal.swiatkowski@intel.com>
->Subject: Re: [Intel-wired-lan] [PATCH net-next] ixgbe: Remove redundant se=
-lf-assignments in ACI command execution
->
->On Mon, Jan 13, 2025 at 03:23:31PM +0000, Kwapulinski, Piotr wrote:
->> >[Intel-wired-lan] [PATCH net-next] ixgbe: Remove redundant=20
->> >self-assignments in ACI command execution @ 2025-01-08  5:36 Dheeraj=20
->> >Reddy Jonnalagadda
->> >  2025-01-08  6:29 ` Michal Swiatkowski
->> >  0 siblings, 1 reply; 2+ messages in thread
->> >From: Dheeraj Reddy Jonnalagadda @ 2025-01-08  5:36 UTC (permalink /=20
->> >raw)
->> >  To: anthony.l.nguyen, przemyslaw.kitszel
->> >  Cc: andrew+netdev, davem, edumazet, kuba, pabeni, intel-wired-lan,
->> >             netdev, linux-kernel, Dheeraj Reddy Jonnalagadda
->> >
->> >Remove redundant statements in ixgbe_aci_send_cmd_execute() where=20
->> >raw_desc[i] is assigned to itself. These self-assignments have no=20
->> >effect and can be safely removed.
->> >
->> >Fixes: 46761fd52a88 ("ixgbe: Add support for E610 FW Admin Command=20
->> >Interface")
->> >Closes:=20
->> >https://scan7.scan.coverity.com/#/project-view/52337/11354?selectedIs
->> >sue=3D1602757
->> >Signed-off-by: Dheeraj Reddy Jonnalagadda=20
->> >dheeraj.linuxdev@gmail.com<mailto:dheeraj.linuxdev@gmail.com>
->> >---
->> > drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 2 --
->> > 1 file changed, 2 deletions(-)
->> >
->> >diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c=20
->> >b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
->> >index 683c668672d6..408c0874cdc2 100644
->> >--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
->> >+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
->> >@@ -145,7 +145,6 @@ static int ixgbe_aci_send_cmd_execute(struct ixgbe_=
-hw *hw,
->> >             if ((hicr & IXGBE_PF_HICR_SV)) {
->> >                            for (i =3D 0; i < IXGBE_ACI_DESC_SIZE_IN_DW=
-ORDS; i++) {
->> >                                           raw_desc[i] =3D IXGBE_READ_R=
-EG(hw, IXGBE_PF_HIDA(i));
->> >-                                         raw_desc[i] =3D raw_desc[i];
->> >                            }
->> >             }
->> >
->> >@@ -153,7 +152,6 @@ static int ixgbe_aci_send_cmd_execute(struct ixgbe_=
-hw *hw,
->> >             if ((hicr & IXGBE_PF_HICR_EV) && !(hicr & IXGBE_PF_HICR_C)=
-) {
->> >                            for (i =3D 0; i < IXGBE_ACI_DESC_SIZE_IN_DW=
-ORDS; i++) {
->> >                                           raw_desc[i] =3D IXGBE_READ_R=
-EG(hw, IXGBE_PF_HIDA_2(i));
->> >-                                         raw_desc[i] =3D raw_desc[i];
->> >                            }
->> >             }
->> >
->>=20
->> Hello,
->> Possible solution may be as follows. I may also prepare the fix myself. =
-Please let me know.
->> Thanks,
->> Piotr
->>=20
->> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c=20
->> b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
->> index e0f773c..af51e5a 100644
->> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
->> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
->> @@ -113,7 +113,8 @@ static int ixgbe_aci_send_cmd_execute(struct=20
->> ixgbe_hw *hw,
->>=20
->>         /* Descriptor is written to specific registers */
->>         for (i =3D 0; i < IXGBE_ACI_DESC_SIZE_IN_DWORDS; i++)
->> -               IXGBE_WRITE_REG(hw, IXGBE_PF_HIDA(i), raw_desc[i]);
->> +               IXGBE_WRITE_REG(hw, IXGBE_PF_HIDA(i),
->> +                               le32_to_cpu(raw_desc[i]));
->>=20
->>         /* SW has to set PF_HICR.C bit and clear PF_HICR.SV and
->>          * PF_HICR_EV
->> @@ -145,7 +146,7 @@ static int ixgbe_aci_send_cmd_execute(struct ixgbe_h=
-w *hw,
->>         if ((hicr & IXGBE_PF_HICR_SV)) {
->>                 for (i =3D 0; i < IXGBE_ACI_DESC_SIZE_IN_DWORDS; i++) {
->>                         raw_desc[i] =3D IXGBE_READ_REG(hw, IXGBE_PF_HIDA=
-(i));
->> -                       raw_desc[i] =3D raw_desc[i];
->> +                       raw_desc[i] =3D cpu_to_le32(raw_desc[i]);
->>                 }
->>         }
->>=20
->> @@ -153,7 +154,7 @@ static int ixgbe_aci_send_cmd_execute(struct ixgbe_h=
-w *hw,
->>         if ((hicr & IXGBE_PF_HICR_EV) && !(hicr & IXGBE_PF_HICR_C)) {
->>                 for (i =3D 0; i < IXGBE_ACI_DESC_SIZE_IN_DWORDS; i++) {
->>                         raw_desc[i] =3D IXGBE_READ_REG(hw, IXGBE_PF_HIDA=
-_2(i));
->> -                       raw_desc[i] =3D raw_desc[i];
->> +                       raw_desc[i] =3D cpu_to_le32(raw_desc[i]);
->>                 }
->>         }
->>
->
->Hello Piotr,
->
->Thank you for suggesting the fix. I will prepare the new patch and send it=
- over.
->
->-Dheeraj
 
-Hello,
-As a result of internal review from Przemek, it may be improved as follows:
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c b/drivers/net/et=
-hernet/intel/ixgbe/ixgbe_e610.c
-index e0f773c..0ec944c 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-@@ -113,7 +113,8 @@ static int ixgbe_aci_send_cmd_execute(struct ixgbe_hw *=
-hw,
+On 10/01/2025 14.06, Yunsheng Lin wrote:
+> This patchset fix a possible time window problem for page_pool and
+> the dma API misuse problem as mentioned in [1], and try to avoid the
+> overhead of the fixing using some optimization.
+> 
+>  From the below performance data, the overhead is not so obvious
+> due to performance variations for time_bench_page_pool01_fast_path()
+> and time_bench_page_pool02_ptr_ring, and there is about 20ns overhead
+> for time_bench_page_pool03_slow() for fixing the bug.
+> 
 
-        /* Descriptor is written to specific registers */
-        for (i =3D 0; i < IXGBE_ACI_DESC_SIZE_IN_DWORDS; i++)
--               IXGBE_WRITE_REG(hw, IXGBE_PF_HIDA(i), raw_desc[i]);
-+               IXGBE_WRITE_REG(hw, IXGBE_PF_HIDA(i),
-+                               cpu_to_le32(raw_desc[i]));
+My benchmarking on x86_64 CPUs looks significantly different.
+  - CPU: Intel(R) Xeon(R) CPU E5-1650 v4 @ 3.60GHz
 
-        /* SW has to set PF_HICR.C bit and clear PF_HICR.SV and
-         * PF_HICR_EV
-@@ -145,7 +146,7 @@ static int ixgbe_aci_send_cmd_execute(struct ixgbe_hw *=
-hw,
-        if ((hicr & IXGBE_PF_HICR_SV)) {
-                for (i =3D 0; i < IXGBE_ACI_DESC_SIZE_IN_DWORDS; i++) {
-                        raw_desc[i] =3D IXGBE_READ_REG(hw, IXGBE_PF_HIDA(i)=
-);
--                       raw_desc[i] =3D raw_desc[i];
-+                       raw_desc[i] =3D le32_to_cpu(raw_desc[i]);
-                }
-        }
+Benchmark (bench_page_pool_simple) results from before and after patchset:
 
-@@ -153,7 +154,7 @@ static int ixgbe_aci_send_cmd_execute(struct ixgbe_hw *=
-hw,
-        if ((hicr & IXGBE_PF_HICR_EV) && !(hicr & IXGBE_PF_HICR_C)) {
-                for (i =3D 0; i < IXGBE_ACI_DESC_SIZE_IN_DWORDS; i++) {
-                        raw_desc[i] =3D IXGBE_READ_REG(hw, IXGBE_PF_HIDA_2(=
-i));
--                       raw_desc[i] =3D raw_desc[i];
-+                       raw_desc[i] =3D le32_to_cpu(raw_desc[i]);
-                }
-        }
+| Test name  | Cycles |       |    |Nanosec |        |       |      % |
+| (tasklet_*)| Before | After |diff| Before |  After |  diff | change |
+|------------+--------+-------+----+--------+--------+-------+--------|
+| fast_path  |     19 |    24 |   5|  5.399 |  6.928 | 1.529 |   28.3 |
+| ptr_ring   |     54 |    79 |  25| 15.090 | 21.976 | 6.886 |   45.6 |
+| slow       |    238 |   299 |  61| 66.134 | 83.298 |17.164 |   26.0 |
+#+TBLFM: $4=$3-$2::$7=$6-$5::$8=(($7/$5)*100);%.1f
 
-Thank you,
-Piotr
+My above testing show a clear performance regressions across three
+different page_pool operating modes.
+
+
+Data also available in:
+  - 
+https://github.com/xdp-project/xdp-project/blob/main/areas/mem/page_pool07_bench_DMA_fix.org
+
+Raw data below
+
+Before this patchset:
+
+[  157.186644] bench_page_pool_simple: Loaded
+[  157.475084] time_bench: Type:for_loop Per elem: 1 cycles(tsc) 0.284 
+ns (step:0) - (measurement period time:0.284327440 sec 
+time_interval:284327440) - (invoke count:1000000000 tsc_interval:1023590451)
+[  162.262752] time_bench: Type:atomic_inc Per elem: 17 cycles(tsc) 
+4.769 ns (step:0) - (measurement period time:4.769757001 sec 
+time_interval:4769757001) - (invoke count:1000000000 
+tsc_interval:17171776113)
+[  163.324091] time_bench: Type:lock Per elem: 37 cycles(tsc) 10.431 ns 
+(step:0) - (measurement period time:1.043182161 sec 
+time_interval:1043182161) - (invoke count:100000000 tsc_interval:3755514465)
+[  163.341702] bench_page_pool_simple: 
+time_bench_page_pool01_fast_path(): Cannot use page_pool fast-path
+[  163.922466] time_bench: Type:no-softirq-page_pool01 Per elem: 20 
+cycles(tsc) 5.713 ns (step:0) - (measurement period time:0.571357387 sec 
+time_interval:571357387) - (invoke count:100000000 tsc_interval:2056911063)
+[  163.941429] bench_page_pool_simple: 
+time_bench_page_pool02_ptr_ring(): Cannot use page_pool fast-path
+[  165.506796] time_bench: Type:no-softirq-page_pool02 Per elem: 56 
+cycles(tsc) 15.560 ns (step:0) - (measurement period time:1.556080558 
+sec time_interval:1556080558) - (invoke count:100000000 
+tsc_interval:5601960921)
+[  165.525978] bench_page_pool_simple: time_bench_page_pool03_slow(): 
+Cannot use page_pool fast-path
+[  171.811289] time_bench: Type:no-softirq-page_pool03 Per elem: 225 
+cycles(tsc) 62.763 ns (step:0) - (measurement period time:6.276301531 
+sec time_interval:6276301531) - (invoke count:100000000 
+tsc_interval:22594974468)
+[  171.830646] bench_page_pool_simple: pp_tasklet_handler(): 
+in_serving_softirq fast-path
+[  171.838561] bench_page_pool_simple: 
+time_bench_page_pool01_fast_path(): in_serving_softirq fast-path
+[  172.387597] time_bench: Type:tasklet_page_pool01_fast_path Per elem: 
+19 cycles(tsc) 5.399 ns (step:0) - (measurement period time:0.539904228 
+sec time_interval:539904228) - (invoke count:100000000 
+tsc_interval:1943679246)
+[  172.407130] bench_page_pool_simple: 
+time_bench_page_pool02_ptr_ring(): in_serving_softirq fast-path
+[  173.925266] time_bench: Type:tasklet_page_pool02_ptr_ring Per elem: 
+54 cycles(tsc) 15.090 ns (step:0) - (measurement period time:1.509075496 
+sec time_interval:1509075496) - (invoke count:100000000 
+tsc_interval:5432740575)
+[  173.944878] bench_page_pool_simple: time_bench_page_pool03_slow(): 
+in_serving_softirq fast-path
+[  180.567094] time_bench: Type:tasklet_page_pool03_slow Per elem: 238 
+cycles(tsc) 66.134 ns (step:0) - (measurement period time:6.613430605 
+sec time_interval:6613430605) - (invoke count:100000000 
+tsc_interval:23808654870)
+
+
+
+After this patchset:
+[  860.519918] bench_page_pool_simple: Loaded
+[  860.781605] time_bench: Type:for_loop Per elem: 0 cycles(tsc) 0.257 
+ns (step:0) - (measurement period time:0.257573336 sec 
+time_interval:257573336) - (invoke count:1000000000 tsc_interval:927275355)
+[  865.613893] time_bench: Type:atomic_inc Per elem: 17 cycles(tsc) 
+4.814 ns (step:0) - (measurement period time:4.814593429 sec 
+time_interval:4814593429) - (invoke count:1000000000 
+tsc_interval:17332768494)
+[  866.708420] time_bench: Type:lock Per elem: 38 cycles(tsc) 10.763 ns 
+(step:0) - (measurement period time:1.076362960 sec 
+time_interval:1076362960) - (invoke count:100000000 tsc_interval:3874955595)
+[  866.726118] bench_page_pool_simple: 
+time_bench_page_pool01_fast_path(): Cannot use page_pool fast-path
+[  867.423572] time_bench: Type:no-softirq-page_pool01 Per elem: 24 
+cycles(tsc) 6.880 ns (step:0) - (measurement period time:0.688069107 sec 
+time_interval:688069107) - (invoke count:100000000 tsc_interval:2477080260)
+[  867.442517] bench_page_pool_simple: 
+time_bench_page_pool02_ptr_ring(): Cannot use page_pool fast-path
+[  869.436286] time_bench: Type:no-softirq-page_pool02 Per elem: 71 
+cycles(tsc) 19.844 ns (step:0) - (measurement period time:1.984451929 
+sec time_interval:1984451929) - (invoke count:100000000 
+tsc_interval:7144120329)
+[  869.455492] bench_page_pool_simple: time_bench_page_pool03_slow(): 
+Cannot use page_pool fast-path
+[  877.071437] time_bench: Type:no-softirq-page_pool03 Per elem: 273 
+cycles(tsc) 76.069 ns (step:0) - (measurement period time:7.606911291 
+sec time_interval:7606911291) - (invoke count:100000000 
+tsc_interval:27385252251)
+[  877.090762] bench_page_pool_simple: pp_tasklet_handler(): 
+in_serving_softirq fast-path
+[  877.098683] bench_page_pool_simple: 
+time_bench_page_pool01_fast_path(): in_serving_softirq fast-path
+[  877.800696] time_bench: Type:tasklet_page_pool01_fast_path Per elem: 
+24 cycles(tsc) 6.928 ns (step:0) - (measurement period time:0.692852876 
+sec time_interval:692852876) - (invoke count:100000000 
+tsc_interval:2494303293)
+[  877.820224] bench_page_pool_simple: 
+time_bench_page_pool02_ptr_ring(): in_serving_softirq fast-path
+[  880.026911] time_bench: Type:tasklet_page_pool02_ptr_ring Per elem: 
+79 cycles(tsc) 21.976 ns (step:0) - (measurement period time:2.197615122 
+sec time_interval:2197615122) - (invoke count:100000000 
+tsc_interval:7911521190)
+[  880.046528] bench_page_pool_simple: time_bench_page_pool03_slow(): 
+in_serving_softirq fast-path
+[  888.385235] time_bench: Type:tasklet_page_pool03_slow Per elem: 299 
+cycles(tsc) 83.298 ns (step:0) - (measurement period time:8.329893717 
+sec time_interval:8329893717) - (invoke count:100000000 
+tsc_interval:29988024696)
+
+
+
+
+> Before this patchset:
+> root@(none)$ insmod bench_page_pool_simple.ko
+> [  323.367627] bench_page_pool_simple: Loaded
+> [  323.448747] time_bench: Type:for_loop Per elem: 0 cycles(tsc) 0.769 ns (step:0) - (measurement period time:0.076997150 sec time_interval:76997150) - (invoke count:100000000 tsc_interval:7699707)
+> [  324.812884] time_bench: Type:atomic_inc Per elem: 1 cycles(tsc) 13.468 ns (step:0) - (measurement period time:1.346855130 sec time_interval:1346855130) - (invoke count:100000000 tsc_interval:134685507)
+> [  324.980875] time_bench: Type:lock Per elem: 1 cycles(tsc) 15.010 ns (step:0) - (measurement period time:0.150101270 sec time_interval:150101270) - (invoke count:10000000 tsc_interval:15010120)
+> [  325.652195] time_bench: Type:rcu Per elem: 0 cycles(tsc) 6.542 ns (step:0) - (measurement period time:0.654213000 sec time_interval:654213000) - (invoke count:100000000 tsc_interval:65421294)
+> [  325.669215] bench_page_pool_simple: time_bench_page_pool01_fast_path(): Cannot use page_pool fast-path
+> [  325.974848] time_bench: Type:no-softirq-page_pool01 Per elem: 2 cycles(tsc) 29.633 ns (step:0) - (measurement period time:0.296338200 sec time_interval:296338200) - (invoke count:10000000 tsc_interval:29633814)
+> [  325.993517] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): Cannot use page_pool fast-path
+> [  326.576636] time_bench: Type:no-softirq-page_pool02 Per elem: 5 cycles(tsc) 57.391 ns (step:0) - (measurement period time:0.573911820 sec time_interval:573911820) - (invoke count:10000000 tsc_interval:57391174)
+> [  326.595307] bench_page_pool_simple: time_bench_page_pool03_slow(): Cannot use page_pool fast-path
+> [  328.422661] time_bench: Type:no-softirq-page_pool03 Per elem: 18 cycles(tsc) 181.849 ns (step:0) - (measurement period time:1.818495880 sec time_interval:1818495880) - (invoke count:10000000 tsc_interval:181849581)
+> [  328.441681] bench_page_pool_simple: pp_tasklet_handler(): in_serving_softirq fast-path
+> [  328.449584] bench_page_pool_simple: time_bench_page_pool01_fast_path(): in_serving_softirq fast-path
+> [  328.755031] time_bench: Type:tasklet_page_pool01_fast_path Per elem: 2 cycles(tsc) 29.632 ns (step:0) - (measurement period time:0.296327910 sec time_interval:296327910) - (invoke count:10000000 tsc_interval:29632785)
+> [  328.774308] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): in_serving_softirq fast-path
+> [  329.578579] time_bench: Type:tasklet_page_pool02_ptr_ring Per elem: 7 cycles(tsc) 79.523 ns (step:0) - (measurement period time:0.795236560 sec time_interval:795236560) - (invoke count:10000000 tsc_interval:79523650)
+> [  329.597769] bench_page_pool_simple: time_bench_page_pool03_slow(): in_serving_softirq fast-path
+> [  331.507501] time_bench: Type:tasklet_page_pool03_slow Per elem: 19 cycles(tsc) 190.104 ns (step:0) - (measurement period time:1.901047510 sec time_interval:1901047510) - (invoke count:10000000 tsc_interval:190104743)
+> 
+> After this patchset:
+> root@(none)$ insmod bench_page_pool_simple.ko
+> [  138.634758] bench_page_pool_simple: Loaded
+> [  138.715879] time_bench: Type:for_loop Per elem: 0 cycles(tsc) 0.769 ns (step:0) - (measurement period time:0.076972720 sec time_interval:76972720) - (invoke count:100000000 tsc_interval:7697265)
+> [  140.079897] time_bench: Type:atomic_inc Per elem: 1 cycles(tsc) 13.467 ns (step:0) - (measurement period time:1.346735370 sec time_interval:1346735370) - (invoke count:100000000 tsc_interval:134673531)
+> [  140.247841] time_bench: Type:lock Per elem: 1 cycles(tsc) 15.005 ns (step:0) - (measurement period time:0.150055080 sec time_interval:150055080) - (invoke count:10000000 tsc_interval:15005497)
+> [  140.919072] time_bench: Type:rcu Per elem: 0 cycles(tsc) 6.541 ns (step:0) - (measurement period time:0.654125000 sec time_interval:654125000) - (invoke count:100000000 tsc_interval:65412493)
+> [  140.936091] bench_page_pool_simple: time_bench_page_pool01_fast_path(): Cannot use page_pool fast-path
+> [  141.246985] time_bench: Type:no-softirq-page_pool01 Per elem: 3 cycles(tsc) 30.159 ns (step:0) - (measurement period time:0.301598160 sec time_interval:301598160) - (invoke count:10000000 tsc_interval:30159812)
+> [  141.265654] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): Cannot use page_pool fast-path
+> [  141.976265] time_bench: Type:no-softirq-page_pool02 Per elem: 7 cycles(tsc) 70.140 ns (step:0) - (measurement period time:0.701405780 sec time_interval:701405780) - (invoke count:10000000 tsc_interval:70140573)
+> [  141.994933] bench_page_pool_simple: time_bench_page_pool03_slow(): Cannot use page_pool fast-path
+> [  144.018945] time_bench: Type:no-softirq-page_pool03 Per elem: 20 cycles(tsc) 201.514 ns (step:0) - (measurement period time:2.015141210 sec time_interval:2015141210) - (invoke count:10000000 tsc_interval:201514113)
+> [  144.037966] bench_page_pool_simple: pp_tasklet_handler(): in_serving_softirq fast-path
+> [  144.045870] bench_page_pool_simple: time_bench_page_pool01_fast_path(): in_serving_softirq fast-path
+> [  144.205045] time_bench: Type:tasklet_page_pool01_fast_path Per elem: 1 cycles(tsc) 15.005 ns (step:0) - (measurement period time:0.150056510 sec time_interval:150056510) - (invoke count:10000000 tsc_interval:15005645)
+> [  144.224320] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): in_serving_softirq fast-path
+> [  144.916044] time_bench: Type:tasklet_page_pool02_ptr_ring Per elem: 6 cycles(tsc) 68.269 ns (step:0) - (measurement period time:0.682693070 sec time_interval:682693070) - (invoke count:10000000 tsc_interval:68269300)
+> [  144.935234] bench_page_pool_simple: time_bench_page_pool03_slow(): in_serving_softirq fast-path
+> [  146.997684] time_bench: Type:tasklet_page_pool03_slow Per elem: 20 cycles(tsc) 205.376 ns (step:0) - (measurement period time:2.053766310 sec time_interval:2053766310) - (invoke count:10000000 tsc_interval:205376624)
+> 
+> 1. https://lore.kernel.org/lkml/8067f204-1380-4d37-8ffd-007fc6f26738@kernel.org/T/
+> 
+> CC: Alexander Lobakin <aleksander.lobakin@intel.com>
+> CC: Robin Murphy <robin.murphy@arm.com>
+> CC: Alexander Duyck <alexander.duyck@gmail.com>
+> CC: Andrew Morton <akpm@linux-foundation.org>
+> CC: IOMMU <iommu@lists.linux.dev>
+> CC: MM <linux-mm@kvack.org>
+> 
+> Change log:
+> V7:
+>    1. Fix a used-after-free bug reported by KASAN as mentioned by Jakub.
+>    2. Fix the 'netmem' variable not setting up correctly bug as mentioned
+>       by Simon.
+> 
+> V6:
+>    1. Repost based on latest net-next.
+>    2. Rename page_pool_to_pp() to page_pool_get_pp().
+> 
+> V5:
+>    1. Support unlimit inflight pages.
+>    2. Add some optimization to avoid the overhead of fixing bug.
+> 
+> V4:
+>    1. use scanning to do the unmapping
+>    2. spilt dma sync skipping into separate patch
+> 
+> V3:
+>    1. Target net-next tree instead of net tree.
+>    2. Narrow the rcu lock as the discussion in v2.
+>    3. Check the ummapping cnt against the inflight cnt.
+> 
+> V2:
+>    1. Add a item_full stat.
+>    2. Use container_of() for page_pool_to_pp().
+> 
+> Yunsheng Lin (8):
+>    page_pool: introduce page_pool_get_pp() API
+>    page_pool: fix timing for checking and disabling napi_local
+>    page_pool: fix IOMMU crash when driver has already unbound
+>    page_pool: support unlimited number of inflight pages
+>    page_pool: skip dma sync operation for inflight pages
+>    page_pool: use list instead of ptr_ring for ring cache
+>    page_pool: batch refilling pages to reduce atomic operation
+>    page_pool: use list instead of array for alloc cache
+> 
+>   drivers/net/ethernet/freescale/fec_main.c     |   8 +-
+>   .../ethernet/google/gve/gve_buffer_mgmt_dqo.c |   2 +-
+>   drivers/net/ethernet/intel/iavf/iavf_txrx.c   |   6 +-
+>   drivers/net/ethernet/intel/idpf/idpf_txrx.c   |  14 +-
+>   drivers/net/ethernet/intel/libeth/rx.c        |   2 +-
+>   .../net/ethernet/mellanox/mlx5/core/en/xdp.c  |   3 +-
+>   drivers/net/netdevsim/netdev.c                |   6 +-
+>   drivers/net/wireless/mediatek/mt76/mt76.h     |   2 +-
+>   include/linux/mm_types.h                      |   2 +-
+>   include/linux/skbuff.h                        |   1 +
+>   include/net/libeth/rx.h                       |   3 +-
+>   include/net/netmem.h                          |  24 +-
+>   include/net/page_pool/helpers.h               |  11 +
+>   include/net/page_pool/types.h                 |  64 +-
+>   net/core/devmem.c                             |   4 +-
+>   net/core/netmem_priv.h                        |   5 +-
+>   net/core/page_pool.c                          | 664 ++++++++++++++----
+>   net/core/page_pool_priv.h                     |  12 +-
+>   18 files changed, 675 insertions(+), 158 deletions(-)
+> 
