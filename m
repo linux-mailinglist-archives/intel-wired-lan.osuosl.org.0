@@ -1,94 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A14DFA1114E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Jan 2025 20:42:59 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B417A113D4
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Jan 2025 23:08:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 28C9440707;
-	Tue, 14 Jan 2025 19:42:58 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id EFB1D4053C;
+	Tue, 14 Jan 2025 22:08:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vA3DQSDkoU9Z; Tue, 14 Jan 2025 19:42:57 +0000 (UTC)
+ id vdfBsQHvbMhy; Tue, 14 Jan 2025 22:08:21 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 96809406F3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2214F4068A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1736883776;
-	bh=kCwEx6y9YYj5CL1YqGSYephHeIh8qqB2QhQyBqkOgxE=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=mOv8NIovy97VwO0/GQXQ47ncvBM6RESCrSWs8qx48ZA362ycwVPm6mEsDmfNcMqGt
-	 xJEnUsroAZF6lVL8BoWH1UdEl1jza2GxrpBsIWEAWR9TPhbB22vnh6TvWvhTWBD3TU
-	 VXVx7qcvNkpjYvFx9oCpqgkyMxBICqaVg6gYoU6LQfowRUvz2JgpEw6OdBXeLhD9jD
-	 G+A+fEc9vPIatzRA3Q6095WeVjY4oisYnBOSJ7gt6IKiQj1SscBe58SJQwkjtFui5b
-	 caX45UM/R0fu47kaQBXLRJdWCVtuL4Em8m+YbCYcf7clK5M/tyKTwPPgalOtr7rdPl
-	 umzcRsr9e2kzg==
+	s=default; t=1736892501;
+	bh=PRPZt+xPv2lAcDFJ6DNFudHJDdBd+e68zE57pCoNNHE=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=8d6XPf9wm7SvknzBn8yvhVXC4xfotCS0TfCvxlKwSbAVRgEubcxZYi3WMhBqVWBGt
+	 Z5iI7bdNNwFK4h6f1k5ej1eTnPedO5ekjkxUUlhiqMgtIkwoJkoJL84sUqwZO/7Isw
+	 EJEYJ6KwGacnIn34QyGGW3H3Eajl/SU0ll5Z/K2HuOBiONBziOCW9Ey3MA6jSWwRv5
+	 la/bWYYuI11m2PpSIUe4YcjSM+tkYmTEA3ptjYrOOlwDBohkGvKaSKiVGmgtjZkiYx
+	 0NsiZYtXa3eSE0QPbUEBCDcWoN5KCuNGEjKT5pfHjigPS59Agk9XMXhrLddCsD9TVq
+	 w9WgS5zy3UCXQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 96809406F3;
-	Tue, 14 Jan 2025 19:42:56 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2214F4068A;
+	Tue, 14 Jan 2025 22:08:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id D1691B8B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jan 2025 19:42:54 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 9E431B89
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jan 2025 22:08:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id BDBDC4026B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jan 2025 19:42:54 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8BEB8403EE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jan 2025 22:08:18 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Xoq_b401uyRx for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Jan 2025 19:42:53 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 633AB4021A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 633AB4021A
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 633AB4021A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jan 2025 19:42:53 +0000 (UTC)
-X-CSE-ConnectionGUID: GTvWDCAqQOeSkeugRc2sVw==
-X-CSE-MsgGUID: G++J/JutQ5CTRSWh1P015g==
-X-IronPort-AV: E=McAfee;i="6700,10204,11315"; a="36894657"
-X-IronPort-AV: E=Sophos;i="6.12,315,1728975600"; d="scan'208";a="36894657"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
- by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Jan 2025 11:42:35 -0800
-X-CSE-ConnectionGUID: 9mFoutV/TgCdaGjb//z3qQ==
-X-CSE-MsgGUID: sm1NRX0lSsKL+0oZYAZtjA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="105768460"
-Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
- by orviesa008.jf.intel.com with ESMTP; 14 Jan 2025 11:42:33 -0800
-Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1tXmo3-000OxF-1H
- for intel-wired-lan@lists.osuosl.org; Tue, 14 Jan 2025 19:42:31 +0000
-Date: Wed, 15 Jan 2025 03:42:15 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202501150309.EJL69k2r-lkp@intel.com>
-User-Agent: s-nail v14.9.24
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id m_CXqI0oqGjG for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Jan 2025 22:08:17 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 7EC88402ED
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7EC88402ED
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 7EC88402ED
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jan 2025 22:08:17 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 2B8C55C572A;
+ Tue, 14 Jan 2025 22:07:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0D78C4CEDD;
+ Tue, 14 Jan 2025 22:08:14 +0000 (UTC)
+Date: Tue, 14 Jan 2025 14:08:13 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Ahmed Zaki <ahmed.zaki@intel.com>
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ andrew+netdev@lunn.ch, edumazet@google.com, horms@kernel.org,
+ pabeni@redhat.com, davem@davemloft.net, michael.chan@broadcom.com,
+ tariqt@nvidia.com, anthony.l.nguyen@intel.com,
+ przemyslaw.kitszel@intel.com, jdamato@fastly.com, shayd@nvidia.com,
+ akpm@linux-foundation.org, shayagr@amazon.com,
+ kalesh-anakkur.purayil@broadcom.com, pavan.chebbi@broadcom.com,
+ yury.norov@gmail.com, darinzon@amazon.com
+Message-ID: <20250114140813.5a7d527f@kernel.org>
+In-Reply-To: <20250113171042.158123-2-ahmed.zaki@intel.com>
+References: <20250113171042.158123-1-ahmed.zaki@intel.com>
+ <20250113171042.158123-2-ahmed.zaki@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1736883773; x=1768419773;
- h=date:from:to:subject:message-id;
- bh=RqXEMGsSj03IZ4yWwxyZES0yr0txSVMPJJ/H3natEHs=;
- b=e8ruycVksk29PN+M3+t3ZSldr/5hqWsaYRJ3C4HR2IuXB5zd9k1JIJeR
- C3hJgz4FP7waaM/7F0pfMnOzwNItnIAqQXhu2o4i9AHL3YSfV1sqeCk3p
- Q+mco8Op671IXnCNkfZnF9FmrQOXGmhUnSp0I4XdeW+wEelHXq37MRtsb
- +Mbr3M6J1nDWJnwttpzfF9t49ouTE0j2UpmzAAVqo51CJ004HY2+TbXYM
- +Jz075jqTMCgHBTH2lGWhlBu3qTvrfQgvae2MM93/2iBFCNAL6Ah1Wg9r
- BtETHRZLZlu6WLRStD9QFbSsB1R5cbSt1sfDqPNSUUGn5ozTNR30Y8C0B
- Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=e8ruycVk
-Subject: [Intel-wired-lan] [tnguy-net-queue:100GbE] BUILD SUCCESS
- 258f5f905815979f15d5151d2ea4f20d8e057fe1
+ d=kernel.org; s=k20201202; t=1736892495;
+ bh=ItiB0l+fKlNWAxsQbsxn9LxOAZq5zvV0CpkPFjCUabM=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=iQDaUtxHqtf5EApRGlWnSV/qmMjOJS1oWEipTskRDJlkQwp9mHNCok6dLUwZgQ/4f
+ cRMGe3tTYQIw9NlG9bHETKsKH3T/MZs+sB4hrWPP6yQckPIKAuLO061mj9pR2WQCgO
+ Ps1AdygTABSP5fDi9WWCrfIRnpS+XVxKg3hlxKU708ZUpoW9ZsIknXPnxrBPTEEBtu
+ wHxPWAN5b77lC4VPz8fnZVFBaglnLcciXZCl0AWGeyaZt0d/Dp+lKZ52zq1uqHsAtI
+ Yk8Br+TdrG7kM2EKUqTd4+JTbFbjCSMotKSS9R5Lr1fg28EQ3C2gWM51XxDiab9BgY
+ T+jGIPw4ggScw==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=iQDaUtxH
+Subject: Re: [Intel-wired-lan] [PATCH net-next v5 1/6] net: move ARFS rmap
+ management to core
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,126 +104,117 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 100GbE
-branch HEAD: 258f5f905815979f15d5151d2ea4f20d8e057fe1  ice: Add correct PHY lane assignment
+On Mon, 13 Jan 2025 10:10:37 -0700 Ahmed Zaki wrote:
+> -#endif /* CONFIG_RFS_ACCEL */
+> +	return netif_enable_cpu_rmap(adapter->netdev, adapter->num_io_queues);
+> +#else
+>  	return 0;
+> +#endif /* CONFIG_RFS_ACCEL */
 
-elapsed time: 1455m
+Let's try to eliminate some of the ifdef-ery on the driver side.
+netif_enable_cpu_rmap() should simply do nothing if !CONFIG_RFS_ACCEL
 
-configs tested: 107
-configs skipped: 2
+> @@ -2398,6 +2401,9 @@ struct net_device {
+> 	struct lock_class_key	*qdisc_tx_busylock;
+> 	bool			proto_down;
+> 	bool			threaded;
+> +#ifdef CONFIG_RFS_ACCEL
+> +	bool			rx_cpu_rmap_auto;
+> +#endif
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+similar point, don't hide it, it's just one byte and we can just leave
+it as false if !CONFIG_RFS_ACCEL. It can save us a bunch of other ifdefs
 
-tested configs:
-alpha                             allnoconfig    gcc-14.2.0
-alpha                            allyesconfig    gcc-14.2.0
-arc                              allmodconfig    gcc-13.2.0
-arc                               allnoconfig    gcc-13.2.0
-arc                              allyesconfig    gcc-13.2.0
-arc                   randconfig-001-20250114    gcc-13.2.0
-arc                   randconfig-002-20250114    gcc-13.2.0
-arm                              allmodconfig    gcc-14.2.0
-arm                               allnoconfig    clang-17
-arm                              allyesconfig    gcc-14.2.0
-arm                         bcm2835_defconfig    clang-16
-arm                        neponset_defconfig    gcc-14.2.0
-arm                   randconfig-001-20250114    clang-15
-arm                   randconfig-002-20250114    clang-20
-arm                   randconfig-003-20250114    gcc-14.2.0
-arm                   randconfig-004-20250114    gcc-14.2.0
-arm64                            allmodconfig    clang-18
-arm64                             allnoconfig    gcc-14.2.0
-arm64                 randconfig-001-20250114    clang-17
-arm64                 randconfig-002-20250114    clang-19
-arm64                 randconfig-003-20250114    gcc-14.2.0
-arm64                 randconfig-004-20250114    clang-20
-csky                              allnoconfig    gcc-14.2.0
-csky                  randconfig-001-20250114    gcc-14.2.0
-csky                  randconfig-002-20250114    gcc-14.2.0
-hexagon                          allmodconfig    clang-20
-hexagon                           allnoconfig    clang-20
-hexagon                          allyesconfig    clang-18
-hexagon               randconfig-001-20250114    clang-20
-hexagon               randconfig-002-20250114    clang-20
-i386                             allmodconfig    gcc-12
-i386                              allnoconfig    gcc-12
-i386                             allyesconfig    gcc-12
-i386        buildonly-randconfig-001-20250114    gcc-12
-i386        buildonly-randconfig-002-20250114    clang-19
-i386        buildonly-randconfig-003-20250114    clang-19
-i386        buildonly-randconfig-004-20250114    gcc-12
-i386        buildonly-randconfig-005-20250114    clang-19
-i386        buildonly-randconfig-006-20250114    clang-19
-i386                                defconfig    clang-19
-loongarch                        allmodconfig    gcc-14.2.0
-loongarch                         allnoconfig    gcc-14.2.0
-loongarch             randconfig-001-20250114    gcc-14.2.0
-loongarch             randconfig-002-20250114    gcc-14.2.0
-m68k                             allmodconfig    gcc-14.2.0
-m68k                              allnoconfig    gcc-14.2.0
-m68k                             allyesconfig    gcc-14.2.0
-microblaze                        allnoconfig    gcc-14.2.0
-mips                              allnoconfig    gcc-14.2.0
-mips                  cavium_octeon_defconfig    gcc-14.2.0
-nios2                             allnoconfig    gcc-14.2.0
-nios2                 randconfig-001-20250114    gcc-14.2.0
-nios2                 randconfig-002-20250114    gcc-14.2.0
-openrisc                          allnoconfig    gcc-14.2.0
-openrisc                         allyesconfig    gcc-14.2.0
-openrisc                 simple_smp_defconfig    gcc-14.2.0
-parisc                            allnoconfig    gcc-14.2.0
-parisc                           allyesconfig    gcc-14.2.0
-parisc                randconfig-001-20250114    gcc-14.2.0
-parisc                randconfig-002-20250114    gcc-14.2.0
-powerpc                          allmodconfig    gcc-14.2.0
-powerpc                           allnoconfig    gcc-14.2.0
-powerpc                          allyesconfig    clang-16
-powerpc                      ep88xc_defconfig    gcc-14.2.0
-powerpc               randconfig-001-20250114    gcc-14.2.0
-powerpc               randconfig-002-20250114    clang-20
-powerpc               randconfig-003-20250114    gcc-14.2.0
-powerpc64             randconfig-001-20250114    clang-20
-powerpc64             randconfig-002-20250114    clang-15
-powerpc64             randconfig-003-20250114    clang-20
-riscv                            allmodconfig    clang-20
-riscv                             allnoconfig    gcc-14.2.0
-riscv                            allyesconfig    clang-20
-riscv                 randconfig-001-20250114    gcc-14.2.0
-riscv                 randconfig-002-20250114    clang-20
-s390                             allmodconfig    clang-19
-s390                              allnoconfig    clang-20
-s390                             allyesconfig    gcc-14.2.0
-s390                  randconfig-001-20250114    clang-18
-s390                  randconfig-002-20250114    gcc-14.2.0
-sh                               allmodconfig    gcc-14.2.0
-sh                                allnoconfig    gcc-14.2.0
-sh                               allyesconfig    gcc-14.2.0
-sh                    randconfig-001-20250114    gcc-14.2.0
-sh                    randconfig-002-20250114    gcc-14.2.0
-sparc                            allmodconfig    gcc-14.2.0
-sparc                             allnoconfig    gcc-14.2.0
-sparc                 randconfig-002-20250114    gcc-14.2.0
-sparc64               randconfig-001-20250114    gcc-14.2.0
-sparc64               randconfig-002-20250114    gcc-14.2.0
-um                               allmodconfig    clang-20
-um                                allnoconfig    clang-18
-um                               allyesconfig    gcc-12
-um                    randconfig-001-20250114    clang-17
-um                    randconfig-002-20250114    gcc-11
-x86_64                            allnoconfig    clang-19
-x86_64                           allyesconfig    clang-19
-x86_64      buildonly-randconfig-001-20250114    clang-19
-x86_64      buildonly-randconfig-002-20250114    clang-19
-x86_64      buildonly-randconfig-003-20250114    clang-19
-x86_64      buildonly-randconfig-004-20250114    clang-19
-x86_64      buildonly-randconfig-005-20250114    clang-19
-x86_64      buildonly-randconfig-006-20250114    clang-19
-x86_64                              defconfig    gcc-11
-xtensa                            allnoconfig    gcc-14.2.0
-xtensa                randconfig-001-20250114    gcc-14.2.0
-xtensa                randconfig-002-20250114    gcc-14.2.0
+> +#ifdef CONFIG_RFS_ACCEL
+> +static void netif_disable_cpu_rmap(struct net_device *dev)
+> +{
+> +	free_irq_cpu_rmap(dev->rx_cpu_rmap);
+> +	dev->rx_cpu_rmap = NULL;
+> +	dev->rx_cpu_rmap_auto = false;
+> +}
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Better do do:
+
+static void netif_disable_cpu_rmap(struct net_device *dev)
+{
+#ifdef CONFIG_RFS_ACCEL
+	free_irq_cpu_rmap(dev->rx_cpu_rmap);
+	dev->rx_cpu_rmap = NULL;
+	dev->rx_cpu_rmap_auto = false;
+#endif
+}
+
+IOW if not relevant the function should do nothing
+
+> +int netif_enable_cpu_rmap(struct net_device *dev, unsigned int num_irqs)
+> +{
+> +	dev->rx_cpu_rmap = alloc_irq_cpu_rmap(num_irqs);
+> +	if (!dev->rx_cpu_rmap)
+> +		return -ENOMEM;
+> +
+> +	dev->rx_cpu_rmap_auto = true;
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL(netif_enable_cpu_rmap);
+
+here you can depend on dead code elimination:
+
+int netif_enable_cpu_rmap(struct net_device *dev, unsigned int num_irqs)
+{
+	if (!IS_ENABLED(CONFIG_RFS_ACCEL))
+		return 0;
+
+	...
+}
+
+> +#endif
+> +
+> +void netif_napi_set_irq(struct napi_struct *napi, int irq)
+> +{
+> +#ifdef CONFIG_RFS_ACCEL
+> +	int rc;
+> +#endif
+> +	napi->irq = irq;
+> +
+> +#ifdef CONFIG_RFS_ACCEL
+> +	if (napi->dev->rx_cpu_rmap && napi->dev->rx_cpu_rmap_auto) {
+> +		rc = irq_cpu_rmap_add(napi->dev->rx_cpu_rmap, irq);
+> +		if (rc) {
+> +			netdev_warn(napi->dev, "Unable to update ARFS map (%d)\n",
+> +				    rc);
+> +			netif_disable_cpu_rmap(napi->dev);
+> +		}
+> +	}
+> +#endif
+
+Declare rc inside the if to avoid the extra ifdef on variable decl
+
+> +}
+> +EXPORT_SYMBOL(netif_napi_set_irq);
+> +
+>  static void napi_restore_config(struct napi_struct *n)
+>  {
+>  	n->defer_hard_irqs = n->config->defer_hard_irqs;
+> @@ -11421,6 +11461,10 @@ void free_netdev(struct net_device *dev)
+>  	/* Flush device addresses */
+>  	dev_addr_flush(dev);
+>  
+> +#ifdef CONFIG_RFS_ACCEL
+> +	if (dev->rx_cpu_rmap && dev->rx_cpu_rmap_auto)
+
+don't check dev->rx_cpu_rmap, dev->rx_cpu_rmap_auto is enough
+
+> +		netif_disable_cpu_rmap(dev);
+> +#endif
+>  	list_for_each_entry_safe(p, n, &dev->napi_list, dev_list)
+>  		netif_napi_del(p);
+>  
+
+IRQs are often allocated in ndo_open and freed in ndo_stop, so
+you need to catch netif_napi_del or napi_disable and remove
+the IRQ from the map.
+
+Similarly netif_napi_set_irq() may get called with -1 to clear
+the IRQ number, which you currently treat at a real IRQ id, AFAICT.
+-- 
+pw-bot: cr
