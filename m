@@ -1,119 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 57A7AA1505E
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Jan 2025 14:20:06 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id EF8F4A152AB
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Jan 2025 16:19:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A029883696;
-	Fri, 17 Jan 2025 13:20:04 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 722D2836F0;
+	Fri, 17 Jan 2025 15:19:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vqZhtTMH4A-Y; Fri, 17 Jan 2025 13:20:03 +0000 (UTC)
+ id fuKmsnlhVSTK; Fri, 17 Jan 2025 15:19:21 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7A61580D11
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B8C4F835F2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1737120003;
-	bh=cMt7H4uJupL0n7CmNDQGQgqsD0sjSTEnlM24sJ8421I=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=jwiKrAe2+NgNQivCZaQlbje1NDKipNgLQCXUJ5akbjnEWN65xliRxMz495y6MJuic
-	 sW39VKERpcc4sclYiXJbssQDwrNbuRpk6Ug7vKtEcnCLZ4d/emLafjw0pA5otYxlE9
-	 1FYwBikGL0dzLNKPAtGZbPSMY9sWRUNv2mYBJEm0ypf/96b2FP6QsBaRYO/MZhXq+N
-	 1bmieUWXLq8z/PG6bY++KMWHC0dHThec8NSewJ51aiRSMeHLXEVog7/SxyEeFj6oL7
-	 d74a1gHT6OXchpp+aRu5phelFRpkgVHNIdOLDl1XzxAwoA7BZ/UAfcv16jAP7TNVGU
-	 Ojyn491/lR2tw==
+	s=default; t=1737127161;
+	bh=7m9Vx/nniJ0jQJU53APOon63kWpuoeq1x+vzXEd+qvc=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=3ZYtBXm4NXoErs9tKgBhBSjGJJijPzMh4fwCKGfM3n/B43+6L0QPgOJswAmfRskuY
+	 hbSzmeBl/Q0HgbQWF/ObB+DzkYx+cCx/0MLHhBEPypMSCexIZrSrB645vJUe9RG+9A
+	 ROsYJcln3FZo9QS7am4sjybegPeYteeo8zYrdNvJMNJpRYo+SCG/gJzNH21ZwtzgwM
+	 KyPMDatrZQgmiDzL4V72fKFZ7uVaNxJadIxv4vOcR87qkEO7yXlJmF3EkggbqSEdwf
+	 z87oHi9EoR6yFvDBEnNgHXvNLNlCmvKPX3rSrWrVCqz/BoMaNveBB6StIzGwNLBeFx
+	 Msdi0NQbMHFIg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7A61580D11;
-	Fri, 17 Jan 2025 13:20:03 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B8C4F835F2;
+	Fri, 17 Jan 2025 15:19:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id EDDBCB89
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2025 13:20:01 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 7F93531
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2025 15:19:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DA4FD8366E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2025 13:20:01 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5A452835F2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2025 15:19:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kUKwHNjO7ZWI for <intel-wired-lan@lists.osuosl.org>;
- Fri, 17 Jan 2025 13:20:00 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=wander@redhat.com;
+ id p1HTo2PeWv47 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 17 Jan 2025 15:19:18 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
+ helo=mgamail.intel.com; envelope-from=maciej.fijalkowski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8D82680D11
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8D82680D11
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8D82680D11
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2025 13:20:00 +0000 (UTC)
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-147-4YfPpel6PlyvLf1pr5dEYQ-1; Fri,
- 17 Jan 2025 08:19:56 -0500
-X-MC-Unique: 4YfPpel6PlyvLf1pr5dEYQ-1
-X-Mimecast-MFC-AGG-ID: 4YfPpel6PlyvLf1pr5dEYQ
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 13E32195606B; Fri, 17 Jan 2025 13:19:53 +0000 (UTC)
-Received: from wcosta-thinkpadt14gen4.rmtbr.csb (unknown [10.22.64.120])
- by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 9D8F719560BF; Fri, 17 Jan 2025 13:19:46 +0000 (UTC)
-Date: Fri, 17 Jan 2025 10:19:44 -0300
-From: Wander Lairson Costa <wander@redhat.com>
-To: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>, 
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Clark Williams <clrkwllms@kernel.org>, Steven Rostedt <rostedt@goodmis.org>, 
- Jeff Garzik <jgarzik@redhat.com>, Auke Kok <auke-jan.h.kok@intel.com>, 
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>, 
- open list <linux-kernel@vger.kernel.org>, 
- "open list:Real-time Linux (PREEMPT_RT):Keyword:PREEMPT_RT"
- <linux-rt-devel@lists.linux.dev>
-Message-ID: <givxfwonfer5kgowuxuz4bezxkhri4ottnmlmh3duhan3viznb@ic5sscp2twit>
-References: <20241204114229.21452-1-wander@redhat.com>
- <20250107135106.WWrtBMXY@linutronix.de>
- <taea3z7nof4szjir2azxsjtbouymqxyy4draa3hz35zbacqeeq@t3uidpha64k7>
- <20250108102532.VWnKWvoo@linutronix.de>
- <CAAq0SUnoS45Fctkzj4t4OxT=9qm9Bg8zu79=S3DUL_jcoLbC-A@mail.gmail.com>
- <20250109174512.At7ZERjU@linutronix.de>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 7416D835C9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7416D835C9
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 7416D835C9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2025 15:19:18 +0000 (UTC)
+X-CSE-ConnectionGUID: Hez4uwCeREirB7G/6/9SUQ==
+X-CSE-MsgGUID: kdJBrF9MQ12JtsmPF8PjBw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11318"; a="37798401"
+X-IronPort-AV: E=Sophos;i="6.13,212,1732608000"; d="scan'208";a="37798401"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jan 2025 07:19:18 -0800
+X-CSE-ConnectionGUID: ERw9NffvSE67rXuNSh5Vmg==
+X-CSE-MsgGUID: ooe5vkRqSeuCea4oO6WSaA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.13,212,1732608000"; d="scan'208";a="136664367"
+Received: from boxer.igk.intel.com ([10.102.20.173])
+ by orviesa002.jf.intel.com with ESMTP; 17 Jan 2025 07:19:15 -0800
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 17 Jan 2025 16:18:57 +0100
+Message-Id: <20250117151900.525509-1-maciej.fijalkowski@intel.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250109174512.At7ZERjU@linutronix.de>
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1737119999;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=cMt7H4uJupL0n7CmNDQGQgqsD0sjSTEnlM24sJ8421I=;
- b=KNNgW+MLqTMpvBOAajWxMhC9433O9tW+ws6RC88ScHVpaM3NDRzlJxiJjlqv6pbcbVvAI8
- ux9IDHDJ974Xufnv5ZAkT16IZav+8mhoUsHPfz7Ji9ktZ1L65mrSE0IFHlsp0/a9MjxZas
- jLANITCyL7PvQY+R1Xw+RJYB8ZfHYUk=
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1737127159; x=1768663159;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=JA7xwcXMPi1Rs6xK5uK4v4vQUIVpPbUhe3Vxy6GhPok=;
+ b=cvaQMN5vAsiZ1Aq3NbOmcd/bXliZ++vTUJRJL4wCSuQN5REKYbxBuHej
+ IytjtufmK0rVOn1ze3wWqAda/WcE8dHDJ4MSolVC4ZIrJeot3QFpayUkV
+ nvpXwLzTFk1Srg+w4lhpFRZ66Wx6Kkh0qYndbpe78zG4qEIs7bhz3dKVJ
+ buMSvEbdT5RngOnPeqgF57HqydMlvqsJPbLF4oqdvKiuwQmVETzNePR/6
+ LeT9wZ6qwqce+GuyjrO/ta4PD2j0o0Xxr49xXU0WkiPQiSCgEAyTnJNiB
+ MZ5t1wZwD9CP2+lEROmKPJeChpEFI4dITV8VSK+6T3qOSqB1DwYIXRj9Q
+ A==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=redhat.com
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=KNNgW+ML
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net 0/4] igb: fix igb_msix_other()
- handling for PREEMPT_RT
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=cvaQMN5v
+Subject: [Intel-wired-lan] [PATCH v2 intel-net 0/3] ice: fix Rx data path
+ for heavy 9k MTU traffic
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -126,139 +102,88 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Maciej Fijalkowski <maciej.fijalkowski@intel.com>, netdev@vger.kernel.org,
+ xudu@redhat.com, anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ jacob.e.keller@intel.com, jmaxwell@redhat.com, magnus.karlsson@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Jan 09, 2025 at 06:45:12PM +0100, Sebastian Andrzej Siewior wrote:
-> On 2025-01-09 13:46:47 [-0300], Wander Lairson Costa wrote:
-> > > If the issue is indeed the use of threaded interrupts then the fix
-> > > should not be limited to be PREEMPT_RT only.
-> > >
-> > Although I was not aware of this scenario, the patch should work for it as well,
-> > as I am forcing it to run in interrupt context. I will test it to confirm.
-
-I tested with the stock kernel with threadirqs and the problem does show up.
-Applying the patches the issue is gone.
-
-> 
-> If I remember correctly there were "ifdef preempt_rt" things in it.
-
-That exists only to handle the case in which part in which the ISR needs to
-partially run in thread context (because the piece of code calling kmalloc),
-so I need an sleeping lock for that. For non-PREEMPT_RT, we don't have this
-constrain.
-
-> 
-> > > > > - What causes the failure? I see you reworked into two parts to behave
-> > > > >   similar to what happens without threaded interrupts. There is still no
-> > > > >   explanation for it. Is there a timing limit or was there another
-> > > > >   register operation which removed the mailbox message?
-> > > > >
-> > > >
-> > > > I explained the root cause of the issue in the last commit. Maybe I should
-> > > > have added the explanation to the cover letter as well.  Anyway, here is a
-> > > > partial verbatim copy of it:
-> > > >
-> > > > "During testing of SR-IOV, Red Hat QE encountered an issue where the
-> > > > ip link up command intermittently fails for the igbvf interfaces when
-> > > > using the PREEMPT_RT variant. Investigation revealed that
-> > > > e1000_write_posted_mbx returns an error due to the lack of an ACK
-> > > > from e1000_poll_for_ack.
-> > >
-> > > That ACK would have come if it would poll longer?
-
-No, the poll happens while preemption is disabled.
-
-> > >
-> > No, the service wouldn't be serviced while polling.
-
-s/service/interrupt/. Since we can't sleep at this context, there is
-no way to wait for an event.
-
-> 
-> Hmm. 
+v1->v2:
+* pass ntc to ice_put_rx_mbuf() (pointed out by Petr Oros) in patch 1
+* add review tags from Przemek Kitszel (thanks!)
+* make sure patches compile and work ;)
 
 
-> 
-> > > > The underlying issue arises from the fact that IRQs are threaded by
-> > > > default under PREEMPT_RT. While the exact hardware details are not
-> > > > available, it appears that the IRQ handled by igb_msix_other must
-> > > > be processed before e1000_poll_for_ack times out. However,
-> > > > e1000_write_posted_mbx is called with preemption disabled, leading
-> > > > to a scenario where the IRQ is serviced only after the failure of
-> > > > e1000_write_posted_mbx."
-> > >
-> > > Where is this disabled preemption coming from? This should be one of the
-> > > ops.write_posted() calls, right? I've been looking around and don't see
-> > > anything obvious.
-> > 
-> > I don't remember if I found the answer by looking at the code or by
-> > looking at the ftrace flags.
-> > I am currently on sick leave with covid. I can check it when I come back.
-> 
-> Don't worry, get better first. I'm kind of off myself. I'm not sure if I
-> have the hardware needed to setup so I can look at it…
-> 
+Hello in 2025,
 
-The reason of why you didn't find is because the interrupt in the igb
-driver is triggered inside the igbvf code. igbvf_reset() calls
-spin_lock_bh() [1], although in the cases I found it was already called
-with preemption disabled from process_one_work() (workqueue) and netlink_sendmsg().
+this patchset fixes a pretty nasty issue that was reported by RedHat
+folks which occured after ~30 minutes (this value varied, just trying
+here to state that it was not observed immediately but rather after a
+considerable longer amount of time) when ice driver was tortured with
+jumbo frames via mix of iperf traffic executed simultaneously with
+wrk/nginx on client/server sides (HTTP and TCP workloads basically).
 
-Here is an ftrace log for the failure case:
+The reported splats were spanning across all the bad things that can
+happen to the state of page - refcount underflow, use-after-free, etc.
+One of these looked as follows:
 
-kworker/-86      0...1    85.381866: function:                   igbvf_reset
-kworker/-86      0...2    85.381866: function:                      e1000_reset_hw_vf
-kworker/-86      0...2    85.381867: function:                         e1000_check_for_rst_vf
-kworker/-86      0...2    85.381868: function:                         e1000_write_posted_mbx
-kworker/-86      0...2    85.381868: function:                            e1000_write_mbx_vf
-kworker/-86      0...2    85.381870: function:                            e1000_check_for_ack_vf // repeats for 2000 lines
-...
-kworker/-86      0.N.2    86.393782: function:                         e1000_read_posted_mbx
-kworker/-86      0.N.2    86.398606: function:                      e1000_init_hw_vf
-kworker/-86      0.N.2    86.398606: function:                         e1000_rar_set_vf
-kworker/-86      0.N.2    86.398606: function:                            e1000_write_posted_mbx
-irq/65-e-1287    0d..1    86.398609: function:             igb_msix_other
-irq/65-e-1287    0d..1    86.398609: function:                igb_rd32
-irq/65-e-1287    0d..2    86.398610: function:                igb_check_for_rst
-irq/65-e-1287    0d..2    86.398610: function:                igb_check_for_rst_pf
-irq/65-e-1287    0d..2    86.398610: function:                   igb_rd32
-irq/65-e-1287    0d..2    86.398611: function:                igb_check_for_msg
-irq/65-e-1287    0d..2    86.398611: function:                igb_check_for_msg_pf
-irq/65-e-1287    0d..2    86.398611: function:                   igb_rd32
-irq/65-e-1287    0d..2    86.398612: function:                igb_rcv_msg_from_vf
-irq/65-e-1287    0d..2    86.398612: function:                   igb_read_mbx
-irq/65-e-1287    0d..2    86.398612: function:                   igb_read_mbx_pf
-irq/65-e-1287    0d..2    86.398612: function:                      igb_obtain_mbx_lock_pf
-irq/65-e-1287    0d..2    86.398612: function:                         igb_rd32
+[ 2084.019891] BUG: Bad page state in process swapper/34  pfn:97fcd0
+[ 2084.025990] page:00000000a60ee772 refcount:-1 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x97fcd0
+[ 2084.035462] flags: 0x17ffffc0000000(node=0|zone=2|lastcpupid=0x1fffff)
+[ 2084.041990] raw: 0017ffffc0000000 dead000000000100 dead000000000122 0000000000000000
+[ 2084.049730] raw: 0000000000000000 0000000000000000 ffffffffffffffff 0000000000000000
+[ 2084.057468] page dumped because: nonzero _refcount
+[ 2084.062260] Modules linked in: bonding tls sunrpc intel_rapl_msr intel_rapl_common intel_uncore_frequency intel_uncore_frequency_common i10nm_edac nfit libnvdimm x86_pkg_temp_thermal intel_powerclamp coretemp kvm_intel kvm mgag200 irqd
+[ 2084.137829] CPU: 34 PID: 0 Comm: swapper/34 Kdump: loaded Not tainted 5.14.0-427.37.1.el9_4.x86_64 #1
+[ 2084.147039] Hardware name: Dell Inc. PowerEdge R750/0216NK, BIOS 1.13.2 12/19/2023
+[ 2084.154604] Call Trace:
+[ 2084.157058]  <IRQ>
+[ 2084.159080]  dump_stack_lvl+0x34/0x48
+[ 2084.162752]  bad_page.cold+0x63/0x94
+[ 2084.166333]  check_new_pages+0xb3/0xe0
+[ 2084.170083]  rmqueue_bulk+0x2d2/0x9e0
+[ 2084.173749]  ? ktime_get+0x35/0xa0
+[ 2084.177159]  rmqueue_pcplist+0x13b/0x210
+[ 2084.181081]  rmqueue+0x7d3/0xd40
+[ 2084.184316]  ? xas_load+0x9/0xa0
+[ 2084.187547]  ? xas_find+0x183/0x1d0
+[ 2084.191041]  ? xa_find_after+0xd0/0x130
+[ 2084.194879]  ? intel_iommu_iotlb_sync_map+0x89/0xe0
+[ 2084.199759]  get_page_from_freelist+0x11f/0x530
+[ 2084.204291]  __alloc_pages+0xf2/0x250
+[ 2084.207958]  ice_alloc_rx_bufs+0xcc/0x1c0 [ice]
+[ 2084.212543]  ice_clean_rx_irq+0x631/0xa20 [ice]
+[ 2084.217111]  ice_napi_poll+0xdf/0x2a0 [ice]
+[ 2084.221330]  __napi_poll+0x27/0x170
+[ 2084.224824]  net_rx_action+0x233/0x2f0
+[ 2084.228575]  __do_softirq+0xc7/0x2ac
+[ 2084.232155]  __irq_exit_rcu+0xa1/0xc0
+[ 2084.235821]  common_interrupt+0x80/0xa0
+[ 2084.239662]  </IRQ>
+[ 2084.241768]  <TASK>
 
-Notice the interrupt handler only executes after e1000_write_posted()
-returns. And here it is for the sucessful case:
+The fix is mostly about reverting what was done in commit 1dc1a7e7f410
+("ice: Centrallize Rx buffer recycling") followed by proper timing on
+page_count() storage and then removing the ice_rx_buf::act related logic
+(which was mostly introduced for purposes from cited commit).
 
-      ip-5603    0...1  1884.710747: function:             igbvf_reset
-      ip-5603    0...2  1884.710754: function:                e1000_reset_hw_vf
-      ip-5603    0...2  1884.710755: function:                   e1000_check_for_rst_vf
-      ip-5603    0...2  1884.710756: function:                   e1000_write_posted_mbx
-      ip-5603    0...2  1884.710756: function:                      e1000_write_mbx_vf
-      ip-5603    0...2  1884.710758: function:                      e1000_check_for_ack_vf
-      ip-5603    0d.h2  1884.710760: function:             igb_msix_other
-      ip-5603    0d.h2  1884.710760: function:                igb_rd32
-      ip-5603    0d.h3  1884.710761: function:                igb_check_for_rst
-      ip-5603    0d.h3  1884.710761: function:                igb_check_for_rst_pf
-      ip-5603    0d.h3  1884.710761: function:                   igb_rd32
-      ip-5603    0d.h3  1884.710762: function:                igb_check_for_msg
-      ip-5603    0d.h3  1884.710762: function:                igb_check_for_msg_pf
-      ip-5603    0d.h3  1884.710762: function:                   igb_rd32
-      ip-5603    0d.h3  1884.710763: function:                igb_rcv_msg_from_vf
-      ip-5603    0d.h3  1884.710763: function:                   igb_read_mbx
-      ip-5603    0d.h3  1884.710763: function:                   igb_read_mbx_pf
-      ip-5603    0d.h3  1884.710763: function:                      igb_obtain_mbx_lock_pf
-      ip-5603    0d.h3  1884.710763: function:                         igb_rd32
+Special thanks to Xu Du for providing reproducer and Jacob Keller for
+initial extensive analysis.
 
-The ISR executes immediately fater e1000_write_mbx_vf().
+Thanks,
+Maciej
 
-[1] https://elixir.bootlin.com/linux/v6.12.6/source/drivers/net/ethernet/intel/igbvf/netdev.c#L1522
 
-> Sebastian
-> 
+Maciej Fijalkowski (3):
+  ice: put Rx buffers after being done with current frame
+  ice: gather page_count()'s of each frag right before XDP prog call
+  ice: stop storing XDP verdict within ice_rx_buf
+
+ drivers/net/ethernet/intel/ice/ice_txrx.c     | 128 +++++++++++-------
+ drivers/net/ethernet/intel/ice/ice_txrx.h     |   1 -
+ drivers/net/ethernet/intel/ice/ice_txrx_lib.h |  43 ------
+ 3 files changed, 82 insertions(+), 90 deletions(-)
+
+-- 
+2.43.0
 
