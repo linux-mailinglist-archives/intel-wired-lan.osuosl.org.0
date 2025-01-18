@@ -1,106 +1,108 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B18B9A15A4D
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 18 Jan 2025 01:34:22 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 26484A15BD8
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 18 Jan 2025 09:04:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 61CE04244F;
-	Sat, 18 Jan 2025 00:34:21 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 817294293D;
+	Sat, 18 Jan 2025 08:04:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Y6Wg1akjKCwQ; Sat, 18 Jan 2025 00:34:20 +0000 (UTC)
+ id rKazt45L1CKE; Sat, 18 Jan 2025 08:04:18 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6F7DE42479
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2014E42932
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1737160460;
-	bh=n7RB/ilX3k4fNS4IsYuz5X1PED/kLJxOuUtVaZ7ES2M=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1737187458;
+	bh=4FOLWoiBdOZIbz+rGO7a7GwSxpk27LE1qCoksXK33CE=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=kLXaBAVaGflr4pGp77M1EmhXtJ4AHSRzmjJgD66d/qPK13qeF0GH7cty6r8TjkWh7
-	 WgkqDPihMNNniBjRehVW25cegIOM6DAHsLeeTLqRQll6l7Yphhl4823vzwZbjOgkrr
-	 dJEUpxw/9Qr1V6szJUOzBD+nsyBQrs+LcSN7b29p8WfULqgCTStzTgsPeNvhhYOJQy
-	 5TgccxTKPjXTIgw0ZYqa5rFFDCgrh8Bjlb3mnljoIInc0LngCDrVIrYoc4Pfctwpkw
-	 k0nd6QYTCJt9awRSHYaiTEtlHvmhczMrrpNNCOhyYscAJ9FRheEej6ClXfseOs67lV
-	 dsnh+9YC4kPJw==
+	b=hYdoPI2/pr+fNjCXeAjTGNCp4ZShhzNH0Yn6men/7Pw/FL+8mwZsYYwHsyhRcM7yo
+	 Of1BvQvUqz7yZGCj8xukkDFswb/T5abxYNQ7wftXkIR5ZHiD8oa7rZvfqg/6dgZmn4
+	 342ay5KgSc4IKnD+dNqkkg7ixORbEazEcRmALRN9tSWYOfOhm3mX819mRNKygjdHDy
+	 faV1HcFonUreJkb3b3lNrmH5g1OB+i3PAOhhvQfGPj5QoD/Abq1fGzvAl7j5ay00Pl
+	 hEzIkmNWYhKuZBX+8EIrw4sRgNNKgJZ+oreObZMjxoWCfU+i/wn2iHGRtq0Z8bYFBl
+	 +rWU3QrBU57xQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6F7DE42479;
-	Sat, 18 Jan 2025 00:34:20 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2014E42932;
+	Sat, 18 Jan 2025 08:04:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 2C37869
- for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Jan 2025 00:34:18 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 26A37B89
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Jan 2025 08:04:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0BBD0403CA
- for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Jan 2025 00:34:18 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 059DF403FE
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Jan 2025 08:04:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ifb4n2xOAF9q for <intel-wired-lan@lists.osuosl.org>;
- Sat, 18 Jan 2025 00:34:17 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
- helo=mgamail.intel.com; envelope-from=ahmed.zaki@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org E3B444028F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E3B444028F
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
- by smtp2.osuosl.org (Postfix) with ESMTPS id E3B444028F
- for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Jan 2025 00:34:16 +0000 (UTC)
-X-CSE-ConnectionGUID: nn+jPFHSQbOAvX8EIGnQDA==
-X-CSE-MsgGUID: EF/2UVpyTE+IeDP0dJGvhA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11318"; a="37762809"
-X-IronPort-AV: E=Sophos;i="6.13,213,1732608000"; d="scan'208";a="37762809"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
- by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Jan 2025 16:34:16 -0800
-X-CSE-ConnectionGUID: ySYFrtqLTQurc3NmjcNYlQ==
-X-CSE-MsgGUID: gYEjkLBnQumYPKizlqIwNQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="106411108"
-Received: from rchatre-mobl4.amr.corp.intel.com (HELO azaki-desk1.intel.com)
- ([10.125.109.139])
- by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Jan 2025 16:34:11 -0800
-From: Ahmed Zaki <ahmed.zaki@intel.com>
-To: netdev@vger.kernel.org
-Cc: intel-wired-lan@lists.osuosl.org, andrew+netdev@lunn.ch,
- edumazet@google.com, kuba@kernel.org, horms@kernel.org, pabeni@redhat.com,
- davem@davemloft.net, michael.chan@broadcom.com, tariqt@nvidia.com,
- anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- jdamato@fastly.com, shayd@nvidia.com, akpm@linux-foundation.org,
- shayagr@amazon.com, kalesh-anakkur.purayil@broadcom.com,
- Ahmed Zaki <ahmed.zaki@intel.com>
-Date: Fri, 17 Jan 2025 17:33:35 -0700
-Message-ID: <20250118003335.155379-6-ahmed.zaki@intel.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250118003335.155379-1-ahmed.zaki@intel.com>
-References: <20250118003335.155379-1-ahmed.zaki@intel.com>
+ id X9zN9VdXsEut for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 18 Jan 2025 08:04:14 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=147.75.193.91;
+ helo=nyc.source.kernel.org; envelope-from=hawk@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 9D3084041A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9D3084041A
+Received: from nyc.source.kernel.org (nyc.source.kernel.org [147.75.193.91])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9D3084041A
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Jan 2025 08:04:14 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by nyc.source.kernel.org (Postfix) with ESMTP id E6CCBA4043E;
+ Sat, 18 Jan 2025 08:02:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4B24DC4CED1;
+ Sat, 18 Jan 2025 08:04:07 +0000 (UTC)
+Message-ID: <e0096465-a941-4a1e-9cad-8f5906a31554@kernel.org>
+Date: Sat, 18 Jan 2025 09:04:05 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+To: Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
+ kuba@kernel.org, pabeni@redhat.com
+Cc: zhangkun09@huawei.com, liuyonglong@huawei.com, fanghaiqing@huawei.com,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Alexander Duyck <alexander.duyck@gmail.com>,
+ Andrew Morton <akpm@linux-foundation.org>, IOMMU <iommu@lists.linux.dev>,
+ MM <linux-mm@kvack.org>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ bpf@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20250110130703.3814407-1-linyunsheng@huawei.com>
+ <3c8e4f86-87e2-470d-84d8-86c70b3e2fcc@kernel.org>
+ <c02e856e-6ec5-49d0-8527-2647695a0174@huawei.com>
+ <3a853e1b-b5bf-4709-b8f6-e466e3e7375e@kernel.org>
+ <1bef4a35-efaa-4083-8ed5-8818fe285db5@huawei.com>
+ <f558df7a-d983-4fc5-8358-faf251994d23@kernel.org>
+ <304b542d-514d-4269-ae11-b2e214659483@huawei.com>
+Content-Language: en-US
+From: Jesper Dangaard Brouer <hawk@kernel.org>
+In-Reply-To: <304b542d-514d-4269-ae11-b2e214659483@huawei.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1737160457; x=1768696457;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=dYpk1spwEtlOomeBT9dQvdbxt/f+PnNZTwRIWbezKxM=;
- b=R/NDgtBLdZHEcUmcwZ18UIjzh0Dm3GQFq9g55VczZwMfLo4xLRwmjR8Q
- 0M0OjwdqJ37cKHGL+YDmHN2RDy6I8PCmbQf42wTPgtIolS+v/l8XgW6N+
- tHBE5fs5zgpR0TOXiN9SWFlSwqURcE2akMPVSG2AVWnGEWEPSVoB6XCtp
- A/h+rThb/JHYkC0q4ljD7rpKNrFiSwHOLcRZmGhGw+zPymdhg+eXbgIE1
- F1lyAOvC57lD9SwZL3lnYksV/tGvkuNRV/i0TbR/CG9K1fNjr+WSbdvm6
- 0or+8Weze8s89HP4Z2oir9R247LuGynE9ixbVgjcXyIYe7AhaG9F6smNH
- A==;
+ d=kernel.org; s=k20201202; t=1737187452;
+ bh=X8xl+FikvEsefyJsKMCnT/zbfddcbexbuTDnIId5TZQ=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=Jwwr4yFvVLsCkvAYidGgHqdk1SqnXor04i9X94Db2qJ0QhORGpQHZOZkOPmZ0GQtJ
+ 97no8YhrF+z3OTjQ1lxCNFIVYAjcGr8mU7o6rOF0vKBZ4er/XmYA+kcxB1nNqYB5xi
+ I4C2VEEVFterxQ3SKCBXurdH9MFkI3wJEd4w52mAp4+2zxpjHpAqcxGouwiJC8tXqr
+ cAmuba8ya9Vapi35c8+kl1peNietydCSD5VpLFVteL1O30Vd+ZhbSsCzExQc5RQRQH
+ zyCh1DkSlCRZ1x9ehDtdukIbZ4w4vxBXMukSP8LJ8AQkZHSGVcSYl5qh1n/eyyJkBJ
+ PJtjuFWuoRbIw==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=R/NDgtBL
-Subject: [Intel-wired-lan] [PATCH net-next v6 5/5] idpf: use napi's irq
- affinity
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=Jwwr4yFv
+Subject: Re: [Intel-wired-lan] [PATCH net-next v7 0/8] fix two bugs related
+ to page_pool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -116,133 +118,62 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Delete the driver CPU affinity info and use the core's napi config
-instead.
 
-Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
----
- drivers/net/ethernet/intel/idpf/idpf_lib.c  |  1 +
- drivers/net/ethernet/intel/idpf/idpf_txrx.c | 22 +++++++--------------
- drivers/net/ethernet/intel/idpf/idpf_txrx.h |  6 ++----
- 3 files changed, 10 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-index b4fbb99bfad2..d54be068f53f 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-@@ -814,6 +814,7 @@ static int idpf_cfg_netdev(struct idpf_vport *vport)
- 	netdev->hw_features |= dflt_features | offloads;
- 	netdev->hw_enc_features |= dflt_features | offloads;
- 	idpf_set_ethtool_ops(netdev);
-+	netif_enable_irq_affinity(netdev);
- 	SET_NETDEV_DEV(netdev, &adapter->pdev->dev);
- 
- 	/* carrier off on init to avoid Tx hangs */
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-index 2fa9c36e33c9..f6b5b45a061c 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-@@ -3554,8 +3554,6 @@ void idpf_vport_intr_rel(struct idpf_vport *vport)
- 		q_vector->tx = NULL;
- 		kfree(q_vector->rx);
- 		q_vector->rx = NULL;
--
--		free_cpumask_var(q_vector->affinity_mask);
- 	}
- 
- 	kfree(vport->q_vectors);
-@@ -3582,8 +3580,6 @@ static void idpf_vport_intr_rel_irq(struct idpf_vport *vport)
- 		vidx = vport->q_vector_idxs[vector];
- 		irq_num = adapter->msix_entries[vidx].vector;
- 
--		/* clear the affinity_mask in the IRQ descriptor */
--		irq_set_affinity_hint(irq_num, NULL);
- 		kfree(free_irq(irq_num, q_vector));
- 	}
- }
-@@ -3771,8 +3767,6 @@ static int idpf_vport_intr_req_irq(struct idpf_vport *vport)
- 				   "Request_irq failed, error: %d\n", err);
- 			goto free_q_irqs;
- 		}
--		/* assign the mask for this irq */
--		irq_set_affinity_hint(irq_num, q_vector->affinity_mask);
- 	}
- 
- 	return 0;
-@@ -4184,7 +4178,8 @@ static int idpf_vport_intr_init_vec_idx(struct idpf_vport *vport)
- static void idpf_vport_intr_napi_add_all(struct idpf_vport *vport)
- {
- 	int (*napi_poll)(struct napi_struct *napi, int budget);
--	u16 v_idx;
-+	u16 v_idx, qv_idx;
-+	int irq_num;
- 
- 	if (idpf_is_queue_model_split(vport->txq_model))
- 		napi_poll = idpf_vport_splitq_napi_poll;
-@@ -4193,12 +4188,12 @@ static void idpf_vport_intr_napi_add_all(struct idpf_vport *vport)
- 
- 	for (v_idx = 0; v_idx < vport->num_q_vectors; v_idx++) {
- 		struct idpf_q_vector *q_vector = &vport->q_vectors[v_idx];
-+		qv_idx = vport->q_vector_idxs[v_idx];
-+		irq_num = vport->adapter->msix_entries[qv_idx].vector;
- 
--		netif_napi_add(vport->netdev, &q_vector->napi, napi_poll);
--
--		/* only set affinity_mask if the CPU is online */
--		if (cpu_online(v_idx))
--			cpumask_set_cpu(v_idx, q_vector->affinity_mask);
-+		netif_napi_add_config(vport->netdev, &q_vector->napi,
-+				      napi_poll, v_idx);
-+		netif_napi_set_irq(&q_vector->napi, irq_num);
- 	}
- }
- 
-@@ -4242,9 +4237,6 @@ int idpf_vport_intr_alloc(struct idpf_vport *vport)
- 		q_vector->rx_intr_mode = IDPF_ITR_DYNAMIC;
- 		q_vector->rx_itr_idx = VIRTCHNL2_ITR_IDX_0;
- 
--		if (!zalloc_cpumask_var(&q_vector->affinity_mask, GFP_KERNEL))
--			goto error;
--
- 		q_vector->tx = kcalloc(txqs_per_vector, sizeof(*q_vector->tx),
- 				       GFP_KERNEL);
- 		if (!q_vector->tx)
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-index 0f71a6f5557b..13251f63c7c3 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-@@ -401,7 +401,6 @@ struct idpf_intr_reg {
-  * @rx_intr_mode: Dynamic ITR or not
-  * @rx_itr_idx: RX ITR index
-  * @v_idx: Vector index
-- * @affinity_mask: CPU affinity mask
-  */
- struct idpf_q_vector {
- 	__cacheline_group_begin_aligned(read_mostly);
-@@ -438,13 +437,12 @@ struct idpf_q_vector {
- 	__cacheline_group_begin_aligned(cold);
- 	u16 v_idx;
- 
--	cpumask_var_t affinity_mask;
- 	__cacheline_group_end_aligned(cold);
- };
- libeth_cacheline_set_assert(struct idpf_q_vector, 120,
- 			    24 + sizeof(struct napi_struct) +
- 			    2 * sizeof(struct dim),
--			    8 + sizeof(cpumask_var_t));
-+			    8);
- 
- struct idpf_rx_queue_stats {
- 	u64_stats_t packets;
-@@ -940,7 +938,7 @@ static inline int idpf_q_vector_to_mem(const struct idpf_q_vector *q_vector)
- 	if (!q_vector)
- 		return NUMA_NO_NODE;
- 
--	cpu = cpumask_first(q_vector->affinity_mask);
-+	cpu = cpumask_first(&q_vector->napi.config->affinity_mask);
- 
- 	return cpu < nr_cpu_ids ? cpu_to_mem(cpu) : NUMA_NO_NODE;
- }
--- 
-2.43.0
+On 17/01/2025 12.35, Yunsheng Lin wrote:
+> On 2025/1/17 2:02, Jesper Dangaard Brouer wrote:
+> 
+>>
+>> Benchmark (bench_page_pool_simple) results from before and after
+>> patchset with patches 1-5m and rcu lock removal as requested.
+>>
+>> | Test name  |Cycles |   1-5 |    | Nanosec |    1-5 |        |      % |
+>> | (tasklet_*)|Before | After |diff|  Before |  After |   diff | change |
+>> |------------+-------+-------+----+---------+--------+--------+--------|
+>> | fast_path  |    19 |    19 |   0|   5.399 |  5.492 |  0.093 |    1.7 |
+>> | ptr_ring   |    54 |    57 |   3|  15.090 | 15.849 |  0.759 |    5.0 |
+>> | slow       |   238 |   284 |  46|  66.134 | 78.909 | 12.775 |   19.3 |
+>> #+TBLFM: $4=$3-$2::$7=$6-$5::$8=(($7/$5)*100);%.1f
+>>
+>> This test with patches 1-5 looks much better regarding performance.
+> 
+> Thanks for the testing.
+> 
+> Is there any notiable performance variation during different test running
+> for the same built kernel in your machine?
+> 
 
+My machine have quite stable performance for this benchmark.
+
+
+>> https://github.com/xdp-project/xdp-project/blob/main/areas/mem/page_pool07_bench_DMA_fix.org#e5-1650-pp01-dma-fix-v7-p1-5
+
+Like documented in above link. I have also increased the loops count for
+the test to get it more stable, given this will be measured over a
+longer period.
+
+  modprobe bench_page_pool_simple loops=100000000
+
+
+>> Kernel:
+>>   - 6.13.0-rc6-pp01-DMA-fix-v7-p1-5+ #5 SMP PREEMPT_DYNAMIC Thu Jan 16 18:06:53 CET 2025 x86_64 GNU/Linux
+>>
+>> Machine: Intel(R) Xeon(R) CPU E5-1650 v4 @ 3.60GHz
+>>
+>> modprobe bench_page_pool_simple loops=100000000
+>>
+>> Raw data:
+>> [  187.309423] bench_page_pool_simple: time_bench_page_pool01_fast_path(): Cannot use page_pool fast-path
+>> [  187.872849] time_bench: Type:no-softirq-page_pool01 Per elem: 19 cycles(tsc) 5.539 ns (step:0) - (measurement period time:0.553906443 sec time_interval:553906443) - (invoke count:100000000 tsc_interval:1994123064)
+>> [  187.892023] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): Cannot use page_pool fast-path
+>> [  189.611070] time_bench: Type:no-softirq-page_pool02 Per elem: 61 cycles(tsc) 17.095 ns (step:0) - (measurement period time:1.709580367 sec time_interval:1709580367) - (invoke count:100000000 tsc_interval:6154679394)
+>> [  189.630414] bench_page_pool_simple: time_bench_page_pool03_slow(): Cannot use page_pool fast-path
+>> [  197.222387] time_bench: Type:no-softirq-page_pool03 Per elem: 272 cycles(tsc) 75.826 ns (step:0) - (measurement period time:7.582681388 sec time_interval:7582681388) - (invoke count:100000000 tsc_interval:27298499214)
+>> [  197.241926] bench_page_pool_simple: pp_tasklet_handler(): in_serving_softirq fast-path
+>> [  197.249968] bench_page_pool_simple: time_bench_page_pool01_fast_path(): in_serving_softirq fast-path
+>> [  197.808470] time_bench: Type:tasklet_page_pool01_fast_path Per elem: 19 cycles(tsc) 5.492 ns (step:0) - (measurement period time:0.549225541 sec time_interval:549225541) - (invoke count:100000000 tsc_interval:1977272238)
+>> [  197.828174] bench_page_pool_simple: time_bench_page_pool02_ptr_ring(): in_serving_softirq fast-path
+>> [  199.422305] time_bench: Type:tasklet_page_pool02_ptr_ring Per elem: 57 cycles(tsc) 15.849 ns (step:0) - (measurement period time:1.584920736 sec time_interval:1584920736) - (invoke count:100000000 tsc_interval:5705890830)
+>> [  199.442087] bench_page_pool_simple: time_bench_page_pool03_slow(): in_serving_softirq fast-path
+>> [  207.342120] time_bench: Type:tasklet_page_pool03_slow Per elem: 284 cycles(tsc) 78.909 ns (step:0) - (measurement period time:7.890955151 sec time_interval:7890955151) - (invoke count:100000000 tsc_interval:28408319289)
+>>
