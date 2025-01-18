@@ -1,93 +1,104 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CF630A15976
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Jan 2025 23:13:47 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8EE4FA15A45
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 18 Jan 2025 01:33:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8BCC760642;
-	Fri, 17 Jan 2025 22:13:46 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E91A042471;
+	Sat, 18 Jan 2025 00:33:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mc8-8Tm1hHRw; Fri, 17 Jan 2025 22:13:45 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id D_thY4dpfywJ; Sat, 18 Jan 2025 00:33:54 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9D6A37049D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 571574245E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1737152025;
-	bh=PIW8B4zwPlzHsi9Ae4Mt5z8cH44LlsGMYs0gt4svvuQ=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	s=default; t=1737160433;
+	bh=ez0OFrtMJ/FEO7JHJYMWkm4obTnmXhSKi7vTQFaMRLI=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=sNjJWz3t/Sb/ewxRRUi765caVNX4NbkwWrOkxSDK5tsJlBeRsTtqeRTxFprMvFXHk
-	 YZIhr9JoRFhFDbZtQwmlvvRZb0LKbeIoOM9mWt0FyYnBX+wpW8USbkn7XvnX7EhR9C
-	 I26Jow902T8wdCCY+v2jUC0DhV6y0ZCFskpl5YkOvH1up/sorFTUPlKCPJj5gZdvtz
-	 0wVF9J3KebbpkGp9ZtP/ANIpvgzreC+WXgg74iqjHOP9ehQB/lL391FEIdSidmHPDJ
-	 l5vddSrV9a/F9CPyNCSMUy9qflifh60cRLJohg6/38pHTgVZBEzjusIjYQSMFufD0t
-	 X+G9ky4uqlFyw==
+	b=RZ6qJb0L13kKE6XKlCL0I6oxTmG45encwc/UySfC7D3lSxF0DPex3Z8RlIM2o/GK9
+	 oHxnPxEEkw+q1nklACdGfSTp9iN9RAEq9DEs1IoOIZddzU3zPXUOI+40fGPwr6pKW1
+	 X53W7Y/ST/WNHL6a8bvbOlN2XNVtsjQJAXJCZTW5N43Fu65xW2tH6t+HXyed4wMfFo
+	 nJ+C7H+CGWquKe51XGYhYwgHdZQTbhPBgf1Ar9eDfpn0s+Jzf7lV3lZlR5AVeBIZgk
+	 Dz0uOAY6Lrs0GeWyZWCMBvvfJIwrrcn3DzcHC6fUAH5W57sxbFqB9NUe8NjNaIa0q5
+	 5ZKMOFEn8Ujig==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9D6A37049D;
-	Fri, 17 Jan 2025 22:13:45 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 571574245E;
+	Sat, 18 Jan 2025 00:33:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 4A694B89
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2025 22:13:43 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 05FE7B89
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Jan 2025 00:33:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 365C3401B7
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2025 22:13:43 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id E4C204028F
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Jan 2025 00:33:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id GTT4ceYBoHDK for <intel-wired-lan@lists.osuosl.org>;
- Fri, 17 Jan 2025 22:13:42 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 2AAB14138B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2AAB14138B
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2AAB14138B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Jan 2025 22:13:42 +0000 (UTC)
-X-CSE-ConnectionGUID: RUwFCq4STJOpPz+CWQRQMQ==
-X-CSE-MsgGUID: ubCG32JrQ7W+A7kRwDwGXg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11314"; a="49015889"
-X-IronPort-AV: E=Sophos;i="6.12,310,1728975600"; d="scan'208";a="49015889"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
- by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Jan 2025 14:13:41 -0800
-X-CSE-ConnectionGUID: IO1tGGMjQL+3vF1aW9fX4Q==
-X-CSE-MsgGUID: tz8hmD0mTRqybQD7+w11Yw==
+ id 8HFd5kefj2YA for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 18 Jan 2025 00:33:49 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
+ helo=mgamail.intel.com; envelope-from=ahmed.zaki@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 6AB4E403C2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6AB4E403C2
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6AB4E403C2
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Jan 2025 00:33:49 +0000 (UTC)
+X-CSE-ConnectionGUID: UdxoXoTOQ0iOd/US2nmNkA==
+X-CSE-MsgGUID: tnqtjrd5R3G6whZt52i6fA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11318"; a="37762718"
+X-IronPort-AV: E=Sophos;i="6.13,213,1732608000"; d="scan'208";a="37762718"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+ by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jan 2025 16:33:48 -0800
+X-CSE-ConnectionGUID: AnicBz1JQsyuNAYJese8rQ==
+X-CSE-MsgGUID: /5mZsn8qTV+25ZcqOniMRA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,213,1732608000"; d="scan'208";a="136761222"
-Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
- by orviesa002.jf.intel.com with ESMTP; 17 Jan 2025 14:13:41 -0800
-Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1tYuaw-000Tln-1t
- for intel-wired-lan@lists.osuosl.org; Fri, 17 Jan 2025 22:13:38 +0000
-Date: Sat, 18 Jan 2025 06:13:15 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202501180610.og6dvno0-lkp@intel.com>
-User-Agent: s-nail v14.9.24
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="106410810"
+Received: from rchatre-mobl4.amr.corp.intel.com (HELO azaki-desk1.intel.com)
+ ([10.125.109.139])
+ by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jan 2025 16:33:44 -0800
+From: Ahmed Zaki <ahmed.zaki@intel.com>
+To: netdev@vger.kernel.org
+Cc: intel-wired-lan@lists.osuosl.org, andrew+netdev@lunn.ch,
+ edumazet@google.com, kuba@kernel.org, horms@kernel.org, pabeni@redhat.com,
+ davem@davemloft.net, michael.chan@broadcom.com, tariqt@nvidia.com,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ jdamato@fastly.com, shayd@nvidia.com, akpm@linux-foundation.org,
+ shayagr@amazon.com, kalesh-anakkur.purayil@broadcom.com,
+ Ahmed Zaki <ahmed.zaki@intel.com>
+Date: Fri, 17 Jan 2025 17:33:30 -0700
+Message-ID: <20250118003335.155379-1-ahmed.zaki@intel.com>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1737152022; x=1768688022;
- h=date:from:to:subject:message-id;
- bh=jHPG7kIwmkEJN6q+nmHGYiXZ6j2hWwiNueRXqs+yiXo=;
- b=ZShlYcq6YFNkPleEdAmov2VJTlRSo07uORfwPW2LOz2qjxWc1EL1sury
- /vuihhRKm2Bb1/Wq4FxvO+Vs1djC7v/FAQtKXu1jTbMko/9SFwlQulYUm
- X+y3GfaTMoz6DfVcTulFQNN/oCR3TCgeQ/ylrh0yveY08mmjkl1oZAH9u
- /JBPi9XvETJKJZYjD3NDQWaqmkK3b1uoV6qMI6LWQV83BCPS5HTvi4Lnr
- Gycy7Dh+/ARhGDQ8Idy5LSzPgY0zBfre8lKHpauqB7NGbem2SdmMehD/2
- pj+TRHYEnnODaf0K9GgrDHvF3A6EcRbxVvGcDyNmeyAdV6vqSYnzzhxQT
+ t=1737160429; x=1768696429;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=2sVubBAr1NA9XsbxSTZAyvnkOzqseyoOfwD9nEUqrII=;
+ b=Ok2GiFlbMfpzeK0+Y86BI+VCj5zqGnfjzcQibnIYI3PHDtZsqj9WOp3A
+ d/jAs9qgoHb9Nmb+k5poCQ0il39nYPVTp7g48oFoGuREgHOfEZngQb96/
+ WzTlDfxWV4GSzcxRu5ThTVud8vLvyEyTTQo8fKKbCNjLdMFK5CBDsyt07
+ gDq7C3Qjnxo6k9JrA6DB7mYc6ZbwPH09D8VXbyw4i3jIbkz1NvVFk4Ctl
+ 2kmbgh9QZBUcRpkU1DChcSGjUR00LtB9E+fmD08oOJZjLNflLkHdroqS0
+ 1d/wX+D1CB0t+GSrwIzj/czCBUUgZoUo+WLGj+QXmJ/y40QrXrgDRIUt0
  w==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ZShlYcq6
-Subject: [Intel-wired-lan] [tnguy-next-queue:100GbE] BUILD SUCCESS
- 1de25c6b984d71a7961065e27514b4fd51b2daae
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Ok2GiFlb
+Subject: [Intel-wired-lan] [PATCH net-next v6 0/5] net: napi: add CPU
+ affinity to napi->config
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -103,85 +114,85 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 100GbE
-branch HEAD: 1de25c6b984d71a7961065e27514b4fd51b2daae  ice: support FW Recovery Mode
+Drivers usually need to re-apply the user-set IRQ affinity to their IRQs
+after reset. However, since there can be only one IRQ affinity notifier
+for each IRQ, registering IRQ notifiers conflicts with the ARFS rmap
+management in the core (which also registers separate IRQ affinity
+notifiers).   
 
-elapsed time: 1446m
+Move the IRQ affinity management to the napi struct. This way we can have
+a unified IRQ notifier to re-apply the user-set affinity and also manage
+the ARFS rmaps. Patches 1 and 2 move the ARFS rmap management to CORE.
+Patch 3 adds the IRQ affinity mask to napi_config and re-applies the mask
+after reset. Patches 4-6 use the new API for bnxt, ice and idpf drivers.
 
-configs tested: 66
-configs skipped: 0
+Tested on bnxt, ice and idpf.
+V6:
+    - Modifications to have less #ifdef CONFIG_RF_ACCL guards
+    - Remove rmap entry in napi_disable
+    - Rebase on rc7 and use netif_napi_set_irq_locked()
+    - Assume IRQ can be -1 and free resources if an old valid IRQ was
+      associated with the napi. For this, I had to merge the first 2
+      patches to use the new rmap API.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+V5:
+    - https://lore.kernel.org/netdev/20250113171042.158123-1-ahmed.zaki@intel.com/
+    - Add kernel doc for new netdev flags (Simon).
+    - Remove defensive (if !napi) check in napi_irq_cpu_rmap_add()
+      (patch 2) since caller is already dereferencing the pointer (Simon).
+    - Fix build error when CONFIG_ARFS_ACCEL is not defined (patch 3).
 
-tested configs:
-arc                   randconfig-001-20250117    gcc-13.2.0
-arc                   randconfig-002-20250117    gcc-13.2.0
-arm                   randconfig-001-20250117    clang-18
-arm                   randconfig-002-20250117    gcc-14.2.0
-arm                   randconfig-003-20250117    gcc-14.2.0
-arm                   randconfig-004-20250117    clang-16
-arm64                 randconfig-001-20250117    gcc-14.2.0
-arm64                 randconfig-002-20250117    clang-18
-arm64                 randconfig-003-20250117    clang-20
-arm64                 randconfig-004-20250117    gcc-14.2.0
-csky                  randconfig-001-20250117    gcc-14.2.0
-csky                  randconfig-002-20250117    gcc-14.2.0
-hexagon               randconfig-001-20250117    clang-20
-hexagon               randconfig-002-20250117    clang-20
-i386        buildonly-randconfig-001-20250117    clang-19
-i386        buildonly-randconfig-002-20250117    clang-19
-i386        buildonly-randconfig-003-20250117    gcc-12
-i386        buildonly-randconfig-004-20250117    gcc-12
-i386        buildonly-randconfig-005-20250117    clang-19
-i386        buildonly-randconfig-006-20250117    gcc-11
-loongarch             randconfig-001-20250117    gcc-14.2.0
-loongarch             randconfig-002-20250117    gcc-14.2.0
-m68k                              allnoconfig    gcc-14.2.0
-microblaze                        allnoconfig    gcc-14.2.0
-mips                              allnoconfig    gcc-14.2.0
-nios2                             allnoconfig    gcc-14.2.0
-nios2                 randconfig-001-20250117    gcc-14.2.0
-nios2                 randconfig-002-20250117    gcc-14.2.0
-parisc                randconfig-001-20250117    gcc-14.2.0
-parisc                randconfig-002-20250117    gcc-14.2.0
-powerpc               randconfig-001-20250117    gcc-14.2.0
-powerpc               randconfig-002-20250117    gcc-14.2.0
-powerpc               randconfig-003-20250117    gcc-14.2.0
-powerpc64             randconfig-001-20250117    clang-16
-powerpc64             randconfig-002-20250117    clang-20
-powerpc64             randconfig-003-20250117    gcc-14.2.0
-riscv                 randconfig-001-20250117    gcc-14.2.0
-riscv                 randconfig-002-20250117    gcc-14.2.0
-s390                             allmodconfig    clang-19
-s390                             allyesconfig    gcc-14.2.0
-s390                  randconfig-001-20250117    gcc-14.2.0
-s390                  randconfig-002-20250117    clang-20
-sh                               allmodconfig    gcc-14.2.0
-sh                                allnoconfig    gcc-14.2.0
-sh                               allyesconfig    gcc-14.2.0
-sh                    randconfig-001-20250117    gcc-14.2.0
-sh                    randconfig-002-20250117    gcc-14.2.0
-sparc                            allmodconfig    gcc-14.2.0
-sparc                             allnoconfig    gcc-14.2.0
-sparc                 randconfig-001-20250117    gcc-14.2.0
-sparc                 randconfig-002-20250117    gcc-14.2.0
-sparc64               randconfig-001-20250117    gcc-14.2.0
-sparc64               randconfig-002-20250117    gcc-14.2.0
-um                    randconfig-001-20250117    clang-20
-um                    randconfig-002-20250117    gcc-12
-x86_64                            allnoconfig    clang-19
-x86_64      buildonly-randconfig-001-20250117    gcc-12
-x86_64      buildonly-randconfig-002-20250117    gcc-12
-x86_64      buildonly-randconfig-003-20250117    gcc-12
-x86_64      buildonly-randconfig-004-20250117    gcc-12
-x86_64      buildonly-randconfig-005-20250117    gcc-12
-x86_64      buildonly-randconfig-006-20250117    clang-19
-x86_64                              defconfig    gcc-11
-xtensa                            allnoconfig    gcc-14.2.0
-xtensa                randconfig-001-20250117    gcc-14.2.0
-xtensa                randconfig-002-20250117    gcc-14.2.0
+v4:
+    - https://lore.kernel.org/netdev/20250109233107.17519-1-ahmed.zaki@intel.com/
+    - Better introduction in the cover letter.
+    - Fix Kernel build errors in ena_init_rx_cpu_rmap() (Patch 1)
+    - Fix kernel test robot warnings reported by Dan Carpenter:
+      https://lore.kernel.org/all/202501050625.nY1c97EX-lkp@intel.com/
+    - Remove unrelated empty line in patch 4 (Kalesh Anakkur Purayil)
+    - Fix a memleak (rmap was not freed) by calling cpu_rmap_put() in
+      netif_napi_affinity_release() (patch 2).
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+v3:
+    - https://lore.kernel.org/netdev/20250104004314.208259-1-ahmed.zaki@intel.com/
+    - Assign one cpu per mask starting from local NUMA node (Shay Drori).
+    - Keep the new ARFS and Affinity flags per nedev (Jakub).
+
+v2:
+    - https://lore.kernel.org/netdev/202412190454.nwvp3hU2-lkp@intel.com/T/
+    - Also move the ARFS IRQ affinity management from drivers to core. Via
+      netif_napi_set_irq(), drivers can ask the core to add the IRQ to the
+      ARFS rmap (already allocated by the driver).
+
+RFC -> v1:
+    - https://lore.kernel.org/netdev/20241210002626.366878-1-ahmed.zaki@intel.com/
+    - move static inline affinity functions to net/dev/core.c
+    - add the new napi->irq_flags (patch 1)
+    - add code changes to bnxt, mlx4 and ice.
+
+Ahmed Zaki (5):
+  net: move ARFS rmap management to core
+  net: napi: add CPU affinity to napi_config
+  bnxt: use napi's irq affinity
+  ice: use napi's irq affinity
+  idpf: use napi's irq affinity
+
+ drivers/net/ethernet/amazon/ena/ena_netdev.c |  43 +----
+ drivers/net/ethernet/broadcom/bnxt/bnxt.c    |  54 +-----
+ drivers/net/ethernet/broadcom/bnxt/bnxt.h    |   2 -
+ drivers/net/ethernet/intel/ice/ice.h         |   3 -
+ drivers/net/ethernet/intel/ice/ice_arfs.c    |  17 +-
+ drivers/net/ethernet/intel/ice/ice_base.c    |   7 +-
+ drivers/net/ethernet/intel/ice/ice_lib.c     |   6 -
+ drivers/net/ethernet/intel/ice/ice_main.c    |  47 +-----
+ drivers/net/ethernet/intel/idpf/idpf_lib.c   |   1 +
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c  |  22 +--
+ drivers/net/ethernet/intel/idpf/idpf_txrx.h  |   6 +-
+ include/linux/cpu_rmap.h                     |   1 +
+ include/linux/netdevice.h                    |  27 ++-
+ lib/cpu_rmap.c                               |   2 +-
+ net/core/dev.c                               | 167 ++++++++++++++++++-
+ 15 files changed, 215 insertions(+), 190 deletions(-)
+
+-- 
+2.43.0
+
