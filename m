@@ -1,133 +1,151 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E1903A1AA52
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Jan 2025 20:28:33 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C9610A1AA97
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Jan 2025 20:48:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 853976FB52;
-	Thu, 23 Jan 2025 19:28:32 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 69A80819ED;
+	Thu, 23 Jan 2025 19:48:09 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id tJEaJJLZi3yh; Thu, 23 Jan 2025 19:28:31 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id QMUcXrMOAEeC; Thu, 23 Jan 2025 19:48:08 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B88B96FB53
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 81E7C8149B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1737660511;
-	bh=MKSMGBTjadOJ4VDIZc+QO+zb8RTG8n/S2QkYxKJfkO8=;
+	s=default; t=1737661688;
+	bh=/ehvXM/x2Xpjmareg8hVceTaEqRxIeAlXfZcNgyZJpQ=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=TqVeUgw1jKC2t0GR6HKlj9D4ccdPNtUMjPhWLiLl8gQrv1uNnNOUyr3VE1jjME8JR
-	 TmSajeXXWWAB7FMMAg0/fXeOQUMPLHjXXNfL+GUduWhv99O6AvKxJxIqOlsEP54N5L
-	 hpJ9btF6oMb5uwCL0b94nYQajQUjpPD9ThyEbe8ilfD4pao8evgrW1SJ43XDGJbq50
-	 9pZZ6q1Wbu5RX71wHaYgF62mSW0cZjl27qeShDp7UX3WL5SsCuvSxR6t9MBJ7jII7I
-	 TwBVRitLWLwnhLwyg6Ay0U6FyMpIAY0gzbILVIOXd8msrKyu3OFWdqDE4w+vjtFBhy
-	 uYBlYvaazAplg==
+	b=RrvHvc/Q1MSA43fm9elKIAj0m+H/1I+/86Lt3WXCvXQ9v+eduL/IsrRKXrgNKuyjs
+	 1nJDIHd7oIaHOkwb8DasDqfDSUjaV7av+co96k2sUzddJ44SkIIqjtR6McSaSV1Dkf
+	 tr9nU4h298l7djMAB61mVmfxXQ496VSx7NpdpsdXtHGwJP+Ie4/N+JN/uJ8haOlNby
+	 5ArvGBajDbMn1EMU0zfGcGW0W6b0i1JyxJcDMLlnQ2jjgae2o7ftvHv7R2Ttjk9eYN
+	 MuHc9lebOJPTM/wEsFG/VHcdd/NzP9Hj6p5cBg6unSdt+Uyu5bMjVxYigNk5EjZp2d
+	 IFNMp9zrb1jYA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B88B96FB53;
-	Thu, 23 Jan 2025 19:28:31 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 81E7C8149B;
+	Thu, 23 Jan 2025 19:48:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 98630B88
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2025 19:28:29 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 5D2D9959
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2025 19:48:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 760C241A09
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2025 19:28:29 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3DD6540176
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2025 19:48:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2hM73C7Yci48 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 23 Jan 2025 19:28:28 +0000 (UTC)
+ id 7NchWm9QcnwZ for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 23 Jan 2025 19:48:05 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::102e; helo=mail-pj1-x102e.google.com;
- envelope-from=jdamato@fastly.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 566D941A0E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 566D941A0E
-Received: from mail-pj1-x102e.google.com (mail-pj1-x102e.google.com
- [IPv6:2607:f8b0:4864:20::102e])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 566D941A0E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2025 19:28:28 +0000 (UTC)
-Received: by mail-pj1-x102e.google.com with SMTP id
- 98e67ed59e1d1-2ef6c56032eso1870746a91.2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2025 11:28:28 -0800 (PST)
+ client-ip=2607:f8b0:4864:20::62d; helo=mail-pl1-x62d.google.com;
+ envelope-from=stfomichev@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 4E50840118
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4E50840118
+Received: from mail-pl1-x62d.google.com (mail-pl1-x62d.google.com
+ [IPv6:2607:f8b0:4864:20::62d])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4E50840118
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2025 19:48:05 +0000 (UTC)
+Received: by mail-pl1-x62d.google.com with SMTP id
+ d9443c01a7336-2161eb94cceso16292525ad.2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2025 11:48:05 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1737660507; x=1738265307;
- h=in-reply-to:content-disposition:mime-version:references
- :mail-followup-to:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=MKSMGBTjadOJ4VDIZc+QO+zb8RTG8n/S2QkYxKJfkO8=;
- b=PzEW4xBaWVzC8amtYwTbkqDCKqUkC3cGx8vZUk9ONEGsqLXstqxPvNIO+nPLZ/sSLJ
- KIYhyiJwc04zf539Ow0Oyn9sqmiJ+2EHkjumEO4rY6ExWcLdugQHyIaTdDLwR8REAqmh
- imCfC66C1iB1GzWbW9uohVGobNc6069HfOLuCrX4BDEh4ryxlMPb9OKcIh/atuc6B4ik
- z8tfHo4MuDfvudp+fv92fQHDn23jsxlM+SzHKG1g2Hf8TCoGJjQ369VwJwIHhCcKm213
- wvFs2b3kpidw0P8T2mAY892aTC4faYy5Q8ePlEzRc7hOtkULKiNC0NF0ZGg3r7JurZdI
- Tkhg==
+ d=1e100.net; s=20230601; t=1737661684; x=1738266484;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=/ehvXM/x2Xpjmareg8hVceTaEqRxIeAlXfZcNgyZJpQ=;
+ b=rHeYqa64694VXY6cOrByBFlvX+AxZlYL14MZRJKwZrp2HO0RSQ8KcjktDmgVytd1BG
+ yWNdIvkOHlFO/HQI9f4hLQPeRFtxoERupGOnseCkj5MD2G0wA/dS1v90THu69cyc+zrK
+ gCg6RefA0/mb3p2+9btTzWp8gifXtnOCU2CXZr4GI82vHQc/1rZzSJXIzpPJa9H8dfsl
+ tHR1N5dUHcZv9loGq8fu8aGkXq0pMRHmRth+i0SBR6lAaOkJWQadXimfER9+kzrvV96U
+ iFM6lqIvxDFP+xO7mc3S0B2RfsJReXmkiM+aJmF57eZ8OGjpgK1XsTRl1Uf/NjGtypFv
+ 4r/g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUb1aOHZrHJejArCRGNQtGRIUZXdqaNpHA1Z/tTCz0MqX9DxgmhfK/5PD4AIx7Rjoa05sJPeI9g/uKxhDuLfEw=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YwGvBoU+kozETVoR+jFD4dtVtUU0x3pR3hyMa3Ep+24C6/tVMDM
- H0f0a3FtsjnStcuIk8ZbXeWeQn1H+2z3mP5KOpNujpB4ZaHyJ8Ua70ZnU6fb/A8=
-X-Gm-Gg: ASbGncuSxMi/sbf5Un0gkVPiVZZoHEiaFtocmolIyH4WPZ0DWViO/kSbMhgf3gs0ZXV
- Lx2HGK6ax/OLYvJCWO0sShhC4SQ48f4kRWLgNjxJFc8BNgZ1nNDrFOPiJml4TUeAXH4r+porU1N
- YewqjNVopt4XtVgNA+FQnQ1uZTTOdHm9wMpsdPqxSB+IhSD0Pus68o17H3QJz+paqpIAxcUbE4p
- E95btWcc3OctTBi/iaOG6i+l18Bbu6Jw1SMNKKeJRFjfV7aAZc/4jgkG/c/XR2qzs8f+R6TvHPm
- 6U4FQHyVla5xS+C5NlMPRfbGANrb2ah+BbPgc9zg+0QDsMc=
-X-Google-Smtp-Source: AGHT+IEubu9AdSDBuPgbBe6xyKegk7df8UxI964eqYegV8p/KlH2pZuqJ+bfRr+mhcSVHCdBhdXr0Q==
-X-Received: by 2002:a05:6a00:9296:b0:72d:4d77:ccc with SMTP id
- d2e1a72fcca58-72daf94857emr35659747b3a.6.1737660507547; 
- Thu, 23 Jan 2025 11:28:27 -0800 (PST)
-Received: from LQ3V64L9R2 (c-24-6-151-244.hsd1.ca.comcast.net. [24.6.151.244])
+ AJvYcCVRPyfJ9sOjWL8GPoMYvB+3ecje7QLe2/8ThqZv6aJpM0cMs/vo5JDbh2H5Q6f3xF9JTliJtanout90abkWsCE=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YzLx8S4nO49dxqIMd1nmGk/J3Q374krbgjlUz8lNw85yiiOIDy5
+ v32H8Hld3AzE/IxSKH/KJ1bGaw3bNMRfymHQ29aR9iAUycfNBYA=
+X-Gm-Gg: ASbGncurFwH3ADlnbOEqs9ZSqwV6W8ZF4zWbNptCLCf2zX7KV93n7VxqgCHw3VUwPlt
+ PtJj/0FNSO75wI8FjdjN1ZeOSt324u5Te2X979VINJJ1xFibeK2NPMA+X5qRJ969p62PO6vhNVt
+ KLFNp5xvhN/bgcGa2Ax2lf7IuvaXj7IInB7QJ5FWT5PXU4aWn0RSLj97xGASZ4IBaRd9a/p3hc0
+ nvLXnpFVcchy6PYYvwMLbVYLLJHi1KWTzqGU5Uz5E4QTjjpySiqz98U4QpRWHDzkfLwd+5iE5uT
+ MN3/
+X-Google-Smtp-Source: AGHT+IHN0sZtZXkNpILip1vz+eYUU1Y/MTgN8GKmFzFYwee95EZNDldTyC5bmSvcCfRBqUDdtCAgnw==
+X-Received: by 2002:a17:902:e548:b0:216:60a3:b3fd with SMTP id
+ d9443c01a7336-21c351d345amr370312355ad.3.1737661684548; 
+ Thu, 23 Jan 2025 11:48:04 -0800 (PST)
+Received: from localhost ([2601:646:9e00:f56e:123b:cea3:439a:b3e3])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-72f8a6b7262sm311632b3a.71.2025.01.23.11.28.25
+ d9443c01a7336-21da3ea2430sm2880515ad.65.2025.01.23.11.48.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Jan 2025 11:28:27 -0800 (PST)
-Date: Thu, 23 Jan 2025 11:28:24 -0800
-From: Joe Damato <jdamato@fastly.com>
-To: Ahmed Zaki <ahmed.zaki@intel.com>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- andrew+netdev@lunn.ch, edumazet@google.com, kuba@kernel.org,
- horms@kernel.org, pabeni@redhat.com, davem@davemloft.net,
- michael.chan@broadcom.com, tariqt@nvidia.com,
- anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- shayd@nvidia.com, akpm@linux-foundation.org, shayagr@amazon.com,
- kalesh-anakkur.purayil@broadcom.com, David Arinzon <darinzon@amazon.com>
-Message-ID: <Z5KYWAshgRL2GbX2@LQ3V64L9R2>
-Mail-Followup-To: Joe Damato <jdamato@fastly.com>,
- Ahmed Zaki <ahmed.zaki@intel.com>, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, andrew+netdev@lunn.ch,
- edumazet@google.com, kuba@kernel.org, horms@kernel.org,
- pabeni@redhat.com, davem@davemloft.net, michael.chan@broadcom.com,
- tariqt@nvidia.com, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, shayd@nvidia.com,
- akpm@linux-foundation.org, shayagr@amazon.com,
- kalesh-anakkur.purayil@broadcom.com,
- David Arinzon <darinzon@amazon.com>
-References: <20250118003335.155379-1-ahmed.zaki@intel.com>
- <20250118003335.155379-2-ahmed.zaki@intel.com>
+ Thu, 23 Jan 2025 11:48:04 -0800 (PST)
+Date: Thu, 23 Jan 2025 11:48:03 -0800
+From: Stanislav Fomichev <stfomichev@gmail.com>
+To: Song Yoong Siang <yoong.siang.song@intel.com>
+Cc: "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Simon Horman <horms@kernel.org>, Willem de Bruijn <willemb@google.com>,
+ Florian Bezdeka <florian.bezdeka@siemens.com>,
+ Donald Hunter <donald.hunter@gmail.com>,
+ Jonathan Corbet <corbet@lwn.net>, Bjorn Topel <bjorn@kernel.org>,
+ Magnus Karlsson <magnus.karlsson@intel.com>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Jonathan Lemon <jonathan.lemon@gmail.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, Joe Damato <jdamato@fastly.com>,
+ Stanislav Fomichev <sdf@fomichev.me>,
+ Xuan Zhuo <xuanzhuo@linux.alibaba.com>,
+ Mina Almasry <almasrymina@google.com>, Daniel Jurgens <danielj@nvidia.com>,
+ Andrii Nakryiko <andrii@kernel.org>, Eduard Zingerman <eddyz87@gmail.com>,
+ Mykola Lysenko <mykolal@fb.com>,
+ Martin KaFai Lau <martin.lau@linux.dev>, Song Liu <song@kernel.org>,
+ Yonghong Song <yonghong.song@linux.dev>,
+ KP Singh <kpsingh@kernel.org>, Hao Luo <haoluo@google.com>,
+ Jiri Olsa <jolsa@kernel.org>, Shuah Khan <shuah@kernel.org>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-doc@vger.kernel.org, bpf@vger.kernel.org,
+ linux-kselftest@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org,
+ intel-wired-lan@lists.osuosl.org, xdp-hints@xdp-project.net
+Message-ID: <Z5Kc8wufjrsXMCW9@mini-arch>
+References: <20250116155350.555374-1-yoong.siang.song@intel.com>
+ <20250116155350.555374-3-yoong.siang.song@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250118003335.155379-2-ahmed.zaki@intel.com>
+In-Reply-To: <20250116155350.555374-3-yoong.siang.song@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fastly.com; s=google; t=1737660507; x=1738265307; darn=lists.osuosl.org;
- h=in-reply-to:content-disposition:mime-version:references
- :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
- :subject:date:message-id:reply-to;
- bh=MKSMGBTjadOJ4VDIZc+QO+zb8RTG8n/S2QkYxKJfkO8=;
- b=rSokXNQTKJXdQuUAirNiGavNnrrwFj2DJBRtAm1r3ovpAyPg/44XXEl8/7J31h1zgo
- sGSJIKNFQcNH5V15NKvN8/2YFEpPAtK8s/X/YVOzXID/p55T9uUslwb8XguKbm2F8fjM
- RA6+9L5BLByJKtfGqFXZphCM7kJ11qhrQOlRs=
+ d=gmail.com; s=20230601; t=1737661684; x=1738266484; darn=lists.osuosl.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=/ehvXM/x2Xpjmareg8hVceTaEqRxIeAlXfZcNgyZJpQ=;
+ b=cmZE2bBQQY8nAorJ7yLwENQZLZNaQ40hobJIl1B7zse4o6kLK5o0T8XEr27K4RNOAT
+ jEDkP0+EeqRX7ISlgyiOMiTpDPrQAeAegQRRnZuMWCXRT0HOIDEh9lbJq0dbdnKeSSML
+ 7NF02pthfqr0e9yUZqcJRdqH6V7+a4rINJXKM3QG60FD4WfLMUbchbpXQXyoDMSg7DuM
+ vQUx1LGwR9wcGkgvO9X7zC9EDs7QvIYiEK6th/vnqZ3+wskdaKuAKBTp0vV3lBvP+xnp
+ +bhoktRDPMDryLqtf/szeZKq3Az9Z91ttsuEw/spnEJymfp4YmZSsouwW1xDeK2DcuCE
+ HriA==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=fastly.com
+ dmarc=pass (p=none dis=none)
+ header.from=gmail.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=fastly.com header.i=@fastly.com header.a=rsa-sha256
- header.s=google header.b=rSokXNQT
-Subject: Re: [Intel-wired-lan] [PATCH net-next v6 1/5] net: move ARFS rmap
- management to core
+ dkim=pass (2048-bit key,
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20230601 header.b=cmZE2bBQ
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next v6 2/4] selftests/bpf: Add
+ launch time request to xdp_hw_metadata
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -143,128 +161,17 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Jan 17, 2025 at 05:33:31PM -0700, Ahmed Zaki wrote:
-> Add a new netdev flag "rx_cpu_rmap_auto". Drivers supporting ARFS should
-> set the flag via netif_enable_cpu_rmap() and core will allocate and manage
-> the ARFS rmap. Freeing the rmap is also done by core when the netdev is
-> freed.
+On 01/16, Song Yoong Siang wrote:
+> Add launch time hardware offload request to xdp_hw_metadata. Users can
+> configure the delta of launch time relative to HW RX-time using the "-l"
+> argument. By default, the delta is set to 0 ns, which means the launch time
+> is disabled. By setting the delta to a non-zero value, the launch time
+> hardware offload feature will be enabled and requested. Additionally, users
+> can configure the Tx Queue to be enabled with the launch time hardware
+> offload using the "-L" argument. By default, Tx Queue 0 will be used.
 > 
-> For better IRQ affinity management, move the IRQ rmap notifier inside the
-> napi_struct. Consequently, add new notify.notify and notify.release
-> functions: netif_irq_cpu_rmap_notify() and netif_napi_affinity_release().
-> 
-> Acked-by: David Arinzon <darinzon@amazon.com>
-> Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
+> Signed-off-by: Song Yoong Siang <yoong.siang.song@intel.com>
 
-[...]
+Forgot to add:
 
-> diff --git a/net/core/dev.c b/net/core/dev.c
-> index fe5f5855593d..dbb63005bc2b 100644
-> --- a/net/core/dev.c
-> +++ b/net/core/dev.c
-> @@ -6862,6 +6862,141 @@ void netif_queue_set_napi(struct net_device *dev, unsigned int queue_index,
->  }
->  EXPORT_SYMBOL(netif_queue_set_napi);
->  
-> +#ifdef CONFIG_RFS_ACCEL
-> +static void
-> +netif_irq_cpu_rmap_notify(struct irq_affinity_notify *notify,
-> +			  const cpumask_t *mask)
-> +{
-> +	struct napi_struct *napi =
-> +		container_of(notify, struct napi_struct, notify);
-> +	struct cpu_rmap *rmap = napi->dev->rx_cpu_rmap;
-> +	int err;
-
-I wonder if this generates a warning with some compilers? err is
-defined not used if !napi->dev->rx_cpu_rmap_auto ? Not sure.
-
-> +	if (napi->dev->rx_cpu_rmap_auto) {
-> +		err = cpu_rmap_update(rmap, napi->napi_rmap_idx, mask);
-> +		if (err)
-> +			pr_warn("%s: RMAP update failed (%d)\n",
-> +				__func__, err);
-> +	}
-> +}
-> +
-> +static void netif_napi_affinity_release(struct kref *ref)
-> +{
-> +	struct napi_struct *napi =
-> +		container_of(ref, struct napi_struct, notify.kref);
-> +	struct cpu_rmap *rmap = napi->dev->rx_cpu_rmap;
-> +
-> +	if (!napi->dev->rx_cpu_rmap_auto)
-> +		return;
-> +	rmap->obj[napi->napi_rmap_idx] = NULL;
-> +	napi->napi_rmap_idx = -1;
-> +	cpu_rmap_put(rmap);
-> +}
-> +
-> +static int napi_irq_cpu_rmap_add(struct napi_struct *napi, int irq)
-> +{
-> +	struct cpu_rmap *rmap = napi->dev->rx_cpu_rmap;
-> +	int rc;
-> +
-> +	if (!rmap)
-> +		return -EINVAL;
-> +
-> +	napi->notify.notify = netif_irq_cpu_rmap_notify;
-> +	napi->notify.release = netif_napi_affinity_release;
-
-Maybe the callbacks should only be set at the end after everything
-else is successful, just before the return 0 ?
-
-> +	cpu_rmap_get(rmap);
-> +	rc = cpu_rmap_add(rmap, napi);
-> +	if (rc < 0)
-> +		goto err_add;
-> +
-> +	napi->napi_rmap_idx = rc;
-> +	rc = irq_set_affinity_notifier(irq, &napi->notify);
-> +	if (rc)
-> +		goto err_set;
-> +
-> +	return 0;
-> +
-> +err_set:
-> +	rmap->obj[napi->napi_rmap_idx] = NULL;
-> +	napi->napi_rmap_idx = -1;
-> +err_add:
-> +	cpu_rmap_put(rmap);
-> +	return rc;
-> +}
-
-[...]
-
-> +void netif_napi_set_irq_locked(struct napi_struct *napi, int irq)
-> +{
-> +	int rc;
-> +
-> +	if (!napi->dev->rx_cpu_rmap_auto)
-> +		goto out;
-
-Maybe the above if statement could be extended to be something like:
-
-if (!napi->dev->rx_cpu_rmap_auto || napi->irq < 0)
-  goto out;
-
-then you can omit the irq > 0 checks in the code below, potentially?
-
-> +	/* Remove existing rmap entries */
-> +	if (napi->irq != irq && napi->irq > 0)
-> +		irq_set_affinity_notifier(napi->irq, NULL);
-> +
-> +	if (irq > 0) {
-> +		rc = napi_irq_cpu_rmap_add(napi, irq);
-> +		if (rc) {
-> +			netdev_warn(napi->dev, "Unable to update ARFS map (%d)\n",
-> +				    rc);
-> +			netif_disable_cpu_rmap(napi->dev);
-> +		}
-> +	}
-> +
-> +out:
-> +	napi->irq = irq;
-> +}
-> +EXPORT_SYMBOL(netif_napi_set_irq_locked);
-> +
+Acked-by: Stanislav Fomichev <sdf@fomichev.me>
