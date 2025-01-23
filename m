@@ -1,96 +1,121 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A77DA1A783
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Jan 2025 17:04:25 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 92CDDA1A7FB
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Jan 2025 17:41:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4B9A3423CE;
-	Thu, 23 Jan 2025 16:04:23 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8DF696FA51;
+	Thu, 23 Jan 2025 16:41:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id z8WeKo9a1yl2; Thu, 23 Jan 2025 16:04:21 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id iHwqBL_U7LIU; Thu, 23 Jan 2025 16:41:16 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A527D42389
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8881060718
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1737648261;
-	bh=d1nAACqQ9xwPc6UZNtF1UGVEGOk2c/WzK7IbHeUPoW0=;
+	s=default; t=1737650476;
+	bh=gvCB211DSi8toJrUvWNjgaCiJ5NtA3KfshnDE/LSXyc=;
 	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=64cP4jVNTvqQnC+H9MkIikXYB7DsYptIo4WnnjJJhTSgk9uSrF1CPf+XCAMeWUMRZ
-	 KPSev9UEWjkPF7k2sZHe0C6YB7vzeTyAlQMngScQ4ZsDdGho4huXJx7MnpOVkg4NTT
-	 GKXu6hv2D0C7mpSDLJcz7QvmOeXNX9Xq9KsLmVTR0DQnu/ipjpb5QWqtn7cXZCtCEs
-	 HekR5M+IhadX39M+s+7IFpRcPmpnhf5dyFNDfUvZMNpUsmZ/gA+lvMN9AVXqN1cxte
-	 bL9+zdDX2dkL2Uap3gdCmX1YGFDB/BTtK6mFFqLrpogbLRB0BLeB8BovwGNX47HVcA
-	 o6YLfuqv6DAIw==
+	b=GogKW+SONTINsFS4SWpWgKlSdZM5DjEkJ2iIJHbxPhE8yHWUsL/bAxNcWqLpVfIZI
+	 zMNp/0DEXAsgaM3dCjFSf9n0PAZARcGVTMY4BaWrFd3R7DvaOGVTTD0+yceH0N/8cS
+	 SnkFtteTFK5SVVlmJ7O6ZlfiCw2YHM3v/6O+X34TEHaIeFGt5wYwp55dOknJQUGwGo
+	 1GC9OOLZIHhG1KIO+gBZHjzF2G8juACSEXXybkSuYnc3YORNs5SQB4wn6E7teiHbXz
+	 q1fCdSL4LsucNOzTCcCPsAcox9A/BBh30t8Z+GNwo7rySDAVvXwVa35uFuPz03gT9T
+	 aUA3dFDvwLH4Q==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A527D42389;
-	Thu, 23 Jan 2025 16:04:21 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8881060718;
+	Thu, 23 Jan 2025 16:41:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id A81E7F08
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2025 15:40:23 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 9BF65B88
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2025 16:41:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7DDFA831CA
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2025 15:40:23 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7C15542506
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2025 16:41:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id yvqeTvrAunHK for <intel-wired-lan@lists.osuosl.org>;
- Thu, 23 Jan 2025 15:40:22 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.20.85;
- helo=eur05-db8-obe.outbound.protection.outlook.com;
- envelope-from=zdenek.bouska@siemens.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 7636A815CD
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7636A815CD
-Received: from EUR05-DB8-obe.outbound.protection.outlook.com
- (mail-db8eur05on2085.outbound.protection.outlook.com [40.107.20.85])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7636A815CD
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2025 15:40:21 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id YVY1oi6MTILf for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 23 Jan 2025 16:41:13 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
+ helo=mgamail.intel.com; envelope-from=yoong.siang.song@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 0B80D42500
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0B80D42500
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0B80D42500
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Jan 2025 16:41:12 +0000 (UTC)
+X-CSE-ConnectionGUID: DyiegJcnSfS+F1RNfIcGzg==
+X-CSE-MsgGUID: xZfee3lDSl+HycWw+OtdaA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11324"; a="55576266"
+X-IronPort-AV: E=Sophos;i="6.13,228,1732608000"; d="scan'208";a="55576266"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+ by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Jan 2025 08:41:11 -0800
+X-CSE-ConnectionGUID: bZWx12lcQfik4AsBvx+xQQ==
+X-CSE-MsgGUID: vXqsIPJxTNauTQ+K1Pw5Uw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.13,228,1732608000"; d="scan'208";a="107631946"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmviesa008.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 23 Jan 2025 08:41:10 -0800
+Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.44; Thu, 23 Jan 2025 08:41:08 -0800
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.44 via Frontend Transport; Thu, 23 Jan 2025 08:41:08 -0800
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.43) by
+ edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.44; Thu, 23 Jan 2025 08:41:08 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=gZ/Kla/nqwLgJqaDjD6wMw4rudYcrupKqwxhERSImz3nAO5/losipXJJ7+Tn8W4RUcgSZuKy9YRg+PfuTzXPYkFJN1GVM5czCOuxyY6wwtrNuFG8dVWzTnc31q8nK2AkCEWuT7HLlkix6SqQPq1UJaRTlo2as9d4LnNLiIzo2PmdXj2BdTp8AlUmGpO+UEvAEu6MHeKEh1pbn8LycCk/zDpkt8vyQ4n4JS1lK9845nHdASWk8JOlMRDm5QosNs+QupL+5K4o+s2mGXjkKIgACnQ8MnNdMtqkebKPDt7H33S/gOzuKULL7zJ2vuPjPVoC1jDidC08cg85d70WCSam6Q==
+ b=j1zdCylRL29+2AFCENJENUiCNnSrzFWUg4oEGQkMRIZ5xXfJRnThIKnIxEiCnhV8AkHq6aGiLLS6lleX7sI5aEYCb1dIydoUIeX3JQM6ffCr+WhLE3KLmKAZtjcWc3oDGfmBQjnct0JCXbXoRpZkYmsczy1Ihtplm+FJGSpPEHbvIsuoMxruExCl2Qx0ZhvfUMnltQ1kxOAQe9co6s79xxYa3aN6eNXm8a1bm5ASnPXV85k1GiFui56AhrUfZqxg29vgSq9+Bw1Uyd/IYVl7nQ5x+OOlcExm4DMaTaY0zev7n91GjXTO9ix/GfqHr0ybRQR9PyPz3wYRs2ohc3KbwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=d1nAACqQ9xwPc6UZNtF1UGVEGOk2c/WzK7IbHeUPoW0=;
- b=rwOSkXi5S15driQ7NhegE5U0jkePZDLPaDBWsQL7oJdyyr47G1NgfgYo2qcEBVecvCdYrPLCJ+7x+S6nkiqt9oac8hqnAdeJpgNnL4VWqy1ZL1XZn4tnryRUopdjJFonymCDRrb9D0wQ7JcsVUkm+sPydGGbR0mlW5fPk/I5U+YOwO2sldXfOSOe+F8UGZNjOYvi7Peub/OUBvizcKSdBxeECO8rfkCMGB0SqcTLAnVBXnv03RnHZBenkJtdfJALKCpNC/RrenxDF9tzpclZkFdkBIYpUWk5PqVGR17i9YVG5zPaUmEzF7O0mgOFAg1L2krpjPXKheJXHUzrD1l1dA==
+ bh=gvCB211DSi8toJrUvWNjgaCiJ5NtA3KfshnDE/LSXyc=;
+ b=ImPXjFv/t4LhHymJw7by+nUMBCZQ0OkX5gahIJNkS8ZjWnkKTyDhLKXcaxFm0FmGs4xOll2ueDurPjzoIUW5khjKwMRhlf1LWVCcLF3f9SuZPkSuwyYZlzfFLjEXjLdQwgWePOnFAuAx3wDbgbJHvt9AmjoSyiqcis1RpaFbWgfnGunbN1Dfrz4POjAnDuF+iWO/KPG1zNzTUSg8L/hCReig8YFJVFHfuhUO3ZCbBsRjyegVILF8BtX9bmQ8wtkJNkyxwY47C4pTs4v0FTR4VIqPTlYIm9M9Hi5zMXpsu4Duzx6vV85bs60VjL4K3Y7PK0Mn7iMAJ0+6p04LtIRy5Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=siemens.com; dmarc=pass action=none header.from=siemens.com;
- dkim=pass header.d=siemens.com; arc=none
-Received: from AS1PR10MB5675.EURPRD10.PROD.OUTLOOK.COM (2603:10a6:20b:47b::22)
- by AM7PR10MB3176.EURPRD10.PROD.OUTLOOK.COM (2603:10a6:20b:101::18)
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from PH0PR11MB5830.namprd11.prod.outlook.com (2603:10b6:510:129::20)
+ by MW3PR11MB4714.namprd11.prod.outlook.com (2603:10b6:303:5d::15)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8377.19; Thu, 23 Jan
- 2025 15:40:18 +0000
-Received: from AS1PR10MB5675.EURPRD10.PROD.OUTLOOK.COM
- ([fe80::f25:24f8:9a0e:3430]) by AS1PR10MB5675.EURPRD10.PROD.OUTLOOK.COM
- ([fe80::f25:24f8:9a0e:3430%5]) with mapi id 15.20.8377.009; Thu, 23 Jan 2025
- 15:40:17 +0000
-From: "Bouska, Zdenek" <zdenek.bouska@siemens.com>
-To: Song Yoong Siang <yoong.siang.song@intel.com>, "David S . Miller"
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8356.22; Thu, 23 Jan
+ 2025 16:41:04 +0000
+Received: from PH0PR11MB5830.namprd11.prod.outlook.com
+ ([fe80::c80d:3b17:3f40:10d6]) by PH0PR11MB5830.namprd11.prod.outlook.com
+ ([fe80::c80d:3b17:3f40:10d6%7]) with mapi id 15.20.8356.020; Thu, 23 Jan 2025
+ 16:41:04 +0000
+From: "Song, Yoong Siang" <yoong.siang.song@intel.com>
+To: "Bouska, Zdenek" <zdenek.bouska@siemens.com>, "David S . Miller"
  <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
  <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Simon Horman
  <horms@kernel.org>, Willem de Bruijn <willemb@google.com>, "Bezdeka, Florian"
  <florian.bezdeka@siemens.com>, Donald Hunter <donald.hunter@gmail.com>,
- Jonathan Corbet <corbet@lwn.net>, Bjorn Topel <bjorn@kernel.org>, Magnus
- Karlsson <magnus.karlsson@intel.com>, Maciej Fijalkowski
+ Jonathan Corbet <corbet@lwn.net>, Bjorn Topel <bjorn@kernel.org>, "Karlsson,
+ Magnus" <magnus.karlsson@intel.com>, "Fijalkowski, Maciej"
  <maciej.fijalkowski@intel.com>, Jonathan Lemon <jonathan.lemon@gmail.com>,
  Andrew Lunn <andrew+netdev@lunn.ch>, Alexei Starovoitov <ast@kernel.org>,
  Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer
- <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>, Joe Damato
+ <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>, "Damato, Joe"
  <jdamato@fastly.com>, Stanislav Fomichev <sdf@fomichev.me>, Xuan Zhuo
- <xuanzhuo@linux.alibaba.com>, Mina Almasry <almasrymina@google.com>, Daniel
- Jurgens <danielj@nvidia.com>, Andrii Nakryiko <andrii@kernel.org>, Eduard
- Zingerman <eddyz87@gmail.com>, Mykola Lysenko <mykolal@fb.com>, Martin KaFai
- Lau <martin.lau@linux.dev>, Song Liu <song@kernel.org>, Yonghong Song
+ <xuanzhuo@linux.alibaba.com>, Mina Almasry <almasrymina@google.com>, "Daniel
+ Jurgens" <danielj@nvidia.com>, Andrii Nakryiko <andrii@kernel.org>, "Eduard
+ Zingerman" <eddyz87@gmail.com>, Mykola Lysenko <mykolal@fb.com>, "Martin
+ KaFai Lau" <martin.lau@linux.dev>, Song Liu <song@kernel.org>, Yonghong Song
  <yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, Hao Luo
  <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>, Shuah Khan
- <shuah@kernel.org>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose
- Abreu <joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel
+ <shuah@kernel.org>, Alexandre Torgue <alexandre.torgue@foss.st.com>, "Jose
+ Abreu" <joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
  <przemyslaw.kitszel@intel.com>
 CC: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
@@ -104,12 +129,13 @@ CC: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
  <intel-wired-lan@lists.osuosl.org>, "xdp-hints@xdp-project.net"
  <xdp-hints@xdp-project.net>
 Thread-Topic: [PATCH bpf-next v6 4/4] igc: Add launch time support to XDP ZC
-Thread-Index: AQHbaC9NftORAnH56E2O4EjHNdzz2bMkh40A
-Date: Thu, 23 Jan 2025 15:40:17 +0000
-Message-ID: <AS1PR10MB5675499EE0ED3A579151D3D3EBE02@AS1PR10MB5675.EURPRD10.PROD.OUTLOOK.COM>
+Thread-Index: AQHbaC8B2aD+Y8oJSU6tHVAr+g1K37MkidWAgAAKZBA=
+Date: Thu, 23 Jan 2025 16:41:03 +0000
+Message-ID: <PH0PR11MB583095A2F12DA10D57781D18D8E02@PH0PR11MB5830.namprd11.prod.outlook.com>
 References: <20250116155350.555374-1-yoong.siang.song@intel.com>
  <20250116155350.555374-5-yoong.siang.song@intel.com>
-In-Reply-To: <20250116155350.555374-5-yoong.siang.song@intel.com>
+ <AS1PR10MB5675499EE0ED3A579151D3D3EBE02@AS1PR10MB5675.EURPRD10.PROD.OUTLOOK.COM>
+In-Reply-To: <AS1PR10MB5675499EE0ED3A579151D3D3EBE02@AS1PR10MB5675.EURPRD10.PROD.OUTLOOK.COM>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -122,99 +148,105 @@ msip_labels: MSIP_Label_9d258917-277f-42cd-a3cd-14c4e9ee58bc_ActionId=5346f792-2
  MSIP_Label_9d258917-277f-42cd-a3cd-14c4e9ee58bc_SetDate=2025-01-23T15:32:06Z;
  MSIP_Label_9d258917-277f-42cd-a3cd-14c4e9ee58bc_SiteId=38ae3bcd-9579-4fd4-adda-b42e1495d55a;
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: AS1PR10MB5675:EE_|AM7PR10MB3176:EE_
-x-ms-office365-filtering-correlation-id: 682df271-2026-4003-1611-08dd3bc43cfd
-x-ms-exchange-atpmessageproperties: SA
+x-ms-traffictypediagnostic: PH0PR11MB5830:EE_|MW3PR11MB4714:EE_
+x-ms-office365-filtering-correlation-id: 51d8393d-a787-4f87-19d8-08dd3bccba37
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|1800799024|7416014|376014|38070700018|7053199007|921020; 
-x-microsoft-antispam-message-info: =?iso-8859-2?Q?2FaQIKJZTR48OcC3ALybSDPfIEQSdPgfYKf5iGSXiR9U8fKW3JokpGdtlP?=
- =?iso-8859-2?Q?oXddsmSXL8UikF9RNqLfw+8LSK7cZQd1m9HRwAPkXMMfuVnLGI+eMD3I37?=
- =?iso-8859-2?Q?JCh0zcedlRxXP/EI/yWFyzXurIHcvG6JGNTT0Miy/G/PdLzXNu7wBkBDca?=
- =?iso-8859-2?Q?7vshlpGSGL+2deG8u4cHPeV8SNgruxD1OzuXqPuWRfyfUradV9GF5qZKqy?=
- =?iso-8859-2?Q?xMlisGl+HyvpyjtPQk7gnYT9xsMZzRllQtzMcHDKF3WiVSdbRch8cJVZ9p?=
- =?iso-8859-2?Q?coP9RQbNnEAXJNtQfirTPLitQd4AntHtnMrle55X3RK8DBv27wRGLaCQKV?=
- =?iso-8859-2?Q?dSd3m+v391QQqKCEMDh/5Or+xY7+y3d944anacJpUG0+ffYBs1nLCbS7VN?=
- =?iso-8859-2?Q?E9d8R4QK1d16pyOLy8sCMbJ2Bok5gNC7gvLO08iaBcy2DpBSMbYao7kpQU?=
- =?iso-8859-2?Q?MfB8OmHPtEri+r9vBRxdZzgeXjfDwPAFo10d1fr71PXdrzqnPRy+njgH0j?=
- =?iso-8859-2?Q?0Bwg3m3UcQ69tg+MWv4pN3uesIShcLQUwDgleJToG3MIuYK6bmxSJNZ5uh?=
- =?iso-8859-2?Q?UHyJXZNquBGogiR1Qe07jDwL9TlDxV+kYdHFrs4CnITblVDmJTtYQKyNcp?=
- =?iso-8859-2?Q?WKE63WwteAzkIr54Q5t5iEdYPj1ZSoFJjgcDeIonnxlMQsTMKKO+8+wN4J?=
- =?iso-8859-2?Q?2yZ4S7tI9KMVbz6Y2sPAsVrRQjGdPB7BaL5CJwMyMiRnEzxSScPNGcTmjX?=
- =?iso-8859-2?Q?cnTClRBveUJUU6fmzp5bXY7Khq3re2BY+8OrWUoENF+tS1PUR6rvItDlSG?=
- =?iso-8859-2?Q?gCYARKNSFtXVYA709BxX+S7WDIqKqzruNE+rD9KTFyCyLSHw66aN+/lz2Y?=
- =?iso-8859-2?Q?ZcaGyJ6t8zl5v4o8Kx/2O+vXXwRB552q/kbKaPeqUg5D8fG25asDnrXcQh?=
- =?iso-8859-2?Q?VPvH0Hv6ZB17xQ5WckjaUJH/6uglijKAnL9AfvFJyxFj5WFfjHfD2Lmo14?=
- =?iso-8859-2?Q?nKvn1F1CnpvViypctb0PoXTT3sZoKhpck6NSDhWYNZtIgMZLhPq5o6ue9g?=
- =?iso-8859-2?Q?1gOt6w2xey26P1U4WxH7JI1EV9avJ8n4UsKz70a/zjLAUqzxkYAZ8Jsqvs?=
- =?iso-8859-2?Q?+d7fFhvW05RaDjIX96YgXNZicoVXFyKNODifhY1SpVjmWEcPWKfPXMgdT2?=
- =?iso-8859-2?Q?CEiK01mpElT1oLetCDMOL5OXlGJvEkz94ncJ1NBdKrmzsF84paKi5XCxU8?=
- =?iso-8859-2?Q?Dy6n5x63ZpIBTnOBnvVqEVjB8SAxwaO1O3QwKvqjMHawzonej0pBGpT8Fs?=
- =?iso-8859-2?Q?tk/ivhaPDk75RgdwG/EZfS7OMJsgHmnTv9OTEaAtMXlbCpx9DXKCMklEN5?=
- =?iso-8859-2?Q?j9QeUvWe1KbTQTFQ/KPLMBtYHNdnFowem3K39VehExB/lF/Q79/AGkYc0N?=
- =?iso-8859-2?Q?09NDlnN8GNflpkCl6ujvHYpjGkHoOyHZaHUGYQ=3D=3D?=
+ ARA:13230040|376014|7416014|1800799024|366016|921020|38070700018; 
+x-microsoft-antispam-message-info: =?us-ascii?Q?HaJUVV1/yEsqMHDAfZDyORkZve+F+SBhAZWthwAVgNmxYllJ+G6eeZihVyF6?=
+ =?us-ascii?Q?AaTWBcemyfb+OdJajnJlq1TwI3DnagPVy0Mexd6ZkYeGf/Ku99z/4yaPWmBJ?=
+ =?us-ascii?Q?aq2RhODldqPkoCtCccLjJAyjkF94pLgMtIKEZ58fq0W2GyzGUJNysh+ugoiN?=
+ =?us-ascii?Q?7esIrmUw4DI9XqGL5cnaX3m+a/F534/JoLCH19OI6O121Plkuh/ks1/r+sSU?=
+ =?us-ascii?Q?+h6PIEZEIBTnHHpbyVWaGWMLgUVDXvwFushrZZeSg0Sr1F9Lg2w/qhuMOtz3?=
+ =?us-ascii?Q?R9vwUVeFAi8JQC6DRqd153YaYYMJiErWMB/yoC0qcTCwKSGopFtlqZKFl3un?=
+ =?us-ascii?Q?AgvKcJak/sTKY+h25nn02hYEAZTibHfRMJgtrDim4LCaSAxGjDl4qt7L0Z2C?=
+ =?us-ascii?Q?YzCEUiGwhsf2PGUwIoUN8aqmpEOfBm5ZDUwJSEHYBEK1t7ORGd4PdddX1v92?=
+ =?us-ascii?Q?k8NS7AIlC9A2AZNOMznvq01yXOJcRONUl00Ad38AqIvabwfyRuDohxKyW8YI?=
+ =?us-ascii?Q?j+gINxuo89HPDr0vGg5V4G79dWxaL9B+UiE4ApJJEdvvJUlzLP9Nk4E09ezl?=
+ =?us-ascii?Q?YnGpkueh2Ga4etKWkJxSooNbbPruwg3ddQW3lP65AN6wHxVyOAwmQZxoiZuQ?=
+ =?us-ascii?Q?BKAkYxq+biTf2GHfnpNh8/EBirh40mq+a6nYYNIj4voDcDi7Ankx7Um7ZMnx?=
+ =?us-ascii?Q?xyqL6cImVEIlAcshIyWPQbhtJ33Add/HaE2ko8JgmCP2iwchbA74x0Dg6qu1?=
+ =?us-ascii?Q?sxYm6AiFiITyLxydN14jmEzsk3ah66gFtau5Wn5uVBeW0KjmmkqniN+fA1oE?=
+ =?us-ascii?Q?1DgtlRJFb+mpsVZ4x/jokNj+X+gxu/ksO0k2P+F9QRKMrC/SVu86VJ/rpw7i?=
+ =?us-ascii?Q?hIJP1oNSc71RSYCzDfnABoNAkQmeFAHNljUhQKzEZdhaEqhLyGbG4JhiYWfl?=
+ =?us-ascii?Q?MwACHKHWoyFNbLsK85Njq+3PQkWK4frTffdPNS2ouPt7+coP8rCVoYnGsa/n?=
+ =?us-ascii?Q?po0TRdZpR1RFRWk4BuzGfF+4wGzIVllndHDKdzn01ZUaAJdtreH3jowPOQTC?=
+ =?us-ascii?Q?8PtvxEes/oL1GvqxF4U9YvGpPocnPNATzNmwhJUwxZPwJj68rwhFE2F7b5HY?=
+ =?us-ascii?Q?3FMjSaSzcIapu/NuGFHBrfIry2xwB58dXnzwHPaYygw+MMN/0GYbWfnWwlt5?=
+ =?us-ascii?Q?+Y3kY/q33cpamxVQMEo5MzmlaERqnY1SLSrI+DU1FEedB6cbgkkWYU7L9ks2?=
+ =?us-ascii?Q?OAWIWm38bZSmpAujhhRsMLgpaV7NzQRXo2Fa3aoOIEiNTxymTVGuMMMshOCa?=
+ =?us-ascii?Q?ill4nd9J0cTxWXh4gfkZRCvenN04rNJBL5QBbPEDviknfkGlbcTgIwJbowMr?=
+ =?us-ascii?Q?+RqVlOFO1DoLKK0/OSJiEIH6UrGdsU4cKJlt6tlvV8E07mey23/1apPb1lby?=
+ =?us-ascii?Q?kEfkqGKjqEU=3D?=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:AS1PR10MB5675.EURPRD10.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(1800799024)(7416014)(376014)(38070700018)(7053199007)(921020);
+ IPV:NLI; SFV:NSPM; H:PH0PR11MB5830.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(7416014)(1800799024)(366016)(921020)(38070700018);
  DIR:OUT; SFP:1101; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-2?Q?nZooqm37ZO53YP6ACV7WW/7zbYfc1hs6MlglWTugsHDXaoF0ydMS3GRV/8?=
- =?iso-8859-2?Q?wwxeOdN+Y2mmJyoZiaWiRzG8Gh9Wvprl6/7aaVHnxdZpJqq64WznmQrU+Z?=
- =?iso-8859-2?Q?yNFm15kvbuw3eN575iAealWhLfIypGJAFSw5ThE36FMzsImSqnA3/58dBb?=
- =?iso-8859-2?Q?Nywig+xrQyrK/sj6sEe/fSRcLDYaHbeGS7ND3lsG7mplMjjKodUJw3ltg6?=
- =?iso-8859-2?Q?WD7JfC0TrZWU/JsOX1e+Q5zs5Ez6RZnGOgrp6/rQVMTSKPRV5otlF8da/K?=
- =?iso-8859-2?Q?jCd0Sw75qH41J9qoLKGMeVre6l5Y1IpP4aPc71LZAw45ihSzIwyFow3v/F?=
- =?iso-8859-2?Q?+KPNPsEX+sWmNAZ0KUlUcnLAC/zQtzvOfZ2sI/X5mhv0LfwREvyg9tF2h9?=
- =?iso-8859-2?Q?/L86AH70X0QkGxutATA5jEYGsQQtiePx36cWjPDbv9C1ryMsXcO9qGinpQ?=
- =?iso-8859-2?Q?yt3SdqCAzSS6xd9ZKE260glgLfd/P78tpMmeuejCS3hirZq2fQ/qISFEmZ?=
- =?iso-8859-2?Q?N/O8N9x/mCC7PYE/L0eupk0xMD4Y0eHbmB6478RKfqG4Awl6vlLk16Fyxd?=
- =?iso-8859-2?Q?zqm4HuRaILlUshMFKkEtLDADVVQ6jVKMVJxOqfYxnKkJWsh8UUaeN/Y1+a?=
- =?iso-8859-2?Q?+Okd/YOCQloPOCDyGz8MesfQR/vztDHzrfwQ59CJTePLktKz/TiewZu3qB?=
- =?iso-8859-2?Q?ppz9aJZ7ULe75C3M5LuZeQc0koDKWRunv3E6o3YAmpPvcQtbxzjNz0PUb2?=
- =?iso-8859-2?Q?Sgn2946iDUO15wSqcrtTHYmXSzg3I8IlaAQJ2Kq/0LT1606Q5lAaDMJWVr?=
- =?iso-8859-2?Q?JKFbOatcEcBDGvej+wk3xpfsLv9i81rWg/dMj5aYqJv7Q5wWN5m8Fix3pT?=
- =?iso-8859-2?Q?W+0Fz+n1N1vE5hTHtCluUCLPKERaVsZn4c92hAWHfrehQmIUN47RNh5KMy?=
- =?iso-8859-2?Q?BQxEWAINoo4rQtqfpI0udEaZWO33lvoSsIZPB81/Q1IssXs+Yay5fuV6t7?=
- =?iso-8859-2?Q?amtr5iCQEWI+XsLL9saPrBaFDpKbF2rOd9ssth+3lI2Y8IH8+orsw++ut6?=
- =?iso-8859-2?Q?VNrw8WQ37p84vBbVIXwXl6wz22XorAxfcLajfzjVr/ouA/QAcbMtZ07wm0?=
- =?iso-8859-2?Q?5gpSHsoXOG+kiwrNepf7RwWxGDlSjor7aqnJbvC8nftLq2tXFvRNkP7Bx8?=
- =?iso-8859-2?Q?SplH+tkSVZ7DyJ8Zysc7tXpxJBGnWVGFdWed/gEvu11N2IXUWWQVhdJC63?=
- =?iso-8859-2?Q?cdBXk1fkKI/H/j/9xXpx6ozuOJKpUKHeQksp3u6Kazl6tdleMy5Ml/UnAc?=
- =?iso-8859-2?Q?ScIoiYjyvBHL3NkCcDMEY0lI5HzoYVDQqpYRHH/VBfGYXgtK7S0ybbwI36?=
- =?iso-8859-2?Q?rQw79g4BT6riQOKv0G9fXO722sxr28NTDT3zpxOKIX/doGizFXX9Ga1kJ7?=
- =?iso-8859-2?Q?0iHZb69Wjox+Zvwo99+Gxgxr5T/KuEFyUB8EFhnCPat/KCLcwJJP/TEako?=
- =?iso-8859-2?Q?k4V9r/FdjqYshmdPrrlkV1hmqp1vSw61WZ6xI39yMIZ6huiTls5K800eUt?=
- =?iso-8859-2?Q?RLR4iYO/xZx7jIUrH+zPcrZu7xaUzoN2hTYj/QkPKfKOduqN6zlbmb/gff?=
- =?iso-8859-2?Q?4jFp2Qjhd0tthI0AzMkQBmsKor4p3zYbHJ?=
-Content-Type: text/plain; charset="iso-8859-2"
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?q6c2Al7pY0dLeJd8oxzU3Yi9y6X66V/YYrKhs+STyFBETAsqFnPj8qNB6Pwg?=
+ =?us-ascii?Q?6ksAzkWGw19IbhrZtgPwPUkg2mK+DPt1azxJ55M5fx2ACDM5VqCYKdZFoEfs?=
+ =?us-ascii?Q?zqN2a6AN3C3eU0l427zK6WN78X98j0D6XOnTrpgSCOCgKj/Y3tmI69hCmWbl?=
+ =?us-ascii?Q?v0mzk4PZvOm+zfnBFZS58VP3Q55AtwXqRQITDpKKe2hvPaVI0XmiIMqjbBo+?=
+ =?us-ascii?Q?2P9y4/8MA+pfJvGvq0AhQm/Aiy+bPTwOIc4/T2Dh4pJURlb7J4p1ekJZQ5f2?=
+ =?us-ascii?Q?aly87pGjMQ9uGNGOimt9OuWUHt5KVusM8wqIs0RCLmf4hpQQcvhdj9SgJazl?=
+ =?us-ascii?Q?jB2Tf1pYMkzaOk72SAgHLiuARYobGww6KrZOdzr6JeeeU6Bkbe1WCAx62nkt?=
+ =?us-ascii?Q?l7FABjWDGgNheHJrRt9iBQsciBOM8APbzwUrKpqeKJp3nt5fYs8K/yzGdeYW?=
+ =?us-ascii?Q?ZO3Xz2nsHv6n1TkvNcXOKBrPActKX1dmfinb3tDRTR6S3iatL6Z2pVfom1I3?=
+ =?us-ascii?Q?mxjRT73IeQetYVZBTykiweIJYckYUrV9LzrH0T9QXXsXHnlUw8qlMyAee81b?=
+ =?us-ascii?Q?6fopCCebuDx1Qj3DYVnuWgAwBJueZEAowKdVyj8wwt+xdjQ61LhTqw7hsbdP?=
+ =?us-ascii?Q?nEc1TBnNeL1781KFOlrd9KplQuHHYU+a1Qrhlh9iY3KIybVrSAKm7GhJpF90?=
+ =?us-ascii?Q?1O5eWaA3DJxZkU6j07Bzvc1uvXjOSLlrdBwuXts7NaupbKl6qbeqb3KGfWM9?=
+ =?us-ascii?Q?kgdg3Me+Ibnlj0Gt5hxJK9psZ2rxrbwwkRE4p7yMmvEEmmzLzxR3vcT7XXYy?=
+ =?us-ascii?Q?qozIO6sTlIDX8kO9rR3ARFF9IsvPS23kp/3JlBt6yxfT0Qlro/ycXq+dFtZR?=
+ =?us-ascii?Q?ikzPmefmDGCIodwKzPcLCV9wmL9vG9Yp6mbDlbhROqx4isFiCv6TzIIKm60L?=
+ =?us-ascii?Q?Fo2XaAttcu9/8o3np9wrTV6kxtTLT+jKBnDAIY37EFqbOMYU4pKWS9FkBZF+?=
+ =?us-ascii?Q?lyUtbhG4ldVYGUUHXRyEwLRrE+k6QjcyBvcCg54Vn2fjV6/wSVTMpiFyCXkw?=
+ =?us-ascii?Q?Wmc2s/+XF0Mmq+oHnfc6qDd/b40Mrxq0gtHsdaZFiPvsnifh05aTRdUJD+Gl?=
+ =?us-ascii?Q?MmKcYcWnMWfNc1GVYD1bJ9Pa2+YFBUfyB90Ekc0GogoOAG83+mmsEL5HNzS5?=
+ =?us-ascii?Q?wirTfWAS+4iaQL6fS0QGp+fPQyIAt3VMkUSBJ2siZ1bzpRAdWz+tHJscy+5e?=
+ =?us-ascii?Q?FNW9fkE0xBd0w4FJnXdeTjieF0XkX00wrrsW63yHtRP/NRxuIoF0smg7AoEt?=
+ =?us-ascii?Q?atIPYj2e12ycFE/SsCssTKhX95UlnPGTlB+9tmLnMTZ4adLDUt/FHubsyPIe?=
+ =?us-ascii?Q?+mgMv3m6mZAbfrHe8oF0O2YxIQnWQ6vySrSMXE2UrFIOLHJHZ82CGurkfPul?=
+ =?us-ascii?Q?+7/WUXlGeWrouzBv2MSPeK4wysIbLvQ1EqUglqcycsTWUp3oz1qN/ujFn3Z9?=
+ =?us-ascii?Q?c1gt5SYtbKzZkbaHPX8uFb7fCSQcTdZ55JOBLHWvZ/MjueLcwx3qPU5CzWk/?=
+ =?us-ascii?Q?cmqjfz0lRoVoWZdODhxy5MLCWvE+NGLdisVYqv30XuyUaSp3+3UtcvW/6Bq5?=
+ =?us-ascii?Q?XQ=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-OriginatorOrg: siemens.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: AS1PR10MB5675.EURPRD10.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-Network-Message-Id: 682df271-2026-4003-1611-08dd3bc43cfd
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Jan 2025 15:40:17.9102 (UTC)
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5830.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 51d8393d-a787-4f87-19d8-08dd3bccba37
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Jan 2025 16:41:03.9694 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 38ae3bcd-9579-4fd4-adda-b42e1495d55a
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: TOUmu+D4MEbrWvo1qTDea7s70pxxAvW0La+lxPOYtl2BXt/h7WnNxSuv/TaGmU+V4sZR/ruvIXf0ocqSAbgaxuF7JkIXRAkOeWHq2CuCBoI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM7PR10MB3176
-X-Mailman-Approved-At: Thu, 23 Jan 2025 16:04:19 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=siemens.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=d1nAACqQ9xwPc6UZNtF1UGVEGOk2c/WzK7IbHeUPoW0=;
- b=z7fHF4JQFj6KH+hedXVPcIXy8WY3vn5iO7oX8HIdBwEICn7t6VMxguwg90gP6YuPL05AUdIp8EdBa+mIazuVVbjWiHBeVTbjCKFi5ePqNkNln95zQrvkoZcvxfPxrmz1Dljc+GiMQ7B2RfMYuG1gzgMo7XOCndDdM985wGyTIpGukiUklPALCOuX1X96MzNuX99UbVO4I2jRPmOCjjKze4B9xkNm2/+uCu0s228/CC6WR3WvTqDe1ZixPh+Nm1m+i0KqZ4o1yS4H0nKuBK7Oh28W7PxvDyTWFHwJ0yfKqjYOUuvgzMIS14ViKztZTEiGhNkZM39Pz0vK/3MuuYDnkg==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=siemens.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=siemens.com header.i=@siemens.com header.a=rsa-sha256
- header.s=selector2 header.b=z7fHF4JQ
+X-MS-Exchange-CrossTenant-userprincipalname: hM1fNSix9Ka6dtJTW6DWyUPOb4L59Fml55ulO1RyqXMLgJaQVSO5sQIuBec/9Qg3ebHMWS14ZwVpTAYrANgDxBG2AK8ArHwZUxWYbSpPIlM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR11MB4714
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1737650473; x=1769186473;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=cppfD8LYJ8+RDMdrTdPCb4Tz93zM5wZs+tqbp9zqyTg=;
+ b=UJkGRpmWrtTTVAy08FfV3Mm4cZUs64+W4UeYLRraDHrSDztMbYukvM9H
+ ciTjrzkP7VXLQ38psRGoYkFlm3PhuPKIbb7g7cQBx0XwU/4y3F6w6/gti
+ fF8sJnwJBt0F1lTggeSFG0heZrsfMFciXYNC/8uYhVDAC6qvnafAb/HCh
+ mKTnNktGUIE1fcJd+k8sZkon6qOdAv57Reapa0OpNtVlC+J2ZXU8TAXWc
+ MDByXBBttQ7qYaEHPliKic+/YtWOlpCAp27I7MgffOJF8aNj7GVPsYtlV
+ kwlU+19SZ7qAfdYXLEU9EerP9loV3qyQJS3Qhe5sg3ECK0ZekdKjYCBBn
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=UJkGRpmW
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=siemens.com;
+ header.d=none;dmarc=none action=none header.from=intel.com;
 Subject: Re: [Intel-wired-lan] [PATCH bpf-next v6 4/4] igc: Add launch time
  support to XDP ZC
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -232,289 +264,104 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Siang,
+On Thursday, January 23, 2025 11:40 PM, Bouska, Zdenek <zdenek.bouska@sieme=
+ns.com> wrote:
+>
+>Hi Siang,
+>
+>I tested this patch series on 6.13 with Intel I226-LM (rev 04).
+>
+>I also applied patch "selftests/bpf: Actuate tx_metadata_len in xdp_hw_met=
+adata" [1]
+>and "selftests/bpf: Enable Tx hwtstamp in xdp_hw_metadata" [2] so that TX =
+timestamps
+>work.
+>
+>HW RX-timestamp was small (0.5956 instead of 1737373125.5956):
+>
+>HW RX-time:   595572448 (sec:0.5956) delta to User RX-time sec:1737373124.=
+9873 (1737373124987318.750 usec)
+>XDP RX-time:   1737373125582798388 (sec:1737373125.5828) delta to User RX-=
+time sec:0.0001 (92.733 usec)
+>
+>Igc's raw HW RX-timestamp in front of frame data was overwritten by BPF pr=
+ogram on
+>line 90 in tools/testing/selftests/bpf: meta->hint_valid =3D 0;
+>
+>"HW timestamp has been copied into local variable" comment is outdated on
+>line 2813 in drivers/net/ethernet/intel/igc/igc_main.c after
+>commit 069b142f5819 igc: Add support for PTP .getcyclesx64() [3].
+>
+>Workaround is to add unused data to xdp_meta struct:
+>
+>--- a/tools/testing/selftests/bpf/xdp_metadata.h
+>+++ b/tools/testing/selftests/bpf/xdp_metadata.h
+>@@ -49,4 +49,5 @@ struct xdp_meta {
+>                __s32 rx_vlan_tag_err;
+>        };
+>        enum xdp_meta_field hint_valid;
+>+       __u8 avoid_IGC_TS_HDR_LEN[16];
+> };
+>
 
-I tested this patch series on 6.13 with Intel I226-LM (rev 04).
+Hi Zdenek Bouska,=20
 
-I also applied patch "selftests/bpf: Actuate tx_metadata_len in xdp_hw_meta=
-data" [1]
-and "selftests/bpf: Enable Tx hwtstamp in xdp_hw_metadata" [2] so that TX t=
-imestamps
-work.
+Thanks for your help on testing this patch set.
+You are right, there is some issue with the Rx hw timestamp,
+I will submit the bug fix patch when the solution is finalized,
+but the fix will not be part of this launch time patch set.
+Until then, you can continue to use your WA.
 
-HW RX-timestamp was small (0.5956 instead of 1737373125.5956):
+>But Launch time still does not work:
+>
+>HW Launch-time:   1737374407515922696 (sec:1737374407.5159) delta to HW TX=
+-complete-time sec:-0.9999 (-999923.649 usec)
+>
+>Command "sudo ethtool -X enp1s0 start 1 equal 1" was in v4 [4] but is not =
+in v6.
+>Was that intentional? After executing it Launch time feature works:
 
-HW RX-time:   595572448 (sec:0.5956) delta to User RX-time sec:1737373124.9=
-873 (1737373124987318.750 usec)
-XDP RX-time:   1737373125582798388 (sec:1737373125.5828) delta to User RX-t=
-ime sec:0.0001 (92.733 usec)
+This ethtool command is to use RSS method to route the incoming packet
+to the queue which has launch time enabled. However, not every device suppo=
+rt
+RSS. So I move to use a more generic method, which is vlan priority method,
+to route the incoming packet. Therefore, you need to send an
+UDP packet with VLAN priority 1 to port 9091 of DUT.
 
-Igc's raw HW RX-timestamp in front of frame data was overwritten by BPF pro=
-gram on
-line 90 in tools/testing/selftests/bpf: meta->hint_valid =3D 0;
+Below is example of my python script to generate the vlan UDP packet.
+You can have a quick try on it.
 
-"HW timestamp has been copied into local variable" comment is outdated on
-line 2813 in drivers/net/ethernet/intel/igc/igc_main.c after
-commit 069b142f5819 igc: Add support for PTP .getcyclesx64() [3].
+from scapy.all import *
+from scapy.all import Ether, Dot1Q, IP, UDP
+packet =3D Ether(src=3D"44:ab:bc:bb:21:44", dst=3D"22:ab:bc:bb:12:34") / Do=
+t1Q(vlan=3D100, prio=3D1) / IP(src=3D"169.254.1.2", dst=3D"169.254.1.1") / =
+UDP(dport=3D9091)
+sendp(packet, iface=3D"enp1s0")
 
-Workaround is to add unused data to xdp_meta struct:
+Thanks & Regards
+Siang
 
---- a/tools/testing/selftests/bpf/xdp_metadata.h
-+++ b/tools/testing/selftests/bpf/xdp_metadata.h
-@@ -49,4 +49,5 @@ struct xdp_meta {
-                __s32 rx_vlan_tag_err;
-        };
-        enum xdp_meta_field hint_valid;
-+       __u8 avoid_IGC_TS_HDR_LEN[16];
- };
-
-But Launch time still does not work:
-
-HW Launch-time:   1737374407515922696 (sec:1737374407.5159) delta to HW TX-=
-complete-time sec:-0.9999 (-999923.649 usec)
-
-Command "sudo ethtool -X enp1s0 start 1 equal 1" was in v4 [4] but is not i=
-n v6.
-Was that intentional? After executing it Launch time feature works:
-
-HW Launch-time:   1737374618088557111 (sec:1737374618.0886) delta to HW TX-=
-complete-time sec:0.0000 (0.012 usec)
-
-Thank you for XDP launch time support!
-
-[1] https://lore.kernel.org/linux-kernel/20241205044258.3155799-1-yoong.sia=
-ng.song@intel.com/
-[2] https://lore.kernel.org/linux-kernel/20241205051936.3156307-1-yoong.sia=
-ng.song@intel.com/
-[3] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/comm=
-it/?id=3D069b142f58196bd9f47b35e493255741e2c663c7
-[4] https://lore.kernel.org/linux-kernel/20250106135724.9749-1-yoong.siang.=
-song@intel.com/
-
-Best regards,
-Zdenek Bouska
-
---
-Siemens, s.r.o
-Foundational Technologies
-
-> -----Original Message-----
-> From: Song Yoong Siang <yoong.siang.song@intel.com>
-> Sent: Thursday, January 16, 2025 4:54 PM
-> To: David S . Miller <davem@davemloft.net>; Eric Dumazet
-> <edumazet@google.com>; Jakub Kicinski <kuba@kernel.org>; Paolo Abeni
-> <pabeni@redhat.com>; Simon Horman <horms@kernel.org>; Willem de Bruijn
-> <willemb@google.com>; Bezdeka, Florian (FT RPD CED OES-DE)
-> <florian.bezdeka@siemens.com>; Donald Hunter
-> <donald.hunter@gmail.com>; Jonathan Corbet <corbet@lwn.net>; Bjorn
-> Topel <bjorn@kernel.org>; Magnus Karlsson <magnus.karlsson@intel.com>;
-> Maciej Fijalkowski <maciej.fijalkowski@intel.com>; Jonathan Lemon
-> <jonathan.lemon@gmail.com>; Andrew Lunn <andrew+netdev@lunn.ch>;
-> Alexei Starovoitov <ast@kernel.org>; Daniel Borkmann
-> <daniel@iogearbox.net>; Jesper Dangaard Brouer <hawk@kernel.org>; John
-> Fastabend <john.fastabend@gmail.com>; Joe Damato <jdamato@fastly.com>;
-> Stanislav Fomichev <sdf@fomichev.me>; Xuan Zhuo
-> <xuanzhuo@linux.alibaba.com>; Mina Almasry <almasrymina@google.com>;
-> Daniel Jurgens <danielj@nvidia.com>; Song Yoong Siang
-> <yoong.siang.song@intel.com>; Andrii Nakryiko <andrii@kernel.org>; Eduard
-> Zingerman <eddyz87@gmail.com>; Mykola Lysenko <mykolal@fb.com>;
-> Martin KaFai Lau <martin.lau@linux.dev>; Song Liu <song@kernel.org>;
-> Yonghong Song <yonghong.song@linux.dev>; KP Singh
-> <kpsingh@kernel.org>; Hao Luo <haoluo@google.com>; Jiri Olsa
-> <jolsa@kernel.org>; Shuah Khan <shuah@kernel.org>; Alexandre Torgue
-> <alexandre.torgue@foss.st.com>; Jose Abreu <joabreu@synopsys.com>;
-> Maxime Coquelin <mcoquelin.stm32@gmail.com>; Tony Nguyen
-> <anthony.l.nguyen@intel.com>; Przemek Kitszel
-> <przemyslaw.kitszel@intel.com>
-> Cc: netdev@vger.kernel.org; linux-kernel@vger.kernel.org; linux-
-> doc@vger.kernel.org; bpf@vger.kernel.org; linux-kselftest@vger.kernel.org=
-;
-> linux-stm32@st-md-mailman.stormreply.com; linux-arm-
-> kernel@lists.infradead.org; intel-wired-lan@lists.osuosl.org; xdp-hints@x=
-dp-
-> project.net
-> Subject: [PATCH bpf-next v6 4/4] igc: Add launch time support to XDP ZC
->=20
-> Enable Launch Time Control (LTC) support to XDP zero copy via XDP Tx
-> metadata framework.
->=20
-> This patch is tested with tools/testing/selftests/bpf/xdp_hw_metadata on
-> Intel I225-LM Ethernet controller. Below are the test steps and result.
->=20
-> Test Steps:
-> 1. At DUT, start xdp_hw_metadata selftest application:
->    $ sudo ./xdp_hw_metadata enp2s0 -l 1000000000 -L 1
->=20
-> 2. At Link Partner, send an UDP packet with VLAN priority 1 to port 9091 =
-of
->    DUT.
->=20
-> When launch time is set to 1s in the future, the delta between launch tim=
-e and
-> transmit hardware timestamp is equal to 0.016us, as shown in result
-> below:
->   0x562ff5dc8880: rx_desc[4]->addr=3D84110 addr=3D84110 comp_addr=3D84110
-> EoP
->   rx_hash: 0xE343384 with RSS type:0x1
->   HW RX-time:   1734578015467548904 (sec:1734578015.4675) delta to
-> User RX-time sec:0.0002 (183.103 usec)
->   XDP RX-time:   1734578015467651698 (sec:1734578015.4677) delta to
-> User RX-time sec:0.0001 (80.309 usec)
->   No rx_vlan_tci or rx_vlan_proto, err=3D-95
->   0x562ff5dc8880: ping-pong with csum=3D561c (want c7dd) csum_start=3D34
-> csum_offset=3D6
->   HW RX-time:   1734578015467548904 (sec:1734578015.4675) delta to HW
-> Launch-time sec:1.0000 (1000000.000 usec)
->   0x562ff5dc8880: complete tx idx=3D4 addr=3D4018
->   HW Launch-time:   1734578016467548904 (sec:1734578016.4675) delta
-> to HW TX-complete-time sec:0.0000 (0.016 usec)
->   HW TX-complete-time:   1734578016467548920 (sec:1734578016.4675)
-> delta to User TX-complete-time sec:0.0000 (32.546 usec)
->   XDP RX-time:   1734578015467651698 (sec:1734578015.4677) delta to
-> User TX-complete-time sec:0.9999 (999929.768 usec)
->   HW RX-time:   1734578015467548904 (sec:1734578015.4675) delta to HW
-> TX-complete-time sec:1.0000 (1000000.016 usec)
->   0x562ff5dc8880: complete rx idx=3D132 addr=3D84110
->=20
-> Signed-off-by: Song Yoong Siang <yoong.siang.song@intel.com>
-> ---
->  drivers/net/ethernet/intel/igc/igc_main.c | 78 ++++++++++++++++-------
->  1 file changed, 56 insertions(+), 22 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c
-> b/drivers/net/ethernet/intel/igc/igc_main.c
-> index 27872bdea9bd..6857f5f5b4b2 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_main.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-> @@ -1566,6 +1566,26 @@ static bool igc_request_tx_tstamp(struct
-> igc_adapter *adapter, struct sk_buff *s
->  	return false;
->  }
->=20
-> +static void igc_insert_empty_packet(struct igc_ring *tx_ring) {
-> +	struct igc_tx_buffer *empty_info;
-> +	struct sk_buff *empty;
-> +	void *data;
-> +
-> +	empty_info =3D &tx_ring->tx_buffer_info[tx_ring->next_to_use];
-> +	empty =3D alloc_skb(IGC_EMPTY_FRAME_SIZE, GFP_ATOMIC);
-> +	if (!empty)
-> +		return;
-> +
-> +	data =3D skb_put(empty, IGC_EMPTY_FRAME_SIZE);
-> +	memset(data, 0, IGC_EMPTY_FRAME_SIZE);
-> +
-> +	igc_tx_ctxtdesc(tx_ring, 0, false, 0, 0, 0);
-> +
-> +	if (igc_init_tx_empty_descriptor(tx_ring, empty, empty_info) < 0)
-> +		dev_kfree_skb_any(empty);
-> +}
-> +
->  static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
->  				       struct igc_ring *tx_ring)
->  {
-> @@ -1603,26 +1623,8 @@ static netdev_tx_t igc_xmit_frame_ring(struct
-> sk_buff *skb,
->  	skb->tstamp =3D ktime_set(0, 0);
->  	launch_time =3D igc_tx_launchtime(tx_ring, txtime, &first_flag,
-> &insert_empty);
->=20
-> -	if (insert_empty) {
-> -		struct igc_tx_buffer *empty_info;
-> -		struct sk_buff *empty;
-> -		void *data;
-> -
-> -		empty_info =3D &tx_ring->tx_buffer_info[tx_ring->next_to_use];
-> -		empty =3D alloc_skb(IGC_EMPTY_FRAME_SIZE, GFP_ATOMIC);
-> -		if (!empty)
-> -			goto done;
-> -
-> -		data =3D skb_put(empty, IGC_EMPTY_FRAME_SIZE);
-> -		memset(data, 0, IGC_EMPTY_FRAME_SIZE);
-> -
-> -		igc_tx_ctxtdesc(tx_ring, 0, false, 0, 0, 0);
-> -
-> -		if (igc_init_tx_empty_descriptor(tx_ring,
-> -						 empty,
-> -						 empty_info) < 0)
-> -			dev_kfree_skb_any(empty);
-> -	}
-> +	if (insert_empty)
-> +		igc_insert_empty_packet(tx_ring);
->=20
->  done:
->  	/* record the location of the first descriptor for this packet */ @@ -
-> 2955,9 +2957,33 @@ static u64 igc_xsk_fill_timestamp(void *_priv)
->  	return *(u64 *)_priv;
->  }
->=20
-> +static void igc_xsk_request_launch_time(u64 launch_time, void *_priv) {
-> +	struct igc_metadata_request *meta_req =3D _priv;
-> +	struct igc_ring *tx_ring =3D meta_req->tx_ring;
-> +	__le32 launch_time_offset;
-> +	bool insert_empty =3D false;
-> +	bool first_flag =3D false;
-> +
-> +	if (!tx_ring->launchtime_enable)
-> +		return;
-> +
-> +	launch_time_offset =3D igc_tx_launchtime(tx_ring,
-> +					       ns_to_ktime(launch_time),
-> +					       &first_flag, &insert_empty);
-> +	if (insert_empty) {
-> +		igc_insert_empty_packet(tx_ring);
-> +		meta_req->tx_buffer =3D
-> +			&tx_ring->tx_buffer_info[tx_ring->next_to_use];
-> +	}
-> +
-> +	igc_tx_ctxtdesc(tx_ring, launch_time_offset, first_flag, 0, 0, 0); }
-> +
->  const struct xsk_tx_metadata_ops igc_xsk_tx_metadata_ops =3D {
->  	.tmo_request_timestamp		=3D igc_xsk_request_timestamp,
->  	.tmo_fill_timestamp		=3D igc_xsk_fill_timestamp,
-> +	.tmo_request_launch_time	=3D igc_xsk_request_launch_time,
->  };
->=20
->  static void igc_xdp_xmit_zc(struct igc_ring *ring) @@ -2980,7 +3006,7 @@
-> static void igc_xdp_xmit_zc(struct igc_ring *ring)
->  	ntu =3D ring->next_to_use;
->  	budget =3D igc_desc_unused(ring);
->=20
-> -	while (xsk_tx_peek_desc(pool, &xdp_desc) && budget--) {
-> +	while (xsk_tx_peek_desc(pool, &xdp_desc) && budget >=3D 4) {
->  		struct igc_metadata_request meta_req;
->  		struct xsk_tx_metadata *meta =3D NULL;
->  		struct igc_tx_buffer *bi;
-> @@ -3004,6 +3030,12 @@ static void igc_xdp_xmit_zc(struct igc_ring *ring)
->  		xsk_tx_metadata_request(meta, &igc_xsk_tx_metadata_ops,
->  					&meta_req);
->=20
-> +		/* xsk_tx_metadata_request() may have updated next_to_use
-> */
-> +		ntu =3D ring->next_to_use;
-> +
-> +		/* xsk_tx_metadata_request() may have updated Tx buffer
-> info */
-> +		bi =3D meta_req.tx_buffer;
-> +
->  		tx_desc =3D IGC_TX_DESC(ring, ntu);
->  		tx_desc->read.cmd_type_len =3D
-> cpu_to_le32(meta_req.cmd_type);
->  		tx_desc->read.olinfo_status =3D cpu_to_le32(olinfo_status);
-> @@ -3021,9 +3053,11 @@ static void igc_xdp_xmit_zc(struct igc_ring *ring)
->  		ntu++;
->  		if (ntu =3D=3D ring->count)
->  			ntu =3D 0;
-> +
-> +		ring->next_to_use =3D ntu;
-> +		budget =3D igc_desc_unused(ring);
->  	}
->=20
-> -	ring->next_to_use =3D ntu;
->  	if (tx_desc) {
->  		igc_flush_tx_descriptors(ring);
->  		xsk_tx_release(pool);
-> --
-> 2.34.1
->=20
-
+>
+>HW Launch-time:   1737374618088557111 (sec:1737374618.0886) delta to HW TX=
+-complete-time sec:0.0000 (0.012 usec)
+>
+>Thank you for XDP launch time support!
+>
+>[1] https://lore.kernel.org/linux-kernel/20241205044258.3155799-1-
+>yoong.siang.song@intel.com/
+>[2] https://lore.kernel.org/linux-kernel/20241205051936.3156307-1-
+>yoong.siang.song@intel.com/
+>[3]
+>https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/=
+?id=3D069
+>b142f58196bd9f47b35e493255741e2c663c7
+>[4] https://lore.kernel.org/linux-kernel/20250106135724.9749-1-
+>yoong.siang.song@intel.com/
+>
+>Best regards,
+>Zdenek Bouska
+>
+>--
+>Siemens, s.r.o
+>Foundational Technologies
+>
