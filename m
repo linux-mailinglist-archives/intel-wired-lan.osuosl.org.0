@@ -1,94 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 92D6EA1C5DC
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 26 Jan 2025 00:38:09 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 152ADA1CFA5
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Jan 2025 04:05:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 423928146B;
-	Sat, 25 Jan 2025 23:38:08 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C4B98810E1;
+	Mon, 27 Jan 2025 03:04:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id d3uRHLNvlsS9; Sat, 25 Jan 2025 23:38:07 +0000 (UTC)
+ id b-LGI0Ozd6Sn; Mon, 27 Jan 2025 03:04:56 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4866D8144E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 88693810E2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1737848287;
-	bh=XcSchINLrxggtjUM3UN2xHeQ+gY2rfpSgxVXnmoenyE=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	s=default; t=1737947096;
+	bh=5hPEoOXD7vh0YSjHsAN+Af8DsMrKotGPIYAaWMuUu+U=;
+	h=From:To:CC:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=NuO0Y7RyCgGrMIhSEFbDv5DiYckHpvNSffaxXYgTdnwNbbvvcfNxkKRxdt1AyUcCP
-	 eQNvsrytq6Qc15EFrnPALA0i2Gz6TjKWPc+6W40iNkfMgEfmiQYshZVf86dd7OKjDN
-	 w+lQ+LHaIJwcaO0BDaGSu13NhaFCoqBvuVVroCwIoT4p6E7CU+oWAKJndp5LFGtCB8
-	 6gTK5TS/c3lFmPe8330yVP+L1m6eig/73WzsxmyO4Ze8bilkqS/yoSVaIDXt2/U8ki
-	 nH3EGUpw9yOaXJS5hPZbU/DLcmUlaneys4KyrLYZCTTsfOF9VyW5jw25rbYsFvssGd
-	 ZfB3cEtkExoEQ==
+	b=McQ0coHYata9F29PTF5e0b5hbSbWKFxOeZS7LrBP2QQM8mjiYO6oZoZET3BkA9Smu
+	 W+SzYRxmW32IqBhDXaMyATMuGaPW4qsC+C8U+1SvSVOAKyT5sITqdIs9pkL+xfxsBL
+	 iYQql51iDrPqZ2O8c5gurVJz173TDYnH1FaewV5XQdIDJgf/YYgAN4vPUfSu6LTz3k
+	 aUf/OQdXXMNqhdi3IwssJKW9hqLFfkzfj41oW8Rpxk/DEVFHRNujNl4Vie0S1RFDv2
+	 TL7l41v/2lNrwRy+Bf3wYcYkRi2ljRyJlOq0WstQKTET0+lik9HV5mRTLEtek8zaaK
+	 Py//ode4GPsDw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4866D8144E;
-	Sat, 25 Jan 2025 23:38:07 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 88693810E2;
+	Mon, 27 Jan 2025 03:04:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id B4AB7941
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Jan 2025 23:38:04 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id BE1AF71F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2025 03:04:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 51D0A40564
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Jan 2025 23:38:03 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 9CE4940232
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2025 03:04:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xo9pIHVswVZN for <intel-wired-lan@lists.osuosl.org>;
- Sat, 25 Jan 2025 23:38:02 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org EFCBF40563
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EFCBF40563
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp4.osuosl.org (Postfix) with ESMTPS id EFCBF40563
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Jan 2025 23:38:01 +0000 (UTC)
-X-CSE-ConnectionGUID: aN0luupSQk6Q5UaVYTHLNg==
-X-CSE-MsgGUID: Ok4IMwX0TGm+i/dXyOW5hA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11326"; a="63705460"
-X-IronPort-AV: E=Sophos;i="6.13,235,1732608000"; d="scan'208";a="63705460"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Jan 2025 15:38:01 -0800
-X-CSE-ConnectionGUID: mSyoUKLzSgivPkEwGuGc9w==
-X-CSE-MsgGUID: A+tja6SiS+evRxp+WOyhUQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,235,1732608000"; d="scan'208";a="108679517"
-Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
- by fmviesa009.fm.intel.com with ESMTP; 25 Jan 2025 15:38:00 -0800
-Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1tbpiw-000eLF-1Q
- for intel-wired-lan@lists.osuosl.org; Sat, 25 Jan 2025 23:37:58 +0000
-Date: Sun, 26 Jan 2025 07:37:47 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202501260741.ltcDvmiM-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1737848282; x=1769384282;
- h=date:from:to:subject:message-id;
- bh=+F2P8ypCtPC90gwJFGiqI415zpJ+EipatF5+09F43rs=;
- b=N1eK4rJyzslX7mo2Z0ioEgqyBX6Ptw6tK8lEHU0ugpyEGR27gRreoeaX
- et7eiMdXS/kjwlkbFk3rVZ++DTP/ttSrx0nbK6Z4IZm+HTRx4584ORIzW
- 8TOAcrvwtfA5AvGbfyzaGLbJC/Kol9WUITcYNjgdReo684f+qvZxyDdwF
- 1dj7nJbxLAkNMh/t7le4KF+/cwA9L6dDIAo3JHqyF8rYD3sCXIz/2KkeN
- bPqjsE1ZAHWhBpxyJaJYTZm/tbFIhHeuOIB/VXaKL8Z8mrOx7VCgOG4U5
- DlJkHYsZz7oTBwkmHoKf6RinAQEcOXff12VY86VU1ekqMi/ptw43VRHGl
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=N1eK4rJy
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- cb861d609d10652059b1d62b136c2d4ba0ed0d23
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id nQFS7jPzdiWh for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 Jan 2025 03:04:53 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.191;
+ helo=szxga05-in.huawei.com; envelope-from=linyunsheng@huawei.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org D234440179
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D234440179
+Received: from szxga05-in.huawei.com (szxga05-in.huawei.com [45.249.212.191])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D234440179
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Jan 2025 03:04:50 +0000 (UTC)
+Received: from mail.maildlp.com (unknown [172.19.88.163])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4YhCt359LFz1JJ4v;
+ Mon, 27 Jan 2025 11:03:39 +0800 (CST)
+Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
+ by mail.maildlp.com (Postfix) with ESMTPS id 3AB8E180042;
+ Mon, 27 Jan 2025 11:04:45 +0800 (CST)
+Received: from localhost.localdomain (10.90.30.45) by
+ dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.11; Mon, 27 Jan 2025 11:04:44 +0800
+From: Yunsheng Lin <linyunsheng@huawei.com>
+To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
+CC: <zhangkun09@huawei.com>, <liuyonglong@huawei.com>,
+ <fanghaiqing@huawei.com>, Yunsheng Lin <linyunsheng@huawei.com>, Alexander
+ Lobakin <aleksander.lobakin@intel.com>, Robin Murphy <robin.murphy@arm.com>,
+ Alexander Duyck <alexander.duyck@gmail.com>, Andrew Morton
+ <akpm@linux-foundation.org>, IOMMU <iommu@lists.linux.dev>, MM
+ <linux-mm@kvack.org>, Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann
+ <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, John
+ Fastabend <john.fastabend@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, <netdev@vger.kernel.org>,
+ <intel-wired-lan@lists.osuosl.org>, <bpf@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Date: Mon, 27 Jan 2025 10:57:29 +0800
+Message-ID: <20250127025734.3406167-1-linyunsheng@huawei.com>
+X-Mailer: git-send-email 2.30.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.90.30.45]
+X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
+ dggpemf200006.china.huawei.com (7.185.36.61)
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=huawei.com
+Subject: [Intel-wired-lan] [RFC v8 0/5] fix two bugs related to page_pool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,146 +101,109 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: cb861d609d10652059b1d62b136c2d4ba0ed0d23  ice: stop storing XDP verdict within ice_rx_buf
+This patchset fix a possible time window problem for page_pool and
+the dma API misuse problem as mentioned in [1], and try to avoid the
+overhead of the fixing using some optimization.
 
-elapsed time: 1445m
+From the below performance data, the overhead is not so obvious
+due to performance variations in arm64 server and less than 1 ns in
+x86 server for time_bench_page_pool01_fast_path() and
+time_bench_page_pool02_ptr_ring, and there is about 10~20ns overhead
+for time_bench_page_pool03_slow(), see more detail in [2].
 
-configs tested: 127
-configs skipped: 4
+arm64 server:
+Before this patchset:
+              fast_path              ptr_ring            slow
+1.         31.171 ns               60.980 ns          164.917 ns
+2.         28.824 ns               60.891 ns          170.241 ns
+3.         14.236 ns               60.583 ns          164.355 ns
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+With patchset:
+6.         26.163 ns               53.781 ns          189.450 ns
+7.         26.189 ns               53.798 ns          189.466 ns
 
-tested configs:
-alpha                             allnoconfig    gcc-14.2.0
-alpha                            allyesconfig    gcc-14.2.0
-arc                              alldefconfig    gcc-13.2.0
-arc                              allmodconfig    gcc-13.2.0
-arc                               allnoconfig    gcc-13.2.0
-arc                              allyesconfig    gcc-13.2.0
-arc                        nsim_700_defconfig    gcc-13.2.0
-arc                 nsimosci_hs_smp_defconfig    gcc-13.2.0
-arc                   randconfig-001-20250125    gcc-13.2.0
-arc                   randconfig-002-20250125    gcc-13.2.0
-arm                              allmodconfig    gcc-14.2.0
-arm                               allnoconfig    clang-17
-arm                              allyesconfig    gcc-14.2.0
-arm                         at91_dt_defconfig    clang-20
-arm                   randconfig-001-20250125    gcc-14.2.0
-arm                   randconfig-002-20250125    gcc-14.2.0
-arm                   randconfig-003-20250125    clang-18
-arm                   randconfig-004-20250125    clang-20
-arm                          sp7021_defconfig    gcc-14.2.0
-arm                    vt8500_v6_v7_defconfig    gcc-14.2.0
-arm64                            allmodconfig    clang-18
-arm64                             allnoconfig    gcc-14.2.0
-arm64                 randconfig-001-20250125    gcc-14.2.0
-arm64                 randconfig-002-20250125    gcc-14.2.0
-arm64                 randconfig-003-20250125    gcc-14.2.0
-arm64                 randconfig-004-20250125    gcc-14.2.0
-csky                              allnoconfig    gcc-14.2.0
-csky                  randconfig-001-20250125    gcc-14.2.0
-csky                  randconfig-002-20250125    gcc-14.2.0
-hexagon                          allmodconfig    clang-20
-hexagon                           allnoconfig    clang-20
-hexagon                          allyesconfig    clang-18
-hexagon               randconfig-001-20250125    clang-20
-hexagon               randconfig-002-20250125    clang-20
-i386                             allmodconfig    gcc-12
-i386                              allnoconfig    gcc-12
-i386                             allyesconfig    gcc-12
-i386        buildonly-randconfig-001-20250125    gcc-12
-i386        buildonly-randconfig-002-20250125    clang-19
-i386        buildonly-randconfig-003-20250125    gcc-12
-i386        buildonly-randconfig-004-20250125    clang-19
-i386        buildonly-randconfig-005-20250125    clang-19
-i386        buildonly-randconfig-006-20250125    gcc-12
-i386                                defconfig    clang-19
-loongarch                        allmodconfig    gcc-14.2.0
-loongarch                         allnoconfig    gcc-14.2.0
-loongarch             randconfig-001-20250125    gcc-14.2.0
-loongarch             randconfig-002-20250125    gcc-14.2.0
-m68k                             allmodconfig    gcc-14.2.0
-m68k                              allnoconfig    gcc-14.2.0
-m68k                             allyesconfig    gcc-14.2.0
-microblaze                       allmodconfig    gcc-14.2.0
-microblaze                        allnoconfig    gcc-14.2.0
-microblaze                       allyesconfig    gcc-14.2.0
-mips                              allnoconfig    gcc-14.2.0
-mips                  cavium_octeon_defconfig    gcc-14.2.0
-nios2                             allnoconfig    gcc-14.2.0
-nios2                 randconfig-001-20250125    gcc-14.2.0
-nios2                 randconfig-002-20250125    gcc-14.2.0
-openrisc                          allnoconfig    gcc-14.2.0
-openrisc                         allyesconfig    gcc-14.2.0
-openrisc                            defconfig    gcc-14.2.0
-parisc                           allmodconfig    gcc-14.2.0
-parisc                            allnoconfig    gcc-14.2.0
-parisc                           allyesconfig    gcc-14.2.0
-parisc                              defconfig    gcc-14.2.0
-parisc                randconfig-001-20250125    gcc-14.2.0
-parisc                randconfig-002-20250125    gcc-14.2.0
-powerpc                          allmodconfig    gcc-14.2.0
-powerpc                           allnoconfig    gcc-14.2.0
-powerpc                          allyesconfig    clang-16
-powerpc                 mpc8315_rdb_defconfig    clang-20
-powerpc                     ppa8548_defconfig    gcc-14.2.0
-powerpc               randconfig-001-20250125    clang-18
-powerpc               randconfig-002-20250125    gcc-14.2.0
-powerpc               randconfig-003-20250125    gcc-14.2.0
-powerpc                      tqm8xx_defconfig    clang-20
-powerpc                 xes_mpc85xx_defconfig    gcc-14.2.0
-powerpc64             randconfig-001-20250125    gcc-14.2.0
-powerpc64             randconfig-002-20250125    clang-20
-powerpc64             randconfig-003-20250125    clang-16
-riscv                             allnoconfig    gcc-14.2.0
-riscv                               defconfig    clang-19
-riscv                 randconfig-001-20250125    gcc-14.2.0
-riscv                 randconfig-002-20250125    gcc-14.2.0
-s390                             allmodconfig    clang-19
-s390                              allnoconfig    clang-20
-s390                             allyesconfig    gcc-14.2.0
-s390                          debug_defconfig    gcc-14.2.0
-s390                                defconfig    clang-15
-s390                  randconfig-001-20250125    clang-19
-s390                  randconfig-002-20250125    clang-20
-sh                               allmodconfig    gcc-14.2.0
-sh                                allnoconfig    gcc-14.2.0
-sh                               allyesconfig    gcc-14.2.0
-sh                                  defconfig    gcc-14.2.0
-sh                    randconfig-001-20250125    gcc-14.2.0
-sh                    randconfig-002-20250125    gcc-14.2.0
-sh                           se7751_defconfig    gcc-14.2.0
-sh                            titan_defconfig    gcc-14.2.0
-sparc                             allnoconfig    gcc-14.2.0
-sparc                 randconfig-001-20250125    gcc-14.2.0
-sparc                 randconfig-002-20250125    gcc-14.2.0
-sparc64                             defconfig    gcc-14.2.0
-sparc64               randconfig-001-20250125    gcc-14.2.0
-sparc64               randconfig-002-20250125    gcc-14.2.0
-um                               allmodconfig    clang-20
-um                                allnoconfig    clang-18
-um                               allyesconfig    gcc-12
-um                                  defconfig    clang-20
-um                             i386_defconfig    gcc-12
-um                    randconfig-001-20250125    clang-20
-um                    randconfig-002-20250125    gcc-11
-um                           x86_64_defconfig    clang-15
-x86_64                            allnoconfig    clang-19
-x86_64                           allyesconfig    clang-19
-x86_64      buildonly-randconfig-001-20250125    clang-19
-x86_64      buildonly-randconfig-002-20250125    gcc-11
-x86_64      buildonly-randconfig-003-20250125    clang-19
-x86_64      buildonly-randconfig-004-20250125    gcc-12
-x86_64      buildonly-randconfig-005-20250125    clang-19
-x86_64      buildonly-randconfig-006-20250125    gcc-12
-x86_64                              defconfig    gcc-11
-xtensa                            allnoconfig    gcc-14.2.0
-xtensa                  nommu_kc705_defconfig    gcc-14.2.0
-xtensa                randconfig-001-20250125    gcc-14.2.0
-xtensa                randconfig-002-20250125    gcc-14.2.0
+X86 server:
+| Test name  |Cycles |   1-5 |    | Nanosec |    1-5 |        |      % |
+| (tasklet_*)|Before | After |diff|  Before |  After |   diff | change |
+|------------+-------+-------+----+---------+--------+--------+--------|
+| fast_path  |    19 |    19 |   0|   5.399 |  5.492 |  0.093 |    1.7 |
+| ptr_ring   |    54 |    57 |   3|  15.090 | 15.849 |  0.759 |    5.0 |
+| slow       |   238 |   284 |  46|  66.134 | 78.909 | 12.775 |   19.3 |
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+And about 16 bytes of memory is also needed for each page_pool owned
+page to fix the dma API misuse problem 
+
+1. https://lore.kernel.org/lkml/8067f204-1380-4d37-8ffd-007fc6f26738@kernel.org/T/
+2. https://lore.kernel.org/all/f558df7a-d983-4fc5-8358-faf251994d23@kernel.org/
+
+CC: Alexander Lobakin <aleksander.lobakin@intel.com>
+CC: Robin Murphy <robin.murphy@arm.com>
+CC: Alexander Duyck <alexander.duyck@gmail.com>
+CC: Andrew Morton <akpm@linux-foundation.org>
+CC: IOMMU <iommu@lists.linux.dev>
+CC: MM <linux-mm@kvack.org>
+
+Change log:
+V8:
+  1. Drop last 3 patch as it causes observable performance degradation
+     for x86 system.
+  2. Remove rcu read lock in page_pool_napi_local().
+  3. Renaming item function more consistently.
+
+V7:
+  1. Fix a used-after-free bug reported by KASAN as mentioned by Jakub.
+  2. Fix the 'netmem' variable not setting up correctly bug as mentioned
+     by Simon.
+
+V6:
+  1. Repost based on latest net-next.
+  2. Rename page_pool_to_pp() to page_pool_get_pp().
+
+V5:
+  1. Support unlimit inflight pages.
+  2. Add some optimization to avoid the overhead of fixing bug.
+
+V4:
+  1. use scanning to do the unmapping
+  2. spilt dma sync skipping into separate patch
+
+V3:
+  1. Target net-next tree instead of net tree.
+  2. Narrow the rcu lock as the discussion in v2.
+  3. Check the ummapping cnt against the inflight cnt.
+
+V2:
+  1. Add a item_full stat.
+  2. Use container_of() for page_pool_to_pp().
+
+Yunsheng Lin (5):
+  page_pool: introduce page_pool_get_pp() API
+  page_pool: fix timing for checking and disabling napi_local
+  page_pool: fix IOMMU crash when driver has already unbound
+  page_pool: support unlimited number of inflight pages
+  page_pool: skip dma sync operation for inflight pages
+
+ drivers/net/ethernet/freescale/fec_main.c     |   8 +-
+ .../ethernet/google/gve/gve_buffer_mgmt_dqo.c |   2 +-
+ drivers/net/ethernet/intel/iavf/iavf_txrx.c   |   6 +-
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c   |  14 +-
+ drivers/net/ethernet/intel/libeth/rx.c        |   2 +-
+ .../net/ethernet/mellanox/mlx5/core/en/xdp.c  |   3 +-
+ drivers/net/netdevsim/netdev.c                |   6 +-
+ drivers/net/wireless/mediatek/mt76/mt76.h     |   2 +-
+ include/linux/mm_types.h                      |   2 +-
+ include/linux/skbuff.h                        |   1 +
+ include/net/libeth/rx.h                       |   3 +-
+ include/net/netmem.h                          |  22 +-
+ include/net/page_pool/helpers.h               |  15 +
+ include/net/page_pool/types.h                 |  46 +-
+ net/core/devmem.c                             |   4 +-
+ net/core/netmem_priv.h                        |   5 +-
+ net/core/page_pool.c                          | 425 ++++++++++++++++--
+ net/core/page_pool_priv.h                     |  10 +-
+ net/core/xdp.c                                |   3 +-
+ 19 files changed, 500 insertions(+), 79 deletions(-)
+
+-- 
+2.33.0
+
