@@ -1,226 +1,121 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C6550A2348E
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Jan 2025 20:18:13 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 35FDBA23659
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Jan 2025 22:09:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CAE336FA06;
-	Thu, 30 Jan 2025 19:18:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E0456846B2;
+	Thu, 30 Jan 2025 21:09:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kOZ58M2Akt7q; Thu, 30 Jan 2025 19:18:11 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 5PE_-cmKqOGB; Thu, 30 Jan 2025 21:09:01 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 10E6A6FA46
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 78FC984294
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1738264691;
-	bh=F8t9TKm6/1xpmz2XFz1Ci7vniZG+a0fLq63245sMP9I=;
-	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1738271341;
+	bh=rm1X2iERP+p8zCDW1pXLY6+ld26f0LPqmx9BHrZwU70=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=qFGrS93l2khzDSiAlXYlvtEzLnq4e9h9d4uBZP+Ndmvi/ZeKp0vKaqD+6PfTBhUIC
-	 KKI2mz8BJBqG5Mn4a6NM179BEnBpF9/Kp3LXpb6r69EuXNwjRS2dgIF11DS1QShlto
-	 VI0jiwLuLuDYpwm9r/DbhStX6F6uGsNuQN1wlzFCsaoCJ5Bnuu3sNiYtNchPm01iS5
-	 ajtY0apyDr0trGZaObphskgvpcWbVgaa6HYbmD74ipZzu+NUK3gClbijPVKDFwd/nd
-	 Tn2I8DeJ5D053ot0yHfogsIJAlldxoFNf+oRBE2Ci96SCKkdPON7jnN4tENTfEi4z5
-	 3CFR9cy4JhO/g==
+	b=KcfR5bK12EMm+tf9IhPHdlB2ha/Vyx9u52rcsI1PYXQ5DTmDpcQfFRQzG4+3TF58h
+	 LUfZnw+cFtxJZQqK7CphojTZHB8otg8lX6P1+EwUsKprG8uUZdiRFhKumZJwuBXUgX
+	 1QnGn6pBGCAImi7pohWJXNMb5jF5Nqtm0MW/RNjRKwyk0xLPTt+3UvA+zHpyn2l5LF
+	 D62U4Zv+Mef7OB4FwatQQqMs6anvOHStBWMXr40Vz+gKk9uC8zGOeCFr7AiGrtq0bT
+	 drUaIqCWwtDg5ItRlfqfnf3/dLloTZkotdVK9m0q3xu1LPLx1eQhwix0o7vjoj39GT
+	 k2g0NVf7m61VQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 10E6A6FA46;
-	Thu, 30 Jan 2025 19:18:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 78FC984294;
+	Thu, 30 Jan 2025 21:09:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id E553416B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jan 2025 19:18:08 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id EDC3112C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jan 2025 21:08:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D501A412B3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jan 2025 19:18:08 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id DE2FE416CE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jan 2025 21:08:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CT-0pP-5-YUx for <intel-wired-lan@lists.osuosl.org>;
- Thu, 30 Jan 2025 19:18:08 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
- helo=mgamail.intel.com; envelope-from=vitaly.lifshits@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org B3EB540F85
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B3EB540F85
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B3EB540F85
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jan 2025 19:18:07 +0000 (UTC)
-X-CSE-ConnectionGUID: iTn4qGWnQHOjdcOT7T59Nw==
-X-CSE-MsgGUID: pADA+BYdQOyOo6xc+lI/Hg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11331"; a="39099751"
-X-IronPort-AV: E=Sophos;i="6.13,246,1732608000"; d="scan'208";a="39099751"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
- by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Jan 2025 11:18:07 -0800
-X-CSE-ConnectionGUID: 4EV41lc/SYuxwsnKWlyvyQ==
-X-CSE-MsgGUID: SQaLH+G/Qmq7Luv0kVe7zg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="146606217"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by orviesa001.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 30 Jan 2025 11:18:05 -0800
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.44; Thu, 30 Jan 2025 11:18:06 -0800
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.44 via Frontend Transport; Thu, 30 Jan 2025 11:18:06 -0800
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.45) by
- edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Thu, 30 Jan 2025 11:18:06 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Yjk9INE1DOHUVTBQ+iFMhuHgjreEwMJgdgs6zc3y/KopjxlkNkp2wiiuVq+GGNQ6BshboSqqbzudiAqxy5wICzuk22omKg0rQsb/fbThoeroHJ/qomabXQv0fKCscmXqR/Ww5v2yrHyBSqqd8oKY+u43tXuC5spXqS9+hekrIBPF5fA7hGBFrhb1YF3neUdzsZuDu0Cfmo2KR4oB8bAp+ZKkUE2GaZyP5VYAYrIylmuyYUk3N733i7KokTRFTiuLEEStcXlzHPgS3vV2cJLfamEvTsHXHw8Q1Oowok0wGjz/JiK1NrDRgb3RsoRUsxA2ODOuIHLGgSZVsdEm0w6xpg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=F8t9TKm6/1xpmz2XFz1Ci7vniZG+a0fLq63245sMP9I=;
- b=OUwZlglgznQtwkbT0k++2ZSpIp2lJFQb5f3tmgyd83XHSDyulRa7dFBzHiAlcA4aHJ5MFfcwELfrJT5PnXTZ6iq1i9gr/Wy/Hv9VHQ8l4gqk4/nrrxQ5z3raOS9dn8yh1G2fbZkh8niiVzJfcNNGHUTpw6SZb/4pHd5f7/iLI1KpdRB3Fcc4Z6DYwusce7hrEJYDkU6m35Qk76d+9lB4TSx0UTXPfzPgNUr1ExYljBkiUoJM3KBOBVqV8D9UD3afpqiAx9AvtD4Hmsqkz8MbB4TncpeMd6WHjvI6xOii+AiQyEP/pD9JAv2wV8Lv64+klg0Lt+FNEU8EG9jKedcXAw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from PH0PR11MB5949.namprd11.prod.outlook.com (2603:10b6:510:144::6)
- by MW4PR11MB8265.namprd11.prod.outlook.com (2603:10b6:303:1e1::16)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8398.18; Thu, 30 Jan
- 2025 19:17:36 +0000
-Received: from PH0PR11MB5949.namprd11.prod.outlook.com
- ([fe80::1c5d:e556:f779:e861]) by PH0PR11MB5949.namprd11.prod.outlook.com
- ([fe80::1c5d:e556:f779:e861%3]) with mapi id 15.20.8398.018; Thu, 30 Jan 2025
- 19:17:35 +0000
-Message-ID: <531227ca-89fe-4398-8cba-3647be509454@intel.com>
-Date: Thu, 30 Jan 2025 21:17:30 +0200
-User-Agent: Mozilla Thunderbird
-To: Stephen Hemminger <stephen@networkplumber.org>,
- <anthony.l.nguyen@intel.com>, <jesse.brandeburg@intel.com>
-CC: <intel-wired-lan@lists.osuosl.org>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id tV_HRgORGSYO for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 30 Jan 2025 21:08:57 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::62b; helo=mail-pl1-x62b.google.com;
+ envelope-from=stephen@networkplumber.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 0526F416C7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0526F416C7
+Received: from mail-pl1-x62b.google.com (mail-pl1-x62b.google.com
+ [IPv6:2607:f8b0:4864:20::62b])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0526F416C7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jan 2025 21:08:56 +0000 (UTC)
+Received: by mail-pl1-x62b.google.com with SMTP id
+ d9443c01a7336-21654fdd5daso22290235ad.1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Jan 2025 13:08:56 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1738271336; x=1738876136;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=rm1X2iERP+p8zCDW1pXLY6+ld26f0LPqmx9BHrZwU70=;
+ b=QO+xjtQ+Ng/bbBK5xN1XKiuhkCsa+ESYd1nQhdqzGbJE1sqUxxWLFmUG2N9QyA16xl
+ YyS7Da0lhTBr7HDntXDiORFIWibWX5qPrG6bP6XQTnx8dXG68rhLDbTHXL6nH7+7HhBa
+ /YpHOO05u8gl9QtvHM70EGd6WM8ufcdSaLsrmr4lbfsGEXbK5URKfLwTX/j4wIvq86HQ
+ al6HPuahwFlCTcOkHx/xT75wTrKhOpsxIgpM9JWOmYcFbpDxbUaqs3u+5wsh4hUn6cAo
+ zoogSVHAy804OWWjSOF//QY39kWHlK46lgUVNed34JEy0qX1PWzaNBykI1dxmPyP2HB5
+ GBbQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUL0Duy/BQkRn7aRQaS2UiuDjT/yCEKLD7KPv0bLa7hHjOiBaukIf7bdK22n987/GPCuLdvFJM+ikmJnMvwzdY=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YzXQf/nc4C2w+5+Svpeg9U2JGOh6LNbQ4yaRf4T11qdMaLcur3j
+ h0DtdwOA1M1XqeQWij1nHjRmPR3lEOe7NDtf5olroRuLtDxYvL40616bHj0u8rM=
+X-Gm-Gg: ASbGncu9nrHHvwClyqJ9VQy7doOhob0p+dr8APMIjrSQTCda52McKKcNfkrho6WkayM
+ dKoYvK5CnCiAMmwnDjhszFASnTY2bxiuOiFbOsNdiRQCJaVIWswgDcaMXde1t/FIJldeUE4ZvKJ
+ w4Db0T9SYyesJ4ksuOilDfcfoTeUxTYvEMoelm2AeR/bwI3fkuA8Ke5qqx/rmfRPNcSlhMLDa24
+ /DT0Ii4OApcX44Qp3nPQKAU0SGUd1MQXjiSI5txx+yPWb73plvVk9D3H1SFxcJACDlXWWLRznN+
+ b0o/sVUGrQkfs6P0txVbrS40ohmpQILjIYIrJibaaNy1GhkPWt5VXXvxaTJCnb/YaFtb
+X-Google-Smtp-Source: AGHT+IFytJpJWVkdRYA+Ezx0WHKH2fQVJCtzSVkjl0gSC0WpyKs9BH+7GwXIy0+sKhOo2zmhKtBkyw==
+X-Received: by 2002:a17:902:da86:b0:216:3c2b:a5d0 with SMTP id
+ d9443c01a7336-21dd7dd8081mr112128225ad.51.1738271335846; 
+ Thu, 30 Jan 2025 13:08:55 -0800 (PST)
+Received: from hermes.local (204-195-96-226.wavecable.com. [204.195.96.226])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-21de31f7020sm18209125ad.76.2025.01.30.13.08.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 30 Jan 2025 13:08:55 -0800 (PST)
+Date: Thu, 30 Jan 2025 13:08:53 -0800
+From: Stephen Hemminger <stephen@networkplumber.org>
+To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>
+Cc: <anthony.l.nguyen@intel.com>, <jesse.brandeburg@intel.com>,
+ <intel-wired-lan@lists.osuosl.org>
+Message-ID: <20250130130853.3dd7987f@hermes.local>
+In-Reply-To: <531227ca-89fe-4398-8cba-3647be509454@intel.com>
 References: <20250130091111.46358882@hermes.local>
-Content-Language: en-US
-From: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>
-In-Reply-To: <20250130091111.46358882@hermes.local>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: TLZP290CA0012.ISRP290.PROD.OUTLOOK.COM
- (2603:1096:950:9::10) To PH0PR11MB5949.namprd11.prod.outlook.com
- (2603:10b6:510:144::6)
+ <531227ca-89fe-4398-8cba-3647be509454@intel.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR11MB5949:EE_|MW4PR11MB8265:EE_
-X-MS-Office365-Filtering-Correlation-Id: cbf13108-d89f-4fd5-fd22-08dd4162c0ee
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?RGNkM3ZWdlJ5MTBxeEk3SzcwaTNkWEkwRkxFWHNoZ0dNdW1STGdtYm9PcG1W?=
- =?utf-8?B?M3R0SUFURlhRZFNVOW9ORzl0enkwOHh6OUIxMjFFQWo0Z2ZIQzdROExoVzF2?=
- =?utf-8?B?RE83K1VRV0lHOXpVU3MrZGVTVlhWN1IxVmZKdGVRdExKbEwybFBtK3RHUjMw?=
- =?utf-8?B?OG9haEpzRmt5OFFhS2pEZnkwZHRDWVBUS2V4NTdtNzRVU1A0cUo1YlVLUUxx?=
- =?utf-8?B?azYrQ1NhU1NzTXhTUUh2aS9PcStDblhVV2lHQUFMK3FsdVM4V1YydzNVaWd6?=
- =?utf-8?B?RjlsWExwanlvQklCaW1OajBGMURQdVlRaHcwSHk5V1dJcmk2UytYbXlCNEVs?=
- =?utf-8?B?SzJ6VG5yVVdQK1k1ejhCZGxKNWI1WndxbjlTWU9kOWV4TDZ5RW1Dejc4bXdH?=
- =?utf-8?B?blViTzFmYmZSSWJUOXBpbDIxL1NSTDBJWWVMYnJ3RTRzR0NmaWx3eUpKblYz?=
- =?utf-8?B?QnhUQytRWi9WRjZhNkx0aGR5VXMvSGlHOXFtQ2Zrd1JsbnJ6Z0NqTlQwNVRJ?=
- =?utf-8?B?WGlpYWpBblBvWm5UdC9aYXlTeHphbm9ITGlKeGlJSkNmNi9JL0tLOUpWbGlh?=
- =?utf-8?B?VmhiZkJxOUxDQ0FOQXJGYk5LVU9zSHp6bktoTTZiejB1eHpDaUw2UFh4czRv?=
- =?utf-8?B?Sy8yd0tuMThXRUY4eE15dGNKcXc3RFdMbU9DcDkwMWlSYktJOGNSMkxmM29z?=
- =?utf-8?B?dzFJMjlWN3VJUnQ1eFVOYXNOdHlmVlU4RkYzUmlzTkRTU0VydDJoaWQ4MlQ4?=
- =?utf-8?B?eG1JbHBFSnlUWHZXcldsZllDcTFHNU0xWlV3MTFSakZRS0k1M2pRcUc0VVF4?=
- =?utf-8?B?ekI3N09YTGtjUTkxNjNaWGpsQnpPSUJIZlRobzEvenZvS2dQWUpHc0RBOSt2?=
- =?utf-8?B?bUpEOExQUDdXVkxXQ1h1Yyt3VndFdGhzZ3ZUY2dVSzUvaVRvWkJjTU1kZXQy?=
- =?utf-8?B?OW1mMzJhRW1pS2w2L0EveS9SRURJZW9jUVlFcDFpV3FYWmV5NjYzUDBVenJD?=
- =?utf-8?B?cHlkSW1nSkh1VnkzYTZqR050b2pPU1lIbW1XTkFvS3RGSkpkSE1BV1N1Zmh6?=
- =?utf-8?B?clV0bGFZaTk0ZG8xSVBPYkh4ZjJtaVVzR1hVUVRjVW1BbGozeXJWZFBnRWJ2?=
- =?utf-8?B?eGgzNkNDNDlibk03VmE5TWRYem9YWE5rYUROcGg4dTJta3lBbEt0QUw4ZktF?=
- =?utf-8?B?S3BwNVI5R1ljQTM4OXpQcDVucFJldmQzWEdCSUg2U0g1OE0wRGhJSjZtVmpL?=
- =?utf-8?B?RE5NZ3c2MldIZ0pZZWo5V0VyVEpWSG81eGVvT080VzhNYVQzOWFZM3RrWm41?=
- =?utf-8?B?TDk0Q1FRWEZiVldxTWZxUjFxbUZheXJCRktjSzlSWEpJYlFSeUhBQzBPbkRX?=
- =?utf-8?B?WURSYmpWMnYzenMrcERwcW1uZTV0SHdKZFVWZkpBVVdaTVVvWjNxWHF1N1dJ?=
- =?utf-8?B?M3ptWnZZSURJL1RFdUhaYm90b2FITUNqdThyZFZ4MzVQZ0Z3QkdZWGJ2ZW4x?=
- =?utf-8?B?MlZtQjB6Nll6YUlpbjdDamZsRldwbEhlY3A2Vm13SjEzdmFub1JZenNoY1hZ?=
- =?utf-8?B?M1JXMlRGUlVYbmxiZHlqYU1seHVtQnRQdlpydEdPZFJHRWV1TGs4S1QzVGtH?=
- =?utf-8?B?d2JsbzFVMWNnTndjd2tsOFJmN3dsbm5KSmU4OHIwOGRQc1pjeE9taVpPU015?=
- =?utf-8?B?U01JOCtDQ0hqVG50dzhHREpyemtMSWxmNXZVTGUzWFBLVVBvaTRXM2JuTXZk?=
- =?utf-8?B?Snp5QU5PcFhqbFZUd0lUamZIWUpCSDk3ZVF1TFFXaytLb2lnbWYvMzNoYmp5?=
- =?utf-8?B?T1lMV2piR0xKSHNXRmRIQTgyV2pOc3JZK1lrWEVxUmEzczhYL1Z0eG0xMHU2?=
- =?utf-8?Q?4auhHK7qvWTEU?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR11MB5949.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(1800799024)(376014); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?N2Z2ZUhjUFpsSUgwbHc0eVZNVmlDN0pVUU12QkRkK0tsNmo2ODhKUlh2U1ov?=
- =?utf-8?B?UzhkV09qQUw1dDJuSHNiZ1BpWXpqdWhHOVBXZFNlUGViNUZOeDRwdGJvZVo2?=
- =?utf-8?B?Wk9Oc0lDdUk5V1NCYllGQ0RvMzQxcXNBK2ZZRFptbnNpQ1JOQlAwK2NUYzJK?=
- =?utf-8?B?M2JIbTNHR0ZMU000OUJ5bHVKM3RoZkk1MGNjS2F3d2ZEM0p2OGYwSmI0Ym1H?=
- =?utf-8?B?UitxUlpjaDZxWWo3OHdXVFY3SHhwUVQya3pJR2dtT0lBZlNEYVM4YUEvRi8z?=
- =?utf-8?B?enRBTWpHYldNUHVBeDVhRE10YXp6cXVTRzE3azV3dStYMXkvR2svV1piQUtO?=
- =?utf-8?B?VzJlMHVabUU0THgzeWJjMEY1czhrbGx2U2w2WjZBUCt3bDFZVm92aDlZTmNw?=
- =?utf-8?B?U2NMbjBFYTNDelRGM3dqMnAyOWN1MjRTVXBYcUJxYVd3bkdhTk8xRTVwQ0VB?=
- =?utf-8?B?cTZ5S01Sc3RJU2FsYjhBZnBKNG4xUUVwa3Y3bVlXazNLeEU4RDZEUThza1pL?=
- =?utf-8?B?YUZKY0l2MXhIanY2MWVMdVNWbEg0NUJoWmNuT2NyZ2dwQndYa0dTUkZxNFc4?=
- =?utf-8?B?UlNWWDZ6NlRqZmxTbWVDb3pSRGpNVWhhRmY0U3JXTzFNVGRKOGRITk5MNmRu?=
- =?utf-8?B?VjlBclZ4TlBvdW1tZ2FZVk5FVi9lZlQvekE3RXdTVHd6UnFydjZaY1VzLy9I?=
- =?utf-8?B?WUJpdVNldWYvMVE4QWF3NXNpTjh6SGFwcEwyK1lEQlRwWnBQQlQ1K29UWDZG?=
- =?utf-8?B?TGQ5Q01yVFJubUprUGJYNHVJUlVIVms5K29ERjlWaFQwVDFtcTVZNE5oWjlF?=
- =?utf-8?B?bDIzUzBBYjN6azlBdWNxWmtCZ3JiLzNUMXBGSUEzeG5UeWlBY1lXdUxWUW1v?=
- =?utf-8?B?b1dob2l5UW85b1crN1JSTFVnTGwyZWUrRHN3U2MrQUVYekdQaWI0MU00MUpG?=
- =?utf-8?B?TXpld2pncWpQbDUzQWkwQTVGT2RGQVpCMzVsVDY2N295MWJtNkN3OCtRakhM?=
- =?utf-8?B?a1FzZFRPOEJ5bjl4dE9wN2tWRVluUi9LNzV6RHZRcUNnSlJKc2tNWWgyWHdB?=
- =?utf-8?B?b0lFYktVbmorZ1ZKaGlFTW1aYm9GaWJaOWQ2YWJKUjgyMy9wWStjZWJvRmYw?=
- =?utf-8?B?SmdQOTIvNUJ3SytJUmI5SkRJRDNXdEFVL3J1OVZjdDZUcEFpQ0VhTTVJY3pa?=
- =?utf-8?B?cys0ZFJENUxOUVNzOHg1ejZCYzIzRU8wRU1tbHR6dkdxODVmNUQyMXBpNHdV?=
- =?utf-8?B?OHM2QUlpcE5PbWx5NzFmTmRpNmo2T01JV0k1c0QrOVd5WmJ3djJuMjA5Zk9B?=
- =?utf-8?B?Z1hrS3E4OWFDUHhyd2hIWW9lRjVWd3p4N2g0MzJGK3k0a3hBVW5EV0I5ekRp?=
- =?utf-8?B?eEtBOGFGUUR4aE54QUMyTnM3eWZoaDN2cE9uOElmTW5aUStURzNUTEV6VXNC?=
- =?utf-8?B?Q1BRZDdlSi9LNUZZNk1OQWZIZk9OM3o1eTIvQVZ6MWFmbVNFbDJ6U1d1b2Rs?=
- =?utf-8?B?SHFTZGNpOFduN1BmRlUrS3YxK2RFTy9HaWRBM2hFRVlKVGxQckN4aDRQZEdy?=
- =?utf-8?B?eUtxaWhrR3Z5aldPVE0rMlFFc2d3WjRtVmNQVVR3dXJoWWNiNU05UFBZTjlZ?=
- =?utf-8?B?ZFVHYkFlRzhndDNvaFVUZHBVTVRBLy9CVDVpVytNekVzSG02OE1HRDRhVmU4?=
- =?utf-8?B?dlNJWGY2SEl6SkdyWHhDb0FGTUtMTGhPZ0xiaitTWkhKU0FuYkF4bVNCSGVv?=
- =?utf-8?B?Q1FaVC9DbG5LNXhGVlJGRU1nTUlONXB3V3I3blM4NGNEcERXZnk3anFkUXZS?=
- =?utf-8?B?T2lFZmJzbGk5YnhkZ0gyWHlrb00zbVBxQnVVUmVwMEhUaVppYXArdGhSc0dL?=
- =?utf-8?B?WTJnSlI2WnJRaEtTMEdublFQcHdVZ0x4ajljUjd0WTJUNnJhcXNEeDcvZzJw?=
- =?utf-8?B?bVFReEp3NTdLRHpmdjN4WkxmUmdiRldLaldkZnRSZ1NRRWJadlUzditybHhP?=
- =?utf-8?B?WWEvbm5ydEZlOERRZkxZNm4zR3I0TStWdmpQOGJHT25XS3pXakd6MVh1Zmdr?=
- =?utf-8?B?NDVJaXBhdkp2MllVNDNtOG9WdVhJMTd2MEt3SEsxeTlSTXZGYTMrcVdNSWhF?=
- =?utf-8?B?MnNiZTdzcEJPMUtjRUFrQmNKN09vTnkzL2lURytnL3ZvR1hCbGFWSlF0ZXFQ?=
- =?utf-8?B?dHc9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: cbf13108-d89f-4fd5-fd22-08dd4162c0ee
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5949.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Jan 2025 19:17:35.9146 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: jMu4DmFEzhj8F7OiErl2X0WMcaDCcOqTcuAVGKMuDJ3egPZfIFPs+ch4jmTHZ03eHFkZB4jY0vRQCayRfAozZV8H6VUudgdzU1n82FGpfOI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR11MB8265
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1738264688; x=1769800688;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=A7FsKHoogTUou/FO+1xs3UwrBYXuOuwaUgytMhfuf+I=;
- b=F1Us6C5OJDmVGsa/M6NpN+GjrFPmLsWuMLJSQ2YQPp262bP+sEod/Y9e
- aYWvNEb7RA73akNFcvB3/vzhSNIySpJD13+huygr4axStrFfsxkyQ81g8
- AeCAPrx7gQYzaORzz25WaEZ5cLCb76fowu65yD/AdjHF2Hb8bcCYM/s3e
- u8oTiF7PgbIVtzCiNzq8WaB2PMKmQ/fqOz0fRNPwqaqm+fpiX0Sv3oU+1
- IaIizEPGe/Jcgce8pi9qLpjV6iKSvW1JfzLlN8e26sg1JyUsOtapF1tl8
- FeVL/zFypY4O+KUZ/rF/s9EMt7PsptE2TReWLXbq12gNzbJyPEYdX6Qq/
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=networkplumber-org.20230601.gappssmtp.com; s=20230601; t=1738271336;
+ x=1738876136; darn=lists.osuosl.org; 
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=rm1X2iERP+p8zCDW1pXLY6+ld26f0LPqmx9BHrZwU70=;
+ b=nMwicy9uHYENY2LNhdF507OZpL7WuabSpoWqpJBlrhdySQz3HbYcJk32lIeWK65A3+
+ j/ibbjns8/XGjkqNjbIDZGHlKHoVwATSlfFi0u5jJEXgHZcmFqyb5hRc2p9eMJOE2E6L
+ qfhbxhBZDWp0n+jh4llhuZi7nu2E4OxrrUKZbfrD+voDAlQF66emSoXsy5x9t0PzF/o+
+ THQHH2lBG6+tgcmSqoP43lP4CDn6T+nmQWQMUOwAdB13md2AK8R+IMVh6V8uF+LNg23Y
+ TdNe1k6GrisqRR5gCj89EhygBtnGq/bhyfNQDAIQLp0ObSER935sG6oZ6yiUZSZhGuIA
+ wXkw==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=networkplumber.org
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=F1Us6C5O
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
+ unprotected) header.d=networkplumber-org.20230601.gappssmtp.com
+ header.i=@networkplumber-org.20230601.gappssmtp.com header.a=rsa-sha256
+ header.s=20230601 header.b=nMwicy9u
 Subject: Re: [Intel-wired-lan] suspend/resume broken of igc driver broken on
  6.12
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -238,45 +133,219 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+On Thu, 30 Jan 2025 21:17:30 +0200
+"Lifshits, Vitaly" <vitaly.lifshits@intel.com> wrote:
+
+> On 1/30/2025 7:11 PM, Stephen Hemminger wrote:
+> > I am using:
+> > 
+> > 5a:00.0 Ethernet controller: Intel Corporation Ethernet Controller I226-LM (rev 04)
+> > 	Subsystem: Intel Corporation Device 0000
+> > 	Flags: bus master, fast devsel, latency 0, IRQ 19, IOMMU group 20
+> > 	Memory at 6c500000 (32-bit, non-prefetchable) [size=1M]
+> > 	Memory at 6c600000 (32-bit, non-prefetchable) [size=16K]
+> > 	Capabilities: [40] Power Management version 3
+> > 	Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
+> > 	Capabilities: [70] MSI-X: Enable+ Count=5 Masked-
+> > 	Capabilities: [a0] Express Endpoint, IntMsgNum 0
+> > 	Capabilities: [100] Advanced Error Reporting
+> > 	Capabilities: [140] Device Serial Number 58-47-ca-ff-ff-7a-98-3d
+> > 	Capabilities: [1c0] Latency Tolerance Reporting
+> > 	Capabilities: [1f0] Precision Time Measurement
+> > 	Capabilities: [1e0] L1 PM Substates
+> > 	Kernel driver in use: igc
+> > 	Kernel modules: igc
+> > 
+> > 
+> > Using both Debian testing and my own kernel built from 6.12, the igc
+> > driver appears broken after resume.  
+
+Before suspend
+
+$ sudo ethtool enp90s0
+Settings for enp90s0:
+	Supported ports: [ TP ]
+	Supported link modes:   10baseT/Half 10baseT/Full
+	                        100baseT/Half 100baseT/Full
+	                        1000baseT/Full
+	                        2500baseT/Full
+	Supported pause frame use: Symmetric
+	Supports auto-negotiation: Yes
+	Supported FEC modes: Not reported
+	Advertised link modes:  10baseT/Half 10baseT/Full
+	                        100baseT/Half 100baseT/Full
+	                        1000baseT/Full
+	                        2500baseT/Full
+	Advertised pause frame use: Symmetric
+	Advertised auto-negotiation: Yes
+	Advertised FEC modes: Not reported
+	Speed: 1000Mb/s
+	Duplex: Full
+	Auto-negotiation: on
+	Port: Twisted Pair
+	PHYAD: 0
+	Transceiver: internal
+	MDI-X: Unknown
+	Supports Wake-on: pumbg
+	Wake-on: d
+        Current message level: 0x00000007 (7)
+                               drv probe link
+	Link detected: yes
 
 
-On 1/30/2025 7:11 PM, Stephen Hemminger wrote:
-> I am using:
+
+
+>  From which system state are you resuming?
+
+Suspend to ram
+
 > 
-> 5a:00.0 Ethernet controller: Intel Corporation Ethernet Controller I226-LM (rev 04)
-> 	Subsystem: Intel Corporation Device 0000
-> 	Flags: bus master, fast devsel, latency 0, IRQ 19, IOMMU group 20
-> 	Memory at 6c500000 (32-bit, non-prefetchable) [size=1M]
-> 	Memory at 6c600000 (32-bit, non-prefetchable) [size=16K]
-> 	Capabilities: [40] Power Management version 3
-> 	Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
-> 	Capabilities: [70] MSI-X: Enable+ Count=5 Masked-
-> 	Capabilities: [a0] Express Endpoint, IntMsgNum 0
-> 	Capabilities: [100] Advanced Error Reporting
-> 	Capabilities: [140] Device Serial Number 58-47-ca-ff-ff-7a-98-3d
-> 	Capabilities: [1c0] Latency Tolerance Reporting
-> 	Capabilities: [1f0] Precision Time Measurement
-> 	Capabilities: [1e0] L1 PM Substates
-> 	Kernel driver in use: igc
-> 	Kernel modules: igc
+> > 
+> > After resuming the device is down and no address present.
+> > Attempts to set link up manually fail.  
 > 
+> Did you get any errors in the dmesg log?
+
+See below.
+
+> What is the firmware version on your device (you can get it by running 
+> ethtool -i)?
+
+$ sudo ethtool -i enp90s0
+driver: igc
+version: 6.12.9-amd64
+firmware-version: 2017:888d
+expansion-rom-version: 
+bus-info: 0000:5a:00.0
+supports-statistics: yes
+supports-test: yes
+supports-eeprom-access: yes
+supports-register-dump: yes
+supports-priv-flags: yes
+
+The error after resume is:
+$ ip -br a
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+enp87s0          DOWN           
+enp90s0          DOWN           
+enp2s0f0np0      UP             
+enp2s0f1np1      UP             
+wlp91s0          DOWN           
+
+$ sudo ip li set enp90s0 up
+RTNETLINK answers: No such device
+
+
+> > If I do rmmod/modprobe of igc it comes back.
+> > 
+> > Doing a bit of bisectting but it is slow going.  
 > 
-> Using both Debian testing and my own kernel built from 6.12, the igc
-> driver appears broken after resume.
+> Meanwhile, we'll also try to reproduce this issue in our lab.  Could you 
+> share more details about your system so we can create a similar setup?
 
- From which system state are you resuming?
+Dmesg starting with suspending.
 
-> 
-> After resuming the device is down and no address present.
-> Attempts to set link up manually fail.
+[14229.851637] Lockdown: systemd-logind: hibernation is restricted; see man kernel_lockdown.7
+[14230.089271] PM: suspend entry (deep)
+[14230.093900] Filesystems sync: 0.004 seconds
+[14230.095179] Freezing user space processes
+[14230.096559] Freezing user space processes completed (elapsed 0.001 seconds)
+[14230.096561] OOM killer disabled.
+[14230.096562] Freezing remaining freezable tasks
+[14230.097744] Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
+[14230.097773] printk: Suspending console(s) (use no_console_suspend to debug)
+[14230.134978] serial 00:01: disabled
+[14230.607766] ACPI: PM: Preparing to enter system sleep state S3
+[14230.618973] ACPI: PM: Saving platform NVS memory
+[14230.619096] Disabling non-boot CPUs ...
+[14230.621589] smpboot: CPU 19 is now offline
+[14230.627525] smpboot: CPU 18 is now offline
+[14230.630805] smpboot: CPU 17 is now offline
+[14230.635371] smpboot: CPU 16 is now offline
+[14230.641840] smpboot: CPU 15 is now offline
+[14230.649528] smpboot: CPU 14 is now offline
+[14230.658873] smpboot: CPU 13 is now offline
+[14230.666231] smpboot: CPU 12 is now offline
+[14230.672531] smpboot: CPU 11 is now offline
+[14230.684986] smpboot: CPU 10 is now offline
+[14230.689311] smpboot: CPU 9 is now offline
+[14230.695249] smpboot: CPU 8 is now offline
+[14230.698769] smpboot: CPU 7 is now offline
+[14230.704500] smpboot: CPU 6 is now offline
+[14230.707715] smpboot: CPU 5 is now offline
+[14230.714217] smpboot: CPU 4 is now offline
+[14230.717362] smpboot: CPU 3 is now offline
+[14230.723696] smpboot: CPU 2 is now offline
+[14230.730325] smpboot: CPU 1 is now offline
+[14230.743949] ACPI: PM: Low-level resume complete
+[14230.744013] ACPI: PM: Restoring platform NVS memory
+[14230.745033] Enabling non-boot CPUs ...
+[14230.745051] smpboot: Booting Node 0 Processor 1 APIC 0x1
+[14230.747051] CPU1 is up
+[14230.747063] smpboot: Booting Node 0 Processor 2 APIC 0x8
+[14230.754733] CPU2 is up
+[14230.754744] smpboot: Booting Node 0 Processor 3 APIC 0x9
+[14230.758406] CPU3 is up
+[14230.758417] smpboot: Booting Node 0 Processor 4 APIC 0x10
+[14230.765655] CPU4 is up
+[14230.765665] smpboot: Booting Node 0 Processor 5 APIC 0x11
+[14230.768770] CPU5 is up
+[14230.768811] smpboot: Booting Node 0 Processor 6 APIC 0x18
+[14230.776704] CPU6 is up
+[14230.776715] smpboot: Booting Node 0 Processor 7 APIC 0x19
+[14230.780617] CPU7 is up
+[14230.780630] smpboot: Booting Node 0 Processor 8 APIC 0x20
+[14230.795282] CPU8 is up
+[14230.795321] smpboot: Booting Node 0 Processor 9 APIC 0x21
+[14230.801205] CPU9 is up
+[14230.801222] smpboot: Booting Node 0 Processor 10 APIC 0x28
+[14230.823488] CPU10 is up
+[14230.823518] smpboot: Booting Node 0 Processor 11 APIC 0x29
+[14230.829138] CPU11 is up
+[14230.829151] smpboot: Booting Node 0 Processor 12 APIC 0x30
+[14230.838271] core: cpu_atom PMU driver: PEBS-via-PT 
+[14230.838276] ... version:                5
+[14230.838278] ... bit width:              48
+[14230.838279] ... generic registers:      6
+[14230.838279] ... value mask:             0000ffffffffffff
+[14230.838280] ... max period:             00007fffffffffff
+[14230.838281] ... fixed-purpose events:   3
+[14230.838281] ... event mask:             000000070000003f
+[14230.839284] CPU12 is up
+[14230.839327] smpboot: Booting Node 0 Processor 13 APIC 0x32
+[14230.849421] CPU13 is up
+[14230.849433] smpboot: Booting Node 0 Processor 14 APIC 0x34
+[14230.859509] CPU14 is up
+[14230.859526] smpboot: Booting Node 0 Processor 15 APIC 0x36
+[14230.867307] CPU15 is up
+[14230.867320] smpboot: Booting Node 0 Processor 16 APIC 0x38
+[14230.879578] CPU16 is up
+[14230.879604] smpboot: Booting Node 0 Processor 17 APIC 0x3a
+[14230.888018] CPU17 is up
+[14230.888068] smpboot: Booting Node 0 Processor 18 APIC 0x3c
+[14230.898765] CPU18 is up
+[14230.898778] smpboot: Booting Node 0 Processor 19 APIC 0x3e
+[14230.907338] CPU19 is up
+[14230.915217] ACPI: PM: Waking up from system sleep state S3
+[14231.077999] spd5118 0-0050: Failed to write b = 0: -6
+[14231.078021] spd5118 0-0050: PM: dpm_run_callback(): spd5118_resume [spd5118] returns -6
+[14231.078162] spd5118 0-0050: PM: failed to resume async: error -6
+[14231.096445] nvme nvme0: D3 entry latency set to 10 seconds
+[14231.100118] nvme nvme0: 20/0/0 default/read/poll queues
+[14231.107107] i40e 0000:02:00.0: FW LLDP is disabled, attempting SW DCB
+[14231.109039] serial 00:01: activated
+[14231.109521] nvme nvme1: 8/0/0 default/read/poll queues
+[14231.114757] i40e 0000:02:00.0: SW DCB initialization succeeded.
+[14231.182024] i40e 0000:02:00.1: FW LLDP is disabled, attempting SW DCB
+[14231.189703] i40e 0000:02:00.1: SW DCB initialization succeeded.
+[14231.260752] usb 3-2.2: reset high-speed USB device number 6 using xhci_hcd
+[14231.596571] OOM killer enabled.
+[14231.596573] Restarting tasks ... 
+[14231.597134] mei_hdcp 0000:00:16.0-b638ab7e-94e2-4ea2-a552-d1c54b627f04: bound 0000:00:02.0 (ops i915_hdcp_ops [i915])
+[14231.597539] done.
+[14231.597547] random: crng reseeded on system resumption
+[14231.599560] PM: suspend exit
+[14234.740539] usb 3-2.2: reset high-speed USB device number 6 using xhci_hcd
+[14238.192310] usb 3-2.2: reset high-speed USB device number 6 using xhci_hcd
 
-Did you get any errors in the dmesg log?
-What is the firmware version on your device (you can get it by running 
-ethtool -i)?
-
-> If I do rmmod/modprobe of igc it comes back.
-> 
-> Doing a bit of bisectting but it is slow going.
-
-Meanwhile, we'll also try to reproduce this issue in our lab.  Could you 
-share more details about your system so we can create a similar setup?
+Note: I blacklisted i40e but that seems to act only at boot time, not on resume...
