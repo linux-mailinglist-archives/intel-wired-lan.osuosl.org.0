@@ -1,105 +1,104 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8BBBCA2397C
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 Jan 2025 07:21:33 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 99AC3A23BDC
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 Jan 2025 11:05:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 14116606B4;
-	Fri, 31 Jan 2025 06:21:32 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 217F1424C7;
+	Fri, 31 Jan 2025 10:05:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1bfS1rcgKlFg; Fri, 31 Jan 2025 06:21:31 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id S1kiYQG2o_cM; Fri, 31 Jan 2025 10:05:55 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6993B6073C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5CE924124A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1738304491;
-	bh=TtWjVqi/gbiARu1lEqRHX7gwWKHCsuFvSA6baTkSEvo=;
+	s=default; t=1738317955;
+	bh=YUCkWLuraLeMQBvY6DzjO8l/cXFVGvcco/yxcce5m9M=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=kOtuuxeHOXSXzRw/hb17/3GQmUssmGIDZ5NMDYbO56ME3dW3Xdct6H/YOenJMqul/
-	 H5aQmWpJr/+arRr6GTTmPH050yWVgyvsfreCtrfeTeJaJYskV0a9YtUtBIqYgpSCA0
-	 625RUu3G4N0MBlh64ieJslrfYqKJLhB+rDsFSypPT3iwwVr2zNtSDRu0iNhMH3/jaO
-	 eluREei0nz40nODJ9NJAVNVbK+6pBSzcKY5G8o5bOhuqhuLVFvM709/66ApelE8kMG
-	 V2wL/gQqLnHwmbqCsTgs1ILtYSDWUFfw1imwzrRipU1umGxrTe5RmfAcMZxRHHZBrl
-	 gj5zpE1IpmNPA==
+	b=V1eFuMRrikgGRIabvG2rKoCzAM03JsuijrPnoZjNJIAgLLXdrTTwQxASGgz2XoJmt
+	 EBA59dWNkgfKR6zYUUk4DjxY58LCQ2e8a9QhYVea0naXQR5UjX9j+QD5d0ew7of5R2
+	 6+D2hWHOW654c2nNVK0XeFglndlEnwdBV7GB6kfnh33sUmnCYn88325E2OzA4rcohn
+	 qNmbcsfNTS07DmcVfhIdeUbGgOfCQRTek35Xt2wIY9GZ/BGVpnrKBWsKuxXqtZ6mgU
+	 XjOyOma8IZDyeTSkKTIZrSsQMZQz7ZmnozrmOo1/JXw7G8E9NVDLEgeRNRPPwO1xen
+	 2EyOOyk9zKd/Q==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6993B6073C;
-	Fri, 31 Jan 2025 06:21:31 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5CE924124A;
+	Fri, 31 Jan 2025 10:05:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id B463416C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2025 06:21:29 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id C860B16C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2025 10:05:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A27946066A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2025 06:21:29 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id A3A62412D0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2025 10:05:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id j2lrNkVZ7qjR for <intel-wired-lan@lists.osuosl.org>;
- Fri, 31 Jan 2025 06:21:29 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
- helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D88336065A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D88336065A
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D88336065A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2025 06:21:28 +0000 (UTC)
-X-CSE-ConnectionGUID: LvuDM1UWQkmCnpeh9gpLCA==
-X-CSE-MsgGUID: qczhubAbT4G/1NNkKiFaOw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11331"; a="38898450"
-X-IronPort-AV: E=Sophos;i="6.13,247,1732608000"; d="scan'208";a="38898450"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Jan 2025 22:21:28 -0800
-X-CSE-ConnectionGUID: 8/BkORJtSKaC4/WFwBOUug==
-X-CSE-MsgGUID: 4dYWIjDlRoyHMpYHStLWJg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,247,1732608000"; d="scan'208";a="110122754"
-Received: from mev-dev.igk.intel.com ([10.237.112.144])
- by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Jan 2025 22:21:24 -0800
-Date: Fri, 31 Jan 2025 07:17:54 +0100
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: Jiasheng Jiang <jiashengjiangcool@gmail.com>
-Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, horms@kernel.org,
- wojciech.drewek@intel.com, piotr.raczynski@intel.com,
- mateusz.polchlopek@intel.com, pawel.kaminski@intel.com,
- michal.wilczynski@intel.com, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org
-Message-ID: <Z5xrEtiFC4PtSFp6@mev-dev.igk.intel.com>
-References: <20250131013832.24805-1-jiashengjiangcool@gmail.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Rn6PDvCyiA8l for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 31 Jan 2025 10:05:53 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D3E704124A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D3E704124A
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D3E704124A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2025 10:05:52 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 8BBFD5C59F7;
+ Fri, 31 Jan 2025 10:05:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1ACCC4CED1;
+ Fri, 31 Jan 2025 10:05:47 +0000 (UTC)
+Date: Fri, 31 Jan 2025 10:05:45 +0000
+From: Simon Horman <horms@kernel.org>
+To: Zdenek Bouska <zdenek.bouska@siemens.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ Florian Bezdeka <florian.bezdeka@siemens.com>,
+ Jan Kiszka <jan.kiszka@siemens.com>,
+ Song Yoong Siang <yoong.siang.song@intel.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, bpf@vger.kernel.org
+Message-ID: <20250131100545.GF24105@kernel.org>
+References: <20250128-igc-fix-hw-rx-timestamp-when-passed-by-zc-xdp-v1-1-b765d3e972de@siemens.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250131013832.24805-1-jiashengjiangcool@gmail.com>
+In-Reply-To: <20250128-igc-fix-hw-rx-timestamp-when-passed-by-zc-xdp-v1-1-b765d3e972de@siemens.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1738304489; x=1769840489;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=4457f3QO7jxAij1w8K8qI9z2zpN0Sb/yTbSaXGKXzAQ=;
- b=KhpkI47K7T3TUDtKHMZnUFwZ1NVpbxgliPZKjHwd7yE7Tr0RLzJXbh8P
- nu4sgS/tQxe4EH8EsxQR7PaNnJYv49Q/9GmEQMZcW+JHMA8wT59o296x0
- j613uZwQDci8e6dBdv5f6tU4oAgUYi6wQRveDO2mc5BRXInZgK6+kD6zr
- kCSHkeDp5IiSjpqwPOKi6pu87byyHH8j3SfpMmLdSJpHxmaZyoR4tfu/Y
- 3wEzz+vBN7DFzo/0s7Yx1FTNlbqzan3N+gc/SRL/q132tOhZYjDxl67mv
- qtYQFmXz32A0TK7htQ63PQPF3b6ydL5l0hpVJ9PicnIvs5zpjTPvdmlY3
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ d=kernel.org; s=k20201202; t=1738317951;
+ bh=fOGvzt4VXpEvCOY+kXMq0uNd0SgvKFlchoIyv6XU0bk=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=QE4WKA7gY0xGktkyO5t3ED+S8CDsKoqhNJAwhoWmL9ESKRCS+SdHy30ikMQPjjlJY
+ tSSdYtw94CkCLaMsRPNv6SAedBrxJ+E7C1BFvuuCUB9IfKVXWxDgbRqV6Y91qg9Qjy
+ o0AAEs5Jx/XCYFnEHscsyLfHl5sshAPcXXfPJ/3iW5YfA7xSO1/p6zlXILM3jfbGRx
+ tHvjQ+8De9sgFh2h4koz8akuFuhun4rrwYqRZlNVtSnFW4tCk5h1DNzDBwllZcUyFG
+ prqRa/S8ACSaJsCnq4aMsnmhESAXlqBMt9BZSSllChd+zb3TFSaut1ZNfMjG9Ro5Uj
+ kCe0B+zt5Yquw==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=KhpkI47K
-Subject: Re: [Intel-wired-lan] [PATCH] ice: Add check for devm_kzalloc()
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=QE4WKA7g
+Subject: Re: [Intel-wired-lan] [PATCH] igc: Fix HW RX timestamp when passed
+ by ZC XDP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -115,33 +114,34 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Jan 31, 2025 at 01:38:32AM +0000, Jiasheng Jiang wrote:
-> Add check for the return value of devm_kzalloc() to guarantee the success
-> of allocation.
+On Tue, Jan 28, 2025 at 01:26:48PM +0100, Zdenek Bouska wrote:
+> Fixes HW RX timestamp in the following scenario:
+> - AF_PACKET socket with enabled HW RX timestamps is created
+> - AF_XDP socket with enabled zero copy is created
+> - frame is forwarded to the BPF program, where the timestamp should
+>   still be readable (extracted by igc_xdp_rx_timestamp(), kfunc
+>   behind bpf_xdp_metadata_rx_timestamp())
+> - the frame got XDP_PASS from BPF program, redirecting to the stack
+> - AF_PACKET socket receives the frame with HW RX timestamp
 > 
-> Fixes: 42c2eb6b1f43 ("ice: Implement devlink-rate API")
-> Signed-off-by: Jiasheng Jiang <jiashengjiangcool@gmail.com>
-> ---
->  drivers/net/ethernet/intel/ice/devlink/devlink.c | 3 +++
->  1 file changed, 3 insertions(+)
+> Moves the skb timestamp setting from igc_dispatch_skb_zc() to
+> igc_construct_skb_zc() so that igc_construct_skb_zc() is similar to
+> igc_construct_skb().
 > 
-> diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink.c b/drivers/net/ethernet/intel/ice/devlink/devlink.c
-> index d116e2b10bce..dbdb83567364 100644
-> --- a/drivers/net/ethernet/intel/ice/devlink/devlink.c
-> +++ b/drivers/net/ethernet/intel/ice/devlink/devlink.c
-> @@ -981,6 +981,9 @@ static int ice_devlink_rate_node_new(struct devlink_rate *rate_node, void **priv
->  
->  	/* preallocate memory for ice_sched_node */
->  	node = devm_kzalloc(ice_hw_to_dev(pi->hw), sizeof(*node), GFP_KERNEL);
-> +	if (!node)
-> +		return -ENOMEM;
-> +
+> This issue can also be reproduced by running:
+>  # tools/testing/selftests/bpf/xdp_hw_metadata enp1s0
+> When a frame with the wrong port 9092 (instead of 9091) is used:
+>  # echo -n xdp | nc -u -q1 192.168.10.9 9092
+> then the RX timestamp is missing and xdp_hw_metadata prints:
+>  skb hwtstamp is not found!
+> 
+> With this fix or when copy mode is used:
+>  # tools/testing/selftests/bpf/xdp_hw_metadata -c enp1s0
+> then RX timestamp is found and xdp_hw_metadata prints:
+>  found skb hwtstamp = 1736509937.852786132
+> 
+> Fixes: 069b142f5819 ("igc: Add support for PTP .getcyclesx64()")
+> Signed-off-by: Zdenek Bouska <zdenek.bouska@siemens.com>
 
-Thanks for fixing:
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Reviewed-by: Simon Horman <horms@kernel.org>
 
->  	*priv = node;
->  
->  	return 0;
-> -- 
-> 2.25.1
