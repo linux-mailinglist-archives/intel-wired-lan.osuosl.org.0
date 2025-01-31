@@ -1,90 +1,99 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 51DC4A23C06
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 Jan 2025 11:13:09 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E5ACEA23D99
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 Jan 2025 13:14:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D8BBC40590;
-	Fri, 31 Jan 2025 10:13:07 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9EDAE60B50;
+	Fri, 31 Jan 2025 12:14:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Fn-ch5URnIdQ; Fri, 31 Jan 2025 10:13:07 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id h-MnXs7DHAvu; Fri, 31 Jan 2025 12:14:58 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EA64C4053C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 06A1060B4A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1738318387;
-	bh=AB9GHPWvEAMVJPUkkEUEuEUM8DAVtfMgzRuHgkwe/ZU=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=Bax4jFBklc4uCuU1G8pgRvFRlwte4K/T6CQLWD9RgTSuCyWpBpEAtQAwd08ICa+h0
-	 umdcrv0GgOEh4xGuYL1C73Lquced5rqik1oQ30zCtMW5SNyB1rjNFTl8rhiD6R3pmB
-	 9+F5tz9WfH6c6Qr0fIYmgFTEyCuWgqzNkNdmld+RRVuJoONEx418c1ncXltgFeNl4m
-	 tpusUf8tcQw7G8tsZAeJ8QW0pJzb4evsK8Nj/yyehH6/Av9T2AV0SdeIVDLO3tZ7EJ
-	 9p/PUyZfR8aNXkkGxFJFMwQqXhL+Zx42A8iSGsUNDyq1TMuAPhpzX/kRlSU3ddoEz+
-	 4PG6cooeWIWfg==
+	s=default; t=1738325698;
+	bh=uIxHP7l6OVAJ/xjLOaUGjgZeAveGuOVRPm4gmnhkAaU=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=W/p/fEaoqDYIfRQZcI1lsdidtqWdzAPJPORQVJXu9KmaFxi08Duf1fa1zGfx8MPwg
+	 /NU4JeEVzhg7Nhp6pCnD9zBDCTyrTK9oc4uZ3bnZCdGrPu+nmejR4AwhdL+WTcg3Mr
+	 OUc6ryDl1myo6gKYpAoJB8n/qo8Fv4t1u45pgDi/YNRXRv/XYAp+mnU0mcj9DHPdPg
+	 QHExwOBRU6+1rlOz/pom0v1BqFE2vGn9OTxW6mcZkWopt6cPpv2FA2wfGiD05k6Wcy
+	 qbS3dntOfZp0VdeJQTJ+kI/Tol8eVctc90K1kje/tR18y2aD+RnnlKvk37haob6aFe
+	 iffcOaNJ6n0XQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EA64C4053C;
-	Fri, 31 Jan 2025 10:13:06 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 06A1060B4A;
+	Fri, 31 Jan 2025 12:14:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 4EDED12C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2025 10:13:05 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 0061D12C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2025 12:14:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3DB414022B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2025 10:13:05 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id EF64B40575
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2025 12:14:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id DIREnMvHp2iY for <intel-wired-lan@lists.osuosl.org>;
- Fri, 31 Jan 2025 10:13:04 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 536E4409BD
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 536E4409BD
-Received: from nyc.source.kernel.org (nyc.source.kernel.org
- [IPv6:2604:1380:45d1:ec00::3])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 536E4409BD
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2025 10:13:04 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id A2A7EA41D69;
- Fri, 31 Jan 2025 10:11:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF540C4CED1;
- Fri, 31 Jan 2025 10:13:01 +0000 (UTC)
-Date: Fri, 31 Jan 2025 10:12:59 +0000
-From: Simon Horman <horms@kernel.org>
-To: Grzegorz Nitka <grzegorz.nitka@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Message-ID: <20250131101259.GG24105@kernel.org>
-References: <20250123081539.1814685-1-grzegorz.nitka@intel.com>
+ id JfhF6JG4SwKE for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 31 Jan 2025 12:14:55 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
+ helo=mgamail.intel.com; envelope-from=piotr.kwapulinski@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 129AB40529
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 129AB40529
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 129AB40529
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Jan 2025 12:14:54 +0000 (UTC)
+X-CSE-ConnectionGUID: WBCRDYeeRnew9l7UtyRZtg==
+X-CSE-MsgGUID: pxDIjmM+TPK2ovJlcOcBiA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11332"; a="39032059"
+X-IronPort-AV: E=Sophos;i="6.13,248,1732608000"; d="scan'208";a="39032059"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+ by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Jan 2025 04:14:54 -0800
+X-CSE-ConnectionGUID: btKywjmAQYae50aS/oLvFA==
+X-CSE-MsgGUID: +6GzjmJKRzezzRJA42f4+Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.13,248,1732608000"; d="scan'208";a="110188597"
+Received: from pkwapuli-mobl1.ger.corp.intel.com (HELO
+ vbox-pkwap.ger.corp.intel.com) ([10.245.87.141])
+ by fmviesa010.fm.intel.com with ESMTP; 31 Jan 2025 04:14:52 -0800
+From: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, dan.carpenter@linaro.org, yuehaibing@huawei.com,
+ maciej.fijalkowski@intel.com, przemyslaw.kitszel@intel.com,
+ Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+Date: Fri, 31 Jan 2025 13:14:50 +0100
+Message-ID: <20250131121450.11645-1-piotr.kwapulinski@intel.com>
+X-Mailer: git-send-email 2.43.5
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250123081539.1814685-1-grzegorz.nitka@intel.com>
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1738318382;
- bh=0u1rzgXw3P/ydx0WeR0XXW0LRcwGvHxJ7+/T518MBMo=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=p9rqr1k42iz0ok2s4TGNi8gKOGB8Evewn9G6hOTqtixsiUEDQhN1d0heN5oFnJoOT
- kBClfSa0BEkg+5Z2tP3P4bInzDfugbNNbYDM5n1E51/RBEP/dqKJIAkrMvTb1ehmi4
- jCZc0Do/j7vuUJ1g0nPxUsYWJywIxuhnt4/T+nRSxZUWU19tS+8MhG/3iK5/wc+ThW
- E8ZoTLKrpyZsf0JQt3fKSaK+KjsrA5dZB6Jrq/M3l/XCbTf38b0Av3NFYwiOEOuJJD
- RRFHSHaW4BapDgEamdyz8y4xG4j4SasxTiJUUw5ZwCQ2x3nkUoG0RjHyNTDMxZoUEo
- N5ZIMHWmi13PA==
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1738325695; x=1769861695;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=ectFna4j8mXYtc7xq5aabbYrNLki2dKAI/mLOsusxLw=;
+ b=KKwwCdr78ujm5I17+73L7pxoWIvWGI3K42loCIlMSP5e1VAsWugM1xqN
+ KZNidbxQyWuNXDwr3XMN7RxR7crgiVQAeyDeukZOU0PJfRY7jVjAo46d2
+ hGrdRoHiT46o7HnqrdRgiSrNfnb+xpNeTfUiFpn44AccRql1F/GZ0VOlQ
+ vYg9iVW1nVx2EO189m/o1EGRk1o7BZBTbCW3QLOuEtK8agPT+b0/ow3/z
+ dojUbTLH0QtMD4Gwi1Jikk6Rto5cJ9gdtKdghwhV7kDY11zVmrtKf3luJ
+ qCMBILC6YRBjN8FpEShp1ekyE0xPXGAGuyg5+rQQedExtKjjZ0qTUd5tT
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=p9rqr1k4
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1] ice: fix memory leak in
- aRFS after reset
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=KKwwCdr7
+Subject: [Intel-wired-lan] [PATCH iwl-next v4] ixgbe: Fix possible skb NULL
+ pointer dereference
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -100,42 +109,41 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Jan 23, 2025 at 09:15:39AM +0100, Grzegorz Nitka wrote:
-> Fix aRFS (accelerated Receive Flow Steering) structures memory leak by
-> adding a checker to verify if aRFS memory is already allocated while
-> configuring VSI. aRFS objects are allocated in two cases:
-> - as part of VSI initialization (at probe), and
-> - as part of reset handling
-> 
-> However, VSI reconfiguration executed during reset involves memory
-> allocation one more time, without prior releasing already allocated
-> resources. This led to the memory leak with the following signature:
-> 
-> [root@os-delivery ~]# cat /sys/kernel/debug/kmemleak
-> unreferenced object 0xff3c1ca7252e6000 (size 8192):
->   comm "kworker/0:0", pid 8, jiffies 4296833052
->   hex dump (first 32 bytes):
->     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
->     00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
->   backtrace (crc 0):
->     [<ffffffff991ec485>] __kmalloc_cache_noprof+0x275/0x340
->     [<ffffffffc0a6e06a>] ice_init_arfs+0x3a/0xe0 [ice]
->     [<ffffffffc09f1027>] ice_vsi_cfg_def+0x607/0x850 [ice]
->     [<ffffffffc09f244b>] ice_vsi_setup+0x5b/0x130 [ice]
->     [<ffffffffc09c2131>] ice_init+0x1c1/0x460 [ice]
->     [<ffffffffc09c64af>] ice_probe+0x2af/0x520 [ice]
->     [<ffffffff994fbcd3>] local_pci_probe+0x43/0xa0
->     [<ffffffff98f07103>] work_for_cpu_fn+0x13/0x20
->     [<ffffffff98f0b6d9>] process_one_work+0x179/0x390
->     [<ffffffff98f0c1e9>] worker_thread+0x239/0x340
->     [<ffffffff98f14abc>] kthread+0xcc/0x100
->     [<ffffffff98e45a6d>] ret_from_fork+0x2d/0x50
->     [<ffffffff98e083ba>] ret_from_fork_asm+0x1a/0x30
->     ...
-> 
-> Fixes: 28bf26724fdb ("ice: Implement aRFS")
-> Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
+The commit c824125cbb18 ("ixgbe: Fix passing 0 to ERR_PTR in
+ixgbe_run_xdp()") stopped utilizing the ERR-like macros for xdp status
+encoding. Propagate this logic to the ixgbe_put_rx_buffer().
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+The commit also relaxed the skb NULL pointer check - caught by Smatch.
+Restore this check.
+
+Fixes: c824125cbb18 ("ixgbe: Fix passing 0 to ERR_PTR in ixgbe_run_xdp()")
+Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
+Acked-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+---
+v1 -> v2
+  Provide extra details in commit message for motivation of this patch
+v2 -> v3
+  Simplify the check condition
+v3 -> v4
+  Rebase to net-queue
+---
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index 7236f20..467f812 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -2105,7 +2105,7 @@ static void ixgbe_put_rx_buffer(struct ixgbe_ring *rx_ring,
+ 		/* hand second half of page back to the ring */
+ 		ixgbe_reuse_rx_page(rx_ring, rx_buffer);
+ 	} else {
+-		if (!IS_ERR(skb) && IXGBE_CB(skb)->dma == rx_buffer->dma) {
++		if (skb && IXGBE_CB(skb)->dma == rx_buffer->dma) {
+ 			/* the page has been released from the ring */
+ 			IXGBE_CB(skb)->page_released = true;
+ 		} else {
+-- 
+2.43.0
 
