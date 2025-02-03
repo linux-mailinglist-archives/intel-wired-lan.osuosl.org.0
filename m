@@ -2,74 +2,76 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 635D7A25E49
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  3 Feb 2025 16:17:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C13C6A25E4A
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  3 Feb 2025 16:17:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3DC7160C31;
-	Mon,  3 Feb 2025 15:17:32 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8370960F9B;
+	Mon,  3 Feb 2025 15:17:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id MBHvki0-yOWm; Mon,  3 Feb 2025 15:17:31 +0000 (UTC)
+ id u0hPP_0JcIye; Mon,  3 Feb 2025 15:17:33 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0BA8A60FBF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6D74B60F77
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1738595851;
-	bh=t4GFEorcL/szkA7/dV7X+VuJMmc+iPE2zMGL6Jr10eo=;
+	s=default; t=1738595853;
+	bh=ca7gHF34emuxkZfj6OyXlHUY8nSoLmZi28uRnfnld1E=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=bSQrcWeYbHndEmhm90CxJdDL8b/K7xrqKamnP48t/UmB0TbhK7nNDMIGv0EgrJRvd
-	 jRW7KwXQ6LwW6NHOFV5qpXoLWjUyvY/ii0S/qxGicx4IeztAYDl9hJMBFf9hdTw9dt
-	 dLc2PlKFG6x6xIRnSgDEo70mCVRv293cohQ6Z3ttKVStORQDR1KEOeoBED2azCxWiD
-	 vfAYNr7sREfAWscuXbxuwBtPg+C7edmf9v0Q6V6aJpPPZ9odskxyncU6hcSTN0vU6V
-	 H53F2J+YwNXvVtfScI25alJT9SAbPPt8LB3rwPvt413hbq+ANJJB5aBjK2PTz+xO6Q
-	 XAsxexHNDok4Q==
+	b=ToV8weEL6PrG/iYJfnYJJEYi9FR+TfXzM1dlhdmdR/EDDO0vGw15Wm9Oq+d/Db6Xa
+	 afIqhocU1DNTMO5Ltj99hwSxoPu5WUWwRinWuWZs1yG5ptP8YSyo9qf/Q2xC9C2dAd
+	 d5mus+moUWKkTRJotz59LBwmMlhVzCySHkcA+yV4N+LBsrVBHne9RM517NoXBQnTMN
+	 CwdKhaDXYL7bqr+ZcWVcPw/12M/ZNau3blXxzgH4Kt26OzpQEEMiw7z+QwJv9XDW0n
+	 cg5YwCZqXgYVD4j1hY/6/iYJlXJnDcrKMhABiZ1Dv6PopRBidJVZBTqlrUP2sCLkwg
+	 jElSjIyLiELlQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0BA8A60FBF;
-	Mon,  3 Feb 2025 15:17:31 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6D74B60F77;
+	Mon,  3 Feb 2025 15:17:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id D30F312A
- for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Feb 2025 15:17:28 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 2B866185
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Feb 2025 15:17:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C32B8405D0
- for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Feb 2025 15:17:28 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 1ADA9402E4
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Feb 2025 15:17:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CrSiSLROyw-Y for <intel-wired-lan@lists.osuosl.org>;
- Mon,  3 Feb 2025 15:17:27 +0000 (UTC)
+ id 7HvnlOTb0o-E for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  3 Feb 2025 15:17:29 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
  helo=mgamail.intel.com; envelope-from=jedrzej.jagielski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5068A408A5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5068A408A5
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 941DE40654
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 941DE40654
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5068A408A5
- for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Feb 2025 15:17:27 +0000 (UTC)
-X-CSE-ConnectionGUID: DORCXhXgTTml7RrRlWwHNg==
-X-CSE-MsgGUID: L2U3XCC9Q+aUb1QeiYO/Yw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11335"; a="56519845"
-X-IronPort-AV: E=Sophos;i="6.13,256,1732608000"; d="scan'208";a="56519845"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 941DE40654
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Feb 2025 15:17:29 +0000 (UTC)
+X-CSE-ConnectionGUID: SuQGIk8LQ/WPtz2tsVx2zQ==
+X-CSE-MsgGUID: fcJwB2GURK+0z7w/q+ASrA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11335"; a="56519856"
+X-IronPort-AV: E=Sophos;i="6.13,256,1732608000"; d="scan'208";a="56519856"
 Received: from fmviesa009.fm.intel.com ([10.60.135.149])
  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Feb 2025 07:17:27 -0800
-X-CSE-ConnectionGUID: XR7kI5veTX2+SETkW2abiw==
-X-CSE-MsgGUID: 3MnC26KOTjy8uMpdngGxEg==
+ 03 Feb 2025 07:17:30 -0800
+X-CSE-ConnectionGUID: yNkmsZ0NTa2OmkbkBX5LhA==
+X-CSE-MsgGUID: XtDwLnq0S3Gu25cimAWx/g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,256,1732608000"; d="scan'208";a="110886259"
+X-IronPort-AV: E=Sophos;i="6.13,256,1732608000"; d="scan'208";a="110886264"
 Received: from os-delivery.igk.intel.com ([10.102.18.218])
- by fmviesa009.fm.intel.com with ESMTP; 03 Feb 2025 07:17:25 -0800
+ by fmviesa009.fm.intel.com with ESMTP; 03 Feb 2025 07:17:27 -0800
 From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: anthony.l.nguyen@intel.com, netdev@vger.kernel.org,
  Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
  Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- Stefan Wegrzyn <stefan.wegrzyn@intel.com>
-Date: Mon,  3 Feb 2025 16:03:22 +0100
-Message-Id: <20250203150328.4095-8-jedrzej.jagielski@intel.com>
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Slawomir Mrozowicz <slawomirx.mrozowicz@intel.com>,
+ Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+Date: Mon,  3 Feb 2025 16:03:23 +0100
+Message-Id: <20250203150328.4095-9-jedrzej.jagielski@intel.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20250203150328.4095-1-jedrzej.jagielski@intel.com>
 References: <20250203150328.4095-1-jedrzej.jagielski@intel.com>
@@ -77,25 +79,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1738595848; x=1770131848;
+ t=1738595850; x=1770131850;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=tMpF76sSuW91HJfZkZTwSf+gAzghfAzWAq7s6vGq5VA=;
- b=HrlrmfMRnr2lHpXxXWEE014FceWg0Dry8EAImSYRRjVFL0kMltPuji3O
- IEkxJEkkltCckNUc0Qjo5+PNJyr5l9mZB3R9T17wvoW8WYnivveE42ncx
- OmOxdLMrCKf0G8Lk4rrnIROcclAyZUAomV7/xXPM578dWvWCHoTazODkU
- Oh43ZC0p7J4ogLfydW36JxjpX9i3XLSVk/y+nD9OycxoMm+3kKfjaVc2m
- jhwFhyb5QTDHAK+7HbPCp7RMMPJqAOoW92mTrj1w/zAuFvM1ZYn2YIbIX
- BYRabxvuw1dT1vJvtcQXp0Z/8D2WRloFbom89nN95zM4YQBu4NDRKlmZJ
+ bh=OEHjg1sY8NtvvcMk75rb8hiG01bGfpDS3XooETMEbUQ=;
+ b=lfPtZojvY8HFwYyx3gj9lYMu8HNSH9Nq/0WOOmvoJ+m4K98YU0dqN/U+
+ Q4Uoy9suZjGb8OtcSrVv/SscP4TfwcDVZhYQbFae3/LYKgsU93Bokq5tv
+ A7dkxs1YWsQ4H1+SYA+YlSvMj7nkfJ1YGOcURPkDxPcpN/0DmOvz74fLQ
+ uNbfBULs2IuE9CNoy/OJwN/gqRqJFZAyOtHdQ682GY97YHGRw1E8JGGfC
+ rOHrM1G/NjWVqqDias+LUKBOKNrzxwoNl0GtRAfqcBktDxiUUaKrQyWsr
+ P4VMS0yA5vUnKZXkv1nG1oGk+mPjwWuZ5ucGPOktaYVUG9OFgWsL2TtP4
  A==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=HrlrmfMR
-Subject: [Intel-wired-lan] [PATCH iwl-next v1 07/13] ixgbe: add E610
- functions getting PBA and FW ver info
+ header.a=rsa-sha256 header.s=Intel header.b=lfPtZojv
+Subject: [Intel-wired-lan] [PATCH iwl-next v1 08/13] ixgbe: extend .info_get
+ with stored versions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -111,360 +113,390 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Introduce 2 E610 specific callbacks implementations:
--ixgbe_start_hw_e610() which expands the regular .start_hw callback with
-getting FW version information
--ixgbe_read_pba_string_e610() which gets Product Board Assembly string
+Add functions reading inactive versions from the inactive flash
+banks.
 
-Extend EEPROM ops with new .read_pba_string in order to distinguish
-generic one and the E610 one.
+Print stored NVM, OROM and netlist versions by devlink when there
+is an ongoing update for E610 devices.
 
 Reviewed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-Co-developed-by: Stefan Wegrzyn <stefan.wegrzyn@intel.com>
-Signed-off-by: Stefan Wegrzyn <stefan.wegrzyn@intel.com>
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Co-developed-by: Slawomir Mrozowicz <slawomirx.mrozowicz@intel.com>
+Signed-off-by: Slawomir Mrozowicz <slawomirx.mrozowicz@intel.com>
+Co-developed-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
 Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 ---
- .../ethernet/intel/ixgbe/devlink/devlink.c    |   5 +-
- .../net/ethernet/intel/ixgbe/ixgbe_82598.c    |   1 +
- .../net/ethernet/intel/ixgbe/ixgbe_82599.c    |   1 +
- .../net/ethernet/intel/ixgbe/ixgbe_common.c   |   1 +
- drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 181 +++++++++++++++++-
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |   2 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_type.h |   2 +
- .../ethernet/intel/ixgbe/ixgbe_type_e610.h    |   1 +
- drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c |   1 +
- drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c |   1 +
- 10 files changed, 190 insertions(+), 6 deletions(-)
+ .../ethernet/intel/ixgbe/devlink/devlink.c    | 180 ++++++++++++++++++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c |  59 ++++++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h |   3 +
+ 3 files changed, 242 insertions(+)
 
 diff --git a/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c b/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c
-index 87bbd676dbc2..d31def1fcd7d 100644
+index d31def1fcd7d..3aae862abc73 100644
 --- a/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c
 +++ b/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c
-@@ -231,10 +231,7 @@ static int ixgbe_devlink_info_get(struct devlink *devlink,
- 	if (err)
- 		goto free_ctx;
+@@ -6,11 +6,16 @@
  
--	err = ixgbe_read_pba_string_generic(hw, ctx->buf, sizeof(ctx->buf));
--	if (err)
--		goto free_ctx;
--
-+	hw->eeprom.ops.read_pba_string(hw, ctx->buf, sizeof(ctx->buf));
- 	err = ixgbe_devlink_info_put(req, IXGBE_DL_VERSION_FIXED,
- 				     DEVLINK_INFO_VERSION_GENERIC_BOARD_ID,
- 				     ctx->buf);
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_82598.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_82598.c
-index 4aaaea3b5f8f..444da982593f 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_82598.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_82598.c
-@@ -1169,6 +1169,7 @@ static const struct ixgbe_eeprom_operations eeprom_ops_82598 = {
- 	.calc_checksum          = &ixgbe_calc_eeprom_checksum_generic,
- 	.validate_checksum	= &ixgbe_validate_eeprom_checksum_generic,
- 	.update_checksum	= &ixgbe_update_eeprom_checksum_generic,
-+	.read_pba_string        = &ixgbe_read_pba_string_generic,
+ struct ixgbe_info_ctx {
+ 	char buf[128];
++	struct ixgbe_orom_info pending_orom;
++	struct ixgbe_nvm_info pending_nvm;
++	struct ixgbe_netlist_info pending_netlist;
++	struct ixgbe_hw_dev_caps dev_caps;
  };
  
- static const struct ixgbe_phy_operations phy_ops_82598 = {
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
-index 964988b4d58b..d5b1b974b4a3 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
-@@ -2230,6 +2230,7 @@ static const struct ixgbe_eeprom_operations eeprom_ops_82599 = {
- 	.calc_checksum		= &ixgbe_calc_eeprom_checksum_generic,
- 	.validate_checksum	= &ixgbe_validate_eeprom_checksum_generic,
- 	.update_checksum	= &ixgbe_update_eeprom_checksum_generic,
-+	.read_pba_string        = &ixgbe_read_pba_string_generic,
+ enum ixgbe_devlink_version_type {
+ 	IXGBE_DL_VERSION_FIXED,
+ 	IXGBE_DL_VERSION_RUNNING,
++	IXGBE_DL_VERSION_STORED,
  };
  
- static const struct ixgbe_phy_operations phy_ops_82599 = {
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c
-index 7beaf6ea57f9..5784d5d1896e 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_common.c
-@@ -332,6 +332,7 @@ int ixgbe_start_hw_generic(struct ixgbe_hw *hw)
-  * Devices in the second generation:
-  *     82599
-  *     X540
-+ *     E610
-  **/
- int ixgbe_start_hw_gen2(struct ixgbe_hw *hw)
- {
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-index e49e699fb141..da20071eb938 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-@@ -342,6 +342,41 @@ void ixgbe_fill_dflt_direct_cmd_desc(struct ixgbe_aci_desc *desc, u16 opcode)
- 	desc->flags = cpu_to_le16(IXGBE_ACI_FLAG_SI);
+ static int ixgbe_devlink_info_put(struct devlink_info_req *req,
+@@ -25,6 +30,8 @@ static int ixgbe_devlink_info_put(struct devlink_info_req *req,
+ 		return devlink_info_version_fixed_put(req, key, value);
+ 	case IXGBE_DL_VERSION_RUNNING:
+ 		return devlink_info_version_running_put(req, key, value);
++	case IXGBE_DL_VERSION_STORED:
++		return devlink_info_version_stored_put(req, key, value);
+ 	}
+ 
+ 	return 0;
+@@ -91,6 +98,15 @@ static void ixgbe_info_eetrack(struct ixgbe_adapter *adapter,
+ 	snprintf(ctx->buf, sizeof(ctx->buf), "0x%08x", nvm_ver.etk_id);
  }
  
-+/**
-+ * ixgbe_aci_get_fw_ver - Get the firmware version
-+ * @hw: pointer to the HW struct
-+ *
-+ * Get the firmware version using ACI command (0x0001).
-+ *
-+ * Return: the exit code of the operation.
-+ */
-+static int ixgbe_aci_get_fw_ver(struct ixgbe_hw *hw)
++static void ixgbe_info_pending_eetrack(struct ixgbe_adapter *adapter,
++				       struct ixgbe_info_ctx *ctx)
 +{
-+	struct ixgbe_aci_cmd_get_ver *resp;
-+	struct ixgbe_aci_desc desc;
-+	int err;
++	struct ixgbe_nvm_info *nvm = &ctx->pending_nvm;
 +
-+	resp = &desc.params.get_ver;
++	if (ctx->dev_caps.common_cap.nvm_update_pending_nvm)
++		snprintf(ctx->buf, sizeof(ctx->buf), "0x%08x", nvm->eetrack);
++}
 +
-+	ixgbe_fill_dflt_direct_cmd_desc(&desc, ixgbe_aci_opc_get_ver);
+ static void ixgbe_info_fw_api(struct ixgbe_adapter *adapter,
+ 			      struct ixgbe_info_ctx *ctx)
+ {
+@@ -116,6 +132,25 @@ static void ixgbe_info_fw_srev(struct ixgbe_adapter *adapter,
+ 	snprintf(ctx->buf, sizeof(ctx->buf), "%u", nvm->srev);
+ }
+ 
++static void ixgbe_info_pending_fw_srev(struct ixgbe_adapter *adapter,
++				       struct ixgbe_info_ctx *ctx)
++{
++	struct ixgbe_nvm_info *nvm = &ctx->pending_nvm;
 +
-+	err = ixgbe_aci_send_cmd(hw, &desc, NULL, 0);
++	if (ctx->dev_caps.common_cap.nvm_update_pending_nvm)
++		snprintf(ctx->buf, sizeof(ctx->buf), "%u", nvm->srev);
++}
 +
-+	if (!err) {
-+		hw->fw_branch = resp->fw_branch;
-+		hw->fw_maj_ver = resp->fw_major;
-+		hw->fw_min_ver = resp->fw_minor;
-+		hw->fw_patch = resp->fw_patch;
-+		hw->fw_build = le32_to_cpu(resp->fw_build);
-+		hw->api_branch = resp->api_branch;
-+		hw->api_maj_ver = resp->api_major;
-+		hw->api_min_ver = resp->api_minor;
-+		hw->api_patch = resp->api_patch;
++static void ixgbe_info_pending_orom_ver(struct ixgbe_adapter *adapter,
++					struct ixgbe_info_ctx *ctx)
++{
++	struct ixgbe_orom_info *orom = &ctx->pending_orom;
++
++	if (ctx->dev_caps.common_cap.nvm_update_pending_orom)
++		snprintf(ctx->buf, sizeof(ctx->buf), "%u.%u.%u",
++			 orom->major, orom->build, orom->patch);
++}
++
+ static void ixgbe_info_orom_srev(struct ixgbe_adapter *adapter,
+ 				 struct ixgbe_info_ctx *ctx)
+ {
+@@ -124,6 +159,15 @@ static void ixgbe_info_orom_srev(struct ixgbe_adapter *adapter,
+ 	snprintf(ctx->buf, sizeof(ctx->buf), "%u", orom->srev);
+ }
+ 
++static void ixgbe_info_pending_orom_srev(struct ixgbe_adapter *adapter,
++					 struct ixgbe_info_ctx *ctx)
++{
++	struct ixgbe_orom_info *orom = &ctx->pending_orom;
++
++	if (ctx->dev_caps.common_cap.nvm_update_pending_orom)
++		snprintf(ctx->buf, sizeof(ctx->buf), "%u", orom->srev);
++}
++
+ static void ixgbe_info_nvm_ver(struct ixgbe_adapter *adapter,
+ 			       struct ixgbe_info_ctx *ctx)
+ {
+@@ -132,6 +176,16 @@ static void ixgbe_info_nvm_ver(struct ixgbe_adapter *adapter,
+ 	snprintf(ctx->buf, sizeof(ctx->buf), "%x.%02x", nvm->major, nvm->minor);
+ }
+ 
++static void ixgbe_info_pending_nvm_ver(struct ixgbe_adapter *adapter,
++				       struct ixgbe_info_ctx *ctx)
++{
++	struct ixgbe_nvm_info *nvm = &ctx->pending_nvm;
++
++	if (ctx->dev_caps.common_cap.nvm_update_pending_nvm)
++		snprintf(ctx->buf, sizeof(ctx->buf), "%x.%02x",
++			 nvm->major, nvm->minor);
++}
++
+ static void ixgbe_info_netlist_ver(struct ixgbe_adapter *adapter,
+ 				   struct ixgbe_info_ctx *ctx)
+ {
+@@ -144,6 +198,19 @@ static void ixgbe_info_netlist_ver(struct ixgbe_adapter *adapter,
+ 		 netlist->rev, netlist->cust_ver);
+ }
+ 
++static void ixgbe_info_pending_netlist_ver(struct ixgbe_adapter *adapter,
++					   struct ixgbe_info_ctx *ctx)
++{
++	struct ixgbe_netlist_info *netlist = &ctx->pending_netlist;
++
++	/* The netlist version fields are BCD formatted */
++	if (ctx->dev_caps.common_cap.nvm_update_pending_netlist)
++		snprintf(ctx->buf, sizeof(ctx->buf), "%x.%x.%x-%x.%x.%x",
++			 netlist->major, netlist->minor,
++			 netlist->type >> 16, netlist->type & 0xFFFF,
++			 netlist->rev, netlist->cust_ver);
++}
++
+ static void ixgbe_info_netlist_build(struct ixgbe_adapter *adapter,
+ 				     struct ixgbe_info_ctx *ctx)
+ {
+@@ -152,6 +219,50 @@ static void ixgbe_info_netlist_build(struct ixgbe_adapter *adapter,
+ 	snprintf(ctx->buf, sizeof(ctx->buf), "0x%08x", netlist->hash);
+ }
+ 
++static void ixgbe_info_pending_netlist_build(struct ixgbe_adapter *adapter,
++					     struct ixgbe_info_ctx *ctx)
++{
++	struct ixgbe_netlist_info *netlist = &ctx->pending_netlist;
++
++	if (ctx->dev_caps.common_cap.nvm_update_pending_netlist)
++		snprintf(ctx->buf, sizeof(ctx->buf), "0x%08x", netlist->hash);
++}
++
++static int ixgbe_set_ctx_dev_caps(struct ixgbe_hw *hw,
++				  struct ixgbe_info_ctx *ctx,
++				  struct netlink_ext_ack *extack)
++{
++	int err = ixgbe_discover_dev_caps(hw, &ctx->dev_caps);
++
++	if (err) {
++		NL_SET_ERR_MSG_MOD(extack,
++				   "Unable to discover device capabilities");
++		return err;
 +	}
 +
-+	return err;
++	if (ctx->dev_caps.common_cap.nvm_update_pending_orom) {
++		err = ixgbe_get_inactive_orom_ver(hw, &ctx->pending_orom);
++		if (err)
++			ctx->dev_caps.common_cap.nvm_update_pending_orom =
++			false;
++	}
++
++	if (ctx->dev_caps.common_cap.nvm_update_pending_nvm) {
++		err = ixgbe_get_inactive_nvm_ver(hw, &ctx->pending_nvm);
++		if (err)
++			ctx->dev_caps.common_cap.nvm_update_pending_nvm = false;
++	}
++
++	if (ctx->dev_caps.common_cap.nvm_update_pending_netlist) {
++		err = ixgbe_get_inactive_netlist_ver(hw, &ctx->pending_netlist);
++		if (err)
++			ctx->dev_caps.common_cap.nvm_update_pending_netlist =
++				false;
++	}
++
++	return 0;
 +}
 +
- /**
-  * ixgbe_aci_req_res - request a common resource
-  * @hw: pointer to the HW struct
-@@ -1407,6 +1442,32 @@ int ixgbe_configure_lse(struct ixgbe_hw *hw, bool activate, u16 mask)
- 	return ixgbe_aci_get_link_info(hw, activate, NULL);
+ static int ixgbe_devlink_info_get_E610(struct ixgbe_adapter *adapter,
+ 				       struct devlink_info_req *req,
+ 				       struct ixgbe_info_ctx *ctx)
+@@ -198,6 +309,67 @@ static int ixgbe_devlink_info_get_E610(struct ixgbe_adapter *adapter,
+ 	return err;
  }
  
-+/**
-+ * ixgbe_start_hw_e610 - Prepare hardware for Tx/Rx
-+ * @hw: pointer to hardware structure
-+ *
-+ * Get firmware version and start the hardware using the generic
-+ * start_hw() and ixgbe_start_hw_gen2() functions.
-+ *
-+ * Return: the exit code of the operation.
-+ */
-+static int ixgbe_start_hw_e610(struct ixgbe_hw *hw)
++static int
++ixgbe_devlink_pending_info_get_E610(struct ixgbe_adapter *adapter,
++				    struct devlink_info_req *req,
++				    struct ixgbe_info_ctx *ctx)
 +{
-+	int err;
++	int err = 0;
 +
-+	err = ixgbe_aci_get_fw_ver(hw);
++	if (!ctx->dev_caps.common_cap.nvm_update_pending_nvm)
++		goto no_nvm;
++
++	ixgbe_info_pending_fw_srev(adapter, ctx);
++	err = ixgbe_devlink_info_put(req, IXGBE_DL_VERSION_STORED,
++				     "fw.mgmt.srev", ctx->buf);
 +	if (err)
 +		return err;
 +
-+	err = ixgbe_start_hw_generic(hw);
++	ixgbe_info_pending_eetrack(adapter, ctx);
++	err = ixgbe_devlink_info_put(req, IXGBE_DL_VERSION_STORED,
++				     DEVLINK_INFO_VERSION_GENERIC_FW_BUNDLE_ID,
++				     ctx->buf);
 +	if (err)
 +		return err;
 +
-+	ixgbe_start_hw_gen2(hw);
++	ixgbe_info_pending_nvm_ver(adapter, ctx);
++	err = ixgbe_devlink_info_put(req, IXGBE_DL_VERSION_STORED,
++				     "fw.psid.api", ctx->buf);
++	if (err)
++		return err;
++
++no_nvm:
++	if (!ctx->dev_caps.common_cap.nvm_update_pending_orom)
++		goto no_orom;
++
++	ixgbe_info_pending_orom_ver(adapter, ctx);
++	err = ixgbe_devlink_info_put(req, IXGBE_DL_VERSION_STORED,
++				     DEVLINK_INFO_VERSION_GENERIC_FW_UNDI,
++				     ctx->buf);
++	if (err)
++		return err;
++
++	ixgbe_info_pending_orom_srev(adapter, ctx);
++	err = ixgbe_devlink_info_put(req, IXGBE_DL_VERSION_STORED,
++				     "fw.undi.srev", ctx->buf);
++no_orom:
++	if (err || !ctx->dev_caps.common_cap.nvm_update_pending_netlist)
++		return err;
++
++	ixgbe_info_pending_netlist_ver(adapter, ctx);
++	err = ixgbe_devlink_info_put(req, IXGBE_DL_VERSION_STORED,
++				     "fw.netlist", ctx->buf);
++
++	if (err)
++		return err;
++
++	ixgbe_info_pending_netlist_build(adapter, ctx);
++	err = ixgbe_devlink_info_put(req, IXGBE_DL_VERSION_STORED,
++				     "fw.netlist.build", ctx->buf);
 +
 +	return err;
 +}
 +
- /**
-  * ixgbe_get_media_type_e610 - Gets media type
-  * @hw: pointer to the HW struct
-@@ -3366,9 +3427,126 @@ int ixgbe_reset_hw_e610(struct ixgbe_hw *hw)
+ static int ixgbe_devlink_info_get(struct devlink *devlink,
+ 				  struct devlink_info_req *req,
+ 				  struct netlink_ext_ack *extack)
+@@ -239,7 +411,15 @@ static int ixgbe_devlink_info_get(struct devlink *devlink,
+ 	if (err || hw->mac.type != ixgbe_mac_e610)
+ 		goto free_ctx;
+ 
++	err = ixgbe_set_ctx_dev_caps(hw, ctx, extack);
++	if (err)
++		goto free_ctx;
++
+ 	err = ixgbe_devlink_info_get_E610(adapter, req, ctx);
++	if (err)
++		goto free_ctx;
++
++	err = ixgbe_devlink_pending_info_get_E610(adapter, req, ctx);
+ 
+ free_ctx:
+ 	kfree(ctx);
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+index da20071eb938..b08590d05a1a 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+@@ -588,6 +588,15 @@ static bool ixgbe_parse_e610_caps(struct ixgbe_hw *hw,
+ 		break;
+ 	case IXGBE_ACI_CAPS_NVM_VER:
+ 		break;
++	case IXGBE_ACI_CAPS_PENDING_NVM_VER:
++		caps->nvm_update_pending_nvm = true;
++		break;
++	case IXGBE_ACI_CAPS_PENDING_OROM_VER:
++		caps->nvm_update_pending_orom = true;
++		break;
++	case IXGBE_ACI_CAPS_PENDING_NET_VER:
++		caps->nvm_update_pending_netlist = true;
++		break;
+ 	case IXGBE_ACI_CAPS_MAX_MTU:
+ 		caps->max_mtu = number;
+ 		break;
+@@ -2929,6 +2938,23 @@ static int ixgbe_get_orom_ver_info(struct ixgbe_hw *hw,
  	return err;
  }
  
 +/**
-+ * ixgbe_get_pfa_module_tlv - Read sub module TLV from NVM PFA
-+ * @hw: pointer to hardware structure
-+ * @module_tlv: pointer to module TLV to return
-+ * @module_tlv_len: pointer to module TLV length to return
-+ * @module_type: module type requested
++ * ixgbe_get_inactive_orom_ver - Read Option ROM version from the inactive bank
++ * @hw: pointer to the HW structure
++ * @orom: storage for Option ROM version information
 + *
-+ * Find the requested sub module TLV type from the Preserved Field
-+ * Area (PFA) and returns the TLV pointer and length. The caller can
-+ * use these to read the variable length TLV value.
++ * Read the Option ROM version and security revision data for the inactive
++ * section of flash. Used to access version data for a pending update that has
++ * not yet been activated.
 + *
 + * Return: the exit code of the operation.
 + */
-+static int ixgbe_get_pfa_module_tlv(struct ixgbe_hw *hw, u16 *module_tlv,
-+				    u16 *module_tlv_len, u16 module_type)
++int ixgbe_get_inactive_orom_ver(struct ixgbe_hw *hw,
++				struct ixgbe_orom_info *orom)
 +{
-+	u16 pfa_len, pfa_ptr, pfa_end_ptr;
-+	u16 next_tlv;
-+	int err;
-+
-+	err = ixgbe_read_ee_aci_e610(hw, IXGBE_E610_SR_PFA_PTR, &pfa_ptr);
-+	if (err)
-+		return err;
-+
-+	err = ixgbe_read_ee_aci_e610(hw, pfa_ptr, &pfa_len);
-+	if (err)
-+		return err;
-+
-+	/* Starting with first TLV after PFA length, iterate through the list
-+	 * of TLVs to find the requested one.
-+	 */
-+	next_tlv = pfa_ptr + 1;
-+	pfa_end_ptr = pfa_ptr + pfa_len;
-+	while (next_tlv < pfa_end_ptr) {
-+		u16 tlv_sub_module_type, tlv_len;
-+
-+		/* Read TLV type */
-+		err = ixgbe_read_ee_aci_e610(hw, next_tlv,
-+					     &tlv_sub_module_type);
-+		if (err)
-+			break;
-+
-+		/* Read TLV length */
-+		err = ixgbe_read_ee_aci_e610(hw, next_tlv + 1, &tlv_len);
-+		if (err)
-+			break;
-+
-+		if (tlv_sub_module_type == module_type) {
-+			if (tlv_len) {
-+				*module_tlv = next_tlv;
-+				*module_tlv_len = tlv_len;
-+				return 0;
-+			}
-+			return -EIO;
-+		}
-+		/* Check next TLV, i.e. current TLV pointer + length + 2 words
-+		 * (for current TLV's type and length).
-+		 */
-+		next_tlv = next_tlv + tlv_len + 2;
-+	}
-+	/* Module does not exist */
-+	return -ENODATA;
++	return ixgbe_get_orom_ver_info(hw, IXGBE_INACTIVE_FLASH_BANK, orom);
 +}
 +
+ /**
+  * ixgbe_get_nvm_ver_info - Read NVM version information
+  * @hw: pointer to the HW struct
+@@ -2972,6 +2998,22 @@ static int ixgbe_get_nvm_ver_info(struct ixgbe_hw *hw,
+ 	return 0;
+ }
+ 
 +/**
-+ * ixgbe_read_pba_string_e610 - Read PBA string from NVM
-+ * @hw: pointer to hardware structure
-+ * @pba_num: stores the part number string from the NVM
-+ * @pba_num_size: part number string buffer length
++ * ixgbe_get_inactive_nvm_ver - Read Option ROM version from the inactive bank
++ * @hw: pointer to the HW structure
++ * @nvm: storage for Option ROM version information
 + *
-+ * Read the part number string from the NVM.
++ * Read the NVM EETRACK ID, Map version, and security revision of the
++ * inactive NVM bank. Used to access version data for a pending update that
++ * has not yet been activated.
 + *
 + * Return: the exit code of the operation.
 + */
-+static int ixgbe_read_pba_string_e610(struct ixgbe_hw *hw, u8 *pba_num,
-+				      u32 pba_num_size)
++int ixgbe_get_inactive_nvm_ver(struct ixgbe_hw *hw, struct ixgbe_nvm_info *nvm)
 +{
-+	u16 pba_tlv, pba_tlv_len;
-+	u16 pba_word, pba_size;
-+	int err;
-+
-+	err = ixgbe_get_pfa_module_tlv(hw, &pba_tlv, &pba_tlv_len,
-+				       IXGBE_E610_SR_PBA_BLOCK_PTR);
-+	if (err)
-+		return err;
-+
-+	/* pba_size is the next word */
-+	err = ixgbe_read_ee_aci_e610(hw, (pba_tlv + 2), &pba_size);
-+	if (err)
-+		return err;
-+
-+	if (pba_tlv_len < pba_size)
-+		return -EINVAL;
-+
-+	/* Subtract one to get PBA word count (PBA Size word is included in
-+	 * total size).
-+	 */
-+	pba_size--;
-+
-+	if (pba_num_size < (((u32)pba_size * 2) + 1))
-+		return -EINVAL;
-+
-+	for (u16 i = 0; i < pba_size; i++) {
-+		err = ixgbe_read_ee_aci_e610(hw, (pba_tlv + 2 + 1) + i,
-+					     &pba_word);
-+		if (err)
-+			return err;
-+
-+		pba_num[(i * 2)] = FIELD_GET(IXGBE_E610_SR_PBA_BLOCK_MASK, pba_word);
-+		pba_num[(i * 2) + 1] = pba_word & 0xFF;
-+	}
-+
-+	pba_num[(pba_size * 2)] = '\0';
-+
-+	return err;
++	return ixgbe_get_nvm_ver_info(hw, IXGBE_INACTIVE_FLASH_BANK, nvm);
 +}
 +
- static const struct ixgbe_mac_operations mac_ops_e610 = {
- 	.init_hw			= ixgbe_init_hw_generic,
--	.start_hw			= ixgbe_start_hw_X540,
-+	.start_hw			= ixgbe_start_hw_e610,
- 	.clear_hw_cntrs			= ixgbe_clear_hw_cntrs_generic,
- 	.enable_rx_dma			= ixgbe_enable_rx_dma_generic,
- 	.get_mac_addr			= ixgbe_get_mac_addr_generic,
-@@ -3433,6 +3611,7 @@ static const struct ixgbe_eeprom_operations eeprom_ops_e610 = {
- 	.read				= ixgbe_read_ee_aci_e610,
- 	.read_buffer			= ixgbe_read_ee_aci_buffer_e610,
- 	.validate_checksum		= ixgbe_validate_eeprom_checksum_e610,
-+	.read_pba_string		= ixgbe_read_pba_string_e610,
- };
+ /**
+  * ixgbe_get_netlist_info - Read the netlist version information
+  * @hw: pointer to the HW struct
+@@ -3052,6 +3094,23 @@ static int ixgbe_get_netlist_info(struct ixgbe_hw *hw,
+ 	return err;
+ }
  
- const struct ixgbe_info ixgbe_e610_info = {
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 60969982e2f4..a885a945d594 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -11596,7 +11596,7 @@ static int ixgbe_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	if (expected_gts > 0)
- 		ixgbe_check_minimum_link(adapter, expected_gts);
- 
--	err = ixgbe_read_pba_string_generic(hw, part_str, sizeof(part_str));
-+	err = hw->eeprom.ops.read_pba_string(hw, part_str, sizeof(part_str));
- 	if (err)
- 		strscpy(part_str, "Unknown", sizeof(part_str));
- 	if (ixgbe_is_sfp(hw) && hw->phy.sfp_type != ixgbe_sfp_type_not_present)
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-index 5fdf32d79d82..5f814f023573 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-@@ -3446,6 +3446,8 @@ struct ixgbe_eeprom_operations {
- 	int (*validate_checksum)(struct ixgbe_hw *, u16 *);
- 	int (*update_checksum)(struct ixgbe_hw *);
- 	int (*calc_checksum)(struct ixgbe_hw *);
-+	int (*read_pba_string)(struct ixgbe_hw *hw, u8 *pba_num,
-+			       u32 pba_num_size);
- };
- 
- struct ixgbe_mac_operations {
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
-index a1c963cf7127..aa063d39091a 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
-@@ -12,6 +12,7 @@
- /* Checksum and Shadow RAM pointers */
- #define IXGBE_E610_SR_NVM_CTRL_WORD		0x00
- #define IXGBE_E610_SR_PBA_BLOCK_PTR		0x16
-+#define IXGBE_E610_SR_PBA_BLOCK_MASK		GENMASK(15, 8)
- #define IXGBE_E610_SR_NVM_DEV_STARTER_VER	0x18
- #define IXGBE_E610_SR_NVM_EETRACK_LO		0x2D
- #define IXGBE_E610_SR_NVM_EETRACK_HI		0x2E
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c
-index 1fc821fb351a..f1ab95aa8c83 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c
-@@ -894,6 +894,7 @@ static const struct ixgbe_eeprom_operations eeprom_ops_X540 = {
- 	.calc_checksum		= &ixgbe_calc_eeprom_checksum_X540,
- 	.validate_checksum      = &ixgbe_validate_eeprom_checksum_X540,
- 	.update_checksum        = &ixgbe_update_eeprom_checksum_X540,
-+	.read_pba_string        = &ixgbe_read_pba_string_generic,
- };
- 
- static const struct ixgbe_phy_operations phy_ops_X540 = {
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
-index 277ceaf8a793..1d2acdb64f45 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
-@@ -3959,6 +3959,7 @@ static const struct ixgbe_mac_operations mac_ops_x550em_a_fw = {
- 	.validate_checksum	= &ixgbe_validate_eeprom_checksum_X550, \
- 	.update_checksum	= &ixgbe_update_eeprom_checksum_X550, \
- 	.calc_checksum		= &ixgbe_calc_eeprom_checksum_X550, \
-+	.read_pba_string        = &ixgbe_read_pba_string_generic, \
- 
- static const struct ixgbe_eeprom_operations eeprom_ops_X550 = {
- 	X550_COMMON_EEP
++/**
++ * ixgbe_get_inactive_netlist_ver - Read netlist version from the inactive bank
++ * @hw: pointer to the HW struct
++ * @netlist: pointer to netlist version info structure
++ *
++ * Read the netlist version data from the inactive netlist bank. Used to
++ * extract version data of a pending flash update in order to display the
++ * version data.
++ *
++ * Return: the exit code of the operation.
++ */
++int ixgbe_get_inactive_netlist_ver(struct ixgbe_hw *hw,
++				   struct ixgbe_netlist_info *netlist)
++{
++	return ixgbe_get_netlist_info(hw, IXGBE_INACTIVE_FLASH_BANK, netlist);
++}
++
+ /**
+  * ixgbe_get_flash_data - get flash data
+  * @hw: pointer to the HW struct
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
+index 2c971a34200b..07c888d554d5 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
+@@ -67,6 +67,9 @@ int ixgbe_aci_read_nvm(struct ixgbe_hw *hw, u16 module_typeid, u32 offset,
+ 		       u16 length, void *data, bool last_command,
+ 		       bool read_shadow_ram);
+ int ixgbe_nvm_validate_checksum(struct ixgbe_hw *hw);
++int ixgbe_get_inactive_orom_ver(struct ixgbe_hw *hw, struct ixgbe_orom_info *orom);
++int ixgbe_get_inactive_nvm_ver(struct ixgbe_hw *hw, struct ixgbe_nvm_info *nvm);
++int ixgbe_get_inactive_netlist_ver(struct ixgbe_hw *hw, struct ixgbe_netlist_info *netlist);
+ int ixgbe_read_sr_word_aci(struct ixgbe_hw  *hw, u16 offset, u16 *data);
+ int ixgbe_read_flat_nvm(struct ixgbe_hw  *hw, u32 offset, u32 *length,
+ 			u8 *data, bool read_shadow_ram);
 -- 
 2.31.1
 
