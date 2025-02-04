@@ -1,69 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 82F51A27E05
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Feb 2025 23:07:00 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A9799A27E08
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Feb 2025 23:07:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3D72B40934;
-	Tue,  4 Feb 2025 22:06:59 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 580384091A;
+	Tue,  4 Feb 2025 22:07:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id e71HgzqJkB7s; Tue,  4 Feb 2025 22:06:58 +0000 (UTC)
+ id UgkA2QIIjkex; Tue,  4 Feb 2025 22:07:06 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 690574094A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 980D641359
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1738706818;
-	bh=ieTpFa4XnHh+CDnxl35SDqGjZZWFwqApg+QLsaxGets=;
+	s=default; t=1738706826;
+	bh=21DiaXlRPI0n2xBthsMoBPGwh3swh478pG1AOBqHFv0=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=UNCFWqxXJknnOrRgJaGAT8wCh0jwF9h2jSlgeZ4hMAbYsZ73zK+oXO9o/EwelbS5T
-	 eGGEY8ZGJ2altDk6yFRtHQngMmBk9K044Zphjb6m7Yo3OmbgMXjlrXuTaaxK9hzkbu
-	 6nSQsPAmUCVKA7fJSvoz2SXOgwNePuqa3YNzvRaVZsYzjqYLvhRiJ+2cXeARsva1ER
-	 JJxD5bEHP7DJ5y6QW0oGMMGtQX1KimFt33Y2a/fkhyQqrdWbM0/AEu63plEygpvfJu
-	 ag/8nQdq9z+17fJvKZ1nQJry0zU6VuZcoJ3KGU/lIr/hO+FzhBf8dufILxHigOZvoE
-	 VTmaRVhTUH8eQ==
+	b=vGiT33NoGYA6Cs8nVTcUKWvZVGZotAfiSUnPDu7mbpZqMJ8m5HNvh+PK7epEHsKh0
+	 8Iq+tz1nnpVhxfUSO0MUGLG3qWTh93PvMRwndd9J5jeUqpt5PqHoG4HluhipXZXFnn
+	 IFoVzoeqm5tvTBtOVhswUKlnKoErfiEDFqOdM9KIgcH6lXrY9H/V8YFV1YXCrjtUyv
+	 MLqffud3S2SIL/OuSU+Ti29nrIr/I48Vkm50uOqhh//3WvNQuNFXuQIdSIqM1AyTvO
+	 xI7rLlU03qDuG4xFpZgVQwD0NLeJN0kcR/X4fDHXTf7pQSiYmnoCoXdCCpWicxauMH
+	 z71UmBmGogA9Q==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 690574094A;
-	Tue,  4 Feb 2025 22:06:58 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 980D641359;
+	Tue,  4 Feb 2025 22:07:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id E17D1185
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 22:06:56 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 6BA81185
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 22:07:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C66B9605C9
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 22:06:56 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4983980D7B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 22:07:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pQlUfx7ECsQM for <intel-wired-lan@lists.osuosl.org>;
- Tue,  4 Feb 2025 22:06:56 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id vwWFmnoD2r4x for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  4 Feb 2025 22:07:02 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
  helo=mgamail.intel.com; envelope-from=ahmed.zaki@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org DC2FF60D77
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DC2FF60D77
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 5FEB980C3A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5FEB980C3A
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
- by smtp3.osuosl.org (Postfix) with ESMTPS id DC2FF60D77
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 22:06:55 +0000 (UTC)
-X-CSE-ConnectionGUID: bqj/q/VlQtaCV8p6UMHSBg==
-X-CSE-MsgGUID: DiM6BXIaTK6P6iia92AcNA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11336"; a="43003413"
-X-IronPort-AV: E=Sophos;i="6.13,259,1732608000"; d="scan'208";a="43003413"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5FEB980C3A
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 22:07:02 +0000 (UTC)
+X-CSE-ConnectionGUID: JAWDeKK3SNmxm9ekIjuAkg==
+X-CSE-MsgGUID: K8iuaK+jQCChfM7lOkX9/A==
+X-IronPort-AV: E=McAfee;i="6700,10204,11336"; a="43003436"
+X-IronPort-AV: E=Sophos;i="6.13,259,1732608000"; d="scan'208";a="43003436"
 Received: from fmviesa003.fm.intel.com ([10.60.135.143])
  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Feb 2025 14:06:55 -0800
-X-CSE-ConnectionGUID: AbHEpaAqTva9Ud2aC+dGhw==
-X-CSE-MsgGUID: W9GRLRSaQquzI4HoTU3zHw==
+ 04 Feb 2025 14:07:01 -0800
+X-CSE-ConnectionGUID: nPvFSIU5QhC+yhPRtXiuBw==
+X-CSE-MsgGUID: RNn26uqAShi1bwinIB/8mA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="114771301"
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="114771313"
 Received: from dwoodwor-mobl2.amr.corp.intel.com (HELO azaki-desk1.intel.com)
  ([10.125.110.39])
  by fmviesa003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Feb 2025 14:06:49 -0800
+ 04 Feb 2025 14:06:55 -0800
 From: Ahmed Zaki <ahmed.zaki@intel.com>
 To: netdev@vger.kernel.org
 Cc: intel-wired-lan@lists.osuosl.org, andrew+netdev@lunn.ch,
@@ -73,8 +73,8 @@ Cc: intel-wired-lan@lists.osuosl.org, andrew+netdev@lunn.ch,
  jdamato@fastly.com, shayd@nvidia.com, akpm@linux-foundation.org,
  shayagr@amazon.com, kalesh-anakkur.purayil@broadcom.com,
  Ahmed Zaki <ahmed.zaki@intel.com>
-Date: Tue,  4 Feb 2025 15:06:20 -0700
-Message-ID: <20250204220622.156061-4-ahmed.zaki@intel.com>
+Date: Tue,  4 Feb 2025 15:06:21 -0700
+Message-ID: <20250204220622.156061-5-ahmed.zaki@intel.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250204220622.156061-1-ahmed.zaki@intel.com>
 References: <20250204220622.156061-1-ahmed.zaki@intel.com>
@@ -82,24 +82,24 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1738706816; x=1770242816;
+ t=1738706822; x=1770242822;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=o0rEJrj5ykCBisRo8THfVcpEdJInsbJQfDLCXXwnQaA=;
- b=d/cFvxi2fNE9XGL1Fgm2f85nwryk/HV+iH36P8bqCkDNUbi3XeOEFcUR
- 28B4ixB/Dz1VP8ojfqDJfSHEYUGE2roK3RwU1o3IvB8lbPUHcCkVaWa7S
- PbeGd292wNjTDufrG7ZItDX3/A7uZplajxFtjFwkxujswJzh+W2oWVZ2w
- Y8Oda7hkYR0oew/Y+SJ+dzns4mvYS5MzvmObKdnrligVV9sFxbrsX81Wq
- FC2QbcwD0NdA5HWsjAPoXdSbLn0DaMmLCXlRVeNFjT9eqaHbgLuuBzTQ1
- uWTtpXNOSjbMrikbO4mEbKNcbkxmlRBZlpL8NlZhxCeO8AR905towsE5A
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=dVk1dkQPn8T6bURcbvzmAl7vond6yg8EY9MAmGeLpNs=;
+ b=Sn5dzO0sluqTMv+tE+eXfc6rA6NRpPap/gMLON9jpSGRsvxly/ZJr5mE
+ V7XptmCUm9lVyv8hdSYC5aJx8aSifeXv5zcmM3d4dRj9OCvOJFVK2IQqI
+ 9hcgLggQpIhCBuavbUwxUQ/HeVYPD2BpWgIsk0tVBUUhQUjMXKwN9arcl
+ uaNNR4jwbRKLnadQ7Mx5ZWBBm3/g1jmn3CNFeO3NvBAJe1wZ10ZyXqu6o
+ FdGpGoLF05w0+qSntbtmoWq85C/DL+41fuTreOphU8hR13SsYCpksjk3V
+ wqGBne4N2IZtYYBkG/vCNyXwvG57iWVi7u2rwp8ywVSicmFTc6CDnvdXL
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=d/cFvxi2
-Subject: [Intel-wired-lan] [PATCH net-next v7 3/5] bnxt: use napi's irq
+ header.a=rsa-sha256 header.s=Intel header.b=Sn5dzO0s
+Subject: [Intel-wired-lan] [PATCH net-next v7 4/5] ice: use napi's irq
  affinity
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -121,75 +121,147 @@ instead.
 
 Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
 ---
- drivers/net/ethernet/broadcom/bnxt/bnxt.c | 25 +++--------------------
- drivers/net/ethernet/broadcom/bnxt/bnxt.h |  2 --
- 2 files changed, 3 insertions(+), 24 deletions(-)
+ drivers/net/ethernet/intel/ice/ice.h      |  3 --
+ drivers/net/ethernet/intel/ice/ice_base.c |  7 +---
+ drivers/net/ethernet/intel/ice/ice_lib.c  |  6 ---
+ drivers/net/ethernet/intel/ice/ice_main.c | 47 ++---------------------
+ 4 files changed, 5 insertions(+), 58 deletions(-)
 
-diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt.c b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
-index b9b839cb942a..b2019bb74861 100644
---- a/drivers/net/ethernet/broadcom/bnxt/bnxt.c
-+++ b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
-@@ -11246,14 +11246,8 @@ static void bnxt_free_irq(struct bnxt *bp)
- 		int map_idx = bnxt_cp_num_to_irq_num(bp, i);
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index 71e05d30f0fd..a6e6c9e1edc1 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -478,9 +478,6 @@ struct ice_q_vector {
+ 	struct ice_ring_container rx;
+ 	struct ice_ring_container tx;
  
- 		irq = &bp->irq_tbl[map_idx];
--		if (irq->requested) {
--			if (irq->have_cpumask) {
--				irq_update_affinity_hint(irq->vector, NULL);
--				free_cpumask_var(irq->cpu_mask);
--				irq->have_cpumask = 0;
--			}
-+		if (irq->requested)
- 			free_irq(irq->vector, bp->bnapi[i]);
--		}
- 
- 		irq->requested = 0;
- 	}
-@@ -11282,21 +11276,6 @@ static int bnxt_request_irq(struct bnxt *bp)
- 
- 		netif_napi_set_irq(&bp->bnapi[i]->napi, irq->vector);
- 		irq->requested = 1;
+-	cpumask_t affinity_mask;
+-	struct irq_affinity_notify affinity_notify;
 -
--		if (zalloc_cpumask_var(&irq->cpu_mask, GFP_KERNEL)) {
--			int numa_node = dev_to_node(&bp->pdev->dev);
+ 	struct ice_channel *ch;
+ 
+ 	char name[ICE_INT_NAME_STR_LEN];
+diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
+index b2af8e3586f7..86cf715de00f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_base.c
++++ b/drivers/net/ethernet/intel/ice/ice_base.c
+@@ -147,10 +147,6 @@ static int ice_vsi_alloc_q_vector(struct ice_vsi *vsi, u16 v_idx)
+ 	q_vector->reg_idx = q_vector->irq.index;
+ 	q_vector->vf_reg_idx = q_vector->irq.index;
+ 
+-	/* only set affinity_mask if the CPU is online */
+-	if (cpu_online(v_idx))
+-		cpumask_set_cpu(v_idx, &q_vector->affinity_mask);
 -
--			irq->have_cpumask = 1;
--			cpumask_set_cpu(cpumask_local_spread(i, numa_node),
--					irq->cpu_mask);
--			rc = irq_update_affinity_hint(irq->vector, irq->cpu_mask);
--			if (rc) {
--				netdev_warn(bp->dev,
--					    "Update affinity hint failed, IRQ = %d\n",
--					    irq->vector);
--				break;
--			}
--		}
- 	}
- 	return rc;
+ 	/* This will not be called in the driver load path because the netdev
+ 	 * will not be created yet. All other cases with register the NAPI
+ 	 * handler here (i.e. resume, reset/rebuild, etc.)
+@@ -276,7 +272,8 @@ static void ice_cfg_xps_tx_ring(struct ice_tx_ring *ring)
+ 	if (test_and_set_bit(ICE_TX_XPS_INIT_DONE, ring->xps_state))
+ 		return;
+ 
+-	netif_set_xps_queue(ring->netdev, &ring->q_vector->affinity_mask,
++	netif_set_xps_queue(ring->netdev,
++			    &ring->q_vector->napi.config->affinity_mask,
+ 			    ring->q_index);
  }
-@@ -16225,6 +16204,8 @@ static int bnxt_init_one(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	dev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
- 			    NETDEV_XDP_ACT_RX_SG;
  
-+	netif_enable_irq_affinity(dev);
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 38a1c8372180..31fb09e30683 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -2595,12 +2595,6 @@ void ice_vsi_free_irq(struct ice_vsi *vsi)
+ 		      vsi->q_vectors[i]->num_ring_rx))
+ 			continue;
+ 
+-		/* clear the affinity notifier in the IRQ descriptor */
+-		if (!IS_ENABLED(CONFIG_RFS_ACCEL))
+-			irq_set_affinity_notifier(irq_num, NULL);
+-
+-		/* clear the affinity_hint in the IRQ descriptor */
+-		irq_update_affinity_hint(irq_num, NULL);
+ 		synchronize_irq(irq_num);
+ 		devm_free_irq(ice_pf_to_dev(pf), irq_num, vsi->q_vectors[i]);
+ 	}
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index c3a0fb97c5ee..a348a37d5ba3 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -2527,34 +2527,6 @@ int ice_schedule_reset(struct ice_pf *pf, enum ice_reset_req reset)
+ 	return 0;
+ }
+ 
+-/**
+- * ice_irq_affinity_notify - Callback for affinity changes
+- * @notify: context as to what irq was changed
+- * @mask: the new affinity mask
+- *
+- * This is a callback function used by the irq_set_affinity_notifier function
+- * so that we may register to receive changes to the irq affinity masks.
+- */
+-static void
+-ice_irq_affinity_notify(struct irq_affinity_notify *notify,
+-			const cpumask_t *mask)
+-{
+-	struct ice_q_vector *q_vector =
+-		container_of(notify, struct ice_q_vector, affinity_notify);
+-
+-	cpumask_copy(&q_vector->affinity_mask, mask);
+-}
+-
+-/**
+- * ice_irq_affinity_release - Callback for affinity notifier release
+- * @ref: internal core kernel usage
+- *
+- * This is a callback function used by the irq_set_affinity_notifier function
+- * to inform the current notification subscriber that they will no longer
+- * receive notifications.
+- */
+-static void ice_irq_affinity_release(struct kref __always_unused *ref) {}
+-
+ /**
+  * ice_vsi_ena_irq - Enable IRQ for the given VSI
+  * @vsi: the VSI being configured
+@@ -2618,19 +2590,6 @@ static int ice_vsi_req_irq_msix(struct ice_vsi *vsi, char *basename)
+ 				   err);
+ 			goto free_q_irqs;
+ 		}
+-
+-		/* register for affinity change notifications */
+-		if (!IS_ENABLED(CONFIG_RFS_ACCEL)) {
+-			struct irq_affinity_notify *affinity_notify;
+-
+-			affinity_notify = &q_vector->affinity_notify;
+-			affinity_notify->notify = ice_irq_affinity_notify;
+-			affinity_notify->release = ice_irq_affinity_release;
+-			irq_set_affinity_notifier(irq_num, affinity_notify);
+-		}
+-
+-		/* assign the mask for this irq */
+-		irq_update_affinity_hint(irq_num, &q_vector->affinity_mask);
+ 	}
+ 
+ 	err = ice_set_cpu_rx_rmap(vsi);
+@@ -2646,9 +2605,6 @@ static int ice_vsi_req_irq_msix(struct ice_vsi *vsi, char *basename)
+ free_q_irqs:
+ 	while (vector--) {
+ 		irq_num = vsi->q_vectors[vector]->irq.virq;
+-		if (!IS_ENABLED(CONFIG_RFS_ACCEL))
+-			irq_set_affinity_notifier(irq_num, NULL);
+-		irq_update_affinity_hint(irq_num, NULL);
+ 		devm_free_irq(dev, irq_num, &vsi->q_vectors[vector]);
+ 	}
+ 	return err;
+@@ -3689,6 +3645,9 @@ void ice_set_netdev_features(struct net_device *netdev)
+ 	 */
+ 	netdev->hw_features |= NETIF_F_RXFCS;
+ 
++	/* Allow core to manage IRQs affinity */
++	netif_enable_irq_affinity(netdev);
 +
- #ifdef CONFIG_BNXT_SRIOV
- 	init_waitqueue_head(&bp->sriov_cfg_wait);
- #endif
-diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt.h b/drivers/net/ethernet/broadcom/bnxt/bnxt.h
-index 2373f423a523..9e6984458b46 100644
---- a/drivers/net/ethernet/broadcom/bnxt/bnxt.h
-+++ b/drivers/net/ethernet/broadcom/bnxt/bnxt.h
-@@ -1231,9 +1231,7 @@ struct bnxt_irq {
- 	irq_handler_t	handler;
- 	unsigned int	vector;
- 	u8		requested:1;
--	u8		have_cpumask:1;
- 	char		name[IFNAMSIZ + BNXT_IRQ_NAME_EXTRA];
--	cpumask_var_t	cpu_mask;
- };
+ 	netif_set_tso_max_size(netdev, ICE_MAX_TSO_SIZE);
+ }
  
- #define HWRM_RING_ALLOC_TX	0x1
 -- 
 2.43.0
 
