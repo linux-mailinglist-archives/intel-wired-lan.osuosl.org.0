@@ -2,249 +2,105 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E6AAA26FD8
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Feb 2025 12:07:33 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 10274A270EA
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Feb 2025 13:05:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 858EF40354;
-	Tue,  4 Feb 2025 11:07:31 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6EE6F410D1;
+	Tue,  4 Feb 2025 12:05:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id plqfssl8uJ7G; Tue,  4 Feb 2025 11:07:30 +0000 (UTC)
+ id i_HS1MdYgr15; Tue,  4 Feb 2025 12:05:48 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5587C4035A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 678BC410E5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1738667250;
-	bh=D8irRDE/oYvy4Oc523V2s8qHrD8ItvIa9Mlv1biUXbA=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=ZcD7hcprxTlolNpMYkP/VNiS6mUCFaZAUALxL14OdpL1LHW+KuqgMyUkWI5WVs7dz
-	 VQOfiDe40JaoNN1Kq/hEwiti4yJycEzdSstBXZ+G3M+JJMK6LBFMpNZQ7o0DPzUQaX
-	 PVRICSpUuxrPa8DCuvYy8No58verlKbple6dU610u4TmZSKFsjuEd5jK1ORePLRWf1
-	 aNBmwjuOJSQtpSYHPinO6kf93gcY3mI+alkUeFMNqoBJpJAL8yAm3z1WBJXkFaEnuv
-	 M+PZtJPMwo6XokE0lTFK3r3fC6LTWh4gIuMc4A46RSTcrgN0zkiRP9PG/i9a1v9stH
-	 UyEiPrhRwqo3w==
+	s=default; t=1738670748;
+	bh=nAkyHHvvNVUqn1sFLI2NcYQNrFVKXd9OUKm3exT/wrQ=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=U9JSV0ipTfpJ5HNqs5pO3oj0h042BOCpAcFKbGAo5+RtHREdHQqNL4slkqTv/Gi/a
+	 sSFUNu/pfK8um4R7Go2SLLF4LdBibI3iYHEmrk+LzbOXvcXJRbynBFjRW6/Nc2KWQQ
+	 jfZqcivJg01NzUff1LuG8VD5/lkaQq4xzmGg3ZJg0ntJDGe99V+AjAS/p9qRfbkNfa
+	 49Tul9PUfH8nl2nJ9ThovILJA11//guiWTmNGF8wtNUVtshpBLaZV96E3amsx964OZ
+	 Ff8okhI0PFMZri6bQXnf8n1O1AC0qv2FVNnrrr7DrP/WrQlB9zBp+17FP0JAIvWmze
+	 QMmukvbHf8G+Q==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5587C4035A;
-	Tue,  4 Feb 2025 11:07:30 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 678BC410E5;
+	Tue,  4 Feb 2025 12:05:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 199B6185
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 11:07:28 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 443CE185
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 12:05:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 144F38211B
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 11:07:28 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2647C607BD
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 12:05:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id y-1ZjBGaGMKC for <intel-wired-lan@lists.osuosl.org>;
- Tue,  4 Feb 2025 11:07:27 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
- helo=mgamail.intel.com; envelope-from=yoong.siang.song@intel.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 4O_UTasyJDll for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  4 Feb 2025 12:05:45 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.18;
+ helo=mgamail.intel.com; envelope-from=larysa.zaremba@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0C79E8211D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0C79E8211D
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0C79E8211D
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 11:07:26 +0000 (UTC)
-X-CSE-ConnectionGUID: Nqv93sLlQpCLTjyYngorLQ==
-X-CSE-MsgGUID: HQp40x36Tse6Q/Lrxq9TPA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11335"; a="49803040"
-X-IronPort-AV: E=Sophos;i="6.13,258,1732608000"; d="scan'208";a="49803040"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Feb 2025 03:07:25 -0800
-X-CSE-ConnectionGUID: e9y+dsz9RrqLFW76VGjLPA==
-X-CSE-MsgGUID: UFvyAGKsQXiSP0opw56J7A==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 40BC86078D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 40BC86078D
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.18])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 40BC86078D
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 12:05:45 +0000 (UTC)
+X-CSE-ConnectionGUID: AJXey3/+TEK5KrIOk29OhQ==
+X-CSE-MsgGUID: VRS4KkbbRIqVI7M4fitT9A==
+X-IronPort-AV: E=McAfee;i="6700,10204,11335"; a="38424786"
+X-IronPort-AV: E=Sophos;i="6.13,258,1732608000"; d="scan'208";a="38424786"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Feb 2025 04:05:44 -0800
+X-CSE-ConnectionGUID: 9Xc4lbrtTCKZ/HZJSQpMnQ==
+X-CSE-MsgGUID: v+LQwvfBRMO6e7lCadO8Ww==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,258,1732608000"; d="scan'208";a="110554179"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orviesa006.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 04 Feb 2025 03:07:26 -0800
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.44; Tue, 4 Feb 2025 03:07:25 -0800
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.44 via Frontend Transport; Tue, 4 Feb 2025 03:07:25 -0800
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.169)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Tue, 4 Feb 2025 03:07:24 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=mNx7K5DBMIUS+6LakwBUmElNekTbypM7qHXeTOO2H1tUFNjqmgOiOqqdIUu0pzwh6hV5DrKoSdw9RhwhymEW1H1C55BAm+q3tUGFSvIVWvk4Sp8R+5RxIfJIiGNXUskTFZHgleQLgaXkfr8pITJdbzvOocHZvw4oxJiGU42KBD9ay0T37sVqUzOJRpY5hh8d5PXDUnO97skXUX6x1mo1lboZ9Ij7ZvOrsPfYvgYOPvvK8PBM2yhqb3PRtj85cQoqBuIfBlOMhqvGpMuA9m0jDSXvGhs1oUAZ6TNifAJtskwxNA1bV9uHUVNRYy7ZvJOe5594CSM2jk+tlI7o8DW4qg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=D8irRDE/oYvy4Oc523V2s8qHrD8ItvIa9Mlv1biUXbA=;
- b=RtOK0TarWbmwodUmc/2goEIhmtdfvCJ/Xdt3ug9ZwD32pNmxikLgh6tnGcZ0n2YBr3PPd8WGuANW90u93bcNJ6zV9OH0ROxdqsgqho+2SrNiAvjrlNFSVF+v907zC2es4VfaYLzG2TcVqOsdLtOanySLFb2ZkSEGF08ZQkZ7g2M4tUFuv5r2XZ1O4XPE4C1GCvT/3I/tCzCP3Y1FOgoo0A+Qw9vqfh/zF2n0Hg89CJn82C5qt7Y69F68nqBO632WFAxsqfTFonvQq/+t874/iMyJAintqYbZnbZ/tui9tCwbs6UqOIbqoroRsyZUCOnfgBJscBZ6FOPO2nqvy7HOZA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from PH0PR11MB5830.namprd11.prod.outlook.com (2603:10b6:510:129::20)
- by PH0PR11MB4806.namprd11.prod.outlook.com (2603:10b6:510:31::21)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8398.22; Tue, 4 Feb
- 2025 11:07:22 +0000
-Received: from PH0PR11MB5830.namprd11.prod.outlook.com
- ([fe80::c80d:3b17:3f40:10d6]) by PH0PR11MB5830.namprd11.prod.outlook.com
- ([fe80::c80d:3b17:3f40:10d6%4]) with mapi id 15.20.8398.025; Tue, 4 Feb 2025
- 11:07:22 +0000
-From: "Song, Yoong Siang" <yoong.siang.song@intel.com>
-To: "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>
-CC: "David S . Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
- <pabeni@redhat.com>, Simon Horman <horms@kernel.org>, Willem de Bruijn
- <willemb@google.com>, "Bezdeka, Florian" <florian.bezdeka@siemens.com>,
- Donald Hunter <donald.hunter@gmail.com>, Jonathan Corbet <corbet@lwn.net>,
- Bjorn Topel <bjorn@kernel.org>, "Karlsson, Magnus"
- <magnus.karlsson@intel.com>, Jonathan Lemon <jonathan.lemon@gmail.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer
- <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>, "Damato, Joe"
- <jdamato@fastly.com>, Stanislav Fomichev <sdf@fomichev.me>, Xuan Zhuo
- <xuanzhuo@linux.alibaba.com>, Mina Almasry <almasrymina@google.com>, "Daniel
- Jurgens" <danielj@nvidia.com>, Andrii Nakryiko <andrii@kernel.org>, "Eduard
- Zingerman" <eddyz87@gmail.com>, Mykola Lysenko <mykolal@fb.com>, "Martin
- KaFai Lau" <martin.lau@linux.dev>, Song Liu <song@kernel.org>, Yonghong Song
- <yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, Hao Luo
- <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>, Shuah Khan
- <shuah@kernel.org>, Alexandre Torgue <alexandre.torgue@foss.st.com>, "Jose
- Abreu" <joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
- <przemyslaw.kitszel@intel.com>, Faizal Rahim
- <faizal.abdul.rahim@linux.intel.com>, Choong Yong Liang
- <yong.liang.choong@linux.intel.com>, "Bouska, Zdenek"
- <zdenek.bouska@siemens.com>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>, "linux-doc@vger.kernel.org"
- <linux-doc@vger.kernel.org>, "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
- "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
- "linux-stm32@st-md-mailman.stormreply.com"
- <linux-stm32@st-md-mailman.stormreply.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, "intel-wired-lan@lists.osuosl.org"
- <intel-wired-lan@lists.osuosl.org>, "xdp-hints@xdp-project.net"
- <xdp-hints@xdp-project.net>
-Thread-Topic: [PATCH bpf-next v7 4/5] igc: Refactor empty packet insertion
- into a reusable function
-Thread-Index: AQHbdp7rCY5AnKYQ8ka8t2MtMQljeLM25zMAgAAN7NA=
-Date: Tue, 4 Feb 2025 11:07:21 +0000
-Message-ID: <PH0PR11MB58306CEAFF46FD493030943BD8F42@PH0PR11MB5830.namprd11.prod.outlook.com>
-References: <20250204004907.789330-1-yoong.siang.song@intel.com>
- <20250204004907.789330-5-yoong.siang.song@intel.com> <Z6Hi5G0ngTnb7lb/@boxer>
-In-Reply-To: <Z6Hi5G0ngTnb7lb/@boxer>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PH0PR11MB5830:EE_|PH0PR11MB4806:EE_
-x-ms-office365-filtering-correlation-id: 7a306d01-63ce-4ddd-8da0-08dd450c1919
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|366016|7416014|376014|38070700018; 
-x-microsoft-antispam-message-info: =?us-ascii?Q?LD8QeIXdK8T2s2ZzsJVxk2eflFEjThClhtLfZ61hLU1ARadhCqgyW+0uVNT5?=
- =?us-ascii?Q?t2iawRjaS+W+fELUknsNDLOy/V0jcpd8QlKW9n9qvbsZRf1GxkfBzOmcMO5Y?=
- =?us-ascii?Q?Cd5Y8bMyrU5i7zVVtVXxfDqjUi648aeQt4J79a/INz+eb5S9Ya7rkAuSyeym?=
- =?us-ascii?Q?LS/Wauc5nS14lrKk/1dOtIpeaMztH2i3r3BjPg49r6n3v+kmztNy/1Je7Zbi?=
- =?us-ascii?Q?pKTBPRxIPJ6mi6UQD32MWfQH0jE28ISGCWSd4y7Jn3rw2gDSNJJGbVVjrQS9?=
- =?us-ascii?Q?EHMFPBnlwgJFjDuHUjLXKJwAHT/RlI1AI8xrTOSwbTGVikQE6M9Vxax+U7ao?=
- =?us-ascii?Q?FRK0rzwsa8oKyv8A8EXH21x1PBfJfFeJQmdw+xui1EaGVbTATTzB62Cy1JQ4?=
- =?us-ascii?Q?SRmf749PQqsZdlH6K3lnSLjedQ+MPRauV7vM920cAleRr7Kps4C/vWTOWUy9?=
- =?us-ascii?Q?nuz0EhvJA6g5M/AFrb5nYB6FugRwCMylE8CrqBamxbdh3WLP5tleaeHH9IC/?=
- =?us-ascii?Q?vEd0w4TpgnziV2UDshFK79YC4t8yp3F1++Nd3CUTZIm32YTC0R0uH3drNLFZ?=
- =?us-ascii?Q?82VNrDOusHoJx4kWAivnzqWno0/aPFUzkIWwYjxSH7NFbNcYr0MdKYuoE1V7?=
- =?us-ascii?Q?jrRY6ShY7RuXPFFPh98oHiDh+kf9AZ0oFSjNG4NApXA/GeaVFYGlJlIEE68/?=
- =?us-ascii?Q?mBMEwGeQ+KjMBiSJ+66TBx0LSMFLkl1qU331bcqrCLHF0MyK/rgpCO8CyTjU?=
- =?us-ascii?Q?3t6iCWv30TkIBabRlIsr2gnz2rdNQQ7LwZE+cqh0mI3Ea5qtSBs8FASFsBVO?=
- =?us-ascii?Q?5SSJheAZvOQGfLIuR6mfkog4wekUQr6qCyP4je7pDGXSOF3WcyVclDOPKAJ1?=
- =?us-ascii?Q?gel0iUMlrCVZnDGBNfVt33bMjINFDe2ceYCeCFWXlu3cBdyBw0sHEy9HeR18?=
- =?us-ascii?Q?3Yz3eHfBm3SyWoHZGuYhbc4Rsiv1ByWlQ2TUFN/lm7MBjwD2i87tL41ggJg3?=
- =?us-ascii?Q?JIrVUVhKlqZa7qtKltV6Vn3lSo6vDM2fYnI/ufYz9KzEv5J/SnszKeDvxWkV?=
- =?us-ascii?Q?cCoKpkdUDoAW1B+vJ+Uaf30tItabZPZoPuqS0NeTR90JvAPjihG8HKsehxeO?=
- =?us-ascii?Q?1AMOeW1ddccvgGiMlLjw2qT6GAPEhZrgrwTJuD1yCKjBUg03s1t1NeIW2A7j?=
- =?us-ascii?Q?6+neQ8SVq3V9NMkKB24DaocHOInckFerSjCxNqbdKfJBHF3yOenMjJgaPaWX?=
- =?us-ascii?Q?ZlXjcMaQ9dCfzyOaBFHUC2RhgdtgbhbTfOFVJyeNnEd+G62iu5ShN0oZgQeb?=
- =?us-ascii?Q?CZCwnodMqCvkXDayv0V6wj5wnbdiw5r24FnjM4vIDeGQ85JmQj7XUFPhw4Dk?=
- =?us-ascii?Q?ZBTW8GxOxXn76cL2TqBpo1yFh1wNiw+zUVWJ3X8KaZS/Kyx6B+XPsYpigJFy?=
- =?us-ascii?Q?HXEUNwbx7+di6aTermSsPDHGYUAGHeAb?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR11MB5830.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(7416014)(376014)(38070700018); DIR:OUT;
- SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?na88wrrTB26jEis2HCoY7PsL1Z7hKnbZBerWFsYq6mm7idBL19uCEvVd6igP?=
- =?us-ascii?Q?+bAoyw6BJGazAC9KETO78oHqz7/LsF35crNeS+YuAgFoMMOAmtTlh+VekTew?=
- =?us-ascii?Q?4JGsCvtXIj/DupeU7cdRh3vPE/LFjgLPMrecq28UVqmta61b0BjjVWv2HQQ5?=
- =?us-ascii?Q?G49HEQwU47WFx7w13cWqrvfOoKH6rQb3iS1WmOwqCXIpTP40Rc+ynic2wpqY?=
- =?us-ascii?Q?4xGdBHSRxOrVyLYIJ0ROxMUi1HAUvkhVes0PnPmQ5krS2cf7mvG2c0+koM0I?=
- =?us-ascii?Q?8/Y/wFHuJe2EimYmZEt7l5/ma3t9qNS6tCG+U2EY4Rs8WytWPCNGL0Y4J1bs?=
- =?us-ascii?Q?GiPWmVmnpaBkp23Kx4BAOn08w+hurZhFeDFrN/+CaD1D9hMqyz+vt2K2O2oH?=
- =?us-ascii?Q?eucc8hthXIKxhX15teRqFdymps8FDGIKkSRAzjJHrqEuwEr+WW6N3/PzPEhk?=
- =?us-ascii?Q?Tjl8v2ppvfv33vpwSUWcgSt4HKnsjfjdevAAj/Zms52YykQMufkyW8HvjbYd?=
- =?us-ascii?Q?BWGdLkNRBwUE8e/gqD5xtd9ZD4f7z93u0c+8Sl7aYfULZYg9R6PKLLe4nxcI?=
- =?us-ascii?Q?C+OHNEqUuRvQ4PYqFES+p/uqQMAiz/oOsJIqJ/aHE0iWmT9pMCO/5YzZHB7M?=
- =?us-ascii?Q?MSaIhHD1R1p4Fli1KOPbsfzyGIHsrYu/U5xgBkxe5VWqQkYjsV9z90QYU7v4?=
- =?us-ascii?Q?ztVSbZfSw1Ran0WLAhNkTOXHEani9179EELxncMztiCGH4555ukz4pD7/Ofq?=
- =?us-ascii?Q?yQwnpynNYSpR/cbQHdxPoakbOrf+M53loKGy75THpUo4Bmtf4bTLWrSRIP6e?=
- =?us-ascii?Q?j+HFxjtkDAygRWGMcXN+vtgojD22c4cJRTopLMTzwJ6Zk9QEapmzS8PFJheC?=
- =?us-ascii?Q?5A1P4ELcmhozHbCh687wr4tLYBihvPhTw1QKVNYRZm6NX4/wT/GezTbeqP9R?=
- =?us-ascii?Q?FqkndC59d9WoWJpDlYY6jsrhaHx+dk/zOt1m4gTuo8MD2OW/+AT9N+Z0Lc2B?=
- =?us-ascii?Q?Wd4uU6phvKQ1aH0HtznB/6NmBSVn/iHpZ5rfLUMCCZ1pJZkIfMcFvSj4+uWO?=
- =?us-ascii?Q?X00EBmrXr3xVreDkgNe20mYBj3shI1kjZ/Qa0paCz8BlG6N3aO7117dga0jV?=
- =?us-ascii?Q?1leqCZX/WnpRgH+u105krQXPT2qGlhzCmGxmcjiSPKz0qpN96DfLjf0kOW/P?=
- =?us-ascii?Q?lF7+6lngc5/6AlQJSLBNxuWWgBcIaEWbXJX/3W2r34/1dtJ3+ONs5N4bPyml?=
- =?us-ascii?Q?zkWs4juAgM4Q2P85Ydd7LUAXksusYMi9QUxgAqVr/nWabwmugXmSsBCE08jt?=
- =?us-ascii?Q?i+MPQuOY4D1XUfh48QRqpgfTsnR0ep/W9cuTOY9t5qcrg9SzxgWOJkPTrr8z?=
- =?us-ascii?Q?n7ZekIwd3sMLv6KWSWojkduhcsxTZVC2imQaYljV9t+MKR+ShXQUTk5b0lDy?=
- =?us-ascii?Q?oDTVWbGBI2RBubvV438XanjT5shMtVTMi85XxBFV4U2RKZXdaAzCjJjMWZCd?=
- =?us-ascii?Q?2px9VPaLTK34hKGew/TtTx+qxQDH5rui1MZXLVYv8IWnOxYZG4bnEtEh3Rrd?=
- =?us-ascii?Q?eNgLC8dA1Mk2U3fUg+y8uFBNO+t2yEZcrCfi3S8eW8urMH5XS6f2z8a2GsQh?=
- =?us-ascii?Q?Ow=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="147783203"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by orviesa001.jf.intel.com with ESMTP; 04 Feb 2025 04:05:41 -0800
+Received: from lincoln.igk.intel.com (lincoln.igk.intel.com [10.102.21.235])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 22A3932CA9;
+ Tue,  4 Feb 2025 12:05:40 +0000 (GMT)
+From: Larysa Zaremba <larysa.zaremba@intel.com>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org
+Cc: Larysa Zaremba <larysa.zaremba@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ Mateusz Pacuszka <mateuszx.pacuszka@intel.com>
+Date: Tue,  4 Feb 2025 12:50:50 +0100
+Message-ID: <20250204115111.1652453-1-larysa.zaremba@intel.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5830.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7a306d01-63ce-4ddd-8da0-08dd450c1919
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Feb 2025 11:07:21.9185 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: oThDIl3ovUkymA+SbBR87n1KPCrtqG36XvKEzCUIHdRpLxI9ylJ/oQchAPSonKxTfMWRDa0uVxCgYAZLqp1cG421yIYHEAx0iPdglogXhhQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB4806
-X-OriginatorOrg: intel.com
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1738667247; x=1770203247;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=2z16Z2d59biZpaltvYyfg9wC8hJcGX0R6r0qRZ0U1u0=;
- b=Gl7vfr09BYhh7M+umL43E4Ona6MOI6lmzIHULdCmSNOVALY+At84omf7
- QL49AorhXK/n5uMVwyo039GzhCEPKnvFvoAIQ7sTc1rovSZen28mKiqmE
- 1/w9Ww4gFSr67E1h9LkBiZfLi3XFDElj6rrkrySl1UTHF299K47rPmGBU
- 2nKssVWnL7YN0NVgB0pbltV8h1DadWnoADNIc4ezgfde8u01oP7hYABax
- yrNMaoH+u+4zmK8Yz8N0xlt0b3uXLZRKOkHtnViiN5OOuFcd8dsruZL8I
- nuRFIxyEDpb+BlA3GCzjvv2tZSoqBKZ+/8AipjXuRz7pD5Ji3yDBBKaE9
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1738670745; x=1770206745;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=xi4sBUQvDSLZfwfFDQG/hOsrvWDhJfv7KlrwKAUi3XA=;
+ b=fkKc9eVUEoAwBbobLXUMESW4Vk1NUijT855Lbl4knWoKDW7K6BkOc+/Z
+ i0f3iRZTEowko7ibXTxbP+4HkWjzMatOFMcHcmwksth8ou+K5hSnmKi0A
+ D/IJxuSrYD1g8hACi2/g2TbRbi48J/usWVZ3Y5dDj7QpesVzm9sJKVFZG
+ cvFKCFO63Gbh1+kSPR5NL7a5OYauYD7oLmbPzRqj0JjVqe1FmXwy3hMZc
+ 7IWkXN2myI0uNQKTIfgA0V5C2J1ZEIz1T+jtSxF6Q/Mwe/4V/ke5yFoxW
+ XIvTbyduQc0/bJ0CmatvkWrXYYql+VJ6LLMmb4fG+cM7fIQOnqRNM/GEQ
+ g==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=Gl7vfr09
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next v7 4/5] igc: Refactor empty
- packet insertion into a reusable function
+ header.s=Intel header.b=fkKc9eVU
+Subject: [Intel-wired-lan] [PATCH iwl-next v2 0/6] ice: LLDP support for VFs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -260,118 +116,79 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tuesday, February 4, 2025 5:50 PM, Fijalkowski, Maciej <maciej.fijalkows=
-ki@intel.com> wrote:
->On Tue, Feb 04, 2025 at 08:49:06AM +0800, Song Yoong Siang wrote:
->> Refactor the code for inserting an empty packet into a new function
->> igc_insert_empty_packet(). This change extracts the logic for inserting
->> an empty packet from igc_xmit_frame_ring() into a separate function,
->> allowing it to be reused in future implementations, such as the XDP
->> zero copy transmit function.
->>
->> This patch introduces no functional changes.
->>
->> Signed-off-by: Song Yoong Siang <yoong.siang.song@intel.com>
->> ---
->>  drivers/net/ethernet/intel/igc/igc_main.c | 42 ++++++++++++-----------
->>  1 file changed, 22 insertions(+), 20 deletions(-)
->>
->> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c
->b/drivers/net/ethernet/intel/igc/igc_main.c
->> index 56a35d58e7a6..c3edd8bcf633 100644
->> --- a/drivers/net/ethernet/intel/igc/igc_main.c
->> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
->> @@ -1566,6 +1566,26 @@ static bool igc_request_tx_tstamp(struct igc_adap=
-ter
->*adapter, struct sk_buff *s
->>  	return false;
->>  }
->>
->> +static void igc_insert_empty_packet(struct igc_ring *tx_ring)
->> +{
->> +	struct igc_tx_buffer *empty_info;
->> +	struct sk_buff *empty;
->> +	void *data;
->> +
->> +	empty_info =3D &tx_ring->tx_buffer_info[tx_ring->next_to_use];
->> +	empty =3D alloc_skb(IGC_EMPTY_FRAME_SIZE, GFP_ATOMIC);
->> +	if (!empty)
->> +		return;
->> +
->> +	data =3D skb_put(empty, IGC_EMPTY_FRAME_SIZE);
->> +	memset(data, 0, IGC_EMPTY_FRAME_SIZE);
->> +
->> +	igc_tx_ctxtdesc(tx_ring, 0, false, 0, 0, 0);
->> +
->> +	if (igc_init_tx_empty_descriptor(tx_ring, empty, empty_info) < 0)
->> +		dev_kfree_skb_any(empty);
->> +}
->> +
->>  static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
->>  				       struct igc_ring *tx_ring)
->>  {
->> @@ -1603,26 +1623,8 @@ static netdev_tx_t igc_xmit_frame_ring(struct
->sk_buff *skb,
->>  	skb->tstamp =3D ktime_set(0, 0);
->>  	launch_time =3D igc_tx_launchtime(tx_ring, txtime, &first_flag,
->&insert_empty);
->>
->> -	if (insert_empty) {
->> -		struct igc_tx_buffer *empty_info;
->> -		struct sk_buff *empty;
->> -		void *data;
->> -
->> -		empty_info =3D &tx_ring->tx_buffer_info[tx_ring->next_to_use];
->> -		empty =3D alloc_skb(IGC_EMPTY_FRAME_SIZE, GFP_ATOMIC);
->> -		if (!empty)
->> -			goto done;
->
->shouldn't this be 'goto drop' from day 1? pretty weird to silently ignore
->allocation error.
->
+Allow to:
+* receive LLDP packets on a VF in legacy mode
+* receive LLDP packets on a VF in switchdev mode
+* transmit LLDP from a VF in switchdev mode
 
-Hi Fijalkowski Maciej,
+Many VSIs can receive LLDP packets, but only one VSI
+per port can transmit LLDP, therefore LLDP TX from VF
+requires adding an egress drop rule to the PF, this is
+implemented in these series too.
 
-Thanks for your comments.
+There are no patches that explicitly address LLDP RX in
+switchdev mode, because it just works after adding support
+in legacy mode.
 
-"insert an empty packet" is a launch time trick to send a packet in
-next Qbv cycle. The design is, the driver will still sending the
-packet, even the empty packet insertion trick is fail (unable to
-allocate). The intention of this patch set is to enable launch time
-on XDP zero-copy data path, so I try not to change the original
-behavior of launch time.
+Usage
 
-btw, do you think driver should drop the packet if something went
-wrong with the launch time, like launch time offload not enabled,
-launch time over horizon, empty packet insertion fail, etc?
-If yes, then maybe i can submit another patch to change the behavior
-of launch time and we can continue to discuss there.
+To receive LLDP packets on VF in legacy mode:
+On host:
+ip link set dev <pf_ifname> vf <n> trust on
+On VM:
+service lldpd restart
 
->> -
->> -		data =3D skb_put(empty, IGC_EMPTY_FRAME_SIZE);
->> -		memset(data, 0, IGC_EMPTY_FRAME_SIZE);
->> -
->> -		igc_tx_ctxtdesc(tx_ring, 0, false, 0, 0, 0);
->> -
->> -		if (igc_init_tx_empty_descriptor(tx_ring,
->> -						 empty,
->> -						 empty_info) < 0)
->> -			dev_kfree_skb_any(empty);
->
->ditto
->
+To receive LLDP packets on VF in switchdev mode (host config):
+tc qdisc add dev <pf_ifname> clsact
+tc filter add dev <pf_ifname> protocol lldp ingress \\
+   flower skip_sw action mirred egress mirror dev <repr_ifname>
 
-ditto
+To transmit LLDP packets from VF (host config):
+tc qdisc add dev <pf_ifname> clsact
+tc qdisc add dev <repr_ifname> clsact
+tc filter add dev <pf_ifname> egress protocol lldp \\
+   flower skip_sw action drop
+tc filter add dev <repr_ifname> ingress protocol lldp \\
+   flower skip_sw action mirred egress redirect dev <pf_ifname>
 
->> -	}
->> +	if (insert_empty)
->> +		igc_insert_empty_packet(tx_ring);
->>
->>  done:
->>  	/* record the location of the first descriptor for this packet */
->> --
->> 2.34.1
->>
+For all abovementioned functionalities to work, private flag
+fw-lldp-agent must be off.
 
-Thanks & Regards
-Siang
+v1->v2:
+* get rid of sysfs control
+* require switchdev for VF LLDP Tx
+* in legacy mode, for VF LLDP Rx rely on configured MAC addresses
+
+Larysa Zaremba (4):
+  ice: do not add LLDP-specific filter if not necessary
+  ice: remove headers argument from ice_tc_count_lkups
+  ice: support egress drop rules on PF
+  ice: enable LLDP TX for VFs through tc
+
+Mateusz Pacuszka (2):
+  ice: fix check for existing switch rule
+  ice: receive LLDP on trusted VFs
+
+ drivers/net/ethernet/intel/ice/ice.h          |   1 +
+ drivers/net/ethernet/intel/ice/ice_common.c   |  10 +-
+ drivers/net/ethernet/intel/ice/ice_common.h   |   3 +-
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c  |   2 +-
+ drivers/net/ethernet/intel/ice/ice_eswitch.c  |   6 +
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  |   2 +-
+ drivers/net/ethernet/intel/ice/ice_lib.c      |  71 ++++-
+ drivers/net/ethernet/intel/ice/ice_lib.h      |   3 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     |  56 +++-
+ drivers/net/ethernet/intel/ice/ice_repr.c     |  10 +-
+ drivers/net/ethernet/intel/ice/ice_sriov.c    |   4 +
+ drivers/net/ethernet/intel/ice/ice_switch.c   |   4 +-
+ drivers/net/ethernet/intel/ice/ice_tc_lib.c   | 243 ++++++++++++++++--
+ drivers/net/ethernet/intel/ice/ice_tc_lib.h   |   4 +-
+ drivers/net/ethernet/intel/ice/ice_txrx.c     |  17 +-
+ drivers/net/ethernet/intel/ice/ice_vf_lib.c   |  26 ++
+ drivers/net/ethernet/intel/ice/ice_vf_lib.h   |  12 +
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c |  48 +++-
+ 18 files changed, 449 insertions(+), 73 deletions(-)
+
+-- 
+2.43.0
+
