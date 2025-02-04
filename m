@@ -2,216 +2,135 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 06C47A26A07
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Feb 2025 03:22:25 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DF7F3A26A17
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Feb 2025 03:42:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2A79B40582;
-	Tue,  4 Feb 2025 02:22:23 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 29B5240318;
+	Tue,  4 Feb 2025 02:42:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uIhb94uN1AbK; Tue,  4 Feb 2025 02:22:22 +0000 (UTC)
+ id sQO5dVXtJv0m; Tue,  4 Feb 2025 02:42:42 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3E4BA404EF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 49F624031B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1738635742;
-	bh=MEfwaV6Y32pVFG7bnAZ85Tn3/N/v8y7Pqgn+SDNezVs=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1738636962;
+	bh=K4WhkspsUxvgLOB0G2Jfeh2Si+PxopRdyDL1e79ms+s=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=OfL6pj2HwpA7UFEVRdIWjkh/NjJwu/D2buMPYviINwsgbf+JTfIk3p51XC4bhioJw
-	 /4J8kA8Y0Iu5SK7cTW+CMt8djFg/oRFGVA1HabncIC6y5W8pUrycs4jdY4cSXAy8cq
-	 kLZM7y7QCcYeYXSa8O2NIBka9l40MmYHWt7waSJctS6ZOGZsrcoW3WxydsZQDBIUEZ
-	 mrjb2n7+lNdqfhqKKyIGtCOg/U4K8FW+n9GZ8Ur8El4Nan2pXmz4cH6QVJ5mMBL9nf
-	 r9oeDMVE5SjXiQGJx2CRbtnjn5yHoz57Zq455dbDnFYUcyyPQ7ZrIG63CAUMHUM0b5
-	 iduqH7k89djVg==
+	b=Z/UVS0FS2cuZW4A+ztI9t7Tb41NI7RR3pIuvH6dtJXmWEcjeagsJ0us5NfAj26OlQ
+	 l7jA+bcWtNAnBLBA6o/thfteT1xaK6+CmgySd6sC7gQl5+4xywA5QAbjK0ksYqaqJM
+	 4o8DK9wDaRd9a5VbNIpJckMPScfQHaKjxzDYfUiplLorXaYoRnKCV0rN3RLHYTdTAt
+	 Ise/CCWfKsKaSVcEFBu5Ri3zgmVvm2O76623/oKz7AbIpRA9pS3LqfChVmws/cXpSd
+	 pPydSKBKGZQzQhdR7yfI87K1uJojsF6u1xN2h7dQD6azrDXHgRSd+/x6pESFu0/Hx0
+	 W+wjH3KYc6UOQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3E4BA404EF;
-	Tue,  4 Feb 2025 02:22:22 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 49F624031B;
+	Tue,  4 Feb 2025 02:42:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 981B712F
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 02:22:20 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 0661A185
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 02:42:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 87F0540159
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 02:22:20 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0176B811D5
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 02:42:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id l7MrfFjXEtpG for <intel-wired-lan@lists.osuosl.org>;
- Tue,  4 Feb 2025 02:22:19 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
- helo=mgamail.intel.com; envelope-from=samuel.salin@intel.com;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Ou-ToxMQ0mxv for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  4 Feb 2025 02:42:39 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
+ helo=mgamail.intel.com; envelope-from=faizal.abdul.rahim@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 66B774012F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 66B774012F
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 66B774012F
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 02:22:19 +0000 (UTC)
-X-CSE-ConnectionGUID: M33FVtmWQxewe9PBIX6oWA==
-X-CSE-MsgGUID: KrMv776QTZ2cDRzbXVGnWg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11335"; a="49403658"
-X-IronPort-AV: E=Sophos;i="6.13,257,1732608000"; d="scan'208";a="49403658"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
- by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Feb 2025 18:22:18 -0800
-X-CSE-ConnectionGUID: FjJ91I6/Q2GYcvCKggHEBw==
-X-CSE-MsgGUID: sn4/rPlxR8e4qSsL7r+RhA==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 06C45811CA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 06C45811CA
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 06C45811CA
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 02:42:38 +0000 (UTC)
+X-CSE-ConnectionGUID: egXrIPaKQ3CumLu3H7ppFg==
+X-CSE-MsgGUID: g1jYMaIZQ62es5hOx6jyHw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11314"; a="50564146"
+X-IronPort-AV: E=Sophos;i="6.12,310,1728975600"; d="scan'208";a="50564146"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+ by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Feb 2025 18:42:37 -0800
+X-CSE-ConnectionGUID: k5pMJs/eS1KFJUS51BcEEw==
+X-CSE-MsgGUID: LsDoyXyXTwW06yE4uEzP3A==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="141304583"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by fmviesa001.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 03 Feb 2025 18:22:18 -0800
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.44; Mon, 3 Feb 2025 18:22:17 -0800
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.44 via Frontend Transport; Mon, 3 Feb 2025 18:22:17 -0800
-Received: from NAM04-MW2-obe.outbound.protection.outlook.com (104.47.73.174)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Mon, 3 Feb 2025 18:22:17 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=fbwq72VRxLOsmcdYVm9Jz1cfKxG5eH7cpkr8n7nmcfT7OCjT6AykNN2MqIeJxN9US2Uko2fldK3A34J2vpN6WRFmefzQQXTMBH7G1aq4OtZE36U53wiZhk9FO3xRQPELEOlo4cXkdnoCM5FS5jctwMFjbuzubWPJUtDPGfT25fLQzANLjT0ZLJzx50KmBChrALT8/3eFGTmfx5WQ1az3yy1iOidNIlnVPhTYj3nmUcGM7qCC19SrWj7+ppRWPZW5zPpLTJIfNIcaizc0Q+ozprZKnlcy5umTkheH8uO4ALed3WGrBg0KAXe++zS/ZjOkLW53RyE5EMEm8R0DW/QJVw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=MEfwaV6Y32pVFG7bnAZ85Tn3/N/v8y7Pqgn+SDNezVs=;
- b=SpCxy9RT+63ua28iKZMLQHlZcY3bfNmesLQvWCTXnFHlkLwXz9sjTaIJlB1kmRmcIMWOQ+8GuAxBJ/Il4QGjZwNedmNGeTkjwP8vNW3Z1Kksae/OwnI8sRQF84gwDy2ZfDN8w7Da3oy48kWlzGA64ofxXPwbfX2/hX/0s7z8JzZ5NQX8x8t99hMwEqBshZkmnM8EK6ChoWraDZpA4iQ0Oyirtx3x8xfiQF/RX8vO2UT48ehbqq3t+OUYVKztmMk738O81uAD79miQ3dGq7Eahuw0KwMVtm1dj5BjpV4g4dZjOj+1uwJWSWjhHfscD4s2y1yK76O0hiTQuFNVfKnd8A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from SJ1PR11MB6297.namprd11.prod.outlook.com (2603:10b6:a03:458::8)
- by IA1PR11MB7368.namprd11.prod.outlook.com (2603:10b6:208:420::7)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8398.25; Tue, 4 Feb
- 2025 02:21:48 +0000
-Received: from SJ1PR11MB6297.namprd11.prod.outlook.com
- ([fe80::dc50:edbf:3882:abf7]) by SJ1PR11MB6297.namprd11.prod.outlook.com
- ([fe80::dc50:edbf:3882:abf7%7]) with mapi id 15.20.8398.021; Tue, 4 Feb 2025
- 02:21:48 +0000
-From: "Salin, Samuel" <samuel.salin@intel.com>
-To: "Samudrala, Sridhar" <sridhar.samudrala@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>
-CC: "Samudrala, Sridhar" <sridhar.samudrala@intel.com>, "Chittim, Madhu"
- <madhu.chittim@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH iwl-net] idpf: record rx queue in skb
- for RSC packets
-Thread-Index: AQHbY7jGAyw0AWe76UyEiItYvHAexrM2jdyQ
-Date: Tue, 4 Feb 2025 02:21:48 +0000
-Message-ID: <SJ1PR11MB6297CFFAAC86B43C3499968F9BF42@SJ1PR11MB6297.namprd11.prod.outlook.com>
-References: <20250111002957.167327-2-sridhar.samudrala@intel.com>
-In-Reply-To: <20250111002957.167327-2-sridhar.samudrala@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SJ1PR11MB6297:EE_|IA1PR11MB7368:EE_
-x-ms-office365-filtering-correlation-id: 93a5c74d-712b-453a-6e10-08dd44c2ad6c
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|376014|366016|7053199007|38070700018; 
-x-microsoft-antispam-message-info: =?us-ascii?Q?RT/6qcavTNujBfgNtqrwX04262zUN0LI7Orr2V1g95+jiIMQ8wNYmsjY0V9y?=
- =?us-ascii?Q?c4miv6YMNCOxfcxm1W9rEy/HQFzkVPv+xtxuVvrk1rq6cz253I33MmCfYfPQ?=
- =?us-ascii?Q?wR7LBapX0dS2ZqfhZrZwvjgvR8QDI9PrMBIW/JcvrFATNoj0zrmTqQJs0oiJ?=
- =?us-ascii?Q?f9pq3ueRRtaIgvWHBNuat3IB7S7TYAqhTmPMwHyo41sBSnisxdziwYcxxDWf?=
- =?us-ascii?Q?RmZjDRcPmG5DJPZvHFlSceyXJxE79x53aa4EGzduyLidTerrPQy1ok7J6Awn?=
- =?us-ascii?Q?NQ7JHFCIK1HLa7ExpEkmxI+hDBFf0wM9N5OZPd60gQckHWOVkghB+c4Fb7PY?=
- =?us-ascii?Q?KLAB46kNHeStx7FfkLqPrii6SH/QFjWXT0xqh6xp+bH+yI90oPFt/lTpdn1U?=
- =?us-ascii?Q?gzOits/0mrpmfGqlnAg65TcQBOHHAu6m0i7tx3tBIlzLq+IXwgGKhr68FD37?=
- =?us-ascii?Q?5C8vUOCThZB8QG0EBOJC5qj3MkZ/qFkeooAkCw+HWpU4ED3Lv0nZoApd8PwR?=
- =?us-ascii?Q?Dn9QmN9oiktsRHH25SlIgtrXfikzupzrk0PUl41HrLOUlymj9a5qCHtu9kF0?=
- =?us-ascii?Q?4rKaL3JJM5D4Vmk2su03pWAEjWlk3MCPpnrPhG1RCuzS3y+unJAeMeEbmRxi?=
- =?us-ascii?Q?RGDMv9qt8790b84SNLDkmQeyNNIsZ9mQHCLgnQIytbtx2xZ5zBtLszc5cxA7?=
- =?us-ascii?Q?63zK6vzXURCE8z4rILM9yKMpl0frgVS4VxaCm6/ZwvAqUo2kNp8+D9UZHRD+?=
- =?us-ascii?Q?iBGxhvVU5hQ4kpCuzjkC/3n1X7e+FnHB7l3a9I6TcW4l85k7G7Vghtg8UZlO?=
- =?us-ascii?Q?J48PoyKySeOugAELTc/RAVTZSSRo1V2z9Q42vqhdRh4egraWRp9nz4YDXfmX?=
- =?us-ascii?Q?lifKVny64Ysx1UkQKMrCyxZku25TgdChBHezvwTdJXeJXrQjv6qKwCecZYRG?=
- =?us-ascii?Q?PsNO1GTk1OT9O4yWjYPlQ/21bkLMPJNtFE67EpV+hpZQwg1/Cr6j0l0twPgm?=
- =?us-ascii?Q?BKaBBjmvz/KuAO2P/UBsWAxDCXtQBGwsoWwZAsQVvaoPawUhmEjsH1N4F/7S?=
- =?us-ascii?Q?kq5Ltjo+1i6IzWZGebohe8GpmceG82uC0BLUuuAR25QHlHX73HPrWBCPqc8X?=
- =?us-ascii?Q?t46lVzzRHXaOvS4hzUzr4kQaGTe9UoAiTR5EGD9LsfC82fGIQeTZfhOjkCqw?=
- =?us-ascii?Q?nfGgZMZDQKNGXGV7x2oWE0OU4jcuon0B/9GOza+Jvw0+MAN5uiVi2jFnuGTf?=
- =?us-ascii?Q?FAeE25oB6PSeK03a8SK5Wy+usH9+pEk1G8wuqkCvRtjB9PXsMDOvN8bT/9rR?=
- =?us-ascii?Q?Ww+P+3HmzvnNkBfBCqAtUezfBBq/OY6+JS4A6h/cwelTJM9YTu5Vi3ffLS5h?=
- =?us-ascii?Q?UyPcxv2oeEKe/TuC12jMfu3wPA3AO8r3hCWsen0ODsorP987wXo/x7eYqypE?=
- =?us-ascii?Q?HOh2YxfjXipZSh2NIOf+P606jzaj0p+I?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ1PR11MB6297.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(376014)(366016)(7053199007)(38070700018); DIR:OUT;
- SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?lsif3Ini4l3PG4J24pQXaeMavyUZ505RVH7Uwbj0CSSjAcYhLRTLhJ6vP4IS?=
- =?us-ascii?Q?CquqDUKurxpx0oYMTXguNfzkFJYKlplf7us65I+ygWZsmmZk3PfDwPMJvrik?=
- =?us-ascii?Q?P2qrCzOEJwkWgiYb1V+bs6TN2ob+M9gZO7BwqQ8n0Rnt5AYWRE056E/Xh4B4?=
- =?us-ascii?Q?2KO7faRfjhAFKHG9x8TRHJrlDfMOlTDT1m6Ho6+OhsUqf6rrF03xtIFQqRHw?=
- =?us-ascii?Q?4BDDm2gYbCy5s3VkE8hDw3zhEHyaNL/fpgpjT6TDXFEiETxCb0uJTJwByJh+?=
- =?us-ascii?Q?EKyT7MttQ4mTFptS8Cdb+ztYSSciRKG/M37QXb+iEJnQHmgtfC4Jm2IFDI8E?=
- =?us-ascii?Q?dHCnmlYtf7SjE/yp4oiZNJp5ArE2/npo20aOvOGwccvSazpODNVteRtWJntc?=
- =?us-ascii?Q?jq2tFsTqWecdFNClkWv70usdOYcN/nuqPD7ctrhgoFeoOx2qox0fMpQK/pLO?=
- =?us-ascii?Q?VVMwLXcI9OIHTBAN4bBFgmaKfph8+uxXgAQRP2+tSi+5DsMkd9YxE/T6fHHU?=
- =?us-ascii?Q?kv9wcmEZP2nVE6nmkvNXwZ8NgUtPQnAYEOkE2sy9y5s6l0TX2a9gWZFSWULf?=
- =?us-ascii?Q?dCq4efQ2TlKCCoepwR/s/fZ69gIuTHMPxAWjk1gFQ9Qg4XPUDQQysV68GD3a?=
- =?us-ascii?Q?xunC2wQEGeq/6zhzQFquXXqzo3UIhTkqSaG1ZPRW2dEEtG0GbZykwYB7bjxm?=
- =?us-ascii?Q?GhDBOzN3Vfk8a+3Dh4qJ5xN1QaNxj5lcfivpsWkgwLyB3lCZgTf9RPT1v+nO?=
- =?us-ascii?Q?qMxMgoacr8caEK5a2jHMLx9Q4FF30PlFBjTOnhlxe1gJihMMgpW6A232fxha?=
- =?us-ascii?Q?S6M+rLTtUr7E6sgd2IkDDMbLj9IbbSZ1R8Yi/4juC8gXIO7foTGK1DbyS9qu?=
- =?us-ascii?Q?Ckvv2ZS425nA70A9GMwArDrJ5pgqXyWcJmp3EqRxkKhJtRfgzfkuevRIQSyn?=
- =?us-ascii?Q?+qQcv3uDL4wdHm7P4hpAqEfSn0zkQKGuhT7drEVsJs+6RKVKZVwI+iE0p9cc?=
- =?us-ascii?Q?JavnBA9gJYVzmQ5GlPU71F8spgOKM/3IdhGZzGuXy2TcnDo3QcJZUbj3zl6i?=
- =?us-ascii?Q?fQ1ajJJkEJzUqUBsbigNWXU+MljScz/VB6ZnUPuz7ZgETmZZjDLqtINQTLZ8?=
- =?us-ascii?Q?EKdAcrBBcHaYTQZIQOQNDOrVp8w0epUi+icO+VaoN92Fmne3KGozqJopB8ao?=
- =?us-ascii?Q?7FC79CEkK9qjNjzUZygS1h09yl9BStbADZ8FbZfZX96MlQBG/L4iP5zTyLYG?=
- =?us-ascii?Q?GdxpRJKLciU/Dbi30riAz7arlptOxDBSRFUm78fktMS0NmGCsgPgU6+Lk5Yn?=
- =?us-ascii?Q?op4M6hV0seEPFagENrVCJ6hn+Rsdl2CzZ8o02wTP5o03jQqR5q4YPUtdAlDd?=
- =?us-ascii?Q?fFkJQJLOjplBDPGwFtHjAevyE3B/+Sv3hN17YffY+w4OIvYY7r9GOoAPREP6?=
- =?us-ascii?Q?YSDNtDqbq7TQgXwSBgl+1i7S29yANq3Vvy0C+QOQYlUGCjG/hTlB0WgA1MVs?=
- =?us-ascii?Q?Vrm7c1ZDji7ubasloxjtltaJ2oBfDf4XH9owzdodjT7uwYCzL6wJlxCJIWBK?=
- =?us-ascii?Q?JY3qZ1EMXnqpu7OtqVh2X2Epgew8Cwa90vzF3Ol3?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+X-IronPort-AV: E=Sophos;i="6.13,257,1732608000"; d="scan'208";a="111051867"
+Received: from mohdfai2-mobl.gar.corp.intel.com (HELO [10.247.89.75])
+ ([10.247.89.75])
+ by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Feb 2025 18:42:26 -0800
+Message-ID: <a374fa88-433e-4fc9-a63c-fa56f619abd0@linux.intel.com>
+Date: Tue, 4 Feb 2025 10:42:13 +0800
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SJ1PR11MB6297.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 93a5c74d-712b-453a-6e10-08dd44c2ad6c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Feb 2025 02:21:48.0279 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: z6SgFNbGPPRFkRQCtaTK/nd33Mvz0K6fXQ6h1LZBxEASnBS1bFL8VDKM4QJ5dUs0OZW3pm2GTQh2PCeUgeB/3w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR11MB7368
-X-OriginatorOrg: intel.com
+User-Agent: Mozilla Thunderbird
+To: Song Yoong Siang <yoong.siang.song@intel.com>,
+ "David S . Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Simon Horman <horms@kernel.org>,
+ Willem de Bruijn <willemb@google.com>,
+ Florian Bezdeka <florian.bezdeka@siemens.com>,
+ Donald Hunter <donald.hunter@gmail.com>, Jonathan Corbet <corbet@lwn.net>,
+ Bjorn Topel <bjorn@kernel.org>, Magnus Karlsson <magnus.karlsson@intel.com>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Jonathan Lemon <jonathan.lemon@gmail.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, Joe Damato <jdamato@fastly.com>,
+ Stanislav Fomichev <sdf@fomichev.me>, Xuan Zhuo
+ <xuanzhuo@linux.alibaba.com>, Mina Almasry <almasrymina@google.com>,
+ Daniel Jurgens <danielj@nvidia.com>, Andrii Nakryiko <andrii@kernel.org>,
+ Eduard Zingerman <eddyz87@gmail.com>, Mykola Lysenko <mykolal@fb.com>,
+ Martin KaFai Lau <martin.lau@linux.dev>, Song Liu <song@kernel.org>,
+ Yonghong Song <yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>,
+ Hao Luo <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>,
+ Shuah Khan <shuah@kernel.org>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Choong Yong Liang <yong.liang.choong@linux.intel.com>,
+ Bouska Zdenek <zdenek.bouska@siemens.com>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-doc@vger.kernel.org, bpf@vger.kernel.org,
+ linux-kselftest@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, intel-wired-lan@lists.osuosl.org,
+ xdp-hints@xdp-project.net
+References: <20250204004907.789330-1-yoong.siang.song@intel.com>
+ <20250204004907.789330-5-yoong.siang.song@intel.com>
+Content-Language: en-US
+From: "Abdul Rahim, Faizal" <faizal.abdul.rahim@linux.intel.com>
+In-Reply-To: <20250204004907.789330-5-yoong.siang.song@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1738635739; x=1770171739;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=MEfwaV6Y32pVFG7bnAZ85Tn3/N/v8y7Pqgn+SDNezVs=;
- b=Fgr15tXND6OPo+NcmW6NX2CfUzWxmL61Nyl3gfML1nzRdvhH/FXGJk8w
- XfWDNz5oxj+RnMK9vrfckJQrAxpEydnvnDeQTZ7cav/HcK0WE7ubfilAH
- xitag0aMtTKP+KkWrocaR9OAstdqb8wJUa1zHh8UZvW184i3x9RWXxbnb
- neWrgxS1cXwOZ4U4rzSlqmv/qPeGHO2gDfm7/oZ3XqbDvAZUoz5ecIx+M
- bM3+4CW6irjsI4PW4bPsLMskYkueou/qmeOZ/c/UYUxTBuSFEa0xVf4ub
- cZEFCfMxmf/l+k/9pjNuLYL+PzYIrMBPdMIxLC7GdSZNkaRpus3S9ci8e
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1738636959; x=1770172959;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=192aj1QJsPyGtAMkRPhiiiupVd6SXNH3StPpurpmAIo=;
+ b=CUz7AUxyvo+hz+6dXm+UfXIJDV4141D5LUFGcCPvrV2JtdSwHzCfoqg2
+ 3aipezKWVU8xhO2K9Q4Qcm5jHtMQ/BsGOrntygGt5GW9B1H8QKYDP0tQZ
+ kGEGG4rdmVrQK+H9tFBLMYoDJhVijjmSCpUPeWI1SxoORSNPOvp94/kD1
+ PxF9ZWc1npKJ84LIiSxI+J9Ft2i9DJ2DyhfjLN2UM+HGwoRwWzc11JhOq
+ B1tHr7OtCREEKTgoKwzAhvozXS9zltSxgt3o5FXBYFGZt5KL53tXXl8EY
+ v4Eu5CAnybWuIJgTkst4+V2CKO8TX/VC/uFjNuA8E/+Orb50FnI4y1hXc
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=Fgr15tXN
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] idpf: record rx queue in skb
- for RSC packets
+ header.s=Intel header.b=CUz7AUxy
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next v7 4/5] igc: Refactor empty
+ packet insertion into a reusable function
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -229,24 +148,79 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Samudrala, Sridhar
-> Sent: Friday, January 10, 2025 4:30 PM
-> To: intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org
-> Cc: Samudrala, Sridhar <sridhar.samudrala@intel.com>; Chittim, Madhu
-> <madhu.chittim@intel.com>
-> Subject: [Intel-wired-lan] [PATCH iwl-net] idpf: record rx queue in skb f=
-or RSC
-> packets
->=20
-> Move the call to skb_record_rx_queue in idpf_rx_process_skb_fields() so t=
-hat
-> RX queue is recorded for RSC packets too.
->=20
-> Fixes: 90912f9f4f2d ("idpf: convert header split mode to libeth +
-> napi_build_skb()")
-> Signed-off-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
-> Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
+On 4/2/2025 8:49 am, Song Yoong Siang wrote:
+> Refactor the code for inserting an empty packet into a new function
+> igc_insert_empty_packet(). This change extracts the logic for inserting
+> an empty packet from igc_xmit_frame_ring() into a separate function,
+> allowing it to be reused in future implementations, such as the XDP
+> zero copy transmit function.
+> 
+> This patch introduces no functional changes.
+> 
+> Signed-off-by: Song Yoong Siang <yoong.siang.song@intel.com>
+> ---
+>   drivers/net/ethernet/intel/igc/igc_main.c | 42 ++++++++++++-----------
+>   1 file changed, 22 insertions(+), 20 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+> index 56a35d58e7a6..c3edd8bcf633 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_main.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+> @@ -1566,6 +1566,26 @@ static bool igc_request_tx_tstamp(struct igc_adapter *adapter, struct sk_buff *s
+>   	return false;
+>   }
+>   
+> +static void igc_insert_empty_packet(struct igc_ring *tx_ring)
+> +{
+> +	struct igc_tx_buffer *empty_info;
+> +	struct sk_buff *empty;
+> +	void *data;
+> +
+> +	empty_info = &tx_ring->tx_buffer_info[tx_ring->next_to_use];
+> +	empty = alloc_skb(IGC_EMPTY_FRAME_SIZE, GFP_ATOMIC);
+> +	if (!empty)
+> +		return;
+> +
+> +	data = skb_put(empty, IGC_EMPTY_FRAME_SIZE);
+> +	memset(data, 0, IGC_EMPTY_FRAME_SIZE);
+> +
+> +	igc_tx_ctxtdesc(tx_ring, 0, false, 0, 0, 0);
+> +
+> +	if (igc_init_tx_empty_descriptor(tx_ring, empty, empty_info) < 0)
+> +		dev_kfree_skb_any(empty);
+> +}
+> +
+>   static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
+>   				       struct igc_ring *tx_ring)
+>   {
+> @@ -1603,26 +1623,8 @@ static netdev_tx_t igc_xmit_frame_ring(struct sk_buff *skb,
+>   	skb->tstamp = ktime_set(0, 0);
+>   	launch_time = igc_tx_launchtime(tx_ring, txtime, &first_flag, &insert_empty);
+>   
+> -	if (insert_empty) {
+> -		struct igc_tx_buffer *empty_info;
+> -		struct sk_buff *empty;
+> -		void *data;
+> -
+> -		empty_info = &tx_ring->tx_buffer_info[tx_ring->next_to_use];
+> -		empty = alloc_skb(IGC_EMPTY_FRAME_SIZE, GFP_ATOMIC);
+> -		if (!empty)
+> -			goto done;
+> -
+> -		data = skb_put(empty, IGC_EMPTY_FRAME_SIZE);
+> -		memset(data, 0, IGC_EMPTY_FRAME_SIZE);
+> -
+> -		igc_tx_ctxtdesc(tx_ring, 0, false, 0, 0, 0);
+> -
+> -		if (igc_init_tx_empty_descriptor(tx_ring,
+> -						 empty,
+> -						 empty_info) < 0)
+> -			dev_kfree_skb_any(empty);
+> -	}
+> +	if (insert_empty)
+> +		igc_insert_empty_packet(tx_ring);
+>   
+>   done:
+>   	/* record the location of the first descriptor for this packet */
 
-Tested-by: Samuel Salin <Samuel.salin@intel.com>
+Reviewed-by: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
