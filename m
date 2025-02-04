@@ -1,91 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E00BFA27C83
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Feb 2025 21:11:22 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 69DDCA27CAA
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Feb 2025 21:18:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B814F60E05;
-	Tue,  4 Feb 2025 20:11:15 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1CC4860E16;
+	Tue,  4 Feb 2025 20:18:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id p7ZNlm-UAAIt; Tue,  4 Feb 2025 20:11:15 +0000 (UTC)
+ id oltsuC-NvGts; Tue,  4 Feb 2025 20:18:36 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 19A1460E16
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CDE3160E1A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1738699875;
-	bh=oYpYFiVdWybN0jZGct9NoBnywFaUftZ2owtwxUI9TBA=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1738700315;
+	bh=Dso1EsGyxnhW5FWhayp/zMY4aUV2+LaYO3ijOICijXI=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=X5+9XFch5vbVq+JteDMHAYp62n1WDPcff0ZqAIdSFHFiuIYpaRmjVIABizXXzNRVO
-	 sk6H8JoqAYJ+TE8DwSm3Qp4yVvFM8hG4iaFtUKOaKFFDqhMcUjM7ikAaN/xUDFcpkE
-	 gCxPPArcBEJeDatH+fwhENgwyyUGI0+yywVxF2wLmk8aUo6kpzoKQlHwgqqwiBH0ls
-	 +oUdMOsrxWNxX67ELW/ni81on9cwEkNurwiRmSCGWa8afTA5VO2W9cmbu9J7HSqRaK
-	 y8UmnYFUYzICuSu9dG/SvMEtMy2DF+z9/bq+Q1zXl5Knf951XZQ1wwLsaWxYbbMw7r
-	 4JJ90mEj5KGew==
+	b=4yYJW6IQNQjn7Xl+V9uSZ6EF7mKyvPdmYJbtK0ex5fX8s2AtdrNPTlYXAuvJ6+HMY
+	 8SzwakbaPSP3tQXYK8fHyrFLC/3oLNm1e6fsKDzmv4a0/DXklgZqHP51SyoeNS42ZA
+	 tOiDK5BWBjyaepYc4QP5RK2raO58fLrVugMUMSNpxPEQBvEBkPLdY3G2JKhJTJbJyx
+	 QHDfAt7amIbHrbPyAriSnjVgdG7S4MaQwG7XyVy4wjDNnFkaPEvraWLCVQbreRNCfN
+	 jT7JajN5mNYeCJEYPqHy6jhGw4SwksWPzZCHXGgpMs9XGv+pN02Ul/zKjU6WEyhExG
+	 bagxnPIabnxSA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 19A1460E16;
-	Tue,  4 Feb 2025 20:11:15 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CDE3160E1A;
+	Tue,  4 Feb 2025 20:18:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 2FFCA1A6
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 20:11:13 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3382A1A6
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 20:18:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1285841448
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 20:11:13 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2EECA60E1A
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 20:18:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id iTI-UrqG7_-e for <intel-wired-lan@lists.osuosl.org>;
- Tue,  4 Feb 2025 20:11:12 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4A1FF41434
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4A1FF41434
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4A1FF41434
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 20:11:12 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 46C7F5C65CB;
- Tue,  4 Feb 2025 20:10:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6F362C4CEDF;
- Tue,  4 Feb 2025 20:11:09 +0000 (UTC)
-Date: Tue, 4 Feb 2025 20:11:07 +0000
-From: Simon Horman <horms@kernel.org>
-To: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- netdev@vger.kernel.org, pmenzel@molgen.mpg.de,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Message-ID: <20250204201107.GP234677@kernel.org>
-References: <20250204071700.8028-1-jedrzej.jagielski@intel.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id PUfQdiFg1GJd for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  4 Feb 2025 20:18:32 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=81.19.149.115;
+ helo=mx05lb.world4you.com; envelope-from=gerhard@engleder-embedded.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org EFA5360DFD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EFA5360DFD
+Received: from mx05lb.world4you.com (mx05lb.world4you.com [81.19.149.115])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id EFA5360DFD
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Feb 2025 20:18:31 +0000 (UTC)
+Received: from [88.117.60.28] (helo=[10.0.0.160])
+ by mx05lb.world4you.com with esmtpsa (TLS1.2) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.97.1)
+ (envelope-from <gerhard@engleder-embedded.com>)
+ id 1tfPNK-000000005UN-3Y68; Tue, 04 Feb 2025 21:18:27 +0100
+Message-ID: <bd604c16-0f5c-479c-aa13-932f1570e5b5@engleder-embedded.com>
+Date: Tue, 4 Feb 2025 21:18:25 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250204071700.8028-1-jedrzej.jagielski@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1738699870;
- bh=fn7KECgeaEFokVrniGp68GeakWgPDRa7VOMu32zpqRc=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=IxMYra2HBjrkqod/mKwUkhu1n3hwnf2vL9SsegCIXmTmidaQG4bS5XKbITgmIGWlN
- jpL5Balj1q04TVaZvhQic0yIrVnDm1rv08T0/Ck23hLCnMY95j9bTDmqcFGZE+dvYS
- N7VNyvzp+iAee0B+GcpLJqgY0tmqf19tW1X/etzrVK6ujp7EIcJ+1k2U2Kwm7BVfsh
- /y1YFAfE7gGtjhW1IxKxkcES58c5VMw1jOG/3XmMdggkMz6dqDTiG6SC0DWoy7rtch
- 46To/7tNs+vihC0J49Vb42xgLZVx8eAcezKn197WkJNiyOguU1b0zrAaDrDrSgsBl1
- RgdSJA8TveuFQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=IxMYra2H
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] ixgbe: add support for
- thermal sensor event reception
+User-Agent: Mozilla Thunderbird
+To: anthony.l.nguyen@intel.com
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-pci@vger.kernel.org, przemyslaw.kitszel@intel.com,
+ andrew+netdev@lunn.ch, davem@davemloft.net, kuba@kernel.org,
+ edumazet@google.com, pabeni@redhat.com, bhelgaas@google.com,
+ pmenzel@molgen.mpg.de, aleksander.lobakin@intel.com,
+ Gerhard Engleder <eg@keba.com>, Vitaly Lifshits <vitaly.lifshits@intel.com>,
+ Avigail Dahan <avigailx.dahan@intel.com>, Simon Horman <horms@kernel.org>
+References: <20241219192743.4499-1-gerhard@engleder-embedded.com>
+ <20250106111752.GC4068@kernel.org>
+Content-Language: en-US
+From: Gerhard Engleder <gerhard@engleder-embedded.com>
+In-Reply-To: <20250106111752.GC4068@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-AV-Do-Run: Yes
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; 
+ d=engleder-embedded.com; s=dkim11; h=Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
+ :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=Dso1EsGyxnhW5FWhayp/zMY4aUV2+LaYO3ijOICijXI=; b=wH/g5+strem6Fjbax6JIGuA4jI
+ zAz+g1rjHx2TLNWIJccj9GLm/xwcXe9FkCI5BIZFy3yXAWoaU1WMs4Zn7YjJLn7dKfMhLeavUdNJh
+ /pjcw3iMEz4nrkA+a8xScAmUKmcEE2XhzLwCPfjRK+kna7A46CgYgiZ/bdZ8qkKkDPPs=;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=engleder-embedded.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=engleder-embedded.com header.i=@engleder-embedded.com
+ header.a=rsa-sha256 header.s=dkim11 header.b=wH/g5+st
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4] e1000e: Fix real-time
+ violations on link up
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -101,21 +108,70 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Feb 04, 2025 at 08:17:00AM +0100, Jedrzej Jagielski wrote:
-> E610 NICs unlike the previous devices utilising ixgbe driver
-> are notified in the case of overheatning by the FW ACI event.
+On 06.01.25 12:17, Simon Horman wrote:
+> On Thu, Dec 19, 2024 at 08:27:43PM +0100, Gerhard Engleder wrote:
+>> From: Gerhard Engleder <eg@keba.com>
+>>
+>> Link down and up triggers update of MTA table. This update executes many
+>> PCIe writes and a final flush. Thus, PCIe will be blocked until all
+>> writes are flushed. As a result, DMA transfers of other targets suffer
+>> from delay in the range of 50us. This results in timing violations on
+>> real-time systems during link down and up of e1000e in combination with
+>> an Intel i3-2310E Sandy Bridge CPU.
+>>
+>> The i3-2310E is quite old. Launched 2011 by Intel but still in use as
+>> robot controller. The exact root cause of the problem is unclear and
+>> this situation won't change as Intel support for this CPU has ended
+>> years ago. Our experience is that the number of posted PCIe writes needs
+>> to be limited at least for real-time systems. With posted PCIe writes a
+>> much higher throughput can be generated than with PCIe reads which
+>> cannot be posted. Thus, the load on the interconnect is much higher.
+>> Additionally, a PCIe read waits until all posted PCIe writes are done.
+>> Therefore, the PCIe read can block the CPU for much more than 10us if a
+>> lot of PCIe writes were posted before. Both issues are the reason why we
+>> are limiting the number of posted PCIe writes in row in general for our
+>> real-time systems, not only for this driver.
+>>
+>> A flush after a low enough number of posted PCIe writes eliminates the
+>> delay but also increases the time needed for MTA table update. The
+>> following measurements were done on i3-2310E with e1000e for 128 MTA
+>> table entries:
+>>
+>> Single flush after all writes: 106us
+>> Flush after every write:       429us
+>> Flush after every 2nd write:   266us
+>> Flush after every 4th write:   180us
+>> Flush after every 8th write:   141us
+>> Flush after every 16th write:  121us
+>>
+>> A flush after every 8th write delays the link up by 35us and the
+>> negative impact to DMA transfers of other targets is still tolerable.
+>>
+>> Execute a flush after every 8th write. This prevents overloading the
+>> interconnect with posted writes.
+>>
+>> Signed-off-by: Gerhard Engleder <eg@keba.com>
+>> Link: https://lore.kernel.org/netdev/f8fe665a-5e6c-4f95-b47a-2f3281aa0e6c@lunn.ch/T/
+>> CC: Vitaly Lifshits <vitaly.lifshits@intel.com>
+>> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+>> Tested-by: Avigail Dahan <avigailx.dahan@intel.com>
+>> ---
+>> v4:
+>> - add PREEMPT_RT dependency again (Vitaly Lifshits)
+>> - fix comment styple (Alexander Lobakin)
+>> - add to comment each 8th and explain why (Alexander Lobakin)
+>> - simplify check for every 8th write (Alexander Lobakin)
+>>
+>> v3:
+>> - mention problematic platform explicitly (Bjorn Helgaas)
+>> - improve comment (Paul Menzel)
+>>
+>> v2:
+>> - remove PREEMPT_RT dependency (Andrew Lunn, Przemek Kitszel)
 > 
-> In event of overheat when treshold is exceeded, FW suspends all
+> Reviewed-by: Simon Horman <horms@kernel.org>
 
-A nit flagged by checkpatch.pl --codespell.
-In case there is a v3 for some other reason you may want to correct the
-spelling of threshold.
+Is there anything left from my side to get this change over iwl-next
+into net-next?
 
-> traffic and sends overtemp event to the driver. Then driver
-> logs appropriate message and closes the adapter instance.
-> The card remains in that state until the platform is rebooted.
-> 
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-
-...
+Gerhard
