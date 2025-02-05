@@ -1,132 +1,107 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91F53A28205
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Feb 2025 03:42:28 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 26962403FE;
-	Wed,  5 Feb 2025 02:42:27 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2WSHwZ0s53Zn; Wed,  5 Feb 2025 02:42:26 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AE43A404D5
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1738723345;
-	bh=T+qVZ8cMry+Xc1q1OmqHCbiXZmcJBiFffyNxV2ID1V4=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=HbSKySKUS0i3Hy0RdxsYhJ2aFUu9yC6XSTj3EWOZNuw9Zaun3JlIZ6Y/ugZdVh35a
-	 zPgvASPCD4wNbkZONMhsQSAZDIRWfocF5HjGyp//7OTCUQxlGQdRC1L3lWskrzgO8g
-	 ksp73lp/Hjn31KTaBTFekFjFX+ocUYFaIgpy6ISAu8BuHKllTKaCNE54+GJvckrARy
-	 Wscp426WWI6+LnuxP+s0M5QR7B4IesSj5BBoaX8gCodR9ZZ8N0tDoma/Cgl0iJe50B
-	 7OusWiQEFMcU7XwaZjBPH5XYJTcqWwup3kOViNO/vRnVRvKJTAFXDG+Gjv0Rv339KN
-	 iZTYepILHqPeg==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AE43A404D5;
-	Wed,  5 Feb 2025 02:42:25 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 1E8761A6
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Feb 2025 02:42:24 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id C15D3A282E0
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Feb 2025 04:32:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0FA3D60D6F
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Feb 2025 02:42:24 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6F58060A42;
+	Wed,  5 Feb 2025 03:32:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CVi6mAcYQuh0 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  5 Feb 2025 02:42:23 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
- helo=mgamail.intel.com; envelope-from=yoong.siang.song@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 119D160EA4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 119D160EA4
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 119D160EA4
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Feb 2025 02:42:22 +0000 (UTC)
-X-CSE-ConnectionGUID: ozpe2TE7RRaswOaXtA6Drg==
-X-CSE-MsgGUID: ncSd6YG7QqOLdxeyeS37UQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11336"; a="39303943"
-X-IronPort-AV: E=Sophos;i="6.13,260,1732608000"; d="scan'208";a="39303943"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
- by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Feb 2025 18:42:22 -0800
-X-CSE-ConnectionGUID: 2d39cPQ/SOaBgbXAfBQn9g==
-X-CSE-MsgGUID: /2zzmDmhTZ+9sGS70cNnQA==
+ id IbjQQgONjo0x; Wed,  5 Feb 2025 03:32:24 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7490E60EC5
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1738726344;
+	bh=NRHIOfEWg7ro6el16JUreX5CnQk5OfBxPPrmMfESzY4=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=6eMaiztPFoMnW+3UccwNA+sfTj1n++CBBavpob7OatYsg8/rA9/rH+Y591mVVBd5R
+	 2i9URZvZTHQeD97vNGubNyVvF7i/KqpEm2kfd6R7FT8jxRtzIcxSPIbzK4/1GljeBo
+	 OWa1Mp1v6ipmX9/Hjf0OH38lGDi6XDZvuTuNkU2WtlDAP5RPeAJ1MX3l9xrJ9c8J2G
+	 X4iB/QKd2gLhgsDfBNx/jMkzbkTq1SUXQR/LIw579qLblsjV9S7lSDsc2ZX14zxbnw
+	 xeJFpfNqoyQ9MRr886wJu3Zm19xP4hBs0/fwp4V4W6+kv5XjbQn8XcOOjguRJFtiYC
+	 kB+4Ch+C3rYeA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7490E60EC5;
+	Wed,  5 Feb 2025 03:32:24 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id AF24712A
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Feb 2025 03:32:22 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9F13540792
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Feb 2025 03:32:22 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Rsq-7kbDWIm9 for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  5 Feb 2025 03:32:21 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.18;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 72B3A4078E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 72B3A4078E
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.18])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 72B3A4078E
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Feb 2025 03:32:21 +0000 (UTC)
+X-CSE-ConnectionGUID: EtwemehbRoCzc9Z+jCPlQA==
+X-CSE-MsgGUID: AikE893NR5mhVD/piGbzXQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11336"; a="38510533"
+X-IronPort-AV: E=Sophos;i="6.13,260,1732608000"; d="scan'208";a="38510533"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+ by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Feb 2025 19:32:21 -0800
+X-CSE-ConnectionGUID: XnCdLGk0SNysb2QuXHZiHA==
+X-CSE-MsgGUID: ksosj32ARK2da/OeFaYFxQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,260,1732608000"; d="scan'208";a="110666614"
-Received: from p12ill20yoongsia.png.intel.com ([10.88.227.38])
- by fmviesa007.fm.intel.com with ESMTP; 04 Feb 2025 18:42:11 -0800
-From: Song Yoong Siang <yoong.siang.song@intel.com>
-To: "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Simon Horman <horms@kernel.org>,
- Willem de Bruijn <willemb@google.com>,
- Florian Bezdeka <florian.bezdeka@siemens.com>,
- Donald Hunter <donald.hunter@gmail.com>, Jonathan Corbet <corbet@lwn.net>,
- Bjorn Topel <bjorn@kernel.org>,
- Magnus Karlsson <magnus.karlsson@intel.com>,
- Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Jonathan Lemon <jonathan.lemon@gmail.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>, Joe Damato <jdamato@fastly.com>,
- Stanislav Fomichev <sdf@fomichev.me>,
- Xuan Zhuo <xuanzhuo@linux.alibaba.com>,
- Mina Almasry <almasrymina@google.com>, Daniel Jurgens <danielj@nvidia.com>,
- Song Yoong Siang <yoong.siang.song@intel.com>,
- Andrii Nakryiko <andrii@kernel.org>, Eduard Zingerman <eddyz87@gmail.com>,
- Mykola Lysenko <mykolal@fb.com>, Martin KaFai Lau <martin.lau@linux.dev>,
- Song Liu <song@kernel.org>, Yonghong Song <yonghong.song@linux.dev>,
- KP Singh <kpsingh@kernel.org>, Hao Luo <haoluo@google.com>,
- Jiri Olsa <jolsa@kernel.org>, Shuah Khan <shuah@kernel.org>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Jose Abreu <joabreu@synopsys.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="115390045"
+Received: from lkp-server01.sh.intel.com (HELO d63d4d77d921) ([10.239.97.150])
+ by fmviesa005.fm.intel.com with ESMTP; 04 Feb 2025 19:30:37 -0800
+Received: from kbuild by d63d4d77d921 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1tfW7W-000tMp-37;
+ Wed, 05 Feb 2025 03:30:34 +0000
+Date: Wed, 5 Feb 2025 11:29:49 +0800
+From: kernel test robot <lkp@intel.com>
+To: Larysa Zaremba <larysa.zaremba@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org
+Cc: oe-kbuild-all@lists.linux.dev, Larysa Zaremba <larysa.zaremba@intel.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Faizal Rahim <faizal.abdul.rahim@linux.intel.com>,
- Choong Yong Liang <yong.liang.choong@linux.intel.com>,
- Bouska Zdenek <zdenek.bouska@siemens.com>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-doc@vger.kernel.org, bpf@vger.kernel.org,
- linux-kselftest@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, intel-wired-lan@lists.osuosl.org,
- xdp-hints@xdp-project.net
-Date: Wed,  5 Feb 2025 10:41:16 +0800
-Message-Id: <20250205024116.798862-6-yoong.siang.song@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250205024116.798862-1-yoong.siang.song@intel.com>
-References: <20250205024116.798862-1-yoong.siang.song@intel.com>
+ Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ Mateusz Pacuszka <mateuszx.pacuszka@intel.com>
+Message-ID: <202502051116.UJMCGQWA-lkp@intel.com>
+References: <20250204115111.1652453-7-larysa.zaremba@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250204115111.1652453-7-larysa.zaremba@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1738723343; x=1770259343;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=ksaAaaoLVoDgCUczAlEVx+8YvcmGLf/2DZVsnOi+dMg=;
- b=dj9bqDRgG5GolZ0CLg3p5uXbs4gs6Aj3EMdOrntS0Xh4j8imF2dO+DB5
- VfDo+HoYz0Z42RRJIJzFkj/AWrCvRcz2Qg2exYu6Q5yoGaNxkTDU0mGE6
- rLtv+7skmrMlxUME37bQtCMV2yb/gOgzRwKWjBxwCSSaRK+EWOk7bsi8s
- q8nMjB4p/f1lr6GuElfxA35KUwuAqV6bTMYLnbHasaSf05t93fbOLNOpF
- sJWWv4tCUWLgHMo5KtMs7+zb9DmlLGeo9x49IlvaKFmF1v9FfGbVkuITR
- tmZ4ATAYcE5bP7P0hKAY5KOKOjWjMLFVqOW6CVE0++l7zemkSIBFAAXcq
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1738726342; x=1770262342;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=klYJIl0+wvehpCEm5K9mQSdweoz4f9zZumsx06HXCCU=;
+ b=Jt/W6TUB/FBL0Jme1VW9xY8MsVnqWz5pTHz/Uwg9gJBNE8P7FiXStbTl
+ qekkX8pz5L09TMQspuwpWxXwQGKgaG4pctanG9dzTNWPq78VPcmqY0LoA
+ a1JoLlWnmz5VHxTObttRw/ATSNAvcQg4ixUaAALvmCy9lsHD9I1Kn5kVk
+ YoB7FNX+DcGuOxhaRqKH1KgKyUZdd9NVHhysv/apNRsaFf0FCtOPlOt05
+ k112iNXsKnTRKiUcbVMMDWz0Tupgd6sWdBE/6udFjFc6OzfE65ZeigzAI
+ M7s+aKGZLLLi3r7SaKC3hBo92BFSHBTnIvO1ewhPMK7inxlQMLVEeO7+j
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=dj9bqDRg
-Subject: [Intel-wired-lan] [PATCH bpf-next v8 5/5] igc: Add launch time
- support to XDP ZC
+ header.a=rsa-sha256 header.s=Intel header.b=Jt/W6TUB
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 6/6] ice: enable LLDP TX
+ for VFs through tc
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -142,180 +117,75 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Enable Launch Time Control (LTC) support for XDP zero copy via XDP Tx
-metadata framework.
+Hi Larysa,
 
-This patch has been tested with tools/testing/selftests/bpf/xdp_hw_metadata
-on Intel I225-LM Ethernet controller. Below are the test steps and result.
+kernel test robot noticed the following build warnings:
 
-Test 1: Send a single packet with the launch time set to 1 s in the future.
+[auto build test WARNING on tnguy-next-queue/dev-queue]
 
-Test steps:
-1. On the DUT, start the xdp_hw_metadata selftest application:
-   $ sudo ./xdp_hw_metadata enp2s0 -l 1000000000 -L 1
+url:    https://github.com/intel-lab-lkp/linux/commits/Larysa-Zaremba/ice-fix-check-for-existing-switch-rule/20250204-200839
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+patch link:    https://lore.kernel.org/r/20250204115111.1652453-7-larysa.zaremba%40intel.com
+patch subject: [Intel-wired-lan] [PATCH iwl-next v2 6/6] ice: enable LLDP TX for VFs through tc
+config: csky-randconfig-r132-20250205 (https://download.01.org/0day-ci/archive/20250205/202502051116.UJMCGQWA-lkp@intel.com/config)
+compiler: csky-linux-gcc (GCC) 14.2.0
+reproduce: (https://download.01.org/0day-ci/archive/20250205/202502051116.UJMCGQWA-lkp@intel.com/reproduce)
 
-2. On the Link Partner, send a UDP packet with VLAN priority 1 to port 9091
-   of the DUT.
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202502051116.UJMCGQWA-lkp@intel.com/
 
-Result:
-When the launch time is set to 1 s in the future, the delta between the
-launch time and the transmit hardware timestamp is 0.016 us, as shown in
-printout of the xdp_hw_metadata application below.
-  0x562ff5dc8880: rx_desc[4]->addr=84110 addr=84110 comp_addr=84110 EoP
-  rx_hash: 0xE343384 with RSS type:0x1
-  HW RX-time:   1734578015467548904 (sec:1734578015.4675)
-                delta to User RX-time sec:0.0002 (183.103 usec)
-  XDP RX-time:   1734578015467651698 (sec:1734578015.4677)
-                 delta to User RX-time sec:0.0001 (80.309 usec)
-  No rx_vlan_tci or rx_vlan_proto, err=-95
-  0x562ff5dc8880: ping-pong with csum=561c (want c7dd)
-                  csum_start=34 csum_offset=6
-  HW RX-time:   1734578015467548904 (sec:1734578015.4675)
-                delta to HW Launch-time sec:1.0000 (1000000.000 usec)
-  0x562ff5dc8880: complete tx idx=4 addr=4018
-  HW Launch-time:   1734578016467548904 (sec:1734578016.4675)
-                    delta to HW TX-complete-time sec:0.0000 (0.016 usec)
-  HW TX-complete-time:   1734578016467548920 (sec:1734578016.4675)
-                         delta to User TX-complete-time sec:0.0000
-                         (32.546 usec)
-  XDP RX-time:   1734578015467651698 (sec:1734578015.4677)
-                 delta to User TX-complete-time sec:0.9999
-                 (999929.768 usec)
-  HW RX-time:   1734578015467548904 (sec:1734578015.4675)
-                delta to HW TX-complete-time sec:1.0000 (1000000.016 usec)
-  0x562ff5dc8880: complete rx idx=132 addr=84110
+sparse warnings: (new ones prefixed by >>)
+>> drivers/net/ethernet/intel/ice/ice_tc_lib.c:848:18: sparse: sparse: Initializer entry defined twice
+   drivers/net/ethernet/intel/ice/ice_tc_lib.c:854:18: sparse:   also defined here
 
-Test 2: Send 1000 packets with a 10 ms interval and the launch time set to
-        500 us in the future.
+vim +848 drivers/net/ethernet/intel/ice/ice_tc_lib.c
 
-Test steps:
-1. On the DUT, start the xdp_hw_metadata selftest application:
-   $ sudo chrt -f 99 ./xdp_hw_metadata enp2s0 -l 500000 -L 1 > \
-     /dev/shm/result.log
+   843	
+   844	int ice_drop_vf_tx_lldp(struct ice_vsi *vsi, bool init)
+   845	{
+   846		struct ice_rule_query_data rule_added;
+   847		struct ice_adv_rule_info rinfo = {
+ > 848			.sw_act = {
+   849				.fltr_act = ICE_DROP_PACKET,
+   850				.flag = ICE_FLTR_TX,
+   851			},
+   852			.priority = 7,
+   853			.flags_info.act_valid = true,
+   854			.sw_act.src = vsi->idx,
+   855			.src_vsi = vsi->idx,
+   856			.sw_act.vsi_handle = vsi->idx,
+   857		};
+   858		struct ice_adv_lkup_elem list[3];
+   859		struct ice_pf *pf = vsi->back;
+   860		int err;
+   861	
+   862		if (!init && !vsi->vf->lldp_tx_ena)
+   863			return 0;
+   864	
+   865		ice_rule_add_direction_metadata(&list[0]);
+   866		ice_rule_add_src_vsi_metadata(&list[1]);
+   867		list[2].type = ICE_ETYPE_OL;
+   868		list[2].h_u.ethertype.ethtype_id = htons(ETH_P_LLDP);
+   869		list[2].m_u.ethertype.ethtype_id = htons(0xFFFF);
+   870	
+   871		err = ice_add_adv_rule(&pf->hw, list, ARRAY_SIZE(list), &rinfo,
+   872				       &rule_added);
+   873		if (err) {
+   874			dev_err(&pf->pdev->dev,
+   875				"Failed to add an LLDP rule to VSI 0x%X: %d\n",
+   876				vsi->idx, err);
+   877		} else {
+   878			vsi->vf->lldp_recipe_id = rule_added.rid;
+   879			vsi->vf->lldp_rule_id = rule_added.rule_id;
+   880			vsi->vf->lldp_tx_ena = false;
+   881		}
+   882	
+   883		return err;
+   884	}
+   885	
 
-2. On the Link Partner, send 1000 UDP packets with a 10 ms interval and
-   VLAN priority 1 to port 9091 of the DUT.
-
-Result:
-When the launch time is set to 500 us in the future, the average delta
-between the launch time and the transmit hardware timestamp is 0.016 us,
-as shown in the analysis of /dev/shm/result.log below. The XDP launch time
-works correctly in sending 1000 packets continuously.
-  Min delta: 0.005 us
-  Avr delta: 0.016 us
-  Max delta: 0.031 us
-  Total packets forwarded: 1000
-
-Signed-off-by: Song Yoong Siang <yoong.siang.song@intel.com>
----
- drivers/net/ethernet/intel/igc/igc.h      |  1 +
- drivers/net/ethernet/intel/igc/igc_main.c | 52 ++++++++++++++++++++++-
- 2 files changed, 51 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index b8111ad9a9a8..cd1d7b6c1782 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -579,6 +579,7 @@ struct igc_metadata_request {
- 	struct xsk_tx_metadata *meta;
- 	struct igc_ring *tx_ring;
- 	u32 cmd_type;
-+	u16 used_desc;
- };
- 
- struct igc_q_vector {
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 553d6d82af0d..a4ec487da701 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -2954,9 +2954,39 @@ static u64 igc_xsk_fill_timestamp(void *_priv)
- 	return *(u64 *)_priv;
- }
- 
-+static void igc_xsk_request_launch_time(u64 launch_time, void *_priv)
-+{
-+	struct igc_metadata_request *meta_req = _priv;
-+	struct igc_ring *tx_ring = meta_req->tx_ring;
-+	__le32 launch_time_offset;
-+	bool insert_empty = false;
-+	bool first_flag = false;
-+
-+	if (!tx_ring->launchtime_enable)
-+		return;
-+
-+	launch_time_offset = igc_tx_launchtime(tx_ring,
-+					       ns_to_ktime(launch_time),
-+					       &first_flag, &insert_empty);
-+	if (insert_empty) {
-+		igc_insert_empty_packet(tx_ring);
-+		meta_req->tx_buffer =
-+			&tx_ring->tx_buffer_info[tx_ring->next_to_use];
-+		/* Inserting an empty packet requires two descriptors:
-+		 * one data descriptor and one context descriptor.
-+		 */
-+		meta_req->used_desc += 2;
-+	}
-+
-+	/* Use one context descriptor to specify launch time and first flag. */
-+	igc_tx_ctxtdesc(tx_ring, launch_time_offset, first_flag, 0, 0, 0);
-+	meta_req->used_desc += 1;
-+}
-+
- const struct xsk_tx_metadata_ops igc_xsk_tx_metadata_ops = {
- 	.tmo_request_timestamp		= igc_xsk_request_timestamp,
- 	.tmo_fill_timestamp		= igc_xsk_fill_timestamp,
-+	.tmo_request_launch_time	= igc_xsk_request_launch_time,
- };
- 
- static void igc_xdp_xmit_zc(struct igc_ring *ring)
-@@ -2979,7 +3009,13 @@ static void igc_xdp_xmit_zc(struct igc_ring *ring)
- 	ntu = ring->next_to_use;
- 	budget = igc_desc_unused(ring);
- 
--	while (xsk_tx_peek_desc(pool, &xdp_desc) && budget--) {
-+	/* Packets with launch time require one data descriptor and one context
-+	 * descriptor. When the launch time falls into the next Qbv cycle, we
-+	 * may need to insert an empty packet, which requires two more
-+	 * descriptors. Therefore, to be safe, we always ensure we have at least
-+	 * 4 descriptors available.
-+	 */
-+	while (xsk_tx_peek_desc(pool, &xdp_desc) && budget >= 4) {
- 		struct igc_metadata_request meta_req;
- 		struct xsk_tx_metadata *meta = NULL;
- 		struct igc_tx_buffer *bi;
-@@ -3000,9 +3036,19 @@ static void igc_xdp_xmit_zc(struct igc_ring *ring)
- 		meta_req.tx_ring = ring;
- 		meta_req.tx_buffer = bi;
- 		meta_req.meta = meta;
-+		meta_req.used_desc = 0;
- 		xsk_tx_metadata_request(meta, &igc_xsk_tx_metadata_ops,
- 					&meta_req);
- 
-+		/* xsk_tx_metadata_request() may have updated next_to_use */
-+		ntu = ring->next_to_use;
-+
-+		/* xsk_tx_metadata_request() may have updated Tx buffer info */
-+		bi = meta_req.tx_buffer;
-+
-+		/* xsk_tx_metadata_request() may use a few descriptors */
-+		budget -= meta_req.used_desc;
-+
- 		tx_desc = IGC_TX_DESC(ring, ntu);
- 		tx_desc->read.cmd_type_len = cpu_to_le32(meta_req.cmd_type);
- 		tx_desc->read.olinfo_status = cpu_to_le32(olinfo_status);
-@@ -3020,9 +3066,11 @@ static void igc_xdp_xmit_zc(struct igc_ring *ring)
- 		ntu++;
- 		if (ntu == ring->count)
- 			ntu = 0;
-+
-+		ring->next_to_use = ntu;
-+		budget--;
- 	}
- 
--	ring->next_to_use = ntu;
- 	if (tx_desc) {
- 		igc_flush_tx_descriptors(ring);
- 		xsk_tx_release(pool);
 -- 
-2.34.1
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
