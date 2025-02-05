@@ -1,67 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 93551A2875A
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Feb 2025 11:05:57 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 092EEA2875D
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Feb 2025 11:06:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 513134199F;
-	Wed,  5 Feb 2025 10:05:55 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 45A29610B1;
+	Wed,  5 Feb 2025 10:06:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uur9zOESKUjc; Wed,  5 Feb 2025 10:05:54 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id EKTImmMauYe2; Wed,  5 Feb 2025 10:06:01 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5DA9B417C7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 86F6060FA9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1738749954;
-	bh=oNz0gm6s9Y1Y/1K5KRe9biL7hupOBSfqXQtcebOru1s=;
+	s=default; t=1738749961;
+	bh=L663zWHJAJ0zSwFRe0E4kjWKNAWHc7L/2kdkPLFx/qk=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=Otoc2+E7uo46/3zjAiTNUN+u7Cfz6pAb59BGtonMUE94kQED1rujnlBS+jjkyjNTd
-	 iPDUwBooconlo7uk7cKoOGG8uVgWVww+RP2ohpYli8LuLU0scu7AZXLuTkhOwZDkNX
-	 ff04U/9fpBgmSyqb4ScHlrzXoa9or7jHD7pQ4Juv6ifd9/DwvuCB/2jjfhMLMdEZ0z
-	 YcXrp+Hy5KkogzqubIGGsM4z0In0uFxQS4qRh0ittQIIqAok1SmKrBwPa+90TOzVJr
-	 9emONJfh32tSzxx5qcD4UVXlJyKDY2ApT3N2ap2dea7r52YPChGKOJbjyjwur/tTW6
-	 8Axc3ayyrA6Kg==
+	b=yTzzCbxavv2Jwh/d6N7Cpr4fOVQTZpfN2whFDRKm2ZK8iB9jFGCk5CYIqjwpSmz1Z
+	 lWs2Lboxv7RynXKMhKX9TCaerkv22ILKdTS48D9wjih9wgFYyC6N2SogMVNwILv1wI
+	 m1UbTxd4X/4HKya/pu5ihl/WcOA7NDV4VdxesQoloIFyT0RBZ8QjN3ZhMA7xToaz+m
+	 bRNc1KU4ALR+WkGJTIgK7bkokgfmtU20AWZxpnIn53pGgzP3zgvsfpSULzCtHvowgn
+	 agRx+xgnEeo7j16bi7MhvHf5kYMhrTpZQl1BpM5YUCVhRL2Fy/KapCVu0GsWp839YT
+	 KlqNDeRjnn1xg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5DA9B417C7;
-	Wed,  5 Feb 2025 10:05:54 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 86F6060FA9;
+	Wed,  5 Feb 2025 10:06:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 4F58512A
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Feb 2025 10:05:52 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 0FCCF12A
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Feb 2025 10:06:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 32AEA417C3
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Feb 2025 10:05:52 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id F357A419BC
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Feb 2025 10:05:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YujFdE8K9eje for <intel-wired-lan@lists.osuosl.org>;
- Wed,  5 Feb 2025 10:05:51 +0000 (UTC)
+ id wrJCDRrGY0Ej for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  5 Feb 2025 10:05:59 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
  helo=mgamail.intel.com; envelope-from=faizal.abdul.rahim@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4E5D0417C7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4E5D0417C7
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D8DDC417BE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D8DDC417BE
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4E5D0417C7
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Feb 2025 10:05:51 +0000 (UTC)
-X-CSE-ConnectionGUID: zvqx17MsTwmn6WD42m3ylw==
-X-CSE-MsgGUID: sxzSa4RwRv+zwh9zF/ys5w==
-X-IronPort-AV: E=McAfee;i="6700,10204,11336"; a="39204690"
-X-IronPort-AV: E=Sophos;i="6.13,261,1732608000"; d="scan'208";a="39204690"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D8DDC417BE
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Feb 2025 10:05:58 +0000 (UTC)
+X-CSE-ConnectionGUID: iYURvN0rQ8y5x5G06ZZT8w==
+X-CSE-MsgGUID: ff3kq4azR+CA66H1lCrAGQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11336"; a="39204713"
+X-IronPort-AV: E=Sophos;i="6.13,261,1732608000"; d="scan'208";a="39204713"
 Received: from orviesa007.jf.intel.com ([10.64.159.147])
  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Feb 2025 02:05:51 -0800
-X-CSE-ConnectionGUID: DKnaiIsdSyiZZtLl/Q1jcw==
-X-CSE-MsgGUID: gWdDTOiKSIGZu+i0PIVjFQ==
+ 05 Feb 2025 02:05:59 -0800
+X-CSE-ConnectionGUID: w4+X2uWMRSiBqd4c+mmb3g==
+X-CSE-MsgGUID: kprGnA/oS7Cxwm+v3SIPjw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="111297703"
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="111297712"
 Received: from mohdfai2-ilbpg12-1.png.intel.com ([10.88.227.73])
- by orviesa007.jf.intel.com with ESMTP; 05 Feb 2025 02:05:42 -0800
+ by orviesa007.jf.intel.com with ESMTP; 05 Feb 2025 02:05:51 -0800
 From: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
 To: Tony Nguyen <anthony.l.nguyen@intel.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
@@ -89,8 +89,8 @@ To: Tony Nguyen <anthony.l.nguyen@intel.com>,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
  linux-arm-kernel@lists.infradead.org, bpf@vger.kernel.org
-Date: Wed,  5 Feb 2025 05:05:17 -0500
-Message-Id: <20250205100524.1138523-3-faizal.abdul.rahim@linux.intel.com>
+Date: Wed,  5 Feb 2025 05:05:18 -0500
+Message-Id: <20250205100524.1138523-4-faizal.abdul.rahim@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250205100524.1138523-1-faizal.abdul.rahim@linux.intel.com>
 References: <20250205100524.1138523-1-faizal.abdul.rahim@linux.intel.com>
@@ -98,25 +98,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1738749952; x=1770285952;
+ t=1738749959; x=1770285959;
  h=from:to:subject:date:message-id:in-reply-to:references:
  mime-version:content-transfer-encoding;
- bh=y/vg46vRn1lgg6h2OUWs7r6Zp75W28a+qluOoO9J7Nk=;
- b=izOHR3o192UIFmUe6H8CzJsWoBwK9bpPI6rB1LiL3yacuiI29UZhgKIa
- Yhx6F0xxdB36Cgz2zfo8vp287gMw7DJxRCK0zVHYJr3kn7PKrqEW8L5aD
- RV90oAIoSBERccB4C6sefuGbTrQoymmdD722m60SliU2r7lUe47784CZO
- AkDQIuhWVwrjvKEWuXGm6CPhewVN9jr1hNRJlLYPeHZQEP0RbnJZcnUST
- lfLhRSpKZEV7nSc95AQI5o5M2ulzFlqjdiNsRsdBvcuu+jH0QiAWSs+4x
- 0o88RrdyL2ayHpYQyFy2uD+DQV5SiXpEyqJ/12foTVzKwQt7TFEFnwTOr
+ bh=0OdUdx+lahN2+LUJ2jOFDFj83SCLzyn+8zKWv0oeisM=;
+ b=PdzDGmu2Gdg2ISe+844STd0FKAxPRuJ6NE03n2XE8N0cT1M/baOBRrMQ
+ kZNuqBWDLgMZMQfOlnQJn0qPjCZmbgPw2SuxoQo477LZD9k8BsT4idKlE
+ vCZQ+9VOUW28pMyIE83JBlvURJZAugv+x/2dsmafPtJUbH4QYonwdEm4q
+ 5bpGlt3Z3B3VEmtMo3AUpLLvAIydrMLVEVNIJHP042uPYYStAIJ4n4WZw
+ p/nQPChmWXQ51I6hPSu9YbJv7rl8D2V0KC6/XAyG4gSRLr7N/6RKjxjQi
+ n7B0m/Iv7gtO63yMMAh5l/Q1q7v0nCGbFbDJERI0KfnD79PVHsJlOIe6v
  Q==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=izOHR3o1
-Subject: [Intel-wired-lan] [PATCH iwl-next v2 2/9] igc: Rename
- xdp_get_tx_ring() for non-xdp usage
+ header.a=rsa-sha256 header.s=Intel header.b=PdzDGmu2
+Subject: [Intel-wired-lan] [PATCH iwl-next v2 3/9] igc: Optimize the TX
+ packet buffer utilization
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -132,70 +132,30 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Renamed xdp_get_tx_ring() function to a more generic name for use in
-upcoming frame preemption patches.
+Packet buffers (RX + TX) total 64KB. Neither RX or TX buffers can be
+larger than 34KB. So divide the buffer equally, 32KB for each.
 
+Co-developed-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 Signed-off-by: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc.h      |  2 +-
- drivers/net/ethernet/intel/igc/igc_main.c | 10 +++++-----
- 2 files changed, 6 insertions(+), 6 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_defines.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index b8111ad9a9a8..22ecdac26cf4 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -736,7 +736,7 @@ struct igc_nfc_rule *igc_get_nfc_rule(struct igc_adapter *adapter,
- 				      u32 location);
- int igc_add_nfc_rule(struct igc_adapter *adapter, struct igc_nfc_rule *rule);
- void igc_del_nfc_rule(struct igc_adapter *adapter, struct igc_nfc_rule *rule);
--
-+struct igc_ring *igc_get_tx_ring(struct igc_adapter *adapter, int cpu);
- void igc_ptp_init(struct igc_adapter *adapter);
- void igc_ptp_reset(struct igc_adapter *adapter);
- void igc_ptp_suspend(struct igc_adapter *adapter);
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 56a35d58e7a6..44e4f925491f 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -2444,8 +2444,8 @@ static int igc_xdp_init_tx_descriptor(struct igc_ring *ring,
- 	return -ENOMEM;
- }
+diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+index 8e449904aa7d..516ef70c98e9 100644
+--- a/drivers/net/ethernet/intel/igc/igc_defines.h
++++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+@@ -400,7 +400,8 @@
+ #define I225_TXPBSIZE_DEFAULT	0x04000014 /* TXPBSIZE default */
+ #define IGC_RXPBS_CFG_TS_EN	0x80000000 /* Timestamp in Rx buffer */
  
--static struct igc_ring *igc_xdp_get_tx_ring(struct igc_adapter *adapter,
--					    int cpu)
-+struct igc_ring *igc_get_tx_ring(struct igc_adapter *adapter,
-+				 int cpu)
- {
- 	int index = cpu;
+-#define IGC_TXPBSIZE_TSN	0x04145145 /* 5k bytes buffer for each queue */
++ /* 7KB bytes buffer for each tx queue (total 4 queues) + 4KB for BMC*/
++#define IGC_TXPBSIZE_TSN	0x041c71c7
  
-@@ -2469,7 +2469,7 @@ static int igc_xdp_xmit_back(struct igc_adapter *adapter, struct xdp_buff *xdp)
- 	if (unlikely(!xdpf))
- 		return -EFAULT;
- 
--	ring = igc_xdp_get_tx_ring(adapter, cpu);
-+	ring = igc_get_tx_ring(adapter, cpu);
- 	nq = txring_txq(ring);
- 
- 	__netif_tx_lock(nq, cpu);
-@@ -2546,7 +2546,7 @@ static void igc_finalize_xdp(struct igc_adapter *adapter, int status)
- 	struct igc_ring *ring;
- 
- 	if (status & IGC_XDP_TX) {
--		ring = igc_xdp_get_tx_ring(adapter, cpu);
-+		ring = igc_get_tx_ring(adapter, cpu);
- 		nq = txring_txq(ring);
- 
- 		__netif_tx_lock(nq, cpu);
-@@ -6699,7 +6699,7 @@ static int igc_xdp_xmit(struct net_device *dev, int num_frames,
- 	if (unlikely(flags & ~XDP_XMIT_FLAGS_MASK))
- 		return -EINVAL;
- 
--	ring = igc_xdp_get_tx_ring(adapter, cpu);
-+	ring = igc_get_tx_ring(adapter, cpu);
- 	nq = txring_txq(ring);
- 
- 	__netif_tx_lock(nq, cpu);
+ #define IGC_DTXMXPKTSZ_TSN	0x19 /* 1600 bytes of max TX DMA packet size */
+ #define IGC_DTXMXPKTSZ_DEFAULT	0x98 /* 9728-byte Jumbo frames */
 -- 
 2.34.1
 
