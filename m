@@ -1,74 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 55B3FA2A294
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Feb 2025 08:45:27 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D5B5A2A2AC
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Feb 2025 08:54:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 03A316113B;
-	Thu,  6 Feb 2025 07:45:26 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BDFA480B7D;
+	Thu,  6 Feb 2025 07:54:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id P0AjW88ZM81D; Thu,  6 Feb 2025 07:45:25 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id h4pcvGFWEH_u; Thu,  6 Feb 2025 07:54:04 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B5A4161132
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 539DB80874
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1738827924;
-	bh=wYlO8mLmHs2WR1knSF9V9qCBQssc9Wz3/pXDatabPEg=;
+	s=default; t=1738828444;
+	bh=E32q9sCzKFsEBNLA7GuqOdJyJYZUmkx/8BQTWKWxzq8=;
 	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=8xkr7LwVUMmXK9wx/BpCXzc1CDw/ixyd4SNsTLjNoPpNpWS2KLCZEXlGQdXrSSF+C
-	 RT3ksiybKcPdIgU2teTYk8ds0HHGOGLyLunarD7eNZq6cOsiu8Gc4rAThxhf2CvXNh
-	 xwyruF7DihVMCj9Y2wnMKkJzHgZkv8en6Tb7ZYLtEWyMMu5LbpVKP46WZc9znNgc/4
-	 4fRhAwYIgMg/1tl27Lg4TT3gW2TTS0ZANYK3YX1EInoXNukOa0SsTSnnSiXI4DPF+H
-	 aMuJDBoHqwtfwC5Z8eMV45+FHG6mkHdtoHKQZagBFaXziByUTUmiqbn7owID+stbeb
-	 nJkzPNFpYy0Rw==
+	b=WFrO2kvCJJtbR2xcfUrPybs5juStLJLWQgHhNt+uo3A0q8mjwFabE8C9eeXIqWJFg
+	 VTg8nc82hLJMDrxLNRMK7iv+KVC0G6oI7dFagKCMTroAX7hak2eWMgmQw1docabzdP
+	 JtjlRKOYEyRM1cSHqQKtPUNM38ZdpVZ+K77kThCMQwg029o0AjB4vWHyrxDxTCOc2H
+	 +GNmK5VST2hfPEhxq92tQP3KnE/iYbkBnhea8L8Ck8H4uChSz99ZPm+sFCadRZ76Kx
+	 E+bDXHLZAlJX7LBIPhGi9S+npiiXVKWc7zuRrBfomk08G6vOyNaXLbWH0UXfZNZTf0
+	 IgdrrjJPvfmcQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B5A4161132;
-	Thu,  6 Feb 2025 07:45:24 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 539DB80874;
+	Thu,  6 Feb 2025 07:54:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 2B0751B4
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 07:45:22 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 27EA8CF
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 07:54:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1ACB54127F
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 07:45:22 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 094904127F
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 07:54:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0EPILmVqU327 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  6 Feb 2025 07:45:21 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=147.75.193.91;
- helo=nyc.source.kernel.org; envelope-from=jirislaby@kernel.org;
+ id hyH2q6PgkOyk for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  6 Feb 2025 07:54:01 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=jirislaby@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org AD27F405FB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AD27F405FB
-Received: from nyc.source.kernel.org (nyc.source.kernel.org [147.75.193.91])
- by smtp2.osuosl.org (Postfix) with ESMTPS id AD27F405FB
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 07:45:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C3E9B405FB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C3E9B405FB
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C3E9B405FB
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 07:54:00 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id 6B87FA43E7B;
- Thu,  6 Feb 2025 07:43:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E9D3AC4CEDD;
- Thu,  6 Feb 2025 07:45:16 +0000 (UTC)
-Message-ID: <c66c2aa1-62fd-4da8-b69e-a845ab955851@kernel.org>
-Date: Thu, 6 Feb 2025 08:45:14 +0100
+ by dfw.source.kernel.org (Postfix) with ESMTP id D2CD05C03C1;
+ Thu,  6 Feb 2025 07:53:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF622C4CEDD;
+ Thu,  6 Feb 2025 07:53:56 +0000 (UTC)
+Message-ID: <4950e61a-189f-4749-baf7-454ca2cce250@kernel.org>
+Date: Thu, 6 Feb 2025 08:53:55 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-To: Simon Horman <horms@kernel.org>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, Tony Nguyen
- <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
- Konrad Knitter <konrad.knitter@intel.com>,
+To: David Laight <david.laight.linux@gmail.com>,
+ Simon Horman <horms@kernel.org>
+Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ netdev@vger.kernel.org, Konrad Knitter <konrad.knitter@intel.com>,
  Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
  Qiuxu Zhuo <qiuxu.zhuo@intel.com>,
  Linus Torvalds <torvalds@linux-foundation.org>, Kees Cook <kees@kernel.org>,
  Nick Desaulniers <nick.desaulniers@gmail.com>
 References: <20250205104252.30464-2-przemyslaw.kitszel@intel.com>
- <20250205204546.GM554665@kernel.org>
+ <20250205204546.GM554665@kernel.org> <20250205225619.31af041c@pumpkin>
 Content-Language: en-US
 From: Jiri Slaby <jirislaby@kernel.org>
 Autocrypt: addr=jirislaby@kernel.org; keydata=
@@ -113,26 +113,25 @@ Autocrypt: addr=jirislaby@kernel.org; keydata=
  f/bIWIr0cqQmqQ33FgRhrG1+Xml6UXyJ2jExmlO8JljuOGeXYh6ZkIEyzqzffzBLXZCujlYQ
  DFXpyMNVJ2ZwPmX2mWEoYuaBU0JN7wM+/zWgOf2zRwhEuD3A2cO2PxoiIfyUEfB9SSmffaK/
  S4xXoB6wvGENZ85Hg37C7WDNdaAt6Xh2uQIly5grkgvWppkNy4ZHxE+jeNsU7tg=
-In-Reply-To: <20250205204546.GM554665@kernel.org>
+In-Reply-To: <20250205225619.31af041c@pumpkin>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1738827919;
- bh=BT3Xj2lQU4/CMYnebLcZtcHV78BN7hYLOTmT/oMW4TY=;
+ d=kernel.org; s=k20201202; t=1738828439;
+ bh=qVbmRl3cdmmI1b8t2RCDUnEVbUnVsISBeIGbzapT6ps=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=WC0N7uIw+MoNkbJpy9osVf0ANA8n98/2M/PxHW9Yuo9nw1Be2VU8JzRcisxS4jCL2
- 9krjJWqEKx4bBsq8g5ICuZJytWBcUt80us79hoUKtYi9rHCGY6KLnZZhazaFyNZCsi
- 8A3xyjnnCbYL4G2lnXsKK4s0PaT8EHnze8tqOMf+s4v+zD9MwMiE3z8aGeJ6F+raD9
- /nPskkzWeIkxktA4EFu+lKUW8GASTzb6g3WvVCF4asVGEJGFSbkR0C42DL0MDOj/Ma
- 05sEQIQgvfprusqGkm/uqnBG00rTUC8HPrSnA3DLRslWzzgDMKFBkmCfxiuRLpY+pg
- 8ZZDD/N8gzoKg==
+ b=OON7aS8dnpRLLpRzCL5b5SVUR3oLGzWTqkr3cb0zrUx21GoMipT1qq0xEy409+kyy
+ XzIxmxd6zbgUxYzV8oLuE0bkTkdcROc8DDgwT8TYFLPD+w7itHjD3YKHyamGAfFwRU
+ dw0+I7neEzKdrw4URHRzR3mRpjCju9os7x0Fy62vu54SsQF4PQywo4YPF02ALPiiJi
+ VZ491JXTQ9gGy7hkBhTbpJgBIiFwy9n8JbwvQr3i7D+2xZtZxJLOSPPpKQ8P72hP1+
+ BIhdb8tBMeP85ZrdmZ5e9uxthQzqMmxJNIkAmu50Sql0h7apNfnbE6M7nXNfxcWQIH
+ y31nbtl2+uotA==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=WC0N7uIw
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=OON7aS8d
 Subject: Re: [Intel-wired-lan] [PATCH iwl-net] ice: health.c: fix
  compilation on gcc 7.5
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -150,71 +149,71 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 05. 02. 25, 21:45, Simon Horman wrote:
-> + Jiri
+On 05. 02. 25, 23:56, David Laight wrote:
+> On Wed, 5 Feb 2025 20:45:46 +0000
+> Simon Horman <horms@kernel.org> wrote:
 > 
-> On Wed, Feb 05, 2025 at 11:42:12AM +0100, Przemek Kitszel wrote:
->> GCC 7 is not as good as GCC 8+ in telling what is a compile-time const,
->> and thus could be used for static storage. So we could not use variables
->> for that, no matter how much "const" keyword is sprinkled around.
+>> + Jiri
 >>
->> Excerpt from the report:
->> My GCC is: gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0.
+>> On Wed, Feb 05, 2025 at 11:42:12AM +0100, Przemek Kitszel wrote:
+>>> GCC 7 is not as good as GCC 8+ in telling what is a compile-time const,
+>>> and thus could be used for static storage. So we could not use variables
+>>> for that, no matter how much "const" keyword is sprinkled around.
+>>>
+>>> Excerpt from the report:
+>>> My GCC is: gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0.
+>>>
+>>>    CC [M]  drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.o
+>>> drivers/net/ethernet/intel/ice/devlink/health.c:35:3: error: initializer element is not constant
+>>>     ice_common_port_solutions, {ice_port_number_label}},
+>>>     ^~~~~~~~~~~~~~~~~~~~~~~~~
+>>> drivers/net/ethernet/intel/ice/devlink/health.c:35:3: note: (near initialization for 'ice_health_status_lookup[0].solution')
+>>> drivers/net/ethernet/intel/ice/devlink/health.c:35:31: error: initializer element is not constant
+>>>     ice_common_port_solutions, {ice_port_number_label}},
+>>>                                 ^~~~~~~~~~~~~~~~~~~~~
+>>> drivers/net/ethernet/intel/ice/devlink/health.c:35:31: note: (near initialization for 'ice_health_status_lookup[0].data_label[0]')
+>>> drivers/net/ethernet/intel/ice/devlink/health.c:37:46: error: initializer element is not constant
+>>>     "Change or replace the module or cable.", {ice_port_number_label}},
+>>>                                                ^~~~~~~~~~~~~~~~~~~~~
+>>> drivers/net/ethernet/intel/ice/devlink/health.c:37:46: note: (near initialization for 'ice_health_status_lookup[1].data_label[0]')
+>>> drivers/net/ethernet/intel/ice/devlink/health.c:39:3: error: initializer element is not constant
+>>>     ice_common_port_solutions, {ice_port_number_label}},
+>>>     ^~~~~~~~~~~~~~~~~~~~~~~~~
+>>>
+>>> Fixes: 85d6164ec56d ("ice: add fw and port health reporters")
+>>> Reported-by: Qiuxu Zhuo <qiuxu.zhuo@intel.com>
+>>> Closes: https://lore.kernel.org/netdev/CY8PR11MB7134BF7A46D71E50D25FA7A989F72@CY8PR11MB7134.namprd11.prod.outlook.com
+>>> Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+>>> ---
+>>> I would really like to bump min gcc to 8.5 (RH 8 family),
+>>> instead of supporting old Ubuntu. However SLES 15 is also stuck with gcc 7.5 :(
+>>>
+>>> CC: Linus Torvalds <torvalds@linux-foundation.org>
+>>> CC: Kees Cook <kees@kernel.org>
+>>> CC: Nick Desaulniers <nick.desaulniers@gmail.com>
 >>
->>    CC [M]  drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.o
->> drivers/net/ethernet/intel/ice/devlink/health.c:35:3: error: initializer element is not constant
->>     ice_common_port_solutions, {ice_port_number_label}},
->>     ^~~~~~~~~~~~~~~~~~~~~~~~~
->> drivers/net/ethernet/intel/ice/devlink/health.c:35:3: note: (near initialization for 'ice_health_status_lookup[0].solution')
->> drivers/net/ethernet/intel/ice/devlink/health.c:35:31: error: initializer element is not constant
->>     ice_common_port_solutions, {ice_port_number_label}},
->>                                 ^~~~~~~~~~~~~~~~~~~~~
->> drivers/net/ethernet/intel/ice/devlink/health.c:35:31: note: (near initialization for 'ice_health_status_lookup[0].data_label[0]')
->> drivers/net/ethernet/intel/ice/devlink/health.c:37:46: error: initializer element is not constant
->>     "Change or replace the module or cable.", {ice_port_number_label}},
->>                                                ^~~~~~~~~~~~~~~~~~~~~
->> drivers/net/ethernet/intel/ice/devlink/health.c:37:46: note: (near initialization for 'ice_health_status_lookup[1].data_label[0]')
->> drivers/net/ethernet/intel/ice/devlink/health.c:39:3: error: initializer element is not constant
->>     ice_common_port_solutions, {ice_port_number_label}},
->>     ^~~~~~~~~~~~~~~~~~~~~~~~~
+>> Hi Prezemek,
 >>
->> Fixes: 85d6164ec56d ("ice: add fw and port health reporters")
->> Reported-by: Qiuxu Zhuo <qiuxu.zhuo@intel.com>
->> Closes: https://lore.kernel.org/netdev/CY8PR11MB7134BF7A46D71E50D25FA7A989F72@CY8PR11MB7134.namprd11.prod.outlook.com
->> Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
->> ---
->> I would really like to bump min gcc to 8.5 (RH 8 family),
->> instead of supporting old Ubuntu. However SLES 15 is also stuck with gcc 7.5 :(
->>
->> CC: Linus Torvalds <torvalds@linux-foundation.org>
->> CC: Kees Cook <kees@kernel.org>
->> CC: Nick Desaulniers <nick.desaulniers@gmail.com>
+>> I ran into a similar problem not so long ago and I'm wondering if
+>> the following, based on a suggestion by Jiri Slaby, resolves your
+>> problem.
 > 
-> Hi Prezemek,
-> 
-> I ran into a similar problem not so long ago and I'm wondering if
-> the following, based on a suggestion by Jiri Slaby, resolves your
-> problem.
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/devlink/health.c b/drivers/net/ethernet/intel/ice/devlink/health.c
-> index ea40f7941259..19c3d37aa768 100644
-> --- a/drivers/net/ethernet/intel/ice/devlink/health.c
-> +++ b/drivers/net/ethernet/intel/ice/devlink/health.c
-> @@ -25,10 +25,10 @@ struct ice_health_status {
->    * The below lookup requires to be sorted by code.
->    */
->   
-> -static const char *const ice_common_port_solutions =
-> +static const char ice_common_port_solutions[] =
->   	"Check your cable connection. Change or replace the module or cable. Manually set speed and duplex.";
-> -static const char *const ice_port_number_label = "Port Number";
-> -static const char *const ice_update_nvm_solution = "Update to the latest NVM image.";
-> +static const char ice_port_number_label[] = "Port Number";
-> +static const char ice_update_nvm_solution[] = "Update to the latest NVM image.";
+> I'm sure I remember from somewhere that although the variables are
+> 'static const' they have to be real variables because they can still
+> be patched.
 
-Indeed, no reason to create an (unused) pointer.
+Not sure what you mean -- using macros, they placed the strings into 
+.rodata anyway.
 
-And no, don't use macros for strings.
+Mind the difference between:
+const char *X;
+char *const X;
+const char *const X;
+
+They are all different and allow different things (X++, (*X)++, nothing).
+
+Possibly, the problem above could be fixed by the third variant too, 
+IMO. But is ineffective (having generated an unused pointer).
 
 thanks,
 -- 
