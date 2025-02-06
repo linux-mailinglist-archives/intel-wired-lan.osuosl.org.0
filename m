@@ -1,97 +1,106 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A1A07A2A363
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Feb 2025 09:40:40 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2561AA2A3A6
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Feb 2025 09:54:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 54DDA611B1;
-	Thu,  6 Feb 2025 08:40:39 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id fUmCAZCKs2ca; Thu,  6 Feb 2025 08:40:38 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8EC0E611A8
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1738831238;
-	bh=2zrkN9NcfxnbkT8wapfsZFJVOftWB9npROxyLtNmxf0=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=DdyyOf4cx7sU7k+X56xOsyk4QT+qE994nUS5RhiiqQXWm0lCeQc4a6uFsowysxMoU
-	 UgkNqosAvbHXvwZEY7xKeldvCKDsCUZFvjxJzDrDdGty6a6dSbmc1hF0Li09uNIkUo
-	 wkGO6bnUVjvh5Mlq1RZFNkWuofgYYi6/vmiWdK0gYk8Ty3Da5pnZe6vG/X0ACz9daI
-	 2DbcqbKX78paoUPaW6VlK1ss1nGTkAa7OkXZa4PsWHhksPlk5CnVaq1gRF2izlQK3J
-	 izrhPL2R/B+Z2KFqVkRiA/6iKPKuTVgMS0EiwEMETobcY8CQUE0vS6npvDYDifRhqw
-	 MKhYkJDwL1nLA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8EC0E611A8;
-	Thu,  6 Feb 2025 08:40:38 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 8509712F
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 08:40:36 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 80FE283B2A
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 08:40:36 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BB6B483ED9;
+	Thu,  6 Feb 2025 08:54:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CJjTf0-uQEtM for <intel-wired-lan@lists.osuosl.org>;
- Thu,  6 Feb 2025 08:40:35 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
- helo=mgamail.intel.com; envelope-from=grzegorz.nitka@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org B2E82818D0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B2E82818D0
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id B2E82818D0
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 08:40:35 +0000 (UTC)
-X-CSE-ConnectionGUID: G1MupXWnSaqIa5zxDUfUZw==
-X-CSE-MsgGUID: V6rBZ+bJRbqkCrRsw00DjQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11336"; a="49667830"
-X-IronPort-AV: E=Sophos;i="6.13,264,1732608000"; d="scan'208";a="49667830"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
- by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Feb 2025 00:40:35 -0800
-X-CSE-ConnectionGUID: ZOFmWY+RRe6ycHGT+4prZQ==
-X-CSE-MsgGUID: SaGMQzDSQimmq6EgFQSWRQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,264,1732608000"; d="scan'208";a="110979404"
-Received: from gklab-003-001.igk.intel.com ([10.211.3.1])
- by fmviesa006.fm.intel.com with ESMTP; 06 Feb 2025 00:40:34 -0800
-From: Grzegorz Nitka <grzegorz.nitka@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  6 Feb 2025 09:36:55 +0100
-Message-Id: <20250206083655.3005151-4-grzegorz.nitka@intel.com>
-X-Mailer: git-send-email 2.39.3
-In-Reply-To: <20250206083655.3005151-1-grzegorz.nitka@intel.com>
-References: <20250206083655.3005151-1-grzegorz.nitka@intel.com>
+ id 2jDphnmxtEW3; Thu,  6 Feb 2025 08:54:55 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C4E3083ECA
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1738832094;
+	bh=MQL9LFhjTNompnXLAIwEZpR14J8/nXobkdIT6rj39Dg=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=Qzqxw3fx8P9+oicsdulrD0GZUlZ+1R1M7rBtmEDlGoHFbxB3CIFKzR2+jEAamyyvT
+	 aNd+lfwsjFGsihSV/hsojFAF5x+NbIeu/xggyIl31EXuZmwe3nicVMNFGpw9iCgsE5
+	 U5OCZNfl1vNsuxPE5d+Um9An8Aq/S7J6u3nhsfyXDAXF/5uVo1ujxEtDukD9ojimGk
+	 2hge8CdMssrkWOlzkSJqJgIYIWOL/hbN1eIFw9CT1fgqq3mNL8qEPSgncmlGd1D9zX
+	 1iB9qTCRzcTWrqKwRN8QAGI4wQ2voUU7r8lNJ1L7fr1QI2Afj+JROkXnGQUx6p4xz3
+	 uW3kszpEavl9g==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id C4E3083ECA;
+	Thu,  6 Feb 2025 08:54:54 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 2AA7F1B4
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 08:54:52 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1A5AF4133A
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 08:54:52 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id AkM0RMCnpy7G for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  6 Feb 2025 08:54:51 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
+ envelope-from=leon@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org D325F41337
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D325F41337
+Received: from nyc.source.kernel.org (nyc.source.kernel.org
+ [IPv6:2604:1380:45d1:ec00::3])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D325F41337
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 08:54:50 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by nyc.source.kernel.org (Postfix) with ESMTP id 5658FA43F55;
+ Thu,  6 Feb 2025 08:53:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5944CC4CEDD;
+ Thu,  6 Feb 2025 08:54:48 +0000 (UTC)
+Date: Thu, 6 Feb 2025 10:54:43 +0200
+From: Leon Romanovsky <leon@kernel.org>
+To: Bharat Bhushan <bharatb.linux@gmail.com>
+Cc: Steffen Klassert <steffen.klassert@secunet.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, Ayush Sawal <ayush.sawal@chelsio.com>,
+ Bharat Bhushan <bbhushan2@marvell.com>, Eric Dumazet <edumazet@google.com>,
+ Geetha sowjanya <gakula@marvell.com>, hariprasad <hkelam@marvell.com>,
+ Herbert Xu <herbert@gondor.apana.org.au>,
+ intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
+ Jay Vosburgh <jv@jvosburgh.net>, Jonathan Corbet <corbet@lwn.net>,
+ linux-doc@vger.kernel.org, linux-rdma@vger.kernel.org,
+ Louis Peens <louis.peens@corigine.com>, netdev@vger.kernel.org,
+ oss-drivers@corigine.com, Paolo Abeni <pabeni@redhat.com>,
+ Potnuri Bharat Teja <bharat@chelsio.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Saeed Mahameed <saeedm@nvidia.com>,
+ Subbaraya Sundeep <sbhatta@marvell.com>,
+ Sunil Goutham <sgoutham@marvell.com>, Tariq Toukan <tariqt@nvidia.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Ilia Lin <ilia.lin@kernel.org>
+Message-ID: <20250206085443.GO74886@unreal>
+References: <cover.1738778580.git.leon@kernel.org>
+ <e536ca28cd1686dfbb613de7ccfc01fbe5a734e4.1738778580.git.leon@kernel.org>
+ <CAAeCc_kfRt8LhKgRmLsaaSmJs94hjH85DxCjEnJA6OQc5S5XXw@mail.gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAAeCc_kfRt8LhKgRmLsaaSmJs94hjH85DxCjEnJA6OQc5S5XXw@mail.gmail.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1738831236; x=1770367236;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=rbLKv3hBZ+Wj7dmSl35OqyyYsnCfZZUSpGDd5rBfwPw=;
- b=RxJ1yMHCrXDERp++ioSp5Rhuo+mwxfDxcJAjrXZYlvT0gwyWustbTO6X
- EPSOsbh1DKRDv6AxeEe1DJ3tqbQ34nxMy8XaTy5lpVYdBze0rxbv0a2zp
- FNRXvbEHHjEelqNNmQXoN5BWydmQ2FTia1GH1ELOnZJXH+owvfDMO8NSH
- 3xmBGBqBwXiYNuFcMCew/FUyhTxtpjK44cuwwshZd/lyg957D9xk6PItM
- jeLtpSY7Wj8gze5lqFC2fQFnjVX6s86OpbaAi6N/Ii6Zoi8rcdSSYsruM
- PCtVysSSL0MEaLROAdPqkO/GNjrcBUIv3eSwIFZOqKI1LAkrYnXdybPfk
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=RxJ1yMHC
-Subject: [Intel-wired-lan] [PATCH iwl-next v1 3/3] ice: E825C PHY register
- cleanup
+ d=kernel.org; s=k20201202; t=1738832089;
+ bh=yULdxGqmQ06JbHuTh2NwOIHtkfoYPeXquDIDEV+zq3A=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Wiu/wDulu4gSCxASFwwD1coOYNpze48vT261YPsNdXwWfAtCOALgHZHXBNL+crSLH
+ iGotaThdawnMRYinh/yaO/wm9kInQAifQaDwIu4+EROEmHS9rRFaMuAIjA4t5HjAv/
+ KUGlw5pT+cgpcQGJw4pqHQZgCI5Rst/1Rgp/GSEYnxXAwyM0HS+aMRoTVzTG+DO9yM
+ edZjU/8A8vCz2ntZxkRN+oXActOuYAXlENKVCsR6HxOkNUSERw1irTJRDvG0PJ57Wr
+ hxDREJBYp0BlTflvZGI8439Ne0nKKUG0TJI9DfrIFxYcM+LOPmLRauyv1oAVewMNF6
+ tUcfZMfg2pPFQ==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=Wiu/wDul
+Subject: Re: [Intel-wired-lan] [PATCH ipsec-next 1/5] xfrm: delay
+ initialization of offload path till its actually requested
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,89 +113,151 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Karol Kolacinski <karol.kolacinski@intel.com>,
- anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Karol Kolacinski <karol.kolacinski@intel.com>
+On Thu, Feb 06, 2025 at 02:16:08PM +0530, Bharat Bhushan wrote:
+> Hi Leon,
+> 
+> On Wed, Feb 5, 2025 at 11:50 PM Leon Romanovsky <leon@kernel.org> wrote:
+> >
+> > From: Leon Romanovsky <leonro@nvidia.com>
+> >
+> > XFRM offload path is probed even if offload isn't needed at all. Let's
+> > make sure that x->type_offload pointer stays NULL for such path to
+> > reduce ambiguity.
+> >
+> > Fixes: 9d389d7f84bb ("xfrm: Add a xfrm type offload.")
+> > Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
+> > ---
+> >  include/net/xfrm.h     | 12 +++++++++++-
+> >  net/xfrm/xfrm_device.c | 14 +++++++++-----
+> >  net/xfrm/xfrm_state.c  | 22 +++++++++-------------
+> >  net/xfrm/xfrm_user.c   |  2 +-
+> >  4 files changed, 30 insertions(+), 20 deletions(-)
 
-Minor PTP register refactor, including logical grouping E825C 1-step
-timestamping registers. Remove unused register definitions
-(PHY_REG_GPCS_BITSLIP, PHY_REG_REVISION).
-Also, apply preferred GENMASK macro (instead of ICE_M) for register
-fields definition affected by this patch.
+<...>
 
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
-Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h | 31 ++++++++++-----------
- 1 file changed, 14 insertions(+), 17 deletions(-)
+> > +       x->type_offload = xfrm_get_type_offload(x->id.proto, x->props.family);
+> > +       if (!x->type_offload) {
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-index 63a63ef64aaa..6ca1561ec5e8 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-@@ -783,36 +783,19 @@ static inline bool ice_is_dual(struct ice_hw *hw)
- #define PHY_MAC_XIF_TS_SFD_ENA_M	ICE_M(0x1, 20)
- #define PHY_MAC_XIF_GMII_TS_SEL_M	ICE_M(0x1, 21)
- 
--/* GPCS config register */
--#define PHY_GPCS_CONFIG_REG0		0x268
--#define PHY_GPCS_CONFIG_REG0_TX_THR_M	ICE_M(0xF, 24)
--#define PHY_GPCS_BITSLIP		0x5C
--
- #define PHY_TS_INT_CONFIG_THRESHOLD_M	ICE_M(0x3F, 0)
- #define PHY_TS_INT_CONFIG_ENA_M		BIT(6)
- 
--/* 1-step PTP config */
--#define PHY_PTP_1STEP_CONFIG		0x270
--#define PHY_PTP_1STEP_T1S_UP64_M	ICE_M(0xF, 4)
--#define PHY_PTP_1STEP_T1S_DELTA_M	ICE_M(0xF, 8)
--#define PHY_PTP_1STEP_PEER_DELAY(_port)	(0x274 + 4 * (_port))
--#define PHY_PTP_1STEP_PD_ADD_PD_M	ICE_M(0x1, 0)
--#define PHY_PTP_1STEP_PD_DELAY_M	ICE_M(0x3fffffff, 1)
--#define PHY_PTP_1STEP_PD_DLY_V_M	ICE_M(0x1, 31)
--
- /* Macros to derive offsets for TimeStampLow and TimeStampHigh */
- #define PHY_TSTAMP_L(x) (((x) * 8) + 0)
- #define PHY_TSTAMP_U(x) (((x) * 8) + 4)
- 
--#define PHY_REG_REVISION		0x85000
--
- #define PHY_REG_DESKEW_0		0x94
- #define PHY_REG_DESKEW_0_RLEVEL		GENMASK(6, 0)
- #define PHY_REG_DESKEW_0_RLEVEL_FRAC	GENMASK(9, 7)
- #define PHY_REG_DESKEW_0_RLEVEL_FRAC_W	3
- #define PHY_REG_DESKEW_0_VALID		GENMASK(10, 10)
- 
--#define PHY_REG_GPCS_BITSLIP		0x5C
- #define PHY_REG_SD_BIT_SLIP(_port_offset)	(0x29C + 4 * (_port_offset))
- #define PHY_REVISION_ETH56G		0x10200
- #define PHY_VENDOR_TXLANE_THRESH	0x2000C
-@@ -832,7 +815,21 @@ static inline bool ice_is_dual(struct ice_hw *hw)
- #define PHY_MAC_BLOCKTIME		0x50
- #define PHY_MAC_MARKERTIME		0x54
- #define PHY_MAC_TX_OFFSET		0x58
-+#define PHY_GPCS_BITSLIP		0x5C
- 
- #define PHY_PTP_INT_STATUS		0x7FD140
- 
-+/* ETH56G registers shared per quad */
-+/* GPCS config register */
-+#define PHY_GPCS_CONFIG_REG0		0x268
-+#define PHY_GPCS_CONFIG_REG0_TX_THR_M	GENMASK(27, 24)
-+/* 1-step PTP config */
-+#define PHY_PTP_1STEP_CONFIG		0x270
-+#define PHY_PTP_1STEP_T1S_UP64_M	GENMASK(7, 4)
-+#define PHY_PTP_1STEP_T1S_DELTA_M	GENMASK(11, 8)
-+#define PHY_PTP_1STEP_PEER_DELAY(_quad_lane)	(0x274 + 4 * (_quad_lane))
-+#define PHY_PTP_1STEP_PD_ADD_PD_M	BIT(0)
-+#define PHY_PTP_1STEP_PD_DELAY_M	GENMASK(30, 1)
-+#define PHY_PTP_1STEP_PD_DLY_V_M	BIT(31)
-+
- #endif /* _ICE_PTP_HW_H_ */
--- 
-2.39.3
+<...>
 
+> > +               xfrm_put_type_offload(x->type_offload);
+> > +               x->type_offload = NULL;
+> 
+> We always set type_offload to NULL. Can we move type_offload = NULL in
+> xfrm_put_type_offload() ?
+
+We can, but it will require change to xfrm_get_type_offload() too,
+otherwise we will get asymmetrical get/put.
+
+Do you want something like that?
+int xfrm_get_type_offload(struct xfrm_state *x);
+void xfrm_put_type_offload(struct xfrm_state *x);
+
+Thansk
+
+> 
+> Thanks
+> -Bharat
+> 
+> >                 /* User explicitly requested packet offload mode and configured
+> >                  * policy in addition to the XFRM state. So be civil to users,
+> >                  * and return an error instead of taking fallback path.
+> > diff --git a/net/xfrm/xfrm_state.c b/net/xfrm/xfrm_state.c
+> > index ad2202fa82f3..568fe8df7741 100644
+> > --- a/net/xfrm/xfrm_state.c
+> > +++ b/net/xfrm/xfrm_state.c
+> > @@ -424,11 +424,12 @@ void xfrm_unregister_type_offload(const struct xfrm_type_offload *type,
+> >  }
+> >  EXPORT_SYMBOL(xfrm_unregister_type_offload);
+> >
+> > -static const struct xfrm_type_offload *
+> > -xfrm_get_type_offload(u8 proto, unsigned short family, bool try_load)
+> > +const struct xfrm_type_offload *xfrm_get_type_offload(u8 proto,
+> > +                                                     unsigned short family)
+> >  {
+> >         const struct xfrm_type_offload *type = NULL;
+> >         struct xfrm_state_afinfo *afinfo;
+> > +       bool try_load = true;
+> >
+> >  retry:
+> >         afinfo = xfrm_state_get_afinfo(family);
+> > @@ -456,11 +457,7 @@ xfrm_get_type_offload(u8 proto, unsigned short family, bool try_load)
+> >
+> >         return type;
+> >  }
+> > -
+> > -static void xfrm_put_type_offload(const struct xfrm_type_offload *type)
+> > -{
+> > -       module_put(type->owner);
+> > -}
+> > +EXPORT_SYMBOL(xfrm_get_type_offload);
+> >
+> >  static const struct xfrm_mode xfrm4_mode_map[XFRM_MODE_MAX] = {
+> >         [XFRM_MODE_BEET] = {
+> > @@ -609,8 +606,6 @@ static void ___xfrm_state_destroy(struct xfrm_state *x)
+> >         kfree(x->coaddr);
+> >         kfree(x->replay_esn);
+> >         kfree(x->preplay_esn);
+> > -       if (x->type_offload)
+> > -               xfrm_put_type_offload(x->type_offload);
+> >         if (x->type) {
+> >                 x->type->destructor(x);
+> >                 xfrm_put_type(x->type);
+> > @@ -784,6 +779,9 @@ void xfrm_dev_state_free(struct xfrm_state *x)
+> >         struct xfrm_dev_offload *xso = &x->xso;
+> >         struct net_device *dev = READ_ONCE(xso->dev);
+> >
+> > +       xfrm_put_type_offload(x->type_offload);
+> > +       x->type_offload = NULL;
+> > +
+> >         if (dev && dev->xfrmdev_ops) {
+> >                 spin_lock_bh(&xfrm_state_dev_gc_lock);
+> >                 if (!hlist_unhashed(&x->dev_gclist))
+> > @@ -3122,7 +3120,7 @@ u32 xfrm_state_mtu(struct xfrm_state *x, int mtu)
+> >  }
+> >  EXPORT_SYMBOL_GPL(xfrm_state_mtu);
+> >
+> > -int __xfrm_init_state(struct xfrm_state *x, bool init_replay, bool offload,
+> > +int __xfrm_init_state(struct xfrm_state *x, bool init_replay,
+> >                       struct netlink_ext_ack *extack)
+> >  {
+> >         const struct xfrm_mode *inner_mode;
+> > @@ -3178,8 +3176,6 @@ int __xfrm_init_state(struct xfrm_state *x, bool init_replay, bool offload,
+> >                 goto error;
+> >         }
+> >
+> > -       x->type_offload = xfrm_get_type_offload(x->id.proto, family, offload);
+> > -
+> >         err = x->type->init_state(x, extack);
+> >         if (err)
+> >                 goto error;
+> > @@ -3229,7 +3225,7 @@ int xfrm_init_state(struct xfrm_state *x)
+> >  {
+> >         int err;
+> >
+> > -       err = __xfrm_init_state(x, true, false, NULL);
+> > +       err = __xfrm_init_state(x, true, NULL);
+> >         if (!err)
+> >                 x->km.state = XFRM_STATE_VALID;
+> >
+> > diff --git a/net/xfrm/xfrm_user.c b/net/xfrm/xfrm_user.c
+> > index 08c6d6f0179f..82a768500999 100644
+> > --- a/net/xfrm/xfrm_user.c
+> > +++ b/net/xfrm/xfrm_user.c
+> > @@ -907,7 +907,7 @@ static struct xfrm_state *xfrm_state_construct(struct net *net,
+> >                         goto error;
+> >         }
+> >
+> > -       err = __xfrm_init_state(x, false, attrs[XFRMA_OFFLOAD_DEV], extack);
+> > +       err = __xfrm_init_state(x, false, extack);
+> >         if (err)
+> >                 goto error;
+> >
+> > --
+> > 2.48.1
+> >
+> >
+> 
