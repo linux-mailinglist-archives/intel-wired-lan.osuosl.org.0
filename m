@@ -1,96 +1,125 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AAA48A29B62
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Feb 2025 21:45:59 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6279EA29F8D
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Feb 2025 05:13:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 38294426A3;
-	Wed,  5 Feb 2025 20:45:58 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B8BA682154;
+	Thu,  6 Feb 2025 04:13:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 07oSyA_iFI4B; Wed,  5 Feb 2025 20:45:57 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id W3C6AO1fdULc; Thu,  6 Feb 2025 04:13:35 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AF295426AD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6B36E8215E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1738788356;
-	bh=YbEoJKsgAtPJIe+EU4MvkvyXGCLFP88C6DSxvf3TQi8=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1738815215;
+	bh=TM7UR4/GE+Pw4bH5HnjLUytze5dwvUQ6PB2Awes6Qps=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=1yc8/SuQW2rI4KWYgmnqHZYvZ+qEQa5cRUGXkgkHGU33W5ZNhRheXqwSxS6gnQu8a
-	 d+ryuI8LMXOSSrsCDFGsLkj3SCSFlDwqbsB7vMNWCdEay8XJkQV6+NtbRT/4I9VkK0
-	 9S/MToTbOySAgNOcqGw2m+so4sPKw6jNs7q3bKlwSu/iqKmsXqlp0waSvrS5iwbvM2
-	 IR7awYEB6HL22fru15VWaD0o6W2dj6MGy9HYqWljn5nhYrsU+gYU3SqGlTyg3hsU5j
-	 gWTFoPWMBwu61QK2m8LKNvEGchbIUwHqjeI3kDY/tpFPywcB5LBBML9S7jQ/LuZU6G
-	 EHS9julY/e3jA==
+	b=scZ8ZTIbeDrqynhOUZxCEIb/oB97K6wIdzrCcR3v0hNwezDcpiafeu1DoZvAz5ixg
+	 O3GbU81TK0VM9+iyV4txa62nSo4h21rp5XPXY5HsAyFfz5qgnCmmVTbL30EjaqQmQp
+	 x6Ch63jB39HvA3S58bzN3ggXFq7ZV8MvuxtW2o+2v6/bow0U0ThmSOcWULgF5XHR3/
+	 9f5VNqXrNOtIr6gADqkfS82kS3Lm9m2HjD8ZjJKuOpegdx2O7DlGlwEGO4aDVkaiZt
+	 8uv9mME6tqoySdeNCucAk6axuYVU0utZ4IFvjHnzff0J61z04ASPVOtlb/7IrldKeq
+	 eaWQfnmvbsMXw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AF295426AD;
-	Wed,  5 Feb 2025 20:45:56 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6B36E8215E;
+	Thu,  6 Feb 2025 04:13:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 8489912A
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Feb 2025 20:45:54 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 1997112F
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 04:13:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 737B0412C5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Feb 2025 20:45:54 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id F241C8215E
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 04:13:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id LwY3JYDxbAh5 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  5 Feb 2025 20:45:53 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id duKrSVn-FE3u for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  6 Feb 2025 04:13:30 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 2F72D412C8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2F72D412C8
-Received: from nyc.source.kernel.org (nyc.source.kernel.org
- [IPv6:2604:1380:45d1:ec00::3])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2F72D412C8
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Feb 2025 20:45:53 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id A7FAFA43A7B;
- Wed,  5 Feb 2025 20:44:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 444A6C4CED1;
- Wed,  5 Feb 2025 20:45:49 +0000 (UTC)
-Date: Wed, 5 Feb 2025 20:45:46 +0000
-From: Simon Horman <horms@kernel.org>
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org,
- Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
- Konrad Knitter <konrad.knitter@intel.com>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- Qiuxu Zhuo <qiuxu.zhuo@intel.com>,
- Linus Torvalds <torvalds@linux-foundation.org>,
- Kees Cook <kees@kernel.org>, Nick Desaulniers <nick.desaulniers@gmail.com>,
- Jiri Slaby <jirislaby@kernel.org>
-Message-ID: <20250205204546.GM554665@kernel.org>
-References: <20250205104252.30464-2-przemyslaw.kitszel@intel.com>
+ client-ip=2607:f8b0:4864:20::62a; helo=mail-pl1-x62a.google.com;
+ envelope-from=stephen@networkplumber.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 635AD82140
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 635AD82140
+Received: from mail-pl1-x62a.google.com (mail-pl1-x62a.google.com
+ [IPv6:2607:f8b0:4864:20::62a])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 635AD82140
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 04:13:30 +0000 (UTC)
+Received: by mail-pl1-x62a.google.com with SMTP id
+ d9443c01a7336-21f2339dcfdso6671415ad.1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 05 Feb 2025 20:13:30 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1738815209; x=1739420009;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=TM7UR4/GE+Pw4bH5HnjLUytze5dwvUQ6PB2Awes6Qps=;
+ b=sYUUUqa7RN87trMhcXey1J7Xlrf1oeS1CXrV5BwlrRNmlhtwC72bRG/MBStcLqy+CT
+ MphK+whxe0+ALZcb/+19vAzj/4ZfZhWf+iPWTSpLD7OLwvtsONnHtEkm7Pf9YLksnzEM
+ ozhgzw9C2ONU8tN7wZE63XCC0LASESE2A1ZR/t7up0UAVtY3D4v5TvQxXc9XhZb+31n/
+ hQUrZKoa4Xo4RSCy9v7+EUDvtZjcxclOyM+FynJFEbjdXtOXAfm8/e8wdXAroBDM+mtB
+ tlyNuWWQLNOsiF3S3CVC6Qx8NWERBAhnZ9JvfVLusnKdeXZtmoLHNVC+US10wsPgCo8V
+ uPOw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUCTGYSDLwVnAz4XDD4+1vslYklipdNWRN3YZoMJlKxfY3WeVo5+7Ovjes8jZ162yNOasmWE0VfWVeEVuumLvw=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yz9Mmb5GySnUW+0oXjabnIpwxkSZKr1ffPebyvyykKfMqwIRPUb
+ fT19AkvvuENdeuzHge+iZrvwrTB4dtH/HS5sgW1OUcZLiv+xa/SA55yOd4CYNi0=
+X-Gm-Gg: ASbGncs23eCD5TEn+9zyGnRE9ZqwYnKThPNda6zsxf45ecXJXZ02+SOtnvclrp3odU/
+ +AEPA4Nn4RmjNQUlNQipYmHMzIOS9HsCUQApANvsShoRwRqyJ5anEcLpsB8YEA5CfEXgEqF7R8s
+ TRYCzF9sTD1F0OnF3Xh4qhYzcljav8s3lSh2qwHLRIQtNjNPaQ32GEJAfBsnmTCS2xuIdEaA1zm
+ vrJhEudQBXOWLcAb6gVYVQw8PZXMV6qheGx2DOMCmb/6Qvpf02F7qNHOQI0hAcAWaLXzDEtlDgU
+ ffMkUSH4mhHyYijzccJBZKi97AZA4XWLmW/oTqR14Ez+X/VPdLAUckfOjFfGu+iw2pxQ
+X-Google-Smtp-Source: AGHT+IE8rYcHczDEOLJjxPsFCcDaab370s4BRnPMuORHQVz3/IK5X5+6wcLsGlLQrtqVgYkARgFFTA==
+X-Received: by 2002:a17:903:2406:b0:216:4b6f:dde5 with SMTP id
+ d9443c01a7336-21f2f19b5a0mr35889315ad.13.1738815209588; 
+ Wed, 05 Feb 2025 20:13:29 -0800 (PST)
+Received: from hermes.local (204-195-96-226.wavecable.com. [204.195.96.226])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-21f3683d551sm2136055ad.110.2025.02.05.20.13.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 05 Feb 2025 20:13:29 -0800 (PST)
+Date: Wed, 5 Feb 2025 20:13:27 -0800
+From: Stephen Hemminger <stephen@networkplumber.org>
+To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>
+Cc: <anthony.l.nguyen@intel.com>, <jesse.brandeburg@intel.com>,
+ <intel-wired-lan@lists.osuosl.org>
+Message-ID: <20250205201327.7a4555cf@hermes.local>
+In-Reply-To: <531e3767-05c8-cb5f-6f3c-1860125ef408@intel.com>
+References: <20250130091111.46358882@hermes.local>
+ <531227ca-89fe-4398-8cba-3647be509454@intel.com>
+ <20250130172115.2a116ccb@hermes.local>
+ <531e3767-05c8-cb5f-6f3c-1860125ef408@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250205104252.30464-2-przemyslaw.kitszel@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1738788351;
- bh=//uWnG9TvWTqr2If/A6gaUTJzjuhsAIXJ4fNcNm4KVk=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=hjFBUq7VFNjKcOh3q8bv7cM+lBMXZ13OVGeDcO2cEJ/16hEp6qVfyqxXmKqNfe/l+
- BhJ1SLQteA0knGw1GNvhF5f8D24CpV/+/8XmJPYrroM8XpSLOOU4GQw8OiWR86VVV2
- 8ffsfCVo96sy1CHvwTNjnp5S14MxxZKi6icCwZnze73eOY6HL1H4e4Jw4iJpIq2kN2
- 7lMKazDsC4RWvJrGLRZoMmdgJ8lRJjobIIhTASt+2bfbRLuCuan+ajhbXmlwX1xtFI
- oA7Lwz8O4T42FKwlROkHwSAI5pGQARs5gMzROlCra+q7OKKZYeylWscnci+y4hg1cR
- 5e8SxhRla2nfQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=networkplumber-org.20230601.gappssmtp.com; s=20230601; t=1738815209;
+ x=1739420009; darn=lists.osuosl.org; 
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=TM7UR4/GE+Pw4bH5HnjLUytze5dwvUQ6PB2Awes6Qps=;
+ b=WZn/9+Mv0L1HRhYoq9MvqbKvoK63dk2Lre0Vaj6FKvr7CPmMnDtLvhh2PXWzOUfyAa
+ UcXDgsQ6Cc3//W59FdBt7s+8l+oD+YPvnKjRYErZ73Oy7drmjZ3AueaFyBDfOAgUzDoI
+ Bhu7ZQXRmcPaJIc9+0fKOPbjmlKZBG3Elr8jLUWL+ga981ZHukVRwvCZIiQbAKHdzPEd
+ sx03TyqZZrWxYKhJhcfqAuophLurzyhQS+dc/FeCmwiG9E56KEk98cq+Fxj6L3V5A8s+
+ exv0fC+EnmoJsrC2/gd3nWxoyHXl50yZCjclb/hoDVqYL000VEj5M0rTyTLfGD7X2zAx
+ WRng==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ header.from=networkplumber.org
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=hjFBUq7V
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] ice: health.c: fix
- compilation on gcc 7.5
+ unprotected) header.d=networkplumber-org.20230601.gappssmtp.com
+ header.i=@networkplumber-org.20230601.gappssmtp.com header.a=rsa-sha256
+ header.s=20230601 header.b=WZn/9+Mv
+Subject: Re: [Intel-wired-lan] suspend/resume broken of igc driver broken on
+ 6.12
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -106,70 +135,70 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-+ Jiri
+On Wed, 5 Feb 2025 12:36:31 +0200
+"Lifshits, Vitaly" <vitaly.lifshits@intel.com> wrote:
 
-On Wed, Feb 05, 2025 at 11:42:12AM +0100, Przemek Kitszel wrote:
-> GCC 7 is not as good as GCC 8+ in telling what is a compile-time const,
-> and thus could be used for static storage. So we could not use variables
-> for that, no matter how much "const" keyword is sprinkled around.
+> On 1/31/2025 3:21 AM, Stephen Hemminger wrote:
+> > On Thu, 30 Jan 2025 21:17:30 +0200
+> > "Lifshits, Vitaly" <vitaly.lifshits@intel.com> wrote:
+> >   
+> >> On 1/30/2025 7:11 PM, Stephen Hemminger wrote:  
+> >>> I am using:
+> >>>
+> >>> 5a:00.0 Ethernet controller: Intel Corporation Ethernet Controller I226-LM (rev 04)
+> >>> 	Subsystem: Intel Corporation Device 0000
+> >>> 	Flags: bus master, fast devsel, latency 0, IRQ 19, IOMMU group 20
+> >>> 	Memory at 6c500000 (32-bit, non-prefetchable) [size=1M]
+> >>> 	Memory at 6c600000 (32-bit, non-prefetchable) [size=16K]
+> >>> 	Capabilities: [40] Power Management version 3
+> >>> 	Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
+> >>> 	Capabilities: [70] MSI-X: Enable+ Count=5 Masked-
+> >>> 	Capabilities: [a0] Express Endpoint, IntMsgNum 0
+> >>> 	Capabilities: [100] Advanced Error Reporting
+> >>> 	Capabilities: [140] Device Serial Number 58-47-ca-ff-ff-7a-98-3d
+> >>> 	Capabilities: [1c0] Latency Tolerance Reporting
+> >>> 	Capabilities: [1f0] Precision Time Measurement
+> >>> 	Capabilities: [1e0] L1 PM Substates
+> >>> 	Kernel driver in use: igc
+> >>> 	Kernel modules: igc
+> >>>
+> >>>
+> >>> Using both Debian testing and my own kernel built from 6.12, the igc
+> >>> driver appears broken after resume.  
+> >>
+> >>   From which system state are you resuming?
+> >>  
+> >>>
+> >>> After resuming the device is down and no address present.
+> >>> Attempts to set link up manually fail.  
+> >>
+> >> Did you get any errors in the dmesg log?
+> >> What is the firmware version on your device (you can get it by running
+> >> ethtool -i)?
+> >>  
+> >>> If I do rmmod/modprobe of igc it comes back.
+> >>>
+> >>> Doing a bit of bisectting but it is slow going.  
+> >>
+> >> Meanwhile, we'll also try to reproduce this issue in our lab.  Could you
+> >> share more details about your system so we can create a similar setup?  
+> > 
+> > Given that error reported is -ENODEV, might be a generic netdev problem not
+> > just for igc device.
+> >   
 > 
-> Excerpt from the report:
-> My GCC is: gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0.
+> We weren't able to reproduce this issue on our systems, even though we 
+> tried several suspend-resume cycles on different kernels and different 
+> systems.
 > 
->   CC [M]  drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.o
-> drivers/net/ethernet/intel/ice/devlink/health.c:35:3: error: initializer element is not constant
->    ice_common_port_solutions, {ice_port_number_label}},
->    ^~~~~~~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/ice/devlink/health.c:35:3: note: (near initialization for 'ice_health_status_lookup[0].solution')
-> drivers/net/ethernet/intel/ice/devlink/health.c:35:31: error: initializer element is not constant
->    ice_common_port_solutions, {ice_port_number_label}},
->                                ^~~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/ice/devlink/health.c:35:31: note: (near initialization for 'ice_health_status_lookup[0].data_label[0]')
-> drivers/net/ethernet/intel/ice/devlink/health.c:37:46: error: initializer element is not constant
->    "Change or replace the module or cable.", {ice_port_number_label}},
->                                               ^~~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/ice/devlink/health.c:37:46: note: (near initialization for 'ice_health_status_lookup[1].data_label[0]')
-> drivers/net/ethernet/intel/ice/devlink/health.c:39:3: error: initializer element is not constant
->    ice_common_port_solutions, {ice_port_number_label}},
->    ^~~~~~~~~~~~~~~~~~~~~~~~~
+> However, a few days ago we received a comment in a BZ about an issue 
+> similar to yours. In there adding a short delay in igc_resume function
+> https://bugzilla.kernel.org/show_bug.cgi?id=219143
+> https://bugzilla.kernel.org/show_bug.cgi?id=219143#c123
 > 
-> Fixes: 85d6164ec56d ("ice: add fw and port health reporters")
-> Reported-by: Qiuxu Zhuo <qiuxu.zhuo@intel.com>
-> Closes: https://lore.kernel.org/netdev/CY8PR11MB7134BF7A46D71E50D25FA7A989F72@CY8PR11MB7134.namprd11.prod.outlook.com
-> Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> ---
-> I would really like to bump min gcc to 8.5 (RH 8 family),
-> instead of supporting old Ubuntu. However SLES 15 is also stuck with gcc 7.5 :(
 > 
-> CC: Linus Torvalds <torvalds@linux-foundation.org>
-> CC: Kees Cook <kees@kernel.org>
-> CC: Nick Desaulniers <nick.desaulniers@gmail.com>
+> 
+> Can you try to see if it fixes your issue as well?
 
-Hi Prezemek,
-
-I ran into a similar problem not so long ago and I'm wondering if
-the following, based on a suggestion by Jiri Slaby, resolves your
-problem.
-
-diff --git a/drivers/net/ethernet/intel/ice/devlink/health.c b/drivers/net/ethernet/intel/ice/devlink/health.c
-index ea40f7941259..19c3d37aa768 100644
---- a/drivers/net/ethernet/intel/ice/devlink/health.c
-+++ b/drivers/net/ethernet/intel/ice/devlink/health.c
-@@ -25,10 +25,10 @@ struct ice_health_status {
-  * The below lookup requires to be sorted by code.
-  */
- 
--static const char *const ice_common_port_solutions =
-+static const char ice_common_port_solutions[] =
- 	"Check your cable connection. Change or replace the module or cable. Manually set speed and duplex.";
--static const char *const ice_port_number_label = "Port Number";
--static const char *const ice_update_nvm_solution = "Update to the latest NVM image.";
-+static const char ice_port_number_label[] = "Port Number";
-+static const char ice_update_nvm_solution[] = "Update to the latest NVM image.";
- 
- static const struct ice_health_status ice_health_status_lookup[] = {
- 	{ICE_AQC_HEALTH_STATUS_ERR_UNKNOWN_MOD_STRICT, "An unsupported module was detected.",
-
-
-Link: https://lore.kernel.org/netdev/485dbc5a-a04b-40c2-9481-955eaa5ce2e2@kernel.org/
-Link: https://git.kernel.org/netdev/net-next/c/36fb51479e3c
+I tried the proposed delay and it had no impact.
+Any idea of other things to instrument?
