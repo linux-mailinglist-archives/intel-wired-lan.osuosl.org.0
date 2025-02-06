@@ -1,125 +1,252 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6279EA29F8D
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Feb 2025 05:13:38 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C899A29FA7
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Feb 2025 05:32:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B8BA682154;
-	Thu,  6 Feb 2025 04:13:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D762E417FA;
+	Thu,  6 Feb 2025 04:32:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id W3C6AO1fdULc; Thu,  6 Feb 2025 04:13:35 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id iHQby9KkxZvt; Thu,  6 Feb 2025 04:32:13 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6B36E8215E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6B4EE41802
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1738815215;
-	bh=TM7UR4/GE+Pw4bH5HnjLUytze5dwvUQ6PB2Awes6Qps=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1738816332;
+	bh=mk+ZxzYKXiLDWtKu3AD0ty3j1GdvIxC1oJM1HmbL8iY=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=scZ8ZTIbeDrqynhOUZxCEIb/oB97K6wIdzrCcR3v0hNwezDcpiafeu1DoZvAz5ixg
-	 O3GbU81TK0VM9+iyV4txa62nSo4h21rp5XPXY5HsAyFfz5qgnCmmVTbL30EjaqQmQp
-	 x6Ch63jB39HvA3S58bzN3ggXFq7ZV8MvuxtW2o+2v6/bow0U0ThmSOcWULgF5XHR3/
-	 9f5VNqXrNOtIr6gADqkfS82kS3Lm9m2HjD8ZjJKuOpegdx2O7DlGlwEGO4aDVkaiZt
-	 8uv9mME6tqoySdeNCucAk6axuYVU0utZ4IFvjHnzff0J61z04ASPVOtlb/7IrldKeq
-	 eaWQfnmvbsMXw==
+	b=viWye8Dei0zPeDibRb9AlS8BD1/HmXCgO/Gta29oSFT56/9+P3Jbqyf6lkK6ZigK2
+	 CWQ3zDxc7k0MZ35SH96KVZAFWMQnMTbk4TeB5xYwbHyT7LpghZ28lrzpLKEqWns8o4
+	 ADi5ujcdluXnR3gts9fTr+a5b3/5HZlX0t7CzI5UJacRMFP8wdQ7Zo8l8ZQ0TCUoAC
+	 7uBkFd7Chj8Uor3qfWvjt7VwoW7b3ULsOP5U0sPWUkl3X3E5RZ0Cfk4yx1Er+lu+kH
+	 /kbuexTtxCoLtXvkibkJw+1PnUNqw7GSNTg2p/aM3A0Zgx7eBRtGJ1H4gZB+l1Xjsf
+	 hu5VHt6MdK5lw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6B36E8215E;
-	Thu,  6 Feb 2025 04:13:35 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6B4EE41802;
+	Thu,  6 Feb 2025 04:32:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 1997112F
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 04:13:33 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3E7AF12F
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 04:32:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id F241C8215E
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 04:13:32 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 23505417EA
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 04:32:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id duKrSVn-FE3u for <intel-wired-lan@lists.osuosl.org>;
- Thu,  6 Feb 2025 04:13:30 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::62a; helo=mail-pl1-x62a.google.com;
- envelope-from=stephen@networkplumber.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 635AD82140
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 635AD82140
-Received: from mail-pl1-x62a.google.com (mail-pl1-x62a.google.com
- [IPv6:2607:f8b0:4864:20::62a])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 635AD82140
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 04:13:30 +0000 (UTC)
-Received: by mail-pl1-x62a.google.com with SMTP id
- d9443c01a7336-21f2339dcfdso6671415ad.1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 05 Feb 2025 20:13:30 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738815209; x=1739420009;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=TM7UR4/GE+Pw4bH5HnjLUytze5dwvUQ6PB2Awes6Qps=;
- b=sYUUUqa7RN87trMhcXey1J7Xlrf1oeS1CXrV5BwlrRNmlhtwC72bRG/MBStcLqy+CT
- MphK+whxe0+ALZcb/+19vAzj/4ZfZhWf+iPWTSpLD7OLwvtsONnHtEkm7Pf9YLksnzEM
- ozhgzw9C2ONU8tN7wZE63XCC0LASESE2A1ZR/t7up0UAVtY3D4v5TvQxXc9XhZb+31n/
- hQUrZKoa4Xo4RSCy9v7+EUDvtZjcxclOyM+FynJFEbjdXtOXAfm8/e8wdXAroBDM+mtB
- tlyNuWWQLNOsiF3S3CVC6Qx8NWERBAhnZ9JvfVLusnKdeXZtmoLHNVC+US10wsPgCo8V
- uPOw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUCTGYSDLwVnAz4XDD4+1vslYklipdNWRN3YZoMJlKxfY3WeVo5+7Ovjes8jZ162yNOasmWE0VfWVeEVuumLvw=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yz9Mmb5GySnUW+0oXjabnIpwxkSZKr1ffPebyvyykKfMqwIRPUb
- fT19AkvvuENdeuzHge+iZrvwrTB4dtH/HS5sgW1OUcZLiv+xa/SA55yOd4CYNi0=
-X-Gm-Gg: ASbGncs23eCD5TEn+9zyGnRE9ZqwYnKThPNda6zsxf45ecXJXZ02+SOtnvclrp3odU/
- +AEPA4Nn4RmjNQUlNQipYmHMzIOS9HsCUQApANvsShoRwRqyJ5anEcLpsB8YEA5CfEXgEqF7R8s
- TRYCzF9sTD1F0OnF3Xh4qhYzcljav8s3lSh2qwHLRIQtNjNPaQ32GEJAfBsnmTCS2xuIdEaA1zm
- vrJhEudQBXOWLcAb6gVYVQw8PZXMV6qheGx2DOMCmb/6Qvpf02F7qNHOQI0hAcAWaLXzDEtlDgU
- ffMkUSH4mhHyYijzccJBZKi97AZA4XWLmW/oTqR14Ez+X/VPdLAUckfOjFfGu+iw2pxQ
-X-Google-Smtp-Source: AGHT+IE8rYcHczDEOLJjxPsFCcDaab370s4BRnPMuORHQVz3/IK5X5+6wcLsGlLQrtqVgYkARgFFTA==
-X-Received: by 2002:a17:903:2406:b0:216:4b6f:dde5 with SMTP id
- d9443c01a7336-21f2f19b5a0mr35889315ad.13.1738815209588; 
- Wed, 05 Feb 2025 20:13:29 -0800 (PST)
-Received: from hermes.local (204-195-96-226.wavecable.com. [204.195.96.226])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-21f3683d551sm2136055ad.110.2025.02.05.20.13.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 05 Feb 2025 20:13:29 -0800 (PST)
-Date: Wed, 5 Feb 2025 20:13:27 -0800
-From: Stephen Hemminger <stephen@networkplumber.org>
-To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>
-Cc: <anthony.l.nguyen@intel.com>, <jesse.brandeburg@intel.com>,
- <intel-wired-lan@lists.osuosl.org>
-Message-ID: <20250205201327.7a4555cf@hermes.local>
-In-Reply-To: <531e3767-05c8-cb5f-6f3c-1860125ef408@intel.com>
-References: <20250130091111.46358882@hermes.local>
- <531227ca-89fe-4398-8cba-3647be509454@intel.com>
- <20250130172115.2a116ccb@hermes.local>
- <531e3767-05c8-cb5f-6f3c-1860125ef408@intel.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id RGwEnQUZvttf for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  6 Feb 2025 04:32:08 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
+ helo=mgamail.intel.com; envelope-from=yoong.siang.song@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 90E3C417B0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 90E3C417B0
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 90E3C417B0
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 04:32:08 +0000 (UTC)
+X-CSE-ConnectionGUID: fw91f3ssQiimONvgVN2cNA==
+X-CSE-MsgGUID: Oi445K2NQsuT6/adraH6Zw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11336"; a="39282461"
+X-IronPort-AV: E=Sophos;i="6.13,263,1732608000"; d="scan'208";a="39282461"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+ by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Feb 2025 20:32:07 -0800
+X-CSE-ConnectionGUID: Xt8YsoWYTFWIDesPOx4Afw==
+X-CSE-MsgGUID: OKOefC11Ty6pCMGFrQXouQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.13,263,1732608000"; d="scan'208";a="111679806"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmviesa009.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 05 Feb 2025 20:32:05 -0800
+Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.44; Wed, 5 Feb 2025 20:32:04 -0800
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.44 via Frontend Transport; Wed, 5 Feb 2025 20:32:04 -0800
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.173)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.44; Wed, 5 Feb 2025 20:32:04 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=bmXvDB7gzjJa5YvltffhZKe/HBul5/TTn8NnXkSdjPX6Q+QFMZ2QVVG1w3ZqNtcjdguQdp8L/y22jwDRWI7LGbHlOQhdmM4xI65HY1sBL1Sfz0dMpYKENXnP94S2s+tX6tfVRwSSEa/csKEvfCh3NzH40U2hhX8JmJC51d7UljSPVBK/b1DUHPTqDbI2IjnmWARsDTeE2Wt0afISx/56wKxLSplYjTsqLIIvkhmO0gZriiozoDTE8lWXPnn29x5FHkl+QIO8Cwm4ETjT3iUrm/Xd34NsoXUcAxcgJb3QJFNEGrPatxBni4LG8mrzHXNB6FyG+caqnEcDlTLYxbPvJg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=mk+ZxzYKXiLDWtKu3AD0ty3j1GdvIxC1oJM1HmbL8iY=;
+ b=TiH7Jn29X7Z3uA9uLvWNspUqPlB/zgW/Tdj9zdagn8usSv/KIO2o7Tgfnok+tWTSFim68HBdX4LnBUSfkrBBZhj8qNzNWsZMwzOaeKDv1uoKt+kHh/mlW7qFLWQ1jYBP5o2m7Ka9DREEY/mNWJ1x+D90pk68HfbfRs4+/gDNl2BaTmAgc8B+mavM7RhDZi/eipCSUBobS9vj/ymGOfblSVXXoUHAolEVdLqv8X28YyYcGCy4U73lMmiUKoFyl3PwqAz2kXaONFQ8CbNSIk+v+qZnywU3O0cCbesjzdMtwPhrl5GnHcQqnWC91w/YYtMkkIj1p2KO94AWPKdhOi6/vQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from PH0PR11MB5830.namprd11.prod.outlook.com (2603:10b6:510:129::20)
+ by DS0PR11MB7802.namprd11.prod.outlook.com (2603:10b6:8:de::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8422.10; Thu, 6 Feb
+ 2025 04:32:01 +0000
+Received: from PH0PR11MB5830.namprd11.prod.outlook.com
+ ([fe80::c80d:3b17:3f40:10d6]) by PH0PR11MB5830.namprd11.prod.outlook.com
+ ([fe80::c80d:3b17:3f40:10d6%4]) with mapi id 15.20.8422.009; Thu, 6 Feb 2025
+ 04:32:01 +0000
+From: "Song, Yoong Siang" <yoong.siang.song@intel.com>
+To: "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>
+CC: "David S . Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+ <pabeni@redhat.com>, Simon Horman <horms@kernel.org>, Willem de Bruijn
+ <willemb@google.com>, "Bezdeka, Florian" <florian.bezdeka@siemens.com>,
+ Donald Hunter <donald.hunter@gmail.com>, Jonathan Corbet <corbet@lwn.net>,
+ Bjorn Topel <bjorn@kernel.org>, "Karlsson, Magnus"
+ <magnus.karlsson@intel.com>, Jonathan Lemon <jonathan.lemon@gmail.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer
+ <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>, "Damato, Joe"
+ <jdamato@fastly.com>, Stanislav Fomichev <sdf@fomichev.me>, Xuan Zhuo
+ <xuanzhuo@linux.alibaba.com>, Mina Almasry <almasrymina@google.com>, "Daniel
+ Jurgens" <danielj@nvidia.com>, Andrii Nakryiko <andrii@kernel.org>, "Eduard
+ Zingerman" <eddyz87@gmail.com>, Mykola Lysenko <mykolal@fb.com>, "Martin
+ KaFai Lau" <martin.lau@linux.dev>, Song Liu <song@kernel.org>, Yonghong Song
+ <yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, Hao Luo
+ <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>, Shuah Khan
+ <shuah@kernel.org>, Alexandre Torgue <alexandre.torgue@foss.st.com>, "Jose
+ Abreu" <joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
+ <przemyslaw.kitszel@intel.com>, Faizal Rahim
+ <faizal.abdul.rahim@linux.intel.com>, Choong Yong Liang
+ <yong.liang.choong@linux.intel.com>, "Bouska, Zdenek"
+ <zdenek.bouska@siemens.com>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>, "linux-doc@vger.kernel.org"
+ <linux-doc@vger.kernel.org>, "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
+ "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
+ "linux-stm32@st-md-mailman.stormreply.com"
+ <linux-stm32@st-md-mailman.stormreply.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>, "xdp-hints@xdp-project.net"
+ <xdp-hints@xdp-project.net>
+Thread-Topic: [PATCH bpf-next v8 4/5] igc: Refactor empty packet insertion
+ into a reusable function
+Thread-Index: AQHbd3eRdwLqM9RAOUG+CEwq4T8dPbM4pMYAgAAd5GCAAB6EAIAAzl9w
+Date: Thu, 6 Feb 2025 04:32:01 +0000
+Message-ID: <PH0PR11MB583003D5657395162DD4253AD8F62@PH0PR11MB5830.namprd11.prod.outlook.com>
+References: <20250205024116.798862-1-yoong.siang.song@intel.com>
+ <20250205024116.798862-5-yoong.siang.song@intel.com> <Z6NaFkPBZA18oILE@boxer>
+ <PH0PR11MB58305176708A48DD8EA60B96D8F72@PH0PR11MB5830.namprd11.prod.outlook.com>
+ <Z6OMwvk9zANCD8jI@boxer>
+In-Reply-To: <Z6OMwvk9zANCD8jI@boxer>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PH0PR11MB5830:EE_|DS0PR11MB7802:EE_
+x-ms-office365-filtering-correlation-id: bd21ca59-1bf1-44bc-3099-08dd4667333e
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|1800799024|376014|7416014|366016|38070700018; 
+x-microsoft-antispam-message-info: =?us-ascii?Q?gHf8zeb3MO2HWcZerOcIfn/0PTvqm3GdUWLfYeOUB4Ncd+knGbFwYbiZeBpT?=
+ =?us-ascii?Q?c+Amipwo9SZq9aH5jkmIfDURLXt9cMtKisFPgWGX8j0J3uLkvzMKGd8a85iC?=
+ =?us-ascii?Q?Hus3aWfrYzlppfaknxi9ZyKBbp942KLr77czudzvWmmFqnFidjPcIQdFOhag?=
+ =?us-ascii?Q?LW0rvQ1H0sd7u7m1cnJC6fu3w8p8Gr1QtEWjfrub7Rxws5zE84Q9RDnJIvc2?=
+ =?us-ascii?Q?TOvz2JFwOI8Uk9vQ894rDU8yDZbt/H7wasYX/MjStM1X+qsIGxcpr2a1zpub?=
+ =?us-ascii?Q?v/qjU6by3nX0lpm2xo/2BYXEfsmGbbUR4oXdy5JTCuoPw6nQ3fMdqJPquh8r?=
+ =?us-ascii?Q?pUSBKcwRoMo9jRoiRKWRVplEgCxnTeX+g8SUMwEHQVwe7E+899GnzosqNtcR?=
+ =?us-ascii?Q?mEzrzapNXtaZDoIZEboQ4JdDQFIg6unuhqI8dB+1iqgNEGtSJ7EJMerNvUdI?=
+ =?us-ascii?Q?Rp9HOz8y8s41UYPYUKVdMQQ867L9GYuNVWbdZxWGVv7WnytcSLy9LBjoU5dw?=
+ =?us-ascii?Q?J/Ts9Elv0Mr6qSnzva5L7eDzhqrcj6qmFM83Jsyk3a4RIM10iO3AFBs1CxA+?=
+ =?us-ascii?Q?FDsLxKXSWTVeMrfyspN9vj2RmS8d1hkzoeby/C6/xK0Y2g3n/Maqhj+OQyNQ?=
+ =?us-ascii?Q?E2c3u96wDAXvvs2f+VmM+eiC9HWlXteBUcXc+9uCpxzw35q6P2CV63Ech4Uq?=
+ =?us-ascii?Q?21oPYKJCju0vCTYLLrR6sa/4nVWDAM6MlOQwOribsQdII/Bv8enkMD98EGXW?=
+ =?us-ascii?Q?qQjdLmsEzsb6Sc5gHnsBCfHc8NnNo68jkV8dfPccMLIKEBV1ety5eq6THkHm?=
+ =?us-ascii?Q?vO7hgW1EOEvKlmTlNFugvepHyxSBzd00AvEf7Y0h3x2FVW+9QgSOzogpkqQZ?=
+ =?us-ascii?Q?VNIFKKl2LavF3zL5HtLjDhZ0o4tEGkxLy9W34urLM86Jtw9lP8kjYdBDpsOf?=
+ =?us-ascii?Q?R2X9OlT52C97p3k/YyAjpOAOh4nvAUo+vXle2IRGI1kiznT4SBOZ03QJZmYg?=
+ =?us-ascii?Q?a10K5+rCt6Ea0EDkLvXoz1bV/AE5z0WbFgHVFRdAcw3gXnciQMVBwhkOT66R?=
+ =?us-ascii?Q?qsaz0l8MAgQW8JP5bwDgRK7WCoAY4+0LWDRGJ9coMgJgZ5DxfDcUXhHsouo4?=
+ =?us-ascii?Q?DV+7QjKv1y9JkCF27XXQ30jB+RTHlM57ynMMRhw8vzYAyi8ndYVGW2YUBpj+?=
+ =?us-ascii?Q?rg+gbP6D+ty9tqghYrnIi/2jrvME7E+PqQxn72u5TlyqIkjTC2A0FyzocYm9?=
+ =?us-ascii?Q?73HHegdUrlULCtK8PVXIXkdt60qIUT+8IVUB5MFic4Au2S59wzNd3fuOXx5J?=
+ =?us-ascii?Q?vjDmJD7f4mgHHQ0XGx5unoeIDX17OaxVd4vr+N9di65mNz+/CdOyRBbG4X6D?=
+ =?us-ascii?Q?MUcpBA0oBQy4U0PQ1vxQCMSBeIs3810jh+tocbl02eagH5Dp80rlwCmRJe2h?=
+ =?us-ascii?Q?qg1Szo//GpT4eHJMCQG4bZjVPlo5x1Js?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR11MB5830.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(7416014)(366016)(38070700018); DIR:OUT;
+ SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?67kvq3ixt3beHEzAvhvPkJte2KK5J25N19sjd1gyyvAjvwvxCk1a7cjfsK/h?=
+ =?us-ascii?Q?xQlxbZWvSDmQOylVkbHps/q/I8grOXAx0iF4bOAZn0xUtq6WcE08LfmYjOeX?=
+ =?us-ascii?Q?EmY2LHOvlHJRiQarmjAQjzyzNZRUbSrFnF9lNI+ZWqKiu6YiiAct67rKGMxP?=
+ =?us-ascii?Q?3zVve8PZhJXIy9bc1yyjLecBebiZJe64qtaUDoLcpOy+dRbq0OYjYTqiRcCe?=
+ =?us-ascii?Q?Nu26NWRCqv+Tr5TjLaaaQ7g3AOZYBQgxmqMRHccQ8y/9ps7OYXb9SzpaAyba?=
+ =?us-ascii?Q?+s9XGcOFsSIicoTvLx3KIMkDrMWcGYImHhdiNDFuLZh4Uc1nAG5eByQxCtU2?=
+ =?us-ascii?Q?vxfr++aVb8d+4k1dRO8H73hwhjXtcvJpvqhz0hQDgKJ8+NxA/RK0pqXgluRQ?=
+ =?us-ascii?Q?gQK/WhFjbZ2lB4PedVe6xneFAEOAAOlH5WI1HafFQxfKQtI1QiSWRxCKgomZ?=
+ =?us-ascii?Q?YDsaZveCzH/xyUA/yduTEYVLiuVKlU2qhnrIbykwTvFPlVobur24/PsE8kIu?=
+ =?us-ascii?Q?j7ilveky1tMmcSghEOVjMoDFr07A3sg0zfsRbgibcUVuq99tjnGJZltM0ms8?=
+ =?us-ascii?Q?T2iDavpQ6ljA5W3gKgXNV8MWBNyQgBK2C1R1ow2rCKtaJIpC6/6i9cOjTaKi?=
+ =?us-ascii?Q?bW9ex8AZ7oep9F0BB6vOx9d06EHxS4GaH7nMRY2HKNKgTcts+p3PArPrKf80?=
+ =?us-ascii?Q?BuhIYa7X7WvZx/yx+IA/ZDNtMFYwkl/NkOQK8KfG7dmzmERYRaBK2L2NdNcz?=
+ =?us-ascii?Q?7DiCpsgH/WdP86OFkD5keG7jmGMcZK9t+mogLT+VNeWXmIUeGioWKdHjIrEf?=
+ =?us-ascii?Q?+EeKGrBpu2Jf90u/YWh/jKYZ8+ZwlVt4pYvbR0VaHCwTpneNXD7E+gJ7mf8C?=
+ =?us-ascii?Q?MokPOQtvvOvR3KdV8XR6Nd2d0x1K9VuKZGLjgn60zuppuR1ImhszWm1aIk0c?=
+ =?us-ascii?Q?3eLwHvwEcpRhhNvypfrWQC5k60ndyCCa0PEqLcXrXYlAYz57zXIySe3cpfM6?=
+ =?us-ascii?Q?Yk83Bu95QkNaPVoYxraqttus+8R5JYAy49D0dFyMpNOYkFYoKHI0cTll3Vvo?=
+ =?us-ascii?Q?598VTOpMlIvngVLKb5z5dk+gZH5BVAanajzie/EtA9JiCZyADsBoQPBooZOq?=
+ =?us-ascii?Q?9XUUqo6EUBzQPwcPbn67XplQZJM+SjEgXKmEwFbcVULFWp5pf6mB01a+JMIp?=
+ =?us-ascii?Q?/Pvk5UFhn2HYHYjyRinfTsZYUuyzBOlxsFAyfk31qpg2rpfiCY5AmXkJubS0?=
+ =?us-ascii?Q?tVsCBiQaYPuG79KeN9hYV6CWpWd+9+LNQwSYyXC661PbDdRnlfZmv294S/WX?=
+ =?us-ascii?Q?b7rxV09NlFiL5B4uKfcXfQ35EdW2+45ckBju2LtXwMV+vo/BhIT0vKqr3+EK?=
+ =?us-ascii?Q?QdQkyPDCEBjVBOhOEAVvQIXBgmu7L7XgBtRUrs44xnQbRx/0K6DUIai2c4UJ?=
+ =?us-ascii?Q?S/gWGkgAuZN1CbHnoQ6XLSLSR0FbwdSBkbHKgLtUN7Z1ZUKvIAsdrThm0BGM?=
+ =?us-ascii?Q?g6kV9lr7MMpvsYEUSoNjznPkdxaLemVnTUmXQvQxXo3ZCpCpzn1biKkiZBRO?=
+ =?us-ascii?Q?JdFuB/ykV7KGzbXx9lmrmyPCqyrsDrRqezij5qIWmFEB1LxZqHFBI9pTXLdy?=
+ =?us-ascii?Q?jw=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=networkplumber-org.20230601.gappssmtp.com; s=20230601; t=1738815209;
- x=1739420009; darn=lists.osuosl.org; 
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=TM7UR4/GE+Pw4bH5HnjLUytze5dwvUQ6PB2Awes6Qps=;
- b=WZn/9+Mv0L1HRhYoq9MvqbKvoK63dk2Lre0Vaj6FKvr7CPmMnDtLvhh2PXWzOUfyAa
- UcXDgsQ6Cc3//W59FdBt7s+8l+oD+YPvnKjRYErZ73Oy7drmjZ3AueaFyBDfOAgUzDoI
- Bhu7ZQXRmcPaJIc9+0fKOPbjmlKZBG3Elr8jLUWL+ga981ZHukVRwvCZIiQbAKHdzPEd
- sx03TyqZZrWxYKhJhcfqAuophLurzyhQS+dc/FeCmwiG9E56KEk98cq+Fxj6L3V5A8s+
- exv0fC+EnmoJsrC2/gd3nWxoyHXl50yZCjclb/hoDVqYL000VEj5M0rTyTLfGD7X2zAx
- WRng==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=networkplumber.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5830.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: bd21ca59-1bf1-44bc-3099-08dd4667333e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Feb 2025 04:32:01.1616 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 7XUVbZCxYB9/hJBmWYIEp57+igpWrNQBlzQWc/UqCxFMY/30WXFED4ixrPLb6GuXDXiTIbBbIPomP/qUQi0IQZrOtMtcpDfIFzWC/HCVmwA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB7802
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1738816328; x=1770352328;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=oImKCwuik/YXM2Johvgd1oc02EfXkfg8IW6WfyNiJaQ=;
+ b=ia0gaxSa4ysnS/rXpVPHwg7LzPT3dfZtBJ14/D4fNbiLDoclJRHOk9ob
+ VqjaKjtgQ2E6ZrGFH8mlmKJIUiKg0gPiQah2lSXpNm/LkfClwYqOwn0MS
+ tvtb0jJgtqH3cbmNIzOttdAhmogS1w+QtAE+LHHMekvQoypD+NqypqRW5
+ tW0nXxIvnDeSBzASeBVMoPps5aCSj5yW+MPkKo3Ek085tozdQh0SXMPjW
+ WK0e4QMeMVvP0N1ppNLOsSH3yUw8qwoMjyiy4siKd7maXmm8NGvC/PTFv
+ Ak+qz73V/GFMFPyB3sTT4kJ8mQrh9okMr/PjJqloqBiLxzRToELbuZeYX
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=networkplumber-org.20230601.gappssmtp.com
- header.i=@networkplumber-org.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=WZn/9+Mv
-Subject: Re: [Intel-wired-lan] suspend/resume broken of igc driver broken on
- 6.12
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=ia0gaxSa
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next v8 4/5] igc: Refactor empty
+ packet insertion into a reusable function
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -135,70 +262,196 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 5 Feb 2025 12:36:31 +0200
-"Lifshits, Vitaly" <vitaly.lifshits@intel.com> wrote:
+On Thursday, February 6, 2025 12:08 AM, Fijalkowski, Maciej <maciej.fijalko=
+wski@intel.com> wrote:
+>On Wed, Feb 05, 2025 at 03:43:19PM +0100, Song, Yoong Siang wrote:
+>> On Wednesday, February 5, 2025 8:31 PM, Fijalkowski, Maciej<maciej.fijal=
+kowski@intel.com> wrote:
+>> >On Wed, Feb 05, 2025 at 10:41:15AM +0800, Song Yoong Siang wrote:
+>> >> Refactor the code for inserting an empty packet into a new function
+>> >> igc_insert_empty_packet(). This change extracts the logic for inserti=
+ng
+>> >> an empty packet from igc_xmit_frame_ring() into a separate function,
+>> >> allowing it to be reused in future implementations, such as the XDP
+>> >> zero copy transmit function.
+>> >>
+>> >> This patch introduces no functional changes.
+>> >>
+>> >> Signed-off-by: Song Yoong Siang <yoong.siang.song@intel.com>
+>> >
+>> >Your SoB should be last in the set of tags.
+>> >
+>>
+>> Noted. Thanks for the tips.
+>>
+>> >> Reviewed-by: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
+>> >> ---
+>> >>  drivers/net/ethernet/intel/igc/igc_main.c | 42 ++++++++++++---------=
+--
+>> >>  1 file changed, 22 insertions(+), 20 deletions(-)
+>> >>
+>> >> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c
+>> >b/drivers/net/ethernet/intel/igc/igc_main.c
+>> >> index 21f318f12a8d..553d6d82af0d 100644
+>> >> --- a/drivers/net/ethernet/intel/igc/igc_main.c
+>> >> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+>> >> @@ -1566,6 +1566,26 @@ static bool igc_request_tx_tstamp(struct igc_a=
+dapter
+>> >*adapter, struct sk_buff *s
+>> >>  	return false;
+>> >>  }
+>> >>
+>> >> +static void igc_insert_empty_packet(struct igc_ring *tx_ring)
+>> >> +{
+>> >> +	struct igc_tx_buffer *empty_info;
+>> >> +	struct sk_buff *empty;
+>> >> +	void *data;
+>> >> +
+>> >> +	empty_info =3D &tx_ring->tx_buffer_info[tx_ring->next_to_use];
+>> >> +	empty =3D alloc_skb(IGC_EMPTY_FRAME_SIZE, GFP_ATOMIC);
+>> >> +	if (!empty)
+>> >> +		return;
+>> >> +
+>> >> +	data =3D skb_put(empty, IGC_EMPTY_FRAME_SIZE);
+>> >> +	memset(data, 0, IGC_EMPTY_FRAME_SIZE);
+>> >> +
+>> >> +	igc_tx_ctxtdesc(tx_ring, 0, false, 0, 0, 0);
+>> >> +
+>> >> +	if (igc_init_tx_empty_descriptor(tx_ring, empty, empty_info) < 0)
+>> >> +		dev_kfree_skb_any(empty);
+>> >
+>> >I still don't like the fact igc_insert_empty_packet() doesn't communica=
+te
+>> >to caller whether it successfully produced descriptors or not.
+>> >
+>> >Look at this from igc_xmit_frame_ring() POV:
+>> >- at the beginning you peek at Tx ring whether there is required amount=
+ of
+>> >  descriptors free to be used
+>> >- but then here's your additional routine which might consume two more
+>> >  descs and you are not aware of the status
+>> >- then you continue to further produce descriptors assuming there is
+>> >  enough space in Tx ring
+>> >
+>> >Right now igc_init_tx_empty_descriptor() returns -EBUSY when ring is fu=
+ll.
+>> >How can that happen in the first place + what if it would *really* happ=
+en
+>> >though? You just continue with your Tx flow.
+>> >
+>> >What I'm trying to say here is, at least from correctness POV, you shou=
+ld
+>> >take into the account two potential descriptors for launchtime feature
+>> >when calling igc_maybe_stop_tx(). And igc_init_tx_empty_descriptor()
+>> >should not really care about space in ring, it should be a caller's job=
+ to
+>> >call it only when it will be sure it's safe to do so.
+>> >
+>>
+>> Agree with you.
+>>
+>> In db0b124f02ba ("igc: Enhance Qbv scheduling by using first flag bit"),
+>> the 2 descriptors needed by empty packet is already taken into
+>> consideration by changing igc_maybe_stop_tx(tx_ring, count + 3) to
+>> igc_maybe_stop_tx(tx_ring, count + 5), so not enough ring space issue wi=
+ll not
+>> happened. However, the comment session is not updated, maybe i can updat=
+e
+>> it in next version of this patch as below:
+>>
+>> @@ -1586,6 +1608,7 @@ static netdev_tx_t igc_xmit_frame_ring(struct sk_b=
+uff
+>*skb,
+>>          *      + 1 desc for skb_headlen/IGC_MAX_DATA_PER_TXD,
+>>          *      + 2 desc gap to keep tail from touching head,
+>>          *      + 1 desc for context descriptor,
+>> +        *      + 2 desc for inserting an empty packet for launch time,
+>>          * otherwise try next time
+>>          */
+>>         for (f =3D 0; f < skb_shinfo(skb)->nr_frags; f++)
+>
+>Ahh good then, I didn't pay enough attention to comment. So it meant that
+>first two entries from comment were covered by @count and 2 desc gap + 1
+>ctxt desc were behind '3', previously.
+>
 
-> On 1/31/2025 3:21 AM, Stephen Hemminger wrote:
-> > On Thu, 30 Jan 2025 21:17:30 +0200
-> > "Lifshits, Vitaly" <vitaly.lifshits@intel.com> wrote:
-> >   
-> >> On 1/30/2025 7:11 PM, Stephen Hemminger wrote:  
-> >>> I am using:
-> >>>
-> >>> 5a:00.0 Ethernet controller: Intel Corporation Ethernet Controller I226-LM (rev 04)
-> >>> 	Subsystem: Intel Corporation Device 0000
-> >>> 	Flags: bus master, fast devsel, latency 0, IRQ 19, IOMMU group 20
-> >>> 	Memory at 6c500000 (32-bit, non-prefetchable) [size=1M]
-> >>> 	Memory at 6c600000 (32-bit, non-prefetchable) [size=16K]
-> >>> 	Capabilities: [40] Power Management version 3
-> >>> 	Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
-> >>> 	Capabilities: [70] MSI-X: Enable+ Count=5 Masked-
-> >>> 	Capabilities: [a0] Express Endpoint, IntMsgNum 0
-> >>> 	Capabilities: [100] Advanced Error Reporting
-> >>> 	Capabilities: [140] Device Serial Number 58-47-ca-ff-ff-7a-98-3d
-> >>> 	Capabilities: [1c0] Latency Tolerance Reporting
-> >>> 	Capabilities: [1f0] Precision Time Measurement
-> >>> 	Capabilities: [1e0] L1 PM Substates
-> >>> 	Kernel driver in use: igc
-> >>> 	Kernel modules: igc
-> >>>
-> >>>
-> >>> Using both Debian testing and my own kernel built from 6.12, the igc
-> >>> driver appears broken after resume.  
-> >>
-> >>   From which system state are you resuming?
-> >>  
-> >>>
-> >>> After resuming the device is down and no address present.
-> >>> Attempts to set link up manually fail.  
-> >>
-> >> Did you get any errors in the dmesg log?
-> >> What is the firmware version on your device (you can get it by running
-> >> ethtool -i)?
-> >>  
-> >>> If I do rmmod/modprobe of igc it comes back.
-> >>>
-> >>> Doing a bit of bisectting but it is slow going.  
-> >>
-> >> Meanwhile, we'll also try to reproduce this issue in our lab.  Could you
-> >> share more details about your system so we can create a similar setup?  
-> > 
-> > Given that error reported is -ENODEV, might be a generic netdev problem not
-> > just for igc device.
-> >   
-> 
-> We weren't able to reproduce this issue on our systems, even though we 
-> tried several suspend-resume cycles on different kernels and different 
-> systems.
-> 
-> However, a few days ago we received a comment in a BZ about an issue 
-> similar to yours. In there adding a short delay in igc_resume function
-> https://bugzilla.kernel.org/show_bug.cgi?id=219143
-> https://bugzilla.kernel.org/show_bug.cgi?id=219143#c123
-> 
-> 
-> 
-> Can you try to see if it fixes your issue as well?
+Yes, you are right.
 
-I tried the proposed delay and it had no impact.
-Any idea of other things to instrument?
+>>
+>> Since number of descriptor needed is guaranteed. I will take out the
+>> igc_desc_unused() checking in igc_init_tx_empty_descriptor().
+>
+>Yes
+>
+>> However, empty packet insertion might fail due to skb allocation failure
+>> and DMA mapping error. How about i make sure skb allocation and DMA
+>> mapping working, before proceed to fill in igc_tx_buffer, context desc,
+>> and data desc?
+>> IMHO, because these two errors are unlikely to happen, print a kernel
+>> warning msg should be enough.
+>>
+>> @@ -1108,20 +1108,12 @@ static int igc_init_empty_frame(struct igc_ring =
+*ring,
+>>         return 0;
+>>  }
+>>
+>> -static int igc_init_tx_empty_descriptor(struct igc_ring *ring,
+>> +static void igc_init_tx_empty_descriptor(struct igc_ring *ring,
+>>                                         struct sk_buff *skb,
+>>                                         struct igc_tx_buffer *first)
+>>  {
+>>         union igc_adv_tx_desc *desc;
+>>         u32 cmd_type, olinfo_status;
+>> -       int err;
+>> -
+>> -       if (!igc_desc_unused(ring))
+>> -               return -EBUSY;
+>> -
+>> -       err =3D igc_init_empty_frame(ring, first, skb);
+>> -       if (err)
+>> -               return err;
+>>
+>>         cmd_type =3D IGC_ADVTXD_DTYP_DATA | IGC_ADVTXD_DCMD_DEXT |
+>>                    IGC_ADVTXD_DCMD_IFCS | IGC_TXD_DCMD |
+>> @@ -1140,8 +1132,6 @@ static int igc_init_tx_empty_descriptor(struct igc=
+_ring
+>*ring,
+>>         ring->next_to_use++;
+>>         if (ring->next_to_use =3D=3D ring->count)
+>>                 ring->next_to_use =3D 0;
+>> -
+>> -       return 0;
+>>  }
+>>
+>>  #define IGC_EMPTY_FRAME_SIZE 60
+>> @@ -1567,6 +1557,38 @@ static bool igc_request_tx_tstamp(struct igc_adap=
+ter
+>*adapter, struct sk_buff *s
+>>         return false;
+>>  }
+>>
+>> +static void igc_insert_empty_packet(struct igc_ring *tx_ring)
+>> +{
+>> +       struct igc_tx_buffer *empty_info;
+>> +       struct sk_buff *empty;
+>> +       void *data;
+>> +
+>> +       empty_info =3D &tx_ring->tx_buffer_info[tx_ring->next_to_use];
+>> +       empty =3D alloc_skb(IGC_EMPTY_FRAME_SIZE, GFP_ATOMIC);
+>> +       if (unlikely(!empty)) {
+>> +               netdev_warn(tx_ring->netdev,
+>> +                           "Fail to alloc skb for empty packet\n");
+>
+>That should be at least ratelimited I think, but what really is the
+
+No problem, I will add net_ratelimit() checking.
+
+>problem to make these routines return status and check them on caller
+>side?
+>
+
+Ok, I will add return value and handle the case where the insertion of
+an empty frame fails and explain the reason behind.
+
+Thanks & Regards
+Siang
