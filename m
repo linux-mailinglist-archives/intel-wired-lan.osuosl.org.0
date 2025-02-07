@@ -1,67 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4EDAAA2C979
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Feb 2025 17:58:06 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 94E7EA2C97C
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Feb 2025 17:58:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 15EFA41747;
-	Fri,  7 Feb 2025 16:58:05 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3899542509;
+	Fri,  7 Feb 2025 16:58:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id wDqegdw9mtax; Fri,  7 Feb 2025 16:58:04 +0000 (UTC)
+ id PYhM8m-MxtBm; Fri,  7 Feb 2025 16:58:12 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CE198408C8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 42EBE41606
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1738947483;
-	bh=mGicEKN3UNt2QuxNXVuecrwmLA8dQtnX5VOxV2qaaKQ=;
+	s=default; t=1738947492;
+	bh=DarbtvQxDDWxDTWjIoJdK23xXRs1zpehpsumAur9MpY=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=Gz1k0FuT0Lh8scLVqYC8rL+f1f5flj9bTwd0qYy9vrMXwt2OrAy84pHC/DfTULWMc
-	 k0KUo364V0caL4b0+YNZJLkI+ZxK7Ai7h4kakhsia45Gm2e7YKj9HDe1bW7R/jE9q3
-	 WylkhzvEZXUTAHtnJzi/7mpPA6bPjoggkEts3tGLhcrvSzkSCKkqUNQS+1OizRMzSS
-	 /CM82Rf/WVR8zbhBDerpdO1ugSjl8WKVKBcqYRKB0hzRFZRPK61rNvX9e/HPBXntdU
-	 o0IzKbSIUS9Ql9AeoijaOZEjYuwQtN2NU/S4viU8EYa62aqk9iML85gN3VrfM/Dv0B
-	 duKzH/SfcMvjA==
+	b=RMW/nbj34nwqFtzJiYwSbVkuBvxK9TGtPciU5Q6Q61PjxG/5F9rZICFa+HH5BP/Jc
+	 ULqSH9X8X1/ZUFxP1LjejUeh8JkKAIxokeYFremeg/1y4UgF1txdsg9dtJF7GKfWpN
+	 dIJFludCOJSBTQW6A+nlaCQy7xInYPs497eTbrDBDKRGuTPjF1jby3G/pIUCMsYyTS
+	 5sr8bsdKQDQXsj2SlLprvFKkFcKp3922pgLlrpi2SSwnmPT3IthIajt8Pz1rNjbaIp
+	 dXVJ3/BgeOIEfKXp5K7jdMFSUbl+kllx3zAJCmQNmSBRwCXM6BW/cH4FU7MBVJHIcD
+	 Akbu8EwpLh/8g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CE198408C8;
-	Fri,  7 Feb 2025 16:58:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 42EBE41606;
+	Fri,  7 Feb 2025 16:58:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 46F2FE4
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 16:58:02 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 2EF261B5
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 16:58:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 427C2419E5
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 16:58:02 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1E968400B8
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 16:58:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3vdv4Cgt1vOM for <intel-wired-lan@lists.osuosl.org>;
- Fri,  7 Feb 2025 16:58:01 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id EU4j0n9d1AaA for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  7 Feb 2025 16:58:09 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
  helo=mgamail.intel.com; envelope-from=faizal.abdul.rahim@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 1CB1C4172A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1CB1C4172A
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 1E3404041C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1E3404041C
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1CB1C4172A
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 16:58:01 +0000 (UTC)
-X-CSE-ConnectionGUID: E07Fs/ScSfm9PQma516/aA==
-X-CSE-MsgGUID: gJ2v/bvuRDaQ5LEAsh43KA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11338"; a="39723037"
-X-IronPort-AV: E=Sophos;i="6.13,267,1732608000"; d="scan'208";a="39723037"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1E3404041C
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 16:58:09 +0000 (UTC)
+X-CSE-ConnectionGUID: nWNTpLpwTsSGDjEfscP8vA==
+X-CSE-MsgGUID: c0WFGRzpQP+ZPuuHAzYK4w==
+X-IronPort-AV: E=McAfee;i="6700,10204,11338"; a="39723074"
+X-IronPort-AV: E=Sophos;i="6.13,267,1732608000"; d="scan'208";a="39723074"
 Received: from orviesa006.jf.intel.com ([10.64.159.146])
  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Feb 2025 08:58:00 -0800
-X-CSE-ConnectionGUID: +FrWn++mT/2brjcg/+IjPg==
-X-CSE-MsgGUID: g7LdY6GIRRGue3yOCxr/Zw==
+ 07 Feb 2025 08:58:08 -0800
+X-CSE-ConnectionGUID: tfr/YcbRRh+AHkcpbOl+AA==
+X-CSE-MsgGUID: zvqMVvaISreU+qfufv+6zQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,267,1732608000"; d="scan'208";a="111534632"
+X-IronPort-AV: E=Sophos;i="6.13,267,1732608000"; d="scan'208";a="111534649"
 Received: from mohdfai2-ilbpg12-1.png.intel.com ([10.88.227.73])
- by orviesa006.jf.intel.com with ESMTP; 07 Feb 2025 08:57:52 -0800
+ by orviesa006.jf.intel.com with ESMTP; 07 Feb 2025 08:58:00 -0800
 From: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
 To: Tony Nguyen <anthony.l.nguyen@intel.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
@@ -91,8 +91,8 @@ To: Tony Nguyen <anthony.l.nguyen@intel.com>,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
  linux-arm-kernel@lists.infradead.org, bpf@vger.kernel.org
-Date: Fri,  7 Feb 2025 11:56:47 -0500
-Message-Id: <20250207165649.2245320-8-faizal.abdul.rahim@linux.intel.com>
+Date: Fri,  7 Feb 2025 11:56:48 -0500
+Message-Id: <20250207165649.2245320-9-faizal.abdul.rahim@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250207165649.2245320-1-faizal.abdul.rahim@linux.intel.com>
 References: <20250207165649.2245320-1-faizal.abdul.rahim@linux.intel.com>
@@ -100,25 +100,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1738947482; x=1770483482;
+ t=1738947490; x=1770483490;
  h=from:to:subject:date:message-id:in-reply-to:references:
  mime-version:content-transfer-encoding;
- bh=/PyPrmfm+NI2NSJWptGfLBq2pbHuE/FgdlMpKaEXpLM=;
- b=Zrp6lOcvf7Be5fgc4LmK9pVwl/VMIlTuPlXeaiS3j1dfOadlnwX3z6NY
- ShfekJ+11Py6e+euTFVKbDAbySSr7pl9WY1w/uLux8Q8wJxLv/LZBKTbJ
- lyNmV+yYPNCZOI/jZHboCluD/5IZu3U9a90KRVBIWpv2KdXkICiMpdZ/b
- lHGT5ZjmRVrDp7EBCzOklJU3JVNIIPinWUC5Km9S/INK7OB62/Uc0MEJL
- e6BG86y6bVogvfcgsMJyMJTJRH36OMlUboHAy5I7Wk7LXiGDq3fr0uJns
- SsdWh/TejLpW28MuJr4GDfZ67MQPM+3N8zMM4kcon+BNzhbXYlRFNc80D
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=qK9qrQMjSldwbrNHCdVyeZMm0a8dUnl6Ry1EmjgiouE=;
+ b=d3aEhQteUuQyn/C2LsZcVLnDzycXb92UEdh7NdECxyr9/QSNsVn+4sQi
+ 6Ttr1ruxjmsI6LrRhHWFBHCt39sgGRK9gwXKmdVDvR5QTJDzMRrpJ9Z8k
+ b3HLpGG2wzEUAwYDwTRM4NBs5MKv4U+MJw7HZQgAfDNCkkqBE4wMzyuhA
+ cZLSXF5aLJFtXF8K4MLMvLHfH4gnBrN19sJuDhBJscjMSPhsSyoVMl7xd
+ npiKRmnlOZptDAfyNGZdPxDkCN0ka/Kpxfz4fkeO/7KsxqM68y3KPzkkJ
+ GL+KX5hwV7NGlKzRxwDwgtInC/9ASZ8pwDgsMXKk59FpVHMddFpCqKPpP
+ A==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Zrp6lOcv
-Subject: [Intel-wired-lan] [PATCH iwl-next v3 7/9] igc: Add support for
- preemptible traffic class in taprio
+ header.a=rsa-sha256 header.s=Intel header.b=d3aEhQte
+Subject: [Intel-wired-lan] [PATCH iwl-next v3 8/9] igc: Add support to get
+ MAC Merge data via ethtool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -134,183 +134,73 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Set queue as preemptible or express via taprio.
-This will eventually set queue-specific preemptible field in TXQCTL
-register.
+Implement "ethtool --show-mm" callback for IGC.
 
-Implement configure_tx(), a callback triggered by mmsv, to set tx_enabled
-and update preemptible queue settings. tx_enabled is a new field that
-serves as a condition in igc_tsn_enable_offload() before configuring the
-preemptible queue. This provides some control over FPE in TX, despite
-lacking a dedicated register.
+Tested with command:
+$ ethtool --show-mm enp1s0.
+  MAC Merge layer state for enp1s0:
+  pMAC enabled: on
+  TX enabled: on
+  TX active: on
+  TX minimum fragment size: 64
+  RX minimum fragment size: 60
+  Verify enabled: on
+  Verify time: 128
+  Max verify time: 128
+  Verification status: SUCCEEDED
 
-Verified that the correct preemptible hardware queue is set using the
-following commands:
+Verified that the fields value are retrieved correctly.
 
-a) 1:1 TC-to-Queue Mapping
-   $ sudo tc qdisc replace dev enp1s0 parent root handle 100 \
-     taprio num_tc 4 map 3 2 1 0 3 3 3 3 3 3 3 3 3 3 3 3 \
-     queues 1@0 1@1 1@2 1@3 base-time 0 sched-entry S F 100000 \
-     fp E E P P
-
-b) Non-1:1 TC-to-Queue Mapping
-   $ sudo tc qdisc replace  dev enp1s0 parent root handle 100 \
-     taprio num_tc 3 map 2 1 0 2 2 2 2 2 2 2 2 2 2 2 2 2
-     queues 2@0 1@2 1@3
-     fp E E P
-
-Co-developed-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 Signed-off-by: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc.h         |  3 +-
- drivers/net/ethernet/intel/igc/igc_defines.h |  1 +
- drivers/net/ethernet/intel/igc/igc_main.c    | 36 ++++++++++++++++++++
- drivers/net/ethernet/intel/igc/igc_tsn.c     | 17 +++++++++
- 4 files changed, 56 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/igc/igc_ethtool.c | 14 ++++++++++++++
+ drivers/net/ethernet/intel/igc/igc_tsn.h     |  1 +
+ 2 files changed, 15 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index 2f3662143589..59e6fca808e4 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -43,6 +43,7 @@ void igc_ethtool_set_ops(struct net_device *);
- struct fpe_t {
- 	struct ethtool_mmsv mmsv;
- 	u32 tx_min_frag_size;
-+	bool tx_enabled;
- };
- 
- enum igc_mac_filter_type {
-@@ -163,7 +164,7 @@ struct igc_ring {
- 	bool launchtime_enable;         /* true if LaunchTime is enabled */
- 	ktime_t last_tx_cycle;          /* end of the cycle with a launchtime transmission */
- 	ktime_t last_ff_cycle;          /* Last cycle with an active first flag */
--
-+	bool preemptible;               /* True if not express */
- 	u32 start_time;
- 	u32 end_time;
- 	u32 max_sdu;
-diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
-index 038ee89f1e08..208899e67308 100644
---- a/drivers/net/ethernet/intel/igc/igc_defines.h
-+++ b/drivers/net/ethernet/intel/igc/igc_defines.h
-@@ -556,6 +556,7 @@
- #define IGC_TXQCTL_QUEUE_MODE_LAUNCHT	0x00000001
- #define IGC_TXQCTL_STRICT_CYCLE		0x00000002
- #define IGC_TXQCTL_STRICT_END		0x00000004
-+#define IGC_TXQCTL_PREEMPTIBLE		0x00000008
- #define IGC_TXQCTL_QAV_SEL_MASK		0x000000C0
- #define IGC_TXQCTL_QAV_SEL_CBS0		0x00000080
- #define IGC_TXQCTL_QAV_SEL_CBS1		0x000000C0
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 7fe6875d7bf7..f15ac7565fbd 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -6258,6 +6258,39 @@ static bool is_base_time_past(ktime_t base_time, const struct timespec64 *now)
- 	return timespec64_compare(now, &b) > 0;
- }
- 
-+static u32 igc_map_tc_to_queue(const struct igc_adapter *adapter,
-+			       unsigned long preemptible_tcs)
-+{
-+	struct net_device *dev = adapter->netdev;
-+	u32 i, queue = 0;
-+
-+	for (i = 0; i < dev->num_tc; i++) {
-+		u32 offset, count;
-+
-+		if (!(preemptible_tcs & BIT(i)))
-+			continue;
-+
-+		offset = dev->tc_to_txq[i].offset;
-+		count = dev->tc_to_txq[i].count;
-+		queue |= GENMASK(offset + count - 1, offset);
-+	}
-+
-+	return queue;
-+}
-+
-+static void igc_save_preempt_queue(struct igc_adapter *adapter,
-+				   const struct tc_mqprio_qopt_offload *mqprio)
-+{
-+	u32 preemptible_queue = igc_map_tc_to_queue(adapter,
-+						    mqprio->preemptible_tcs);
-+
-+	for (int i = 0; i < adapter->num_tx_queues; i++) {
-+		struct igc_ring *tx_ring = adapter->tx_ring[i];
-+
-+		tx_ring->preemptible = preemptible_queue & BIT(i);
-+	}
-+}
-+
- static bool validate_schedule(struct igc_adapter *adapter,
- 			      const struct tc_taprio_qopt_offload *qopt)
- {
-@@ -6344,6 +6377,7 @@ static int igc_qbv_clear_schedule(struct igc_adapter *adapter)
- 		ring->start_time = 0;
- 		ring->end_time = NSEC_PER_SEC;
- 		ring->max_sdu = 0;
-+		ring->preemptible = false;
- 	}
- 
- 	spin_lock_irqsave(&adapter->qbv_tx_lock, flags);
-@@ -6500,6 +6534,8 @@ static int igc_save_qbv_schedule(struct igc_adapter *adapter,
- 			ring->max_sdu = 0;
- 	}
- 
-+	igc_save_preempt_queue(adapter, &qopt->mqprio);
-+
+diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+index 081e24f228b2..7f0052e0d50c 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
++++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+@@ -1782,6 +1782,19 @@ static int igc_ethtool_set_eee(struct net_device *netdev,
  	return 0;
  }
  
-diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
-index d9de2cfb0c17..95193a7e8768 100644
---- a/drivers/net/ethernet/intel/igc/igc_tsn.c
-+++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
-@@ -122,6 +122,18 @@ static int igc_fpe_xmit_smd_frame(struct igc_adapter *adapter,
- 	return err;
- }
- 
-+static void igc_fpe_configure_tx(struct ethtool_mmsv *mmsv, bool tx_enable)
++static int igc_ethtool_get_mm(struct net_device *netdev,
++			      struct ethtool_mm_state *cmd)
 +{
-+	struct fpe_t *fpe = container_of(mmsv, struct fpe_t, mmsv);
-+	struct igc_adapter *adapter;
++	struct igc_adapter *adapter = netdev_priv(netdev);
++	struct fpe_t *fpe = &adapter->fpe;
 +
-+	adapter = container_of(fpe, struct igc_adapter, fpe);
-+	adapter->fpe.tx_enabled = tx_enable;
++	ethtool_mmsv_get_mm(&fpe->mmsv, cmd);
++	cmd->tx_min_frag_size = fpe->tx_min_frag_size;
++	cmd->rx_min_frag_size = IGC_RX_MIN_FRAG_SIZE;
 +
-+	/* Update config since tx_enabled affects preemptible queue configuration */
-+	igc_tsn_offload_apply(adapter);
++	return 0;
 +}
 +
- static void igc_fpe_send_mpacket(struct ethtool_mmsv *mmsv,
- 				 enum ethtool_mpacket type)
- {
-@@ -143,12 +155,14 @@ static void igc_fpe_send_mpacket(struct ethtool_mmsv *mmsv,
- }
+ static int igc_ethtool_set_mm(struct net_device *netdev,
+ 			      struct ethtool_mm_cfg *cmd,
+ 			      struct netlink_ext_ack *extack)
+@@ -2093,6 +2106,7 @@ static const struct ethtool_ops igc_ethtool_ops = {
+ 	.set_rxfh		= igc_ethtool_set_rxfh,
+ 	.get_ts_info		= igc_ethtool_get_ts_info,
+ 	.get_channels		= igc_ethtool_get_channels,
++	.get_mm			= igc_ethtool_get_mm,
+ 	.set_mm			= igc_ethtool_set_mm,
+ 	.set_channels		= igc_ethtool_set_channels,
+ 	.get_priv_flags		= igc_ethtool_get_priv_flags,
+diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.h b/drivers/net/ethernet/intel/igc/igc_tsn.h
+index 898c4630bc70..c82f9718cb85 100644
+--- a/drivers/net/ethernet/intel/igc/igc_tsn.h
++++ b/drivers/net/ethernet/intel/igc/igc_tsn.h
+@@ -4,6 +4,7 @@
+ #ifndef _IGC_TSN_H_
+ #define _IGC_TSN_H_
  
- static const struct ethtool_mmsv_ops igc_mmsv_ops = {
-+	.configure_tx = igc_fpe_configure_tx,
- 	.send_mpacket = igc_fpe_send_mpacket,
- };
++#define IGC_RX_MIN_FRAG_SIZE		60
+ #define SMD_FRAME_SIZE			60
  
- void igc_fpe_init(struct igc_adapter *adapter)
- {
- 	adapter->fpe.tx_min_frag_size = TX_MIN_FRAG_SIZE;
-+	adapter->fpe.tx_enabled = false;
- 	ethtool_mmsv_init(&adapter->fpe.mmsv, adapter->netdev, &igc_mmsv_ops);
- }
- 
-@@ -456,6 +470,9 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
- 		if (ring->launchtime_enable)
- 			txqctl |= IGC_TXQCTL_QUEUE_MODE_LAUNCHT;
- 
-+		if (adapter->fpe.tx_enabled && ring->preemptible)
-+			txqctl |= IGC_TXQCTL_PREEMPTIBLE;
-+
- 		/* Skip configuring CBS for Q2 and Q3 */
- 		if (i > 1)
- 			goto skip_cbs;
+ DECLARE_STATIC_KEY_FALSE(igc_fpe_enabled);
 -- 
 2.34.1
 
