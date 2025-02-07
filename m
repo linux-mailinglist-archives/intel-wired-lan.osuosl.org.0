@@ -1,97 +1,123 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 630C3A2C835
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Feb 2025 17:02:40 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C194A2C963
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Feb 2025 17:57:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 734A840D5B;
-	Fri,  7 Feb 2025 16:02:38 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E0A2542B8E;
+	Fri,  7 Feb 2025 16:57:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sjbnwAWIWQ1x; Fri,  7 Feb 2025 16:02:37 +0000 (UTC)
+ id 3qkR7KCxEoXo; Fri,  7 Feb 2025 16:57:08 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 76DB040678
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 96C8D42B62
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1738944157;
-	bh=SAfShQCSiMpGrNIkbzXuL3EXPLqdZooW7wqPfpnyAmY=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=6aC+pPKWu/oN35CisVumpQ2bCtZQobp9G+Hzl2prXaJBXy1IRCdjNeRdkOEBHrRAi
-	 VxKKJO2Jf3zdpc1q+S4InlbrONHKnlY8TAflXXtPYmSInQf5//oQLgZR45ncCPWtCa
-	 GtTJIXJg82JOD70F1RXg78PUGjBt2Rhu0D38tILL9XyBLCr50yaQGfAeEsdMG7hwQ+
-	 QvhXVONRFWdziaxTtZe7jcM4FefcMa7IU1a7UL2j+qk8w13IyvZ6FgWUnq5cUKnGcY
-	 SxJJoujI+vY5fON3bPUdzc3um93YTbc4OlKwMs3P+W94ZN/65Zh45A1ol1yfuDA7l8
-	 qYbzVrWnaMDOQ==
+	s=default; t=1738947427;
+	bh=7J0r4qdpm9ogCxxEXCmuWQ05YmyiQ/JmT0n5JH2LdWs=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=ICd7L/JvsD4AU009hcnYQKbnaFRTbfsLE23qM5w1jGmPAtBRT7fTl4jSf09pgfHVU
+	 dfWLZnWo/Fuv65g+gu28AAy2mRIdgZpR49OPawGAOOXX1C4N4gtbuXx/HXJ53xCBWZ
+	 UIUBLuhgigTZCZ03WX2trkfa7hofCPpDlbcqYEDgS7cvA4rDQ3WmlTpF1rucl+ZnQM
+	 UpEUmyK4BTqg6dNZFWetVvCU+uGCSl7RAZT80a3KqlYGWnya8HKcQoeZxNSbm2oXMs
+	 vaodVAhzZoIaVomSlUSZHDsc/RriEXV7V4mZqjNu6vM2U0oJFL+0DIEkvhyXKB3IB4
+	 qmvR9Lgq5sJvw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 76DB040678;
-	Fri,  7 Feb 2025 16:02:37 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 96C8D42B62;
+	Fri,  7 Feb 2025 16:57:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 4FBD3CF
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 18:57:23 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 31B75CF
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 16:57:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 338028485B
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 18:57:23 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 20C8542A4A
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 16:57:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xuXS-Rl04v91 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  6 Feb 2025 18:57:22 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=kees@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 7E5C2847F2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7E5C2847F2
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7E5C2847F2
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Feb 2025 18:57:22 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 6A98D5C6FC0;
- Thu,  6 Feb 2025 18:56:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CDF58C4CEDD;
- Thu,  6 Feb 2025 18:57:20 +0000 (UTC)
-Date: Thu, 6 Feb 2025 10:57:20 -0800
-From: Kees Cook <kees@kernel.org>
-To: Simon Horman <horms@kernel.org>
-Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- intel-wired-lan@lists.osuosl.org,
- Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
- Konrad Knitter <konrad.knitter@intel.com>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- Qiuxu Zhuo <qiuxu.zhuo@intel.com>,
- Linus Torvalds <torvalds@linux-foundation.org>,
- Nick Desaulniers <nick.desaulniers@gmail.com>,
- Jiri Slaby <jirislaby@kernel.org>
-Message-ID: <202502061056.162506F7@keescook>
-References: <20250205104252.30464-2-przemyslaw.kitszel@intel.com>
- <20250205204546.GM554665@kernel.org>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Z2try6X24gHB for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  7 Feb 2025 16:57:04 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
+ helo=mgamail.intel.com; envelope-from=faizal.abdul.rahim@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org A075E426F8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A075E426F8
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id A075E426F8
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 16:57:03 +0000 (UTC)
+X-CSE-ConnectionGUID: Hlzwoq8BRwy61kyCztMI/A==
+X-CSE-MsgGUID: 1Y9RdkAlQBGrEKgzb9v/fA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11338"; a="39722855"
+X-IronPort-AV: E=Sophos;i="6.13,267,1732608000"; d="scan'208";a="39722855"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+ by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Feb 2025 08:57:03 -0800
+X-CSE-ConnectionGUID: n988hgUKQKeTWgip6bqsFQ==
+X-CSE-MsgGUID: nVQxFxGYRYCqIs7rWWjTuQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.13,267,1732608000"; d="scan'208";a="111534437"
+Received: from mohdfai2-ilbpg12-1.png.intel.com ([10.88.227.73])
+ by orviesa006.jf.intel.com with ESMTP; 07 Feb 2025 08:56:53 -0800
+From: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Simon Horman <horms@kernel.org>, Russell King <linux@armlinux.org.uk>,
+ Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, Furong Xu <0x1207@gmail.com>,
+ Russell King <rmk+kernel@armlinux.org.uk>,
+ Vladimir Oltean <vladimir.oltean@nxp.com>,
+ Serge Semin <fancer.lancer@gmail.com>,
+ Xiaolei Wang <xiaolei.wang@windriver.com>,
+ Suraj Jaiswal <quic_jsuraj@quicinc.com>,
+ Kory Maincent <kory.maincent@bootlin.com>, Gal Pressman <gal@nvidia.com>,
+ Jesper Nilsson <jesper.nilsson@axis.com>,
+ Andrew Halaney <ahalaney@redhat.com>,
+ Choong Yong Liang <yong.liang.choong@linux.intel.com>,
+ Faizal Rahim <faizal.abdul.rahim@linux.intel.com>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, bpf@vger.kernel.org
+Date: Fri,  7 Feb 2025 11:56:40 -0500
+Message-Id: <20250207165649.2245320-1-faizal.abdul.rahim@linux.intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250205204546.GM554665@kernel.org>
-X-Mailman-Approved-At: Fri, 07 Feb 2025 16:02:35 +0000
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1738868240;
- bh=TPePmZCPXcaG0UTSmZ9q5V7OsD2otJ6zxRyMZF5OM+w=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ZvxDa2jd0aw9H6IdLUba7cozMJTmnwaTZZlm8NR+rtXnMLrswhrC5B/1qGIifTS9W
- aXS/r1srr1JfeBBsvjY9Wkcc/vtL3qzzmXooJs8+OfpMmaXhIP2RmH/IhlHUbwZhHZ
- aX4f9AbpDluW45geDsrauPMkJklmflYgNbLapZMX8qLBZA0g2acFVPMczuK3ObVjhW
- 9a8mgE6Pwc3q1YHifry+olZsk529TBbR+JVyDyY4EOiA8/gPIJk+qK5ANSvvtC0r7F
- mdTs8QO5LxHVicFpq+5vRGLWRo6JP+53aOElwkSdyIeJ3CxB9FCpbksNg9gA63UPMf
- d4Xt5uDRA1yQQ==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1738947424; x=1770483424;
+ h=from:to:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=yi+lqoiaOf90NYBk5ORhTmBVwnJwPtvDSnNF5mudk+g=;
+ b=j6T8XvNsrvlBhFTX8bkndeB4C3O358LEoTsm3Zgwx+gUNtSkytlqSAib
+ Cw2gwQsy8f4cbKBYOX9Y2LadQ5e9JvKPwSLaefO3NzSvalxvJO8DdI6fJ
+ dRpPWsGnwkBg3YAL4FDsTUf/7h2UhQgZpXvO7aixdc9XTv+DYqZGclgtq
+ xdxKwHo6gIqRfLgK9Jl75xijWIadAsLhe0e6harqEySwy2+ZxHtzU9lAf
+ Ya7ASdXpafSh1lKe2MoUGr5KIeQgC2lxjrcUIFHZPp5sSWG9ExKuYpp6t
+ hHtiRZSflCyt3dsdLNCYzXqO7vZ7cm5S7BOIR0ZDCFEQkQUT/tXpThKa8
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=ZvxDa2jd
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] ice: health.c: fix
- compilation on gcc 7.5
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=j6T8XvNs
+Subject: [Intel-wired-lan] [PATCH iwl-next v3 0/9] igc: Add support for
+ Frame Preemption feature in IGC
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -107,32 +133,81 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Feb 05, 2025 at 08:45:46PM +0000, Simon Horman wrote:
-> I ran into a similar problem not so long ago and I'm wondering if
-> the following, based on a suggestion by Jiri Slaby, resolves your
-> problem.
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/devlink/health.c b/drivers/net/ethernet/intel/ice/devlink/health.c
-> index ea40f7941259..19c3d37aa768 100644
-> --- a/drivers/net/ethernet/intel/ice/devlink/health.c
-> +++ b/drivers/net/ethernet/intel/ice/devlink/health.c
-> @@ -25,10 +25,10 @@ struct ice_health_status {
->   * The below lookup requires to be sorted by code.
->   */
->  
-> -static const char *const ice_common_port_solutions =
-> +static const char ice_common_port_solutions[] =
->  	"Check your cable connection. Change or replace the module or cable. Manually set speed and duplex.";
-> -static const char *const ice_port_number_label = "Port Number";
-> -static const char *const ice_update_nvm_solution = "Update to the latest NVM image.";
-> +static const char ice_port_number_label[] = "Port Number";
-> +static const char ice_update_nvm_solution[] = "Update to the latest NVM image.";
->  
->  static const struct ice_health_status ice_health_status_lookup[] = {
->  	{ICE_AQC_HEALTH_STATUS_ERR_UNKNOWN_MOD_STRICT, "An unsupported module was detected.",
-> 
+Introduces support for the FPE feature in the IGC driver.
 
-I'd agree that would be the preferred fix. :)
+The patches aligns with the upstream FPE API:
+https://patchwork.kernel.org/project/netdevbpf/cover/20230220122343.1156614-1-vladimir.oltean@nxp.com/
+https://patchwork.kernel.org/project/netdevbpf/cover/20230119122705.73054-1-vladimir.oltean@nxp.com/
 
--- 
-Kees Cook
+It builds upon earlier work:
+https://patchwork.kernel.org/project/netdevbpf/cover/20220520011538.1098888-1-vinicius.gomes@intel.com/
+
+The patch series adds the following functionalities to the IGC driver:
+a) Configure FPE using `ethtool --set-mm`.
+b) Display FPE settings via `ethtool --show-mm`.
+c) View FPE statistics using `ethtool --include-statistics --show-mm'.
+e) Enable preemptible/express queue with `fp`:
+   tc qdisc add ... root taprio \
+   fp E E P P
+
+Change Log:
+v2 -> v3:
+- Implement configure_tx() mmsv callback (Vladimir)
+- Use static_branch_inc() and static_branch_dec() (Vladimir)
+- Add adapter->fpe.mmsv.pmac_enabled as extra check (Vladimir)
+- Remove unnecessary error check in igc_fpe_init_tx_descriptor() (Vladimir)
+- Additional places to use FIELD_PREP() instead of manual bit manipulation (Vladimir)
+- IGC_TXD_POPTS_SMD_V and IGC_TXD_POPTS_SMD_R type change to enum (Vladimir)
+- Remove unnecessary netif_running() check in igc_fpe_xmit_frame (Vladimir)
+- Rate limit print in igc_fpe_send_mpacket (Vladimir)
+
+v1 -> v2:
+- Extract the stmmac verification logic into a common library (Vladimir)
+- igc to use common library for verification (Vladimir)
+- Fix syntax for kernel-doc to use "Return:" (Vladimir)
+- Use FIELD_GET instead of manual bit masking (Vladimir)
+- Don't assign 0 to statistics counter in igc_ethtool_get_mm_stats() (Vladimir)
+- Use pmac-enabled as a condition to allow MAC address value 0 (Vladimir)
+- Define macro register value in increasing value order (Vladimir)
+- Fix tx-min-frag-size handling for igc (Vladimir)
+- Handle link state changes with verification in igc (Vladimir)
+- Add static key for fast path code (Vladimir)
+- rx_min_frag_size get from constant (Vladimir)
+
+v1: https://patchwork.kernel.org/project/netdevbpf/cover/20241216064720.931522-1-faizal.abdul.rahim@linux.intel.com/
+v2: https://patchwork.kernel.org/project/netdevbpf/cover/20250205100524.1138523-1-faizal.abdul.rahim@linux.intel.com/
+
+Faizal Rahim (8):
+  igc: Rename xdp_get_tx_ring() for non-xdp usage
+  igc: Optimize the TX packet buffer utilization
+  igc: Set the RX packet buffer size for TSN mode
+  igc: Add support for frame preemption verification
+  igc: Add support to set tx-min-frag-size
+  igc: Add support for preemptible traffic class in taprio
+  igc: Add support to get MAC Merge data via ethtool
+  igc: Add support to get frame preemption statistics via ethtool
+
+Vladimir Oltean (1):
+  net: ethtool: mm: extract stmmac verification logic into common
+    library
+
+ drivers/net/ethernet/intel/igc/igc.h          |  18 +-
+ drivers/net/ethernet/intel/igc/igc_base.h     |   1 +
+ drivers/net/ethernet/intel/igc/igc_defines.h  |  16 +-
+ drivers/net/ethernet/intel/igc/igc_ethtool.c  |  76 ++++++
+ drivers/net/ethernet/intel/igc/igc_main.c     | 101 +++++++-
+ drivers/net/ethernet/intel/igc/igc_regs.h     |  16 ++
+ drivers/net/ethernet/intel/igc/igc_tsn.c      | 220 ++++++++++++++++-
+ drivers/net/ethernet/intel/igc/igc_tsn.h      |  34 +++
+ drivers/net/ethernet/stmicro/stmmac/stmmac.h  |  16 +-
+ .../ethernet/stmicro/stmmac/stmmac_ethtool.c  |  41 +---
+ .../net/ethernet/stmicro/stmmac/stmmac_fpe.c  | 174 +++-----------
+ .../net/ethernet/stmicro/stmmac/stmmac_fpe.h  |   5 -
+ .../net/ethernet/stmicro/stmmac/stmmac_main.c |   8 +-
+ include/linux/ethtool.h                       |  61 +++++
+ net/ethtool/mm.c                              | 224 +++++++++++++++++-
+ 15 files changed, 794 insertions(+), 217 deletions(-)
+
+--
+2.34.1
+
