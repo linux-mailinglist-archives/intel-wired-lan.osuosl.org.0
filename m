@@ -1,122 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E393A2C37A
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Feb 2025 14:26:30 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5043FA2C41A
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Feb 2025 14:50:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 823F36069A;
-	Fri,  7 Feb 2025 13:26:28 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C643A704AE;
+	Fri,  7 Feb 2025 13:50:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xgLN1QzCMogf; Fri,  7 Feb 2025 13:26:27 +0000 (UTC)
+ id erbyEnvgihvW; Fri,  7 Feb 2025 13:50:17 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 57EA661141
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C873D6FBC9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1738934787;
-	bh=35QjS2mTIYO+gJZIHE49mfSaBK9urZetBSEHinYZAYQ=;
+	s=default; t=1738936216;
+	bh=S+lsjWyw+nz+SF3V+dmblzSnVfJVJjaxzaNsfkDsaxw=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=rATG0I8W3xQ3w/Li4QuBGFzGU6UmhOahltgBTbbqMgwSQc+FqXwMKwN7aTHK/IxMa
-	 5wZjaljnDdURir/3AfPvmzcHrVCRjP98dPquXhIvekW0lO5ZszLVLfjXUB0jUDNJcr
-	 huWxr5DF9T0U1DoVmK7zVPz6/bh7SKpBKSzbY372D3XWpr9HkBMd6ptgQofTOCgUrZ
-	 I1+4kyR9dTM1Ze3ziEq3YbnKo7rWoodOMIeFsNHo4VdRmyT3zPvkf/vw7CFDwqBLnW
-	 7p3Y3BRFFVsHGQDKDOBkOb8QPTI2Ww6LW4o9+3jFLorfATFwWmhMXlQx1Vz+DuyVIB
-	 ZpAWcCcGgZEsg==
+	b=3fP2QETLjf47Di0ap6l3XCIW+DjiOfGfqE9TYcPuZtKaP4B76jwIXvJFnNnqmR9eS
+	 nZ0T6HhXQwvQyYT5xRziKPicd+49fVEXUDVJsL0v4QepM69NvX2yYDwd0yKzQkNK8V
+	 lV1lm9EWNrrchWrIy/E0AKx+TcmY+NaIyrwz4sOJn3GBF9OdCGda7sjmSaM+FsVkXI
+	 BdcGaE3AVST5wj5BL0YlFU5WcnGqll2iFCO011ZpAYR2L5Cc7EKs2nE06MJzpqlQSt
+	 2G0dPJlLbaBAKyb1N5PLZIFjbJYh5JL98AddodEytBDyKLAMFkRkq57HFz8Uznx43x
+	 PIb4+TrHYdiKQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 57EA661141;
-	Fri,  7 Feb 2025 13:26:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C873D6FBC9;
+	Fri,  7 Feb 2025 13:50:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 04D47C0
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 13:26:26 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 975B1E4
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 13:50:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E5ABA403B3
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 13:26:25 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 7B0A860651
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 13:50:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5gyAEZptcUJ8 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  7 Feb 2025 13:26:24 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id e5Ef13JSfpnc for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  7 Feb 2025 13:50:14 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::634; helo=mail-pl1-x634.google.com;
- envelope-from=jdamato@fastly.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 5E53940424
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5E53940424
-Received: from mail-pl1-x634.google.com (mail-pl1-x634.google.com
- [IPv6:2607:f8b0:4864:20::634])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5E53940424
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 13:26:24 +0000 (UTC)
-Received: by mail-pl1-x634.google.com with SMTP id
- d9443c01a7336-2163dc5155fso41230205ad.0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 07 Feb 2025 05:26:24 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738934783; x=1739539583;
- h=in-reply-to:content-disposition:mime-version:references
- :mail-followup-to:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=35QjS2mTIYO+gJZIHE49mfSaBK9urZetBSEHinYZAYQ=;
- b=ww9lfCKhctOtYtc22xNI/Q6iyUP+AhP4XLdFMTVrWB59TwNvkEXwaA6goJLsseMKER
- Nw+QV4eX97NI+zoEBxng6otm7ZXAasAU4Jn1Wfz2RtExAvgqjwe3cNouRUA7h2ANhviU
- ROHwhx0YrjKTKDCTUJmyjPlAA2U3MxGMUmPeEncmuxXK8rFKKc0csy6TFl1yqXWZ6Bcg
- dgA1ZV1wziqXEhnpFQI91/IzOna45/zSW1e3i88uRFkH5oQUio/sHjAktmeaV5K6u5pi
- OeHK0QwrfuN4tXfb7UeSMRmcbJ+P3vdocPEzIlCyLxKaaAwnqaCUiCYaEICwhNqqx8RQ
- U8jA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUfLSWJxSz0a+RUF/0+gOaG88XZPx2cuuLOumpUyb5lDwvatew4CeNPl/sxMJEHTGNERL2kmEBDhaN4Dorf6bg=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YwuEJB0Eb4dlO3TpMPSC9+1K07zIDfWy369djenoGNoHLAIcmoV
- lMDpwSjlHCVPUBaDbysmx4ElzuX36Z8bNtnnyvgBrK1l++Pw2eVTLnxdLzQR2Uc=
-X-Gm-Gg: ASbGncsDWL0vHrI8Lra7S0Jx1c8k0GZOamG/JZLz9JgZMKOmile6ml0g/1k+NXVb9uF
- GmZxS62+EQYA0IrELPfSNLpZ5J20nD12ZeUaLj60Kplzh8UAedefAtVd36BIG31AT4cs2q6kX6P
- 7uQzCAltvdsIBi20xWzvR7DSNtY1S5j5un9bWuVMGGl2Oj4X3B3lPcBegfOKOyjB4ZSr+X58BtX
- zG6iFFzVGvleAMZU3Y1d0o2IXQMhDTSAxyn1ztKpJM/iM1W9QK8MFJ5leqDN/jr17IXqlGdIxRD
- PULPa5bYB/kgbHoWsc2dlzgV6zZXXJm8CdM6ShuRyeAYfTlqMCWklwnDUg==
-X-Google-Smtp-Source: AGHT+IGiKFyaTw/aK5AthVDYdZM7IzbZscYSuVsAYH2PMD0dc+PpHEArHTZi0M1IUfMhDs+Y9G+A/w==
-X-Received: by 2002:a17:902:f786:b0:216:410d:4c53 with SMTP id
- d9443c01a7336-21f4e74480emr55611145ad.41.1738934783432; 
- Fri, 07 Feb 2025 05:26:23 -0800 (PST)
-Received: from LQ3V64L9R2 (c-24-6-151-244.hsd1.ca.comcast.net. [24.6.151.244])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-21f3683d6e5sm30154055ad.141.2025.02.07.05.26.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Feb 2025 05:26:23 -0800 (PST)
-Date: Fri, 7 Feb 2025 05:26:20 -0800
-From: Joe Damato <jdamato@fastly.com>
-To: Kurt Kanzenbach <kurt@linutronix.de>
-Cc: Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- Stanislav Fomichev <sdf@fomichev.me>, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org
-Message-ID: <Z6YJ_LUD5Gpyb-at@LQ3V64L9R2>
-Mail-Followup-To: Joe Damato <jdamato@fastly.com>,
- Kurt Kanzenbach <kurt@linutronix.de>,
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- Stanislav Fomichev <sdf@fomichev.me>, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org
-References: <871pwa6tf2.fsf@kurt.kurt.home>
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 96CB96066E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 96CB96066E
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 96CB96066E
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 13:50:14 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 1631A5C5717;
+ Fri,  7 Feb 2025 13:49:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B5CBFC4CED1;
+ Fri,  7 Feb 2025 13:50:11 +0000 (UTC)
+Date: Fri, 7 Feb 2025 13:50:09 +0000
+From: Simon Horman <horms@kernel.org>
+To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
+ Konrad Knitter <konrad.knitter@intel.com>,
+ Qiuxu Zhuo <qiuxu.zhuo@intel.com>,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ Kees Cook <kees@kernel.org>, Jiri Slaby <jirislaby@kernel.org>
+Message-ID: <20250207135009.GW554665@kernel.org>
+References: <20250206223101.6469-2-przemyslaw.kitszel@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <871pwa6tf2.fsf@kurt.kurt.home>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fastly.com; s=google; t=1738934783; x=1739539583; darn=lists.osuosl.org;
- h=in-reply-to:content-disposition:mime-version:references
- :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
- :subject:date:message-id:reply-to;
- bh=35QjS2mTIYO+gJZIHE49mfSaBK9urZetBSEHinYZAYQ=;
- b=v5npUxoqBtgUU5Dt0AVQz7440GhEQth5XV7Y1QTuMx2+JHcL3a3pnQyMp1B+Zp+UF1
- rc32xujqRmW916TIjOphmocIZV6Lx/cxnP2rO22jE7JSo5Z1e0Za5XBpScPTa+DkrlI5
- oYoxekQzUDjH6LiN/AnwYlAhkmx1Tt/i3931g=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=fastly.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=fastly.com header.i=@fastly.com header.a=rsa-sha256
- header.s=google header.b=v5npUxoq
-Subject: Re: [Intel-wired-lan] igb: XDP/ZC busy polling
+In-Reply-To: <20250206223101.6469-2-przemyslaw.kitszel@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1738936213;
+ bh=FXMx362M+vYDOjieVoZGpLYHrbMAz5S5rLewpTVOEAk=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=HFYkuMg6vC1zD0GuPqaCzaNDauaBuw/Qrt9knuE1frfAL5TLawjPPrDlkeQjy7KC6
+ iUXTnpOKGkdSurXS2VcYv5Qx+idovVAxOBDv0UYxD7nT2RoGEXofUGJUKvq+5z1hUK
+ Vx7+/lqBcbs5Pi4CAGCfIfgc01qZaEv7pni7cWduZrJHgXcuJH0LFk1b8eM3E7eFK7
+ xw0gBnoMtH7TDpWgEbvfHbEC+Vk+REP5+ytmZMkLHVWgKUcGkNV9AwWwtzyzDQQOcR
+ Mfp8y976rFE3lveGsg9xaDo38F0zbE507epjqpHNJTXm+WHj5yTNYT07XUDn+5De1x
+ sLGIRyHv4wYCA==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=HFYkuMg6
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] ice: health.c: fix
+ compilation on gcc 7.5
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -132,23 +104,52 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Feb 07, 2025 at 09:38:41AM +0100, Kurt Kanzenbach wrote:
-> Hello Joe,
+On Thu, Feb 06, 2025 at 11:30:23PM +0100, Przemek Kitszel wrote:
+> GCC 7 is not as good as GCC 8+ in telling what is a compile-time
+> const, and thus could be used for static storage.
+> Fortunately keeping strings as const arrays is enough to make old
+> gcc happy.
 > 
-> I noticed that XDP/ZC busy polling does not work anymore in combination
-> with igb driver. This seems to be related to commit 5ef44b3cb43b ("xsk:
-> Bring back busy polling support") which relies on
-> netif_queue_set_napi().
+> Excerpt from the report:
+> My GCC is: gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0.
 > 
-> I see you implemented it for e1000, igc and so on. However, igb is
-> missing. Do you have any plans to add the missing registration to igb?
-> Just asking. Otherwise, I can send a patch for it.
+>   CC [M]  drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.o
+> drivers/net/ethernet/intel/ice/devlink/health.c:35:3: error: initializer element is not constant
+>    ice_common_port_solutions, {ice_port_number_label}},
+>    ^~~~~~~~~~~~~~~~~~~~~~~~~
+> drivers/net/ethernet/intel/ice/devlink/health.c:35:3: note: (near initialization for 'ice_health_status_lookup[0].solution')
+> drivers/net/ethernet/intel/ice/devlink/health.c:35:31: error: initializer element is not constant
+>    ice_common_port_solutions, {ice_port_number_label}},
+>                                ^~~~~~~~~~~~~~~~~~~~~
+> drivers/net/ethernet/intel/ice/devlink/health.c:35:31: note: (near initialization for 'ice_health_status_lookup[0].data_label[0]')
+> drivers/net/ethernet/intel/ice/devlink/health.c:37:46: error: initializer element is not constant
+>    "Change or replace the module or cable.", {ice_port_number_label}},
+>                                               ^~~~~~~~~~~~~~~~~~~~~
+> drivers/net/ethernet/intel/ice/devlink/health.c:37:46: note: (near initialization for 'ice_health_status_lookup[1].data_label[0]')
+> drivers/net/ethernet/intel/ice/devlink/health.c:39:3: error: initializer element is not constant
+>    ice_common_port_solutions, {ice_port_number_label}},
+>    ^~~~~~~~~~~~~~~~~~~~~~~~~
+> 
+> Fixes: 85d6164ec56d ("ice: add fw and port health reporters")
+> Reported-by: Qiuxu Zhuo <qiuxu.zhuo@intel.com>
+> Closes: https://lore.kernel.org/netdev/CY8PR11MB7134BF7A46D71E50D25FA7A989F72@CY8PR11MB7134.namprd11.prod.outlook.com
+> Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> Suggested-by: Simon Horman <horms@kernel.org>
+> Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> ---
+> v2: use static const char[] instead of #define - Simon
+>     +added RB tag from Michal, but not adding TB tag from Qiuxu
+> 
+> v1:
+>  https://lore.kernel.org/netdev/20250205104252.30464-2-przemyslaw.kitszel@intel.com
+> 
+> CC: Kees Cook <kees@kernel.org>
+> CC: Jiri Slaby <jirislaby@kernel.org>
 
-Please feel free; I don't have an igb device so I wouldn't be able
-to test it, but I'd happily review it so please CC me.
+Thanks Przemek,
 
-BTW, I wrote a small series that updates the documentation and adds
-a test for AF_XDP [1] that you may want to consider applying/running
-(if it is not merged by the time you add support to igb).
+Testing locally gcc 7.5.0 [1] seems happy with this.
 
-[1]: https://lore.kernel.org/lkml/20250207030916.32751-1-jdamato@fastly.com/
+Reviewed-by: Simon Horman <horms@kernel.org>
+
+[1] https://mirrors.edge.kernel.org/pub/tools/crosstool/files/bin/x86_64/7.5.0/
