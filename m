@@ -1,91 +1,92 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DAD1FA2C655
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Feb 2025 15:57:22 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B1350A2C688
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Feb 2025 16:08:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C9C014058C;
-	Fri,  7 Feb 2025 14:57:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BA46D81175;
+	Fri,  7 Feb 2025 15:07:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id j_N4kqzcmZFZ; Fri,  7 Feb 2025 14:57:20 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id CkKZjgflHxe9; Fri,  7 Feb 2025 15:07:59 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C20D64052F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E55A980DB2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1738940239;
-	bh=krLf97bnW7NmoQ4tNGjONITDNvGu1LhUvdAJ82GC6+A=;
+	s=default; t=1738940879;
+	bh=3PQjtKGBMeMp3Ga/c3Kbv/nJaffO+Ctk7iSsgBLTjOY=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=4ZL3x1k/+iold0CDU73E9Yh5Hka4rxAo3+J3Dc212Aj4SUF4s3CZveC5d6Tet5/oF
-	 NGVy0i1ZiGtl5P19EMgxZCaVu1O5YSbIWEpie5Inzs86r7q7pMzId6EBCPBMQ3PgRB
-	 4Upa4We8f/xdZn3OahgNvVwqo2C3EGZRzh6WQD842FD941NQBhpgFwDlHzJI8OhpTP
-	 X9Axcg2y27IZl6vfPqcba9qVjclTwSdLx8spoQ+8m1JFIHgPycerM4S+v6uY47eRT4
-	 MKzl5tMuQdpRV9TmA63ZJYRbdqUJ3+DaDBkLRgOLODuzkvPMsCamJDhCWto9briCfK
-	 uuYvk1Lufek5Q==
+	b=prynn8YYrLKZA9FBophRBXAa5+buVaQia1vMrBPSC2SWnUkj6i58PfMpYMdk6tRi+
+	 It1GOf6rgx4xIuB0VcdjGOSSgzRDtMGjuc4NFvKHgtq+yk0wq+cGnFab1980zPV0B1
+	 Ij9+GlN4oy8DbBMZZdNeferwL1Cp4hgCxz2P93aMlrbFjV8OEyoOfC0uySsktV7yG6
+	 3HXXhVUKhAh2Li4ueXkOe2xhXwtgNGSlmu4+WRNu8+QMC1rR99cBVjOMaI497XCezX
+	 RmZuVIOSh1sGgBZFvB9T41Y8tS8obckljryGOqOVmj+SsaW3uu95Pge70f0NLiuE7h
+	 ziJE4bwt1byGw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C20D64052F;
-	Fri,  7 Feb 2025 14:57:19 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E55A980DB2;
+	Fri,  7 Feb 2025 15:07:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 9FA8BCF
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 14:57:17 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 49746CF
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 15:07:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8F5066105F
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 14:57:17 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2A991408E7
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 15:07:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7ZIpZ11rK5q7 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  7 Feb 2025 14:57:16 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=147.75.193.91;
- helo=nyc.source.kernel.org; envelope-from=horms@kernel.org;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id FV2RppvsfHyo for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  7 Feb 2025 15:07:55 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A0BAD60FEC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A0BAD60FEC
-Received: from nyc.source.kernel.org (nyc.source.kernel.org [147.75.193.91])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A0BAD60FEC
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 14:57:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 175F5408CE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 175F5408CE
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 175F5408CE
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 15:07:54 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id 4068FA435C7;
- Fri,  7 Feb 2025 14:55:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 08996C4CED1;
- Fri,  7 Feb 2025 14:57:12 +0000 (UTC)
-Date: Fri, 7 Feb 2025 14:57:10 +0000
+ by dfw.source.kernel.org (Postfix) with ESMTP id B8B0A5C1178;
+ Fri,  7 Feb 2025 15:07:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6217DC4CED1;
+ Fri,  7 Feb 2025 15:07:51 +0000 (UTC)
+Date: Fri, 7 Feb 2025 15:07:49 +0000
 From: Simon Horman <horms@kernel.org>
 To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
  marcin.szycik@linux.intel.com, jedrzej.jagielski@intel.com,
  przemyslaw.kitszel@intel.com, piotr.kwapulinski@intel.com,
  anthony.l.nguyen@intel.com, dawid.osuchowski@intel.com
-Message-ID: <20250207145710.GX554665@kernel.org>
+Message-ID: <20250207150749.GY554665@kernel.org>
 References: <20250207104343.2791001-1-michal.swiatkowski@linux.intel.com>
- <20250207104343.2791001-4-michal.swiatkowski@linux.intel.com>
+ <20250207104343.2791001-2-michal.swiatkowski@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250207104343.2791001-4-michal.swiatkowski@linux.intel.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250207104343.2791001-2-michal.swiatkowski@linux.intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1738940234;
- bh=5Bld7wfIGwWOXEK781i9Fo+q0vuOhNDcDamVB3lM6sc=;
+ d=kernel.org; s=k20201202; t=1738940873;
+ bh=v1KzgMiQjDb+Z8BzvytQeodhaZrSQcciaDlfQvx2zvA=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=T1S4h2aauLw15m8I6q0fNLRgJOsiz3Ap8ywkBHofNOjrO/OxbGODm9zNJThtVxsNV
- EDZk2pddxNormkAd4dMo5GrOIavzso19D0bwoE2VHb9pOtuWljERvgX576T/aLAgBt
- JOhb22kGVYsfpgnRyIJiUV1CBaUafu6d3HIyddY8TqDxU7OH4JwFZfeHVKbGUfOQYi
- AXOiDuqjkAfnYInmHSQPXE7/UFG+mGopO9pGsa8I9b9YevKMcQ1TpeU/Wjj1DregYr
- PDuEC6xtR3dSKQvBpmnYAbCnGfi+QDlmnNntQLQn2aAaTLw80JL4uvyOXTahWTGdXc
- 6aNggYoZbeSwQ==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=bMr9DsMjg1owhYUANvbZ3XPgHwGiUrhfLMUGmwLYkH9Jpg/K9CZXsaSbUbNIDsldJ
+ iA6Z3r+0WKlsJlp0pdL1MO1Gsfrur8CFSzhcflqBZv6D81Jsm4sF7eeb94/JFBgqcx
+ +RHOQQKKzKPIaP6J2oAt9ubzOK+RkYTgExrlLFIJPOL08vmkQoJXPB4ZRSEBBkZCx/
+ H76BQvVbjoqVT0F8mFpF8RHDL5WPRmKdzuDNEyM8YL/nZiV6eLaDhXrNZCORLYjZCU
+ haePR8+Ed8JRh17v11OV8IpGXM0S9CZELJGeImkZHjnaOBZWF7+RJV+zsLd/pOTCXv
+ ITBSb0iV80AGA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=T1S4h2aa
-Subject: Re: [Intel-wired-lan] [iwl-next v1 3/4] ixgbe: add Tx hang
- detection unhandled MDD
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=bMr9DsMj
+Subject: Re: [Intel-wired-lan] [iwl-next v1 1/4] ixgbe: add MDD support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -101,148 +102,101 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Feb 07, 2025 at 11:43:42AM +0100, Michal Swiatkowski wrote:
-> From: Slawomir Mrozowicz <slawomirx.mrozowicz@intel.com>
+On Fri, Feb 07, 2025 at 11:43:40AM +0100, Michal Swiatkowski wrote:
+> From: Paul Greenwalt <paul.greenwalt@intel.com>
 > 
-> Add Tx Hang detection due to an unhandled MDD Event.
-> 
-> Previously, a malicious VF could disable the entire port causing
-> TX to hang on the E610 card.
-> Those events that caused PF to freeze were not detected
-> as an MDD event and usually required a Tx Hang watchdog timer
-> to catch the suspension, and perform a physical function reset.
-> 
-> Implement flows in the affected PF driver in such a way to check
-> the cause of the hang, detect it as an MDD event and log an
-> entry of the malicious VF that caused the Hang.
-> 
-> The PF blocks the malicious VF, if it continues to be the source
-> of several MDD events.
+> Add malicious driver detection. Support enabling MDD, disabling MDD,
+> handling a MDD event, and restoring a MDD VF.
 > 
 > Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Reviewed-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 > Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
-> Signed-off-by: Slawomir Mrozowicz <slawomirx.mrozowicz@intel.com>
-> Co-developed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
 > Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 
 ...
 
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-> index aa3b498558bc..e07b56625595 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-> @@ -1044,6 +1044,7 @@ struct ixgbe_nvm_version {
->  #define IXGBE_GCR_EXT_VT_MODE_16        0x00000001
->  #define IXGBE_GCR_EXT_VT_MODE_32        0x00000002
->  #define IXGBE_GCR_EXT_VT_MODE_64        0x00000003
-> +#define IXGBE_GCR_EXT_VT_MODE_MASK	0x00000003
-
-nit: For consistency I think spaces should be used to indent 0x00000003
-
->  #define IXGBE_GCR_EXT_SRIOV             (IXGBE_GCR_EXT_MSIX_EN | \
->  					 IXGBE_GCR_EXT_VT_MODE_64)
->  
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
 
 ...
 
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-
-...
-
-> +static u32 ixgbe_poll_tx_icache(struct ixgbe_hw *hw, u16 queue, u16 idx)
-> +{
-> +	IXGBE_WRITE_REG(hw, IXGBE_TXDESCIC, queue * idx);
-> +	return IXGBE_READ_REG(hw, IXGBE_TXDESCIC);
-> +}
-> +
 > +/**
-> + * ixgbe_check_illegal_queue - search for queue with illegal packet
-> + * @adapter: structure containing ring specific data
-> + * @queue: queue index
-> + *
-> + * Check if tx descriptor connected with input queue
-> + * contains illegal packet.
-> + *
-> + * Returns: true if queue contain illegal packet.
+> + * ixgbe_handle_mdd_x550 - handle malicious driver detection event
+> + * @hw: pointer to hardware structure
+> + * @vf_bitmap: output vf bitmap of malicious vfs
 > + */
-> +static bool ixgbe_check_illegal_queue(struct ixgbe_adapter *adapter,
-> +				      u16 queue)
+> +void ixgbe_handle_mdd_x550(struct ixgbe_hw *hw, unsigned long *vf_bitmap)
 > +{
-> +	u32 hdr_len_reg, mss_len_reg, type_reg;
-> +	struct ixgbe_hw *hw = &adapter->hw;
-> +	u32 mss_len, header_len, reg;
+> +	u32 i, j, reg, q, div, vf, wqbr;
 > +
-> +	for (u16 i = 0; i < IXGBE_MAX_TX_DESCRIPTORS; i++) {
-> +		/* HW will clear bit IXGBE_TXDESCIC_READY when address
-> +		 * is written to address field. HW will set this bit
-> +		 * when iCache read is done, and data is ready at TIC_DWx.
-> +		 * Set descriptor address.
-> +		 */
-> +		read_poll_timeout(ixgbe_poll_tx_icache, reg,
-> +				  !(reg & IXGBE_TXDESCIC_READY), 0, 0, false,
-> +				  hw, queue, i);
+> +	/* figure out pool size for mapping to vf's */
+> +	reg = IXGBE_READ_REG(hw, IXGBE_MRQC);
+> +	switch (reg & IXGBE_MRQC_MRQE_MASK) {
+> +	case IXGBE_MRQC_VMDQRT8TCEN:
+> +		div = IXGBE_16VFS_QUEUES;
+> +		break;
+> +	case IXGBE_MRQC_VMDQRSS32EN:
+> +	case IXGBE_MRQC_VMDQRT4TCEN:
+> +		div = IXGBE_32VFS_QUEUES;
+> +		break;
+> +	default:
+> +		div = IXGBE_64VFS_QUEUES;
+> +		break;
+> +	}
 > +
-> +		/* read tx descriptor access registers */
-> +		hdr_len_reg = IXGBE_READ_REG(hw, IXGBE_TIC_DW2(IXGBE_VLAN_MACIP_LENS_REG));
-> +		type_reg = IXGBE_READ_REG(hw, IXGBE_TIC_DW2(IXGBE_TYPE_TUCMD_MLHL));
-> +		mss_len_reg = IXGBE_READ_REG(hw, IXGBE_TIC_DW2(IXGBE_MSS_L4LEN_IDX));
-> +
-> +		/* check if Advanced Context Descriptor */
-> +		if (FIELD_GET(IXGBE_ADVTXD_DTYP_MASK, type_reg) !=
-> +		    IXGBE_ADVTXD_DTYP_CTXT)
+> +	/* Read WQBR_TX and WQBR_RX and check for malicious queues */
+> +	for (i = 0; i < IXGBE_QUEUES_REG_AMOUNT; i++) {
+> +		wqbr = IXGBE_READ_REG(hw, IXGBE_WQBR_TX(i)) |
+> +		       IXGBE_READ_REG(hw, IXGBE_WQBR_RX(i));
+> +		if (!wqbr)
 > +			continue;
 > +
-> +		/* check for illegal MSS and Header length */
-> +		mss_len = FIELD_GET(IXGBE_ADVTXD_MSS_MASK, mss_len_reg);
-> +		header_len = FIELD_GET(IXGBE_ADVTXD_HEADER_LEN_MASK,
-> +				       hdr_len_reg);
-> +		if ((mss_len + header_len) > SZ_16K) {
-> +			e_warn(probe,
-> +			       "mss len + header len too long\n");
+> +		/* Get malicious queue */
+> +		for_each_set_bit(j, (unsigned long *)&wqbr,
+> +				 IXGBE_QUEUES_PER_REG) {
 
-nit: The above two lines can be a single line.
+The type of wqbr is a u32, that is it is 32-bits wide.
+Above it's address is cast to unsigned long *.
+But, unsigned long may be 64-bits wide, e.g. on x86_64.
 
-> +			return true;
-> +		}
-> +	}
-> +
-> +	return false;
-> +}
-> +
-> +/**
-> + * ixgbe_handle_mdd_event - handle mdd event
-> + * @adapter: structure containing ring specific data
-> + * @tx_ring: tx descriptor ring to handle
-> + *
-> + * Reset VF driver if malicious vf detected or
-> + * illegal packet in an any queue detected.
-> + */
-> +static void ixgbe_handle_mdd_event(struct ixgbe_adapter *adapter,
-> +				   struct ixgbe_ring *tx_ring)
-> +{
-> +	u16 vf, q;
-> +
-> +	if (adapter->vfinfo && ixgbe_check_mdd_event(adapter)) {
-> +		/* vf mdd info and malicious vf detected */
-> +		if (!ixgbe_get_vf_idx(adapter, tx_ring->queue_index, &vf))
-> +			ixgbe_vf_handle_tx_hang(adapter, vf);
-> +	} else {
-> +		/* malicious vf not detected */
-> +		for (q = 0; q < IXGBE_MAX_TX_QUEUES; q++) {
-> +			if (ixgbe_check_illegal_queue(adapter, q) &&
-> +			    !ixgbe_get_vf_idx(adapter, q, &vf))
-> +				/* illegal queue detected */
-> +				ixgbe_vf_handle_tx_hang(adapter, vf);
+GCC 14.2.0 EXTRA_CFLAGS=-Warray-bounds builds report this as:
 
-It looks like ixgbe_vf_handle_tx_hang() will run for each illegal queue.
-Could that be more than once for a given vf? If so, is that desirable?
+In file included from ./include/linux/bitmap.h:11,
+                 from ./include/linux/cpumask.h:12,
+                 from ./arch/x86/include/asm/paravirt.h:21,
+                 from ./arch/x86/include/asm/cpuid.h:71,
+                 from ./arch/x86/include/asm/processor.h:19,
+                 from ./arch/x86/include/asm/cpufeature.h:5,
+                 from ./arch/x86/include/asm/thread_info.h:59,
+                 from ./include/linux/thread_info.h:60,
+                 from ./include/linux/uio.h:9,
+                 from ./include/linux/socket.h:8,
+                 from ./include/uapi/linux/if.h:25,
+                 from ./include/linux/mii.h:12,
+                 from ./include/uapi/linux/mdio.h:15,
+                 from ./include/linux/mdio.h:9,
+                 from drivers/net/ethernet/intel/ixgbe/ixgbe_type.h:8,
+                 from drivers/net/ethernet/intel/ixgbe/ixgbe_x540.h:7,
+                 from drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c:4:
+In function ‘find_next_bit’,
+    inlined from ‘ixgbe_handle_mdd_x550’ at drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c:3907:3:
+./include/linux/find.h:65:23: error: array subscript ‘long unsigned int[0]’ is partly outside array bounds of ‘u32[1]’ {aka ‘unsigned int[1]’} [-Werror=array-bounds=]
+   65 |                 val = *addr & GENMASK(size - 1, offset);
+      |                       ^~~~~
 
+I think this can be addressed by changing the type of wqmbr to unsigned long.
+
+> +			/* Get queue from bitmask */
+> +			q = j + (i * IXGBE_QUEUES_PER_REG);
+> +			/* Map queue to vf */
+> +			vf = q / div;
+> +			set_bit(vf, vf_bitmap);
 > +		}
 > +	}
 > +}
 > +
->  /**
->   * ixgbe_clean_tx_irq - Reclaim resources after transmit completes
->   * @q_vector: structure containing interrupt and ring information
+>  #define X550_COMMON_MAC \
+>  	.init_hw			= &ixgbe_init_hw_generic, \
+>  	.start_hw			= &ixgbe_start_hw_X540, \
 
 ...
