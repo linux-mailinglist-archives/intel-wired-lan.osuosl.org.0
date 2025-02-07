@@ -1,90 +1,122 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 95B7AA2C0E2
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Feb 2025 11:47:12 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3BCE6424DF;
-	Fri,  7 Feb 2025 10:47:11 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2n7sKcjYixFt; Fri,  7 Feb 2025 10:47:10 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7942840B8F
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1738925230;
-	bh=bLrZT96pS7vRRwJclpL3r/s8HjjXIJ+Zp1e41+4jezk=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=qMn0Bhxvy5PnQnu+4DDkB7W0hMf2cGNHx4zNQA2Cq7d6xg70gymteUv8poYavnEHs
-	 kx7FMqlduOjz32anWNFnEJdqlHKQOZmrOaWCGO7UYv5CHQuVz8n9U2BC1tezZPfLAi
-	 qZ4nFmYJLpG4iFaB2sknQeqYm3yCKL/FangJNv8GAZ48kKkGZfBD93AprPdcCDL79i
-	 scfoHVjkP1MMD5ZhNYFZwroZe1LVPwEJj7sfPksa147/kGzipkM41+NZfvgfEmCwhS
-	 ixyfhb3kJ7tSCLO5Kg01rE1hRyFBNW3b4reqp3iRj2BSkIfOYUs/XvBIliFv2bR9G3
-	 CMLN83u4A80Fg==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7942840B8F;
-	Fri,  7 Feb 2025 10:47:10 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 19D51C0
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 10:47:08 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9E393A2C37A
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Feb 2025 14:26:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0983C605FA
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 10:47:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 823F36069A;
+	Fri,  7 Feb 2025 13:26:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id DmQcxz92C9ga for <intel-wired-lan@lists.osuosl.org>;
- Fri,  7 Feb 2025 10:47:07 +0000 (UTC)
+ id xgLN1QzCMogf; Fri,  7 Feb 2025 13:26:27 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 57EA661141
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1738934787;
+	bh=35QjS2mTIYO+gJZIHE49mfSaBK9urZetBSEHinYZAYQ=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=rATG0I8W3xQ3w/Li4QuBGFzGU6UmhOahltgBTbbqMgwSQc+FqXwMKwN7aTHK/IxMa
+	 5wZjaljnDdURir/3AfPvmzcHrVCRjP98dPquXhIvekW0lO5ZszLVLfjXUB0jUDNJcr
+	 huWxr5DF9T0U1DoVmK7zVPz6/bh7SKpBKSzbY372D3XWpr9HkBMd6ptgQofTOCgUrZ
+	 I1+4kyR9dTM1Ze3ziEq3YbnKo7rWoodOMIeFsNHo4VdRmyT3zPvkf/vw7CFDwqBLnW
+	 7p3Y3BRFFVsHGQDKDOBkOb8QPTI2Ww6LW4o9+3jFLorfATFwWmhMXlQx1Vz+DuyVIB
+	 ZpAWcCcGgZEsg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 57EA661141;
+	Fri,  7 Feb 2025 13:26:27 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 04D47C0
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 13:26:26 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id E5ABA403B3
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 13:26:25 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 5gyAEZptcUJ8 for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  7 Feb 2025 13:26:24 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 4DC456060C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4DC456060C
-Received: from nyc.source.kernel.org (nyc.source.kernel.org
- [IPv6:2604:1380:45d1:ec00::3])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4DC456060C
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 10:47:07 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id 465E3A42767;
- Fri,  7 Feb 2025 10:45:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B709EC4CED1;
- Fri,  7 Feb 2025 10:47:04 +0000 (UTC)
-Date: Fri, 7 Feb 2025 10:47:02 +0000
-From: Simon Horman <horms@kernel.org>
-To: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- netdev@vger.kernel.org, Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-Message-ID: <20250207104702.GO554665@kernel.org>
-References: <20250203150328.4095-1-jedrzej.jagielski@intel.com>
- <20250203150328.4095-2-jedrzej.jagielski@intel.com>
+ client-ip=2607:f8b0:4864:20::634; helo=mail-pl1-x634.google.com;
+ envelope-from=jdamato@fastly.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 5E53940424
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5E53940424
+Received: from mail-pl1-x634.google.com (mail-pl1-x634.google.com
+ [IPv6:2607:f8b0:4864:20::634])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5E53940424
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 13:26:24 +0000 (UTC)
+Received: by mail-pl1-x634.google.com with SMTP id
+ d9443c01a7336-2163dc5155fso41230205ad.0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 07 Feb 2025 05:26:24 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1738934783; x=1739539583;
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=35QjS2mTIYO+gJZIHE49mfSaBK9urZetBSEHinYZAYQ=;
+ b=ww9lfCKhctOtYtc22xNI/Q6iyUP+AhP4XLdFMTVrWB59TwNvkEXwaA6goJLsseMKER
+ Nw+QV4eX97NI+zoEBxng6otm7ZXAasAU4Jn1Wfz2RtExAvgqjwe3cNouRUA7h2ANhviU
+ ROHwhx0YrjKTKDCTUJmyjPlAA2U3MxGMUmPeEncmuxXK8rFKKc0csy6TFl1yqXWZ6Bcg
+ dgA1ZV1wziqXEhnpFQI91/IzOna45/zSW1e3i88uRFkH5oQUio/sHjAktmeaV5K6u5pi
+ OeHK0QwrfuN4tXfb7UeSMRmcbJ+P3vdocPEzIlCyLxKaaAwnqaCUiCYaEICwhNqqx8RQ
+ U8jA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUfLSWJxSz0a+RUF/0+gOaG88XZPx2cuuLOumpUyb5lDwvatew4CeNPl/sxMJEHTGNERL2kmEBDhaN4Dorf6bg=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YwuEJB0Eb4dlO3TpMPSC9+1K07zIDfWy369djenoGNoHLAIcmoV
+ lMDpwSjlHCVPUBaDbysmx4ElzuX36Z8bNtnnyvgBrK1l++Pw2eVTLnxdLzQR2Uc=
+X-Gm-Gg: ASbGncsDWL0vHrI8Lra7S0Jx1c8k0GZOamG/JZLz9JgZMKOmile6ml0g/1k+NXVb9uF
+ GmZxS62+EQYA0IrELPfSNLpZ5J20nD12ZeUaLj60Kplzh8UAedefAtVd36BIG31AT4cs2q6kX6P
+ 7uQzCAltvdsIBi20xWzvR7DSNtY1S5j5un9bWuVMGGl2Oj4X3B3lPcBegfOKOyjB4ZSr+X58BtX
+ zG6iFFzVGvleAMZU3Y1d0o2IXQMhDTSAxyn1ztKpJM/iM1W9QK8MFJ5leqDN/jr17IXqlGdIxRD
+ PULPa5bYB/kgbHoWsc2dlzgV6zZXXJm8CdM6ShuRyeAYfTlqMCWklwnDUg==
+X-Google-Smtp-Source: AGHT+IGiKFyaTw/aK5AthVDYdZM7IzbZscYSuVsAYH2PMD0dc+PpHEArHTZi0M1IUfMhDs+Y9G+A/w==
+X-Received: by 2002:a17:902:f786:b0:216:410d:4c53 with SMTP id
+ d9443c01a7336-21f4e74480emr55611145ad.41.1738934783432; 
+ Fri, 07 Feb 2025 05:26:23 -0800 (PST)
+Received: from LQ3V64L9R2 (c-24-6-151-244.hsd1.ca.comcast.net. [24.6.151.244])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-21f3683d6e5sm30154055ad.141.2025.02.07.05.26.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 07 Feb 2025 05:26:23 -0800 (PST)
+Date: Fri, 7 Feb 2025 05:26:20 -0800
+From: Joe Damato <jdamato@fastly.com>
+To: Kurt Kanzenbach <kurt@linutronix.de>
+Cc: Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Stanislav Fomichev <sdf@fomichev.me>, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org
+Message-ID: <Z6YJ_LUD5Gpyb-at@LQ3V64L9R2>
+Mail-Followup-To: Joe Damato <jdamato@fastly.com>,
+ Kurt Kanzenbach <kurt@linutronix.de>,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Stanislav Fomichev <sdf@fomichev.me>, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org
+References: <871pwa6tf2.fsf@kurt.kurt.home>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250203150328.4095-2-jedrzej.jagielski@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1738925225;
- bh=d5IJFjytcsT+LXZ87CAh0a76bYphLqRKFqt3F+ZSJPQ=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=nRHbNZrqVBXfpxiC2LzVJGxCO+28vt1yE9pYtnRAIWeIrorb8HiegUO4YIzNsKNgj
- 7iwv/vmCIi8xXLXe8od/XZxoF3scXxpo5qL231t0sh0OnuM1MlXc71Mt0M/MrL/MxI
- GcFeI/G65l6xOnRHn17ZLx8GkONNMH7YgLSnGiIMM4npikPULXX1GDl5LkwQ61xktN
- 8sjQCMLDFFJ4jiJlgYRU6mHVID1Uqu6AEfwNh1ku2NMIJ+t++kh4tr1a1gloDTcKWF
- oJPEmNK8DiBeG8onMGBX5dhuwJCtKXHynfiktgSkdJiuL2wsdV1dOJY4SZHJ3oPdEl
- 0G72H9b13/mrw==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=nRHbNZrq
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 01/13] ixgbe: add initial
- devlink support
+In-Reply-To: <871pwa6tf2.fsf@kurt.kurt.home>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=fastly.com; s=google; t=1738934783; x=1739539583; darn=lists.osuosl.org;
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=35QjS2mTIYO+gJZIHE49mfSaBK9urZetBSEHinYZAYQ=;
+ b=v5npUxoqBtgUU5Dt0AVQz7440GhEQth5XV7Y1QTuMx2+JHcL3a3pnQyMp1B+Zp+UF1
+ rc32xujqRmW916TIjOphmocIZV6Lx/cxnP2rO22jE7JSo5Z1e0Za5XBpScPTa+DkrlI5
+ oYoxekQzUDjH6LiN/AnwYlAhkmx1Tt/i3931g=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=fastly.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=fastly.com header.i=@fastly.com header.a=rsa-sha256
+ header.s=google header.b=v5npUxoq
+Subject: Re: [Intel-wired-lan] igb: XDP/ZC busy polling
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -100,41 +132,23 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Feb 03, 2025 at 04:03:16PM +0100, Jedrzej Jagielski wrote:
-> Add an initial support for devlink interface to ixgbe driver.
+On Fri, Feb 07, 2025 at 09:38:41AM +0100, Kurt Kanzenbach wrote:
+> Hello Joe,
 > 
-> Similarly to i40e driver the implementation doesn't enable
-> devlink to manage device-wide configuration. Devlink instance
-> is created for each physical function of PCIe device.
+> I noticed that XDP/ZC busy polling does not work anymore in combination
+> with igb driver. This seems to be related to commit 5ef44b3cb43b ("xsk:
+> Bring back busy polling support") which relies on
+> netif_queue_set_napi().
 > 
-> Create separate directory for devlink related ixgbe files
-> and use naming scheme similar to the one used in the ice driver.
-> 
-> Add a stub for Documentation, to be extended by further patches.
-> 
-> Reviewed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-> Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+> I see you implemented it for e1000, igc and so on. However, igb is
+> missing. Do you have any plans to add the missing registration to igb?
+> Just asking. Otherwise, I can send a patch for it.
 
-...
+Please feel free; I don't have an igb device so I wouldn't be able
+to test it, but I'd happily review it so please CC me.
 
-> diff --git a/Documentation/networking/devlink/ixgbe.rst b/Documentation/networking/devlink/ixgbe.rst
-> new file mode 100644
-> index 000000000000..ca920d421d42
-> --- /dev/null
-> +++ b/Documentation/networking/devlink/ixgbe.rst
-> @@ -0,0 +1,8 @@
-> +.. SPDX-License-Identifier: GPL-2.0
-> +
-> +====================
-> +ixgbe devlink support
-> +====================
+BTW, I wrote a small series that updates the documentation and adds
+a test for AF_XDP [1] that you may want to consider applying/running
+(if it is not merged by the time you add support to igb).
 
-nit: the '=' lines are one character too short wrt the text they decorate.
-
-Flagged by make htmldocs.
-
-> +
-> +This document describes the devlink features implemented by the ``ixgbe``
-> +device driver.
-
-...
+[1]: https://lore.kernel.org/lkml/20250207030916.32751-1-jdamato@fastly.com/
