@@ -1,215 +1,130 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 667D6A2B874
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Feb 2025 02:53:14 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AE970A2B8CD
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Feb 2025 03:20:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A724E424B6;
-	Fri,  7 Feb 2025 01:53:05 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2BB2B849C0;
+	Fri,  7 Feb 2025 02:20:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id J3IfBlbBs_lo; Fri,  7 Feb 2025 01:53:04 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id QX1_Qc4jR8O5; Fri,  7 Feb 2025 02:19:59 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 55B86424BC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BC7BA849C1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1738893184;
-	bh=M2AcJMXo0z8RlcqvdMLKJ4gHtIwt9RsxiLi7CVl4yh4=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=17AILgOZkuH0kAJqqIJApH1iniAnvp4tVSsxFw6ClVz9WNV7l3DEAnKMalv4BRSl4
-	 pRHK7EyrBa2kKCefWHu/pfd/dHJ/+pEC5ZEAKk3DcjFDPsFw+Nt0O2lLSO//No7NkA
-	 qxqYcJn6tV244nzNojF4BHF4UvKetcY+rC+qEDIXkFc294SG3dj5lo0ymFTq/+DOLs
-	 1B8Pwgqh4RoVGvgsegCwWYM9Nq2XYOW35wVMja8hw4AqyNE7DC1sqMIjdcwfVFGSHv
-	 x2HSW11uXadKtnNFSm2rB8bE4vPoglemsn/Q4fFiAvHnHoQebG44b2qkhcQ2V/20mI
-	 5nEw3ncawhGyw==
+	s=default; t=1738894798;
+	bh=8n7PgPrIb7rLqOTZCH9bwdku5OzlfUC0EgEAabh4hJg=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=1ECpIBbkQvUFreNoRa+Ybchi1PDZFz04hak6Js/H17RPXTtb/qT3K9xJQhHfXgOGs
+	 hZbNNP4vHtspNnp9bxKRY0eaHCf/dqsOvVc0LQ7PFoTI3Tsru4r57SQb9qGUDQwvJs
+	 lC3QfbiyZkjNrMLkwQ4fdCnD10A/KA5XhFyHsnv5pIEwol2YDWAsmj+uaWxMUwog0P
+	 OzSm0Vd5pglJy5z/Id2amvY1CMLv6/rQkdbBWdJGZQCcMOUWBwo23AyXjOMKQYFppO
+	 PjfXDt7lmEyZmMROm6y9rY/6pW1xkvzwiqEpHaGekoVbEiV9JnkwDk4a1JHoIkw2fe
+	 t+/f+Y2SsfnAQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 55B86424BC;
-	Fri,  7 Feb 2025 01:53:04 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BC7BA849C1;
+	Fri,  7 Feb 2025 02:19:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 6C370E2
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 01:53:02 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 77724E4
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 02:19:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 5BA9E4199E
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 01:53:02 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 677CD849BA
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 02:19:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ts7wi68PxTrV for <intel-wired-lan@lists.osuosl.org>;
- Fri,  7 Feb 2025 01:53:01 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
- helo=mgamail.intel.com; envelope-from=qiuxu.zhuo@intel.com;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id bWGG5y7jDc93 for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  7 Feb 2025 02:19:56 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
+ helo=mgamail.intel.com; envelope-from=yoong.siang.song@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org DD1CF41731
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DD1CF41731
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
- by smtp4.osuosl.org (Postfix) with ESMTPS id DD1CF41731
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 01:53:00 +0000 (UTC)
-X-CSE-ConnectionGUID: 9pLt1bKZRHifOYFQfPJJfQ==
-X-CSE-MsgGUID: oabYgJMaTKCeMmmUKEswaQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11336"; a="39419698"
-X-IronPort-AV: E=Sophos;i="6.13,265,1732608000"; d="scan'208";a="39419698"
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 2AE06849BE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2AE06849BE
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2AE06849BE
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 02:19:55 +0000 (UTC)
+X-CSE-ConnectionGUID: 1wgY1rQeS1WjkGQY5o1BVw==
+X-CSE-MsgGUID: 8SzxG6WRQiqLZzo3se5Nng==
+X-IronPort-AV: E=McAfee;i="6700,10204,11336"; a="50917534"
+X-IronPort-AV: E=Sophos;i="6.13,266,1732608000"; d="scan'208";a="50917534"
 Received: from orviesa001.jf.intel.com ([10.64.159.141])
- by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Feb 2025 17:52:56 -0800
-X-CSE-ConnectionGUID: I12UVP54S/WlxovmIfIooQ==
-X-CSE-MsgGUID: bBGBWa2ER9G9dzUA/TFySA==
+ by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Feb 2025 18:19:55 -0800
+X-CSE-ConnectionGUID: toRI9yyTTJSdqx8lCbIjhg==
+X-CSE-MsgGUID: ylL/OW4zQj+Kgz4bWh7PmQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="148609223"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by orviesa001.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 06 Feb 2025 17:50:37 -0800
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.44; Thu, 6 Feb 2025 17:50:36 -0800
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.44 via Frontend Transport; Thu, 6 Feb 2025 17:50:36 -0800
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.40) by
- edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Thu, 6 Feb 2025 17:50:36 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=pSh0+Q0aiLS5Fg5pme0Iv2JuSTlS0rGFNVL/LgEzaT+VRRYRbOH2s8MFQvyv6hzOAdvEShDhyrxUQGNByXBaEQ3c8OEqNE9DS3BERtDPHSTiEi5HwwxfR79EViksVtD5RYZ2SR9M9p6bQLKQE4PfhE3YtToY3xggGs2cl5EVeFNThlU6JRfUCDE71Ghk1hSBqaM8abMFCFt+vFEWwbkSzR/xe8h+OqyVt6YStGpjk0EjROzbtfl5u8EGXyfcJD5j6KHPp6A4GzAlcXmRZLtsEoO7wt3Thrt0gkXMqzVeYVQ/3OwjBkQ2x7VSzyUSejT4kbal0c1idrI9ipuPyzyRRg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=M2AcJMXo0z8RlcqvdMLKJ4gHtIwt9RsxiLi7CVl4yh4=;
- b=bkXblsKxKoe0fEJnVIaf8GgC9GCCKy3kSMLd64+BLMKOHdq6XrZbYrsFATEKHbOUXmDqNhTyksLZRMTPVXjWAeCJjzGycP1wlI79vm6ZCdqWmT+GTJZOv2nJKlx0Qt1Q6DuJ5kvM9QHpMicwvgsRHifSVgAxrGsULAtXXUo89Xyvo+ePos07yPixcmEyJgMyYiY1atznY0DAgCLDSJM2voee5a78LspXQ6MgSFJWEGZYwDpgRYX5MW/CFxcbvXB1QVqJU33inG7SFQdwjas7CyJTsbQ4NdUzhxpWHGqSXyVKw/RMD/c1BbFTZFkV5xw1kJkQA75e6Il8H+PswNSnuQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from CY8PR11MB7134.namprd11.prod.outlook.com (2603:10b6:930:62::17)
- by DM3PR11MB8760.namprd11.prod.outlook.com (2603:10b6:0:4b::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8422.11; Fri, 7 Feb
- 2025 01:49:52 +0000
-Received: from CY8PR11MB7134.namprd11.prod.outlook.com
- ([fe80::cd87:9086:122c:be3d]) by CY8PR11MB7134.namprd11.prod.outlook.com
- ([fe80::cd87:9086:122c:be3d%4]) with mapi id 15.20.8398.025; Fri, 7 Feb 2025
- 01:49:51 +0000
-From: "Zhuo, Qiuxu" <qiuxu.zhuo@intel.com>
-To: "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
-CC: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Knitter, Konrad"
- <konrad.knitter@intel.com>, Michal Swiatkowski
- <michal.swiatkowski@linux.intel.com>, Simon Horman <horms@kernel.org>, "Kees
- Cook" <kees@kernel.org>, Jiri Slaby <jirislaby@kernel.org>
-Thread-Topic: [PATCH iwl-net v2] ice: health.c: fix compilation on gcc 7.5
-Thread-Index: AQHbeObnGzM6hqP+wU64EQjO3IixRrM7ExRA
-Date: Fri, 7 Feb 2025 01:49:51 +0000
-Message-ID: <CY8PR11MB7134F3AF2F1B04B48AF9D17C89F12@CY8PR11MB7134.namprd11.prod.outlook.com>
-References: <20250206223101.6469-2-przemyslaw.kitszel@intel.com>
-In-Reply-To: <20250206223101.6469-2-przemyslaw.kitszel@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CY8PR11MB7134:EE_|DM3PR11MB8760:EE_
-x-ms-office365-filtering-correlation-id: c6420c3b-9ed6-424c-e727-08dd4719b682
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0; ARA:13230040|376014|366016|1800799024|38070700018;
-x-microsoft-antispam-message-info: =?us-ascii?Q?0g+l7hjCCIxr/Cbe/cjk2LxQL0CLErdzQ4bO1yVxHHMxR54/Y9wMB8vMV8fy?=
- =?us-ascii?Q?vGPQVPUrrogwhmMVE/CuERmofZe56EWq1UrmtfUtJN7DUPDZY/Uw5apZ56RB?=
- =?us-ascii?Q?7SK7KNV2N0X8Wgw+pYvfLSNYLETNGo1cgdFPY7DN4Tpjo3YjYMBLHrFKITwW?=
- =?us-ascii?Q?2PRMoG1cIrea5U3OlJpd420i2g7EmeIlhYtYOH4UpEJ4s2ZrrxBhoCTykGRr?=
- =?us-ascii?Q?ON+4MdmC+u1RXk2/BmgZk5oHa8gvQLBlM7IeUWycHTTdeu6xBjOtQdxmdAV/?=
- =?us-ascii?Q?gvFKn82y8gC+oCYWsVU6gct0Bi95qj5bcR7Y0vNuk/EIkelzgji4+km/3Nov?=
- =?us-ascii?Q?n3R6UREgKerFDRJpHO4VAeTGL/mfkfQGFTabAC/jUiC/Xpmr6Y7H9S7N1RHS?=
- =?us-ascii?Q?/fxkpJ6UWOqTuvKUugP53Sv7whbro9ZoDB7ZiG5HZAbAGftM7QDI0JQE2Dbd?=
- =?us-ascii?Q?wtbnBMK//rTABTtSpsJt+F66yq69Bgj+oLfsg42cYOnPJX7MGTPWRWEzL5tM?=
- =?us-ascii?Q?Z3FT6OLOqOHBASEsd+gD1Ii6QZelD6S4fSkPzoWpdofuEURD+dOrkQn5h4id?=
- =?us-ascii?Q?m4ctwNwlo9sF/r7lBfV7xIYbpQtMFBt2LTLSEyos9BaJsON3NVe+f0BrAYok?=
- =?us-ascii?Q?EnyxfLj3r4JJdp0r1N7FIrnDoIeYRg+Y9dbciQ/L3VLvjefwfKEfnjv2T1ML?=
- =?us-ascii?Q?orofmveZK14S9km1l2bpUfUGtT04BApptb8n/7rHSz5SuVAd8fyjVpuzwJq7?=
- =?us-ascii?Q?AXjTb7f9HznK06mwM/TQf5pUQXOvkpp1hlUfEBA0TJ768tgJnQP/h1diCsKh?=
- =?us-ascii?Q?dFCUCQhTg/VYGcM/8e5AmejOvlVQ0Gyugb0TC4La2wpW0uyn1HFB9zzxxvms?=
- =?us-ascii?Q?D8ukqBjMh/gkUqEi0C+PITwjt+l4HUuW4MYKQqbnlBP8o/frPC+aqGs2t/Rn?=
- =?us-ascii?Q?Vpgxlt78pLYt+pKirRhkxP4++W5pMXir8HrcrgmfmJ3BYSgLkCpjmdlDjnaT?=
- =?us-ascii?Q?oPkknA6mB0G6G3VpxDpxgwDsZnNYIeutX2CH8K+iUQMgrgMXdgA3FeXlAwth?=
- =?us-ascii?Q?LoNos0WVztWGb0gnHHykJUPJMnA7dGW9D9MwD0symwRr1j//d7Dzvxza0JZX?=
- =?us-ascii?Q?OLW2zy8XoEg27UoOa4UIA00G0XamhyJKrYeUHvzaOHkmZqkevftOCxAf+yfU?=
- =?us-ascii?Q?Y6EmoCaGOTA78v148HMPgEeKHmx2rYq2yIo2pAHTZzmWjTjY1DET1X619WjO?=
- =?us-ascii?Q?XU7bo7zgrwp9T9quwWssR7sUQIBR9nG4B4ugXJi7SAH234tIPtfSl7mWbDDY?=
- =?us-ascii?Q?Xm7xb6Vc9gIq1tTKBafFoZGhLk8wghoOFns4zOrAf8l+0PjIxEImoopb2Rry?=
- =?us-ascii?Q?UDOu3ZjPJuDrxfI9yiYKpFtgJnHO4KYZ0aEgcM4K45Ux3tsV5g=3D=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CY8PR11MB7134.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(366016)(1800799024)(38070700018); DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?mdQIBJDRaYUp2H52B4rolgSlQaEkA+oKxb5VCpKI9jVcZKrvQR6u8NK9qBIo?=
- =?us-ascii?Q?7EL4pWmn4JvYKAvPe9ZOp2104UKp1D1H8d4VSdMp2ntcO9fvohh0M36TxVjO?=
- =?us-ascii?Q?lB1o5jizN0Q2D99TkYn5Z9n9b1ZW826JcJrRUAXq+orEj3nOPF50AqpDCT7L?=
- =?us-ascii?Q?U6GIccn3YuFJk1HdZSJeIUuNSADc01H+cW9xuqcpxNJv9AwXruxcN5nLDIBJ?=
- =?us-ascii?Q?dbNyKkEmWSXt8fjNI2hFVQhDQHatleHqawsw+9uESLY9pvio8HoFzUYKgJAW?=
- =?us-ascii?Q?4cf1GqaRyA7xZYBzWx14dbWuXOPD1X3f7bu9WCkC0ynbrDw6cUDBmIa9QrWx?=
- =?us-ascii?Q?E4H3qdlk4mmth3Ptc2HYpn09Epjvl72JT6cBOStcuaqN26PcfChZY4diHgR4?=
- =?us-ascii?Q?AEq8mbPgHgqI89cdgpRt405oMePiW431O0UrbUZ3CF8tTAGIGnZksmGpa3Pm?=
- =?us-ascii?Q?9VXV2k8tB6nboWQ5CuLziSNgk7CNWxjkngsxMHJT2NVCvOu9vChxYXu7yn5X?=
- =?us-ascii?Q?c2SObJjQBOhBkGWjgLSItQS0MM5oICNSDUXW9vBwlk8QpvAe3RqFTQenX2lH?=
- =?us-ascii?Q?Vlxzv1EQxC0pUd+JczERmSG6wF15xLxmSes9xqN6nCA5nCRSrlhMg60i5Mro?=
- =?us-ascii?Q?LSX/fB/eiLLDCirwBqq171Mes1e+EnLvyxckw8ygBBYDJS98gwNlxxI/0vJS?=
- =?us-ascii?Q?TdUNji60DcG1QMBKTmssJV8OZxuUa9kNcYn25O9JOyHg7EH9VORTOTrstTxP?=
- =?us-ascii?Q?OWtTLYtpFLrb5tGtJiPqIDKDggn/PMJhpcPnqqMrRMrn+ZXyrI11MQ3WdfSz?=
- =?us-ascii?Q?xHHY9dV8cpppPMZKlprF3T+ihr78PPcL9Fc1wW820lH1QtLklJSdBZzmgrpf?=
- =?us-ascii?Q?e3QRKEursSQ1thpW0cECS9PzJcKoaLonvy7sEcGnjQiAg2oydrWdBm0eoY6r?=
- =?us-ascii?Q?r86FaqQNOdRvipjok6prHOsHAWgaxMjHxHg92XFZj7LJ3dqJ7J6OwSEmn9gx?=
- =?us-ascii?Q?0kFsQgyFC05ourzg3co1947eufEAW9Ht2LuhXzyc0IqSB4fQ1B9jl17YzmoR?=
- =?us-ascii?Q?w2uIEKZFFF8KP/30Md0zP4qHBgA6qk9N4VmM/VFy3kctlcqHfxr+QMl6r80o?=
- =?us-ascii?Q?TBQ9/dX6SaCb131Y5iPd3pPs/P2f181qMjnvD/HE5TBOKTji37HhQVuUie9J?=
- =?us-ascii?Q?ZVetQuZYSLRtX8ddiK/oT9wmw4xTA62p8BJEymbCQSi1HheD8ftVROJ+WjRE?=
- =?us-ascii?Q?vVylIR4VguOv784BCrZpYyLn+F57sKHPCEsmaU4/xepgI5hEtinJ1XbH3V9H?=
- =?us-ascii?Q?ggFBchuSFQHcm1VDZkGrBl/IOlp9rXtq732uX7w8fV/30UIOv5D6IOh7K2L+?=
- =?us-ascii?Q?kU8Yl+5Bnokgr003xz0Qa1BTwnloSB2ulFNGIJ6LWUTuOu1JVGtAHbsVuU6a?=
- =?us-ascii?Q?/tvBkvAMvGufWBGMml1UfcrJpXw5hvHdaXdaTqOgE3z7qhUZYRzLFgSTP+wu?=
- =?us-ascii?Q?IPi9w29hJkSlhsD/GqgGQ4nPC8MoaDVSzEh30RXFu6Vpsd4zanxvlFB/JzQ/?=
- =?us-ascii?Q?t8gaI1uMIM0Ei20ghclnn8y/IEL/sCT7A5yVWkUy?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="148615301"
+Received: from p12ill20yoongsia.png.intel.com ([10.88.227.38])
+ by orviesa001.jf.intel.com with ESMTP; 06 Feb 2025 18:19:42 -0800
+From: Song Yoong Siang <yoong.siang.song@intel.com>
+To: "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Simon Horman <horms@kernel.org>,
+ Willem de Bruijn <willemb@google.com>,
+ Florian Bezdeka <florian.bezdeka@siemens.com>,
+ Donald Hunter <donald.hunter@gmail.com>, Jonathan Corbet <corbet@lwn.net>,
+ Bjorn Topel <bjorn@kernel.org>,
+ Magnus Karlsson <magnus.karlsson@intel.com>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Jonathan Lemon <jonathan.lemon@gmail.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, Joe Damato <jdamato@fastly.com>,
+ Stanislav Fomichev <sdf@fomichev.me>,
+ Xuan Zhuo <xuanzhuo@linux.alibaba.com>,
+ Mina Almasry <almasrymina@google.com>, Daniel Jurgens <danielj@nvidia.com>,
+ Song Yoong Siang <yoong.siang.song@intel.com>,
+ Andrii Nakryiko <andrii@kernel.org>, Eduard Zingerman <eddyz87@gmail.com>,
+ Mykola Lysenko <mykolal@fb.com>, Martin KaFai Lau <martin.lau@linux.dev>,
+ Song Liu <song@kernel.org>, Yonghong Song <yonghong.song@linux.dev>,
+ KP Singh <kpsingh@kernel.org>, Hao Luo <haoluo@google.com>,
+ Jiri Olsa <jolsa@kernel.org>, Shuah Khan <shuah@kernel.org>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Faizal Rahim <faizal.abdul.rahim@linux.intel.com>,
+ Choong Yong Liang <yong.liang.choong@linux.intel.com>,
+ Bouska Zdenek <zdenek.bouska@siemens.com>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-doc@vger.kernel.org, bpf@vger.kernel.org,
+ linux-kselftest@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, intel-wired-lan@lists.osuosl.org,
+ xdp-hints@xdp-project.net
+Date: Fri,  7 Feb 2025 10:19:38 +0800
+Message-Id: <20250207021943.814768-1-yoong.siang.song@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CY8PR11MB7134.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c6420c3b-9ed6-424c-e727-08dd4719b682
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Feb 2025 01:49:51.7841 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 3y787Zxg18Lgc0swFDg8QTsgzXWwqKAJGwRr216tGUqcuSgFvNco5uAkc8BrvQafldutCyAcueCzFosFR7gYOQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM3PR11MB8760
-X-OriginatorOrg: intel.com
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1738893181; x=1770429181;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=VV6Cl+HcOOeOsRXwzpfd7LvUx65TEVowxXGKCiRlxtc=;
- b=Kp9e+EjNRBqmq+U9rS7pq6t3gR/3U/QQ2GxgZ49qdlnH8bI1t6LpLzSB
- ShQUvlN1KARUTr1rn8UR0S45nCuaJtWcBo/ro18ZegtGhid/TOAaGrmkQ
- b1dMUZHsGp/v/PySiipzuo0G/rWQT5Gxc1Cvx9FrEUnlRQzCIklYI/h9/
- SjWcZ9Lpa6RsuYJq0g1ZZ7uXSpOog6vlbd1SW0+HGO6FaXpxNiPeOgxxp
- HY/4Ib8F3tv9jyZoi7Wig6EfjV02milRbUc5Jxwga6+wLUTnhjvRmpJxJ
- 9Ed1Qjni939H+uBQrh9pnxff3Wj43/VTjoZl3dmRH6KVHVfxbCCbYkIgV
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1738894796; x=1770430796;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=o8/+Lc618OLdOSjzAD+1vV0H+hG1wNYsHkBcA5JqIXk=;
+ b=IyCWPb54JB7uHaSIYXE721IaCIGCOMz1cJGWTZlZVYhzZ9yZF9dJpkyr
+ PiRDorqeUNCTzGFyFBrh31a7OY1xpazD1azF0EK1JmORQx0qna7rZb/br
+ 7cToDemQu63P2qqe6RnycE+8F9me6D0k4k1RTRt7P//pa8BBOvyWw07dm
+ tJYa8NtRL9ewpcVvQBUQT1FSXbvod/d4m0U7Hd7idsRxmehEU4fcNkI5g
+ 6xIx6yc3jPIUjDRZvRvZ5j/1H42jLwiyACDMf+jT401Lou50tevjHaXd4
+ VZfiZWQpa3nqtViyDVa50DM+wq22RGb94BE7NWnFK9wxLprUiIioZOaSa
+ g==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=Kp9e+EjN
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] ice: health.c: fix
- compilation on gcc 7.5
+ header.s=Intel header.b=IyCWPb54
+Subject: [Intel-wired-lan] [PATCH bpf-next v10 0/5] xsk: TX metadata Launch
+ Time support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -225,58 +140,128 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> From: Kitszel, Przemyslaw <przemyslaw.kitszel@intel.com>
-> [...]
-> Subject: [PATCH iwl-net v2] ice: health.c: fix compilation on gcc 7.5
->=20
-> GCC 7 is not as good as GCC 8+ in telling what is a compile-time const, a=
-nd
-> thus could be used for static storage.
-> Fortunately keeping strings as const arrays is enough to make old gcc hap=
-py.
->=20
-> Excerpt from the report:
-> My GCC is: gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0.
->=20
->   CC [M]  drivers/net/ethernet/stmicro/stmmac/stmmac_mdio.o
-> drivers/net/ethernet/intel/ice/devlink/health.c:35:3: error: initializer =
-element
-> is not constant
->    ice_common_port_solutions, {ice_port_number_label}},
->    ^~~~~~~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/ice/devlink/health.c:35:3: note: (near initial=
-ization
-> for 'ice_health_status_lookup[0].solution')
-> drivers/net/ethernet/intel/ice/devlink/health.c:35:31: error: initializer
-> element is not constant
->    ice_common_port_solutions, {ice_port_number_label}},
->                                ^~~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/ice/devlink/health.c:35:31: note: (near initia=
-lization
-> for 'ice_health_status_lookup[0].data_label[0]')
-> drivers/net/ethernet/intel/ice/devlink/health.c:37:46: error: initializer
-> element is not constant
->    "Change or replace the module or cable.", {ice_port_number_label}},
->                                               ^~~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/ice/devlink/health.c:37:46: note: (near initia=
-lization
-> for 'ice_health_status_lookup[1].data_label[0]')
-> drivers/net/ethernet/intel/ice/devlink/health.c:39:3: error: initializer =
-element
-> is not constant
->    ice_common_port_solutions, {ice_port_number_label}},
->    ^~~~~~~~~~~~~~~~~~~~~~~~~
->=20
-> Fixes: 85d6164ec56d ("ice: add fw and port health reporters")
-> Reported-by: Qiuxu Zhuo <qiuxu.zhuo@intel.com>
-> Closes:
-> https://lore.kernel.org/netdev/CY8PR11MB7134BF7A46D71E50D25FA7A989F
-> 72@CY8PR11MB7134.namprd11.prod.outlook.com
-> Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> Suggested-by: Simon Horman <horms@kernel.org>
-> Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+This series expands the XDP TX metadata framework to allow user
+applications to pass per packet 64-bit launch time directly to the kernel
+driver, requesting launch time hardware offload support. The XDP TX
+metadata framework will not perform any clock conversion or packet
+reordering.
 
-   Tested-by: Qiuxu Zhuo <qiuxu.zhuo@intel.com>
+Please note that the role of Tx metadata is just to pass the launch time,
+not to enable the offload feature. Users will need to enable the launch
+time hardware offload feature of the device by using the respective
+command, such as the tc-etf command.
 
-Thanks!
+Although some devices use the tc-etf command to enable their launch time
+hardware offload feature, xsk packets will not go through the etf qdisc.
+Therefore, in my opinion, the launch time should always be based on the PTP
+Hardware Clock (PHC). Thus, i did not include a clock ID to indicate the
+clock source.
+
+To simplify the test steps, I modified the xdp_hw_metadata bpf self-test
+tool in such a way that it will set the launch time based on the offset
+provided by the user and the value of the Receive Hardware Timestamp, which
+is against the PHC. This will eliminate the need to discipline System Clock
+with the PHC and then use clock_gettime() to get the time.
+
+Please note that AF_XDP lacks a feedback mechanism to inform the
+application if the requested launch time is invalid. So, users are expected
+to familiar with the horizon of the launch time of the device they use and
+not request a launch time that is beyond the horizon. Otherwise, the driver
+might interpret the launch time incorrectly and react wrongly. For stmmac
+and igc, where modulo computation is used, a launch time larger than the
+horizon will cause the device to transmit the packet earlier that the
+requested launch time.
+
+Although there is no feedback mechanism for the launch time request
+for now, user still can check whether the requested launch time is
+working or not, by requesting the Transmit Completion Hardware Timestamp.
+
+v10:
+  - use net_err_ratelimited(), instead of net_ratelimit() (Maciej)
+  - accumulate the amount of used descs in local variable and update the
+    igc_metadata_request::used_desc once (Maciej)
+  - Ensure reverse christmas tree rule (Maciej)
+
+V9: https://lore.kernel.org/netdev/20250206060408.808325-1-yoong.siang.song@intel.com/
+  - Remove the igc_desc_unused() checking (Maciej)
+  - Ensure that skb allocation and DMA mapping work before proceeding to
+    fill in igc_tx_buffer info, context desc, and data desc (Maciej)
+  - Rate limit the error messages (Maciej)
+  - Update the comment to indicate that the 2 descriptors needed by the
+    empty frame are already taken into consideration (Maciej)
+  - Handle the case where the insertion of an empty frame fails and
+    explain the reason behind (Maciej)
+  - put self SOB tag as last tag (Maciej)
+
+V8: https://lore.kernel.org/netdev/20250205024116.798862-1-yoong.siang.song@intel.com/
+  - check the number of used descriptor in xsk_tx_metadata_request()
+    by using used_desc of struct igc_metadata_request, and then decreases
+    the budget with it (Maciej)
+  - submit another bug fix patch to set the buffer type for empty frame (Maciej):
+    https://lore.kernel.org/netdev/20250205023603.798819-1-yoong.siang.song@intel.com/
+
+V7: https://lore.kernel.org/netdev/20250204004907.789330-1-yoong.siang.song@intel.com/
+  - split the refactoring code of igc empty packet insertion into a separate
+    commit (Faizal)
+  - add explanation on why the value "4" is used as igc transmit budget
+    (Faizal)
+  - perform a stress test by sending 1000 packets with 10ms interval and
+    launch time set to 500us in the future (Faizal & Yong Liang)
+
+V6: https://lore.kernel.org/netdev/20250116155350.555374-1-yoong.siang.song@intel.com/
+  - fix selftest build errors by using asprintf() and realloc(), instead of
+    managing the buffer sizes manually (Daniel, Stanislav)
+
+V5: https://lore.kernel.org/netdev/20250114152718.120588-1-yoong.siang.song@intel.com/
+  - change netdev feature name from tx-launch-time to tx-launch-time-fifo
+    to explicitly state the FIFO behaviour (Stanislav)
+  - improve the looping of xdp_hw_metadata app to wait for packet tx
+    completion to be more readable by using clock_gettime() (Stanislav)
+  - add launch time setup steps into xdp_hw_metadata app (Stanislav)
+
+V4: https://lore.kernel.org/netdev/20250106135506.9687-1-yoong.siang.song@intel.com/
+  - added XDP launch time support to the igc driver (Jesper & Florian)
+  - added per-driver launch time limitation on xsk-tx-metadata.rst (Jesper)
+  - added explanation on FIFO behavior on xsk-tx-metadata.rst (Jakub)
+  - added step to enable launch time in the commit message (Jesper & Willem)
+  - explicitly documented the type of launch_time and which clock source
+    it is against (Willem)
+
+V3: https://lore.kernel.org/netdev/20231203165129.1740512-1-yoong.siang.song@intel.com/
+  - renamed to use launch time (Jesper & Willem)
+  - changed the default launch time in xdp_hw_metadata apps from 1s to 0.1s
+    because some NICs do not support such a large future time.
+
+V2: https://lore.kernel.org/netdev/20231201062421.1074768-1-yoong.siang.song@intel.com/
+  - renamed to use Earliest TxTime First (Willem)
+  - renamed to use txtime (Willem)
+
+V1: https://lore.kernel.org/netdev/20231130162028.852006-1-yoong.siang.song@intel.com/
+
+Song Yoong Siang (5):
+  xsk: Add launch time hardware offload support to XDP Tx metadata
+  selftests/bpf: Add launch time request to xdp_hw_metadata
+  net: stmmac: Add launch time support to XDP ZC
+  igc: Refactor empty frame insertion for launch time support
+  igc: Add launch time support to XDP ZC
+
+ Documentation/netlink/specs/netdev.yaml       |   4 +
+ Documentation/networking/xsk-tx-metadata.rst  |  62 +++++++
+ drivers/net/ethernet/intel/igc/igc.h          |   1 +
+ drivers/net/ethernet/intel/igc/igc_main.c     | 143 +++++++++++----
+ drivers/net/ethernet/stmicro/stmmac/stmmac.h  |   2 +
+ .../net/ethernet/stmicro/stmmac/stmmac_main.c |  13 ++
+ include/net/xdp_sock.h                        |  10 ++
+ include/net/xdp_sock_drv.h                    |   1 +
+ include/uapi/linux/if_xdp.h                   |  10 ++
+ include/uapi/linux/netdev.h                   |   3 +
+ net/core/netdev-genl.c                        |   2 +
+ net/xdp/xsk.c                                 |   3 +
+ tools/include/uapi/linux/if_xdp.h             |  10 ++
+ tools/include/uapi/linux/netdev.h             |   3 +
+ tools/testing/selftests/bpf/xdp_hw_metadata.c | 168 +++++++++++++++++-
+ 15 files changed, 396 insertions(+), 39 deletions(-)
+
+-- 
+2.34.1
 
