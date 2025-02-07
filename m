@@ -1,77 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 700DAA2CEA9
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Feb 2025 22:02:11 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A230D70538;
-	Fri,  7 Feb 2025 21:01:44 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id yMGyFiIVC8sr; Fri,  7 Feb 2025 21:01:43 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7DDA470549
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1738962103;
-	bh=PTuUAH3ttkbqiD7+Sha+ng7wR4TUL1BPzih1sQg12Xo=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=IY6TaBpCnE6oNb6pu5xuP2NxYr7ujaY/snGFlIGI4PQOtVV/TjNGhRRXiDmhFWL4Y
-	 TJdox1pmzOqWpzb11rZfmN5w4N33gqJ/wwOIKP2h6x/ujjv1toK6K5bRvCRDWxrFyS
-	 iJvHOhStl9cBFTp6SlXIM6Q5fbzr9rMo4KZpbutegDWHQG58lyTBcTvqq1LHRBTE8H
-	 cx1pbtubDEwK0dwRkCoDA2p7SW0FTAXiqdkf81h1aguH/WnfPUhnrOOKv9Ejs4Lce0
-	 ownAq7yqwvt8WrHXttMhb73UU/G9NGJSu0xsnDmAQuF2tBgX7++RV46qLfqzXal+Mm
-	 jmKSAgLZh1nsg==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7DDA470549;
-	Fri,  7 Feb 2025 21:01:43 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 34DA91B7
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 19:50:38 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9DB22A2CE9D
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Feb 2025 22:01:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 227F68156F
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 19:50:33 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id ED7B884A70;
+	Fri,  7 Feb 2025 21:01:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id bXAGZBdQirtl for <intel-wired-lan@lists.osuosl.org>;
+ id n0GEkX8bAeDc; Fri,  7 Feb 2025 21:01:37 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 551BE84A60
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1738962097;
+	bh=CaeQfA2UpyBv/XnRqebeivGNM7qk4j+7vefV8sMSCnI=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=K/UTWZuV3Xxr8fMVTKedolcxtASpfV5MfHaMEWNuWPfaK7X8kvpujqFCaJ16ZhVkG
+	 o3WuxBNQE5JeZdMxhsRF7o+f7wyqd7BdXI7KwlaqnGmgx8VTCNJfSUskFgJ1V5YBe4
+	 V2D8vmNwlRj4EdgBC0+GdI04MHyK6pMEHxzPIFzlsG1eORLmY34JGWUZ49Yb2Q4bgq
+	 RSyqWvO3n3lNMFbZeUz1guN2ZKwbGHiXE9FwGK/fgI+2/T6c42FuoIXfwhSqKiL2gc
+	 090WcOefti1TSQ5AHe5jtKcXjgWVN/rS3apbnJHNBhHHMjL+Vzv5oaqcOAAeaPs4Sl
+	 sYp9xPKs4o64g==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 551BE84A60;
+	Fri,  7 Feb 2025 21:01:37 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 205C91B5
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 19:50:33 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id E65C0812D1
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 19:50:31 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id xLGoHn48JhgQ for <intel-wired-lan@lists.osuosl.org>;
  Fri,  7 Feb 2025 19:50:30 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
  helo=mgamail.intel.com; envelope-from=tatyana.e.nikolova@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 5CED68113B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5CED68113B
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org ABCB881065
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org ABCB881065
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5CED68113B
+ by smtp1.osuosl.org (Postfix) with ESMTPS id ABCB881065
  for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Feb 2025 19:50:30 +0000 (UTC)
-X-CSE-ConnectionGUID: Wv0RbdGpRGWh25mNGS1pEA==
-X-CSE-MsgGUID: hGp8tUhISduZ08/CiIuXaA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11338"; a="42451817"
-X-IronPort-AV: E=Sophos;i="6.13,268,1732608000"; d="scan'208";a="42451817"
+X-CSE-ConnectionGUID: F7He0MzgR2OZxCuVDCcaBA==
+X-CSE-MsgGUID: wyo4kjcBQKyluNqqX37P9w==
+X-IronPort-AV: E=McAfee;i="6700,10204,11338"; a="42451821"
+X-IronPort-AV: E=Sophos;i="6.13,268,1732608000"; d="scan'208";a="42451821"
 Received: from fmviesa009.fm.intel.com ([10.60.135.149])
  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  07 Feb 2025 11:50:30 -0800
-X-CSE-ConnectionGUID: 8ugmlWHVRJG7R/+O3KCM7g==
-X-CSE-MsgGUID: A0eOb9UiT9qXMBj3EjX7tA==
+X-CSE-ConnectionGUID: lIvnLzLKRAiEOmBKhuIPvg==
+X-CSE-MsgGUID: PDw/leGfTe2XJJnJmVLnTQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,268,1732608000"; d="scan'208";a="112238203"
+X-IronPort-AV: E=Sophos;i="6.13,268,1732608000"; d="scan'208";a="112238210"
 Received: from tenikolo-mobl1.amr.corp.intel.com ([10.124.81.134])
  by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Feb 2025 11:50:29 -0800
+ 07 Feb 2025 11:50:30 -0800
 From: Tatyana Nikolova <tatyana.e.nikolova@intel.com>
 To: jgg@nvidia.com,
 	leon@kernel.org,
 	intel-wired-lan@lists.osuosl.org
 Cc: linux-rdma@vger.kernel.org, netdev@vger.kernel.org,
- Mustafa Ismail <mustafa.ismail@intel.com>,
+ Shiraz Saleem <shiraz.saleem@intel.com>,
  Tatyana Nikolova <tatyana.e.nikolova@intel.com>
-Date: Fri,  7 Feb 2025 13:49:21 -0600
-Message-Id: <20250207194931.1569-15-tatyana.e.nikolova@intel.com>
+Date: Fri,  7 Feb 2025 13:49:22 -0600
+Message-Id: <20250207194931.1569-16-tatyana.e.nikolova@intel.com>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20250207194931.1569-1-tatyana.e.nikolova@intel.com>
 References: <20250207194931.1569-1-tatyana.e.nikolova@intel.com>
@@ -80,16 +80,16 @@ Content-Transfer-Encoding: 8bit
 X-Mailman-Approved-At: Fri, 07 Feb 2025 21:01:16 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1738957830; x=1770493830;
+ t=1738957831; x=1770493831;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=TeMXc1b6KlktiLZYTSK7kLkcWUMla5xDq2GCQlxHusI=;
- b=YUEfuVD2jCVJaPBRGkL2yUPxXP+gB9aDZsiLVdImXfM0ssoB6zHStn6Y
- CRLUIdHZNwoAAjrg4h+DCNajeWL/E7bOe+f6V6pMOTeJlTFQtZ2s4ugY4
- vTw/AFv2W1vNhPqHv6dhUr/mHd2X4Qag7AkrVaBfXFpn3tNhuNg/JkPwd
- z/rhFLAQhXGJdR/PuJYpEqHZRxX4ly19NGyldpvGmTsgsC2MB/h2nOv+o
- uRvORf4dogHDkBWHRKf8z3RzKj4HNsywi6VPjfv84coHnuUQLB45NYbuR
- r1RFv0Jwlqt4ApxAv5dAAMJ8Gc2sKyOFZslRBvkm6V9/S8aaYuo42pxpf
+ bh=xppOYkyx2KNBkJ04dt1uWfYS7ysZaq1+epyJ1FKtVeM=;
+ b=R+H7A0l6VNKolQCTF16eHNi+TUW0AgLqqdWm7Lk5TtWYUK1TytuDImvH
+ /B1CipRDEgmQSfBkH/TtuM4gG4/XL0UGuxDQmjl03ww+Ik9DhJmmICxaf
+ gJ7MlEUkpPCTEtjurF+vQXzxP7mq30mkMVcxMD+wRcRydR5GzEeSlzHLb
+ n5kL/UVBokf9os3tVnj0tjfVnPyfzjbWHYiyIeYycY3+UCUVwyVLxG9Ux
+ uX0U4+rNT3pS0hWLzLrtM0x+CRulmkjPwAIEnz43tcyLHmXUT/4s5lp+V
+ T4nuiCpMz4mEB7JYR6XDDTWTGEp159eXBtFGhcP0A74DmYiXn01pC3Z8B
  Q==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
@@ -97,9 +97,9 @@ X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=YUEfuVD2
-Subject: [Intel-wired-lan] [rdma v3 14/24] RDMA/irdma: Introduce GEN3 vPort
- driver support
+ header.s=Intel header.b=R+H7A0l6
+Subject: [Intel-wired-lan] [rdma v3 15/24] RDMA/irdma: Add GEN3 virtual QP1
+ support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -115,249 +115,388 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Mustafa Ismail <mustafa.ismail@intel.com>
+From: Shiraz Saleem <shiraz.saleem@intel.com>
 
-In the IPU model, a function can host one or more logical network
-endpoints called vPorts. Each vPort may be associated with either a
-physical or an internal communication port, and can be RDMA capable. A
-vPort features a netdev and, if RDMA capable, must have an associated
-ib_dev.
+Add a new RDMA virtual channel op during QP1 creation that allow the
+Control Plane (CP) to virtualize a regular QP as QP1 on non-default
+RDMA capable vPorts. Additionally, the CP will return the Qsets to use
+on the ib_device of the vPort.
 
-This change introduces a GEN3 auxiliary vPort driver responsible for
-registering a verbs device for every RDMA-capable vPort. Additionally,
-the UAPI is updated to prevent the binding of GEN3 devices to older
-user-space providers.
-
-Signed-off-by: Mustafa Ismail <mustafa.ismail@intel.com>
+Signed-off-by: Shiraz Saleem <shiraz.saleem@intel.com>
 Signed-off-by: Tatyana Nikolova <tatyana.e.nikolova@intel.com>
 ---
- drivers/infiniband/hw/irdma/ig3rdma_if.c | 108 +++++++++++++++++++++++
- drivers/infiniband/hw/irdma/main.c       |  12 +++
- drivers/infiniband/hw/irdma/main.h       |   3 +
- drivers/infiniband/hw/irdma/verbs.c      |  12 ++-
- include/uapi/rdma/irdma-abi.h            |   1 +
- 5 files changed, 134 insertions(+), 2 deletions(-)
+ drivers/infiniband/hw/irdma/ctrl.c     | 10 ++-
+ drivers/infiniband/hw/irdma/main.h     |  1 +
+ drivers/infiniband/hw/irdma/utils.c    | 30 ++++++++-
+ drivers/infiniband/hw/irdma/verbs.c    | 84 ++++++++++++++++++++------
+ drivers/infiniband/hw/irdma/virtchnl.c | 52 ++++++++++++++++
+ drivers/infiniband/hw/irdma/virtchnl.h | 19 ++++++
+ 6 files changed, 174 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/infiniband/hw/irdma/ig3rdma_if.c b/drivers/infiniband/hw/irdma/ig3rdma_if.c
-index 9d0623467af2..2c7dc93dc576 100644
---- a/drivers/infiniband/hw/irdma/ig3rdma_if.c
-+++ b/drivers/infiniband/hw/irdma/ig3rdma_if.c
-@@ -14,6 +14,23 @@ static void ig3rdma_idc_core_event_handler(struct idc_rdma_core_dev_info *cdev_i
- 	}
- }
- 
-+static void ig3rdma_idc_vport_event_handler(struct idc_rdma_vport_dev_info *cdev_info,
-+					    struct idc_rdma_event *event)
-+{
-+	struct irdma_device *iwdev = auxiliary_get_drvdata(cdev_info->adev);
-+	struct irdma_l2params l2params = {};
-+
-+	if (*event->type & BIT(IDC_RDMA_EVENT_AFTER_MTU_CHANGE)) {
-+		ibdev_dbg(&iwdev->ibdev, "CLNT: new MTU = %d\n", iwdev->netdev->mtu);
-+		if (iwdev->vsi.mtu != iwdev->netdev->mtu) {
-+			l2params.mtu = iwdev->netdev->mtu;
-+			l2params.mtu_changed = true;
-+			irdma_log_invalid_mtu(l2params.mtu, &iwdev->rf->sc_dev);
-+			irdma_change_l2params(&iwdev->vsi, &l2params);
-+		}
-+	}
-+}
-+
- static int ig3rdma_cfg_regions(struct irdma_hw *hw,
- 			       struct idc_rdma_core_dev_info *cdev_info)
+diff --git a/drivers/infiniband/hw/irdma/ctrl.c b/drivers/infiniband/hw/irdma/ctrl.c
+index 8fd2882f75af..7d2ae701b8f5 100644
+--- a/drivers/infiniband/hw/irdma/ctrl.c
++++ b/drivers/infiniband/hw/irdma/ctrl.c
+@@ -74,6 +74,14 @@ static void irdma_set_qos_info(struct irdma_sc_vsi  *vsi,
  {
-@@ -169,3 +186,94 @@ struct idc_rdma_core_auxiliary_drv ig3rdma_core_auxiliary_drv = {
- 	},
- 	.event_handler = ig3rdma_idc_core_event_handler,
- };
-+
-+static int ig3rdma_vport_probe(struct auxiliary_device *aux_dev,
-+			       const struct auxiliary_device_id *id)
-+{
-+	struct idc_rdma_vport_auxiliary_dev *idc_adev =
-+		container_of(aux_dev, struct idc_rdma_vport_auxiliary_dev, adev);
-+	struct auxiliary_device *aux_core_dev = idc_adev->vdev_info->core_adev;
-+	struct irdma_pci_f *rf = auxiliary_get_drvdata(aux_core_dev);
-+	struct iidc_rdma_qos_params qos_info = {};
-+	struct irdma_l2params l2params = {};
-+	struct irdma_device *iwdev;
-+	int err;
-+
-+	if (!rf) {
-+		WARN_ON_ONCE(1);
-+		return -ENOMEM;
-+	}
-+	iwdev = ib_alloc_device(irdma_device, ibdev);
-+	/* Fill iwdev info */
-+	iwdev->is_vport = true;
-+	iwdev->rf = rf;
-+	iwdev->vport_id = idc_adev->vdev_info->vport_id;
-+	iwdev->netdev = idc_adev->vdev_info->netdev;
-+	iwdev->init_state = INITIAL_STATE;
-+	iwdev->roce_cwnd = IRDMA_ROCE_CWND_DEFAULT;
-+	iwdev->roce_ackcreds = IRDMA_ROCE_ACKCREDS_DEFAULT;
-+	iwdev->rcv_wnd = IRDMA_CM_DEFAULT_RCV_WND_SCALED;
-+	iwdev->rcv_wscale = IRDMA_CM_DEFAULT_RCV_WND_SCALE;
-+	iwdev->roce_mode = true;
-+	iwdev->push_mode = true;
-+
-+	l2params.mtu = iwdev->netdev->mtu;
-+	irdma_fill_qos_info(&l2params, &qos_info);
-+
-+	err = irdma_rt_init_hw(iwdev, &l2params);
-+	if (err)
-+		goto err_rt_init;
-+
-+	err = irdma_ib_register_device(iwdev);
-+	if (err)
-+		goto err_ibreg;
-+
-+	auxiliary_set_drvdata(aux_dev, iwdev);
-+
-+	ibdev_dbg(&iwdev->ibdev,
-+		  "INIT: Gen[%d] vport[%d] probe success. dev_name = %s, core_dev_name = %s, netdev=%s\n",
-+		  rf->rdma_ver, idc_adev->vdev_info->vport_id,
-+		  dev_name(&aux_dev->dev),
-+		  dev_name(&idc_adev->vdev_info->core_adev->dev),
-+		  netdev_name(idc_adev->vdev_info->netdev));
-+
-+	return 0;
-+err_ibreg:
-+	irdma_rt_deinit_hw(iwdev);
-+err_rt_init:
-+	ib_dealloc_device(&iwdev->ibdev);
-+
-+	return err;
-+}
-+
-+static void ig3rdma_vport_remove(struct auxiliary_device *aux_dev)
-+{
-+	struct idc_rdma_vport_auxiliary_dev *idc_adev =
-+		container_of(aux_dev, struct idc_rdma_vport_auxiliary_dev, adev);
-+	struct irdma_device *iwdev = auxiliary_get_drvdata(aux_dev);
-+
-+	ibdev_dbg(&iwdev->ibdev,
-+		  "INIT: Gen[%d] dev_name = %s, core_dev_name = %s, netdev=%s\n",
-+		  iwdev->rf->rdma_ver, dev_name(&aux_dev->dev),
-+		  dev_name(&idc_adev->vdev_info->core_adev->dev),
-+		  netdev_name(idc_adev->vdev_info->netdev));
-+
-+	irdma_ib_unregister_device(iwdev);
-+}
-+
-+static const struct auxiliary_device_id ig3rdma_vport_auxiliary_id_table[] = {
-+	{.name = "idpf.8086.rdma.vdev", },
-+	{},
-+};
-+
-+MODULE_DEVICE_TABLE(auxiliary, ig3rdma_vport_auxiliary_id_table);
-+
-+struct idc_rdma_vport_auxiliary_drv ig3rdma_vport_auxiliary_drv = {
-+	.adrv = {
-+		.name = "vdev",
-+		.id_table = ig3rdma_vport_auxiliary_id_table,
-+		.probe = ig3rdma_vport_probe,
-+		.remove = ig3rdma_vport_remove,
-+	},
-+	.event_handler = ig3rdma_idc_vport_event_handler,
-+};
-diff --git a/drivers/infiniband/hw/irdma/main.c b/drivers/infiniband/hw/irdma/main.c
-index e9524de1c10f..4b07b0719557 100644
---- a/drivers/infiniband/hw/irdma/main.c
-+++ b/drivers/infiniband/hw/irdma/main.c
-@@ -129,6 +129,17 @@ static int __init irdma_init_module(void)
+ 	u8 i;
  
- 		return ret;
++	if (vsi->dev->hw_attrs.uk_attrs.hw_rev >= IRDMA_GEN_3) {
++		for (i = 0; i < IRDMA_MAX_USER_PRIORITY; i++) {
++			vsi->qos[i].qs_handle = vsi->dev->qos[i].qs_handle;
++			vsi->qos[i].valid = true;
++		}
++
++		return;
++	}
+ 	vsi->qos_rel_bw = l2p->vsi_rel_bw;
+ 	vsi->qos_prio_type = l2p->vsi_prio_type;
+ 	vsi->dscp_mode = l2p->dscp_mode;
+@@ -1877,7 +1885,7 @@ void irdma_sc_vsi_init(struct irdma_sc_vsi  *vsi,
+ 		mutex_init(&vsi->qos[i].qos_mutex);
+ 		INIT_LIST_HEAD(&vsi->qos[i].qplist);
  	}
-+
-+	ret = auxiliary_driver_register(&ig3rdma_vport_auxiliary_drv.adrv);
-+	if (ret) {
-+		auxiliary_driver_unregister(&ig3rdma_core_auxiliary_drv.adrv);
-+		auxiliary_driver_unregister(&icrdma_core_auxiliary_drv.adrv);
-+		auxiliary_driver_unregister(&i40iw_auxiliary_drv);
-+		pr_err("Failed ig3rdma vport auxiliary_driver_register() ret=%d\n",
-+		       ret);
-+
-+		return ret;
-+	}
- 	irdma_register_notifiers();
- 
- 	return 0;
-@@ -168,6 +179,7 @@ static void __exit irdma_exit_module(void)
- 	auxiliary_driver_unregister(&icrdma_core_auxiliary_drv.adrv);
- 	auxiliary_driver_unregister(&i40iw_auxiliary_drv);
- 	auxiliary_driver_unregister(&ig3rdma_core_auxiliary_drv.adrv);
-+	auxiliary_driver_unregister(&ig3rdma_vport_auxiliary_drv.adrv);
- }
- 
- module_init(irdma_init_module);
+-	if (vsi->register_qset) {
++	if (vsi->dev->hw_attrs.uk_attrs.hw_rev == IRDMA_GEN_2) {
+ 		vsi->dev->ws_add = irdma_ws_add;
+ 		vsi->dev->ws_remove = irdma_ws_remove;
+ 		vsi->dev->ws_reset = irdma_ws_reset;
 diff --git a/drivers/infiniband/hw/irdma/main.h b/drivers/infiniband/hw/irdma/main.h
-index 17169338045a..1dab2ffba5e5 100644
+index 1dab2ffba5e5..f0196aafe59b 100644
 --- a/drivers/infiniband/hw/irdma/main.h
 +++ b/drivers/infiniband/hw/irdma/main.h
-@@ -56,6 +56,7 @@
+@@ -260,6 +260,7 @@ struct irdma_pci_f {
+ 	bool reset:1;
+ 	bool rsrc_created:1;
+ 	bool msix_shared:1;
++	bool hwqp1_rsvd:1;
+ 	u8 rsrc_profile;
+ 	u8 *hmc_info_mem;
+ 	u8 *mem_rsrc;
+diff --git a/drivers/infiniband/hw/irdma/utils.c b/drivers/infiniband/hw/irdma/utils.c
+index 8ab8af02abc9..87c88be47ee3 100644
+--- a/drivers/infiniband/hw/irdma/utils.c
++++ b/drivers/infiniband/hw/irdma/utils.c
+@@ -1113,6 +1113,26 @@ static void irdma_dealloc_push_page(struct irdma_pci_f *rf,
+ 	irdma_put_cqp_request(&rf->cqp, cqp_request);
+ }
  
- extern struct auxiliary_driver i40iw_auxiliary_drv;
- extern struct idc_rdma_core_auxiliary_drv ig3rdma_core_auxiliary_drv;
-+extern struct idc_rdma_vport_auxiliary_drv ig3rdma_vport_auxiliary_drv;
- extern struct idc_rdma_core_auxiliary_drv icrdma_core_auxiliary_drv;
++static void irdma_free_gsi_qp_rsrc(struct irdma_qp *iwqp, u32 qp_num)
++{
++	struct irdma_device *iwdev = iwqp->iwdev;
++	struct irdma_pci_f *rf = iwdev->rf;
++	unsigned long flags;
++
++	if (rf->sc_dev.hw_attrs.uk_attrs.hw_rev < IRDMA_GEN_3)
++		return;
++
++	irdma_vchnl_req_del_vport(&rf->sc_dev, iwdev->vport_id, qp_num);
++
++	if (qp_num == 1) {
++		spin_lock_irqsave(&rf->rsrc_lock, flags);
++		rf->hwqp1_rsvd = false;
++		spin_unlock_irqrestore(&rf->rsrc_lock, flags);
++	} else if (qp_num > 2) {
++		irdma_free_rsrc(rf, rf->allocated_qps, qp_num);
++	}
++}
++
+ /**
+  * irdma_free_qp_rsrc - free up memory resources for qp
+  * @iwqp: qp ptr (user or kernel)
+@@ -1121,7 +1141,7 @@ void irdma_free_qp_rsrc(struct irdma_qp *iwqp)
+ {
+ 	struct irdma_device *iwdev = iwqp->iwdev;
+ 	struct irdma_pci_f *rf = iwdev->rf;
+-	u32 qp_num = iwqp->ibqp.qp_num;
++	u32 qp_num = iwqp->sc_qp.qp_uk.qp_id;
  
- #define IRDMA_FW_VER_DEFAULT	2
-@@ -353,12 +354,14 @@ struct irdma_device {
- 	u32 rcv_wnd;
- 	u16 mac_ip_table_idx;
- 	u16 vsi_num;
-+	u16 vport_id;
- 	u8 rcv_wscale;
- 	u8 iw_status;
- 	bool roce_mode:1;
- 	bool roce_dcqcn_en:1;
- 	bool dcb_vlan_mode:1;
- 	bool iw_ooo:1;
-+	bool is_vport:1;
- 	enum init_completion_state init_state;
+ 	irdma_ieq_cleanup_qp(iwdev->vsi.ieq, &iwqp->sc_qp);
+ 	irdma_dealloc_push_page(rf, &iwqp->sc_qp);
+@@ -1131,8 +1151,12 @@ void irdma_free_qp_rsrc(struct irdma_qp *iwqp)
+ 					   iwqp->sc_qp.user_pri);
+ 	}
  
- 	wait_queue_head_t suspend_wq;
+-	if (qp_num > 2)
+-		irdma_free_rsrc(rf, rf->allocated_qps, qp_num);
++	if (iwqp->ibqp.qp_type == IB_QPT_GSI) {
++		irdma_free_gsi_qp_rsrc(iwqp, qp_num);
++	} else {
++		if (qp_num > 2)
++			irdma_free_rsrc(rf, rf->allocated_qps, qp_num);
++	}
+ 	dma_free_coherent(rf->sc_dev.hw->device, iwqp->q2_ctx_mem.size,
+ 			  iwqp->q2_ctx_mem.va, iwqp->q2_ctx_mem.pa);
+ 	iwqp->q2_ctx_mem.va = NULL;
 diff --git a/drivers/infiniband/hw/irdma/verbs.c b/drivers/infiniband/hw/irdma/verbs.c
-index a0257b87d99f..2535e0f59ceb 100644
+index 2535e0f59ceb..cf5a5d28fe53 100644
 --- a/drivers/infiniband/hw/irdma/verbs.c
 +++ b/drivers/infiniband/hw/irdma/verbs.c
-@@ -292,6 +292,10 @@ static int irdma_alloc_ucontext(struct ib_ucontext *uctx,
- 	ucontext->iwdev = iwdev;
- 	ucontext->abi_ver = req.userspace_ver;
+@@ -545,6 +545,9 @@ static int irdma_destroy_qp(struct ib_qp *ibqp, struct ib_udata *udata)
+ 	irdma_cqp_qp_destroy_cmd(&iwdev->rf->sc_dev, &iwqp->sc_qp);
  
-+	if (!(req.comp_mask & IRDMA_SUPPORT_WQE_FORMAT_V2) &&
-+	    uk_attrs->hw_rev >= IRDMA_GEN_3)
-+		return -EOPNOTSUPP;
+ 	irdma_remove_push_mmap_entries(iwqp);
 +
- 	if (req.comp_mask & IRDMA_ALLOC_UCTX_USE_RAW_ATTR)
- 		ucontext->use_raw_attrs = true;
++	if (iwqp->sc_qp.qp_uk.qp_id == 1)
++		iwdev->rf->hwqp1_rsvd = false;
+ 	irdma_free_qp_rsrc(iwqp);
  
-@@ -4882,6 +4886,10 @@ void irdma_ib_dealloc_device(struct ib_device *ibdev)
- 	struct irdma_device *iwdev = to_iwdev(ibdev);
+ 	return 0;
+@@ -723,6 +726,7 @@ static int irdma_setup_kmode_qp(struct irdma_device *iwdev,
+ 		info->rq_pa + (ukinfo->rq_depth * IRDMA_QP_WQE_MIN_SIZE);
+ 	ukinfo->sq_size = ukinfo->sq_depth >> ukinfo->sq_shift;
+ 	ukinfo->rq_size = ukinfo->rq_depth >> ukinfo->rq_shift;
++	ukinfo->qp_id = info->qp_uk_init_info.qp_id;
  
- 	irdma_rt_deinit_hw(iwdev);
--	irdma_ctrl_deinit_hw(iwdev->rf);
--	kfree(iwdev->rf);
-+	if (!iwdev->is_vport) {
-+		irdma_ctrl_deinit_hw(iwdev->rf);
-+		if (iwdev->rf->vchnl_wq)
-+			destroy_workqueue(iwdev->rf->vchnl_wq);
-+		kfree(iwdev->rf);
-+	}
+ 	iwqp->max_send_wr = (ukinfo->sq_depth - IRDMA_SQ_RSVD) >> ukinfo->sq_shift;
+ 	iwqp->max_recv_wr = (ukinfo->rq_depth - IRDMA_RQ_RSVD) >> ukinfo->rq_shift;
+@@ -779,6 +783,8 @@ static void irdma_roce_fill_and_set_qpctx_info(struct irdma_qp *iwqp,
+ 	roce_info = &iwqp->roce_info;
+ 	ether_addr_copy(roce_info->mac_addr, iwdev->netdev->dev_addr);
+ 
++	if (iwqp->ibqp.qp_type == IB_QPT_GSI && iwqp->ibqp.qp_num != 1)
++		roce_info->is_qp1 = true;
+ 	roce_info->rd_en = true;
+ 	roce_info->wr_rdresp_en = true;
+ 	roce_info->bind_en = true;
+@@ -868,6 +874,47 @@ static void irdma_flush_worker(struct work_struct *work)
+ 	irdma_generate_flush_completions(iwqp);
  }
-diff --git a/include/uapi/rdma/irdma-abi.h b/include/uapi/rdma/irdma-abi.h
-index bb18f15489e3..4e42054cca33 100644
---- a/include/uapi/rdma/irdma-abi.h
-+++ b/include/uapi/rdma/irdma-abi.h
-@@ -25,6 +25,7 @@ enum irdma_memreg_type {
- enum {
- 	IRDMA_ALLOC_UCTX_USE_RAW_ATTR = 1 << 0,
- 	IRDMA_ALLOC_UCTX_MIN_HW_WQ_SIZE = 1 << 1,
-+	IRDMA_SUPPORT_WQE_FORMAT_V2 = 1 << 3,
+ 
++static int irdma_setup_gsi_qp_rsrc(struct irdma_qp *iwqp, u32 *qp_num)
++{
++	struct irdma_device *iwdev = iwqp->iwdev;
++	struct irdma_pci_f *rf = iwdev->rf;
++	unsigned long flags;
++	int ret;
++
++	if (rf->rdma_ver <= IRDMA_GEN_2) {
++		*qp_num = 1;
++		return 0;
++	}
++
++	spin_lock_irqsave(&rf->rsrc_lock, flags);
++	if (!rf->hwqp1_rsvd) {
++		*qp_num = 1;
++		rf->hwqp1_rsvd = true;
++		spin_unlock_irqrestore(&rf->rsrc_lock, flags);
++	} else {
++		spin_unlock_irqrestore(&rf->rsrc_lock, flags);
++		ret = irdma_alloc_rsrc(rf, rf->allocated_qps, rf->max_qp,
++				       qp_num, &rf->next_qp);
++		if (ret)
++			return ret;
++	}
++
++	ret = irdma_vchnl_req_add_vport(&rf->sc_dev, iwdev->vport_id, *qp_num,
++					(&iwdev->vsi)->qos);
++	if (ret) {
++		if (*qp_num != 1) {
++			irdma_free_rsrc(rf, rf->allocated_qps, *qp_num);
++		} else {
++			spin_lock_irqsave(&rf->rsrc_lock, flags);
++			rf->hwqp1_rsvd = false;
++			spin_unlock_irqrestore(&rf->rsrc_lock, flags);
++		}
++		return ret;
++	}
++
++	return 0;
++}
++
+ /**
+  * irdma_create_qp - create qp
+  * @ibqp: ptr of qp
+@@ -929,16 +976,20 @@ static int irdma_create_qp(struct ib_qp *ibqp,
+ 	init_info.host_ctx = (__le64 *)(init_info.q2 + IRDMA_Q2_BUF_SIZE);
+ 	init_info.host_ctx_pa = init_info.q2_pa + IRDMA_Q2_BUF_SIZE;
+ 
+-	if (init_attr->qp_type == IB_QPT_GSI)
+-		qp_num = 1;
+-	else
++	if (init_attr->qp_type == IB_QPT_GSI) {
++		err_code = irdma_setup_gsi_qp_rsrc(iwqp, &qp_num);
++		if (err_code)
++			goto error;
++		iwqp->ibqp.qp_num = 1;
++	} else {
+ 		err_code = irdma_alloc_rsrc(rf, rf->allocated_qps, rf->max_qp,
+ 					    &qp_num, &rf->next_qp);
+-	if (err_code)
+-		goto error;
++		if (err_code)
++			goto error;
++		iwqp->ibqp.qp_num = qp_num;
++	}
+ 
+ 	iwqp->iwpd = iwpd;
+-	iwqp->ibqp.qp_num = qp_num;
+ 	qp = &iwqp->sc_qp;
+ 	iwqp->iwscq = to_iwcq(init_attr->send_cq);
+ 	iwqp->iwrcq = to_iwcq(init_attr->recv_cq);
+@@ -998,10 +1049,17 @@ static int irdma_create_qp(struct ib_qp *ibqp,
+ 	ctx_info->send_cq_num = iwqp->iwscq->sc_cq.cq_uk.cq_id;
+ 	ctx_info->rcv_cq_num = iwqp->iwrcq->sc_cq.cq_uk.cq_id;
+ 
+-	if (rdma_protocol_roce(&iwdev->ibdev, 1))
++	if (rdma_protocol_roce(&iwdev->ibdev, 1)) {
++		if (dev->ws_add(&iwdev->vsi, 0)) {
++			irdma_cqp_qp_destroy_cmd(&rf->sc_dev, &iwqp->sc_qp);
++			err_code = -EINVAL;
++			goto error;
++		}
++		irdma_qp_add_qos(&iwqp->sc_qp);
+ 		irdma_roce_fill_and_set_qpctx_info(iwqp, ctx_info);
+-	else
++	} else {
+ 		irdma_iw_fill_and_set_qpctx_info(iwqp, ctx_info);
++	}
+ 
+ 	err_code = irdma_cqp_create_qp_cmd(iwqp);
+ 	if (err_code)
+@@ -1013,16 +1071,6 @@ static int irdma_create_qp(struct ib_qp *ibqp,
+ 	iwqp->sig_all = init_attr->sq_sig_type == IB_SIGNAL_ALL_WR;
+ 	rf->qp_table[qp_num] = iwqp;
+ 
+-	if (rdma_protocol_roce(&iwdev->ibdev, 1)) {
+-		if (dev->ws_add(&iwdev->vsi, 0)) {
+-			irdma_cqp_qp_destroy_cmd(&rf->sc_dev, &iwqp->sc_qp);
+-			err_code = -EINVAL;
+-			goto error;
+-		}
+-
+-		irdma_qp_add_qos(&iwqp->sc_qp);
+-	}
+-
+ 	if (udata) {
+ 		/* GEN_1 legacy support with libi40iw does not have expanded uresp struct */
+ 		if (udata->outlen < sizeof(uresp)) {
+diff --git a/drivers/infiniband/hw/irdma/virtchnl.c b/drivers/infiniband/hw/irdma/virtchnl.c
+index 4f5c0a369cc7..c6482ac7c628 100644
+--- a/drivers/infiniband/hw/irdma/virtchnl.c
++++ b/drivers/infiniband/hw/irdma/virtchnl.c
+@@ -110,6 +110,8 @@ static int irdma_vchnl_req_verify_resp(struct irdma_vchnl_req *vchnl_req,
+ 	case IRDMA_VCHNL_OP_GET_REG_LAYOUT:
+ 	case IRDMA_VCHNL_OP_QUEUE_VECTOR_MAP:
+ 	case IRDMA_VCHNL_OP_QUEUE_VECTOR_UNMAP:
++	case IRDMA_VCHNL_OP_ADD_VPORT:
++	case IRDMA_VCHNL_OP_DEL_VPORT:
+ 		break;
+ 	default:
+ 		return -EOPNOTSUPP;
+@@ -315,6 +317,56 @@ int irdma_vchnl_req_get_reg_layout(struct irdma_sc_dev *dev)
+ 	return 0;
+ }
+ 
++int irdma_vchnl_req_add_vport(struct irdma_sc_dev *dev, u16 vport_id,
++			      u32 qp1_id, struct irdma_qos *qos)
++{
++	struct irdma_vchnl_resp_vport_info resp_vport = { 0 };
++	struct irdma_vchnl_req_vport_info req_vport = { 0 };
++	struct irdma_vchnl_req_init_info info = { 0 };
++	int ret, i;
++
++	if (!dev->vchnl_up)
++		return -EBUSY;
++
++	info.op_code = IRDMA_VCHNL_OP_ADD_VPORT;
++	info.op_ver = IRDMA_VCHNL_OP_ADD_VPORT_V0;
++	req_vport.vport_id = vport_id;
++	req_vport.qp1_id = qp1_id;
++	info.req_parm_len = sizeof(req_vport);
++	info.req_parm = &req_vport;
++	info.resp_parm = &resp_vport;
++	info.resp_parm_len = sizeof(resp_vport);
++
++	ret = irdma_vchnl_req_send_sync(dev, &info);
++	if (ret)
++		return ret;
++
++	for (i = 0;  i < IRDMA_MAX_USER_PRIORITY; i++) {
++		qos[i].qs_handle = resp_vport.qs_handle[i];
++		qos[i].valid = true;
++	}
++
++	return 0;
++}
++
++int irdma_vchnl_req_del_vport(struct irdma_sc_dev *dev, u16 vport_id, u32 qp1_id)
++{
++	struct irdma_vchnl_req_init_info info = { 0 };
++	struct irdma_vchnl_req_vport_info req_vport = { 0 };
++
++	if (!dev->vchnl_up)
++		return -EBUSY;
++
++	info.op_code = IRDMA_VCHNL_OP_DEL_VPORT;
++	info.op_ver = IRDMA_VCHNL_OP_DEL_VPORT_V0;
++	req_vport.vport_id = vport_id;
++	req_vport.qp1_id = qp1_id;
++	info.req_parm_len = sizeof(req_vport);
++	info.req_parm = &req_vport;
++
++	return irdma_vchnl_req_send_sync(dev, &info);
++}
++
+ /**
+  * irdma_vchnl_req_aeq_vec_map - Map AEQ to vector on this function
+  * @dev: RDMA device pointer
+diff --git a/drivers/infiniband/hw/irdma/virtchnl.h b/drivers/infiniband/hw/irdma/virtchnl.h
+index 3af725587754..23e66bc2aa44 100644
+--- a/drivers/infiniband/hw/irdma/virtchnl.h
++++ b/drivers/infiniband/hw/irdma/virtchnl.h
+@@ -17,6 +17,8 @@
+ #define IRDMA_VCHNL_OP_GET_REG_LAYOUT_V0 0
+ #define IRDMA_VCHNL_OP_QUEUE_VECTOR_MAP_V0 0
+ #define IRDMA_VCHNL_OP_QUEUE_VECTOR_UNMAP_V0 0
++#define IRDMA_VCHNL_OP_ADD_VPORT_V0 0
++#define IRDMA_VCHNL_OP_DEL_VPORT_V0 0
+ #define IRDMA_VCHNL_OP_GET_RDMA_CAPS_V0 0
+ #define IRDMA_VCHNL_OP_GET_RDMA_CAPS_MIN_SIZE 1
+ 
+@@ -57,6 +59,8 @@ enum irdma_vchnl_ops {
+ 	IRDMA_VCHNL_OP_GET_RDMA_CAPS = 13,
+ 	IRDMA_VCHNL_OP_QUEUE_VECTOR_MAP = 14,
+ 	IRDMA_VCHNL_OP_QUEUE_VECTOR_UNMAP = 15,
++	IRDMA_VCHNL_OP_ADD_VPORT = 16,
++	IRDMA_VCHNL_OP_DEL_VPORT = 17,
  };
  
- struct irdma_alloc_ucontext_req {
+ struct irdma_vchnl_req_hmc_info {
+@@ -81,6 +85,15 @@ struct irdma_vchnl_qvlist_info {
+ 	struct irdma_vchnl_qv_info qv_info[];
+ };
+ 
++struct irdma_vchnl_req_vport_info {
++	u16 vport_id;
++	u32 qp1_id;
++};
++
++struct irdma_vchnl_resp_vport_info {
++	u16 qs_handle[IRDMA_MAX_USER_PRIORITY];
++};
++
+ struct irdma_vchnl_op_buf {
+ 	u16 op_code;
+ 	u16 op_ver;
+@@ -141,6 +154,8 @@ struct irdma_vchnl_req_init_info {
+ 	u16 op_ver;
+ } __packed;
+ 
++struct irdma_qos;
++
+ int irdma_sc_vchnl_init(struct irdma_sc_dev *dev,
+ 			struct irdma_vchnl_init_info *info);
+ int irdma_vchnl_send_sync(struct irdma_sc_dev *dev, u8 *msg, u16 len,
+@@ -156,4 +171,8 @@ int irdma_vchnl_req_get_reg_layout(struct irdma_sc_dev *dev);
+ int irdma_vchnl_req_aeq_vec_map(struct irdma_sc_dev *dev, u32 v_idx);
+ int irdma_vchnl_req_ceq_vec_map(struct irdma_sc_dev *dev, u16 ceq_id,
+ 				u32 v_idx);
++int irdma_vchnl_req_add_vport(struct irdma_sc_dev *dev, u16 vport_id,
++			      u32 qp1_id, struct irdma_qos *qos);
++int irdma_vchnl_req_del_vport(struct irdma_sc_dev *dev, u16 vport_id,
++			      u32 qp1_id);
+ #endif /* IRDMA_VIRTCHNL_H */
 -- 
 2.37.3
 
