@@ -1,90 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C0A1CA2DCE4
-	for <lists+intel-wired-lan@lfdr.de>; Sun,  9 Feb 2025 12:13:23 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 27EFAA2DF1B
+	for <lists+intel-wired-lan@lfdr.de>; Sun,  9 Feb 2025 17:27:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 44825820C3;
-	Sun,  9 Feb 2025 11:13:22 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8731B607C1;
+	Sun,  9 Feb 2025 16:27:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5PU7XwwfThHw; Sun,  9 Feb 2025 11:13:21 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Zn69HRl4bkiM; Sun,  9 Feb 2025 16:27:31 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5AFC0820B4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BE9C0606D5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739099601;
-	bh=Jqb3kU9s3g6Aw07ltF+l3vk439DBwuYGKZz1WtiKgc4=;
+	s=default; t=1739118450;
+	bh=KyHE7SCnfSpr/dpWIhwycs2OktrsymmciJ7wizVm+YI=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=EFAJhOCtIdL40iUdUT0HJF2UOB1Zux/nzabOsGHXbo7LmEdeJWmNwntZVA4Ow241X
-	 WmjYL2k+1XDTipR3eCE2mY2Gplr0arqr8EaCvpHROa4ISFgng1UsMfe/84yrBf4nMD
-	 HSAv2Bbm9A53+52wy/i2c0PJ6FWI6np+mkDnjKve6PshN2czrYZIBk5O7V8eg+XVWH
-	 7fAr0AuFKpr2fJDVMvzzS40Th5qVuNM98kFe6Yuz3agpIBCm40Wx9LxH0apecbM/Hw
-	 hho5QZWIiPIOsyoV4yeIqzIkYSlfGEiQpJ5kWa6zGma3i0FuizMosCfqQdj7ajNiRE
-	 +0esdQ7d7125g==
+	b=aX1KhyzMMGq3Sw/xfzTXVGIJZ5bf8LML8UyYg8LPgkKtKepBNMAC1voOIUzWTWOYr
+	 60idMl25wBVglxMMKSI632OOAwxVmksTiuz0kSuzvh+PZfzr6JAm1uWmJQ2yf4AJwu
+	 K3qAoqwca5DxX1oKKKFalMYU4V91h2evooP9rY3RjqNgeDidrgOldJYrqSZeJCGjGX
+	 Ycco3jt/fGcEIFIbsRHKHNcGpgpv61g5u/tJc4fQbopq8QBVtgTIF4zhjfet/qaX0D
+	 SvIIoEodeqaUa06REiIbIax40Grp465Iywg6w96sz4DbGCllCSUkLmK0zmclg/MQ8O
+	 CPOTRZadRPLaA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5AFC0820B4;
-	Sun,  9 Feb 2025 11:13:21 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BE9C0606D5;
+	Sun,  9 Feb 2025 16:27:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id CAE85C2
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Feb 2025 11:13:19 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 7C440C2
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Feb 2025 16:27:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id AEDED820C8
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Feb 2025 11:13:19 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6BCFD80F41
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Feb 2025 16:27:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HlBnZGrPUHCr for <intel-wired-lan@lists.osuosl.org>;
- Sun,  9 Feb 2025 11:13:19 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 1458F820B4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1458F820B4
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1458F820B4
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Feb 2025 11:13:18 +0000 (UTC)
+ id fbgrHdxKbaij for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  9 Feb 2025 16:27:27 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 801E780A9E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 801E780A9E
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 801E780A9E
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Feb 2025 16:27:27 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 353025C57DC;
- Sun,  9 Feb 2025 11:12:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E11CC4CEDD;
- Sun,  9 Feb 2025 11:13:16 +0000 (UTC)
-Date: Sun, 9 Feb 2025 11:13:14 +0000
+ by dfw.source.kernel.org (Postfix) with ESMTP id 949BD5C5855;
+ Sun,  9 Feb 2025 16:26:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C5BEEC4CEDD;
+ Sun,  9 Feb 2025 16:27:24 +0000 (UTC)
+Date: Sun, 9 Feb 2025 16:27:22 +0000
 From: Simon Horman <horms@kernel.org>
 To: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
  netdev@vger.kernel.org, Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-Message-ID: <20250209111314.GC554665@kernel.org>
+Message-ID: <20250209162722.GD554665@kernel.org>
 References: <20250203150328.4095-1-jedrzej.jagielski@intel.com>
- <20250203150328.4095-2-jedrzej.jagielski@intel.com>
+ <20250203150328.4095-3-jedrzej.jagielski@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250203150328.4095-2-jedrzej.jagielski@intel.com>
+In-Reply-To: <20250203150328.4095-3-jedrzej.jagielski@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1739099597;
- bh=TLYauqIxGxZkb3ojnclsL59eGEmdz8oHXimrxn4uxCw=;
+ d=kernel.org; s=k20201202; t=1739118445;
+ bh=PLKwHjwFhvQFpzH747yxvcgU0xNzFy/1pmXG755VHlc=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=PYTM30Cff9Q/PDKB+cwGdnmtbjN1FS0oULLRRhQkNEvEhLJh1mdXlGKxRWVQjvV/g
- jbWylwabaeVE7Qd91FXqHPDycO3MdWJ/FQI8EvRQfb7KXzYmqBhH/uQU1S19sgOy6M
- 8rNrpmdzP+7xxkDVwlstSBmk0n2Y0oQ6YBeLizzEW365m9GZ2tJiJEoqiz2HyuNKaF
- E3Ikxq/l2w9381+35sOvpmSvaVxynn9M2Sw+yckkcWY8lCzb/M4Jv+wjXfDBHaDk3V
- tB0m21DwjjhfXcXcFEdA+g96WnkvLckxHS5dNgKYwMTC4l3vwJfl54J0FK8azwKgcg
- 1efdjNj7EFofA==
+ b=WK6GFDtE9puQKNpsixY8BDYyWp4RpAs42LpEk4MzNk9kAQTmKBnvWuPptXwAO9luD
+ Ow2y5V+DZUC6PMQUrX15t08sQtj5DPEhCksrDBAlQQU26KdobvnITs9u8ZU7G4j23m
+ 9gfuyEgaHWFgQLJkHUZjsjR1dUFxcegxlipLtKbfzo0nCENWPlwXGFSFy4H9oHLzo+
+ LAzExTNtUdxbHHioGid7L+jFN5GlwhJO+kIRoy5R2XjRbMdgV6LeL8Pr/7XPNsCRqy
+ 7f+MHAF3iWF2CHRCJt/v05oqSwF/ki0XnOTDmXbuxB9/8LDrfhkgf5xwkgGPBp/z8Z
+ XdIOXLKJiIpuw==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=PYTM30Cf
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 01/13] ixgbe: add initial
- devlink support
+ header.s=k20201202 header.b=WK6GFDtE
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 02/13] ixgbe: add handler
+ for devlink .info_get()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -100,57 +101,115 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Feb 03, 2025 at 04:03:16PM +0100, Jedrzej Jagielski wrote:
-> Add an initial support for devlink interface to ixgbe driver.
+On Mon, Feb 03, 2025 at 04:03:17PM +0100, Jedrzej Jagielski wrote:
+> Provide devlink .info_get() callback implementation to allow the
+> driver to report detailed version information. The following info
+> is reported:
 > 
-> Similarly to i40e driver the implementation doesn't enable
-> devlink to manage device-wide configuration. Devlink instance
-> is created for each physical function of PCIe device.
-> 
-> Create separate directory for devlink related ixgbe files
-> and use naming scheme similar to the one used in the ice driver.
-> 
-> Add a stub for Documentation, to be extended by further patches.
+>  "serial_number" -> The PCI DSN of the adapter
+>  "fw.bundle_id" -> Unique identifier for the combined flash image
+>  "fw.undi" -> Version of the Option ROM containing the UEFI driver
+>  "board.id" -> The PBA ID string
 > 
 > Reviewed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 > Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 
 ...
 
-> +/**
-> + * ixgbe_devlink_register_port - Register devlink port
-> + * @adapter: pointer to the device adapter structure
-> + *
-> + * Create and register a devlink_port for this physical function.
-> + *
-> + * Return: 0 on success, error code on failure.
-> + */
-> +int ixgbe_devlink_register_port(struct ixgbe_adapter *adapter)
+> diff --git a/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c b/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c
+
+...
+
+> +static void ixgbe_info_nvm_ver(struct ixgbe_adapter *adapter,
+> +			       struct ixgbe_info_ctx *ctx)
 > +{
-> +	struct devlink_port *devlink_port = &adapter->devlink_port;
-> +	struct devlink *devlink = adapter->devlink;
-> +	struct device *dev = &adapter->pdev->dev;
-> +	struct devlink_port_attrs attrs = {};
-> +	int err;
+> +	struct ixgbe_hw *hw = &adapter->hw;
+> +	struct ixgbe_nvm_version nvm_ver;
 > +
-> +	attrs.flavour = DEVLINK_PORT_FLAVOUR_PHYSICAL;
-> +	attrs.phys.port_number = adapter->hw.bus.func;
-> +	ixgbe_devlink_set_switch_id(adapter, &attrs.switch_id);
+> +	ixgbe_get_oem_prod_version(hw, &nvm_ver);
+> +	if (nvm_ver.oem_valid) {
+> +		snprintf(ctx->buf, sizeof(ctx->buf), "%x.%x.%x",
+> +			 nvm_ver.oem_major, nvm_ver.oem_minor,
+> +			 nvm_ver.oem_release);
 > +
-> +	devlink_port_attrs_set(devlink_port, &attrs);
-> +
-> +	err = devl_port_register(devlink, devlink_port, 0);
-> +	if (err) {
-> +		dev_err(dev,
-> +			"devlink port registration failed, err %d\n",
-> +			err);
-
-nit: I think we can fit this onto one 80 column-wide line (just!).
-
-		dev_err(dev, "devlink port registration failed, err %d\n", err);
-
+> +		return;
 > +	}
 > +
+> +	ixgbe_get_orom_version(hw, &nvm_ver);
+> +	if (nvm_ver.or_valid)
+> +		snprintf(ctx->buf, sizeof(ctx->buf), "%d.%d.%d",
+> +			 nvm_ver.or_major, nvm_ver.or_build, nvm_ver.or_patch);
+
+Hi Jedrzej,
+
+If neither of the conditions above are met then it seems that ctx->buf will
+contain whatever string was present when the function was called. Is
+something like the following needed here?
+
+	ctx->buf[0] = '\0';
+
+> +}
+> +
+> +static void ixgbe_info_eetrack(struct ixgbe_adapter *adapter,
+> +			       struct ixgbe_info_ctx *ctx)
+> +{
+> +	struct ixgbe_hw *hw = &adapter->hw;
+> +	struct ixgbe_nvm_version nvm_ver;
+> +
+> +	ixgbe_get_oem_prod_version(hw, &nvm_ver);
+> +	/* No ETRACK version for OEM */
+> +	if (nvm_ver.oem_valid)
+> +		return;
+
+Likewise, here.
+
+> +
+> +	ixgbe_get_etk_id(hw, &nvm_ver);
+> +	snprintf(ctx->buf, sizeof(ctx->buf), "0x%08x", nvm_ver.etk_id);
+> +}
+> +
+> +static int ixgbe_devlink_info_get(struct devlink *devlink,
+> +				  struct devlink_info_req *req,
+> +				  struct netlink_ext_ack *extack)
+> +{
+> +	struct ixgbe_devlink_priv *devlink_private = devlink_priv(devlink);
+> +	struct ixgbe_adapter *adapter = devlink_private->adapter;
+> +	struct ixgbe_hw *hw = &adapter->hw;
+> +	struct ixgbe_info_ctx *ctx;
+> +	int err;
+> +
+> +	ctx = kmalloc(sizeof(*ctx), GFP_KERNEL);
+> +	if (!ctx)
+> +		return -ENOMEM;
+> +
+> +	ixgbe_info_get_dsn(adapter, ctx);
+> +	err = devlink_info_serial_number_put(req, ctx->buf);
+> +	if (err)
+> +		goto free_ctx;
+> +
+> +	ixgbe_info_nvm_ver(adapter, ctx);
+> +	err = ixgbe_devlink_info_put(req, IXGBE_DL_VERSION_RUNNING,
+> +				     DEVLINK_INFO_VERSION_GENERIC_FW_UNDI,
+> +				     ctx->buf);
+> +	if (err)
+> +		goto free_ctx;
+> +
+> +	ixgbe_info_eetrack(adapter, ctx);
+> +	err = ixgbe_devlink_info_put(req, IXGBE_DL_VERSION_RUNNING,
+> +				     DEVLINK_INFO_VERSION_GENERIC_FW_BUNDLE_ID,
+> +				     ctx->buf);
+> +	if (err)
+> +		goto free_ctx;
+> +
+> +	err = ixgbe_read_pba_string_generic(hw, ctx->buf, sizeof(ctx->buf));
+> +	if (err)
+> +		goto free_ctx;
+> +
+> +	err = ixgbe_devlink_info_put(req, IXGBE_DL_VERSION_FIXED,
+> +				     DEVLINK_INFO_VERSION_GENERIC_BOARD_ID,
+> +				     ctx->buf);
+> +free_ctx:
+> +	kfree(ctx);
 > +	return err;
 > +}
 
