@@ -1,98 +1,135 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 616CBA2F9C8
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Feb 2025 21:14:52 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4BE07A2FCF0
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Feb 2025 23:22:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 10A104136D;
-	Mon, 10 Feb 2025 20:14:51 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id EF0B7818AC;
+	Mon, 10 Feb 2025 22:22:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2yc5ISS1RMLy; Mon, 10 Feb 2025 20:14:50 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id OkIZRZQp12WD; Mon, 10 Feb 2025 22:22:15 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4CB3F41348
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0EB1581F0F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739218490;
-	bh=PHnXMs2aP1nRZ3kx4/ik8KOkWi00ecq8fsqcNsyvwCo=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1739226135;
+	bh=fbq5bdkh5KGZmV4lXmeUGC15WHyvC1UK0TIUDiJsUQ0=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=vOOYCaqYfGpFsPXKlcBp8gM+yIivVLSXCSmfqq6aj5IR6LLdJlEaQ1hEuNz0JE+dT
-	 YhEEdfyouMykBC7TNaGPGisbniDqSaE3E68+N8Ns14fUrtzJ520ryvN/Q4aSSW6Doa
-	 RggbgGN7VDcldk6VUnnZQf1i7qSzfannGo47VNJ6H4v30pjNnR9aO/x1TTgQN4/aHj
-	 mjIFhkK23dgoqv1y70DM4rTsbiVFrZMCx4Aeq6hJF+7t6FhBogmrrvnZW09elH0zeq
-	 pcH5nN0LT1j2syampIbNkQVreDVFL2d071LcZkq8Ohaiv7njincTxXQJ07qeSn2CQQ
-	 WdYNI/G174IXw==
+	b=rDWLRdkb56eX0gyOzXUbPd1af2sgVFKCnnZLlgCoTXx9/mh+2hZo9NvVed5yBeGs8
+	 DsYVgmE1ZzQkiK6NJ4bgnkxsaZGgummtFac14/JdseXwudyhuAGpov0eOF3QcF3wrQ
+	 UpNEF34wkgXWwHPbpaEvohk5lLSSIEXpH8GsP6RO8GoR31GCI3nXbhdlXtHPLNP97d
+	 ldn8TD1v17MTHUjVYWFteMbshe+S7zS3l1kO5RlxHTRkHJrpz/RY2J1431z0Vn60F9
+	 VC9+a68pJcg1T7WhjQApiO955BU5wblkWdkyPdvq1IkzqEWYJtXOsf+y/siHHbvxU6
+	 4cCPdzHJmhdCw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4CB3F41348;
-	Mon, 10 Feb 2025 20:14:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0EB1581F0F;
+	Mon, 10 Feb 2025 22:22:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id D29D5199
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 20:14:48 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 8D1576C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 22:22:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C276D60B9A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 20:14:48 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 7138D812C5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 22:22:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id n_YZbQ9bVht1 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 10 Feb 2025 20:14:48 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=81.19.149.117;
- helo=mx07lb.world4you.com; envelope-from=gerhard@engleder-embedded.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1A95060B8F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1A95060B8F
-Received: from mx07lb.world4you.com (mx07lb.world4you.com [81.19.149.117])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1A95060B8F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 20:14:47 +0000 (UTC)
-Received: from [88.117.55.1] (helo=[10.0.0.160])
- by mx07lb.world4you.com with esmtpsa (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.97.1)
- (envelope-from <gerhard@engleder-embedded.com>)
- id 1thaAt-000000000NS-1KUN; Mon, 10 Feb 2025 21:14:35 +0100
-Message-ID: <b1b3e5e1-b1fe-4816-85eb-61ac7ea2d46d@engleder-embedded.com>
-Date: Mon, 10 Feb 2025 21:14:33 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Kurt Kanzenbach <kurt@linutronix.de>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id R1i9BO-kG0ko for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 10 Feb 2025 22:22:12 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::630; helo=mail-pl1-x630.google.com;
+ envelope-from=jdamato@fastly.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org F102382053
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F102382053
+Received: from mail-pl1-x630.google.com (mail-pl1-x630.google.com
+ [IPv6:2607:f8b0:4864:20::630])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id F102382053
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 22:22:08 +0000 (UTC)
+Received: by mail-pl1-x630.google.com with SMTP id
+ d9443c01a7336-21f710c17baso40168055ad.1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 14:22:08 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1739226128; x=1739830928;
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:to:from:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=fbq5bdkh5KGZmV4lXmeUGC15WHyvC1UK0TIUDiJsUQ0=;
+ b=NSdvI2prxQ3ddH3sPVt8TjCl4pnCVhg1ZZpu3eV4/Sa4YSj/4tptO/lrujxw0mTFsd
+ heDjBXCUzL2yNmQnSHiiWE5moO8c5RfLQUVx1Dh3pDIGYsZ++buJtC/W1UU6IXt+Vpfz
+ ZciR05bdtMAVPqj4GNqu3wttjM15r8ZsI6CO+AVZRvrkMBV3rb2BxPJdgmMjdudrL8LN
+ qSYh5EEIVjBmv+7+oNBfr8TtswDsQr585Ak0EwO9SEVB4JCLvcDzU/tDJ6+6pF1wuOaJ
+ JhCpJpMRNS4pvRuXrcNq3OruLIhaGCEU1UVi5gSUuyJuHPy/jq7PFLrWxQaXDtDmJ4ru
+ y/3A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVMsfIPn74I1sO+7ENeHEAXvXIIQ8IjsRLExbJHh2V2tg5IKUvoh5a3fGAmQa6LdWHQN9nKSaYBZdp/CNYw2pM=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyjFPN9LGzX0u9QISJAMbt7+8/cPpIXWvL1bv2hWl+H8uNrNua6
+ b+nH/nin3Knv+mf0ONlBYFNiHDpCKqufaJj32OgTU4KP7sx5WpdpGfsdd/gFSQVC/B/lqP2PAfa
+ h
+X-Gm-Gg: ASbGncuM7vY/TXSY525AYiwqzhgjuSZ+vuz3o1LYUHAASK+S6Wl2nvU04LaQcWgl0nu
+ 3AXKKays2s/pWDF78r4FdVTvbcGD5927O6hFrCJ9gsv0D1HuqZB/BlxFOIj51x9YPFFzGYFbYJo
+ bfNVZB9wD+IY+G9ehgHk/RjwqnrwlXzodQJQWGdLFblry3bTT69ERVQFgLY2IzISPSIe3FCkYvW
+ PM+zDLxsr2x80QT3btvbMrRwv+onZSBMecaE1ZXz5OOLj0LRkbYOapXmYmx3RkgEZJVc0iWzVRg
+ 0RGhlkYgRCHE+agOrvkokITftOWx4T7EXItWMwJAh3t/zQl5p7jVLJKeKg==
+X-Google-Smtp-Source: AGHT+IFT1mfdHNlgzjIhjuvz926QB5vh22HSLx2qvqTalfE3+n+YY/zew1rCD6y0tP0B+x0g7qTHuQ==
+X-Received: by 2002:a05:6a20:6f8b:b0:1ed:707e:7c4 with SMTP id
+ adf61e73a8af0-1ee03b6fe02mr24807986637.38.1739226127931; 
+ Mon, 10 Feb 2025 14:22:07 -0800 (PST)
+Received: from LQ3V64L9R2 (c-24-6-151-244.hsd1.ca.comcast.net. [24.6.151.244])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-730aad5535fsm1205630b3a.51.2025.02.10.14.22.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 10 Feb 2025 14:22:07 -0800 (PST)
+Date: Mon, 10 Feb 2025 14:22:05 -0800
+From: Joe Damato <jdamato@fastly.com>
+To: Kurt Kanzenbach <kurt@linutronix.de>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
  Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- Joe Damato <jdamato@fastly.com>, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, Tony Nguyen <anthony.l.nguyen@intel.com>
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+Message-ID: <Z6p8DeQxCEpb6Nij@LQ3V64L9R2>
+Mail-Followup-To: Joe Damato <jdamato@fastly.com>,
+ Kurt Kanzenbach <kurt@linutronix.de>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
 References: <20250210-igb_irq-v1-0-bde078cdb9df@linutronix.de>
- <20250210-igb_irq-v1-3-bde078cdb9df@linutronix.de>
-Content-Language: en-US
-From: Gerhard Engleder <gerhard@engleder-embedded.com>
-In-Reply-To: <20250210-igb_irq-v1-3-bde078cdb9df@linutronix.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-AV-Do-Run: Yes
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; 
- d=engleder-embedded.com; s=dkim11; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
- :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=PHnXMs2aP1nRZ3kx4/ik8KOkWi00ecq8fsqcNsyvwCo=; b=P1MkszLEP/MF1UfFLY2anAljxH
- jmfuZ/KTuW9qljoZFj8cF/rwd4fmDVJ83YnTjLWO+7etM1qwWU9qWw1bVFphshkdu4CmMubI/9R+i
- Bzbs9YcBdrgtPT2ee4RFxspBAnMda/NQ5q76Cx1xsH4t7Am69PnjXhkZYVIpC1U1SeL8=;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=engleder-embedded.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ <20250210-igb_irq-v1-1-bde078cdb9df@linutronix.de>
+ <Z6pEq9fs5RvglrVk@LQ3V64L9R2>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Z6pEq9fs5RvglrVk@LQ3V64L9R2>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=fastly.com; s=google; t=1739226128; x=1739830928; darn=lists.osuosl.org;
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=fbq5bdkh5KGZmV4lXmeUGC15WHyvC1UK0TIUDiJsUQ0=;
+ b=NqJrh/6piyebQVRreFeChvVTYqXzI01CaNKZ4igwQWtzTxIDHnFHSdhRYIAhbhN56R
+ z25mkrhtlUKZJI/ZecY+9kyGNquDYn3FYwF0N48elj8jl3i7Z0xGWewbNeWCB2UcUL5H
+ kkZFxQ1K6a8KFzy3h9QaW05KTvM8SeWwukn6U=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=fastly.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (1024-bit key,
- unprotected) header.d=engleder-embedded.com header.i=@engleder-embedded.com
- header.a=rsa-sha256 header.s=dkim11 header.b=P1MkszLE
-Subject: Re: [Intel-wired-lan] [PATCH 3/3] igb: Get rid of spurious
- interrupts
+ unprotected) header.d=fastly.com header.i=@fastly.com header.a=rsa-sha256
+ header.s=google header.b=NqJrh/6p
+Subject: Re: [Intel-wired-lan] [PATCH 1/3] igb: Link IRQs to NAPI instances
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -108,9 +145,66 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 10.02.25 10:19, Kurt Kanzenbach wrote:
-> When running the igc with XDP/ZC in busy polling mode with deferral of hard
-> interrupts, interrupts still happen from time to time. That is caused by
-> the igc task watchdog which triggers Rx interrupts periodically.
+On Mon, Feb 10, 2025 at 10:25:47AM -0800, Joe Damato wrote:
+> On Mon, Feb 10, 2025 at 10:19:35AM +0100, Kurt Kanzenbach wrote:
+> > Link IRQs to NAPI instances via netdev-genl API. This allows users to query
+> > that information via netlink:
+> > 
+> > |$ ./tools/net/ynl/pyynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
+> > |                               --dump napi-get --json='{"ifindex": 2}'
+> > |[{'defer-hard-irqs': 0,
+> > |  'gro-flush-timeout': 0,
+> > |  'id': 8204,
+> > |  'ifindex': 2,
+> > |  'irq': 127,
+> > |  'irq-suspend-timeout': 0},
+> > | {'defer-hard-irqs': 0,
+> > |  'gro-flush-timeout': 0,
+> > |  'id': 8203,
+> > |  'ifindex': 2,
+> > |  'irq': 126,
+> > |  'irq-suspend-timeout': 0},
+> > | {'defer-hard-irqs': 0,
+> > |  'gro-flush-timeout': 0,
+> > |  'id': 8202,
+> > |  'ifindex': 2,
+> > |  'irq': 125,
+> > |  'irq-suspend-timeout': 0},
+> > | {'defer-hard-irqs': 0,
+> > |  'gro-flush-timeout': 0,
+> > |  'id': 8201,
+> > |  'ifindex': 2,
+> > |  'irq': 124,
+> > |  'irq-suspend-timeout': 0}]
+> > |$ cat /proc/interrupts | grep enp2s0
+> > |123:          0          1 IR-PCI-MSIX-0000:02:00.0   0-edge      enp2s0
+> > |124:          0          7 IR-PCI-MSIX-0000:02:00.0   1-edge      enp2s0-TxRx-0
+> > |125:          0          0 IR-PCI-MSIX-0000:02:00.0   2-edge      enp2s0-TxRx-1
+> > |126:          0          5 IR-PCI-MSIX-0000:02:00.0   3-edge      enp2s0-TxRx-2
+> > |127:          0          0 IR-PCI-MSIX-0000:02:00.0   4-edge      enp2s0-TxRx-3
+> > 
+> > Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
+> > ---
+> >  drivers/net/ethernet/intel/igb/igb_main.c | 3 +++
+> >  1 file changed, 3 insertions(+)
+> > 
+> > diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+> > index d368b753a4675d01b5dfa50dee4cd218e6a5e14b..d4128d19cc08f62f95682069bb5ed9b8bbbf10cb 100644
+> > --- a/drivers/net/ethernet/intel/igb/igb_main.c
+> > +++ b/drivers/net/ethernet/intel/igb/igb_main.c
+> > @@ -947,6 +947,9 @@ static int igb_request_msix(struct igb_adapter *adapter)
+> >  				  q_vector);
+> >  		if (err)
+> >  			goto err_free;
+> > +
+> > +		netif_napi_set_irq(&q_vector->napi,
+> > +				   adapter->msix_entries[vector].vector);
+> >  	}
+> 
+> As far as I can tell, all paths that lead here hold RTNL:
 
-igc or igb?
+A nit on my own comment, netif_napi_set_irq doesn't ASSERT_RTNL (but
+does hold net_device->lock); its the other functions in patch 2 that
+ASSERT_RTNL.
+
+My reviewed-by stands; just wanted to correct myself.
