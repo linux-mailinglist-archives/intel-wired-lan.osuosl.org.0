@@ -1,61 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 98616A2E7A6
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Feb 2025 10:29:30 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7BB75A2E775
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Feb 2025 10:19:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DDD2581F12;
-	Mon, 10 Feb 2025 09:29:26 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DBFF381EB9;
+	Mon, 10 Feb 2025 09:19:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ljaz98e6eQXf; Mon, 10 Feb 2025 09:29:26 +0000 (UTC)
+ id 8EaJ47gwOzds; Mon, 10 Feb 2025 09:19:46 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9FC1F81F03
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EE46380B85
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739179765;
-	bh=CTueP0CB24DUI+7ynpx3qPFeZE3/S9ux0KKHBNbMtDo=;
+	s=default; t=1739179186;
+	bh=UWLliSMAkm07uTsXCRIauclvo1uxcCFEJNaANaMWylk=;
 	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=0L6jQ3LrO4G4oYqZCAEGHgNsvEdYJCBsh/giFqOdoSYg1Wwh2nzX4Hl9Lf93WHmXP
-	 OoRyJ0RjTtx3Icq5a/X/AJQm01dqF3wcTfXCx+7doPLNhciCpHCNLvCZZdU3phDeiv
-	 sC5aerlcJfjLu79P0rb/+HUA7dRRCOSoI8/ZhtfvJ1zZLrKZ5phufjwbvUPRRd8V/A
-	 WOvAiYAEvoAQtkfpQMPTRdGZB8+nR/rfpV3mM0bMclXEZLZCZ85I1JWJtDK+w1La/x
-	 q1njnIWs8m2ayL0Icg7qyeZXpz/p6zRz8EsjdVU5f4zbXJelwnwx0GU4R0paw63bUn
-	 uyDiUCllmYFkg==
+	b=rqwqrNJe5DxgP5rF3YsI0dYOz3cVqiUUes0Pjn2OCajLdsphR1ZJiSvVQ8H2O4JPu
+	 o9YqujMUobD05t2g5EcLpkM4qxs/Od5Fmys/yp3vvceN2ujgVyIkq2b2LCGQnHy74Y
+	 9RsnAD2gGTpBUIl8vtWL9KGwCBM/+j8xo87eXy/RT7Kdl3gbTRoKqE7Kdkd7TSqWqL
+	 P4QJx684auRR6hgwG6HsN1z9NnRaq/NHMkGaVrUdOpA5RiHSs7w+Gc8mm9UGb35mFm
+	 LcRNlpGj+fh8WZlb4DszdM8FJA174SbX9YV/B8uARh63ez7LNVsnGhC6qFJJ5ikVbg
+	 0mctg/UF3wlIA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9FC1F81F03;
-	Mon, 10 Feb 2025 09:29:25 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id EE46380B85;
+	Mon, 10 Feb 2025 09:19:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 91235C2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 09:29:23 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id C5583C2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 09:19:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8022181EE7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 09:29:23 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id A7D774125F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 09:19:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Sreq0utIUDYg for <intel-wired-lan@lists.osuosl.org>;
- Mon, 10 Feb 2025 09:29:22 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 2jEg_uwIxXjp for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 10 Feb 2025 09:19:42 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
  client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
  envelope-from=kurt@linutronix.de; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 56BA081EE5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 56BA081EE5
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 1FFBB4124D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1FFBB4124D
 Received: from galois.linutronix.de (Galois.linutronix.de
  [IPv6:2a0a:51c0:0:12e:550::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 56BA081EE5
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 09:29:22 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 1FFBB4124D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 09:19:42 +0000 (UTC)
 From: Kurt Kanzenbach <kurt@linutronix.de>
-Date: Mon, 10 Feb 2025 10:19:36 +0100
+Date: Mon, 10 Feb 2025 10:19:37 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250210-igb_irq-v1-2-bde078cdb9df@linutronix.de>
+Message-Id: <20250210-igb_irq-v1-3-bde078cdb9df@linutronix.de>
 References: <20250210-igb_irq-v1-0-bde078cdb9df@linutronix.de>
 In-Reply-To: <20250210-igb_irq-v1-0-bde078cdb9df@linutronix.de>
 To: Tony Nguyen <anthony.l.nguyen@intel.com>, 
@@ -66,52 +66,52 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
  Sebastian Andrzej Siewior <bigeasy@linutronix.de>, 
  Joe Damato <jdamato@fastly.com>, intel-wired-lan@lists.osuosl.org, 
  netdev@vger.kernel.org, Kurt Kanzenbach <kurt@linutronix.de>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5606; i=kurt@linutronix.de;
- h=from:subject:message-id; bh=GkL9JSy5P6ljwAKvYg4VCY34kYgT09FHVA/8EkZR1fA=;
- b=owEBbQKS/ZANAwAKAcGT0fKqRnOCAcsmYgBnqcSp4w62jUSR7lSpkUzz8ZWq7LAKJnexE7C/6
- kWn3wZlrYCJAjMEAAEKAB0WIQS8ub+yyMN909/bWZLBk9HyqkZzggUCZ6nEqQAKCRDBk9HyqkZz
- gr4QEACT4DKCoC8+wj6OEqHagA0VxAvb+8Ca5Wil53Rw3eCK9zBIfwETQTdBnWqZIiS59Rr4lET
- T95tBl5GiVB2ilO80RdAcfhGLsZN/OmbO1mdFSQNXHMNh2m4bLvATWNhxkf7VfS5ft4BaYVJMFt
- 1qJCB3WX2GR3VL9KAmdLQ6YPo2/P3PnWOit9lyO9MAzNt5RW+++Z8r+Dh0YLWhawr8L3D7FOPSy
- gFDYp6LapEkSuJOXne8LI1OLrY429gNHcVQcghSU2kLFz3BD0ToZQx01fXdjV/ymSCZbrlzBSSE
- spigMWKa/07pRBJ9JJ42tYvkcs+hV1FOfjbFNNVitXFA5nhx75gg+Bk3MttiO2DhCy0vOGcAkQj
- Jnf8/sZ3JyBRO6r99sMfO5yg6liQgeRjVAi1aSw2iVpkZqM6b7RSReRojmHGwQaOWjKbxGtzRqi
- reYUMQ7RV81QKXFq1hOifjWGig5CYy+BblSyZJWeM7wsPhBvqHiHgpaQhIoBqRIt6MPvCpOzWQl
- gqnrLVhmnSNWKcfpIAASJ/Pr8sDlhDRHWzDusl9yQZpRTX8c/3WGuYv53Y/IuBx7hfI0pN4e3SO
- 3RgWd1KBmUPSyd/ipSPPL4TKVGbeFAwDRbAjSOHX/qaQThzz8xqf9z5nI0oBeixandk4F2Hth5i
- nRYIzzZVd41dfkw==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4735; i=kurt@linutronix.de;
+ h=from:subject:message-id; bh=cHDFtWtcVIJmeBQmyGr9ZowSzZ+BaH37t6BU0DGMi+U=;
+ b=owEBbQKS/ZANAwAKAcGT0fKqRnOCAcsmYgBnqcSpDkTg21WicGwPg1F/pt6F/EBmvQNsf/zRz
+ El80wL+j6WJAjMEAAEKAB0WIQS8ub+yyMN909/bWZLBk9HyqkZzggUCZ6nEqQAKCRDBk9HyqkZz
+ gtoAD/9D2QmWRwv9O+ByoWXz+a6xRuNMqcpThjRb+w0b7NGv0Q4R2qzVXX51i00+5a2uVmKY8Nl
+ Gb6mmA6XPweOnMzd18SFDjr3xrhdyU+H+UE8Fbg8R8I3t7nk8r5L1BaVtcTgwFsiyfkHnYX+Du/
+ vUrfSEJAN2DgCdfFWSLM2QhiB4I4uyOREgVKlVB7HiH91QFfUAn1gtP5pFGq4DfTueeDqiVB4ry
+ GDoIMGgnwvLvNHU6Z8+MPZmHGVb+jBdNodmfEAcDvyodhN+2FloToJZ0iLfrki9OzNxCCgsiK8N
+ iu/480zelJwkytUNuLED4KDQxz368NThE26k6bnL/BBuqXrNzC9Bgs7AG4Gt+sCc1mYQ6kVlIFT
+ Pvyt2f6jAKLIfN3cyLqMWZXppxBQLfomxRzlyNw9RXubUoLFFIiYiHCuKh5pp17NG/9PPv32pyP
+ FhVn1py+zdwVECznFaIkICpVp05Yqypx0FmoK5CxPpp/HN4kvaoyD5llyXZm+FE66i0v7HUTcTW
+ TDf5i6bgtMuZSyjt/6hA/dIbmO27rhIhToORBEdjFunEL0II8G1PFqi+a84kzNgPOEmB8/C4GE/
+ MXRwhid09VD7y+Oj6s2MOUtvi3cr8wbh65WzAsTV9jU4ZeCwe8VxSfl8F1jZrvwQkkARAa7Rbf+
+ tQYjTLBlgjzIshw==
 X-Developer-Key: i=kurt@linutronix.de; a=openpgp;
  fpr=BCB9BFB2C8C37DD3DFDB5992C193D1F2AA467382
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1739179179;
+ d=linutronix.de; s=2020; t=1739179180;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=CTueP0CB24DUI+7ynpx3qPFeZE3/S9ux0KKHBNbMtDo=;
- b=cZTPujqFUX3zOt8Zs/a1SFUO5wSwABMLv+Pid2EtFA2FKAVb+Tog+h/QrnXc9ED0LR5x1R
- mRJTxo2bFmQ1ucUnNw8v0AP6bRtMviBw6RShlCWNE/Raw9o8uo35NNVLzmbU/U5W7GjSX9
- RBEYDDV7wNS42K7frWrxqa0XIjjvI/gB7ZNzFIS40ec6d8mbMHTWDPoJJ1twZuePEEXH/H
- 3f3mTclHJPYNcfsT2/TCASknF8jJaaDRfblasr2g4No5F/aQPFXQSi+MbeA2wJ3nTflKww
- QnxF/iD8SwdKjoDOrRLZTPtKLJxGZwFZca9d6musAS2ELsnid2QpZieRLgVBpw==
+ bh=UWLliSMAkm07uTsXCRIauclvo1uxcCFEJNaANaMWylk=;
+ b=Nj7HLdYy2PF4Xx5N11DO2W8BKmfswh57eze41qg4UEllrKf5CgckbA0FhvOFKRtteV+tAR
+ WSi2Zf54pRjEtooWPfboUNclkLMe+koQFtKFs5djFevrhb1kOEjfU10D6rACe6e1gHRVTD
+ g2rtMtkKYwOT/tfY6/jbWlDl/c17/9o9y0yh9GBIGgBDl5C/GPwvPRUEDD1eSe0Dgw7Nu9
+ vJJxC8b3q5o6xTkGCXVlyI7xMiE/1iGZkCJ/hxbBlJIB6iQlpb1rkfmo3o+zKVIKIBZH1O
+ /EjY9spnkk2mjaC/kEDgJpRVCcs5GqAZ1YOVSjffEyYT33vHAVdTTttBUX8KCg==
 X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1739179179;
+ d=linutronix.de; s=2020e; t=1739179180;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=CTueP0CB24DUI+7ynpx3qPFeZE3/S9ux0KKHBNbMtDo=;
- b=dKnLQ76z5LE2wa6aSUOwyQuaai4rhvwzTcrfrL+Z21nwREE+8FGYaCHDIxOEn2fbwgODZl
- Rg76lFmr5NmaHmCw==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=UWLliSMAkm07uTsXCRIauclvo1uxcCFEJNaANaMWylk=;
+ b=d8GORrcgBgdV4oJDBuQSd9QEZAGtIwICnAECYUpUgVCVGmkQTiN2OQHbwq7HAGgJ2zNMSj
+ i7BE+Jdv3kuEzDDQ==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=linutronix.de
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
- header.a=rsa-sha256 header.s=2020 header.b=cZTPujqF; 
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=Nj7HLdYy; 
  dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=dKnLQ76z
-Subject: [Intel-wired-lan] [PATCH 2/3] igb: Link queues to NAPI instances
+ header.a=ed25519-sha256 header.s=2020e header.b=d8GORrcg
+Subject: [Intel-wired-lan] [PATCH 3/3] igb: Get rid of spurious interrupts
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -127,147 +127,123 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Link queues to NAPI instances via netdev-genl API. This is required to use
-XDP/ZC busy polling. See commit 5ef44b3cb43b ("xsk: Bring back busy polling
-support") for details.
+When running the igc with XDP/ZC in busy polling mode with deferral of hard
+interrupts, interrupts still happen from time to time. That is caused by
+the igc task watchdog which triggers Rx interrupts periodically.
 
-This also allows users to query the info with netlink:
+That mechanism has been introduced to overcome skb/memory allocation
+failures [1]. So the Rx clean functions stop processing the Rx ring in case
+of such failure. The task watchdog triggers Rx interrupts periodically in
+the hope that memory became available in the mean time.
 
-|$ ./tools/net/ynl/pyynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
-|                               --dump queue-get --json='{"ifindex": 2}'
-|[{'id': 0, 'ifindex': 2, 'napi-id': 8201, 'type': 'rx'},
-| {'id': 1, 'ifindex': 2, 'napi-id': 8202, 'type': 'rx'},
-| {'id': 2, 'ifindex': 2, 'napi-id': 8203, 'type': 'rx'},
-| {'id': 3, 'ifindex': 2, 'napi-id': 8204, 'type': 'rx'},
-| {'id': 0, 'ifindex': 2, 'napi-id': 8201, 'type': 'tx'},
-| {'id': 1, 'ifindex': 2, 'napi-id': 8202, 'type': 'tx'},
-| {'id': 2, 'ifindex': 2, 'napi-id': 8203, 'type': 'tx'},
-| {'id': 3, 'ifindex': 2, 'napi-id': 8204, 'type': 'tx'}]
+The current behavior is undesirable for real time applications, because the
+driver induced Rx interrupts trigger also the softirq processing. However,
+all real time packets should be processed by the application which uses the
+busy polling method.
 
-While at __igb_open() use RCT coding style.
+Therefore, only trigger the Rx interrupts in case of real allocation
+failures. Introduce a new flag for signaling that condition.
+
+Follow the same logic as in commit 8dcf2c212078 ("igc: Get rid of spurious
+interrupts").
+
+[1] - https://git.kernel.org/pub/scm/linux/kernel/git/tglx/history.git/commit/?id=3be507547e6177e5c808544bd6a2efa2c7f1d436
 
 Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
 ---
- drivers/net/ethernet/intel/igb/igb.h      |  2 ++
- drivers/net/ethernet/intel/igb/igb_main.c | 35 ++++++++++++++++++++++++++-----
- drivers/net/ethernet/intel/igb/igb_xsk.c  |  2 ++
- 3 files changed, 34 insertions(+), 5 deletions(-)
+ drivers/net/ethernet/intel/igb/igb.h      |  3 ++-
+ drivers/net/ethernet/intel/igb/igb_main.c | 29 +++++++++++++++++++++++++----
+ drivers/net/ethernet/intel/igb/igb_xsk.c  |  1 +
+ 3 files changed, 28 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/igb/igb.h b/drivers/net/ethernet/intel/igb/igb.h
-index 02f340280d20a6f7e32bbd3dfcbb9c1c7b4c6662..79eca385a751bfdafdf384928b6cc1b350b22560 100644
+index 79eca385a751bfdafdf384928b6cc1b350b22560..f34ead8243e9f0176a068299138c5c16f7faab2e 100644
 --- a/drivers/net/ethernet/intel/igb/igb.h
 +++ b/drivers/net/ethernet/intel/igb/igb.h
-@@ -722,6 +722,8 @@ enum igb_boards {
+@@ -391,7 +391,8 @@ enum e1000_ring_flags_t {
+ 	IGB_RING_FLAG_RX_LB_VLAN_BSWAP,
+ 	IGB_RING_FLAG_TX_CTX_IDX,
+ 	IGB_RING_FLAG_TX_DETECT_HANG,
+-	IGB_RING_FLAG_TX_DISABLED
++	IGB_RING_FLAG_TX_DISABLED,
++	IGB_RING_FLAG_RX_ALLOC_FAILED,
+ };
  
- extern char igb_driver_name[];
- 
-+void igb_set_queue_napi(struct igb_adapter *adapter, int q_idx,
-+			struct napi_struct *napi);
- int igb_xmit_xdp_ring(struct igb_adapter *adapter,
- 		      struct igb_ring *ring,
- 		      struct xdp_frame *xdpf);
+ #define ring_uses_large_buffer(ring) \
 diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index d4128d19cc08f62f95682069bb5ed9b8bbbf10cb..8e964484f4c9854e4e3e0b4f3e8785fe93bd1207 100644
+index 8e964484f4c9854e4e3e0b4f3e8785fe93bd1207..96da3e2ddc9a67f799ee55d9621d98f80a6b449c 100644
 --- a/drivers/net/ethernet/intel/igb/igb_main.c
 +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -2099,6 +2099,22 @@ static void igb_check_swap_media(struct igb_adapter *adapter)
- 	wr32(E1000_CTRL_EXT, ctrl_ext);
- }
+@@ -5754,11 +5754,29 @@ static void igb_watchdog_task(struct work_struct *work)
+ 	if (adapter->flags & IGB_FLAG_HAS_MSIX) {
+ 		u32 eics = 0;
  
-+void igb_set_queue_napi(struct igb_adapter *adapter, int vector,
-+			struct napi_struct *napi)
-+{
-+	struct igb_q_vector *q_vector = adapter->q_vector[vector];
+-		for (i = 0; i < adapter->num_q_vectors; i++)
+-			eics |= adapter->q_vector[i]->eims_value;
+-		wr32(E1000_EICS, eics);
++		for (i = 0; i < adapter->num_q_vectors; i++) {
++			struct igb_q_vector *q_vector = adapter->q_vector[i];
++			struct igb_ring *rx_ring;
 +
-+	if (q_vector->rx.ring)
-+		netif_queue_set_napi(adapter->netdev,
-+				     q_vector->rx.ring->queue_index,
-+				     NETDEV_QUEUE_TYPE_RX, napi);
++			if (!q_vector->rx.ring)
++				continue;
 +
-+	if (q_vector->tx.ring)
-+		netif_queue_set_napi(adapter->netdev,
-+				     q_vector->tx.ring->queue_index,
-+				     NETDEV_QUEUE_TYPE_TX, napi);
-+}
++			rx_ring = adapter->rx_ring[q_vector->rx.ring->queue_index];
 +
- /**
-  *  igb_up - Open the interface and prepare it to handle traffic
-  *  @adapter: board private structure
-@@ -2106,6 +2122,7 @@ static void igb_check_swap_media(struct igb_adapter *adapter)
- int igb_up(struct igb_adapter *adapter)
- {
- 	struct e1000_hw *hw = &adapter->hw;
-+	struct napi_struct *napi;
- 	int i;
- 
- 	/* hardware has been reset, we need to reload some things */
-@@ -2113,8 +2130,11 @@ int igb_up(struct igb_adapter *adapter)
- 
- 	clear_bit(__IGB_DOWN, &adapter->state);
- 
--	for (i = 0; i < adapter->num_q_vectors; i++)
--		napi_enable(&(adapter->q_vector[i]->napi));
-+	for (i = 0; i < adapter->num_q_vectors; i++) {
-+		napi = &adapter->q_vector[i]->napi;
-+		napi_enable(napi);
-+		igb_set_queue_napi(adapter, i, napi);
-+	}
- 
- 	if (adapter->flags & IGB_FLAG_HAS_MSIX)
- 		igb_configure_msix(adapter);
-@@ -2184,6 +2204,7 @@ void igb_down(struct igb_adapter *adapter)
- 	for (i = 0; i < adapter->num_q_vectors; i++) {
- 		if (adapter->q_vector[i]) {
- 			napi_synchronize(&adapter->q_vector[i]->napi);
-+			igb_set_queue_napi(adapter, i, NULL);
- 			napi_disable(&adapter->q_vector[i]->napi);
- 		}
++			if (test_bit(IGB_RING_FLAG_RX_ALLOC_FAILED, &rx_ring->flags)) {
++				eics |= q_vector->eims_value;
++				clear_bit(IGB_RING_FLAG_RX_ALLOC_FAILED, &rx_ring->flags);
++			}
++		}
++		if (eics)
++			wr32(E1000_EICS, eics);
+ 	} else {
+-		wr32(E1000_ICS, E1000_ICS_RXDMT0);
++		struct igb_ring *rx_ring = adapter->rx_ring[0];
++
++		if (test_bit(IGB_RING_FLAG_RX_ALLOC_FAILED, &rx_ring->flags)) {
++			clear_bit(IGB_RING_FLAG_RX_ALLOC_FAILED, &rx_ring->flags);
++			wr32(E1000_ICS, E1000_ICS_RXDMT0);
++		}
  	}
-@@ -4116,8 +4137,9 @@ static int igb_sw_init(struct igb_adapter *adapter)
- static int __igb_open(struct net_device *netdev, bool resuming)
- {
- 	struct igb_adapter *adapter = netdev_priv(netdev);
--	struct e1000_hw *hw = &adapter->hw;
- 	struct pci_dev *pdev = adapter->pdev;
-+	struct e1000_hw *hw = &adapter->hw;
-+	struct napi_struct *napi;
- 	int err;
- 	int i;
  
-@@ -4169,8 +4191,11 @@ static int __igb_open(struct net_device *netdev, bool resuming)
- 	/* From here on the code is the same as igb_up() */
- 	clear_bit(__IGB_DOWN, &adapter->state);
+ 	igb_spoof_check(adapter);
+@@ -9089,6 +9107,7 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_vector, const int budget)
+ 		if (!xdp_res && !skb) {
+ 			rx_ring->rx_stats.alloc_failed++;
+ 			rx_buffer->pagecnt_bias++;
++			set_bit(IGB_RING_FLAG_RX_ALLOC_FAILED, &rx_ring->flags);
+ 			break;
+ 		}
  
--	for (i = 0; i < adapter->num_q_vectors; i++)
--		napi_enable(&(adapter->q_vector[i]->napi));
-+	for (i = 0; i < adapter->num_q_vectors; i++) {
-+		napi = &adapter->q_vector[i]->napi;
-+		napi_enable(napi);
-+		igb_set_queue_napi(adapter, i, napi);
-+	}
+@@ -9148,6 +9167,7 @@ static bool igb_alloc_mapped_page(struct igb_ring *rx_ring,
+ 	page = dev_alloc_pages(igb_rx_pg_order(rx_ring));
+ 	if (unlikely(!page)) {
+ 		rx_ring->rx_stats.alloc_failed++;
++		set_bit(IGB_RING_FLAG_RX_ALLOC_FAILED, &rx_ring->flags);
+ 		return false;
+ 	}
  
- 	/* Clear any pending interrupts. */
- 	rd32(E1000_TSICR);
+@@ -9164,6 +9184,7 @@ static bool igb_alloc_mapped_page(struct igb_ring *rx_ring,
+ 		__free_pages(page, igb_rx_pg_order(rx_ring));
+ 
+ 		rx_ring->rx_stats.alloc_failed++;
++		set_bit(IGB_RING_FLAG_RX_ALLOC_FAILED, &rx_ring->flags);
+ 		return false;
+ 	}
+ 
 diff --git a/drivers/net/ethernet/intel/igb/igb_xsk.c b/drivers/net/ethernet/intel/igb/igb_xsk.c
-index 157d43787fa0b55a74714f69e9e7903b695fcf0a..a5ad090dfe94b6afc8194fe39d28cdd51c7067b0 100644
+index a5ad090dfe94b6afc8194fe39d28cdd51c7067b0..47344ee1ed7f29bd68055485702a87df3b8922e8 100644
 --- a/drivers/net/ethernet/intel/igb/igb_xsk.c
 +++ b/drivers/net/ethernet/intel/igb/igb_xsk.c
-@@ -45,6 +45,7 @@ static void igb_txrx_ring_disable(struct igb_adapter *adapter, u16 qid)
- 	synchronize_net();
+@@ -417,6 +417,7 @@ int igb_clean_rx_irq_zc(struct igb_q_vector *q_vector,
+ 		/* exit if we failed to retrieve a buffer */
+ 		if (!skb) {
+ 			rx_ring->rx_stats.alloc_failed++;
++			set_bit(IGB_RING_FLAG_RX_ALLOC_FAILED, &rx_ring->flags);
+ 			break;
+ 		}
  
- 	/* Rx/Tx share the same napi context. */
-+	igb_set_queue_napi(adapter, qid, NULL);
- 	napi_disable(&rx_ring->q_vector->napi);
- 
- 	igb_clean_tx_ring(tx_ring);
-@@ -78,6 +79,7 @@ static void igb_txrx_ring_enable(struct igb_adapter *adapter, u16 qid)
- 
- 	/* Rx/Tx share the same napi context. */
- 	napi_enable(&rx_ring->q_vector->napi);
-+	igb_set_queue_napi(adapter, qid, &rx_ring->q_vector->napi);
- }
- 
- struct xsk_buff_pool *igb_xsk_pool(struct igb_adapter *adapter,
 
 -- 
 2.39.5
