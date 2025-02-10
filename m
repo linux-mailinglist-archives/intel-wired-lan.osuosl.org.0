@@ -1,94 +1,93 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 053EDA2EDA0
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Feb 2025 14:24:42 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 007AAA2EE60
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Feb 2025 14:37:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5767A821A1;
-	Mon, 10 Feb 2025 13:24:40 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5BFDF404AC;
+	Mon, 10 Feb 2025 13:37:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9eE9-OXGml9E; Mon, 10 Feb 2025 13:24:39 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 9z5pVEq60yQs; Mon, 10 Feb 2025 13:37:35 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AB93382194
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 93BDE4047E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739193879;
-	bh=Jt6pQHoQVd00iFlOT0zKR71VJA5KHbXP387LWjI2wQQ=;
+	s=default; t=1739194655;
+	bh=wIs1hoS+WXkB+Bc/qpt2291isC/SnfHWfi8qzKuV7dY=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=t4//cjiJJeiJmt8y7qwOZY39MnHfjuf29HoRiErue42r6gkUnuZ5Pj3/UD0RCU9NA
-	 gGlRnDOsB99SXdZ8eRRFRRL9OL3v7kgY2+4dxNAkOcOeZH+RwPDzyHd6Eiss90Z5P0
-	 zDzg7ALedoAnI0WpNBz/z1VsJjXaMAoPPbYM62j9+yRxd43zhtcyZAwR1zmCt4WXu5
-	 CECwuCqze/dUhjDOVw/HwxxsimEETkMW9axLM9kGNagNYDfz1xu1W/T0tMOW3p2Mmz
-	 ZKClLcR03CwhAz23sHHYI7+zJz2+/TqdzPnFQ6rP/VjdCovPicusC62uHS1zqV2vcs
-	 ++aiuBnCUhypg==
+	b=JHoxNpnnZ51Da7peXjIz8fLA7Jljd7JX6rUU0+Hk0oh7bl2Ed41Wefsw+xibTmFb+
+	 j1RPjV0SBqPq8VMMdRMsuMdK5bU2NVPM7kKoCepBFqi6Pn91yjuL76+v1A0hUm0jG6
+	 +rLuM6AXwPop6ruuBol5hUgda2k6VmwPMAEhd6mrR3eLEXtzm1sbfm3SILNSbx3vk0
+	 QwHr5QGl5E6RkjNfUf8v/3t/7QfOvIyhppF5LhaM1FQpDHRE0JFGS0BeWSxocTOKWx
+	 kP/xZiZMDI5OJY9FvhtmF/DURRwoD0d8hOQ/6B4Mp8g/aoL4ash1I61EyMpwPN/glE
+	 zX0rVloFygl0Q==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AB93382194;
-	Mon, 10 Feb 2025 13:24:39 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 93BDE4047E;
+	Mon, 10 Feb 2025 13:37:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 9A625C2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 13:24:37 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 734B66C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 13:37:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 9501C40C2B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 13:24:37 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5505640649
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 13:37:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5Y_BJfzvDiah for <intel-wired-lan@lists.osuosl.org>;
- Mon, 10 Feb 2025 13:24:36 +0000 (UTC)
+ id fTpnYaop35XZ for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 10 Feb 2025 13:37:32 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
  helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org B18D340BED
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B18D340BED
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 15DC540BC6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 15DC540BC6
 Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B18D340BED
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 13:24:36 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 15DC540BC6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 13:37:32 +0000 (UTC)
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
  (envelope-from <andrew@lunn.ch>)
- id 1thTlo-00CiYV-0K; Mon, 10 Feb 2025 14:24:16 +0100
-Date: Mon, 10 Feb 2025 14:24:15 +0100
+ id 1thTyb-00CirB-73; Mon, 10 Feb 2025 14:37:29 +0100
+Date: Mon, 10 Feb 2025 14:37:29 +0100
 From: Andrew Lunn <andrew@lunn.ch>
-To: Ethan Carter Edwards <ethan@ethancedwards.com>
-Cc: Piotr Kwapulinski <piotr.kwapulinski@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
- Simon Horman <horms@kernel.org>, Stefan Wegrzyn <stefan.wegrzyn@intel.com>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-hardening@vger.kernel.org
-Message-ID: <a9070724-b4b7-4a23-8ed4-b6464175b660@lunn.ch>
-References: <20250209-e610-self-v1-1-34c6c46ffe11@ethancedwards.com>
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+Cc: Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
+ intel-wired-lan@lists.osuosl.org,
+ Anthony L Nguyen <anthony.l.nguyen@intel.com>,
+ netdev@vger.kernel.org, Simon Horman <horms@kernel.org>,
+ Przemyslaw Kitszel <przemyslaw.kitszel@intel.com>,
+ Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+Message-ID: <7085302f-af69-484a-8558-2aa823379fbe@lunn.ch>
+References: <20250210104017.62838-1-jedrzej.jagielski@intel.com>
+ <87644679-1f6c-45f4-b9fd-eff1a5117b7b@molgen.mpg.de>
+ <DS0PR11MB77854D8F8DEEE0A44BB0E17EF0F22@DS0PR11MB7785.namprd11.prod.outlook.com>
+ <442420d6-3911-4956-95f1-c9b278d45cd6@molgen.mpg.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250209-e610-self-v1-1-34c6c46ffe11@ethancedwards.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <442420d6-3911-4956-95f1-c9b278d45cd6@molgen.mpg.de>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
  c=relaxed/relaxed; d=lunn.ch; 
- s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
- Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
- Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
- bh=Jt6pQHoQVd00iFlOT0zKR71VJA5KHbXP387LWjI2wQQ=; b=z5QisoNQ0/YrhBAPBpWuEN7Kad
- nBuGUOEmIWDpWL4KSa+eVE00GHWoPktI4ietdBcYAILpJsvmQszRnQAX5ckDMqvC/8KmNhywc28Q7
- JCvb5nUq5gUvERun7RIXKSzqFRaDoN6NhP3CtEUbaYSD7RXWHWc1mk2Hofu+BPRQ2Zuk=;
+ s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
+ Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
+ Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
+ In-Reply-To:References; bh=wIs1hoS+WXkB+Bc/qpt2291isC/SnfHWfi8qzKuV7dY=; b=Mo
+ EXM9F0CeJ9nkoo3tF0MRJmZdQwJAvMEBjaqJYUtpqZvLVaNAyElp26l7fde0JCDbh/6QiUkWLkChy
+ gO+p1pU4iaxP1XS3KJl+Xed0MxuYQSBZchjf0jOvf8FBnzCCZGPrrbYVxrDRm3JP6urr9wU5qlm8G
+ ToGXSl5YNT/fOu8=;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=lunn.ch
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256
- header.s=20171124 header.b=z5QisoNQ
-Subject: Re: [Intel-wired-lan] [PATCH] ixgbe: remove self assignment
+ dkim=pass (1024-bit key) header.d=lunn.ch header.i=@lunn.ch
+ header.a=rsa-sha256 header.s=20171124 header.b=MoEXM9F0
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3] ixgbe: add support for
+ thermal sensor event reception
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,26 +103,29 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sun, Feb 09, 2025 at 11:47:24PM -0500, Ethan Carter Edwards wrote:
-> Variable self assignment does not have any effect.
+> > > > Then driver
+> > > > logs appropriate message and closes the adapter instance.
+> > > > The card remains in that state until the platform is rebooted.
+> > > 
+> > > As a user I’d be interested what the threshold is, and what the measured
+> > > temperature is. Currently, the log seems to be just generic?
+> > 
+> > These details are FW internals.
+> > Driver just gets info that such event has happened.
+> > There's no additional information.
+> > 
+> > In that case driver's job is just to inform user that such scenario
+> > has happened and tell what should be the next steps.
+> 
+> From a user perspective that is a suboptimal behavior, and shows another
+> time that the Linux kernel should have all the control, and stuff like this
+> should be moved *out* of the firmware and not into the firmware.
 
-Hi Ethan
+The older generations of hardware driven by this driver actually have
+HWMON support for the temperature sensor. I can understand the
+hardware protecting itself, and shutting down, but i agree with you,
+all the infrastructure already exists to report the temperature so why
+drop it? That actually seems like more work, and makes the device less
+friendly.
 
-As a general rule, it would be good to explain in the comment message
-what research you did to find out why there is a self assignment, and
-why just deleting it is the correct solution.
-
-There are somewhat legitimate reasons to do a self assign, some older
-compilers would warn about variables which were set but then never
-used, for example. Or it could be a dumb copy/paste error when writing
-the code. But more likely than not, the developer had something in
-mind, got distracted, and never finished the code. Which appears to
-the issue here.
-
-If you cannot figure out what the correct fix is, please just email to
-the list, Cc: the Maintainer of the file, pointing out the problem.
-
-    Andrew
-
----
-pw-bot: cr
+	Andrew
