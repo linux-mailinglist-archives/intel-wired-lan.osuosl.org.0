@@ -1,77 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 791DFA2EF55
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Feb 2025 15:10:51 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 52301A2EF57
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Feb 2025 15:10:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 29B85815CE;
-	Mon, 10 Feb 2025 14:10:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DB4E081746;
+	Mon, 10 Feb 2025 14:10:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id hFefWvXhJ5ZT; Mon, 10 Feb 2025 14:10:48 +0000 (UTC)
+ id JqBfyu-PR8RD; Mon, 10 Feb 2025 14:10:51 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C0926810C0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DB69481774
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739196648;
-	bh=6Valpj4olOmiepvJCKjbxasRA0+A234JsuO+BHhwRxo=;
+	s=default; t=1739196651;
+	bh=oOvaMdvaf05M72s+831KQelJhY/GVvMY2tNob/JHACI=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=S4roHri1LvIziM+SOMZ6/EUBNJHphCqTQVr/RN8InGEQGu1HuWVUhuOXJ09i7I15b
-	 WlOqPGfoXaNQ7FUfGC/2Nubz9TXDLkWqMaulAyFvoT611vyBtxRGOR2/FY4gctxHOh
-	 7DfITNrUUMd9Vo5wX3UNDGB5jXrfrCFu9ukAnJk/M7J8PK05BgEkxqnk1brceLbYeq
-	 /Ju6KDSNfVGU+G+jVEFpZY5sv02LP0QnziyFlHcj/eMeY0J2KGQLlNgjFNHzviS9nN
-	 xe2VhCFYDyPRKvPx2jkIvD+hAe8Ab/sKpS1Zdx65pFEkbaWhOF/etmBlVrjpdWFnZY
-	 7RQChAs1VoBDg==
+	b=s+HnGeIQyn+XboH9WbbNIM/eq0Tjt/ds7VjTMF6ZL6pA7ofThxaMY1qzXjl/iOC2U
+	 vbnw2mTq7QkXYz7HqHo0xkYr4h3B/WZWR4GWCqq4FUKNaV5QNeU7T7nnESNZYcO98z
+	 vKlebe8in0CyJwKomEmdng4BdVSPO2zUJV+QZFq5qbugIJJHxMj0mTBQUp74M5QJPM
+	 m0PTCV6BHhZ1KdfNhaWRWTLoke8r41vCynrJnnBrRWBvz6HxeHSGxloLHn4p0ghK54
+	 dwTA2YwY8ZBYg1Kj3UEe8F0cy2serHTnxChUQTXZHJ3O92BluW/tB/JU5PCTtP+rI2
+	 6loam/u3aAxTQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C0926810C0;
-	Mon, 10 Feb 2025 14:10:48 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DB69481774;
+	Mon, 10 Feb 2025 14:10:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 51B466C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 14:10:46 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 835B66C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 14:10:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3429460A9E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 14:10:46 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 7C0D260B24
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 14:10:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Pl6SV0dwARfA for <intel-wired-lan@lists.osuosl.org>;
- Mon, 10 Feb 2025 14:10:45 +0000 (UTC)
+ id pmFw9kNaxj9y for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 10 Feb 2025 14:10:48 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
  helo=mgamail.intel.com; envelope-from=jedrzej.jagielski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D224C60736
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D224C60736
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 3B7FC60AEE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3B7FC60AEE
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D224C60736
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 14:10:44 +0000 (UTC)
-X-CSE-ConnectionGUID: wx53PUzOSEyCl5atZ4YxcA==
-X-CSE-MsgGUID: +id06ZqNTQefGb/Egt8ZEQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11341"; a="57190460"
-X-IronPort-AV: E=Sophos;i="6.13,274,1732608000"; d="scan'208";a="57190460"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3B7FC60AEE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 14:10:47 +0000 (UTC)
+X-CSE-ConnectionGUID: tYVw/XsnRgu8Jb7HtOJwLg==
+X-CSE-MsgGUID: MWEOEE3fQo6AbM6a1JA2Aw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11341"; a="57190471"
+X-IronPort-AV: E=Sophos;i="6.13,274,1732608000"; d="scan'208";a="57190471"
 Received: from orviesa009.jf.intel.com ([10.64.159.149])
  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Feb 2025 06:10:45 -0800
-X-CSE-ConnectionGUID: uEBRV8EbTM6+J7uJ7z/Vog==
-X-CSE-MsgGUID: ezlQsj4hSRuysBeIE9ZqpQ==
+ 10 Feb 2025 06:10:47 -0800
+X-CSE-ConnectionGUID: DLQi4BxUSMq79ZEjQMDLLg==
+X-CSE-MsgGUID: oID1usKgSIuPRP8cqE4fiw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,274,1732608000"; d="scan'208";a="111964233"
+X-IronPort-AV: E=Sophos;i="6.13,274,1732608000"; d="scan'208";a="111964236"
 Received: from os-delivery.igk.intel.com ([10.102.18.218])
- by orviesa009.jf.intel.com with ESMTP; 10 Feb 2025 06:10:42 -0800
+ by orviesa009.jf.intel.com with ESMTP; 10 Feb 2025 06:10:45 -0800
 From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: anthony.l.nguyen@intel.com, netdev@vger.kernel.org, horms@kernel.org,
  Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
  Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- Slawomir Mrozowicz <slawomirx.mrozowicz@intel.com>,
- Piotr Kwapulinski <piotr.kwapulinski@intel.com>,
- Stefan Wegrzyn <stefan.wegrzyn@intel.com>
-Date: Mon, 10 Feb 2025 14:56:36 +0100
-Message-Id: <20250210135639.68674-11-jedrzej.jagielski@intel.com>
+ Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+Date: Mon, 10 Feb 2025 14:56:37 +0100
+Message-Id: <20250210135639.68674-12-jedrzej.jagielski@intel.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20250210135639.68674-1-jedrzej.jagielski@intel.com>
 References: <20250210135639.68674-1-jedrzej.jagielski@intel.com>
@@ -79,25 +77,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1739196645; x=1770732645;
+ t=1739196648; x=1770732648;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=01VQcg8RwewhaogeF46cIlcEIXtWZm5KyxnumMydre4=;
- b=bJPKWybhB0BlpqguuV5kspkZ+yDPsEecS7X4coFQaWTgVZ3+UKOm0Izs
- JDUduz9PnqJu8eqCb+dPogiQLC5EPdciOi0xB9PuxyW2GFK7zvenVUrnC
- fc9nK5Ki7SoXgDBaikyCxvXRa7X77zbhxSSukXdkDZOTd+3aa9K9URm/T
- TXsuR6jROnp5CdFiuL+IfUfSKdgBVeBORUwMsqhDHOX4QCOPp/7lpGJXP
- Y6yatansrdhm7HavPxmal5oBFQ1UXWdSVMxqmixjHlG6lkGbhaq7cIYQ2
- aJa7yQrHaGbpXuqmzHO2IJ0gtyxzZXpJAntaKykoejtdIhIbuSHXLWlGW
- w==;
+ bh=TDivvGRbVx03Mr43QtfEYxOPrUTfOEBOXVdr/Sh8/Kc=;
+ b=BG3vLp+8MhiZVRX7Yq8CFCy7RAV57mG/4x4LYQ6L22Ewmedf3htC6pXy
+ X0BhHRt5kUhcFrNnJ3FgN1ERGaPG7a4JhcYJg5AsoUMG/0R2NLVJyLTRJ
+ JFL0neXo1Yhb/Ee/lBiKs//lWbQje0IBuSKb2gdGsS/xqKTsWseufW0AY
+ G1K/jEumUwtDarEt0sjUFUuv/Z3lCdFVrjNVuv3uPZ9NpVDr+MLobL2QJ
+ ts/qj7vUeRoGQ5kRWjYZ0o3RvWctiQqZJU9k+x/5094AlJgHloKKdhxOc
+ RCHFS5NGQaoN2AQli6Ycfmd1osR8p8Bm65mtVxMG0D5agr8yo8eOwSqd9
+ A==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=bJPKWybh
-Subject: [Intel-wired-lan] [PATCH iwl-next v2 10/13] ixgbe: add support for
- devlink reload
+ header.a=rsa-sha256 header.s=Intel header.b=BG3vLp+8
+Subject: [Intel-wired-lan] [PATCH iwl-next v2 11/13] ixgbe: add FW API
+ version check
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -113,404 +111,123 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The E610 adapters contain an embedded chip with firmware which can be
-updated using devlink flash. The firmware which runs on this chip is
-referred to as the Embedded Management Processor firmware (EMP
-firmware).
+Add E610 specific function checking whether the FW API version
+is compatible with the driver expectations.
 
-Activating the new firmware image currently requires that the system be
-rebooted. This is not ideal as rebooting the system can cause unwanted
-downtime.
+The major API version should be less than or equal to the expected
+API version. If not the driver won't be fully operational.
 
-The EMP firmware itself can be reloaded by issuing a special update
-to the device called an Embedded Management Processor reset (EMP
-reset). This reset causes the device to reset and reload the EMP
-firmware.
-
-Implement support for devlink reload with the "fw_activate" flag. This
-allows user space to request the firmware be activated immediately.
+Check the minor version, and if it is more than two versions lesser
+or greater than the expected version, print a message indicating
+that the NVM or driver should be updated respectively.
 
 Reviewed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-Co-developed-by: Slawomir Mrozowicz <slawomirx.mrozowicz@intel.com>
-Signed-off-by: Slawomir Mrozowicz <slawomirx.mrozowicz@intel.com>
 Co-developed-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
 Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
-Co-developed-by: Stefan Wegrzyn <stefan.wegrzyn@intel.com>
-Signed-off-by: Stefan Wegrzyn <stefan.wegrzyn@intel.com>
 Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 ---
- Documentation/networking/devlink/ixgbe.rst    |  15 +++
- .../ethernet/intel/ixgbe/devlink/devlink.c    | 114 ++++++++++++++++++
- drivers/net/ethernet/intel/ixgbe/ixgbe.h      |   4 +
- drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c |  18 +++
- drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h |   1 +
- .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  |  12 ++
- .../ethernet/intel/ixgbe/ixgbe_fw_update.c    |  37 +++++-
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |   5 +-
- 8 files changed, 199 insertions(+), 7 deletions(-)
+ .../ethernet/intel/ixgbe/devlink/devlink.c    |  2 ++
+ drivers/net/ethernet/intel/ixgbe/ixgbe.h      |  1 +
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 31 +++++++++++++++++++
+ .../ethernet/intel/ixgbe/ixgbe_type_e610.h    |  4 +++
+ 4 files changed, 38 insertions(+)
 
-diff --git a/Documentation/networking/devlink/ixgbe.rst b/Documentation/networking/devlink/ixgbe.rst
-index 41aedf4b8017..e5fef951c6f5 100644
---- a/Documentation/networking/devlink/ixgbe.rst
-+++ b/Documentation/networking/devlink/ixgbe.rst
-@@ -88,3 +88,18 @@ combined flash image that contains the ``fw.mgmt``, ``fw.undi``, and
-        and device serial number. It is expected that this combination be used with an
-        image customized for the specific device.
- 
-+Reload
-+======
-+
-+The ``ixgbe`` driver supports activating new firmware after a flash update
-+using ``DEVLINK_CMD_RELOAD`` with the ``DEVLINK_RELOAD_ACTION_FW_ACTIVATE``
-+action.
-+
-+.. code:: shell
-+    $ devlink dev reload pci/0000:01:00.0 reload action fw_activate
-+The new firmware is activated by issuing a device specific Embedded
-+Management Processor reset which requests the device to reset and reload the
-+EMP firmware image.
-+
-+The driver does not currently support reloading the driver via
-+``DEVLINK_RELOAD_ACTION_DRIVER_REINIT``.
 diff --git a/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c b/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c
-index a662a3cba33a..b0396141eb9b 100644
+index b0396141eb9b..4ba72ec5422b 100644
 --- a/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c
 +++ b/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c
-@@ -390,6 +390,9 @@ static int ixgbe_devlink_info_get(struct devlink *devlink,
- 	if (!ctx)
- 		return -ENOMEM;
+@@ -540,6 +540,8 @@ static int ixgbe_devlink_reload_empr_finish(struct devlink *devlink,
  
-+	if (hw->mac.type == ixgbe_mac_e610)
-+		ixgbe_refresh_fw_version(adapter);
+ 	*actions_performed = BIT(DEVLINK_RELOAD_ACTION_FW_ACTIVATE);
+ 
++	adapter->flags2 &= ~IXGBE_FLAG2_API_MISMATCH;
 +
- 	ixgbe_info_get_dsn(adapter, ctx);
- 	err = devlink_info_serial_number_put(req, ctx->buf);
- 	if (err)
-@@ -432,11 +435,122 @@ static int ixgbe_devlink_info_get(struct devlink *devlink,
- 	return err;
+ 	return 0;
  }
  
-+/**
-+ * ixgbe_devlink_reload_empr_start - Start EMP reset to activate new firmware
-+ * @devlink: pointer to the devlink instance to reload
-+ * @netns_change: if true, the network namespace is changing
-+ * @action: the action to perform. Must be DEVLINK_RELOAD_ACTION_FW_ACTIVATE
-+ * @limit: limits on what reload should do, such as not resetting
-+ * @extack: netlink extended ACK structure
-+ *
-+ * Allow user to activate new Embedded Management Processor firmware by
-+ * issuing device specific EMP reset. Called in response to
-+ * a DEVLINK_CMD_RELOAD with the DEVLINK_RELOAD_ACTION_FW_ACTIVATE.
-+ *
-+ * Note that teardown and rebuild of the driver state happens automatically as
-+ * part of an interrupt and watchdog task. This is because all physical
-+ * functions on the device must be able to reset when an EMP reset occurs from
-+ * any source.
-+ *
-+ * Return: the exit code of the operation.
-+ */
-+static int ixgbe_devlink_reload_empr_start(struct devlink *devlink,
-+					   bool netns_change,
-+					   enum devlink_reload_action action,
-+					   enum devlink_reload_limit limit,
-+					   struct netlink_ext_ack *extack)
-+{
-+	struct ixgbe_devlink_priv *devlink_private = devlink_priv(devlink);
-+	struct ixgbe_adapter *adapter = devlink_private->adapter;
-+	struct ixgbe_hw *hw = &adapter->hw;
-+	u8 pending;
-+	int err;
-+
-+	if (hw->mac.type != ixgbe_mac_e610)
-+		return -EOPNOTSUPP;
-+
-+	err = ixgbe_get_pending_updates(adapter, &pending, extack);
-+	if (err)
-+		return err;
-+
-+	/* Pending is a bitmask of which flash banks have a pending update,
-+	 * including the main NVM bank, the Option ROM bank, and the netlist
-+	 * bank. If any of these bits are set, then there is a pending update
-+	 * waiting to be activated.
-+	 */
-+	if (!pending) {
-+		NL_SET_ERR_MSG_MOD(extack, "No pending firmware update");
-+		return -ECANCELED;
-+	}
-+
-+	if (adapter->fw_emp_reset_disabled) {
-+		NL_SET_ERR_MSG_MOD(extack,
-+		"EMP reset is not available. To activate firmware, a reboot or power cycle is needed\n");
-+		return -ECANCELED;
-+	}
-+
-+	err = ixgbe_aci_nvm_update_empr(hw);
-+	if (err)
-+		NL_SET_ERR_MSG_MOD(extack,
-+		"Failed to trigger EMP device reset to reload firmware");
-+
-+	return err;
-+}
-+
-+/*Wait for 10 sec with 0.5 sec tic. EMPR takes no less than half of a sec */
-+#define IXGBE_DEVLINK_RELOAD_TIMEOUT_SEC	20
-+
-+/**
-+ * ixgbe_devlink_reload_empr_finish - finishes EMP reset
-+ * @devlink: pointer to the devlink instance
-+ * @action: the action to perform.
-+ * @limit: limits on what reload should do
-+ * @actions_performed: actions performed
-+ * @extack: netlink extended ACK structure
-+ *
-+ * Wait for new NVM to be loaded during EMP reset.
-+ *
-+ * Return: -ETIME when timer is exceeded, 0 on success.
-+ */
-+static int ixgbe_devlink_reload_empr_finish(struct devlink *devlink,
-+					    enum devlink_reload_action action,
-+					    enum devlink_reload_limit limit,
-+					    u32 *actions_performed,
-+					    struct netlink_ext_ack *extack)
-+{
-+	struct ixgbe_devlink_priv *devlink_private = devlink_priv(devlink);
-+	struct ixgbe_adapter *adapter = devlink_private->adapter;
-+	struct ixgbe_hw *hw = &adapter->hw;
-+	int i = 0;
-+	u32 fwsm;
-+
-+	do {
-+		/* Just right away after triggering EMP reset the FWSM register
-+		 * may be not cleared yet, so begin the loop with the delay
-+		 * in order to not check the not updated register.
-+		 */
-+		mdelay(500);
-+
-+		fwsm = IXGBE_READ_REG(hw, IXGBE_FWSM(hw));
-+
-+		if (i++ >= IXGBE_DEVLINK_RELOAD_TIMEOUT_SEC)
-+			return -ETIME;
-+
-+	} while (!(fwsm & IXGBE_FWSM_FW_VAL_BIT));
-+
-+	*actions_performed = BIT(DEVLINK_RELOAD_ACTION_FW_ACTIVATE);
-+
-+	return 0;
-+}
-+
- static const struct devlink_ops ixgbe_devlink_ops = {
- 	.info_get = ixgbe_devlink_info_get,
- 	.supported_flash_update_params =
- 		DEVLINK_SUPPORT_FLASH_UPDATE_OVERWRITE_MASK,
- 	.flash_update = ixgbe_flash_pldm_image,
-+	.reload_actions = BIT(DEVLINK_RELOAD_ACTION_FW_ACTIVATE),
-+	.reload_down = ixgbe_devlink_reload_empr_start,
-+	.reload_up = ixgbe_devlink_reload_empr_finish,
- };
- 
- /**
 diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-index 37d761f8c409..0dbb2e205557 100644
+index 0dbb2e205557..59dceb96e76a 100644
 --- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
 +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-@@ -759,6 +759,8 @@ struct ixgbe_adapter {
- 	u32 atr_sample_rate;
- 	spinlock_t fdir_perfect_lock;
+@@ -671,6 +671,7 @@ struct ixgbe_adapter {
+ #define IXGBE_FLAG2_PHY_FW_LOAD_FAILED		BIT(20)
+ #define IXGBE_FLAG2_NO_MEDIA			BIT(21)
+ #define IXGBE_FLAG2_MOD_POWER_UNSUPPORTED	BIT(22)
++#define IXGBE_FLAG2_API_MISMATCH		BIT(23)
  
-+	bool fw_emp_reset_disabled;
-+
- #ifdef IXGBE_FCOE
- 	struct ixgbe_fcoe fcoe;
- #endif /* IXGBE_FCOE */
-@@ -953,6 +955,8 @@ void ixgbe_update_stats(struct ixgbe_adapter *adapter);
- int ixgbe_init_interrupt_scheme(struct ixgbe_adapter *adapter);
- bool ixgbe_wol_supported(struct ixgbe_adapter *adapter, u16 device_id,
- 			 u16 subdevice_id);
-+void ixgbe_set_fw_version_e610(struct ixgbe_adapter *adapter);
-+void ixgbe_refresh_fw_version(struct ixgbe_adapter *adapter);
- #ifdef CONFIG_PCI_IOV
- void ixgbe_full_sync_mac_table(struct ixgbe_adapter *adapter);
- #endif
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-index 03d4d45158be..f25cf0e7582b 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-@@ -3300,6 +3300,24 @@ int ixgbe_get_flash_data(struct ixgbe_hw *hw)
- 	return err;
+ 	/* Tx fast path data */
+ 	int num_tx_queues;
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index 4523f7d5a12e..0a4922e4e9cf 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -8361,6 +8361,31 @@ static void ixgbe_reset_subtask(struct ixgbe_adapter *adapter)
+ 	rtnl_unlock();
  }
  
-+/**
-+ * ixgbe_aci_nvm_update_empr - update NVM using EMPR
-+ * @hw: pointer to the HW struct
-+ *
-+ * Force EMP reset using ACI command (0x0709). This command allows SW to
-+ * request an EMPR to activate new FW.
-+ *
-+ * Return: the exit code of the operation.
-+ */
-+int ixgbe_aci_nvm_update_empr(struct ixgbe_hw *hw)
-+{
-+	struct ixgbe_aci_desc desc;
-+
-+	ixgbe_fill_dflt_direct_cmd_desc(&desc, ixgbe_aci_opc_nvm_update_empr);
-+
-+	return ixgbe_aci_send_cmd(hw, &desc, NULL, 0);
-+}
-+
- /* ixgbe_nvm_set_pkg_data - NVM set package data
-  * @hw: pointer to the HW struct
-  * @del_pkg_data_flag: If is set then the current pkg_data store by FW
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
-index c24a41fe16a7..b668ff0ae2e5 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
-@@ -81,6 +81,7 @@ int ixgbe_read_ee_aci_buffer_e610(struct ixgbe_hw *hw, u16 offset,
- int ixgbe_validate_eeprom_checksum_e610(struct ixgbe_hw *hw, u16 *checksum_val);
- int ixgbe_reset_hw_e610(struct ixgbe_hw *hw);
- int ixgbe_get_flash_data(struct ixgbe_hw *hw);
-+int ixgbe_aci_nvm_update_empr(struct ixgbe_hw *hw);
- int ixgbe_nvm_set_pkg_data(struct ixgbe_hw *hw, bool del_pkg_data_flag,
- 			   u8 *data, u16 length);
- int ixgbe_nvm_pass_component_tbl(struct ixgbe_hw *hw, u8 *data, u16 length,
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-index da91c582d439..42079bb826ff 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-@@ -1104,11 +1104,23 @@ static int ixgbe_set_eeprom(struct net_device *netdev,
- 	return ret_val;
- }
- 
-+void ixgbe_refresh_fw_version(struct ixgbe_adapter *adapter)
++static int ixgbe_check_fw_api_mismatch(struct ixgbe_adapter *adapter)
 +{
 +	struct ixgbe_hw *hw = &adapter->hw;
 +
-+	ixgbe_get_flash_data(hw);
-+	ixgbe_set_fw_version_e610(adapter);
++	if (hw->mac.type != ixgbe_mac_e610)
++		return 0;
++
++	if (hw->api_maj_ver > IXGBE_FW_API_VER_MAJOR) {
++		e_dev_err("The driver for the device stopped because the NVM image is newer than expected. You must install the most recent version of the network driver.\n");
++
++		adapter->flags2 |= IXGBE_FLAG2_API_MISMATCH;
++		return -EOPNOTSUPP;
++	} else if (hw->api_maj_ver == IXGBE_FW_API_VER_MAJOR &&
++		   hw->api_min_ver > IXGBE_FW_API_VER_MINOR + IXGBE_FW_API_VER_DIFF_ALLOWED) {
++		e_dev_info("The driver for the device detected a newer version of the NVM image than expected. Please install the most recent version of the network driver.\n");
++		adapter->flags2 |= IXGBE_FLAG2_API_MISMATCH;
++	} else if (hw->api_maj_ver < IXGBE_FW_API_VER_MAJOR ||
++		   hw->api_min_ver < IXGBE_FW_API_VER_MINOR - IXGBE_FW_API_VER_DIFF_ALLOWED) {
++		e_dev_info("The driver for the device detected an older version of the NVM image than expected. Please update the NVM image.\n");
++		adapter->flags2 |= IXGBE_FLAG2_API_MISMATCH;
++	}
++
++	return 0;
 +}
 +
- static void ixgbe_get_drvinfo(struct net_device *netdev,
- 			      struct ethtool_drvinfo *drvinfo)
- {
- 	struct ixgbe_adapter *adapter = netdev_priv(netdev);
- 
-+	/* need to refresh info for e610 in case fw reloads in runtime */
-+	if (adapter->hw.mac.type == ixgbe_mac_e610)
-+		ixgbe_refresh_fw_version(adapter);
-+
- 	strscpy(drvinfo->driver, ixgbe_driver_name, sizeof(drvinfo->driver));
- 
- 	strscpy(drvinfo->fw_version, adapter->eeprom_id,
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_fw_update.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_fw_update.c
-index 76225f1e653f..844e40c1d747 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_fw_update.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_fw_update.c
-@@ -16,6 +16,7 @@ struct ixgbe_fwu_priv {
- 
- 	/* Track which NVM banks to activate at the end of the update */
- 	u8 activate_flags;
-+	bool emp_reset_available;
- };
- 
  /**
-@@ -352,6 +353,7 @@ static int ixgbe_erase_nvm_module(struct ixgbe_adapter *adapter, u16 module,
-  * ixgbe_switch_flash_banks - Tell firmware to switch NVM banks
-  * @adapter: Pointer to the PF data structure
-  * @activate_flags: flags used for the activation command
-+ * @emp_reset_available: on return, indicates if EMP reset is available
-  * @extack: netlink extended ACK structure
-  *
-  * Notify firmware to activate the newly written flash banks, and wait for the
-@@ -361,6 +363,7 @@ static int ixgbe_erase_nvm_module(struct ixgbe_adapter *adapter, u16 module,
-  */
- static int ixgbe_switch_flash_banks(struct ixgbe_adapter *adapter,
- 				    u8 activate_flags,
-+				    bool *emp_reset_available,
- 				    struct netlink_ext_ack *extack)
+  * ixgbe_check_fw_error - Check firmware for errors
+  * @adapter: the adapter private structure
+@@ -8371,6 +8396,7 @@ static bool ixgbe_check_fw_error(struct ixgbe_adapter *adapter)
  {
  	struct ixgbe_hw *hw = &adapter->hw;
-@@ -368,11 +371,21 @@ static int ixgbe_switch_flash_banks(struct ixgbe_adapter *adapter,
- 	int err;
- 
- 	err = ixgbe_nvm_write_activate(hw, activate_flags, &response_flags);
--	if (err)
-+	if (err) {
- 		NL_SET_ERR_MSG_MOD(extack,
- 				   "Failed to switch active flash banks");
-+		return err;
-+	}
- 
--	return err;
-+	if (emp_reset_available) {
-+		if (hw->dev_caps.common_cap.reset_restrict_support)
-+			*emp_reset_available =
-+				response_flags & IXGBE_ACI_NVM_EMPR_ENA;
-+		else
-+			*emp_reset_available = true;
-+	}
-+
-+	return 0;
- }
- 
- /**
-@@ -451,9 +464,23 @@ static int ixgbe_finalize_update(struct pldmfw *context)
- 						   context);
- 	struct ixgbe_adapter *adapter = priv->adapter;
- 	struct netlink_ext_ack *extack = priv->extack;
-+	struct devlink *devlink = adapter->devlink;
+ 	u32 fwsm;
 +	int err;
-+
-+	/* Finally, notify firmware to activate the written NVM banks */
-+	err = ixgbe_switch_flash_banks(adapter, priv->activate_flags,
-+				       &priv->emp_reset_available, extack);
-+	if (err)
-+		return err;
-+
-+	adapter->fw_emp_reset_disabled = !priv->emp_reset_available;
  
--	return ixgbe_switch_flash_banks(adapter, priv->activate_flags,
--				       extack);
-+	if (!adapter->fw_emp_reset_disabled)
-+		devlink_flash_update_status_notify(devlink,
-+			"Suggested is to activate new firmware by devlink reload, if it doesn't work then a power cycle is required",
-+			NULL, 0, 0);
-+
-+	return 0;
- }
- 
- static const struct pldmfw_ops ixgbe_fwu_ops_e610 = {
-@@ -567,7 +594,7 @@ static int ixgbe_cancel_pending_update(struct ixgbe_adapter *adapter,
- 	}
- 
- 	pending |= IXGBE_ACI_NVM_REVERT_LAST_ACTIV;
--	err = ixgbe_switch_flash_banks(adapter, pending, extack);
-+	err = ixgbe_switch_flash_banks(adapter, pending, NULL, extack);
- 
- 	ixgbe_release_nvm(hw);
- 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 706940917486..4523f7d5a12e 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -8375,8 +8375,9 @@ static bool ixgbe_check_fw_error(struct ixgbe_adapter *adapter)
  	/* read fwsm.ext_err_ind register and log errors */
  	fwsm = IXGBE_READ_REG(hw, IXGBE_FWSM(hw));
+@@ -8385,6 +8411,11 @@ static bool ixgbe_check_fw_error(struct ixgbe_adapter *adapter)
+ 		e_dev_err("Firmware recovery mode detected. Limiting functionality. Refer to the Intel(R) Ethernet Adapters and Devices User Guide for details on firmware recovery mode.\n");
+ 		return true;
+ 	}
++	if (!(adapter->flags2 & IXGBE_FLAG2_API_MISMATCH)) {
++		err = ixgbe_check_fw_api_mismatch(adapter);
++		if (err)
++			return true;
++	}
  
-+	/* skip if E610's FW is reloading, warning in that case may be misleading */
- 	if (fwsm & IXGBE_FWSM_EXT_ERR_IND_MASK ||
--	    !(fwsm & IXGBE_FWSM_FW_VAL_BIT))
-+	    (!(fwsm & IXGBE_FWSM_FW_VAL_BIT) && !(hw->mac.type == ixgbe_mac_e610)))
- 		e_dev_warn("Warning firmware error detected FWSM: 0x%08X\n",
- 			   fwsm);
+ 	return false;
+ }
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
+index 93d854b8a92e..4d591019dd07 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
+@@ -112,6 +112,10 @@
+ #define IXGBE_PF_HICR_SV			BIT(2)
+ #define IXGBE_PF_HICR_EV			BIT(3)
  
-@@ -11143,7 +11144,7 @@ bool ixgbe_wol_supported(struct ixgbe_adapter *adapter, u16 device_id,
-  * format to display. The FW version is taken from the EEPROM/NVM.
-  *
-  */
--static void ixgbe_set_fw_version_e610(struct ixgbe_adapter *adapter)
-+void ixgbe_set_fw_version_e610(struct ixgbe_adapter *adapter)
- {
- 	struct ixgbe_orom_info *orom = &adapter->hw.flash.orom;
- 	struct ixgbe_nvm_info *nvm = &adapter->hw.flash.nvm;
++#define IXGBE_FW_API_VER_MAJOR		0x01
++#define IXGBE_FW_API_VER_MINOR		0x07
++#define IXGBE_FW_API_VER_DIFF_ALLOWED	0x02
++
+ #define IXGBE_ACI_DESC_SIZE		32
+ #define IXGBE_ACI_DESC_SIZE_IN_DWORDS	(IXGBE_ACI_DESC_SIZE / BYTES_PER_DWORD)
+ 
 -- 
 2.31.1
 
