@@ -1,92 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BA149A2EAB4
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Feb 2025 12:09:46 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 83EB9A2EB85
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Feb 2025 12:40:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 74F0481970;
-	Mon, 10 Feb 2025 11:09:45 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id AE05860801;
+	Mon, 10 Feb 2025 11:40:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ueoFMKPZCssk; Mon, 10 Feb 2025 11:09:44 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id iXE0BbPl-rbU; Mon, 10 Feb 2025 11:40:53 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 986C2818D7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 01722605A0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739185784;
-	bh=S+tCQgvoZ/ZWoBQf7eRDNeQ2kwD8APeCJlQ3+c0cjEM=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1739187653;
+	bh=kumbr2jSCX/m6emLpPUVZzgSU1CKCNuEfJW5h/myOUc=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=pC3BCqSTkZ/R0Q6A+581WtmZCAy2Z8MTDinYQckIMBMUXMdb26kjsyfxpWzvU2hEe
-	 AYOYUaJv1nhvCJG9ZnfMypWBJdVcib1rK/UorV350DEkZHOuZInR+3EkQ18g1bvCER
-	 yieWmRYy9VQH9IC0CkDb+nRPN3ls7iRQiCMb3Gkty08BWM8n5K4+Uw11pKN8EWOuyP
-	 5wyVP6p+Z/l+OyujkbdjUehENKL7hS1JJyAd07l0yJKYgbc2uICjh77ZX3BD3CMZEG
-	 IqjMbH+EKeIBhe9uiMIvoXQyAyi3rdCErE9Q60VJmckn2zyyozrcLDvKIZbnemWGRN
-	 RyG2vTo38YFpQ==
+	b=r67bAmD1Frh1IWb3TfzvnAZBys9cZQq+RumgyGgCe5O5glSadQikc9320dAD6WW1H
+	 QH2AsjI+4lILMa/Vtx47vbj5VNj2kRz8DVwop7TKyBODSjErfQkIpMdjz5ulGm8i5p
+	 dbFSrEBekpZ1ljNsoCGaXfG4Byw6yIxzNDPbQo7JaWLCqfT3Y8AHYOJ+UhtNbd71tK
+	 fWRwZqI2YxGsCi4l7x5oSHKzJOrZnH1MfWReKiCeNqWzsm1b6jsCsaYIM0e1ff4yo4
+	 FT4sbcEjAg2ovxEbx4Qf0TTRMlsakmIkcsADxKkQlrcAgSW3DGxwjWY5e0o9/cen1H
+	 sfGWFd9pNBksA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 986C2818D7;
-	Mon, 10 Feb 2025 11:09:44 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 01722605A0;
+	Mon, 10 Feb 2025 11:40:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id EF7F2199
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 11:09:42 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3749D199
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 11:40:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DC807818D7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 11:09:42 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 18CB0406F2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 11:40:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id AgjlJIGcr6Dw for <intel-wired-lan@lists.osuosl.org>;
- Mon, 10 Feb 2025 11:09:41 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=147.75.193.91;
- helo=nyc.source.kernel.org; envelope-from=leon@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A54BB818DC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A54BB818DC
-Received: from nyc.source.kernel.org (nyc.source.kernel.org [147.75.193.91])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A54BB818DC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 11:09:41 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id CED23A410B0;
- Mon, 10 Feb 2025 11:07:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1FD74C4CED1;
- Mon, 10 Feb 2025 11:09:39 +0000 (UTC)
-Date: Mon, 10 Feb 2025 13:09:35 +0200
-From: Leon Romanovsky <leon@kernel.org>
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Cc: Tatyana Nikolova <tatyana.e.nikolova@intel.com>, jgg@nvidia.com,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- linux-rdma@vger.kernel.org, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Simon Horman <horms@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
- Eric Dumazet <edumazet@google.com>, "David S. Miller" <davem@davemloft.net>
-Message-ID: <20250210110935.GE17863@unreal>
-References: <20250207194931.1569-1-tatyana.e.nikolova@intel.com>
- <7e12c97d-8733-44df-b80e-2956c0e59dae@intel.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id hvHjmHQYF1Kh for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 10 Feb 2025 11:40:50 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 05001403FC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 05001403FC
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 05001403FC
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 11:40:48 +0000 (UTC)
+Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 9630961E647BD;
+ Mon, 10 Feb 2025 12:40:26 +0100 (CET)
+Message-ID: <87644679-1f6c-45f4-b9fd-eff1a5117b7b@molgen.mpg.de>
+Date: Mon, 10 Feb 2025 12:40:26 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <7e12c97d-8733-44df-b80e-2956c0e59dae@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1739185780;
- bh=tdfBLbo2ufEVYX0IYmxEP5OjhHmRvkZtyjWgTNoblrg=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=cNF7Nax03oWlEfNri2Tt3DxBonSlyZ20uduGAa1jJ12jz/OlKMn0kyHxnGEHWRjUT
- kBGsjGcTAlxwTATifYPl05XyuF+kSVWs5mCMPymDzttrcRjIX+OSywThF1cGOAgNsY
- SFe4S1PMrQZP36DoWsvRAbzmuvta5ZgOLpA8gR55221UJ2flx/WQRrXzHJTEdz/aqz
- 98gX2QvrowQZVr8ZMnvIUN4PGmhO5NsRZ83i9lJRQegK1jbEEPRFvxUpBoE6ek5Hbv
- zMOCkw0YLJc6F6V2RuoaZvMe3QKOYvJEvZwCJkRskLSqujPVdU3quDycpIgtVRArxa
- OyP3UbFFMAnHA==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=cNF7Nax0
-Subject: Re: [Intel-wired-lan] [iwl-next,
- rdma v3 00/24] Add RDMA support for Intel IPU E2000 (GEN3)
+User-Agent: Mozilla Thunderbird
+To: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
+ netdev@vger.kernel.org, horms@kernel.org,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+References: <20250210104017.62838-1-jedrzej.jagielski@intel.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20250210104017.62838-1-jedrzej.jagielski@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3] ixgbe: add support for
+ thermal sensor event reception
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -102,23 +90,86 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Feb 10, 2025 at 11:41:31AM +0100, Przemek Kitszel wrote:
-> On 2/7/25 20:49, Tatyana Nikolova wrote:
-> > This patch series is based on 6.14-rc1 and includes both netdev and RDMA
-> > patches for ease of review. It can also be viewed here [1]. A shared pull
-> > request will be sent for patches 1-7 following review.
-> > 
-> 
-> [...]
-> TLDR of my mail: could be take 1st patch prior to the rest?
-> 
-> > V2 RFC series is at https://lwn.net/Articles/987141/.
-> 
-> code there was mostly the same, and noone commented, I bet due
-> to the sheer size of the series
+Dear Jedrzej,
 
-It was very optimistic to expect for a review during holiday season
-and merge window, especially series of 25 patches which are marked
-as RFC.
 
-Thanks
+Thank you for your patch.
+
+Am 10.02.25 um 11:40 schrieb Jedrzej Jagielski:
+> E610 NICs unlike the previous devices utilising ixgbe driver
+> are notified in the case of overheatning by the FW ACI event.
+
+overheating (without n)
+
+> In event of overheat when threshold is exceeded, FW suspends all
+> traffic and sends overtemp event to the driver.
+
+I guess this was already the behavior before your patch, and now it’s 
+only logged, and the device stopped properly?
+
+> Then driver
+> logs appropriate message and closes the adapter instance.
+> The card remains in that state until the platform is rebooted.
+
+As a user I’d be interested what the threshold is, and what the measured 
+temperature is. Currently, the log seems to be just generic?
+
+     drivers/net/ethernet/intel/ixgbe/ixgbe_main.c:static const char 
+ixgbe_overheat_msg[] = "Network adapter has been stopped because it has 
+over heated. Restart the computer. If the problem persists, power off 
+the system and replace the adapter";
+
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Reviewed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+> Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+> ---
+> v2,3 : commit msg tweaks
+> ---
+>   drivers/net/ethernet/intel/ixgbe/ixgbe_main.c      | 5 +++++
+>   drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h | 3 +++
+>   2 files changed, 8 insertions(+)
+
+
+Kind regards,
+
+Paul
+
+
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> index 7236f20c9a30..5c804948dd1f 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> @@ -3165,6 +3165,7 @@ static void ixgbe_aci_event_cleanup(struct ixgbe_aci_event *event)
+>   static void ixgbe_handle_fw_event(struct ixgbe_adapter *adapter)
+>   {
+>   	struct ixgbe_aci_event event __cleanup(ixgbe_aci_event_cleanup);
+> +	struct net_device *netdev = adapter->netdev;
+>   	struct ixgbe_hw *hw = &adapter->hw;
+>   	bool pending = false;
+>   	int err;
+> @@ -3185,6 +3186,10 @@ static void ixgbe_handle_fw_event(struct ixgbe_adapter *adapter)
+>   		case ixgbe_aci_opc_get_link_status:
+>   			ixgbe_handle_link_status_event(adapter, &event);
+>   			break;
+> +		case ixgbe_aci_opc_temp_tca_event:
+> +			e_crit(drv, "%s\n", ixgbe_overheat_msg);
+> +			ixgbe_close(netdev);
+> +			break;
+>   		default:
+>   			e_warn(hw, "unknown FW async event captured\n");
+>   			break;
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
+> index 8d06ade3c7cd..617e07878e4f 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
+> @@ -171,6 +171,9 @@ enum ixgbe_aci_opc {
+>   	ixgbe_aci_opc_done_alt_write			= 0x0904,
+>   	ixgbe_aci_opc_clear_port_alt_write		= 0x0906,
+>   
+> +	/* TCA Events */
+> +	ixgbe_aci_opc_temp_tca_event                    = 0x0C94,
+> +
+>   	/* debug commands */
+>   	ixgbe_aci_opc_debug_dump_internals		= 0xFF08,
+>   
+
