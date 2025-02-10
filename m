@@ -1,118 +1,120 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4652AA2F28B
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Feb 2025 17:07:33 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A0C9EA2F369
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Feb 2025 17:26:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A0778818DC;
-	Mon, 10 Feb 2025 16:07:31 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C0E61811AE;
+	Mon, 10 Feb 2025 16:26:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pmMFhJkdvqii; Mon, 10 Feb 2025 16:07:31 +0000 (UTC)
+ id AggcVdk8pzAO; Mon, 10 Feb 2025 16:26:17 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8F06C818B5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0697B811EB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739203650;
-	bh=kca9LEECPrfswrWUPZvyaDxx4NwxuWzzj1p0ey+sgvY=;
-	h=From:Date:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=v35czwy6bGTFa9eL4IdEQvm7/7bWvs1RhwBXBo0iI6iq84UInqTXs4hjODIf0AUVP
-	 Ddj1WRts2jsvN/KkFCOdoo5Z3EpjDxzceG/ynrp+mwxWXfQwaZOGepH8GVrgA1sC2y
-	 rqfvvNKKGen+n4f8SiYK2Uv5wL1k6tprh+ZCO7+Wpyy3f9FAccTCx7Ytzp/voc+lCm
-	 i3E2TBPOldCSAW0G1yMUjhKLckjFtlJDVV1FwmeBFFZJ39h/+SImOQGFCsqHZXDDNL
-	 paFcin1DlP2FpT4qh06Vs8wf00yWKXShmANJf2nYbuXlqUiHUhygYkN2Y6wudIMtiD
-	 1gqp2ypdO6Yrg==
+	s=default; t=1739204777;
+	bh=+X7ZGXGJrlpJ8WltnoHRQdxOU9YpHfT8O3Sz64MlsdI=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=LQ/KnX/YkDO1GSg91awMRrckyGPtdF0jYn8iaKtJfr//RDJaoM9VacRA3fsEX7mOo
+	 HFJ576EPxfROAkP1k7Q455kaqLTRbw7WqjGHTHij0Mdy0GKe5axs4EALsdxva9ECIu
+	 kd2QP11V0ulM2pkXiovmbEvQafO7VhYjDtHpkz+hZxdyw8TSCJus83spOLDqV5Sp4V
+	 ssFstPvepe4Gp+V9y1MAFhBK7/IDCCGnexz+nwrmtDhBt9o+WmZk/V0guDdLVzr4pH
+	 1KU9ZjvQOmccQi3hew0TOhtuzpN3LU/ABX8x+a43CO4Q+Xmw86aa0ByhWJ1YDM/NJ+
+	 OnK7pd4/nbKuA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8F06C818B5;
-	Mon, 10 Feb 2025 16:07:30 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0697B811EB;
+	Mon, 10 Feb 2025 16:26:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 100FAC2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 05:07:30 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 78D196C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 16:26:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E3C734125E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 05:07:29 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5B1D240132
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 16:26:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id digYigTxHvs2 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 10 Feb 2025 05:07:29 +0000 (UTC)
-X-Greylist: delayed 599 seconds by postgrey-1.37 at util1.osuosl.org;
- Mon, 10 Feb 2025 05:07:28 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org CACBF4124F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CACBF4124F
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=80.241.56.151;
- helo=mout-p-101.mailbox.org; envelope-from=ethan@ethancedwards.com;
- receiver=<UNKNOWN> 
-Received: from mout-p-101.mailbox.org (mout-p-101.mailbox.org [80.241.56.151])
- by smtp4.osuosl.org (Postfix) with ESMTPS id CACBF4124F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 05:07:28 +0000 (UTC)
-Received: from smtp2.mailbox.org (smtp2.mailbox.org
- [IPv6:2001:67c:2050:b231:465::2])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mout-p-101.mailbox.org (Postfix) with ESMTPS id 4YrsWb5T15z9sZZ;
- Mon, 10 Feb 2025 05:47:39 +0100 (CET)
-From: Ethan Carter Edwards <ethan@ethancedwards.com>
-Date: Sun, 09 Feb 2025 23:47:24 -0500
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id aT5CW-d90QUR for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 10 Feb 2025 16:26:14 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::333; helo=mail-wm1-x333.google.com;
+ envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 6F20140580
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6F20140580
+Received: from mail-wm1-x333.google.com (mail-wm1-x333.google.com
+ [IPv6:2a00:1450:4864:20::333])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6F20140580
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 16:26:11 +0000 (UTC)
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-4394829ef0fso5270315e9.0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Feb 2025 08:26:11 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1739204769; x=1739809569;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=+X7ZGXGJrlpJ8WltnoHRQdxOU9YpHfT8O3Sz64MlsdI=;
+ b=wKedEWDhWsFx65yAqVyDL0U9hA6OxyIJ3/m1+z9ZElnNDF8LHYHaLcPSilPcfWLL0N
+ XOZqQqPZW3prRLveL8JVg6JLgv7pk0+oET68cT+68Wq+BwcAinVaiJwr1HwJ1Vv9dB4e
+ l2onQmamKcGBf4DkvhIXyGQGKRZwdvwxrZ+AmeG4ASJGb2mvoao5NfxXkwIb3UoXTaJ/
+ RQi6bfmSh0vwBhJY1TbgMA3Qlh+HKVTY9pR6ojFcFEAzA/DHUjYdTIM3zssMCxsEDlzv
+ bQ/dLho304KWIJLSEcuvpEOBC+dHbpEKmzzjxxYx++u2YpntTJgM9YE11MlxUy66xDVP
+ DykQ==
+X-Gm-Message-State: AOJu0YzafvkTae31KZr1RbH8K0F3pe13XBj56qjg4k158OEqzN2nCdyf
+ DGEJleuhHbQYH9+XTX2NhSg2vYL7rlXx/nYiihTYpkawklwc/EC/vZ/g19bi6x8=
+X-Gm-Gg: ASbGncvw2qt0KJUVkR94CJJJMXzLkAf5Y0KgkZLIHxtOsiejZaEiUMMwQQY4vi+8huG
+ NupiSwPbDmjNmNDbtATqs/auuYBNtFKEVX1BlW/5luHEfuTpuPUyqR5E28ZQ7QIT548koO+yRuB
+ w46bcLqLiufzLxzr/K+OBe+zsM9eDjSZChAEcWTv7NRID6zMD4uX6jOXRHn9oP8c7zRj7vgy705
+ B07VdE68YDfgU5oFbce4spZejm+orSI2D7vDVLGb4om3SSRM673YVEnIZzXIYAqvj5Z14L2IUUw
+ 8T936300a3HhjIZUSy/RxWM=
+X-Google-Smtp-Source: AGHT+IHRDxNCbQj43cKRpu4vnQK3m/lk4rd2euiC+kdgvVEN30tlHtPWOFuoJ9lKVnMxytY4+hv9zA==
+X-Received: by 2002:a05:600c:3c96:b0:436:1b86:f05 with SMTP id
+ 5b1f17b1804b1-439255b81e1mr106884955e9.11.1739204769357; 
+ Mon, 10 Feb 2025 08:26:09 -0800 (PST)
+Received: from jiri-mlt ([193.47.165.251]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38dbf2ed900sm12548261f8f.53.2025.02.10.08.26.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 10 Feb 2025 08:26:08 -0800 (PST)
+Date: Mon, 10 Feb 2025 17:26:03 +0100
+From: Jiri Pirko <jiri@resnulli.us>
+To: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com, 
+ netdev@vger.kernel.org, horms@kernel.org, 
+ Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+Message-ID: <bxi2icjzf37njzl4q5euu6bbrvbfu2c557dksqtigtegxcnowo@yyfke6ocrtpf>
+References: <20250210135639.68674-1-jedrzej.jagielski@intel.com>
+ <20250210135639.68674-3-jedrzej.jagielski@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250209-e610-self-v1-1-34c6c46ffe11@ethancedwards.com>
-X-B4-Tracking: v=1; b=H4sIANuEqWcC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDI1MDIwNL3VQzQwPd4tScNF0L09TEZMM0g1RjYwsloPqCotS0zAqwWdGxtbU
- AdXCXNVsAAAA=
-X-Change-ID: 20250209-e610-self-85eac1f0e338
-To: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>, 
- Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Jedrzej Jagielski <jedrzej.jagielski@intel.com>, 
- Simon Horman <horms@kernel.org>, Stefan Wegrzyn <stefan.wegrzyn@intel.com>, 
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>, 
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-hardening@vger.kernel.org, 
- linux-hardening@vger.kernel.org, 
- Ethan Carter Edwards <ethan@ethancedwards.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1107;
- i=ethan@ethancedwards.com; h=from:subject:message-id;
- bh=1im/VCm5y7Sebw9X8ipwvqIuoQBYm0NNnURuN4wiqX0=;
- b=LS0tLS1CRUdJTiBQR1AgTUVTU0FHRS0tLS0tCgpvd0o0bkp2QXk4ekFKWGJEOXFoNThlVGp6e
- GhQcXlVeHBLOXNlV3JSZHR1eTEzalh4cE4raGJWYjk3ZjhQdWp4CjdQb3QvMW5iLzBzdU1XRlJt
- N0N2bzVTRlFZeUxRVlpNa2VWL2puTGFRODBaQ2p2L3VqVEJ6R0ZsQWhuQ3dNVXAKQUJOaDYyTDR
- wMm4yK1J6SEZENy9NN3JHZWd2VVdnMGlkckV3N3QvZXZYZlRiNDhveFhxeFRFYUcvL2ZPT1ZRRg
- pwZmJVdkxzMXUzek82NHVYVFk3ZHJ0Nlg5RzdxdExpdnQ0dzFPUUdpQjFESgo9dHpzWgotLS0tL
- UVORCBQR1AgTUVTU0FHRS0tLS0tCg==
-X-Developer-Key: i=ethan@ethancedwards.com; a=openpgp;
- fpr=2E51F61839D1FA947A7300C234C04305D581DBFE
-X-Rspamd-Queue-Id: 4YrsWb5T15z9sZZ
-X-Mailman-Approved-At: Mon, 10 Feb 2025 16:07:28 +0000
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250210135639.68674-3-jedrzej.jagielski@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ethancedwards.com; 
- s=MBO0001; t=1739162859;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=kca9LEECPrfswrWUPZvyaDxx4NwxuWzzj1p0ey+sgvY=;
- b=ZbddG3N/BTYKzAAA5ZktaEM8+SVH33OpkHm44p2UTTstODryRB9z96Ers+JBth2IIRR0nP
- 7mpQbwYvLEkKwB5BMLRBNrYbvSMY3Dy1FUn4fxoz+h8BPcXQ47+B+Z9jXivqnLBHCH4CGm
- qjEhLeH/8GrNZJ/jgV02Z4feaIiHftjUH294MAD6s154vQdKmwGoauCS4E5dgTM7EXo7jp
- ktyoHEbmKxUQrTeNUAc1+ZvPsTXGb6sI0+CRRSONTtvIzRQp+xOMR4JUytPjKiGID+N1nZ
- mgCcR8wayDKWGb9q9BYM7/uL3VnmdWPe+TC40meQpj/EtLq6jufkSU5oGkJqhQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=ethancedwards.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1739204769; x=1739809569;
+ darn=lists.osuosl.org; 
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=+X7ZGXGJrlpJ8WltnoHRQdxOU9YpHfT8O3Sz64MlsdI=;
+ b=ea+xQRWkCezn6Wl24VBkN0f81LQ4I2/Dk0hMGZcDFHtRmQX8yLKsSRE4D7I9MvFSqr
+ QN3Zp2XVYE5D4QKSt9DsZ+xAox/eOQYPI//15+qo1plTs83Mp3KINtlkZ8J2gdlmnMqx
+ drH85jaPRb2aYWJMfEAYcydahSkCvu9qZCjCdcAfmv+AO5L/cH+5WRyQrtel4wEVbqOX
+ JJNTucA7Zv1BT0gerG5M0xTgTuwG8NKVSPE0PzdQAHLGP5jR+r6oOoFM4DElk21lUB0u
+ 9+xiaQT7gmZOE1e1of56kr00r1UkxiDO+EvIfdQtcE2j6vX5w5kDfdJJcQZYicw/n96A
+ 3JUA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=resnulli.us
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=ethancedwards.com header.i=@ethancedwards.com
- header.a=rsa-sha256 header.s=MBO0001 header.b=ZbddG3N/
-Subject: [Intel-wired-lan] [PATCH] ixgbe: remove self assignment
+ unprotected) header.d=resnulli-us.20230601.gappssmtp.com
+ header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
+ header.s=20230601 header.b=ea+xQRWk
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 02/13] ixgbe: add handler
+ for devlink .info_get()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -128,33 +130,93 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Variable self assignment does not have any effect.
+Mon, Feb 10, 2025 at 02:56:28PM +0100, jedrzej.jagielski@intel.com wrote:
 
-Addresses-Coverity-ID: 1641823 ("Self assignment")
-Fixes: 46761fd52a886 ("ixgbe: Add support for E610 FW Admin Command Interface")
-Signed-off-by: Ethan Carter Edwards <ethan@ethancedwards.com>
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 1 -
- 1 file changed, 1 deletion(-)
+[...]
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-index 683c668672d65535fca3b2fe6f58a9deda1188fa..6b0bce92476c3c5ec3cf7ab79864b394b592c6d4 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-@@ -145,7 +145,6 @@ static int ixgbe_aci_send_cmd_execute(struct ixgbe_hw *hw,
- 	if ((hicr & IXGBE_PF_HICR_SV)) {
- 		for (i = 0; i < IXGBE_ACI_DESC_SIZE_IN_DWORDS; i++) {
- 			raw_desc[i] = IXGBE_READ_REG(hw, IXGBE_PF_HIDA(i));
--			raw_desc[i] = raw_desc[i];
- 		}
- 	}
- 
+>+enum ixgbe_devlink_version_type {
+>+	IXGBE_DL_VERSION_FIXED,
+>+	IXGBE_DL_VERSION_RUNNING,
+>+};
+>+
+>+static int ixgbe_devlink_info_put(struct devlink_info_req *req,
+>+				  enum ixgbe_devlink_version_type type,
+>+				  const char *key, const char *value)
 
----
-base-commit: a64dcfb451e254085a7daee5fe51bf22959d52d3
-change-id: 20250209-e610-self-85eac1f0e338
+I may be missing something, but what's the benefit of having this helper
+instead of calling directly devlink_info_version_*_put()?
 
-Best regards,
--- 
-Ethan Carter Edwards <ethan@ethancedwards.com>
 
+
+>+{
+>+	if (!*value)
+>+		return 0;
+>+
+>+	switch (type) {
+>+	case IXGBE_DL_VERSION_FIXED:
+>+		return devlink_info_version_fixed_put(req, key, value);
+>+	case IXGBE_DL_VERSION_RUNNING:
+>+		return devlink_info_version_running_put(req, key, value);
+>+	}
+>+
+>+	return 0;
+>+}
+>+
+
+[...]
+
+
+>+static int ixgbe_devlink_info_get(struct devlink *devlink,
+>+				  struct devlink_info_req *req,
+>+				  struct netlink_ext_ack *extack)
+>+{
+>+	struct ixgbe_devlink_priv *devlink_private = devlink_priv(devlink);
+>+	struct ixgbe_adapter *adapter = devlink_private->adapter;
+>+	struct ixgbe_hw *hw = &adapter->hw;
+>+	struct ixgbe_info_ctx *ctx;
+>+	int err;
+>+
+>+	ctx = kmalloc(sizeof(*ctx), GFP_KERNEL);
+>+	if (!ctx)
+>+		return -ENOMEM;
+>+
+>+	ixgbe_info_get_dsn(adapter, ctx);
+>+	err = devlink_info_serial_number_put(req, ctx->buf);
+>+	if (err)
+>+		goto free_ctx;
+>+
+>+	ixgbe_info_nvm_ver(adapter, ctx);
+>+	err = ixgbe_devlink_info_put(req, IXGBE_DL_VERSION_RUNNING,
+>+				     DEVLINK_INFO_VERSION_GENERIC_FW_UNDI,
+>+				     ctx->buf);
+>+	if (err)
+>+		goto free_ctx;
+>+
+>+	ixgbe_info_eetrack(adapter, ctx);
+>+	err = ixgbe_devlink_info_put(req, IXGBE_DL_VERSION_RUNNING,
+>+				     DEVLINK_INFO_VERSION_GENERIC_FW_BUNDLE_ID,
+>+				     ctx->buf);
+>+	if (err)
+>+		goto free_ctx;
+>+
+>+	err = ixgbe_read_pba_string_generic(hw, ctx->buf, sizeof(ctx->buf));
+>+	if (err)
+>+		goto free_ctx;
+>+
+>+	err = ixgbe_devlink_info_put(req, IXGBE_DL_VERSION_FIXED,
+>+				     DEVLINK_INFO_VERSION_GENERIC_BOARD_ID,
+>+				     ctx->buf);
+>+free_ctx:
+>+	kfree(ctx);
+>+	return err;
+>+}
+>+
+> static const struct devlink_ops ixgbe_devlink_ops = {
+>+	.info_get = ixgbe_devlink_info_get,
+> };
+> 
+> /**
+>-- 
+>2.31.1
+>
+>
