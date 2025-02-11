@@ -1,95 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BA404A31499
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Feb 2025 20:05:39 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C83B0A314A1
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Feb 2025 20:09:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 12C0C810DD;
-	Tue, 11 Feb 2025 19:05:37 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CCAA9410C4;
+	Tue, 11 Feb 2025 19:09:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1FCvNKzp8_by; Tue, 11 Feb 2025 19:05:36 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id xss41L67cnn3; Tue, 11 Feb 2025 19:09:25 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C7A8180EFC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8D48B40686
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739300735;
-	bh=ZgbABN938gsxyNDM9rcw0VT4DABEqbSkFf7DzPWAbSo=;
+	s=default; t=1739300965;
+	bh=ztsv8BZjRreOpaG/iC+GDxBqZQTWZNZkz7WuEjdo0fA=;
 	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=G80C2zazuB3W+l4BstEn1BwhFI0QJmVTorGx3Ue4jDM7+lf0exw0GXwtfuU7CMRh5
-	 qxIkWj3gR0Ps55y8kWfzYrxogVlMVhX9gq4YUtQddie8hOMyX1IV2Fiz3EJqVbYaeA
-	 0HNSbwISaZ3lFm0yng6knmxNFxhvr1nGDf5a0bAKMkiktEoNW0kDBhRsujjmuxypnW
-	 H958k3Euy+b76BdRWK6nBGotITVEQea3q0dQ/wFABiK9juBOHLDG3fEz6GUECD+1iN
-	 LUprWIazmlZIWfQ22vWlzLMJE1C/cNREm27pOpWgUpdAadWdJhXojqa8HaK3f/W7vK
-	 z3v/D6tAeN2+g==
+	b=xAJ04pdrU3pXG6ittL7zbZosObrTiYakPjQkARpqJAvPB2TH1wA15FFwyMESf9hyo
+	 LFLmmemcyKM5FjMvuZgrS85xLt+hc8isiMzVRtYEVClvbuq/PGlWJMuomZd7qnNHeY
+	 /scty2H2hr1f5HWVacPuUzq17H3j9lACVpQ3HnZxJyw5knmlp0E33++Y+3NWBuBFVB
+	 W9pfQd+sq58XnJydZUHa8VEk2gb8F0Pxn2OTXF7yyu2389HDd3VdcCpTxBUppB9GHu
+	 tUqBaB7zhBEGlUqiYUg4Py1/dkN4HXdFHIukY2RDIWT3QGZgkfzlkd/WXjFb+tXtUg
+	 jnL9dO0g58/+g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C7A8180EFC;
-	Tue, 11 Feb 2025 19:05:35 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8D48B40686;
+	Tue, 11 Feb 2025 19:09:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id A2F1F194
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 19:05:33 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 9C5446C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 19:09:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 87A5780EF8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 19:05:33 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8BABC4076A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 19:09:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id v0DYmZsr21qB for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 Feb 2025 19:05:32 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id e84Kc_EMbX9g for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 11 Feb 2025 19:09:22 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::62e; helo=mail-pl1-x62e.google.com;
+ client-ip=2607:f8b0:4864:20::102f; helo=mail-pj1-x102f.google.com;
  envelope-from=stephen@networkplumber.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org BE8A380D52
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BE8A380D52
-Received: from mail-pl1-x62e.google.com (mail-pl1-x62e.google.com
- [IPv6:2607:f8b0:4864:20::62e])
- by smtp1.osuosl.org (Postfix) with ESMTPS id BE8A380D52
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 19:05:31 +0000 (UTC)
-Received: by mail-pl1-x62e.google.com with SMTP id
- d9443c01a7336-21f62cc4088so70626015ad.3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 11:05:31 -0800 (PST)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D2F2840686
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D2F2840686
+Received: from mail-pj1-x102f.google.com (mail-pj1-x102f.google.com
+ [IPv6:2607:f8b0:4864:20::102f])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D2F2840686
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 19:09:21 +0000 (UTC)
+Received: by mail-pj1-x102f.google.com with SMTP id
+ 98e67ed59e1d1-2fa19e1d027so7834337a91.0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 11:09:21 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739300731; x=1739905531;
+ d=1e100.net; s=20230601; t=1739300961; x=1739905761;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ZgbABN938gsxyNDM9rcw0VT4DABEqbSkFf7DzPWAbSo=;
- b=B/S+Mri+5WHrrVuSA91vf8c3ktfekE0rL9t8ZIOWEMZrYEFoTTEV+j5YNRNqEOow6Z
- sQBcN07QxgwFio+XJq0JoW6/QIXtsg958/8SxPfJgW6ep4ysQ1B/KMwucI6vm0Wy5HJB
- 9kxaGQcsxKgvmJIu9r2XZcdNu/xyjoEEtwl7n1Zy/UxHil0i8XFKLj4XDPvGger/nl8A
- 7ufggbWTeYgL2exjXU0XWQhhdz2dQW+lrZI4aVTCBSP2r7Ju09z+htaFiyMpfjrFEtI5
- +nQBcb0CSMoipfQaRw56QQIAkgt9OEk3PgO6UfEcpAJTyn92BUrm1H9YrDiYgG880p3n
- Bg3A==
+ bh=ztsv8BZjRreOpaG/iC+GDxBqZQTWZNZkz7WuEjdo0fA=;
+ b=KP7xfDIbzOtNAwdebwzYSaS5645UNvHbp2FlZWHZdCelgAXgw5k+IzSge+ypwOK9ng
+ zU0YjIDRWmWwUb5eijWAznhtoljRpDitrfWeYTJyVAsJBdMLVY4wiRCb2F5Rk619Or7R
+ HONWIPICmpHbKtPwT0g+GcX7e8BON3P1wQTmfbxeiqr6rdlSVBljcr/sG0Ewaf5v05Wm
+ njyLah0tVHMmPgW2mAI+1ZW2FKoGLiVmAL+HdETuBLbOVgAOVwRfyxFk1/I6njXAs7Su
+ 1gocSqUXuIYwWzUrnqYv7Wjb34s3KWfH66OKjZw+rhYFx32//R2D+YXGXuITkcpWlzlC
+ hVfw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXPpzQelIE1V8GhbsAbHbqNk0EIGSOvBHbFiQ/UbBFe5Ss8UMD50aHhZWXy1HcRaNADd0Y4Qh2QP+XzJwIfzUM=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yxl8AytoEJR1QDr/pfZKivWjkR8q+VsGAqWpnTIYOtd7Q4AtqWt
- u0Wd3o8+4kVu5trZvhJCS7JUL7LnyxtG8INb+/U1HxqBfd0tzCF5zDeGJ6FjF6tmZXsUVxt6oRL
- A
-X-Gm-Gg: ASbGncusAay6tU0pft57gwSz9wHO/Ch9NrUpsK1fOdeLHywM3qL62XM+Kou1vj+aqCF
- LkGi3fa7QThAcRXfvBBJdUqZTugd78dHkURyB8Ud8lqj7WeJ//fNSav/sDGC0w6ddt4rDg2bjcI
- GOr3auGoGfREPiX3LGQ0hU+yRn/fNY0PIyJtP4UTyN6K4dPAKyavg8aG70FnjgBY0ndXzgzVkU1
- FBNFIKMXDzDhhWODIVZPn7EzYb21gSBsS39WQll/5QjkEvaujmFzXpQimf3s5b/HTFjb7kmq2dG
- yZ0u3I1dy2NgxzxVeM/J5C+1B4+N6dUWNReWBOwImAsMrMeEtKN0fmaG5N8Ke5eCcHsC
-X-Google-Smtp-Source: AGHT+IEezC5d01KQYYfhkFQtSX2FZWQAFRUKSBlkECKLcNgQH2b1LrnsEU75cPEATx/YnK1PHo1zYw==
-X-Received: by 2002:a05:6a00:2e84:b0:730:888a:252e with SMTP id
- d2e1a72fcca58-7322c411a33mr139899b3a.17.1739300730868; 
- Tue, 11 Feb 2025 11:05:30 -0800 (PST)
+ AJvYcCVSR+FESJx24QWtrrDazQH6QvmQtuxWR5JuGvJwQ5UrLcwVyFUsLV7B8nCagj4d0W02C6sMKTdN4mhHT/6IBjg=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YzAXVln1OpEJ9qVwI53G8roTygi10MiaB9D3Ej6v7NohBGUyPGl
+ yxTzn2vRIyEJMFvGD4QoGhGYpCYEfqqBluHHGXlHQdS6kyQWiQkkc9lnQ/5/sM4=
+X-Gm-Gg: ASbGnct230dlWfQH1G5NbPuYz6b40bWlfQytw5Rjg96ywPzXYHnGIoeV6I6BMRyE+mg
+ LBpSdW76VEqQ4PEMI5PAyJgsFGQxD9csRnN/H+eMaqaXVhNG9DkeRrfGK9rS/FfCXKEUh8qkoIs
+ Q7n69Z6pWGt9x8g5sxIQu1ip/jf67/vrQQAWG21unSPhai+FSBfx602YR3k8t9WNX/171tZ3sfd
+ sbBfJ+U1trKP1g/P7vQo/fe0ZmytzrxrMv+FLOKBnfZRjn8cwimQaSqnkC15WSgMQoBSnIM0Nk7
+ bHY+UB+8GrFzbiN/svOxv7z0jemhJXWxiZa/jyllOWql17bIAMEwYd141ApXe9fyWHzm
+X-Google-Smtp-Source: AGHT+IG7D26RjiiD+iArVmZbC0xvWc5rr0wKdfpf9EXlqDJwPpVhC9G13hKBewIgOq1w4xJMPMyR7g==
+X-Received: by 2002:a17:90b:2dc3:b0:2ee:acb4:fecd with SMTP id
+ 98e67ed59e1d1-2fbf5bf358fmr355084a91.9.1739300961034; 
+ Tue, 11 Feb 2025 11:09:21 -0800 (PST)
 Received: from hermes.local (204-195-96-226.wavecable.com. [204.195.96.226])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-73086e6636csm4933726b3a.135.2025.02.11.11.05.30
+ 98e67ed59e1d1-2fa099f4de8sm10949988a91.8.2025.02.11.11.09.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Feb 2025 11:05:30 -0800 (PST)
-Date: Tue, 11 Feb 2025 11:05:28 -0800
+ Tue, 11 Feb 2025 11:09:20 -0800 (PST)
+Date: Tue, 11 Feb 2025 11:09:17 -0800
 From: Stephen Hemminger <stephen@networkplumber.org>
 To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>
 Cc: <anthony.l.nguyen@intel.com>, <jesse.brandeburg@intel.com>,
  <intel-wired-lan@lists.osuosl.org>
-Message-ID: <20250211110528.172488ff@hermes.local>
+Message-ID: <20250211110917.1db51003@hermes.local>
 In-Reply-To: <75893f75-223c-4b36-a2c1-8c9576438c4f@intel.com>
 References: <20250130091111.46358882@hermes.local>
  <531227ca-89fe-4398-8cba-3647be509454@intel.com>
@@ -103,26 +102,26 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=networkplumber-org.20230601.gappssmtp.com; s=20230601; t=1739300731;
- x=1739905531; darn=lists.osuosl.org; 
+ d=networkplumber-org.20230601.gappssmtp.com; s=20230601; t=1739300961;
+ x=1739905761; darn=lists.osuosl.org; 
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:subject:cc:to:from:date:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ZgbABN938gsxyNDM9rcw0VT4DABEqbSkFf7DzPWAbSo=;
- b=yhEZ1H/MIGQlCTahENf1s6kbPTxFYqBxShXG4ZJ7KsgtMNw5S8kJT5MzmWjyEOdMnN
- HRg4Ne9q//5jKQdaZ9uJTb23X6k4RtpLxbwoXJu34scVaXfY+/ZVQguOc6qi4cV28yNH
- NfRqfXratrKhejyASketQnWeDtjvgK64YzfkaZDjR2agkIa9aZyM7ZuAN0//MZBe/+ZC
- 3viKn6iJLNA6toGxCnHE6QCrK+kYi33oicOcS0t0+ALg21viSE0+D+OB0zWtrxpaFYly
- Ra205wVe9AaFENwmFRa0M6FFeMGWSdjT1FYhZN+bioVl/7WBosT4BMwXum97g/6Xff/L
- 43bQ==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=ztsv8BZjRreOpaG/iC+GDxBqZQTWZNZkz7WuEjdo0fA=;
+ b=XL+tITR+8TR7zJbQWSHSaJm2P7w1ZooFWMvwt9j7/zhz+mqIXEv0UEz8y3S7m2uGeU
+ E7Y68pBL0zdVTzXBBU6DHoVfay/LeOH+vqWTF/XqEerxxHTFoz8NC6pNTeHHFM4fTEgJ
+ BL2puRWDdFhlgje7Y7VR/nSSyce4jTJUSgxDCOl4EFkFDylw45duthIrctidWf6E7CVR
+ sg7MmmlJgLUhV5OlrNaF9d0UTZ7Y072ptWTY9u+t5Ta6APMacnZ0cZWx43QeO4kJj+kA
+ iNZpSXQlNeLDOAT/P+xqb7LoUAFeR1vCo1V1eZ9eZ0lRcEJTUOc/Ge+HJprpVBO+da7L
+ VAOA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=networkplumber.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=networkplumber-org.20230601.gappssmtp.com
  header.i=@networkplumber-org.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=yhEZ1H/M
+ header.s=20230601 header.b=XL+tITR+
 Subject: Re: [Intel-wired-lan] suspend/resume broken of igc driver broken on
  6.12
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -143,19 +142,21 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 On Tue, 11 Feb 2025 20:20:03 +0200
 "Lifshits, Vitaly" <vitaly.lifshits@intel.com> wrote:
 
+> 
+> 
 > On 2/6/2025 10:09 PM, Stephen Hemminger wrote:
 > > On Thu, 6 Feb 2025 15:17:00 +0200
 > > "Lifshits, Vitaly" <vitaly.lifshits@intel.com> wrote:
-> >   
-> >> On 2/6/2025 6:13 AM, Stephen Hemminger wrote:  
+> > 
+> >> On 2/6/2025 6:13 AM, Stephen Hemminger wrote:
 > >>> On Wed, 5 Feb 2025 12:36:31 +0200
 > >>> "Lifshits, Vitaly" <vitaly.lifshits@intel.com> wrote:
-> >>>      
-> >>>> On 1/31/2025 3:21 AM, Stephen Hemminger wrote:  
+> >>>    
+> >>>> On 1/31/2025 3:21 AM, Stephen Hemminger wrote:
 > >>>>> On Thu, 30 Jan 2025 21:17:30 +0200
 > >>>>> "Lifshits, Vitaly" <vitaly.lifshits@intel.com> wrote:
-> >>>>>         
-> >>>>>> On 1/30/2025 7:11 PM, Stephen Hemminger wrote:  
+> >>>>>       
+> >>>>>> On 1/30/2025 7:11 PM, Stephen Hemminger wrote:
 > >>>>>>> I am using:
 > >>>>>>>
 > >>>>>>> 5a:00.0 Ethernet controller: Intel Corporation Ethernet Controller I226-LM (rev 04)
@@ -177,28 +178,28 @@ On Tue, 11 Feb 2025 20:20:03 +0200
 > >>>>>>>
 > >>>>>>>
 > >>>>>>> Using both Debian testing and my own kernel built from 6.12, the igc
-> >>>>>>> driver appears broken after resume.  
+> >>>>>>> driver appears broken after resume.
 > >>>>>>
 > >>>>>>     From which system state are you resuming?
-> >>>>>>        
+> >>>>>>      
 > >>>>>>>
 > >>>>>>> After resuming the device is down and no address present.
-> >>>>>>> Attempts to set link up manually fail.  
+> >>>>>>> Attempts to set link up manually fail.
 > >>>>>>
 > >>>>>> Did you get any errors in the dmesg log?
 > >>>>>> What is the firmware version on your device (you can get it by running
 > >>>>>> ethtool -i)?
-> >>>>>>        
+> >>>>>>      
 > >>>>>>> If I do rmmod/modprobe of igc it comes back.
 > >>>>>>>
-> >>>>>>> Doing a bit of bisectting but it is slow going.  
+> >>>>>>> Doing a bit of bisectting but it is slow going.
 > >>>>>>
 > >>>>>> Meanwhile, we'll also try to reproduce this issue in our lab.  Could you
-> >>>>>> share more details about your system so we can create a similar setup?  
+> >>>>>> share more details about your system so we can create a similar setup?
 > >>>>>
 > >>>>> Given that error reported is -ENODEV, might be a generic netdev problem not
 > >>>>> just for igc device.
-> >>>>>         
+> >>>>>       
 > >>>>
 > >>>> We weren't able to reproduce this issue on our systems, even though we
 > >>>> tried several suspend-resume cycles on different kernels and different
@@ -211,11 +212,11 @@ On Tue, 11 Feb 2025 20:20:03 +0200
 > >>>>
 > >>>>
 > >>>>
-> >>>> Can you try to see if it fixes your issue as well?  
+> >>>> Can you try to see if it fixes your issue as well?
 > >>>
 > >>> I tried the proposed delay and it had no impact.
 > >>> Any idea of other things to instrument?
-> >>>      
+> >>>    
 > >>
 > >>
 > >> Has the adapter worked with a different kernel? Can you try to reproduce
@@ -226,10 +227,10 @@ On Tue, 11 Feb 2025 20:20:03 +0200
 > >>
 > >> Also, I saw that on your board you have three more adapters, I assume
 > >> that enp2s0f0np0 and enp2s0f0np1 are i40e adapters. Does this issue also
-> >> happen to enp87s0?  
+> >> happen to enp87s0?
 > > 
 > > This is a new machine, and not sure if it ever worked.
-> > I can boot some older distro via USB if that helps.  
+> > I can boot some older distro via USB if that helps.
 > 
 > Yes, please.
 > It might help us in narrowing down the issue.
@@ -239,10 +240,17 @@ On Tue, 11 Feb 2025 20:20:03 +0200
 > > 10G NIC's are not used; they are connected by a loopback cable and
 > > used for DPDK testing occasionally.
 > > 
-> > It does work in Windows...  
+> > It does work in Windows...
 > 
 > Do you work with Network Manager? If so, is it possible to see if the 
 > issue can be reproduced with it disabled?
 > 
 
-Yes Debian uses Network Manager, but disabling it might not be possible.
+If network manager is disabled with:
+# systemctl stop NetworkManager.service
+# systemctl disable NetworkManager.service
+
+
+Then device persists across suspend/resume.
+
+
