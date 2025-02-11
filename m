@@ -1,98 +1,129 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D092DA30EAA
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Feb 2025 15:44:09 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D20FBA30EE8
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Feb 2025 15:58:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8F38540B40;
-	Tue, 11 Feb 2025 14:44:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 80B0260E55;
+	Tue, 11 Feb 2025 14:58:45 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VG9xuBt2kYNf; Tue, 11 Feb 2025 14:44:08 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id OpU0pJCYIj0s; Tue, 11 Feb 2025 14:58:45 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CF824408D4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D6A1C60B51
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739285047;
-	bh=frPQ2x9r1wmULVqXEPuuRGWbRtOiAHnDEcb1q1nENVM=;
-	h=From:To:Cc:In-Reply-To:References:Date:Subject:List-Id:
+	s=default; t=1739285924;
+	bh=LoaezNQ5dV/9EG0tpbR4FMDwqT8KupFNVSUAN3IN2AM=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=3xE1zMXeFYpCeJy3cTTrXjtw2Ntk3lwRCUakPc6YDrz98gIMzPAdq9lktgeAuMnaJ
-	 HGueEe30vLXY7qAp7PPW5hP6ocVeCwh4SmVkXV9pQXbeUF/ZqBCBK7hL2uuA4Fj8ve
-	 u0wRvVzHl6whWTDgfeUeWdD5Su2ThmMCNH8fuNkz/td4MMOnnLdgzziEOqWmJXJ1Vs
-	 hEI1RDaPk4pi4Q8dELG6e2DM6PJ/khxOtTVuLOWbUso54h2O62qAc4xaGf4rqxWSZl
-	 5GMFROieTyPfNNoRJqga6TsCLqM0CZV2kI18a/ORjRq/Sy6Gqjq6Urk7VojDtyWNrs
-	 9JCk3xSm46hbw==
+	b=wXftjjFf70qBVjSR6pQHO4rRHPmED5nNJPvPXSPF1OOMSW5F0H+YsXDANazVlDI6o
+	 Nliw1Pbn8nTu8glLoQOBSLpAR1qjXZiUfkok5PYob8+OcIDTfaTQDa2wBlFIV/oeV3
+	 +WPoPSr7yiIsAhkDkhTXhlrAtjEN7rYcmOTYWnMHMh6FbOqwlqCN7mh746spwLphQs
+	 oSzQ7ch2OkqvyG1Uo10zeStqy1wjkN1MuFRg7oFPEMd8wB4kTmUyxF9rNL+9xQTtKY
+	 CdAdBhBuyqPQDUK29UV1lQbQv7C9rwGmTaDi8lMnpl+eInulbx5lnK0DC4JkVHJZ1A
+	 FpsvVCAkSIA/Q==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CF824408D4;
-	Tue, 11 Feb 2025 14:44:07 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D6A1C60B51;
+	Tue, 11 Feb 2025 14:58:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id F3A66194
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 14:44:05 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 2B8A4194
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 14:58:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D79A140FF5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 14:44:05 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2672060ADF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 14:58:42 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id AtJrtRqxrfFT for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 Feb 2025 14:44:05 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.142.43.55;
- helo=galois.linutronix.de; envelope-from=kurt@linutronix.de;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org F1AB240BE2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F1AB240BE2
-Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by smtp2.osuosl.org (Postfix) with ESMTPS id F1AB240BE2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 14:44:04 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-To: Joe Damato <jdamato@fastly.com>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel
- <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
- <pabeni@redhat.com>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-In-Reply-To: <Z6rAuqYnIzQH_gtN@LQ3V64L9R2>
-References: <20250210-igb_irq-v1-0-bde078cdb9df@linutronix.de>
- <Z6rAuqYnIzQH_gtN@LQ3V64L9R2>
-Date: Tue, 11 Feb 2025 15:44:00 +0100
-Message-ID: <87ikpgr173.fsf@kurt.kurt.home>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id JbqwU897aBAf for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 11 Feb 2025 14:58:40 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::32b; helo=mail-wm1-x32b.google.com;
+ envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A697E60A99
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A697E60A99
+Received: from mail-wm1-x32b.google.com (mail-wm1-x32b.google.com
+ [IPv6:2a00:1450:4864:20::32b])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A697E60A99
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 14:58:34 +0000 (UTC)
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-4364a37a1d7so56453875e9.3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 06:58:33 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1739285912; x=1739890712;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=LoaezNQ5dV/9EG0tpbR4FMDwqT8KupFNVSUAN3IN2AM=;
+ b=fT2yiLZszvkRTYp1b/X1T+jEUmB5EVmIRTqGmY3rsT1hgX/Ivpb67IXzeTUuJcR4Im
+ oP1plIfcAm1s8WjCbmU8yelAhHgANfPUYNc51lB1d9DuTqUXLptM3lTctCyGu4uuerDn
+ VJrJ9/YoS9dvdJTGb0lTftZ3j/V+yigWy2JaMQlOKMJKL4H9cBLJw99PT7DKjBrgkQlD
+ sMpcznGoPVSCIo3ktlBLEZSM30hQTHKx9pdOnSkor1MWDwIgQdivGhZ6FUgTGWQFZQZN
+ 2k7GlzcjIQ+uNVeC7z3ckuJ32sYPW8F17tAt3PUUGB/IDcwVhCzReIajciNRwl9u1NT0
+ ikPA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWbYjo2dhviIRsYqZSPSk7z0wECQRkNoYbCd1fDu0pILMXEj5RShRPGNo18IZ+Da/U6CK+7nocjeITNXDr30fk=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyUe9SJN3dg3zVjPbAMW/vMR8GpW3NmQ8tsa68zKBz5UF212jIc
+ T0fc248/EtcKjgK8ZPADOIODLkGFNkUtvUsBUrvRrnEPZ9n2KN81sWoRVF/WuBQ=
+X-Gm-Gg: ASbGnct0r3bYSNNvdiGqaba5p51G+F+olxLhOeUjx3cyZi/qV6hXaVImeyvSZDdqTmc
+ QzkTKQZ2VdeC2MBpHfaYooR8fj/h1056uJjfBoGD0hv5pJe5v2/TX/FPiLQplvwt3OUupQ/KgmM
+ igVCFIfQ8UFW7feiQjGmMLXE0wAr8qluMLov4UnJkcmoQqiK3nNoVszCAShuTLFB/tk9tL2mjNb
+ yGmrDOwl9QP8vmderyTlB0/xxTemfwuNMLPHNcQY1HgHDEQHj/aQ4SeXVBOj9ZLsaoSklDQdIm0
+ faiqXAus5n23kgLvljEqgUo=
+X-Google-Smtp-Source: AGHT+IHL0OJnuZEqNVcWxZ9zrAwEjLpFNma5IQgCQ1H/NCGrNKX3TzyjupN6rGBnskXGKbChGpwhgg==
+X-Received: by 2002:a05:600c:1c96:b0:434:a30b:5455 with SMTP id
+ 5b1f17b1804b1-439249c6eb3mr146742895e9.27.1739285911887; 
+ Tue, 11 Feb 2025 06:58:31 -0800 (PST)
+Received: from jiri-mlt ([193.47.165.251]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-43936bcc04fsm103764985e9.20.2025.02.11.06.58.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 11 Feb 2025 06:58:31 -0800 (PST)
+Date: Tue, 11 Feb 2025 15:58:24 +0100
+From: Jiri Pirko <jiri@resnulli.us>
+To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Cc: "Jagielski, Jedrzej" <jedrzej.jagielski@intel.com>, 
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, "Nguyen,
+ Anthony L" <anthony.l.nguyen@intel.com>, 
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "horms@kernel.org" <horms@kernel.org>, 
+ "Polchlopek, Mateusz" <mateusz.polchlopek@intel.com>
+Message-ID: <wftf7fg3gtgmmjufdrtnnlkqzp4x233kmty67hnlchkym4u4ci@ubujjvrt2txa>
+References: <20250210135639.68674-1-jedrzej.jagielski@intel.com>
+ <20250210135639.68674-3-jedrzej.jagielski@intel.com>
+ <bxi2icjzf37njzl4q5euu6bbrvbfu2c557dksqtigtegxcnowo@yyfke6ocrtpf>
+ <DS0PR11MB7785B1EF702ED5536D4B4CCBF0FD2@DS0PR11MB7785.namprd11.prod.outlook.com>
+ <qmjitflm2k3zo5yiym74c6okjg5skzhb46evfhn6qpzkwch3uc@epvkzeg37n3f>
+ <07f0e1d1-d526-4b35-8958-0abaf7ef4829@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
- micalg=pgp-sha512; protocol="application/pgp-signature"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <07f0e1d1-d526-4b35-8958-0abaf7ef4829@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1739285042;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=frPQ2x9r1wmULVqXEPuuRGWbRtOiAHnDEcb1q1nENVM=;
- b=q6Gweo1HpLPTyBz4O/b0+gHb0AFS4c6dQdiKDvQEFQbFtpCWmqRClopXiOKm2ja20L3EDJ
- v3e/lzpuJbTL78rNRg3709tFZ3fC+5dBZCchOQnbqwKWmp4jV+kUnD29E7AdiSRxik7t3f
- 5INucZ8ohYQKmama5x68frM1kPvNtmScEqkTA/Y1WiabRwkE3XcgaFRd+c/eD6saJuLz14
- IsW8Wr1jlagNGSMY6tc1h7mBcNTVnj8jsqTa5KBDV1qnc4ynzE9H6ByFvCjp2pFA0TdNo+
- OqmJB0uE9G0IgvPHcAjEiuLhwwnbMXYrEeCaJsB/h50ENH21cU5A7DhwXGbVaQ==
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1739285042;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=frPQ2x9r1wmULVqXEPuuRGWbRtOiAHnDEcb1q1nENVM=;
- b=q4fLvAWT5Vlkm8VWaTGtvYApBxoY3M+ZG18eAp42c3vISDHVfKuHKJeRJe173A/x6mzgIF
- DSbdLAn7j+ZNnnBw==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=linutronix.de
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
- header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=q6Gweo1H; 
- dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=q4fLvAWT
-Subject: Re: [Intel-wired-lan] [PATCH 0/3] igb: XDP/ZC follow up
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1739285912; x=1739890712;
+ darn=lists.osuosl.org; 
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=LoaezNQ5dV/9EG0tpbR4FMDwqT8KupFNVSUAN3IN2AM=;
+ b=hMNZi8vTa7JCz+Q/GSIROCn/txmr+EEzt5Q2caiEddaBKrn1wcWs4UZqqreXK8bmO3
+ Or+zoNwwN+CDbaYE3K2YNrJ4v8QXSuV+MLfz+EAYwaQNz8EEjBVeOZOXw3BhUTcnaH2+
+ EOTDU9vsQu1YwQzwFkL4zQrJ7R5u5krhVbft77qRO/0KHrRrfA7c5QcE8PU6Ymq3s+Tu
+ I8rgOFZQHrJ9eLP7woRm6+9KEwvCnMj8Xq/X3eBeqLK/2PJ8Zb8qignVzyzDuln5CVLX
+ ZxEkp7rLYqJvrSvnYFZlxQ/DkHARwvrU+50tusu85MJsg9BT9FoqLGIfYVptMZAnVFjh
+ u2/w==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=resnulli.us
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=resnulli-us.20230601.gappssmtp.com
+ header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
+ header.s=20230601 header.b=hMNZi8vT
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 02/13] ixgbe: add handler
+ for devlink .info_get()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -108,44 +139,47 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
-
-On Mon Feb 10 2025, Joe Damato wrote:
-> On Mon, Feb 10, 2025 at 10:19:34AM +0100, Kurt Kanzenbach wrote:
->> This is a follow up for the igb XDP/ZC implementation. The first two=20
->> patches link the IRQs and queues to NAPI instances. This is required to=
-=20
->> bring back the XDP/ZC busy polling support. The last patch removes=20
->> undesired IRQs (injected via igb watchdog) while busy polling with=20
->> napi_defer_hard_irqs and gro_flush_timeout set.
+Tue, Feb 11, 2025 at 03:38:25PM +0100, przemyslaw.kitszel@intel.com wrote:
+>On 2/11/25 13:52, Jiri Pirko wrote:
+>> Tue, Feb 11, 2025 at 01:12:12PM +0100, jedrzej.jagielski@intel.com wrote:
+>> > From: Jiri Pirko <jiri@resnulli.us>
+>> > Sent: Monday, February 10, 2025 5:26 PM
+>> > > Mon, Feb 10, 2025 at 02:56:28PM +0100, jedrzej.jagielski@intel.com wrote:
+>> > > 
+>> > > [...]
+>> > > 
+>> > > > +enum ixgbe_devlink_version_type {
+>> > > > +	IXGBE_DL_VERSION_FIXED,
+>> > > > +	IXGBE_DL_VERSION_RUNNING,
+>> > > > +};
+>> > > > +
+>> > > > +static int ixgbe_devlink_info_put(struct devlink_info_req *req,
+>> > > > +				  enum ixgbe_devlink_version_type type,
+>> > > > +				  const char *key, const char *value)
+>> > > 
+>> > > I may be missing something, but what's the benefit of having this helper
+>> > > instead of calling directly devlink_info_version_*_put()?
+>> > 
+>> > ixgbe devlink .info_get() supports various adapters across ixgbe portfolio which
+>> > have various sets of version types - some version types are not applicable
+>> > for some of the adapters - so we want just to check if it's *not empty.*
+>> > 
+>> > If so then we don't want to create such entry at all so avoid calling
+>> > devlink_info_version_*_put() in this case.
+>> > Putting value check prior each calling of devlink_info_version_*_put()
+>> > would provide quite a code redundancy and would look not so good imho.
+>> > 
+>> > Me and Przemek are not fully convinced by adding such additional
+>> > layer of abstraction but we defineltly need this value check to not
+>> > print empty type or get error and return from the function.
+>> > 
+>> > Another solution would be to add such check to devlink function.
+>> 
+>> That sounds fine to me. Someone else may find this handy as well.
+>Cool!
 >
-> You may want to use netif_napi_add_config to enable persistent NAPI
-> config, btw. This makes writing userland programs based on
-> SO_INCOMING_NAPI_ID much easier.
+>perhaps we could also EXPORT devlink_info_version_put(), that would also
+>help us reduce number of wrappers (also in other intel drivers)
 
-Thanks, that looks useful too. I'll add another patch to this series to
-use netif_napi_add_config().
+Why not. Make sure you sanitize attr value.
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmerYjATHGt1cnRAbGlu
-dXRyb25peC5kZQAKCRDBk9HyqkZzgupeD/0REufAXeovfQatLQDXtxRC5rNUMCRK
-ZhJJ08SX1hSZ54M3vA7sX7pzDKg5YBXQIqBVvaE/fto8oWbc1OBM57g3vY8sMCF+
-lctEZpn6VDxlRMj2YfJZ+tP3gnImXZlnnBbYgmUp0C+uIyDRPr99QpfohcM99sSm
-5bakMC9RrJ64G4lxbIjLw5qyH+xGNZ4+WPoS2uVN3+Nn7llHUGY4Q3A6Wt0hcQg/
-XzhdejD9voNkVG6blV5v2nIGNQk3Dq2nf3akAOUyFPxcEtco8ZDDhgnNlNjW4CbY
-iWh+PQnsJgzmV7nxqH5j508V42rizJzfmawTjwPZKEYGC7PZqWjg5Qb+BcyXF0if
-ZorUeesaOzxPgNLPNOJrqPWLzcX2ofF7lsYeROPuL/r5CHytIV9k5+Vk3Wgsv/2d
-heoN+snGL/QcgotauSC04lZAhf3OsPXgK2lop1K5M7+w0KsZKbeBPoTKsuxngFXL
-raYoiHLUWEUL8eXGB+hZdiOyFSkU4r1PsBvFIdrikD2F+MrQO+tORwUgOcDvr6Nk
-IT8O+VDhXTNoFK2m2QMvHHVm6VP7MYROGoAubZmzSUwMVxoS0pCIz/2UIctLdJZT
-Xx4L/HK6le1JEdIzkaNRS9B6KED9PZCVeWVkwIHgYMuWPbhQ610+A94wFHiCWJ8n
-LPmzYjQ2ra/2aQ==
-=xpvO
------END PGP SIGNATURE-----
---=-=-=--
