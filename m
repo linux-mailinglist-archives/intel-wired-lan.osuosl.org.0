@@ -2,128 +2,103 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C83B0A314A1
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Feb 2025 20:09:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id CB5E8A31739
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Feb 2025 22:07:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CCAA9410C4;
-	Tue, 11 Feb 2025 19:09:26 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6B717403EC;
+	Tue, 11 Feb 2025 21:07:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xss41L67cnn3; Tue, 11 Feb 2025 19:09:25 +0000 (UTC)
+ id uW0SwqccIuGm; Tue, 11 Feb 2025 21:07:23 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8D48B40686
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E6DEC403EF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739300965;
-	bh=ztsv8BZjRreOpaG/iC+GDxBqZQTWZNZkz7WuEjdo0fA=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=xAJ04pdrU3pXG6ittL7zbZosObrTiYakPjQkARpqJAvPB2TH1wA15FFwyMESf9hyo
-	 LFLmmemcyKM5FjMvuZgrS85xLt+hc8isiMzVRtYEVClvbuq/PGlWJMuomZd7qnNHeY
-	 /scty2H2hr1f5HWVacPuUzq17H3j9lACVpQ3HnZxJyw5knmlp0E33++Y+3NWBuBFVB
-	 W9pfQd+sq58XnJydZUHa8VEk2gb8F0Pxn2OTXF7yyu2389HDd3VdcCpTxBUppB9GHu
-	 tUqBaB7zhBEGlUqiYUg4Py1/dkN4HXdFHIukY2RDIWT3QGZgkfzlkd/WXjFb+tXtUg
-	 jnL9dO0g58/+g==
+	s=default; t=1739308043;
+	bh=MnN9NYZdFnE9HknjKTYgsYZ73kX1TnYEqrhVTbLB6RU=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=W6AAPUF3jAGel7nXJW34jdzDeBj8T0LbEOyqlCnzsT8jrCojSziVzDiOQMY3feOtB
+	 rp9oup1Vja2szH/LJlToyLrt0cCLjqZHJ8Zo2Je+K1SCx5qd3ejC4PYHbO15DbX8zt
+	 ULwlrGnE05x83NF8Z6Ehp4op8O/OkdcOmZT7YuPxh4ilxijIYrh4yWakSA/aFnisf5
+	 XBxU7z/Eu+6r2l2+/n5iyPXUiJLDdk2BKHjMAtT1sYepMzkTnqOYB+qD1eSYAH9PnR
+	 7TN3serPlbhYUePROr4Cg7j/xN0T1pncf/3MdYEEhKSHA92/IiF2nX6u9g75kfIdcf
+	 1VtA1Mh18Ur6g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8D48B40686;
-	Tue, 11 Feb 2025 19:09:25 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E6DEC403EF;
+	Tue, 11 Feb 2025 21:07:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 9C5446C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 19:09:23 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 7BDAF194
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 21:07:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8BABC4076A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 19:09:23 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 57AE440402
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 21:07:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id e84Kc_EMbX9g for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 Feb 2025 19:09:22 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::102f; helo=mail-pj1-x102f.google.com;
- envelope-from=stephen@networkplumber.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D2F2840686
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D2F2840686
-Received: from mail-pj1-x102f.google.com (mail-pj1-x102f.google.com
- [IPv6:2607:f8b0:4864:20::102f])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D2F2840686
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 19:09:21 +0000 (UTC)
-Received: by mail-pj1-x102f.google.com with SMTP id
- 98e67ed59e1d1-2fa19e1d027so7834337a91.0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 11:09:21 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1739300961; x=1739905761;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ztsv8BZjRreOpaG/iC+GDxBqZQTWZNZkz7WuEjdo0fA=;
- b=KP7xfDIbzOtNAwdebwzYSaS5645UNvHbp2FlZWHZdCelgAXgw5k+IzSge+ypwOK9ng
- zU0YjIDRWmWwUb5eijWAznhtoljRpDitrfWeYTJyVAsJBdMLVY4wiRCb2F5Rk619Or7R
- HONWIPICmpHbKtPwT0g+GcX7e8BON3P1wQTmfbxeiqr6rdlSVBljcr/sG0Ewaf5v05Wm
- njyLah0tVHMmPgW2mAI+1ZW2FKoGLiVmAL+HdETuBLbOVgAOVwRfyxFk1/I6njXAs7Su
- 1gocSqUXuIYwWzUrnqYv7Wjb34s3KWfH66OKjZw+rhYFx32//R2D+YXGXuITkcpWlzlC
- hVfw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVSR+FESJx24QWtrrDazQH6QvmQtuxWR5JuGvJwQ5UrLcwVyFUsLV7B8nCagj4d0W02C6sMKTdN4mhHT/6IBjg=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzAXVln1OpEJ9qVwI53G8roTygi10MiaB9D3Ej6v7NohBGUyPGl
- yxTzn2vRIyEJMFvGD4QoGhGYpCYEfqqBluHHGXlHQdS6kyQWiQkkc9lnQ/5/sM4=
-X-Gm-Gg: ASbGnct230dlWfQH1G5NbPuYz6b40bWlfQytw5Rjg96ywPzXYHnGIoeV6I6BMRyE+mg
- LBpSdW76VEqQ4PEMI5PAyJgsFGQxD9csRnN/H+eMaqaXVhNG9DkeRrfGK9rS/FfCXKEUh8qkoIs
- Q7n69Z6pWGt9x8g5sxIQu1ip/jf67/vrQQAWG21unSPhai+FSBfx602YR3k8t9WNX/171tZ3sfd
- sbBfJ+U1trKP1g/P7vQo/fe0ZmytzrxrMv+FLOKBnfZRjn8cwimQaSqnkC15WSgMQoBSnIM0Nk7
- bHY+UB+8GrFzbiN/svOxv7z0jemhJXWxiZa/jyllOWql17bIAMEwYd141ApXe9fyWHzm
-X-Google-Smtp-Source: AGHT+IG7D26RjiiD+iArVmZbC0xvWc5rr0wKdfpf9EXlqDJwPpVhC9G13hKBewIgOq1w4xJMPMyR7g==
-X-Received: by 2002:a17:90b:2dc3:b0:2ee:acb4:fecd with SMTP id
- 98e67ed59e1d1-2fbf5bf358fmr355084a91.9.1739300961034; 
- Tue, 11 Feb 2025 11:09:21 -0800 (PST)
-Received: from hermes.local (204-195-96-226.wavecable.com. [204.195.96.226])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-2fa099f4de8sm10949988a91.8.2025.02.11.11.09.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Feb 2025 11:09:20 -0800 (PST)
-Date: Tue, 11 Feb 2025 11:09:17 -0800
-From: Stephen Hemminger <stephen@networkplumber.org>
-To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>
-Cc: <anthony.l.nguyen@intel.com>, <jesse.brandeburg@intel.com>,
- <intel-wired-lan@lists.osuosl.org>
-Message-ID: <20250211110917.1db51003@hermes.local>
-In-Reply-To: <75893f75-223c-4b36-a2c1-8c9576438c4f@intel.com>
-References: <20250130091111.46358882@hermes.local>
- <531227ca-89fe-4398-8cba-3647be509454@intel.com>
- <20250130172115.2a116ccb@hermes.local>
- <531e3767-05c8-cb5f-6f3c-1860125ef408@intel.com>
- <20250205201327.7a4555cf@hermes.local>
- <4f913b04-36d1-58fd-bc93-666eaa6cc756@intel.com>
- <20250206120903.19db6882@hermes.local>
- <75893f75-223c-4b36-a2c1-8c9576438c4f@intel.com>
+ id PNVI8iecqovc for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 11 Feb 2025 21:07:19 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
+ helo=mgamail.intel.com; envelope-from=ahmed.zaki@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 109C840299
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 109C840299
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 109C840299
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 21:07:18 +0000 (UTC)
+X-CSE-ConnectionGUID: d227QE/KS5CIpYUntm7shg==
+X-CSE-MsgGUID: /Ky1EKqeSzikC0Ku2iyZFg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11342"; a="51339585"
+X-IronPort-AV: E=Sophos;i="6.13,278,1732608000"; d="scan'208";a="51339585"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+ by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Feb 2025 13:07:18 -0800
+X-CSE-ConnectionGUID: ZR390SP9T52V7LbOgqkplA==
+X-CSE-MsgGUID: mvMugSqhQj202VYZ+klHow==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="116713214"
+Received: from lstrano-mobl6.amr.corp.intel.com (HELO azaki-desk1.intel.com)
+ ([10.125.108.7])
+ by fmviesa003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Feb 2025 13:07:11 -0800
+From: Ahmed Zaki <ahmed.zaki@intel.com>
+To: netdev@vger.kernel.org
+Cc: intel-wired-lan@lists.osuosl.org, andrew+netdev@lunn.ch,
+ edumazet@google.com, kuba@kernel.org, horms@kernel.org, pabeni@redhat.com,
+ davem@davemloft.net, michael.chan@broadcom.com, tariqt@nvidia.com,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ jdamato@fastly.com, shayd@nvidia.com, akpm@linux-foundation.org,
+ shayagr@amazon.com, kalesh-anakkur.purayil@broadcom.com,
+ pavan.chebbi@broadcom.com, Ahmed Zaki <ahmed.zaki@intel.com>
+Date: Tue, 11 Feb 2025 14:06:51 -0700
+Message-ID: <20250211210657.428439-1-ahmed.zaki@intel.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=networkplumber-org.20230601.gappssmtp.com; s=20230601; t=1739300961;
- x=1739905761; darn=lists.osuosl.org; 
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ztsv8BZjRreOpaG/iC+GDxBqZQTWZNZkz7WuEjdo0fA=;
- b=XL+tITR+8TR7zJbQWSHSaJm2P7w1ZooFWMvwt9j7/zhz+mqIXEv0UEz8y3S7m2uGeU
- E7Y68pBL0zdVTzXBBU6DHoVfay/LeOH+vqWTF/XqEerxxHTFoz8NC6pNTeHHFM4fTEgJ
- BL2puRWDdFhlgje7Y7VR/nSSyce4jTJUSgxDCOl4EFkFDylw45duthIrctidWf6E7CVR
- sg7MmmlJgLUhV5OlrNaF9d0UTZ7Y072ptWTY9u+t5Ta6APMacnZ0cZWx43QeO4kJj+kA
- iNZpSXQlNeLDOAT/P+xqb7LoUAFeR1vCo1V1eZ9eZ0lRcEJTUOc/Ge+HJprpVBO+da7L
- VAOA==
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1739308039; x=1770844039;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=TFm6w0dYBEDVb2VwN+9OC/vGM8GxlTiGPZz0LGBO/m8=;
+ b=PZkvLgcwPb6r+eSDDwbgfAvP52IU2DDTmVJt7acjZDhIg23IfRd1xP6p
+ AS0tpelS+QEzqM6PzebLAXvkuaVju1a69VR1DBgb9zwy842lgMMTNBtCy
+ +ZnLZ3H0Nb1kjT9fm+9GMA7BNW7Y6AgoHL6W1z6VfzxVpjmFRRorKB21H
+ Fd9w7806DF0tz3a3MaD59O16FIa896vG6AYHERp0fJ28Z6jA2TU6AePI2
+ ROsoWEQ+B7wPr6d5UuJC0LYyfYOALyAWlqcslwuXG9GTLan6hg7DQbNXj
+ ijU5k8ZLoRxVTzv+2VHPJC2BwzLL/PIsC67CzOhbvyzDtLP8yrYjegu1R
+ w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=networkplumber.org
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=networkplumber-org.20230601.gappssmtp.com
- header.i=@networkplumber-org.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=XL+tITR+
-Subject: Re: [Intel-wired-lan] suspend/resume broken of igc driver broken on
- 6.12
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=PZkvLgcw
+Subject: [Intel-wired-lan] [PATCH net-next v8 0/6] net: napi: add CPU
+ affinity to napi->config
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -139,118 +114,122 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, 11 Feb 2025 20:20:03 +0200
-"Lifshits, Vitaly" <vitaly.lifshits@intel.com> wrote:
+Drivers usually need to re-apply the user-set IRQ affinity to their IRQs
+after reset. However, since there can be only one IRQ affinity notifier
+for each IRQ, registering IRQ notifiers conflicts with the ARFS rmap
+management in the core (which also registers separate IRQ affinity
+notifiers).   
 
-> 
-> 
-> On 2/6/2025 10:09 PM, Stephen Hemminger wrote:
-> > On Thu, 6 Feb 2025 15:17:00 +0200
-> > "Lifshits, Vitaly" <vitaly.lifshits@intel.com> wrote:
-> > 
-> >> On 2/6/2025 6:13 AM, Stephen Hemminger wrote:
-> >>> On Wed, 5 Feb 2025 12:36:31 +0200
-> >>> "Lifshits, Vitaly" <vitaly.lifshits@intel.com> wrote:
-> >>>    
-> >>>> On 1/31/2025 3:21 AM, Stephen Hemminger wrote:
-> >>>>> On Thu, 30 Jan 2025 21:17:30 +0200
-> >>>>> "Lifshits, Vitaly" <vitaly.lifshits@intel.com> wrote:
-> >>>>>       
-> >>>>>> On 1/30/2025 7:11 PM, Stephen Hemminger wrote:
-> >>>>>>> I am using:
-> >>>>>>>
-> >>>>>>> 5a:00.0 Ethernet controller: Intel Corporation Ethernet Controller I226-LM (rev 04)
-> >>>>>>> 	Subsystem: Intel Corporation Device 0000
-> >>>>>>> 	Flags: bus master, fast devsel, latency 0, IRQ 19, IOMMU group 20
-> >>>>>>> 	Memory at 6c500000 (32-bit, non-prefetchable) [size=1M]
-> >>>>>>> 	Memory at 6c600000 (32-bit, non-prefetchable) [size=16K]
-> >>>>>>> 	Capabilities: [40] Power Management version 3
-> >>>>>>> 	Capabilities: [50] MSI: Enable- Count=1/1 Maskable+ 64bit+
-> >>>>>>> 	Capabilities: [70] MSI-X: Enable+ Count=5 Masked-
-> >>>>>>> 	Capabilities: [a0] Express Endpoint, IntMsgNum 0
-> >>>>>>> 	Capabilities: [100] Advanced Error Reporting
-> >>>>>>> 	Capabilities: [140] Device Serial Number 58-47-ca-ff-ff-7a-98-3d
-> >>>>>>> 	Capabilities: [1c0] Latency Tolerance Reporting
-> >>>>>>> 	Capabilities: [1f0] Precision Time Measurement
-> >>>>>>> 	Capabilities: [1e0] L1 PM Substates
-> >>>>>>> 	Kernel driver in use: igc
-> >>>>>>> 	Kernel modules: igc
-> >>>>>>>
-> >>>>>>>
-> >>>>>>> Using both Debian testing and my own kernel built from 6.12, the igc
-> >>>>>>> driver appears broken after resume.
-> >>>>>>
-> >>>>>>     From which system state are you resuming?
-> >>>>>>      
-> >>>>>>>
-> >>>>>>> After resuming the device is down and no address present.
-> >>>>>>> Attempts to set link up manually fail.
-> >>>>>>
-> >>>>>> Did you get any errors in the dmesg log?
-> >>>>>> What is the firmware version on your device (you can get it by running
-> >>>>>> ethtool -i)?
-> >>>>>>      
-> >>>>>>> If I do rmmod/modprobe of igc it comes back.
-> >>>>>>>
-> >>>>>>> Doing a bit of bisectting but it is slow going.
-> >>>>>>
-> >>>>>> Meanwhile, we'll also try to reproduce this issue in our lab.  Could you
-> >>>>>> share more details about your system so we can create a similar setup?
-> >>>>>
-> >>>>> Given that error reported is -ENODEV, might be a generic netdev problem not
-> >>>>> just for igc device.
-> >>>>>       
-> >>>>
-> >>>> We weren't able to reproduce this issue on our systems, even though we
-> >>>> tried several suspend-resume cycles on different kernels and different
-> >>>> systems.
-> >>>>
-> >>>> However, a few days ago we received a comment in a BZ about an issue
-> >>>> similar to yours. In there adding a short delay in igc_resume function
-> >>>> https://bugzilla.kernel.org/show_bug.cgi?id=219143
-> >>>> https://bugzilla.kernel.org/show_bug.cgi?id=219143#c123
-> >>>>
-> >>>>
-> >>>>
-> >>>> Can you try to see if it fixes your issue as well?
-> >>>
-> >>> I tried the proposed delay and it had no impact.
-> >>> Any idea of other things to instrument?
-> >>>    
-> >>
-> >>
-> >> Has the adapter worked with a different kernel? Can you try to reproduce
-> >> the issue over kernel 6.9?
-> >>
-> >> Is the LAN cable connected to the igc adapter? Does it maintain link
-> >> during suspend?
-> >>
-> >> Also, I saw that on your board you have three more adapters, I assume
-> >> that enp2s0f0np0 and enp2s0f0np1 are i40e adapters. Does this issue also
-> >> happen to enp87s0?
-> > 
-> > This is a new machine, and not sure if it ever worked.
-> > I can boot some older distro via USB if that helps.
-> 
-> Yes, please.
-> It might help us in narrowing down the issue.
-> 
-> > 
-> > The LAN cable is always connected (it is a desktop box), and the
-> > 10G NIC's are not used; they are connected by a loopback cable and
-> > used for DPDK testing occasionally.
-> > 
-> > It does work in Windows...
-> 
-> Do you work with Network Manager? If so, is it possible to see if the 
-> issue can be reproduced with it disabled?
-> 
+Move the IRQ affinity management to the napi struct. This way we can have
+a unified IRQ notifier to re-apply the user-set affinity and also manage
+the ARFS rmaps.
 
-If network manager is disabled with:
-# systemctl stop NetworkManager.service
-# systemctl disable NetworkManager.service
+Ice does not always delete the NAPIS before releasing the IRQs. The first
+patch makes sure the driver removes the IRQ number along with the queue
+when the NAPIs are disabled. Without this, the next patches in this series
+would free the IRQ before releasing the IRQ notifier (which generates
+warnings).
 
+The second patch moves the ARFS rmap management to CORE. Patch 3 adds the
+IRQ affinity mask to napi_config and re-applies the mask after reset.
+Patches 4-6 use the new API for bnxt, ice and idpf drivers.
 
-Then device persists across suspend/resume.
+Tested on bnxt, ice and idpf.
 
+V8:
+    - Add a new patch in "ice" that releases the IRQs and their notifiers
+      when clearing the NAPI queues (pls read 3rd paragraph above).
+    - Add a new NAPI flag "NAPI_STATE_HAS_NOTIFIER" that simplifies the
+      code for IRQ notifier detection (Patch 2).
+    - Move the IRQ notifier auto-removal to napi_delete() instead of
+      napi_disable(). This is the reason for the new ice patch. (Jakub)
+    - Add a WARN_ON_ONCE(!napi->config) in netif_napi_set_irq_locked().
+      This would detect drivers that asked for irq_affinity_auto but did
+      not use napi_add_config(). (Patch 3) (Joe)
+    - Rename netif_enable_irq_affinity() to netif_set_affinity_auto()
+      (Patch 3) (Jakub).
+V7:
+    - https://lore.kernel.org/netdev/20250204220622.156061-1-ahmed.zaki@intel.com/
+    - P1: add documentation for netif_enable_cpu_rmap()
+    - P1: move a couple of "if (rx_cpu_rmap_auto)" from patch 1 to patch 2
+      where they are really needed.
+    - P1: remove a defensive "if (!rmap)"
+    - p1: In netif_disable_cpu_rmap(), remove the for loop that frees
+          notifiers since this is already done in napi_disable_locked().
+          Also rename it to netif_del_cpu_rmap().
+    - P1 and P2: simplify the if conditions in netif_napi_set_irq_locked()
+    - Other nits
+
+V6:
+    - https://lore.kernel.org/netdev/20250118003335.155379-1-ahmed.zaki@intel.com/
+    - Modifications to have less #ifdef CONFIG_RF_ACCL guards
+    - Remove rmap entry in napi_disable
+    - Rebase on rc7 and use netif_napi_set_irq_locked()
+    - Assume IRQ can be -1 and free resources if an old valid IRQ was
+      associated with the napi. For this, I had to merge the first 2
+      patches to use the new rmap API.
+
+V5:
+    - https://lore.kernel.org/netdev/20250113171042.158123-1-ahmed.zaki@intel.com/
+    - Add kernel doc for new netdev flags (Simon).
+    - Remove defensive (if !napi) check in napi_irq_cpu_rmap_add()
+      (patch 2) since caller is already dereferencing the pointer (Simon).
+    - Fix build error when CONFIG_ARFS_ACCEL is not defined (patch 3).
+
+v4:
+    - https://lore.kernel.org/netdev/20250109233107.17519-1-ahmed.zaki@intel.com/
+    - Better introduction in the cover letter.
+    - Fix Kernel build errors in ena_init_rx_cpu_rmap() (Patch 1)
+    - Fix kernel test robot warnings reported by Dan Carpenter:
+      https://lore.kernel.org/all/202501050625.nY1c97EX-lkp@intel.com/
+    - Remove unrelated empty line in patch 4 (Kalesh Anakkur Purayil)
+    - Fix a memleak (rmap was not freed) by calling cpu_rmap_put() in
+      netif_napi_affinity_release() (patch 2).
+
+v3:
+    - https://lore.kernel.org/netdev/20250104004314.208259-1-ahmed.zaki@intel.com/
+    - Assign one cpu per mask starting from local NUMA node (Shay Drori).
+    - Keep the new ARFS and Affinity flags per nedev (Jakub).
+
+v2:
+    - https://lore.kernel.org/netdev/202412190454.nwvp3hU2-lkp@intel.com/T/
+    - Also move the ARFS IRQ affinity management from drivers to core. Via
+      netif_napi_set_irq(), drivers can ask the core to add the IRQ to the
+      ARFS rmap (already allocated by the driver).
+
+RFC -> v1:
+    - https://lore.kernel.org/netdev/20241210002626.366878-1-ahmed.zaki@intel.com/
+    - move static inline affinity functions to net/dev/core.c
+    - add the new napi->irq_flags (patch 1)
+    - add code changes to bnxt, mlx4 and ice.
+
+Ahmed Zaki (6):
+  ice: clear NAPI's IRQ numbers in ice_vsi_clear_napi_queues()
+  net: move ARFS rmap management to core
+  net: napi: add CPU affinity to napi_config
+  bnxt: use napi's irq affinity
+  ice: use napi's irq affinity
+  idpf: use napi's irq affinity
+
+ Documentation/networking/scaling.rst         |   6 +-
+ drivers/net/ethernet/amazon/ena/ena_netdev.c |  43 +----
+ drivers/net/ethernet/broadcom/bnxt/bnxt.c    |  54 +-----
+ drivers/net/ethernet/broadcom/bnxt/bnxt.h    |   2 -
+ drivers/net/ethernet/intel/ice/ice.h         |   3 -
+ drivers/net/ethernet/intel/ice/ice_arfs.c    |  33 +---
+ drivers/net/ethernet/intel/ice/ice_arfs.h    |   2 -
+ drivers/net/ethernet/intel/ice/ice_base.c    |   7 +-
+ drivers/net/ethernet/intel/ice/ice_lib.c     |  16 +-
+ drivers/net/ethernet/intel/ice/ice_main.c    |  47 +----
+ drivers/net/ethernet/intel/idpf/idpf_lib.c   |   1 +
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c  |  22 +--
+ drivers/net/ethernet/intel/idpf/idpf_txrx.h  |   6 +-
+ include/linux/cpu_rmap.h                     |   1 +
+ include/linux/netdevice.h                    |  28 ++-
+ lib/cpu_rmap.c                               |   2 +-
+ net/core/dev.c                               | 172 ++++++++++++++++++-
+ 17 files changed, 233 insertions(+), 212 deletions(-)
+
+-- 
+2.43.0
 
