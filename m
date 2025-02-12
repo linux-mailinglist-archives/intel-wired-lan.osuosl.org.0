@@ -2,106 +2,215 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B78F9A31746
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Feb 2025 22:08:07 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 567E4A31A35
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Feb 2025 01:10:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5DD014060F;
-	Tue, 11 Feb 2025 21:08:06 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id F2A9741785;
+	Wed, 12 Feb 2025 00:10:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 843ykbVtpBA1; Tue, 11 Feb 2025 21:08:05 +0000 (UTC)
+ id 6_NIb7YMljXg; Wed, 12 Feb 2025 00:10:51 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 02A5541527
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 22FD641789
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739308085;
-	bh=r60QIDv38yzkwa+05QHsf97HsegbM7Zn3qhQyNz27xM=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1739319051;
+	bh=uRgus6ap6UsFDDBmM2pJHp72WytHzj9mX4PcKkZx2tg=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=OCS7AfJwjcq5S8LztasMn28QJk7LCRcI6Xg34LyN7KnNWMMFx0DFYAA8Eo/sggY8M
-	 iLb25yuxucA787Tm0wCREKnueKaNHSXI/+ixUuuNvDhbV7Ht0jzOJdZ2VLbeEuKRzy
-	 cb68l9m6V5xoZBlOlk5fEAF6J5mGwFanqZWh41lYMkWvQPEyaaJVe+bezVqrjA2085
-	 vE7CqaOVqAYmA8ZBpSl0drPSKNm60UMv4ywzXImZ84xbIHUdwC1CjnQSUs5RCWbMsm
-	 gTzPnmoyK/A3A0ievbj7c63qSM53Trd9zUOxfgSytAo4a3Wof5/1hMujvSsf4F9f2V
-	 yWYibs9waK6zg==
+	b=MpWUdFOUJ0kZ3sWUBVcZMJxFvyNou8GAy/r2RODZPORc0dGvo1skvq8GZrRoU1Ach
+	 m3YqHMAAPlVgnRUP4c2ApydGjofD6FBdx1YXycPJhbJjCNGQAIp0Rj+cubQfJxmmv7
+	 oNAnTcTPWYlKgh69hK9ojjd/OUTz2EovYdRlu+ZsngaWiNrNBTsC3VTisebJJOuDau
+	 wiLi46W3UnghjQMz6Scumsc4LzNGWJ30E42q0wUzFy+DYvu7g5AfIXXDpMMJ8FWj2J
+	 DY9Dep9ugx5mHWJK91FAXmQSvJUUPP11pN5OmD3F9OxKQhRN+OGcSbv7DR5ehrhRij
+	 PDZOwJmQpJE8w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 02A5541527;
-	Tue, 11 Feb 2025 21:08:04 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 22FD641789;
+	Wed, 12 Feb 2025 00:10:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 0D579194
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 21:08:03 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 05FEB6C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Feb 2025 00:10:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id E63A260EA6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 21:08:02 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id DE2EF81ABA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Feb 2025 00:10:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xJq7aUJAkDqU for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 Feb 2025 21:08:02 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
- helo=mgamail.intel.com; envelope-from=ahmed.zaki@intel.com;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 7VarYhV4NCsP for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 12 Feb 2025 00:10:47 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
+ helo=mgamail.intel.com; envelope-from=samuel.salin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1DBAC60E5C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1DBAC60E5C
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1DBAC60E5C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Feb 2025 21:08:02 +0000 (UTC)
-X-CSE-ConnectionGUID: 2244QlX3QDGspgxk2k+D1A==
-X-CSE-MsgGUID: eyjelm0aSf6x7R/JqG6heQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11342"; a="51339721"
-X-IronPort-AV: E=Sophos;i="6.13,278,1732608000"; d="scan'208";a="51339721"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
- by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Feb 2025 13:08:01 -0800
-X-CSE-ConnectionGUID: SDtLU0I+SPaXgR1ZFf1VFA==
-X-CSE-MsgGUID: Sf/be9hPThGqJbQ0kV/TkQ==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 2BF8781AA7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2BF8781AA7
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2BF8781AA7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Feb 2025 00:10:46 +0000 (UTC)
+X-CSE-ConnectionGUID: Es6hC9lhSq6Hd0b8pEFxMg==
+X-CSE-MsgGUID: WpzQMm9iSTW/VmxWs82PMA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11342"; a="57495315"
+X-IronPort-AV: E=Sophos;i="6.13,278,1732608000"; d="scan'208";a="57495315"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+ by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Feb 2025 16:10:46 -0800
+X-CSE-ConnectionGUID: 18rxs5MeQcq61Uvhls7fDA==
+X-CSE-MsgGUID: ESRYIRhkSKGnoKST/DiudA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="116713280"
-Received: from lstrano-mobl6.amr.corp.intel.com (HELO azaki-desk1.intel.com)
- ([10.125.108.7])
- by fmviesa003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Feb 2025 13:07:55 -0800
-From: Ahmed Zaki <ahmed.zaki@intel.com>
-To: netdev@vger.kernel.org
-Cc: intel-wired-lan@lists.osuosl.org, andrew+netdev@lunn.ch,
- edumazet@google.com, kuba@kernel.org, horms@kernel.org, pabeni@redhat.com,
- davem@davemloft.net, michael.chan@broadcom.com, tariqt@nvidia.com,
- anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- jdamato@fastly.com, shayd@nvidia.com, akpm@linux-foundation.org,
- shayagr@amazon.com, kalesh-anakkur.purayil@broadcom.com,
- pavan.chebbi@broadcom.com, Ahmed Zaki <ahmed.zaki@intel.com>
-Date: Tue, 11 Feb 2025 14:06:57 -0700
-Message-ID: <20250211210657.428439-7-ahmed.zaki@intel.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250211210657.428439-1-ahmed.zaki@intel.com>
-References: <20250211210657.428439-1-ahmed.zaki@intel.com>
+X-IronPort-AV: E=Sophos;i="6.13,278,1732608000"; d="scan'208";a="113305425"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmviesa009.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 11 Feb 2025 16:10:46 -0800
+Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.44; Tue, 11 Feb 2025 16:10:45 -0800
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.44 via Frontend Transport; Tue, 11 Feb 2025 16:10:45 -0800
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.169)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.44; Tue, 11 Feb 2025 16:10:43 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=cebpqpC2Vn2YPl1UPI27Jj3Pex+RsazVNT1+LZ3gWAvfNXSFkqOkVXRI9OUZ9e7Rwzbf1f/0Vfb3lYsfTl40U7GnQmdwsQATo5NC3cQOFaS6Ta8uv1Ye7uOrWH0sdIaxNfyFzVrXU7hZxPUqgLxaqqfBW8D91Ly7Oadj2hUqy69bd3Xwt5QB61iLDPWId4fPEYU29URLIv8d0BO5KqED/TxHaiiutg3OjxY7Jy68emGmeyXY6FabZrgaZnfvkXE1IjEANlfYKz6SZQujP5LejUQO7I/D5UrXWFRwoGp3bs8w8LKLzvq8Pk3x763tsTpZgW144n+QlwveZzdpTwtFyA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=uRgus6ap6UsFDDBmM2pJHp72WytHzj9mX4PcKkZx2tg=;
+ b=FyVdYWPL9eA01P4ltfO+o8JmIuU4ooakLKCjvimf0A6SzQxIQ2WLTxKeXevUDU7tBqKhZ4xnz+8AsGr5Dok33AqUy4Q+9fpclPJ4nOpHgaenVNl745ZPtEp3LgzlBHn2Qj9vgvCiplBLPkKxX2+yE2PKgR0Y8IH/N2gFtdUO9s9Sl41qwQjYdknDX77E2HC4Du/dPzM/G39Z+9wHxkIrk7Bsx6cSIHyVQLYfPHXS1kiPWaK7hu/865nJFFuM/1Bj1ZhhrerkwR/sg5oTcOdnXxTMX2gpzG0xEYqAtJLyJRgFBbcE0uChPvRfk2SJTWmBVGkfM6WdBbbPhM9ueksARw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SJ1PR11MB6297.namprd11.prod.outlook.com (2603:10b6:a03:458::8)
+ by DS7PR11MB7739.namprd11.prod.outlook.com (2603:10b6:8:e0::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8422.16; Wed, 12 Feb
+ 2025 00:10:41 +0000
+Received: from SJ1PR11MB6297.namprd11.prod.outlook.com
+ ([fe80::dc50:edbf:3882:abf7]) by SJ1PR11MB6297.namprd11.prod.outlook.com
+ ([fe80::dc50:edbf:3882:abf7%4]) with mapi id 15.20.8422.015; Wed, 12 Feb 2025
+ 00:10:41 +0000
+From: "Salin, Samuel" <samuel.salin@intel.com>
+To: Simon Horman <horms@kernel.org>, "Zaki, Ahmed" <ahmed.zaki@intel.com>
+CC: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Chittim, Madhu"
+ <madhu.chittim@intel.com>, Sudheer Mogilappagari
+ <sudheer.mogilappagari@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH iwl-net] idpf: synchronize pending IRQs
+ after disable
+Thread-Index: AQHbaByjJo70s8XJ+UeLUmJEvt+uwLMZuREAgCk4xtA=
+Date: Wed, 12 Feb 2025 00:10:41 +0000
+Message-ID: <SJ1PR11MB62974D04CFBC8CEF7072F4259BFC2@SJ1PR11MB6297.namprd11.prod.outlook.com>
+References: <20250116134257.93643-1-ahmed.zaki@intel.com>
+ <20250116182958.GG6206@kernel.org>
+In-Reply-To: <20250116182958.GG6206@kernel.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ1PR11MB6297:EE_|DS7PR11MB7739:EE_
+x-ms-office365-filtering-correlation-id: 6a3258fd-db61-49ae-12ba-08dd4af9aff0
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|366016|376014|1800799024|38070700018;
+x-microsoft-antispam-message-info: =?us-ascii?Q?Qb5xFQIotkjjYU1DaOWknpt+uf31U66FcFZghzbPHjM16ORO5D2tKJqu9V7L?=
+ =?us-ascii?Q?wmBheISJHuAKrGZHTi6riU01bE7MGFkSrb0ey3WFXJcA2lZLI0tiLihCjZqa?=
+ =?us-ascii?Q?r4LLgJRIPL5/NrHjhr0u23jAXL6ovunNdSk0fsWJmcpSyDWpPIzyppI4lv5B?=
+ =?us-ascii?Q?yuplwYSBzNsLA/OB2KWdWkNneNjDV5URC8UBFK5HkJPEp7zRytXxiSOvuzhu?=
+ =?us-ascii?Q?juzDoBbYccoenAgp3vxWvYznN6NdlCJdnK2x9vHwu/GoH/JtNsmL9mZpBhQm?=
+ =?us-ascii?Q?mcwGAvB+laEGo/EgE72nIJ7K2FUqg3psX2queZx8Gqsb898RNT2nGvJ8Hrl2?=
+ =?us-ascii?Q?7X+T7QVUY6fVauWWkHC+wnSZAfyklLCBGyaYbwsFDlwzcpqnkRQD87eLJAPZ?=
+ =?us-ascii?Q?swgAM9C0bPchYtGWp4eOW3AHU2z2KFYL4iQ+qcLmW6Rc52jmObFBmnJzlrX9?=
+ =?us-ascii?Q?RrFvH/lYWiL89zCAPE+EJUlhtOYkGmosSrezUjtNPNiuMTvxZRuCXBtYwKnW?=
+ =?us-ascii?Q?8mBWIwbiuQpNKtRW0gI1+51XRHqsfvJ2zneEehurQ7j7izUjyjDr0aftJMiG?=
+ =?us-ascii?Q?rReRdrY8n1vdgvt9gNfyCCQpsPjqqCcZ2HI7nognLfqwKnobhBPRoI84utAA?=
+ =?us-ascii?Q?qJtw4k5NOCgo4rpTmVr+zFX6y5F8ZF/JBA0ZTvIGiztPUgXAHNQGIhaULgtc?=
+ =?us-ascii?Q?v33fsrcM30qOb8coYJThyxFzkKWKtFDaoFZ/5agIYIDb+mXHLc/3rPjzTj2f?=
+ =?us-ascii?Q?32XDenM/OMzQICKNtwU5mrOw5tQxOQudA312LD4DKJgieO85rpfuVVnBCwZO?=
+ =?us-ascii?Q?YUMkX01sgTKmTXGqB5osWYncoWIIyHO1VMW5r9iK6n+13Ea48uVAK19xjB7E?=
+ =?us-ascii?Q?5djJRnNDDVnMuIAXpqw8iuXGxsIW2XSy+nUocH6364nh7wiNPsT73KWP00la?=
+ =?us-ascii?Q?3bcJfToHsRQQCRpMycev0zy8lbBaNwHbGQZscYEJWmFsP9OEyfCRlUUx9YJh?=
+ =?us-ascii?Q?g98GD7X3Gp2hjtsXF31f9u/p0iavBH7uQ9V/HPC5eLQtMAcHyGkL5YTIYweU?=
+ =?us-ascii?Q?xKhBOAKthHDfrqcmNd2Ype2qX2prN0H3WKOvTkoM0Jt+DWF/mHyryzSh9tel?=
+ =?us-ascii?Q?gRfIwwztNavCdATMPTNT5mmMG5/VvmSrJA2l01DSjgk/tjPO67CPuQ+ApQR8?=
+ =?us-ascii?Q?qR/rBlbBONbiqSMIjwvnsZuzBdGdab/76BFaAzypPQ9yZ2S5eWqXZ6TihNkj?=
+ =?us-ascii?Q?KT3K542s3iA5Dc0fDxQ4/tsnT7XtAFZyFiHSHCkXDJhRRttlL+i1sgmBkvj3?=
+ =?us-ascii?Q?Weqv2LfhI5iiM+dcJaLRfujGmaUsuqaDmoeE/OqGJFqWVNzNB4v91nBiw5dn?=
+ =?us-ascii?Q?DBC96RFpOxCeYnj4qCsPzyaCmgKZlbgeBXzpkKOVBRyd0N6O6iV6DmdJireQ?=
+ =?us-ascii?Q?dG8mqcsoBYImNAQUSAEt2NMES9jLUWFJ?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ1PR11MB6297.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(376014)(1800799024)(38070700018); DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?FbcbWmaxTQOE8snVnB1liMGRDJKttG/mOpe87oWFj5gLdeewfgnUfu5BFpVO?=
+ =?us-ascii?Q?p8F4pDQNR6E8OI6meLpP4cp6J6+K7t3F7ZCNEsJ4hNTszbz41amfL75O4oK0?=
+ =?us-ascii?Q?rvSjxnsmpmvGw6PQ/mO+CgFhgKHRQ/wOlL9HfjBoijPZt+Q3xGUBpI9XkUOo?=
+ =?us-ascii?Q?qRDWtlsUNfsuWP8a1jQnL+hvPuDm4591pi8dtjWEeMbXzcMaLocRnnn62faS?=
+ =?us-ascii?Q?g2IleivT/GCxZdJuVgx8bev1lJ3qG8PScDeR18aFx4lvTpEqsrIg0lA4qrur?=
+ =?us-ascii?Q?SbxSkoMGSL6LBQCstmAVd0PP+jqApsftD2l0oLsAmK1FbmY0dxLTT71xdV2s?=
+ =?us-ascii?Q?dguWbA8A7PDhBjEgKviLqagm1aIqzh7GCmf6kB9FaGout2BQnqGNAo08c9LH?=
+ =?us-ascii?Q?dxUPloE3Dqsj5A5rZVP+SMhIe4Wo3Edz31PvXR0oPJmNhsMgcXOw3Dp+st65?=
+ =?us-ascii?Q?W2wu4rAg9ahVlk/CYTRRGuN2AJv4uYh+83Wu9H0LbjK1YLiy6lB8/3T9dirp?=
+ =?us-ascii?Q?ufnpJPkx2mL9+1uPJEvrZOQTfo0JdjfRn9lcrBW4DDRyy+4iFZ5jFn0B7gbU?=
+ =?us-ascii?Q?ueEl+SMFie1+bW3wWMVRsIxBzCZn+ZCu9m4I/MwhoUxSkPtf0nGbX9Tg1N7A?=
+ =?us-ascii?Q?CMXDGHWzNQrDLEUxBlWYa+oIKrTPApFaF342EoxurWAAVnzOquyZWSGgVEtg?=
+ =?us-ascii?Q?ssCXJB71g3aOY16NArbnMrcPn+EKlT5zzuTiIvEK72bm0ThFU89Y0UvUyZGx?=
+ =?us-ascii?Q?4528Qi5ajoZ6c7nchsk91eAVbIaxw7s7T4WHSF5HdMAvUcNoHy5y/vaPk1HB?=
+ =?us-ascii?Q?UxbcC0HpnzJshx4s9tkjfYZRTm7kgO8+AntReQHBq9aHUxKuBtI+SmhwWCdM?=
+ =?us-ascii?Q?VzGVH3rZOzp/qaNwNuYHMbffne8FngcXEo8fdKrV3cwG/Km+2XOXo69AUDi+?=
+ =?us-ascii?Q?9EVlpeMBBhQpfsNjbcupmM5eaJd40RXe40J/qOkggA9TafjhNfmJnq8uKiOp?=
+ =?us-ascii?Q?/PJ1t8UX5KV45W++qMK3am0hxWqpmDTxo0wG9/WT3h0ikwnLZEZ/vpPSXqyI?=
+ =?us-ascii?Q?Qw3DdtvXbDnBy7M+Ly4VM7k3HmkRk7ZUhz2epNayw+pmnIRm32RdK5XNuOGC?=
+ =?us-ascii?Q?VoXmaX3DgxBrQlWZA8gTMBFDxpGc2nOdvcN86LxRQr1Mw+K6l7Q8XeFVfrWQ?=
+ =?us-ascii?Q?FQScghqPGQs3NyflVpwuLDUYTKauvyQrselS0aibt0VEo+QKDirdCU1XG9py?=
+ =?us-ascii?Q?h03PWw3UE6IQxUiyO2MgIRt5PhYzt9uluI6pHbHs36NmYhFBaaZf6Qk6XNus?=
+ =?us-ascii?Q?9mRVCsk3rzc/6/dDgOrxkkrQAt8ehzXkQfzHVw3B67Af3i8cz0gqKofoHA2a?=
+ =?us-ascii?Q?x6RhSLPvW54q3gu5oU3mpgrlk1qaGxDFPLEoqOWO10jEhPKi8lpgJbkw8b3B?=
+ =?us-ascii?Q?gPPkIbBp+H837zqgWYisVZ6UWtPrQsjt6BF2oImX3sOmGevqoFJKutfKE6Am?=
+ =?us-ascii?Q?Ege559+4wiSpUbLvpYjbo6/Kq62R4OxeJaZpdKzu43PPC0nu/eJWpOUegarr?=
+ =?us-ascii?Q?hg3mGDyuSUNZb271zFOINIfxUn0AwsezFmeyLAI1?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ1PR11MB6297.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6a3258fd-db61-49ae-12ba-08dd4af9aff0
+X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Feb 2025 00:10:41.4889 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Xqh6idDpBswd8bQoeKFElmLYWVAVmzVb46Nz0YMW/eY0B01ld8d+3JmZ9nDkKnD2s42Ph4Xys2Pz4x45Wqdsfw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR11MB7739
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1739308082; x=1770844082;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=F2A1sbBGDTliqI1hNPU4g+3NM7tTstsUVo9xnNsPJLA=;
- b=atKQrAsbG0wTJ5WrcBrYg891YJOEsDdXLWIkwKWsV8bGaDwYD7aCrjtj
- BwSq29fJ7CWbWcD31qgEUZj+8EqHp82nfAPXx7L+Nh3ZATvIfccXMtf9W
- 3plEuvEL6RazNmkqo/vAaxe4kpowfz0Vc0uUObIgmB14IBBXq1rUhlUUt
- mUfUOpfo2Ud5pKoP8zUPJ2pNbufCAxgO1H58YsmXq9FpRM+tF2fhp6JVN
- VRXbad6kBYbLvdEuDC8yhzvhHGZ23GcndQonihKA7eXPbO+s0fPF4JLxt
- 3UOqrusgHnV3zl6IJoeII2/eMJl2qhRM47YZ7hEiDi7B4GVLnOsJY5f+j
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1739319047; x=1770855047;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=uRgus6ap6UsFDDBmM2pJHp72WytHzj9mX4PcKkZx2tg=;
+ b=ciAzFHV8Q9zhW+RryzZ1WwZhn/XtBsF62WjYu9HLu0S/eigqQ78gM28l
+ dfLunskIvC6i3Y8qus7gt9isQQjLboR5Xpf6ngRzwtn35L6VnpNo9waFv
+ /J4CGVWv6GutM0UpD8+9NBV0NRe/9mBBe4X95CKo64QY1yNl81PuLsIya
+ mQnXiDg0llFXCbl8ORNLdOwdVn/Gv3JkV0U+BAqwU5ExVO8ilz2EEQkLA
+ 3FGnR+ztRfyuN1Ra3pea3V4UYUy5zgLM2JeS2DUMJOzg16EFirLSdY3u6
+ zpmD3vBSCd1wWeDK5s8RIrMM0mj+LeNeLuQfpRxSjbFZ3pV6Wva21XUdQ
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=atKQrAsb
-Subject: [Intel-wired-lan] [PATCH net-next v8 6/6] idpf: use napi's irq
- affinity
+ header.s=Intel header.b=ciAzFHV8
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] idpf: synchronize pending
+ IRQs after disable
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -117,133 +226,30 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Delete the driver CPU affinity info and use the core's napi config
-instead.
 
-Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
----
- drivers/net/ethernet/intel/idpf/idpf_lib.c  |  1 +
- drivers/net/ethernet/intel/idpf/idpf_txrx.c | 22 +++++++--------------
- drivers/net/ethernet/intel/idpf/idpf_txrx.h |  6 ++----
- 3 files changed, 10 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-index b4fbb99bfad2..078f71733d1d 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-@@ -814,6 +814,7 @@ static int idpf_cfg_netdev(struct idpf_vport *vport)
- 	netdev->hw_features |= dflt_features | offloads;
- 	netdev->hw_enc_features |= dflt_features | offloads;
- 	idpf_set_ethtool_ops(netdev);
-+	netif_set_affinity_auto(netdev);
- 	SET_NETDEV_DEV(netdev, &adapter->pdev->dev);
- 
- 	/* carrier off on init to avoid Tx hangs */
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-index 2fa9c36e33c9..f6b5b45a061c 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-@@ -3554,8 +3554,6 @@ void idpf_vport_intr_rel(struct idpf_vport *vport)
- 		q_vector->tx = NULL;
- 		kfree(q_vector->rx);
- 		q_vector->rx = NULL;
--
--		free_cpumask_var(q_vector->affinity_mask);
- 	}
- 
- 	kfree(vport->q_vectors);
-@@ -3582,8 +3580,6 @@ static void idpf_vport_intr_rel_irq(struct idpf_vport *vport)
- 		vidx = vport->q_vector_idxs[vector];
- 		irq_num = adapter->msix_entries[vidx].vector;
- 
--		/* clear the affinity_mask in the IRQ descriptor */
--		irq_set_affinity_hint(irq_num, NULL);
- 		kfree(free_irq(irq_num, q_vector));
- 	}
- }
-@@ -3771,8 +3767,6 @@ static int idpf_vport_intr_req_irq(struct idpf_vport *vport)
- 				   "Request_irq failed, error: %d\n", err);
- 			goto free_q_irqs;
- 		}
--		/* assign the mask for this irq */
--		irq_set_affinity_hint(irq_num, q_vector->affinity_mask);
- 	}
- 
- 	return 0;
-@@ -4184,7 +4178,8 @@ static int idpf_vport_intr_init_vec_idx(struct idpf_vport *vport)
- static void idpf_vport_intr_napi_add_all(struct idpf_vport *vport)
- {
- 	int (*napi_poll)(struct napi_struct *napi, int budget);
--	u16 v_idx;
-+	u16 v_idx, qv_idx;
-+	int irq_num;
- 
- 	if (idpf_is_queue_model_split(vport->txq_model))
- 		napi_poll = idpf_vport_splitq_napi_poll;
-@@ -4193,12 +4188,12 @@ static void idpf_vport_intr_napi_add_all(struct idpf_vport *vport)
- 
- 	for (v_idx = 0; v_idx < vport->num_q_vectors; v_idx++) {
- 		struct idpf_q_vector *q_vector = &vport->q_vectors[v_idx];
-+		qv_idx = vport->q_vector_idxs[v_idx];
-+		irq_num = vport->adapter->msix_entries[qv_idx].vector;
- 
--		netif_napi_add(vport->netdev, &q_vector->napi, napi_poll);
--
--		/* only set affinity_mask if the CPU is online */
--		if (cpu_online(v_idx))
--			cpumask_set_cpu(v_idx, q_vector->affinity_mask);
-+		netif_napi_add_config(vport->netdev, &q_vector->napi,
-+				      napi_poll, v_idx);
-+		netif_napi_set_irq(&q_vector->napi, irq_num);
- 	}
- }
- 
-@@ -4242,9 +4237,6 @@ int idpf_vport_intr_alloc(struct idpf_vport *vport)
- 		q_vector->rx_intr_mode = IDPF_ITR_DYNAMIC;
- 		q_vector->rx_itr_idx = VIRTCHNL2_ITR_IDX_0;
- 
--		if (!zalloc_cpumask_var(&q_vector->affinity_mask, GFP_KERNEL))
--			goto error;
--
- 		q_vector->tx = kcalloc(txqs_per_vector, sizeof(*q_vector->tx),
- 				       GFP_KERNEL);
- 		if (!q_vector->tx)
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-index 0f71a6f5557b..13251f63c7c3 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-@@ -401,7 +401,6 @@ struct idpf_intr_reg {
-  * @rx_intr_mode: Dynamic ITR or not
-  * @rx_itr_idx: RX ITR index
-  * @v_idx: Vector index
-- * @affinity_mask: CPU affinity mask
-  */
- struct idpf_q_vector {
- 	__cacheline_group_begin_aligned(read_mostly);
-@@ -438,13 +437,12 @@ struct idpf_q_vector {
- 	__cacheline_group_begin_aligned(cold);
- 	u16 v_idx;
- 
--	cpumask_var_t affinity_mask;
- 	__cacheline_group_end_aligned(cold);
- };
- libeth_cacheline_set_assert(struct idpf_q_vector, 120,
- 			    24 + sizeof(struct napi_struct) +
- 			    2 * sizeof(struct dim),
--			    8 + sizeof(cpumask_var_t));
-+			    8);
- 
- struct idpf_rx_queue_stats {
- 	u64_stats_t packets;
-@@ -940,7 +938,7 @@ static inline int idpf_q_vector_to_mem(const struct idpf_q_vector *q_vector)
- 	if (!q_vector)
- 		return NUMA_NO_NODE;
- 
--	cpu = cpumask_first(q_vector->affinity_mask);
-+	cpu = cpumask_first(&q_vector->napi.config->affinity_mask);
- 
- 	return cpu < nr_cpu_ids ? cpu_to_mem(cpu) : NUMA_NO_NODE;
- }
--- 
-2.43.0
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Simon Horman
+> Sent: Thursday, January 16, 2025 10:30 AM
+> To: Zaki, Ahmed <ahmed.zaki@intel.com>
+> Cc: intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org; Chittim, Ma=
+dhu
+> <madhu.chittim@intel.com>; Sudheer Mogilappagari
+> <sudheer.mogilappagari@intel.com>
+> Subject: Re: [Intel-wired-lan] [PATCH iwl-net] idpf: synchronize pending =
+IRQs
+> after disable
+>=20
+> On Thu, Jan 16, 2025 at 06:42:57AM -0700, Ahmed Zaki wrote:
+> > Wait for pending IRQ handler after it is disabled. This will ensure
+> > the IRQ is cleanly freed afterwards.
+> >
+> > Fixes: d4d558718266 ("idpf: initialize interrupts and enable vport")
+> > Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
+> > Suggested-by: Sudheer Mogilappagari <sudheer.mogilappagari@intel.com>
+> > Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
+>=20
+> Reviewed-by: Simon Horman <horms@kernel.org>
 
+Tested-by: Samuel Salin <Samuel.salin@intel.com>
