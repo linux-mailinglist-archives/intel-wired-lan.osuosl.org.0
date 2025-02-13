@@ -1,111 +1,230 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC4B5A34E5F
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Feb 2025 20:20:46 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 88D9BA34F87
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Feb 2025 21:39:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 82C3183F65;
-	Thu, 13 Feb 2025 19:20:45 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id qsrqB-fk29jr; Thu, 13 Feb 2025 19:20:44 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 006C683F64
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739474444;
-	bh=+9ICXTkfApxxTMpl1Xvqr27zkDdl4NmBC/7SI1EkYeA=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=EJvX86V7/JWlYNs4nw6Wn0SgtrhvwqNF/mhLoyLc7OpCzWMLZd4dOBC5UzI2Is1A7
-	 4Gso5g/HcTsM6cyaCYSW7qNZic11lU2NbqKothFcWc7NQHQiNnVHTcSOqXVPqXD3WC
-	 5jAw5J4m1OpZkNU9lTQu9AsVaRjMgUx82APY9U8GeHP0Y4RclLIFkTLNdUbDoyUFPY
-	 tIzoZJbb9DoahYKZBYchJCzt+l9mGotq+So22IK6f00GFox6ZDHYxYuzfcTxpQtMeu
-	 VFeDgoXmF1X0OtzBQkhOZCdvLqFLb/tQR9b6frK89ciMgJQLonwBSsCeJh3LbB7BC5
-	 2go+lGUK2qSjw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 006C683F64;
-	Thu, 13 Feb 2025 19:20:43 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 78EC612D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2025 19:20:41 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5D06A607AF
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2025 19:20:41 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 67829610E4;
+	Thu, 13 Feb 2025 20:39:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4_CXr9BpaHkr for <intel-wired-lan@lists.osuosl.org>;
- Thu, 13 Feb 2025 19:20:40 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
- helo=mgamail.intel.com; envelope-from=marcin.szycik@linux.intel.com;
+ id X2ntMBZC7MJx; Thu, 13 Feb 2025 20:39:14 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0BA556080E
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1739479154;
+	bh=9sIr02i71qCmbbNaUZWqeW7MoJHrZ1NCVubxmIznQ7I=;
+	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=6H5L77QCAx1DyAZhi45/IKw+ndAUdBCEAAISPMaoXVnOdnuQVLAe1oFrBolzCK1mI
+	 /ObJ18gzKb4Jx+GDFSQ/RsfteX+IT7aWwHwMRnYAm3/NS1uuXST08Ta9ySGV9yu/HB
+	 jjGp78cCutMfKCKYWBFceOqgtHJjmDezDjDtYZWtVoiM2bEKZlxH1/dX9/kbNVEPKE
+	 6k/wrE6U0ehS+oroFFEsEa78EwRHEmxxsSWsvuYi8n4O+CMfw8tlSN7PnSmSQAXqre
+	 egDt0Ve2++EWxYfPojBqrGokoOJ8pHDNR26qW4+fv+s1yAVZD+6HvrWj/vpkkB9oNn
+	 gWW3AO7M8EWwQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0BA556080E;
+	Thu, 13 Feb 2025 20:39:14 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 21DEEC2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2025 20:39:12 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0DF7A40183
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2025 20:39:12 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id zGM6haoOuRp6 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 13 Feb 2025 20:39:11 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
+ helo=mgamail.intel.com; envelope-from=emil.s.tantilov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 0F7D06077A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0F7D06077A
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 0F7D06077A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2025 19:20:39 +0000 (UTC)
-X-CSE-ConnectionGUID: HVsC1erkTHeYAT4auuQa5A==
-X-CSE-MsgGUID: inikiwD8R2KdGrguG5o8uQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11344"; a="50845877"
-X-IronPort-AV: E=Sophos;i="6.13,282,1732608000"; d="scan'208";a="50845877"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
- by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Feb 2025 11:20:39 -0800
-X-CSE-ConnectionGUID: Iwa5s9FDQlqLXEXxew6+4A==
-X-CSE-MsgGUID: lc36L7AOSAatuC3jZicEXw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org D3F7340260
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D3F7340260
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D3F7340260
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Feb 2025 20:39:10 +0000 (UTC)
+X-CSE-ConnectionGUID: eyXfhHNCTpaf4GqFn6zbtA==
+X-CSE-MsgGUID: ymnw1rfuTlWqcHDWErmzdg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11344"; a="43041565"
+X-IronPort-AV: E=Sophos;i="6.13,282,1732608000"; d="scan'208";a="43041565"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+ by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Feb 2025 12:39:10 -0800
+X-CSE-ConnectionGUID: bMzU5LrmQ6qd1ApTk2ibWQ==
+X-CSE-MsgGUID: 0pi8jsftTTmz473KeA3nqQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; d="scan'208";a="118158570"
-Received: from mszycik-mobl1.ger.corp.intel.com (HELO [10.246.21.71])
- ([10.246.21.71])
- by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Feb 2025 11:20:35 -0800
-Message-ID: <8e533834-4564-472f-b29b-4f1cb7730053@linux.intel.com>
-Date: Thu, 13 Feb 2025 20:20:31 +0100
-MIME-Version: 1.0
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="117381827"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by fmviesa003.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 13 Feb 2025 12:39:09 -0800
+Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.44; Thu, 13 Feb 2025 12:39:09 -0800
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.44 via Frontend Transport; Thu, 13 Feb 2025 12:39:09 -0800
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.174)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.44; Thu, 13 Feb 2025 12:39:09 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=lLpDFHhX+4uDWbr44BP6oCdk63d7lIC3q5yHVxtqLbJoX2SSeeKItNryjmOzqhYO4coY+HHooOV3Evc8KWyyGYc2QdwPXMAE3S8HOcKjyKfs8+eLug+2UV74LYHEflLpzCs29F8giQyaIzOWrglqxWsKHvjOYw023r+mzPis6d+E6q4+JOxg21x3tzQadrUy9oGuv6j2w4m2LygI9lEdL4/RqhlnlrQnxF4taTaTDYCzqyzKIkI2uqBk9TQTXY2IkYpX5+CwHKR36skd4K4YevUF5if83QEw0FuP7aXtYrp38fwrmYdmkfu/TrizDUTu7D3GbPp1m8+0vcICN/RSKg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=9sIr02i71qCmbbNaUZWqeW7MoJHrZ1NCVubxmIznQ7I=;
+ b=AV46jBNJmpAr5RUDT1kEaUmpWN+lwEgmu6+2Jh6rq7ueGPOI1F2LdiqaccKZaR/0gthF9hOCOV+0xRnBT6Bk1sTkSMniicmrux0CBBw/NdLWJTLM1vFW7Ow0dShBSe8sQxG/tX0NA8ersk5i1UuA/jZ5n99vn5PQAL3yG+TOy1y/Eo/9Fuqet41ekUnSDHHpGfrhaMuqNjSPPBr6txG9PExujoOQw94+ZVxO+jzRBG48Ly4IX3H8v9HHo5uMh9zAooti9z9uxKUYWVNX0dhCQxlcFmZ10+7JDVAZBoo23yxBqipASfECDbS2oXNhWXrUMM9yQ4o6oZ40dWSj9Gd/8A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from MW3PR11MB4538.namprd11.prod.outlook.com (2603:10b6:303:57::12)
+ by IA0PR11MB8301.namprd11.prod.outlook.com (2603:10b6:208:48d::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8445.14; Thu, 13 Feb
+ 2025 20:39:06 +0000
+Received: from MW3PR11MB4538.namprd11.prod.outlook.com
+ ([fe80::e117:2595:337:e067]) by MW3PR11MB4538.namprd11.prod.outlook.com
+ ([fe80::e117:2595:337:e067%4]) with mapi id 15.20.8445.008; Thu, 13 Feb 2025
+ 20:39:06 +0000
+Message-ID: <00ecb5e5-00b9-4c30-a29a-37c9f268b389@intel.com>
+Date: Thu, 13 Feb 2025 12:39:03 -0800
 User-Agent: Mozilla Thunderbird
-To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- intel-wired-lan@lists.osuosl.org
-Cc: himasekharx.reddy.pucha@intel.com, pmenzel@molgen.mpg.de,
- marcin.szycik@intel.com, netdev@vger.kernel.org, rafal.romanowski@intel.com,
- konrad.knitter@intel.com, pawel.chmielewski@intel.com, horms@kernel.org,
- David.Laight@ACULAB.COM, nex.sw.ncis.nat.hpm.dev@intel.com,
- pio.raczynski@gmail.com, sridhar.samudrala@intel.com,
- jacob.e.keller@intel.com, jiri@resnulli.us, przemyslaw.kitszel@intel.com,
- Tony Nguyen <anthony.l.nguyen@intel.com>
-References: <20241203065817.13475-1-michal.swiatkowski@linux.intel.com>
- <20241203065817.13475-6-michal.swiatkowski@linux.intel.com>
+To: Simon Horman <horms@kernel.org>
+CC: <intel-wired-lan@lists.osuosl.org>, <netdev@vger.kernel.org>,
+ <decot@google.com>, <willemb@google.com>, <anthony.l.nguyen@intel.com>,
+ <davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>,
+ <pabeni@redhat.com>, <madhu.chittim@intel.com>
+References: <20250211023851.21090-1-emil.s.tantilov@intel.com>
+ <20250212182111.GH1615191@kernel.org>
 Content-Language: en-US
-From: Marcin Szycik <marcin.szycik@linux.intel.com>
-In-Reply-To: <20241203065817.13475-6-michal.swiatkowski@linux.intel.com>
-Content-Type: text/plain; charset=UTF-8
+From: "Tantilov, Emil S" <emil.s.tantilov@intel.com>
+In-Reply-To: <20250212182111.GH1615191@kernel.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: SJ0PR13CA0060.namprd13.prod.outlook.com
+ (2603:10b6:a03:2c2::35) To MW3PR11MB4538.namprd11.prod.outlook.com
+ (2603:10b6:303:57::12)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MW3PR11MB4538:EE_|IA0PR11MB8301:EE_
+X-MS-Office365-Filtering-Correlation-Id: 19418374-501d-4ce8-05a6-08dd4c6e75c9
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|366016|1800799024;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?RG5qbGx6YzkyVzdEUkhtekg0UGU5Mmtnb2RFL3M1TjdkUWdlbWttQi82cjEy?=
+ =?utf-8?B?aGtteVBIKy81YTNWNXNtYy8xSGtBVlp2ZUV4WFljdHZmcXNuY2hnK3phZWxL?=
+ =?utf-8?B?NEdUMWh3cjdZQ0Q3T0FDR1QxQVg4M2o1TUNHZlBkNnJUdUFyUkJXd0cveUpL?=
+ =?utf-8?B?V1lxYTREcEpFckxuN25GbGdnRVNOZ2grcjFEM0MwMW9TaGJuTU1lb3ltNWF5?=
+ =?utf-8?B?SzZMQUxhazFPalk1Ujd4dm00VDR0bGFBS0RtV2xaRG9qZyt2clIyYlZTQUZ0?=
+ =?utf-8?B?aENLQzdJcnhWaS8weDU4YjZlMVppbmJlMUxFSDl5UHVLSWRiYlZQZ0d2d1V1?=
+ =?utf-8?B?MHZsaUl5QTVTakRucUhEbXdSM2R0eEVxemhLVGNTMTY1bVRXMDc2djhRNC9Y?=
+ =?utf-8?B?aW1DSVRhMEplVnNEVTNjclV0aWtZak9vT3BINDNrSW94N2lXOW1OOHlNTWh3?=
+ =?utf-8?B?eEM3V2IrNEpWQmdHVytBQVQ2c1Rmanp2QmhrbmQ4VVlBK1plbkI4Wmc1TkNT?=
+ =?utf-8?B?L3ErSnlIZ3NHRDhkdDNNamNVRnpvZVpleDA0WmFOeXNBSVdXcCtTUVM3WGt1?=
+ =?utf-8?B?K3V1Q3phd1l3NjExMTQxUnU0Q1RXUGhGK3pXY0VqTE5UZzlqamhsRGNjT3Zi?=
+ =?utf-8?B?Q1ViM25rbjhDSXVUUGFJaWd3Q0JRNW1DYUJKaXRYMS82UVNyM3ZuS2s4cU5l?=
+ =?utf-8?B?UWU0Wm41T3IwZURBRThWSEh1MG4wOW5ZdytTdnQyVEVxVkptZmVrV3Z2VDJj?=
+ =?utf-8?B?OXZCUXk2WE9JOUxhTU0rdmRFNjl1STNmVzFQbWZ5UldROEJ6R2I3TEpEYXVT?=
+ =?utf-8?B?aDJ5bEx3TkZ0emZwQ1RQMVY4TzNGb3YrS0FPcHZrSWhweHVNTUd5dE45b0hE?=
+ =?utf-8?B?ZG9GalQ4cDFEeEFsQzJualY4QW1JbEFLa2gxSTNZMWpVTDdqamN3cjMxVnNr?=
+ =?utf-8?B?S1pqMmQ0S3cxbUw3TkZBSVpVU2JJcDF2aTlHQStFNkxlMkw2bzYwb3dqVHRT?=
+ =?utf-8?B?bGtzaWFacDJHRGRycEdyM3dLM0FTV0RSK3JmK1Z0Z2JwTDFlRlhqTG52cUR1?=
+ =?utf-8?B?clZxUTN4L0FEbGNBMUFmT1B5ZE8yQXhWNlFVUmNMQzFVZmdlclU2MVo1N2lN?=
+ =?utf-8?B?VmFYYjFZOE9CTlB1Sm5IUUJtWlFrMFJBTER6ZmNhckxCUjdlMHVyRzlpdUMv?=
+ =?utf-8?B?RWtYbEFTeGU4M1NTSGhLZGZjNHZBZUZXWVg5ZWJJTFlnbHErWFhDZkEvbXR3?=
+ =?utf-8?B?UE1KSkNSL3Q3TzV2amJKUmlETnVvWjlGOVZnWmRFbkFnYnAwTkJkQ01PV2Yx?=
+ =?utf-8?B?S3M2dXRpUWZXUDd3TlR4a281dXdpbEMxcW5pdlJJN0pDVEppNkJhY3RZQXpR?=
+ =?utf-8?B?bW9LN0xwK0RSSjc2dEpOeDJpZUdlc0ppcjNoYkk1eFJDQ3N3bTdHV3l3Sndl?=
+ =?utf-8?B?Y0x1aktnMURvdVovUHl2V0ZwUnlReTdSSzZlb1ZHa2tlb0h5Si8zTGIzL0Mw?=
+ =?utf-8?B?S2Y5eGVqUnpleTZxT0VNams2L3J0MEFkL0tuY1JnNThMdFJ6dDdFSStlVFpl?=
+ =?utf-8?B?aVFtWWNVSkhYb3FvTnpRTEdOZklOYnlva3dHUFo3WmpJOWNpWUNpMXpCMVh0?=
+ =?utf-8?B?ZlVxTSs5d3FhM1MrMXpkTTBBajJGR2RxSHc1bkZkZnVKV1Y4aWJZT0g2cDZw?=
+ =?utf-8?B?MnhKc3h5ZERpeERGV1g3ajQ4MWVEdTBQblFSbWU3cGtQeHBZeGVLZmRCam1n?=
+ =?utf-8?B?YVRVOUE0NUpvSTRVUWUrYjNIdzJvbFlVMThRWm9HVzdUeWc5TTBPYk9na0Rr?=
+ =?utf-8?B?N3Zyc0F1WmlvWHpZbG5rOHZ6Qlh4MDkySnpHK0NsOFk5TDJ3UzRQQVUwbVdW?=
+ =?utf-8?Q?0JGhMn0qJZmVB?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MW3PR11MB4538.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(366016)(1800799024); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Vm13TWJsT1RsNDFjK1YxQlRmM2w1WjVrNzJETWtBSURHbHFDVXhySHJOaUI3?=
+ =?utf-8?B?bFNHZFowd3ZkVGwyMXNVaTBOaUlMQ1VTajFESGJCTitTWlNPckY0c0lUNVZl?=
+ =?utf-8?B?MlVpdUUwdGJ0MytXaWNkTE9pQnlWdHRYd3dIdHBuMk1mejI1WTd5b3UrTWRt?=
+ =?utf-8?B?K0pzS3NqL1RuNERCOHBuTldsQTdkRWlPdUxUVFRIRWtPYktZalN4ZzNaZGhW?=
+ =?utf-8?B?bHdwckdsekYzWENTTy92R1RNRzFqbG4wcmFVdDAzQUpyUlVmRnVlUFAwSk1C?=
+ =?utf-8?B?Mjl3TkIwVHk5c1BnSWNkMGYxcDlmNGNJN0EzUXJ0NkFvakxONEMrRUxzOGRV?=
+ =?utf-8?B?T0dYNEVoN3VvS3JOVTg0V0pCdytwd3VjaEdZbmpwYlJ5cTNjU1grOU95b1Nw?=
+ =?utf-8?B?NytvL3hJc3gySTNscFZlb0h6WW5wUU5OSGpxTjVTc2x6ajV0ckIwZC9oa000?=
+ =?utf-8?B?L05YaEQ5TVZoZzBhRmFxMm9idUlJZmpIMXpTUm5tcEVqUm9qbFV3WFdEMEI2?=
+ =?utf-8?B?M3IzUlhoSWF4OXR1MHVKVmVQekZSanVtRUpiYjNiMGU4MU42QlZ0V3dlUHQ3?=
+ =?utf-8?B?bk9XN1lCM01rd0tSMmcza3dBODdCdnpaaXgrSFl5eld4REJBanZKM3NPZTFy?=
+ =?utf-8?B?RnJ2Um5sTkYrTFpmeVNZc015OXkzT05vaXVCaWc4Ry83M0c1VGNQaHUwdnpi?=
+ =?utf-8?B?ME9OV1UyVXlXTmdCNkdtblRHOStoWGx2T0lFM0tpbytVTExlU2tJYTVFckNr?=
+ =?utf-8?B?QXNPaTByODVjR2VUMlVDYzRteklLK3ErbWxIUThUK0kyazRGeUQxNFhlNG1B?=
+ =?utf-8?B?SzVSYXVXUjRJZ2gyOGFrbkUwdFBOdHVZL042Nm1VR3pGN2VoSktKS0tVOVd2?=
+ =?utf-8?B?RFFwZFBJUzRZVnJOSmo4VXB5QjJBYk56emppcG54YWRBM3MrQkw5L2lZYzBm?=
+ =?utf-8?B?NzU0NUJHY0M3bVJ4RWxvTTNtRnZQTi9WYkJIYzhQc3pXYkNQb3VIL0xVRDNl?=
+ =?utf-8?B?S1pEU1AwZkZnWER1UEllb3JPczN5RUlwd25TSjhSYWJIclpIUVpaL2hIOUMw?=
+ =?utf-8?B?aG1nUzcrZXhLYnQ0OUpNOXc3SHBvUzdPY3d5K1JlU1FXQVZQT0I1UmRnTm1O?=
+ =?utf-8?B?bDRvdHFmdXJlWmNCYTNSL3FCQmk1NnJXNnNIcTJKaWl2dFgwN2RodUJDajZa?=
+ =?utf-8?B?ZEpDZGN1MC94MkdTMWJHV0xSejNSTTRJSlo0Yk9RMUpBWHMreUJhZWxjeWFj?=
+ =?utf-8?B?TmlCaER6NHFHaTB5S3lhdmt6dTFleFhIa204bXpsdFFldXRXNzYrWUsvbVRY?=
+ =?utf-8?B?S1U1bkczYkFBeEl3Skt1U25KUFdIYld3VFV3UGg4Y1ZqakttdGk2a1lHM2xw?=
+ =?utf-8?B?OTkzenFRcHFEaFFWZUNkdndiN1BuOC9aaFhFL1dqUVJyNVlJanI4K0JvMlMx?=
+ =?utf-8?B?T2NRdE1qQjlwTGRrNm1GRW83dzhDeVJHMzN4bXFnMno1cnRGS1Y0cHAwdXpK?=
+ =?utf-8?B?U1RqV0d4ME1GbTdwenBmZ2RqUEpkOW4yOGs2aVRubGwvdmJVcVFuc3pQdzNv?=
+ =?utf-8?B?M3pvbitNM3EzVDVlQjhGbW5BUEVWL3J2RElsa3RDRnZtQTdhZzFid0FPVTRH?=
+ =?utf-8?B?K215ZG5JdkFVK1owaG8xYVh2M0NaOVBmT25oOGVCYlNWZjBxK0RIOGZEYkd2?=
+ =?utf-8?B?RWd3dnB6ckRBY1V3NXJwOUZtbk9Fdnd2QlBwSHpHL0M2SGdUK0NNbUl1UzV5?=
+ =?utf-8?B?eTNwbXIrRUt3aUhaSlVOREpuWXpWaHQwbm1ubk95VDhVNm5DOXVyRlhITDhr?=
+ =?utf-8?B?L2Fqb0x2cG9veDFpOGtsKzBIeEZtYUQyOVZzU2VRQTJXY3hvQzZFYjRjM29E?=
+ =?utf-8?B?Wit4YXN2Y09PQWlTYlAxWVZNZlFmbjRERkI0ZmdZSEJtRU50dWxrejJlQloy?=
+ =?utf-8?B?dFhaMHRYSmVWMzZqM2d3N05KeEZVaG5TdWh2STVZMXA3OXhSYWkrdWFoTVZ1?=
+ =?utf-8?B?UzFtd1NGMHFrVXVjTWdwQllwL1UydGdXczZlOE9XL05WUFBmTnVnazFZZ21p?=
+ =?utf-8?B?NzJOTEEvOURSNC9ZSDhpc3liU1dIbTlYQWZ5blQvYzBsTFVWZ0dSSVJLc3Fv?=
+ =?utf-8?B?SDFSNjlzV3VWZFBzZGRycW12MWxhWXhTMXk4Wlg4MmpLUVgrMHRKU2doM1pB?=
+ =?utf-8?B?NEE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 19418374-501d-4ce8-05a6-08dd4c6e75c9
+X-MS-Exchange-CrossTenant-AuthSource: MW3PR11MB4538.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Feb 2025 20:39:06.3967 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: C/jiCg+5lD2sGeOtzXeuFbD0ZaaxQqrdfkk6McRJ6NATVcqT7oaYHhvFRqC29LmtV6cjfYjkaFH140YLLAueeVXvVaLJL/V2CGkIGTkct1Q=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR11MB8301
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1739474440; x=1771010440;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=MJvGzEAVvXDo67jLs3QBQsFAm8wqFuqKtzvY+7kPN2o=;
- b=M2kII6b66cO7IhihQQNwg3VcdxwpEfbEkbUaXBLAzj+oIhSx4qdxv9nV
- t1SDkT0WL7iXgwq24acAMMspMivd+1gIPst7IkT8C2kOVXzS4y1B2qXzz
- fgHM8Lj1tvz3765D9yLNbudx0oxIsJEdN7Ug1NRt33a2NWYqKDHfZPqOf
- Fl7fEQhFIn+JDFWHKUN4MO0apQiqPRxrkSlL/4+ewKvbh8znAmwfA5/0q
- PFRFLmPyWJ2vvZknMLrxiqrQpMBC7L4TA/eV8fFiobj7B5z+AdVVUAZQr
- 4JIISr2ALib8K1KjABpAJbgST6+nz/nxYMswh0FYGfRtpIacnq/pQ5qn9
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=M2kII6b6
-Subject: Re: [Intel-wired-lan] [iwl-next v9 5/9] ice,
- irdma: move interrupts code to irdma
+ t=1739479151; x=1771015151;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=m2KAJw06GaHYWZ1dWeeiBxFbIi3GqZJfVJedy0kAcxs=;
+ b=WUeRp9lsul9eWsgmKSI25+t464T+Y2EaLtK85B3jbS3ngdapjEbHowy5
+ Z2GfJqO0xYEwNmJ8WNRyrwROuaBiK0iNNtqHB8U17Bzzh7303/T4+MaP0
+ 8lKymcSG5axhcF7/5Y4RO+QHzRa1IAeGpG/AeHloEPYpFXPoe0sg83SdW
+ fWaZzQnaUIKatf9jRm3VwGIGVndBTbSkNBxJp6J7JrJD9WXvbO7RV4m5k
+ eRqjwGKwSW31ddrZqLJ6uDGKQpUHfsEQ3JdzrOr2LdMl1vY+xR6jUyjy5
+ dDXGPdfOKrEZJVwLm4ApRwb7+B0E7oEc1DUDj3UsBSCQkP3xEet4w/vFb
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=WUeRp9ls
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] idpf: check error for
+ register_netdev() on init
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -121,330 +240,100 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-
-
-On 03.12.2024 07:58, Michal Swiatkowski wrote:
-> Move responsibility of MSI-X requesting for RDMA feature from ice driver
-> to irdma driver. It is done to allow simple fallback when there is not
-> enough MSI-X available.
+On 2/12/2025 10:21 AM, Simon Horman wrote:
+> On Mon, Feb 10, 2025 at 06:38:51PM -0800, Emil Tantilov wrote:
+>> Current init logic ignores the error code from register_netdev(),
+>> which will cause WARN_ON() on attempt to unregister it, if there was one,
+>> and there is no info for the user that the creation of the netdev failed.
+>>
+>> WARNING: CPU: 89 PID: 6902 at net/core/dev.c:11512 unregister_netdevice_many_notify+0x211/0x1a10
+>> ...
+>> [ 3707.563641]  unregister_netdev+0x1c/0x30
+>> [ 3707.563656]  idpf_vport_dealloc+0x5cf/0xce0 [idpf]
+>> [ 3707.563684]  idpf_deinit_task+0xef/0x160 [idpf]
+>> [ 3707.563712]  idpf_vc_core_deinit+0x84/0x320 [idpf]
+>> [ 3707.563739]  idpf_remove+0xbf/0x780 [idpf]
+>> [ 3707.563769]  pci_device_remove+0xab/0x1e0
+>> [ 3707.563786]  device_release_driver_internal+0x371/0x530
+>> [ 3707.563803]  driver_detach+0xbf/0x180
+>> [ 3707.563816]  bus_remove_driver+0x11b/0x2a0
+>> [ 3707.563829]  pci_unregister_driver+0x2a/0x250
+>>
+>> Introduce an error check and log the vport number and error code.
+>> On removal make sure to check VPORT_REG_NETDEV flag prior to calling
+>> unregister and free on the netdev.
+>>
+>> Add local variables for idx, vport_config and netdev for readability.
+>>
+>> Fixes: 0fe45467a104 ("idpf: add create vport and netdev configuration")
+>> Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
+>> Suggested-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+>> Signed-off-by: Emil Tantilov <emil.s.tantilov@intel.com>
+>> ---
+>>   drivers/net/ethernet/intel/idpf/idpf_lib.c | 27 ++++++++++++++--------
+>>   1 file changed, 18 insertions(+), 9 deletions(-)
+>>
+>> diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
 > 
-> Change amount of MSI-X used for control from 4 to 1, as it isn't needed
-> to have more than one MSI-X for this purpose.
-
-Hi, I'm observing KASAN reports or kernel panic when attempting to remove irdma
-with this patchset, most probably this patch being the culprit, since it touches
-functions from splat.
-
-Reproducer:
-  sudo rmmod irdma
-
-Minified splat(s):
-  BUG: KASAN: use-after-free in irdma_remove+0x257/0x2d0 [irdma]
-  Call Trace:
-   <TASK>
-   ? __pfx__raw_spin_lock_irqsave+0x10/0x10
-   ? kfree+0x253/0x450
-   ? irdma_remove+0x257/0x2d0 [irdma]
-   kasan_report+0xed/0x120
-   ? irdma_remove+0x257/0x2d0 [irdma]
-   irdma_remove+0x257/0x2d0 [irdma]
-   auxiliary_bus_remove+0x56/0x80
-   device_release_driver_internal+0x371/0x530
-   ? kernfs_put.part.0+0x147/0x310
-   driver_detach+0xbf/0x180
-   bus_remove_driver+0x11b/0x2a0
-   auxiliary_driver_unregister+0x1a/0x50
-   irdma_exit_module+0x40/0x4c [irdma]
-  
-  Oops: general protection fault, probably for non-canonical address 0xdffffc0000000000: 0000 [#1] PREEMPT SMP KASAN NOPTI
-  KASAN: null-ptr-deref in range [0x0000000000000000-0x0000000000000007]
-  RIP: 0010:ice_free_rdma_qvector+0x2a/0xa0 [ice]
-  Call Trace:
-   ? ice_free_rdma_qvector+0x2a/0xa0 [ice]
-   irdma_remove+0x179/0x2d0 [irdma]
-   auxiliary_bus_remove+0x56/0x80
-   device_release_driver_internal+0x371/0x530
-   ? kobject_put+0x61/0x4b0
-   driver_detach+0xbf/0x180
-   bus_remove_driver+0x11b/0x2a0
-   auxiliary_driver_unregister+0x1a/0x50
-   irdma_exit_module+0x40/0x4c [irdma]
-
-> Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
-> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> ---
->  drivers/infiniband/hw/irdma/main.h       |  3 ++
->  drivers/net/ethernet/intel/ice/ice.h     |  1 -
->  include/linux/net/intel/iidc.h           |  2 +
->  drivers/infiniband/hw/irdma/hw.c         |  2 -
->  drivers/infiniband/hw/irdma/main.c       | 46 ++++++++++++++++-
->  drivers/net/ethernet/intel/ice/ice_idc.c | 64 ++++++------------------
->  drivers/net/ethernet/intel/ice/ice_irq.c |  3 +-
->  7 files changed, 65 insertions(+), 56 deletions(-)
+> ...
 > 
-> diff --git a/drivers/infiniband/hw/irdma/main.h b/drivers/infiniband/hw/irdma/main.h
-> index 9f0ed6e84471..ef9a9b79d711 100644
-> --- a/drivers/infiniband/hw/irdma/main.h
-> +++ b/drivers/infiniband/hw/irdma/main.h
-> @@ -117,6 +117,9 @@ extern struct auxiliary_driver i40iw_auxiliary_drv;
->  
->  #define IRDMA_IRQ_NAME_STR_LEN (64)
->  
-> +#define IRDMA_NUM_AEQ_MSIX	1
-> +#define IRDMA_MIN_MSIX		2
-> +
->  enum init_completion_state {
->  	INVALID_STATE = 0,
->  	INITIAL_STATE,
-> diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-> index f497f7d6eb71..14a90c916d43 100644
-> --- a/drivers/net/ethernet/intel/ice/ice.h
-> +++ b/drivers/net/ethernet/intel/ice/ice.h
-> @@ -97,7 +97,6 @@
->  #define ICE_MIN_LAN_OICR_MSIX	1
->  #define ICE_MIN_MSIX		(ICE_MIN_LAN_TXRX_MSIX + ICE_MIN_LAN_OICR_MSIX)
->  #define ICE_FDIR_MSIX		2
-> -#define ICE_RDMA_NUM_AEQ_MSIX	4
->  #define ICE_NO_VSI		0xffff
->  #define ICE_VSI_MAP_CONTIG	0
->  #define ICE_VSI_MAP_SCATTER	1
-> diff --git a/include/linux/net/intel/iidc.h b/include/linux/net/intel/iidc.h
-> index 1c1332e4df26..13274c3def66 100644
-> --- a/include/linux/net/intel/iidc.h
-> +++ b/include/linux/net/intel/iidc.h
-> @@ -78,6 +78,8 @@ int ice_del_rdma_qset(struct ice_pf *pf, struct iidc_rdma_qset_params *qset);
->  int ice_rdma_request_reset(struct ice_pf *pf, enum iidc_reset_type reset_type);
->  int ice_rdma_update_vsi_filter(struct ice_pf *pf, u16 vsi_id, bool enable);
->  void ice_get_qos_params(struct ice_pf *pf, struct iidc_qos_params *qos);
-> +int ice_alloc_rdma_qvector(struct ice_pf *pf, struct msix_entry *entry);
-> +void ice_free_rdma_qvector(struct ice_pf *pf, struct msix_entry *entry);
->  
->  /* Structure representing auxiliary driver tailored information about the core
->   * PCI dev, each auxiliary driver using the IIDC interface will have an
-> diff --git a/drivers/infiniband/hw/irdma/hw.c b/drivers/infiniband/hw/irdma/hw.c
-> index ad50b77282f8..69ce1862eabe 100644
-> --- a/drivers/infiniband/hw/irdma/hw.c
-> +++ b/drivers/infiniband/hw/irdma/hw.c
-> @@ -498,8 +498,6 @@ static int irdma_save_msix_info(struct irdma_pci_f *rf)
->  	iw_qvlist->num_vectors = rf->msix_count;
->  	if (rf->msix_count <= num_online_cpus())
->  		rf->msix_shared = true;
-> -	else if (rf->msix_count > num_online_cpus() + 1)
-> -		rf->msix_count = num_online_cpus() + 1;
->  
->  	pmsix = rf->msix_entries;
->  	for (i = 0, ceq_idx = 0; i < rf->msix_count; i++, iw_qvinfo++) {
-> diff --git a/drivers/infiniband/hw/irdma/main.c b/drivers/infiniband/hw/irdma/main.c
-> index 3f13200ff71b..1ee8969595d3 100644
-> --- a/drivers/infiniband/hw/irdma/main.c
-> +++ b/drivers/infiniband/hw/irdma/main.c
-> @@ -206,6 +206,43 @@ static void irdma_lan_unregister_qset(struct irdma_sc_vsi *vsi,
->  		ibdev_dbg(&iwdev->ibdev, "WS: LAN free_res for rdma qset failed.\n");
->  }
->  
-> +static int irdma_init_interrupts(struct irdma_pci_f *rf, struct ice_pf *pf)
-> +{
-> +	int i;
-> +
-> +	rf->msix_count = num_online_cpus() + IRDMA_NUM_AEQ_MSIX;
-> +	rf->msix_entries = kcalloc(rf->msix_count, sizeof(*rf->msix_entries),
-> +				   GFP_KERNEL);
-> +	if (!rf->msix_entries)
-> +		return -ENOMEM;
-> +
-> +	for (i = 0; i < rf->msix_count; i++)
-> +		if (ice_alloc_rdma_qvector(pf, &rf->msix_entries[i]))
-> +			break;
-> +
-> +	if (i < IRDMA_MIN_MSIX) {
-> +		for (; i > 0; i--)
-> +			ice_free_rdma_qvector(pf, &rf->msix_entries[i]);
-> +
-> +		kfree(rf->msix_entries);
-> +		return -ENOMEM;
-> +	}
-> +
-> +	rf->msix_count = i;
-> +
-> +	return 0;
-> +}
-> +
-> +static void irdma_deinit_interrupts(struct irdma_pci_f *rf, struct ice_pf *pf)
-> +{
-> +	int i;
-> +
-> +	for (i = 0; i < rf->msix_count; i++)
-> +		ice_free_rdma_qvector(pf, &rf->msix_entries[i]);
-> +
-> +	kfree(rf->msix_entries);
-> +}
-> +
->  static void irdma_remove(struct auxiliary_device *aux_dev)
->  {
->  	struct iidc_auxiliary_dev *iidc_adev = container_of(aux_dev,
-> @@ -216,6 +253,7 @@ static void irdma_remove(struct auxiliary_device *aux_dev)
->  
->  	irdma_ib_unregister_device(iwdev);
->  	ice_rdma_update_vsi_filter(pf, iwdev->vsi_num, false);
-> +	irdma_deinit_interrupts(iwdev->rf, pf);
->  
->  	pr_debug("INIT: Gen2 PF[%d] device remove success\n", PCI_FUNC(pf->pdev->devfn));
->  }
-> @@ -230,9 +268,7 @@ static void irdma_fill_device_info(struct irdma_device *iwdev, struct ice_pf *pf
->  	rf->gen_ops.unregister_qset = irdma_lan_unregister_qset;
->  	rf->hw.hw_addr = pf->hw.hw_addr;
->  	rf->pcidev = pf->pdev;
-> -	rf->msix_count =  pf->num_rdma_msix;
->  	rf->pf_id = pf->hw.pf_id;
-> -	rf->msix_entries = &pf->msix_entries[pf->rdma_base_vector];
->  	rf->default_vsi.vsi_idx = vsi->vsi_num;
->  	rf->protocol_used = pf->rdma_mode & IIDC_RDMA_PROTOCOL_ROCEV2 ?
->  			    IRDMA_ROCE_PROTOCOL_ONLY : IRDMA_IWARP_PROTOCOL_ONLY;
-> @@ -281,6 +317,10 @@ static int irdma_probe(struct auxiliary_device *aux_dev, const struct auxiliary_
->  	irdma_fill_device_info(iwdev, pf, vsi);
->  	rf = iwdev->rf;
->  
-> +	err = irdma_init_interrupts(rf, pf);
-> +	if (err)
-> +		goto err_init_interrupts;
-> +
->  	err = irdma_ctrl_init_hw(rf);
->  	if (err)
->  		goto err_ctrl_init;
-> @@ -311,6 +351,8 @@ static int irdma_probe(struct auxiliary_device *aux_dev, const struct auxiliary_
->  err_rt_init:
->  	irdma_ctrl_deinit_hw(rf);
->  err_ctrl_init:
-> +	irdma_deinit_interrupts(rf, pf);
-> +err_init_interrupts:
->  	kfree(iwdev->rf);
->  	ib_dealloc_device(&iwdev->ibdev);
->  
-> diff --git a/drivers/net/ethernet/intel/ice/ice_idc.c b/drivers/net/ethernet/intel/ice/ice_idc.c
-> index 145b27f2a4ce..bab3e81cad5d 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_idc.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_idc.c
-> @@ -228,61 +228,34 @@ void ice_get_qos_params(struct ice_pf *pf, struct iidc_qos_params *qos)
->  }
->  EXPORT_SYMBOL_GPL(ice_get_qos_params);
->  
-> -/**
-> - * ice_alloc_rdma_qvectors - Allocate vector resources for RDMA driver
-> - * @pf: board private structure to initialize
-> - */
-> -static int ice_alloc_rdma_qvectors(struct ice_pf *pf)
-> +int ice_alloc_rdma_qvector(struct ice_pf *pf, struct msix_entry *entry)
->  {
-> -	if (ice_is_rdma_ena(pf)) {
-> -		int i;
-> -
-> -		pf->msix_entries = kcalloc(pf->num_rdma_msix,
-> -					   sizeof(*pf->msix_entries),
-> -						  GFP_KERNEL);
-> -		if (!pf->msix_entries)
-> -			return -ENOMEM;
-> +	struct msi_map map = ice_alloc_irq(pf, true);
->  
-> -		/* RDMA is the only user of pf->msix_entries array */
-> -		pf->rdma_base_vector = 0;
-> -
-> -		for (i = 0; i < pf->num_rdma_msix; i++) {
-> -			struct msix_entry *entry = &pf->msix_entries[i];
-> -			struct msi_map map;
-> +	if (map.index < 0)
-> +		return -ENOMEM;
->  
-> -			map = ice_alloc_irq(pf, false);
-> -			if (map.index < 0)
-> -				break;
-> +	entry->entry = map.index;
-> +	entry->vector = map.virq;
->  
-> -			entry->entry = map.index;
-> -			entry->vector = map.virq;
-> -		}
-> -	}
->  	return 0;
->  }
-> +EXPORT_SYMBOL_GPL(ice_alloc_rdma_qvector);
->  
->  /**
->   * ice_free_rdma_qvector - free vector resources reserved for RDMA driver
->   * @pf: board private structure to initialize
-> + * @entry: MSI-X entry to be removed
->   */
-> -static void ice_free_rdma_qvector(struct ice_pf *pf)
-> +void ice_free_rdma_qvector(struct ice_pf *pf, struct msix_entry *entry)
->  {
-> -	int i;
-> -
-> -	if (!pf->msix_entries)
-> -		return;
-> -
-> -	for (i = 0; i < pf->num_rdma_msix; i++) {
-> -		struct msi_map map;
-> +	struct msi_map map;
->  
-> -		map.index = pf->msix_entries[i].entry;
-> -		map.virq = pf->msix_entries[i].vector;
-> -		ice_free_irq(pf, map);
-> -	}
-> -
-> -	kfree(pf->msix_entries);
-> -	pf->msix_entries = NULL;
-> +	map.index = entry->entry;
-> +	map.virq = entry->vector;
-> +	ice_free_irq(pf, map);
->  }
-> +EXPORT_SYMBOL_GPL(ice_free_rdma_qvector);
->  
->  /**
->   * ice_adev_release - function to be mapped to AUX dev's release op
-> @@ -382,12 +355,6 @@ int ice_init_rdma(struct ice_pf *pf)
->  		return -ENOMEM;
->  	}
->  
-> -	/* Reserve vector resources */
-> -	ret = ice_alloc_rdma_qvectors(pf);
-> -	if (ret < 0) {
-> -		dev_err(dev, "failed to reserve vectors for RDMA\n");
-> -		goto err_reserve_rdma_qvector;
-> -	}
->  	pf->rdma_mode |= IIDC_RDMA_PROTOCOL_ROCEV2;
->  	ret = ice_plug_aux_dev(pf);
->  	if (ret)
-> @@ -395,8 +362,6 @@ int ice_init_rdma(struct ice_pf *pf)
->  	return 0;
->  
->  err_plug_aux_dev:
-> -	ice_free_rdma_qvector(pf);
-> -err_reserve_rdma_qvector:
->  	pf->adev = NULL;
->  	xa_erase(&ice_aux_id, pf->aux_idx);
->  	return ret;
-> @@ -412,6 +377,5 @@ void ice_deinit_rdma(struct ice_pf *pf)
->  		return;
->  
->  	ice_unplug_aux_dev(pf);
-> -	ice_free_rdma_qvector(pf);
->  	xa_erase(&ice_aux_id, pf->aux_idx);
->  }
-> diff --git a/drivers/net/ethernet/intel/ice/ice_irq.c b/drivers/net/ethernet/intel/ice/ice_irq.c
-> index 1a7d446ab5f1..80c9ee2e64c1 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_irq.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_irq.c
-> @@ -84,11 +84,12 @@ static struct ice_irq_entry *ice_get_irq_res(struct ice_pf *pf, bool dyn_only)
->  	return entry;
->  }
->  
-> +#define ICE_RDMA_AEQ_MSIX 1
->  static int ice_get_default_msix_amount(struct ice_pf *pf)
->  {
->  	return ICE_MIN_LAN_OICR_MSIX + num_online_cpus() +
->  	       (test_bit(ICE_FLAG_FD_ENA, pf->flags) ? ICE_FDIR_MSIX : 0) +
-> -	       (ice_is_rdma_ena(pf) ? num_online_cpus() + ICE_RDMA_NUM_AEQ_MSIX : 0);
-> +	       (ice_is_rdma_ena(pf) ? num_online_cpus() + ICE_RDMA_AEQ_MSIX : 0);
->  }
->  
->  /**
+>> @@ -1536,12 +1540,17 @@ void idpf_init_task(struct work_struct *work)
+>>   	}
+>>   
+>>   	for (index = 0; index < adapter->max_vports; index++) {
+>> -		if (adapter->netdevs[index] &&
+>> -		    !test_bit(IDPF_VPORT_REG_NETDEV,
+>> -			      adapter->vport_config[index]->flags)) {
+>> -			register_netdev(adapter->netdevs[index]);
+>> -			set_bit(IDPF_VPORT_REG_NETDEV,
+>> -				adapter->vport_config[index]->flags);
+>> +		struct idpf_vport_config *vport_config = adapter->vport_config[index];
+>> +		struct net_device *netdev = adapter->netdevs[index];
+>> +
+>> +		if (netdev && !test_bit(IDPF_VPORT_REG_NETDEV, vport_config->flags)) {
+>> +			err = register_netdev(netdev);
+>> +			if (err) {
+>> +				dev_err(&pdev->dev, "failed to register netdev for vport %d: %pe\n",
+>> +					index, ERR_PTR(err));
+>> +				continue;
+>> +			}
+>> +			set_bit(IDPF_VPORT_REG_NETDEV, vport_config->flags);
+>>   		}
+>>   	}
+> 
+> Hi Emil,
+> 
+> I'm wondering if we could reduce indentation and lines longer
+> than 80 characters in the above like this (completely untested!):
+I was mostly trying to focus on the fix itself, since this patch is -net 
+bound. The >80 line came about from the introduction of the local netdev 
+and it seemed cleaner to keep it in one line. I can just split the check 
+as in the original code.
 
+> 
+> 
+> 	for (index = 0; index < adapter->max_vports; index++) {
+> 		struct idpf_vport_config *vport_config = adapter->vport_config[index];
+> 		struct net_device *netdev = adapter->netdevs[index];
+> 
+> 		if (!netdev ||
+> 		    test_bit(IDPF_VPORT_REG_NETDEV, vport_config->flags))
+> 		    continue;
+Again, because its mainly to add the error checking I am not sure if its 
+OK to re-shuffle the logic.
+
+> 
+> 		err = register_netdev(netdev);
+> 		if (err) {
+> 			dev_err(&pdev->dev, "failed to register netdev for vport %d: %pe\n",
+> 				index, ERR_PTR(err));
+> 			continue;
+> 		}
+> 		set_bit(IDPF_VPORT_REG_NETDEV, vport_config->flags);
+> 	}
+
+Don't mind re-spinning (and testing) v2 with the proposed change, if 
+it's not infringing on the guidelines for submission to -net.
+
+Thanks,
+Emil
