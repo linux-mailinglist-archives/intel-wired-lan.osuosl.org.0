@@ -1,84 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 86F32A35C59
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Feb 2025 12:20:26 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 518F0A35CB2
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Feb 2025 12:38:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3228B83B22;
-	Fri, 14 Feb 2025 11:20:25 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0E83C40D79;
+	Fri, 14 Feb 2025 11:38:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7NWMEoIp2bSc; Fri, 14 Feb 2025 11:20:24 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id TZGUuV3IwdPk; Fri, 14 Feb 2025 11:38:28 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4B1D483AF4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0D26740D30
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739532024;
-	bh=9l3d5h97w8JyBfnaFKOZUCgbofNi5r9Nz0RaWVnwioM=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1739533108;
+	bh=yLbPMuLVk8Qk8Paa0RTfoiuPc/0vN19NH0kDJjR8Ggw=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=DsolqgHRq49S/DBczb61DCduMs6w4rZpzemk43iqtLYhPjAo7aX//THFfkuHxprD5
-	 aNkb5IYsd2R0Lfv+28EWDsG/9xi+M8A3JDLhZT4tYwnZFMXwKZGc1h5ze2V4UkEn+e
-	 LYjOTFdRSY1mr7BEqz8TxSCYhRA0O+NEmHcG0dlLprLtAXhzPMBZSZ5oG+bNnYK5+B
-	 9jrDjzHfCZNF+2TYflseD4YoAss0E5y7l71fSHZg9JZ/FdlJIbiLGhBFo0Ix4Vwssi
-	 I09zi+r4CiwCakpkuAnas8NR3PkOCE/5p3s2g1NTd3dPHwKzDYgU8GA7S7xJu3pKRE
-	 6GCgyyub6vNig==
+	b=xIkKxAa2MmV5i+bj2noHBLVS/HbSW2ToOCoHjJEti17zYpc/9ButOP0yLdFvXcTPw
+	 qMXBWGT9Yfiu60yqpkHkrBs2Ioa/VD/QeH/pbwe+2catkhc1kKaANNfhqfUim7D9TY
+	 X5sbmcPVHKVt+ylnhPKcT+GAUds7Rf/Ecw1qQCzNAfXbfCvi6ztcDOJHudTjBuZ9xG
+	 c09ZO/ZFc/1BraWI7JnZrRW/h3gJbcR30TG6n7SSaOu5MHtkhrnktXVRKAaOZMI8oc
+	 nf5psoLAchT2ed4EVifacSYCzFNot/yhAs0zuBOeQPzqIBYo0k4CRE3Af5JTSxfd4z
+	 ytUHNMLi1SIOA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4B1D483AF4;
-	Fri, 14 Feb 2025 11:20:24 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0D26740D30;
+	Fri, 14 Feb 2025 11:38:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 6D510C2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 11:20:21 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 2F4AFC2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 11:38:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 501D783AD4
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 11:20:21 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 07D60415D3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 11:38:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id fi9eNor2Lu38 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 14 Feb 2025 11:20:20 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
- helo=mgamail.intel.com; envelope-from=faizal.abdul.rahim@linux.intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org E166283981
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E166283981
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E166283981
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 11:20:19 +0000 (UTC)
-X-CSE-ConnectionGUID: gDHrNqbRRuiJBCvaWEltdg==
-X-CSE-MsgGUID: ShYgltDqS9ybJxnqTiWMPQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11344"; a="50921228"
-X-IronPort-AV: E=Sophos;i="6.13,285,1732608000"; d="scan'208";a="50921228"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
- by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Feb 2025 03:20:19 -0800
-X-CSE-ConnectionGUID: y7/+bKRnQVCJqHfK1+vedw==
-X-CSE-MsgGUID: e3HzIYJQSCC/jYLkKMQc/Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,285,1732608000"; d="scan'208";a="113624859"
-Received: from mohdfai2-mobl.gar.corp.intel.com (HELO [10.247.89.75])
- ([10.247.89.75])
- by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Feb 2025 03:20:11 -0800
-Message-ID: <afa50e3a-914b-46b6-8401-0589b6099f68@linux.intel.com>
-Date: Fri, 14 Feb 2025 19:20:08 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id AtMly9Op6AaO for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 14 Feb 2025 11:38:24 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.21.41;
+ helo=eur05-vi1-obe.outbound.protection.outlook.com;
+ envelope-from=vladimir.oltean@nxp.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org B54D7409F7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B54D7409F7
+Received: from EUR05-VI1-obe.outbound.protection.outlook.com
+ (mail-vi1eur05on2041.outbound.protection.outlook.com [40.107.21.41])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id B54D7409F7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 11:38:23 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=jZQZ8B5rGiaPtnUtBd/ISpDbABvaSIKXpHsDARgLfSKfZmhtHoEfS+InVp4NQ4f8JE+YL2dFGmXGNg3pKfl4vDtPp6jN4QXo/a3RF6lrg5ySKbaMg+vTNdT7gNmU9m6Wnhk8olZUUbrZAhPxF4aIjoq30XItxqIgUwrLKWXX5o379jxEH/L/eH8hHC9EK6kixHOHMUUf/LsSABcKFRpm+Kw0BCkLyYUNNxDWXg+E0kvZTDwb1icqvdYE1DdMeUtY1PppMJHBJhB/8+/qlSVm+fFYva8Bx7kgU7SAXVpbf70nRPW/UCq36G/2VBZXTZzLmmYgwbSeItwUPybIycEfWg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=yLbPMuLVk8Qk8Paa0RTfoiuPc/0vN19NH0kDJjR8Ggw=;
+ b=O+f/KyrPw0BmFNFD8OTpuIN9ysf6qO32yzRlP3hPy2bDLPV+jzDk5yqRz2vvc/neblxvPDbn+tH2j9auq1wHGkMKznjTEJUxTU2r7l6G1pJzcZXFdgeB0kwq0PE71fHdpfsXlpD7JRvwRenZUDFYc2EJ0NsTqvLt1QEveywq0aZQlK398E78I2vGmLH9lqLjIB4vMqggqs9aZWRXhncjYm16I5nutNvosKOQ0JQaESoEX17+ap/DXo+VgZeQb5KiE/eEnWJNCE7qIHwzDDPqIMic/iqdZqkmJKtvdDg1G57rBnBuZqSvGhCqrKa6oL6XYPos3zd3Y8ykJ1SpGl3JWA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+Received: from AM8PR04MB7779.eurprd04.prod.outlook.com (2603:10a6:20b:24b::14)
+ by VI0PR04MB10733.eurprd04.prod.outlook.com (2603:10a6:800:266::15)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8445.13; Fri, 14 Feb
+ 2025 11:38:20 +0000
+Received: from AM8PR04MB7779.eurprd04.prod.outlook.com
+ ([fe80::7417:d17f:8d97:44d2]) by AM8PR04MB7779.eurprd04.prod.outlook.com
+ ([fe80::7417:d17f:8d97:44d2%6]) with mapi id 15.20.8445.013; Fri, 14 Feb 2025
+ 11:38:19 +0000
+Date: Fri, 14 Feb 2025 13:38:15 +0200
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+To: "Abdul Rahim, Faizal" <faizal.abdul.rahim@linux.intel.com>
 Cc: Kurt Kanzenbach <kurt@linutronix.de>,
  Tony Nguyen <anthony.l.nguyen@intel.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S . Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
  Maxime Coquelin <mcoquelin.stm32@gmail.com>,
  Alexandre Torgue <alexandre.torgue@foss.st.com>,
  Simon Horman <horms@kernel.org>, Russell King <linux@armlinux.org.uk>,
- Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
  Jesper Dangaard Brouer <hawk@kernel.org>,
  John Fastabend <john.fastabend@gmail.com>, Furong Xu <0x1207@gmail.com>,
  Russell King <rmk+kernel@armlinux.org.uk>,
@@ -93,41 +98,128 @@ Cc: Kurt Kanzenbach <kurt@linutronix.de>,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
  linux-arm-kernel@lists.infradead.org, bpf@vger.kernel.org
-References: <87cyfmnjdh.fsf@kurt.kurt.home>
- <5902cc28-a649-4ae9-a5ba-83aa265abaf8@linux.intel.com>
- <20250213130003.nxt2ev47a6ppqzrq@skbuf>
+Message-ID: <20250214113815.37ttoor3isrt34dg@skbuf>
+References: <20250213130003.nxt2ev47a6ppqzrq@skbuf>
  <1c981aa1-e796-4c53-9853-3eae517f2f6d@linux.intel.com>
- <877c5undbg.fsf@kurt.kurt.home> <20250213184613.cqc2zhj2wkaf5hn7@skbuf>
+ <877c5undbg.fsf@kurt.kurt.home>
+ <20250213184613.cqc2zhj2wkaf5hn7@skbuf>
  <87v7td3bi1.fsf@kurt.kurt.home>
  <b7740709-6b4a-4f44-b4d7-e265bb823aca@linux.intel.com>
  <874j0wrjk2.fsf@kurt.kurt.home>
  <641ab972-e110-4af2-ad9b-6688cee56562@linux.intel.com>
  <20250214102206.25dqgut5tbak2rkz@skbuf>
-Content-Language: en-US
-From: "Abdul Rahim, Faizal" <faizal.abdul.rahim@linux.intel.com>
-In-Reply-To: <20250214102206.25dqgut5tbak2rkz@skbuf>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ <afa50e3a-914b-46b6-8401-0589b6099f68@linux.intel.com>
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1739532020; x=1771068020;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=bsMoByqwV8q04F4BIn7mVkZvxnRBIcre3Xld+Gy6r0M=;
- b=VEAcjJIvFJxUj3JHJa8hqqc3ETNBTRupaiK4U0zddaSVQ8F9OPBOCeST
- xp01eH9jJ73k88Z+8zXxdF2acGkXFV9X5DnemhmY7VIVbUYEPYY90to/a
- 5d2gYHkU0koLcsoaSbGqujD7Kd23tfpZX9/iOD/lg9mPs2axMT3iHgZGW
- HRHkvajlEFIdBIjcf5EFVOE2CQtxKG12b7icK/r5918KlDLZodLnVygpk
- EEbTym7h+cpBVfRlTzzf1S2YbyDSWmKrn+3iXzRmMSQ+qX46FY32khrA4
- dl3vwgxY9Z9/ucb/SEibZjVbUi0dVfd109rPBosJQrFFP+M6+Vg4Y9W77
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+In-Reply-To: <afa50e3a-914b-46b6-8401-0589b6099f68@linux.intel.com>
+X-ClientProxiedBy: VI1PR09CA0123.eurprd09.prod.outlook.com
+ (2603:10a6:803:78::46) To AM8PR04MB7779.eurprd04.prod.outlook.com
+ (2603:10a6:20b:24b::14)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM8PR04MB7779:EE_|VI0PR04MB10733:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4ed60cca-c3ba-45db-5c8a-08dd4cec147a
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|7416014|376014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?RmVHZnNTbDMzUWErTm9icEJWSStCL25aTjRURUtldU0yeWNvbjA4MTNVUTNw?=
+ =?utf-8?B?c1BXT3IvZ2t2b09TcDdIRjVvczJ6cldsY3JQYWlBSk9sS1RLNllEbkpVN1Z0?=
+ =?utf-8?B?ejF4eTY2ZGhZS3JtYnRNQWgrbzJ6MmJSN3JXKzg5TGluS2ZkckdBdGNkbzFr?=
+ =?utf-8?B?Zm9ZQXlhMUo1emRYYUFWRDh2RWc2Wk5QM210REw2czdYZW44THo2Szg2QzZa?=
+ =?utf-8?B?Nkh4dmY4aEhTaURBM0YxOGpmRWgra05JVmVXWEdtZjBVMTFaRFdKbTBNTjlS?=
+ =?utf-8?B?clQxZmhnbDd2clBtOEZDYk1WbUV0aUt0YjF3RzBoUG5sUiswU0xKNlJMbWxP?=
+ =?utf-8?B?cnBTNGxlYkpwUGFHV2lWTHg0MG9EWUdVY2NXSG1WeGhGYnB3RnFmemwxQlpw?=
+ =?utf-8?B?dTdqSHBkUGhDVlF5Z3ZhSnVDRkhBOC9nYUNzUXNiVExsT3VjNGpZc1haOEZ5?=
+ =?utf-8?B?a1lwM2tETHFRV1hBQzY5Ulk3bVdOK1VwY2lUb2ZzK2ZweCtROTh2QlM5aW5X?=
+ =?utf-8?B?MlpLUjFPQitRQ2REM0Z5amlaWk1uek4rWDl1ZEFrLzVTSGpNK2ZEMHFMMk13?=
+ =?utf-8?B?WDlsMEVVSDlESHlGQmxLdDhRc2F2ZC9XUnpheTNlVHJPbE9CTCtCVEtMbFg1?=
+ =?utf-8?B?dlhaWW5IdGhBaGhuWGJJSjFEUE1mTVY1bmwwazBBVjh4NjRvU2dTYjN5b2t4?=
+ =?utf-8?B?R1JwSE5TdmY3UmxqbXJHanFsUjJJZ1ptMEZiemZWOVYzWlZTZmJkWldlR3hO?=
+ =?utf-8?B?Wi9hSU1HRmRJMFh1eGZROElUQ0YreHl0SytMMUIybW9KMXVQVEJGREFiaGRk?=
+ =?utf-8?B?QlZnZVh4S0owOUxmVFJpY0JQTlVqaEVrWDMvem5KUGNRYWxDVkY0Ly9yS1hP?=
+ =?utf-8?B?eVNSaW5Fei8waVQzU2RQbmNMSUcxNi9hUXdoTkljZ01JOGYwQ2RmSFo3VFZV?=
+ =?utf-8?B?TUpDTmsxOXBRS1ExbkJXbWlhdER5d2EwSTN3S1IxNGtpc1RSRlE5NWYyWk5o?=
+ =?utf-8?B?UWVQMEt3ME9id2ZsWnpicDBmaWYzeGhIWmNCMkpXTEZ0WnhXZUxJNGR5c25M?=
+ =?utf-8?B?NkdTckJWd1FNcWV3c2xlZ0huQ3pCSE9FSUVXbXUvQ0FSeVR6bDV0ZmNGK3RQ?=
+ =?utf-8?B?VEYySHB3eGtPSXZUTHZrelI1VWg0TkhscU83Vk1laVl0SENSVENSUllrcExL?=
+ =?utf-8?B?SzlyRFNCNEsySVR0cHVRQ0hpZDZacHNIVkxyRDJ3V2YxY211Z25JdThGUGh0?=
+ =?utf-8?B?YkhBbkl6SXNONkNRSFFPNDIrVEd5dGVTZnEvdHZPWVlJdGRxUW1qSXcwK1Rs?=
+ =?utf-8?B?Vm4rZDRYeXpiNWRBYzNkc1RjcXhiS1dBeHFaTUZrOEJNblREakFCLzczeXBa?=
+ =?utf-8?B?OEVWRmU2YzgzVFl0cnozeGxqVDF3cXpLNVRqRHRkT0cvQUdhdkp3b2h0MU4w?=
+ =?utf-8?B?WjU2VFg5VWFVL3g5WHdKNlJZSE9qdEEwdEdJbVkzYm9XNWFVa0lHRkUwSEtR?=
+ =?utf-8?B?dG9uMFVBUjF0TUlWZHg2OEhxVk1pN1NrNmJhMUEwT0xkSy82alhINTNVMXA3?=
+ =?utf-8?B?SEZLTm9nSHBaRCtmT1lBZnRReWloZTkxY1pGc3JxalBPTDhpaldMUXFZekY2?=
+ =?utf-8?B?R3lQWitMNmpBbGhWOVNoQ2dpUTA2Y1hSRmtCOXo3YVBxNzFJbDA4SmpjUm9T?=
+ =?utf-8?B?TTExb0lrMkZacUs5ZnNzaEZVSGhzMFVNSGN5ZEdtc202a21Na2lEcjZTUzlT?=
+ =?utf-8?B?SUc4QTMxNmxQbFNSanNCbnFlVU1vSnY0MnNuZ3JYQVBwdDR5VXNETWhTNVM2?=
+ =?utf-8?B?WG5yODlmdERZMDF1M1ZLYzJWcWh1N2VZdGZqamJscnlUL094Wk5KSzdIZ2l3?=
+ =?utf-8?Q?WG9JPPzNiXs+S?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:AM8PR04MB7779.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(1800799024)(7416014)(376014); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?d0MxUDFiNVVQVUZOVllUY3NYelcyWTJETHlEVUNaUWNuOGVxLzhINjhlYkkw?=
+ =?utf-8?B?SWtMNkdkbm5MWGNQL0tydmFHazE0Z3NDeUFhalRnNUYwRzBHQzRjdTc0REk3?=
+ =?utf-8?B?Y3R3QWt4UTUrNDJpaXNOaWE5eFZyNGtkd2h1MTJvdXNNL0lhS0hYdjlKbVhh?=
+ =?utf-8?B?SHd6dUxCRXk4aHdSemx1S2RhRWFhZ2d6UWsycDY0Y3hKVnZMT2hkbk9MOVFS?=
+ =?utf-8?B?TVBFcjN2eERUd09ocEdKaFo0RnZPLzhlYVEydUIyTm1BdXFmMnJOdy9NVkpr?=
+ =?utf-8?B?Tk1nUjM4TGZqam9RZHlIVW1PZSsrTlByU0ljdk9pZ3JIS2R0R2IxRzFlNUJj?=
+ =?utf-8?B?NTBnc05OZnNGMC9wTEV3MWU2K2wxZnVIY3RnWHlqU1RvM0U0eXhvU08yNkd6?=
+ =?utf-8?B?VlQxQVFEdDRLV0Y4S1BRa01rcmwraVhFY1puWXBTck9zdzY2NW9QZVBJMDlE?=
+ =?utf-8?B?OFVPVWF1aXF5Q0ZFNWJTTHZoNTFnS1B1R3hTYlJiSGc2aGtOODV1d2JpR2VU?=
+ =?utf-8?B?Wk9TaW9CNm8yLy9Ha0NzMFByK2l4RFhzZ3RzVStxR3g3NlJrcUU0VWNuVUdy?=
+ =?utf-8?B?Qjg3T3pta1psaTkwQWg5M3U4Tk5pQ2JVclFwQ0g4UkswVlhUYmZEZE8vcTZB?=
+ =?utf-8?B?OFhXRjVVY3F4VnE0aFZYTnhLRXBaWWM3OVBMcjZ5dUdTZlFtTTdLcm44c1NM?=
+ =?utf-8?B?QzRqS0FVOGR1L2JtM3FWdjhZcnhYRkVYVE5odVpHdnhLZDEyL3U1Q2ZnSHBw?=
+ =?utf-8?B?bGFjU2RwUy9TeFU0OUh1WkVaaGhOaC9zVGRUeGR0Z2hVUHB3WWpSeTY1VFBZ?=
+ =?utf-8?B?MmJBZmpyTkh1a0pjaklBeTIvZEJPTnlNSDZnZkZsc24zdjcvK1NDK0djZzQy?=
+ =?utf-8?B?ZmlYWWc4eXZBbWE1VlZTYkcxZjRINncxaExpQm1yeEpwendkNnlHcU54UnRa?=
+ =?utf-8?B?ZmpJMk82d2VUU1pENmIxNVUvTS8ySjhwbCt6N0VrUWlURkVFczFtdkdlenhZ?=
+ =?utf-8?B?Y3BEa29UMWpwSitibzIra2p6WXNha2U4UWE3Y1ZwRmxnMjJSU3hlVXhXOVBF?=
+ =?utf-8?B?eXZHSURBd20xejZqMThDbmF0SjlxVW1ZVWRjNHhEZTB0MXdGai9XY0VDKzlj?=
+ =?utf-8?B?OXJwdUFUOUk4cC9KSGpmZk4xMStOLy9kZDAvVldhY0cvdDdnb1IxMnpVN25i?=
+ =?utf-8?B?K2JCTUFMUnhDRzI2Sy9sd3pGWndnUTJqL2YxbTNVK3h2cXBza2tWYitxSzVM?=
+ =?utf-8?B?MTFWeVkxQjYrNTV1U01SK0J3dUxjV0lZSFVvZ3o3VTE2cTdDTWV6dFdUZWhp?=
+ =?utf-8?B?WHByNWhUMzhvaWQ4M3pST0hYVzlCQXAwNTZkRGtTRlBYSzNkUHBKRnQ0VXJv?=
+ =?utf-8?B?akZUbDRjM3NVWU1tWWtzcnpLUkRMMlVoeUZBSmFXdUlUWDk2c0ZDZmdnMVdm?=
+ =?utf-8?B?OWJtdk82bkxtVDNJRjQwelBVSENBUit0OTBhbFcyTklON2dWYk1HODdtdFo1?=
+ =?utf-8?B?RmFaL2NYajdzNXd5MzVsdkVPcE9ZdlBnRUxhQmJ5ajZXUGk0a3N0b0J2ZWRD?=
+ =?utf-8?B?alZRMGJyWHp2ZlpmL25DTEZXUkFlS05VaVVEUHdabEQvSnV6YlpraEpiejJy?=
+ =?utf-8?B?bzcvYkVjbXp3anFWWDQvYnh4RlZlQkdvbVNETjVuc0tsYVBMeDBxakZiQWMz?=
+ =?utf-8?B?N0JPYTRrT1JZdWpaREFIN3Q2cnduY3lkYlViTms4aGk2T0lWdWZLL1hUQnI0?=
+ =?utf-8?B?d3hiM2dIazBNTFlkMkhsTlFXZktMNUVDNzVUTkpFNlpCUFpTcVR6RzJmcCs4?=
+ =?utf-8?B?RThQdVBrN1JjdVpsQ2Ywd3ZmZGxhYm8rc2V6V3dYclgyTE5WTFhTMStCZUJq?=
+ =?utf-8?B?enNVL1JUN2o4NzRvMGFnZmpDM2J4aFBDQ0FYUDZ6K0EvYW1rREVjTjV3RjUv?=
+ =?utf-8?B?aXRhYndvLytHMDFDZk9jZ1lid2NtRjM1cDRkUS9qMUV2TjhVMUcvS0xRR0VX?=
+ =?utf-8?B?dXQvSjRrSEFvZHVqaVF2Wmk4SnFqZ3JHSEx2ZUhuU3VBODFxVVhBVk5VM09Y?=
+ =?utf-8?B?M1dxNUMyRmdxcTBiVmIyQW9PUEtDKzRyeU00cEhTVDdjOGhmRkwyYVk0TFl5?=
+ =?utf-8?B?SlBVNnJVdHI4allsMThhZDRHc0tQa2xwOVUyWUFhb0lJTkZSajZNMnFhbllY?=
+ =?utf-8?B?UEE9PQ==?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4ed60cca-c3ba-45db-5c8a-08dd4cec147a
+X-MS-Exchange-CrossTenant-AuthSource: AM8PR04MB7779.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Feb 2025 11:38:19.8000 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: k5RjD17W91CMeuV2tLmWdGNRyhdFOjqzHadgbGOo764WW3EdRbNfDhQvQ+Tp0dyiNNFfZQ41Hhrn9fvx1vcChw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI0PR04MB10733
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nxp.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=yLbPMuLVk8Qk8Paa0RTfoiuPc/0vN19NH0kDJjR8Ggw=;
+ b=dnHc174NcxvTcxv4gMMBhhc/zIOD8GBqAs48g27sU1XTQrGVcjlHoJG9hHKsd8eqdELC0wzfNBXy60PyQEC2zyh/19uI8FkJHctYoIo1eeiVa5jNpSkF4QbN37yYqulA4ZfsHGThzj7PpXrs7KAP8UdFb2gcuMbcpNHi+Uizd0L3vkl5tr1yOuxkqvcrOGGWC2e4dMbzLAlVuqJiLXpfOfbYmXBSOlzLhSLwBqpmvJ3lmVcxxTAmCGzTzLraqKJyIPrM/muYhg98E2fkjvi8DDUKQ6T8+kNhLuO01clp8XV0Z+gIBsMmhYGS43Slc3i/b0W6XmbFfMqhJ5nQC7YPpw==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=nxp.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=VEAcjJIv
+ unprotected) header.d=nxp.com header.i=@nxp.com header.a=rsa-sha256
+ header.s=selector1 header.b=dnHc174N
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
 Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 0/9] igc: Add support for
  Frame Preemption feature in IGC
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -145,70 +237,41 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+On Fri, Feb 14, 2025 at 07:20:08PM +0800, Abdul Rahim, Faizal wrote:
+> Okay. I can look into this in a separate patch submission, but just an
+> FYI—this adds another dependency to the second part of the igc fpe
+> submission (preemptible tc on taprio + mqprio). This new patch
+> (driver-specific priv flag to control 2 different priority scheme) would
+> need to be accepted first before the second part of igc fpe can be
+> submitted.
 
+So perhaps now you're starting to understand why I had initially
+suggested you'd better draw the line now at just the MAC Merge layer
+and focus on harmonizing taprio and mqprio TX scheduling in a separate
+patch set.
 
-On 14/2/2025 6:22 pm, Vladimir Oltean wrote:
-> Faizal,
-> 
-> On Fri, Feb 14, 2025 at 05:43:19PM +0800, Abdul Rahim, Faizal wrote:
->>>> Hi Kurt & Vladimir,
->>>>
->>>> After reading Vladimir's reply on tc, hw queue, and socket priority mapping
->>>> for both taprio and mqprio, I agree they should follow the same priority
->>>> scheme for consistency—both in code and command usage (i.e., taprio,
->>>> mqprio, and fpe in both configurations). Since igc_tsn_tx_arb() ensures a
->>>> standard mapping of tc, socket priority, and hardware queue priority, I'll
->>>> enable taprio to use igc_tsn_tx_arb() in a separate patch submission.
->>>
->>> There's one point to consider here: igc_tsn_tx_arb() changes the mapping
->>> between priorities and Tx queues. I have no idea how many people rely on
->>> the fact that queue 0 has always the highest priority. For example, it
->>> will change the Tx behavior for schedules which open multiple traffic
->>> classes at the same time. Users may notice.
->>
->> Yeah, I was considering the impact on existing users too. I hadn’t given it
->> much thought initially and figured they’d just need to adapt to the changes,
->> but now that I think about it, properly communicating this would be tough.
->> taprio on igc (i225, i226) has been around for a while, so a lot of users
->> would be affected.
->>
->>> OTOH changing mqprio to the broken_mqprio model is easy, because AFAIK
->>> there's only one customer using this.
->>>
->>
->> Hmmmm, now I’m leaning toward keeping taprio as is (hw queue 0 highest
->> priority) and having mqprio follow the default priority scheme (aka
->> broken_mqprio). Even though it’s not the norm, the impact doesn’t seem worth
->> the gain. Open to hearing others' thoughts.
-> 
-> Kurt is right, you need to think about your users, but it isn't only that.
-> Intel puts out a lot of user-facing TSN technical documentation for Linux,
-> and currently, they have a hard time adapting it to other vendors, because
-> of Intel specific peculiarities such as this one. I would argue that for
-> being one of the most visible vendors from the Linux TSN space, you also
-> have a duty to the rest of the community of not pushing users away from
-> established conventions.
-> 
-> It's unfair that a past design mistake would stifle further evolution of
-> the driver in the correct direction, so I don't think we should let that
-> happen. I was thinking the igc driver should have a driver-specific
-> opt-in flag which users explicitly have to set in order to get the
-> conventional TX scheduling behavior in taprio (the one from mqprio).
-> Public Intel documentation would be updated to present the differences
-> between the old and the new mode, and to recommend opting into the new
-> mode. By default, the current behavior is maintained, thus not breaking
-> any user.  Something like an ethtool priv flag seems adequate for this.
-> 
-> Understandably, many network maintainers will initially dislike this,
-> but you will have to be persistent and explain the ways in which having
-> this priv flag is better than not having it. Normally they will respect
-> those reasons more than they dislike driver-specific priv flags, which,
-> let's be honest, are way too often abused for adding custom behavior.
-> Here the situation is different, the custom behavior already exists, it
-> just doesn't have a name and there's no way of turning it off.
+I would expect that for uniform behavior, you would force the users a
+little bit to adopt the new TX scheduling mode in taprio, otherwise any
+configuration with preemptible traffic classes would be rejected by the
+driver. So, if preemption is used, then the scheduling model is the same
+between mqprio and taprio, and you don't have to handle preemptible
+traffic classes over the old scheduling model.
 
-Okay. I can look into this in a separate patch submission, but just an 
-FYI—this adds another dependency to the second part of the igc fpe 
-submission (preemptible tc on taprio + mqprio). This new patch 
-(driver-specific priv flag to control 2 different priority scheme) would 
-need to be accepted first before the second part of igc fpe can be submitted.
+I would also expect that you replace the current patch which handles
+preemptible traffic classes in taprio with another one which explicitly
+returns -EOPNOTSUPP if preemptible traffic classes exist - just like
+mqprio. When Kurt added that condition in mqprio, it wasn't strictly
+necessary, because mqprio_parse_tc_entries() already checks
+ethtool_dev_mm_supported() in the core and rejects the configuration.
+But after your MAC Merge series is accepted, you still won't be able to
+handle preemptible traffic classes even though the core will let you, so
+you will have to impose the restriction yourself, just like Kurt did.
+I'm not trying to be negative, but it's imaginable that there's a chance
+you won't succeed to bring the whole feature set to completion right
+away, and if you do abandon things in the middle (MAC Merge layer
+supported but preemptible traffic classes unsupported), it would be good
+if the driver at least rejected a configuration it doesn't support,
+instead of accepting it and not acting on it. Because if a significant
+amount of time passes in such an inconsistent state, it would be very
+difficult for anybody else to pick up from that position and not change
+the behavior in incompatible ways that are user-visible.
