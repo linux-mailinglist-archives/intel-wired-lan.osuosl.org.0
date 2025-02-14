@@ -1,106 +1,136 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F0C0BA352E8
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Feb 2025 01:31:16 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E3922A355A9
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Feb 2025 05:20:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6377841133;
-	Fri, 14 Feb 2025 00:31:14 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id qJqMYS3DLbks; Fri, 14 Feb 2025 00:31:13 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5BBE54113F
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739493072;
-	bh=8lS7bbJ4nGPMEGHay9I3E1D49wykF7Fqhn1edNAVseY=;
-	h=From:Date:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=Qyts2uNUKzfXBcRlhsDRpj5uQDaOS2EiAQgxUnHXrX46DdvVIC+oyWTBeKIc05tB7
-	 llavzzgN5byATo9O4CffF0JE3S1alXH79uKolRcqBdSoBk6ZAohDV4iS191WEhMXqa
-	 sVsR8ZxAgGCPl4v4r+BZm6KQEwxsUPosgCMPTTcxHA/opZxv2XsCPQsbSf6NjfProB
-	 hc2LAxSe901kZSmMY5HIujeTeM37QRRhhUWSv0SCOZ2jlIVsCl+7X6362vvPbE9A5U
-	 ZA7mEeKBdb2gqqmkXGmCBlyTUZzMD4tUEb8Rp5ryQWEnohj3VkZp8GuThh0e7VbkRI
-	 eNpjm1jLigbfw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5BBE54113F;
-	Fri, 14 Feb 2025 00:31:12 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 6FF9AC2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 00:31:10 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 529A283A0C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 00:31:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A3BBC83F34;
+	Fri, 14 Feb 2025 04:20:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id K_H9AD9syo_D for <intel-wired-lan@lists.osuosl.org>;
- Fri, 14 Feb 2025 00:31:08 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
- helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
+ id fE6YDSwmIEfy; Fri, 14 Feb 2025 04:20:47 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1F5D883F35
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1739506847;
+	bh=lmJtbpqxckhATASjD1d2w6bVsotMpvgKjxR9ut3OsBM=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=BWJvB6LqgNzjc/5UkeQDd4tNpA+naENyni3MTPG2wo/41FRV9m9+QDNRGSpASrYud
+	 w71mwZUzRq59D6ri7zTr9kiKvhSyxHtyp0LAs2Fj75UUg3syNXqaLzgpq0hhoxtAlc
+	 QcqbH+GizrXS1zZu8zSnvDz6wYV9qy+CTCxCTdvg/oK/UKwmFYc6dtXcynefp9M3RE
+	 2rs9PwWh4dGeGGSntManhUSTuwJP1afnG0rxvXFx32pVAE5uw3qLmCAdj/u4uG414z
+	 4wfmz8TRQypVYi1bsZZ6sdi5ZDhvO+trzkVdiWiIUcbnxkNQ1JuHAAsiqMO9v0EJ6m
+	 newfWjVV5Z0pQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1F5D883F35;
+	Fri, 14 Feb 2025 04:20:47 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 487961E3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 04:20:45 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 36E3640DAE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 04:20:45 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 2lar34npvlDM for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 14 Feb 2025 04:20:44 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
+ helo=mgamail.intel.com; envelope-from=faizal.abdul.rahim@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org D78D78391F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D78D78391F
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 083FC40DAC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 083FC40DAC
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D78D78391F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 00:31:07 +0000 (UTC)
-X-CSE-ConnectionGUID: 2smOej2UTniQfQOngic+qg==
-X-CSE-MsgGUID: a92QIuTbSR2zNKiIhQEyLg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11344"; a="40486770"
-X-IronPort-AV: E=Sophos;i="6.13,284,1732608000"; d="scan'208";a="40486770"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 083FC40DAC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 04:20:43 +0000 (UTC)
+X-CSE-ConnectionGUID: ocEgikkqRfWGes7osGwclw==
+X-CSE-MsgGUID: uq8Kvq7XTbixha7egb1qQg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11344"; a="40505965"
+X-IronPort-AV: E=Sophos;i="6.13,284,1732608000"; d="scan'208";a="40505965"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Feb 2025 16:31:07 -0800
-X-CSE-ConnectionGUID: Aame8dcxREScEMRz4vh7dQ==
-X-CSE-MsgGUID: pU/VDK9vQs2Y0ypZGqRLqw==
+ 13 Feb 2025 20:20:43 -0800
+X-CSE-ConnectionGUID: VV+jgGj8RGadw8WZ3YmWXQ==
+X-CSE-MsgGUID: ktMrD4xUQYq+G2zq3bq7DA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,284,1732608000"; d="scan'208";a="113824194"
-Received: from jekeller-desk.jf.intel.com ([10.166.241.15])
- by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Feb 2025 16:31:07 -0800
-From: Jacob Keller <jacob.e.keller@intel.com>
-Date: Thu, 13 Feb 2025 16:30:59 -0800
+X-IronPort-AV: E=Sophos;i="6.13,284,1732608000"; d="scan'208";a="144209439"
+Received: from mohdfai2-mobl.gar.corp.intel.com (HELO [10.247.123.6])
+ ([10.247.123.6])
+ by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Feb 2025 20:20:33 -0800
+Message-ID: <b7740709-6b4a-4f44-b4d7-e265bb823aca@linux.intel.com>
+Date: Fri, 14 Feb 2025 12:20:31 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250213-jk-iavf-abba-lock-crash-v2-1-033d7bf298f8@intel.com>
-X-B4-Tracking: v=1; b=H4sIAMKOrmcC/42Nyw6CMBBFf4V07Zg+5OXK/zAsSjuVEQTTkqoh/
- LuVlTtdntycexYW0BMGdswW5jFSoGlMIHcZM50eLwhkEzPJZc6lUHDtgXR0oNtWwzCZHozXoQP
- FuWtbpTTWNUv23aOj5/Z8ZvQYYMSZNWnoKMyTf23FKLb553kUIKCsSluaIpcWxYnGGYe9mW6f1
- n++PVQ5d4Xmmtsvv1nX9Q2vLUQoBwEAAA==
-X-Change-ID: 20250213-jk-iavf-abba-lock-crash-300fbb33ae99
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>, 
- netdev <netdev@vger.kernel.org>, 
- Anthony Nguyen <anthony.l.nguyen@intel.com>
-Cc: Jacob Keller <jacob.e.keller@intel.com>, 
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-X-Mailer: b4 0.14.2
+User-Agent: Mozilla Thunderbird
+To: Kurt Kanzenbach <kurt@linutronix.de>,
+ Vladimir Oltean <vladimir.oltean@nxp.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S . Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Simon Horman <horms@kernel.org>, Russell King <linux@armlinux.org.uk>,
+ Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, Furong Xu <0x1207@gmail.com>,
+ Russell King <rmk+kernel@armlinux.org.uk>,
+ Serge Semin <fancer.lancer@gmail.com>,
+ Xiaolei Wang <xiaolei.wang@windriver.com>,
+ Suraj Jaiswal <quic_jsuraj@quicinc.com>,
+ Kory Maincent <kory.maincent@bootlin.com>, Gal Pressman <gal@nvidia.com>,
+ Jesper Nilsson <jesper.nilsson@axis.com>,
+ Andrew Halaney <ahalaney@redhat.com>,
+ Choong Yong Liang <yong.liang.choong@linux.intel.com>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, bpf@vger.kernel.org
+References: <20250210070207.2615418-1-faizal.abdul.rahim@linux.intel.com>
+ <20250210070207.2615418-1-faizal.abdul.rahim@linux.intel.com>
+ <20250212220121.ici3qll66pfoov62@skbuf>
+ <b19357dc-590d-458c-9646-ee5993916044@linux.intel.com>
+ <87cyfmnjdh.fsf@kurt.kurt.home>
+ <5902cc28-a649-4ae9-a5ba-83aa265abaf8@linux.intel.com>
+ <20250213130003.nxt2ev47a6ppqzrq@skbuf>
+ <1c981aa1-e796-4c53-9853-3eae517f2f6d@linux.intel.com>
+ <877c5undbg.fsf@kurt.kurt.home> <20250213184613.cqc2zhj2wkaf5hn7@skbuf>
+ <87v7td3bi1.fsf@kurt.kurt.home>
+Content-Language: en-US
+From: "Abdul Rahim, Faizal" <faizal.abdul.rahim@linux.intel.com>
+In-Reply-To: <87v7td3bi1.fsf@kurt.kurt.home>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1739493068; x=1771029068;
- h=from:date:subject:mime-version:content-transfer-encoding:
- message-id:to:cc;
- bh=LdhfRMMMFoP5d+TjA1KNfYaAzjd0gw6NUfZeCVxznVo=;
- b=GZVDSWZ3ZdeF8MTlZNEbHWloGLwhQRzsx5vyIfSQil0dshWJiMpf6o11
- +5efBelE/mydPk3qBNvwR1UggoYpweVBxtwfWUo/AjAF4VshXjYM9af2r
- vbRakb3ASjtgUFevFGqcZKWndEj+T3av/1vd2RjmrQW0rHkd3psjSbO3T
- 7eH422S2A2VGCdBfCXzoEjEOMGOFrjaU0CM1p0NuScpG6XFCIaqXCIoPL
- 5qr2rHurlUQz7XuUGMF8h7DJimTyJBGx9F4hRuZjKziAmrWPVSwNgUq7T
- zWArBk1NQN6cCVdBIhqpU8YyBuLduwA/dFMH7CLml2XYGFaVruaAZY1Yo
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1739506844; x=1771042844;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=0N+NIkjKA48xzvqbJnB29lAB08YfjMQLZFPJzVlNIO4=;
+ b=MVRUzszSODMo+CjeMJQztsIQEh5TdFOj/0xI2mu+GxKcABaz0zemx+T4
+ jCfek2j7HVL2Ogzk9An7jBlZrG4ltamFKNJB/yJp78nHbupJrFDDjEjHi
+ D1lbIgpzkTrzoXPyUFgeDnZoHO0oSigp3An8BdwGBRKn7UWLWzIb1+PVk
+ fKxNPiRiedxvmCPjOTfbr4OTt9g7yjytPwN/886Q2DVOe/Mvcf12V6YXs
+ IWefsO7rOf6dVAezYml37ATJvd4Oq2cmLRm6zIoSg8RMfw8Do7N4SlLIs
+ zWV8DRL36hDb4gjEvHWBhTVL84Q3wAsEvXVnQ8kJdH418qLFDgbHC4hgt
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=GZVDSWZ3
-Subject: [Intel-wired-lan] [PATCH iwl-net v2] iavf: fix circular lock
- dependency with netdev_lock
+ header.s=Intel header.b=MVRUzszS
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 0/9] igc: Add support for
+ Frame Preemption feature in IGC
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -116,185 +146,62 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-We have recently seen reports of lockdep circular lock dependency warnings
-when loading the iAVF driver:
 
-[ 1504.790308] ======================================================
-[ 1504.790309] WARNING: possible circular locking dependency detected
-[ 1504.790310] 6.13.0 #net_next_rt.c2933b2befe2.el9 Not tainted
-[ 1504.790311] ------------------------------------------------------
-[ 1504.790312] kworker/u128:0/13566 is trying to acquire lock:
-[ 1504.790313] ffff97d0e4738f18 (&dev->lock){+.+.}-{4:4}, at: register_netdevice+0x52c/0x710
-[ 1504.790320]
-[ 1504.790320] but task is already holding lock:
-[ 1504.790321] ffff97d0e47392e8 (&adapter->crit_lock){+.+.}-{4:4}, at: iavf_finish_config+0x37/0x240 [iavf]
-[ 1504.790330]
-[ 1504.790330] which lock already depends on the new lock.
-[ 1504.790330]
-[ 1504.790330]
-[ 1504.790330] the existing dependency chain (in reverse order) is:
-[ 1504.790331]
-[ 1504.790331] -> #1 (&adapter->crit_lock){+.+.}-{4:4}:
-[ 1504.790333]        __lock_acquire+0x52d/0xbb0
-[ 1504.790337]        lock_acquire+0xd9/0x330
-[ 1504.790338]        mutex_lock_nested+0x4b/0xb0
-[ 1504.790341]        iavf_finish_config+0x37/0x240 [iavf]
-[ 1504.790347]        process_one_work+0x248/0x6d0
-[ 1504.790350]        worker_thread+0x18d/0x330
-[ 1504.790352]        kthread+0x10e/0x250
-[ 1504.790354]        ret_from_fork+0x30/0x50
-[ 1504.790357]        ret_from_fork_asm+0x1a/0x30
-[ 1504.790361]
-[ 1504.790361] -> #0 (&dev->lock){+.+.}-{4:4}:
-[ 1504.790364]        check_prev_add+0xf1/0xce0
-[ 1504.790366]        validate_chain+0x46a/0x570
-[ 1504.790368]        __lock_acquire+0x52d/0xbb0
-[ 1504.790370]        lock_acquire+0xd9/0x330
-[ 1504.790371]        mutex_lock_nested+0x4b/0xb0
-[ 1504.790372]        register_netdevice+0x52c/0x710
-[ 1504.790374]        iavf_finish_config+0xfa/0x240 [iavf]
-[ 1504.790379]        process_one_work+0x248/0x6d0
-[ 1504.790381]        worker_thread+0x18d/0x330
-[ 1504.790383]        kthread+0x10e/0x250
-[ 1504.790385]        ret_from_fork+0x30/0x50
-[ 1504.790387]        ret_from_fork_asm+0x1a/0x30
-[ 1504.790389]
-[ 1504.790389] other info that might help us debug this:
-[ 1504.790389]
-[ 1504.790389]  Possible unsafe locking scenario:
-[ 1504.790389]
-[ 1504.790390]        CPU0                    CPU1
-[ 1504.790391]        ----                    ----
-[ 1504.790391]   lock(&adapter->crit_lock);
-[ 1504.790393]                                lock(&dev->lock);
-[ 1504.790394]                                lock(&adapter->crit_lock);
-[ 1504.790395]   lock(&dev->lock);
-[ 1504.790397]
-[ 1504.790397]  *** DEADLOCK ***
 
-This appears to be caused by the change in commit 5fda3f35349b ("net: make
-netdev_lock() protect netdev->reg_state"), which added a netdev_lock() in
-register_netdevice.
+On 14/2/2025 3:12 am, Kurt Kanzenbach wrote:
+> On Thu Feb 13 2025, Vladimir Oltean wrote:
+>> So, confusingly to me, it seems like one operating mode is fundamentally
+>> different from the other, and something will have to change if both will
+>> be made to behave the same. What will change? You say mqprio will behave
+>> like taprio, but I think if anything, mqprio is the one which does the
+>> right thing, in igc_tsn_tx_arb(), and taprio seems to use the default Tx
+>> arbitration scheme?
+> 
+> Correct. taprio is using the default scheme. mqprio configures it to
+> what ever the user provided (in igc_tsn_tx_arb()).
+> 
+>> I don't think I'm on the same page as you guys, because to me, it is
+>> just odd that the P traffic classes would be the first ones with
+>> mqprio, but the last ones with taprio.
+> 
+> I think we are on the same page here. At the end both have to behave the
+> same. Either by using igc_tsn_tx_arb() for taprio too or only using the
+> default scheme for both (and thereby keeping broken_mqprio). Whatever
+> Faizal implements I'll match the behavior with mqprio.
+> 
 
-The iAVF driver calls register_netdevice() from iavf_finish_config(), as a
-final stage of its state machine post-probe. It currently takes the RTNL
-lock, then the netdev lock, and then the device critical lock. This pattern
-is used throughout the driver. Thus there is a strong dependency that the
-crit_lock should not be acquired before the net device lock. The change to
-register_netdevice creates an ABBA lock order violation because the iAVF
-driver is holding the crit_lock while calling register_netdevice, which
-then takes the netdev_lock.
+Hi Kurt & Vladimir,
 
-It seems likely that future refactors could result in netdev APIs which
-hold the netdev_lock while calling into the driver. This means that we
-should not re-order the locks so that netdev_lock is acquired after the
-device private crit_lock.
+After reading Vladimir's reply on tc, hw queue, and socket priority mapping 
+for both taprio and mqprio, I agree they should follow the same priority 
+scheme for consistency—both in code and command usage (i.e., taprio, 
+mqprio, and fpe in both configurations). Since igc_tsn_tx_arb() ensures a 
+standard mapping of tc, socket priority, and hardware queue priority, I'll 
+enable taprio to use igc_tsn_tx_arb() in a separate patch submission.
 
-Instead, notice that we already release the netdev_lock prior to calling
-the register_netdevice. This flow only happens during the early driver
-initialization as we transition through the __IAVF_STARTUP,
-__IAVF_INIT_VERSION_CHECK, __IAVF_INIT_GET_RESOURCES, etc.
+I'll split the changes based on Vladimir's suggestion.
 
-Analyzing the places where we take crit_lock in the driver there are two
-sources:
+First part - ethtool-mm related:
+igc: Add support to get frame preemption statistics via ethtool
+igc: Add support to get MAC Merge data via ethtool
+igc: Add support to set tx-min-frag-size
+igc: Add support for frame preemption verification
+igc: Set the RX packet buffer size for TSN mode
+igc: Optimize TX packet buffer utilization
+igc: Rename xdp_get_tx_ring() for non-XDP usage
+net: ethtool: mm: Extract stmmac verification logic into a common library
 
-a) several of the work queue tasks including adminq_task, watchdog_task,
-reset_task, and the finish_config task.
+Second part:
+igc: Add support for preemptible traffic class in taprio and mqprio
+igc: Use igc_tsn_tx_arb() for taprio queue priority scheme
+igc: Kurt's patch on mqprio to use normal TSN Tx mode
 
-b) various callbacks which ultimately stem back to .ndo operations or
-ethtool operations.
+Kurt can keep igc_tsn_tx_arb() for his mqprio patch, so preemptible tc 
+should work the same for both taprio and mqprio.
 
-The latter cannot be triggered until after the netdevice registration is
-completed successfully.
+I'm suggesting to include Kurt's patch in the second part since there's 
+some dependency and potential code conflict, even though it mixes different 
+functional changes in the same series.
 
-The iAVF driver uses alloc_ordered_workqueue, which is an unbound workqueue
-that has a max limit of 1, and thus guarantees that only a single work item
-on the queue is executing at any given time, so none of the other work
-threads could be executing due to the ordered workqueue guarantees.
-
-The iavf_finish_config() function also does not do anything else after
-register_netdevice, unless it fails. It seems unlikely that the driver
-private crit_lock is protecting anything that register_netdevice() itself
-touches.
-
-Thus, to fix this ABBA lock violation, lets simply release the
-adapter->crit_lock as well as netdev_lock prior to calling
-register_netdevice(). We do still keep holding the RTNL lock as required by
-the function. If we do fail to register the netdevice, then we re-acquire
-the adapter critical lock to finish the transition back to
-__IAVF_INIT_CONFIG_ADAPTER.
-
-This ensures every call where both netdev_lock and the adapter->crit_lock
-are acquired under the same ordering.
-
-Fixes: afc664987ab3 ("eth: iavf: extend the netdev_lock usage")
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Tested-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
----
-Changes in v2:
-- Add Intel Wired LAN for patchwork integration
-- Link to v1: https://lore.kernel.org/r/20250213-jk-iavf-abba-lock-crash-v1-1-d4850f6a0a0d@intel.com
----
- drivers/net/ethernet/intel/iavf/iavf_main.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 852e5b62f0a5dc038c0e5c0f76541870e69384ac..6faa62bced3a2ccb935219ba0726275c8ae60365 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -1983,7 +1983,7 @@ static int iavf_reinit_interrupt_scheme(struct iavf_adapter *adapter, bool runni
- static void iavf_finish_config(struct work_struct *work)
- {
- 	struct iavf_adapter *adapter;
--	bool netdev_released = false;
-+	bool locks_released = false;
- 	int pairs, err;
- 
- 	adapter = container_of(work, struct iavf_adapter, finish_config);
-@@ -2012,19 +2012,22 @@ static void iavf_finish_config(struct work_struct *work)
- 		netif_set_real_num_tx_queues(adapter->netdev, pairs);
- 
- 		if (adapter->netdev->reg_state != NETREG_REGISTERED) {
-+			mutex_unlock(&adapter->crit_lock);
- 			netdev_unlock(adapter->netdev);
--			netdev_released = true;
-+			locks_released = true;
- 			err = register_netdevice(adapter->netdev);
- 			if (err) {
- 				dev_err(&adapter->pdev->dev, "Unable to register netdev (%d)\n",
- 					err);
- 
- 				/* go back and try again.*/
-+				mutex_lock(&adapter->crit_lock);
- 				iavf_free_rss(adapter);
- 				iavf_free_misc_irq(adapter);
- 				iavf_reset_interrupt_capability(adapter);
- 				iavf_change_state(adapter,
- 						  __IAVF_INIT_CONFIG_ADAPTER);
-+				mutex_unlock(&adapter->crit_lock);
- 				goto out;
- 			}
- 		}
-@@ -2040,9 +2043,10 @@ static void iavf_finish_config(struct work_struct *work)
- 	}
- 
- out:
--	mutex_unlock(&adapter->crit_lock);
--	if (!netdev_released)
-+	if (!locks_released) {
-+		mutex_unlock(&adapter->crit_lock);
- 		netdev_unlock(adapter->netdev);
-+	}
- 	rtnl_unlock();
- }
- 
-
----
-base-commit: 348f968b89bfeec0bb53dd82dba58b94d97fbd34
-change-id: 20250213-jk-iavf-abba-lock-crash-300fbb33ae99
-
-Best regards,
--- 
-Jacob Keller <jacob.e.keller@intel.com>
+Does this sound good to you?
 
