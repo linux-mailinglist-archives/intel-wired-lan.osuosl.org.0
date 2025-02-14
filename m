@@ -1,137 +1,111 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BB221A355DA
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Feb 2025 05:50:22 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B5CF7A35681
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Feb 2025 06:45:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1140E60BB8;
-	Fri, 14 Feb 2025 04:50:21 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2C3C183365;
+	Fri, 14 Feb 2025 05:45:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id siqnHdYlsTUi; Fri, 14 Feb 2025 04:50:20 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id B9-DYybe344i; Fri, 14 Feb 2025 05:45:23 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 21F1F60C16
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7A44A831E3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739508620;
-	bh=orTnkK40/j4ajEWBrPyqa344M+qGpD/Jz451eenCREo=;
+	s=default; t=1739511923;
+	bh=i32KyHZn2vU4b8HRXYeZBjRsFAGvePfWlCE8MNpdinc=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=0jOcln8UfqThbw90TGu7EsV5zkcFodgWU/0oFjhBgtoLR8Q2ui0pSGYXinAjoybOf
-	 U857xjIu8hqAbVAukQb0B+1PuRUxFvN8bpNu2EYAy/rCEBzDK6JcorIYzCSu0etqG4
-	 TG5KDT1ZCgY7WHx+T5P6H9ug/BgLkvt4mbHqMPnilDLPS+ltoLYTaaP1A3R2IpuIxp
-	 GPCxy0teOgozhJKr1DZE56GRcXDtOO1/HOHvdlrp7Cv63N1YLA6dVkXvGn1oLt1uMB
-	 fjdzpk534lSLLZkyspI1f5xpBR7/8+KIMZLyFwRh15sG24HwwMuHQlMia0OmlvZxM8
-	 McxRVpA4+kVNg==
+	b=MgY0lqGLwDX3AdhD7ZaasOmi0Al7R397rdBHr/Yilh1b7cdLZvjdlkJnAvlhBmYKE
+	 duRNx5xbn/8UNkADwDwUxBH4PdNBcKzDGBu+T1Hhh81QiVKVPfe+BOKWjUm5AMzsiU
+	 eCMRwc7+kqEvhlHRzUaULEGl6PQ3kMvcGuW+efFM1WVATaicmRZbZW61//CR9IPWi9
+	 +if7ep4MokTX7YTpx8njfyNxzMQ9G/VKpCILrNFFdtHowzvFfgE+AsI6hAodQlOKjS
+	 6JO7rKyCxXqJyVkePvEJ9wKgzJpIzfZmBgyADeZkjN4d+KgZJ4bWEcniTv8in8yb3M
+	 W6eJmLNJ5iYww==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 21F1F60C16;
-	Fri, 14 Feb 2025 04:50:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7A44A831E3;
+	Fri, 14 Feb 2025 05:45:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 2A8481C6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 04:50:18 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 23A591C6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 05:45:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B015460BB8
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 04:50:17 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 07F1440159
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 05:45:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8V-uXN6M717f for <intel-wired-lan@lists.osuosl.org>;
- Fri, 14 Feb 2025 04:50:17 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
- helo=mgamail.intel.com; envelope-from=faizal.abdul.rahim@linux.intel.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 036B5trCqS1I for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 14 Feb 2025 05:45:17 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 89DEC60B13
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 89DEC60B13
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 89DEC60B13
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 04:50:16 +0000 (UTC)
-X-CSE-ConnectionGUID: jVw0wmXDQM2Rx2j3e/Qmpg==
-X-CSE-MsgGUID: zNva/937RfiNsAvanfE8xg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11314"; a="40361828"
-X-IronPort-AV: E=Sophos;i="6.12,310,1728975600"; d="scan'208";a="40361828"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
- by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Feb 2025 20:50:15 -0800
-X-CSE-ConnectionGUID: 2b+fgtn9Q7+FDC4KwavSPQ==
-X-CSE-MsgGUID: wezvzmt3Tm6HcUS0QIfqlQ==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org BBE83400D7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BBE83400D7
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id BBE83400D7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 05:45:16 +0000 (UTC)
+X-CSE-ConnectionGUID: fJEHWl0qRvqDn4SeetPj6g==
+X-CSE-MsgGUID: M3hxK1WLSvanV4TbUUIORQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11344"; a="39955441"
+X-IronPort-AV: E=Sophos;i="6.13,284,1732608000"; d="scan'208";a="39955441"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+ by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Feb 2025 21:45:16 -0800
+X-CSE-ConnectionGUID: X3ElYp6mRuamoI8ErGA/tQ==
+X-CSE-MsgGUID: WPA/9lNuTzGl0YLZ3L8yDg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,284,1732608000"; d="scan'208";a="113096903"
-Received: from mohdfai2-mobl.gar.corp.intel.com (HELO [10.247.123.6])
- ([10.247.123.6])
- by orviesa009-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Feb 2025 20:50:07 -0800
-Message-ID: <e5c5d7ed-9f47-4af1-aee4-4632099bd546@linux.intel.com>
-Date: Fri, 14 Feb 2025 12:50:04 +0800
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="113226630"
+Received: from mev-dev.igk.intel.com ([10.237.112.144])
+ by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Feb 2025 21:45:12 -0800
+Date: Fri, 14 Feb 2025 06:41:35 +0100
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: Marcin Szycik <marcin.szycik@linux.intel.com>
+Cc: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ intel-wired-lan@lists.osuosl.org, himasekharx.reddy.pucha@intel.com,
+ pmenzel@molgen.mpg.de, marcin.szycik@intel.com,
+ netdev@vger.kernel.org, rafal.romanowski@intel.com,
+ konrad.knitter@intel.com, pawel.chmielewski@intel.com,
+ horms@kernel.org, David.Laight@aculab.com,
+ nex.sw.ncis.nat.hpm.dev@intel.com, pio.raczynski@gmail.com,
+ sridhar.samudrala@intel.com, jacob.e.keller@intel.com,
+ jiri@resnulli.us, przemyslaw.kitszel@intel.com,
+ Tony Nguyen <anthony.l.nguyen@intel.com>
+Message-ID: <Z67XjwByeVSuLooq@mev-dev.igk.intel.com>
+References: <20241203065817.13475-1-michal.swiatkowski@linux.intel.com>
+ <20241203065817.13475-6-michal.swiatkowski@linux.intel.com>
+ <8e533834-4564-472f-b29b-4f1cb7730053@linux.intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: "Abdul Rahim, Faizal" <faizal.abdul.rahim@linux.intel.com>
-To: Kurt Kanzenbach <kurt@linutronix.de>,
- Vladimir Oltean <vladimir.oltean@nxp.com>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S . Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Simon Horman <horms@kernel.org>, Russell King <linux@armlinux.org.uk>,
- Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>, Furong Xu <0x1207@gmail.com>,
- Russell King <rmk+kernel@armlinux.org.uk>,
- Serge Semin <fancer.lancer@gmail.com>,
- Xiaolei Wang <xiaolei.wang@windriver.com>,
- Suraj Jaiswal <quic_jsuraj@quicinc.com>,
- Kory Maincent <kory.maincent@bootlin.com>, Gal Pressman <gal@nvidia.com>,
- Jesper Nilsson <jesper.nilsson@axis.com>,
- Andrew Halaney <ahalaney@redhat.com>,
- Choong Yong Liang <yong.liang.choong@linux.intel.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, bpf@vger.kernel.org
-References: <20250210070207.2615418-1-faizal.abdul.rahim@linux.intel.com>
- <20250210070207.2615418-1-faizal.abdul.rahim@linux.intel.com>
- <20250212220121.ici3qll66pfoov62@skbuf>
- <b19357dc-590d-458c-9646-ee5993916044@linux.intel.com>
- <87cyfmnjdh.fsf@kurt.kurt.home>
- <5902cc28-a649-4ae9-a5ba-83aa265abaf8@linux.intel.com>
- <20250213130003.nxt2ev47a6ppqzrq@skbuf>
- <1c981aa1-e796-4c53-9853-3eae517f2f6d@linux.intel.com>
- <877c5undbg.fsf@kurt.kurt.home> <20250213184613.cqc2zhj2wkaf5hn7@skbuf>
- <87v7td3bi1.fsf@kurt.kurt.home>
- <b7740709-6b4a-4f44-b4d7-e265bb823aca@linux.intel.com>
-Content-Language: en-US
-In-Reply-To: <b7740709-6b4a-4f44-b4d7-e265bb823aca@linux.intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <8e533834-4564-472f-b29b-4f1cb7730053@linux.intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1739508617; x=1771044617;
- h=message-id:date:mime-version:subject:from:to:cc:
- references:in-reply-to:content-transfer-encoding;
- bh=gPVj4mO6xQJrCt3sZYWJNbH9C8SimtbKXR7wY1fjf90=;
- b=S3zgFCi9ie8IbTCTrmDoUn/IDnMpdrCgrXWP2QsQtrOfwTl7HaZtHURt
- Lam/vjKG4YyGpGT2UeLjC9Nk1ctVW5oVnt38bBoSvWApHpRzpdfWsijt4
- xnvI3LyFujlPxGPvi7qoQE3BskIrck9OHMtflMOJYF4B4cGi6lU3vXgKT
- v4dKXQ/WyKkyfu/DLON4+cXJbnbHD/oM8mzsmAPgr0ZvdVPGE8DO32zlq
- mQYgFwacl70heqeNOpWmcje54v9uW5Gcat7iyxPAfnZL8uPlSL+9PvtpI
- ExkGK83W739qfQ/Fw2rLPSYEXML0AHie7xDFh8uBUau3bn9+BwaX+QjpH
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1739511917; x=1771047917;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=WkDTYJr0mQ8LaGzM86s/k8BZhKOQcrJIJdVs6kspsYA=;
+ b=PEoWTBFIaxDQJZZAFQssSm2yVG04qh1d4tLy1vmpPWNFHTxL2TzsV2nB
+ dz+PpJ9QLCCdXs7YD2fDisZoWidu0mHZTu8qC8uW85pn83Xo8fQ8ag7Yj
+ PW7bvrOsI2/Ma5v5UBacNw791IHDUBNPbCf/Ve84swT1nGYisa+k2nl1D
+ AOZteAumfepDpzfId74FexfQamPtuA1NRrQWr3dUpYvGS2yZoLHUH54iS
+ f5olMJo7Fd50smgIdhM/MP1KgMokp70+js0Vw+O5kHCaJIwOjwxEQcJy+
+ fMQzmRNyWOXuG01YQ3F5+hgrT7RS3UwnwjVQeVHPEl2Ymic9XXbgwTjxu
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=S3zgFCi9
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 0/9] igc: Add support for
- Frame Preemption feature in IGC
+ header.s=Intel header.b=PEoWTBFI
+Subject: Re: [Intel-wired-lan] [iwl-next v9 5/9] ice,
+ irdma: move interrupts code to irdma
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -147,72 +121,56 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+On Thu, Feb 13, 2025 at 08:20:31PM +0100, Marcin Szycik wrote:
+> 
+> 
+> On 03.12.2024 07:58, Michal Swiatkowski wrote:
+> > Move responsibility of MSI-X requesting for RDMA feature from ice driver
+> > to irdma driver. It is done to allow simple fallback when there is not
+> > enough MSI-X available.
+> > 
+> > Change amount of MSI-X used for control from 4 to 1, as it isn't needed
+> > to have more than one MSI-X for this purpose.
+> 
+> Hi, I'm observing KASAN reports or kernel panic when attempting to remove irdma
+> with this patchset, most probably this patch being the culprit, since it touches
+> functions from splat.
+> 
+> Reproducer:
+>   sudo rmmod irdma
+> 
+> Minified splat(s):
+>   BUG: KASAN: use-after-free in irdma_remove+0x257/0x2d0 [irdma]
+>   Call Trace:
+>    <TASK>
+>    ? __pfx__raw_spin_lock_irqsave+0x10/0x10
+>    ? kfree+0x253/0x450
+>    ? irdma_remove+0x257/0x2d0 [irdma]
+>    kasan_report+0xed/0x120
+>    ? irdma_remove+0x257/0x2d0 [irdma]
+>    irdma_remove+0x257/0x2d0 [irdma]
+>    auxiliary_bus_remove+0x56/0x80
+>    device_release_driver_internal+0x371/0x530
+>    ? kernfs_put.part.0+0x147/0x310
+>    driver_detach+0xbf/0x180
+>    bus_remove_driver+0x11b/0x2a0
+>    auxiliary_driver_unregister+0x1a/0x50
+>    irdma_exit_module+0x40/0x4c [irdma]
+>   
+>   Oops: general protection fault, probably for non-canonical address 0xdffffc0000000000: 0000 [#1] PREEMPT SMP KASAN NOPTI
+>   KASAN: null-ptr-deref in range [0x0000000000000000-0x0000000000000007]
+>   RIP: 0010:ice_free_rdma_qvector+0x2a/0xa0 [ice]
+>   Call Trace:
+>    ? ice_free_rdma_qvector+0x2a/0xa0 [ice]
+>    irdma_remove+0x179/0x2d0 [irdma]
+>    auxiliary_bus_remove+0x56/0x80
+>    device_release_driver_internal+0x371/0x530
+>    ? kobject_put+0x61/0x4b0
+>    driver_detach+0xbf/0x180
+>    bus_remove_driver+0x11b/0x2a0
+>    auxiliary_driver_unregister+0x1a/0x50
+>    irdma_exit_module+0x40/0x4c [irdma]
 
+Thanks, I will work on it.
 
-On 14/2/2025 12:20 pm, Abdul Rahim, Faizal wrote:
 > 
-> 
-> On 14/2/2025 3:12 am, Kurt Kanzenbach wrote:
->> On Thu Feb 13 2025, Vladimir Oltean wrote:
->>> So, confusingly to me, it seems like one operating mode is fundamentally
->>> different from the other, and something will have to change if both will
->>> be made to behave the same. What will change? You say mqprio will behave
->>> like taprio, but I think if anything, mqprio is the one which does the
->>> right thing, in igc_tsn_tx_arb(), and taprio seems to use the default Tx
->>> arbitration scheme?
->>
->> Correct. taprio is using the default scheme. mqprio configures it to
->> what ever the user provided (in igc_tsn_tx_arb()).
->>
->>> I don't think I'm on the same page as you guys, because to me, it is
->>> just odd that the P traffic classes would be the first ones with
->>> mqprio, but the last ones with taprio.
->>
->> I think we are on the same page here. At the end both have to behave the
->> same. Either by using igc_tsn_tx_arb() for taprio too or only using the
->> default scheme for both (and thereby keeping broken_mqprio). Whatever
->> Faizal implements I'll match the behavior with mqprio.
->>
-> 
-> Hi Kurt & Vladimir,
-> 
-> After reading Vladimir's reply on tc, hw queue, and socket priority mapping 
-> for both taprio and mqprio, I agree they should follow the same priority 
-> scheme for consistency—both in code and command usage (i.e., taprio, 
-> mqprio, and fpe in both configurations). Since igc_tsn_tx_arb() ensures a 
-> standard mapping of tc, socket priority, and hardware queue priority, I'll 
-> enable taprio to use igc_tsn_tx_arb() in a separate patch submission.
-> 
-> I'll split the changes based on Vladimir's suggestion.
-> 
-> First part - ethtool-mm related:
-> igc: Add support to get frame preemption statistics via ethtool
-> igc: Add support to get MAC Merge data via ethtool
-> igc: Add support to set tx-min-frag-size
-> igc: Add support for frame preemption verification
-> igc: Set the RX packet buffer size for TSN mode
-> igc: Optimize TX packet buffer utilization
-> igc: Rename xdp_get_tx_ring() for non-XDP usage
-> net: ethtool: mm: Extract stmmac verification logic into a common library
-> 
-> Second part:
-> igc: Add support for preemptible traffic class in taprio and mqprio
-> igc: Use igc_tsn_tx_arb() for taprio queue priority scheme
-> igc: Kurt's patch on mqprio to use normal TSN Tx mode
-> 
-> Kurt can keep igc_tsn_tx_arb() for his mqprio patch, so preemptible tc 
-> should work the same for both taprio and mqprio.
-> 
-> I'm suggesting to include Kurt's patch in the second part since there's 
-> some dependency and potential code conflict, even though it mixes different 
-> functional changes in the same series.
-
-I forgot that the second part patch:
-igc: Add support for preemptible traffic class in taprio and mqprio
-
-depends on the first part ethtool-mm, which would delay Kurt's patch.
-
-So Kurt, if you'd prefer to submit yours first, that's okay too.
-
-
-
