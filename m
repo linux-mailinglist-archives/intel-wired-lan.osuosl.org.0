@@ -1,142 +1,135 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AF7A9A35C3F
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Feb 2025 12:14:49 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 86F32A35C59
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Feb 2025 12:20:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 666BE6FBE5;
-	Fri, 14 Feb 2025 11:14:48 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3228B83B22;
+	Fri, 14 Feb 2025 11:20:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9XQ70owPf-Ao; Fri, 14 Feb 2025 11:14:47 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 7NWMEoIp2bSc; Fri, 14 Feb 2025 11:20:24 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A3EFB6FBD3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4B1D483AF4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739531687;
-	bh=/89jGhK6vPerbydEanGr47SknZZAd9+GUvMvlUhQ0m8=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1739532024;
+	bh=9l3d5h97w8JyBfnaFKOZUCgbofNi5r9Nz0RaWVnwioM=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=bGnVRfSp45xxP8oBkBif1WOMYDk/wSI5JFOoxu0X2CtSRQXixW9jBNQaX7/LFYZ9/
-	 j7atHkag5eEVqDN5cHz1lL0ctbhtEcrNyS5gPX8KxEiYxSWd7dOb1UXORQCL8Q0por
-	 VO3jfd74ypdoDdefjD0ZzaKIJlClpk3aojZcHArcT543bxePh/uLkeFlUxtMd3GAoD
-	 bq3hyhZkWAc8ROl6PQiV5Z+ujmRCH+RhMcUsPFZM4f09N2HUtT4LHXQv2u/S+RKakt
-	 R50PzFW61WFGAFRQdzE1r5vRI1ESLlt+g9yqQ6Wkm4q5s+HXDa0dxIdhU0hyWvUcmh
-	 ozxi8boXhE/XA==
+	b=DsolqgHRq49S/DBczb61DCduMs6w4rZpzemk43iqtLYhPjAo7aX//THFfkuHxprD5
+	 aNkb5IYsd2R0Lfv+28EWDsG/9xi+M8A3JDLhZT4tYwnZFMXwKZGc1h5ze2V4UkEn+e
+	 LYjOTFdRSY1mr7BEqz8TxSCYhRA0O+NEmHcG0dlLprLtAXhzPMBZSZ5oG+bNnYK5+B
+	 9jrDjzHfCZNF+2TYflseD4YoAss0E5y7l71fSHZg9JZ/FdlJIbiLGhBFo0Ix4Vwssi
+	 I09zi+r4CiwCakpkuAnas8NR3PkOCE/5p3s2g1NTd3dPHwKzDYgU8GA7S7xJu3pKRE
+	 6GCgyyub6vNig==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A3EFB6FBD3;
-	Fri, 14 Feb 2025 11:14:47 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4B1D483AF4;
+	Fri, 14 Feb 2025 11:20:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 75ED3C2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 11:14:45 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 6D510C2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 11:20:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 65A906FB96
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 11:14:45 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 501D783AD4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 11:20:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZvCw6pqaPgM8 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 14 Feb 2025 11:14:44 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=leon@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 811E36FB21
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 811E36FB21
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 811E36FB21
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 11:14:44 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 8939A5C56A5;
- Fri, 14 Feb 2025 11:14:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37094C4AF0B;
- Fri, 14 Feb 2025 11:14:42 +0000 (UTC)
-Received: from phl-compute-10.internal (phl-compute-10.phl.internal
- [10.202.2.50])
- by mailfauth.phl.internal (Postfix) with ESMTP id 171CB1200043;
- Fri, 14 Feb 2025 06:14:41 -0500 (EST)
-Received: from phl-imap-12 ([10.202.2.86])
- by phl-compute-10.internal (MEProxy); Fri, 14 Feb 2025 06:14:41 -0500
-X-ME-Sender: <xms:oCWvZ55JMyEB0-iKQan1E9T3MM_3JPKNsLvNG5kY504jtsGeaiUYNg>
- <xme:oCWvZ25omGA3WGMsS319f9OFrsCIETmuYk1Fscn0L4nBtM6nxd5zdUmWTCfa2E3b2
- 4UKxhxjTMvr6e6-D18>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgdegleehtdcutefuodetggdotefrod
- ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpggftfghnshhusghstghrihgsvgdp
- uffrtefokffrpgfnqfghnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivg
- hnthhsucdlqddutddtmdenucfjughrpefoggffhffvvefkjghfufgtgfesthejredtredt
- tdenucfhrhhomhepfdfnvghonhcutfhomhgrnhhovhhskhihfdcuoehlvghonheskhgvrh
- hnvghlrdhorhhgqeenucggtffrrghtthgvrhhnpeejvefflefgledvgfevvdetleehhfdv
- ffehgeffkeevleeiveefjeetieelueeuvdenucevlhhushhtvghrufhiiigvpedtnecurf
- grrhgrmhepmhgrihhlfhhrohhmpehlvghonhdomhgvshhmthhprghuthhhphgvrhhsohhn
- rghlihhthidquddvfedtheefleekgedqvdejjeeljeejvdekqdhlvghonheppehkvghrnh
- gvlhdrohhrgheslhgvohhnrdhnuhdpnhgspghrtghpthhtohepvdeipdhmohguvgepshhm
- thhpohhuthdprhgtphhtthhopegrhihushhhrdhsrgifrghlsegthhgvlhhsihhordgtoh
- hmpdhrtghpthhtohepsghhrghrrghtsegthhgvlhhsihhordgtohhmpdhrtghpthhtohep
- lhhouhhishdrphgvvghnshestghorhhighhinhgvrdgtohhmpdhrtghpthhtohepohhssh
- dqughrihhvvghrshestghorhhighhinhgvrdgtohhmpdhrtghpthhtohephhgvrhgsvghr
- thesghhonhguohhrrdgrphgrnhgrrdhorhhgrdgruhdprhgtphhtthhopegvughumhgrii
- gvthesghhoohhglhgvrdgtohhmpdhrtghpthhtoheprghnthhhohhnhidrlhdrnhhguhih
- vghnsehinhhtvghlrdgtohhmpdhrtghpthhtohepphhriigvmhihshhlrgifrdhkihhtsh
- iivghlsehinhhtvghlrdgtohhmpdhrtghpthhtohepjhhvsehjvhhoshgsuhhrghhhrdhn
- vght
-X-ME-Proxy: <xmx:oCWvZwejf68vGpUuT6T7bTrCY5Ugkt3VDZeu_KYFa2RZHm6qvbbxrQ>
- <xmx:oSWvZyIgKAdrOLr1Z8BNvhcMTp1ABJldb16i1iHxLswvvRbOqOnHsQ>
- <xmx:oSWvZ9L-j3DB9bHYdkC0urq4nHzTOvPab5ahAM9w5DM1QZPwfYvc5A>
- <xmx:oSWvZ7zHvtJ8SfOYb8GbeCTLnkK9XIfnHMzeRa5-cPcyqDFWOBfr8Q>
- <xmx:oSWvZ5KEm76cXOh3dQwdghf4O5W92GjuCBf-3NT_mJr-ZJPPG59_1GGY>
-Feedback-ID: i927946fb:Fastmail
-Received: by mailuser.phl.internal (Postfix, from userid 501)
- id DF44F1C20066; Fri, 14 Feb 2025 06:14:40 -0500 (EST)
-X-Mailer: MessagingEngine.com Webmail Interface
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id fi9eNor2Lu38 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 14 Feb 2025 11:20:20 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
+ helo=mgamail.intel.com; envelope-from=faizal.abdul.rahim@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org E166283981
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E166283981
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E166283981
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 11:20:19 +0000 (UTC)
+X-CSE-ConnectionGUID: gDHrNqbRRuiJBCvaWEltdg==
+X-CSE-MsgGUID: ShYgltDqS9ybJxnqTiWMPQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11344"; a="50921228"
+X-IronPort-AV: E=Sophos;i="6.13,285,1732608000"; d="scan'208";a="50921228"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+ by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Feb 2025 03:20:19 -0800
+X-CSE-ConnectionGUID: y7/+bKRnQVCJqHfK1+vedw==
+X-CSE-MsgGUID: e3HzIYJQSCC/jYLkKMQc/Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.13,285,1732608000"; d="scan'208";a="113624859"
+Received: from mohdfai2-mobl.gar.corp.intel.com (HELO [10.247.89.75])
+ ([10.247.89.75])
+ by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Feb 2025 03:20:11 -0800
+Message-ID: <afa50e3a-914b-46b6-8401-0589b6099f68@linux.intel.com>
+Date: Fri, 14 Feb 2025 19:20:08 +0800
 MIME-Version: 1.0
-Date: Fri, 14 Feb 2025 13:14:21 +0200
-From: "Leon Romanovsky" <leon@kernel.org>
-To: "Steffen Klassert" <steffen.klassert@secunet.com>
-Cc: "Andrew Lunn" <andrew+netdev@lunn.ch>,
- "Ayush Sawal" <ayush.sawal@chelsio.com>,
- "Bharat Bhushan" <bbhushan2@marvell.com>,
- "Eric Dumazet" <edumazet@google.com>, "Geetha sowjanya" <gakula@marvell.com>, 
- hariprasad <hkelam@marvell.com>, "Herbert Xu" <herbert@gondor.apana.org.au>,
- intel-wired-lan@lists.osuosl.org, "Jakub Kicinski" <kuba@kernel.org>,
- "Jay Vosburgh" <jv@jvosburgh.net>, "Jonathan Corbet" <corbet@lwn.net>,
- linux-doc@vger.kernel.org, linux-rdma@vger.kernel.org,
- "Louis Peens" <louis.peens@corigine.com>, netdev@vger.kernel.org,
- oss-drivers@corigine.com, "Paolo Abeni" <pabeni@redhat.com>,
- "Potnuri Bharat Teja" <bharat@chelsio.com>,
- "Przemek Kitszel" <przemyslaw.kitszel@intel.com>,
- "Saeed Mahameed" <saeedm@nvidia.com>,
- "Subbaraya Sundeep" <sbhatta@marvell.com>,
- "Sunil Goutham" <sgoutham@marvell.com>, "Tariq Toukan" <tariqt@nvidia.com>,
- "Tony Nguyen" <anthony.l.nguyen@intel.com>, "Ilia Lin" <ilia.lin@kernel.org>
-Message-Id: <a2157143-4adc-4551-b910-d9d99e192487@app.fastmail.com>
-In-Reply-To: <Z68M/4jka5FwrvLV@gauss3.secunet.de>
-References: <cover.1738778580.git.leon@kernel.org>
- <dcadf7c144207017104657f85d512889a2d1a09e.1738778580.git.leon@kernel.org>
- <Z6yMgPSfPzgGHTkD@gauss3.secunet.de> <20250212183020.GJ17863@unreal>
- <Z68M/4jka5FwrvLV@gauss3.secunet.de>
-Content-Type: text/plain
-Content-Transfer-Encoding: 7bit
+User-Agent: Mozilla Thunderbird
+To: Vladimir Oltean <vladimir.oltean@nxp.com>
+Cc: Kurt Kanzenbach <kurt@linutronix.de>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S . Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Simon Horman <horms@kernel.org>, Russell King <linux@armlinux.org.uk>,
+ Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, Furong Xu <0x1207@gmail.com>,
+ Russell King <rmk+kernel@armlinux.org.uk>,
+ Serge Semin <fancer.lancer@gmail.com>,
+ Xiaolei Wang <xiaolei.wang@windriver.com>,
+ Suraj Jaiswal <quic_jsuraj@quicinc.com>,
+ Kory Maincent <kory.maincent@bootlin.com>, Gal Pressman <gal@nvidia.com>,
+ Jesper Nilsson <jesper.nilsson@axis.com>,
+ Choong Yong Liang <yong.liang.choong@linux.intel.com>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, bpf@vger.kernel.org
+References: <87cyfmnjdh.fsf@kurt.kurt.home>
+ <5902cc28-a649-4ae9-a5ba-83aa265abaf8@linux.intel.com>
+ <20250213130003.nxt2ev47a6ppqzrq@skbuf>
+ <1c981aa1-e796-4c53-9853-3eae517f2f6d@linux.intel.com>
+ <877c5undbg.fsf@kurt.kurt.home> <20250213184613.cqc2zhj2wkaf5hn7@skbuf>
+ <87v7td3bi1.fsf@kurt.kurt.home>
+ <b7740709-6b4a-4f44-b4d7-e265bb823aca@linux.intel.com>
+ <874j0wrjk2.fsf@kurt.kurt.home>
+ <641ab972-e110-4af2-ad9b-6688cee56562@linux.intel.com>
+ <20250214102206.25dqgut5tbak2rkz@skbuf>
+Content-Language: en-US
+From: "Abdul Rahim, Faizal" <faizal.abdul.rahim@linux.intel.com>
+In-Reply-To: <20250214102206.25dqgut5tbak2rkz@skbuf>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1739531682;
- bh=h0lJOOGwOy62qvljHZCMnbxB3nLk6xpE2zTPjM/UO1w=;
- h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
- b=ocH3TY7oh6QnyTnSMB7GtnWO83350elHqsUkln5QUOo8dAUEGytA2WwFF0q5K6162
- ywjf7zcXMqx9U3D0wvge8YscwLu08ZEjoPw9vQxFzaT3BNUzEJ9Vw7xZjVb0+opSI6
- A5YbdOiKZqNOq8VIOFh6Ib304NBtIrQaruL4tczO/pJysiKnfpj+ETJQz5kEGFd2Jp
- IVegqM+4QUUKdGgjDW7jfSEkGFuZe5HQSolx8ScwMpLBXkPh7eH9Vs0l+qf1qbXnFK
- /ulv9uGsVI0dcT2Y0nn/xJmPgjsQ/YIIKhGHrCH3c9DCegNMajwiEDjRutjwcEySEk
- f9Z8y0RuZY+Vg==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1739532020; x=1771068020;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=bsMoByqwV8q04F4BIn7mVkZvxnRBIcre3Xld+Gy6r0M=;
+ b=VEAcjJIvFJxUj3JHJa8hqqc3ETNBTRupaiK4U0zddaSVQ8F9OPBOCeST
+ xp01eH9jJ73k88Z+8zXxdF2acGkXFV9X5DnemhmY7VIVbUYEPYY90to/a
+ 5d2gYHkU0koLcsoaSbGqujD7Kd23tfpZX9/iOD/lg9mPs2axMT3iHgZGW
+ HRHkvajlEFIdBIjcf5EFVOE2CQtxKG12b7icK/r5918KlDLZodLnVygpk
+ EEbTym7h+cpBVfRlTzzf1S2YbyDSWmKrn+3iXzRmMSQ+qX46FY32khrA4
+ dl3vwgxY9Z9/ucb/SEibZjVbUi0dVfd109rPBosJQrFFP+M6+Vg4Y9W77
+ g==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=ocH3TY7o
-Subject: Re: [Intel-wired-lan] [PATCH ipsec-next 2/5] xfrm: simplify SA
- initialization routine
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=VEAcjJIv
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 0/9] igc: Add support for
+ Frame Preemption feature in IGC
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -154,71 +147,68 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
 
-On Fri, Feb 14, 2025, at 11:29, Steffen Klassert wrote:
-> On Wed, Feb 12, 2025 at 08:30:20PM +0200, Leon Romanovsky wrote:
->> On Wed, Feb 12, 2025 at 12:56:48PM +0100, Steffen Klassert wrote:
->> > On Wed, Feb 05, 2025 at 08:20:21PM +0200, Leon Romanovsky wrote:
->> > > From: Leon Romanovsky <leonro@nvidia.com>
->> > > 
->> > > SA replay mode is initialized differently for user-space and
->> > > kernel-space users, but the call to xfrm_init_replay() existed in
->> > > common path with boolean protection. That caused to situation where
->> > > we have two different function orders.
->> > > 
->> > > So let's rewrite the SA initialization flow to have same order for
->> > > both in-kernel and user-space callers.
->> > > 
->> > > Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
->> > > ---
->> > >  include/net/xfrm.h    |  3 +--
->> > >  net/xfrm/xfrm_state.c | 22 ++++++++++------------
->> > >  net/xfrm/xfrm_user.c  |  2 +-
->> > >  3 files changed, 12 insertions(+), 15 deletions(-)
->> > > 
->> > > diff --git a/include/net/xfrm.h b/include/net/xfrm.h
->> > > index 28355a5be5b9..58f8f7661ec4 100644
->> > > --- a/include/net/xfrm.h
->> > > +++ b/include/net/xfrm.h
->> > > @@ -1770,8 +1770,7 @@ void xfrm_spd_getinfo(struct net *net, struct xfrmk_spdinfo *si);
->> > >  u32 xfrm_replay_seqhi(struct xfrm_state *x, __be32 net_seq);
->> > >  int xfrm_init_replay(struct xfrm_state *x, struct netlink_ext_ack *extack);
->> > >  u32 xfrm_state_mtu(struct xfrm_state *x, int mtu);
->> > > -int __xfrm_init_state(struct xfrm_state *x, bool init_replay,
->> > > -		      struct netlink_ext_ack *extack);
->> > > +int __xfrm_init_state(struct xfrm_state *x, struct netlink_ext_ack *extack);
->> > >  int xfrm_init_state(struct xfrm_state *x);
->> > >  int xfrm_input(struct sk_buff *skb, int nexthdr, __be32 spi, int encap_type);
->> > >  int xfrm_input_resume(struct sk_buff *skb, int nexthdr);
->> > > diff --git a/net/xfrm/xfrm_state.c b/net/xfrm/xfrm_state.c
->> > > index 568fe8df7741..42799b0946a3 100644
->> > > --- a/net/xfrm/xfrm_state.c
->> > > +++ b/net/xfrm/xfrm_state.c
->> > > @@ -3120,8 +3120,7 @@ u32 xfrm_state_mtu(struct xfrm_state *x, int mtu)
->> > >  }
->> > >  EXPORT_SYMBOL_GPL(xfrm_state_mtu);
->> > >  
->> > > -int __xfrm_init_state(struct xfrm_state *x, bool init_replay,
->> > > -		      struct netlink_ext_ack *extack)
->> > > +int __xfrm_init_state(struct xfrm_state *x, struct netlink_ext_ack *extack)
->> > 
->> > The whole point of having __xfrm_init_state was to
->> > sepatate codepaths that need init_replay and those
->> > who don't need it. That was a bandaid for something,
->> > unfortunately I don't remenber for what.
->> > 
->> > If we don't need that anymore, maybe we can merge
->> > __xfrm_init_state into xfrm_init_state, as it was
->> > before.
->> 
->> Main difference between __xfrm_init_state and xfrm_init_state is that
->> latter is called without extack, which doesn't exist in kernel path.
->
-> That split happened ~ 15 years ago, we did not have extack back than.
-> But I'm also ok with keeping it if extack is a reason for it.
->
-> Do you plan to respin, or should I take the patchset as is?
+On 14/2/2025 6:22 pm, Vladimir Oltean wrote:
+> Faizal,
+> 
+> On Fri, Feb 14, 2025 at 05:43:19PM +0800, Abdul Rahim, Faizal wrote:
+>>>> Hi Kurt & Vladimir,
+>>>>
+>>>> After reading Vladimir's reply on tc, hw queue, and socket priority mapping
+>>>> for both taprio and mqprio, I agree they should follow the same priority
+>>>> scheme for consistency—both in code and command usage (i.e., taprio,
+>>>> mqprio, and fpe in both configurations). Since igc_tsn_tx_arb() ensures a
+>>>> standard mapping of tc, socket priority, and hardware queue priority, I'll
+>>>> enable taprio to use igc_tsn_tx_arb() in a separate patch submission.
+>>>
+>>> There's one point to consider here: igc_tsn_tx_arb() changes the mapping
+>>> between priorities and Tx queues. I have no idea how many people rely on
+>>> the fact that queue 0 has always the highest priority. For example, it
+>>> will change the Tx behavior for schedules which open multiple traffic
+>>> classes at the same time. Users may notice.
+>>
+>> Yeah, I was considering the impact on existing users too. I hadn’t given it
+>> much thought initially and figured they’d just need to adapt to the changes,
+>> but now that I think about it, properly communicating this would be tough.
+>> taprio on igc (i225, i226) has been around for a while, so a lot of users
+>> would be affected.
+>>
+>>> OTOH changing mqprio to the broken_mqprio model is easy, because AFAIK
+>>> there's only one customer using this.
+>>>
+>>
+>> Hmmmm, now I’m leaning toward keeping taprio as is (hw queue 0 highest
+>> priority) and having mqprio follow the default priority scheme (aka
+>> broken_mqprio). Even though it’s not the norm, the impact doesn’t seem worth
+>> the gain. Open to hearing others' thoughts.
+> 
+> Kurt is right, you need to think about your users, but it isn't only that.
+> Intel puts out a lot of user-facing TSN technical documentation for Linux,
+> and currently, they have a hard time adapting it to other vendors, because
+> of Intel specific peculiarities such as this one. I would argue that for
+> being one of the most visible vendors from the Linux TSN space, you also
+> have a duty to the rest of the community of not pushing users away from
+> established conventions.
+> 
+> It's unfair that a past design mistake would stifle further evolution of
+> the driver in the correct direction, so I don't think we should let that
+> happen. I was thinking the igc driver should have a driver-specific
+> opt-in flag which users explicitly have to set in order to get the
+> conventional TX scheduling behavior in taprio (the one from mqprio).
+> Public Intel documentation would be updated to present the differences
+> between the old and the new mode, and to recommend opting into the new
+> mode. By default, the current behavior is maintained, thus not breaking
+> any user.  Something like an ethtool priv flag seems adequate for this.
+> 
+> Understandably, many network maintainers will initially dislike this,
+> but you will have to be persistent and explain the ways in which having
+> this priv flag is better than not having it. Normally they will respect
+> those reasons more than they dislike driver-specific priv flags, which,
+> let's be honest, are way too often abused for adding custom behavior.
+> Here the situation is different, the custom behavior already exists, it
+> just doesn't have a name and there's no way of turning it off.
 
-The best way will be if you can take this series as is.
-
->
-> Thanks!
+Okay. I can look into this in a separate patch submission, but just an 
+FYI—this adds another dependency to the second part of the igc fpe 
+submission (preemptible tc on taprio + mqprio). This new patch 
+(driver-specific priv flag to control 2 different priority scheme) would 
+need to be accepted first before the second part of igc fpe can be submitted.
