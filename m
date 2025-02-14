@@ -2,99 +2,95 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5CB91A36069
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Feb 2025 15:29:24 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C1F2A36455
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Feb 2025 18:20:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F02006FC41;
-	Fri, 14 Feb 2025 14:29:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D1C6F6F7D7;
+	Fri, 14 Feb 2025 17:20:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id MMxNphlzlH82; Fri, 14 Feb 2025 14:29:20 +0000 (UTC)
+ id pSeeiMJJtGtZ; Fri, 14 Feb 2025 17:20:51 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4B14F6F804
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D06156FB21
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739543360;
-	bh=YaT1BuVEcaxwPckunJj5G6/NDpd/kBgXpPedMjBTNDE=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=j46kKwCRq98dgolqKfsmETZ3gaS5CjINIuqG4xQ224NRytfNStDFhgu56duLXLn84
-	 xYSOx1XPhw39wfTvhK+caFHmBPirkk4LvQJjNyNqyqyJeCnTg0Dx6oKXTnvJUXlCGw
-	 ABpUnTDH7vYD9Cg58cfCWNqUvGrTT1Cmung+FrMRnTaqAmDIxUOFcDQIfY0aYheGPq
-	 0Zf7hyIR56bDdq6GR1+l2W5+1L3gpqVE8C3JQJJJPVVQCQfYDiFGo8BItnb0oSlnAr
-	 gngpbYZomQXVZO5lS5ORx/mfnLVyif1+Ys7ORFa+Lx04GbCZ5BNBiLP0hwnCH23iAv
-	 r5aluN8nx8zVA==
+	s=default; t=1739553650;
+	bh=oFxdvfsmWc4WJ/1HRRB4iR6yLU62grF2Xn2sSUHT8MI=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=JzmEdxymNdgPO/Sdcun3WI1GQo/6Ys8pVaXf1YbjkGzewtwGpB4FFkuMKdJz0xuCk
+	 8Nyk42zoj2QTahcv+C2RXUAcgb4EUa0tlf9hB/lDroZZ/DJbEyeuZ6XvI2htvmfa6U
+	 0PTpFDkEDSaKehM1xH0xBxCpOjOFv45qm/e2uS6pq4PSo1swelSuWpEy91r9SO9RsC
+	 EYb91VMw0rTJGlXEeoahn0lAuxUW2M2dJjtaEpOGPh+PvlzUOyXGHfYu1ZeM7YizQ0
+	 dIzBAtd8xHMJKVgKyMjo3bwqrx76xp/RcUYrkdyLV3SkZ3SFoF1i3xMtpR3UDRKLku
+	 QopR7r6h/coHA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4B14F6F804;
-	Fri, 14 Feb 2025 14:29:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D06156FB21;
+	Fri, 14 Feb 2025 17:20:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 1C43EC2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 14:29:18 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 60CBE1F1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 17:20:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 015BE836F1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 14:29:18 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 430CE41710
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 17:20:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id i0Q-Ec4ELglR for <intel-wired-lan@lists.osuosl.org>;
- Fri, 14 Feb 2025 14:29:17 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
- helo=mgamail.intel.com; envelope-from=arkadiusz.kubalewski@intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id UMnDdLKD0OI3 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 14 Feb 2025 17:20:47 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
+ helo=mgamail.intel.com; envelope-from=emil.s.tantilov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 569B8822B9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 569B8822B9
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 569B8822B9
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 14:29:17 +0000 (UTC)
-X-CSE-ConnectionGUID: 4Pcn9QtDTZ6o5siuM3Ld2w==
-X-CSE-MsgGUID: 0L3rOP2LS02n4Xq8CKTUJQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11345"; a="50936630"
-X-IronPort-AV: E=Sophos;i="6.13,286,1732608000"; d="scan'208";a="50936630"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
- by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Feb 2025 06:29:17 -0800
-X-CSE-ConnectionGUID: AYUaJxWKSUWE4iTqjmPWDA==
-X-CSE-MsgGUID: e6LHuMCpRmmbBq0tBgEA5Q==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 0F6A1411D1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0F6A1411D1
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0F6A1411D1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Feb 2025 17:20:46 +0000 (UTC)
+X-CSE-ConnectionGUID: vgROmMyQQ8GR4/u1YOeAvA==
+X-CSE-MsgGUID: tuhxTvDYQ4mL4quJR8/kNQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11345"; a="40434012"
+X-IronPort-AV: E=Sophos;i="6.13,286,1732608000"; d="scan'208";a="40434012"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+ by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Feb 2025 09:20:46 -0800
+X-CSE-ConnectionGUID: sQb1IXE0QfGcsCoFStU+gQ==
+X-CSE-MsgGUID: trJRopkRRpe1+E2xLqg3cw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,286,1732608000"; d="scan'208";a="118503746"
-Received: from amlin-018-114.igk.intel.com ([10.102.18.114])
- by orviesa004.jf.intel.com with ESMTP; 14 Feb 2025 06:29:15 -0800
-From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+X-IronPort-AV: E=Sophos;i="6.13,286,1732608000"; d="scan'208";a="114146891"
+Received: from estantil-desk.jf.intel.com ([10.166.241.24])
+ by fmviesa009.fm.intel.com with ESMTP; 14 Feb 2025 09:20:45 -0800
+From: Emil Tantilov <emil.s.tantilov@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, Karol Kolacinski <karol.kolacinski@intel.com>,
- Milena Olech <milena.olech@intel.com>,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-Date: Fri, 14 Feb 2025 15:23:32 +0100
-Message-Id: <20250214142332.600124-4-arkadiusz.kubalewski@intel.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20250214142332.600124-1-arkadiusz.kubalewski@intel.com>
-References: <20250214142332.600124-1-arkadiusz.kubalewski@intel.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Cc: netdev@vger.kernel.org, decot@google.com, willemb@google.com,
+ anthony.l.nguyen@intel.com, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, madhu.chittim@intel.com,
+ horms@kernel.org, przemyslaw.kitszel@intel.com
+Date: Fri, 14 Feb 2025 09:18:16 -0800
+Message-Id: <20250214171816.30562-1-emil.s.tantilov@intel.com>
+X-Mailer: git-send-email 2.17.2
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1739543357; x=1771079357;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=ToeXWe3IP3qc2T8aXJTUctf7wVvrNLEhK64L+14DMqw=;
- b=THybl9/eOWp37b6vbuH9DT49VIQ1NzDgSLIc6tsmcE0iOHLXB+a89ofO
- nSqSlTyrz8piZMoDjV5A8YN2OL7vAQ+NnA4r84A5PvK13j+tCM/5cF7Qp
- tHKweXw9cmt1jNd/KIJA7Apodfiorl5yHF8Pcrc5I20tMRw6BM87Exkpw
- cf5XbrcklliVfZR0ogC7jrUZ9k9qZYWu2K5jQMuPMyELuIzYJ0rlykTTS
- +FsLEKSMCdf8LJOxrb64jzg2IvWuk9Mk3CeUQGE74sDC61h0wWU7cwOir
- kMhXqG8SqpWk3q4xBGZFOya9NI1fxoJ+VXs0se8FC2bFxEEy5qck37DG4
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1739553647; x=1771089647;
+ h=from:to:cc:subject:date:message-id;
+ bh=c7VfgXKHp1OZBgXtuywg0L2o48OTJ5wlU6SbWNc1s2k=;
+ b=GwAqEiPn9bYS/dKamH4NaGykhftUg+tsKbQzT6jjjKsSiikyGzxbkDG7
+ cYu2VQjKoEcuYCaHkqcSYxRK7AkgnqHHr7gZdXPEAgaryuwwyw/FhymYz
+ h8PdSqsxmSUy/aaJZI6hsN/eMvKupMKoSRALFn4KzYmP72Lh7Y2nqfiUS
+ 9+h39CD4K1bVyfozPdQcTMSieybeQf4t660qTGdMCeB2V/Er2DulKUJ8B
+ HdnOraihRk362Yw7geD8waK5UhTxJL3konzG6qVZvAyy260q4C+2/CRu8
+ lkK3Z3NwWcXNy/8L3qZ1hppVjxtaJFS5YpP/qqlreDJA6SsATxVF7bIMY
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=THybl9/e
-Subject: [Intel-wired-lan] [PATCH iwl-next v3 3/3] ice: add ice driver PTP
- pin documentation
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=GwAqEiPn
+Subject: [Intel-wired-lan] [PATCH iwl-net v2] idpf: check error for
+ register_netdev() on init
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -110,45 +106,102 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Karol Kolacinski <karol.kolacinski@intel.com>
+Current init logic ignores the error code from register_netdev(),
+which will cause WARN_ON() on attempt to unregister it, if there was one,
+and there is no info for the user that the creation of the netdev failed.
 
-Add a description of PTP pins support by the adapters to ice driver
-documentation.
+WARNING: CPU: 89 PID: 6902 at net/core/dev.c:11512 unregister_netdevice_many_notify+0x211/0x1a10
+...
+[ 3707.563641]  unregister_netdev+0x1c/0x30
+[ 3707.563656]  idpf_vport_dealloc+0x5cf/0xce0 [idpf]
+[ 3707.563684]  idpf_deinit_task+0xef/0x160 [idpf]
+[ 3707.563712]  idpf_vc_core_deinit+0x84/0x320 [idpf]
+[ 3707.563739]  idpf_remove+0xbf/0x780 [idpf]
+[ 3707.563769]  pci_device_remove+0xab/0x1e0
+[ 3707.563786]  device_release_driver_internal+0x371/0x530
+[ 3707.563803]  driver_detach+0xbf/0x180
+[ 3707.563816]  bus_remove_driver+0x11b/0x2a0
+[ 3707.563829]  pci_unregister_driver+0x2a/0x250
 
-Reviewed-by: Milena Olech <milena.olech@intel.com>
-Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
-Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Introduce an error check and log the vport number and error code.
+On removal make sure to check VPORT_REG_NETDEV flag prior to calling
+unregister and free on the netdev.
+
+Add local variables for idx, vport_config and netdev for readability.
+
+Fixes: 0fe45467a104 ("idpf: add create vport and netdev configuration")
+Suggested-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+Signed-off-by: Emil Tantilov <emil.s.tantilov@intel.com>
 ---
-v3:
-- add missing reviewed-by and signed-off-by
----
- .../device_drivers/ethernet/intel/ice.rst           | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+Changelog:
+v2:
+- Refactored a bit to avoid >80 char lines.
+- Changed the netdev and flag check to allow for early continue in the
+  max_vports loop, which also helps to reduce the identation.
 
-diff --git a/Documentation/networking/device_drivers/ethernet/intel/ice.rst b/Documentation/networking/device_drivers/ethernet/intel/ice.rst
-index 3c46a48d99ba..0bca293cf9cb 100644
---- a/Documentation/networking/device_drivers/ethernet/intel/ice.rst
-+++ b/Documentation/networking/device_drivers/ethernet/intel/ice.rst
-@@ -927,6 +927,19 @@ To enable/disable UDP Segmentation Offload, issue the following command::
+v1:
+https://lore.kernel.org/intel-wired-lan/20250211023851.21090-1-emil.s.tantilov@intel.com/
+
+---
+ drivers/net/ethernet/intel/idpf/idpf_lib.c | 31 +++++++++++++++-------
+ 1 file changed, 22 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
+index a3d6b8f198a8..a055a47449f1 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
+@@ -927,15 +927,19 @@ static int idpf_stop(struct net_device *netdev)
+ static void idpf_decfg_netdev(struct idpf_vport *vport)
+ {
+ 	struct idpf_adapter *adapter = vport->adapter;
++	u16 idx = vport->idx;
  
-   # ethtool -K <ethX> tx-udp-segmentation [off|on]
+ 	kfree(vport->rx_ptype_lkup);
+ 	vport->rx_ptype_lkup = NULL;
  
-+PTP pin interface
-+-----------------
-+All adapters support standard PTP pin interface. SDPs (Software Definable Pin)
-+are single ended pins with both periodic output and external timestamp
-+supported. There are also specific differential input/output pins (TIME_SYNC,
-+1PPS) with only one of the functions supported.
+-	unregister_netdev(vport->netdev);
+-	free_netdev(vport->netdev);
++	if (test_and_clear_bit(IDPF_VPORT_REG_NETDEV,
++			       adapter->vport_config[idx]->flags)) {
++		unregister_netdev(vport->netdev);
++		free_netdev(vport->netdev);
++	}
+ 	vport->netdev = NULL;
+ 
+-	adapter->netdevs[vport->idx] = NULL;
++	adapter->netdevs[idx] = NULL;
+ }
+ 
+ /**
+@@ -1536,13 +1540,22 @@ void idpf_init_task(struct work_struct *work)
+ 	}
+ 
+ 	for (index = 0; index < adapter->max_vports; index++) {
+-		if (adapter->netdevs[index] &&
+-		    !test_bit(IDPF_VPORT_REG_NETDEV,
+-			      adapter->vport_config[index]->flags)) {
+-			register_netdev(adapter->netdevs[index]);
+-			set_bit(IDPF_VPORT_REG_NETDEV,
+-				adapter->vport_config[index]->flags);
++		struct net_device *netdev = adapter->netdevs[index];
++		struct idpf_vport_config *vport_config;
 +
-+There are adapters with DPLL, where pins are connected to the DPLL instead of
-+being exposed on the board. You have to be aware that in those configurations,
-+only SDP pins are exposed and each pin has its own fixed direction.
-+To see input signal on those PTP pins, you need to configure DPLL properly.
-+Output signal is only visible on DPLL and to send it to the board SMA/U.FL pins,
-+DPLL output pins have to be manually configured.
++		vport_config = adapter->vport_config[index];
++
++		if (!netdev ||
++		    test_bit(IDPF_VPORT_REG_NETDEV, vport_config->flags))
++			continue;
++
++		err = register_netdev(netdev);
++		if (err) {
++			dev_err(&pdev->dev, "failed to register netdev for vport %d: %pe\n",
++				index, ERR_PTR(err));
++			continue;
+ 		}
++		set_bit(IDPF_VPORT_REG_NETDEV, vport_config->flags);
+ 	}
  
- GNSS module
- -----------
+ 	/* As all the required vports are created, clear the reset flag
 -- 
-2.38.1
+2.17.2
 
