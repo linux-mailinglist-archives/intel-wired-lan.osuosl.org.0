@@ -1,97 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E70CA36BC7
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 15 Feb 2025 04:50:09 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E331BA36FC7
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 15 Feb 2025 18:29:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9EA9860A7B;
-	Sat, 15 Feb 2025 03:50:07 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id duIJOeXYNdWY; Sat, 15 Feb 2025 03:50:07 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D2695605FE
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739591406;
-	bh=GqR/K7tIPCx7z6Abt1ln/FkxLIvIuEBxB8nUMIyslzM=;
-	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=HKimv64jLPhHDMoxP6Sd6ExvF4JRlBT6eF+2Vy+9lF6oFPxEAhspK3MeQ+KHGWRP5
-	 qR+LO32LjX+hMaohE5pisZfkww0n9r8jgBZVz8c0orefm3kWfSTDRTPTihl5lDohCn
-	 N7SpIEOfbl7ahBa0qo/qzVja5gwNhGfOhWQ6UknWf1HelWG3FEZhtMAW7EqhdlcjA2
-	 8dGSTzis3S3QZXTHeLpM5K1rE5Lq8xJ+hEPAzxO37U7ueYaw4kBOnxs+ypxq/7JmVu
-	 vaaL4AKg+yn4HyouWaIGK8X+68ZudRDTrZu/5/wilR8qDpDDDNUijOyxDlfRaBPQbW
-	 YAobqiCR0bnAw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D2695605FE;
-	Sat, 15 Feb 2025 03:50:06 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 3087EDE
- for <intel-wired-lan@lists.osuosl.org>; Sat, 15 Feb 2025 03:50:04 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2226742642
- for <intel-wired-lan@lists.osuosl.org>; Sat, 15 Feb 2025 03:50:04 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3372C40E5B;
+	Sat, 15 Feb 2025 17:29:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ad9bWfH6PIqp for <intel-wired-lan@lists.osuosl.org>;
- Sat, 15 Feb 2025 03:50:03 +0000 (UTC)
+ id dveuJJqfj3si; Sat, 15 Feb 2025 17:29:33 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4F08B40E24
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1739640573;
+	bh=DUaiIw+ZiQPdSkg3VSygQ+p6d9+bA73bJf3EO3WcJWI=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=P+AiTV4ugNmdJqk3/HtDl7lDnVdjd3hi5fc3z2BNB+LXz5GrViep36crKzC2LQg95
+	 WDidzFzkziBnalrcBo7GXSUX/G73PmfjSnj278Lpw46pqmuZIzv7zjrJAXOiYBlVE6
+	 YBCAD3ikWBwO+nIkxGlptB9nbVvF6VRFcSZWriJc/od/8gmm6cTL+g5eRwgMUVdNcN
+	 d1dAtIEKlhN9qTuqov61meF9ySOYRDfGpH9RxrEsMUwXO7rMec+V2VHJ+6gaIXeG+S
+	 mrE4F1dkoh82wZ8BN+xLBH5cGqqhROFEHqhWlUz3opXyN6nQ2dhxnaC0gcpp+00mPC
+	 O8BH0cbfmLFUA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4F08B40E24;
+	Sat, 15 Feb 2025 17:29:33 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 562AFDF
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 15 Feb 2025 17:29:31 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3D56140E32
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 15 Feb 2025 17:29:31 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id GDXTLsVEbu0b for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 15 Feb 2025 17:29:30 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
- envelope-from=patchwork-bot+netdevbpf@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 2BB46425A0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2BB46425A0
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 2BB46425A0
- for <intel-wired-lan@lists.osuosl.org>; Sat, 15 Feb 2025 03:50:03 +0000 (UTC)
+ client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 7EA6D40E24
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7EA6D40E24
+Received: from nyc.source.kernel.org (nyc.source.kernel.org
+ [IPv6:2604:1380:45d1:ec00::3])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 7EA6D40E24
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 15 Feb 2025 17:29:30 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 7C3DF5C5B57;
- Sat, 15 Feb 2025 03:49:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4B44C4CEE6;
- Sat, 15 Feb 2025 03:50:01 +0000 (UTC)
-Received: from [10.30.226.235] (localhost [IPv6:::1])
- by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id
- 726D7380CEE9; Sat, 15 Feb 2025 03:50:32 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+ by nyc.source.kernel.org (Postfix) with ESMTP id DA2B3A405B8;
+ Sat, 15 Feb 2025 17:27:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3D475C4CEDF;
+ Sat, 15 Feb 2025 17:29:27 +0000 (UTC)
+Date: Sat, 15 Feb 2025 17:29:25 +0000
+From: Simon Horman <horms@kernel.org>
+To: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
+ andrew@lunn.ch, pmenzel@molgen.mpg.de, netdev@vger.kernel.org,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Message-ID: <20250215172925.GT1615191@kernel.org>
+References: <20250213074452.95862-1-jedrzej.jagielski@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <173959143126.2183234.5450052888067824074.git-patchwork-notify@kernel.org>
-Date: Sat, 15 Feb 2025 03:50:31 +0000
-References: <b16e4f01-4c85-46e2-b602-fce529293559@stanley.mountain>
-In-Reply-To: <b16e4f01-4c85-46e2-b602-fce529293559@stanley.mountain>
-To: Dan Carpenter <dan.carpenter@linaro.org>
-Cc: michal.swiatkowski@linux.intel.com, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, andrew+netdev@lunn.ch, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- wojciech.drewek@intel.com, jacob.e.keller@intel.com,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250213074452.95862-1-jedrzej.jagielski@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1739591401;
- bh=b6/nZ7sBtZaW+Yl+7HeCc7E5cWu6kXLhCpeAAIGuaVc=;
- h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=n8PHVpm/zIv+EEUgZlqBtk68vjtMrm+psHja54LQv0U79vJth7qac/2gvxa8lp3Lj
- dVQDx/PsqWBEPFqFR2TnlmeLcIbeQHOwJbIT4MsfjBud/MMu+964LIIhQWHAqZHPsv
- pIOVGQc1udYxC6l0FeER9uR1xEe9/4vVi5tC0kIovzisjLpSx8/lRSDYlYmTqsCWO4
- W1/3tuGL2GurDcIeD1JG6J4EvGvsKXEkbovo92fcT5Z1uqzkglKOYhQSpKZdkCEAPa
- zNjfyIl9KmtpYAW7mJo3e3XdTXD1bweI2gGmH8lJ3H8CpRSp1BKbBj838OyZfZldwQ
- O0DuJzBr9xZgg==
+ d=kernel.org; s=k20201202; t=1739640568;
+ bh=IK6h/4TA/Iti4V46nu69BclTQgANpyGTmyc/wI2SVZc=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=jWZ6cxqT9XxRP9y3hkypd8VcpSr9sMxROT2H4C0mYerIefJIO6usUbdO2NwbEBkLJ
+ uUTN+S6x0OjiDIAr6yIQ6NRWKGGu3uy1RshcV/kHxt2THB0hB32AFaUwxFyNkpeRoI
+ rVOnpDHTj1gCiDYoi75maa2RSp6qlaaxjWHHhUYnzsSv1Go5WjIycYcjiC69LsAegA
+ BXNsiE5xTvTLohRbbGONCh1r+c2Dbcd5ryQdM0mYJV7b+l2xXbuLzhrqPR3oSOJ3su
+ xPPi98y9hS8aK04vtDJIAcDDTVPIw7uKDuUVoFbpMiB31d11xvps1AJipMce5Wlgfz
+ AfHDGGok6BHRA==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=n8PHVpm/
-Subject: Re: [Intel-wired-lan] [PATCH v2 net-next] ice: Fix signedness bug
- in ice_init_interrupt_scheme()
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=jWZ6cxqT
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4] ixgbe: add support for
+ thermal sensor event reception
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -107,28 +100,25 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello:
-
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
-
-On Thu, 13 Feb 2025 09:31:41 +0300 you wrote:
-> If pci_alloc_irq_vectors() can't allocate the minimum number of vectors
-> then it returns -ENOSPC so there is no need to check for that in the
-> caller.  In fact, because pf->msix.min is an unsigned int, it means that
-> any negative error codes are type promoted to high positive values and
-> treated as success.  So here, the "return -ENOMEM;" is unreachable code.
-> Check for negatives instead.
+On Thu, Feb 13, 2025 at 08:44:52AM +0100, Jedrzej Jagielski wrote:
+> E610 NICs unlike the previous devices utilizing ixgbe driver
+> are notified in the case of overheating by the FW ACI event.
 > 
-> [...]
+> In event of overheat when threshold is exceeded, FW suspends all
+> traffic and sends overtemp event to the driver. Then driver
+> logs appropriate message and closes the adapter instance.
+> The card remains in that state until the platform is rebooted.
+> 
+> This approach is a solution to the fact current version of the
+> E610 FW doesn't support reading thermal sensor data by the
+> SW. So give to user at least any info that overtemp event
+> has occurred, without interface disappearing from the OS
+> without any note.
+> 
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+> ---
+> v2,3,4 : commit msg tweaks
 
-Here is the summary with links:
-  - [v2,net-next] ice: Fix signedness bug in ice_init_interrupt_scheme()
-    https://git.kernel.org/netdev/net-next/c/c2ddb619fa8d
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+Reviewed-by: Simon Horman <horms@kernel.org>
 
