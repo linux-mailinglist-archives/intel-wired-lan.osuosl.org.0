@@ -1,94 +1,105 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DCE2EA3735D
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 16 Feb 2025 10:37:09 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A875A373E6
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 16 Feb 2025 12:07:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 89B9683B4C;
-	Sun, 16 Feb 2025 09:37:08 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XOKlwr19CyEX; Sun, 16 Feb 2025 09:37:07 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9355C83ACB
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739698627;
-	bh=NkSibuz2RcW2CJDKUMFTjcu7eFwpAjYMEhP1XfzR3jo=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=eb2KcTEKxh5xyBWX6j5F78wsYiALWeFNuVYv/Dczr4sdM5J1vqUrKE440gfjwlX8r
-	 fBSR/gNrIHt4fC5rkaCXrXFRESBn5OJLwMQbWVBEzPhNhCscWS/UqIL5sV6GkInLw9
-	 1t7EKRug64GjJ5Qo+f9QwR2YmYfH04RessgHG3uzjIFwtv28FWPTLUNCsrgMCZz91z
-	 VbwUJL8M2oCIP7j9Ao+TKNg9Vmt6xDNfnJgJUXAn+Yf9EANTWX5E+BjDP3RZvnG9Zf
-	 WjDFWAEEVGjhZI+ktE3MAHr+nZLE2czPY7Q/Xdqe4HUrLFzdEU9OSDFLHNBrYpn0A5
-	 HUFP6rPBoBKaA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9355C83ACB;
-	Sun, 16 Feb 2025 09:37:07 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 4447EC8
- for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Feb 2025 09:37:05 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 303EC40858
- for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Feb 2025 09:37:05 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 44F5640B49;
+	Sun, 16 Feb 2025 11:07:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id QXwZYCTy0bFR for <intel-wired-lan@lists.osuosl.org>;
- Sun, 16 Feb 2025 09:37:04 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 0348940832
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0348940832
-Received: from nyc.source.kernel.org (nyc.source.kernel.org
- [IPv6:2604:1380:45d1:ec00::3])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 0348940832
- for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Feb 2025 09:37:03 +0000 (UTC)
+ id ywZFz3WsW0Io; Sun, 16 Feb 2025 11:07:22 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1B1C240B63
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1739704042;
+	bh=A6fpiFeoeSG+Py7TrTf9HpbPeewou5vIWvbCfxmXA88=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=qXKBp2c8I3Fwn6B6yP1bgwf5yT+/By38WMeg+4bOjvY48VAxvFacdqJCfB5+96Mbe
+	 K7w/zQXu6tHUz+b8oxs3tb83SAvs7wieMNBITC5fG1gtxG8bUiOfuplIE5hMOlnUIB
+	 lPbSBAHjsbOSWee9WdTIdPwk5vmw+LpAtXEe01QyLWW3gFxMELfthh0JXpVT0R3gfH
+	 8PPhcLAZf3a+HeA5N43r/yQ3oj2DcG4lXjBlXwsWvwEfe7Kh6rqzLA5FK5r+wtZvjY
+	 4VTF1qcKyIlkV81AJeCyPlH0ArS/oIEzQec3irJ+zb14ml2bQGwXfBicjUF3lsYiGM
+	 S2ZcFZPk8A20w==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1B1C240B63;
+	Sun, 16 Feb 2025 11:07:22 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 175F7DE
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Feb 2025 11:07:20 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id ECA2540FA0
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Feb 2025 11:07:19 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id E6OPaR_KO9jm for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 16 Feb 2025 11:07:19 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=147.75.193.91;
+ helo=nyc.source.kernel.org; envelope-from=leon@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C0A3A40F8F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C0A3A40F8F
+Received: from nyc.source.kernel.org (nyc.source.kernel.org [147.75.193.91])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C0A3A40F8F
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Feb 2025 11:07:18 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id D90DCA40AE6;
- Sun, 16 Feb 2025 09:35:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 770FFC4CEDD;
- Sun, 16 Feb 2025 09:37:00 +0000 (UTC)
-Date: Sun, 16 Feb 2025 09:36:58 +0000
-From: Simon Horman <horms@kernel.org>
-To: "Tantilov, Emil S" <emil.s.tantilov@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- decot@google.com, willemb@google.com, anthony.l.nguyen@intel.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, madhu.chittim@intel.com
-Message-ID: <20250216093658.GB1615191@kernel.org>
-References: <20250211023851.21090-1-emil.s.tantilov@intel.com>
- <20250212182111.GH1615191@kernel.org>
- <00ecb5e5-00b9-4c30-a29a-37c9f268b389@intel.com>
+ by nyc.source.kernel.org (Postfix) with ESMTP id 2CBDAA40B52;
+ Sun, 16 Feb 2025 11:05:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 08955C4CEDD;
+ Sun, 16 Feb 2025 11:07:16 +0000 (UTC)
+Date: Sun, 16 Feb 2025 13:07:11 +0200
+From: Leon Romanovsky <leon@kernel.org>
+To: Zhu Yanjun <yanjun.zhu@linux.dev>
+Cc: Steffen Klassert <steffen.klassert@secunet.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, Ayush Sawal <ayush.sawal@chelsio.com>,
+ Bharat Bhushan <bbhushan2@marvell.com>, Eric Dumazet <edumazet@google.com>,
+ Geetha sowjanya <gakula@marvell.com>, hariprasad <hkelam@marvell.com>,
+ Herbert Xu <herbert@gondor.apana.org.au>,
+ intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
+ Jay Vosburgh <jv@jvosburgh.net>, Jonathan Corbet <corbet@lwn.net>,
+ linux-doc@vger.kernel.org, linux-rdma@vger.kernel.org,
+ Louis Peens <louis.peens@corigine.com>, netdev@vger.kernel.org,
+ oss-drivers@corigine.com, Paolo Abeni <pabeni@redhat.com>,
+ Potnuri Bharat Teja <bharat@chelsio.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Saeed Mahameed <saeedm@nvidia.com>,
+ Subbaraya Sundeep <sbhatta@marvell.com>,
+ Sunil Goutham <sgoutham@marvell.com>, Tariq Toukan <tariqt@nvidia.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Ilia Lin <ilia.lin@kernel.org>
+Message-ID: <20250216110711.GU17863@unreal>
+References: <cover.1738778580.git.leon@kernel.org>
+ <d2aa8f840b0c81e33239e2a4b126730ae40864f1.1738778580.git.leon@kernel.org>
+ <647895d9-e8d1-4921-b5ba-b38b2176604e@linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <00ecb5e5-00b9-4c30-a29a-37c9f268b389@intel.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <647895d9-e8d1-4921-b5ba-b38b2176604e@linux.dev>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1739698622;
- bh=C/a2Xo494AXYieH5GYzXOn+umJoH8gBVl476a06NTa0=;
+ d=kernel.org; s=k20201202; t=1739704036;
+ bh=Uk6rLoER8BRIA7iCbn8kKYYcjuD4hDrsTvEO8AmLDFo=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=hZhvk2BvlFtXYj3YtY/j/8N0dUwRemZ4ixTYQjLWsndKbEdXxnC8Mat1zfeXyT3XT
- Dpmw0a0/5FbtXvgB5hboiAmAhnUMbXGXTX8O5HqMacuQG97g9UtF69D4T64VySNi49
- 5or5BlMxkOWZ+rt/SdVufb283tIP6M54vW6pmao8LW+sTYkzO5UUBaSxKdybQQ4ZPl
- DItzH/LsDYLbk9vO48q7zfKi6kzIN3b9wsR8SkbBW6mGlMpCIegIZcv9kDD7ffQwjD
- jpJgCGYdFw4z4j7tB1/t4QDQnyRpPouTZmi7X/8E3nqNFIl+iMAg78OmffEzGyJWdi
- tMwosZUG3ldVQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=Iuj+7qei6zcPfTh3qOoDezjkO34QekJqHIdM6/d+4DBfpRS2vnXYyEdLPfzxfzwin
+ OdUkhcBIZVIXIERPlgZMgC3YM2uySi/ffPGKarWx9Fsr1AL+D4AJGE71efsicDUs1j
+ +9yAdBE1sQtZffUDZCbeQjtHM1zwyXN6vutu0OscvkByjBBk4nqPCV5ZePJxnmMT9O
+ H17A3qTgTZNOlHfwh3qcZvCk/IaNL+hUUXEhYNsJ9KzE8rEOeQM3r2RFVLbsPhHEvC
+ JmJygg65bFuQJLnBK9owt5d2kAbYvwrq0NBESuPY+4mm8a2k6iXhB9KFJG/Vlc6CtS
+ yp9zUJuh6Z8AQ==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=hZhvk2Bv
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] idpf: check error for
- register_netdev() on init
+ header.s=k20201202 header.b=Iuj+7qei
+Subject: Re: [Intel-wired-lan] [PATCH ipsec-next 4/5] xfrm: provide common
+ xdo_dev_offload_ok callback implementation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,106 +115,74 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Feb 13, 2025 at 12:39:03PM -0800, Tantilov, Emil S wrote:
-> On 2/12/2025 10:21 AM, Simon Horman wrote:
-> > On Mon, Feb 10, 2025 at 06:38:51PM -0800, Emil Tantilov wrote:
-> > > Current init logic ignores the error code from register_netdev(),
-> > > which will cause WARN_ON() on attempt to unregister it, if there was one,
-> > > and there is no info for the user that the creation of the netdev failed.
-> > > 
-> > > WARNING: CPU: 89 PID: 6902 at net/core/dev.c:11512 unregister_netdevice_many_notify+0x211/0x1a10
-> > > ...
-> > > [ 3707.563641]  unregister_netdev+0x1c/0x30
-> > > [ 3707.563656]  idpf_vport_dealloc+0x5cf/0xce0 [idpf]
-> > > [ 3707.563684]  idpf_deinit_task+0xef/0x160 [idpf]
-> > > [ 3707.563712]  idpf_vc_core_deinit+0x84/0x320 [idpf]
-> > > [ 3707.563739]  idpf_remove+0xbf/0x780 [idpf]
-> > > [ 3707.563769]  pci_device_remove+0xab/0x1e0
-> > > [ 3707.563786]  device_release_driver_internal+0x371/0x530
-> > > [ 3707.563803]  driver_detach+0xbf/0x180
-> > > [ 3707.563816]  bus_remove_driver+0x11b/0x2a0
-> > > [ 3707.563829]  pci_unregister_driver+0x2a/0x250
-> > > 
-> > > Introduce an error check and log the vport number and error code.
-> > > On removal make sure to check VPORT_REG_NETDEV flag prior to calling
-> > > unregister and free on the netdev.
-> > > 
-> > > Add local variables for idx, vport_config and netdev for readability.
-> > > 
-> > > Fixes: 0fe45467a104 ("idpf: add create vport and netdev configuration")
-> > > Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
-> > > Suggested-by: Tony Nguyen <anthony.l.nguyen@intel.com>
-> > > Signed-off-by: Emil Tantilov <emil.s.tantilov@intel.com>
-> > > ---
-> > >   drivers/net/ethernet/intel/idpf/idpf_lib.c | 27 ++++++++++++++--------
-> > >   1 file changed, 18 insertions(+), 9 deletions(-)
-> > > 
-> > > diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
+On Sun, Feb 16, 2025 at 10:33:59AM +0100, Zhu Yanjun wrote:
+> 在 2025/2/5 19:20, Leon Romanovsky 写道:
+> > From: Leon Romanovsky <leonro@nvidia.com>
 > > 
-> > ...
+> > Almost all drivers except bond and nsim had same check if device
+> > can perform XFRM offload on that specific packet. The check was that
+> > packet doesn't have IPv4 options and IPv6 extensions.
 > > 
-> > > @@ -1536,12 +1540,17 @@ void idpf_init_task(struct work_struct *work)
-> > >   	}
-> > >   	for (index = 0; index < adapter->max_vports; index++) {
-> > > -		if (adapter->netdevs[index] &&
-> > > -		    !test_bit(IDPF_VPORT_REG_NETDEV,
-> > > -			      adapter->vport_config[index]->flags)) {
-> > > -			register_netdev(adapter->netdevs[index]);
-> > > -			set_bit(IDPF_VPORT_REG_NETDEV,
-> > > -				adapter->vport_config[index]->flags);
-> > > +		struct idpf_vport_config *vport_config = adapter->vport_config[index];
-> > > +		struct net_device *netdev = adapter->netdevs[index];
-> > > +
-> > > +		if (netdev && !test_bit(IDPF_VPORT_REG_NETDEV, vport_config->flags)) {
-> > > +			err = register_netdev(netdev);
-> > > +			if (err) {
-> > > +				dev_err(&pdev->dev, "failed to register netdev for vport %d: %pe\n",
-> > > +					index, ERR_PTR(err));
-> > > +				continue;
-> > > +			}
-> > > +			set_bit(IDPF_VPORT_REG_NETDEV, vport_config->flags);
-> > >   		}
-> > >   	}
+> > In NIC drivers, the IPv4 HELEN comparison was slightly different, but
+> > the intent was to check for the same conditions. So let's chose more
+> > strict variant as a common base.
 > > 
-> > Hi Emil,
+> > Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
+> > ---
+> >   Documentation/networking/xfrm_device.rst      |  3 ++-
+> >   drivers/net/bonding/bond_main.c               | 16 +++++---------
+> >   .../net/ethernet/chelsio/cxgb4/cxgb4_main.c   | 21 -------------------
+> >   .../inline_crypto/ch_ipsec/chcr_ipsec.c       | 16 --------------
+> >   .../net/ethernet/intel/ixgbe/ixgbe_ipsec.c    | 21 -------------------
+> >   drivers/net/ethernet/intel/ixgbevf/ipsec.c    | 21 -------------------
+> >   .../marvell/octeontx2/nic/cn10k_ipsec.c       | 15 -------------
+> >   .../mellanox/mlx5/core/en_accel/ipsec.c       | 16 --------------
+> >   .../net/ethernet/netronome/nfp/crypto/ipsec.c | 11 ----------
+> >   drivers/net/netdevsim/ipsec.c                 | 11 ----------
+> >   drivers/net/netdevsim/netdevsim.h             |  1 -
+> >   net/xfrm/xfrm_device.c                        | 15 +++++++++++++
+> >   12 files changed, 22 insertions(+), 145 deletions(-)
 > > 
-> > I'm wondering if we could reduce indentation and lines longer
-> > than 80 characters in the above like this (completely untested!):
-> I was mostly trying to focus on the fix itself, since this patch is -net
-> bound. The >80 line came about from the introduction of the local netdev and
-> it seemed cleaner to keep it in one line. I can just split the check as in
-> the original code.
+> > diff --git a/Documentation/networking/xfrm_device.rst b/Documentation/networking/xfrm_device.rst
+> > index 66f6e9a9b59a..39bb98939d1f 100644
+> > --- a/Documentation/networking/xfrm_device.rst
+> > +++ b/Documentation/networking/xfrm_device.rst
+> > @@ -126,7 +126,8 @@ been setup for offload, it first calls into xdo_dev_offload_ok() with
+> >   the skb and the intended offload state to ask the driver if the offload
+> >   will serviceable.  This can check the packet information to be sure the
+> >   offload can be supported (e.g. IPv4 or IPv6, no IPv4 options, etc) and
+> > -return true of false to signify its support.
+> > +return true of false to signify its support. In case driver doesn't implement
 > 
-> > 
-> > 
-> > 	for (index = 0; index < adapter->max_vports; index++) {
-> > 		struct idpf_vport_config *vport_config = adapter->vport_config[index];
-> > 		struct net_device *netdev = adapter->netdevs[index];
-> > 
-> > 		if (!netdev ||
-> > 		    test_bit(IDPF_VPORT_REG_NETDEV, vport_config->flags))
-> > 		    continue;
-> Again, because its mainly to add the error checking I am not sure if its OK
-> to re-shuffle the logic.
+> In this commit, remove the functions cxgb4_ipsec_offload_ok,
+> ch_ipsec_offload_ok, ixgbe_ipsec_offload_ok, ixgbevf_ipsec_offload_ok,
+> cn10k_ipsec_offload_ok, mlx5e_ipsec_offload_ok, nfp_net_ipsec_offload_ok and
+> nsim_ipsec_offload_ok, use the function xfrm_dev_offload_ok to do the same
+> work.
 > 
-> > 
-> > 		err = register_netdev(netdev);
-> > 		if (err) {
-> > 			dev_err(&pdev->dev, "failed to register netdev for vport %d: %pe\n",
-> > 				index, ERR_PTR(err));
-> > 			continue;
-> > 		}
-> > 		set_bit(IDPF_VPORT_REG_NETDEV, vport_config->flags);
-> > 	}
+> But in the file xfrm_device.rst, "return true or false to signify its
+> support"?
+
+This sentence continued in the xfrm_device.rst: "...  In case driver doesn't implement
+this callback, the stack provides reasonable defaults."
+
 > 
-> Don't mind re-spinning (and testing) v2 with the proposed change, if it's
-> not infringing on the guidelines for submission to -net.
+> of --> should be "or"
+> 
+> Thanks a lot.
+> Reviewed-by: Zhu Yanjun <yanjun.zhu@linux.dev>
 
-Thanks,
+Thanks
 
-I see your point about not wanting to change logic for a -net patch.
-
-My feeling is that the change is trivial enough to fit within -net
-boundaries. But if you think there is any risk of it regressing
-then feel free to go with your original version.
-
+> 
+> Zhu Yanjun
+> 
+> > +this callback, the stack provides reasonable defaults.
+> >   Crypto offload mode:
+> >   When ready to send, the driver needs to inspect the Tx packet for the
+> > diff --git a/drivers/net/bonding/bond_main.c b/drivers/net/bonding/bond_main.c
+> > index e45bba240cbc..bfb55c23380b 100644
+> > --- a/drivers/net/bonding/bond_main.c
+> > +++ b/drivers/net/bonding/bond_main.c
+> > @@ -676,22 +676,16 @@ static void bond_ipsec_free_sa(struct xfrm_state *xs)
+> >   static bool bond_ipsec_offload_ok(struct sk_buff *skb, struct xfrm_state *xs)
