@@ -2,103 +2,129 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A80BA3736F
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 16 Feb 2025 10:41:37 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E6D5A37335
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 16 Feb 2025 10:34:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5515B83704;
-	Sun, 16 Feb 2025 09:41:36 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 494A5811D4;
+	Sun, 16 Feb 2025 09:34:45 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Woz-fTqfEFmk; Sun, 16 Feb 2025 09:41:35 +0000 (UTC)
+ id b_XZchagyBDZ; Sun, 16 Feb 2025 09:34:44 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8B00D8378A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2935A8122B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739698895;
-	bh=gsuGKwyYx1pmWvc0HIpPl86T2+PhP+uyDTsEJFzHJS0=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=CFuK9aEoXeOXJI+URzBG3T3hLD9HBR8W6vro6P5obA+CoPt77G3tBrNBLK1eiCQGi
-	 uyMY0qmeqtfWyz1uEyA0eIAsczByMklj7pFUvXa45SGu4E6wfkBMcBOrX6q2pRchXq
-	 VtsK8Avg5B1QE8XMX6WA/RYXKC5C6QgHl2h3/yK0AUaDqs6fn2+786XstwHkeZZlBR
-	 68DMYXoxTRvqg8AYMRA7krklzEWCKpuQ7xfqP3NPYctH4JzMwd3hHDVSjhxFRW/adY
-	 LHAXNYnVWSmpFY28JNpGkZhKO9nfrqP2el5XfW83hvJSKAyfAjKYvJbXyyX0ZDs7br
-	 GoXoTzKdNvA8g==
+	s=default; t=1739698484;
+	bh=t8D8Bvt4wmnptkbdw6rkTNpYVqCKoBzq8g8tmexcwF0=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=UGwu1An1Fd3ZqVTbTiay54BNmvAF8qzfuEP3aFPAF8XCJ3Qy2vCm/TF95rtAqmi9n
+	 DW4nyxAaBAFHbJkaP+X4Ds9fpLk/OrpgYp+kgL3FlB3WqED4xd2GaZ0cbVMMmAkot/
+	 wU62LAhavPq2Rf8SsNE2qaQ5rXP8mFUXcJcMuu53GeI4vCmfaitLhzol/cNOfmq2WV
+	 NIT07R54sti5ChN6T6yQlDihoJTcKO1nGGDKQTnkTUh4dwlCQGANVujaTQQ2Ma4nPN
+	 B32jPWU5H4EvRs736MGDqDyAQDHg+6U32WcAbLTWjCAY54PRMRriDs8ecWYlFIwjNr
+	 eG8b/1zN0sd4g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8B00D8378A;
-	Sun, 16 Feb 2025 09:41:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2935A8122B;
+	Sun, 16 Feb 2025 09:34:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 852C6DE
- for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Feb 2025 09:41:33 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id E00DEC8
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Feb 2025 09:34:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 55542404B8
- for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Feb 2025 09:41:33 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id C3A8E811B7
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Feb 2025 09:34:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id hars8II_EyQg for <intel-wired-lan@lists.osuosl.org>;
- Sun, 16 Feb 2025 09:41:32 +0000 (UTC)
-X-Greylist: delayed 440 seconds by postgrey-1.37 at util1.osuosl.org;
- Sun, 16 Feb 2025 09:41:31 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 0E01940353
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0E01940353
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2001:41d0:203:375::b4; helo=out-180.mta1.migadu.com;
- envelope-from=yanjun.zhu@linux.dev; receiver=<UNKNOWN> 
-Received: from out-180.mta1.migadu.com (out-180.mta1.migadu.com
- [IPv6:2001:41d0:203:375::b4])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 0E01940353
- for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Feb 2025 09:41:31 +0000 (UTC)
-Message-ID: <647895d9-e8d1-4921-b5ba-b38b2176604e@linux.dev>
-Date: Sun, 16 Feb 2025 10:33:59 +0100
-MIME-Version: 1.0
-To: Leon Romanovsky <leon@kernel.org>,
- Steffen Klassert <steffen.klassert@secunet.com>
-Cc: Leon Romanovsky <leonro@nvidia.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
- Ayush Sawal <ayush.sawal@chelsio.com>, Bharat Bhushan
- <bbhushan2@marvell.com>, Eric Dumazet <edumazet@google.com>,
- Geetha sowjanya <gakula@marvell.com>, hariprasad <hkelam@marvell.com>,
- Herbert Xu <herbert@gondor.apana.org.au>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, Jay Vosburgh <jv@jvosburgh.net>,
- Jonathan Corbet <corbet@lwn.net>, linux-doc@vger.kernel.org,
- linux-rdma@vger.kernel.org, Louis Peens <louis.peens@corigine.com>,
- netdev@vger.kernel.org, oss-drivers@corigine.com,
- Paolo Abeni <pabeni@redhat.com>, Potnuri Bharat Teja <bharat@chelsio.com>,
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id cw7zqt_atuOi for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 16 Feb 2025 09:34:40 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
+ helo=mgamail.intel.com; envelope-from=yoong.siang.song@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8AE3E81154
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8AE3E81154
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8AE3E81154
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 16 Feb 2025 09:34:40 +0000 (UTC)
+X-CSE-ConnectionGUID: ozkBuWeISvuoe5ADBEZsFw==
+X-CSE-MsgGUID: cXP4DFeiR8aZ5bOozQMDHw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11346"; a="51812179"
+X-IronPort-AV: E=Sophos;i="6.13,290,1732608000"; d="scan'208";a="51812179"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+ by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Feb 2025 01:34:40 -0800
+X-CSE-ConnectionGUID: 8RBNvo8fQR2DNDKRevRB2A==
+X-CSE-MsgGUID: BZNN0FagQSKU2Pj5GU4wuA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="117998869"
+Received: from p12ill20yoongsia.png.intel.com ([10.88.227.38])
+ by fmviesa003.fm.intel.com with ESMTP; 16 Feb 2025 01:34:28 -0800
+From: Song Yoong Siang <yoong.siang.song@intel.com>
+To: "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Simon Horman <horms@kernel.org>,
+ Willem de Bruijn <willemb@google.com>,
+ Florian Bezdeka <florian.bezdeka@siemens.com>,
+ Donald Hunter <donald.hunter@gmail.com>, Jonathan Corbet <corbet@lwn.net>,
+ Bjorn Topel <bjorn@kernel.org>,
+ Magnus Karlsson <magnus.karlsson@intel.com>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Jonathan Lemon <jonathan.lemon@gmail.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, Joe Damato <jdamato@fastly.com>,
+ Stanislav Fomichev <sdf@fomichev.me>,
+ Xuan Zhuo <xuanzhuo@linux.alibaba.com>,
+ Mina Almasry <almasrymina@google.com>, Daniel Jurgens <danielj@nvidia.com>,
+ Song Yoong Siang <yoong.siang.song@intel.com>,
+ Andrii Nakryiko <andrii@kernel.org>, Eduard Zingerman <eddyz87@gmail.com>,
+ Mykola Lysenko <mykolal@fb.com>, Martin KaFai Lau <martin.lau@linux.dev>,
+ Song Liu <song@kernel.org>, Yonghong Song <yonghong.song@linux.dev>,
+ KP Singh <kpsingh@kernel.org>, Hao Luo <haoluo@google.com>,
+ Jiri Olsa <jolsa@kernel.org>, Shuah Khan <shuah@kernel.org>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Saeed Mahameed <saeedm@nvidia.com>, Subbaraya Sundeep <sbhatta@marvell.com>,
- Sunil Goutham <sgoutham@marvell.com>, Tariq Toukan <tariqt@nvidia.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Ilia Lin <ilia.lin@kernel.org>
-References: <cover.1738778580.git.leon@kernel.org>
- <d2aa8f840b0c81e33239e2a4b126730ae40864f1.1738778580.git.leon@kernel.org>
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
- include these headers.
-From: Zhu Yanjun <yanjun.zhu@linux.dev>
-In-Reply-To: <d2aa8f840b0c81e33239e2a4b126730ae40864f1.1738778580.git.leon@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ Faizal Rahim <faizal.abdul.rahim@linux.intel.com>,
+ Choong Yong Liang <yong.liang.choong@linux.intel.com>,
+ Bouska Zdenek <zdenek.bouska@siemens.com>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-doc@vger.kernel.org, bpf@vger.kernel.org,
+ linux-kselftest@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, intel-wired-lan@lists.osuosl.org,
+ xdp-hints@xdp-project.net
+Date: Sun, 16 Feb 2025 17:34:25 +0800
+Message-Id: <20250216093430.957880-1-yoong.siang.song@intel.com>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Migadu-Flow: FLOW_OUT
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linux.dev; s=key1; t=1739698448;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=gsuGKwyYx1pmWvc0HIpPl86T2+PhP+uyDTsEJFzHJS0=;
- b=WIwXKc4cQEb51TG/CwdrbH2hCT2cSbMqhW7g1nOVxxTESTWSTiM2ZDE4MY7x1kU34dN1aH
- E2OKQHyN+HtUR5ECvy5reJd8E3fDR9Q4IJcWEIbB2Fg5VHs5uoainSVXmZKHqasdl++Fkr
- +7lfReM1YsKH1fTQlY83mSMd+72hs0k=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1739698481; x=1771234481;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=D402m6G4UxLYuZwdQdA/n45E6WUQZwIX9ttEZ+hG8tw=;
+ b=UQlRox+s79CvkMmKb9XSS83do0QGMAuJZzTQ1LxG/5W6xXt8m2RzdaVL
+ cH1m3xi+60z9MzcvPmWW3VaysF4NGzUcMue0RGoVJGXLn5+wEtS8ANSE/
+ FmvUHjw+ZR1ZEuInAzA0LQ6sYxhDi0clPeaP0TrITFcaaYtOKU/0XXgar
+ ENg1MkwqkDINpPcDUj+5dbzYrVSRth31oUTJhCxd8uuGxO70CdJOKgqFV
+ bcD4kxPvnOU7dIpDsRo7X/m7bjM7TzBjLVjGy2sDKbAN34bayoKq0LkCd
+ LqPy0YWbgYVukUmvbC8sI4G0WY8bGRUVNCX2vE+qeh1b3Zdsl4hSiXvHT
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=linux.dev
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256
- header.s=key1 header.b=WIwXKc4c
-Subject: Re: [Intel-wired-lan] [PATCH ipsec-next 4/5] xfrm: provide common
- xdo_dev_offload_ok callback implementation
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=UQlRox+s
+Subject: [Intel-wired-lan] [PATCH bpf-next v12 0/5] xsk: TX metadata Launch
+ Time support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -114,67 +140,136 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-在 2025/2/5 19:20, Leon Romanovsky 写道:
-> From: Leon Romanovsky <leonro@nvidia.com>
-> 
-> Almost all drivers except bond and nsim had same check if device
-> can perform XFRM offload on that specific packet. The check was that
-> packet doesn't have IPv4 options and IPv6 extensions.
-> 
-> In NIC drivers, the IPv4 HELEN comparison was slightly different, but
-> the intent was to check for the same conditions. So let's chose more
-> strict variant as a common base.
-> 
-> Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
-> ---
->   Documentation/networking/xfrm_device.rst      |  3 ++-
->   drivers/net/bonding/bond_main.c               | 16 +++++---------
->   .../net/ethernet/chelsio/cxgb4/cxgb4_main.c   | 21 -------------------
->   .../inline_crypto/ch_ipsec/chcr_ipsec.c       | 16 --------------
->   .../net/ethernet/intel/ixgbe/ixgbe_ipsec.c    | 21 -------------------
->   drivers/net/ethernet/intel/ixgbevf/ipsec.c    | 21 -------------------
->   .../marvell/octeontx2/nic/cn10k_ipsec.c       | 15 -------------
->   .../mellanox/mlx5/core/en_accel/ipsec.c       | 16 --------------
->   .../net/ethernet/netronome/nfp/crypto/ipsec.c | 11 ----------
->   drivers/net/netdevsim/ipsec.c                 | 11 ----------
->   drivers/net/netdevsim/netdevsim.h             |  1 -
->   net/xfrm/xfrm_device.c                        | 15 +++++++++++++
->   12 files changed, 22 insertions(+), 145 deletions(-)
-> 
-> diff --git a/Documentation/networking/xfrm_device.rst b/Documentation/networking/xfrm_device.rst
-> index 66f6e9a9b59a..39bb98939d1f 100644
-> --- a/Documentation/networking/xfrm_device.rst
-> +++ b/Documentation/networking/xfrm_device.rst
-> @@ -126,7 +126,8 @@ been setup for offload, it first calls into xdo_dev_offload_ok() with
->   the skb and the intended offload state to ask the driver if the offload
->   will serviceable.  This can check the packet information to be sure the
->   offload can be supported (e.g. IPv4 or IPv6, no IPv4 options, etc) and
-> -return true of false to signify its support.
-> +return true of false to signify its support. In case driver doesn't implement
+This series expands the XDP TX metadata framework to allow user
+applications to pass per packet 64-bit launch time directly to the kernel
+driver, requesting launch time hardware offload support. The XDP TX
+metadata framework will not perform any clock conversion or packet
+reordering.
 
-In this commit, remove the functions cxgb4_ipsec_offload_ok, 
-ch_ipsec_offload_ok, ixgbe_ipsec_offload_ok, ixgbevf_ipsec_offload_ok, 
-cn10k_ipsec_offload_ok, mlx5e_ipsec_offload_ok, nfp_net_ipsec_offload_ok 
-and nsim_ipsec_offload_ok, use the function xfrm_dev_offload_ok to do 
-the same work.
+Please note that the role of Tx metadata is just to pass the launch time,
+not to enable the offload feature. Users will need to enable the launch
+time hardware offload feature of the device by using the respective
+command, such as the tc-etf command.
 
-But in the file xfrm_device.rst, "return true or false to signify its 
-support"?
+Although some devices use the tc-etf command to enable their launch time
+hardware offload feature, xsk packets will not go through the etf qdisc.
+Therefore, in my opinion, the launch time should always be based on the PTP
+Hardware Clock (PHC). Thus, i did not include a clock ID to indicate the
+clock source.
 
-of --> should be "or"
+To simplify the test steps, I modified the xdp_hw_metadata bpf self-test
+tool in such a way that it will set the launch time based on the offset
+provided by the user and the value of the Receive Hardware Timestamp, which
+is against the PHC. This will eliminate the need to discipline System Clock
+with the PHC and then use clock_gettime() to get the time.
 
-Thanks a lot.
-Reviewed-by: Zhu Yanjun <yanjun.zhu@linux.dev>
+Please note that AF_XDP lacks a feedback mechanism to inform the
+application if the requested launch time is invalid. So, users are expected
+to familiar with the horizon of the launch time of the device they use and
+not request a launch time that is beyond the horizon. Otherwise, the driver
+might interpret the launch time incorrectly and react wrongly. For stmmac
+and igc, where modulo computation is used, a launch time larger than the
+horizon will cause the device to transmit the packet earlier that the
+requested launch time.
 
-Zhu Yanjun
+Although there is no feedback mechanism for the launch time request
+for now, user still can check whether the requested launch time is
+working or not, by requesting the Transmit Completion Hardware Timestamp.
 
-> +this callback, the stack provides reasonable defaults.
->   
->   Crypto offload mode:
->   When ready to send, the driver needs to inspect the Tx packet for the
-> diff --git a/drivers/net/bonding/bond_main.c b/drivers/net/bonding/bond_main.c
-> index e45bba240cbc..bfb55c23380b 100644
-> --- a/drivers/net/bonding/bond_main.c
-> +++ b/drivers/net/bonding/bond_main.c
-> @@ -676,22 +676,16 @@ static void bond_ipsec_free_sa(struct xfrm_state *xs)
->   static bool bond_ipsec_offload_ok(struct sk_buff *skb, struct xfrm_state *xs)
+v12:
+  - Fix the comment in include/uapi/linux/if_xdp.h to allign with what is
+    generated by ./tools/net/ynl/ynl-regen.sh to avoid dirty tree error in
+    the netdev/ynl checks.
+
+v11: https://lore.kernel.org/netdev/20250216074302.956937-1-yoong.siang.song@intel.com/
+  - regenerate netdev_xsk_flags based on latest netdev.yaml (Jakub)
+
+v10: https://lore.kernel.org/netdev/20250207021943.814768-1-yoong.siang.song@intel.com/
+  - use net_err_ratelimited(), instead of net_ratelimit() (Maciej)
+  - accumulate the amount of used descs in local variable and update the
+    igc_metadata_request::used_desc once (Maciej)
+  - Ensure reverse christmas tree rule (Maciej)
+
+V9: https://lore.kernel.org/netdev/20250206060408.808325-1-yoong.siang.song@intel.com/
+  - Remove the igc_desc_unused() checking (Maciej)
+  - Ensure that skb allocation and DMA mapping work before proceeding to
+    fill in igc_tx_buffer info, context desc, and data desc (Maciej)
+  - Rate limit the error messages (Maciej)
+  - Update the comment to indicate that the 2 descriptors needed by the
+    empty frame are already taken into consideration (Maciej)
+  - Handle the case where the insertion of an empty frame fails and
+    explain the reason behind (Maciej)
+  - put self SOB tag as last tag (Maciej)
+
+V8: https://lore.kernel.org/netdev/20250205024116.798862-1-yoong.siang.song@intel.com/
+  - check the number of used descriptor in xsk_tx_metadata_request()
+    by using used_desc of struct igc_metadata_request, and then decreases
+    the budget with it (Maciej)
+  - submit another bug fix patch to set the buffer type for empty frame (Maciej):
+    https://lore.kernel.org/netdev/20250205023603.798819-1-yoong.siang.song@intel.com/
+
+V7: https://lore.kernel.org/netdev/20250204004907.789330-1-yoong.siang.song@intel.com/
+  - split the refactoring code of igc empty packet insertion into a separate
+    commit (Faizal)
+  - add explanation on why the value "4" is used as igc transmit budget
+    (Faizal)
+  - perform a stress test by sending 1000 packets with 10ms interval and
+    launch time set to 500us in the future (Faizal & Yong Liang)
+
+V6: https://lore.kernel.org/netdev/20250116155350.555374-1-yoong.siang.song@intel.com/
+  - fix selftest build errors by using asprintf() and realloc(), instead of
+    managing the buffer sizes manually (Daniel, Stanislav)
+
+V5: https://lore.kernel.org/netdev/20250114152718.120588-1-yoong.siang.song@intel.com/
+  - change netdev feature name from tx-launch-time to tx-launch-time-fifo
+    to explicitly state the FIFO behaviour (Stanislav)
+  - improve the looping of xdp_hw_metadata app to wait for packet tx
+    completion to be more readable by using clock_gettime() (Stanislav)
+  - add launch time setup steps into xdp_hw_metadata app (Stanislav)
+
+V4: https://lore.kernel.org/netdev/20250106135506.9687-1-yoong.siang.song@intel.com/
+  - added XDP launch time support to the igc driver (Jesper & Florian)
+  - added per-driver launch time limitation on xsk-tx-metadata.rst (Jesper)
+  - added explanation on FIFO behavior on xsk-tx-metadata.rst (Jakub)
+  - added step to enable launch time in the commit message (Jesper & Willem)
+  - explicitly documented the type of launch_time and which clock source
+    it is against (Willem)
+
+V3: https://lore.kernel.org/netdev/20231203165129.1740512-1-yoong.siang.song@intel.com/
+  - renamed to use launch time (Jesper & Willem)
+  - changed the default launch time in xdp_hw_metadata apps from 1s to 0.1s
+    because some NICs do not support such a large future time.
+
+V2: https://lore.kernel.org/netdev/20231201062421.1074768-1-yoong.siang.song@intel.com/
+  - renamed to use Earliest TxTime First (Willem)
+  - renamed to use txtime (Willem)
+
+V1: https://lore.kernel.org/netdev/20231130162028.852006-1-yoong.siang.song@intel.com/
+
+Song Yoong Siang (5):
+  xsk: Add launch time hardware offload support to XDP Tx metadata
+  selftests/bpf: Add launch time request to xdp_hw_metadata
+  net: stmmac: Add launch time support to XDP ZC
+  igc: Refactor empty frame insertion for launch time support
+  igc: Add launch time support to XDP ZC
+
+ Documentation/netlink/specs/netdev.yaml       |   4 +
+ Documentation/networking/xsk-tx-metadata.rst  |  62 +++++++
+ drivers/net/ethernet/intel/igc/igc.h          |   1 +
+ drivers/net/ethernet/intel/igc/igc_main.c     | 143 +++++++++++----
+ drivers/net/ethernet/stmicro/stmmac/stmmac.h  |   2 +
+ .../net/ethernet/stmicro/stmmac/stmmac_main.c |  13 ++
+ include/net/xdp_sock.h                        |  10 ++
+ include/net/xdp_sock_drv.h                    |   1 +
+ include/uapi/linux/if_xdp.h                   |  10 ++
+ include/uapi/linux/netdev.h                   |   3 +
+ net/core/netdev-genl.c                        |   2 +
+ net/xdp/xsk.c                                 |   3 +
+ tools/include/uapi/linux/if_xdp.h             |  10 ++
+ tools/include/uapi/linux/netdev.h             |   3 +
+ tools/testing/selftests/bpf/xdp_hw_metadata.c | 168 +++++++++++++++++-
+ 15 files changed, 396 insertions(+), 39 deletions(-)
+
+-- 
+2.34.1
+
