@@ -1,118 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D351FA38228
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 17 Feb 2025 12:46:09 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5FBCAA388F9
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 17 Feb 2025 17:17:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8F4EE60DFE;
-	Mon, 17 Feb 2025 11:46:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 16F9F6069E;
+	Mon, 17 Feb 2025 16:17:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VmkmhNfd6JNl; Mon, 17 Feb 2025 11:46:07 +0000 (UTC)
+ id JNRgaiuH-Ylc; Mon, 17 Feb 2025 16:17:13 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 86EDF60DDF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E69C260861
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739792767;
-	bh=UQnxmLR9OvONdKrBpT4mZgYi9x/8XHDdQejUcyVnDIU=;
-	h=From:Date:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=Mw0nt59cJ2xTPLJhptEbRaqxsEbrcMgNfp5FCcJkbsjowlHsoLfhd04cbZtQDw2Rj
-	 NPpVInC4fdDPqeO+/dusA9LuHBDi8y+wmEYFONvuP9IdainFRFDD+Ewpp1SO1XybZX
-	 dBfnledb2o6mT+ugDgbxIFBVAeiGT0/H4z1qaOb60vbGyV0ZY7nwG6VpIe9Up/F2xN
-	 MfiVE/G0NQUV46++U+4bR5bZtkYNL3hwh/f7GurWqAJL/aZJt0yn7/X9APtJWFDRqW
-	 +uMe4TvxdcFdR0ZOd/Z4OZwhmJh2w4mcPuTO2wbv3FT4Hu3bzZ+reKIHY6G81RzCEJ
-	 jWS4++F2AGaiQ==
+	s=default; t=1739809033;
+	bh=hgJk8c9gI577dnH0u+BuUFft5fgX3jdtDDKFtBimGb8=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=Y5YXaEQ/Qmc7JoW241a9l8AlOMJ2yoF2BmA8VBQu50O/QpulNTGe83hj+pxZr5E+8
+	 DfbHE8RXglxSd3h/a1NTKxJznQlFHpy02Ax+I37PPwPt5tCbVeHGfcP86H09pawAYX
+	 82S61Z4qOHxJNe7XLNeQkg9z88UqUA7XoNYZ2uHwoLznerHylD9iY4OHiCkzCspVbA
+	 9YGmJllLhwCx7ZdLjgCMdnDy4vTOQMlSQcy/waBE2FLqgiJlvoc6wpyg54ONBS2Xd2
+	 AeRDE6SmpjyDnaWWA4BbH4K+2QzF5V7+5WvqlZVuyYgaWQBS6Z9BoEUCaHZkiRC0x0
+	 gV5pGCcjhOB7g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 86EDF60DDF;
-	Mon, 17 Feb 2025 11:46:07 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E69C260861;
+	Mon, 17 Feb 2025 16:17:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 06E83C8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Feb 2025 11:46:04 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 5FDD4C8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Feb 2025 16:17:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D3525410C0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Feb 2025 11:46:04 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4F7A14083B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Feb 2025 16:17:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sBIPYZhTOVHj for <intel-wired-lan@lists.osuosl.org>;
- Mon, 17 Feb 2025 11:46:03 +0000 (UTC)
+ id A5JBY4gQD8WW for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 17 Feb 2025 16:17:09 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
- envelope-from=kurt@linutronix.de; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 771C740677
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 771C740677
-Received: from galois.linutronix.de (Galois.linutronix.de
- [IPv6:2a0a:51c0:0:12e:550::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 771C740677
- for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Feb 2025 11:46:03 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-Date: Mon, 17 Feb 2025 12:45:57 +0100
+ client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 65D6B4081C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 65D6B4081C
+Received: from nyc.source.kernel.org (nyc.source.kernel.org
+ [IPv6:2604:1380:45d1:ec00::3])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 65D6B4081C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Feb 2025 16:17:09 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by nyc.source.kernel.org (Postfix) with ESMTP id 13EA6A40BF0;
+ Mon, 17 Feb 2025 16:15:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5FDFCC4CED1;
+ Mon, 17 Feb 2025 16:17:05 +0000 (UTC)
+Date: Mon, 17 Feb 2025 16:17:03 +0000
+From: Simon Horman <horms@kernel.org>
+To: Emil Tantilov <emil.s.tantilov@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ decot@google.com, willemb@google.com, anthony.l.nguyen@intel.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, madhu.chittim@intel.com, przemyslaw.kitszel@intel.com
+Message-ID: <20250217161703.GO1615191@kernel.org>
+References: <20250214171816.30562-1-emil.s.tantilov@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250217-igc_mqprio_tx_mode-v1-1-3a402fe1f326@linutronix.de>
-X-B4-Tracking: v=1; b=H4sIAHQhs2cC/x3MQQqAIBBA0avErBN0yKCuEiFhUw2UlkYJ0d2Tl
- m/x/wORAlOEtngg0MWRvctQZQF2GdxMgsdsQIlaoqoEz9Zsxx7YmzOZzY8kEK1qrK6rWmrI4R5
- o4vRPO+B7FY7SCf37fk/g279uAAAA
-X-Change-ID: 20250214-igc_mqprio_tx_mode-22c19c564605
-To: Tony Nguyen <anthony.l.nguyen@intel.com>, 
- Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
- Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>, 
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
- Kurt Kanzenbach <kurt@linutronix.de>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5569; i=kurt@linutronix.de;
- h=from:subject:message-id; bh=p0rBIN2HI6/pNqPIxToqu0WP8vhblULV54uUo06gBss=;
- b=owEBbQKS/ZANAwAKAcGT0fKqRnOCAcsmYgBnsyF4HI1gpQTPg0re0+oxZ326+rhAQJkLbUIEo
- 6WB4/CXsvWJAjMEAAEKAB0WIQS8ub+yyMN909/bWZLBk9HyqkZzggUCZ7MheAAKCRDBk9HyqkZz
- glxMD/4tejfhf2VWjkwEH9MDYLI/J6p0Lt3Q+sfqb6B3UVgg78yxmT1HA06YUJPRdK/Nm5II5SH
- MPZsdsNHnY455Twt3UtQsK9FBwB6kzStomyrCNbHyQdzpXlmjZ0E4fZdt4kzkuSCpZbPqGBC8Lh
- 90yDsvH4rrEpFLkW8SFFWE+S9uUbhavU+JQWM3/CweG3UfemqvuXj0QlIrtBR6lCXjTrcTsX7oI
- jIDIeN+psRRom6fZloNS4sS7pFjW5xuumMMnkzA0Y/smN++r5UewaZCviYlU+0aKYDEuT9hXNpP
- eSO/gydjYQGerTVIyQYzyc1/CwB6tLybxHhC40D+cQF1Pxxc/MFARjJJHYryVdBJxyV5TOOy7Ta
- TIHQ1lM6wfAo/uNBv/wsaanzw0z+PNViVEuKYq5O5YpOFppTq+95PWdLHYcknz0W8hqCy0BiQlL
- Jj+4ZJBu8Vb3F9YAubpUwTLnPPOERe+DJIsZi2jc9NafB/4cXjxFrAl18wOq48PmCk6jKna2AZu
- 6VEycaDH+ljXf1JBO3M4uwkgpVtcZbdz6mIo3+zVMjuqAQHE14KDOx/ck0e170bZXXxDpWaADaL
- BhT2EwWcNktSac5wvujNb5KlaG3hnvrGQ1yXCpWJISaTEwfdkvEOfbAtejZfitlb3lJh8wgB4bq
- Pmvk8XFG0iNrHzQ==
-X-Developer-Key: i=kurt@linutronix.de; a=openpgp;
- fpr=BCB9BFB2C8C37DD3DFDB5992C193D1F2AA467382
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1739792761;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=UQnxmLR9OvONdKrBpT4mZgYi9x/8XHDdQejUcyVnDIU=;
- b=sro5RGIj925ECUzB43GPA2i9AuKb0fuGazkx/XtBYwWuOOEHEmsWWAv5FKOhulqewdIPky
- s5SIJDEl9PqAd0rSsiPQNuPPy7itjo/Ng9fWJB/G9Lg6nhl6Mh9SLvhn8v1ZzN1nawBMaR
- RdGyHU6O2OWZQoQw9GOKSLlKSZj58GdkwOXOWetIjwpVivJCu10TVUwtR2HFGoXGz9AAz9
- Jsn/My1hJDEXQhjCvckhgFKgmWNvUFWpr+KBrssThhi3AQZw7ZHcWFDLS/gGavfjo3bcFr
- YZWCrNwq0a3QHodhVlkvagmv6k+TNyVuU3TTv4HqB7Mk1TqpeZZlOgAWXo+kvw==
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1739792761;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=UQnxmLR9OvONdKrBpT4mZgYi9x/8XHDdQejUcyVnDIU=;
- b=TXGQkcEcdSdh2cGtlKUGwajBvbGzF8U53fEA4m7T0gJiWw6yDUiEHPngvQjg3XGP12Y7hz
- ktf/0Q+TzuwEixCQ==
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250214171816.30562-1-emil.s.tantilov@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1739809027;
+ bh=dbN+k2q6EShMVUAh4Ch1jkSdAxdn32s4LBsHWf0F1dM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=W6ZT7Owl77PCw1wceouhGsK6E/A95VPA5IbW0E/cpdtIX5vm6RxC8p5246AACe7Ay
+ wSzwHzHULZEk3fQ3/8PaYZBuxui6x8tx+dGLcrFZMM327nJY6Gin7rkzh3WGWMdOBQ
+ OkE+jvLxVEeN+fYwT/9WQGX5qTVUXk9qAbswIopCdfam0PkYc3xwiiZ2acKm5g2ETw
+ P6MEkkh0+mVdI+78Bi0AxO3ShmlGRytI3Z1i+L8Dr5cIBnadqRX79vvpISRbc24tok
+ JNZL4R//bAfbNoie4gko94pI3fHsUmuQhNREMOoVCKHyPnsgGd9Env2V2zRKavsQga
+ kiroYxa3LSsvQ==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=linutronix.de
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
- header.a=rsa-sha256 header.s=2020 header.b=sro5RGIj; 
- dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=TXGQkcEc
-Subject: [Intel-wired-lan] [PATCH iwl-next] igc: Change Tx mode for MQPRIO
- offloading
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=W6ZT7Owl
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] idpf: check error for
+ register_netdev() on init
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -128,163 +101,44 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The current MQPRIO offload implementation uses the legacy TSN Tx mode. In
-this mode the hardware uses four packet buffers and considers queue
-priorities.
+On Fri, Feb 14, 2025 at 09:18:16AM -0800, Emil Tantilov wrote:
+> Current init logic ignores the error code from register_netdev(),
+> which will cause WARN_ON() on attempt to unregister it, if there was one,
+> and there is no info for the user that the creation of the netdev failed.
+> 
+> WARNING: CPU: 89 PID: 6902 at net/core/dev.c:11512 unregister_netdevice_many_notify+0x211/0x1a10
+> ...
+> [ 3707.563641]  unregister_netdev+0x1c/0x30
+> [ 3707.563656]  idpf_vport_dealloc+0x5cf/0xce0 [idpf]
+> [ 3707.563684]  idpf_deinit_task+0xef/0x160 [idpf]
+> [ 3707.563712]  idpf_vc_core_deinit+0x84/0x320 [idpf]
+> [ 3707.563739]  idpf_remove+0xbf/0x780 [idpf]
+> [ 3707.563769]  pci_device_remove+0xab/0x1e0
+> [ 3707.563786]  device_release_driver_internal+0x371/0x530
+> [ 3707.563803]  driver_detach+0xbf/0x180
+> [ 3707.563816]  bus_remove_driver+0x11b/0x2a0
+> [ 3707.563829]  pci_unregister_driver+0x2a/0x250
+> 
+> Introduce an error check and log the vport number and error code.
+> On removal make sure to check VPORT_REG_NETDEV flag prior to calling
+> unregister and free on the netdev.
+> 
+> Add local variables for idx, vport_config and netdev for readability.
+> 
+> Fixes: 0fe45467a104 ("idpf: add create vport and netdev configuration")
+> Suggested-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+> Signed-off-by: Emil Tantilov <emil.s.tantilov@intel.com>
+> ---
+> Changelog:
+> v2:
+> - Refactored a bit to avoid >80 char lines.
+> - Changed the netdev and flag check to allow for early continue in the
+>   max_vports loop, which also helps to reduce the identation.
+> 
+> v1:
+> https://lore.kernel.org/intel-wired-lan/20250211023851.21090-1-emil.s.tantilov@intel.com/
 
-In order to harmonize the TAPRIO implementation with MQPRIO switch to the
-regular TSN Tx mode. In addition to the legacy mode, transmission is always
-coupled to Qbv. The driver already has mechanisms to use a dummy schedule
-of 1 second with all gates open for ETF. Simply use this for MQPRIO too.
+Thanks for the update.
 
-This reduces code and makes it easier to add support for frame preemption
-later.
-
-While at it limit the netdev_tc calls to MQPRIO only.
-
-Tested on i225 with real time application using high priority queue, iperf3
-using low priority queue and network TAP device.
-
-Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
----
- drivers/net/ethernet/intel/igc/igc.h      |  4 +---
- drivers/net/ethernet/intel/igc/igc_main.c | 18 ++++++++++++++++-
- drivers/net/ethernet/intel/igc/igc_tsn.c  | 33 +------------------------------
- 3 files changed, 19 insertions(+), 36 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index b8111ad9a9a83dbe1257d8011e046cbd263022c3..95f503f7a41f42358302d4726ef82032278fbd29 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -388,11 +388,9 @@ extern char igc_driver_name[];
- #define IGC_FLAG_RX_LEGACY		BIT(16)
- #define IGC_FLAG_TSN_QBV_ENABLED	BIT(17)
- #define IGC_FLAG_TSN_QAV_ENABLED	BIT(18)
--#define IGC_FLAG_TSN_LEGACY_ENABLED	BIT(19)
- 
- #define IGC_FLAG_TSN_ANY_ENABLED				\
--	(IGC_FLAG_TSN_QBV_ENABLED | IGC_FLAG_TSN_QAV_ENABLED |	\
--	 IGC_FLAG_TSN_LEGACY_ENABLED)
-+	(IGC_FLAG_TSN_QBV_ENABLED | IGC_FLAG_TSN_QAV_ENABLED)
- 
- #define IGC_FLAG_RSS_FIELD_IPV4_UDP	BIT(6)
- #define IGC_FLAG_RSS_FIELD_IPV6_UDP	BIT(7)
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 84307bb7313e0fcb7d598e67586f1ea076c1d942..7a37a54c5aa9f36505a98a42959ba8276469ce36 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -6603,13 +6603,14 @@ static int igc_tsn_enable_mqprio(struct igc_adapter *adapter,
- 				 struct tc_mqprio_qopt_offload *mqprio)
- {
- 	struct igc_hw *hw = &adapter->hw;
--	int i;
-+	int err, i;
- 
- 	if (hw->mac.type != igc_i225)
- 		return -EOPNOTSUPP;
- 
- 	if (!mqprio->qopt.num_tc) {
- 		adapter->strict_priority_enable = false;
-+		netdev_reset_tc(adapter->netdev);
- 		goto apply;
- 	}
- 
-@@ -6640,6 +6641,21 @@ static int igc_tsn_enable_mqprio(struct igc_adapter *adapter,
- 	igc_save_mqprio_params(adapter, mqprio->qopt.num_tc,
- 			       mqprio->qopt.offset);
- 
-+	err = netdev_set_num_tc(adapter->netdev, adapter->num_tc);
-+	if (err)
-+		return err;
-+
-+	for (i = 0; i < adapter->num_tc; i++) {
-+		err = netdev_set_tc_queue(adapter->netdev, i, 1,
-+					  adapter->queue_per_tc[i]);
-+		if (err)
-+			return err;
-+	}
-+
-+	/* In case the card is configured with less than four queues. */
-+	for (; i < IGC_MAX_TX_QUEUES; i++)
-+		adapter->queue_per_tc[i] = i;
-+
- 	mqprio->qopt.hw = TC_MQPRIO_HW_OFFLOAD_TCS;
- 
- apply:
-diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
-index 1e44374ca1ffbb86e9893266c590f318984ef574..6e4582de9602db2c6667f1736cc2acaa4d4b5201 100644
---- a/drivers/net/ethernet/intel/igc/igc_tsn.c
-+++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
-@@ -47,7 +47,7 @@ static unsigned int igc_tsn_new_flags(struct igc_adapter *adapter)
- 		new_flags |= IGC_FLAG_TSN_QAV_ENABLED;
- 
- 	if (adapter->strict_priority_enable)
--		new_flags |= IGC_FLAG_TSN_LEGACY_ENABLED;
-+		new_flags |= IGC_FLAG_TSN_QBV_ENABLED;
- 
- 	return new_flags;
- }
-@@ -157,16 +157,12 @@ static int igc_tsn_disable_offload(struct igc_adapter *adapter)
- 	wr32(IGC_QBVCYCLET_S, 0);
- 	wr32(IGC_QBVCYCLET, NSEC_PER_SEC);
- 
--	/* Reset mqprio TC configuration. */
--	netdev_reset_tc(adapter->netdev);
--
- 	/* Restore the default Tx arbitration: Priority 0 has the highest
- 	 * priority and is assigned to queue 0 and so on and so forth.
- 	 */
- 	igc_tsn_tx_arb(adapter, queue_per_tc);
- 
- 	adapter->flags &= ~IGC_FLAG_TSN_QBV_ENABLED;
--	adapter->flags &= ~IGC_FLAG_TSN_LEGACY_ENABLED;
- 
- 	return 0;
- }
-@@ -206,37 +202,10 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
- 		igc_tsn_set_retx_qbvfullthreshold(adapter);
- 
- 	if (adapter->strict_priority_enable) {
--		int err;
--
--		err = netdev_set_num_tc(adapter->netdev, adapter->num_tc);
--		if (err)
--			return err;
--
--		for (i = 0; i < adapter->num_tc; i++) {
--			err = netdev_set_tc_queue(adapter->netdev, i, 1,
--						  adapter->queue_per_tc[i]);
--			if (err)
--				return err;
--		}
--
--		/* In case the card is configured with less than four queues. */
--		for (; i < IGC_MAX_TX_QUEUES; i++)
--			adapter->queue_per_tc[i] = i;
--
- 		/* Configure queue priorities according to the user provided
- 		 * mapping.
- 		 */
- 		igc_tsn_tx_arb(adapter, adapter->queue_per_tc);
--
--		/* Enable legacy TSN mode which will do strict priority without
--		 * any other TSN features.
--		 */
--		tqavctrl = rd32(IGC_TQAVCTRL);
--		tqavctrl |= IGC_TQAVCTRL_TRANSMIT_MODE_TSN;
--		tqavctrl &= ~IGC_TQAVCTRL_ENHANCED_QAV;
--		wr32(IGC_TQAVCTRL, tqavctrl);
--
--		return 0;
- 	}
- 
- 	for (i = 0; i < adapter->num_tx_queues; i++) {
-
----
-base-commit: 0784d83df3bfc977c13252a0599be924f0afa68d
-change-id: 20250214-igc_mqprio_tx_mode-22c19c564605
-
-Best regards,
--- 
-Kurt Kanzenbach <kurt@linutronix.de>
+Reviewed-by: Simon Horman <horms@kernel.org>
 
