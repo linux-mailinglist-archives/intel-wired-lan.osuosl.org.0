@@ -1,89 +1,104 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A7944A3A7E9
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Feb 2025 20:44:28 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B250A3A9BE
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Feb 2025 21:47:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3491540BE1;
-	Tue, 18 Feb 2025 19:44:27 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7rqWlyvuUjm6; Tue, 18 Feb 2025 19:44:25 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EB9C140BDC
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739907865;
-	bh=yfBdMa35IlSvleFq6g2qm9/i3iJnx+wl9Zmp0L3NA0g=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=WHxUnkSv3TE6qa/0O5chvrC7+LmUyXt3rKILt14ED1evWJyvfLfSRIAN8vQO/vh4l
-	 6FUIVKr20oRxjgna8MgQRfOBMYlWIjvssR/Lvt7vIVeltTg2FdSoO9HHczMxh7MavV
-	 GXX9ib50wCKVY9aBeiiOGTWoC+RbxXwEDTzDRiIlbEwzH4veOCDYRUtXXU0oLC0W3+
-	 o3YPcNlROhWpQ/QJzXK61wjZmbM7ZQS9FUdT7OQ3X0CsEE0mpjRnoR1nwQ5FzMykNP
-	 tphCQE6uqVS8fI2a9LJ2ynSkODrpwqWGHBN2UZm56ZVi2VuKdVe8P20SooO641vyzt
-	 znHrnbgEwvvxw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EB9C140BDC;
-	Tue, 18 Feb 2025 19:44:24 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id AC272968
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2025 19:44:20 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9BAFB81DE7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2025 19:44:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DFF1481DF5;
+	Tue, 18 Feb 2025 20:47:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RR3ZcurWQpvg for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Feb 2025 19:44:20 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0280181455
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0280181455
-Received: from nyc.source.kernel.org (nyc.source.kernel.org
- [IPv6:2604:1380:45d1:ec00::3])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0280181455
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2025 19:44:19 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id BEF08A41327;
- Tue, 18 Feb 2025 19:42:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7EAC9C4CEE2;
- Tue, 18 Feb 2025 19:44:17 +0000 (UTC)
-Date: Tue, 18 Feb 2025 19:44:15 +0000
-From: Simon Horman <horms@kernel.org>
-To: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-Message-ID: <20250218194415.GL1615191@kernel.org>
-References: <20250217102744.300357-2-martyna.szapar-mudlaw@linux.intel.com>
+ id 7-tgAsLUNI6f; Tue, 18 Feb 2025 20:47:47 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 504EC81D67
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1739911667;
+	bh=jpY7Wp9A5OrP01XjYb8sMlnmyc1nWglgkRg0g+3xUdg=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=lBQLJMPf8/vNdKXv30JjYIFHYF1fWHyk6eO7wWjpjmE8/jV/58HcG02rpX9t5Prpc
+	 u103U4WW4knt05c7cDkRKz6SRsa3ouWput1q/++MU9mrGmGkn2N5cSbl148iU9B7nb
+	 hkFTidmzQ8iWHCI+3o0ZPaq5Y25MJzF5xF5Q6htMe0dW6TIFW8xX28q34aUanJR3eD
+	 ZM7rzdW1pFYZ9BK+TrJCbOd5yAaPmgDTn+WfMziH+4U2fYPIpTbtk662+Eev/EhEpL
+	 J8MtkD6/Ozksm5Vws6TBTQrwtZd+ft1+j5XlUehFS+NxaH1i486aSxDBSQ0H50dtgy
+	 Mk4jIpQVw81og==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 504EC81D67;
+	Tue, 18 Feb 2025 20:47:47 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 53C43968
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2025 20:47:45 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 40D2840418
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2025 20:47:45 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id AoP9wdg9F-dC for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Feb 2025 20:47:44 +0000 (UTC)
+X-Greylist: delayed 469 seconds by postgrey-1.37 at util1.osuosl.org;
+ Tue, 18 Feb 2025 20:47:42 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org F229840002
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F229840002
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=91.218.175.176;
+ helo=out-176.mta0.migadu.com; envelope-from=yanjun.zhu@linux.dev;
+ receiver=<UNKNOWN> 
+Received: from out-176.mta0.migadu.com (out-176.mta0.migadu.com
+ [91.218.175.176])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id F229840002
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2025 20:47:42 +0000 (UTC)
+Message-ID: <0462df14-0aaa-4861-a0a4-dade4cfa727e@linux.dev>
+Date: Tue, 18 Feb 2025 21:39:44 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250217102744.300357-2-martyna.szapar-mudlaw@linux.intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1739907858;
- bh=yfBdMa35IlSvleFq6g2qm9/i3iJnx+wl9Zmp0L3NA0g=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=sOUNg1mS2+ePoB/va/94jEyM8uXG3oGoylobTT9qrOxbh8bosEj5q27D143uxrVL/
- 0hYpZC27IGVKDhBr71U/EMLKfpbzDNrmndz5VHmc8qq1+8v0+CTSMGSz491C3EqcsF
- Z7SoyIqlQ53pb4uSjDiVt6hGwGm6gy8EzX84s3bNdy8w1SEm4xbS2u00Dz8iJqvsHz
- 9auyipr035MthzSfjDr8izQfB3SNVb9knXPRtdomluOSWFUm/PfqePZ9r2Y+wVDGFk
- YEDEeCB6iLVoaShdGsMMRnghfoLrwBL0NYXAfjaB68q7s5qNagFBPv2XSSXd5sMyjj
- R4ZAUKNNSPy/w==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=sOUNg1mS
-Subject: Re: [Intel-wired-lan] [iwl-net 0/4] ice: improve validation of
- virtchnl parameters
+To: Leon Romanovsky <leon@kernel.org>,
+ Steffen Klassert <steffen.klassert@secunet.com>
+Cc: Leon Romanovsky <leonro@nvidia.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
+ Ayush Sawal <ayush.sawal@chelsio.com>, Bharat Bhushan
+ <bbhushan2@marvell.com>, Eric Dumazet <edumazet@google.com>,
+ Geetha sowjanya <gakula@marvell.com>, hariprasad <hkelam@marvell.com>,
+ Herbert Xu <herbert@gondor.apana.org.au>, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, Jay Vosburgh <jv@jvosburgh.net>,
+ Jonathan Corbet <corbet@lwn.net>, linux-doc@vger.kernel.org,
+ linux-rdma@vger.kernel.org, Louis Peens <louis.peens@corigine.com>,
+ netdev@vger.kernel.org, oss-drivers@corigine.com,
+ Paolo Abeni <pabeni@redhat.com>, Potnuri Bharat Teja <bharat@chelsio.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Saeed Mahameed <saeedm@nvidia.com>, Subbaraya Sundeep <sbhatta@marvell.com>,
+ Sunil Goutham <sgoutham@marvell.com>, Tariq Toukan <tariqt@nvidia.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Ilia Lin <ilia.lin@kernel.org>
+References: <cover.1738778580.git.leon@kernel.org>
+ <3de0445fa7bf53af388bb8d05faf60e3deb81dc2.1738778580.git.leon@kernel.org>
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
+ include these headers.
+From: Zhu Yanjun <yanjun.zhu@linux.dev>
+In-Reply-To: <3de0445fa7bf53af388bb8d05faf60e3deb81dc2.1738778580.git.leon@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Migadu-Flow: FLOW_OUT
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linux.dev; s=key1; t=1739911190;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=jpY7Wp9A5OrP01XjYb8sMlnmyc1nWglgkRg0g+3xUdg=;
+ b=tcCAXXONjDT/OngPf2x8vKJiHrWMIUrrugxnILHDOpCXRYu3MBoazO82ZM7VSPkuczGLWw
+ 1KZasNRLocM8fP8QV99JR7+aRscLdZIenUpkrd9/lva1TkO4U0TnNW6Tw38WI5yUEZArgS
+ ayvN642CY1KMmwMmNZSdemceCsQGgaY=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=linux.dev
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256
+ header.s=key1 header.b=tcCAXXON
+Subject: Re: [Intel-wired-lan] [PATCH ipsec-next 3/5] xfrm: rely on XFRM
+ offload
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -99,16 +114,18 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Feb 17, 2025 at 11:27:41AM +0100, Martyna Szapar-Mudlaw wrote:
-> This patch series introduces improvements to the `ice` driver and `virtchnl`
-> interface by adding stricter validation checks and preventing potential
-> out-of-bounds scenarios.
+在 2025/2/5 19:20, Leon Romanovsky 写道:
+> From: Leon Romanovsky <leonro@nvidia.com>
+> 
+> After change of initialization of x->type_offload pointer to be valid
+> only for offloaded SAs. There is no need to rely both on x->type_offload
+                                                   ^^^^^^^^
+                                                rely on both ??
+Thanks a lot.
+Reviewed-by: Zhu Yanjun <yanjun.zhu@linux.dev>
 
-Hi Martyna,
+Zhu Yanjun
 
-The above talks about this patchset in terms of improvements rather than
-bug fixes (that manifest). If so, I think this should be targeted at
-iwl-next (i.e. net-next) rather than iwl-net (net). And the Fixes tags
-should be dropped.
-
-...
+> and x->xso.type to determine if SA is offloaded or not.
+> 
+> Signed-off-by: Leon Romanovsky <leonro@nvidia.com>
