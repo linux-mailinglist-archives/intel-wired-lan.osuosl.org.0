@@ -2,95 +2,73 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91CA7A39CA2
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Feb 2025 14:00:10 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 036EEA3A1EB
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Feb 2025 16:59:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4F58660F9C;
-	Tue, 18 Feb 2025 13:00:09 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A88386106C;
+	Tue, 18 Feb 2025 15:59:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id m64B1BVHCRr7; Tue, 18 Feb 2025 13:00:08 +0000 (UTC)
+ id wEPwe7nopepa; Tue, 18 Feb 2025 15:59:43 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B471A60F83
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7B1536105D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739883608;
-	bh=DzIdEL0v5oK77xA1GG/3yQejSNljFRje9RLDLpG/Udk=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=MZrKF6wAXyteQBvwDHlCUI32fIdUVlHnIldfv62nvWx3u4lXzauIKhtWCkvlh/Mrz
-	 G4eurgtO4dMlbB2FTy7P63OC1h69Br8s4PQdJZyvJAUNgThmaE/sj92K9gbsWNmQyl
-	 OscaZk1xTu5sbF+Qc7FJXCyW+grepUKgi4p09lNoPunK5f7lvqGH6MTMwbR6W8TF58
-	 LKnM8qhwBabdgF2FenJLlnjUtOnKOTQk8ARXsHdMdWJDWTz+es430VaT2hy2RFEWMK
-	 gKwDMSmwGUiG/GbIqFY1RmzVx8TU6/nqjqCiQyZwDLk/NcY94mCx9/De65v6wKdjg/
-	 o/y/2+v22dP0Q==
+	s=default; t=1739894383;
+	bh=OuQaFsJQCbdxb0FaqzyEAkoK0s5lDKhJRPklwUQXdHE=;
+	h=Date:To:Cc:From:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=MrFfQrce86Zd390gbrf49cM6DMrPvgNy5BI52LxTgZmdRR2Z0mP269Vmp+2Lt60jx
+	 gEcGRHkA6FRjXVQnzRDf1DlBW1LUXJLnpGbJAhUwFAP0dpgjHWnP++3DNsPxaVmQl8
+	 qJvnklnKtNd3AJ3mwCC/zWy27X2eVj0mjJuJdSjGdBrbMyM+5y+QcUToRPNkp1QWzB
+	 7JOEkn4oke49CShN7xLUKSk1dAr7bgvg8O74dfcQCBjTFQvlu5WbibZr0/fSZHz7eW
+	 k6ETPOr3jdQ4O0MKS9HqqjGSvGgybGbQZmyE7tG/1yxo0FtgNiIhuXmTULprPI7lmw
+	 8gjX261v6cbWw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B471A60F83;
-	Tue, 18 Feb 2025 13:00:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7B1536105D;
+	Tue, 18 Feb 2025 15:59:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id C936D968
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2025 13:00:06 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 184D9C8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2025 15:59:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id ACC1860F7B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2025 13:00:06 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id F0F6B80ED4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2025 15:59:39 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3evr-_I47zRs for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Feb 2025 13:00:06 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org EC7F760A83
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EC7F760A83
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id EC7F760A83
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2025 13:00:05 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 410075C59F7;
- Tue, 18 Feb 2025 12:59:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D8DD6C4CEE2;
- Tue, 18 Feb 2025 13:00:01 +0000 (UTC)
-Date: Tue, 18 Feb 2025 12:59:59 +0000
-From: Simon Horman <horms@kernel.org>
-To: Piotr Wejman <wejmanpm@gmail.com>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, Vadim Fedorenko <vadim.fedorenko@linux.dev>
-Message-ID: <20250218125959.GS1615191@kernel.org>
-References: <20250216155729.63862-1-wejmanpm@gmail.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 3OqHPse961z8 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Feb 2025 15:59:38 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org BE0D280E30
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BE0D280E30
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id BE0D280E30
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2025 15:59:37 +0000 (UTC)
+Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id C161561E6479A;
+ Tue, 18 Feb 2025 16:59:19 +0100 (CET)
+Message-ID: <42adcd29-3433-4e38-a28e-7f00dac328aa@molgen.mpg.de>
+Date: Tue, 18 Feb 2025 16:59:18 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250216155729.63862-1-wejmanpm@gmail.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1739883604;
- bh=wkaSrmI42WJ8eWLGud2n2+KIp1RZrA0hZp27Cs/S1os=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=k7pQPjRGFqpUEqRUTP8WqTqJCGC/2YTh4O27TLV9vm126m4kCoOmAwS97lD/hjjfw
- eCtd7SYs2FOAaiy98MHm/EiZNAdqpX8f3W6vFgr/+SkgeghmtrI73iWz3DsGG3S09u
- C5agCd2n5J5fVOjYeqleodcKLIt19zk4686f4ISRXgpNG5AVC2JkzO6PriMJ3aBObU
- zh3wFF5VVhuazFapG98U/CLt2pNZfAuBuwwHYjxmBEIOAFgMsEqW4ZJ1e+y0pAb2Oi
- C7oEiICDHx0gjW8ej342Ub7FXaO9wciu2y5xaS+YIkbyt3uzKGG7UEzOCCmH4KRK0k
- +qJ9HTixag9FQ==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=k7pQPjRG
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3] net: e1000e: convert to
- ndo_hwtstamp_get() and ndo_hwtstamp_set()
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+To: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
+Subject: [Intel-wired-lan] e1000e: How to set parameters using sysfs?
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -106,49 +84,87 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sun, Feb 16, 2025 at 04:57:28PM +0100, Piotr Wejman wrote:
-> Update the driver to use the new hardware timestamping API added in commit
-> 66f7223039c0 ("net: add NDOs for configuring hardware timestamping").
-> Use Netlink extack for error reporting in e1000e_config_hwtstamp.
-> Align the indentation of net_device_ops.
-> 
-> Reviewed-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-> Signed-off-by: Piotr Wejman <wejmanpm@gmail.com>
+Dear Linux folks,
 
-Reviewed-by: Simon Horman <horms@kernel.org>
 
-...
+The driver e1000e has several parameters [1]:
 
-> @@ -3932,7 +3939,11 @@ static void e1000e_systim_reset(struct e1000_adapter *adapter)
->  	spin_unlock_irqrestore(&adapter->systim_lock, flags);
->  
->  	/* restore the previous hwtstamp configuration settings */
-> -	e1000e_config_hwtstamp(adapter, &adapter->hwtstamp_config);
-> +	ret_val = e1000e_config_hwtstamp(adapter, &adapter->hwtstamp_config, &extack);
+     $ modinfo e1000e
+     filename: 
+/lib/modules/6.6.35.mx64.477/kernel/drivers/net/ethernet/intel/e1000e/e1000e.ko
+     […]
+     alias:          pci:v00008086d0000105Esv*sd*bc*sc*i*
+     depends:
+     retpoline:      Y
+     intree:         Y
+     name:           e1000e
+     vermagic:       6.6.35.mx64.477 SMP preempt mod_unload modversions
+     parm:           debug:Debug level (0=none,...,16=all) (int)
+     parm:           copybreak:Maximum size of packet that is copied to 
+a new buffer on receive (uint)
+     parm:           TxIntDelay:Transmit Interrupt Delay (array of int)
+     parm:           TxAbsIntDelay:Transmit Absolute Interrupt Delay 
+(array of int)
+     parm:           RxIntDelay:Receive Interrupt Delay (array of int)
+     parm:           RxAbsIntDelay:Receive Absolute Interrupt Delay 
+(array of int)
+     parm:           InterruptThrottleRate:Interrupt Throttling Rate 
+(array of int)
+     parm:           IntMode:Interrupt Mode (array of int)
+     parm:           SmartPowerDownEnable:Enable PHY smart power down 
+(array of int)
+     parm:           KumeranLockLoss:Enable Kumeran lock loss workaround 
+(array of int)
+     parm:           WriteProtectNVM:Write-protect NVM [WARNING: 
+disabling this can lead to corrupted NVM] (array of int)
+     parm:           CrcStripping:Enable CRC Stripping, disable if your 
+BMC needs the CRC (array of int)
 
-nit: If there is a v4 for some other reason, please consider line-wrapping
-     the above to avoid lines that are more than 80 columns wide.
+Unfortunately, only `copybreak` seems to be exposed via sysfs:
 
-	ret_val = e1000e_config_hwtstamp(adapter, &adapter->hwtstamp_config,
-					 &extack);
+     $ ls /sys/module/e1000e/parameters/
+     copybreak
 
-> +	if (ret_val) {
-> +		if (extack._msg)
-> +			e_err("%s\n", extack._msg);
-> +	}
->  }
->  
->  /**
-> @@ -6079,8 +6090,8 @@ static int e1000_change_mtu(struct net_device *netdev, int new_mtu)
->  	return 0;
->  }
->  
-> -static int e1000_mii_ioctl(struct net_device *netdev, struct ifreq *ifr,
-> -			   int cmd)
-> +static int e1000_ioctl(struct net_device *netdev, struct ifreq *ifr,
-> +		       int cmd)
+Adding `e1000e.debug=16` to the Linux command line in GRUB also does not 
+seem to help – at least no additional messages are logged by Linux.
 
-nit: And conversely, if there is a v4 for some other reason,
-     please consider merging the above two lines into one.
+The StackExchange thread *Debugging why NIC link comes up/down 
+constantly* [2] makes the same observations. Regarding the reason, 
+LinuxQuestions.org has the answer [3], that the permissions are set to 
+0, so the parameters are not exposed:
 
-...
+ From `drivers/net/ethernet/intel/e1000e/param.c`:
+
+```
+/* All parameters are treated the same, as an integer array of values.
+  * This macro just reduces the need to repeat the same declaration code
+  * over and over (plus this helps to avoid typo bugs).
+  */
+#define E1000_PARAM_INIT { [0 ... E1000_MAX_NIC] = OPTION_UNSET }
+#define E1000_PARAM(X, desc)                                    \
+         static int X[E1000_MAX_NIC+1] = E1000_PARAM_INIT;       \
+         static unsigned int num_##X;                            \
+         module_param_array_named(X, X, int, &num_##X, 0);       \
+         MODULE_PARM_DESC(X, desc);
+[…]
+
+and from `drivers/net/ethernet/intel/e1000e/netdev.c`:
+
+     static int debug = -1;
+     module_param(debug, int, 0);
+     MODULE_PARM_DESC(debug, "Debug level (0=none,...,16=all)");
+
+Could you please share the reason, why these are hidden from sysfs, not 
+allowing them to be changed at runtime?
+
+
+Kind regards,
+
+Paul
+
+
+[1]: 
+https://www.kernel.org/doc/html/latest/networking/device_drivers/ethernet/intel/e1000.html#command-line-parameters
+[2]: 
+https://unix.stackexchange.com/questions/662578/debugging-why-nic-link-comes-up-down-constantly
+[3]: https://www.linuxquestions.org/questions/showthread.php?p=6305802
