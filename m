@@ -1,93 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B1832A3A7BD
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Feb 2025 20:37:07 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 67722815CC;
-	Tue, 18 Feb 2025 19:37:06 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1tOA8i58x5DN; Tue, 18 Feb 2025 19:37:05 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C675481DE7
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739907425;
-	bh=g4axMjc0b91j83qqiQbY0wKAwyQUMIUjvUgdeS1hl4k=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=HDIc++yD+cEZD6DssXNaaO0EkKkbZZSSfik9k9oCaKE93DbPVXDyUSwab39gB6IuS
-	 TBu8eKFJi4f4LrKeYrp4Zym97ajDLTDFuBOPr8dp8EWmlcX/MAV2marO4Y972dCWxj
-	 RIMxbVzR/RP/C7vb6HdahQwAxV3YWE2UpzQ7ERuRy2OwzAASWpCgmd/4vzQ19w7f5j
-	 dldWzUMvZQKySAv7u/VcpUA8q98FUYRE8TiMD4UzjgaXZWMwe2f4YkyWJtz3NF9bxM
-	 4sLFkY66JiFemhsRG2bTwg0cklK6oO9//HYMj9AKLVpP+50bd0OwnoOsZFtrU5dBmm
-	 u7M/Tnw/N+Rcg==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C675481DE7;
-	Tue, 18 Feb 2025 19:37:05 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id ADF42968
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2025 19:37:03 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id A7944A3A7E9
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Feb 2025 20:44:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 7F6B340821
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2025 19:37:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3491540BE1;
+	Tue, 18 Feb 2025 19:44:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id LLGGcl-PSMZx for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Feb 2025 19:37:02 +0000 (UTC)
+ id 7rqWlyvuUjm6; Tue, 18 Feb 2025 19:44:25 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EB9C140BDC
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1739907865;
+	bh=yfBdMa35IlSvleFq6g2qm9/i3iJnx+wl9Zmp0L3NA0g=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=WHxUnkSv3TE6qa/0O5chvrC7+LmUyXt3rKILt14ED1evWJyvfLfSRIAN8vQO/vh4l
+	 6FUIVKr20oRxjgna8MgQRfOBMYlWIjvssR/Lvt7vIVeltTg2FdSoO9HHczMxh7MavV
+	 GXX9ib50wCKVY9aBeiiOGTWoC+RbxXwEDTzDRiIlbEwzH4veOCDYRUtXXU0oLC0W3+
+	 o3YPcNlROhWpQ/QJzXK61wjZmbM7ZQS9FUdT7OQ3X0CsEE0mpjRnoR1nwQ5FzMykNP
+	 tphCQE6uqVS8fI2a9LJ2ynSkODrpwqWGHBN2UZm56ZVi2VuKdVe8P20SooO641vyzt
+	 znHrnbgEwvvxw==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id EB9C140BDC;
+	Tue, 18 Feb 2025 19:44:24 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id AC272968
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2025 19:44:20 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9BAFB81DE7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2025 19:44:20 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id RR3ZcurWQpvg for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Feb 2025 19:44:20 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
  envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org B64594075F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B64594075F
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B64594075F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2025 19:37:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0280181455
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0280181455
+Received: from nyc.source.kernel.org (nyc.source.kernel.org
+ [IPv6:2604:1380:45d1:ec00::3])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 0280181455
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Feb 2025 19:44:19 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id C2CB45C00B0;
- Tue, 18 Feb 2025 19:36:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF02EC4CEE9;
- Tue, 18 Feb 2025 19:36:59 +0000 (UTC)
-Date: Tue, 18 Feb 2025 19:36:57 +0000
+ by nyc.source.kernel.org (Postfix) with ESMTP id BEF08A41327;
+ Tue, 18 Feb 2025 19:42:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7EAC9C4CEE2;
+ Tue, 18 Feb 2025 19:44:17 +0000 (UTC)
+Date: Tue, 18 Feb 2025 19:44:15 +0000
 From: Simon Horman <horms@kernel.org>
-To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- marcin.szycik@linux.intel.com, jedrzej.jagielski@intel.com,
- przemyslaw.kitszel@intel.com, piotr.kwapulinski@intel.com,
- anthony.l.nguyen@intel.com, dawid.osuchowski@intel.com,
- pmenzel@molgen.mpg.de
-Message-ID: <20250218193657.GK1615191@kernel.org>
-References: <20250217090636.25113-1-michal.swiatkowski@linux.intel.com>
- <20250217090636.25113-5-michal.swiatkowski@linux.intel.com>
+To: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+Message-ID: <20250218194415.GL1615191@kernel.org>
+References: <20250217102744.300357-2-martyna.szapar-mudlaw@linux.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250217090636.25113-5-michal.swiatkowski@linux.intel.com>
+In-Reply-To: <20250217102744.300357-2-martyna.szapar-mudlaw@linux.intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1739907421;
- bh=+hqWcriKAA9mO5bQ4FjEZdNPrh+j9atAdoHgsaVxT28=;
+ d=kernel.org; s=k20201202; t=1739907858;
+ bh=yfBdMa35IlSvleFq6g2qm9/i3iJnx+wl9Zmp0L3NA0g=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=GMVq5M+/he1PfgVfQ/SIiUS2C9EhX/2oacPuPat3LAwyGgdFfJtiV99US3PxFa/fw
- QeVYttFeFaKFdgz4isw2rfq+FB6dRx2Ebp9Rc7PICDTyEcmwaJJOo4jFrfgl1xddhc
- 1M2UDdtgQP0IsewSiQte+LtBMppEnY+hFXEAbIapUzTBjP5FnOGKJHEV0vPifb+PXk
- BuR9Eg1npSn4aNbsmsvIJ+yW9S97AKJFgr/3sqNlIzICUS7Jgx8h0tgYC/XHX9HObv
- w50j4KlVfz3Jehpl17Zy5kGCgzU7pxES1U534uqN6qygpALx5aMMFBhTpHaBNI835I
- GRluDThCo3krg==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=sOUNg1mS2+ePoB/va/94jEyM8uXG3oGoylobTT9qrOxbh8bosEj5q27D143uxrVL/
+ 0hYpZC27IGVKDhBr71U/EMLKfpbzDNrmndz5VHmc8qq1+8v0+CTSMGSz491C3EqcsF
+ Z7SoyIqlQ53pb4uSjDiVt6hGwGm6gy8EzX84s3bNdy8w1SEm4xbS2u00Dz8iJqvsHz
+ 9auyipr035MthzSfjDr8izQfB3SNVb9knXPRtdomluOSWFUm/PfqePZ9r2Y+wVDGFk
+ YEDEeCB6iLVoaShdGsMMRnghfoLrwBL0NYXAfjaB68q7s5qNagFBPv2XSSXd5sMyjj
+ R4ZAUKNNSPy/w==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=GMVq5M+/
-Subject: Re: [Intel-wired-lan] [iwl-next v3 4/4] ixgbe: turn off MDD while
- modifying SRRCTL
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=sOUNg1mS
+Subject: Re: [Intel-wired-lan] [iwl-net 0/4] ice: improve validation of
+ virtchnl parameters
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -103,19 +99,16 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Feb 17, 2025 at 10:06:36AM +0100, Michal Swiatkowski wrote:
-> From: Radoslaw Tyl <radoslawx.tyl@intel.com>
-> 
-> Modifying SRRCTL register can generate MDD event.
-> 
-> Turn MDD off during SRRCTL register write to prevent generating MDD.
-> 
-> Fix RCT in ixgbe_set_rx_drop_en().
-> 
-> Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Signed-off-by: Radoslaw Tyl <radoslawx.tyl@intel.com>
-> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+On Mon, Feb 17, 2025 at 11:27:41AM +0100, Martyna Szapar-Mudlaw wrote:
+> This patch series introduces improvements to the `ice` driver and `virtchnl`
+> interface by adding stricter validation checks and preventing potential
+> out-of-bounds scenarios.
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+Hi Martyna,
 
+The above talks about this patchset in terms of improvements rather than
+bug fixes (that manifest). If so, I think this should be targeted at
+iwl-next (i.e. net-next) rather than iwl-net (net). And the Fixes tags
+should be dropped.
+
+...
