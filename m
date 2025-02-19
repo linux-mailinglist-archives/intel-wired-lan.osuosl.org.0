@@ -1,105 +1,100 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 05B59A3C32D
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Feb 2025 16:10:18 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A44B4A3C4D3
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Feb 2025 17:22:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3BDC453BF3;
-	Wed, 19 Feb 2025 13:57:47 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5A31B8913D;
+	Wed, 19 Feb 2025 16:22:22 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id F__mPGdesa0W; Wed, 19 Feb 2025 16:22:21 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0B4B28690F
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1739982141;
+	bh=WRmexGZnBn28ZwYufH8JgpfTsCjo43yY2wzZiMrsTrc=;
+	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=fzrzE29U3x8GgZGeDm3/+8+LvqXD+mAEprzdjibxZU8ftNmbaKMOPIr2QiO04bgA7
+	 /P56lf8FWcj0GxPQfx/PcnGkXy0W8X9EMjrOWroxpYoQxQgZxHUD4exVM3h20RjN+F
+	 mkVYHXHKBGe9FUJeFF8sdY7H8z997VYo+4hunNxtEKbUj3Q6pFz7Gmqfck3CxsH8dw
+	 hA7wrCIq0wUceiSXOucYL6hzGjWovOU+WGI6YlENmJtssbK0uiqmvCQCKhmMf2lOz4
+	 SLnmnp1qw/uKsBQHuL9vSueLZZMrEJoMiDKCfvxfaRRXSkq1tpRBm1Pt4/L7WiXVZ4
+	 GH3thsLTtcz/w==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0B4B28690F;
+	Wed, 19 Feb 2025 16:22:21 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 44E8EC8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 15:39:33 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 72D5C4F56F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 14:08:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id zvxH9PeGhuDW; Wed, 19 Feb 2025 13:57:45 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2EDB85376E
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739972612;
-	bh=iFnXJuKCAwC80MKOkQHo2i+aRIoz4FmtFbLXW768qSE=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=OwKvGt+8Ts+YrM/9YTEGt3D8tEJeRwBcV1h9eFc9gehfKnE6eQjE+bsZC6cLTpuyO
-	 eirHMD1Jco+UEanQsp5GSvIpO3bC/V5NnDdfmSWO/bJZGt9wYA9Yzpfbxmgx2+zdQ+
-	 cmhqcRMhHbUl+8vegzV/MHsSUHYzXFA8mvRIkI4ewR+eBNqZfW6cGnPlnMw04j4iJ9
-	 AGxuO17Re+xwSKIACyHae5LSDACTK69E6RhDnCQJde1nJB5OFStuOx5HD3d5pqKE9q
-	 U/UDc5QvTGiFmKgvd2QluKVkIFz6VD/XL5JPcd9stALlJQkK7l+YbahJx3eWeFAauG
-	 XYuB37ibY9ntg==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2EDB85376E;
-	Wed, 19 Feb 2025 13:43:31 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 8AC6FC8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 13:36:17 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7188F608C1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 13:36:17 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id zGoE9WyNtR8d for <intel-wired-lan@lists.osuosl.org>;
- Wed, 19 Feb 2025 13:36:16 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
- helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6796960889
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6796960889
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6796960889
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 13:36:16 +0000 (UTC)
-X-CSE-ConnectionGUID: lm/krqRbQ8eyb487VK+iYA==
-X-CSE-MsgGUID: rRmVw6UjQ3m6pH23RosROg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11350"; a="44473945"
-X-IronPort-AV: E=Sophos;i="6.13,299,1732608000"; d="scan'208";a="44473945"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Feb 2025 05:36:15 -0800
-X-CSE-ConnectionGUID: t0j7cc7wRBOnif+xEzOf/g==
-X-CSE-MsgGUID: RUvCVmUdQ9GbQ/1js0djuA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,299,1732608000"; d="scan'208";a="115236101"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmviesa010.fm.intel.com with ESMTP; 19 Feb 2025 05:36:12 -0800
-Received: from vecna.igk.intel.com (vecna.igk.intel.com [10.123.220.17])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 340B333EB6;
- Wed, 19 Feb 2025 13:36:11 +0000 (GMT)
-From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-To: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jiri Pirko <jiri@resnulli.us>, Jakub Kicinski <kuba@kernel.org>
-Cc: netdev@vger.kernel.org, Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- Konrad Knitter <konrad.knitter@intel.com>,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- Simon Horman <horms@kernel.org>
-Date: Wed, 19 Feb 2025 14:30:39 +0100
-Message-Id: <20250219133039.38895-1-przemyslaw.kitszel@intel.com>
-X-Mailer: git-send-email 2.39.3
+ id 8vSnxB9VhSuw for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 19 Feb 2025 14:08:40 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
+ envelope-from=kurt@linutronix.de; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D353E54267
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D353E54267
+Received: from galois.linutronix.de (Galois.linutronix.de
+ [IPv6:2a0a:51c0:0:12e:550::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D353E54267
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 14:03:41 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+To: Joe Damato <jdamato@fastly.com>, Tony Nguyen
+ <anthony.l.nguyen@intel.com>, Przemek Kitszel
+ <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+ <pabeni@redhat.com>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Gerhard Engleder <gerhard@engleder-embedded.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+In-Reply-To: <Z7UDCSckkK7J30oP@LQ3V64L9R2>
+References: <20250217-igb_irq-v2-0-4cb502049ac2@linutronix.de>
+ <Z7T5G9ZQRBb4EtdG@LQ3V64L9R2> <Z7UDCSckkK7J30oP@LQ3V64L9R2>
+Date: Wed, 19 Feb 2025 15:03:36 +0100
+Message-ID: <87jz9mghfr.fsf@kurt.kurt.home>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1739972177; x=1771508177;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=LOKX4E6ujPutAZTVYfYNM95m76n5U1LtRGnhA3Kt6Io=;
- b=a+C92HNwdO+V61rjBQNMbahvd+LD+DQCejRiNsuLIphv9OWoYib2jrjp
- kcCaxGLxMRcfOavP+6zjpy9xn8pKY5kmgV/0CFeRJcJy9prETyNaQo0ZF
- 2qlmqIVdNL5zpAn5pmbPBmJEnM/Uz8tZt1PlIWy+3NK+FS1QguZwxn/bg
- Q0ix+PQ11toIug1k3+noHB0uErAeYWrdOspb6P3Pt69xkQScUriojJDZY
- xzqmXQEgeH8bAGvSr2a0Vge+7riK2EkkNcqy0goPeDKn0KQwu4mzZSQkR
- p4HKoa7ztwFz0AoGSyUGk59+Lb1ahoyDOKAYKB7la/aNs/VrKJ1YmCn/m
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+Content-Type: multipart/signed; boundary="=-=-=";
+ micalg=pgp-sha512; protocol="application/pgp-signature"
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020; t=1739973817;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=WRmexGZnBn28ZwYufH8JgpfTsCjo43yY2wzZiMrsTrc=;
+ b=U9W+w5Fh5BW4pwTK9wPXaPkZc2pmaRKtku6lWziTjPlyVrGLD/ydPRO7Q4XsliMbWPur09
+ IkvUUsLu58BnmSNBmuuI2MNfynM9OWCzxuv3qqJSr/rbQk2kwFu8t2C1/PNNhoHvVa13pM
+ FeJin0C7EvEI8S5vB633K3jYqtdJf20S+MEKAeEef5IlCL10RBvFqMHS5ZsuJ58p1dWtrc
+ bZR+V6b2OSRFOJhvzLIpaUPrw1U19CI4ceCltCYxUDc5UXIy78PwYlcKp4tOEc7dugOmwt
+ bJ7S75/baXEg88nFKnXz8GN+j6IMuWBY1el6VzjOPc+YaNMaQNoHb6G4KKp+qQ==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1739973817;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=WRmexGZnBn28ZwYufH8JgpfTsCjo43yY2wzZiMrsTrc=;
+ b=2mIsfES2UlPwadCvzS0WHm04ZpljFucGvHphvWBsp4ZQVXW4dph4Cxvlm900+GSXPQb+eh
+ 0M0Syc7T1+fzs2DQ==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=a+C92HNw
-Subject: [Intel-wired-lan] [PATCH iwl-net v1] ice: register devlink prior to
- creating health reporters
+ header.from=linutronix.de
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=U9W+w5Fh; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=2mIsfES2
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 0/4] igb: XDP/ZC follow up
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -115,59 +110,140 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-ice_health_init() was introduced in the commit 2a82874a3b7b ("ice: add
-Tx hang devlink health reporter"). The call to it should have been put
-after ice_devlink_register(). It went unnoticed until next reporter by
-Konrad, which recieves events from FW. FW is reporting all events, also
-from prior driver load, and thus it is not unlikely to have something
-at the very begining. And that results in a splat:
-[   24.455950]  ? devlink_recover_notify.constprop.0+0x198/0x1b0
-[   24.455973]  devlink_health_report+0x5d/0x2a0
-[   24.455976]  ? __pfx_ice_health_status_lookup_compare+0x10/0x10 [ice]
-[   24.456044]  ice_process_health_status_event+0x1b7/0x200 [ice]
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-Do the analogous thing for deinit patch.
+On Tue Feb 18 2025, Joe Damato wrote:
+> On Tue, Feb 18, 2025 at 04:18:19PM -0500, Joe Damato wrote:
+>> On Mon, Feb 17, 2025 at 12:31:20PM +0100, Kurt Kanzenbach wrote:
+>> > This is a follow up for the igb XDP/ZC implementation. The first two=20
+>> > patches link the IRQs and queues to NAPI instances. This is required t=
+o=20
+>> > bring back the XDP/ZC busy polling support. The last patch removes=20
+>> > undesired IRQs (injected via igb watchdog) while busy polling with=20
+>> > napi_defer_hard_irqs and gro_flush_timeout set.
+>> >=20
+>> > Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
+>> > ---
+>> > Changes in v2:
+>> > - Take RTNL lock in PCI error handlers (Joe)
+>> > - Fix typo in commit message (Gerhard)
+>> > - Use netif_napi_add_config() (Joe)
+>> > - Link to v1: https://lore.kernel.org/r/20250210-igb_irq-v1-0-bde078cd=
+b9df@linutronix.de
+>>=20
+>> Thanks for sending a v2.
+>>=20
+>> My comment from the previous series still stands, which simply that
+>> I have no idea if the maintainers will accept changes using this API
+>> or prefer to wait until Stanislav's work [1] is completed to remove
+>> the RTNL requirement from this API altogether.
+>
+> Also, may be worth running the newly added XSK test with the NETIF
+> env var set to the igb device? Assuming eth0 is your igb device:
+>
+>   NETIF=3Deth0 ./tools/testing/selftests/drivers/net/queues.py
+>
+> should output:
+>
+>   KTAP version 1
+>   1..4
+>   ok 1 queues.get_queues
+>   ok 2 queues.addremove_queues
+>   ok 3 queues.check_down
+>   ok 4 queues.check_xdp
+>   # Totals: pass:4 fail:0 xfail:0 xpass:0 skip:0 error:0
+>
+> Note the check_xdp line above.
+>
 
-Fixes: 85d6164ec56d ("ice: add fw and port health reporters")
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Reviewed-by: Konrad Knitter <konrad.knitter@intel.com>
-Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
----
-Konrad wonders if regions registration should too be moved prior
-to devlink_register(). From net/devlink code it looks safe both ways,
-and there is no documentation on what should be the registration order.
-(But in the past some things were necessary to be prior to register).
+Sure, why not. Seems to work.
 
-CC: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-CC: Simon Horman <horms@kernel.org>
----
- drivers/net/ethernet/intel/ice/ice_main.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+|root@apl1:~/linux# uname -a
+|Linux apl1 6.14.0-rc2+ #2 SMP PREEMPT_RT Wed Feb 19 14:41:23 CET 2025 x86_=
+64 GNU/Linux
+|root@apl1:~/linux# NETIF=3Denp2s0 ./tools/testing/selftests/drivers/net/qu=
+eues.py
+|KTAP version 1
+|1..4
+|ok 1 queues.get_queues
+|ok 2 queues.addremove_queues
+|ok 3 queues.check_down
+|ok 4 queues.check_xdp
+|# Totals: pass:4 fail:0 xfail:0 xpass:0 skip:0 error:0
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index c3a0fb97c5ee..e13bd5a6cb6c 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -5065,16 +5065,16 @@ static int ice_init_devlink(struct ice_pf *pf)
- 		return err;
- 
- 	ice_devlink_init_regions(pf);
--	ice_health_init(pf);
- 	ice_devlink_register(pf);
-+	ice_health_init(pf);
- 
- 	return 0;
- }
- 
- static void ice_deinit_devlink(struct ice_pf *pf)
- {
--	ice_devlink_unregister(pf);
- 	ice_health_deinit(pf);
-+	ice_devlink_unregister(pf);
- 	ice_devlink_destroy_regions(pf);
- 	ice_devlink_unregister_params(pf);
- }
--- 
-2.39.3
+Has this xsk netlink attribute been added fairly recently? The test
+failed on my kernel from a few days ago (kernel from today works). I
+think there's room for improvement though:
 
+|root@apl1:~/linux# NETIF=3Denp2s0 ./tools/testing/selftests/drivers/net/qu=
+eues.py
+|KTAP version 1
+|1..4
+|ok 1 queues.get_queues
+|ok 2 queues.addremove_queues
+|ok 3 queues.check_down
+|# Exception| Traceback (most recent call last):
+|# Exception|   File "/root/linux/tools/testing/selftests/net/lib/py/ksft.p=
+y", line 218, in ksft_run
+|# Exception|     case(*args)
+|# Exception|   File "/root/linux/./tools/testing/selftests/drivers/net/que=
+ues.py", line 53, in check_xdp
+|# Exception|     ksft_eq(q['xsk'], {})
+|# Exception|             ~^^^^^^^
+|# Exception| KeyError: 'xsk'
+|not ok 4 queues.check_xdp
+|# Totals: pass:3 fail:1 xfail:0 xpass:0 skip:0 error:0
+
+I'd assume this shouldn't be a Python exception, but rather say
+something like "Expected xsk attribute, but none found. Fix the driver!" :)
+
+While at it would you mind to add a newline to the xdp_helper usage
+line (and fix the one typo)?
+
+diff --git a/tools/testing/selftests/drivers/net/xdp_helper.c b/tools/testi=
+ng/selftests/drivers/net/xdp_helper.c
+index cf06a88b830b..55bad307d81b 100644
+=2D-- a/tools/testing/selftests/drivers/net/xdp_helper.c
++++ b/tools/testing/selftests/drivers/net/xdp_helper.c
+@@ -20,7 +20,7 @@
+  * this test program is not intended to actually process packets, but coul=
+d be
+  * extended in the future if that is actually needed.
+  *
+=2D * it is used by queues.py to ensure the xsk netlinux attribute is set
++ * it is used by queues.py to ensure the xsk netlink attribute is set
+  * correctly.
+  */
+ int main(int argc, char **argv)
+@@ -35,7 +35,7 @@ int main(int argc, char **argv)
+        char byte;
+=20
+        if (argc !=3D 3) {
+=2D               fprintf(stderr, "Usage: %s ifindex queue_id", argv[0]);
++               fprintf(stderr, "Usage: %s ifindex queue_id\n", argv[0]);
+                return 1;
+        }
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAme15LgTHGt1cnRAbGlu
+dXRyb25peC5kZQAKCRDBk9HyqkZzgmuOEACTWKcjSqUxn3lLxtzYeT21FhY9zoue
+YNf9abCQXoFWnmwSYGJknmmAfG2DscLKmLAeZW2ommRj0QyEYuMgMNGEz0csFy+b
+9RWvOkdlzGHmP0dvyWE3F1DbkrHgPIjo3Txcd4DO5P1a+MuVqzY3+3VEZwNKq6nc
+q+CcEIX9nUrru0jfdHbYWlquLXfqCghwkD8XXEtQVS6Hr0hXXAXxu95VKWiC2j//
+0s25FXjrESK+SdbEQSKPPknAxFMO+coWvJAJJ3mempTy08vOXE+iYFMLdbh8agIl
+HMQ4JiPeHRXYWvRiQzOoOSIbuh+C/WP6bcT8+/MN0eHvLIBcjyORRzXrnFRq1Fm0
+5JsdRrh44IMknZwNr7cpNi0zg7+L6UebnyzT7GsNgc3WbZiblG0WSwlMZueNtKXz
+FFAZqpcImm26+FgcKa/VTLzbI6dxwvEJFXizcjBzJfDZpxv8rW8gC56dmv8TzFPI
+moOwxC4Ssood/0HE6F3M819ac5P8ics7aEq9tnb5YXjGreISxrrjquBuf7iwr53N
+5d+LxX15AkhoTZLbXNbtFQd7sLuJbKeFIHR/44TwqPduAqkA1MOuoqmBrZlDyal3
+UcweZaA7IDmUWIjrqqjp7E3yMtQVWg6VFkUDlEz8mZvWZCZQpeRAIiZvBPgUXueS
+1F/dDocJV6mZrQ==
+=0UN6
+-----END PGP SIGNATURE-----
+--=-=-=--
