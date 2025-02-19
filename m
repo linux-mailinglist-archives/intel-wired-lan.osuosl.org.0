@@ -1,128 +1,100 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1D32FA3AF19
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Feb 2025 02:48:56 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 76370A3B29B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Feb 2025 08:39:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A3E2883A62;
-	Wed, 19 Feb 2025 01:48:54 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1_u_8-7RFZvT; Wed, 19 Feb 2025 01:48:54 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E341D83A64
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739929733;
-	bh=dvrO7AWGxoNErdt5JCihmAWqLgTj/DJvdaHKt+Vu9Zk=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=URxQhuKVVAUDQLjrtGMBDDbDGrul/YXeXpMyT4yNexWv6hQdyf2GzNGPtoVkhNmon
-	 1MDCl2tejmndglIsb0K0IBBAToXlb26AQZRkE32gFS8duWtSQDhiylI7d1tbClKOcm
-	 zhPF8Y9dncBtlD5ZQ05heTetCxNSs/MRlLzowv+2kfXP2u1q7UVIICK5eklTdtjIXF
-	 awGQQL786EohEtKQUf1QteOLB7nd5J+IeA5PBb8ec6iFZtwZfmEIb0ab72gDpq9CG4
-	 fTcLsFamBnCTHQj471/CdwF+0k5lBVw9div9u5e5QcWVDIY6dG3WDHkoLcW7CI/64T
-	 kma2pFMVIPi3w==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E341D83A64;
-	Wed, 19 Feb 2025 01:48:53 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 686B6AF0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 01:48:51 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 452E56086A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 01:48:51 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D314761190;
+	Wed, 19 Feb 2025 07:39:18 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id MC6B5n29vLbs for <intel-wired-lan@lists.osuosl.org>;
- Wed, 19 Feb 2025 01:48:50 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
- helo=mgamail.intel.com; envelope-from=faizal.abdul.rahim@linux.intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 86B7860764
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 86B7860764
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 86B7860764
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 01:48:50 +0000 (UTC)
-X-CSE-ConnectionGUID: BksVXuPxRqSBwErITak2Lw==
-X-CSE-MsgGUID: MtaMbRhRSkevwtd9UHiXPw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11348"; a="66006882"
-X-IronPort-AV: E=Sophos;i="6.13,296,1732608000"; d="scan'208";a="66006882"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Feb 2025 17:48:49 -0800
-X-CSE-ConnectionGUID: 3tCnTqP2SCm9n+J0hFQeZw==
-X-CSE-MsgGUID: pUBD94G+R3qLe0pCfMzcOg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,296,1732608000"; d="scan'208";a="114748406"
-Received: from mohdfai2-mobl.gar.corp.intel.com (HELO [10.247.64.179])
- ([10.247.64.179])
- by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Feb 2025 17:48:36 -0800
-Message-ID: <b3e02516-d59c-4ed4-b59d-afa72c23d04b@linux.intel.com>
-Date: Wed, 19 Feb 2025 09:48:34 +0800
+ id VQH-_RenQOd0; Wed, 19 Feb 2025 07:39:18 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 43E4061188
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1739950757;
+	bh=cZyhIf6nJ9+7h9izRSQB51sdbF49s4FF9n3hIEFfuzA=;
+	h=From:To:Cc:In-Reply-To:References:Date:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=ef0B0GQRdGS1qsq+xroWQ7iOMeDfOmASeUXQxg9YQAo2+UP6jYed2tPuuEQpePcqc
+	 yJJCzxuseEK//iG/2y7gv6GWnGaGues4O0eIoCs/cOeht3qlgQAs9IObqpO+0JlPsJ
+	 2CV7/UsMhufpzkrDLzti/8ADtWB4HaPMYiHd2N8FVzjr49CPk6a9yrbacn4nJw+Bem
+	 MZy2BZsnS6WNY50sNQghU+ho4U9BRzRVgsizbC5CiQ+VRN99o/yDwtKFwPLAyCrjw1
+	 nFfTgInE6BEG0Jo5BzyYU62iNtKTUiYAq3TcBnaQ6WfaohfxM0RpzunpEQhqlpixUB
+	 4kFE+hOmy3+Eg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 43E4061188;
+	Wed, 19 Feb 2025 07:39:17 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3EEF8C8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 07:39:15 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 29FC740603
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 07:39:15 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id gaK1Cw8-NwjJ for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 19 Feb 2025 07:39:14 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
+ envelope-from=kurt@linutronix.de; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org DA19E400C0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DA19E400C0
+Received: from galois.linutronix.de (Galois.linutronix.de
+ [IPv6:2a0a:51c0:0:12e:550::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id DA19E400C0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 07:39:13 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+To: Joe Damato <jdamato@fastly.com>, Jakub Kicinski <kuba@kernel.org>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel
+ <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Sebastian Andrzej
+ Siewior <bigeasy@linutronix.de>, Gerhard Engleder
+ <gerhard@engleder-embedded.com>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org
+In-Reply-To: <Z7T5G9ZQRBb4EtdG@LQ3V64L9R2>
+References: <20250217-igb_irq-v2-0-4cb502049ac2@linutronix.de>
+ <Z7T5G9ZQRBb4EtdG@LQ3V64L9R2>
+Date: Wed, 19 Feb 2025 08:39:08 +0100
+Message-ID: <878qq22xk3.fsf@kurt.kurt.home>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Simon Horman <horms@kernel.org>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S . Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Russell King <linux@armlinux.org.uk>, Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>, Furong Xu <0x1207@gmail.com>,
- Russell King <rmk+kernel@armlinux.org.uk>,
- Vladimir Oltean <vladimir.oltean@nxp.com>,
- Serge Semin <fancer.lancer@gmail.com>,
- Xiaolei Wang <xiaolei.wang@windriver.com>,
- Suraj Jaiswal <quic_jsuraj@quicinc.com>,
- Kory Maincent <kory.maincent@bootlin.com>, Gal Pressman <gal@nvidia.com>,
- Jesper Nilsson <jesper.nilsson@axis.com>,
- Andrew Halaney <ahalaney@redhat.com>,
- Choong Yong Liang <yong.liang.choong@linux.intel.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, bpf@vger.kernel.org
-References: <20250210070207.2615418-1-faizal.abdul.rahim@linux.intel.com>
- <20250210070207.2615418-6-faizal.abdul.rahim@linux.intel.com>
- <20250217113113.GK1615191@kernel.org>
-Content-Language: en-US
-From: "Abdul Rahim, Faizal" <faizal.abdul.rahim@linux.intel.com>
-In-Reply-To: <20250217113113.GK1615191@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1739929730; x=1771465730;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=/6YPLRHm6H9wPjnB667+gK6xaD7arKiwsNiLpHXnheg=;
- b=Vf5gzDRmBVgZMyxxzzBdRiNBQjWVE7xYyrPkKp4FrgJnOeUa+k+HKNPj
- nOu89oBVys7Y/hNEekUgiK4Btf1Eb2qIr3WwG6EF65XiyyNGr0t4r56ac
- 1363ExTQnLDdJrVVx/e3uLgG3/pvqvjL9/fB2xjpa/zzS8Ng+ynovAYEc
- cD03Gr1JLUWJhjCTYz/RpDMg8WpytR6Axvyz+G7fpoDOJYr0PJNZhF/fQ
- njyxJa16ryhcS6STv8O4sA6umKXH58X72lhCRT5jzzDqzLCE6QYH867N1
- p5agbLBDIxgp/zBOkBy2X7MAEfA0Bkcne9nZYpsLEorif51yCejikhA8V
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Vf5gzDRm
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 5/9] igc: Add support for
- frame preemption verification
+Content-Type: multipart/signed; boundary="=-=-=";
+ micalg=pgp-sha512; protocol="application/pgp-signature"
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020; t=1739950750;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=cZyhIf6nJ9+7h9izRSQB51sdbF49s4FF9n3hIEFfuzA=;
+ b=U0PDkQz+9kP8X6+xsFhP66Z4aaQiS+vXyAx2xOLMXSJZ3ZHvMvQSCm6bcDMimvGrHf5Ngy
+ goAI/XpO5gmTSKtKeb79ixIZObo/VH2Mtm6aRB6ep3VIcrpjjt34I8M6SGSDDwDiFnCZhh
+ eRLJN5no9/mEuA9Wq7bzmS87OqHkLsANg2uNFwhit+lzmEbdzcBps2DlwWfUS2WcV77Ll8
+ qswjujf9aoWWi15q4MYpq3yvEsfxr34Kk/B/s61JBvEi7JF19MYtbjPY9rjLsZwRkdRLBU
+ StW9h53cZZ3hrVJxkbV9kNcvWl4Nj1GM82l3Z8iWTP1AtUYhR0jJldP4zfZ61Q==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1739950750;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=cZyhIf6nJ9+7h9izRSQB51sdbF49s4FF9n3hIEFfuzA=;
+ b=wNW1Ivznoo31IUxaE4Eg05/hvT7XDxDJtqZNrbGq9mOxf8lyULSOs5xYeLyITf4PpcxFHR
+ QBCKmO+IAkyJBvBA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=linutronix.de
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=U0PDkQz+; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=wNW1Ivzn
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 0/4] igb: XDP/ZC follow up
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -138,46 +110,70 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
+On Tue Feb 18 2025, Joe Damato wrote:
+> On Mon, Feb 17, 2025 at 12:31:20PM +0100, Kurt Kanzenbach wrote:
+>> This is a follow up for the igb XDP/ZC implementation. The first two=20
+>> patches link the IRQs and queues to NAPI instances. This is required to=
+=20
+>> bring back the XDP/ZC busy polling support. The last patch removes=20
+>> undesired IRQs (injected via igb watchdog) while busy polling with=20
+>> napi_defer_hard_irqs and gro_flush_timeout set.
+>>=20
+>> Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
+>> ---
+>> Changes in v2:
+>> - Take RTNL lock in PCI error handlers (Joe)
+>> - Fix typo in commit message (Gerhard)
+>> - Use netif_napi_add_config() (Joe)
+>> - Link to v1: https://lore.kernel.org/r/20250210-igb_irq-v1-0-bde078cdb9=
+df@linutronix.de
+>
+> Thanks for sending a v2.
 
-On 17/2/2025 7:31 pm, Simon Horman wrote:
-> On Mon, Feb 10, 2025 at 02:02:03AM -0500, Faizal Rahim wrote:
-> 
-> ...
-> 
->> diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
-> 
-> ...
-> 
->> +bool igc_fpe_transmitted_smd_v(union igc_adv_tx_desc *tx_desc)
->> +{
->> +	u8 smd = FIELD_GET(IGC_TXD_POPTS_SMD_MASK, tx_desc->read.olinfo_status);
-> 
-> olininfo_status is little-endian, so I think it needs
-> to be converted to host byte order when used as an
-> argument to FIELD_GET().
-> 
-> Flagged by Sparse.
-> 
->> +
->> +	return smd == SMD_V;
->> +}
-> 
-> ...
-> 
->> diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.h b/drivers/net/ethernet/intel/igc/igc_tsn.h
-> 
-> ...
-> 
->> +static inline void igc_fpe_lp_event_status(union igc_adv_rx_desc *rx_desc,
->> +					   struct ethtool_mmsv *mmsv)
->> +{
->> +	__le32 status_error = le32_to_cpu(rx_desc->wb.upper.status_error);
-> 
-> It looks like the type of status_error should be a host byte order integer,
-> such as u32.
-> 
-> Also flagged by Sparse.
+Thanks for the review.
 
-Thanks for spotting these, I'll update them.
+>
+> My comment from the previous series still stands, which simply that
+> I have no idea if the maintainers will accept changes using this API
+> or prefer to wait until Stanislav's work [1] is completed to remove
+> the RTNL requirement from this API altogether.
 
+I'd rather consider patch #2 a bugfix to restore the busy polling with
+XDP/ZC. After commit 5ef44b3cb43b ("xsk: Bring back busy polling
+support") it is a requirement to implement this API.
+
+The maintainers didn't speak up on v1, so i went along and sent v2.
+
+@Jakub: What's your preference? Would you accept this series or rather
+like to wait for Stanislav's work to be finished?
+
+>
+> [1]: https://lore.kernel.org/netdev/20250218020948.160643-1-sdf@fomichev.=
+me/
+>
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAme1ipwTHGt1cnRAbGlu
+dXRyb25peC5kZQAKCRDBk9HyqkZzgv/gD/4gY0K9/kkjLMJzWgVHmC5XMh7QYc27
+A0HdOrtjCn3hKKtAMOVdjkQGgY1b4boeBvkGE4MKJaE6+XmSEpwnN7zJj/wqcy2s
+AElHtM4R2ihPzYGOXpE/OeWjW8nQ0xaPqOOl5QURe1XdEitNY+bUjMMeALbcxye5
+P93UwTQxakSL+O5+gPXcs4sHshPFw0RpS0jQXy0RFm7kc+w5gmOCjrLorNnC8tMw
+sG6+Yqf4f6DZ76NazVcRHXTT6Wby4e99d1silfz8LWuIO3isIYrz6lKP5F9D27XR
+KblZM3D9s4mwz/udWIXmBTQtiacZ7azKlAPlRgq+gtG1msy622mukOh15ycaPNAz
+jJ0VNA2mGY1srMZ1gOT15GBwkRYKoU8A1d3udEL4Xxi9ILdjfOa6ItNDUfm4CGc5
+F8bVgPQzagqmQU7Kpc+zxuL7fb7TPKCNNTy3Nfdw3GZu0IJpeSg0yDpLU8pxk4h7
+FgrYJE3j0hr+C+lxVQuXtLs0cJltmFuevzkmoCINhO7BjJPBtbwQciq5b512llLE
+K2TDOKg/2lqEq8Ob5E8vM6NZGQ2l1QAyTHjVeYeQcp9pIhAUMycEKq/pSHWA6NPJ
+0C/RZbgsjC3TmBxT6uC2hY3Z6pF512+DgFLGp6ZNqlzhF4/Knk6lbKsGP73ky+ej
+O/BH8SY8Q45mvg==
+=2MYZ
+-----END PGP SIGNATURE-----
+--=-=-=--
