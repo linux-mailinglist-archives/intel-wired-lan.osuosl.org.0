@@ -1,101 +1,103 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CFF7FA3B2A6
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Feb 2025 08:41:10 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 98EEAA3BA5B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Feb 2025 10:41:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3CB294616A;
-	Wed, 19 Feb 2025 07:41:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3927785CEB;
+	Wed, 19 Feb 2025 09:41:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id fmJ_-ggB0cOl; Wed, 19 Feb 2025 07:41:08 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id IzmL_SPeuZ_3; Wed, 19 Feb 2025 09:41:45 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 57EF14F94D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6249885CF9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739950868;
-	bh=1MXOl5x0hytxt1TgAj3QbAK7ZAvG/bSYGzXlYGKLQzM=;
-	h=From:To:Cc:In-Reply-To:References:Date:Subject:List-Id:
+	s=default; t=1739958098;
+	bh=D8dR7Y1GzdXz+CXgWRM6Ay0d9MpnbDThGr7O8pM9TnM=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=QkUvsN+l0NHLbnx18W8/ZJojmdLXAYz28xLWEC0c+Z5nDuRMaNpu7Sg5byWYIqt/f
-	 dfNtl5zueM0cE8bOI/v3CUm+Il4d3gCf0OsUmSuyZ7RxPoX2F+qI9Z829Q/ZULY+v+
-	 gXPZ7AJP6TROcYKSUStYEnHZ6/hsLV9YoE5LstTuSwZmJr+Vx6T8LXNO4bwooQRmlk
-	 ke/JF7ZxQc6MTm/QqEhl7SFGikOWqNs5I7erHHd/LPWL5gyZdikQyTKkgBorfVnW7K
-	 CCj1lgMuA+NN11Ic4Ik6oDZmcbraWb6YZYIwj56AHh1hdmn9DWnB8w4Irp/IGiFUfX
-	 79gY0LvahXLzg==
+	b=bIOgOMePSwN+QNvtBMnvrbGzneFU6kv0ug55WBQKoAG1OKmu0fvYfpHneoa+jvj5J
+	 DymSOH13mNtpeissFBwTXEYddttuDZXbUgVcKXKmFyw0hJKBCEaBNUdCJM6c8hfyPH
+	 DJIblpxjSw0UgZTfqpnPCYRSFvtANYP40dRv0+g+d5cC/bzQ3qF6BmP10j19sWyUxP
+	 F2uFhT7Ck0UvglMjS5c1QYA2lmxHVpCyPca+A5iWC46F5+woKg8r5GQCje2EkVX8y9
+	 kj22aBFF4CD5OeZ4SgrzuxX6oQ/x3ZbZQCt4u3GY5IB4Kn5uf/wkHKctGbTTgEad1X
+	 BklqoNl11qmmA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 57EF14F94D;
-	Wed, 19 Feb 2025 07:41:08 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6249885CF9;
+	Wed, 19 Feb 2025 09:41:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id E61A1127
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 07:41:05 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 80B14C8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 09:41:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C46FD61AC1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 07:41:05 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6F04860802
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 09:41:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id yfsM-di_xQBk for <intel-wired-lan@lists.osuosl.org>;
- Wed, 19 Feb 2025 07:41:05 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.142.43.55;
- helo=galois.linutronix.de; envelope-from=kurt@linutronix.de;
+ id o1BsJAU3Bewr for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 19 Feb 2025 09:41:35 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org EEF64612A9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EEF64612A9
-Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by smtp3.osuosl.org (Postfix) with ESMTPS id EEF64612A9
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 07:41:04 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-To: Joe Damato <jdamato@fastly.com>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel
- <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
- <pabeni@redhat.com>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- Gerhard Engleder <gerhard@engleder-embedded.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-In-Reply-To: <Z7T4Cpv80pWF45tc@LQ3V64L9R2>
-References: <20250217-igb_irq-v2-0-4cb502049ac2@linutronix.de>
- <20250217-igb_irq-v2-2-4cb502049ac2@linutronix.de>
- <Z7T4Cpv80pWF45tc@LQ3V64L9R2>
-Date: Wed, 19 Feb 2025 08:41:01 +0100
-Message-ID: <875xl62xgy.fsf@kurt.kurt.home>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 8D62460737
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8D62460737
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 8D62460737
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 09:41:35 +0000 (UTC)
+X-CSE-ConnectionGUID: 9GAItPPUQTCHI/tQB1M2Ow==
+X-CSE-MsgGUID: QjXKK8h6TGiR6dQECjx/6A==
+X-IronPort-AV: E=McAfee;i="6700,10204,11348"; a="44443629"
+X-IronPort-AV: E=Sophos;i="6.13,298,1732608000"; d="scan'208";a="44443629"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+ by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Feb 2025 01:41:34 -0800
+X-CSE-ConnectionGUID: ZZIxJgZ5RCKieousb9JNzA==
+X-CSE-MsgGUID: K3VY4FQgRP+GpYrZVFFa+g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.13,298,1732608000"; d="scan'208";a="114517753"
+Received: from mev-dev.igk.intel.com ([10.237.112.144])
+ by fmviesa006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Feb 2025 01:41:32 -0800
+Date: Wed, 19 Feb 2025 10:37:53 +0100
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: Jacob Keller <jacob.e.keller@intel.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ Paul Greenwalt <paul.greenwalt@intel.com>
+Message-ID: <Z7WmcXf8J5j/ksNX@mev-dev.igk.intel.com>
+References: <20250218-jk-e830-ddp-loading-fix-v1-1-47dc8e8d4ab5@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
- micalg=pgp-sha512; protocol="application/pgp-signature"
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1739950862;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=1MXOl5x0hytxt1TgAj3QbAK7ZAvG/bSYGzXlYGKLQzM=;
- b=AHu7y0LHsQL0ITATUVvgu1cu0PzpWV8PYSH3C3EgxthQTDmBctUthNS8rWS8alcdmM8tUE
- +GhQeiPrp1fQkvCVWEofUZELHaIeEENIpCL/gLVJRMqyt2Ws/foFHo6fH/iP8YJtdYZfGk
- G28M3zptSbrTUfLCmMjsJqtlXX3tuOVFnBTa/vP9kZbegtKXwKE5TroKs0A7qmEcBx5mXu
- U2NVzmNau+x5kji048R6zC3S5gCaPsTuAqrCk7XfwpheXmrw+U1POaXqHojOSIq1mIIwDy
- PQvRh8wZcS4p/enwUw+8m0d9uAyRVsxX9mQajCzDyRbPIYfACMyF0+ufrIDAaA==
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1739950862;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=1MXOl5x0hytxt1TgAj3QbAK7ZAvG/bSYGzXlYGKLQzM=;
- b=XVhfX6yk6F4yD4/jp/sR5bsekA1xMB8C9xcerBjqdrlO3wFtNL8nFEw0MExtOxAt+noB+V
- Plrqrvxa/Oza0bCA==
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250218-jk-e830-ddp-loading-fix-v1-1-47dc8e8d4ab5@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1739958096; x=1771494096;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=v2KLgziDLI2JVysYzMMszw6RybzprazFv1InI2kbyFU=;
+ b=U4wtTO92v1qHxWAk26ylcOpgfZP7Ec4Hk85thFaZVRmvpnfeBciuKCyK
+ woe0zThL1rRi/7LgNbTl7sru0rJtVg2+AuQRZbj2nWY0cwu5jBRRS83Ee
+ 8eesW06nfDSGbM2p4hNv7rporuEwD5ZUu8BioL6aKIBunD0AFawdKzRvZ
+ kjgNQR+s75EV1UaS/Yc81ZjGS1j0UTGqGxn+QmjvnYajH7EufSMfH4Smw
+ 9ZfesbT9OCVaGS97MIvIxfTYrrY/rxche/mCUzkg4qcArmnGuBKMgoqEr
+ QDqWqqLS7AwVpGUIf0DEExhtZ7cVphllw+oHe+2etWrK/Hbs6nntH3/Av
+ w==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=linutronix.de
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
- header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=AHu7y0LH; 
- dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=XVhfX6yk
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 2/4] igb: Link queues to
- NAPI instances
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=U4wtTO92
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] ice: fix Get Tx Topology AQ
+ command error on E830
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -111,91 +113,67 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+On Tue, Feb 18, 2025 at 04:46:34PM -0800, Jacob Keller wrote:
+> From: Paul Greenwalt <paul.greenwalt@intel.com>
+> 
+> With E830 Get Tx Topology AQ command (opcode 0x0418) returns an error when
+> setting the AQ command read flag, and since the get command is a direct
+> command there is no need to set the read flag.
+> 
+> Fix this by only setting read flag on set command.
 
-On Tue Feb 18 2025, Joe Damato wrote:
-> On Mon, Feb 17, 2025 at 12:31:22PM +0100, Kurt Kanzenbach wrote:
->> Link queues to NAPI instances via netdev-genl API. This is required to u=
-se
->> XDP/ZC busy polling. See commit 5ef44b3cb43b ("xsk: Bring back busy poll=
-ing
->> support") for details.
->>=20
->> This also allows users to query the info with netlink:
->>=20
->> |$ ./tools/net/ynl/pyynl/cli.py --spec Documentation/netlink/specs/netde=
-v.yaml \
->> |                               --dump queue-get --json=3D'{"ifindex": 2=
-}'
->> |[{'id': 0, 'ifindex': 2, 'napi-id': 8201, 'type': 'rx'},
->> | {'id': 1, 'ifindex': 2, 'napi-id': 8202, 'type': 'rx'},
->> | {'id': 2, 'ifindex': 2, 'napi-id': 8203, 'type': 'rx'},
->> | {'id': 3, 'ifindex': 2, 'napi-id': 8204, 'type': 'rx'},
->> | {'id': 0, 'ifindex': 2, 'napi-id': 8201, 'type': 'tx'},
->> | {'id': 1, 'ifindex': 2, 'napi-id': 8202, 'type': 'tx'},
->> | {'id': 2, 'ifindex': 2, 'napi-id': 8203, 'type': 'tx'},
->> | {'id': 3, 'ifindex': 2, 'napi-id': 8204, 'type': 'tx'}]
->>=20
->> Add rtnl locking to PCI error handlers, because netif_queue_set_napi()
->> requires the lock held.
->>=20
->> While at __igb_open() use RCT coding style.
->>=20
->> Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
->> ---
->>  drivers/net/ethernet/intel/igb/igb.h      |  2 ++
->>  drivers/net/ethernet/intel/igb/igb_main.c | 43 ++++++++++++++++++++++++=
-+++----
->>  drivers/net/ethernet/intel/igb/igb_xsk.c  |  2 ++
->>  3 files changed, 42 insertions(+), 5 deletions(-)
+Why it isn't true for other hw? I mean, why not:
+if (set)
+	RD_FLAG
+else 
+	NOT_RD_FLAG
+Other hw needs RD flag in case of get too?
+
+> 
+
+Don't you need fixes tag?
+> Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
+> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_ddp.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ddp.c b/drivers/net/ethernet/intel/ice/ice_ddp.c
+> index 03988be03729b76e96188864896527060c8c4d5b..49bd49ab3ccf36c990144894e887341459377a2d 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ddp.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_ddp.c
+> @@ -2345,15 +2345,15 @@ ice_get_set_tx_topo(struct ice_hw *hw, u8 *buf, u16 buf_size,
+>  			cmd->set_flags |= ICE_AQC_TX_TOPO_FLAGS_SRC_RAM |
+>  					  ICE_AQC_TX_TOPO_FLAGS_LOAD_NEW;
+>  
+> -		if (ice_is_e825c(hw))
+> -			desc.flags |= cpu_to_le16(ICE_AQ_FLAG_RD);
+> +		desc.flags |= cpu_to_le16(ICE_AQ_FLAG_RD);
+>  	} else {
+>  		ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_get_tx_topo);
+>  		cmd->get_flags = ICE_AQC_TX_TOPO_GET_RAM;
+> -	}
+>  
+> -	if (!ice_is_e825c(hw))
+> -		desc.flags |= cpu_to_le16(ICE_AQ_FLAG_RD);
+> +		if (hw->mac_type != ICE_MAC_GENERIC_3K_E825 &&
+> +		    hw->mac_type != ICE_MAC_E830)
+> +			desc.flags |= cpu_to_le16(ICE_AQ_FLAG_RD);
+> +	}
+>  
+>  	status = ice_aq_send_cmd(hw, &desc, buf, buf_size, cd);
+>  	if (status)
 >
-> [...]
->
->> @@ -9737,16 +9765,21 @@ static void igb_io_resume(struct pci_dev *pdev)
->>  	struct net_device *netdev =3D pci_get_drvdata(pdev);
->>  	struct igb_adapter *adapter =3D netdev_priv(netdev);
->>=20=20
->> +	rtnl_lock();
->>  	if (netif_running(netdev)) {
->>  		if (!test_bit(__IGB_DOWN, &adapter->state)) {
->>  			dev_dbg(&pdev->dev, "Resuming from non-fatal error, do nothing.\n");
->> +			rtnl_unlock();
->>  			return;
->>  		}
->> +
->>  		if (igb_up(adapter)) {
->>  			dev_err(&pdev->dev, "igb_up failed after reset\n");
->> +			rtnl_unlock();
->>  			return;
->>  		}
->>  	}
->> +	rtnl_unlock();
->
-> Does RTNL need to be held when calling netif_running()? If not, you
-> could probably reduce the size of the section under the lock a bit?
 
-All the other instances in the driver guard the netif_running(), too.
+In general looks fine, only one question.
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
+Thanks,
+Michal
 
------BEGIN PGP SIGNATURE-----
-
-iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAme1iw0THGt1cnRAbGlu
-dXRyb25peC5kZQAKCRDBk9HyqkZzgh6lD/9WWV/wxz4UD7aPbEoGlB9Kdg2kdxlc
-0cQhUG/k2MS7Qft0rFt/lZKLUwOrHgu0tvDl4CqOm3SdcLSnOMWAZTKtgXh6m4MH
-r7eYW38Ol7HQlzH1XnExUdKwttMY5U3SIuua8d/3L9NkKI46yPXEY6YnkFi450i9
-lB1NYCM6SUdCXAS5g3syKb9KhlFTjfq+o4sBdk/okU7fv0hHIGHFmlS8a8PtDIEI
-DxROpHcuzJ86evCiXbv4Q7AHRWEvLG6LoTpM0SAxe03usOYVaLw/4g9NYfzfJDj2
-Acg4H2iXmcuH5AQ6dNq2C6U1yOY6ILjYSHWDwB9pYzygcRsJwbF3RUP0jx98GMpv
-Thw0MwoZfd2jAlfGJmin9FOLOAwu046f0m5+qKuz48obail2GAbn9C0p7rHdBuO9
-o+YeqyN0oaPHXi7H8FcFWmefUba/Gs6SR0Cvj9AJ5wotTV2HOf2gbDMcudVeI3Ij
-gMh9K1jbhVlt5vc5E5auBKydCplni1HD1ftrClzj+O9bMsBFMuacAwAWTKMk6MiD
-VWl9+iGf2B1iXR0tona5Q/211YifOMdeYlXdCn9Olro3tsRqMZfVRo10WU/OBTiE
-MPbMIUnsgOOkPvlvBmkg+T37FMT37R3twWPuLef4PsUOge/pdFcFGd0JcE7ES/J/
-icZzSdCfxdKvDw==
-=alsw
------END PGP SIGNATURE-----
---=-=-=--
+> ---
+> base-commit: f5da7c45188eea71394bf445655cae2df88a7788
+> change-id: 20250218-jk-e830-ddp-loading-fix-9efdbdfc270a
+> 
+> Best regards,
+> -- 
+> Jacob Keller <jacob.e.keller@intel.com>
