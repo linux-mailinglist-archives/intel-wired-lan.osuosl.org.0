@@ -1,110 +1,136 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5457EA3C790
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Feb 2025 19:31:30 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D3CF2A3C7A0
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Feb 2025 19:34:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D06B581092;
-	Wed, 19 Feb 2025 18:29:58 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 294BF848B6;
+	Wed, 19 Feb 2025 18:31:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id SBW7YPcIl3Yp; Wed, 19 Feb 2025 18:29:58 +0000 (UTC)
+ id 1zU-HTKRmFVV; Wed, 19 Feb 2025 18:31:43 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 15CFB84934
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 79B6883B10
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1739989595;
-	bh=BlS6TBuMKK0DexH1Tv/m0DP3u+JCni/8QWGw0cfro60=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1739989767;
+	bh=BrMRw+Mc/8Jx430eNqd73IrlG76BWV0j9faRomGwI8o=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=prHuwnz1Td6BNUnHKzgOHMlZn5hlCgbX63kZpZcJU5w60C7RK/l5ZYC2clYC8pwuv
-	 1OdF3bEP5hcvQ7uZQNbkFV9+S9XdYsxLg0tKLfHpgbJyLt9n557RBg+uDtfR+lv6LI
-	 yif3Sh/Jw9o2FmXmkn8BeHiF27XavJcKCvSqA3N0AI6GVprd2NQKbmg5YZnORYrrNY
-	 cAb68U3hMICTr6l3Cx8J4M4DMeERbOxlivMPEVl0tPD9mw8Bbh5HHFR/Lr80yYQBVB
-	 2Ge936UY61GwYTkKgjqh13badNC/qf7JerJAw4VmWhDuqqf3T0Gn0unQ+X+pDwvr0d
-	 UumYlqh4VrprQ==
+	b=I0DeI/VhiV8QdncY32qtRyImD4q8CT0JSWNFJ/3R8HPS3tLgrGIrVl0OSxQRXvgYX
+	 5sB6zv/bZZZfPKgId2o3NvuW2IGbtsf2KnVuklXrb2nda1roqPwnTEZQLPY1h0bqZ6
+	 Yg1mC2BDu59Hgkc8JXpA5bk4JS9pVm+BHof4V2iRakx5cJozmL5aX/G+jQHxCXsJGB
+	 Ua0ktYuPE/5rBJL2GUG/pkrFeeLtXP4Ajc3+mcl35O2M9EzUmaXQTivOzxq3cU7KQJ
+	 reLqmuNLLm+96JzDaMT5TBjiHIzqVoJkG4OglAhpg2PE36PhXN9go3/73oanfN/bAU
+	 h+EHEGXnt+fpw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 15CFB84934;
-	Wed, 19 Feb 2025 18:26:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 79B6883B10;
+	Wed, 19 Feb 2025 18:29:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 25E2BCF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 17:47:33 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id EBCDC940
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 17:51:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id F252680ABA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 17:47:13 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id E59504134F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 17:51:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id M58TQECEoTZr for <intel-wired-lan@lists.osuosl.org>;
- Wed, 19 Feb 2025 17:47:12 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
- helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org C4735844BA
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C4735844BA
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C4735844BA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 17:46:13 +0000 (UTC)
-X-CSE-ConnectionGUID: jbLFdBtJRxuO9o6Jp3er/A==
-X-CSE-MsgGUID: Gk/cSDX8Q2iJoZn7r5g2zw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11350"; a="50953001"
-X-IronPort-AV: E=Sophos;i="6.13,299,1732608000"; d="scan'208";a="50953001"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Feb 2025 09:46:12 -0800
-X-CSE-ConnectionGUID: YOtOd1d7QwCLO2vwn6JMHg==
-X-CSE-MsgGUID: uUBZIoz/QmWhN/9y7wplPA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="119427317"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmviesa005.fm.intel.com with ESMTP; 19 Feb 2025 08:44:32 -0800
-Received: from pkitszel-desk.intel.com (unknown [10.245.246.109])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id A28D134302;
- Wed, 19 Feb 2025 16:44:21 +0000 (GMT)
-From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-To: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jiri Pirko <jiri@resnulli.us>, Jakub Kicinski <kuba@kernel.org>,
- Cosmin Ratiu <cratiu@nvidia.com>, Tariq Toukan <tariqt@nvidia.com>
-Cc: netdev@vger.kernel.org, Konrad Knitter <konrad.knitter@intel.com>,
- Jacob Keller <jacob.e.keller@intel.com>, davem@davemloft.net,
- Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
- Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org,
- ITP Upstream <nxne.cnse.osdt.itp.upstreaming@intel.com>,
- Carolina Jubran <cjubran@nvidia.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Date: Wed, 19 Feb 2025 17:32:55 +0100
-Message-ID: <20250219164410.35665-3-przemyslaw.kitszel@intel.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20250219164410.35665-1-przemyslaw.kitszel@intel.com>
-References: <20250219164410.35665-1-przemyslaw.kitszel@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id rfhIWD-azcNA for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 19 Feb 2025 17:51:46 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::731; helo=mail-qk1-x731.google.com;
+ envelope-from=jdamato@fastly.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 47E5641342
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 47E5641342
+Received: from mail-qk1-x731.google.com (mail-qk1-x731.google.com
+ [IPv6:2607:f8b0:4864:20::731])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 47E5641342
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 17:51:46 +0000 (UTC)
+Received: by mail-qk1-x731.google.com with SMTP id
+ af79cd13be357-7c0b0ca6742so4138585a.0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Feb 2025 09:51:46 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1739987505; x=1740592305;
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=BrMRw+Mc/8Jx430eNqd73IrlG76BWV0j9faRomGwI8o=;
+ b=mWDHE7f4ttXSZDStt7QrLSuhH+cwBWub0OUU9h44kYXAG1iyQmx7TBt8OYidAj0vo5
+ I5SUCCZ43QrdkXxJ2/1bxttiey93Cwrf5Kc4BPBCVOXt1XJG6btjlZ0xSy84FYaBaUVj
+ tU0jl+nx5M5FjRVUY6DRTQobPJ2yEHyWjjtRbgdC0wdC7MQ3G+jozou97epVzlmZTmM7
+ BrO/w/B+23wqrS5Tin8ejXvDXTzCkSWdp+w5DUcq5j5yXBQhge6Fjkb78/bJtxoJbnNS
+ gE0dtudQfBBxEmSqV3VpU9fveODDbRbINw+NzdCDqR9IJT2Y8KChqtxpFdixddpehKTJ
+ srnA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXUBccXIOvc1hldOLAk+rIcIaUnANBqtzh/1Ixd+1s00d+gMTIQbg/u5bqFKdOPOAGa287HglvCHqEPdeEZM4Q=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YzmP5nBtZIVtUmxNT4jaPPqJbH740qVvyA7TXy3npG8dWZ+py9f
+ 1JNlRBQSzYXjF9oXkG2L3FU21zK38g40xTcbKcLZTgfMdyAxn1z8mmiDOmbGavE=
+X-Gm-Gg: ASbGncsRxAbTaruvz37nm6nWJqPERycpfiRtgIdcIFRmQS4tslXEto/R0Ak6qVzJxbG
+ DmxIJ0n+iLnJmxNsNA3uaGsm194DW07yE9pwN5tbguN+uW9fEZotmWCrRi782K2NDwejSONYUZo
+ VxMO8qBK+S1Kr2Ygg5tztMKsyp6UDoAXo+0Madx8DTNGfBy/rSmL9rKaGkh3YN71TEQ+CU/RaLu
+ NJJXSng+qp0fhXi3cFI24bMhDMDoXhAgYo3DvkFoIdj4RJoRXnQWgMTxBAHUFqR0HxIOIZq4kA5
+ r9Qx63S2gXPBmecQXG63pLvvpxXZfPFdi4Y+13royMHqZdfZHEnk3A==
+X-Google-Smtp-Source: AGHT+IHApQu5GuOGRlxUUed1aJja9KJUXPqMCjqow4lDfmqrja11JuARF6fyOdqZ0NDKDqPkBA++Rw==
+X-Received: by 2002:a05:620a:414b:b0:7c0:b1aa:ba5a with SMTP id
+ af79cd13be357-7c0b527404amr648255885a.33.1739987504799; 
+ Wed, 19 Feb 2025 09:51:44 -0800 (PST)
+Received: from LQ3V64L9R2 (ool-44c5a22e.dyn.optonline.net. [68.197.162.46])
+ by smtp.gmail.com with ESMTPSA id
+ 6a1803df08f44-6e65d7a439esm77203766d6.67.2025.02.19.09.51.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 19 Feb 2025 09:51:44 -0800 (PST)
+Date: Wed, 19 Feb 2025 12:51:42 -0500
+From: Joe Damato <jdamato@fastly.com>
+To: Kurt Kanzenbach <kurt@linutronix.de>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Gerhard Engleder <gerhard@engleder-embedded.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+Message-ID: <Z7YaLuho0hXL7Jb1@LQ3V64L9R2>
+Mail-Followup-To: Joe Damato <jdamato@fastly.com>,
+ Kurt Kanzenbach <kurt@linutronix.de>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Gerhard Engleder <gerhard@engleder-embedded.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+References: <20250217-igb_irq-v2-0-4cb502049ac2@linutronix.de>
+ <Z7T5G9ZQRBb4EtdG@LQ3V64L9R2> <Z7UDCSckkK7J30oP@LQ3V64L9R2>
+ <87jz9mghfr.fsf@kurt.kurt.home>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1739987174; x=1771523174;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=MwD19ihbKaz4IBkMTRxc/PBUn4IuzdESisvBCresR44=;
- b=DFEBqilIJQZmhQyHpExfnqftS1HbCY90RxsLcI/8cuQfFijNtvcSqE+8
- l/pm2B8OJfYJsT5FL1E2RWwZo+PnXiDmP86qurcve6sV6eC8G5XDCvXha
- bOs7GsQYh/zfp2bUOQ8w5Cby4jfoOHeEGV2TewXnu1PdR8OhKcV7AlbMt
- 6UGhZ4hqRfKIMkGTVNM0llBaUIkDJwUf/HOm9lS9cxb7rOrRCkOC4pJqu
- k2Y2AdDvsKQEgWAxOJuGwqFqfdG+uExxP7C+W2kLhC6WGKfGqFV+vEOff
- EN/ZNprau/gJStiKoU7SV46EU0n+46XyTm/ULMqEi3K6Ma7Sy88dt70Tp
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=DFEBqilI
-Subject: [Intel-wired-lan] [RFC net-next v2 2/2] devlink: give user option
- to allocate resources
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <87jz9mghfr.fsf@kurt.kurt.home>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=fastly.com; s=google; t=1739987505; x=1740592305; darn=lists.osuosl.org;
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=BrMRw+Mc/8Jx430eNqd73IrlG76BWV0j9faRomGwI8o=;
+ b=VSZnVGLE8m1qt1Hoae46J6GzMiu6cnSI9NJSGjkH53EnTpBsJs9cJskXZyqlHvmCQ2
+ JaSfGuOIYrWc3RvKTe/UuDnxqNEs4DrpDhRihRrDAdr/z+DDlVtgzzttWsJBgY+Prc+d
+ R2oCMoWf+Q6IMv4/Id4HI4wmoTuPTPElhiTjE=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=fastly.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=fastly.com header.i=@fastly.com header.a=rsa-sha256
+ header.s=google header.b=VSZnVGLE
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 0/4] igb: XDP/ZC follow up
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -120,194 +146,101 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Current devlink resources are designed as a thing that user could limit,
-but there is not much otherwise that could be done with them.
-Perhaps that's the reason there is no much adoption despite API being
-there for multiple years.
+On Wed, Feb 19, 2025 at 03:03:36PM +0100, Kurt Kanzenbach wrote:
+> On Tue Feb 18 2025, Joe Damato wrote:
+> > On Tue, Feb 18, 2025 at 04:18:19PM -0500, Joe Damato wrote:
+> >> On Mon, Feb 17, 2025 at 12:31:20PM +0100, Kurt Kanzenbach wrote:
+> >> > This is a follow up for the igb XDP/ZC implementation. The first two 
+> >> > patches link the IRQs and queues to NAPI instances. This is required to 
+> >> > bring back the XDP/ZC busy polling support. The last patch removes 
+> >> > undesired IRQs (injected via igb watchdog) while busy polling with 
+> >> > napi_defer_hard_irqs and gro_flush_timeout set.
+> >> > 
+> >> > Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
+> >> > ---
+> >> > Changes in v2:
+> >> > - Take RTNL lock in PCI error handlers (Joe)
+> >> > - Fix typo in commit message (Gerhard)
+> >> > - Use netif_napi_add_config() (Joe)
+> >> > - Link to v1: https://lore.kernel.org/r/20250210-igb_irq-v1-0-bde078cdb9df@linutronix.de
+> >> 
+> >> Thanks for sending a v2.
+> >> 
+> >> My comment from the previous series still stands, which simply that
+> >> I have no idea if the maintainers will accept changes using this API
+> >> or prefer to wait until Stanislav's work [1] is completed to remove
+> >> the RTNL requirement from this API altogether.
+> >
+> > Also, may be worth running the newly added XSK test with the NETIF
+> > env var set to the igb device? Assuming eth0 is your igb device:
+> >
+> >   NETIF=eth0 ./tools/testing/selftests/drivers/net/queues.py
+> >
+> > should output:
+> >
+> >   KTAP version 1
+> >   1..4
+> >   ok 1 queues.get_queues
+> >   ok 2 queues.addremove_queues
+> >   ok 3 queues.check_down
+> >   ok 4 queues.check_xdp
+> >   # Totals: pass:4 fail:0 xfail:0 xpass:0 skip:0 error:0
+> >
+> > Note the check_xdp line above.
+> >
+> 
+> Sure, why not. Seems to work.
 
-Add new mode of operation, where user could allocate/assign resources
-(from a common pool) to specific devices.
+Thanks for testing it.
+ 
+> |root@apl1:~/linux# uname -a
+> |Linux apl1 6.14.0-rc2+ #2 SMP PREEMPT_RT Wed Feb 19 14:41:23 CET 2025 x86_64 GNU/Linux
+> |root@apl1:~/linux# NETIF=enp2s0 ./tools/testing/selftests/drivers/net/queues.py
+> |KTAP version 1
+> |1..4
+> |ok 1 queues.get_queues
+> |ok 2 queues.addremove_queues
+> |ok 3 queues.check_down
+> |ok 4 queues.check_xdp
+> |# Totals: pass:4 fail:0 xfail:0 xpass:0 skip:0 error:0
+> 
+> Has this xsk netlink attribute been added fairly recently? The test
+> failed on my kernel from a few days ago (kernel from today works).
 
-That requires "occ set" support, triggered by user.
-To support that mode, "occ get" is (only then) turned into a simple
-"get/show" operation, as opposed to "ask driver about current occupation"
-in the "legacy" mode.
+Yes, it was just merged, see the commit date here:
 
-Naming advice welcomed, for now the modes are reffered as:
-legacy/static-occ/mlx vs new/ice/dynamic-occ
-Perhaps "user-settable" for the new mode and "driver-only" for the legacy?
-Does not matter much, as this will be only embedded in the
-net/devlink/resource.c file as names/comments for clarity.
+https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/commit/?id=788e52e2b66844301fe09f3372d46d8c62f6ebe4
 
-Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
----
- net/devlink/resource.c | 94 +++++++++++++++++++++++++++++++++---------
- 1 file changed, 74 insertions(+), 20 deletions(-)
+> I think there's room for improvement though:
+> 
+> |root@apl1:~/linux# NETIF=enp2s0 ./tools/testing/selftests/drivers/net/queues.py
+> |KTAP version 1
+> |1..4
+> |ok 1 queues.get_queues
+> |ok 2 queues.addremove_queues
+> |ok 3 queues.check_down
+> |# Exception| Traceback (most recent call last):
+> |# Exception|   File "/root/linux/tools/testing/selftests/net/lib/py/ksft.py", line 218, in ksft_run
+> |# Exception|     case(*args)
+> |# Exception|   File "/root/linux/./tools/testing/selftests/drivers/net/queues.py", line 53, in check_xdp
+> |# Exception|     ksft_eq(q['xsk'], {})
+> |# Exception|             ~^^^^^^^
+> |# Exception| KeyError: 'xsk'
+> |not ok 4 queues.check_xdp
+> |# Totals: pass:3 fail:1 xfail:0 xpass:0 skip:0 error:0
+> 
+> I'd assume this shouldn't be a Python exception, but rather say
+> something like "Expected xsk attribute, but none found. Fix the driver!" :)
+> 
+> While at it would you mind to add a newline to the xdp_helper usage
+> line (and fix the one typo)?
 
-diff --git a/net/devlink/resource.c b/net/devlink/resource.c
-index 2d6324f3d91f..c81d05427e12 100644
---- a/net/devlink/resource.c
-+++ b/net/devlink/resource.c
-@@ -14,25 +14,30 @@
-  * @size_new: updated size of the resource, reload is needed
-  * @size_valid: valid in case the total size of the resource is valid
-  *              including its children
-+ * @occ_mode: false for static occ mode == legacy mlx like
-+ *            true for dynamic occ mode == new one for intel
-  * @parent: parent resource
-  * @size_params: size parameters
-  * @list: parent list
-  * @resource_list: list of child resources
-  * @occ_get: occupancy getter callback
-- * @occ_get_priv: occupancy getter callback priv
-+ * @occ_set: occupancy setter callback
-+ * @occ_priv: occupancy callbacks priv
-  */
- struct devlink_resource {
- 	const char *name;
- 	u64 id;
- 	u64 size;
- 	u64 size_new;
- 	bool size_valid;
-+	bool occ_mode;
- 	struct devlink_resource *parent;
- 	struct devlink_resource_size_params size_params;
- 	struct list_head list;
- 	struct list_head resource_list;
- 	devlink_resource_occ_get_t *occ_get;
--	void *occ_get_priv;
-+	devlink_resource_occ_set_t *occ_set;
-+	void *occ_priv;
- };
- 
- static struct devlink_resource *
-@@ -127,6 +132,9 @@ int devlink_nl_resource_set_doit(struct sk_buff *skb, struct genl_info *info)
- 	if (err)
- 		return err;
- 
-+	if (resource->occ_set)
-+		return resource->occ_set(size, info->extack, resource->occ_priv);
-+
- 	resource->size_new = size;
- 	devlink_resource_validate_children(resource);
- 	if (resource->parent)
-@@ -152,13 +160,46 @@ devlink_resource_size_params_put(struct devlink_resource *resource,
- 	return 0;
- }
- 
--static int devlink_resource_occ_put(struct devlink_resource *resource,
--				    struct sk_buff *skb)
-+static
-+int devlink_resource_occ_size_put_legacy(struct devlink_resource *resource,
-+					 struct sk_buff *skb)
-+{
-+	int err;
-+
-+	if (resource->occ_get) {
-+		err = devlink_nl_put_u64(skb, DEVLINK_ATTR_RESOURCE_OCC,
-+					 resource->occ_get(resource->occ_priv));
-+		if (err)
-+			return err;
-+	}
-+
-+	if (resource->size != resource->size_new) {
-+	    err = devlink_nl_put_u64(skb, DEVLINK_ATTR_RESOURCE_SIZE_NEW,
-+				     resource->size_new);
-+		if (err)
-+			return err;
-+	}
-+
-+	err = nla_put_u8(skb, DEVLINK_ATTR_RESOURCE_SIZE_VALID,
-+			 resource->size_valid);
-+	if (err)
-+		return err;
-+
-+
-+	return devlink_nl_put_u64(skb, DEVLINK_ATTR_RESOURCE_SIZE,
-+				  resource->size);
-+}
-+
-+static int devlink_resource_occ_size_put(struct devlink_resource *resource,
-+					 struct sk_buff *skb)
- {
--	if (!resource->occ_get)
--		return 0;
--	return devlink_nl_put_u64(skb, DEVLINK_ATTR_RESOURCE_OCC,
--				  resource->occ_get(resource->occ_get_priv));
-+	if (!resource->occ_get || !resource->occ_set)
-+		return devlink_resource_occ_size_put_legacy(resource, skb);
-+
-+	nla_put_u8(skb, DEVLINK_ATTR_RESOURCE_SIZE_VALID, true);
-+
-+	return devlink_nl_put_u64(skb, DEVLINK_ATTR_RESOURCE_SIZE,
-+				  resource->occ_get(resource->occ_priv));
- }
- 
- static int devlink_resource_put(struct devlink *devlink, struct sk_buff *skb,
-@@ -173,23 +214,16 @@ static int devlink_resource_put(struct devlink *devlink, struct sk_buff *skb,
- 		return -EMSGSIZE;
- 
- 	if (nla_put_string(skb, DEVLINK_ATTR_RESOURCE_NAME, resource->name) ||
--	    devlink_nl_put_u64(skb, DEVLINK_ATTR_RESOURCE_SIZE, resource->size) ||
- 	    devlink_nl_put_u64(skb, DEVLINK_ATTR_RESOURCE_ID, resource->id))
- 		goto nla_put_failure;
--	if (resource->size != resource->size_new &&
--	    devlink_nl_put_u64(skb, DEVLINK_ATTR_RESOURCE_SIZE_NEW,
--			       resource->size_new))
--		goto nla_put_failure;
--	if (devlink_resource_occ_put(resource, skb))
--		goto nla_put_failure;
- 	if (devlink_resource_size_params_put(resource, skb))
- 		goto nla_put_failure;
-+	if (devlink_resource_occ_size_put(resource, skb))
-+		goto nla_put_failure;
-+
- 	if (list_empty(&resource->resource_list))
- 		goto out;
- 
--	if (nla_put_u8(skb, DEVLINK_ATTR_RESOURCE_SIZE_VALID,
--		       resource->size_valid))
--		goto nla_put_failure;
- 
- 	child_resource_attr = nla_nest_start_noflag(skb,
- 						    DEVLINK_ATTR_RESOURCE_LIST);
-@@ -476,7 +510,7 @@ void devl_resource_occ_get_register(struct devlink *devlink,
- 	WARN_ON(resource->occ_get);
- 
- 	resource->occ_get = occ_get;
--	resource->occ_get_priv = occ_get_priv;
-+	resource->occ_priv = occ_get_priv;
- }
- EXPORT_SYMBOL_GPL(devl_resource_occ_get_register);
- 
-@@ -499,6 +533,26 @@ void devl_resource_occ_get_unregister(struct devlink *devlink,
- 	WARN_ON(!resource->occ_get);
- 
- 	resource->occ_get = NULL;
--	resource->occ_get_priv = NULL;
- }
- EXPORT_SYMBOL_GPL(devl_resource_occ_get_unregister);
-+
-+void devl_resource_occ_set_get_register(struct devlink *devlink,
-+					u64 resource_id,
-+					devlink_resource_occ_set_t *occ_set,
-+					devlink_resource_occ_get_t *occ_get,
-+					void *occ_priv)
-+{
-+	struct devlink_resource *resource;
-+
-+	lockdep_assert_held(&devlink->lock);
-+
-+	resource = devlink_resource_find(devlink, NULL, resource_id);
-+	if (WARN_ON(!resource))
-+		return;
-+	WARN_ON(resource->occ_get || resource->occ_set);
-+
-+	resource->occ_set = occ_set;
-+	resource->occ_get = occ_get;
-+	resource->occ_priv = occ_priv;
-+}
-+EXPORT_SYMBOL_GPL(devl_resource_occ_set_get_register);
--- 
-2.46.0
+Jakub currently has a series out to change the test a bit and
+improve it overall, see:
 
+  https://lore.kernel.org/netdev/20250218195048.74692-1-kuba@kernel.org/
+
+It looks like your concerns (the typo, newline, and better error)
+may still remain. If so, I can submit a follow-up once his work has
+been merged to address your concerns - unless you'd like to do
+that?
