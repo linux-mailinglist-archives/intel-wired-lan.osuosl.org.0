@@ -1,79 +1,117 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9390BA3E59F
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Feb 2025 21:11:44 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 179F0A3E757
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Feb 2025 23:17:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0570540E59;
-	Thu, 20 Feb 2025 20:11:43 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C08D360AD8;
+	Thu, 20 Feb 2025 22:17:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dC1ithLVAoa9; Thu, 20 Feb 2025 20:11:42 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id p1M2JpvqV4B2; Thu, 20 Feb 2025 22:17:27 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F173141293
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 574B860B56
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1740082302;
-	bh=zct5Vk3LNZ8BlnYp1F0mDJppPEtKXhOy/ZJQtMqEf0g=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1740089847;
+	bh=5Z/SnatRSZ7txlnqtwK2z1G5kKHBirvYaST5BiztISg=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=WKgTMn2Cu216bzvw0+x5r0q6O+Ge69/UQhmN9Go0+ZAgC+PvfQkIqQ4UcaCKF2Gxa
-	 hSm7FraH59sOyU0H9f/ABiPlTiEuldegi8YZJBqV8CBIplZjvco4XOhdZy1QQL6uhZ
-	 uopqNH3G6SRhSBqY9q4JNmHd8ZOowYBj89VazTCwcD7sdBwK57UeKMZRrZwLK0G9np
-	 R3CbEG9qmqK3SA6x5FmZ0X+kjqpKwA8C14FyeU6LzG/sAnZzWsCroS+zGPqDpZzMjN
-	 /YUMmo/oErOx++Yo8aRum8T5Fi78/78+m1hN8ERTPV0V+ixB7cz3ylmr5rKlGkgquc
-	 bi7QYh7Y8gmMA==
+	b=n2ynba0k/wcPc8e26pIIShradECu1CaRlY6dsLyYVc+kcteBkJwkxifzBdq7TJJid
+	 ZUKC5Z/ou74EDUfAzqAq7HhVEKK5NtlhP03t2RmZg1qqFfIF/BZMqdcmJ06LazmLP7
+	 bX/dNN2NKNdcgFrF39QIU1Tpy6pml7XAkKSQwGBNNN989BM/p2CBZz4fwgfa810J1G
+	 5BNlZgkCPeZi3o+Nq3bBItx70wO7zm7x4qA4V7emiXyZ14BnkGq9VJFwuNxFpm96mV
+	 YQHKcNjzlo3FAaNKXRqmmQP7NjJLLD+pc/nerU6wvO+l0leYAJtjiLFuKijfyr3th1
+	 xkpOZYSwjivkA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F173141293;
-	Thu, 20 Feb 2025 20:11:41 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 574B860B56;
+	Thu, 20 Feb 2025 22:17:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id A26C8D92
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Feb 2025 20:11:39 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 98C0F194
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Feb 2025 22:17:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 866C140E3E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Feb 2025 20:11:39 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 8877D60AD8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Feb 2025 22:17:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uCvtsuyCEUiu for <intel-wired-lan@lists.osuosl.org>;
- Thu, 20 Feb 2025 20:11:38 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 212C840815
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 212C840815
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 212C840815
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Feb 2025 20:11:36 +0000 (UTC)
-Received: from [192.168.0.2] (ip5f5af4e3.dynamic.kabel-deutschland.de
- [95.90.244.227])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 6F3D461E6479C;
- Thu, 20 Feb 2025 21:11:02 +0100 (CET)
-Message-ID: <eb5e8d47-30ba-4b95-9b34-ba2de829e131@molgen.mpg.de>
-Date: Thu, 20 Feb 2025 21:11:01 +0100
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id LntKj89SeKp3 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 20 Feb 2025 22:17:25 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C57DB60B56
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C57DB60B56
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C57DB60B56
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Feb 2025 22:17:24 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 09F275C61DB;
+ Thu, 20 Feb 2025 22:16:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CAD62C4CED1;
+ Thu, 20 Feb 2025 22:17:20 +0000 (UTC)
+Date: Thu, 20 Feb 2025 14:17:19 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Song Yoong Siang <yoong.siang.song@intel.com>
+Cc: "David S . Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Simon Horman
+ <horms@kernel.org>, Willem de Bruijn <willemb@google.com>, Florian Bezdeka
+ <florian.bezdeka@siemens.com>, Donald Hunter <donald.hunter@gmail.com>,
+ Jonathan Corbet <corbet@lwn.net>, Bjorn Topel <bjorn@kernel.org>, Magnus
+ Karlsson <magnus.karlsson@intel.com>, Maciej Fijalkowski
+ <maciej.fijalkowski@intel.com>, Jonathan Lemon <jonathan.lemon@gmail.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer
+ <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>, Joe Damato
+ <jdamato@fastly.com>, Stanislav Fomichev <sdf@fomichev.me>, Xuan Zhuo
+ <xuanzhuo@linux.alibaba.com>, Mina Almasry <almasrymina@google.com>, Daniel
+ Jurgens <danielj@nvidia.com>, Andrii Nakryiko <andrii@kernel.org>, Eduard
+ Zingerman <eddyz87@gmail.com>, Mykola Lysenko <mykolal@fb.com>, Martin
+ KaFai Lau <martin.lau@linux.dev>, Song Liu <song@kernel.org>, Yonghong Song
+ <yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, Hao Luo
+ <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>, Shuah Khan
+ <shuah@kernel.org>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose
+ Abreu <joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel
+ <przemyslaw.kitszel@intel.com>, Faizal Rahim
+ <faizal.abdul.rahim@linux.intel.com>, Choong Yong Liang
+ <yong.liang.choong@linux.intel.com>, Bouska Zdenek
+ <zdenek.bouska@siemens.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
+ bpf@vger.kernel.org, linux-kselftest@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, intel-wired-lan@lists.osuosl.org,
+ xdp-hints@xdp-project.net
+Message-ID: <20250220141719.524a8ac6@kernel.org>
+In-Reply-To: <20250216093430.957880-2-yoong.siang.song@intel.com>
+References: <20250216093430.957880-1-yoong.siang.song@intel.com>
+ <20250216093430.957880-2-yoong.siang.song@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-References: <20250220150438.352642-3-martyna.szapar-mudlaw@linux.intel.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20250220150438.352642-3-martyna.szapar-mudlaw@linux.intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] ice: fix fwlog after driver
- reinit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1740089842;
+ bh=fwRMLQoTvvslio/qHTjWfmSIblsDq9Yevo6OmjlR7Us=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=gsWDEYRAyTvAs1kE0egmdOtU3gAB6eRj6jBN+O2VX+hwhO9GJDHJEXMI1Ib3ykatk
+ Y94KbJctHpMvGeTaR5Bn4Lg06ml7c/7Tx3nicxgy1rzpyronflc4vaJ4nQPbxVUTb3
+ 34hxJ64z4fyxfFaO2/2NzLQruNO3ZRIyf4T2fnjwHFx2ne/mNBWeU1RH1DVtrfBCCm
+ OHRuAMdxAO3dtt8n9vHkM3QSnARODfnsEvU/xgSfHq2Ps/XjkNgv2+z8tAgz/7zNwO
+ 3tNQwDzo2HJi2H115hXMhbWE0qzve7DLI2VyPgnmKO5mMSOJZNbyNksBWgpsHSKPta
+ Avkq0n61gq+Pw==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=gsWDEYRA
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next v12 1/5] xsk: Add launch time
+ hardware offload support to XDP Tx metadata
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -89,75 +127,15 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Martyna,
-
-
-Thank you for your patch.
-
-Am 20.02.25 um 16:04 schrieb Martyna Szapar-Mudlaw:
-> Fix an issue when firmware logging stops after devlink reload action
-> driver_reinit or driver reset. Fix it by restoring fw logging when
-
-Maybe elaborate, why/how driver reinit or reset disables fwlog.
-
-> it was previously registered before these events.
-
-I’d add a blank line between paragraphs.
-
-> Restoring fw logging in these cases was faultily removed with new
-> debugfs fw logging implementation.
-> Failure to init fw logging is not a critical error so it is safely
-> ignored.
-
-How can this be tested?
-
-> Fixes: 73671c3162c8 ("ice: enable FW logging")
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Signed-off-by: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
-> ---
->   drivers/net/ethernet/intel/ice/ice_main.c | 14 ++++++++++++++
->   1 file changed, 14 insertions(+)
+On Sun, 16 Feb 2025 17:34:26 +0800 Song Yoong Siang wrote:
+> Extend the XDP Tx metadata framework so that user can requests launch time
+> hardware offload, where the Ethernet device will schedule the packet for
+> transmission at a pre-determined time called launch time. The value of
+> launch time is communicated from user space to Ethernet driver via
+> launch_time field of struct xsk_tx_metadata.
 > 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-> index a03e1819e6d5..6d6873003bcb 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_main.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-> @@ -5151,6 +5151,13 @@ int ice_load(struct ice_pf *pf)
->   
->   	devl_assert_locked(priv_to_devlink(pf));
->   
-> +	if (pf->hw.fwlog_cfg.options & ICE_FWLOG_OPTION_IS_REGISTERED) {
-> +		err = ice_fwlog_register(&pf->hw);
-> +		if (err)
-> +			pf->hw.fwlog_cfg.options &=
-> +				~ICE_FWLOG_OPTION_IS_REGISTERED;
+> Suggested-by: Stanislav Fomichev <sdf@fomichev.me>
+> Acked-by: Stanislav Fomichev <sdf@fomichev.me>
+> Signed-off-by: Song Yoong Siang <yoong.siang.song@intel.com>
 
-Should an error be logged in the failure case?
-
-> +	}
-> +
->   	vsi = ice_get_main_vsi(pf);
->   
->   	/* init channel list */
-> @@ -7701,6 +7708,13 @@ static void ice_rebuild(struct ice_pf *pf, enum ice_reset_req reset_type)
->   		goto err_init_ctrlq;
->   	}
->   
-> +	if (hw->fwlog_cfg.options & ICE_FWLOG_OPTION_IS_REGISTERED) {
-> +		err = ice_fwlog_register(hw);
-> +		if (err)
-> +			hw->fwlog_cfg.options &=
-> +				~ICE_FWLOG_OPTION_IS_REGISTERED;
-> +	}
-
-Ditto.
-
-> +
->   	/* if DDP was previously loaded successfully */
->   	if (!ice_is_safe_mode(pf)) {
->   		/* reload the SW DB of filter tables */
-
-
-Kind regards,
-
-Paul
+Acked-by: Jakub Kicinski <kuba@kernel.org>
