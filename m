@@ -1,98 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C326A3F676
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Feb 2025 14:53:35 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 425E0A3F6D9
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Feb 2025 15:09:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 002C781FC4;
-	Fri, 21 Feb 2025 13:53:33 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id F074A40E48;
+	Fri, 21 Feb 2025 14:09:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dmu5GwQmWmm9; Fri, 21 Feb 2025 13:53:33 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id CCOFqersIWmB; Fri, 21 Feb 2025 14:09:26 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 376D681FF5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C2CAE40E22
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1740146013;
-	bh=xa97NSAj2C3nLiOSt4fAkYGrg13UAiIBZWtxAVJPudQ=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=cDXoWlWUbgVkvJYi0mBxJHqvVHPAupZWG3dMrQBZjZSCImi5ec18eEZDexSF/YqEl
-	 cfsoz2/fQcu0EnHIsnxwAfG5/VFKVmqxKcqfd7+a0p9Vr8D4b6zl8WUGbkExLKOX1e
-	 0SeNYU+fKvxfHq7zd9aIM4u4vAxDa9HZPqYvHY+W6hSw4jiGo2IS+fvJxr+R0ogOH+
-	 Y1OPikYM2KURrdbHigQ8uBriOn2LtRqtmwA2edsS1dF+MYQ/xuyySyrAh8kifr6FQV
-	 QT1RPwq2m46NB5OVZ3u8HYzs7SUTY/qHZ4vsbFPZ+ttrrAZsvVvd+cTGv6RtkJNdyB
-	 l12S1llC84IxA==
+	s=default; t=1740146966;
+	bh=LyEpOe8Dngk5hOO/giI2bfMW8O1kQUQtF0Zf6axCiaM=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=qCQQeDX2GQgHrJcNH3zTPt0oqmisdnh/e5JONAfNyDs9+S0Otmje7kXkSWINHD62R
+	 mPbpY3oGtQr0GMgUzTNSf4KpsFe+5Pb0oFHzqtyyhZsRjUw2Q/NAJdKJhNy+iGAD6S
+	 6PDHc0hgazm0FiZ/byGRa/e3Qyaw7drBZBBot1Bj0dl6ojcM/d8Yris6Ek3mkciSXV
+	 w+UQS95ILflq23Nj2QEaYnOEbhi8K/c7+G0GKHZ30DGKrS3NotDvgQ9QuJhDr1h3g0
+	 XCPTA7+V/rHjXALW6155Aq8ZDXOoboSrv0WXGu7EHHK3r7SxGyBTVUIdqF8e/8RO+B
+	 +N21vsqruOCKw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 376D681FF5;
-	Fri, 21 Feb 2025 13:53:33 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C2CAE40E22;
+	Fri, 21 Feb 2025 14:09:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 2B5D46B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Feb 2025 13:53:31 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 0C28E6B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Feb 2025 14:09:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0EE4581FEB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Feb 2025 13:53:31 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id E3F3D40A7D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Feb 2025 14:09:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id X_O38wFYlLHj for <intel-wired-lan@lists.osuosl.org>;
- Fri, 21 Feb 2025 13:53:30 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
- helo=mgamail.intel.com; envelope-from=piotr.kwapulinski@intel.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id sOk-I5YnWGFm for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 21 Feb 2025 14:09:23 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 53EB481FC4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 53EB481FC4
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 53EB481FC4
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Feb 2025 13:53:30 +0000 (UTC)
-X-CSE-ConnectionGUID: GEBr5rHpTSSEfhfJOj+2kg==
-X-CSE-MsgGUID: qPtdep2DTbyaI8IMB+SmxQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11351"; a="66329002"
-X-IronPort-AV: E=Sophos;i="6.13,304,1732608000"; d="scan'208";a="66329002"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Feb 2025 05:53:20 -0800
-X-CSE-ConnectionGUID: Np+g1ynGReOYo1NG/v908g==
-X-CSE-MsgGUID: MT3b49uxQHONawmjxFBjgg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,304,1732608000"; d="scan'208";a="115905473"
-Received: from pkwapuli-mobl1.ger.corp.intel.com (HELO
- vbox-pkwap.ger.corp.intel.com) ([10.246.0.65])
- by fmviesa010.fm.intel.com with ESMTP; 21 Feb 2025 05:53:19 -0800
-From: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, pmenzel@molgen.mpg.de, andrew@lunn.ch,
- Piotr Kwapulinski <piotr.kwapulinski@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Date: Fri, 21 Feb 2025 14:53:15 +0100
-Message-ID: <20250221135315.5105-1-piotr.kwapulinski@intel.com>
-X-Mailer: git-send-email 2.43.5
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 7FFB640979
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7FFB640979
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7FFB640979
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Feb 2025 14:09:22 +0000 (UTC)
+Received: from [192.168.0.2] (ip5f5af27c.dynamic.kabel-deutschland.de
+ [95.90.242.124])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 643E161E646F9;
+ Fri, 21 Feb 2025 15:09:02 +0100 (CET)
+Message-ID: <7d8cfd3b-1e2e-48e3-b9b7-6f8aab8a83d7@molgen.mpg.de>
+Date: Fri, 21 Feb 2025 15:09:01 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1740146010; x=1771682010;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=QoZFiFZcge5y8/gZT2+9YlDQ0HWRHX2zKe13LthsFRk=;
- b=I6OpIG0yNkGlEhTg/Kx18/9/vdV10jrbZ8h+Qkt4MTHPsCA+YVcchcEw
- McB1xPnaJCfB8llNKerwHH9atuU0BMrrrNsyuEBoowc41OxLk9Lp3etpd
- G1WPJNS57pe+uUvr1zu0vWvTPz4EH6E5wsFJvTz7welNxleADCT+GoVOn
- KVKPUSs8r3QC1h7rabRBbIyYaszpsmwFXSErBAUIZ6R447tsVGM4VAFlY
- NTWgjpNGuCpV/LgeG9eoHgfZNxRzOckwtQmyT7/IYBZZWHw6Ko7xi5qzO
- UKTaWBn+siX0pmTHEJXOBTu8j7zndNHA52vqNqjlYuMBaPuV9DlZ/eZWb
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=I6OpIG0y
-Subject: [Intel-wired-lan] [PATCH iwl-net v2] ixgbe: fix media type
+User-Agent: Mozilla Thunderbird
+To: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, andrew@lunn.ch, 
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
+References: <20250221135315.5105-1-piotr.kwapulinski@intel.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20250221135315.5105-1-piotr.kwapulinski@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] ixgbe: fix media type
  detection for E610 device
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -109,45 +89,61 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The commit 23c0e5a16bcc ("ixgbe: Add link management support for E610
-device") introduced incorrect media type detection for E610 device. It
-reproduces when advertised speed is modified after driver reload. Clear
-the previous outdated PHY type high value.
+Dear Piotr,
 
-Reproduction steps:
-modprobe ixgbe
-ethtool -s eth0 advertise 0x1000000000000
-rmmod ixgbe
-modprobe ixgbe
-ethtool -s eth0 advertise 0x1000000000000
 
-Fixes: 23c0e5a16bcc ("ixgbe: Add link management support for E610 device")
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
----
-v1 -> v2
-  More commit message details and reproduction steps added
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+Thank you for the improved version. Two minor nits should you resend.
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-index 683c668..0dfefd2 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-@@ -1453,9 +1453,11 @@ enum ixgbe_media_type ixgbe_get_media_type_e610(struct ixgbe_hw *hw)
- 			hw->link.link_info.phy_type_low = 0;
- 		} else {
- 			highest_bit = fls64(le64_to_cpu(pcaps.phy_type_low));
--			if (highest_bit)
-+			if (highest_bit) {
- 				hw->link.link_info.phy_type_low =
- 					BIT_ULL(highest_bit - 1);
-+				hw->link.link_info.phy_type_high = 0;
-+			}
- 		}
- 	}
- 
--- 
-2.43.0
 
+Am 21.02.25 um 14:53 schrieb Piotr Kwapulinski:
+> The commit 23c0e5a16bcc ("ixgbe: Add link management support for E610
+> device") introduced incorrect media type detection for E610 device. It
+> reproduces when advertised speed is modified after driver reload. Clear
+> the previous outdated PHY type high value.
+> 
+> Reproduction steps:
+> modprobe ixgbe
+> ethtool -s eth0 advertise 0x1000000000000
+> rmmod ixgbe
+
+As you use modprobe over insmod, you could also used modprobe -r.
+
+> modprobe ixgbe
+> ethtool -s eth0 advertise 0x1000000000000
+
+Is now an error printed?
+
+> Fixes: 23c0e5a16bcc ("ixgbe: Add link management support for E610 device")
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+> ---
+> v1 -> v2
+>    More commit message details and reproduction steps added
+> ---
+>   drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 4 +++-
+>   1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+> index 683c668..0dfefd2 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+> @@ -1453,9 +1453,11 @@ enum ixgbe_media_type ixgbe_get_media_type_e610(struct ixgbe_hw *hw)
+>   			hw->link.link_info.phy_type_low = 0;
+>   		} else {
+>   			highest_bit = fls64(le64_to_cpu(pcaps.phy_type_low));
+> -			if (highest_bit)
+> +			if (highest_bit) {
+>   				hw->link.link_info.phy_type_low =
+>   					BIT_ULL(highest_bit - 1);
+> +				hw->link.link_info.phy_type_high = 0;
+> +			}
+>   		}
+>   	}
+>   
+
+Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+
+
+Kind regards,
+
+Paul
