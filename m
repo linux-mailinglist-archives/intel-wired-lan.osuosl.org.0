@@ -1,82 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E8513A401ED
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Feb 2025 22:16:34 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CFADDA402A1
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Feb 2025 23:26:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 846146083A;
-	Fri, 21 Feb 2025 21:16:33 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4C6CB812D6;
+	Fri, 21 Feb 2025 22:26:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uSG-AysTwUaV; Fri, 21 Feb 2025 21:16:33 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id niPNa9HuoBQS; Fri, 21 Feb 2025 22:26:56 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C878460773
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5830A812C4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1740172592;
-	bh=fDYnj8R+SJ4cZpqzR7NAtqGCU4Jj9JwmBfgrLDGRNIo=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1740176816;
+	bh=k5LB7jP+f6lNl4H1LdXjkE9kYUU+t96pBO5YpxJhE0c=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=rwh/ltayxYdamNIY8uX6a6G3lNI3bIqNZF2Rbl6+bjxvEh8MUlF7IlN+exJI9ugr2
-	 Zy+dJ1sshQK71dCU1JLhvSpqqmt/xd12gfLRC1RzY8YhMFFEkcQI8ofyPF7TU0aWI0
-	 HsSro/og7YJ3gwc3N52rV3VWtfJF9XXOkcqzD236Up/3VhuWoKhrUOwDQtk/UmU88/
-	 dBOzXkU2WtfHXA/Vc9RUmZf9HVDZCrB1Yu3hSsQR//ZrpUWkhHd0LNFhyCYK364xPf
-	 eL9xjFnN5o7kyphRsYPgDpu3/07+oKy7YS3KncCH9VKeTmmaPycAt2UWOXyQJDgPU2
-	 wSJq86GvAtGsw==
+	b=XDuMdzjBhTqW11u/uHkf1pS/7P9sGM9JsS5j2wkyQSgGZ7n4bCRF4AtufQKtaQ46k
+	 SEfJnYbb4vNbGdjGOsstgadBP1LUSokbOqpFKlsrIiRQegbJ6H79cSHzNmpH/wG/3F
+	 QziEvu8cXLwbJ6TOD7iMHRymN13ibDu3wjPQQCsVgxVD5dbw5ciWkPq0siRaxVqqQu
+	 SxsltjhBwOkcI0SmN/8m41O4AbPsHCImo9ifwp4ka/6rqDtmDnp9oQ9AmP7KYApGXp
+	 cbRv5EQbuFgvrcgFyDGNFNWfsWVWFtvGqp8I7Vg8yq9V8gEvLJUYntBf85zx2yU8lr
+	 kuiXlv5MnV2wg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C878460773;
-	Fri, 21 Feb 2025 21:16:32 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5830A812C4;
+	Fri, 21 Feb 2025 22:26:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 9B3A6194
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Feb 2025 21:16:31 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 31D5FD92
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Feb 2025 22:26:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 7ED5D403FC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Feb 2025 21:16:31 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id F073040151
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Feb 2025 22:26:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id gGF5xHiDd9Ml for <intel-wired-lan@lists.osuosl.org>;
- Fri, 21 Feb 2025 21:16:30 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 24E7E403D9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 24E7E403D9
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 24E7E403D9
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Feb 2025 21:16:28 +0000 (UTC)
-Received: from [192.168.0.2] (ip5f5af2a2.dynamic.kabel-deutschland.de
- [95.90.242.162])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id C596B61E64783;
- Fri, 21 Feb 2025 22:16:09 +0100 (CET)
-Message-ID: <aecd919b-fbb8-4790-af1f-69b50cc78438@molgen.mpg.de>
-Date: Fri, 21 Feb 2025 22:16:09 +0100
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 5NRDcdrM-DEM for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 21 Feb 2025 22:26:53 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org EC27540025
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EC27540025
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id EC27540025
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Feb 2025 22:26:52 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 999A35C43AA;
+ Fri, 21 Feb 2025 22:26:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 06344C4CED6;
+ Fri, 21 Feb 2025 22:26:50 +0000 (UTC)
+Date: Fri, 21 Feb 2025 14:26:50 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Joe Damato <jdamato@fastly.com>
+Cc: Kurt Kanzenbach <kurt@linutronix.de>, Tony Nguyen
+ <anthony.l.nguyen@intel.com>, Przemek Kitszel
+ <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David
+ S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo
+ Abeni <pabeni@redhat.com>, Sebastian Andrzej Siewior
+ <bigeasy@linutronix.de>, Gerhard Engleder <gerhard@engleder-embedded.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+Message-ID: <20250221142650.3c74dcac@kernel.org>
+In-Reply-To: <Z7jnxolsaLICS6zD@LQ3V64L9R2>
+References: <20250217-igb_irq-v2-0-4cb502049ac2@linutronix.de>
+ <Z7T5G9ZQRBb4EtdG@LQ3V64L9R2> <878qq22xk3.fsf@kurt.kurt.home>
+ <20250219180651.0ea6f33d@kernel.org> <Z7jnxolsaLICS6zD@LQ3V64L9R2>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Grzegorz Nitka <grzegorz.nitka@intel.com>,
- Karol Kolacinski <karol.kolacinski@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-References: <20250221123123.2833395-1-grzegorz.nitka@intel.com>
- <20250221123123.2833395-2-grzegorz.nitka@intel.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20250221123123.2833395-2-grzegorz.nitka@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 1/3] ice: remove SW side
- band access workaround for E825
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1740176811;
+ bh=JYIZp6oz2BlHDzWW7UOSolxuRxr9OKOgkF/GatOg+lY=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=OD8l3Hfp+bk5GlWSCORfoSR6mRo+OZgM44R3ssUK9650oUXRETvnC+EnhZhEc61mJ
+ 61HQBVApFeiw2YfiptVIAlmopa0lWls5Co7c+OhX6URkkMkvuZvb8vISps6tWRHoue
+ 7kBcp65zDc/MaDS5V+RbIsyhcbdecYt99lqXcLAS2k6Q+TTaT033ziQihS3T6f6tp+
+ +BmwEaRpai/QAPjeDYQFf2UkytyIhxZL8fx3ju7Pzg4ei3tBHuxuegyG5y29fdDynX
+ LL9BdjTsnm9hkK3PRtU7u63yZsSeFQFV/1NoDiO/yX6W5mgFy/7a078Smh9rG2Tb/y
+ 4FbpzWkM7xQgA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=OD8l3Hfp
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 0/4] igb: XDP/ZC follow up
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -92,89 +104,22 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Grzegorz, dear Karol,
-
-
-Thank you for your patch.
-
-Am 21.02.25 um 13:31 schrieb Grzegorz Nitka:
-> From: Karol Kolacinski <karol.kolacinski@intel.com>
+On Fri, 21 Feb 2025 15:53:26 -0500 Joe Damato wrote:
+> > No strong preference. If rtnl_lock is not causing any issues 
+> > in this driver, the we can merge as is. I haven't followed 
+> > the past discussions, tho.  
 > 
-> Due to the bug in FW/NVM autoload mechanism (wrong default
-> SB_REM_DEV_CTL register settings), the access to peer PHY and CGU
-> clients was disabled by default.
+> Don't mean to side-track this thread, but does this mean you've
+> changed your mind on the previous virtio_net thread [1] ?
+> 
+> Or maybe I'm just misreading your response there? And instead I
+> could re-spin the virtio_net but dropping the first patch and
+> dealing with RTNL in the code like this series is doing?
+> 
+> For some reason I was under the impression that the virtio_net
+> series and others like it (like this igb series) were being held
+> back until locking work Stanislav is doing is done.
+> 
+> [1]: https://lore.kernel.org/netdev/20250127133756.413efb24@kernel.org/
 
-I’d add a blank line between the paragraphs.
-
-> As the workaround solution, the register value was overwritten by the
-> driver at the probe or reset handling.
-> Remove workaround as it's not needed anymore. The fix in autoload
-> procedure has been provided with NVM 3.80 version.
-
-Is this compatible with Linux’ no regression policy? People might only 
-update the Linux kernel and not the firmware.
-
-How did you test this, and how can others test this?
-
-> Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
-> Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
-> ---
->   drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 23 ---------------------
->   1 file changed, 23 deletions(-)
-
-
-Kind regards,
-
-Paul
-
-
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-> index 89bb8461284a..a5df081ffc19 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-> @@ -2630,25 +2630,6 @@ int ice_start_phy_timer_eth56g(struct ice_hw *hw, u8 port)
->   	return 0;
->   }
->   
-> -/**
-> - * ice_sb_access_ena_eth56g - Enable SB devices (PHY and others) access
-> - * @hw: pointer to HW struct
-> - * @enable: Enable or disable access
-> - *
-> - * Enable sideband devices (PHY and others) access.
-> - */
-> -static void ice_sb_access_ena_eth56g(struct ice_hw *hw, bool enable)
-> -{
-> -	u32 val = rd32(hw, PF_SB_REM_DEV_CTL);
-> -
-> -	if (enable)
-> -		val |= BIT(eth56g_phy_0) | BIT(cgu) | BIT(eth56g_phy_1);
-> -	else
-> -		val &= ~(BIT(eth56g_phy_0) | BIT(cgu) | BIT(eth56g_phy_1));
-> -
-> -	wr32(hw, PF_SB_REM_DEV_CTL, val);
-> -}
-> -
->   /**
->    * ice_ptp_init_phc_e825 - Perform E825 specific PHC initialization
->    * @hw: pointer to HW struct
-> @@ -2659,8 +2640,6 @@ static void ice_sb_access_ena_eth56g(struct ice_hw *hw, bool enable)
->    */
->   static int ice_ptp_init_phc_e825(struct ice_hw *hw)
->   {
-> -	ice_sb_access_ena_eth56g(hw, true);
-> -
->   	/* Initialize the Clock Generation Unit */
->   	return ice_init_cgu_e82x(hw);
->   }
-> @@ -2747,8 +2726,6 @@ static void ice_ptp_init_phy_e825(struct ice_hw *hw)
->   	params->num_phys = 2;
->   	ptp->ports_per_phy = 4;
->   	ptp->num_lports = params->num_phys * ptp->ports_per_phy;
-> -
-> -	ice_sb_access_ena_eth56g(hw, true);
->   }
->   
->   /* E822 family functions
+Yes, you can probably respin v1. Let's not block this.
