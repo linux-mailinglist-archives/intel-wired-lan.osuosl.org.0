@@ -1,93 +1,111 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7FED1A3E8FB
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Feb 2025 01:05:53 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A53BA3EA55
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Feb 2025 02:49:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E5ACD409B1;
-	Fri, 21 Feb 2025 00:05:51 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0BA0160852;
+	Fri, 21 Feb 2025 01:49:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id a9Uxf4ynMvyP; Fri, 21 Feb 2025 00:05:51 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 8yXDxgZp--zC; Fri, 21 Feb 2025 01:49:37 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 90362409BA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1D0C060876
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1740096350;
-	bh=u3v4wbv1mgcXCWAFzoPCMFR0Rz1A6hTSmlxqmIoS6/0=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=ssrYIMdXi0xG1wnwjIuUO8MkP+TcAU2P7iXRuZitgBhzX9epBiJgqyA5xpyhvFLt3
-	 DL9hqxhYt5YLbKySBuHYBDp1wfw+vZzUgBgHbvwlwk8QYEBbm14ANPfiKYMWeibHqM
-	 GWlAA6qmoyPk80wNtn4HZen9qwW8y/FSndSd535SQpf2SjdzB52eQHgqtz//LBwoS2
-	 OruOjnQ3iF8KZwH1IEjm1N0TSJmzS1WKR/d51siwtyb9lUPwJaBZLeKpn+U82IsEBy
-	 oQ1E9kTlamZ1VUjinZhTYBUSQr/gBO+PoYLYpQC0qfuvSCJintEKyTsFtyA4vqR4sT
-	 xat3SISBTASxQ==
+	s=default; t=1740102577;
+	bh=Vl7GrqTUxAdpjfit1u0CjWV9fmGAo2pFRZY+IFh5+NU=;
+	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=aLCsN1lEqT8W+7KkrVGl9N8cnyI0Hbiw2DT+a7Iln/LKDzwBOHxtJfbPev1FkmMex
+	 h1qY7uvdsJszLY0ARkpLeRWrhQmqF5+61/ntwcuvDcEP5x7GXVQJcHoHcrVMDab1R2
+	 vVeHT6x2q3i1zapkVYgcPYt9kCvzsiISxCl2LHBBnbNSMKa8Z2FhfsZRSqTarLgXiW
+	 nEWKx/O8IkujvT3cWe8IyFZ6wZKgXKMgXgPy+viSIImyb3kseVqktCeCuysAu0uU22
+	 EoY4Kfe/SEr8v9wXUQMn6deaThJ1iYpcnmHRTt/EP19McXe6VjMvLRvrq6mnHrGyNh
+	 qfwMzVgvQo1qA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 90362409BA;
-	Fri, 21 Feb 2025 00:05:50 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1D0C060876;
+	Fri, 21 Feb 2025 01:49:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 52D46CF
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Feb 2025 00:05:48 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 02DD0D92
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Feb 2025 01:49:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 407FE400C4
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Feb 2025 00:05:48 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id E5D63607FD
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Feb 2025 01:49:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ws8KvmAVdnQu for <intel-wired-lan@lists.osuosl.org>;
- Fri, 21 Feb 2025 00:05:47 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 18B6B4026B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 18B6B4026B
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 18B6B4026B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Feb 2025 00:05:46 +0000 (UTC)
-X-CSE-ConnectionGUID: t4CGPq89Q22qqkhDGkSIOA==
-X-CSE-MsgGUID: ujJNz1MUT4y/QupVK0NNKw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11351"; a="66262048"
-X-IronPort-AV: E=Sophos;i="6.13,303,1732608000"; d="scan'208";a="66262048"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Feb 2025 16:05:46 -0800
-X-CSE-ConnectionGUID: nJAfMMgET9aV3hNNx/ysGA==
-X-CSE-MsgGUID: q9cdrcxeSIKJO42r04Fn5Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,303,1732608000"; d="scan'208";a="115406118"
-Received: from lkp-server02.sh.intel.com (HELO 76cde6cc1f07) ([10.239.97.151])
- by fmviesa008.fm.intel.com with ESMTP; 20 Feb 2025 16:05:45 -0800
-Received: from kbuild by 76cde6cc1f07 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1tlGY3-0004th-26
- for intel-wired-lan@lists.osuosl.org; Fri, 21 Feb 2025 00:05:43 +0000
-Date: Fri, 21 Feb 2025 08:05:15 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202502210809.9tzB3oYo-lkp@intel.com>
-User-Agent: s-nail v14.9.24
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 2So5S0wVMy9X for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 21 Feb 2025 01:49:34 +0000 (UTC)
+X-Greylist: delayed 562 seconds by postgrey-1.37 at util1.osuosl.org;
+ Fri, 21 Feb 2025 01:49:33 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D347660758
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D347660758
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
+ helo=tor.source.kernel.org; envelope-from=patchwork-bot+netdevbpf@kernel.org;
+ receiver=<UNKNOWN> 
+Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D347660758
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Feb 2025 01:49:33 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id 31A1A683B5;
+ Fri, 21 Feb 2025 01:40:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72347C4CED1;
+ Fri, 21 Feb 2025 01:40:09 +0000 (UTC)
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+ by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id
+ 71AB6380CEE2; Fri, 21 Feb 2025 01:40:41 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <174010204026.1539943.5735764109259382582.git-patchwork-notify@kernel.org>
+Date: Fri, 21 Feb 2025 01:40:40 +0000
+References: <20250216093430.957880-1-yoong.siang.song@intel.com>
+In-Reply-To: <20250216093430.957880-1-yoong.siang.song@intel.com>
+To: Song Yoong Siang <yoong.siang.song@intel.com>
+Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, horms@kernel.org, willemb@google.com,
+ florian.bezdeka@siemens.com, donald.hunter@gmail.com, corbet@lwn.net,
+ bjorn@kernel.org, magnus.karlsson@intel.com, maciej.fijalkowski@intel.com,
+ jonathan.lemon@gmail.com, andrew+netdev@lunn.ch, ast@kernel.org,
+ daniel@iogearbox.net, hawk@kernel.org, john.fastabend@gmail.com,
+ jdamato@fastly.com, sdf@fomichev.me, xuanzhuo@linux.alibaba.com,
+ almasrymina@google.com, danielj@nvidia.com, andrii@kernel.org,
+ eddyz87@gmail.com, mykolal@fb.com, martin.lau@linux.dev, song@kernel.org,
+ yonghong.song@linux.dev, kpsingh@kernel.org, haoluo@google.com,
+ jolsa@kernel.org, shuah@kernel.org, alexandre.torgue@foss.st.com,
+ joabreu@synopsys.com, mcoquelin.stm32@gmail.com, anthony.l.nguyen@intel.com,
+ przemyslaw.kitszel@intel.com, faizal.abdul.rahim@linux.intel.com,
+ yong.liang.choong@linux.intel.com, zdenek.bouska@siemens.com,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-doc@vger.kernel.org, bpf@vger.kernel.org,
+ linux-kselftest@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, intel-wired-lan@lists.osuosl.org,
+ xdp-hints@xdp-project.net
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1740096347; x=1771632347;
- h=date:from:to:subject:message-id;
- bh=r6OSZuZCJ+dqAIh/cu52g1O2qnIZjFPZ24Gi00IxNqY=;
- b=keNKVHSZBoDZO6zDlg6dRlTpz5ZJoxcPc+UdiX229Aj9pMoEmH829jZi
- ANAIxDL5Sfj+zRugUDJPSR/bFdhT8MnP3mPVUebmVfGpwebqwQCxpsa6H
- H2ikUdkn7L+8g4olRiN486bCRY+DjiOGH7R+Pob6ll2eiQPtKo3HFh46P
- jGE/UYsWUgSBDhwjEacr8EWQ+UfqM+guLPcR6CBhWJIXnDfDvgwlMheZ0
- JbMPx4Mn58IJYYQvbxyCxxMDHUnW8qQYJAd8jj+nF8mdgE0EHuY8C8f4/
- 7mGh0YjO7mDu6ZmmZ2Bj3IQkO3ruz+wBvVSuQAh/2s/p5WNL1pSzRRDhg
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=keNKVHSZ
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- a67a634dde15f8decd1d18738fe672afb185732b
+ d=kernel.org; s=k20201202; t=1740102009;
+ bh=btDMxeNfHBPNti2EoCCt/T314QWXygFwMOmYrLNf9ro=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=MXepqXaRM4dVPsZFOEB7ouyCJSGm2Meq4q/xIOE+jd15D6NGJv5MlJ11lOtELov26
+ vb6Qo/vCHwGaWuM6j+aECkThrTXqJuj9n4Co8AF/jGKjsrhioPuVmOveu2YTkIbu8Q
+ wk8fBvXTzPE9xVv3mHz9ZKEHZsm4VYbRYMV3C/tftMDf4OyJPnoTk9+/nJmJOcmIN5
+ qTPKkOO8pMG98R/rr+JkAKcE2wHkRz5SR+PgOMhg28NxWpGz07teN/RQ+DsvRHUrxj
+ JHI03CieeTQBe9pXC9MrKEU1Ekw0EKKEd1dz/sbBXjosAXPCXyksjvP1fO+R97RMjj
+ Gwyk8ilUJvQFA==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=MXepqXaR
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next v12 0/5] xsk: TX metadata
+ Launch Time support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -103,93 +121,40 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: a67a634dde15f8decd1d18738fe672afb185732b  idpf: check error for register_netdev() on init
+Hello:
 
-elapsed time: 1456m
+This series was applied to bpf/bpf-next.git (net)
+by Martin KaFai Lau <martin.lau@kernel.org>:
 
-configs tested: 74
-configs skipped: 1
+On Sun, 16 Feb 2025 17:34:25 +0800 you wrote:
+> This series expands the XDP TX metadata framework to allow user
+> applications to pass per packet 64-bit launch time directly to the kernel
+> driver, requesting launch time hardware offload support. The XDP TX
+> metadata framework will not perform any clock conversion or packet
+> reordering.
+> 
+> Please note that the role of Tx metadata is just to pass the launch time,
+> not to enable the offload feature. Users will need to enable the launch
+> time hardware offload feature of the device by using the respective
+> command, such as the tc-etf command.
+> 
+> [...]
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Here is the summary with links:
+  - [bpf-next,v12,1/5] xsk: Add launch time hardware offload support to XDP Tx metadata
+    https://git.kernel.org/bpf/bpf-next/c/ca4419f15abd
+  - [bpf-next,v12,2/5] selftests/bpf: Add launch time request to xdp_hw_metadata
+    https://git.kernel.org/bpf/bpf-next/c/6164847e5403
+  - [bpf-next,v12,3/5] net: stmmac: Add launch time support to XDP ZC
+    https://git.kernel.org/bpf/bpf-next/c/04f64dea1364
+  - [bpf-next,v12,4/5] igc: Refactor empty frame insertion for launch time support
+    https://git.kernel.org/bpf/bpf-next/c/f9b53bb13923
+  - [bpf-next,v12,5/5] igc: Add launch time support to XDP ZC
+    https://git.kernel.org/bpf/bpf-next/c/d7c3a7ff7502
 
-tested configs:
-alpha                           allyesconfig    gcc-14.2.0
-arc                             allmodconfig    gcc-13.2.0
-arc                             allyesconfig    gcc-13.2.0
-arc                  randconfig-001-20250220    gcc-13.2.0
-arc                  randconfig-002-20250220    gcc-13.2.0
-arm                             allmodconfig    gcc-14.2.0
-arm                             allyesconfig    gcc-14.2.0
-arm                  randconfig-001-20250220    gcc-14.2.0
-arm                  randconfig-002-20250220    gcc-14.2.0
-arm                  randconfig-003-20250220    gcc-14.2.0
-arm                  randconfig-004-20250220    gcc-14.2.0
-arm64                           allmodconfig    clang-18
-arm64                randconfig-001-20250220    gcc-14.2.0
-arm64                randconfig-002-20250220    gcc-14.2.0
-arm64                randconfig-003-20250220    clang-21
-arm64                randconfig-004-20250220    gcc-14.2.0
-csky                 randconfig-001-20250220    gcc-14.2.0
-csky                 randconfig-002-20250220    gcc-14.2.0
-hexagon                         allmodconfig    clang-21
-hexagon                         allyesconfig    clang-18
-hexagon              randconfig-001-20250220    clang-21
-hexagon              randconfig-002-20250220    clang-21
-i386                            allmodconfig    gcc-12
-i386                             allnoconfig    gcc-12
-i386                            allyesconfig    gcc-12
-i386       buildonly-randconfig-001-20250220    gcc-12
-i386       buildonly-randconfig-002-20250220    gcc-12
-i386       buildonly-randconfig-003-20250220    gcc-12
-i386       buildonly-randconfig-004-20250220    clang-19
-i386       buildonly-randconfig-005-20250220    clang-19
-i386       buildonly-randconfig-006-20250220    clang-19
-i386                               defconfig    clang-19
-loongarch            randconfig-001-20250220    gcc-14.2.0
-loongarch            randconfig-002-20250220    gcc-14.2.0
-nios2                randconfig-001-20250220    gcc-14.2.0
-nios2                randconfig-002-20250220    gcc-14.2.0
-parisc               randconfig-001-20250220    gcc-14.2.0
-parisc               randconfig-002-20250220    gcc-14.2.0
-powerpc              randconfig-001-20250220    gcc-14.2.0
-powerpc              randconfig-002-20250220    clang-16
-powerpc              randconfig-003-20250220    clang-21
-powerpc64            randconfig-001-20250220    clang-16
-powerpc64            randconfig-002-20250220    clang-18
-powerpc64            randconfig-003-20250220    gcc-14.2.0
-riscv                randconfig-001-20250220    gcc-14.2.0
-riscv                randconfig-002-20250220    clang-21
-s390                            allmodconfig    clang-19
-s390                            allyesconfig    gcc-14.2.0
-s390                 randconfig-001-20250220    clang-19
-s390                 randconfig-002-20250220    gcc-14.2.0
-sh                              allmodconfig    gcc-14.2.0
-sh                              allyesconfig    gcc-14.2.0
-sh                   randconfig-001-20250220    gcc-14.2.0
-sh                   randconfig-002-20250220    gcc-14.2.0
-sparc                           allmodconfig    gcc-14.2.0
-sparc                randconfig-001-20250220    gcc-14.2.0
-sparc                randconfig-002-20250220    gcc-14.2.0
-sparc64              randconfig-001-20250220    gcc-14.2.0
-sparc64              randconfig-002-20250220    gcc-14.2.0
-um                              allmodconfig    clang-21
-um                              allyesconfig    gcc-12
-um                   randconfig-001-20250220    gcc-12
-um                   randconfig-002-20250220    gcc-12
-x86_64                           allnoconfig    clang-19
-x86_64                          allyesconfig    clang-19
-x86_64     buildonly-randconfig-001-20250220    gcc-12
-x86_64     buildonly-randconfig-002-20250220    gcc-12
-x86_64     buildonly-randconfig-003-20250220    gcc-12
-x86_64     buildonly-randconfig-004-20250220    gcc-12
-x86_64     buildonly-randconfig-005-20250220    gcc-12
-x86_64     buildonly-randconfig-006-20250220    gcc-12
-x86_64                             defconfig    gcc-11
-xtensa               randconfig-001-20250220    gcc-14.2.0
-xtensa               randconfig-002-20250220    gcc-14.2.0
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+
