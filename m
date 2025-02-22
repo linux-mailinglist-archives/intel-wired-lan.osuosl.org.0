@@ -1,100 +1,124 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B872A40671
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 22 Feb 2025 09:43:55 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C3D9D81F66;
-	Sat, 22 Feb 2025 08:43:53 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xvjdqEDf0WMZ; Sat, 22 Feb 2025 08:43:53 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DD56381F42
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1740213832;
-	bh=7SsSsqSqmPC6toJ/NMUOKEr+lGIeaXQX8dsGkLq4RcU=;
-	h=Date:From:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=aZ99iBMKSizPMpUfVwJV4064xt4peYZj6SJs2zfsmYTvnIaNQOPVH4rIUDirmsk2K
-	 5kMorYJXhXow4YmanLiKX9f9I1R0W5XNl1urMtlINUiARXHhNLmznDThS4/H+8f3Y5
-	 B/tjvGkfBc8VrPobVzXV9EYF+kJULfzrOTwkhL45tuThqDWdjIdGTS4/97f73tH3GL
-	 B8BhmrhY68CZbj3fHvcVsxdmXxpAmGxUEZHQ1v4t9TirvtbeoCdhn5dSk+hKHyWVQK
-	 OGajNi5dpBdKowcv+HPfU1Y3GeRteVhZxq6rf0+lq58+A9ES13XvpZRV2uYkEfHkVh
-	 UlujpBLOgBpIQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DD56381F42;
-	Sat, 22 Feb 2025 08:43:52 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id D1C2AD92
- for <intel-wired-lan@lists.osuosl.org>; Sat, 22 Feb 2025 08:43:50 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2A5AFA40871
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 22 Feb 2025 13:51:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id AED9960A46
- for <intel-wired-lan@lists.osuosl.org>; Sat, 22 Feb 2025 08:43:50 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 77512608FA;
+	Sat, 22 Feb 2025 12:51:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ETUpopc69boj for <intel-wired-lan@lists.osuosl.org>;
- Sat, 22 Feb 2025 08:43:50 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org AE17D60841
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AE17D60841
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
- by smtp3.osuosl.org (Postfix) with ESMTPS id AE17D60841
- for <intel-wired-lan@lists.osuosl.org>; Sat, 22 Feb 2025 08:43:48 +0000 (UTC)
-X-CSE-ConnectionGUID: 7b7JtNpZQpiHN5Iu7nTOaQ==
-X-CSE-MsgGUID: fzRuG2n4TmqWof1yJNTXFQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11352"; a="40951179"
-X-IronPort-AV: E=Sophos;i="6.13,307,1732608000"; d="scan'208";a="40951179"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Feb 2025 00:43:48 -0800
-X-CSE-ConnectionGUID: qKgRUfuYQ6WnFVtG56Z3Bg==
-X-CSE-MsgGUID: u4yFtYZPR6WX/oLZkfOXPg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,307,1732608000"; d="scan'208";a="116214957"
-Received: from lkp-server02.sh.intel.com (HELO 76cde6cc1f07) ([10.239.97.151])
- by fmviesa009.fm.intel.com with ESMTP; 22 Feb 2025 00:43:46 -0800
-Received: from kbuild by 76cde6cc1f07 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1tll6u-0006PQ-0q;
- Sat, 22 Feb 2025 08:43:44 +0000
-Date: Sat, 22 Feb 2025 16:43:14 +0800
-From: kernel test robot <lkp@intel.com>
-To: Jiawen Wu <jiawenwu@trustnetic.com>
-Cc: oe-kbuild-all@lists.linux.dev,
- Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
- Jakub Kicinski <kuba@kernel.org>,
- Vadim Fedorenko <vadim.fedorenko@linux.dev>
-Message-ID: <202502221622.yPBcg0Uh-lkp@intel.com>
+ id rB0wGK_mKLSf; Sat, 22 Feb 2025 12:51:15 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C5FA3608B9
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1740228674;
+	bh=dIB85NX55cr0Sxu2JumigyhMRgow9LLzALrybUQOOEw=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=W7ZEduQB1yiGxPY3FXRXFA22339IRrY1w/yeMMJyirmfzunMDIZ2FFBDrr3xvmN2T
+	 7Wn4oyrzowkwQPTI5CyIiY6KZMypc0hS4I62pwEpNm9h2QL1AZnmLomSNzOPHw41to
+	 tdW4j29N0PLxlib4CU3xYaZ1+Zdd/onnXsA1aO5nQrpyf57ShQoKGqpOVDtx6mKxOc
+	 dn9/lHhBT+P8H7pLjnwgUG4FbSH+SOPhPEXUZqHONdOgtZc+3Hy/YRTAeRcEzUFkGp
+	 s2ALI2961iBTGqpDrQfssf1MlNOF8hX+QBbRBzZ9COM00GI9psIgtJO7LXY0E0Y0tQ
+	 utw3jcpPaORqQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id C5FA3608B9;
+	Sat, 22 Feb 2025 12:51:14 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id E4343D92
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 22 Feb 2025 12:51:12 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id D3B7B81092
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 22 Feb 2025 12:51:12 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id NLkjGI2ex42S for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 22 Feb 2025 12:51:11 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::430; helo=mail-wr1-x430.google.com;
+ envelope-from=wejmanpm@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0F3C1811B3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0F3C1811B3
+Received: from mail-wr1-x430.google.com (mail-wr1-x430.google.com
+ [IPv6:2a00:1450:4864:20::430])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 0F3C1811B3
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 22 Feb 2025 12:51:10 +0000 (UTC)
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-38f24fc466aso2190007f8f.2
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 22 Feb 2025 04:51:10 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1740228669; x=1740833469;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=dIB85NX55cr0Sxu2JumigyhMRgow9LLzALrybUQOOEw=;
+ b=ediLhfgoZxkWSfu3aS1fPfXRvcqoH4Z8V0QOXRXN7VyF1m6QCiJFEI5muiWztev7/3
+ cZ/Jo1dCEVl4kUhQbmF3SJN9F8zsC0XZI6tmha4ev7dGX+gEI2dnFdqKpl++iPNj+mh3
+ WEYZIrqXfFVR5tVxK/1jzAHwgKCgLsg625aRc3yokfTdl++bgYYh9iK201N1CwyhagS8
+ b65275uTV24JMOKCv/KhXNlJ8slrKKrw39e1TqoMFexsB+gR05Ur+OH2yQy4GOK8yhYp
+ sbsnBTDyr3GisS6HxYg8BwatYdmqg9cTHT8bEflUS8PCDd1jEmrA+xWaFKQykQIlEIRG
+ klOg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVRgdtqWQrgCDvZa4UX30fa//m9Jh5W2t681pN78U3DGYIVW3+JopuDTRNUH3H84qUMUwwWJBUOF1Oj25G7cPo=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yyv3FYb1aA23HJoPTpZGICJq+bUj/WgVgm/ngyHOY/b2tyZcgu7
+ YEAozXTVd6rh1c5tN3yaCkqjg+PXhIvBob+Ost8tdxYNQYWprtdG
+X-Gm-Gg: ASbGncsPSNVRVtcVOyzr0h9yj7ZL9F3cbdFJBocEHPXxCRlphDuZUlIaJ5ckfix7y1F
+ ZeuoApa7UyUkrfZa4RI11dSvcC5jvGoF5M4pSEkKLG4EplbjEYMV58y3GjcyVV4aH+F4gxcsu3K
+ 4eAQ04JoeRnNJxGuGiYDUk5XlD/xmeY6T9u/V7knLACLCM0a5NC9783utJBmu6tlDb1/7uVFbsh
+ x8pGBEx4NcOvvDwzBlt7O+9HHgOztBlt9S7S6aT8eW1KDjBARIVfj7rY+6+mbAcTU9auMFNCL2s
+ M3FwxC4sCd660zJ7Dthh5zGeLZazkHkgiMnwzuU=
+X-Google-Smtp-Source: AGHT+IFIj+StWfoqjrtFysljTebHXH3AcvVHZLMeJi3pe/2IE8kYMkcE6K3cgL7B8b7Fxb+tHFrIWA==
+X-Received: by 2002:a05:6000:154a:b0:38f:50fd:55a8 with SMTP id
+ ffacd0b85a97d-38f70783eeamr5033329f8f.6.1740228668610; 
+ Sat, 22 Feb 2025 04:51:08 -0800 (PST)
+Received: from localhost.localdomain ([2a01:e0a:a92:c660:b3a6:504f:bfca:6782])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38f25915719sm26416065f8f.60.2025.02.22.04.51.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 22 Feb 2025 04:51:08 -0800 (PST)
+From: Piotr Wejman <wejmanpm@gmail.com>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: Piotr Wejman <wejmanpm@gmail.com>,
+ Vadim Fedorenko <vadim.fedorenko@linux.dev>,
+ Simon Horman <horms@kernel.org>,
+ Vitaly Lifshits <vitaly.lifshits@intel.com>
+Date: Sat, 22 Feb 2025 13:46:29 +0100
+Message-Id: <20250222124629.35797-1-wejmanpm@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1740213830; x=1771749830;
- h=date:from:to:cc:subject:message-id:mime-version;
- bh=z4QxPZ7S5Tph4cngarX01l9GKqX7BM2RMxwu4WKOsew=;
- b=VfSgEsmhji9+39CkisXkAigd8uQai4i0P7qpxrvUJKBN0nrtwSfaZqYu
- CsITosTOkp/a6gaZT6mVaVrdv7CIjVLnnL15ubs73YNDNFqOSPhuDIgWX
- VyFCCOuBX7nKlOwzZQpcJyfwlQAsA4+0RljevvgMavvg7JsUmBouDX/OS
- e2f9fj841GvrfyHj5e7VzWvs3bjbZMPImti6cU9XUakqWeaYMrBdCKH4D
- VPsD1RHO+8X1J1W1RsgX0JTtMQ9P+FMBr97kfEE6w6LMxJDHr1IZwpnOB
- H43ipi2n30mjGT57lussxK1RNEU+KEvV0lB+YtyETJkNYvgdgpiMoY4Yo
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1740228669; x=1740833469; darn=lists.osuosl.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=dIB85NX55cr0Sxu2JumigyhMRgow9LLzALrybUQOOEw=;
+ b=ebG4RThQ3tKXT1+twmgLiD5iBYuun5HnR3vp69nWD+9jm/g1oR5emuUzbzhWhRNELO
+ +Dz0pLMxm3d/mFyy8rc0zaAq26DzJLpnaEiJfUPGzv1h7ta14vhIMPN8OMBvUCachHZb
+ AjdmDk2b4kkuyiLTtSxooaaY5Jl8zfXxpXbh4xOoR2Xnvp3hjW1IqYlsRbUeirOJu52D
+ 6AviweHhy341tV1XaYTkat6BCKmdQ/mkWGp3vjlMBE8JjyVlXIN4t5xsDP9XD/PKIwsa
+ qrQdRpwuns7/hwh3U6ZaWc29zhXrufl3nl4zEd6spdKa1gZmICb1hOrYdw8v7UARZDfe
+ ZVKQ==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=VfSgEsmh
-Subject: [Intel-wired-lan] [tnguy-next-queue:40GbE 9/39] wx_ptp.c:undefined
- reference to `ptp_schedule_worker'
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20230601 header.b=ebG4RThQ
+Subject: [Intel-wired-lan] [PATCH iwl-next v4] net: e1000e: convert to
+ ndo_hwtstamp_get() and ndo_hwtstamp_set()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -110,37 +134,245 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 40GbE
-head:   bb3bb6c92e5719c0f5d7adb9d34db7e76705ac33
-commit: 704145a854ee01015d52fb8c4c0c319d1810bf32 [9/39] net: wangxun: Add periodic checks for overflow and errors
-config: i386-buildonly-randconfig-005-20250222 (https://download.01.org/0day-ci/archive/20250222/202502221622.yPBcg0Uh-lkp@intel.com/config)
-compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250222/202502221622.yPBcg0Uh-lkp@intel.com/reproduce)
+Update the driver to use the new hardware timestamping API added in commit
+66f7223039c0 ("net: add NDOs for configuring hardware timestamping").
+Use Netlink extack for error reporting in e1000e_config_hwtstamp.
+Align the indentation of net_device_ops.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202502221622.yPBcg0Uh-lkp@intel.com/
+Reviewed-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
+Reviewed-by: Simon Horman <horms@kernel.org>
+Reviewed-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
+Signed-off-by: Piotr Wejman <wejmanpm@gmail.com>
+---
+Changes in v4:
+  - fix line wrappnig
+  - Linke to v3: https://lore.kernel.org/netdev/20250216155729.63862-1-wejmanpm@gmail.com/
 
-All errors (new ones prefixed by >>):
+Changes in v3:
+  - remove new lines at the end of the extack
+  - add error print in e1000e_systim_reset
+  - Link to v2: https://lore.kernel.org/netdev/20250208154350.75316-1-wejmanpm@gmail.com/
 
-   ld: drivers/net/ethernet/wangxun/libwx/wx_lib.o: in function `wx_clean_tx_irq':
-   wx_lib.c:(.text+0x3334): undefined reference to `ptp_schedule_worker'
-   ld: drivers/net/ethernet/wangxun/libwx/wx_ethtool.o: in function `wx_get_ts_info':
-   wx_ethtool.c:(.text+0x739): undefined reference to `ptp_clock_index'
-   ld: drivers/net/ethernet/wangxun/libwx/wx_ptp.o: in function `wx_ptp_stop':
-   wx_ptp.c:(.text+0x940): undefined reference to `ptp_clock_unregister'
-   ld: drivers/net/ethernet/wangxun/libwx/wx_ptp.o: in function `wx_ptp_reset':
->> wx_ptp.c:(.text+0xd67): undefined reference to `ptp_schedule_worker'
-   ld: drivers/net/ethernet/wangxun/libwx/wx_ptp.o: in function `wx_ptp_init':
-   wx_ptp.c:(.text+0xefe): undefined reference to `ptp_clock_register'
+Changes in v2:
+  - amend commit message
+  - use extack for error reporting
+  - rename e1000_mii_ioctl to e1000_ioctl
+  - Link to v1: https://lore.kernel.org/netdev/20250202170839.47375-1-piotrwejman90@gmail.com/
 
-Kconfig warnings: (for reference only)
-   WARNING: unmet direct dependencies detected for LIBWX
-   Depends on [m]: NETDEVICES [=y] && ETHERNET [=y] && NET_VENDOR_WANGXUN [=y] && PTP_1588_CLOCK_OPTIONAL [=m]
-   Selected by [y]:
-   - NGBE [=y] && NETDEVICES [=y] && ETHERNET [=y] && NET_VENDOR_WANGXUN [=y] && PCI [=y]
+ drivers/net/ethernet/intel/e1000e/e1000.h  |  2 +-
+ drivers/net/ethernet/intel/e1000e/netdev.c | 75 +++++++++++-----------
+ 2 files changed, 38 insertions(+), 39 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/e1000e/e1000.h b/drivers/net/ethernet/intel/e1000e/e1000.h
+index ba9c19e6994c..952898151565 100644
+--- a/drivers/net/ethernet/intel/e1000e/e1000.h
++++ b/drivers/net/ethernet/intel/e1000e/e1000.h
+@@ -319,7 +319,7 @@ struct e1000_adapter {
+ 	u16 tx_ring_count;
+ 	u16 rx_ring_count;
+ 
+-	struct hwtstamp_config hwtstamp_config;
++	struct kernel_hwtstamp_config hwtstamp_config;
+ 	struct delayed_work systim_overflow_work;
+ 	struct sk_buff *tx_hwtstamp_skb;
+ 	unsigned long tx_hwtstamp_start;
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 286155efcedf..e3887a5c7601 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -3574,6 +3574,7 @@ s32 e1000e_get_base_timinca(struct e1000_adapter *adapter, u32 *timinca)
+  * e1000e_config_hwtstamp - configure the hwtstamp registers and enable/disable
+  * @adapter: board private structure
+  * @config: timestamp configuration
++ * @extack: netlink extended ACK for error report
+  *
+  * Outgoing time stamping can be enabled and disabled. Play nice and
+  * disable it when requested, although it shouldn't cause any overhead
+@@ -3587,7 +3588,8 @@ s32 e1000e_get_base_timinca(struct e1000_adapter *adapter, u32 *timinca)
+  * exception of "all V2 events regardless of level 2 or 4".
+  **/
+ static int e1000e_config_hwtstamp(struct e1000_adapter *adapter,
+-				  struct hwtstamp_config *config)
++				  struct kernel_hwtstamp_config *config,
++				  struct netlink_ext_ack *extack)
+ {
+ 	struct e1000_hw *hw = &adapter->hw;
+ 	u32 tsync_tx_ctl = E1000_TSYNCTXCTL_ENABLED;
+@@ -3598,8 +3600,10 @@ static int e1000e_config_hwtstamp(struct e1000_adapter *adapter,
+ 	bool is_l2 = false;
+ 	u32 regval;
+ 
+-	if (!(adapter->flags & FLAG_HAS_HW_TIMESTAMP))
++	if (!(adapter->flags & FLAG_HAS_HW_TIMESTAMP)) {
++		NL_SET_ERR_MSG(extack, "No HW timestamp support");
+ 		return -EINVAL;
++	}
+ 
+ 	switch (config->tx_type) {
+ 	case HWTSTAMP_TX_OFF:
+@@ -3608,6 +3612,7 @@ static int e1000e_config_hwtstamp(struct e1000_adapter *adapter,
+ 	case HWTSTAMP_TX_ON:
+ 		break;
+ 	default:
++		NL_SET_ERR_MSG(extack, "Unsupported TX HW timestamp type");
+ 		return -ERANGE;
+ 	}
+ 
+@@ -3681,6 +3686,7 @@ static int e1000e_config_hwtstamp(struct e1000_adapter *adapter,
+ 		config->rx_filter = HWTSTAMP_FILTER_ALL;
+ 		break;
+ 	default:
++		NL_SET_ERR_MSG(extack, "Unsupported RX HW timestamp filter");
+ 		return -ERANGE;
+ 	}
+ 
+@@ -3693,7 +3699,8 @@ static int e1000e_config_hwtstamp(struct e1000_adapter *adapter,
+ 	ew32(TSYNCTXCTL, regval);
+ 	if ((er32(TSYNCTXCTL) & E1000_TSYNCTXCTL_ENABLED) !=
+ 	    (regval & E1000_TSYNCTXCTL_ENABLED)) {
+-		e_err("Timesync Tx Control register not set as expected\n");
++		NL_SET_ERR_MSG(extack,
++			       "Timesync Tx Control register not set as expected");
+ 		return -EAGAIN;
+ 	}
+ 
+@@ -3706,7 +3713,8 @@ static int e1000e_config_hwtstamp(struct e1000_adapter *adapter,
+ 				 E1000_TSYNCRXCTL_TYPE_MASK)) !=
+ 	    (regval & (E1000_TSYNCRXCTL_ENABLED |
+ 		       E1000_TSYNCRXCTL_TYPE_MASK))) {
+-		e_err("Timesync Rx Control register not set as expected\n");
++		NL_SET_ERR_MSG(extack,
++			       "Timesync Rx Control register not set as expected");
+ 		return -EAGAIN;
+ 	}
+ 
+@@ -3901,6 +3909,7 @@ static void e1000e_systim_reset(struct e1000_adapter *adapter)
+ {
+ 	struct ptp_clock_info *info = &adapter->ptp_clock_info;
+ 	struct e1000_hw *hw = &adapter->hw;
++	struct netlink_ext_ack extack = {};
+ 	unsigned long flags;
+ 	u32 timinca;
+ 	s32 ret_val;
+@@ -3932,7 +3941,12 @@ static void e1000e_systim_reset(struct e1000_adapter *adapter)
+ 	spin_unlock_irqrestore(&adapter->systim_lock, flags);
+ 
+ 	/* restore the previous hwtstamp configuration settings */
+-	e1000e_config_hwtstamp(adapter, &adapter->hwtstamp_config);
++	ret_val = e1000e_config_hwtstamp(adapter, &adapter->hwtstamp_config,
++					 &extack);
++	if (ret_val) {
++		if (extack._msg)
++			e_err("%s\n", extack._msg);
++	}
+ }
+ 
+ /**
+@@ -6079,8 +6093,7 @@ static int e1000_change_mtu(struct net_device *netdev, int new_mtu)
+ 	return 0;
+ }
+ 
+-static int e1000_mii_ioctl(struct net_device *netdev, struct ifreq *ifr,
+-			   int cmd)
++static int e1000_ioctl(struct net_device *netdev, struct ifreq *ifr, int cmd)
+ {
+ 	struct e1000_adapter *adapter = netdev_priv(netdev);
+ 	struct mii_ioctl_data *data = if_mii(ifr);
+@@ -6140,7 +6153,8 @@ static int e1000_mii_ioctl(struct net_device *netdev, struct ifreq *ifr,
+ /**
+  * e1000e_hwtstamp_set - control hardware time stamping
+  * @netdev: network interface device structure
+- * @ifr: interface request
++ * @config: timestamp configuration
++ * @extack: netlink extended ACK report
+  *
+  * Outgoing time stamping can be enabled and disabled. Play nice and
+  * disable it when requested, although it shouldn't cause any overhead
+@@ -6153,20 +6167,18 @@ static int e1000_mii_ioctl(struct net_device *netdev, struct ifreq *ifr,
+  * specified. Matching the kind of event packet is not supported, with the
+  * exception of "all V2 events regardless of level 2 or 4".
+  **/
+-static int e1000e_hwtstamp_set(struct net_device *netdev, struct ifreq *ifr)
++static int e1000e_hwtstamp_set(struct net_device *netdev,
++			       struct kernel_hwtstamp_config *config,
++			       struct netlink_ext_ack *extack)
+ {
+ 	struct e1000_adapter *adapter = netdev_priv(netdev);
+-	struct hwtstamp_config config;
+ 	int ret_val;
+ 
+-	if (copy_from_user(&config, ifr->ifr_data, sizeof(config)))
+-		return -EFAULT;
+-
+-	ret_val = e1000e_config_hwtstamp(adapter, &config);
++	ret_val = e1000e_config_hwtstamp(adapter, config, extack);
+ 	if (ret_val)
+ 		return ret_val;
+ 
+-	switch (config.rx_filter) {
++	switch (config->rx_filter) {
+ 	case HWTSTAMP_FILTER_PTP_V2_L4_SYNC:
+ 	case HWTSTAMP_FILTER_PTP_V2_L2_SYNC:
+ 	case HWTSTAMP_FILTER_PTP_V2_SYNC:
+@@ -6178,38 +6190,23 @@ static int e1000e_hwtstamp_set(struct net_device *netdev, struct ifreq *ifr)
+ 		 * by hardware so notify the caller the requested packets plus
+ 		 * some others are time stamped.
+ 		 */
+-		config.rx_filter = HWTSTAMP_FILTER_SOME;
++		config->rx_filter = HWTSTAMP_FILTER_SOME;
+ 		break;
+ 	default:
+ 		break;
+ 	}
+ 
+-	return copy_to_user(ifr->ifr_data, &config,
+-			    sizeof(config)) ? -EFAULT : 0;
++	return 0;
+ }
+ 
+-static int e1000e_hwtstamp_get(struct net_device *netdev, struct ifreq *ifr)
++static int e1000e_hwtstamp_get(struct net_device *netdev,
++			       struct kernel_hwtstamp_config *kernel_config)
+ {
+ 	struct e1000_adapter *adapter = netdev_priv(netdev);
+ 
+-	return copy_to_user(ifr->ifr_data, &adapter->hwtstamp_config,
+-			    sizeof(adapter->hwtstamp_config)) ? -EFAULT : 0;
+-}
++	*kernel_config = adapter->hwtstamp_config;
+ 
+-static int e1000_ioctl(struct net_device *netdev, struct ifreq *ifr, int cmd)
+-{
+-	switch (cmd) {
+-	case SIOCGMIIPHY:
+-	case SIOCGMIIREG:
+-	case SIOCSMIIREG:
+-		return e1000_mii_ioctl(netdev, ifr, cmd);
+-	case SIOCSHWTSTAMP:
+-		return e1000e_hwtstamp_set(netdev, ifr);
+-	case SIOCGHWTSTAMP:
+-		return e1000e_hwtstamp_get(netdev, ifr);
+-	default:
+-		return -EOPNOTSUPP;
+-	}
++	return 0;
+ }
+ 
+ static int e1000_init_phy_wakeup(struct e1000_adapter *adapter, u32 wufc)
+@@ -7346,9 +7343,11 @@ static const struct net_device_ops e1000e_netdev_ops = {
+ #ifdef CONFIG_NET_POLL_CONTROLLER
+ 	.ndo_poll_controller	= e1000_netpoll,
+ #endif
+-	.ndo_set_features = e1000_set_features,
+-	.ndo_fix_features = e1000_fix_features,
++	.ndo_set_features	= e1000_set_features,
++	.ndo_fix_features	= e1000_fix_features,
+ 	.ndo_features_check	= passthru_features_check,
++	.ndo_hwtstamp_get	= e1000e_hwtstamp_get,
++	.ndo_hwtstamp_set	= e1000e_hwtstamp_set,
+ };
+ 
+ /**
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.25.1
+
