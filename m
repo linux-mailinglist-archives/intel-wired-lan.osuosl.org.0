@@ -1,226 +1,93 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 66FDEA42FD8
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 Feb 2025 23:12:47 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CE45BA430AA
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Feb 2025 00:22:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1270F60E1E;
-	Mon, 24 Feb 2025 22:12:46 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id z-uFNC0RdI8z; Mon, 24 Feb 2025 22:12:45 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5EB36606F7
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1740435165;
-	bh=FGbel38iCEw3vdLJMUlX2n17UDT9BjRe7cQLYFi2jNw=;
-	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=t+IiLhH/zN8hM8AN03a67sVwNmVEM6rL8mTYviltJzX83oEPyQeTbQnoD7SCf/79Z
-	 lwSDYDubBW0dcjzBudcXHvN8tRUDie20THkp8fIHHWSp4UYSOsZvynDQOUwjDJcuZn
-	 1I7irT3WZpMCtK+WePoJt5ONa2/eqiCczhMA/idZWWGv40/RGGPXMGoFuZc/MhN01P
-	 HUNnbqkDXl1I0Y+BFWfdExZsIlMbFAonrm/8WhzG+ZKI+wEDz0wNKea/v26vn3eGBs
-	 uBP/zwQEkou6fuFs7MogwT3dVLd3CazEgTupg4YRWuY/3n9CWDHiUjfsmkhV1ZW5NY
-	 3fPHkhmGD9R3g==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5EB36606F7;
-	Mon, 24 Feb 2025 22:12:45 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 53F5C2292
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Feb 2025 22:12:43 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 261BB4097B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Feb 2025 22:12:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7B8D640B82;
+	Mon, 24 Feb 2025 23:22:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ayCggIzVPKTq for <intel-wired-lan@lists.osuosl.org>;
- Mon, 24 Feb 2025 22:12:42 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.15;
- helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
+ id 96DRkH8ayFff; Mon, 24 Feb 2025 23:22:46 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CAB1F4094B
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1740439366;
+	bh=5hkC9bc+qhCnpPczs6VceScZYN+wh0wAWO7uy2x5gvA=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=Xxji8jo5lL2o5m616MZOTk9z+e2v3q+Y4KvjiS0RHK27tp/4t1zkTFDBnc/TsISyH
+	 L0L+Q+ZF5bnqbNOwoc2qTbvpEoHNl0MzhvJujkM+7npyynTO+ElLdH30MGCY+YXJzg
+	 hKGcAGmsG4BVs//HDsTS1dQWFgm34sPauOiJglumTALcxmq+JFZGuEDDAz1Of0DxoN
+	 4JDUB2tKr4NxjF8Zg5G8NtF7Re/JqvcrwWH/i06m/SeuivnpFELqMvphHsI4um92xz
+	 OF/CwJegMODVcWidvJouIe78+mFhMpRSzLrlBm8vbx1XZxMOthjJATEAvoD9yVtDng
+	 90R1PeRAZ37yg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id CAB1F4094B;
+	Mon, 24 Feb 2025 23:22:45 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 599881531
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Feb 2025 23:22:43 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3C8EA40B3A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Feb 2025 23:22:43 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id gEt7SBvDxDgS for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 24 Feb 2025 23:22:41 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
+ helo=mgamail.intel.com; envelope-from=ahmed.zaki@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 3EF4B40978
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3EF4B40978
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 3EF4B40978
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Feb 2025 22:12:42 +0000 (UTC)
-X-CSE-ConnectionGUID: 5Xl6uEpYSKWJtbT3iOxASg==
-X-CSE-MsgGUID: 5/ymgd2iTtC6DceQ/jg6mA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11355"; a="44872057"
-X-IronPort-AV: E=Sophos;i="6.13,312,1732608000"; d="scan'208";a="44872057"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Feb 2025 14:12:40 -0800
-X-CSE-ConnectionGUID: tckxVScaRoWVryt9AUboKA==
-X-CSE-MsgGUID: Y8jirPCrRW6hEFEnnGmn4A==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5F523408A3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5F523408A3
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5F523408A3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Feb 2025 23:22:40 +0000 (UTC)
+X-CSE-ConnectionGUID: 1e4Q+uxZTbOz/sYZpSoisQ==
+X-CSE-MsgGUID: 4p/gbFduT1m29zsMkpl7zg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11355"; a="40406604"
+X-IronPort-AV: E=Sophos;i="6.13,312,1732608000"; d="scan'208";a="40406604"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+ by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Feb 2025 15:22:40 -0800
+X-CSE-ConnectionGUID: U3J2lRS1QZayrRBspD0s4g==
+X-CSE-MsgGUID: CuyWXZYER6m5X/tbWHtehA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,312,1732608000"; d="scan'208";a="116688842"
-Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
- by fmviesa010.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Feb 2025 14:12:38 -0800
-Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
- ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14; Mon, 24 Feb 2025 14:12:37 -0800
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14 via Frontend Transport; Mon, 24 Feb 2025 14:12:37 -0800
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.44) by
- edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Mon, 24 Feb 2025 14:12:37 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=tZb2w500zE5s6VWmKFc8DtOqP2OOAxnr4XDQCdhrtrYzeDVMIzOXAU+/9IOQ5ASpfpr/aeQTVyKsF0eMcR/JjG2TTlAKCPdCL52SorODLZfa5260K4mkg57pbRoYsxF13NS4rSvqgIZ1bn0C2OzL+pn9RTI5mJcXQx3dga5dVHUDTsqlyCoxdD7r42FEnc9qfEVEbK1oUMFNzFsrFbY/i2gM7aNy5gR0ao+Z7b9noDcPJyCJd8iTdHVjwA5iMj+6re8W6KnCbi54aRALOa0X5qosUAoWcZNyYc9x7xhAW5MCzqp/EDCQTSkKvtxKiHDRLNmRYKaHsDlgvy9tohBt+A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=FGbel38iCEw3vdLJMUlX2n17UDT9BjRe7cQLYFi2jNw=;
- b=wVVnsAYAa/296BTWiMCtiKSrusAfyt6G9xY1Qr3ZLVedw4fx+zy7Dmeu/g0iHaqzkbTFqKsOraEMkgt73Cq0SaUSjUzqZu8jJFUy3aU44suMoBP4S+ZH/4S22dkCvrlPMUJCPJOVz7coyqOf2hDwIJzzUSb7NXxsFITW8py4PwmzKUN9Qu5UB01JVSsEhzZZpyov+nzylAHVIf2Fads7yS3Ci6OahuPf+Q7+nHdq/MLyh4wg7AuOvK/untmFEOXA5ae1lifEYaXTuUs5NbgvaCJ+Ol/HCY9GOOhTYQxFD+du8/5P8k7/i1N1tWKlvdtdcoP11OokgBOXnndqI+Ym8A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
- by PH0PR11MB4822.namprd11.prod.outlook.com (2603:10b6:510:39::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8466.20; Mon, 24 Feb
- 2025 22:12:31 +0000
-Received: from CO1PR11MB5089.namprd11.prod.outlook.com
- ([fe80::7de8:e1b1:a3b:b8a8]) by CO1PR11MB5089.namprd11.prod.outlook.com
- ([fe80::7de8:e1b1:a3b:b8a8%3]) with mapi id 15.20.8466.016; Mon, 24 Feb 2025
- 22:12:31 +0000
-Message-ID: <b0857058-98bd-4de5-8e8b-e1e52d66bfe9@intel.com>
-Date: Mon, 24 Feb 2025 14:12:29 -0800
-User-Agent: Mozilla Thunderbird
-To: Jiri Pirko <jiri@resnulli.us>, Przemek Kitszel
- <przemyslaw.kitszel@intel.com>
-CC: <intel-wired-lan@lists.osuosl.org>, Tony Nguyen
- <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>, Cosmin Ratiu
- <cratiu@nvidia.com>, Tariq Toukan <tariqt@nvidia.com>,
- <netdev@vger.kernel.org>, Konrad Knitter <konrad.knitter@intel.com>,
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
- <pabeni@redhat.com>, Andrew Lunn <andrew@lunn.ch>,
- <linux-kernel@vger.kernel.org>, ITP Upstream
- <nxne.cnse.osdt.itp.upstreaming@intel.com>, Carolina Jubran
- <cjubran@nvidia.com>
-References: <20250219164410.35665-1-przemyslaw.kitszel@intel.com>
- <20250219164410.35665-2-przemyslaw.kitszel@intel.com>
- <ybrtz77i3hbxdwau4k55xn5brsnrtyomg6u65eyqm4fh7nsnob@arqyloer2l5z>
-Content-Language: en-US
-From: Jacob Keller <jacob.e.keller@intel.com>
-In-Reply-To: <ybrtz77i3hbxdwau4k55xn5brsnrtyomg6u65eyqm4fh7nsnob@arqyloer2l5z>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: MW3PR06CA0027.namprd06.prod.outlook.com
- (2603:10b6:303:2a::32) To CO1PR11MB5089.namprd11.prod.outlook.com
- (2603:10b6:303:9b::16)
+X-IronPort-AV: E=Sophos;i="6.13,312,1732608000"; d="scan'208";a="115997747"
+Received: from pgcooper-mobl3.ger.corp.intel.com (HELO azaki-desk1.intel.com)
+ ([10.245.244.43])
+ by fmviesa006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Feb 2025 15:22:34 -0800
+From: Ahmed Zaki <ahmed.zaki@intel.com>
+To: netdev@vger.kernel.org
+Cc: intel-wired-lan@lists.osuosl.org, andrew+netdev@lunn.ch,
+ edumazet@google.com, kuba@kernel.org, horms@kernel.org, pabeni@redhat.com,
+ davem@davemloft.net, michael.chan@broadcom.com, tariqt@nvidia.com,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ jdamato@fastly.com, shayd@nvidia.com, akpm@linux-foundation.org,
+ shayagr@amazon.com, Ahmed Zaki <ahmed.zaki@intel.com>
+Date: Mon, 24 Feb 2025 16:22:21 -0700
+Message-ID: <20250224232228.990783-1-ahmed.zaki@intel.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1PR11MB5089:EE_|PH0PR11MB4822:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7c3fabe5-54ad-43ec-2c06-08dd55205485
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|366016;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?N0xvUUI1RzR2WDEwTzQremV3cE9LQnhVUWRveVpiNDZPVnpwV255akNGaW9H?=
- =?utf-8?B?citJZGRQMzYvdjB3d3djamxiU0pISHRiVVJ5UkVpUDBZaCtCbmJ5MWFOZTR3?=
- =?utf-8?B?R0pyZ1J2WUJ3RzVLcEREVUF0WFBHVTNBR1JWdFpnZjkwQU9xMXFxVmtmZUNQ?=
- =?utf-8?B?T2lnMTdnOXhpaWc4cmVwMW9CU3JWdmlXQVNyZmJ1VmxKRDlnZzk4RmJVTGxp?=
- =?utf-8?B?STdwc1NGaDdyNDIwdmRLOCtmZzdodzVGZW9tNWR5djBkbjl2NFlEb1ZTUW5V?=
- =?utf-8?B?Qys1dHEyekJoTDNHeGQ3YmpyeSs5RFlta3VIQjhBZ2o5bGkwN3dQQWxROHZk?=
- =?utf-8?B?Uy9YT1FFY0lLeUpScE5uczlpcmJ4djdUUVNod3pmK0NuZzBmUHB3V2RMSTNY?=
- =?utf-8?B?TTRVbGMzcUxxQnFUN2k2SVhHb3lmSi8rdGtUM25wQzQ4MXBvNlRjUWtUcjBG?=
- =?utf-8?B?V1ZvRG9WZUxFMEtmQlVocE5ETmdWL29Qak5kSUZDQk5wUFhNSURWVUI2ZFFz?=
- =?utf-8?B?WkY0NHFqYlYyeHQwMXE4Q2lEWVpvSHNqMTJyYUE3WXVyWWVLczRaemxtN0V1?=
- =?utf-8?B?UXlqOU1HQk54bVFkTVpoZjZEWVZJWGdUR1pkSWF5NWtkWVVlVHErVHlmVElq?=
- =?utf-8?B?NVRSN0pRb25HRmlEV0d5TW5jbktoUFdDMHJSZzVUK3BBblBxQk9MaHRlNitN?=
- =?utf-8?B?N3lOTWVsUmNKRjZpUVV2ZGFSQWdMWW84NGRGTldCRVN6ZEMrZGtPVkNuK2l4?=
- =?utf-8?B?ejhCb2kvWkpETWYvZlZFeDFLOXFDL0NkOXVYMTd4K29VR29kbTljR1J3VGxa?=
- =?utf-8?B?aDFOaUZGWWp4d2dwb0ZGdUwwUVM3Vkxjekd2cFBnUFB0MTVkU3VmTkRFTTdp?=
- =?utf-8?B?a1ZYRzhlWWxwemVJQ252NjU0VDhaemNFWlBxSVVhWGR3ZWwvMUtyZ2JINjNK?=
- =?utf-8?B?K1hYc0Npa25EUDZ6U3pLMUNncStQVHJHRDN4VTZTTjZhN2kzUkc5TG5ROXkw?=
- =?utf-8?B?VUIvbnMzYlRRMGtyRDJ2ajV6YTZtcTBVQmJmN1RpVk1HUTFtTzVxMUJhdFFl?=
- =?utf-8?B?Q3k3SjBEdE9SQ2YrS0oza2QxZXNRU1FYemZDZEs1SE4wT25vNlp4alVFMzN3?=
- =?utf-8?B?NWUrS2dlUDJwK0V0WFMrYnYwSVg4MEdlVTFXNGFmZy9LSkl5bnJxaG5CRkQz?=
- =?utf-8?B?eVZ3NDlQREdZK3FVWlZudjVUcGdON2o5akdlYmk4Z3lGRUM0NVZCTmVnei8r?=
- =?utf-8?B?a0RKdkJQalZYQlpnWnN4T2N6RnAxSjVidzV6cVFTTGdsTGtDQUFZaS9Fa0ww?=
- =?utf-8?B?WVJzbEFOeHllTnZEY1BWdG4yZ3RGMlI4YUtZK0NVWk1aajBYejFjVlExZSty?=
- =?utf-8?B?MHNhd01aN3liRDFzVmp5OTkvb2pHSnhuU05VazdDejRubGFzUFhrc0hLNmZi?=
- =?utf-8?B?UDZldnZ4YzR4ZTZRb3M4Z2Y0ODJpTHRlTWRUT1I0elJubHVmQTBKUlhNb0pz?=
- =?utf-8?B?UWlpUXIwMFRoR1JQeXRBTTZCdFVKbm1Jd2ZpMGlQdUEzU0dxTGZxTysyQnRv?=
- =?utf-8?B?Y0M5WURlNnE0djRRZTNvVDI2M1JpbGNFSXAwTm5MM01TcmIvMHFXQ0ZRSTJ5?=
- =?utf-8?B?Vlh0c2cydlA4ajlheERjTnRjUXlLYVdwdFFSNXdmK29uOWh2dWJycXo2c3o1?=
- =?utf-8?B?WFI3NWxYUmJVa1o2ZEczYVVHWTJJSzFpQ3Q2SmVDNDRpMFhQQWlxbkppRzVy?=
- =?utf-8?B?VFdac2RObzNrVnVRcEFTaDk1endmbW5pOUZ2eTd2VHJYS0crTGNFNE5Fb05I?=
- =?utf-8?B?NFNSV0tOUldHVGthWTVNTklPTU5GbHRaRUFPekRySWZEOFRnWkJDQUZJTEpF?=
- =?utf-8?Q?ClksHKI8GHZPT?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CO1PR11MB5089.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(7416014)(1800799024)(366016); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?V2ZIeVpnU1M0cjJKYUlBSGVYZEszYW14YVlMdVVoVU1RUVpxcXVNY0ZRM2NQ?=
- =?utf-8?B?b2EyTHI5U1ZIb0JTVkZ2dVJkM2xYZitxQkRqdjdlaXFzR3lXMDlZTW43Y0Rk?=
- =?utf-8?B?OS9sSWNQd2VmZEFrSXJkVkFHR2Z5Y0RlK1N6R05TNW9vUFRZNlVWa1NBZFFI?=
- =?utf-8?B?RythSVhFL2pXZkprOW5FTmRINVVoWGs3eHhPWUEvaFh4WlFOVTFpMDZMeFNL?=
- =?utf-8?B?SThnVFhseE1QaUt0WkZQOEdHN0FDSjhPMVJTVEVRYjV1MVdpOVI1Qnh6ajc5?=
- =?utf-8?B?bmdrMDUrZktJVzdLS2dTTDNMV0gwN2t5eTRiVVFNUlJaZlpwTzlZM2NyQUx0?=
- =?utf-8?B?QzBHZndOODJ3Rk9ZM2FXTXU5elAzaVlzck5NeFQ0U1RKV29lTi91Y1BLS3A0?=
- =?utf-8?B?YlhoaCtEZzFxZ2Q1cWNyUmY4cVFla2c1aytYWEpqb1AwKy96R2I4dkpmRjJH?=
- =?utf-8?B?N2R4VlF4a2VueXB3YWk3MWxCRTR5eGI1aUZmcmtIa25iaG5MRVdPaU04bS9V?=
- =?utf-8?B?QWk2bEJBUWxXbmVqa000WUtiWU1sU2djek5UTWxWWXBiS0tDVjc2dDBlQzBN?=
- =?utf-8?B?MUdnbXoyLzVKL05jSEk0VmJmUmx1VzlJS0hacGxBL0l1RHY0ZzJPWDdoWnNO?=
- =?utf-8?B?SWJLM0tDRGh2RGNvcVFFWkhoSlhIMkdvUGpPZysrTHEzNlVsaWxwUUgwSUk5?=
- =?utf-8?B?cFRrVmxBNU12c1ZGWWpGWkVTbDF5dWFTVnNhbmN1OWMxQWtzaUUwaUJKZk1Z?=
- =?utf-8?B?M09OazZTYlZ4b0VBWDFxc3BYbHVMbnBlbkQyMEppRnVCVXpKMUN1R21NOXZl?=
- =?utf-8?B?S0EwT1BaSmZJeTZ0QWNiWXBkbnFVNWQ4amhtbGlKN25iSDhUMFlpOXdKWjE1?=
- =?utf-8?B?ZjFhKzJQbzMrekhUankyQWVmVE84c1NoOHpWR2h2YmZuSksyL1UyOE5JMEFV?=
- =?utf-8?B?bWhjTE1iYU9aVjRYNlNkUjJOUi9PTkdTNVBRckFqT0d5TVZrRHp6MW4yWjNP?=
- =?utf-8?B?dnE5b3VYbFJKa3pic2NGNHQ4NWhkbGlWbG1xdUV0RXI4ai8vTkd6bHFLUk5l?=
- =?utf-8?B?c0I1R3hoUWpHNmRjQUs4U2dwc3ZIZ2VqSGw4UEpCWmRZc3NnK1FoVW5KSFM4?=
- =?utf-8?B?RjRvZCs2b0hUMjFRcW9iRjQ4MjZnTkdZQityallZZHpES0xEUTU4bjcyaUJF?=
- =?utf-8?B?QmxnWWE3TlRBL2tqcHVSNTFyd05Bdit5Q0N1Ri81ZXhvUTBVcU1ScTZURmF2?=
- =?utf-8?B?andhQkxISGhaYmR4S2g5dFlxYVVDWjQ3YlFBdjRhaVdjRFRsbDg3ZVpGdjNU?=
- =?utf-8?B?YUk0QnNKOEE4ZWNDMEZHT0tRQWwzTWg0R01qaVBSTzJZRTlBTDVlMDBuNFNO?=
- =?utf-8?B?M2tJRCs4TnNyUHdrSDJLNHRSYU0ydTlyeWpsMXZjVDRJclpPZSsrVVZVeFhs?=
- =?utf-8?B?K3JUU2ZBUGlWMjZDUXEvSS9ZR2lDakdYUDFoMEZxTXdhOXNqUktLWndGK0Z6?=
- =?utf-8?B?S3VCcXQwUEpDaWVUOGhQOFpic29tYnhESkt2UGlQZkxjRmZVSXp2dWZvd1ph?=
- =?utf-8?B?dnVVbHdtVHVZSHVIUXpPWmxqZnh4Q2d5RW5aMFl2cVBaa2U3bkNwTEZMWlRN?=
- =?utf-8?B?ckxnbFFoY2daWnlDS0c2US9KN2QzK2FFMEtOZHpENk4rMlVaVWVrM1FUU21C?=
- =?utf-8?B?UnQ3Sm9velh5S2Y0elhFMG0wUVhiT3ZyMFB5RFZXbUxSWWczYXNLdU5WeUFH?=
- =?utf-8?B?OFlPdlcydDMrSGVZVkFvcThKTFU3K0RSejFkRko2U2hUOFBFOHlTM3pza0N5?=
- =?utf-8?B?NGZ0YmZKQTRKMkFxWUlpZFVNd0RKNU1Zd3kyQ1dNdTZMSUFnS0lEb3AvUHlG?=
- =?utf-8?B?N015ckQyUzlNUlNWcDJrYVNadHA0M1l1cTI1MWNWM0hsUTA1dllENzNCTjlR?=
- =?utf-8?B?L1hFNk5NYnhOVWxyRndFSWZkQU4wK3VZSWhrbkJvVHZ2WkJFVldYb0FFY1NZ?=
- =?utf-8?B?R1RvM1djOUhrdHYvekpiZ3RsK3k0ejY5dVo2SWZXcnRkOUt1ZTUrUEpwTGg3?=
- =?utf-8?B?MkY5UlZTYng5K3JkaVRBZzdHdEE1RWtBTktvcGl0Zk9pK2MxdUZpVFhZMDds?=
- =?utf-8?B?SFEzKzdKQVB6VXpRVlNVYlBZOVA2YkVYUnFmSDJLUjhReXFiZ1Q5YWlOK2pn?=
- =?utf-8?B?cUE9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7c3fabe5-54ad-43ec-2c06-08dd55205485
-X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Feb 2025 22:12:31.0169 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: EzWlFos/OOBIDqm4yDUo7Hm9Tl1dy4aM6euL2EI996Es3ObiuD4eNWMlZbUwAQqXmCcYkqcPxP/kpXPY09ON9b+XxnejT7OgEo3ToFSWZM8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB4822
-X-OriginatorOrg: intel.com
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1740435162; x=1771971162;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=N7WRof2pOHLmg2h9ihU1vpi0RWygrEAH2VXVFw6Q0mU=;
- b=A7udzYgXTlatQNIHH9/keVAdupC7Rhe8Hg6EltjhB3t1JUNKgwKRT2yb
- QtiOpsrJbhEHlZDmRxScN0w9Pt2cm8iQ4odNbMxpPw4YZb/AbgWbOyb8J
- iE7fMCD5k+vwgOe7a3HLh7jydfoXQdb4bT0E1tXIcwvxiTwrmVC1jBn4M
- j7dvVNKirSi2hiws4oIFXg2ZUx8IF2f7oOoZ9/kU6SOeQxRZD4/Av2ILH
- G6F1+VJvxYH1TtXd9ocBG6y0/84LwrS16nnwyqgaAoD6EEu8Kw9lBKLge
- 6wg14TXv74iIs8N3e5UMPneClj4yN0S0MI1cFVEnMxayZUXIXgnGxNxRq
+ t=1740439361; x=1771975361;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=6w+UArCyON/1seBfb1skkQg/fUan9OUwJT9DM7ke5Qo=;
+ b=idoiG1OZwcdr8diuKeOce6JPA/E+uiiZtM8JgioDtk4gu63R4BWDnuEA
+ I0e5EebSwnys0rm9fQOBAykOM9sv/nJ0Eh8GXZj58rnqGlbPo2Gw1TIdq
+ o4mD6hC0MRNoHZaaWWtMml7guiio2gPIIs6r/yoeEJufVYrf9ymeW6d4T
+ cM19bps1txszP49ObZ2bFIugFsnZG+CVvvu2xnQUc7GgCSQM8aOtd5hs8
+ seUu+lzog5MDj9KvPUSEjwJjmUd7EF4rFKZCDtoloYfBqUUdzJuOtBZCp
+ W3+CXPyz+GsWWMowoVJ2CpsXasWEbXyn86RVryxEi5nSI15T0XKe/uFEU
  g==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
@@ -228,11 +95,9 @@ X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=A7udzYgX
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [RFC net-next v2 1/2] devlink: add whole
- device devlink instance
+ header.s=Intel header.b=idoiG1OZ
+Subject: [Intel-wired-lan] [PATCH net-next v9 0/6] net: napi: add CPU
+ affinity to napi->config
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -248,30 +113,142 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Drivers usually need to re-apply the user-set IRQ affinity to their IRQs
+after reset. However, since there can be only one IRQ affinity notifier
+for each IRQ, registering IRQ notifiers conflicts with the ARFS rmap
+management in the core (which also registers separate IRQ affinity
+notifiers).   
 
+Move the IRQ affinity management to the napi struct. This way we can have
+a unified IRQ notifier to re-apply the user-set affinity and also manage
+the ARFS rmaps.
 
-On 2/24/2025 8:14 AM, Jiri Pirko wrote:
-> 
-> The shared parent entity for PFs (and other Fs) is always reference
-> counted, first creates, last removes. I feel like this is something
-> missing in PCI spec. If such beast would exist, very easy to implement
-> this in devlink. We have all we need in place already.
-> 
-> 
+The first patch moves the aRFS rmap management to CORE. It also adds the
+IRQ affinity mask to napi_config and re-applies the mask after reset.
+Patches 2, 4 and 5 use the new API for ena, ice and idpf drivers.
 
-This is basically what I was thinking too. It does feel like it fits in
-the PCI layer better than in the devlink layer.. but Przemek also
-mentioned the following from reading the other lists:
+ICE does not always delete the NAPIs before releasing the IRQs. The third
+patch makes sure the driver removes the IRQ number along with the queue
+when the NAPIs are disabled. Without this, the next patches in this series
+would free the IRQ before releasing the IRQ notifier (which generates
+warnings).
 
-> 
-> I get that the general sentiment is to "leave the complexities to the
-> driver/other layers", but it was based on reading only limited amount
-> of internal (non networking) mailing lists.
+Tested on ice and idpf.
 
+V9:
+    - Merge all core changes in the first patch, then followed by drivers
+      changes. (Jakub)
+    - Refactor netif_napi_set_irq_locked() to show differences between
+      irq_affinity_auto only vs rx_cpu_rmap_auto = true. (Jakub)
+    - Move default affinity setting to netif_set_affinity_auto (Jakub).
+    - Add a py selftest for IRQ affinity. (Jakub)
+    - Remove bnxt changes since it recently added TPH (commit c214410c47d6
+      "bnxt_en: Add TPH support in BNXT driver"). This required the driver
+      to have custom IRQ affinity function. For the core to support this,
+      we may need to extend the API in this series to allow drivers to
+      provide their own callbacks when calling netif_napi_set_irq().
 
-Which makes me think going the PCI route might be tricky. I am not sure
-if there is another way to get that model without though...
+V8:
+    - https://lore.kernel.org/netdev/20250211210657.428439-1-ahmed.zaki@intel.com/
+    - Add a new patch in "ice" that releases the IRQs and their notifiers
+      when clearing the NAPI queues (pls read 3rd paragraph above).
+    - Add a new NAPI flag "NAPI_STATE_HAS_NOTIFIER" that simplifies the
+      code for IRQ notifier detection (Patch 2).
+    - Move the IRQ notifier auto-removal to napi_delete() instead of
+      napi_disable(). This is the reason for the new ice patch. (Jakub)
+    - Add a WARN_ON_ONCE(!napi->config) in netif_napi_set_irq_locked().
+      This would detect drivers that asked for irq_affinity_auto but did
+      not use napi_add_config(). (Patch 3) (Joe)
+    - Rename netif_enable_irq_affinity() to netif_set_affinity_auto()
+      (Patch 3) (Jakub).
+V7:
+    - https://lore.kernel.org/netdev/20250204220622.156061-1-ahmed.zaki@intel.com/
+    - P1: add documentation for netif_enable_cpu_rmap()
+    - P1: move a couple of "if (rx_cpu_rmap_auto)" from patch 1 to patch 2
+      where they are really needed.
+    - P1: remove a defensive "if (!rmap)"
+    - p1: In netif_disable_cpu_rmap(), remove the for loop that frees
+          notifiers since this is already done in napi_disable_locked().
+          Also rename it to netif_del_cpu_rmap().
+    - P1 and P2: simplify the if conditions in netif_napi_set_irq_locked()
+    - Other nits
 
+V6:
+    - https://lore.kernel.org/netdev/20250118003335.155379-1-ahmed.zaki@intel.com/
+    - Modifications to have less #ifdef CONFIG_RF_ACCL guards
+    - Remove rmap entry in napi_disable
+    - Rebase on rc7 and use netif_napi_set_irq_locked()
+    - Assume IRQ can be -1 and free resources if an old valid IRQ was
+      associated with the napi. For this, I had to merge the first 2
+      patches to use the new rmap API.
 
-There was also something I saw recently merge, faux_bus? Not sure if
-that would be just as ugly as your other 3 options though...
+V5:
+    - https://lore.kernel.org/netdev/20250113171042.158123-1-ahmed.zaki@intel.com/
+    - Add kernel doc for new netdev flags (Simon).
+    - Remove defensive (if !napi) check in napi_irq_cpu_rmap_add()
+      (patch 2) since caller is already dereferencing the pointer (Simon).
+    - Fix build error when CONFIG_ARFS_ACCEL is not defined (patch 3).
+
+v4:
+    - https://lore.kernel.org/netdev/20250109233107.17519-1-ahmed.zaki@intel.com/
+    - Better introduction in the cover letter.
+    - Fix Kernel build errors in ena_init_rx_cpu_rmap() (Patch 1)
+    - Fix kernel test robot warnings reported by Dan Carpenter:
+      https://lore.kernel.org/all/202501050625.nY1c97EX-lkp@intel.com/
+    - Remove unrelated empty line in patch 4 (Kalesh Anakkur Purayil)
+    - Fix a memleak (rmap was not freed) by calling cpu_rmap_put() in
+      netif_napi_affinity_release() (patch 2).
+
+v3:
+    - https://lore.kernel.org/netdev/20250104004314.208259-1-ahmed.zaki@intel.com/
+    - Assign one cpu per mask starting from local NUMA node (Shay Drori).
+    - Keep the new ARFS and Affinity flags per nedev (Jakub).
+
+v2:
+    - https://lore.kernel.org/netdev/202412190454.nwvp3hU2-lkp@intel.com/T/
+    - Also move the ARFS IRQ affinity management from drivers to core. Via
+      netif_napi_set_irq(), drivers can ask the core to add the IRQ to the
+      ARFS rmap (already allocated by the driver).
+
+RFC -> v1:
+    - https://lore.kernel.org/netdev/20241210002626.366878-1-ahmed.zaki@intel.com/
+    - move static inline affinity functions to net/dev/core.c
+    - add the new napi->irq_flags (patch 1)
+    - add code changes to bnxt, mlx4 and ice.
+
+Ahmed Zaki (5):
+  net: move aRFS rmap management and CPU affinity to core
+  net: ena: use napi's aRFS rmap notifers
+  ice: clear NAPI's IRQ numbers in ice_vsi_clear_napi_queues()
+  ice: use napi's irq affinity and rmap IRQ notifiers
+  idpf: use napi's irq affinity
+
+Jakub Kicinski (1):
+  selftests: drv-net: add tests for napi IRQ affinity notifiers
+
+ Documentation/networking/scaling.rst          |   6 +-
+ drivers/net/ethernet/amazon/ena/ena_netdev.c  |  43 +----
+ drivers/net/ethernet/intel/ice/ice.h          |   3 -
+ drivers/net/ethernet/intel/ice/ice_arfs.c     |  33 +---
+ drivers/net/ethernet/intel/ice/ice_arfs.h     |   2 -
+ drivers/net/ethernet/intel/ice/ice_base.c     |   7 +-
+ drivers/net/ethernet/intel/ice/ice_lib.c      |  16 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     |  47 +----
+ drivers/net/ethernet/intel/idpf/idpf_lib.c    |   1 +
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c   |  22 +--
+ drivers/net/ethernet/intel/idpf/idpf_txrx.h   |   6 +-
+ include/linux/cpu_rmap.h                      |   1 +
+ include/linux/netdevice.h                     |  24 ++-
+ lib/cpu_rmap.c                                |   2 +-
+ net/core/dev.c                                | 169 ++++++++++++++++++
+ .../testing/selftests/drivers/net/hw/Makefile |   4 +
+ tools/testing/selftests/drivers/net/hw/irq.py |  99 ++++++++++
+ .../selftests/drivers/net/hw/xdp_dummy.bpf.c  |  13 ++
+ .../selftests/drivers/net/lib/py/env.py       |   8 +-
+ 19 files changed, 343 insertions(+), 163 deletions(-)
+ create mode 100755 tools/testing/selftests/drivers/net/hw/irq.py
+ create mode 100644 tools/testing/selftests/drivers/net/hw/xdp_dummy.bpf.c
+
+-- 
+2.43.0
+
