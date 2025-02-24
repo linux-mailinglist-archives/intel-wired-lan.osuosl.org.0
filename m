@@ -2,76 +2,126 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9616DA42200
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 Feb 2025 14:53:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id EC905A4278F
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 Feb 2025 17:14:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 53DD8812BA;
-	Mon, 24 Feb 2025 13:53:27 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 93ABC80C5F;
+	Mon, 24 Feb 2025 16:14:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id S93vbX-SyBlZ; Mon, 24 Feb 2025 13:53:26 +0000 (UTC)
+ id KiO6QMyMh67z; Mon, 24 Feb 2025 16:14:37 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 53A00812BB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 527E880C48
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1740405206;
-	bh=DMf6YG7WwRRhtIf0+RiWEfOdkifBxzEYoPVu9DoZYSg=;
-	h=Date:To:References:Cc:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1740413677;
+	bh=h/sh9tYzriu7P8K3a6NXodWLaeByYc2pcpFzG1MBuzY=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=ElWwjpiehozGDKX+sdYuQN9yV9RS9ErD074LKpQry2aiA8JtjsVwOBBu1dGiP8cvA
-	 JXg+zdUeFotnbTQGkoGxlj6ZMqTsoSfNvxSu40iuxUekr04uXhce4a7pBrP9g5YFF5
-	 /TWifvAAwnBi5Rv2i4m7LRWDgpYm0MEIvf//N0Ir8YW2+Zqw+S21luzVOYRJiPlOD8
-	 YE4ekH9Mw48f3UcEaHQEuJh2SYTsuBlLm1WbmILtNV9I2qCvik19dDxL7lO2G2lU7m
-	 Ut0I0jboK1yBduCMxew3yGrFGhtYksS775gAAfu77FRZsJKqY6UfM4MRSiwXUoiLe7
-	 pwjm0nMpYMnqg==
+	b=lJdmGNJRibjgLny3fHVV8yKA4ZtB/USAF2Xj2jVx4rZDUyW0lUcanhRD5X3ngMz6v
+	 UuhxcaK9J4pm1saOlt1KUiWx5/AO8CIuQ6pyPMp+zQkmfYFQKs9BlUlxz6yQAw3ulv
+	 yKQEFyRZI0s+SJnHt36tLRiwbbvo4sIgGLqnLoYSLgSyioVFnNvf56LzezJaCavETR
+	 UK4fgezxv0WLEVSp9cEoOxXW3NqIVHFiDWU5/ORe8Bcfmggdby1lEm4gaGSWwYLae0
+	 biy7jOeGX8mNfbCRi/x67xkhaIZ6FJTo9hty41oIt8iaCAYKl3SmLrbEn0ptbLnGb/
+	 dDqctkjWQD5OA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 53A00812BB;
-	Mon, 24 Feb 2025 13:53:26 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 527E880C48;
+	Mon, 24 Feb 2025 16:14:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 280AD920
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Feb 2025 13:53:25 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 8623894E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Feb 2025 16:14:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 07C0F40A35
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Feb 2025 13:53:25 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 80FA240C78
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Feb 2025 16:14:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sqI_1GkTK-aR for <intel-wired-lan@lists.osuosl.org>;
- Mon, 24 Feb 2025 13:53:23 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 0F4B540159
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0F4B540159
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0F4B540159
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Feb 2025 13:53:22 +0000 (UTC)
-Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id D602161E647A3;
- Mon, 24 Feb 2025 14:53:06 +0100 (CET)
-Message-ID: <d18bf142-9185-4c81-8f9e-67f772bbddf4@molgen.mpg.de>
-Date: Mon, 24 Feb 2025 14:53:06 +0100
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ckVgxMJ-oInW for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 24 Feb 2025 16:14:33 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::32c; helo=mail-wm1-x32c.google.com;
+ envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 40C8B40C96
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 40C8B40C96
+Received: from mail-wm1-x32c.google.com (mail-wm1-x32c.google.com
+ [IPv6:2a00:1450:4864:20::32c])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 40C8B40C96
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Feb 2025 16:14:31 +0000 (UTC)
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-4394a0c65fcso46273145e9.1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Feb 2025 08:14:31 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1740413669; x=1741018469;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=h/sh9tYzriu7P8K3a6NXodWLaeByYc2pcpFzG1MBuzY=;
+ b=HXbTsSGpqciL9/Sl04c1++/AMFDsHMueKInJ3N0Tn1Bc1YJ5Ezi9Ckl16PPLPlrQ6j
+ uWyDOB9jrXRWhePUtvTw7jbyKqv2AOITZS12rxeBRKRgutABA0/i1eIxmBBwXvX7oG9P
+ BMYLs1aiuqptz7Dv1qw9C2VqR5RNKFxzc8tjIJSLQAMU7OeLgHol/FjglEA8+Le1Yj43
+ hDsj4scGtWk8ygqjKGDwfOfrP6XouM8dzZvM7zPvIlV3ZHRwlKWYYVyFuEDn2Q9mF/cD
+ IyijbaKfJHk8yKfxoPQeLHN41ei0ue3jq/4QnWSxkrJ8ieGytnC2HyE5YWLkBuEFeULR
+ WKyQ==
+X-Gm-Message-State: AOJu0Yw8X+beatpFxsf6xSV2vkVAlCLXvGbpuH8etTaAQHSbqV83lS9H
+ O4ZLMjUqZMdmd2GRZeh5TO4sGlFy1cG0m2JF+QtxZR96O+0cmrmYHqldlfG16Y8=
+X-Gm-Gg: ASbGnctNOYubr1AOcq30fXZOKqihVfHkSobpojho0yee8AG/ksoTor5aaaPHK16q0jt
+ duONDXn7Yu5ZnfIAvUUkofnvW607teme8Klkg9f+d3Bm0bYSxxxlgFGehjf14BgqthWd/spTpJl
+ PcAv3PMOls9fBuaySVTquV/jaobRy9oAQ8hmdol6b/ocKSf2HqObDzxPwec6hu918qRfoEFzPoS
+ j+IWSuj0Dt0dgh2l/uUAgO8MFoDEjRJbSWG8pFj7sCq3Y/Hp0pltl/ij/2ErCapPRtJC0cyAR8Q
+ P7oo4NaoMw2YUrc1VfcK4SD00W4E+cWQ962XBxhp67PxrY/IFUl1
+X-Google-Smtp-Source: AGHT+IGFMuJoexgwJBIAntd1ZqfRe+XRYaboGXOhhAu2dMaG6XTtLfFba5EQSN/nC4WE3rqTZIalwA==
+X-Received: by 2002:a05:600c:4f41:b0:439:8b05:66a6 with SMTP id
+ 5b1f17b1804b1-439ae214327mr109222005e9.22.1740413668842; 
+ Mon, 24 Feb 2025 08:14:28 -0800 (PST)
+Received: from jiri-mlt.client.nvidia.com ([208.127.45.13])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38f258b43c9sm32321129f8f.10.2025.02.24.08.14.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 24 Feb 2025 08:14:28 -0800 (PST)
+Date: Mon, 24 Feb 2025 17:14:24 +0100
+From: Jiri Pirko <jiri@resnulli.us>
+To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, 
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>, 
+ Cosmin Ratiu <cratiu@nvidia.com>, Tariq Toukan <tariqt@nvidia.com>,
+ netdev@vger.kernel.org, Konrad Knitter <konrad.knitter@intel.com>,
+ Jacob Keller <jacob.e.keller@intel.com>, davem@davemloft.net, 
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+ Andrew Lunn <andrew@lunn.ch>, linux-kernel@vger.kernel.org,
+ ITP Upstream <nxne.cnse.osdt.itp.upstreaming@intel.com>, 
+ Carolina Jubran <cjubran@nvidia.com>
+Message-ID: <ybrtz77i3hbxdwau4k55xn5brsnrtyomg6u65eyqm4fh7nsnob@arqyloer2l5z>
+References: <20250219164410.35665-1-przemyslaw.kitszel@intel.com>
+ <20250219164410.35665-2-przemyslaw.kitszel@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Vitaly Lifshits <vitaly.lifshits@intel.com>
-References: <20250224101218.1915949-1-vitaly.lifshits@intel.com>
-Content-Language: en-US
-Cc: intel-wired-lan@lists.osuosl.org
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20250224101218.1915949-1-vitaly.lifshits@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250219164410.35665-2-przemyslaw.kitszel@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1740413669; x=1741018469;
+ darn=lists.osuosl.org; 
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=h/sh9tYzriu7P8K3a6NXodWLaeByYc2pcpFzG1MBuzY=;
+ b=JNxcW0SGbbbHTbZko+lakjEcFaxBO9/1vJAS3r6YTAa3gLwAMabtqsG6wTdBZo7nwh
+ T2p6OcDO1Gez/ASfzh+4xM482v2t3DlAVlfUfA53SScZeFj+ekGJu3KXGMkkmcvHnU8r
+ RU+qLdAFw5Hnn1mbWT+tiLIb4MdVxCtdd69I5DDCIsiGuJ/0sRhjGb5I4QblDkEZn7Dp
+ z+NVt823GurcrUQk3OCvc0ZqZG/L7USpbC6DOCELYfR7x8AwNVJqw1uKKsiZsfXg0iPH
+ z1BEJXp15Bn/FUIxYICeyIwXPKjzhvkbiJ9U09pNJyfWpO0OH5pFHGoRaJPjGbZPn8V6
+ KQog==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1 1/1] e1000e: change k1 exit
- timeout on MTP and later platforms
+ header.from=resnulli.us
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=resnulli-us.20230601.gappssmtp.com
+ header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
+ header.s=20230601 header.b=JNxcW0SG
+Subject: Re: [Intel-wired-lan] [RFC net-next v2 1/2] devlink: add whole
+ device devlink instance
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -87,197 +137,83 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Vitaly,
+Wed, Feb 19, 2025 at 05:32:54PM +0100, przemyslaw.kitszel@intel.com wrote:
+>Add a support for whole device devlink instance. Intented as a entity
+>over all PF devices on given physical device.
+>
+>In case of ice driver we have multiple PF devices (with their devlink
+>dev representation), that have separate drivers loaded. However those
+>still do share lots of resources due to being the on same HW. Examples
+>include PTP clock and RSS LUT. Historically such stuff was assigned to
+>PF0, but that was both not clear and not working well. Now such stuff
+>is moved to be covered into struct ice_adapter, there is just one instance
+>of such per HW.
+>
+>This patch adds a devlink instance that corresponds to that ice_adapter,
+>to allow arbitrage over resources (as RSS LUT) via it (further in the
+>series (RFC NOTE: stripped out so far)).
+>
+>Thanks to Wojciech Drewek for very nice naming of the devlink instance:
+>PF0:		pci/0000:00:18.0
+>whole-dev:	pci/0000:00:18
+>But I made this a param for now (driver is free to pass just "whole-dev").
+>
+>$ devlink dev # (Interesting part of output only)
+>pci/0000:af:00:
+>  nested_devlink:
+>    pci/0000:af:00.0
+>    pci/0000:af:00.1
+>    pci/0000:af:00.2
+>    pci/0000:af:00.3
+>    pci/0000:af:00.4
+>    pci/0000:af:00.5
+>    pci/0000:af:00.6
+>    pci/0000:af:00.7
 
 
-Thank you for your patch.
+In general, I like this approach. In fact, I have quite similar
+patch/set in my sandbox git.
 
-Am 24.02.25 um 11:12 schrieb Vitaly Lifshits:
-> LAN devices starting from Meteorlake the interface between the MAC and
+The problem I didn't figure out how to handle, was a backing entity
+for the parent devlink.
 
-Meteor Lake
+You use part of PCI BDF, which is obviously wrong:
+1) bus_name/dev_name the user expects to be the backing device bus and
+   address on it (pci/usb/i2c). With using part of BDF, you break this
+   assumption.
+2) 2 PFs can have totally different BDF (in VM for example). Then your
+   approach is broken.
 
-> the PHY has a different frequency.
+I was thinking about having an auxiliary device created for the parent,
+but auxiliary assumes it is child. The is upside-down.
 
-The sentences reads a little strange. Maybe:
+I was thinking about having some sort of made-up per-driver bus, like
+"ice" of "mlx5" with some thing like DSN that would act as a "dev_name".
+I have a patch that introduces:
 
-Starting with Meteor Lake, the frequency of MAC and PHY of the LAN 
-devices differ, cf. datasheet X section Y.
+struct devlink_shared_inst;
 
-Also, I’d add a blank between paragraphs.
+struct devlink *devlink_shared_alloc(const struct devlink_ops *ops,
+                                     size_t priv_size, struct net *net,
+                                     struct module *module, u64 per_module_id,
+                                     void *inst_priv,
+                                     struct devlink_shared_inst **p_inst);
+void devlink_shared_free(struct devlink *devlink,
+                        struct devlink_shared_inst *inst);
 
-> This caused sporadic MDI errors when accessing the PHY and a rare case
-
-cause*s*
-
-> of packets corruption. To overcome this introduce a PHY K1 exit timeout
-
-Does Linux log these errors and corruptions?
-
-> reconfiguration in the init flow. The exit timeout is reverted during
-> the hardware reset, thus, it is required to be called in a few places.
-
-Excuse my ignorance, but what do different frequencies have to do with 
-the exit timeout?
-
-How did you test this?
-
-> Fixes: cc23f4f0b6b9 ("e1000e: Add support for Meteor Lake")
-> Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
-> ---
->   drivers/net/ethernet/intel/e1000e/ich8lan.c | 78 +++++++++++++++++++--
->   drivers/net/ethernet/intel/e1000e/ich8lan.h |  4 ++
->   2 files changed, 78 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-> index 2f9655cf5dd9..d3636433938e 100644
-> --- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
-> +++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-> @@ -285,6 +285,46 @@ static void e1000_toggle_lanphypc_pch_lpt(struct e1000_hw *hw)
->   	}
->   }
->   
-> +/**
-> + * e1000_reconfigure_k1_exit_timeout - reconfigure K1 exit timeout to
-> + * align to MTP and later platform requirements.
-> + * @hw: pointer to the HW structure
-> + *
-> + * Assuming that PHY semaphore is taken prior to this function call.
-> + *
-> + * Return: 0 on success, negative on failure
-> + */
-> +static s32 e1000_reconfigure_k1_exit_timeout(struct e1000_hw *hw)
-
-Why limit the variable length?
-
-> +{
-> +	u16 phy_timeout;
-
-Please add the unit.
-
-Why limit the variable length?
-
-> +	u32 fextnvm12;
-> +	s32 ret_val;
-> +
-> +	if (hw->mac.type < e1000_pch_mtp)
-> +		return 0;
-> +
-> +	/* Change Kumeran K1 power down state from P0s to P1 */
-
-What is Kumeran?
-
-> +	fextnvm12 = er32(FEXTNVM12);
-> +	fextnvm12 |= BIT(23);
-> +	fextnvm12 &= ~BIT(22);
-> +	ew32(FEXTNVM12, fextnvm12);
-> +
-> +	/* Wait for the interface the settle */
-> +	msleep(1);
-
-Any chance, of polling stuff instead of 1 ms sleep?
-
-> +
-> +	/* Change K1 exit timeout */
-> +	ret_val = e1e_rphy_locked(hw, E1000_PHY_TIMEOUTS_REG,
-> +				  &phy_timeout);
-> +	if (ret_val)
-> +		return ret_val;
-> +
-> +	phy_timeout &= ~E1000_PHY_TIMEOUTS_K1_EXIT_TO_MASK;
-> +	phy_timeout |= 0xF00;
-> +
-> +	return e1e_wphy_locked(hw, E1000_PHY_TIMEOUTS_REG,
-> +				  phy_timeout);
-> +}
-> +
->   /**
->    *  e1000_init_phy_workarounds_pchlan - PHY initialization workarounds
->    *  @hw: pointer to the HW structure
-> @@ -327,15 +367,23 @@ static s32 e1000_init_phy_workarounds_pchlan(struct e1000_hw *hw)
->   	 * LANPHYPC Value bit to force the interconnect to PCIe mode.
->   	 */
->   	switch (hw->mac.type) {
-> +	case e1000_pch_mtp:
-> +	case e1000_pch_lnp:
-> +	case e1000_pch_ptp:
-> +	case e1000_pch_nvp:
-> +		/* At this point the PHY might be inaccessible so don't
-> +		 * propagate the failure
-> +		 */
-> +		if (e1000_reconfigure_k1_exit_timeout(hw))
-> +			break;
-> +
-> +		fallthrough;
->   	case e1000_pch_lpt:
->   	case e1000_pch_spt:
->   	case e1000_pch_cnp:
->   	case e1000_pch_tgp:
->   	case e1000_pch_adp:
-> -	case e1000_pch_mtp:
-> -	case e1000_pch_lnp:
-> -	case e1000_pch_ptp:
-> -	case e1000_pch_nvp:
-> +
->   		if (e1000_phy_is_accessible_pchlan(hw))
->   			break;
->   
-> @@ -421,6 +469,16 @@ static s32 e1000_init_phy_workarounds_pchlan(struct e1000_hw *hw)
->   		ret_val = hw->phy.ops.check_reset_block(hw);
->   		if (ret_val)
->   			e_err("ME blocked access to PHY after reset\n");
-> +
-> +		if (hw->mac.type >= e1000_pch_mtp) {
-> +			ret_val = hw->phy.ops.acquire(hw);
-> +			if (ret_val) {
-> +				e_dbg("Failed to reconfigure K1 exit timeout\n");
-> +				goto out;
-> +			}
-> +			ret_val = e1000_reconfigure_k1_exit_timeout(hw);
-> +			hw->phy.ops.release(hw);
-> +		}
->   	}
->   
->   out:
-> @@ -4888,6 +4946,18 @@ static s32 e1000_init_hw_ich8lan(struct e1000_hw *hw)
->   	u16 i;
->   
->   	e1000_initialize_hw_bits_ich8lan(hw);
-> +	if (hw->mac.type >= e1000_pch_mtp) {
-> +		ret_val = hw->phy.ops.acquire(hw);
-> +		if (ret_val)
-> +			return ret_val;
-> +
-> +		ret_val = e1000_reconfigure_k1_exit_timeout(hw);
-> +		if (ret_val) {
-> +			e_dbg("Error failed to reconfigure K1 exit timeout\n");
-
-This differs from the log above. Use consistent error messages?
-
-> +			return ret_val;
-> +		}
-> +		hw->phy.ops.release(hw);
-> +	}
->   
->   	/* Initialize identification LED */
->   	ret_val = mac->ops.id_led_init(hw);
-> diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.h b/drivers/net/ethernet/intel/e1000e/ich8lan.h
-> index 2504b11c3169..dffc63e89ee2 100644
-> --- a/drivers/net/ethernet/intel/e1000e/ich8lan.h
-> +++ b/drivers/net/ethernet/intel/e1000e/ich8lan.h
-> @@ -219,6 +219,10 @@
->   #define I217_PLL_CLOCK_GATE_REG	PHY_REG(772, 28)
->   #define I217_PLL_CLOCK_GATE_MASK	0x07FF
->   
-> +/* PHY Timeouts */
-> +#define E1000_PHY_TIMEOUTS_REG                   PHY_REG(770, 21)
-> +#define E1000_PHY_TIMEOUTS_K1_EXIT_TO_MASK       0x0FC0
-> +
->   #define SW_FLAG_TIMEOUT		1000	/* SW Semaphore flag timeout in ms */
->   
->   /* Inband Control */
+I took a stab at it here:
+https://github.com/jpirko/linux_mlxsw/commits/wip_dl_pfs_parent/
+The work is not finished.
 
 
-Kind regards,
+Also, I was thinking about having some made-up bus, like "pci_ids",
+where instead of BDFs as addresses, there would be DSN for example.
 
-Paul
+None of these 3 is nice. 
+
+The shared parent entity for PFs (and other Fs) is always reference
+counted, first creates, last removes. I feel like this is something
+missing in PCI spec. If such beast would exist, very easy to implement
+this in devlink. We have all we need in place already.
+
+
