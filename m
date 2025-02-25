@@ -1,74 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2DF59A438C8
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A74F2A438C9
 	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Feb 2025 10:09:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8FE1A80FA1;
-	Tue, 25 Feb 2025 09:09:34 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9384340D04;
+	Tue, 25 Feb 2025 09:09:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ihSRw7YBDM0T; Tue, 25 Feb 2025 09:09:32 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id FHhBcBmdDPWD; Tue, 25 Feb 2025 09:09:35 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 52DE780EAA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A85FC40CF9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1740474572;
-	bh=gkHNOMgC+8crkN0f4/7nnd9KEh5chLbhsCJIEKQQRNo=;
+	s=default; t=1740474575;
+	bh=GQGhJa/tmQgZoJVd6hKyqi+O5GltMn8mW1nuSYQkDKs=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=mMxLD3PodGZedZH8OR5pfQEnX4avLHoMlH8qokZ8Kv0qjCYgQ+NO159WPasPg5dFi
-	 vN2GIkwdgyxhG0Z2GchFwp5AmX9O2FRZUYabKJ3W1a9zbdGt9GZS3eHbL9uIgRRPoK
-	 FOOyiaml6yf4N3a6+faJVzkV5n7zpljU9cApoa1fswo/+JtzbjojN1uzM9011fQkd2
-	 fdLArbM1rFszrbra1oxr2AmV7adVsw2YmWn/JagNBDcPGpcmBW7s6ID7U3Xy8eeUFI
-	 pNdFzxieU0gqlOrHIvJv53anLIePA6247Wa5chrZqQ+vhnbxsgugET4+vl8b0SxMQ5
-	 PgG1nFCY9vmQw==
+	b=zaNM5CoKrDfVXucgbwoNpCO3mNenZp6a2c90Gf4AYsm7j+m9AV/GIrhkaCK1Df/ju
+	 3xIpook6XHhI+eOMxbsbZ5xB+z+Xny6JmoS9Nhl2+ehWyX9WL0tPFTeqKoFMuYYG7C
+	 pIcOtsdA5i2URtffGLKDTdINf4cI1o4LGnqntbLGh4YlJ+PsRh50L58wm1Q72Zg0Ue
+	 RrdylI9BzrD5JXqdR27aGgVO67kv8Ly5C8bm1nDwSxROIko8lsLjMnB78b+NDcgkDS
+	 141vxCa7/f7p8MOQgyclOEcMrb+72iVFet+GNlYQ695+Pa7SmXlg/5ft4pb7rhswPt
+	 rknykNPRN2pKw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 52DE780EAA;
-	Tue, 25 Feb 2025 09:09:32 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A85FC40CF9;
+	Tue, 25 Feb 2025 09:09:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id A99282DE0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Feb 2025 09:09:30 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 566782292
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Feb 2025 09:09:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8E0DB80453
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Feb 2025 09:09:30 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3741981213
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Feb 2025 09:09:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id h5rUIGy9BFAM for <intel-wired-lan@lists.osuosl.org>;
- Tue, 25 Feb 2025 09:09:29 +0000 (UTC)
+ id ZYmeQhQpxHpd for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 25 Feb 2025 09:09:32 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
  helo=mgamail.intel.com; envelope-from=martyna.szapar-mudlaw@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8855181DF0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8855181DF0
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 29881803C5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 29881803C5
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8855181DF0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Feb 2025 09:09:29 +0000 (UTC)
-X-CSE-ConnectionGUID: gjGhy6+DSeuet+6M+Ib4AA==
-X-CSE-MsgGUID: o8yGYqz5TVOgajz055vZLA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11355"; a="58810339"
-X-IronPort-AV: E=Sophos;i="6.13,313,1732608000"; d="scan'208";a="58810339"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 29881803C5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Feb 2025 09:09:32 +0000 (UTC)
+X-CSE-ConnectionGUID: A9pmZfSvQB6SGZ4qW5U8FQ==
+X-CSE-MsgGUID: nZpiICgLRmileyMiMCnjrw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11355"; a="58810343"
+X-IronPort-AV: E=Sophos;i="6.13,313,1732608000"; d="scan'208";a="58810343"
 Received: from orviesa003.jf.intel.com ([10.64.159.143])
  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Feb 2025 01:09:29 -0800
-X-CSE-ConnectionGUID: HxS2/pS1Tqm2YBs5XkgZLA==
-X-CSE-MsgGUID: Gs5F6aekTIGmUa9YBhzKxA==
+ 25 Feb 2025 01:09:32 -0800
+X-CSE-ConnectionGUID: JM7sHMX5TJCt7JwJyi1paw==
+X-CSE-MsgGUID: aPU30UIzQ8K6hHdTzEw2sQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,313,1732608000"; d="scan'208";a="121275661"
+X-IronPort-AV: E=Sophos;i="6.13,313,1732608000"; d="scan'208";a="121275685"
 Received: from enterprise.igk.intel.com ([10.102.20.175])
- by orviesa003.jf.intel.com with ESMTP; 25 Feb 2025 01:09:28 -0800
+ by orviesa003.jf.intel.com with ESMTP; 25 Feb 2025 01:09:30 -0800
 From: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, Jan Glaza <jan.glaza@intel.com>,
+Cc: netdev@vger.kernel.org, Lukasz Czapnik <lukasz.czapnik@intel.com>,
  Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
  Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
-Date: Tue, 25 Feb 2025 10:08:47 +0100
-Message-ID: <20250225090847.513849-6-martyna.szapar-mudlaw@linux.intel.com>
+Date: Tue, 25 Feb 2025 10:08:48 +0100
+Message-ID: <20250225090847.513849-7-martyna.szapar-mudlaw@linux.intel.com>
 X-Mailer: git-send-email 2.47.0
 In-Reply-To: <20250225090847.513849-2-martyna.szapar-mudlaw@linux.intel.com>
 References: <20250225090847.513849-2-martyna.szapar-mudlaw@linux.intel.com>
@@ -76,25 +76,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1740474569; x=1772010569;
+ t=1740474572; x=1772010572;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=qvH744x9n/EIaRK81PRkt4ItVtZ4IA+MhzAIe0c3AxQ=;
- b=Cz+80rHlJBZB47NT+xlm6zXG5k7ZFeWNqFgGIQLyHY+tHEJXN5bE8Yd6
- KMFkPYvCbvrw1MWSHMCFudRE++rQtcNbu9docf0gPtSiRK5H7hPu2t+tR
- kRugsdG6h7AqkkoDVymoMFYPDL+A+W3L6GDWxUNX5dNVFf3ziEB29TwDO
- ZMhRLaa+9KSB2PXNEf/lrpHMm2+VNDVkpWJIghiGuiZXC0BYkZ8JqgPVB
- mExZXfY4jT0BXsYJ6TAm/dkgdGTwYwPt11xRDW1iYQb7v4+1tOGMtNFGB
- h4X6TcwuCwcjp2QAFWM06C5S9zBBtBr4uMUrVPfMDtalgTYRF1sA/2uo4
- w==;
+ bh=3SyF92afDOn91GOA4VLtpi+hktql8pF4fEirFHsgAHk=;
+ b=fekiE170yRLz8xugvxyIK3KPqZKD/aPhNd8TxEPrfOtt/FKC66orFzLS
+ haeOwJ6TEGJl2E09F3zBpmOIHQ8bcTACfhDEXudSThGpFJzvrlS0x1Lbn
+ 0+NfC6HRuW4v3mylfSqkuz7GVLKCWEfS1Xsu1YTWODYM2Tov4nuHTK0xF
+ KObY5BAeOxbhIccTXVb3JxgQVFZkhkmFmYwl1mcZn1gsCkivQFSbujvxY
+ WawezPEVHBpVI7vTfB3fFSIvWm2enBW2dpb6rurTdwD0rh2u/7NsqXtAJ
+ MMd6nXBCrUWfLhsZWOb9v/DSV//eQew4sVghjPqglNPmWaGvd/MRVZn98
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Cz+80rHl
-Subject: [Intel-wired-lan] [iwl-net v2 3/5] ice: validate queue quanta
- parameters to prevent OOB access
+ header.a=rsa-sha256 header.s=Intel header.b=fekiE170
+Subject: [Intel-wired-lan] [iwl-net v2 4/5] ice: fix input validation for
+ virtchnl BW
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -110,63 +110,65 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jan Glaza <jan.glaza@intel.com>
+From: Lukasz Czapnik <lukasz.czapnik@intel.com>
 
-Add queue wraparound prevention in quanta configuration.
-Ensure end_qid does not overflow by validating start_qid and num_queues.
+Add missing validation of tc and queue id values sent by a VF in
+ice_vc_cfg_q_bw().
+Additionally fixed logged value in the warning message,
+where max_tx_rate was incorrectly referenced instead of min_tx_rate.
+Also correct error handling in this function by properly exiting
+when invalid configuration is detected.
 
 Fixes: 015307754a19 ("ice: Support VF queue rate limit and quanta size configuration")
 Reviewed-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-Signed-off-by: Jan Glaza <jan.glaza@intel.com>
+Signed-off-by: Lukasz Czapnik <lukasz.czapnik@intel.com>
+Co-developed-by: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
 Signed-off-by: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_virtchnl.c | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c | 24 ++++++++++++++++---
+ 1 file changed, 21 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-index 343f2b4b0dc5..adb1bf12542f 100644
+index adb1bf12542f..824ef849b0ea 100644
 --- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
 +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-@@ -1903,13 +1903,21 @@ static int ice_vc_cfg_q_bw(struct ice_vf *vf, u8 *msg)
-  */
- static int ice_vc_cfg_q_quanta(struct ice_vf *vf, u8 *msg)
- {
-+	u16 quanta_prof_id, quanta_size, start_qid, num_queues, end_qid, i;
- 	enum virtchnl_status_code v_ret = VIRTCHNL_STATUS_SUCCESS;
--	u16 quanta_prof_id, quanta_size, start_qid, end_qid, i;
- 	struct virtchnl_quanta_cfg *qquanta =
- 		(struct virtchnl_quanta_cfg *)msg;
- 	struct ice_vsi *vsi;
- 	int ret;
+@@ -1865,15 +1865,33 @@ static int ice_vc_cfg_q_bw(struct ice_vf *vf, u8 *msg)
  
-+	start_qid = qquanta->queue_select.start_queue_id;
-+	num_queues = qquanta->queue_select.num_queues;
-+
-+	if (check_add_overflow(start_qid, num_queues, &end_qid)) {
-+		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-+		goto err;
-+	}
-+
- 	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) {
- 		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
- 		goto err;
-@@ -1921,8 +1929,6 @@ static int ice_vc_cfg_q_quanta(struct ice_vf *vf, u8 *msg)
- 		goto err;
+ 	for (i = 0; i < qbw->num_queues; i++) {
+ 		if (qbw->cfg[i].shaper.peak != 0 && vf->max_tx_rate != 0 &&
+-		    qbw->cfg[i].shaper.peak > vf->max_tx_rate)
++		    qbw->cfg[i].shaper.peak > vf->max_tx_rate) {
+ 			dev_warn(ice_pf_to_dev(vf->pf), "The maximum queue %d rate limit configuration may not take effect because the maximum TX rate for VF-%d is %d\n",
+ 				 qbw->cfg[i].queue_id, vf->vf_id,
+ 				 vf->max_tx_rate);
++			v_ret = VIRTCHNL_STATUS_ERR_PARAM;
++			goto err;
++		}
+ 		if (qbw->cfg[i].shaper.committed != 0 && vf->min_tx_rate != 0 &&
+-		    qbw->cfg[i].shaper.committed < vf->min_tx_rate)
++		    qbw->cfg[i].shaper.committed < vf->min_tx_rate) {
+ 			dev_warn(ice_pf_to_dev(vf->pf), "The minimum queue %d rate limit configuration may not take effect because the minimum TX rate for VF-%d is %d\n",
+ 				 qbw->cfg[i].queue_id, vf->vf_id,
+-				 vf->max_tx_rate);
++				 vf->min_tx_rate);
++			v_ret = VIRTCHNL_STATUS_ERR_PARAM;
++			goto err;
++		}
++		if (qbw->cfg[i].queue_id > vf->num_vf_qs) {
++			dev_warn(ice_pf_to_dev(vf->pf), "VF-%d trying to configure invalid queue_id\n",
++				 vf->vf_id);
++			v_ret = VIRTCHNL_STATUS_ERR_PARAM;
++			goto err;
++		}
++		if (qbw->cfg[i].tc >= ICE_MAX_TRAFFIC_CLASS) {
++			dev_warn(ice_pf_to_dev(vf->pf), "VF-%d trying to configure a traffic class higher than allowed\n",
++				 vf->vf_id);
++			v_ret = VIRTCHNL_STATUS_ERR_PARAM;
++			goto err;
++		}
  	}
  
--	end_qid = qquanta->queue_select.start_queue_id +
--		  qquanta->queue_select.num_queues;
- 	if (end_qid > ICE_MAX_RSS_QS_PER_VF ||
- 	    end_qid > min_t(u16, vsi->alloc_txq, vsi->alloc_rxq)) {
- 		dev_err(ice_pf_to_dev(vf->pf), "VF-%d trying to configure more than allocated number of queues: %d\n",
-@@ -1951,7 +1957,6 @@ static int ice_vc_cfg_q_quanta(struct ice_vf *vf, u8 *msg)
- 		goto err;
- 	}
- 
--	start_qid = qquanta->queue_select.start_queue_id;
- 	for (i = start_qid; i < end_qid; i++)
- 		vsi->tx_rings[i]->quanta_prof_id = quanta_prof_id;
- 
+ 	for (i = 0; i < qbw->num_queues; i++) {
 -- 
 2.47.0
 
