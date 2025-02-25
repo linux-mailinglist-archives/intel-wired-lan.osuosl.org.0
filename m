@@ -1,97 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D190A442E6
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Feb 2025 15:36:11 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id DFE50A443D2
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Feb 2025 16:04:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3200040CFE;
-	Tue, 25 Feb 2025 14:36:10 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 88C4060704;
+	Tue, 25 Feb 2025 15:04:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id bhGTXS_XTn90; Tue, 25 Feb 2025 14:36:09 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 5NnfbVngvaIw; Tue, 25 Feb 2025 15:04:48 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 52AEF40CF6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 908A1606C1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1740494169;
-	bh=/DJMQVyYUlG2wstv/ghUI8bqMbPDKynVHDg3Fya5l/o=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=50BBF6Ao+liMj9xcYOXVI0v6KNL2/5SCHZtJbeIOyTLd2Yj+25s/iM3IbKOjvYC7+
-	 xUlBBJxPJrDZR0C1JdUH0OJkvZVkLvH8a+8MGlUetPLhLb34XbX+mQz6OnEVsw5//v
-	 2JJM41J35a23dDjnCFtowXuPm7mIMpK99Anr4oiY5GwJ71YlhOFLLdrRqQiOWIDnFF
-	 69Pa5bljthaJ7zVoDPCKWhWyinHcLNlcOfhYe02s6W8+isWVSC929ZxRVngr7ZJouj
-	 CDB/pCXehYU9kWYVhiwc3fxV6qtUYIgMWZgF48PqYa4phKXBcbn56+lq/ZnSkGkJSB
-	 9VHfUvIq6gdyA==
+	s=default; t=1740495888;
+	bh=myoCORcY1Hc9w42yfTIHkqddnGqokfjHJiK2m/v9eS8=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=sIWm9yPSctiVQsZJFicCkRRDpaH4HW9EOB2DLQU7f8u+P3HGsBy4BWUb+eB6e4pKh
+	 RQqiuZfr/V6lUGmJ3gqRj6KaqJGHYQeBHb2sSvqL1ptpx1Yl0hVR3bChbl3CXvBm6p
+	 XeV7RzRuECR4Ao9vcHObA4mHqIl/IruaYtqhjPnpIRSIUDgkFMXSROUirnFZLgSRbq
+	 5ueFJ2ePJHgQ4yRSicM7cewM06D1gFcXfBBfEZ0uqFPBeUefaAVAzXOy7xg/mVzp6m
+	 q3c7Oz/y9ac8Z/qpmTIw5P1B2F2aRoNrep633Z3RxUhOdst2GXiBOjry4U2Yd33XmM
+	 0uPA+v2azK3/w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 52AEF40CF6;
-	Tue, 25 Feb 2025 14:36:09 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 908A1606C1;
+	Tue, 25 Feb 2025 15:04:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 82C352292
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Feb 2025 14:36:07 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 9BE0C2292
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Feb 2025 15:04:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6711E40CDA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Feb 2025 14:36:07 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 893854037C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Feb 2025 15:04:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id UDzgn7ZzHDgy for <intel-wired-lan@lists.osuosl.org>;
- Tue, 25 Feb 2025 14:36:06 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
- helo=mgamail.intel.com; envelope-from=vitaly.lifshits@intel.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Lnh2Lhedfwe6 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 25 Feb 2025 15:04:45 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
+ helo=tor.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5A31340C11
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5A31340C11
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5A31340C11
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Feb 2025 14:36:06 +0000 (UTC)
-X-CSE-ConnectionGUID: jt8MNxsoSCemByqFGc07wQ==
-X-CSE-MsgGUID: 8970D01sSa6Pzw0UgaTARA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11356"; a="51932790"
-X-IronPort-AV: E=Sophos;i="6.13,314,1732608000"; d="scan'208";a="51932790"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
- by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Feb 2025 06:36:06 -0800
-X-CSE-ConnectionGUID: DSZ7hP54Sr65H48fKd6QEw==
-X-CSE-MsgGUID: y2FhwMBtSr6izevkJMtF9A==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="120513243"
-Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.51])
- by fmviesa003.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Feb 2025 06:36:04 -0800
-From: Vitaly Lifshits <vitaly.lifshits@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: Vitaly Lifshits <vitaly.lifshits@intel.com>
-Date: Tue, 25 Feb 2025 16:36:01 +0200
-Message-Id: <20250225143601.1173539-1-vitaly.lifshits@intel.com>
-X-Mailer: git-send-email 2.34.1
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 7986F40096
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7986F40096
+Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7986F40096
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Feb 2025 15:04:45 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id D44BF6126B;
+ Tue, 25 Feb 2025 15:04:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 35935C4CEDD;
+ Tue, 25 Feb 2025 15:04:42 +0000 (UTC)
+Date: Tue, 25 Feb 2025 15:04:40 +0000
+From: Simon Horman <horms@kernel.org>
+To: Grzegorz Nitka <grzegorz.nitka@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ Karol Kolacinski <karol.kolacinski@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Message-ID: <20250225150440.GZ1615191@kernel.org>
+References: <20250221123123.2833395-1-grzegorz.nitka@intel.com>
+ <20250221123123.2833395-4-grzegorz.nitka@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250221123123.2833395-4-grzegorz.nitka@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1740494166; x=1772030166;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=Hhz4WqWAjeaThaR2VMgPc34GnjANHYcYwz3FbvQy/R4=;
- b=WKdO+k0wdP0VRGpZ81ldlkFC704JzOT2C5MBTfTQgTvkMP8qcPm+N8sl
- 0jyyXEL2yA8mri/HCmjIDMGcjKitVfFdgi2BDZBKUGRud2paR3IklrZ4b
- E8zTGio/BOFNBLOCiXxBfOGrdWLatKHKyMb6Tn3r9s5tjI65st7W6GMsp
- +OEh1NDh7ymKAdB0+XiGURoFLOrRBeevkECF8vaqAxGnjbuU+vBHeD3sp
- XhcNFQ4eJX3geSp2KU+zsjaVygLP3mTMO3dQr1Pm8MqjSIr9y++jHDjp1
- cQz+WKOkiEa42VwdmZN0eTHmpqAbrqRH1BUo85JhipryLe2DdaImN3wyD
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=WKdO+k0w
-Subject: [Intel-wired-lan] [PATCH iwl-net v2 1/1] e1000e: change k1
- configuration on MTP and later platforms
+ d=kernel.org; s=k20201202; t=1740495883;
+ bh=RJR1EUVHjlTZ5+MP+tYw7diWPjES5MIeECT7TrlRV+c=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=c+CUWmarkOf3Jev++Vm3ho9RN/pvolh50nMWPja+nWtY1DG4j03xdGNRooyKKToWY
+ ADVv46eg8odXO2IQEa99gCS5V4jHneUwDbtt7gT54726ImjQDd/9zKJSCKD4oEhTiQ
+ FZU0hGZL1vwhEr1B6IxTy3raASp00HWPZc9K/Kt8iEzuF9p5iFbjbG0SyKageoa38o
+ K3ugMRv3GitPiJTuyXdDyB2JOSEbDnf7CcGeZGhKJ6AMkJMjvRf/2YjpcjkroO9tpM
+ 5PF1OdeikJSA6YGPbZxWA2a3JESDIAUo9zIxZwVik20H6DNM7ni00iLz9deD2CIEEx
+ 8qHiXTcG9BUzg==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=c+CUWmar
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 3/3] ice: enable timesync
+ operation on 2xNAC E825 devices
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -107,153 +100,128 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Starting from Meteor Lake, the Kumeran interface between the integrated
-MAC and the I219 PHY works at a different frequency. This caused sporadic
-MDI errors when accessing the PHY, and in rare circumstances could lead
-to packet corruption.
+On Fri, Feb 21, 2025 at 01:31:23PM +0100, Grzegorz Nitka wrote:
+> From: Karol Kolacinski <karol.kolacinski@intel.com>
+> 
+> According to the E825C specification, SBQ address for ports on a single
+> complex is device 2 for PHY 0 and device 13 for PHY1.
+> For accessing ports on a dual complex E825C (so called 2xNAC mode),
+> the driver should use destination device 2 (referred as phy_0) for
+> the current complex PHY and device 13 (referred as phy_0_peer) for
+> peer complex PHY.
+> 
+> Differentiate SBQ destination device by checking if current PF port
+> number is on the same PHY as target port number.
+> 
+> Adjust 'ice_get_lane_number' function to provide unique port number for
+> ports from PHY1 in 'dual' mode config (by adding fixed offset for PHY1
+> ports). Cache this value in ice_hw struct.
+> 
+> Introduce ice_get_primary_hw wrapper to get access to timesync register
+> not available from second NAC.
+> 
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
+> Co-developed-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
+> Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice.h        | 60 ++++++++++++++++++++-
+>  drivers/net/ethernet/intel/ice/ice_common.c |  6 ++-
+>  drivers/net/ethernet/intel/ice/ice_ptp.c    | 49 ++++++++++++-----
+>  drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 39 +++++++++++---
+>  drivers/net/ethernet/intel/ice/ice_ptp_hw.h |  5 --
+>  drivers/net/ethernet/intel/ice/ice_type.h   |  1 +
+>  6 files changed, 134 insertions(+), 26 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+> index 53b990e2e850..d80ab48402f1 100644
+> --- a/drivers/net/ethernet/intel/ice/ice.h
+> +++ b/drivers/net/ethernet/intel/ice/ice.h
+> @@ -193,8 +193,6 @@
+>  
+>  #define ice_pf_to_dev(pf) (&((pf)->pdev->dev))
+>  
+> -#define ice_pf_src_tmr_owned(pf) ((pf)->hw.func_caps.ts_func_info.src_tmr_owned)
+> -
+>  enum ice_feature {
+>  	ICE_F_DSCP,
+>  	ICE_F_PHY_RCLK,
+> @@ -1049,4 +1047,62 @@ static inline void ice_clear_rdma_cap(struct ice_pf *pf)
+>  }
+>  
+>  extern const struct xdp_metadata_ops ice_xdp_md_ops;
+> +
+> +/**
+> + * ice_is_dual - Check if given config is multi-NAC
+> + * @hw: pointer to HW structure
+> + *
+> + * Return: true if the device is running in mutli-NAC (Network
+> + * Acceleration Complex) configuration variant, false otherwise
+> + * (always false for non-E825 devices).
+> + */
+> +static inline bool ice_is_dual(struct ice_hw *hw)
+> +{
+> +	return hw->mac_type == ICE_MAC_GENERIC_3K_E825 &&
+> +	       (hw->dev_caps.nac_topo.mode & ICE_NAC_TOPO_DUAL_M);
+> +}
 
-To overcome this, the driver introduces minor changes to the Kumeran idle
-state (K1) parameters during device initialization. Hardware reset
-reverts this configuration, therefore it needs to be applied in a few
-places.
+Thanks for the complete Kernel doc, and not adding unnecessary () around
+the value returned. Overall these helpers seem nice and clean to me.
 
-Fixes: cc23f4f0b6b9 ("e1000e: Add support for Meteor Lake")
-Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
----
- drivers/net/ethernet/intel/e1000e/ich8lan.c | 78 +++++++++++++++++++--
- drivers/net/ethernet/intel/e1000e/ich8lan.h |  4 ++
- 2 files changed, 78 insertions(+), 4 deletions(-)
+...
 
-diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-index 2f9655cf5dd9..5af5cc9b63df 100644
---- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
-+++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-@@ -285,6 +285,46 @@ static void e1000_toggle_lanphypc_pch_lpt(struct e1000_hw *hw)
- 	}
- }
- 
-+/**
-+ * e1000_reconfigure_k1_exit_timeout - reconfigure K1 exit timeout to
-+ * align to MTP and later platform requirements.
-+ * @hw: pointer to the HW structure
-+ *
-+ * Assuming that PHY semaphore is taken prior to this function call.
-+ *
-+ * Return: 0 on success, negative on failure
-+ */
-+static s32 e1000_reconfigure_k1_exit_timeout(struct e1000_hw *hw)
-+{
-+	u16 phy_timeout;
-+	u32 fextnvm12;
-+	s32 ret_val;
-+
-+	if (hw->mac.type < e1000_pch_mtp)
-+		return 0;
-+
-+	/* Change Kumeran K1 power down state from P0s to P1 */
-+	fextnvm12 = er32(FEXTNVM12);
-+	fextnvm12 |= BIT(23);
-+	fextnvm12 &= ~BIT(22);
-+	ew32(FEXTNVM12, fextnvm12);
-+
-+	/* Wait for the interface the settle */
-+	msleep(1);
-+
-+	/* Change K1 exit timeout */
-+	ret_val = e1e_rphy_locked(hw, E1000_PHY_TIMEOUTS_REG,
-+				  &phy_timeout);
-+	if (ret_val)
-+		return ret_val;
-+
-+	phy_timeout &= ~E1000_PHY_TIMEOUTS_K1_EXIT_TO_MASK;
-+	phy_timeout |= 0xF00;
-+
-+	return e1e_wphy_locked(hw, E1000_PHY_TIMEOUTS_REG,
-+				  phy_timeout);
-+}
-+
- /**
-  *  e1000_init_phy_workarounds_pchlan - PHY initialization workarounds
-  *  @hw: pointer to the HW structure
-@@ -327,15 +367,23 @@ static s32 e1000_init_phy_workarounds_pchlan(struct e1000_hw *hw)
- 	 * LANPHYPC Value bit to force the interconnect to PCIe mode.
- 	 */
- 	switch (hw->mac.type) {
-+	case e1000_pch_mtp:
-+	case e1000_pch_lnp:
-+	case e1000_pch_ptp:
-+	case e1000_pch_nvp:
-+		/* At this point the PHY might be inaccessible so don't
-+		 * propagate the failure
-+		 */
-+		if (e1000_reconfigure_k1_exit_timeout(hw))
-+			break;
-+
-+		fallthrough;
- 	case e1000_pch_lpt:
- 	case e1000_pch_spt:
- 	case e1000_pch_cnp:
- 	case e1000_pch_tgp:
- 	case e1000_pch_adp:
--	case e1000_pch_mtp:
--	case e1000_pch_lnp:
--	case e1000_pch_ptp:
--	case e1000_pch_nvp:
-+
- 		if (e1000_phy_is_accessible_pchlan(hw))
- 			break;
- 
-@@ -421,6 +469,16 @@ static s32 e1000_init_phy_workarounds_pchlan(struct e1000_hw *hw)
- 		ret_val = hw->phy.ops.check_reset_block(hw);
- 		if (ret_val)
- 			e_err("ME blocked access to PHY after reset\n");
-+
-+		if (hw->mac.type >= e1000_pch_mtp) {
-+			ret_val = hw->phy.ops.acquire(hw);
-+			if (ret_val) {
-+				e_err("Failed to reconfigure K1 exit timeout\n");
-+				goto out;
-+			}
-+			ret_val = e1000_reconfigure_k1_exit_timeout(hw);
-+			hw->phy.ops.release(hw);
-+		}
- 	}
- 
- out:
-@@ -4888,6 +4946,18 @@ static s32 e1000_init_hw_ich8lan(struct e1000_hw *hw)
- 	u16 i;
- 
- 	e1000_initialize_hw_bits_ich8lan(hw);
-+	if (hw->mac.type >= e1000_pch_mtp) {
-+		ret_val = hw->phy.ops.acquire(hw);
-+		if (ret_val)
-+			return ret_val;
-+
-+		ret_val = e1000_reconfigure_k1_exit_timeout(hw);
-+		if (ret_val) {
-+			e_dbg("Error failed to reconfigure K1 exit timeout\n");
-+			return ret_val;
-+		}
-+		hw->phy.ops.release(hw);
-+	}
- 
- 	/* Initialize identification LED */
- 	ret_val = mac->ops.id_led_init(hw);
-diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.h b/drivers/net/ethernet/intel/e1000e/ich8lan.h
-index 2504b11c3169..dffc63e89ee2 100644
---- a/drivers/net/ethernet/intel/e1000e/ich8lan.h
-+++ b/drivers/net/ethernet/intel/e1000e/ich8lan.h
-@@ -219,6 +219,10 @@
- #define I217_PLL_CLOCK_GATE_REG	PHY_REG(772, 28)
- #define I217_PLL_CLOCK_GATE_MASK	0x07FF
- 
-+/* PHY Timeouts */
-+#define E1000_PHY_TIMEOUTS_REG                   PHY_REG(770, 21)
-+#define E1000_PHY_TIMEOUTS_K1_EXIT_TO_MASK       0x0FC0
-+
- #define SW_FLAG_TIMEOUT		1000	/* SW Semaphore flag timeout in ms */
- 
- /* Inband Control */
--- 
-2.34.1
+> diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+> index ed7ef8608cbb..4ff4c99d0872 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_common.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_common.c
+> @@ -1135,6 +1135,8 @@ int ice_init_hw(struct ice_hw *hw)
+>  		}
+>  	}
+>  
+> +	hw->lane_num = ice_get_phy_lane_number(hw);
+> +
 
+Unfortunately there seems to be a bit of a problem here:
+
+The type of hw->lane number is u8.
+But ice_get_phy_lane_number returns an int,
+which may be a negative error value...
+
+...
+
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+
+...
+
+> @@ -3177,17 +3203,16 @@ void ice_ptp_init(struct ice_pf *pf)
+>  {
+>  	struct ice_ptp *ptp = &pf->ptp;
+>  	struct ice_hw *hw = &pf->hw;
+> -	int lane_num, err;
+> +	int err;
+>  
+>  	ptp->state = ICE_PTP_INITIALIZING;
+>  
+> -	lane_num = ice_get_phy_lane_number(hw);
+> -	if (lane_num < 0) {
+> -		err = lane_num;
+> +	if (hw->lane_num < 0) {
+
+... which is checked here.
+
+But because hw->lane_num is unsigned, this condition is always false.
+
+FWIIW, I think it is nice that that hw->lane is a u8.
+But error handling seems broken here.
+
+> +		err = hw->lane_num;
+>  		goto err_exit;
+>  	}
+> +	ptp->port.port_num = hw->lane_num;
+>  
+> -	ptp->port.port_num = (u8)lane_num;
+>  	ice_ptp_init_hw(hw);
+>  
+>  	ice_ptp_init_tx_interrupt_mode(pf);
+
+...
