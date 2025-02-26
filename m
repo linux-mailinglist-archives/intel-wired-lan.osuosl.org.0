@@ -1,95 +1,142 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3C4F7A46A27
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 26 Feb 2025 19:50:35 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E7689A46B93
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 26 Feb 2025 20:59:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9DBF061036;
-	Wed, 26 Feb 2025 18:50:33 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 61CC680A78;
+	Wed, 26 Feb 2025 19:59:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id a3AkJi8uVmCh; Wed, 26 Feb 2025 18:50:33 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id I8JZOC_9MfmZ; Wed, 26 Feb 2025 19:59:30 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A7BB961045
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8A59C80524
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1740595832;
-	bh=NOy8MZswnCN9Z/sFkyFtvMhaELZGVtDWghtPctZZWBg=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1740599970;
+	bh=rJ3GmCSN4dwV0luCHC1nQCCdc7NrbsQh/O3sm9V2O7U=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=G92uDUcEdJOAjbq1ZLk5cu+sgwwNpaa9Hrt5ly3K9SHQtFtR5VO2rWMbYMfwdH5MU
-	 vKZhSDUr2bUkYXSP/xZVdrbs24FzfKcIZzg0iB7Sqwu6XBpd224vhZKOahuo0e1i1x
-	 nu1x3IN0xlYMJKAwMw0vDChopVFVXOKXil8vNjPMl2zKLMxFnW4R15pBxBnlonPxdJ
-	 +pfJJND/VERwNvA3RUGx7qU+1Ui4uPnyfbtAQcQiCyAkNCfzKzp6guZzG2VsEMXm/Y
-	 xw3TNl2rQUw0B4Pr8nC7eU9x0K5yFIKo9Pg1JAy2Tkamo8GVFAbA4SIwykzr7+PQAl
-	 9G+Y8LKWQANKg==
+	b=KDq0LA3jjEaOyxAMynHyqOdz+Te2PNgOBLqBq/COBf6HZU52ugAeW6/gmDc2nsNnC
+	 CsFTNGP80fV5vr+cWnHUn+VE3c3me4Gkp+ahk5SWifq78OLp0APTZe0cCbMpypSyA/
+	 +tWnrmHmLRFhnWhcS5odwWSBpBIlJYgZMZDlCtMOYAPlDWDk5uWRDi7MwCineQqJwH
+	 WTYqoNry4avnCWH3/ZPgmhI4G1I8/mL6JO77J8OslgiTNX3iIG8bVX8GYTUyC148bq
+	 nxwyl3PcOH0i5ZGo+Ox90r1oN6miqNbTwR+wfZNtth8idzT9S+LqYraIrLD0gHwqTG
+	 qJUuA+//qQPsQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A7BB961045;
-	Wed, 26 Feb 2025 18:50:32 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8A59C80524;
+	Wed, 26 Feb 2025 19:59:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 6D82D1ED4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Feb 2025 18:50:30 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 14F5194F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Feb 2025 19:51:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4DBE740D6C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Feb 2025 18:50:30 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id DCE38412C0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Feb 2025 19:51:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id BLjNd5Abndyl for <intel-wired-lan@lists.osuosl.org>;
- Wed, 26 Feb 2025 18:50:29 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c04::f03c:95ff:fe5e:7468; helo=tor.source.kernel.org;
- envelope-from=leon@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 35D0440C49
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 35D0440C49
-Received: from tor.source.kernel.org (tor.source.kernel.org
- [IPv6:2600:3c04::f03c:95ff:fe5e:7468])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 35D0440C49
- for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Feb 2025 18:50:28 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id B05C261503;
- Wed, 26 Feb 2025 18:50:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CAB18C4CED6;
- Wed, 26 Feb 2025 18:50:26 +0000 (UTC)
-Date: Wed, 26 Feb 2025 20:50:22 +0200
-From: Leon Romanovsky <leon@kernel.org>
-To: "Ertman, David M" <david.m.ertman@intel.com>
-Cc: "Nikolova, Tatyana E" <tatyana.e.nikolova@intel.com>,
- "jgg@nvidia.com" <jgg@nvidia.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "linux-rdma@vger.kernel.org" <linux-rdma@vger.kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>
-Message-ID: <20250226185022.GM53094@unreal>
-References: <20250225050428.2166-1-tatyana.e.nikolova@intel.com>
- <20250225050428.2166-2-tatyana.e.nikolova@intel.com>
- <20250225075530.GD53094@unreal>
- <IA1PR11MB61944C74491DECA111E84021DDC22@IA1PR11MB6194.namprd11.prod.outlook.com>
+ id FgufzpA5DyUu for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 26 Feb 2025 19:51:11 +0000 (UTC)
+X-Greylist: delayed 399 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 26 Feb 2025 19:51:11 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 2B474412BA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2B474412BA
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=202.12.124.144;
+ helo=fout-b1-smtp.messagingengine.com; envelope-from=mpearson-lenovo@squebb.ca;
+ receiver=<UNKNOWN> 
+Received: from fout-b1-smtp.messagingengine.com
+ (fout-b1-smtp.messagingengine.com [202.12.124.144])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2B474412BA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Feb 2025 19:51:11 +0000 (UTC)
+Received: from phl-compute-01.internal (phl-compute-01.phl.internal
+ [10.202.2.41])
+ by mailfout.stl.internal (Postfix) with ESMTP id E58C3114014F;
+ Wed, 26 Feb 2025 14:44:30 -0500 (EST)
+Received: from phl-mailfrontend-01 ([10.202.2.162])
+ by phl-compute-01.internal (MEProxy); Wed, 26 Feb 2025 14:44:31 -0500
+X-ME-Sender: <xms:HW-_ZyGM7biCJSajAcIs00fqZOyqwp57zcDxeimz26DZwfzgM9CHTQ>
+ <xme:HW-_ZzVsbD1i7GTm_HbODigHMcW9Ri-MkxlNH4ln_xj0qcD-RHZVQTMYfOGaRWU5v
+ BNO0tUMxeRsdfXTMy8>
+X-ME-Received: <xmr:HW-_Z8IInj6Hg3B98dPo4RaE22AtDFvB5mOfXlNRfI6Mm_qii5ArhivFHxE5R6VajTTjfm5v5bR8vVAfApjz4kPfDdQzxSfp>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgdekheegiecutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpggftfghnshhusghstghrihgsvgdp
+ uffrtefokffrpgfnqfghnecuuegrihhlohhuthemuceftddtnecuogetfedtuddqtdduuc
+ dludehmdenucfjughrpefhvfevufffkffojghfggfgsedtkeertdertddtnecuhfhrohhm
+ peforghrkhcurfgvrghrshhonhcuoehmphgvrghrshhonhdqlhgvnhhovhhosehsqhhuvg
+ gssgdrtggrqeenucggtffrrghtthgvrhhnpeeftddvjeefleffvefhgfejjeehudetteei
+ geeugfekhffhgeejudeuteehgfdvffenucevlhhushhtvghrufhiiigvpedtnecurfgrrh
+ grmhepmhgrihhlfhhrohhmpehmphgvrghrshhonhdqlhgvnhhovhhosehsqhhuvggssgdr
+ tggrpdhnsggprhgtphhtthhopeduuddpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtoh
+ epmhhpvggrrhhsohhnqdhlvghnohhvohesshhquhgvsggsrdgtrgdprhgtphhtthhopegr
+ nhhthhhonhihrdhlrdhnghhuhigvnhesihhnthgvlhdrtghomhdprhgtphhtthhopehprh
+ iivghmhihslhgrfidrkhhithhsiigvlhesihhnthgvlhdrtghomhdprhgtphhtthhopegr
+ nhgurhgvfidonhgvthguvghvsehluhhnnhdrtghhpdhrtghpthhtohepuggrvhgvmhesug
+ grvhgvmhhlohhfthdrnhgvthdprhgtphhtthhopegvughumhgriigvthesghhoohhglhgv
+ rdgtohhmpdhrtghpthhtohepkhhusggrsehkvghrnhgvlhdrohhrghdprhgtphhtthhope
+ hprggsvghnihesrhgvughhrghtrdgtohhmpdhrtghpthhtohepihhnthgvlhdqfihirhgv
+ ugdqlhgrnheslhhishhtshdrohhsuhhoshhlrdhorhhg
+X-ME-Proxy: <xmx:HW-_Z8Fy4zg85irjJdiFr2NJP5sfm_s2HUVK_ajJkhxkIk-uTCW1Bw>
+ <xmx:HW-_Z4UGIfZ6sO9XWAQL8yqb9Isi5WmNfwkhhHQ7eFa_telo0UrT2Q>
+ <xmx:HW-_Z_PgbVEW7EhlTdPVcld_h1Jer4p5sC_tjDYV_Yllskcnmsrqtg>
+ <xmx:HW-_Z_2qhPCyx2J21_125mgdJl5O6Rn6aUDmmUhjocTLoJLdVKCxDQ>
+ <xmx:Hm-_Z3MWWtUASLoI18Pi_JnybmeW4jJ-tvHZVF5RFXBk4XC2_ViYQzvb>
+Feedback-ID: ibe194615:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 26 Feb 2025 14:44:29 -0500 (EST)
+From: Mark Pearson <mpearson-lenovo@squebb.ca>
+To: mpearson-lenovo@squebb.ca
+Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Date: Wed, 26 Feb 2025 14:44:12 -0500
+Message-ID: <20250226194422.1030419-1-mpearson-lenovo@squebb.ca>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <mpearson-lenovo@squebb.ca>
+References: <mpearson-lenovo@squebb.ca>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <IA1PR11MB61944C74491DECA111E84021DDC22@IA1PR11MB6194.namprd11.prod.outlook.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1740595827;
- bh=GAlBE1MxBLfuNJIdhoKlRlj8/U0KvapKDVttTpAWkto=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=O+4/s9LhDb3+Glvl+MPUJGDHbmTaCE5lHu8qIRVou/5uMi4gLs+UsT45p/eEplF13
- X6+GbdS5V8QvUDsV1RYxM6s86Z7YRDs3bHSwEI9iMzoEAZxGs1F+fO/qoeo+Sy9+7e
- ah3TfR5ac/wpSWNargdVhkYDiz+jljWsfwnoIe4VcaLJU2MVYTL2UCTlXKvzVuHQCf
- 4+5sX7Kb3qe311nMoFcvPRYbmG/9eypEHJYoCIkEwtbVxPMy6/vXZmltChkJuei9Uu
- Y1oStQ5jFCVLR4QsvoDvq9vj1QLyvljO07AT5MvdvcV+500o3dnfPEXtQk33vP0UZA
- lxWmXMOf2I8YA==
+Content-Transfer-Encoding: 8bit
+X-Mailman-Approved-At: Wed, 26 Feb 2025 19:59:29 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=squebb.ca; h=cc
+ :cc:content-transfer-encoding:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:subject:subject:to:to; s=fm2; t=1740599070; x=
+ 1740685470; bh=rJ3GmCSN4dwV0luCHC1nQCCdc7NrbsQh/O3sm9V2O7U=; b=B
+ 2NMNBYEe1f0QSIS02m5pHkN5AZfIIGuLkmC7956EegWQYMxNyEWTKWBYuUSQh229
+ B5uJ/IKcaAqTyQAX0/cFIO5GuQVEWhjBnjGkf6irogTIMIYvmOC9pH6/TvOa3FRX
+ 8C+RM7E7yA0WTz3uVbs7iax7lYzGIDc0712Lcyt+Naw+1vPkPeHpyJikGlB2Jzw1
+ M+Hz3weXJnZUUMXd/0nh4UuwUMfycQ4OroNIQJ99hG8EFN1uzfC/ODnSKOyeUjDh
+ LboDoRZz2pFDfBJtnoRio9tlIkixExaZPYzw5MZufz0HxNSBELKUJik9smLswaRT
+ O6gqP/0eq0CCsBslqs5FA==
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
+ :x-me-sender:x-sasl-enc; s=fm1; t=1740599070; x=1740685470; bh=r
+ J3GmCSN4dwV0luCHC1nQCCdc7NrbsQh/O3sm9V2O7U=; b=m/Cw8/snY3yxmjVwK
+ yWIN9ujYAdfTeLScm5r9V8kgGDzAI9EAAGI39msKGIo+fvChiWyRs4j/9cmKauok
+ JFTE5bCoLn2Ap2ZiGu8VvMYzr9Bmmwo3u7DecThI0p3JoaPD5XVSrNxtSig7FfdW
+ aeamCbKTUamWxac4SnF86O+Sg44VuJiJCpnuhdYecd+l21gO+Z/ZmDV9mvTEFCQX
+ ybw7vQmNqGfAjg+GIAinRSX4ko4+E37VE/9Zp0Jo2myjfnFiJYdxKQTOUyNCxDST
+ /2UTj35wtLB1EIpXJGoxUD+GPDYzSAPK0UNn7dL1vvAGjNwaM+jkZ90wpqy6EoRv
+ fUknw==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
+ dmarc=none (p=none dis=none)
+ header.from=squebb.ca
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=O+4/s9Lh
-Subject: Re: [Intel-wired-lan] [iwl-next v4 1/1] iidc/ice/irdma: Update IDC
- to support multiple consumers
+ dkim=pass (2048-bit key, unprotected) header.d=squebb.ca header.i=@squebb.ca
+ header.a=rsa-sha256 header.s=fm2 header.b=B2NMNBYE; 
+ dkim=pass (2048-bit key,
+ unprotected) header.d=messagingengine.com header.i=@messagingengine.com
+ header.a=rsa-sha256 header.s=fm1 header.b=m/Cw8/sn
+Subject: [Intel-wired-lan] [PATCH] e1000e: Link flap workaround option for
+ false IRP events
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -105,122 +152,59 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Feb 26, 2025 at 05:36:44PM +0000, Ertman, David M wrote:
-> > -----Original Message-----
-> > From: Leon Romanovsky <leon@kernel.org>
-> > Sent: Monday, February 24, 2025 11:56 PM
-> > To: Nikolova, Tatyana E <tatyana.e.nikolova@intel.com>
-> > Cc: jgg@nvidia.com; intel-wired-lan@lists.osuosl.org; linux-
-> > rdma@vger.kernel.org; netdev@vger.kernel.org; Ertman, David M
-> > <david.m.ertman@intel.com>
-> > Subject: Re: [iwl-next v4 1/1] iidc/ice/irdma: Update IDC to support multiple
-> > consumers
-> > 
-> > On Mon, Feb 24, 2025 at 11:04:28PM -0600, Tatyana Nikolova wrote:
-> > > From: Dave Ertman <david.m.ertman@intel.com>
-> > >
-> > > To support RDMA for E2000 product, the idpf driver will use the IDC
-> > > interface with the irdma auxiliary driver, thus becoming a second
-> > > consumer of it. This requires the IDC be updated to support multiple
-> > > consumers. The use of exported symbols no longer makes sense because it
-> > > will require all core drivers (ice/idpf) that can interface with irdma
-> > > auxiliary driver to be loaded even if hardware is not present for those
-> > > drivers.
-> > 
-> > In auxiliary bus world, the code drivers (ice/idpf) need to created
-> > auxiliary devices only if specific device present. That auxiliary device
-> > will trigger the load of specific module (irdma in our case).
-> > 
-> > EXPORT_SYMBOL won't trigger load of irdma driver, but the opposite is
-> > true, load of irdma will trigger load of ice/idpf drivers (depends on
-> > their exported symbol).
-> > 
-> > >
-> > > To address this, implement an ops struct that will be universal set of
-> > > naked function pointers that will be populated by each core driver for
-> > > the irdma auxiliary driver to call.
-> > 
-> > No, we worked very hard to make proper HW discovery and driver autoload,
-> > let's not return back. For now, it is no-go.
-> 
-> Hi Leon,
-> 
-> I am a little confused about what the problem here is.  The main issue I pull
-> from your response is: Removing exported symbols will stop ice/idpf from
-> autoloading when irdma loads.  Is this correct or did I miss your point?
+Issue is seen on some Lenovo desktop workstations where there
+is a false IRP event which triggers a link flap.
+Condition is rare and only seen on networks where link speed
+may differ along the path between nodes (e.g 10M/100M)
 
-It is one of the main points.
+Intel are not able to determine root cause but provided a
+workaround that does fix the issue. Tested extensively at Lenovo.
 
-> 
-> But, if there is an ice or idpf supported device present in the system, the
-> appropriate driver will have already been loaded anyway (and gone through its
-> probe flow to create auxiliary devices).  If it is not loaded, then the system owner
-> has either unloaded it manually or blacklisted it.  This would not cause an issue
-> anyway, since irdma and ice/idpf can load in any order.
+Adding a module option to enable this workaround for users
+who are impacted by this issue.
 
-There are two assumptions above, which both not true.
-1. Users never issue "modprobe irdma" command alone and always will call
-to whole chain "modprobe ice ..." before.
-2. You open-code module subsystem properly with reference counters,
-ownership and locks to protect from function pointers to be set/clear
-dynamically.
+Signed-off-by: Mark Pearson <mpearson-lenovo@squebb.ca>
+---
+ drivers/net/ethernet/intel/e1000e/netdev.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
-> 
-> > 
-> > <...>
-> > 
-> > > +/* Following APIs are implemented by core PCI driver */
-> > > +struct idc_rdma_core_ops {
-> > > +	int (*vc_send_sync)(struct idc_rdma_core_dev_info *cdev_info, u8
-> > *msg,
-> > > +			    u16 len, u8 *recv_msg, u16 *recv_len);
-> > > +	int (*vc_queue_vec_map_unmap)(struct idc_rdma_core_dev_info
-> > *cdev_info,
-> > > +				      struct idc_rdma_qvlist_info *qvl_info,
-> > > +				      bool map);
-> > > +	/* vport_dev_ctrl is for RDMA CORE driver to indicate it is either
-> > ready
-> > > +	 * for individual vport aux devices, or it is leaving the state where it
-> > > +	 * can support vports and they need to be downed
-> > > +	 */
-> > > +	int (*vport_dev_ctrl)(struct idc_rdma_core_dev_info *cdev_info,
-> > > +			      bool up);
-> > > +	int (*request_reset)(struct idc_rdma_core_dev_info *cdev_info,
-> > > +			     enum idc_rdma_reset_type reset_type);
-> > > +};
-> > 
-> > Core driver can call to callbacks in irdma, like you already have for
-> > irdma_iidc_event_handler(), but all calls from irdma to core driver must
-> > be through exported symbols. It gives us race-free world in whole driver
-> > except one very specific place (irdma_iidc_event_handler).
-> 
-> I am confused here as well.  Calling a function through an exported symbol,
-> or calling the same function from a function pointer should not affect the
-> generation of a race condition, as the same function is being called.
-> What is inherently better about an exported symbol versus a function
-> pointer when considering race conditions?
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 286155efcedf..06774fb4b2dd 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -37,6 +37,10 @@ static int debug = -1;
+ module_param(debug, int, 0);
+ MODULE_PARM_DESC(debug, "Debug level (0=none,...,16=all)");
+ 
++static int false_irp_workaround;
++module_param(false_irp_workaround, int, 0);
++MODULE_PARM_DESC(false_irp_workaround, "Enable workaround for rare false IRP event causing link flap");
++
+ static const struct e1000_info *e1000_info_tbl[] = {
+ 	[board_82571]		= &e1000_82571_info,
+ 	[board_82572]		= &e1000_82572_info,
+@@ -1757,6 +1761,21 @@ static irqreturn_t e1000_intr_msi(int __always_unused irq, void *data)
+ 	/* read ICR disables interrupts using IAM */
+ 	if (icr & E1000_ICR_LSC) {
+ 		hw->mac.get_link_status = true;
++
++		/*
++		 * False IRP workaround
++		 * Issue seen on Lenovo P5 and P7 workstations where if there
++		 * are different link speeds in the network a false IRP event
++		 * is received, leading to a link flap.
++		 * Intel unable to determine root cause. This read prevents
++		 * the issue occurring
++		 */
++		if (false_irp_workaround) {
++			u16 phy_data;
++
++			e1e_rphy(hw, PHY_REG(772, 26), &phy_data);
++		}
++
+ 		/* ICH8 workaround-- Call gig speed drop workaround on cable
+ 		 * disconnect (LSC) before accessing any PHY registers
+ 		 */
+-- 
+2.43.0
 
-Exported symbol guarantees that function exists in core module. Module
-subsystem will ensure that core module is impossible to unload until all
-users are gone. Function pointer has no such guarantees.
-
-> 
-> Also, why is calling a function pointer from the irdma module ok, but calling
-> one from the core module not?
-
-Because we need to make sure that core module doesn't disappear while
-irdma executes its flow. The opposite is not true because core module
-controls irdma devices and aware than irdma module is loaded/unloaded.
-
-Thanks
-
-> 
-> Again - Thank you for the review, and if I completely missed your points, please let me know!
-> 
-> Thanks
-> DaveE
-> 
-> > 
-> > Thanks
-> 
-> 
