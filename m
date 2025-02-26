@@ -1,104 +1,104 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EC384A45CBE
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 26 Feb 2025 12:11:23 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A22FA61022;
-	Wed, 26 Feb 2025 11:11:22 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id IusemZ45eu8k; Wed, 26 Feb 2025 11:11:21 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 508BA61023
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1740568281;
-	bh=xJZnqQXY5O5v6zi7H11qd1gWFqaUevNQ86tIerK1ilM=;
-	h=From:To:CC:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=5AIG8x3qGWOoyeyL1EXXydmwB4RyiVvdZLFFJQlqUliLe1QbXKGj7RqtAwx9z5aBf
-	 MwaQCn6y752w5p1OUvB7b2yXE0xeTsd44boP9igFDNGwin15wp+8OVU8JeOOrZCDT7
-	 chxbXu1m9ATS1EL+t6bwi5tfMe+yDnzzBwdQ/3pY3Yf+dbcLquWeyZtdaKgF8tohM8
-	 JYKh+yoKqQAtLTej2WbAAnV000Bi2eUagviIHAtSe9ZxoExkuyZSf/Aj6LC02JigEu
-	 2GtdOU6XigUvHObfUE4PI3EItqWtVeNMz4S4fTUkMNG9utvOE7QPZw2LU4/XBF18KN
-	 RRq6lTjY9cRVQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 508BA61023;
-	Wed, 26 Feb 2025 11:11:21 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 2521168
- for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Feb 2025 11:11:19 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id C9EC2A45F87
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 26 Feb 2025 13:41:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 20DA041248
- for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Feb 2025 11:11:19 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 70600403AA;
+	Wed, 26 Feb 2025 12:41:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RWVDwZS7c-uq for <intel-wired-lan@lists.osuosl.org>;
- Wed, 26 Feb 2025 11:11:17 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.191;
- helo=szxga05-in.huawei.com; envelope-from=linyunsheng@huawei.com;
+ id hLn9ww3nMKd3; Wed, 26 Feb 2025 12:41:39 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 77CB840359
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1740573699;
+	bh=AVQGMS6TXJi8NVapbCIPqmmWNULyiwNOzzYh95qNo6Q=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=TMb2Sh80jB992JKgbiW57gKW+clVxx/X7Lg7q+QU38cXfS2/YZT3rEJlAeumS4Abp
+	 wR46fHjm6jqEq090csdqRenY8kJfkqvIAhwkZ380rKsT2fA64QSJJVG49Bgp1DfuBk
+	 GSvYygXme0QEtzsYsU9W/PBLx55wnXNPttN0Gajz4sxrEDQSAooQYqFxGgovxUseMs
+	 JMBN3TqDNRO0NYM3aiRLwuVZqK/vjD12p9U1WCShUN/dBK4qtnVbQ1zkVLFT4p8mUG
+	 7xWbtoaJ057pfiNGa9ccdk8qmf3DtjMKNCrQCUKn83YC9W6NvGODIHDxet2rRML/Nw
+	 /LQBesCNwZ36A==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 77CB840359;
+	Wed, 26 Feb 2025 12:41:39 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 846AC94F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Feb 2025 12:41:37 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 738BC60B39
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Feb 2025 12:41:37 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id zo3KcUS2s-Pj for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 26 Feb 2025 12:41:36 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
+ helo=mgamail.intel.com; envelope-from=mateusz.polchlopek@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 00C0041242
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 00C0041242
-Received: from szxga05-in.huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 00C0041242
- for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Feb 2025 11:11:15 +0000 (UTC)
-Received: from mail.maildlp.com (unknown [172.19.88.163])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Z2sB217hyz1ltb1;
- Wed, 26 Feb 2025 19:07:06 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
- by mail.maildlp.com (Postfix) with ESMTPS id B3B3118001B;
- Wed, 26 Feb 2025 19:11:09 +0800 (CST)
-Received: from localhost.localdomain (10.90.30.45) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Wed, 26 Feb 2025 19:11:09 +0800
-From: Yunsheng Lin <linyunsheng@huawei.com>
-To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
-CC: <zhangkun09@huawei.com>, <liuyonglong@huawei.com>,
- <fanghaiqing@huawei.com>, Yunsheng Lin <linyunsheng@huawei.com>, Wei Fang
- <wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, Clark Wang
- <xiaoning.wang@nxp.com>, Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet
- <edumazet@google.com>, Jeroen de Borst <jeroendb@google.com>, Harshitha
- Ramamurthy <hramamurthy@google.com>, Tony Nguyen
- <anthony.l.nguyen@intel.com>, Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
- Alexander Lobakin <aleksander.lobakin@intel.com>, Alexei Starovoitov
- <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard
- Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>, Saeed
- Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Tariq Toukan
- <tariqt@nvidia.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
- <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen
- <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Johannes Berg
- <johannes@sipsolutions.net>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Simon
- Horman <horms@kernel.org>, Ilias Apalodimas <ilias.apalodimas@linaro.org>,
- <imx@lists.linux.dev>, <netdev@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <intel-wired-lan@lists.osuosl.org>,
- <bpf@vger.kernel.org>, <linux-rdma@vger.kernel.org>,
- <linux-wireless@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-Date: Wed, 26 Feb 2025 19:03:36 +0800
-Message-ID: <20250226110340.2671366-2-linyunsheng@huawei.com>
-X-Mailer: git-send-email 2.30.0
-In-Reply-To: <20250226110340.2671366-1-linyunsheng@huawei.com>
-References: <20250226110340.2671366-1-linyunsheng@huawei.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 9550560632
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9550560632
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 9550560632
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Feb 2025 12:41:36 +0000 (UTC)
+X-CSE-ConnectionGUID: 6Ksb+gvJSwWJhuCy+cjXSw==
+X-CSE-MsgGUID: 472szwVLQDO5mtJ32J+w0g==
+X-IronPort-AV: E=McAfee;i="6700,10204,11357"; a="41259258"
+X-IronPort-AV: E=Sophos;i="6.13,317,1732608000"; d="scan'208";a="41259258"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+ by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Feb 2025 04:41:35 -0800
+X-CSE-ConnectionGUID: OzUplYlUT0S491KkA4jXBA==
+X-CSE-MsgGUID: f72xxEfzQOapx08Ge0Mwdg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.13,317,1732608000"; d="scan'208";a="116882902"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by fmviesa008.fm.intel.com with ESMTP; 26 Feb 2025 04:41:33 -0800
+Received: from ilmater.igk.intel.com (ilmater.igk.intel.com [10.123.220.50])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 19ECE12419;
+ Wed, 26 Feb 2025 12:41:32 +0000 (GMT)
+From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
+ Marcin Szycik <marcin.szycik@linux.intel.com>,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Date: Wed, 26 Feb 2025 12:33:56 +0100
+Message-ID: <20250226113409.446325-1-mateusz.polchlopek@intel.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.90.30.45]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
- dggpemf200006.china.huawei.com (7.185.36.61)
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=huawei.com
-Subject: [Intel-wired-lan] [PATCH net-next v10 1/4] page_pool: introduce
- page_pool_get_pp() API
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1740573697; x=1772109697;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=2Wtl/99KUY6VSqZjgNxx680yUju/s18Trdq/SjzInIA=;
+ b=bbKOE0cgTGd1yydGlqrnz9AdtAOOTYWb4whoJAcUx+qOuZ5tbJ2obgqC
+ fe2WXqpYON+/gjMkRDFKXXzOUaOLfxX0qjBACr6Y12W5A8hUKdPNisFiZ
+ 6eQxG5yvEAb64SB18T9aM+k9DMKaOmwbtud/rcmQRRqTOjMd51kAfXSeQ
+ 5wyZ4ppkHBRzg6SwmN1ZaqSLrLqzPz7clNW4XnayAaPMhqGVJI2vT27rc
+ 6EFwBGEKJGyYoqZO4+PkP74M9ivOnm6Q6Sak5UCh3B9BL4dC2PdIcN3/L
+ mazcFjKVdpkVN2ncpIUUGx+8oBEJ8qRs+AwWLi6h4X9wSOy+L3MEQ88Qo
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=bbKOE0cg
+Subject: [Intel-wired-lan] [PATCH iwl-next v1] ice: refactor the Tx
+ scheduler feature
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -114,235 +114,143 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Introduce page_pool_get_pp() API to avoid caller accessing
-page->pp directly, in order to make the following patch more
-reviewable as the following patch will change page->pp to
-page->pp_item to fix the DMA API misuse problem.
+Embed ice_get_tx_topo_user_sel() inside the only caller:
+ice_devlink_tx_sched_layers_get().
+Instead of jump from the wrapper to the function that does "get" operation
+it does "get" itself.
 
-Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
+Remove unnecessary comment and make usage of str_enabled_disabled()
+in ice_init_tx_topology().
+
+Suggested-by: Marcin Szycik <marcin.szycik@linux.intel.com>
+Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Reviewed-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 ---
- drivers/net/ethernet/freescale/fec_main.c          |  8 +++++---
- .../net/ethernet/google/gve/gve_buffer_mgmt_dqo.c  |  2 +-
- drivers/net/ethernet/intel/iavf/iavf_txrx.c        |  6 ++++--
- drivers/net/ethernet/intel/idpf/idpf_txrx.c        | 14 +++++++++-----
- drivers/net/ethernet/intel/libeth/rx.c             |  2 +-
- drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c   |  3 ++-
- drivers/net/netdevsim/netdev.c                     |  6 ++++--
- drivers/net/wireless/mediatek/mt76/mt76.h          |  2 +-
- include/net/libeth/rx.h                            |  3 ++-
- include/net/page_pool/helpers.h                    |  5 +++++
- 10 files changed, 34 insertions(+), 17 deletions(-)
+ .../net/ethernet/intel/ice/devlink/devlink.c  | 56 +++++++------------
+ drivers/net/ethernet/intel/ice/ice_ddp.c      |  2 -
+ drivers/net/ethernet/intel/ice/ice_main.c     |  8 +--
+ 3 files changed, 23 insertions(+), 43 deletions(-)
 
-diff --git a/drivers/net/ethernet/freescale/fec_main.c b/drivers/net/ethernet/freescale/fec_main.c
-index a86cfebedaa8..4ade1553557a 100644
---- a/drivers/net/ethernet/freescale/fec_main.c
-+++ b/drivers/net/ethernet/freescale/fec_main.c
-@@ -1038,7 +1038,8 @@ static void fec_enet_bd_init(struct net_device *dev)
- 				struct page *page = txq->tx_buf[i].buf_p;
- 
- 				if (page)
--					page_pool_put_page(page->pp, page, 0, false);
-+					page_pool_put_page(page_pool_get_pp(page),
-+							   page, 0, false);
- 			}
- 
- 			txq->tx_buf[i].buf_p = NULL;
-@@ -1576,7 +1577,7 @@ fec_enet_tx_queue(struct net_device *ndev, u16 queue_id, int budget)
- 			xdp_return_frame_rx_napi(xdpf);
- 		} else { /* recycle pages of XDP_TX frames */
- 			/* The dma_sync_size = 0 as XDP_TX has already synced DMA for_device */
--			page_pool_put_page(page->pp, page, 0, true);
-+			page_pool_put_page(page_pool_get_pp(page), page, 0, true);
- 		}
- 
- 		txq->tx_buf[index].buf_p = NULL;
-@@ -3343,7 +3344,8 @@ static void fec_enet_free_buffers(struct net_device *ndev)
- 			} else {
- 				struct page *page = txq->tx_buf[i].buf_p;
- 
--				page_pool_put_page(page->pp, page, 0, false);
-+				page_pool_put_page(page_pool_get_pp(page),
-+						   page, 0, false);
- 			}
- 
- 			txq->tx_buf[i].buf_p = NULL;
-diff --git a/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c b/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
-index 403f0f335ba6..87422b8828ff 100644
---- a/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
-+++ b/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
-@@ -210,7 +210,7 @@ void gve_free_to_page_pool(struct gve_rx_ring *rx,
- 	if (!page)
- 		return;
- 
--	page_pool_put_full_page(page->pp, page, allow_direct);
-+	page_pool_put_full_page(page_pool_get_pp(page), page, allow_direct);
- 	buf_state->page_info.page = NULL;
+diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink.c b/drivers/net/ethernet/intel/ice/devlink/devlink.c
+index fcb199efbea5..2355e21d115c 100644
+--- a/drivers/net/ethernet/intel/ice/devlink/devlink.c
++++ b/drivers/net/ethernet/intel/ice/devlink/devlink.c
+@@ -529,41 +529,6 @@ ice_devlink_reload_empr_finish(struct ice_pf *pf,
+ 	return 0;
  }
  
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-index 422312b8b54a..72f17eaac277 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-@@ -1197,7 +1197,8 @@ static void iavf_add_rx_frag(struct sk_buff *skb,
- 			     const struct libeth_fqe *rx_buffer,
- 			     unsigned int size)
- {
--	u32 hr = rx_buffer->page->pp->p.offset;
-+	struct page_pool *pool = page_pool_get_pp(rx_buffer->page);
-+	u32 hr = pool->p.offset;
- 
- 	skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buffer->page,
- 			rx_buffer->offset + hr, size, rx_buffer->truesize);
-@@ -1214,7 +1215,8 @@ static void iavf_add_rx_frag(struct sk_buff *skb,
- static struct sk_buff *iavf_build_skb(const struct libeth_fqe *rx_buffer,
- 				      unsigned int size)
- {
--	u32 hr = rx_buffer->page->pp->p.offset;
-+	struct page_pool *pool = page_pool_get_pp(rx_buffer->page);
-+	u32 hr = pool->p.offset;
- 	struct sk_buff *skb;
- 	void *va;
- 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-index 2747dc69999a..248495f587d0 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-@@ -385,7 +385,8 @@ static void idpf_rx_page_rel(struct libeth_fqe *rx_buf)
- 	if (unlikely(!rx_buf->page))
- 		return;
- 
--	page_pool_put_full_page(rx_buf->page->pp, rx_buf->page, false);
-+	page_pool_put_full_page(page_pool_get_pp(rx_buf->page), rx_buf->page,
-+				false);
- 
- 	rx_buf->page = NULL;
- 	rx_buf->offset = 0;
-@@ -3095,7 +3096,8 @@ idpf_rx_process_skb_fields(struct idpf_rx_queue *rxq, struct sk_buff *skb,
- void idpf_rx_add_frag(struct idpf_rx_buf *rx_buf, struct sk_buff *skb,
- 		      unsigned int size)
- {
--	u32 hr = rx_buf->page->pp->p.offset;
-+	struct page_pool *pool = page_pool_get_pp(rx_buf->page);
-+	u32 hr = pool->p.offset;
- 
- 	skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buf->page,
- 			rx_buf->offset + hr, size, rx_buf->truesize);
-@@ -3127,8 +3129,10 @@ static u32 idpf_rx_hsplit_wa(const struct libeth_fqe *hdr,
- 	if (!libeth_rx_sync_for_cpu(buf, copy))
- 		return 0;
- 
--	dst = page_address(hdr->page) + hdr->offset + hdr->page->pp->p.offset;
--	src = page_address(buf->page) + buf->offset + buf->page->pp->p.offset;
-+	dst = page_address(hdr->page) + hdr->offset +
-+		page_pool_get_pp(hdr->page)->p.offset;
-+	src = page_address(buf->page) + buf->offset +
-+		page_pool_get_pp(buf->page)->p.offset;
- 	memcpy(dst, src, LARGEST_ALIGN(copy));
- 
- 	buf->offset += copy;
-@@ -3146,7 +3150,7 @@ static u32 idpf_rx_hsplit_wa(const struct libeth_fqe *hdr,
-  */
- struct sk_buff *idpf_rx_build_skb(const struct libeth_fqe *buf, u32 size)
- {
--	u32 hr = buf->page->pp->p.offset;
-+	u32 hr = page_pool_get_pp(buf->page)->p.offset;
- 	struct sk_buff *skb;
- 	void *va;
- 
-diff --git a/drivers/net/ethernet/intel/libeth/rx.c b/drivers/net/ethernet/intel/libeth/rx.c
-index 66d1d23b8ad2..8de0c3a3b146 100644
---- a/drivers/net/ethernet/intel/libeth/rx.c
-+++ b/drivers/net/ethernet/intel/libeth/rx.c
-@@ -207,7 +207,7 @@ EXPORT_SYMBOL_NS_GPL(libeth_rx_fq_destroy, "LIBETH");
-  */
- void libeth_rx_recycle_slow(struct page *page)
- {
--	page_pool_recycle_direct(page->pp, page);
-+	page_pool_recycle_direct(page_pool_get_pp(page), page);
- }
- EXPORT_SYMBOL_NS_GPL(libeth_rx_recycle_slow, "LIBETH");
- 
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-index 6f3094a479e1..b6bee95db994 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-@@ -709,7 +709,8 @@ static void mlx5e_free_xdpsq_desc(struct mlx5e_xdpsq *sq,
- 				/* No need to check ((page->pp_magic & ~0x3UL) == PP_SIGNATURE)
- 				 * as we know this is a page_pool page.
- 				 */
--				page_pool_recycle_direct(page->pp, page);
-+				page_pool_recycle_direct(page_pool_get_pp(page),
-+							 page);
- 			} while (++n < num);
- 
- 			break;
-diff --git a/drivers/net/netdevsim/netdev.c b/drivers/net/netdevsim/netdev.c
-index a41dc79e9c2e..ffb7bcc67eba 100644
---- a/drivers/net/netdevsim/netdev.c
-+++ b/drivers/net/netdevsim/netdev.c
-@@ -836,7 +836,8 @@ nsim_pp_hold_write(struct file *file, const char __user *data,
- 		if (!ns->page)
- 			ret = -ENOMEM;
- 	} else {
--		page_pool_put_full_page(ns->page->pp, ns->page, false);
-+		page_pool_put_full_page(page_pool_get_pp(ns->page), ns->page,
-+					false);
- 		ns->page = NULL;
- 	}
- 
-@@ -1048,7 +1049,8 @@ void nsim_destroy(struct netdevsim *ns)
- 
- 	/* Put this intentionally late to exercise the orphaning path */
- 	if (ns->page) {
--		page_pool_put_full_page(ns->page->pp, ns->page, false);
-+		page_pool_put_full_page(page_pool_get_pp(ns->page), ns->page,
-+					false);
- 		ns->page = NULL;
- 	}
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 132148f7b107..11a88ecf8533 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -1777,7 +1777,7 @@ static inline void mt76_put_page_pool_buf(void *buf, bool allow_direct)
- {
- 	struct page *page = virt_to_head_page(buf);
- 
--	page_pool_put_full_page(page->pp, page, allow_direct);
-+	page_pool_put_full_page(page_pool_get_pp(page), page, allow_direct);
- }
- 
- static inline void *
-diff --git a/include/net/libeth/rx.h b/include/net/libeth/rx.h
-index ab05024be518..2a3991d5b7c0 100644
---- a/include/net/libeth/rx.h
-+++ b/include/net/libeth/rx.h
-@@ -137,7 +137,8 @@ static inline bool libeth_rx_sync_for_cpu(const struct libeth_fqe *fqe,
- 		return false;
- 	}
- 
--	page_pool_dma_sync_for_cpu(page->pp, page, fqe->offset, len);
-+	page_pool_dma_sync_for_cpu(page_pool_get_pp(page), page, fqe->offset,
-+				   len);
- 
- 	return true;
- }
-diff --git a/include/net/page_pool/helpers.h b/include/net/page_pool/helpers.h
-index 582a3d00cbe2..ab91911af215 100644
---- a/include/net/page_pool/helpers.h
-+++ b/include/net/page_pool/helpers.h
-@@ -83,6 +83,11 @@ static inline u64 *page_pool_ethtool_stats_get(u64 *data, const void *stats)
- }
- #endif
- 
-+static inline struct page_pool *page_pool_get_pp(struct page *page)
-+{
-+	return page->pp;
-+}
-+
+-/**
+- * ice_get_tx_topo_user_sel - Read user's choice from flash
+- * @pf: pointer to pf structure
+- * @layers: value read from flash will be saved here
+- *
+- * Reads user's preference for Tx Scheduler Topology Tree from PFA TLV.
+- *
+- * Return: zero when read was successful, negative values otherwise.
+- */
+-static int ice_get_tx_topo_user_sel(struct ice_pf *pf, uint8_t *layers)
+-{
+-	struct ice_aqc_nvm_tx_topo_user_sel usr_sel = {};
+-	struct ice_hw *hw = &pf->hw;
+-	int err;
+-
+-	err = ice_acquire_nvm(hw, ICE_RES_READ);
+-	if (err)
+-		return err;
+-
+-	err = ice_aq_read_nvm(hw, ICE_AQC_NVM_TX_TOPO_MOD_ID, 0,
+-			      sizeof(usr_sel), &usr_sel, true, true, NULL);
+-	if (err)
+-		goto exit_release_res;
+-
+-	if (usr_sel.data & ICE_AQC_NVM_TX_TOPO_USER_SEL)
+-		*layers = ICE_SCHED_5_LAYERS;
+-	else
+-		*layers = ICE_SCHED_9_LAYERS;
+-
+-exit_release_res:
+-	ice_release_nvm(hw);
+-
+-	return err;
+-}
+-
  /**
-  * page_pool_dev_alloc_pages() - allocate a page.
-  * @pool:	pool from which to allocate
+  * ice_update_tx_topo_user_sel - Save user's preference in flash
+  * @pf: pointer to pf structure
+@@ -610,19 +575,36 @@ static int ice_update_tx_topo_user_sel(struct ice_pf *pf, int layers)
+  * @id: the parameter ID to set
+  * @ctx: context to store the parameter value
+  *
++ * Reads user's preference for Tx Scheduler Topology Tree from PFA TLV.
++ *
+  * Return: zero on success and negative value on failure.
+  */
+ static int ice_devlink_tx_sched_layers_get(struct devlink *devlink, u32 id,
+ 					   struct devlink_param_gset_ctx *ctx)
+ {
++	struct ice_aqc_nvm_tx_topo_user_sel usr_sel = {};
+ 	struct ice_pf *pf = devlink_priv(devlink);
++	struct ice_hw *hw = &pf->hw;
+ 	int err;
+ 
+-	err = ice_get_tx_topo_user_sel(pf, &ctx->val.vu8);
++	err = ice_acquire_nvm(hw, ICE_RES_READ);
+ 	if (err)
+ 		return err;
+ 
+-	return 0;
++	err = ice_aq_read_nvm(hw, ICE_AQC_NVM_TX_TOPO_MOD_ID, 0,
++			      sizeof(usr_sel), &usr_sel, true, true, NULL);
++	if (err)
++		goto exit_release_res;
++
++	if (usr_sel.data & ICE_AQC_NVM_TX_TOPO_USER_SEL)
++		ctx->val.vu8 = ICE_SCHED_5_LAYERS;
++	else
++		ctx->val.vu8 = ICE_SCHED_9_LAYERS;
++
++exit_release_res:
++	ice_release_nvm(hw);
++
++	return err;
+ }
+ 
+ /**
+diff --git a/drivers/net/ethernet/intel/ice/ice_ddp.c b/drivers/net/ethernet/intel/ice/ice_ddp.c
+index 69d5b1a28491..a2f738eaf02e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ddp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ddp.c
+@@ -2324,8 +2324,6 @@ enum ice_ddp_state ice_copy_and_init_pkg(struct ice_hw *hw, const u8 *buf,
+  * @flags: pointer to descriptor flags
+  * @set: 0-get, 1-set topology
+  *
+- * The function will get or set Tx topology
+- *
+  * Return: zero when set was successful, negative values otherwise.
+  */
+ static int
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index b084839eb811..9d9cad81b336 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -4544,10 +4544,10 @@ ice_init_tx_topology(struct ice_hw *hw, const struct firmware *firmware)
+ 	dev = ice_pf_to_dev(pf);
+ 	err = ice_cfg_tx_topo(hw, firmware->data, firmware->size);
+ 	if (!err) {
+-		if (hw->num_tx_sched_layers > num_tx_sched_layers)
+-			dev_info(dev, "Tx scheduling layers switching feature disabled\n");
+-		else
+-			dev_info(dev, "Tx scheduling layers switching feature enabled\n");
++		dev_info(dev, "Tx scheduling layers switching feature %s\n",
++			 str_enabled_disabled(hw->num_tx_sched_layers <=
++					      num_tx_sched_layers));
++
+ 		/* if there was a change in topology ice_cfg_tx_topo triggered
+ 		 * a CORER and we need to re-init hw
+ 		 */
 -- 
-2.33.0
+2.48.1
 
