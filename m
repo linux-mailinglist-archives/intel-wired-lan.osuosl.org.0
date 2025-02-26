@@ -1,217 +1,93 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A1E3BA46A8E
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 26 Feb 2025 20:03:16 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C4F7A46A27
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 26 Feb 2025 19:50:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7B88F60658;
-	Wed, 26 Feb 2025 19:03:14 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9DBF061036;
+	Wed, 26 Feb 2025 18:50:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id eiYZqF2glPeS; Wed, 26 Feb 2025 19:03:13 +0000 (UTC)
+ id a3AkJi8uVmCh; Wed, 26 Feb 2025 18:50:33 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8242961052
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A7BB961045
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1740596593;
-	bh=8+CFq6gELgHqcrDa9KYDElKpgAKB3L1hC4siFG3OcWA=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1740595832;
+	bh=NOy8MZswnCN9Z/sFkyFtvMhaELZGVtDWghtPctZZWBg=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=FnXdMPcWd7hx04BM4xasekZ4ot773eONdQgNfr81u68VCiolF23RGMBHa10BV5nd1
-	 A78D4RXt9fc4xBr+352f3Tmx59/y2MoZtEdP4KYizGCZF/WurK9L1LwifVzbeadpJv
-	 OB8PQLBmsafWho42ngw5DeNbd5OZUfq842/J0oOHtCek+fMYPqBc4xUC693i7nZwki
-	 mON79VA10Vz7/tpG7ABP7J94ndvvlFnFMKyd/b7YOWkvDewZTViaMtEklanJWC1SiS
-	 Jh9DjX3q9pmIRYFNEoRHffORM9u8URF9D9ziMpSmP98C366tMpZ6QQ0fWLpnLb3idn
-	 hJJb3QxHsix8Q==
+	b=G92uDUcEdJOAjbq1ZLk5cu+sgwwNpaa9Hrt5ly3K9SHQtFtR5VO2rWMbYMfwdH5MU
+	 vKZhSDUr2bUkYXSP/xZVdrbs24FzfKcIZzg0iB7Sqwu6XBpd224vhZKOahuo0e1i1x
+	 nu1x3IN0xlYMJKAwMw0vDChopVFVXOKXil8vNjPMl2zKLMxFnW4R15pBxBnlonPxdJ
+	 +pfJJND/VERwNvA3RUGx7qU+1Ui4uPnyfbtAQcQiCyAkNCfzKzp6guZzG2VsEMXm/Y
+	 xw3TNl2rQUw0B4Pr8nC7eU9x0K5yFIKo9Pg1JAy2Tkamo8GVFAbA4SIwykzr7+PQAl
+	 9G+Y8LKWQANKg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8242961052;
-	Wed, 26 Feb 2025 19:03:13 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A7BB961045;
+	Wed, 26 Feb 2025 18:50:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 2AC9194F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Feb 2025 17:37:03 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 6D82D1ED4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Feb 2025 18:50:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 01791608A3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Feb 2025 17:37:03 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4DBE740D6C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Feb 2025 18:50:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id nFSsAez-57t8 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 26 Feb 2025 17:37:02 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
- helo=mgamail.intel.com; envelope-from=david.m.ertman@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org ED38460ABC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org ED38460ABC
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
- by smtp3.osuosl.org (Postfix) with ESMTPS id ED38460ABC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Feb 2025 17:37:01 +0000 (UTC)
-X-CSE-ConnectionGUID: WaD/5I4MQEKEoXr6OwLMXw==
-X-CSE-MsgGUID: rgsBHIcET0uh2E1kudM5tA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11357"; a="52850689"
-X-IronPort-AV: E=Sophos;i="6.13,317,1732608000"; d="scan'208";a="52850689"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
- by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Feb 2025 09:37:01 -0800
-X-CSE-ConnectionGUID: Z5JGUmzEQ9eo88wWuYtPnQ==
-X-CSE-MsgGUID: cfFMAOs/TJ2bmTekLObDBg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,317,1732608000"; d="scan'208";a="116550998"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orviesa009.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 26 Feb 2025 09:37:01 -0800
-Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.44; Wed, 26 Feb 2025 09:37:00 -0800
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.44 via Frontend Transport; Wed, 26 Feb 2025 09:37:00 -0800
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.48) by
- edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Wed, 26 Feb 2025 09:37:00 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=URQiCDzukYIyPsjGAqhuE1iiILTbtG7HWTQyszsY+DhqiCFZz5zQHZAqZpVToFbmHyj/+b5artQkqeTHrzfLN2PdCbRjqMnm3XZ0bE95Imp79zpPFBFDx6htDjY2dYPEKRS+GBxhuc7G5dVxOAk798RPzV3MhvRl4dSDAg7mQBj17jMvg2wL+kk73VFq/ynmcklax96b4TOdb0oZSFL8b69vsf0GCwhPuxOfKCgrcZLd9nJFd1gzVrzcF4/myWdB5tEYzUG6sr6pPzia9pYO3BgMjDCEjA695gOYN/4jsaHM8ezvukWe3SdsDwhHI5CgLZtCf3gknCkn1L+p9OW3Zg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8+CFq6gELgHqcrDa9KYDElKpgAKB3L1hC4siFG3OcWA=;
- b=JBnR62TT45rkVbbILJeHC1ljCtsdNGeuOb6U1cmhrZRh2k8B7K+vG071zqBglKxJU0ryi5Obbpmc2KUyOmpp33dY3oMtPfUMiueM/NOAOG3j1YvWIkNiEpwwyg6GfKlFeN4Hf7v4I4yHMPGZh8CCIqe7LcVQRKeScj7hbCbdYZP/1ilysiEK+Z3xgrcOgeKm7wo2xgFQAqN30F1A+lByZvv8MtkVwJ94MULeLLbx6Lfy//jjbS4cu4w5Ux2ZMhdy1myjd2hLsPYV+EuP1989VN6JkMZHt5Zzr2p4kmLYQ25akxnrzVdheHPEzI/e7XipNwNq/gnWKYGJ4ri1FGpQ3w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from IA1PR11MB6194.namprd11.prod.outlook.com (2603:10b6:208:3ea::22)
- by PH7PR11MB7608.namprd11.prod.outlook.com (2603:10b6:510:269::20)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8466.20; Wed, 26 Feb
- 2025 17:36:44 +0000
-Received: from IA1PR11MB6194.namprd11.prod.outlook.com
- ([fe80::4fd6:580b:40b9:bd73]) by IA1PR11MB6194.namprd11.prod.outlook.com
- ([fe80::4fd6:580b:40b9:bd73%7]) with mapi id 15.20.8466.016; Wed, 26 Feb 2025
- 17:36:44 +0000
-From: "Ertman, David M" <david.m.ertman@intel.com>
-To: Leon Romanovsky <leon@kernel.org>, "Nikolova, Tatyana E"
- <tatyana.e.nikolova@intel.com>
-CC: "jgg@nvidia.com" <jgg@nvidia.com>, "intel-wired-lan@lists.osuosl.org"
- <intel-wired-lan@lists.osuosl.org>, "linux-rdma@vger.kernel.org"
- <linux-rdma@vger.kernel.org>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>
-Thread-Topic: [iwl-next v4 1/1] iidc/ice/irdma: Update IDC to support multiple
- consumers
-Thread-Index: AQHbh0Lrc4Ejq0Eq70KEJtqLnJXSa7NXpsEAgAEFtbA=
-Date: Wed, 26 Feb 2025 17:36:44 +0000
-Message-ID: <IA1PR11MB61944C74491DECA111E84021DDC22@IA1PR11MB6194.namprd11.prod.outlook.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id BLjNd5Abndyl for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 26 Feb 2025 18:50:29 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c04::f03c:95ff:fe5e:7468; helo=tor.source.kernel.org;
+ envelope-from=leon@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 35D0440C49
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 35D0440C49
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04::f03c:95ff:fe5e:7468])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 35D0440C49
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 26 Feb 2025 18:50:28 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id B05C261503;
+ Wed, 26 Feb 2025 18:50:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CAB18C4CED6;
+ Wed, 26 Feb 2025 18:50:26 +0000 (UTC)
+Date: Wed, 26 Feb 2025 20:50:22 +0200
+From: Leon Romanovsky <leon@kernel.org>
+To: "Ertman, David M" <david.m.ertman@intel.com>
+Cc: "Nikolova, Tatyana E" <tatyana.e.nikolova@intel.com>,
+ "jgg@nvidia.com" <jgg@nvidia.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-rdma@vger.kernel.org" <linux-rdma@vger.kernel.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+Message-ID: <20250226185022.GM53094@unreal>
 References: <20250225050428.2166-1-tatyana.e.nikolova@intel.com>
  <20250225050428.2166-2-tatyana.e.nikolova@intel.com>
  <20250225075530.GD53094@unreal>
-In-Reply-To: <20250225075530.GD53094@unreal>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: IA1PR11MB6194:EE_|PH7PR11MB7608:EE_
-x-ms-office365-filtering-correlation-id: dae9cf0f-9af5-4958-ca9a-08dd568c2328
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0; ARA:13230040|366016|376014|1800799024|38070700018;
-x-microsoft-antispam-message-info: =?us-ascii?Q?YA9mpbwofxNQMHQHIf4Lg4E6WWeWHGs/JxIMe3RacZnu0/pxir/cjywf2kEz?=
- =?us-ascii?Q?z3GOFoqwP7yMNO+jhv573vSvcouD1xmk5I+slFkc8FqSCRgM1vcip7S9Gswy?=
- =?us-ascii?Q?sVBpl+UsrbsCQlhAH4TMzZq4KBMHJdhH7pRoZwsXp7NGodI/ClApHGm2M3mF?=
- =?us-ascii?Q?6CPKicLR3x4TVjZLrYTEFRTEhUAN2QrETtSQe88vIP7jdvRIyVG2OL7J8pXJ?=
- =?us-ascii?Q?kgb84Vg9Q2HKNEmmE/gleZyxVA+m9KEmH3sruOFiqSatVpxAJxq/rTMLbNhk?=
- =?us-ascii?Q?6LAThoXx+rF2pKQFW/Neob3Y5glJD2kY1mF/ELRQK5J57ooYEELSx1UCxfUI?=
- =?us-ascii?Q?SE852NHBGGxSpn19FpMVNlBpHXFRkaNd6MTpa1JBkMWYUFIIEFG3j3NYwh/6?=
- =?us-ascii?Q?mVi9FdsA7bDIMM4tlepe8t5nE1eOivvoeFIyFBOEzjGK9oKhufSZNTkt+Eju?=
- =?us-ascii?Q?b30qo0K3suMpyjOzSL9P3e/2fZ7EQMII0pQyVyfHYCHZ8Kqz4+sK9ELRtigL?=
- =?us-ascii?Q?jIt5slD/5PbrlNzcTt6dbRvf30Dwgol4Erqf0Ttad24Bc4MZEcoKzzwDC1qt?=
- =?us-ascii?Q?sIkz97i2/V9xsougrLekIJSvHlxXcZe694JdN9C5KVWr/zM9V3WLC2oK7i8h?=
- =?us-ascii?Q?1zr8CpD1rrOdSHhuhFzS5sW8yMsMTnN7LJHWpeGIH9Rag67b8JBIAD82Aq7I?=
- =?us-ascii?Q?uRR+t3ehNWxC0LPzOz8ul+4rojHwT07fxU+X84y0Y+aJNCPV9Uf0vpoiuXpE?=
- =?us-ascii?Q?ocCr5F93Oke0OJUGSlUurh4yyBlTFwNPJlcH/2U8O3zcLCUPLV6iRMumdbBb?=
- =?us-ascii?Q?koQ43dtLPXHSJtGF9VNTo/EPJw/xa6x4CcGJrv2GO80fxlboFO302TNh84DO?=
- =?us-ascii?Q?uOVEj1TyYtGz1rzrT2UkpiUZUZyv27H+bmZVnSMImY7Ebhyik2taG6ELKJi4?=
- =?us-ascii?Q?HRTgXKYtJk90YRThQJxYuCcniSGBC2XHa8PqlcSNMTIXdK3FLQd5DvkAp7Mf?=
- =?us-ascii?Q?cM7kjmLs9ONULOeESM6NGgTlQE5kj/sprt8ON0EztW2sozDTZciTfzdCWZsD?=
- =?us-ascii?Q?TyMQANzt2p7K4qoCrwplII2V0S2xMzobNwK3JfkdIf376PMNVpoqFfmDj3v0?=
- =?us-ascii?Q?YEl1UsFuOmnyKpRGg5MJZcc6VcsfoHKuryuY1WnkLc9lpI5dbvSw8pHFOX0V?=
- =?us-ascii?Q?/MtPNdg0rL7iJnk0ewyjiwDVVfc5VvIPW8jgBbPImylfm6k+9v0zr+5i5mms?=
- =?us-ascii?Q?A704LMgIOVmxw8ZiF2uazNHrchFV0MAALoJ/etk5pJnh477c61Loq8My1oKJ?=
- =?us-ascii?Q?o/8nPjITx9r1XWyP8mPyxkfAYNmyM872FVAPUIsq7Tdu+YoDbRmsgIy9jBcZ?=
- =?us-ascii?Q?iRtJRdZW06jKjA29+ct8AiJL3moDWfyyyBymSqdhTpoUpZVZw1tJSrW3gjbC?=
- =?us-ascii?Q?ZfgIW2zOp0BHnUDU+Qs6JBvQl731bvyj?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:IA1PR11MB6194.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(376014)(1800799024)(38070700018); DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?DWwiRc1CXOvdTMimImn/9esyU6dX5oK/mh3YsMgypQYLcsRaF7JedDj/sFYv?=
- =?us-ascii?Q?ime2V5dm/QO0eeq01pYZS9y5v+CXmGiVDsUpBWEbBjFoQWGQ02DvkTNfI7ae?=
- =?us-ascii?Q?OnfbzYiRe9FJSEdkf2JmycutbZcAfvYYp3cP4q8DShtRwTU4YJwR/AIpoQjf?=
- =?us-ascii?Q?g0c0eeo68nugGQaFjatxI712BLtR7SXaVp9qONXobWHesFXswGP231vLRnJC?=
- =?us-ascii?Q?2XRxOGHFpF3b9DC0A7qG+2LhhEA6PpRAGXX4rcX/0qfSlSSlbnbyj0xGBKPD?=
- =?us-ascii?Q?sdI+52ysnJbfo3Nla3gCeke19fbCBxwJErs6OYk1CjqlcQEtLU0gLqfX9zxr?=
- =?us-ascii?Q?xFXXvYTecBlCIIPTDl7aEdPlkvflH9/xccCISq7CuMvDsJ06sDPKTuLCX/Mj?=
- =?us-ascii?Q?vZwOZGJE0UCjr8x1ERHJez6MxHNx5IamDosRWrnrlWDdLgCqSTbYNtgEnSPG?=
- =?us-ascii?Q?3UeIgIeuPh5vNYiK8/95YIlAcG7AtBdTnWjs9yJljtL9Z/Y0qh4m9/X8/tLu?=
- =?us-ascii?Q?7SvYuD8RWCU9hkBWuL6Yd+DK7x16CM3rWXfJdR61rcUGDa0QbjJA+yVQatTc?=
- =?us-ascii?Q?KjjkKaH14dUDz1mPTKOnYIzNIJqJhhTo+5XbNCEwlrvyZxUu+tS0+cNT9Vxc?=
- =?us-ascii?Q?/37F3UEI2ypNAzG/klJ4N7on5IZLuImRpzUtZG0IOCi8dY6H7QKO5Em/fRkh?=
- =?us-ascii?Q?BR+fbPE8f0gjbDwMJsZo6TmI4+rwzizGZ+t8rNgXPmd1G1rwzIIG7KbeltKa?=
- =?us-ascii?Q?mj3lyBaep80nv1Z/Je/+Vwcek7eaBEMnKLkeoNNCp/t3BRG8eQRhYauIeu9h?=
- =?us-ascii?Q?E6OqejPCQa+7vWo17SHr1wQnEw0IvGefEUyePDqRQXrWdwCc6sdjJdOOrBsO?=
- =?us-ascii?Q?hbaduV8upSG4N1PDpJ6iz0jl9GTnkfvpvhVvpVY+w5mPTqOcnyhBupY+kDdk?=
- =?us-ascii?Q?w6/gpoNbxZAQhIQLBOOKORbVmW/A+OMXeppNZobFHCuOvpmf7vugSQ5kREx6?=
- =?us-ascii?Q?raigbL8ZCOMKhmT4F6gFU75+LsdnPSjvmCeQP6tbxK1v4ELjxUyMlAQjdb8Z?=
- =?us-ascii?Q?9M9yKv6s70W1xeXoAxsAnOacgJj/gnAJMSrsf/JUoMqBYNmln75a5dp5/JE5?=
- =?us-ascii?Q?cejR/aX/fRV14CYaF2K96DSERMQEz7KMxGSPCXQbQ2OIuuFv7+s4MgpaqPOF?=
- =?us-ascii?Q?73t/W18WiMdsAQ6fdAB2eEdV6SoHyxNi2O9wSuYl8i5+MluVwdELk3ldoPO6?=
- =?us-ascii?Q?Ft9rzOe2kBy8+J23i5z6FIQI2iriBDXcRbK75tXl2uIj9j/mqaL62CBHFufM?=
- =?us-ascii?Q?WxFvm7Y8c9oUXq3R4MTvOs+O4lo1dOZXpborW2lRVypUq3LHt5Xob2hOsXG3?=
- =?us-ascii?Q?wpiODkV9BX7Z/zWQ7H9+GcKlhlJZMXU/mpyf/G+i9Ye7PUnKDqfdFPCenci0?=
- =?us-ascii?Q?b8C5i2ANrvPlnHt2JA7V4vUV7QdaUVtldoeYyaSwAEWrb+qWWWiGgy3rdV1a?=
- =?us-ascii?Q?wr6gaecwMNcYSTBNvJTm68ZKtXl+WaE6aWsg6Cuh87+wIT+L/+aZd1mSiXdG?=
- =?us-ascii?Q?bQXrLrEXVb7fsOxjUbQfvyV7NL++gWwDYebHD1o9?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ <IA1PR11MB61944C74491DECA111E84021DDC22@IA1PR11MB6194.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: IA1PR11MB6194.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: dae9cf0f-9af5-4958-ca9a-08dd568c2328
-X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Feb 2025 17:36:44.1400 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: BLh1BGnlWrPMH46TO2LpVQpCTQogqE2YEaYHAMqpCVpE/8TIZWyHbX3Jqn7ASQz7fRnc/ow1osqPpwsZOzw+DPoEBqFW179Vl/TwmB6lZvw=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB7608
-X-OriginatorOrg: intel.com
-X-Mailman-Approved-At: Wed, 26 Feb 2025 19:03:11 +0000
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <IA1PR11MB61944C74491DECA111E84021DDC22@IA1PR11MB6194.namprd11.prod.outlook.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1740591422; x=1772127422;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=Dl/ylogwQn4G7ikFm4xqms93w6o2+ry8dLo6mB91iJE=;
- b=abSw/0WJl5ldz/TanNWQIGgY4e2c5KcWLScLi8L4Jy0VPI5zonv6X234
- s78z/SRLs+wDwbE5uLZZ/C8uG26qCdd+3HxDHLNQQWRixL2vB0dkjPuHt
- zf4wKMMUja79Gl4KQwWC7okulArhYzSlsnQ+CuAlp5cqP28reYms5+YqT
- vU4hC3s3dkbPSiZZAZ+ceQm04joQTn2S94XfzHh6mugmUvnTTx2RjezeP
- FNhzI+HjC/vQcS4XG9ujayJtetA2VsNplropGFhrrNzBFcLxgb6ebPtzE
- s57xSTrrDH/DJWqUL0GK10+5HnKwcKr7MaInIu3D/xaYcc1rrgNemoiJh
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=abSw/0WJ
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
+ d=kernel.org; s=k20201202; t=1740595827;
+ bh=GAlBE1MxBLfuNJIdhoKlRlj8/U0KvapKDVttTpAWkto=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=O+4/s9LhDb3+Glvl+MPUJGDHbmTaCE5lHu8qIRVou/5uMi4gLs+UsT45p/eEplF13
+ X6+GbdS5V8QvUDsV1RYxM6s86Z7YRDs3bHSwEI9iMzoEAZxGs1F+fO/qoeo+Sy9+7e
+ ah3TfR5ac/wpSWNargdVhkYDiz+jljWsfwnoIe4VcaLJU2MVYTL2UCTlXKvzVuHQCf
+ 4+5sX7Kb3qe311nMoFcvPRYbmG/9eypEHJYoCIkEwtbVxPMy6/vXZmltChkJuei9Uu
+ Y1oStQ5jFCVLR4QsvoDvq9vj1QLyvljO07AT5MvdvcV+500o3dnfPEXtQk33vP0UZA
+ lxWmXMOf2I8YA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=O+4/s9Lh
 Subject: Re: [Intel-wired-lan] [iwl-next v4 1/1] iidc/ice/irdma: Update IDC
  to support multiple consumers
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -229,105 +105,122 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Leon Romanovsky <leon@kernel.org>
-> Sent: Monday, February 24, 2025 11:56 PM
-> To: Nikolova, Tatyana E <tatyana.e.nikolova@intel.com>
-> Cc: jgg@nvidia.com; intel-wired-lan@lists.osuosl.org; linux-
-> rdma@vger.kernel.org; netdev@vger.kernel.org; Ertman, David M
-> <david.m.ertman@intel.com>
-> Subject: Re: [iwl-next v4 1/1] iidc/ice/irdma: Update IDC to support mult=
-iple
-> consumers
->=20
-> On Mon, Feb 24, 2025 at 11:04:28PM -0600, Tatyana Nikolova wrote:
-> > From: Dave Ertman <david.m.ertman@intel.com>
-> >
-> > To support RDMA for E2000 product, the idpf driver will use the IDC
-> > interface with the irdma auxiliary driver, thus becoming a second
-> > consumer of it. This requires the IDC be updated to support multiple
-> > consumers. The use of exported symbols no longer makes sense because it
-> > will require all core drivers (ice/idpf) that can interface with irdma
-> > auxiliary driver to be loaded even if hardware is not present for those
-> > drivers.
->=20
-> In auxiliary bus world, the code drivers (ice/idpf) need to created
-> auxiliary devices only if specific device present. That auxiliary device
-> will trigger the load of specific module (irdma in our case).
->=20
-> EXPORT_SYMBOL won't trigger load of irdma driver, but the opposite is
-> true, load of irdma will trigger load of ice/idpf drivers (depends on
-> their exported symbol).
->=20
-> >
-> > To address this, implement an ops struct that will be universal set of
-> > naked function pointers that will be populated by each core driver for
-> > the irdma auxiliary driver to call.
->=20
-> No, we worked very hard to make proper HW discovery and driver autoload,
-> let's not return back. For now, it is no-go.
+On Wed, Feb 26, 2025 at 05:36:44PM +0000, Ertman, David M wrote:
+> > -----Original Message-----
+> > From: Leon Romanovsky <leon@kernel.org>
+> > Sent: Monday, February 24, 2025 11:56 PM
+> > To: Nikolova, Tatyana E <tatyana.e.nikolova@intel.com>
+> > Cc: jgg@nvidia.com; intel-wired-lan@lists.osuosl.org; linux-
+> > rdma@vger.kernel.org; netdev@vger.kernel.org; Ertman, David M
+> > <david.m.ertman@intel.com>
+> > Subject: Re: [iwl-next v4 1/1] iidc/ice/irdma: Update IDC to support multiple
+> > consumers
+> > 
+> > On Mon, Feb 24, 2025 at 11:04:28PM -0600, Tatyana Nikolova wrote:
+> > > From: Dave Ertman <david.m.ertman@intel.com>
+> > >
+> > > To support RDMA for E2000 product, the idpf driver will use the IDC
+> > > interface with the irdma auxiliary driver, thus becoming a second
+> > > consumer of it. This requires the IDC be updated to support multiple
+> > > consumers. The use of exported symbols no longer makes sense because it
+> > > will require all core drivers (ice/idpf) that can interface with irdma
+> > > auxiliary driver to be loaded even if hardware is not present for those
+> > > drivers.
+> > 
+> > In auxiliary bus world, the code drivers (ice/idpf) need to created
+> > auxiliary devices only if specific device present. That auxiliary device
+> > will trigger the load of specific module (irdma in our case).
+> > 
+> > EXPORT_SYMBOL won't trigger load of irdma driver, but the opposite is
+> > true, load of irdma will trigger load of ice/idpf drivers (depends on
+> > their exported symbol).
+> > 
+> > >
+> > > To address this, implement an ops struct that will be universal set of
+> > > naked function pointers that will be populated by each core driver for
+> > > the irdma auxiliary driver to call.
+> > 
+> > No, we worked very hard to make proper HW discovery and driver autoload,
+> > let's not return back. For now, it is no-go.
+> 
+> Hi Leon,
+> 
+> I am a little confused about what the problem here is.  The main issue I pull
+> from your response is: Removing exported symbols will stop ice/idpf from
+> autoloading when irdma loads.  Is this correct or did I miss your point?
 
-Hi Leon,
+It is one of the main points.
 
-I am a little confused about what the problem here is.  The main issue I pu=
-ll
-from your response is: Removing exported symbols will stop ice/idpf from
-autoloading when irdma loads.  Is this correct or did I miss your point?
+> 
+> But, if there is an ice or idpf supported device present in the system, the
+> appropriate driver will have already been loaded anyway (and gone through its
+> probe flow to create auxiliary devices).  If it is not loaded, then the system owner
+> has either unloaded it manually or blacklisted it.  This would not cause an issue
+> anyway, since irdma and ice/idpf can load in any order.
 
-But, if there is an ice or idpf supported device present in the system, the
-appropriate driver will have already been loaded anyway (and gone through i=
-ts
-probe flow to create auxiliary devices).  If it is not loaded, then the sys=
-tem owner
-has either unloaded it manually or blacklisted it.  This would not cause an=
- issue
-anyway, since irdma and ice/idpf can load in any order.
+There are two assumptions above, which both not true.
+1. Users never issue "modprobe irdma" command alone and always will call
+to whole chain "modprobe ice ..." before.
+2. You open-code module subsystem properly with reference counters,
+ownership and locks to protect from function pointers to be set/clear
+dynamically.
 
->=20
-> <...>
->=20
-> > +/* Following APIs are implemented by core PCI driver */
-> > +struct idc_rdma_core_ops {
-> > +	int (*vc_send_sync)(struct idc_rdma_core_dev_info *cdev_info, u8
-> *msg,
-> > +			    u16 len, u8 *recv_msg, u16 *recv_len);
-> > +	int (*vc_queue_vec_map_unmap)(struct idc_rdma_core_dev_info
-> *cdev_info,
-> > +				      struct idc_rdma_qvlist_info *qvl_info,
-> > +				      bool map);
-> > +	/* vport_dev_ctrl is for RDMA CORE driver to indicate it is either
-> ready
-> > +	 * for individual vport aux devices, or it is leaving the state where=
- it
-> > +	 * can support vports and they need to be downed
-> > +	 */
-> > +	int (*vport_dev_ctrl)(struct idc_rdma_core_dev_info *cdev_info,
-> > +			      bool up);
-> > +	int (*request_reset)(struct idc_rdma_core_dev_info *cdev_info,
-> > +			     enum idc_rdma_reset_type reset_type);
-> > +};
->=20
-> Core driver can call to callbacks in irdma, like you already have for
-> irdma_iidc_event_handler(), but all calls from irdma to core driver must
-> be through exported symbols. It gives us race-free world in whole driver
-> except one very specific place (irdma_iidc_event_handler).
+> 
+> > 
+> > <...>
+> > 
+> > > +/* Following APIs are implemented by core PCI driver */
+> > > +struct idc_rdma_core_ops {
+> > > +	int (*vc_send_sync)(struct idc_rdma_core_dev_info *cdev_info, u8
+> > *msg,
+> > > +			    u16 len, u8 *recv_msg, u16 *recv_len);
+> > > +	int (*vc_queue_vec_map_unmap)(struct idc_rdma_core_dev_info
+> > *cdev_info,
+> > > +				      struct idc_rdma_qvlist_info *qvl_info,
+> > > +				      bool map);
+> > > +	/* vport_dev_ctrl is for RDMA CORE driver to indicate it is either
+> > ready
+> > > +	 * for individual vport aux devices, or it is leaving the state where it
+> > > +	 * can support vports and they need to be downed
+> > > +	 */
+> > > +	int (*vport_dev_ctrl)(struct idc_rdma_core_dev_info *cdev_info,
+> > > +			      bool up);
+> > > +	int (*request_reset)(struct idc_rdma_core_dev_info *cdev_info,
+> > > +			     enum idc_rdma_reset_type reset_type);
+> > > +};
+> > 
+> > Core driver can call to callbacks in irdma, like you already have for
+> > irdma_iidc_event_handler(), but all calls from irdma to core driver must
+> > be through exported symbols. It gives us race-free world in whole driver
+> > except one very specific place (irdma_iidc_event_handler).
+> 
+> I am confused here as well.  Calling a function through an exported symbol,
+> or calling the same function from a function pointer should not affect the
+> generation of a race condition, as the same function is being called.
+> What is inherently better about an exported symbol versus a function
+> pointer when considering race conditions?
 
-I am confused here as well.  Calling a function through an exported symbol,
-or calling the same function from a function pointer should not affect the
-generation of a race condition, as the same function is being called.
-What is inherently better about an exported symbol versus a function
-pointer when considering race conditions?
+Exported symbol guarantees that function exists in core module. Module
+subsystem will ensure that core module is impossible to unload until all
+users are gone. Function pointer has no such guarantees.
 
-Also, why is calling a function pointer from the irdma module ok, but calli=
-ng
-one from the core module not?
+> 
+> Also, why is calling a function pointer from the irdma module ok, but calling
+> one from the core module not?
 
-Again - Thank you for the review, and if I completely missed your points, p=
-lease let me know!
+Because we need to make sure that core module doesn't disappear while
+irdma executes its flow. The opposite is not true because core module
+controls irdma devices and aware than irdma module is loaded/unloaded.
 
 Thanks
-DaveE
 
->=20
+> 
+> Again - Thank you for the review, and if I completely missed your points, please let me know!
+> 
 > Thanks
-
+> DaveE
+> 
+> > 
+> > Thanks
+> 
+> 
