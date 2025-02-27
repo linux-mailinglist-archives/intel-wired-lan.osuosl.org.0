@@ -1,95 +1,143 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 597BCA48455
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Feb 2025 17:10:09 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C9F23A4828C
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Feb 2025 16:11:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1652A60AF9;
-	Thu, 27 Feb 2025 16:10:08 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id F1C9B40D3D;
+	Thu, 27 Feb 2025 15:11:22 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id T3r7zSu_xUfH; Thu, 27 Feb 2025 15:11:22 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A313840DEE
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1740669081;
+	bh=mBJu1LUBZD7huyP2Fqh3L6NWg2IhYufGL+1Vn+2FDk4=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=FuUtTkBcPP9+OGVttM/W7s8bMMSnXyJDYOhhOUKXUk1Jd/uWm41A00P0IPb+XAB7e
+	 hoGHUkV9Y6pbP/r7EFaYmhhWwlfdFzQX26dAAZqK/xsjpTO6iKi/i48VmNxhRNhghf
+	 VAJqneZTgdzE972k79cIokn+XLPKjGyygpzHPsMNb3th0Lh+csqqK8IJ1+oiguskzt
+	 C1utrSQvjFzrx9TulED8shck/jKG5/Twp2oJXc1POygtQckxFgtt/IZBuzUNo97iy9
+	 qh1b5icCcpZRhvCrStMGGZ7RGse7queDUSnJ1qiiOHO/HOzXW1oy2W0wLMR4WTLnoB
+	 L+H2ZOsbgfVgg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id A313840DEE;
+	Thu, 27 Feb 2025 15:11:21 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3B2B768
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 15:11:20 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 348D5605A4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 15:11:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7Umj77jkj4sX; Thu, 27 Feb 2025 16:10:07 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E47EB60A43
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1740672606;
-	bh=lX/m3nnf7YLk7rWeS7FHGWYPncB5OtqoPav3Xi3zF38=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=HgjoSMYCVhtpcjHqJSdRwEASOBCZqUEtQLvtVoHhJHrWcPqq0ERu4WOgQY7ocLz9A
-	 odySIpXPsiCYLFG0cooT6BFZEzMYkb1F+5giCvLUvPrT3sd9+/KOSY0xEf6eApyErM
-	 ntv37nQ2jKc3fo+bc88c4QyMXEkexzahxhyJcvGC1XQm+I3swKlPiWKRm4OWTrqQvR
-	 FfgIUY2/R+LahmmZhDJz2rvI9Bv1pmbbb9PutgcUfFHd1lRXT3apvBGQdgJfmkptcq
-	 /YA931PmA5NWveQx369MD+pllEjePB3RjVIbnEX6kklx82hSetcZgCY8BwxEi4IFGU
-	 CGfq3dMCFA2rw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E47EB60A43;
-	Thu, 27 Feb 2025 16:10:06 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 71CC568
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 08:22:27 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 550C140268
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 08:22:27 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id yc4pOm4KlsjG for <intel-wired-lan@lists.osuosl.org>;
- Thu, 27 Feb 2025 08:22:26 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=209.85.166.206;
- helo=mail-il1-f206.google.com;
- envelope-from=3wcdazwkbaec178tjuun0jyyrm.pxxpun31n0lxw2nw2.lxv@m3kw2wvrgufz5godrsrytgd7.apphosting.bounces.google.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C94FA400EC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C94FA400EC
-Received: from mail-il1-f206.google.com (mail-il1-f206.google.com
- [209.85.166.206])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C94FA400EC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 08:22:25 +0000 (UTC)
-Received: by mail-il1-f206.google.com with SMTP id
- e9e14a558f8ab-3d2a1d6747aso7739865ab.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 00:22:25 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740644544; x=1741249344;
- h=to:from:subject:message-id:date:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=lX/m3nnf7YLk7rWeS7FHGWYPncB5OtqoPav3Xi3zF38=;
- b=A75kyK6+AmImWxbXvuIGsxwQtmK2M3OXviO9sxPQe+0OAblG+1PiYJmkms6P65SZih
- vPhQl7a0r+h1ftV4x9NZukgqVwYJ73WStlV2bPxDZ2qSGPowNTr5KOLuHe+kP53GSSmM
- nuLRqe3Yuoclx/JV8SykIEGMuBoYySXkgeEcLNDkAKAGdeH2lg1XxEAx3y34aI+GiBhF
- isOfKFxN38vdb2ep2Rmts7p/p3bm/w23chKvQu6npwB8LDIDaPhEqXEko+iwSP7g+Rvn
- lAlB4R7Q+ot9lx+IGKLWq30dodepmlRQZnrjMBBl5uYjWXrZD6ik1faDNXEooVBT1der
- O0BA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVNMv3QO1Pr9K+uNKD8N7PygTiPmFOCUec0qawMal6iE2VcY5im3aORHj5Z++UlOoUxt5x1j0KuqQ/yOU5cges=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YxaKpPi83B3L7s7hi15rQILArWzkwCosFAlI62Tq6ICxw5T+LKj
- UWwibpny4+QQ4hZIZ2tkyFYfP0++wu/O9Ia/TD02jkMjyoqoAbPxabDFQW4TFyJYP2oZhcoX7hC
- Jd2WCvel938nfdskkegE1VB0dS0ngkn7SjJSbJH5zuFo2kO1H0Ec+fOg=
-X-Google-Smtp-Source: AGHT+IHcQW6B6QePv0+ZxKqh9G7YYitC+fhui9RZFurMckxd1PhSpkzoTzpq8URaDrFbK27MtTatcCVY5c4VtP+QUYbVRAaqTMO/
+ id iqaBty3l3amR for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 27 Feb 2025 15:11:19 +0000 (UTC)
+X-Greylist: delayed 314 seconds by postgrey-1.37 at util1.osuosl.org;
+ Thu, 27 Feb 2025 15:11:18 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org E0AAF6112E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E0AAF6112E
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=103.168.172.155;
+ helo=fhigh-a4-smtp.messagingengine.com;
+ envelope-from=mpearson-lenovo@squebb.ca; receiver=<UNKNOWN> 
+Received: from fhigh-a4-smtp.messagingengine.com
+ (fhigh-a4-smtp.messagingengine.com [103.168.172.155])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id E0AAF6112E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 15:11:18 +0000 (UTC)
+Received: from phl-compute-04.internal (phl-compute-04.phl.internal
+ [10.202.2.44])
+ by mailfhigh.phl.internal (Postfix) with ESMTP id DF8E11140B90;
+ Thu, 27 Feb 2025 10:06:02 -0500 (EST)
+Received: from phl-imap-10 ([10.202.2.85])
+ by phl-compute-04.internal (MEProxy); Thu, 27 Feb 2025 10:06:02 -0500
+X-ME-Sender: <xms:Wn_AZx5xjrGS-Pyj_DdZ4huDDCN0ciJlj4rcJXU0UUDHxEPt52Ijrw>
+ <xme:Wn_AZ-455SZniSlolirpV4t1_Wy88EaC46caDzPl_DJOtaSTQ58YxwMdRoI1qp1K6
+ 5LtZ2GtouLf6nLSvDY>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgdekjeejjecutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpggftfghnshhusghstghrihgsvgdp
+ uffrtefokffrpgfnqfghnecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivg
+ hnthhsucdlqddutddtmdenucfjughrpefoggffhffvvefkjghfufgtgfesthejredtredt
+ tdenucfhrhhomhepfdforghrkhcurfgvrghrshhonhdfuceomhhpvggrrhhsohhnqdhlvg
+ hnohhvohesshhquhgvsggsrdgtrgeqnecuggftrfgrthhtvghrnhephfeuvdehteeghedt
+ hedtveehuddvjeejgffgieejvdegkefhfeelheekhedvffehnecuvehluhhsthgvrhfuih
+ iivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepmhhpvggrrhhsohhnqdhlvghnohhv
+ ohesshhquhgvsggsrdgtrgdpnhgspghrtghpthhtohepuddupdhmohguvgepshhmthhpoh
+ huthdprhgtphhtthhopegurghvvghmsegurghvvghmlhhofhhtrdhnvghtpdhrtghpthht
+ ohepvgguuhhmrgiivghtsehgohhoghhlvgdrtghomhdprhgtphhtthhopegrnhhthhhonh
+ ihrdhlrdhnghhuhigvnhesihhnthgvlhdrtghomhdprhgtphhtthhopehprhiivghmhihs
+ lhgrfidrkhhithhsiigvlhesihhnthgvlhdrtghomhdprhgtphhtthhopehkuhgsrgeskh
+ gvrhhnvghlrdhorhhgpdhrtghpthhtohepihhnthgvlhdqfihirhgvugdqlhgrnheslhhi
+ shhtshdrohhsuhhoshhlrdhorhhgpdhrtghpthhtoheprghnughrvgifodhnvghtuggvvh
+ eslhhunhhnrdgthhdprhgtphhtthhopegrnhgurhgvfieslhhunhhnrdgthhdprhgtphht
+ thhopehprggsvghnihesrhgvughhrghtrdgtohhm
+X-ME-Proxy: <xmx:Wn_AZ4fWbUQBZ8lV40EH9Gxs753wjQ1Xguvqbbg-2LHGtZW53_My4A>
+ <xmx:Wn_AZ6IN2ewPNHK4QfsbqiPc_DQuKCPFGBJy50WPtE96F-W2_S69uQ>
+ <xmx:Wn_AZ1IeRiRkBG7KrUGTBdzzstEMpDHnmqQ2R12fB4gd5gL354FpMw>
+ <xmx:Wn_AZzwxlwHNgv9SlJYs-9moKXo_z3nxzU8WgNmuVHVdA6e8ntQRkQ>
+ <xmx:Wn_AZyDpmM_1D89-dk9jtROtXpAUY-bH0vuomWAWb6YCMIgDk4fNRspZ>
+Feedback-ID: ibe194615:Fastmail
+Received: by mailuser.phl.internal (Postfix, from userid 501)
+ id 088FB3C0066; Thu, 27 Feb 2025 10:06:02 -0500 (EST)
+X-Mailer: MessagingEngine.com Webmail Interface
 MIME-Version: 1.0
-X-Received: by 2002:a05:6e02:184e:b0:3cd:d14c:be69 with SMTP id
- e9e14a558f8ab-3d3dd2d9ea5mr17906235ab.11.1740644544319; Thu, 27 Feb 2025
- 00:22:24 -0800 (PST)
-Date: Thu, 27 Feb 2025 00:22:24 -0800
-X-Google-Appengine-App-Id: s~syzkaller
-X-Google-Appengine-App-Id-Alias: syzkaller
-Message-ID: <67c020c0.050a0220.222324.0011.GAE@google.com>
-From: syzbot <syzbot+da65c993ae113742a25f@syzkaller.appspotmail.com>
-To: andrew+netdev@lunn.ch, anthony.l.nguyen@intel.com, davem@davemloft.net, 
- edumazet@google.com, intel-wired-lan@lists.osuosl.org, kuba@kernel.org, 
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org, pabeni@redhat.com, 
- przemyslaw.kitszel@intel.com, syzkaller-bugs@googlegroups.com
-Content-Type: text/plain; charset="UTF-8"
-X-Mailman-Approved-At: Thu, 27 Feb 2025 16:10:04 +0000
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Date: Thu, 27 Feb 2025 10:05:41 -0500
+From: "Mark Pearson" <mpearson-lenovo@squebb.ca>
+To: "Andrew Lunn" <andrew@lunn.ch>
+Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Message-Id: <50d86329-98b1-4579-9cf1-d974cf7a748d@app.fastmail.com>
+In-Reply-To: <36ae9886-8696-4f8a-a1e4-b93a9bd47b2f@lunn.ch>
+References: <mpearson-lenovo@squebb.ca>
+ <20250226194422.1030419-1-mpearson-lenovo@squebb.ca>
+ <36ae9886-8696-4f8a-a1e4-b93a9bd47b2f@lunn.ch>
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=squebb.ca; h=cc
+ :cc:content-transfer-encoding:content-type:content-type:date
+ :date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to; s=fm2; t=1740668762;
+ x=1740755162; bh=mBJu1LUBZD7huyP2Fqh3L6NWg2IhYufGL+1Vn+2FDk4=; b=
+ UKh8opMsCwvAVZdE00m1mCO5tFu68JmUTlO0gTbA33y00UtodSnMMEt7WGwJ44O4
+ SR+kFARoU8QFWeg8YXSY2/x9udGOXve9NsZUN5MQmL/Wk+mCbho8Ssw2WeIYTgSQ
+ pAgcw4903ZTkDaI9883t8Isgp1YLIMQH4oRvRSG2lsnBs+K6a5Ur1A7ODJlnLeUK
+ I/ovzifLAo5Gq/0iKHBwPuSEh5Jv+TQmKGGTf4EG7kM6mWGHLDZxe/UeMohwlvoP
+ TrFEp6Jgk0aQWDg8mZP1vU+lQFg6y29KhZFYtr5xMXi/EMnx2xaASfwfw17wv6NT
+ xABk6kXkJzIjkFQcKNC5Jw==
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1740668762; x=
+ 1740755162; bh=mBJu1LUBZD7huyP2Fqh3L6NWg2IhYufGL+1Vn+2FDk4=; b=I
+ KGJDuELaDLLWtOxASLb+GUKGdORsAJsgXY52yQP0rK4INpJaj2/uMjLp3daRJLgT
+ BM/JY+yKKYT9Bb72pRHzWT50f6Za06DrnIRrnYPkjUJfEWT5HTtFTdIW7n945EE6
+ xaz3RHkNZenXRy3XlWedPmjwQZX8tcVhxPdRsXQ1jOfcNxg+weq8lJkDFX7yRB/k
+ E096z1Cv6i3zHICJFIFJyuLYfR8UecxFczEOfG7OeMrAB5c/btvYM0QXEgklmzDR
+ rhs80k3bse5SuoodFrLS2aEkUSORA5YolqD0GZhl5B4C3DFNjOHFTYf95A2BpgAI
+ 96BvzMzf5pTxyJXnhFyXg==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=syzkaller.appspotmail.com
-Subject: [Intel-wired-lan] [syzbot] [intel-wired-lan?] kernel BUG in
- pskb_expand_head (4)
+ header.from=squebb.ca
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key, unprotected) header.d=squebb.ca header.i=@squebb.ca
+ header.a=rsa-sha256 header.s=fm2 header.b=UKh8opMs; 
+ dkim=pass (2048-bit key,
+ unprotected) header.d=messagingengine.com header.i=@messagingengine.com
+ header.a=rsa-sha256 header.s=fm1 header.b=IKGJDuEL
+Subject: Re: [Intel-wired-lan] [PATCH] e1000e: Link flap workaround option
+ for false IRP events
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -105,141 +153,93 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello,
+Hi Andrew,
 
-syzbot found the following issue on:
+On Wed, Feb 26, 2025, at 5:52 PM, Andrew Lunn wrote:
+> On Wed, Feb 26, 2025 at 02:44:12PM -0500, Mark Pearson wrote:
+>> Issue is seen on some Lenovo desktop workstations where there
+>> is a false IRP event which triggers a link flap.
+>> Condition is rare and only seen on networks where link speed
+>> may differ along the path between nodes (e.g 10M/100M)
+>> 
+>> Intel are not able to determine root cause but provided a
+>> workaround that does fix the issue. Tested extensively at Lenovo.
+>> 
+>> Adding a module option to enable this workaround for users
+>> who are impacted by this issue.
+>
+> Why is a module option needed? Does the workaround itself introduce
+> issues? Please describe those issues?
+>
+> In general, module options are not liked. So please include in the
+> commit message why a module option is the only option.
+> 
 
-HEAD commit:    ac9c34d1e45a Merge tag 'for-linus' of git://git.kernel.org..
-git tree:       upstream
-console output: https://syzkaller.appspot.com/x/log.txt?x=10da9db0580000
-kernel config:  https://syzkaller.appspot.com/x/.config?x=b1635bf4c5557b92
-dashboard link: https://syzkaller.appspot.com/bug?extid=da65c993ae113742a25f
-compiler:       gcc (Debian 12.2.0-14) 12.2.0, GNU ld (GNU Binutils for Debian) 2.40
-userspace arch: i386
+Understood. 
 
-Unfortunately, I don't have any reproducer for this issue yet.
+The reason for the module option is I'm playing it safe, as Intel couldn't determine root cause.
+The aim of the patch is to keep the effect to a minimum whilst allowing users who are impacted to turn on the workaround, if they are encountering the issue.
 
-Downloadable assets:
-disk image (non-bootable): https://storage.googleapis.com/syzbot-assets/7feb34a89c2a/non_bootable_disk-ac9c34d1.raw.xz
-vmlinux: https://storage.googleapis.com/syzbot-assets/a84d67d61e80/vmlinux-ac9c34d1.xz
-kernel image: https://storage.googleapis.com/syzbot-assets/951486618398/bzImage-ac9c34d1.xz
+Issue details:
+We have seen the issue when running high level traffic on a network involving at least two nodes and also having two different network speeds are need. For example:
+[Lenovo WS] <---1G link---> Network switch <---100M link--->[traffic source]
+The link flap can take a day or two to reproduce - it's rare.
 
-IMPORTANT: if you fix the issue, please add the following tag to the commit:
-Reported-by: syzbot+da65c993ae113742a25f@syzkaller.appspotmail.com
+We worked for a long time with the Intel networking team to try and root cause the issue but unfortunately, despite being able to reproduce the issue in their lab, they decided to not pursue the investigation. They suggested the register read as a workaround and we confirmed it fixes the problem (setup ran for weeks without issue - we haven't seen any side issues). Unfortunately nobody can explain why the fix works.
 
-------------[ cut here ]------------
-kernel BUG at net/core/skbuff.c:2178!
-Oops: invalid opcode: 0000 [#1] PREEMPT SMP KASAN NOPTI
-CPU: 0 UID: 0 PID: 16371 Comm: syz.2.2764 Not tainted 6.14.0-rc4-syzkaller-00052-gac9c34d1e45a #0
-Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS 1.16.3-debian-1.16.3-2~bpo12+1 04/01/2014
-RIP: 0010:pskb_expand_head+0x6ce/0x1240 net/core/skbuff.c:2178
-Code: 7f 05 e8 35 98 f1 f8 8b 44 24 40 8b 74 24 44 29 f0 01 83 e0 00 00 00 e9 70 ff ff ff e8 4b 5e 8f f8 90 0f 0b e8 43 5e 8f f8 90 <0f> 0b e8 3b 5e 8f f8 41 81 cd 00 00 02 00 e9 46 fb ff ff e8 2a 5e
-RSP: 0018:ffffc9000d6f7160 EFLAGS: 00010246
-RAX: 0000000000080000 RBX: ffff88806c1f9400 RCX: ffffc900273e9000
-RDX: 0000000000080000 RSI: ffffffff892a810d RDI: 0000000000000005
-RBP: ffff88806c1f94cc R08: 0000000000000005 R09: 0000000000000001
-R10: 0000000000000002 R11: 0000000000000005 R12: 0000000000000002
-R13: 0000000000000820 R14: dffffc0000000000 R15: 0000000000000000
-FS:  0000000000000000(0000) GS:ffff88802b400000(0063) knlGS:00000000f5066b40
-CS:  0010 DS: 002b ES: 002b CR0: 0000000080050033
-CR2: 000000008000601c CR3: 0000000054770000 CR4: 0000000000352ef0
-Call Trace:
- <TASK>
- __skb_pad+0x18a/0x610 net/core/skbuff.c:2466
- __skb_put_padto include/linux/skbuff.h:3843 [inline]
- skb_put_padto include/linux/skbuff.h:3862 [inline]
- eth_skb_pad include/linux/etherdevice.h:656 [inline]
- e1000_xmit_frame+0x2d99/0x5800 drivers/net/ethernet/intel/e1000/e1000_main.c:3128
- __netdev_start_xmit include/linux/netdevice.h:5151 [inline]
- netdev_start_xmit include/linux/netdevice.h:5160 [inline]
- xmit_one net/core/dev.c:3806 [inline]
- dev_hard_start_xmit+0x9a/0x7b0 net/core/dev.c:3822
- sch_direct_xmit+0x1ae/0xc30 net/sched/sch_generic.c:343
- __dev_xmit_skb net/core/dev.c:4045 [inline]
- __dev_queue_xmit+0x13d4/0x43e0 net/core/dev.c:4621
- dev_queue_xmit include/linux/netdevice.h:3313 [inline]
- llc_sap_action_send_test_c+0x268/0x320 net/llc/llc_s_ac.c:144
- llc_exec_sap_trans_actions net/llc/llc_sap.c:153 [inline]
- llc_sap_next_state net/llc/llc_sap.c:182 [inline]
- llc_sap_state_process+0x239/0x510 net/llc/llc_sap.c:209
- llc_ui_sendmsg+0xd0d/0x14e0 net/llc/af_llc.c:993
- sock_sendmsg_nosec net/socket.c:718 [inline]
- __sock_sendmsg net/socket.c:733 [inline]
- ____sys_sendmsg+0xaaf/0xc90 net/socket.c:2573
- ___sys_sendmsg+0x135/0x1e0 net/socket.c:2627
- __sys_sendmmsg+0x2fa/0x420 net/socket.c:2709
- __compat_sys_sendmmsg net/compat.c:360 [inline]
- __do_compat_sys_sendmmsg net/compat.c:367 [inline]
- __se_compat_sys_sendmmsg net/compat.c:364 [inline]
- __ia32_compat_sys_sendmmsg+0x9d/0x100 net/compat.c:364
- do_syscall_32_irqs_on arch/x86/entry/common.c:165 [inline]
- __do_fast_syscall_32+0x73/0x120 arch/x86/entry/common.c:386
- do_fast_syscall_32+0x32/0x80 arch/x86/entry/common.c:411
- entry_SYSENTER_compat_after_hwframe+0x84/0x8e
-RIP: 0023:0xf73de579
-Code: b8 01 10 06 03 74 b4 01 10 07 03 74 b0 01 10 08 03 74 d8 01 00 00 00 00 00 00 00 00 00 00 00 00 00 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d b4 26 00 00 00 00 8d b4 26 00 00 00 00
-RSP: 002b:00000000f506655c EFLAGS: 00000296 ORIG_RAX: 0000000000000159
-RAX: ffffffffffffffda RBX: 0000000000000004 RCX: 0000000080000c40
-RDX: 00000000842c97f7 RSI: 0000000000008014 RDI: 0000000000000000
-RBP: 0000000000000000 R08: 0000000000000000 R09: 0000000000000000
-R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
-R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
- </TASK>
-Modules linked in:
----[ end trace 0000000000000000 ]---
-RIP: 0010:pskb_expand_head+0x6ce/0x1240 net/core/skbuff.c:2178
-Code: 7f 05 e8 35 98 f1 f8 8b 44 24 40 8b 74 24 44 29 f0 01 83 e0 00 00 00 e9 70 ff ff ff e8 4b 5e 8f f8 90 0f 0b e8 43 5e 8f f8 90 <0f> 0b e8 3b 5e 8f f8 41 81 cd 00 00 02 00 e9 46 fb ff ff e8 2a 5e
-RSP: 0018:ffffc9000d6f7160 EFLAGS: 00010246
-RAX: 0000000000080000 RBX: ffff88806c1f9400 RCX: ffffc900273e9000
-RDX: 0000000000080000 RSI: ffffffff892a810d RDI: 0000000000000005
-RBP: ffff88806c1f94cc R08: 0000000000000005 R09: 0000000000000001
-R10: 0000000000000002 R11: 0000000000000005 R12: 0000000000000002
-R13: 0000000000000820 R14: dffffc0000000000 R15: 0000000000000000
-FS:  0000000000000000(0000) GS:ffff88802b400000(0063) knlGS:00000000f5066b40
-CS:  0010 DS: 002b ES: 002b CR0: 0000000080050033
-CR2: 000000008000601c CR3: 0000000054770000 CR4: 0000000000352ef0
-----------------
-Code disassembly (best guess), 2 bytes skipped:
-   0:	10 06                	adc    %al,(%rsi)
-   2:	03 74 b4 01          	add    0x1(%rsp,%rsi,4),%esi
-   6:	10 07                	adc    %al,(%rdi)
-   8:	03 74 b0 01          	add    0x1(%rax,%rsi,4),%esi
-   c:	10 08                	adc    %cl,(%rax)
-   e:	03 74 d8 01          	add    0x1(%rax,%rbx,8),%esi
-  1e:	00 51 52             	add    %dl,0x52(%rcx)
-  21:	55                   	push   %rbp
-  22:	89 e5                	mov    %esp,%ebp
-  24:	0f 34                	sysenter
-  26:	cd 80                	int    $0x80
-* 28:	5d                   	pop    %rbp <-- trapping instruction
-  29:	5a                   	pop    %rdx
-  2a:	59                   	pop    %rcx
-  2b:	c3                   	ret
-  2c:	90                   	nop
-  2d:	90                   	nop
-  2e:	90                   	nop
-  2f:	90                   	nop
-  30:	8d b4 26 00 00 00 00 	lea    0x0(%rsi,%riz,1),%esi
-  37:	8d b4 26 00 00 00 00 	lea    0x0(%rsi,%riz,1),%esi
+I don't think the workaround should be implemented as a general case without support from Intel. 
+I considered a DMI quirk, but without root cause I do worry about unknown side effects.
+There is also the possibility of the issue showing up on other platforms we don't know of yet - and I wanted a way to be able to easily enable it if needed (e.g be able to tell a customer - try enabling this and see if it fixes it).
 
+A module option seemed like a good compromise, but I'm happy to consider alternatives if there are any recommendations.
 
----
-This report is generated by a bot. It may contain errors.
-See https://goo.gl/tpsmEJ for more information about syzbot.
-syzbot engineers can be reached at syzkaller@googlegroups.com.
+>> Signed-off-by: Mark Pearson <mpearson-lenovo@squebb.ca>
+>> ---
+>>  drivers/net/ethernet/intel/e1000e/netdev.c | 19 +++++++++++++++++++
+>>  1 file changed, 19 insertions(+)
+>> 
+>> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+>> index 286155efcedf..06774fb4b2dd 100644
+>> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
+>> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+>> @@ -37,6 +37,10 @@ static int debug = -1;
+>>  module_param(debug, int, 0);
+>>  MODULE_PARM_DESC(debug, "Debug level (0=none,...,16=all)");
+>>  
+>> +static int false_irp_workaround;
+>> +module_param(false_irp_workaround, int, 0);
+>> +MODULE_PARM_DESC(false_irp_workaround, "Enable workaround for rare false IRP event causing link flap");
+>> +
+>>  static const struct e1000_info *e1000_info_tbl[] = {
+>>  	[board_82571]		= &e1000_82571_info,
+>>  	[board_82572]		= &e1000_82572_info,
+>> @@ -1757,6 +1761,21 @@ static irqreturn_t e1000_intr_msi(int __always_unused irq, void *data)
+>>  	/* read ICR disables interrupts using IAM */
+>>  	if (icr & E1000_ICR_LSC) {
+>>  		hw->mac.get_link_status = true;
+>> +
+>> +		/*
+>> +		 * False IRP workaround
+>> +		 * Issue seen on Lenovo P5 and P7 workstations where if there
+>> +		 * are different link speeds in the network a false IRP event
+>> +		 * is received, leading to a link flap.
+>> +		 * Intel unable to determine root cause. This read prevents
+>> +		 * the issue occurring
+>> +		 */
+>> +		if (false_irp_workaround) {
+>> +			u16 phy_data;
+>> +
+>> +			e1e_rphy(hw, PHY_REG(772, 26), &phy_data);
+>
+> Please add some #define for these magic numbers, so we have some idea
+> what PHY register you are actually reading. That in itself might help
+> explain how the workaround actually works.
+>
 
-syzbot will keep track of this issue. See:
-https://goo.gl/tpsmEJ#status for how to communicate with syzbot.
+I don't know what this register does I'm afraid - that's Intel knowledge and has not been shared.
 
-If the report is already addressed, let syzbot know by replying with:
-#syz fix: exact-commit-title
+This approach, with magic numbers, is used all over the place in the driver and related modules, presumably contributed previously by Intel engineers. Can I push back on this request with a note that Intel would need to provide the register definitions for their components first.
 
-If you want to overwrite report's subsystems, reply with:
-#syz set subsystems: new-subsystem
-(See the list of subsystem names on the web dashboard)
+Thanks for the review. I'll give it a couple of days to see if any other feedback, and push a v2 with updated commit description.
 
-If the report is a duplicate of another one, reply with:
-#syz dup: exact-subject-of-another-report
-
-If you want to undo deduplication, reply with:
-#syz undup
+Mark
