@@ -1,88 +1,105 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9ED75A48716
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Feb 2025 18:52:49 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id DEF88A48D05
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Feb 2025 00:59:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4D6A581FD8;
-	Thu, 27 Feb 2025 17:52:48 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3F03A80B9A;
+	Thu, 27 Feb 2025 23:59:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7Y1kCIl4QAIF; Thu, 27 Feb 2025 17:52:47 +0000 (UTC)
+ id z_Y7JCXCvKKE; Thu, 27 Feb 2025 23:59:36 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AE09281F32
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0D5D080BD0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1740678767;
-	bh=VmrEjjhs+t8JPqIDbS9ViF25EcX6wC/WVcM4VddStG0=;
+	s=default; t=1740700776;
+	bh=vVtL5j0FJfqCs9yVCanftX+tgKv8QqbhWpu9FuF7YdI=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=qVjTa+dZbepGEVFsO4r6z3Autlq+G19/cqDhfEC2YOLyt2z97EHTKOuG3asA0E/Sd
-	 608ShjmivuyQdnkqt8D72VgioEbxgf4g12Ca4HudHnxi3vDgkxIiWgwO4OdnhCrnEZ
-	 6UnFn5EPvyTYOOObkABLnd4728WvzY6PAd9PHHNXQoeuZmfEpGCcnGi1U3H9cOa7lv
-	 u24oj+J2vrtVtN2IqRpIDc7YQ8YWJrsDbqYMbQaFt4AJMTy7g1nizM4GAmPwwqqkRH
-	 m0r36EPQo+AsmKMUC7uNhI9ZmqALV38+FfS2gibSk6d9ui8I7avLPUkoV8Zmhz7N6L
-	 i2q2WKHnhOXGA==
+	b=Alodv8yMq0frZ/D3dwXl9cuWgY82Rn3RyssmWO2HnwKteVr5zRgljVJXB0noHsre4
+	 xSFR/X7suc6fxovZzP7Be1N2crwL/3d1CKEh9Mx+rxyiQyuYz7a4cVMbp0tDUQ8Tde
+	 UWWrXmA4TsFXqJ2nTyiQ5gHFkfhErZ5jTdoO8vPCHnVdObGmD6GuQH37jlXfxwQokJ
+	 pMWFVQTV1UE4+AsPGFYiKjvDykM8EIrAnqYBvw1W5ppfXW6BavjOZdSLi+0+G4Qj9a
+	 FAxtEAF5tvUpFizj7eOCvHA5BUvYkvSCAaS8ksWDik5677sX7vInGcXgbFM9FHiDuc
+	 PlnbHdlv47guQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AE09281F32;
-	Thu, 27 Feb 2025 17:52:47 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0D5D080BD0;
+	Thu, 27 Feb 2025 23:59:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 7B77669
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 17:52:46 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 4C7FB69
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 23:59:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 602C841395
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 17:52:46 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 354206065D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 23:59:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id bqU6zId1tiiY for <intel-wired-lan@lists.osuosl.org>;
- Thu, 27 Feb 2025 17:52:45 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org AB94B412C4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AB94B412C4
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp4.osuosl.org (Postfix) with ESMTPS id AB94B412C4
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 17:52:45 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id B62C85C6144;
- Thu, 27 Feb 2025 17:52:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 199F4C4CEDD;
- Thu, 27 Feb 2025 17:52:42 +0000 (UTC)
-Date: Thu, 27 Feb 2025 17:52:40 +0000
-From: Simon Horman <horms@kernel.org>
-To: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- pmenzel@molgen.mpg.de, Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Message-ID: <20250227175240.GH1615191@kernel.org>
-References: <20250225134008.516924-3-martyna.szapar-mudlaw@linux.intel.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id A23W36KSRD9j for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 27 Feb 2025 23:59:32 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 058BC60B96
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 058BC60B96
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 058BC60B96
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 23:59:31 +0000 (UTC)
+X-CSE-ConnectionGUID: aVO3+0KXTr6tYTUBRn7DUg==
+X-CSE-MsgGUID: tzkU/rRZR2uqZQakKcMmSQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11358"; a="45398267"
+X-IronPort-AV: E=Sophos;i="6.13,320,1732608000"; d="scan'208";a="45398267"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Feb 2025 15:59:32 -0800
+X-CSE-ConnectionGUID: +Ahx6WEjSRaEDcBG/RNCiQ==
+X-CSE-MsgGUID: GY0i+d0FSDeSq2ehKcH3mw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.13,320,1732608000"; d="scan'208";a="140399641"
+Received: from lkp-server02.sh.intel.com (HELO 76cde6cc1f07) ([10.239.97.151])
+ by fmviesa002.fm.intel.com with ESMTP; 27 Feb 2025 15:59:29 -0800
+Received: from kbuild by 76cde6cc1f07 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1tnnmo-000ECs-38;
+ Thu, 27 Feb 2025 23:59:26 +0000
+Date: Fri, 28 Feb 2025 07:59:01 +0800
+From: kernel test robot <lkp@intel.com>
+To: Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
+ intel-wired-lan@lists.osuosl.org
+Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org,
+ Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Message-ID: <202502280724.aEP7VGSr-lkp@intel.com>
+References: <20250227123837.547053-1-mateusz.polchlopek@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250225134008.516924-3-martyna.szapar-mudlaw@linux.intel.com>
+In-Reply-To: <20250227123837.547053-1-mateusz.polchlopek@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1740678764;
- bh=dThrQP7ix+WzmU48o7oNgP1GWMYf7MsMTrUWSD3Dh6o=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=UawygaGFyAOEaEp0itLr3m3kCqIwZxygzLvZau9WUPSsglmE7znuv8Rt3mNRTJTJK
- vhs7PQXuqHKbuUHrB3OTBrbe+T90kSUj/6n8MZltTh5mbypbrWnA9G8MmwQ8HxrHEN
- eHBm0UhMn3KG8NeYg82YJSmU3cw9mneg5N7Gd+SIOKzUsI/7Pwwonj6jBBjBIVrT2i
- eyErY3MRB17tazP2iGEFvmpt+5jXHinVMJMUdJ7pePDXjd9Rq+6AMt40XqVUVjteyC
- 86p+2lyAiPowHzpswMcDpKVjGkqCUUbogpkvpjtvRG4L4JfL3aXTHKVTNeTDp2seH3
- FpqY3l+vzZsbg==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=UawygaGF
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] ice: fix fwlog after
- driver reinit
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1740700773; x=1772236773;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=ITy8k5jUfknq+Y5v4tUBpidCS7oTrz86FIfjVJcACKU=;
+ b=Ka+PbFms/9xZO4qnLAtQUEFZ0tRKHpEnDgeo5A+jDTqUID9nSrX7yVAy
+ Iigvx+21zsEp7DUfyleFzfnoh3YgQySeKFgNikKTdITA5QybB8G+V06M5
+ /WwsbtKwZZYv0IaXMy1NqXbtQHKco7ssq3C4zU9VsYRWlse30DOl/moN5
+ S7vMcLS5JkWbeIbzU0rAagx3fbEWI4s0zSAUA+YMPqFcuUqeS1J3dGUVi
+ E9T4CAEWvHZf81tJGQkQZQWJBIH1tucnFhFPssTguZ+NHnn4Cz5fm2h0N
+ uxhJbYrXGXT6+ZQQ2XZQVOEBD+gT58aZUFbAc8WQlY0EktDxSqkacsNPG
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Ka+PbFms
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1] idpf: assign extracted
+ ptype to struct libeth_rqe_info field
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -98,24 +115,53 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Feb 25, 2025 at 02:40:10PM +0100, Martyna Szapar-Mudlaw wrote:
-> Fix an issue when firmware logging stops after devlink reload action
-> driver_reinit or driver reset. After the driver reinits and resumes
-> operations, it must re-request event notifications from the firmware
-> as a part of its recofiguration.
-> Fix it by restoring fw logging when it was previously registered
-> before these events.
-> 
-> Restoring fw logging in these cases was faultily removed with new
-> debugfs fw logging implementation.
-> 
-> Failure to init fw logging is not a critical error so it is safely
-> ignored. Information log in case of failure are handled by
-> ice_fwlog_register function.
-> 
-> Fixes: 73671c3162c8 ("ice: enable FW logging")
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Signed-off-by: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
+Hi Mateusz,
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+kernel test robot noticed the following build warnings:
 
+[auto build test WARNING on tnguy-next-queue/dev-queue]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Mateusz-Polchlopek/idpf-assign-extracted-ptype-to-struct-libeth_rqe_info-field/20250227-214755
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+patch link:    https://lore.kernel.org/r/20250227123837.547053-1-mateusz.polchlopek%40intel.com
+patch subject: [Intel-wired-lan] [PATCH iwl-next v1] idpf: assign extracted ptype to struct libeth_rqe_info field
+config: s390-allyesconfig (https://download.01.org/0day-ci/archive/20250228/202502280724.aEP7VGSr-lkp@intel.com/config)
+compiler: s390-linux-gcc (GCC) 14.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250228/202502280724.aEP7VGSr-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202502280724.aEP7VGSr-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+>> drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c:946: warning: Excess function parameter 'ptype' description in 'idpf_rx_singleq_extract_fields'
+
+
+vim +946 drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
+
+a5ab9ee0df0be8 Joshua Hay         2023-08-07  933  
+a5ab9ee0df0be8 Joshua Hay         2023-08-07  934  /**
+a5ab9ee0df0be8 Joshua Hay         2023-08-07  935   * idpf_rx_singleq_extract_fields - Extract fields from the Rx descriptor
+a5ab9ee0df0be8 Joshua Hay         2023-08-07  936   * @rx_q: Rx descriptor queue
+a5ab9ee0df0be8 Joshua Hay         2023-08-07  937   * @rx_desc: the descriptor to process
+a5ab9ee0df0be8 Joshua Hay         2023-08-07  938   * @fields: storage for extracted values
+ce5cf4af7ceb6c Mateusz Polchlopek 2024-11-06  939   * @ptype: pointer that will store packet type
+a5ab9ee0df0be8 Joshua Hay         2023-08-07  940   *
+a5ab9ee0df0be8 Joshua Hay         2023-08-07  941   */
+e4891e4687c8dd Alexander Lobakin  2024-06-20  942  static void
+e4891e4687c8dd Alexander Lobakin  2024-06-20  943  idpf_rx_singleq_extract_fields(const struct idpf_rx_queue *rx_q,
+e4891e4687c8dd Alexander Lobakin  2024-06-20  944  			       const union virtchnl2_rx_desc *rx_desc,
+45cbbcb40f4efc Mateusz Polchlopek 2025-02-27  945  			       struct libeth_rqe_info *fields)
+a5ab9ee0df0be8 Joshua Hay         2023-08-07 @946  {
+a5ab9ee0df0be8 Joshua Hay         2023-08-07  947  	if (rx_q->rxdids == VIRTCHNL2_RXDID_1_32B_BASE_M)
+45cbbcb40f4efc Mateusz Polchlopek 2025-02-27  948  		idpf_rx_singleq_extract_base_fields(rx_desc, fields);
+a5ab9ee0df0be8 Joshua Hay         2023-08-07  949  	else
+45cbbcb40f4efc Mateusz Polchlopek 2025-02-27  950  		idpf_rx_singleq_extract_flex_fields(rx_desc, fields);
+a5ab9ee0df0be8 Joshua Hay         2023-08-07  951  }
+a5ab9ee0df0be8 Joshua Hay         2023-08-07  952  
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
