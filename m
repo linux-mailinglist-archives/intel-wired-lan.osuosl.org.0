@@ -2,56 +2,56 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B51DEA4841C
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Feb 2025 17:03:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A634CA48445
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Feb 2025 17:08:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6816F6129E;
-	Thu, 27 Feb 2025 16:03:14 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DDDB060AF9;
+	Thu, 27 Feb 2025 16:08:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id v8eVcKgv6mjN; Thu, 27 Feb 2025 16:03:13 +0000 (UTC)
+ id ftxWLSW4mGde; Thu, 27 Feb 2025 16:08:07 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BADC4612B2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3032660665
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1740672193;
-	bh=jHA36oJ30EP9uMa5rF7xPESwPrtKLCK7Cd5ezd49fWk=;
+	s=default; t=1740672487;
+	bh=CND/AWjqWtefCR2+bz8yg6Rc6Qum2wM65PkiDHxFQKA=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=w6Ev1oNYW35lqUg/UwEAvVYrMAL4OO2xFF1SJDluoW5mC1N6X53jMn9dKTxw6W7fu
-	 HIA9gqGoI5k+/mig+DI23xQMnMfcyuGG48775fK92vAf0vfPsoHWKCjCbX42EcHbuB
-	 2/A7u459rU8Yn3UoflDQTpCLmb9ilWo9R+y3hbCIyhU46cS1kNGlTZiW/HjBxUUCSQ
-	 r6wk1OydZLileulHzKbCTny6wo0DPgNHhupku/MCxevU+9ilJIsSc/oIvuJvTSWcF5
-	 WKcljDdS22Kr1LbSqyN9OLIlyHN+xMmbtteVXlv9kkTcU3eGtEW1kyb0od5s/XDKei
-	 wZkN+1ks1xj4Q==
+	b=0mu9E+tWGA98x07wKo6LqhtZ7lmwSg/o9D8rKM427yGpLeCd2dWDc1bHfcLr0YXYS
+	 AkswG+IoxoIuHx6SVYlvBl5XvC8gWybSCLT4rdNXt8keBv/d8Lblr1eeXqihDFwm5k
+	 K6InfxPK+nqCsyT+UtJB1lQQTLsA1lQ8WyanokaoiZL6QIJe9N15mKkA0dBbRdEJOx
+	 E09xwtzB+RlgzOXywkL9sKEibWGbJu9iwYGExPh1KQwONLa5L+ckJRkxnjWx3b3r/K
+	 ZBhfd3d88uWQ/ePNykjDYlzr4+72ecngsW91VVtSmCoKZflR5uguCCo7XK20HtEL6+
+	 psiKD+fJrMWCQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BADC4612B2;
-	Thu, 27 Feb 2025 16:03:13 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3032660665;
+	Thu, 27 Feb 2025 16:08:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id F1950711
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 16:03:11 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id F371A711
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 16:08:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D199B40363
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 16:03:11 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id E0CC480CC5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 16:08:04 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id a-bIZm4Vof3h for <intel-wired-lan@lists.osuosl.org>;
- Thu, 27 Feb 2025 16:03:11 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Gf5gk2VaEm9J for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 27 Feb 2025 16:08:04 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
  helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 9C33940252
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9C33940252
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3FBB280CAA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3FBB280CAA
 Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9C33940252
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 16:03:09 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3FBB280CAA
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 16:08:04 +0000 (UTC)
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
  (envelope-from <andrew@lunn.ch>)
- id 1tngLe-000e3j-3H; Thu, 27 Feb 2025 17:02:54 +0100
-Date: Thu, 27 Feb 2025 17:02:54 +0100
+ id 1tngQT-000e7u-Fr; Thu, 27 Feb 2025 17:07:53 +0100
+Date: Thu, 27 Feb 2025 17:07:53 +0100
 From: Andrew Lunn <andrew@lunn.ch>
 To: Mark Pearson <mpearson-lenovo@squebb.ca>
 Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
@@ -59,7 +59,7 @@ Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
  kuba@kernel.org, pabeni@redhat.com,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
  linux-kernel@vger.kernel.org
-Message-ID: <8c0a80fe-5e92-42c4-88cc-0fc46c17a936@lunn.ch>
+Message-ID: <1a4ed373-9d27-4f4b-9e75-9434b4f5cad9@lunn.ch>
 References: <mpearson-lenovo@squebb.ca>
  <20250226194422.1030419-1-mpearson-lenovo@squebb.ca>
  <36ae9886-8696-4f8a-a1e4-b93a9bd47b2f@lunn.ch>
@@ -74,16 +74,16 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
  References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
  Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
  Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
- bh=jHA36oJ30EP9uMa5rF7xPESwPrtKLCK7Cd5ezd49fWk=; b=0Tr/jzQg9aJuTcenur4l/oX+xr
- 4IxBeJe4kMTdHI7YinrnF4qym310wM1HdVJS+OF7M7xsmrryPnHn8zHfb8PzU3vAkbZ/v6gHkLBlb
- FdB6ztqqpqTYHv544JgFMldLAiS8/Cz9HvXXzivirZGe+vQ12cfJb1itGb4RA/YgYkso=;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=CND/AWjqWtefCR2+bz8yg6Rc6Qum2wM65PkiDHxFQKA=; b=fZ0Z6IUwpZBeYWfehdeZd8LTTq
+ fWrQj/7RaPs53mZOEgMIB+pGKvLf8bb6zvQgPHHJ45OOSIGB0Gze9Nws3AX7jY94oQPYdg1qQ0uQs
+ T1009zcHl7phWIDtAD7WrLJEiSbTGf1n5C8nWsteHhn4GohocKhajcus+RHV5/8iDH4E=;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=lunn.ch
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (1024-bit key,
  unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256
- header.s=20171124 header.b=0Tr/jzQg
+ header.s=20171124 header.b=fZ0Z6IUw
 Subject: Re: [Intel-wired-lan] [PATCH] e1000e: Link flap workaround option
  for false IRP events
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -101,29 +101,21 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> The reason for the module option is I'm playing it safe, as Intel couldn't determine root cause.
+> >> +			e1e_rphy(hw, PHY_REG(772, 26), &phy_data);
+> >
+> > Please add some #define for these magic numbers, so we have some idea
+> > what PHY register you are actually reading. That in itself might help
+> > explain how the workaround actually works.
+> >
+> 
+> I don't know what this register does I'm afraid - that's Intel knowledge and has not been shared.
 
-> The aim of the patch is to keep the effect to a minimum whilst
-> allowing users who are impacted to turn on the workaround, if they
-> are encountering the issue.
+What PHY is it? Often it is just a COTS PHY, and the datasheet might
+be available.
 
-And how do such users determine this module parameter exists? You need
-to be a pretty savvy user to know about them, and how the set them,
-etc.
-
-> Issue details:
-
-> We have seen the issue when running high level traffic on a network
-> involving at least two nodes and also having two different network
-> speeds are need. For example:
-
-> [Lenovo WS] <---1G link---> Network switch <---100M link--->[traffic source]
-> The link flap can take a day or two to reproduce - it's rare.
-
-By flap, you mean down/up? So the network dies for a couple of seconds
-while autoneg happens? And this repeats at 1 to 2 day intervals?
-
-Or does the link go down, and stay down, and it needs user
-intervention to get the link back?
+Given your setup description, pause seems like the obvious thing to
+check. When trying to debug this, did you look at pause settings?
+Knowing what this register is might also point towards pause, or
+something totally different.
 
 	Andrew
