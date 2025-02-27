@@ -1,124 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF253A48066
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Feb 2025 15:03:42 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 597BCA48455
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Feb 2025 17:10:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B1D8283F56;
-	Thu, 27 Feb 2025 14:03:41 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1652A60AF9;
+	Thu, 27 Feb 2025 16:10:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id eBqHckiwpvDh; Thu, 27 Feb 2025 14:03:40 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 7Umj77jkj4sX; Thu, 27 Feb 2025 16:10:07 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 991AD83B8F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E47EB60A43
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1740665020;
-	bh=BbAckGIr4ov9/p9+sgalQ78fYV7Q/jbVoBJFnMEdago=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=Xjur9YsxaUYmOroB6zK8I50JwYfFfLuYikYeAeHgMjOM+l6TKAnDwP4PDK1YxQqjc
-	 pXgbRSM+VXIpbskceLcNSBPJYGMO45dq+1jFw1Fmur8LSRF4hZdd1eVd/OMuBkNLxD
-	 Z9VbcaGbhZsssrLXiBki2VFdfUZFroQQHjUedXMO0AOzvuJ3US+sOlHXiHHQpiPF5D
-	 OLhdJnvWNxqGYSUej7RawhHusBkcUNjhvPbabyHI84dHg3giVqpSl/H5WK0cCrUQJ6
-	 FqXHK0FhU13GmsOdJ+2/TuVqTM/verSb/3PERwBcqUI0E4Nry7l4h6bh/hwz7wLIEG
-	 v9LClkReBvm7Q==
+	s=default; t=1740672606;
+	bh=lX/m3nnf7YLk7rWeS7FHGWYPncB5OtqoPav3Xi3zF38=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=HgjoSMYCVhtpcjHqJSdRwEASOBCZqUEtQLvtVoHhJHrWcPqq0ERu4WOgQY7ocLz9A
+	 odySIpXPsiCYLFG0cooT6BFZEzMYkb1F+5giCvLUvPrT3sd9+/KOSY0xEf6eApyErM
+	 ntv37nQ2jKc3fo+bc88c4QyMXEkexzahxhyJcvGC1XQm+I3swKlPiWKRm4OWTrqQvR
+	 FfgIUY2/R+LahmmZhDJz2rvI9Bv1pmbbb9PutgcUfFHd1lRXT3apvBGQdgJfmkptcq
+	 /YA931PmA5NWveQx369MD+pllEjePB3RjVIbnEX6kklx82hSetcZgCY8BwxEi4IFGU
+	 CGfq3dMCFA2rw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 991AD83B8F;
-	Thu, 27 Feb 2025 14:03:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E47EB60A43;
+	Thu, 27 Feb 2025 16:10:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id DBD7E69
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 14:03:38 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 71CC568
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 08:22:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id AE531414D0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 14:03:38 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 550C140268
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 08:22:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id myF6NI1o-XDm for <intel-wired-lan@lists.osuosl.org>;
- Thu, 27 Feb 2025 14:03:36 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
- helo=mgamail.intel.com; envelope-from=faizal.abdul.rahim@linux.intel.com;
+ id yc4pOm4KlsjG for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 27 Feb 2025 08:22:26 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=209.85.166.206;
+ helo=mail-il1-f206.google.com;
+ envelope-from=3wcdazwkbaec178tjuun0jyyrm.pxxpun31n0lxw2nw2.lxv@m3kw2wvrgufz5godrsrytgd7.apphosting.bounces.google.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org D06AD413D2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D06AD413D2
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D06AD413D2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 14:03:35 +0000 (UTC)
-X-CSE-ConnectionGUID: 6uMSWNYRRMqXK5zitvGShQ==
-X-CSE-MsgGUID: e6aIWzrFRuewjNcb/gzcmg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11314"; a="41752504"
-X-IronPort-AV: E=Sophos;i="6.12,310,1728975600"; d="scan'208";a="41752504"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
- by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Feb 2025 06:03:34 -0800
-X-CSE-ConnectionGUID: s24tQ372SEe0RYZoJGH60Q==
-X-CSE-MsgGUID: HC/3ZfJ9SQ6jWL6UwSpX1Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,319,1732608000"; d="scan'208";a="122149858"
-Received: from mohdfai2-ilbpg12-1.png.intel.com ([10.88.227.73])
- by fmviesa004.fm.intel.com with ESMTP; 27 Feb 2025 06:03:27 -0800
-From: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
-To: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Simon Horman <horms@kernel.org>, Russell King <linux@armlinux.org.uk>,
- Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>, Furong Xu <0x1207@gmail.com>,
- Russell King <rmk+kernel@armlinux.org.uk>,
- Vladimir Oltean <vladimir.oltean@nxp.com>,
- Serge Semin <fancer.lancer@gmail.com>,
- Xiaolei Wang <xiaolei.wang@windriver.com>,
- Suraj Jaiswal <quic_jsuraj@quicinc.com>,
- Kory Maincent <kory.maincent@bootlin.com>, Gal Pressman <gal@nvidia.com>,
- Jesper Nilsson <jesper.nilsson@axis.com>,
- Andrew Halaney <ahalaney@redhat.com>,
- Choong Yong Liang <yong.liang.choong@linux.intel.com>,
- Faizal Rahim <faizal.abdul.rahim@linux.intel.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, bpf@vger.kernel.org
-Date: Thu, 27 Feb 2025 09:01:57 -0500
-Message-Id: <20250227140158.2129988-10-faizal.abdul.rahim@linux.intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250227140158.2129988-1-faizal.abdul.rahim@linux.intel.com>
-References: <20250227140158.2129988-1-faizal.abdul.rahim@linux.intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C94FA400EC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C94FA400EC
+Received: from mail-il1-f206.google.com (mail-il1-f206.google.com
+ [209.85.166.206])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C94FA400EC
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 08:22:25 +0000 (UTC)
+Received: by mail-il1-f206.google.com with SMTP id
+ e9e14a558f8ab-3d2a1d6747aso7739865ab.0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 00:22:25 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1740644544; x=1741249344;
+ h=to:from:subject:message-id:date:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=lX/m3nnf7YLk7rWeS7FHGWYPncB5OtqoPav3Xi3zF38=;
+ b=A75kyK6+AmImWxbXvuIGsxwQtmK2M3OXviO9sxPQe+0OAblG+1PiYJmkms6P65SZih
+ vPhQl7a0r+h1ftV4x9NZukgqVwYJ73WStlV2bPxDZ2qSGPowNTr5KOLuHe+kP53GSSmM
+ nuLRqe3Yuoclx/JV8SykIEGMuBoYySXkgeEcLNDkAKAGdeH2lg1XxEAx3y34aI+GiBhF
+ isOfKFxN38vdb2ep2Rmts7p/p3bm/w23chKvQu6npwB8LDIDaPhEqXEko+iwSP7g+Rvn
+ lAlB4R7Q+ot9lx+IGKLWq30dodepmlRQZnrjMBBl5uYjWXrZD6ik1faDNXEooVBT1der
+ O0BA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVNMv3QO1Pr9K+uNKD8N7PygTiPmFOCUec0qawMal6iE2VcY5im3aORHj5Z++UlOoUxt5x1j0KuqQ/yOU5cges=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YxaKpPi83B3L7s7hi15rQILArWzkwCosFAlI62Tq6ICxw5T+LKj
+ UWwibpny4+QQ4hZIZ2tkyFYfP0++wu/O9Ia/TD02jkMjyoqoAbPxabDFQW4TFyJYP2oZhcoX7hC
+ Jd2WCvel938nfdskkegE1VB0dS0ngkn7SjJSbJH5zuFo2kO1H0Ec+fOg=
+X-Google-Smtp-Source: AGHT+IHcQW6B6QePv0+ZxKqh9G7YYitC+fhui9RZFurMckxd1PhSpkzoTzpq8URaDrFbK27MtTatcCVY5c4VtP+QUYbVRAaqTMO/
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1740665016; x=1772201016;
- h=from:to:subject:date:message-id:in-reply-to:references:
- mime-version:content-transfer-encoding;
- bh=xhzXchOUSV8qoEw0td6GaGAwIOTup1QP7sni5ZbXwDA=;
- b=LQFhm4J8+7HiG3hvQ73DIClYpGb6KSo9E6WR+6o/eSc1PtRjCq1O+ZWb
- FbtuqyYckVLMZerP1SSi7KzNyWqzhlQ6ZrxwbNzOLhEZcW77QE75MwCtC
- uYslvV7rv/CEKIJba4lfpYsY63u8Wpl5qgHdprcjLrJgscm4VG/Pb5nP7
- zhvWoheol+ScrgNMo2cBxRISQD5J97EzWfRnuxVE7BT5nLApYK3S4F3ld
- 0SCq7Zz7AAZZCDohHL0I6y7y219+jr+ysTataQqEA56FPucV2lQRlpiaE
- 4pVN/jM3k/ymHVQpwWZH1turPXYCOpYjOg9O+YMooEVqhFWcQnpp72tm8
- A==;
+X-Received: by 2002:a05:6e02:184e:b0:3cd:d14c:be69 with SMTP id
+ e9e14a558f8ab-3d3dd2d9ea5mr17906235ab.11.1740644544319; Thu, 27 Feb 2025
+ 00:22:24 -0800 (PST)
+Date: Thu, 27 Feb 2025 00:22:24 -0800
+X-Google-Appengine-App-Id: s~syzkaller
+X-Google-Appengine-App-Id-Alias: syzkaller
+Message-ID: <67c020c0.050a0220.222324.0011.GAE@google.com>
+From: syzbot <syzbot+da65c993ae113742a25f@syzkaller.appspotmail.com>
+To: andrew+netdev@lunn.ch, anthony.l.nguyen@intel.com, davem@davemloft.net, 
+ edumazet@google.com, intel-wired-lan@lists.osuosl.org, kuba@kernel.org, 
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org, pabeni@redhat.com, 
+ przemyslaw.kitszel@intel.com, syzkaller-bugs@googlegroups.com
+Content-Type: text/plain; charset="UTF-8"
+X-Mailman-Approved-At: Thu, 27 Feb 2025 16:10:04 +0000
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=LQFhm4J8
-Subject: [Intel-wired-lan] [PATCH iwl-next v6 9/9] igc: Add support to get
- frame preemption statistics via ethtool
+ header.from=syzkaller.appspotmail.com
+Subject: [Intel-wired-lan] [syzbot] [intel-wired-lan?] kernel BUG in
+ pskb_expand_head (4)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -134,130 +105,141 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Implemented "ethtool --include-statistics --show-mm" callback for IGC.
+Hello,
 
-Tested preemption scenario to check preemption statistics:
-1) Trigger verification handshake on both boards:
-    $ sudo ethtool --set-mm enp1s0 pmac-enabled on
-    $ sudo ethtool --set-mm enp1s0 tx-enabled on
-    $ sudo ethtool --set-mm enp1s0 verify-enabled on
-2) Set preemptible or express queue in taprio for tx board:
-    $ sudo tc qdisc replace dev enp1s0 parent root handle 100 taprio \
-      num_tc 4 map 3 2 1 0 3 3 3 3 3 3 3 3 3 3 3 3 \
-      queues 1@0 1@1 1@2 1@3 base-time 0 sched-entry S F 100000 \
-      fp E E P P
-3) Send large size packets on preemptible queue
-4) Send small size packets on express queue to preempt packets in
-   preemptible queue
-5) Show preemption statistics on the receiving board:
-   $ ethtool --include-statistics --show-mm enp1s0
-     MAC Merge layer state for enp1s0:
-     pMAC enabled: on
-     TX enabled: on
-     TX active: on
-     TX minimum fragment size: 64
-     RX minimum fragment size: 60
-     Verify enabled: on
-     Verify time: 128
-     Max verify time: 128
-     Verification status: SUCCEEDED
-     Statistics:
-      MACMergeFrameAssErrorCount: 0
-      MACMergeFrameSmdErrorCount: 0
-      MACMergeFrameAssOkCount: 511
-      MACMergeFragCountRx: 764
-      MACMergeFragCountTx: 0
-      MACMergeHoldCount: 0
+syzbot found the following issue on:
 
-Co-developed-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Signed-off-by: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
+HEAD commit:    ac9c34d1e45a Merge tag 'for-linus' of git://git.kernel.org..
+git tree:       upstream
+console output: https://syzkaller.appspot.com/x/log.txt?x=10da9db0580000
+kernel config:  https://syzkaller.appspot.com/x/.config?x=b1635bf4c5557b92
+dashboard link: https://syzkaller.appspot.com/bug?extid=da65c993ae113742a25f
+compiler:       gcc (Debian 12.2.0-14) 12.2.0, GNU ld (GNU Binutils for Debian) 2.40
+userspace arch: i386
+
+Unfortunately, I don't have any reproducer for this issue yet.
+
+Downloadable assets:
+disk image (non-bootable): https://storage.googleapis.com/syzbot-assets/7feb34a89c2a/non_bootable_disk-ac9c34d1.raw.xz
+vmlinux: https://storage.googleapis.com/syzbot-assets/a84d67d61e80/vmlinux-ac9c34d1.xz
+kernel image: https://storage.googleapis.com/syzbot-assets/951486618398/bzImage-ac9c34d1.xz
+
+IMPORTANT: if you fix the issue, please add the following tag to the commit:
+Reported-by: syzbot+da65c993ae113742a25f@syzkaller.appspotmail.com
+
+------------[ cut here ]------------
+kernel BUG at net/core/skbuff.c:2178!
+Oops: invalid opcode: 0000 [#1] PREEMPT SMP KASAN NOPTI
+CPU: 0 UID: 0 PID: 16371 Comm: syz.2.2764 Not tainted 6.14.0-rc4-syzkaller-00052-gac9c34d1e45a #0
+Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS 1.16.3-debian-1.16.3-2~bpo12+1 04/01/2014
+RIP: 0010:pskb_expand_head+0x6ce/0x1240 net/core/skbuff.c:2178
+Code: 7f 05 e8 35 98 f1 f8 8b 44 24 40 8b 74 24 44 29 f0 01 83 e0 00 00 00 e9 70 ff ff ff e8 4b 5e 8f f8 90 0f 0b e8 43 5e 8f f8 90 <0f> 0b e8 3b 5e 8f f8 41 81 cd 00 00 02 00 e9 46 fb ff ff e8 2a 5e
+RSP: 0018:ffffc9000d6f7160 EFLAGS: 00010246
+RAX: 0000000000080000 RBX: ffff88806c1f9400 RCX: ffffc900273e9000
+RDX: 0000000000080000 RSI: ffffffff892a810d RDI: 0000000000000005
+RBP: ffff88806c1f94cc R08: 0000000000000005 R09: 0000000000000001
+R10: 0000000000000002 R11: 0000000000000005 R12: 0000000000000002
+R13: 0000000000000820 R14: dffffc0000000000 R15: 0000000000000000
+FS:  0000000000000000(0000) GS:ffff88802b400000(0063) knlGS:00000000f5066b40
+CS:  0010 DS: 002b ES: 002b CR0: 0000000080050033
+CR2: 000000008000601c CR3: 0000000054770000 CR4: 0000000000352ef0
+Call Trace:
+ <TASK>
+ __skb_pad+0x18a/0x610 net/core/skbuff.c:2466
+ __skb_put_padto include/linux/skbuff.h:3843 [inline]
+ skb_put_padto include/linux/skbuff.h:3862 [inline]
+ eth_skb_pad include/linux/etherdevice.h:656 [inline]
+ e1000_xmit_frame+0x2d99/0x5800 drivers/net/ethernet/intel/e1000/e1000_main.c:3128
+ __netdev_start_xmit include/linux/netdevice.h:5151 [inline]
+ netdev_start_xmit include/linux/netdevice.h:5160 [inline]
+ xmit_one net/core/dev.c:3806 [inline]
+ dev_hard_start_xmit+0x9a/0x7b0 net/core/dev.c:3822
+ sch_direct_xmit+0x1ae/0xc30 net/sched/sch_generic.c:343
+ __dev_xmit_skb net/core/dev.c:4045 [inline]
+ __dev_queue_xmit+0x13d4/0x43e0 net/core/dev.c:4621
+ dev_queue_xmit include/linux/netdevice.h:3313 [inline]
+ llc_sap_action_send_test_c+0x268/0x320 net/llc/llc_s_ac.c:144
+ llc_exec_sap_trans_actions net/llc/llc_sap.c:153 [inline]
+ llc_sap_next_state net/llc/llc_sap.c:182 [inline]
+ llc_sap_state_process+0x239/0x510 net/llc/llc_sap.c:209
+ llc_ui_sendmsg+0xd0d/0x14e0 net/llc/af_llc.c:993
+ sock_sendmsg_nosec net/socket.c:718 [inline]
+ __sock_sendmsg net/socket.c:733 [inline]
+ ____sys_sendmsg+0xaaf/0xc90 net/socket.c:2573
+ ___sys_sendmsg+0x135/0x1e0 net/socket.c:2627
+ __sys_sendmmsg+0x2fa/0x420 net/socket.c:2709
+ __compat_sys_sendmmsg net/compat.c:360 [inline]
+ __do_compat_sys_sendmmsg net/compat.c:367 [inline]
+ __se_compat_sys_sendmmsg net/compat.c:364 [inline]
+ __ia32_compat_sys_sendmmsg+0x9d/0x100 net/compat.c:364
+ do_syscall_32_irqs_on arch/x86/entry/common.c:165 [inline]
+ __do_fast_syscall_32+0x73/0x120 arch/x86/entry/common.c:386
+ do_fast_syscall_32+0x32/0x80 arch/x86/entry/common.c:411
+ entry_SYSENTER_compat_after_hwframe+0x84/0x8e
+RIP: 0023:0xf73de579
+Code: b8 01 10 06 03 74 b4 01 10 07 03 74 b0 01 10 08 03 74 d8 01 00 00 00 00 00 00 00 00 00 00 00 00 00 51 52 55 89 e5 0f 34 cd 80 <5d> 5a 59 c3 90 90 90 90 8d b4 26 00 00 00 00 8d b4 26 00 00 00 00
+RSP: 002b:00000000f506655c EFLAGS: 00000296 ORIG_RAX: 0000000000000159
+RAX: ffffffffffffffda RBX: 0000000000000004 RCX: 0000000080000c40
+RDX: 00000000842c97f7 RSI: 0000000000008014 RDI: 0000000000000000
+RBP: 0000000000000000 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:pskb_expand_head+0x6ce/0x1240 net/core/skbuff.c:2178
+Code: 7f 05 e8 35 98 f1 f8 8b 44 24 40 8b 74 24 44 29 f0 01 83 e0 00 00 00 e9 70 ff ff ff e8 4b 5e 8f f8 90 0f 0b e8 43 5e 8f f8 90 <0f> 0b e8 3b 5e 8f f8 41 81 cd 00 00 02 00 e9 46 fb ff ff e8 2a 5e
+RSP: 0018:ffffc9000d6f7160 EFLAGS: 00010246
+RAX: 0000000000080000 RBX: ffff88806c1f9400 RCX: ffffc900273e9000
+RDX: 0000000000080000 RSI: ffffffff892a810d RDI: 0000000000000005
+RBP: ffff88806c1f94cc R08: 0000000000000005 R09: 0000000000000001
+R10: 0000000000000002 R11: 0000000000000005 R12: 0000000000000002
+R13: 0000000000000820 R14: dffffc0000000000 R15: 0000000000000000
+FS:  0000000000000000(0000) GS:ffff88802b400000(0063) knlGS:00000000f5066b40
+CS:  0010 DS: 002b ES: 002b CR0: 0000000080050033
+CR2: 000000008000601c CR3: 0000000054770000 CR4: 0000000000352ef0
+----------------
+Code disassembly (best guess), 2 bytes skipped:
+   0:	10 06                	adc    %al,(%rsi)
+   2:	03 74 b4 01          	add    0x1(%rsp,%rsi,4),%esi
+   6:	10 07                	adc    %al,(%rdi)
+   8:	03 74 b0 01          	add    0x1(%rax,%rsi,4),%esi
+   c:	10 08                	adc    %cl,(%rax)
+   e:	03 74 d8 01          	add    0x1(%rax,%rbx,8),%esi
+  1e:	00 51 52             	add    %dl,0x52(%rcx)
+  21:	55                   	push   %rbp
+  22:	89 e5                	mov    %esp,%ebp
+  24:	0f 34                	sysenter
+  26:	cd 80                	int    $0x80
+* 28:	5d                   	pop    %rbp <-- trapping instruction
+  29:	5a                   	pop    %rdx
+  2a:	59                   	pop    %rcx
+  2b:	c3                   	ret
+  2c:	90                   	nop
+  2d:	90                   	nop
+  2e:	90                   	nop
+  2f:	90                   	nop
+  30:	8d b4 26 00 00 00 00 	lea    0x0(%rsi,%riz,1),%esi
+  37:	8d b4 26 00 00 00 00 	lea    0x0(%rsi,%riz,1),%esi
+
+
 ---
- drivers/net/ethernet/intel/igc/igc_ethtool.c | 36 ++++++++++++++++++++
- drivers/net/ethernet/intel/igc/igc_regs.h    | 16 +++++++++
- 2 files changed, 52 insertions(+)
+This report is generated by a bot. It may contain errors.
+See https://goo.gl/tpsmEJ for more information about syzbot.
+syzbot engineers can be reached at syzkaller@googlegroups.com.
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index 7f0052e0d50c..97a1194399b1 100644
---- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -1819,6 +1819,41 @@ static int igc_ethtool_set_mm(struct net_device *netdev,
- 	return igc_tsn_offload_apply(adapter);
- }
- 
-+/**
-+ * igc_ethtool_get_frame_ass_error - Get the frame assembly error count.
-+ * @dev: Pointer to the net_device structure.
-+ * Return: The count of frame assembly errors.
-+ */
-+static u64 igc_ethtool_get_frame_ass_error(struct net_device *dev)
-+{
-+	struct igc_adapter *adapter = netdev_priv(dev);
-+	u32 ooo_smdc, ooo_frame_cnt, ooo_frag_cnt; /* Out of order statistics */
-+	struct igc_hw *hw = &adapter->hw;
-+	u32 miss_frame_frag_cnt;
-+	u32 reg_value;
-+
-+	reg_value = rd32(IGC_PRMEXPRCNT);
-+	ooo_smdc = FIELD_GET(IGC_PRMEXPRCNT_OOO_SMDC, reg_value);
-+	ooo_frame_cnt = FIELD_GET(IGC_PRMEXPRCNT_OOO_FRAME_CNT, reg_value);
-+	ooo_frag_cnt = FIELD_GET(IGC_PRMEXPRCNT_OOO_FRAG_CNT, reg_value);
-+	miss_frame_frag_cnt = FIELD_GET(IGC_PRMEXPRCNT_MISS_FRAME_FRAG_CNT,
-+					reg_value);
-+
-+	return ooo_smdc + ooo_frame_cnt + ooo_frag_cnt + miss_frame_frag_cnt;
-+}
-+
-+static void igc_ethtool_get_mm_stats(struct net_device *dev,
-+				     struct ethtool_mm_stats *stats)
-+{
-+	struct igc_adapter *adapter = netdev_priv(dev);
-+	struct igc_hw *hw = &adapter->hw;
-+
-+	stats->MACMergeFrameAssErrorCount = igc_ethtool_get_frame_ass_error(dev);
-+	stats->MACMergeFrameAssOkCount = rd32(IGC_PRMPTDRCNT);
-+	stats->MACMergeFragCountRx =  rd32(IGC_PRMEVNTRCNT);
-+	stats->MACMergeFragCountTx = rd32(IGC_PRMEVNTTCNT);
-+}
-+
- static int igc_ethtool_get_link_ksettings(struct net_device *netdev,
- 					  struct ethtool_link_ksettings *cmd)
- {
-@@ -2108,6 +2143,7 @@ static const struct ethtool_ops igc_ethtool_ops = {
- 	.get_channels		= igc_ethtool_get_channels,
- 	.get_mm			= igc_ethtool_get_mm,
- 	.set_mm			= igc_ethtool_set_mm,
-+	.get_mm_stats		= igc_ethtool_get_mm_stats,
- 	.set_channels		= igc_ethtool_set_channels,
- 	.get_priv_flags		= igc_ethtool_get_priv_flags,
- 	.set_priv_flags		= igc_ethtool_set_priv_flags,
-diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
-index 12ddc5793651..41dbfb07eb2f 100644
---- a/drivers/net/ethernet/intel/igc/igc_regs.h
-+++ b/drivers/net/ethernet/intel/igc/igc_regs.h
-@@ -222,6 +222,22 @@
- 
- #define IGC_FTQF(_n)	(0x059E0 + (4 * (_n)))  /* 5-tuple Queue Fltr */
- 
-+/* Time sync registers - preemption statistics */
-+#define IGC_PRMPTDRCNT		0x04284	/* Good RX Preempted Packets */
-+#define IGC_PRMEVNTTCNT		0x04298	/* TX Preemption event counter */
-+#define IGC_PRMEVNTRCNT		0x0429C	/* RX Preemption event counter */
-+
-+ /* Preemption Exception Counter */
-+#define IGC_PRMEXPRCNT					0x42A0
-+/* Received out of order packets with SMD-C */
-+#define IGC_PRMEXPRCNT_OOO_SMDC				0x000000FF
-+/* Received out of order packets with SMD-C and wrong Frame CNT */
-+#define IGC_PRMEXPRCNT_OOO_FRAME_CNT			0x0000FF00
-+/* Received out of order packets with SMD-C and wrong Frag CNT */
-+#define IGC_PRMEXPRCNT_OOO_FRAG_CNT			0x00FF0000
-+/* Received packets with SMD-S and wrong Frag CNT and Frame CNT */
-+#define IGC_PRMEXPRCNT_MISS_FRAME_FRAG_CNT		0xFF000000
-+
- /* Transmit Scheduling Registers */
- #define IGC_TQAVCTRL		0x3570
- #define IGC_TXQCTL(_n)		(0x3344 + 0x4 * (_n))
--- 
-2.34.1
+syzbot will keep track of this issue. See:
+https://goo.gl/tpsmEJ#status for how to communicate with syzbot.
 
+If the report is already addressed, let syzbot know by replying with:
+#syz fix: exact-commit-title
+
+If you want to overwrite report's subsystems, reply with:
+#syz set subsystems: new-subsystem
+(See the list of subsystem names on the web dashboard)
+
+If the report is a duplicate of another one, reply with:
+#syz dup: exact-subject-of-another-report
+
+If you want to undo deduplication, reply with:
+#syz undup
