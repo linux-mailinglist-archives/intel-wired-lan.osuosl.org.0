@@ -2,90 +2,88 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 02A55A47BFF
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Feb 2025 12:23:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2492BA47C24
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Feb 2025 12:26:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5E7AB40C9B;
-	Thu, 27 Feb 2025 11:23:49 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9F7364052A;
+	Thu, 27 Feb 2025 11:26:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xEKCLkIMzi-I; Thu, 27 Feb 2025 11:23:48 +0000 (UTC)
+ id RYcWjxFas2Hm; Thu, 27 Feb 2025 11:26:55 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 86714412E9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CCFCA4052B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1740655428;
-	bh=Q4zc93KPjRpKHMlGIPIkdilH/09HURmBk3szVnXY1/M=;
+	s=default; t=1740655614;
+	bh=x7njSNNZSzY8lLQ4FPMnOrCxGVEGUQs8aV7/9zpGlGs=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=kVpKU13QsfiyqOB5Ky+hSlSA9iWK596rNMu/sfY/aHn3Zd8ft9qy14dr70vOT4Etd
-	 z8zC9a9t2/KWZB49WdmY/GTt9pb7ayzxwv5yRYshHEtPRlPPTJYL74JtqFrj3iadS3
-	 TamtnLPYFKfbl06UDVpCzb0v871ID5hlKoYjShhqO8TBSlPwZk4pRRbnaoS3kjH+yB
-	 Ya4cYZBVvyKD9zXotpIUlU7k12paUpjuKZoc8goEW+xkoAL+oR4PFjWm5gq8aqOKC/
-	 0ZTXQ92N5nzaCLAIxZK3vIcrYtJ8240DgfTzKm1gdSzlVUYRsDnwj68svxSbNswAaH
-	 cOoJ/3kB6luww==
+	b=tyNTPJFrp1zrfZLjcLLBjajVjIKt3INo34zTKHVbjUo2FadYAk8MSorA9D9bM7WUn
+	 OVcHIO7DCt32FE4neIu0tGGMSlAbsSOzONRdbTCu5zgTf9UQbpeW2ffxEiBvT39+hj
+	 xqfLBudoDA4LRw++7sAcmklhE7TvrYkvGd5mbHJc30xan+Xl2k6cLFE574cbUOn1Q5
+	 Fy/44GswizdFrwvQb84iY23eniJDWZPExQHjAql5lzVJ9X1G4r5PZrT1izLPcSEm2V
+	 FOq3VaL07/8ZLB8p13xSSv7HId/5LqT51GszZBJITJGTQgwn30S8t0yqRH0kJV0YO6
+	 x8SefYQB9SdIg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 86714412E9;
-	Thu, 27 Feb 2025 11:23:48 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CCFCA4052B;
+	Thu, 27 Feb 2025 11:26:54 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 7750B69
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 11:23:46 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id D114069
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 11:26:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 5B3A8408D0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 11:23:46 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id C00F3403DF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 11:26:52 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id wd5kQpZ51UNj for <intel-wired-lan@lists.osuosl.org>;
- Thu, 27 Feb 2025 11:23:45 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c04::f03c:95ff:fe5e:7468; helo=tor.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 94FA040795
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 94FA040795
-Received: from tor.source.kernel.org (tor.source.kernel.org
- [IPv6:2600:3c04::f03c:95ff:fe5e:7468])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 94FA040795
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 11:23:45 +0000 (UTC)
+ id I4R8Cr6qZkBt for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 27 Feb 2025 11:26:52 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 004F24052B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 004F24052B
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 004F24052B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Feb 2025 11:26:51 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id ACC416112B;
- Thu, 27 Feb 2025 11:23:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E1D4C4CEDD;
- Thu, 27 Feb 2025 11:23:42 +0000 (UTC)
-Date: Thu, 27 Feb 2025 11:23:40 +0000
+ by dfw.source.kernel.org (Postfix) with ESMTP id 003B05C4D91;
+ Thu, 27 Feb 2025 11:26:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 81A4FC4CEE8;
+ Thu, 27 Feb 2025 11:26:49 +0000 (UTC)
+Date: Thu, 27 Feb 2025 11:26:47 +0000
 From: Simon Horman <horms@kernel.org>
-To: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+To: Grzegorz Nitka <grzegorz.nitka@intel.com>
 Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- pmenzel@molgen.mpg.de, andrew@lunn.ch,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Message-ID: <20250227112340.GE1615191@kernel.org>
-References: <20250221154917.3710-1-piotr.kwapulinski@intel.com>
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <20250227112647.GF1615191@kernel.org>
+References: <20250224205924.2861584-1-grzegorz.nitka@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250221154917.3710-1-piotr.kwapulinski@intel.com>
+In-Reply-To: <20250224205924.2861584-1-grzegorz.nitka@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1740655423;
- bh=e9Nho5OF8tCuj0g5OKDSBx3+nvAcIOynZbsbwusFglA=;
+ d=kernel.org; s=k20201202; t=1740655610;
+ bh=joa65lQgJqepjK/oan+yreZVBckdZfznLoJjDlT+9+c=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=i2ndC/MXz7RLeVo2zDgbiBT6xvY5pXev1D9Y7uKgrFw4ZSRKfdyn5zHJ836exU7CU
- csb4/P0Wd/ZXv8XbVlfWB0a1NnwUd2y9RHGT4D311YkWo6cUixNYYbux55VSqI4zjm
- N+Nh9e7N5xAmH/3NGMnZtmxmIBNGiKdb7Ly+BlYDq7FMZLBE8yeypTbw4AjpQxqjiJ
- h0lPXNK4iNLzTCIrBzw25ON5EkXJLNOD5SdzZYxGk1Xypw7vaxZPXa2ZxBrsjOv+o7
- STego9Kn3EQjK98kiW8RcgzX7VfY1pAiRBVBHCd55fWgxhiCEQeOhIx6cJ15TlHC5/
- Ws+EvSlk1AmNg==
+ b=WO4VkYtbDvggp456HFQDWq+opgnr0uRB+sXmlxZC4c9FyKa0xULdPloHbUjSC0Fr5
+ a6AgxefGgKtTmoyFfvol7YrlLLBwC3KMCCnOJUr8hEog+mUHGZIB5ZY/0PF4TcdQAQ
+ 7ZryLiw1CC36BMwf+/inL7cH73ps7uQCcn1lkWVePj4mYYacKXaFBidRAFgnkhI+51
+ oeDD411JqxV/um6XzmqED41Q6GibghbsSMjs07/ITRjftrqEwkWwwMhYGZVTgfIrUV
+ TZkHE9poo6c15xmK4x6leckJ4rrqAe8ScRFqXoedHY8MWZ05M5kI4LdQhmqRl4fKhH
+ Y+8xXCCaHjRKg==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=i2ndC/MX
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v3] ixgbe: fix media type
- detection for E610 device
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=WO4VkYtb
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] ice: Allow 100M speed for
+ E825C SGMII device
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -101,28 +99,32 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Feb 21, 2025 at 04:49:17PM +0100, Piotr Kwapulinski wrote:
-> The commit 23c0e5a16bcc ("ixgbe: Add link management support for E610
-> device") introduced incorrect media type detection for E610 device. It
-> reproduces when advertised speed is modified after driver reload. Clear
-> the previous outdated PHY type high value.
+On Mon, Feb 24, 2025 at 09:59:24PM +0100, Grzegorz Nitka wrote:
+> Add E825C 10GbE SGMII device to the list of devices supporting 100Mbit
+> link mode. Without that change, 100Mbit link mode is ignored in ethtool
+> interface. This change was missed while adding the support for E825C
+> devices family.
 > 
-> Reproduction steps:
-> modprobe ixgbe
-> ethtool -s eth0 advertise 0x1000000000000
-> modprobe -r ixgbe
-> modprobe ixgbe
-> ethtool -s eth0 advertise 0x1000000000000
-> Result before the fix:
-> netlink error: link settings update failed
-> netlink error: Invalid argument
-> Result after the fix:
-> No output error
+> Testing hints (please note, for previous version, 100baseT/Full entry
+> was missing):
+> [root@localhost]# ethtool eth3
+> Settings for eth3:
+>         Supported ports: [ TP ]
+>         Supported link modes:   100baseT/Full
+>                                 1000baseT/Full
+>                                 10000baseT/Full
+>         Supported pause frame use: Symmetric
+>         Supports auto-negotiation: Yes
+>         Supported FEC modes: None
+>         Advertised link modes:  100baseT/Full
+>                                 1000baseT/Full
+>                                 10000baseT/Full
+> 	...
 > 
-> Fixes: 23c0e5a16bcc ("ixgbe: Add link management support for E610 device")
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Fixes: f64e189442332 ("ice: introduce new E825C devices family")
+> Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
+> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 > Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
-> Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
 
 Reviewed-by: Simon Horman <horms@kernel.org>
 
