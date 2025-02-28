@@ -1,92 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E860AA49F7C
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Feb 2025 17:55:57 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 77E41A4A04F
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Feb 2025 18:26:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A4B464F579;
-	Fri, 28 Feb 2025 16:55:55 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2DB0D50C1C;
+	Fri, 28 Feb 2025 17:26:01 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id F6O6S06Fqgpg; Fri, 28 Feb 2025 16:55:55 +0000 (UTC)
+ id xZxP3uiu_nMX; Fri, 28 Feb 2025 17:26:00 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E6213501DE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5949143488
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1740761755;
-	bh=1VRZoqoHCK+crSI0o1Efw52ErTi5ppZiw43v7ZMPgsI=;
+	s=default; t=1740763560;
+	bh=lw0JWqI1OPnu2Yb7FT9723b2AYvYz4/NhY06TvPuIqs=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=B9OTnahvytBsKmaiaDIkBawarjjfEUaJAPl2YgNSXPyoNYbmHQNCGRkFxJe9jgSVy
-	 NgSyCXSHSOs05g7UVTTdHWHR5n+hHRluSsJqYfVTxsC7o6lOhzPWgKnAxRB1n4Vm3/
-	 ADgTi/N65YWx3w1wPiuqK/R7/7zVCsayxlrK/Ip/Q4m+i4G1r3v/zTF1ecR8VqDFgW
-	 XmdD7nlMgZCYN98E9e0nvML3p+DsyHAMBQdvV64sdMyU74SHCOaEOjIn5Jov/e3mES
-	 eNZH3PJ80K1FcfDPHzbpETmFHRjTJ1h6YuwfxKQwbzV7UHJjnXOXKJ9x7ucXpZENSB
-	 zh+8N8gMLv/kQ==
+	b=neJ9sCY23yJcj+GGk28BXL81sM2WahnFey36WALtESBXzkmFrpGEDcZLVNbRBtoye
+	 r/d5PfkRUpkDxb5pzJXl9Xp/0FAd/LxQhTWSTxNky9eJmuL/xA9OCh2tM0tnyBQ3Tf
+	 c3QpeFcvOHcDbhKPVg7sCobMtGlv+vuiALj/FyTZC5NjXdIiDuyselDw4H5sVZ6Haq
+	 EL+HIiLLRrW4e5Jcj1OvE1q+98LrE8/OslXPw/JvA/WkRl1+15qiazfU776KN8epXl
+	 lp9kNufd9w3e4KGSWrWJVfh+i796rSwLn/D7PzTHfaP4YUtAwuFW8Haw2vqGPnyKU2
+	 GVZHLVbYrFaqA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E6213501DE;
-	Fri, 28 Feb 2025 16:55:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5949143488;
+	Fri, 28 Feb 2025 17:26:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id B107D1DD
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2025 16:37:38 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 04C3B1CB
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2025 17:20:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9360B8426D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2025 16:37:37 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id D01E04EF68
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2025 17:09:45 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Z7RatyOCQxIA for <intel-wired-lan@lists.osuosl.org>;
- Fri, 28 Feb 2025 16:37:37 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
- helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org EA1A0844AB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EA1A0844AB
-Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
- by smtp1.osuosl.org (Postfix) with ESMTPS id EA1A0844AB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2025 16:37:36 +0000 (UTC)
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
- (envelope-from <andrew@lunn.ch>)
- id 1to3MX-0010OP-I6; Fri, 28 Feb 2025 17:37:21 +0100
-Date: Fri, 28 Feb 2025 17:37:21 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Mark Pearson <mpearson-lenovo@squebb.ca>
-Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Message-ID: <51f829a0-43e2-4cb5-ac0f-a0098d53ce7b@lunn.ch>
-References: <mpearson-lenovo@squebb.ca>
- <20250226194422.1030419-1-mpearson-lenovo@squebb.ca>
- <36ae9886-8696-4f8a-a1e4-b93a9bd47b2f@lunn.ch>
- <50d86329-98b1-4579-9cf1-d974cf7a748d@app.fastmail.com>
- <1a4ed373-9d27-4f4b-9e75-9434b4f5cad9@lunn.ch>
- <9f460418-99c6-49f9-ac2c-7a957f781e17@app.fastmail.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id XtXMNwrdKeps for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 28 Feb 2025 17:09:45 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
+ helo=tor.source.kernel.org; envelope-from=horms@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org EFA354F081
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EFA354F081
+Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id EFA354F081
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2025 17:09:44 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id D3CFE61FAB;
+ Fri, 28 Feb 2025 17:09:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 235BEC4CED6;
+ Fri, 28 Feb 2025 17:09:41 +0000 (UTC)
+Date: Fri, 28 Feb 2025 17:09:39 +0000
+From: Simon Horman <horms@kernel.org>
+To: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+Message-ID: <20250228170939.GK1615191@kernel.org>
+References: <20250225090847.513849-2-martyna.szapar-mudlaw@linux.intel.com>
+ <20250225090847.513849-8-martyna.szapar-mudlaw@linux.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <9f460418-99c6-49f9-ac2c-7a957f781e17@app.fastmail.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; d=lunn.ch; 
- s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
- Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
- Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
- bh=1VRZoqoHCK+crSI0o1Efw52ErTi5ppZiw43v7ZMPgsI=; b=B9GH67kh5Jx8WzgqtpIIffYyq3
- PWDB2DLd/vOU1AwfV204wkdgFxp78886X72/Ob+ubLCt+jeR4DCJpFk4VoO2BUpK2M2oQI87XSI0D
- 3+dNH2QThUO2gaotwredUNBP3UQhuCf2nSiZ18yMiWTn0r2HRCWEOhldpdhbV3oGjP+I=;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=lunn.ch
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=lunn.ch header.i=@lunn.ch
- header.a=rsa-sha256 header.s=20171124 header.b=B9GH67kh
-Subject: Re: [Intel-wired-lan] [PATCH] e1000e: Link flap workaround option
- for false IRP events
+In-Reply-To: <20250225090847.513849-8-martyna.szapar-mudlaw@linux.intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1740762583;
+ bh=S9zzy7A7bNCFlFQ9EkUF9Yue0Nn9SL09FASYNBH3ceg=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=n4hukd2VmiE1dayEMU6q9Ah/OuSfy21KtM0dx1l1XCYTS32ikeHNUa1xLtPl1c7Nb
+ 5ULoNmMkI4OJfdtX5vUIO2U8LGLyLWkAbtjwu2ZZKZLaRp5h0I5oKnC3rbuzj1Ri7v
+ iPKF4hutb2V8H+ajOGPmKOst69/Ikc2K+5Xel7ijQLUI7oH6XtB0wK6z39HQBhzQR5
+ JHmFVCuep1eMSkQcLu3DjrOphWUyJDKWCKIk/U0+gA45TBuycy2cgKTmdGVmv52SEM
+ ebbOKwl5K8/BTQRV9SJiBVo6DEty66EEa5vrZ/QtwOBvEumqz7XaE5m/giHTU6xmOz
+ BE5N6GjAyRNzw==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=n4hukd2V
+Subject: Re: [Intel-wired-lan] [iwl-net v2 5/5] ice: fix using untrusted
+ value of pkt_len in ice_vc_fdir_parse_raw()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -102,8 +99,50 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> For the PHY - do you know a way of determining this easily?
+On Tue, Feb 25, 2025 at 10:08:49AM +0100, Martyna Szapar-Mudlaw wrote:
+> From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+> 
+> Fix using the untrusted value of proto->raw.pkt_len in function
+> ice_vc_fdir_parse_raw() by verifying if it does not exceed the
+> VIRTCHNL_MAX_SIZE_RAW_PACKET value.
+> 
+> Fixes: 99f419df8a5c ("ice: enable FDIR filters from raw binary patterns for VFs")
+> Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+> Signed-off-by: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
+> ---
+>  .../ethernet/intel/ice/ice_virtchnl_fdir.c    | 25 +++++++++++++------
+>  1 file changed, 17 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
+> index 14e3f0f89c78..6250629ee8f9 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
+> @@ -835,18 +835,27 @@ ice_vc_fdir_parse_raw(struct ice_vf *vf,
+>  	u8 *pkt_buf, *msk_buf __free(kfree);
+>  	struct ice_parser_result rslt;
+>  	struct ice_pf *pf = vf->pf;
+> +	u16 pkt_len, udp_port = 0;
+>  	struct ice_parser *psr;
+>  	int status = -ENOMEM;
+>  	struct ice_hw *hw;
+> -	u16 udp_port = 0;
+>  
+> -	pkt_buf = kzalloc(proto->raw.pkt_len, GFP_KERNEL);
+> -	msk_buf = kzalloc(proto->raw.pkt_len, GFP_KERNEL);
+> +	if (!proto->raw.pkt_len)
+> +		return -EINVAL;
+> +
+> +	pkt_len = proto->raw.pkt_len;
 
-Add printk()s to e1000e_get_phy_type_from_id().
+Hi Martyna,
 
-	Andrew
+A check is made for !proto->raw.pkt_len above.
+And a check is made for !pkt_len below.
+
+This seems redundant.
+
+> +
+> +	if (!pkt_len || pkt_len > VIRTCHNL_MAX_SIZE_RAW_PACKET)
+> +		return -EINVAL;
+
+...
