@@ -2,115 +2,114 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 279ECA4A0D9
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Feb 2025 18:51:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6A491A4A0F4
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Feb 2025 18:54:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 74AFA83546;
-	Fri, 28 Feb 2025 17:51:18 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D55C283196;
+	Fri, 28 Feb 2025 17:54:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HB7ssybHOfh2; Fri, 28 Feb 2025 17:51:18 +0000 (UTC)
+ id HHUL4Ns6CjgY; Fri, 28 Feb 2025 17:54:16 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D71E382F51
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3231180E4D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1740765077;
-	bh=i90O7/FHVyjR7MxsQSaYgobcsFdF6N1pl357JzY65Cc=;
+	s=default; t=1740765256;
+	bh=u1+7MTEmNylFc5L9CoXkBtTmEDDPTyP3nTJh0lf/FAc=;
 	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=k3TGBod5o1VRK6uy7/bAYJR5NUTgim/MVQQ2RdQig8USMCrfCYZlbldOH5Ik3kqP1
-	 DC5LZ6M1kjJ5czG5IThJ1Sbn0bQ4OdfcZSTiRb5tWTr2KxGO+t+YZDHAwH1Ckm+BY3
-	 qAEZ+23W8PHG0b2tsur38/ViSB0Q4axXJxqPhBP10cAXjEjtYX6O/0SznmucNGQb0z
-	 enM7entvulFqjq6l0b2H8epxws7sUOEY1HGVcLXmj0LJ7LRXNxNyMEjNRD5rZi7xNs
-	 H6QwtUFt430+f0/x31jqfBmCDwxN72swu++CfTGVv6+A5FV5lQqf+jl6XYtRPUm1Q6
-	 ZPbFPecbv0KvQ==
+	b=Dkskl6nH/2pEZ1DXyydsLKAaIYZB/jgcjXt2pRvjKYLnI+SBPI1HDRqx3bBtRx4Fu
+	 i2NzNmkR/cgf6zSjLRuMSqj2QvoWdYafsCp0NogIHatYgCnPSmcIW403f2p+k6qucw
+	 XeIM8Jr5JfprsYo8G1QFIwvk3rYtWrhsThW+ubNrrG1t/IrQX75v9VvDXPKAtlex9u
+	 eB3lJbDMi3N2GkhbOv77/HjveLRKHrQAs8GocLCHG7i2zWjs6Kb1V1QRBbMQW71dzE
+	 DkdZfUvzKWskApg2M2HLbxmF9jtz8VXYYOzgU9j8xthsPdIt3dkX8TRKmZVFzcEhIQ
+	 C2zbTVCs5zwvw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D71E382F51;
-	Fri, 28 Feb 2025 17:51:17 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3231180E4D;
+	Fri, 28 Feb 2025 17:54:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 3C5C71CB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2025 17:51:16 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id EBBDA1DD
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2025 17:54:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2A0E382A72
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2025 17:51:16 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id DAF2C4071C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2025 17:54:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Kt46dHJbj_YE for <intel-wired-lan@lists.osuosl.org>;
- Fri, 28 Feb 2025 17:51:14 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id PwVVNHJ6-vPT for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 28 Feb 2025 17:54:14 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::62d; helo=mail-pl1-x62d.google.com;
+ client-ip=2607:f8b0:4864:20::635; helo=mail-pl1-x635.google.com;
  envelope-from=almasrymina@google.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org C9F9D80FA9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C9F9D80FA9
-Received: from mail-pl1-x62d.google.com (mail-pl1-x62d.google.com
- [IPv6:2607:f8b0:4864:20::62d])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C9F9D80FA9
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2025 17:51:14 +0000 (UTC)
-Received: by mail-pl1-x62d.google.com with SMTP id
- d9443c01a7336-22342c56242so5005ad.0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2025 09:51:14 -0800 (PST)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 218764070B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 218764070B
+Received: from mail-pl1-x635.google.com (mail-pl1-x635.google.com
+ [IPv6:2607:f8b0:4864:20::635])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 218764070B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2025 17:54:13 +0000 (UTC)
+Received: by mail-pl1-x635.google.com with SMTP id
+ d9443c01a7336-2212222d4cdso4935ad.0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2025 09:54:13 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740765074; x=1741369874;
+ d=1e100.net; s=20230601; t=1740765253; x=1741370053;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=i90O7/FHVyjR7MxsQSaYgobcsFdF6N1pl357JzY65Cc=;
- b=hLIpV7ulserD1zWqW9FZy0LHAro2u4dSprCHuv2jpY3jDMcZEF+nX1ZrETe3ILmQVR
- aZBjxVCE/xoAVnnAtOTmhM5JUpb0/j2+iZXmzl4F4SRb8O/2GA2HpTiMrMTNQq7J+ygW
- jdfBv1MZ8x561UJM8ad7McmMCHatlanocV1GIf1G6Ccx2yIS896RlgPDDgSFs3l99iTG
- td0t6ujIekLQS1/SmDwxV6uiBy4Sdt+OUqhlZBDHa32NXI7eSWZ+MD37XsH6188VA4G+
- ghFszepJIM+SJkQQ/gYD5vbOcsGPSQA/6buCOusR9J58FypkhxyqlLzbvv/9C5065PJC
- JDSQ==
-X-Gm-Message-State: AOJu0Yzdqqpds2xmkaWZL4kZBkbIvAMuhnNBnWIcBn6rzuFm/teRYw4Q
- jxPSmhMQf2uv6XxqwOVvmzfz6u9Q+vXfmcKyZoYqeF8YxkIsU8Z5UUqojXQZ+MVqAPsrIhn0DCC
- PsJfAMgT3hblxG+k0uqtrz3fDQ3z7gisKVedf
-X-Gm-Gg: ASbGncsThSA+pxxC12mu/fR/e3gD3ZPAD9f980DJCuC8pdS9xNyBJsbDrA2/xHbVtKn
- z7tH6TaOGtYzXPMlU2ZkiMZRffUKLYps8gpPUf+jFVFmIcl7o/vY9OOPEfm9XrdjgGgeEDkdt9K
- c6qMNipabrLmpeYQZJsGbXLPXgBOIUY1aqcEMDpg==
-X-Google-Smtp-Source: AGHT+IFIdw83qwu5qQ7M0jSYLWA4Olvd7iOt6Uf+OiCdfuQjWjOsUe1tAjJCuFfQTQUfhDBz6gbEFI54iOYT2Q9LP8Q=
-X-Received: by 2002:a17:902:f693:b0:216:21cb:2e06 with SMTP id
- d9443c01a7336-2236cfcbb24mr2629715ad.19.1740765073781; Fri, 28 Feb 2025
- 09:51:13 -0800 (PST)
+ bh=u1+7MTEmNylFc5L9CoXkBtTmEDDPTyP3nTJh0lf/FAc=;
+ b=dlSTGJqbVmQ0ouezniCQX1O3YMxPYXYrx/ECBIx69erGBoJWjR+3rge42jgbmeSEQz
+ clLMWzkZMq5hgbRH7ifo1oKMAQxif6er5wXbfqpj8wJ/sgyWhi/yd4ASvkGp+fI4UsIC
+ L+PeMsS27f6OMgQTL/mKeXICXth7a7P4ZKbQr8FqhtseEmnjpjfZd+9/B6gUzfFY7isa
+ 4Qhj+HrAfJBu/XsguInt8ppPxF1ALiPxLP9m7/t0FQxcRLmHeqef/6o+ZhfpwkJ8I+K4
+ +0HEpWeYEWBEyepqM9VbRNmr3q0QtVQT0fZD3ewkxscWFCpSfCluBUXNAbWm5zB5psaG
+ uafg==
+X-Gm-Message-State: AOJu0Yz/QxiOLiOet4JL2g56iCqW4CdUGTk/420uQFD0K6aWoAmZrKzq
+ mwg2uLPf9GBQr3WuzzAcib2lHfwJoIMtzt/Thdisw9d4hn77wwYHedbenpYXemwBx4t6wBplmSC
+ r03JZMO4gpttxH+KclR7CtIg7yTNb+SeGQ00s
+X-Gm-Gg: ASbGnct0LzGbQ10fxdAPKyJBFcHjPxCG4o2zR27+HJXHTnWcl7B0ukussaYksm4i6UM
+ h26Fm3I+RwIvHqHDaWqSVIaqyzhgqcOxa0BR2gtc3u4sOv/gSyeDJF7MH4ypNV5q6g1j9sOluKI
+ pQxgx4j2R07+PG6ZxZysRlhqg+hj8QBvlOPdNyHg==
+X-Google-Smtp-Source: AGHT+IEvTaXlDasEqbeEQGkrtVNWGlGALAci/M96gPscJI/Q4KdgYr6oOPPlkSKal1HsW+odkXQc7CCR/1T+AEUYwRM=
+X-Received: by 2002:a17:902:cec8:b0:223:5696:44f5 with SMTP id
+ d9443c01a7336-223696de90cmr3320855ad.12.1740765253140; Fri, 28 Feb 2025
+ 09:54:13 -0800 (PST)
 MIME-Version: 1.0
 References: <20250227131314.2317200-1-milena.olech@intel.com>
- <20250227131314.2317200-2-milena.olech@intel.com>
-In-Reply-To: <20250227131314.2317200-2-milena.olech@intel.com>
+ <20250227131314.2317200-3-milena.olech@intel.com>
+In-Reply-To: <20250227131314.2317200-3-milena.olech@intel.com>
 From: Mina Almasry <almasrymina@google.com>
-Date: Fri, 28 Feb 2025 09:50:58 -0800
-X-Gm-Features: AQ5f1JofnhFYf0RWrJwwbqdsiCN-tSJuCWfQ9-QLmtpIZzBiaBKZMC9Rgc5PCZU
-Message-ID: <CAHS8izMCExz_8Hnz3-Hg8EdyqoiJY8viMShKeRAsRC4iqGsLBA@mail.gmail.com>
+Date: Fri, 28 Feb 2025 09:53:58 -0800
+X-Gm-Features: AQ5f1JrO0hjup0i30Abxv6Jk8dkcSZFXP0H5NDUSmK79wgbylwsq--nAdPO1I44
+Message-ID: <CAHS8izMXC-ZigZG+R1jrd4i=ZDe_cgUjgBhZa6px2JUryGTN8g@mail.gmail.com>
 To: Milena Olech <milena.olech@intel.com>
 Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
  anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com, 
  Alexander Lobakin <aleksander.lobakin@intel.com>,
- Vadim Fedorenko <vadim.fedorenko@linux.dev>, 
  Willem de Bruijn <willemb@google.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1740765074; x=1741369874; darn=lists.osuosl.org;
+ d=google.com; s=20230601; t=1740765253; x=1741370053; darn=lists.osuosl.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=i90O7/FHVyjR7MxsQSaYgobcsFdF6N1pl357JzY65Cc=;
- b=Rw73Ib1uXjec88aG69sdbN/PXNeTT8naVEkjK+nJi2HtSZpTOVmxLrwZU3lciAfPsz
- rr8JG+qmCDvBBkMAxMAwccQ3MktZUvSJco2jhR/zwlEtVlSepSuJwxqOgso3lP5AYq3e
- YZfMe2cj1r3raZK8oWCNkUFnrPFQe3pRjzPPmrug8VPiLgDO6Wf8kZjR/mcyV3Ka/1uq
- +TceMp0fC/IRXcDXZuFbeuzNeoZZmTA1Zpt4r/qB3NpmF8dcipCqlf5q6WntT7H6BW3Y
- 3AlLUhNF28cWt9XXg2Xesc/uPrU/qoasBPhwEFuc6JmehTMqc7DeTyPxBZjkmCMnUsJo
- FoPg==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=u1+7MTEmNylFc5L9CoXkBtTmEDDPTyP3nTJh0lf/FAc=;
+ b=L5oZP/fXg2WXwH9rBDtn2tuWB+P8YoWZngRZCl2KVG4/En+8I2PRp9oOImtBXATEe3
+ Zd0omX1gNEInFcVOpDBd2UCgyKibBp7ogP2ChypyTAldDA9VTDT7X1TWxTOxaQS42PFy
+ cWv3GTL8zY3Xqgow2i2TInb9d2+m7T1ELKapP4M3Bo959yXrEugl2QifazWXYK0tHQtv
+ 27IxOuqdQVsBGiqVBNEYtgbF1+joadnrZixFrDzisk+xRPlGfjTSmWI6yvXAEbasSVHS
+ M1D/i122oFExuODc6O4FKhxHadQXjQXQRJkMv8PVgwCkkEctjmxcVJXQfN+RCp78wKDV
+ DQWg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=reject dis=none)
  header.from=google.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=google.com header.i=@google.com
- header.a=rsa-sha256 header.s=20230601 header.b=Rw73Ib1u
-Subject: Re: [Intel-wired-lan] [PATCH v8 iwl-next 01/10] idpf: add initial
- PTP support
+ header.a=rsa-sha256 header.s=20230601 header.b=L5oZP/fX
+Subject: Re: [Intel-wired-lan] [PATCH v8 iwl-next 02/10] virtchnl: add PTP
+ virtchnl definitions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -129,17 +128,24 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 On Thu, Feb 27, 2025 at 5:16=E2=80=AFAM Milena Olech <milena.olech@intel.co=
 m> wrote:
 >
-> PTP feature is supported if the VIRTCHNL2_CAP_PTP is negotiated during th=
-e
-> capabilities recognition. Initial PTP support includes PTP initialization
-> and registration of the clock.
+> PTP capabilities are negotiated using virtchnl commands. There are two
+> available modes of the PTP support: direct and mailbox. When the direct
+> access to PTP resources is negotiated, virtchnl messages returns a set
+> of registers that allow read/write directly. When the mailbox access to
+> PTP resources is negotiated, virtchnl messages are used to access
+> PTP clock and to read the timestamp values.
+>
+> Virtchnl API covers both modes and exposes a set of PTP capabilities.
+>
+> Using virtchnl API, the driver recognizes also HW abilities - maximum
+> adjustment of the clock and the basic increment value.
+>
+> Additionally, API allows to configure the secondary mailbox, dedicated
+> exclusively for PTP purposes.
 >
 > Reviewed-by: Alexander Lobakin <aleksander.lobakin@intel.com>
-> Reviewed-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
 > Reviewed-by: Willem de Bruijn <willemb@google.com>
 > Signed-off-by: Milena Olech <milena.olech@intel.com>
-
-Thanks Milena!
 
 Tested-by: Mina Almasry <almasrymina@google.com>
 
