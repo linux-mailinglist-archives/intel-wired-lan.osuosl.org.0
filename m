@@ -1,91 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 48A7BA4A052
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Feb 2025 18:26:06 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E481CA4A04D
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Feb 2025 18:25:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E126F70F0F;
-	Fri, 28 Feb 2025 17:26:04 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 97F588602B;
+	Fri, 28 Feb 2025 17:25:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Uo86BsE6cgwC; Fri, 28 Feb 2025 17:26:04 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id id3L1vOi-Xu7; Fri, 28 Feb 2025 17:25:58 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AD12470B1B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 05DF884B0F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1740763563;
-	bh=9bVl3nHjPzRaWa0HucN2dnUqDXQUZ1RfnMbcuZ1KrRo=;
+	s=default; t=1740763558;
+	bh=JIgvYmEDN+wtXQIQGEYjDq3qvXyC/c2oECWwy2vN2Rc=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=T8vi+Ylr1OBuL03CqHIGT/bht3eXwbfjbtGXU0pABxIElBv42mi4iYQ7pDUSHNKNU
-	 wnMBvmOwfZpDxvOyc/xFT1sr28gWJhY0e0y3Zd37xkTypnIpTqhu0gDvpaIBifzm/N
-	 0xCHlgHlOf7X1gYYM1pia+sZmo/QoLlfegZejurIlLAwoMbw7r2LhFW9mc4+Fn11K8
-	 PjVRzjGExzx8nUVxDtV4RO2DFwFI99GRiGct4QVjw60y2tOmOlBwpcRPrKfoUFG0aI
-	 5s5GzeB1b4E7+jZZ1W4PKha6WFC8d9In7GCIxiURjEGIy6gYXepuj8+yB+4+03Rgmi
-	 zoRp0s48BfcpQ==
+	b=LNneiw3rUQrDKVLiNd/yAFa4x27IoyZrcNDInsE1/T5eZ+Jm6Bx3jvS/FYb7Btxh3
+	 tsvUGKlU6O2YEpZ5SS8ts/uTEaT/tKr4ZTapufNtDNWDZ3PGp7BJgawOJRZL7sAtX4
+	 tcCkFVO1KFC61oZSqh1OTwalj2ray9UiDtJPxNuUCRRbnE5ePAJtB8J5xdpol00W5R
+	 zkM/FtnR7nKnBhJ8CTuib9MnlHIqQ1l/ObjSjf2Pos7SVaJHzIFY2+u48GK1xKuz20
+	 hdkGbYSCzQUFBy+W6VJiExbTl9cOQtLHnYvQ4PelyOSOroWqs7QulLTpiyatyzwK42
+	 a51ROSuwuyLJw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AD12470B1B;
-	Fri, 28 Feb 2025 17:26:03 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 05DF884B0F;
+	Fri, 28 Feb 2025 17:25:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 0F50A711
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2025 17:25:14 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id C33921CB
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2025 17:18:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id BD5E150997
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2025 17:18:38 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 9B55C40154
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2025 17:18:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZtN39pvo34ex for <intel-wired-lan@lists.osuosl.org>;
- Fri, 28 Feb 2025 17:18:38 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id LMCkueD39u5P for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 28 Feb 2025 17:18:51 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
  client-ip=2600:3c04::f03c:95ff:fe5e:7468; helo=tor.source.kernel.org;
  envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 265324F521
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 265324F521
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org DC316402E6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DC316402E6
 Received: from tor.source.kernel.org (tor.source.kernel.org
  [IPv6:2600:3c04::f03c:95ff:fe5e:7468])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 265324F521
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2025 17:18:38 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id DC316402E6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Feb 2025 17:18:50 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 4B48461FAF;
- Fri, 28 Feb 2025 17:18:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6B4E3C4CEE8;
- Fri, 28 Feb 2025 17:18:35 +0000 (UTC)
-Date: Fri, 28 Feb 2025 17:18:33 +0000
+ by tor.source.kernel.org (Postfix) with ESMTP id 61E0F61148;
+ Fri, 28 Feb 2025 17:18:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8104FC4CEE5;
+ Fri, 28 Feb 2025 17:18:48 +0000 (UTC)
+Date: Fri, 28 Feb 2025 17:18:46 +0000
 From: Simon Horman <horms@kernel.org>
 To: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
 Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
  Jan Glaza <jan.glaza@intel.com>,
  Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-Message-ID: <20250228171833.GN1615191@kernel.org>
+Message-ID: <20250228171846.GO1615191@kernel.org>
 References: <20250225090847.513849-2-martyna.szapar-mudlaw@linux.intel.com>
- <20250225090847.513849-4-martyna.szapar-mudlaw@linux.intel.com>
+ <20250225090847.513849-6-martyna.szapar-mudlaw@linux.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250225090847.513849-4-martyna.szapar-mudlaw@linux.intel.com>
+In-Reply-To: <20250225090847.513849-6-martyna.szapar-mudlaw@linux.intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1740763116;
- bh=kiAYDiNKPRsdXTw71BC5BaVg3ja1Aiiqb5jZ7oCOh6c=;
+ d=kernel.org; s=k20201202; t=1740763129;
+ bh=7HijeybPsV5Qv1AFP1hGBIXylNHVAD2V5/bt1yISKXs=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=cDqbSAPMbhgp6yZl1jn4ChyyyHUe2w5jr1E46ydocLKQO66B0LHaFWSgkkJB37D8k
- qX2DOOlxvNpf/ciMElQrnvB4pMF93JnuLMQNOZQjoAgGDckImCD0b2byGtG2uQbEHV
- Ac0rAPeUi1ml8pk5jTS2D4BA6jV6CLr88khDhg48TcBjm0P8W4vu64oTW1GARMJvLe
- LzeRz8rXu/3FqI/WG1+p9C7WfpUBBzlWypROMt6Bz2G2h3ocKABlyGRyIoDgF7yYsf
- l3EeikKwkdYxF6zhcvwVaEd33WE8Mo2Zf1oh7+giRJQ/pgWE4i0GhPZyR3aSeNplwo
- XAwRfVWSedsrg==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=ULf7CA682U1hgZ9yE4rLNbJyinxTswKwaYBq/oBr6F0ZOkU6S5zNcrq8XYYZsCBln
+ aVmYmVg901X4cl0rneOcuT7q96fKYQcWrR9Ucn1dqv7KJP5XmfVyT6KJryvQ3xKCFi
+ rJICU3MFHj0kih08LcH3DYRmyIuqWoxm7By0sikqI1yAaHZoa2eMnJRKnwCJYEtfFd
+ hRHztvwtRFNRPi/M120ZjZU6J067PlUtMCHuY8ycQ10va96wVgDG9CLJEjdk8fMSiS
+ kijWQC4kuWsKh3Ssy+rGdGXd2+UOQHZM8vTQQACphToecjH5rXuWyjRRT/ceZNFH6e
+ a2qrA4ZrPjO6Q==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=cDqbSAPM
-Subject: Re: [Intel-wired-lan] [iwl-net v2 1/5] virtchnl: make proto and
- filter action count unsigned
+ header.a=rsa-sha256 header.s=k20201202 header.b=ULf7CA68
+Subject: Re: [Intel-wired-lan] [iwl-net v2 3/5] ice: validate queue quanta
+ parameters to prevent OOB access
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -101,20 +101,13 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Feb 25, 2025 at 10:08:45AM +0100, Martyna Szapar-Mudlaw wrote:
+On Tue, Feb 25, 2025 at 10:08:47AM +0100, Martyna Szapar-Mudlaw wrote:
 > From: Jan Glaza <jan.glaza@intel.com>
 > 
-> The count field in virtchnl_proto_hdrs and virtchnl_filter_action_set
-> should never be negative while still being valid. Changing it from
-> int to u32 ensures proper handling of values in virtchnl messages in
-> driverrs and prevents unintended behavior.
-> In its current signed form, a negative count does not trigger
-> an error in ice driver but instead results in it being treated as 0.
-> This can lead to unexpected outcomes when processing messages.
-> By using u32, any invalid values will correctly trigger -EINVAL,
-> making error detection more robust.
+> Add queue wraparound prevention in quanta configuration.
+> Ensure end_qid does not overflow by validating start_qid and num_queues.
 > 
-> Fixes: 1f7ea1cd6a374 ("ice: Enable FDIR Configure for AVF")
+> Fixes: 015307754a19 ("ice: Support VF queue rate limit and quanta size configuration")
 > Reviewed-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 > Signed-off-by: Jan Glaza <jan.glaza@intel.com>
 > Signed-off-by: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
