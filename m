@@ -1,101 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0930CA4ADC0
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  1 Mar 2025 21:12:01 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2FC6BA4B0AD
+	for <lists+intel-wired-lan@lfdr.de>; Sun,  2 Mar 2025 09:26:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A25CD84CE3;
-	Sat,  1 Mar 2025 20:11:59 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5CB6D608AE;
+	Sun,  2 Mar 2025 08:26:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uYZ_Qs8h51kH; Sat,  1 Mar 2025 20:11:58 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id RwL597UPp5kk; Sun,  2 Mar 2025 08:26:34 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6C23C84CE6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 57AC260872
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1740859918;
-	bh=UwZ9/bDoZFEyNXLcdiINVBWmN99ngFJMZivkfhmn+bA=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=Jmj/otW0NV6VLT7qHP62aABVM+8V09IMy3r2pVBW3dSwx7mdAzXsQVasyNmc7bfvC
-	 onbcy+K12Pmn9R/I+APt75UQ8KocG7FNQNBbVdSQLdLZv18Qg6TbbmjaAqpTFxm9YM
-	 BaKL9V5WGO9yq6NpLfgg6Nst4/5eByjZbJgp8LpN+MTqcPLs29/xfIvNZzWOUmUVXa
-	 6EHHXF0CQ0jTHSgW+ok8Lew6mnxv37w4AYTYUOzuuHgMoa6QNWsfvYPhH+Ov4nwXeS
-	 zTCZA4DNgbLSZSkz/zCRnUvsz2OTVjDbWH4Xe1Oys2r52S1BGr+VuHTfpYdEaBcasK
-	 2OHP+riuIyfzA==
+	s=default; t=1740903994;
+	bh=bXgEs6lk3wWwV36F30QR45sOQAtolkOoEOKWstEiqYg=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=KuEWdG2bRTGUN6GigqDkiIE3Gtuuj0TEN+wpSiFDwmqvagbHPLMwi7mu4nXwL59SA
+	 fh+d1Z567T/jNmlqxuH5s5sKXNRWOuyjO7p7naRD4tGqUiw/Ww/bqUxOJ19Usw7nQO
+	 0xe6HTXk+uKXlgTZIOgsmAoe4ZtDXKNOFhN4KPQULRhUSdJLSj2zH7AxNIbNjnYq8l
+	 NeKZhRgvYllPyR6/EfQuODptUFx/6S+6mymyk+LqjGUrXqjKX73GUw7Qt29OY2AAb0
+	 Arl0s0lCKl+ensGInlEV30KZ+dPRmYWjuXgqkjAvapu1z/0NZcvgIuZ0fjJ6vZYN/3
+	 I2NONu0RxEfsQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6C23C84CE6;
-	Sat,  1 Mar 2025 20:11:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 57AC260872;
+	Sun,  2 Mar 2025 08:26:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id ACD931CB
- for <intel-wired-lan@lists.osuosl.org>; Sat,  1 Mar 2025 20:11:56 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 281EF19F
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  2 Mar 2025 08:26:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 987E84012E
- for <intel-wired-lan@lists.osuosl.org>; Sat,  1 Mar 2025 20:11:56 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0A5F5401DD
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  2 Mar 2025 08:26:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vZXE8HRDU-qy for <intel-wired-lan@lists.osuosl.org>;
- Sat,  1 Mar 2025 20:11:55 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.9;
- helo=mgamail.intel.com; envelope-from=mateusz.polchlopek@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 18431400CE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 18431400CE
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 18431400CE
- for <intel-wired-lan@lists.osuosl.org>; Sat,  1 Mar 2025 20:11:54 +0000 (UTC)
-X-CSE-ConnectionGUID: cpnm/3khSgWgKuQ5Bhy45w==
-X-CSE-MsgGUID: vHPxs6XaSeW1opl0H2m0Kw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11360"; a="64229825"
-X-IronPort-AV: E=Sophos;i="6.13,326,1732608000"; d="scan'208";a="64229825"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
- by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Mar 2025 12:11:54 -0800
-X-CSE-ConnectionGUID: mqjQbMK5T6yO6U/VYAggmg==
-X-CSE-MsgGUID: HyT4tf/4TlKs7FYALxjmhw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,326,1732608000"; d="scan'208";a="140861498"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmviesa002.fm.intel.com with ESMTP; 01 Mar 2025 12:11:52 -0800
-Received: from ilmater.igk.intel.com (ilmater.igk.intel.com [10.123.220.50])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 21053125A0;
- Sat,  1 Mar 2025 20:11:51 +0000 (GMT)
-From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Date: Sat,  1 Mar 2025 20:02:44 +0100
-Message-ID: <20250301190423.613493-1-mateusz.polchlopek@intel.com>
-X-Mailer: git-send-email 2.48.1
+ id IfS9TopiQWvf for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  2 Mar 2025 08:26:31 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=leon@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 9081440106
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9081440106
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9081440106
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  2 Mar 2025 08:26:30 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id BEC9E5C54E5;
+ Sun,  2 Mar 2025 08:24:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 61BD0C4CEE8;
+ Sun,  2 Mar 2025 08:26:28 +0000 (UTC)
+Date: Sun, 2 Mar 2025 10:26:23 +0200
+From: Leon Romanovsky <leon@kernel.org>
+To: "Ertman, David M" <david.m.ertman@intel.com>
+Cc: "Nikolova, Tatyana E" <tatyana.e.nikolova@intel.com>,
+ "jgg@nvidia.com" <jgg@nvidia.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-rdma@vger.kernel.org" <linux-rdma@vger.kernel.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+Message-ID: <20250302082623.GN53094@unreal>
+References: <20250225050428.2166-1-tatyana.e.nikolova@intel.com>
+ <20250225050428.2166-2-tatyana.e.nikolova@intel.com>
+ <20250225075530.GD53094@unreal>
+ <IA1PR11MB61944C74491DECA111E84021DDC22@IA1PR11MB6194.namprd11.prod.outlook.com>
+ <20250226185022.GM53094@unreal>
+ <IA1PR11MB6194C8F265D13FE65EA006C2DDC22@IA1PR11MB6194.namprd11.prod.outlook.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <IA1PR11MB6194C8F265D13FE65EA006C2DDC22@IA1PR11MB6194.namprd11.prod.outlook.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1740859915; x=1772395915;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=CHprCrFSz1GiRHepl8Dq8IroyU5sN/LtO9aY6fu2A5k=;
- b=PY3aCFPCFM15CS02uC2HYD9FBBHb/eVTcv8OSrNfZrboOAzYRDc0Z2LT
- Gy0NRyHd4/sfUIZ5RV6XjXTO1d3RlpqZp4tjQZW9iyaUSKxuizuuZ3Ayt
- tMDwf9/suJRJra4031I5kgXWJDKbQEunrfMbxNrBX28shUck1xIo7sFtg
- Rb4jsmTXZ+d3DdLcqJXWAc0qYc2wOdVFeq0xRzfwRzLTaeJL3MdOz3kMW
- SZzFyPRW/dzPy0lERwrNEASVD4EheijPja87KxrnC5yYCIT4Nq/BDVHbR
- uW1ebLOU0VFnqhiQDfug+FwUf7+MzBOHTCkV9hAvTmEVZYN8xSFY14zwb
- g==;
+ d=kernel.org; s=k20201202; t=1740903989;
+ bh=XhRpM2FkyuXCXxwWh2C7t7UNTigQOSYTWF3EtRz1gNE=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=ICadftRaJOs1n752jH6kEMi0o2O+PcPBAl1/jGmtiQTVGrlZkcoXC9Dh/Q9qsiYHj
+ vbKEW1ZVzHTpcZXHRbLvndfUuWUf1kEBX2Dx8SG3X/OSFiJS2hrahZRgU7BPinh9EF
+ 1ohvEVcgbv5IMTRHKa190lmvZQ4Q8xTYh5JWfV+MbmoXagO7xGMRpFJLGM68ITdnzN
+ 4mFlV5ygbzK5LFrXTO6Uf+LZkCweqTgcoHu0YjHSdtO/zQhF7yp3zD8oGaqNg4RRfm
+ TxFRcxHIPC96mkqNnPy33ZlkIPBsw9BzkOzI5yK242qsqFuvECD6Gqbh7zuGcpsZO1
+ SLoYfYipCjqTw==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=PY3aCFPC
-Subject: [Intel-wired-lan] [PATCH iwl-next v2] idpf: assign extracted ptype
- to struct libeth_rqe_info field
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=ICadftRa
+Subject: Re: [Intel-wired-lan] [iwl-next v4 1/1] iidc/ice/irdma: Update IDC
+ to support multiple consumers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -111,128 +107,146 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Assign the ptype extracted from qword to the ptype field of struct
-libeth_rqe_info.
-Remove the now excess ptype param of idpf_rx_singleq_extract_fields(),
-idpf_rx_singleq_extract_base_fields() and
-idpf_rx_singleq_extract_flex_fields().
+On Wed, Feb 26, 2025 at 11:01:52PM +0000, Ertman, David M wrote:
+> 
+> 
+> > -----Original Message-----
+> > From: Leon Romanovsky <leon@kernel.org>
+> > Sent: Wednesday, February 26, 2025 10:50 AM
+> > To: Ertman, David M <david.m.ertman@intel.com>
+> > Cc: Nikolova, Tatyana E <tatyana.e.nikolova@intel.com>; jgg@nvidia.com;
+> > intel-wired-lan@lists.osuosl.org; linux-rdma@vger.kernel.org;
+> > netdev@vger.kernel.org
+> > Subject: Re: [iwl-next v4 1/1] iidc/ice/irdma: Update IDC to support multiple
+> > consumers
+> > 
+> > On Wed, Feb 26, 2025 at 05:36:44PM +0000, Ertman, David M wrote:
+> > > > -----Original Message-----
+> > > > From: Leon Romanovsky <leon@kernel.org>
+> > > > Sent: Monday, February 24, 2025 11:56 PM
+> > > > To: Nikolova, Tatyana E <tatyana.e.nikolova@intel.com>
+> > > > Cc: jgg@nvidia.com; intel-wired-lan@lists.osuosl.org; linux-
+> > > > rdma@vger.kernel.org; netdev@vger.kernel.org; Ertman, David M
+> > > > <david.m.ertman@intel.com>
+> > > > Subject: Re: [iwl-next v4 1/1] iidc/ice/irdma: Update IDC to support
+> > multiple
+> > > > consumers
+> > > >
+> > > > On Mon, Feb 24, 2025 at 11:04:28PM -0600, Tatyana Nikolova wrote:
+> > > > > From: Dave Ertman <david.m.ertman@intel.com>
+> > > > >
+> > > > > To support RDMA for E2000 product, the idpf driver will use the IDC
+> > > > > interface with the irdma auxiliary driver, thus becoming a second
+> > > > > consumer of it. This requires the IDC be updated to support multiple
+> > > > > consumers. The use of exported symbols no longer makes sense
+> > because it
+> > > > > will require all core drivers (ice/idpf) that can interface with irdma
+> > > > > auxiliary driver to be loaded even if hardware is not present for those
+> > > > > drivers.
+> > > >
+> > > > In auxiliary bus world, the code drivers (ice/idpf) need to created
+> > > > auxiliary devices only if specific device present. That auxiliary device
+> > > > will trigger the load of specific module (irdma in our case).
+> > > >
+> > > > EXPORT_SYMBOL won't trigger load of irdma driver, but the opposite is
+> > > > true, load of irdma will trigger load of ice/idpf drivers (depends on
+> > > > their exported symbol).
+> > > >
+> > > > >
+> > > > > To address this, implement an ops struct that will be universal set of
+> > > > > naked function pointers that will be populated by each core driver for
+> > > > > the irdma auxiliary driver to call.
+> > > >
+> > > > No, we worked very hard to make proper HW discovery and driver
+> > autoload,
+> > > > let's not return back. For now, it is no-go.
+> > >
+> > > Hi Leon,
+> > >
+> > > I am a little confused about what the problem here is.  The main issue I pull
+> > > from your response is: Removing exported symbols will stop ice/idpf from
+> > > autoloading when irdma loads.  Is this correct or did I miss your point?
+> > 
+> > It is one of the main points.
+> > 
+> > >
+> > > But, if there is an ice or idpf supported device present in the system, the
+> > > appropriate driver will have already been loaded anyway (and gone
+> > through its
+> > > probe flow to create auxiliary devices).  If it is not loaded, then the system
+> > owner
+> > > has either unloaded it manually or blacklisted it.  This would not cause an
+> > issue
+> > > anyway, since irdma and ice/idpf can load in any order.
+> > 
+> > There are two assumptions above, which both not true.
+> > 1. Users never issue "modprobe irdma" command alone and always will call
+> > to whole chain "modprobe ice ..." before.
+> > 2. You open-code module subsystem properly with reference counters,
+> > ownership and locks to protect from function pointers to be set/clear
+> > dynamically.
+> 
+> Ah, I see your reasoning now.  Our goal was to make the two modules independent, 
+> with no prescribed load order mandated, and utilize the auxiliary bus and device subsystem
+> to handle load order and unload of one or the other module.  The auxiliary device only has
+> the lifespan of the core PCI driver, so if the core driver unloads, then the auxiliary device gets
+> destroyed, and the associated link based off it will be gone.  We wanted to be able to unload
+> and reload either of the modules (core or irdma) and have the interaction be able to restart with a
+> new probe.  All our inter-driver function calls are protected by device lock on the auxiliary
+> device for the duration of the call.
 
-Suggested-by: Alexander Lobakin <aleksander.lobakin@intel.com>
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Reviewed-by: Alexander Lobakin <aleksander.lobakin@intel.com>
-Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
----
-v2: removed excess function parameter 'ptype' description in
-idpf_rx_singleq_extract_fields() - reported by kernel bot. No code or
-functional changes.
+Yes, you are trying to return to pre-aux era. 
 
-v1: initial patch
-https://lore.kernel.org/netdev/20250227123837.547053-1-mateusz.polchlopek@intel.com/
----
- .../ethernet/intel/idpf/idpf_singleq_txrx.c   | 25 ++++++++-----------
- 1 file changed, 11 insertions(+), 14 deletions(-)
+> 
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
-index eae1b6f474e6..2e356dd10812 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
-@@ -891,7 +891,6 @@ bool idpf_rx_singleq_buf_hw_alloc_all(struct idpf_rx_queue *rx_q,
-  * idpf_rx_singleq_extract_base_fields - Extract fields from the Rx descriptor
-  * @rx_desc: the descriptor to process
-  * @fields: storage for extracted values
-- * @ptype: pointer that will store packet type
-  *
-  * Decode the Rx descriptor and extract relevant information including the
-  * size and Rx packet type.
-@@ -901,21 +900,20 @@ bool idpf_rx_singleq_buf_hw_alloc_all(struct idpf_rx_queue *rx_q,
-  */
- static void
- idpf_rx_singleq_extract_base_fields(const union virtchnl2_rx_desc *rx_desc,
--				    struct libeth_rqe_info *fields, u32 *ptype)
-+				    struct libeth_rqe_info *fields)
- {
- 	u64 qword;
- 
- 	qword = le64_to_cpu(rx_desc->base_wb.qword1.status_error_ptype_len);
- 
- 	fields->len = FIELD_GET(VIRTCHNL2_RX_BASE_DESC_QW1_LEN_PBUF_M, qword);
--	*ptype = FIELD_GET(VIRTCHNL2_RX_BASE_DESC_QW1_PTYPE_M, qword);
-+	fields->ptype = FIELD_GET(VIRTCHNL2_RX_BASE_DESC_QW1_PTYPE_M, qword);
- }
- 
- /**
-  * idpf_rx_singleq_extract_flex_fields - Extract fields from the Rx descriptor
-  * @rx_desc: the descriptor to process
-  * @fields: storage for extracted values
-- * @ptype: pointer that will store packet type
-  *
-  * Decode the Rx descriptor and extract relevant information including the
-  * size and Rx packet type.
-@@ -925,12 +923,12 @@ idpf_rx_singleq_extract_base_fields(const union virtchnl2_rx_desc *rx_desc,
-  */
- static void
- idpf_rx_singleq_extract_flex_fields(const union virtchnl2_rx_desc *rx_desc,
--				    struct libeth_rqe_info *fields, u32 *ptype)
-+				    struct libeth_rqe_info *fields)
- {
- 	fields->len = FIELD_GET(VIRTCHNL2_RX_FLEX_DESC_PKT_LEN_M,
- 				le16_to_cpu(rx_desc->flex_nic_wb.pkt_len));
--	*ptype = FIELD_GET(VIRTCHNL2_RX_FLEX_DESC_PTYPE_M,
--			   le16_to_cpu(rx_desc->flex_nic_wb.ptype_flex_flags0));
-+	fields->ptype = FIELD_GET(VIRTCHNL2_RX_FLEX_DESC_PTYPE_M,
-+				  le16_to_cpu(rx_desc->flex_nic_wb.ptype_flex_flags0));
- }
- 
- /**
-@@ -938,18 +936,17 @@ idpf_rx_singleq_extract_flex_fields(const union virtchnl2_rx_desc *rx_desc,
-  * @rx_q: Rx descriptor queue
-  * @rx_desc: the descriptor to process
-  * @fields: storage for extracted values
-- * @ptype: pointer that will store packet type
-  *
-  */
- static void
- idpf_rx_singleq_extract_fields(const struct idpf_rx_queue *rx_q,
- 			       const union virtchnl2_rx_desc *rx_desc,
--			       struct libeth_rqe_info *fields, u32 *ptype)
-+			       struct libeth_rqe_info *fields)
- {
- 	if (rx_q->rxdids == VIRTCHNL2_RXDID_1_32B_BASE_M)
--		idpf_rx_singleq_extract_base_fields(rx_desc, fields, ptype);
-+		idpf_rx_singleq_extract_base_fields(rx_desc, fields);
- 	else
--		idpf_rx_singleq_extract_flex_fields(rx_desc, fields, ptype);
-+		idpf_rx_singleq_extract_flex_fields(rx_desc, fields);
- }
- 
- /**
-@@ -972,7 +969,6 @@ static int idpf_rx_singleq_clean(struct idpf_rx_queue *rx_q, int budget)
- 		struct libeth_rqe_info fields = { };
- 		union virtchnl2_rx_desc *rx_desc;
- 		struct idpf_rx_buf *rx_buf;
--		u32 ptype;
- 
- 		/* get the Rx desc from Rx queue based on 'next_to_clean' */
- 		rx_desc = &rx_q->rx[ntc];
-@@ -993,7 +989,7 @@ static int idpf_rx_singleq_clean(struct idpf_rx_queue *rx_q, int budget)
- 		 */
- 		dma_rmb();
- 
--		idpf_rx_singleq_extract_fields(rx_q, rx_desc, &fields, &ptype);
-+		idpf_rx_singleq_extract_fields(rx_q, rx_desc, &fields);
- 
- 		rx_buf = &rx_q->rx_buf[ntc];
- 		if (!libeth_rx_sync_for_cpu(rx_buf, fields.len))
-@@ -1037,7 +1033,8 @@ static int idpf_rx_singleq_clean(struct idpf_rx_queue *rx_q, int budget)
- 		total_rx_bytes += skb->len;
- 
- 		/* protocol */
--		idpf_rx_singleq_process_skb_fields(rx_q, skb, rx_desc, ptype);
-+		idpf_rx_singleq_process_skb_fields(rx_q, skb, rx_desc,
-+						   fields.ptype);
- 
- 		/* send completed skb up the stack */
- 		napi_gro_receive(rx_q->pp->p.napi, skb);
--- 
-2.48.1
+<...>
 
+> > > > Core driver can call to callbacks in irdma, like you already have for
+> > > > irdma_iidc_event_handler(), but all calls from irdma to core driver must
+> > > > be through exported symbols. It gives us race-free world in whole driver
+> > > > except one very specific place (irdma_iidc_event_handler).
+> > >
+> > > I am confused here as well.  Calling a function through an exported symbol,
+> > > or calling the same function from a function pointer should not affect the
+> > > generation of a race condition, as the same function is being called.
+> > > What is inherently better about an exported symbol versus a function
+> > > pointer when considering race conditions?
+> > 
+> > Exported symbol guarantees that function exists in core module. Module
+> > subsystem will ensure that core module is impossible to unload until all
+> > users are gone. Function pointer has no such guarantees.
+> > 
+> 
+> I also see your reasoning here 😊 We used the auxiliary bus and device subsystem
+> with device_lock to achieve this functionality.
+
+It is not enough. You need to protect from the start till the end of
+function callback. It means that you will need to hold device_lock for
+long time and/or introduce reference counters. In addition, you will
+need to be very careful with holding right device_lock (aux and PCI
+can disappear).
+
+Thanks
+
+> 
+> > >
+> > > Also, why is calling a function pointer from the irdma module ok, but calling
+> > > one from the core module not?
+> > 
+> > Because we need to make sure that core module doesn't disappear while
+> > irdma executes its flow. The opposite is not true because core module
+> > controls irdma devices and aware than irdma module is loaded/unloaded.
+> > 
+> > Thanks
+> > 
+> > >
+> > > Again - Thank you for the review, and if I completely missed your points,
+> > please let me know!
+> > >
+> > > Thanks
+> > > DaveE
+> > >
+> > > >
+> > > > Thanks
+> > >
+> > >
