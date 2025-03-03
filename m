@@ -1,108 +1,123 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 714DCA4C740
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  3 Mar 2025 17:32:41 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 71BD0A4C8D9
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  3 Mar 2025 18:12:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1E8F4822E1;
-	Mon,  3 Mar 2025 16:32:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3C0F360A51;
+	Mon,  3 Mar 2025 17:12:04 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id C_I3AHP8l6pm; Mon,  3 Mar 2025 16:32:39 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id a5luSG1UMosR; Mon,  3 Mar 2025 17:12:03 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 59A02822D9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D04446083F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741019559;
-	bh=NbLvElGqtzXAOGNJ6BV8WY+4BXzSKjmrk6Y/g8BapyQ=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1741021922;
+	bh=PeB2N+RN9P0VVtOYAgEPkMdfNHEVSn5URx03BPTkwS0=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=VgrwQyHqjIimSLMu5Q+DgZsNa6O11qkWRtb0wuIuKAg5Y9EVJeNaz2ph2j8P1ZXQX
-	 l0oCWxieUmJ1WqTSIfMH70l2/3tRT6WRNwANMyxVp4KqoFE5Cr7Jwb2A6wkr+zv0vv
-	 IGcoBWl+OXQ9uho30MOfqRe932p12WJLES262a40LwTuQlrvR85mqpf722mYNFtURA
-	 EbhdVm8kzuKTXFB79Rn4fFsIKjOZW7LHMIxAajkv3AKQwE9j3cdnHRwSFbKAbwQD/2
-	 tJEEJh1h2vm7m/6EwE32FfZxEEJcHYdNpMJlkhTpbK0ka5XuueT45vFsTuViRy7VJv
-	 m255KMaZvuKXA==
+	b=WWhjzykS8IQMooj7C3mc4+9rQ+YJV0DK0p6c5bqng+O3xO96cXPra92GS71GhWQaY
+	 z7clZeQY3GKz1jH6Kz2yNUS3sf3Q9XcGthWbzjrWN8R1Rq8ytUZevjxbNvsLz2r8+g
+	 tMVLhWQLnzoEevHcwpzlgecksiTF6E1aO7N8Tt5Jsd1pSaeH3mDEZvwVXXnhwQDWYv
+	 ALbmT+GgLjq+YKxZAk98WPTb46ox61j+jPPMf1TvqxZNmbAN4UkxW3iowpU65GxvhS
+	 Pbq/f53i5YkgTDxxUokYTgp6XH/05hWFss4S5+eMXNvf/h3Kv8TNeBy+1t1gPcTZFs
+	 qCSjYb3JPjDPg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 59A02822D9;
-	Mon,  3 Mar 2025 16:32:39 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D04446083F;
+	Mon,  3 Mar 2025 17:12:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 404A7182
- for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Mar 2025 16:32:38 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 75F4A182
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Mar 2025 17:12:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3BC9380EEA
- for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Mar 2025 16:32:38 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5A74A40644
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Mar 2025 17:12:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 72ZeHidiZUPn for <intel-wired-lan@lists.osuosl.org>;
- Mon,  3 Mar 2025 16:32:37 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
- helo=mgamail.intel.com; envelope-from=martyna.szapar-mudlaw@linux.intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id u_Yqjg9YaK1f for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  3 Mar 2025 17:11:59 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=72.21.196.25;
+ helo=smtp-fw-2101.amazon.com; envelope-from=prvs=150edf8df=darinzon@amazon.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 7AD9180C7B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7AD9180C7B
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7AD9180C7B
- for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Mar 2025 16:32:37 +0000 (UTC)
-X-CSE-ConnectionGUID: qEXmgaJ+SbiBE7enbojqyw==
-X-CSE-MsgGUID: aARxSztQSp6KeWWXrBzlBQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11362"; a="41815007"
-X-IronPort-AV: E=Sophos;i="6.13,330,1732608000"; d="scan'208";a="41815007"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
- by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Mar 2025 08:32:37 -0800
-X-CSE-ConnectionGUID: 92mCBtiZSJa9iZbrhP2Djw==
-X-CSE-MsgGUID: Yur+Ikr8Rk24f7/GN7K9yA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; d="scan'208";a="148981684"
-Received: from mszapar-mobl1.ger.corp.intel.com (HELO [10.245.84.226])
- ([10.245.84.226])
- by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Mar 2025 08:32:35 -0800
-Message-ID: <e3fa9d6b-abb7-4b35-8467-7fae4581a981@linux.intel.com>
-Date: Mon, 3 Mar 2025 17:32:32 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Simon Horman <horms@kernel.org>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-References: <20250225090847.513849-2-martyna.szapar-mudlaw@linux.intel.com>
- <20250225090847.513849-8-martyna.szapar-mudlaw@linux.intel.com>
- <20250228171753.GL1615191@kernel.org>
- <68c841b7-fb5b-4c52-bd55-b98c80ad8667@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org BD7B040010
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BD7B040010
+Received: from smtp-fw-2101.amazon.com (smtp-fw-2101.amazon.com [72.21.196.25])
+ by smtp4.osuosl.org (Postfix) with ESMTP id BD7B040010
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Mar 2025 17:11:58 +0000 (UTC)
+X-IronPort-AV: E=Sophos;i="6.13,330,1732579200"; d="scan'208";a="471586205"
+Thread-Topic: [PATCH net-next v9 2/6] net: ena: use napi's aRFS rmap notifers
+Received: from iad12-co-svc-p1-lb1-vlan3.amazon.com (HELO
+ smtpout.prod.us-east-1.prod.farcaster.email.amazon.dev) ([10.43.8.6])
+ by smtp-border-fw-2101.iad2.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Mar 2025 17:11:55 +0000
+Received: from EX19MTAEUC002.ant.amazon.com [10.0.43.254:25226]
+ by smtpin.naws.eu-west-1.prod.farcaster.email.amazon.dev [10.0.1.85:2525] with
+ esmtp (Farcaster)
+ id 36a646d8-0587-4d59-bad6-0468689d3928; Mon, 3 Mar 2025 17:11:54 +0000 (UTC)
+X-Farcaster-Flow-ID: 36a646d8-0587-4d59-bad6-0468689d3928
+Received: from EX19D028EUB002.ant.amazon.com (10.252.61.43) by
+ EX19MTAEUC002.ant.amazon.com (10.252.51.245) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1544.14;
+ Mon, 3 Mar 2025 17:11:53 +0000
+Received: from EX19D005EUA002.ant.amazon.com (10.252.50.11) by
+ EX19D028EUB002.ant.amazon.com (10.252.61.43) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1544.14;
+ Mon, 3 Mar 2025 17:11:53 +0000
+Received: from EX19D005EUA002.ant.amazon.com ([fe80::6aa4:b4a3:92f6:8e9]) by
+ EX19D005EUA002.ant.amazon.com ([fe80::6aa4:b4a3:92f6:8e9%3]) with mapi id
+ 15.02.1544.014; Mon, 3 Mar 2025 17:11:53 +0000
+From: "Arinzon, David" <darinzon@amazon.com>
+To: Ahmed Zaki <ahmed.zaki@intel.com>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>
+CC: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "andrew+netdev@lunn.ch" <andrew+netdev@lunn.ch>, "edumazet@google.com"
+ <edumazet@google.com>, "kuba@kernel.org" <kuba@kernel.org>,
+ "horms@kernel.org" <horms@kernel.org>, "pabeni@redhat.com"
+ <pabeni@redhat.com>, "davem@davemloft.net" <davem@davemloft.net>,
+ "michael.chan@broadcom.com" <michael.chan@broadcom.com>, "tariqt@nvidia.com"
+ <tariqt@nvidia.com>, "anthony.l.nguyen@intel.com"
+ <anthony.l.nguyen@intel.com>, "przemyslaw.kitszel@intel.com"
+ <przemyslaw.kitszel@intel.com>, "jdamato@fastly.com" <jdamato@fastly.com>,
+ "shayd@nvidia.com" <shayd@nvidia.com>, "akpm@linux-foundation.org"
+ <akpm@linux-foundation.org>, "Allen, Neil" <shayagr@amazon.com>
+Thread-Index: AQHbhxMLfDMZMH1s/06uqJOU3cFvgbNhrjKw
+Date: Mon, 3 Mar 2025 17:11:53 +0000
+Message-ID: <c531f3a202e746e39faf27211b80aa69@amazon.com>
+References: <20250224232228.990783-1-ahmed.zaki@intel.com>
+ <20250224232228.990783-3-ahmed.zaki@intel.com>
+In-Reply-To: <20250224232228.990783-3-ahmed.zaki@intel.com>
+Accept-Language: en-US
 Content-Language: en-US
-From: "Szapar-Mudlaw, Martyna" <martyna.szapar-mudlaw@linux.intel.com>
-In-Reply-To: <68c841b7-fb5b-4c52-bd55-b98c80ad8667@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1741019558; x=1772555558;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=bWw2/6JZlD9vW2ZsnAAmWxo6GNqij5KLd6pwKV6TiVQ=;
- b=ag8yve5r1rB2ysAR1PsqdRyFfYt9BY+HmvKxBwKvCGSE0FiCAjtehQ9J
- BYSyTV+s3FBzBKA7e4FuebDYIIdepc7fisLQvm/PcL5i7bKJs3rMgtIhK
- DrpNeiU/v6djblKtm86w+0FSyQM8IXsHjOSpqAMxwTEJBAVI+8kOcfZqJ
- vaii7IrmXXHuGCgfGzMeGe3/j/kyv+1EV+FOOKUMtIgUBhOnyJCPgmoJF
- L1757wVc2bzRoARjtrz6GmVQv5vElmxHhXk4N1Fj2G4jbyTLSrFF/EJ4x
- YkO0AJY2fXoFeVcSfTr2E6dpohMYt6pcTwHQmBAhduxbytiGY6q7Ahvm4
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=ag8yve5r
-Subject: Re: [Intel-wired-lan] [iwl-net v2 5/5] ice: fix using untrusted
- value of pkt_len in ice_vc_fdir_parse_raw()
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.85.143.174]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
+ t=1741021919; x=1772557919;
+ h=from:to:cc:date:message-id:references:in-reply-to:
+ content-transfer-encoding:mime-version:subject;
+ bh=PeB2N+RN9P0VVtOYAgEPkMdfNHEVSn5URx03BPTkwS0=;
+ b=WUIvJ4HhNPTzEAl5LDlGMDNKgYK2mYvorBbxCgtPfcgTFmeVaKrinwVC
+ ai964LCHPQu3Ha5aQSbofO1CrQ7WGsrHF/lvvNCrmCA7qWMAXY3MuyQxx
+ imx5mEshKRhP6Amuu3rbmJXrIFCIsvng5fn03BMV1UDlfYbYpaeopo/S/
+ U=;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=amazon.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=amazon.com header.i=@amazon.com header.a=rsa-sha256
+ header.s=amazon201209 header.b=WUIvJ4Hh
+Subject: Re: [Intel-wired-lan] [PATCH net-next v9 2/6] net: ena: use napi's
+ aRFS rmap notifers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -118,61 +133,163 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+> Use the core's rmap notifiers and delete our own.
+>=20
+> Acked-by: David Arinzon <darinzon@amazon.com>
+> Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
+> ---
+>  drivers/net/ethernet/amazon/ena/ena_netdev.c | 43 +-------------------
+>  1 file changed, 1 insertion(+), 42 deletions(-)
+>=20
+> diff --git a/drivers/net/ethernet/amazon/ena/ena_netdev.c
+> b/drivers/net/ethernet/amazon/ena/ena_netdev.c
+> index c1295dfad0d0..6aab85a7c60a 100644
+> --- a/drivers/net/ethernet/amazon/ena/ena_netdev.c
+> +++ b/drivers/net/ethernet/amazon/ena/ena_netdev.c
+> @@ -5,9 +5,6 @@
+>=20
+>  #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+>=20
+> -#ifdef CONFIG_RFS_ACCEL
+> -#include <linux/cpu_rmap.h>
+> -#endif /* CONFIG_RFS_ACCEL */
+>  #include <linux/ethtool.h>
+>  #include <linux/kernel.h>
+>  #include <linux/module.h>
+> @@ -162,30 +159,6 @@ int ena_xmit_common(struct ena_adapter
+> *adapter,
+>         return 0;
+>  }
+>=20
+> -static int ena_init_rx_cpu_rmap(struct ena_adapter *adapter) -{ -#ifdef
+> CONFIG_RFS_ACCEL
+> -       u32 i;
+> -       int rc;
+> -
+> -       adapter->netdev->rx_cpu_rmap =3D alloc_irq_cpu_rmap(adapter-
+> >num_io_queues);
+> -       if (!adapter->netdev->rx_cpu_rmap)
+> -               return -ENOMEM;
+> -       for (i =3D 0; i < adapter->num_io_queues; i++) {
+> -               int irq_idx =3D ENA_IO_IRQ_IDX(i);
+> -
+> -               rc =3D irq_cpu_rmap_add(adapter->netdev->rx_cpu_rmap,
+> -                                     pci_irq_vector(adapter->pdev, irq_i=
+dx));
+> -               if (rc) {
+> -                       free_irq_cpu_rmap(adapter->netdev->rx_cpu_rmap);
+> -                       adapter->netdev->rx_cpu_rmap =3D NULL;
+> -                       return rc;
+> -               }
+> -       }
+> -#endif /* CONFIG_RFS_ACCEL */
+> -       return 0;
+> -}
+> -
+>  static void ena_init_io_rings_common(struct ena_adapter *adapter,
+>                                      struct ena_ring *ring, u16 qid)  { @=
+@ -1596,7 +1569,7 @@
+> static int ena_enable_msix(struct ena_adapter *adapter)
+>                 adapter->num_io_queues =3D irq_cnt - ENA_ADMIN_MSIX_VEC;
+>         }
+>=20
+> -       if (ena_init_rx_cpu_rmap(adapter))
+> +       if (netif_enable_cpu_rmap(adapter->netdev,
+> + adapter->num_io_queues))
+>                 netif_warn(adapter, probe, adapter->netdev,
+>                            "Failed to map IRQs to CPUs\n");
+>=20
+> @@ -1742,13 +1715,6 @@ static void ena_free_io_irq(struct ena_adapter
+> *adapter)
+>         struct ena_irq *irq;
+>         int i;
+>=20
+> -#ifdef CONFIG_RFS_ACCEL
+> -       if (adapter->msix_vecs >=3D 1) {
+> -               free_irq_cpu_rmap(adapter->netdev->rx_cpu_rmap);
+> -               adapter->netdev->rx_cpu_rmap =3D NULL;
+> -       }
+> -#endif /* CONFIG_RFS_ACCEL */
+> -
+>         for (i =3D ENA_IO_IRQ_FIRST_IDX; i <
+> ENA_MAX_MSIX_VEC(io_queue_count); i++) {
+>                 irq =3D &adapter->irq_tbl[i];
+>                 irq_set_affinity_hint(irq->vector, NULL); @@ -4131,13 +40=
+97,6 @@
+> static void __ena_shutoff(struct pci_dev *pdev, bool shutdown)
+>         ena_dev =3D adapter->ena_dev;
+>         netdev =3D adapter->netdev;
+>=20
+> -#ifdef CONFIG_RFS_ACCEL
+> -       if ((adapter->msix_vecs >=3D 1) && (netdev->rx_cpu_rmap)) {
+> -               free_irq_cpu_rmap(netdev->rx_cpu_rmap);
+> -               netdev->rx_cpu_rmap =3D NULL;
+> -       }
+> -
+> -#endif /* CONFIG_RFS_ACCEL */
+>         /* Make sure timer and reset routine won't be called after
+>          * freeing device resources.
+>          */
+> --
+> 2.43.0
 
+Hi Ahmed,
 
-On 3/3/2025 11:00 AM, Przemek Kitszel wrote:
-> On 2/28/25 18:17, Simon Horman wrote:
->> On Tue, Feb 25, 2025 at 10:08:49AM +0100, Martyna Szapar-Mudlaw wrote:
->>> From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
->>>
->>> Fix using the untrusted value of proto->raw.pkt_len in function
->>> ice_vc_fdir_parse_raw() by verifying if it does not exceed the
->>> VIRTCHNL_MAX_SIZE_RAW_PACKET value.
->>>
->>> Fixes: 99f419df8a5c ("ice: enable FDIR filters from raw binary 
->>> patterns for VFs")
->>> Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
->>> Signed-off-by: Martyna Szapar-Mudlaw <martyna.szapar- 
->>> mudlaw@linux.intel.com>
->>> ---
->>>   .../ethernet/intel/ice/ice_virtchnl_fdir.c    | 25 +++++++++++++------
->>>   1 file changed, 17 insertions(+), 8 deletions(-)
->>>
->>> diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c b/ 
->>> drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
->>> index 14e3f0f89c78..6250629ee8f9 100644
->>> --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
->>> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
->>> @@ -835,18 +835,27 @@ ice_vc_fdir_parse_raw(struct ice_vf *vf,
->>>       u8 *pkt_buf, *msk_buf __free(kfree);
->>>       struct ice_parser_result rslt;
->>>       struct ice_pf *pf = vf->pf;
->>> +    u16 pkt_len, udp_port = 0;
->>>       struct ice_parser *psr;
->>>       int status = -ENOMEM;
->>>       struct ice_hw *hw;
->>> -    u16 udp_port = 0;
->>> -    pkt_buf = kzalloc(proto->raw.pkt_len, GFP_KERNEL);
->>> -    msk_buf = kzalloc(proto->raw.pkt_len, GFP_KERNEL);
->>> +    if (!proto->raw.pkt_len)
->>> +        return -EINVAL;
->>
->> Hi Martyna,
->>
->> It seems to me that the use of __free() above will result in
->> kfree(msk_buf) being called here. But msk_buf is not initialised at this
->> point.
->>
->> My suggest would be to drop the use of __free().
->> But if not, I think that in order to be safe it would be best to do this
->> (completely untested;
->>
->>     u8 *pkt_buf, *msk_buf __free(kfree) = NULL;
-> 
-> Oh yeah!, thank you Simon for catching that.
-> 
-> I would say "naked __free()" was harmful here.
-> 
+After the merging of this patch, I see the below stack trace when the IRQs =
+are freed.
+It can be reproduced by unloading and loading the driver using `modprobe -r=
+ ena; modprobe ena` (happens during unload)
 
-Thank you for suggestions, will send fixed v3
+Based on the patchset and the changes to other drivers, I think there's a m=
+issing call to the function
+that releases the affinity notifier (The warn is in https://web.git.kernel.=
+org/pub/scm/linux/kernel/git/netdev/net-next.git/tree/kernel/irq/manage.c#n=
+2031)
 
+I saw in the intel code in the patchset that ` netif_napi_set_irq(<napi>, -=
+1);` is added?
+
+After adding the code snippet I don't see this anymore, but I want to under=
+stand whether it's the right call by design.
+
+@@ -1716,8 +1716,11 @@ static void ena_free_io_irq(struct ena_adapter *adap=
+ter)
+        int i;
+
+        for (i =3D ENA_IO_IRQ_FIRST_IDX; i < ENA_MAX_MSIX_VEC(io_queue_coun=
+t); i++) {
++               struct ena_napi *ena_napi;
++
+                irq =3D &adapter->irq_tbl[i];
+                irq_set_affinity_hint(irq->vector, NULL);
++               ena_napi =3D (struct ena_napi *)irq->data;
++               netif_napi_set_irq(&ena_napi->napi, -1);
+                free_irq(irq->vector, irq->data);
+        }
+ }
+
+[  484.544586]  ? __warn+0x84/0x130
+[  484.544843]  ? free_irq+0x5c/0x70
+[  484.545105]  ? report_bug+0x18a/0x1a0
+[  484.545390]  ? handle_bug+0x53/0x90
+[  484.545664]  ? exc_invalid_op+0x14/0x70
+[  484.545959]  ? asm_exc_invalid_op+0x16/0x20
+[  484.546279]  ? free_irq+0x5c/0x70
+[  484.546545]  ? free_irq+0x10/0x70
+[  484.546807]  ena_free_io_irq+0x5f/0x70 [ena]
+[  484.547138]  ena_down+0x250/0x3e0 [ena]
+[  484.547435]  ena_destroy_device+0x118/0x150 [ena]
+[  484.547796]  __ena_shutoff+0x5a/0xe0 [ena]
+[  484.548110]  pci_device_remove+0x3b/0xb0
+[  484.548412]  device_release_driver_internal+0x193/0x200
+[  484.548804]  driver_detach+0x44/0x90
+[  484.549084]  bus_remove_driver+0x69/0xf0
+[  484.549386]  pci_unregister_driver+0x2a/0xb0
+[  484.549717]  ena_cleanup+0xc/0x130 [ena]
+[  484.550021]  __do_sys_delete_module.constprop.0+0x176/0x310
+[  484.550438]  ? syscall_trace_enter+0xfb/0x1c0
+[  484.550782]  do_syscall_64+0x5b/0x170
+[  484.551067]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+
+Thanks,
+David
