@@ -1,109 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A9E9AA4DEE4
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Mar 2025 14:11:55 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 45953A4DF77
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Mar 2025 14:41:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F3A8B40BA8;
-	Tue,  4 Mar 2025 13:11:53 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9E0Gbf2_fm9H; Tue,  4 Mar 2025 13:11:53 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BDE7D40BA9
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741093912;
-	bh=hjDEGrSJ01f7XL/6ChoQhnE2D2Ot4EMlTkp0BVwJaRw=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=WUi1yQL4EYAx2iRsNK5lVtYqK7r8iR4tcSICPzW1EMqmDyOUpeS59YvtznTbsKYwN
-	 w0uSXQnnY1lPA1JHWkQa9ksEt3V9ORRhyRZ5a+StADTlXEONm2ZKvUzG79bMF2Lq2a
-	 bdhyGX+RuPYWjkCWg0PtPmS8ksWmLTVNSfV+8b85GjahnBYluKX+L+Uv9eUBP0Za91
-	 fBfMDkiiESkUyStFWNw/i8Z5udMgzcHcAJcnR3FQTZ6w+N7tDy6uXkcMN0tBsjQU9v
-	 kBoCMO7k57Z5Vss2Umy1sD/eWTU0/Jx7VBgkN2wKRYtKixZyXDbWou46fgSOqgToKJ
-	 lN73ST+ZIDAZg==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BDE7D40BA9;
-	Tue,  4 Mar 2025 13:11:52 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 0EFFDD2
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Mar 2025 13:11:50 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D432481F46
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Mar 2025 13:11:49 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 483258146B;
+	Tue,  4 Mar 2025 13:41:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id D9tD4CMTQL9z for <intel-wired-lan@lists.osuosl.org>;
- Tue,  4 Mar 2025 13:11:48 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
- helo=mgamail.intel.com; envelope-from=martyna.szapar-mudlaw@linux.intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 694C381F34
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 694C381F34
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 694C381F34
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Mar 2025 13:11:48 +0000 (UTC)
-X-CSE-ConnectionGUID: EMKSXCv1TA6VScFzIu5AOg==
-X-CSE-MsgGUID: C5jHYXa9ToW+McBT7clN6A==
-X-IronPort-AV: E=McAfee;i="6700,10204,11363"; a="59422787"
-X-IronPort-AV: E=Sophos;i="6.13,331,1732608000"; d="scan'208";a="59422787"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
- by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Mar 2025 05:11:48 -0800
-X-CSE-ConnectionGUID: Hp5g01T4RD2aay6dqcLwxw==
-X-CSE-MsgGUID: Ahb3pMS+SbSmMLnzntTlQA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,331,1732608000"; d="scan'208";a="118379435"
-Received: from mszapar-mobl1.ger.corp.intel.com (HELO [10.245.99.188])
- ([10.245.99.188])
- by fmviesa007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Mar 2025 05:11:45 -0800
-Message-ID: <e384e61a-4ccd-4ae7-8ddd-66259769f6dd@linux.intel.com>
-Date: Tue, 4 Mar 2025 14:11:42 +0100
+ id t4eDrfO8UecY; Tue,  4 Mar 2025 13:41:25 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6C8B181479
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1741095685;
+	bh=mIe1g7wRJzTWHrk0KluZ5semFFoVlRkgZaZgEsIxn80=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=QHqAMsEH4Sc9+boyDzL77Wg3K5WcPeR3/e0RUo/EfixpbzkmHz3zpwqKtkdnWeGjg
+	 PcSY/LIsdIAnY6/AzVdKACAgkXtO8zHrZGbSRv2Kn2lMpR6WoyL9gdDDGYukJYu7+U
+	 FvON09japxoPVE+FgNwUx5gBJwZF2tiEaThSEtbNzqTCe2navWM6cgOOQpV5SevmZW
+	 TrzHQGqdzOi2JH11urmeoP7SvFC38opTfxoiOIV9ycmWIhMXf3QwIAnONP8mts3Cr+
+	 zev4M+bcwfQPFPCv5siH6Lqh5dCKZmhbWe/kw4r5lvyLL2V7sFwthoEp+guJp3V+og
+	 WRTSKrUJEQHxw==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6C8B181479;
+	Tue,  4 Mar 2025 13:41:25 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 247A1944
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Mar 2025 13:41:23 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 141F560674
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Mar 2025 13:41:23 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id gtXjx7Z7ATbn for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  4 Mar 2025 13:41:22 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
+ helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 06DA9606D7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 06DA9606D7
+Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 06DA9606D7
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Mar 2025 13:41:20 +0000 (UTC)
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+ (envelope-from <andrew@lunn.ch>)
+ id 1tpSW9-0029IZ-Jd; Tue, 04 Mar 2025 14:41:05 +0100
+Date: Tue, 4 Mar 2025 14:41:05 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>
+Cc: Mark Pearson <mpearson-lenovo@squebb.ca>, anthony.l.nguyen@intel.com,
+ przemyslaw.kitszel@intel.com, andrew+netdev@lunn.ch,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Message-ID: <fbee86b8-fbdd-42ac-a7f9-efc934d59672@lunn.ch>
+References: <mpearson-lenovo@squebb.ca>
+ <20250226194422.1030419-1-mpearson-lenovo@squebb.ca>
+ <36ae9886-8696-4f8a-a1e4-b93a9bd47b2f@lunn.ch>
+ <50d86329-98b1-4579-9cf1-d974cf7a748d@app.fastmail.com>
+ <1a4ed373-9d27-4f4b-9e75-9434b4f5cad9@lunn.ch>
+ <9f460418-99c6-49f9-ac2c-7a957f781e17@app.fastmail.com>
+ <4b5b0f52-7ed8-7eef-2467-fa59ca5de937@intel.com>
+ <698700ab-fd36-4a09-8457-a356d92f00ea@lunn.ch>
+ <24740a7d-cc50-44af-99e2-21cb838e17e5@app.fastmail.com>
+ <316a020a-aa49-700e-3735-f5f810adaaed@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Paul Menzel <pmenzel@molgen.mpg.de>, Jan Glaza <jan.glaza@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
- Simon Horman <horms@kernel.org>,
- Alexander Lobakin <aleksander.lobakin@intel.com>
-References: <20250304110833.95997-2-martyna.szapar-mudlaw@linux.intel.com>
- <20250304110833.95997-4-martyna.szapar-mudlaw@linux.intel.com>
- <9f6b830f-d2ee-4fde-a131-a956a6e84df7@molgen.mpg.de>
- <00a160e5-c9b2-4b91-9823-dee37fdc5d25@linux.intel.com>
- <832cc2a5-0c15-42d1-924b-a14674db6391@molgen.mpg.de>
-Content-Language: en-US
-From: "Szapar-Mudlaw, Martyna" <martyna.szapar-mudlaw@linux.intel.com>
-In-Reply-To: <832cc2a5-0c15-42d1-924b-a14674db6391@molgen.mpg.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1741093908; x=1772629908;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=Xh5iiVezbe3pvsGK2lbuxPTlq2T8TRg3qVDRZq0aaSw=;
- b=I/69QXM5hHWL2OkI+UJziLmC7zYqsRHFhNHUBX4RwImdpy9k42gU0V+i
- 3xj8lIJiS09418+tjq98KISLysLbp3PgyMukVzkesHOUd2rQZX7WvZ+nU
- n4QYMqo/8sWIvAVr0oUiW4ynQcRjktXENcf3SuepEOXAf73G6miycvcIf
- iYFYX0My50uYxocVqlF3cPgwGKpcuHJhxNqiaORwwUqKUwcuXSxNZUYeV
- 742mSYiO22yDkNEzd3Y+75PT3VoGu8MK8GD0jm1Z+A3l8iuWUWr8zULNc
- 3AjSeSLlK/2C+3qcK//qcVwJIBc/79HA4YTZ+Bj9S+GK1wfRg+jg6ptbS
- w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=I/69QXM5
-Subject: Re: [Intel-wired-lan] [iwl-net v3 1/5] virtchnl: make proto and
- filter action count unsigned
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <316a020a-aa49-700e-3735-f5f810adaaed@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; d=lunn.ch; 
+ s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+ Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+ bh=mIe1g7wRJzTWHrk0KluZ5semFFoVlRkgZaZgEsIxn80=; b=i48j2a7ixm9NaBiLJryYlHBRnM
+ jUGOl1OOd492N8Fo/cSNPhcyQeGYeG+YL5I45hF5RcNXTASeL649g0g0ksSsvZBQUdRktwKrtrDSk
+ Xd5kzAOvOZf44ChXAKwnSOdIHq2Rs72fkKZWArFriaHiykyFAIklVfhF5KYNhRXywq8Q=;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=lunn.ch
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256
+ header.s=20171124 header.b=i48j2a7i
+Subject: Re: [Intel-wired-lan] [PATCH] e1000e: Link flap workaround option
+ for false IRP events
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -119,97 +107,56 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+> > > However, that does not really help explain how this helps prevent an
+> > > interrupt. I assume playing with EEE settings was also played
+> > > with. Not that is register appears to have anything to do with EEE!
+> > > 
+> > I don't think we did tried those - it was never suggested that I can recall (the original debug started 6 months+ ago). I don't know fully what testing Intel did in their lab once the issue was reproduced there.
+> > 
+> > If you have any particular recommendations we can try that - with a note that we have to run a soak for ~1 week to have confidence if a change made a difference (the issue can reproduce between 1 to 2 days).
+> 
+> Personally I doubt that it is related to EEE since there was no real link
+> flap.
 
+I tend to agree. Despite the group of registers being called LPI, it
+appears this one has nothing to do with LPI? It would probably been
+better to have it in page 776, General Registers, but that region is
+full.
 
-On 3/4/2025 12:51 PM, Paul Menzel wrote:
-> Dear Martyna,
+> > > I don't follow what you are saying here. As far as i can see, the
+> > > interrupt handler will triggers a read of the BMCR to determine the
+> > > link status. It should not matter if there is a spurious interrupt,
+> > > the BMCR should report the truth. So does BMCR actually indicate the
+> > > link did go down? I also see there is the usual misunderstanding with
+> > > how BMCR is latching. It should not be read twice, processed once, it
+> > > should be processed each time, otherwise you miss quick link down/up
+> > > events.
+> > > 
+> > > > We communicated that this solution is not likely to be accepted to the
+> > > > kernel as is, and the initial responses on the mailing list demonstrate the
+> > > > pushback.
+> > > 
+> > > What it has done is start a discussion towards an acceptable
+> > > solution. Which is a good thing. But at the moment, the discussion
+> > > does not have sufficient details.
+> > > 
+> > > Please could somebody describe the chain of events which results in
+> > > the link down, and subsequent link up. Is the interrupt spurious, or
+> > > does BMCR really indicate the link went down and up again?
+> > > 
+> > 
+> > I'm fairly certain there is no actual link bounce but I don't know the reason for the interrupt or why it was triggered.
+> > 
+> > Vitaly, do you have a way of getting these answers from the Intel team that worked on this? I don't think I'll be able to get any answers, unfortunately.
 > 
-> 
-> Thank you for your quick reply.
-> 
-> Am 04.03.25 um 12:45 schrieb Szapar-Mudlaw, Martyna:
-> 
->> On 3/4/2025 12:15 PM, Paul Menzel wrote:
-> 
->>> Am 04.03.25 um 12:08 schrieb Martyna Szapar-Mudlaw:
->>>> From: Jan Glaza <jan.glaza@intel.com>
->>>>
->>>> The count field in virtchnl_proto_hdrs and virtchnl_filter_action_set
->>>> should never be negative while still being valid. Changing it from
->>>> int to u32 ensures proper handling of values in virtchnl messages in
->>>> driverrs and prevents unintended behavior.
->>>> In its current signed form, a negative count does not trigger
->>>> an error in ice driver but instead results in it being treated as 0.
->>>> This can lead to unexpected outcomes when processing messages.
->>>> By using u32, any invalid values will correctly trigger -EINVAL,
->>>> making error detection more robust.
->>>>
->>>> Fixes: 1f7ea1cd6a374 ("ice: Enable FDIR Configure for AVF")
->>>> Reviewed-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
->>>> Reviewed-by: Simon Horman <horms@kernel.org>
->>>> Signed-off-by: Jan Glaza <jan.glaza@intel.com>
->>>> Signed-off-by: Martyna Szapar-Mudlaw <martyna.szapar- 
->>>> mudlaw@linux.intel.com>
->>>> ---
->>>>   include/linux/avf/virtchnl.h | 4 ++--
->>>>   1 file changed, 2 insertions(+), 2 deletions(-)
->>>>
->>>> diff --git a/include/linux/avf/virtchnl.h b/include/linux/avf/ 
->>>> virtchnl.h
->>>> index 4811b9a14604..cf0afa60e4a7 100644
->>>> --- a/include/linux/avf/virtchnl.h
->>>> +++ b/include/linux/avf/virtchnl.h
->>>> @@ -1343,7 +1343,7 @@ struct virtchnl_proto_hdrs {
->>>>        * 2 - from the second inner layer
->>>>        * ....
->>>>        **/
->>>> -    int count; /* the proto layers must < 
->>>> VIRTCHNL_MAX_NUM_PROTO_HDRS */
->>>> +    u32 count; /* the proto layers must < 
->>>> VIRTCHNL_MAX_NUM_PROTO_HDRS */
->>>
->>> Why limit the length, and not use unsigned int?
->>
->> u32 range is completely sufficient for number of proto hdrs (as said: 
->> "the proto layers must < VIRTCHNL_MAX_NUM_PROTO_HDRS") and I believe 
->> it is recommended to use fixed sized variables where possible
-> 
-> Do you have a pointer to the recommendation? I heard the opposite, that 
-> fixed length is only useful for register writes. Otherwise, you should 
-> use the “generic” types [1].
+> You are correct, from what we saw there was no real link flap there. Only a
+> false link status change interrupt.
+ 
+So if BMCR shows no state change, why is the driver doing anything?
 
-Thanks for sharing the source and your perspective, you are right, as a 
-general rule, using generic types is preferred - I actually learned 
-something new from this.
-That said, I still believe there are exceptions, and in this case, using 
-u32 is the right choice. When dealing with protocols or data formats 
-using a fixed-width type makes sense.
-Additionally, throughout this file, we consistently use u32/u16 for 
-similar cases, so also here we're keeping it aligned with the existing 
-codebase.
-Thank you for your review and appreciate the discussion on best practices.
+I really would like to understand the chain of events. Once we
+understand the chain of events, we can probably come up with a change
+somewhere in the chain to break it, so the spurious interrupt is
+ignored.
 
-Regards,
-Martyna
-
-> 
->>>>       union {
->>>>           struct virtchnl_proto_hdr
->>>>               proto_hdr[VIRTCHNL_MAX_NUM_PROTO_HDRS];
->>>> @@ -1395,7 +1395,7 @@ VIRTCHNL_CHECK_STRUCT_LEN(36, 
->>>> virtchnl_filter_action);
->>>>   struct virtchnl_filter_action_set {
->>>>       /* action number must be less then VIRTCHNL_MAX_NUM_ACTIONS */
->>>> -    int count;
->>>> +    u32 count;
->>>>       struct virtchnl_filter_action actions[VIRTCHNL_MAX_NUM_ACTIONS];
->>>>   };
-> 
-> Kind regards,
-> 
-> Paul
-> 
-> 
-> [1]: https://notabs.org/coding/smallIntsBigPenalty.htm
-> 
-
+	Andrew
