@@ -1,199 +1,100 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B9F37A4EA4D
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Mar 2025 19:01:11 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2DD7DA4E8C6
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Mar 2025 18:30:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 17EC060ABE;
-	Tue,  4 Mar 2025 18:01:10 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0YRzKLRSAast; Tue,  4 Mar 2025 18:01:09 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 61EAA60B97
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741111269;
-	bh=36Q2La0h1MXjFltmPl2PCEsNDSpzcvflzuLgBOB0EaM=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=f2pakkvMn5V9Hcf+ARufAptvAh1iT/9abgDVRgLUzbOYQaVlAQ8NPJfESE3n5hO/R
-	 2WYtPFUKY1mH3MNjLPMfEVUL78NR446zFIS0tfEfgzVn8y//eVZzxDtIENA0bBBHzN
-	 JORvyDBn/ycjlCBEP1C9QYs40tx64KGm4CjB1auRKClwtc2IDbBRqc1QueyjzzfvZY
-	 vzmwlIkfHmTr8CuqcRTyTMGdfkpj5KB2/z6jiGo1uPyF3h7Z2WCkzbcoWcN+Mzqx0x
-	 1jk4a4zppC6F/fkJDf96E8g8uHVa3Nh21LhcYeGoliNIRjlqXDWtrzMZbry1JHFAk+
-	 YPO0pu//1ajRQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 61EAA60B97;
-	Tue,  4 Mar 2025 18:01:09 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 80809D2
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Mar 2025 18:01:07 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5CA4C81DEA
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Mar 2025 18:01:07 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 374ED817EB;
+	Tue,  4 Mar 2025 17:30:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id rANF7-FjHx2c for <intel-wired-lan@lists.osuosl.org>;
- Tue,  4 Mar 2025 18:01:03 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=160.75.25.116;
- helo=beeline2.cc.itu.edu.tr; envelope-from=root@cc.itu.edu.tr;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org E13CC81D72
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E13CC81D72
-Received: from beeline2.cc.itu.edu.tr (beeline2.cc.itu.edu.tr [160.75.25.116])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E13CC81D72
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Mar 2025 18:01:02 +0000 (UTC)
-Received: from lesvatest1.cc.itu.edu.tr (lesvatest1.cc.itu.edu.tr
- [10.146.128.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits))
- (No client certificate requested)
- by beeline2.cc.itu.edu.tr (Postfix) with ESMTPS id 5DC6140D51F2
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Mar 2025 21:00:59 +0300 (+03)
-X-Envelope-From: <root@cc.itu.edu.tr>
-Received: from lesva1.cc.itu.edu.tr (unknown [160.75.70.79])
- by lesvatest1.cc.itu.edu.tr (Postfix) with ESMTP id 4Z6hRc1tmWzG47g
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Mar 2025 19:47:08 +0300 (+03)
-Received: by le1 (Postfix, from userid 0)
- id 6A69D4274E; Tue,  4 Mar 2025 19:46:52 +0300 (+03)
-X-Envelope-From: <linux-kernel+bounces-541373-bozkiru=itu.edu.tr@vger.kernel.org>
-Received: from fgw1.itu.edu.tr (fgw1.itu.edu.tr [160.75.25.103])
- by le2 (Postfix) with ESMTP id F1B434327A
- for <bozkiru@itu.edu.tr>; Mon,  3 Mar 2025 13:31:50 +0300 (+03)
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org [139.178.88.99])
- by fgw1.itu.edu.tr (Postfix) with SMTP id 822DB3063EFC
- for <bozkiru@itu.edu.tr>; Mon,  3 Mar 2025 13:31:50 +0300 (+03)
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by sv.mirrors.kernel.org (Postfix) with ESMTPS id E2FEC3B167E
- for <bozkiru@itu.edu.tr>; Mon,  3 Mar 2025 10:30:09 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
- by smtp.subspace.kernel.org (Postfix) with ESMTP id 054631F4612;
- Mon,  3 Mar 2025 10:28:27 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by smtp.subspace.kernel.org (Postfix) with ESMTPS id EB3481F2380;
- Mon,  3 Mar 2025 10:28:22 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
- t=1740997704; cv=none;
- b=SrR5oDy9KEHZoRBJvfq3erxrZvzyjJOenzkrujxKhN1R8B2qJRImQmYwhhZuoQbm0Upkb+VKOjI+ATKQ76+DiGY+J4R//KOQygmHcA698KOwn7aphSEFBsAeO1BAiHzfTpoz/ha+Ywm6Fddb41XlzZ/Q1RPyZo7CzkmDPP2ydtg=
-ARC-Message-Signature: i=1; a=rsa-sha256; d=subspace.kernel.org;
- s=arc-20240116; t=1740997704; c=relaxed/simple;
- bh=naH9KspwalUC4SIxcxcdhcuCdSPyeBw7+LL7ZKcyavQ=;
- h=From:To:Subject:Date:Message-Id:In-Reply-To:References:
- MIME-Version;
- b=CtS+hN0Akl3QMHnlz9I/CEMWEQ5+MMeX+adDksvl4xOqW5CDuoE1hb+lQJX9BiNA7V329vaW2z8X8mtA3tZv4tW8LP6xbD2P8nUl6KzOnSnc6+hFTPOv3war/YbWAmkre+z5OhJrl9jhUOViTENdWGcVYVuyok59/V0EUm0zIhI=
-ARC-Authentication-Results: i=1; smtp.subspace.kernel.org;
- dmarc=pass (p=none dis=none)
- header.from=linux.intel.com; spf=none smtp.mailfrom=linux.intel.com;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.b=ib8K1KKm; arc=none smtp.client-ip=198.175.65.9
-X-CSE-ConnectionGUID: GLlEkOCuSe2ShOnFc6/21A==
-X-CSE-MsgGUID: BsGU7BGyRH+fAJ/ZpVkN9g==
-X-IronPort-AV: E=McAfee;i="6700,10204,11361"; a="64310253"
-X-IronPort-AV: E=Sophos;i="6.13,329,1732608000"; d="scan'208";a="64310253"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Mar 2025 02:28:23 -0800
-X-CSE-ConnectionGUID: w4pCy+ifSdmjYRxSLDAKCw==
-X-CSE-MsgGUID: WMXFEbW1SyugSAw2veHtzw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.13,329,1732608000"; d="scan'208";a="122569912"
-Received: from mohdfai2-ilbpg12-1.png.intel.com ([10.88.227.73])
- by fmviesa005.fm.intel.com with ESMTP; 03 Mar 2025 02:28:15 -0800
-From: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
-To: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ id zwYYJXA_gNcE; Tue,  4 Mar 2025 17:30:29 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5C7B281177
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1741109429;
+	bh=4XZ83idWzI9RFRBdvxHmTuPOrheXC7/d1oOEtcKE2fU=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=ZOqwo+PEn3hMBR1FZTeiXTJ2M/3fn/qn+MJ4y63SYg06axMfVZL3pbB6mTWFwyaKs
+	 rr00t1vD4JE2dDCetzD6UV5CWTAvMfE2kYdBSQ20YDrhbOY0qGO4UxvzR7xo5RM6JP
+	 tJzP1KMrMWWMsIX6R90uxPjricfvIvJSNp9PZiyj12Q5ktlvVDIp5yP4i/BBhJhFYL
+	 OKbnugVe5pkTzyZqM0PeXZnFDLauPxAPvpG9AscfeGkU+AYWN1jwK2sq5BRnWwdhKA
+	 NBZpqwFVYH8qYpp0Q8F/dGESScLcinf7UehfswHXCqETZMvjgnamyMj1i1af0LVLWq
+	 V7UW/ghfpWQtg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5C7B281177;
+	Tue,  4 Mar 2025 17:30:29 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3A571941
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Mar 2025 17:30:28 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 1F0C060ABE
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Mar 2025 17:30:28 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 2GtCKa4Q7h-q for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  4 Mar 2025 17:30:27 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6FD8E607CE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6FD8E607CE
+Received: from nyc.source.kernel.org (nyc.source.kernel.org
+ [IPv6:2604:1380:45d1:ec00::3])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6FD8E607CE
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Mar 2025 17:30:27 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by nyc.source.kernel.org (Postfix) with ESMTP id 58978A45A9B;
+ Tue,  4 Mar 2025 17:24:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84BA8C4CEE5;
+ Tue,  4 Mar 2025 17:30:23 +0000 (UTC)
+Date: Tue, 4 Mar 2025 17:30:21 +0000
+From: Simon Horman <horms@kernel.org>
+To: Kurt Kanzenbach <kurt@linutronix.de>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Simon Horman <horms@kernel.org>, Russell King <linux@armlinux.org.uk>,
- Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>, Furong Xu <0x1207@gmail.com>,
- Russell King <rmk+kernel@armlinux.org.uk>,
- Vladimir Oltean <vladimir.oltean@nxp.com>,
- Serge Semin <fancer.lancer@gmail.com>,
- Xiaolei Wang <xiaolei.wang@windriver.com>,
- Suraj Jaiswal <quic_jsuraj@quicinc.com>,
- Kory Maincent <kory.maincent@bootlin.com>, Gal Pressman <gal@nvidia.com>,
- Jesper Nilsson <jesper.nilsson@axis.com>,
- Andrew Halaney <ahalaney@redhat.com>,
- Choong Yong Liang <yong.liang.choong@linux.intel.com>,
  Faizal Rahim <faizal.abdul.rahim@linux.intel.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, bpf@vger.kernel.org
-Date: Mon,  3 Mar 2025 05:26:56 -0500
-Message-Id: <20250303102658.3580232-8-faizal.abdul.rahim@linux.intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250303102658.3580232-1-faizal.abdul.rahim@linux.intel.com>
-References: <20250303102658.3580232-1-faizal.abdul.rahim@linux.intel.com>
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+Message-ID: <20250304173021.GH3666230@kernel.org>
+References: <20250303-igc_mqprio_tx_mode-v3-1-0efce85e6ae0@linutronix.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-X-ITU-Libra-ESVA-Information: Please contact Istanbul Teknik Universitesi for
- more information
-X-ITU-Libra-ESVA-ID: 4Z6hRc1tmWzG47g
-X-ITU-Libra-ESVA: No virus found
-X-ITU-Libra-ESVA-From: root@cc.itu.edu.tr
-X-ITU-Libra-ESVA-Watermark: 1741715933.70443@9adhHucn4G0QW4MP4FRMtQ
-X-ITU-MailScanner-SpamCheck: not spam
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250303-igc_mqprio_tx_mode-v3-1-0efce85e6ae0@linutronix.de>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1740997703; x=1772533703;
- h=from:to:subject:date:message-id:in-reply-to:references:
- mime-version:content-transfer-encoding;
- bh=naH9KspwalUC4SIxcxcdhcuCdSPyeBw7+LL7ZKcyavQ=;
- b=ib8K1KKmZHBkCl8J4dcdi0vDFYoFdmwD7535Z8CoHYHgqiIaHknlLu1Z
- jee3/IwNpgJStDmrf3kSQyCMuCGPhUBsh0LsTfO9UFejgIoySJvj3xMfV
- cbSB6qqhtlP0nJBcF72JrFormj7WMhYgkGrsqIVcnCJcdeTEA4UW+SyKD
- t9b5ZmY/s7RmBkdU8IZ4CvKZ4oTGWzmxLQ2+2yPTXyXLuE5/0JfbEOBwk
- xby8NVA+LoZ0vGP+DkO30hWaUS/wJBmqVplMl69CdIDhRHKQ/c5SS3wql
- EUMPHjz8tHSnJEwQIOVFe5KUurrj588ofCRvXc3aev8/3dAcGl6qwYLdV
- w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=fail reason="signature verification failed" (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=ib8K1KKm
-X-Mailman-Original-Authentication-Results: lesva1.cc.itu.edu.tr;
- dkim=fail reason="signature verification failed" (2048-bit key)
- header.d=intel.com header.i=@intel.com header.b=ib8K1KKm
-X-Mailman-Original-Authentication-Results: lesva2.cc.itu.edu.tr;
- dkim=fail reason="signature verification failed" (2048-bit key)
- header.d=intel.com header.i=@intel.com header.b=ib8K1KKm
-X-Mailman-Original-Authentication-Results: smtp.subspace.kernel.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.b="ib8K1KKm"
-X-Mailman-Original-Authentication-Results: smtp.subspace.kernel.org; arc=none
- smtp.client-ip=198.175.65.9
-X-Mailman-Original-Authentication-Results: smtp.subspace.kernel.org;
- dmarc=pass (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp.subspace.kernel.org; spf=none
- smtp.mailfrom=linux.intel.com
-Subject: [Intel-wired-lan] [PATCH iwl-next v7 7/9] igc: Block setting
- preemptible traffic class in taprio
+ d=kernel.org; s=k20201202; t=1741109425;
+ bh=xuCB2v1oTiS5aN88F+t/9IxGezhQ8OSGjVyYYhNHj48=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=hA5A/kjpuNwBuwkBfBPzGm3c4k3T/6X2O42kzkDgPM2PQPURnd4VrfbdjGinzSe4R
+ 7Earfx7KtvrVS18Y89YQ1cKi63QqWQfJFiDazGcTh2Z2e/0O1M5pbTkoXGjheQeZbT
+ E3n0D8ZgEJgjrRzLIPa/rpi9ac3UJsaiINh8HCMepERMI6BuUr0L0F2UV8rWlj6e79
+ f5+rQ+1Jx1qLnMGQ+66e63rlXkF2KcrZuIXeppiz8sWlrE6iIO4ql1Yb/O+3j3wiqj
+ pik0zlBL1U/vRlK8BBkZT9MNphx5hh3nJpOcfZrakObklpaP2RJxc0W9BtlSKByAIh
+ W3Z/3ygTR/GJQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=hA5A/kjp
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3] igc: Change Tx mode for
+ MQPRIO offloading
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
+Precedence: list
 List-Id: Intel Wired Ethernet Linux Kernel Driver Development
  <intel-wired-lan.osuosl.org>
 List-Unsubscribe: <https://lists.osuosl.org/mailman/options/intel-wired-lan>, 
@@ -206,32 +107,35 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Since preemptible tc implementation is not ready yet, block it from being
-set in taprio. The existing code already blocks it in mqprio.
+On Mon, Mar 03, 2025 at 10:16:33AM +0100, Kurt Kanzenbach wrote:
+> The current MQPRIO offload implementation uses the legacy TSN Tx mode. In
+> this mode the hardware uses four packet buffers and considers queue
+> priorities.
+> 
+> In order to harmonize the TAPRIO implementation with MQPRIO, switch to the
+> regular TSN Tx mode. This mode also uses four packet buffers and considers
+> queue priorities. In addition to the legacy mode, transmission is always
+> coupled to Qbv. The driver already has mechanisms to use a dummy schedule
+> of 1 second with all gates open for ETF. Simply use this for MQPRIO too.
+> 
+> This reduces code and makes it easier to add support for frame preemption
+> later.
+> 
+> While at it limit the netdev_tc calls to MQPRIO only.
 
-Signed-off-by: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
----
- drivers/net/ethernet/intel/igc/igc_main.c | 4 ++++
- 1 file changed, 4 insertions(+)
+Hi Kurt,
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethe=
-rnet/intel/igc/igc_main.c
-index fc086919387c..319eeb5b0a54 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -6407,6 +6407,10 @@ static int igc_save_qbv_schedule(struct igc_adapte=
-r *adapter,
- 	if (!validate_schedule(adapter, qopt))
- 		return -EINVAL;
-=20
-+	/* preemptible isn't supported yet */
-+	if (qopt->mqprio.preemptible_tcs)
-+		return -EOPNOTSUPP;
-+
- 	igc_ptp_read(adapter, &now);
-=20
- 	if (igc_tsn_is_taprio_activated_by_user(adapter) &&
---=20
-2.34.1
+Can this part be broken out into a separate patch?
+It seems so to me, but perhaps I'm missing something.
 
+The reason that I ask is that this appears to be a good portion of the
+change, and doing so would make the code changes for main part of the
+patch, as per the description prior to the line above, clearer IMHO.
 
+> 
+> Tested on i225 with real time application using high priority queue, iperf3
+> using low priority queue and network TAP device.
+> 
+> Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
+
+...
