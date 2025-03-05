@@ -1,124 +1,105 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 27E71A4FF6B
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Mar 2025 14:02:28 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DE09EA5008E
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  5 Mar 2025 14:30:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C80D183332;
-	Wed,  5 Mar 2025 13:02:26 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8B4DF41244;
+	Wed,  5 Mar 2025 13:30:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TmJcCPtvQFSX; Wed,  5 Mar 2025 13:02:26 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 2vOS3IZVuirL; Wed,  5 Mar 2025 13:30:40 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E7CCD83342
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4C4D741246
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741179746;
-	bh=QLi+WNAD7fqvchynqFKwYbSpOuf/kFQGxxaTuHtQl6g=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1741181440;
+	bh=GZ6eUls3PorKa11dVvPyk7+F7F5lgUhnxd95XsSf6vA=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=Ty3lLfM1JAxa7iqKGN3Fy3Gei1wPrPjvagWAf58cFM/jVBOe0r+1IJicic11dXxD2
-	 ZwhCzLKDIAxItTYDFeYJmk9c8jRwi+yiiSdTlyRGPd4/fAu5Ofb2xsBJvhPlIZmkM3
-	 7NWIeeZhijYHXaKbXQMCsVAs3Nknqu8Z8KWD9cWOAKIDZhPvreilopWO5Q7GXr4P9z
-	 5+iqKufQF+uskiRHMYrFQodUn1upxSRVo0GFTp4b1+JCuc08jXhUIjN2xN7prAnWW2
-	 a4Lt9JLnf+9JJ9u7tVC76AVfaj9NZomiCQ8mGoS9W7EALorCLvveDQVpXsM0TwdnGg
-	 mJJ8gcZcw/B9A==
+	b=yt7V9oOXK4dc+PDKiXotAiz6/R62e05bPRSMH7425he0kFPgq/31vj7Bb40UqGMk+
+	 Ly4Fqn3xjw0MmYBS+eO9vz1BfI2/0YIv39EGzI1IgA+epirbiL7xOG0ng7G1dCUQym
+	 S2twVKgR/rR6dqop3v9EyzecMIwocUhY5UarmCqKfNabyQetfcllrZxpdSFq4Q7WTX
+	 A3KEjydAZ4bQYq9QgKtuzjqO5D6CCogXuHk54bAS0/5BuzaY8n98KXvS2TmacRf/1f
+	 4s3D+7kyEUoAyZLQEt7veJJVZ8zxJzd8TN6AzCjDzNkJwrY4uMRltyZllMrXNEvBt/
+	 rDoJaiVSzOOAQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E7CCD83342;
-	Wed,  5 Mar 2025 13:02:25 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4C4D741246;
+	Wed,  5 Mar 2025 13:30:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 04B2F95F
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Mar 2025 13:02:24 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id CD0E295F
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Mar 2025 13:30:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DC35583332
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Mar 2025 13:02:23 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id AFCF24108B
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Mar 2025 13:30:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Q9nloVoCQ-5b for <intel-wired-lan@lists.osuosl.org>;
- Wed,  5 Mar 2025 13:02:23 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.15;
- helo=mgamail.intel.com; envelope-from=faizal.abdul.rahim@linux.intel.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Lwv5VvB91RAm for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  5 Mar 2025 13:30:36 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
+ helo=mgamail.intel.com; envelope-from=martyna.szapar-mudlaw@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 036FF832E6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 036FF832E6
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 036FF832E6
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Mar 2025 13:02:22 +0000 (UTC)
-X-CSE-ConnectionGUID: mBdaKNZ1QMGMr+nYFftzxg==
-X-CSE-MsgGUID: tIvd8ZA0QKaT4u+Td6Tsjg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11363"; a="45795235"
-X-IronPort-AV: E=Sophos;i="6.14,223,1736841600"; d="scan'208";a="45795235"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Mar 2025 05:02:23 -0800
-X-CSE-ConnectionGUID: i6Ozl++kSluBMOfRFUTQ5g==
-X-CSE-MsgGUID: arsaetUXQceVXXNA1GH2IA==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 2994840D7D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2994840D7D
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2994840D7D
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Mar 2025 13:30:35 +0000 (UTC)
+X-CSE-ConnectionGUID: qAWuRUMyQkySWCPZ1Lu0Vg==
+X-CSE-MsgGUID: HGhJnD2qQFuqlIv59eIzpQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11363"; a="53132234"
+X-IronPort-AV: E=Sophos;i="6.14,223,1736841600"; d="scan'208";a="53132234"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Mar 2025 05:30:35 -0800
+X-CSE-ConnectionGUID: DQhfG1J3SgS0CWpqLR1I9Q==
+X-CSE-MsgGUID: pBZISIueQuWngEfuj9HNfg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,223,1736841600"; d="scan'208";a="123277236"
-Received: from mohdfai2-ilbpg12-1.png.intel.com ([10.88.227.73])
- by fmviesa005.fm.intel.com with ESMTP; 05 Mar 2025 05:02:15 -0800
-From: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
-To: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Simon Horman <horms@kernel.org>, Russell King <linux@armlinux.org.uk>,
- Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>, Furong Xu <0x1207@gmail.com>,
- Russell King <rmk+kernel@armlinux.org.uk>,
- Vladimir Oltean <vladimir.oltean@nxp.com>,
- Serge Semin <fancer.lancer@gmail.com>,
- Xiaolei Wang <xiaolei.wang@windriver.com>,
- Suraj Jaiswal <quic_jsuraj@quicinc.com>,
- Kory Maincent <kory.maincent@bootlin.com>, Gal Pressman <gal@nvidia.com>,
- Jesper Nilsson <jesper.nilsson@axis.com>,
- Choong Yong Liang <yong.liang.choong@linux.intel.com>,
- Chwee-Lin Choong <chwee.lin.choong@intel.com>,
- Faizal Rahim <faizal.abdul.rahim@linux.intel.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, bpf@vger.kernel.org
-Date: Wed,  5 Mar 2025 08:00:26 -0500
-Message-Id: <20250305130026.642219-12-faizal.abdul.rahim@linux.intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250305130026.642219-1-faizal.abdul.rahim@linux.intel.com>
-References: <20250305130026.642219-1-faizal.abdul.rahim@linux.intel.com>
+X-IronPort-AV: E=Sophos;i="6.14,223,1736841600"; d="scan'208";a="149448411"
+Received: from mszapar-mobl1.ger.corp.intel.com (HELO [10.245.99.188])
+ ([10.245.99.188])
+ by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Mar 2025 05:30:33 -0800
+Message-ID: <ad9799ed-5313-4787-b982-c8fc82a281a2@linux.intel.com>
+Date: Wed, 5 Mar 2025 14:30:30 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+From: "Szapar-Mudlaw, Martyna" <martyna.szapar-mudlaw@linux.intel.com>
+To: Simon Horman <horms@kernel.org>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+References: <20250226113409.446325-1-mateusz.polchlopek@intel.com>
+ <20250303095405.GQ1615191@kernel.org>
+ <b5e34397-0b81-4132-86d0-498a111cc363@linux.intel.com>
+Content-Language: en-US
+In-Reply-To: <b5e34397-0b81-4132-86d0-498a111cc363@linux.intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1741179744; x=1772715744;
- h=from:to:subject:date:message-id:in-reply-to:references:
- mime-version:content-transfer-encoding;
- bh=BrHOVPMRx5IUbt2TfaXsmHGE8YIjSq6KxkHt4pHZzf0=;
- b=fNvOgfiFPQgZaruMNOEcoBew5bZhoKZhWnV3+dYjGuw891PMH/mnSapQ
- Ix0HKwkCCPupAZldLVWv3B4GaBGsLKPvejTvCNHM2T5rx3MTUon4bbfP+
- WCDOILiRdEOZBnQFBcNg6MUILsajqgTpXREbhV6OjwUGG2YZiTF/0AX3E
- I7/XChl48aXofQm+eGKJ7oVKVAebuT82SHz/W5OQhTVF29tz9qbtJAGaN
- 1gn88hFMLF9Rf4CkyBtqet2ijQEouBo9iamt3KkhZGsIoR7MXykIaN3Wa
- 6izDhnB21gqYCH/LfqrtMsTflLWlg+xQoHWm/7iJ0BHqiIVLsGfi+8ZkJ
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1741181436; x=1772717436;
+ h=message-id:date:mime-version:subject:from:to:cc:
+ references:in-reply-to:content-transfer-encoding;
+ bh=qv6kfjqWgUm1Ww2zop913jEHSJdaLvMGKPpK+c/LYhQ=;
+ b=jGagbmI+di1OP3YE9PLe8LYrgCOgmb5xqX8fXfxHZX5s+VdwaNfxMrKg
+ rdwgKj14814Wvud9Q6o7t28R2/Ij2VMNY0qNpSsa1c5XZSu73DuSeuPH7
+ GYGnJ99c4IXUNtfRmJf387Z/GGgBZIpzSOhn3fjV17IgibTQaFBtMKKPJ
+ rayneZPfLzbEVgDyaubq9Vpg063ZJppVQRODiehyrML+ci7kNyfHYijXI
+ /M4wp64vKXNJAjAsKUwQaAr7KIx9IVRyony3IMVm1oOvZ7gzJpq531nX8
+ agkh7SyeYBVeaQHT2A3FlzQKi88BG8eEE2ShZmc15J7TPPiYXGAWp3koA
+ g==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=fNvOgfiF
-Subject: [Intel-wired-lan] [PATCH iwl-next v8 11/11] igc: add support to get
- frame preemption statistics via ethtool
+ header.a=rsa-sha256 header.s=Intel header.b=jGagbmI+
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1] ice: refactor the Tx
+ scheduler feature
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -134,135 +115,74 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Implemented "ethtool --include-statistics --show-mm" callback for IGC.
 
-Tested preemption scenario to check preemption statistics:
-1) Trigger verification handshake on both boards:
-    $ sudo ethtool --set-mm enp1s0 pmac-enabled on
-    $ sudo ethtool --set-mm enp1s0 tx-enabled on
-    $ sudo ethtool --set-mm enp1s0 verify-enabled on
-2) Set preemptible or express queue in taprio for tx board:
-    $ sudo tc qdisc replace dev enp1s0 parent root handle 100 taprio \
-      num_tc 4 map 3 2 1 0 3 3 3 3 3 3 3 3 3 3 3 3 \
-      queues 1@0 1@1 1@2 1@3 base-time 0 sched-entry S F 100000 \
-      fp E E P P
-3) Send large size packets on preemptible queue
-4) Send small size packets on express queue to preempt packets in
-   preemptible queue
-5) Show preemption statistics on the receiving board:
-   $ ethtool --include-statistics --show-mm enp1s0
-     MAC Merge layer state for enp1s0:
-     pMAC enabled: on
-     TX enabled: on
-     TX active: on
-     TX minimum fragment size: 64
-     RX minimum fragment size: 60
-     Verify enabled: on
-     Verify time: 128
-     Max verify time: 128
-     Verification status: SUCCEEDED
-     Statistics:
-      MACMergeFrameAssErrorCount: 0
-      MACMergeFrameSmdErrorCount: 0
-      MACMergeFrameAssOkCount: 511
-      MACMergeFragCountRx: 764
-      MACMergeFragCountTx: 0
-      MACMergeHoldCount: 0
 
-Co-developed-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Co-developed-by: Chwee-Lin Choong <chwee.lin.choong@intel.com>
-Signed-off-by: Chwee-Lin Choong <chwee.lin.choong@intel.com>
-Signed-off-by: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
----
- drivers/net/ethernet/intel/igc/igc_ethtool.c | 39 ++++++++++++++++++++
- drivers/net/ethernet/intel/igc/igc_regs.h    | 16 ++++++++
- 2 files changed, 55 insertions(+)
+On 3/4/2025 2:43 PM, Szapar-Mudlaw, Martyna wrote:
+> 
+> 
+> On 3/3/2025 10:54 AM, Simon Horman wrote:
+>> On Wed, Feb 26, 2025 at 12:33:56PM +0100, Mateusz Polchlopek wrote:
+>>> Embed ice_get_tx_topo_user_sel() inside the only caller:
+>>> ice_devlink_tx_sched_layers_get().
+>>> Instead of jump from the wrapper to the function that does "get" 
+>>> operation
+>>> it does "get" itself.
+>>>
+>>> Remove unnecessary comment and make usage of str_enabled_disabled()
+>>> in ice_init_tx_topology().
+>>
+>> Hi Mateusz,
+>>
+>> These changes seem reasonable to me.
+>> But I wonder if they could be motivated in the commit message.
+>>
+>> What I mean is, the commit message explains what has been done.
+>> But I think it should explain why it has been done.
+> 
+> Hi Simon,
+> 
+> I'm replying on behalf of Mateusz since he's on leave, and we didn't 
+> want to keep this issue waiting too long.
+> Would such extended commit message make sense and address your concerns?
+> 
+> "Simplify the code by eliminating an unnecessary wrapper function. 
+> Previously, ice_devlink_tx_sched_layers_get() acted as a thin wrapper 
+> around ice_get_tx_topo_user_sel(), adding no real value but increasing 
+> code complexity. Since both functions were only used once, the wrapper 
+> was redundant and contributed approximately 20 lines of unnecessary 
+> code. By directly calling ice_get_tx_topo_user_sel(), improve 
+> readability and reduce function jumps, without altering functionality.
+> Also remove unnecessary comment and make usage of str_enabled_disabled() 
+> in ice_init_tx_topology()."
+> 
+> Thank you,
+> Martyna
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-index fd4b4b332309..1ed08a3fa78b 100644
---- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-@@ -1819,6 +1819,44 @@ static int igc_ethtool_set_mm(struct net_device *netdev,
- 	return igc_tsn_offload_apply(adapter);
- }
- 
-+/**
-+ * igc_ethtool_get_frame_ass_error - Get the frame assembly error count.
-+ * @reg_value: Register value for IGC_PRMEXCPRCNT
-+ * Return: The count of frame assembly errors.
-+ */
-+static u64 igc_ethtool_get_frame_ass_error(u32 reg_value)
-+{
-+	u32 ooo_frame_cnt, ooo_frag_cnt; /* Out of order statistics */
-+	u32 miss_frame_frag_cnt;
-+
-+	ooo_frame_cnt = FIELD_GET(IGC_PRMEXCPRCNT_OOO_FRAME_CNT, reg_value);
-+	ooo_frag_cnt = FIELD_GET(IGC_PRMEXCPRCNT_OOO_FRAG_CNT, reg_value);
-+	miss_frame_frag_cnt = FIELD_GET(IGC_PRMEXCPRCNT_MISS_FRAME_FRAG_CNT, reg_value);
-+
-+	return ooo_frame_cnt + ooo_frag_cnt + miss_frame_frag_cnt;
-+}
-+
-+static u64 igc_ethtool_get_frame_smd_error(u32 reg_value)
-+{
-+	return FIELD_GET(IGC_PRMEXCPRCNT_OOO_SMDC, reg_value);
-+}
-+
-+static void igc_ethtool_get_mm_stats(struct net_device *dev,
-+				     struct ethtool_mm_stats *stats)
-+{
-+	struct igc_adapter *adapter = netdev_priv(dev);
-+	struct igc_hw *hw = &adapter->hw;
-+	u32 reg_value;
-+
-+	reg_value = rd32(IGC_PRMEXCPRCNT);
-+
-+	stats->MACMergeFrameAssErrorCount = igc_ethtool_get_frame_ass_error(reg_value);
-+	stats->MACMergeFrameSmdErrorCount = igc_ethtool_get_frame_smd_error(reg_value);
-+	stats->MACMergeFrameAssOkCount = rd32(IGC_PRMPTDRCNT);
-+	stats->MACMergeFragCountRx = rd32(IGC_PRMEVNTRCNT);
-+	stats->MACMergeFragCountTx = rd32(IGC_PRMEVNTTCNT);
-+}
-+
- static int igc_ethtool_get_link_ksettings(struct net_device *netdev,
- 					  struct ethtool_link_ksettings *cmd)
- {
-@@ -2116,6 +2154,7 @@ static const struct ethtool_ops igc_ethtool_ops = {
- 	.self_test		= igc_ethtool_diag_test,
- 	.get_mm			= igc_ethtool_get_mm,
- 	.set_mm			= igc_ethtool_set_mm,
-+	.get_mm_stats		= igc_ethtool_get_mm_stats,
- };
- 
- void igc_ethtool_set_ops(struct net_device *netdev)
-diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
-index 12ddc5793651..f343c6bfc6be 100644
---- a/drivers/net/ethernet/intel/igc/igc_regs.h
-+++ b/drivers/net/ethernet/intel/igc/igc_regs.h
-@@ -222,6 +222,22 @@
- 
- #define IGC_FTQF(_n)	(0x059E0 + (4 * (_n)))  /* 5-tuple Queue Fltr */
- 
-+/* Time sync registers - preemption statistics */
-+#define IGC_PRMPTDRCNT		0x04284	/* Good RX Preempted Packets */
-+#define IGC_PRMEVNTTCNT		0x04298	/* TX Preemption event counter */
-+#define IGC_PRMEVNTRCNT		0x0429C	/* RX Preemption event counter */
-+
-+ /* Preemption Exception Counter */
-+ #define IGC_PRMEXCPRCNT				0x42A0
-+/* Received out of order packets with SMD-C */
-+#define IGC_PRMEXCPRCNT_OOO_SMDC			0x000000FF
-+/* Received out of order packets with SMD-C and wrong Frame CNT */
-+#define IGC_PRMEXCPRCNT_OOO_FRAME_CNT			0x0000FF00
-+/* Received out of order packets with SMD-C and wrong Frag CNT */
-+#define IGC_PRMEXCPRCNT_OOO_FRAG_CNT			0x00FF0000
-+/* Received packets with SMD-S and wrong Frag CNT and Frame CNT */
-+#define IGC_PRMEXCPRCNT_MISS_FRAME_FRAG_CNT		0xFF000000
-+
- /* Transmit Scheduling Registers */
- #define IGC_TQAVCTRL		0x3570
- #define IGC_TXQCTL(_n)		(0x3344 + 0x4 * (_n))
--- 
-2.34.1
+Sorry, I caused some confusion in the previous version of proposed 
+commit message. Here’s the corrected one:
+
+"Simplify the code by eliminating an unnecessary wrapper function. 
+Previously, ice_devlink_tx_sched_layers_get() acted as a thin wrapper 
+around ice_get_tx_topo_user_sel(), adding no real value but increasing 
+code complexity. Since both functions were only used once, the wrapper 
+was redundant and contributed approximately 20 lines of unnecessary 
+code. Remove ice_get_tx_topo_user_sel() and moves its instructions 
+directly into ice_devlink_tx_sched_layers_get(), improving readability 
+and reducing function jumps, without altering functionality.
+Also remove unnecessary comment and make usage of str_enabled_disabled() 
+in ice_init_tx_topology()."
+
+> 
+>>
+>>> Suggested-by: Marcin Szycik <marcin.szycik@linux.intel.com>
+>>> Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+>>> Reviewed-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+>>> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+>>> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+>>> Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+>>
+>> ...
+>>
+> 
+> 
 
