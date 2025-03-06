@@ -2,124 +2,142 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A86FAA55054
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Mar 2025 17:13:11 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D90CA551AD
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Mar 2025 17:45:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0613C83F1D;
-	Thu,  6 Mar 2025 16:13:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4D63381BD6;
+	Thu,  6 Mar 2025 16:45:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id hWerov6VDBOW; Thu,  6 Mar 2025 16:13:09 +0000 (UTC)
+ id q9z6NrtjYxsa; Thu,  6 Mar 2025 16:45:47 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5537F83F1C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8300181B83
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741277589;
-	bh=SC6AHDf1+LSGmHO4yF1LlfxNEvEUB10IW0zw+9ERfVQ=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=RcQmJPrB9i6BJT4h3hVjwG1M+CGrUNR7P1W1VZZeAeePekmQyrl1J4KkE6Mwo2Cya
-	 jPkT/6u0zpSI4y2wGz8S7DlNDSDFLQE9a+Iq519E6RMipi23cVBCteErMBMVW2TiDp
-	 sg8uaeWEJPaacYS9e7mwM9NPYNOyecv7fDoRrlEEMVuLIJCVQM++cbmOIR2Z9G2xFp
-	 Q+7c9T88rtS07Qu9oT98yXBIIJ33P3gYtUwkF+zODvZS+fDOTl/duuw+RvCVNFVOrc
-	 qFKeiBnEZRUKpJG9/wfSk5A42qerMvyNgt7uoUEC7/rg4mqAq0v4q4I3Uu9W9PYJ83
-	 nLgfGdCuqSTfQ==
+	s=default; t=1741279547;
+	bh=Y1tVqjEsF9yz8as4gUEJSF7TOmyvcDOBt4MIJRvQkVI=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=Pe5Kt/PpJBNv+dwZoxG/jdS4wKGf6q4vddaeY2sDS2eE3vPa4KqrHheluRbMu7mz+
+	 zgf6IYgg7XxGlHZowBfS85zARLMqsQrvZRlW/qvcvTYzqkwBJaibk2lXI22PvdmdOX
+	 QQ6gpyuhBo5jFaKwLAiuEXGKPWcJoO8DmM9ztiERJar6PFRuR1yatsct5o2b1GPzDi
+	 l0KrexbJ92BU66+ITkl5uc96UkuZrAdrYeIlYyzpnuR9vXamezo94SC1exqZdOFZ7a
+	 Zhi+R1PKYn16OmWoZgBoL0s/9pFPAx9QEOFShwUiM0tybZzyrZ5qM8AO83QU7MXzla
+	 JcJrtKUq5GSzA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5537F83F1C;
-	Thu,  6 Mar 2025 16:13:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8300181B83;
+	Thu,  6 Mar 2025 16:45:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 5126295F
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Mar 2025 10:14:19 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id AC27DE2E
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Mar 2025 16:45:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2119640CCF
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Mar 2025 10:14:19 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id A660481B48
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Mar 2025 16:45:45 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id GVhKJeWiPvz0 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  6 Mar 2025 10:14:18 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id nK8gtHOpxH7v for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  6 Mar 2025 16:45:45 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::22d; helo=mail-lj1-x22d.google.com;
- envelope-from=rand.sec96@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 12D6840500
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 12D6840500
-Received: from mail-lj1-x22d.google.com (mail-lj1-x22d.google.com
- [IPv6:2a00:1450:4864:20::22d])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 12D6840500
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Mar 2025 10:14:17 +0000 (UTC)
-Received: by mail-lj1-x22d.google.com with SMTP id
- 38308e7fff4ca-30be983a3b9so4337711fa.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 06 Mar 2025 02:14:17 -0800 (PST)
+ client-ip=2607:f8b0:4864:20::62b; helo=mail-pl1-x62b.google.com;
+ envelope-from=jdamato@fastly.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org B008981B36
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B008981B36
+Received: from mail-pl1-x62b.google.com (mail-pl1-x62b.google.com
+ [IPv6:2607:f8b0:4864:20::62b])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B008981B36
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Mar 2025 16:45:44 +0000 (UTC)
+Received: by mail-pl1-x62b.google.com with SMTP id
+ d9443c01a7336-223fd89d036so18258055ad.1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 06 Mar 2025 08:45:44 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741256056; x=1741860856;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=SC6AHDf1+LSGmHO4yF1LlfxNEvEUB10IW0zw+9ERfVQ=;
- b=Zx5M3nG4eyuDKYbZCHdeS1GmpJudmgPmsRwy2xhq2bayucYHlPZ6oM6myZQW/WIQG7
- 0gYG8yWB6K1R0zGL5dvtHNKlMZrjPEcAPpttgsTghA/LYRbYv5TMkplzxwEoEPcvDJ2w
- zG/gNrVKa8QAqos98NUOfKKeN4dhORkuTrkhq8QvvyzvJZn7sHsIYloN5QL/PdcwLwfO
- 6y2xoG/FO5X3Bij+3ZYsEMEZE2nqVikl4O3ATbsiYuZ3P3hO+IVM5lh4HYZvSe058E0a
- YD9jzoDhDLVZn2fotlIxglpfEC9WPrQmmCFmgM3cItHeM6SfOC0CColf1pY4A0PTaZIx
- 7wig==
+ d=1e100.net; s=20230601; t=1741279544; x=1741884344;
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Y1tVqjEsF9yz8as4gUEJSF7TOmyvcDOBt4MIJRvQkVI=;
+ b=cfM1jEVkhUUsRpk0rX+C85LFiHEwbtaT+Fe2zzqjAmxQLdGQctAjrgRcm3vUYSY/er
+ W6YjwjoTxw/6MJQVDEK6D043Jez3ShCQNfsbb9U5X2fSvImTFi6qePwSJA+spRIf6oJf
+ zR1gzKcQ2N+DDx67mNK6tL7mufAm+pSulSFi6Fhfy72JTKhmX+58CwvINpD2kWuM5oVs
+ LlnOXNl4rYj7mXAMbEpjA1na4YpHPZrM2es5q8SC4iOi4wpSU+ygeIHMB4t3lEsHxw9H
+ VsuecjlFvVnnDgbC2KvOGRs7U7rs738W7Hh20VTbccVkGmIjKDY8TMQ93nCVm610sx+8
+ IJ2w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVf4t43cF1V9D4sEhUwFrBRylz1u6i1DBY0E5F6L1eAw80Vw0bcQwrJsu9K++ko8AVrAG6gxKezPsS0DSbMtxg=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YyoYvt+41cSqms2oE27kxtgYiN8qXo8vp60y6ZpjmJd1YnCemHy
- Q+d8K5XopYMdkUH1/8Qris1xoC36FLBosI6QZFcYKioK/5ooRL1L
-X-Gm-Gg: ASbGncso9AzGGpTJre+LFPSophsUnxnTqGi74C24wAPeikF68p3RX4DAw2av7TQcXFl
- Aawz5Gkg+vq7vCZl5kBQHd0uBZYhGSuhG8QkcJ6YSIfSnnpoq2ufHhWwuIzKZD6ALw/P8ODpNUg
- i63fZjFca7WogTykDMWzefZmgri0tBPVh1WGo3aulNKiFiSNgSBsnyJmC151DkOuYDbXwYm6STE
- 3umtEdM1GqbIY+iuk4WuQ+y1yeFDwgETU/c4G4FxAhBoGLz04EPMk9qNB9tKnOP2cFbiaTFonGZ
- MrBvYB3CLgyAtMGRWn02zgf97RCEVlktCuXukGswyQFpNQNHKpHRFWYfePbgKklEsJfFVv9a66H
- zJ9q12Mj47Lg=
-X-Google-Smtp-Source: AGHT+IHVUL4RmtkhR/oSDlMOZ3ZOLWUDnE3XMBPxWsK2S/UqrYa1tBtOoYQq3Q6pxGdr9M6ejBkxaA==
-X-Received: by 2002:a2e:bc06:0:b0:30b:cd68:b69c with SMTP id
- 38308e7fff4ca-30bd7a1c6admr24523521fa.3.1741256055483; 
- Thu, 06 Mar 2025 02:14:15 -0800 (PST)
-Received: from rand-ubuntu-development.dl.local (mail.confident.ru.
- [85.114.29.218]) by smtp.gmail.com with ESMTPSA id
- 38308e7fff4ca-30be98d09e2sm1550631fa.12.2025.03.06.02.14.15
+ AJvYcCWi1kEp0z7goTmnQpm+4KQdD0YAsc7xErGSOevW/Os1xr+vqNL+iFzsvZvn8mkpKfHJaHB+bhjIskcvGQJEJRY=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yx1YFLQ60FoYfdFAP+T0gk+1hw/d+uxU23+mkqU9Vwn15+UDzOr
+ G2rlnb2EHZ5dRPLoCRqpJKLuBFFVO1GpNWp+ChiAcL/CBUXwD2v58EGsioDl7Bs=
+X-Gm-Gg: ASbGncszDHPvQKwwazGeE9DzL9P0RSIfdVmu/+La38wcyKQ9oRbldmg+Rqhe17HRWm6
+ zb0qcEOaM5cyL6toQODrtQabEhpcAi+KHPnGoLuEzrf/E8hnZOkoxzXp6GgCBdqh9h/La4fNz+q
+ 1EeenZ83MX1fum43VjIxiPNSWYWO7tD/DwVmyGO8S+IVlWMh2h/1s6yUWz/tUJAEmCu2E3Fj6Q9
+ Nqe1WRh4t8se5cB+EZfD7wzyOQx6qx1Gjp2L1PO84IjZKlJwpXsTZns69P1SRpeTAsxFEK3FelL
+ WwEUOvIggx9gd4IIbzieVF1VLFH29fKycJUpeO1Pt3rmSAG/pebJAZMbn8BnKehuu+YYYERpPKB
+ 0oaJ31Ne5VJo=
+X-Google-Smtp-Source: AGHT+IGQhJlPlmoVKTFjSwcpy61urGaNYqp80VZY41flaZiT4qOPtjFv0gmL/biTffVDgOSzy876LQ==
+X-Received: by 2002:a05:6a00:244f:b0:736:5c8e:bab8 with SMTP id
+ d2e1a72fcca58-73682b5510amr13251516b3a.3.1741279543956; 
+ Thu, 06 Mar 2025 08:45:43 -0800 (PST)
+Received: from LQ3V64L9R2 (c-24-6-151-244.hsd1.ca.comcast.net. [24.6.151.244])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-73698452a28sm1570365b3a.78.2025.03.06.08.45.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Mar 2025 02:14:15 -0800 (PST)
-From: Rand Deeb <rand.sec96@gmail.com>
-To: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Thu, 06 Mar 2025 08:45:43 -0800 (PST)
+Date: Thu, 6 Mar 2025 08:45:40 -0800
+From: Joe Damato <jdamato@fastly.com>
+To: florian@bezdeka.de
+Cc: netdev@vger.kernel.org, vitaly.lifshits@intel.com,
+ avigailx.dahan@intel.com, anthony.l.nguyen@intel.com,
+ stable@vger.kernel.org, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
  Andrew Lunn <andrew+netdev@lunn.ch>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+ bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ linux-kernel@vger.kernel.org
+Message-ID: <Z8nRNJ7QmevZrKYZ@LQ3V64L9R2>
+Mail-Followup-To: Joe Damato <jdamato@fastly.com>, florian@bezdeka.de,
+ netdev@vger.kernel.org, vitaly.lifshits@intel.com,
+ avigailx.dahan@intel.com, anthony.l.nguyen@intel.com,
+ stable@vger.kernel.org, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
  "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>,
- intel-wired-lan@lists.osuosl.org (moderated list:INTEL ETHERNET DRIVERS),
- netdev@vger.kernel.org (open list:NETWORKING DRIVERS),
- linux-kernel@vger.kernel.org (open list)
-Cc: deeb.rand@confident.ru, lvc-project@linuxtesting.org,
- voskresenski.stanislav@confident.ru, Rand Deeb <rand.sec96@gmail.com>
-Date: Thu,  6 Mar 2025 13:12:00 +0300
-Message-Id: <20250306101201.1938376-1-rand.sec96@gmail.com>
-X-Mailer: git-send-email 2.34.1
+ Jakub Kicinski <kuba@kernel.org>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+ bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ linux-kernel@vger.kernel.org
+References: <20250305180901.128286-1-jdamato@fastly.com>
+ <796726995fe2c0e895188862321a0de8@bezdeka.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Approved-At: Thu, 06 Mar 2025 16:13:06 +0000
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <796726995fe2c0e895188862321a0de8@bezdeka.de>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1741256056; x=1741860856; darn=lists.osuosl.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=SC6AHDf1+LSGmHO4yF1LlfxNEvEUB10IW0zw+9ERfVQ=;
- b=GyxW/AjQQY4plUGD5qSQAj6c33fwJzCuBGipBp5wH5TvJzSGVzXEe4T89vZ30nPbVU
- P3xeHktf9GkK6g8E9Ng19fWWwMpCO/bzAiDS+2YSOE1WHaGOxnKA4DmO5ivnHLmzrD7u
- QCRbxbwoi5vPfEYpC8y6PxEqmOzX0ZS9inW8JHK3/JFExhZ/m8H2nRlnCjuQE3oEzdPy
- gsLqXLDwkEtcAfm18/CTezM9ne970dMGecbJC2KJOvO4/ylfsG7/e9hCsN40ozvyN9WW
- b4l1nnrNBYsNsbYUeqJTxggj86l1oJ/+EJPrlHCaE+1lM4cHRQDqQiNrXcm1pnfNxYSC
- UP1A==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=GyxW/AjQ
-Subject: [Intel-wired-lan] [PATCH] ixgbe: Fix unreachable retry logic in
- combined and byte I2C write functions
+ d=fastly.com; s=google; t=1741279544; x=1741884344; darn=lists.osuosl.org;
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Y1tVqjEsF9yz8as4gUEJSF7TOmyvcDOBt4MIJRvQkVI=;
+ b=XdLqIqZHPeT4bpkSAa2lWbsBuftV4sdN2D1Qa6g7Gz8imLUIX6Tt1q9IWIkE6Za3T/
+ l04b8UXP7RgBs3u3ZuQ0SkOKo2cjUVwewDH0ld4mOXbwU/l/lRtPcjWoi/4jsrtSckqX
+ vBXtMfR3RV+AcF8+enkd89GcN7sbxU3a9v7po=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=fastly.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=fastly.com header.i=@fastly.com header.a=rsa-sha256
+ header.s=google header.b=XdLqIqZH
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] igc: Fix XSK queue NAPI ID
+ mapping
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -135,46 +153,109 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The current implementation of `ixgbe_write_i2c_combined_generic_int` and
-`ixgbe_write_i2c_byte_generic_int` sets `max_retry` to `1`, which makes
-the condition `retry < max_retry` always evaluate to `false`. This renders
-the retry mechanism ineffective, as the debug message and retry logic are
-never executed.
+On Thu, Mar 06, 2025 at 05:27:38PM +0100, florian@bezdeka.de wrote:
+> Hi Joe,
+> 
+> On 2025-03-05 19:09, Joe Damato wrote:
+> > In commit b65969856d4f ("igc: Link queues to NAPI instances"), the XSK
+> > queues were incorrectly unmapped from their NAPI instances. After
+> > discussion on the mailing list and the introduction of a test to codify
+> > the expected behavior, we can see that the unmapping causes the
+> > check_xsk test to fail:
+> > 
+> > NETIF=enp86s0 ./tools/testing/selftests/drivers/net/queues.py
+> > 
+> > [...]
+> >   # Check|     ksft_eq(q.get('xsk', None), {},
+> >   # Check failed None != {} xsk attr on queue we configured
+> >   not ok 4 queues.check_xsk
+> > 
+> > After this commit, the test passes:
+> > 
+> >   ok 4 queues.check_xsk
+> > 
+> > Note that the test itself is only in net-next, so I tested this change
+> > by applying it to my local net-next tree, booting, and running the test.
+> > 
+> > Cc: stable@vger.kernel.org
+> > Fixes: b65969856d4f ("igc: Link queues to NAPI instances")
+> > Signed-off-by: Joe Damato <jdamato@fastly.com>
+> > ---
+> >  drivers/net/ethernet/intel/igc/igc_xdp.c | 2 --
+> >  1 file changed, 2 deletions(-)
+> > 
+> > diff --git a/drivers/net/ethernet/intel/igc/igc_xdp.c
+> > b/drivers/net/ethernet/intel/igc/igc_xdp.c
+> > index 13bbd3346e01..869815f48ac1 100644
+> > --- a/drivers/net/ethernet/intel/igc/igc_xdp.c
+> > +++ b/drivers/net/ethernet/intel/igc/igc_xdp.c
+> > @@ -86,7 +86,6 @@ static int igc_xdp_enable_pool(struct igc_adapter
+> > *adapter,
+> >  		napi_disable(napi);
+> >  	}
+> > 
+> > -	igc_set_queue_napi(adapter, queue_id, NULL);
+> >  	set_bit(IGC_RING_FLAG_AF_XDP_ZC, &rx_ring->flags);
+> >  	set_bit(IGC_RING_FLAG_AF_XDP_ZC, &tx_ring->flags);
+> > 
+> > @@ -136,7 +135,6 @@ static int igc_xdp_disable_pool(struct igc_adapter
+> > *adapter, u16 queue_id)
+> >  	xsk_pool_dma_unmap(pool, IGC_RX_DMA_ATTR);
+> >  	clear_bit(IGC_RING_FLAG_AF_XDP_ZC, &rx_ring->flags);
+> >  	clear_bit(IGC_RING_FLAG_AF_XDP_ZC, &tx_ring->flags);
+> > -	igc_set_queue_napi(adapter, queue_id, napi);
+> > 
+> >  	if (needs_reset) {
+> >  		napi_enable(napi);
+> 
+> That doesn't look correct to me. You removed both invocations of
+> igc_set_queue_napi() from igc_xdp.c. Where is the napi mapping now
+> done (in case XDP is enabled)?
 
-This patch increases `max_retry` to `3` in both functions, aligning them
-with the retry logic in `ixgbe_read_i2c_combined_generic_int`. This
-ensures that the retry mechanism functions as intended, improving
-robustness in case of I2C write failures.
+igc_set_queue_napi is called when the queues are created (igc_up,
+__igc_open). When the queues are created they'll be linked. Whether
+or not XDP is enabled does not affect the queues being linked.
 
-Found by Linux Verification Center (linuxtesting.org) with SVACE.
+The test added for this (which I mentioned in the commit message)
+confirms that this is the correct behavior, as does the
+documentation in Documentation/netlink/specs/netdev.yaml.
 
-Signed-off-by: Rand Deeb <rand.sec96@gmail.com>
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+See commit df524c8f5771 ("netdev-genl: Add an XSK attribute to
+queues").
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
-index 0a03a8bb5f88..2d54828bdfbb 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
-@@ -167,7 +167,7 @@ int ixgbe_write_i2c_combined_generic_int(struct ixgbe_hw *hw, u8 addr,
- 					 u16 reg, u16 val, bool lock)
- {
- 	u32 swfw_mask = hw->phy.phy_semaphore_mask;
--	int max_retry = 1;
-+	int max_retry = 3;
- 	int retry = 0;
- 	u8 reg_high;
- 	u8 csum;
-@@ -2285,7 +2285,7 @@ static int ixgbe_write_i2c_byte_generic_int(struct ixgbe_hw *hw, u8 byte_offset,
- 					    u8 dev_addr, u8 data, bool lock)
- {
- 	u32 swfw_mask = hw->phy.phy_semaphore_mask;
--	u32 max_retry = 1;
-+	u32 max_retry = 3;
- 	u32 retry = 0;
- 	int status;
- 
--- 
-2.34.1
+> To me it seems flipped. igc_xdp_enable_pool() should do the mapping
+> (previously did the unmapping) and igc_xdp_disable_pool() should do
+> the unmapping (previously did the mapping). No?
 
+In igc, all queues get their NAPIs mapped in igc_up or __igc_open. I
+had mistakenly added code to remove the mapping for XDP because I
+was under the impression that NAPIs should not be mapped for XDP
+queues. See the commit under fixes.
+
+This was incorrect, so this commit removes the unmapping and
+corrects the behavior.
+
+With this change, all queues have their NAPIs mapped (whether or not
+they are used for AF_XDP) and is the agreed upon behavior based on
+prior conversations on the list and the documentation I mentioned
+above.
+
+> Btw: I got this patch via stable. It doesn't make sense to send it
+> to stable where this patch does not apply.
+
+Maybe I made a mistake, but as far as I can tell the commit under
+fixes is in 6.14-rc*:
+
+$ git tag --contains b65969856d4f
+v6.14-rc1
+v6.14-rc2
+v6.14-rc3
+v6.14-rc4
+
+So, I think this change is:
+  - Correct
+  - Definitely a "fixes" and should go to iwl-net
+  - But maybe does not need to CC stable ?
+
+If the Intel folks would like me to resend with some change please
+let me know.
