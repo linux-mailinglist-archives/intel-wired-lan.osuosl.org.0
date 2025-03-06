@@ -1,123 +1,206 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3760FA53F3F
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Mar 2025 01:41:29 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 03A40A53F45
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Mar 2025 01:43:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D9FD58156B;
-	Thu,  6 Mar 2025 00:41:27 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9F63482D40;
+	Thu,  6 Mar 2025 00:43:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id WAVeZr_HG5Vp; Thu,  6 Mar 2025 00:41:27 +0000 (UTC)
+ id 07TnwZTEiCfo; Thu,  6 Mar 2025 00:43:16 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1D71082C75
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4D1C282D0C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741221687;
-	bh=KJS4vIme2XRYo7gYissfnQCjryFp+JUtXU/dFEi218Q=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1741221796;
+	bh=rt0F4uCjPAszHJEWm9ube4bUlBcoomKxFSCmspLyAyk=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=R6hLv4RThekGuG7BkIWaWJIUVMVLQJFRB8Tt4ZwczaRZmXZLIY5VOapGW7tn0M6xI
-	 l2e7ZvaCcf4vb8INkL85VJVGEFUuECMsmINPjX9pkqL4SEd0yBoELtsw9rObZG4c8P
-	 LCuE/BfTWBu1lEt9/HxscPXAtMYv1PRJHtO2FKwPNjf0EC4GuQJj6pQrqpSg/Bzum2
-	 wo8I6Knir1q9JjdQXZKIxuM3oG7Y0LV2Jt+RrYa9w/tpH8PePHD2k2zM+mEOJmVY6v
-	 ifT2q1PXwCQZ115foDXQXNrPvni4JrWz5AQcBJxXIROVN4932ojjLUR1vahiiEZrbC
-	 74ViZVl9Ea3Qg==
+	b=YdG3RH0BAeMUUPQLC/AOvcG9XUFVZJlOEklndwKkpTE7VxVcJtC4zL/h5IlYxOjzH
+	 i7sWm3wNLPi07aJWBqD7TOQT/SWW9VZVnZPyspaqHqxxS9BGc9tWk20NfibxZVMSrF
+	 9ddtQcP4kR8ZeCRkjGvmbS+oUT8hF0IMfFscnlRdSPacx/vP3U/PmTZNw0UCcLjubL
+	 v4MZ1XPIbnvk5KVJeyiKjXJWCwKW8wcHKbfSvhADh0Y2D0WHmtfdYOf9idvm3U6qU3
+	 9kQ4ndxb8qEXjp/43ccLSK4bddTKa/62kze2KibyFopGXlAVhJpGfzjN+e5FUrlJt1
+	 UuemTvhaIrygw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1D71082C75;
-	Thu,  6 Mar 2025 00:41:27 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4D1C282D0C;
+	Thu,  6 Mar 2025 00:43:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 5C6F3E2E
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Mar 2025 00:41:24 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id A1F80E2E
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Mar 2025 00:43:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2EBC4404C7
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Mar 2025 00:41:24 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8E7C040002
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Mar 2025 00:43:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2nmG2rIfPW3X for <intel-wired-lan@lists.osuosl.org>;
- Thu,  6 Mar 2025 00:41:23 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::633; helo=mail-pl1-x633.google.com;
- envelope-from=bookyungwook@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 626E0402FA
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 626E0402FA
-Received: from mail-pl1-x633.google.com (mail-pl1-x633.google.com
- [IPv6:2607:f8b0:4864:20::633])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 626E0402FA
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Mar 2025 00:41:23 +0000 (UTC)
-Received: by mail-pl1-x633.google.com with SMTP id
- d9443c01a7336-22398e09e39so740275ad.3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 05 Mar 2025 16:41:23 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741221682; x=1741826482;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=KJS4vIme2XRYo7gYissfnQCjryFp+JUtXU/dFEi218Q=;
- b=Ag3HYizuEbPB+Uo36KJXqR8EEKOnKtZ7X4Q2EvhJQ0kNIkW9cUp3AahAafT6RZa5gy
- cpfvkMTEkTtm0+IKv92wmPWIoKXPOH8HXM0wCHeR5cyVvcqRqk1uyLwnN0HaTYPPsKY2
- j438z0SbD4FHuQ0kJJi2XmHja7hkphu4daIWOQC4N5QrkLiF7VmNw15rZpiKw2rWkcCF
- rk5BNSCmrc2GQzjFtm8HQsYzt714sfXA79HkIWKHFsHBO3qY99K0QHzUF4pALwTt8Os+
- sHeoul5wi/RdHaeW4eBgu/jmOB3y9m5B2ENaeyNTCvJLU61gPqF2bnjUjJB+6nurnnpS
- JNjw==
-X-Gm-Message-State: AOJu0YxPoo24yTEV44/L0UXTJuL80sOreZx7NmymtFv2iRwxndDSRZ9t
- 0B302jxDECXJeNxi9I3hhaC5T3Gx/qSlGUEco/Um2bpV1PayKTIj
-X-Gm-Gg: ASbGnct4R1AxDDYdPeWufciEH27sl4HK5GgDHOxg08AecU8l6+CPpDrJRti+ak2X2Fd
- /an8kTYyb+k8XTpmMjENWXtU4iDTezmnXFHU/9BpvXaS3VzJ3IT3Itm51UOUqJ3WJxE2GZamX2x
- E9PpIGqgwKOJqYhrdcQe3A/YyKXNUP4SYAIYAn5GhAjpQ5YYb9yvfVAp3TKNQwCF0FhYNCAeVWX
- RxLbAmyZcr4S5AeHRxGP7tWiVa5dpDqUq6Q9gWs3Yuw5H9pWeC3WNSIel0jnZMimcc2O0869hAW
- WIrFDbJTNydrYD323nksI0HPNA1Rq66milDUInUnxdYYXDJ+A6HklXA=
-X-Google-Smtp-Source: AGHT+IGestbbM3d5yblSv9oj4OnWHTUe94tkAcFNcUGU/J1qkhblIgnziBVwj+pUtT2CkF8KuEgE9Q==
-X-Received: by 2002:a05:6a00:148a:b0:72f:590f:2859 with SMTP id
- d2e1a72fcca58-73682bb910cmr7917355b3a.13.1741221682499; 
- Wed, 05 Mar 2025 16:41:22 -0800 (PST)
-Received: from [147.47.189.163] ([147.47.189.163])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-73698538751sm58870b3a.170.2025.03.05.16.41.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 05 Mar 2025 16:41:21 -0800 (PST)
-Message-ID: <139f9e25-160c-48da-86ae-4a14bb36dbf5@gmail.com>
-Date: Thu, 6 Mar 2025 09:41:19 +0900
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id N-JR7h5aOiT9 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  6 Mar 2025 00:43:12 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=52.101.71.17;
+ helo=as8pr03cu001.outbound.protection.outlook.com;
+ envelope-from=vladimir.oltean@nxp.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org E9B1440167
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E9B1440167
+Received: from AS8PR03CU001.outbound.protection.outlook.com
+ (mail-westeuropeazon11012017.outbound.protection.outlook.com [52.101.71.17])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E9B1440167
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Mar 2025 00:43:11 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Iqq3zPi2Zh5GDWhgT77cxU7hnMWSFgZ9OE29ZXNerSr8k1mu3kU73VTUqjvNhdZj4zQLmFFwgpBVTUUJ/XhpbhBadrGe6rwS0hJgYXIvCLJ4BfU4WeWzyuPYDL152J2WvawnQ6V6Lv6ec1Ai1/GWE9+j5Oc64rDdsOmt/sAOh5GuL99kSBIAKn8JTFikSzQZf7ZPDG56ZZd+Gu5jf6+i414Ieq7K/1FrHtYMaTggkx3P2ZPgWkfZT3RMP4CFVD/Y5T/8dXcztAP0cDk2hACMgCS64cMIr0B+tLo+qVuRgJIDLel6oWI36Syv2tOreWHccUfeCpp9n8kRisbnKdSueg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=rt0F4uCjPAszHJEWm9ube4bUlBcoomKxFSCmspLyAyk=;
+ b=PhJqWOIqSmVxLUxgl6+CSl7zVrBDRVtU4OzDDqHxfo5CjhWomvnSPNTMAIr3TmipLaewg0oNBTaNU/CBDpjChQHJ3igsCS4kspWMaBZymhMcuj4heV8TpfaGDDRIdIs10miN2Gn13VF2IeTRZUJbCQ5yGNv0Gifuwjlgaw3xnrIDY/libcRIIGHw5Ec0EtVW42nMRkK4jv0/hj7A9SbMHpyvbLT4pCstY0XXWP2uAiTVEmic85YETSU3dE70/30fHceOScE3bdR7Q4KNBnT2wpueHcLJ1ZX8nitQtWSLsg2pVNe9BlfNdsA+dOpFxdnfEmzlk2s5OsYsyZWmgexjXQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+Received: from AM8PR04MB7779.eurprd04.prod.outlook.com (2603:10a6:20b:24b::14)
+ by VI0PR04MB11071.eurprd04.prod.outlook.com (2603:10a6:800:262::16)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8489.25; Thu, 6 Mar
+ 2025 00:43:05 +0000
+Received: from AM8PR04MB7779.eurprd04.prod.outlook.com
+ ([fe80::7417:d17f:8d97:44d2]) by AM8PR04MB7779.eurprd04.prod.outlook.com
+ ([fe80::7417:d17f:8d97:44d2%6]) with mapi id 15.20.8511.017; Thu, 6 Mar 2025
+ 00:43:05 +0000
+Date: Thu, 6 Mar 2025 02:43:01 +0200
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+To: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Simon Horman <horms@kernel.org>, Russell King <linux@armlinux.org.uk>,
+ Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, Furong Xu <0x1207@gmail.com>,
+ Russell King <rmk+kernel@armlinux.org.uk>,
+ Serge Semin <fancer.lancer@gmail.com>,
+ Xiaolei Wang <xiaolei.wang@windriver.com>,
+ Suraj Jaiswal <quic_jsuraj@quicinc.com>,
+ Kory Maincent <kory.maincent@bootlin.com>, Gal Pressman <gal@nvidia.com>,
+ Jesper Nilsson <jesper.nilsson@axis.com>,
+ Choong Yong Liang <yong.liang.choong@linux.intel.com>,
+ Chwee-Lin Choong <chwee.lin.choong@intel.com>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, bpf@vger.kernel.org
+Message-ID: <20250306004301.evw34gqoyll36mso@skbuf>
+References: <20250305130026.642219-1-faizal.abdul.rahim@linux.intel.com>
+ <20250305130026.642219-1-faizal.abdul.rahim@linux.intel.com>
+ <20250305130026.642219-9-faizal.abdul.rahim@linux.intel.com>
+ <20250305130026.642219-9-faizal.abdul.rahim@linux.intel.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250305130026.642219-9-faizal.abdul.rahim@linux.intel.com>
+ <20250305130026.642219-9-faizal.abdul.rahim@linux.intel.com>
+X-ClientProxiedBy: VI1P195CA0057.EURP195.PROD.OUTLOOK.COM
+ (2603:10a6:802:5a::46) To AM8PR04MB7779.eurprd04.prod.outlook.com
+ (2603:10a6:20b:24b::14)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>,
- "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>
-Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
-References: <ffc91764-1142-4ba2-91b6-8c773f6f7095@gmail.com>
- <aba0a368-b2cf-42bf-b2b5-eb09779fb214@intel.com>
- <SJ0PR11MB58663C4BEE68529970784114E5CB2@SJ0PR11MB5866.namprd11.prod.outlook.com>
-Content-Language: en-US
-From: Kyungwook Boo <bookyungwook@gmail.com>
-In-Reply-To: <SJ0PR11MB58663C4BEE68529970784114E5CB2@SJ0PR11MB5866.namprd11.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM8PR04MB7779:EE_|VI0PR04MB11071:EE_
+X-MS-Office365-Filtering-Correlation-Id: 5240df97-70a7-4de8-1a9c-08dd5c47dba6
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|366016|7416014|376014|7053199007; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?68tBHlDxL4s2y+3m5LpjYONubCrqmxVCqwqhcnCkzODOIjMjBISLZciRv8UV?=
+ =?us-ascii?Q?HN2XrN4qaRX88EJFNSufQYmk9Mqe1SRIC52rU9Br9WvTsMHJy3AMTxhaH0Wr?=
+ =?us-ascii?Q?DXFxuUnQYO7DGv/fUBrLUfSfO9Q0w1rwGBlQ5BNzHaZ9IZPKj0vykpNPsoNf?=
+ =?us-ascii?Q?hpbY6gsTSKCv12/OXarPVgLHpDFsNzjnUPSr3f/3Qu0ujPpXykNMfyfdPQpV?=
+ =?us-ascii?Q?AC+6weOhW8cJv0qaSMdjw90fuFIOOrYrayWZrYLbv0ASdWhnA/jhdGFm6pCa?=
+ =?us-ascii?Q?qRHCS5Vo1HPNyhUsulW6Hkgec5WN87LEOcOn6nybsMQbhn/458gbSHeuXYxY?=
+ =?us-ascii?Q?NRuxoc+dtHZB8m0MDdIbNFdayhSq7b/oReFop2jWsyYHCLUDGHeFY5qGZ8UC?=
+ =?us-ascii?Q?Cq36yJOfyHz9LgHnDArNSfjnAYyawVZVwRE1ZqnJkxqWtYEBHJn6XjgI3Nt/?=
+ =?us-ascii?Q?AUPZktivitVuZyCVaISeVggz/GpLL/Q37kfW3U4Ns96NtbSNwRVtwsSBUXQ3?=
+ =?us-ascii?Q?hGNJWb/uisgyTyYY/b2aAz9QCeMnNjov7h2pD3eFM1J9doJKO9SeFkbkUcdq?=
+ =?us-ascii?Q?gF9feSY/nQ6Tdz2hm9WWAgrB86ATIlbCWUu7fGrTlH1wAFT4J8hfu5lbQXS9?=
+ =?us-ascii?Q?QyPW5mufeZJw+LYijjGn0+WOQxYs5QsYBsoSd6w1aaTd7a+pqCfohHYRWR1m?=
+ =?us-ascii?Q?l3PR9j3bqRD9WH8omrpjjqAos03vG2EBsnkNzsyoAsarUFvcVOsMPmOuTDTn?=
+ =?us-ascii?Q?zq/fV21P8NT5U3SBlut7dopfwKqpXD71qFG5c9bJB16pqZedJcVFU0iMX2u0?=
+ =?us-ascii?Q?h8eu+4fhNcQ2IkVhLC4Z5xMJf0/7EKqGte/QE32wfwhMSOgjsfE++otwyhJZ?=
+ =?us-ascii?Q?5wrVh0zxhPYki3ke1YPhy2q15OPgR6wgphzTLnyO0eBP8N0Uod1jckhgiH6c?=
+ =?us-ascii?Q?HXVRB4okXH5bLcDWhH0Xsr529pEw61eSgBJkUcMYXisvykv2myxv/qLqPAuB?=
+ =?us-ascii?Q?kAnrT2HgCaaDbed4exCkz2NPlNdQsmM8CH4Qj+UbhNQGhlFWGoUjTScdCGAp?=
+ =?us-ascii?Q?3sffzwsz7JuH2xRKohFKbFu0f4RnfVNQqUJ5OE7VBpyc/32b63sKJNbGq66s?=
+ =?us-ascii?Q?U2ZLnJqGKV1eCZDDfK6OiafhsoxjvHvQzBVVGWIqQq/43E0zirrXzMZXLgFR?=
+ =?us-ascii?Q?hihy6htbiQFiYXg9Y9x46R+3QRy/YnXppNHX7CShx83j2TWXkhuS68o07N4b?=
+ =?us-ascii?Q?A2aZQ0rn+JnaVEK1i0Ulp92He+mN/j7l6Si/Z3c7i9L/Qcs8kaAXFjD2d0fj?=
+ =?us-ascii?Q?7dQLAHSRBU53lGM+/xLrpUlvPF/UkbcEOtz2FxwUxtwUtPT3Wwobw8ouILTI?=
+ =?us-ascii?Q?eJ2PTRXBiCLysWllKYg01us+8yNI?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:AM8PR04MB7779.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(7416014)(376014)(7053199007); DIR:OUT;
+ SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Woytg/G2yfArt2O/I0nM0xXgqFARRLg1som9N3i7hFckZDBxs3V8zw5WHtFc?=
+ =?us-ascii?Q?EeKwEYYJTt/arew79nmAZePYiQ4V3dzj9Nq40BD73No/8YUEgRH03NFnzRKK?=
+ =?us-ascii?Q?l7dlyV8qwpVVsVLiFTZWKCp46g+2qXnOfrMIU+qk39QGq0o2BWxfb/9pC+Ca?=
+ =?us-ascii?Q?uZuboIiU6y/ZGv23unChYvpFeZ/QC35NumaLMcBTIiW8bCfXEgmHQMm/sgck?=
+ =?us-ascii?Q?zKOHv8Imp8638uBYZWrb6/F0J+FGdfbtMsmwk2W6i/MI59DrPfaj//1Dtasc?=
+ =?us-ascii?Q?LIVTmmcIg7PIIgVfLnZnCLKzOAiATYbNZ+crDs45htMrtdvE1DjGUVXCxLbd?=
+ =?us-ascii?Q?5Wf+lj30AKsJMWr3+TaMNSYTcR8FxBrHx3GzdAthDr05ghex6g0mco/UDqxB?=
+ =?us-ascii?Q?KQMDcw7yKLSiTBz3oCG3uwJSBXcmJOy1K/uZmdfayqc+6SVx1BUZWB1EBEd6?=
+ =?us-ascii?Q?zOY5KJpGMyINkbXG6Ljx+dzNtfsCtRQ3TzROzr2KdDCVUzmjl0YQ3WSi66Hi?=
+ =?us-ascii?Q?afSThTX4vhLWeu/kbK+keaGGeRXBvxGGgBUuy54SH3PmsYWKyyGnAkTJt2Yn?=
+ =?us-ascii?Q?8rmz1FmFFXVrvyUwBpl+e4CkGijBRotzhF5tQhPs4ak078sXv0w53MnZP4ax?=
+ =?us-ascii?Q?gS5/jpH5k7FRiwhOu6A4l5BahLALek9CTewhMaYcwQC0ghg78D+L1XB6IEPb?=
+ =?us-ascii?Q?ZGHBGufPfmrqZR/Pmd6mgI7WCikMIhERXlo6JEnHUk1ma7IMkZnUYx8yS8O6?=
+ =?us-ascii?Q?ygLdMCoR2VWoIYajlOC2+Sm2OxI2nfZhvqUdNxlke8DmN9sYIMcWXjhs/Nvo?=
+ =?us-ascii?Q?UfhmE6H2NF3m0N+7Bc/033e6HvzlespeQ7xNkHhd5DZoOEAM24TN52Vyp9Yu?=
+ =?us-ascii?Q?eV3mYa6X3u+nsdruMhObaME/ozK7XtbtdTUgCWDuTL4zzwMHaLVPfogyUT74?=
+ =?us-ascii?Q?n0elFz2QeKfzII4jJU1i8KnMgAWDIPscGqlZynrtbvvdPjCQeaaCwsEoh5UH?=
+ =?us-ascii?Q?NlYoxSdAxk+TkBJU6ExXJE9zTqcAUrNEaMsIhaom2GBPylMl+EK8Gt8Hak0i?=
+ =?us-ascii?Q?s2DRP6crLcN7vrxd4RBHZTkd9vbWrruG9/rB2QLPtth3Xmjr2MaPJrGe3Gu6?=
+ =?us-ascii?Q?+vH49NkOSWI57LWMjgeFK6IGulOtfNZ7s8hg49CLrE1mxqSGBj745B3GHt/U?=
+ =?us-ascii?Q?PU5HNbb2SPWWOhZS6ZVMvfNmej+iRSX14Emd342npoP7PSeOP1XAuTOzZlPD?=
+ =?us-ascii?Q?8cNjPcxkFwOljh+ud19fUhvLfbm3cXgVKYQLEmzrXs7L8lxThdxbxBl/p36G?=
+ =?us-ascii?Q?n+68JJuseIQyjkIntjqaO6Mpg4HIyJmNCh31R+WtLbL7DsvVxd40e8B0Clc7?=
+ =?us-ascii?Q?bbEjvW+CCQzdeeVzEoESaIPuhEtyjUGHKU28mDBeG7D/xDUg1s+nJzJpTg5w?=
+ =?us-ascii?Q?DCK9ZUrIZ9WQCJmFaWYR9Kb8BPxnZsjISfJgie0fQzrGSbI8K01gsW7ZWKa0?=
+ =?us-ascii?Q?j/v3c4wy1Oi2TLPb8733rt1+y15LiFIstfwRzSN0Xnu7T22wKXq8NaM0jH/1?=
+ =?us-ascii?Q?IC3ISF6zL6rb3LX+OqZffef8HaQpUsGzNVoxTKIXnmornAS2ubu14oGdm4EM?=
+ =?us-ascii?Q?EA=3D=3D?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5240df97-70a7-4de8-1a9c-08dd5c47dba6
+X-MS-Exchange-CrossTenant-AuthSource: AM8PR04MB7779.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Mar 2025 00:43:05.5868 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: muHbIc6b13iLTx7zl2obcgKKJnwa41mgf6kTSE6lcaR9C8jYY6WcSLm5i2rzsqck5LniFt9PG45TmRx8lXD8uA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI0PR04MB11071
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1741221682; x=1741826482; darn=lists.osuosl.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=KJS4vIme2XRYo7gYissfnQCjryFp+JUtXU/dFEi218Q=;
- b=CbSkJ/fNKnR7r/WfuZNQnww/3qdYw1iTF5GoCzxec1Tg8jozw5ONrkPD36f0prhwuw
- 6gyg0DmsydgMGvj4Ea0fjogJB0IEwro3xImSxePQreTCEH9W5UOE+szu6FgICoNQPF0L
- EbU0brbfFA4eHpL46kLlZxgrEjBzX+bidGvnPPuAcZt4U3mPibL0QiQEqJg4CQBYDTW3
- DNJg3R+ylKc+GnDSMkvd1wUM6T12eWCM/tV32lx1n6OXOCUa/tjcoXnUb3jd0sYw+hKJ
- c9JAMNHCQP/X2ysp4/E/CZAOHqfdomhkK3KkgGIJ+QIQ8x8eej4cJeYW425y2j2940C0
- ApUw==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=nxp.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rt0F4uCjPAszHJEWm9ube4bUlBcoomKxFSCmspLyAyk=;
+ b=mVw2WhsJeTl+t5aBYi9iN6zn86pvddb6k9Qhr4LcbL5xB9F6CHbIORh17OqSOzEfHUj6ylD4NTh1Ma55MqOaPHOCNeHHTTo/d38UxWhODVKGZZRl6Kz9LTf4SjQPz7+9x9nY3/niSK2VYCmEjaUeRNOLi2wAOsezBjWl9YxO92Btc7DNl/MmRz5ZgXs6xvMN77Mz60DMBjCbIwwkDrV26iiDR13tBUbJ0YDy1LsuBcCy0Cb4Oz8764R7SetbA0gOBjY1eUOZ05BjA2MNe4rZc77Xh4JfQa/+sA3XD1pJHjnVfTFkF9L/lq9ENRvdmO7qAV92T0/qIOU/ayfWeDyc+A==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=CbSkJ/fN
-Subject: Re: [Intel-wired-lan] MMIO write access to an invalid page in
- i40e_clear_hw()
+ header.from=nxp.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=nxp.com header.i=@nxp.com header.a=rsa-sha256
+ header.s=selector1 header.b=mVw2WhsJ
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v8 08/11] igc: add support to
+ set tx-min-frag-size
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -133,62 +216,198 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 25. 3. 5. 21:11, Loktionov, Aleksandr wrote:
+On Wed, Mar 05, 2025 at 08:00:23AM -0500, Faizal Rahim wrote:
+> Add support to set tx-min-frag-size via set_mm callback in igc.
+> Increase the max limit of tx-ming-frag-size in ethtool from 252 to 256
+> since i225/6 value range is 64, 128, 192 and 256.
 > 
+> Co-developed-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+> Signed-off-by: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
+> ---
+>  drivers/net/ethernet/intel/igc/igc.h         |  1 +
+>  drivers/net/ethernet/intel/igc/igc_defines.h |  1 +
+>  drivers/net/ethernet/intel/igc/igc_ethtool.c |  5 +++
+>  drivers/net/ethernet/intel/igc/igc_tsn.c     | 37 ++++++++++++++++++--
+>  drivers/net/ethernet/intel/igc/igc_tsn.h     |  2 +-
+>  net/ethtool/mm.c                             |  2 +-
+>  6 files changed, 43 insertions(+), 5 deletions(-)
 > 
->> -----Original Message-----
->> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
->> Przemek Kitszel
->> Sent: Wednesday, March 5, 2025 11:27 AM
->> To: Kyungwook Boo <bookyungwook@gmail.com>
->> Cc: intel-wired-lan@lists.osuosl.org; linux-kernel@vger.kernel.org; Nguyen,
->> Anthony L <anthony.l.nguyen@intel.com>
->> Subject: Re: [Intel-wired-lan] MMIO write access to an invalid page in
->> i40e_clear_hw()
->>
->> On 3/3/25 11:19, Kyungwook Boo wrote:
->>> Hello,
->>>
->>> It seems that there are invalid page MMIO write access in
->>> i40e_clear_hw()
->>
->> Hi,
->>
->> is this something that actually occurred, or just a theoretical bug?
->> (depending on that we will apply it to different tree)
->>
->> please send a proper patch anyway, as it looks legit to don't go bananas when
->> HW gives you 0
->>
->> (and CC netdev instead of generic kernel ML, perhaps that's the reason this
->> mail was tagged as spam for me)
+> diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+> index d9ecb7cf80c9..4dfd133b4d6f 100644
+> --- a/drivers/net/ethernet/intel/igc/igc.h
+> +++ b/drivers/net/ethernet/intel/igc/igc.h
+> @@ -42,6 +42,7 @@ void igc_ethtool_set_ops(struct net_device *);
+>  
+>  struct igc_fpe_t {
+>  	struct ethtool_mmsv mmsv;
+> +	u32 tx_min_frag_size;
+>  };
+>  
+>  enum igc_mac_filter_type {
+> diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+> index 22db1de02964..038ee89f1e08 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_defines.h
+> +++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+> @@ -551,6 +551,7 @@
+>  #define IGC_TQAVCTRL_PREEMPT_ENA	0x00000002
+>  #define IGC_TQAVCTRL_ENHANCED_QAV	0x00000008
+>  #define IGC_TQAVCTRL_FUTSCDDIS		0x00000080
+> +#define IGC_TQAVCTRL_MIN_FRAG_MASK	0x0000C000
+>  
+>  #define IGC_TXQCTL_QUEUE_MODE_LAUNCHT	0x00000001
+>  #define IGC_TXQCTL_STRICT_CYCLE		0x00000002
+> diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> index b64d5c6c1d20..529654ccd83f 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> @@ -1789,6 +1789,11 @@ static int igc_ethtool_set_mm(struct net_device *netdev,
+>  	struct igc_adapter *adapter = netdev_priv(netdev);
+>  	struct igc_fpe_t *fpe = &adapter->fpe;
+>  
+> +	fpe->tx_min_frag_size = igc_fpe_get_supported_frag_size(cmd->tx_min_frag_size);
+> +	if (fpe->tx_min_frag_size != cmd->tx_min_frag_size)
+> +		NL_SET_ERR_MSG_MOD(extack,
+> +				   "tx-min-frag-size value set is unsupported. Rounded up to supported value (64, 128, 192, 256)");
+> +
+>  	if (fpe->mmsv.pmac_enabled != cmd->pmac_enabled) {
+>  		if (cmd->pmac_enabled)
+>  			static_branch_inc(&igc_fpe_enabled);
+> diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
+> index 0a2c747fde2d..2ec5909bf8b0 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_tsn.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
+> @@ -6,6 +6,12 @@
+>  #include "igc_hw.h"
+>  #include "igc_tsn.h"
+>  
+> +#define MIN_MULTPLIER_TX_MIN_FRAG	0
+> +#define MAX_MULTPLIER_TX_MIN_FRAG	3
+> +/* Frag size is based on the Section 8.12.2 of the SW User Manual */
+> +#define TX_MIN_FRAG_SIZE		64
+> +#define TX_MAX_FRAG_SIZE	(TX_MIN_FRAG_SIZE * (MAX_MULTPLIER_TX_MIN_FRAG + 1))
+> +
+>  DEFINE_STATIC_KEY_FALSE(igc_fpe_enabled);
+>  
+>  static int igc_fpe_init_smd_frame(struct igc_ring *ring,
+> @@ -128,6 +134,7 @@ static const struct ethtool_mmsv_ops igc_mmsv_ops = {
+>  
+>  void igc_fpe_init(struct igc_adapter *adapter)
+>  {
+> +	adapter->fpe.tx_min_frag_size = TX_MIN_FRAG_SIZE;
+>  	ethtool_mmsv_init(&adapter->fpe.mmsv, adapter->netdev, &igc_mmsv_ops);
+>  }
+>  
+> @@ -278,7 +285,7 @@ static int igc_tsn_disable_offload(struct igc_adapter *adapter)
+>  	tqavctrl = rd32(IGC_TQAVCTRL);
+>  	tqavctrl &= ~(IGC_TQAVCTRL_TRANSMIT_MODE_TSN |
+>  		      IGC_TQAVCTRL_ENHANCED_QAV | IGC_TQAVCTRL_FUTSCDDIS |
+> -		      IGC_TQAVCTRL_PREEMPT_ENA);
+> +		      IGC_TQAVCTRL_PREEMPT_ENA | IGC_TQAVCTRL_MIN_FRAG_MASK);
+>  
+>  	wr32(IGC_TQAVCTRL, tqavctrl);
+>  
+> @@ -324,12 +331,34 @@ static void igc_tsn_set_retx_qbvfullthreshold(struct igc_adapter *adapter)
+>  	wr32(IGC_RETX_CTL, retxctl);
+>  }
+>  
+> +static u8 igc_fpe_get_frag_size_mult(const struct igc_fpe_t *fpe)
+> +{
+> +	u8 mult = (fpe->tx_min_frag_size / TX_MIN_FRAG_SIZE) - 1;
+> +
+> +	return clamp_t(u8, mult, MIN_MULTPLIER_TX_MIN_FRAG,
+> +		       MAX_MULTPLIER_TX_MIN_FRAG);
+> +}
+> +
+> +u32 igc_fpe_get_supported_frag_size(u32 frag_size)
+> +{
+> +	const u32 supported_sizes[] = {64, 128, 192, 256};
+> +
+> +	/* Find the smallest supported size that is >= frag_size */
+> +	for (int i = 0; i < ARRAY_SIZE(supported_sizes); i++) {
+> +		if (frag_size <= supported_sizes[i])
+> +			return supported_sizes[i];
+> +	}
+> +
+> +	return TX_MAX_FRAG_SIZE; /* Should not happen, value > 256 is blocked by ethtool */
 
-Hi,
+Try to place comments on separate lines from code.
 
-thank you for your response.
+> +}
+> +
+>  static int igc_tsn_enable_offload(struct igc_adapter *adapter)
+>  {
+>  	struct igc_hw *hw = &adapter->hw;
+>  	u32 tqavctrl, baset_l, baset_h;
+>  	u32 sec, nsec, cycle, rxpbs;
+>  	ktime_t base_time, systim;
+> +	u32 frag_size_mult;
+>  	int i;
+>  
+>  	wr32(IGC_TSAUXC, 0);
+> @@ -501,13 +530,15 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
+>  	}
+>  
+>  	tqavctrl = rd32(IGC_TQAVCTRL) & ~(IGC_TQAVCTRL_FUTSCDDIS |
+> -		   IGC_TQAVCTRL_PREEMPT_ENA);
+> -
+> +		   IGC_TQAVCTRL_PREEMPT_ENA | IGC_TQAVCTRL_MIN_FRAG_MASK);
+>  	tqavctrl |= IGC_TQAVCTRL_TRANSMIT_MODE_TSN | IGC_TQAVCTRL_ENHANCED_QAV;
+>  
+>  	if (adapter->fpe.mmsv.pmac_enabled)
+>  		tqavctrl |= IGC_TQAVCTRL_PREEMPT_ENA;
+>  
+> +	frag_size_mult = igc_fpe_get_frag_size_mult(&adapter->fpe);
+> +	tqavctrl |= FIELD_PREP(IGC_TQAVCTRL_MIN_FRAG_MASK, frag_size_mult);
+> +
+>  	adapter->qbv_count++;
+>  
+>  	cycle = adapter->cycle_time;
+> diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.h b/drivers/net/ethernet/intel/igc/igc_tsn.h
+> index a2534228cc0e..975f4e38836e 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_tsn.h
+> +++ b/drivers/net/ethernet/intel/igc/igc_tsn.h
+> @@ -14,7 +14,7 @@ enum igc_txd_popts_type {
+>  DECLARE_STATIC_KEY_FALSE(igc_fpe_enabled);
+>  
+>  void igc_fpe_init(struct igc_adapter *adapter);
+> -u32 igc_fpe_get_supported_frag_size(u32 user_frag_size);
+> +u32 igc_fpe_get_supported_frag_size(u32 frag_size);
 
-If you’re asking whether this happened on a physical device, it did not, but it
-is something that can be triggered through virtual device with fuzzed input.
+The "-" piece shouldn't exist. You are renaming a function argument for
+a function declaration that shouldn't have existed in the code prior to
+the introduction of its definition. Please delete it from the original
+patch that added it.
 
-Also, I'll follow your guidance when sending the proper patch.
+>  int igc_tsn_offload_apply(struct igc_adapter *adapter);
+>  int igc_tsn_reset(struct igc_adapter *adapter);
+>  void igc_tsn_adjust_txtime_offset(struct igc_adapter *adapter);
+> diff --git a/net/ethtool/mm.c b/net/ethtool/mm.c
+> index ad9b40034003..4c395cd949ab 100644
+> --- a/net/ethtool/mm.c
+> +++ b/net/ethtool/mm.c
+> @@ -153,7 +153,7 @@ const struct nla_policy ethnl_mm_set_policy[ETHTOOL_A_MM_MAX + 1] = {
+>  	[ETHTOOL_A_MM_VERIFY_TIME]	= NLA_POLICY_RANGE(NLA_U32, 1, 128),
+>  	[ETHTOOL_A_MM_TX_ENABLED]	= NLA_POLICY_MAX(NLA_U8, 1),
+>  	[ETHTOOL_A_MM_PMAC_ENABLED]	= NLA_POLICY_MAX(NLA_U8, 1),
+> -	[ETHTOOL_A_MM_TX_MIN_FRAG_SIZE]	= NLA_POLICY_RANGE(NLA_U32, 60, 252),
+> +	[ETHTOOL_A_MM_TX_MIN_FRAG_SIZE]	= NLA_POLICY_RANGE(NLA_U32, 60, 256),
 
->>> diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c
->>> b/drivers/net/ethernet/intel/i40e/i40e_common.c
->>> index 370b4bddee44..97ef79be39b3 100644
->>> --- a/drivers/net/ethernet/intel/i40e/i40e_common.c
->>> +++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
->>> @@ -848,19 +848,25 @@ void i40e_clear_hw(struct i40e_hw *hw)
->>>   	/* stop all the interrupts */
->>>   	wr32(hw, I40E_PFINT_ICR0_ENA, 0);
->>>   	val = 0x3 << I40E_PFINT_DYN_CTLN_ITR_INDX_SHIFT;
->>> -	for (i = 0; i < num_pf_int - 2; i++)
->>> -		wr32(hw, I40E_PFINT_DYN_CTLN(i), val);
->>> +	if (num_pf_int > 1) {
->>
->> instead of adding if conditions, I would simply change the type to be signed
+Please make this a separate patch with a reasonably convincing
+justification for any reader, and also state why it is a change that
+will not introduce regressions to the other drivers. It shows that
+you've done the due dilligence of checking that they all use
+ethtool_mm_frag_size_min_to_add(), which errors out on non-standard
+values.
 
-I’ll incorporate the suggested approach when sending the patch.
+To be clear, extending the policy from 252 to 256 is just to suppress
+the netlink warning which states that the driver rounds up the minimum
+fragment size, correct? Because even if you pass 252 (the current
+netlink maximum), the driver will still use 256.
 
-Best,
-Kyungwook Boo
-
+>  };
+>  
+>  static void mm_state_to_cfg(const struct ethtool_mm_state *state,
+> -- 
+> 2.34.1
+>
