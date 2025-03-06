@@ -1,206 +1,230 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 03A40A53F45
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Mar 2025 01:43:19 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E6574A53F56
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Mar 2025 01:47:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9F63482D40;
-	Thu,  6 Mar 2025 00:43:17 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7194B605E4;
+	Thu,  6 Mar 2025 00:47:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 07TnwZTEiCfo; Thu,  6 Mar 2025 00:43:16 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ia4bX4e8smnF; Thu,  6 Mar 2025 00:47:25 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4D1C282D0C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3098260EFF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741221796;
-	bh=rt0F4uCjPAszHJEWm9ube4bUlBcoomKxFSCmspLyAyk=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1741222045;
+	bh=7YmlTdV5ebgA4oS5HDiNUNwPLkW1qYyLpWmpH4os2A8=;
+	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=YdG3RH0BAeMUUPQLC/AOvcG9XUFVZJlOEklndwKkpTE7VxVcJtC4zL/h5IlYxOjzH
-	 i7sWm3wNLPi07aJWBqD7TOQT/SWW9VZVnZPyspaqHqxxS9BGc9tWk20NfibxZVMSrF
-	 9ddtQcP4kR8ZeCRkjGvmbS+oUT8hF0IMfFscnlRdSPacx/vP3U/PmTZNw0UCcLjubL
-	 v4MZ1XPIbnvk5KVJeyiKjXJWCwKW8wcHKbfSvhADh0Y2D0WHmtfdYOf9idvm3U6qU3
-	 9kQ4ndxb8qEXjp/43ccLSK4bddTKa/62kze2KibyFopGXlAVhJpGfzjN+e5FUrlJt1
-	 UuemTvhaIrygw==
+	b=N9+QxKtQnkz/SlvkgaInBHFuMczwNN7fWHOCqKmttGtpqOflePv+qwN9CFdqhf9Am
+	 U/PV4gXyao672i7HVZNvNcDMLl/9y/L86m9235Ay5PCmOyUa0foBG0stmV0sUrm9QR
+	 CEpxTuS4RSxGpgeJUii1sovjCDw+fkqMEoa8r0sUZPjLWEPMQICq6IFSMr0cd5Gv6u
+	 ZUIsnzVB/0XDU7QNWmorgQNjHLlATz1kwiqucyPnanfKdKlrvu7fPtlWcEihfebqnn
+	 PzKcq5Ni3GG4lcQVffPgXeXWsjvqBBI0gLUWHYitA7dRfBeGvEGbiviUhRzj7Ac/mC
+	 jG1WqKYwEIJTg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4D1C282D0C;
-	Thu,  6 Mar 2025 00:43:16 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3098260EFF;
+	Thu,  6 Mar 2025 00:47:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id A1F80E2E
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Mar 2025 00:43:13 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 0C3B8E2E
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Mar 2025 00:47:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8E7C040002
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Mar 2025 00:43:13 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id E487740C85
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Mar 2025 00:47:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id N-JR7h5aOiT9 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  6 Mar 2025 00:43:12 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=52.101.71.17;
- helo=as8pr03cu001.outbound.protection.outlook.com;
- envelope-from=vladimir.oltean@nxp.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org E9B1440167
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E9B1440167
-Received: from AS8PR03CU001.outbound.protection.outlook.com
- (mail-westeuropeazon11012017.outbound.protection.outlook.com [52.101.71.17])
- by smtp2.osuosl.org (Postfix) with ESMTPS id E9B1440167
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Mar 2025 00:43:11 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id o0SzfNmLIVWj for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  6 Mar 2025 00:47:21 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
+ helo=mgamail.intel.com; envelope-from=anthony.l.nguyen@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 6BF7140952
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6BF7140952
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6BF7140952
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Mar 2025 00:47:21 +0000 (UTC)
+X-CSE-ConnectionGUID: 6dBVHECuS9+2FcENWU07Mw==
+X-CSE-MsgGUID: YzCirsSwT2OKiSj/0FVVHQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11363"; a="42101674"
+X-IronPort-AV: E=Sophos;i="6.14,224,1736841600"; d="scan'208";a="42101674"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+ by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Mar 2025 16:47:21 -0800
+X-CSE-ConnectionGUID: A/ZkgAivQkuM9o4qR/i64A==
+X-CSE-MsgGUID: CKZFVd7mQt+eLMT+9wriYw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.14,224,1736841600"; d="scan'208";a="123955207"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by fmviesa004.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 05 Mar 2025 16:47:20 -0800
+Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.44; Wed, 5 Mar 2025 16:47:19 -0800
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.44 via Frontend Transport; Wed, 5 Mar 2025 16:47:19 -0800
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.48) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.44; Wed, 5 Mar 2025 16:47:18 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Iqq3zPi2Zh5GDWhgT77cxU7hnMWSFgZ9OE29ZXNerSr8k1mu3kU73VTUqjvNhdZj4zQLmFFwgpBVTUUJ/XhpbhBadrGe6rwS0hJgYXIvCLJ4BfU4WeWzyuPYDL152J2WvawnQ6V6Lv6ec1Ai1/GWE9+j5Oc64rDdsOmt/sAOh5GuL99kSBIAKn8JTFikSzQZf7ZPDG56ZZd+Gu5jf6+i414Ieq7K/1FrHtYMaTggkx3P2ZPgWkfZT3RMP4CFVD/Y5T/8dXcztAP0cDk2hACMgCS64cMIr0B+tLo+qVuRgJIDLel6oWI36Syv2tOreWHccUfeCpp9n8kRisbnKdSueg==
+ b=G30GQFwsqmJeL3+NCfRs+5TEAnYxUp3xfXbvAm5ARz2pfDlJkAP9Pxd1qy8iobwcg9OgQhKuwKKZ8kXJUkRJ7NywDRiMFFJu8g9cNSfEElnpk6QfUUNyl+q6cfg6gQzxEyy2AgTR60zlpiiTK1IjXRida1inQxe+bDheTHAM3gSknQurijVvciVxxbLXSfIAaO2ufEG+QaILby+sPSswMLo5JV9rPrD++uzn+ovlajW8+GlBY0DppOQqLVf9gn603KWA7lpqFS5iVDPBd5mnegub9GW8BkydwW42vggntcVdEPYHcET1WqLM/8xQOPH/7Puv8Z8FsSXM6HDqEtRVeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=rt0F4uCjPAszHJEWm9ube4bUlBcoomKxFSCmspLyAyk=;
- b=PhJqWOIqSmVxLUxgl6+CSl7zVrBDRVtU4OzDDqHxfo5CjhWomvnSPNTMAIr3TmipLaewg0oNBTaNU/CBDpjChQHJ3igsCS4kspWMaBZymhMcuj4heV8TpfaGDDRIdIs10miN2Gn13VF2IeTRZUJbCQ5yGNv0Gifuwjlgaw3xnrIDY/libcRIIGHw5Ec0EtVW42nMRkK4jv0/hj7A9SbMHpyvbLT4pCstY0XXWP2uAiTVEmic85YETSU3dE70/30fHceOScE3bdR7Q4KNBnT2wpueHcLJ1ZX8nitQtWSLsg2pVNe9BlfNdsA+dOpFxdnfEmzlk2s5OsYsyZWmgexjXQ==
+ bh=7YmlTdV5ebgA4oS5HDiNUNwPLkW1qYyLpWmpH4os2A8=;
+ b=ulcAENg71Vto6w1m7gHSpTr3Ew9xT20CAKNk74ps07jrVYSp68Mk6/y6lE31kgJ8SWwcsLIvnasZIiG5WWZ0H1odn8DiwukenDH8UINR/3pIqcqkt2SA+AmYEP3xaZJJqF2hm//krCNx1XUmVYQ+aVkXtUSudoCMu+omvR4Wpma+I9LHO/W3lZrHG87Nstiajs4yCBUxtScwjdmfM0BEvRzOJnhts4ffenRD5Dpdi9cZDqxyYKYCRUnME/Z6zag6Xq0rvW+c4y8IaQYbd1vlD5x0fkZ6EXJlkfrjgjyP8PlnufiMvTYcyi2DQ0Szpaf/C+K4Sw4SneEA5vG5voz5BQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-Received: from AM8PR04MB7779.eurprd04.prod.outlook.com (2603:10a6:20b:24b::14)
- by VI0PR04MB11071.eurprd04.prod.outlook.com (2603:10a6:800:262::16)
- with Microsoft SMTP Server (version=TLS1_2,
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BL3PR11MB6435.namprd11.prod.outlook.com (2603:10b6:208:3bb::9)
+ by CO1PR11MB5076.namprd11.prod.outlook.com (2603:10b6:303:90::7) with
+ Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8489.25; Thu, 6 Mar
- 2025 00:43:05 +0000
-Received: from AM8PR04MB7779.eurprd04.prod.outlook.com
- ([fe80::7417:d17f:8d97:44d2]) by AM8PR04MB7779.eurprd04.prod.outlook.com
- ([fe80::7417:d17f:8d97:44d2%6]) with mapi id 15.20.8511.017; Thu, 6 Mar 2025
- 00:43:05 +0000
-Date: Thu, 6 Mar 2025 02:43:01 +0200
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Simon Horman <horms@kernel.org>, Russell King <linux@armlinux.org.uk>,
- Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>, Furong Xu <0x1207@gmail.com>,
- Russell King <rmk+kernel@armlinux.org.uk>,
- Serge Semin <fancer.lancer@gmail.com>,
- Xiaolei Wang <xiaolei.wang@windriver.com>,
- Suraj Jaiswal <quic_jsuraj@quicinc.com>,
- Kory Maincent <kory.maincent@bootlin.com>, Gal Pressman <gal@nvidia.com>,
- Jesper Nilsson <jesper.nilsson@axis.com>,
- Choong Yong Liang <yong.liang.choong@linux.intel.com>,
- Chwee-Lin Choong <chwee.lin.choong@intel.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, bpf@vger.kernel.org
-Message-ID: <20250306004301.evw34gqoyll36mso@skbuf>
-References: <20250305130026.642219-1-faizal.abdul.rahim@linux.intel.com>
- <20250305130026.642219-1-faizal.abdul.rahim@linux.intel.com>
- <20250305130026.642219-9-faizal.abdul.rahim@linux.intel.com>
- <20250305130026.642219-9-faizal.abdul.rahim@linux.intel.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250305130026.642219-9-faizal.abdul.rahim@linux.intel.com>
- <20250305130026.642219-9-faizal.abdul.rahim@linux.intel.com>
-X-ClientProxiedBy: VI1P195CA0057.EURP195.PROD.OUTLOOK.COM
- (2603:10a6:802:5a::46) To AM8PR04MB7779.eurprd04.prod.outlook.com
- (2603:10a6:20b:24b::14)
+ 2025 00:47:13 +0000
+Received: from BL3PR11MB6435.namprd11.prod.outlook.com
+ ([fe80::23a7:1661:19d4:c1ab]) by BL3PR11MB6435.namprd11.prod.outlook.com
+ ([fe80::23a7:1661:19d4:c1ab%5]) with mapi id 15.20.8489.028; Thu, 6 Mar 2025
+ 00:47:13 +0000
+Message-ID: <61d14c4e-f59f-4e84-851a-917406510aaf@intel.com>
+Date: Wed, 5 Mar 2025 16:47:10 -0800
+User-Agent: Mozilla Thunderbird
+To: Yue Zhao <yue.zhao@shopee.com>, <przemyslaw.kitszel@intel.com>,
+ <andrew+netdev@lunn.ch>, <edumazet@google.com>, <kuba@kernel.org>,
+ <pabeni@redhat.com>, <intel-wired-lan@lists.osuosl.org>,
+ <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>
+CC: <chunguang.xu@shopee.com>, <haifeng.xu@shopee.com>
+References: <20241227035459.90602-1-yue.zhao@shopee.com>
+Content-Language: en-US
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+In-Reply-To: <20241227035459.90602-1-yue.zhao@shopee.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: MW4PR04CA0176.namprd04.prod.outlook.com
+ (2603:10b6:303:85::31) To BL3PR11MB6435.namprd11.prod.outlook.com
+ (2603:10b6:208:3bb::9)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM8PR04MB7779:EE_|VI0PR04MB11071:EE_
-X-MS-Office365-Filtering-Correlation-Id: 5240df97-70a7-4de8-1a9c-08dd5c47dba6
+X-MS-TrafficTypeDiagnostic: BL3PR11MB6435:EE_|CO1PR11MB5076:EE_
+X-MS-Office365-Filtering-Correlation-Id: 628ec1a8-bf29-4d1c-48f0-08dd5c486f6c
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|366016|7416014|376014|7053199007; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?68tBHlDxL4s2y+3m5LpjYONubCrqmxVCqwqhcnCkzODOIjMjBISLZciRv8UV?=
- =?us-ascii?Q?HN2XrN4qaRX88EJFNSufQYmk9Mqe1SRIC52rU9Br9WvTsMHJy3AMTxhaH0Wr?=
- =?us-ascii?Q?DXFxuUnQYO7DGv/fUBrLUfSfO9Q0w1rwGBlQ5BNzHaZ9IZPKj0vykpNPsoNf?=
- =?us-ascii?Q?hpbY6gsTSKCv12/OXarPVgLHpDFsNzjnUPSr3f/3Qu0ujPpXykNMfyfdPQpV?=
- =?us-ascii?Q?AC+6weOhW8cJv0qaSMdjw90fuFIOOrYrayWZrYLbv0ASdWhnA/jhdGFm6pCa?=
- =?us-ascii?Q?qRHCS5Vo1HPNyhUsulW6Hkgec5WN87LEOcOn6nybsMQbhn/458gbSHeuXYxY?=
- =?us-ascii?Q?NRuxoc+dtHZB8m0MDdIbNFdayhSq7b/oReFop2jWsyYHCLUDGHeFY5qGZ8UC?=
- =?us-ascii?Q?Cq36yJOfyHz9LgHnDArNSfjnAYyawVZVwRE1ZqnJkxqWtYEBHJn6XjgI3Nt/?=
- =?us-ascii?Q?AUPZktivitVuZyCVaISeVggz/GpLL/Q37kfW3U4Ns96NtbSNwRVtwsSBUXQ3?=
- =?us-ascii?Q?hGNJWb/uisgyTyYY/b2aAz9QCeMnNjov7h2pD3eFM1J9doJKO9SeFkbkUcdq?=
- =?us-ascii?Q?gF9feSY/nQ6Tdz2hm9WWAgrB86ATIlbCWUu7fGrTlH1wAFT4J8hfu5lbQXS9?=
- =?us-ascii?Q?QyPW5mufeZJw+LYijjGn0+WOQxYs5QsYBsoSd6w1aaTd7a+pqCfohHYRWR1m?=
- =?us-ascii?Q?l3PR9j3bqRD9WH8omrpjjqAos03vG2EBsnkNzsyoAsarUFvcVOsMPmOuTDTn?=
- =?us-ascii?Q?zq/fV21P8NT5U3SBlut7dopfwKqpXD71qFG5c9bJB16pqZedJcVFU0iMX2u0?=
- =?us-ascii?Q?h8eu+4fhNcQ2IkVhLC4Z5xMJf0/7EKqGte/QE32wfwhMSOgjsfE++otwyhJZ?=
- =?us-ascii?Q?5wrVh0zxhPYki3ke1YPhy2q15OPgR6wgphzTLnyO0eBP8N0Uod1jckhgiH6c?=
- =?us-ascii?Q?HXVRB4okXH5bLcDWhH0Xsr529pEw61eSgBJkUcMYXisvykv2myxv/qLqPAuB?=
- =?us-ascii?Q?kAnrT2HgCaaDbed4exCkz2NPlNdQsmM8CH4Qj+UbhNQGhlFWGoUjTScdCGAp?=
- =?us-ascii?Q?3sffzwsz7JuH2xRKohFKbFu0f4RnfVNQqUJ5OE7VBpyc/32b63sKJNbGq66s?=
- =?us-ascii?Q?U2ZLnJqGKV1eCZDDfK6OiafhsoxjvHvQzBVVGWIqQq/43E0zirrXzMZXLgFR?=
- =?us-ascii?Q?hihy6htbiQFiYXg9Y9x46R+3QRy/YnXppNHX7CShx83j2TWXkhuS68o07N4b?=
- =?us-ascii?Q?A2aZQ0rn+JnaVEK1i0Ulp92He+mN/j7l6Si/Z3c7i9L/Qcs8kaAXFjD2d0fj?=
- =?us-ascii?Q?7dQLAHSRBU53lGM+/xLrpUlvPF/UkbcEOtz2FxwUxtwUtPT3Wwobw8ouILTI?=
- =?us-ascii?Q?eJ2PTRXBiCLysWllKYg01us+8yNI?=
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014|7416014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?Rk4yaDNRWWlvU2JOTVF5N242d0xiQzVBZFJibExsa29pb1J0Z1VMb2NJcjVr?=
+ =?utf-8?B?OHdsQkZKalM0Tk5JOEhvYm95ZVhkYkRGWkdjMVFwQ2ltN2FMVXhpN2pnblVw?=
+ =?utf-8?B?MVlQeFZsM0NYT2xNZklOK1dFU0s3aFpyRGdMdU1peTAzeEhueTRLU3RranBw?=
+ =?utf-8?B?UkZMT0l1M1BqeG1sS2EveTEvSXdmWEY0amN1OTNxRnNESStLTVJGWmwwV0pE?=
+ =?utf-8?B?ckxjeVhQZENmblFLcUlGbWNFZ0lBbk1JZVV1VDljaUxyNVhsTTF3UzJLM2E4?=
+ =?utf-8?B?dkdvZ09OR3NJSUlmMHZwVWFDWmhEbkxFK3JBWW5ub2NZWitVekpBdGtQcXI0?=
+ =?utf-8?B?KzJTaEdlMnBFWkdHenNraXl1bTM5VzFmS2hGUHV0U0JWUFJ1REN5dForbjBY?=
+ =?utf-8?B?c2IxcytoazUyRWViNVBsaGVKU0lWVXRmdHAxTDRtY3VMRStXZXdxUGU0ZWs5?=
+ =?utf-8?B?YTE4ZlpEb0ZHK3RybHdwclQ3WGZEM1NxTGI3SEt6bUc1VVZHSk5BVFFYUi9Y?=
+ =?utf-8?B?cGIwVkRITFVtamF6dFJ6R25kZkV6Vm5Ydmp4NG9WdFNrdGYxRTJpQ2NYRzdt?=
+ =?utf-8?B?cnVDTEhjUE4wbTExZERPRzFBZGthbVMwRUt4N0xleWdjRk91K0JteHliemtz?=
+ =?utf-8?B?dkJzNk4xekNvOWhxUk5WNXRlMzlOQzVkS0N5MGZad1llMjU5cG1SdTdpOWw5?=
+ =?utf-8?B?aFB1cG4wVXJQLzR1VHNXb3ErTlgvT1NIL2dmSHk1WDFIWTl2L1ZjYVpXSGsy?=
+ =?utf-8?B?QUZ1SmIzeGhNbjF1WUFRY2gwUEwyYVdiWThWUTQ3YjJUc0pFTEZqRUk3QjYv?=
+ =?utf-8?B?Z0F4blJNOW5TUWswVTAydUc1Q1FwakJMdlpHSy9tTGtBS2M1eis4clN2cFpT?=
+ =?utf-8?B?QlVoYmJBbFBaT2JMSkM4TksrdVQ2a2Z0N0VaSzA3dDA3RVdLTUwwQk9uejJv?=
+ =?utf-8?B?OHAxVGZWUXpCWFp6QUNQcVV4TjRuRXhiM3BMYXhtZUplaTlkRHBydGFkNFl4?=
+ =?utf-8?B?WWFtM1JCV0ZMYTJzTG8xZDM1NktxZFVJQmhuWWRGNWl4NEpra1JONVR0RjN2?=
+ =?utf-8?B?dTNVWHB2YW11UXM1M2VRMUFoZTViWnBPSjB6dzRYZ3cyVTlHdVN6eTN1SGVB?=
+ =?utf-8?B?OHBvKzBMbzFHSkR4YUQzY1hHOVdYaFdHd3UxbzJjeTNoODBtM1h4STg1RmNV?=
+ =?utf-8?B?ZmNMbjJFWGU3ck0yU0FaWmZldjZ3ckhINlJsWndYOVhQUXdRWlpVbXlYK21K?=
+ =?utf-8?B?bHFwUi9pWlZyT01KVGRVWkpZQk5xS3dmRVZpdlR6N2krQ2NTQXBLSkFYQVJN?=
+ =?utf-8?B?OUJySm9oRzkzYVIzUGlCbjFUb1AyRExiM2NpS1RqZG1kQXIzVkwvR2lVQTJF?=
+ =?utf-8?B?eUpoUzJzRCtXb0duRTNNQjYxVCtXQTAvZjBFaFZDRVNlM3drWFIrMmlSWjNP?=
+ =?utf-8?B?MnpGbHhta1ZRbTgvakZscCtDRG5uYzlkUVY0VXhqSGRCdHFFTDdUNVp6Nk5C?=
+ =?utf-8?B?c3FsRkhaSWgrYkFsdmlpQng2blFUcnpYYmhnTHJNSVJ5NyszbjZBMGludjdh?=
+ =?utf-8?B?OHY5bzF6N2k1M1NRL0FJc1RFeWtmT3dkUTRKMEc1WHBFWGtrS2xqZEVPVWsv?=
+ =?utf-8?B?WHFldGg3UjVwc0NOTXB1eWk4dHZrMmpaTENQRG85TElxMkx4VENFaEFSNDdE?=
+ =?utf-8?B?TTViTkNPVGQ0OG9FK05qNTVZVGxzVTdIVUl6SStyS1hlUk9HS3M2T3F0V0F2?=
+ =?utf-8?B?RmcwRWNFRGNrTDZpbFpaOVdORC85TXpSeEg3MWhxSHkvL01HM3lhUERZUCtn?=
+ =?utf-8?B?Rk0zNnNGajRMay9naWd0QT09?=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:AM8PR04MB7779.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(7416014)(376014)(7053199007); DIR:OUT;
- SFP:1101; 
+ IPV:NLI; SFV:NSPM; H:BL3PR11MB6435.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(1800799024)(376014)(7416014); DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Woytg/G2yfArt2O/I0nM0xXgqFARRLg1som9N3i7hFckZDBxs3V8zw5WHtFc?=
- =?us-ascii?Q?EeKwEYYJTt/arew79nmAZePYiQ4V3dzj9Nq40BD73No/8YUEgRH03NFnzRKK?=
- =?us-ascii?Q?l7dlyV8qwpVVsVLiFTZWKCp46g+2qXnOfrMIU+qk39QGq0o2BWxfb/9pC+Ca?=
- =?us-ascii?Q?uZuboIiU6y/ZGv23unChYvpFeZ/QC35NumaLMcBTIiW8bCfXEgmHQMm/sgck?=
- =?us-ascii?Q?zKOHv8Imp8638uBYZWrb6/F0J+FGdfbtMsmwk2W6i/MI59DrPfaj//1Dtasc?=
- =?us-ascii?Q?LIVTmmcIg7PIIgVfLnZnCLKzOAiATYbNZ+crDs45htMrtdvE1DjGUVXCxLbd?=
- =?us-ascii?Q?5Wf+lj30AKsJMWr3+TaMNSYTcR8FxBrHx3GzdAthDr05ghex6g0mco/UDqxB?=
- =?us-ascii?Q?KQMDcw7yKLSiTBz3oCG3uwJSBXcmJOy1K/uZmdfayqc+6SVx1BUZWB1EBEd6?=
- =?us-ascii?Q?zOY5KJpGMyINkbXG6Ljx+dzNtfsCtRQ3TzROzr2KdDCVUzmjl0YQ3WSi66Hi?=
- =?us-ascii?Q?afSThTX4vhLWeu/kbK+keaGGeRXBvxGGgBUuy54SH3PmsYWKyyGnAkTJt2Yn?=
- =?us-ascii?Q?8rmz1FmFFXVrvyUwBpl+e4CkGijBRotzhF5tQhPs4ak078sXv0w53MnZP4ax?=
- =?us-ascii?Q?gS5/jpH5k7FRiwhOu6A4l5BahLALek9CTewhMaYcwQC0ghg78D+L1XB6IEPb?=
- =?us-ascii?Q?ZGHBGufPfmrqZR/Pmd6mgI7WCikMIhERXlo6JEnHUk1ma7IMkZnUYx8yS8O6?=
- =?us-ascii?Q?ygLdMCoR2VWoIYajlOC2+Sm2OxI2nfZhvqUdNxlke8DmN9sYIMcWXjhs/Nvo?=
- =?us-ascii?Q?UfhmE6H2NF3m0N+7Bc/033e6HvzlespeQ7xNkHhd5DZoOEAM24TN52Vyp9Yu?=
- =?us-ascii?Q?eV3mYa6X3u+nsdruMhObaME/ozK7XtbtdTUgCWDuTL4zzwMHaLVPfogyUT74?=
- =?us-ascii?Q?n0elFz2QeKfzII4jJU1i8KnMgAWDIPscGqlZynrtbvvdPjCQeaaCwsEoh5UH?=
- =?us-ascii?Q?NlYoxSdAxk+TkBJU6ExXJE9zTqcAUrNEaMsIhaom2GBPylMl+EK8Gt8Hak0i?=
- =?us-ascii?Q?s2DRP6crLcN7vrxd4RBHZTkd9vbWrruG9/rB2QLPtth3Xmjr2MaPJrGe3Gu6?=
- =?us-ascii?Q?+vH49NkOSWI57LWMjgeFK6IGulOtfNZ7s8hg49CLrE1mxqSGBj745B3GHt/U?=
- =?us-ascii?Q?PU5HNbb2SPWWOhZS6ZVMvfNmej+iRSX14Emd342npoP7PSeOP1XAuTOzZlPD?=
- =?us-ascii?Q?8cNjPcxkFwOljh+ud19fUhvLfbm3cXgVKYQLEmzrXs7L8lxThdxbxBl/p36G?=
- =?us-ascii?Q?n+68JJuseIQyjkIntjqaO6Mpg4HIyJmNCh31R+WtLbL7DsvVxd40e8B0Clc7?=
- =?us-ascii?Q?bbEjvW+CCQzdeeVzEoESaIPuhEtyjUGHKU28mDBeG7D/xDUg1s+nJzJpTg5w?=
- =?us-ascii?Q?DCK9ZUrIZ9WQCJmFaWYR9Kb8BPxnZsjISfJgie0fQzrGSbI8K01gsW7ZWKa0?=
- =?us-ascii?Q?j/v3c4wy1Oi2TLPb8733rt1+y15LiFIstfwRzSN0Xnu7T22wKXq8NaM0jH/1?=
- =?us-ascii?Q?IC3ISF6zL6rb3LX+OqZffef8HaQpUsGzNVoxTKIXnmornAS2ubu14oGdm4EM?=
- =?us-ascii?Q?EA=3D=3D?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5240df97-70a7-4de8-1a9c-08dd5c47dba6
-X-MS-Exchange-CrossTenant-AuthSource: AM8PR04MB7779.eurprd04.prod.outlook.com
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?NldLN2tZVlorMGNNbnF4bUp2RC9QVDhLYk9kTU0vR1dKZy8wVzRISUFZajZr?=
+ =?utf-8?B?NDVicmRMazI3QlQ4SWU4WE5OQXdkNEFLdHEwdEpzMEpiSC81clVRSnVHbkR6?=
+ =?utf-8?B?NGxQZzd2b2p0MFpWQVpNVmE3ZllGVDVCdjRnNm9rSHJuc29MV09LNVRlMlBQ?=
+ =?utf-8?B?TnpqVFVQdjdCbkVZVnBFc0d4UENteGpFNkxrUjN6Ukx3UGpmaWJ6U1F2Qmdn?=
+ =?utf-8?B?dHViYzJjVjlLTHJXd2RDclVNTWRQa2RNdWk3YjFMTENHZ2R0Nnkrck1MbUdD?=
+ =?utf-8?B?T2lZWEF5SUtiV3prdGMyS1ZDclhSelRzTjd3RXFXTHVRYkI1VXZqY2N2UGtm?=
+ =?utf-8?B?b2dSc2Y2MVAxU3V3eFhOTWx3ZzhoWTJadkFqY0Roa0tLT1Y3ckNsalVUbXk5?=
+ =?utf-8?B?VmlkREFQL1dja1NSTUJUUDdKZm9jSGJmS2d2bjZveHJLT2U2QzlOQ0VBcFF1?=
+ =?utf-8?B?UUw2R054YnpER2RjTGtkK3N2UEhVYWJTQ3BHVndaeU0yZjBjekRqYnNjRmN4?=
+ =?utf-8?B?Y1hKUVkvcVRsWlV4eUJFWUR5VVpHMklBd2Voc0ZMQVp2SWVsdEZIYkZkY21a?=
+ =?utf-8?B?WmlneFp2RmVTcy9OTUpYYU5xY0ZxbmNHUWxiL2pTVGZieXpnVDBKYW9GbGp0?=
+ =?utf-8?B?V292OGViTWhOV28yNXNuRGhGZGovNGV1SkhQc2dkOWlkOGJYZHZyVisvZ0t0?=
+ =?utf-8?B?M2V1b1FUYTlxZ25pZllob1NoTzRISGZMWXVTcDVQUDVLczc3S3dWeEI3RkNU?=
+ =?utf-8?B?SDA1cnAxam1FeWFYc0Y2aUp2VjFVT3pXMzVHTUw0NmpDb1JrNzhWeVJ3K3Nk?=
+ =?utf-8?B?VXVvbzhtOFBkOEwyeU5PYWxlQkdSUG9KZjlELzRtSVhhd0JteWFWMkpMOGVr?=
+ =?utf-8?B?eThFMXlwN0tLWXNHU2twK3Urd0I0RXE1enVTY0MrWndBSVFaNmszdDBQSndl?=
+ =?utf-8?B?SVp1RG5ibFhmTE5xNEZoWGdwTjFHMmZ1aGhucHNOekQ5NXVzSzZwVHZpaEZO?=
+ =?utf-8?B?WUJvZXZMeTE5dlBwUHNZeGRITUxaOW1UdWVGTU9wbjF0dzRxakxmamR0cC9B?=
+ =?utf-8?B?ZE40bmtMVmZWaGovOER1UkV6VkI2SloySFBYWDBZTWVKSXczL0k5UklManlP?=
+ =?utf-8?B?KzlmREM5QndmUzNrZ0g2aXBQdzRHcFVkenJKaG91d0gwZ2ZNVDZYUUU5Tml6?=
+ =?utf-8?B?ZUtFM1dvRmNMSlJ1VlZWTnYzVGlNcUxaRGpUckQreVQxbVFzZklONktjeG4r?=
+ =?utf-8?B?WVVZTkx2eWdBTnZ6dnRtS1kyams3K2ZWY25saGdkU2VWMjJiRm1mNjlIL3Az?=
+ =?utf-8?B?T05ON3hMNUJ4MjdHZGNnT1c4MzRRQ3ZoNTVOVkZhd29NQXBvN1BXZE5TdHJx?=
+ =?utf-8?B?OWNLWXI1WUgwNS94UnFKOThZRTdHWVdMajdXZ1lNenMzMDU1bXpKYXNoWStU?=
+ =?utf-8?B?T1BUS29NVnJzK2RoVi9Ca1NqTFVzVDMzdXBUVnJ4TXZsOFJETDJuVnJoM01H?=
+ =?utf-8?B?V2pRc2JndkxuWTBNSEJwS0NaVTZHRWNKUlVVWVVVNUppSEtZZ09VM0doMERz?=
+ =?utf-8?B?blUvVjh6ZVRxNHkySFVJQmdwSHBYWEd1OVpabmVMTFRDWkFQb1oxM20yRnky?=
+ =?utf-8?B?YWFtVGdnbHNCU3kwMThKUlp2azRvWGViMG1YekRCSTl0cmxwR3hGbFVRZ2tF?=
+ =?utf-8?B?UzBrUUljdStWYi9OMGtnbCtXYVVWdkZhdFUwYWEzSFRVajBZS0daenBWNGhr?=
+ =?utf-8?B?YmV4UCsycFAxdnQ5S2hTZWYxWG83SUZHdStJVUVVN0YwSTBJeXNLUzNYZkZL?=
+ =?utf-8?B?YThDRWVyVmMvcVd5cGQzZnBhZ0lRYnlLdEROSHNKdHg2VFFGdU9kOEtjRk9y?=
+ =?utf-8?B?UDF1WUF2N0VzVnJUYjZZWS81L3duYzlQZXNGUmtFSDZpY3VOMG5rYTQvVnZs?=
+ =?utf-8?B?SFFWQllURmRUK2k4MTFrVkQwbUJSK0pQU2V2RytmT3RpM01HZ0FkUVdTb1gy?=
+ =?utf-8?B?dUdncW5pUU1uRnlrTXdsczZGU2t5K29YWjVWUkNoSE0xZDF3RVB3cnNmWVJP?=
+ =?utf-8?B?TlA3eGpVbHFyWno1cWFwdnlJT0xpNi8xWVJJYWIxT2p1NHNwNzZDUmdXWkl4?=
+ =?utf-8?B?cGxaRXRRV2VoQUVFeDFjbllDdzFHS2diS2ltRUlGUVpTRDZOWjJoV1h3VG83?=
+ =?utf-8?B?Mmc9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 628ec1a8-bf29-4d1c-48f0-08dd5c486f6c
+X-MS-Exchange-CrossTenant-AuthSource: BL3PR11MB6435.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Mar 2025 00:43:05.5868 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Mar 2025 00:47:13.5072 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: muHbIc6b13iLTx7zl2obcgKKJnwa41mgf6kTSE6lcaR9C8jYY6WcSLm5i2rzsqck5LniFt9PG45TmRx8lXD8uA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI0PR04MB11071
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nxp.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=rt0F4uCjPAszHJEWm9ube4bUlBcoomKxFSCmspLyAyk=;
- b=mVw2WhsJeTl+t5aBYi9iN6zn86pvddb6k9Qhr4LcbL5xB9F6CHbIORh17OqSOzEfHUj6ylD4NTh1Ma55MqOaPHOCNeHHTTo/d38UxWhODVKGZZRl6Kz9LTf4SjQPz7+9x9nY3/niSK2VYCmEjaUeRNOLi2wAOsezBjWl9YxO92Btc7DNl/MmRz5ZgXs6xvMN77Mz60DMBjCbIwwkDrV26iiDR13tBUbJ0YDy1LsuBcCy0Cb4Oz8764R7SetbA0gOBjY1eUOZ05BjA2MNe4rZc77Xh4JfQa/+sA3XD1pJHjnVfTFkF9L/lq9ENRvdmO7qAV92T0/qIOU/ayfWeDyc+A==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-MS-Exchange-CrossTenant-UserPrincipalName: +DhOJuktXfrGz+xxklXFKLn4SSaqWUYj5+yQU5ELUp79cZg/xbRV74UbIiTEKZbjPqeFxhJGyYwUGb3QVKGlElhh+k72YU8IvwPeA2/J8Qc=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR11MB5076
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1741222042; x=1772758042;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=7HCE+7W2ZnJ20qbSvUrUfIx+kdC24PqsJdquCmrR/DY=;
+ b=BLKng0XMqKplpNetXI+NjOPBL2v3Mf+1xkpzJpCP1W6O4Fgj9XTDcK0o
+ oNREDSG2LUpc9kHOVeXCJPGxZQBA8qzCCYlT20ds2ZKf6cF6pMzbFERTL
+ RqT89xh/2ChFi/Eh+XEH5I6+d+vsYHsM1lpL1ldPAzoXLVR7hKi0Hnm1u
+ lfzwwDQ+PxAQWvxTO4Z38B/W7NjoZMv6tI+SNUI8uaxejhr6p1yZOv3lS
+ ZsMw+Zd24mHmvcKNZJZQP/jbsRVRs7XnLo22fslJaWVM1VoF0x5z5GLFM
+ UTYW/DZ6fLlLl/1xl5Pgxp83QkU7s+QVDld4GTGgEsULrnhDKw6Qp+B9M
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=nxp.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=nxp.com header.i=@nxp.com header.a=rsa-sha256
- header.s=selector1 header.b=mVw2WhsJ
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=BLKng0XM
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v8 08/11] igc: add support to
- set tx-min-frag-size
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH] i40e: Disable i40e PCIe AER on system
+ reboot
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -216,198 +240,176 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Mar 05, 2025 at 08:00:23AM -0500, Faizal Rahim wrote:
-> Add support to set tx-min-frag-size via set_mm callback in igc.
-> Increase the max limit of tx-ming-frag-size in ethtool from 252 to 256
-> since i225/6 value range is 64, 128, 192 and 256.
+On 12/26/2024 7:54 PM, Yue Zhao wrote:
+> Disable PCIe AER on the i40e device on system reboot on a limited
+> list of Dell PowerEdge systems. This prevents a fatal PCIe AER event
+> on the i40e device during the ACPI _PTS (prepare to sleep) method for
+> S5 on those systems. The _PTS is invoked by acpi_enter_sleep_state_prep()
+> as part of the kernel's reboot sequence as a result of commit
+> 38f34dba806a ("PM: ACPI: reboot: Reinstate S5 for reboot").
+
+Hi Yue,
+
+We've contacted Dell to try to root cause the issue and find the proper 
+fix. It would help if we could provide more information about the 
+problem and circumstances. Have you reported the issue to Dell? If so, 
+could you provide that to me (here or privately) so that we can pass 
+that along to help the investigation?
+
+Thank you,
+Tony
+
+> We first noticed this abnormal reboot issue in tg3 device, and there
+> is a similar patch about disable PCIe AER to fix hardware error during
+> reboot. The hardware error in tg3 device has gone after we apply this
+> patch below.
 > 
-> Co-developed-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-> Signed-off-by: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
+> https://lore.kernel.org/lkml/20241129203640.54492-1-lszubowi@redhat.com/T/
+> 
+> So we try to disable PCIe AER on the i40e device in the similar way.
+> 
+> hardware crash dmesg log:
+> 
+> ACPI: PM: Preparing to enter system sleep state S5
+> {1}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 5
+> {1}[Hardware Error]: event severity: fatal
+> {1}[Hardware Error]:  Error 0, type: fatal
+> {1}[Hardware Error]:   section_type: PCIe error
+> {1}[Hardware Error]:   port_type: 0, PCIe end point
+> {1}[Hardware Error]:   version: 3.0
+> {1}[Hardware Error]:   command: 0x0006, status: 0x0010
+> {1}[Hardware Error]:   device_id: 0000:05:00.1
+> {1}[Hardware Error]:   slot: 0
+> {1}[Hardware Error]:   secondary_bus: 0x00
+> {1}[Hardware Error]:   vendor_id: 0x8086, device_id: 0x1572
+> {1}[Hardware Error]:   class_code: 020000
+> {1}[Hardware Error]:   aer_uncor_status: 0x00100000, aer_uncor_mask: 0x00018000
+> {1}[Hardware Error]:   aer_uncor_severity: 0x000ef030
+> {1}[Hardware Error]:   TLP Header: 40000001 0000000f 90028090 00000000
+> Kernel panic - not syncing: Fatal hardware error!
+> Hardware name: Dell Inc. PowerEdge C4140/08Y2GR, BIOS 2.21.1 12/12/2023
+> Call Trace:
+>   <NMI>
+>   dump_stack_lvl+0x48/0x70
+>   dump_stack+0x10/0x20
+>   panic+0x1b4/0x3a0
+>   __ghes_panic+0x6c/0x70
+>   ghes_in_nmi_queue_one_entry.constprop.0+0x1ee/0x2c0
+>   ghes_notify_nmi+0x5e/0xe0
+>   nmi_handle+0x62/0x160
+>   default_do_nmi+0x4c/0x150
+>   exc_nmi+0x140/0x1f0
+>   end_repeat_nmi+0x16/0x67
+> RIP: 0010:intel_idle_irq+0x70/0xf0
+>   </NMI>
+>   <TASK>
+>   cpuidle_enter_state+0x91/0x6f0
+>   cpuidle_enter+0x2e/0x50
+>   call_cpuidle+0x23/0x60
+>   cpuidle_idle_call+0x11d/0x190
+>   do_idle+0x82/0xf0
+>   cpu_startup_entry+0x2a/0x30
+>   rest_init+0xc2/0xf0
+>   arch_call_rest_init+0xe/0x30
+>   start_kernel+0x34f/0x440
+>   x86_64_start_reservations+0x18/0x30
+>   x86_64_start_kernel+0xbf/0x110
+>   secondary_startup_64_no_verify+0x18f/0x19b
+>   </TASK>
+> 
+> Fixes: 38f34dba806a ("PM: ACPI: reboot: Reinstate S5 for reboot")
+> Signed-off-by: Yue Zhao <yue.zhao@shopee.com>
 > ---
->  drivers/net/ethernet/intel/igc/igc.h         |  1 +
->  drivers/net/ethernet/intel/igc/igc_defines.h |  1 +
->  drivers/net/ethernet/intel/igc/igc_ethtool.c |  5 +++
->  drivers/net/ethernet/intel/igc/igc_tsn.c     | 37 ++++++++++++++++++--
->  drivers/net/ethernet/intel/igc/igc_tsn.h     |  2 +-
->  net/ethtool/mm.c                             |  2 +-
->  6 files changed, 43 insertions(+), 5 deletions(-)
+>   drivers/net/ethernet/intel/i40e/i40e_main.c | 64 +++++++++++++++++++++
+>   1 file changed, 64 insertions(+)
 > 
-> diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-> index d9ecb7cf80c9..4dfd133b4d6f 100644
-> --- a/drivers/net/ethernet/intel/igc/igc.h
-> +++ b/drivers/net/ethernet/intel/igc/igc.h
-> @@ -42,6 +42,7 @@ void igc_ethtool_set_ops(struct net_device *);
->  
->  struct igc_fpe_t {
->  	struct ethtool_mmsv mmsv;
-> +	u32 tx_min_frag_size;
->  };
->  
->  enum igc_mac_filter_type {
-> diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
-> index 22db1de02964..038ee89f1e08 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_defines.h
-> +++ b/drivers/net/ethernet/intel/igc/igc_defines.h
-> @@ -551,6 +551,7 @@
->  #define IGC_TQAVCTRL_PREEMPT_ENA	0x00000002
->  #define IGC_TQAVCTRL_ENHANCED_QAV	0x00000008
->  #define IGC_TQAVCTRL_FUTSCDDIS		0x00000080
-> +#define IGC_TQAVCTRL_MIN_FRAG_MASK	0x0000C000
->  
->  #define IGC_TXQCTL_QUEUE_MODE_LAUNCHT	0x00000001
->  #define IGC_TXQCTL_STRICT_CYCLE		0x00000002
-> diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-> index b64d5c6c1d20..529654ccd83f 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-> @@ -1789,6 +1789,11 @@ static int igc_ethtool_set_mm(struct net_device *netdev,
->  	struct igc_adapter *adapter = netdev_priv(netdev);
->  	struct igc_fpe_t *fpe = &adapter->fpe;
->  
-> +	fpe->tx_min_frag_size = igc_fpe_get_supported_frag_size(cmd->tx_min_frag_size);
-> +	if (fpe->tx_min_frag_size != cmd->tx_min_frag_size)
-> +		NL_SET_ERR_MSG_MOD(extack,
-> +				   "tx-min-frag-size value set is unsupported. Rounded up to supported value (64, 128, 192, 256)");
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> index 0e1d9e2fbf38..80e66e4e90f7 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> @@ -8,6 +8,7 @@
+>   #include <linux/module.h>
+>   #include <net/pkt_cls.h>
+>   #include <net/xdp_sock_drv.h>
+> +#include <linux/dmi.h>
+>   
+>   /* Local includes */
+>   #include "i40e.h"
+> @@ -16608,6 +16609,56 @@ static void i40e_pci_error_resume(struct pci_dev *pdev)
+>   	i40e_io_resume(pf);
+>   }
+>   
+> +/* Systems where ACPI _PTS (Prepare To Sleep) S5 will result in a fatal
+> + * PCIe AER event on the i40e device if the i40e device is not, or cannot
+> + * be, powered down.
+> + */
+> +static const struct dmi_system_id i40e_restart_aer_quirk_table[] = {
+> +	{
+> +		.matches = {
+> +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
+> +			DMI_MATCH(DMI_PRODUCT_NAME, "PowerEdge C4140"),
+> +		},
+> +	},
+> +	{
+> +		.matches = {
+> +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
+> +			DMI_MATCH(DMI_PRODUCT_NAME, "PowerEdge R440"),
+> +		},
+> +	},
+> +	{
+> +		.matches = {
+> +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
+> +			DMI_MATCH(DMI_PRODUCT_NAME, "PowerEdge R540"),
+> +		},
+> +	},
+> +	{
+> +		.matches = {
+> +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
+> +			DMI_MATCH(DMI_PRODUCT_NAME, "PowerEdge R640"),
+> +		},
+> +	},
+> +	{
+> +		.matches = {
+> +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
+> +			DMI_MATCH(DMI_PRODUCT_NAME, "PowerEdge R650"),
+> +		},
+> +	},
+> +	{
+> +		.matches = {
+> +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
+> +			DMI_MATCH(DMI_PRODUCT_NAME, "PowerEdge R740"),
+> +		},
+> +	},
+> +	{
+> +		.matches = {
+> +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
+> +			DMI_MATCH(DMI_PRODUCT_NAME, "PowerEdge R750"),
+> +		},
+> +	},
+> +	{}
+> +};
 > +
->  	if (fpe->mmsv.pmac_enabled != cmd->pmac_enabled) {
->  		if (cmd->pmac_enabled)
->  			static_branch_inc(&igc_fpe_enabled);
-> diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
-> index 0a2c747fde2d..2ec5909bf8b0 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_tsn.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
-> @@ -6,6 +6,12 @@
->  #include "igc_hw.h"
->  #include "igc_tsn.h"
->  
-> +#define MIN_MULTPLIER_TX_MIN_FRAG	0
-> +#define MAX_MULTPLIER_TX_MIN_FRAG	3
-> +/* Frag size is based on the Section 8.12.2 of the SW User Manual */
-> +#define TX_MIN_FRAG_SIZE		64
-> +#define TX_MAX_FRAG_SIZE	(TX_MIN_FRAG_SIZE * (MAX_MULTPLIER_TX_MIN_FRAG + 1))
-> +
->  DEFINE_STATIC_KEY_FALSE(igc_fpe_enabled);
->  
->  static int igc_fpe_init_smd_frame(struct igc_ring *ring,
-> @@ -128,6 +134,7 @@ static const struct ethtool_mmsv_ops igc_mmsv_ops = {
->  
->  void igc_fpe_init(struct igc_adapter *adapter)
->  {
-> +	adapter->fpe.tx_min_frag_size = TX_MIN_FRAG_SIZE;
->  	ethtool_mmsv_init(&adapter->fpe.mmsv, adapter->netdev, &igc_mmsv_ops);
->  }
->  
-> @@ -278,7 +285,7 @@ static int igc_tsn_disable_offload(struct igc_adapter *adapter)
->  	tqavctrl = rd32(IGC_TQAVCTRL);
->  	tqavctrl &= ~(IGC_TQAVCTRL_TRANSMIT_MODE_TSN |
->  		      IGC_TQAVCTRL_ENHANCED_QAV | IGC_TQAVCTRL_FUTSCDDIS |
-> -		      IGC_TQAVCTRL_PREEMPT_ENA);
-> +		      IGC_TQAVCTRL_PREEMPT_ENA | IGC_TQAVCTRL_MIN_FRAG_MASK);
->  
->  	wr32(IGC_TQAVCTRL, tqavctrl);
->  
-> @@ -324,12 +331,34 @@ static void igc_tsn_set_retx_qbvfullthreshold(struct igc_adapter *adapter)
->  	wr32(IGC_RETX_CTL, retxctl);
->  }
->  
-> +static u8 igc_fpe_get_frag_size_mult(const struct igc_fpe_t *fpe)
-> +{
-> +	u8 mult = (fpe->tx_min_frag_size / TX_MIN_FRAG_SIZE) - 1;
-> +
-> +	return clamp_t(u8, mult, MIN_MULTPLIER_TX_MIN_FRAG,
-> +		       MAX_MULTPLIER_TX_MIN_FRAG);
-> +}
-> +
-> +u32 igc_fpe_get_supported_frag_size(u32 frag_size)
-> +{
-> +	const u32 supported_sizes[] = {64, 128, 192, 256};
-> +
-> +	/* Find the smallest supported size that is >= frag_size */
-> +	for (int i = 0; i < ARRAY_SIZE(supported_sizes); i++) {
-> +		if (frag_size <= supported_sizes[i])
-> +			return supported_sizes[i];
+>   /**
+>    * i40e_shutdown - PCI callback for shutting down
+>    * @pdev: PCI device information struct
+> @@ -16654,6 +16705,19 @@ static void i40e_shutdown(struct pci_dev *pdev)
+>   	i40e_clear_interrupt_scheme(pf);
+>   	rtnl_unlock();
+>   
+> +	if (system_state == SYSTEM_RESTART &&
+> +		dmi_first_match(i40e_restart_aer_quirk_table) &&
+> +		pdev->current_state <= PCI_D3hot) {
+> +		/* Disable PCIe AER on the i40e to avoid a fatal
+> +		 * error during this system restart.
+> +		 */
+> +		pcie_capability_clear_word(pdev, PCI_EXP_DEVCTL,
+> +					   PCI_EXP_DEVCTL_CERE |
+> +					   PCI_EXP_DEVCTL_NFERE |
+> +					   PCI_EXP_DEVCTL_FERE |
+> +					   PCI_EXP_DEVCTL_URRE);
 > +	}
 > +
-> +	return TX_MAX_FRAG_SIZE; /* Should not happen, value > 256 is blocked by ethtool */
+>   	if (system_state == SYSTEM_POWER_OFF) {
+>   		pci_wake_from_d3(pdev, pf->wol_en);
+>   		pci_set_power_state(pdev, PCI_D3hot);
 
-Try to place comments on separate lines from code.
-
-> +}
-> +
->  static int igc_tsn_enable_offload(struct igc_adapter *adapter)
->  {
->  	struct igc_hw *hw = &adapter->hw;
->  	u32 tqavctrl, baset_l, baset_h;
->  	u32 sec, nsec, cycle, rxpbs;
->  	ktime_t base_time, systim;
-> +	u32 frag_size_mult;
->  	int i;
->  
->  	wr32(IGC_TSAUXC, 0);
-> @@ -501,13 +530,15 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
->  	}
->  
->  	tqavctrl = rd32(IGC_TQAVCTRL) & ~(IGC_TQAVCTRL_FUTSCDDIS |
-> -		   IGC_TQAVCTRL_PREEMPT_ENA);
-> -
-> +		   IGC_TQAVCTRL_PREEMPT_ENA | IGC_TQAVCTRL_MIN_FRAG_MASK);
->  	tqavctrl |= IGC_TQAVCTRL_TRANSMIT_MODE_TSN | IGC_TQAVCTRL_ENHANCED_QAV;
->  
->  	if (adapter->fpe.mmsv.pmac_enabled)
->  		tqavctrl |= IGC_TQAVCTRL_PREEMPT_ENA;
->  
-> +	frag_size_mult = igc_fpe_get_frag_size_mult(&adapter->fpe);
-> +	tqavctrl |= FIELD_PREP(IGC_TQAVCTRL_MIN_FRAG_MASK, frag_size_mult);
-> +
->  	adapter->qbv_count++;
->  
->  	cycle = adapter->cycle_time;
-> diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.h b/drivers/net/ethernet/intel/igc/igc_tsn.h
-> index a2534228cc0e..975f4e38836e 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_tsn.h
-> +++ b/drivers/net/ethernet/intel/igc/igc_tsn.h
-> @@ -14,7 +14,7 @@ enum igc_txd_popts_type {
->  DECLARE_STATIC_KEY_FALSE(igc_fpe_enabled);
->  
->  void igc_fpe_init(struct igc_adapter *adapter);
-> -u32 igc_fpe_get_supported_frag_size(u32 user_frag_size);
-> +u32 igc_fpe_get_supported_frag_size(u32 frag_size);
-
-The "-" piece shouldn't exist. You are renaming a function argument for
-a function declaration that shouldn't have existed in the code prior to
-the introduction of its definition. Please delete it from the original
-patch that added it.
-
->  int igc_tsn_offload_apply(struct igc_adapter *adapter);
->  int igc_tsn_reset(struct igc_adapter *adapter);
->  void igc_tsn_adjust_txtime_offset(struct igc_adapter *adapter);
-> diff --git a/net/ethtool/mm.c b/net/ethtool/mm.c
-> index ad9b40034003..4c395cd949ab 100644
-> --- a/net/ethtool/mm.c
-> +++ b/net/ethtool/mm.c
-> @@ -153,7 +153,7 @@ const struct nla_policy ethnl_mm_set_policy[ETHTOOL_A_MM_MAX + 1] = {
->  	[ETHTOOL_A_MM_VERIFY_TIME]	= NLA_POLICY_RANGE(NLA_U32, 1, 128),
->  	[ETHTOOL_A_MM_TX_ENABLED]	= NLA_POLICY_MAX(NLA_U8, 1),
->  	[ETHTOOL_A_MM_PMAC_ENABLED]	= NLA_POLICY_MAX(NLA_U8, 1),
-> -	[ETHTOOL_A_MM_TX_MIN_FRAG_SIZE]	= NLA_POLICY_RANGE(NLA_U32, 60, 252),
-> +	[ETHTOOL_A_MM_TX_MIN_FRAG_SIZE]	= NLA_POLICY_RANGE(NLA_U32, 60, 256),
-
-Please make this a separate patch with a reasonably convincing
-justification for any reader, and also state why it is a change that
-will not introduce regressions to the other drivers. It shows that
-you've done the due dilligence of checking that they all use
-ethtool_mm_frag_size_min_to_add(), which errors out on non-standard
-values.
-
-To be clear, extending the policy from 252 to 256 is just to suppress
-the netlink warning which states that the driver rounds up the minimum
-fragment size, correct? Because even if you pass 252 (the current
-netlink maximum), the driver will still use 256.
-
->  };
->  
->  static void mm_state_to_cfg(const struct ethtool_mm_state *state,
-> -- 
-> 2.34.1
->
