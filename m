@@ -1,215 +1,144 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CEF74A56929
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Mar 2025 14:43:27 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BAB0841440;
-	Fri,  7 Mar 2025 13:43:25 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mj-o5tmphK_S; Fri,  7 Mar 2025 13:43:25 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CF95F41328
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741355004;
-	bh=S7t1tDu0mD9FMYQ5Aud3IOs/e+OZc7U3R8eqzapwJf0=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=qySoLnm0iqUfyZAWlkCyrCqNKWSemFexWttxySfD/BK5QUmhA0xU8IOntvG0zyGFM
-	 P0fUG4LIxMgDbupIx1Gpn8NQW/mCmY0mZtHwlN6Q1JJXwIe1Fs/CgCHhfMUBq7mqqL
-	 2fFI2Ta4a6U6B5CoyWj64nLHyhMjamB2aTT3giOIkUKYR3DNmjHs5rosfSWVxvxgC5
-	 LzaMMDFWu9/bWdcj+2T2oMRhO/me1i5dVzaPQtMVasYlBXJ7Aw/iefb+GypEXcAtDd
-	 ADfzCL5y8UwPC1w497ayQP1M4tLHcFjCESHc/YUB27Xfum77xMhsvCwO9Hzz7V57iC
-	 xgI0FF9F+Rm7Q==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CF95F41328;
-	Fri,  7 Mar 2025 13:43:24 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 1917571F
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 13:43:23 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E68FA56A1C
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Mar 2025 15:15:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DD0C983FEC
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 13:43:22 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1EB3383F5A;
+	Fri,  7 Mar 2025 14:15:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id V6DJ7XSYIrFX for <intel-wired-lan@lists.osuosl.org>;
- Fri,  7 Mar 2025 13:43:22 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
- helo=mgamail.intel.com; envelope-from=sergey.temerkhanov@intel.com;
+ id TdEX5FE8w8Qs; Fri,  7 Mar 2025 14:15:35 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C09AC84108
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1741356934;
+	bh=3O3AnmpQI3jBSfzVaFR0gisRYPo1AftdSa2GSlKHZsw=;
+	h=From:To:Cc:In-Reply-To:References:Date:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=u18FLWGnsC3Y9g0j3L2HQVVSPUhpJ6TyoiFIo90RJEMoZ20vYNpPIuh/OyJWWTmY1
+	 FaOSqpSaLBuSCZRtQzz9+HQd5I4vTxVC8FCmVHf1KmkjNU6lN3O/z6LQ7jVaNnsVF+
+	 cBsIUmXQiLFtc/DNnscbau2d14HUkU25Ht/VI5RWIwBf2sun1xtTtIWlhU/EiJ0ldP
+	 kxQDkuK+6eJTm09EXCUP13vgQJ0ZUrcpMOQc/jCxFbfahHDQZihsREd2011v/fkSUA
+	 TCNXOf71ujUt6K2MZQishDC7fK0mCkCj5KRFibxYJ7VAMrgUd0BCrXWjvIUy6rGrDT
+	 a/TnHBDBTgqwA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id C09AC84108;
+	Fri,  7 Mar 2025 14:15:34 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 23AE61C9
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 14:15:33 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0008A40849
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 14:15:32 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id wLzi9tD0hzcv for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  7 Mar 2025 14:15:31 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=toke@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org D3C4F83FE8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D3C4F83FE8
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D3C4F83FE8
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 13:43:21 +0000 (UTC)
-X-CSE-ConnectionGUID: odOLZzetSQ20Q1saWlEOaA==
-X-CSE-MsgGUID: bYl3CacaTM6UStz1SAfwfw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11365"; a="42437740"
-X-IronPort-AV: E=Sophos;i="6.14,229,1736841600"; d="scan'208";a="42437740"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Mar 2025 05:43:21 -0800
-X-CSE-ConnectionGUID: fQlxr4YBQJeU6TnZnTanWg==
-X-CSE-MsgGUID: rWiUHdOQS+yIeDUJcXja1g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,229,1736841600"; d="scan'208";a="120018116"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by fmviesa009.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 07 Mar 2025 05:43:21 -0800
-Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.44; Fri, 7 Mar 2025 05:43:20 -0800
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14 via Frontend Transport; Fri, 7 Mar 2025 05:43:20 -0800
-Received: from NAM02-SN1-obe.outbound.protection.outlook.com (104.47.57.47) by
- edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Fri, 7 Mar 2025 05:43:19 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=t6ulNXPZT+Fwb/2eSpifiPDKIYBgVQ2ezbY/Hezg+r/NDCCzq54NMwpOlpkE+NBeK7Ng2XsizjzAPPJ1y2nhwlpr2h3nRyAnztr6MeWojDOR+a1/20msfG9ka97PkCmTCsc4O5GPKiDSxypnF2oZfnBqnxaXCGkzZiuBxwVJUK/3DaNr22cCjL9dZJQuwmO8lYFPerB4MAU9fdt0h6dVW4fiX9r0RvejGfDEPILECz5PEGyp1iihAR7nmyh/pAEsgopKNmte+ce26U8h5TAYyRr7dSoBWvd5suc6DEge3n6o3svj9JeEgvXLgEC30Bazh8tp473E26ladVW4Q2OkoA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=S7t1tDu0mD9FMYQ5Aud3IOs/e+OZc7U3R8eqzapwJf0=;
- b=xw+ordSGHftvY9ATR22dhxGQC1dCAj6J/lLtTwSArSDaeSarKJJEb1KpyNi4IHTkb9CI6CfVOKix+By0kUB9KBT+9o21P4PY3R8rsS9mMQuC86033DDMsBSeqlSZzi04r/WHRc4FI7EfI3IdeLGRoG/Smg2xaROAQ/CiEE1T2neupIwbAe5tKAKCcBGaEZ1GMzeFf23yYvZTXnHcpBeVGPDvIIT2wqM+1v3iek+EaiONrCagIuSx340LshYwxJkPPg6q1TQJxrN2lI7fFfcmk4pjsz5HuSWDUSOoLpirv6NwwvhKLcSUvq2i0UtOXhdo5cNDuEzp0yPQErkYpPr82Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MW3PR11MB4681.namprd11.prod.outlook.com (2603:10b6:303:57::14)
- by DS0PR11MB6496.namprd11.prod.outlook.com (2603:10b6:8:c0::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8466.28; Fri, 7 Mar
- 2025 13:42:58 +0000
-Received: from MW3PR11MB4681.namprd11.prod.outlook.com
- ([fe80::6561:fd02:e89d:5b06]) by MW3PR11MB4681.namprd11.prod.outlook.com
- ([fe80::6561:fd02:e89d:5b06%5]) with mapi id 15.20.8511.017; Fri, 7 Mar 2025
- 13:42:58 +0000
-From: "Temerkhanov, Sergey" <sergey.temerkhanov@intel.com>
-To: Jiri Pirko <jiri@resnulli.us>, "Kitszel, Przemyslaw"
- <przemyslaw.kitszel@intel.com>
-Thread-Topic: [PATCH iwl-next] ice: use DSN instead of PCI BDF for ice_adapter
- index
-Thread-Index: AQHbjtx1432CfXVtpEiz0d1uffDV47NnniAAgAAG/GA=
-Date: Fri, 7 Mar 2025 13:42:58 +0000
-Message-ID: <MW3PR11MB4681A62C71659C430281A15680D52@MW3PR11MB4681.namprd11.prod.outlook.com>
-References: <20250306211159.3697-2-przemyslaw.kitszel@intel.com>
- <pcmfqg3b5wg4cyzzjrpw23c6dwan62567vakbgnmto3khbwysk@dloxz3hqifdf>
-In-Reply-To: <pcmfqg3b5wg4cyzzjrpw23c6dwan62567vakbgnmto3khbwysk@dloxz3hqifdf>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: MW3PR11MB4681:EE_|DS0PR11MB6496:EE_
-x-ms-office365-filtering-correlation-id: e7572e4e-042b-46b9-75d9-08dd5d7df8dd
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0; ARA:13230040|376014|366016|1800799024|38070700018;
-x-microsoft-antispam-message-info: =?us-ascii?Q?mwpZQlufpZ3FmlYUPgZ7UNz6ATneLMGeGfn3jjXWQmz8BxtS/CJNbDRhBR9d?=
- =?us-ascii?Q?uZOgw6ZvBz3gvIRvLF56bOIRySxvlasSFZtd/fgJrwuh4ucdZkkO2utMFWbr?=
- =?us-ascii?Q?FAzKQK1k+Bi+3ciLmUBIXHC8i8dve3/yIsWiRcG7aKdXKBNGo26I1YKe+J4U?=
- =?us-ascii?Q?Tuj6jAb9rv5kTp0G0OGxWWJ/ve/dtPZ4ZWSCd/+aj+SZmM7P5P7TCvVpHkrX?=
- =?us-ascii?Q?L2Mo2T0KBVLbX/mmEYx0BzwBmPE3Yhqv1HVRBYpOeYUkwTlPDjAP4A7e2X5z?=
- =?us-ascii?Q?izVy8wC4ZAulBTHHFZqpxTFKPmjrqt8qtu1pF7ZYbQGzLoP7Fj64SQK1XyUB?=
- =?us-ascii?Q?JiqjMNXFKIYnLStZEGgDYftIj8dzNCXP/QiKm94xtKOH0gbfXYjwbsHN7NyJ?=
- =?us-ascii?Q?kmQED2oFvCdFf8VEI8rMpzMdSsTYz77G/3BqPtTUvW6pNzGfXbyBw3Vx8ohF?=
- =?us-ascii?Q?NPnfNwqY7R+NfPDyAMjxDU9Lw+vpePtUE1DoAuGq9MTTfpJ0Zr8befktQlDj?=
- =?us-ascii?Q?P8BZlOg+6ZUbmCa35OTSatELkb9qMJv/Dhk7gCaWUuVD7poTtt2j9GVpJZk2?=
- =?us-ascii?Q?uEpXlKyxuwo9XlssWtxvQkVVf/L1GcVB2jcXqLPKfx+uAXDXctGLJocDbhyC?=
- =?us-ascii?Q?fF/XVQmnxV15TqJal+ofxPklPzOAc+mzYHT/AlIwGMXcQQsUlV3CeSJb7BD5?=
- =?us-ascii?Q?7cENG/RlyUzqt5I0mg/ArGLzUAHJ46OX7N/jqRRhwmZmsV7j9W0NioOCKhPa?=
- =?us-ascii?Q?RyK40vsgsJdTwhNTa8Nxou7vjFbvhxVnM6A79E4QyCF21qhBU/fFGgDXqMxz?=
- =?us-ascii?Q?O1xaZqXfaDby7p4JajaXGl+fJHDabYkcdyco+9shfpaVY+YrViN63yCtB18e?=
- =?us-ascii?Q?AkKnFGU6ZWRoIq+bzIIZjAA7NAmGXJWTet/OCID9uC17CrZu2K403xRWHS3d?=
- =?us-ascii?Q?/kYQ7h0gvZ3R4Iw+yd3vevHFXe+GaAQQeBmJ+c96Lwj38wB+nG5Tvx9A2FCH?=
- =?us-ascii?Q?h0+ygwmfFoT2XJ2lqqtCV+wBam6SKl6/qFLPaxEgFKt7Qd1NkSJgHZtCR5GI?=
- =?us-ascii?Q?sWHaqKo5neZm1/H12ULj1hqQQKE2RdR6GPdziKdQu/hAYPBoy94E+Q2fKAvb?=
- =?us-ascii?Q?MIplkEZTQgxrW8cpQ8+d2oUqrQn+5S7f++ulAdDqAGTmXMmNXt0enia+H1lH?=
- =?us-ascii?Q?aZTHBy9aYvQDPx1vuVro+xXTvHzAHLYHmoX06hTLCKU6vrjuVt+8cHGY1f/5?=
- =?us-ascii?Q?sjPLkgrNx8wg5/H+KJfj4Mace0WSvWjJyspSpRnqTmnHu6e5ArIg67MBSBVP?=
- =?us-ascii?Q?oUt2RUhvWnqzij831GBjNT+WrfYo6pxf47VxBJB6S58JlwkAaLOqShrv/F3H?=
- =?us-ascii?Q?eXP62wDVhFtsMC50b8QVqtXL/cj53tBR3u22pyE+TxNI/iswkHUAcgutBFJx?=
- =?us-ascii?Q?pWGCyP4DSmhTkFOlDk7DQLA7giEqgBBS?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MW3PR11MB4681.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(366016)(1800799024)(38070700018); DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?ud+vLGXES7MNJa5UzF4UeRjQcxsrXGnpHEpCOyqLYKdCkLTVnK6E36ZuYQKR?=
- =?us-ascii?Q?E6xZG5Y43hTgSVEENCQznzTApGTyImto2SAXlIiHgU/m1blV8INvY6gnix9P?=
- =?us-ascii?Q?deZbjOEMyCIpQ/Az+FTs4lRubf1UFm6XyHae8gyxrcPK+1+5kv9hY03obzQW?=
- =?us-ascii?Q?3QBceJceaX6vY2k7Pj8oCdr2GS2uo9AHb4DIa+CObA7eiOvOwoRINSG8p1QQ?=
- =?us-ascii?Q?CVSv83tpbq7U0KHZ/AlEqCwMVEnaVgdAv/6/jM7JlusmY1UP8CzTN861zEP7?=
- =?us-ascii?Q?VTehYDzePkRYIhAOg3fL7JvEbskE64/4pK4e6dCQTc//AIOHwHk1tpljniIW?=
- =?us-ascii?Q?48aVo7xkIAtntV5rK5+Wqfdlvp2eqlrYMNLc/uBecZqEYYOFzJNqSL3hS+9o?=
- =?us-ascii?Q?TheSLufPvzMW25jFrZ3lGGFowvlr1ItVUBXM2QWfyGsFliXwAA6VLaj5hcj8?=
- =?us-ascii?Q?ttMsCIiZYD/O4f0i/3b48k7m2YMPHE/eZoRhl1QIfQ7H+GPMUA/MJTQiEoeN?=
- =?us-ascii?Q?IjCg9djgbSLI8/u0bh1IMy1nboY+Vdi5gP6LR+UYb+oV2WW4koEZS3aFnbsv?=
- =?us-ascii?Q?EKUF2O3h7X2q/ZCPPPakAIY90agTSSoHaMN946QKCIaOuC7Muxi5qO2QJlFL?=
- =?us-ascii?Q?sF0NYlrebjwB1sjNGQ0xczS60xyhmt42AQKL7kyj5au4EpBHa/hHiwlHfYSB?=
- =?us-ascii?Q?7A/lwKL4Jd11ynWR5yuwBJ/qE3T2KkrxF6/5CHFRa81DdlKfxfNd9awF7oXx?=
- =?us-ascii?Q?hfi86IxlWYybRtsg9BEkKVqsI7bTkCIUfcuouZ+Um+tLB/HuVrEouvWezbhe?=
- =?us-ascii?Q?8XzMqJKkIU/TPHCCzAeIT7VgCH1rFKoVfzv4bP4EWc6lrZKDn1fXqDC1x+bv?=
- =?us-ascii?Q?KGrYV8Y18s5uPl2hSGgoHbEvwe56fjQae4loeXWuzw9GZtGlnGoMVFZV0+5x?=
- =?us-ascii?Q?vCZR5BR3VD1VdU+M84aZexPf8IPF7w6Gz4VEQ33rQMqbTWm26nnWftLz9Njh?=
- =?us-ascii?Q?NpglgZJAAEVsLAFYadzfjWQ9db4By3aO24Irz3HGvhaxevk7bcShqFatYT9F?=
- =?us-ascii?Q?NX4rHsFYJLXmDSeI383To1AHJELxh+OBIas3hM95MUKWVsnayX3kCbVns+Tf?=
- =?us-ascii?Q?ITse0aEvW6fNG7SlAwas1eoYT5E4v/uIgfekTog++C2BTkv1UFhCKHSYXASH?=
- =?us-ascii?Q?GJB22ZezynL+A5gKnqfBOc8br4OT3WEMKRZvVPWgN30C/yay7RkY+G2ekGNc?=
- =?us-ascii?Q?anBpTAUIDdq9Aimz+LKt14B1/fGz0GK0LR6caXCmzULbX8cor3K/v3e/+ien?=
- =?us-ascii?Q?6YquPstO6+O/itLO0lNZ6RRhjjx5nnnsYAR23Zg6U4g7mPTOo6aKwZDUMfK4?=
- =?us-ascii?Q?IebvJyvrfFPq+jcN+Bhl3aI8KUKjV2eGKwObA04L3k2WBaEdx+o7CQxCOK6j?=
- =?us-ascii?Q?WljHnMDxBEkTwyGmm4ZDveYzVra1QdJVunYHJR3RckrgBMzPzCwkXxanZhxU?=
- =?us-ascii?Q?4zrIq1hAx49zh9n/dYo7Ro2Wo8l0rCIdPbdXd2AUckpOoJgbClzLv1bb1XBb?=
- =?us-ascii?Q?nSf2d3d/GM/FPqvcM+mFi57HUk898nk+StaY4gZQ1eeXaApNhqFjRphQUUcs?=
- =?us-ascii?Q?3w=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org AEF4140843
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AEF4140843
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id AEF4140843
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 14:15:29 +0000 (UTC)
+Received: from mail-lj1-f198.google.com (mail-lj1-f198.google.com
+ [209.85.208.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-621-azjqsLN3M9y9mMc-TowDMg-1; Fri, 07 Mar 2025 09:15:27 -0500
+X-MC-Unique: azjqsLN3M9y9mMc-TowDMg-1
+X-Mimecast-MFC-AGG-ID: azjqsLN3M9y9mMc-TowDMg_1741356926
+Received: by mail-lj1-f198.google.com with SMTP id
+ 38308e7fff4ca-30bf67adf33so4079001fa.0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 07 Mar 2025 06:15:27 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1741356926; x=1741961726;
+ h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=3O3AnmpQI3jBSfzVaFR0gisRYPo1AftdSa2GSlKHZsw=;
+ b=uyk/E6JQq5YCcBJ5D1FkUU2CUpWqDDTW6E11yG4XTX1B8Baia11vA2Fa/4hN3WKaPp
+ 1ErP+Fe0jFag6keom/tNazYsQ0+mJzCSeFBqq9zhRY2JqBVGR1HVCR1VeXOXpCRKmbLs
+ +zLGCjHOzIAuHVfCr+KCQeBJfGBIT0z2gq04wvWKgFj/zJOGcgxCtVqC2t8nsPKFKGvK
+ gVSQ7oh44Jj2vWAbJtz1vjaggTzusl+vob0fYV6DCYjdrBQQx20WrMleGu0h8NCYL3Lx
+ zKxSDGU4XCWyFasjjZwwPaMQ0+OHs2bWIuxIXImE+4uwM2L5WCVV0OlCFS19oLSYT4gl
+ Suew==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV1d3RWmgXWfDTwSZtUXr1sT6sN/voNB67KncJyPPOcPzjsUJ2aVd03iurtjsSitXwAKrDmXRDvaXDkhh5cHuU=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YzTSgWEOmibKvcZYob+tP863wgW7IE83BeDlJMl72Gg7N1iLRt/
+ SkFAuqiGPKtUDutAmdRTodNuRwDlh6M2hPhremL0BndSuSyr/8UFWpqP+c0c1rub5LK75yC4L4s
+ 1gY7Sjz8x9kbkQUEdxk+4YWYjXyrf0iuk0hZkJUTraSjxjP/bLbrXtg252N0CRdgdWq0=
+X-Gm-Gg: ASbGncvlyBU/xo7ayJFLw7eVv3Aa8vM71ACN7yFMGPQ++q32+elEVPJGWxsrYfQov8x
+ porCrqUNlRzSb2rWsYELtALKV6/n+JL/xTDyBDq3+KOkyjDImE1n4+GsZlBBRNf7/xF3OgZqg+w
+ If5Zorzps9kv9F5+uNsRiddNdOCev/ltOnLz3Io4eUJMmgWmWkp6MTtxjf7uqxxV8AiqtDm1Agy
+ 3ipTuARsDwP/L37cJiotrnhlhqvFiZGZEZklzeotESOTMg0LP10CbiSRmGwKQx6i2PwizV8hHXz
+ i9Fcj678ynjA
+X-Received: by 2002:a05:6512:3e08:b0:549:8c0c:f059 with SMTP id
+ 2adb3069b0e04-549903f7501mr1328615e87.10.1741356925936; 
+ Fri, 07 Mar 2025 06:15:25 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE3xCZIBKOSDK+lcZFrDyk8zQiKyadlLEz2VUX4gZrVM2Ry982AQyl3kHsVBYxqC5TNxfqK0A==
+X-Received: by 2002:a05:6512:3e08:b0:549:8c0c:f059 with SMTP id
+ 2adb3069b0e04-549903f7501mr1328584e87.10.1741356925465; 
+ Fri, 07 Mar 2025 06:15:25 -0800 (PST)
+Received: from alrua-x1.borgediget.toke.dk ([2a0c:4d80:42:443::2])
+ by smtp.gmail.com with ESMTPSA id
+ 2adb3069b0e04-5498ae58e4fsm500345e87.82.2025.03.07.06.15.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 07 Mar 2025 06:15:24 -0800 (PST)
+Received: by alrua-x1.borgediget.toke.dk (Postfix, from userid 1000)
+ id C544C18B8B34; Fri, 07 Mar 2025 15:15:22 +0100 (CET)
+From: Toke =?utf-8?Q?H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>
+To: Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net,
+ kuba@kernel.org, pabeni@redhat.com
+Cc: zhangkun09@huawei.com, liuyonglong@huawei.com, fanghaiqing@huawei.com,
+ Yunsheng Lin <linyunsheng@huawei.com>, Alexander Lobakin
+ <aleksander.lobakin@intel.com>, Robin Murphy <robin.murphy@arm.com>,
+ Alexander Duyck <alexander.duyck@gmail.com>, Andrew Morton
+ <akpm@linux-foundation.org>, Gaurav Batra <gbatra@linux.ibm.com>, Matthew
+ Rosato <mjrosato@linux.ibm.com>, IOMMU <iommu@lists.linux.dev>, MM
+ <linux-mm@kvack.org>, Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann
+ <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, John
+ Fastabend <john.fastabend@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20250307092356.638242-1-linyunsheng@huawei.com>
+References: <20250307092356.638242-1-linyunsheng@huawei.com>
+X-Clacks-Overhead: GNU Terry Pratchett
+Date: Fri, 07 Mar 2025 15:15:22 +0100
+Message-ID: <87v7slvsed.fsf@toke.dk>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: MW3PR11MB4681.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e7572e4e-042b-46b9-75d9-08dd5d7df8dd
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Mar 2025 13:42:58.3498 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ZszJwizhwnSmmU25ACSiw8OnHjq3986gwZhjeZhdOQoMkxJwYyM+R/deABjfB4XHTq50qlQn23yQMKTLWME1g3cgPZUy0ACqKctA2P6FCw0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB6496
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1741355002; x=1772891002;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=0CazqDsOJ/glYypH+WMF5bOAngA1hZVyCeNxDnclaBE=;
- b=cIZ99PjBfQ7YMi0YWR59oKwHyxoL8Vo91FLIlG+s765FSbweMnWrRHd3
- BrGYvzwNOstPzq7fhXphenPAw1XWVUzTJLzwI+sCjUXQYrVIT3irNTphn
- v9fSfrGMWsMaGp4b08RWwJE9bxhlRh8r4iJvnS2YMh1YGglmSkVhf+hub
- KkmM3HVbNwwRhZezh22SObNFysrSdRou1sW5IeMNRH1AvGsqWbULlW9FM
- Nq2isHOOLqNnrxlQpqvSYaT8alyemKShnEFlYIKTC4nGWmBY77RQrdkXc
- X7F836ClZ9hRi8ydJ+2DrCbrVmx9sDojVRNrbbymKZ0937G8+FJGKa1b7
- w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: NhcF0ACV9Xkdlf_jh3RjDXy-okQbyn0JS9-p3iAa7Yo_1741356926
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1741356929;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=3O3AnmpQI3jBSfzVaFR0gisRYPo1AftdSa2GSlKHZsw=;
+ b=Q/kOEZhUl782qrTrTEyAu13c8l17pENgQcckuWSSz5lgbKzlDkkHVx5Q5pvqcvaRKi8ogX
+ tYlSO3DuR46R7RAIwW6mSKCblHqgykKV60/pwh3RUW7C2YIky4TgTdPlet8K0GlRnmbprU
+ 9ARxVac0F8Af8C1wOhPT7IVsZv3fTiE=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=cIZ99PjB
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: use DSN instead of PCI
- BDF for ice_adapter index
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=Q/kOEZhU
+Subject: Re: [Intel-wired-lan] [PATCH net-next v11 0/4] fix the DMA API
+ misuse problem for page_pool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -222,104 +151,75 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Loktionov,
- Aleksandr" <aleksandr.loktionov@intel.com>, "Kolacinski,
- Karol" <karol.kolacinski@intel.com>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- "Keller, Jacob E" <jacob.e.keller@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Comments inline
+Yunsheng Lin <linyunsheng@huawei.com> writes:
 
------Original Message-----
-From: Jiri Pirko <jiri@resnulli.us>=20
-Sent: Friday, March 7, 2025 1:39 PM
-To: Kitszel, Przemyslaw <przemyslaw.kitszel@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org; Nguyen, Anthony L <anthony.l.nguyen@i=
-ntel.com>; netdev@vger.kernel.org; Keller, Jacob E <jacob.e.keller@intel.co=
-m>; Jakub Kicinski <kuba@kernel.org>; Loktionov, Aleksandr <aleksandr.lokti=
-onov@intel.com>; Kolacinski, Karol <karol.kolacinski@intel.com>; Nitka, Grz=
-egorz <grzegorz.nitka@intel.com>; Schmidt, Michal <mschmidt@redhat.com>; Te=
-merkhanov, Sergey <sergey.temerkhanov@intel.com>
-Subject: Re: [PATCH iwl-next] ice: use DSN instead of PCI BDF for ice_adapt=
-er index
-
-Thu, Mar 06, 2025 at 10:11:46PM +0100, przemyslaw.kitszel@intel.com wrote:
->Use Device Serial Number instead of PCI bus/device/function for index=20
->of struct ice_adapter.
->Functions on the same physical device should point to the very same=20
->ice_adapter instance.
+> This patchset fix the dma API misuse problem as below:
+> Networking driver with page_pool support may hand over page
+> still with dma mapping to network stack and try to reuse that
+> page after network stack is done with it and passes it back
+> to page_pool to avoid the penalty of dma mapping/unmapping.
+> With all the caching in the network stack, some pages may be
+> held in the network stack without returning to the page_pool
+> soon enough, and with VF disable causing the driver unbound,
+> the page_pool does not stop the driver from doing it's
+> unbounding work, instead page_pool uses workqueue to check
+> if there is some pages coming back from the network stack
+> periodically, if there is any, it will do the dma unmmapping
+> related cleanup work.
 >
->This is not only simplification, but also fixes things up when PF is=20
->passed to VM (and thus has a random BDF).
-
-It might be worth checking behavior of different hypervisors/VMMs with mult=
-ifunction PCI devices passthrough.
-QEMU, for example, has options to set the BDFs explicitly.
-
+> As mentioned in [1], attempting DMA unmaps after the driver
+> has already unbound may leak resources or at worst corrupt
+> memory. Fundamentally, the page pool code cannot allow DMA
+> mappings to outlive the driver they belong to.
 >
->Suggested-by: Jacob Keller <jacob.e.keller@intel.com>
->Suggested-by: Jakub Kicinski <kuba@kernel.org>
->Suggested-by: Jiri Pirko <jiri@resnulli.us>
->Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
->Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> By using the 'struct page_pool_item' referenced by page->pp_item,
+> page_pool is not only able to keep track of the inflight page to
+> do dma unmmaping if some pages are still handled in networking
+> stack when page_pool_destroy() is called, and networking stack is
+> also able to find the page_pool owning the page when returning
+> pages back into page_pool:
+> 1. When a page is added to the page_pool, an item is deleted from
+>    pool->hold_items and set the 'pp_netmem' pointing to that page
+>    and set item->state and item->pp_netmem accordingly in order to
+>    keep track of that page, refill from pool->release_items when
+>    pool->hold_items is empty or use the item from pool->slow_items
+>    when fast items run out.
+> 2. When a page is released from the page_pool, it is able to tell
+>    which page_pool this page belongs to by masking off the lower
+>    bits of the pointer to page_pool_item *item, as the 'struct
+>    page_pool_item_block' is stored in the top of a struct page.
+>    And after clearing the pp_item->state', the item for the
+>    released page is added back to pool->release_items so that it
+>    can be reused for new pages or just free it when it is from the
+>    pool->slow_items.
+> 3. When page_pool_destroy() is called, item->state is used to tell
+>    if a specific item is being used/dma mapped or not by scanning
+>    all the item blocks in pool->item_blocks, then item->netmem can
+>    be used to do the dma unmmaping if the corresponding inflight
+>    page is dma mapped.
 
->-struct ice_adapter *ice_adapter_get(const struct pci_dev *pdev); -void=20
->ice_adapter_put(const struct pci_dev *pdev);
->+struct ice_adapter *ice_adapter_get(struct pci_dev *pdev); void=20
->+ice_adapter_put(struct pci_dev *pdev);
->=20
-> #endif /* _ICE_ADAPTER_H */
->diff --git a/drivers/net/ethernet/intel/ice/ice_adapter.c=20
->b/drivers/net/ethernet/intel/ice/ice_adapter.c
->index 01a08cfd0090..b668339ed0ef 100644
->--- a/drivers/net/ethernet/intel/ice/ice_adapter.c
->+++ b/drivers/net/ethernet/intel/ice/ice_adapter.c
->@@ -1,7 +1,6 @@
-> // SPDX-License-Identifier: GPL-2.0-only  // SPDX-FileCopyrightText:=20
->Copyright Red Hat
->=20
->-#include <linux/bitfield.h>
-> #include <linux/cleanup.h>
-> #include <linux/mutex.h>
-> #include <linux/pci.h>
->@@ -14,29 +13,9 @@
-> static DEFINE_XARRAY(ice_adapters);
-> static DEFINE_MUTEX(ice_adapters_mutex);
->=20
->-/* PCI bus number is 8 bits. Slot is 5 bits. Domain can have the rest.=20
->*/ -#define INDEX_FIELD_DOMAIN GENMASK(BITS_PER_LONG - 1, 13)
->-#define INDEX_FIELD_DEV    GENMASK(31, 16)
->-#define INDEX_FIELD_BUS    GENMASK(12, 5)
->-#define INDEX_FIELD_SLOT   GENMASK(4, 0)
->-
->-static unsigned long ice_adapter_index(const struct pci_dev *pdev)
->+static unsigned long ice_adapter_index(struct pci_dev *pdev)
-> {
->-	unsigned int domain =3D pci_domain_nr(pdev->bus);
->-
->-	WARN_ON(domain > FIELD_MAX(INDEX_FIELD_DOMAIN));
->-
->-	switch (pdev->device) {
->-	case ICE_DEV_ID_E825C_BACKPLANE:
->-	case ICE_DEV_ID_E825C_QSFP:
->-	case ICE_DEV_ID_E825C_SFP:
->-	case ICE_DEV_ID_E825C_SGMII:
->-		return FIELD_PREP(INDEX_FIELD_DEV, pdev->device);
->-	default:
->-		return FIELD_PREP(INDEX_FIELD_DOMAIN, domain) |
->-		       FIELD_PREP(INDEX_FIELD_BUS,    pdev->bus->number) |
->-		       FIELD_PREP(INDEX_FIELD_SLOT,   PCI_SLOT(pdev->devfn));
->-	}
->+	return (unsigned long)pci_get_dsn(pdev);
+You are making this incredibly complicated. You've basically implemented
+a whole new slab allocator for those page_pool_item objects, and you're
+tracking every page handed out by the page pool instead of just the ones
+that are DMA-mapped. None of this is needed.
 
->How do you ensure there is no xarray index collision then you cut the numb=
-er like this?
+I took a stab at implementing the xarray-based tracking first suggested
+by Mina[0]:
 
-It is also probably necessary to check if all devices supported by the driv=
-er have DSN capability enabled.
+https://git.kernel.org/toke/c/e87e0edf9520
 
-Regards,
-Sergey
+And, well, it's 50 lines of extra code, none of which are in the fast
+path.
+
+Jesper has kindly helped with testing that it works for normal packet
+processing, but I haven't yet verified that it resolves the original
+crash. Will post the patch to the list once I have verified this (help
+welcome!).
+
+-Toke
+
+[0] https://lore.kernel.org/all/CAHS8izPg7B5DwKfSuzz-iOop_YRbk3Sd6Y4rX7KBG9DcVJcyWg@mail.gmail.com/
+
