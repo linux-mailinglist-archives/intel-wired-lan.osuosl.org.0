@@ -1,220 +1,93 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A0D4A56176
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Mar 2025 08:05:17 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9292DA563DD
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Mar 2025 10:31:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9131360741;
-	Fri,  7 Mar 2025 07:05:15 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id nyu6l8z1tKkQ; Fri,  7 Mar 2025 07:05:14 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4B8FE60C24
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741331114;
-	bh=d+nttruWy7cpkbQlIIDnqB5oVSNRnKbDw10z5H2KBI8=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=DBTNKCNrg0RjBVhIODCWoSo6IRj/Zcgsl8zmeiQRt/5oPllEbWWG3V/0W2RfRwpSo
-	 4WieCaX0lHvtxUSMtc5uEpHwCV5J49c7MFYEYLXeWdk/athtbRNJ4k1AzSe2w3+gHR
-	 EahXolml54I00EqKOd8X7w6v+ePO/ScgZqX7SHMm/t3hla1VGAmjdgjmkP60JcJtXx
-	 WVxVu65n0wuj62/96jDHyuvb+UZCIdU2al8rYT1P2b9E1lImqQIiHYmKwptKrZDBmC
-	 vbDQMQwpiQUMTomeD5pclGHfU0J/k7lclG4ohtaxEVAb88zZ+sDGnGznaMkTtM5AG5
-	 nLl8CWLshqw4A==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4B8FE60C24;
-	Fri,  7 Mar 2025 07:05:14 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id C68DB71F
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 07:05:11 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B5AE381171
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 07:05:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E58B281D65;
+	Fri,  7 Mar 2025 09:31:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id yZbHT-Ru6U0K for <intel-wired-lan@lists.osuosl.org>;
- Fri,  7 Mar 2025 07:05:10 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
- helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
+ id gytr06wNe-r5; Fri,  7 Mar 2025 09:31:39 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AD05581D19
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1741339899;
+	bh=FnL8+d8QIQFJLw758D9eNlIkfTbijiDJ4bP+7joZ1AA=;
+	h=From:To:CC:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=KisZdRMZ6aSdpzmw9/+RUTsA8EthI73tHqbucyNJ08p3ERtaR8JTNdiCAj5a6siml
+	 WAse7BkYis7J1RlnQMOelkVrWIreH3dcbRVCzCr7iFtFrfQ9noevieuzDdQqQrzOY3
+	 lIHnsFbHUTCbDdpFY0krkCvlYKrcoCnyXy/DoPOVcDgGtiwFeQtZkNTb8U5MfdF6ZE
+	 JP6DPnagkmFm6GUZufpUjExLaQYLYDMuHPLTuuAC/qrJTMx6vNKnMXmRTeSwLNpfhJ
+	 A/9tvZ2ew8XT6TdoxNM54tRd12Kx76vVBP7GeomjKAh9WXy7oCugs6OU0z+Nw7N/3x
+	 YNEMhrdjFYlRg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id AD05581D19;
+	Fri,  7 Mar 2025 09:31:39 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id E86B971F
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 09:31:37 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id CC3BF81C6E
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 09:31:37 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id fVwgPGC6TZAI for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  7 Mar 2025 09:31:36 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.187;
+ helo=szxga01-in.huawei.com; envelope-from=linyunsheng@huawei.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 78F6F8112C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 78F6F8112C
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 78F6F8112C
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 07:05:09 +0000 (UTC)
-X-CSE-ConnectionGUID: n0kGZ6LZSHC2+3bjBCeyvg==
-X-CSE-MsgGUID: GmPIBnSJTiy8lU+/jgS7Kw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11365"; a="29951706"
-X-IronPort-AV: E=Sophos;i="6.14,228,1736841600"; d="scan'208";a="29951706"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Mar 2025 23:05:09 -0800
-X-CSE-ConnectionGUID: o85piac1QkKxHLCHhTIsmg==
-X-CSE-MsgGUID: 7RWvVpcmRyKbnkmx4Uc8Bg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,228,1736841600"; d="scan'208";a="119755257"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by fmviesa010.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 06 Mar 2025 23:05:09 -0800
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.44; Thu, 6 Mar 2025 23:05:08 -0800
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.44 via Frontend Transport; Thu, 6 Mar 2025 23:05:08 -0800
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.169)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org B622881CAF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B622881CAF
+Received: from szxga01-in.huawei.com (szxga01-in.huawei.com [45.249.212.187])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B622881CAF
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 09:31:34 +0000 (UTC)
+Received: from mail.maildlp.com (unknown [172.19.163.174])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Z8LY91mghzvWqv;
+ Fri,  7 Mar 2025 17:27:41 +0800 (CST)
+Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
+ by mail.maildlp.com (Postfix) with ESMTPS id 9849B140157;
+ Fri,  7 Mar 2025 17:31:29 +0800 (CST)
+Received: from localhost.localdomain (10.90.30.45) by
+ dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Thu, 6 Mar 2025 23:05:07 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=VYEn2ovzX7+jUuCmhZ0wltmcb0HqBveL/HfzvQxYcnQLzxSE3WDNii1t7sn9ynDL/IY6iLTNVvtrYdWMtONVrCUULowaSkBb+vvwHR0ZXCpscfH0Jzjtn6N9hPrU7892OXWtgL3CLylL6p+vBVKpKki87LDIy5LL64VOjMlwBKQaFG0vDei/Spp5fCXA1UhxD20NYvOrlqE62vTaMjNT1l8OELuUyQx8WY2ZttFp8VUngRS/Bs0fTvQefGLKSPmhZn9ca61WltWMTtwgMnaslQy6ATK/M4BUz/qw38odlCidpaURAFygXRiCHl5JXUnHox6IIQARsXjYGv/hjac24Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=d+nttruWy7cpkbQlIIDnqB5oVSNRnKbDw10z5H2KBI8=;
- b=xsiGMxsoxegfrlBQUcgMYQrA6e89N61xa8qkZzdz5RJfalI4NSHBHWWhQrOIVAbmHMWrOUndeQdBTbQJAbqYSODALkHvRZhE0+HkO0ByglzOUrePYJIQN+S7Dr6YEObo9Y0m/2vfKgXKVJqj/8y+Dj2qRAT6yGzS0AlAnolsJ6mNyxODnFsGRzNsw6ykMF9hzq3dLuiErNzV6j9dN09AImOhZkNCDXFrPxpfljVjUK4xQYay3hDE8zrtXHZLr/YNtqgIK30MABV4FYtQ3XJrtQdbEAIKcFdqVCVGg6ad8V6g5mprpR5XVaphMONdC2rdjIDo73VQ3nCjFdPIbXQ+IQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from SJ0PR11MB5866.namprd11.prod.outlook.com (2603:10b6:a03:429::10)
- by CH3PR11MB7771.namprd11.prod.outlook.com (2603:10b6:610:125::6)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8511.22; Fri, 7 Mar
- 2025 07:04:47 +0000
-Received: from SJ0PR11MB5866.namprd11.prod.outlook.com
- ([fe80::265f:31c0:f775:c25b]) by SJ0PR11MB5866.namprd11.prod.outlook.com
- ([fe80::265f:31c0:f775:c25b%4]) with mapi id 15.20.8489.025; Fri, 7 Mar 2025
- 07:04:47 +0000
-From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
-To: Jesse Brandeburg <jbrandeb@kernel.org>, "intel-wired-lan@lists.osuosl.org"
- <intel-wired-lan@lists.osuosl.org>
-CC: "Brandeburg, Jesse" <jbrandeburg@cloudflare.com>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>, "kernel-team@cloudflare.com"
- <kernel-team@cloudflare.com>, "leon@kernel.org" <leon@kernel.org>, "Kitszel,
- Przemyslaw" <przemyslaw.kitszel@intel.com>, "Ertman, David M"
- <david.m.ertman@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH intel-net v2] ice: fix reservation of
- resources for RDMA when disabled
-Thread-Index: AQHbjsE4NrkfeKgnxEeJR4TcjeH4dLNnQMcg
-Date: Fri, 7 Mar 2025 07:04:47 +0000
-Message-ID: <SJ0PR11MB58668A82A07F8D3DCC4B9159E5D52@SJ0PR11MB5866.namprd11.prod.outlook.com>
-References: <20250306175640.29565-1-jbrandeb@kernel.org>
-In-Reply-To: <20250306175640.29565-1-jbrandeb@kernel.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SJ0PR11MB5866:EE_|CH3PR11MB7771:EE_
-x-ms-office365-filtering-correlation-id: a31a592d-df9f-4900-f880-08dd5d4658aa
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|1800799024|376014|38070700018|7053199007; 
-x-microsoft-antispam-message-info: =?us-ascii?Q?csraULbVTXfbGOxJ1/7RgDOz/FtDTm4/cF7yRQW8eVGceBGYBq2zxHdH1I3x?=
- =?us-ascii?Q?yrzoi3YXOLfkbwQqbI+YUB8pGXDZ9LG3cp7T4l0J3sFk9j9qLbQcOLaBENpT?=
- =?us-ascii?Q?5OwZggkuQMyKxaX82mD9rayO89hrnQ2yjqncuatDxvDsSjXKboEQWuirzwwW?=
- =?us-ascii?Q?EU14ePerS1Y618pX8y0V5RqkJh57ByPTxrgC1RCxlUG+cxy3loFLKmrOMLBf?=
- =?us-ascii?Q?oEA1kNKvQ3s9JQqBvWItNnJYPr2i0FihtrjuYbBL8M/GtQqMTUaEOM0608VY?=
- =?us-ascii?Q?VD9O8PTXFJv5I1QamW2Ne5pVWtJoJk6cCY/dp9bSEEzgW/c5sCyVOvZ6m108?=
- =?us-ascii?Q?9d76UkBH7Vm9s2S1JqYtuSL4GW5jR03T9h7w47iS2MTytQznkBBBUFnmIrs1?=
- =?us-ascii?Q?EGJY2cbgvA8IfcjPsi6wrbOR5ipkMPiKZac5x7PV2L3S4AWpGDwADEgOmSuW?=
- =?us-ascii?Q?5bE07gc9Q2NY7YBk7zdJOR5vXFPRct8aL+YMClOlHZC5VXqqehHMVCwUksxH?=
- =?us-ascii?Q?qb1n9sSS5UNtcrYhIyPqYSKQLxEg9JYN/jXU5khVQMPuHru2ROVl+qp1/hOA?=
- =?us-ascii?Q?dgqknGpCNNmuycImHfKPzvh2Db/vhgPcC/kwQzw0K45BfmKsbjMhQ14J8M+r?=
- =?us-ascii?Q?7Y9w4Q1Q9ImOoV6peZgFDOnBTNybvcREm9R2qS08ZDeD7MAhbzPGcuK5XlYB?=
- =?us-ascii?Q?Z3X15tSVgGNW/A9f1qz3fkAwX67/8L76pmtWZ7/Jd+CrUdNEnTv/L+B0U5Um?=
- =?us-ascii?Q?DB7PpJIIeJbTVa7HckvCrgQ6iihdhbTqN6me/vsOmc1hiz+jrS1wWItXs+BN?=
- =?us-ascii?Q?JQAhlaj4uqg0TmlfLH7AZSTn5/fpTOGIGAlgBVzTb0BEu6rrgbRV9zr6pXfH?=
- =?us-ascii?Q?q75r0qAASGqf7PFYIzVzNZgfw5gBGzLWg2AR2Gz5Rg1BM1oFTUm2i1mhZBRs?=
- =?us-ascii?Q?BFfC4uc1bf0YhiBEu5SvddbeR3Id9jyoZo5irDzC20/P/E07VNyy0N02vpJs?=
- =?us-ascii?Q?eRrhaDET1Y9EE4dVkdFhpPPvJaiJ3muVVPBXHSnhR2yQQrn6ECxxtLciFgV8?=
- =?us-ascii?Q?OdyBtDNsqdj0c4LIyGHVoe+2+kHmfkX4dSfx3Jl5t61zep+U0VbLJ9Z45MvP?=
- =?us-ascii?Q?KsttbRdeZu5wGax2+M12YvjZ0ZiRPhOi5QHlWMKuPxPuZD95QdaRMty9BQ84?=
- =?us-ascii?Q?UMRZD1yfd/MDnziIIhZTKglrnFntfgsVgGzQfSJYulaQ+jfzAdJHMLlt1zl5?=
- =?us-ascii?Q?srD3OxrLvc9bUgef0X9f6k9IDjc+/Hc7qHZAJGFiaCtgSN2YwH0Mp6mUkoWz?=
- =?us-ascii?Q?S+q3OsW294DcQszH5hGzwNi5jmjCYQJBc8bEWcjcMGraRZENbsQ7Hn2bLC3l?=
- =?us-ascii?Q?D24na5bXnA995yIXuABdm8td98y7suSwGo6cja0TY/uWWSZzWdUujBkH8HI3?=
- =?us-ascii?Q?vDcy+u4a7iiXS3qCaKqyYCnnYgZb7Glo?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ0PR11MB5866.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(1800799024)(376014)(38070700018)(7053199007); DIR:OUT;
- SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?GzRKYBpMIPX/Xy/lZJ7+vSn49IbRG45nVDPPXz+QK9acGDZy5xZe5Cv3IKwN?=
- =?us-ascii?Q?SgJDSR6CetxxTolkgev/Gbny36myZ25VJrlQTeWy5+rKfaieqUO1mTg5R3B5?=
- =?us-ascii?Q?swNFiAWZmfFjMY7inOJ8DlZjXkWOFf9HUFGKBtEpmsfsi+Zt0hmiYrYA3HOG?=
- =?us-ascii?Q?OR1LgNkFzU2dZQ7OlEFziQaYs2Rx5Inbt0lARzHcZM1DCsQSnzPAI8CiEYei?=
- =?us-ascii?Q?6YoQ8klnwmTN5SCFumegxOIqnGYIJkSdj7TT/ZZtuzysTob/kCA1zG7UgDOG?=
- =?us-ascii?Q?MwSs9rG0HeUU3uAUx0dNUZ1oCVntVshU5LVECuwakozfo7orLT2QhPzLrppy?=
- =?us-ascii?Q?aJBmcOR35B6Okf+gPNDgrE1SMP4fP8MR6uq3dwlOoGpAWVQ10vdxDoN6V6pg?=
- =?us-ascii?Q?foYoGTQ1oLZZ5vQADEZVOhotPEe1FBBCWd1ovYVklwZe7e1OWKikz/Ytw57v?=
- =?us-ascii?Q?wh3nnlDl1ZiIvH/2ka55JLt0WYPmwbl3/ArMQOXQjW7pJJBwQeZrdzwB4viu?=
- =?us-ascii?Q?nxvyHqqofQU7tUlernSiphKTDZV+jxg4B2XtJVBa46gC7JVPRWq9qzwfCqHF?=
- =?us-ascii?Q?zyb6wDWaxVU4gtwf7Z8GW3LPLOaFhQF5Awjc3U9Fd6Dns2n3taEJ1DlHKqwn?=
- =?us-ascii?Q?12PARUa6/gyNHo57PvSUsv89NzZ2v2jut4wo/SnBORkBytU4pkQjc8SL2FNU?=
- =?us-ascii?Q?u6zwL5suRtIT6ssjnFLOoUSlsfhF1KNd2iTmQojvM01rf46CPCkpXBY5XcZK?=
- =?us-ascii?Q?h57bgr17ztKEvUN+N91/h7+fiBqFXOPvoKHZSf7Kdzs5UFMqGd5+HdtXd45V?=
- =?us-ascii?Q?qhW/3/HcD+3tazQJksHU2f9TODSTEPifdkw35/liKuScXck8Pq43uKbNklyJ?=
- =?us-ascii?Q?6rtM8MNTRTaSoqCyuu0kLjGLBey8Kih/r+v69QUVeWKA+Ruai0Vqi5M5q9wv?=
- =?us-ascii?Q?tjPehGgnDSrdC4tdsG7u5v8dBbyFTVnz+NMgVwHvwk26aqECK1pnob3WxJBh?=
- =?us-ascii?Q?j6aWJXjsUs/8p5QoNmFRVu8TKH+gcl/NowhvUVfkr51nyqzW7qm3dAsG6xV2?=
- =?us-ascii?Q?lCaf3dy32c0JABGqO59oHUF6eLO40BdjsBBcwll6OQCP01oxg4EXL9AWPDg0?=
- =?us-ascii?Q?dHuMa1Ak4CDpbnGI6FM7DuXZ110uoHUW3fteHi4aDYCiQStxLY2VWU8+74GB?=
- =?us-ascii?Q?o+xIRLFcLs9wrc+5V8LB+uGufI7SGiNbAm/0GnQ86WwHWaWC3Rm9/FAkN/tt?=
- =?us-ascii?Q?X6ezOQLd1vkJOW/sihBG4x6ScBFwE4IIPSew69RqrjFAK2/UyhF1GZaFquOQ?=
- =?us-ascii?Q?ceRbuCorxL/CKRLCe5z+71YMst4kyY+5MM1qxEFR6WMk452OU4DpW7U7M0sj?=
- =?us-ascii?Q?OUl7G0OAulcBQ9dP2Zm9x3UnWMFQ/WFSeaE9n1/sEAMOa+jD+8XM344L1hf4?=
- =?us-ascii?Q?GIQs10I0VtcBWwuATHlISfE97esmnMLW0VN5teD/DHSLAUeoZopLRCu2xHrf?=
- =?us-ascii?Q?qMRk6uSmTfvc5upK7ewOb4wu8Mel6+YNRWpE2mHSqpSu6i5tlAfXIOQWuoW4?=
- =?us-ascii?Q?OSPRmHnet62poj4FY9XgwNsuTE4X+IbqnBQzgfQ1KL6tsSxzvtHoS2hik7Ep?=
- =?us-ascii?Q?ww=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ 15.2.1544.11; Fri, 7 Mar 2025 17:31:29 +0800
+From: Yunsheng Lin <linyunsheng@huawei.com>
+To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
+CC: <zhangkun09@huawei.com>, <liuyonglong@huawei.com>,
+ <fanghaiqing@huawei.com>, Yunsheng Lin <linyunsheng@huawei.com>, Alexander
+ Lobakin <aleksander.lobakin@intel.com>, Robin Murphy <robin.murphy@arm.com>,
+ Alexander Duyck <alexander.duyck@gmail.com>, Andrew Morton
+ <akpm@linux-foundation.org>, Gaurav Batra <gbatra@linux.ibm.com>, Matthew
+ Rosato <mjrosato@linux.ibm.com>, IOMMU <iommu@lists.linux.dev>, MM
+ <linux-mm@kvack.org>, Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann
+ <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, John
+ Fastabend <john.fastabend@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, <netdev@vger.kernel.org>,
+ <intel-wired-lan@lists.osuosl.org>, <bpf@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Date: Fri, 7 Mar 2025 17:23:51 +0800
+Message-ID: <20250307092356.638242-1-linyunsheng@huawei.com>
+X-Mailer: git-send-email 2.30.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB5866.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a31a592d-df9f-4900-f880-08dd5d4658aa
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Mar 2025 07:04:47.2784 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: kDPyGOviB0QiftXkexpumEJmlZp/r5tu8FQKwEOGzhzHL7rBeu1l9m+JeOvD+obuelajtMNlqsWus0SFZJUaCorjlTaN6TlyAs51AMXA+a0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR11MB7771
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1741331110; x=1772867110;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=qqm9kfg/CkSYJntBd9uIBEDdCv9GwVWMjY/o1EW8fhY=;
- b=bRD0ibVnrAiNKt1LQ1fVhLI83HZbM0jhlXyW4FHKz/Uwum9MfW172aZO
- QN225bLYIXyy3O5+2IMmp5+PWXWs6hTNmUBzDea7S6xmj1WbmfHpljMwR
- D5lJOhKOBYEz4IfZsRRvD7yApmw8EySK3UGsiUETgJDGd1TmqY8DzfLOp
- GH0X4dLvGXhEbZWwhSTelD1IDkovfJHrzWQd6LOVeaiVtEVpcZff1avZf
- EeCY12jZqzVAo1hsZUpgdXADBHnaLp23WPRBo6rIfZtKPhdS2HrZxyn5U
- YHTcN1B7LCUCXkL6A33NzgzNmE6FETw0OItqf8O+mNt1pKzHDJSLl6k7e
- w==;
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.90.30.45]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ dggpemf200006.china.huawei.com (7.185.36.61)
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=bRD0ibVn
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH intel-net v2] ice: fix reservation of
- resources for RDMA when disabled
+ dmarc=pass (p=quarantine dis=none)
+ header.from=huawei.com
+Subject: [Intel-wired-lan] [PATCH net-next v11 0/4] fix the DMA API misuse
+ problem for page_pool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -230,69 +103,173 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+This patchset fix the dma API misuse problem as below:
+Networking driver with page_pool support may hand over page
+still with dma mapping to network stack and try to reuse that
+page after network stack is done with it and passes it back
+to page_pool to avoid the penalty of dma mapping/unmapping.
+With all the caching in the network stack, some pages may be
+held in the network stack without returning to the page_pool
+soon enough, and with VF disable causing the driver unbound,
+the page_pool does not stop the driver from doing it's
+unbounding work, instead page_pool uses workqueue to check
+if there is some pages coming back from the network stack
+periodically, if there is any, it will do the dma unmmapping
+related cleanup work.
 
+As mentioned in [1], attempting DMA unmaps after the driver
+has already unbound may leak resources or at worst corrupt
+memory. Fundamentally, the page pool code cannot allow DMA
+mappings to outlive the driver they belong to.
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Jesse Brandeburg
-> Sent: Thursday, March 6, 2025 6:57 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: Brandeburg, Jesse <jbrandeburg@cloudflare.com>;
-> netdev@vger.kernel.org; kernel-team@cloudflare.com; jbrandeb@kernel.org;
-> leon@kernel.org; Kitszel, Przemyslaw <przemyslaw.kitszel@intel.com>;
-> Ertman, David M <david.m.ertman@intel.com>
-> Subject: [Intel-wired-lan] [PATCH intel-net v2] ice: fix reservation of r=
-esources
-> for RDMA when disabled
->=20
-> From: Jesse Brandeburg <jbrandeburg@cloudflare.com>
->=20
-> If the CONFIG_INFINIBAND_IRDMA symbol is not enabled as a module or a
-> built-in, then don't let the driver reserve resources for RDMA. The resul=
-t of this
-> change is a large savings in resources for older kernels, and a cleaner d=
-river
-> configuration for the IRDMA=3Dn case for old and new kernels.
->=20
-> Implement this by avoiding enabling the RDMA capability when scanning
-> hardware capabilities.
->=20
-> Note: Loading the out-of-tree irdma driver in connection to the in-kernel=
- ice
-> driver, is not supported, and should not be attempted, especially when
-> disabling IRDMA in the kernel config.
->=20
-> Fixes: d25a0fc41c1f ("ice: Initialize RDMA support")
-> Signed-off-by: Jesse Brandeburg <jbrandeburg@cloudflare.com>
-> Acked-by: Dave Ertman <david.m.ertman@intel.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+By using the 'struct page_pool_item' referenced by page->pp_item,
+page_pool is not only able to keep track of the inflight page to
+do dma unmmaping if some pages are still handled in networking
+stack when page_pool_destroy() is called, and networking stack is
+also able to find the page_pool owning the page when returning
+pages back into page_pool:
+1. When a page is added to the page_pool, an item is deleted from
+   pool->hold_items and set the 'pp_netmem' pointing to that page
+   and set item->state and item->pp_netmem accordingly in order to
+   keep track of that page, refill from pool->release_items when
+   pool->hold_items is empty or use the item from pool->slow_items
+   when fast items run out.
+2. When a page is released from the page_pool, it is able to tell
+   which page_pool this page belongs to by masking off the lower
+   bits of the pointer to page_pool_item *item, as the 'struct
+   page_pool_item_block' is stored in the top of a struct page.
+   And after clearing the pp_item->state', the item for the
+   released page is added back to pool->release_items so that it
+   can be reused for new pages or just free it when it is from the
+   pool->slow_items.
+3. When page_pool_destroy() is called, item->state is used to tell
+   if a specific item is being used/dma mapped or not by scanning
+   all the item blocks in pool->item_blocks, then item->netmem can
+   be used to do the dma unmmaping if the corresponding inflight
+   page is dma mapped.
 
-> ---
-> v2: resend with acks, add note about oot irdma (Leon), reword commit
-> message
-> v1: https://lore.kernel.org/netdev/20241114000105.703740-1-
-> jbrandeb@kernel.org/
-> ---
->  drivers/net/ethernet/intel/ice/ice_common.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/net/ethernet/intel/ice/ice_common.c
-> b/drivers/net/ethernet/intel/ice/ice_common.c
-> index 7a2a2e8da8fa..1e801300310e 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_common.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_common.c
-> @@ -2271,7 +2271,8 @@ ice_parse_common_caps(struct ice_hw *hw, struct
-> ice_hw_common_caps *caps,
->  			  caps->nvm_unified_update);
->  		break;
->  	case ICE_AQC_CAPS_RDMA:
-> -		caps->rdma =3D (number =3D=3D 1);
-> +		if (IS_ENABLED(CONFIG_INFINIBAND_IRDMA))
-> +			caps->rdma =3D (number =3D=3D 1);
->  		ice_debug(hw, ICE_DBG_INIT, "%s: rdma =3D %d\n", prefix, caps-
-> >rdma);
->  		break;
->  	case ICE_AQC_CAPS_MAX_MTU:
-> --
-> 2.43.0
+From the below performance data, the overhead is not so obvious
+due to performance variations in arm64 server and less than 1
+ns in x86 server for time_bench_page_pool01_fast_path() and
+time_bench_page_pool02_ptr_ring, and there is about 10~20ns
+overhead for time_bench_page_pool03_slow(), see more detail in
+[2].
+
+arm64 server:
+Before this patchset:
+              fast_path              ptr_ring            slow
+1.         31.171 ns               60.980 ns          164.917 ns
+2.         28.824 ns               60.891 ns          170.241 ns
+3.         14.236 ns               60.583 ns          164.355 ns
+
+With patchset:
+6.         26.163 ns               53.781 ns          189.450 ns
+7.         26.189 ns               53.798 ns          189.466 ns
+
+X86 server:
+| Test name  |Cycles |   1-5 |    | Nanosec |    1-5 |        |      % |
+| (tasklet_*)|Before | After |diff|  Before |  After |   diff | change |
+|------------+-------+-------+----+---------+--------+--------+--------|
+| fast_path  |    19 |    19 |   0|   5.399 |  5.492 |  0.093 |    1.7 |
+| ptr_ring   |    54 |    57 |   3|  15.090 | 15.849 |  0.759 |    5.0 |
+| slow       |   238 |   284 |  46|  66.134 | 78.909 | 12.775 |   19.3 |
+
+And about 16 bytes of memory is also needed for each page_pool owned
+page to fix the dma API misuse problem
+
+1. https://lore.kernel.org/lkml/8067f204-1380-4d37-8ffd-007fc6f26738@kernel.org/T/
+2. https://lore.kernel.org/all/f558df7a-d983-4fc5-8358-faf251994d23@kernel.org/
+
+CC: Alexander Lobakin <aleksander.lobakin@intel.com>
+CC: Robin Murphy <robin.murphy@arm.com>
+CC: Alexander Duyck <alexander.duyck@gmail.com>
+CC: Andrew Morton <akpm@linux-foundation.org>
+CC: Gaurav Batra <gbatra@linux.ibm.com>
+CC: Matthew Rosato <mjrosato@linux.ibm.com>
+CC: IOMMU <iommu@lists.linux.dev>
+CC: MM <linux-mm@kvack.org>
+
+Change log:
+V11:
+  1. Rebase on the latest net-next.
+  2. Fix two compiler errors reported by Jakub and Simon.
+  3. Change to use __acquire() and __release() to avoid 'context
+     imbalance' warning.
+
+V10:
+  1. Add nl API to dump item memory usage.
+  2. Use __acquires() and __releases() to avoid 'context imbalance'
+     warning.
+
+V9.
+  1. Drop the fix of a possible time window problem for NPAI recycling.
+  2. Add design description for the fix in patch 2.
+
+V8:
+  1. Drop last 3 patch as it causes observable performance degradation
+     for x86 system.
+  2. Remove rcu read lock in page_pool_napi_local().
+  3. Renaming item function more consistently.
+
+V7:
+  1. Fix a used-after-free bug reported by KASAN as mentioned by Jakub.
+  2. Fix the 'netmem' variable not setting up correctly bug as mentioned
+     by Simon.
+
+V6:
+  1. Repost based on latest net-next.
+  2. Rename page_pool_to_pp() to page_pool_get_pp().
+
+V5:
+  1. Support unlimit inflight pages.
+  2. Add some optimization to avoid the overhead of fixing bug.
+
+V4:
+  1. use scanning to do the unmapping
+  2. spilt dma sync skipping into separate patch
+
+V3:
+  1. Target net-next tree instead of net tree.
+  2. Narrow the rcu lock as the discussion in v2.
+  3. Check the ummapping cnt against the inflight cnt.
+
+V2:
+  1. Add a item_full stat.
+  2. Use container_of() for page_pool_to_pp().
+
+Yunsheng Lin (4):
+  page_pool: introduce page_pool_get_pp() API
+  page_pool: fix IOMMU crash when driver has already unbound
+  page_pool: support unlimited number of inflight pages
+  page_pool: skip dma sync operation for inflight pages
+
+ Documentation/netlink/specs/netdev.yaml       |  16 +
+ drivers/net/ethernet/freescale/fec_main.c     |   8 +-
+ .../ethernet/google/gve/gve_buffer_mgmt_dqo.c |   2 +-
+ drivers/net/ethernet/intel/iavf/iavf_txrx.c   |   6 +-
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c   |  14 +-
+ drivers/net/ethernet/intel/libeth/rx.c        |   2 +-
+ .../marvell/octeontx2/nic/otx2_txrx.c         |   2 +-
+ .../net/ethernet/mellanox/mlx5/core/en/xdp.c  |   3 +-
+ drivers/net/netdevsim/netdev.c                |   6 +-
+ drivers/net/wireless/mediatek/mt76/mt76.h     |   2 +-
+ include/linux/mm_types.h                      |   2 +-
+ include/linux/skbuff.h                        |   1 +
+ include/net/libeth/rx.h                       |   3 +-
+ include/net/netmem.h                          |  31 +-
+ include/net/page_pool/helpers.h               |  15 +
+ include/net/page_pool/memory_provider.h       |   2 +-
+ include/net/page_pool/types.h                 |  46 +-
+ include/uapi/linux/netdev.h                   |   2 +
+ net/core/devmem.c                             |   6 +-
+ net/core/netmem_priv.h                        |   5 +-
+ net/core/page_pool.c                          | 426 ++++++++++++++++--
+ net/core/page_pool_priv.h                     |  12 +-
+ net/core/page_pool_user.c                     |  39 +-
+ tools/include/uapi/linux/netdev.h             |   2 +
+ tools/net/ynl/samples/page-pool.c             |  11 +
+ 25 files changed, 576 insertions(+), 88 deletions(-)
+
+-- 
+2.33.0
 
