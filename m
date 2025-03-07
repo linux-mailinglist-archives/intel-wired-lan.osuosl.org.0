@@ -1,130 +1,123 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3FCA9A55E3C
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Mar 2025 04:21:30 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D4479A55F3C
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Mar 2025 05:10:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 91E25411C0;
-	Fri,  7 Mar 2025 03:21:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5B0C4405B7;
+	Fri,  7 Mar 2025 04:10:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XE68FQAZFUZP; Fri,  7 Mar 2025 03:21:27 +0000 (UTC)
+ id Rd4VRY7_dxn7; Fri,  7 Mar 2025 04:10:33 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A23A841123
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1D7FA405DB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741317687;
-	bh=gdn4lX+kFQyWfA92qDWyZd8yYqxG7AVp6aPd2bjWTIg=;
+	s=default; t=1741320633;
+	bh=0fXcDFEGSPnMsbgCnYRdEXX844+2MM6qjWtz3d2JzlA=;
 	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=iTLWtHxCc87PX9xU9l7LmaMH32A7Ka+gp7GKGkNwX6quUvABaPMvhfW7rXy++HhgJ
-	 pKlXR467/4lwZACBKCV7Hq6kcJCvoErQ3M+zqKYhPZkzfANbqjLeX7ZestfHvZMe++
-	 JLjXowETZanCFekoEZ82MhONZj1wq0GIpS65f2hQnwHTS5niNDwrSQRtzmm0GhE7w4
-	 FKBYH7GpJfexKzsK3Y++rrboBOyLv3AMzgtjp8yVGrlYmQeyectzrbFfrqLaWlKPN7
-	 eoWLAjkGm1ir6xBe2PbVsP7U8wXMZ7yHJKDMDTuyOJPdlE6akH5msCsX2yzj9xI5nw
-	 Zot8HJGwlHodw==
+	b=BS/XunFCbcOhXN60MN5qlgCtmyqG1h8q7Udy/JPt9AvVtPqVaWay3o5FziPH+OhxF
+	 JoOWW09r7IZ8Tev15gdh6MlZM+vIhSACRfUPC1JhEvJpaMfZAUpXl8krxYqh029I4a
+	 t1SfZOGDOW297wbYMqW61Z3f4GzAWpvgikd5qHEQ3B0VmzxZ+Po+kf5odfGhWUCrv2
+	 d/g2+MGmboQOOPC7SSwRw5OoRalxn/Ffz0tHh6CQf0+IfxgEV9YWpSN7f1grfqg2sN
+	 njvusHZPhHhrEIFXsIeRxaNEW0WoKeqSh6TLTPh+MdSSzQaLJNTsQiPyL3zkkotRFa
+	 6XFzdA9oB4iDQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A23A841123;
-	Fri,  7 Mar 2025 03:21:27 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1D7FA405DB;
+	Fri,  7 Mar 2025 04:10:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 9474095F
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 03:21:25 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id CF44A95F
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 04:10:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 71F7A41123
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 03:21:25 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id A8710810AF
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 04:10:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ig_CHDY9Y-qn for <intel-wired-lan@lists.osuosl.org>;
- Fri,  7 Mar 2025 03:21:24 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
- helo=mgamail.intel.com; envelope-from=faizal.abdul.rahim@linux.intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4E916410EC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4E916410EC
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4E916410EC
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 03:21:24 +0000 (UTC)
-X-CSE-ConnectionGUID: DDybZPXlSRaMkJCvEwxwRQ==
-X-CSE-MsgGUID: gv8f9l3bRRaZGrTQTUMo2A==
-X-IronPort-AV: E=McAfee;i="6700,10204,11365"; a="45164204"
-X-IronPort-AV: E=Sophos;i="6.14,228,1736841600"; d="scan'208";a="45164204"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
- by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Mar 2025 19:21:23 -0800
-X-CSE-ConnectionGUID: iDlWGXgBRa+qU7VDX2G/zg==
-X-CSE-MsgGUID: jWEeBpZ0ToCaX0rjX89xkQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,228,1736841600"; d="scan'208";a="119388873"
-Received: from mohdfai2-mobl.gar.corp.intel.com (HELO [10.247.100.177])
- ([10.247.100.177])
- by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Mar 2025 19:20:57 -0800
-Message-ID: <df5f2ff0-2ead-4074-a40e-8a2fc9b63339@linux.intel.com>
-Date: Fri, 7 Mar 2025 11:20:53 +0800
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id D8bJm342n1li for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  7 Mar 2025 04:10:29 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::1030; helo=mail-pj1-x1030.google.com;
+ envelope-from=bookyungwook@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 9359C81046
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9359C81046
+Received: from mail-pj1-x1030.google.com (mail-pj1-x1030.google.com
+ [IPv6:2607:f8b0:4864:20::1030])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 9359C81046
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 04:10:29 +0000 (UTC)
+Received: by mail-pj1-x1030.google.com with SMTP id
+ 98e67ed59e1d1-2fa8ac56891so2295220a91.2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 06 Mar 2025 20:10:29 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1741320629; x=1741925429;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=0fXcDFEGSPnMsbgCnYRdEXX844+2MM6qjWtz3d2JzlA=;
+ b=dBLiWOraVlQA+rGH3tEMVym3SfSmv89phDFBn1E5qdvum+H+MUGHp7j17o/Y+ULL+k
+ SU1NR3U4wb2NILLyYNGEsCtcow/7V8VsSMpVpHAc2Rn+W2McZg81BDfPdsvDSg57qiJb
+ qzgMa25waiTnD2E/bWmHaG+cjgiXlDhh6RTKDol9LBz50kM3g5jNTIR2ji4DRhw/a273
+ zpqeD+wroEiIPLY4Lxk518gaxcxdDFC+X/Qmg1XGZyV9lEZHXsgb5fbGVdHqjcV3Xaxe
+ I0A/mh7Kal2DtQTE0nrbypSuK7vHJLHKD2YTdp8iBiBSR6xogo406BdOXWWou27SlI0R
+ xDMw==
+X-Gm-Message-State: AOJu0YxSvlIaXT0bNGHuB4w4eUpscXmf3HyLIZ6jA4zDV5U04RC//5n9
+ 01SLXqtFEs+WkUtLnFofnegGn/9oBKimhNEG/bPMrIensTr3M3XEbHHMlUq9
+X-Gm-Gg: ASbGncsxI5QQ0aVyABDkBJdRTTNqypDkArvQyFUQ87A2ckAYinHnvV3SRFudZ0Du7fN
+ s1zWTbPwcAGHS888ihZ5dOJYGnzkVYHBDccqNrqxZKT8Zyk4hg2Taxcc4bLYZBEeevrde0P05yi
+ t76FZm5BdH8JLHkQj3pRQec6bQOW7Ro1In9D/aipuTTHca/2Gk5v15jrCE/jiJb+3VKpGFk172I
+ rYcXnBVnCMNMndDOzxTfcFVCGaJ0q8hpQA4NeOI9gRphlwUQhYqmVwVvfJUZQK4YA6vUI8zBSZs
+ yWb/+pvneTJ7TCJcpBN6s7cV1QdBWG1lSbUA/43hj1Uko8me/HzEbp0=
+X-Google-Smtp-Source: AGHT+IEac9/1hyaB0ji3C+Hy2szAvG66AgyQlxCE/Menh/lmjNj3wFSjdzzjXnpRsq5zg+0zSijmhg==
+X-Received: by 2002:a05:6a21:3a86:b0:1f0:e708:56e2 with SMTP id
+ adf61e73a8af0-1f544b1aa32mr4010115637.22.1741320628766; 
+ Thu, 06 Mar 2025 20:10:28 -0800 (PST)
+Received: from [147.47.189.163] ([147.47.189.163])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-73698517c64sm2264304b3a.147.2025.03.06.20.10.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 06 Mar 2025 20:10:28 -0800 (PST)
+Message-ID: <aea2c7f8-995b-45bc-b2fb-d45e3fbe65b1@gmail.com>
+Date: Fri, 7 Mar 2025 13:10:25 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S . Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Simon Horman <horms@kernel.org>, Russell King <linux@armlinux.org.uk>,
- Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>, Furong Xu <0x1207@gmail.com>,
- Russell King <rmk+kernel@armlinux.org.uk>,
- Serge Semin <fancer.lancer@gmail.com>,
- Xiaolei Wang <xiaolei.wang@windriver.com>,
- Suraj Jaiswal <quic_jsuraj@quicinc.com>,
- Kory Maincent <kory.maincent@bootlin.com>, Gal Pressman <gal@nvidia.com>,
- Jesper Nilsson <jesper.nilsson@axis.com>,
- Choong Yong Liang <yong.liang.choong@linux.intel.com>,
- Chwee-Lin Choong <chwee.lin.choong@intel.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, bpf@vger.kernel.org
-References: <20250305130026.642219-1-faizal.abdul.rahim@linux.intel.com>
- <20250305130026.642219-1-faizal.abdul.rahim@linux.intel.com>
- <20250305130026.642219-12-faizal.abdul.rahim@linux.intel.com>
- <20250305130026.642219-12-faizal.abdul.rahim@linux.intel.com>
- <20250306004809.q2x565rys5zja6kh@skbuf>
+To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>,
+ "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
+ "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
+Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+References: <55acc5dc-8d5a-45bc-a59c-9304071e4579@gmail.com>
+ <SJ0PR11MB5866435852B88603767EFF15E5CA2@SJ0PR11MB5866.namprd11.prod.outlook.com>
 Content-Language: en-US
-From: "Abdul Rahim, Faizal" <faizal.abdul.rahim@linux.intel.com>
-In-Reply-To: <20250306004809.q2x565rys5zja6kh@skbuf>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+From: Kyungwook Boo <bookyungwook@gmail.com>
+In-Reply-To: <SJ0PR11MB5866435852B88603767EFF15E5CA2@SJ0PR11MB5866.namprd11.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1741317684; x=1772853684;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=Jg5XeRxyuKD825uDbJYMZSOpqP9zMmh8t5nyw3/cSXk=;
- b=eVKYI77CQg1VBIAf3OxuOQrecRd1/4XNcA6wNVhduzIa7gX9tb5hf+Vu
- k9i6sqD8EQzt5uLhJ7LZ4ZDpO6FNEaw8jYbOCYKOh80+WJm+qZmWQrJwV
- Cit4b+ZOWvSjS4ZM/Xx368Uek4dio7dQJUK2agC17J6ARiioZRQ93hlUb
- sEpFfS3ZLcNDyUGqakmanJAmSxVSuMkAQimAZ0TFyMhv8/ldc/5ygpw+y
- FFwAYIYIP3lnCD+cUckJG9nmRV/48zOD28NQ8qSragERDKxpRPNf1AEaA
- zftZQxxU0h8593rqSZeIiGc4SsPI+Oe/Or7XcOhV79q1AfTzLgE+flQMZ
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1741320629; x=1741925429; darn=lists.osuosl.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=0fXcDFEGSPnMsbgCnYRdEXX844+2MM6qjWtz3d2JzlA=;
+ b=PfFsi8CPO/hRsdtUj8mlNxfD/VjOmHxjiIwH8kfzHSMC6W0MFn0ak8VHkg+jJJUTOS
+ M1fse6clPUf15BW2apGbCGk0dcKx4UuZT5PU0zGKcPBgtz8E8sZqfoERjW6WopCBQGsu
+ lMFlH5Ee+WOXmDEC46OhdSlchAZtXVhdKcEYmvnP931TI8OeLDONW0H+toUpFOcZfBgi
+ XzAmPgJSAMHJavApYf1RfuDvSEaZpowGlAPKHvR4jzMoFV5mkicgkUCRkh0k/4UlYnyb
+ ivRv06V9fRu4RQnU/2iq4Y6F35AjgVsfXMyfkDYOhbbhvH/I+6rcs+N31Dy8+/kee2kY
+ HJjw==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=eVKYI77C
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v8 11/11] igc: add support to
- get frame preemption statistics via ethtool
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20230601 header.b=PfFsi8CP
+Subject: Re: [Intel-wired-lan] [PATCH] i40e: fix MMIO write access to an
+ invalid page in i40e_clear_hw
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -140,42 +133,111 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-
-
-On 6/3/2025 8:48 am, Vladimir Oltean wrote:
-> On Wed, Mar 05, 2025 at 08:00:26AM -0500, Faizal Rahim wrote:
->> +/* Received out of order packets with SMD-C */
->> +#define IGC_PRMEXCPRCNT_OOO_SMDC			0x000000FF
->> +/* Received out of order packets with SMD-C and wrong Frame CNT */
->> +#define IGC_PRMEXCPRCNT_OOO_FRAME_CNT			0x0000FF00
->> +/* Received out of order packets with SMD-C and wrong Frag CNT */
->> +#define IGC_PRMEXCPRCNT_OOO_FRAG_CNT			0x00FF0000
->> +/* Received packets with SMD-S and wrong Frag CNT and Frame CNT */
->> +#define IGC_PRMEXCPRCNT_MISS_FRAME_FRAG_CNT		0xFF000000
->>   
->> +/**
->> + * igc_ethtool_get_frame_ass_error - Get the frame assembly error count.
->> + * @reg_value: Register value for IGC_PRMEXCPRCNT
->> + * Return: The count of frame assembly errors.
->> + */
->> +static u64 igc_ethtool_get_frame_ass_error(u32 reg_value)
->> +{
->> +	u32 ooo_frame_cnt, ooo_frag_cnt; /* Out of order statistics */
->> +	u32 miss_frame_frag_cnt;
->> +
->> +	ooo_frame_cnt = FIELD_GET(IGC_PRMEXCPRCNT_OOO_FRAME_CNT, reg_value);
->> +	ooo_frag_cnt = FIELD_GET(IGC_PRMEXCPRCNT_OOO_FRAG_CNT, reg_value);
->> +	miss_frame_frag_cnt = FIELD_GET(IGC_PRMEXCPRCNT_MISS_FRAME_FRAG_CNT, reg_value);
->> +
->> +	return ooo_frame_cnt + ooo_frag_cnt + miss_frame_frag_cnt;
->> +}
+On 25. 3. 6. 20:13, Loktionov, Aleksandr wrote:
 > 
-> These counters are quite small (8 bits each). What is their behavior
-> once they reach 255? Saturate? Truncate? Do they clear on read?
 > 
-Hi Vladimir,
+>> -----Original Message-----
+>> From: Kyungwook Boo <bookyungwook@gmail.com>
+>> Sent: Thursday, March 6, 2025 6:26 AM
+>> To: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>; Kitszel,
+>> Przemyslaw <przemyslaw.kitszel@intel.com>; Nguyen, Anthony L
+>> <anthony.l.nguyen@intel.com>
+>> Cc: intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org
+>> Subject: [PATCH] i40e: fix MMIO write access to an invalid page in
+>> i40e_clear_hw
+> Please follow the rules, add v2 to the patch
 
-These are part of the statistic registers, which in IGC, reset upon read. 
-When they reach their maximum value, each field remain at 0xFF.
+Hi, Loktionov,
 
+Thank you for reviewing the patch.
 
+Following your guidance, I will update the patch with the correct format and
+also include v2.
+
+>>
+>> In i40e_clear_hw(), when the device sends a specific input(e.g., 0), an integer
+>> underflow in the num_{pf,vf}_int variables can occur, leading to MMIO write
+>> access to an invalid page.
+>>
+>> To fix this, we change the type of the unsigned integer variables
+>> num_{pf,vf}_int to signed integers. Additionally, in the for-loop where the
+>> integer underflow occurs, we also change the type of the loop variable i to a
+>> signed integer.
+> Please do follow the linux kernel 
+
+If you are referring to the tone of the patch description, I will rewrite it in
+the imperative mood.
+
+>>
+>> Signed-off-by: Kyungwook Boo <bookyungwook@gmail.com>
+>> Signed-off-by: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>
+>> Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+>> Link: https://lore.kernel.org/lkml/ffc91764-1142-4ba2-91b6-
+>> 8c773f6f7095@gmail.com/T/
+>> ---
+> Please up here versions history.
+
+I have noted your request and will add the version history in the next update.
+
+>>  drivers/net/ethernet/intel/i40e/i40e_common.c | 10 +++++-----
+>>  1 file changed, 5 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c
+>> b/drivers/net/ethernet/intel/i40e/i40e_common.c
+>> index 370b4bddee44..9a73cb94dc5e 100644
+>> --- a/drivers/net/ethernet/intel/i40e/i40e_common.c
+>> +++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
+>> @@ -817,8 +817,8 @@ int i40e_pf_reset(struct i40e_hw *hw)  void
+>> i40e_clear_hw(struct i40e_hw *hw)  {
+>>  	u32 num_queues, base_queue;
+>> -	u32 num_pf_int;
+>> -	u32 num_vf_int;
+>> +	s32 num_pf_int;
+>> +	s32 num_vf_int;
+>>  	u32 num_vfs;
+>>  	u32 i, j;
+> What about this vars? Are they used?
+
+i, j are both used.
+I think the relevant line to be considered is as follows:
+
+if (val & I40E_PF_VT_PFALLOC_VALID_MASK && j >= i)
+		num_vfs = (j - i) + 1;
+
+After this, j is not used and 
+i is used as index of several loops.
+
+My current plan was to change only i to s32 since it is related to the bug.
+However, i is also used outside the loop, as in the code above.
+
+Should I proceed with the original plan, or would it be better to separate the
+loop variable for clarity? I would appreciate your opinion on this.
+
+>>  	u32 val;
+>> @@ -848,18 +848,18 @@ void i40e_clear_hw(struct i40e_hw *hw)
+>>  	/* stop all the interrupts */
+>>  	wr32(hw, I40E_PFINT_ICR0_ENA, 0);
+>>  	val = 0x3 << I40E_PFINT_DYN_CTLN_ITR_INDX_SHIFT;
+>> -	for (i = 0; i < num_pf_int - 2; i++)
+>> +	for (s32 i = 0; i < num_pf_int - 2; i++)
+>>  		wr32(hw, I40E_PFINT_DYN_CTLN(i), val);
+>>
+>>  	/* Set the FIRSTQ_INDX field to 0x7FF in PFINT_LNKLSTx */
+>>  	val = eol << I40E_PFINT_LNKLST0_FIRSTQ_INDX_SHIFT;
+>>  	wr32(hw, I40E_PFINT_LNKLST0, val);
+>> -	for (i = 0; i < num_pf_int - 2; i++)
+>> +	for (s32 i = 0; i < num_pf_int - 2; i++)
+>>  		wr32(hw, I40E_PFINT_LNKLSTN(i), val);
+>>  	val = eol << I40E_VPINT_LNKLST0_FIRSTQ_INDX_SHIFT;
+>>  	for (i = 0; i < num_vfs; i++)
+>>  		wr32(hw, I40E_VPINT_LNKLST0(i), val);
+>> -	for (i = 0; i < num_vf_int - 2; i++)
+>> +	for (s32 i = 0; i < num_vf_int - 2; i++)
+>>  		wr32(hw, I40E_VPINT_LNKLSTN(i), val);
+>>
+>>  	/* warn the HW of the coming Tx disables */
+>> --
+>> 2.25.1
+
+Best,
+Kyungwook Boo
