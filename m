@@ -1,220 +1,218 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9301FA565E8
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Mar 2025 11:56:05 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A6C0AA56656
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Mar 2025 12:11:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3F5C5607BD;
-	Fri,  7 Mar 2025 10:56:04 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9wOX_r536p6D; Fri,  7 Mar 2025 10:56:03 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 80B94607E9
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741344963;
-	bh=aVBJjUQZ9j0VpR/ZwvRkb+c8Ujj8H8ZAKP09O9uy+rc=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=iacUVR0PcE/8qhZmSrlUaDfGgvXboxOBR6rS0z7zpK9tYWQdiwqBzkcq08ei6pkyN
-	 524Dm8wbrlzfFmO+KGWEeJYjOT7QTmew7+hyJwenXG6EpUqCIjYkzgHwT6nZabmuGF
-	 f+SA6JpM5FijM2jIQaa1YXbWyS2in5/KONMs4NukNQX/G7R3A9VYvDvAudp8zoDqe9
-	 Jyr0Z5/a0xGR6gc6DcKysugyJhfBwgOjELjC8Sp2lcMfjxPV+ozfRrziJlmI+lbHJM
-	 MIaATMpL0chhBXpDDR8PUz1PaUuFF+Awil9ffhJYLbNUMBZ6l9oeTFEngGxOMz/qOk
-	 yE1PYom4enJuA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 80B94607E9;
-	Fri,  7 Mar 2025 10:56:03 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id C86041C9
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 10:56:01 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id ACAB5837BC
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 10:56:01 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7B75783F63;
+	Fri,  7 Mar 2025 11:11:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KJIOX7glhB67 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  7 Mar 2025 10:56:00 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
- helo=mgamail.intel.com; envelope-from=bharath.r@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 1062882FE7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1062882FE7
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1062882FE7
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 10:55:59 +0000 (UTC)
-X-CSE-ConnectionGUID: qBRJho/0RKWS9TwwmbOECw==
-X-CSE-MsgGUID: jxSIts8FRFqz0jQTC0EIKw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11365"; a="53025939"
-X-IronPort-AV: E=Sophos;i="6.14,229,1736841600"; d="scan'208";a="53025939"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
- by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Mar 2025 02:55:59 -0800
-X-CSE-ConnectionGUID: si/mkSABQCO9WrcoQJBOGw==
-X-CSE-MsgGUID: e7vahWz3Q9KhZbNG+n7Bhw==
+ id WSADkZeXvAq5; Fri,  7 Mar 2025 11:11:28 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 75B2783F65
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1741345887;
+	bh=pZ8UFVXQJXepSIDDN2MLe6VLpZdknAbTrBhwLM1o9t8=;
+	h=Date:From:To:CC:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=J38hmFRLGNFmQoRD6V1oi7cQ0f4NsSqN4zeLLXvK6UUwu99V+dER6T6xmPtGNfOV5
+	 DwzTex342a3upYPJANM20bDAIIKiMV8mKLeAkWj/XE4pw+2h3vjyZVRd9b8y6AhB9a
+	 jPs2QCZNtmCgsa8U4j7Q00hnEyObTOShVSQ5X4gX3RjwLtlMTWrd6+q//TpD4ATt97
+	 TPRSsJDjDlRWFUWFbKIdK12J0NoULpd8QEBec2EdkNM+igPFPmSMipAy5Vnbn4t4hc
+	 rxgZusfoJE/gD8qfXPUrbVO4dxLAkqIY9ZB9vHwO/p4ZT1K9ZrjManiSVN2UajIjWL
+	 Rx/zDkYHw7iIQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 75B2783F65;
+	Fri,  7 Mar 2025 11:11:27 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 9B6CD1C9
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 11:11:25 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8B08D4143D
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 11:11:25 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id M-tMpv7_PlZ2 for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  7 Mar 2025 11:11:23 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.15;
+ helo=mgamail.intel.com; envelope-from=maciej.fijalkowski@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org B690C413EB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B690C413EB
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B690C413EB
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Mar 2025 11:11:23 +0000 (UTC)
+X-CSE-ConnectionGUID: 5ZtGyht0SsyiEuJRTPsfOA==
+X-CSE-MsgGUID: X5HwWeBbQjG1yuqDVuGZMg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11365"; a="46045384"
+X-IronPort-AV: E=Sophos;i="6.14,229,1736841600"; d="scan'208";a="46045384"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+ by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Mar 2025 03:11:23 -0800
+X-CSE-ConnectionGUID: WKgbEMV2Q+ip9YegEN3N2w==
+X-CSE-MsgGUID: mkr55CtiTLW0FjVUlH8E1A==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,229,1736841600"; d="scan'208";a="124211294"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orviesa003.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 07 Mar 2025 02:56:00 -0800
-Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="6.14,229,1736841600"; d="scan'208";a="119803681"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by fmviesa010.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 07 Mar 2025 03:11:22 -0800
+Received: from ORSMSX902.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.44; Fri, 7 Mar 2025 02:55:58 -0800
+ 15.1.2507.44; Fri, 7 Mar 2025 03:11:21 -0800
 Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14 via Frontend Transport; Fri, 7 Mar 2025 02:55:58 -0800
+ 15.2.1544.14 via Frontend Transport; Fri, 7 Mar 2025 03:11:21 -0800
 Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.46) by
  edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Fri, 7 Mar 2025 02:55:57 -0800
+ 15.1.2507.44; Fri, 7 Mar 2025 03:11:20 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=xLz1gHrHh0i9pOgG1Og5LvmM8uNnA/icTJK1eNLorh6CQElnR7ABPcA7c0H3aDfLOsmPP1gPum4M8oScuOKCeMrJDtRbp6u97O1pg2G0aVcQk541SkW4zkFc/wpr49U0kplPlRquEipznGbeCJ8Aw2l2r1/M7SWoung3o+6Nv2Ew6LTp6IPLzNn36RviumpVX6cmcDYVJ4Hs+DzZpjtHaJ4l5xROz54FMy1xqgfw46ki/05NFK7q+EkkAsVtgosvvyCI1kkfZIQMCs0eVjZIDYSFiJ7ruXOxz5hWz5ydQofpMWGiXCup9qUk6DtjxCFK5D7aDaZvwLZz3kSFWcEHIg==
+ b=s4WEXg4jU+Z2IdVLVkyLTKiaFIAhaM8IeVmiSQU/+VnXqjDx8Ld/HdigTWh3bUQFFdmslyfqoW38MVMN0yzqBzgkYFoZPFWiJLQb5WaWKoL7tVFHo5mv8Rb0ntBOaO4s5mkEa7koLs7G0nqtJVLCm+Vxh12SovA06Nv5QI86ScBw9B+5MhMiPtcrzQfWsHWTqb7gAadGihVX+Ar7drXDhyJBxyFn60dC+vryFE477bffjh3P2oxbBscFde9dFy/CD0beDRky58PSFf9K40dvaNLxVCD02Utz8wjyTjc4B0hQ/mekfsCh+F9SR6qL21W+Hpgdl2Z25jFDllxHM9NP0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=aVBJjUQZ9j0VpR/ZwvRkb+c8Ujj8H8ZAKP09O9uy+rc=;
- b=BphQ7pTA9GRdJ3lSTeZoMGMzHblFLm9cxhmGwwgkgAlHNas+H8wPNpYCchf5OaCxgBOqc44HVhaMgvA3fr8LoQ7tCImz3XrrZr9+BKLsC5FSkwbg9G3UnYYD/gPjyhrnRNop8bmhpSIoO6dG9465TGqXjG6JXxV+XF0vviX4rHwrzWqgxL4C87xMxd+6XUluoy6zWVP8ZIb1zMSufLdSR3pbzs9QzL1GXQbiESvYKtanR5pl4YsV76Yu9L7l/ehed26Dfaiu8HmjMYX8P1rcISWCtb72x7NcvsJqVLaQ/KQ3NuxFAXQJdDkNxdHfkTr07JWxR23ZQ1hZSxGegeYcwg==
+ bh=pZ8UFVXQJXepSIDDN2MLe6VLpZdknAbTrBhwLM1o9t8=;
+ b=lrvrO9cU+okidJE4924Ybfrzmb8YCq7x9BYRY6Yh4eUQXztFc4mxG3mRsrwH0dJMn8VB9ZsTwTLnRSgPAhPb2wtNw3nS+HtJ0Lo5V8JoNrVVZyQd1cutHjcmE8jORxfIzxpmJQLdlrwxi6ATAicoG7U/JSSqkf7cbgUFgLwGQDlRcsi0TaF2gG5vznrjQrBJPpoZBuZNQA6VealwCFD6rwJcSawDQ+QOd/LMz4lloK+Z4wNmnbfLyLCZpQoNfYS1HGakpc0frQ58nBV3dN3L5lSpL/eMGqbKT5dvuAE33PtV1EOv/6UDpiz2AZ/ABh34Qbjc1XpfR7MlvdxJZE6dUg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
-Received: from PH8PR11MB7965.namprd11.prod.outlook.com (2603:10b6:510:25c::13)
- by SA2PR11MB5034.namprd11.prod.outlook.com (2603:10b6:806:f8::15)
- with Microsoft SMTP Server (version=TLS1_2,
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com (2603:10b6:8:b3::19) by
+ IA1PR11MB6324.namprd11.prod.outlook.com (2603:10b6:208:388::15) with
+ Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8511.17; Fri, 7 Mar
- 2025 10:55:53 +0000
-Received: from PH8PR11MB7965.namprd11.prod.outlook.com
- ([fe80::ad6c:cf56:3c3d:4739]) by PH8PR11MB7965.namprd11.prod.outlook.com
- ([fe80::ad6c:cf56:3c3d:4739%4]) with mapi id 15.20.8511.017; Fri, 7 Mar 2025
- 10:55:53 +0000
-From: "R, Bharath" <bharath.r@intel.com>
-To: "Jagielski, Jedrzej" <jedrzej.jagielski@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-CC: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>, "andrew@lunn.ch" <andrew@lunn.ch>,
- "pmenzel@molgen.mpg.de" <pmenzel@molgen.mpg.de>, "Jagielski, Jedrzej"
- <jedrzej.jagielski@intel.com>, Michal Swiatkowski
- <michal.swiatkowski@linux.intel.com>, "Loktionov, Aleksandr"
- <aleksandr.loktionov@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH iwl-next v3 2/4] ixgbe: add support for
- ACPI WOL for E610
-Thread-Index: AQHbjDa0SDP0NcT3skygapHPyvxPabNnhlmw
-Date: Fri, 7 Mar 2025 10:55:53 +0000
-Message-ID: <PH8PR11MB7965C0356144EA7D4DA0D4A8F7D52@PH8PR11MB7965.namprd11.prod.outlook.com>
-References: <20250303120630.226353-1-jedrzej.jagielski@intel.com>
- <20250303120630.226353-3-jedrzej.jagielski@intel.com>
-In-Reply-To: <20250303120630.226353-3-jedrzej.jagielski@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PH8PR11MB7965:EE_|SA2PR11MB5034:EE_
-x-ms-office365-filtering-correlation-id: 6402200b-9910-47fb-19fe-08dd5d66a149
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|1800799024|366016|7053199007|38070700018; 
-x-microsoft-antispam-message-info: =?us-ascii?Q?Jn8SRa4fUx/bJlhEj/bOAEVoVneKecm10TPDPitlTvmnRoQnZDS3FB8U093v?=
- =?us-ascii?Q?tInqH33R8Z3Q77m6GL+yipM+SXNimRYLvbAX6enptOn0Br+KpgyO5IPpl31N?=
- =?us-ascii?Q?ilQ3pDPPtOnmihPoEao4bHcvE6MGKE3KQ+1JGpwtyZD4E/jK5hb8NKWI3qlm?=
- =?us-ascii?Q?oKhpCAmBsCnXK8GjzrD+0N65w1fu7Yb2rH0ud3/HM/ja1k+1P6+yYts8Ux2G?=
- =?us-ascii?Q?yOYnJUr+8fhMdZXglBPj0WtXHt6EqZOz29TXq5hIE0cezlSVO5dKKxW7/e9Y?=
- =?us-ascii?Q?QQrZlPhT8bEfbe+3gbriR6CVSYf7vZ2XJfvubnOZfgcg5/NWh//zslKr6J+N?=
- =?us-ascii?Q?bEZXE0c9aGH7pmsJMs4sjh+liTRoHJ8ZKr6Klj//GKoR1pxopuiW8Jqt6a+C?=
- =?us-ascii?Q?1qlQCXDSUb8NIbOCDbAvAS9vNCisLtU3+hLV8qwI/dOK/8bYS5qpPN9pffey?=
- =?us-ascii?Q?PBrzNC8cFyMV6hEgK2KTr02Iwcq5kJ/3zVBSQs0+ksq5r1GdDvIJjp1Od9mV?=
- =?us-ascii?Q?s+wVUX9qKXefjulZgetsV/sFMsoAu3alX4EaEckm13Q5GMunneSNc01GLAmc?=
- =?us-ascii?Q?vy26r692jjCxc9szJACTJAS1wK9oBbn4aU9vhQcpmN1bTnE7rrISkHflzo7L?=
- =?us-ascii?Q?FNLKJ3PL3+8K4K+sEr9FLXRtp3xqaiS3h4MdzNOQE/1iPWuCyQoyTsAJ7Dxl?=
- =?us-ascii?Q?c8VzS/V0g0pOO5D0UP0LuVWp79hQgqov41trPNk3OWyjk++Sh+/DbVZtKenK?=
- =?us-ascii?Q?QlU0FrloDJW2o/9kg+aUZHMIPXtB6xJx/bDxIdBYRMn+Z5vO951eQGrygDRY?=
- =?us-ascii?Q?jM8jE3Yfq+dtxKJvU5F/mwEfavlPgx29Vww83xXgmDSKd7qLMF5shovX/CnN?=
- =?us-ascii?Q?S3IF6ErONKcTgshQwD9wMWZ7/85Puae2mt+P06yNSzG2tWtnP9Cz3Uj2KNYP?=
- =?us-ascii?Q?4giyXaIsIRTMJXrCbuMeIb/KFD9krTq3Ot3pQo2MuZeeEuH3fQm02o7tjQ84?=
- =?us-ascii?Q?KJREGuGB1wwbwx6EXA7xQoRCGhUWugPgp9ahPuESSvGMsf9oXhCpOWdqmWKJ?=
- =?us-ascii?Q?oABUC0DNM6lnyfmXyZPsnE2qhaHugyYQ89qGzM9ObdtQ6h5XtLekuCEUmSVN?=
- =?us-ascii?Q?wuvEDLG4c41FJTc4/4y/xtGoR5EZj+P88/4+1rZu/uCXQBVHVraIW+xAx171?=
- =?us-ascii?Q?YAAwEr7jo19EC2iKA8k19KZ7x0AX1c9t179Jzh0fLArxhvJc7mG4hYXZ7qhg?=
- =?us-ascii?Q?tR+acwP4fpr9upgj5CwJjrgyMr3Iza53DlJ/jsnT4JpbUkORkKzfnyZFhiBh?=
- =?us-ascii?Q?YgWdAg3gvS+BA7on2WOe0fyKGoLvEUSbFCQYHlnQeKoYfAv1bZSP29VPyR5r?=
- =?us-ascii?Q?O+3A7PwgP1h3TuLrOM4KRLnoK6K1YVIoP0PHl44B13FGWIuFqdUsmxZF2009?=
- =?us-ascii?Q?a37Em+DJoRjZrKqoyS3lMJUiUd9QgMne?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH8PR11MB7965.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(1800799024)(366016)(7053199007)(38070700018); DIR:OUT;
- SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?Ao7hPuTFJGIwCQWk1nOwLWusmrvzsjgtu1xekQ+qdfLs4dthpQDatIxRAN7R?=
- =?us-ascii?Q?Rg+469hRD7HUAcErklI54oHmtQ0Xx3fv6MSd6+DDPlc+zYCHcMxT2PvwUlqm?=
- =?us-ascii?Q?puK1q6xOQ7uPGDj+jOR+lMcnUPMNlrWTz8DLHgCh0ZaFaZ9YTVNFpfIIgX0P?=
- =?us-ascii?Q?Ajc4UxyB+XrGMoH74tfXLNCO7zS4K76+EWKF71Nb8uQAQVW8TUG/UTKcSanD?=
- =?us-ascii?Q?RDWH3QwreoS8FJtwDPR72QcccuggihcWKiWbBGWbVs2FcEMraPQFepbA7ypV?=
- =?us-ascii?Q?s4J4N3ifmsOC84p9gj3kEsVEP53Vbgux402rZ0RKSfASb6TLtnViSRxZ0+1+?=
- =?us-ascii?Q?tLTsFHRwEPoCG9y2GfWhRfLI3EHq8dZnqrboh9DOc4vLpX1D3XXS5rww5DBu?=
- =?us-ascii?Q?huYJFQhHh9ynX9F915/cKW47DZVycaAKRTOtAGOBgfn4yVijKTnKaCBrYWcN?=
- =?us-ascii?Q?mApaCr+taQdXvqJemKP/QvUDx0xii9L5M+WVbZFtBswweEtSssU+BBwcjqQE?=
- =?us-ascii?Q?un3uXvs7Oox9H0dDN4Y0wiM9dfH0F1VLDI1U5y0fyW9z1Y/pRcRbLvlx0b4U?=
- =?us-ascii?Q?vDdEWx/ugbA8L2YNC4jKsTzMsPA8m4o+BDBWEe00svqW584saH5B5fRHpHjS?=
- =?us-ascii?Q?iuOX+yNb3Gd1mgLt7LaedGah4d+UbF/0qI/q3H0nURYEXDOfpFbtlAcw4LIJ?=
- =?us-ascii?Q?hgEfZwcErGU6ntJzT9IB+YmGBo7syATDrjwVRIsCISmRYv/j8psH4env5Xba?=
- =?us-ascii?Q?RAfEQibc/lkigziP/BuWlHLsiFnpg00Fwt5HT/e1Rt5r9e0tkUn+3cJAycvo?=
- =?us-ascii?Q?wxYjqUV0OW+UOvJovQ+LVJdwCK7FLEf8Q9HdqDOIBfiwA/1SGbrVu7XfOEAC?=
- =?us-ascii?Q?YlXIidH6y2KSUlXl7vY/AYCHlbvTY2jfbKwT2GyZCceOo5OEBs4m3QH5Ix2g?=
- =?us-ascii?Q?/jQZ+3v9FyYOsL6RbT3q6MN5tBrpQO8iqVn7qbGT8Z2WQ4ULOLJVbRNpODEC?=
- =?us-ascii?Q?pqG6imIFkeMQcagSxCyINpDSvVXByguDWK/+g8IdP7JVJT1DTfXwqv/kTg56?=
- =?us-ascii?Q?6qkOab0Y+ef4RaJJfdHDhaNhCTLEyxXa2LbIVk0jdfXgfeImTiPXq3d0QC/f?=
- =?us-ascii?Q?14gG1Mkqb9ivB+gyBYZQa/JxIcc6/Wq2Yq/BDVi2U3rY075WjReMhh49VdoW?=
- =?us-ascii?Q?JkGfkCo6t8EMdBupb8/ZHrNujyV1b40L0f8MRIN2TZnL8ofT6c2K5fvd/hnr?=
- =?us-ascii?Q?miSX0/xG3w73dYuiIXCbWyRB3gqXLRyJLlzzvgUmHfxbkIYoMk7StxL8+p5s?=
- =?us-ascii?Q?8e7dKVfT0FPnSQKj+jkp55/QWRbehN10V9T2BiPCW6U8/5YbCsNy4vjO7G2k?=
- =?us-ascii?Q?DZtcUXebIMEx6oM9fD0Xvzot8HuJHCWlohwNrVTeJ+jgzlij4TjUwOwlylgo?=
- =?us-ascii?Q?jQnuTnmJanuNOEayc19xRpP0CO4ON08M/1QHkH7F1/cD2nttIrhHN23jNPie?=
- =?us-ascii?Q?hubR/c3GruKRloPgDhw8+iC16pX5iA+FERY60c5UmREvaSaBe6iMI1WUj6a7?=
- =?us-ascii?Q?nlSJ/oPVwZ4wQvOmirk=3D?=
+ 2025 11:11:18 +0000
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::d19:56fe:5841:77ca]) by DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::d19:56fe:5841:77ca%3]) with mapi id 15.20.8511.017; Fri, 7 Mar 2025
+ 11:11:18 +0000
+Date: Fri, 7 Mar 2025 12:11:05 +0100
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: Alexander Lobakin <aleksander.lobakin@intel.com>
+CC: <intel-wired-lan@lists.osuosl.org>, Michal Kubiak
+ <michal.kubiak@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, "Przemek
+ Kitszel" <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "Alexei
+ Starovoitov" <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ "Jesper Dangaard Brouer" <hawk@kernel.org>, John Fastabend
+ <john.fastabend@gmail.com>, Simon Horman <horms@kernel.org>,
+ <bpf@vger.kernel.org>, <netdev@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>
+Message-ID: <Z8rUSb+XocCGHSrt@boxer>
+References: <20250305162132.1106080-1-aleksander.lobakin@intel.com>
+ <20250305162132.1106080-9-aleksander.lobakin@intel.com>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+In-Reply-To: <20250305162132.1106080-9-aleksander.lobakin@intel.com>
+X-ClientProxiedBy: WA2P291CA0040.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d0:1f::24) To DM4PR11MB6117.namprd11.prod.outlook.com
+ (2603:10b6:8:b3::19)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM4PR11MB6117:EE_|IA1PR11MB6324:EE_
+X-MS-Office365-Filtering-Correlation-Id: 9be3367e-1104-43d3-bbec-08dd5d68c873
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|366016;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?mkkZwit40+4NuRSAHkfQmj7EovnbhBrH5fmG28zWN/5bPJIYqQJfbhDuTLqh?=
+ =?us-ascii?Q?OzT/hAYLUthiEjYRnyyvMLXLUj6F/jtMP+aF6p/0e9BhEATbquEQT9Nglh1f?=
+ =?us-ascii?Q?j2L2GgbScbRhpWkLq5YPbttWypJtv0h7c8wUENieUxIhGlI+xfuCYQ0UAANV?=
+ =?us-ascii?Q?QbpD3glQzGuys1XbAaB77Cs3tONACigwxKBX+iciXjhE3UfY8aAyPFDNQei9?=
+ =?us-ascii?Q?ngTOXNJ+oZTNOj9pAEoPK1EzcAVS5jnfWWE6c4LGR98Tlpcg1wES59OLhoGj?=
+ =?us-ascii?Q?+xEFctiWaxrBiqphRM+n+HV6sdBKEndmE2dSsDNoawP+9IqCVj97vLaKqxdM?=
+ =?us-ascii?Q?KT/B3td7mGAj3t6dGgzPEh/DWiRZNsgH/Y5CiYfDYgKB9+CfscdfemI+FoNR?=
+ =?us-ascii?Q?uQM0E3w/cjGnmW0L+SWLFIsNDlT/kwqflBnXLf5sblBL9vpCjZUPTlgFFrsE?=
+ =?us-ascii?Q?jBQ4XhrFgAMitbMFUiEhQXAfJhbfyxL9LYiz9gZ4Mul1wXUTp4PIcYSb1Teu?=
+ =?us-ascii?Q?1FvzirLadWPfx45vt28U275+0sktgtYVgIgvCIYYTIbLoJc5cIj1wbhFD9F0?=
+ =?us-ascii?Q?TTpAaFbi/MWQHIARMy1jxXf0pn1hjfN6TrIe3xW9xym1mpf+DwUlw2Ju9cd9?=
+ =?us-ascii?Q?ODqLoO6FzNQ7q3P7dFpi+hXNaS1VUDyAR/0n4J5RB0F3Al51XCJMWkVVV4Yd?=
+ =?us-ascii?Q?EEe2ZT3882tfYucBi4ztgmbZsD/+NZrpcu2yIqyz5ERZK1suZ4qrf34Rb8j8?=
+ =?us-ascii?Q?KnEDu3p+kBuIX9uy9pso07xDnmgUnN7/aAkJBuoHahYOVZs4TR8KaJ/1zhI/?=
+ =?us-ascii?Q?SMBoNPkMcXHiBaX+hIynK9bkqwm5XnMo7lxPOnH6DmK81rHGhUoZFsc86z3E?=
+ =?us-ascii?Q?V8yL1BQbZECCe++ltY8FRv6XFRuhdPHZkDNIOtDwPH39chHdcl/CNoQwOSgW?=
+ =?us-ascii?Q?UMdn403wDuLkBJZsl9mfwvFUpKSwexyu7M5d3v/ZguSwx40piSRRk3w/WRFs?=
+ =?us-ascii?Q?QrVqpOF4mPysEhyWGnOxYFtCuUh8Mp1yVFYrfrxrAmFmfT+exxwJWdtfMT5P?=
+ =?us-ascii?Q?7hpslTfBV2s6O62hLqV/44T6lEMtPi3QfHzFqQDq1tY2SxCH1+mv9C1E0Xk1?=
+ =?us-ascii?Q?Xx7dWMr2v9YSmXVgETE3OpOV2A95ZSLtJLYADsSzSg2ybcNngdQB2Ffm/+ub?=
+ =?us-ascii?Q?ncrOGMFvIAUnNQ0R0PJZfflfxemhvxNsIKylbOMQSWD29xW+ZsWzjRkhiZgV?=
+ =?us-ascii?Q?W9s5Ng/OfqNEXa6VF+61F7Di7VJvqPeSwhwbwnvQykMonicQ9HgSF1jxRbFd?=
+ =?us-ascii?Q?GFkogWvjNE+745ZzJi/NCtaw5Me6PW8I5AamiocgpSXzf8P0G3A7hXVvBsG8?=
+ =?us-ascii?Q?IGK7YxeNi5cXnaTIj39G/6nnOh/0?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM4PR11MB6117.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(7416014)(1800799024)(366016); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?cPWjDdePgFtt+HiMuyE2sDv3bmpIhkK9obrnnkt4BPI5LjtKndYglGChuVnI?=
+ =?us-ascii?Q?bQU7eHh0OGVFKA8fCw29b/K4F0ANyksKPCJRAg/mhRNbOO4uZZUYoaNaqSkA?=
+ =?us-ascii?Q?cSWBYTGXOChr2nhZ6QxB2ttOpbwkTHxUWa1EZN7214b86ziUU3Zb5YxLnlE8?=
+ =?us-ascii?Q?/J0YAexdwH7x8JJpFIhmLG2zYYm2ZfeRX+TZ8VRa45j6g1qyVvqCMaiDOfXH?=
+ =?us-ascii?Q?QWWZJy0WJi9VPVKUGMY9rCYVd59bxh3Aw+OW/hwi0Rs3ygSDITVQGe4Qy86j?=
+ =?us-ascii?Q?KZKXYrTNMoFbcuoqORpPxNOrLbq49W/aERiUETnI5xqVIDjgkE62XWOXE1uZ?=
+ =?us-ascii?Q?qeBfk1aOwIv87SGpLgqTZS23HwgCt0+JVl3twhpfh0WZar1rJFe+W+Y1asyS?=
+ =?us-ascii?Q?ahkRyw1oan6L3QR8EA/LCSot+hJZj+0I6ZjC1tghkuNB4u2vxV42YGxy5Tho?=
+ =?us-ascii?Q?F4F0MiljCJnzH7y7ZLVmQPYSvFe0pp8u1X4Oh1/LGf6pxuMmGUKXr0YRTuun?=
+ =?us-ascii?Q?135OkXsuFjuedJ/25rRUeJNUVlSsuVXhP2SpQr1VkvlrhxZ5Htd68zZlKGxQ?=
+ =?us-ascii?Q?G2xNWHU3kjdmuLaxnpVWyV0XZWAT/tk7YysvUBgoMFT4SRIZALHckDmIR7KJ?=
+ =?us-ascii?Q?BKmpU6LWLMDjqLS/A0TB3Rl4WwdSp/XXVe1tQpps/yKHkMpy+Ykfb8iyqWyq?=
+ =?us-ascii?Q?n7KpQ+YHH0K/RLR6VZ/bvTADHD1r+PGx2SIad9LA305XpFM4uSKJIjHP8sMu?=
+ =?us-ascii?Q?8Uz6i3JYMa59s3o97rj5Eac1kXDtc/WhbC1+S3SSo0Y1OslZNPgZyolP7j6y?=
+ =?us-ascii?Q?lQhMhBc4h3BdRkb535mCA6DGGwmaZkTBoHvVF/hc0LPifQRcsKCTrLBM90ZS?=
+ =?us-ascii?Q?XnyFHM0WKNhxsk3MSfaMMsLhIFlqqEnEAKvBXaADBNRgusgjutNAk2CxpXdL?=
+ =?us-ascii?Q?14VnwL5BiI+eMZ33XgLPR4UWoKVBmceDUi1Hf9Zqiq1Gcr3qUuj2/aP/1WPD?=
+ =?us-ascii?Q?34UZU0lZk0J/k1uPe+PvLEtRAYWNSlMavsL9lOu3MncNS3I7eiVyhE6q+kJF?=
+ =?us-ascii?Q?MmgstaskRYrNrPsT0AzJJYOqi0Irxi9uAGLF87k/exkFVpyC3yMIcqyZ6EUZ?=
+ =?us-ascii?Q?0eWky2QB8qrgl1H+y9m1v26jpOOlhgYRPHnGTzIqVl8BhpQQS7qlCuCxb/Pn?=
+ =?us-ascii?Q?7ZQVG4Iuudq5hxC+Q8tz84BcY/cTnwaSTOFJEy05A4iT/NLGfM8njurJFbFn?=
+ =?us-ascii?Q?sqVcWIfx2LV8wPC2Eia9UiAXLX2Xb6uYuL/H6/GHEz5ToCa9NY3qTJow0TqR?=
+ =?us-ascii?Q?xWyvZh75MW60LYwpbePP18B74fCSB1ZGBb1Y/PZr4HRiIUlC4tQcap8u4I/j?=
+ =?us-ascii?Q?DX/zJzfabvdz51ryKcrpk3BGPQoH0YfRzvgpx72j//bz7Nyn1GBnRTOFqx48?=
+ =?us-ascii?Q?gRwrZUKRP2a+cu47F2VUuubuNP/nA2vheIzgxxQ1vl4y7hJDql44St4cThIw?=
+ =?us-ascii?Q?99m70Wt4ACnuQ48eaj+eyzv2K7wF/VARcfMa8swabE5sk5c7X64Iz+Gy2Azr?=
+ =?us-ascii?Q?ZlHJzhBB3sfLm/oU0gozgqIKkwavLIif7y3Qal6MhDGF750kYS5LLEAyHWcd?=
+ =?us-ascii?Q?Hg=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9be3367e-1104-43d3-bbec-08dd5d68c873
+X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB6117.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PH8PR11MB7965.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6402200b-9910-47fb-19fe-08dd5d66a149
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Mar 2025 10:55:53.0260 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 2I+uOYtmWl9yTJh2sxF7iVEm5c2sFKt4/Npd17qLTN+GZY7gLjuflY9cv+Cyu72ZE7pM7qF3+4vsC7bDuOMPTw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR11MB5034
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Mar 2025 11:11:17.8813 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: qO7c3YogXv2BVu9L9vb6z33Equ4bYGDvCIwRuH8dzhUjigLK+o58FDgdK1yrYEWK7kr0BqPI3Qbcjdx6B35C91Km3ijUstC/zGiS7nLBoso=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR11MB6324
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1741344960; x=1772880960;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=9WK4uZMSlT+4KVGmx15FNGW3QhZ2wkxdRK1kHciiuDc=;
- b=KQDfTpyS1Vu69XxVaLzx+vUWLsMLgi1288HeJtPvSRpl6lUMsvqunLpw
- HiMOzaxgPaBl2EE4X0N1gXXBQhsX/3Itoe3yG/VyGQ874j1rUZUckHRlb
- mBrbU601hMl9f49UmK0C01xWa1PTZMcA5OT33OMo8yZs3py/YBGnl90dR
- dOtvDDASYzcnlS5W0FYmjzmOLhRO7+jppvJtnckQ7AluySZRw7JTDQtYU
- Cj8591aLERm6seWvKx47hOR3bldHRTWLIdUhq7GL35rDOY/kFsu2eqn5S
- n5V+oZbO5bdPVh56U/T1G9drD+MQlC8ch6iORTmuS/VSf5kjcyLmJKm+N
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1741345884; x=1772881884;
+ h=date:from:to:cc:subject:message-id:references:
+ in-reply-to:mime-version;
+ bh=55FOJ63eHvrOt3eB0VwHw44Cub9HWyKJc7umBPRDp48=;
+ b=YyQg7cXO00be4SxU1Bu41HUwlN/3/kXMVBPl2zgajAtNrzwpdLNWWnkc
+ vkrbqtdr/3A7mDUSxOf5KhqMj71dI7GCuxXkO4WNdNktNbY2Rnmz2Xhcr
+ CvY0afKxlon2oQEiYvNwnq+7olpCHEfeyTRd4FoY8XR9opO72P55tWZ7i
+ ROj4DHpjBvkK6x2Ktmc9zVbOsCuvr4TEnyX5f5FTpSEHKOBf51dKvYe3o
+ iW1jw+l/vTjw/exU6TVglTAfNWTp2hf42/qSXGduVPPwrYZAW0Org4d1B
+ /9b0IdY+/k5GiPtb075LOiI+tYk2jlm7LhiljQvXj5jARxeenOSKM7Uns
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=KQDfTpyS
+ header.s=Intel header.b=YyQg7cXO
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3 2/4] ixgbe: add support
- for ACPI WOL for E610
+Subject: Re: [Intel-wired-lan] [PATCH net-next 08/16] idpf: make complq
+ cleaning dependent on scheduling mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -230,36 +228,442 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Jedrzej Jagielski
-> Sent: Monday, March 3, 2025 5:36 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: Nguyen, Anthony L <anthony.l.nguyen@intel.com>;
-> netdev@vger.kernel.org; andrew@lunn.ch; pmenzel@molgen.mpg.de;
-> Jagielski, Jedrzej <jedrzej.jagielski@intel.com>; Michal Swiatkowski
-> <michal.swiatkowski@linux.intel.com>; Loktionov, Aleksandr
-> <aleksandr.loktionov@intel.com>
-> Subject: [Intel-wired-lan] [PATCH iwl-next v3 2/4] ixgbe: add support for=
- ACPI
-> WOL for E610
->=20
-> Currently only APM (Advanced Power Management) is supported by the ixgbe
-> driver. It works for magic packets only, as for different sources of wake=
--up
-> E610 adapter utilizes different feature.
->=20
-> Add E610 specific implementation of ixgbe_set_wol() callback. When any of
-> broadcast/multicast/unicast wake-up is set, disable APM and configure ACP=
-I
-> (Advanced Configuration and Power Interface).
->=20
-> Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+On Wed, Mar 05, 2025 at 05:21:24PM +0100, Alexander Lobakin wrote:
+> From: Michal Kubiak <michal.kubiak@intel.com>
+> 
+> Extend completion queue cleaning function to support queue-based
+> scheduling mode needed for XDP queues.
+> Add 4-byte descriptor for queue-based scheduling mode and
+> perform some refactoring to extract the common code for
+> both scheduling modes.
+> 
+> Signed-off-by: Michal Kubiak <michal.kubiak@intel.com>
+> Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 > ---
->  .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  | 46 ++++++++++++++++++-
->  1 file changed, 45 insertions(+), 1 deletion(-)
->=20
+>  .../net/ethernet/intel/idpf/idpf_lan_txrx.h   |   6 +-
+>  drivers/net/ethernet/intel/idpf/idpf_txrx.h   |  11 +-
+>  drivers/net/ethernet/intel/idpf/idpf_txrx.c   | 256 +++++++++++-------
+>  3 files changed, 177 insertions(+), 96 deletions(-)
 
-Tested-by: Bharath R <bharath.r@intel.com>
+some comments inline, i didn't trim though.
+
+> 
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_lan_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_lan_txrx.h
+> index 8c7f8ef8f1a1..7f12c7f2e70e 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_lan_txrx.h
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_lan_txrx.h
+> @@ -186,13 +186,17 @@ struct idpf_base_tx_desc {
+>  	__le64 qw1; /* type_cmd_offset_bsz_l2tag1 */
+>  }; /* read used with buffer queues */
+>  
+> -struct idpf_splitq_tx_compl_desc {
+> +struct idpf_splitq_4b_tx_compl_desc {
+>  	/* qid=[10:0] comptype=[13:11] rsvd=[14] gen=[15] */
+>  	__le16 qid_comptype_gen;
+>  	union {
+>  		__le16 q_head; /* Queue head */
+>  		__le16 compl_tag; /* Completion tag */
+>  	} q_head_compl_tag;
+> +}; /* writeback used with completion queues */
+> +
+> +struct idpf_splitq_tx_compl_desc {
+> +	struct idpf_splitq_4b_tx_compl_desc common;
+>  	u8 ts[3];
+>  	u8 rsvd; /* Reserved */
+>  }; /* writeback used with completion queues */
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+> index b029f566e57c..9f938301b2c5 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+> @@ -743,7 +743,9 @@ libeth_cacheline_set_assert(struct idpf_buf_queue, 64, 24, 32);
+>  
+>  /**
+>   * struct idpf_compl_queue - software structure representing a completion queue
+> - * @comp: completion descriptor array
+> + * @comp: 8-byte completion descriptor array
+> + * @comp_4b: 4-byte completion descriptor array
+> + * @desc_ring: virtual descriptor ring address
+>   * @txq_grp: See struct idpf_txq_group
+>   * @flags: See enum idpf_queue_flags_t
+>   * @desc_count: Number of descriptors
+> @@ -763,7 +765,12 @@ libeth_cacheline_set_assert(struct idpf_buf_queue, 64, 24, 32);
+>   */
+>  struct idpf_compl_queue {
+>  	__cacheline_group_begin_aligned(read_mostly);
+> -	struct idpf_splitq_tx_compl_desc *comp;
+> +	union {
+> +		struct idpf_splitq_tx_compl_desc *comp;
+> +		struct idpf_splitq_4b_tx_compl_desc *comp_4b;
+> +
+> +		void *desc_ring;
+> +	};
+>  	struct idpf_txq_group *txq_grp;
+>  
+>  	DECLARE_BITMAP(flags, __IDPF_Q_FLAGS_NBITS);
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+> index a3f6e8cff7a0..a240ed115e3e 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+> @@ -156,8 +156,8 @@ static void idpf_compl_desc_rel(struct idpf_compl_queue *complq)
+>  		return;
+>  
+>  	dma_free_coherent(complq->netdev->dev.parent, complq->size,
+> -			  complq->comp, complq->dma);
+> -	complq->comp = NULL;
+> +			  complq->desc_ring, complq->dma);
+> +	complq->desc_ring = NULL;
+>  	complq->next_to_use = 0;
+>  	complq->next_to_clean = 0;
+>  }
+> @@ -284,12 +284,16 @@ static int idpf_tx_desc_alloc(const struct idpf_vport *vport,
+>  static int idpf_compl_desc_alloc(const struct idpf_vport *vport,
+>  				 struct idpf_compl_queue *complq)
+>  {
+> -	complq->size = array_size(complq->desc_count, sizeof(*complq->comp));
+> +	u32 desc_size;
+>  
+> -	complq->comp = dma_alloc_coherent(complq->netdev->dev.parent,
+> -					  complq->size, &complq->dma,
+> -					  GFP_KERNEL);
+> -	if (!complq->comp)
+> +	desc_size = idpf_queue_has(FLOW_SCH_EN, complq) ?
+> +		    sizeof(*complq->comp) : sizeof(*complq->comp_4b);
+> +	complq->size = array_size(complq->desc_count, desc_size);
+> +
+> +	complq->desc_ring = dma_alloc_coherent(complq->netdev->dev.parent,
+> +					       complq->size, &complq->dma,
+> +					       GFP_KERNEL);
+> +	if (!complq->desc_ring)
+>  		return -ENOMEM;
+>  
+>  	complq->next_to_use = 0;
+> @@ -1921,8 +1925,46 @@ static bool idpf_tx_clean_buf_ring(struct idpf_tx_queue *txq, u16 compl_tag,
+>  }
+>  
+>  /**
+> - * idpf_tx_handle_rs_completion - clean a single packet and all of its buffers
+> - * whether on the buffer ring or in the hash table
+> + * idpf_parse_compl_desc - Parse the completion descriptor
+> + * @desc: completion descriptor to be parsed
+> + * @complq: completion queue containing the descriptor
+> + * @txq: returns corresponding Tx queue for a given descriptor
+> + * @gen_flag: current generation flag in the completion queue
+> + *
+> + * Return: completion type from descriptor or negative value in case of error:
+> + *	   -ENODATA if there is no completion descriptor to be cleaned,
+> + *	   -EINVAL if no Tx queue has been found for the completion queue.
+> + */
+> +static int
+> +idpf_parse_compl_desc(const struct idpf_splitq_4b_tx_compl_desc *desc,
+> +		      const struct idpf_compl_queue *complq,
+> +		      struct idpf_tx_queue **txq, bool gen_flag)
+> +{
+> +	struct idpf_tx_queue *target;
+> +	u32 rel_tx_qid, comptype;
+> +
+> +	/* if the descriptor isn't done, no work yet to do */
+> +	comptype = le16_to_cpu(desc->qid_comptype_gen);
+> +	if (!!(comptype & IDPF_TXD_COMPLQ_GEN_M) != gen_flag)
+> +		return -ENODATA;
+> +
+> +	/* Find necessary info of TX queue to clean buffers */
+> +	rel_tx_qid = FIELD_GET(IDPF_TXD_COMPLQ_QID_M, comptype);
+> +	target = likely(rel_tx_qid < complq->txq_grp->num_txq) ?
+> +		 complq->txq_grp->txqs[rel_tx_qid] : NULL;
+> +
+> +	if (!target)
+> +		return -EINVAL;
+> +
+> +	*txq = target;
+> +
+> +	/* Determine completion type */
+> +	return FIELD_GET(IDPF_TXD_COMPLQ_COMPL_TYPE_M, comptype);
+> +}
+> +
+> +/**
+> + * idpf_tx_handle_rs_cmpl_qb - clean a single packet and all of its buffers
+> + * whether the Tx queue is working in queue-based scheduling
+>   * @txq: Tx ring to clean
+>   * @desc: pointer to completion queue descriptor to extract completion
+>   * information from
+> @@ -1931,21 +1973,33 @@ static bool idpf_tx_clean_buf_ring(struct idpf_tx_queue *txq, u16 compl_tag,
+>   *
+>   * Returns bytes/packets cleaned
+>   */
+> -static void idpf_tx_handle_rs_completion(struct idpf_tx_queue *txq,
+> -					 struct idpf_splitq_tx_compl_desc *desc,
+> -					 struct libeth_sq_napi_stats *cleaned,
+> -					 int budget)
+> +static void
+> +idpf_tx_handle_rs_cmpl_qb(struct idpf_tx_queue *txq,
+> +			  const struct idpf_splitq_4b_tx_compl_desc *desc,
+> +			  struct libeth_sq_napi_stats *cleaned, int budget)
+>  {
+> -	u16 compl_tag;
+> +	u16 head = le16_to_cpu(desc->q_head_compl_tag.q_head);
+>  
+> -	if (!idpf_queue_has(FLOW_SCH_EN, txq)) {
+> -		u16 head = le16_to_cpu(desc->q_head_compl_tag.q_head);
+> -
+> -		idpf_tx_splitq_clean(txq, head, budget, cleaned, false);
+> -		return;
+> -	}
+> +	idpf_tx_splitq_clean(txq, head, budget, cleaned, false);
+> +}
+>  
+> -	compl_tag = le16_to_cpu(desc->q_head_compl_tag.compl_tag);
+> +/**
+> + * idpf_tx_handle_rs_cmpl_fb - clean a single packet and all of its buffers
+> + * whether on the buffer ring or in the hash table (flow-based scheduling only)
+> + * @txq: Tx ring to clean
+> + * @desc: pointer to completion queue descriptor to extract completion
+> + * information from
+> + * @cleaned: pointer to stats struct to track cleaned packets/bytes
+> + * @budget: Used to determine if we are in netpoll
+> + *
+> + * Returns bytes/packets cleaned
+> + */
+> +static void
+> +idpf_tx_handle_rs_cmpl_fb(struct idpf_tx_queue *txq,
+> +			  const struct idpf_splitq_4b_tx_compl_desc *desc,
+> +			  struct libeth_sq_napi_stats *cleaned, int budget)
+> +{
+> +	u16 compl_tag = le16_to_cpu(desc->q_head_compl_tag.compl_tag);
+>  
+>  	/* If we didn't clean anything on the ring, this packet must be
+>  	 * in the hash table. Go clean it there.
+> @@ -1954,6 +2008,61 @@ static void idpf_tx_handle_rs_completion(struct idpf_tx_queue *txq,
+>  		idpf_tx_clean_stashed_bufs(txq, compl_tag, cleaned, budget);
+>  }
+>  
+> +/**
+> + * idpf_tx_finalize_complq - Finalize completion queue cleaning
+> + * @complq: completion queue to finalize
+> + * @ntc: next to complete index
+> + * @gen_flag: current state of generation flag
+> + * @cleaned: returns number of packets cleaned
+> + */
+> +static void idpf_tx_finalize_complq(struct idpf_compl_queue *complq, int ntc,
+> +				    bool gen_flag, int *cleaned)
+> +{
+> +	struct idpf_netdev_priv *np;
+> +	bool complq_ok = true;
+> +	int i;
+> +
+> +	/* Store the state of the complq to be used later in deciding if a
+> +	 * TXQ can be started again
+> +	 */
+> +	if (unlikely(IDPF_TX_COMPLQ_PENDING(complq->txq_grp) >
+> +		     IDPF_TX_COMPLQ_OVERFLOW_THRESH(complq)))
+> +		complq_ok = false;
+> +
+> +	np = netdev_priv(complq->netdev);
+> +	for (i = 0; i < complq->txq_grp->num_txq; ++i) {
+
+All of your new code tends to scope the iterators within loop, would be
+good to stay consistent maybe?
+
+Also, looks like
+	struct idpf_txq_group *txq_grp = complq->txq_grp;
+would be handy in this function.
+
+> +		struct idpf_tx_queue *tx_q = complq->txq_grp->txqs[i];
+> +		struct netdev_queue *nq;
+> +		bool dont_wake;
+> +
+> +		/* We didn't clean anything on this queue, move along */
+> +		if (!tx_q->cleaned_bytes)
+> +			continue;
+> +
+> +		*cleaned += tx_q->cleaned_pkts;
+> +
+> +		/* Update BQL */
+> +		nq = netdev_get_tx_queue(tx_q->netdev, tx_q->idx);
+> +
+> +		dont_wake = !complq_ok || IDPF_TX_BUF_RSV_LOW(tx_q) ||
+> +			    np->state != __IDPF_VPORT_UP ||
+> +			    !netif_carrier_ok(tx_q->netdev);
+> +		/* Check if the TXQ needs to and can be restarted */
+> +		__netif_txq_completed_wake(nq, tx_q->cleaned_pkts, tx_q->cleaned_bytes,
+> +					   IDPF_DESC_UNUSED(tx_q), IDPF_TX_WAKE_THRESH,
+> +					   dont_wake);
+> +
+> +		/* Reset cleaned stats for the next time this queue is
+> +		 * cleaned
+> +		 */
+> +		tx_q->cleaned_bytes = 0;
+> +		tx_q->cleaned_pkts = 0;
+> +	}
+> +
+> +	complq->next_to_clean = ntc + complq->desc_count;
+
+don't you have to handle the >= count case?
+
+> +	idpf_queue_assign(GEN_CHK, complq, gen_flag);
+> +}
+> +
+>  /**
+>   * idpf_tx_clean_complq - Reclaim resources on completion queue
+>   * @complq: Tx ring to clean
+> @@ -1965,60 +2074,56 @@ static void idpf_tx_handle_rs_completion(struct idpf_tx_queue *txq,
+>  static bool idpf_tx_clean_complq(struct idpf_compl_queue *complq, int budget,
+>  				 int *cleaned)
+>  {
+> -	struct idpf_splitq_tx_compl_desc *tx_desc;
+> +	struct idpf_splitq_4b_tx_compl_desc *tx_desc;
+>  	s16 ntc = complq->next_to_clean;
+> -	struct idpf_netdev_priv *np;
+>  	unsigned int complq_budget;
+> -	bool complq_ok = true;
+> -	int i;
+> +	bool flow, gen_flag;
+> +	u32 pos = ntc;
+> +
+> +	flow = idpf_queue_has(FLOW_SCH_EN, complq);
+> +	gen_flag = idpf_queue_has(GEN_CHK, complq);
+>  
+>  	complq_budget = complq->clean_budget;
+> -	tx_desc = &complq->comp[ntc];
+> +	tx_desc = flow ? &complq->comp[pos].common : &complq->comp_4b[pos];
+>  	ntc -= complq->desc_count;
+>  
+>  	do {
+>  		struct libeth_sq_napi_stats cleaned_stats = { };
+>  		struct idpf_tx_queue *tx_q;
+> -		int rel_tx_qid;
+>  		u16 hw_head;
+> -		u8 ctype;	/* completion type */
+> -		u16 gen;
+> -
+> -		/* if the descriptor isn't done, no work yet to do */
+> -		gen = le16_get_bits(tx_desc->qid_comptype_gen,
+> -				    IDPF_TXD_COMPLQ_GEN_M);
+> -		if (idpf_queue_has(GEN_CHK, complq) != gen)
+> -			break;
+> -
+> -		/* Find necessary info of TX queue to clean buffers */
+> -		rel_tx_qid = le16_get_bits(tx_desc->qid_comptype_gen,
+> -					   IDPF_TXD_COMPLQ_QID_M);
+> -		if (rel_tx_qid >= complq->txq_grp->num_txq ||
+> -		    !complq->txq_grp->txqs[rel_tx_qid]) {
+> -			netdev_err(complq->netdev, "TxQ not found\n");
+> -			goto fetch_next_desc;
+> -		}
+> -		tx_q = complq->txq_grp->txqs[rel_tx_qid];
+> +		int ctype;
+>  
+> -		/* Determine completion type */
+> -		ctype = le16_get_bits(tx_desc->qid_comptype_gen,
+> -				      IDPF_TXD_COMPLQ_COMPL_TYPE_M);
+> +		ctype = idpf_parse_compl_desc(tx_desc, complq, &tx_q,
+> +					      gen_flag);
+>  		switch (ctype) {
+>  		case IDPF_TXD_COMPLT_RE:
+> +			if (unlikely(!flow))
+> +				goto fetch_next_desc;
+> +
+>  			hw_head = le16_to_cpu(tx_desc->q_head_compl_tag.q_head);
+>  
+>  			idpf_tx_splitq_clean(tx_q, hw_head, budget,
+>  					     &cleaned_stats, true);
+>  			break;
+>  		case IDPF_TXD_COMPLT_RS:
+> -			idpf_tx_handle_rs_completion(tx_q, tx_desc,
+> -						     &cleaned_stats, budget);
+> +			if (flow)
+> +				idpf_tx_handle_rs_cmpl_fb(tx_q, tx_desc,
+> +							  &cleaned_stats,
+> +							  budget);
+> +			else
+> +				idpf_tx_handle_rs_cmpl_qb(tx_q, tx_desc,
+
+I'd rather have 'queue' and 'flow' spelled out in these functions, they
+differ by single char and take the same args on input so it's an eye
+exercise to follow this. However, nothing better comes to my mind now.
+
+> +							  &cleaned_stats,
+> +							  budget);
+>  			break;
+>  		case IDPF_TXD_COMPLT_SW_MARKER:
+>  			idpf_tx_handle_sw_marker(tx_q);
+>  			break;
+> +		case -ENODATA:
+> +			goto exit_clean_complq;
+> +		case -EINVAL:
+> +			goto fetch_next_desc;
+>  		default:
+> -			netdev_err(tx_q->netdev,
+> +			netdev_err(complq->netdev,
+>  				   "Unknown TX completion type: %d\n", ctype);
+>  			goto fetch_next_desc;
+>  		}
+> @@ -2032,59 +2137,24 @@ static bool idpf_tx_clean_complq(struct idpf_compl_queue *complq, int budget,
+>  		u64_stats_update_end(&tx_q->stats_sync);
+>  
+>  fetch_next_desc:
+> -		tx_desc++;
+> +		pos++;
+>  		ntc++;
+>  		if (unlikely(!ntc)) {
+>  			ntc -= complq->desc_count;
+> -			tx_desc = &complq->comp[0];
+> -			idpf_queue_change(GEN_CHK, complq);
+> +			pos = 0;
+> +			gen_flag = !gen_flag;
+>  		}
+>  
+> +		tx_desc = flow ? &complq->comp[pos].common :
+> +			  &complq->comp_4b[pos];
+>  		prefetch(tx_desc);
+>  
+>  		/* update budget accounting */
+>  		complq_budget--;
+>  	} while (likely(complq_budget));
+>  
+> -	/* Store the state of the complq to be used later in deciding if a
+> -	 * TXQ can be started again
+> -	 */
+> -	if (unlikely(IDPF_TX_COMPLQ_PENDING(complq->txq_grp) >
+> -		     IDPF_TX_COMPLQ_OVERFLOW_THRESH(complq)))
+> -		complq_ok = false;
+> -
+> -	np = netdev_priv(complq->netdev);
+> -	for (i = 0; i < complq->txq_grp->num_txq; ++i) {
+> -		struct idpf_tx_queue *tx_q = complq->txq_grp->txqs[i];
+> -		struct netdev_queue *nq;
+> -		bool dont_wake;
+> -
+> -		/* We didn't clean anything on this queue, move along */
+> -		if (!tx_q->cleaned_bytes)
+> -			continue;
+> -
+> -		*cleaned += tx_q->cleaned_pkts;
+> -
+> -		/* Update BQL */
+> -		nq = netdev_get_tx_queue(tx_q->netdev, tx_q->idx);
+> -
+> -		dont_wake = !complq_ok || IDPF_TX_BUF_RSV_LOW(tx_q) ||
+> -			    np->state != __IDPF_VPORT_UP ||
+> -			    !netif_carrier_ok(tx_q->netdev);
+> -		/* Check if the TXQ needs to and can be restarted */
+> -		__netif_txq_completed_wake(nq, tx_q->cleaned_pkts, tx_q->cleaned_bytes,
+> -					   IDPF_DESC_UNUSED(tx_q), IDPF_TX_WAKE_THRESH,
+> -					   dont_wake);
+> -
+> -		/* Reset cleaned stats for the next time this queue is
+> -		 * cleaned
+> -		 */
+> -		tx_q->cleaned_bytes = 0;
+> -		tx_q->cleaned_pkts = 0;
+> -	}
+> -
+> -	ntc += complq->desc_count;
+> -	complq->next_to_clean = ntc;
+> +exit_clean_complq:
+> +	idpf_tx_finalize_complq(complq, ntc, gen_flag, cleaned);
+>  
+>  	return !!complq_budget;
+>  }
+> -- 
+> 2.48.1
+> 
