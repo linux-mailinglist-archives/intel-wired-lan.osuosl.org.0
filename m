@@ -1,236 +1,139 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C86BAA594A2
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Mar 2025 13:36:45 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 29913A599B1
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Mar 2025 16:19:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7FF0560887;
-	Mon, 10 Mar 2025 12:36:44 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C75DB40D47;
+	Mon, 10 Mar 2025 15:19:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id PEO7YcIvaDDo; Mon, 10 Mar 2025 12:36:43 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Wd1nxPpp4eLT; Mon, 10 Mar 2025 15:19:27 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9BC3E60846
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3594340D3D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741610203;
-	bh=kc4P8b9Or8ir9YWCWXV3k3JXpaIkdbkySnIulLTu7vs=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1741619966;
+	bh=Grn43O6oJjF7hPjCwOp8JmDQSkpvyUtT5/1W3lDUlec=;
+	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=FHgbDRqjssBRsyOswO1O97XsT9pau8niwHstzEvTNUwdBZASVsjyKvuijRbcLoEMx
-	 tDSElQUdIep1TEwc7pN1RPC2dNiZnFLEFXyzNeKImDUwvlCgSdy0x1lShbkKpDBW9z
-	 wp4BupsaO3UIE6FjPkno92WJT3SUtvDiDDoAC+Fly6hWC90lbog1vPdbzhkfT6f/1I
-	 vubJQ3HVPgb54ijhEvZH3XzQcDwD9c75TKREDOMq+EHC8cBbwoxDDaW2eELx5qDX8J
-	 va97yLVWuMPGF6f0wxj9B5RiymVgQt0sSV6N/20JqgkPgY9SUMfMr6sT3V5CH3cigW
-	 NopzaygpAFkXA==
+	b=DKQhylHXsXAH6iAdUkkmB7FdYgyKW/UAp/f5nV/oKt/8fs0Njuyg2ymhRriU2cQyD
+	 hMhK+bzv4OsYy5W9jGsbiAO/9qsQAavIS94tkZtgrC3RCiPuR3IpLUG9NVLnk2xhN+
+	 kuBTwh6H60UKx10iIAzD0/p6YWxGZylDtvKUxWXuDPgnMhHDU1BfzAewvaCBvUHbqd
+	 evU5DMpTTr4X8aUJIDqlmG3LdZwGSNd1lFLOFN3lF8/2+6gWf0KoefabIxAAlA7Wof
+	 51tNYNO0PBjBvgF671TvtUwzyovZfEuUAB4EjFshhvWxguwplTFf51Tkm64zjvPrYE
+	 YhwG0L2Jzp+nA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9BC3E60846;
-	Mon, 10 Mar 2025 12:36:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3594340D3D;
+	Mon, 10 Mar 2025 15:19:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 94B6C1E3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 12:36:41 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 18F3D1C9
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  8 Mar 2025 00:20:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 82E82400D6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 12:36:41 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id E9EE740646
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  8 Mar 2025 00:20:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sVky5xq_kzKV for <intel-wired-lan@lists.osuosl.org>;
- Mon, 10 Mar 2025 12:36:40 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
- helo=mgamail.intel.com; envelope-from=grzegorz.nitka@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 5FB7B4010D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5FB7B4010D
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5FB7B4010D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 12:36:40 +0000 (UTC)
-X-CSE-ConnectionGUID: Y8sZxNs7SyaNcEeqRyT3og==
-X-CSE-MsgGUID: pEOtaWP4TkSN1Zx4GZISgQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11369"; a="46388782"
-X-IronPort-AV: E=Sophos;i="6.14,236,1736841600"; d="scan'208";a="46388782"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
- by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Mar 2025 05:36:40 -0700
-X-CSE-ConnectionGUID: M4I3YmIXQHewhXyv6Jcu3w==
-X-CSE-MsgGUID: snWTtROqRZWnLX6vNFDthw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,236,1736841600"; d="scan'208";a="125036336"
-Received: from orsmsx901.amr.corp.intel.com ([10.22.229.23])
- by fmviesa004.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Mar 2025 05:36:39 -0700
-Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.2.1544.14; Mon, 10 Mar 2025 05:36:38 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.44 via Frontend Transport; Mon, 10 Mar 2025 05:36:38 -0700
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.49) by
- edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Mon, 10 Mar 2025 05:36:38 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=wZAEpyqFdDlTRG1Z/4yhtedSft0p+0nf+F69bgTKitt9LcHUMIT0WUb8ozzpcJmg1HDxF3to68V+m1ed89YtjXfGpAD7hR6HWJyKvEw/P7Ir3GkZASpPvM7jRTik+LVE/xu5F4EWjUs5qzeSeerJH/MAbzFSSDbR9SUVLn10sjbJHbrt3g6w+clohR3tHYP9lMDtrRRPGCbHjghdhoUVcWTWxBBqqpU3FCS5nRo7w49dPk03xzc+BCci5zWo1IxbXqpldZdAZaHyBKJ8NJzKGsoxvgMAcT3gKKp9BVaOZ1mUqpu7uhSzOUAaq5xZ41M+frQ2afVAiiX+y85wIPWIEg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=kc4P8b9Or8ir9YWCWXV3k3JXpaIkdbkySnIulLTu7vs=;
- b=ygKoJmLHeA6dl1sTpTWUBGctjM9K/9ZypyCPPyvM1t1yik5rJmS3L0vdxSjuznz5BNMkQfgoBiSe49p2aG7foOzWSRYirvY0a0ntjjNg5/ynTyD1vSfL2Ax7Bs1aU8yWi8OfGCwaGGHLUmn5KWahvBWrK4Vs/h5mopGEuqI3D7oshXzDzxMj/K+dhldnbouWoobfoYVdao5GHAYBgo81k751Pj98geRKIyRA+6C//Wx0btMJVoCltqEjE10aY8g5/HM29icoWaimB0JLdw3pkgsIXIt11B3uQ15O+t9p43kxwELmf1whOgIPCnAIdWuQjvIuwu1yP9haRLldIZmp0w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from IA1PR11MB6219.namprd11.prod.outlook.com (2603:10b6:208:3e9::15)
- by SN7PR11MB7567.namprd11.prod.outlook.com (2603:10b6:806:328::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8511.26; Mon, 10 Mar
- 2025 12:36:31 +0000
-Received: from IA1PR11MB6219.namprd11.prod.outlook.com
- ([fe80::f302:c534:2d71:822b]) by IA1PR11MB6219.namprd11.prod.outlook.com
- ([fe80::f302:c534:2d71:822b%4]) with mapi id 15.20.8511.025; Mon, 10 Mar 2025
- 12:36:31 +0000
-From: "Nitka, Grzegorz" <grzegorz.nitka@intel.com>
-To: "Nitka, Grzegorz" <grzegorz.nitka@intel.com>, Paul Menzel
- <pmenzel@molgen.mpg.de>, "Kolacinski, Karol" <karol.kolacinski@intel.com>
-CC: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Kitszel, Przemyslaw"
- <przemyslaw.kitszel@intel.com>, Michal Swiatkowski
- <michal.swiatkowski@linux.intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH iwl-next v1 1/3] ice: remove SW side
- band access workaround for E825
-Thread-Index: AQHbhF0N81pA2MzIGU26U8+PCU3Ip7NSQuyAgBC733CACWmcwA==
-Date: Mon, 10 Mar 2025 12:36:31 +0000
-Message-ID: <IA1PR11MB62190A2A70EF90C94589A6F092D62@IA1PR11MB6219.namprd11.prod.outlook.com>
-References: <20250221123123.2833395-1-grzegorz.nitka@intel.com>
- <20250221123123.2833395-2-grzegorz.nitka@intel.com>
- <aecd919b-fbb8-4790-af1f-69b50cc78438@molgen.mpg.de>
- <IA1PR11MB6219197D989E2DD57307AE8D92C82@IA1PR11MB6219.namprd11.prod.outlook.com>
-In-Reply-To: <IA1PR11MB6219197D989E2DD57307AE8D92C82@IA1PR11MB6219.namprd11.prod.outlook.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: IA1PR11MB6219:EE_|SN7PR11MB7567:EE_
-x-ms-office365-filtering-correlation-id: 7c92386d-6aad-4b46-342a-08dd5fd02f94
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0; ARA:13230040|376014|366016|1800799024|38070700018;
-x-microsoft-antispam-message-info: =?utf-8?B?YlFqbmlFbThGZGw3d0VGQjJvRDcxVkNwQUdkc2tzdCtKNkFTS3lDNnZYcVhQ?=
- =?utf-8?B?bVlqamZiMGpJczU1T1VkRFdDMUhNM25WL1RKQnArVHd6eWFTWHhyMy9PeXdw?=
- =?utf-8?B?dlA4ZlEvMzVRbWpicGhabThaY1BDaTRzeFJDR2hsWG1Rc0FvcnBGKzdyREp5?=
- =?utf-8?B?ZS9ScVA1ZXRWVlN2M1QrL0p1NnNUSGxwejdzZVVvMWo0N3lvSEYvWXdzTGxJ?=
- =?utf-8?B?RkNYUnVhZjRIRkd5WjlidDdVNUVBSzBVR3J3U2RmWkkrWWxSVWNUK1U0OExZ?=
- =?utf-8?B?ZDhsTXNzL005Y2t1bHhKU2tGa05DZWZSeDYxTGxCbFZobVlhSGhmS013MnU0?=
- =?utf-8?B?eklWWC9OOVJ4MDVoZUN1bmx4RWZpNTFEb3RKNFQ5c3J4dzByUjRnQXhSclZC?=
- =?utf-8?B?TE9MalJSaFJNUWpsZVl4azA0MVlNTDNuWVZ2QzVUMnVETnRXaVNqK3hDMGMw?=
- =?utf-8?B?WGZqMGlJOTZPV0pycitxNFAwRWdOblZWZ3QxYm9HaHVtK1hDWUpUUzRDck0x?=
- =?utf-8?B?WEZJU0JoSlJuU1g5VEo2NU9FancyY1JVRTBITlo4eVZOQ0dXcXpBRml3eG5r?=
- =?utf-8?B?YkUzYjhCV0lBdVhoTmxub0U4c1VmdTQzVFBhTjNvaW5ZcVJuS0lzbTZ1UUh6?=
- =?utf-8?B?cjk5alBTTyt1azh1WnRlVGoxcEhGZjRUbUtkWm1LZCtJcVZPSmEwT25NUTRF?=
- =?utf-8?B?T0dkbThnKzZPK1ptUVpnSmFjM2hYZVQ0eGNSVFRYdytQZzBpbEYwYkUyUkZp?=
- =?utf-8?B?cDZaVTRsMzE5ZHNBQ0dDdzdwWExpOXpFNmc0L2E3Um92N3hNdHg0TmZZTGpT?=
- =?utf-8?B?Q2R6U3o3NHppMTRaSmU3c0VuaXgydlJaSnFrY1FyVWhPSGdhUHBnczRaS1Jk?=
- =?utf-8?B?MjlLQThYSlc4NDBTODNNMDVqcG8rUnNBbi9ZdTRzNTgrMGllSWEvZjBreWFF?=
- =?utf-8?B?ZnBLZHZoOGxCTFdBOWZXeFJzNVJlTi9JN0hXKzErem5mWkQ5WHVFK1dVMWFw?=
- =?utf-8?B?akdQYkN0dlc5T1FCa1hWa2tlTDUwb29qcHVrZnZaK1F2aDJRWkRNMGVJYXB1?=
- =?utf-8?B?ajg1VFFhbVVQV0JrbUN4a2pvV0tpOXRGazVDTUdlUVNJQzF2Qi9UOVJBNXZk?=
- =?utf-8?B?dDBkeklhS0pVU0JGWVpqUkJrZHFYTmVLM3ZsYVhHRTUwUUp6U1R0T1JqdXBW?=
- =?utf-8?B?NUZnN3hiNTZYWVBaL2Z0UjcraHVyTjlMSWlJYnkyeWQ0Y3RDUlZFKzBBcEJN?=
- =?utf-8?B?QVVYUWt5dDVOa2I4MUNvZlVXRDBTemI4ays1RmNpOUhQckxRUjRzRTBGMThP?=
- =?utf-8?B?QVZsUzdxcUFzVlNTRWpoZUxxTDJ0QkdGSnQxcmwzMkdpcThTZEw1dmlycUlo?=
- =?utf-8?B?NTJwa2h6QmtQYWRHZ1d1RTRkWFZ2Q3kxQkFwcDgvNk5DMTBnVWoyQm5SZVFG?=
- =?utf-8?B?dHJpN0o3Z3JndTIvV2dFTkIwRE8wNTlFTWs5aW00Ykk2bUYrRlpBYzVVU2hk?=
- =?utf-8?B?TExES0twZS9Wd3BwRnVseS8vcGJhWjhGTVF3ZnB0eEFZV3FIR1Q4S0RXMFM1?=
- =?utf-8?B?OUMwV1htejc3SFUzdWpxS25KaDU2Z0hlK2pGUjdxRTBlK21BRTlrSk0vZVNx?=
- =?utf-8?B?ekJVSzFJZTFYNWZQTC9YRUNjWHJiYlVJK0Z5bzV4UHdTYlM0TE1pN1NmQVgw?=
- =?utf-8?B?ZDFvUlVxbEJxMWlBbDREVVFqSEYrZ1VIS3MvcHdKUSs0MG5KRTIzUDdRL2xw?=
- =?utf-8?B?TDRZa2gxQ1ZuS0F0TmpEY0lSZmgyV2l0WXhVLzlPLzhyelc1b0lsaFFIWThr?=
- =?utf-8?B?dGpRRHVsakR0YUxzbWNsZVRNNnFqZU1aSFF5MG9tRTEzSWErNjB0RWp1WHU5?=
- =?utf-8?B?NW9vUm9nT3VQMlU1bHlSQUl6aXNjUVgwY294T21tbUtZa2JzNG50T0U0ZWZq?=
- =?utf-8?Q?XqYt5k/PipnDvMiq4qggwOz+u19byvks?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:IA1PR11MB6219.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(366016)(1800799024)(38070700018); DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?UG9Hc1kyMDlYcXFhU0ZBMnFKMjd6WThiWWdNQmdZK1JhNGNYNnAxQ0ZxRDV6?=
- =?utf-8?B?eFNobTRuU3hXWkpqbXZQa1FxOFU5YnZVQjVMZ05FektQbm1pb0hIYTZHYVg3?=
- =?utf-8?B?bVA4K2l6Z01UM0pHcjFEUEJJRXhES25WNTZSSFBmNVFMbHYyUXQwTmFObmw4?=
- =?utf-8?B?Yk00dVRzd25wN0ZuRUtGZGZLSUhaeHMwY1NGNGIraDJoQ3NqZHl4bDB0T2Fm?=
- =?utf-8?B?REJVckwwMk9lNVZyc1krSEtYZm1GbjRYbUltL3FkaU5IUnFHSDV5RFE2RUpW?=
- =?utf-8?B?UnZDdkJPS29MOHBRdVN5MjJQZ0tDUTFIbFRHNXNWL0hBVnFyYUhjMzlPTkI5?=
- =?utf-8?B?NTBTQS80OUg0Y0hKb3VXUzZaVmpid1NYRHRwdGVYazlKenFZZGVZOGRzYlk5?=
- =?utf-8?B?UG41dWFqLzJJK3l6WURBYXJUb2tUaU5yNXU5b3ArcHFvVVRDeTltYmpMaC9N?=
- =?utf-8?B?KzRhUTFTVlNraXpzLzgwUnlnNlBkc0JhcDZKTUkzSHladWg1Z3o2NFczcndC?=
- =?utf-8?B?cHhncC8yaytQN0I0RWJkMDZsZ0ZVOVp4SlQ3K1c0b2ltcTR6em9WVVR4OG1l?=
- =?utf-8?B?eGxtejcrRGRGaXphVjB0K1RoS2lGVUZMelFVZ3pKWkxUMnZEMEdKdVhxT2tN?=
- =?utf-8?B?YS9XVVNwOGJ2RjJzN2lNZ2UrcUZwSCtzSGxsdWdIeDJlTzJjOG1DbVpsV1lW?=
- =?utf-8?B?aSttVURzRlgzajdadS9Ga0IveENwdkJrZE0yNWNJbnF3MUJPUEpLd3ZyYXNm?=
- =?utf-8?B?OTFwZlNIem5tVlY4S2NRVkh6U1NFM0dPL1R2ekJWTFpMd0V0WTk1SW9yaFpq?=
- =?utf-8?B?ZTZQQnJ1WEdPaUgyRE1VM3UvamI1SHNTbjE1WURHRndoQUh2NkNyeHJKazU2?=
- =?utf-8?B?MGFFYUthYU5lTFR4WUNnYjZHZTkySjQyUWZ6SjBTbVZrSUZrODMycUNCUDNh?=
- =?utf-8?B?RGxWSXp5NWFMT1lPRUEyL0h2R1FYYVpxZzNYWmJyNTNqUHVvRE05ZlJuYm81?=
- =?utf-8?B?THFNVnVhUVRZUm1pMU5oQXRoU0tpK3BLUUprU3haZU4wR1dBdU1YR01WODFl?=
- =?utf-8?B?dzR3VlBoVHV6dlpJUlc1YldDRmp1UGloWm1CM01CRmJ3UEVieGdmc2xQVXYw?=
- =?utf-8?B?M3JMYkJYUy8wdFFxV2FIMFFzNXlhcW5hbFZsdEV5eGREaUliS05lVEVUcHpu?=
- =?utf-8?B?WWZocDhRM2VDQ2I2NFIvcGxBeHEwdHo5U0kvSHlsZnFSaUQyWVdzM2VwMlVI?=
- =?utf-8?B?ekxUQmpVTm9uSzFXOXh5SStINCswM1EzbkNVSXNWeU54VkxJRWZKMHlhb0FK?=
- =?utf-8?B?RkdFSExqNkx3RXZXYkpqVS9DOEl3MzNCK2RmYVhLa0F4RWRpNld0dnd1alds?=
- =?utf-8?B?KzBiRkVwRVRpeGsyc3l4enIwaTlXUFpiMlJQSWZKejVzODlkOWs0UFBpTkVX?=
- =?utf-8?B?cmZkaXNlM1RqYStpalR3UWQrUk1Va1hVc0FsMlZsZ2g2MUpuclNLaDZFVmJ1?=
- =?utf-8?B?Z0hCTW0rVVV5QkFTWStScVpBQ0tvUmRGZEI1QStsakY0SnkzU3VpNmdRaFdv?=
- =?utf-8?B?RGJ6OVBWQi92ZGhuQXcrWEkvU3VENWY0Zkhna2dGbks0dE02QmJZK3ZqcERj?=
- =?utf-8?B?MWVLamRnWkFSZ3lwVy9DSnEyV0J2ZzM5c1U1SmJLZC9kMjNIbVk4eitzWnhC?=
- =?utf-8?B?ejhUZm44K1V3bHV0MlBBNnpmSVEvSHh1Zzk0VUFLZEZlUjA4azVjS1RjR3Zr?=
- =?utf-8?B?SVA4VjdQS3VDQTk4RDNDMHlJck5JeUI2TDBGdFFWdFN3TEhFM3pndmhtdVBX?=
- =?utf-8?B?RXc4OGkvdE5YbEVlc3RTb0k2MWpBdzRsano4Qm83eHJXTmM1bVYvalJOR0xm?=
- =?utf-8?B?ZVJoZE1xdHpnbFUrTW54ZXRHUWVSbTNjV2Y3ZzE0eUs3ZE1DcHphb042L3BJ?=
- =?utf-8?B?QktJOUdxeXgvUlFSdUU2cFY4Q0Zsck85Nmt4L0ZBMGd0RlpxVWJGcmdZZWxo?=
- =?utf-8?B?MTFuenZqU0tmRVA0bXVtOWovRVVKQ01QTDJZMlEvRzNxMWpsWTdiODJMd3Ax?=
- =?utf-8?B?VS9ua1Z0UnlGSmdMN29qN1lSeDdNVU9jY1FIUWp0QTNsN2RIdTg2REo5Qmpq?=
- =?utf-8?Q?X5FEaKCq1YFvywHyq4r6NzMvz?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ id mldNdDb7m30n for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  8 Mar 2025 00:20:44 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::62c; helo=mail-pl1-x62c.google.com;
+ envelope-from=hramamurthy@google.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 75E314022B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 75E314022B
+Received: from mail-pl1-x62c.google.com (mail-pl1-x62c.google.com
+ [IPv6:2607:f8b0:4864:20::62c])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 75E314022B
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  8 Mar 2025 00:20:44 +0000 (UTC)
+Received: by mail-pl1-x62c.google.com with SMTP id
+ d9443c01a7336-2242aca53efso25465ad.1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 07 Mar 2025 16:20:44 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1741393244; x=1741998044;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Grn43O6oJjF7hPjCwOp8JmDQSkpvyUtT5/1W3lDUlec=;
+ b=iXnXo2JAWt5ktH0bpCfM3utj5MTkzA+FMOXWUmNF0Im9gTM5VTalm3TBd1ISMn8kZ/
+ 19SFg6pRfe1ENoe9YNteYJdDdmwuTxQPt3QzLviPk8VymOlOzo6pM+oxbfRRRZYFFgKt
+ Q9PHdolrvlwGB9iHtwxj26AWQZ/2yNtMD0pyGST80CoVOt9Lmb2cVLzzWZft/6V2Td4d
+ Ql1po9uLxBTXdNO3yk0R4+I9XGQa24sqBpcGFDZqAuVrsVjdt6ekQKkVIKUYl0COGAio
+ ui37muCFHqnzmr8NClaNipuKRgR3bUiQRZR0hZLfSL5oqv2It9PgiE2dTMYZolxqC+9X
+ RSWA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXdp3n0OvnGG5XJUUtSPfDoYcjjkAYELxPA9i7TPVtpd29PXrkmfLsffTutOTuMouA0LOydPIbr7KPXnGzKzqY=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyzgAJvxdOD9UzAEBj5Olh1oZfhCd7ZjkAj9zKF5D6+e5TmoEiz
+ 3GCRIGJRN182JxLeEGlFSpXtZbzdvh5GucmE++juh/HUhONUaXD6DpRlc2Ab4lJJmEGPmCvn+rw
+ bDadQsn5o+gfDUSR6bP1xr8iK/kQADhh//huH
+X-Gm-Gg: ASbGnctJasAsedkxi50+gCLoQpE6lsGp/KBJSFVuTjWNMoBOIHNS3moeJKjX9Wobw85
+ Ya2rpOpSAOFw+QkuPatqRWp06OImuhW/grskQNl4Nh6Cj4Dt+SoyLRt93tL8xhH3jCYmWCp4gKF
+ S6MlDOg1CI10ejKfasJOAzFAqzwzfZJJ2g4EHh0HxQ59gaqy9fQTAVOK7eu2w=
+X-Google-Smtp-Source: AGHT+IG4qF2VNRRdR961Hruzmu2P9zMOnxA6vMmxm3lWxNJUgEvm2qu8VMRpWVn9YncMk6lHfXrExhkBJLGsQobQNM8=
+X-Received: by 2002:a17:902:d490:b0:223:5696:44f5 with SMTP id
+ d9443c01a7336-22540e5c2a6mr1069305ad.12.1741393242390; Fri, 07 Mar 2025
+ 16:20:42 -0800 (PST)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: IA1PR11MB6219.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7c92386d-6aad-4b46-342a-08dd5fd02f94
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Mar 2025 12:36:31.2260 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: I/FGXVdhtoa31MkRSzCC2rKdFpvGb+k9KiWNbc029ptjDgSXCRf1apmLzHdy3tKU5q/10sIpluNfybcZWMNBdwlWtz3FYNGwrz9F5myk2f8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR11MB7567
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1741610200; x=1773146200;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=kc4P8b9Or8ir9YWCWXV3k3JXpaIkdbkySnIulLTu7vs=;
- b=g0/P3Wi+scMz0QkSyNmLNRyu+Wa4vH0zZ+txoxQEgIqdt0p8lgeAP6HF
- 15CJcRn/WCb8ljygMdWyS+99fzC1S+Jt/u1HKHzeBrpE4KxbTvjVcTu/Q
- Nv2A8qf3brvMAl6emrJe8fW955CWkF6NrIVqlOZ67uH1OKU2YbzqVvobj
- RKDAi2m9RHYEA9thcjW0KVrit6jf/BNPhNELwOAUtt3vJ6A8wrSDAkwjX
- iG3qo+Ls1hUuBssOuPtUpZPg04yOo52jN8eZssK9D2imKNdITYoY9VpYg
- L3mF7SqdEQjo4WcQqNUorpPUl+BODkFccwWy1+kP1VNTMvgDvaMbCHF0z
- w==;
+References: <20250307092356.638242-1-linyunsheng@huawei.com>
+ <20250307092356.638242-2-linyunsheng@huawei.com>
+In-Reply-To: <20250307092356.638242-2-linyunsheng@huawei.com>
+From: Harshitha Ramamurthy <hramamurthy@google.com>
+Date: Fri, 7 Mar 2025 16:20:31 -0800
+X-Gm-Features: AQ5f1JoPSKmOA0t4rmqBDzuqaAlgywVLDx_uPMCsgrgFeDpD0DEqQB4K1UT_IIo
+Message-ID: <CAEAWyHd8UJLHyeSBFTbKB7MR5cc1aF2pVyro1Qr6HkKaxAyofw@mail.gmail.com>
+To: Yunsheng Lin <linyunsheng@huawei.com>
+Cc: davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com, 
+ zhangkun09@huawei.com, liuyonglong@huawei.com, fanghaiqing@huawei.com, 
+ Wei Fang <wei.fang@nxp.com>, Shenwei Wang <shenwei.wang@nxp.com>, 
+ Clark Wang <xiaoning.wang@nxp.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
+ Eric Dumazet <edumazet@google.com>, Jeroen de Borst <jeroendb@google.com>, 
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Alexei Starovoitov <ast@kernel.org>, 
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>, 
+ John Fastabend <john.fastabend@gmail.com>, Saeed Mahameed <saeedm@nvidia.com>, 
+ Leon Romanovsky <leon@kernel.org>, Tariq Toukan <tariqt@nvidia.com>,
+ Felix Fietkau <nbd@nbd.name>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Johannes Berg <johannes@sipsolutions.net>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Simon Horman <horms@kernel.org>, 
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>, imx@lists.linux.dev,
+ netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org, 
+ bpf@vger.kernel.org, linux-rdma@vger.kernel.org, 
+ linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+Content-Type: multipart/alternative; boundary="000000000000a131c1062fc9b506"
+X-Mailman-Approved-At: Mon, 10 Mar 2025 15:19:23 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1741393244; x=1741998044; darn=lists.osuosl.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=Grn43O6oJjF7hPjCwOp8JmDQSkpvyUtT5/1W3lDUlec=;
+ b=z8RAUZXUv/ZeZIVxsiFLb2igS43adXGwxkK4hyJjkMzCLdXin/+W6csgqFM4+t3qGs
+ NeoDPLflTxzz7IicAKA9aLPyxB2Ae2CQN27AQp/dq7Aoc4I7tCH7+A5OSbf44wJhF9hy
+ spoR0Eet/DWKHKeI6+kh3SbZoWUZV3/JX9XpNMZ6sD4vW6FQ7qA3pB7vmhHBeTiQqdEk
+ f9tyNkZEpGUlQmq1mN6cMRx7AQhKzNMX02To/8YG1MCQVQRzVfsNGPaFHtqjXFjYRcMT
+ RZHVMJwzqIBstR0fH64rjRxtAa/D1tCRzhphXmtJndET4mOkW+3oCEa5yYvU4UBOI7vp
+ MhYw==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
+ dmarc=pass (p=reject dis=none)
+ header.from=google.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=g0/P3Wi+
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 1/3] ice: remove SW side
- band access workaround for E825
+ unprotected) header.d=google.com header.i=@google.com header.a=rsa-sha256
+ header.s=20230601 header.b=z8RAUZXU
+Subject: Re: [Intel-wired-lan] [PATCH net-next v11 1/4] page_pool: introduce
+ page_pool_get_pp() API
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -246,82 +149,687 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBJbnRlbC13aXJlZC1sYW4gPGlu
-dGVsLXdpcmVkLWxhbi1ib3VuY2VzQG9zdW9zbC5vcmc+IE9uIEJlaGFsZiBPZg0KPiBOaXRrYSwg
-R3J6ZWdvcnoNCj4gU2VudDogVHVlc2RheSwgTWFyY2ggNCwgMjAyNSAyOjA0IFBNDQo+IFRvOiBQ
-YXVsIE1lbnplbCA8cG1lbnplbEBtb2xnZW4ubXBnLmRlPjsgS29sYWNpbnNraSwgS2Fyb2wNCj4g
-PGthcm9sLmtvbGFjaW5za2lAaW50ZWwuY29tPg0KPiBDYzogaW50ZWwtd2lyZWQtbGFuQGxpc3Rz
-Lm9zdW9zbC5vcmc7IG5ldGRldkB2Z2VyLmtlcm5lbC5vcmc7IEtpdHN6ZWwsDQo+IFByemVteXNs
-YXcgPHByemVteXNsYXcua2l0c3plbEBpbnRlbC5jb20+OyBNaWNoYWwgU3dpYXRrb3dza2kNCj4g
-PG1pY2hhbC5zd2lhdGtvd3NraUBsaW51eC5pbnRlbC5jb20+DQo+IFN1YmplY3Q6IFJlOiBbSW50
-ZWwtd2lyZWQtbGFuXSBbUEFUQ0ggaXdsLW5leHQgdjEgMS8zXSBpY2U6IHJlbW92ZSBTVyBzaWRl
-DQo+IGJhbmQgYWNjZXNzIHdvcmthcm91bmQgZm9yIEU4MjUNCj4gDQo+ID4gLS0tLS1PcmlnaW5h
-bCBNZXNzYWdlLS0tLS0NCj4gPiBGcm9tOiBQYXVsIE1lbnplbCA8cG1lbnplbEBtb2xnZW4ubXBn
-LmRlPg0KPiA+IFNlbnQ6IEZyaWRheSwgRmVicnVhcnkgMjEsIDIwMjUgMTA6MTYgUE0NCj4gPiBU
-bzogTml0a2EsIEdyemVnb3J6IDxncnplZ29yei5uaXRrYUBpbnRlbC5jb20+OyBLb2xhY2luc2tp
-LCBLYXJvbA0KPiA+IDxrYXJvbC5rb2xhY2luc2tpQGludGVsLmNvbT4NCj4gPiBDYzogaW50ZWwt
-d2lyZWQtbGFuQGxpc3RzLm9zdW9zbC5vcmc7IG5ldGRldkB2Z2VyLmtlcm5lbC5vcmc7IEtpdHN6
-ZWwsDQo+ID4gUHJ6ZW15c2xhdyA8cHJ6ZW15c2xhdy5raXRzemVsQGludGVsLmNvbT47IE1pY2hh
-bCBTd2lhdGtvd3NraQ0KPiA+IDxtaWNoYWwuc3dpYXRrb3dza2lAbGludXguaW50ZWwuY29tPg0K
-PiA+IFN1YmplY3Q6IFJlOiBbSW50ZWwtd2lyZWQtbGFuXSBbUEFUQ0ggaXdsLW5leHQgdjEgMS8z
-XSBpY2U6IHJlbW92ZSBTVyBzaWRlDQo+ID4gYmFuZCBhY2Nlc3Mgd29ya2Fyb3VuZCBmb3IgRTgy
-NQ0KPiA+DQo+ID4gRGVhciBHcnplZ29yeiwgZGVhciBLYXJvbCwNCj4gPg0KPiA+DQo+ID4gVGhh
-bmsgeW91IGZvciB5b3VyIHBhdGNoLg0KPiA+DQo+ID4gQW0gMjEuMDIuMjUgdW0gMTM6MzEgc2No
-cmllYiBHcnplZ29yeiBOaXRrYToNCj4gPiA+IEZyb206IEthcm9sIEtvbGFjaW5za2kgPGthcm9s
-LmtvbGFjaW5za2lAaW50ZWwuY29tPg0KPiA+ID4NCj4gPiA+IER1ZSB0byB0aGUgYnVnIGluIEZX
-L05WTSBhdXRvbG9hZCBtZWNoYW5pc20gKHdyb25nIGRlZmF1bHQNCj4gPiA+IFNCX1JFTV9ERVZf
-Q1RMIHJlZ2lzdGVyIHNldHRpbmdzKSwgdGhlIGFjY2VzcyB0byBwZWVyIFBIWSBhbmQgQ0dVDQo+
-ID4gPiBjbGllbnRzIHdhcyBkaXNhYmxlZCBieSBkZWZhdWx0Lg0KPiA+DQo+ID4gSeKAmWQgYWRk
-IGEgYmxhbmsgbGluZSBiZXR3ZWVuIHRoZSBwYXJhZ3JhcGhzLg0KPiA+DQo+ID4gPiBBcyB0aGUg
-d29ya2Fyb3VuZCBzb2x1dGlvbiwgdGhlIHJlZ2lzdGVyIHZhbHVlIHdhcyBvdmVyd3JpdHRlbiBi
-eSB0aGUNCj4gPiA+IGRyaXZlciBhdCB0aGUgcHJvYmUgb3IgcmVzZXQgaGFuZGxpbmcuDQo+ID4g
-PiBSZW1vdmUgd29ya2Fyb3VuZCBhcyBpdCdzIG5vdCBuZWVkZWQgYW55bW9yZS4gVGhlIGZpeCBp
-biBhdXRvbG9hZA0KPiA+ID4gcHJvY2VkdXJlIGhhcyBiZWVuIHByb3ZpZGVkIHdpdGggTlZNIDMu
-ODAgdmVyc2lvbi4NCj4gPg0KPiA+IElzIHRoaXMgY29tcGF0aWJsZSB3aXRoIExpbnV44oCZIG5v
-IHJlZ3Jlc3Npb24gcG9saWN5PyBQZW9wbGUgbWlnaHQgb25seQ0KPiA+IHVwZGF0ZSB0aGUgTGlu
-dXgga2VybmVsIGFuZCBub3QgdGhlIGZpcm13YXJlLg0KPiA+DQo+ID4gSG93IGRpZCB5b3UgdGVz
-dCB0aGlzLCBhbmQgaG93IGNhbiBvdGhlcnMgdGVzdCB0aGlzPw0KPiA+DQo+ID4gPiBSZXZpZXdl
-ZC1ieTogTWljaGFsIFN3aWF0a293c2tpIDxtaWNoYWwuc3dpYXRrb3dza2lAbGludXguaW50ZWwu
-Y29tPg0KPiA+ID4gUmV2aWV3ZWQtYnk6IFByemVtZWsgS2l0c3plbCA8cHJ6ZW15c2xhdy5raXRz
-emVsQGludGVsLmNvbT4NCj4gPiA+IFNpZ25lZC1vZmYtYnk6IEthcm9sIEtvbGFjaW5za2kgPGth
-cm9sLmtvbGFjaW5za2lAaW50ZWwuY29tPg0KPiA+ID4gU2lnbmVkLW9mZi1ieTogR3J6ZWdvcnog
-Tml0a2EgPGdyemVnb3J6Lm5pdGthQGludGVsLmNvbT4NCj4gPiA+IC0tLQ0KPiA+ID4gICBkcml2
-ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3B0cF9ody5jIHwgMjMgLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tDQo+ID4gPiAgIDEgZmlsZSBjaGFuZ2VkLCAyMyBkZWxldGlvbnMoLSkNCj4gPg0K
-PiA+DQo+ID4gS2luZCByZWdhcmRzLA0KPiA+DQo+ID4gUGF1bA0KPiA+DQo+ID4NCj4gDQo+IERl
-YXIgUGF1bCwgZmlyc3Qgb2YgYWxsIHRoYW5rIHlvdSBmb3IgeW91ciByZXZpZXcgYW5kIGFwb2xv
-Z2l6ZSBmb3IgbGF0ZQ0KPiByZXNwb25zZSAoc2ltcGx5LCBJIHdhcyBvdXQgcHJldmlvdXMgd2Vl
-aykuDQo+IA0KPiBSZW1vdmluZyB0aGF0IHdvcmthcm91bmQgd2FzIGEgY29uc2Npb3VzIGRlY2lz
-aW9uLg0KPiBSYXRpb25hbGUgZm9yIHRoYXQgaXMsIHRoYXQgdGhlICdwcm9ibGVtYXRpYycgd29y
-a2Fyb3VuZCB3YXMgcHJvdmlkZWQNCj4gaW4gdmVyeSBlYXJseSBwcm9kdWN0IGRldmVsb3BtZW50
-IHN0YWdlICh+IHllYXIgYWdvKS4gIE5vdywgZXNwZWNpYWxseQ0KPiB3aGVuIEU4MjUtQyBwcm9k
-dWN0IHdhcyBqdXN0IG9mZmljaWFsbHkgYW5ub3VuY2VkLCB0aGUgY3VzdG9tZXIgc2hhbGwNCj4g
-dXNlIG9mZmljaWFsLCBhcHByb3ZlZCBTVyBpbmdyZWRpZW50cy4NCj4gDQo+IEhlcmUgYXJlIG1v
-cmUgZGV0YWlscyBvbiB0aGlzOg0KPiAtIGludHJvZHVjdGlvbiB0byBFODI1LUMgZGV2aWNlcyB3
-YXMgcHJvdmlkZWQgaW4ga2VybmVsIDYuNiwgdG8gYWxsb3cNCj4gICBzZWxlY3RlZCBjdXN0b21l
-cnMgZm9yIGVhcmx5IEU4MjUtQyBlbmFibGVtZW50LiBBdCB0aGF0IHRpbWUgRTgyNS1DDQo+ICAg
-cHJvZHVjdCBmYW1pbHkgd2FzIGluIGVhcmx5IHBoYXNlIChraW5kIG9mIEFscGhhKSwgYW5kIG9u
-ZSBvZiB0aGUNCj4gICBjb25zZXF1ZW5jZXMsIGZyb20gdG9kYXkncyBwZXJzcGVjdGl2ZSwgIGlz
-IHRoYXQgaXQgaW5jbHVkZWQgJ3Vud2FudGVkJw0KPiAgIHdvcmthcm91bmRzIGxpa2UgdGhpcy4N
-Cj4gDQo+IC0gdGhpcyBjaGFuZ2UgYXBwbGllcyB0byBFODI1LUMgcHJvZHVjdHMgb25seSwgd2hp
-Y2ggaXMgU29DIHByb2R1Y3QsIG5vdA0KPiAgIGEgcmVndWxhciBOSUMgY2FyZC4gIFdoYXQgSSdk
-IGxpa2UgdG8gZW1waGFzaXplIGhlcmUsIGl0IHJlcXVpcmVzIGV2ZW4gbW9yZQ0KPiAgIGN1c3Rv
-bWVyIHN1cHBvcnQgZnJvbSBJbnRlbCBjb21wYW55IGluIHRlcm1zIG9mIHByb3ZpZGluZyBtYXRj
-aGluZw0KPiAgIFNXIHN0YWNrIChsaWtlIEJJT1MsIGZpcm13YXJlLCBkcml2ZXJzIGV0Yy4pLg0K
-PiANCj4gSSBzZWUgdHdvIHBvc3NpYmlsaXRpZXMgbm93Og0KPiAxKSBpZiB0aGUgcmVncmVzc2lv
-biBwb2xpY3kgeW91IG1lbnRpb25lZCBpcyBpbnZpb2xhYmxlLCBrZWVwIHRoZSB3b3JrYXJvdW5k
-DQo+ICAgIGluIHRoZSBrZXJuZWwgY29kZSBsaWtlIGl0IGlzIHRvZGF5LiBNYXliZSB3ZSBjb3Vs
-ZCBhZGQgTlZNIHZlcnNpb24NCj4gY2hlY2tlcg0KPiAgICBhbmQgYXBwbHkgcmVnaXN0ZXIgdXBk
-YXRlcyBmb3Igb2xkZXIgTlZNcyBvbmx5Lg0KPiAgICBCdXQsIGluIG15IG9waW5pb24sIGl0IHdv
-dWxkIGxlYWQgdG8ga2VlcGluZyBhIGRlYWQgY29kZS4gVGhlcmUgc2hvdWxkbid0DQo+IGJlDQo+
-ICAgIG9mZmljaWFsIEZXIChJIGhvcGUgSSB3b24ndCByZWdyZXQgdGhlc2Ugd29yZHMpIG9uIHRo
-ZSBtYXJrZXQgd2hpY2gNCj4gcmVxdWlyZXMNCj4gICAgdGhpcyB3b3JrYXJvdW5kLg0KPiANCj4g
-MikgcmVtb3ZlIHRoZSB3b3JrYXJvdW5kIGxpa2UgaXQncyBpbXBsZW1lbnRlZCBpbiB0aGlzIHBh
-dGNoIGFuZCBpbXByb3ZlDQo+ICAgIGNvbW1pdCBtZXNzYWdlIHRvIGNsYXJpZnkgYWxsIHBvdGVu
-dGlhbCBkb3VidHMvcXVlc3Rpb25zIGZyb20gdGhlIHVzZXINCj4gICAgcGVyc3BlY3RpdmUuDQo+
-IA0KPiBXaGF0J3MgeW91ciB0aG91Z2h0cz8NCj4gDQo+IEtpbmQgcmVnYXJkcw0KPiANCj4gR3J6
-ZWdvcnoNCj4gDQoNCkkndmUganVzdCBzdWJtaXR0ZWQgdjIgb2YgdGhpcyBzZXJpZXMsIGJ1dCBu
-byBjaGFuZ2VzIGluIHRoaXMgYXJlYSB5ZXQgKGV4Y2VwdCBhZGRpbmcNCmJsYW5rIGxpbmUgc3Vn
-Z2VzdGlvbikNCkknbSB3YWl0aW5nIGZvciBmZWVkYmFjayBvciBjb25maXJtYXRpb24gaWYgYWJv
-dmUganVzdGlmaWNhdGlvbiBpcyBzdWZmaWNpZW50Lg0KSSdsbCBzdWJtaXQgb25lIG1vcmUgaWYg
-bmVlZGVkLg0KDQpSZWdhcmRzDQoNCkdyemVnb3J6DQo=
+--000000000000a131c1062fc9b506
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Mar 7, 2025 at 1:31=E2=80=AFAM Yunsheng Lin <linyunsheng@huawei.com=
+> wrote:
+
+> Introduce page_pool_get_pp() API to avoid caller accessing
+> page->pp directly, in order to make the following patch more
+> reviewable as the following patch will change page->pp to
+> page->pp_item to fix the DMA API misuse problem.
+>
+> Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
+> ---
+>  drivers/net/ethernet/freescale/fec_main.c          |  8 +++++---
+>  .../net/ethernet/google/gve/gve_buffer_mgmt_dqo.c  |  2 +-
+>  drivers/net/ethernet/intel/iavf/iavf_txrx.c        |  6 ++++--
+>  drivers/net/ethernet/intel/idpf/idpf_txrx.c        | 14 +++++++++-----
+>  drivers/net/ethernet/intel/libeth/rx.c             |  2 +-
+>  drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c   |  3 ++-
+>  drivers/net/netdevsim/netdev.c                     |  6 ++++--
+>  drivers/net/wireless/mediatek/mt76/mt76.h          |  2 +-
+>  include/net/libeth/rx.h                            |  3 ++-
+>  include/net/page_pool/helpers.h                    |  5 +++++
+>  10 files changed, 34 insertions(+), 17 deletions(-)
+>
+> diff --git a/drivers/net/ethernet/freescale/fec_main.c
+> b/drivers/net/ethernet/freescale/fec_main.c
+> index a86cfebedaa8..4ade1553557a 100644
+> --- a/drivers/net/ethernet/freescale/fec_main.c
+> +++ b/drivers/net/ethernet/freescale/fec_main.c
+> @@ -1038,7 +1038,8 @@ static void fec_enet_bd_init(struct net_device *dev=
+)
+>                                 struct page *page =3D txq->tx_buf[i].buf_=
+p;
+>
+>                                 if (page)
+> -                                       page_pool_put_page(page->pp, page=
+,
+> 0, false);
+> +
+>  page_pool_put_page(page_pool_get_pp(page),
+> +                                                          page, 0, false=
+);
+>                         }
+>
+>                         txq->tx_buf[i].buf_p =3D NULL;
+> @@ -1576,7 +1577,7 @@ fec_enet_tx_queue(struct net_device *ndev, u16
+> queue_id, int budget)
+>                         xdp_return_frame_rx_napi(xdpf);
+>                 } else { /* recycle pages of XDP_TX frames */
+>                         /* The dma_sync_size =3D 0 as XDP_TX has already
+> synced DMA for_device */
+> -                       page_pool_put_page(page->pp, page, 0, true);
+> +                       page_pool_put_page(page_pool_get_pp(page), page,
+> 0, true);
+>                 }
+>
+>                 txq->tx_buf[index].buf_p =3D NULL;
+> @@ -3343,7 +3344,8 @@ static void fec_enet_free_buffers(struct net_device
+> *ndev)
+>                         } else {
+>                                 struct page *page =3D txq->tx_buf[i].buf_=
+p;
+>
+> -                               page_pool_put_page(page->pp, page, 0,
+> false);
+> +                               page_pool_put_page(page_pool_get_pp(page)=
+,
+> +                                                  page, 0, false);
+>                         }
+>
+>                         txq->tx_buf[i].buf_p =3D NULL;
+> diff --git a/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
+> b/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
+> index 403f0f335ba6..87422b8828ff 100644
+> --- a/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
+> +++ b/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c
+> @@ -210,7 +210,7 @@ void gve_free_to_page_pool(struct gve_rx_ring *rx,
+>         if (!page)
+>                 return;
+>
+> -       page_pool_put_full_page(page->pp, page, allow_direct);
+> +       page_pool_put_full_page(page_pool_get_pp(page), page,
+> allow_direct);
+>         buf_state->page_info.page =3D NULL;
+>  }
+>
+
+Hi Yunsheng,
+
+FYI, I just submitted a patch that switches the gve driver to using
+netmem page_pool API and made the corresponding change to netmem_get_pp API
+for the code above.
+
+https://lore.kernel.org/netdev/20250307003905.601175-1-hramamurthy@google.c=
+om/
+
+FWIW, the spirit of the API change LGTM.
+
+
+>
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+> b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+> index 422312b8b54a..72f17eaac277 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+> @@ -1197,7 +1197,8 @@ static void iavf_add_rx_frag(struct sk_buff *skb,
+>                              const struct libeth_fqe *rx_buffer,
+>                              unsigned int size)
+>  {
+> -       u32 hr =3D rx_buffer->page->pp->p.offset;
+> +       struct page_pool *pool =3D page_pool_get_pp(rx_buffer->page);
+> +       u32 hr =3D pool->p.offset;
+>
+>         skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buffer->page,
+>                         rx_buffer->offset + hr, size, rx_buffer->truesize=
+);
+> @@ -1214,7 +1215,8 @@ static void iavf_add_rx_frag(struct sk_buff *skb,
+>  static struct sk_buff *iavf_build_skb(const struct libeth_fqe *rx_buffer=
+,
+>                                       unsigned int size)
+>  {
+> -       u32 hr =3D rx_buffer->page->pp->p.offset;
+> +       struct page_pool *pool =3D page_pool_get_pp(rx_buffer->page);
+> +       u32 hr =3D pool->p.offset;
+>         struct sk_buff *skb;
+>         void *va;
+>
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+> b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+> index bdf52cef3891..0ce77a5559aa 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+> @@ -385,7 +385,8 @@ static void idpf_rx_page_rel(struct libeth_fqe *rx_bu=
+f)
+>         if (unlikely(!rx_buf->page))
+>                 return;
+>
+> -       page_pool_put_full_page(rx_buf->page->pp, rx_buf->page, false);
+> +       page_pool_put_full_page(page_pool_get_pp(rx_buf->page),
+> rx_buf->page,
+> +                               false);
+>
+>         rx_buf->page =3D NULL;
+>         rx_buf->offset =3D 0;
+> @@ -3096,7 +3097,8 @@ idpf_rx_process_skb_fields(struct idpf_rx_queue
+> *rxq, struct sk_buff *skb,
+>  void idpf_rx_add_frag(struct idpf_rx_buf *rx_buf, struct sk_buff *skb,
+>                       unsigned int size)
+>  {
+> -       u32 hr =3D rx_buf->page->pp->p.offset;
+> +       struct page_pool *pool =3D page_pool_get_pp(rx_buf->page);
+> +       u32 hr =3D pool->p.offset;
+>
+>         skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buf->page,
+>                         rx_buf->offset + hr, size, rx_buf->truesize);
+> @@ -3128,8 +3130,10 @@ static u32 idpf_rx_hsplit_wa(const struct
+> libeth_fqe *hdr,
+>         if (!libeth_rx_sync_for_cpu(buf, copy))
+>                 return 0;
+>
+> -       dst =3D page_address(hdr->page) + hdr->offset +
+> hdr->page->pp->p.offset;
+> -       src =3D page_address(buf->page) + buf->offset +
+> buf->page->pp->p.offset;
+> +       dst =3D page_address(hdr->page) + hdr->offset +
+> +               page_pool_get_pp(hdr->page)->p.offset;
+> +       src =3D page_address(buf->page) + buf->offset +
+> +               page_pool_get_pp(buf->page)->p.offset;
+>         memcpy(dst, src, LARGEST_ALIGN(copy));
+>
+>         buf->offset +=3D copy;
+> @@ -3147,7 +3151,7 @@ static u32 idpf_rx_hsplit_wa(const struct libeth_fq=
+e
+> *hdr,
+>   */
+>  struct sk_buff *idpf_rx_build_skb(const struct libeth_fqe *buf, u32 size=
+)
+>  {
+> -       u32 hr =3D buf->page->pp->p.offset;
+> +       u32 hr =3D page_pool_get_pp(buf->page)->p.offset;
+>         struct sk_buff *skb;
+>         void *va;
+>
+> diff --git a/drivers/net/ethernet/intel/libeth/rx.c
+> b/drivers/net/ethernet/intel/libeth/rx.c
+> index 66d1d23b8ad2..8de0c3a3b146 100644
+> --- a/drivers/net/ethernet/intel/libeth/rx.c
+> +++ b/drivers/net/ethernet/intel/libeth/rx.c
+> @@ -207,7 +207,7 @@ EXPORT_SYMBOL_NS_GPL(libeth_rx_fq_destroy, "LIBETH");
+>   */
+>  void libeth_rx_recycle_slow(struct page *page)
+>  {
+> -       page_pool_recycle_direct(page->pp, page);
+> +       page_pool_recycle_direct(page_pool_get_pp(page), page);
+>  }
+>  EXPORT_SYMBOL_NS_GPL(libeth_rx_recycle_slow, "LIBETH");
+>
+> diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
+> b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
+> index 6f3094a479e1..b6bee95db994 100644
+> --- a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
+> +++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
+> @@ -709,7 +709,8 @@ static void mlx5e_free_xdpsq_desc(struct mlx5e_xdpsq
+> *sq,
+>                                 /* No need to check ((page->pp_magic &
+> ~0x3UL) =3D=3D PP_SIGNATURE)
+>                                  * as we know this is a page_pool page.
+>                                  */
+> -                               page_pool_recycle_direct(page->pp, page);
+> +
+>  page_pool_recycle_direct(page_pool_get_pp(page),
+> +                                                        page);
+>                         } while (++n < num);
+>
+>                         break;
+> diff --git a/drivers/net/netdevsim/netdev.c
+> b/drivers/net/netdevsim/netdev.c
+> index 54d03b0628d2..769fbea8ccf0 100644
+> --- a/drivers/net/netdevsim/netdev.c
+> +++ b/drivers/net/netdevsim/netdev.c
+> @@ -847,7 +847,8 @@ nsim_pp_hold_write(struct file *file, const char
+> __user *data,
+>                 if (!ns->page)
+>                         ret =3D -ENOMEM;
+>         } else {
+> -               page_pool_put_full_page(ns->page->pp, ns->page, false);
+> +               page_pool_put_full_page(page_pool_get_pp(ns->page),
+> ns->page,
+> +                                       false);
+>                 ns->page =3D NULL;
+>         }
+>
+> @@ -1059,7 +1060,8 @@ void nsim_destroy(struct netdevsim *ns)
+>
+>         /* Put this intentionally late to exercise the orphaning path */
+>         if (ns->page) {
+> -               page_pool_put_full_page(ns->page->pp, ns->page, false);
+> +               page_pool_put_full_page(page_pool_get_pp(ns->page),
+> ns->page,
+> +                                       false);
+>                 ns->page =3D NULL;
+>         }
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h
+> b/drivers/net/wireless/mediatek/mt76/mt76.h
+> index 132148f7b107..11a88ecf8533 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+> @@ -1777,7 +1777,7 @@ static inline void mt76_put_page_pool_buf(void *buf=
+,
+> bool allow_direct)
+>  {
+>         struct page *page =3D virt_to_head_page(buf);
+>
+> -       page_pool_put_full_page(page->pp, page, allow_direct);
+> +       page_pool_put_full_page(page_pool_get_pp(page), page,
+> allow_direct);
+>  }
+>
+>  static inline void *
+> diff --git a/include/net/libeth/rx.h b/include/net/libeth/rx.h
+> index ab05024be518..2a3991d5b7c0 100644
+> --- a/include/net/libeth/rx.h
+> +++ b/include/net/libeth/rx.h
+> @@ -137,7 +137,8 @@ static inline bool libeth_rx_sync_for_cpu(const struc=
+t
+> libeth_fqe *fqe,
+>                 return false;
+>         }
+>
+> -       page_pool_dma_sync_for_cpu(page->pp, page, fqe->offset, len);
+> +       page_pool_dma_sync_for_cpu(page_pool_get_pp(page), page,
+> fqe->offset,
+> +                                  len);
+>
+>         return true;
+>  }
+> diff --git a/include/net/page_pool/helpers.h
+> b/include/net/page_pool/helpers.h
+> index 582a3d00cbe2..ab91911af215 100644
+> --- a/include/net/page_pool/helpers.h
+> +++ b/include/net/page_pool/helpers.h
+> @@ -83,6 +83,11 @@ static inline u64 *page_pool_ethtool_stats_get(u64
+> *data, const void *stats)
+>  }
+>  #endif
+>
+> +static inline struct page_pool *page_pool_get_pp(struct page *page)
+> +{
+> +       return page->pp;
+> +}
+> +
+>  /**
+>   * page_pool_dev_alloc_pages() - allocate a page.
+>   * @pool:      pool from which to allocate
+> --
+> 2.33.0
+>
+>
+
+--000000000000a131c1062fc9b506
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
+mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Mar 7, =
+2025 at 1:31=E2=80=AFAM Yunsheng Lin &lt;<a href=3D"mailto:linyunsheng@huaw=
+ei.com">linyunsheng@huawei.com</a>&gt; wrote:<br></div><blockquote class=3D=
+"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(2=
+04,204,204);padding-left:1ex">Introduce page_pool_get_pp() API to avoid cal=
+ler accessing<br>
+page-&gt;pp directly, in order to make the following patch more<br>
+reviewable as the following patch will change page-&gt;pp to<br>
+page-&gt;pp_item to fix the DMA API misuse problem.<br>
+<br>
+Signed-off-by: Yunsheng Lin &lt;<a href=3D"mailto:linyunsheng@huawei.com" t=
+arget=3D"_blank">linyunsheng@huawei.com</a>&gt;<br>
+---<br>
+=C2=A0drivers/net/ethernet/freescale/fec_main.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 |=C2=A0 8 +++++---<br>
+=C2=A0.../net/ethernet/google/gve/gve_buffer_mgmt_dqo.c=C2=A0 |=C2=A0 2 +-<=
+br>
+=C2=A0drivers/net/ethernet/intel/iavf/iavf_txrx.c=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 |=C2=A0 6 ++++--<br>
+=C2=A0drivers/net/ethernet/intel/idpf/idpf_txrx.c=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 | 14 +++++++++-----<br>
+=C2=A0drivers/net/ethernet/intel/libeth/rx.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0|=C2=A0 2 +-<br>
+=C2=A0drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c=C2=A0 =C2=A0|=C2=A0 =
+3 ++-<br>
+=C2=A0drivers/net/netdevsim/netdev.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 6 ++++--<br>
+=C2=A0drivers/net/wireless/mediatek/mt76/mt76.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 |=C2=A0 2 +-<br>
+=C2=A0include/net/libeth/rx.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 3 ++-<br>
+=C2=A0include/net/page_pool/helpers.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 5 +++++<br>
+=C2=A010 files changed, 34 insertions(+), 17 deletions(-)<br>
+<br>
+diff --git a/drivers/net/ethernet/freescale/fec_main.c b/drivers/net/ethern=
+et/freescale/fec_main.c<br>
+index a86cfebedaa8..4ade1553557a 100644<br>
+--- a/drivers/net/ethernet/freescale/fec_main.c<br>
++++ b/drivers/net/ethernet/freescale/fec_main.c<br>
+@@ -1038,7 +1038,8 @@ static void fec_enet_bd_init(struct net_device *dev)<=
+br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 struct page *page =3D txq-&gt;tx_buf=
+[i].buf_p;<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (page)<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool=
+_put_page(page-&gt;pp, page, 0, false);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool=
+_put_page(page_pool_get_pp(page),<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 page, 0, false);<br=
+>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 }<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 txq-&gt;tx_buf[i].buf_p =3D NULL;<br>
+@@ -1576,7 +1577,7 @@ fec_enet_tx_queue(struct net_device *ndev, u16 queue_=
+id, int budget)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 xdp_return_frame_rx_napi(xdpf);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 } else { /* recycle=
+ pages of XDP_TX frames */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 /* The dma_sync_size =3D 0 as XDP_TX has already synced DMA for_=
+device */<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0page_pool_put_page(page-&gt;pp, page, 0, true);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0page_pool_put_page(page_pool_get_pp(page), page, 0, true);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 txq-&gt;tx_buf[inde=
+x].buf_p =3D NULL;<br>
+@@ -3343,7 +3344,8 @@ static void fec_enet_free_buffers(struct net_device *=
+ndev)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 } else {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 struct page *page =3D txq-&gt;tx_buf=
+[i].buf_p;<br>
+<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool_put_page(page-&gt;pp, page,=
+ 0, false);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool_put_page(page_pool_get_pp(p=
+age),<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 page, 0, false);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 }<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 txq-&gt;tx_buf[i].buf_p =3D NULL;<br>
+diff --git a/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c b/driver=
+s/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c<br>
+index 403f0f335ba6..87422b8828ff 100644<br>
+--- a/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c<br>
++++ b/drivers/net/ethernet/google/gve/gve_buffer_mgmt_dqo.c<br>
+@@ -210,7 +210,7 @@ void gve_free_to_page_pool(struct gve_rx_ring *rx,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (!page)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
+<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool_put_full_page(page-&gt;pp, page, allo=
+w_direct);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool_put_full_page(page_pool_get_pp(page),=
+ page, allow_direct);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 buf_state-&gt;<a href=3D"http://page_info.page"=
+ rel=3D"noreferrer" target=3D"_blank">page_info.page</a> =3D NULL;<br>
+=C2=A0}<br></blockquote><div><br></div><div>Hi Yunsheng,</div><div><br></di=
+v><div>FYI, I just submitted a patch that switches the gve driver to using =
+netmem=C2=A0page_pool API and made the corresponding change to netmem_get_p=
+p API for the code above.</div><div><br></div><div><a href=3D"https://lore.=
+kernel.org/netdev/20250307003905.601175-1-hramamurthy@google.com/">https://=
+lore.kernel.org/netdev/20250307003905.601175-1-hramamurthy@google.com/</a><=
+/div><div><br></div><div>FWIW, the spirit of the API change LGTM.</div><div=
+>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px =
+0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethe=
+rnet/intel/iavf/iavf_txrx.c<br>
+index 422312b8b54a..72f17eaac277 100644<br>
+--- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c<br>
++++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c<br>
+@@ -1197,7 +1197,8 @@ static void iavf_add_rx_frag(struct sk_buff *skb,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0const struct libeth_fqe *rx_buffer,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0unsigned int size)<br>
+=C2=A0{<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0u32 hr =3D rx_buffer-&gt;page-&gt;pp-&gt;p.offs=
+et;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0struct page_pool *pool =3D page_pool_get_pp(rx_=
+buffer-&gt;page);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0u32 hr =3D pool-&gt;p.offset;<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 skb_add_rx_frag(skb, skb_shinfo(skb)-&gt;nr_fra=
+gs, rx_buffer-&gt;page,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 rx_buffer-&gt;offset + hr, size, rx_buffer-&gt;truesize);<br>
+@@ -1214,7 +1215,8 @@ static void iavf_add_rx_frag(struct sk_buff *skb,<br>
+=C2=A0static struct sk_buff *iavf_build_skb(const struct libeth_fqe *rx_buf=
+fer,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 unsigned int si=
+ze)<br>
+=C2=A0{<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0u32 hr =3D rx_buffer-&gt;page-&gt;pp-&gt;p.offs=
+et;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0struct page_pool *pool =3D page_pool_get_pp(rx_=
+buffer-&gt;page);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0u32 hr =3D pool-&gt;p.offset;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 struct sk_buff *skb;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 void *va;<br>
+<br>
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethe=
+rnet/intel/idpf/idpf_txrx.c<br>
+index bdf52cef3891..0ce77a5559aa 100644<br>
+--- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c<br>
++++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c<br>
+@@ -385,7 +385,8 @@ static void idpf_rx_page_rel(struct libeth_fqe *rx_buf)=
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (unlikely(!rx_buf-&gt;page))<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
+<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool_put_full_page(rx_buf-&gt;page-&gt;pp,=
+ rx_buf-&gt;page, false);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool_put_full_page(page_pool_get_pp(rx_buf=
+-&gt;page), rx_buf-&gt;page,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0false);<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 rx_buf-&gt;page =3D NULL;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 rx_buf-&gt;offset =3D 0;<br>
+@@ -3096,7 +3097,8 @@ idpf_rx_process_skb_fields(struct idpf_rx_queue *rxq,=
+ struct sk_buff *skb,<br>
+=C2=A0void idpf_rx_add_frag(struct idpf_rx_buf *rx_buf, struct sk_buff *skb=
+,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 unsigned int size)<br>
+=C2=A0{<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0u32 hr =3D rx_buf-&gt;page-&gt;pp-&gt;p.offset;=
+<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0struct page_pool *pool =3D page_pool_get_pp(rx_=
+buf-&gt;page);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0u32 hr =3D pool-&gt;p.offset;<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 skb_add_rx_frag(skb, skb_shinfo(skb)-&gt;nr_fra=
+gs, rx_buf-&gt;page,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 rx_buf-&gt;offset + hr, size, rx_buf-&gt;truesize);<br>
+@@ -3128,8 +3130,10 @@ static u32 idpf_rx_hsplit_wa(const struct libeth_fqe=
+ *hdr,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (!libeth_rx_sync_for_cpu(buf, copy))<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return 0;<br>
+<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0dst =3D page_address(hdr-&gt;page) + hdr-&gt;of=
+fset + hdr-&gt;page-&gt;pp-&gt;p.offset;<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0src =3D page_address(buf-&gt;page) + buf-&gt;of=
+fset + buf-&gt;page-&gt;pp-&gt;p.offset;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0dst =3D page_address(hdr-&gt;page) + hdr-&gt;of=
+fset +<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool_get_pp(hd=
+r-&gt;page)-&gt;p.offset;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0src =3D page_address(buf-&gt;page) + buf-&gt;of=
+fset +<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool_get_pp(bu=
+f-&gt;page)-&gt;p.offset;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 memcpy(dst, src, LARGEST_ALIGN(copy));<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 buf-&gt;offset +=3D copy;<br>
+@@ -3147,7 +3151,7 @@ static u32 idpf_rx_hsplit_wa(const struct libeth_fqe =
+*hdr,<br>
+=C2=A0 */<br>
+=C2=A0struct sk_buff *idpf_rx_build_skb(const struct libeth_fqe *buf, u32 s=
+ize)<br>
+=C2=A0{<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0u32 hr =3D buf-&gt;page-&gt;pp-&gt;p.offset;<br=
+>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0u32 hr =3D page_pool_get_pp(buf-&gt;page)-&gt;p=
+.offset;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 struct sk_buff *skb;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 void *va;<br>
+<br>
+diff --git a/drivers/net/ethernet/intel/libeth/rx.c b/drivers/net/ethernet/=
+intel/libeth/rx.c<br>
+index 66d1d23b8ad2..8de0c3a3b146 100644<br>
+--- a/drivers/net/ethernet/intel/libeth/rx.c<br>
++++ b/drivers/net/ethernet/intel/libeth/rx.c<br>
+@@ -207,7 +207,7 @@ EXPORT_SYMBOL_NS_GPL(libeth_rx_fq_destroy, &quot;LIBETH=
+&quot;);<br>
+=C2=A0 */<br>
+=C2=A0void libeth_rx_recycle_slow(struct page *page)<br>
+=C2=A0{<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool_recycle_direct(page-&gt;pp, page);<br=
+>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool_recycle_direct(page_pool_get_pp(page)=
+, page);<br>
+=C2=A0}<br>
+=C2=A0EXPORT_SYMBOL_NS_GPL(libeth_rx_recycle_slow, &quot;LIBETH&quot;);<br>
+<br>
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c b/drivers/net=
+/ethernet/mellanox/mlx5/core/en/xdp.c<br>
+index 6f3094a479e1..b6bee95db994 100644<br>
+--- a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c<br>
++++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c<br>
+@@ -709,7 +709,8 @@ static void mlx5e_free_xdpsq_desc(struct mlx5e_xdpsq *s=
+q,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* No need to check ((page-&gt;pp_ma=
+gic &amp; ~0x3UL) =3D=3D PP_SIGNATURE)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* as we know this is a page_po=
+ol page.<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0*/<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool_recycle_direct(page-&gt;pp,=
+ page);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool_recycle_direct(page_pool_ge=
+t_pp(page),<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 page);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 } while (++n &lt; num);<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 break;<br>
+diff --git a/drivers/net/netdevsim/netdev.c b/drivers/net/netdevsim/netdev.=
+c<br>
+index 54d03b0628d2..769fbea8ccf0 100644<br>
+--- a/drivers/net/netdevsim/netdev.c<br>
++++ b/drivers/net/netdevsim/netdev.c<br>
+@@ -847,7 +847,8 @@ nsim_pp_hold_write(struct file *file, const char __user=
+ *data,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (!ns-&gt;page)<b=
+r>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 ret =3D -ENOMEM;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 } else {<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool_put_full_=
+page(ns-&gt;page-&gt;pp, ns-&gt;page, false);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool_put_full_=
+page(page_pool_get_pp(ns-&gt;page), ns-&gt;page,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0false);<b=
+r>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ns-&gt;page =3D NUL=
+L;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+<br>
+@@ -1059,7 +1060,8 @@ void nsim_destroy(struct netdevsim *ns)<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Put this intentionally late to exercise the =
+orphaning path */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (ns-&gt;page) {<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool_put_full_=
+page(ns-&gt;page-&gt;pp, ns-&gt;page, false);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool_put_full_=
+page(page_pool_get_pp(ns-&gt;page), ns-&gt;page,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0false);<b=
+r>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ns-&gt;page =3D NUL=
+L;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+<br>
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wirele=
+ss/mediatek/mt76/mt76.h<br>
+index 132148f7b107..11a88ecf8533 100644<br>
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h<br>
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h<br>
+@@ -1777,7 +1777,7 @@ static inline void mt76_put_page_pool_buf(void *buf, =
+bool allow_direct)<br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 struct page *page =3D virt_to_head_page(buf);<b=
+r>
+<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool_put_full_page(page-&gt;pp, page, allo=
+w_direct);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool_put_full_page(page_pool_get_pp(page),=
+ page, allow_direct);<br>
+=C2=A0}<br>
+<br>
+=C2=A0static inline void *<br>
+diff --git a/include/net/libeth/rx.h b/include/net/libeth/rx.h<br>
+index ab05024be518..2a3991d5b7c0 100644<br>
+--- a/include/net/libeth/rx.h<br>
++++ b/include/net/libeth/rx.h<br>
+@@ -137,7 +137,8 @@ static inline bool libeth_rx_sync_for_cpu(const struct =
+libeth_fqe *fqe,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return false;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool_dma_sync_for_cpu(page-&gt;pp, page, f=
+qe-&gt;offset, len);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0page_pool_dma_sync_for_cpu(page_pool_get_pp(pag=
+e), page, fqe-&gt;offset,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 len);<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 return true;<br>
+=C2=A0}<br>
+diff --git a/include/net/page_pool/helpers.h b/include/net/page_pool/helper=
+s.h<br>
+index 582a3d00cbe2..ab91911af215 100644<br>
+--- a/include/net/page_pool/helpers.h<br>
++++ b/include/net/page_pool/helpers.h<br>
+@@ -83,6 +83,11 @@ static inline u64 *page_pool_ethtool_stats_get(u64 *data=
+, const void *stats)<br>
+=C2=A0}<br>
+=C2=A0#endif<br>
+<br>
++static inline struct page_pool *page_pool_get_pp(struct page *page)<br>
++{<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0return page-&gt;pp;<br>
++}<br>
++<br>
+=C2=A0/**<br>
+=C2=A0 * page_pool_dev_alloc_pages() - allocate a page.<br>
+=C2=A0 * @pool:=C2=A0 =C2=A0 =C2=A0 pool from which to allocate<br>
+-- <br>
+2.33.0<br>
+<br>
+</blockquote></div></div>
+
+--000000000000a131c1062fc9b506--
