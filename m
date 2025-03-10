@@ -2,121 +2,94 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B09A6A59427
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Mar 2025 13:24:11 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D9DCDA59462
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Mar 2025 13:28:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 617BA60A6E;
-	Mon, 10 Mar 2025 12:24:10 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0306C60A6B;
+	Mon, 10 Mar 2025 12:28:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id n649Ny0xeKBx; Mon, 10 Mar 2025 12:24:09 +0000 (UTC)
+ id OAlcHCpq8pNV; Mon, 10 Mar 2025 12:28:34 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org ACA0360A61
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2D33160A8C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741609449;
-	bh=+WnE/5imR3di2EhHXu2vvarTCh376TFcJuzOP6ZCQZg=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=6DLzBQe0a+FOkfuSOKpThegzUNUYeO3ylXt+PaFOJmPD8z56hwo9vSK97EqxTAtrC
-	 tkXE93bmwHRQ69sexf1Z6H033OhW0hiQPkCqMyN3Hzxao0ppKLDQbWuszu8OrJOkQW
-	 welQ5dxiWsnCq4JnAiTx9sWCDRRLKXsRlr5d/eT3QHMdmusLQ6yuSxgeA2PkF/xLMR
-	 86XPL8n8gRCcVHlWmuhgtVtPFeQAiBBn8hXsp4Xd/no1/MXDuFzYQMdof7HEbCSAAE
-	 EUPqybzYiZhWNpEuzCOhE+47GJb+lY0pojW8uOqvXzfJQ+Zqu1fu41h2vdBoexVQvM
-	 q1aw9ieYjHLxA==
+	s=default; t=1741609714;
+	bh=ea2PodAiMPpSK1AzbzIJwd5Kd5xcujmBUhHxJEm7rs0=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=P8O3AaRd/WIxXe2utplxb4baFe9OJL96qBk9AaCTPqvQ8C8rYHylVqpwEsPbobQx1
+	 h7xMzNDig5yHX29XpTKcCbAIxXRjQIOkbHrOvVn/H/56L5Z4KahcfX6pblx1Rf7awZ
+	 AoDMAoPvXwSJWzgxIu8S1Ctt+OVTOtrbWKEO6MwBhf/bx0Rr+ZY8fT+JpKwt3pMXdQ
+	 yE42bVt4wpFR1/4+/21hcXavIFNAairNcOvn+QL5Dk2MAfzgILPblQtYUcQ4DD/p4U
+	 iMctwd+O/89dedw1fy73SeiSdDjVOn4STU30+jcFjtTzMUTDGjd6smQ5KMwQ/knyT7
+	 IXyJIYv1f4KEw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id ACA0360A61;
-	Mon, 10 Mar 2025 12:24:09 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2D33160A8C;
+	Mon, 10 Mar 2025 12:28:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 208841E3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 12:24:08 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id E65B11C1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 12:28:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1B1A560A61
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 12:24:08 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id AC6D281FD0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 12:28:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Q4v2rEYhPjyd for <intel-wired-lan@lists.osuosl.org>;
- Mon, 10 Mar 2025 12:24:06 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::333; helo=mail-wm1-x333.google.com;
- envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 7B8DA60A6E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7B8DA60A6E
-Received: from mail-wm1-x333.google.com (mail-wm1-x333.google.com
- [IPv6:2a00:1450:4864:20::333])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7B8DA60A6E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 12:24:04 +0000 (UTC)
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-43bcc04d4fcso24588635e9.2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 05:24:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741609442; x=1742214242;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=+WnE/5imR3di2EhHXu2vvarTCh376TFcJuzOP6ZCQZg=;
- b=bsv5+DzHlIk7WyZjLxSZ9tP/ZCjOsk1A67+WQ1b3LKRifMa7nDvxiIpWNcaGHycyRl
- B3ogGPbxVSeTf8S8dotS+NzQiUrkiSOJ8Fx526n8+7P2cCQZ2BNqe7R6ZYsDewBCMW0L
- fFBmQb4kYhdzB2vHjRvkvTw9xsrmA+MVaNjZBFDgn2SmXiSPA+mj+re6mOtng2ZI/BPq
- fwi+HbALQovI2hIlkGF2wPFZW9yyNaZLGPJW6iToZymFNea0GZIUEumUMOLyfhkz8hwE
- CAwhGlyPWIJL+MYtRiSEVHdKbS9T4Cxi4Bz3yquruXCVQR1YfTLWpMjloKWmWja08pFM
- GSlg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUNr/uwQJv9Co512P5WGHRIudl50BgqRYhzKwZwPAXGRfV9hGHFt3Q30KCwHz/xmBquNELAERNkh1+zK++2DNE=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YyBfqBYreKy/bgs8pPabxCiHKIg80Q39O7mjpqLU87Ue4XLz1RB
- EM9qxZoVl2KBWoR2Cdbs8bgK+R3YyXvKEQ/V6Xiiud/4PLFUoeT1toce0w9t7iY=
-X-Gm-Gg: ASbGncsn2ciBbfZrrexz1QaKmoWzALC14/Y2AoQHVmyeqWwd7QLK1yqHhRx86szwDs0
- D1g93pKYUiTBGGmI+gLcMoBc4rDfUazNQBd5Mi+TBJwc29YAWkprYfEuIP0f9icRBxi2CkZnk+1
- hUGfSi+JfLJdo/VU+dsZme22eP9U03W90efEg38LXo6gYXL+aICIn0kY/64ywBUDFWLdZDG8Zab
- EXGVIGymuFXSbUs4M7aq/CYJk3eyXtHSBUeB6ZQmhBYJFyU7zYELCHJ7cv0cf7F0u4cLfbnekux
- p83q3TG5jI29HxuBFVYM/lpACMdpBfv3CA6KTbwaGXdslwlfhlFM/VjSaeMtpdvHih1bV4g=
-X-Google-Smtp-Source: AGHT+IGRKo1cJ5t/lY2j0asL2oDJUhmmPtQ93rExpKoeHtpvDFrye3av9IJEnTSX2X6c/6O1HvKm5Q==
-X-Received: by 2002:a05:600c:350f:b0:43c:f3e4:d6f6 with SMTP id
- 5b1f17b1804b1-43cf3e4da0bmr31246285e9.31.1741609442303; 
- Mon, 10 Mar 2025 05:24:02 -0700 (PDT)
-Received: from jiri-mlt.client.nvidia.com ([193.47.165.251])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-43bdd8b04edsm141642335e9.1.2025.03.10.05.23.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 10 Mar 2025 05:24:01 -0700 (PDT)
-Date: Mon, 10 Mar 2025 13:23:53 +0100
-From: Jiri Pirko <jiri@resnulli.us>
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Message-ID: <ogvnbkqy73hjndtr7ncmuzw7ai2w35w2osaadb2w4sel3pyrry@yqk3csgruxth>
-References: <20250306211159.3697-2-przemyslaw.kitszel@intel.com>
- <pcmfqg3b5wg4cyzzjrpw23c6dwan62567vakbgnmto3khbwysk@dloxz3hqifdf>
- <MW3PR11MB4681A62C71659C430281A15680D52@MW3PR11MB4681.namprd11.prod.outlook.com>
- <144fbab5-0cd6-478a-9500-838cd6303a73@intel.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 7noOfjJ5uxar for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 10 Mar 2025 12:28:31 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
+ helo=mgamail.intel.com; envelope-from=grzegorz.nitka@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org E05F281FCF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E05F281FCF
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E05F281FCF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 12:28:30 +0000 (UTC)
+X-CSE-ConnectionGUID: osOyHJLOQjOefdcBOlu4/A==
+X-CSE-MsgGUID: ethj+YebQvSUqV1Et//wQQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11369"; a="53981083"
+X-IronPort-AV: E=Sophos;i="6.14,236,1736841600"; d="scan'208";a="53981083"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Mar 2025 05:28:29 -0700
+X-CSE-ConnectionGUID: 1BNFu7ApStCZ81TK0l3thw==
+X-CSE-MsgGUID: C3m5+/IpQfS4zwmopqke6A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.14,236,1736841600"; d="scan'208";a="119698177"
+Received: from gklab-003-001.igk.intel.com ([10.211.3.1])
+ by orviesa009.jf.intel.com with ESMTP; 10 Mar 2025 05:28:29 -0700
+From: Grzegorz Nitka <grzegorz.nitka@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 10 Mar 2025 13:24:36 +0100
+Message-Id: <20250310122439.3327908-1-grzegorz.nitka@intel.com>
+X-Mailer: git-send-email 2.39.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <144fbab5-0cd6-478a-9500-838cd6303a73@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1741609442; x=1742214242;
- darn=lists.osuosl.org; 
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=+WnE/5imR3di2EhHXu2vvarTCh376TFcJuzOP6ZCQZg=;
- b=Aq/tJcKl6zT1ui6I7UcHLi7O8slKSHnIGZPI3nbmaVUmIS8v2e7ywKQiCK1T9Gldz2
- zoAEBUC+twWYJLfzhbXxMpRjwcZmSaltyZWkmpedMafGCSJ+jccX/MG+1ybW8HoI0EJn
- FnVCdJSJuiqflvfcUsOQbJMCKAF+oMd736y+P6HqKXu2YoMR/JA+I6TVeedyIYQzHFyr
- Xx+/SOGl1ZxiAUE3GDyqlf90jrmzQnkTtpU1Zuso0Dn3FMquM898z1mjJZhFVDvUweeq
- KQTjpJuiiPP2/F/RqrEadBt9oQYh42giiKoJ4Cfh4W4EDQ6yCEPLepoTlNNQvGOVEev1
- cqxQ==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=resnulli.us
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1741609711; x=1773145711;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=5GH96/frAS9nSuB3pPuT1iTt5BPHU3MLmaqmyJLzUQk=;
+ b=Nm9OIdmcXLekdWsXDKPjOE6fUJM5CaKkTAxf4/0bD4PMuNCioSdKQnSe
+ vafJ2xYd9JG8KKnZgvRFlLNf09ZBBn28MhBpP2XTUSDCwDlUi1SQWZNTt
+ PlbxN2c54VSuu1opkJNzQGPd2c0RgJKIxofSrXgevq+sPSzOEWL1R/1zb
+ V0Fd/2af6gcZ/lTEjaAsz99Degy5Ln2+AXQwiZEfk8NfZ2gNCjrL+yLbi
+ BXuhYV2iBpk7A4L5cpdVCbunHcu18D0B5gy9/TzECI0xtbGQFpKctODNs
+ A4Khiah6ttgTa2U/j3/L7wfieCZ1qDr7l/8A30nRqhhWk8hgsWz54Ban9
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=resnulli-us.20230601.gappssmtp.com
- header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=Aq/tJcKl
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: use DSN instead of PCI
- BDF for ice_adapter index
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Nm9OIdmc
+Subject: [Intel-wired-lan] [PATCH iwl-next v2 0/3] E825C timesync dual NAC
+ support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -129,46 +102,43 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Temerkhanov, Sergey" <sergey.temerkhanov@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Loktionov,
- Aleksandr" <aleksandr.loktionov@intel.com>, "Kolacinski,
- Karol" <karol.kolacinski@intel.com>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- "Keller, Jacob E" <jacob.e.keller@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Cc: netdev@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Mon, Mar 10, 2025 at 09:40:16AM +0100, przemyslaw.kitszel@intel.com wrote:
->> Subject: Re: [PATCH iwl-next] ice: use DSN instead of PCI BDF for ice_adapter index
->
->regarding -net vs -next, no one have complained that this bug hurts
+This patch series adds full support for timesync operations for E8225C
+devices which are configured in so called 2xNAC mode (Network
+Acceleration Complex). 2xNAC mode is the mode in which IO die
+is housing two complexes and each of them has its own PHY connected
+to it. The complex which controls time transmitter is referred as
+primary complex.
 
-Wait, so we are now waiting for someone to hit the bug and complain,
-before we do fix? Does not make any sense to me.
+The series solves known configuration issues in dual config mode:
+- side-band queue (SBQ) addressing when configuring the ports on the PHY
+  on secondary NAC
+- access to timesync config from the second NAC as only one PF in
+  primary NAC controls time transmitter clock
+
+v1->v2:
+- fixed ice_pf_src_tmr_owned function doc
+- fixed type for lane_num field in ice_hw struct 
+
+Karol Kolacinski (3):
+  ice: remove SW side band access workaround for E825
+  ice: refactor ice_sbq_msg_dev enum
+  ice: enable timesync operation on 2xNAC E825 devices
+
+ drivers/net/ethernet/intel/ice/ice.h         | 60 +++++++++++++-
+ drivers/net/ethernet/intel/ice/ice_common.c  |  8 +-
+ drivers/net/ethernet/intel/ice/ice_ptp.c     | 49 +++++++++---
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c  | 82 ++++++++++----------
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h  |  5 --
+ drivers/net/ethernet/intel/ice/ice_sbq_cmd.h | 11 +--
+ drivers/net/ethernet/intel/ice/ice_type.h    |  1 +
+ 7 files changed, 149 insertions(+), 67 deletions(-)
 
 
->
->> > +	return (unsigned long)pci_get_dsn(pdev);
->> 
->> > How do you ensure there is no xarray index collision then you cut the number like this?
->
->The reduction occurs only on "32b" systems, which are unlikely to have
->this device. And any mixing of the upper and lower 4B part still could
->collide.
+base-commit: daa2036c311e81ee32f8cccc8257e3dfd4985f79
+-- 
+2.39.3
 
-Passtrough to 32 bit qemu machine? Even how unlikely is that, you are
-risking a user to hit a bug for newly introduced code without good
-reason. Why?
-
-
->
->> 
->> It is also probably necessary to check if all devices supported by the driver have DSN capability enabled.
->
->I will double check on the SoC you have in mind.
->
->> 
->> Regards,
->> Sergey
->
