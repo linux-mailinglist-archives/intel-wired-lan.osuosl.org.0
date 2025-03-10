@@ -1,95 +1,118 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 22476A5A197
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Mar 2025 19:04:23 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CF3CFA5A6D0
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Mar 2025 23:16:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 72B3140E02;
-	Mon, 10 Mar 2025 18:04:21 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4569560747;
+	Mon, 10 Mar 2025 22:16:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kS4WXHrA2dTJ; Mon, 10 Mar 2025 18:04:20 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id gCMRQo8ncvXu; Mon, 10 Mar 2025 22:16:54 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BA2A040DDA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 74AE36075F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741629860;
-	bh=IAloyDEjksb8dKdvGoNGu9wfA/54BvjmneQ5oEpwQ60=;
-	h=Date:To:Cc:From:Subject:List-Id:List-Unsubscribe:List-Archive:
+	s=default; t=1741645014;
+	bh=EBUz6etVaeIimIUGIkH5dI3Yhl3rIPdIAdEeICWh6cU=;
+	h=From:Date:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=vrWo+NbmSfrvYrO4JFAFfgcazLcAa0OOJeayTT5rPj9awf1cgA2HXvYYf37UAB5Gb
-	 DR5m7C2OEYn3bEEQNp09g/rkoiCMWIHRtvE3dKHYlNJ6YSi3QzdAeS+I5vhpoOh61v
-	 90qE8AMVettHNz0DDTM4Gc9Jnn83lLrNcrxrjp6kHtGXAUsuHdF2YxVL25LvmTrlv7
-	 ZZi5iK3V922lzc6ZShnTKK6AEtZ9pg+NCmsgaMqipkCRVI1f8ia86bxRovhZ5rr/LN
-	 W/UrJabVoWBllnI5Sc3eziPUDS0bZkqo0WoB7knsUa46TGjNAIuLx54LpEfrykui2C
-	 ikF/qeIagkJsQ==
+	b=wefI4xbOXW3hLNH77vjrTRbGFDlED4Vn9slwH+iiVA+xEtWNMixMho6bC7WV1w0aX
+	 u2795XBH4gAeynQecot64FSUXZotz7vxo3eKShjnNr4HMklImwQB0eRw0ctY2CXB84
+	 gaL+qFg7BLVoa5gKy6yc+LOzHvq8FH0DO87LbcNO+ChfVrBV7/J8MlXwQNXD5XlbPI
+	 kUGHfI0CmBwvCJCb/SPGb3xEBwTmvnlA12HlglYuGbJ8x05RDGDQPhWU/5j9oTdUvT
+	 ay+kj7gjQuv+SDrZtL3k8vnJPwvpdh3gaTZ56cbnU9ff5GT//x/R4vCmf32u482XgR
+	 YQvMbh3BRhRMA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BA2A040DDA;
-	Mon, 10 Mar 2025 18:04:19 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 74AE36075F;
+	Mon, 10 Mar 2025 22:16:54 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id BA763DC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 18:04:17 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 87542EDF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 22:16:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9F3DB820A7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 18:04:17 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8187581EB0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 22:16:52 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id JQusdY_yAkZw for <intel-wired-lan@lists.osuosl.org>;
- Mon, 10 Mar 2025 18:04:16 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=148.163.129.48;
- helo=dispatch1-us1.ppe-hosted.com; envelope-from=greearb@candelatech.com;
+ id lEqwkDfHw61v for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 10 Mar 2025 22:16:51 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
+ helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 71DFE820A9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 71DFE820A9
-Received: from dispatch1-us1.ppe-hosted.com (dispatch1-us1.ppe-hosted.com
- [148.163.129.48])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 71DFE820A9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 18:04:16 +0000 (UTC)
-X-Virus-Scanned: Proofpoint Essentials engine
-Received: from mail3.candelatech.com (mail.candelatech.com [208.74.158.173])
- by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id C7D2D2400F8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 18:04:13 +0000 (UTC)
-Received: from [192.168.100.159] (unknown [50.251.239.81])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail3.candelatech.com (Postfix) with ESMTPSA id 32EF313C2B0;
- Mon, 10 Mar 2025 11:04:13 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com 32EF313C2B0
-Message-ID: <af9a8640-0905-7ba6-7168-31cdf3c4f422@candelatech.com>
-Date: Mon, 10 Mar 2025 11:04:12 -0700
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 9496981E94
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9496981E94
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 9496981E94
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 22:16:51 +0000 (UTC)
+X-CSE-ConnectionGUID: 366aEcq2Sq6cOuXCuceXmQ==
+X-CSE-MsgGUID: XWUmuWXKQbC33aKFD1kuJw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11369"; a="46443277"
+X-IronPort-AV: E=Sophos;i="6.14,237,1736841600"; d="scan'208";a="46443277"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Mar 2025 15:16:50 -0700
+X-CSE-ConnectionGUID: PSw1ICMzSayj7hbOQ+CvGA==
+X-CSE-MsgGUID: wIbL1Gw/TPO+Vxm76VVhhg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.14,237,1736841600"; d="scan'208";a="143315031"
+Received: from jekeller-desk.jf.intel.com ([10.166.241.15])
+ by fmviesa002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Mar 2025 15:16:50 -0700
+From: Jacob Keller <jacob.e.keller@intel.com>
+Date: Mon, 10 Mar 2025 15:16:35 -0700
+Message-Id: <20250310-jk-net-fixes-supported-extts-flags-v1-0-854ffb5f3a96@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Content-Language: en-US
-To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Cc: Brent Lovelace <brent.lovelace@candelatech.com>
-From: Ben Greear <greearb@candelatech.com>
-Organization: Candela Technologies
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-MDID: 1741629854-1C1jHmbcDVTK
-X-MDID-O: us5; ut7; 1741629854; 1C1jHmbcDVTK; <greearb@candelatech.com>;
- beed7f42440e35e1e9619977dddfd38b
-X-PPE-TRUSTED: V=1;DIR=OUT;
+X-B4-Tracking: v=1; b=H4sIAMNkz2cC/x2MwQqDMBAFf0X23IUYDUh/pfQgzdNuW2LIxiKI/
+ +7icWBmdlIUgdK92angLypLMmhvDb3eY5rBEo3JOx9c1zr+fDmh8iQblHXNeSkVkbHVqjz9xlk
+ ZQ9/1cYAPwZONcsGl2+dBFtPzOE4TnFoZeQAAAA==
+X-Change-ID: 20250310-jk-net-fixes-supported-extts-flags-e8434d8e2552
+To: Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Richard Cochran <richardcochran@gmail.com>, Ruud Bos <kernel.hbk@gmail.com>, 
+ Paul Barker <paul.barker.ct@bp.renesas.com>, 
+ =?utf-8?q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, 
+ Bryan Whitehead <bryan.whitehead@microchip.com>, 
+ UNGLinuxDriver@microchip.com, Raju Lakkaraju <Raju.Lakkaraju@microchip.com>, 
+ Florian Fainelli <florian.fainelli@broadcom.com>, 
+ Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+ Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>, 
+ Russell King <linux@armlinux.org.uk>, 
+ Jonathan Lemon <jonathan.lemon@gmail.com>, Lasse Johnsen <l@ssejohnsen.me>, 
+ Vadim Fedorenko <vadim.fedorenko@linux.dev>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
+ linux-renesas-soc@vger.kernel.org, Jacob Keller <jacob.e.keller@intel.com>
+X-Mailer: b4 0.14.2
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=candelatech.com; s=default; t=1741629853;
- bh=ioq2L4NKZIJrPob0IiLcH9SUaGjBybWiFDPJlFXJvcI=;
- h=Date:To:Cc:From:Subject:From;
- b=hh1gtvlRsKRDMz8s54umcyVNnuobLdQHhK65ADrkdrLMwuN5QG5vB9WuFsLCYnnU5
- TtvmgHmRw4GlFWqvZVf/GE/M7Mf3i7cgLEfjUSKr7O6q0L89wVPYUJw/V+jMOuP3SH
- JZDyT+ObVYJUB+4WVmJ6HkGmXbuL+jZm4bS18ydQ=
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1741645011; x=1773181011;
+ h=from:subject:date:message-id:mime-version:
+ content-transfer-encoding:to:cc;
+ bh=TsIVHhAGzWgkmSmlzL5RUweT57BypUp0vQOzaPl/oNY=;
+ b=byXYwimgMfGrMhFZHWRWOyb1xYyw4L29DKyOz6Q8d0pQMrBu04g9+N2Q
+ Ey0GnQ7WSvkoBK7IqidksJnWKXFApfi2loR/7dQaPEvxk9u9AkDYv1T4S
+ D05VxqummNSSJfa779DGi4aWKiDjSd7nSzBo1fzqzoveUzxJyBY4zpTql
+ 3cSgsaKyQXsDkSg/SmcihxsCAbZcQc6NvWR9bZ7tZ3F8E8loUpICKz7gF
+ JlQM59ryg78CxR2m3nepY85nTERl1LGC5edSqLtcyXbB5qwWm2f8FKQIW
+ BryKIzfq6Nnrhl0zPdGdOacDHuYTephEIl2BSpZPt4COVir0cYLZHGVJb
+ g==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=candelatech.com
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=candelatech.com header.i=@candelatech.com
- header.a=rsa-sha256 header.s=default header.b=hh1gtvlR
-Subject: [Intel-wired-lan] ixgbe: Firmware error and NIC went away.
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=byXYwimg
+Subject: [Intel-wired-lan] [PATCH net 0/5] net: ptp: fix egregious supported
+ flag checks
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -105,101 +128,69 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello,
+In preparation for adding .supported_extts_flags and
+.supported_perout_flags to the ptp_clock_info structure, fix a couple of
+places where drivers get existing flag gets grossly incorrect.
 
-We had the ixgbe radios in one of our systems on an overnight test.  To my knowledge,
-we have never seen this particular issue before.  Please let me know if you have any
-ideas on what caused it or how we can get better logs to debug it.  We plan to replace
-the NIC and re-run in case it is hardware issue.
+The igb driver claims 82580 supports strictly validating PTP_RISING_EDGE
+and PTP_FALLING_EDGE, but doesn't actually check the flags. Fix the driver
+to require that the request match both edges, as this is implied by the
+datasheet description.
 
-The logs below are filtered on 'ixgbe', but I can provide full logs if that would help.
+The renesas driver also claims to support strict flag checking, but does
+not actually check the flags either. I do not have the data sheet for this
+device, so I do not know what edge it timestamps. For simplicity, just
+reject all requests with PTP_STRICT_FLAGS. This essentially prevents the
+PTP_EXTTS_REQUEST2 ioctl from working. Updating to correctly validate the
+flags will require someone who has the hardware to confirm the behavior.
 
-This is from 6.11.11 + local patches kernel, but not many changes from stock kernel in the Ethernet
-stack or driver.
+The lan743x driver supports (and strictly validates) that the request is
+either PTP_RISING_EDGE or PTP_FALLING_EDGE but not both. However, it does
+not check the flags are one of the known valid flags. Thus, requests for
+PTP_EXT_OFF (and any future flag) will be accepted and misinterpreted. Add
+the appropriate check to reject unsupported PTP_EXT_OFF requests and future
+proof against new flags.
 
-root@ct523c-6987:~# grep ixgbe log.txt
-Mar 07 17:34:48 ct523c-6987 kernel: ixgbe: Intel(R) 10 Gigabit PCI Express Network Driver
-Mar 07 17:34:48 ct523c-6987 kernel: ixgbe: Copyright (c) 1999-2016 Intel Corporation.
-Mar 07 17:34:48 ct523c-6987 kernel: ixgbe 0000:15:00.0: Multiqueue Enabled: Rx Queue count = 20, Tx Queue count = 20 XDP Queue count = 0
-Mar 07 17:34:48 ct523c-6987 kernel: ixgbe 0000:15:00.0: 31.504 Gb/s available PCIe bandwidth (8.0 GT/s PCIe x4 link)
-Mar 07 17:34:48 ct523c-6987 kernel: ixgbe 0000:15:00.0: MAC: 4, PHY: 0, PBA No: H86377-005
-Mar 07 17:34:48 ct523c-6987 kernel: ixgbe 0000:15:00.0: 3c:fd:fe:e1:c6:c6
-Mar 07 17:34:48 ct523c-6987 kernel: ixgbe 0000:15:00.0: Intel(R) 10 Gigabit Network Connection
-Mar 07 17:34:49 ct523c-6987 kernel: ixgbe 0000:15:00.1: Multiqueue Enabled: Rx Queue count = 20, Tx Queue count = 20 XDP Queue count = 0
-Mar 07 17:34:49 ct523c-6987 kernel: ixgbe 0000:15:00.1: 31.504 Gb/s available PCIe bandwidth (8.0 GT/s PCIe x4 link)
-Mar 07 17:34:49 ct523c-6987 kernel: ixgbe 0000:15:00.1: MAC: 4, PHY: 0, PBA No: H86377-005
-Mar 07 17:34:49 ct523c-6987 kernel: ixgbe 0000:15:00.1: 3c:fd:fe:e1:c6:c7
-Mar 07 17:34:49 ct523c-6987 kernel: ixgbe 0000:15:00.1: Intel(R) 10 Gigabit Network Connection
-Mar 07 17:34:49 ct523c-6987 kernel: ixgbe 0000:15:00.0 enp21s0f0: renamed from eth2
-Mar 07 17:34:49 ct523c-6987 kernel: ixgbe 0000:15:00.1 enp21s0f1: renamed from eth3
-Mar 07 17:34:53 ct523c-6987 kernel: ixgbe 0000:15:00.1 eth3: renamed from enp21s0f1
-Mar 07 17:34:53 ct523c-6987 kernel: ixgbe 0000:15:00.0 eth2: renamed from enp21s0f0
-Mar 07 17:49:27 ct523c-6987 kernel: ixgbe 0000:15:00.0: registered PHC device on eth2
-Mar 07 17:49:27 ct523c-6987 kernel: ixgbe 0000:15:00.0: removed PHC on eth2
-Mar 07 17:49:27 ct523c-6987 kernel: ixgbe 0000:15:00.0: registered PHC device on eth2
-Mar 07 17:49:28 ct523c-6987 kernel: ixgbe 0000:15:00.0: removed PHC on eth2
-Mar 07 17:49:28 ct523c-6987 kernel: ixgbe 0000:15:00.1: registered PHC device on eth3
-Mar 07 17:49:28 ct523c-6987 kernel: ixgbe 0000:15:00.0: registered PHC device on eth2
-Mar 07 17:49:28 ct523c-6987 kernel: ixgbe 0000:15:00.1: removed PHC on eth3
-Mar 07 17:49:29 ct523c-6987 kernel: ixgbe 0000:15:00.1: registered PHC device on eth3
-Mar 07 17:49:29 ct523c-6987 kernel: ixgbe 0000:15:00.1: removed PHC on eth3
-Mar 07 17:49:29 ct523c-6987 kernel: ixgbe 0000:15:00.1: registered PHC device on eth3
-Mar 07 17:49:34 ct523c-6987 kernel: ixgbe 0000:15:00.0 eth2: NIC Link is Up 10 Gbps, Flow Control: RX/TX
-Mar 07 17:49:34 ct523c-6987 kernel: ixgbe 0000:15:00.1 eth3: NIC Link is Up 10 Gbps, Flow Control: RX/TX
-Mar 07 17:58:24 ct523c-6987 kernel: ixgbe 0000:15:00.0: removed PHC on eth2
-Mar 07 17:58:25 ct523c-6987 kernel: ixgbe 0000:15:00.1: removed PHC on eth3
-Mar 07 17:58:48 ct523c-6987 kernel: ixgbe 0000:15:00.0: registered PHC device on eth2
-Mar 07 18:00:42 ct523c-6987 kernel: ixgbe 0000:15:00.0 eth2: NIC Link is Up 10 Gbps, Flow Control: RX/TX
-Mar 07 18:47:08 ct523c-6987 kernel:  nfs_acl lockd grace sch_fq_codel sunrpc fuse zram raid1 dm_raid raid456 libcrc32c async_raid6_recov async_memcpy async_pq 
-async_xor xor async_tx raid6_pq xe drm_ttm_helper gpu_sched drm_suballoc_helper drm_gpuvm drm_exec i915 i2c_algo_bit cec rc_core drm_buddy intel_gtt 
-drm_display_helper drm_kms_helper ttm agpgart e1000e igc ixgbe mdio dca hwmon drm xhci_pci mei_wdt i2c_core xhci_pci_renesas video wmi pinctrl_alderlake 
-efivarfs [last unloaded: nfnetlink]
-Mar 07 18:58:35 ct523c-6987 kernel: ixgbe 0000:15:00.0 eth2: NIC Link is Down
-Mar 07 18:58:56 ct523c-6987 kernel: ixgbe 0000:15:00.0: removed PHC on eth2
-Mar 07 18:58:56 ct523c-6987 kernel: ixgbe 0000:15:00.0: registered PHC device on eth2
-Mar 07 18:58:57 ct523c-6987 kernel: ixgbe 0000:15:00.0: removed PHC on eth2
-Mar 07 18:58:57 ct523c-6987 kernel: ixgbe 0000:15:00.0: registered PHC device on eth2
-Mar 07 18:59:03 ct523c-6987 kernel: ixgbe 0000:15:00.1: registered PHC device on eth3
-Mar 07 18:59:03 ct523c-6987 kernel: ixgbe 0000:15:00.1: removed PHC on eth3
-Mar 07 18:59:04 ct523c-6987 kernel: ixgbe 0000:15:00.1: registered PHC device on eth3
-Mar 07 18:59:08 ct523c-6987 kernel: ixgbe 0000:15:00.0 eth2: NIC Link is Up 10 Gbps, Flow Control: RX/TX
-Mar 07 18:59:08 ct523c-6987 kernel: ixgbe 0000:15:00.1 eth3: NIC Link is Up 10 Gbps, Flow Control: RX/TX
-Mar 09 06:08:19 ct523c-6987 kernel: ixgbe 0000:15:00.0: Adapter removed
-Mar 09 06:08:19 ct523c-6987 kernel: ixgbe 0000:15:00.0: Warning firmware error detected FWSM: 0xFFFFFFFF
-Mar 09 06:08:19 ct523c-6987 kernel: ixgbe 0000:15:00.0: Firmware recovery mode detected. Limiting functionality. Refer to the Intel(R) Ethernet Adapters and 
-Devices User Guide for details on firmware recovery mode.
-Mar 09 06:08:19 ct523c-6987 kernel: ixgbe 0000:15:00.0: removed PHC on eth2
-Mar 09 06:08:21 ct523c-6987 kernel: ixgbe-mdio-0000:15:00.0: not in UNREGISTERED state
-Mar 09 06:08:21 ct523c-6987 kernel:  nfs_acl lockd grace sch_fq_codel sunrpc fuse zram raid1 dm_raid raid456 libcrc32c async_raid6_recov async_memcpy async_pq 
-async_xor xor async_tx raid6_pq xe drm_ttm_helper gpu_sched drm_suballoc_helper drm_gpuvm drm_exec i915 i2c_algo_bit cec rc_core drm_buddy intel_gtt 
-drm_display_helper drm_kms_helper ttm agpgart e1000e igc ixgbe mdio dca hwmon drm xhci_pci mei_wdt i2c_core xhci_pci_renesas video wmi pinctrl_alderlake 
-efivarfs [last unloaded: nfnetlink]
-Mar 09 06:08:21 ct523c-6987 kernel: Workqueue: ixgbe ixgbe_service_task [ixgbe]
-Mar 09 06:08:21 ct523c-6987 kernel:  ixgbe_service_task+0xb9e/0x12f0 [ixgbe]
-Mar 09 06:08:21 ct523c-6987 kernel: ixgbe 0000:15:00.1: Adapter removed
-Mar 09 06:08:21 ct523c-6987 kernel: ixgbe 0000:15:00.1: Warning firmware error detected FWSM: 0xFFFFFFFF
-Mar 09 06:08:21 ct523c-6987 kernel: ixgbe 0000:15:00.1: Firmware recovery mode detected. Limiting functionality. Refer to the Intel(R) Ethernet Adapters and 
-Devices User Guide for details on firmware recovery mode.
-Mar 09 06:08:21 ct523c-6987 kernel: ixgbe 0000:15:00.1: removed PHC on eth3
-Mar 09 06:08:22 ct523c-6987 kernel: ixgbe-mdio-0000:15:00.1: not in UNREGISTERED state
-Mar 09 06:08:22 ct523c-6987 kernel:  nfs_acl lockd grace sch_fq_codel sunrpc fuse zram raid1 dm_raid raid456 libcrc32c async_raid6_recov async_memcpy async_pq 
-async_xor xor async_tx raid6_pq xe drm_ttm_helper gpu_sched drm_suballoc_helper drm_gpuvm drm_exec i915 i2c_algo_bit cec rc_core drm_buddy intel_gtt 
-drm_display_helper drm_kms_helper ttm agpgart e1000e igc ixgbe mdio dca hwmon drm xhci_pci mei_wdt i2c_core xhci_pci_renesas video wmi pinctrl_alderlake 
-efivarfs [last unloaded: nfnetlink]
-Mar 09 06:08:22 ct523c-6987 kernel: Workqueue: ixgbe ixgbe_service_task [ixgbe]
-Mar 09 06:08:22 ct523c-6987 kernel:  ixgbe_service_task+0xb9e/0x12f0 [ixgbe]
+The broadcom PHY driver checks that PTP_PEROUT_PHASE is not set. This
+appears to be an attempt at rejecting unsupported flags. It is not robust
+against flag additions such as the PTP_PEROUT_ONE_SHOT, or anything added
+in the future. Fix this by instead checking against the negation of the
+supported PTP_PEROUT_DUTY_CYCLE instead.
 
-root@ct523c-6987:~# uname -a
-Linux ct523c-6987 6.11.11+ #39 SMP PREEMPT_DYNAMIC Fri Feb 28 15:53:45 PST 2025 x86_64 GNU/Linux
-root@ct523c-6987:~# ifconfig eth2
-eth2: error fetching interface information: Device not found
-root@ct523c-6987:~# ifconfig eth3
-eth3: error fetching interface information: Device not found
+The ptp_ocp driver supports PTP_PEROUT_PHASE and PTP_PEROUT_DUTY_CYCLE, but
+does not check unsupported flags. Add the appropriate check to ensure
+PTP_PEROUT_ONE_SHOT and any future flags are rejected as unsupported.
 
-Thanks,
-Ben
+These are changes compile-tested, but I do not have hardware to validate the
+behavior.
 
+There are a number of other drivers which enable periodic output or
+external timestamp requests, but which do not check flags at all. We could
+go through each of these drivers one-by-one and meticulously add a flag
+check. Instead, these drivers will be covered only by the upcoming
+.supported_extts_flags and .supported_perout_flags checks in a net-next
+series.
+
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+---
+Jacob Keller (5):
+      igb: reject invalid external timestamp requests for 82580-based HW
+      renesas: reject PTP_STRICT_FLAGS as unsupported
+      net: lan743x: reject unsupported external timestamp requests
+      broadcom: fix supported flag check in periodic output function
+      ptp: ocp: reject unsupported periodic output flags
+
+ drivers/net/ethernet/intel/igb/igb_ptp.c     | 5 +++++
+ drivers/net/ethernet/microchip/lan743x_ptp.c | 6 ++++++
+ drivers/net/ethernet/renesas/ravb_ptp.c      | 3 +--
+ drivers/net/phy/bcm-phy-ptp.c                | 3 ++-
+ drivers/ptp/ptp_ocp.c                        | 4 ++++
+ 5 files changed, 18 insertions(+), 3 deletions(-)
+---
+base-commit: 992ee3ed6e9fdd0be83a7daa5ff738e3cf86047f
+change-id: 20250310-jk-net-fixes-supported-extts-flags-e8434d8e2552
+
+Best regards,
 -- 
-Ben Greear <greearb@candelatech.com>
-Candela Technologies Inc  http://www.candelatech.com
+Jacob Keller <jacob.e.keller@intel.com>
 
