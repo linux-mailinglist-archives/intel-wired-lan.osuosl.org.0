@@ -2,101 +2,94 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A1301A59AB4
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Mar 2025 17:13:44 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 22476A5A197
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Mar 2025 19:04:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9606640B81;
-	Mon, 10 Mar 2025 16:13:21 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 72B3140E02;
+	Mon, 10 Mar 2025 18:04:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VY7flASU_oEd; Mon, 10 Mar 2025 16:13:20 +0000 (UTC)
+ id kS4WXHrA2dTJ; Mon, 10 Mar 2025 18:04:20 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6367F40B98
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BA2A040DDA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741623200;
-	bh=SuDLAr3Wz8h6YVwKLam3Jg8MiZdFwWXZx63sMilpWcU=;
-	h=From:To:Cc:In-Reply-To:References:Date:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=Irl+CsZNN8kVEj9tNVH0g+u+r3n/W9YhA2lLQvM/pVR67EtzHvxzqhMQbpubo51sx
-	 lD/UOQuQcr/fccCg7Cm7QZBxSXxafgTf8J0OcJtFM83gHF68IkPv2usDwgZY6/kqMy
-	 lq4+sXnle95gZEjfRK9ow12eiwL8GdopFlinVtc6V1OFvuCakUfLePAeEJDr7hOOad
-	 uUhuWrHNcwoE7xaiKeXGEVrKeKll0u9QHwm7DojL9rFhqHCsJsnho6HBM6DgSKjsUw
-	 pZobGVJMOUOGmutthx3vAUXpoWmyLlXXAn7JVwCumkJApLfFcZ2JZSeG5VDHRTP+ab
-	 +oySZRm1X8ViQ==
+	s=default; t=1741629860;
+	bh=IAloyDEjksb8dKdvGoNGu9wfA/54BvjmneQ5oEpwQ60=;
+	h=Date:To:Cc:From:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=vrWo+NbmSfrvYrO4JFAFfgcazLcAa0OOJeayTT5rPj9awf1cgA2HXvYYf37UAB5Gb
+	 DR5m7C2OEYn3bEEQNp09g/rkoiCMWIHRtvE3dKHYlNJ6YSi3QzdAeS+I5vhpoOh61v
+	 90qE8AMVettHNz0DDTM4Gc9Jnn83lLrNcrxrjp6kHtGXAUsuHdF2YxVL25LvmTrlv7
+	 ZZi5iK3V922lzc6ZShnTKK6AEtZ9pg+NCmsgaMqipkCRVI1f8ia86bxRovhZ5rr/LN
+	 W/UrJabVoWBllnI5Sc3eziPUDS0bZkqo0WoB7knsUa46TGjNAIuLx54LpEfrykui2C
+	 ikF/qeIagkJsQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6367F40B98;
-	Mon, 10 Mar 2025 16:13:20 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BA2A040DDA;
+	Mon, 10 Mar 2025 18:04:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id B70C31C1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 16:13:18 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id BA763DC
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 18:04:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9AEBA81E7A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 16:13:18 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9F3DB820A7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 18:04:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RWmIgj0PmntU for <intel-wired-lan@lists.osuosl.org>;
- Mon, 10 Mar 2025 16:13:17 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
- envelope-from=kurt@linutronix.de; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A3DFC813F9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A3DFC813F9
-Received: from galois.linutronix.de (Galois.linutronix.de
- [IPv6:2a0a:51c0:0:12e:550::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A3DFC813F9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 16:13:17 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-To: Joe Damato <jdamato@fastly.com>, Tony Nguyen <anthony.l.nguyen@intel.com>
-Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>, Andrew Lunn
- <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
- Abeni <pabeni@redhat.com>, Sebastian Andrzej Siewior
- <bigeasy@linutronix.de>, Gerhard Engleder <gerhard@engleder-embedded.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-In-Reply-To: <Z86kBp2m-L-usV0V@LQ3V64L9R2>
-References: <20250217-igb_irq-v2-0-4cb502049ac2@linutronix.de>
- <20250217-igb_irq-v2-2-4cb502049ac2@linutronix.de>
- <f71d5cee-cafc-4ee0-89fc-35614eb06f94@intel.com>
- <Z86kBp2m-L-usV0V@LQ3V64L9R2>
-Date: Mon, 10 Mar 2025 17:10:53 +0100
-Message-ID: <8734fkq31u.fsf@kurt.kurt.home>
+ id JQusdY_yAkZw for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 10 Mar 2025 18:04:16 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=148.163.129.48;
+ helo=dispatch1-us1.ppe-hosted.com; envelope-from=greearb@candelatech.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 71DFE820A9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 71DFE820A9
+Received: from dispatch1-us1.ppe-hosted.com (dispatch1-us1.ppe-hosted.com
+ [148.163.129.48])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 71DFE820A9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 18:04:16 +0000 (UTC)
+X-Virus-Scanned: Proofpoint Essentials engine
+Received: from mail3.candelatech.com (mail.candelatech.com [208.74.158.173])
+ by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id C7D2D2400F8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Mar 2025 18:04:13 +0000 (UTC)
+Received: from [192.168.100.159] (unknown [50.251.239.81])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail3.candelatech.com (Postfix) with ESMTPSA id 32EF313C2B0;
+ Mon, 10 Mar 2025 11:04:13 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com 32EF313C2B0
+Message-ID: <af9a8640-0905-7ba6-7168-31cdf3c4f422@candelatech.com>
+Date: Mon, 10 Mar 2025 11:04:12 -0700
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
- micalg=pgp-sha512; protocol="application/pgp-signature"
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1741623193;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=SuDLAr3Wz8h6YVwKLam3Jg8MiZdFwWXZx63sMilpWcU=;
- b=BsvTqQ+Lj3eQ8exZ6bsc8VUnbeMJ82cZ+rGLIw8ddYh3bNhp/XdtV5qN3uBvcbBbs5ajq0
- fb8tapZDGDidxuQKu8+fy1nPAJkMiCYegN08QhzyyWNTeBkYDd6lGln/A03f0RH+xP6r/w
- 3i+WyjUAj6ZJNDdglecVk7yuUhF75joe41yf2dlDTsYUCTnNijP+YIaQ/PdJ5VQ/SP2Ejg
- 0uMr/dVGe3ePj4r16i/o2kuyVlVrlPY8A7YiZnvFROR20uqLeKkt2NJLFMnRzEQ/IHnOBc
- 5JKABYQesKgZ8yARB5acxgk+xPf06fS1tGFYfIuxTvNKj02jeERemfPz6EMKtg==
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1741623193;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=SuDLAr3Wz8h6YVwKLam3Jg8MiZdFwWXZx63sMilpWcU=;
- b=/+nwL9g7OwGj9dFMo3X3QFgEydjfhKBddFn0bg66O5vvpKzfT41gIPIhjnkXTPIQs90UCK
- 8QWaSHNsYEdCxwCg==
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Content-Language: en-US
+To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Cc: Brent Lovelace <brent.lovelace@candelatech.com>
+From: Ben Greear <greearb@candelatech.com>
+Organization: Candela Technologies
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-MDID: 1741629854-1C1jHmbcDVTK
+X-MDID-O: us5; ut7; 1741629854; 1C1jHmbcDVTK; <greearb@candelatech.com>;
+ beed7f42440e35e1e9619977dddfd38b
+X-PPE-TRUSTED: V=1;DIR=OUT;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=candelatech.com; s=default; t=1741629853;
+ bh=ioq2L4NKZIJrPob0IiLcH9SUaGjBybWiFDPJlFXJvcI=;
+ h=Date:To:Cc:From:Subject:From;
+ b=hh1gtvlRsKRDMz8s54umcyVNnuobLdQHhK65ADrkdrLMwuN5QG5vB9WuFsLCYnnU5
+ TtvmgHmRw4GlFWqvZVf/GE/M7Mf3i7cgLEfjUSKr7O6q0L89wVPYUJw/V+jMOuP3SH
+ JZDyT+ObVYJUB+4WVmJ6HkGmXbuL+jZm4bS18ydQ=
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=linutronix.de
+ header.from=candelatech.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
- header.a=rsa-sha256 header.s=2020 header.b=BsvTqQ+L; 
- dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=/+nwL9g7
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 2/4] igb: Link queues to
- NAPI instances
+ dkim=pass (1024-bit key,
+ unprotected) header.d=candelatech.com header.i=@candelatech.com
+ header.a=rsa-sha256 header.s=default header.b=hh1gtvlR
+Subject: [Intel-wired-lan] ixgbe: Firmware error and NIC went away.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -112,77 +105,101 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+Hello,
 
-On Mon Mar 10 2025, Joe Damato wrote:
-> On Fri, Mar 07, 2025 at 02:03:44PM -0800, Tony Nguyen wrote:
->> On 2/17/2025 3:31 AM, Kurt Kanzenbach wrote:
->>=20
->> ...
->>=20
->> > diff --git a/drivers/net/ethernet/intel/igb/igb_xsk.c b/drivers/net/et=
-hernet/intel/igb/igb_xsk.c
->> > index 157d43787fa0b55a74714f69e9e7903b695fcf0a..a5ad090dfe94b6afc8194f=
-e39d28cdd51c7067b0 100644
->> > --- a/drivers/net/ethernet/intel/igb/igb_xsk.c
->> > +++ b/drivers/net/ethernet/intel/igb/igb_xsk.c
->> > @@ -45,6 +45,7 @@ static void igb_txrx_ring_disable(struct igb_adapter=
- *adapter, u16 qid)
->> >   	synchronize_net();
->> >   	/* Rx/Tx share the same napi context. */
->> > +	igb_set_queue_napi(adapter, qid, NULL);
->> >   	napi_disable(&rx_ring->q_vector->napi);
->> >   	igb_clean_tx_ring(tx_ring);
->> > @@ -78,6 +79,7 @@ static void igb_txrx_ring_enable(struct igb_adapter =
-*adapter, u16 qid)
->> >   	/* Rx/Tx share the same napi context. */
->> >   	napi_enable(&rx_ring->q_vector->napi);
->> > +	igb_set_queue_napi(adapter, qid, &rx_ring->q_vector->napi);
->> >   }
->> >   struct xsk_buff_pool *igb_xsk_pool(struct igb_adapter *adapter,
->>=20
->> I believe Joe's fix/changes [1] need to be done here as well?
->>=20=20
->> Thanks,
->> Tony
->>=20
->> [1] https://lore.kernel.org/intel-wired-lan/9ddf6293-6cb0-47ea-a0e7-cad7=
-d33c2535@intel.com/T/#m863614df1fb3d1980ad09016b1c9ef4e2f0b074e
->
-> Yes, the code above should be dropped. Sorry I missed that during
-> review - thanks for catching that, Tony.
->
-> Kurt: when you respin this to fix what Tony mentioned, can you also
-> run the test mentioned above?
+We had the ixgbe radios in one of our systems on an overnight test.  To my knowledge,
+we have never seen this particular issue before.  Please let me know if you have any
+ideas on what caused it or how we can get better logs to debug it.  We plan to replace
+the NIC and re-run in case it is hardware issue.
 
-Hi Tony & Joe,
+The logs below are filtered on 'ixgbe', but I can provide full logs if that would help.
 
-Hm. I did run the test and it succeeded. I'll take a look at it next
-week when I'm back in the office.
+This is from 6.11.11 + local patches kernel, but not many changes from stock kernel in the Ethernet
+stack or driver.
+
+root@ct523c-6987:~# grep ixgbe log.txt
+Mar 07 17:34:48 ct523c-6987 kernel: ixgbe: Intel(R) 10 Gigabit PCI Express Network Driver
+Mar 07 17:34:48 ct523c-6987 kernel: ixgbe: Copyright (c) 1999-2016 Intel Corporation.
+Mar 07 17:34:48 ct523c-6987 kernel: ixgbe 0000:15:00.0: Multiqueue Enabled: Rx Queue count = 20, Tx Queue count = 20 XDP Queue count = 0
+Mar 07 17:34:48 ct523c-6987 kernel: ixgbe 0000:15:00.0: 31.504 Gb/s available PCIe bandwidth (8.0 GT/s PCIe x4 link)
+Mar 07 17:34:48 ct523c-6987 kernel: ixgbe 0000:15:00.0: MAC: 4, PHY: 0, PBA No: H86377-005
+Mar 07 17:34:48 ct523c-6987 kernel: ixgbe 0000:15:00.0: 3c:fd:fe:e1:c6:c6
+Mar 07 17:34:48 ct523c-6987 kernel: ixgbe 0000:15:00.0: Intel(R) 10 Gigabit Network Connection
+Mar 07 17:34:49 ct523c-6987 kernel: ixgbe 0000:15:00.1: Multiqueue Enabled: Rx Queue count = 20, Tx Queue count = 20 XDP Queue count = 0
+Mar 07 17:34:49 ct523c-6987 kernel: ixgbe 0000:15:00.1: 31.504 Gb/s available PCIe bandwidth (8.0 GT/s PCIe x4 link)
+Mar 07 17:34:49 ct523c-6987 kernel: ixgbe 0000:15:00.1: MAC: 4, PHY: 0, PBA No: H86377-005
+Mar 07 17:34:49 ct523c-6987 kernel: ixgbe 0000:15:00.1: 3c:fd:fe:e1:c6:c7
+Mar 07 17:34:49 ct523c-6987 kernel: ixgbe 0000:15:00.1: Intel(R) 10 Gigabit Network Connection
+Mar 07 17:34:49 ct523c-6987 kernel: ixgbe 0000:15:00.0 enp21s0f0: renamed from eth2
+Mar 07 17:34:49 ct523c-6987 kernel: ixgbe 0000:15:00.1 enp21s0f1: renamed from eth3
+Mar 07 17:34:53 ct523c-6987 kernel: ixgbe 0000:15:00.1 eth3: renamed from enp21s0f1
+Mar 07 17:34:53 ct523c-6987 kernel: ixgbe 0000:15:00.0 eth2: renamed from enp21s0f0
+Mar 07 17:49:27 ct523c-6987 kernel: ixgbe 0000:15:00.0: registered PHC device on eth2
+Mar 07 17:49:27 ct523c-6987 kernel: ixgbe 0000:15:00.0: removed PHC on eth2
+Mar 07 17:49:27 ct523c-6987 kernel: ixgbe 0000:15:00.0: registered PHC device on eth2
+Mar 07 17:49:28 ct523c-6987 kernel: ixgbe 0000:15:00.0: removed PHC on eth2
+Mar 07 17:49:28 ct523c-6987 kernel: ixgbe 0000:15:00.1: registered PHC device on eth3
+Mar 07 17:49:28 ct523c-6987 kernel: ixgbe 0000:15:00.0: registered PHC device on eth2
+Mar 07 17:49:28 ct523c-6987 kernel: ixgbe 0000:15:00.1: removed PHC on eth3
+Mar 07 17:49:29 ct523c-6987 kernel: ixgbe 0000:15:00.1: registered PHC device on eth3
+Mar 07 17:49:29 ct523c-6987 kernel: ixgbe 0000:15:00.1: removed PHC on eth3
+Mar 07 17:49:29 ct523c-6987 kernel: ixgbe 0000:15:00.1: registered PHC device on eth3
+Mar 07 17:49:34 ct523c-6987 kernel: ixgbe 0000:15:00.0 eth2: NIC Link is Up 10 Gbps, Flow Control: RX/TX
+Mar 07 17:49:34 ct523c-6987 kernel: ixgbe 0000:15:00.1 eth3: NIC Link is Up 10 Gbps, Flow Control: RX/TX
+Mar 07 17:58:24 ct523c-6987 kernel: ixgbe 0000:15:00.0: removed PHC on eth2
+Mar 07 17:58:25 ct523c-6987 kernel: ixgbe 0000:15:00.1: removed PHC on eth3
+Mar 07 17:58:48 ct523c-6987 kernel: ixgbe 0000:15:00.0: registered PHC device on eth2
+Mar 07 18:00:42 ct523c-6987 kernel: ixgbe 0000:15:00.0 eth2: NIC Link is Up 10 Gbps, Flow Control: RX/TX
+Mar 07 18:47:08 ct523c-6987 kernel:  nfs_acl lockd grace sch_fq_codel sunrpc fuse zram raid1 dm_raid raid456 libcrc32c async_raid6_recov async_memcpy async_pq 
+async_xor xor async_tx raid6_pq xe drm_ttm_helper gpu_sched drm_suballoc_helper drm_gpuvm drm_exec i915 i2c_algo_bit cec rc_core drm_buddy intel_gtt 
+drm_display_helper drm_kms_helper ttm agpgart e1000e igc ixgbe mdio dca hwmon drm xhci_pci mei_wdt i2c_core xhci_pci_renesas video wmi pinctrl_alderlake 
+efivarfs [last unloaded: nfnetlink]
+Mar 07 18:58:35 ct523c-6987 kernel: ixgbe 0000:15:00.0 eth2: NIC Link is Down
+Mar 07 18:58:56 ct523c-6987 kernel: ixgbe 0000:15:00.0: removed PHC on eth2
+Mar 07 18:58:56 ct523c-6987 kernel: ixgbe 0000:15:00.0: registered PHC device on eth2
+Mar 07 18:58:57 ct523c-6987 kernel: ixgbe 0000:15:00.0: removed PHC on eth2
+Mar 07 18:58:57 ct523c-6987 kernel: ixgbe 0000:15:00.0: registered PHC device on eth2
+Mar 07 18:59:03 ct523c-6987 kernel: ixgbe 0000:15:00.1: registered PHC device on eth3
+Mar 07 18:59:03 ct523c-6987 kernel: ixgbe 0000:15:00.1: removed PHC on eth3
+Mar 07 18:59:04 ct523c-6987 kernel: ixgbe 0000:15:00.1: registered PHC device on eth3
+Mar 07 18:59:08 ct523c-6987 kernel: ixgbe 0000:15:00.0 eth2: NIC Link is Up 10 Gbps, Flow Control: RX/TX
+Mar 07 18:59:08 ct523c-6987 kernel: ixgbe 0000:15:00.1 eth3: NIC Link is Up 10 Gbps, Flow Control: RX/TX
+Mar 09 06:08:19 ct523c-6987 kernel: ixgbe 0000:15:00.0: Adapter removed
+Mar 09 06:08:19 ct523c-6987 kernel: ixgbe 0000:15:00.0: Warning firmware error detected FWSM: 0xFFFFFFFF
+Mar 09 06:08:19 ct523c-6987 kernel: ixgbe 0000:15:00.0: Firmware recovery mode detected. Limiting functionality. Refer to the Intel(R) Ethernet Adapters and 
+Devices User Guide for details on firmware recovery mode.
+Mar 09 06:08:19 ct523c-6987 kernel: ixgbe 0000:15:00.0: removed PHC on eth2
+Mar 09 06:08:21 ct523c-6987 kernel: ixgbe-mdio-0000:15:00.0: not in UNREGISTERED state
+Mar 09 06:08:21 ct523c-6987 kernel:  nfs_acl lockd grace sch_fq_codel sunrpc fuse zram raid1 dm_raid raid456 libcrc32c async_raid6_recov async_memcpy async_pq 
+async_xor xor async_tx raid6_pq xe drm_ttm_helper gpu_sched drm_suballoc_helper drm_gpuvm drm_exec i915 i2c_algo_bit cec rc_core drm_buddy intel_gtt 
+drm_display_helper drm_kms_helper ttm agpgart e1000e igc ixgbe mdio dca hwmon drm xhci_pci mei_wdt i2c_core xhci_pci_renesas video wmi pinctrl_alderlake 
+efivarfs [last unloaded: nfnetlink]
+Mar 09 06:08:21 ct523c-6987 kernel: Workqueue: ixgbe ixgbe_service_task [ixgbe]
+Mar 09 06:08:21 ct523c-6987 kernel:  ixgbe_service_task+0xb9e/0x12f0 [ixgbe]
+Mar 09 06:08:21 ct523c-6987 kernel: ixgbe 0000:15:00.1: Adapter removed
+Mar 09 06:08:21 ct523c-6987 kernel: ixgbe 0000:15:00.1: Warning firmware error detected FWSM: 0xFFFFFFFF
+Mar 09 06:08:21 ct523c-6987 kernel: ixgbe 0000:15:00.1: Firmware recovery mode detected. Limiting functionality. Refer to the Intel(R) Ethernet Adapters and 
+Devices User Guide for details on firmware recovery mode.
+Mar 09 06:08:21 ct523c-6987 kernel: ixgbe 0000:15:00.1: removed PHC on eth3
+Mar 09 06:08:22 ct523c-6987 kernel: ixgbe-mdio-0000:15:00.1: not in UNREGISTERED state
+Mar 09 06:08:22 ct523c-6987 kernel:  nfs_acl lockd grace sch_fq_codel sunrpc fuse zram raid1 dm_raid raid456 libcrc32c async_raid6_recov async_memcpy async_pq 
+async_xor xor async_tx raid6_pq xe drm_ttm_helper gpu_sched drm_suballoc_helper drm_gpuvm drm_exec i915 i2c_algo_bit cec rc_core drm_buddy intel_gtt 
+drm_display_helper drm_kms_helper ttm agpgart e1000e igc ixgbe mdio dca hwmon drm xhci_pci mei_wdt i2c_core xhci_pci_renesas video wmi pinctrl_alderlake 
+efivarfs [last unloaded: nfnetlink]
+Mar 09 06:08:22 ct523c-6987 kernel: Workqueue: ixgbe ixgbe_service_task [ixgbe]
+Mar 09 06:08:22 ct523c-6987 kernel:  ixgbe_service_task+0xb9e/0x12f0 [ixgbe]
+
+root@ct523c-6987:~# uname -a
+Linux ct523c-6987 6.11.11+ #39 SMP PREEMPT_DYNAMIC Fri Feb 28 15:53:45 PST 2025 x86_64 GNU/Linux
+root@ct523c-6987:~# ifconfig eth2
+eth2: error fetching interface information: Device not found
+root@ct523c-6987:~# ifconfig eth3
+eth3: error fetching interface information: Device not found
 
 Thanks,
-Kurt
+Ben
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
+-- 
+Ben Greear <greearb@candelatech.com>
+Candela Technologies Inc  http://www.candelatech.com
 
------BEGIN PGP SIGNATURE-----
-
-iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmfPDw0THGt1cnRAbGlu
-dXRyb25peC5kZQAKCRDBk9HyqkZzgn1aD/9tRXm3GqrzZQMU2qpXAYFfWc/58gEw
-fkY47pLpb1Flvgj4npkht1GaGAnrnGQQvVWrDNwktbqj/BUSvFK9SGXBgNUgPSXI
-NmdKoc0ln9sn+BElFyiwSUk9fyappT8phmFLlfkOYPwQl2oRPg6Mri6PDQBfYw+I
-GNoejpbMI5JYnIernngoMbLf4daWa9BLoIuR7k94HO1/NizeWUIuljUFdrLsJ4/K
-hdeLoSbkb26BCZvS3YpfBemWQrU8u6bdWATOC5CPRTnlHfYV3VH+GY6G/Uk3T8E3
-l/2SUk51UlPyMz286miqO2Eozs2OM/+YLNrPqFZ4kT0nDwEuY2UdmA+kVh8effCQ
-EDcxcnpABtUfz0IzoBy0h9PDSYBp0GXM2awtP+9+fz7wt8ctHGdM/1lUuz3NHta7
-B1F48wUNllSVc0Fj4mRXcdk81WZqYZwUt0FjLaSkgBvrx/BqPQg2lufaxS5/VUCw
-RSVNHKVH353aOzY6zV5hZ+sjBY2f4e6RhKFaCsqNOSBcKPOIIfBrF+Egr+cT1STF
-ScDLTkDZAwvmC99IvpJSx0DQprvx0pTZ4nJX0nRgibxHFQLarAhyGPGtAhL4a3wm
-5SfQ//XIwdQfnC9Q6VeLQeAtfGuzuBscVNYKhevC6M01Ya3YzRDGCw9vS/0+vNzV
-Uvu5DPvpy61CoA==
-=mHhc
------END PGP SIGNATURE-----
---=-=-=--
