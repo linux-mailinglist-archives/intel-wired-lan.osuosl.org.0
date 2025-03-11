@@ -1,91 +1,152 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 70CDEA5BE72
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Mar 2025 12:04:31 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A9067A5C1F8
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Mar 2025 14:09:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9B72840B4C;
-	Tue, 11 Mar 2025 11:04:29 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 071C760BEB;
+	Tue, 11 Mar 2025 13:09:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZmTVnY8QMs1j; Tue, 11 Mar 2025 11:04:28 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id cZDad1aM5r3M; Tue, 11 Mar 2025 13:09:07 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 56A3040B59
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E73F660BED
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741691068;
-	bh=pphwc9HoAAG0yAZzRntnT4mIl10lrttBws2cUgZu6CY=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1741698547;
+	bh=pSr0TDQLJaYD83EU6zHlB1nKsxywhTiBP95UqC0cvIM=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=RLEniwRAsNzal1qKwBmq3RsY3An0Ae71SjCIJRzAFf0iGG9aahwGYiyCc1nmEyL0a
-	 NkRrHXVTNmwalv1dr8vPbbvTDjqjsQsRmdZA8attqj+g9xd0KCfHeSgrwlJ++3+5iQ
-	 n3DL6ZwT170ElCzD8xkt9wrtVPGSqbO+UmTYEEvIDmCcX2tRumGsbvfuxVcuPMj75e
-	 bOPmqGM7BZXfkkCnt1F5xtv/ox5758oZ2I65+VMDfDfPk6LjorhGs1BUZIb0jRkIx/
-	 kt5THvf9KKfkAkXn6ujIKbFCM7Ai2mY+6mGEPNL79OTkQNb64wcBCtg61yCikWYm2v
-	 yuFmXdD1F6Nzg==
+	b=h/+a9bXt/Y/M1YuWdg0gIdDAE9Oso144b/+N3oE2FPic4zX2cMbrLIRGK6iLcqmmZ
+	 Gwx650DP3sAOJoQeFx3GPkTGLtz3ZzDTtl1Ntogd4eW6ZPeOBnnXY0up5yD4X95ukt
+	 Ibrher2TeJqvylGNYAo7H5ywlOT2zDKNfOyDmWY3wuNRtEOemmmI6UZ72UtQDdiL62
+	 NGtD6xXaTmhTpeO/gEad1KNb7ILSbhpC9BlDuUPypNvUVNqW/ovfscSIQdNOqdS+D5
+	 81MgbwNWYj2Sx/2nulsdcBr+JJ/fW57NwWEngfFFYLh5cqMiCEC6e0nqfDf01QCZ8j
+	 F2p/7Q544C7Cg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 56A3040B59;
-	Tue, 11 Mar 2025 11:04:28 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E73F660BED;
+	Tue, 11 Mar 2025 13:09:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 981421DA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Mar 2025 11:04:26 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 6AA251DA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Mar 2025 13:09:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6193E40AF6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Mar 2025 11:04:26 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 361DC8221C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Mar 2025 13:09:04 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8CbEqJZVD_De for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 Mar 2025 11:04:25 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 54CE9400BD
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 54CE9400BD
-Received: from nyc.source.kernel.org (nyc.source.kernel.org
- [IPv6:2604:1380:45d1:ec00::3])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 54CE9400BD
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Mar 2025 11:04:25 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id B4A5CA46B26;
- Tue, 11 Mar 2025 10:58:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9378BC4CEE9;
- Tue, 11 Mar 2025 11:04:21 +0000 (UTC)
-Date: Tue, 11 Mar 2025 12:04:18 +0100
-From: Simon Horman <horms@kernel.org>
-To: Kyungwook Boo <bookyungwook@gmail.com>
-Cc: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-Message-ID: <20250311110418.GK4159220@kernel.org>
-References: <e7e4e5d5-931d-4506-9d75-b87783011379@gmail.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id sqqN8322XCtp for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 11 Mar 2025 13:09:03 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=pabeni@redhat.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 18D16821F6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 18D16821F6
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 18D16821F6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Mar 2025 13:09:02 +0000 (UTC)
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-662-KRSZdlfzOJiU7QCedhyt9A-1; Tue, 11 Mar 2025 09:08:50 -0400
+X-MC-Unique: KRSZdlfzOJiU7QCedhyt9A-1
+X-Mimecast-MFC-AGG-ID: KRSZdlfzOJiU7QCedhyt9A_1741698529
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-43cf5196c25so12822735e9.0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Mar 2025 06:08:50 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1741698529; x=1742303329;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=pSr0TDQLJaYD83EU6zHlB1nKsxywhTiBP95UqC0cvIM=;
+ b=pCmoO5iRDjtzF2d1D5mkTz4BIdQmyqq627io834mAmQJsI4R7TbOahpq3eOQIvBt+O
+ 3g/5QY6+7i8oyQRJ8TAKavZXgikIw2MP31UiWbulbzY+P4fk3yF7zLPfgZ7b0B1ZlVSF
+ FhRuTImOF/W0ZmWqA2jusOgV+dDqK7rJ7D1jOmlaFcqPNDuTrZUjtJFknlU/Wl2z7syJ
+ PtPeR7ykQnT5xXuIcWiGlPGLFydkUCZuyOsow5i04CXj1zCQT5ck1IMppnFeXW6zhYHo
+ /Gs17md5HXVn8/vZcHyH+v29e68LYRYWUzYCgbW2sBicOOqd7cXTX6k1VGVQMfyxk9To
+ rSGA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVsld/5kLOLbwn1z+CjgP2aC6v+pUiGQrV2BWmR84UvWBVG0VMSEVWQh3W1UD5rnCE0cAJC33SzoHNO9N5v6xc=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yw7AGIenqq9kpjQc1Aop9uNmyOcceI46/t7qqdtI/pd4MzZ5r9j
+ xvcoTnf5oVqY8+/4RNeyyWBvAqQ94lWaafg3rXfxlEmAu5An5RZ6jJyRRTAm6wtiQq8UPakoRKZ
+ 2X8bMroYmtKGUP3M1YE8wN1+rO6hyCeZTZQTS5c1l/fLfSQna9DfCwmdM+BrB58gbuOA=
+X-Gm-Gg: ASbGnctR7eneyARqRxbP4BJ8xTpJFp3etqtqVTEGlJNb1KUHSAJXoTqL24vkERJ9kdx
+ PBl6ixSZ/QijED3dQxz4r+cO7kt3fPG5OSEQ7767jL6Uh/7s4UmzHLjtqk82Ulgde2mogPuIXDf
+ nDx9/8fbSpAC7q7wkkMTeagiIAq/UsmAd+eP66ZBk4S4obAvRXgIzJj4azX6qMf1tzNHhwlZEPr
+ U31mFAvpaw7tILsRzSsj1REag72wRcRokvh6cIwRV8ulHt+DK+yjlOGUC/BghAJSFl/n1dh2J4f
+ yZqurAxKLavcayS9lH605mhpcqpSBO9v++WtmFjEafnXuQ==
+X-Received: by 2002:a05:600c:3b04:b0:43c:f44c:72b7 with SMTP id
+ 5b1f17b1804b1-43cf44c7703mr98398995e9.14.1741698528861; 
+ Tue, 11 Mar 2025 06:08:48 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGHg2xJEtdcFy90P2VzdKFh3p/fCZJcgu7H/volTSsPrNEA8I4PMuG+4jYjYdTWL3xOUsvL7A==
+X-Received: by 2002:a05:600c:3b04:b0:43c:f44c:72b7 with SMTP id
+ 5b1f17b1804b1-43cf44c7703mr98398315e9.14.1741698528418; 
+ Tue, 11 Mar 2025 06:08:48 -0700 (PDT)
+Received: from [192.168.88.253] (146-241-12-146.dyn.eolo.it. [146.241.12.146])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-43cf3ca4f5asm82801875e9.12.2025.03.11.06.08.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 11 Mar 2025 06:08:47 -0700 (PDT)
+Message-ID: <72cd7f5a-ab92-494c-b7f8-4696d23ed4b1@redhat.com>
+Date: Tue, 11 Mar 2025 14:08:45 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <e7e4e5d5-931d-4506-9d75-b87783011379@gmail.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1741691063;
- bh=/JETuvOyKN6qqzVHVb4ofsOnUtJA9YuFu/oCz0Cz7N0=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=UmB6XRbU6pqC0YE+WAG8iDLMfJybbgWwoAV+5nDxZR4lLa42bDrLF0j8TQfeto/1t
- csjVFPcHzc5cEeOoGhgqYycQwzCvbFxmwYB/dmWiWxLKH1yI7c7YWG+cW5azDCwWvA
- 4p5UzoMr9sJnVfEFvLfk5pUidqzchXZWz1DsmeW5LQGnhifQsURQX7FVO7BPY/0oCL
- sMVVAORXKJrxFpA9iSYgby18xiPTasBFjvGCx6IR5OUc395ds+WOHmej9TqHJDpQIL
- Qc/onh1Phys5JPbtS1lUApmoCjRIsqpqvEXxyWI/B5GuQZyReweGsEP5VYo4deSZ09
- 4QhrjmJnNg/fg==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=UmB6XRbU
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] i40e: fix MMIO write
- access to an invalid page in i40e_clear_hw
+User-Agent: Mozilla Thunderbird
+To: =?UTF-8?Q?Toke_H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>,
+ Yunsheng Lin <yunshenglin0825@gmail.com>,
+ Yunsheng Lin <linyunsheng@huawei.com>, davem@davemloft.net, kuba@kernel.org
+Cc: zhangkun09@huawei.com, liuyonglong@huawei.com, fanghaiqing@huawei.com,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Alexander Duyck <alexander.duyck@gmail.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Gaurav Batra <gbatra@linux.ibm.com>, Matthew Rosato
+ <mjrosato@linux.ibm.com>, IOMMU <iommu@lists.linux.dev>,
+ MM <linux-mm@kvack.org>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ bpf@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Eric Dumazet <edumazet@google.com>
+References: <20250307092356.638242-1-linyunsheng@huawei.com>
+ <87v7slvsed.fsf@toke.dk> <40b33879-509a-4c4a-873b-b5d3573b6e14@gmail.com>
+ <875xkj1t70.fsf@toke.dk>
+From: Paolo Abeni <pabeni@redhat.com>
+In-Reply-To: <875xkj1t70.fsf@toke.dk>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: -VVNIKnXvUb4fXL307qwhgavdkphudLnGKHPktKPap4_1741698529
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1741698542;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=pSr0TDQLJaYD83EU6zHlB1nKsxywhTiBP95UqC0cvIM=;
+ b=ahv5BdT3vkuJa3xvFZuEka3zvgvT4w7YNVMFM1i6IOmspFEvRv7appv7zbK4bCmJ6P1Cdn
+ DYQ5ZRZP0LUyWe3lorARsmXfx3qZI+gh9GRoZMx39Bd/WPMT6wJfrOv31RRSIFB+gRlqJ2
+ oteB5NoB80tyvuKMQo2A7XGjMi2/8IE=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=ahv5BdT3
+Subject: Re: [Intel-wired-lan] [PATCH net-next v11 0/4] fix the DMA API
+ misuse problem for page_pool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -101,51 +162,41 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Mar 11, 2025 at 02:16:02PM +0900, Kyungwook Boo wrote:
-> When the device sends a specific input, an integer underflow can occur, leading
-> to MMIO write access to an invalid page.
+On 3/8/25 3:40 PM, Toke Høiland-Jørgensen wrote:
+> Yunsheng Lin <yunshenglin0825@gmail.com> writes:
+>> I only took a glance at git code above, it seems reusing the
+>> _pp_mapping_pad for pp_dma_index seems like a wrong direction
+>> as mentioned in discussion with Ilias above as the field might
+>> be used when a page is mmap'ed to user space, and reusing that
+>> field in 'struct page' seems to disable the tcp_zerocopy feature,
+>> see the below commit from Eric:
+>> https://github.com/torvalds/linux/commit/577e4432f3ac810049cb7e6b71f4d96ec7c6e894
+>>
+>> Also, I am not sure if a page_pool owned page can be spliced into the fs
+>> subsystem yet, but if it does, I am not sure how is reusing the
+>> page->mapping possible if that page is called in __filemap_add_folio()?
+>>
+>> https://elixir.bootlin.com/linux/v6.14-rc5/source/mm/filemap.c#L882
 > 
-> Prevent the integer underflow by changing the type of related variables.
+> Hmm, so I did look at the mapping field, but concluded using it wouldn't
+> interfere with anything relevant as long as it's reset back to zero
+> before the page is returned to the page allocator. However, I definitely
+> missed the TCP zero-copy thing, and other things as well, it would seem
+> (cf the discussion you referred to above).
 > 
-> Signed-off-by: Kyungwook Boo <bookyungwook@gmail.com>
-> Link: https://lore.kernel.org/lkml/ffc91764-1142-4ba2-91b6-8c773f6f7095@gmail.com/T/
-> ---
-> Changes in v2:
-> - Formatting properly
-> - Fix variable shadowing
-> - Link to v1: https://lore.kernel.org/netdev/55acc5dc-8d5a-45bc-a59c-9304071e4579@gmail.com/
-> ---
->  drivers/net/ethernet/intel/i40e/i40e_common.c | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
+> However, I did consider alternatives: AFAICT there should be space in
+> the pp_magic field (used for the PP_SIGNATURE), so that with a bit of
+> care we can stick an ID into the upper bits and still avoid ending up
+> with a value that could look like a valid pointer.
 > 
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c b/drivers/net/ethernet/intel/i40e/i40e_common.c
-> index 370b4bddee44..b11c35e307ca 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_common.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
-> @@ -817,10 +817,11 @@ int i40e_pf_reset(struct i40e_hw *hw)
->  void i40e_clear_hw(struct i40e_hw *hw)
->  {
->  	u32 num_queues, base_queue;
-> -	u32 num_pf_int;
-> -	u32 num_vf_int;
-> +	s32 num_pf_int;
-> +	s32 num_vf_int;
->  	u32 num_vfs;
-> -	u32 i, j;
-> +	s32 i;
-> +	u32 j;
->  	u32 val;
->  	u32 eol = 0x7ff;
->  
-> ---
-> base-commit: 4d872d51bc9d7b899c1f61534e3dbde72613f627
+> I didn't implement that initially because I wasn't sure it was
+> necessary, but seeing as it is, I will take another look at it. I have
+> one or two other ideas if this turns out not to pan out.
 
-I see that this addresses the problem at the first link above.
-And I'd happy to see it accepted as-is.
+Another dumb option would be storing directly the page address in the
+xarray, and avoid entirely going through an ID. I guess it will use more
+memory (the array will be more sparse) and will have more overhead, but
+could be possibly simpler?
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+/P
 
-But, as an aside, wouldn't it be more appropriate to use generic
-types like int and unsigned int for most of the above variables?
-Perhaps this could be addressed by a follow-up. Or perhaps that
-would just be churn, IDK.
