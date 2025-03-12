@@ -1,104 +1,235 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A83B2A5D4AF
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Mar 2025 04:17:03 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B8CEA5D53A
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Mar 2025 06:03:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1E71E410F0;
-	Wed, 12 Mar 2025 03:17:01 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0402460E45;
+	Wed, 12 Mar 2025 05:03:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KRcKlD_dmhn8; Wed, 12 Mar 2025 03:17:00 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id HMw70x20TqJL; Wed, 12 Mar 2025 05:03:15 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5AEB54111F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BE24D60E47
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741749419;
-	bh=52xsjPSQtnG6SosdpKgjxhzX8jMjItKknXewt2hD/yg=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1741755794;
+	bh=6pbhv5s38rqPVC1XyeQ1WjsHVSKcPBBzgZ60+kPM1hA=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=nLOSmz0RnhwfGXwSYWgsaDQ3D5Suk3KcXGTvPcOZh8mQIDHl/q2V8FxwK2PYuJNd4
-	 P/i4hdedflvQpL78JL9PEbItjGCB4Xoqicgi5mr1Sm0Lm0R9epAaHJuMDgy5WaQtu4
-	 LnSZz6g0WujuUE5u+p2ZrvJLMbjFIfG3OdGywGUM/t5tiPmwOYPKYBiWcBZiBFvy23
-	 f/tzhRdOpf6k35O4p3mZ5UN1pgCMDlhgki51+3w1LIVrV8fuTlp8g/24AHxf25Xilg
-	 6jJDq8zT8IMNwGFeLshpot/bOE3TC45IYgsRV3J5KsXQ3UYd4a1K147/STbsjbvyQ1
-	 adCOiKPBM9O0w==
+	b=PFiDUeizhCKDi3Tw9P82sfhJVOVWB9JXf1XrafFZZytcDq2QYf9tP2QEn52ZlWWFY
+	 9r/iqw6INGKL1Ivz1vYE4A+W7W9Mx7A04SkfurvYaB1cNORzKpwldiy9qCkU9tcp+h
+	 tr5oEq1PlZySWzRS0VlqmVuy+m8ipIdDzIaas6xr7TnklWzvtsZNouACfkQOiX5z7H
+	 uq58hF1iVSAukE2LzDkKWOt3WkCySMcW2ohZWpmef3L0+Id3IMNydo5//LnB35Z1Gr
+	 uuEvwE2FLRCi2EkBJ0LSJt6tlmfwGonbvV+ORNz+B9lGzLqI4QVTKKIbwehIkbcgSJ
+	 TbD7bFrdFN5Tg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5AEB54111F;
-	Wed, 12 Mar 2025 03:16:59 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BE24D60E47;
+	Wed, 12 Mar 2025 05:03:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 1FBEE943
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 03:16:57 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id BBF3B1C8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 05:03:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 18D3C410F0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 03:16:57 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9E89F82AF5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 05:03:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Jwx9CeTw-Vz9 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 12 Mar 2025 03:16:55 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 90108409EC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 90108409EC
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 90108409EC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 03:16:55 +0000 (UTC)
-X-CSE-ConnectionGUID: rjpWf6lORd2v67zvIR0uYg==
-X-CSE-MsgGUID: EV45J6NaR5mwjoWh69EdlA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11370"; a="42850349"
-X-IronPort-AV: E=Sophos;i="6.14,240,1736841600"; d="scan'208";a="42850349"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
- by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Mar 2025 20:16:55 -0700
-X-CSE-ConnectionGUID: HmaKDxfPQF2c5jS54m/ILA==
-X-CSE-MsgGUID: Hch2/FQCQfyXOa4SBQfMlg==
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 80l1BUMojfxa for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 12 Mar 2025 05:03:11 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
+ helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8D18A82AEF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8D18A82AEF
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8D18A82AEF
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 05:03:11 +0000 (UTC)
+X-CSE-ConnectionGUID: b2R704xASpu2MYnjl4mDtA==
+X-CSE-MsgGUID: XEjzksvSR++jC2JOixXidQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11370"; a="42693536"
+X-IronPort-AV: E=Sophos;i="6.14,240,1736841600"; d="scan'208";a="42693536"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+ by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Mar 2025 22:03:10 -0700
+X-CSE-ConnectionGUID: W7cWuMIiRoi1M6ZFcih/PQ==
+X-CSE-MsgGUID: U7gSaUphRiyw7Lo32NBFOw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,240,1736841600"; d="scan'208";a="125401029"
-Received: from lkp-server02.sh.intel.com (HELO a4747d147074) ([10.239.97.151])
- by orviesa003.jf.intel.com with ESMTP; 11 Mar 2025 20:16:52 -0700
-Received: from kbuild by a4747d147074 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1tsCaP-00085A-33;
- Wed, 12 Mar 2025 03:16:49 +0000
-Date: Wed, 12 Mar 2025 11:16:12 +0800
-From: kernel test robot <lkp@intel.com>
-To: Paul Greenwalt <paul.greenwalt@intel.com>, intel-wired-lan@lists.osuosl.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
- netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
- Paul Greenwalt <paul.greenwalt@intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Alice Michael <alice.michael@intel.com>
-Message-ID: <202503121005.iGEV5eau-lkp@intel.com>
-References: <20250311132327.76804-1-paul.greenwalt@intel.com>
+X-IronPort-AV: E=Sophos;i="6.14,240,1736841600"; d="scan'208";a="125585185"
+Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
+ by fmviesa004.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Mar 2025 22:03:09 -0700
+Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14; Tue, 11 Mar 2025 22:03:09 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14 via Frontend Transport; Tue, 11 Mar 2025 22:03:09 -0700
+Received: from NAM02-SN1-obe.outbound.protection.outlook.com (104.47.57.42) by
+ edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.44; Tue, 11 Mar 2025 22:03:09 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=oIAm4daFczI5IvGWv5pGz51pHYyoZEVs76lXW/NVq7K8+XCfs29TkSkTr+4TsdPnVCooqbxT4wQif3YxgOBRg6uWv9IlDOpw6U1TUxLArH2X1kjf8G97mF/ogdabektT0f9RUhhhhY0Cjd7Uhh7W4qu16QN2Phz2Yd4mh7XhZVRaTCmv0zp30ZMXxWjyl4b6uTNDbVtDDUIEn7c/etT6/WcAFWcMFDOJISXdGw5RrUu9Kj9OZHbElA6qkm8Y78IhPmuZnS/WIiZ5O5q7awNmYdXNCqg/bBksyNQqPuo9GB7IcerUEvBz7NeX2+La5AcZGUu0cJC/UOX77EnJy2g8yQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=6pbhv5s38rqPVC1XyeQ1WjsHVSKcPBBzgZ60+kPM1hA=;
+ b=HGn9DNO3dFIVucC4z6SN635zQSx9LoPEvfSbaAvO+fGFQ1jVa++3VVtGiEl71tMECA7r4atMulODTj/GlS9poDaDCAz3vaYmZ8+geoNYvW542NTvlhW8CrkvDc9x/berGtHF0iHQUCPmKNZqljW0oUlqJkyl3w5nh2tkfQUfiqYlgod7o2aMAZQWphge0AIpwC/VHzP+JFK/CdxnBbhE4sho87wQOaMRMTyBw6JCfasEEJj//1TwU7Q5fjtaw1XyILjVMLWLqRcu/UDMJLYoGeYcSKjN4XfkFPUzoJfsoa3NlJW07trCCggRYPUAC7VD/RwvFt2mdEzKPVxusZhLPg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from PH0PR11MB5095.namprd11.prod.outlook.com (2603:10b6:510:3b::14)
+ by SN7PR11MB7017.namprd11.prod.outlook.com (2603:10b6:806:2ac::17)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8511.27; Wed, 12 Mar
+ 2025 05:03:06 +0000
+Received: from PH0PR11MB5095.namprd11.prod.outlook.com
+ ([fe80::215b:e85e:1973:8189]) by PH0PR11MB5095.namprd11.prod.outlook.com
+ ([fe80::215b:e85e:1973:8189%6]) with mapi id 15.20.8511.026; Wed, 12 Mar 2025
+ 05:03:05 +0000
+From: "Keller, Jacob E" <jacob.e.keller@intel.com>
+To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+CC: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
+ <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David
+ S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "Jakub
+ Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Richard Cochran
+ <richardcochran@gmail.com>, Ruud Bos <kernel.hbk@gmail.com>, Paul Barker
+ <paul.barker.ct@bp.renesas.com>, =?iso-8859-1?Q?Niklas_S=F6derlund?=
+ <niklas.soderlund@ragnatech.se>, Bryan Whitehead
+ <bryan.whitehead@microchip.com>, "UNGLinuxDriver@microchip.com"
+ <UNGLinuxDriver@microchip.com>, Raju Lakkaraju
+ <Raju.Lakkaraju@microchip.com>, Florian Fainelli
+ <florian.fainelli@broadcom.com>, Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>, Andrew Lunn <andrew@lunn.ch>, Heiner
+ Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>,
+ Jonathan Lemon <jonathan.lemon@gmail.com>, "Lasse Johnsen" <l@ssejohnsen.me>, 
+ Vadim Fedorenko <vadim.fedorenko@linux.dev>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>
+Thread-Topic: [PATCH net 1/5] igb: reject invalid external timestamp requests
+ for 82580-based HW
+Thread-Index: AQHbkgopibe1m/z3qEWw+jQ3SoH5JLNtcp2AgAGBGiA=
+Date: Wed, 12 Mar 2025 05:03:05 +0000
+Message-ID: <PH0PR11MB5095402B94E269F50A7A8442D6D02@PH0PR11MB5095.namprd11.prod.outlook.com>
+References: <20250310-jk-net-fixes-supported-extts-flags-v1-0-854ffb5f3a96@intel.com>
+ <20250310-jk-net-fixes-supported-extts-flags-v1-1-854ffb5f3a96@intel.com>
+ <Z8/SQRskrrvSofW7@mev-dev.igk.intel.com>
+In-Reply-To: <Z8/SQRskrrvSofW7@mev-dev.igk.intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PH0PR11MB5095:EE_|SN7PR11MB7017:EE_
+x-ms-office365-filtering-correlation-id: 3a5619df-0b2b-4e29-75ea-08dd61232cc4
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|7416014|1800799024|366016|38070700018; 
+x-microsoft-antispam-message-info: =?iso-8859-1?Q?BJboeAkH/lBxokr/UKQRjqPICIVr7oldyQJG10JY3zeQFq1kkmSJzSiMhw?=
+ =?iso-8859-1?Q?ang4rW+6VX1mHIsJzl79LqEX15N9+A1MAkjf32CCpA+ILsmBSDwnVYW7EB?=
+ =?iso-8859-1?Q?SmB9ghJIl6atqG3CVzm9pYiT4aCfHXKd+rqtXMECeT7l+VHp6GQxwFubuQ?=
+ =?iso-8859-1?Q?3Zx3WZYlsW7j/dSk0TuccelUy11LVV2WxbJnVkkunf8a1hHVJ4JVUtP14J?=
+ =?iso-8859-1?Q?tW7vtwd6zbby+K0aVIH5vnL8FgaXe8/B1CC/YzLsS0Br7nIaX1SD/2h7oR?=
+ =?iso-8859-1?Q?s/RKqY6t09lp2Xf8A+Znui193HjyjAn5zAh8qfGRUaOxtFXF90TC+OzApu?=
+ =?iso-8859-1?Q?EifkbRxva5DgW4+AzCJpwTtw/D+n9Rl731CLHmScPIiJzOiIug8SdUChCq?=
+ =?iso-8859-1?Q?6JJ0/Y8Gky8tGLvaFQrfdGxzmcxxGKVs7OjEGMWPNpPGSgcNn5a6yX6i/j?=
+ =?iso-8859-1?Q?gYbMhZuBI1e3jDNghb4FDuAG5LJVchBUGBCiC3L0Fr1gZ7mYfOhevmvYli?=
+ =?iso-8859-1?Q?y1BtjWDkD8pkKbqvizwseJ5um+M7ZAPSeuseirDE8uP437J9m+7ANYAiXG?=
+ =?iso-8859-1?Q?MQd1dSrIzmMMFdN+Q6ZSnDujhSMluIbyoDQ4kVcB24aWwjrIuxAhpWLNOW?=
+ =?iso-8859-1?Q?V+JZxGV4wLNTA28UYW+twaxGgYXWsgAgg/FHCUcqNZIAmllBSmh5UoPKru?=
+ =?iso-8859-1?Q?WAa6YD6qyykjCLhtK0f73lOrQ4KRZawlKSJuY2c9jVqVMF89SxMeq/EHEf?=
+ =?iso-8859-1?Q?VyBs2SkRBYBWTpwuNWxk1p2lA2TqcYAt9Q0LNiQgzmrvf1vau+anP0ibWx?=
+ =?iso-8859-1?Q?r7COvIouYZLorAh8d62od+gKxn7yJuR+vbbzau9AGCuAOG11flJIMHIOVD?=
+ =?iso-8859-1?Q?gCi9ybUArKB/RDJZS/1GyrH4B2RmrVdQgByBpDOoROX3GsEYjdExP0SlOM?=
+ =?iso-8859-1?Q?7ZzS6OsVdvFNiJzbnzoExKXTDajNMPgq99+UzXqycHc3A1xC3ZcURVtOMy?=
+ =?iso-8859-1?Q?DhfR94JiAbhibr4pbBXER9V60Gqh7vKofWezciWLdVHzBfgU8bW/Fi2jH4?=
+ =?iso-8859-1?Q?cdNwFYCaf6frjcAjsVeTtyh6Uu5lJXO7pgoAAVMFBz+yhXhSFOCmU55jUl?=
+ =?iso-8859-1?Q?G/YzUhzsjZb/5WcIcQQvckO419Tp61XcfJh9SpFdpAhaWeLQ2GdypoiQnm?=
+ =?iso-8859-1?Q?XSWsIbhLFnmg3qhP/8Rtitta/9wwM7kXluHH8rpIDobjhax7kMwe/5f0V9?=
+ =?iso-8859-1?Q?lHErCeIVPGuVGZvSBE9vP4e0S2UBaGodQ39J7q3MqhQ/u7b/MXh0pUT1H4?=
+ =?iso-8859-1?Q?NZxan20KlmA4xBiIFIIAv0eFBsJYvzLr4AFlSNEeJUJAPdHW4n3evI0iYo?=
+ =?iso-8859-1?Q?vVWm8lqV8PAB+jdmTPNS3RGpDy0o2eB2wKmc3RquFE2USWAwEdUwzivSRa?=
+ =?iso-8859-1?Q?7qzOTEDjD6dAwsDzxhcqLoG3bewBy5sMwrfURGHSAItjEG63//Zw04zzeC?=
+ =?iso-8859-1?Q?UO9dzveerUGiFcqIpHIJVi?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR11MB5095.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(7416014)(1800799024)(366016)(38070700018); DIR:OUT;
+ SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?7akpAoyWCEBYNNvvIBWFz+5UiTSLMzNctFiL9aEG2a3zs9NMg7benDynO2?=
+ =?iso-8859-1?Q?2GvemWZiXyBV9P8GFRJAoQy3HgPcbBYU9OgVKYddJ2ArT0r1l7JvyhQinW?=
+ =?iso-8859-1?Q?cZu5eOD7IjZ0aWgAlBGt8+HPBR94XBk80dUuJrnZRzZ/4SAjyClNl7BYaD?=
+ =?iso-8859-1?Q?GXdf/2p3vq1l1/bDoe96jC4MinDCvrRSaZA9CD+cBjiu3hVHRqyKZ9I+LL?=
+ =?iso-8859-1?Q?lSoDvJRiIRASb73Mt/Cbp64GGK7ephR0Zw/9peayv1Zj9otCx8xNp9rs7l?=
+ =?iso-8859-1?Q?+AvHq6SVaGVEUyJDGhSpcx0UasqTrJ0fIBoVx2avsEpUH9Gp5QUrGjCVbQ?=
+ =?iso-8859-1?Q?uph5xIo1e3Ev2C4EYMn1PTaeeHVr0K4XQiWsxs/aMejUGZK2+xxorprLNp?=
+ =?iso-8859-1?Q?ZX4QsuDg+XkNEDczQnJfikTFfMwk1vvbI+XDNzfy/jdYdfc8a+1GkulBcg?=
+ =?iso-8859-1?Q?L9EfGJIRBEmViCUnmZq18wcoAlyqmTW+QQbUbvqxLkMijLJhgNgzuZjOHy?=
+ =?iso-8859-1?Q?cgl++Y6JXlVGBlBzLsWv6E2vFubF5aHnjl2qJveYxCRtMxiYJ9o6yUsN1i?=
+ =?iso-8859-1?Q?iB032QEWD7RPnBAJMjMyRdZRLjhDbaNUjRZEyudP8TjFlxVSolyelveEq3?=
+ =?iso-8859-1?Q?SKnZ+GqcP8qZ0vdfcVTDj51muvvc+DKMbZ6ZPcqWwpkdQ3hS6SXZ8P00+N?=
+ =?iso-8859-1?Q?DFO5VOZh/ePmDvocL9Tj+kh4zq5YQ2Pti/iNNtxZLRAdIYZthrphX+qhzG?=
+ =?iso-8859-1?Q?TnDqxBc56x2OzYf3zIeFLtL17vjeFv1UZ/XlKw2YPDlgAdX0+wef26Hl4V?=
+ =?iso-8859-1?Q?eIRg/jBirjGIX+/LBx3TdW/kvFU0KnmMspzi+xLAqEvvfRy4tCLaIYD/lT?=
+ =?iso-8859-1?Q?hmJ9HSWfVRFmm/isgxl8v231H1jtWreuELAvByBMU2jGTjF//qyn5oRStC?=
+ =?iso-8859-1?Q?ZI6ZrRhdV4gImAn9bjuOXoIWrkQM3uepk3OY9Jertrl9m9N6/w+upZOqwb?=
+ =?iso-8859-1?Q?jrwpQEbzuUGqn+Pfa++3K7L3eDKjHD8sIIooztdj56HqyHUuw/piSdQTtA?=
+ =?iso-8859-1?Q?lyvNfRBayZyY6k74LmXwZ5/a2yaKpdawFou+WWfXQvvoDlIAerNy/9Mwl9?=
+ =?iso-8859-1?Q?x4DvmhBpS10J8HCCY6GnnQLRU3l4/hcjs2/BzmolFLmZieBLfoDYjf0q4P?=
+ =?iso-8859-1?Q?yTz7h5+TNY67+msq+CSP8nadeC2wD9OLTJQvn25Q5s3waN+sf/ilmDLLdQ?=
+ =?iso-8859-1?Q?t15VaVOJF4NPRKTz/FJYnxyWfCpmgR958i/SUPH3KfUHoyzp+FE254sCGa?=
+ =?iso-8859-1?Q?UrNj/+tSzmWJbru3cMxioN0V+T7bYA5fVBVlDH1cY7zcWOOZXOL1Ajdvuc?=
+ =?iso-8859-1?Q?ZGSzheprspGyD5B81vTUlbkjOyE50b/rkcggrhhBLOoAfRx7b2cEZTs1PB?=
+ =?iso-8859-1?Q?wY9sylvgIv42HT8XsBzb+bLisrlzf4FkX7oOUWwyQ43zKSmk3vrJxZlERN?=
+ =?iso-8859-1?Q?8Zgq5fEUWXc89wDUGDzht0zn6P+mdKXWcNMGQsLZkncWT7kkQzQnwrGGmO?=
+ =?iso-8859-1?Q?34TXoyMduJIYtcnEPdxkKfzvkHwNo98KTwbH1JpgQTwv0qCWrwVBqqteV4?=
+ =?iso-8859-1?Q?xb7Sa6WB6tzVLC3QO8VURk7eHKeHGMlcWv?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250311132327.76804-1-paul.greenwalt@intel.com>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5095.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3a5619df-0b2b-4e29-75ea-08dd61232cc4
+X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Mar 2025 05:03:05.9176 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: INvPvspXwSHqIQefa5BLHaKzUKOsH/YiQgSBjMwuc4G1GQVEV4GwTSTuojL2gPWN1gdSxpGHooVBzKTH6pb6+txacoL5Vdr0Bvgphh1ULig=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR11MB7017
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1741749416; x=1773285416;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=ko7Tc3C+mirQDYlajagDRqIRlUKa9AwTZ8pNLxpRF1g=;
- b=dUpzI5KoEyyqa4ZmIo7Cv9wVaHZPQh3UlpGW8Mh0E/yzpz63Q64/zN2S
- KlAiXTyXZjazx2GRJGJudpfOU3/t2/rIDd02IDWSMQm9aHn11ceVjoG+k
- zz9kBQUqboBCM27Mmd12lPBRf2+cXYhx2jZTpEBGXe6fcCrccGHqatbZ3
- AUl3nPgb03DCtwLd3Doi7gz+aRmRFky0A3CHfN+eoR+D9BQResOuKCyxl
- Y0ABe8HBhmyp/WDHG1ODzOD/TCBjI2hB+a4od/r2hT6wlzE0zfF3f7Cuq
- epbc988sIMD0xFcH60bNyyIFJQeTuwNyybLv8FPw3DuJsgh8iVkRdHExL
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1741755791; x=1773291791;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=hOSST4trSNb229GgN3R5CIuSPp7MHzTbGvfLHC8czKA=;
+ b=acxeQdZjtI4FqJFsE2qwoPITWq05a1hBwZJ2tjZrEIVAZPkk18eEHuTo
+ jmKvaK6p6d5RG8CVeSlCTkfDLXKAVlVPbVanz1Mge2SAIjtqg9D0UriD1
+ 111aHnt5hKeCglQ9KK6eK3FymkIRTJ1IUuK9dxeBs1hHhSTbI667nriIO
+ 4mcIhc+qabyBn+TwzJliRdvmmHMzkekfAHqc2MlwIUgWkWFPl6earHzLk
+ eE+Oo22a3fk4Rp1MPJd4nUUIo1wRjJkz4wep8MWuaaUv8LXh9qwuXDRE0
+ dtFGbbhuLKiL2TOCc1HQdIgNALBKUYRI7U48eYLvLVbvPvsdBtCqFf/U5
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=dUpzI5Ko
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] ice: add E830 Earliest
- TxTime First Offload support
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=acxeQdZj
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net 1/5] igb: reject invalid external
+ timestamp requests for 82580-based HW
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -114,136 +245,108 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Paul,
-
-kernel test robot noticed the following build warnings:
-
-[auto build test WARNING on tnguy-next-queue/dev-queue]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Paul-Greenwalt/ice-add-E830-Earliest-TxTime-First-Offload-support/20250312-051400
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-patch link:    https://lore.kernel.org/r/20250311132327.76804-1-paul.greenwalt%40intel.com
-patch subject: [PATCH iwl-next v2] ice: add E830 Earliest TxTime First Offload support
-config: s390-allyesconfig (https://download.01.org/0day-ci/archive/20250312/202503121005.iGEV5eau-lkp@intel.com/config)
-compiler: s390-linux-gcc (GCC) 14.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250312/202503121005.iGEV5eau-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202503121005.iGEV5eau-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/net/ethernet/intel/ice/ice_base.c: In function 'ice_vsi_cfg_txq':
->> drivers/net/ethernet/intel/ice/ice_base.c:1023:46: warning: passing argument 1 of 'ice_calc_txq_handle' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
-    1023 |         ring->q_handle = ice_calc_txq_handle(vsi, ring, tc);
-         |                                              ^~~
-   drivers/net/ethernet/intel/ice/ice_base.c:245:48: note: expected 'struct ice_vsi *' but argument is of type 'const struct ice_vsi *'
-     245 | static u16 ice_calc_txq_handle(struct ice_vsi *vsi, struct ice_tx_ring *ring, u8 tc)
-         |                                ~~~~~~~~~~~~~~~~^~~
 
 
-vim +1023 drivers/net/ethernet/intel/ice/ice_base.c
+> -----Original Message-----
+> From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> Sent: Monday, March 10, 2025 11:04 PM
+> To: Keller, Jacob E <jacob.e.keller@intel.com>
+> Cc: Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw
+> <przemyslaw.kitszel@intel.com>; Andrew Lunn <andrew+netdev@lunn.ch>; Davi=
+d
+> S. Miller <davem@davemloft.net>; Eric Dumazet <edumazet@google.com>;
+> Jakub Kicinski <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>; Richar=
+d
+> Cochran <richardcochran@gmail.com>; Ruud Bos <kernel.hbk@gmail.com>; Paul
+> Barker <paul.barker.ct@bp.renesas.com>; Niklas S=F6derlund
+> <niklas.soderlund@ragnatech.se>; Bryan Whitehead
+> <bryan.whitehead@microchip.com>; UNGLinuxDriver@microchip.com; Raju
+> Lakkaraju <Raju.Lakkaraju@microchip.com>; Florian Fainelli
+> <florian.fainelli@broadcom.com>; Broadcom internal kernel review list <bc=
+m-
+> kernel-feedback-list@broadcom.com>; Andrew Lunn <andrew@lunn.ch>; Heiner
+> Kallweit <hkallweit1@gmail.com>; Russell King <linux@armlinux.org.uk>;
+> Jonathan Lemon <jonathan.lemon@gmail.com>; Lasse Johnsen
+> <l@ssejohnsen.me>; Vadim Fedorenko <vadim.fedorenko@linux.dev>; intel-
+> wired-lan@lists.osuosl.org; netdev@vger.kernel.org; linux-renesas-
+> soc@vger.kernel.org
+> Subject: Re: [PATCH net 1/5] igb: reject invalid external timestamp reque=
+sts for
+> 82580-based HW
+>=20
+> On Mon, Mar 10, 2025 at 03:16:36PM -0700, Jacob Keller wrote:
+> > The igb_ptp_feature_enable_82580 function correctly checks that unknown
+> > flags are not passed to the function. However, it does not actually che=
+ck
+> > PTP_RISING_EDGE or PTP_FALLING_EDGE when configuring the external
+> timestamp
+> > function.
+> >
+> > The data sheet for the 82580 product says:
+> >
+> >   Upon a change in the input level of one of the SDP pins that was
+> >   configured to detect Time stamp events using the TSSDP register, a ti=
+me
+> >   stamp of the system time is captured into one of the two auxiliary ti=
+me
+> >   stamp registers (AUXSTMPL/H0 or AUXSTMPL/H1).
+> >
+> >   For example to define timestamping of events in the AUXSTMPL0 and
+> >   AUXSTMPH0 registers, Software should:
+> >
+> >   1. Set the TSSDP.AUX0_SDP_SEL field to select the SDP pin that detect=
+s
+> >      the level change and set the TSSDP.AUX0_TS_SDP_EN bit to 1.
+> >
+> >   2. Set the TSAUXC.EN_TS0 bit to 1 to enable timestamping
+> >
+> > The same paragraph is in the i350 and i354 data sheets.
+> >
+> > The wording implies that the time stamps are captured at any level chan=
+ge.
+> > There does not appear to be any way to only timestamp one edge of the
+> > signal.
+> >
+> > Reject requests which do not set both PTP_RISING_EDGE and
+> PTP_FALLING_EDGE
+> > when operating under PTP_STRICT_FLAGS mode via PTP_EXTTS_REQUEST2.
+> >
+> > Fixes: 38970eac41db ("igb: support EXTTS on 82580/i354/i350")
+> > Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+> > ---
+> >  drivers/net/ethernet/intel/igb/igb_ptp.c | 5 +++++
+> >  1 file changed, 5 insertions(+)
+> >
+> > diff --git a/drivers/net/ethernet/intel/igb/igb_ptp.c
+> b/drivers/net/ethernet/intel/igb/igb_ptp.c
+> > index
+> f9457055612004c10f74379122063e8136fe7d76..b89ef4538a18d7ca11325ddc1594
+> 4a878f4d807e 100644
+> > --- a/drivers/net/ethernet/intel/igb/igb_ptp.c
+> > +++ b/drivers/net/ethernet/intel/igb/igb_ptp.c
+> > @@ -509,6 +509,11 @@ static int igb_ptp_feature_enable_82580(struct
+> ptp_clock_info *ptp,
+> >  					PTP_STRICT_FLAGS))
+> >  			return -EOPNOTSUPP;
+> >
+> > +		/* Both the rising and falling edge are timstamped */
+> > +		if (rq->extts.flags & PTP_STRICT_FLAGS &&
+> > +		    (rq->extts.flags & PTP_EXTTS_EDGES) !=3D PTP_EXTTS_EDGES)
+> > +			return -EOPNOTSUPP;
+> > +
+> >  		if (on) {
+> >  			pin =3D ptp_find_pin(igb->ptp_clock, PTP_PF_EXTTS,
+> >  					   rq->extts.index);
+>=20
+> Thanks for fixing
+> Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+>=20
+> In igb_ptp_feature_enable_i210() there is the same check for both edges
+> but also PTP_ENABLE_FEATURE is tested. There is no need for it here, or
+> it is redundant even in i210?
+>=20
 
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24   974  
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24   975  /**
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24   976   * ice_vsi_cfg_txq - Configure single Tx queue
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24   977   * @vsi: the VSI that queue belongs to
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24   978   * @ring: Tx ring to be configured
-51900dfcf194b39 Paul Greenwalt         2025-03-11   979   * @tstamp_ring: time stamp ring to be configured
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24   980   * @qg_buf: queue group buffer
-51900dfcf194b39 Paul Greenwalt         2025-03-11   981   * @txtime_qg_buf: Tx Time queue group buffer
-51900dfcf194b39 Paul Greenwalt         2025-03-11   982   *
-51900dfcf194b39 Paul Greenwalt         2025-03-11   983   * Return: 0 on success and a negative value on error.
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24   984   */
-a292ba981324ec7 Maciej Fijalkowski     2024-01-23   985  static int
-51900dfcf194b39 Paul Greenwalt         2025-03-11   986  ice_vsi_cfg_txq(const struct ice_vsi *vsi, struct ice_tx_ring *ring,
-51900dfcf194b39 Paul Greenwalt         2025-03-11   987  		struct ice_tx_ring *tstamp_ring,
-51900dfcf194b39 Paul Greenwalt         2025-03-11   988  		struct ice_aqc_add_tx_qgrp *qg_buf,
-51900dfcf194b39 Paul Greenwalt         2025-03-11   989  		struct ice_aqc_set_txtime_qgrp *txtime_qg_buf)
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24   990  {
-66486d8943bac36 Bruce Allan            2020-06-29   991  	u8 buf_len = struct_size(qg_buf, txqs, 1);
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24   992  	struct ice_tlan_ctx tlan_ctx = { 0 };
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24   993  	struct ice_aqc_add_txqs_perq *txq;
-0754d65bd4be5bb Kiran Patil            2021-10-15   994  	struct ice_channel *ch = ring->ch;
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24   995  	struct ice_pf *pf = vsi->back;
-7e34786a74e1403 Bruce Allan            2020-05-15   996  	struct ice_hw *hw = &pf->hw;
-5e24d5984c805c6 Tony Nguyen            2021-10-07   997  	int status;
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24   998  	u16 pf_q;
-e75d1b2c3731999 Maciej Fijalkowski     2019-10-24   999  	u8 tc;
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1000  
-634da4c118434cf Benita Bose            2021-03-02  1001  	/* Configure XPS */
-634da4c118434cf Benita Bose            2021-03-02  1002  	ice_cfg_xps_tx_ring(ring);
-634da4c118434cf Benita Bose            2021-03-02  1003  
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1004  	pf_q = ring->reg_idx;
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1005  	ice_setup_tx_ctx(ring, &tlan_ctx, pf_q);
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1006  	/* copy context contents into the qg_buf */
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1007  	qg_buf->txqs[0].txq_id = cpu_to_le16(pf_q);
-dc4305be467a6f8 Jacob Keller           2024-12-10  1008  	ice_pack_txq_ctx(&tlan_ctx, &qg_buf->txqs[0].txq_ctx);
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1009  
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1010  	/* init queue specific tail reg. It is referred as
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1011  	 * transmit comm scheduler queue doorbell.
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1012  	 */
-7e34786a74e1403 Bruce Allan            2020-05-15  1013  	ring->tail = hw->hw_addr + QTX_COMM_DBELL(pf_q);
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1014  
-e75d1b2c3731999 Maciej Fijalkowski     2019-10-24  1015  	if (IS_ENABLED(CONFIG_DCB))
-e75d1b2c3731999 Maciej Fijalkowski     2019-10-24  1016  		tc = ring->dcb_tc;
-e75d1b2c3731999 Maciej Fijalkowski     2019-10-24  1017  	else
-e75d1b2c3731999 Maciej Fijalkowski     2019-10-24  1018  		tc = 0;
-e75d1b2c3731999 Maciej Fijalkowski     2019-10-24  1019  
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1020  	/* Add unique software queue handle of the Tx queue per
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1021  	 * TC into the VSI Tx ring
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1022  	 */
-e72bba21355dbb6 Maciej Fijalkowski     2021-08-19 @1023  	ring->q_handle = ice_calc_txq_handle(vsi, ring, tc);
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1024  
-0754d65bd4be5bb Kiran Patil            2021-10-15  1025  	if (ch)
-0754d65bd4be5bb Kiran Patil            2021-10-15  1026  		status = ice_ena_vsi_txq(vsi->port_info, ch->ch_vsi->idx, 0,
-0754d65bd4be5bb Kiran Patil            2021-10-15  1027  					 ring->q_handle, 1, qg_buf, buf_len,
-0754d65bd4be5bb Kiran Patil            2021-10-15  1028  					 NULL);
-0754d65bd4be5bb Kiran Patil            2021-10-15  1029  	else
-0754d65bd4be5bb Kiran Patil            2021-10-15  1030  		status = ice_ena_vsi_txq(vsi->port_info, vsi->idx, tc,
-0754d65bd4be5bb Kiran Patil            2021-10-15  1031  					 ring->q_handle, 1, qg_buf, buf_len,
-0754d65bd4be5bb Kiran Patil            2021-10-15  1032  					 NULL);
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1033  	if (status) {
-5f87ec4861aa1b8 Tony Nguyen            2021-10-07  1034  		dev_err(ice_pf_to_dev(pf), "Failed to set LAN Tx queue context, error: %d\n",
-5f87ec4861aa1b8 Tony Nguyen            2021-10-07  1035  			status);
-c14846914ed6b57 Tony Nguyen            2021-10-07  1036  		return status;
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1037  	}
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1038  
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1039  	/* Add Tx Queue TEID into the VSI Tx ring from the
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1040  	 * response. This will complete configuring and
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1041  	 * enabling the queue.
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1042  	 */
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1043  	txq = &qg_buf->txqs[0];
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1044  	if (pf_q == le16_to_cpu(txq->txq_id))
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1045  		ring->txq_teid = le32_to_cpu(txq->q_teid);
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1046  
-51900dfcf194b39 Paul Greenwalt         2025-03-11  1047  	if (tstamp_ring) {
-51900dfcf194b39 Paul Greenwalt         2025-03-11  1048  		u8 txtime_buf_len = struct_size(txtime_qg_buf, txtimeqs, 1);
-51900dfcf194b39 Paul Greenwalt         2025-03-11  1049  		struct ice_txtime_ctx txtime_ctx = {};
-51900dfcf194b39 Paul Greenwalt         2025-03-11  1050  
-51900dfcf194b39 Paul Greenwalt         2025-03-11  1051  		ice_setup_txtime_ctx(tstamp_ring, &txtime_ctx,
-51900dfcf194b39 Paul Greenwalt         2025-03-11  1052  				     !!(ring->flags & ICE_TX_FLAGS_TXTIME));
-51900dfcf194b39 Paul Greenwalt         2025-03-11  1053  		ice_pack_txtime_ctx(&txtime_ctx,
-51900dfcf194b39 Paul Greenwalt         2025-03-11  1054  				    &txtime_qg_buf->txtimeqs[0].txtime_ctx);
-51900dfcf194b39 Paul Greenwalt         2025-03-11  1055  
-51900dfcf194b39 Paul Greenwalt         2025-03-11  1056  		tstamp_ring->tail =
-51900dfcf194b39 Paul Greenwalt         2025-03-11  1057  			 hw->hw_addr + E830_GLQTX_TXTIME_DBELL_LSB(pf_q);
-51900dfcf194b39 Paul Greenwalt         2025-03-11  1058  
-51900dfcf194b39 Paul Greenwalt         2025-03-11  1059  		status = ice_aq_set_txtimeq(hw, pf_q, 1, txtime_qg_buf,
-51900dfcf194b39 Paul Greenwalt         2025-03-11  1060  					    txtime_buf_len, NULL);
-51900dfcf194b39 Paul Greenwalt         2025-03-11  1061  		if (status) {
-51900dfcf194b39 Paul Greenwalt         2025-03-11  1062  			dev_err(ice_pf_to_dev(pf), "Failed to set Tx Time queue context, error: %d\n",
-51900dfcf194b39 Paul Greenwalt         2025-03-11  1063  				status);
-51900dfcf194b39 Paul Greenwalt         2025-03-11  1064  			return status;
-51900dfcf194b39 Paul Greenwalt         2025-03-11  1065  		}
-51900dfcf194b39 Paul Greenwalt         2025-03-11  1066  	}
-51900dfcf194b39 Paul Greenwalt         2025-03-11  1067  
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1068  	return 0;
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1069  }
-eff380aaffedb27 Anirudh Venkataramanan 2019-10-24  1070  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Hmm. It might be required, because requests to disable the clock won't have=
+ PTP_FEATURE_ENABLED set, and might have the edges cleared, which would pre=
+vent you from disabling the output..? I'll have to see what the kernel does=
+ when it disables the function.
