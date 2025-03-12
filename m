@@ -2,75 +2,77 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F04DA5DD8A
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Mar 2025 14:13:15 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C02B4A5DD8C
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Mar 2025 14:13:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C6BD481F5C;
-	Wed, 12 Mar 2025 13:13:13 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E5A0B81FED;
+	Wed, 12 Mar 2025 13:13:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id jSGD2msD4OW2; Wed, 12 Mar 2025 13:13:12 +0000 (UTC)
+ id OIf92luC5dyO; Wed, 12 Mar 2025 13:13:13 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D3ED082A72
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8385181F1F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741785191;
-	bh=dgtINHnWY6WaF4XXYVK7MLkvKdelYlSVYlxomQ8CjW4=;
+	s=default; t=1741785193;
+	bh=iZo2OSW2kSsv7rKoQa15mMyMwRW/8jBjL1V1C3ZP3E8=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=AUO0lo0Ri64stxtQCptfXSQf4mDsQQAqOmjqTv8njwkZwJAruveLwY5+7mKyafjoZ
-	 5vRTJy6aBgPwtgtvHRIo1w0d83fhUxEQYS0snE+nPeVviyhfftCvo0iVFWdT8njObk
-	 rdvLn6nelhBRW99JBt+fpJzh4unsQqs+lGXhziKII+N5Iw6dWvV0XG3yCc9DOaaaUB
-	 /IMnTy28TksNpN5EJAzUZl8pY7p/JFMNbQWO96GO4G/fSyBXTbM0eMfArDsQu44aIu
-	 bAlFpRPs/RPlKXiMcRzNFJ3o7Tq7mEZc3aUEz1AhAs6+zkmtoUuQwUV1oYqsFKWS/g
-	 hgAluy5v2VEHQ==
+	b=hRpiyi2YCV3b7AEbpkXc5vyaBi/gpNt+ffxr7VGs//8xk6XY+1Q2HWFa2ywGRLJd4
+	 YRnuJTUO82OkhDwj73vg+OPZcdHScK1Gfkr/fVzLy+W6mjZF1tgyf73rprQFUWZQw8
+	 ToajsGZN3uPatPW6tKGaARuXDEZsV0nFoqraVw+W7IpNbSC8NyDlERvamaVWSY4lfv
+	 uvuiILnwsMaMmtGcnGX/0NHWpGca5JvM2hLPiemWI/jIZmr/zcphmUsTTu/vSU5cUq
+	 NFaq0u+q7097cdpWVjap8JjCLA6cw5elDqrCWKWbNG7RQuKpFZ0UfAsh5zi+UFFIWN
+	 508mRThuCDRNQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D3ED082A72;
-	Wed, 12 Mar 2025 13:13:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8385181F1F;
+	Wed, 12 Mar 2025 13:13:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 1E1AE1C8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 13:13:05 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 91661943
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 13:13:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0D9CF60852
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 13:13:05 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 7EA9460BC8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 13:13:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ya0pYLQL6KtW for <intel-wired-lan@lists.osuosl.org>;
- Wed, 12 Mar 2025 13:13:04 +0000 (UTC)
+ id OoBBtS5dynex for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 12 Mar 2025 13:13:07 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
  helo=mgamail.intel.com; envelope-from=jedrzej.jagielski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 2B4D660831
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2B4D660831
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C8A4360831
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C8A4360831
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2B4D660831
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 13:13:04 +0000 (UTC)
-X-CSE-ConnectionGUID: L/UC8DnJRfynyLaaa/rpsw==
-X-CSE-MsgGUID: FWptcCxERoSDh+T9i2dKRw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11370"; a="53510692"
-X-IronPort-AV: E=Sophos;i="6.14,241,1736841600"; d="scan'208";a="53510692"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C8A4360831
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 13:13:06 +0000 (UTC)
+X-CSE-ConnectionGUID: 74MVALkvRBygFerbxwBnQA==
+X-CSE-MsgGUID: e//btqqhRLmxBYGKf76OmA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11370"; a="53510698"
+X-IronPort-AV: E=Sophos;i="6.14,241,1736841600"; d="scan'208";a="53510698"
 Received: from orviesa008.jf.intel.com ([10.64.159.148])
  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Mar 2025 06:13:04 -0700
-X-CSE-ConnectionGUID: 0fAnT2LVTQeJl91CfsdYeA==
-X-CSE-MsgGUID: Q9AjzAPpQSGEW/4iMX4jNw==
+ 12 Mar 2025 06:13:07 -0700
+X-CSE-ConnectionGUID: iSGc5n2cQh2JrNslakh6sg==
+X-CSE-MsgGUID: wyZHD94+QIeHPp9nvhzIbg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,241,1736841600"; d="scan'208";a="121542100"
+X-IronPort-AV: E=Sophos;i="6.14,241,1736841600"; d="scan'208";a="121542113"
 Received: from os-delivery.igk.intel.com ([10.102.18.218])
- by orviesa008.jf.intel.com with ESMTP; 12 Mar 2025 06:13:02 -0700
+ by orviesa008.jf.intel.com with ESMTP; 12 Mar 2025 06:13:04 -0700
 From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: anthony.l.nguyen@intel.com, netdev@vger.kernel.org, horms@kernel.org,
  przemyslaw.kitszel@intel.com,
- Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
+ Slawomir Mrozowicz <slawomirx.mrozowicz@intel.com>,
  Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- Bharath R <bharath.r@intel.com>
-Date: Wed, 12 Mar 2025 13:58:32 +0100
-Message-Id: <20250312125843.347191-5-jedrzej.jagielski@intel.com>
+ Bharath R <bharath.r@intel.com>,
+ Piotr Kwapulinski <piotr.kwapulinski@intel.com>,
+ Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Date: Wed, 12 Mar 2025 13:58:33 +0100
+Message-Id: <20250312125843.347191-6-jedrzej.jagielski@intel.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20250312125843.347191-1-jedrzej.jagielski@intel.com>
 References: <20250312125843.347191-1-jedrzej.jagielski@intel.com>
@@ -78,25 +80,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1741785184; x=1773321184;
+ t=1741785187; x=1773321187;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=6TckskUXN22ptKu5MeLHPmiGy9F3LnqqcCysigeyfLQ=;
- b=VddpPQ4rtcnpnax7puf1z7hA8HMArOU3rNpl7pClK8eIbknESixVE+0c
- sDPaSILJP4Hyruju1Vq5Jz1/EyU1HX3mPaGOP+ZTSf3TfIK+/GuivPMSB
- 8Gf3XH7teme/3A0uSVSJD0q4+47Dq+wA7IKLZYZol9iOdpRtYto+ZmkRD
- g2KhhP/Ku2JcAuA0uoAutTDsKr/E21DI9uAyI+l5ts1+oDPWb/fRLpCIR
- DmcoLZixkC2mUVR1L2NiVxGHrj7UqWH+8bUsf4zKgKttfPn+PzDCQxNgY
- i/cKCveTwfrJxMK5WtstQ/b07O4blqNApxROYChHZG1hEHVRIf9w7np5O
- A==;
+ bh=CIW0KX5kjTn8Nl30b+aXCq6rtR0RMzAtQnEuP7/ZOH4=;
+ b=DvlK7iu9ntfBxhIxyc4lm/hzje3mrrmLnivzTbQweBsiKeJHVhz0aa8+
+ XvZGpDfWvUJwFkYNrwpykSfFYjT1/FYSOaH/J161/xvspRcR7F2YDL4Fd
+ Qqn45EIKnnRuxuXHHZV+3gYMnEy4QtgOPLaJm6zY79bR/0wd48zoNL2UA
+ 8tdCy2kfz0Zdm89P+r2KNWvn2+dPThQBlbRKX4xoiDuM4QUETkDih2hQY
+ eFZ7YZy278xODeYgOh209Xn1tL5Ie4D1NX/cDxX+wPppJjlB/6VkMcdUF
+ 1a4y7nLRJYlPzt5gFidSSdVWUnbF6OFmyw/Q11j/DX/DgC7EKHk6wetK2
+ g==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=VddpPQ4r
-Subject: [Intel-wired-lan] [PATCH iwl-next v7 04/15] ixgbe: add handler for
- devlink .info_get()
+ header.a=rsa-sha256 header.s=Intel header.b=DvlK7iu9
+Subject: [Intel-wired-lan] [PATCH iwl-next v7 05/15] ixgbe: add E610
+ functions for acquiring flash data
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -112,180 +114,646 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Provide devlink .info_get() callback implementation to allow the
-driver to report detailed version information. The following info
-is reported:
+From: Slawomir Mrozowicz <slawomirx.mrozowicz@intel.com>
 
- "serial_number" -> The PCI DSN of the adapter
- "fw.bundle_id" -> Unique identifier for the combined flash image
- "fw.undi" -> Version of the Option ROM containing the UEFI driver
- "board.id" -> The PBA ID string
+Read NVM related info from the flash.
 
+Add several helper functions used to access the flash data,
+find memory banks, calculate offsets, calculate the flash size.
+
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Reviewed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 Tested-by: Bharath R <bharath.r@intel.com>
+Signed-off-by: Slawomir Mrozowicz <slawomirx.mrozowicz@intel.com>
+Co-developed-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+Co-developed-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 ---
-v2: zero the ctx buff when chance it won't be filled out
-v4: use devlink_priv()
-v6: fix devlink_*_put() labels
----
- Documentation/networking/devlink/ixgbe.rst    |  32 ++++++
- .../ethernet/intel/ixgbe/devlink/devlink.c    | 101 ++++++++++++++++++
- 2 files changed, 133 insertions(+)
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 509 +++++++++++++++++-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h |   1 +
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |   4 +
+ .../ethernet/intel/ixgbe/ixgbe_type_e610.h    |  40 +-
+ 4 files changed, 552 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/networking/devlink/ixgbe.rst b/Documentation/networking/devlink/ixgbe.rst
-index c04ac51c6d85..b63645de37e8 100644
---- a/Documentation/networking/devlink/ixgbe.rst
-+++ b/Documentation/networking/devlink/ixgbe.rst
-@@ -6,3 +6,35 @@ ixgbe devlink support
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+index 683c668672d6..3654b7e32cc8 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+@@ -2264,6 +2264,513 @@ int ixgbe_nvm_validate_checksum(struct ixgbe_hw *hw)
+ 	return err;
+ }
  
- This document describes the devlink features implemented by the ``ixgbe``
- device driver.
-+
-+Info versions
-+=============
-+
-+The ``ixgbe`` driver reports the following versions
-+
-+.. list-table:: devlink info versions implemented
-+    :widths: 5 5 5 90
-+
-+    * - Name
-+      - Type
-+      - Example
-+      - Description
-+    * - ``board.id``
-+      - fixed
-+      - H49289-000
-+      - The Product Board Assembly (PBA) identifier of the board.
-+    * - ``fw.undi``
-+      - running
-+      - 1.1937.0
-+      - Version of the Option ROM containing the UEFI driver. The version is
-+        reported in ``major.minor.patch`` format. The major version is
-+        incremented whenever a major breaking change occurs, or when the
-+        minor version would overflow. The minor version is incremented for
-+        non-breaking changes and reset to 1 when the major version is
-+        incremented. The patch version is normally 0 but is incremented when
-+        a fix is delivered as a patch against an older base Option ROM.
-+    * - ``fw.bundle_id``
-+      - running
-+      - 0x80000d0d
-+      - Unique identifier of the firmware image file that was loaded onto
-+        the device. Also referred to as the EETRACK identifier of the NVM.
-diff --git a/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c b/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c
-index 6c3452cf5d7d..d91252da4a61 100644
---- a/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c
-+++ b/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c
-@@ -4,7 +4,108 @@
- #include "ixgbe.h"
- #include "devlink.h"
- 
-+struct ixgbe_info_ctx {
-+	char buf[128];
-+};
-+
-+static void ixgbe_info_get_dsn(struct ixgbe_adapter *adapter,
-+			       struct ixgbe_info_ctx *ctx)
++/**
++ * ixgbe_discover_flash_size - Discover the available flash size
++ * @hw: pointer to the HW struct
++ *
++ * The device flash could be up to 16MB in size. However, it is possible that
++ * the actual size is smaller. Use bisection to determine the accessible size
++ * of flash memory.
++ *
++ * Return: the exit code of the operation.
++ */
++static int ixgbe_discover_flash_size(struct ixgbe_hw *hw)
 +{
-+	u8 dsn[8];
-+
-+	/* Copy the DSN into an array in Big Endian format */
-+	put_unaligned_be64(pci_get_dsn(adapter->pdev), dsn);
-+
-+	snprintf(ctx->buf, sizeof(ctx->buf), "%8phD", dsn);
-+}
-+
-+static void ixgbe_info_nvm_ver(struct ixgbe_adapter *adapter,
-+			       struct ixgbe_info_ctx *ctx)
-+{
-+	struct ixgbe_hw *hw = &adapter->hw;
-+	struct ixgbe_nvm_version nvm_ver;
-+
-+	ctx->buf[0] = '\0';
-+
-+	ixgbe_get_oem_prod_version(hw, &nvm_ver);
-+	if (nvm_ver.oem_valid) {
-+		snprintf(ctx->buf, sizeof(ctx->buf), "%x.%x.%x",
-+			 nvm_ver.oem_major, nvm_ver.oem_minor,
-+			 nvm_ver.oem_release);
-+
-+		return;
-+	}
-+
-+	ixgbe_get_orom_version(hw, &nvm_ver);
-+	if (nvm_ver.or_valid)
-+		snprintf(ctx->buf, sizeof(ctx->buf), "%d.%d.%d",
-+			 nvm_ver.or_major, nvm_ver.or_build, nvm_ver.or_patch);
-+}
-+
-+static void ixgbe_info_eetrack(struct ixgbe_adapter *adapter,
-+			       struct ixgbe_info_ctx *ctx)
-+{
-+	struct ixgbe_hw *hw = &adapter->hw;
-+	struct ixgbe_nvm_version nvm_ver;
-+
-+	ixgbe_get_oem_prod_version(hw, &nvm_ver);
-+
-+	/* No ETRACK version for OEM */
-+	if (nvm_ver.oem_valid) {
-+		ctx->buf[0] = '\0';
-+		return;
-+	}
-+
-+	ixgbe_get_etk_id(hw, &nvm_ver);
-+	snprintf(ctx->buf, sizeof(ctx->buf), "0x%08x", nvm_ver.etk_id);
-+}
-+
-+static int ixgbe_devlink_info_get(struct devlink *devlink,
-+				  struct devlink_info_req *req,
-+				  struct netlink_ext_ack *extack)
-+{
-+	struct ixgbe_adapter *adapter = devlink_priv(devlink);
-+	struct ixgbe_hw *hw = &adapter->hw;
-+	struct ixgbe_info_ctx *ctx;
++	u32 min_size = 0, max_size = IXGBE_ACI_NVM_MAX_OFFSET + 1;
 +	int err;
 +
-+	ctx = kmalloc(sizeof(*ctx), GFP_KERNEL);
-+	if (!ctx)
-+		return -ENOMEM;
-+
-+	ixgbe_info_get_dsn(adapter, ctx);
-+	err = devlink_info_serial_number_put(req, ctx->buf);
++	err = ixgbe_acquire_nvm(hw, IXGBE_RES_READ);
 +	if (err)
-+		goto free_ctx;
++		return err;
 +
-+	err = ixgbe_read_pba_string_generic(hw, ctx->buf, sizeof(ctx->buf));
-+	if (err)
-+		goto free_ctx;
++	while ((max_size - min_size) > 1) {
++		u32 offset = (max_size + min_size) / 2;
++		u32 len = 1;
++		u8 data;
 +
-+	err = devlink_info_version_fixed_put(req,
-+					DEVLINK_INFO_VERSION_GENERIC_BOARD_ID,
-+					ctx->buf);
-+	if (err)
-+		goto free_ctx;
++		err = ixgbe_read_flat_nvm(hw, offset, &len, &data, false);
++		if (err == -EIO &&
++		    hw->aci.last_status == IXGBE_ACI_RC_EINVAL) {
++			err = 0;
++			max_size = offset;
++		} else if (!err) {
++			min_size = offset;
++		} else {
++			/* an unexpected error occurred */
++			goto err_read_flat_nvm;
++		}
++	}
 +
-+	ixgbe_info_nvm_ver(adapter, ctx);
-+	err = devlink_info_version_running_put(req,
-+					DEVLINK_INFO_VERSION_GENERIC_FW_UNDI,
-+					ctx->buf);
-+	if (err)
-+		goto free_ctx;
++	hw->flash.flash_size = max_size;
 +
-+	ixgbe_info_eetrack(adapter, ctx);
-+	err = devlink_info_version_running_put(req,
-+					DEVLINK_INFO_VERSION_GENERIC_FW_BUNDLE_ID,
-+					ctx->buf);
-+free_ctx:
-+	kfree(ctx);
++err_read_flat_nvm:
++	ixgbe_release_nvm(hw);
++
 +	return err;
 +}
 +
- static const struct devlink_ops ixgbe_devlink_ops = {
-+	.info_get = ixgbe_devlink_info_get,
++/**
++ * ixgbe_read_sr_base_address - Read the value of a Shadow RAM pointer word
++ * @hw: pointer to the HW structure
++ * @offset: the word offset of the Shadow RAM word to read
++ * @pointer: pointer value read from Shadow RAM
++ *
++ * Read the given Shadow RAM word, and convert it to a pointer value specified
++ * in bytes. This function assumes the specified offset is a valid pointer
++ * word.
++ *
++ * Each pointer word specifies whether it is stored in word size or 4KB
++ * sector size by using the highest bit. The reported pointer value will be in
++ * bytes, intended for flat NVM reads.
++ *
++ * Return: the exit code of the operation.
++ */
++static int ixgbe_read_sr_base_address(struct ixgbe_hw *hw, u16 offset,
++				      u32 *pointer)
++{
++	u16 value;
++	int err;
++
++	err = ixgbe_read_ee_aci_e610(hw, offset, &value);
++	if (err)
++		return err;
++
++	/* Determine if the pointer is in 4KB or word units */
++	if (value & IXGBE_SR_NVM_PTR_4KB_UNITS)
++		*pointer = (value & ~IXGBE_SR_NVM_PTR_4KB_UNITS) * SZ_4K;
++	else
++		*pointer = value * sizeof(u16);
++
++	return 0;
++}
++
++/**
++ * ixgbe_read_sr_area_size - Read an area size from a Shadow RAM word
++ * @hw: pointer to the HW structure
++ * @offset: the word offset of the Shadow RAM to read
++ * @size: size value read from the Shadow RAM
++ *
++ * Read the given Shadow RAM word, and convert it to an area size value
++ * specified in bytes. This function assumes the specified offset is a valid
++ * area size word.
++ *
++ * Each area size word is specified in 4KB sector units. This function reports
++ * the size in bytes, intended for flat NVM reads.
++ *
++ * Return: the exit code of the operation.
++ */
++static int ixgbe_read_sr_area_size(struct ixgbe_hw *hw, u16 offset, u32 *size)
++{
++	u16 value;
++	int err;
++
++	err = ixgbe_read_ee_aci_e610(hw, offset, &value);
++	if (err)
++		return err;
++
++	/* Area sizes are always specified in 4KB units */
++	*size = value * SZ_4K;
++
++	return 0;
++}
++
++/**
++ * ixgbe_determine_active_flash_banks - Discover active bank for each module
++ * @hw: pointer to the HW struct
++ *
++ * Read the Shadow RAM control word and determine which banks are active for
++ * the NVM, OROM, and Netlist modules. Also read and calculate the associated
++ * pointer and size. These values are then cached into the ixgbe_flash_info
++ * structure for later use in order to calculate the correct offset to read
++ * from the active module.
++ *
++ * Return: the exit code of the operation.
++ */
++static int ixgbe_determine_active_flash_banks(struct ixgbe_hw *hw)
++{
++	struct ixgbe_bank_info *banks = &hw->flash.banks;
++	u16 ctrl_word;
++	int err;
++
++	err = ixgbe_read_ee_aci_e610(hw, IXGBE_E610_SR_NVM_CTRL_WORD, &ctrl_word);
++	if (err)
++		return err;
++
++	if (FIELD_GET(IXGBE_SR_CTRL_WORD_1_M, ctrl_word) !=
++	    IXGBE_SR_CTRL_WORD_VALID)
++		return -ENODATA;
++
++	if (!(ctrl_word & IXGBE_SR_CTRL_WORD_NVM_BANK))
++		banks->nvm_bank = IXGBE_1ST_FLASH_BANK;
++	else
++		banks->nvm_bank = IXGBE_2ND_FLASH_BANK;
++
++	if (!(ctrl_word & IXGBE_SR_CTRL_WORD_OROM_BANK))
++		banks->orom_bank = IXGBE_1ST_FLASH_BANK;
++	else
++		banks->orom_bank = IXGBE_2ND_FLASH_BANK;
++
++	if (!(ctrl_word & IXGBE_SR_CTRL_WORD_NETLIST_BANK))
++		banks->netlist_bank = IXGBE_1ST_FLASH_BANK;
++	else
++		banks->netlist_bank = IXGBE_2ND_FLASH_BANK;
++
++	err = ixgbe_read_sr_base_address(hw, IXGBE_E610_SR_1ST_NVM_BANK_PTR,
++					 &banks->nvm_ptr);
++	if (err)
++		return err;
++
++	err = ixgbe_read_sr_area_size(hw, IXGBE_E610_SR_NVM_BANK_SIZE,
++				      &banks->nvm_size);
++	if (err)
++		return err;
++
++	err = ixgbe_read_sr_base_address(hw, IXGBE_E610_SR_1ST_OROM_BANK_PTR,
++					 &banks->orom_ptr);
++	if (err)
++		return err;
++
++	err = ixgbe_read_sr_area_size(hw, IXGBE_E610_SR_OROM_BANK_SIZE,
++				      &banks->orom_size);
++	if (err)
++		return err;
++
++	err = ixgbe_read_sr_base_address(hw, IXGBE_E610_SR_NETLIST_BANK_PTR,
++					 &banks->netlist_ptr);
++	if (err)
++		return err;
++
++	err = ixgbe_read_sr_area_size(hw, IXGBE_E610_SR_NETLIST_BANK_SIZE,
++				      &banks->netlist_size);
++
++	return err;
++}
++
++/**
++ * ixgbe_get_flash_bank_offset - Get offset into requested flash bank
++ * @hw: pointer to the HW structure
++ * @bank: whether to read from the active or inactive flash bank
++ * @module: the module to read from
++ *
++ * Based on the module, lookup the module offset from the beginning of the
++ * flash.
++ *
++ * Return: the flash offset. Note that a value of zero is invalid and must be
++ * treated as an error.
++ */
++static int ixgbe_get_flash_bank_offset(struct ixgbe_hw *hw,
++				       enum ixgbe_bank_select bank,
++				       u16 module)
++{
++	struct ixgbe_bank_info *banks = &hw->flash.banks;
++	enum ixgbe_flash_bank active_bank;
++	bool second_bank_active;
++	u32 offset, size;
++
++	switch (module) {
++	case IXGBE_E610_SR_1ST_NVM_BANK_PTR:
++		offset = banks->nvm_ptr;
++		size = banks->nvm_size;
++		active_bank = banks->nvm_bank;
++		break;
++	case IXGBE_E610_SR_1ST_OROM_BANK_PTR:
++		offset = banks->orom_ptr;
++		size = banks->orom_size;
++		active_bank = banks->orom_bank;
++		break;
++	case IXGBE_E610_SR_NETLIST_BANK_PTR:
++		offset = banks->netlist_ptr;
++		size = banks->netlist_size;
++		active_bank = banks->netlist_bank;
++		break;
++	default:
++		return 0;
++	}
++
++	switch (active_bank) {
++	case IXGBE_1ST_FLASH_BANK:
++		second_bank_active = false;
++		break;
++	case IXGBE_2ND_FLASH_BANK:
++		second_bank_active = true;
++		break;
++	default:
++		return 0;
++	}
++
++	/* The second flash bank is stored immediately following the first
++	 * bank. Based on whether the 1st or 2nd bank is active, and whether
++	 * we want the active or inactive bank, calculate the desired offset.
++	 */
++	switch (bank) {
++	case IXGBE_ACTIVE_FLASH_BANK:
++		return offset + (second_bank_active ? size : 0);
++	case IXGBE_INACTIVE_FLASH_BANK:
++		return offset + (second_bank_active ? 0 : size);
++	}
++
++	return 0;
++}
++
++/**
++ * ixgbe_read_flash_module - Read a word from one of the main NVM modules
++ * @hw: pointer to the HW structure
++ * @bank: which bank of the module to read
++ * @module: the module to read
++ * @offset: the offset into the module in bytes
++ * @data: storage for the word read from the flash
++ * @length: bytes of data to read
++ *
++ * Read data from the specified flash module. The bank parameter indicates
++ * whether or not to read from the active bank or the inactive bank of that
++ * module.
++ *
++ * The word will be read using flat NVM access, and relies on the
++ * hw->flash.banks data being setup by ixgbe_determine_active_flash_banks()
++ * during initialization.
++ *
++ * Return: the exit code of the operation.
++ */
++static int ixgbe_read_flash_module(struct ixgbe_hw *hw,
++				   enum ixgbe_bank_select bank,
++				   u16 module, u32 offset, u8 *data, u32 length)
++{
++	u32 start;
++	int err;
++
++	start = ixgbe_get_flash_bank_offset(hw, bank, module);
++	if (!start)
++		return -EINVAL;
++
++	err = ixgbe_acquire_nvm(hw, IXGBE_RES_READ);
++	if (err)
++		return err;
++
++	err = ixgbe_read_flat_nvm(hw, start + offset, &length, data, false);
++
++	ixgbe_release_nvm(hw);
++
++	return err;
++}
++
++/**
++ * ixgbe_read_nvm_module - Read from the active main NVM module
++ * @hw: pointer to the HW structure
++ * @bank: whether to read from active or inactive NVM module
++ * @offset: offset into the NVM module to read, in words
++ * @data: storage for returned word value
++ *
++ * Read the specified word from the active NVM module. This includes the CSS
++ * header at the start of the NVM module.
++ *
++ * Return: the exit code of the operation.
++ */
++static int ixgbe_read_nvm_module(struct ixgbe_hw *hw,
++				 enum ixgbe_bank_select bank,
++				 u32 offset, u16 *data)
++{
++	__le16 data_local;
++	int err;
++
++	err = ixgbe_read_flash_module(hw, bank, IXGBE_E610_SR_1ST_NVM_BANK_PTR,
++				      offset * sizeof(data_local),
++				      (u8 *)&data_local,
++				      sizeof(data_local));
++	if (!err)
++		*data = le16_to_cpu(data_local);
++
++	return err;
++}
++
++/**
++ * ixgbe_get_nvm_css_hdr_len - Read the CSS header length
++ * @hw: pointer to the HW struct
++ * @bank: whether to read from the active or inactive flash bank
++ * @hdr_len: storage for header length in words
++ *
++ * Read the CSS header length from the NVM CSS header and add the
++ * Authentication header size, and then convert to words.
++ *
++ * Return: the exit code of the operation.
++ */
++static int ixgbe_get_nvm_css_hdr_len(struct ixgbe_hw *hw,
++				     enum ixgbe_bank_select bank,
++				     u32 *hdr_len)
++{
++	u16 hdr_len_l, hdr_len_h;
++	u32 hdr_len_dword;
++	int err;
++
++	err = ixgbe_read_nvm_module(hw, bank, IXGBE_NVM_CSS_HDR_LEN_L,
++				    &hdr_len_l);
++	if (err)
++		return err;
++
++	err = ixgbe_read_nvm_module(hw, bank, IXGBE_NVM_CSS_HDR_LEN_H,
++				    &hdr_len_h);
++	if (err)
++		return err;
++
++	/* CSS header length is in DWORD, so convert to words and add
++	 * authentication header size.
++	 */
++	hdr_len_dword = (hdr_len_h << 16) | hdr_len_l;
++	*hdr_len = hdr_len_dword * 2 + IXGBE_NVM_AUTH_HEADER_LEN;
++
++	return 0;
++}
++
++/**
++ * ixgbe_read_nvm_sr_copy - Read a word from the Shadow RAM copy
++ * @hw: pointer to the HW structure
++ * @bank: whether to read from the active or inactive NVM module
++ * @offset: offset into the Shadow RAM copy to read, in words
++ * @data: storage for returned word value
++ *
++ * Read the specified word from the copy of the Shadow RAM found in the
++ * specified NVM module.
++ *
++ * Return: the exit code of the operation.
++ */
++static int ixgbe_read_nvm_sr_copy(struct ixgbe_hw *hw,
++				  enum ixgbe_bank_select bank,
++				  u32 offset, u16 *data)
++{
++	u32 hdr_len;
++	int err;
++
++	err = ixgbe_get_nvm_css_hdr_len(hw, bank, &hdr_len);
++	if (err)
++		return err;
++
++	hdr_len = round_up(hdr_len, IXGBE_HDR_LEN_ROUNDUP);
++
++	return ixgbe_read_nvm_module(hw, bank, hdr_len + offset, data);
++}
++
++/**
++ * ixgbe_get_nvm_srev - Read the security revision from the NVM CSS header
++ * @hw: pointer to the HW struct
++ * @bank: whether to read from the active or inactive flash bank
++ * @srev: storage for security revision
++ *
++ * Read the security revision out of the CSS header of the active NVM module
++ * bank.
++ *
++ * Return: the exit code of the operation.
++ */
++static int ixgbe_get_nvm_srev(struct ixgbe_hw *hw,
++			      enum ixgbe_bank_select bank, u32 *srev)
++{
++	u16 srev_l, srev_h;
++	int err;
++
++	err = ixgbe_read_nvm_module(hw, bank, IXGBE_NVM_CSS_SREV_L, &srev_l);
++	if (err)
++		return err;
++
++	err = ixgbe_read_nvm_module(hw, bank, IXGBE_NVM_CSS_SREV_H, &srev_h);
++	if (err)
++		return err;
++
++	*srev = (srev_h << 16) | srev_l;
++
++	return 0;
++}
++
++/**
++ * ixgbe_get_nvm_ver_info - Read NVM version information
++ * @hw: pointer to the HW struct
++ * @bank: whether to read from the active or inactive flash bank
++ * @nvm: pointer to NVM info structure
++ *
++ * Read the NVM EETRACK ID and map version of the main NVM image bank, filling
++ * in the nvm info structure.
++ *
++ * Return: the exit code of the operation.
++ */
++static int ixgbe_get_nvm_ver_info(struct ixgbe_hw *hw,
++				  enum ixgbe_bank_select bank,
++				  struct ixgbe_nvm_info *nvm)
++{
++	u16 eetrack_lo, eetrack_hi, ver;
++	int err;
++
++	err = ixgbe_read_nvm_sr_copy(hw, bank,
++				     IXGBE_E610_SR_NVM_DEV_STARTER_VER, &ver);
++	if (err)
++		return err;
++
++	nvm->major = FIELD_GET(IXGBE_E610_NVM_VER_HI_MASK, ver);
++	nvm->minor = FIELD_GET(IXGBE_E610_NVM_VER_LO_MASK, ver);
++
++	err = ixgbe_read_nvm_sr_copy(hw, bank, IXGBE_E610_SR_NVM_EETRACK_LO,
++				     &eetrack_lo);
++	if (err)
++		return err;
++
++	err = ixgbe_read_nvm_sr_copy(hw, bank, IXGBE_E610_SR_NVM_EETRACK_HI,
++				     &eetrack_hi);
++	if (err)
++		return err;
++
++	nvm->eetrack = (eetrack_hi << 16) | eetrack_lo;
++
++	ixgbe_get_nvm_srev(hw, bank, &nvm->srev);
++
++	return 0;
++}
++
++/**
++ * ixgbe_get_flash_data - get flash data
++ * @hw: pointer to the HW struct
++ *
++ * Read and populate flash data such as Shadow RAM size,
++ * max_timeout and blank_nvm_mode
++ *
++ * Return: the exit code of the operation.
++ */
++int ixgbe_get_flash_data(struct ixgbe_hw *hw)
++{
++	struct ixgbe_flash_info *flash = &hw->flash;
++	u32 fla, gens_stat;
++	u8 sr_size;
++	int err;
++
++	/* The SR size is stored regardless of the NVM programming mode
++	 * as the blank mode may be used in the factory line.
++	 */
++	gens_stat = IXGBE_READ_REG(hw, GLNVM_GENS);
++	sr_size = FIELD_GET(GLNVM_GENS_SR_SIZE_M, gens_stat);
++
++	/* Switching to words (sr_size contains power of 2) */
++	flash->sr_words = BIT(sr_size) * (SZ_1K / sizeof(u16));
++
++	/* Check if we are in the normal or blank NVM programming mode */
++	fla = IXGBE_READ_REG(hw, IXGBE_GLNVM_FLA);
++	if (fla & IXGBE_GLNVM_FLA_LOCKED_M) {
++		flash->blank_nvm_mode = false;
++	} else {
++		flash->blank_nvm_mode = true;
++		return -EIO;
++	}
++
++	err = ixgbe_discover_flash_size(hw);
++
++	if (err)
++		return err;
++
++	err = ixgbe_determine_active_flash_banks(hw);
++
++	if (err)
++		return err;
++
++	err = ixgbe_get_nvm_ver_info(hw, IXGBE_ACTIVE_FLASH_BANK,
++				     &flash->nvm);
++
++	return err;
++}
++
+ /**
+  * ixgbe_read_sr_word_aci - Reads Shadow RAM via ACI
+  * @hw: pointer to the HW structure
+@@ -2483,7 +2990,7 @@ int ixgbe_validate_eeprom_checksum_e610(struct ixgbe_hw *hw, u16 *checksum_val)
+ 		if (err)
+ 			return err;
+ 
+-		err = ixgbe_read_sr_word_aci(hw, E610_SR_SW_CHECKSUM_WORD,
++		err = ixgbe_read_sr_word_aci(hw, IXGBE_E610_SR_SW_CHECKSUM_WORD,
+ 					     &tmp_checksum);
+ 		ixgbe_release_nvm(hw);
+ 
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
+index ba8c06b73810..2c971a34200b 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
+@@ -77,5 +77,6 @@ int ixgbe_read_ee_aci_buffer_e610(struct ixgbe_hw *hw, u16 offset,
+ 				  u16 words, u16 *data);
+ int ixgbe_validate_eeprom_checksum_e610(struct ixgbe_hw *hw, u16 *checksum_val);
+ int ixgbe_reset_hw_e610(struct ixgbe_hw *hw);
++int ixgbe_get_flash_data(struct ixgbe_hw *hw);
+ 
+ #endif /* _IXGBE_E610_H_ */
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index e592719daa0c..a6bddea6b482 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -11335,6 +11335,10 @@ static int ixgbe_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 		err = ixgbe_get_caps(&adapter->hw);
+ 		if (err)
+ 			dev_err(&pdev->dev, "ixgbe_get_caps failed %d\n", err);
++
++		err = ixgbe_get_flash_data(&adapter->hw);
++		if (err)
++			goto err_sw_init;
+ 	}
+ 
+ 	if (adapter->hw.mac.type == ixgbe_mac_82599EB)
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
+index 8d06ade3c7cd..1e4f18432e75 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
+@@ -10,7 +10,32 @@
+ #define IXGBE_MAX_VSI			768
+ 
+ /* Checksum and Shadow RAM pointers */
+-#define E610_SR_SW_CHECKSUM_WORD		0x3F
++#define IXGBE_E610_SR_NVM_CTRL_WORD		0x00
++#define IXGBE_E610_SR_PBA_BLOCK_PTR		0x16
++#define IXGBE_E610_SR_NVM_DEV_STARTER_VER	0x18
++#define IXGBE_E610_SR_NVM_EETRACK_LO		0x2D
++#define IXGBE_E610_SR_NVM_EETRACK_HI		0x2E
++#define IXGBE_E610_NVM_VER_LO_MASK		GENMASK(7, 0)
++#define IXGBE_E610_NVM_VER_HI_MASK		GENMASK(15, 12)
++#define IXGBE_E610_SR_SW_CHECKSUM_WORD		0x3F
++#define IXGBE_E610_SR_PFA_PTR			0x40
++#define IXGBE_E610_SR_1ST_NVM_BANK_PTR		0x42
++#define IXGBE_E610_SR_NVM_BANK_SIZE		0x43
++#define IXGBE_E610_SR_1ST_OROM_BANK_PTR		0x44
++#define IXGBE_E610_SR_OROM_BANK_SIZE		0x45
++#define IXGBE_E610_SR_NETLIST_BANK_PTR		0x46
++#define IXGBE_E610_SR_NETLIST_BANK_SIZE		0x47
++
++/* CSS Header words */
++#define IXGBE_NVM_CSS_HDR_LEN_L			0x02
++#define IXGBE_NVM_CSS_HDR_LEN_H			0x03
++#define IXGBE_NVM_CSS_SREV_L			0x14
++#define IXGBE_NVM_CSS_SREV_H			0x15
++
++#define IXGBE_HDR_LEN_ROUNDUP			32
++
++/* Length of Authentication header section in words */
++#define IXGBE_NVM_AUTH_HEADER_LEN		0x08
+ 
+ /* Shadow RAM related */
+ #define IXGBE_SR_WORDS_IN_1KB	512
+@@ -29,6 +54,14 @@
+ #define IXGBE_GLNVM_FLA_LOCKED_S	6
+ #define IXGBE_GLNVM_FLA_LOCKED_M	BIT(6)
+ 
++/* Auxiliary field, mask and shift definition for Shadow RAM and NVM Flash */
++#define IXGBE_SR_CTRL_WORD_1_M		GENMASK(7, 6)
++#define IXGBE_SR_CTRL_WORD_VALID	BIT(0)
++#define IXGBE_SR_CTRL_WORD_OROM_BANK	BIT(3)
++#define IXGBE_SR_CTRL_WORD_NETLIST_BANK	BIT(4)
++#define IXGBE_SR_CTRL_WORD_NVM_BANK	BIT(5)
++#define IXGBE_SR_NVM_PTR_4KB_UNITS	BIT(15)
++
+ /* Admin Command Interface (ACI) registers */
+ #define IXGBE_PF_HIDA(_i)			(0x00085000 + ((_i) * 4))
+ #define IXGBE_PF_HIDA_2(_i)			(0x00085020 + ((_i) * 4))
+@@ -1012,6 +1045,11 @@ struct ixgbe_aci_info {
+ 	enum ixgbe_aci_err last_status;	/* last status of sent admin command */
  };
  
- /**
++enum ixgbe_bank_select {
++	IXGBE_ACTIVE_FLASH_BANK,
++	IXGBE_INACTIVE_FLASH_BANK,
++};
++
+ /* Option ROM version information */
+ struct ixgbe_orom_info {
+ 	u8 major;			/* Major version of OROM */
 -- 
 2.31.1
 
