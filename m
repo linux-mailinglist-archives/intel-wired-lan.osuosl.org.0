@@ -1,117 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DDA79A5E719
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Mar 2025 23:16:15 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5EABAA5E758
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Mar 2025 23:25:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5A6C260E31;
-	Wed, 12 Mar 2025 22:16:14 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B171882345;
+	Wed, 12 Mar 2025 22:25:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id DhBXIxnlLopc; Wed, 12 Mar 2025 22:16:13 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id gn_0V9M-URNL; Wed, 12 Mar 2025 22:25:43 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A86EC60E48
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D3A0A8236B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741817773;
-	bh=BbhCt20Mu0LR7cEG2jxFJTBDTk1pjGncLVodsQSWJPs=;
-	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
+	s=default; t=1741818342;
+	bh=rBuXBus5iFIGWKaTiHoIllR3Mb8mgIIt7od8i9FpuGI=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=l/UgfGJcB1o3KXk9AwXqv3PcWS2L8YDT/V87D76l5zaYXzIkzA558HQQBplAEYS1t
-	 2pNbEppdc7BsKOX/JJse8pC8MS0fVvPHknoKwGPnf+qgBFkZpFa2Ar6BV5wRra/fn0
-	 DHWc7U0AkIvpIRrjYa7tC9K+7OhM0qmo2l1q7kryxpX34RZNbxjb8Di3Iwl6WzXPow
-	 dSl9CE9UUJknIGoGYm7siINRpmEHnBgKUDzSpIiI2EYlyxHS9jNRXkWeetIYfrEdFo
-	 oaK0wqW/ALM+oPdAHvEIxhDZQuHz+tA9L5K0LIDR403mjOJNaULWyXhikJKxte7CCU
-	 21XtxjhDcM4BA==
+	b=2dy0L+1xj4AP0G7ACojFDul1E+WCt/Rf6tCJ4aZfTVz/4whkUMdTG+rhNV8oIhl5S
+	 y8kq5zCa5RJfDUgHZy8Otqu/Xh4lMa7ALN1qMMPVzsF06o6xiL4mRfOfVYWCEqPP3T
+	 w5c2rWo8huTFt3BpY5X5oeG7Ab2Gc2hl26uJlzzksg/pHPKywkHm7A9OOXuI/CExI0
+	 ubdto1lOwByPBpb8MbtZJos3EoH2NF34U64PAQWbbn3Cp7MAKgLLop/tgDUeGL5WSB
+	 1F2+fNnm9m1TbSdUgF2SGcUvQgobJMHNze2cSNFMz6CQ2CYYSwa3rM9gZD7x4G5x5N
+	 T01zkZEFySXeQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A86EC60E48;
-	Wed, 12 Mar 2025 22:16:13 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D3A0A8236B;
+	Wed, 12 Mar 2025 22:25:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 08DF12375
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 22:16:11 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 8FF53128
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 22:25:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E12894133B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 22:16:10 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7F4A041430
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 22:25:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id bVLYdHuPUfQA for <intel-wired-lan@lists.osuosl.org>;
- Wed, 12 Mar 2025 22:16:09 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
- helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org ADF974133A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ADF974133A
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
- by smtp4.osuosl.org (Postfix) with ESMTPS id ADF974133A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 22:16:09 +0000 (UTC)
-X-CSE-ConnectionGUID: kbersb23QrCMDHzlOwtW6g==
-X-CSE-MsgGUID: hBxxhM/6R0OF+3E6pXXrOw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11371"; a="54288429"
-X-IronPort-AV: E=Sophos;i="6.14,242,1736841600"; d="scan'208";a="54288429"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
- by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Mar 2025 15:16:08 -0700
-X-CSE-ConnectionGUID: n41JY1lQQdaoPy2xR1G+TQ==
-X-CSE-MsgGUID: 7j8DIBiETSWs78ngq/acow==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,242,1736841600"; d="scan'208";a="125950251"
-Received: from jekeller-desk.jf.intel.com ([10.166.241.15])
- by orviesa005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Mar 2025 15:16:07 -0700
-From: Jacob Keller <jacob.e.keller@intel.com>
-Date: Wed, 12 Mar 2025 15:15:54 -0700
+ id 2RZkxtTOUD6j for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 12 Mar 2025 22:25:39 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
+ helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 552664142E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 552664142E
+Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 552664142E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 22:25:39 +0000 (UTC)
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+ (envelope-from <andrew@lunn.ch>)
+ id 1tsUW2-004noa-Bs; Wed, 12 Mar 2025 23:25:30 +0100
+Date: Wed, 12 Mar 2025 23:25:30 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Hamish Martin <Hamish.Martin@alliedtelesis.co.nz>
+Cc: "przemyslaw.kitszel@intel.com" <przemyslaw.kitszel@intel.com>,
+ "anthony.l.nguyen@intel.com" <anthony.l.nguyen@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+Message-ID: <0486c877-cbb4-411b-9bd6-9b10306c47a6@lunn.ch>
+References: <20250312032251.2259794-1-hamish.martin@alliedtelesis.co.nz>
+ <eae8e09c-f571-4016-b11d-88611a2b368f@lunn.ch>
+ <9455a623aaeb08999eec9202459d266f22432c00.camel@alliedtelesis.co.nz>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20250312-jk-net-fixes-supported-extts-flags-v2-5-ea930ba82459@intel.com>
-References: <20250312-jk-net-fixes-supported-extts-flags-v2-0-ea930ba82459@intel.com>
-In-Reply-To: <20250312-jk-net-fixes-supported-extts-flags-v2-0-ea930ba82459@intel.com>
-To: Tony Nguyen <anthony.l.nguyen@intel.com>, 
- Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Richard Cochran <richardcochran@gmail.com>, Ruud Bos <kernel.hbk@gmail.com>, 
- Paul Barker <paul.barker.ct@bp.renesas.com>, 
- =?utf-8?q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, 
- Bryan Whitehead <bryan.whitehead@microchip.com>, 
- UNGLinuxDriver@microchip.com, 
- Florian Fainelli <florian.fainelli@broadcom.com>, 
- Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
- Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>, 
- Russell King <linux@armlinux.org.uk>, 
- Jonathan Lemon <jonathan.lemon@gmail.com>, Lasse Johnsen <l@ssejohnsen.me>, 
- Vadim Fedorenko <vadim.fedorenko@linux.dev>, 
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
- linux-renesas-soc@vger.kernel.org, Jacob Keller <jacob.e.keller@intel.com>
-X-Mailer: b4 0.14.2
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1741817770; x=1773353770;
- h=from:date:subject:mime-version:content-transfer-encoding:
- message-id:references:in-reply-to:to:cc;
- bh=dZtHQmHw2E/TNV4LhtJkvHxvd1dLBtC07ImShwyJx1c=;
- b=CklqUilD3pGPssGMlM2VQnZg8LdhaOvVKiRPP4jQNALarpEd4D1r8cOy
- E0ppH0Ll21mMxmt2msr5n6d80oxOlW334dfWIQiP83y+ZEugx3XtF9O06
- Sj75MTRjdkzJc3aRNeERawkgCQjOILKO8lSHrkZaROVQ3qTcH6fCkY4zj
- XquZqn+LauHQ2mL4kOFtT3fs3+SMR228iw1MRlhTI9gZozAfUcGZ4izmV
- uaf4CSFPDqVeLQQOFEgBYP+kKE/NLP6ZE3rP6+G/+XrfO7MNb9lyTaa0H
- VR6Rfod7I3DWxWBymZO8zAONKbrQ0NrWp4iP/qnd76VMHwCynfy1Q0+cC
- w==;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <9455a623aaeb08999eec9202459d266f22432c00.camel@alliedtelesis.co.nz>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; d=lunn.ch; 
+ s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+ Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+ bh=rBuXBus5iFIGWKaTiHoIllR3Mb8mgIIt7od8i9FpuGI=; b=f15VbVfmYohFagLD6N1ENLriN7
+ BCnq2HcMX86RPea0zDYsjyczMHzDCsgPfqgiQDuBuohrzF8+0Wo2wspeGj0gLTP1piaVAG2ANtjVX
+ Gk4VSqg6aqEyfsjoVyMi5lc2YGaYCORMaTtnS2eCxn08QhDmoj9e1U2dAcmCo8fUOYIc=;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
+ header.from=lunn.ch
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=CklqUilD
-Subject: [Intel-wired-lan] [PATCH net v2 5/5] ptp: ocp: reject unsupported
- periodic output flags
+ dkim=pass (1024-bit key,
+ unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256
+ header.s=20171124 header.b=f15VbVfm
+Subject: Re: [Intel-wired-lan] [PATCH net] igb: Prevent IPCFGN write
+ resetting autoneg advertisement register
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -127,36 +99,78 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The ptp_ocp_signal_from_perout() function supports PTP_PEROUT_DUTY_CYCLE
-and PTP_PEROUT_PHASE. It does not support PTP_PEROUT_ONE_SHOT, but does not
-reject a request with such an unsupported flag.
+> Hi Andrew,
+> 
+> Thanks for your feedback. I'll try and give more detail about what's
+> happening with a concrete example.
+> 
+> If we start with the device in a state where it is advertising:
+> 1000BaseT Full
+> 100baseT Full
+> 100baseT Half
+> 10baseT Full
+> 10baseT Half
+> I see the following settings in the autoneg related registers:
+> 0.4 = 0x0de1 (PHY_AUTONEG_ADV)
+> 0.9 = 0x0200 (PHY_1000T_CTRL)
+> 
+> EEE is disabled.
+> 
+> If I then adjust the advertisement to only advertise 1000BaseT Full and
+> 100baseT Full with:
+> # ethtool -s eth0 advertise 0x28
+> I see the following writes to the registers:
+> 1. In igb_phy_setup_autoneg() PHY_AUTONEG_ADV is written with 0x0101
+> (the correct value)
+> 2. Later in igb_phy_setup_autoneg() PHY_1000T_CTRL is written with
+> 0x0200 (correct)
+> 3. Autoneg gets restarted in igb_copper_link_autoneg() with PHY_CONTROL
+> (0.0) being written with 0x1340
+> (everything looks fine up until here)
+> 4. Now we reach igb_set_eee_i350(). Here we read in IPCNFG and it has
+> value 0xf. EEE is disabled so we hit the 'else' case and remove
+> E1000_IPCNFG_EEE_1G_AN and E1000_IPCNFG_EEE_100M_AN from the 'ipcnfg'
+> value. We then write this back as 0x3. At this point, if you re-read
+> PHY_AUTONEG_ADV you will see it's contents has been reset to 0x0de1.
 
-Add the appropriate check to ensure that unsupported requests are rejected
-both for PTP_PEROUT_ONE_SHOT as well as any future flags.
+Thanks for the additional details. These should go into the commit
+message.
 
-Fixes: 1aa66a3a135a ("ptp: ocp: Program the signal generators via PTP_CLK_REQ_PEROUT")
-Reviewed-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
----
- drivers/ptp/ptp_ocp.c | 4 ++++
- 1 file changed, 4 insertions(+)
+> If you run the same example above but with EEE enabled (ethtool --set-
+> eee eth0 eee on; ethtool -s eth0 advertise 0x28) the issue is not seen.
+> In this case the contents of IPCNFG are written back unmodified as 0xf.
+> This seems important to avoid the bug.
 
-diff --git a/drivers/ptp/ptp_ocp.c b/drivers/ptp/ptp_ocp.c
-index b651087f426f50a73229ca57634fc5d6912e0a87..4a87af0980d695a9ab1b23e2544f620759ccb892 100644
---- a/drivers/ptp/ptp_ocp.c
-+++ b/drivers/ptp/ptp_ocp.c
-@@ -2090,6 +2090,10 @@ ptp_ocp_signal_from_perout(struct ptp_ocp *bp, int gen,
- {
- 	struct ptp_ocp_signal s = { };
- 
-+	if (req->flags & ~(PTP_PEROUT_DUTY_CYCLE |
-+			   PTP_PEROUT_PHASE))
-+		return -EOPNOTSUPP;
-+
- 	s.polarity = bp->signal[gen].polarity;
- 	s.period = ktime_set(req->period.sec, req->period.nsec);
- 	if (!s.period)
+Yes, it does seem like the PHY is broken. 
 
--- 
-2.48.1.397.gec9d649cc640
+> 
+> It seems that any case where EEE is disabled will lead to the
+> undesirable behaviour where the contents of PHY_AUTONEG_ADV is reset to
+> 0x0de1. The key trigger for this appears to be changes to either or
+> both of EEE_100M_AN and EEE_1G_AN in IPCNFG. The datasheet does note
+> that "Changing value of bit causes link drop and re-negotiation"
 
+Which is what you would expect, since EEE is negotiated. But
+implicitly changing the link modes advertised is not what you would
+expect.
+
+By the way, what PHY is this? I don't remember seeing any errata for
+Linux PHY drivers resembling this.
+
+> What's your opinion on that less invasive fix (i.e remove "ipcnfg &=
+> ~(E1000_IPCNFG_EEE_1G_AN | E1000_IPCNFG_EEE_100M_AN);" )? Is it
+> sufficient to rely on the EEER settings to control disabling EEE with
+> the IPCNFG register still set to advertise those modes?
+
+I actually think you need to do more testing. Assuming the PHY is not
+even more broken than we think, it should not matter if it advertises
+EEE mode for link modes which are not advertised. The link partner
+should ignore them. It would be good if you tested out various EEE
+combinations from both link partners sides.
+
+However, setting EEE advertisement and then always setting link mode
+advertisement does seem like a good workaround. It would however be
+good to get some sort of feedback from the PHY silicon vendor about
+this odd behaviour.
+
+	Andrew
