@@ -1,70 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 250ABA5D499
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Mar 2025 04:06:15 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A83B2A5D4AF
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Mar 2025 04:17:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 86E6760C05;
-	Wed, 12 Mar 2025 03:06:13 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KdIgwRDLddOg; Wed, 12 Mar 2025 03:06:12 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D2C5360C11
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741748771;
-	bh=3r97Kiqo/wk9Me8hYWwEn2idkVTXsaGg1NYbQlmaM2A=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=viC1tnBfmS5Gs0XfUzYPcKwXh+1GUO0tF/Suc9QAlCPXD+Zej8GJ2DQhkmHBORolP
-	 TmmjtM+N9RdXGUrORgadooC9Rd3pUAmjBWU3Bzo0xQW2Bqc9lh9rzfkreWyANyuSRU
-	 KzhomXhCY1hosaoVmdu51JtvqvxkAZUHNiJhlgE+JbTPzrWwHbkG5Z29NuVZAfskUv
-	 JEE3uX94KGLyQHQ5iqhhd1/od2HIiLwHRIaly6yx2qapn91r/TVwWI0syuo14myjCm
-	 ACo1sck4e0lJTT3q2vL1cv3m3DR11i5LtgsPKBfQDOJ0OGDwe0y19VhFdH+boIM3h7
-	 dgArcasI0YKOQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D2C5360C11;
-	Wed, 12 Mar 2025 03:06:11 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id C55F8943
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 03:06:09 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B49A2410D5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 03:06:09 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1E71E410F0;
+	Wed, 12 Mar 2025 03:17:01 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sbwwr1Olb0Ja for <intel-wired-lan@lists.osuosl.org>;
- Wed, 12 Mar 2025 03:06:08 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
+ id KRcKlD_dmhn8; Wed, 12 Mar 2025 03:17:00 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5AEB54111F
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1741749419;
+	bh=52xsjPSQtnG6SosdpKgjxhzX8jMjItKknXewt2hD/yg=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=nLOSmz0RnhwfGXwSYWgsaDQ3D5Suk3KcXGTvPcOZh8mQIDHl/q2V8FxwK2PYuJNd4
+	 P/i4hdedflvQpL78JL9PEbItjGCB4Xoqicgi5mr1Sm0Lm0R9epAaHJuMDgy5WaQtu4
+	 LnSZz6g0WujuUE5u+p2ZrvJLMbjFIfG3OdGywGUM/t5tiPmwOYPKYBiWcBZiBFvy23
+	 f/tzhRdOpf6k35O4p3mZ5UN1pgCMDlhgki51+3w1LIVrV8fuTlp8g/24AHxf25Xilg
+	 6jJDq8zT8IMNwGFeLshpot/bOE3TC45IYgsRV3J5KsXQ3UYd4a1K147/STbsjbvyQ1
+	 adCOiKPBM9O0w==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5AEB54111F;
+	Wed, 12 Mar 2025 03:16:59 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 1FBEE943
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 03:16:57 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 18D3C410F0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 03:16:57 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Jwx9CeTw-Vz9 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 12 Mar 2025 03:16:55 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
  helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 1DF2640C33
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1DF2640C33
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1DF2640C33
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 03:06:07 +0000 (UTC)
-X-CSE-ConnectionGUID: U0UO5JDyQGG6WYIvTG0vWw==
-X-CSE-MsgGUID: b7r4JT/dSwmpFR7RGJV+Vg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11370"; a="53437686"
-X-IronPort-AV: E=Sophos;i="6.14,240,1736841600"; d="scan'208";a="53437686"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
- by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Mar 2025 20:06:07 -0700
-X-CSE-ConnectionGUID: H5O2YCCkRFK7Xh0Zv2MPmw==
-X-CSE-MsgGUID: qFOVIYd/RcyovUyuWKbBiw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 90108409EC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 90108409EC
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 90108409EC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 03:16:55 +0000 (UTC)
+X-CSE-ConnectionGUID: rjpWf6lORd2v67zvIR0uYg==
+X-CSE-MsgGUID: EV45J6NaR5mwjoWh69EdlA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11370"; a="42850349"
+X-IronPort-AV: E=Sophos;i="6.14,240,1736841600"; d="scan'208";a="42850349"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+ by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Mar 2025 20:16:55 -0700
+X-CSE-ConnectionGUID: HmaKDxfPQF2c5jS54m/ILA==
+X-CSE-MsgGUID: Hch2/FQCQfyXOa4SBQfMlg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,240,1736841600"; d="scan'208";a="125694866"
+X-IronPort-AV: E=Sophos;i="6.14,240,1736841600"; d="scan'208";a="125401029"
 Received: from lkp-server02.sh.intel.com (HELO a4747d147074) ([10.239.97.151])
- by orviesa005.jf.intel.com with ESMTP; 11 Mar 2025 20:06:04 -0700
+ by orviesa003.jf.intel.com with ESMTP; 11 Mar 2025 20:16:52 -0700
 Received: from kbuild by a4747d147074 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1tsCPu-00084S-0U;
- Wed, 12 Mar 2025 03:05:59 +0000
-Date: Wed, 12 Mar 2025 11:05:43 +0800
+ (envelope-from <lkp@intel.com>) id 1tsCaP-00085A-33;
+ Wed, 12 Mar 2025 03:16:49 +0000
+Date: Wed, 12 Mar 2025 11:16:12 +0800
 From: kernel test robot <lkp@intel.com>
 To: Paul Greenwalt <paul.greenwalt@intel.com>, intel-wired-lan@lists.osuosl.org
 Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
@@ -72,7 +72,7 @@ Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
  Paul Greenwalt <paul.greenwalt@intel.com>,
  Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
  Alice Michael <alice.michael@intel.com>
-Message-ID: <202503121018.CUGx8uFd-lkp@intel.com>
+Message-ID: <202503121005.iGEV5eau-lkp@intel.com>
 References: <20250311132327.76804-1-paul.greenwalt@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -80,24 +80,23 @@ Content-Disposition: inline
 In-Reply-To: <20250311132327.76804-1-paul.greenwalt@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1741748768; x=1773284768;
+ t=1741749416; x=1773285416;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=5+YX71dkXNDCghpWAPAado6XW1FmrkmtNlC6GtLHbcA=;
- b=IPcgTuFfgCJixGgyEjQeHSFLy/E0yc4IKJu7QX3wiFMvQrKvvL5dEbqc
- J0ZGSyqxOLv6tmCWKLbCELYTf9bap6kpIid/mT1+DGbfDf7Bp8cfztQaf
- rxRDaBKVg2KI2vyH9dPrA/FZfybRyU4guXevXUjgO78rtJUSwC1KSeUgk
- kCgMxnaJoqNy4I6MHwETYRWmMTUlFj5I5El4/9dk4CdSjqJ5Lix8IXteW
- Q29dtwJt2EsZ84ly6gOa4N0cYO0Ay6W9z3Sfeg+SBeFiuJ0EYJtcRbqGm
- h/X/iIO/7HLCBzhAGS2tR8ZVOHYEeuU+WBGlyeHhusoTnIoQz6EChUvKy
+ bh=ko7Tc3C+mirQDYlajagDRqIRlUKa9AwTZ8pNLxpRF1g=;
+ b=dUpzI5KoEyyqa4ZmIo7Cv9wVaHZPQh3UlpGW8Mh0E/yzpz63Q64/zN2S
+ KlAiXTyXZjazx2GRJGJudpfOU3/t2/rIDd02IDWSMQm9aHn11ceVjoG+k
+ zz9kBQUqboBCM27Mmd12lPBRf2+cXYhx2jZTpEBGXe6fcCrccGHqatbZ3
+ AUl3nPgb03DCtwLd3Doi7gz+aRmRFky0A3CHfN+eoR+D9BQResOuKCyxl
+ Y0ABe8HBhmyp/WDHG1ODzOD/TCBjI2hB+a4od/r2hT6wlzE0zfF3f7Cuq
+ epbc988sIMD0xFcH60bNyyIFJQeTuwNyybLv8FPw3DuJsgh8iVkRdHExL
  A==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=IPcgTuFf
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=dUpzI5Ko
 Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] ice: add E830 Earliest
  TxTime First Offload support
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -117,32 +116,32 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 Hi Paul,
 
-kernel test robot noticed the following build errors:
+kernel test robot noticed the following build warnings:
 
-[auto build test ERROR on tnguy-next-queue/dev-queue]
+[auto build test WARNING on tnguy-next-queue/dev-queue]
 
 url:    https://github.com/intel-lab-lkp/linux/commits/Paul-Greenwalt/ice-add-E830-Earliest-TxTime-First-Offload-support/20250312-051400
 base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
 patch link:    https://lore.kernel.org/r/20250311132327.76804-1-paul.greenwalt%40intel.com
 patch subject: [PATCH iwl-next v2] ice: add E830 Earliest TxTime First Offload support
-config: arm-randconfig-003-20250312 (https://download.01.org/0day-ci/archive/20250312/202503121018.CUGx8uFd-lkp@intel.com/config)
-compiler: clang version 19.1.7 (https://github.com/llvm/llvm-project cd708029e0b2869e80abe31ddb175f7c35361f90)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250312/202503121018.CUGx8uFd-lkp@intel.com/reproduce)
+config: s390-allyesconfig (https://download.01.org/0day-ci/archive/20250312/202503121005.iGEV5eau-lkp@intel.com/config)
+compiler: s390-linux-gcc (GCC) 14.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250312/202503121005.iGEV5eau-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202503121018.CUGx8uFd-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202503121005.iGEV5eau-lkp@intel.com/
 
-All errors (new ones prefixed by >>):
+All warnings (new ones prefixed by >>):
 
->> drivers/net/ethernet/intel/ice/ice_base.c:1023:39: error: passing 'const struct ice_vsi *' to parameter of type 'struct ice_vsi *' discards qualifiers [-Werror,-Wincompatible-pointer-types-discards-qualifiers]
+   drivers/net/ethernet/intel/ice/ice_base.c: In function 'ice_vsi_cfg_txq':
+>> drivers/net/ethernet/intel/ice/ice_base.c:1023:46: warning: passing argument 1 of 'ice_calc_txq_handle' discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
     1023 |         ring->q_handle = ice_calc_txq_handle(vsi, ring, tc);
          |                                              ^~~
-   drivers/net/ethernet/intel/ice/ice_base.c:245:48: note: passing argument to parameter 'vsi' here
+   drivers/net/ethernet/intel/ice/ice_base.c:245:48: note: expected 'struct ice_vsi *' but argument is of type 'const struct ice_vsi *'
      245 | static u16 ice_calc_txq_handle(struct ice_vsi *vsi, struct ice_tx_ring *ring, u8 tc)
-         |                                                ^
-   1 error generated.
+         |                                ~~~~~~~~~~~~~~~~^~~
 
 
 vim +1023 drivers/net/ethernet/intel/ice/ice_base.c
