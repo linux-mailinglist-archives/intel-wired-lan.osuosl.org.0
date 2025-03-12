@@ -1,98 +1,103 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AAD96A5DD85
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Mar 2025 14:13:02 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 676D6A5DD86
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Mar 2025 14:13:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E1B4A81F55;
-	Wed, 12 Mar 2025 13:12:59 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 60ED581FB0;
+	Wed, 12 Mar 2025 13:13:01 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id QMAUM4wpsG8W; Wed, 12 Mar 2025 13:12:59 +0000 (UTC)
+ id clOp1lNhNm3D; Wed, 12 Mar 2025 13:13:00 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E4DE081F0C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C1AA881F5C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741785179;
-	bh=ZcfO3JWj+hwjQAbxZ5JmunsYSlyCG0EHugyFIhVDlQA=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=DC1YDaQ+zmuTJT/grFycLOlAHmnBakCUZXbYuSlg658n9R+FG4mHosjemrl5SMHSb
-	 7fc3/wl4DIZMrRXIX4F2odoSqNtQbGEwMdx/BFkWulw7EJUfua+Ifq6pJ73MVGEFft
-	 08gKI+wcdQrjSavQc3fflSA0b+NZz4sqvZoArSW/eHpWiEn2uHSIB5Hm3TjnMMZqMR
-	 OG8YCq2zQrVPHa8is59aZEEqWOcuomWx0PH0wDVgO/oR8sGjyETFz2K/rRKsz/rMpD
-	 LeK1x8e4x2VGNq+b8+MGzyFYfJvu3+O4bTWW44oddifJsSuQvLvbNodZgXEybpFZBH
-	 qM4BAoaVGSQOA==
+	s=default; t=1741785180;
+	bh=yKGAoMy+atEl4pQDZO2bF9LBSmYiynCl9d3tUz46ZMM=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=btxBJKCVjL9hBv6ZfmtpMFOI+Dl+T3/cR9aqU0WTGdj3cwDpH0hllepSdbak6gnAj
+	 hAxrWF2J+uABxSycCmEbvwuHOCCTew2Ebr3FllTbxxsIRscFoaJLJ1C5Cx9fnNT5HL
+	 6mPiXtk56daw0avoQVaBdFgd92V78aBEe98eTyDY9CBxRVqcFQNwxVznN2oKmWYX2x
+	 CX+X5WSNM9sbDvWvDh1AjVit1btqbHRX7wRghVA18NK2R81+3uB1YrkCEVlsauGbe4
+	 Ycg45j3C8UQkNkdjkmZIA4RS0yJM4K/x8x+PQuqgOETZtm/lxogyouVSRww9dROX15
+	 w3i95pBSe+9LQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E4DE081F0C;
-	Wed, 12 Mar 2025 13:12:58 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C1AA881F5C;
+	Wed, 12 Mar 2025 13:13:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 157501C8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 13:12:56 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 1F26E1C8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 13:12:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id E665A60852
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 13:12:55 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0EE2660852
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 13:12:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id D9gyer2CqeIp for <intel-wired-lan@lists.osuosl.org>;
- Wed, 12 Mar 2025 13:12:55 +0000 (UTC)
+ id C41CUcGUF87Y for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 12 Mar 2025 13:12:56 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
  helo=mgamail.intel.com; envelope-from=jedrzej.jagielski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org BD86F60831
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BD86F60831
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6476260831
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6476260831
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BD86F60831
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 13:12:54 +0000 (UTC)
-X-CSE-ConnectionGUID: i6ldgFlYR4W7qwYrqRC7+g==
-X-CSE-MsgGUID: BvH2QGj8TAeTo4GlLhttVg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11370"; a="53510656"
-X-IronPort-AV: E=Sophos;i="6.14,241,1736841600"; d="scan'208";a="53510656"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6476260831
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Mar 2025 13:12:56 +0000 (UTC)
+X-CSE-ConnectionGUID: yVPMcEeCQK+QLKNtZ58wbw==
+X-CSE-MsgGUID: cP2g+CK6TE+hEnhlci2jzg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11370"; a="53510663"
+X-IronPort-AV: E=Sophos;i="6.14,241,1736841600"; d="scan'208";a="53510663"
 Received: from orviesa008.jf.intel.com ([10.64.159.148])
  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Mar 2025 06:12:54 -0700
-X-CSE-ConnectionGUID: PQSk0ZcrSSmVLr9EZwWaWw==
-X-CSE-MsgGUID: FFx2ZXN2TtiTLfFc/j1ZCg==
+ 12 Mar 2025 06:12:56 -0700
+X-CSE-ConnectionGUID: zX2oIiUQRBSHdPYmJo6rPg==
+X-CSE-MsgGUID: F0JCe90MTVam3jgoxbqeDQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,241,1736841600"; d="scan'208";a="121542042"
+X-IronPort-AV: E=Sophos;i="6.14,241,1736841600"; d="scan'208";a="121542053"
 Received: from os-delivery.igk.intel.com ([10.102.18.218])
- by orviesa008.jf.intel.com with ESMTP; 12 Mar 2025 06:12:52 -0700
+ by orviesa008.jf.intel.com with ESMTP; 12 Mar 2025 06:12:54 -0700
 From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: anthony.l.nguyen@intel.com, netdev@vger.kernel.org, horms@kernel.org,
  przemyslaw.kitszel@intel.com,
- Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-Date: Wed, 12 Mar 2025 13:58:28 +0100
-Message-Id: <20250312125843.347191-1-jedrzej.jagielski@intel.com>
+ Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
+ Jiri Pirko <jiri@nvidia.com>,
+ Kalesh AP <kalesh-anakkur.purayil@broadcom.com>,
+ Bharath R <bharath.r@intel.com>
+Date: Wed, 12 Mar 2025 13:58:29 +0100
+Message-Id: <20250312125843.347191-2-jedrzej.jagielski@intel.com>
 X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20250312125843.347191-1-jedrzej.jagielski@intel.com>
+References: <20250312125843.347191-1-jedrzej.jagielski@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1741785175; x=1773321175;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=ebtUdL7x+P1BZSl0p+b3iP4EYbjPvBEbMyFX9UN5+Fc=;
- b=AeqfFUPeJ1p/8zIcBFX4PQVBvSEfimoe8KETA2xQWcs1BmXDke0aJzrV
- IZozs5QiYKxXeouguij4Q8i7bqD1t8Jn+Az3a4BSVA8wlQNAQDkUQeLPU
- byGYeuh3/nY1pJ6gOaMZiBGGSVKoEh/yALv8jK808V9W6HcHYzzCNzpvz
- ES4a/FBBEZ7KgTqL/EYC4nnyhKfMYNzemauXo8lWo5pHZxq4XBN2v2Ttg
- V3mYJzCEpvtORBtufWnhK6Dvf/WaKCxUX5TtFDSkOjflzez6dtEdsTlGh
- xUMXelnNXLsV0qBqbV+oBDWqUiH1mas/Z0rqBa1M+M3W527pwHY684REf
- g==;
+ t=1741785177; x=1773321177;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=Uo8WE5HynnA8wtxGTIBIqPd/UrNvxCk0dLM26vDYZuw=;
+ b=gfeR1rDSYz3Ju1XyC1xFJAhL92PwCgtDCr77PdQ90itT9jIi9HufIx37
+ HClcNyPHjWFYNr9x96dkK8M7gHcqz4bqQmvd595Pg5uwQUXW4G5dycFAx
+ 0PQbdiY+D3iravGY6vcEtchW5J5m4VBl65V+Jq7nLzhCDPKdtSQKW1Lyr
+ G96T0tOcJOKp2k03YL6bj2aAimPgdYVjiCnhRzOBZMXPIpGi+LIkRZnnU
+ NI9tLAtUWNt8Qu2Wb+GsJwsXHY3rWAGJJrihqmN+HOi506OeWeTBCQ6dM
+ u9m2C9aLnYauTA/pBrd/BKGCMVDPw62TDMsvF5FVeHnXQAgwH++7Hh+Ls
+ A==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=AeqfFUPe
-Subject: [Intel-wired-lan] [PATCH iwl-next v7 00/15] ixgbe: Add basic
- devlink support
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=gfeR1rDS
+Subject: [Intel-wired-lan] [PATCH iwl-next v7 01/15] devlink: add value
+ check to devlink_info_version_put()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -108,81 +113,30 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Create devlink specific directory for more convenient future feature
-development.
+Prevent from proceeding if there's nothing to print.
 
-Flashing and reloading are supported only by E610 devices.
-
-Introduce basic FW/NVM validation since devlink reload introduces
-possibility of runtime NVM update. Check FW API version, FW recovery mode
-and FW rollback mode. Introduce minimal recovery probe to let user to
-reload the faulty FW when recovery mode is detected.
-
-This series is based on the series introducing initial E610 device
-support:
-https://lore.kernel.org/intel-wired-lan/20241205084450.4651-1-piotr.kwapulinski@intel.com/
+Suggested-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Reviewed-by: Jiri Pirko <jiri@nvidia.com>
+Reviewed-by: Kalesh AP <kalesh-anakkur.purayil@broadcom.com>
+Tested-by: Bharath R <bharath.r@intel.com>
+Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 ---
-v3: introduce to the series additional patch touching devlink/dev.c
-v4: introduce to the series additional patch changing netdev allocation
----
-Andrii Staikov (1):
-  ixgbe: add support for FW rollback mode
+ net/devlink/dev.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Jedrzej Jagielski (10):
-  devlink: add value check to devlink_info_version_put()
-  ixgbe: add initial devlink support
-  ixgbe: add handler for devlink .info_get()
-  ixgbe: add .info_get extension specific for E610 devices
-  ixgbe: add E610 functions getting PBA and FW ver info
-  ixgbe: extend .info_get with() stored versions
-  ixgbe: add device flash update via devlink
-  ixgbe: add support for devlink reload
-  ixgbe: add FW API version check
-  ixgbe: add E610 implementation of FW recovery mode
-
-Przemek Kitszel (1):
-  ixgbe: wrap netdev_priv() usage
-
-Slawomir Mrozowicz (3):
-  ixgbe: add E610 functions for acquiring flash data
-  ixgbe: read the OROM version information
-  ixgbe: read the netlist version information
-
- Documentation/networking/devlink/index.rst    |    1 +
- Documentation/networking/devlink/ixgbe.rst    |  107 ++
- drivers/net/ethernet/intel/Kconfig            |    2 +
- drivers/net/ethernet/intel/ixgbe/Makefile     |    3 +-
- .../ethernet/intel/ixgbe/devlink/devlink.c    |  585 +++++++
- .../ethernet/intel/ixgbe/devlink/devlink.h    |   10 +
- drivers/net/ethernet/intel/ixgbe/ixgbe.h      |   21 +
- .../net/ethernet/intel/ixgbe/ixgbe_82598.c    |    1 +
- .../net/ethernet/intel/ixgbe/ixgbe_82599.c    |    1 +
- .../net/ethernet/intel/ixgbe/ixgbe_common.c   |    1 +
- .../net/ethernet/intel/ixgbe/ixgbe_dcb_nl.c   |   56 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 1515 +++++++++++++++--
- drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h |   16 +
- .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  |   86 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_fcoe.c |   12 +-
- .../ethernet/intel/ixgbe/ixgbe_fw_update.c    |  707 ++++++++
- .../ethernet/intel/ixgbe/ixgbe_fw_update.h    |   12 +
- .../net/ethernet/intel/ixgbe/ixgbe_ipsec.c    |   10 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  269 ++-
- .../net/ethernet/intel/ixgbe/ixgbe_sriov.c    |   16 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_type.h |    5 +
- .../ethernet/intel/ixgbe/ixgbe_type_e610.h    |  161 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c |    1 +
- drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c |    1 +
- drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c  |    2 +-
- net/devlink/dev.c                             |    2 +-
- 26 files changed, 3361 insertions(+), 242 deletions(-)
- create mode 100644 Documentation/networking/devlink/ixgbe.rst
- create mode 100644 drivers/net/ethernet/intel/ixgbe/devlink/devlink.c
- create mode 100644 drivers/net/ethernet/intel/ixgbe/devlink/devlink.h
- create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_fw_update.c
- create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_fw_update.h
-
-
-base-commit: 0a5f2afff8673e66160725b8ec8310f47c74f8b9
+diff --git a/net/devlink/dev.c b/net/devlink/dev.c
+index d6e3db300acb..02602704bdea 100644
+--- a/net/devlink/dev.c
++++ b/net/devlink/dev.c
+@@ -775,7 +775,7 @@ static int devlink_info_version_put(struct devlink_info_req *req, int attr,
+ 		req->version_cb(version_name, version_type,
+ 				req->version_cb_priv);
+ 
+-	if (!req->msg)
++	if (!req->msg || !*version_value)
+ 		return 0;
+ 
+ 	nest = nla_nest_start_noflag(req->msg, attr);
 -- 
 2.31.1
 
