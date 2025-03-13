@@ -1,118 +1,161 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2147A5F94C
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Mar 2025 16:12:29 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4C149A5F94D
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Mar 2025 16:12:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F270C41A08;
-	Thu, 13 Mar 2025 15:12:27 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B0A398402A;
+	Thu, 13 Mar 2025 15:12:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id irnJeoQHLBMN; Thu, 13 Mar 2025 15:12:27 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 0hL9dCAODFzq; Thu, 13 Mar 2025 15:12:28 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1C1A741A10
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E45B284036
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741878747;
-	bh=JvQ7dzhduECDrLpiYmThBQ/FoZ4MRllET4xAKqhw1E8=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=T3wCRloDYvrlM+v8vu5TmPJQ7m0t1h+HudiDFuES+FI8YFBoIt56IdGeoJENTz+LB
-	 fzWy/Dr8kPJLIALSW1P4SfuPe0YFh50JN96FExk6XEBj2ihFYmdZA4oqO5D0kaGUrt
-	 jZGg7xH0UeVeBig8ytcAPRpAyzr8DchRxXa5m/LZ0MzjU4ADkXBWgTX60XMVaMxbsE
-	 i9NoTiQFRv3FLLyaAKbn1zy1xoDZy0q92SJlXjplywjRQEXeQy3QIkJNhhwnkXj4BZ
-	 F1FWnQm5CYpOPxnI160ro/rz7TGiGPdGSTJmrLltG5cOwoxfFHOIdErNe1nA+PJMmW
-	 vRNw/KNARo+eQ==
+	s=default; t=1741878748;
+	bh=cMzoJNPec5zYQJsS7IO+/BXZwtWt/8pbBTF9FIoCxXo=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=w32gsRwy7SiWWAJlbdLpfryM3eLry6THC4f5fCz0U5gQkEHgrI91+867+L2nSsuay
+	 hzJsY5ZddFXGd2FFhd+Z1uDNa4mi5iBsQ3w2PWF1JIlKVCC7UZB0GoXBoIqzNaMiP4
+	 SuGBTJw1cAyvFlcBQhIeSZEP6ekZyEO34GXt6NlUXYKXjoTe7E6O++E8VGdjc5SAKj
+	 Tb8oKz1+8Tgx1TCSZ7bchFqnDVd4wFQyEFkLkYGBl7ViwbkyFBHNGp+Ke9RmjQmulv
+	 OSmf/DKtE7HSa+VXoHAQygw6R91p+sTzuvSlYMGFzX6FebjreR3UDojdZ962RRu7FG
+	 piG8MOfZIpuzg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1C1A741A10;
+	by smtp1.osuosl.org (Postfix) with ESMTP id E45B284036;
 	Thu, 13 Mar 2025 15:12:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 6C8FF115
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 09:36:56 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id DAF6BEA
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 09:51:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4E27B607BA
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 09:36:56 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id BD2C74135F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 09:51:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id DOlDXVqjyy_v for <intel-wired-lan@lists.osuosl.org>;
- Thu, 13 Mar 2025 09:36:55 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::32a; helo=mail-wm1-x32a.google.com;
- envelope-from=rsalvaterra@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 637FC60777
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 637FC60777
-Received: from mail-wm1-x32a.google.com (mail-wm1-x32a.google.com
- [IPv6:2a00:1450:4864:20::32a])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 637FC60777
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 09:36:55 +0000 (UTC)
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-43ce70f9afbso6058095e9.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 02:36:55 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741858613; x=1742463413;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=JvQ7dzhduECDrLpiYmThBQ/FoZ4MRllET4xAKqhw1E8=;
- b=wBoK8sC2/bWsANEK2daV+kVE5QQTPUCJOAiuZIQqGzMUyuiAjhRUJSCF4uYeTF3oLU
- 9CsiEE+x6sSwu1hW/KJLWQ+frtuLj5tgi8R2KZVCeoaSFZiJ4X+iChhc+HEueCsCKD/v
- 4LgC1Wfp4IINWdJN2Jlqqhlpe0Qe4ywXzw4jqdzrKm4MSJ0y1pwJ1SIl5iIgeTgVIiSf
- Pelft9LISadrHsNnS5/GxTPdmFrp0WJVHuZ1cN0SdMhfLQLhSJInKSdrkvHpCNOxYHC6
- HwcdAr5OotCL21Xe4uLoSH9y8s4d2kd2numI91N5vB6JSsYBvm6yzqdxwdWekePRHzGn
- t+uA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXrtsNj3kjb/IQ32mwpQH5oK56/Lccsdvk/qeGc93OUGAedF/OIuJ/TS+XtZK32CsiDv78LO2Fb4kJFPO599NA=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzyZH4yGTXppAiNubhD2lUPRwPWRFeZPX0S38u35dMed13McFGo
- 61vf2MNTiwmrveu9FZbj+BDY8NtxQla8oY3Oy1PvCJktNl4hI7s=
-X-Gm-Gg: ASbGncvZ1bgmMdmhAj/Ms9E6JXkBv1SDlf8AFd986/6Q6bqsOkfjEBtv0VzoVLEMPFh
- 3axK9Ez7Bia3r69urU8YCIPVSvzCmxbIwByKgyLIZNsHaihrJ7o9u2siMFu6EMYba0i4BneuLeD
- q0MywuPIN44hvyBXTsngSz1GA94mvTZAqWc/a+zBrj+A9XCrPLKWmPD+vFa1Cr2wo9m9TsFolQn
- rDqeFo9SP8emoVCi+d+VYfrmo5X+3F7LUDBWc0FDqqzEN1D9e+Bl3BTP+l9OzEqCIfNEKBFMgVt
- lNJ9EF8tERbmNxCvThiJL8MzYMhtpgY6TRHnJjHflL5/
-X-Google-Smtp-Source: AGHT+IH4SxyWBmHQREG2JRZBSCpc9n97vp7qOSWmSGUrlsH7EaBDPGRKB6Rc9iE5qfhPMASjZ32mWg==
-X-Received: by 2002:a05:600c:1ca6:b0:43d:9f2:6274 with SMTP id
- 5b1f17b1804b1-43d09f264eemr53241605e9.14.1741858612924; 
- Thu, 13 Mar 2025 02:36:52 -0700 (PDT)
-Received: from phoenix.rocket.internal ([2a12:26c0:200b:2402::14])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-43d0a8c5ccasm47178835e9.26.2025.03.13.02.36.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 13 Mar 2025 02:36:52 -0700 (PDT)
-From: Rui Salvaterra <rsalvaterra@gmail.com>
-To: anthony.l.nguyen@intel.com,
-	przemyslaw.kitszel@intel.com
-Cc: edumazet@google.com, kuba@kernel.org, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- Rui Salvaterra <rsalvaterra@gmail.com>
-Date: Thu, 13 Mar 2025 09:35:22 +0000
-Message-ID: <20250313093615.8037-1-rsalvaterra@gmail.com>
-X-Mailer: git-send-email 2.48.1
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id wkDmdy6aZJ7Y for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 13 Mar 2025 09:51:11 +0000 (UTC)
+X-Greylist: delayed 325 seconds by postgrey-1.37 at util1.osuosl.org;
+ Thu, 13 Mar 2025 09:51:11 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 27E674122D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 27E674122D
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=103.168.172.149;
+ helo=fout-a6-smtp.messagingengine.com;
+ envelope-from=niklas.soderlund@ragnatech.se; receiver=<UNKNOWN> 
+Received: from fout-a6-smtp.messagingengine.com
+ (fout-a6-smtp.messagingengine.com [103.168.172.149])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 27E674122D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 09:51:11 +0000 (UTC)
+Received: from phl-compute-12.internal (phl-compute-12.phl.internal
+ [10.202.2.52])
+ by mailfout.phl.internal (Postfix) with ESMTP id 6401D1382D10;
+ Thu, 13 Mar 2025 05:45:45 -0400 (EDT)
+Received: from phl-mailfrontend-01 ([10.202.2.162])
+ by phl-compute-12.internal (MEProxy); Thu, 13 Mar 2025 05:45:45 -0400
+X-ME-Sender: <xms:R6nSZ7BYizDkCVtPv3d8U8j5ZaxlMRnAaBqY9SrISk9jd3ItSVMZBA>
+ <xme:R6nSZxj_OIfRuojtwSVohChIpxbxq8Z4BRNM78Yhs7i1eo01FvpA23IJaBeWI35FV
+ J3tdw8HkSj1zrgJDAg>
+X-ME-Received: <xmr:R6nSZ2mF9LmVKITOk_2DvPTaLRU7CIC-1eUUpgPNC0TOvqLnVDM21CLMxAekcDfsi3KL7G7t9TspbD_kYwQwetSdwC6IJFnUkw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgdduvdejiedvucetufdoteggodetrf
+ dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggv
+ pdfurfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpih
+ gvnhhtshculddquddttddmnecujfgurhepfffhvfevuffkfhggtggugfgjsehtkeertddt
+ tdejnecuhfhrohhmpefpihhklhgrshcuufpnuggvrhhluhhnugcuoehnihhklhgrshdrsh
+ houggvrhhluhhnugesrhgrghhnrghtvggthhdrshgvqeenucggtffrrghtthgvrhhnpeev
+ teegtddvvdfhtdekgefhfeefheetheekkeegfeejudeiudeuleegtdehkeekteenucevlh
+ hushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehnihhklhgrshdr
+ shhouggvrhhluhhnugesrhgrghhnrghtvggthhdrshgvpdhnsggprhgtphhtthhopedvhe
+ dpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtohepjhgrtghosgdrvgdrkhgvlhhlvghr
+ sehinhhtvghlrdgtohhmpdhrtghpthhtoheprghnthhhohhnhidrlhdrnhhguhihvghnse
+ hinhhtvghlrdgtohhmpdhrtghpthhtohepphhriigvmhihshhlrgifrdhkihhtshiivghl
+ sehinhhtvghlrdgtohhmpdhrtghpthhtoheprghnughrvgifodhnvghtuggvvheslhhunh
+ hnrdgthhdprhgtphhtthhopegurghvvghmsegurghvvghmlhhofhhtrdhnvghtpdhrtghp
+ thhtohepvgguuhhmrgiivghtsehgohhoghhlvgdrtghomhdprhgtphhtthhopehkuhgsrg
+ eskhgvrhhnvghlrdhorhhgpdhrtghpthhtohepphgrsggvnhhisehrvgguhhgrthdrtgho
+ mhdprhgtphhtthhopehrihgthhgrrhgutghotghhrhgrnhesghhmrghilhdrtghomh
+X-ME-Proxy: <xmx:R6nSZ9yPqCzTtNl3km04nvPV1x48jlasmuN7F4XVtPc92xJ0wAiODw>
+ <xmx:R6nSZwStGBiwRW7L5wVvji_oB1VMqHufY3eQaCULyKCxj_4_7rUBHA>
+ <xmx:R6nSZwbfiebDtA3_0Jgxy7eulsB8BA8mRcRxWXkfFNM8C7AvE9qulw>
+ <xmx:R6nSZxTrOEd1TZDxeVb-9v-5wpT44cCZO85bWIFlT9MPJqC1IgmngA>
+ <xmx:SanSZ8ozOaHMN4JC7kaeLPTMR_AhuNYaL4nTTbU_FnSBDNZRGto9DElr>
+Feedback-ID: i80c9496c:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 13 Mar 2025 05:45:43 -0400 (EDT)
+Date: Thu, 13 Mar 2025 10:45:40 +0100
+From: Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>
+To: Jacob Keller <jacob.e.keller@intel.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,	Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Richard Cochran <richardcochran@gmail.com>,
+ Ruud Bos <kernel.hbk@gmail.com>,
+ Paul Barker <paul.barker.ct@bp.renesas.com>,
+ Bryan Whitehead <bryan.whitehead@microchip.com>,
+ UNGLinuxDriver@microchip.com,
+ Florian Fainelli <florian.fainelli@broadcom.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>,	Andrew Lunn <andrew@lunn.ch>,
+ Heiner Kallweit <hkallweit1@gmail.com>,
+ Russell King <linux@armlinux.org.uk>,
+ Jonathan Lemon <jonathan.lemon@gmail.com>, Lasse Johnsen <l@ssejohnsen.me>,
+ Vadim Fedorenko <vadim.fedorenko@linux.dev>,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org
+Message-ID: <20250313094540.GC3061046@ragnatech.se>
+References: <20250312-jk-net-fixes-supported-extts-flags-v2-0-ea930ba82459@intel.com>
+ <20250312-jk-net-fixes-supported-extts-flags-v2-2-ea930ba82459@intel.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250312-jk-net-fixes-supported-extts-flags-v2-2-ea930ba82459@intel.com>
 X-Mailman-Approved-At: Thu, 13 Mar 2025 15:12:25 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1741858613; x=1742463413; darn=lists.osuosl.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=JvQ7dzhduECDrLpiYmThBQ/FoZ4MRllET4xAKqhw1E8=;
- b=R8ByPrQYY3QpAxv+yEKnvUbJRIYkB6Py7/yPdbSrwjKqXylF1K8H4GhYdzKrO8tN8K
- 9NrnQWA1eNDSmYzHqAf1EooGG8CkmGy837OlG5VbbDAlLPk9mcgsMJbNtc4JSv0yGYBc
- GnWc7DMMhc7fbI0vCGVinmmxN8WTkoVYJi0ewFVo8RWRumPluYDYFUXoXdO09YhfqZvb
- Ts3BlyG/5OzK8kv/RsCR/ve/Unj/gZSMXRn5wN/epNESA9DmSxdY9dbo7T9082oc2q8v
- RqliOa01f7asqn28Zb92OP9/4Kx8i46shyR/JITIRD/ZJ1aUc9AY9WX9D17FIL456Smd
- vGJA==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ d=ragnatech.se; h=
+ cc:cc:content-transfer-encoding:content-type:content-type:date
+ :date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to; s=fm3; t=1741859145;
+ x=1741945545; bh=cMzoJNPec5zYQJsS7IO+/BXZwtWt/8pbBTF9FIoCxXo=; b=
+ OT3UW2DwHfWVRnCZqrvfvSOrtylgSiRHQj8LFcE8t77faoNuXVEBO9MP7Q920yGD
+ cT05MrlsIHKMW050wJlxCtYH1nOYrDY0q+B0e1loDwh23CHV7SMkXx3xK50Ni4eW
+ 7o76/LOLG7BMT2qPU9Nh4Z5teKENVKDkr0gWYsT2roeDfgSS6IkVi57groKs77r+
+ jP7XVH0bBXjAPo1e9GZjXStKPmaV5qasWRtzQxBlZ09j3ckxWE1b+mTNEUmpwRi2
+ th5n8+67aV4YEGULXuLTpzUeJBd8RhrYBjZp8afFucVzKWE4tGIodNCaT5LMVPjO
+ gtdbfgLlQ60ZmZXK48SdhQ==
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1741859145; x=
+ 1741945545; bh=cMzoJNPec5zYQJsS7IO+/BXZwtWt/8pbBTF9FIoCxXo=; b=o
+ FAGKRxJqiLiqwsZbjZyJs6cRMqqW5B4EtpN/sikyEliDylnTxY0SvmGxQPLwSxu8
+ HDbT2J3tRfHJeUycsBqKJ9pLicFTJg+v8DKlDVJbe7GdL/NC+AN05SfdM9EcjUaF
+ 6THNtWPT4QMFC9mVTBNeYZDBLFNwrl6x1pt4tVr6nMDBgu8RT197FI7zcYja4bJZ
+ RtEklvjy0Q51QWjAvFu+CUW/mjouG1NJ8t++UlkAft9glzeJNjhIgxSJXCQr+jLg
+ tfUUbYwWbh3sSSI3UO2e2wcN6mYmHwZ6GVQMo53gYffULP1dHgEAb1jkyhAjmo9R
+ QR9hfKvnqGtwx9VQ5Zhyw==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=R8ByPrQY
-Subject: [Intel-wired-lan] [PATCH iwl-next] igc: enable HW vlan tag
- insertion/stripping by default
+ header.from=ragnatech.se
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key, unprotected) header.d=ragnatech.se
+ header.i=@ragnatech.se header.a=rsa-sha256 header.s=fm3 header.b=OT3UW2Dw; 
+ dkim=pass (2048-bit key,
+ unprotected) header.d=messagingengine.com header.i=@messagingengine.com
+ header.a=rsa-sha256 header.s=fm1 header.b=oFAGKRxJ
+Subject: Re: [Intel-wired-lan] [PATCH net v2 2/5] renesas: reject
+ PTP_STRICT_FLAGS as unsupported
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -128,35 +171,60 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This is enabled by default in other Intel drivers I've checked (e1000, e1000e,
-iavf, igb and ice). Fixes an out-of-the-box performance issue when running
-OpenWrt on typical mini-PCs with igc-supported Ethernet controllers and 802.1Q
-VLAN configurations, as ethtool isn't part of the default packages and sane
-defaults are expected.
+Hi Jacob,
 
-In my specific case, with an Intel N100-based machine with four I226-V Ethernet
-controllers, my upload performance increased from under 30 Mb/s to the expected
-~1 Gb/s.
+Thanks for your work.
 
-Signed-off-by: Rui Salvaterra <rsalvaterra@gmail.com>
----
- drivers/net/ethernet/intel/igc/igc_main.c | 3 +++
- 1 file changed, 3 insertions(+)
+On 2025-03-12 15:15:51 -0700, Jacob Keller wrote:
+> The ravb_ptp_extts() function checks the flags coming from the
+> PTP_EXTTS_REQUEST ioctl, to ensure that future flags are not accepted on
+> accident.
+> 
+> This was updated to 'honor' the PTP_STRICT_FLAGS in commit 6138e687c7b6
+> ("ptp: Introduce strict checking of external time stamp options.").
+> However, the driver does not *actually* validate the flags.
+> 
+> I originally fixed this driver to reject future flags in commit
+> 592025a03b34 ("renesas: reject unsupported external timestamp flags"). It
+> is still unclear whether this hardware timestamps the rising, falling, or
+> both edges of the input signal.
+> 
+> Accepting requests with PTP_STRICT_FLAGS is a bug, as this could lead to
+> users mistakenly assuming a request with PTP_RISING_EDGE actually
+> timestamps the rising edge only.
+> 
+> Reject requests with PTP_STRICT_FLAGS (and hence all PTP_EXTTS_REQUEST2
+> requests) until someone with access to the datasheet or hardware knowledge
+> can confirm the timestamping behavior and update this driver.
+> 
+> Fixes: 6138e687c7b6 ("ptp: Introduce strict checking of external time stamp options.")
+> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 84307bb7313e..1cb9ce8aa743 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -7049,6 +7049,9 @@ static int igc_probe(struct pci_dev *pdev,
- 	netdev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
- 			       NETDEV_XDP_ACT_XSK_ZEROCOPY;
- 
-+	/* enable HW vlan tag insertion/stripping by default */
-+	netdev->features |= NETIF_F_HW_VLAN_CTAG_TX | NETIF_F_HW_VLAN_CTAG_RX;
-+
- 	/* MTU range: 68 - 9216 */
- 	netdev->min_mtu = ETH_MIN_MTU;
- 	netdev->max_mtu = MAX_STD_JUMBO_FRAME_SIZE;
+Reviewed-by: Niklas Söderlund <niklas.soderlund+renesas@ragnatech.se>
+
+> ---
+>  drivers/net/ethernet/renesas/ravb_ptp.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/renesas/ravb_ptp.c b/drivers/net/ethernet/renesas/ravb_ptp.c
+> index 6e4ef7af27bf31ab2aad8e06a65e0ede6046e3c0..b4365906669f3bd40953813e263aeaafd2e1eb70 100644
+> --- a/drivers/net/ethernet/renesas/ravb_ptp.c
+> +++ b/drivers/net/ethernet/renesas/ravb_ptp.c
+> @@ -179,8 +179,7 @@ static int ravb_ptp_extts(struct ptp_clock_info *ptp,
+>  	/* Reject requests with unsupported flags */
+>  	if (req->flags & ~(PTP_ENABLE_FEATURE |
+>  			   PTP_RISING_EDGE |
+> -			   PTP_FALLING_EDGE |
+> -			   PTP_STRICT_FLAGS))
+> +			   PTP_FALLING_EDGE))
+>  		return -EOPNOTSUPP;
+>  
+>  	if (req->index)
+> 
+> -- 
+> 2.48.1.397.gec9d649cc640
+> 
+
 -- 
-2.48.1
-
+Kind Regards,
+Niklas Söderlund
