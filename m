@@ -1,102 +1,103 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F50BA5F980
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Mar 2025 16:18:42 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B083DA5F982
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Mar 2025 16:18:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0321A41793;
-	Thu, 13 Mar 2025 15:18:41 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9BFE44175A;
+	Thu, 13 Mar 2025 15:18:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HiDCEJYhz2wk; Thu, 13 Mar 2025 15:18:40 +0000 (UTC)
+ id 5tMZAzqtI1jg; Thu, 13 Mar 2025 15:18:43 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1A4174199E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6AA40418A1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741879120;
-	bh=PBghrgzBo+afwHLSJ5ZcMem/imN3BPAkcWSsORSfqlc=;
+	s=default; t=1741879123;
+	bh=jHh3U59Gk2BCnDfAjY2h7/x1E5YY2qWYt0CT1CLdgys=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=PCSRwFquK057vlBKIStNy+iazVGhGmvy7PAQjtW9tpGLVKmR2dXmp93dTokb9S5QH
-	 /0KBfYw3jSTDfX+ZNQM03SGuQf5tu25Z2jY56MiMD7AyaPYFljstQZxbOprBRXoewC
-	 5oQQTZeHie7f9pKJgHWYQmcXnEzkiNzrFGyqx/L3fva7yiPeNQQF4f0GZtHCKd2MZG
-	 zBCnKHXgFK+U/+3ESKGiUxXMSGOMrNdfTnfXOuCldxkTthjhWEbuOxlLzk5QF55WQz
-	 6utSz+X8yGlVGnGIT1vbg2tKPSsJR2dIJzADQZ3ZBfI/fCYPzDuQcYA+b/rmN2PlEr
-	 uX2IOKLzXlJ6g==
+	b=LLevF09D+Z17+yDc3On+zrLiqAni3qg1Dp6JM88dgRya05ccAV70rpvDOVggHaxhT
+	 nPE1clSsGJT8BSDf+f/XP+Qa46k+1Ym1MUjXncnAl9olDNawF+5rqRybuGtEy6VN2X
+	 L3jv6FI/nl35Pds73UJowwyPipHxA8OLqiuEF75KJr1cY0r3y4UOe3HNNLN9CUrw3j
+	 plSc3qLO0Lyexnl/BJv8skanfWKD4to/UrRaAFHpu6HV/teZEQAsd+FNEq+MeUPm58
+	 h6VTDv+na7Y6AxSucvV2WVNg/g3OCliNq21dRW8f0HtF1r93haFNOMICns1nEupHQ9
+	 XRwEQxpG27yrA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1A4174199E;
-	Thu, 13 Mar 2025 15:18:40 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6AA40418A1;
+	Thu, 13 Mar 2025 15:18:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 555FAEA
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 15:18:37 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 1478AEA
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 15:18:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3A47D41756
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 15:18:37 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7596B41957
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 15:18:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pPNNXm_N1p1E for <intel-wired-lan@lists.osuosl.org>;
- Thu, 13 Mar 2025 15:18:36 +0000 (UTC)
+ id KWDPaU6IM1Yi for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 13 Mar 2025 15:18:39 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
  helo=mgamail.intel.com; envelope-from=jedrzej.jagielski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 3981E4174D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3981E4174D
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D64B141800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D64B141800
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 3981E4174D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 15:18:36 +0000 (UTC)
-X-CSE-ConnectionGUID: 9KH2nQZnSp2A7FwBrwDKBQ==
-X-CSE-MsgGUID: d0/l7RVtR5WhOD0LDY2wcg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11372"; a="43104918"
-X-IronPort-AV: E=Sophos;i="6.14,245,1736841600"; d="scan'208";a="43104918"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D64B141800
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 15:18:38 +0000 (UTC)
+X-CSE-ConnectionGUID: ItqxOfzJSvyPOO4gfE9XYA==
+X-CSE-MsgGUID: CxGvFPVsTIG2wk+bSgmKxA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11372"; a="43104929"
+X-IronPort-AV: E=Sophos;i="6.14,245,1736841600"; d="scan'208";a="43104929"
 Received: from orviesa008.jf.intel.com ([10.64.159.148])
  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Mar 2025 08:18:36 -0700
-X-CSE-ConnectionGUID: kBSH4AoBRUOAeVc/DgcrzQ==
-X-CSE-MsgGUID: 7po++V8bQk2hwis7ROA74w==
+ 13 Mar 2025 08:18:38 -0700
+X-CSE-ConnectionGUID: NJWovphySEWS1n7rtn4TNQ==
+X-CSE-MsgGUID: b6dNe/PCR2+ICS51H1qYBw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,245,1736841600"; d="scan'208";a="121918336"
+X-IronPort-AV: E=Sophos;i="6.14,245,1736841600"; d="scan'208";a="121918411"
 Received: from os-delivery.igk.intel.com ([10.102.18.218])
- by orviesa008.jf.intel.com with ESMTP; 13 Mar 2025 08:18:33 -0700
+ by orviesa008.jf.intel.com with ESMTP; 13 Mar 2025 08:18:36 -0700
 From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: anthony.l.nguyen@intel.com, netdev@vger.kernel.org,
  przemyslaw.kitszel@intel.com, horms@kernel.org,
- Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
+ Andrii Staikov <andrii.staikov@intel.com>,
  Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- Stefan Wegrzyn <stefan.wegrzyn@intel.com>
-Date: Thu, 13 Mar 2025 16:03:45 +0100
-Message-Id: <20250313150346.356612-15-jedrzej.jagielski@intel.com>
+ Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Date: Thu, 13 Mar 2025 16:03:46 +0100
+Message-Id: <20250313150346.356612-16-jedrzej.jagielski@intel.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20250313150346.356612-1-jedrzej.jagielski@intel.com>
 References: <20250313150346.356612-1-jedrzej.jagielski@intel.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1741879116; x=1773415116;
+ t=1741879119; x=1773415119;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=SsDaLDaG/mp/J/KmH4PrfCM8wMgls9r5LIM4UUK805g=;
- b=Q5e90oROlZZ7k+S+boa07GgKB0YH61CCwUTLPrr7qOwUYJV5oK5/oyaq
- 5J0H9DyW1ly6JmyZjKf/sFDQKp1VLycbklk40VvxxeZSV1aBEVlZLVSyB
- DNm4SkSwXFshhfcIWaQgXAe2A9PbAcOuxj0nnAN9pB9e3LjaoYW6oJpAk
- eMPYeT2PpV0URmQjnSm3YAK6ik6ovbAjoshbHW6zv9RWpQ5+KOFNhJ+5n
- T6pPQiJVgMsj27owxWmTP2q1K8GDTz7jnqKeyaF5v+9slLJahbLUWU1ut
- 1iR2glKOBNMue9cPWOwbg4jCXAqYxfXonwvN3yna23T9UxuceBBBL2+kk
- Q==;
+ bh=DJuhdKgBG7XHGJBgFunm7QYohmKylbxg2m+Ps7AbJuQ=;
+ b=k6zrxP2KfgMZuc5jJEB0IhMHe6Vw5eD+EK2yPitPUV1HkXRxL6/Ph9j6
+ wZZMDxlGul6/M2/Azy8h/9YdLKfKybgHg9vrGEOYVxZCK1KECcMSs3d/M
+ 0F+9tfogr4JvS8sE2UHK83C2J2TjsvshBXCL78SgMNFginskStUKO4quD
+ E65KlHCLjuD9F6VBfs8ZhNzYDQZRJt+Cb16dZE1l8nRhfTt2TTaEbPHjl
+ l+Ni2e+0B5moc/qzXgkPmCwYF2BbopHp3Qny2rQX+Eq4IArjMgWpbck98
+ sgGWt1hh4whYs277880oiacJCsd0i0WYjGbIksFDLWktjiSHmQSxpGq1V
+ g==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Q5e90oRO
-Subject: [Intel-wired-lan] [PATCH iwl-next v8 14/15] ixgbe: add E610
- implementation of FW recovery mode
+ header.a=rsa-sha256 header.s=Intel header.b=k6zrxP2K
+Subject: [Intel-wired-lan] [PATCH iwl-next v8 15/15] ixgbe: add support for
+ FW rollback mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -112,259 +113,180 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add E610 implementation of fw_recovery_mode MAC operation.
+From: Andrii Staikov <andrii.staikov@intel.com>
 
-In case of E610 information about recovery mode is obtained
-from FW_MODES field in IXGBE_GL_MNG_FWSM register (0x000B6134).
+The driver should detect whether the device entered FW rollback
+mode and then notify user with the dedicated message including
+FW and NVM versions.
 
-Introduce recovery specific probing flow and init only
-vital features.
+Even if the driver detected rollback mode, this should not result
+in an probe error and the normal flow proceeds.
 
-User should be able to perform NVM update using devlink
-once FW error is detected in order to load a healthy img.
+FW tries to rollback to “old” operational FW located in the
+inactive NVM bank in cases when newly loaded FW exhibits faulty
+behavior. If something goes wrong during boot the FW may switch
+into rollback mode in an attempt to avoid recovery mode and stay
+operational. After rollback is successful, the banks are swapped,
+and the “rollback” bank becomes the active bank for the next reset.
 
 Reviewed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-Co-developed-by: Stefan Wegrzyn <stefan.wegrzyn@intel.com>
-Signed-off-by: Stefan Wegrzyn <stefan.wegrzyn@intel.com>
+Signed-off-by: Andrii Staikov <andrii.staikov@intel.com>
 Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 ---
-v7: unregister mdiobus before unregistering netdev
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 17 ++++
- .../ethernet/intel/ixgbe/ixgbe_fw_update.c    | 14 ++-
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 94 +++++++++++++++++--
- .../ethernet/intel/ixgbe/ixgbe_type_e610.h    |  3 +
- 4 files changed, 117 insertions(+), 11 deletions(-)
+ .../ethernet/intel/ixgbe/devlink/devlink.c    |  3 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe.h      |  1 +
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 33 +++++++++++++++++++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 26 +++++++++++++++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_type.h |  2 ++
+ .../ethernet/intel/ixgbe/ixgbe_type_e610.h    |  1 +
+ 6 files changed, 65 insertions(+), 1 deletion(-)
 
+diff --git a/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c b/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c
+index 87ec2dea5862..88335912bd6f 100644
+--- a/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c
++++ b/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c
+@@ -499,7 +499,8 @@ static int ixgbe_devlink_reload_empr_finish(struct devlink *devlink,
+ 
+ 	*actions_performed = BIT(DEVLINK_RELOAD_ACTION_FW_ACTIVATE);
+ 
+-	adapter->flags2 &= ~IXGBE_FLAG2_API_MISMATCH;
++	adapter->flags2 &= ~(IXGBE_FLAG2_API_MISMATCH |
++			     IXGBE_FLAG2_FW_ROLLBACK);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
+index 2246997bc9fb..23c2e2c2649c 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
+@@ -672,6 +672,7 @@ struct ixgbe_adapter {
+ #define IXGBE_FLAG2_NO_MEDIA			BIT(21)
+ #define IXGBE_FLAG2_MOD_POWER_UNSUPPORTED	BIT(22)
+ #define IXGBE_FLAG2_API_MISMATCH		BIT(23)
++#define IXGBE_FLAG2_FW_ROLLBACK			BIT(24)
+ 
+ 	/* Tx fast path data */
+ 	int num_tx_queues;
 diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-index 5aa66534aa75..84b015e2dac2 100644
+index 84b015e2dac2..bc1a5775a3a0 100644
 --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
 +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-@@ -1815,6 +1815,22 @@ void ixgbe_disable_rx_e610(struct ixgbe_hw *hw)
- 	}
+@@ -1831,6 +1831,22 @@ static bool ixgbe_fw_recovery_mode_e610(struct ixgbe_hw *hw)
+ 	return !!(fwsm & IXGBE_GL_MNG_FWSM_RECOVERY_M);
  }
  
 +/**
-+ * ixgbe_fw_recovery_mode_e610 - Check FW NVM recovery mode
++ * ixgbe_fw_rollback_mode_e610 - Check FW NVM rollback mode
 + * @hw: pointer to hardware structure
 + *
-+ * Check FW NVM recovery mode by reading the value of
++ * Check FW NVM rollback mode by reading the value of
 + * the dedicated register.
 + *
-+ * Return: true if FW is in recovery mode, otherwise false.
++ * Return: true if FW is in rollback mode, otherwise false.
 + */
-+static bool ixgbe_fw_recovery_mode_e610(struct ixgbe_hw *hw)
++static bool ixgbe_fw_rollback_mode_e610(struct ixgbe_hw *hw)
 +{
 +	u32 fwsm = IXGBE_READ_REG(hw, IXGBE_GL_MNG_FWSM);
 +
-+	return !!(fwsm & IXGBE_GL_MNG_FWSM_RECOVERY_M);
++	return !!(fwsm & IXGBE_GL_MNG_FWSM_ROLLBACK_M);
 +}
 +
  /**
   * ixgbe_init_phy_ops_e610 - PHY specific init
   * @hw: pointer to hardware structure
-@@ -3880,6 +3896,7 @@ static const struct ixgbe_mac_operations mac_ops_e610 = {
- 	.get_fw_ver                     = ixgbe_aci_get_fw_ver,
- 	.get_media_type			= ixgbe_get_media_type_e610,
- 	.setup_link			= ixgbe_setup_link_e610,
-+	.fw_recovery_mode		= ixgbe_fw_recovery_mode_e610,
- 	.get_link_capabilities		= ixgbe_get_link_capabilities_e610,
- 	.get_bus_info			= ixgbe_get_bus_info_generic,
- 	.acquire_swfw_sync		= ixgbe_acquire_swfw_sync_X540,
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_fw_update.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_fw_update.c
-index 052d5b3fb371..39f106e39be6 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_fw_update.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_fw_update.c
-@@ -73,6 +73,8 @@ static int ixgbe_check_component_response(struct ixgbe_adapter *adapter,
- 					  u8 response, u8 code,
- 					  struct netlink_ext_ack *extack)
- {
-+	struct ixgbe_hw *hw = &adapter->hw;
-+
- 	switch (response) {
- 	case IXGBE_ACI_NVM_PASS_COMP_CAN_BE_UPDATED:
- 		/* Firmware indicated this update is good to proceed. */
-@@ -84,6 +86,11 @@ static int ixgbe_check_component_response(struct ixgbe_adapter *adapter,
- 	case IXGBE_ACI_NVM_PASS_COMP_CAN_NOT_BE_UPDATED:
- 		NL_SET_ERR_MSG_MOD(extack, "Firmware has rejected updating.");
- 		break;
-+	case IXGBE_ACI_NVM_PASS_COMP_PARTIAL_CHECK:
-+		if (hw->mac.ops.fw_recovery_mode &&
-+		    hw->mac.ops.fw_recovery_mode(hw))
-+			return 0;
-+		break;
- 	}
- 
- 	switch (code) {
-@@ -653,7 +660,12 @@ int ixgbe_flash_pldm_image(struct devlink *devlink,
- 		return -EOPNOTSUPP;
- 	}
- 
--	if (!hw->dev_caps.common_cap.nvm_unified_update) {
-+	/* Cannot get caps in recovery mode, so lack of nvm_unified_update bit
-+	 * cannot lead to error
-+	 */
-+	if (!hw->dev_caps.common_cap.nvm_unified_update &&
-+	    (hw->mac.ops.fw_recovery_mode &&
-+	     !hw->mac.ops.fw_recovery_mode(hw))) {
- 		NL_SET_ERR_MSG_MOD(extack,
- 				   "Current firmware does not support unified update");
- 		return -EOPNOTSUPP;
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index de74132f9001..5c9de1fafd28 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -8423,6 +8423,18 @@ static bool ixgbe_check_fw_error(struct ixgbe_adapter *adapter)
- 	return false;
- }
- 
-+static void ixgbe_recovery_service_task(struct work_struct *work)
-+{
-+	struct ixgbe_adapter *adapter = container_of(work,
-+						     struct ixgbe_adapter,
-+						     service_task);
-+
-+	ixgbe_handle_fw_event(adapter);
-+	ixgbe_service_event_complete(adapter);
-+
-+	mod_timer(&adapter->service_timer, jiffies + msecs_to_jiffies(100));
-+}
-+
- /**
-  * ixgbe_service_task - manages and runs subtasks
-  * @work: pointer to work_struct containing our data
-@@ -8442,8 +8454,13 @@ static void ixgbe_service_task(struct work_struct *work)
- 		return;
- 	}
- 	if (ixgbe_check_fw_error(adapter)) {
--		if (!test_bit(__IXGBE_DOWN, &adapter->state))
-+		if (!test_bit(__IXGBE_DOWN, &adapter->state)) {
-+			if (adapter->mii_bus) {
-+				mdiobus_unregister(adapter->mii_bus);
-+				adapter->mii_bus = NULL;
-+			}
- 			unregister_netdev(adapter->netdev);
-+		}
- 		ixgbe_service_event_complete(adapter);
- 		return;
- 	}
-@@ -11228,6 +11245,65 @@ static void ixgbe_set_fw_version(struct ixgbe_adapter *adapter)
- 		 "0x%08x", nvm_ver.etk_id);
+@@ -3163,6 +3179,21 @@ int ixgbe_get_inactive_nvm_ver(struct ixgbe_hw *hw, struct ixgbe_nvm_info *nvm)
+ 	return ixgbe_get_nvm_ver_info(hw, IXGBE_INACTIVE_FLASH_BANK, nvm);
  }
  
 +/**
-+ * ixgbe_recovery_probe - Handle FW recovery mode during probe
-+ * @adapter: the adapter private structure
++ * ixgbe_get_active_nvm_ver - Read Option ROM version from the active bank
++ * @hw: pointer to the HW structure
++ * @nvm: storage for Option ROM version information
 + *
-+ * Perform limited driver initialization when FW error is detected.
++ * Reads the NVM EETRACK ID, Map version, and security revision of the
++ * active NVM bank.
 + *
-+ * Return: 0 on successful probe for E610, -EIO if recovery mode is detected
-+ * for non-E610 adapter, error status code on any other case.
++ * Return: the exit code of the operation.
 + */
-+static int ixgbe_recovery_probe(struct ixgbe_adapter *adapter)
++static int ixgbe_get_active_nvm_ver(struct ixgbe_hw *hw, struct ixgbe_nvm_info *nvm)
 +{
-+	struct net_device *netdev = adapter->netdev;
-+	struct pci_dev *pdev = adapter->pdev;
-+	struct ixgbe_hw *hw = &adapter->hw;
-+	bool disable_dev;
-+	int err = -EIO;
-+
-+	if (hw->mac.type != ixgbe_mac_e610)
-+		goto clean_up_probe;
-+
-+	ixgbe_get_hw_control(adapter);
-+	mutex_init(&hw->aci.lock);
-+	err = ixgbe_get_flash_data(&adapter->hw);
-+	if (err)
-+		goto shutdown_aci;
-+
-+	timer_setup(&adapter->service_timer, ixgbe_service_timer, 0);
-+	INIT_WORK(&adapter->service_task, ixgbe_recovery_service_task);
-+	set_bit(__IXGBE_SERVICE_INITED, &adapter->state);
-+	clear_bit(__IXGBE_SERVICE_SCHED, &adapter->state);
-+
-+	if (hw->mac.ops.get_bus_info)
-+		hw->mac.ops.get_bus_info(hw);
-+
-+	pci_set_drvdata(pdev, adapter);
-+	/* We are creating devlink interface so NIC can be managed,
-+	 * e.g. new NVM image loaded
-+	 */
-+	devl_lock(adapter->devlink);
-+	ixgbe_devlink_register_port(adapter);
-+	SET_NETDEV_DEVLINK_PORT(adapter->netdev,
-+				&adapter->devlink_port);
-+	devl_register(adapter->devlink);
-+	devl_unlock(adapter->devlink);
-+
-+	return 0;
-+shutdown_aci:
-+	mutex_destroy(&adapter->hw.aci.lock);
-+	ixgbe_release_hw_control(adapter);
-+	devlink_free(adapter->devlink);
-+clean_up_probe:
-+	disable_dev = !test_and_set_bit(__IXGBE_DISABLED, &adapter->state);
-+	free_netdev(netdev);
-+	pci_release_mem_regions(pdev);
-+	if (disable_dev)
-+		pci_disable_device(pdev);
-+	return err;
++	return ixgbe_get_nvm_ver_info(hw, IXGBE_ACTIVE_FLASH_BANK, nvm);
 +}
 +
  /**
-  * ixgbe_probe - Device Initialization Routine
-  * @pdev: PCI device information struct
-@@ -11366,6 +11442,13 @@ static int ixgbe_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	if (err)
- 		goto err_sw_init;
- 
-+	/* Make sure the SWFW semaphore is in a valid state */
-+	if (hw->mac.ops.init_swfw_sync)
-+		hw->mac.ops.init_swfw_sync(hw);
-+
-+	if (ixgbe_check_fw_error(adapter))
-+		return ixgbe_recovery_probe(adapter);
-+
- 	if (adapter->hw.mac.type == ixgbe_mac_e610) {
- 		err = ixgbe_get_caps(&adapter->hw);
- 		if (err)
-@@ -11392,10 +11475,6 @@ static int ixgbe_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 		break;
+  * ixgbe_get_netlist_info - Read the netlist version information
+  * @hw: pointer to the HW struct
+@@ -3897,6 +3928,8 @@ static const struct ixgbe_mac_operations mac_ops_e610 = {
+ 	.get_media_type			= ixgbe_get_media_type_e610,
+ 	.setup_link			= ixgbe_setup_link_e610,
+ 	.fw_recovery_mode		= ixgbe_fw_recovery_mode_e610,
++	.fw_rollback_mode		= ixgbe_fw_rollback_mode_e610,
++	.get_nvm_ver			= ixgbe_get_active_nvm_ver,
+ 	.get_link_capabilities		= ixgbe_get_link_capabilities_e610,
+ 	.get_bus_info			= ixgbe_get_bus_info_generic,
+ 	.acquire_swfw_sync		= ixgbe_acquire_swfw_sync_X540,
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index 5c9de1fafd28..ce73a47ce00a 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -8420,6 +8420,32 @@ static bool ixgbe_check_fw_error(struct ixgbe_adapter *adapter)
+ 			return true;
  	}
  
--	/* Make sure the SWFW semaphore is in a valid state */
--	if (hw->mac.ops.init_swfw_sync)
--		hw->mac.ops.init_swfw_sync(hw);
--
- 	/* Make it possible the adapter to be woken up via WOL */
- 	switch (adapter->hw.mac.type) {
- 	case ixgbe_mac_82599EB:
-@@ -11548,11 +11627,6 @@ static int ixgbe_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	if (adapter->flags2 & IXGBE_FLAG2_RSC_ENABLED)
- 		netdev->features |= NETIF_F_LRO;
++	/* return here if FW rollback mode has been already detected */
++	if (adapter->flags2 & IXGBE_FLAG2_FW_ROLLBACK)
++		return false;
++
++	if (hw->mac.ops.fw_rollback_mode && hw->mac.ops.fw_rollback_mode(hw)) {
++		struct ixgbe_nvm_info *nvm_info = &adapter->hw.flash.nvm;
++		char ver_buff[64] = "";
++
++		if (hw->mac.ops.get_fw_ver && hw->mac.ops.get_fw_ver(hw))
++			goto no_version;
++
++		if (hw->mac.ops.get_nvm_ver &&
++		    hw->mac.ops.get_nvm_ver(hw, nvm_info))
++			goto no_version;
++
++		snprintf(ver_buff, sizeof(ver_buff),
++			 "Current version is NVM:%x.%x.%x, FW:%d.%d. ",
++			 nvm_info->major, nvm_info->minor, nvm_info->eetrack,
++			 hw->fw_maj_ver, hw->fw_maj_ver);
++no_version:
++		e_dev_warn("Firmware rollback mode detected. %sDevice may exhibit limited functionality. Refer to the Intel(R) Ethernet Adapters and Devices User Guide for details on firmware rollback mode.",
++			   ver_buff);
++
++		adapter->flags2 |= IXGBE_FLAG2_FW_ROLLBACK;
++	}
++
+ 	return false;
+ }
  
--	if (ixgbe_check_fw_error(adapter)) {
--		err = -EIO;
--		goto err_sw_init;
--	}
--
- 	/* make sure the EEPROM is good */
- 	if (hw->eeprom.ops.validate_checksum(hw, NULL) < 0) {
- 		e_dev_err("The EEPROM Checksum Is Not Valid\n");
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
+index 6bf6ba7dcdcc..892fa6c1f879 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
+@@ -3525,6 +3525,8 @@ struct ixgbe_mac_operations {
+ 	int (*get_thermal_sensor_data)(struct ixgbe_hw *);
+ 	int (*init_thermal_sensor_thresh)(struct ixgbe_hw *hw);
+ 	bool (*fw_recovery_mode)(struct ixgbe_hw *hw);
++	bool (*fw_rollback_mode)(struct ixgbe_hw *hw);
++	int (*get_nvm_ver)(struct ixgbe_hw *hw, struct ixgbe_nvm_info *nvm);
+ 	void (*disable_rx)(struct ixgbe_hw *hw);
+ 	void (*enable_rx)(struct ixgbe_hw *hw);
+ 	void (*set_source_address_pruning)(struct ixgbe_hw *, bool,
 diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
-index 4d591019dd07..1df5ac2e1fc5 100644
+index 1df5ac2e1fc5..c5cf153a19e9 100644
 --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
 +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
-@@ -88,6 +88,9 @@
- #define GLNVM_GENS		0x000B6100 /* Reset Source: POR */
- #define GLNVM_GENS_SR_SIZE_M	GENMASK(7, 5)
+@@ -90,6 +90,7 @@
  
-+#define IXGBE_GL_MNG_FWSM		0x000B6134 /* Reset Source: POR */
-+#define IXGBE_GL_MNG_FWSM_RECOVERY_M	BIT(1)
-+
+ #define IXGBE_GL_MNG_FWSM		0x000B6134 /* Reset Source: POR */
+ #define IXGBE_GL_MNG_FWSM_RECOVERY_M	BIT(1)
++#define IXGBE_GL_MNG_FWSM_ROLLBACK_M    BIT(2)
+ 
  /* Flash Access Register */
  #define IXGBE_GLNVM_FLA			0x000B6108 /* Reset Source: POR */
- #define IXGBE_GLNVM_FLA_LOCKED_S	6
 -- 
 2.31.1
 
