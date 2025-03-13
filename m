@@ -1,76 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 73506A5FEE3
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Mar 2025 19:11:32 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D561A5FEE7
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Mar 2025 19:12:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1CDB34187B;
-	Thu, 13 Mar 2025 18:11:31 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 142A74195D;
+	Thu, 13 Mar 2025 18:12:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id r1UkJhi_Oo2Q; Thu, 13 Mar 2025 18:11:29 +0000 (UTC)
+ id JuULcXS1vb5L; Thu, 13 Mar 2025 18:12:18 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7B7284188A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 158EE41965
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741889488;
-	bh=FPx0YorpZWUB+/s5w59dVrNYHSu48oYbOWnEwADu83U=;
+	s=default; t=1741889537;
+	bh=m6plslr8fQ6YRW2P1geoGyGriVmfQ6g3UR6w3wOj66k=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=DdTl9p3bqXFNGDzSAwETld+dLkl/BIVsf6Agw2g6ly/HkUVwgcgZA4/ph38HRMtld
-	 rilTo941tLIEt6tIDP9RdJ1iBppyOAGZTp7Bwzs78kxJmcXPLa5fHYXECx3si/pnuS
-	 w5wtP6UBS+bMRYfX0Q0ZopicsAcoCFn/Ly2FryiBFJO/amRJUk/NYLoz0YPkxUqleJ
-	 ZYqQVhpRdeaYnUATDHsa1xF/CZFN2DfQFZAX9NVwBX0Fb0gXY8ELINC+tTzYEK005v
-	 mRYHZdFhal0LVGAKsb6yqU/QztIoZV2ofsXHheQT3PoRk526Pj+WTu1t2md+uoeAwe
-	 8Wp1G268EB0EA==
+	b=TA7qHRTG7pw32CkAG0CYV49SSzcqXj71KxsxQ6p4ovuTldRyB6ov114JV7wUI4ZQ2
+	 Pu8tUp4dcL6KqM+NeafsO2PLyA/hC+FDuH4Un7EileAAvjwhsER1FNFIiqQRUJxOX+
+	 L+ipNG2MfNbFYXRvQOCHwrnjYttXBl9UcEAaght1zj8cVhjpa1K5SkFY/WoQThiQKR
+	 3YzE+gek1txsIlu3If7Bh4N7um+XN1jHYrkQWy5L4zhJx05Md8cqy0dtGSTSYTQ20Y
+	 VZmsyT6XVMbM2NZnZoaBoPXjjqbn2+w4c6mIM2LL4DFpKkt4ZsdhI37XT7y/NJS91B
+	 wTtMQ8UMD8JSA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7B7284188A;
-	Thu, 13 Mar 2025 18:11:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 158EE41965;
+	Thu, 13 Mar 2025 18:12:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id D4175115
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 18:11:26 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id D6535115
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 18:12:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B7E8F83FEF
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 18:11:26 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id C5B4383FFE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 18:12:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ttJGWGboU4Ne for <intel-wired-lan@lists.osuosl.org>;
- Thu, 13 Mar 2025 18:11:25 +0000 (UTC)
+ id p4Wyedy9vr74 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 13 Mar 2025 18:12:13 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
  helo=mgamail.intel.com; envelope-from=milena.olech@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 666A383FEE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 666A383FEE
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 81CDA84002
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 81CDA84002
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 666A383FEE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 18:11:25 +0000 (UTC)
-X-CSE-ConnectionGUID: cX4b8QyOSmapgeDgePmAkw==
-X-CSE-MsgGUID: GZmrSUeORpimWQuLoSAjdg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11372"; a="45795943"
-X-IronPort-AV: E=Sophos;i="6.14,245,1736841600"; d="scan'208";a="45795943"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 81CDA84002
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 18:12:13 +0000 (UTC)
+X-CSE-ConnectionGUID: kgzgoipDQdSFqFPPWzMpOA==
+X-CSE-MsgGUID: XeWtqQtjT7CP7qmbu0JtjA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11372"; a="45796046"
+X-IronPort-AV: E=Sophos;i="6.14,245,1736841600"; d="scan'208";a="45796046"
 Received: from orviesa010.jf.intel.com ([10.64.159.150])
  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Mar 2025 11:11:25 -0700
-X-CSE-ConnectionGUID: w5XyFYC5RzeRbrz9i2gIFw==
-X-CSE-MsgGUID: yD1ItjkNT16WxItF41COBw==
+ 13 Mar 2025 11:12:13 -0700
+X-CSE-ConnectionGUID: dmzVnEdrQPekjiQ1ACpCqw==
+X-CSE-MsgGUID: Wu3fpa8wTcOeD9KpymrjiQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,245,1736841600"; d="scan'208";a="120990175"
+X-IronPort-AV: E=Sophos;i="6.14,245,1736841600"; d="scan'208";a="120990307"
 Received: from unknown (HELO localhost.igk.intel.com) ([10.102.22.54])
- by orviesa010.jf.intel.com with ESMTP; 13 Mar 2025 11:11:23 -0700
+ by orviesa010.jf.intel.com with ESMTP; 13 Mar 2025 11:12:11 -0700
 From: Milena Olech <milena.olech@intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
  przemyslaw.kitszel@intel.com, Milena Olech <milena.olech@intel.com>,
  Alexander Lobakin <aleksander.lobakin@intel.com>,
- Willem de Bruijn <willemb@google.com>,
- Mina Almasry <almasrymina@google.com>
-Date: Thu, 13 Mar 2025 19:04:21 +0100
-Message-Id: <20250313180417.2348593-7-milena.olech@intel.com>
+ Emil Tantilov <emil.s.tantilov@intel.com>,
+ Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+Date: Thu, 13 Mar 2025 19:04:25 +0100
+Message-Id: <20250313180417.2348593-8-milena.olech@intel.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20250313180417.2348593-1-milena.olech@intel.com>
 References: <20250313180417.2348593-1-milena.olech@intel.com>
@@ -78,25 +78,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1741889485; x=1773425485;
+ t=1741889533; x=1773425533;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=VfoRwU1xTDwWu43nTnLziXo+t4e3+lV0nR/l8MxrVUA=;
- b=GdbS7LLL7SSDuMva2o11sTDvfKO9XUCptuua+CPlzr8eBthQrrLoyLih
- v4SbFGe0cenzEzJ++c8IFxc90AQ00/BKzuB3a0pqpPCU4P2Z2C/OYtgnZ
- pSAuCDqnm9vXzjZUW8bSFsQlKWNKAIFhkZbym3XqEzjKPSP9zudrUr6tO
- 4Xw7lRueG0n9DruVUN8dMixR11xlKQzStTGIxtGFxj6sxW7f5GgS1HjoB
- SRYhP+In7Pwym8ZG8lvJ4oUtG4VKJJt/dCfUdeq18dWy3nlPxKCEJ8Qin
- hz/yeuQOHiLvsXfWdzknK9pO24bykQ0ssFr4V6hHfqyB5tzGEygVzObYA
+ bh=6tjt62jaDosQsxue8IqgZ/Icp3+Gp/KHAylcY0EmfeU=;
+ b=L/1nG+b4Izo3HQCVHBTtmcmU5R8e+f5Gd9XcvVUtwTle8dTirlNknmLQ
+ 7x6GcFKUO61Cyt7shXymClCrLzWv+RiEJYK5eF0lqc+GYK3scipRL2hSJ
+ wqOIOGQslHrJs9bkWVNlo3+AVwqrT3sUZeGaBo3bWDEKQ7vgrQFX0BQFE
+ et6dvYlQFd+37Bh/EhYIrox6UuIV5CqLV9GlJ9txzozyVbUWfZSORmKbY
+ gZupV8h2xu2MxF0bbetP0yYb9W0WEU6AZIlCsv3tkaNjNjkNa4uZXILoZ
+ 8IwOBweOM+sWMRZnlCBTAsr0Tz8f+Mgq3CoNUdScFsQG/lz6Ug+I2IP1n
  A==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=GdbS7LLL
-Subject: [Intel-wired-lan] [PATCH v9 iwl-next 06/10] idpf: add PTP clock
- configuration
+ header.a=rsa-sha256 header.s=Intel header.b=L/1nG+b4
+Subject: [Intel-wired-lan] [PATCH v9 iwl-next 07/10] idpf: add Tx timestamp
+ capabilities negotiation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -112,347 +112,293 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-PTP clock configuration operations - set time, adjust time and adjust
-frequency are required to control the clock and maintain synchronization
-process.
+Tx timestamp capabilities are negotiated for the uplink Vport.
+Driver receives information about the number of available Tx timestamp
+latches, the size of Tx timestamp value and the set of indexes used
+for Tx timestamping.
 
-Extend get PTP capabilities function to request for the clock adjustments
-and add functions to enable these actions using dedicated virtchnl
-messages.
+Add function to get the Tx timestamp capabilities and parse the uplink
+vport flag.
 
 Reviewed-by: Alexander Lobakin <aleksander.lobakin@intel.com>
-Reviewed-by: Willem de Bruijn <willemb@google.com>
-Tested-by: Mina Almasry <almasrymina@google.com>
+Co-developed-by: Emil Tantilov <emil.s.tantilov@intel.com>
+Signed-off-by: Emil Tantilov <emil.s.tantilov@intel.com>
+Co-developed-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
 Signed-off-by: Milena Olech <milena.olech@intel.com>
 ---
-v8 -> v9: minor - remove unnecessary dot in the function description
+v7 -> v8: refactor idpf_for_each_vport, change a function that
+checks if Tx timestamp for a given vport is enabled
+v2 -> v3: revert changes in idpf_for_each_vport, fix minor issues
+v1 -> v2: change the idpf_for_each_vport macro
 
- drivers/net/ethernet/intel/idpf/idpf_ptp.c    | 191 ++++++++++++++++++
- drivers/net/ethernet/intel/idpf/idpf_ptp.h    |  43 +++-
- .../net/ethernet/intel/idpf/idpf_virtchnl.c   |   3 +
- .../ethernet/intel/idpf/idpf_virtchnl_ptp.c   | 142 ++++++++++++-
- 4 files changed, 376 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/intel/idpf/idpf.h        |  10 ++
+ drivers/net/ethernet/intel/idpf/idpf_ptp.c    |  65 +++++++++
+ drivers/net/ethernet/intel/idpf/idpf_ptp.h    |  95 ++++++++++++-
+ .../net/ethernet/intel/idpf/idpf_virtchnl.c   |  11 ++
+ .../ethernet/intel/idpf/idpf_virtchnl_ptp.c   | 128 +++++++++++++++++-
+ drivers/net/ethernet/intel/idpf/virtchnl2.h   |  12 +-
+ 6 files changed, 317 insertions(+), 4 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/idpf/idpf.h b/drivers/net/ethernet/intel/idpf/idpf.h
+index d5d5064d313b..fe4d8ad75b04 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf.h
++++ b/drivers/net/ethernet/intel/idpf/idpf.h
+@@ -292,6 +292,7 @@ struct idpf_port_stats {
+  * @port_stats: per port csum, header split, and other offload stats
+  * @link_up: True if link is up
+  * @sw_marker_wq: workqueue for marker packets
++ * @tx_tstamp_caps: Capabilities negotiated for Tx timestamping
+  */
+ struct idpf_vport {
+ 	u16 num_txq;
+@@ -336,6 +337,8 @@ struct idpf_vport {
+ 	bool link_up;
+ 
+ 	wait_queue_head_t sw_marker_wq;
++
++	struct idpf_ptp_vport_tx_tstamp_caps *tx_tstamp_caps;
+ };
+ 
+ /**
+@@ -480,6 +483,13 @@ struct idpf_vport_config {
+ 
+ struct idpf_vc_xn_manager;
+ 
++#define idpf_for_each_vport(adapter, iter) \
++	for (struct idpf_vport **__##iter = &(adapter)->vports[0], \
++	     *iter = (adapter)->max_vports ? *__##iter : NULL; \
++	     iter; \
++	     iter = (++__##iter) < &(adapter)->vports[(adapter)->max_vports] ? \
++	     *__##iter : NULL)
++
+ /**
+  * struct idpf_adapter - Device data struct generated on probe
+  * @pdev: PCI device struct given on probe
 diff --git a/drivers/net/ethernet/intel/idpf/idpf_ptp.c b/drivers/net/ethernet/intel/idpf/idpf_ptp.c
-index 01e28085eb39..54b7ccb16da0 100644
+index 54b7ccb16da0..d096a16bd262 100644
 --- a/drivers/net/ethernet/intel/idpf/idpf_ptp.c
 +++ b/drivers/net/ethernet/intel/idpf/idpf_ptp.c
-@@ -48,6 +48,20 @@ void idpf_ptp_get_features_access(const struct idpf_adapter *adapter)
- 	ptp->get_cross_tstamp_access = idpf_ptp_get_access(adapter,
+@@ -62,6 +62,13 @@ void idpf_ptp_get_features_access(const struct idpf_adapter *adapter)
+ 	ptp->adj_dev_clk_time_access = idpf_ptp_get_access(adapter,
  							   direct,
  							   mailbox);
 +
-+	/* Set the device clock time */
-+	direct = VIRTCHNL2_CAP_PTP_SET_DEVICE_CLK_TIME;
-+	mailbox = VIRTCHNL2_CAP_PTP_SET_DEVICE_CLK_TIME;
-+	ptp->set_dev_clk_time_access = idpf_ptp_get_access(adapter,
-+							   direct,
-+							   mailbox);
-+
-+	/* Adjust the device clock time */
-+	direct = VIRTCHNL2_CAP_PTP_ADJ_DEVICE_CLK;
-+	mailbox = VIRTCHNL2_CAP_PTP_ADJ_DEVICE_CLK_MB;
-+	ptp->adj_dev_clk_time_access = idpf_ptp_get_access(adapter,
-+							   direct,
-+							   mailbox);
++	/* Tx timestamping */
++	direct = VIRTCHNL2_CAP_PTP_TX_TSTAMPS;
++	mailbox = VIRTCHNL2_CAP_PTP_TX_TSTAMPS_MB;
++	ptp->tx_tstamp_access = idpf_ptp_get_access(adapter,
++						    direct,
++						    mailbox);
  }
  
  /**
-@@ -296,6 +310,154 @@ static int idpf_ptp_gettimex64(struct ptp_clock_info *info,
+@@ -517,6 +524,61 @@ static int idpf_ptp_create_clock(const struct idpf_adapter *adapter)
  	return 0;
  }
  
 +/**
-+ * idpf_ptp_settime64 - Set the time of the clock
-+ * @info: the driver's PTP info structure
-+ * @ts: timespec64 structure that holds the new time value
++ * idpf_ptp_release_vport_tstamp - Release the Tx timestamps trakcers for a
++ *				   given vport.
++ * @vport: Virtual port structure
 + *
-+ * Set the device clock to the user input value. The conversion from timespec
-+ * to ns happens in the write function.
-+ *
-+ * Return: 0 on success, -errno otherwise.
++ * Remove the queues and delete lists that tracks Tx timestamp entries for a
++ * given vport.
 + */
-+static int idpf_ptp_settime64(struct ptp_clock_info *info,
-+			      const struct timespec64 *ts)
++static void idpf_ptp_release_vport_tstamp(struct idpf_vport *vport)
 +{
-+	struct idpf_adapter *adapter = idpf_ptp_info_to_adapter(info);
-+	enum idpf_ptp_access access;
-+	int err;
-+	u64 ns;
++	struct idpf_ptp_tx_tstamp *ptp_tx_tstamp, *tmp;
++	struct list_head *head;
 +
-+	access = adapter->ptp->set_dev_clk_time_access;
-+	if (access != IDPF_PTP_MAILBOX)
-+		return -EOPNOTSUPP;
++	/* Remove list with free latches */
++	spin_lock(&vport->tx_tstamp_caps->lock_free);
 +
-+	ns = timespec64_to_ns(ts);
-+
-+	err = idpf_ptp_set_dev_clk_time(adapter, ns);
-+	if (err) {
-+		pci_err(adapter->pdev, "Failed to set the time, err: %pe\n", ERR_PTR(err));
-+		return err;
++	head = &vport->tx_tstamp_caps->latches_free;
++	list_for_each_entry_safe(ptp_tx_tstamp, tmp, head, list_member) {
++		list_del(&ptp_tx_tstamp->list_member);
++		kfree(ptp_tx_tstamp);
 +	}
 +
-+	return 0;
-+}
++	spin_unlock(&vport->tx_tstamp_caps->lock_free);
 +
-+/**
-+ * idpf_ptp_adjtime_nonatomic - Do a non-atomic clock adjustment
-+ * @info: the driver's PTP info structure
-+ * @delta: Offset in nanoseconds to adjust the time by
-+ *
-+ * Return: 0 on success, -errno otherwise.
-+ */
-+static int idpf_ptp_adjtime_nonatomic(struct ptp_clock_info *info, s64 delta)
-+{
-+	struct timespec64 now, then;
-+	int err;
++	/* Remove list with latches in use */
++	spin_lock(&vport->tx_tstamp_caps->lock_in_use);
 +
-+	err = idpf_ptp_gettimex64(info, &now, NULL);
-+	if (err)
-+		return err;
-+
-+	then = ns_to_timespec64(delta);
-+	now = timespec64_add(now, then);
-+
-+	return idpf_ptp_settime64(info, &now);
-+}
-+
-+/**
-+ * idpf_ptp_adjtime - Adjust the time of the clock by the indicated delta
-+ * @info: the driver's PTP info structure
-+ * @delta: Offset in nanoseconds to adjust the time by
-+ *
-+ * Return: 0 on success, -errno otherwise.
-+ */
-+static int idpf_ptp_adjtime(struct ptp_clock_info *info, s64 delta)
-+{
-+	struct idpf_adapter *adapter = idpf_ptp_info_to_adapter(info);
-+	enum idpf_ptp_access access;
-+	int err;
-+
-+	access = adapter->ptp->adj_dev_clk_time_access;
-+	if (access != IDPF_PTP_MAILBOX)
-+		return -EOPNOTSUPP;
-+
-+	/* Hardware only supports atomic adjustments using signed 32-bit
-+	 * integers. For any adjustment outside this range, perform
-+	 * a non-atomic get->adjust->set flow.
-+	 */
-+	if (delta > S32_MAX || delta < S32_MIN)
-+		return idpf_ptp_adjtime_nonatomic(info, delta);
-+
-+	err = idpf_ptp_adj_dev_clk_time(adapter, delta);
-+	if (err) {
-+		pci_err(adapter->pdev, "Failed to adjust the clock with delta %lld err: %pe\n", delta, ERR_PTR(err));
-+		return err;
++	head = &vport->tx_tstamp_caps->latches_in_use;
++	list_for_each_entry_safe(ptp_tx_tstamp, tmp, head, list_member) {
++		list_del(&ptp_tx_tstamp->list_member);
++		kfree(ptp_tx_tstamp);
 +	}
 +
-+	return 0;
++	spin_unlock(&vport->tx_tstamp_caps->lock_in_use);
++
++	kfree(vport->tx_tstamp_caps);
++	vport->tx_tstamp_caps = NULL;
 +}
 +
 +/**
-+ * idpf_ptp_adjfine - Adjust clock increment rate
-+ * @info: the driver's PTP info structure
-+ * @scaled_ppm: Parts per million with 16-bit fractional field
++ * idpf_ptp_release_tstamp - Release the Tx timestamps trackers
++ * @adapter: Driver specific private structure
 + *
-+ * Adjust the frequency of the clock by the indicated scaled ppm from the
-+ * base frequency.
-+ *
-+ * Return: 0 on success, -errno otherwise.
++ * Remove the queues and delete lists that tracks Tx timestamp entries.
 + */
-+static int idpf_ptp_adjfine(struct ptp_clock_info *info, long scaled_ppm)
++static void idpf_ptp_release_tstamp(struct idpf_adapter *adapter)
 +{
-+	struct idpf_adapter *adapter = idpf_ptp_info_to_adapter(info);
-+	enum idpf_ptp_access access;
-+	u64 incval, diff;
-+	int err;
++	idpf_for_each_vport(adapter, vport) {
++		if (!idpf_ptp_is_vport_tx_tstamp_ena(vport))
++			continue;
 +
-+	access = adapter->ptp->adj_dev_clk_time_access;
-+	if (access != IDPF_PTP_MAILBOX)
-+		return -EOPNOTSUPP;
-+
-+	incval = adapter->ptp->base_incval;
-+
-+	diff = adjust_by_scaled_ppm(incval, scaled_ppm);
-+	err = idpf_ptp_adj_dev_clk_fine(adapter, diff);
-+	if (err)
-+		pci_err(adapter->pdev, "Failed to adjust clock increment rate for scaled ppm %ld %pe\n", scaled_ppm, ERR_PTR(err));
-+
-+	return 0;
-+}
-+
-+/**
-+ * idpf_ptp_verify_pin - Verify if pin supports requested pin function
-+ * @info: the driver's PTP info structure
-+ * @pin: Pin index
-+ * @func: Assigned function
-+ * @chan: Assigned channel
-+ *
-+ * Return: EOPNOTSUPP as not supported yet.
-+ */
-+static int idpf_ptp_verify_pin(struct ptp_clock_info *info, unsigned int pin,
-+			       enum ptp_pin_function func, unsigned int chan)
-+{
-+	return -EOPNOTSUPP;
-+}
-+
-+/**
-+ * idpf_ptp_gpio_enable - Enable/disable ancillary features of PHC
-+ * @info: the driver's PTP info structure
-+ * @rq: The requested feature to change
-+ * @on: Enable/disable flag
-+ *
-+ * Return: EOPNOTSUPP as not supported yet.
-+ */
-+static int idpf_ptp_gpio_enable(struct ptp_clock_info *info,
-+				struct ptp_clock_request *rq, int on)
-+{
-+	return -EOPNOTSUPP;
++		idpf_ptp_release_vport_tstamp(vport);
++	}
 +}
 +
  /**
-  * idpf_ptp_set_caps - Set PTP capabilities
+  * idpf_ptp_init - Initialize PTP hardware clock support
   * @adapter: Driver specific private structure
-@@ -310,7 +472,13 @@ static void idpf_ptp_set_caps(const struct idpf_adapter *adapter)
- 		 KBUILD_MODNAME, pci_name(adapter->pdev));
+@@ -601,6 +663,9 @@ void idpf_ptp_release(struct idpf_adapter *adapter)
+ 	if (!ptp)
+ 		return;
  
- 	info->owner = THIS_MODULE;
-+	info->max_adj = adapter->ptp->max_adj;
- 	info->gettimex64 = idpf_ptp_gettimex64;
-+	info->settime64 = idpf_ptp_settime64;
-+	info->adjfine = idpf_ptp_adjfine;
-+	info->adjtime = idpf_ptp_adjtime;
-+	info->verify = idpf_ptp_verify_pin;
-+	info->enable = idpf_ptp_gpio_enable;
- 
- #if IS_ENABLED(CONFIG_ARM_ARCH_TIMER)
- 	info->getcrosststamp = idpf_ptp_get_crosststamp;
-@@ -361,6 +529,7 @@ static int idpf_ptp_create_clock(const struct idpf_adapter *adapter)
-  */
- int idpf_ptp_init(struct idpf_adapter *adapter)
- {
-+	struct timespec64 ts;
- 	int err;
- 
- 	if (!idpf_is_cap_ena(adapter, IDPF_OTHER_CAPS, VIRTCHNL2_CAP_PTP)) {
-@@ -388,10 +557,32 @@ int idpf_ptp_init(struct idpf_adapter *adapter)
- 	if (err)
- 		goto free_ptp;
- 
-+	/* Write the default increment time value if the clock adjustments
-+	 * are enabled.
-+	 */
-+	if (adapter->ptp->adj_dev_clk_time_access != IDPF_PTP_NONE) {
-+		err = idpf_ptp_adj_dev_clk_fine(adapter,
-+						adapter->ptp->base_incval);
-+		if (err)
-+			goto remove_clock;
-+	}
++	if (ptp->tx_tstamp_access != IDPF_PTP_NONE)
++		idpf_ptp_release_tstamp(adapter);
 +
-+	/* Write the initial time value if the set time operation is enabled */
-+	if (adapter->ptp->set_dev_clk_time_access != IDPF_PTP_NONE) {
-+		ts = ktime_to_timespec64(ktime_get_real());
-+		err = idpf_ptp_settime64(&adapter->ptp->info, &ts);
-+		if (err)
-+			goto remove_clock;
-+	}
-+
- 	pci_dbg(adapter->pdev, "PTP init successful\n");
+ 	if (ptp->clock)
+ 		ptp_clock_unregister(ptp->clock);
  
- 	return 0;
- 
-+remove_clock:
-+	ptp_clock_unregister(adapter->ptp->clock);
-+	adapter->ptp->clock = NULL;
-+
- free_ptp:
- 	kfree(adapter->ptp);
- 	adapter->ptp = NULL;
 diff --git a/drivers/net/ethernet/intel/idpf/idpf_ptp.h b/drivers/net/ethernet/intel/idpf/idpf_ptp.h
-index 572ee0e79ba2..e7ccdcbdbd47 100644
+index e7ccdcbdbd47..3a9763bc3257 100644
 --- a/drivers/net/ethernet/intel/idpf/idpf_ptp.h
 +++ b/drivers/net/ethernet/intel/idpf/idpf_ptp.h
-@@ -40,6 +40,18 @@ struct idpf_ptp_dev_clk_regs {
- 	void __iomem *sys_time_ns_l;
- 	void __iomem *sys_time_ns_h;
+@@ -83,6 +83,70 @@ struct idpf_ptp_secondary_mbx {
+ 	bool valid:1;
+ };
  
-+	/* Main timer adjustments */
-+	void __iomem *incval_l;
-+	void __iomem *incval_h;
-+	void __iomem *shadj_l;
-+	void __iomem *shadj_h;
++/**
++ * enum idpf_ptp_tx_tstamp_state - Tx timestamp states
++ * @IDPF_PTP_FREE: Tx timestamp index free to use
++ * @IDPF_PTP_REQUEST: Tx timestamp index set to the Tx descriptor
++ * @IDPF_PTP_READ_VALUE: Tx timestamp value ready to be read
++ */
++enum idpf_ptp_tx_tstamp_state {
++	IDPF_PTP_FREE,
++	IDPF_PTP_REQUEST,
++	IDPF_PTP_READ_VALUE,
++};
 +
-+	/* PHY timer adjustments */
-+	void __iomem *phy_incval_l;
-+	void __iomem *phy_incval_h;
-+	void __iomem *phy_shadj_l;
-+	void __iomem *phy_shadj_h;
++/**
++ * struct idpf_ptp_tx_tstamp_status - Parameters to track Tx timestamp
++ * @skb: the pointer to the SKB that received the completion tag
++ * @state: the state of the Tx timestamp
++ */
++struct idpf_ptp_tx_tstamp_status {
++	struct sk_buff *skb;
++	enum idpf_ptp_tx_tstamp_state state;
++};
 +
- 	/* Command */
- 	void __iomem *cmd;
- 	void __iomem *phy_cmd;
-@@ -76,11 +88,15 @@ struct idpf_ptp_secondary_mbx {
++/**
++ * struct idpf_ptp_tx_tstamp - Parameters for Tx timestamping
++ * @list_member: the list member structure
++ * @tx_latch_reg_offset_l: Tx tstamp latch low register offset
++ * @tx_latch_reg_offset_h: Tx tstamp latch high register offset
++ * @skb: the pointer to the SKB for this timestamp request
++ * @tstamp: the Tx tstamp value
++ * @idx: the index of the Tx tstamp
++ */
++struct idpf_ptp_tx_tstamp {
++	struct list_head list_member;
++	u32 tx_latch_reg_offset_l;
++	u32 tx_latch_reg_offset_h;
++	struct sk_buff *skb;
++	u64 tstamp;
++	u32 idx;
++};
++
++/**
++ * struct idpf_ptp_vport_tx_tstamp_caps - Tx timestamp capabilities
++ * @vport_id: the vport id
++ * @num_entries: the number of negotiated Tx timestamp entries
++ * @tstamp_ns_lo_bit: first bit for nanosecond part of the timestamp
++ * @lock_in_use: the lock to the used latches list
++ * @lock_free: the lock to free the latches list
++ * @lock_status: the lock to the status tracker
++ * @latches_free: the list of the free Tx timestamps latches
++ * @latches_in_use: the list of the used Tx timestamps latches
++ * @tx_tstamp_status: Tx tstamp status tracker
++ */
++struct idpf_ptp_vport_tx_tstamp_caps {
++	u32 vport_id;
++	u16 num_entries;
++	u16 tstamp_ns_lo_bit;
++	spinlock_t lock_in_use;
++	spinlock_t lock_free;
++	spinlock_t lock_status;
++	struct list_head latches_free;
++	struct list_head latches_in_use;
++	struct idpf_ptp_tx_tstamp_status tx_tstamp_status[];
++};
++
+ /**
+  * struct idpf_ptp - PTP parameters
   * @info: structure defining PTP hardware capabilities
-  * @clock: pointer to registered PTP clock device
-  * @adapter: back pointer to the adapter
-+ * @base_incval: base increment value of the PTP clock
-+ * @max_adj: maximum adjustment of the PTP clock
-  * @cmd: HW specific command masks
-  * @dev_clk_regs: the set of registers to access the device clock
-  * @caps: PTP capabilities negotiated with the Control Plane
-  * @get_dev_clk_time_access: access type for getting the device clock time
+@@ -97,6 +161,7 @@ struct idpf_ptp_secondary_mbx {
   * @get_cross_tstamp_access: access type for the cross timestamping
-+ * @set_dev_clk_time_access: access type for setting the device clock time
-+ * @adj_dev_clk_time_access: access type for the adjusting the device clock
+  * @set_dev_clk_time_access: access type for setting the device clock time
+  * @adj_dev_clk_time_access: access type for the adjusting the device clock
++ * @tx_tstamp_access: access type for the Tx timestamp value read
   * @rsv: reserved bits
   * @secondary_mbx: parameters for using dedicated PTP mailbox
   */
-@@ -88,12 +104,16 @@ struct idpf_ptp {
- 	struct ptp_clock_info info;
- 	struct ptp_clock *clock;
- 	struct idpf_adapter *adapter;
-+	u64 base_incval;
-+	u64 max_adj;
- 	struct idpf_ptp_cmd cmd;
- 	struct idpf_ptp_dev_clk_regs dev_clk_regs;
- 	u32 caps;
- 	enum idpf_ptp_access get_dev_clk_time_access:2;
+@@ -113,7 +178,8 @@ struct idpf_ptp {
  	enum idpf_ptp_access get_cross_tstamp_access:2;
--	u32 rsv:28;
-+	enum idpf_ptp_access set_dev_clk_time_access:2;
-+	enum idpf_ptp_access adj_dev_clk_time_access:2;
-+	u8 rsv;
+ 	enum idpf_ptp_access set_dev_clk_time_access:2;
+ 	enum idpf_ptp_access adj_dev_clk_time_access:2;
+-	u8 rsv;
++	enum idpf_ptp_access tx_tstamp_access:2;
++	u8 rsv:6;
  	struct idpf_ptp_secondary_mbx secondary_mbx;
  };
  
-@@ -130,6 +150,9 @@ int idpf_ptp_get_dev_clk_time(struct idpf_adapter *adapter,
- 			      struct idpf_ptp_dev_timers *dev_clk_time);
- int idpf_ptp_get_cross_time(struct idpf_adapter *adapter,
- 			    struct idpf_ptp_dev_timers *cross_time);
-+int idpf_ptp_set_dev_clk_time(struct idpf_adapter *adapter, u64 time);
-+int idpf_ptp_adj_dev_clk_fine(struct idpf_adapter *adapter, u64 incval);
-+int idpf_ptp_adj_dev_clk_time(struct idpf_adapter *adapter, s64 delta);
+@@ -141,6 +207,27 @@ struct idpf_ptp_dev_timers {
+ 	u64 dev_clk_time_ns;
+ };
+ 
++/**
++ * idpf_ptp_is_vport_tx_tstamp_ena - Verify the Tx timestamping enablement for
++ *				     a given vport.
++ * @vport: Virtual port structure
++ *
++ * Tx timestamp capabilities are negotiated with the Control Plane only if the
++ * device clock value can be read, Tx timestamp access type is different than
++ * NONE, and the PTP clock for the adapter is created. When all those conditions
++ * are satisfied, Tx timestamp feature is enabled and tx_tstamp_caps is
++ * allocated and fulfilled.
++ *
++ * Return: true if the Tx timestamping is enabled, false otherwise.
++ */
++static inline bool idpf_ptp_is_vport_tx_tstamp_ena(struct idpf_vport *vport)
++{
++	if (!vport->tx_tstamp_caps)
++		return false;
++	else
++		return true;
++}
++
+ #if IS_ENABLED(CONFIG_PTP_1588_CLOCK)
+ int idpf_ptp_init(struct idpf_adapter *adapter);
+ void idpf_ptp_release(struct idpf_adapter *adapter);
+@@ -153,6 +240,7 @@ int idpf_ptp_get_cross_time(struct idpf_adapter *adapter,
+ int idpf_ptp_set_dev_clk_time(struct idpf_adapter *adapter, u64 time);
+ int idpf_ptp_adj_dev_clk_fine(struct idpf_adapter *adapter, u64 incval);
+ int idpf_ptp_adj_dev_clk_time(struct idpf_adapter *adapter, s64 delta);
++int idpf_ptp_get_vport_tstamps_caps(struct idpf_vport *vport);
  #else /* CONFIG_PTP_1588_CLOCK */
  static inline int idpf_ptp_init(struct idpf_adapter *adapter)
  {
-@@ -160,5 +183,23 @@ idpf_ptp_get_cross_time(struct idpf_adapter *adapter,
+@@ -201,5 +289,10 @@ static inline int idpf_ptp_adj_dev_clk_time(struct idpf_adapter *adapter,
  	return -EOPNOTSUPP;
  }
  
-+static inline int idpf_ptp_set_dev_clk_time(struct idpf_adapter *adapter,
-+					    u64 time)
-+{
-+	return -EOPNOTSUPP;
-+}
-+
-+static inline int idpf_ptp_adj_dev_clk_fine(struct idpf_adapter *adapter,
-+					    u64 incval)
-+{
-+	return -EOPNOTSUPP;
-+}
-+
-+static inline int idpf_ptp_adj_dev_clk_time(struct idpf_adapter *adapter,
-+					    s64 delta)
++static inline int idpf_ptp_get_vport_tstamps_caps(struct idpf_vport *vport)
 +{
 +	return -EOPNOTSUPP;
 +}
@@ -460,204 +406,221 @@ index 572ee0e79ba2..e7ccdcbdbd47 100644
  #endif /* CONFIG_PTP_1588_CLOCK */
  #endif /* _IDPF_PTP_H */
 diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-index 139d19353e28..b7c9c5d84350 100644
+index b7c9c5d84350..9f369bbea0fe 100644
 --- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
 +++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-@@ -166,6 +166,9 @@ static bool idpf_ptp_is_mb_msg(u32 op)
- 	switch (op) {
- 	case VIRTCHNL2_OP_PTP_GET_DEV_CLK_TIME:
- 	case VIRTCHNL2_OP_PTP_GET_CROSS_TIME:
-+	case VIRTCHNL2_OP_PTP_SET_DEV_CLK_TIME:
-+	case VIRTCHNL2_OP_PTP_ADJ_DEV_CLK_FINE:
-+	case VIRTCHNL2_OP_PTP_ADJ_DEV_CLK_TIME:
+@@ -169,6 +169,8 @@ static bool idpf_ptp_is_mb_msg(u32 op)
+ 	case VIRTCHNL2_OP_PTP_SET_DEV_CLK_TIME:
+ 	case VIRTCHNL2_OP_PTP_ADJ_DEV_CLK_FINE:
+ 	case VIRTCHNL2_OP_PTP_ADJ_DEV_CLK_TIME:
++	case VIRTCHNL2_OP_PTP_GET_VPORT_TX_TSTAMP_CAPS:
++	case VIRTCHNL2_OP_PTP_GET_VPORT_TX_TSTAMP:
  		return true;
  	default:
  		return false;
+@@ -3133,6 +3135,7 @@ void idpf_vport_init(struct idpf_vport *vport, struct idpf_vport_max_q *max_q)
+ 	u16 rx_itr[] = {2, 8, 32, 96, 128};
+ 	struct idpf_rss_data *rss_data;
+ 	u16 idx = vport->idx;
++	int err;
+ 
+ 	vport_config = adapter->vport_config[idx];
+ 	rss_data = &vport_config->user_config.rss_data;
+@@ -3167,6 +3170,14 @@ void idpf_vport_init(struct idpf_vport *vport, struct idpf_vport_max_q *max_q)
+ 	idpf_vport_alloc_vec_indexes(vport);
+ 
+ 	vport->crc_enable = adapter->crc_enable;
++
++	if (!(vport_msg->vport_flags &
++	      cpu_to_le16(VIRTCHNL2_VPORT_UPLINK_PORT)))
++		return;
++
++	err = idpf_ptp_get_vport_tstamps_caps(vport);
++	if (err)
++		pci_dbg(vport->adapter->pdev, "Tx timestamping not supported\n");
+ }
+ 
+ /**
 diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl_ptp.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl_ptp.c
-index e51fa16d13cd..5de4bf94049b 100644
+index 5de4bf94049b..12e776aedf63 100644
 --- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl_ptp.c
 +++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl_ptp.c
-@@ -20,7 +20,9 @@ int idpf_ptp_get_caps(struct idpf_adapter *adapter)
- 		.caps = cpu_to_le32(VIRTCHNL2_CAP_PTP_GET_DEVICE_CLK_TIME |
- 				    VIRTCHNL2_CAP_PTP_GET_DEVICE_CLK_TIME_MB |
+@@ -22,7 +22,8 @@ int idpf_ptp_get_caps(struct idpf_adapter *adapter)
  				    VIRTCHNL2_CAP_PTP_GET_CROSS_TIME |
--				    VIRTCHNL2_CAP_PTP_GET_CROSS_TIME_MB)
-+				    VIRTCHNL2_CAP_PTP_GET_CROSS_TIME_MB |
-+				    VIRTCHNL2_CAP_PTP_SET_DEVICE_CLK_TIME_MB |
-+				    VIRTCHNL2_CAP_PTP_ADJ_DEVICE_CLK_MB)
+ 				    VIRTCHNL2_CAP_PTP_GET_CROSS_TIME_MB |
+ 				    VIRTCHNL2_CAP_PTP_SET_DEVICE_CLK_TIME_MB |
+-				    VIRTCHNL2_CAP_PTP_ADJ_DEVICE_CLK_MB)
++				    VIRTCHNL2_CAP_PTP_ADJ_DEVICE_CLK_MB |
++				    VIRTCHNL2_CAP_PTP_TX_TSTAMPS_MB)
  	};
  	struct idpf_vc_xn_params xn_params = {
  		.vc_op = VIRTCHNL2_OP_PTP_GET_CAPS,
-@@ -29,6 +31,7 @@ int idpf_ptp_get_caps(struct idpf_adapter *adapter)
- 		.timeout_ms = IDPF_VC_XN_DEFAULT_TIMEOUT_MSEC,
- 	};
- 	struct virtchnl2_ptp_cross_time_reg_offsets cross_tstamp_offsets;
-+	struct virtchnl2_ptp_clk_adj_reg_offsets clk_adj_offsets;
- 	struct virtchnl2_ptp_clk_reg_offsets clock_offsets;
- 	struct idpf_ptp_secondary_mbx *scnd_mbx;
- 	struct idpf_ptp *ptp = adapter->ptp;
-@@ -51,6 +54,8 @@ int idpf_ptp_get_caps(struct idpf_adapter *adapter)
- 		return -EIO;
- 
- 	ptp->caps = le32_to_cpu(recv_ptp_caps_msg->caps);
-+	ptp->base_incval = le64_to_cpu(recv_ptp_caps_msg->base_incval);
-+	ptp->max_adj = le32_to_cpu(recv_ptp_caps_msg->max_adj);
- 
- 	scnd_mbx = &ptp->secondary_mbx;
- 	scnd_mbx->peer_mbx_q_id = le16_to_cpu(recv_ptp_caps_msg->peer_mbx_q_id);
-@@ -89,7 +94,7 @@ int idpf_ptp_get_caps(struct idpf_adapter *adapter)
- cross_tstamp:
- 	access_type = ptp->get_cross_tstamp_access;
- 	if (access_type != IDPF_PTP_DIRECT)
--		return 0;
-+		goto discipline_clock;
- 
- 	cross_tstamp_offsets = recv_ptp_caps_msg->cross_time_offsets;
- 
-@@ -102,6 +107,39 @@ int idpf_ptp_get_caps(struct idpf_adapter *adapter)
- 	temp_offset = le32_to_cpu(cross_tstamp_offsets.cmd_sync_trigger);
- 	ptp->dev_clk_regs.cmd_sync = idpf_get_reg_addr(adapter, temp_offset);
- 
-+discipline_clock:
-+	access_type = ptp->adj_dev_clk_time_access;
-+	if (access_type != IDPF_PTP_DIRECT)
-+		return 0;
-+
-+	clk_adj_offsets = recv_ptp_caps_msg->clk_adj_offsets;
-+
-+	/* Device clock offsets */
-+	temp_offset = le32_to_cpu(clk_adj_offsets.dev_clk_cmd_type);
-+	ptp->dev_clk_regs.cmd = idpf_get_reg_addr(adapter, temp_offset);
-+	temp_offset = le32_to_cpu(clk_adj_offsets.dev_clk_incval_l);
-+	ptp->dev_clk_regs.incval_l = idpf_get_reg_addr(adapter, temp_offset);
-+	temp_offset = le32_to_cpu(clk_adj_offsets.dev_clk_incval_h);
-+	ptp->dev_clk_regs.incval_h = idpf_get_reg_addr(adapter, temp_offset);
-+	temp_offset = le32_to_cpu(clk_adj_offsets.dev_clk_shadj_l);
-+	ptp->dev_clk_regs.shadj_l = idpf_get_reg_addr(adapter, temp_offset);
-+	temp_offset = le32_to_cpu(clk_adj_offsets.dev_clk_shadj_h);
-+	ptp->dev_clk_regs.shadj_h = idpf_get_reg_addr(adapter, temp_offset);
-+
-+	/* PHY clock offsets */
-+	temp_offset = le32_to_cpu(clk_adj_offsets.phy_clk_cmd_type);
-+	ptp->dev_clk_regs.phy_cmd = idpf_get_reg_addr(adapter, temp_offset);
-+	temp_offset = le32_to_cpu(clk_adj_offsets.phy_clk_incval_l);
-+	ptp->dev_clk_regs.phy_incval_l = idpf_get_reg_addr(adapter,
-+							   temp_offset);
-+	temp_offset = le32_to_cpu(clk_adj_offsets.phy_clk_incval_h);
-+	ptp->dev_clk_regs.phy_incval_h = idpf_get_reg_addr(adapter,
-+							   temp_offset);
-+	temp_offset = le32_to_cpu(clk_adj_offsets.phy_clk_shadj_l);
-+	ptp->dev_clk_regs.phy_shadj_l = idpf_get_reg_addr(adapter, temp_offset);
-+	temp_offset = le32_to_cpu(clk_adj_offsets.phy_clk_shadj_h);
-+	ptp->dev_clk_regs.phy_shadj_h = idpf_get_reg_addr(adapter, temp_offset);
-+
- 	return 0;
- }
- 
-@@ -176,3 +214,103 @@ int idpf_ptp_get_cross_time(struct idpf_adapter *adapter,
+@@ -314,3 +315,128 @@ int idpf_ptp_adj_dev_clk_fine(struct idpf_adapter *adapter, u64 incval)
  
  	return 0;
  }
 +
 +/**
-+ * idpf_ptp_set_dev_clk_time - Send virtchnl set device time message
-+ * @adapter: Driver specific private structure
-+ * @time: New time value
++ * idpf_ptp_get_vport_tstamps_caps - Send virtchnl to get tstamps caps for vport
++ * @vport: Virtual port structure
 + *
-+ * Send virtchnl set time message to set the time of the clock.
++ * Send virtchnl get vport tstamps caps message to receive the set of tstamp
++ * capabilities per vport.
 + *
 + * Return: 0 on success, -errno otherwise.
 + */
-+int idpf_ptp_set_dev_clk_time(struct idpf_adapter *adapter, u64 time)
++int idpf_ptp_get_vport_tstamps_caps(struct idpf_vport *vport)
 +{
-+	struct virtchnl2_ptp_set_dev_clk_time set_dev_clk_time_msg = {
-+		.dev_time_ns = cpu_to_le64(time),
-+	};
++	struct virtchnl2_ptp_get_vport_tx_tstamp_caps send_tx_tstamp_caps;
++	struct virtchnl2_ptp_get_vport_tx_tstamp_caps *rcv_tx_tstamp_caps;
++	struct idpf_ptp_tx_tstamp *ptp_tx_tstamp, *ptp_tx_tstamps, *tmp;
++	struct virtchnl2_ptp_tx_tstamp_latch_caps tx_tstamp_latch_caps;
++	struct idpf_ptp_vport_tx_tstamp_caps *tstamp_caps;
 +	struct idpf_vc_xn_params xn_params = {
-+		.vc_op = VIRTCHNL2_OP_PTP_SET_DEV_CLK_TIME,
-+		.send_buf.iov_base = &set_dev_clk_time_msg,
-+		.send_buf.iov_len = sizeof(set_dev_clk_time_msg),
-+		.recv_buf.iov_base = &set_dev_clk_time_msg,
-+		.recv_buf.iov_len = sizeof(set_dev_clk_time_msg),
++		.vc_op = VIRTCHNL2_OP_PTP_GET_VPORT_TX_TSTAMP_CAPS,
++		.send_buf.iov_base = &send_tx_tstamp_caps,
++		.send_buf.iov_len = sizeof(send_tx_tstamp_caps),
++		.recv_buf.iov_len = IDPF_CTLQ_MAX_BUF_LEN,
 +		.timeout_ms = IDPF_VC_XN_DEFAULT_TIMEOUT_MSEC,
 +	};
-+	int reply_sz;
++	enum idpf_ptp_access tstamp_access, get_dev_clk_access;
++	struct idpf_ptp *ptp = vport->adapter->ptp;
++	struct list_head *head;
++	int err = 0, reply_sz;
++	u16 num_latches;
++	u32 size;
 +
-+	reply_sz = idpf_vc_xn_exec(adapter, &xn_params);
-+	if (reply_sz < 0)
-+		return reply_sz;
-+	if (reply_sz != sizeof(set_dev_clk_time_msg))
-+		return -EIO;
++	if (!ptp)
++		return -EOPNOTSUPP;
++
++	tstamp_access = ptp->tx_tstamp_access;
++	get_dev_clk_access = ptp->get_dev_clk_time_access;
++	if (tstamp_access == IDPF_PTP_NONE ||
++	    get_dev_clk_access == IDPF_PTP_NONE)
++		return -EOPNOTSUPP;
++
++	rcv_tx_tstamp_caps = kzalloc(IDPF_CTLQ_MAX_BUF_LEN, GFP_KERNEL);
++	if (!rcv_tx_tstamp_caps)
++		return -ENOMEM;
++
++	send_tx_tstamp_caps.vport_id = cpu_to_le32(vport->vport_id);
++	xn_params.recv_buf.iov_base = rcv_tx_tstamp_caps;
++
++	reply_sz = idpf_vc_xn_exec(vport->adapter, &xn_params);
++	if (reply_sz < 0) {
++		err = reply_sz;
++		goto get_tstamp_caps_out;
++	}
++
++	num_latches = le16_to_cpu(rcv_tx_tstamp_caps->num_latches);
++	size = struct_size(rcv_tx_tstamp_caps, tstamp_latches, num_latches);
++	if (reply_sz != size) {
++		err = -EIO;
++		goto get_tstamp_caps_out;
++	}
++
++	size = struct_size(tstamp_caps, tx_tstamp_status, num_latches);
++	tstamp_caps = kzalloc(size, GFP_KERNEL);
++	if (!tstamp_caps) {
++		err = -ENOMEM;
++		goto get_tstamp_caps_out;
++	}
++
++	tstamp_caps->num_entries = num_latches;
++	INIT_LIST_HEAD(&tstamp_caps->latches_in_use);
++	INIT_LIST_HEAD(&tstamp_caps->latches_free);
++
++	spin_lock_init(&tstamp_caps->lock_free);
++	spin_lock_init(&tstamp_caps->lock_in_use);
++	spin_lock_init(&tstamp_caps->lock_status);
++
++	tstamp_caps->tstamp_ns_lo_bit = rcv_tx_tstamp_caps->tstamp_ns_lo_bit;
++
++	ptp_tx_tstamps = kcalloc(tstamp_caps->num_entries,
++				 sizeof(*ptp_tx_tstamp), GFP_KERNEL);
++	if (!ptp_tx_tstamps) {
++		err = -ENOMEM;
++		goto err_free_ptp_tx_stamp_list;
++	}
++
++	for (u16 i = 0; i < tstamp_caps->num_entries; i++) {
++		__le32 offset_l, offset_h;
++
++		ptp_tx_tstamp = ptp_tx_tstamps + i;
++		tx_tstamp_latch_caps = rcv_tx_tstamp_caps->tstamp_latches[i];
++
++		if (tstamp_access != IDPF_PTP_DIRECT)
++			goto skip_offsets;
++
++		offset_l = tx_tstamp_latch_caps.tx_latch_reg_offset_l;
++		offset_h = tx_tstamp_latch_caps.tx_latch_reg_offset_h;
++		ptp_tx_tstamp->tx_latch_reg_offset_l = le32_to_cpu(offset_l);
++		ptp_tx_tstamp->tx_latch_reg_offset_h = le32_to_cpu(offset_h);
++
++skip_offsets:
++		ptp_tx_tstamp->idx = tx_tstamp_latch_caps.index;
++
++		list_add(&ptp_tx_tstamp->list_member,
++			 &tstamp_caps->latches_free);
++
++		tstamp_caps->tx_tstamp_status[i].state = IDPF_PTP_FREE;
++	}
++
++	vport->tx_tstamp_caps = tstamp_caps;
++	kfree(rcv_tx_tstamp_caps);
 +
 +	return 0;
-+}
 +
++err_free_ptp_tx_stamp_list:
++	head = &tstamp_caps->latches_free;
++	list_for_each_entry_safe(ptp_tx_tstamp, tmp, head, list_member) {
++		list_del(&ptp_tx_tstamp->list_member);
++		kfree(ptp_tx_tstamp);
++	}
++
++	kfree(tstamp_caps);
++get_tstamp_caps_out:
++	kfree(rcv_tx_tstamp_caps);
++
++	return err;
++}
+diff --git a/drivers/net/ethernet/intel/idpf/virtchnl2.h b/drivers/net/ethernet/intel/idpf/virtchnl2.h
+index 44a5ee84ed60..07235f1b4c5c 100644
+--- a/drivers/net/ethernet/intel/idpf/virtchnl2.h
++++ b/drivers/net/ethernet/intel/idpf/virtchnl2.h
+@@ -569,6 +569,14 @@ struct virtchnl2_queue_reg_chunks {
+ };
+ VIRTCHNL2_CHECK_STRUCT_LEN(8, virtchnl2_queue_reg_chunks);
+ 
 +/**
-+ * idpf_ptp_adj_dev_clk_time - Send virtchnl adj device clock time message
-+ * @adapter: Driver specific private structure
-+ * @delta: Offset in nanoseconds to adjust the time by
-+ *
-+ * Send virtchnl adj time message to adjust the clock by the indicated delta.
-+ *
-+ * Return: 0 on success, -errno otherwise.
++ * enum virtchnl2_vport_flags - Vport flags that indicate vport capabilities.
++ * @VIRTCHNL2_VPORT_UPLINK_PORT: Representatives of underlying physical ports
 + */
-+int idpf_ptp_adj_dev_clk_time(struct idpf_adapter *adapter, s64 delta)
-+{
-+	struct virtchnl2_ptp_adj_dev_clk_time adj_dev_clk_time_msg = {
-+		.delta = cpu_to_le64(delta),
-+	};
-+	struct idpf_vc_xn_params xn_params = {
-+		.vc_op = VIRTCHNL2_OP_PTP_ADJ_DEV_CLK_TIME,
-+		.send_buf.iov_base = &adj_dev_clk_time_msg,
-+		.send_buf.iov_len = sizeof(adj_dev_clk_time_msg),
-+		.recv_buf.iov_base = &adj_dev_clk_time_msg,
-+		.recv_buf.iov_len = sizeof(adj_dev_clk_time_msg),
-+		.timeout_ms = IDPF_VC_XN_DEFAULT_TIMEOUT_MSEC,
-+	};
-+	int reply_sz;
++enum virtchnl2_vport_flags {
++	VIRTCHNL2_VPORT_UPLINK_PORT	= BIT(0),
++};
 +
-+	reply_sz = idpf_vc_xn_exec(adapter, &xn_params);
-+	if (reply_sz < 0)
-+		return reply_sz;
-+	if (reply_sz != sizeof(adj_dev_clk_time_msg))
-+		return -EIO;
-+
-+	return 0;
-+}
-+
-+/**
-+ * idpf_ptp_adj_dev_clk_fine - Send virtchnl adj time message
-+ * @adapter: Driver specific private structure
-+ * @incval: Source timer increment value per clock cycle
-+ *
-+ * Send virtchnl adj fine message to adjust the frequency of the clock by
-+ * incval.
-+ *
-+ * Return: 0 on success, -errno otherwise.
-+ */
-+int idpf_ptp_adj_dev_clk_fine(struct idpf_adapter *adapter, u64 incval)
-+{
-+	struct virtchnl2_ptp_adj_dev_clk_fine adj_dev_clk_fine_msg = {
-+		.incval = cpu_to_le64(incval),
-+	};
-+	struct idpf_vc_xn_params xn_params = {
-+		.vc_op = VIRTCHNL2_OP_PTP_ADJ_DEV_CLK_FINE,
-+		.send_buf.iov_base = &adj_dev_clk_fine_msg,
-+		.send_buf.iov_len = sizeof(adj_dev_clk_fine_msg),
-+		.recv_buf.iov_base = &adj_dev_clk_fine_msg,
-+		.recv_buf.iov_len = sizeof(adj_dev_clk_fine_msg),
-+		.timeout_ms = IDPF_VC_XN_DEFAULT_TIMEOUT_MSEC,
-+	};
-+	int reply_sz;
-+
-+	reply_sz = idpf_vc_xn_exec(adapter, &xn_params);
-+	if (reply_sz < 0)
-+		return reply_sz;
-+	if (reply_sz != sizeof(adj_dev_clk_fine_msg))
-+		return -EIO;
-+
-+	return 0;
-+}
+ /**
+  * struct virtchnl2_create_vport - Create vport config info.
+  * @vport_type: See enum virtchnl2_vport_type.
+@@ -587,7 +595,7 @@ VIRTCHNL2_CHECK_STRUCT_LEN(8, virtchnl2_queue_reg_chunks);
+  * @max_mtu: Max MTU. CP populates this field on response.
+  * @vport_id: Vport id. CP populates this field on response.
+  * @default_mac_addr: Default MAC address.
+- * @pad: Padding.
++ * @vport_flags: See enum virtchnl2_vport_flags.
+  * @rx_desc_ids: See VIRTCHNL2_RX_DESC_IDS definitions.
+  * @tx_desc_ids: See VIRTCHNL2_TX_DESC_IDS definitions.
+  * @pad1: Padding.
+@@ -620,7 +628,7 @@ struct virtchnl2_create_vport {
+ 	__le16 max_mtu;
+ 	__le32 vport_id;
+ 	u8 default_mac_addr[ETH_ALEN];
+-	__le16 pad;
++	__le16 vport_flags;
+ 	__le64 rx_desc_ids;
+ 	__le64 tx_desc_ids;
+ 	u8 pad1[72];
 -- 
 2.31.1
 
