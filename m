@@ -1,103 +1,238 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B083DA5F982
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Mar 2025 16:18:47 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E33CFA5FB1F
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Mar 2025 17:17:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9BFE44175A;
-	Thu, 13 Mar 2025 15:18:44 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 96F1883FB7;
+	Thu, 13 Mar 2025 16:17:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5tMZAzqtI1jg; Thu, 13 Mar 2025 15:18:43 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 3FINC5hGzAGi; Thu, 13 Mar 2025 16:17:48 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6AA40418A1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 40E1C83FC1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741879123;
-	bh=jHh3U59Gk2BCnDfAjY2h7/x1E5YY2qWYt0CT1CLdgys=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1741882668;
+	bh=OAW1FWQdRacftoCxMnfHq6jPK9cgKj1pasPiO1DTXPU=;
+	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=LLevF09D+Z17+yDc3On+zrLiqAni3qg1Dp6JM88dgRya05ccAV70rpvDOVggHaxhT
-	 nPE1clSsGJT8BSDf+f/XP+Qa46k+1Ym1MUjXncnAl9olDNawF+5rqRybuGtEy6VN2X
-	 L3jv6FI/nl35Pds73UJowwyPipHxA8OLqiuEF75KJr1cY0r3y4UOe3HNNLN9CUrw3j
-	 plSc3qLO0Lyexnl/BJv8skanfWKD4to/UrRaAFHpu6HV/teZEQAsd+FNEq+MeUPm58
-	 h6VTDv+na7Y6AxSucvV2WVNg/g3OCliNq21dRW8f0HtF1r93haFNOMICns1nEupHQ9
-	 XRwEQxpG27yrA==
+	b=BX6XVYaykORih3iM1RulSQRbMckcNTAs20jlYl/t+OgEouej05dWBKMGHh40xBLJH
+	 estY4akrNsjhZHUD/XlP1RzSSf3UDZbRdO/gIALBOpGfQxR9ohluwIIeoXt6eahAVh
+	 ek9sGQGAtY+KvJsLcOK6ygbwe9v02AkYkym7fIk0CwK3tcInGsqcu3jKeRG8Uh0Lb0
+	 HECoWQuGmFCRxu9leOaVoHE0KkiABQtzWHwXpAbphC1cMxnNutrQHuCcoQhBfBgLOz
+	 1YpbwdOerI3dxiyyFQkCRtfM37tfXUsIfpJRUbEq/6X5q0cc9Pg0ZNT7F0ZgLvife+
+	 LV7bNoT2YVJLg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6AA40418A1;
-	Thu, 13 Mar 2025 15:18:43 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 40E1C83FC1;
+	Thu, 13 Mar 2025 16:17:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 1478AEA
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 15:18:41 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 7C040115
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 16:17:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 7596B41957
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 15:18:40 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6B9016113B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 16:17:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KWDPaU6IM1Yi for <intel-wired-lan@lists.osuosl.org>;
- Thu, 13 Mar 2025 15:18:39 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
- helo=mgamail.intel.com; envelope-from=jedrzej.jagielski@intel.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id cFU2QkDaAC4B for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 13 Mar 2025 16:17:45 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
+ helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D64B141800
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D64B141800
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D64B141800
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 15:18:38 +0000 (UTC)
-X-CSE-ConnectionGUID: ItqxOfzJSvyPOO4gfE9XYA==
-X-CSE-MsgGUID: CxGvFPVsTIG2wk+bSgmKxA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11372"; a="43104929"
-X-IronPort-AV: E=Sophos;i="6.14,245,1736841600"; d="scan'208";a="43104929"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
- by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Mar 2025 08:18:38 -0700
-X-CSE-ConnectionGUID: NJWovphySEWS1n7rtn4TNQ==
-X-CSE-MsgGUID: b6dNe/PCR2+ICS51H1qYBw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org CCFC861135
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CCFC861135
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id CCFC861135
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Mar 2025 16:17:41 +0000 (UTC)
+X-CSE-ConnectionGUID: anbMc+dXTyGcSjyUWBAA/Q==
+X-CSE-MsgGUID: NmBndmjuRy22MXz9DqgVHA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11372"; a="46799001"
+X-IronPort-AV: E=Sophos;i="6.14,245,1736841600"; d="scan'208";a="46799001"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Mar 2025 09:17:41 -0700
+X-CSE-ConnectionGUID: I++hGwJvTrinb484VqM5Tw==
+X-CSE-MsgGUID: 7PZJAZl1Q8mJ3vcRuQcfSw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,245,1736841600"; d="scan'208";a="121918411"
-Received: from os-delivery.igk.intel.com ([10.102.18.218])
- by orviesa008.jf.intel.com with ESMTP; 13 Mar 2025 08:18:36 -0700
-From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: anthony.l.nguyen@intel.com, netdev@vger.kernel.org,
- przemyslaw.kitszel@intel.com, horms@kernel.org,
- Andrii Staikov <andrii.staikov@intel.com>,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-Date: Thu, 13 Mar 2025 16:03:46 +0100
-Message-Id: <20250313150346.356612-16-jedrzej.jagielski@intel.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20250313150346.356612-1-jedrzej.jagielski@intel.com>
-References: <20250313150346.356612-1-jedrzej.jagielski@intel.com>
+X-IronPort-AV: E=Sophos;i="6.14,245,1736841600"; d="scan'208";a="151858665"
+Received: from orsmsx901.amr.corp.intel.com ([10.22.229.23])
+ by orviesa002.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Mar 2025 09:17:41 -0700
+Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14; Thu, 13 Mar 2025 09:17:40 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14 via Frontend Transport; Thu, 13 Mar 2025 09:17:40 -0700
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.173)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.44; Thu, 13 Mar 2025 09:17:39 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=va/iaSiNTWL4fyScFdhbblW/mMnIs3iOlp5Plg5DTV2CzYrlfzHyoPzuNHyis5uWPkUDFSLwN8gQiX9hYeAnYHI7M4nusI7H7N5DPabR7CF+SgmhvK/pKOmat1WslIxwcdF/1yxmONR32lZNxZFOODuQ7n+jYWCdh3ouMgyxQAwJNOGHVqBkMODP0X1vrnDoppySn0iMu6UeOdU7gqDdN13f7ocaz3Rn/XBMAJqPb9mv0hd5V9gwuRTb4uTUb2rjQeqDWrPBsj/SmxMHAtBFtJ1xWsRyJmKc1T+XH/YZCqK01M5cRjASFTIvtzIyNGntzkOY2dQjsIVUqtvRgmi9/Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=OAW1FWQdRacftoCxMnfHq6jPK9cgKj1pasPiO1DTXPU=;
+ b=cjb+IvjQLHWleg+tFBfTGE0rgDVMHbdqgHUwXK5U5E1rxmlwMY6eNMTrG2NfjmaxKn/7x6r+Bd50w2oXxeVCvJ29sFeDJyoEtrtYoAC1Vypht/ptY1IG8aM6ExGg0o4nxL5Jqhk3Dy5HJxd4ihb2/YXahBkK5PwolQ5lWYTt650wH4CAnSBlySjSa+RttG/jWTuPRxZNBRVuHa9VExnZ8+MQE9L2aJR3hRzQGhjZym2VGLSEpt8jETeQboW7321JeD/PNF6IGSn5Tz1/u1cm9mtsW36JDaEACmUwXJKgRef3tbGJBC4b3HQpN3Ob75b0Xqm1B5quibM+rnnPB1L/2w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DS0PR11MB8718.namprd11.prod.outlook.com (2603:10b6:8:1b9::20)
+ by SA0PR11MB4624.namprd11.prod.outlook.com (2603:10b6:806:98::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8534.28; Thu, 13 Mar
+ 2025 16:16:38 +0000
+Received: from DS0PR11MB8718.namprd11.prod.outlook.com
+ ([fe80::4b3b:9dbe:f68c:d808]) by DS0PR11MB8718.namprd11.prod.outlook.com
+ ([fe80::4b3b:9dbe:f68c:d808%5]) with mapi id 15.20.8534.027; Thu, 13 Mar 2025
+ 16:16:38 +0000
+Message-ID: <5806fdc5-aec8-45e9-85ed-5646c8d652de@intel.com>
+Date: Thu, 13 Mar 2025 17:16:32 +0100
+User-Agent: Mozilla Thunderbird
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+CC: <intel-wired-lan@lists.osuosl.org>, Michal Kubiak
+ <michal.kubiak@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, "Przemek
+ Kitszel" <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "Alexei
+ Starovoitov" <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ "Jesper Dangaard Brouer" <hawk@kernel.org>, John Fastabend
+ <john.fastabend@gmail.com>, Simon Horman <horms@kernel.org>,
+ <bpf@vger.kernel.org>, <netdev@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>
+References: <20250305162132.1106080-1-aleksander.lobakin@intel.com>
+ <20250305162132.1106080-9-aleksander.lobakin@intel.com>
+ <Z8rUSb+XocCGHSrt@boxer>
+From: Alexander Lobakin <aleksander.lobakin@intel.com>
+Content-Language: en-US
+In-Reply-To: <Z8rUSb+XocCGHSrt@boxer>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: DB8PR03CA0027.eurprd03.prod.outlook.com
+ (2603:10a6:10:be::40) To DS0PR11MB8718.namprd11.prod.outlook.com
+ (2603:10b6:8:1b9::20)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS0PR11MB8718:EE_|SA0PR11MB4624:EE_
+X-MS-Office365-Filtering-Correlation-Id: dd582d42-3c89-4d18-c80a-08dd624a6efc
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|7416014|376014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?QWt2RHhKbS84Y0FZT3NhVi9rNUJVeS9LU1Q2bUJzOVhSeG1IV3Q3ZlhjNTVH?=
+ =?utf-8?B?Zm5CazNWUVBDc0VrU0hOZUZGMFhIVHNyd29ENW9MMEFlZzhaRkJ2V1o5em90?=
+ =?utf-8?B?b0J2eHE4V1NhQ0R3U1c4NXpZSTRRdWdmNFhBTmJjbFlZeWZLWHFNZWd5ZUdR?=
+ =?utf-8?B?a0pXWklqM0tnSGJHTUkyclI4TXFrcDFvc08vdGdHSXo1T3RBWXVlOWxZVE1N?=
+ =?utf-8?B?dzBHSFh0QURNZ3kvdWd6MHloSkNCZjhGUVRKclZLOTF4ZS9WN2IrWVNnWlRz?=
+ =?utf-8?B?MG9xR04vdjFuaTV4MlRVTUkxdy8zSHVrLzZtSFFyM0cyTXpWenZQcE40TDBD?=
+ =?utf-8?B?cXdLcjU1WHRYclhCU2VmUVJUOHBmekZ5SWIzVFVvaDhsc1p5T2pUOWFma2RG?=
+ =?utf-8?B?b2RpeDlPS0hDRndpdllZNnNma2QrdWswNmNXR0IzWG1JVktkaGppeHBHN0JQ?=
+ =?utf-8?B?NlM0S0xyYnloQ0pvcXA5MmdRaXg2ZTYxRWQrTk4vWWx3UEtWYmRuS0dDaWFP?=
+ =?utf-8?B?RU45MUE5clc3OW5PNTBraDVKZlRHL3EvRjhpb1VtSlNDMW1WMUpBM0lMUVBw?=
+ =?utf-8?B?TXQ2bk9WS0RQazIxems5SVpBR1FEc2JOcEdTbTYzbUU1aHJpUExSV2hpNFlt?=
+ =?utf-8?B?V2Fzc095RFkzcm5DbCtIUUV5b0E1QUdZQVNzVWNoSSsyUXdlY2thczBCZXhh?=
+ =?utf-8?B?clV1cTdWWlBuZDc3MVFMeWVabzdrRFJXMWhSN2JCNzFrdHorS04wRFJKZElZ?=
+ =?utf-8?B?cnRXbzNqRnlZTjdSbjJtYUthRTVwMnd6azBLc1Y2RUw2UGtlc3BOM050SVBL?=
+ =?utf-8?B?ZDNkUHlzVTk3SmFaMnRUVWpqMjd0WThRWUpMbmhmWStZTjQ0VkdJWXZTSEh0?=
+ =?utf-8?B?TS9LVktYSnZMcEl3VmdwQ3R3WHhwQXdlY3FHNC9BRHdnMy9NTE1xUDJpUXZ1?=
+ =?utf-8?B?a2lmZ3lVdmVqVDZqRWVwQllRcTFCd01WN3preXExcjluVlpnaU1OU0I4eUdv?=
+ =?utf-8?B?eGdVODcwa2grZkxIVzB5V2x2Ui83UXBRdHI1OHF1ZXNzZWw2cmZDaGJTcXAy?=
+ =?utf-8?B?aTJtNTdia1p4bzYzbnM1VDF0ZGlkOFRpNlFkQ041Tlp1YTI2N3I3WWVTTlV2?=
+ =?utf-8?B?aDhuTDMzVEc3TlBVY0YvSkNyZ3ZyMENicWtlcm9aNUFnV1JCWGNUWVNxQUVT?=
+ =?utf-8?B?ZHN2YkV3ZGhDSzY0Qmh0Q2hENHV3RlNBcGVFbjZDTDlwNGVsZUJXUnRBVkJp?=
+ =?utf-8?B?NitDQWJLc21HWmMybU5RcHdSZE5HdDI0VzV6N1JIU2pGc3VxcCswZEZXSTR0?=
+ =?utf-8?B?TDJrZXFvanB5a1JGWmZkc1pSOGF6bGZSUHlkUUNrZnNaV0c0MFNmdkpUTEgz?=
+ =?utf-8?B?ZDh0NjA5aTRNN0tCdktrWjNaV3pRZS9odFBZbTFxZW9JYUprT3pZQlBkQzFV?=
+ =?utf-8?B?bVVPZXdMR1loaWJhVlNPY1dVbzhtV2FhdDlscm91aFBZaFlTVEVZSFAwbmFE?=
+ =?utf-8?B?dGIyVURySnk1R0JYSE50WWI3UlNnOGhyYWlXbFlQYW5qbDFpYjlYemRxNG1z?=
+ =?utf-8?B?dERQU0Y3aHlsSkdueTNFYS9WNnV6SmxHT005TFprblU1K09zMHQvZFNzdkN5?=
+ =?utf-8?B?aFNaenJ3VXFHb3RMMHJmQWs3QjM5OWR2RFVJaFY1anRwem9JMThRcnE1V0Ur?=
+ =?utf-8?B?aDVWOGdJZE9aMDZEaVg4WExhOHZGb2VNVmc5U2ozdkk1VWNoemNyMWtZUkJs?=
+ =?utf-8?B?U0JNbWFlQ3J4MUlMSkV4VExsTmVHZU1XbWxyWnNodVZrT0xNWkRDcU9KdWF3?=
+ =?utf-8?B?M1dZUzd1eTRYY1pYK015Q1M2Nk41ZW9pQW14ejBLZFpKQm5aSUpBeVQrN1VT?=
+ =?utf-8?Q?RBl8XrzD4Hvqb?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS0PR11MB8718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(1800799024)(7416014)(376014); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ZjUzMnRuaWQ0cExWVWhmSWtzSkp2dnkvN2U4blhPVFZ3amJyc0wxcTB0d3Rx?=
+ =?utf-8?B?eXdwV0ZJV2NzTjVhbG5PakRtU0ZEOFpZcGZZak4zV0FuaWY3V1ovVUg3TnVl?=
+ =?utf-8?B?TStMcGZ3NWx5L1pOaWVycDd1R3d2YytEYkU3czhJYWgrUGpNcWhQVytaem9V?=
+ =?utf-8?B?aThvTUduTkF1WDkyWXdEQzZPTGU0T1U0VS9KNUx4MWN5Mkc1UjY2ZDhGbC9k?=
+ =?utf-8?B?R2xPWlVDWkZDOHlWNVBsb0RSeFhud1ExK0FGcGtQc3F6VzAyeHlLYndoMGxn?=
+ =?utf-8?B?amtVcVNkbFJhUEkxWmZBMFZTaUZINDRHbUVOTUdoTXBFbUFESS95ZkJQZE1E?=
+ =?utf-8?B?ZGhxY2lCQ0pjVDZvZ2Y4VXZpSGRHUkhkSE1WQjhwNnNvRUsvYlVOczgxUDJm?=
+ =?utf-8?B?OCsxMjhhNUtibGhUcjhrRW1VTW95SjNwSmFJNzVBZEdJSWVEWTVZNmFlOHBi?=
+ =?utf-8?B?Z0xwVWZaUlJuSnE5SFR2MFlGbEZRUmZySG1tSEhRYjR0MDVTSS9mK01YN0VG?=
+ =?utf-8?B?bGpvdTVySVUyeDBxUzhKVk8reWZJUStGdFNPaUJ6QjhJS2ZlNVZQOVZuNTVk?=
+ =?utf-8?B?N3J4UTJZQktCM2ZiSnJuampqUWZ6UFBYR0V4Qlkwb0ExSmxLMVVVWFg3VC9X?=
+ =?utf-8?B?bmJhRFJjSGNOdGd6ZVlKNUI5MUY4UDFhdjQvVnR5OC9aanp3SjRGTkhITlJk?=
+ =?utf-8?B?T2c2cWZ4ZWp0V1FiMmx5eGYvZlE3eDdjcVNGMk4xVUtlSW5tZmF1UWtEVlRQ?=
+ =?utf-8?B?ODVta1dQOWpvZ0dqemNUZnVkM3lmU1dvZHZhZk1SeWhSSEZuSi9tdW9CNGl1?=
+ =?utf-8?B?bXlSVnRvYTZ4bjkyOHB3RWhnQm1QdWFWRjFwT3ErdlE5RERxeHdpcG5qTjcv?=
+ =?utf-8?B?U3YxWUtQQVdWajMxcG1PVzJ4MEJLc3pFbFVIYUcwMDcrTS9FYzhVRWJsZFJF?=
+ =?utf-8?B?dWV2WUpLOUhlRmF3S09idkhIbUorcTJLWm9WTXUyQ1FkNFpFSE80S3A3RDVl?=
+ =?utf-8?B?NW9pR1RmZy9zZkRjdFNtb1JWbGlpdjBObXRUQjBuL3o2S3JIcWpPT1ZDZXJp?=
+ =?utf-8?B?cm9saGdISE1DeUE4RGRJUnViQ1c0OVpuSllHZEZ4UnVTS1pzYW1xeVh2UTBT?=
+ =?utf-8?B?dnVHM3pXeEZLTWpOd3BmaEM0OWcycWVYdVdseXZJbFlOaG1uLzYxQTdLZVpY?=
+ =?utf-8?B?VVpDTFZ3NWp5ZXVFNWxmTUoyT2ZTTHcwY09OOE5QYmZCVFdhVUpiL2U2SWtn?=
+ =?utf-8?B?MTRsckpRSWxqeU5BRDR1ZGIzMEx1NVVyRFdNb1JIMExIeW1qTWtMQ1dMdGdE?=
+ =?utf-8?B?RklmdjVGd1JaY3J1dnltai96UDNEektLZHA3cFJDSEEvdU9BaFdESlUwN2FY?=
+ =?utf-8?B?dHZUL0NPSHE0ODM4ZHBaU0JvYTNnUThtd2duckxLYUtWK1JGRlVPRUNxMGpF?=
+ =?utf-8?B?Snp6Lyt1WE5IcjM1RVdyWEFlcCtNYWY5Sm5NMWcvdkN2NjVuSzc1TWZNcFgz?=
+ =?utf-8?B?dHI4azc5anAxYlJWakY2eFhSK1ptam5jTFR1U2JjNjVZcjdmTnRPbXJ1Uzlt?=
+ =?utf-8?B?MjF1T3NnMVN5VHNmQlkxcTM4VmZtdzNzTkljNkN6QlBTa0tyYVk1MkcxL0RQ?=
+ =?utf-8?B?MEFUS1d3Z1dvQlhWZjRMRmlLQXI5Nk5OWGh5T0hITDV5KzRNRmpmem03RlFZ?=
+ =?utf-8?B?WDlkMHRxaG1ZVUFzZnlTeFBUNzRCM1hQbThsOUhCSmhwelAzWi9XRlJPSklB?=
+ =?utf-8?B?MENqTzNKT0xpRmFmdjlIWUJSbTArczR3ZGZZNi9sbHdCTDBXbXpLdkJueTNv?=
+ =?utf-8?B?RXkvZWdpL3E2NXA0L2J5cTk0MVk1b2l3Z2loZXZ2bWFTaFdDbmJvNEFneXds?=
+ =?utf-8?B?d2FlcVVTS1M1cnpSa3lBM1VKbTNYQUt5b0RDTTRrekN6VEdVa29qMTFCRElP?=
+ =?utf-8?B?R25pWGhhajB1U0FpNU9JaUlyWmVEWDhhNUt6by9IWjdvbS9NYjh3NTNGUTRL?=
+ =?utf-8?B?UTVUdUpmZS9IRlBBcGduUmZMZERsYmpvNDZUbS8rRU80d1RhcGhGMmcrUEpH?=
+ =?utf-8?B?eGVaQnFLV3JXaXhIUmZneXV1eldCR1FMN1J3cFVSWnQ4andhUFlJRktURElv?=
+ =?utf-8?B?VXM5Q09jc3A4Y0Y0RlBlTHJtYWZrZ0wyMS9uSnVyOER1NWFRUWV2T0JMamRR?=
+ =?utf-8?B?QkE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: dd582d42-3c89-4d18-c80a-08dd624a6efc
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB8718.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Mar 2025 16:16:38.8208 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: +/YPzPlzVa5gEInBSL0qbHa5fJYJ9ncWgLZbxav5pHjkxXDEUEoDjU/0sWDM7FBnpRgOh8fMqayGh0DWMfS0ZYlxilvKXjV37gkIbuPx5jw=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR11MB4624
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1741879119; x=1773415119;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=DJuhdKgBG7XHGJBgFunm7QYohmKylbxg2m+Ps7AbJuQ=;
- b=k6zrxP2KfgMZuc5jJEB0IhMHe6Vw5eD+EK2yPitPUV1HkXRxL6/Ph9j6
- wZZMDxlGul6/M2/Azy8h/9YdLKfKybgHg9vrGEOYVxZCK1KECcMSs3d/M
- 0F+9tfogr4JvS8sE2UHK83C2J2TjsvshBXCL78SgMNFginskStUKO4quD
- E65KlHCLjuD9F6VBfs8ZhNzYDQZRJt+Cb16dZE1l8nRhfTt2TTaEbPHjl
- l+Ni2e+0B5moc/qzXgkPmCwYF2BbopHp3Qny2rQX+Eq4IArjMgWpbck98
- sgGWt1hh4whYs277880oiacJCsd0i0WYjGbIksFDLWktjiSHmQSxpGq1V
+ t=1741882662; x=1773418662;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=OAW1FWQdRacftoCxMnfHq6jPK9cgKj1pasPiO1DTXPU=;
+ b=lC5X9tEgfoDv+MMpqXKg6g5a68d3GEYxE+rsqudh8pPZqDxU//djJNRV
+ 57gyx5D1Z8+TNtDAEzhissLhmuKedqDtGn94AiYio2rfBSn2b5RB2WG2l
+ 4aWe8ZCfbBWYTJ79HLxWGGv3prwR54SSX/4/iQ9tb3kstAo8fm2mZ5XdG
+ t+JZtjwsyRd+Z59f6b6ICWPYmhZ6HhQJDqmof6t1Hxx3jHe1rqnsvLxAV
+ yLe1r0XCQfvnzyoDGbs9pQPvRohjVQ4GCXoD45WaDUni0TKvjVJ4zeIHM
+ tNIf2KsISfGXBHoJ7upKMqFSJZmbn32Ov8GvTAPFPZJ8jDHo/O1GVCtvd
  g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=k6zrxP2K
-Subject: [Intel-wired-lan] [PATCH iwl-next v8 15/15] ixgbe: add support for
- FW rollback mode
+ header.a=rsa-sha256 header.s=Intel header.b=lC5X9tEg
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net-next 08/16] idpf: make complq
+ cleaning dependent on scheduling mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -113,180 +248,26 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Andrii Staikov <andrii.staikov@intel.com>
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Date: Fri, 7 Mar 2025 12:11:05 +0100
 
-The driver should detect whether the device entered FW rollback
-mode and then notify user with the dedicated message including
-FW and NVM versions.
+> On Wed, Mar 05, 2025 at 05:21:24PM +0100, Alexander Lobakin wrote:
+>> From: Michal Kubiak <michal.kubiak@intel.com>
+>>
+>> Extend completion queue cleaning function to support queue-based
+>> scheduling mode needed for XDP queues.
+>> Add 4-byte descriptor for queue-based scheduling mode and
+>> perform some refactoring to extract the common code for
+>> both scheduling modes.
 
-Even if the driver detected rollback mode, this should not result
-in an probe error and the normal flow proceeds.
+TBH it's not needed at all as the cleaning logic for XDP queues is in
+xdp.c and doesn't depend on the regular Tx. Previously, the same
+functions were used for both, but then we rewrote stuff and I forgot
+to toss it off =\
 
-FW tries to rollback to “old” operational FW located in the
-inactive NVM bank in cases when newly loaded FW exhibits faulty
-behavior. If something goes wrong during boot the FW may switch
-into rollback mode in an attempt to avoid recovery mode and stay
-operational. After rollback is successful, the banks are swapped,
-and the “rollback” bank becomes the active bank for the next reset.
+I only need to add 4-byte completion descriptors and allocation
+depending on the queue type. Regular skb functions don't use queue-based
+mode, XDP path doesn't use flow-based mode.
 
-Reviewed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-Signed-off-by: Andrii Staikov <andrii.staikov@intel.com>
-Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
----
- .../ethernet/intel/ixgbe/devlink/devlink.c    |  3 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe.h      |  1 +
- drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 33 +++++++++++++++++++
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 26 +++++++++++++++
- drivers/net/ethernet/intel/ixgbe/ixgbe_type.h |  2 ++
- .../ethernet/intel/ixgbe/ixgbe_type_e610.h    |  1 +
- 6 files changed, 65 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c b/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c
-index 87ec2dea5862..88335912bd6f 100644
---- a/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c
-+++ b/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c
-@@ -499,7 +499,8 @@ static int ixgbe_devlink_reload_empr_finish(struct devlink *devlink,
- 
- 	*actions_performed = BIT(DEVLINK_RELOAD_ACTION_FW_ACTIVATE);
- 
--	adapter->flags2 &= ~IXGBE_FLAG2_API_MISMATCH;
-+	adapter->flags2 &= ~(IXGBE_FLAG2_API_MISMATCH |
-+			     IXGBE_FLAG2_FW_ROLLBACK);
- 
- 	return 0;
- }
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-index 2246997bc9fb..23c2e2c2649c 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-@@ -672,6 +672,7 @@ struct ixgbe_adapter {
- #define IXGBE_FLAG2_NO_MEDIA			BIT(21)
- #define IXGBE_FLAG2_MOD_POWER_UNSUPPORTED	BIT(22)
- #define IXGBE_FLAG2_API_MISMATCH		BIT(23)
-+#define IXGBE_FLAG2_FW_ROLLBACK			BIT(24)
- 
- 	/* Tx fast path data */
- 	int num_tx_queues;
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-index 84b015e2dac2..bc1a5775a3a0 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-@@ -1831,6 +1831,22 @@ static bool ixgbe_fw_recovery_mode_e610(struct ixgbe_hw *hw)
- 	return !!(fwsm & IXGBE_GL_MNG_FWSM_RECOVERY_M);
- }
- 
-+/**
-+ * ixgbe_fw_rollback_mode_e610 - Check FW NVM rollback mode
-+ * @hw: pointer to hardware structure
-+ *
-+ * Check FW NVM rollback mode by reading the value of
-+ * the dedicated register.
-+ *
-+ * Return: true if FW is in rollback mode, otherwise false.
-+ */
-+static bool ixgbe_fw_rollback_mode_e610(struct ixgbe_hw *hw)
-+{
-+	u32 fwsm = IXGBE_READ_REG(hw, IXGBE_GL_MNG_FWSM);
-+
-+	return !!(fwsm & IXGBE_GL_MNG_FWSM_ROLLBACK_M);
-+}
-+
- /**
-  * ixgbe_init_phy_ops_e610 - PHY specific init
-  * @hw: pointer to hardware structure
-@@ -3163,6 +3179,21 @@ int ixgbe_get_inactive_nvm_ver(struct ixgbe_hw *hw, struct ixgbe_nvm_info *nvm)
- 	return ixgbe_get_nvm_ver_info(hw, IXGBE_INACTIVE_FLASH_BANK, nvm);
- }
- 
-+/**
-+ * ixgbe_get_active_nvm_ver - Read Option ROM version from the active bank
-+ * @hw: pointer to the HW structure
-+ * @nvm: storage for Option ROM version information
-+ *
-+ * Reads the NVM EETRACK ID, Map version, and security revision of the
-+ * active NVM bank.
-+ *
-+ * Return: the exit code of the operation.
-+ */
-+static int ixgbe_get_active_nvm_ver(struct ixgbe_hw *hw, struct ixgbe_nvm_info *nvm)
-+{
-+	return ixgbe_get_nvm_ver_info(hw, IXGBE_ACTIVE_FLASH_BANK, nvm);
-+}
-+
- /**
-  * ixgbe_get_netlist_info - Read the netlist version information
-  * @hw: pointer to the HW struct
-@@ -3897,6 +3928,8 @@ static const struct ixgbe_mac_operations mac_ops_e610 = {
- 	.get_media_type			= ixgbe_get_media_type_e610,
- 	.setup_link			= ixgbe_setup_link_e610,
- 	.fw_recovery_mode		= ixgbe_fw_recovery_mode_e610,
-+	.fw_rollback_mode		= ixgbe_fw_rollback_mode_e610,
-+	.get_nvm_ver			= ixgbe_get_active_nvm_ver,
- 	.get_link_capabilities		= ixgbe_get_link_capabilities_e610,
- 	.get_bus_info			= ixgbe_get_bus_info_generic,
- 	.acquire_swfw_sync		= ixgbe_acquire_swfw_sync_X540,
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 5c9de1fafd28..ce73a47ce00a 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -8420,6 +8420,32 @@ static bool ixgbe_check_fw_error(struct ixgbe_adapter *adapter)
- 			return true;
- 	}
- 
-+	/* return here if FW rollback mode has been already detected */
-+	if (adapter->flags2 & IXGBE_FLAG2_FW_ROLLBACK)
-+		return false;
-+
-+	if (hw->mac.ops.fw_rollback_mode && hw->mac.ops.fw_rollback_mode(hw)) {
-+		struct ixgbe_nvm_info *nvm_info = &adapter->hw.flash.nvm;
-+		char ver_buff[64] = "";
-+
-+		if (hw->mac.ops.get_fw_ver && hw->mac.ops.get_fw_ver(hw))
-+			goto no_version;
-+
-+		if (hw->mac.ops.get_nvm_ver &&
-+		    hw->mac.ops.get_nvm_ver(hw, nvm_info))
-+			goto no_version;
-+
-+		snprintf(ver_buff, sizeof(ver_buff),
-+			 "Current version is NVM:%x.%x.%x, FW:%d.%d. ",
-+			 nvm_info->major, nvm_info->minor, nvm_info->eetrack,
-+			 hw->fw_maj_ver, hw->fw_maj_ver);
-+no_version:
-+		e_dev_warn("Firmware rollback mode detected. %sDevice may exhibit limited functionality. Refer to the Intel(R) Ethernet Adapters and Devices User Guide for details on firmware rollback mode.",
-+			   ver_buff);
-+
-+		adapter->flags2 |= IXGBE_FLAG2_FW_ROLLBACK;
-+	}
-+
- 	return false;
- }
- 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-index 6bf6ba7dcdcc..892fa6c1f879 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-@@ -3525,6 +3525,8 @@ struct ixgbe_mac_operations {
- 	int (*get_thermal_sensor_data)(struct ixgbe_hw *);
- 	int (*init_thermal_sensor_thresh)(struct ixgbe_hw *hw);
- 	bool (*fw_recovery_mode)(struct ixgbe_hw *hw);
-+	bool (*fw_rollback_mode)(struct ixgbe_hw *hw);
-+	int (*get_nvm_ver)(struct ixgbe_hw *hw, struct ixgbe_nvm_info *nvm);
- 	void (*disable_rx)(struct ixgbe_hw *hw);
- 	void (*enable_rx)(struct ixgbe_hw *hw);
- 	void (*set_source_address_pruning)(struct ixgbe_hw *, bool,
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
-index 1df5ac2e1fc5..c5cf153a19e9 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
-@@ -90,6 +90,7 @@
- 
- #define IXGBE_GL_MNG_FWSM		0x000B6134 /* Reset Source: POR */
- #define IXGBE_GL_MNG_FWSM_RECOVERY_M	BIT(1)
-+#define IXGBE_GL_MNG_FWSM_ROLLBACK_M    BIT(2)
- 
- /* Flash Access Register */
- #define IXGBE_GLNVM_FLA			0x000B6108 /* Reset Source: POR */
--- 
-2.31.1
-
+Thanks,
+Olek
