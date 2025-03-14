@@ -1,93 +1,102 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE51EA6173E
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Mar 2025 18:16:20 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 46991A6191E
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Mar 2025 19:12:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7253760832;
-	Fri, 14 Mar 2025 17:16:19 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vBzYNY5aeFWw; Fri, 14 Mar 2025 17:16:18 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4CE3A607B4
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1741972578;
-	bh=1g+8DuEQpMQqZ51iFEMunNg5rIUKG7I4x3N1STyFqt4=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=zhRStynkdkwvJGGGgO1YcvQq058hskWS0Llq4qpodax0m2099Sg657SmRwxZL64Ks
-	 iLOoACWtffkEg2g/IaKUr2ch7hVp7TFoc6UUtMUUSaXFpoayWH7mxM6RdoIvDMxxiu
-	 B25C0brP1rm+3GYKUIvyp9plzJP/0fhgx4oj8xg9eL6eUm4NNB0/i4sggIuo+sjJbH
-	 3EAv/jm0nTcgs3k9y90n1gknbNcIQ9PNhAHpHj2bh7nKT0m+Z4sNEUeLqQrXm3i3p9
-	 tSbCcuElooaf5p9CFlYt3ovM4wUIYXj5sw213CpUvrS8WYqMU8es6nmDKF2vAc+5eN
-	 sP9BM+IYw8pKQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4CE3A607B4;
-	Fri, 14 Mar 2025 17:16:18 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 16BC261
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Mar 2025 17:16:16 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 062C683A4C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Mar 2025 17:16:16 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 01212847EB;
+	Fri, 14 Mar 2025 18:12:42 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TmZnZoKohqic for <intel-wired-lan@lists.osuosl.org>;
- Fri, 14 Mar 2025 17:16:15 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0D86A83993
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0D86A83993
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0D86A83993
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Mar 2025 17:16:14 +0000 (UTC)
-X-CSE-ConnectionGUID: AEkmqnGaSjiPTc778E753A==
-X-CSE-MsgGUID: 7znZAQM0QEaWTXjLS08Xtw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11373"; a="60676964"
-X-IronPort-AV: E=Sophos;i="6.14,246,1736841600"; d="scan'208";a="60676964"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
- by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Mar 2025 10:16:14 -0700
-X-CSE-ConnectionGUID: JoUv6neYTJqIt2s3s+Ho2w==
-X-CSE-MsgGUID: GOtHyYB+Qf6rBeKyW4MFIA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,246,1736841600"; d="scan'208";a="152276866"
-Received: from lkp-server02.sh.intel.com (HELO a4747d147074) ([10.239.97.151])
- by fmviesa001.fm.intel.com with ESMTP; 14 Mar 2025 10:16:14 -0700
-Received: from kbuild by a4747d147074 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1tt8dn-000AgG-1e
- for intel-wired-lan@lists.osuosl.org; Fri, 14 Mar 2025 17:16:11 +0000
-Date: Sat, 15 Mar 2025 01:15:16 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202503150110.riAkLq1t-lkp@intel.com>
-User-Agent: s-nail v14.9.24
+ id wq7VVCgxKutv; Fri, 14 Mar 2025 18:12:41 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8E57D847EA
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1741975960;
+	bh=bea4aF/eYUXOOd8yEUco3DKEiZCgAkpElXeGPg50Dew=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=wHl0jQNJceK51BzAu1/fPFdUQJ+4OgUc3XnXD1TwjANbmXZ2lnhnh3r3iXcRICIKx
+	 RiGWu+z5u5/PDJZr9rCXHmKYGI332jR6aAidmC9Yw+DnmdEo1NwRAf8OQ6jrwzp0UK
+	 iMJLa6FKeRkYya/kI/qNVlcV6l3bbphtwW7QirMkkk8Lo8ykpW/aisywj1dx6bOV81
+	 UuDUIjag9b28q3O7zK6idckQ0DluYpn7/oS9YTvh4uE71izdj2gEKOqB7HskXnLkU8
+	 ROuFc2OVjrwBQDq9fRvd7tsoOhMF1KOiLhdpZ6RHcFoCjv99yX7tS8Ys/qIi1S1bbi
+	 21mWD/ViAyBoA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8E57D847EA;
+	Fri, 14 Mar 2025 18:12:40 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 7AD02EA
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Mar 2025 18:12:38 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5A96741AAF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Mar 2025 18:12:38 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id u_FLaTrzWi_d for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 14 Mar 2025 18:12:37 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ envelope-from=leon@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org B481641AAA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B481641AAA
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id B481641AAA
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Mar 2025 18:12:36 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 9FF0D5C548B;
+ Fri, 14 Mar 2025 18:10:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 913F5C4CEE3;
+ Fri, 14 Mar 2025 18:12:34 +0000 (UTC)
+Date: Fri, 14 Mar 2025 20:12:30 +0200
+From: Leon Romanovsky <leon@kernel.org>
+To: "Samudrala, Sridhar" <sridhar.samudrala@intel.com>
+Cc: "Ertman, David M" <david.m.ertman@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>,
+ "Nikolova, Tatyana E" <tatyana.e.nikolova@intel.com>,
+ "jgg@nvidia.com" <jgg@nvidia.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-rdma@vger.kernel.org" <linux-rdma@vger.kernel.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+Message-ID: <20250314181230.GP1322339@unreal>
+References: <20250225050428.2166-1-tatyana.e.nikolova@intel.com>
+ <20250225050428.2166-2-tatyana.e.nikolova@intel.com>
+ <20250225075530.GD53094@unreal>
+ <IA1PR11MB61944C74491DECA111E84021DDC22@IA1PR11MB6194.namprd11.prod.outlook.com>
+ <20250226185022.GM53094@unreal>
+ <IA1PR11MB6194C8F265D13FE65EA006C2DDC22@IA1PR11MB6194.namprd11.prod.outlook.com>
+ <20250302082623.GN53094@unreal>
+ <07e75573-9fd0-4de1-ac44-1f6a5461a6b8@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <07e75573-9fd0-4de1-ac44-1f6a5461a6b8@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1741972575; x=1773508575;
- h=date:from:to:subject:message-id;
- bh=fQFC5JAgCiAFFekNZ9jPuttPOYJQCMWAtLz+JNuJTws=;
- b=RgBPFC3jZnycMk8aKFidkmEA1EpWwmA3U53zpzSE1hfOBJoDD8IKE4OI
- aLOtB1BuD86L+W+OUIx4u+kRUKn7At3swhg27je+zKgYSyngMV9M0p4k1
- KXIIcMZv3qbGEz/ikkPnxXU/XLaUMgcM/RajtBJtChv6cAPZS38upep76
- a17/2MkHZOXIigb+/oJnNymd+5vgA2XTARy0mI4jRlYXQyCSYNz1vadX3
- kmkvbyWDpEsOOwkHWwmykwLN+mRGHd9bo5uQNSLqt6eIi6AF9z2xMP6wM
- Z1e1nmX99EqXb4wcMm71JXgaXLaXUxDnl1MJ6Nge4hh8/1XxRXrqi34R6
- w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=RgBPFC3j
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 87ca16163fa39a6678d563f2d01662f1a9fa11a4
+ d=kernel.org; s=k20201202; t=1741975955;
+ bh=lhJDeX49+5aiNltJ7ikw4MoRh8myuWlXfEQi8+HVDNU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=ZZ7zmc3UuUHq80xn+QmY6UGtc6zc8u26BpKN10Ds35Zu0b1OICd+uIteduEYFPqYq
+ 4Pn9fFBa2MT/YyTPBL64M5TVEIm8EJT9+YN3ra5VEGEw65aAVFDNPZBsHTHEqk9LbI
+ yU6KUG8AcgkDhhebFPbgKrO9A45m0jFMcCs2TVD8mCSaYAXGA8V77G/5xIS+tlJRLO
+ GTN7xYkZeQFr4YxHrb4gCgrCwF/lPtqj/upERBNNqzhRngq8gIt8CKj7ecmMsd2gG5
+ Lvw3/XXnjZkZh36GP4JJi7PLSt3huGmE5iZFXwoLiW/ipStaGp06zE3mj+dw5tKkig
+ TvhOX0UW9LBDA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=ZZ7zmc3U
+Subject: Re: [Intel-wired-lan] [iwl-next v4 1/1] iidc/ice/irdma: Update IDC
+ to support multiple consumers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -103,100 +112,151 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 87ca16163fa39a6678d563f2d01662f1a9fa11a4  ice: fix reservation of resources for RDMA when disabled
+On Thu, Mar 13, 2025 at 04:38:39PM -0700, Samudrala, Sridhar wrote:
+> 
+> 
+> On 3/2/2025 12:26 AM, Leon Romanovsky wrote:
+> > On Wed, Feb 26, 2025 at 11:01:52PM +0000, Ertman, David M wrote:
+> > > 
+> > > 
+> > > > -----Original Message-----
+> > > > From: Leon Romanovsky <leon@kernel.org>
+> > > > Sent: Wednesday, February 26, 2025 10:50 AM
+> > > > To: Ertman, David M <david.m.ertman@intel.com>
+> > > > Cc: Nikolova, Tatyana E <tatyana.e.nikolova@intel.com>; jgg@nvidia.com;
+> > > > intel-wired-lan@lists.osuosl.org; linux-rdma@vger.kernel.org;
+> > > > netdev@vger.kernel.org
+> > > > Subject: Re: [iwl-next v4 1/1] iidc/ice/irdma: Update IDC to support multiple
+> > > > consumers
+> > > > 
+> > > > On Wed, Feb 26, 2025 at 05:36:44PM +0000, Ertman, David M wrote:
+> > > > > > -----Original Message-----
+> > > > > > From: Leon Romanovsky <leon@kernel.org>
+> > > > > > Sent: Monday, February 24, 2025 11:56 PM
+> > > > > > To: Nikolova, Tatyana E <tatyana.e.nikolova@intel.com>
+> > > > > > Cc: jgg@nvidia.com; intel-wired-lan@lists.osuosl.org; linux-
+> > > > > > rdma@vger.kernel.org; netdev@vger.kernel.org; Ertman, David M
+> > > > > > <david.m.ertman@intel.com>
+> > > > > > Subject: Re: [iwl-next v4 1/1] iidc/ice/irdma: Update IDC to support
+> > > > multiple
+> > > > > > consumers
+> > > > > > 
+> > > > > > On Mon, Feb 24, 2025 at 11:04:28PM -0600, Tatyana Nikolova wrote:
+> > > > > > > From: Dave Ertman <david.m.ertman@intel.com>
+> > > > > > > 
+> > > > > > > To support RDMA for E2000 product, the idpf driver will use the IDC
+> > > > > > > interface with the irdma auxiliary driver, thus becoming a second
+> > > > > > > consumer of it. This requires the IDC be updated to support multiple
+> > > > > > > consumers. The use of exported symbols no longer makes sense
+> > > > because it
+> > > > > > > will require all core drivers (ice/idpf) that can interface with irdma
+> > > > > > > auxiliary driver to be loaded even if hardware is not present for those
+> > > > > > > drivers.
+> > > > > > 
+> > > > > > In auxiliary bus world, the code drivers (ice/idpf) need to created
+> > > > > > auxiliary devices only if specific device present. That auxiliary device
+> > > > > > will trigger the load of specific module (irdma in our case).
+> > > > > > 
+> > > > > > EXPORT_SYMBOL won't trigger load of irdma driver, but the opposite is
+> > > > > > true, load of irdma will trigger load of ice/idpf drivers (depends on
+> > > > > > their exported symbol).
+> > > > > > 
+> > > > > > > 
+> > > > > > > To address this, implement an ops struct that will be universal set of
+> > > > > > > naked function pointers that will be populated by each core driver for
+> > > > > > > the irdma auxiliary driver to call.
+> > > > > > 
+> > > > > > No, we worked very hard to make proper HW discovery and driver
+> > > > autoload,
+> > > > > > let's not return back. For now, it is no-go.
+> > > > > 
+> > > > > Hi Leon,
+> > > > > 
+> > > > > I am a little confused about what the problem here is.  The main issue I pull
+> > > > > from your response is: Removing exported symbols will stop ice/idpf from
+> > > > > autoloading when irdma loads.  Is this correct or did I miss your point?
+> > > > 
+> > > > It is one of the main points.
+> > > > 
+> > > > > 
+> > > > > But, if there is an ice or idpf supported device present in the system, the
+> > > > > appropriate driver will have already been loaded anyway (and gone
+> > > > through its
+> > > > > probe flow to create auxiliary devices).  If it is not loaded, then the system
+> > > > owner
+> > > > > has either unloaded it manually or blacklisted it.  This would not cause an
+> > > > issue
+> > > > > anyway, since irdma and ice/idpf can load in any order.
+> > > > 
+> > > > There are two assumptions above, which both not true.
+> > > > 1. Users never issue "modprobe irdma" command alone and always will call
+> > > > to whole chain "modprobe ice ..." before.
+> > > > 2. You open-code module subsystem properly with reference counters,
+> > > > ownership and locks to protect from function pointers to be set/clear
+> > > > dynamically.
+> > > 
+> > > Ah, I see your reasoning now.  Our goal was to make the two modules independent,
+> > > with no prescribed load order mandated, and utilize the auxiliary bus and device subsystem
+> > > to handle load order and unload of one or the other module.  The auxiliary device only has
+> > > the lifespan of the core PCI driver, so if the core driver unloads, then the auxiliary device gets
+> > > destroyed, and the associated link based off it will be gone.  We wanted to be able to unload
+> > > and reload either of the modules (core or irdma) and have the interaction be able to restart with a
+> > > new probe.  All our inter-driver function calls are protected by device lock on the auxiliary
+> > > device for the duration of the call.
+> > 
+> > Yes, you are trying to return to pre-aux era.
+> 
+> 
+> The main motivation to go with callbacks to the parent driver instead of
+> using exported symbols is to allow loading only the parent driver required
+> for a particular deployment. irdma is a common rdma auxilary driver that
+> supports multiple parent pci drivers(ice, idpf, i40e, iavf). If we use
+> exported symbols, all these modules will get loaded even on a system with
+> only idpf device.
 
-elapsed time: 1446m
+It is not how kernel works. IRDMA doesn't call to all exported symbols
+of all these modules. It will call to only one exported symbol and that
+module will be loaded.
 
-configs tested: 81
-configs skipped: 1
+> 
+> The documentation for auxiliary bus
+> 	https://docs.kernel.org/driver-api/auxiliary_bus.html
+> shows an example on how shared data/callbacks can be used to establish
+> connection with the parent.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+I'm aware of this documentation, it is incorrect. You can find the
+explanation why this documentation exists in habanalabs discussion.
 
-tested configs:
-alpha                            allyesconfig    gcc-14.2.0
-arc                              allmodconfig    gcc-13.2.0
-arc                              allyesconfig    gcc-13.2.0
-arc                   randconfig-001-20250314    gcc-13.2.0
-arc                   randconfig-002-20250314    gcc-13.2.0
-arm                              allmodconfig    gcc-14.2.0
-arm                              allyesconfig    gcc-14.2.0
-arm                   randconfig-001-20250314    clang-21
-arm                   randconfig-002-20250314    gcc-14.2.0
-arm                   randconfig-003-20250314    gcc-14.2.0
-arm                   randconfig-004-20250314    gcc-14.2.0
-arm64                            allmodconfig    clang-18
-arm64                 randconfig-001-20250314    gcc-14.2.0
-arm64                 randconfig-002-20250314    clang-21
-arm64                 randconfig-003-20250314    clang-15
-arm64                 randconfig-004-20250314    clang-21
-csky                  randconfig-001-20250314    gcc-14.2.0
-csky                  randconfig-002-20250314    gcc-14.2.0
-hexagon                          allmodconfig    clang-21
-hexagon                          allyesconfig    clang-18
-hexagon               randconfig-001-20250314    clang-21
-hexagon               randconfig-002-20250314    clang-21
-i386                             allmodconfig    gcc-12
-i386                              allnoconfig    gcc-12
-i386                             allyesconfig    gcc-12
-i386        buildonly-randconfig-001-20250314    clang-19
-i386        buildonly-randconfig-002-20250314    clang-19
-i386        buildonly-randconfig-003-20250314    gcc-12
-i386        buildonly-randconfig-004-20250314    gcc-12
-i386        buildonly-randconfig-005-20250314    gcc-12
-i386        buildonly-randconfig-006-20250314    gcc-12
-i386                                defconfig    clang-19
-loongarch             randconfig-001-20250314    gcc-14.2.0
-loongarch             randconfig-002-20250314    gcc-14.2.0
-m68k                              allnoconfig    gcc-14.2.0
-microblaze                        allnoconfig    gcc-14.2.0
-mips                              allnoconfig    gcc-14.2.0
-nios2                             allnoconfig    gcc-14.2.0
-nios2                 randconfig-001-20250314    gcc-14.2.0
-nios2                 randconfig-002-20250314    gcc-14.2.0
-parisc                randconfig-001-20250314    gcc-14.2.0
-parisc                randconfig-002-20250314    gcc-14.2.0
-powerpc               randconfig-001-20250314    clang-21
-powerpc               randconfig-002-20250314    gcc-14.2.0
-powerpc               randconfig-003-20250314    gcc-14.2.0
-powerpc64             randconfig-001-20250314    gcc-14.2.0
-powerpc64             randconfig-002-20250314    clang-17
-powerpc64             randconfig-003-20250314    clang-21
-riscv                 randconfig-001-20250314    clang-19
-riscv                 randconfig-002-20250314    gcc-14.2.0
-s390                             allmodconfig    clang-19
-s390                             allyesconfig    gcc-14.2.0
-s390                  randconfig-001-20250314    gcc-14.2.0
-s390                  randconfig-002-20250314    gcc-14.2.0
-sh                               allmodconfig    gcc-14.2.0
-sh                                allnoconfig    gcc-14.2.0
-sh                               allyesconfig    gcc-14.2.0
-sh                    randconfig-001-20250314    gcc-14.2.0
-sh                    randconfig-002-20250314    gcc-14.2.0
-sparc                            allmodconfig    gcc-14.2.0
-sparc                             allnoconfig    gcc-14.2.0
-sparc                 randconfig-001-20250314    gcc-14.2.0
-sparc                 randconfig-002-20250314    gcc-14.2.0
-sparc64               randconfig-001-20250314    gcc-14.2.0
-sparc64               randconfig-002-20250314    gcc-14.2.0
-um                               allmodconfig    clang-21
-um                               allyesconfig    gcc-12
-um                    randconfig-001-20250314    gcc-12
-um                    randconfig-002-20250314    gcc-12
-x86_64                            allnoconfig    clang-19
-x86_64                           allyesconfig    clang-19
-x86_64      buildonly-randconfig-001-20250314    clang-19
-x86_64      buildonly-randconfig-002-20250314    clang-19
-x86_64      buildonly-randconfig-003-20250314    gcc-12
-x86_64      buildonly-randconfig-004-20250314    clang-19
-x86_64      buildonly-randconfig-005-20250314    gcc-12
-x86_64      buildonly-randconfig-006-20250314    gcc-12
-x86_64                              defconfig    gcc-11
-xtensa                            allnoconfig    gcc-14.2.0
-xtensa                randconfig-001-20250314    gcc-14.2.0
-xtensa                randconfig-002-20250314    gcc-14.2.0
+> 
+> Auxiliary devices are created and registered by a subsystem-level core
+> device that needs to break up its functionality into smaller fragments. One
+> way to extend the scope of an auxiliary_device is to encapsulate it within a
+> domain-specific structure defined by the parent device. This structure
+> contains the auxiliary_device and any associated shared data/callbacks
+> needed to establish the connection with the parent.
+> 
+> An example is:
+> 
+>  struct foo {
+>       struct auxiliary_device auxdev;
+>       void (*connect)(struct auxiliary_device *auxdev);
+>       void (*disconnect)(struct auxiliary_device *auxdev);
+>       void *data;
+> };
+> 
+> This example clearly shows that it is OK to use callbacks from the aux
+> driver. The aux driver is dependent on the parent driver and the parent
+> driver will guarantee that it will not get unloaded until all the auxiliary
+> devices are destroyed.
+> 
+> Hopefully you will understand our motivation of going with this design and
+> not force us to go with a solution that is not optimal.
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Feel free to fix documentation.
+
+Thanks
+
+> 
+> Thanks
+> Sridhar
+> 
