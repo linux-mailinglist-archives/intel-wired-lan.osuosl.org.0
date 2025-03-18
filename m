@@ -1,60 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C8917A675C9
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Mar 2025 15:01:22 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F65EA675D6
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Mar 2025 15:03:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 18C4260B7C;
-	Tue, 18 Mar 2025 14:01:21 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3C8818142B;
+	Tue, 18 Mar 2025 14:03:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 6tNoikG4o5io; Tue, 18 Mar 2025 14:01:20 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id gQ0xuKxAfEZv; Tue, 18 Mar 2025 14:03:30 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 77F7B60AE8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8B243812BC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1742306480;
-	bh=1jDL+7c4ztAx/g6S3i+Y52ajKbBqZxFdY6WR/0h66ws=;
+	s=default; t=1742306610;
+	bh=ODe703cBzcJNsrGXr0rBG+avIRrn8cVjyQ/+2F18Kxg=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=Y4UctUXFTYACQCZMb9HeVzw385cXH1OlvqX70b79TApuo4MzK9PBXjwiXEvjeLN7n
-	 Zd1+HfLQAjufPnxldULnWVZVWNzzCGmcHRZKQX1rnA/nK8N6LRY/aUZCYs8jLLX02R
-	 Rk+FOxt80tft1b3Qfc4FAegbvXsquJ8mHMUz4MCRb1ULkE4RNtw4yF/+T+MD8IILTg
-	 Rddqs8hwORJAZWGZ9ZBiS/KtZ/RDjaV10gzy4zn/QPPuOCOZrIArEm06jTc6AY+41S
-	 3fuYnf5+tfZhXr7SW5qreZUfQRDjHKzgLAkwgALRz7T7A04y4/2nV4ffxf+q22hN/K
-	 +/Zr1pQIN83mg==
+	b=SNOQ8jhF4CdFM+VhEFpILWe0h8WFYdjOjfvVLoWJZyyWNH1O9Qh1229geWhaVEzNH
+	 DtYDN4bDmgIXHsDHIV07Dq6im0d/Dy+kR6ahewRY8WRqTyHHHuFfgh1rNvQOULvJ6C
+	 w2kG/4QJfKKyF3L8LbMmGMfvPf4Xa7FIuHsrRn0IYOU3q+6BuYZMNsCgTkLY2B7n4G
+	 Ou79Oh8FhDUK4mU1oT/6gbrN4RXChhIjOlmX0LlDVvkYOKx3V+vOPJmFBb1fw+rtTl
+	 KlrBaUUAdiiCX3lSZ3Xuxp9iTFLlJqq+CVkwg6T2G2D03s8/pc1paoP5cF0bGeNSWh
+	 ytQjg8ebOPlug==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 77F7B60AE8;
-	Tue, 18 Mar 2025 14:01:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8B243812BC;
+	Tue, 18 Mar 2025 14:03:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 60B86D5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Mar 2025 14:01:19 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 9B6C7950
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Mar 2025 14:03:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 43E9B406F9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Mar 2025 14:01:19 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8A175409C7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Mar 2025 14:03:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id c_76mBURU0ba for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Mar 2025 14:01:18 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=147.75.193.91;
- helo=nyc.source.kernel.org; envelope-from=horms@kernel.org;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id cOBjoabnvgcB for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Mar 2025 14:03:27 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 71234403AF
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 71234403AF
-Received: from nyc.source.kernel.org (nyc.source.kernel.org [147.75.193.91])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 71234403AF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Mar 2025 14:01:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 966314051D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 966314051D
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 966314051D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Mar 2025 14:03:27 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id D2285A4536B;
- Tue, 18 Mar 2025 13:55:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79D5EC4CEEE;
- Tue, 18 Mar 2025 14:01:12 +0000 (UTC)
-Date: Tue, 18 Mar 2025 14:01:10 +0000
+ by dfw.source.kernel.org (Postfix) with ESMTP id B58995C57FD;
+ Tue, 18 Mar 2025 14:01:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85DC8C4CEEA;
+ Tue, 18 Mar 2025 14:03:21 +0000 (UTC)
+Date: Tue, 18 Mar 2025 14:03:19 +0000
 From: Simon Horman <horms@kernel.org>
 To: Jacob Keller <jacob.e.keller@intel.com>
 Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
@@ -77,33 +77,34 @@ Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
  Jonathan Lemon <jonathan.lemon@gmail.com>, Lasse Johnsen <l@ssejohnsen.me>,
  Vadim Fedorenko <vadim.fedorenko@linux.dev>,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org
-Message-ID: <20250318140110.GT688833@kernel.org>
+ linux-renesas-soc@vger.kernel.org,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
+Message-ID: <20250318140319.GU688833@kernel.org>
 References: <20250310-jk-net-fixes-supported-extts-flags-v1-0-854ffb5f3a96@intel.com>
- <20250310-jk-net-fixes-supported-extts-flags-v1-4-854ffb5f3a96@intel.com>
+ <20250310-jk-net-fixes-supported-extts-flags-v1-2-854ffb5f3a96@intel.com>
+ <20250318135947.GR688833@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250310-jk-net-fixes-supported-extts-flags-v1-4-854ffb5f3a96@intel.com>
+In-Reply-To: <20250318135947.GR688833@kernel.org>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1742306477;
- bh=qN5FZGZkV8hY7P/iLN+6qzh/l08Z8WtzT3kITbpr4z8=;
+ d=kernel.org; s=k20201202; t=1742306606;
+ bh=wLSyUj0wy1pDaO3/fQf6a6v78mYwzwxwtySQH15C9X8=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=YKFTE1pAeiLLSYZqt9CPYNr83U0Y4/SFw3mBdgF3bXkql4dvOnh/Xgg/TT7hBGZgv
- qmuWtwBNzzj/1t1TzLwToFr7Yl0P+QyU7Df9m5WnaYCmPfpcmR7fk6EcrqdbCGodj5
- B+WJ11UMOaQRNnBMK1pmTf0stPUYqdMOihVc7azHsmtBoaWkyUokwWhLt/t6e1XCno
- XHKHpq5qFBStufAOpnVx0CocgcdFpGxHGbWKBWJHbP9aG/8KvFy1laMGqnzUM5ZHNQ
- CgzT8xzJSVlgTIoYHgrBDPV3hO+FkotlpguVkI9Hoq2czJJUl/1PzQh3auXoo+6/cG
- GnOOwLLY1JFEw==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=qSO51hNtifkd+iANWTT0FvTSTlYPVAGia7nCNdbyCI2pobyHQqBfNS6e0jYjKJkw8
+ S1D5WMQ9B8NnJJnrtANHvWapqOxv95Pya0CSDbyfV5UyjNpuMCgg1w3tCA8aeqOCQx
+ AHj8tTlmtjZCOlCcj/lUpOVl3D9LgBxv4vXr4Ib4XjjJGlHIx4QtONafg5qW4o5sOT
+ MkQWAYruRr8meu1KV2GLuAHFRpd2xTO6vYu5VteK3R7N8WJtl0z4tJrFQWvwu8aWLU
+ hLKvGZWk9h0rqu2JiL4l686V2CdiKDXbOILgSVLlM0XzX1l0/BYREmMeK9Sn2gXLDl
+ ZAdxWJRdR4YMw==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=YKFTE1pA
-Subject: Re: [Intel-wired-lan] [PATCH net 4/5] broadcom: fix supported flag
- check in periodic output function
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=qSO51hNt
+Subject: Re: [Intel-wired-lan] [PATCH net 2/5] renesas: reject
+ PTP_STRICT_FLAGS as unsupported
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -119,18 +120,35 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Mar 10, 2025 at 03:16:39PM -0700, Jacob Keller wrote:
-> In bcm_ptp_perout_locked, the driver rejects requests which have
-> PTP_PEROUT_PHASE set. This appears to be an attempt to reject any
-> unsupported flags. Unfortunately, this only checks one flag, but does not
-> protect against PTP_PEROUT_ONE_SHOT, or any future flags which may be
-> added.
+On Tue, Mar 18, 2025 at 01:59:47PM +0000, Simon Horman wrote:
+> + Shimoda-san
 > 
-> Fix the check to ensure that no flag other than the supported
-> PTP_PEROUT_DUTY_CYCLE is set.
+> On Mon, Mar 10, 2025 at 03:16:37PM -0700, Jacob Keller wrote:
+> > The ravb_ptp_extts() function checks the flags coming from the
+> > PTP_EXTTS_REQUEST ioctl, to ensure that future flags are not accepted on
+> > accident.
+> > 
+> > This was updated to 'honor' the PTP_STRICT_FLAGS in commit 6138e687c7b6
+> > ("ptp: Introduce strict checking of external time stamp options.").
+> > However, the driver does not *actually* validate the flags.
+> > 
+> > I originally fixed this driver to reject future flags in commit
+> > 592025a03b34 ("renesas: reject unsupported external timestamp flags"). It
+> > is still unclear whether this hardware timestamps the rising, falling, or
+> > both edges of the input signal.
+> > 
+> > Accepting requests with PTP_STRICT_FLAGS is a bug, as this could lead to
+> > users mistakenly assuming a request with PTP_RISING_EDGE actually
+> > timestamps the rising edge only.
+> > 
+> > Reject requests with PTP_STRICT_FLAGS (and hence all PTP_EXTTS_REQUEST2
+> > requests) until someone with access to the datasheet or hardware knowledge
+> > can confirm the timestamping behavior and update this driver.
+> > 
+> > Fixes: 6138e687c7b6 ("ptp: Introduce strict checking of external time stamp options.")
+> > Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 > 
-> Fixes: 7bfe91efd525 ("net: phy: Add support for 1PPS out and external timestamps")
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+> Adding Shimoda-san who may be able to help coordinate a review if
+> Niklas and Paul are unavailable for some reason.
 
-Reviewed-by: Simon Horman <horms@kernel.org>
-
+Sorry for the noise. I now see that Niklas has reviewed v2.
