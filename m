@@ -2,109 +2,89 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E2BAA675FC
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Mar 2025 15:10:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8382DA676C0
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Mar 2025 15:48:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D8B6E81F1D;
-	Tue, 18 Mar 2025 14:10:19 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 29C5582047;
+	Tue, 18 Mar 2025 14:48:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8jH86NHUTuvT; Tue, 18 Mar 2025 14:10:18 +0000 (UTC)
+ id RzfvPJ3wYG4z; Tue, 18 Mar 2025 14:48:25 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BFC8682107
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 500AC82049
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1742307017;
-	bh=WO2E6cjNY1CTMGVsm5YZZ4qwmSM43bLrknvEgMpIsR8=;
+	s=default; t=1742309305;
+	bh=NygJE02Zbw93sCWAwHSVqNM1sdstOlHGE44WfdShjy0=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=MwYMRETElTQJyHzj/ZbAeuI8zfTdKkp39QH0yiS1aMj++Sexx7aWZW6EB5BEvWtZ6
-	 oaWy/64GyOXeUyXgS7wfmsUZM4wuaqDSKjpqCxRCnCyOfEtNo9V2VoNnZLIGYVsE7p
-	 QfJBX/8998Pe8ioUJ22A8dHmcvigPS/Z1OXYepXD6uwoNTxigBm+xq5aFc4Hkq37C5
-	 04mWmxXG/VixPI5vuyRnhVrkVSmTRdQYVESBEzh0FsgQIBD2VAaIqSiMs4Rz2DDKkn
-	 LLQwZA7TXltTZ2dDBknxcxD8GvTdNMYiykZwa8E2QBC7oV3xnjLYUoFoDdeHlZfc6G
-	 SaotjSQ0V+QmQ==
+	b=ufpzKmHR8AOTbY+1mdYzSZDtZQ6oXcUptxY3nsRUx4qcjWoX5wJkTaLtWJO1YWRjh
+	 S1Up2HSB0EXjDof3qYNFrYpZhqz8Iq2INuieDHiiVf8wnQKrocA3U7ltdKnAqu51BG
+	 eO8zJ9z0Uz4y/n+MQ+MikdwXCANJ3sjprsCl6Fy/9o6oIQgCKekt4JyeWMtlq1ExWH
+	 jEzrsFVFVQhnGWGQoYfQbtl0c6f3uR/V12V+ukftYR+jXA3y/4bDLzQ+X8XgCSNBwD
+	 2HzeD8tMNwouHsxFCxeOgLXexylEAE7aBbHru7Mq/TaKyAsnLYoKc8g2O3kskDpYVJ
+	 tJT1DpZ2M2pHw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BFC8682107;
-	Tue, 18 Mar 2025 14:10:17 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 500AC82049;
+	Tue, 18 Mar 2025 14:48:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id F3FFD950
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Mar 2025 14:10:15 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 234DFD5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Mar 2025 14:48:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id E241F60669
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Mar 2025 14:10:15 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1311D8203F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Mar 2025 14:48:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KmD5wWEG6Z2m for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Mar 2025 14:10:15 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 57F5360585
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 57F5360585
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 57F5360585
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Mar 2025 14:10:15 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 8WGdsCra-GK3 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Mar 2025 14:48:23 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4E53082038
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4E53082038
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4E53082038
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Mar 2025 14:48:23 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id AA98D5C572E;
- Tue, 18 Mar 2025 14:07:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C6D42C4CEDD;
- Tue, 18 Mar 2025 14:10:09 +0000 (UTC)
-Date: Tue, 18 Mar 2025 14:10:07 +0000
+ by dfw.source.kernel.org (Postfix) with ESMTP id 3DA3F5C57AE;
+ Tue, 18 Mar 2025 14:46:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 33B06C4CEDD;
+ Tue, 18 Mar 2025 14:48:20 +0000 (UTC)
+Date: Tue, 18 Mar 2025 14:48:18 +0000
 From: Simon Horman <horms@kernel.org>
-To: Jacob Keller <jacob.e.keller@intel.com>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Richard Cochran <richardcochran@gmail.com>,
- Ruud Bos <kernel.hbk@gmail.com>,
- Paul Barker <paul.barker.ct@bp.renesas.com>,
- Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
- Bryan Whitehead <bryan.whitehead@microchip.com>,
- UNGLinuxDriver@microchip.com,
- Florian Fainelli <florian.fainelli@broadcom.com>,
- Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
- Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
- Russell King <linux@armlinux.org.uk>,
- Jonathan Lemon <jonathan.lemon@gmail.com>, Lasse Johnsen <l@ssejohnsen.me>,
- Vadim Fedorenko <vadim.fedorenko@linux.dev>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+To: Rui Salvaterra <rsalvaterra@gmail.com>
+Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ edumazet@google.com, kuba@kernel.org,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org
-Message-ID: <20250318141007.GZ688833@kernel.org>
-References: <20250312-jk-net-fixes-supported-extts-flags-v2-0-ea930ba82459@intel.com>
- <20250312-jk-net-fixes-supported-extts-flags-v2-5-ea930ba82459@intel.com>
+ linux-kernel@vger.kernel.org
+Message-ID: <20250318144818.GB688833@kernel.org>
+References: <20250313093615.8037-1-rsalvaterra@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250312-jk-net-fixes-supported-extts-flags-v2-5-ea930ba82459@intel.com>
+In-Reply-To: <20250313093615.8037-1-rsalvaterra@gmail.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1742307014;
- bh=q5doRqVam6s64ULpfBirzLVtZzdBmnrPWU3KtXCaEFE=;
+ d=kernel.org; s=k20201202; t=1742309301;
+ bh=/FEdHl3jk0n6rO675cBSNPnQPnOs8f+H3LcY5yHGvgY=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=VO5wTwW4FKWFMGm8TLIOOBFOUXU+nrVANM2qDIIedoNkR2NsWznIgxsmYloV3vnGG
- LSqXchU0sWFIQwjsr38lz9eLc7r+uRPKdl/iPwv5D0KzDKhR5fF+PhxqfxlJuOKZQ6
- 4yWeS4r/HCX3EHsCkAAGRZO0rPNVOsnIqPTFi+xRYEpVbDCA4+DiH7fgTTqDb5Fzf7
- t6JkBU7Homnc+IILhZfi+PLblKw7B6quuHdfiKV8jXGrccazOTaFm7ryxD5jiIiKKN
- NG+go5DJtea+vmHdzrgxOxmlHEUBZ6uO085ZucYpTVTggQS1OTgyKfvmz3EuzJP4+S
- xILUsGc3WX40A==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=NzbucQmF9/xPVwzzXVdmF680I5od/ArclBuhZcObN9lUb7bnfAFYmhKNXzJtFTuWU
+ bxV1EVqZQtqnKg62I1U+4Zwkgr98Onr3ltLTTHRHDbsYv5qJqYprbTW/cOzPVD+Bim
+ vdgcGCLGS1CSZdbN7oG9w0Yl9qyBD51Sm6LGz+oQWbdE2lNCK2DpQ49en5HCeNySJi
+ i87pDgQZzl6dZhz/Sb3F94WYo2UWCRkmFEjkTQ6bJBbBETOXl2jXgEIUUkh5i8ThK+
+ ly9xAQ5dA9FQHJzzWn/0w9AKeGNSAQdxwVGy6YVoEEN5MC4Y53PL90ZZyeW5X8rz/B
+ ntmlOponQjgNA==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=VO5wTwW4
-Subject: Re: [Intel-wired-lan] [PATCH net v2 5/5] ptp: ocp: reject
- unsupported periodic output flags
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=NzbucQmF
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next] igc: enable HW vlan tag
+ insertion/stripping by default
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -120,17 +100,24 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Mar 12, 2025 at 03:15:54PM -0700, Jacob Keller wrote:
-> The ptp_ocp_signal_from_perout() function supports PTP_PEROUT_DUTY_CYCLE
-> and PTP_PEROUT_PHASE. It does not support PTP_PEROUT_ONE_SHOT, but does not
-> reject a request with such an unsupported flag.
+On Thu, Mar 13, 2025 at 09:35:22AM +0000, Rui Salvaterra wrote:
+> This is enabled by default in other Intel drivers I've checked (e1000, e1000e,
+> iavf, igb and ice). Fixes an out-of-the-box performance issue when running
+> OpenWrt on typical mini-PCs with igc-supported Ethernet controllers and 802.1Q
+> VLAN configurations, as ethtool isn't part of the default packages and sane
+> defaults are expected.
 > 
-> Add the appropriate check to ensure that unsupported requests are rejected
-> both for PTP_PEROUT_ONE_SHOT as well as any future flags.
+> In my specific case, with an Intel N100-based machine with four I226-V Ethernet
+> controllers, my upload performance increased from under 30 Mb/s to the expected
+> ~1 Gb/s.
 > 
-> Fixes: 1aa66a3a135a ("ptp: ocp: Program the signal generators via PTP_CLK_REQ_PEROUT")
-> Reviewed-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+> Signed-off-by: Rui Salvaterra <rsalvaterra@gmail.com>
+
+Thanks,
+
+this seems entirely reasonable to me.
 
 Reviewed-by: Simon Horman <horms@kernel.org>
 
+Link to v1 for reference:
+https://lore.kernel.org/all/20250307110339.13788-1-rsalvaterra@gmail.com/
