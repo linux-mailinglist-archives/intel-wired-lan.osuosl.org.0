@@ -1,67 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CDDF7A666C0
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Mar 2025 04:08:53 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 19749A666C3
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Mar 2025 04:09:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2742660B07;
-	Tue, 18 Mar 2025 03:08:52 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A9A7040D71;
+	Tue, 18 Mar 2025 03:09:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id iScuRfHXhF3v; Tue, 18 Mar 2025 03:08:51 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Ep9nKx7fVpry; Tue, 18 Mar 2025 03:08:59 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7485160AEA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1FB8040D7E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1742267331;
-	bh=W9jQaTb5CsffvduHafwuL2MW5ezniOSQBOlGo1IpeIs=;
+	s=default; t=1742267339;
+	bh=nKiwCh+kgf9JA1AIAuAPy6jZ7U52Vg1O0TtpMPovvjI=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=d+I41yNvObpY3DmH3S96XTmAODqnOJvx+H64VGZdvHm7MuqTdz1fHNVrOIA1/pOa9
-	 JJG72KK54U8ZLVhRgr1RoEXyEa3oPlthlJZJEWdWLAdun2zUtxRc65Y7PmalNvxjfx
-	 CZUFeGFLxcAsd78BhsYATjk5WHdcwxY0o7dojrI09A7U/JQpttRNwrWH0EIPhxESqs
-	 kMLhNbADWeC/ROJxtOqt8uFQ0NN69rnZMS6+S99TqRteyeP8SSn3jvtWQOdF9GgZ8c
-	 T2m0tSx3KOv2fsMpsw10owgV/fI009T06wgqMjk1qAwCOUWAlkzKR4BC6EHzg+5r9E
-	 +FKr5WHZLm5jg==
+	b=cCLr5Jc4UYY8IIqVGPA+kMJKF5TQrpjWq5H6ypzZL2sS10IoZq3Dpa25D5iMch8Kj
+	 ntghH9eQ0Hs225JjPOHhPgByUJEy1a5UYcLx7gGMenqXGV+U7iWILhOcXX7ibHymVF
+	 9rDcOh96kXiWof8vEXoQuRxJEgcx7mpwr9+KNer59ziK6LVrL9ImeolHAqTz/W6b2O
+	 l/MKGM25M/MbIIafeCBLakXnMDrq3B1Fag2x6Bm4CPV07A7jCdqywm8aOeS3eoaTtX
+	 ghxVWpaV3yjZiP3Ph2UiDBR9GUXMkQsp3hReSF2APsGerta1cgUGNGMCkFn4kFvOBF
+	 VMa8EqprMqX/Q==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7485160AEA;
-	Tue, 18 Mar 2025 03:08:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1FB8040D7E;
+	Tue, 18 Mar 2025 03:08:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 14E6216E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Mar 2025 03:08:49 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id CDE9F16E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Mar 2025 03:08:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 039CD4023A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Mar 2025 03:08:49 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id B150F40D7B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Mar 2025 03:08:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id lj7UB3gXXjTw for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Mar 2025 03:08:48 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id PFcRxKtgtgHO for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Mar 2025 03:08:56 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
  helo=mgamail.intel.com; envelope-from=faizal.abdul.rahim@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 016A1400F6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 016A1400F6
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org B7ADD40D71
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B7ADD40D71
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 016A1400F6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Mar 2025 03:08:47 +0000 (UTC)
-X-CSE-ConnectionGUID: ElXT/h0DQhabkiYO0dvURQ==
-X-CSE-MsgGUID: bbSpAOa2TQebUAx7EiIBqA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11376"; a="54382934"
-X-IronPort-AV: E=Sophos;i="6.14,255,1736841600"; d="scan'208";a="54382934"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B7ADD40D71
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Mar 2025 03:08:55 +0000 (UTC)
+X-CSE-ConnectionGUID: Upipwk+6T2aBPunb1QXY+A==
+X-CSE-MsgGUID: QPXAwX8tT8W8m5ptkQNxmg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11376"; a="54382952"
+X-IronPort-AV: E=Sophos;i="6.14,255,1736841600"; d="scan'208";a="54382952"
 Received: from fmviesa003.fm.intel.com ([10.60.135.143])
  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Mar 2025 20:08:47 -0700
-X-CSE-ConnectionGUID: /qfjgyHdSmaLQk0bcjHiFQ==
-X-CSE-MsgGUID: NQxLXbvgRFW/wb8W1q+nrw==
+ 17 Mar 2025 20:08:54 -0700
+X-CSE-ConnectionGUID: rAy/euR8RPWl7XtzUuAgVw==
+X-CSE-MsgGUID: cjeo7cnwTzSqJBBQqBbJnA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,255,1736841600"; d="scan'208";a="126313753"
+X-IronPort-AV: E=Sophos;i="6.14,255,1736841600"; d="scan'208";a="126313797"
 Received: from mohdfai2-ilbpg12-1.png.intel.com ([10.88.227.73])
- by fmviesa003.fm.intel.com with ESMTP; 17 Mar 2025 20:08:40 -0700
+ by fmviesa003.fm.intel.com with ESMTP; 17 Mar 2025 20:08:47 -0700
 From: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
 To: Tony Nguyen <anthony.l.nguyen@intel.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
@@ -91,8 +91,8 @@ To: Tony Nguyen <anthony.l.nguyen@intel.com>,
  Faizal Rahim <faizal.abdul.rahim@linux.intel.com>,
  Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
  Serge Semin <fancer.lancer@gmail.com>
-Date: Mon, 17 Mar 2025 23:07:31 -0400
-Message-Id: <20250318030742.2567080-4-faizal.abdul.rahim@linux.intel.com>
+Date: Mon, 17 Mar 2025 23:07:32 -0400
+Message-Id: <20250318030742.2567080-5-faizal.abdul.rahim@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250318030742.2567080-1-faizal.abdul.rahim@linux.intel.com>
 References: <20250318030742.2567080-1-faizal.abdul.rahim@linux.intel.com>
@@ -100,25 +100,26 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1742267328; x=1773803328;
+ t=1742267335; x=1773803335;
  h=from:to:subject:date:message-id:in-reply-to:references:
  mime-version:content-transfer-encoding;
- bh=PJHnS41RUykAMZDQTME6227bQeCUwgkT8h6G/tRYcm0=;
- b=Sir6qyGBAkCkoazKPty28bwCLfmFKB1oynqoMvCj7obD0aWTnlHxxi3Z
- 8UbV+HTtvTtpbnMqJKLBzAcY1IA0fBvf+HWIfV/roxDfklOUlw6WqUZ94
- 2b3cNKdkCZFJgp0uHvmAtJ1rLsme220kqOqHlLbhGywVLIdeJFY4szZ6z
- NjQiUu+wNR1Ts79l8LplNeL+59ntgucIS03zPH3quJLszsOVjHFQYBH38
- EpjAbZ64KPD6+cKWyaopxNBsxdwZVvs8NyqVcAc2HPw2TTk5yZlrt5UX5
- VaqBCuPZvl9TOMbeMj5copi1Mnf1YQdCaQ/1pmqekwu6VdEgOfNfrVZes
+ bh=AWpN+xiHkAhuQT/Giv0YAd9A+nXM81GdPln2EKw69PM=;
+ b=PqPtPlGMGJYMtgyGB33UbpJ8ujkPfgTuXH6LnKXjhTKnfpz6cfFpHZqU
+ rVtzEjtRhG8DL4l0bhA5G/2d8wWvkPBbiBmOpTKjsAT4oEX2LgJlghRw2
+ 1hwaK+k7d9bGIc2jAPlmxpxc8/aGsX2sonxIW0WDY6uZbFyIq4tAsCSiD
+ el8yMXAfdkcurue8r4RLJWSCHWO5mpBgGlwKnlq0HbVD9rvHr9pyNIL1g
+ bZH3VT2HxiH3qy67t6+KgmhnmxcCLhLV493XGvpnqzHtR0Elsm7/u8Cg5
+ J6+xnyJRuB4XDv+fNXYkxVJLsVMYIWY7RVq0YNURUzgnSbmPsnZ2PHPFX
  Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Sir6qyGB
-Subject: [Intel-wired-lan] [PATCH iwl-next v10 03/14] net: ethtool: mm:
- reset verification status when link is down
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=PqPtPlGM
+Subject: [Intel-wired-lan] [PATCH iwl-next v10 04/14] igc: rename
+ xdp_get_tx_ring() for non-xdp usage
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -134,34 +135,69 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When the link partner goes down, "ethtool --show-mm" still displays
-"Verification status: SUCCEEDED," reflecting a previous state that is
-no longer valid.
+Renamed xdp_get_tx_ring() function to a more generic name for use in
+upcoming frame preemption patches.
 
-Reset the verification status to ensure it reflects the current state.
-
-Reviewed-by: Furong Xu <0x1207@gmail.com>
-Reviewed-by: Vladimir Oltean <vladimir.oltean@nxp.com>
 Signed-off-by: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
 ---
- net/ethtool/mm.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/net/ethernet/intel/igc/igc.h      | 2 +-
+ drivers/net/ethernet/intel/igc/igc_main.c | 9 ++++-----
+ 2 files changed, 5 insertions(+), 6 deletions(-)
 
-diff --git a/net/ethtool/mm.c b/net/ethtool/mm.c
-index bfd988464d7d..ad9b40034003 100644
---- a/net/ethtool/mm.c
-+++ b/net/ethtool/mm.c
-@@ -415,6 +415,10 @@ void ethtool_mmsv_link_state_handle(struct ethtool_mmsv *mmsv, bool up)
- 		/* New link => maybe new partner => new verification process */
- 		ethtool_mmsv_apply(mmsv);
- 	} else {
-+		/* Reset the reported verification state while the link is down */
-+		if (mmsv->verify_enabled)
-+			mmsv->status = ETHTOOL_MM_VERIFY_STATUS_INITIAL;
-+
- 		/* No link or pMAC not enabled */
- 		ethtool_mmsv_configure_pmac(mmsv, false);
- 		ethtool_mmsv_configure_tx(mmsv, false);
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index cd1d7b6c1782..ba7c55d2dc85 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -737,7 +737,7 @@ struct igc_nfc_rule *igc_get_nfc_rule(struct igc_adapter *adapter,
+ 				      u32 location);
+ int igc_add_nfc_rule(struct igc_adapter *adapter, struct igc_nfc_rule *rule);
+ void igc_del_nfc_rule(struct igc_adapter *adapter, struct igc_nfc_rule *rule);
+-
++struct igc_ring *igc_get_tx_ring(struct igc_adapter *adapter, int cpu);
+ void igc_ptp_init(struct igc_adapter *adapter);
+ void igc_ptp_reset(struct igc_adapter *adapter);
+ void igc_ptp_suspend(struct igc_adapter *adapter);
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 472f009630c9..99123eef610b 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -2464,8 +2464,7 @@ static int igc_xdp_init_tx_descriptor(struct igc_ring *ring,
+ 	return -ENOMEM;
+ }
+ 
+-static struct igc_ring *igc_xdp_get_tx_ring(struct igc_adapter *adapter,
+-					    int cpu)
++struct igc_ring *igc_get_tx_ring(struct igc_adapter *adapter, int cpu)
+ {
+ 	int index = cpu;
+ 
+@@ -2489,7 +2488,7 @@ static int igc_xdp_xmit_back(struct igc_adapter *adapter, struct xdp_buff *xdp)
+ 	if (unlikely(!xdpf))
+ 		return -EFAULT;
+ 
+-	ring = igc_xdp_get_tx_ring(adapter, cpu);
++	ring = igc_get_tx_ring(adapter, cpu);
+ 	nq = txring_txq(ring);
+ 
+ 	__netif_tx_lock(nq, cpu);
+@@ -2566,7 +2565,7 @@ static void igc_finalize_xdp(struct igc_adapter *adapter, int status)
+ 	struct igc_ring *ring;
+ 
+ 	if (status & IGC_XDP_TX) {
+-		ring = igc_xdp_get_tx_ring(adapter, cpu);
++		ring = igc_get_tx_ring(adapter, cpu);
+ 		nq = txring_txq(ring);
+ 
+ 		__netif_tx_lock(nq, cpu);
+@@ -6779,7 +6778,7 @@ static int igc_xdp_xmit(struct net_device *dev, int num_frames,
+ 	if (unlikely(flags & ~XDP_XMIT_FLAGS_MASK))
+ 		return -EINVAL;
+ 
+-	ring = igc_xdp_get_tx_ring(adapter, cpu);
++	ring = igc_get_tx_ring(adapter, cpu);
+ 	nq = txring_txq(ring);
+ 
+ 	__netif_tx_lock(nq, cpu);
 -- 
 2.34.1
 
