@@ -1,97 +1,219 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2D11DA6A6FD
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Mar 2025 14:19:49 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 71269A6A95E
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Mar 2025 16:04:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B8CBC83EC4;
-	Thu, 20 Mar 2025 13:19:47 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DBCBC83A8C;
+	Thu, 20 Mar 2025 15:04:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dW-CyvTGQ2Ph; Thu, 20 Mar 2025 13:19:46 +0000 (UTC)
+ id lXm6CmZKgn45; Thu, 20 Mar 2025 15:04:38 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 900A883EC3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B93B883A91
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1742476786;
-	bh=6KpXSlJm9v5gKzzXKJHXh0gYtkj4fOuTaXkRZrotrkM=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1742483077;
+	bh=xIDcr4WaI3C6hE4/ZSzqwXr/ey8boHBkphe0h6Cv9+U=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=zq0nKz0R5Idu9dteP6YCgED5akEmkIW0vnilKXrJ3DQNTGLlHNx9V7teUlgi76xBF
-	 sAMw+1hRgweUTZlIvX5OaX4pAJq7jQn7RCvaHkJkrvRfFYuc1yC5FOKetsrMfVv+VP
-	 uT2CfF8YE3/EKAnYVM6r/lcjxDhlS4ZqGb91gVfn7xxaYb4LA4HH+90aH4DIBm34ro
-	 wSkSdCVrwoN7wWuleokDegyxj84ONH2GrwEHNERlG7FE8LrJQvec63ZPz7w6MGj7yz
-	 C4hAsn0w85BNKsYuC6R+dn1xc2xDn4B8gF30eXw8FzEUBufNFmAqSvoF8GL1SzX193
-	 /RWErom33XCsA==
+	 From;
+	b=tSUJCvYVfXh6VuXaXiRwJXWuReyV6PfXbJFFG7/yEwpiPZp+jZ5DSHM1qB5npMUiD
+	 a9Rq2z2s/lpHnzvK9l7mv79Idgw3jiQr3n6bkmX+B/1KT7wIpea7+DXQiDjxzohfsi
+	 HqkPvMJqg/KU3WbKtAjRNQs47vKNL5gSKlcWbBBxOfaT+Q6oNdNU5PYgNonD0qfbBU
+	 V/c1flj2XY43d+u9Qq95q2zrVZ4sVWmxFT2rXW2/lJEwwsdT7c0dPbhDf1ADvouS+v
+	 ldvGu5pknucBG5lgeQCvHw32qkzJ/r9QM2hmxgwGfkdYqSRqHiTcjlTXViWaWJpMx9
+	 ScGJWC0lLb1Yg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 900A883EC3;
-	Thu, 20 Mar 2025 13:19:45 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B93B883A91;
+	Thu, 20 Mar 2025 15:04:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id B4BF712F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Mar 2025 13:19:42 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 344A91A4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Mar 2025 15:04:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A4E98606C5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Mar 2025 13:19:42 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2D07783A8C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Mar 2025 15:04:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id nGRtFU0Jz_K9 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 20 Mar 2025 13:19:41 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
- helo=mgamail.intel.com; envelope-from=grzegorz.nitka@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 5F1D1605D8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5F1D1605D8
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 5F1D1605D8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Mar 2025 13:19:41 +0000 (UTC)
-X-CSE-ConnectionGUID: RWE+xA4QRdmy8sEUr+kNkA==
-X-CSE-MsgGUID: XKK7RfRjQ8qVJ4lGO3ub1g==
-X-IronPort-AV: E=McAfee;i="6700,10204,11379"; a="55083760"
-X-IronPort-AV: E=Sophos;i="6.14,261,1736841600"; d="scan'208";a="55083760"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
- by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Mar 2025 06:19:41 -0700
-X-CSE-ConnectionGUID: 8E1byLG+SC6w82Bfso3fBg==
-X-CSE-MsgGUID: 4X4tRuZ7TpKZcNN4Kwr3TA==
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id V0GKjCdjjGkc for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 20 Mar 2025 15:04:34 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
+ helo=mgamail.intel.com; envelope-from=bharath.r@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 007D980DF3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 007D980DF3
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 007D980DF3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Mar 2025 15:04:33 +0000 (UTC)
+X-CSE-ConnectionGUID: rCb6CXEtRD++JfESIQm1Dw==
+X-CSE-MsgGUID: +8tH335qTVa54Za4M+R0vw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11379"; a="54384743"
+X-IronPort-AV: E=Sophos;i="6.14,262,1736841600"; d="scan'208";a="54384743"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+ by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Mar 2025 08:04:22 -0700
+X-CSE-ConnectionGUID: YLz6MEJbSpuv0ZLaK8f6aQ==
+X-CSE-MsgGUID: p5Adx1DZS2qiev0ZIOAxcA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,261,1736841600"; d="scan'208";a="160311402"
-Received: from gklab-003-001.igk.intel.com ([10.211.3.1])
- by orviesa001.jf.intel.com with ESMTP; 20 Mar 2025 06:19:39 -0700
-From: Grzegorz Nitka <grzegorz.nitka@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 20 Mar 2025 14:15:38 +0100
-Message-Id: <20250320131538.712326-4-grzegorz.nitka@intel.com>
-X-Mailer: git-send-email 2.39.3
-In-Reply-To: <20250320131538.712326-1-grzegorz.nitka@intel.com>
-References: <20250320131538.712326-1-grzegorz.nitka@intel.com>
+X-IronPort-AV: E=Sophos;i="6.14,262,1736841600"; d="scan'208";a="123641354"
+Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
+ by orviesa007.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Mar 2025 08:04:21 -0700
+Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14; Thu, 20 Mar 2025 08:04:20 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14 via Frontend Transport; Thu, 20 Mar 2025 08:04:20 -0700
+Received: from NAM04-MW2-obe.outbound.protection.outlook.com (104.47.73.174)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.44; Thu, 20 Mar 2025 08:04:20 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=QSx4VNpesUTjc7UNyIbIow0vnJHilbYDjKquImSERYQJIzFMIeFqaIVIFygziFRW50YyREhUhZvhRhPeEbZbe4eDbNzCfAwJpDrMRcv8vmMU1SYEuikYPI+GJsA+prSrnygfMVEqFU9FTO/c27qKGLYDIDSsLsioSz8AsuPxrr3RMYcBNs8S9McyapViEZZc59g+scp3kA5MHtV7x9rduD9rAXaeFEMEE5T70tWGjsuF4EpIyFH5zl5tIffiTpr//L0TIwWsbPVmi7TKzZKKBMq0M0camlI/snen2UEOhYkLoSiQQ9AIqqnyFeus8FB7/FN+R8lu21sXtsSn7aRWJg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=xIDcr4WaI3C6hE4/ZSzqwXr/ey8boHBkphe0h6Cv9+U=;
+ b=MQ2i5PpcejT4e/FzrlaLp4RXwzGPS2LM9o9Ld5YrcnS8IOrqFrgafRBFM9A2zADW/Fh1FsopfGj10GUzVME9e8iCqp/hj3/libDEgdFH2Y2zrw/2sgqRwtRaTgg0TgvO7dsqAZW91osffxYwNdTw7nAQS8OFwDrSKwlD049dXYOSsEm2U/G+Trff4GOXLX/Z+gxwci66bn6nQy7OQAUv2kxhMkHzyjoUO3KK428MvkazTt6RgUbt75LmOWWdyrdLChSOjl3mIrvU8LQczxSOauvAPTZXD5GpC1u56rwR4txUON1WiEDOn7+M8tZ0pmBnd0lUIDEClZzkhlXInL5pwA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from PH8PR11MB7965.namprd11.prod.outlook.com (2603:10b6:510:25c::13)
+ by SN7PR11MB7490.namprd11.prod.outlook.com (2603:10b6:806:346::22)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8534.36; Thu, 20 Mar
+ 2025 15:04:18 +0000
+Received: from PH8PR11MB7965.namprd11.prod.outlook.com
+ ([fe80::ad6c:cf56:3c3d:4739]) by PH8PR11MB7965.namprd11.prod.outlook.com
+ ([fe80::ad6c:cf56:3c3d:4739%7]) with mapi id 15.20.8534.034; Thu, 20 Mar 2025
+ 15:04:18 +0000
+From: "R, Bharath" <bharath.r@intel.com>
+To: "Jagielski, Jedrzej" <jedrzej.jagielski@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+CC: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>, "Kitszel, Przemyslaw"
+ <przemyslaw.kitszel@intel.com>, "horms@kernel.org" <horms@kernel.org>,
+ "Jagielski, Jedrzej" <jedrzej.jagielski@intel.com>, "Polchlopek, Mateusz"
+ <mateusz.polchlopek@intel.com>, "Wegrzyn, Stefan" <stefan.wegrzyn@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH iwl-next v8 14/15] ixgbe: add E610
+ implementation of FW recovery mode
+Thread-Index: AQHblCtAhU2U3eEEMUie2paPNOr+ZrN8Kg+Q
+Date: Thu, 20 Mar 2025 15:04:18 +0000
+Message-ID: <PH8PR11MB79658ACF2C9E7E8FF072FC05F7D82@PH8PR11MB7965.namprd11.prod.outlook.com>
+References: <20250313150346.356612-1-jedrzej.jagielski@intel.com>
+ <20250313150346.356612-15-jedrzej.jagielski@intel.com>
+In-Reply-To: <20250313150346.356612-15-jedrzej.jagielski@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PH8PR11MB7965:EE_|SN7PR11MB7490:EE_
+x-ms-office365-filtering-correlation-id: 9b5dbe85-96e9-4fee-054e-08dd67c07cd9
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|1800799024|376014|366016|38070700018|7053199007; 
+x-microsoft-antispam-message-info: =?us-ascii?Q?mltcKhVMmZ+PtAOj2W2jzjSSRl/cEWVXvUsugXypwwKl5toD0HRYdgo2x9Og?=
+ =?us-ascii?Q?GVjVdnKPxCtAQSxMK3SUQY3OzoEhuNPQtiYMow97IzcPtGgw+OpvDpEAM/X7?=
+ =?us-ascii?Q?8+OhP3fxI2oM+objQ1T7wqoDb31PiZpoAAAbcR4vYF+mEnMUgKtphpqAjF9B?=
+ =?us-ascii?Q?AIm2TD+siO+k1+HUWqCHas06c9OWRCnL+nS6ZG7GjERKXZfI3DvLtf8iMudi?=
+ =?us-ascii?Q?t0tBVf+2pjpNOCCvFJc9P+kIMSflKGeLiteWeSK5cg2RVOeYc8xSj1fA0CQQ?=
+ =?us-ascii?Q?9d1vIDSjhjGSTsw+XZsqPPZ9h1BeV2kNWMMDkzQSj4PtRWuwTRHsk91fMMNs?=
+ =?us-ascii?Q?lL+WNUWkF4baI4BQtU0V8yTZkAjFTPHKNXTi2z3SpvFG1MtdSCgPBnIwueqI?=
+ =?us-ascii?Q?cuS8akvhwXpGGDCFd5h4ANc6obW9PZaQVPIyY1w4nIjiLLE9OihohbFaQI/m?=
+ =?us-ascii?Q?qNYKA1R3kzWVsSDD58DgLC9UnCznKQn6zogwm/B9iyUIOH/25ZFvWasdo31A?=
+ =?us-ascii?Q?PiBOA4QhIYY7vooq9edA3vpz+8nNTfgjjUfLtxd8D8BDEV0rVOwxwqmtQa5s?=
+ =?us-ascii?Q?NdzSFTXB6epCrNmIQRYR1NZmpcX1l9jShZcZBlB/yb0UB6NBkM4v1Gc4TLOL?=
+ =?us-ascii?Q?x28jhFfu3+g9AkvXgTweKraSA0COdA4AEJI3WjMKanaUupgmfTnsg25umUrN?=
+ =?us-ascii?Q?UhhGe9W2zACwio8UIgxHlM7KPAFo+NM0IzffZ1kaYjBbxo08njBCeHxDZvwv?=
+ =?us-ascii?Q?xilK453UGYpt8Njrn7EYW8hnVjWZ01rQesim3tlU5pVcW+XaanR3wJftDHYt?=
+ =?us-ascii?Q?ALVOE1LqB/S96qcs30warpt+SkNDwztoIYwzYXGfvvtO++Hk/AV2nJ7ox4PB?=
+ =?us-ascii?Q?Xs0CQNW4YVTW/HbSVVoiXwpkJFB9CC/HdeQcTliIQocR7Ozvvtq+tbv+Cq3F?=
+ =?us-ascii?Q?+ZeDSZXYLoBfWGU50JeSpgsK7tamznEN3snkXdEDmcCxM+Mck+toXW9C6lWe?=
+ =?us-ascii?Q?oLwuclsONOANNMztYX+Ps9dFQH6iskkqfjqqvMreaoptQjhfbFvrxDeTR0qU?=
+ =?us-ascii?Q?n3EAWcw2i7hcGX4mrHtd2EX2aABGP4jY1StM9IS3VYR3pA85e7ELpYUVohxK?=
+ =?us-ascii?Q?WK0+5oebD95x5yaY02LePCr0uGY8sGoIzZbQvNdGUlSZOF5JgikytpZncdWl?=
+ =?us-ascii?Q?oQWT4eePXEz0MjZp2MfpwCEvT+VXeUm6xqu7bwkKNCmsvk4NBWWiSQR9CrLH?=
+ =?us-ascii?Q?M7tYyZojWEBi24da8O0PwXbx8Wu/xGS+JHmxesz7DzBysCXZgHWZ1zuGUg46?=
+ =?us-ascii?Q?EwXAlmZjChIwWfYjp4ZNMrd57WfY5quUJvV202ZpnObo+V438OcVw1Huk2/N?=
+ =?us-ascii?Q?EwqYHm0vSi6mCY6faG9kncr/54MnJ1Dg/6CWfem87+7x+4d9K2btLHMjRn7i?=
+ =?us-ascii?Q?sZU5Z5Bvk4mGrakiMtqmI+Dt3L92nT54?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH8PR11MB7965.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(366016)(38070700018)(7053199007); DIR:OUT;
+ SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?pmtc/Mt+1qYbxrUPUH0aFb7B23Bo8Vazsf4IHTK904XfVxeHUzKV+enE1HX6?=
+ =?us-ascii?Q?qomRPIX+sfpRHyv4nVQGksO46xk44pB5ZNOW1Ehisw+QTyfveXtaZKb5QXCY?=
+ =?us-ascii?Q?4I01bxl3gm2Tdnzu/h+G9tlFXIWvRMbiEoF/udJC0ahMtxqHpm7LHwUAouhl?=
+ =?us-ascii?Q?ZcSvM0ky6OiL+INCoz+p1MoT7qJUZ60sBOQMmHVKnjYBulilnaz3hfKknwey?=
+ =?us-ascii?Q?CABKx2XDw7LRPqCaxSchtt6ix6TsuvpSlXcXgvUdtCHR82pKmfJvmIK7VK1Q?=
+ =?us-ascii?Q?aYDIm/AZNRjQx9UomgfydUJpmMjhB6+nMTKPLy5pyxp423q6O2JlpvSCxhav?=
+ =?us-ascii?Q?Dbj2LY0elDbVpFHhAjb/AQvElQaw3QnL0dUX2UfHS8mHFKYGmUHGw8+CuK5p?=
+ =?us-ascii?Q?5Qota/Ewi610ikHP/7OBnmf6ZjhR2JIpNtwblzeF/5bNou300ELXiIhJURUx?=
+ =?us-ascii?Q?d7ZuQdqLF0Zy20Fs2DPxgGsBaAQBfex2WTwtmz02Towm7q4FlJ90zeHYRUgV?=
+ =?us-ascii?Q?ODMNWNB5nXa0LxFk+1XSvorYPL4TD3TP/bMI05FMEuR3ZowVQj2S/2YI7PAt?=
+ =?us-ascii?Q?js4xrSh3ynoZxBduZ8YYdBKsg9SeHvvdRNZJ06tfNtuut5JJF8/oA+KNUg11?=
+ =?us-ascii?Q?R/AWqUCZTnKl0K6q56fKqM1wG245f+utKi6VipFouGqrbB/KSHDO3n+5Yl34?=
+ =?us-ascii?Q?iwyS4jrfUt0k3y+ljH7h82tTtEDbDx0sAGWBTJsR8At4tu9nxqAKQfMnfhTD?=
+ =?us-ascii?Q?1OLypty99/fWmiBII7VznByLNAZfD7XBfi2rJzc3zK7TkKpsMm3UFOTkkWq9?=
+ =?us-ascii?Q?esr8UUIASHXBEVeORjo/LnLnNr1lE6ZYsLWz+Jj8UaCFyCwRrcaOrQRbHeyk?=
+ =?us-ascii?Q?+iVq4vBV8IngxPxIEsv/wA4+ll8mz+OzhmxoAKZEfIcfPEpp1ZLTlyS9WsBm?=
+ =?us-ascii?Q?i4+lALXPFxJFk0DLsW1wmtVfbtkUUNH/b9SnK17/hRfD9EgAI+R7iPNy3cag?=
+ =?us-ascii?Q?UGJfzt7cZbcMBlRZSxuFX62LFwyWCz+TeMG9n0u35rzRw1lA9O7ord0WduU/?=
+ =?us-ascii?Q?hyX0cjdXbAQdgX/vPcZm0ojkqoU0OEhlWVKoDA87ETCw/p7a8SlpAIAYGp3j?=
+ =?us-ascii?Q?UBiiJOaQHkTo340Pbtw7z3zQwaqWbrMiGRP2acwoIZGD2ifGxCplVvf/mUFB?=
+ =?us-ascii?Q?DuMJMDDBM61guHee+KIzPrLIRVeWzLhcpNtV6EzBN4a3R03xeD1p7Bhix0nv?=
+ =?us-ascii?Q?tRANorhWb0KMWRveOKO51efp6nmM7wSwAO1jR7tLl5lXcQrFK8XbBKnGfw0f?=
+ =?us-ascii?Q?k5CPonbcs2SvpdBsMSw4UHp5aLMVbWngmdYxa5GKCOpezS83ECr6t7o+TW1f?=
+ =?us-ascii?Q?oEEsikbfahpZkNWKikFPcl3LrIssU0CwkrvAOCiRT2LFW3LPDAWB0E+Czwzn?=
+ =?us-ascii?Q?FvamQPNM4l7fVtulJ1Ixb33avm5RXdjaW3y3q/Pk/IXvuW2tNwWrItQfId+R?=
+ =?us-ascii?Q?YS3+8yJaScGQpTbmtoM49wEDdQAtmaBz2HaT7D9wM40IgvvIe3+7rGz0zhqg?=
+ =?us-ascii?Q?ARg8uYUINDj5AENkRyA=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PH8PR11MB7965.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9b5dbe85-96e9-4fee-054e-08dd67c07cd9
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Mar 2025 15:04:18.2070 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 8qmo/eIUjQ7to5vPgHvZyM24VihnGIjj+MjwNZ8y7lOnr54MpvK55xtT8zIFx6R+6D8gzuM/5jJn0mecibpBjg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR11MB7490
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1742476782; x=1774012782;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=8ffT4wfwhjfYNOtiauuUrX5hnXGvZM/ci3OQm4Rlezo=;
- b=NyT3OP2dNvDhaCnIAqGQ81VV52kLOBVCZdlVUum5rShxyZrr0vQPq5P5
- oktV0eMEG+PYwcMU9WxVbdmHLwye2ofFwe6D2ffZUFWvN4NdvNmSUujz9
- D5r0/XGrrfR5JIeN3n31zFQP9dQ0ifQc+HS4CfR7WlFD/WdXjVONR6AdW
- eix/d5J8OV0McPZSVLlxhnm1o3X/DImSzgK3VI0OLESRDopJjh3AHE02+
- hpf8ngRF0oz5dbiO6IR31kxQVgHHMznx7Hv3bCA/O4q/gb6lg02zfUS1n
- RFTvhU9k+A2/mAtPvTWEn/2bYqtMExHuP9w/7qmkP2DDaSNWqz42zjYA2
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1742483074; x=1774019074;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=MJRgcUjF4lQBC1zhHhMtFOZxQFwYkJwHCODnd+PNrCE=;
+ b=EcwlgUtLYpWnfGbg9FSWqyeSEvaz10iE0UWDB0veXDUF+pYqxVJeHAm0
+ +U+nt+q1M9IB78wzjJ3TxB+THX1NgXQZ8DNVqdS0X3cB/jyzVKOyqRmxK
+ aS7qIue6Fj7vnKzzaQzGKyVdAhGwJRK6HojrxIN9u/7XTZ0SLg6a6FpYm
+ tiyZ++O4NOE5sxNFcXJOXXVwtyqOSH6v5MjDPd/J77RY8/cOFf2cwOM+Y
+ aQ7uG22of8ePwSmTj91/QohwWrZOUTwctJjj2FfvPENDO86y0/N/bKqK9
+ 1cc47OiTO43noobCSKJlvBA99rn+AZZV7LjH0aOYDiBAD/i//DuphgmXD
+ A==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=NyT3OP2d
-Subject: [Intel-wired-lan] [PATCH iwl-next v3 3/3] ice: enable timesync
- operation on 2xNAC E825 devices
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=EcwlgUtL
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v8 14/15] ixgbe: add E610
+ implementation of FW recovery mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,372 +226,45 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Karol Kolacinski <karol.kolacinski@intel.com>,
- horms@kernel.org, Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Karol Kolacinski <karol.kolacinski@intel.com>
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Jedrzej Jagielski
+> Sent: Thursday, March 13, 2025 8:34 PM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: Nguyen, Anthony L <anthony.l.nguyen@intel.com>;
+> netdev@vger.kernel.org; Kitszel, Przemyslaw <przemyslaw.kitszel@intel.com=
+>;
+> horms@kernel.org; Jagielski, Jedrzej <jedrzej.jagielski@intel.com>;
+> Polchlopek, Mateusz <mateusz.polchlopek@intel.com>; Wegrzyn, Stefan
+> <stefan.wegrzyn@intel.com>
+> Subject: [Intel-wired-lan] [PATCH iwl-next v8 14/15] ixgbe: add E610
+> implementation of FW recovery mode
+>=20
+> Add E610 implementation of fw_recovery_mode MAC operation.
+>=20
+> In case of E610 information about recovery mode is obtained from
+> FW_MODES field in IXGBE_GL_MNG_FWSM register (0x000B6134).
+>=20
+> Introduce recovery specific probing flow and init only vital features.
+>=20
+> User should be able to perform NVM update using devlink once FW error is
+> detected in order to load a healthy img.
+>=20
+> Reviewed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+> Co-developed-by: Stefan Wegrzyn <stefan.wegrzyn@intel.com>
+> Signed-off-by: Stefan Wegrzyn <stefan.wegrzyn@intel.com>
+> Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+> ---
+> v7: unregister mdiobus before unregistering netdev
+> ---
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 17 ++++
+>  .../ethernet/intel/ixgbe/ixgbe_fw_update.c    | 14 ++-
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 94 +++++++++++++++++--
+>  .../ethernet/intel/ixgbe/ixgbe_type_e610.h    |  3 +
+>  4 files changed, 117 insertions(+), 11 deletions(-)
+>=20
 
-According to the E825C specification, SBQ address for ports on a single
-complex is device 2 for PHY 0 and device 13 for PHY1.
-For accessing ports on a dual complex E825C (so called 2xNAC mode),
-the driver should use destination device 2 (referred as phy_0) for
-the current complex PHY and device 13 (referred as phy_0_peer) for
-peer complex PHY.
-
-Differentiate SBQ destination device by checking if current PF port
-number is on the same PHY as target port number.
-
-Adjust 'ice_get_lane_number' function to provide unique port number for
-ports from PHY1 in 'dual' mode config (by adding fixed offset for PHY1
-ports). Cache this value in ice_hw struct.
-
-Introduce ice_get_primary_hw wrapper to get access to timesync register
-not available from second NAC.
-
-Reviewed-by: Simon Horman <horms@kernel.org>
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
-Co-developed-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
-Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
----
- drivers/net/ethernet/intel/ice/ice.h        | 60 ++++++++++++++++++++-
- drivers/net/ethernet/intel/ice/ice_common.c |  6 ++-
- drivers/net/ethernet/intel/ice/ice_ptp.c    | 49 ++++++++++++-----
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 39 +++++++++++---
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h |  5 --
- drivers/net/ethernet/intel/ice/ice_type.h   |  1 +
- 6 files changed, 134 insertions(+), 26 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 43a34e3fa762..fc127c0f9d66 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -197,8 +197,6 @@
- 
- #define ice_pf_to_dev(pf) (&((pf)->pdev->dev))
- 
--#define ice_pf_src_tmr_owned(pf) ((pf)->hw.func_caps.ts_func_info.src_tmr_owned)
--
- enum ice_feature {
- 	ICE_F_DSCP,
- 	ICE_F_PHY_RCLK,
-@@ -1053,4 +1051,62 @@ static inline void ice_clear_rdma_cap(struct ice_pf *pf)
- }
- 
- extern const struct xdp_metadata_ops ice_xdp_md_ops;
-+
-+/**
-+ * ice_is_dual - Check if given config is multi-NAC
-+ * @hw: pointer to HW structure
-+ *
-+ * Return: true if the device is running in mutli-NAC (Network
-+ * Acceleration Complex) configuration variant, false otherwise
-+ * (always false for non-E825 devices).
-+ */
-+static inline bool ice_is_dual(struct ice_hw *hw)
-+{
-+	return hw->mac_type == ICE_MAC_GENERIC_3K_E825 &&
-+	       (hw->dev_caps.nac_topo.mode & ICE_NAC_TOPO_DUAL_M);
-+}
-+
-+/**
-+ * ice_is_primary - Check if given device belongs to the primary complex
-+ * @hw: pointer to HW structure
-+ *
-+ * Check if given PF/HW is running on primary complex in multi-NAC
-+ * configuration.
-+ *
-+ * Return: true if the device is dual, false otherwise (always true
-+ * for non-E825 devices).
-+ */
-+static inline bool ice_is_primary(struct ice_hw *hw)
-+{
-+	return hw->mac_type != ICE_MAC_GENERIC_3K_E825 ||
-+	       !ice_is_dual(hw) ||
-+	       (hw->dev_caps.nac_topo.mode & ICE_NAC_TOPO_PRIMARY_M);
-+}
-+
-+/**
-+ * ice_pf_src_tmr_owned - Check if a primary timer is owned by PF
-+ * @pf: pointer to PF structure
-+ *
-+ * Return: true if PF owns primary timer, false otherwise.
-+ */
-+static inline bool ice_pf_src_tmr_owned(struct ice_pf *pf)
-+{
-+	return pf->hw.func_caps.ts_func_info.src_tmr_owned &&
-+	       ice_is_primary(&pf->hw);
-+}
-+
-+/**
-+ * ice_get_primary_hw - Get pointer to primary ice_hw structure
-+ * @pf: pointer to PF structure
-+ *
-+ * Return: A pointer to ice_hw structure with access to timesync
-+ * register space.
-+ */
-+static inline struct ice_hw *ice_get_primary_hw(struct ice_pf *pf)
-+{
-+	if (!pf->adapter->ctrl_pf)
-+		return &pf->hw;
-+	else
-+		return &pf->adapter->ctrl_pf->hw;
-+}
- #endif /* _ICE_H_ */
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 63e4a0824548..f7fd0a2451de 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -1135,6 +1135,8 @@ int ice_init_hw(struct ice_hw *hw)
- 		}
- 	}
- 
-+	hw->lane_num = ice_get_phy_lane_number(hw);
-+
- 	return 0;
- err_unroll_fltr_mgmt_struct:
- 	ice_cleanup_fltr_mgmt_struct(hw);
-@@ -4130,10 +4132,12 @@ int ice_get_phy_lane_number(struct ice_hw *hw)
- 			continue;
- 
- 		if (hw->pf_id == lport) {
-+			if (hw->mac_type == ICE_MAC_GENERIC_3K_E825 &&
-+			    ice_is_dual(hw) && !ice_is_primary(hw))
-+				lane += ICE_PORTS_PER_QUAD;
- 			kfree(options);
- 			return lane;
- 		}
--
- 		lport++;
- 	}
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index cdd76ecb2196..85b614135694 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -208,6 +208,9 @@ u64 ice_ptp_read_src_clk_reg(struct ice_pf *pf,
- 	u32 hi, lo, lo2;
- 	u8 tmr_idx;
- 
-+	if (!ice_is_primary(hw))
-+		hw = ice_get_primary_hw(pf);
-+
- 	tmr_idx = ice_get_ptp_src_clock_index(hw);
- 	guard(spinlock)(&pf->adapter->ptp_gltsyn_time_lock);
- 	/* Read the system timestamp pre PHC read */
-@@ -2809,6 +2812,32 @@ static void ice_ptp_periodic_work(struct kthread_work *work)
- 				   msecs_to_jiffies(err ? 10 : 500));
- }
- 
-+/**
-+ * ice_ptp_prepare_rebuild_sec - Prepare second NAC for PTP reset or rebuild
-+ * @pf: Board private structure
-+ * @rebuild: rebuild if true, prepare if false
-+ * @reset_type: the reset type being performed
-+ */
-+static void ice_ptp_prepare_rebuild_sec(struct ice_pf *pf, bool rebuild,
-+					enum ice_reset_req reset_type)
-+{
-+	struct list_head *entry;
-+
-+	list_for_each(entry, &pf->adapter->ports.ports) {
-+		struct ice_ptp_port *port = list_entry(entry,
-+						       struct ice_ptp_port,
-+						       list_node);
-+		struct ice_pf *peer_pf = ptp_port_to_pf(port);
-+
-+		if (!ice_is_primary(&peer_pf->hw)) {
-+			if (rebuild)
-+				ice_ptp_rebuild(peer_pf, reset_type);
-+			else
-+				ice_ptp_prepare_for_reset(peer_pf, reset_type);
-+		}
-+	}
-+}
-+
- /**
-  * ice_ptp_prepare_for_reset - Prepare PTP for reset
-  * @pf: Board private structure
-@@ -2817,6 +2846,7 @@ static void ice_ptp_periodic_work(struct kthread_work *work)
- void ice_ptp_prepare_for_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
- {
- 	struct ice_ptp *ptp = &pf->ptp;
-+	struct ice_hw *hw = &pf->hw;
- 	u8 src_tmr;
- 
- 	if (ptp->state != ICE_PTP_READY)
-@@ -2832,6 +2862,9 @@ void ice_ptp_prepare_for_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
- 	if (reset_type == ICE_RESET_PFR)
- 		return;
- 
-+	if (ice_pf_src_tmr_owned(pf) && hw->mac_type == ICE_MAC_GENERIC_3K_E825)
-+		ice_ptp_prepare_rebuild_sec(pf, false, reset_type);
-+
- 	ice_ptp_release_tx_tracker(pf, &pf->ptp.port.tx);
- 
- 	/* Disable periodic outputs */
-@@ -2953,13 +2986,6 @@ void ice_ptp_rebuild(struct ice_pf *pf, enum ice_reset_req reset_type)
- 	dev_err(ice_pf_to_dev(pf), "PTP reset failed %d\n", err);
- }
- 
--static bool ice_is_primary(struct ice_hw *hw)
--{
--	return hw->mac_type == ICE_MAC_GENERIC_3K_E825 && ice_is_dual(hw) ?
--		       !!(hw->dev_caps.nac_topo.mode & ICE_NAC_TOPO_PRIMARY_M) :
--		       true;
--}
--
- static int ice_ptp_setup_adapter(struct ice_pf *pf)
- {
- 	if (!ice_pf_src_tmr_owned(pf) || !ice_is_primary(&pf->hw))
-@@ -3179,17 +3205,16 @@ void ice_ptp_init(struct ice_pf *pf)
- {
- 	struct ice_ptp *ptp = &pf->ptp;
- 	struct ice_hw *hw = &pf->hw;
--	int lane_num, err;
-+	int err;
- 
- 	ptp->state = ICE_PTP_INITIALIZING;
- 
--	lane_num = ice_get_phy_lane_number(hw);
--	if (lane_num < 0) {
--		err = lane_num;
-+	if (hw->lane_num < 0) {
-+		err = hw->lane_num;
- 		goto err_exit;
- 	}
-+	ptp->port.port_num = hw->lane_num;
- 
--	ptp->port.port_num = (u8)lane_num;
- 	ice_ptp_init_hw(hw);
- 
- 	ice_ptp_init_tx_interrupt_mode(pf);
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-index eb1893dd8979..ccac84eb34c9 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-@@ -874,8 +874,12 @@ static u32 ice_ptp_tmr_cmd_to_port_reg(struct ice_hw *hw,
-  */
- void ice_ptp_src_cmd(struct ice_hw *hw, enum ice_ptp_tmr_cmd cmd)
- {
-+	struct ice_pf *pf = container_of(hw, struct ice_pf, hw);
- 	u32 cmd_val = ice_ptp_tmr_cmd_to_src_reg(hw, cmd);
- 
-+	if (!ice_is_primary(hw))
-+		hw = ice_get_primary_hw(pf);
-+
- 	wr32(hw, GLTSYN_CMD, cmd_val);
- }
- 
-@@ -891,6 +895,9 @@ static void ice_ptp_exec_tmr_cmd(struct ice_hw *hw)
- {
- 	struct ice_pf *pf = container_of(hw, struct ice_pf, hw);
- 
-+	if (!ice_is_primary(hw))
-+		hw = ice_get_primary_hw(pf);
-+
- 	guard(spinlock)(&pf->adapter->ptp_gltsyn_time_lock);
- 	wr32(hw, GLTSYN_CMD_SYNC, SYNC_EXEC_CMD);
- 	ice_flush(hw);
-@@ -922,10 +929,18 @@ static void ice_ptp_cfg_sync_delay(const struct ice_hw *hw, u32 delay)
- static enum ice_sbq_dev_id ice_ptp_get_dest_dev_e825(struct ice_hw *hw,
- 						     u8 port)
- {
--	/* On a single complex E825, PHY 0 is always destination device phy_0
-+	u8 curr_phy, tgt_phy;
-+
-+	tgt_phy = port >= hw->ptp.ports_per_phy;
-+	curr_phy = hw->lane_num >= hw->ptp.ports_per_phy;
-+	/* In the driver, lanes 4..7 are in fact 0..3 on a second PHY.
-+	 * On a single complex E825C, PHY 0 is always destination device phy_0
- 	 * and PHY 1 is phy_0_peer.
-+	 * On dual complex E825C, device phy_0 points to PHY on a current
-+	 * complex and phy_0_peer to PHY on a different complex.
- 	 */
--	if (port >= hw->ptp.ports_per_phy)
-+	if ((!ice_is_dual(hw) && tgt_phy == 1) ||
-+	    (ice_is_dual(hw) && tgt_phy != curr_phy))
- 		return ice_sbq_dev_phy_0_peer;
- 	else
- 		return ice_sbq_dev_phy_0;
-@@ -2417,6 +2432,7 @@ int ice_phy_cfg_intr_eth56g(struct ice_hw *hw, u8 port, bool ena, u8 threshold)
- static int ice_read_phy_and_phc_time_eth56g(struct ice_hw *hw, u8 port,
- 					    u64 *phy_time, u64 *phc_time)
- {
-+	struct ice_pf *pf = container_of(hw, struct ice_pf, hw);
- 	u64 tx_time, rx_time;
- 	u32 zo, lo;
- 	u8 tmr_idx;
-@@ -2436,8 +2452,13 @@ static int ice_read_phy_and_phc_time_eth56g(struct ice_hw *hw, u8 port,
- 	ice_ptp_exec_tmr_cmd(hw);
- 
- 	/* Read the captured PHC time from the shadow time registers */
--	zo = rd32(hw, GLTSYN_SHTIME_0(tmr_idx));
--	lo = rd32(hw, GLTSYN_SHTIME_L(tmr_idx));
-+	if (ice_is_primary(hw)) {
-+		zo = rd32(hw, GLTSYN_SHTIME_0(tmr_idx));
-+		lo = rd32(hw, GLTSYN_SHTIME_L(tmr_idx));
-+	} else {
-+		zo = rd32(ice_get_primary_hw(pf), GLTSYN_SHTIME_0(tmr_idx));
-+		lo = rd32(ice_get_primary_hw(pf), GLTSYN_SHTIME_L(tmr_idx));
-+	}
- 	*phc_time = (u64)lo << 32 | zo;
- 
- 	/* Read the captured PHY time from the PHY shadow registers */
-@@ -2574,6 +2595,7 @@ int ice_stop_phy_timer_eth56g(struct ice_hw *hw, u8 port, bool soft_reset)
-  */
- int ice_start_phy_timer_eth56g(struct ice_hw *hw, u8 port)
- {
-+	struct ice_pf *pf = container_of(hw, struct ice_pf, hw);
- 	u32 lo, hi;
- 	u64 incval;
- 	u8 tmr_idx;
-@@ -2599,8 +2621,13 @@ int ice_start_phy_timer_eth56g(struct ice_hw *hw, u8 port)
- 	if (err)
- 		return err;
- 
--	lo = rd32(hw, GLTSYN_INCVAL_L(tmr_idx));
--	hi = rd32(hw, GLTSYN_INCVAL_H(tmr_idx));
-+	if (ice_is_primary(hw)) {
-+		lo = rd32(hw, GLTSYN_INCVAL_L(tmr_idx));
-+		hi = rd32(hw, GLTSYN_INCVAL_H(tmr_idx));
-+	} else {
-+		lo = rd32(ice_get_primary_hw(pf), GLTSYN_INCVAL_L(tmr_idx));
-+		hi = rd32(ice_get_primary_hw(pf), GLTSYN_INCVAL_H(tmr_idx));
-+	}
- 	incval = (u64)hi << 32 | lo;
- 
- 	err = ice_write_40b_ptp_reg_eth56g(hw, port, PHY_REG_TIMETUS_L, incval);
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-index e5925ccc2613..83f20fa7ace7 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-@@ -444,11 +444,6 @@ static inline u64 ice_get_base_incval(struct ice_hw *hw)
- 	}
- }
- 
--static inline bool ice_is_dual(struct ice_hw *hw)
--{
--	return !!(hw->dev_caps.nac_topo.mode & ICE_NAC_TOPO_DUAL_M);
--}
--
- #define PFTSYN_SEM_BYTES	4
- 
- #define ICE_PTP_CLOCK_INDEX_0	0x00
-diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
-index 0aab21113cc4..ccf53cc6403e 100644
---- a/drivers/net/ethernet/intel/ice/ice_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_type.h
-@@ -970,6 +970,7 @@ struct ice_hw {
- 	u8 intrl_gran;
- 
- 	struct ice_ptp_hw ptp;
-+	s8 lane_num;
- 
- 	/* Active package version (currently active) */
- 	struct ice_pkg_ver active_pkg_ver;
--- 
-2.39.3
-
+Tested-by: Bharath R <bharath.r@intel.com>
