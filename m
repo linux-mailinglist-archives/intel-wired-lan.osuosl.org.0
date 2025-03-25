@@ -1,107 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8A6D0A6E261
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 Mar 2025 19:34:22 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 86393A704AF
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Mar 2025 16:14:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6A595608E4;
-	Mon, 24 Mar 2025 18:34:20 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id X8bU-oW8zG0Z; Mon, 24 Mar 2025 18:34:19 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 57F2960AB7
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1742841259;
-	bh=vH1HlSoZi9+B6OCO8dMkJv0ePoMjqde0duhAsup9LD4=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=Zn+Wf7qjLtazAIMZyfgeBVhTh0Q2fV40kXmURpoMfVC6l995kJFBLIzvxmlgw6JaV
-	 jYdFs9fQzOaWx7sXPqmk6U5MLoKxi8G1WNIABf1caETtap9DCFJKCR61LajUxwvu2u
-	 iBFMIo/SKBECHNKrpQdMQ23gDQ1w4RLPbj5Rap3Bf+iV0Z0r2AHQcAYqeior+voIUu
-	 TcUchBCoicVtrcO1akY2tm3lvkF80lMJwwsu58eAcMnZuWaOaerkh5eOJCj9ll7ITj
-	 ZplA6PYmD8y9ermI0V3h/e1uvL7KKGLP0C693GSCGbH1Xkz0n+oo++wOUQnjg6z+i4
-	 NzPeAQFT1eC3A==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 57F2960AB7;
-	Mon, 24 Mar 2025 18:34:19 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 4DEB6C0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Mar 2025 18:34:17 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3F60E4070E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Mar 2025 18:34:17 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8ADFC41227;
+	Tue, 25 Mar 2025 15:14:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZdEooAjDwAGE for <intel-wired-lan@lists.osuosl.org>;
- Mon, 24 Mar 2025 18:34:16 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4E14C4070B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4E14C4070B
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4E14C4070B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Mar 2025 18:34:16 +0000 (UTC)
-X-CSE-ConnectionGUID: v4N98oSVTw2eIMDuiE+dsQ==
-X-CSE-MsgGUID: wMnMuCacRKSIuMLL+OraHw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11383"; a="54702730"
-X-IronPort-AV: E=Sophos;i="6.14,272,1736841600"; d="scan'208";a="54702730"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Mar 2025 11:34:15 -0700
-X-CSE-ConnectionGUID: 0FRpxUlUQ9q7rT29U8ALZQ==
-X-CSE-MsgGUID: 8JkvYv9PSjGQS/WsvmAUxA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,272,1736841600"; d="scan'208";a="124591694"
-Received: from lkp-server02.sh.intel.com (HELO e98e3655d6d2) ([10.239.97.151])
- by fmviesa010.fm.intel.com with ESMTP; 24 Mar 2025 11:34:12 -0700
-Received: from kbuild by e98e3655d6d2 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1twmcj-0003rx-2g;
- Mon, 24 Mar 2025 18:34:09 +0000
-Date: Tue, 25 Mar 2025 02:33:20 +0800
-From: kernel test robot <lkp@intel.com>
-To: Ahmed Zaki <ahmed.zaki@intel.com>, intel-wired-lan@lists.osuosl.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
- netdev@vger.kernel.org, przemyslaw.kitszel@intel.com,
- anthony.l.nguyen@intel.com, andrew+netdev@lunn.ch,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, almasrymina@google.com, willemb@google.com,
- Ahmed Zaki <ahmed.zaki@intel.com>,
- Sridhar Samudrala <sridhar.samudrala@intel.com>
-Message-ID: <202503250234.USFLMuAQ-lkp@intel.com>
-References: <20250324134939.253647-3-ahmed.zaki@intel.com>
+ id Q3igp_GQUtZ2; Tue, 25 Mar 2025 15:14:37 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0196D41226
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1742915677;
+	bh=PoPeXcnAj1MXkZ7sd5wxpK63DqmefzbwH7HjvQ9UcCE=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=FH2lxKvAqFuuHbvggj+0CtRbrU4C5how3t512wZiouVJyzsPSAQXLE4WgYZ4Q7IZe
+	 LX+tJImfFQxpDNPFCZD4WVi0qQoyR136GI9vLPxedhvj4zZzyS/hfA+xg5cfEynboq
+	 enLCXbOugA4MDIquu2i7Id5j0ZIXmauISCUBOu0j8IRw2bLu+TBvaH7U06KC8Fc+BI
+	 K5WlPYrIoO0dfsApZ7Y/Rfdo8nXcwNCyMczqO8a2kn6MQjpy14PeBaFjmF9osUhO8a
+	 ss4LpMkhXyDwWi69gupqsMf9pVSBVMcAotgSwHmdSxbdyXSrKXGur5Dhqni7bHbL1F
+	 Th97J5vtYFArw==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0196D41226;
+	Tue, 25 Mar 2025 15:14:37 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 0FBB31B8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Mar 2025 02:10:49 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id ECA8481773
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Mar 2025 02:10:48 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id XHDObMTKWNzD for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 25 Mar 2025 02:10:48 +0000 (UTC)
+X-Greylist: delayed 492 seconds by postgrey-1.37 at util1.osuosl.org;
+ Tue, 25 Mar 2025 02:10:47 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 2873B8154F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2873B8154F
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=95.215.58.171;
+ helo=out-171.mta1.migadu.com; envelope-from=xuanqiang.luo@linux.dev;
+ receiver=<UNKNOWN> 
+Received: from out-171.mta1.migadu.com (out-171.mta1.migadu.com
+ [95.215.58.171])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2873B8154F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Mar 2025 02:10:47 +0000 (UTC)
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
+ include these headers.
+From: Xuanqiang Luo <xuanqiang.luo@linux.dev>
+To: przemyslaw.kitszel@intel.com,
+	anthony.l.nguyen@intel.com
+Cc: davem@davemloft.net, edumazet@google.com, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, Xuanqiang Luo <xuanqiang.luo@linux.dev>,
+ Xuanqiang Luo <luoxuanqiang@kylinos.cn>
+Date: Tue, 25 Mar 2025 10:01:49 +0800
+Message-Id: <20250325020149.2041648-1-xuanqiang.luo@linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250324134939.253647-3-ahmed.zaki@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1742841256; x=1774377256;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=QkioRVw7TRFRDmFV8kPpFQmYnT0X9PvxxTgJT1b6bEc=;
- b=c783lp/Ki1d3OW9UoS5eq5GSw2vbMuWPUWsFOgI9VbLsTIIGIWRsDCF6
- up5bLoFjoH0miaAF2jTl4NrkoH8LM7AwX943nRpoKvmnW8GMlJqM4haEu
- ppOACa0n2eZ7jlJYEWfuW2YDdKBpCgDJegBoQqX0xgQ1HhD6KJji11rGn
- Lzs3b54JkKdNoGjJWKs19CZ4zqrP00c3RecijcyIKncZjFCbsaesEBt/R
- EO2if7kPkYWboELG47dsS6QzIDjlcI5d/xhti+MCuDW+kcOrHsnybXJmN
- 2V3Y1lNUsjk6oyMI4JiF334aabXcUv7WCci/bfpNS2IzZfGF4i++VFLql
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+Content-Transfer-Encoding: 8bit
+X-Migadu-Flow: FLOW_OUT
+X-Mailman-Approved-At: Tue, 25 Mar 2025 15:14:35 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linux.dev; s=key1; t=1742868152;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=PoPeXcnAj1MXkZ7sd5wxpK63DqmefzbwH7HjvQ9UcCE=;
+ b=LINj1/ek64hEO/x33uHxwLIGJy5oSelQhW66VB1kPB852I2rxWFFWv2vSqHcBb1BZOcfPZ
+ selz3aElmCS6XHwWWoR1/RTxZAyiH/cqCeIIA7gXcUhgUmwAM4/CE+2x4botaPZxeXCAvG
+ F4mXLcKPfEIM0EeVKPuGmcnbaCPoNjg=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=c783lp/K
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 2/2] idpf: add flow steering
- support
+ header.from=linux.dev
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256
+ header.s=key1 header.b=LINj1/ek
+Subject: [Intel-wired-lan] [PATCH iwl-net v2] ice: Check VF VSI Pointer
+ Value in ice_vc_add_fdir_fltr()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -117,87 +98,37 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Ahmed,
+From: Xuanqiang Luo <luoxuanqiang@kylinos.cn>
 
-kernel test robot noticed the following build errors:
+As mentioned in the commit baeb705fd6a7 ("ice: always check VF VSI
+pointer values"), we need to perform a null pointer check on the return
+value of ice_get_vf_vsi() before using it.
 
-[auto build test ERROR on tnguy-next-queue/dev-queue]
+v2: Add "iwl-net" to the subject and modify the name format.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Ahmed-Zaki/virtchnl2-add-flow-steering-support/20250324-215138
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-patch link:    https://lore.kernel.org/r/20250324134939.253647-3-ahmed.zaki%40intel.com
-patch subject: [Intel-wired-lan] [PATCH iwl-next 2/2] idpf: add flow steering support
-config: s390-allmodconfig (https://download.01.org/0day-ci/archive/20250325/202503250234.USFLMuAQ-lkp@intel.com/config)
-compiler: clang version 18.1.8 (https://github.com/llvm/llvm-project 3b5b5c1ec4a3095ab096dd780e84d7ab81f3d7ff)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250325/202503250234.USFLMuAQ-lkp@intel.com/reproduce)
+Fixes: 6ebbe97a4881 ("ice: Add a per-VF limit on number of FDIR filters")
+Signed-off-by: Xuanqiang Luo <luoxuanqiang@kylinos.cn>
+---
+ drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202503250234.USFLMuAQ-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
->> drivers/net/ethernet/intel/idpf/idpf_virtchnl.c:3532:6: error: conflicting types for 'idpf_vport_is_cap_ena'
-    3532 | bool idpf_vport_is_cap_ena(struct idpf_vport *vport, u16 flag)
-         |      ^
-   drivers/net/ethernet/intel/idpf/idpf_virtchnl.h:108:6: note: previous declaration is here
-     108 | bool idpf_vport_is_cap_ena(struct idpf_vport *vport, u64 flag);
-         |      ^
->> drivers/net/ethernet/intel/idpf/idpf_virtchnl.c:3560:63: error: expected ')'
-    3560 |                 return !!(supp_ftypes & cpu_to_le64(VIRTCHNL2_FLOW_IPV4_UDP);
-         |                                                                             ^
-   drivers/net/ethernet/intel/idpf/idpf_virtchnl.c:3560:12: note: to match this '('
-    3560 |                 return !!(supp_ftypes & cpu_to_le64(VIRTCHNL2_FLOW_IPV4_UDP);
-         |                          ^
-   2 errors generated.
-
-
-vim +/idpf_vport_is_cap_ena +3532 drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-
-  3524	
-  3525	/**
-  3526	 * idpf_vport_is_cap_ena - Check if vport capability is enabled
-  3527	 * @vport: Private data struct
-  3528	 * @flag: flag(s) to check
-  3529	 *
-  3530	 * Return true if the capability is supported, false otherwise
-  3531	 */
-> 3532	bool idpf_vport_is_cap_ena(struct idpf_vport *vport, u16 flag)
-  3533	{
-  3534		struct virtchnl2_create_vport *vport_msg;
-  3535	
-  3536		vport_msg = vport->adapter->vport_params_recvd[vport->idx];
-  3537	
-  3538		return !!(vport_msg->vport_flags & le16_to_cpu(flag));
-  3539	}
-  3540	
-  3541	/**
-  3542	 * idpf_sideband_flow_type_ena - Check if steering is enabled for flow type
-  3543	 * @vport: Private data struct
-  3544	 * @flow_type: flow type to check (from ethtool.h)
-  3545	 *
-  3546	 * Return true if sideband filters are allowed for @flow_type, false otherwise
-  3547	 */
-  3548	bool idpf_sideband_flow_type_ena(struct idpf_vport *vport, u32 flow_type)
-  3549	{
-  3550		struct virtchnl2_create_vport *vport_msg;
-  3551		__le64 supp_ftypes;
-  3552	
-  3553		vport_msg = vport->adapter->vport_params_recvd[vport->idx];
-  3554		supp_ftypes = vport_msg->sideband_flow_types;
-  3555	
-  3556		switch (flow_type) {
-  3557		case TCP_V4_FLOW:
-  3558			return !!(supp_ftypes & cpu_to_le64(VIRTCHNL2_FLOW_IPV4_TCP));
-  3559		case UDP_V4_FLOW:
-> 3560			return !!(supp_ftypes & cpu_to_le64(VIRTCHNL2_FLOW_IPV4_UDP);
-  3561		default:
-  3562			return false;
-  3563		}
-  3564	}
-  3565	
-
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
+index 14e3f0f89c78..53bad68e3f38 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
+@@ -2092,6 +2092,12 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
+ 	dev = ice_pf_to_dev(pf);
+ 	vf_vsi = ice_get_vf_vsi(vf);
+ 
++	if (!vf_vsi) {
++		dev_err(dev, "Can not get FDIR vf_vsi for VF %u\n", vf->vf_id);
++		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
++		goto err_exit;
++	}
++
+ #define ICE_VF_MAX_FDIR_FILTERS	128
+ 	if (!ice_fdir_num_avail_fltr(&pf->hw, vf_vsi) ||
+ 	    vf->fdir.fdir_fltr_cnt_total >= ICE_VF_MAX_FDIR_FILTERS) {
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.27.0
+
