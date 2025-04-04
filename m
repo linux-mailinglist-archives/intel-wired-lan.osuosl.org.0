@@ -1,99 +1,219 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7077CA7BAC7
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Apr 2025 12:29:53 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C14EA7BB30
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Apr 2025 12:52:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 23E7B83FBE;
-	Fri,  4 Apr 2025 10:29:52 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D2E0F6FC30;
+	Fri,  4 Apr 2025 10:52:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1Vq8ggwUW7_P; Fri,  4 Apr 2025 10:29:50 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 83chXK7MmYgb; Fri,  4 Apr 2025 10:52:36 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AD35B8470D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3092D6FBE1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1743762590;
-	bh=mSudxArt8rjQSWeLSt2y0COriMb6sGMHyTtBO5YVsQQ=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1743763956;
+	bh=NxeOb3XU9HZiCjOnBIg+aBfMeblAE/yTqrISb/aujuQ=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=zRUcHa7jZjR1Sb/aHEcgJ0XS2E30eOpwaAtUL1v5t3mZS61yU6GLvjDXfqnysAvt3
-	 2PIOYmlioQwO7JxPtMNpq/gtNMZ4G27rCXF5iU6w/Yc2VAQatS/FUJlnyepnANbn/s
-	 BX6NgNDcCoYQESHxVhoi6JWcQQUHdJuGrvRVmt1BwBfVjSXAG+7vwg4l50RR0oXPMk
-	 +GiUUDDzeZD6JA+rOaD9a6Qq2puiF8ZOTl/qgDhXXV+alBnuydaZqg0nphmZLfdAlE
-	 k20VpxxFUmhpNHIXsor/mlNeT7DLbyC1fKE3wxa5nK6hV9tvpdX9+LtNCvCT1RJf/k
-	 Bn+3fs+ybcpbw==
+	 From;
+	b=0sLs1d+yYdjFfo1NiKIjm91IkCaHaK4q+Uc44P2d0uWfWv7fNF5bOpWc+gzOIbBE/
+	 rIZfM0t7lYw+URGk1mXDdhw/6rM6lZBFhcu+RgLsShA9YPrIGJwAWQbHDkxO2ICbDi
+	 nIa9KvRTT9BOVrMrq4vciE/whYCJEDYJsLCKX09k0CocUPTO8k3VH+gg3uIQsui/ol
+	 uQ6xsD7eVvjl5YecNNGAHE/84V/aJFpk04bdeWq05qMpgxCus/mz65IKH2r9PmRKdH
+	 VpPg6oCh0XicN2pLNVZVGxNb1nmop2Ws0p8KYGvNVuZ4OBfYbIYQKUDAeoDbWUc6Nn
+	 EQaCOMVI93hDQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AD35B8470D;
-	Fri,  4 Apr 2025 10:29:50 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3092D6FBE1;
+	Fri,  4 Apr 2025 10:52:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 9C2CE117
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Apr 2025 10:29:49 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id DFFAF1C4
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Apr 2025 10:52:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 82A6481ECC
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Apr 2025 10:29:49 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id D138B6FC17
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Apr 2025 10:52:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TwkEsAQo6HWc for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Apr 2025 10:29:48 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
- helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id TaMJXP9H5uYH for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Apr 2025 10:52:33 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.9;
+ helo=mgamail.intel.com; envelope-from=sx.rinitha@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 2A3E881398
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2A3E881398
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 2A3E881398
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Apr 2025 10:29:48 +0000 (UTC)
-X-CSE-ConnectionGUID: bg9iJ+KHR7GA2HehVZegwQ==
-X-CSE-MsgGUID: ebtUQ4o8QmyUlK3xOrBmmw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11393"; a="48992453"
-X-IronPort-AV: E=Sophos;i="6.15,188,1739865600"; d="scan'208";a="48992453"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
- by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Apr 2025 03:29:47 -0700
-X-CSE-ConnectionGUID: VO/WmBWSQvWRTlMwcNPYcg==
-X-CSE-MsgGUID: Uf/zUaskQsGKKSuE6n3IcQ==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 33F056FC1F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 33F056FC1F
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 33F056FC1F
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Apr 2025 10:52:33 +0000 (UTC)
+X-CSE-ConnectionGUID: PCqDQb8ZSU+NEx/gC1S9Kw==
+X-CSE-MsgGUID: lMsdC6MrRx2+c2F9O896dA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11393"; a="67671968"
+X-IronPort-AV: E=Sophos;i="6.15,188,1739865600"; d="scan'208";a="67671968"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+ by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Apr 2025 03:52:32 -0700
+X-CSE-ConnectionGUID: UmA6nmdUSm27AxG6o4UHCA==
+X-CSE-MsgGUID: nRM0Yzz9QFu4QR65K3z1mg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,188,1739865600"; d="scan'208";a="164485323"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by orviesa001.jf.intel.com with ESMTP; 04 Apr 2025 03:29:44 -0700
-Received: from vecna.igk.intel.com (vecna.igk.intel.com [10.123.220.17])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id E4A0333E99;
- Fri,  4 Apr 2025 11:29:42 +0100 (IST)
-From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-To: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>
-Date: Fri,  4 Apr 2025 12:23:21 +0200
-Message-Id: <20250404102321.25846-7-przemyslaw.kitszel@intel.com>
-X-Mailer: git-send-email 2.39.3
-In-Reply-To: <20250404102321.25846-1-przemyslaw.kitszel@intel.com>
-References: <20250404102321.25846-1-przemyslaw.kitszel@intel.com>
+X-IronPort-AV: E=Sophos;i="6.15,188,1739865600"; d="scan'208";a="131409733"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmviesa003.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 04 Apr 2025 03:52:31 -0700
+Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.44; Fri, 4 Apr 2025 03:52:31 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14 via Frontend Transport; Fri, 4 Apr 2025 03:52:31 -0700
+Received: from NAM04-DM6-obe.outbound.protection.outlook.com (104.47.73.49) by
+ edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.44; Fri, 4 Apr 2025 03:52:30 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=VBncLOm+nCS/G4kEke6vD98KbY0bslf/mpE+SE+D2gYVXNTDbevhJR9jbezQpOuM3uk4IKTGE4xkz4PrT7z48g+AfMpdKVFMAH98Js/3Pv1tY3nI09+DN5tGaSOGzj4PfaI5PRqwBD4H+DXdlyGgxCdcjFzSXk0Nzn+J8AbxUI+rAZXEkTqi2NCKcD/Jy4TV9/Kzpc2sRhTWl2PwbbOoylwCmEIFpZ1UZqpIud/fQAVnoDsTseRUI73q7NHwtYkC2UutXAQSR847T4IRxajyMFwVvPx/y9UV14jKIpY3li7MW+p4BCXBaPKYfLDA+7zYTIrAAbwTS06qJwhewMZ4Rw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=NxeOb3XU9HZiCjOnBIg+aBfMeblAE/yTqrISb/aujuQ=;
+ b=HbxprYv5gLT3ZuyAN9/PM7kg/P/eQx4PCW46CMweJMONFT/mrs2n+9YoX5+qeb195ZF1CDICnHyn8C4DzQ8FdqwGVisvjzfXM7cvvfqRTCz1yrh7ifagsCjq+vxRSerJgKH9mtNoTkeTbBFdffYeva9UNBSmL2nzTqlJJlnHv7XdPN+vDMpIDvYgSlH/Qz6E9tvspxXGMp33EcWOEqSzHCln+7X00Fy2zdU6BNcQJsuBt2EadoFrLNFkGV/M5mO7zkZ2NebN/uKwmFLajCJQtqbaB5XTocmMc2RJbJECEI4mCw+mmXas3DqW3nbpz8kRTN5erGuIkcD0qBTtSIzGRg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from IA1PR11MB6241.namprd11.prod.outlook.com (2603:10b6:208:3e9::5)
+ by SA1PR11MB5803.namprd11.prod.outlook.com (2603:10b6:806:23e::8)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8583.41; Fri, 4 Apr
+ 2025 10:52:28 +0000
+Received: from IA1PR11MB6241.namprd11.prod.outlook.com
+ ([fe80::90b0:6aad:5bb6:b3ae]) by IA1PR11MB6241.namprd11.prod.outlook.com
+ ([fe80::90b0:6aad:5bb6:b3ae%5]) with mapi id 15.20.8606.027; Fri, 4 Apr 2025
+ 10:52:28 +0000
+From: "Rinitha, SX" <sx.rinitha@intel.com>
+To: "Nitka, Grzegorz" <grzegorz.nitka@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+CC: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Kolacinski, Karol"
+ <karol.kolacinski@intel.com>, "horms@kernel.org" <horms@kernel.org>,
+ "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>, Michal Swiatkowski
+ <michal.swiatkowski@linux.intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH iwl-next v3 1/3] ice: remove SW side
+ band access workaround for E825
+Thread-Index: AQHbmZrMxqByqAX6jEW3mYM0LY14N7OTa1Sw
+Date: Fri, 4 Apr 2025 10:52:28 +0000
+Message-ID: <IA1PR11MB62414C53CC537B46F9B9581E8BA92@IA1PR11MB6241.namprd11.prod.outlook.com>
+References: <20250320131538.712326-1-grzegorz.nitka@intel.com>
+ <20250320131538.712326-2-grzegorz.nitka@intel.com>
+In-Reply-To: <20250320131538.712326-2-grzegorz.nitka@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: IA1PR11MB6241:EE_|SA1PR11MB5803:EE_
+x-ms-office365-filtering-correlation-id: 90dc6dd0-c54d-47e8-0b6f-08dd7366caff
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|1800799024|366016|38070700018|7053199007; 
+x-microsoft-antispam-message-info: =?us-ascii?Q?qpMVRcCwUTUiYmz6gegP4GhhJNZYIX6wtXk/raeiUcqSvytkpplysfY2eXdu?=
+ =?us-ascii?Q?ZmXBKL6jvF0RWndLLdFDV240z3b1ZgE+dgq2OKk1R/By8qNSDyjgdm1+IWOS?=
+ =?us-ascii?Q?CyTMCRdVRsVi65KhNOgDv9cziaAlrlrniCDvSAin+9rE6Azl6l1m1iYHg/ne?=
+ =?us-ascii?Q?nawiOP07yfaZlUHxraqgE9RhSiA/z2Ifze+C3TVx6UhuDMAwbiLXz2QAgmF3?=
+ =?us-ascii?Q?3eVZLV9PYahBDzfdOHNDWlfBRNBu1eNqAzI5l3nYvymjKNgPN/jjo2OGlFNZ?=
+ =?us-ascii?Q?UVd8g3nb0XJkO3i7zQwQFrqOMy1oxg5trd2v8MWpL0gJH/UipM81TeV3vDOA?=
+ =?us-ascii?Q?OxRYO11gAdc2bzJrQEBvLD39C7pDyajA4HYnpJ8DlPFzanlZrkIllLlgRZHj?=
+ =?us-ascii?Q?4nvU5lt0uDUjyGiIWW//tLKCAV0thDGCSrLuGdy53Yl0yWMQ0RUPhj52kg1B?=
+ =?us-ascii?Q?ii2I6UVmZ7lbrsWpsc5W0c/1tofeoPgk90OOajCaeH7ttukPs/YS7nBm6Y/Y?=
+ =?us-ascii?Q?DDW5H+RvoEoyK5JNg/Mf0Ytf4cf6XpLqn88y8691Pwp1hf+CjhAnsXcjg0SF?=
+ =?us-ascii?Q?osgNbIcOLupVKa38XSS4HhdS8XSn5+jnckwzeDBs5stWtS1iYRJBxLS8LVjr?=
+ =?us-ascii?Q?Nv54+xgLALB7+HVUY1fWzz5vxoXDCL4EzqRAE/E2jDyPUkFXaWvAThhGZY1c?=
+ =?us-ascii?Q?GULo09XE2h+oPft3jnXIoGga+ixgTGOaaCqWZcqaX594BV/Zr7+syJBfnekX?=
+ =?us-ascii?Q?1sf6vJcWproX4CCXPi0dJZTXsF/K73SRZrswjMK3Fd4wEFbKkNLAtzqxcdv1?=
+ =?us-ascii?Q?dke5ihN0qXOa5oITKBXE4/bRE9UWRS3ul9ZMJOq/FJLk9BucCjMq3k3mawnu?=
+ =?us-ascii?Q?4xnBw+H74Wbzy25P/Ft8NRZN5tRzkmL0mBWXzzYM6xFNUoqjpyUaWY0gJS34?=
+ =?us-ascii?Q?2sbWKILp9Vwdvh7FSXuYnjMYSq8RJ+qPDhyctGRcGct3IEsaqmhH4u6CL/2p?=
+ =?us-ascii?Q?vmPPmp127YLhE8hxk8VLq3cQ/Z1kci9qcJvM/WlmwY4qIAXW86TpygSIY6WJ?=
+ =?us-ascii?Q?amZHRrnmvD8L9xakLNDqRVqoTwkAmg6JHWwCza2Hd44X7sL+NXhc7jZv2oUb?=
+ =?us-ascii?Q?+UR+wGVzoceoel+Xy3JZ94GOXBOG+5qdBDzRqbRNPmED2p5v5ci+WiEOTIFb?=
+ =?us-ascii?Q?O3qkY6m++u4DbHbzhE3emvA5n0XQKpTeoLSQHJXINHUNIb5jEdcXwtdc/IA5?=
+ =?us-ascii?Q?/fKEGw+wiRiF2UkeRvCd+447XjkCERLillARW/W03e9rdzj+SEA9sKVP19Ot?=
+ =?us-ascii?Q?JixXZV06FUCoN/wZvCZy4k6aDCn8HZdzL1Bkpj9qJsk7NL+fKyXIsgaZjiJ9?=
+ =?us-ascii?Q?cjMwx6WlvvprLMTflr0h7fokE9P8OkcGZsDpgeAJb/F5DeU0RL+Ne3iqzKul?=
+ =?us-ascii?Q?oh+xf8PqIb74yph7YacxCEH2Y/D9tSXe?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:IA1PR11MB6241.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(1800799024)(366016)(38070700018)(7053199007); DIR:OUT;
+ SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?P3UHYJaZtU/ohxu3leDz1M4ya7vELeyk9X4Rpx+5m1jjqdrUOX2/MOlO60ie?=
+ =?us-ascii?Q?L0njsVev1+P9aN47yVRfU/8q7TV+YgF6wZtzxGizP5/QJhQU2a5KGwpntUcb?=
+ =?us-ascii?Q?Ltk58i205jMXcO30HVqFsZ2hUlXWbeD/aRU8VNeOV4g9KfXWplceQEneXeLp?=
+ =?us-ascii?Q?kpyE4MAkNHHBVGK4TfJkBmynJQ3R8lDz58/Y6yQaind4+tQ3oi9cKzAa/wYr?=
+ =?us-ascii?Q?mCauQkCiHRuL9wTuu01+nkGdyURa1D/AoX3pVgkz4GuF0IBcgigZ205oCElo?=
+ =?us-ascii?Q?16oOJxtmQ/JydAq2FgSspqHDh1uexD2aE1ppKeKyKQEtxSAhx77tMZZfQlAN?=
+ =?us-ascii?Q?fokR8XULeV6i2N8hEbx6L49L6Nrn/RtLNU83ClkEdEyIHUuiZryk7qSzXRou?=
+ =?us-ascii?Q?2x+N/mm/JTTiAhw6UlltkLm2hbn1EJ30MGiJdZlUWNN4j1PEgdKpjMGhMny4?=
+ =?us-ascii?Q?MtaO5rVZzkA4c6ViDVc7Ob6Cn9AiQBYQpBAjXRxpVY3NAIul5JsJwXze9+ay?=
+ =?us-ascii?Q?lHMnJ7lr/olgUcmmaL7/10+RLgHSySUrH/6qKR+mvaWMq0zLbUOMmIxGq7Dq?=
+ =?us-ascii?Q?zf9Fyq9HTzQFVDkPUd8pyP6U1Y30/PShoYbDogtWuXsA+OIhESb12sPT1NlB?=
+ =?us-ascii?Q?ypxNTsNlBICWcA8ZPjIoioye0fcIJOcbjYfhNlJQDu5/CTR9QJYfDXlQ1yW8?=
+ =?us-ascii?Q?viQAOsIrvnhOLWGH3i+4H+ETnSW9Od9/Blnsdvl5IGceUU8DHvQmMEPawXny?=
+ =?us-ascii?Q?fI7VdeLzA3wbeOsWMCGssOBWI60/86fNCG7HTxGtDs98xCxnEmvTHgFBF0I6?=
+ =?us-ascii?Q?2RwL0FXFEu0ZkUcNUCBZ1PfgMSYcuUhW4kbIKiIwWdL3YAecqfWpRI/OSahu?=
+ =?us-ascii?Q?igUjWU/y19VVc1JwHqGsSYBHBQZ8iPkEUPH2pACScUa1sr+ry/qdZ4XAb0/n?=
+ =?us-ascii?Q?cRQyLnV/X8LDw5rlSWTu79/RT0ZZLq8okJ4BEG/CE+xQ4/keBAwgNRY/mOMy?=
+ =?us-ascii?Q?quRi3kKyNAy/ILukcycVIHV813Mm9dEuMsW8gT+pgFcSjRgNKK/Xd1VJXEcR?=
+ =?us-ascii?Q?E464GOQcCiO4+x/CqMLHJyyFkLxhr6L0kjIH3cHZqCnFlaSTpybDynUrmbQT?=
+ =?us-ascii?Q?pi0jrOV8GOluZoyBCJW/2mloHjacbxWVyvvrfwRA4aeIuXtjvIyF+z1Abm0c?=
+ =?us-ascii?Q?Lk3jO+RbOE3D4wmJHK92rfFU/DF7xY5xDQcsIaLYVW71g1qqT6UUc8EKs1rB?=
+ =?us-ascii?Q?L33L17qRdv0FqL7lPFWIsMQmqneaEL7hS4c6GXqlYnl9UFPLKPGzqCZhPJFt?=
+ =?us-ascii?Q?vNnyyk0GrOYyj1bgMeYXT2JM5dCbplQVEeuaFJHdxjhETzUB2YISpWyrCvZC?=
+ =?us-ascii?Q?AVLcxUw3bIRwYMERX2HzS+LCjkqMDM4su+KcnEtvg7tkq1KgdwMPbQyWqYhJ?=
+ =?us-ascii?Q?2GaQXkXTraUhsSkbpbus7evPJvB+6bfotwo9+AF+1C0tJ4962y/x+H0+4Jms?=
+ =?us-ascii?Q?yJhtdRPAM7N300NG1why94RvTslsExGLpkhxA3UT3/PheHRDK7SPhnbj1WP6?=
+ =?us-ascii?Q?e2mQOevEStKBIdFdzCGcLIqyi2FjYuuL+PVtiDiA?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: IA1PR11MB6241.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 90dc6dd0-c54d-47e8-0b6f-08dd7366caff
+X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Apr 2025 10:52:28.5656 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: P29+WQtL+kkhBEVhI6VBiGh079w3CD2kXbxxGl3czjMhqEBbVMtXYXfPIbFWByWz80+np6IyL5Mj8PGeOtvGuQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR11MB5803
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1743762588; x=1775298588;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=RyACKMNtd/qHe/7ArBLd21IUEh8JWLH+J9Gy7oVHbiM=;
- b=PYSwj6xI+GPNx1mCO+/CJndkL51XmQ/1AxQ115iRl0GGbJE7NfCMVTMe
- yNnK53nxsWOZad2eYXPUiLiv28Bx8bb+ok6+0GQpTNB6VtrnGDhehVxyl
- FWOR4cDfU4Nsh7cV6azc89/XmIGkKkywwg+tFbW+R3DWesrzXzhrICtBV
- 1e8N/zT47Wbz1Mfi4ONnTqneGe9Zxd8NBJGOfseJfgA28J05lkCGMz465
- o5eFrgFhchB/Dgk2J5QC4Dh4hIuFAzL2ifvp83CDCOBBQWE+ChSqDZyz5
- v1c6lbR6WS3/05GKM7dwaYEnRrETTBwm9AMTr2+yYms0NXWgi0VxBFmG4
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1743763954; x=1775299954;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=NxeOb3XU9HZiCjOnBIg+aBfMeblAE/yTqrISb/aujuQ=;
+ b=ANFVj4oRiiACXHCDo9fx/ZXUiFp4mZPaqGkymDn4NYTX1VC/D7ed+iHe
+ IE7cTAf9ZCddFfqlEvlDoc60svaEIVaPxt6GHMVmx1VG+KBVI5IdZssHi
+ 0D95HeVwmWWrn5O53ffNCRbTGg72KAt7lDYo7N9Y/pyrQlrdJLwzxW3f/
+ pLKa+VqeU6TOhETh9feGojyhRmcbECIVmbjrIVYVHIPNnq0sKfsj5kAkn
+ wvdwiySnPWrPHqBTNPCU05kSkbbRBUcj6EuxJkgaPoRqzIsdVEbOQkivW
+ 5tyKZHwv0Q0Vw6rJvW8wM5U7EYTiLvAmlkzeA2pT5q6vMEq+/Iyqdq0su
+ g==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=PYSwj6xI
-Subject: [Intel-wired-lan] [PATCH iwl-net 6/6] iavf: get rid of the crit lock
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=ANFVj4oR
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3 1/3] ice: remove SW side
+ band access workaround for E825
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -106,649 +226,42 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Ahmed Zaki <ahmed.zaki@intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Stanislav Fomichev <sdf@fomichev.me>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Jacob Keller <jacob.e.keller@intel.com>, Jakub Kicinski <kuba@kernel.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Get rid of the crit lock.
-That frees us from the error prone logic of try_locks.
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of G=
+rzegorz Nitka
+> Sent: 20 March 2025 18:46
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: netdev@vger.kernel.org; Kolacinski, Karol <karol.kolacinski@intel.com=
+>; horms@kernel.org; Kitszel, Przemyslaw <przemyslaw.kitszel@intel.com>; Mi=
+chal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> Subject: [Intel-wired-lan] [PATCH iwl-next v3 1/3] ice: remove SW side ba=
+nd access workaround for E825
+>
+> From: Karol Kolacinski <karol.kolacinski@intel.com>
+>=20
+> Due to the bug in FW/NVM autoload mechanism (wrong default SB_REM_DEV_CTL=
+ register settings), the access to peer PHY and CGU clients was disabled by=
+ default.
+>
+> As the workaround solution, the register value was overwritten by the dri=
+ver at the probe or reset handling.
+> Remove workaround as it's not needed anymore. The fix in autoload procedu=
+re has been provided with NVM 3.80 version.
+>
+> NOTE: at the time the fix was provided in NVM, the E825C product was not =
+officially available on the market, so it's not expected this change will c=
+ause regression when running with older driver/kernel versions.
+>
+> Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
+> Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
+> ---
+> drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 23 ---------------------
+> 1 file changed, 23 deletions(-)
+>
 
-Thanks to netdev_lock() by Jakub it is now easy, and in most cases we were
-protected by it already - replace crit lock by netdev lock when it was not
-the case.
-
-Lockdep reports that we should cancel the work under crit_lock [splat1],
-and that was the scheme we have mostly followed since [1] by Slawomir.
-But when that is done we still got into deadlocks [splat2]. So instead
-we should look at the bigger problem, namely "weird locking/scheduling"
-of the iavf. The first step to fix that is to remove the crit lock.
-I will followup with a -next series that simplifies scheduling/tasks.
-
-Cancel the work without netdev lock (weird unlock+lock scheme),
-to fix the [splat2] (which would be totally ugly if we would kept
-the crit lock).
-
-Extend protected part of iavf_watchdog_task() to include scheduling
-more work.
-
-Note that the removed comment in iavf_reset_task() was misplaced,
-it belonged to inside of the removed if condition, so it's gone now.
-
-[splat1] - w/o this patch - The deadlock during VF removal:
-     WARNING: possible circular locking dependency detected
-     sh/3825 is trying to acquire lock:
-      ((work_completion)(&(&adapter->watchdog_task)->work)){+.+.}-{0:0}, at: start_flush_work+0x1a1/0x470
-          but task is already holding lock:
-      (&adapter->crit_lock){+.+.}-{4:4}, at: iavf_remove+0xd1/0x690 [iavf]
-          which lock already depends on the new lock.
-
-[splat2] - when cancelling work under crit lock, w/o this series,
-	   see [2] for the band aid attempt
-    WARNING: possible circular locking dependency detected
-    sh/3550 is trying to acquire lock:
-    ((wq_completion)iavf){+.+.}-{0:0}, at: touch_wq_lockdep_map+0x26/0x90
-        but task is already holding lock:
-    (&dev->lock){+.+.}-{4:4}, at: iavf_remove+0xa6/0x6e0 [iavf]
-        which lock already depends on the new lock.
-
-[1] fc2e6b3b132a ("iavf: Rework mutexes for better synchronisation")
-[2] https://github.com/pkitszel/linux/commit/52dddbfc2bb60294083f5711a158a
-Fixes: d1639a17319b ("iavf: fix a deadlock caused by rtnl and driver's lock circular dependencies")
-Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
----
-CC: Jacob Keller <jacob.e.keller@intel.com>
-CC: Jakub Kicinski <kuba@kernel.org>
-CC: Ahmed Zaki <ahmed.zaki@intel.com>
-CC: Michal Schmidt <mschmidt@redhat.com>
-CC: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
----
- drivers/net/ethernet/intel/iavf/iavf.h        |   1 -
- .../net/ethernet/intel/iavf/iavf_ethtool.c    |  23 +--
- drivers/net/ethernet/intel/iavf/iavf_main.c   | 165 ++++--------------
- 3 files changed, 38 insertions(+), 151 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 9de3e0ba3731..f7a98ff43a57 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -268,7 +268,6 @@ struct iavf_adapter {
- 	struct list_head vlan_filter_list;
- 	int num_vlan_filters;
- 	struct list_head mac_filter_list;
--	struct mutex crit_lock;
- 	/* Lock to protect accesses to MAC and VLAN lists */
- 	spinlock_t mac_vlan_list_lock;
- 	char misc_vector_name[IFNAMSIZ + 9];
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-index 03d86fe80ad9..2b2b315205b5 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-@@ -1258,7 +1258,6 @@ static int iavf_add_fdir_ethtool(struct iavf_adapter *adapter, struct ethtool_rx
- {
- 	struct ethtool_rx_flow_spec *fsp = &cmd->fs;
- 	struct iavf_fdir_fltr *fltr;
--	int count = 50;
- 	int err;
- 
- 	netdev_assert_locked(adapter->netdev);
-@@ -1281,22 +1280,13 @@ static int iavf_add_fdir_ethtool(struct iavf_adapter *adapter, struct ethtool_rx
- 	if (!fltr)
- 		return -ENOMEM;
- 
--	while (!mutex_trylock(&adapter->crit_lock)) {
--		if (--count == 0) {
--			kfree(fltr);
--			return -EINVAL;
--		}
--		udelay(1);
--	}
--
- 	err = iavf_add_fdir_fltr_info(adapter, fsp, fltr);
- 	if (!err)
- 		err = iavf_fdir_add_fltr(adapter, fltr);
- 
- 	if (err)
- 		kfree(fltr);
- 
--	mutex_unlock(&adapter->crit_lock);
- 	return err;
- }
- 
-@@ -1439,9 +1429,9 @@ iavf_set_adv_rss_hash_opt(struct iavf_adapter *adapter,
- {
- 	struct iavf_adv_rss *rss_old, *rss_new;
- 	bool rss_new_add = false;
--	int count = 50, err = 0;
- 	bool symm = false;
- 	u64 hash_flds;
-+	int err = 0;
- 	u32 hdrs;
- 
- 	netdev_assert_locked(adapter->netdev);
-@@ -1469,15 +1459,6 @@ iavf_set_adv_rss_hash_opt(struct iavf_adapter *adapter,
- 		return -EINVAL;
- 	}
- 
--	while (!mutex_trylock(&adapter->crit_lock)) {
--		if (--count == 0) {
--			kfree(rss_new);
--			return -EINVAL;
--		}
--
--		udelay(1);
--	}
--
- 	spin_lock_bh(&adapter->adv_rss_lock);
- 	rss_old = iavf_find_adv_rss_cfg_by_hdrs(adapter, hdrs);
- 	if (rss_old) {
-@@ -1506,8 +1487,6 @@ iavf_set_adv_rss_hash_opt(struct iavf_adapter *adapter,
- 	if (!err)
- 		iavf_schedule_aq_request(adapter, IAVF_FLAG_AQ_ADD_ADV_RSS_CFG);
- 
--	mutex_unlock(&adapter->crit_lock);
--
- 	if (!rss_new_add)
- 		kfree(rss_new);
- 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index bf8c7baf2ab8..2c0bb41809a4 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -1287,9 +1287,7 @@ static void iavf_configure(struct iavf_adapter *adapter)
- /**
-  * iavf_up_complete - Finish the last steps of bringing up a connection
-  * @adapter: board private structure
-- *
-- * Expects to be called while holding crit_lock.
-- **/
-+ */
- static void iavf_up_complete(struct iavf_adapter *adapter)
- {
- 	netdev_assert_locked(adapter->netdev);
-@@ -1412,9 +1410,7 @@ static void iavf_clear_adv_rss_conf(struct iavf_adapter *adapter)
- /**
-  * iavf_down - Shutdown the connection processing
-  * @adapter: board private structure
-- *
-- * Expects to be called while holding crit_lock.
-- **/
-+ */
- void iavf_down(struct iavf_adapter *adapter)
- {
- 	struct net_device *netdev = adapter->netdev;
-@@ -2029,22 +2025,21 @@ static int iavf_reinit_interrupt_scheme(struct iavf_adapter *adapter, bool runni
-  * iavf_finish_config - do all netdev work that needs RTNL
-  * @work: our work_struct
-  *
-- * Do work that needs both RTNL and crit_lock.
-- **/
-+ * Do work that needs RTNL.
-+ */
- static void iavf_finish_config(struct work_struct *work)
- {
- 	struct iavf_adapter *adapter;
--	bool locks_released = false;
-+	bool netdev_released = false;
- 	int pairs, err;
- 
- 	adapter = container_of(work, struct iavf_adapter, finish_config);
- 
- 	/* Always take RTNL first to prevent circular lock dependency;
--	 * The dev->lock is needed to update the queue number
-+	 * the dev->lock (== netdev lock) is needed to update the queue number.
- 	 */
- 	rtnl_lock();
- 	netdev_lock(adapter->netdev);
--	mutex_lock(&adapter->crit_lock);
- 
- 	if ((adapter->flags & IAVF_FLAG_SETUP_NETDEV_FEATURES) &&
- 	    adapter->netdev->reg_state == NETREG_REGISTERED &&
-@@ -2063,22 +2058,21 @@ static void iavf_finish_config(struct work_struct *work)
- 		netif_set_real_num_tx_queues(adapter->netdev, pairs);
- 
- 		if (adapter->netdev->reg_state != NETREG_REGISTERED) {
--			mutex_unlock(&adapter->crit_lock);
- 			netdev_unlock(adapter->netdev);
--			locks_released = true;
-+			netdev_released = true;
- 			err = register_netdevice(adapter->netdev);
- 			if (err) {
- 				dev_err(&adapter->pdev->dev, "Unable to register netdev (%d)\n",
- 					err);
- 
- 				/* go back and try again.*/
--				mutex_lock(&adapter->crit_lock);
-+				netdev_lock(adapter->netdev);
- 				iavf_free_rss(adapter);
- 				iavf_free_misc_irq(adapter);
- 				iavf_reset_interrupt_capability(adapter);
- 				iavf_change_state(adapter,
- 						  __IAVF_INIT_CONFIG_ADAPTER);
--				mutex_unlock(&adapter->crit_lock);
-+				netdev_unlock(adapter->netdev);
- 				goto out;
- 			}
- 		}
-@@ -2094,10 +2088,8 @@ static void iavf_finish_config(struct work_struct *work)
- 	}
- 
- out:
--	if (!locks_released) {
--		mutex_unlock(&adapter->crit_lock);
-+	if (!netdev_released)
- 		netdev_unlock(adapter->netdev);
--	}
- 	rtnl_unlock();
- }
- 
-@@ -2924,7 +2916,6 @@ static int iavf_watchdog_step(struct iavf_adapter *adapter)
- 	u32 reg_val;
- 
- 	netdev_assert_locked(adapter->netdev);
--	lockdep_assert_held(&adapter->crit_lock);
- 
- 	if (adapter->flags & IAVF_FLAG_PF_COMMS_FAILED)
- 		iavf_change_state(adapter, __IAVF_COMM_FAILED);
-@@ -3044,38 +3035,23 @@ static void iavf_watchdog_task(struct work_struct *work)
- 	int msec_delay;
- 
- 	netdev_lock(netdev);
--	if (!mutex_trylock(&adapter->crit_lock)) {
--		if (adapter->state == __IAVF_REMOVE) {
--			netdev_unlock(netdev);
--			return;
--		}
--
--		msec_delay = 20;
--		goto restart_watchdog;
--	}
--
- 	msec_delay = iavf_watchdog_step(adapter);
--
--	mutex_unlock(&adapter->crit_lock);
--restart_watchdog:
--	netdev_unlock(netdev);
--
- 	/* note that we schedule a different task */
- 	if (adapter->state >= __IAVF_DOWN)
- 		queue_work(adapter->wq, &adapter->adminq_task);
- 
- 	if (msec_delay != IAVF_NO_RESCHED)
- 		queue_delayed_work(adapter->wq, &adapter->watchdog_task,
- 				   msecs_to_jiffies(msec_delay));
-+	netdev_unlock(netdev);
- }
- 
- /**
-  * iavf_disable_vf - disable VF
-  * @adapter: board private structure
-  *
-  * Set communication failed flag and free all resources.
-- * NOTE: This function is expected to be called with crit_lock being held.
-- **/
-+ */
- static void iavf_disable_vf(struct iavf_adapter *adapter)
- {
- 	struct iavf_mac_filter *f, *ftmp;
-@@ -3183,17 +3159,7 @@ static void iavf_reset_task(struct work_struct *work)
- 	int i = 0, err;
- 	bool running;
- 
--	/* When device is being removed it doesn't make sense to run the reset
--	 * task, just return in such a case.
--	 */
- 	netdev_lock(netdev);
--	if (!mutex_trylock(&adapter->crit_lock)) {
--		if (adapter->state != __IAVF_REMOVE)
--			queue_work(adapter->wq, &adapter->reset_task);
--
--		netdev_unlock(netdev);
--		return;
--	}
- 
- 	iavf_misc_irq_disable(adapter);
- 	if (adapter->flags & IAVF_FLAG_RESET_NEEDED) {
-@@ -3238,7 +3204,6 @@ static void iavf_reset_task(struct work_struct *work)
- 		dev_err(&adapter->pdev->dev, "Reset never finished (%x)\n",
- 			reg_val);
- 		iavf_disable_vf(adapter);
--		mutex_unlock(&adapter->crit_lock);
- 		netdev_unlock(netdev);
- 		return; /* Do not attempt to reinit. It's dead, Jim. */
- 	}
-@@ -3382,7 +3347,6 @@ static void iavf_reset_task(struct work_struct *work)
- 	adapter->flags &= ~IAVF_FLAG_REINIT_ITR_NEEDED;
- 
- 	wake_up(&adapter->reset_waitqueue);
--	mutex_unlock(&adapter->crit_lock);
- 	netdev_unlock(netdev);
- 
- 	return;
-@@ -3393,7 +3357,6 @@ static void iavf_reset_task(struct work_struct *work)
- 	}
- 	iavf_disable_vf(adapter);
- 
--	mutex_unlock(&adapter->crit_lock);
- 	netdev_unlock(netdev);
- 	dev_err(&adapter->pdev->dev, "failed to allocate resources during reinit\n");
- }
-@@ -3406,20 +3369,15 @@ static void iavf_adminq_task(struct work_struct *work)
- {
- 	struct iavf_adapter *adapter =
- 		container_of(work, struct iavf_adapter, adminq_task);
-+	struct net_device *netdev = adapter->netdev;
- 	struct iavf_hw *hw = &adapter->hw;
- 	struct iavf_arq_event_info event;
- 	enum virtchnl_ops v_op;
- 	enum iavf_status ret, v_ret;
- 	u32 val, oldval;
- 	u16 pending;
- 
--	if (!mutex_trylock(&adapter->crit_lock)) {
--		if (adapter->state == __IAVF_REMOVE)
--			return;
--
--		queue_work(adapter->wq, &adapter->adminq_task);
--		goto out;
--	}
-+	netdev_lock(netdev);
- 
- 	if (adapter->flags & IAVF_FLAG_PF_COMMS_FAILED)
- 		goto unlock;
-@@ -3486,8 +3444,7 @@ static void iavf_adminq_task(struct work_struct *work)
- freedom:
- 	kfree(event.msg_buf);
- unlock:
--	mutex_unlock(&adapter->crit_lock);
--out:
-+	netdev_unlock(netdev);
- 	/* re-enable Admin queue interrupt cause */
- 	iavf_misc_irq_enable(adapter);
- }
-@@ -4180,28 +4137,21 @@ static int iavf_configure_clsflower(struct iavf_adapter *adapter,
- 				    struct flow_cls_offload *cls_flower)
- {
- 	int tc = tc_classid_to_hwtc(adapter->netdev, cls_flower->classid);
--	struct iavf_cloud_filter *filter = NULL;
--	int err = -EINVAL, count = 50;
-+	struct iavf_cloud_filter *filter;
-+	int err;
- 
- 	if (tc < 0) {
- 		dev_err(&adapter->pdev->dev, "Invalid traffic class\n");
- 		return -EINVAL;
- 	}
- 
- 	filter = kzalloc(sizeof(*filter), GFP_KERNEL);
- 	if (!filter)
- 		return -ENOMEM;
--
--	while (!mutex_trylock(&adapter->crit_lock)) {
--		if (--count == 0) {
--			kfree(filter);
--			return err;
--		}
--		udelay(1);
--	}
--
- 	filter->cookie = cls_flower->cookie;
- 
-+	netdev_lock(adapter->netdev);
-+
- 	/* bail out here if filter already exists */
- 	spin_lock_bh(&adapter->cloud_filter_list_lock);
- 	if (iavf_find_cf(adapter, &cls_flower->cookie)) {
-@@ -4235,7 +4185,7 @@ static int iavf_configure_clsflower(struct iavf_adapter *adapter,
- 	if (err)
- 		kfree(filter);
- 
--	mutex_unlock(&adapter->crit_lock);
-+	netdev_unlock(adapter->netdev);
- 	return err;
- }
- 
-@@ -4539,28 +4489,13 @@ static int iavf_open(struct net_device *netdev)
- 		return -EIO;
- 	}
- 
--	while (!mutex_trylock(&adapter->crit_lock)) {
--		/* If we are in __IAVF_INIT_CONFIG_ADAPTER state the crit_lock
--		 * is already taken and iavf_open is called from an upper
--		 * device's notifier reacting on NETDEV_REGISTER event.
--		 * We have to leave here to avoid dead lock.
--		 */
--		if (adapter->state == __IAVF_INIT_CONFIG_ADAPTER)
--			return -EBUSY;
--
--		usleep_range(500, 1000);
--	}
--
--	if (adapter->state != __IAVF_DOWN) {
--		err = -EBUSY;
--		goto err_unlock;
--	}
-+	if (adapter->state != __IAVF_DOWN)
-+		return -EBUSY;
- 
- 	if (adapter->state == __IAVF_RUNNING &&
- 	    !test_bit(__IAVF_VSI_DOWN, adapter->vsi.state)) {
- 		dev_dbg(&adapter->pdev->dev, "VF is already open.\n");
--		err = 0;
--		goto err_unlock;
-+		return 0;
- 	}
- 
- 	/* allocate transmit descriptors */
-@@ -4579,9 +4514,7 @@ static int iavf_open(struct net_device *netdev)
- 		goto err_req_irq;
- 
- 	spin_lock_bh(&adapter->mac_vlan_list_lock);
--
- 	iavf_add_filter(adapter, adapter->hw.mac.addr);
--
- 	spin_unlock_bh(&adapter->mac_vlan_list_lock);
- 
- 	/* Restore filters that were removed with IFF_DOWN */
-@@ -4594,19 +4527,15 @@ static int iavf_open(struct net_device *netdev)
- 
- 	iavf_irq_enable(adapter, true);
- 
--	mutex_unlock(&adapter->crit_lock);
--
- 	return 0;
- 
- err_req_irq:
- 	iavf_down(adapter);
- 	iavf_free_traffic_irqs(adapter);
- err_setup_rx:
- 	iavf_free_all_rx_resources(adapter);
- err_setup_tx:
- 	iavf_free_all_tx_resources(adapter);
--err_unlock:
--	mutex_unlock(&adapter->crit_lock);
- 
- 	return err;
- }
-@@ -4630,12 +4559,8 @@ static int iavf_close(struct net_device *netdev)
- 
- 	netdev_assert_locked(netdev);
- 
--	mutex_lock(&adapter->crit_lock);
--
--	if (adapter->state <= __IAVF_DOWN_PENDING) {
--		mutex_unlock(&adapter->crit_lock);
-+	if (adapter->state <= __IAVF_DOWN_PENDING)
- 		return 0;
--	}
- 
- 	set_bit(__IAVF_VSI_DOWN, adapter->vsi.state);
- 	/* We cannot send IAVF_FLAG_AQ_GET_OFFLOAD_VLAN_V2_CAPS before
-@@ -4666,7 +4591,6 @@ static int iavf_close(struct net_device *netdev)
- 	iavf_change_state(adapter, __IAVF_DOWN_PENDING);
- 	iavf_free_traffic_irqs(adapter);
- 
--	mutex_unlock(&adapter->crit_lock);
- 	netdev_unlock(netdev);
- 
- 	/* We explicitly don't free resources here because the hardware is
-@@ -4685,11 +4609,10 @@ static int iavf_close(struct net_device *netdev)
- 				    msecs_to_jiffies(500));
- 	if (!status)
- 		netdev_warn(netdev, "Device resources not yet released\n");
--
- 	netdev_lock(netdev);
--	mutex_lock(&adapter->crit_lock);
-+
- 	adapter->aq_required |= aq_to_restore;
--	mutex_unlock(&adapter->crit_lock);
-+
- 	return 0;
- }
- 
-@@ -5198,29 +5121,26 @@ iavf_shaper_set(struct net_shaper_binding *binding,
- 	struct iavf_adapter *adapter = netdev_priv(binding->netdev);
- 	const struct net_shaper_handle *handle = &shaper->handle;
- 	struct iavf_ring *tx_ring;
--	int ret = 0;
-+	int ret;
- 
- 	netdev_assert_locked(adapter->netdev);
- 
--	mutex_lock(&adapter->crit_lock);
- 	if (handle->id >= adapter->num_active_queues)
--		goto unlock;
-+		return 0;
- 
- 	ret = iavf_verify_shaper(binding, shaper, extack);
- 	if (ret)
--		goto unlock;
-+		return ret;
- 
- 	tx_ring = &adapter->tx_rings[handle->id];
- 
- 	tx_ring->q_shaper.bw_min = div_u64(shaper->bw_min, 1000);
- 	tx_ring->q_shaper.bw_max = div_u64(shaper->bw_max, 1000);
- 	tx_ring->q_shaper_update = true;
- 
- 	adapter->aq_required |= IAVF_FLAG_AQ_CONFIGURE_QUEUES_BW;
- 
--unlock:
--	mutex_unlock(&adapter->crit_lock);
--	return ret;
-+	return 0;
- }
- 
- static int iavf_shaper_del(struct net_shaper_binding *binding,
-@@ -5232,19 +5152,16 @@ static int iavf_shaper_del(struct net_shaper_binding *binding,
- 
- 	netdev_assert_locked(adapter->netdev);
- 
--	mutex_lock(&adapter->crit_lock);
- 	if (handle->id >= adapter->num_active_queues)
--		goto unlock;
-+		return 0;
- 
- 	tx_ring = &adapter->tx_rings[handle->id];
- 	tx_ring->q_shaper.bw_min = 0;
- 	tx_ring->q_shaper.bw_max = 0;
- 	tx_ring->q_shaper_update = true;
- 
- 	adapter->aq_required |= IAVF_FLAG_AQ_CONFIGURE_QUEUES_BW;
- 
--unlock:
--	mutex_unlock(&adapter->crit_lock);
- 	return 0;
- }
- 
-@@ -5505,10 +5422,6 @@ static int iavf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 		goto err_alloc_qos_cap;
- 	}
- 
--	/* set up the locks for the AQ, do this only once in probe
--	 * and destroy them only once in remove
--	 */
--	mutex_init(&adapter->crit_lock);
- 	mutex_init(&hw->aq.asq_mutex);
- 	mutex_init(&hw->aq.arq_mutex);
- 
-@@ -5578,17 +5491,14 @@ static int iavf_suspend(struct device *dev_d)
- 	running = netif_running(netdev);
- 	if (running)
- 		rtnl_lock();
--
- 	netdev_lock(netdev);
--	mutex_lock(&adapter->crit_lock);
- 
- 	if (running)
- 		iavf_down(adapter);
- 
- 	iavf_free_misc_irq(adapter);
- 	iavf_reset_interrupt_capability(adapter);
- 
--	mutex_unlock(&adapter->crit_lock);
- 	netdev_unlock(netdev);
- 	if (running)
- 		rtnl_unlock();
-@@ -5668,30 +5578,29 @@ static void iavf_remove(struct pci_dev *pdev)
- 	 * There are flows where register/unregister netdev may race.
- 	 */
- 	while (1) {
--		mutex_lock(&adapter->crit_lock);
-+		netdev_lock(netdev);
- 		if (adapter->state == __IAVF_RUNNING ||
- 		    adapter->state == __IAVF_DOWN ||
- 		    adapter->state == __IAVF_INIT_FAILED) {
--			mutex_unlock(&adapter->crit_lock);
-+			netdev_unlock(netdev);
- 			break;
- 		}
- 		/* Simply return if we already went through iavf_shutdown */
- 		if (adapter->state == __IAVF_REMOVE) {
--			mutex_unlock(&adapter->crit_lock);
-+			netdev_unlock(netdev);
- 			return;
- 		}
- 
--		mutex_unlock(&adapter->crit_lock);
-+		netdev_unlock(netdev);
- 		usleep_range(500, 1000);
- 	}
- 	cancel_delayed_work_sync(&adapter->watchdog_task);
- 	cancel_work_sync(&adapter->finish_config);
- 
- 	if (netdev->reg_state == NETREG_REGISTERED)
- 		unregister_netdev(netdev);
- 
- 	netdev_lock(netdev);
--	mutex_lock(&adapter->crit_lock);
- 	dev_info(&adapter->pdev->dev, "Removing device\n");
- 	iavf_change_state(adapter, __IAVF_REMOVE);
- 
-@@ -5707,9 +5616,11 @@ static void iavf_remove(struct pci_dev *pdev)
- 
- 	iavf_misc_irq_disable(adapter);
- 	/* Shut down all the garbage mashers on the detention level */
-+	netdev_unlock(netdev);
- 	cancel_work_sync(&adapter->reset_task);
- 	cancel_delayed_work_sync(&adapter->watchdog_task);
- 	cancel_work_sync(&adapter->adminq_task);
-+	netdev_lock(netdev);
- 
- 	adapter->aq_required = 0;
- 	adapter->flags &= ~IAVF_FLAG_REINIT_ITR_NEEDED;
-@@ -5727,8 +5638,6 @@ static void iavf_remove(struct pci_dev *pdev)
- 	/* destroy the locks only once, here */
- 	mutex_destroy(&hw->aq.arq_mutex);
- 	mutex_destroy(&hw->aq.asq_mutex);
--	mutex_unlock(&adapter->crit_lock);
--	mutex_destroy(&adapter->crit_lock);
- 	netdev_unlock(netdev);
- 
- 	iounmap(hw->hw_addr);
--- 
-2.39.3
-
+Tested-by: Rinitha S <sx.rinitha@intel.com> (A Contingent worker at Intel)
