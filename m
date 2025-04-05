@@ -1,101 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 31816A7C4EC
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Apr 2025 22:31:21 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8F041A7CBDF
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  5 Apr 2025 23:32:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 92F9E40507;
-	Fri,  4 Apr 2025 20:31:18 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id AD1B1406E8;
+	Sat,  5 Apr 2025 21:32:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id tQN8uBD0gUJJ; Fri,  4 Apr 2025 20:31:17 +0000 (UTC)
+ id vx74_19Y6Sie; Sat,  5 Apr 2025 21:32:05 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9FCB14032A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 98B504070B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1743798677;
-	bh=7Vc4E+noAgXHKTXsiOxOrpHJ07qNpTMpLRGl3jW2AoA=;
-	h=Date:From:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
+	s=default; t=1743888724;
+	bh=fsAmz8LD0bNbW0qrkD5VpNv/bH+QFRSm3njuP6enqEI=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=ttBgutHZ5yd2+y3v0l7NGBnQ8YpzwbSphSR3WkXa7Gb3ScMhQ84HedBhdHZW+8hDW
-	 TeuSQdhLWOnDVYcIJc8oYCIVmOlDdPN9b54XNQHFVmp7y0KH7mfBIYjw7gphm5vR/a
-	 pwHWKU1tdTDcmH/ETkvPSrZFnCLrm+X3rJisbCmHzjV3AbuQ1mp+OzoM5nSpdHMG/Y
-	 QZxGm1TtEBvYyF1fPcWAIj0pJ2Ibc5lh6OTFhCM96lye4TTcELCxaMCmQsHW84thLy
-	 +sgkrfY90Wy7bZC5uwIMzrq9n3YnICOOteEWAbsmS4yPa9JjOwvhQMfE67P9aFyg9Q
-	 c5FBYyxF1vLig==
+	b=eLWdl+UWntS9DX3uz+shko/ksotzoUgPxeq8dc93epaBF/7gxTy2HWyEHt6ngA0CS
+	 yn4OJseczPJBfqNoMJUlWPJC4i/tqxUEQtM/Ab4xVAc3tNaQ9wNdN+tqFUsUoHBqKz
+	 sIPiCy2ZBYR+d+79zxT4TR4Guc0IXi0C7Q7nlUHFxZ1lChO23rvndCdbTXJ3l30g7d
+	 qy+iV6sRhdiOwoVMREZuFVe2CJSB83AxBnjettm8wVmz7ksGgJnRVP/oh4GYTy+6lG
+	 58+88Hvwp5arEYXb7X1uvWEC4zHgKav3rLEvKTSLwnuQfhzD0fHUReSJpYnhMQCKMy
+	 TDW7FuabYaHiQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9FCB14032A;
-	Fri,  4 Apr 2025 20:31:17 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 98B504070B;
+	Sat,  5 Apr 2025 21:32:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id E4A0C13D
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Apr 2025 20:31:15 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 598B1204
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Apr 2025 21:32:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id CB3534035E
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Apr 2025 20:31:15 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 49F798136F
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Apr 2025 21:32:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vGxY8Xfmn7le for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Apr 2025 20:31:14 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id r-KQvGdjsMO5 for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  5 Apr 2025 21:32:02 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.15;
  helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 797CE40315
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 797CE40315
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3E69680F64
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3E69680F64
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.15])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 797CE40315
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Apr 2025 20:31:14 +0000 (UTC)
-X-CSE-ConnectionGUID: 908OyenvSOiSLzhaZzsI9w==
-X-CSE-MsgGUID: gN4mtpL4S2yD32yrXMG92w==
-X-IronPort-AV: E=McAfee;i="6700,10204,11394"; a="45368925"
-X-IronPort-AV: E=Sophos;i="6.15,189,1739865600"; d="scan'208";a="45368925"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3E69680F64
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Apr 2025 21:32:01 +0000 (UTC)
+X-CSE-ConnectionGUID: P+j4HmdORbGobr0THRfjpw==
+X-CSE-MsgGUID: tFtAPM2VRw6b1RiVHV06oA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11395"; a="45426299"
+X-IronPort-AV: E=Sophos;i="6.15,192,1739865600"; d="scan'208";a="45426299"
 Received: from fmviesa003.fm.intel.com ([10.60.135.143])
  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Apr 2025 13:31:13 -0700
-X-CSE-ConnectionGUID: 6n+7R+3eT8CKDO30OqWPgA==
-X-CSE-MsgGUID: xAM4iaIuScqKKc58k1ktMQ==
+ 05 Apr 2025 14:32:01 -0700
+X-CSE-ConnectionGUID: pcQVRbc5Rn6autF1AKXWZQ==
+X-CSE-MsgGUID: IW90JOvUQ++jSbJtCW0wsQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,189,1739865600"; d="scan'208";a="131539550"
+X-IronPort-AV: E=Sophos;i="6.15,192,1739865600"; d="scan'208";a="131739013"
 Received: from lkp-server01.sh.intel.com (HELO b207828170a5) ([10.239.97.150])
- by fmviesa003.fm.intel.com with ESMTP; 04 Apr 2025 13:31:01 -0700
+ by fmviesa003.fm.intel.com with ESMTP; 05 Apr 2025 14:32:00 -0700
 Received: from kbuild by b207828170a5 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1u0ngo-0001Wx-2r;
- Fri, 04 Apr 2025 20:30:58 +0000
-Date: Sat, 5 Apr 2025 04:30:22 +0800
+ (envelope-from <lkp@intel.com>) id 1u1B7O-0002Io-1n
+ for intel-wired-lan@lists.osuosl.org; Sat, 05 Apr 2025 21:31:58 +0000
+Date: Sun, 06 Apr 2025 05:31:52 +0800
 From: kernel test robot <lkp@intel.com>
-To: Dan Williams <dan.j.williams@intel.com>
-Cc: oe-kbuild-all@lists.linux.dev,
- Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
- Tony Nguyen <anthony.l.nguyen@intel.com>
-Message-ID: <202504050434.Eb4vugh5-lkp@intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202504060540.XbBP9R8X-lkp@intel.com>
+User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1743798674; x=1775334674;
- h=date:from:to:cc:subject:message-id:mime-version;
- bh=2xG5vzI7WOaJ7SzKjjcO34IbLda1ke+QDwq4mvCJaHo=;
- b=F7z7xVApIBYiA4Ak0GVe5YdHKpMRKSffVQdgGfkg/2jpK0XTH+ej10k0
- WU05EvWpOejphf5qbTd1hVxL4XcNiYc24py75Qzq4fQbeTLG8n8fQjdYO
- PzJLQ+Od7mHjS0geSIeKhpmxasHwUq4hnM0buktYiFFejlp//wB0sDanJ
- i+w/ko6B7gQ296ZEXJSNhR3Ryr/aekx7TDIck97/rfkfQ580TSv9ZGKgz
- +amYJziEMIlEzuDdFwpKnU6mAbuZmfy3uH1E5x1EPQls/wpRKzbQTxvE8
- vil7/R91XA+0H5Gy7qntXS6r/pQiPcMfimq2TSI1zCeNMEKFLXEwF0JSD
- w==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1743888722; x=1775424722;
+ h=date:from:to:subject:message-id;
+ bh=DL3N2KN2owIoNRKlVvKTnOJOIkw/JlIJbFVWLT+Ohcs=;
+ b=bdM1V17X53VJvrxvvKk/+mwi4vl8fhQHz1IjOgBJ15GXOa1A5u+l7EXp
+ FKvV/GTCj5XsQwXZrZNrQGqktEqwPHaCoCs15VoGaJuWsJO5ZBt+5g09/
+ TUfVaGS4X+wNDh9/Qfpvzp+1r886nwXWMxo1x/tnWtIGp+i9xm3mEi5/K
+ T+aTs2Wzxn92PoJO0HWEEwIL3Z1/v9F/McuAp3TipQbb+RqCzXyvIhTVG
+ geUCy4hk473Ut7gXuZKURR0C3E/nyVz2j7lLKwY1QHQry2uW3Vx6URu8s
+ eQJ/5ATzfgAnN+1+emnX39XH+hNpivzjefnrLCxwEzg4oXpub6Namndj+
+ A==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=F7z7xVAp
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue 2/12]
- include/linux/build_bug.h:78:41: error: static assertion failed:
- "sizeof(__uapi_uuid_t) == sizeof(uuid_t) && __alignof__(__uapi_uuid_t) ==
- __alignof__(uuid_t)"
+ header.s=Intel header.b=bdM1V17X
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ edf956e8bd7d4c7ac8a7643ed74a36227db1fa27
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -111,67 +104,138 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-head:   41ab790c342f99d9eb891807b2ff00caa56804b9
-commit: a4bf8e3b34147889963e4c46d1e7916f7157b784 [2/12] fwctl/cxl: Fix uuid_t usage in uapi
-config: arm-randconfig-003-20250405 (https://download.01.org/0day-ci/archive/20250405/202504050434.Eb4vugh5-lkp@intel.com/config)
-compiler: arm-linux-gnueabi-gcc (GCC) 8.5.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250405/202504050434.Eb4vugh5-lkp@intel.com/reproduce)
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: edf956e8bd7d4c7ac8a7643ed74a36227db1fa27  idpf: fix offloads support for encapsulated packets
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202504050434.Eb4vugh5-lkp@intel.com/
+elapsed time: 1450m
 
-All errors (new ones prefixed by >>):
+configs tested: 119
+configs skipped: 3
 
-   In file included from include/linux/bits.h:22,
-                    from include/linux/ratelimit_types.h:5,
-                    from include/linux/ratelimit.h:5,
-                    from include/linux/dev_printk.h:16,
-                    from include/linux/device.h:15,
-                    from drivers/cxl/port.c:3:
->> include/linux/build_bug.h:78:41: error: static assertion failed: "sizeof(__uapi_uuid_t) == sizeof(uuid_t) && __alignof__(__uapi_uuid_t) == __alignof__(uuid_t)"
-    #define __static_assert(expr, msg, ...) _Static_assert(expr, msg)
-                                            ^~~~~~~~~~~~~~
-   include/linux/build_bug.h:77:34: note: in expansion of macro '__static_assert'
-    #define static_assert(expr, ...) __static_assert(expr, ##__VA_ARGS__, #expr)
-                                     ^~~~~~~~~~~~~~~
-   include/uapi/cxl/features.h:16:1: note: in expansion of macro 'static_assert'
-    static_assert(sizeof(__uapi_uuid_t) == sizeof(uuid_t) &&
-    ^~~~~~~~~~~~~
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
+tested configs:
+alpha                             allnoconfig    gcc-14.2.0
+alpha                            allyesconfig    gcc-14.2.0
+arc                              allmodconfig    gcc-14.2.0
+arc                               allnoconfig    gcc-14.2.0
+arc                              allyesconfig    gcc-14.2.0
+arc                        nsim_700_defconfig    gcc-14.2.0
+arc                 nsimosci_hs_smp_defconfig    gcc-14.2.0
+arc                   randconfig-001-20250405    gcc-14.2.0
+arc                   randconfig-002-20250405    gcc-14.2.0
+arm                              allmodconfig    gcc-14.2.0
+arm                               allnoconfig    clang-21
+arm                              allyesconfig    gcc-14.2.0
+arm                          ep93xx_defconfig    clang-21
+arm                           h3600_defconfig    gcc-14.2.0
+arm                        keystone_defconfig    gcc-14.2.0
+arm                   randconfig-001-20250405    clang-18
+arm                   randconfig-002-20250405    gcc-7.5.0
+arm                   randconfig-003-20250405    gcc-8.5.0
+arm                   randconfig-004-20250405    clang-21
+arm64                            allmodconfig    clang-19
+arm64                             allnoconfig    gcc-14.2.0
+arm64                 randconfig-001-20250405    clang-19
+arm64                 randconfig-002-20250405    gcc-8.5.0
+arm64                 randconfig-003-20250405    gcc-8.5.0
+arm64                 randconfig-004-20250405    gcc-6.5.0
+csky                              allnoconfig    gcc-14.2.0
+csky                  randconfig-001-20250405    gcc-14.2.0
+csky                  randconfig-002-20250405    gcc-10.5.0
+hexagon                          allmodconfig    clang-17
+hexagon                           allnoconfig    clang-21
+hexagon                          allyesconfig    clang-21
+hexagon               randconfig-001-20250405    clang-21
+hexagon               randconfig-002-20250405    clang-21
+i386                             allmodconfig    gcc-12
+i386                              allnoconfig    gcc-12
+i386                             allyesconfig    gcc-12
+i386        buildonly-randconfig-001-20250405    gcc-12
+i386        buildonly-randconfig-002-20250405    clang-20
+i386        buildonly-randconfig-003-20250405    clang-20
+i386        buildonly-randconfig-004-20250405    clang-20
+i386        buildonly-randconfig-005-20250405    clang-20
+i386        buildonly-randconfig-006-20250405    gcc-12
+i386                                defconfig    clang-20
+loongarch                        allmodconfig    gcc-14.2.0
+loongarch                         allnoconfig    gcc-14.2.0
+loongarch             randconfig-001-20250405    gcc-14.2.0
+loongarch             randconfig-002-20250405    gcc-14.2.0
+m68k                             allmodconfig    gcc-14.2.0
+m68k                              allnoconfig    gcc-14.2.0
+m68k                             allyesconfig    gcc-14.2.0
+m68k                         amcore_defconfig    gcc-14.2.0
+m68k                          atari_defconfig    gcc-14.2.0
+microblaze                       allmodconfig    gcc-14.2.0
+microblaze                        allnoconfig    gcc-14.2.0
+microblaze                       allyesconfig    gcc-14.2.0
+mips                              allnoconfig    gcc-14.2.0
+mips                          eyeq6_defconfig    clang-21
+nios2                             allnoconfig    gcc-14.2.0
+nios2                 randconfig-001-20250405    gcc-12.4.0
+nios2                 randconfig-002-20250405    gcc-6.5.0
+openrisc                          allnoconfig    gcc-14.2.0
+openrisc                         allyesconfig    gcc-14.2.0
+parisc                           allmodconfig    gcc-14.2.0
+parisc                            allnoconfig    gcc-14.2.0
+parisc                           allyesconfig    gcc-14.2.0
+parisc                randconfig-001-20250405    gcc-11.5.0
+parisc                randconfig-002-20250405    gcc-9.3.0
+powerpc                          allmodconfig    gcc-14.2.0
+powerpc                           allnoconfig    gcc-14.2.0
+powerpc                          allyesconfig    clang-21
+powerpc                      bamboo_defconfig    clang-21
+powerpc                        cell_defconfig    gcc-14.2.0
+powerpc                 linkstation_defconfig    clang-20
+powerpc                   lite5200b_defconfig    clang-21
+powerpc               randconfig-001-20250405    gcc-8.5.0
+powerpc               randconfig-002-20250405    gcc-8.5.0
+powerpc               randconfig-003-20250405    gcc-8.5.0
+powerpc64             randconfig-001-20250405    clang-21
+powerpc64             randconfig-002-20250405    clang-21
+powerpc64             randconfig-003-20250405    clang-18
+riscv                            allmodconfig    clang-21
+riscv                             allnoconfig    gcc-14.2.0
+riscv                            allyesconfig    clang-16
+riscv                 randconfig-001-20250405    clang-21
+riscv                 randconfig-002-20250405    clang-16
+s390                             allmodconfig    clang-18
+s390                              allnoconfig    clang-15
+s390                             allyesconfig    gcc-14.2.0
+s390                  randconfig-001-20250405    clang-15
+s390                  randconfig-002-20250405    clang-15
+sh                               allmodconfig    gcc-14.2.0
+sh                                allnoconfig    gcc-14.2.0
+sh                               allyesconfig    gcc-14.2.0
+sh                    randconfig-001-20250405    gcc-14.2.0
+sh                    randconfig-002-20250405    gcc-14.2.0
+sparc                            allmodconfig    gcc-14.2.0
+sparc                             allnoconfig    gcc-14.2.0
+sparc                 randconfig-001-20250405    gcc-11.5.0
+sparc                 randconfig-002-20250405    gcc-10.3.0
+sparc64               randconfig-001-20250405    gcc-9.3.0
+sparc64               randconfig-002-20250405    gcc-11.5.0
+um                               alldefconfig    clang-21
+um                               allmodconfig    clang-19
+um                                allnoconfig    clang-21
+um                               allyesconfig    gcc-12
+um                    randconfig-001-20250405    clang-17
+um                    randconfig-002-20250405    clang-21
+x86_64                            allnoconfig    clang-20
+x86_64                           allyesconfig    clang-20
+x86_64      buildonly-randconfig-001-20250405    gcc-12
+x86_64      buildonly-randconfig-002-20250405    clang-20
+x86_64      buildonly-randconfig-003-20250405    clang-20
+x86_64      buildonly-randconfig-004-20250405    clang-20
+x86_64      buildonly-randconfig-005-20250405    gcc-12
+x86_64      buildonly-randconfig-006-20250405    clang-20
+x86_64                              defconfig    gcc-11
+xtensa                            allnoconfig    gcc-14.2.0
+xtensa                randconfig-001-20250405    gcc-11.5.0
+xtensa                randconfig-002-20250405    gcc-13.3.0
 
-vim +78 include/linux/build_bug.h
-
-bc6245e5efd70c Ian Abbott       2017-07-10  60  
-6bab69c65013be Rasmus Villemoes 2019-03-07  61  /**
-6bab69c65013be Rasmus Villemoes 2019-03-07  62   * static_assert - check integer constant expression at build time
-6bab69c65013be Rasmus Villemoes 2019-03-07  63   *
-6bab69c65013be Rasmus Villemoes 2019-03-07  64   * static_assert() is a wrapper for the C11 _Static_assert, with a
-6bab69c65013be Rasmus Villemoes 2019-03-07  65   * little macro magic to make the message optional (defaulting to the
-6bab69c65013be Rasmus Villemoes 2019-03-07  66   * stringification of the tested expression).
-6bab69c65013be Rasmus Villemoes 2019-03-07  67   *
-6bab69c65013be Rasmus Villemoes 2019-03-07  68   * Contrary to BUILD_BUG_ON(), static_assert() can be used at global
-6bab69c65013be Rasmus Villemoes 2019-03-07  69   * scope, but requires the expression to be an integer constant
-6bab69c65013be Rasmus Villemoes 2019-03-07  70   * expression (i.e., it is not enough that __builtin_constant_p() is
-6bab69c65013be Rasmus Villemoes 2019-03-07  71   * true for expr).
-6bab69c65013be Rasmus Villemoes 2019-03-07  72   *
-6bab69c65013be Rasmus Villemoes 2019-03-07  73   * Also note that BUILD_BUG_ON() fails the build if the condition is
-6bab69c65013be Rasmus Villemoes 2019-03-07  74   * true, while static_assert() fails the build if the expression is
-6bab69c65013be Rasmus Villemoes 2019-03-07  75   * false.
-6bab69c65013be Rasmus Villemoes 2019-03-07  76   */
-6bab69c65013be Rasmus Villemoes 2019-03-07  77  #define static_assert(expr, ...) __static_assert(expr, ##__VA_ARGS__, #expr)
-6bab69c65013be Rasmus Villemoes 2019-03-07 @78  #define __static_assert(expr, msg, ...) _Static_assert(expr, msg)
-6bab69c65013be Rasmus Villemoes 2019-03-07  79  
-07a368b3f55a79 Maxim Levitsky   2022-10-25  80  
-
-:::::: The code at line 78 was first introduced by commit
-:::::: 6bab69c65013bed5fce9f101a64a84d0385b3946 build_bug.h: add wrapper for _Static_assert
-
-:::::: TO: Rasmus Villemoes <linux@rasmusvillemoes.dk>
-:::::: CC: Linus Torvalds <torvalds@linux-foundation.org>
-
--- 
+--
 0-DAY CI Kernel Test Service
 https://github.com/intel/lkp-tests/wiki
