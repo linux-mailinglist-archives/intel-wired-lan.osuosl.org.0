@@ -2,72 +2,74 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 686D1A7EC64
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Apr 2025 21:16:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5ADECA7EC65
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Apr 2025 21:16:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E50E140D16;
-	Mon,  7 Apr 2025 19:16:00 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CA3C340D1C;
+	Mon,  7 Apr 2025 19:16:01 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NyqXQwLIGgaq; Mon,  7 Apr 2025 19:16:00 +0000 (UTC)
+ id iPmg0OPj9K7T; Mon,  7 Apr 2025 19:16:01 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2BEBC405E6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2224B40C92
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744053360;
-	bh=xDRSHAoOgT6s/I6D52VUAOKoM6o32qiDa5NO7mQczyo=;
+	s=default; t=1744053361;
+	bh=MztmDK5MDwMGkK4wiB6ZKUi9u0b5TQPjmv+NE91jbe4=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=m2RiklWbDlvKs+9XLSTBOBkkiokbQudyRYFCBJq/EfNy0g9oTlIoc0aPtgT2CM0sZ
-	 +eSrj60s63QR28e3AKdAKH+COrOdfgzuk5EMnbhU5So0oZrZK93LKjoUbeAgrCFJ0X
-	 qMIIAztulDjc9pJVL/71ri3SsjNNBz3hl1i2Tk4mljC7QGz7uKg9a/4xhfsjYHhpq0
-	 J4CDXmb6rG0+89esRCnp77+K9CP9gw/1c6oSS+Dg8U9JAGlLDbs3eUvFn7PdirB2S3
-	 INEFjxJt74NQRpJcTxJzQ1meDchRcId4frG9EcAzVNgH50ojHW7Tr125l3MlFdDP2m
-	 cOMoBgbqWTVyg==
+	b=yEF24wPCUz6kTK1ySUZRCEX72C0I3K29499eONn8iCi8F+mAnVJ4o67sTIcjpA9bg
+	 21zdyLYskeI49AXToYX5mur8UuJU4TjBizqin1T3HmNqdY4tyUdtRFSueYdu+bt/rK
+	 ZTTOwngp27IqmyAiRz95cSPPGs2MVC53Y/As8fXnHlUI4yTthSRgofKNwvg3HIIjWg
+	 GEJQ+EntaUNUBD0GF0yQKCq43IVE+VHxTviqkdE7MCblRU+7ykGkgUxWmaNLQgbdeF
+	 N9hsA84Yu5XcKvdlieEhrnlhV7aJWmkyHNg8BOPkzaqOc8NAf4CeJvVa1EAUoMcZH3
+	 JA//4UaLfNO6w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2BEBC405E6;
-	Mon,  7 Apr 2025 19:16:00 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2224B40C92;
+	Mon,  7 Apr 2025 19:16:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 70056DA
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Apr 2025 19:15:57 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 436E0DA
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Apr 2025 19:15:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5569541052
+ by smtp2.osuosl.org (Postfix) with ESMTP id 695E64157C
  for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Apr 2025 19:15:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7O09OSqAYpLw for <intel-wired-lan@lists.osuosl.org>;
- Mon,  7 Apr 2025 19:15:52 +0000 (UTC)
+ id GVKivB_uMuvT for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  7 Apr 2025 19:15:53 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
  helo=mgamail.intel.com; envelope-from=david.m.ertman@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 985F0414B7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 985F0414B7
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org CF020415BA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CF020415BA
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 985F0414B7
+ by smtp2.osuosl.org (Postfix) with ESMTPS id CF020415BA
  for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Apr 2025 19:15:52 +0000 (UTC)
-X-CSE-ConnectionGUID: Hg/SBEcZRUO1U47vj+oBZw==
-X-CSE-MsgGUID: uPA4zEt9QvKVU/1Xb51ZnA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="49307038"
-X-IronPort-AV: E=Sophos;i="6.15,194,1739865600"; d="scan'208";a="49307038"
+X-CSE-ConnectionGUID: N94dg/WJR4ieBzO/HQq/nQ==
+X-CSE-MsgGUID: oNfew9bARb605CScNRN1MA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="49307040"
+X-IronPort-AV: E=Sophos;i="6.15,194,1739865600"; d="scan'208";a="49307040"
 Received: from orviesa008.jf.intel.com ([10.64.159.148])
  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  07 Apr 2025 12:15:51 -0700
-X-CSE-ConnectionGUID: RdaqIhMUQqO7yx9BX5XTDQ==
-X-CSE-MsgGUID: lF79SJz1RzK1wEiGdyx4iQ==
+X-CSE-ConnectionGUID: RSVLYUX1S9O8ZLS/nD/uaA==
+X-CSE-MsgGUID: cOIwA2GKTxi+MoNizqV0SA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,194,1739865600"; d="scan'208";a="128979592"
+X-IronPort-AV: E=Sophos;i="6.15,194,1739865600"; d="scan'208";a="128979595"
 Received: from dmert-vmdev.jf.intel.com ([10.165.18.186])
  by orviesa008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  07 Apr 2025 12:15:51 -0700
 From: Dave Ertman <david.m.ertman@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Date: Mon,  7 Apr 2025 15:15:14 -0400
-Message-ID: <20250407191517.767433-6-david.m.ertman@intel.com>
+Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Marcin Szycik <marcin.szycik@linux.intel.com>
+Date: Mon,  7 Apr 2025 15:15:15 -0400
+Message-ID: <20250407191517.767433-7-david.m.ertman@intel.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250407191517.767433-1-david.m.ertman@intel.com>
 References: <20250407191517.767433-1-david.m.ertman@intel.com>
@@ -75,25 +77,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1744053352; x=1775589352;
+ t=1744053353; x=1775589353;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=mL+809s4glEVY9h6KnwuLMXVQ7Ihh24l/Ytn+RbOcvA=;
- b=fdV9gzcE3ojPja5bKfv0W7jIxQXrwE8N9sgnJLFP8dT1usCMLrxOe+0d
- McEhJ88Otw5KxUyFxbrgVHCsdxqSRepMF4v0BZqP1Zqw88q0DiSvRzQId
- AV6inm/dVfzoghg2wkPG+cf3+kBmoSK20OmVRdaDuhnTK/V0KVps906jL
- t5qLIEDHcXieWRvTQpyaHN/4KHC0IxeG0Nu8MgZk3WPwa0/QrpNYuMNDB
- IPJsjLx3f6TJlkhFmgEzudwdya84aflniuhuHZpou5WqOsg3Vv3mCQ0eK
- 1bRQhoneZj2fb2DioKFiEjae9KANR1yWLDXJOFp8u3yVSF0EsrN/TeC4J
- A==;
+ bh=vGZbQ5U3a4Vb36d08xxqd46J7T4GVTCl4Gi4nRWrJQU=;
+ b=EC5eEsKIzZ7dttRg0v/eNKYbty/BltpryW2EWI6bqUUbG32HlVKTo7fn
+ u1aBzHQIsiRUy2zpxldZkY7mePPQAIDQtiKLg59qu+iCKr28HuACqtC3U
+ xXYwhxGe98yDe2OPtSdR0iN/952k/SEt8HViqo+ZvI7wV3xEIfOtpPbpd
+ jNmsgagrChjvbJ/f3opq3gtgQS81PFw8jzuocLZ3cLWU6Wo7bZ8bpDQzN
+ PGdkqgaxApohKQM7KNu+rWIZ7Dz6d/9Vzm7Rx/5zAfb1B+8oRWYs21SCt
+ hZTuzRhXPtW3G8F6BtDnvBkZGl3oX+l5d1f4fKmmFyJOIMgrNKts3fgki
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=fdV9gzcE
-Subject: [Intel-wired-lan] [PATCH iwl-next 5/8] ice: Cleanup variable
- initialization in LAG code
+ header.a=rsa-sha256 header.s=Intel header.b=EC5eEsKI
+Subject: [Intel-wired-lan] [PATCH iwl-next 6/8] ice: cleanup capabilities
+ evaluation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -109,190 +111,37 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-In preparation for implementing SRIOV Active-Active LAG support,
-cleanup several unneeded variable initializations in declaration
-blocks.
+When evaluating the capabilities field, the ICE_AQC_BIT_ROCEV2_LAG and
+ICE_AQC_BIT_SRIOV_LAG defines were both not using the BIT operator, instead
+simply setting a hex value that set the correct bits.  While not inaccurate,
+this method is misleading, and when it is expanded in the following
+implementation it becomes even more confusing.
 
-Also move a couple of variable initializations into declaration
-block that shouold be there.
+Switch to using the BIT() operator to clarify what is being checked.
 
 Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
 Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_lag.c | 54 ++++++++----------------
- 1 file changed, 17 insertions(+), 37 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_adminq_cmd.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_lag.c b/drivers/net/ethernet/intel/ice/ice_lag.c
-index 6d52265634e1..b37255d5833e 100644
---- a/drivers/net/ethernet/intel/ice/ice_lag.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lag.c
-@@ -212,13 +212,12 @@ ice_lag_cfg_fltr(struct ice_lag *lag, u32 act, u16 recipe_id, u16 *rule_idx,
- 		 u8 direction, bool add)
- {
- 	struct ice_sw_rule_lkup_rx_tx *s_rule;
-+	struct ice_hw *hw = &lag->pf->hw;
- 	u16 s_rule_sz, vsi_num;
--	struct ice_hw *hw;
- 	u8 *eth_hdr;
- 	u32 opc;
- 	int err;
+diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+index 2eaa4ab8e791..b3298063f1bd 100644
+--- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
++++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+@@ -133,8 +133,8 @@ struct ice_aqc_list_caps_elem {
+ #define ICE_AQC_CAPS_TX_SCHED_TOPO_COMP_MODE		0x0085
+ #define ICE_AQC_CAPS_NAC_TOPOLOGY			0x0087
+ #define ICE_AQC_CAPS_FW_LAG_SUPPORT			0x0092
+-#define ICE_AQC_BIT_ROCEV2_LAG				0x01
+-#define ICE_AQC_BIT_SRIOV_LAG				0x02
++#define ICE_AQC_BIT_ROCEV2_LAG				BIT(0)
++#define ICE_AQC_BIT_SRIOV_LAG				BIT(1)
  
--	hw = &lag->pf->hw;
- 	vsi_num = ice_get_hw_vsi_num(hw, 0);
- 
- 	s_rule_sz = ICE_SW_RULE_RX_TX_ETH_HDR_SIZE(s_rule);
-@@ -362,12 +361,10 @@ ice_lag_cfg_pf_fltrs(struct ice_lag *lag, void *ptr)
- static void
- ice_lag_cfg_cp_fltr(struct ice_lag *lag, bool add)
- {
--	struct ice_sw_rule_lkup_rx_tx *s_rule = NULL;
--	struct ice_vsi *vsi;
-+	struct ice_sw_rule_lkup_rx_tx *s_rule;
-+	struct ice_vsi *vsi = lag->pf->vsi[0];
- 	u16 buf_len, opc;
- 
--	vsi = lag->pf->vsi[0];
--
- 	buf_len = ICE_SW_RULE_RX_TX_HDR_SIZE(s_rule, ICE_TRAIN_PKT_LEN);
- 	s_rule = kzalloc(buf_len, GFP_KERNEL);
- 	if (!s_rule) {
-@@ -455,12 +452,11 @@ static u16
- ice_lag_qbuf_recfg(struct ice_hw *hw, struct ice_aqc_cfg_txqs_buf *qbuf,
- 		   u16 vsi_num, u16 numq, u8 tc)
- {
-+	struct ice_pf *pf = hw->back;
- 	struct ice_q_ctx *q_ctx;
- 	u16 qid, count = 0;
--	struct ice_pf *pf;
- 	int i;
- 
--	pf = hw->back;
- 	for (i = 0; i < numq; i++) {
- 		q_ctx = ice_get_lan_q_ctx(hw, vsi_num, tc, i);
- 		if (!q_ctx) {
-@@ -876,13 +872,12 @@ ice_lag_reclaim_vf_tc(struct ice_lag *lag, struct ice_hw *src_hw, u16 vsi_num,
- 	u16 numq, valq, num_moved, qbuf_size;
- 	u16 buf_size = __struct_size(buf);
- 	struct ice_aqc_cfg_txqs_buf *qbuf;
-+	struct ice_hw *hw = &lag->pf->hw;
- 	struct ice_sched_node *n_prt;
- 	__le32 teid, parent_teid;
- 	struct ice_vsi_ctx *ctx;
--	struct ice_hw *hw;
- 	u32 tmp_teid;
- 
--	hw = &lag->pf->hw;
- 	ctx = ice_get_vsi_ctx(hw, vsi_num);
- 	if (!ctx) {
- 		dev_warn(dev, "Unable to locate VSI context for LAG reclaim\n");
-@@ -1179,11 +1174,8 @@ ice_lag_set_swid(u16 primary_swid, struct ice_lag *local_lag,
-  */
- static void ice_lag_primary_swid(struct ice_lag *lag, bool link)
- {
--	struct ice_hw *hw;
--	u16 swid;
--
--	hw = &lag->pf->hw;
--	swid = hw->port_info->sw_id;
-+	struct ice_hw *hw = &lag->pf->hw;
-+	u16 swid = hw->port_info->sw_id;
- 
- 	if (ice_share_res(hw, ICE_AQC_RES_TYPE_SWID, link, swid))
- 		dev_warn(ice_pf_to_dev(lag->pf), "Failure to set primary interface shared status\n");
-@@ -1196,12 +1188,10 @@ static void ice_lag_primary_swid(struct ice_lag *lag, bool link)
-  */
- static void ice_lag_add_prune_list(struct ice_lag *lag, struct ice_pf *event_pf)
- {
--	u16 num_vsi, rule_buf_sz, vsi_list_id, event_vsi_num, prim_vsi_idx;
--	struct ice_sw_rule_vsi_list *s_rule = NULL;
-+	u16 rule_buf_sz, vsi_list_id, event_vsi_num, prim_vsi_idx, num_vsi = 1;
-+	struct ice_sw_rule_vsi_list *s_rule;
- 	struct device *dev;
- 
--	num_vsi = 1;
--
- 	dev = ice_pf_to_dev(lag->pf);
- 	event_vsi_num = event_pf->vsi[0]->vsi_num;
- 	prim_vsi_idx = lag->pf->vsi[0]->idx;
-@@ -1237,12 +1227,10 @@ static void ice_lag_add_prune_list(struct ice_lag *lag, struct ice_pf *event_pf)
-  */
- static void ice_lag_del_prune_list(struct ice_lag *lag, struct ice_pf *event_pf)
- {
--	u16 num_vsi, vsi_num, vsi_idx, rule_buf_sz, vsi_list_id;
--	struct ice_sw_rule_vsi_list *s_rule = NULL;
-+	u16 vsi_num, vsi_idx, rule_buf_sz, vsi_list_id, num_vsi = 1;
-+	struct ice_sw_rule_vsi_list *s_rule;
- 	struct device *dev;
- 
--	num_vsi = 1;
--
- 	dev = ice_pf_to_dev(lag->pf);
- 	vsi_num = event_pf->vsi[0]->vsi_num;
- 	vsi_idx = lag->pf->vsi[0]->idx;
-@@ -1659,11 +1647,9 @@ static void ice_lag_chk_disabled_bond(struct ice_lag *lag, void *ptr)
-  */
- static void ice_lag_disable_sriov_bond(struct ice_lag *lag)
- {
--	struct ice_netdev_priv *np;
--	struct ice_pf *pf;
-+	struct ice_netdev_priv *np = netdev_priv(lag->netdev);
-+	struct ice_pf *pf = np->vsi->back;
- 
--	np = netdev_priv(lag->netdev);
--	pf = np->vsi->back;
- 	ice_clear_feature_support(pf, ICE_F_SRIOV_LAG);
- }
- 
-@@ -1832,10 +1818,8 @@ ice_lag_event_handler(struct notifier_block *notif_blk, unsigned long event,
-  */
- static int ice_register_lag_handler(struct ice_lag *lag)
- {
-+	struct notifier_block *notif_blk = &lag->notif_block;
- 	struct device *dev = ice_pf_to_dev(lag->pf);
--	struct notifier_block *notif_blk;
--
--	notif_blk = &lag->notif_block;
- 
- 	if (!notif_blk->notifier_call) {
- 		notif_blk->notifier_call = ice_lag_event_handler;
-@@ -1855,10 +1839,9 @@ static int ice_register_lag_handler(struct ice_lag *lag)
-  */
- static void ice_unregister_lag_handler(struct ice_lag *lag)
- {
-+	struct notifier_block *notif_blk = &lag->notif_block;
- 	struct device *dev = ice_pf_to_dev(lag->pf);
--	struct notifier_block *notif_blk;
- 
--	notif_blk = &lag->notif_block;
- 	if (notif_blk->notifier_call) {
- 		unregister_netdevice_notifier(notif_blk);
- 		dev_dbg(dev, "LAG event handler unregistered\n");
-@@ -1920,13 +1903,12 @@ ice_lag_move_vf_nodes_tc_sync(struct ice_lag *lag, struct ice_hw *dest_hw,
- 	u16 numq, valq, num_moved, qbuf_size;
- 	u16 buf_size = __struct_size(buf);
- 	struct ice_aqc_cfg_txqs_buf *qbuf;
-+	struct ice_hw *hw = &lag->pf->hw;
- 	struct ice_sched_node *n_prt;
- 	__le32 teid, parent_teid;
- 	struct ice_vsi_ctx *ctx;
--	struct ice_hw *hw;
- 	u32 tmp_teid;
- 
--	hw = &lag->pf->hw;
- 	ctx = ice_get_vsi_ctx(hw, vsi_num);
- 	if (!ctx) {
- 		dev_warn(dev, "LAG rebuild failed after reset due to VSI Context failure\n");
-@@ -2117,9 +2099,7 @@ int ice_init_lag(struct ice_pf *pf)
-  */
- void ice_deinit_lag(struct ice_pf *pf)
- {
--	struct ice_lag *lag;
--
--	lag = pf->lag;
-+	struct ice_lag *lag = pf->lag;
- 
- 	if (!lag)
- 		return;
+ 	u8 major_ver;
+ 	u8 minor_ver;
 -- 
 2.49.0
 
