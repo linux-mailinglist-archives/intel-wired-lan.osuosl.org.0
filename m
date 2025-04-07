@@ -1,101 +1,96 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3C09CA7EF66
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Apr 2025 22:40:43 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 963D3A7EFD6
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Apr 2025 23:50:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E8E478129D;
-	Mon,  7 Apr 2025 20:40:41 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3F7A7610C2;
+	Mon,  7 Apr 2025 21:50:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id b-MMiGU0c5SN; Mon,  7 Apr 2025 20:40:41 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id jgVEfjdS8EIu; Mon,  7 Apr 2025 21:50:24 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2EBAC80F60
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 22295610CE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744058441;
-	bh=ywoXtqkmYRR4Wlu+JYOweWbJ9CfPQ6ny9CRerjNyv4g=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1744062624;
+	bh=gU9lD+RqDMo0wEfUDiyRdrBfsjXAPrpF0e2SpfAHy3o=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=kBmlBKP1mHzHl9V2yCxi+pREYSU73fwH5h7FfzhXosJNzRLjEujg1tg6GycIsxbfc
-	 JdHB6EVPnck/epZMgaB8q7+A+CnkP+qXrA9UWMmq9q5A33nLu1zuRwI4m6upR9D0/c
-	 4f6MrXX4nIZBrtsMD2k1uv1oYDVG/sOZ4PqyGLcgrBEBi1wuAVnLgIvTc/q7zQy6to
-	 d5BeWlBGT+pFsr8ftDFfWmz79uEkzwtWf9qoQ6T7qI2ezkZ/mIS87Nf9vRiGyJ6Lmk
-	 Hsd2Gb9etOjX2ChrDGAd/0cN2qK+z+nrmMGENKjhuKPK5RbxtDZ6VRQD82zL2Of9c+
-	 G1PpiyYB++l2Q==
+	 From;
+	b=9gJYjWtUvdjQAiemWnRKu+BpicrtvclQiMrGGnmw4FVa2N1IKsIQpKYYo2tjlDgrg
+	 aJ1pPdg2OrX6oKf7oNTKeYNwErg2SBv3vxga8QORX6V89fkhEbNK8UvovsOOibveyQ
+	 34pzI3X2ELhIWkMnzz3wGkjLIrK1VQ8u+r+rJY2i0F/U6RmoTJTHA+sxKY69oN5lQc
+	 YWriZKgz59MrESCAx6g/6MGnXJWz94ZuF3cdzaMjFyhI5E2M4GiacC89j8G746nQhW
+	 6lSQmKY7OA9J8PYCxLteepIpoQHkUqyM3wzey8kVAHNJFPSyoFHnn0SYX2F29YeHN9
+	 tQqWDScR5HZdw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2EBAC80F60;
-	Mon,  7 Apr 2025 20:40:41 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 22295610CE;
+	Mon,  7 Apr 2025 21:50:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 814CFDA
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Apr 2025 20:40:39 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id AE9281DE
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Apr 2025 21:50:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 67001810E5
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Apr 2025 20:40:39 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8C64340C6A
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Apr 2025 21:50:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HFHm7jqIhKxr for <intel-wired-lan@lists.osuosl.org>;
- Mon,  7 Apr 2025 20:40:38 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.18;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 6864780E49
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6864780E49
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.18])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6864780E49
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Apr 2025 20:40:38 +0000 (UTC)
-X-CSE-ConnectionGUID: uFnygOQzT3amJmUysuSYYQ==
-X-CSE-MsgGUID: dWICzvGWRK2ia21Fjog3CQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="44716107"
-X-IronPort-AV: E=Sophos;i="6.15,196,1739865600"; d="scan'208";a="44716107"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
- by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Apr 2025 13:40:38 -0700
-X-CSE-ConnectionGUID: DDo2yfvjSoWlcdjsJe6z2g==
-X-CSE-MsgGUID: QPEacZQTQxKDxVCWFfocEA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,196,1739865600"; d="scan'208";a="127929972"
-Received: from lkp-server01.sh.intel.com (HELO b207828170a5) ([10.239.97.150])
- by fmviesa006.fm.intel.com with ESMTP; 07 Apr 2025 13:40:34 -0700
-Received: from kbuild by b207828170a5 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1u1tGh-0003ot-25;
- Mon, 07 Apr 2025 20:40:31 +0000
-Date: Tue, 8 Apr 2025 04:39:48 +0800
-From: kernel test robot <lkp@intel.com>
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>
-Message-ID: <202504080314.X7qJw69Y-lkp@intel.com>
-References: <20250407112005.85468-1-przemyslaw.kitszel@intel.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 3RF6l7BkK6KJ for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  7 Apr 2025 21:50:21 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=199.247.17.104;
+ helo=prime.voidband.net; envelope-from=oleksandr@natalenko.name;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 31FB340203
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 31FB340203
+Received: from prime.voidband.net (prime.voidband.net [199.247.17.104])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 31FB340203
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Apr 2025 21:50:20 +0000 (UTC)
+Received: from spock.localnet (unknown [212.20.115.26])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange x25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+ (No client certificate requested)
+ by prime.voidband.net (Postfix) with ESMTPSA id A20EE616710F;
+ Mon, 07 Apr 2025 23:50:14 +0200 (CEST)
+From: Oleksandr Natalenko <oleksandr@natalenko.name>
+To: Josh Poimboeuf <jpoimboe@kernel.org>
+Cc: linux-kernel@vger.kernel.org,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, Paolo Abeni <pabeni@redhat.com>,
+ Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>,
+ "David S. Miller" <davem@davemloft.net>, Andrew Lunn <andrew+netdev@lunn.ch>, 
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Peter Zijlstra <peterz@infradead.org>
+Date: Mon, 07 Apr 2025 23:49:35 +0200
+Message-ID: <2983242.e9J7NaK4W3@natalenko.name>
+In-Reply-To: <ficwjo5aa6enekhu6nsmsi5vfp6ms7dgyc326yqknda22pthdn@puk4cdrmem23>
+References: <4970551.GXAFRqVoOG@natalenko.name>
+ <5874052.DvuYhMxLoT@natalenko.name>
+ <ficwjo5aa6enekhu6nsmsi5vfp6ms7dgyc326yqknda22pthdn@puk4cdrmem23>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250407112005.85468-1-przemyslaw.kitszel@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1744058438; x=1775594438;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=K3PdnfX+s+h1I1zJiyQ/vXMnprLp0KaE229U+f1lhAY=;
- b=Bb4SpJ+qJ9K4yC3PCCxr4PxTSHtVGiuCyivlxE59HkwBBT59HNWwvnsU
- 82Al9K4BKziqST/R7wscCXnygV3g+VeYTYlKjSnffbRDrOhOpwI4sIZrY
- 00Pb41Br1lAn5JwV83wQKTQc+teA+mhf3ggQs0BNll4rknmwNwAS+UaTG
- zEEa+ph5uvxOTfcTlccEui2/XnqsJWbeGsDyrgEtCTKOnS2iylyTY6YOC
- RCDVbKHM6CqORa9McNXEXkF8IwR4FIkpsZNj3Fdphc6cIxyA9RHC8F6EB
- qWG3Y2pWlnc08Ut1+fEdSxb5Lr2HhSzgXHHhPLDZ0Dr81sCmNl79dgBgv
- w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=Bb4SpJ+q
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] ice: use DSN instead of
- PCI BDF for ice_adapter index
+Content-Type: multipart/signed; boundary="nextPart3343055.aeNJFYEL58";
+ micalg="pgp-sha256"; protocol="application/pgp-signature"
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=natalenko.name; 
+ s=dkim-20170712; t=1744062615;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=gU9lD+RqDMo0wEfUDiyRdrBfsjXAPrpF0e2SpfAHy3o=;
+ b=LC3gxE5VZ4L+DEwuwpOEE+tzW6EXFqsP2z9PdoW+xbBc6jHNK+Kw/5ptPjToRWcdggytT1
+ LtD7iF+q19Ny6NbPcHiSlggLtsT/A4YojUngAdMGoLxJy6gl5op/Y2FI7bigtNMnzmi3FX
+ wPdW5gI0b3YnHEZV34kX+mgbSC+J2Q0=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=natalenko.name
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=natalenko.name header.i=@natalenko.name
+ header.a=rsa-sha256 header.s=dkim-20170712 header.b=LC3gxE5V
+Subject: Re: [Intel-wired-lan] objtool warning in ice_free_prof_mask
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -108,59 +103,130 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jiri Pirko <jiri@resnulli.us>,
- Sergey Temerkhanov <sergey.temerkhanov@intel.com>, netdev@vger.kernel.org,
- oe-kbuild-all@lists.linux.dev,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Karol Kolacinski <karol.kolacinski@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Jacob Keller <jacob.e.keller@intel.com>, Jakub Kicinski <kuba@kernel.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Przemek,
+--nextPart3343055.aeNJFYEL58
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"; protected-headers="v1"
+From: Oleksandr Natalenko <oleksandr@natalenko.name>
+To: Josh Poimboeuf <jpoimboe@kernel.org>
+Subject: Re: objtool warning in ice_free_prof_mask
+Date: Mon, 07 Apr 2025 23:49:35 +0200
+Message-ID: <2983242.e9J7NaK4W3@natalenko.name>
+MIME-Version: 1.0
 
-kernel test robot noticed the following build warnings:
+Hello.
 
-[auto build test WARNING on tnguy-net-queue/dev-queue]
+On pond=C4=9Bl=C3=AD 7. dubna 2025 23:42:51, st=C5=99edoevropsk=C3=BD letn=
+=C3=AD =C4=8Das Josh Poimboeuf wrote:
+> On Mon, Apr 07, 2025 at 11:21:27AM +0200, Oleksandr Natalenko wrote:
+> > It's not a new warning, I've observe it for several recent major kernel=
+ releases already.
+> >=20
+> > I do not build with CONFIG_COMPILE_TEST.
+> >=20
+> > I've also realised I see this warning with -O3 only. I know this is
+> > unsupported, so feel free to ignore me, but I do -O3 builds for
+> > finding out possible loose ends in the code, and this is the only
+> > place where it breaks.
+> >=20
+> > > > ```
+> > > > drivers/net/ethernet/intel/ice/ice.o: error: objtool: ice_free_prof=
+_mask.isra.0() falls through to next function ice_free_flow_profs.cold()
+> > > > drivers/net/ethernet/intel/ice/ice.o: error: objtool: ice_free_prof=
+_mask.isra.0.cold() is missing an ELF size annotation
+> > > > ```
+> > > >=20
+> > > > If I mark ice_write_prof_mask_reg() as noinline, this warning disap=
+pears.
+> > > >=20
+> > > > Any idea what's going wrong?
+>=20
+> This type of error usually means some type of undefined behavior.  Can
+> you share your config?  No guarantees since it is -O3 after all, but I
+> can still take a look to see if it's pointing to a bug of some kind.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Przemek-Kitszel/ice-use-DSN-instead-of-PCI-BDF-for-ice_adapter-index/20250407-192849
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-patch link:    https://lore.kernel.org/r/20250407112005.85468-1-przemyslaw.kitszel%40intel.com
-patch subject: [PATCH iwl-net v2] ice: use DSN instead of PCI BDF for ice_adapter index
-config: arc-allyesconfig (https://download.01.org/0day-ci/archive/20250408/202504080314.X7qJw69Y-lkp@intel.com/config)
-compiler: arc-linux-gcc (GCC) 14.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250408/202504080314.X7qJw69Y-lkp@intel.com/reproduce)
+Sure, thank you for looking into this.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202504080314.X7qJw69Y-lkp@intel.com/
+Here's my recipe to reproduce the issue:
 
-All warnings (new ones prefixed by >>):
+1. expose -O3
 
-   drivers/net/ethernet/intel/ice/ice_adapter.c: In function 'ice_adapter_index':
-   drivers/net/ethernet/intel/ice/ice_adapter.c:21:27: error: expected expression before 'u32'
-      21 |         return (u32)dsn ^ u32(dsn >> 32);
-         |                           ^~~
->> drivers/net/ethernet/intel/ice/ice_adapter.c:23:1: warning: control reaches end of non-void function [-Wreturn-type]
-      23 | }
-         | ^
+```
+diff --git a/Makefile b/Makefile
+index 38689a0c36052..5ce5b44fa1496 100644
+=2D-- a/Makefile
++++ b/Makefile
+@@ -858,6 +858,9 @@ KBUILD_CFLAGS	+=3D -fno-delete-null-pointer-checks
+ ifdef CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+ KBUILD_CFLAGS +=3D -O2
+ KBUILD_RUSTFLAGS +=3D -Copt-level=3D2
++else ifdef CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
++KBUILD_CFLAGS +=3D -O3
++KBUILD_RUSTFLAGS +=3D -Copt-level=3D3
+ else ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
+ KBUILD_CFLAGS +=3D -Os
+ KBUILD_RUSTFLAGS +=3D -Copt-level=3Ds
+diff --git a/init/Kconfig b/init/Kconfig
+index dd2ea3b9a7992..03b1d768d1a55 100644
+=2D-- a/init/Kconfig
++++ b/init/Kconfig
+@@ -1481,6 +1481,12 @@ config CC_OPTIMIZE_FOR_PERFORMANCE
+ 	  with the "-O2" compiler flag for best performance and most
+ 	  helpful compile-time warnings.
+=20
++config CC_OPTIMIZE_FOR_PERFORMANCE_O3
++	bool "Optimize more for performance (-O3)"
++	help
++	  Choosing this option will pass "-O3" to your compiler to optimize
++	  the kernel yet more for performance.
++
+ config CC_OPTIMIZE_FOR_SIZE
+ 	bool "Optimize for size (-Os)"
+ 	help
+```
+
+2. use this config with v6.15-rc1: https://paste.voidband.net/2BVaYDQS.txt
+
+3. compile:
+
+```
+$ make drivers/net/ethernet/intel/ice/ice.o
+=E2=80=A6
+  LD [M]  drivers/net/ethernet/intel/ice/ice.o
+drivers/net/ethernet/intel/ice/ice.o: error: objtool: ice_free_prof_mask.is=
+ra.0() falls through to next function ice_free_flow_profs.cold()
+drivers/net/ethernet/intel/ice/ice.o: error: objtool: ice_free_prof_mask.is=
+ra.0.cold() is missing an ELF size annotation
+=E2=80=A6
+```
+
+=2D-=20
+Oleksandr Natalenko, MSE
+--nextPart3343055.aeNJFYEL58
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEZUOOw5ESFLHZZtOKil/iNcg8M0sFAmf0SG8ACgkQil/iNcg8
+M0vxehAA03RuT6O689+5Jdr4noiuWvqomKVkLszYT1147iwghBc2GiXu4qBx2ft4
+Jq38NpHncquNMkr4I6ZHWR6dtqpdvlhYCVSFZWBzGzXQDZEGh64Yabro1FcoVszE
+OGCnaJBXcs8q5vgBIg0hnRvkeyEczcrWAiywXbTcuBzNQFhLct+ewYzUJGeHyRMW
+OZZ97N7lRGOzCjwbH2a5n8vqyv2rtOYRAg3BbAsIuLfVf5U6xGEXXjBvGGsGDxKM
+2WeQBLzsXU4CIHZ3BXUBunDSTDCoUvdu3IppzHaptlGeVBlv481Phaanne3uGbkf
+qv4kYELOm7V/FGw5lKKgQnqzwzQaMqbr6ds6aiIkABdewjQpIPi4qYpHEBqO14Bl
+jBiC1OghCz2oCwK2KQtoOAobWXhLTDSQ6ykpX20BqO2YGodTG4SjWi4sTly11zSC
+Cwo7dpeNTQOtwbDsBCHhiu2R5265qc9cg2cNBLM2P5UFrcOI6qVAR/r1/yXpUnoY
+qKTGhb4vrqlyctCzgfqAEaJ70BUUIR33nVhmSEZ1vPmxrYLiroFzFWHc3bvkdfvC
+2DFrbO5MNnnBi1anMDXlU3NIIx/i9lhjBKUnYvS/0heVnSkBapdcZPQaB4KCK0Hw
+AVtDt1wPysYqWRL0JgxGf+P3BfDU307+2QhNVKbuP5JenUcFUE4=
+=FX5o
+-----END PGP SIGNATURE-----
+
+--nextPart3343055.aeNJFYEL58--
 
 
-vim +23 drivers/net/ethernet/intel/ice/ice_adapter.c
 
-0e2bddf9e5f926 Michal Schmidt     2024-03-26  15  
-2d939bcd51ee97 Przemek Kitszel    2025-04-07  16  static unsigned long ice_adapter_index(u64 dsn)
-0e2bddf9e5f926 Michal Schmidt     2024-03-26  17  {
-2d939bcd51ee97 Przemek Kitszel    2025-04-07  18  #if BITS_PER_LONG == 64
-2d939bcd51ee97 Przemek Kitszel    2025-04-07  19  	return dsn;
-2d939bcd51ee97 Przemek Kitszel    2025-04-07  20  #else
-2d939bcd51ee97 Przemek Kitszel    2025-04-07  21  	return (u32)dsn ^ u32(dsn >> 32);
-2d939bcd51ee97 Przemek Kitszel    2025-04-07  22  #endif
-fdb7f54700b1c8 Sergey Temerkhanov 2024-08-21 @23  }
-0e2bddf9e5f926 Michal Schmidt     2024-03-26  24  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
