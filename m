@@ -1,101 +1,101 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9FDEBA80BF5
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Apr 2025 15:23:32 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B88FA80C34
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Apr 2025 15:28:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4B4D14080E;
-	Tue,  8 Apr 2025 13:23:31 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BB21E40E61;
+	Tue,  8 Apr 2025 13:28:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZWavi-npXJ90; Tue,  8 Apr 2025 13:23:30 +0000 (UTC)
+ id ZT3QN7zNVutO; Tue,  8 Apr 2025 13:28:35 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E1C964089F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EBDB640F4E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744118609;
-	bh=L+h78xgCM68g3HjAVqp1K/U54tDasXaWCipAUP5H5kI=;
+	s=default; t=1744118915;
+	bh=EOSCn8gmXQoQXbNBiSgmw4PpRVBG41AfiUvFbRPTSNk=;
 	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=J3j3AfOyMw2VN1D+P2+jchXw0mt0qGHmWsqglyxHhRL18DNyG5obi7p1moVrmPkgE
-	 cnGjy4lqYCmSZcEQx2Zr1WZJRaQAtDQ61hFmoCHyphoUd3vcnXbxJwqeUqBvyTY0QB
-	 sk1ywcfd+l3RUHerMMPeSq/pxQl7NWEeV57ykz8wFRNJWleykWIKDEPjpaqGd5GyaX
-	 vfBxtrSiJYoBNqugeXUyjkEHKOMx2B0yGUu/2PCFUCNUwZKDU6mSTqZln66VSEtMVV
-	 0ezTASGPFbIUzA0nvuYdngOnIqQbmvHuqibtRHdFlIW+CZyb6WyJvh7+o/olVRcaCp
-	 lcwFhETlvVung==
+	b=Q1cxOYkQgNjRRX6ImW7TlDvjrgdN6Qzh2/fkfvUrPugtyTkoE7DdbgaPIbUr0Wymx
+	 WhPymE0tdcWcDLsF52/Q9vHVySmmnXwjU2fda0rPmUca8i/BtjFI6Ll3ckbtBVBLWS
+	 v2N9Lf8bKO6rQ/G6ASQg7ER4vn5r/D7PqtEH1g15iLyxSAmX8qQfGM9CtRgAoaurvq
+	 yCjhhEHaPmRJ88bxcZewH0e1NZFpgGOgYNyVvMP6/gJZ6cV5siBBFoqXvnB9k5YpUj
+	 sOexjRMNto6025cdzDJg3/2rBX7QWNmfZZknEuaLpuBYX3zFYKP/U93O5PrHjUibW/
+	 KbzUlXogAKwwQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E1C964089F;
-	Tue,  8 Apr 2025 13:23:29 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id EBDB640F4E;
+	Tue,  8 Apr 2025 13:28:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 36F941DE
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 13:23:28 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 97D9EDA
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 13:28:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 210644080E
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 13:23:28 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 887E240E50
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 13:28:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id UFf1lCRXsFfF for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Apr 2025 13:23:27 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
+ id wdBNzhYr84va for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  8 Apr 2025 13:28:32 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
  helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org C27F84064B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C27F84064B
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C27F84064B
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 13:23:26 +0000 (UTC)
-X-CSE-ConnectionGUID: U0pYuwezSEu/9+fjKjyO1w==
-X-CSE-MsgGUID: bNn2M5NbQWCa+ICTOmz7TA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="56189320"
-X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; d="scan'208";a="56189320"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
- by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2025 06:23:25 -0700
-X-CSE-ConnectionGUID: H/nR2Gz0RjmjD7ezUntB7g==
-X-CSE-MsgGUID: zqRBxI5xReC7Ate5JOoeWQ==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org B1E2640EC5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B1E2640EC5
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B1E2640EC5
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 13:28:31 +0000 (UTC)
+X-CSE-ConnectionGUID: U+7cZidRR1CWca5/OVijGg==
+X-CSE-MsgGUID: xUNCTKjnQcWQy09Aj4jFMA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="49395069"
+X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; d="scan'208";a="49395069"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+ by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Apr 2025 06:28:31 -0700
+X-CSE-ConnectionGUID: sAxBmjwMTAO6QWWlQSXD3Q==
+X-CSE-MsgGUID: Q3nEFH93SySK4TReaykoqg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; d="scan'208";a="151457553"
+X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; d="scan'208";a="133246654"
 Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
- by fmviesa002.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2025 06:23:25 -0700
+ by orviesa004.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Apr 2025 06:28:31 -0700
 Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
  ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.2.1544.14; Tue, 8 Apr 2025 06:23:25 -0700
+ 15.2.1544.14; Tue, 8 Apr 2025 06:28:30 -0700
 Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
  orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.44 via Frontend Transport; Tue, 8 Apr 2025 06:23:25 -0700
-Received: from NAM04-DM6-obe.outbound.protection.outlook.com (104.47.73.49) by
+ 15.1.2507.44 via Frontend Transport; Tue, 8 Apr 2025 06:28:30 -0700
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.40) by
  edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Tue, 8 Apr 2025 06:23:24 -0700
+ 15.1.2507.44; Tue, 8 Apr 2025 06:28:29 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Oj1Y9GA8JcybfuqtPuxwCTqCWPL1B4G3hdxymaIVRT7GDTwV7rrn5ajqaZDuj5NldQn/sjYqySjfzgDJ5Y7dpfbj1KPoICFBfFkCyYOKUVbg1+jyTuKoQwr6C7yvLyANjIEqbdX1dPwozRFpPzJXxBaEekOoMQDKlALkPRaRQhrGbMkXRsGIC9m5tebEzMbOHuDhV9rRNnbs4KPj/lqNDEq7rgedDiujIHr4sddUEouH2vcjmaebz5IcrrxBc8vHQn1UbSpyc+PBMw6tIFrFewRqczRWleMqWrXc2qip4CO17Ne3cw7bFYJl8Vn+Rvh1H898YtfSoveqzx4YKiP9Gg==
+ b=yS9aU66VCxFVSpS+2Jme1OKd6gLeKv0k75frYAVZ/jQo2JPAC1RC+p7LRodmIJaVdxlEUlZnCPPl+0Fcswy5XbadtVAh6M2jjcJDeRYkkH4QpSz/mAyyBjPpVA2VOS6Ivi8E0bovlD5r2MVN+/8VNTP0fp0rSjyVvlOMCA83UtdDSQ0qIyzbRPdeoGBw7mhfkYhYFZE8B4QNKQpgUMEvsjLsN3tNE8M/o3JZBZOPSp2iNlnCbhXBYyNw7SjXlk1Q0P6Q3zRA+mg07sZ9ABsgYjEZgWFEy4PM4o7IHU0cNxC05/+p2Xp9H/xThXf8b1ls6s4E7Q37YqcuifH7T+s+bw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=L+h78xgCM68g3HjAVqp1K/U54tDasXaWCipAUP5H5kI=;
- b=RMrv8VtWLJK3gXhxEQ4bdWcQouZDdfVC6Q0AN0B3Jh79plomW8qDu7WxF+DtqBgJWgz0wb8hNBXpkkS1nfYhZfLMsIAZzOFk3Lr9koz+EfflyBFjnX0Oq8qHEgOhfftsxwql8/tF8HPCQ/pAO3UeaSP49k9AB4o/7qP9A5r2pq4AegeMy0zi3UGWabwGB5VWs5EFskxFPuggBB8NnxOJyfBDXUvD57ei1WLeC7OfdUpNG8LJKctx62LeZms7RQcLKfO2Cy/l7+EfMmyoQ2RVikD+H6de0ytazGShkkO0gMnB3+mOHmPKe7/nRqKO0hZZ50FhJ499KgEqWBis3l62Jw==
+ bh=EOSCn8gmXQoQXbNBiSgmw4PpRVBG41AfiUvFbRPTSNk=;
+ b=wVzOQ6jNUW8y5IpJonnKDwujE3HKClnwMcgMR010s30kJIX7P9/BhBaq22BTuq0cTmqpZwLtjf6v4cTleCMB8Ov8jqrSYAgOhEd9X9HjVY4WOU3/aYWRjUqzMDn+EwWLDLc69XJrMOINF+D61the0IWcbFGV6DrfJaitJJX1MVHKETQkHwLrIIDlOKslEaWBPYbAy4N3Y34JN73i2AaM/M1ZGTLABlfJd1ks8Ds7Aype6YeZ7TdqMlHWi5arKFHkTyj7iigrjGF6IUAml/ZlP4AoaTuFMzpQvh+cnB84IeshyBe8PnkdVAkgIu6z8g9LnwUvpxC8KAWwq491+GafNg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Received: from DS0PR11MB8718.namprd11.prod.outlook.com (2603:10b6:8:1b9::20)
- by CH3PR11MB7794.namprd11.prod.outlook.com (2603:10b6:610:125::13) with
+ by LV2PR11MB6047.namprd11.prod.outlook.com (2603:10b6:408:179::16) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8606.34; Tue, 8 Apr
- 2025 13:22:54 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8632.20; Tue, 8 Apr
+ 2025 13:28:26 +0000
 Received: from DS0PR11MB8718.namprd11.prod.outlook.com
  ([fe80::4b3b:9dbe:f68c:d808]) by DS0PR11MB8718.namprd11.prod.outlook.com
  ([fe80::4b3b:9dbe:f68c:d808%5]) with mapi id 15.20.8632.017; Tue, 8 Apr 2025
- 13:22:54 +0000
-Message-ID: <cba0216c-c87a-421d-bc4d-bc199165edbd@intel.com>
-Date: Tue, 8 Apr 2025 15:22:48 +0200
+ 13:28:26 +0000
+Message-ID: <454272e0-82cf-4f79-be53-a4838dfbbcd7@intel.com>
+Date: Tue, 8 Apr 2025 15:28:21 +0200
 User-Agent: Mozilla Thunderbird
 To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 CC: <intel-wired-lan@lists.osuosl.org>, Michal Kubiak
@@ -109,132 +109,130 @@ CC: <intel-wired-lan@lists.osuosl.org>, Michal Kubiak
  <bpf@vger.kernel.org>, <netdev@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>
 References: <20250305162132.1106080-1-aleksander.lobakin@intel.com>
- <20250305162132.1106080-4-aleksander.lobakin@intel.com>
- <Z9BDMrydhXrNlhVV@boxer>
+ <20250305162132.1106080-15-aleksander.lobakin@intel.com>
+ <Z9Bbr9b0WLFQZt4Z@boxer>
 From: Alexander Lobakin <aleksander.lobakin@intel.com>
 Content-Language: en-US
-In-Reply-To: <Z9BDMrydhXrNlhVV@boxer>
+In-Reply-To: <Z9Bbr9b0WLFQZt4Z@boxer>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: WA2P291CA0036.POLP291.PROD.OUTLOOK.COM
- (2603:10a6:1d0:1f::9) To DS0PR11MB8718.namprd11.prod.outlook.com
+X-ClientProxiedBy: WA2P291CA0045.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d0:1f::19) To DS0PR11MB8718.namprd11.prod.outlook.com
  (2603:10b6:8:1b9::20)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS0PR11MB8718:EE_|CH3PR11MB7794:EE_
-X-MS-Office365-Filtering-Correlation-Id: 002b96fe-0336-4b95-a6c1-08dd76a07840
+X-MS-TrafficTypeDiagnostic: DS0PR11MB8718:EE_|LV2PR11MB6047:EE_
+X-MS-Office365-Filtering-Correlation-Id: 265dfc47-7bfc-47e5-0f4c-08dd76a13e15
 X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|366016|1800799024;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?OXpkaW5ZekEwVFFMT2trRzBRNkxWM2ZhcFZsS1FQODVhZ2NYbjdzcm1qOXZE?=
- =?utf-8?B?aFBwSlEyM1RtRU1PaWdIVElEeHpzZUN2MXA3ekI3S2E4em5ZdEEwWGMzZUNi?=
- =?utf-8?B?VHBvRm4wOCtJd1RoUWtCK2ppNk5ndUNXOWQ2SjRnMnlBekpvTGFiMUE5MWNx?=
- =?utf-8?B?SFpNZW9qYXVJK3BiZHhCMFh2bXc4ZXdDUzNaM0JWZmppL3FPdURFMGJwTXpo?=
- =?utf-8?B?ZTdkeDh3NnRVbXdzTWlsUHIwODBzb3RaYXlyeXQrWXc4TEY4TkJtK01RUzJU?=
- =?utf-8?B?ZFRCcDFjRkRwanlMODJ4cm1HYXNJaDJ3NlhrWWdaYWExT2N4M3Qza0E1Mmln?=
- =?utf-8?B?bE9TM3BDSkZlZ3RzQ3hEYUdYUENxSWl2d2hzc1VjdXcrc1FjZXF0eCt3Y3Uz?=
- =?utf-8?B?aVFBakZHQUluazJ5cjExSjVhQkxWWGphR1dDZWcxeVZ1VFRhSkFlMGo1bmZ0?=
- =?utf-8?B?VEZEZGdLVFVhNlJ1cVpPY3VjaUJTT25CSEJCM3ZFaGltUTJsN2R0b1ZLUnhE?=
- =?utf-8?B?S2JDbHdlMlJXU3VHZVpKRXE1NnZ1NnBXUWZ3TnYxUTRxeHZiVFkwbzJrc1NP?=
- =?utf-8?B?UExsdUFxQ2lIaDNhdE9VQkNsSktKcGs2Q2xKUVZqRDBDbVgwWm1UOW5XNGFW?=
- =?utf-8?B?WU12Q25HdnpyZzlpRzdYTytOQUtZNmhQalZNT3doLzl0YVM2ZnY0ZVlVSy9E?=
- =?utf-8?B?RkRVelZCSkRUVFpPc3NNTm5KbUVuc1c2aXV0RDJlY05LM0lySXZIOGtzRnA4?=
- =?utf-8?B?WDVLZkFJZy9oWTdJZVFxbnZLSHlHLzJqeWlLeURUeGIrcXNzUHBiZi83NE9K?=
- =?utf-8?B?N04vbkpvOXVyVU91b1BGQTVFRVFlQlhudk9vcG4ycHY1dXQzTlNub0l4dlk4?=
- =?utf-8?B?d3NVV2ZxT01LY1QxOVlCakdWdWZReUVjQ1lXRitYUnlHcFg3dG0rSm95bkx3?=
- =?utf-8?B?dUFWRDljczA4a1JRQ3VGNEdpM0tod3k5VGVaZEFsZGN3WTRDT1pKTUFUMEow?=
- =?utf-8?B?dnh6b1pmeDM4RlRUcFhlTDc4SWdaWmlWSDNQY090bVc3RnNYSWVBMEVOZUxV?=
- =?utf-8?B?Y3RNZDdmSmpHUGJJY3F5aU84UE5iN0pWTTVVMGoreVJIZDN0MHpaeEcxZk5k?=
- =?utf-8?B?VllIZWxib2NPTHB3ZFh3UUJzNlY5QW9zQi9hemkxVnZLMFN0TnJyWmJHZS9S?=
- =?utf-8?B?WVVtS3lTMnVzNjZKKzFjRDFLdEVGQnhTZkNtMTU3ZkFlVU9mbXc4K3lmN1VM?=
- =?utf-8?B?eTR1OTNyYjkrUzR3T3dWRHhlQk1hYlQ3d0hScm5uTFdvVCtaaUJLSytkMVdR?=
- =?utf-8?B?N2ZycHFwajQ2WnJrczJFM3kyZHM1K0NOM05mYW5wUGM4VVFWc3dBV3hHSDdi?=
- =?utf-8?B?RkM2YXRaSjE3QWN1UGFDT1FUenBXTFZ5M2svbDVuUldXQ29IekUrSFRCQW12?=
- =?utf-8?B?TUhoMlBLbWV5OGVod3dGL1hYRS9DcmZDSmU1ZzJEV1pXZXpXYTU0UVN1bEtY?=
- =?utf-8?B?U1hORjVmOVlpalNGc0RnaHpzRFh3RkpBbTFqaDBCZDkxZW5sRDdmUzBWd2hD?=
- =?utf-8?B?RENzdUNENEMwY0pMVWNEdE1OUWF0WVhyVXVyWTFLL05KM2tGV1d5NkJydjVO?=
- =?utf-8?B?TFRDMXNoaWFmVzJxVzR0ckRZYUM2d1FabXZoVVcrS2ZHNlpXWlloWklaeHMx?=
- =?utf-8?B?YUpMUitjTFgrU25jZG5JaDdzSzdEaFd1VGZTYlRqaW9HR0VEc2Z3anpVQlli?=
- =?utf-8?B?dWZpRklLYUUrbmJOUVE1NWM4R0VhL21YWC9yNFFKNUpsUGd4S3hDbExTZmdZ?=
- =?utf-8?B?QmRDMFZtSit2anF4WUtNWkFTOVhlTWlNT3B6TlQ4dXM0WHRkaWRuWFkrNE5C?=
- =?utf-8?B?bjNFTkFoTEZ1dlhLMjhwQW04QnZjaU1VR2Y0WXNoL293NmxyUmRmYy82L0ps?=
- =?utf-8?Q?di8RVIHxSN0=3D?=
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?aDV1eGxrbld2dDh6NkdaQ2ZaeUl4emRaUS9Jd1hMV2dIQjlqMWZQbVd4NzlV?=
+ =?utf-8?B?SHBSMFpVakJ3RXNXaXpOQXRubmVuMysxWUV4OXNsMzBnYmNqZSs4N3REejh5?=
+ =?utf-8?B?WHRHUmZlbjJHRlpRdWRBR3JaRXFMU00yQmV5YmIyenE0OUVCWnZTZTJqd3hG?=
+ =?utf-8?B?cmYvSFVuTXN6cVJ4QjhhNUlJNUd3dnA0Ui94cmJyYXdZK016WXd3UVdCOW5n?=
+ =?utf-8?B?TXpRa1piVkV6dGxIK05tamI0TlY3ME5sa05vUlRnNVZFYThOenRkTzczQWM5?=
+ =?utf-8?B?ZjdrQnJRcFMxVnY4clNWbkc4OHJkM0lUUEhHa3RPREo4bTk4M3FyOWhIMU12?=
+ =?utf-8?B?L0d5WCtyOGQ5a01zWlpTUHdxcGx0V3pwdlJLVXhpR2dvVk4rcGxyWFJrdnJn?=
+ =?utf-8?B?ZGFtZi9zQktvVnROak9Na1AraVNuNUZnVHNBVDdjTDQrdEZsdG1xR2Z5ci9Y?=
+ =?utf-8?B?QXNLV0thc2NqKzNLRThtcHJlZno1REcrRW1XNCtzNHlMbHlieWRIaGFqWmJM?=
+ =?utf-8?B?bklsNlJ6cDVZTkFaV255ZUtFMCtVZmM2Rys2eXZJMnpoajdaN3d0cXVJZDUw?=
+ =?utf-8?B?RDU3WEhQUk1MRFNSU2thcXVKMmVCejJ1aEF4bWlUYUpHVC9TcndiUGhsVEpl?=
+ =?utf-8?B?QUpLQnBtWHpzenhsZVFwRzhRTis3MytXK29LazFGL0pkWndhamdxQk9RNXVH?=
+ =?utf-8?B?WUszQXk4OERjWDhkQU5CT0tYMHNjanJCNW5PaVhFbDJrRmtrTUw5bXlnRkVv?=
+ =?utf-8?B?M0FoU2tLUHBmWXJscnNhWnovK0c5NzZQbXhRdDU2OG1nU0hMaEF5OTZXVzJP?=
+ =?utf-8?B?QU5BS3E0OVdHSzJmMzZGWE9BT0psNWFreE1aQXRGdHpKMndLeDRkVXR2MHdP?=
+ =?utf-8?B?WEJyQUNMT2ZsRTNFV0FYY1Q5REVRMDU1RGsrZStFN2Z1VnBKY1R1bmdyZUNR?=
+ =?utf-8?B?akxTcklzcllmVk1xYXhoSU05VHZVWitXczl5aGNDNWpScjk0d1kzUDZ1SXJZ?=
+ =?utf-8?B?cFhxTDNJMld5MlB3bng2angzeUY1UkV2Nk13UFFhcmZKNTlpNUNPZzQvRTN3?=
+ =?utf-8?B?S1RmNGJIVmJRVUhJeldRd1RsTEdCMFRwQzVUL3R3RmFYcENLYkNhWE9wQ1pN?=
+ =?utf-8?B?eFU2WTg3amlyZVVZQ1g4MUx0MDlYaGNaaTRmWHNkRkU5TGgrc1NMckp4MC9W?=
+ =?utf-8?B?dkRmL2NsRDh6c1RFOXhJeU54UUs5dFY1UUJPcVFwc3g0MkRGc1IzT2h6aXFL?=
+ =?utf-8?B?VUpWK0FRYUlHQldoY1RvVFp0Q29MSnRkNk5xQ1RrMG5QbzNqMkx0c0x3RVlq?=
+ =?utf-8?B?VVNrbkxxTDhmaFovUlAzK0VrL2FCYXp0MnozcVJUMlpnbnVEK2g3SExzRUVn?=
+ =?utf-8?B?VnBmY3AvLzdWMHhDVE0wbzY1VWM1dHRwa3BidWVQSUVqdGN6d0h3REsrZzg5?=
+ =?utf-8?B?WHdhZzJXcThRYjRJSmFqejljRUdyVDh2cENZV085VHlzRTcrVDVWazNTNkpH?=
+ =?utf-8?B?dE1DZmJCd04vRldqT2RYUlFYclZiZzhZMDZaOEYwUnRGYWk4OVcwd0h6Ylgx?=
+ =?utf-8?B?SGNlMVRVaFV3WlVKVStrVlg3ZHFSNmRXWmw3b0VPKytabG5mbVZueUZyMmZT?=
+ =?utf-8?B?TmV6U1pmSzZ2WTNIbWRERHZuVlJQc09zNzhuVjhlRlE3VjZtS2dySWF1OUs3?=
+ =?utf-8?B?S01QcXVNRHV5T3RnUTBrRmJEek5mMWNZYkNwMll6ZUgxaE00U2RjZERrYnZY?=
+ =?utf-8?B?b1lWU0QvYUNHZUcwQy9QZDJYb0N0Y1d4SHdMYmw1aXZGcUlkZjk1Yjd2MGdK?=
+ =?utf-8?B?Sk52OVF1VDZHc2thZlNKbU5hckVJS2w5WGl6QlY4T1dBd0RFcVgvR1dEL3Ru?=
+ =?utf-8?Q?+4VG3mR3H3OqC?=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DS0PR11MB8718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
  SFS:(13230040)(376014)(7416014)(366016)(1800799024); DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Y2RQUTV2TmRUOVV2czBHckZIT2VUU3h0R2hjV0dMUUFabytIS09UK0VMQTNN?=
- =?utf-8?B?RUs0RFdSdG9xNmh0N2hhU0FMSldMMG5mNGlObWo4UXh6UDd4T2Y5WFNxdklN?=
- =?utf-8?B?N0lKdTVQUWw2RVBzSjkxYUVNejYyNFlmaURoYit1d2NCUmxWUForczJpRWkw?=
- =?utf-8?B?anBwRWxUZWtTSnpGVHN4LzJFMVgrSFR6ZEx5bVM0WHNRU1dIOVhWSEs5V1Bv?=
- =?utf-8?B?Znc4c3RDRnFFbHV6dkkzU0FxWlVaTGRPUjJiRmlCYXp2cXRpYjhvSDhsS3kx?=
- =?utf-8?B?SHcvbVMyVHNQdTUyaDhxM3czSC9rYWxGRk1qU2d6YU1NazJRdFk3RHF5QjRm?=
- =?utf-8?B?RERTZmJHWi9NcTVydlp3T1pST0lQWW81UmFEb090K1M1SWZ5MjhvNnVVc0pG?=
- =?utf-8?B?bVE1T3ovT1pFWGg0eDRWOXozZUZZZC9MZEk5UTNLSnRTdy9SYVM3TFVsa2o3?=
- =?utf-8?B?WFVGUk5iRHhtWCtpeXRvWXRGRGpyZ0lneVdCZzJid1I3c1p5N2JpSXJrWG1j?=
- =?utf-8?B?aHpNVGExODN6eDlHb1JCTHAvOGs2QnRRbXUwaGh3cVE5YlBnYWlTb3VMMUoz?=
- =?utf-8?B?RlJyaTVjNmNzYW5BTS84Zm90ZG9QYm1vNng3OWplTUIzTkFaOEMvK085WkY3?=
- =?utf-8?B?VU1ybmJuaFZRckFTczg1TkN4YWp2RndEOFpJaklwOGY4a1RGcDVzU25YTTFE?=
- =?utf-8?B?NFFnZndkeStwYUREZk1Ub3diWlhmOWtZcHIvS0FkQW0yZ0hoWTJrdGQzRVlQ?=
- =?utf-8?B?TnBldmh3ejkwRThsNUdTeksvQnZxdFFPSXBzYkU2QmRJT1ZDOCtZNEwyK3Aw?=
- =?utf-8?B?YWFLejMycHpkcTgzRGdKamJRTHBuTlhyeGpsM3gwOTBBQU4rdk9pdENLdFF1?=
- =?utf-8?B?aWpBbzlJL3N4UlR2L09GcWQ1K215Z25scTV6TFZMTENvYTIxVVoyaHM0UmtU?=
- =?utf-8?B?M2JOZW1aUUFiSk05ZnVKSUQxRFRkZm11ZXEyTGJVcE95MlhGRkZGU0craHlu?=
- =?utf-8?B?MEwyWW95eGd4OEFid0NJT1d6amZ0eTc5V3ZtekZzODFyUFVlQ0JOdEVIQUVR?=
- =?utf-8?B?aXc5cFd4enNXRGRCbXBSOHMvSi9iNjNvV2FZVHFLVkFmNExLamR1ejlDTzVq?=
- =?utf-8?B?c2xLeEpKZHUrU1JmMG1kN2ZCN1RBU1pFbi9sdGY0MFhVaGxPMHlDUjZ4QnlM?=
- =?utf-8?B?SnpwLzNoQzgyQkNWa0pNN29GWVd2YXZZWUF4Uzh4SUJkOXdsd2E0UXVVNVIx?=
- =?utf-8?B?LzdhckpXT3hJclVHQ0RoTlozVjl4RGNybUtsT0lGS0FxWGVDZTU2b3hkdkNB?=
- =?utf-8?B?YXhOWG1VdlBlaERrOXhJWnlvTU1SVHdNcGRqZi91OE1HS0tjUU0yQzMxdldZ?=
- =?utf-8?B?dWcrdGVPdVBGUU1PN2JsSHJaMTlwaG93Zko4Y2VKN2NueFBrSjhKUjBZTFFI?=
- =?utf-8?B?NXNFSFJWOHpCa1g4ZnY1RTNtZjRBWWdaNEZrTVZNUVM5RkNxOHI4MGdzUjE0?=
- =?utf-8?B?YVpmRlBJendXeGxYMm5OTG1rN3JxNFhaT2pCa21pbm1KS0k1L1A5YlJMcllC?=
- =?utf-8?B?cm5nV2FPMnhvdytsNzlLaFFOZHBWTk5uNWV5eTE4bE9sTy9MRXNpNHVSOUFq?=
- =?utf-8?B?bFoySmFsV2dwLzNMODE1ZUFuamZ2NFJrZ3pDbytxN2oxOFdFN0hmcjlNYWtL?=
- =?utf-8?B?RUoyclFsV0cvcWlsbkYyWVJVM2Q0bUZyWGgyZTRDeGxaeWYrSHJTTVVuZGZp?=
- =?utf-8?B?T0YvekdxckcxSVNZR3RQUWtwVDh3VWRpMUo1UVdZdEs1THB2dGZ3ZHRNcUVO?=
- =?utf-8?B?cEp3d1Z1c3lrRjlZV0JoTUdpZi81OEFLUDRkS2JETlVTamo4UTV1ZUdOL3dq?=
- =?utf-8?B?YlhZV2dkY1ptdGptZ3UzS3F6MDh4QVo4ZXRPU2oySXdPa3FOVVJNQ1J0YkJK?=
- =?utf-8?B?aVhnK1dFc004TlJXQzJuUzR2M084TDV5ekcxaGtpYjFEbE5tVzJHTjBJVlg4?=
- =?utf-8?B?T25JOUxPUmtSOFBwNzRidlZVQXdTVXNKalM4QlVxNEhqMWEvRmEwUWxFWjU4?=
- =?utf-8?B?UHd4c0Q5clptTzhtcGdwYWF3QjhJZDBkd2RZd0VaaDJEUjU2SnZFSDJ1Zm5J?=
- =?utf-8?B?MzBBQjhyM3JDWnJ5eEVwN21vSldrZW5IK3F5S2VjWHd4ZFRNc1cyaE50RHpj?=
- =?utf-8?B?UGc9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 002b96fe-0336-4b95-a6c1-08dd76a07840
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?eGc4OGpIQjVUYkNuWHZmYi9jTFcyQkJrR29rSHBIOW5HNGdxSTJ3MXY4R1pz?=
+ =?utf-8?B?eGFPbis5WWNrWTVHR2wzdllqei9jN2NEd09QZ25EdGRzT0dDRkJtNG5LclZv?=
+ =?utf-8?B?S3R5VTMydWYzN3l6elBNclVNckZsRWdKNkxnL25rYW4rNWpUSm02aVpoZUZ5?=
+ =?utf-8?B?cDdiWTFHMlJiczhlZSt4WnBJaG5SUS9qdktnbndRQU9wOXFaOHRpTWVybHVQ?=
+ =?utf-8?B?UEkzbW9keGZxcFRRYlhVck5DbVQ5d3Z6QllYYS9PbVQ2VmtOOXBpM2o4MXJ2?=
+ =?utf-8?B?d0txZWg3VDBxRnB2RHE5UkdnSERwSTAzc1d1Z2puN0QxK3NMdnNNcmRSS1RL?=
+ =?utf-8?B?U2RzYWZpMW5DRmgzV3diQ05wN0xUL1BhNjEzaWN5L2Vmb2xVWFVrbGV1a25Q?=
+ =?utf-8?B?V0QzSDArOEpEQUtQOGNodjVLeVlEK2xRRityZEU4bldrR3VhVmYyUTAyTzdi?=
+ =?utf-8?B?KzhhUGNmM2I4RzRRWTNsZ3oxbTVHRDhnR24rbmtKT3BwbGpuM1Nzdk5mUnp1?=
+ =?utf-8?B?K1JKeHBnenBtL01ubkJ2cGM5WEdrYW02WW83NHNlR2hkcFQvSVh2emRzNFdN?=
+ =?utf-8?B?Q0tSeGVrSEord3V3SitYWVdVdUxqWmhPNVlrNUxLNzJ2RlhiTnBSU2RXWm0y?=
+ =?utf-8?B?NDJ3eDZRUE0wTWJqK0dRRmtNdnVaVkZSR2hTbFVhTCsvWGl2Wnp1US9GS1VZ?=
+ =?utf-8?B?T2R1ODJrRVVjT1FJc2ZINTFwdXR0eEtFVFFVdjBGeU1VRy83b0xtaC9pUmNT?=
+ =?utf-8?B?eTR5WGZwb0VQREttTWZRYzRqTjJmRWhISWdUeko4eEtGTHN0VTAyMUtpSnRP?=
+ =?utf-8?B?eVFYSUVNZGxYRHBZM3hOWW10MTJtMWVNZ0VBNnUyL0s5MEFGTlhxTllONG1r?=
+ =?utf-8?B?dndGMFpFZnFkWXJlcGQyZVE0eFlVa1cwMExkcVlYSnRLbmFUd0QxUVlEVXBj?=
+ =?utf-8?B?S09RRUVrZ2Y4YzFTUUtsblRvYmNwWFFuRWZ3UjY0cmJPbzNCQmpEWUxuY1Jz?=
+ =?utf-8?B?a1RWSlZRWjJvVW0rK2VHWTBwdGw0OVlaQkNUOThKdmUwQVd0Mm0rbU5BVmtq?=
+ =?utf-8?B?aTRtUEErYzFTc3dRcTVHR3lRdStUd3JaR0VmM3p4TVZTbXlwOVhwb1ZaeW5h?=
+ =?utf-8?B?KytlcmtrK2VpMkJrc2hHOWc1RDVuM1Y1cW9tOFhBRjJyakxObVJJdzBWZTlk?=
+ =?utf-8?B?bXJ3RWIxYXI4bkhBQlNDNWVwbk5CTWZxNExUdlJiWS9SWTJVYjJrbGpHZkNN?=
+ =?utf-8?B?RXBCZG5iNUdXMXphMVFwdGVGaHRwY2FPbzgyT2VDLzdKdHBRZnZTVEdxQ0V4?=
+ =?utf-8?B?eGJiVzBMajFQWWFRMnVSeG9nTE53MTFuakhOTjR2MDBEMXd3K25yeWkvMDJK?=
+ =?utf-8?B?NXVsUzFISk85b3BkcjdrUTlFZWZhZUVmOUZqdTcrN21aODdHT1JqRGhUQmlY?=
+ =?utf-8?B?L0p2d3RZSExEMVhETEZDclhCYnVRSVR5aVgxWDEwcjFGZktSRWluL0x3blo4?=
+ =?utf-8?B?citWWGVmeW5FM3JpVEhDK1pOK0R2Uk5kalZmQVBMRVRjNDF2R2NqaXF1dUFy?=
+ =?utf-8?B?eEJCRUIzWEt4VUxEVVlFQ0FoTHRtWktVZ1FVR2F0SkdXQWhVQWd2K05hb25K?=
+ =?utf-8?B?VGZMMDlXSzBrRkVkQ3FIcERWVGxJYWhMOHZZYVY2T0ptTU1XbU1lOWhpNHNt?=
+ =?utf-8?B?NnRlcUFnR1ZzNTUrMnpVanVCc2NobnFqSyt6TjB6L0dqbUpVam5GdWNRTXpL?=
+ =?utf-8?B?SzYyOFB4S29jTzltOUdqOEc0MEhiMkhWbkdvYTZOSjd2OGxUTmdUbjRtbnBm?=
+ =?utf-8?B?akJsUVliWDMxYmZVSDZPN1ZzQnlPUFpjKzVKK0piVndiQmpBU1hZM0VUcDN6?=
+ =?utf-8?B?bDR3ajFBZG5UNXh1cmNDQnVuTEdWSm41dS9zbmF2M2k5d0t6dm01QU1JVnBk?=
+ =?utf-8?B?Y2pONXRpaEIza0xpd2NncmNWQXJweVJrRVdhd1ZTMVlKSUpOcGxPUnBBaXlw?=
+ =?utf-8?B?QUFITnJpR3ZDQitHdXE2MTNRSUplRGdZUzVzbmxpbkhRVmlwSkh2U2kzcjNs?=
+ =?utf-8?B?SU9raTVxcW5oeHBWTXVkSjlQbVhJOTNERXpsWDdXamFXYVBSNjc2TUJsZlls?=
+ =?utf-8?B?aHJhN2hGcmg5dmpsL1ZNSE90U0x5bHp3VVVIK2FMeEl4V0I5S2VJUTRWbFp0?=
+ =?utf-8?B?Q2c9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 265dfc47-7bfc-47e5-0f4c-08dd76a13e15
 X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB8718.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Apr 2025 13:22:54.3537 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Apr 2025 13:28:26.2838 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: qry9qx4y8ZY75/xH7ju3WmnMhQqCNZE3vIx92yrojlWqrfIVkYSOlrPm+iRXm4nSDlESsv06SLm/rUQg4L43lWouZzwKU9mODxy5z+0tqQs=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR11MB7794
+X-MS-Exchange-CrossTenant-UserPrincipalName: H3ts0Mn9Ejpc7rSbPo74A3yK3uoRZOm8CtW0x48dHzsBx/LYvQoyzIsSbhC1bmMlBU5bggQ/u2Skqg29c+2bQyAFZoerkpGivrRxQ0xFEHo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV2PR11MB6047
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1744118606; x=1775654606;
+ t=1744118912; x=1775654912;
  h=message-id:date:subject:to:cc:references:from:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=5sad7CMSlrL4GLKc64iRejOPHPoJOPNQNnfDN3JjfBE=;
- b=mXXEkDB9bEceBevT3tNIB0bxkjrDRnrYKm1tQGvcOkGGi0KxjFqx7lo4
- vpnSzdJd5D7C6drJKO+9IYTvSHkzp3fFFfWe0n3YXYvLEVBJUOkF1mIjE
- faRhTlWU5aT4KzGd2lgEbJy55An7OrcRhPtcFOWPr9aMS/fsJilU6GnET
- X7jPqDmgMDblLWFq27aTVH0Ylx6Oy9DONf9rFPewqLt9/OQNOz4AG7YHT
- Bf/HTRJVOZKHkluJD+e+k3eRMchKZ92n9QpyqRV8fsJ0yv0IKxiBToB4a
- mOZoFGAt0c79DhFad8iXv8oSm88TGUaFSdS0kZNIVKXLWu83n/G9DUb5L
- w==;
+ bh=37EDuAKfIfYqPIASHLh8B4ViblVQ7Y1tpJF5lxKiDNs=;
+ b=iup2kIKTghbpvVZ9DmTQx92Gcbe6kzUR3zmq7HGHOlc78twg+erIOU4a
+ 4DCKcz+z5LRMrj3bm4SIrgg6Iu0+q/EIJJoRDcPZqn8wjEz9YMXcjFkm5
+ C28KoOyXZuPXYQul/ZsIaB3fsZXorqQdWMozhdgc76Mbjk8UAieqbNL/R
+ wIw7b3GfxEpUwsUOB1Eo/KAux1SW+eLGML571IYSHH7v8eTBp6l9WHGq0
+ PpzHby+gE693JDQ8P5GypkoVjKbL1JZHkOL89egMVum23g45KfUyyI5pa
+ N3i4gAXcyO5J5M64Cr/Qg1bv19PpDTqwi3Kqmg7zvimbG8aplZjgSyFIi
+ A==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=mXXEkDB9
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=iup2kIKT
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next 03/16] libeth: add a couple
- of XDP helpers (libeth_xdp)
+Subject: Re: [Intel-wired-lan] [PATCH net-next 14/16] idpf: add support for
+ XDP on Rx
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -251,454 +249,114 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Date: Tue, 11 Mar 2025 15:05:38 +0100
+Date: Tue, 11 Mar 2025 16:50:07 +0100
 
-> On Wed, Mar 05, 2025 at 05:21:19PM +0100, Alexander Lobakin wrote:
->> "Couple" is a bit humbly... Add the following functionality to libeth:
+> On Wed, Mar 05, 2025 at 05:21:30PM +0100, Alexander Lobakin wrote:
+>> Use libeth XDP infra to support running XDP program on Rx polling.
+>> This includes all of the possible verdicts/actions.
+>> XDP Tx queues are cleaned only in "lazy" mode when there are less than
+>> 1/4 free descriptors left on the ring. libeth helper macros to define
+>> driver-specific XDP functions make sure the compiler could uninline
+>> them when needed.
 
 [...]
 
->> +struct libeth_rq_napi_stats {
->> +	union {
->> +		struct {
->> +							u32 packets;
->> +							u32 bytes;
->> +							u32 fragments;
->> +							u32 hsplit;
->> +		};
->> +		DECLARE_FLEX_ARRAY(u32, raw);
-> 
-> The @raw approach is never used throughout the patchset, right?
-
-Right, but
-
-> Could you explain the reason for introducing this and potential use case?
-
-initially, when my tree contained libeth generic stats also, I used this
-field to update queue stats in a loop (unrolled by 4 fields) instead of
-field-by-field.
-Generic stats are still planned, and since ::raw is already present in
-&libeth_sq_napi_stats, I'd like to keep it :z
-
-> 
+>> +/**
+>> + * idpf_clean_xdp_irq - Reclaim a batch of TX resources from completed XDP_TX
+>> + * @_xdpq: XDP Tx queue
+>> + * @budget: maximum number of descriptors to clean
+>> + *
+>> + * Returns number of cleaned descriptors.
+>> + */
+>> +static u32 idpf_clean_xdp_irq(void *_xdpq, u32 budget)
+>> +{
+>> +	struct libeth_xdpsq_napi_stats ss = { };
+>> +	struct idpf_tx_queue *xdpq = _xdpq;
+>> +	u32 tx_ntc = xdpq->next_to_clean;
+>> +	u32 tx_cnt = xdpq->desc_count;
+>> +	struct xdp_frame_bulk bq;
+>> +	struct libeth_cq_pp cp = {
+>> +		.dev	= xdpq->dev,
+>> +		.bq	= &bq,
+>> +		.xss	= &ss,
+>> +		.napi	= true,
 >> +	};
->> +};
->>  
->>  /**
->>   * struct libeth_sq_napi_stats - "hot" counters to update in Tx completion loop
->> @@ -22,4 +44,84 @@ struct libeth_sq_napi_stats {
->>  	};
->>  };
->>  
->> +/**
->> + * struct libeth_xdpsq_napi_stats - "hot" counters to update in XDP Tx
->> + *				    completion loop
->> + * @packets: completed frames counter
->> + * @bytes: sum of bytes of completed frames above
->> + * @fragments: sum of fragments of completed S/G frames
->> + * @raw: alias to access all the fields as an array
->> + */
->> +struct libeth_xdpsq_napi_stats {
-> 
-> what's the delta between this and libeth_sq_napi_stats ? couldn't you have
-> a single struct for purpose of tx napi stats?
-
-Same as previous, future-proof. &libeth_sq{,_napi}_stats will contain
-stuff XDP queues will never need and vice versa.
-
-> 
->> +	union {
->> +		struct {
->> +							u32 packets;
->> +							u32 bytes;
->> +							u32 fragments;
->> +		};
->> +		DECLARE_FLEX_ARRAY(u32, raw);
->> +	};
->> +};
-
-[...]
-
->> @@ -71,7 +84,10 @@ struct libeth_sqe {
->>  /**
->>   * struct libeth_cq_pp - completion queue poll params
->>   * @dev: &device to perform DMA unmapping
->> + * @bq: XDP frame bulk to combine return operations
->>   * @ss: onstack NAPI stats to fill
->> + * @xss: onstack XDPSQ NAPI stats to fill
->> + * @xdp_tx: number of XDP frames processed
->>   * @napi: whether it's called from the NAPI context
->>   *
->>   * libeth uses this structure to access objects needed for performing full
->> @@ -80,7 +96,13 @@ struct libeth_sqe {
->>   */
->>  struct libeth_cq_pp {
->>  	struct device			*dev;
->> -	struct libeth_sq_napi_stats	*ss;
->> +	struct xdp_frame_bulk		*bq;
+>> +	u32 done_frames;
 >> +
->> +	union {
->> +		struct libeth_sq_napi_stats	*ss;
->> +		struct libeth_xdpsq_napi_stats	*xss;
->> +	};
->> +	u32				xdp_tx;
+>> +	done_frames = idpf_xdpsq_poll(xdpq, budget);
 > 
-> you have this counted in xss::packets?
+> nit: maybe pass {tx_ntc, tx_cnt} to the above?
 
-Nope, it's the same as in ice, you have separate ::packets AND ::xdp_tx
-on the ring to speed up XSk completion when there's no XDP-non-XSk buffers.
+Not folloween... =\
 
 > 
->>  
->>  	bool				napi;
->>  };
-
-[...]
-
->> +/* Common Tx bits */
+>> +	if (unlikely(!done_frames))
+>> +		return 0;
 >> +
->> +/**
->> + * enum - libeth_xdp internal Tx flags
->> + * @LIBETH_XDP_TX_BULK: one bulk size at which it will be flushed to the queue
->> + * @LIBETH_XDP_TX_BATCH: batch size for which the queue fill loop is unrolled
->> + * @LIBETH_XDP_TX_DROP: indicates the send function must drop frames not sent
->> + * @LIBETH_XDP_TX_NDO: whether the send function is called from .ndo_xdp_xmit()
->> + */
->> +enum {
->> +	LIBETH_XDP_TX_BULK		= DEV_MAP_BULK_SIZE,
->> +	LIBETH_XDP_TX_BATCH		= 8,
+>> +	xdp_frame_bulk_init(&bq);
 >> +
->> +	LIBETH_XDP_TX_DROP		= BIT(0),
->> +	LIBETH_XDP_TX_NDO		= BIT(1),
-> 
-> what's the reason to group these random values onto enum?
-
-They then will be visible in BTFs (not sure anyone will need them there).
-
-> 
->> +};
+>> +	for (u32 i = 0; likely(i < done_frames); i++) {
+>> +		libeth_xdp_complete_tx(&xdpq->tx_buf[tx_ntc], &cp);
 >> +
->> +/**
->> + * enum - &libeth_xdp_tx_frame and &libeth_xdp_tx_desc flags
->> + * @LIBETH_XDP_TX_LEN: only for ``XDP_TX``, [15:0] of ::len_fl is actual length
->> + * @LIBETH_XDP_TX_FIRST: indicates the frag is the first one of the frame
->> + * @LIBETH_XDP_TX_LAST: whether the frag is the last one of the frame
->> + * @LIBETH_XDP_TX_MULTI: whether the frame contains several frags
-> 
-> would be good to have some extended description around usage of these
-> flags.
-
-They are internal to libeth functions anyway, hence no detailed description.
-
-> 
->> + * @LIBETH_XDP_TX_FLAGS: only for ``XDP_TX``, [31:16] of ::len_fl is flags
->> + */
->> +enum {
->> +	LIBETH_XDP_TX_LEN		= GENMASK(15, 0),
->> +
->> +	LIBETH_XDP_TX_FIRST		= BIT(16),
->> +	LIBETH_XDP_TX_LAST		= BIT(17),
->> +	LIBETH_XDP_TX_MULTI		= BIT(18),
->> +
->> +	LIBETH_XDP_TX_FLAGS		= GENMASK(31, 16),
->> +};
-
-[...]
-
->> +/**
->> + * libeth_xdp_tx_queue_head - internal helper for queueing one ``XDP_TX`` head
->> + * @bq: XDP Tx bulk to queue the head frag to
->> + * @xdp: XDP buffer with the head to queue
->> + *
->> + * Return: false if it's the only frag of the frame, true if it's an S/G frame.
->> + */
->> +static inline bool libeth_xdp_tx_queue_head(struct libeth_xdp_tx_bulk *bq,
->> +					    const struct libeth_xdp_buff *xdp)
->> +{
->> +	const struct xdp_buff *base = &xdp->base;
->> +
->> +	bq->bulk[bq->count++] = (typeof(*bq->bulk)){
->> +		.data	= xdp->data,
->> +		.len_fl	= (base->data_end - xdp->data) | LIBETH_XDP_TX_FIRST,
->> +		.soff	= xdp_data_hard_end(base) - xdp->data,
->> +	};
->> +
->> +	if (!xdp_buff_has_frags(base))
-> 
-> likely() ?
-
-With the header split enabled and getting more and more popular -- not
-really. likely() hurts perf here actually.
-
-> 
->> +		return false;
->> +
->> +	bq->bulk[bq->count - 1].len_fl |= LIBETH_XDP_TX_MULTI;
->> +
->> +	return true;
->> +}
->> +
->> +/**
->> + * libeth_xdp_tx_queue_frag - internal helper for queueing one ``XDP_TX`` frag
->> + * @bq: XDP Tx bulk to queue the frag to
->> + * @frag: frag to queue
->> + */
->> +static inline void libeth_xdp_tx_queue_frag(struct libeth_xdp_tx_bulk *bq,
->> +					    const skb_frag_t *frag)
->> +{
->> +	bq->bulk[bq->count++].frag = *frag;
-> 
-> IMHO this helper is not providing anything useful
-
-That's why it's stated "internal helper" :D
-
-> 
->> +}
-
-[...]
-
->> +#define libeth_xdp_tx_fill_stats(sqe, desc, sinfo)			      \
->> +	__libeth_xdp_tx_fill_stats(sqe, desc, sinfo, __UNIQUE_ID(sqe_),	      \
->> +				   __UNIQUE_ID(desc_), __UNIQUE_ID(sinfo_))
->> +
->> +#define __libeth_xdp_tx_fill_stats(sqe, desc, sinfo, ue, ud, us) do {	      \
->> +	const struct libeth_xdp_tx_desc *ud = (desc);			      \
->> +	const struct skb_shared_info *us;				      \
->> +	struct libeth_sqe *ue = (sqe);					      \
->> +									      \
->> +	ue->nr_frags = 1;						      \
->> +	ue->bytes = ud->len;						      \
->> +									      \
->> +	if (ud->flags & LIBETH_XDP_TX_MULTI) {				      \
->> +		us = (sinfo);						      \
-> 
-> why? what 'u' stands for? ue us don't tell the reader much from the first
-> glance. sinfo tells me everything.
-
-ue -- "unique element"
-ud -- "unique descriptor"
-us -- "unique sinfo"
-
-All of them are purely internal to pass __UNIQUE_ID() in the
-non-underscored version to avoid variable shadowing.
-
-> 
->> +		ue->nr_frags += us->nr_frags;				      \
->> +		ue->bytes += us->xdp_frags_size;			      \
->> +	}								      \
->> +} while (0)
-
-[...]
-
->> +/**
->> + * libeth_xdp_xmit_do_bulk - implement full .ndo_xdp_xmit() in driver
->> + * @dev: target &net_device
->> + * @n: number of frames to send
->> + * @fr: XDP frames to send
->> + * @f: flags passed by the stack
->> + * @xqs: array of XDPSQs driver structs
->> + * @nqs: number of active XDPSQs, the above array length
->> + * @fl: driver callback to flush an XDP xmit bulk
->> + * @fin: driver cabback to finalize the queue
->> + *
->> + * If the driver has active XDPSQs, perform common checks and send the frames.
->> + * Finalize the queue, if requested.
->> + *
->> + * Return: number of frames sent or -errno on error.
->> + */
->> +#define libeth_xdp_xmit_do_bulk(dev, n, fr, f, xqs, nqs, fl, fin)	      \
->> +	_libeth_xdp_xmit_do_bulk(dev, n, fr, f, xqs, nqs, fl, fin,	      \
->> +				 __UNIQUE_ID(bq_), __UNIQUE_ID(ret_),	      \
->> +				 __UNIQUE_ID(nqs_))
-> 
-> why __UNIQUE_ID() is needed?
-
-As above, variable shadowing.
-
-> 
->> +
->> +#define _libeth_xdp_xmit_do_bulk(d, n, fr, f, xqs, nqs, fl, fin, ub, ur, un)  \
-> 
-> why single underscore? usually we do __ for internal funcs as you did
-> somewhere above.
-
-Double-underscored is defined above already :D
-So it would be either like this or __ + ___
-
-> 
-> also, why define and not inlined func?
-
-I'll double check, but if you look at its usage in idpf/xdp.c, you'll
-see that some arguments are non-trivial to obtain, IOW they cost some
-cycles. Macro ensures they won't be fetched prior to
-`likely(number_of_xdpsqs)`.
-I'll convert to an inline and check if the compiler handles this itself.
-It didn't behave in {,__}libeth_xdp_tx_fill_stats() unfortunately, hence
-macro there as well =\
-
-> 
->> +({									      \
->> +	u32 un = (nqs);							      \
->> +	int ur;								      \
->> +									      \
->> +	if (likely(un)) {						      \
->> +		struct libeth_xdp_tx_bulk ub;				      \
->> +									      \
->> +		libeth_xdp_xmit_init_bulk(&ub, d, xqs, un);		      \
->> +		ur = __libeth_xdp_xmit_do_bulk(&ub, fr, n, f, fl, fin);	      \
->> +	} else {							      \
->> +		ur = -ENXIO;						      \
->> +	}								      \
->> +									      \
->> +	ur;								      \
->> +})
-
-[...]
-
->> +static inline void
->> +libeth_xdp_init_buff(struct libeth_xdp_buff *dst,
->> +		     const struct libeth_xdp_buff_stash *src,
->> +		     struct xdp_rxq_info *rxq)
-> 
-> what is the rationale for storing/loading xdp_buff onto/from driver's Rx
-> queue? could we work directly on xdp_buff from Rx queue? ice is doing so
-> currently.
-
-Stack vs heap. I was getting lower numbers working on the queue directly.
-Also note that &libeth_xdp_buff_stash is 16 bytes, while
-&libeth_xdp_buff is 64. I don't think it makes sense to waste +48
-bytes in the structure.
-
-Load-store of the stash is rare anyway. It can happen *only* if the HW
-for some reason hasn't written the whole multi-buffer frame yet, since
-NAPI budget is counted by packets, not fragments.
-
-> 
->> +{
->> +	if (likely(!src->data))
->> +		dst->data = NULL;
->> +	else
->> +		libeth_xdp_load_stash(dst, src);
->> +
->> +	dst->base.rxq = rxq;
->> +}
-
-[...]
-
->> +static inline bool libeth_xdp_process_buff(struct libeth_xdp_buff *xdp,
->> +					   const struct libeth_fqe *fqe,
->> +					   u32 len)
->> +{
->> +	if (!libeth_rx_sync_for_cpu(fqe, len))
->> +		return false;
->> +
->> +	if (xdp->data)
-> 
-> unlikely() ?
-
-Same as for libeth_xdp_tx_queue_head(): with the header split, you'll
-hit this branch every frame.
-
-> 
->> +		return libeth_xdp_buff_add_frag(xdp, fqe, len);
->> +
->> +	libeth_xdp_prepare_buff(xdp, fqe, len);
->> +
->> +	prefetch(xdp->data);
->> +
->> +	return true;
->> +}
-
-[...]
-
->> +/**
->> + * libeth_xdp_run_prog - run XDP program and handle all verdicts
->> + * @xdp: XDP buffer to process
->> + * @bq: XDP Tx bulk to queue ``XDP_TX`` buffers
->> + * @fl: driver ``XDP_TX`` bulk flush callback
->> + *
->> + * Run the attached XDP program and handle all possible verdicts.
->> + * Prefer using it via LIBETH_XDP_DEFINE_RUN{,_PASS,_PROG}().
->> + *
->> + * Return: true if the buffer should be passed up the stack, false if the poll
->> + * should go to the next buffer.
->> + */
->> +#define libeth_xdp_run_prog(xdp, bq, fl)				      \
-> 
-> is this used in idpf in this patchset?
-
-Sure. __LIBETH_XDP_DEFINE_RUN() builds two functions, one of which uses it.
-Same for __LIBETH_XDP_DEFINE_RUN_PROG(). I know they are poor to read,
-but otherwise I'd need to duplicate them for XDP and XSk separately.
-
-> 
->> +	(__libeth_xdp_run_flush(xdp, bq, __libeth_xdp_run_prog,		      \
->> +				libeth_xdp_tx_queue_bulk,		      \
->> +				fl) == LIBETH_XDP_PASS)
->> +
->> +/**
->> + * __libeth_xdp_run_pass - helper to run XDP program and handle the result
->> + * @xdp: XDP buffer to process
->> + * @bq: XDP Tx bulk to queue ``XDP_TX`` frames
->> + * @napi: NAPI to build an skb and pass it up the stack
->> + * @rs: onstack libeth RQ stats
->> + * @md: metadata that should be filled to the XDP buffer
->> + * @prep: callback for filling the metadata
->> + * @run: driver wrapper to run XDP program
-> 
-> I see it's NULLed on idpf? why have this?
-
-Only for singleq which we don't support. splitq uses
-LIBETH_XDP_DEFINE_RUN() to build idpf_xdp_run_prog() and
-idpf_xdp_run_pass().
-
-> 
->> + * @populate: driver callback to populate an skb with the HW descriptor data
->> + *
->> + * Inline abstraction that does the following:
->> + * 1) adds frame size and frag number (if needed) to the onstack stats;
->> + * 2) fills the descriptor metadata to the onstack &libeth_xdp_buff
->> + * 3) runs XDP program if present;
->> + * 4) handles all possible verdicts;
->> + * 5) on ``XDP_PASS`, builds an skb from the buffer;
->> + * 6) populates it with the descriptor metadata;
->> + * 7) passes it up the stack.
-
-[...]
-
->> +void __cold libeth_xdp_tx_exception(struct libeth_xdp_tx_bulk *bq, u32 sent,
->> +				    u32 flags)
->> +{
->> +	const struct libeth_xdp_tx_frame *pos = &bq->bulk[sent];
->> +	u32 left = bq->count - sent;
->> +
->> +	if (!(flags & LIBETH_XDP_TX_NDO))
->> +		libeth_trace_xdp_exception(bq->dev, bq->prog, XDP_TX);
->> +
->> +	if (!(flags & LIBETH_XDP_TX_DROP)) {
->> +		memmove(bq->bulk, pos, left * sizeof(*bq->bulk));
-> 
-> can this overflow? if queue got stuck for some reason.
-
-memmove() is safe to call even when src == dst. As for XDP Tx logic, if
-the queue is stuck, the bulk will never overflow, libeth will just try
-send it again and again. At the end, both XDP Tx and xmit calls it with
-DROP to make sure no memleaks or other issues can take place.
-
-> 
->> +		bq->count = left;
->> +
->> +		return;
+>> +		if (unlikely(++tx_ntc == tx_cnt))
+>> +			tx_ntc = 0;
 >> +	}
 >> +
->> +	if (!(flags & LIBETH_XDP_TX_NDO))
->> +		libeth_xdp_tx_return_bulk(pos, left);
->> +	else
->> +		libeth_xdp_xmit_return_bulk(pos, left, bq->dev);
+>> +	xdp_flush_frame_bulk(&bq);
 >> +
->> +	bq->count = 0;
+>> +	xdpq->next_to_clean = tx_ntc;
+>> +	xdpq->pending -= done_frames;
+>> +	xdpq->xdp_tx -= cp.xdp_tx;
+> 
+> not following this variable. __libeth_xdp_complete_tx() decresases
+> libeth_cq_pp::xdp_tx by libeth_sqe::nr_frags. can you shed more light
+> what's going on here?
+
+libeth_sqe::nr_frags is not the same as skb_shared_info::nr_frags, it
+equals to 1 when there's only 1 fragment.
+Basically, xdp_tx field is the number of pending XDP-non-XSk
+descriptors. When it's zero, we don't traverse Tx descriptors at all
+on XSk completion (thx to splitq).
+
+> 
+>> +
+>> +	return done_frames;
 >> +}
->> +EXPORT_SYMBOL_GPL(libeth_xdp_tx_exception);
+>> +
+>> +static u32 idpf_xdp_tx_prep(void *_xdpq, struct libeth_xdpsq *sq)
+>> +{
+>> +	struct idpf_tx_queue *xdpq = _xdpq;
+>> +	u32 free;
+>> +
+>> +	libeth_xdpsq_lock(&xdpq->xdp_lock);
+>> +
+>> +	free = xdpq->desc_count - xdpq->pending;
+>> +	if (free <= xdpq->thresh)
+>> +		free += idpf_clean_xdp_irq(xdpq, xdpq->thresh);
+>> +
+>> +	*sq = (struct libeth_xdpsq){
+> 
+> could you have libeth_xdpsq embedded in idpf_tx_queue and avoid that
+> initialization?
+
+Not really. &libeth_xdpsq, same as &libeth_fq et al, has only a few
+fields grouped together, while in driver's queue structure they can (and
+likely will be) be scattered across cachelines.
+This initialization is cheap anyway, &libeth_xdpsq exists only inside
+__always_inline helpers, so it might not even be present in the bytecode.
+
+> 
+>> +		.sqes		= xdpq->tx_buf,
+>> +		.descs		= xdpq->desc_ring,
+>> +		.count		= xdpq->desc_count,
+>> +		.lock		= &xdpq->xdp_lock,
+>> +		.ntu		= &xdpq->next_to_use,
+>> +		.pending	= &xdpq->pending,
+>> +		.xdp_tx		= &xdpq->xdp_tx,
+>> +	};
+>> +
+>> +	return free;
+>> +}
 
 Thanks,
 Olek
