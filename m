@@ -1,91 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF0FBA81192
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Apr 2025 18:10:42 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 708F860AEF;
-	Tue,  8 Apr 2025 16:10:41 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id BEGG9MiFfQfl; Tue,  8 Apr 2025 16:10:40 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C925460D91
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744128640;
-	bh=gc2itI022s8dW+s9KqI+5JfR2+E5wndR5hXO0nPhlBM=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=nJd9/OcMfhTY2lTsqdvvs12iB7xjiHDSeGsU8Tq6XhpZvJ+G+UZ78RE792vWH9Nhf
-	 D+ZUALlCBdDaoEDr/llPhru9v52c5RvwrdzNaxGVBPBLLLoYOCX4hRvzPV0w0Bhott
-	 34udfSmtePcZxqcc7w/bNqK7v3114RuzutCSYtWl7xDYjDRs8j25JV3s4TOgHuIc73
-	 TyjCts23NszTl1uUoZqWdj6whPlM3qzbbBHbs9FHJV35MT7OWafHT/HbgmblQgLCUb
-	 dHipHN6oUecK4ftYhD28ROzGL0OCFHLhtF30p8tyTtm8gcBd8zURyIQZ0wc1EUTLS4
-	 2LrfbdPAGD5aA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C925460D91;
-	Tue,  8 Apr 2025 16:10:40 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 4B203DA
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 16:10:38 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D44FA8137C
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Apr 2025 19:24:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3C9B781166
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 16:10:38 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5174D82C35;
+	Tue,  8 Apr 2025 17:24:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id oJXjlwq9FHlR for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Apr 2025 16:10:37 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
- helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 6E2058101A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6E2058101A
-Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6E2058101A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 16:10:37 +0000 (UTC)
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
- (envelope-from <andrew@lunn.ch>)
- id 1u2BWx-008Q8q-Ow; Tue, 08 Apr 2025 18:10:31 +0200
-Date: Tue, 8 Apr 2025 18:10:31 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Marek Pazdan <mpazdan@arista.com>
-Cc: aleksander.lobakin@intel.com, almasrymina@google.com,
- andrew+netdev@lunn.ch, anthony.l.nguyen@intel.com,
- daniel.zahka@gmail.com, davem@davemloft.net, ecree.xilinx@gmail.com,
- edumazet@google.com, gal@nvidia.com, horms@kernel.org,
- intel-wired-lan@lists.osuosl.org, jianbol@nvidia.com,
- kory.maincent@bootlin.com, kuba@kernel.org,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
- pabeni@redhat.com, przemyslaw.kitszel@intel.com, willemb@google.com
-Message-ID: <6f127b5b-77c6-4bd4-8124-8eea6a12ca61@lunn.ch>
-References: <8b8dca4d-bdf3-49e4-b081-5f51e26269bb@lunn.ch>
- <20250408153311.30539-1-mpazdan@arista.com>
+ id gK8Y1dfyUzqi; Tue,  8 Apr 2025 17:24:24 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3D62D82C98
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1744133064;
+	bh=1upSKW5eCpUQczYENK/hVExwHYVE895dNF5qEBAZtEc=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=gcGYFae4RVRdMlQub8Lcw+n/oUDLLy2Vawp1HylcyaMUVZetoH3tPfSFHmaKtoS0j
+	 wKvxj0eRuAriJh9gRcsU05FeNiuLxTWWKnKflkwnO4HK9fJnGugNuBE4fma/EXxNrm
+	 VCS4/QK1oDtSrWBRuri7IoPrExBOOFtM+Zwg5VffIZm1PIAWmAxfD8G0lw+TVTKRUa
+	 9iqi39Eo0mq8p6K7Sayat3mz8yKnSCcfNAePnlwPqGvZBk9z44rHhi6/W0tsfkdso+
+	 +pw2JnGE+GspEb3FH1b74vi/jbWDt8nTFRi7foGXaC2qJ80r7TSXs00r8GBmr9GUwr
+	 emmjZmB4LpzVg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3D62D82C98;
+	Tue,  8 Apr 2025 17:24:24 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id DED5E1F1
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 17:24:21 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id C318882A72
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 17:24:21 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id SbYQZOFkzpbN for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  8 Apr 2025 17:24:21 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
+ helo=mgamail.intel.com; envelope-from=arkadiusz.kubalewski@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 2725682CDE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2725682CDE
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2725682CDE
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 17:24:20 +0000 (UTC)
+X-CSE-ConnectionGUID: tCixB9I7QW+vqGr1m/A7IQ==
+X-CSE-MsgGUID: JmpMUY2tTnKCF+PcqVK7Fw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="45744131"
+X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; d="scan'208";a="45744131"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+ by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Apr 2025 10:24:20 -0700
+X-CSE-ConnectionGUID: P8KrnZXfSNi1DwmKfeVmlA==
+X-CSE-MsgGUID: fSxm7UGlTjWcOa3jFIRnKQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; d="scan'208";a="128839662"
+Received: from amlin-018-114.igk.intel.com ([10.102.18.114])
+ by fmviesa010.fm.intel.com with ESMTP; 08 Apr 2025 10:24:19 -0700
+From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org,
+ Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Date: Tue,  8 Apr 2025 19:18:33 +0200
+Message-Id: <20250408171836.998073-1-arkadiusz.kubalewski@intel.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250408153311.30539-1-mpazdan@arista.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; d=lunn.ch; 
- s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
- Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
- Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
- bh=gc2itI022s8dW+s9KqI+5JfR2+E5wndR5hXO0nPhlBM=; b=G/blntR4GT2mMoncHyE/hjY+Zv
- NOvxnRYgBX4JWkjvDzSnUG4CjYhiibzDikvqlTcidubSSNr1HIX+rxOx8rP3T0PwT1AblSKGrxzSs
- F2UxzrYwE3fIDJyKUhGYo3ZLoVGB77oBGTJiA6MNxS6Ccqr4WLKlreEsv9X0KDnL3yXk=;
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1744133061; x=1775669061;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=/TkdCI6CvZCoKfW3p16k0WxDFHT1vD+zzJY2loP6GhU=;
+ b=Q++EhChoiRcil0pXQ7udxarph8Fl4iXZCyL8FOPMoI52SRcP0w2K5YG6
+ kBqXpIy8cR2kRUxhjwxhojj82Kke1a6yOwAdaJNTtM412eCchSvuIGRqC
+ jwfFsZVvve192jwYlGnk9sUYgFGOqRPWVBc7HoWb2CB2+HzDjsoXFPL0Z
+ sGyiPNljRWofyboO2q6zNGmlNZiss7YmXI2Ao+/y6ZTpAVNgAC2cnVkrr
+ 8EE7tznJ95k90keDF2FwG7GkKy1meuNV1LJdDkpsqHL10vBfgF8W8syeu
+ ISc7BlBtBdSxzBR3pE+GchdtrYmglBF2NTHnrlEUpd2YLyCYeODC86967
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=lunn.ch
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=lunn.ch header.i=@lunn.ch
- header.a=rsa-sha256 header.s=20171124 header.b=G/blntR4
-Subject: Re: [Intel-wired-lan] [PATCH 1/2] ethtool: transceiver reset and
- presence pin control
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Q++EhCho
+Subject: [Intel-wired-lan] [PATCH iwl-next v4 0/3] ice: decouple control of
+ SMA/U.FL/SDP pins
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -101,50 +107,28 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Apr 08, 2025 at 03:32:30PM +0000, Marek Pazdan wrote:
-> On Mon, 7 Apr 2025 22:39:17 +0200 Andrew Lunn wrote:
-> > How do you tell the kernel to stop managing the SFP? If you hit the
-> > module with a reset from user space, the kernel is going to get
-> > confused. And how are you talking to the module? Are you going to
-> > hijack the i2c device via i2-dev? Again, you need to stop the kernel
-> > from using the device.
-> 
-> This is something to implement in driver code. For ice driver this reset will
-> be executed through AQ command (Admin Queue) which is communication channel
-> between driver and firmware. What I probably need to do is to add additional PHY
-> state (like USER_MODULE_RESET) and check it when driver wants to execute AQ command.
-> 
-> > Before you go any further, i think you need to zoom out and tell us
-> > the big picture....
-> 
-> In my use case I need to have ability to reset transceiver module. There are 
-> several reasons for that. Most common is to reinit module if case of error state.
-> (this according to CMIS spec). Another use case is that in our switch's cli there
-> is a command for transceiver reinitialisation which involves transceiver reset.
+Previously control of the dpll SMA/U.FL pins was partially done through
+ptp API, decouple pins control from both interfaces (dpll and ptp).
+Allow the SMA/U.FL pins control over a dpll subsystem, and leave ptp
+related SDP pins control over a ptp subsystem.
 
-Now zoom out, ignore your hardware, look at the Linux abstraction for
-an SFP, across all NICs and switches.
+Arkadiusz Kubalewski (1):
+  ice: redesign dpll sma/u.fl pins control
 
-There are ethtool calls to retrieve the modules eeprom contents. There
-is an ethtool call to program the modules firmware. There is an
-ethtool call to get/set the power mode. Modules can also export their
-sensors via HWMON, the temperature, receive power, etc.
+Karol Kolacinski (2):
+  ice: change SMA pins to SDP in PTP API
+  ice: add ice driver PTP pin documentation
 
-How does your wish to reset the module fit into the general Linux
-model of an SFP? Should it be allowed in the middle of a firmware
-upgrade? Should the power mode be lost due to a reset? Can you still
-read from the EEPROM etc while it is in reset? What should HWMON
-report? Should it be a foot gun?
+ .../device_drivers/ethernet/intel/ice.rst     |  13 +
+ drivers/net/ethernet/intel/ice/ice_dpll.c     | 925 +++++++++++++++++-
+ drivers/net/ethernet/intel/ice/ice_dpll.h     |  23 +-
+ drivers/net/ethernet/intel/ice/ice_ptp.c      | 254 +----
+ drivers/net/ethernet/intel/ice/ice_ptp.h      |   3 -
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |   1 +
+ 6 files changed, 986 insertions(+), 233 deletions(-)
 
-It does however seem to me, what you want should somehow be an ethtool
-operation. And it probably needs to be plumbed through
-net/ethtool/module.c, and you need to look at how it interacts with
-all the other code in that file. And you maybe need to force the
-netdev to do a down/up so that it gets the new state of the module, or
-you only allow it on an netdev which is admin down?
 
-Your patch needs to explain the big picture, how it fits into the
-Linux abstraction of an SFP, and how other vendors should implement
-the same operation, if they wish to implement it.
+base-commit: 808e3ee1385480f99a2129156c437fadee01823a
+-- 
+2.38.1
 
-    Andrew
