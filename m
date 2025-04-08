@@ -1,125 +1,240 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4450BA808DD
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Apr 2025 14:49:05 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B044C611D4;
-	Tue,  8 Apr 2025 12:49:03 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 328zGSPFBBBI; Tue,  8 Apr 2025 12:49:03 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2C15F611D9
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744116542;
-	bh=qB3sVkfT0HjAdAwbiy9NGI0RjnBndpmxxFRKaVqnQr8=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=v9XRNwpilRMRcbsxK4VW4q6retbACGW0DJ9OtbHkciDoHPllRS1V+/ivr+MtwZ2mN
-	 uMxnL4y6wMVGfHU8xLPld29u6f/AHpcnnTwyOF3GbmfoCNCJCQQVbrcs+rYzJko6m0
-	 XNWHVfE2r5YGpMjK1GntbB3JwB+9FaEA071U7Fwrg2XKGN6r49QgoF4ZfOnToiEHqm
-	 yNBSwgXtilsKjlMeYVQzototQOEkzegYDdlseZpgVy+xdIdpO6CiyagIPNqFtV1fms
-	 SgOHs28l0LQVo4GzQuSe6caKTAfiYyH84gD2i49jsnCYALdrUCnaaIG3TjuBdCGged
-	 lcCyg99WF1wxw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2C15F611D9;
-	Tue,  8 Apr 2025 12:49:02 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 310491DE
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 12:49:01 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9FDEBA80BF5
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Apr 2025 15:23:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9AF0C40D0D
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 12:49:00 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4B4D14080E;
+	Tue,  8 Apr 2025 13:23:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 04zjCkpN3rIj for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Apr 2025 12:48:59 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
- helo=mgamail.intel.com; envelope-from=larysa.zaremba@intel.com;
+ id ZWavi-npXJ90; Tue,  8 Apr 2025 13:23:30 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E1C964089F
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1744118609;
+	bh=L+h78xgCM68g3HjAVqp1K/U54tDasXaWCipAUP5H5kI=;
+	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=J3j3AfOyMw2VN1D+P2+jchXw0mt0qGHmWsqglyxHhRL18DNyG5obi7p1moVrmPkgE
+	 cnGjy4lqYCmSZcEQx2Zr1WZJRaQAtDQ61hFmoCHyphoUd3vcnXbxJwqeUqBvyTY0QB
+	 sk1ywcfd+l3RUHerMMPeSq/pxQl7NWEeV57ykz8wFRNJWleykWIKDEPjpaqGd5GyaX
+	 vfBxtrSiJYoBNqugeXUyjkEHKOMx2B0yGUu/2PCFUCNUwZKDU6mSTqZln66VSEtMVV
+	 0ezTASGPFbIUzA0nvuYdngOnIqQbmvHuqibtRHdFlIW+CZyb6WyJvh7+o/olVRcaCp
+	 lcwFhETlvVung==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id E1C964089F;
+	Tue,  8 Apr 2025 13:23:29 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 36F941DE
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 13:23:28 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 210644080E
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 13:23:28 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id UFf1lCRXsFfF for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  8 Apr 2025 13:23:27 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
+ helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org B671A40D20
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B671A40D20
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B671A40D20
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 12:48:59 +0000 (UTC)
-X-CSE-ConnectionGUID: dswGnB6dTLqiPFTkJd7r9A==
-X-CSE-MsgGUID: izs9Ex59SoOXBTY6uqrMRg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="63085166"
-X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; d="scan'208";a="63085166"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
- by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2025 05:48:59 -0700
-X-CSE-ConnectionGUID: NL/NIvBlTuSw1SSGt6S39w==
-X-CSE-MsgGUID: b4shnjQjTLqsDvaFTc2xgw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org C27F84064B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C27F84064B
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C27F84064B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 13:23:26 +0000 (UTC)
+X-CSE-ConnectionGUID: U0pYuwezSEu/9+fjKjyO1w==
+X-CSE-MsgGUID: bNn2M5NbQWCa+ICTOmz7TA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="56189320"
+X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; d="scan'208";a="56189320"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Apr 2025 06:23:25 -0700
+X-CSE-ConnectionGUID: H/nR2Gz0RjmjD7ezUntB7g==
+X-CSE-MsgGUID: zqRBxI5xReC7Ate5JOoeWQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; d="scan'208";a="128124480"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmviesa006.fm.intel.com with ESMTP; 08 Apr 2025 05:48:52 -0700
-Received: from mglak.igk.intel.com (mglak.igk.intel.com [10.237.112.146])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 9287634314;
- Tue,  8 Apr 2025 13:48:49 +0100 (IST)
-From: Larysa Zaremba <larysa.zaremba@intel.com>
-To: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>
-Cc: "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Simon Horman <horms@kernel.org>,
- Jonathan Corbet <corbet@lwn.net>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Jiri Pirko <jiri@resnulli.us>, Mustafa Ismail <mustafa.ismail@intel.com>,
- Tatyana Nikolova <tatyana.e.nikolova@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- Michael Ellerman <mpe@ellerman.id.au>,
- Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Lee Trager <lee@trager.us>, Madhavan Srinivasan <maddy@linux.ibm.com>,
- Larysa Zaremba <larysa.zaremba@intel.com>,
- Sridhar Samudrala <sridhar.samudrala@intel.com>,
- Jacob Keller <jacob.e.keller@intel.com>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- Wenjun Wu <wenjun1.wu@intel.com>, Ahmed Zaki <ahmed.zaki@intel.com>,
- netdev@vger.kernel.org, linux-doc@vger.kernel.org,
- linux-kernel@vger.kernel.org,
- "Karlsson, Magnus" <magnus.karlsson@intel.com>,
- Emil Tantilov <emil.s.tantilov@intel.com>,
- Madhu Chittim <madhu.chittim@intel.com>, Josh Hay <joshua.a.hay@intel.com>,
- Milena Olech <milena.olech@intel.com>, pavan.kumar.linga@intel.com,
- "Singhai, Anjali" <anjali.singhai@intel.com>
-Date: Tue,  8 Apr 2025 14:48:00 +0200
-Message-ID: <20250408124816.11584-15-larysa.zaremba@intel.com>
-X-Mailer: git-send-email 2.47.0
-In-Reply-To: <20250408124816.11584-1-larysa.zaremba@intel.com>
-References: <20250408124816.11584-1-larysa.zaremba@intel.com>
+X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; d="scan'208";a="151457553"
+Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
+ by fmviesa002.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Apr 2025 06:23:25 -0700
+Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
+ ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.2.1544.14; Tue, 8 Apr 2025 06:23:25 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.44 via Frontend Transport; Tue, 8 Apr 2025 06:23:25 -0700
+Received: from NAM04-DM6-obe.outbound.protection.outlook.com (104.47.73.49) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.44; Tue, 8 Apr 2025 06:23:24 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Oj1Y9GA8JcybfuqtPuxwCTqCWPL1B4G3hdxymaIVRT7GDTwV7rrn5ajqaZDuj5NldQn/sjYqySjfzgDJ5Y7dpfbj1KPoICFBfFkCyYOKUVbg1+jyTuKoQwr6C7yvLyANjIEqbdX1dPwozRFpPzJXxBaEekOoMQDKlALkPRaRQhrGbMkXRsGIC9m5tebEzMbOHuDhV9rRNnbs4KPj/lqNDEq7rgedDiujIHr4sddUEouH2vcjmaebz5IcrrxBc8vHQn1UbSpyc+PBMw6tIFrFewRqczRWleMqWrXc2qip4CO17Ne3cw7bFYJl8Vn+Rvh1H898YtfSoveqzx4YKiP9Gg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=L+h78xgCM68g3HjAVqp1K/U54tDasXaWCipAUP5H5kI=;
+ b=RMrv8VtWLJK3gXhxEQ4bdWcQouZDdfVC6Q0AN0B3Jh79plomW8qDu7WxF+DtqBgJWgz0wb8hNBXpkkS1nfYhZfLMsIAZzOFk3Lr9koz+EfflyBFjnX0Oq8qHEgOhfftsxwql8/tF8HPCQ/pAO3UeaSP49k9AB4o/7qP9A5r2pq4AegeMy0zi3UGWabwGB5VWs5EFskxFPuggBB8NnxOJyfBDXUvD57ei1WLeC7OfdUpNG8LJKctx62LeZms7RQcLKfO2Cy/l7+EfMmyoQ2RVikD+H6de0ytazGShkkO0gMnB3+mOHmPKe7/nRqKO0hZZ50FhJ499KgEqWBis3l62Jw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DS0PR11MB8718.namprd11.prod.outlook.com (2603:10b6:8:1b9::20)
+ by CH3PR11MB7794.namprd11.prod.outlook.com (2603:10b6:610:125::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8606.34; Tue, 8 Apr
+ 2025 13:22:54 +0000
+Received: from DS0PR11MB8718.namprd11.prod.outlook.com
+ ([fe80::4b3b:9dbe:f68c:d808]) by DS0PR11MB8718.namprd11.prod.outlook.com
+ ([fe80::4b3b:9dbe:f68c:d808%5]) with mapi id 15.20.8632.017; Tue, 8 Apr 2025
+ 13:22:54 +0000
+Message-ID: <cba0216c-c87a-421d-bc4d-bc199165edbd@intel.com>
+Date: Tue, 8 Apr 2025 15:22:48 +0200
+User-Agent: Mozilla Thunderbird
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+CC: <intel-wired-lan@lists.osuosl.org>, Michal Kubiak
+ <michal.kubiak@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, "Przemek
+ Kitszel" <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "Alexei
+ Starovoitov" <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ "Jesper Dangaard Brouer" <hawk@kernel.org>, John Fastabend
+ <john.fastabend@gmail.com>, Simon Horman <horms@kernel.org>,
+ <bpf@vger.kernel.org>, <netdev@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>
+References: <20250305162132.1106080-1-aleksander.lobakin@intel.com>
+ <20250305162132.1106080-4-aleksander.lobakin@intel.com>
+ <Z9BDMrydhXrNlhVV@boxer>
+From: Alexander Lobakin <aleksander.lobakin@intel.com>
+Content-Language: en-US
+In-Reply-To: <Z9BDMrydhXrNlhVV@boxer>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: WA2P291CA0036.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d0:1f::9) To DS0PR11MB8718.namprd11.prod.outlook.com
+ (2603:10b6:8:1b9::20)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS0PR11MB8718:EE_|CH3PR11MB7794:EE_
+X-MS-Office365-Filtering-Correlation-Id: 002b96fe-0336-4b95-a6c1-08dd76a07840
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|366016|1800799024;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?OXpkaW5ZekEwVFFMT2trRzBRNkxWM2ZhcFZsS1FQODVhZ2NYbjdzcm1qOXZE?=
+ =?utf-8?B?aFBwSlEyM1RtRU1PaWdIVElEeHpzZUN2MXA3ekI3S2E4em5ZdEEwWGMzZUNi?=
+ =?utf-8?B?VHBvRm4wOCtJd1RoUWtCK2ppNk5ndUNXOWQ2SjRnMnlBekpvTGFiMUE5MWNx?=
+ =?utf-8?B?SFpNZW9qYXVJK3BiZHhCMFh2bXc4ZXdDUzNaM0JWZmppL3FPdURFMGJwTXpo?=
+ =?utf-8?B?ZTdkeDh3NnRVbXdzTWlsUHIwODBzb3RaYXlyeXQrWXc4TEY4TkJtK01RUzJU?=
+ =?utf-8?B?ZFRCcDFjRkRwanlMODJ4cm1HYXNJaDJ3NlhrWWdaYWExT2N4M3Qza0E1Mmln?=
+ =?utf-8?B?bE9TM3BDSkZlZ3RzQ3hEYUdYUENxSWl2d2hzc1VjdXcrc1FjZXF0eCt3Y3Uz?=
+ =?utf-8?B?aVFBakZHQUluazJ5cjExSjVhQkxWWGphR1dDZWcxeVZ1VFRhSkFlMGo1bmZ0?=
+ =?utf-8?B?VEZEZGdLVFVhNlJ1cVpPY3VjaUJTT25CSEJCM3ZFaGltUTJsN2R0b1ZLUnhE?=
+ =?utf-8?B?S2JDbHdlMlJXU3VHZVpKRXE1NnZ1NnBXUWZ3TnYxUTRxeHZiVFkwbzJrc1NP?=
+ =?utf-8?B?UExsdUFxQ2lIaDNhdE9VQkNsSktKcGs2Q2xKUVZqRDBDbVgwWm1UOW5XNGFW?=
+ =?utf-8?B?WU12Q25HdnpyZzlpRzdYTytOQUtZNmhQalZNT3doLzl0YVM2ZnY0ZVlVSy9E?=
+ =?utf-8?B?RkRVelZCSkRUVFpPc3NNTm5KbUVuc1c2aXV0RDJlY05LM0lySXZIOGtzRnA4?=
+ =?utf-8?B?WDVLZkFJZy9oWTdJZVFxbnZLSHlHLzJqeWlLeURUeGIrcXNzUHBiZi83NE9K?=
+ =?utf-8?B?N04vbkpvOXVyVU91b1BGQTVFRVFlQlhudk9vcG4ycHY1dXQzTlNub0l4dlk4?=
+ =?utf-8?B?d3NVV2ZxT01LY1QxOVlCakdWdWZReUVjQ1lXRitYUnlHcFg3dG0rSm95bkx3?=
+ =?utf-8?B?dUFWRDljczA4a1JRQ3VGNEdpM0tod3k5VGVaZEFsZGN3WTRDT1pKTUFUMEow?=
+ =?utf-8?B?dnh6b1pmeDM4RlRUcFhlTDc4SWdaWmlWSDNQY090bVc3RnNYSWVBMEVOZUxV?=
+ =?utf-8?B?Y3RNZDdmSmpHUGJJY3F5aU84UE5iN0pWTTVVMGoreVJIZDN0MHpaeEcxZk5k?=
+ =?utf-8?B?VllIZWxib2NPTHB3ZFh3UUJzNlY5QW9zQi9hemkxVnZLMFN0TnJyWmJHZS9S?=
+ =?utf-8?B?WVVtS3lTMnVzNjZKKzFjRDFLdEVGQnhTZkNtMTU3ZkFlVU9mbXc4K3lmN1VM?=
+ =?utf-8?B?eTR1OTNyYjkrUzR3T3dWRHhlQk1hYlQ3d0hScm5uTFdvVCtaaUJLSytkMVdR?=
+ =?utf-8?B?N2ZycHFwajQ2WnJrczJFM3kyZHM1K0NOM05mYW5wUGM4VVFWc3dBV3hHSDdi?=
+ =?utf-8?B?RkM2YXRaSjE3QWN1UGFDT1FUenBXTFZ5M2svbDVuUldXQ29IekUrSFRCQW12?=
+ =?utf-8?B?TUhoMlBLbWV5OGVod3dGL1hYRS9DcmZDSmU1ZzJEV1pXZXpXYTU0UVN1bEtY?=
+ =?utf-8?B?U1hORjVmOVlpalNGc0RnaHpzRFh3RkpBbTFqaDBCZDkxZW5sRDdmUzBWd2hD?=
+ =?utf-8?B?RENzdUNENEMwY0pMVWNEdE1OUWF0WVhyVXVyWTFLL05KM2tGV1d5NkJydjVO?=
+ =?utf-8?B?TFRDMXNoaWFmVzJxVzR0ckRZYUM2d1FabXZoVVcrS2ZHNlpXWlloWklaeHMx?=
+ =?utf-8?B?YUpMUitjTFgrU25jZG5JaDdzSzdEaFd1VGZTYlRqaW9HR0VEc2Z3anpVQlli?=
+ =?utf-8?B?dWZpRklLYUUrbmJOUVE1NWM4R0VhL21YWC9yNFFKNUpsUGd4S3hDbExTZmdZ?=
+ =?utf-8?B?QmRDMFZtSit2anF4WUtNWkFTOVhlTWlNT3B6TlQ4dXM0WHRkaWRuWFkrNE5C?=
+ =?utf-8?B?bjNFTkFoTEZ1dlhLMjhwQW04QnZjaU1VR2Y0WXNoL293NmxyUmRmYy82L0ps?=
+ =?utf-8?Q?di8RVIHxSN0=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS0PR11MB8718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(7416014)(366016)(1800799024); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Y2RQUTV2TmRUOVV2czBHckZIT2VUU3h0R2hjV0dMUUFabytIS09UK0VMQTNN?=
+ =?utf-8?B?RUs0RFdSdG9xNmh0N2hhU0FMSldMMG5mNGlObWo4UXh6UDd4T2Y5WFNxdklN?=
+ =?utf-8?B?N0lKdTVQUWw2RVBzSjkxYUVNejYyNFlmaURoYit1d2NCUmxWUForczJpRWkw?=
+ =?utf-8?B?anBwRWxUZWtTSnpGVHN4LzJFMVgrSFR6ZEx5bVM0WHNRU1dIOVhWSEs5V1Bv?=
+ =?utf-8?B?Znc4c3RDRnFFbHV6dkkzU0FxWlVaTGRPUjJiRmlCYXp2cXRpYjhvSDhsS3kx?=
+ =?utf-8?B?SHcvbVMyVHNQdTUyaDhxM3czSC9rYWxGRk1qU2d6YU1NazJRdFk3RHF5QjRm?=
+ =?utf-8?B?RERTZmJHWi9NcTVydlp3T1pST0lQWW81UmFEb090K1M1SWZ5MjhvNnVVc0pG?=
+ =?utf-8?B?bVE1T3ovT1pFWGg0eDRWOXozZUZZZC9MZEk5UTNLSnRTdy9SYVM3TFVsa2o3?=
+ =?utf-8?B?WFVGUk5iRHhtWCtpeXRvWXRGRGpyZ0lneVdCZzJid1I3c1p5N2JpSXJrWG1j?=
+ =?utf-8?B?aHpNVGExODN6eDlHb1JCTHAvOGs2QnRRbXUwaGh3cVE5YlBnYWlTb3VMMUoz?=
+ =?utf-8?B?RlJyaTVjNmNzYW5BTS84Zm90ZG9QYm1vNng3OWplTUIzTkFaOEMvK085WkY3?=
+ =?utf-8?B?VU1ybmJuaFZRckFTczg1TkN4YWp2RndEOFpJaklwOGY4a1RGcDVzU25YTTFE?=
+ =?utf-8?B?NFFnZndkeStwYUREZk1Ub3diWlhmOWtZcHIvS0FkQW0yZ0hoWTJrdGQzRVlQ?=
+ =?utf-8?B?TnBldmh3ejkwRThsNUdTeksvQnZxdFFPSXBzYkU2QmRJT1ZDOCtZNEwyK3Aw?=
+ =?utf-8?B?YWFLejMycHpkcTgzRGdKamJRTHBuTlhyeGpsM3gwOTBBQU4rdk9pdENLdFF1?=
+ =?utf-8?B?aWpBbzlJL3N4UlR2L09GcWQ1K215Z25scTV6TFZMTENvYTIxVVoyaHM0UmtU?=
+ =?utf-8?B?M2JOZW1aUUFiSk05ZnVKSUQxRFRkZm11ZXEyTGJVcE95MlhGRkZGU0craHlu?=
+ =?utf-8?B?MEwyWW95eGd4OEFid0NJT1d6amZ0eTc5V3ZtekZzODFyUFVlQ0JOdEVIQUVR?=
+ =?utf-8?B?aXc5cFd4enNXRGRCbXBSOHMvSi9iNjNvV2FZVHFLVkFmNExLamR1ejlDTzVq?=
+ =?utf-8?B?c2xLeEpKZHUrU1JmMG1kN2ZCN1RBU1pFbi9sdGY0MFhVaGxPMHlDUjZ4QnlM?=
+ =?utf-8?B?SnpwLzNoQzgyQkNWa0pNN29GWVd2YXZZWUF4Uzh4SUJkOXdsd2E0UXVVNVIx?=
+ =?utf-8?B?LzdhckpXT3hJclVHQ0RoTlozVjl4RGNybUtsT0lGS0FxWGVDZTU2b3hkdkNB?=
+ =?utf-8?B?YXhOWG1VdlBlaERrOXhJWnlvTU1SVHdNcGRqZi91OE1HS0tjUU0yQzMxdldZ?=
+ =?utf-8?B?dWcrdGVPdVBGUU1PN2JsSHJaMTlwaG93Zko4Y2VKN2NueFBrSjhKUjBZTFFI?=
+ =?utf-8?B?NXNFSFJWOHpCa1g4ZnY1RTNtZjRBWWdaNEZrTVZNUVM5RkNxOHI4MGdzUjE0?=
+ =?utf-8?B?YVpmRlBJendXeGxYMm5OTG1rN3JxNFhaT2pCa21pbm1KS0k1L1A5YlJMcllC?=
+ =?utf-8?B?cm5nV2FPMnhvdytsNzlLaFFOZHBWTk5uNWV5eTE4bE9sTy9MRXNpNHVSOUFq?=
+ =?utf-8?B?bFoySmFsV2dwLzNMODE1ZUFuamZ2NFJrZ3pDbytxN2oxOFdFN0hmcjlNYWtL?=
+ =?utf-8?B?RUoyclFsV0cvcWlsbkYyWVJVM2Q0bUZyWGgyZTRDeGxaeWYrSHJTTVVuZGZp?=
+ =?utf-8?B?T0YvekdxckcxSVNZR3RQUWtwVDh3VWRpMUo1UVdZdEs1THB2dGZ3ZHRNcUVO?=
+ =?utf-8?B?cEp3d1Z1c3lrRjlZV0JoTUdpZi81OEFLUDRkS2JETlVTamo4UTV1ZUdOL3dq?=
+ =?utf-8?B?YlhZV2dkY1ptdGptZ3UzS3F6MDh4QVo4ZXRPU2oySXdPa3FOVVJNQ1J0YkJK?=
+ =?utf-8?B?aVhnK1dFc004TlJXQzJuUzR2M084TDV5ekcxaGtpYjFEbE5tVzJHTjBJVlg4?=
+ =?utf-8?B?T25JOUxPUmtSOFBwNzRidlZVQXdTVXNKalM4QlVxNEhqMWEvRmEwUWxFWjU4?=
+ =?utf-8?B?UHd4c0Q5clptTzhtcGdwYWF3QjhJZDBkd2RZd0VaaDJEUjU2SnZFSDJ1Zm5J?=
+ =?utf-8?B?MzBBQjhyM3JDWnJ5eEVwN21vSldrZW5IK3F5S2VjWHd4ZFRNc1cyaE50RHpj?=
+ =?utf-8?B?UGc9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 002b96fe-0336-4b95-a6c1-08dd76a07840
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB8718.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Apr 2025 13:22:54.3537 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: qry9qx4y8ZY75/xH7ju3WmnMhQqCNZE3vIx92yrojlWqrfIVkYSOlrPm+iRXm4nSDlESsv06SLm/rUQg4L43lWouZzwKU9mODxy5z+0tqQs=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR11MB7794
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1744116540; x=1775652540;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=x2QxBbMx0+o8A7QDMhxHEXWFEaByDoAZDUz4s9721fA=;
- b=d4BXxI4g3dm1va/uD7IbZwhzw46sv9XXSyzVpqJ3QfeTCG54TevDVEc/
- qC0pXYkgVpeSATd7V0HFSGz5cLDUE5Q5mZ9qW5F++UUnriF4M90D0ww69
- nrWmpTQCAF9Dz5DT/4ah+c/HCSyduPumIX+ovBK0xmakB+Vb+P8BBdQyo
- 3MOVWFqSAKSTuzoNfcEW9XAyIW8ByHWYn/HbfDxP5321l4ZPBc0tALkGx
- vcerPrQ0DoTFjgeO5VGZBXUNFs/l7d5T9bLAswj6BMSDZtx5L1dvdNdhz
- hfYVnvv0UjdfQ8w40zLSdjN4jmc2JVkM5/K9FbcSZVbfe4hzCeFSHrA60
- A==;
+ t=1744118606; x=1775654606;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=5sad7CMSlrL4GLKc64iRejOPHPoJOPNQNnfDN3JjfBE=;
+ b=mXXEkDB9bEceBevT3tNIB0bxkjrDRnrYKm1tQGvcOkGGi0KxjFqx7lo4
+ vpnSzdJd5D7C6drJKO+9IYTvSHkzp3fFFfWe0n3YXYvLEVBJUOkF1mIjE
+ faRhTlWU5aT4KzGd2lgEbJy55An7OrcRhPtcFOWPr9aMS/fsJilU6GnET
+ X7jPqDmgMDblLWFq27aTVH0Ylx6Oy9DONf9rFPewqLt9/OQNOz4AG7YHT
+ Bf/HTRJVOZKHkluJD+e+k3eRMchKZ92n9QpyqRV8fsJ0yv0IKxiBToB4a
+ mOZoFGAt0c79DhFad8iXv8oSm88TGUaFSdS0kZNIVKXLWu83n/G9DUb5L
+ w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=d4BXxI4g
-Subject: [Intel-wired-lan] [PATCH iwl-next 14/14] ixd: add devlink support
+ header.s=Intel header.b=mXXEkDB9
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net-next 03/16] libeth: add a couple
+ of XDP helpers (libeth_xdp)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -135,331 +250,455 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Amritha Nambiar <amritha.nambiar@intel.com>
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Date: Tue, 11 Mar 2025 15:05:38 +0100
 
-Enable initial support for the devlink interface with the ixd
-driver. The ixd hardware is a single function PCIe device. So, the
-PCIe adapter gets its own devlink instance to manage device-wide
-resources or configuration.
+> On Wed, Mar 05, 2025 at 05:21:19PM +0100, Alexander Lobakin wrote:
+>> "Couple" is a bit humbly... Add the following functionality to libeth:
 
-$ devlink dev show
-pci/0000:83:00.6
+[...]
 
-$ devlink dev info pci/0000:83:00.6
-pci/0000:83:00.6:
-  driver ixd
-  serial_number 00-a0-c9-ff-ff-23-45-67
-  versions:
-      fixed:
-        device.type MEV
-      running:
-        cp 0.0
-        virtchnl 2.0
+>> +struct libeth_rq_napi_stats {
+>> +	union {
+>> +		struct {
+>> +							u32 packets;
+>> +							u32 bytes;
+>> +							u32 fragments;
+>> +							u32 hsplit;
+>> +		};
+>> +		DECLARE_FLEX_ARRAY(u32, raw);
+> 
+> The @raw approach is never used throughout the patchset, right?
 
-Signed-off-by: Amritha Nambiar <amritha.nambiar@intel.com>
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
----
- Documentation/networking/devlink/ixd.rst     |  35 +++++++
- drivers/net/ethernet/intel/ixd/Kconfig       |   1 +
- drivers/net/ethernet/intel/ixd/Makefile      |   1 +
- drivers/net/ethernet/intel/ixd/ixd_devlink.c | 105 +++++++++++++++++++
- drivers/net/ethernet/intel/ixd/ixd_devlink.h |  44 ++++++++
- drivers/net/ethernet/intel/ixd/ixd_main.c    |  13 ++-
- 6 files changed, 196 insertions(+), 3 deletions(-)
- create mode 100644 Documentation/networking/devlink/ixd.rst
- create mode 100644 drivers/net/ethernet/intel/ixd/ixd_devlink.c
- create mode 100644 drivers/net/ethernet/intel/ixd/ixd_devlink.h
+Right, but
 
-diff --git a/Documentation/networking/devlink/ixd.rst b/Documentation/networking/devlink/ixd.rst
-new file mode 100644
-index 000000000000..81b28ffb00f6
---- /dev/null
-+++ b/Documentation/networking/devlink/ixd.rst
-@@ -0,0 +1,35 @@
-+.. SPDX-License-Identifier: GPL-2.0
-+
-+===================
-+ixd devlink support
-+===================
-+
-+This document describes the devlink features implemented by the ``ixd``
-+device driver.
-+
-+Info versions
-+=============
-+
-+The ``ixd`` driver reports the following versions
-+
-+.. list-table:: devlink info versions implemented
-+    :widths: 5 5 5 90
-+
-+    * - Name
-+      - Type
-+      - Example
-+      - Description
-+    * - ``device.type``
-+      - fixed
-+      - MEV
-+      - The hardware type for this device
-+    * - ``cp``
-+      - running
-+      - 0.0
-+      - Version number (major.minor) of the Control Plane software
-+        running on the device.
-+    * - ``virtchnl``
-+      - running
-+      - 2.0
-+      - 2-digit version number (major.minor) of the communication channel
-+        (virtchnl) used by the device.
-diff --git a/drivers/net/ethernet/intel/ixd/Kconfig b/drivers/net/ethernet/intel/ixd/Kconfig
-index bcaf06a874aa..d4f4fa4678bd 100644
---- a/drivers/net/ethernet/intel/ixd/Kconfig
-+++ b/drivers/net/ethernet/intel/ixd/Kconfig
-@@ -7,6 +7,7 @@ config IXD
- 	select LIBETH
- 	select LIBETH_CP
- 	select LIBETH_PCI
-+	select NET_DEVLINK
- 	help
- 	  This driver supports Intel(R) Control Plane PCI Function
- 	  of Intel E2100 and later IPUs and FNICs.
-diff --git a/drivers/net/ethernet/intel/ixd/Makefile b/drivers/net/ethernet/intel/ixd/Makefile
-index 90abf231fb16..03760a2580b9 100644
---- a/drivers/net/ethernet/intel/ixd/Makefile
-+++ b/drivers/net/ethernet/intel/ixd/Makefile
-@@ -8,5 +8,6 @@ obj-$(CONFIG_IXD) += ixd.o
- ixd-y := ixd_main.o
- ixd-y += ixd_ctlq.o
- ixd-y += ixd_dev.o
-+ixd-y += ixd_devlink.o
- ixd-y += ixd_lib.o
- ixd-y += ixd_virtchnl.o
-diff --git a/drivers/net/ethernet/intel/ixd/ixd_devlink.c b/drivers/net/ethernet/intel/ixd/ixd_devlink.c
-new file mode 100644
-index 000000000000..6f60cfe4fab2
---- /dev/null
-+++ b/drivers/net/ethernet/intel/ixd/ixd_devlink.c
-@@ -0,0 +1,105 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/* Copyright (c) 2025, Intel Corporation. */
-+
-+#include "ixd.h"
-+#include "ixd_devlink.h"
-+
-+#define IXD_DEVLINK_INFO_LEN	128
-+
-+/**
-+ * ixd_fill_dsn - Get the serial number for the ixd device
-+ * @adapter: adapter to query
-+ * @buf: storage buffer for the info request
-+ */
-+static void ixd_fill_dsn(struct ixd_adapter *adapter, char *buf)
-+{
-+	u8 dsn[8];
-+
-+	/* Copy the DSN into an array in Big Endian format */
-+	put_unaligned_be64(pci_get_dsn(adapter->cp_ctx.mmio_info.pdev), dsn);
-+
-+	snprintf(buf, IXD_DEVLINK_INFO_LEN, "%8phD", dsn);
-+}
-+
-+/**
-+ * ixd_fill_device_name - Get the name of the underlying hardware
-+ * @adapter: adapter to query
-+ * @buf: storage buffer for the info request
-+ * @buf_size: size of the storage buffer
-+ */
-+static void ixd_fill_device_name(struct ixd_adapter *adapter, char *buf,
-+				 size_t buf_size)
-+{
-+	if (adapter->caps.device_type == VIRTCHNL2_MEV_DEVICE)
-+		snprintf(buf, buf_size, "%s", "MEV");
-+	else
-+		snprintf(buf, buf_size, "%s", "UNKNOWN");
-+}
-+
-+/**
-+ * ixd_devlink_info_get - .info_get devlink handler
-+ * @devlink: devlink instance structure
-+ * @req: the devlink info request
-+ * @extack: extended netdev ack structure
-+ *
-+ * Callback for the devlink .info_get operation. Reports information about the
-+ * device.
-+ *
-+ * Return: zero on success or an error code on failure.
-+ */
-+static int ixd_devlink_info_get(struct devlink *devlink,
-+				struct devlink_info_req *req,
-+				struct netlink_ext_ack *extack)
-+{
-+	struct ixd_adapter *adapter = devlink_priv(devlink);
-+	char buf[IXD_DEVLINK_INFO_LEN];
-+	int err;
-+
-+	ixd_fill_dsn(adapter, buf);
-+	err = devlink_info_serial_number_put(req, buf);
-+	if (err)
-+		return err;
-+
-+	ixd_fill_device_name(adapter, buf, IXD_DEVLINK_INFO_LEN);
-+	err = devlink_info_version_fixed_put(req, "device.type", buf);
-+	if (err)
-+		return err;
-+
-+	snprintf(buf, sizeof(buf), "%u.%u",
-+		 le16_to_cpu(adapter->caps.cp_ver_major),
-+		 le16_to_cpu(adapter->caps.cp_ver_minor));
-+
-+	err = devlink_info_version_running_put(req, "cp", buf);
-+	if (err)
-+		return err;
-+
-+	snprintf(buf, sizeof(buf), "%u.%u",
-+		 adapter->vc_ver.major, adapter->vc_ver.minor);
-+
-+	return devlink_info_version_running_put(req, "virtchnl", buf);
-+}
-+
-+static const struct devlink_ops ixd_devlink_ops = {
-+	.info_get = ixd_devlink_info_get,
-+};
-+
-+/**
-+ * ixd_adapter_alloc - Allocate devlink and return adapter pointer
-+ * @dev: the device to allocate for
-+ *
-+ * Allocate a devlink instance for this device and return the private area as
-+ * the adapter structure.
-+ *
-+ * Return: adapter structure on success, NULL on failure
-+ */
-+struct ixd_adapter *ixd_adapter_alloc(struct device *dev)
-+{
-+	struct devlink *devlink;
-+
-+	devlink = devlink_alloc(&ixd_devlink_ops, sizeof(struct ixd_adapter),
-+				dev);
-+	if (!devlink)
-+		return NULL;
-+
-+	return devlink_priv(devlink);
-+}
-diff --git a/drivers/net/ethernet/intel/ixd/ixd_devlink.h b/drivers/net/ethernet/intel/ixd/ixd_devlink.h
-new file mode 100644
-index 000000000000..c43ce0655de2
---- /dev/null
-+++ b/drivers/net/ethernet/intel/ixd/ixd_devlink.h
-@@ -0,0 +1,44 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/* Copyright (c) 2025, Intel Corporation. */
-+
-+#ifndef _IXD_DEVLINK_H_
-+#define _IXD_DEVLINK_H_
-+#include <net/devlink.h>
-+
-+struct ixd_adapter *ixd_adapter_alloc(struct device *dev);
-+
-+/**
-+ * ixd_devlink_free - teardown the devlink
-+ * @adapter: the adapter structure to free
-+ *
-+ */
-+static inline void ixd_devlink_free(struct ixd_adapter *adapter)
-+{
-+	struct devlink *devlink = priv_to_devlink(adapter);
-+
-+	devlink_free(devlink);
-+}
-+
-+/**
-+ * ixd_devlink_unregister - Unregister devlink resources for this adapter.
-+ * @adapter: the adapter structure to cleanup
-+ *
-+ * Releases resources used by devlink and cleans up associated memory.
-+ */
-+static inline void ixd_devlink_unregister(struct ixd_adapter *adapter)
-+{
-+	devlink_unregister(priv_to_devlink(adapter));
-+}
-+
-+/**
-+ * ixd_devlink_register - Register devlink interface for this adapter
-+ * @adapter: pointer to ixd adapter structure to be associated with devlink
-+ *
-+ * Register the devlink instance associated with this adapter
-+ */
-+static inline void ixd_devlink_register(struct ixd_adapter *adapter)
-+{
-+	devlink_register(priv_to_devlink(adapter));
-+}
-+
-+#endif /* _IXD_DEVLINK_H_ */
-diff --git a/drivers/net/ethernet/intel/ixd/ixd_main.c b/drivers/net/ethernet/intel/ixd/ixd_main.c
-index 97679cf4527f..8312c25f21f8 100644
---- a/drivers/net/ethernet/intel/ixd/ixd_main.c
-+++ b/drivers/net/ethernet/intel/ixd/ixd_main.c
-@@ -4,6 +4,7 @@
- #include "ixd.h"
- #include "ixd_ctlq.h"
- #include "ixd_lan_regs.h"
-+#include "ixd_devlink.h"
- 
- MODULE_DESCRIPTION("Intel(R) Control Plane Function Device Driver");
- MODULE_IMPORT_NS("LIBETH_CP");
-@@ -21,12 +22,15 @@ static void ixd_remove(struct pci_dev *pdev)
- 	/* Do not mix removal with (re)initialization */
- 	cancel_delayed_work_sync(&adapter->init_task.init_work);
- 
-+	ixd_devlink_unregister(adapter);
-+
- 	/* Leave the device clean on exit */
- 	ixd_trigger_reset(adapter);
- 	ixd_deinit_dflt_mbx(adapter);
- 
- 	libeth_pci_unmap_all_mmio_regions(&adapter->cp_ctx.mmio_info);
- 	libeth_pci_deinit_dev(pdev);
-+	ixd_devlink_free(adapter);
- }
- 
- /**
-@@ -94,7 +98,7 @@ static int ixd_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	if (WARN_ON(ent->device != IXD_DEV_ID_CPF))
- 		return -EINVAL;
- 
--	adapter = devm_kzalloc(&pdev->dev, sizeof(*adapter), GFP_KERNEL);
-+	adapter = ixd_adapter_alloc(&pdev->dev);
- 	if (!adapter)
- 		return -ENOMEM;
- 
-@@ -103,7 +107,7 @@ static int ixd_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 
- 	err = libeth_pci_init_dev(pdev);
- 	if (err)
--		return err;
-+		goto free_adapter;
- 
- 	pci_set_drvdata(pdev, adapter);
- 
-@@ -119,11 +123,14 @@ static int ixd_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	queue_delayed_work(system_unbound_wq, &adapter->init_task.init_work,
- 			   msecs_to_jiffies(500));
- 
-+	ixd_devlink_register(adapter);
-+
- 	return 0;
- 
- deinit_dev:
- 	libeth_pci_deinit_dev(pdev);
--
-+free_adapter:
-+	ixd_devlink_free(adapter);
- 	return err;
- }
- 
--- 
-2.47.0
+> Could you explain the reason for introducing this and potential use case?
 
+initially, when my tree contained libeth generic stats also, I used this
+field to update queue stats in a loop (unrolled by 4 fields) instead of
+field-by-field.
+Generic stats are still planned, and since ::raw is already present in
+&libeth_sq_napi_stats, I'd like to keep it :z
+
+> 
+>> +	};
+>> +};
+>>  
+>>  /**
+>>   * struct libeth_sq_napi_stats - "hot" counters to update in Tx completion loop
+>> @@ -22,4 +44,84 @@ struct libeth_sq_napi_stats {
+>>  	};
+>>  };
+>>  
+>> +/**
+>> + * struct libeth_xdpsq_napi_stats - "hot" counters to update in XDP Tx
+>> + *				    completion loop
+>> + * @packets: completed frames counter
+>> + * @bytes: sum of bytes of completed frames above
+>> + * @fragments: sum of fragments of completed S/G frames
+>> + * @raw: alias to access all the fields as an array
+>> + */
+>> +struct libeth_xdpsq_napi_stats {
+> 
+> what's the delta between this and libeth_sq_napi_stats ? couldn't you have
+> a single struct for purpose of tx napi stats?
+
+Same as previous, future-proof. &libeth_sq{,_napi}_stats will contain
+stuff XDP queues will never need and vice versa.
+
+> 
+>> +	union {
+>> +		struct {
+>> +							u32 packets;
+>> +							u32 bytes;
+>> +							u32 fragments;
+>> +		};
+>> +		DECLARE_FLEX_ARRAY(u32, raw);
+>> +	};
+>> +};
+
+[...]
+
+>> @@ -71,7 +84,10 @@ struct libeth_sqe {
+>>  /**
+>>   * struct libeth_cq_pp - completion queue poll params
+>>   * @dev: &device to perform DMA unmapping
+>> + * @bq: XDP frame bulk to combine return operations
+>>   * @ss: onstack NAPI stats to fill
+>> + * @xss: onstack XDPSQ NAPI stats to fill
+>> + * @xdp_tx: number of XDP frames processed
+>>   * @napi: whether it's called from the NAPI context
+>>   *
+>>   * libeth uses this structure to access objects needed for performing full
+>> @@ -80,7 +96,13 @@ struct libeth_sqe {
+>>   */
+>>  struct libeth_cq_pp {
+>>  	struct device			*dev;
+>> -	struct libeth_sq_napi_stats	*ss;
+>> +	struct xdp_frame_bulk		*bq;
+>> +
+>> +	union {
+>> +		struct libeth_sq_napi_stats	*ss;
+>> +		struct libeth_xdpsq_napi_stats	*xss;
+>> +	};
+>> +	u32				xdp_tx;
+> 
+> you have this counted in xss::packets?
+
+Nope, it's the same as in ice, you have separate ::packets AND ::xdp_tx
+on the ring to speed up XSk completion when there's no XDP-non-XSk buffers.
+
+> 
+>>  
+>>  	bool				napi;
+>>  };
+
+[...]
+
+>> +/* Common Tx bits */
+>> +
+>> +/**
+>> + * enum - libeth_xdp internal Tx flags
+>> + * @LIBETH_XDP_TX_BULK: one bulk size at which it will be flushed to the queue
+>> + * @LIBETH_XDP_TX_BATCH: batch size for which the queue fill loop is unrolled
+>> + * @LIBETH_XDP_TX_DROP: indicates the send function must drop frames not sent
+>> + * @LIBETH_XDP_TX_NDO: whether the send function is called from .ndo_xdp_xmit()
+>> + */
+>> +enum {
+>> +	LIBETH_XDP_TX_BULK		= DEV_MAP_BULK_SIZE,
+>> +	LIBETH_XDP_TX_BATCH		= 8,
+>> +
+>> +	LIBETH_XDP_TX_DROP		= BIT(0),
+>> +	LIBETH_XDP_TX_NDO		= BIT(1),
+> 
+> what's the reason to group these random values onto enum?
+
+They then will be visible in BTFs (not sure anyone will need them there).
+
+> 
+>> +};
+>> +
+>> +/**
+>> + * enum - &libeth_xdp_tx_frame and &libeth_xdp_tx_desc flags
+>> + * @LIBETH_XDP_TX_LEN: only for ``XDP_TX``, [15:0] of ::len_fl is actual length
+>> + * @LIBETH_XDP_TX_FIRST: indicates the frag is the first one of the frame
+>> + * @LIBETH_XDP_TX_LAST: whether the frag is the last one of the frame
+>> + * @LIBETH_XDP_TX_MULTI: whether the frame contains several frags
+> 
+> would be good to have some extended description around usage of these
+> flags.
+
+They are internal to libeth functions anyway, hence no detailed description.
+
+> 
+>> + * @LIBETH_XDP_TX_FLAGS: only for ``XDP_TX``, [31:16] of ::len_fl is flags
+>> + */
+>> +enum {
+>> +	LIBETH_XDP_TX_LEN		= GENMASK(15, 0),
+>> +
+>> +	LIBETH_XDP_TX_FIRST		= BIT(16),
+>> +	LIBETH_XDP_TX_LAST		= BIT(17),
+>> +	LIBETH_XDP_TX_MULTI		= BIT(18),
+>> +
+>> +	LIBETH_XDP_TX_FLAGS		= GENMASK(31, 16),
+>> +};
+
+[...]
+
+>> +/**
+>> + * libeth_xdp_tx_queue_head - internal helper for queueing one ``XDP_TX`` head
+>> + * @bq: XDP Tx bulk to queue the head frag to
+>> + * @xdp: XDP buffer with the head to queue
+>> + *
+>> + * Return: false if it's the only frag of the frame, true if it's an S/G frame.
+>> + */
+>> +static inline bool libeth_xdp_tx_queue_head(struct libeth_xdp_tx_bulk *bq,
+>> +					    const struct libeth_xdp_buff *xdp)
+>> +{
+>> +	const struct xdp_buff *base = &xdp->base;
+>> +
+>> +	bq->bulk[bq->count++] = (typeof(*bq->bulk)){
+>> +		.data	= xdp->data,
+>> +		.len_fl	= (base->data_end - xdp->data) | LIBETH_XDP_TX_FIRST,
+>> +		.soff	= xdp_data_hard_end(base) - xdp->data,
+>> +	};
+>> +
+>> +	if (!xdp_buff_has_frags(base))
+> 
+> likely() ?
+
+With the header split enabled and getting more and more popular -- not
+really. likely() hurts perf here actually.
+
+> 
+>> +		return false;
+>> +
+>> +	bq->bulk[bq->count - 1].len_fl |= LIBETH_XDP_TX_MULTI;
+>> +
+>> +	return true;
+>> +}
+>> +
+>> +/**
+>> + * libeth_xdp_tx_queue_frag - internal helper for queueing one ``XDP_TX`` frag
+>> + * @bq: XDP Tx bulk to queue the frag to
+>> + * @frag: frag to queue
+>> + */
+>> +static inline void libeth_xdp_tx_queue_frag(struct libeth_xdp_tx_bulk *bq,
+>> +					    const skb_frag_t *frag)
+>> +{
+>> +	bq->bulk[bq->count++].frag = *frag;
+> 
+> IMHO this helper is not providing anything useful
+
+That's why it's stated "internal helper" :D
+
+> 
+>> +}
+
+[...]
+
+>> +#define libeth_xdp_tx_fill_stats(sqe, desc, sinfo)			      \
+>> +	__libeth_xdp_tx_fill_stats(sqe, desc, sinfo, __UNIQUE_ID(sqe_),	      \
+>> +				   __UNIQUE_ID(desc_), __UNIQUE_ID(sinfo_))
+>> +
+>> +#define __libeth_xdp_tx_fill_stats(sqe, desc, sinfo, ue, ud, us) do {	      \
+>> +	const struct libeth_xdp_tx_desc *ud = (desc);			      \
+>> +	const struct skb_shared_info *us;				      \
+>> +	struct libeth_sqe *ue = (sqe);					      \
+>> +									      \
+>> +	ue->nr_frags = 1;						      \
+>> +	ue->bytes = ud->len;						      \
+>> +									      \
+>> +	if (ud->flags & LIBETH_XDP_TX_MULTI) {				      \
+>> +		us = (sinfo);						      \
+> 
+> why? what 'u' stands for? ue us don't tell the reader much from the first
+> glance. sinfo tells me everything.
+
+ue -- "unique element"
+ud -- "unique descriptor"
+us -- "unique sinfo"
+
+All of them are purely internal to pass __UNIQUE_ID() in the
+non-underscored version to avoid variable shadowing.
+
+> 
+>> +		ue->nr_frags += us->nr_frags;				      \
+>> +		ue->bytes += us->xdp_frags_size;			      \
+>> +	}								      \
+>> +} while (0)
+
+[...]
+
+>> +/**
+>> + * libeth_xdp_xmit_do_bulk - implement full .ndo_xdp_xmit() in driver
+>> + * @dev: target &net_device
+>> + * @n: number of frames to send
+>> + * @fr: XDP frames to send
+>> + * @f: flags passed by the stack
+>> + * @xqs: array of XDPSQs driver structs
+>> + * @nqs: number of active XDPSQs, the above array length
+>> + * @fl: driver callback to flush an XDP xmit bulk
+>> + * @fin: driver cabback to finalize the queue
+>> + *
+>> + * If the driver has active XDPSQs, perform common checks and send the frames.
+>> + * Finalize the queue, if requested.
+>> + *
+>> + * Return: number of frames sent or -errno on error.
+>> + */
+>> +#define libeth_xdp_xmit_do_bulk(dev, n, fr, f, xqs, nqs, fl, fin)	      \
+>> +	_libeth_xdp_xmit_do_bulk(dev, n, fr, f, xqs, nqs, fl, fin,	      \
+>> +				 __UNIQUE_ID(bq_), __UNIQUE_ID(ret_),	      \
+>> +				 __UNIQUE_ID(nqs_))
+> 
+> why __UNIQUE_ID() is needed?
+
+As above, variable shadowing.
+
+> 
+>> +
+>> +#define _libeth_xdp_xmit_do_bulk(d, n, fr, f, xqs, nqs, fl, fin, ub, ur, un)  \
+> 
+> why single underscore? usually we do __ for internal funcs as you did
+> somewhere above.
+
+Double-underscored is defined above already :D
+So it would be either like this or __ + ___
+
+> 
+> also, why define and not inlined func?
+
+I'll double check, but if you look at its usage in idpf/xdp.c, you'll
+see that some arguments are non-trivial to obtain, IOW they cost some
+cycles. Macro ensures they won't be fetched prior to
+`likely(number_of_xdpsqs)`.
+I'll convert to an inline and check if the compiler handles this itself.
+It didn't behave in {,__}libeth_xdp_tx_fill_stats() unfortunately, hence
+macro there as well =\
+
+> 
+>> +({									      \
+>> +	u32 un = (nqs);							      \
+>> +	int ur;								      \
+>> +									      \
+>> +	if (likely(un)) {						      \
+>> +		struct libeth_xdp_tx_bulk ub;				      \
+>> +									      \
+>> +		libeth_xdp_xmit_init_bulk(&ub, d, xqs, un);		      \
+>> +		ur = __libeth_xdp_xmit_do_bulk(&ub, fr, n, f, fl, fin);	      \
+>> +	} else {							      \
+>> +		ur = -ENXIO;						      \
+>> +	}								      \
+>> +									      \
+>> +	ur;								      \
+>> +})
+
+[...]
+
+>> +static inline void
+>> +libeth_xdp_init_buff(struct libeth_xdp_buff *dst,
+>> +		     const struct libeth_xdp_buff_stash *src,
+>> +		     struct xdp_rxq_info *rxq)
+> 
+> what is the rationale for storing/loading xdp_buff onto/from driver's Rx
+> queue? could we work directly on xdp_buff from Rx queue? ice is doing so
+> currently.
+
+Stack vs heap. I was getting lower numbers working on the queue directly.
+Also note that &libeth_xdp_buff_stash is 16 bytes, while
+&libeth_xdp_buff is 64. I don't think it makes sense to waste +48
+bytes in the structure.
+
+Load-store of the stash is rare anyway. It can happen *only* if the HW
+for some reason hasn't written the whole multi-buffer frame yet, since
+NAPI budget is counted by packets, not fragments.
+
+> 
+>> +{
+>> +	if (likely(!src->data))
+>> +		dst->data = NULL;
+>> +	else
+>> +		libeth_xdp_load_stash(dst, src);
+>> +
+>> +	dst->base.rxq = rxq;
+>> +}
+
+[...]
+
+>> +static inline bool libeth_xdp_process_buff(struct libeth_xdp_buff *xdp,
+>> +					   const struct libeth_fqe *fqe,
+>> +					   u32 len)
+>> +{
+>> +	if (!libeth_rx_sync_for_cpu(fqe, len))
+>> +		return false;
+>> +
+>> +	if (xdp->data)
+> 
+> unlikely() ?
+
+Same as for libeth_xdp_tx_queue_head(): with the header split, you'll
+hit this branch every frame.
+
+> 
+>> +		return libeth_xdp_buff_add_frag(xdp, fqe, len);
+>> +
+>> +	libeth_xdp_prepare_buff(xdp, fqe, len);
+>> +
+>> +	prefetch(xdp->data);
+>> +
+>> +	return true;
+>> +}
+
+[...]
+
+>> +/**
+>> + * libeth_xdp_run_prog - run XDP program and handle all verdicts
+>> + * @xdp: XDP buffer to process
+>> + * @bq: XDP Tx bulk to queue ``XDP_TX`` buffers
+>> + * @fl: driver ``XDP_TX`` bulk flush callback
+>> + *
+>> + * Run the attached XDP program and handle all possible verdicts.
+>> + * Prefer using it via LIBETH_XDP_DEFINE_RUN{,_PASS,_PROG}().
+>> + *
+>> + * Return: true if the buffer should be passed up the stack, false if the poll
+>> + * should go to the next buffer.
+>> + */
+>> +#define libeth_xdp_run_prog(xdp, bq, fl)				      \
+> 
+> is this used in idpf in this patchset?
+
+Sure. __LIBETH_XDP_DEFINE_RUN() builds two functions, one of which uses it.
+Same for __LIBETH_XDP_DEFINE_RUN_PROG(). I know they are poor to read,
+but otherwise I'd need to duplicate them for XDP and XSk separately.
+
+> 
+>> +	(__libeth_xdp_run_flush(xdp, bq, __libeth_xdp_run_prog,		      \
+>> +				libeth_xdp_tx_queue_bulk,		      \
+>> +				fl) == LIBETH_XDP_PASS)
+>> +
+>> +/**
+>> + * __libeth_xdp_run_pass - helper to run XDP program and handle the result
+>> + * @xdp: XDP buffer to process
+>> + * @bq: XDP Tx bulk to queue ``XDP_TX`` frames
+>> + * @napi: NAPI to build an skb and pass it up the stack
+>> + * @rs: onstack libeth RQ stats
+>> + * @md: metadata that should be filled to the XDP buffer
+>> + * @prep: callback for filling the metadata
+>> + * @run: driver wrapper to run XDP program
+> 
+> I see it's NULLed on idpf? why have this?
+
+Only for singleq which we don't support. splitq uses
+LIBETH_XDP_DEFINE_RUN() to build idpf_xdp_run_prog() and
+idpf_xdp_run_pass().
+
+> 
+>> + * @populate: driver callback to populate an skb with the HW descriptor data
+>> + *
+>> + * Inline abstraction that does the following:
+>> + * 1) adds frame size and frag number (if needed) to the onstack stats;
+>> + * 2) fills the descriptor metadata to the onstack &libeth_xdp_buff
+>> + * 3) runs XDP program if present;
+>> + * 4) handles all possible verdicts;
+>> + * 5) on ``XDP_PASS`, builds an skb from the buffer;
+>> + * 6) populates it with the descriptor metadata;
+>> + * 7) passes it up the stack.
+
+[...]
+
+>> +void __cold libeth_xdp_tx_exception(struct libeth_xdp_tx_bulk *bq, u32 sent,
+>> +				    u32 flags)
+>> +{
+>> +	const struct libeth_xdp_tx_frame *pos = &bq->bulk[sent];
+>> +	u32 left = bq->count - sent;
+>> +
+>> +	if (!(flags & LIBETH_XDP_TX_NDO))
+>> +		libeth_trace_xdp_exception(bq->dev, bq->prog, XDP_TX);
+>> +
+>> +	if (!(flags & LIBETH_XDP_TX_DROP)) {
+>> +		memmove(bq->bulk, pos, left * sizeof(*bq->bulk));
+> 
+> can this overflow? if queue got stuck for some reason.
+
+memmove() is safe to call even when src == dst. As for XDP Tx logic, if
+the queue is stuck, the bulk will never overflow, libeth will just try
+send it again and again. At the end, both XDP Tx and xmit calls it with
+DROP to make sure no memleaks or other issues can take place.
+
+> 
+>> +		bq->count = left;
+>> +
+>> +		return;
+>> +	}
+>> +
+>> +	if (!(flags & LIBETH_XDP_TX_NDO))
+>> +		libeth_xdp_tx_return_bulk(pos, left);
+>> +	else
+>> +		libeth_xdp_xmit_return_bulk(pos, left, bq->dev);
+>> +
+>> +	bq->count = 0;
+>> +}
+>> +EXPORT_SYMBOL_GPL(libeth_xdp_tx_exception);
+
+Thanks,
+Olek
