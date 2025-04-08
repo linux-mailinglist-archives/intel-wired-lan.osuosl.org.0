@@ -1,239 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7D097A80CA7
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Apr 2025 15:42:38 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1261DA80CF3
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Apr 2025 15:53:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1DE1761136;
-	Tue,  8 Apr 2025 13:42:37 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 20A2D60BE5;
+	Tue,  8 Apr 2025 13:53:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mFohr_U0AT-e; Tue,  8 Apr 2025 13:42:36 +0000 (UTC)
+ id rjkLYksUCbTQ; Tue,  8 Apr 2025 13:53:45 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 39FC960771
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3321B608A0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744119756;
-	bh=ZX0NefFW77hjhxbxhO2Ag/q1gkamJKcaWwMR5CtUHGA=;
-	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=6Vrlhc2PJG2El/M4iLIyEnJDSdkcHrfBvETDqmODc2SW+/mehUV3mVPWwFRfFICWG
-	 ReVaPjoYW8EN+7eq+f43ZgPM/HVLbqTg2LWlKMP6YN6hitXebeNfNYz0VsrjkzoGb1
-	 vl9LdVhSd1kXWfNtNrTd0p5Hy8yRRNkeUlQepeO1LHrWM2fWOcvTLZ7GNUcEU+91qh
-	 zTKvIThMQxstPEYSBUZ2YAkkoInEUsNlCGFmmKtwugqsm6pGkbF+l3xjKJe9nJqEzi
-	 qmYEblRK1qOZOpruqQ0vYPj3lp6mXwFsy/U9TwJhH/aGWifg8xOzvmdAIFAzeuKqHT
-	 QOXF7O409fbiA==
+	s=default; t=1744120425;
+	bh=bG83gu3Y44itt8PJIbx7VKIcpmf1F/0hwdzXEtzV+sA=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=iq4/zOSbgfxg4fjdxBIW56NLyn3wHryjwMRXLc2Gh8L0bi2pGMq1Y8b7W+dsiSMYY
+	 SSugtiE1Pdztw3VXXMqA0ZucjYlbdiGNR/s0kCmzTtsi1icR34zxOsMwTMMQ3KRZOb
+	 ZIPaXCbHLAy5hIB3POxf2V7Ia4Abt8Kkd7Dssy/3RTlMZLUL/21tEAQu5guamTwXpi
+	 LVbQAYSuT/2L/SW8sIjKGVbXhvyjr/JHi7+ovX31PZMWYFZS6aG4wwGWgDOM5RHYtH
+	 SOJh4WcBHZZMjcUeTOwBkxZ2GX7XAYUCBitypLC8ZAiK2spMjDpiRrdRB4HzlJ6bDH
+	 L9jTuYDp3ngXA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 39FC960771;
-	Tue,  8 Apr 2025 13:42:36 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3321B608A0;
+	Tue,  8 Apr 2025 13:53:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id C1E9A1DE
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 13:42:34 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id DA6C4DA
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 13:53:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B3D8140A23
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 13:42:34 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id C07E2405D0
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 13:53:42 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sUSwGH0xA2fF for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Apr 2025 13:42:34 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.18;
- helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id nn6ZhXyZNxGJ for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  8 Apr 2025 13:53:42 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
+ helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 8E3C340A13
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8E3C340A13
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.18])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 8E3C340A13
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 13:42:33 +0000 (UTC)
-X-CSE-ConnectionGUID: U7wTuTVlSD+YWVYDESreOg==
-X-CSE-MsgGUID: L+rc4yRJQvK0aiahlTfEqw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="44801764"
-X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; d="scan'208";a="44801764"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2025 06:42:21 -0700
-X-CSE-ConnectionGUID: oGiML78LT6iSgdkMyxsCDQ==
-X-CSE-MsgGUID: 0pyPUjqVTgyXIsEgG2JAbw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org CDEA940507
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CDEA940507
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id CDEA940507
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 13:53:41 +0000 (UTC)
+X-CSE-ConnectionGUID: ZAAhVSgpRDuQQ6EPIoZ4pg==
+X-CSE-MsgGUID: WUnzVQkVTImsDYaW8ZxzTQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="45688320"
+X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; d="scan'208";a="45688320"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+ by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Apr 2025 06:53:41 -0700
+X-CSE-ConnectionGUID: ljPQh8IHTx6RKzXEqSY2HQ==
+X-CSE-MsgGUID: TVwXtcvzRaeSMZGj47v8TA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; d="scan'208";a="128786874"
-Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
- by fmviesa010.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2025 06:42:20 -0700
-Received: from orsmsx601.amr.corp.intel.com (10.22.229.14) by
- ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.2.1544.14; Tue, 8 Apr 2025 06:42:19 -0700
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.44 via Frontend Transport; Tue, 8 Apr 2025 06:42:19 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.177)
- by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Tue, 8 Apr 2025 06:42:19 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=aGeiVM4S3ql2NYEIKgpuWRBy3njBhM76KAkEZw7Atsypkfv+KZvEY3wdYYPWWLGm77Ds3FF8xxjQp7V/5N8mMSRbBbH9SmZZja90HoxYyF8joV1uNLzQRonNreBkP2Y6Ra8Wze3J+rzeFxf+AYk1USpHvr/yoqKvGO/WYtreGteYIvxHyq4yrQYPCmThvB39ipFKHIDkuPQsSoOrxpcYMmRXX1Gds7dUmZFuD4EPiRCQyhUnf0m/RhpB9kLuWbPYBJxjL0Vt9XTWcO/4P7NrlurgVvUzSPErp7TQVpAsOjKO0kSXMfuYcIgeWqvz2yS3wR362GhuP1x0xCEo3WiYLQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ZX0NefFW77hjhxbxhO2Ag/q1gkamJKcaWwMR5CtUHGA=;
- b=IzeqwDZ2ba0zAfhZsoc/yipRbKXmjzZNapvuRsv9Wbkf2y2GXxCCIO6tgt0pME9w3Y8sAwn32rWoGa+V8JQoXLEIwocTyeB2FqjTn+7vWX5Ff2hyybk/XRcG4i1zhr73q0sFC6vC1YMyPcrj97aB2pV80iFTjKqWtBoy55eKW27/GzZpoWz3MOqfbMKdfjM4TSknScsTP1Ir9LIVqO45fExzxuEeC9zHiystxNlMt+hfYSFt3ryeXeb0lD4wgUG6Vsnvm5aZqXFDaLYBu5GnHMWtx5lV+rPN2Fssg8c+cQidfF4KFRCa/sfGQ752+N2uxWwxlx9MqK7TMr7V3aVB4A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DS0PR11MB8718.namprd11.prod.outlook.com (2603:10b6:8:1b9::20)
- by IA1PR11MB6370.namprd11.prod.outlook.com (2603:10b6:208:3ae::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8606.34; Tue, 8 Apr
- 2025 13:42:14 +0000
-Received: from DS0PR11MB8718.namprd11.prod.outlook.com
- ([fe80::4b3b:9dbe:f68c:d808]) by DS0PR11MB8718.namprd11.prod.outlook.com
- ([fe80::4b3b:9dbe:f68c:d808%5]) with mapi id 15.20.8632.017; Tue, 8 Apr 2025
- 13:42:14 +0000
-Message-ID: <c5bb9cdd-c971-44ba-a1d6-dbe04792cd14@intel.com>
-Date: Tue, 8 Apr 2025 15:42:08 +0200
-User-Agent: Mozilla Thunderbird
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-CC: <intel-wired-lan@lists.osuosl.org>, Michal Kubiak
- <michal.kubiak@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, "Przemek
- Kitszel" <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "Alexei
- Starovoitov" <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
- "Jesper Dangaard Brouer" <hawk@kernel.org>, John Fastabend
- <john.fastabend@gmail.com>, Simon Horman <horms@kernel.org>,
- <bpf@vger.kernel.org>, <netdev@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>
-References: <20250305162132.1106080-1-aleksander.lobakin@intel.com>
- <20250305162132.1106080-12-aleksander.lobakin@intel.com>
- <Z8r0MagKeUNHwfQk@boxer> <a49604cf-0181-4e91-920d-206a799f67f2@intel.com>
- <Z9rw8ZuoIhuT/dBb@boxer>
-From: Alexander Lobakin <aleksander.lobakin@intel.com>
-Content-Language: en-US
-In-Reply-To: <Z9rw8ZuoIhuT/dBb@boxer>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: VE1PR08CA0004.eurprd08.prod.outlook.com
- (2603:10a6:803:104::17) To DS0PR11MB8718.namprd11.prod.outlook.com
- (2603:10b6:8:1b9::20)
+X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; d="scan'208";a="128796695"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by orviesa007.jf.intel.com with ESMTP; 08 Apr 2025 06:53:37 -0700
+Received: from vecna.igk.intel.com (vecna.igk.intel.com [10.123.220.17])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 958BA3432C;
+ Tue,  8 Apr 2025 14:53:35 +0100 (IST)
+From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+To: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>
+Date: Tue,  8 Apr 2025 15:46:55 +0200
+Message-Id: <20250408134655.4287-1-przemyslaw.kitszel@intel.com>
+X-Mailer: git-send-email 2.39.3
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS0PR11MB8718:EE_|IA1PR11MB6370:EE_
-X-MS-Office365-Filtering-Correlation-Id: deeb0825-b376-405d-bf0d-08dd76a32bd0
-X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|366016|1800799024;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?MnFwMlVQVkZ0WmJXTmJnMTJLT0dBVWlTUVZkc3AwTXIwUzZaUSsrQ0M1UzVv?=
- =?utf-8?B?bFFmQXZVOXZIZVNOY1JmUjBkZi9qejVsM1c2T3lkdThUa3l0cmJ3WFJwcGNi?=
- =?utf-8?B?WXJ5eW93ejJXWDBKOW9FK1FsSFBSOTVkRG5kb1UrN1RlbU1qU1dBTmJ4eUpZ?=
- =?utf-8?B?N1huejg5cC91S0NDNW9JeGlRRGo2c0pEKzB1ZitKbTdvZTRYcVl1UFlzYXJE?=
- =?utf-8?B?RkZoSVlBTTRDamJxZGJhd1dyYmw2Z2Z4eXhxdk83aXVQZWlJMERLWFpsR1pF?=
- =?utf-8?B?RWxpZFdkUndwQVRlb1RYSFFBdWcxZnZEZ2RkUDFmTHFvL1NFQzlLenQ4ZHdM?=
- =?utf-8?B?SzQ2YVpRbEdLdlRndjRiTk84ZW5uWHg3ckxIek1pcXdlL0hwaGdxMXh4SW02?=
- =?utf-8?B?bC9OQ09vQ3hwQkFRenFWUzRKZjVSbUltSys3SlR2YWM2VU14RFVtbXB4UG9Y?=
- =?utf-8?B?T3ppTUR0Nis0SnNqSXM5aTdML0w2ZXhwRXJGa0FJLzh0WmY2czd0ZkNVZ3Mv?=
- =?utf-8?B?TVBwc2ZzVytadXZqQ2Zxd2hTUHFVTkx1QVZZN2FqSC8xUXlnZXNXWWpYTHR6?=
- =?utf-8?B?eExYUi83MGVia0tvcU5vRFVrMENQQ2dhZnNBWWZ4K1Q1UWJDV1h5Z3RDVWlF?=
- =?utf-8?B?WHdkUFAwbkQxZUNFWlRRVlJsdVA5Q1dPRW9jYWxuK2lYY2ZlaHRQU2xNZ0xZ?=
- =?utf-8?B?NkxHNC9xL001eEdtWFNEVnN0bnB5eHdHME0xTi80KzlQTUhkS0J5bXdYS29y?=
- =?utf-8?B?L3NQVjI2dkxjaGV4dnhWaVZEeUpKT2FvbWhqMmtCNHFnK2pmekZUS3lieW1G?=
- =?utf-8?B?SEVRaHVLVGlCVmRrcTFRVVNQaktnNFl4UWVvV3RYc1Rub1hKSEJqdTB5ak8w?=
- =?utf-8?B?WjlacVl4YWwzakIxNzVXaEJPOTJFSDV4MG00K0hOWjcwTjN5YUppcml5UFdX?=
- =?utf-8?B?VkRkRk1wWE1KLzdONHd2VW1uM1RyYUNKUXV6MDJoNmRTOWFKdGJvLzZXTS9x?=
- =?utf-8?B?SjNCMmlIaGNHSGdKbm4zYjF1UTUvMW9OTGpLSG1LNmtaVkZwQytNNHRMYTF4?=
- =?utf-8?B?TzhabW5iV2g1M1RTbDdDRHdGR0VJcmduNVp4eVRsY1BDMzdISDNIVVE4NXZi?=
- =?utf-8?B?V0tsYWhRaVhkVzFZSnFwTXNHYkNxSCs3K0NUUnEweDJZZGZBbHFOdmNHUHMw?=
- =?utf-8?B?Z0RSU2hGOGtlOFFkUzRIMnZYQ2VNaC95ZFJ2dzFUTnd2Q2pnZE1OeXNUVm9L?=
- =?utf-8?B?dUhNY0dFeUNhejdPM2wyQ1ZSczRDVzBVc29hVHJnbTFFL0hsYzJ3eGlaendI?=
- =?utf-8?B?SUJiS1JvQlo4V0VraTFMUXRWcWxHUFBMbDhHZjRCekQxSHZVbmlmRFRsallt?=
- =?utf-8?B?OGhtUEp2c05qZ2lwOUVmcU5wdWs4NmlVcXlaUGtLRmV4WnRoMG1veXNpcnZ1?=
- =?utf-8?B?eXM2eFZFYTA0V2J1S2dZVUNqL245QWlhOXJiSzczR1NTeXk3elFKZHBFQnpU?=
- =?utf-8?B?RXhLclI0dStLSEp3T09HODdmVkJ3MWVORm5HUlRSV29HSDZUVWREcEFkUjNM?=
- =?utf-8?B?NHRwZTZKOHNBWncwckYxdGtDZDd2RnU3NE4rNGg3MlIrNmNkZG1JQVkxUDdW?=
- =?utf-8?B?enVzWTNXb0NWdTRHZTBuQnhGcEdTRXBnM2M5L09UYTYwUHY5aEI2ZjZnMDZN?=
- =?utf-8?B?Nk9lWlZLK3phTC9TN2lUYWdXV0I5RWp4WWFNQmlPM3pjY283Y0lzT2JXWXpB?=
- =?utf-8?B?V3c5ditLbzhpVHBtVGRCaEtiRVhSN1lmaHZsVTU0eFhXYWRPeFowaWd6eWZZ?=
- =?utf-8?B?bUpYWGdzZFNYMUFWN3JRQm43dGZqUHl0aUsrYkxoYVdFSTk5YkRzT09GVG5K?=
- =?utf-8?B?L09GTEtSWnVtREJ2V0tWOHNQbVpGTXhxZHB2L1F2cVZiUkE9PQ==?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS0PR11MB8718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(7416014)(366016)(1800799024); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?blhoU3VUZnY2REc0QW1QNFR5bzJJR2ZGKzFSSlA5TWtFWXBPa0F4S1RYeGM5?=
- =?utf-8?B?bmk4eTF2RkRmNlNOeDFBTGp4VmwrdWVHV2Z1SnpQMFJhaHE4WHBTN2xuTTZI?=
- =?utf-8?B?ejVORmJtakFaS0d1THpSK3V3Wmd5YTdwdkh5MU1kdXk2TTNKSVMyNU5XVzcy?=
- =?utf-8?B?Z1pyck1KQzBDQlZlOTZQdlhpNXdPSEUwQ2gxdU50aS9HaTBPaFZqaHErT0Zp?=
- =?utf-8?B?cnlMT1E1blB0UGhWMlVxcFVxcjlhMFJjM1Nva3owRjdhcitPS0EyV3dMMGxP?=
- =?utf-8?B?SFYycis5b0ZTL3JqeWttQXQ4SERVbS8wV2lhc3hHMHZ4Z0JTUzBrbnErMHpu?=
- =?utf-8?B?Q1pQRWlBNkthNHlxWDE2TnRzQmd2S2Voc3FESi9WVEV1M0hlTXVrNFhHRWxT?=
- =?utf-8?B?QWtkSm1iU2tSMVFnZ1RYdHo3L1dkbnkyUFJVK1RpYkRHVHhZRG5LTk12Qks3?=
- =?utf-8?B?L0pZMDNqdkJwM2NiWVU2RE9sNGZ0Z2lOZWRJbTNnb1R5TW5PSUNxN2xIakpT?=
- =?utf-8?B?ay84dFVQWUlIaGE1cnJ1WWpzcGphelVja2xSSGdjTjIwdU5Gb2N6VWxKRy9n?=
- =?utf-8?B?cHRTQjV0YzVreHMvSG1qSnc3L0hBNEVlZk04Y3E3akRYWWs1aHAwSEhScE1M?=
- =?utf-8?B?QmJxVkVUOEZvdDNMMHVLdmZUVUI2em1SNnNvb1Q4YWxZOGdOVC9QY1hNaWdw?=
- =?utf-8?B?Ymh0bWNrNVhVT3JPckhuUjFsOHNHYmpwUEpzWUo5WGplRCsvQ3J2eWswT1Z3?=
- =?utf-8?B?U0wvNlpDNnNOM2JHemF1Y1NoMkR6TDhxU2kvMUM1N3RQclhZZkVNUFl3c1ZL?=
- =?utf-8?B?bHVsZVJVeC82RkFFekVDK2V5MzFmR3owZktsaytVODRlL1hJSW1MMm81NkVs?=
- =?utf-8?B?S0pxZDg4aDZTQlU2UDl5WmRwTVNwbW1BYzdNcUpCTytkTEJ0Z3gvL1R3WHY4?=
- =?utf-8?B?YkhvSGh1V2hxWnNIdFNUbDZhcURBUWkwLzBtTEtGRVZZdWJPL1FIeU9vcFZC?=
- =?utf-8?B?U0lZbGF0NFBXdnNZUURJUnpZVDV3WlNVYldldGJGeGJVSGtnaXRJZnk0VmhH?=
- =?utf-8?B?M1ZDcWd0UEdYMEpNZUpUUk1DR3FHSXR6UDlPeXB3eDJHb3ZRSzhnamgrVzhq?=
- =?utf-8?B?UGhYNXhZZEU0RFNhWU5aSXg2bTR6aVN6TlQzUkJIVE12bERZclFLQ1hvWkMy?=
- =?utf-8?B?dDAxamt4V3ZqVlU5RXEzQUdpMFNjUWkwaVlBRmhRamM2b05KZzBMY3hmaGdr?=
- =?utf-8?B?Q2tnSHQwdnhTUEk5cTdTTFNwb0RMaGVFRTBsZTVTK3J1NG1JaFZrRXQyRkI3?=
- =?utf-8?B?VlFXRWluWTNleEpKREdmMHhVTG9lMUJ0dTB3amRNVHpWY3N3ZEZmZjJLa0c3?=
- =?utf-8?B?MFUra3c1eDlkcjByY0lianJYZjVKTExKWkdrZG9wZVg1QkVxZXhFN085eHRx?=
- =?utf-8?B?dlYwYllHNjZ2R214ZVNaSldhcVJaMUxFMHVPTTdoSjdaakdPV0F4Z1VOY3Zz?=
- =?utf-8?B?ZEMwZWlSZFZFVUZTaEIrU1FuYWx0QjYxanFiQnFLamRJR3Nkcll6VmVuN3hE?=
- =?utf-8?B?MWpFNXY0VGh5Sy9IVTZ6QmhFUWpZSXBtdFhkdkFyczdldnVTbHZIYXFZQ2to?=
- =?utf-8?B?ZE9ZK2tDQUtoYUNjNmJEVnNWVGJmL2hCYURvd2I3UG1qbTNjdVBCVGZRYjZF?=
- =?utf-8?B?QmVCblBGay9pQlBFMDE2MFpaOWxHRW5DR0wxVDh6aUIwbUI5TndLMmpHTnJO?=
- =?utf-8?B?SkVpT0pyUnI3cUZYaVhZd2VLN2xLeGhtOUFMSjlXQVBVblpqbFNicjFpVzND?=
- =?utf-8?B?OEhOUThKdzNiL1BEOVExVjEyNExpZWJwOThHNlJzUFR2cE1uNGJpRnNsT1BN?=
- =?utf-8?B?aW5FQjJidEhDS3NueWl1aDJNTXNDVkQ0cnJKZ09EOUtpcjd4bXl4VGtXdFoz?=
- =?utf-8?B?Vi9oRlhlciszd3RQZUx4cnF1SzNZZ2lnR2NzNEFtdTNaWWtHbU9EQUU3VmNv?=
- =?utf-8?B?blVOYzh0Y1RqNmVwWEJ1L3pLQlhLc0xEYmJLRDBBNmZ6THlVdmNlTkM2eFBO?=
- =?utf-8?B?c29ST0VidTRXem80dTVDTGRldkw5Ti9udzJZdit3aHlEUVdDUWhpRTJoNW80?=
- =?utf-8?B?TVhwelh6V0NXak1IZElMZVlvalNvQmpmdU82N2VjRE1Kalpjc254MmY0RWJt?=
- =?utf-8?B?b1E9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: deeb0825-b376-405d-bf0d-08dd76a32bd0
-X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB8718.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Apr 2025 13:42:14.6688 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: +SJPiWEGOKsu7DQAD9niCGY+lqwvLDl27t6aG36GHHT4HBI460q6pSOnWAYIkdnwywsUEDwohIwoUDwGy2/s1s4NIj1AtfYzRzicK/a8J5g=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR11MB6370
-X-OriginatorOrg: intel.com
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1744119754; x=1775655754;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=YjwECXWOXq3JIT+jJW6H5sytBeHZ9ZlkZvgR7mQU4Dc=;
- b=QBePSFlUrF5aKowE6v/s4XYj2T/Tn1J/oDGrlmNgdW+QmRHTR3nBPjm0
- fxySQG7hXwsPCng6tnb0uygB0G3jum5VsNCIUCCFUPifOiZAgLxoGF8tr
- allpv0ofyXgEQJoKE9jR1NTVRET843+SiD8bL1KvgCGX5xTZQsfIEa/hc
- HO5UAsZkphVFvP6B5Sd30gKOoaLDjEtBwN6RW1/+/r9vwBCRdlyaDzmWR
- ERxYYnbpRctN6KJYojRJfNyngSqnvnhcazBVgnBu4gY76/SjsYptfGP10
- mN6faKYSBeYUVpMUgvT1qN085Vx8HDPcwbdkqDKi9ob6OnIoAUkkavLvv
- A==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1744120422; x=1775656422;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=9kJQEmwg7BwiR45UOUurChqkBrRv10mRNt4JqfqNZyI=;
+ b=UAKNwVwgWEzoetzJ55krm3llIpSkBTRcC8mOXcCQdJDABZj0RSEBWSWX
+ 26GenPJpo2MLca+eLKq+oG/ceoZQRhDz2kvXjUs9+MmOwt3RVwLupxxwM
+ tY2JbgmP6p6D05VZeJp1cwXm33QZhaI7Yk1gTlYyFRWqVkOvrHs7bel8m
+ cO0iAS6JNLlOzqMghBdTVqgq0iq8Aj1PFSv21YiM5m2gac9Yap2edyjsq
+ IF/fLw+UHmtbnS05Eg+KhOs5o2MzKzyv4oGy47Z7lvbIANesHb9l33aq2
+ wHaQ8ulhbjIi/a/lNZj4sY7wY9XlCzWm4bbr8NRtMclZFP27MGfexbLvT
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=QBePSFlU
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next 11/16] idpf: prepare
- structures to support XDP
+ header.a=rsa-sha256 header.s=Intel header.b=UAKNwVwg
+Subject: [Intel-wired-lan] [PATCH iwl-net v3] ice: use DSN instead of PCI
+ BDF for ice_adapter index
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -246,143 +104,177 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Jiri Pirko <jiri@resnulli.us>,
+ Sergey Temerkhanov <sergey.temerkhanov@intel.com>, netdev@vger.kernel.org,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Karol Kolacinski <karol.kolacinski@intel.com>,
+ Michal Kubiak <michal.kubiak@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Jacob Keller <jacob.e.keller@intel.com>, Jakub Kicinski <kuba@kernel.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Date: Wed, 19 Mar 2025 17:29:37 +0100
+Use Device Serial Number instead of PCI bus/device/function for
+index of struct ice_adapter.
+Functions on the same physical device should point to the very same
+ice_adapter instance.
 
-> On Mon, Mar 17, 2025 at 03:50:11PM +0100, Alexander Lobakin wrote:
->> From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
->> Date: Fri, 7 Mar 2025 14:27:13 +0100
->>
->>> On Wed, Mar 05, 2025 at 05:21:27PM +0100, Alexander Lobakin wrote:
->>>> From: Michal Kubiak <michal.kubiak@intel.com>
->>>>
->>>> Extend basic structures of the driver (e.g. 'idpf_vport', 'idpf_*_queue',
->>>> 'idpf_vport_user_config_data') by adding members necessary to support XDP.
->>>> Add extra XDP Tx queues needed to support XDP_TX and XDP_REDIRECT actions
->>>> without interfering with regular Tx traffic.
->>>> Also add functions dedicated to support XDP initialization for Rx and
->>>> Tx queues and call those functions from the existing algorithms of
->>>> queues configuration.
->>
->> [...]
->>
->>>> diff --git a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
->>>> index 59b1a1a09996..1ca322bfe92f 100644
->>>> --- a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
->>>> +++ b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
->>>> @@ -186,9 +186,11 @@ static void idpf_get_channels(struct net_device *netdev,
->>>>  {
->>>>  	struct idpf_netdev_priv *np = netdev_priv(netdev);
->>>>  	struct idpf_vport_config *vport_config;
->>>> +	const struct idpf_vport *vport;
->>>>  	u16 num_txq, num_rxq;
->>>>  	u16 combined;
->>>>  
->>>> +	vport = idpf_netdev_to_vport(netdev);
->>>>  	vport_config = np->adapter->vport_config[np->vport_idx];
->>>>  
->>>>  	num_txq = vport_config->user_config.num_req_tx_qs;
->>>> @@ -202,8 +204,8 @@ static void idpf_get_channels(struct net_device *netdev,
->>>>  	ch->max_rx = vport_config->max_q.max_rxq;
->>>>  	ch->max_tx = vport_config->max_q.max_txq;
->>>>  
->>>> -	ch->max_other = IDPF_MAX_MBXQ;
->>>> -	ch->other_count = IDPF_MAX_MBXQ;
->>>> +	ch->max_other = IDPF_MAX_MBXQ + vport->num_xdp_txq;
->>>> +	ch->other_count = IDPF_MAX_MBXQ + vport->num_xdp_txq;
->>>
->>> That's new I think. Do you explain somewhere that other `other` will carry
->>> xdpq count? Otherwise how would I know to interpret this value?
->>
->> Where? :D
-> 
-> I meant to say something in commit message how new output should be
-> interpreted?
-> 
->>
->>>
->>> Also from what I see num_txq carries (txq + xdpq) count. How is that
->>> affecting the `combined` from ethtool_channels?
->>
->> No changes in combined/Ethtool, num_txq is not used there. Stuff like
->> req_txq_num includes skb queues only.
->>
->>>
->>>>  
->>>>  	ch->combined_count = combined;
->>>>  	ch->rx_count = num_rxq - combined;
->>>> diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
->>>> index 2594ca38e8ca..0f4edc9cd1ad 100644
->>>
->>> (...)
->>>
->>>> +
->>>> +/**
->>>> + * __idpf_xdp_rxq_info_init - Setup XDP RxQ info for a given Rx queue
->>>> + * @rxq: Rx queue for which the resources are setup
->>>> + * @arg: flag indicating if the HW works in split queue mode
->>>> + *
->>>> + * Return: 0 on success, negative on failure.
->>>> + */
->>>> +static int __idpf_xdp_rxq_info_init(struct idpf_rx_queue *rxq, void *arg)
->>>> +{
->>>> +	const struct idpf_vport *vport = rxq->q_vector->vport;
->>>> +	bool split = idpf_is_queue_model_split(vport->rxq_model);
->>>> +	const struct page_pool *pp;
->>>> +	int err;
->>>> +
->>>> +	err = __xdp_rxq_info_reg(&rxq->xdp_rxq, vport->netdev, rxq->idx,
->>>> +				 rxq->q_vector->napi.napi_id,
->>>> +				 rxq->rx_buf_size);
->>>> +	if (err)
->>>> +		return err;
->>>> +
->>>> +	pp = split ? rxq->bufq_sets[0].bufq.pp : rxq->pp;
->>>> +	xdp_rxq_info_attach_page_pool(&rxq->xdp_rxq, pp);
->>>> +
->>>> +	if (!split)
->>>> +		return 0;
->>>
->>> why do you care about splitq model if on next patch you don't allow
->>> XDP_SETUP_PROG for that?
->>
->> This function is called unconditionally for both queue models. If we
->> don't account it here, we'd break regular traffic flow.
->>
->> (singleq will be removed soon, don't take it seriously anyway)
-> 
-> ack, thanks
-> 
->>
->> [...]
->>
->>>> +int idpf_vport_xdpq_get(const struct idpf_vport *vport)
->>>> +{
->>>> +	struct libeth_xdpsq_timer **timers __free(kvfree) = NULL;
->>>
->>> please bear with me here - so this array will exist as long as there is a
->>> single timers[i] allocated? even though it's a local var?
->>
->> No problem.
->>
->> No, this array will be freed when the function exits. This array is an
->> array of pointers to iterate in a loop and assign timers to queues. When
->> we exit this function, it's no longer needed.
->> I can't place the whole array on the stack since I don't know the actual
->> queue count + it can be really big (1024 pointers * 8 = 8 Kb, even 128
->> or 256 queues is already 1-2 Kb).
-> 
-> so this array is needed to ease the error path handling?
+This is not only simplification, but also fixes things up when PF
+is passed to VM (and thus has a random BDF).
 
-It's needed to store pointers to the actual timers which are allocated
-one by one to assign them to the queues in a loop later.
+Suggested-by: Jacob Keller <jacob.e.keller@intel.com>
+Suggested-by: Jakub Kicinski <kuba@kernel.org>
+Suggested-by: Jiri Pirko <jiri@resnulli.us>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+---
+CC: Karol Kolacinski <karol.kolacinski@intel.com>
+CC: Grzegorz Nitka <grzegorz.nitka@intel.com>
+CC: Michal Schmidt <mschmidt@redhat.com>
+CC: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
+CC: Michal Kubiak <michal.kubiak@intel.com>
 
-> 
->>
->> The actual timers are allocated separately and NUMA-locally below.
+v3:
+ - Add fixes tag (Michal K)
+ - add missing braces (lkp bot), turns out it's hard to purge C++ from your mind
+ - (no changes in the collision handling on 32bit systems)
 
-Thanks,
-Olek
+v2:
+https://lore.kernel.org/intel-wired-lan/20250407112005.85468-1-przemyslaw.kitszel@intel.com/
+ - target to -net (Jiri)
+ - mix both halves of u64 DSN on 32bit systems (Jiri)
+ - (no changes in terms of fallbacks for pre-prod HW)
+ - warn when there is DSN collision after reducing to 32bit
+
+v1:
+https://lore.kernel.org/netdev/20250306211159.3697-2-przemyslaw.kitszel@intel.com
+---
+ drivers/net/ethernet/intel/ice/ice_adapter.h |  6 ++-
+ drivers/net/ethernet/intel/ice/ice_adapter.c | 43 ++++++++------------
+ 2 files changed, 20 insertions(+), 29 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_adapter.h b/drivers/net/ethernet/intel/ice/ice_adapter.h
+index e233225848b3..ac15c0d2bc1a 100644
+--- a/drivers/net/ethernet/intel/ice/ice_adapter.h
++++ b/drivers/net/ethernet/intel/ice/ice_adapter.h
+@@ -32,17 +32,19 @@ struct ice_port_list {
+  * @refcount: Reference count. struct ice_pf objects hold the references.
+  * @ctrl_pf: Control PF of the adapter
+  * @ports: Ports list
++ * @device_serial_number: DSN cached for collision detection on 32bit systems
+  */
+ struct ice_adapter {
+ 	refcount_t refcount;
+ 	/* For access to the GLTSYN_TIME register */
+ 	spinlock_t ptp_gltsyn_time_lock;
+ 
+ 	struct ice_pf *ctrl_pf;
+ 	struct ice_port_list ports;
++	u64 device_serial_number;
+ };
+ 
+-struct ice_adapter *ice_adapter_get(const struct pci_dev *pdev);
+-void ice_adapter_put(const struct pci_dev *pdev);
++struct ice_adapter *ice_adapter_get(struct pci_dev *pdev);
++void ice_adapter_put(struct pci_dev *pdev);
+ 
+ #endif /* _ICE_ADAPTER_H */
+diff --git a/drivers/net/ethernet/intel/ice/ice_adapter.c b/drivers/net/ethernet/intel/ice/ice_adapter.c
+index 01a08cfd0090..95a1ba04e610 100644
+--- a/drivers/net/ethernet/intel/ice/ice_adapter.c
++++ b/drivers/net/ethernet/intel/ice/ice_adapter.c
+@@ -1,7 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0-only
+ // SPDX-FileCopyrightText: Copyright Red Hat
+ 
+-#include <linux/bitfield.h>
+ #include <linux/cleanup.h>
+ #include <linux/mutex.h>
+ #include <linux/pci.h>
+@@ -14,29 +13,13 @@
+ static DEFINE_XARRAY(ice_adapters);
+ static DEFINE_MUTEX(ice_adapters_mutex);
+ 
+-/* PCI bus number is 8 bits. Slot is 5 bits. Domain can have the rest. */
+-#define INDEX_FIELD_DOMAIN GENMASK(BITS_PER_LONG - 1, 13)
+-#define INDEX_FIELD_DEV    GENMASK(31, 16)
+-#define INDEX_FIELD_BUS    GENMASK(12, 5)
+-#define INDEX_FIELD_SLOT   GENMASK(4, 0)
+-
+-static unsigned long ice_adapter_index(const struct pci_dev *pdev)
++static unsigned long ice_adapter_index(u64 dsn)
+ {
+-	unsigned int domain = pci_domain_nr(pdev->bus);
+-
+-	WARN_ON(domain > FIELD_MAX(INDEX_FIELD_DOMAIN));
+-
+-	switch (pdev->device) {
+-	case ICE_DEV_ID_E825C_BACKPLANE:
+-	case ICE_DEV_ID_E825C_QSFP:
+-	case ICE_DEV_ID_E825C_SFP:
+-	case ICE_DEV_ID_E825C_SGMII:
+-		return FIELD_PREP(INDEX_FIELD_DEV, pdev->device);
+-	default:
+-		return FIELD_PREP(INDEX_FIELD_DOMAIN, domain) |
+-		       FIELD_PREP(INDEX_FIELD_BUS,    pdev->bus->number) |
+-		       FIELD_PREP(INDEX_FIELD_SLOT,   PCI_SLOT(pdev->devfn));
+-	}
++#if BITS_PER_LONG == 64
++	return dsn;
++#else
++	return (u32)dsn ^ (u32)(dsn >> 32);
++#endif
+ }
+ 
+ static struct ice_adapter *ice_adapter_new(void)
+@@ -77,25 +60,29 @@ static void ice_adapter_free(struct ice_adapter *adapter)
+  * Return:  Pointer to ice_adapter on success.
+  *          ERR_PTR() on error. -ENOMEM is the only possible error.
+  */
+-struct ice_adapter *ice_adapter_get(const struct pci_dev *pdev)
++struct ice_adapter *ice_adapter_get(struct pci_dev *pdev)
+ {
+-	unsigned long index = ice_adapter_index(pdev);
++	u64 dsn = pci_get_dsn(pdev);
+ 	struct ice_adapter *adapter;
++	unsigned long index;
+ 	int err;
+ 
++	index = ice_adapter_index(dsn);
+ 	scoped_guard(mutex, &ice_adapters_mutex) {
+ 		err = xa_insert(&ice_adapters, index, NULL, GFP_KERNEL);
+ 		if (err == -EBUSY) {
+ 			adapter = xa_load(&ice_adapters, index);
+ 			refcount_inc(&adapter->refcount);
++			WARN_ON_ONCE(adapter->device_serial_number != dsn);
+ 			return adapter;
+ 		}
+ 		if (err)
+ 			return ERR_PTR(err);
+ 
+ 		adapter = ice_adapter_new();
+ 		if (!adapter)
+ 			return ERR_PTR(-ENOMEM);
++		adapter->device_serial_number = dsn;
+ 		xa_store(&ice_adapters, index, adapter, GFP_KERNEL);
+ 	}
+ 	return adapter;
+@@ -110,11 +97,13 @@ struct ice_adapter *ice_adapter_get(const struct pci_dev *pdev)
+  *
+  * Context: Process, may sleep.
+  */
+-void ice_adapter_put(const struct pci_dev *pdev)
++void ice_adapter_put(struct pci_dev *pdev)
+ {
+-	unsigned long index = ice_adapter_index(pdev);
++	u64 dsn = pci_get_dsn(pdev);
+ 	struct ice_adapter *adapter;
++	unsigned long index;
+ 
++	index = ice_adapter_index(dsn);
+ 	scoped_guard(mutex, &ice_adapters_mutex) {
+ 		adapter = xa_load(&ice_adapters, index);
+ 		if (WARN_ON(!adapter))
+-- 
+2.39.3
+
