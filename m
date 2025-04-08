@@ -1,118 +1,230 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 57EE0A81739
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Apr 2025 22:55:39 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CFF9D40D91;
-	Tue,  8 Apr 2025 20:55:34 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id eH6b84g9Z5lv; Tue,  8 Apr 2025 20:55:33 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BAE3640865
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744145733;
-	bh=qEhmLaCHPWXR8XU43ZWID5PlHiWld5ArOg948xrRXdE=;
-	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=snT9quuMbJF9nxCMfRZCzbICT0gDAyby0MFNrE1+RKcuNWnbfL8WRBdZownu7W51/
-	 /MXAUefajtDiucjsOPo9x2hZh24hUf+DFEvqGLfZMCY5LymjbwEO86DM1fwGkxhCId
-	 N9S6nGaZNbHIibrwJ+YYzD13phajYB2nAyB64f3VKuygg0lyVGWt+ITJIiGPmgq5pA
-	 iUMx+2pOZgohuLfruge+c5N+kSzXlHfbr5dzD2gDZfZz0O+KXLJXhTG3ahfmll0L4M
-	 pRsb8DYHk3puWW+IUh/+EphA2F1kxCdo/SoQwk1mA2dVHKxyydTGpmSnlympZmgmA7
-	 Ym8HgLgU65FZQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BAE3640865;
-	Tue,  8 Apr 2025 20:55:33 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 24AFDD6
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 20:55:31 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 50830A81756
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Apr 2025 23:01:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3E76B8284B
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 20:55:30 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DB34B8206C;
+	Tue,  8 Apr 2025 21:01:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 38lgpLEBIrjO for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Apr 2025 20:55:29 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
+ id vqsLfycpXZ_F; Tue,  8 Apr 2025 21:01:14 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 42EF680DED
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1744146074;
+	bh=h1s3kKpYz/R0fvLa2HcF7Fk0oVf2wUzVcekcUZTmOQg=;
+	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=Sv/eFA3TpZZgRdxjtIWgijn1wJohopaa+sCKFSLlFHe3gu7dqtsL3XlhiCiskYaUc
+	 CtWCGQHUGvfps9JsJf0IoGeVDOH1ftRDWurqvYqVoVP5IpDnGfvDNUw4UcCapDfa3T
+	 RUQHuJx2PLkImGxnQbUEEKZrGOBx4spWNWrNgVUrZG6TFf2lHIzy1tCxmGGZKq4CiX
+	 9c7QjnS2ABchAOu0v4zynZGKDuITjN7T3czv1vAmaY86Xpz4Sx1jIjPtpDeRrjdF7f
+	 LAbXSpPkPVBmUfr0QQzm5n/kMQ0SGUvIQ2OeWncLEn8Ov4VY292tQFaPRb3uQB2tHF
+	 GTWFsSv2ct0vw==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 42EF680DED;
+	Tue,  8 Apr 2025 21:01:14 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id C30E51F1
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 21:01:12 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id BF605611C2
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 21:01:12 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id rtHH3cvkWGwA for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  8 Apr 2025 21:01:12 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
  helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 2EB1D8213C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2EB1D8213C
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 2EB1D8213C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 20:55:29 +0000 (UTC)
-X-CSE-ConnectionGUID: H3dSoL24ShWvHpCOKlZDEQ==
-X-CSE-MsgGUID: WNJ6o7FQSDmfYKKYbFmLRw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="56970744"
-X-IronPort-AV: E=Sophos;i="6.15,199,1739865600"; d="scan'208";a="56970744"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
- by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2025 13:55:29 -0700
-X-CSE-ConnectionGUID: 55TU8aK8TNKRlis1LpGcZw==
-X-CSE-MsgGUID: vkZt3/47TFSxR10ayAfYUw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1192561180
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1192561180
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1192561180
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Apr 2025 21:01:11 +0000 (UTC)
+X-CSE-ConnectionGUID: 2BJTmM0YRpiXXfdRTBmcWA==
+X-CSE-MsgGUID: /sBvrQzIRvGytXgLDTJJ3g==
+X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="49443734"
+X-IronPort-AV: E=Sophos;i="6.15,199,1739865600"; d="scan'208";a="49443734"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+ by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Apr 2025 14:01:11 -0700
+X-CSE-ConnectionGUID: Kv3HCnV4RVy4C4WEzhfXWw==
+X-CSE-MsgGUID: pymwPG0+Rtue9unBTgtmcw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,199,1739865600"; d="scan'208";a="151563683"
-Received: from jekeller-desk.jf.intel.com ([10.166.241.15])
- by fmviesa002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2025 13:55:28 -0700
+X-IronPort-AV: E=Sophos;i="6.15,199,1739865600"; d="scan'208";a="133590404"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by orviesa005.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 08 Apr 2025 14:01:11 -0700
+Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.44; Tue, 8 Apr 2025 14:01:11 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14 via Frontend Transport; Tue, 8 Apr 2025 14:01:11 -0700
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.168)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.44; Tue, 8 Apr 2025 14:01:08 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=iwHgkOmZsK/i9XnsnsJ/11Bq3i7aPv8P8GnodcDJ17aFRlkprTOP7sw36SUmDqR+kQ5OWbF67O7WyGK/4NxQDbYl57dXdubPZzE3Jaa14wvZotli3CFL/cSNCaSap+ZaIo/Ji84Pgl4HcHabyVh+2cnKCIXzF50TdKD2KnsWvg4AiWJGmI3l2b3sTAbXGpKcpJqPiCZTHMiSTiF4zQ/f1xRSJV0pnI6fjsfnkq3IGb9Uw7IY8iv0r3kBZtC5GsORRVN5EgNyURqdcylGgkUTtTOzP5iNVCnWwxBdRFO0oi37COne+zvJ/hfwQPN3NJbyYxYYZkeQbJO0TN9ub7T81w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=h1s3kKpYz/R0fvLa2HcF7Fk0oVf2wUzVcekcUZTmOQg=;
+ b=uL4Xj/2p/hGvpZJ+XG/SxsTLuhurgsDF+X9pE93+cJ0CyPrF7lSR7gI92DOdhlmB5mRA6fb79TDG4uld0BRbVle1PnJRqtjjgGQMUldkdEKAAPiCRTy51auLRnAJHBJyki8X4xkjQM9OUIUucJw8Ui2iqO+GUV2W14+Pm69PXQKTWOEvqkTg4rVGq8nOX7Y1tXPCZ23v/0KZzu0ppTc+r4hJGtfwV4vfJcknFvFizzUJmsOau/5+MraPB0+CcVeN0fEjXSNPAp/WGeYP8WzicYgb9b/fL2a5hXo69qC/DWzIqUBzduKBXTgfzz4PBLz/8CLqbvRjxFl3bTIf36NBkQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
+ by DS0PR11MB7801.namprd11.prod.outlook.com (2603:10b6:8:f2::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8606.36; Tue, 8 Apr
+ 2025 21:01:05 +0000
+Received: from CO1PR11MB5089.namprd11.prod.outlook.com
+ ([fe80::7de8:e1b1:a3b:b8a8]) by CO1PR11MB5089.namprd11.prod.outlook.com
+ ([fe80::7de8:e1b1:a3b:b8a8%4]) with mapi id 15.20.8632.017; Tue, 8 Apr 2025
+ 21:01:05 +0000
+Message-ID: <aad6e2d2-b1a1-4f01-ab48-55363dd261d1@intel.com>
+Date: Tue, 8 Apr 2025 14:01:04 -0700
+User-Agent: Mozilla Thunderbird
+To: Milena Olech <milena.olech@intel.com>, <intel-wired-lan@lists.osuosl.org>
+CC: <netdev@vger.kernel.org>, <anthony.l.nguyen@intel.com>,
+ <przemyslaw.kitszel@intel.com>, Alexander Lobakin
+ <aleksander.lobakin@intel.com>, Samuel Salin <Samuel.salin@intel.com>
+References: <20250408103240.30287-2-milena.olech@intel.com>
+ <20250408103240.30287-4-milena.olech@intel.com>
+Content-Language: en-US
 From: Jacob Keller <jacob.e.keller@intel.com>
-Date: Tue, 08 Apr 2025 13:55:15 -0700
+In-Reply-To: <20250408103240.30287-4-milena.olech@intel.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: MW4PR03CA0109.namprd03.prod.outlook.com
+ (2603:10b6:303:b7::24) To CO1PR11MB5089.namprd11.prod.outlook.com
+ (2603:10b6:303:9b::16)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20250408-jk-supported-perout-flags-v1-2-d2f8e3df64f3@intel.com>
-References: <20250408-jk-supported-perout-flags-v1-0-d2f8e3df64f3@intel.com>
-In-Reply-To: <20250408-jk-supported-perout-flags-v1-0-d2f8e3df64f3@intel.com>
-To: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Tony Nguyen <anthony.l.nguyen@intel.com>, 
- Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
- Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, 
- Tariq Toukan <tariqt@nvidia.com>, 
- Bryan Whitehead <bryan.whitehead@microchip.com>, 
- UNGLinuxDriver@microchip.com, Horatiu Vultur <horatiu.vultur@microchip.com>, 
- Paul Barker <paul.barker.ct@bp.renesas.com>, 
- =?utf-8?q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, 
- Richard Cochran <richardcochran@gmail.com>, 
- Heiner Kallweit <hkallweit1@gmail.com>, 
- Russell King <linux@armlinux.org.uk>, 
- Andrei Botila <andrei.botila@oss.nxp.com>, 
- Claudiu Manoil <claudiu.manoil@nxp.com>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
- intel-wired-lan@lists.osuosl.org, linux-rdma@vger.kernel.org, 
- linux-renesas-soc@vger.kernel.org, Jacob Keller <jacob.e.keller@intel.com>
-X-Mailer: b4 0.14.2
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CO1PR11MB5089:EE_|DS0PR11MB7801:EE_
+X-MS-Office365-Filtering-Correlation-Id: 66bfa2be-9d2b-4822-67bd-08dd76e07a5b
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|366016|1800799024;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?a3E5dXpDZGNubTdYVjUxSEJFVWFCejM0UG5qdVFrUWtBZkhMMzAxeTF3S29y?=
+ =?utf-8?B?RVpkRVNPdVNZSStvWk5EaFd6Nk00Z3gwSFFJY0l6bS9maGtkK29oZ2tmYVND?=
+ =?utf-8?B?V2ZUMkJRTmpJV0lmZ1Rxb04xTGVrY1RMd29aUWFlcWVRMGRjZlFuajVtcXlW?=
+ =?utf-8?B?WU5tZjVrMlhBOXNORkE0dnZqbm03M3BQN3V3Q0NYZm1lNWdiU0NGcUUxaUwr?=
+ =?utf-8?B?SWlVVTBaRmx4bHM5UG5OWHMyNVQwcGdlNEJaNHhiRTdPZGZCdU9QKzdxV1Ux?=
+ =?utf-8?B?SVRTa0M5RS9RYnh1ck1YZVp0MnhtaGpnanpNcDVydUtMZCt2cHMvWWRubmtK?=
+ =?utf-8?B?VlBDVVpVM3MwOFBNMFZLNnNFM2xsRmFjc1I1dzZjYnc0Zm5NcDNWaWR5RlAy?=
+ =?utf-8?B?SFV1OThSZU02S2JQOWZTMjE3aWN4MFRwakx5cEthbVIrd01lYlhEMnh0OXR4?=
+ =?utf-8?B?WUFxcFBwOUpoWDhGaUQvd3VyMTNmRUdkdXdMZVZTZ1l6UkNEVnorbHFvQUpB?=
+ =?utf-8?B?VE16YS9TdXhBTUthQXhuSlFxTzRsRVdJbmY5SURnQ2RWQ0liNDh1cHJKOEZz?=
+ =?utf-8?B?UHJxa3VjTmhzYTMvZk5NcEF4d0JFc0ZMbGNNOE1kYnRZUktsRkpJaHNFSGdP?=
+ =?utf-8?B?a3JIeGplWnVrZEg4YmQrU3E1YXdWdDFVUmFQQWJPSnZTbTRYcFJ1ZjJWQjdx?=
+ =?utf-8?B?MWZ6UEluMGlCbHVCWjdsblQ4N2VrRHFKaWphcm8ySTdDSHhpWHpCRkJNMkpw?=
+ =?utf-8?B?eTlQdEJ0bk1Jb0tTUzBSeGl6OC9DVW1YTEZrbnZqUitZQk5senpEZWQwclI2?=
+ =?utf-8?B?bDI2TUY3MUY4VEVnai9MaW8yWWJGR0FpcDByTnp0S3F4K05yS2lEWHZKWEND?=
+ =?utf-8?B?YW1vRUZIMjh6Zm9mR1ArQVdPeWxsUzh4amtrc1RheW5tVzBod3dRTytkN1JU?=
+ =?utf-8?B?MWRLZkVGaUhEZGp4NHhubGpSL2RNekd5K0NhSUhVc3FZei9Lc293MlIrSGFt?=
+ =?utf-8?B?djllQnNaNGMwTC81a2ozRU10V0VTaXA1SlFTUUZycWlzeDcrTTVnaXdnT1JN?=
+ =?utf-8?B?cjZtYzBSZlVtaDRIQStwU2V0amtIOCsrdEcvV1g2eEJHeU44dTJIWjNyb2Rl?=
+ =?utf-8?B?czBLU3AvVm9tL1g3MVZZTTdlV0lhSGRTVTFtcWZNM2NCL3dHcER4N0tXZ1gz?=
+ =?utf-8?B?b0owaGk3RmEzcUlsekZvWFFUK0prS3NVM1Boa29JdkxudzJjSDJSZGZWY2xL?=
+ =?utf-8?B?UC9sYmRpVlVQVHdwQUw3NElFQnhmQm0rRis4MmhQUHZMeTFYZGFhUDNxU0hQ?=
+ =?utf-8?B?VWttSzU5NzhrS3ZqTU9CZGVqY0luVUcreDd2ZkpyZC90MVA5L0dDQVVUYWQy?=
+ =?utf-8?B?RU5GZ1kwb0J5eC90WEdMd0lla3NWenNGeVZrN0p6dDNrVjFaRUQ2NE9GZmRp?=
+ =?utf-8?B?d2xrV1ZvbE1LY2JuNFNtM0ZqbGlXQ1VKbnhrK0swcGlCYWZva0Q2RmM0RDhX?=
+ =?utf-8?B?d3FvWURwQTNOSVI1a0JTY0NyYVZwMU9jRWh1STdEUXRMQzh3YVI1T0dTQU5V?=
+ =?utf-8?B?eDFac2lQTzdIUGdsRy9UMlRhTXkzMHJ5Q0dtWGVJQVhLc2J5UW85YzZXQTkw?=
+ =?utf-8?B?cTdNb2ZMSlg3UTdmc1pxYjR5bi83UHEwdkF2eU1sd1hUQ0ZYYlN4b3RYNHBT?=
+ =?utf-8?B?R0x0ZWIxUC9tRlE0WnQvNkxqNWxBaXREajN0TTd4eFFhVys0RGVmV3Y3U21m?=
+ =?utf-8?B?Mk5SdzgvZXVhN3VWNEtPVHkzZy96WDF6OWpYdkQ1OXo3MldWV2FORDlaSXlv?=
+ =?utf-8?B?b3JLNVBGenlZWmE2Wm5yeFZpMFpXRkVoVkxnS2ZBc1o3UjBBTHNIWXp3dnZ6?=
+ =?utf-8?B?WWZtZll5ME85YWt5S1dIaXpFYVJPQVJGSjB5YnBHRTdhSWdnNy8vc09YeVpH?=
+ =?utf-8?Q?CF1C3ZB7NhE=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CO1PR11MB5089.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(366016)(1800799024); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YVlmaWIzdmIxdVByc29ZanVuVlJ1OUhXUmNsTzU0YlRBZWpGTnVPMThCUjJ5?=
+ =?utf-8?B?bTdHTXExaHNjSkZLaTE0OHp3ZXVQdStSeW4xM05qaXJPVkxOZllFOVJtY3kw?=
+ =?utf-8?B?eDR1NVhvTEtoRmpxUC9QUWk1ZW5DOU1WZ3NKa1cxcFhFdWM2UEpTclU3a3F0?=
+ =?utf-8?B?dVkyZTc0NG5IYU4zYk1mTDJGSkMrR2hRSzNRLzI4VGJPS2k5b0lJd0RFdnFt?=
+ =?utf-8?B?dDhPTTZFR0FiMy9WdUs2TXhtaDVnVUxmVGNtcklCdVBqdVZHQWk3NzZoanpi?=
+ =?utf-8?B?bm9JaFBjaFBsN0w1MUZ3VzhZYnJzT1lqOHBHRjArV3Y2ckUxbFFYb1Irdk0v?=
+ =?utf-8?B?ZVFnS2xHeDhsSzhqd3RHdzVla2phMTZpZWQ0d0s0aWkwR05PYWNtU1dEaitC?=
+ =?utf-8?B?bjIxQ3MxQ3BmNkF5QUdwQ2hnbHlWTDhyTERVSCtqNktYUVpuazR1T0w4VWUy?=
+ =?utf-8?B?aTE5Wk5sQlVTNWFyVUZVQlhadWpyN2RmbFVZdTN5RTF6bDBZRFhHMFFlKzIw?=
+ =?utf-8?B?ei9pQnhYRnk3UDZneVp6Qi9QL1hnT0RzWEVFNVBiTnVhN29sb2cvMVhyV1ha?=
+ =?utf-8?B?UlhYWHVLQ3pVOVpzTEdGT0MwTDlCTVJ3c1RHeEpFenhvakFUMDgrTmZnbHRq?=
+ =?utf-8?B?NnFpOEdESWUyQ2t6MTFPSHU1QTE0R1p3eGltQ3JNOXQ0V05IVHdNOTZEcXBK?=
+ =?utf-8?B?Vm5oc3gyVmFtcitxVFNPc0t2TGZ1U1A3YVVXZWZtTnUvb3hmclNVekRLQ1hS?=
+ =?utf-8?B?MFR1NlFQczVoOWJFZXZ5cmJnRE83MDUxaDRtdzdnaVZqRExvMHgyR05yS1JK?=
+ =?utf-8?B?Qk5Vci8yS2swbW9Kbm1ubS9Cc1FGZXRPQkExT1FLUXJnczRmZHJkOWhqMEhk?=
+ =?utf-8?B?OXIrSmthZC9wU3J0UFRWbXIva3lvQTN1c0IyQ0ZwVWpkNU9vYkRKU1ZlcTRa?=
+ =?utf-8?B?VjlyY1hhMHR0dVgvKzVRM255aDMweVNwTWtPZExTNmhCZmQ5TTFKOEV3amRH?=
+ =?utf-8?B?VHlhem5BYUZhOVA4S3RYRjJleHduMTJwaWczVE5Gc0pLUitHODdFQkVQeTRF?=
+ =?utf-8?B?anIrT3RoUWMxSU56cTVIc2hUUFFOZ3cralB5RXBkQWZXZFJsUXUxL3BLc1hH?=
+ =?utf-8?B?NU8zYzAwWTBnQjAyeTgvZyt6cGd6MHd3RkN0d2NOV3JNNUVaWXFETFgxMlM4?=
+ =?utf-8?B?SFRzaFBzZ2RTQUx5Q2NJaU9SZTJMajRndlp6TnFvSllkVjBnYnBSR3REcm9C?=
+ =?utf-8?B?TXdhVHIvMkl6MmNwM0huM1AwekNYUmRIaGRERnB0QlZhVTBITWludTduWnFU?=
+ =?utf-8?B?Ukp6Q285QzZEbXJ3STB5SFRnck5YUjhsaEJXVTJjUUg4TXdyRUh4R2gvQmha?=
+ =?utf-8?B?L3F0ZWVuRHVtL1VqMGVwNThPT2V4VVlJaHFIZVNiWFVkUllIYzZTU0dXdzEx?=
+ =?utf-8?B?WWlDMTJnQ0tVRE5wcUtIbjhQYjVNd0x6MmFpQkgvRjk5STlkallGazJXZjJp?=
+ =?utf-8?B?YTJ0RDNCdGpUZmRPL08wUW5NQ2xIUEFqdDc5TnBEeEhaMjN4SHdTcFhYWG8x?=
+ =?utf-8?B?dVQxRkpyK0hhVEc0ZS9jM1NVZXNaT2lsZFBNa1hsYnlZSjV1eDBXNTh1NGxG?=
+ =?utf-8?B?SENGSFpmdXM5SnVoa2dSeGUySG83WVZ1RzJQTldhUGtqek1reHRTVm5TZFor?=
+ =?utf-8?B?VHdhQmNIZjVUUXRnQUlsb1ljOGMxQkhiZW1vKzF5eUlBNTVOWHpxRmwrbm5n?=
+ =?utf-8?B?cjZIT3hrbmZyWkdyN0FLanpub3g1OStBdlZtNVNUK3lUdmtLOWxSL0JYK0h5?=
+ =?utf-8?B?WTZnN3JwRHhSSkRzQ3VZcER1eTJCWVlOYWJ3aEhhYUozcWdLRGlIVk4zQlZy?=
+ =?utf-8?B?ZmFjSGJLckZsODVsR0JTRDdqMzBjcEZKd0xjSGE1M0JwTTFTUkorUE12Y3Nl?=
+ =?utf-8?B?UHVKTU9RSUhiS2VEbmNxckR1NXdnYXZ5YWpyVzR5N0g3KzFhOXp6Wit1U2xF?=
+ =?utf-8?B?VWUrSm1FSmdBbWNhYVUxT1BJWkd5OVhyQWsyOWZhNmFMVXIwMlhjUGEwUXJR?=
+ =?utf-8?B?bzFiVXR5eHJjOE4zUFYrd3ZMYTlQeDNuell1Z2toNk1idkNWR2lGdjZGQUNm?=
+ =?utf-8?B?bGowM2cyMVFQQzhYWnFMbEhnYnBMbm16THJGaVBxN3dQa1llUERmZy9yM0E0?=
+ =?utf-8?B?MFE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 66bfa2be-9d2b-4822-67bd-08dd76e07a5b
+X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Apr 2025 21:01:05.6644 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 3xkNhvw2I46Jwe5XQjjG/pIOfhFzv7V1/jJpHdbTGMqPMPXgnkrEHtvoIwBv/HuG+B1O5Lsk6zsIGsE79TS9D0Gm5ccpNs6nSNMpym4CTuI=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB7801
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1744145729; x=1775681729;
- h=from:date:subject:mime-version:content-transfer-encoding:
- message-id:references:in-reply-to:to:cc;
- bh=3Ez1p1CtSQmA+CuP5eRjxp2rkuhj5NNe7rsL/JVzk94=;
- b=NNZiJj/EpO0LQJld5jTnsIDMusNbFygEz3l6sDKo8QGT1LaNFmcBth/b
- E/NHMNhL7kdugJjJNSlovB4P1CJc81Z+Nu2I8Fd25a/Tz6/+MRhxDLzpF
- cGck0zzFiSSaajCad5NnNPlactmf6M8q6whphp8OblKGytzU7o3bVYkra
- L+mDTu3R6n97FwZquSZxvmQ2qhnwgqrdL6oDH7hR2Uf0bF25cMpbpUteT
- j7yIe4ce4vGJoYrysHs4UTKa6AxRi2SDEayBPcGXRbVE9mBOjzKS/t/a8
- pbxlBivVzz12AVOBpQUB+zmw9XZMAuenBZ8E7DLK3WJCBUHew/MWlj/hh
+ t=1744146072; x=1775682072;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=/rWknnk945uegNa/G9BMVBO1UtdgU7HuCJb8HVasqhU=;
+ b=Tda0/T81WUBnvP1GJeeUQGZ2YdGcgnh/9x9X7ZYu2+fEkk7E0yXzlgbE
+ q+ZNafrvR3gm2xRIx20JTIieUeCVt0VHwId8RxTtcy2m6U7pqXQDmNtYf
+ 8qmWohekDw4ZkGBWIuIxFYulPjPkJbTbLEz3gSooEVV9uypQH+DIEc3nk
+ hxf9k+EX9iHvwuPngGTkkW6SPT/5GSbA1IIX2vuPVXYAPclkYwRLCtOIR
+ +J6AbDt/zaGgDGTnhv5pkzeKIvjuHaZ52PqJaLXKrGq4JZqIbx8NaSVG3
+ 5ZUOeiJwpps0TUQO5CUq7Cam0CwYhhK6uk1De4OerfTshvdKoh0n0irTU
  Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=NNZiJj/E
-Subject: [Intel-wired-lan] [PATCH net-next 2/2] net: ptp: introduce
- .supported_perout_flags to ptp_clock_info
+ header.a=rsa-sha256 header.s=Intel header.b=Tda0/T81
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH v10 iwl-next 01/11] idpf: change the
+ method for mailbox workqueue allocation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -128,382 +240,19 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The PTP_PEROUT_REQUEST2 ioctl has gained support for flags specifying
-specific output behavior including PTP_PEROUT_ONE_SHOT,
-PTP_PEROUT_DUTY_CYCLE, PTP_PEROUT_PHASE.
 
-Driver authors are notorious for not checking the flags of the request.
-This results in misinterpreting the request, generating an output signal
-that does not match the requested value. It is anticipated that even more
-flags will be added in the future, resulting in even more broken requests.
 
-Expecting these issues to be caught during review or playing whack-a-mole
-after the fact is not a great solution.
+On 4/8/2025 3:30 AM, Milena Olech wrote:
+> Since workqueues are created per CPU, the works scheduled to this
+> workqueues are run on the CPU they were assigned. It may result in
+> overloaded CPU that is not able to handle virtchnl messages in
+> relatively short time. Allocating workqueue with WQ_UNBOUND and
+> WQ_HIGHPRI flags allows scheduler to queue virtchl messages on less loaded
+> CPUs, what eliminates delays.
+> 
+> Reviewed-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+> Signed-off-by: Milena Olech <milena.olech@intel.com>
+> Tested-by: Samuel Salin <Samuel.salin@intel.com>
+> ---
 
-Instead, introduce the supported_perout_flags field in the ptp_clock_info
-structure. Update the core character device logic to explicitly reject any
-request which has a flag not on this list.
-
-This ensures that drivers must 'opt in' to the flags they support. Drivers
-which don't set the .supported_perout_flags field will not need to check
-that unsupported flags aren't passed, as the core takes care of this.
-
-Update the drivers which do support flags to set this new field.
-
-Note the following driver files set n_per_out to a non-zero value but did
-not check the flags at all:
-
- • drivers/ptp/ptp_clockmatrix.c
- • drivers/ptp/ptp_idt82p33.c
- • drivers/ptp/ptp_fc3.c
- • drivers/net/ethernet/ti/am65-cpts.c
- • drivers/net/ethernet/aquantia/atlantic/aq_ptp.c
- • drivers/net/ethernet/broadcom/bnxt/bnxt_ptp.c
- • drivers/net/dsa/sja1105/sja1105_ptp.c
- • drivers/net/ethernet/freescale/dpaa2/dpaa2-ptp.c
- • drivers/net/ethernet/mscc/ocelot_vsc7514.c
- • drivers/net/ethernet/intel/i40e/i40e_ptp.c
-
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
----
- include/linux/ptp_clock_kernel.h                     |  6 ++++++
- drivers/net/dsa/sja1105/sja1105_ptp.c                |  4 ----
- drivers/net/ethernet/intel/ice/ice_ptp.c             |  4 +---
- drivers/net/ethernet/intel/igc/igc_ptp.c             |  4 ----
- drivers/net/ethernet/mellanox/mlx5/core/lib/clock.c  | 15 +++------------
- drivers/net/ethernet/microchip/lan743x_ptp.c         |  5 +----
- drivers/net/ethernet/microchip/lan966x/lan966x_ptp.c |  6 ++----
- drivers/net/ethernet/mscc/ocelot_ptp.c               |  5 -----
- drivers/net/ethernet/mscc/ocelot_vsc7514.c           |  2 ++
- drivers/net/ethernet/renesas/ravb_ptp.c              |  4 ----
- drivers/net/phy/dp83640.c                            |  3 ---
- drivers/net/phy/micrel.c                             |  9 ++-------
- drivers/net/phy/microchip_rds_ptp.c                  |  5 +----
- drivers/net/phy/nxp-c45-tja11xx.c                    |  4 +---
- drivers/ptp/ptp_chardev.c                            |  2 ++
- 15 files changed, 21 insertions(+), 57 deletions(-)
-
-diff --git a/include/linux/ptp_clock_kernel.h b/include/linux/ptp_clock_kernel.h
-index 25cba2e5ee69c6a52f0d8a95653988371da379a2..eced7e9bf69a81f9b87b5fd4ff56074647f7aef4 100644
---- a/include/linux/ptp_clock_kernel.h
-+++ b/include/linux/ptp_clock_kernel.h
-@@ -69,6 +69,11 @@ struct ptp_system_timestamp {
-  * @n_pins:    The number of programmable pins.
-  * @pps:       Indicates whether the clock supports a PPS callback.
-  *
-+ * @supported_perout_flags:  The set of flags the driver supports for the
-+ *                           PTP_PEROUT_REQUEST ioctl. The PTP core will
-+ *                           reject a request with any flag not specified
-+ *                           here.
-+ *
-  * @supported_extts_flags:  The set of flags the driver supports for the
-  *                          PTP_EXTTS_REQUEST ioctl. The PTP core will use
-  *                          this list to reject unsupported requests.
-@@ -185,6 +190,7 @@ struct ptp_clock_info {
- 	int n_per_out;
- 	int n_pins;
- 	int pps;
-+	unsigned int supported_perout_flags;
- 	unsigned int supported_extts_flags;
- 	struct ptp_pin_desc *pin_config;
- 	int (*adjfine)(struct ptp_clock_info *ptp, long scaled_ppm);
-diff --git a/drivers/net/dsa/sja1105/sja1105_ptp.c b/drivers/net/dsa/sja1105/sja1105_ptp.c
-index a7e9f9ab7a19a8413f2f450c3b4b3f636a177c67..6c1280b761e636e139dae060ab414c501eb1bf76 100644
---- a/drivers/net/dsa/sja1105/sja1105_ptp.c
-+++ b/drivers/net/dsa/sja1105/sja1105_ptp.c
-@@ -737,10 +737,6 @@ static int sja1105_per_out_enable(struct sja1105_private *priv,
- 	if (perout->index != 0)
- 		return -EOPNOTSUPP;
- 
--	/* Reject requests with unsupported flags */
--	if (perout->flags)
--		return -EOPNOTSUPP;
--
- 	mutex_lock(&ptp_data->lock);
- 
- 	rc = sja1105_change_ptp_clk_pin_func(priv, PTP_PF_PEROUT);
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 96f68c356fe81b6954653f8903faf433ef6018f5..be691b716edb000364868cca2ad6f5e6f02aece7 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -1794,9 +1794,6 @@ static int ice_ptp_cfg_perout(struct ice_pf *pf, struct ptp_perout_request *rq,
- 	struct ice_hw *hw = &pf->hw;
- 	int pin_desc_idx;
- 
--	if (rq->flags & ~PTP_PEROUT_PHASE)
--		return -EOPNOTSUPP;
--
- 	pin_desc_idx = ice_ptp_find_pin_idx(pf, PTP_PF_PEROUT, rq->index);
- 	if (pin_desc_idx < 0)
- 		return -EIO;
-@@ -2732,6 +2729,7 @@ static void ice_ptp_set_caps(struct ice_pf *pf)
- 	info->supported_extts_flags = PTP_RISING_EDGE |
- 				      PTP_FALLING_EDGE |
- 				      PTP_STRICT_FLAGS;
-+	info->supported_perout_flags = PTP_PEROUT_PHASE;
- 
- 	switch (pf->hw.mac_type) {
- 	case ICE_MAC_E810:
-diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
-index 66a3a3ff1d8e3a91481c04d0055b48f177c13039..f9fb4f8d61c603d47d6aead5f6cbe0ba377a05be 100644
---- a/drivers/net/ethernet/intel/igc/igc_ptp.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
-@@ -293,10 +293,6 @@ static int igc_ptp_feature_enable_i225(struct ptp_clock_info *ptp,
- 		return 0;
- 
- 	case PTP_CLK_REQ_PEROUT:
--		/* Reject requests with unsupported flags */
--		if (rq->perout.flags)
--			return -EOPNOTSUPP;
--
- 		if (on) {
- 			pin = ptp_find_pin(igc->ptp_clock, PTP_PF_PEROUT,
- 					   rq->perout.index);
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/lib/clock.c b/drivers/net/ethernet/mellanox/mlx5/core/lib/clock.c
-index 3eee84430ac98b7fe61469be684a0d1e92a03b39..cec18efadc7330c84ce545efc5922c359ac6b470 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/lib/clock.c
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/lib/clock.c
-@@ -813,12 +813,6 @@ static int perout_conf_npps_real_time(struct mlx5_core_dev *mdev, struct ptp_clo
- 	return 0;
- }
- 
--static bool mlx5_perout_verify_flags(struct mlx5_core_dev *mdev, unsigned int flags)
--{
--	return ((!mlx5_npps_real_time_supported(mdev) && flags) ||
--		(mlx5_npps_real_time_supported(mdev) && flags & ~PTP_PEROUT_DUTY_CYCLE));
--}
--
- static int mlx5_perout_configure(struct ptp_clock_info *ptp,
- 				 struct ptp_clock_request *rq,
- 				 int on)
-@@ -854,12 +848,6 @@ static int mlx5_perout_configure(struct ptp_clock_info *ptp,
- 		goto unlock;
- 	}
- 
--	/* Reject requests with unsupported flags */
--	if (mlx5_perout_verify_flags(mdev, rq->perout.flags)) {
--		err = -EOPNOTSUPP;
--		goto unlock;
--	}
--
- 	if (on) {
- 		pin_mode = MLX5_PIN_MODE_OUT;
- 		pattern = MLX5_OUT_PATTERN_PERIODIC;
-@@ -1031,6 +1019,9 @@ static void mlx5_init_pin_config(struct mlx5_core_dev *mdev)
- 						PTP_FALLING_EDGE |
- 						PTP_STRICT_FLAGS;
- 
-+	if (mlx5_npps_real_time_supported(mdev))
-+		clock->ptp_info.supported_perout_flags = PTP_PEROUT_DUTY_CYCLE;
-+
- 	for (i = 0; i < clock->ptp_info.n_pins; i++) {
- 		snprintf(clock->ptp_info.pin_config[i].name,
- 			 sizeof(clock->ptp_info.pin_config[i].name),
-diff --git a/drivers/net/ethernet/microchip/lan743x_ptp.c b/drivers/net/ethernet/microchip/lan743x_ptp.c
-index c3dd4f493bd22dab65a65db42ff9a3b2d4b3696d..e4f88fa863fc8de3515a08dc7ebd98e9bd7053a6 100644
---- a/drivers/net/ethernet/microchip/lan743x_ptp.c
-+++ b/drivers/net/ethernet/microchip/lan743x_ptp.c
-@@ -463,10 +463,6 @@ static int lan743x_ptp_perout(struct lan743x_adapter *adapter, int on,
- 	struct lan743x_ptp_perout *perout = &ptp->perout[index];
- 	int ret = 0;
- 
--	/* Reject requests with unsupported flags */
--	if (perout_request->flags & ~PTP_PEROUT_DUTY_CYCLE)
--		return -EOPNOTSUPP;
--
- 	if (on) {
- 		perout_pin = ptp_find_pin(ptp->ptp_clock, PTP_PF_PEROUT,
- 					  perout_request->index);
-@@ -1540,6 +1536,7 @@ int lan743x_ptp_open(struct lan743x_adapter *adapter)
- 	ptp->ptp_clock_info.supported_extts_flags = PTP_STRICT_FLAGS |
- 						    PTP_RISING_EDGE |
- 						    PTP_FALLING_EDGE;
-+	ptp->ptp_clock_info.supported_perout_flags = PTP_PEROUT_DUTY_CYCLE;
- 	ptp->ptp_clock_info.pin_config = ptp->pin_config;
- 	ptp->ptp_clock_info.adjfine = lan743x_ptpci_adjfine;
- 	ptp->ptp_clock_info.adjtime = lan743x_ptpci_adjtime;
-diff --git a/drivers/net/ethernet/microchip/lan966x/lan966x_ptp.c b/drivers/net/ethernet/microchip/lan966x/lan966x_ptp.c
-index 1ba1b595ab935f8992120f15073af1d2d6e6de8b..9657d7476e24a5a13e56285e087a79f06157d002 100644
---- a/drivers/net/ethernet/microchip/lan966x/lan966x_ptp.c
-+++ b/drivers/net/ethernet/microchip/lan966x/lan966x_ptp.c
-@@ -815,10 +815,6 @@ static int lan966x_ptp_perout(struct ptp_clock_info *ptp,
- 	bool pps = false;
- 	int pin;
- 
--	if (rq->perout.flags & ~(PTP_PEROUT_DUTY_CYCLE |
--				 PTP_PEROUT_PHASE))
--		return -EOPNOTSUPP;
--
- 	pin = ptp_find_pin(phc->clock, PTP_PF_PEROUT, rq->perout.index);
- 	if (pin == -1 || pin >= LAN966X_PHC_PINS_NUM)
- 		return -EINVAL;
-@@ -975,6 +971,8 @@ static struct ptp_clock_info lan966x_ptp_clock_info = {
- 	.supported_extts_flags = PTP_ENABLE_FEATURE |
- 				 PTP_RISING_EDGE |
- 				 PTP_STRICT_FLAGS,
-+	.supported_perout_flags = PTP_PEROUT_DUTY_CYCLE |
-+				  PTP_PEROUT_PHASE,
- };
- 
- static int lan966x_ptp_phc_init(struct lan966x *lan966x,
-diff --git a/drivers/net/ethernet/mscc/ocelot_ptp.c b/drivers/net/ethernet/mscc/ocelot_ptp.c
-index cc1088988da0948bd7f6212dbeace5c032383c26..d2a0a32f75ea90529641d2288fa56d3ab6d0f2e6 100644
---- a/drivers/net/ethernet/mscc/ocelot_ptp.c
-+++ b/drivers/net/ethernet/mscc/ocelot_ptp.c
-@@ -211,11 +211,6 @@ int ocelot_ptp_enable(struct ptp_clock_info *ptp,
- 
- 	switch (rq->type) {
- 	case PTP_CLK_REQ_PEROUT:
--		/* Reject requests with unsupported flags */
--		if (rq->perout.flags & ~(PTP_PEROUT_DUTY_CYCLE |
--					 PTP_PEROUT_PHASE))
--			return -EOPNOTSUPP;
--
- 		pin = ptp_find_pin(ocelot->ptp_clock, PTP_PF_PEROUT,
- 				   rq->perout.index);
- 		if (pin == 0)
-diff --git a/drivers/net/ethernet/mscc/ocelot_vsc7514.c b/drivers/net/ethernet/mscc/ocelot_vsc7514.c
-index 055b55651a49fdc390acc0df22bf4258b78d6c43..498eec8ae61d83455bf9b54d685126daeb11bf6f 100644
---- a/drivers/net/ethernet/mscc/ocelot_vsc7514.c
-+++ b/drivers/net/ethernet/mscc/ocelot_vsc7514.c
-@@ -108,6 +108,8 @@ static struct ptp_clock_info ocelot_ptp_clock_info = {
- 	.n_ext_ts	= 0,
- 	.n_per_out	= OCELOT_PTP_PINS_NUM,
- 	.n_pins		= OCELOT_PTP_PINS_NUM,
-+	.supported_perout_flags = PTP_PEROUT_DUTY_CYCLE |
-+				  PTP_PEROUT_PHASE,
- 	.pps		= 0,
- 	.gettime64	= ocelot_ptp_gettime64,
- 	.settime64	= ocelot_ptp_settime64,
-diff --git a/drivers/net/ethernet/renesas/ravb_ptp.c b/drivers/net/ethernet/renesas/ravb_ptp.c
-index 93c8ca49e97a714af62bf2f4d3edce6bc5969835..61fe4259308bf36a5f15fcffcfdc41fefaf3ae17 100644
---- a/drivers/net/ethernet/renesas/ravb_ptp.c
-+++ b/drivers/net/ethernet/renesas/ravb_ptp.c
-@@ -206,10 +206,6 @@ static int ravb_ptp_perout(struct ptp_clock_info *ptp,
- 	unsigned long flags;
- 	int error = 0;
- 
--	/* Reject requests with unsupported flags */
--	if (req->flags)
--		return -EOPNOTSUPP;
--
- 	if (req->index)
- 		return -EINVAL;
- 
-diff --git a/drivers/net/phy/dp83640.c b/drivers/net/phy/dp83640.c
-index 694e6125ead8c37af1cdde9db264d1e75180698d..68885d8327e52a96f15d650a721ab4d6921e562d 100644
---- a/drivers/net/phy/dp83640.c
-+++ b/drivers/net/phy/dp83640.c
-@@ -506,9 +506,6 @@ static int ptp_dp83640_enable(struct ptp_clock_info *ptp,
- 		return 0;
- 
- 	case PTP_CLK_REQ_PEROUT:
--		/* Reject requests with unsupported flags */
--		if (rq->perout.flags)
--			return -EOPNOTSUPP;
- 		if (rq->perout.index >= N_PER_OUT)
- 			return -EINVAL;
- 		return periodic_output(clock, rq, on, rq->perout.index);
-diff --git a/drivers/net/phy/micrel.c b/drivers/net/phy/micrel.c
-index f469aaa423ecf71acc99d1abe75cf5a26f77b7b3..77f1307756fd1946e64f2c6175c3a143a997139a 100644
---- a/drivers/net/phy/micrel.c
-+++ b/drivers/net/phy/micrel.c
-@@ -3236,10 +3236,6 @@ static int lan8814_ptp_perout(struct ptp_clock_info *ptpci,
- 	int pulse_width;
- 	int pin, event;
- 
--	/* Reject requests with unsupported flags */
--	if (rq->perout.flags & ~PTP_PEROUT_DUTY_CYCLE)
--		return -EOPNOTSUPP;
--
- 	mutex_lock(&shared->shared_lock);
- 	event = rq->perout.index;
- 	pin = ptp_find_pin(shared->ptp_clock, PTP_PF_PEROUT, event);
-@@ -3915,6 +3911,7 @@ static int lan8814_ptp_probe_once(struct phy_device *phydev)
- 	shared->ptp_clock_info.supported_extts_flags = PTP_ENABLE_FEATURE |
- 						       PTP_EXTTS_EDGES |
- 						       PTP_STRICT_FLAGS;
-+	shared->ptp_clock_info.supported_perout_flags = PTP_PEROUT_DUTY_CYCLE;
- 	shared->ptp_clock_info.pin_config = shared->pin_config;
- 	shared->ptp_clock_info.n_per_out = LAN8814_PTP_PEROUT_NUM;
- 	shared->ptp_clock_info.adjfine = lan8814_ptpci_adjfine;
-@@ -5066,9 +5063,6 @@ static int lan8841_ptp_perout(struct ptp_clock_info *ptp,
- 	int pin;
- 	int ret;
- 
--	if (rq->perout.flags & ~PTP_PEROUT_DUTY_CYCLE)
--		return -EOPNOTSUPP;
--
- 	pin = ptp_find_pin(ptp_priv->ptp_clock, PTP_PF_PEROUT, rq->perout.index);
- 	if (pin == -1 || pin >= LAN8841_PTP_GPIO_NUM)
- 		return -EINVAL;
-@@ -5312,6 +5306,7 @@ static struct ptp_clock_info lan8841_ptp_clock_info = {
- 	.n_per_out      = LAN8841_PTP_GPIO_NUM,
- 	.n_ext_ts       = LAN8841_PTP_GPIO_NUM,
- 	.n_pins         = LAN8841_PTP_GPIO_NUM,
-+	.supported_perout_flags = PTP_PEROUT_DUTY_CYCLE,
- };
- 
- #define LAN8841_OPERATION_MODE_STRAP_LOW_REGISTER 3
-diff --git a/drivers/net/phy/microchip_rds_ptp.c b/drivers/net/phy/microchip_rds_ptp.c
-index 3e6bf10cdeed9e42a935d75be972bab4233ff1cc..e6514ce04c29fa9eefe8a89398b11578badf1256 100644
---- a/drivers/net/phy/microchip_rds_ptp.c
-+++ b/drivers/net/phy/microchip_rds_ptp.c
-@@ -224,10 +224,6 @@ static int mchp_rds_ptp_perout(struct ptp_clock_info *ptpci,
- 	struct phy_device *phydev = clock->phydev;
- 	int ret, event_pin, pulsewidth;
- 
--	/* Reject requests with unsupported flags */
--	if (perout->flags & ~PTP_PEROUT_DUTY_CYCLE)
--		return -EOPNOTSUPP;
--
- 	event_pin = ptp_find_pin(clock->ptp_clock, PTP_PF_PEROUT,
- 				 perout->index);
- 	if (event_pin != clock->event_pin)
-@@ -1259,6 +1255,7 @@ struct mchp_rds_ptp_clock *mchp_rds_ptp_probe(struct phy_device *phydev, u8 mmd,
- 	clock->caps.pps            = 0;
- 	clock->caps.n_pins         = MCHP_RDS_PTP_N_PIN;
- 	clock->caps.n_per_out      = MCHP_RDS_PTP_N_PEROUT;
-+	clock->caps.supported_perout_flags = PTP_PEROUT_DUTY_CYCLE;
- 	clock->caps.pin_config     = clock->pin_config;
- 	clock->caps.adjfine        = mchp_rds_ptp_ltc_adjfine;
- 	clock->caps.adjtime        = mchp_rds_ptp_ltc_adjtime;
-diff --git a/drivers/net/phy/nxp-c45-tja11xx.c b/drivers/net/phy/nxp-c45-tja11xx.c
-index 1f74a30ea790b222ed5e373d83c2a6babc7ab4c2..b4733a0895b5fc0273d58534ced63271c303e779 100644
---- a/drivers/net/phy/nxp-c45-tja11xx.c
-+++ b/drivers/net/phy/nxp-c45-tja11xx.c
-@@ -763,9 +763,6 @@ static int nxp_c45_perout_enable(struct nxp_c45_phy *priv,
- 	struct phy_device *phydev = priv->phydev;
- 	int pin;
- 
--	if (perout->flags & ~PTP_PEROUT_PHASE)
--		return -EOPNOTSUPP;
--
- 	pin = ptp_find_pin(priv->ptp_clock, PTP_PF_PEROUT, perout->index);
- 	if (pin < 0)
- 		return pin;
-@@ -960,6 +957,7 @@ static int nxp_c45_init_ptp_clock(struct nxp_c45_phy *priv)
- 					 PTP_RISING_EDGE |
- 					 PTP_FALLING_EDGE |
- 					 PTP_STRICT_FLAGS,
-+		.supported_perout_flags = PTP_PEROUT_PHASE,
- 	};
- 
- 	priv->ptp_clock = ptp_clock_register(&priv->caps,
-diff --git a/drivers/ptp/ptp_chardev.c b/drivers/ptp/ptp_chardev.c
-index c24228c139549d14d95a1ff080e75c28420f40bd..4bf421765d03332234aac405fc594842760037f1 100644
---- a/drivers/ptp/ptp_chardev.c
-+++ b/drivers/ptp/ptp_chardev.c
-@@ -324,6 +324,8 @@ long ptp_ioctl(struct posix_clock_context *pccontext, unsigned int cmd,
- 			err = -EINVAL;
- 			break;
- 		}
-+		if (req.perout.flags & ~ptp->info->supported_perout_flags)
-+			return -EOPNOTSUPP;
- 		req.type = PTP_CLK_REQ_PEROUT;
- 		enable = req.perout.period.sec || req.perout.period.nsec;
- 		if (mutex_lock_interruptible(&ptp->pincfg_mux))
-
--- 
-2.48.1.397.gec9d649cc640
-
+Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
