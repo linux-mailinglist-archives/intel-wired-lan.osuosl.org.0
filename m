@@ -1,106 +1,233 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D4E47A832E0
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Apr 2025 22:57:29 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id EAF42A833C0
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Apr 2025 23:55:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8648440566;
-	Wed,  9 Apr 2025 20:57:28 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8F7AC811F3;
+	Wed,  9 Apr 2025 21:55:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YYmDRoBYYQ08; Wed,  9 Apr 2025 20:57:27 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id STGloocwhbae; Wed,  9 Apr 2025 21:55:28 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 03CB3413D0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E12BB81151
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744232247;
-	bh=MFzIA8/FTupFngsNEjgtOkfd0rRmK7dykTgd7z4uDmw=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1744235727;
+	bh=puxCqEOyyWnmiUx2J2a9EJ1ZSz66k2yLtwB8EwiTPgU=;
+	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=UfoZTdnqQNvZ7JgoF4RBABScx+oqNvkTKcuFdygR+EocoWBTuBGB8/W5O4STelh7N
-	 MxvLf55m7MKZthpIsYj8uBi6yRTPj/m3IZPDYZoX5O0oTNGanZHci3eDLudZUOOgwd
-	 M00M7FbHLALWo4ihTM8QcCPlVl+9rIroKzKAaOKjBlX7Oebur8hfG5Ecs5ts6/06ka
-	 8FA/vb/VE+eNHYIIoEvbWWU5U+bMg8o2f9Ybs/Du3fQwNbrpTa9i5cLyQmRq5j7CaR
-	 HY2MpoGQbzUFmjhb8B1enHtG4bpfREEGPiRbDKJunsFx4apPn8605B8Y1F8/Oj8Ere
-	 jXIqWtbF3d5sA==
+	b=zZUyTtP0yhdho2om/VrNmfb9QOr0cPN6ChOGLeoPnhyuqRDUCWUFrTD0FZzv/W3sD
+	 pigOuilxjRhFqQ+oqG0If1Z7s5isISjbMFuW4guhUuiqUbGrWJoFC8AQt38IZ4EFWx
+	 CFZfjqbyDlVEwA+982gzUOyd81Jo1ZiZyyDaO0Al2sIhIA2Btr20DrPrM1/duaCSpI
+	 NjQXanX95deqHfvLO4zfARQ14NGxtTM9H+7p/w40rdp8X56sBQsHDZecHyo4Kyfqc2
+	 eeWR9l66gigaAcPEl9uaNgJzvBrsuZWJCYFS8kcUbKAxYjH1gwKKcCMjLppSynTItK
+	 uGwpV0muC+ExA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 03CB3413D0;
-	Wed,  9 Apr 2025 20:57:27 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E12BB81151;
+	Wed,  9 Apr 2025 21:55:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id EA152201
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Apr 2025 20:57:25 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 5E499108
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Apr 2025 21:55:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id CFEEA40284
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Apr 2025 20:57:25 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 464FE80F08
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Apr 2025 21:55:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dVmwJK0fNQbA for <intel-wired-lan@lists.osuosl.org>;
- Wed,  9 Apr 2025 20:57:24 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
- helo=mgamail.intel.com; envelope-from=ahmed.zaki@intel.com;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id GNgzD-x5RXIM for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  9 Apr 2025 21:55:25 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
+ helo=mgamail.intel.com; envelope-from=anthony.l.nguyen@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A62CE403BE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A62CE403BE
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A62CE403BE
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Apr 2025 20:57:24 +0000 (UTC)
-X-CSE-ConnectionGUID: +md+T3E1Rs6yYn56+NeWLA==
-X-CSE-MsgGUID: 3xjXihOOTCiJ4iWQ5bE//A==
-X-IronPort-AV: E=McAfee;i="6700,10204,11399"; a="56711287"
-X-IronPort-AV: E=Sophos;i="6.15,201,1739865600"; d="scan'208";a="56711287"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Apr 2025 13:57:24 -0700
-X-CSE-ConnectionGUID: L6VtwiZ9TPWtPbRQ3TFCEg==
-X-CSE-MsgGUID: +m58SQVxTlCRMDnftXpweA==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 90FEA80CA6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 90FEA80CA6
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 90FEA80CA6
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Apr 2025 21:55:25 +0000 (UTC)
+X-CSE-ConnectionGUID: icnWttVsSMSdfCMNQfVtAg==
+X-CSE-MsgGUID: Q1PpbshiR+ekm1GVvyumig==
+X-IronPort-AV: E=McAfee;i="6700,10204,11399"; a="48434455"
+X-IronPort-AV: E=Sophos;i="6.15,201,1739865600"; d="scan'208";a="48434455"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+ by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Apr 2025 14:55:25 -0700
+X-CSE-ConnectionGUID: c40ewMdMS8ufvB75O4WnnQ==
+X-CSE-MsgGUID: fpGhnNtYRUCm07p+7eCE5w==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,201,1739865600"; d="scan'208";a="133422994"
-Received: from kcaccard-desk.amr.corp.intel.com (HELO azaki-desk1.intel.com)
- ([10.125.111.223])
- by fmviesa005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Apr 2025 13:57:18 -0700
-From: Ahmed Zaki <ahmed.zaki@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, ahmed.zaki@intel.com, sridhar.samudrala@intel.com,
- aleksandr.loktionov@intel.com, aleksander.lobakin@intel.com,
- dinesh.kumar@intel.com, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, andrew+netdev@lunn.ch, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- almasrymina@google.com, willemb@google.com
-Date: Wed,  9 Apr 2025 14:56:55 -0600
-Message-ID: <20250409205655.1039865-4-ahmed.zaki@intel.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250409205655.1039865-1-ahmed.zaki@intel.com>
-References: <20250409205655.1039865-1-ahmed.zaki@intel.com>
+X-IronPort-AV: E=Sophos;i="6.15,201,1739865600"; d="scan'208";a="133576018"
+Received: from orsmsx901.amr.corp.intel.com ([10.22.229.23])
+ by orviesa003.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Apr 2025 14:55:25 -0700
+Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14; Wed, 9 Apr 2025 14:55:24 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14 via Frontend Transport; Wed, 9 Apr 2025 14:55:24 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.173)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.44; Wed, 9 Apr 2025 14:55:23 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=qBPo2rIoeSWv1ba1P8QcTIVjIzQawQyDL3+y3xwmq1volqHtbaC9yqyriYQFEfHz3+uRRiRGUtVwvc2xXIpEeb+6S8sVb+8JzZMiTiBgDuvGawUObU3x6Evj8F4bwagFiFAWm0Cj0GynGVJK27EAOarG9WCCHfdY1XnPQUuQpJaS+6McwXEFbmUrkoAx5IhOuiFDw1p3ajT/yPEFr+3g9UolKyX4c1l5+Lo8g8BDvT9T17Zh6KQN5LPdp/5ipgtc6NaPTBaTwa+tj52DJluC96s0F4p25cBycIIZkkQplawa5m4VTB9DxKYOH8lNthD36ixlNohO8cQanZ45glxURw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=puxCqEOyyWnmiUx2J2a9EJ1ZSz66k2yLtwB8EwiTPgU=;
+ b=sjutwggpm/O9hUdKHnn/dswIlA9ZbRWQ3XHfcc+nPaQx0M0jjI53PBDkSsjRvkGM60gWdRuzblUtUYoYusuXSR4g2NseHm43fRlar07vMRyh1Z924OVqSsj81orGzVwUSYXlDz1kl1864tSjgffuHrwC78fvyBWBf/DHDBNI8FQRqWNnfY8n2PfpdMPqu0nxgduO9Lfc2TQ7ycGhjX8mIzLQKL1BkXutTrtezKwLI/hmJTWmsfz7myKYfevyntS9fwMxrMoPdBMeWJD6PlAiBYX12HSFRh6nOVqr95zNKN40dCKIdLWDM8dF0lUUBm68mOY//ibY8ojHqEgNIemQ3w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BL3PR11MB6435.namprd11.prod.outlook.com (2603:10b6:208:3bb::9)
+ by SA1PR11MB8349.namprd11.prod.outlook.com (2603:10b6:806:383::22)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8632.22; Wed, 9 Apr
+ 2025 21:54:52 +0000
+Received: from BL3PR11MB6435.namprd11.prod.outlook.com
+ ([fe80::23a7:1661:19d4:c1ab]) by BL3PR11MB6435.namprd11.prod.outlook.com
+ ([fe80::23a7:1661:19d4:c1ab%5]) with mapi id 15.20.8606.029; Wed, 9 Apr 2025
+ 21:54:52 +0000
+Message-ID: <afcafd64-d7d8-41cd-8979-c76aaf4c1b04@intel.com>
+Date: Wed, 9 Apr 2025 14:54:48 -0700
+User-Agent: Mozilla Thunderbird
+To: Jesse Brandeburg <jbrandeb@kernel.org>, <intel-wired-lan@lists.osuosl.org>
+CC: <netdev@vger.kernel.org>, Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>, 
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, "Paolo
+ Abeni" <pabeni@redhat.com>, Richard Cochran <richardcochran@gmail.com>,
+ "Jesse Brandeburg" <jbrandeburg@cloudflare.com>
+References: <20250407232017.46180-1-jbrandeb@kernel.org>
+Content-Language: en-US
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+In-Reply-To: <20250407232017.46180-1-jbrandeb@kernel.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: MW4PR03CA0221.namprd03.prod.outlook.com
+ (2603:10b6:303:b9::16) To BL3PR11MB6435.namprd11.prod.outlook.com
+ (2603:10b6:208:3bb::9)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL3PR11MB6435:EE_|SA1PR11MB8349:EE_
+X-MS-Office365-Filtering-Correlation-Id: 2bfeedb2-1e41-441b-5152-08dd77b127d7
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?SDFzcVpPT2NmdUpMWTdDeW9GWm43OTkrWDNRcG5FQWVKV3VYajZGOXhkRGxB?=
+ =?utf-8?B?UHF1MmhBYUhTS013bk5hRU9xaTh2M2JaNmVFMTAzY3FnNVB3QXY2ZWFCZjM0?=
+ =?utf-8?B?WkcvcmFwUDVUSnpDYzArYlFLOG1Held3M2w5UTVvdHcrcndqWGJ4SVdJalhi?=
+ =?utf-8?B?TU1ZQ05VUEdwcjRERVY3UXdNZnVtcU51L3ExemFjT1IzVlNRajNReEhEWi9r?=
+ =?utf-8?B?c0dwRzVuQlB2LzVTTGVRcytrVzBscWFQQ1UvekJRWWdqQ3k0dkVkdHE5c0la?=
+ =?utf-8?B?dmFMTlpnUEVhQlRuMi9xSkU1L0llVnpwenAyY2E0Mm5RN3NLZzNpUXdGMzkz?=
+ =?utf-8?B?Slg1cmppaWxtVExucytwUnorWWRmelV2QVNyeGFEK3p2V1c1UGt0RjA2NGZm?=
+ =?utf-8?B?ZCtxZGlKSUtuemZDWkVpbjgxbmdVNUFDSEs5QjlkZVVtSkhZT05lTTI3bFJi?=
+ =?utf-8?B?aEhXcFhLeTY3SjNzZ2laZk5uNWhmUWJBRFB2b1FyL29rais2V3d5by84ay9E?=
+ =?utf-8?B?cXpqeFZ5MUVJTHhnbzZFQW1ma0ZLbndiT01OdnNHVFlZYm90Y1BhbStjRitH?=
+ =?utf-8?B?eW9FVTdGeHROakgzYnhZZWRzdFVJMTZzcHBGWTdCVTNKN090aUdUZ3QwM3px?=
+ =?utf-8?B?OXlKcE1JSkpRRUpnK1EzQlRVdU5YS25sbHlIWkFreXB1eVB6ZFVqQ21zTVZs?=
+ =?utf-8?B?S1dvRTdPODZZQXFiaVZxa1dvYWtYM3Y2VUQyTHNPV2NGRmxPOWEyUTNybDRO?=
+ =?utf-8?B?YUpiak00TmUvUTBzZkxCMjRDWXhMOWRSOVh6STQ4ZlJaaWl3ZWVwd1ZERnJz?=
+ =?utf-8?B?ck90aHJ3d0E0bjBiUU0yT214Wld0VC9VSUxkZVR5aXBsWlFXdWpJNEk5aW92?=
+ =?utf-8?B?bjVpQTJmM1lCRUpRNGNzaEhOR3Z2UXlFYkZ5dXRPcDRZeGVqNm9vT2lKS0x1?=
+ =?utf-8?B?dEQxOTRjMmR3R1RQNndra2YwZFBTbS9qMEthK21HRnJ4WkJDSFpoZnZ6dTlV?=
+ =?utf-8?B?SHJ3UDFMK3hWUmFBaVFXdTM3QTJ0ZkRtUlBRZUl5cEhBR0VsTUR6enJVbnBj?=
+ =?utf-8?B?ZUJUbEtzWllOaGRIcmg5MWpEVHNLTlpNL05aZW9jUDV6SkVWRVduVElXMWt3?=
+ =?utf-8?B?Qnk1WmtWdXQ5S0MzNFlDUUlrWm1rYnNmU3JXc2N0YlYvYXZVMTJFOXNlK2Yx?=
+ =?utf-8?B?UFBpNTJmc253b3p1RTYxald6enRxWEsrZ3pQa3VWWTdMdGJHQ2tqQ1dLSFgz?=
+ =?utf-8?B?WUUwbVFDTTU4a0V6bHdhNC9QYnRETEZPTmZlVHFHTTljS2NjWVBhdHd1Q1J2?=
+ =?utf-8?B?NG1IOEdJclRad2MvbzFkamVZNWQ2eDk1am1Pa1JZMUdsUEdFY2FkSThZVWFX?=
+ =?utf-8?B?aG9MWnpvSnpWRlhPalMzbWUwZXMveDlQR1ZMUWFCYVorcjB4Z3VLMlBONUQ3?=
+ =?utf-8?B?T3I3V1ZwWHZCZng2STBLbDVpdi9DZ0FpRnpGUFhOSWN5cW5yMllUL1ByVS9S?=
+ =?utf-8?B?bFpVU2Q4ZTBmc21uK0pSUjRSb1RRMWJKdk8rM1YxU2EveFFjOU84QUxsQ0Fn?=
+ =?utf-8?B?alhlSE9LZE1zNC9zWGt2VCtFUEhUMWNXbUdhODR6REVWMjVaZVR6bnVrV2g2?=
+ =?utf-8?B?ZEQxbGVtaW91d2FnemVTSWNWdGtuektQV1RmaGxTNlpXeVVpb0NraFBtdnMv?=
+ =?utf-8?B?NDRLYTg4M0NMcENXMjJqRmZva1dXT2lSRmVMRjlsS3M5ZU11cjR1SWR6cjZy?=
+ =?utf-8?B?ZmNGK0lQWW8rb0NqTWQvZ081dlEvTmhOblJZS1ZCT1JVNjhkbkpMaytCVno0?=
+ =?utf-8?B?OC93N1lpa2ltN2lTTGR0S29FT2dtYVUvVGlLb3Z5M0hoTmgyVkc4QWhUUnB2?=
+ =?utf-8?B?bVFiMXJ4OURPMm1JL2pIUVJVdUF4Q2FXRW1JYytlNHFoNWc9PQ==?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL3PR11MB6435.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(1800799024)(376014); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?T3RoV1VNc2JGblhGTmJBeVRaTStYVXVQRm5yd1kvaXRQdFdhd05sYWRYRmdr?=
+ =?utf-8?B?T1NUVGQ5Q05LUUpTQ1JzNndSSEsrRGpBMTZYUnVpMmFlTjVQK0hJalhEdVFu?=
+ =?utf-8?B?OUc3RnlXck9GQ1RMek95REVaRU0zZlIzMExhN1dkZkhMNU9YVWs2RVVFdWdw?=
+ =?utf-8?B?K3FBSlpPOG9meGJPOWJGV3U0cGtoYStmMkR5TkJ4T2YvMnZoSTlyS0hGWm9J?=
+ =?utf-8?B?UnE1T3dlMHlycEtvWW1lbmFiNlZJQ045aGkvU3kya05raHdWa3FBczJIaHA4?=
+ =?utf-8?B?NUNKcDhCZ0FlN2JQMlp4Q1BHSTk2UmwwWWd1TEZSODZ3T1dwTURHZ3pMbHI2?=
+ =?utf-8?B?WnhlRXNQanpzTWRtREhFREhMK3dYa2oydTRwQU5PMjBpUkg4NEszcXMzSWkz?=
+ =?utf-8?B?Q3R2emFoTSs2MFZMNEJFcUxxcGs4RjdjN012TzB2SXVXOWVGYnVqT1N1cGtu?=
+ =?utf-8?B?QU44UXFpZDRna3FNSFMxOHk0d0FXYUowUFp1NHg4bHNjZk16WG4vQnJyVmRl?=
+ =?utf-8?B?VXk2MkwzV3VDZ3NnSlBJQXJVL3l6bW83TDFkUWlPWGZyNzZDQ3Y2bEFaWVg1?=
+ =?utf-8?B?SkdTYUUwSC9ha3hRRlFiSUdIMWRreUpvQzBIWUNHbnR5eVdySFdXdGFld3Ft?=
+ =?utf-8?B?WHAxZnRFUFRpZlVER09LSXJMV3dJeHRjdGhWc0JGcDQrM3lBd1JlZmlqRDBD?=
+ =?utf-8?B?M3I4ZGZJMEQ4dm8xY2kxcDJMY0xleG1jQzR6MkNOOW1DeldCWkZ0ZXZtanIw?=
+ =?utf-8?B?bmd3N25DL1llekI2NFYyNXhLcitDK0VlbTRlZU4raFZWMytjb3R1OHovcDdx?=
+ =?utf-8?B?Si9KM1A5NzJTb09YdjlSSlR5aUU0QWFmeWljVWc1VjhXUUs2eGc3WnJZclRH?=
+ =?utf-8?B?SVg5Tnl0MWhCOElVZUNIY3FXOGdaaTNCOHpWaUxXZkhQUnhWa3MvcUxrR25D?=
+ =?utf-8?B?ZmlWdFVWOGUrOHNjcVZ4TXg0dXgvMjFkM2FIdnhjbHpuNmtJSHMvdTRmY3cr?=
+ =?utf-8?B?OEJMN24wNGp4NGRGdWNObDYyQTBUVWtiM1dUNE8zOVlhWGRUMm8rUXhsUi9i?=
+ =?utf-8?B?OTd3bnRMdElGZjlqQzFDU2YxR2hhaEhYNGZRMHZUTGJybkFKQmlUUFRjNnZl?=
+ =?utf-8?B?RGFRZ21TVGtLWUFnUnVsdlpsK29Qek9sMy80b29yc2p4REFGQlRhTnI2cmFq?=
+ =?utf-8?B?U3Y5QVVTbFQyLy9kQWhlMXdMUEJJcU5kMjlrRE9SREcxaFNZdG4xYTRKcVc0?=
+ =?utf-8?B?eUdQZWFKUkRNL2JnRWlvbUJzTTBZdDR1ZU5uUmhnZ1lON0ZCNTNwSDc4a0F1?=
+ =?utf-8?B?SXVESVlnbm1HUi9zTGZxc1pqSlhTa09iTk80NFg0SXRMaHdFMXgzQitvMzlM?=
+ =?utf-8?B?L0xvaWNqWjh2dENVeG02aFcxMEJMdGlkN0lDQXhKSEQ4WUo2WE1yZkNpTXVE?=
+ =?utf-8?B?R3c1V3pjL2c2MCtjSjFXU2E1TDdNMkVHVnVwZUhyQStDaXNEVCtwNE9xemdN?=
+ =?utf-8?B?WkxlbFY2c1FPMmx3a00rV3NBUWVxRWUrTjRLcVhhbno3MjRvQk51MmtPYnBV?=
+ =?utf-8?B?QnZybDlZUTJDbUNTWEMvRnZqU05WdVFIQlNWOXdreHNlRG5haUhmMUxoUUpx?=
+ =?utf-8?B?RW85UmVRajJ2TTV4ODNKa1lNb2U0bUxCUS9Lam1MNlJHUmdVWmxNL011ajZ1?=
+ =?utf-8?B?Z0FpUjJHMVNaZHErUjFGYjBSblZFOWtXWkhOdHIwVTNoQ25ESzlSemJCaGVG?=
+ =?utf-8?B?WUU0Zk1UREVnUStDT0hYSzA1c0VBMGdRemNBQkJWRGFuMHBFTWdQcVlvcGM3?=
+ =?utf-8?B?MWxZT0wzZ1FnejhadFZOdzYrWGdZWVFzQlJkR3R2RXhGQk9rbCs1b3I2S3RJ?=
+ =?utf-8?B?cEpxUlk1OWxhMytxU0ZHSEcyalZ3eGgyT3dwTlFaRGdoZnljNFpoREhtTlF6?=
+ =?utf-8?B?WGNjKytnS1ZpWDRybzZTb3ZyRUVJL055UVF1NGplWExJdC9oVm5OTkJBakR2?=
+ =?utf-8?B?dkw3Y3BxTHZOZWVMWkdVZUlQWTJkTkVHbWp2TXBYdG96SzN1Ums4TmlyTk90?=
+ =?utf-8?B?aGR6VFlqY1FxSEYzWG1MQ3dXeVpNWVVSY1YrUHRrMXFOMG16MW5PckZNb3Z3?=
+ =?utf-8?B?NXN4WjZtMGFIQlpnU0hjYVpnVm85Z2dMNTNyYWZMMURWWElGMU43YmdpMzJs?=
+ =?utf-8?B?YkE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2bfeedb2-1e41-441b-5152-08dd77b127d7
+X-MS-Exchange-CrossTenant-AuthSource: BL3PR11MB6435.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Apr 2025 21:54:51.9857 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: vbxBNkbcsqXYiDbKpOZme2v3gGVX90OUYLmTEwI7HGD2qvBWsKFu9sxEeOBfgW17g5nMg9UYMQw65b4cW2Umkt/7CkeBwxwhYpROKkzKywA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR11MB8349
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1744232245; x=1775768245;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=50Lr9UiswVgNOGZSF0EXgynr8xL3SCd7P+OT2F4cjX4=;
- b=IkCDIOn9lQOHysDOlcMqmSKb+3N8givVnLxIUODy2u9CC1Nm0KoR3xDk
- Ue9DFPjqT82bEEFbMn6d2M24fVJokxzK6didAx7xjoroxw/D/sDLxMg2J
- GXNnHn5MFsq0fjiFgc3LMj9jxrH3Wyr3nyptAbDZBP/La1RuRn6JeFYKk
- vdrPmDOWguSb+IFvvbQGPyGl4n8VECLIEKZQ/SoW9oTcytJHmh+u44jck
- 4c2Yk4e2Od/Dn+5lEMwVDo2IMZF7jcAGmULkHGtbSEJnEaTexTT0SzEM/
- b2wB/JRf/8qrToATmrNM4WbkkI0FAcJEUHyNrYRzoL/2yEMxwhoGGwCrT
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1744235726; x=1775771726;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=6lf2+i7bI7ZheQq2/nql9LmdwJQyJlot5XxVencPg68=;
+ b=G86w1txoe0DsT6d4VywWDSpK8xQEl+0NE9QAB7KoxbvUfbZqICOCV9hv
+ fNAZvN4e/NWMjfu1eRQv5RnBMzFc1KpoTNYES/igizlTHFmsT8lxByB1+
+ rAvlT/iwqaa9tet4nWB2eNlm0uPHKyUi59AXhsz0uHtHS36isIbHXO208
+ tJLLjuvxRLWx7w+2vYMHMRQsF3JDJJo9EXChcwVsHuIhAXdEnDugBIBym
+ IVo5gzzyCA/9friqEdcnF24vwOXbaVINFdXSfF0TT/C2b0rT8N3Roiu0H
+ gkQ9znfZu6owE4osjk/9VG3a713T/VSTaoKKcrCHBvdoriUAF42XjtHwe
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=IkCDIOn9
-Subject: [Intel-wired-lan] [PATCH iwl-next v3 3/3] idpf: add flow steering
- support
+ header.s=Intel header.b=G86w1txo
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH intel-next v1] ice: be consistent
+ around PTP de-registration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -116,570 +243,54 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Use the new virtchnl2 OP codes to communicate with the Control Plane to
-add flow steering filters. We add the basic functionality for ADD/Delete
-with TCP/UDP IPv4 only. Support for other OP codes and protocols will be
-added later.
 
-Standard 'ethtool -N|--config-ntuple' should be used, for example:
 
-    # ethtool -N ens801f0d1 flow-type tcp4 src-ip 10.0.0.1 action 6
+On 4/7/2025 4:20 PM, Jesse Brandeburg wrote:
 
-to route all IPv4/TCP traffic from IP 10.0.0.1 to queue 6.
+iwl-next, not intel-next :)
 
-Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
-Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
----
- drivers/net/ethernet/intel/idpf/idpf.h        |  13 +
- .../net/ethernet/intel/idpf/idpf_ethtool.c    | 298 +++++++++++++++++-
- drivers/net/ethernet/intel/idpf/idpf_lib.c    |   5 +
- .../net/ethernet/intel/idpf/idpf_virtchnl.c   | 104 ++++++
- .../net/ethernet/intel/idpf/idpf_virtchnl.h   |   6 +
- 5 files changed, 421 insertions(+), 5 deletions(-)
+> From: Jesse Brandeburg <jbrandeburg@cloudflare.com>
+> 
+> The driver was being inconsistent when de-registering its PTP clock. Make
+> sure to NULL out the pointer once it is freed in all cases. The driver was
+> mostly already doing so, but a couple spots were missed.
+> 
+> Signed-off-by: Jesse Brandeburg <jbrandeburg@cloudflare.com>
+> ---
+> NOTE: we saw some odd behavior on one or two machines where the ports
+> completed init, PTP completed init, then port 0 was "hot removed" via
+> sysfs, and later panics on ptp->index being 1 while being called by
+> ethtool. This caused me to look over this area and see this inconsistency.
+> I wasn't able to confirm any for-sure bug.
+> ---
+>   drivers/net/ethernet/intel/ice/ice_main.c | 5 ++++-
+>   drivers/net/ethernet/intel/ice/ice_ptp.c  | 4 ++--
+>   2 files changed, 6 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+> index 049edeb60104..8c1b496e84ef 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_main.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
+> @@ -3968,8 +3968,11 @@ static void ice_deinit_pf(struct ice_pf *pf)
+>   		pf->avail_rxqs = NULL;
+>   	}
+>   
+> -	if (pf->ptp.clock)
+> +	if (pf->ptp.clock) {
+>   		ptp_clock_unregister(pf->ptp.clock);
+> +		pf->ptp.clock = NULL;
+> +	}
+> +	pf->ptp.state = ICE_PTP_UNINIT;
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf.h b/drivers/net/ethernet/intel/idpf/idpf.h
-index 4e1c0b9e0bda..01a767ff0010 100644
---- a/drivers/net/ethernet/intel/idpf/idpf.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf.h
-@@ -247,6 +247,12 @@ struct idpf_port_stats {
- 	struct virtchnl2_vport_stats vport_stats;
- };
- 
-+struct idpf_fsteer_fltr {
-+	struct list_head list;
-+	u32 loc;
-+	unsigned int q_index;
-+};
-+
- /**
-  * struct idpf_vport - Handle for netdevices and queue resources
-  * @num_txq: Number of allocated TX queues
-@@ -379,6 +385,8 @@ struct idpf_rss_data {
-  *		      ethtool
-  * @user_flags: User toggled config flags
-  * @mac_filter_list: List of MAC filters
-+ * @num_fsteer_fltrs: number of flow steering filters
-+ * @flow_steer_list: list of flow steering filters
-  *
-  * Used to restore configuration after a reset as the vport will get wiped.
-  */
-@@ -390,6 +398,8 @@ struct idpf_vport_user_config_data {
- 	u32 num_req_rxq_desc;
- 	DECLARE_BITMAP(user_flags, __IDPF_USER_FLAGS_NBITS);
- 	struct list_head mac_filter_list;
-+	u16 num_fsteer_fltrs;
-+	struct list_head flow_steer_list;
- };
- 
- /**
-@@ -841,4 +851,7 @@ int idpf_sriov_configure(struct pci_dev *pdev, int num_vfs);
- u8 idpf_vport_get_hsplit(const struct idpf_vport *vport);
- bool idpf_vport_set_hsplit(const struct idpf_vport *vport, u8 val);
- 
-+int idpf_add_del_fsteer_filters(struct idpf_adapter *adapter,
-+				struct virtchnl2_flow_rule_add_del *rule,
-+				bool add);
- #endif /* !_IDPF_H_ */
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
-index 59b1a1a09996..71c3a7282d16 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
-@@ -2,6 +2,7 @@
- /* Copyright (C) 2023 Intel Corporation */
- 
- #include "idpf.h"
-+#include "idpf_virtchnl.h"
- 
- /**
-  * idpf_get_rxnfc - command to get RX flow classification rules
-@@ -12,26 +13,312 @@
-  * Returns Success if the command is supported.
-  */
- static int idpf_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd,
--			  u32 __always_unused *rule_locs)
-+			  u32 *rule_locs)
- {
-+	struct idpf_netdev_priv *np = netdev_priv(netdev);
-+	struct idpf_vport_user_config_data *user_config;
-+	struct idpf_fsteer_fltr *f;
- 	struct idpf_vport *vport;
-+	unsigned int cnt = 0;
-+	int err = 0;
- 
- 	idpf_vport_ctrl_lock(netdev);
- 	vport = idpf_netdev_to_vport(netdev);
-+	user_config = &np->adapter->vport_config[np->vport_idx]->user_config;
- 
- 	switch (cmd->cmd) {
- 	case ETHTOOL_GRXRINGS:
- 		cmd->data = vport->num_rxq;
--		idpf_vport_ctrl_unlock(netdev);
--
--		return 0;
-+		break;
-+	case ETHTOOL_GRXCLSRLCNT:
-+		cmd->rule_cnt = user_config->num_fsteer_fltrs;
-+		cmd->data = idpf_fsteer_max_rules(vport);
-+		break;
-+	case ETHTOOL_GRXCLSRULE:
-+		err = -EINVAL;
-+		list_for_each_entry(f, &user_config->flow_steer_list, list)
-+			if (f->loc == cmd->fs.location) {
-+				cmd->fs.ring_cookie = f->q_index;
-+				err = 0;
-+				break;
-+			}
-+		break;
-+	case ETHTOOL_GRXCLSRLALL:
-+		cmd->data = idpf_fsteer_max_rules(vport);
-+		list_for_each_entry(f, &user_config->flow_steer_list, list) {
-+			if (cnt == cmd->rule_cnt) {
-+				err = -EMSGSIZE;
-+				break;
-+			}
-+			rule_locs[cnt] = f->loc;
-+			cnt++;
-+		}
-+		if (!err)
-+			cmd->rule_cnt = user_config->num_fsteer_fltrs;
-+		break;
- 	default:
- 		break;
- 	}
- 
- 	idpf_vport_ctrl_unlock(netdev);
- 
--	return -EOPNOTSUPP;
-+	return err;
-+}
-+
-+static void idpf_fsteer_fill_ipv4(struct virtchnl2_proto_hdrs *hdrs,
-+				  struct ethtool_rx_flow_spec *fsp)
-+{
-+	struct iphdr *iph;
-+
-+	hdrs->proto_hdr[0].hdr_type = cpu_to_le32(VIRTCHNL2_PROTO_HDR_IPV4);
-+
-+	iph = (struct iphdr *)hdrs->proto_hdr[0].buffer_spec;
-+	iph->saddr = fsp->h_u.tcp_ip4_spec.ip4src;
-+	iph->daddr = fsp->h_u.tcp_ip4_spec.ip4dst;
-+
-+	iph = (struct iphdr *)hdrs->proto_hdr[0].buffer_mask;
-+	iph->saddr = fsp->m_u.tcp_ip4_spec.ip4src;
-+	iph->daddr = fsp->m_u.tcp_ip4_spec.ip4dst;
-+}
-+
-+static void idpf_fsteer_fill_udp(struct virtchnl2_proto_hdrs *hdrs,
-+				 struct ethtool_rx_flow_spec *fsp,
-+				 bool v4)
-+{
-+	struct udphdr *udph, *udpm;
-+
-+	hdrs->proto_hdr[1].hdr_type = cpu_to_le32(VIRTCHNL2_PROTO_HDR_UDP);
-+
-+	udph = (struct udphdr *)hdrs->proto_hdr[1].buffer_spec;
-+	udpm = (struct udphdr *)hdrs->proto_hdr[1].buffer_mask;
-+
-+	if (v4) {
-+		udph->source = fsp->h_u.udp_ip4_spec.psrc;
-+		udph->dest = fsp->h_u.udp_ip4_spec.pdst;
-+		udpm->source = fsp->m_u.udp_ip4_spec.psrc;
-+		udpm->dest = fsp->m_u.udp_ip4_spec.pdst;
-+	} else {
-+		udph->source = fsp->h_u.udp_ip6_spec.psrc;
-+		udph->dest = fsp->h_u.udp_ip6_spec.pdst;
-+		udpm->source = fsp->m_u.udp_ip6_spec.psrc;
-+		udpm->dest = fsp->m_u.udp_ip6_spec.pdst;
-+	}
-+}
-+
-+static void idpf_fsteer_fill_tcp(struct virtchnl2_proto_hdrs *hdrs,
-+				 struct ethtool_rx_flow_spec *fsp,
-+				 bool v4)
-+{
-+	struct tcphdr *tcph, *tcpm;
-+
-+	hdrs->proto_hdr[1].hdr_type = cpu_to_le32(VIRTCHNL2_PROTO_HDR_TCP);
-+
-+	tcph = (struct tcphdr *)hdrs->proto_hdr[1].buffer_spec;
-+	tcpm = (struct tcphdr *)hdrs->proto_hdr[1].buffer_mask;
-+
-+	if (v4) {
-+		tcph->source = fsp->h_u.tcp_ip4_spec.psrc;
-+		tcph->dest = fsp->h_u.tcp_ip4_spec.pdst;
-+		tcpm->source = fsp->m_u.tcp_ip4_spec.psrc;
-+		tcpm->dest = fsp->m_u.tcp_ip4_spec.pdst;
-+	} else {
-+		tcph->source = fsp->h_u.tcp_ip6_spec.psrc;
-+		tcph->dest = fsp->h_u.tcp_ip6_spec.pdst;
-+		tcpm->source = fsp->m_u.tcp_ip6_spec.psrc;
-+		tcpm->dest = fsp->m_u.tcp_ip6_spec.pdst;
-+	}
-+}
-+
-+/**
-+ * idpf_add_flow_steer - add a Flow Steering filter
-+ * @netdev: network interface device structure
-+ * @cmd: command to add Flow Steering filter
-+ *
-+ * Return: 0 on success and negative values for failure
-+ */
-+static int idpf_add_flow_steer(struct net_device *netdev,
-+			       struct ethtool_rxnfc *cmd)
-+{
-+	struct idpf_fsteer_fltr *fltr, *parent = NULL, *f;
-+	struct idpf_netdev_priv *np = netdev_priv(netdev);
-+	struct idpf_vport_user_config_data *user_config;
-+	struct ethtool_rx_flow_spec *fsp = &cmd->fs;
-+	struct virtchnl2_flow_rule_add_del *rule;
-+	struct idpf_vport_config *vport_config;
-+	struct virtchnl2_rule_action_set *acts;
-+	struct virtchnl2_flow_rule_info *info;
-+	struct virtchnl2_proto_hdrs *hdrs;
-+	struct idpf_vport *vport;
-+	u32 flow_type, q_index;
-+	u16 num_rxq;
-+	int err;
-+
-+	vport = idpf_netdev_to_vport(netdev);
-+	vport_config = vport->adapter->vport_config[np->vport_idx];
-+	user_config = &vport_config->user_config;
-+	num_rxq = user_config->num_req_rx_qs;
-+
-+	flow_type = fsp->flow_type & ~(FLOW_EXT | FLOW_MAC_EXT | FLOW_RSS);
-+	if (flow_type != fsp->flow_type)
-+		return -EINVAL;
-+
-+	if (!idpf_sideband_action_ena(vport, fsp) ||
-+	    !idpf_sideband_flow_type_ena(vport, flow_type))
-+		return -EOPNOTSUPP;
-+
-+	if (user_config->num_fsteer_fltrs > idpf_fsteer_max_rules(vport))
-+		return -ENOSPC;
-+
-+	q_index = fsp->ring_cookie;
-+	if (q_index >= num_rxq)
-+		return -EINVAL;
-+
-+	rule = kzalloc(struct_size(rule, rule_info, 1), GFP_KERNEL);
-+	if (!rule)
-+		return -ENOMEM;
-+
-+	rule->vport_id = cpu_to_le32(vport->vport_id);
-+	rule->count = cpu_to_le32(1);
-+	info = &rule->rule_info[0];
-+	info->rule_id = cpu_to_le32(fsp->location);
-+
-+	hdrs = &info->rule_cfg.proto_hdrs;
-+	hdrs->tunnel_level = 0;
-+	hdrs->count = cpu_to_le32(2);
-+
-+	acts = &info->rule_cfg.action_set;
-+	acts->count = cpu_to_le32(1);
-+	acts->actions[0].action_type = cpu_to_le32(VIRTCHNL2_ACTION_QUEUE);
-+	acts->actions[0].act_conf.q_id = cpu_to_le32(q_index);
-+
-+	switch (flow_type) {
-+	case UDP_V4_FLOW:
-+		idpf_fsteer_fill_ipv4(hdrs, fsp);
-+		idpf_fsteer_fill_udp(hdrs, fsp, true);
-+		break;
-+	case TCP_V4_FLOW:
-+		idpf_fsteer_fill_ipv4(hdrs, fsp);
-+		idpf_fsteer_fill_tcp(hdrs, fsp, true);
-+		break;
-+	default:
-+		err = -EINVAL;
-+		goto out;
-+	}
-+
-+	err = idpf_add_del_fsteer_filters(vport->adapter, rule, true);
-+	if (err)
-+		goto out;
-+
-+	if (info->status != cpu_to_le32(VIRTCHNL2_FLOW_RULE_SUCCESS)) {
-+		err = -EIO;
-+		goto out;
-+	}
-+
-+	fltr = kzalloc(sizeof(*fltr), GFP_KERNEL);
-+	if (!fltr) {
-+		err = -ENOMEM;
-+		goto out;
-+	}
-+
-+	fltr->loc = fsp->location;
-+	fltr->q_index = q_index;
-+	list_for_each_entry(f, &user_config->flow_steer_list, list) {
-+		if (f->loc >= fltr->loc)
-+			break;
-+		parent = f;
-+	}
-+
-+	if (parent)
-+		list_add(&fltr->list, &parent->list);
-+	else
-+		list_add(&fltr->list, &user_config->flow_steer_list);
-+
-+	user_config->num_fsteer_fltrs++;
-+
-+out:
-+	kfree(rule);
-+	return err;
-+}
-+
-+/**
-+ * idpf_del_flow_steer - delete a Flow Steering filter
-+ * @netdev: network interface device structure
-+ * @cmd: command to add Flow Steering filter
-+ *
-+ * Return: 0 on success and negative values for failure
-+ */
-+static int idpf_del_flow_steer(struct net_device *netdev,
-+			       struct ethtool_rxnfc *cmd)
-+{
-+	struct idpf_netdev_priv *np = netdev_priv(netdev);
-+	struct idpf_vport_user_config_data *user_config;
-+	struct ethtool_rx_flow_spec *fsp = &cmd->fs;
-+	struct virtchnl2_flow_rule_add_del *rule;
-+	struct idpf_vport_config *vport_config;
-+	struct virtchnl2_flow_rule_info *info;
-+	struct idpf_fsteer_fltr *f, *iter;
-+	struct idpf_vport *vport;
-+	int err;
-+
-+	vport = idpf_netdev_to_vport(netdev);
-+	vport_config = vport->adapter->vport_config[np->vport_idx];
-+	user_config = &vport_config->user_config;
-+
-+	if (!idpf_sideband_action_ena(vport, fsp))
-+		return -EOPNOTSUPP;
-+
-+	rule = kzalloc(struct_size(rule, rule_info, 1), GFP_KERNEL);
-+	if (!rule)
-+		return -ENOMEM;
-+
-+	rule->vport_id = cpu_to_le32(vport->vport_id);
-+	rule->count = cpu_to_le32(1);
-+	info = &rule->rule_info[0];
-+	info->rule_id = cpu_to_le32(fsp->location);
-+
-+	err = idpf_add_del_fsteer_filters(vport->adapter, rule, false);
-+	if (err)
-+		goto out;
-+
-+	if (info->status != cpu_to_le32(VIRTCHNL2_FLOW_RULE_SUCCESS)) {
-+		err = -EIO;
-+		goto out;
-+	}
-+
-+	list_for_each_entry_safe(f, iter,
-+				 &user_config->flow_steer_list, list) {
-+		if (f->loc == fsp->location) {
-+			list_del(&f->list);
-+			kfree(f);
-+			user_config->num_fsteer_fltrs--;
-+			goto out;
-+		}
-+	}
-+	err = -EINVAL;
-+
-+out:
-+	kfree(rule);
-+	return err;
-+}
-+
-+static int idpf_set_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd)
-+{
-+	int ret = -EOPNOTSUPP;
-+
-+	idpf_vport_ctrl_lock(netdev);
-+	switch (cmd->cmd) {
-+	case ETHTOOL_SRXCLSRLINS:
-+		ret = idpf_add_flow_steer(netdev, cmd);
-+		break;
-+	case ETHTOOL_SRXCLSRLDEL:
-+		ret = idpf_del_flow_steer(netdev, cmd);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	idpf_vport_ctrl_unlock(netdev);
-+	return ret;
- }
- 
- /**
-@@ -1328,6 +1615,7 @@ static const struct ethtool_ops idpf_ethtool_ops = {
- 	.get_sset_count		= idpf_get_sset_count,
- 	.get_channels		= idpf_get_channels,
- 	.get_rxnfc		= idpf_get_rxnfc,
-+	.set_rxnfc		= idpf_set_rxnfc,
- 	.get_rxfh_key_size	= idpf_get_rxfh_key_size,
- 	.get_rxfh_indir_size	= idpf_get_rxfh_indir_size,
- 	.get_rxfh		= idpf_get_rxfh,
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-index 730a9c7a59f2..835d5ae8d40f 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-@@ -768,6 +768,10 @@ static int idpf_cfg_netdev(struct idpf_vport *vport)
- 
- 	if (idpf_is_cap_ena_all(adapter, IDPF_RSS_CAPS, IDPF_CAP_RSS))
- 		dflt_features |= NETIF_F_RXHASH;
-+	if (idpf_is_cap_ena(adapter, IDPF_OTHER_CAPS,
-+			    VIRTCHNL2_CAP_FLOW_STEER) &&
-+	    idpf_vport_is_cap_ena(vport, VIRTCHNL2_VPORT_SIDEBAND_FLOW_STEER))
-+		dflt_features |= NETIF_F_NTUPLE;
- 	if (idpf_is_cap_ena_all(adapter, IDPF_CSUM_CAPS, IDPF_CAP_TX_CSUM_L4V4))
- 		csum_offloads |= NETIF_F_IP_CSUM;
- 	if (idpf_is_cap_ena_all(adapter, IDPF_CSUM_CAPS, IDPF_CAP_TX_CSUM_L4V6))
-@@ -1491,6 +1495,7 @@ void idpf_init_task(struct work_struct *work)
- 	spin_lock_init(&vport_config->mac_filter_list_lock);
- 
- 	INIT_LIST_HEAD(&vport_config->user_config.mac_filter_list);
-+	INIT_LIST_HEAD(&vport_config->user_config.flow_steer_list);
- 
- 	err = idpf_check_supported_desc_ids(vport);
- 	if (err) {
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-index 895f98304efc..55a500d5ddb3 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-@@ -918,6 +918,37 @@ static int idpf_send_get_caps_msg(struct idpf_adapter *adapter)
- 	return 0;
- }
- 
-+/**
-+ * idpf_add_del_fsteer_filters - Send virtchnl add/del Flow Steering message
-+ * @adapter: adapter info struct
-+ * @rule: Flow steering rule to add/delete
-+ * @add: True to add filter, FALSE to delete
-+ *
-+ * Send ADD/DELETE flow steering virtchnl message and receive the result.
-+ *
-+ * Return: 0 on success, negative on failure.
-+ */
-+int idpf_add_del_fsteer_filters(struct idpf_adapter *adapter,
-+				struct virtchnl2_flow_rule_add_del *rule,
-+				bool add)
-+{
-+	int rule_count = le32_to_cpu(rule->count);
-+	struct idpf_vc_xn_params xn_params = {};
-+	ssize_t reply_sz;
-+
-+	xn_params.vc_op = add ? VIRTCHNL2_OP_ADD_FLOW_RULE :
-+				VIRTCHNL2_OP_DEL_FLOW_RULE;
-+	xn_params.timeout_ms = IDPF_VC_XN_DEFAULT_TIMEOUT_MSEC;
-+	xn_params.async = false;
-+	xn_params.send_buf.iov_base = rule;
-+	xn_params.send_buf.iov_len = struct_size(rule, rule_info, rule_count);
-+	xn_params.recv_buf.iov_base = rule;
-+	xn_params.recv_buf.iov_len = struct_size(rule, rule_info, rule_count);
-+
-+	reply_sz = idpf_vc_xn_exec(adapter, &xn_params);
-+	return reply_sz < 0 ? reply_sz : 0;
-+}
-+
- /**
-  * idpf_vport_alloc_max_qs - Allocate max queues for a vport
-  * @adapter: Driver specific private structure
-@@ -3501,6 +3532,79 @@ bool idpf_is_capability_ena(struct idpf_adapter *adapter, bool all,
- 		return !!(*cap_field & flag);
- }
- 
-+/**
-+ * idpf_vport_is_cap_ena - Check if vport capability is enabled
-+ * @vport: Private data struct
-+ * @flag: flag(s) to check
-+ *
-+ * Return: true if the capability is supported, false otherwise
-+ */
-+bool idpf_vport_is_cap_ena(struct idpf_vport *vport, u16 flag)
-+{
-+	struct virtchnl2_create_vport *vport_msg;
-+
-+	vport_msg = vport->adapter->vport_params_recvd[vport->idx];
-+
-+	return !!(le16_to_cpu(vport_msg->vport_flags) & flag);
-+}
-+
-+/**
-+ * idpf_sideband_flow_type_ena - Check if steering is enabled for flow type
-+ * @vport: Private data struct
-+ * @flow_type: flow type to check (from ethtool.h)
-+ *
-+ * Return: true if sideband filters are allowed for @flow_type, false otherwise
-+ */
-+bool idpf_sideband_flow_type_ena(struct idpf_vport *vport, u32 flow_type)
-+{
-+	struct virtchnl2_create_vport *vport_msg;
-+	__le64 caps;
-+
-+	vport_msg = vport->adapter->vport_params_recvd[vport->idx];
-+	caps = vport_msg->sideband_flow_caps;
-+
-+	switch (flow_type) {
-+	case TCP_V4_FLOW:
-+		return !!(caps & cpu_to_le64(VIRTCHNL2_FLOW_IPV4_TCP));
-+	case UDP_V4_FLOW:
-+		return !!(caps & cpu_to_le64(VIRTCHNL2_FLOW_IPV4_UDP));
-+	default:
-+		return false;
-+	}
-+}
-+
-+/**
-+ * idpf_sideband_action_ena - Check if steering is enabled for action
-+ * @vport: Private data struct
-+ * @fsp: flow spec
-+ *
-+ * Return: true if sideband filters are allowed for @fsp, false otherwise
-+ */
-+bool idpf_sideband_action_ena(struct idpf_vport *vport,
-+			      struct ethtool_rx_flow_spec *fsp)
-+{
-+	struct virtchnl2_create_vport *vport_msg;
-+	unsigned int supp_actions;
-+
-+	vport_msg = vport->adapter->vport_params_recvd[vport->idx];
-+	supp_actions = le32_to_cpu(vport_msg->sideband_flow_actions);
-+
-+	/* Actions Drop/Wake are not supported */
-+	if (fsp->ring_cookie == RX_CLS_FLOW_DISC ||
-+	    fsp->ring_cookie == RX_CLS_FLOW_WAKE)
-+		return false;
-+
-+	return !!(supp_actions & VIRTCHNL2_ACTION_QUEUE);
-+}
-+
-+unsigned int idpf_fsteer_max_rules(struct idpf_vport *vport)
-+{
-+	struct virtchnl2_create_vport *vport_msg;
-+
-+	vport_msg = vport->adapter->vport_params_recvd[vport->idx];
-+	return le32_to_cpu(vport_msg->flow_steer_max_rules);
-+}
-+
- /**
-  * idpf_get_vport_id: Get vport id
-  * @vport: virtual port structure
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h
-index 83da5d8da56b..ee348375db8c 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h
-@@ -21,6 +21,12 @@ int idpf_get_reg_intr_vecs(struct idpf_vport *vport,
- int idpf_queue_reg_init(struct idpf_vport *vport);
- int idpf_vport_queue_ids_init(struct idpf_vport *vport);
- 
-+bool idpf_vport_is_cap_ena(struct idpf_vport *vport, u16 flag);
-+bool idpf_sideband_flow_type_ena(struct idpf_vport *vport, u32 flow_type);
-+bool idpf_sideband_action_ena(struct idpf_vport *vport,
-+			      struct ethtool_rx_flow_spec *fsp);
-+unsigned int idpf_fsteer_max_rules(struct idpf_vport *vport);
-+
- int idpf_recv_mb_msg(struct idpf_adapter *adapter);
- int idpf_send_mb_msg(struct idpf_adapter *adapter, u32 op,
- 		     u16 msg_size, u8 *msg, u16 cookie);
--- 
-2.43.0
+Hi Jesse,
 
+It looks like we get a proper removal/unregister in ice_ptp_release() 
+which is called from ice_deinit_features(). From what I'm seeing, I 
+don't think the unregister should be done here at all.
+
+Thanks,
+Tony
+
+>   
+>   	xa_destroy(&pf->dyn_ports);
+>   	xa_destroy(&pf->sf_nums);
