@@ -1,220 +1,133 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A628A82708
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Apr 2025 16:04:52 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A688A82B01
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Apr 2025 17:47:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 687B7402D6;
-	Wed,  9 Apr 2025 14:04:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0BB62412BD;
+	Wed,  9 Apr 2025 15:47:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xolvK_qkM-Vu; Wed,  9 Apr 2025 14:04:49 +0000 (UTC)
+ id oFMINR0Z3F5S; Wed,  9 Apr 2025 15:47:26 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ABCA7402D9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 059514081E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744207489;
-	bh=4+s8DsxARloVeLybZQvgQ822laV2xsHNA34NVig4deM=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=gCGsE0o7XbyGjuPRRa110BgLeKoTrjm89LiHVfSPcicJ9NsAzYNkWuOFPaD9xf5vE
-	 +fJmG/G63VNFoIhtK8vvI8Kj+vsPW63gvYDu1+jiL9N0ewtONiUmWyotAcOutxrMVk
-	 z7tCm7VAaLKHhxSEpQZpVK1Z87FD1cfoIP44xARzmyN0jaop7W7t8d2CQPzhLiUwRM
-	 ovg6vSgr7tPRmfqzpgVQSvDMtuPU8JJygQlvNIx1bOa2xVwJewdFNxdhpiyfE7dGtI
-	 xK4oB4AppDlDG4I5nOEGEGLt4m9gsOcJqEciRr6sl+xhXk/Q2hnj0Haj5Dl3hr0R+p
-	 PmKdOWsMHj9aA==
+	s=default; t=1744213646;
+	bh=OQY75CxhJpKYQcuidz2M6w9c7v/GcVX/QelSDLhjFSo=;
+	h=Date:From:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=l4r6t9LolXn42LjRxbqFjAOsHGVN+D/vHRLX5HvhcNdsrVbed9HfL2qxTVYD59bX2
+	 Nscavk/SYXJbpEBQP7pwjsbAa5WEt48Y9lhQX2njzBLvXHBepOamqRemr9HROeXxQp
+	 5g1DcBLqGF7HMvUMUdxmnY6KI+JDTPWXYoZG+HtFkB0kvDnqLhHA7njkpSFWbySvBg
+	 NerB04625xxnfzBQ1BEXEHrbkSBuRb4kGWhQgZsDnFreyoAbdZbMeWgxqcHTpiWRtv
+	 DaEM9uAs+P8LXgy9f4fybEIx7w2iO/7LTzvlMdkc+NqZjBlqfVjDHuyTiI1BuAJZoM
+	 eK5W/UWhf1O2g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id ABCA7402D9;
-	Wed,  9 Apr 2025 14:04:49 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 059514081E;
+	Wed,  9 Apr 2025 15:47:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id AD03CD6
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Apr 2025 14:04:48 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 677E5108
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Apr 2025 15:36:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9230180DA6
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Apr 2025 14:04:48 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4FA678377F
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Apr 2025 15:36:39 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id m0oCypMd9HwX for <intel-wired-lan@lists.osuosl.org>;
- Wed,  9 Apr 2025 14:04:48 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
- helo=mgamail.intel.com; envelope-from=milena.olech@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org D4BF782ED2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D4BF782ED2
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D4BF782ED2
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Apr 2025 14:04:47 +0000 (UTC)
-X-CSE-ConnectionGUID: QHcOMjmSTs+wbiNoPPG7vw==
-X-CSE-MsgGUID: q9LAU6+CT8KsiuXiIYy3Ww==
-X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="45571481"
-X-IronPort-AV: E=Sophos;i="6.15,200,1739865600"; d="scan'208";a="45571481"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Apr 2025 07:04:47 -0700
-X-CSE-ConnectionGUID: Fr3vcGfxRr+xasltpafneg==
-X-CSE-MsgGUID: nOAfKkpnQAu7h97TMAMo6A==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,200,1739865600"; d="scan'208";a="128571941"
-Received: from orsmsx901.amr.corp.intel.com ([10.22.229.23])
- by orviesa006.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Apr 2025 07:04:47 -0700
-Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14; Wed, 9 Apr 2025 07:04:46 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14 via Frontend Transport; Wed, 9 Apr 2025 07:04:46 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.49) by
- edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Wed, 9 Apr 2025 07:04:45 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=vEfGyHOaSFhZ3IWo0fSpVx0A2x8LrwSyhzeO95U5CdzPJARKt0HTdDarB7qGLr9Fe70nuqfoQEosz/P06zRa4bHF21LOzsVdwTW9NzyqdEMlqg1QAR6z4GC+XFv0+xqQ6sAx3oOP5r+xx55fpg6rEwuiC1FijK7YX3A2TZUsnYBq26p6PNri0aFaG8YN6x4EsuwA841XfAeNqI0IUjzVmb7fFhvOBBDoreSX7P3g1vFgt7c4Kx+vG/NYSGn/rXZ/eGbyT3isGcUt0Z/qh3QaIRixxf88b3ELljrb87Hzbi/sdBDSo4ieouqINQbLUreIoO2RrXBwgOSg/mRXxmd2vA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=4+s8DsxARloVeLybZQvgQ822laV2xsHNA34NVig4deM=;
- b=y0Dmd4hNaV6lkV95hqPKJ0DSqP5JZWfa0zASmBHN5iF/v66zsSNSZ2k3oWm+gmucn7qvBD9C0X3/hhia/0R5LpgC+Xv4UgOJqLHbbX489A6/wBprQ/f93DqeIi4qmwfbdcnIagCKweAcNy9T/Xq9Cm9QW4Lyel7kdL6zMwd8YFo2CJ2NbkQ1kXy0waBg5sn509ZsgNiA9JQRUklXEImQdewETXNlwIksZVukgMVtbpqoFxKoGngLAxxKzHpvjngjbXo+V81x2qTXCzr/INN19VjhjyrUScJWo/YbhxqK879guac+bzgT7YwESGYjXOLZRvbTypgKVV2gdMVPrNVayg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MW4PR11MB5889.namprd11.prod.outlook.com (2603:10b6:303:168::10)
- by PH8PR11MB7989.namprd11.prod.outlook.com (2603:10b6:510:258::13)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8606.27; Wed, 9 Apr
- 2025 14:04:16 +0000
-Received: from MW4PR11MB5889.namprd11.prod.outlook.com
- ([fe80::89d6:5ccc:1dcc:3073]) by MW4PR11MB5889.namprd11.prod.outlook.com
- ([fe80::89d6:5ccc:1dcc:3073%3]) with mapi id 15.20.8632.017; Wed, 9 Apr 2025
- 14:04:16 +0000
-From: "Olech, Milena" <milena.olech@intel.com>
-To: "Keller, Jacob E" <jacob.e.keller@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-CC: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Nguyen, Anthony L"
- <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
- <przemyslaw.kitszel@intel.com>, "Lobakin, Aleksander"
- <aleksander.lobakin@intel.com>, "Tantilov, Emil S"
- <emil.s.tantilov@intel.com>, "Linga, Pavan Kumar"
- <pavan.kumar.linga@intel.com>, "Salin, Samuel" <samuel.salin@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH v10 iwl-next 09/11] idpf: add Tx
- timestamp capabilities negotiation
-Thread-Index: AQHbqHOjRn8qxDsA3UaWElOPtuJIrrOaR/8AgAEU7oA=
-Date: Wed, 9 Apr 2025 14:04:16 +0000
-Message-ID: <MW4PR11MB5889766212BD05ADC555FD608EB42@MW4PR11MB5889.namprd11.prod.outlook.com>
-References: <20250408103240.30287-2-milena.olech@intel.com>
- <20250408103240.30287-21-milena.olech@intel.com>
- <757ed954-47a9-4be3-909e-5a343f453314@intel.com>
-In-Reply-To: <757ed954-47a9-4be3-909e-5a343f453314@intel.com>
-Accept-Language: en-US, pl-PL
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: MW4PR11MB5889:EE_|PH8PR11MB7989:EE_
-x-ms-office365-filtering-correlation-id: d8f4317d-11f2-4f71-9213-08dd776f6a68
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0; ARA:13230040|366016|376014|1800799024|38070700018;
-x-microsoft-antispam-message-info: =?us-ascii?Q?hbzMLEvMHrxQDaPjObLcgFEQHgl1DFNZu3Ud4RvG2WzeI9oNvCNTqsPkbbcw?=
- =?us-ascii?Q?pVMdph8KM4JYrGRZdUKmznFbqD3m4We3/05spAzxVEeGW6uzd0c1ikgSntdI?=
- =?us-ascii?Q?zhhU/IkDFM+u7IOJO5YrkHjGWERksvvV4+hR2XibcVb2Auee3CxzrHhdZTJp?=
- =?us-ascii?Q?7zcgx+j+AlW3WDIfUiBBzNHBcrgNMtZBMc8rg1wuW27ol6WnePciaPpbZaMU?=
- =?us-ascii?Q?PHzkbKPY5iavEc0bbEhXl0bUIS3CLVZ4WFY7YWnhFcT0PTcnXTFd6QgsC6OM?=
- =?us-ascii?Q?2Kppgpl/bX/rialyg4V93Vd0X1d9/oQj7zkeyW0Q4WIHAtgwnT/wY1xRVnon?=
- =?us-ascii?Q?vGpkifhVD50jXzNc7yK7GaVyyb2A4yDmAATHan0SWztBN63MLW/CzJX7C7rH?=
- =?us-ascii?Q?SO0zN9vTqwgTZ6RnLNYotGpxyEHYib0102R9tKSsVmVRIJMut+5d93KSbQPc?=
- =?us-ascii?Q?ys1cGGxd1F9LySPQNwRPfutm0UDeTvCZ4LIgfFkyF5uCVNsqMjCXFlg6qTa2?=
- =?us-ascii?Q?HSXEEuvLPMH2HkhA9kNmiHtkEitF67eJuV52n8GJcRU+mn5aJim9Sq/eH6Eh?=
- =?us-ascii?Q?vpNm54cQQKh0Z8L/aGtrIA3JU+oIPCfxHyFUM4LSprmpKGC8fKYWE38yzlwL?=
- =?us-ascii?Q?XfxyMZuT4HPyuZ9t1Jozzwqok512X2d/8t21sd/z3NtAJunQEEfXU05buENf?=
- =?us-ascii?Q?9kU53rqu66oUEK+HmR2k5ZOTjZfaYh6SGzGWHKvvrtBIPRln4LtYL0Nkg4rN?=
- =?us-ascii?Q?FJyajTYbvg/bnwrDq2ePyKtCUTkrF5dGIYGHeh4SCinPtk7eEvO0PGKTBKMn?=
- =?us-ascii?Q?50lbLQeDopFugopnPJHffE4rslRZS6NQuoahipBb8EO/Aa2eb2Tyu1iCKOOX?=
- =?us-ascii?Q?OgHsorZTphIHB6aHYZ5GWZrSPYZBLRKI740GZbLqJxBmUqb5KwC1y1dhdYwr?=
- =?us-ascii?Q?TGdw+Gmn4tZh4VuKLLN8NCn6kPZxDHxCZyZOVB4y/YhtCRwC46ml66W7XTQv?=
- =?us-ascii?Q?B08BtJGF+7SMQms8mQv9JDvywa2aIqf4Tjo5o/iAJ1F7Zkgnk4a6BtFoRm06?=
- =?us-ascii?Q?zUzmFO/VEI8FIMsrgxixM/WL9m+Ga3VF4Z8xqtG3RdBdU4+NrMhd/jFG52MG?=
- =?us-ascii?Q?dgAFiks219ABNFJdghmcTSp8Ado2YQRrIUjHwjJK3Tqd7+7lODypYA+WIRRr?=
- =?us-ascii?Q?sI0OoNks/bLRCP6dHrpE1SPcs79yxJ5xQ55BX+GKUlh73Q/XlaoTp8ifwVQU?=
- =?us-ascii?Q?BuD+7W4qpMlmL58Z4jwT9NoHH1j/+LkoroPtgVUG7IsBMQUH095fJ5QXgH84?=
- =?us-ascii?Q?Hd+7f13xonW13sLBT+wP1MF2WNjDzBLhnX9rJK4m9itOvv+Ox9fc9x2E9xvv?=
- =?us-ascii?Q?xw88o5wrsh9isygckCogdmLjQomk/l6GC5oLXnw8CIaexzgyrkwE/hWHo+V1?=
- =?us-ascii?Q?gJW6LzOei+DPuvoMF+4rlpbpQvDcFcMC5dsXn27Oye61r++LEi5Aw9ptKvxP?=
- =?us-ascii?Q?isIhzK9NGLnysUE=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MW4PR11MB5889.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(376014)(1800799024)(38070700018); DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?/rVyZ33ZKIKfbs+EW8KazZIbFHrKYigTUAlPLrwHOmJ75wN/BWr0ymuhxnBd?=
- =?us-ascii?Q?rN+QF/lRWnQrxxQxs/XVkdcUAAa4T8ZVOkdKFF8362RafFwPVzOsVk1sYPnD?=
- =?us-ascii?Q?iIjP6HybZbIbqCWyx5VCBJgqngKND/TIvOzb89pbYaMyUdIQt04C6qNMhBDE?=
- =?us-ascii?Q?ob17s5hnejrl0MUb/8Akf2l9y0TT1/QPaAveXtj4LFVohzbFr0lWNm6El27A?=
- =?us-ascii?Q?S8UUnPiYU/p5/mtCewoIvRi3pHcuc14EZUGAXeBuXOIKxxQe5US0VpJ7Jyg1?=
- =?us-ascii?Q?KBm010+uciYKLrUAwy4ARZXgp6J46p/09AdlY+RbdGb9N8ujMQS/Rc/HfxCt?=
- =?us-ascii?Q?3LElnx6ydnPrMYBj19pE3ixUSL2n5/L49PCKjFmq9t8UYPr2tL90qtMI1oON?=
- =?us-ascii?Q?eo4wNxFuKRx8D8zOjKqmaGfaPvF373iOYuZVtgiY5fNIdDjofYBkl+p/xvlr?=
- =?us-ascii?Q?9jmch/vXbCMS738eR4tGWCXCkgHWszmgJxAa2d8x8u++alYJ6pmNZfqfU7n9?=
- =?us-ascii?Q?c9d3KSKHtdrScR/5CTUK/llcDSSvMC8H2581sKsq4+N8o4nFTRZ1A9zl3k/I?=
- =?us-ascii?Q?V19BtQ9DJfSBpaMJzVuXf1efRm/j2fFTh1PbMHJrhKOKqVlZYGFrE64LdMQ8?=
- =?us-ascii?Q?AVkWQndZjX9ZA3nzJUD1/vfSk4IFvda0ZR4gJLGbcxEpoSKDkI+qSdyYFXb0?=
- =?us-ascii?Q?3v+ugqHV+zWHVQAB7iL056anOVeYhp8pesfwXKuAKyKCmb4BF5A4pUjg8U52?=
- =?us-ascii?Q?KO5g6l0H/9p3RIYDuLPbZ8KiX7Z9csplf5+EJ3L49NgkbtYK/s7+69HoNHUj?=
- =?us-ascii?Q?uZYEie7RTEDyjKw8yiUug7F4ITHmapLtR9IgIE6rVD2l1aek/RcyJfNqt4Zs?=
- =?us-ascii?Q?xZOwfPti3pjA5YZ/MBso6LG0lwBFIX5hA9RU25t6qoiaC1xGgyWYzuUog1hi?=
- =?us-ascii?Q?yf3vn446VMdVFNL2gbdtNocEYId8Vk0TY71xd3haVUbUZE4eB1HlfKMgfH2F?=
- =?us-ascii?Q?53A3lpi8kSwGwRKyUcwbHhY5dTGzxe/IXC/b5VO2uaesBxQ/zGpFdvsN3asM?=
- =?us-ascii?Q?0j/FhYBfhpEyAV0DAVuq32mN00nYJhaCdpDYDYX59Wa7txjj1Gkn8HH7MCqd?=
- =?us-ascii?Q?bACmA2dzU8F7IhnT4od21rCzPcPoW/nFefZGajpEcYKWSL/bNYhDfxb2Lz0E?=
- =?us-ascii?Q?rSLhKZQ9DXtEigDWderhV7WQllLbzFX77PVtH2cTgBHZOPK00NG0h0IfQ8Ka?=
- =?us-ascii?Q?xrkqxUh6wbZXn5TjQy4S6FPoJ0c2plJ18VEuV7LWba14wNOfDDb3QdX9Gdtr?=
- =?us-ascii?Q?pYNK/doktZcoyD5IOKWfnIeo4zcPzNEKJyl97Xs0ekx8MhMhUQ/J74z1NJxO?=
- =?us-ascii?Q?HQBpQMKls27ybr7xvkmh1s44mzE6WjdvgnD480zKaX/XKzxSFXMxkC0ou/Zk?=
- =?us-ascii?Q?XDvmVp0GhXWhcQPzFA68tlnvKQQozGWx9mDeOHRqoEhRqqHKmkGf9tIQWBGn?=
- =?us-ascii?Q?t1ELgB/FBopF3PJzNYuEKVlBNBbnJ0mamuKq8Hn3hpaBCvp7AtCYWnRcplpw?=
- =?us-ascii?Q?9N4ssItC88VOYsXi8sAxDutAAqCbMZ3qlWxHLgqR?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ id xhRRQK6QjFO6 for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  9 Apr 2025 15:36:38 +0000 (UTC)
+X-Greylist: delayed 1121 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 09 Apr 2025 15:36:37 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 989E88380E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 989E88380E
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=85.10.215.232;
+ helo=dediextern.your-server.de;
+ envelope-from=marcus.wichelmann@hetzner-cloud.de; receiver=<UNKNOWN> 
+Received: from dediextern.your-server.de (dediextern.your-server.de
+ [85.10.215.232])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 989E88380E
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Apr 2025 15:36:37 +0000 (UTC)
+Received: from sslproxy01.your-server.de ([78.46.139.224])
+ by dediextern.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
+ (Exim 4.94.2) (envelope-from <marcus.wichelmann@hetzner-cloud.de>)
+ id 1u2XBX-000Dxr-88; Wed, 09 Apr 2025 17:17:51 +0200
+Received: from [2a0d:3344:1523:1f10:f118:b2d4:edbb:54af]
+ by sslproxy01.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
+ (Exim 4.96) (envelope-from <marcus.wichelmann@hetzner-cloud.de>)
+ id 1u2XBW-000HjF-34; Wed, 09 Apr 2025 17:17:50 +0200
+Message-ID: <d33f0ab4-4dc4-49cd-bbd0-055f58dd6758@hetzner-cloud.de>
+Date: Wed, 9 Apr 2025 17:17:49 +0200
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: MW4PR11MB5889.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d8f4317d-11f2-4f71-9213-08dd776f6a68
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Apr 2025 14:04:16.6130 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: E90BS3em0vMnIX89f8NXzCnUmtKBwDi1fpS+qRNdJy8yfumFmszMhW+xhR/kDaLCf3Jfaiu+uBJhxt9FeYLpFQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR11MB7989
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1744207488; x=1775743488;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=CLYDUslKeF79P4UZPwj/K0DII0ilBE7aO9LPEZLfPx0=;
- b=YDFzrKANRIGgLeNcMPGCZ3mIBDaKyYp1fOrpd8WFYCvj9zs3w6h8Dene
- BbvoYKmYZDulZrkvH/2V4gHzHgosPFvlmXHvKIxWz4NasXjiWqtz7Kcwy
- VoZ62GNktiizmalV+TSsgK4elIDHIB8vqLrWVd+g3UVo5PGNu37r3TDi4
- kOev3zJ4uwzpG89kd4eOzJFdvuYq4KoJD3Z98fTpWxg7kFwehTCkGnAPV
- BDGEJR1hSGVpynVeE7ddz9DUJ1g+jRraFIde7LMlMIGvkEEkfBl7U+fWH
- tGdc6Wq4hJjk6qsNlSlFNqOM/WfQj3F1VxZNgQn8r5uO9Yp8EaZd3BVtr
- Q==;
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+From: Marcus Wichelmann <marcus.wichelmann@hetzner-cloud.de>
+Autocrypt: addr=marcus.wichelmann@hetzner-cloud.de; keydata=
+ xsFNBGJGrHIBEADXeHfBzzMvCfipCSW1oRhksIillcss321wYAvXrQ03a9VN2XJAzwDB/7Sa
+ N2Oqs6JJv4u5uOhaNp1Sx8JlhN6Oippc6MecXuQu5uOmN+DHmSLObKVQNC9I8PqEF2fq87zO
+ DCDViJ7VbYod/X9zUHQrGd35SB0PcDkXE5QaPX3dpz77mXFFWs/TvP6IvM6XVKZce3gitJ98
+ JO4pQ1gZniqaX4OSmgpHzHmaLCWZ2iU+Kn2M0KD1+/ozr/2bFhRkOwXSMYIdhmOXx96zjqFV
+ vIHa1vBguEt/Ax8+Pi7D83gdMCpyRCQ5AsKVyxVjVml0e/FcocrSb9j8hfrMFplv+Y43DIKu
+ kPVbE6pjHS+rqHf4vnxKBi8yQrfIpQqhgB/fgomBpIJAflu0Phj1nin/QIqKfQatoz5sRJb0
+ khSnRz8bxVM6Dr/T9i+7Y3suQGNXZQlxmRJmw4CYI/4zPVcjWkZyydq+wKqm39SOo4T512Nw
+ fuHmT6SV9DBD6WWevt2VYKMYSmAXLMcCp7I2EM7aYBEBvn5WbdqkamgZ36tISHBDhJl/k7pz
+ OlXOT+AOh12GCBiuPomnPkyyIGOf6wP/DW+vX6v5416MWiJaUmyH9h8UlhlehkWpEYqw1iCA
+ Wn6TcTXSILx+Nh5smWIel6scvxho84qSZplpCSzZGaidHZRytwARAQABzTZNYXJjdXMgV2lj
+ aGVsbWFubiA8bWFyY3VzLndpY2hlbG1hbm5AaGV0em5lci1jbG91ZC5kZT7CwZgEEwEIAEIW
+ IQQVqNeGYUnoSODnU2dJ0we/n6xHDgUCYkascgIbAwUJEswDAAULCQgHAgMiAgEGFQoJCAsC
+ BBYCAwECHgcCF4AACgkQSdMHv5+sRw4BNxAAlfufPZnHm+WKbvxcPVn6CJyexfuE7E2UkJQl
+ s/JXI+OGRhyqtguFGbQS6j7I06dJs/whj9fOhOBAHxFfMG2UkraqgAOlRUk/YjA98Wm9FvcQ
+ RGZe5DhAekI5Q9I9fBuhxdoAmhhKc/g7E5y/TcS1s2Cs6gnBR5lEKKVcIb0nFzB9bc+oMzfV
+ caStg+PejetxR/lMmcuBYi3s51laUQVCXV52bhnv0ROk0fdSwGwmoi2BDXljGBZl5i5n9wuQ
+ eHMp9hc5FoDF0PHNgr+1y9RsLRJ7sKGabDY6VRGp0MxQP0EDPNWlM5RwuErJThu+i9kU6D0e
+ HAPyJ6i4K7PsjGVE2ZcvOpzEr5e46bhIMKyfWzyMXwRVFuwE7erxvvNrSoM3SzbCUmgwC3P3
+ Wy30X7NS5xGOCa36p2AtqcY64ZwwoGKlNZX8wM0khaVjPttsynMlwpLcmOulqABwaUpdluUg
+ soqKCqyijBOXCeRSCZ/KAbA1FOvs3NnC9nVqeyCHtkKfuNDzqGY3uiAoD67EM/R9N4QM5w0X
+ HpxgyDk7EC1sCqdnd0N07BBQrnGZACOmz8pAQC2D2coje/nlnZm1xVK1tk18n6fkpYfR5Dnj
+ QvZYxO8MxP6wXamq2H5TRIzfLN1C2ddRsPv4wr9AqmbC9nIvfIQSvPMBx661kznCacANAP/O
+ wU0EYkascgEQAK15Hd7arsIkP7knH885NNcqmeNnhckmu0MoVd11KIO+SSCBXGFfGJ2/a/8M
+ y86SM4iL2774YYMWePscqtGNMPqa8Uk0NU76ojMbWG58gow2dLIyajXj20sQYd9RbNDiQqWp
+ RNmnp0o8K8lof3XgrqjwlSAJbo6JjgdZkun9ZQBQFDkeJtffIv6LFGap9UV7Y3OhU+4ZTWDM
+ XH76ne9u2ipTDu1pm9WeejgJIl6A7Z/7rRVpp6Qlq4Nm39C/ReNvXQIMT2l302wm0xaFQMfK
+ jAhXV/2/8VAAgDzlqxuRGdA8eGfWujAq68hWTP4FzRvk97L4cTu5Tq8WIBMpkjznRahyTzk8
+ 7oev+W5xBhGe03hfvog+pA9rsQIWF5R1meNZgtxR+GBj9bhHV+CUD6Fp+M0ffaevmI5Untyl
+ AqXYdwfuOORcD9wHxw+XX7T/Slxq/Z0CKhfYJ4YlHV2UnjIvEI7EhV2fPhE4WZf0uiFOWw8X
+ XcvPA8u0P1al3EbgeHMBhWLBjh8+Y3/pm0hSOZksKRdNR6PpCksa52ioD+8Z/giTIDuFDCHo
+ p4QMLrv05kA490cNAkwkI/yRjrKL3eGg26FCBh2tQKoUw2H5pJ0TW67/Mn2mXNXjen9hDhAG
+ 7gU40lS90ehhnpJxZC/73j2HjIxSiUkRpkCVKru2pPXx+zDzABEBAAHCwXwEGAEIACYWIQQV
+ qNeGYUnoSODnU2dJ0we/n6xHDgUCYkascgIbDAUJEswDAAAKCRBJ0we/n6xHDsmpD/9/4+pV
+ IsnYMClwfnDXNIU+x6VXTT/8HKiRiotIRFDIeI2skfWAaNgGBWU7iK7FkF/58ys8jKM3EykO
+ D5lvLbGfI/jrTcJVIm9bXX0F1pTiu3SyzOy7EdJur8Cp6CpCrkD+GwkWppNHP51u7da2zah9
+ CQx6E1NDGM0gSLlCJTciDi6doAkJ14aIX58O7dVeMqmabRAv6Ut45eWqOLvgjzBvdn1SArZm
+ 7AQtxT7KZCz1yYLUgA6TG39bhwkXjtcfT0J4967LuXTgyoKCc969TzmwAT+pX3luMmbXOBl3
+ mAkwjD782F9sP8D/9h8tQmTAKzi/ON+DXBHjjqGrb8+rCocx2mdWLenDK9sNNsvyLb9oKJoE
+ DdXuCrEQpa3U79RGc7wjXT9h/8VsXmA48LSxhRKn2uOmkf0nCr9W4YmrP+g0RGeCKo3yvFxS
+ +2r2hEb/H7ZTP5PWyJM8We/4ttx32S5ues5+qjlqGhWSzmCcPrwKviErSiBCr4PtcioTBZcW
+ VUssNEOhjUERfkdnHNeuNBWfiABIb1Yn7QC2BUmwOvN2DsqsChyfyuknCbiyQGjAmj8mvfi/
+ 18FxnhXRoPx3wr7PqGVWgTJD1pscTrbKnoI1jI1/pBCMun+q9v6E7JCgWY181WjxgKSnen0n
+ wySmewx3h/yfMh0aFxHhvLPxrO2IEQ==
+To: Tony Nguyen <anthony.l.nguyen@intel.com>, Jay Vosburgh
+ <jv@jvosburgh.net>, Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ bpf@vger.kernel.org, linux-kernel@vger.kernel.org, sdn@hetzner-cloud.de
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Authenticated-Sender: marcus.wichelmann@hetzner-cloud.de
+X-Virus-Scanned: Clear (ClamAV 1.0.7/27603/Wed Apr  9 10:44:35 2025)
+X-Mailman-Approved-At: Wed, 09 Apr 2025 15:47:24 +0000
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=YDFzrKAN
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH v10 iwl-next 09/11] idpf: add Tx
- timestamp capabilities negotiation
+ dmarc=none (p=none dis=none)
+ header.from=hetzner-cloud.de
+Subject: [Intel-wired-lan] [BUG] ixgbe: Detected Tx Unit Hang (XDP)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -230,59 +143,134 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 4/8/2025 11:23 PM, Jacob Keller wrote:
+Hi,
 
->On 4/8/2025 3:31 AM, Milena Olech wrote:
->> +static void idpf_ptp_release_vport_tstamp(struct idpf_vport *vport)
->> +{
->> +	struct idpf_ptp_tx_tstamp *ptp_tx_tstamp, *tmp;
->> +	struct list_head *head;
->> +
->> +	/* Remove list with free latches */
->> +	spin_lock(&vport->tx_tstamp_caps->lock_free);
->> +
->> +	head =3D &vport->tx_tstamp_caps->latches_free;
->> +	list_for_each_entry_safe(ptp_tx_tstamp, tmp, head, list_member) {
->> +		list_del(&ptp_tx_tstamp->list_member);
->> +		kfree(ptp_tx_tstamp);
->> +	}
->> +
->> +	spin_unlock(&vport->tx_tstamp_caps->lock_free);
->> +
->> +	/* Remove list with latches in use */
->> +	spin_lock(&vport->tx_tstamp_caps->lock_in_use);
->> +
->> +	head =3D &vport->tx_tstamp_caps->latches_in_use;
->> +	list_for_each_entry_safe(ptp_tx_tstamp, tmp, head, list_member) {
->> +		list_del(&ptp_tx_tstamp->list_member);
->> +		kfree(ptp_tx_tstamp);
->> +	}
->> +
->> +	spin_unlock(&vport->tx_tstamp_caps->lock_in_use);
->> +
->> +	kfree(vport->tx_tstamp_caps);
->> +	vport->tx_tstamp_caps =3D NULL;
->> +}
->Could you provide a summary and overview of the locking scheme used
->here? I see you have multiple spin locks for both the free bits and the
->in-use bits, and its a bit hard to grasp the reasoning behind this. We
->had a lot of issues getting locking for Tx timestamps correct in ice,
->though most of that had to do with quirks in the hardware.
->
+in a setup where I use native XDP to redirect packets to a bonding interface
+that's backed by two ixgbe slaves, I noticed that the ixgbe driver constantly
+resets the NIC with the following kernel output:
 
-Ofc :) So the main idea is to have a list of free latches (indexes) and a
-list of latches that are being used - by used I mean that the timestamp
-for this index is requested and being processed.
+  ixgbe 0000:01:00.1 ixgbe-x520-2: Detected Tx Unit Hang (XDP)
+    Tx Queue             <4>
+    TDH, TDT             <17e>, <17e>
+    next_to_use          <181>
+    next_to_clean        <17e>
+  tx_buffer_info[next_to_clean]
+    time_stamp           <0>
+    jiffies              <10025c380>
+  ixgbe 0000:01:00.1 ixgbe-x520-2: tx hang 19 detected on queue 4, resetting adapter
+  ixgbe 0000:01:00.1 ixgbe-x520-2: initiating reset due to tx timeout
+  ixgbe 0000:01:00.1 ixgbe-x520-2: Reset adapter
 
-So at the beginning, the driver negotiates the list of latches with the CP
-and adds them to the free list. When the timestamp is requested, driver
-takes the first item of the free latches and moves it to 'in-use' list.
-Similarly, when the timestamp is read, driver moves the index from
-'in use' to 'free'.
+This only occurs in combination with a bonding interface and XDP, so I don't
+know if this is an issue with ixgbe or the bonding driver.
+I first discovered this with Linux 6.8.0-57, but kernel 6.14.0 and 6.15.0-rc1
+show the same issue.
 
-Regards,
-Milena
 
->Thanks,
->Jake
->
+I managed to reproduce this bug in a lab environment. Here are some details
+about my setup and the steps to reproduce the bug:
+
+NIC: Intel Corporation 82599ES 10-Gigabit SFI/SFP+ Network Connection (rev 01)
+
+CPU: Ampere(R) Altra(R) Processor Q80-30 CPU @ 3.0GHz
+     Also reproduced on:
+     - Intel(R) Xeon(R) Gold 5218 CPU @ 2.30GHz
+     - Intel(R) Xeon(R) CPU E5-2620 v4 @ 2.10GHz
+
+Kernel: 6.15.0-rc1 (built from mainline)
+
+  # ethtool -i ixgbe-x520-1
+  driver: ixgbe
+  version: 6.15.0-rc1
+  firmware-version: 0x00012b2c, 1.3429.0
+  expansion-rom-version: 
+  bus-info: 0000:01:00.0
+  supports-statistics: yes
+  supports-test: yes
+  supports-eeprom-access: yes
+  supports-register-dump: yes
+  supports-priv-flags: yes
+
+The two ports of the NIC (named "ixgbe-x520-1" and "ixgbe-x520-2") are directly
+connected with each other using a DAC cable. Both ports are configured to be
+slaves of a bonding with mode balance-rr.
+Neither the direct connection of  both ports nor the round-robin bonding mode
+are a requirement to reproduce the issue. This setup just allows it to be easier
+reproduced in an isolated environment. The issue is also visible with a regular
+802.3ad link aggregation with a switch on the other side.
+
+  # modprobe bonding
+  # ip link set dev ixgbe-x520-1 down
+  # ip link set dev ixgbe-x520-2 down
+  # ip link add bond0 type bond mode balance-rr
+  # ip link set dev ixgbe-x520-1 master bond0
+  # ip link set dev ixgbe-x520-2 master bond0
+  # ip link set dev ixgbe-x520-1 up
+  # ip link set dev ixgbe-x520-2 up
+  # ip link set dev bond0 up
+        
+  # cat /proc/net/bonding/bond0
+  Ethernet Channel Bonding Driver: v6.15.0-rc1
+
+  Bonding Mode: load balancing (round-robin)
+  MII Status: up
+  MII Polling Interval (ms): 0
+  Up Delay (ms): 0
+  Down Delay (ms): 0
+  Peer Notification Delay (ms): 0
+
+  Slave Interface: ixgbe-x520-1
+  MII Status: up
+  Speed: 10000 Mbps
+  Duplex: full
+  Link Failure Count: 0
+  Permanent HW addr: 6c:b3:11:08:5c:3c
+  Slave queue ID: 0
+
+  Slave Interface: ixgbe-x520-2
+  MII Status: up
+  Speed: 10000 Mbps
+  Duplex: full
+  Link Failure Count: 0
+  Permanent HW addr: 6c:b3:11:08:5c:3e
+  Slave queue ID: 0
+
+  # ethtool -l ixgbe-x520-1
+  Channel parameters for ixgbe-x520-1:
+  Pre-set maximums:
+  RX:             n/a
+  TX:             n/a
+  Other:          1
+  Combined:       63
+  Current hardware settings:
+  RX:             n/a
+  TX:             n/a
+  Other:          1
+  Combined:       63
+  (same for ixgbe-x520-2)
+
+In the following the xdp-tools from https://github.com/xdp-project/xdp-tools/
+are used.
+
+Enable XDP on the bonding and make sure all received packets will be dropped:
+  # xdp-tools/xdp-bench/xdp-bench drop -e -i 1 bond0
+
+Redirect a batch of packets to the bonding interface:
+  # xdp-tools/xdp-trafficgen/xdp-trafficgen udp --dst-mac <mac of bond0>
+    --src-port 5000 --dst-port 6000 --threads 16 --num-packets 1000000 bond0
+
+Shortly after that (3-4 seconds), one or more "Detected Tx Unit Hang" errors
+(see above) will show up in the kernel log.
+
+The high number of packets and thread count (--threads 16) is not required to
+trigger the issue but greatly improves the probability.
+
+
+Do you have any ideas what may be causing this issue or what I can do to
+diagnose this further?
+
+Please let me know when I should provide any more information.
+
+
+Thanks!
+Marcus
