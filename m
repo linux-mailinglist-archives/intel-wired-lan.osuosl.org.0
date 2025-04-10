@@ -1,113 +1,99 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 01F59A83C8E
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Apr 2025 10:21:51 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 79658A83FC9
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Apr 2025 12:01:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B81E161079;
-	Thu, 10 Apr 2025 08:21:49 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BB353402FB;
+	Thu, 10 Apr 2025 10:01:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id GaMnG8T2ueiL; Thu, 10 Apr 2025 08:21:49 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id M7z4i91v1h-F; Thu, 10 Apr 2025 10:01:29 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 43F7960BE0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C0B264030E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744273309;
-	bh=/qlb9+voO+UQVmST3Zj9tARBjM7ZkXwmy1me9FAsA9E=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=vK3eqQud9c1qqdgih/Vh/eCyR+4GbCwMAruirQeKGuGo1iOpNdFfdSji6Ps2bxYMS
-	 TiQMQCGbGVRlY+mFkoCTcE9RD5e7C2l6Ddk8EESFoqORxCa21pAo4gVK6O9v++y2mr
-	 wrOtTGe4/cfitcX97ZYXCB4h03yMWFWQ8DdxVAKP3Gf6ehbmoDHTQgb1rlckImVYfz
-	 rR9Z7jm+z6fMwN9FNgF21CVYRYOG3h4QbB7RaAxSg8IfDUVZn+MppnzBOfpAPzQOgu
-	 26AaNzZt8K3yXkRUjeuP0ZxmSzf62/6YAJoO0N51Wxks24V3mVOV94FQ7KU/PqGXSA
-	 ZgIb63k71ypGg==
+	s=default; t=1744279288;
+	bh=kC7p7ZL6AhmEE/dwyeLDEHGHxVn091hGqc55HynbEMQ=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=jRF3o3C6bLOTklPvuEuTSkOmiziUsIYVR5DjR7+sTtyo39As1CNOoNq4MZLlkSgLc
+	 eLfKNn2trYzULgMx0e2EvppoadhrsKVAdJE95JOvLNB12bVl8BlAUq9cRQLS7liHbB
+	 MS2uptQjdB4jd0UCcIbmZcy9B+mJHEz5PWlXWrsFCqy2a3Zyow5kwwJBAExubI0NK2
+	 wWkMaWlyGd3w6p+YpMffKbO20dH6JcqZlwnck7lmgi1dXSDkAydaMi8ZH+bKw7503K
+	 O70ER+eEFYPVkjVWw2+QxaeafDoXwdq1eRPcV7XwULzh5qU+nuBc7+kvTGxm16sdmr
+	 L3W4NuqpJVdxQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 43F7960BE0;
-	Thu, 10 Apr 2025 08:21:49 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C0B264030E;
+	Thu, 10 Apr 2025 10:01:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 9C128201
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Apr 2025 08:21:47 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 348E6108
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Apr 2025 10:01:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 81FDF80F7D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Apr 2025 08:21:47 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 312834027C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Apr 2025 10:01:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ESUulnWNpAA4 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 10 Apr 2025 08:21:47 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
- helo=tor.source.kernel.org; envelope-from=leon@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org DACD483F35
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DACD483F35
-Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
- by smtp1.osuosl.org (Postfix) with ESMTPS id DACD483F35
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Apr 2025 08:21:46 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 275906843D;
- Thu, 10 Apr 2025 08:21:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8E49C4CEDD;
- Thu, 10 Apr 2025 08:21:43 +0000 (UTC)
-Date: Thu, 10 Apr 2025 11:21:37 +0300
-From: Leon Romanovsky <leon@kernel.org>
-To: Larysa Zaremba <larysa.zaremba@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Simon Horman <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Jiri Pirko <jiri@resnulli.us>, Mustafa Ismail <mustafa.ismail@intel.com>,
- Tatyana Nikolova <tatyana.e.nikolova@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- Michael Ellerman <mpe@ellerman.id.au>,
- Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Lee Trager <lee@trager.us>, Madhavan Srinivasan <maddy@linux.ibm.com>,
- Sridhar Samudrala <sridhar.samudrala@intel.com>,
- Jacob Keller <jacob.e.keller@intel.com>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- Wenjun Wu <wenjun1.wu@intel.com>, Ahmed Zaki <ahmed.zaki@intel.com>,
- netdev@vger.kernel.org, linux-doc@vger.kernel.org,
- linux-kernel@vger.kernel.org,
- "Karlsson, Magnus" <magnus.karlsson@intel.com>,
- Emil Tantilov <emil.s.tantilov@intel.com>,
- Madhu Chittim <madhu.chittim@intel.com>, Josh Hay <joshua.a.hay@intel.com>,
- Milena Olech <milena.olech@intel.com>, pavan.kumar.linga@intel.com,
- "Singhai, Anjali" <anjali.singhai@intel.com>,
- Phani R Burra <phani.r.burra@intel.com>
-Message-ID: <20250410082137.GO199604@unreal>
-References: <20250408124816.11584-1-larysa.zaremba@intel.com>
- <20250408124816.11584-6-larysa.zaremba@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 164ZaYEGX7Oz for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 10 Apr 2025 10:01:26 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 514DE4012E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 514DE4012E
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 514DE4012E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Apr 2025 10:01:25 +0000 (UTC)
+X-CSE-ConnectionGUID: b3mlzihZRDacgVUIfOmVCw==
+X-CSE-MsgGUID: nJgDMVzWSWKlD5eGeV45hA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11399"; a="63183891"
+X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; d="scan'208";a="63183891"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Apr 2025 03:01:25 -0700
+X-CSE-ConnectionGUID: fDn6aBozQHOtS34ZIGmU3A==
+X-CSE-MsgGUID: QQ0M3ULeQxyOhrsZXF1DyQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,202,1739865600"; d="scan'208";a="159819662"
+Received: from gk3153-dr2-r750-36946.igk.intel.com ([10.102.20.192])
+ by fmviesa001.fm.intel.com with ESMTP; 10 Apr 2025 03:01:22 -0700
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, aleksander.lobakin@intel.com,
+ przemyslaw.kitszel@intel.com, piotr.kwapulinski@intel.com,
+ aleksandr.loktionov@intel.com, jedrzej.jagielski@intel.com,
+ larysa.zaremba@intel.com, anthony.l.nguyen@intel.com
+Date: Thu, 10 Apr 2025 12:01:13 +0200
+Message-ID: <20250410100121.2353754-1-michal.swiatkowski@linux.intel.com>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250408124816.11584-6-larysa.zaremba@intel.com>
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1744273304;
- bh=T6cKF1AH6u5sSEkewMIOmHQeFJzUhjmBmmaZtyPLzhM=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=cx/C44HZl16jH12vNnkP451QQg5FzAk7RvBGhK7Tfe3tdRcND7YkpVLx7eVQXIS03
- fRsb0Id09N2YUjJxtfvW9ymhqshFCLl/+nkASkq2fBPKj+gNBgAuI+tv35pl4ka26w
- UDc00QsDlSCwiJeCFKTFC+JrRpph7hQ+KVmgoVHGerHDsUUk1f0pnwrEUI2ls3IChR
- c6dX6lWqSvyAQZ07QtHllKqzulecA6fl3BdFpRwdaC2wxv9FzxYG5OFmFVFIbVXbV9
- uBpnLJYoUJVPme7KZqHnZhvqBcvSGHCzrsZLrAZiS6APigrLrMhaepwlfrHxmVTuxJ
- Ejz3aooy8rCeg==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1744279286; x=1775815286;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=XNZZWi4qt/f22D58kpuzCFxRuFwV6flPdgUwzFNz0RY=;
+ b=hWKf6zFq8Y8N+bkX1dDrWEfUamsUJd0vQfCYVgI5e5Kyo/zfIPVrzsDl
+ mDtG4nuyRhPhR30bKP39eqO4ikpWp+CXzZKqWh6Ua75Q6jHSuQj9kfbGm
+ OGdRcfRu7IX4uzSboeKmXtOT++LvntiGS3GtEUgQW28XC1RXmO0+Q/K17
+ vuzbpFTSO82xO58resEc3to1YrUyjzePKECmouN9bGhIGlpuv08/0Qqya
+ 60wADs0Yy2kC8NpH0mB82Uj9G2cQBuQMUaoRs+2R+nlHib4x0dxDI9CGm
+ SH0Mqd7UR8/X5M8sUWW1DrnXJ5cvGBmMGSsZRNUT2g4nM6hwShtU0dPri
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=cx/C44HZ
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 05/14] libeth: add control
- queue support
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=hWKf6zFq
+Subject: [Intel-wired-lan] [iwl-next v2 0/8] libie: commonize adminq
+ structure
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -123,24 +109,100 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Apr 08, 2025 at 02:47:51PM +0200, Larysa Zaremba wrote:
-> From: Phani R Burra <phani.r.burra@intel.com>
-> 
-> Libeth will now support control queue setup and configuration APIs.
-> These are mainly used for mailbox communication between drivers and
-> control plane.
-> 
-> Make use of the page pool support for managing controlq buffers.
+Hi,
 
-<...>
+It is a prework to allow reusing some specific Intel code (eq. fwlog).
 
->  libeth-y			:= rx.o
->  
-> +obj-$(CONFIG_LIBETH_CP)		+= libeth_cp.o
-> +
-> +libeth_cp-y			:= controlq.o
+Move common *_aq_desc structure to libie header and changing
+it in ice, ixgbe, i40e and iavf.
 
-So why did you create separate module for it?
-Now you have pci -> libeth -> libeth_cp -> ixd, with the potential races between ixd and libeth, am I right?
+Only generic adminq commands can be easily moved to common header, as
+rest is slightly different. Format remains the same. It will be better
+to correctly move it when it will be needed to commonize other part of
+the code.
 
-Thanks
+Move *_aq_str() to new libie module (libie_adminq) and use it across
+drivers. The functions are exactly the same in each driver. Some more
+adminq helpers/functions can be moved to libie_adminq when needed.
+
+v1 --> v2: [1]
+ * add short descriptions in kdoc (patch 1, 5)
+ * handle all error types in switch to allow clean build (patch 3)
+
+[1] https://lore.kernel.org/netdev/20250312062426.2544608-1-michal.swiatkowski@linux.intel.com/
+
+Michal Swiatkowski (8):
+  ice, libie: move generic adminq descriptors to lib
+  ixgbe: use libie adminq descriptors
+  i40e: use libie adminq descriptors
+  iavf: use libie adminq descriptors
+  libie: add adminq helper for converting err to str
+  ice: use libie_aq_str
+  iavf: use libie_aq_str
+  i40e: use libie_aq_str
+
+ drivers/net/ethernet/intel/Kconfig            |   3 +
+ drivers/net/ethernet/intel/libie/Kconfig      |   6 +
+ drivers/net/ethernet/intel/libie/Makefile     |   4 +
+ drivers/net/ethernet/intel/i40e/i40e_adminq.h |  12 +-
+ .../net/ethernet/intel/i40e/i40e_adminq_cmd.h | 155 +---
+ .../net/ethernet/intel/i40e/i40e_prototype.h  |  15 +-
+ drivers/net/ethernet/intel/i40e/i40e_type.h   |   6 +-
+ drivers/net/ethernet/intel/iavf/iavf_adminq.h |  12 +-
+ .../net/ethernet/intel/iavf/iavf_adminq_cmd.h |  83 +-
+ .../net/ethernet/intel/iavf/iavf_prototype.h  |   3 +-
+ drivers/net/ethernet/intel/iavf/iavf_type.h   |   2 +-
+ drivers/net/ethernet/intel/ice/ice.h          |   1 -
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   | 269 +------
+ drivers/net/ethernet/intel/ice/ice_common.h   |   6 +-
+ drivers/net/ethernet/intel/ice/ice_controlq.h |   8 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h |  12 +-
+ .../ethernet/intel/ixgbe/ixgbe_type_e610.h    | 226 +-----
+ include/linux/net/intel/libie/adminq.h        | 306 ++++++++
+ drivers/net/ethernet/intel/i40e/i40e_adminq.c |  68 +-
+ drivers/net/ethernet/intel/i40e/i40e_client.c |   7 +-
+ drivers/net/ethernet/intel/i40e/i40e_common.c | 730 ++++++++----------
+ drivers/net/ethernet/intel/i40e/i40e_dcb.c    |  10 +-
+ drivers/net/ethernet/intel/i40e/i40e_dcb_nl.c |   8 +-
+ .../net/ethernet/intel/i40e/i40e_debugfs.c    |  46 +-
+ .../net/ethernet/intel/i40e/i40e_ethtool.c    |  36 +-
+ drivers/net/ethernet/intel/i40e/i40e_main.c   | 240 +++---
+ drivers/net/ethernet/intel/i40e/i40e_nvm.c    |  18 +-
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    |  27 +-
+ drivers/net/ethernet/intel/iavf/iavf_adminq.c |  62 +-
+ drivers/net/ethernet/intel/iavf/iavf_common.c | 110 +--
+ drivers/net/ethernet/intel/iavf/iavf_main.c   |   5 +-
+ .../net/ethernet/intel/iavf/iavf_virtchnl.c   |   2 +-
+ .../net/ethernet/intel/ice/devlink/devlink.c  |  10 +-
+ .../net/ethernet/intel/ice/devlink/health.c   |   6 +-
+ drivers/net/ethernet/intel/ice/ice_common.c   | 388 +++++-----
+ drivers/net/ethernet/intel/ice/ice_controlq.c |  53 +-
+ drivers/net/ethernet/intel/ice/ice_dcb.c      |  36 +-
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c  |   2 +-
+ drivers/net/ethernet/intel/ice/ice_ddp.c      |  47 +-
+ drivers/net/ethernet/intel/ice/ice_dpll.c     |  20 +-
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  |  12 +-
+ .../net/ethernet/intel/ice/ice_fw_update.c    |  38 +-
+ drivers/net/ethernet/intel/ice/ice_fwlog.c    |  16 +-
+ drivers/net/ethernet/intel/ice/ice_lag.c      |   4 +-
+ drivers/net/ethernet/intel/ice/ice_lib.c      |  10 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     |  63 +-
+ drivers/net/ethernet/intel/ice/ice_nvm.c      |  38 +-
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c   |  20 +-
+ drivers/net/ethernet/intel/ice/ice_sched.c    |  18 +-
+ drivers/net/ethernet/intel/ice/ice_sriov.c    |   4 +-
+ drivers/net/ethernet/intel/ice/ice_switch.c   |  55 +-
+ drivers/net/ethernet/intel/ice/ice_vf_mbx.c   |   6 +-
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c |   6 +-
+ .../net/ethernet/intel/ice/ice_vlan_mode.c    |   6 +-
+ .../net/ethernet/intel/ice/ice_vsi_vlan_lib.c |  24 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 272 +++----
+ .../ethernet/intel/ixgbe/ixgbe_fw_update.c    |   4 +-
+ drivers/net/ethernet/intel/libie/adminq.c     |  50 ++
+ 58 files changed, 1570 insertions(+), 2136 deletions(-)
+ create mode 100644 include/linux/net/intel/libie/adminq.h
+ create mode 100644 drivers/net/ethernet/intel/libie/adminq.c
+
+-- 
+2.42.0
+
