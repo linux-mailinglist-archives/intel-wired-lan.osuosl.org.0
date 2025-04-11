@@ -1,93 +1,92 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0FBCFA85D23
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 11 Apr 2025 14:36:37 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D780A85D2B
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 11 Apr 2025 14:37:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BADD9608CD;
-	Fri, 11 Apr 2025 12:36:35 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E7C1241722;
+	Fri, 11 Apr 2025 12:37:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KOUtKui2aK-8; Fri, 11 Apr 2025 12:36:35 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id a10RFpcnvWhG; Fri, 11 Apr 2025 12:37:03 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 26691605FF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 28E5D41731
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744374995;
-	bh=yXAEiWzFGtps8bvWRMuhyI24Ssgz5s1xnVH6pTdqCpI=;
+	s=default; t=1744375023;
+	bh=v/+tujnu+dJQP3b8U7/HRuZXN4dSfwqr0LyLAupbyZ8=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=Z1zzKlGFQG17qSEfMYL2gRq/SrmFhK95kT1o4ysN84IUZxS+Ux0HwXbd2BOldoYXf
-	 3h8+Pez6MyxL1CvdycY1eQgI4rxYtwPIGssxels/pp02Lheaop3SdC3VBetOlYUJDC
-	 15kwvgwFI4P+q8MowsaxLrQ1ThhMqx/9UOztMthNvsxv38ysyTPFX/bQNrs6UFBHA3
-	 xZ1r6Nr8ffD3JbMBZeq/vfrUQVLLE0LIBo8e4xZOKULRYJJAOuSwk3c0ZBU7VqHFmU
-	 MOGd9i+ufoBQjJph11dbCHO/ndnrmh50DU7bEt5t2yVsjMxj3Wn0/zpo4Xm3KnIAF+
-	 /OdBSH+VxeqPA==
+	b=gkLNEQsSRkT016Rp8e7JWpa1fw01Uj5eViM8dVQbJ3h3IQKCZL7VbWUp3ZKvmbRS5
+	 PTDrAI9iKmwvRrszjEus6O5QJnUuecNw3CCRv/zPTXzIgzTl90h4hTILTnLJ4sb/1P
+	 WLTh0fOwqx+0dnuEC9H+Fl8QE/j0L14TOYGDlx667GioLTU8DKhFHLevm1oPVG9J7D
+	 NB/0arfbnzJIDksqNqq/DtEgRagTOh2EYY2yLCoh/r/m3sYqm2k9ZY1uIhNNayPGht
+	 EgbmfHjs5GF+6TMPpykO4fD7dYcvQ6Gx5zFZhlA9aWnO/brpfl7+Tq/ZEM7SY5bvcc
+	 s89Tq+vx+E88w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 26691605FF;
-	Fri, 11 Apr 2025 12:36:35 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 28E5D41731;
+	Fri, 11 Apr 2025 12:37:03 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id A5EDC108
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Apr 2025 12:36:33 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id CC079108
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Apr 2025 12:37:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 94E3640597
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Apr 2025 12:36:33 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id BBD694004A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Apr 2025 12:37:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id WoFU7pPPD-z8 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 11 Apr 2025 12:36:33 +0000 (UTC)
+ id H-fnHtwllR3q for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 11 Apr 2025 12:37:00 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
+ client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
  envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org DFA6F40642
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DFA6F40642
-Received: from nyc.source.kernel.org (nyc.source.kernel.org
- [IPv6:2604:1380:45d1:ec00::3])
- by smtp2.osuosl.org (Postfix) with ESMTPS id DFA6F40642
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Apr 2025 12:36:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 2C7CF40597
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2C7CF40597
+Received: from sea.source.kernel.org (sea.source.kernel.org
+ [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2C7CF40597
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Apr 2025 12:37:00 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id E7037A4AAFB;
- Fri, 11 Apr 2025 12:31:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D6901C4CEE8;
- Fri, 11 Apr 2025 12:36:29 +0000 (UTC)
-Date: Fri, 11 Apr 2025 13:36:27 +0100
+ by sea.source.kernel.org (Postfix) with ESMTP id 848F8436A3;
+ Fri, 11 Apr 2025 12:36:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C9B48C4CEE8;
+ Fri, 11 Apr 2025 12:36:57 +0000 (UTC)
+Date: Fri, 11 Apr 2025 13:36:55 +0100
 From: Simon Horman <horms@kernel.org>
 To: Karol Kolacinski <karol.kolacinski@intel.com>
 Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
  anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
  Michal Kubiak <michal.kubiak@intel.com>,
  Milena Olech <milena.olech@intel.com>
-Message-ID: <20250411123627.GB395307@horms.kernel.org>
+Message-ID: <20250411123655.GC395307@horms.kernel.org>
 References: <20250409122830.1977644-12-karol.kolacinski@intel.com>
- <20250409122830.1977644-13-karol.kolacinski@intel.com>
+ <20250409122830.1977644-14-karol.kolacinski@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250409122830.1977644-13-karol.kolacinski@intel.com>
+In-Reply-To: <20250409122830.1977644-14-karol.kolacinski@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1744374991;
- bh=OGoACs6RH+I8/t+z9lvjp50lGOMfeR8mLDulfIHw2JM=;
+ d=kernel.org; s=k20201202; t=1744375019;
+ bh=KnsVY9sZXhd6B4Lr+cWrYHT+qQpOxeZV9n2BSY5yzQE=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Ftbmc6pi3lGTbxjkX9A3bAYC0MDI/k9y+mu95B2c7U1Xvh0PTPlQin3mwFrNU6W3C
- iwOp/tMWVVYrvYFggpRZXynzQaq8v1a35W75hGBYbKYegvs0P31TZx+njxbtKn80jv
- xgPY5RkJbhB+lgDdodQTR0NabA9modkDD8kT/sxQaHHz8q8ujhzYoWm+2gWvYgMKjr
- UdNn9Yu/KduuKscDzorWKBtqmSJKiqREg86jfHUS5xZwq4CzFoH9ASrlIeN/oZJgzC
- gnPWamCVy2OplRDOKyqgFskMX6cKV3OlkC4eHzvoqL+o6ZRCsETW53qOREBWzX4FbL
- dlG8HxJeDkUuQ==
+ b=iycIUIfYtY9JOui2TvKnm6XF4OcI453O76KcvoWb2Thw2frzIIcjny4BhaYrz6mEK
+ pOjJrJiMcLawF/jbWBiZyge2n0mKsp0sqfNbzGUXJBJvEyBK8WJkQx3sDsJh5L9M3q
+ Va187xejr4Xnexl3e3chSx9dfoR/WEa/IAKXqFRxqF8in6+tJjv9uisiOwX2frS7cQ
+ 5ZVpc10qZ/gPRsVtm9Jjx878OKmQFReYfe/ZidBHuOADFtVG52wR0GwqHkPSO9c/nn
+ 2n3Kc1UkaHP74dEMETl5+TgqO3FnI+6KXTYHU84OY7DtaT7WcforsJ8LQXLcbQ7sL/
+ UXevDsg78v4uQ==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=Ftbmc6pi
-Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-next 01/10] ice: move TSPLL
- functions to a separate file
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=iycIUIfY
+Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-next 02/10] ice: rename TSPLL
+ and CGU functions and definitions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -103,11 +102,9 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Apr 09, 2025 at 02:24:58PM +0200, Karol Kolacinski wrote:
-> Collect TSPLL related functions and definitions and move them to
-> a separate file to have all TSPLL functionality in one place.
-> 
-> Move CGU related functions and definitions to ice_common.*
+On Wed, Apr 09, 2025 at 02:24:59PM +0200, Karol Kolacinski wrote:
+> Rename TSPLL and CGU functions, definitions etc. to match the file name
+> and have consistent naming scheme.
 > 
 > Reviewed-by: Michal Kubiak <michal.kubiak@intel.com>
 > Reviewed-by: Milena Olech <milena.olech@intel.com>
@@ -115,84 +112,69 @@ On Wed, Apr 09, 2025 at 02:24:58PM +0200, Karol Kolacinski wrote:
 
 ...
 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-> index f7fd0a2451de..190d850f7ff7 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_common.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_common.c
-> @@ -6234,3 +6234,64 @@ u32 ice_get_link_speed(u16 index)
+> diff --git a/drivers/net/ethernet/intel/ice/ice_tspll.h b/drivers/net/ethernet/intel/ice/ice_tspll.h
+> index 181ca24a2739..0e28e97e09be 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_tspll.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_tspll.h
+> @@ -2,16 +2,16 @@
+>  #define _ICE_TSPLL_H_
 >  
->  	return ice_aq_to_link_speed[index];
->  }
-> +
-> +/**
-> + * ice_read_cgu_reg_e82x - Read a CGU register
-> + * @hw: pointer to the HW struct
-> + * @addr: Register address to read
-> + * @val: storage for register value read
-> + *
-> + * Read the contents of a register of the Clock Generation Unit. Only
-> + * applicable to E822 devices.
-> + *
-> + * Return: 0 on success, other error codes when failed to read from CGU.
-> + */
-> +int ice_read_cgu_reg_e82x(struct ice_hw *hw, u32 addr, u32 *val)
-> +{
-> +	struct ice_sbq_msg_input cgu_msg = {
-> +		.opcode = ice_sbq_msg_rd,
-> +		.dest_dev = cgu,
+>  /**
+> - * struct ice_cgu_pll_params_e82x - E82X CGU parameters
+> + * struct ice_tspll_params_e82x
 
-This seems to be addressed in patch v2: when applied against iwl-next,
-but not next, this needs to be ice_sbq_dev_cgu.
+nit: tooling expects a short description here.
 
-drivers/net/ethernet/intel/ice/ice_common.c:6253:15: error: use of undeclared identifier 'cgu'
- 6253 |                 .dest_dev = cgu,
+Flagged by ./scripts/kernel-doc -none
 
-> +		.msg_addr_low = addr
-> +	};
-> +	int err;
-> +
-> +	err = ice_sbq_rw_reg(hw, &cgu_msg, ICE_AQ_FLAG_RD);
-> +	if (err) {
-> +		dev_dbg(ice_hw_to_dev(hw), "Failed to read CGU register 0x%04x, err %d\n",
-> +			addr, err);
-> +		return err;
-> +	}
-> +
-> +	*val = cgu_msg.data;
-> +
-> +	return 0;
-> +}
-> +
-> +/**
-> + * ice_write_cgu_reg_e82x - Write a CGU register
-> + * @hw: pointer to the HW struct
-> + * @addr: Register address to write
-> + * @val: value to write into the register
-> + *
-> + * Write the specified value to a register of the Clock Generation Unit. Only
-> + * applicable to E822 devices.
-> + *
-> + * Return: 0 on success, other error codes when failed to write to CGU.
-> + */
-> +int ice_write_cgu_reg_e82x(struct ice_hw *hw, u32 addr, u32 val)
-> +{
-> +	struct ice_sbq_msg_input cgu_msg = {
-> +		.opcode = ice_sbq_msg_wr,
-> +		.dest_dev = cgu,
+>   * @refclk_pre_div: Reference clock pre-divisor
+>   * @feedback_div: Feedback divisor
+>   * @frac_n_div: Fractional divisor
+>   * @post_pll_div: Post PLL divisor
+>   *
+>   * Clock Generation Unit parameters used to program the PLL based on the
+> - * selected TIME_REF frequency.
+> + * selected TIME_REF/TCXO frequency.
+>   */
+> -struct ice_cgu_pll_params_e82x {
+> +struct ice_tspll_params_e82x {
+>  	u32 refclk_pre_div;
+>  	u32 feedback_div;
+>  	u32 frac_n_div;
+> @@ -19,25 +19,25 @@ struct ice_cgu_pll_params_e82x {
+>  };
+>  
+>  /**
+> - * struct ice_cgu_pll_params_e825c - E825C CGU parameters
+> - * @tspll_ck_refclkfreq: tspll_ck_refclkfreq selection
+> - * @tspll_ndivratio: ndiv ratio that goes directly to the pll
+> - * @tspll_fbdiv_intgr: TS PLL integer feedback divide
+> - * @tspll_fbdiv_frac:  TS PLL fractional feedback divide
+> - * @ref1588_ck_div: clock divider for tspll ref
+> + * struct ice_tspll_params_e825c
 
 Ditto.
 
-> +		.msg_addr_low = addr,
-> +		.data = val
-> +	};
-> +	int err;
-> +
-> +	err = ice_sbq_rw_reg(hw, &cgu_msg, ICE_AQ_FLAG_RD);
-> +	if (err)
-> +		dev_dbg(ice_hw_to_dev(hw), "Failed to write CGU register 0x%04x, err %d\n",
-> +			addr, err);
-> +
-> +	return err;
-> +}
+> + * @ck_refclkfreq: ck_refclkfreq selection
+> + * @ndivratio: ndiv ratio that goes directly to the PLL
+> + * @fbdiv_intgr: TSPLL integer feedback divisor
+> + * @fbdiv_frac: TSPLL fractional feedback divisor
+> + * @ref1588_ck_div: clock divisor for tspll ref
+>   *
+>   * Clock Generation Unit parameters used to program the PLL based on the
+>   * selected TIME_REF/TCXO frequency.
+>   */
+> -struct ice_cgu_pll_params_e825c {
+> -	u32 tspll_ck_refclkfreq;
+> -	u32 tspll_ndivratio;
+> -	u32 tspll_fbdiv_intgr;
+> -	u32 tspll_fbdiv_frac;
+> +struct ice_tspll_params_e825c {
+> +	u32 ck_refclkfreq;
+> +	u32 ndivratio;
+> +	u32 fbdiv_intgr;
+> +	u32 fbdiv_frac;
+>  	u32 ref1588_ck_div;
+>  };
 
 ...
