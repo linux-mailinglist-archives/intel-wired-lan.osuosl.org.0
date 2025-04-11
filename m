@@ -1,90 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3BAEFA8690A
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 12 Apr 2025 01:14:27 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B1F9A86944
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 12 Apr 2025 01:36:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E1FE541E6A;
-	Fri, 11 Apr 2025 23:14:25 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D3D0A41A76;
+	Fri, 11 Apr 2025 23:36:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vxIUE6DiOiP0; Fri, 11 Apr 2025 23:14:25 +0000 (UTC)
+ id Uqkm6bqdBPAu; Fri, 11 Apr 2025 23:36:22 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C94BC41E61
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2E57141A3F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744413264;
-	bh=L7gZ2a4kNRAu7jwQR+r8fyDCj7+uKKM15SUMg3PT2KM=;
+	s=default; t=1744414582;
+	bh=HwMv8tPiMF0dVPflBOXsWhbXdPTG3gvkPVzHF2vJkxM=;
 	h=From:Date:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=aF3hffECVsfUzBT7BNrQKpHyUIFxaOZyGCBPcfvApCSU1QQAClVMNJavZIB6l5hcY
-	 VRK8/2I5na5OGieh1CQXGGCeCgVUna6Agn1EScE6Zrb8l/EXuDTgFtSgmnLMoeASrS
-	 6MfuGWU2kSdpPqmWftAZTfcc/0QRcSqr5kJdLh9SVu+CnkOqXqHB6/dJYHLcjawnSn
-	 OWXK4FaVuITiPwIeWmhSVL622h/P6kwZAy75TVFE4QlPbLlQqXJEw6+nixifnUSHV/
-	 XP3vzcOHW49Si6BG0BmxJHCk4eg3NunqCliIzAxGg5rVBB43eelcDvPfzxvd8xjwCK
-	 c3W27BEcjUNsg==
+	b=Jd1Nr8ZvyMC7+h4+DlIHj0xDNxaAsX7Ul9B2GgqiUzUiJL7lziNsg0VEXCR/Wk3Qy
+	 w7xnDHfzcNkcBj2KCBS61lBWji8PNooxgChxgW1YAHqgSw//TJd+J0EGDZ2FcMRh56
+	 mnDxLpCeBLrVpBqNAHvfMo12L3YeqVjQJ4sqe7NnXUE0GM8ZfUpdFjNHdBE0Clbojj
+	 DXrMW3cMnmwjJ8rkOriFZ9BzJAYkzXM3WtmqJg8U71ySQ+Z0u7gcm0neuQKXY1Hkkc
+	 +cyxudknpEE2xlgl0JbxqiQ8UsbsAE1asHp98D4PG8f1fYJn5rDFHjmjHlF6859wbr
+	 yhNDF4hPRzCmQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C94BC41E61;
-	Fri, 11 Apr 2025 23:14:24 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2E57141A3F;
+	Fri, 11 Apr 2025 23:36:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 561E7108
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Apr 2025 23:14:23 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id C2680108
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Apr 2025 23:36:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3798184726
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Apr 2025 23:14:23 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id A313480A7E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Apr 2025 23:36:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ni7qjWoJg1Kh for <intel-wired-lan@lists.osuosl.org>;
- Fri, 11 Apr 2025 23:14:22 +0000 (UTC)
+ id Lo4NwOM26EEZ for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 11 Apr 2025 23:36:19 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::62c; helo=mail-ej1-x62c.google.com;
+ client-ip=2a00:1450:4864:20::534; helo=mail-ed1-x534.google.com;
  envelope-from=jacek@jacekk.info; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 6CBF880CAA
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6CBF880CAA
-Received: from mail-ej1-x62c.google.com (mail-ej1-x62c.google.com
- [IPv6:2a00:1450:4864:20::62c])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6CBF880CAA
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Apr 2025 23:14:21 +0000 (UTC)
-Received: by mail-ej1-x62c.google.com with SMTP id
- a640c23a62f3a-acae7e7587dso9051566b.2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Apr 2025 16:14:20 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A2D3B80CE3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A2D3B80CE3
+Received: from mail-ed1-x534.google.com (mail-ed1-x534.google.com
+ [IPv6:2a00:1450:4864:20::534])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id A2D3B80CE3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Apr 2025 23:36:18 +0000 (UTC)
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-5e5cded3e2eso3919992a12.0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Apr 2025 16:36:18 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1744413259; x=1745018059;
+ d=1e100.net; s=20230601; t=1744414576; x=1745019376;
  h=content-transfer-encoding:in-reply-to:content-language:references
  :cc:to:subject:user-agent:mime-version:date:message-id:from
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=L7gZ2a4kNRAu7jwQR+r8fyDCj7+uKKM15SUMg3PT2KM=;
- b=l8rTHsfYsCw/lDqVguaDyGMqPnoUTdpxugm3vlHhT4HJfmt3Nh3b3BCEtMT9wQsCsB
- Ev+MYOKWwaEoOsK7rJYq/uWMtZSrd0Os70S74vuq2bSZ4SNcffcIYZa92HPhP6KZLfr4
- FxlnZorPFy6nnmbc6Stx4ymaStb9hZ373n+ewO7jyY2On3slnyQPFEvM4OD8GX3eGm2F
- 8TcKG3wxKE7PdKZov4EgT+e0fFO3jP4bTBAO3VktAVcPtWeJv9Ig/JNYYoq0jGxrfmTF
- ntndUbJyXYqzcVeSUQwzh2cjblrASm43y6sbwtBlazywDgfSk5IiGB0zZIsii1D2WDyU
- f1sg==
-X-Gm-Message-State: AOJu0YxjtgjBgNBusUgS8UqS0Bq1FU2liYSW+gQAddyUEjxRQpqVmxsV
- 4luD5oVq/fpUscoOdGIFKqNQztWbJCX+CdIK6757k6N17lJki9iUe+i2jYkaQQ==
-X-Gm-Gg: ASbGncs+Mcr0hkuVvvNWtphy+xApnVHLJGbbS5Ogwxo8EgQxDJJsQL1+ZKOzfHjMuSe
- EsKlLRfBgtCPq0yxY8YzJZ19ruxL/rBYuJX/pUo8pTkeJ9DJGK8KLR53ruaX6tkBm0yKtYRrX8G
- IBrSWBIl/OdTQ/wBLVRXvON/0zJxO990xk7dT02pVK5kNLD1XJL3ZmUR13NX3xy3EwyfCSLB1mm
- ulnNYmFbsY9xFtR9TLkWlFnM6ex1nnrNPiqX4ybpnCxtwLiA1wn9rWKCEqmWGUnCtU0qhgTr/bq
- vOMStGmKSAC1wtf9WWuz6VQGSr/OU7IR0C6UYV65yDL/jdOvgA==
-X-Google-Smtp-Source: AGHT+IEvy6kgULlZZh+g/Jo9ZEWmTjrbZlUGLIqKPnfHXoHdBf0RzSc9G7gT62xhdLc+tXmoYTQ/WQ==
-X-Received: by 2002:a17:906:f58d:b0:aca:a1de:5e62 with SMTP id
- a640c23a62f3a-acad359505amr320916466b.42.1744413259061; 
- Fri, 11 Apr 2025 16:14:19 -0700 (PDT)
+ bh=HwMv8tPiMF0dVPflBOXsWhbXdPTG3gvkPVzHF2vJkxM=;
+ b=DX6QxQ18WyjqPQFHz1V9pgxDCmwXKRf1TUToYpxx8G/68jaXz66LFjkBH162AjGrKN
+ dC4HU0sn3rG44/2GvMD2q+L+eAMK3Xsl1rCqBMleVjlhW3KZPRhDAPr0t42tF/JuiY1+
+ T95fL3IJmWnMsaH2hv4PPqQTlWJJZoBxp42SenM+06R4V+kLkn4SqHucA5O+vN//sLca
+ rIFnf/Yl3EMk6HI3oV/Ny/5uoJvE5nYtgE/e4ozxqAexYXPh07xIEq2Trfl7VNKdjXmU
+ 0zeZAdpLL4O3guZct8Gm8QGKpu/+obigcdQDqD6LB12CEd2cdC4y0djQwIE9v3ua2clg
+ 5H5A==
+X-Gm-Message-State: AOJu0YyGo1CSFrMevzrb48eal0RZuGHhd7kWFxiXQUransxB/eMavY4B
+ 2U2R4MW8Oes9VfagRvJ5Kwvs1aPzby1wyw0gbEJj97yF7uu+Nggl1CYf/hFRHA==
+X-Gm-Gg: ASbGncvNuL8ptYQ5btTu9qW2BmzuuGfHn9/+BucLzwOdCbctJtku4GvaKUoJMGlTdBJ
+ zCk5QIk95v2SVas2v/0yfLocXo25Og6Ji2iwpogKdeZ08Xocazh3LyGb3Pv42T0lkrxqbigviDs
+ 303U26sdaLswP7uvSXJJltjj0vOeZkiCpMqFHJaqz3WNjY/YAVJhLJ4zjD+h+fWwEYqW4CS0tqV
+ DM48sgTkmaelI2m/OZvXmiSNxlx6mDX0Qf22bsDTEhqvTCpDcyHcsIaFnb1ZwgJCuvxsoaaNQFt
+ WEOqxYbJ21XpDIXkWXOYSqqbvJ2noBHq6tykQYo=
+X-Google-Smtp-Source: AGHT+IG65JtJTlWzVWTcHoqcK5/jFXj4u4V5EKxD/X2oPq8vmVDR5pde+amvYWacjgOlLdGpJdb14Q==
+X-Received: by 2002:a05:6402:358f:b0:5e8:bf2a:7e8c with SMTP id
+ 4fb4d7f45d1cf-5f36f650ad8mr3873062a12.11.1744414576095; 
+ Fri, 11 Apr 2025 16:36:16 -0700 (PDT)
 Received: from [10.2.1.132] ([194.53.194.238])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-acaa1cb4104sm513940666b.99.2025.04.11.16.14.18
+ 4fb4d7f45d1cf-5f36e0ce3fesm1551899a12.0.2025.04.11.16.36.15
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 11 Apr 2025 16:14:18 -0700 (PDT)
+ Fri, 11 Apr 2025 16:36:15 -0700 (PDT)
 From: Jacek Kowalski <jacek@jacekk.info>
 X-Google-Original-From: Jacek Kowalski <Jacek@jacekk.info>
-Message-ID: <1c4b00b6-f6e3-4b04-a129-24452df60903@jacekk.info>
-Date: Sat, 12 Apr 2025 01:14:17 +0200
+Message-ID: <7c986a61-7214-495b-aed3-ca9f15ac9b7d@jacekk.info>
+Date: Sat, 12 Apr 2025 01:36:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>,
@@ -99,29 +99,29 @@ References: <c0435964-44ad-4b03-b246-6db909e419df@jacekk.info>
  <9ad46cc5-0d49-8f51-52ff-05eb7691ef61@intel.com>
  <a6d71bdc-3c40-49a1-94e5-369029693d06@jacekk.info>
  <ca5e7925-1d75-5168-2c54-1f4fa9ef523e@intel.com>
+ <1c4b00b6-f6e3-4b04-a129-24452df60903@jacekk.info>
 Content-Language: en-US
-In-Reply-To: <ca5e7925-1d75-5168-2c54-1f4fa9ef523e@intel.com>
+In-Reply-To: <1c4b00b6-f6e3-4b04-a129-24452df60903@jacekk.info>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=jacekk.info; s=g2024; t=1744413259; x=1745018059; darn=lists.osuosl.org;
+ d=jacekk.info; s=g2024; t=1744414576; x=1745019376; darn=lists.osuosl.org;
  h=content-transfer-encoding:in-reply-to:content-language:references
  :cc:to:subject:user-agent:mime-version:date:message-id:from:from:to
  :cc:subject:date:message-id:reply-to;
- bh=L7gZ2a4kNRAu7jwQR+r8fyDCj7+uKKM15SUMg3PT2KM=;
- b=Suz4ewm9f+daTGbmqcZlPJVi3WZqTMNQvIYiyPQYhrN9jwVSyikSz3IsTeTZbwA79R
- nMMpHx6zh6KJwvY3Z4ictQPZl469mWPEDwpKN8+LpnskDYLU5N8aAKkyWg3c9w7mqXTU
- FZ1kfjND0SVRSeOHIweJ7DcyZ0dts3logDO0icmZyxLqMXiArSNZG00rV/ucLPVnPjbN
- 2cn5FPaZz6ou9qGuGxcHwG53vs3hfBGFf4pJnRxiQiYaheTfaq9+uEVSOzYZoQ1Xysj5
- NUlNLScc6CP8Ftj90TpfTAgXQCRiWNZ4kUNbtMxcGCvakqHXXpvBmnIedQq8B1xX2WmR
- OdZA==
+ bh=HwMv8tPiMF0dVPflBOXsWhbXdPTG3gvkPVzHF2vJkxM=;
+ b=KSJYENGdNF1T3+RWgKBimVBK2OWuF31HTJOfQrRq/EPPq37+Z/lFpZAWD0baHKU8Oj
+ WDNhsNdOCv6Isn80n0h2aE77u9RMKXm/e7cB4nvlYxTmXZv6PiR5zp6is6UZ78Xlwfvv
+ HwT8aMG/YkPE6zQskSgDlxqaSaJgX3Ylngc7NUW7PxeL/9aUUtsf3pl/6Uhtp6QmNILw
+ 1iYPfnl+xVfWdJ+Il8EJeJZpWj9FrLDvxN+k0Oa04zPvzpQycgchEKJEExi2ilc5PJ+p
+ RAjdrH2+Lw8/hJX+aLNNPrUhv1EsWPgYGRhj4GcxjRGt6khzwaR1JCH3rF2kOCj/ErTX
+ 0XnA==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=jacekk.info
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=jacekk.info header.i=@jacekk.info header.a=rsa-sha256
- header.s=g2024 header.b=Suz4ewm9
+ dkim=pass (2048-bit key) header.d=jacekk.info header.i=@jacekk.info
+ header.a=rsa-sha256 header.s=g2024 header.b=KSJYENGd
 Subject: Re: [Intel-wired-lan] [PATCH] e1000e: add option not to verify NVM
  checksum
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -139,65 +139,33 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
->> I'll experiment a little more and get back to you.>> Specifically I'll try to dump the NVM contents before
->> and after running e1000e_update_nvm_checksum and after
->> a reboot.
+>> If this approach is acceptable to you, I will prepare a patch with
+>> the proposed fix and send it to you next week for testing on your system.
+> 
+> What solution do you have in mind?
+> 
+> The only one I can think of is to ignore the checksum completely if the
+> valid_csum_mask condition is not met on e1000_pch_tgp.
 
-I finally had a moment to take a look at the issue again.
-
-This change also makes everything work on my system:
-
+Would you be OK with the following modification:
 
 diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-index 364378133526..4538059091e6 100644
+index 364378133526..df4e7d781cb1 100644
 --- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
 +++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-@@ -4266,7 +4266,7 @@ static s32 e1000_validate_nvm_checksum_ich8lan(struct e1000_hw *hw)
-         if (!(data & valid_csum_mask)) {
-                 e_dbg("NVM Checksum valid bit not set\n");
-  
--               if (hw->mac.type < e1000_pch_tgp) {
-+               if (hw->mac.type <= e1000_pch_tgp) {
-                         data |= valid_csum_mask;
-                         ret_val = e1000_write_nvm(hw, word, 1, &data);
+@@ -4274,6 +4274,8 @@ static s32 e1000_validate_nvm_checksum_ich8lan(struct e1000_hw *hw)
+                         ret_val = e1000e_update_nvm_checksum(hw);
                          if (ret_val)
+                                 return ret_val;
++               } else if (hw->mac.type == e1000_pch_tgp) {
++                       return 0;
+                 }
+         }
+  
 
-
-(the modification is not persisted - it is lost even after rmmod/insmod).
-
-The diff between "before" and "after" NVM rewrite looks like this
-(MAC address masked):
-
-< 0x0000:               XX XX XX XX XX XX 00 08 ff ff 84 00 01 00 70 00
----
-> 0x0000:               XX XX XX XX XX XX 01 08 ff ff 84 00 01 00 70 00 
-10c10
-< 0x0070:               ff ff ff ff ff ff ff ff ff ff 00 02 ff ff fe 36
----
-> 0x0070:               ff ff ff ff ff ff ff ff ff ff 00 02 ff ff fd 34
-
-
-
-Reading https://bugzilla.kernel.org/show_bug.cgi?id=213667 the issue
-started with yet another Dell system, Precision 7760, locking itself
-up with such modification.
-
-The "fix" (4051f68318: e1000e: Do not take care about recovery NVM checksum)
-fixed some problems (i.e. Precision 7760) and "broke" some configurations
-(i.e. mine Latitude 5420).
-
-The condition itself was changed once already (ffd24fa2fc: e1000e: Correct
-NVM checksum verification flow).
-
-
-> If this approach is acceptable to you, I will prepare a patch with
-> the proposed fix and send it to you next week for testing on your system.
-
-What solution do you have in mind?
-
-The only one I can think of is to ignore the checksum completely if the
-valid_csum_mask condition is not met on e1000_pch_tgp.
+?
 
 -- 
 Best regards,
    Jacek Kowalski
+
