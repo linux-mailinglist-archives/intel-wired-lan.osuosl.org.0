@@ -1,136 +1,142 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 47307A886DD
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Apr 2025 17:20:52 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 47402A886D5
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Apr 2025 17:20:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 857A4610DA;
-	Mon, 14 Apr 2025 15:20:42 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A912F81EDF;
+	Mon, 14 Apr 2025 15:20:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ok-zRn1Rcheq; Mon, 14 Apr 2025 15:20:42 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id sAv1i5HfZoMi; Mon, 14 Apr 2025 15:20:37 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0286661083
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0C260819D2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744644042;
-	bh=xtsqEiOso+3ySVEpPpnY9tocZGrAQf6OsnV8IcNWh6c=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=MxI/qXzuuSN3eTwVPClr71vZqwfxIXM4tRk8Bl4DzF0lY3UZIY1jZhHMCXN2UQMDV
-	 ACWgq9D9BFkYxonVBMAl+XANhfaOPEjVwXFrzbCpe8Y4CMi61xAS/tg83S6TYpsefS
-	 /SArSsSIW6aAgfBT8n1K180evcoEdSM8teTT6e15G4cGWB6pRzOBvVIe6ra10XJCU1
-	 uKYiFjBWUBYwFKxe8DDKGBOf8awv4XDoUZZHIjUcYYDeZtaORUlcv94IcQ8ae0aiFQ
-	 gpea9/kCmAVxBVah+hI6b0jOA5zHLBG4o6mypvttl4VF7EIURSjQ6YRXmUOfhKjVGq
-	 bxCWU0IdRYBAA==
+	s=default; t=1744644037;
+	bh=14vOFFZCQHiLV/92bFmMrgdRuS1SSchqrTzaRecxFAQ=;
+	h=Date:From:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=SoI9TC51+sw1rwERQox98x/pLclg3ZjV2lR+lCJHw0RsDWNwv6BE2X6yflNiUFfVj
+	 taQPGvxT03lkfloFtz40sXNpHALTGI4VxnRu1tWy5kgcUlWX9zaTAEgYOMBJ2x3wuR
+	 D57hZ9MHsQx7wTh2zR3F2EY4Xu0e9crVhNPcMXWQOQ/GEBBQ0rJLaSVNtISMoaan9t
+	 3H+BsSHMpNkskuLfktk14HpjYNd6qCF4mOwsrbhlvuXGHQI5wtGk0Dg83PzS4j1Obg
+	 Q5nngUROVPKL4Bfzw0tOJcvyS31paPivEp/72pO5o+BGkjh0kXSAElblqILl2gRMth
+	 LNHHN4gLl7few==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0286661083;
-	Mon, 14 Apr 2025 15:20:42 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0C260819D2;
+	Mon, 14 Apr 2025 15:20:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id B2D7F250
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Apr 2025 10:49:31 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id BFB17DE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Apr 2025 12:26:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id AFB72411FC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Apr 2025 10:49:31 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id B007340919
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Apr 2025 12:26:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TLPG-QRYRwXO for <intel-wired-lan@lists.osuosl.org>;
- Mon, 14 Apr 2025 10:49:31 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::430; helo=mail-wr1-x430.google.com;
- envelope-from=ttoukan.linux@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 062BE41028
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 062BE41028
-Received: from mail-wr1-x430.google.com (mail-wr1-x430.google.com
- [IPv6:2a00:1450:4864:20::430])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 062BE41028
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Apr 2025 10:49:30 +0000 (UTC)
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-38f2f391864so2266200f8f.3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Apr 2025 03:49:30 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1744627769; x=1745232569;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=xtsqEiOso+3ySVEpPpnY9tocZGrAQf6OsnV8IcNWh6c=;
- b=g+RKIsVdLX1qUW3Hbu9HfNK9aVn6Z/yX6pBC45BnoIm5iAT9pW0JEQR82iijMcQiJi
- wr+OQ5o2w3uC//F6jKyahaWSypwBgKFO/TXBDm4sAhnMybfC8gNUdxmGKGHjHxwwJsT8
- YPzPZDSs3couXgK0s7UMizBRHkGmgmxX5tqXilFUK3I4REPB1wrt8thm1/XzRi3FZMHO
- cq+M9S4nLwho8mUcTZWsrOAUiSm9wbnniy6VBdGGnFoC3GjDfVMqAOUBXkUI70sSft10
- o1Jk8CGyAHV9VM2WY7+Lsz90Fc+DhaEDZjheoj7jK6fMHuVqw5F26kPr0vjSpfh9ri9f
- yh0g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXlcR0PJHSqXgtFEDNcD8LK0KFNBrT32hxnp9t9cd+VW0C8hPnU38xb+xQ5di3Q+7RhojO6xVX+FBNOvcFU1Wk=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yyafgcpp0YSI54QGg1L7+ocLRzFnogbKJDxvWlPXMUNb7RpC9fm
- pL/HXaLVyg5Fe5bBoQ+ra4LJ9xUGpHCjYwVOni7TjfFHXpy3mgzx
-X-Gm-Gg: ASbGncutodlrjP4TwUlGpSAXBUZt0weZ6H0irj6r+OGFQ2vPahCcu31JSq4wtZUSdrA
- CA6/gM+5q8yvy8IWXQWPJT93jHUQzTWwvjVebFaWSWwfsmYpa1nNwEQwgNm4OyrIjQoZgRBwExe
- 4hxyMPG6JJp8/6sYeY73EmRX58DOgMuL2a8FjTdDD7U20VEuZ7/gGifJv3JsLFaX6TlHaJitAk7
- bViH319YjKLa6Zbb5dc793sjyy0yDskNMocoqfWQ8vZpOuAX5MGNxioBBrC4f3IPrRpJ3La9fIz
- iqsB+FQdCnMpZFGKW1VbgJZFPcvYtlG0adHXDZIkTC5e2NwmPxpC+2IsAxzk
-X-Google-Smtp-Source: AGHT+IH1pMW+2VKVzwJ49w6Ztlv9YMJUN6W45Wwpzz8L92YImh1YeiCHahCGMNa6e6rsSObu5WtiCQ==
-X-Received: by 2002:a5d:6da8:0:b0:39c:1424:3246 with SMTP id
- ffacd0b85a97d-39ea51d3527mr8524313f8f.2.1744627768500; 
- Mon, 14 Apr 2025 03:49:28 -0700 (PDT)
-Received: from [10.158.37.53] ([193.47.165.251])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-39eaf445772sm10695726f8f.91.2025.04.14.03.49.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Apr 2025 03:49:28 -0700 (PDT)
-Message-ID: <f4a406e2-af98-4762-af44-9089440c0a7f@gmail.com>
-Date: Mon, 14 Apr 2025 13:49:24 +0300
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id MOn-BVjXW1n4 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 14 Apr 2025 12:26:10 +0000 (UTC)
+X-Greylist: delayed 458 seconds by postgrey-1.37 at util1.osuosl.org;
+ Mon, 14 Apr 2025 12:26:09 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org F2E00403C9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F2E00403C9
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=202.12.124.148;
+ helo=fout-b5-smtp.messagingengine.com;
+ envelope-from=marmarek@invisiblethingslab.com; receiver=<UNKNOWN> 
+Received: from fout-b5-smtp.messagingengine.com
+ (fout-b5-smtp.messagingengine.com [202.12.124.148])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id F2E00403C9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Apr 2025 12:26:09 +0000 (UTC)
+Received: from phl-compute-04.internal (phl-compute-04.phl.internal
+ [10.202.2.44])
+ by mailfout.stl.internal (Postfix) with ESMTP id 07F9111400A4;
+ Mon, 14 Apr 2025 08:18:30 -0400 (EDT)
+Received: from phl-mailfrontend-02 ([10.202.2.163])
+ by phl-compute-04.internal (MEProxy); Mon, 14 Apr 2025 08:18:30 -0400
+X-ME-Sender: <xms:Ff38Z_y_8f72HC71bHOQoZbVnxtMSi799Eo1kVxjPcG36gZiQO4V4Q>
+ <xme:Ff38Z3RCsYvLaW2xeXtkaaBtGbYbqg-cV3DlJf6oVuTixBYzG4R_cyviymaYzjwSN
+ ihRV0atBF4sgw>
+X-ME-Received: <xmr:Ff38Z5XbfY6sPl4uTnWJdsDsYZ12rTsG0d8cr5RE2XmwhFk8rNatQz4kzpB6YGVxTnSGFZA5B0tfAlAS3GsS_hIuWmnMZ7v0sQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvvddtheefucetufdoteggodetrf
+ dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggv
+ pdfurfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpih
+ gvnhhtshculddquddttddmnecujfgurhepfffhvfevuffkgggtugesghdtreertddtjeen
+ ucfhrhhomhepofgrrhgvkhcuofgrrhgtiiihkhhofihskhhiqdfikphrvggtkhhiuceomh
+ grrhhmrghrvghksehinhhvihhsihgslhgvthhhihhnghhslhgrsgdrtghomheqnecuggft
+ rfgrthhtvghrnhepudfggfeileeuueektdfhffelvdfhjeeffeehueeikefhleduleejje
+ elgeejudffnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhho
+ mhepmhgrrhhmrghrvghksehinhhvihhsihgslhgvthhhihhnghhslhgrsgdrtghomhdpnh
+ gspghrtghpthhtohepkedpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtohepvhhithgr
+ lhihrdhlihhfshhhihhtshesihhnthgvlhdrtghomhdprhgtphhtthhopehjvghsshgvrd
+ gsrhgrnhguvggsuhhrghesihhnthgvlhdrtghomhdprhgtphhtthhopegrnhhthhhonhih
+ rdhlrdhnghhuhigvnhesihhnthgvlhdrtghomhdprhgtphhtthhopehnvghtuggvvhesvh
+ hgvghrrdhkvghrnhgvlhdrohhrghdprhgtphhtthhopehinhhtvghlqdifihhrvgguqdhl
+ rghnsehlihhsthhsrdhoshhuohhslhdrohhrghdprhgtphhtthhopehrvghgrhgvshhsih
+ honhhssehlihhsthhsrdhlihhnuhigrdguvghvpdhrtghpthhtohepshhtrggslhgvsehv
+ ghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtohepshgrshhhrghlsehkvghrnhgvlh
+ drohhrgh
+X-ME-Proxy: <xmx:Ff38Z5jIHafS9XZE4m0c-MYjzKxy7LWWkH8yZ9Q7DZrnrm5W-eQozQ>
+ <xmx:Ff38ZxC9SuIEBzUbVaU5FAl8EupDR3K4sD2fv0uvtoFE__eDKXB41w>
+ <xmx:Ff38ZyJ8VSseiCAAFq9VCGZQqS4e-0bCdOXMX5NC_Z_ROHrpLU3_tQ>
+ <xmx:Ff38ZwD44Z5OhXxTyJmdCW44X4xa2Z9MSdcA-57bFR8PIe_FZNDxHw>
+ <xmx:Ff38Z43yEnkn1sB6jgMoLYqZgmhG3keNee6NssA2ruwcXT905VrQZR3J>
+Feedback-ID: i1568416f:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 14 Apr 2025 08:18:27 -0400 (EDT)
+Date: Mon, 14 Apr 2025 14:18:25 +0200
+From: Marek =?utf-8?Q?Marczykowski-G=C3=B3recki?=
+ <marmarek@invisiblethingslab.com>
+To: Vitaly Lifshits <vitaly.lifshits@intel.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org
+Cc: regressions@lists.linux.dev, stable@vger.kernel.org,
+ Sasha Levin <sashal@kernel.org>
+Message-ID: <Z_z9EjcKtwHCQcZR@mail-itl>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: =?UTF-8?Q?Thomas_Wei=C3=9Fschuh?= <thomas.weissschuh@linutronix.de>,
- Jeff Johnson <jjohnson@kernel.org>, Loic Poulain <loic.poulain@linaro.org>,
- Brian Norris <briannorris@chromium.org>,
- Francesco Dolcini <francesco@dolcini.it>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>,
- Tariq Toukan <tariqt@nvidia.com>
-Cc: ath10k@lists.infradead.org, linux-kernel@vger.kernel.org,
- ath11k@lists.infradead.org, ath12k@lists.infradead.org,
- wcn36xx@lists.infradead.org, linux-wireless@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-rdma@vger.kernel.org
-References: <20250414-restricted-pointers-net-v1-0-12af0ce46cdd@linutronix.de>
- <20250414-restricted-pointers-net-v1-7-12af0ce46cdd@linutronix.de>
-Content-Language: en-US
-From: Tariq Toukan <ttoukan.linux@gmail.com>
-In-Reply-To: <20250414-restricted-pointers-net-v1-7-12af0ce46cdd@linutronix.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Mailman-Approved-At: Mon, 14 Apr 2025 15:20:40 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1744627769; x=1745232569; darn=lists.osuosl.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=xtsqEiOso+3ySVEpPpnY9tocZGrAQf6OsnV8IcNWh6c=;
- b=YpyFwhLSgWmZloX0rgweQwbCmiSisgMo6Gbn4p2csEumMDcpmZIWxiQg/rkQ1X8nay
- +3Sj+vMH1lDveFlLBV7EfxzKp+qP4MGwwt8d0+TiOnbHm7QKAUJQyaGACiR6q3CbyCm6
- 8xL10YcVTENYPaF3qt7ehvZobhmQwR6e5dnOKeQH/qKGnrUEzeJ7vGkEeXYkTqqwjmkW
- GtIXYqWZfhFZkEOMFGiteGJD8kIUxyrsTwi92Wj/yMI/Ttko88Nn9w361SqSWxigafVn
- ooDxJH66fTnOIsIAARa/OuqBvlbf8G3Q3Wdsy//cIDI2w0okJqySjaprtiCOuvTZHUdw
- r56g==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="5JPjsqyE+gD2u5U8"
+Content-Disposition: inline
+X-Mailman-Approved-At: Mon, 14 Apr 2025 15:20:28 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ invisiblethingslab.com; h=cc:cc:content-type:content-type:date
+ :date:from:from:in-reply-to:message-id:mime-version:reply-to
+ :subject:subject:to:to; s=fm2; t=1744633109; x=1744719509; bh=14
+ vOFFZCQHiLV/92bFmMrgdRuS1SSchqrTzaRecxFAQ=; b=neFzF5pudr2K9mQAQt
+ USaEElu4vbl3JvJqoKGBCmDb3rwHFLOuiEJNmwkZ7jBU9teCxaMN+PLiACdWQBa8
+ OF7N38G0zN6Yc5TK0KRywa03hgCbQ+TXomUg+uN6HilLIwlMW+o9bLnJ/Z2BecxZ
+ WtmlRUi/RrofYLZLEnchuh7qKISOu5YoAO6z4luJNl3+v3aHthMMMV17on141duH
+ K5VPDc6b2gqZ9KaQEBYfAzZe5txNrRODL8mCNau85VKdDCPTsVczRInLqnsMiICf
+ VLSomEzB6esqYk+IDVUriIJvMfaZhlpTFaxJ1DsdVVTN3e9in2gfd90Bp9LRoHx4
+ Y9OQ==
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:content-type:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:message-id
+ :mime-version:reply-to:subject:subject:to:to:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1744633109; x=
+ 1744719509; bh=14vOFFZCQHiLV/92bFmMrgdRuS1SSchqrTzaRecxFAQ=; b=h
+ 1deeLkRjeZScMtORyUD8FJLqe9c+7LHPc5RBz2Jooq3hI66tpNs0SMvk70erzg3u
+ RFqqLnAjRXrUKxZLir7v6ax1RgrTG2sE7DQSMtLO9mKzwlOWjmCEsfupmFO+wN9d
+ q7H6JXnBHTb/XM0nHod5H7mcvskQMXTWw0j93NN/qiu/QMgmSFCDaN2J5TI5N8R/
+ goHI+Ul7xQJcVz9i55k+gXkE7gNG/BvQ+Anx/JNwc+Sx017U3uf/quevx81c0W7n
+ UatAo/PStrzKjVP8I8PbI2qgXXgu4nZlNXDmLpp8tSJSmQmVPyQvOvwJg/WP9lH4
+ 5We0N5pdYePgcmK7rVt2A==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=YpyFwhLS
-Subject: Re: [Intel-wired-lan] [PATCH net-next 7/7] net/mlx5: Don't use %pK
- through tracepoints
+ header.from=invisiblethingslab.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key, unprotected) header.d=invisiblethingslab.com
+ header.i=@invisiblethingslab.com header.a=rsa-sha256 header.s=fm2
+ header.b=neFzF5pu; 
+ dkim=pass (2048-bit key,
+ unprotected) header.d=messagingengine.com header.i=@messagingengine.com
+ header.a=rsa-sha256 header.s=fm2 header.b=h1deeLkR
+Subject: [Intel-wired-lan] [REGRESSION] e1000e heavy packet loss on Meteor
+ Lake - 6.14.2
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -147,26 +153,90 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
+--5JPjsqyE+gD2u5U8
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Date: Mon, 14 Apr 2025 14:18:25 +0200
+From: Marek =?utf-8?Q?Marczykowski-G=C3=B3recki?= <marmarek@invisiblethingslab.com>
+To: Vitaly Lifshits <vitaly.lifshits@intel.com>,
+	Jesse Brandeburg <jesse.brandeburg@intel.com>,
+	Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
+	intel-wired-lan@lists.osuosl.org
+Cc: regressions@lists.linux.dev, stable@vger.kernel.org,
+	Sasha Levin <sashal@kernel.org>
+Subject: [REGRESSION] e1000e heavy packet loss on Meteor Lake - 6.14.2
 
-On 14/04/2025 11:26, Thomas Weißschuh wrote:
-> In the past %pK was preferable to %p as it would not leak raw pointer
-> values into the kernel log.
-> Since commit ad67b74d2469 ("printk: hash addresses printed with %p")
-> the regular %p has been improved to avoid this issue.
-> Furthermore, restricted pointers ("%pK") were never meant to be used
-> through tracepoints. They can still unintentionally leak raw pointers or
-> acquire sleeping looks in atomic contexts.
-> 
-> Switch to the regular pointer formatting which is safer and
-> easier to reason about.
-> There are still a few users of %pK left, but these use it through seq_file,
-> for which its usage is safe.
-> 
-> Signed-off-by: Thomas Weißschuh <thomas.weissschuh@linutronix.de>
-> ---
->   drivers/net/ethernet/mellanox/mlx5/core/sf/dev/diag/dev_tracepoint.h | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
+Hi,
 
-Reviewed-by: Tariq Toukan <tariqt@nvidia.com>
+After updating to 6.14.2, the ethernet adapter is almost unusable, I get
+over 30% packet loss.
+Bisect says it's this commit:
 
+    commit 85f6414167da39e0da30bf370f1ecda5a58c6f7b
+    Author: Vitaly Lifshits <vitaly.lifshits@intel.com>
+    Date:   Thu Mar 13 16:05:56 2025 +0200
+
+        e1000e: change k1 configuration on MTP and later platforms
+       =20
+        [ Upstream commit efaaf344bc2917cbfa5997633bc18a05d3aed27f ]
+       =20
+        Starting from Meteor Lake, the Kumeran interface between the integr=
+ated
+        MAC and the I219 PHY works at a different frequency. This causes sp=
+oradic
+        MDI errors when accessing the PHY, and in rare circumstances could =
+lead
+        to packet corruption.
+       =20
+        To overcome this, introduce minor changes to the Kumeran idle
+        state (K1) parameters during device initialization. Hardware reset
+        reverts this configuration, therefore it needs to be applied in a f=
+ew
+        places.
+       =20
+        Fixes: cc23f4f0b6b9 ("e1000e: Add support for Meteor Lake")
+        Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
+        Tested-by: Avigail Dahan <avigailx.dahan@intel.com>
+        Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+        Signed-off-by: Sasha Levin <sashal@kernel.org>
+
+     drivers/net/ethernet/intel/e1000e/defines.h |  3 ++
+     drivers/net/ethernet/intel/e1000e/ich8lan.c | 80 +++++++++++++++++++++=
+++++++--
+     drivers/net/ethernet/intel/e1000e/ich8lan.h |  4 ++
+     3 files changed, 82 insertions(+), 5 deletions(-)
+
+My system is Novacustom V540TU laptop with Intel Core Ultra 5 125H. And
+the e1000e driver is running in a Xen HVM (with PCI passthrough).
+Interestingly, I have also another one with Intel Core Ultra 7 155H
+where the issue does not happen. I don't see what is different about
+network adapter there, they look identical on lspci (but there are
+differences about other devices)...
+
+I see the commit above was already backported to other stable branches
+too...
+
+#regzbot introduced: 85f6414167da39e0da30bf370f1ecda5a58c6f7b
+
+--=20
+Best Regards,
+Marek Marczykowski-G=C3=B3recki
+Invisible Things Lab
+
+--5JPjsqyE+gD2u5U8
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhrpukzGPukRmQqkK24/THMrX1ywFAmf8/REACgkQ24/THMrX
+1yypfAf+N7oPT/p3gMa3SFQmHBMe2BJBSC+RhLh+KBD8CpszZRO4TGw6f5u6ss0f
+wRDbgw5f2w2SGumk/BABv0ghWH//T+PwC2IoEjjjUtUYzXM6BENGTPqk+XArMnlB
+S5MPYyFcIaraR12oVMm+gUpHnO0OH/eNN6eXh1CUr8sxZ+wvRkDOZQccEfSBiAE5
+yC3GGmAyAK+XcQDdVZsQe1h7d6nOuZGNLVe3yLdUcESZlUetRH6HLVuE+yM3O+IA
+A/kW5vVHO07FhNwdNsgh9n/XdUmt2t1B7yvg7GRT+EHXP+mTco/UeYYq/HkGodEt
+uIX8rA3eaDdORKHQU8tqIf2Lekbcyg==
+=3xGN
+-----END PGP SIGNATURE-----
+
+--5JPjsqyE+gD2u5U8--
