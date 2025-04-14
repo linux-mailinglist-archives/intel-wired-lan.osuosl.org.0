@@ -2,96 +2,101 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF138A87DF1
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Apr 2025 12:47:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 29B15A87DF4
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Apr 2025 12:48:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2E62081765;
-	Mon, 14 Apr 2025 10:47:57 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DDFA0812B2;
+	Mon, 14 Apr 2025 10:48:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HlzchJMNiPg0; Mon, 14 Apr 2025 10:47:56 +0000 (UTC)
+ id EQWWysiC-A1Q; Mon, 14 Apr 2025 10:48:30 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4AD208176B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 60CDD8169A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744627676;
-	bh=7rFvnSqKA/SI7q9sHHWxTydx1JTL3BB4cHcHPD5YQKI=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=DBIA0ln3/4qXdxpo4+4ewp/KBHC62WpRnbmBAcrONzn9huOEWbXNK7OpHsg9zztC5
-	 3Qr/7AgIHDK/g38JE7ngqDvfeXV8xt89Fzx5dWkTs172fhfy9ZvVfL772LAHoZcffo
-	 QYSj7hcHoxWRWaJEKUSGQUMLIYKEyJnCd2m8lEox2yMZhigpBZOQq8dJienGNKuzQc
-	 qQrqG49Eb5RBviytIl4F0RdA+E13RP2iXv19rhRvn0ugo/z1FIJUw5s+NdCsFbnOk+
-	 B+JwD1EnhtMQOF20p4c+pAdvz4XjukzkSnFDaLu8M2kMvAHpnsshR7Oo35IM/Vadep
-	 aYTrC/8Iom4+A==
+	s=default; t=1744627710;
+	bh=YyKP6eQmIfeoCfoKo/3rZDkWFbn0ufgMLMFWqIYrf7I=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=1r5pSWWgvXeum2KyunSVqqBIEceZPtU7LNvfWXSSxx7g/j3yI5nraozwJ8qnnxkTd
+	 jPetZP5heS5aSn7URe46RnWLN7NDA1958SrDLbEfPUd3oEEDsKXUciDE7P4JuvTbjs
+	 rtxbtyXb3Xys1HE029lwn1J4pugxCXGAlQDrBf/dHEyFkcFs7zjsYbnVsEMnkzkP6x
+	 E09R48kiiv5jQZwmP2zneO1vXyJTXi1axNFJmBUZtgphiwX8nuswN7wW6oFoTMfn/H
+	 bd3G8AF94UpQPSN7u0jgzdXWSpkOzQDuwSAPqb3j5xKkICfHjnBtYnUUs8nOu9HrLu
+	 UBqFlBVoafXDA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4AD208176B;
-	Mon, 14 Apr 2025 10:47:56 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 60CDD8169A;
+	Mon, 14 Apr 2025 10:48:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 0A08F250
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Apr 2025 10:47:55 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 52332108
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Apr 2025 10:48:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E45B341723
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Apr 2025 10:47:54 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 4386261284
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Apr 2025 10:48:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id GJxg6VW9Oxhf for <intel-wired-lan@lists.osuosl.org>;
- Mon, 14 Apr 2025 10:47:54 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id KeO2JQjM_a8t for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 14 Apr 2025 10:48:27 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
  helo=mgamail.intel.com; envelope-from=milena.olech@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 38616413FF
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 38616413FF
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 9C84261169
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9C84261169
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 38616413FF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Apr 2025 10:47:53 +0000 (UTC)
-X-CSE-ConnectionGUID: mK6JJqEiRVi8CbqQRMQLFA==
-X-CSE-MsgGUID: J/trMmmTT6mIKsptEDqpqQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11402"; a="71477970"
-X-IronPort-AV: E=Sophos;i="6.15,212,1739865600"; d="scan'208";a="71477970"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 9C84261169
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Apr 2025 10:48:27 +0000 (UTC)
+X-CSE-ConnectionGUID: n072vbpITZmWQRLfkUGHLg==
+X-CSE-MsgGUID: o8R/7LyzTkqkBqEtJ7zpRA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11402"; a="71478049"
+X-IronPort-AV: E=Sophos;i="6.15,212,1739865600"; d="scan'208";a="71478049"
 Received: from orviesa002.jf.intel.com ([10.64.159.142])
  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Apr 2025 03:47:52 -0700
-X-CSE-ConnectionGUID: 3HTss1W8SJGfLy1EeUtTmA==
-X-CSE-MsgGUID: 9H98Hl+MTFeQ2GlFI66glg==
+ 14 Apr 2025 03:48:26 -0700
+X-CSE-ConnectionGUID: YIeEAv/kQ8GnErhcsDF3+A==
+X-CSE-MsgGUID: LfwY9bZkRQS7RzzfXtWmnw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,212,1739865600"; d="scan'208";a="160739554"
+X-IronPort-AV: E=Sophos;i="6.15,212,1739865600"; d="scan'208";a="160739772"
 Received: from gklab-003-014.igk.intel.com ([10.211.116.96])
- by orviesa002.jf.intel.com with ESMTP; 14 Apr 2025 03:47:50 -0700
+ by orviesa002.jf.intel.com with ESMTP; 14 Apr 2025 03:48:25 -0700
 From: Milena Olech <milena.olech@intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, Milena Olech <milena.olech@intel.com>
-Date: Mon, 14 Apr 2025 12:45:05 +0200
-Message-ID: <20250414104658.14706-1-milena.olech@intel.com>
+ przemyslaw.kitszel@intel.com, Milena Olech <milena.olech@intel.com>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Jacob Keller <jacob.e.keller@intel.com>
+Date: Mon, 14 Apr 2025 12:45:07 +0200
+Message-ID: <20250414104658.14706-3-milena.olech@intel.com>
 X-Mailer: git-send-email 2.43.5
+In-Reply-To: <20250414104658.14706-1-milena.olech@intel.com>
+References: <20250414104658.14706-1-milena.olech@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1744627674; x=1776163674;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=+TjVZGjYo8n4HJPQyDmDpLiNv5Oaf5sgd6xwB5kIKRg=;
- b=auBKICzj3m1zxUrCYAWIJvze9D+YDpYPovdxJ1MVTSX+dWwMeMW21/eE
- gXC1pDvZscO2Q3qDAftC67WHXsCFBIoP5tQK5YRWqAk8b+BqOPDga63Q8
- 3JQIv4quU2YcbVtHapBA0ALYnDhYGmIcGnq3liH84W9Xj7KUslAzj7EVx
- eeirnsN3Tyfu/HvKIx7Qq9jnnYT+xtSxYo7tyGD8PJwvcJH/CjBGfEY7k
- MqGZANdbo3vM2io19AdozrPY6NGJmgk5UqXcTPTUomOMV5BG3MFdBrxvA
- SVIz3E/o5/qi5dMfO6MK0R3VTNzOXCDZW+VuP6JgbPzL26V13fjMMfiTm
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1744627707; x=1776163707;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=9IwVWgo5udn4b2yOTlk4DNHB+R6yGbvF8aZSC4ElHzo=;
+ b=KQD17jslLAu1S39IZIJT9bIUf/SjptakfuNm0i+xSh7aBRO+XP8+t/7W
+ obCe7t5zEIge0hYRUvtqHhMNhIZqM7QOR1UXxMveY2EfPDDQe04ftD+//
+ U34u1XZqJKL0OjU6jeWq7eKp1gNHoTJaW5fjTN4E+t0Nie7X7nnUhE5+Y
+ /vKN6aClXhrZ0pNK13Tn/Tr/nYx9zK/aiVkTFz0K2W9dwFBEF+15+aTzQ
+ 02VI59c3IMGdty5Xe8HsOCrh6MTOYPq5o2gtwtaPCE1nAHMF6bmCkdAQb
+ 70Wf21aY+I/EIDRt6AmetPN2p/WN+BIcCO/KNDHgnEt3gZ0BcinPipDso
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=auBKICzj
-Subject: [Intel-wired-lan] [PATCH v11 iwl-next 00/11] idpf: add initial PTP
- support
+ header.s=Intel header.b=KQD17jsl
+Subject: [Intel-wired-lan] [PATCH v11 iwl-next 01/11] idpf: change the
+ method for mailbox workqueue allocation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -107,95 +112,36 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This patch series introduces support for Precision Time Protocol (PTP) to
-Intel(R) Infrastructure Data Path Function (IDPF) driver. PTP feature is
-supported when the PTP capability is negotiated with the Control
-Plane (CP). IDPF creates a PTP clock and sets a set of supported
-functions.
+Since workqueues are created per CPU, the works scheduled to this
+workqueues are run on the CPU they were assigned. It may result in
+overloaded CPU that is not able to handle virtchnl messages in
+relatively short time. Allocating workqueue with WQ_UNBOUND and
+WQ_HIGHPRI flags allows scheduler to queue virtchl messages on less loaded
+CPUs, what eliminates delays.
 
-During the PTP initialization, IDPF requests a set of PTP capabilities
-and receives a writeback from the CP with the set of supported options.
-These options are:
-- get time of the PTP clock
-- get cross timestamp
-- set the time of the PTP clock
-- adjust the PTP clock
-- Tx timestamping
+Reviewed-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
+Signed-off-by: Milena Olech <milena.olech@intel.com>
+---
+ drivers/net/ethernet/intel/idpf/idpf_main.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-Each feature is considered to have direct access, where the operations
-on PCIe BAR registers are allowed, or the mailbox access, where the
-virtchnl messages are used to perform any PTP action. Mailbox access
-means that PTP requests are sent to the CP through dedicated secondary
-mailbox and the CP reads/writes/modifies desired resource - PTP Clock
-or Tx timestamp registers.
-
-Tx timestamp capabilities are negotiated only for vports that have
-UPLINK_VPORT flag set by the CP. Capabilities provide information about
-the number of available Tx timestamp latches, their indexes and size of
-the Tx timestamp value. IDPF requests Tx timestamp by setting the
-TSYN bit and the requested timestamp index in the context descriptor for
-the PTP packets. When the completion tag for that packet is received,
-IDPF schedules a worker to read the Tx timestamp value.
-
-v10 -> v11: change timestamp extension algorithm, use one lock for
-latches lists, allocate each index latch separately during caps
-negotiation, fix virtchnl comment
-v9 -> v10: create a separate patch for cross timestamping, change the
-order, improve get device clock time latch mechanism
-v8 -> v9: fix Rx filters upscaling, check if the link is up in
-idpf_hwtstamp_get/set, fix typo
-v7 -> v8: split Tx and Rx timestamping enablement, refactor
-idpf_for_each_vport
-v6 -> v7: remove section about Tx timestamp limitation from cover letter
-since it has been fixed, change preparing flow descriptor method
-v5 -> v6: change locking mechanism in get_ts_info, clean timestamp
-fields when preparing flow descriptor, add Rx filter
-v4 -> v5: fix spin unlock when Tx timestamp index is requested
-v3 -> v4: change timestamp filters dependent on Tx timestamp cap,
-rewrite function that extends Tx timestamp value, minor fixes
-v2 -> v3: fix minor issues, revert idpf_for_each_vport changes,
-extend idpf_ptp_set_rx_tstamp, split tstamp statistics
-v1 -> v2: add stats for timestamping, use ndo_hwtamp_get/set,
-fix minor spelling issues
-
-Milena Olech (11):
-  idpf: change the method for mailbox workqueue allocation
-  idpf: add initial PTP support
-  virtchnl: add PTP virtchnl definitions
-  idpf: move virtchnl structures to the header file
-  idpf: negotiate PTP capabilities and get PTP clock
-  idpf: add mailbox access to read PTP clock time
-  idpf: add cross timestamping
-  idpf: add PTP clock configuration
-  idpf: add Tx timestamp capabilities negotiation
-  idpf: add Tx timestamp flows
-  idpf: add support for Rx timestamping
-
- drivers/net/ethernet/intel/idpf/Kconfig       |    1 +
- drivers/net/ethernet/intel/idpf/Makefile      |    3 +
- drivers/net/ethernet/intel/idpf/idpf.h        |   35 +
- .../ethernet/intel/idpf/idpf_controlq_api.h   |    3 +
- drivers/net/ethernet/intel/idpf/idpf_dev.c    |   14 +
- .../net/ethernet/intel/idpf/idpf_ethtool.c    |   75 +-
- .../ethernet/intel/idpf/idpf_lan_pf_regs.h    |    4 +
- .../net/ethernet/intel/idpf/idpf_lan_txrx.h   |   13 +-
- drivers/net/ethernet/intel/idpf/idpf_lib.c    |   47 +
- drivers/net/ethernet/intel/idpf/idpf_main.c   |    9 +-
- drivers/net/ethernet/intel/idpf/idpf_ptp.c    | 1015 +++++++++++++++++
- drivers/net/ethernet/intel/idpf/idpf_ptp.h    |  379 ++++++
- drivers/net/ethernet/intel/idpf/idpf_txrx.c   |  171 ++-
- drivers/net/ethernet/intel/idpf/idpf_txrx.h   |   18 +-
- .../net/ethernet/intel/idpf/idpf_virtchnl.c   |  160 ++-
- .../net/ethernet/intel/idpf/idpf_virtchnl.h   |   84 ++
- .../ethernet/intel/idpf/idpf_virtchnl_ptp.c   |  673 +++++++++++
- drivers/net/ethernet/intel/idpf/virtchnl2.h   |  314 ++++-
- 18 files changed, 2915 insertions(+), 103 deletions(-)
- create mode 100644 drivers/net/ethernet/intel/idpf/idpf_ptp.c
- create mode 100644 drivers/net/ethernet/intel/idpf/idpf_ptp.h
- create mode 100644 drivers/net/ethernet/intel/idpf/idpf_virtchnl_ptp.c
-
-
-base-commit: 427c6457b91dda46d4252166999386e4fa722abd
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_main.c b/drivers/net/ethernet/intel/idpf/idpf_main.c
+index bec4a02c5373..1284ab2adaf1 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_main.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_main.c
+@@ -198,9 +198,8 @@ static int idpf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 		goto err_serv_wq_alloc;
+ 	}
+ 
+-	adapter->mbx_wq = alloc_workqueue("%s-%s-mbx",
+-					  WQ_UNBOUND | WQ_MEM_RECLAIM, 0,
+-					  dev_driver_string(dev),
++	adapter->mbx_wq = alloc_workqueue("%s-%s-mbx", WQ_UNBOUND | WQ_HIGHPRI,
++					  0, dev_driver_string(dev),
+ 					  dev_name(dev));
+ 	if (!adapter->mbx_wq) {
+ 		dev_err(dev, "Failed to allocate mailbox workqueue\n");
 -- 
 2.43.5
 
