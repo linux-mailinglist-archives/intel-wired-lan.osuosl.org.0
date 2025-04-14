@@ -2,81 +2,132 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 972ECA8898C
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Apr 2025 19:16:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C4C97A88BAF
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Apr 2025 20:46:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2D92860618;
-	Mon, 14 Apr 2025 17:16:28 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 79B2560B24;
+	Mon, 14 Apr 2025 18:46:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id BnecEQVG8lyY; Mon, 14 Apr 2025 17:16:27 +0000 (UTC)
+ id ic-EK8wh3wj0; Mon, 14 Apr 2025 18:46:35 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 821306079D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 576E060B79
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744650987;
-	bh=2CTeEp56SCctqolhN+FV6S+4tTAZf5TLl3HT7ych5lU=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1744656394;
+	bh=YpSfHpLk4g82/Efaxxr4vcOeA7lwSVP0ZoulsVdeGLY=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=NoB5L8lFsg8VatJz3XYbfGrAX2fM6/bJZMMQvNCxUqYYEx2boyjI24frqBnjdxD3S
-	 LSV6S2/rtHtM2P2vITPi04M6/5YLCiWJvgro2+zKgc9KRkrwyraQiCEozXkDXelJA2
-	 jRE3ofTURR2SNIkO//8jgbWcJvVj0GMoDdQtV9nyl8P3XKk0qKM/uN5AxWOvHyHd0B
-	 YAkgBDb0MvUkpLXcW3oqcjVka34uSYxnMqdUVEvvSKvJcShn5uF/SVOhepgE+UzWQR
-	 F+SCaLA/1Tu1KwuScjrqT5JuKJ78RxaGjrV7ZuNqGdXqJOZ2HbdJshWjlQJ+BDR+Ds
-	 LasPKkD7gb3Og==
+	b=rBASfiNR+i1LKjxs0sWusEbXqMQ6suinjPEwh45Aer6GxM1SqrtLgP+h985LKAMkW
+	 5Wgv09uQ6mMSD6zMJFfPEJcvkOokE6LpfI4FjNUeDhzXVVxeJ7x3R/X3jO6hjvwLuH
+	 6U6o8mMi+Y5SaF6X6wq/FCLf7C+vc/InFQMwa3KQtK72P+pWz7PiWUqt/0YM/6vEC9
+	 mryAUQIy41zfMgTYCWOQ0B1SCkwf/u/OnAxbv/fBwA5d7pgKxbdzZooXOw9W+doGYM
+	 4ts9si0g/B02vuggLJCgoaQ6ZLGwD0lqersOfgj+lbI02G5v+t5pXaz//WaE4q59MM
+	 ha5xuBqCqvliA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 821306079D;
-	Mon, 14 Apr 2025 17:16:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 576E060B79;
+	Mon, 14 Apr 2025 18:46:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 3967E205
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Apr 2025 17:16:26 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3A986205
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Apr 2025 18:44:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1E6026079C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Apr 2025 17:16:26 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3704B813A2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Apr 2025 18:44:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 6pxvLR_suc7e for <intel-wired-lan@lists.osuosl.org>;
- Mon, 14 Apr 2025 17:16:24 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1FD896079D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1FD896079D
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1FD896079D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Apr 2025 17:16:22 +0000 (UTC)
-Received: from [141.14.220.43] (g43.guest.molgen.mpg.de [141.14.220.43])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id D72EF61E647A7;
- Mon, 14 Apr 2025 19:15:51 +0200 (CEST)
-Message-ID: <559a9953-cd51-42ce-b2a5-83bd185cf008@molgen.mpg.de>
-Date: Mon, 14 Apr 2025 19:15:51 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Jaroslav Pulchart <jaroslav.pulchart@gooddata.com>,
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Zvv9lrcdCAdP for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 14 Apr 2025 18:44:29 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::529; helo=mail-pg1-x529.google.com;
+ envelope-from=briannorris@chromium.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8D49A80A47
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8D49A80A47
+Received: from mail-pg1-x529.google.com (mail-pg1-x529.google.com
+ [IPv6:2607:f8b0:4864:20::529])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8D49A80A47
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Apr 2025 18:44:29 +0000 (UTC)
+Received: by mail-pg1-x529.google.com with SMTP id
+ 41be03b00d2f7-b07d607dc83so1349965a12.1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Apr 2025 11:44:29 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1744656269; x=1745261069;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=YpSfHpLk4g82/Efaxxr4vcOeA7lwSVP0ZoulsVdeGLY=;
+ b=lt0zJrfc4KQl/b3BBtBGq39zOKqNrtgG7vctv+gKuilAz6dcqYV0RX7+C9ZNXna/ma
+ bK5ur+bllRAjnFKva6DLAW/uoX+SMseHzA5CcSUvG/vdozeriRYcye78MWUa1AfxQ9rx
+ 9MWeCAAS0pEndoRvuhvAWJQ/lxphKIBVz18MbgvFQfBk882iCkSzNGnPEaxpnpy5nhoo
+ UtPLTuRZcAilcFIZ4mRfSyfMSLlJjfm+AjIOwClXBGxV5J8//v2izjfrzGjpmCR8h2sq
+ ZAACgh+AtUjTCBMfPElM8I6ec4Hn30CdwDrZUn9/o6cmN/KdhzUF2bXxOS9MBKlil8DR
+ PGYg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWE8GUYTXWPKFF/WzwXIZ5SejSVOklK0Yu5cGPfBZVl2HhRGykoEd9TxeNkkDKtgzRhCsmzYIGf1gnjd8NSViM=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YzEoOy92vhk1B/EEDXcb3FdFLOeFy4HseTsrYqv2UWqXDGc7H8+
+ bCmbUj/xbSiBj3ir3tc8//AhFLcGW1ULONMscpImea2NgQFgaGpgPXfe3dRTbA==
+X-Gm-Gg: ASbGncuo8j66A2eCkNNDg//kgpztHYlkGm31Y7gwWV4d7oIj+MIo+o/pPOr+lMXkdLY
+ Scq+POeGEoU2yBLI9j99F/qLlr5QAa51bo/CZ/0x5MGUGq0H7AegK/kbAPrpfaHN3yt/O2ubEO9
+ IVbxCZ31dw7Iq/vlpdk3Z6lljyEwdG3+IebOFvPG3GL1BQD9Gnxv7MYTeF7ntwHfnHFDmrY3lYf
+ +OSQvbK3T/PawQyz9uKKCfd8h3zAIOocZCoNOfgExSURZ0eunD9aEHSYaWZsxERgPaJau2UCkG4
+ DAIVmDv7cADE+Kaohp/YKufAXkHZLU2r+3rFEBRwXDOuoW6o85Oty1vsijkc/U7aRWRCG1m8Yss
+ 7MA==
+X-Google-Smtp-Source: AGHT+IHRnGevNVFCEzzLtuARDY+GV3b1ySMboNdXjtt9nCxP859MMeYdEqvd7RpkkuyGR22MEOT6ZQ==
+X-Received: by 2002:a17:90b:2752:b0:301:1bce:c255 with SMTP id
+ 98e67ed59e1d1-308237ba788mr18304386a91.27.1744656268888; 
+ Mon, 14 Apr 2025 11:44:28 -0700 (PDT)
+Received: from localhost ([2a00:79e0:2e14:7:cfd0:cb73:1c0:728a])
+ by smtp.gmail.com with UTF8SMTPSA id
+ 98e67ed59e1d1-306df082327sm11386410a91.15.2025.04.14.11.44.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 14 Apr 2025 11:44:27 -0700 (PDT)
+Date: Mon, 14 Apr 2025 11:44:24 -0700
+From: Brian Norris <briannorris@chromium.org>
+To: Thomas =?iso-8859-1?Q?Wei=DFschuh?= <thomas.weissschuh@linutronix.de>
+Cc: Jeff Johnson <jjohnson@kernel.org>, Loic Poulain <loic.poulain@linaro.org>,
+ Francesco Dolcini <francesco@dolcini.it>,
  Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemyslaw Kitszel <przemyslaw.kitszel@intel.com>
-Cc: jdamato@fastly.com, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, Igor Raits <igor@gooddata.com>,
- Daniel Secik <daniel.secik@gooddata.com>,
- Zdenek Pesek <zdenek.pesek@gooddata.com>, regressions@lists.linux.dev
-References: <CAK8fFZ4hY6GUJNENz3wY9jaYLZXGfpr7dnZxzGMYoE44caRbgw@mail.gmail.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <CAK8fFZ4hY6GUJNENz3wY9jaYLZXGfpr7dnZxzGMYoE44caRbgw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Saeed Mahameed <saeedm@nvidia.com>,
+ Leon Romanovsky <leon@kernel.org>, Tariq Toukan <tariqt@nvidia.com>,
+ ath10k@lists.infradead.org, linux-kernel@vger.kernel.org,
+ ath11k@lists.infradead.org, ath12k@lists.infradead.org,
+ wcn36xx@lists.infradead.org, linux-wireless@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-rdma@vger.kernel.org
+Message-ID: <Z_1XiNY2ujreEo69@google.com>
+References: <20250414-restricted-pointers-net-v1-0-12af0ce46cdd@linutronix.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] Increased memory usage on NUMA nodes with ICE
- driver after upgrade to 6.13.y (regression in commit 492a044508ad)
+In-Reply-To: <20250414-restricted-pointers-net-v1-0-12af0ce46cdd@linutronix.de>
+X-Mailman-Approved-At: Mon, 14 Apr 2025 18:46:32 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=chromium.org; s=google; t=1744656269; x=1745261069; darn=lists.osuosl.org;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=YpSfHpLk4g82/Efaxxr4vcOeA7lwSVP0ZoulsVdeGLY=;
+ b=lV0Xwgi0KZN/8hDnVahCNWGUrhUf/YB/JZjFAvYkbgIXEiyqR6REhLurscxcPd34W+
+ 2lcxIznra9v15EGjD8gGVncAJ1dYZLJn4bu+Q2OVU16uevJf/ft0f78aBfywm66JhmTh
+ JmH5gklRJLVJVKi2Bs/iQnuc5QFfwQ053akCQ=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=chromium.org
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256
+ header.s=google header.b=lV0Xwgi0
+Subject: Re: [Intel-wired-lan] [PATCH net-next 0/7] net: Don't use %pK
+ through printk
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -92,57 +143,21 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-#regzbot ^introduced: 492a044508ad13a490a24c66f311339bf891cb5f
+On Mon, Apr 14, 2025 at 10:26:01AM +0200, Thomas Weißschuh wrote:
+> Furthermore, restricted pointers ("%pK") were never meant to be used
+> through printk().
 
-Am 14.04.25 um 18:29 schrieb Jaroslav Pulchart:
-> Hello,
-> 
-> While investigating increased memory usage after upgrading our
-> host/hypervisor servers from Linux kernel 6.12.y to 6.13.y, I observed
-> a regression in available memory per NUMA node. Our servers allocate
-> 60GB of each NUMA nodeâ€™s 64GB of RAM to HugePages for VMs, leaving 4GB
-> for the host OS.
-> 
-> After the upgrade, we noticed approximately 500MB less free RAM on
-> NUMA nodes 0 and 2 compared to 6.12.y, even with no VMs running (just
-> the host OS after reboot). These nodes host Intel 810-XXV NICs. Here's
-> a snapshot of the NUMA stats on vanilla 6.13.y:
-> 
->       NUMA nodes:  0     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15
->       HPFreeGiB:   60    60    60    60    60    60    60    60    60    60   60    60    60    60    60    60
->       MemTotal:    64989 65470 65470 65470 65470 65470 65470 65453 65470 65470 65470 65470 65470 65470 65470 65462
->       MemFree:     2793  3559  3150  3438  3616  3722  3520  3547  3547  3536  3506  3452  3440  3489  3607  3729
-> 
-> We traced the issue to commit 492a044508ad13a490a24c66f311339bf891cb5f
-> "ice: Add support for persistent NAPI config".
-> 
-> We limit the number of channels on the NICs to match local NUMA cores
-> or less if unused interface (from ridiculous 96 default), for example:
->     ethtool -L em1 combined 6       # active port; from 96
->     ethtool -L p3p2 combined 2      # unused port; from 96
-> 
-> This typically aligns memory use with local CPUs and keeps NUMA-local
-> memory usage within expected limits. However, starting with kernel
-> 6.13.y and this commit, the high memory usage by the ICE driver
-> persists regardless of reduced channel configuration.
-> 
-> Reverting the commit restores expected memory availability on nodes 0
-> and 2. Below are stats from 6.13.y with the commit reverted:
->      NUMA nodes:  0     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15
->      HPFreeGiB:   60    60    60    60    60    60    60    60    60    60   60    60    60    60    60    60
->      MemTotal:    64989 65470 65470 65470 65470 65470 65470 65453 65470 65470 65470 65470 65470 65470 65470 65462
->      MemFree:     3208  3765  3668  3507  3811  3727  3812  3546  3676  3596 ...
-> 
-> This brings nodes 0 and 2 back to ~3.5GB free RAM, similar to kernel
-> 6.12.y, and avoids swap pressure and memory exhaustion when running
-> services and VMs.
-> 
-> I also do not see any practical benefit in persisting the channel
-> memory allocation. After a fresh server reboot, channels are not
-> explicitly configured, and the system will not automatically resize
-> them back to a higher count unless manually set again. Therefore,
-> retaining the previous memory footprint appears unnecessary and
-> potentially harmful in memory-constrained environments
-> 
-> Best regards,
-> Jaroslav Pulchart
+Is this really true? Documentation/admin-guide/sysctl/kernel.rst still
+has a section on kptr_restrict which talks about dmesg, CAP_SYSLOG, and
+%pK, which sounds like it's intended. But I'm not highly familiar with
+this space, so maybe I'm misreading something.
+
+(I do see that commit a48849e2358e ("printk: clarify the documentation
+for plain pointer printing") updated
+Documentation/core-api/printk-formats.rst.)
+
+In any case, even if the advice has changed, it seems (again, to an
+outsider) a bit much to say it was "never" meant to be used through
+printk().
+
+Brian
