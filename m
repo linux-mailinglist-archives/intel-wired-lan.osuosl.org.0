@@ -1,107 +1,249 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0EA3A8A6B0
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Apr 2025 20:23:20 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BC701A8A742
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Apr 2025 20:54:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 539A661B06;
-	Tue, 15 Apr 2025 18:23:19 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7DCE6412E9;
+	Tue, 15 Apr 2025 18:54:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id SgyzPEtaem7v; Tue, 15 Apr 2025 18:23:18 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id a9tzWV0LJGCm; Tue, 15 Apr 2025 18:54:16 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1FAE46128E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D5CDC412F5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744741398;
-	bh=L31thvXqcHN6JeqKW6BoJX63/jS8rdI1q011+f9XO3k=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1744743255;
+	bh=aaGnymxidDE872Q/S8Ypz/n6vrfjuH3tCPcrN4GC6/U=;
+	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=AXHsPRBnLcsNUOeb/WoaxEQrrd0GQCPjnNYfrjhEV2bsyoXf/LIWF40AUG4jWNBdV
-	 at1BpCGnYIpMZDJFv/kWdHPSKV2Z4/TwbYgDInR397ixr9xrQfmKu3VpQ45UvXEOwv
-	 7MWr1rMjpI3RonsQpLCX4vnRZAGJ3mGCgm7CPgb5XTXmQ0uvwFf7enktlHupZ9mhcP
-	 XnroLsbhoKR44aWtbwh76/DKA6MxYjdFrWFUYVkwlsdkAEMd3WYsoehUZhYSSJQ5kf
-	 lY7A5Q0A/y0vxzZ9b+0Z7O9u+7mvnX2SN5a3w/wATSo26UUwKm87/A4zjeSEXM7QQ0
-	 GHvSkiBGGZh3g==
+	b=267dYjiRzOz8njl/A6+CctDjDQ3hN6qn/qlstrkEygcbyp2IkEZLKWWB+NzGcK1GE
+	 UggvjnpEfiqpRy8bP9nkjyZRUroYq+Cu3uoTw5evVGqp2HSRiocvZcHu/vtVkxTRqg
+	 J+5Fxb/K3y7ozzqc471XismX10t+N5BKQbSd/rMJ6wyVqXAuVIXRXDni2cIKmZ3bt1
+	 7VlW1KcZ8gxQvGXfUKOmx5IAHrsvMLkIGAfvGhLF8JbDfmXqO4JqW4iwJ3KZNULWfE
+	 jx7QuzzuPg2XYwP6MC7Wram/d9DAYOizBc/xMxwAQLzShIhdkSVIbxBAflJFDT3vJ6
+	 jOFY0Bmz6Fo5A==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1FAE46128E;
-	Tue, 15 Apr 2025 18:23:18 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D5CDC412F5;
+	Tue, 15 Apr 2025 18:54:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 5B0E8108
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 18:23:16 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id BC402108
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 18:54:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4B7576128E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 18:23:16 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id ADA7A412E9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 18:54:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id E4y5-OQNsIlx for <intel-wired-lan@lists.osuosl.org>;
- Tue, 15 Apr 2025 18:23:15 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
- helo=mgamail.intel.com; envelope-from=arkadiusz.kubalewski@intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id extSYlMHUlBj for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 15 Apr 2025 18:54:13 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
+ helo=mgamail.intel.com; envelope-from=anthony.l.nguyen@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1A30661173
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1A30661173
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1A30661173
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 18:23:14 +0000 (UTC)
-X-CSE-ConnectionGUID: deMWYmHyQDSlk0BiyjCW5w==
-X-CSE-MsgGUID: xPn/DY/jSeCWmJuQfdtUTQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11404"; a="45981340"
-X-IronPort-AV: E=Sophos;i="6.15,213,1739865600"; d="scan'208";a="45981340"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
- by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Apr 2025 11:23:15 -0700
-X-CSE-ConnectionGUID: yfjJUONhQA26ned7SSEfIg==
-X-CSE-MsgGUID: n/Yf9c6WTDaArsfnR5Ywkw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org C966340359
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C966340359
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C966340359
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 18:54:12 +0000 (UTC)
+X-CSE-ConnectionGUID: ZUxBSG3hRQ+cXprEonMHWQ==
+X-CSE-MsgGUID: OvgVMFYPS2OH0+UarAS2vw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11404"; a="46357919"
+X-IronPort-AV: E=Sophos;i="6.15,214,1739865600"; d="scan'208";a="46357919"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+ by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Apr 2025 11:54:12 -0700
+X-CSE-ConnectionGUID: iqPstH4rRYS1HMTkkBF0Yw==
+X-CSE-MsgGUID: kYPPrv3kQb6lMQmy36guuA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,213,1739865600"; d="scan'208";a="130513325"
-Received: from amlin-018-114.igk.intel.com ([10.102.18.114])
- by fmviesa008.fm.intel.com with ESMTP; 15 Apr 2025 11:21:53 -0700
-From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-To: donald.hunter@gmail.com, kuba@kernel.org, davem@davemloft.net,
- edumazet@google.com, pabeni@redhat.com, horms@kernel.org,
- vadim.fedorenko@linux.dev, jiri@resnulli.us, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, andrew+netdev@lunn.ch, saeedm@nvidia.com,
- leon@kernel.org, tariqt@nvidia.com, jonathan.lemon@gmail.com,
- richardcochran@gmail.com, aleksandr.loktionov@intel.com,
- milena.olech@intel.com
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-rdma@vger.kernel.org,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-Date: Tue, 15 Apr 2025 20:15:43 +0200
-Message-Id: <20250415181543.1072342-5-arkadiusz.kubalewski@intel.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20250415181543.1072342-1-arkadiusz.kubalewski@intel.com>
-References: <20250415181543.1072342-1-arkadiusz.kubalewski@intel.com>
+X-IronPort-AV: E=Sophos;i="6.15,214,1739865600"; d="scan'208";a="135053144"
+Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
+ by orviesa003.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Apr 2025 11:54:11 -0700
+Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14; Tue, 15 Apr 2025 11:54:11 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14 via Frontend Transport; Tue, 15 Apr 2025 11:54:10 -0700
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.46) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.44; Tue, 15 Apr 2025 11:54:09 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=xLPXRBC68uXePfQL+o9cBvtRRAEPrZ780cKYVUtfbWNzKvXfG0aEoH7lVu4aWU6eo1aL1y0fn0zvzGt8qfMybojrK9AXJ1gO3Q2YLcFJsD53WKkOrMUktkl5AR0T3OHHvrA/KqOODOaSFy+BBSW4nbdNNkYfbohaiL+WQmUy6/r1dq7laCL3QT7PeQSGKbp5qcT7hUvHmhDGhRpYLFP0TDQEZ3fHXQVkYmFXunRB5OTYmqGJLDFPW4sgxAfMj1ruawu4NifUE7PkQItK8xF+bXIXoBBDDdJUSDbDDJ73i0EKXCfogZkpGDUGeeZNdAEZzSaxzQFjqLspH7+LB3I1wA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=aaGnymxidDE872Q/S8Ypz/n6vrfjuH3tCPcrN4GC6/U=;
+ b=w/dKq2/qY3Jr6ASFOvUQfzL/7+/q5D+aLQD1zM9L8dl1twyS4SuKhk4T4Ioyr/np1JnZmLhHHZZADg1ZzQEpyg9y4crdHgBeIohmUe10p/IrhiG9Haigj7rZznyare83ik2RGZWrCbV4vRyiFMzD/aw9ZjG2aL9Vj5TIttVaVRk7ffD3bgqOVAkxnnYc6MZdl2CDORfv+/TQsmd+1SpcHPmGY37sY6jv3MA/yN7ifKy5CpFl8plUfzeO1+NJjqEzrwAOm0mAMuQooTm+fSMMBkynM/PBqG00l7tvFqRVhIksX+g5VpiwEbQLKU3tRd+T1hqlMS0Lsmz9rIb+mNaAQw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BL3PR11MB6435.namprd11.prod.outlook.com (2603:10b6:208:3bb::9)
+ by MW4PR11MB7006.namprd11.prod.outlook.com (2603:10b6:303:22f::14)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8632.33; Tue, 15 Apr
+ 2025 18:53:39 +0000
+Received: from BL3PR11MB6435.namprd11.prod.outlook.com
+ ([fe80::23a7:1661:19d4:c1ab]) by BL3PR11MB6435.namprd11.prod.outlook.com
+ ([fe80::23a7:1661:19d4:c1ab%4]) with mapi id 15.20.8632.025; Tue, 15 Apr 2025
+ 18:53:38 +0000
+Message-ID: <4e36ecce-18f1-4298-bfbc-108be96208c2@intel.com>
+Date: Tue, 15 Apr 2025 11:53:33 -0700
+User-Agent: Mozilla Thunderbird
+To: Larysa Zaremba <larysa.zaremba@intel.com>,
+ <intel-wired-lan@lists.osuosl.org>
+CC: "David S. Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+ <pabeni@redhat.com>, Simon Horman <horms@kernel.org>, Jonathan Corbet
+ <corbet@lwn.net>, Przemek Kitszel <przemyslaw.kitszel@intel.com>, Jiri Pirko
+ <jiri@resnulli.us>, Mustafa Ismail <mustafa.ismail@intel.com>, "Tatyana
+ Nikolova" <tatyana.e.nikolova@intel.com>, Andrew Lunn
+ <andrew+netdev@lunn.ch>, Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Michael Ellerman <mpe@ellerman.id.au>, Maciej Fijalkowski
+ <maciej.fijalkowski@intel.com>, "Lee Trager" <lee@trager.us>, Madhavan
+ Srinivasan <maddy@linux.ibm.com>, "Sridhar Samudrala"
+ <sridhar.samudrala@intel.com>, Jacob Keller <jacob.e.keller@intel.com>,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>, Mateusz Polchlopek
+ <mateusz.polchlopek@intel.com>, Wenjun Wu <wenjun1.wu@intel.com>, Ahmed Zaki
+ <ahmed.zaki@intel.com>, <netdev@vger.kernel.org>,
+ <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>, "Karlsson,
+ Magnus" <magnus.karlsson@intel.com>, Emil Tantilov
+ <emil.s.tantilov@intel.com>, Madhu Chittim <madhu.chittim@intel.com>, "Josh
+ Hay" <joshua.a.hay@intel.com>, Milena Olech <milena.olech@intel.com>,
+ <pavan.kumar.linga@intel.com>, "Singhai, Anjali" <anjali.singhai@intel.com>
+References: <20250408124816.11584-1-larysa.zaremba@intel.com>
+ <20250408124816.11584-2-larysa.zaremba@intel.com>
+Content-Language: en-US
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+In-Reply-To: <20250408124816.11584-2-larysa.zaremba@intel.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: MW4PR04CA0280.namprd04.prod.outlook.com
+ (2603:10b6:303:89::15) To BL3PR11MB6435.namprd11.prod.outlook.com
+ (2603:10b6:208:3bb::9)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL3PR11MB6435:EE_|MW4PR11MB7006:EE_
+X-MS-Office365-Filtering-Correlation-Id: 8d7ead6d-c97c-4a7b-3ac6-08dd7c4ed513
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|7416014|1800799024|376014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?clBGUy9QakdqYk1ZU3BHbUJISzZ3c2F5bUk1UGZhYlZJV0ptczh3T05LRzBX?=
+ =?utf-8?B?MlNEU0svZDBBck9tYTFnbGNRRXU2RVlsb0E2c2lEbE1OM3UvUUdobmYzUjVY?=
+ =?utf-8?B?aFRwdXNIK3prdElKbnV0V20zWHRUTkxKdkMwR3lGVGEwYndqM29LbmFmQ3Ri?=
+ =?utf-8?B?VkVrOWpOeW9YaE9lOWZUb2VLSXJtLzVXM1Q4M0t5YVhWeWwyN1R2M3FUMmdH?=
+ =?utf-8?B?ZUpZUEFJWXZHMnVVdFhQMTNJNHdBaWFhOUpjTnZ1Yk1PeWpqQVVyUGI3eVNW?=
+ =?utf-8?B?eFdGL2hvdDR4YksveDB6cVR5MGFFSDRqU0lOcTNIaTVPa3dqTXlaS1BjVlFw?=
+ =?utf-8?B?c0lVMWRwcGJvNmlHWDdNdkpZMG5YWHBqZXFhOGdLOFE5YUhEUWMrb3VscExj?=
+ =?utf-8?B?bUYrbWFtOE9WZW1ld0d1aXFabWg0RUFPMGZuOEUrY3ZZTC9LcjYwY1h3UGl2?=
+ =?utf-8?B?ZUpZQVZWSVJnR1VUc2NQS2N6Wkp0TktlY3lWSE5lZ1VzWnl6YW9yV2tYT1ZJ?=
+ =?utf-8?B?aGhaSGlRd3MrMFBHeVlMd2xUNmFtcmRwZGtYY0dNY0MwdE9DazdVdlpnZDJX?=
+ =?utf-8?B?MGt4bTRETWxReEtiakdheFFTd2M4WmdsTHVpQzN4MGJGcmRENkZnOE9SUEJQ?=
+ =?utf-8?B?MW9yeHBnaXZwc09Dd1JXVWl6dy9wM21RbTAwazBxQ1RZeUt3UHhlWTdrbjhD?=
+ =?utf-8?B?V3NVQjQ5UWxxUGdMUTRUVkQ4Q0lrVkN4N09NbVFyczRsOTVjR3FUVEc2YzJB?=
+ =?utf-8?B?K0hvblRUVXFvUUc4KzI1ZGRGSEtkdnEyRVJuSE8xeWdINmliUnZiS0s5cFNw?=
+ =?utf-8?B?blZxOWMyYUo1T2h6dWFxVFp4WlJleDBvc1c4eUpzYmRTbXZBWFZKeS9OQzBZ?=
+ =?utf-8?B?U2I0bW1HWnVzYzZ3Z2FhcGlSUndUL2wyNUZzL3VKUStZMWpaWXVQVkJpa0pM?=
+ =?utf-8?B?d2kxdGtGWElzSE9mQ1g4NkhQTTgzdG1GaWpPWktOaHRyTWUyK1JrSDliRmVI?=
+ =?utf-8?B?UU5YVUxoVEI4RHRsVEZmUFRrSzUxVVRKZ0QxUWVEZXZ2djFlcVk0T2IzOS9x?=
+ =?utf-8?B?L09IbDBEalRDUUljYXZhQjVzOTM0STFoNkNxdU94M1FaTTJ1azJrbWVQSDgy?=
+ =?utf-8?B?SVg3dG5CeVBtMWxReVlnT2lYZVhDbWd6RlJiSk5zTE5uMTV3UkpuVEt6S1I4?=
+ =?utf-8?B?MEUwNjZWd3pDYXF5WHdadnRkL0lWaUUybUFlWFFGRkREQmxScG9OSVkxZlds?=
+ =?utf-8?B?aU9jMmxFV2xUNTI1RitNcTBWMEVVWkRWQktvY0x3Mm5jc1h5SEtLYjJ0YUNs?=
+ =?utf-8?B?WXVob3BXYkMzeGQ3OS9BMnVWZzVZekhONlptbXZ2MUZYRzVqNnZGSmFsVmJ0?=
+ =?utf-8?B?L1FJZSs1Ylh4Z0hxSll5cUpUNkpSQTVIZlJtUmNrWHF5a0lPWU1pbVNPdnJr?=
+ =?utf-8?B?b0dWZVJ6eTA0U0UydWV2bkVkTTB5STUwUUM2RkdFVHNRT0pZdHhQbmpVUHl4?=
+ =?utf-8?B?QVhGbStRT3pLeGtZcmU2UE1ZUWs1N1RjK3hGMHRNTjI1UUU3WGJaVm41TEY4?=
+ =?utf-8?B?VXNnb0FvK3ZDMVliUFJRYXRJMC9rR0VIbGVvd3g5NW5ZWlRwRThOaGFiVEVQ?=
+ =?utf-8?B?Mmx3a1dKK0F2a2ZjV0ptaXc5QnBNSWtSOVFCcms3enJXSDBKa28vK25YUXM5?=
+ =?utf-8?B?Yk1PbnBiWHRCZnZYdDRuaUlNUlozU29SMFlPT09vWUhoMEkyV1Y4Slc4N1l4?=
+ =?utf-8?B?ZjBCZ1VzZjExS1N4bkFzYjdEZkFaY3RvVE81QUlldjBxUFExZmFnNE9ka25W?=
+ =?utf-8?B?ZU5nMUpFaHBzalUvdzVRZEFBSmp3QXFSeGJhUG9iZWxXcXhqTS9nZ0EwaE9M?=
+ =?utf-8?B?YnIvVFhLQndXcGp1N0F5UnNXNFJCdzY0OW1jeEI2K1prVVF0UkVzMTJhY3Vw?=
+ =?utf-8?Q?JXzCfJjk9MI=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL3PR11MB6435.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(7416014)(1800799024)(376014); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ZkxrdXJJTTNtTlFIdnErTWpURDNzcjBCTHhMSmJQNnB3ZkZmOWU4Ung0SWpP?=
+ =?utf-8?B?TVUzcVJORHNtRDZFcXJvaHVsR2JDcWhBeDRwL2pTdSs3NjBBZkUyZjJMNTBY?=
+ =?utf-8?B?dUVsQkFyVUwwQ0RncVZySDZsSG96VUprUWM5T2pWUGwwTWpMYXRnODRXUEFp?=
+ =?utf-8?B?elBqRjJ6TWZKWUVkQ1M3Y3RWNzlPNDNpTmZYaEhNNTI1dVRNUmRaUCtPWE5t?=
+ =?utf-8?B?ZTFHVHRIVHQ5aUl2N3M5WS9WYlJiYmU5OUhzUnpnYmwzTy9aZlN2SHZuNHlj?=
+ =?utf-8?B?R0xHWG0wSklIbExUY0lrZlp4K3BsdENRRWM5U3pxTzRMMENsUitiU09yVHc3?=
+ =?utf-8?B?U1lhU1V6RXVVa1BNd2tHQ08wVHVoTDEyVmszeUlqSmFXM0lFWndpQTd1QVFC?=
+ =?utf-8?B?KzQ1YjFFU0VCVmIzNjAxeFFxSTkwS3ZyVmc2anZuVG9USnpRaThNWUFZTmNF?=
+ =?utf-8?B?NUZtdHg2SjZkQytxWHhxME96SVR3cFphTkdFb1BGcFdQaUI1azZld2syRXlj?=
+ =?utf-8?B?eFROTEFMeStOcEpjc1BTR29FOHZ1U0xNUEZ6dXl2blpHczVDalJ0RjVwRC9V?=
+ =?utf-8?B?Qkptdmk0c2V5bEU3Nkl6MWJDMktiMUFIRVd2Zmg2aG1YeWNtYTRQck12UVc4?=
+ =?utf-8?B?R2dGbVFaaExmSzJPQnE0THdyUjJJM0N6bFRjSEpGSWgxa1JuT3FiZEd6Rkhs?=
+ =?utf-8?B?cU5henpVVVpyeVRWVDBJMFFxdUdzd08yVGQ0dERNTXhjMUlrRG0vekxGc2tw?=
+ =?utf-8?B?bXFKaEhpaWwrelhtdFJ4QlRja01DN0ExNHpZY3pObXB6eUlFVVdRakJuc213?=
+ =?utf-8?B?UDQwdXA3SHVmUXVTTXVlNDlKUTdvdGNhVjJ3bkpsTU1vMG0vVlJHQ3JQV2E3?=
+ =?utf-8?B?ZFNqZFY2NFR2OUhKOGsxd1BqRnVIc1lveUVsZU5YeXAzZ1dldklmanMwSlFO?=
+ =?utf-8?B?dUZYTEo1cTAzMnh6UU5vejF6MWoxZTZsQ2RsZWVvR1FwWjlIeUtlOXBBUEwv?=
+ =?utf-8?B?N3F3S0VWKzY3Sm9WQ2cyem5QR1VTRmNud2JucDlpYmVad3AxQjdBUjJFUlNH?=
+ =?utf-8?B?d3hjcUg2RitWV1p6b2pwYUVWTEJCZkVleDV2WlU1MnZWbDdYTk5xc2czT3ZY?=
+ =?utf-8?B?WVFTSmErdnZJNmZ0L1Z1d0N3bGNiNU1PazhjdC91bVFmR1JCcUR3SkJHdWdj?=
+ =?utf-8?B?SGExNG54WlVCWnFkQmRydFV3TzFKTEhOekRRRjNQVTlmR2J3cWpvQ0ZkeUJ1?=
+ =?utf-8?B?NnBTalhVdlkrUktkMUxMUWdXNWRxMHFHM0JyVHM5TjNnNnpYMnRpZkRMaHlW?=
+ =?utf-8?B?OWczM2p3OUgvbjF3UGtBSjVEMW9jNnlpYjlKUEJxMnZmbldTUDQ3anpuTDNr?=
+ =?utf-8?B?WGxENVE3VzIxWnArdkhCc1dBZEdEcjJOaHBGUmVtSTgva3FXaXQ5aWJCOWNo?=
+ =?utf-8?B?b3N1STVZV1BmR0J5cVp4dHdhWnpLV01rRi94WUhmVDZJcWJidHVkdkZ2RjlG?=
+ =?utf-8?B?VXhQTGVYZkUzeXJQZjRQNm5FQ0MwOVhiem1xemwrQ3Q3bDYvQ0FFUUFiYmht?=
+ =?utf-8?B?N0pwSkc3TExTMDhZYVVxTDRmOHNERWdEdGtYdHFCRFRKdVpKWmJtTzRIRWNl?=
+ =?utf-8?B?dFpHK2xhQjVIaGlVeE82elVIUlNvN1JCcU9KaXF0dUZ6dWtydERtVVZJSWJO?=
+ =?utf-8?B?a1F1OWxSUUlKZXMvLzVWQU9iSERJZ29TaThLNm1oaitHNUlhTkZQNXNuaTh5?=
+ =?utf-8?B?MFBoejlITlVQdkNLRFdHUnVmVHd6dThzY0dTQzhtZ2tEM0s3SGxrcXBmYzNG?=
+ =?utf-8?B?WFhsOThjekltU3RucmFIb0hDZlFtYWpjWlZzV0VURjQ1VzdMZ0JSWi94SVVz?=
+ =?utf-8?B?ZjZNZWN3Z01FVmpPVjRaUFQxSSt4a0FYeHd0NFhFei9UaEdiT1JJcHcrVS9R?=
+ =?utf-8?B?cjB5TThQOHZwbE13TVZEL1NnK2p6RTJDOEVZR0tac2xzcytLNlFkWHJscXpM?=
+ =?utf-8?B?TFpPalU4OUd0TXhuTVhTdlVwOS9WMHlGcHlXNGlKNjVXNkVVUE9KcG9CWWhj?=
+ =?utf-8?B?aWVKQjFRVUxzbVFyODd5aTN5L293Yk5XUmlwMEhrUnYrR0hXVDlyTU5ZOHF1?=
+ =?utf-8?B?Wnp5WjMyNENpQnRGVXRnS1hPZlZQVVR0ZkFyZHVPc21IcVhLZWJURmxabUVG?=
+ =?utf-8?B?SFE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8d7ead6d-c97c-4a7b-3ac6-08dd7c4ed513
+X-MS-Exchange-CrossTenant-AuthSource: BL3PR11MB6435.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Apr 2025 18:53:38.3747 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Iqsb2ttZoeDo6ZHrNNwv/Hzl6Dnzgs6Fzr5g9gIPjPzhE0JyxLG3P0f2+fG6bK91G9N/kjMOmX5v0fLkJsPpASCNHrGDfELAM3z/rYD+S08=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR11MB7006
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1744741396; x=1776277396;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=LpBMKq9wfdVMdJ6wz89xHQFNDtmFGjsYf4722koXEJ4=;
- b=e2q7yjio2SOfNgap9sz/cR5WFAoM0JHTsEPNUWpjajyUJiejjWPlE50M
- QubaNbXGuDB0Qh5ZKhtUXnSj6Ivt0QSI7DV71YnI7PCGkVmn9vw7siZsh
- ACNoQOHICFni3gtqmMyJYYbKSoJQ6FKC0DENuzluVd2uHEacYLlyCivZC
- tgzWK01YZ6QYXMDrAwe7EuWS/JSJOFH1GI5gL1VqOanBGnWvQ57oBzg7c
- aJMWksDnN4uQT4pOgAMFbgngCs0QGOx7fgLTpSGOZeL/IcUMS98XrlpZc
- +UhsDo8nQX75afuckq1kYU6BDhgPyvJNLXkSSIOKHQn1bfIp0rAUOMVjg
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1744743253; x=1776279253;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=GbIni2hqM3Uy/VqGTE9JcG/T6CZk3YrSlYJHntlysOk=;
+ b=P2TReNf16de1Vf3rVZrImV+e3eSqwxD+OVZWMGGnnh/6vdM+oHA6e5g/
+ VvNgHUBJJAv2JeYXPPA1WeEDS1MZMxccwPig5yokNzxOdO/XnpgJJvsUu
+ E+SIZppqSTKjEABAII97AmwP+8054beHHaBi7eMRXv7YWfPAYA2uXT6fi
+ BqVPzCaLTwodTbCYITroXHIz+82oZAheRbypgKBBsnM4GHyAYz1GuClTe
+ CYa14/fqOpXpMmSsdpojHVYg1r97NO9ylmHqetB8gc/zQ8tzA/YUkdhRz
+ NbFGROSdmggNHGScocHwxjV7z11V9XVqPeJ8k1UfQxjx3vbEoPza8GUbZ
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=e2q7yjio
-Subject: [Intel-wired-lan] [PATCH net-next v2 4/4] ice: add phase offset
- monitor for all PPS dpll inputs
+ header.s=Intel header.b=P2TReNf1
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 01/14] virtchnl: create
+ 'include/linux/intel' and move necessary header files
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -117,459 +259,60 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Implement new admin command and helper function to handle/obtain CGU
-measurements for input pins, initialize PPS dpll capabilities using new
-command.
-Add callbacks to control dpll device feature:
-all-inputs-phase-offset-monitor.
-Allow enable/disable of all inputs monitoring for ice PPS dpll device.
-If feature is enabled provide users with measured phase offsets and
-notifications.
 
-Reviewed-by: Milena Olech <milena.olech@intel.com>
-Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
----
-v2:
-- adapt changes and align wiht new dpll_device_info struct
----
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  20 ++
- drivers/net/ethernet/intel/ice/ice_common.c   |  26 +++
- drivers/net/ethernet/intel/ice/ice_common.h   |   3 +
- drivers/net/ethernet/intel/ice/ice_dpll.c     | 179 +++++++++++++++++-
- drivers/net/ethernet/intel/ice/ice_dpll.h     |   6 +
- drivers/net/ethernet/intel/ice/ice_main.c     |   4 +
- 6 files changed, 237 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-index bdee499f991a..181bc2c3b4ad 100644
---- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-@@ -2272,6 +2272,22 @@ struct ice_aqc_get_pkg_info_resp {
- 	struct ice_aqc_get_pkg_info pkg_info[];
- };
- 
-+#define ICE_CGU_INPUT_PHASE_OFFSET_BYTES	6
-+
-+struct ice_cgu_input_measure {
-+	u8 phase_offset[ICE_CGU_INPUT_PHASE_OFFSET_BYTES];
-+	__le32 freq;
-+} __packed __aligned(sizeof(__le16));
-+
-+#define ICE_AQC_GET_CGU_IN_MEAS_DPLL_IDX_M	ICE_M(0xf, 0)
-+
-+/* Get CGU input measurements command response data structure (indirect 0x0C59) */
-+struct ice_aqc_get_cgu_input_measure {
-+	u8 dpll_idx_opt;
-+	u8 length;
-+	u8 rsvd[6];
-+};
-+
- #define ICE_AQC_GET_CGU_MAX_PHASE_ADJ	GENMASK(30, 0)
- 
- /* Get CGU abilities command response data structure (indirect 0x0C61) */
-@@ -2721,6 +2737,7 @@ struct ice_aq_desc {
- 		struct ice_aqc_add_get_update_free_vsi vsi_cmd;
- 		struct ice_aqc_add_update_free_vsi_resp add_update_free_vsi_res;
- 		struct ice_aqc_download_pkg download_pkg;
-+		struct ice_aqc_get_cgu_input_measure get_cgu_input_measure;
- 		struct ice_aqc_set_cgu_input_config set_cgu_input_config;
- 		struct ice_aqc_get_cgu_input_config get_cgu_input_config;
- 		struct ice_aqc_set_cgu_output_config set_cgu_output_config;
-@@ -2772,6 +2789,8 @@ enum ice_aq_err {
- 	ICE_AQ_RC_OK		= 0,  /* Success */
- 	ICE_AQ_RC_EPERM		= 1,  /* Operation not permitted */
- 	ICE_AQ_RC_ENOENT	= 2,  /* No such element */
-+	ICE_AQ_RC_ESRCH		= 3,  /* Bad opcode */
-+	ICE_AQ_RC_EAGAIN	= 8,  /* Try again */
- 	ICE_AQ_RC_ENOMEM	= 9,  /* Out of memory */
- 	ICE_AQ_RC_EBUSY		= 12, /* Device or resource busy */
- 	ICE_AQ_RC_EEXIST	= 13, /* Object already exists */
-@@ -2927,6 +2946,7 @@ enum ice_adminq_opc {
- 	ice_aqc_opc_get_pkg_info_list			= 0x0C43,
- 
- 	/* 1588/SyncE commands/events */
-+	ice_aqc_opc_get_cgu_input_measure		= 0x0C59,
- 	ice_aqc_opc_get_cgu_abilities			= 0x0C61,
- 	ice_aqc_opc_set_cgu_input_config		= 0x0C62,
- 	ice_aqc_opc_get_cgu_input_config		= 0x0C63,
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 4fedf0181c4e..48ff515d7c61 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -4970,6 +4970,32 @@ ice_dis_vsi_rdma_qset(struct ice_port_info *pi, u16 count, u32 *qset_teid,
- 	return status;
- }
- 
-+/**
-+ * ice_aq_get_cgu_input_pin_measure - get input pin signal measurements
-+ * @hw: pointer to the HW struct
-+ * @dpll_idx: index of dpll to be measured
-+ * @meas: array to be filled with results
-+ * @meas_num: max number of results array can hold
-+ *
-+ * Get CGU measurements (0x0C59) of phase and frequency offsets for input
-+ * pins on given dpll.
-+ *
-+ * Return: 0 on success or negative value on failure.
-+ */
-+int ice_aq_get_cgu_input_pin_measure(struct ice_hw *hw, u8 dpll_idx,
-+				     struct ice_cgu_input_measure *meas,
-+				     u16 meas_num)
-+{
-+	struct ice_aqc_get_cgu_input_measure *cmd;
-+	struct ice_aq_desc desc;
-+
-+	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_get_cgu_input_measure);
-+	cmd = &desc.params.get_cgu_input_measure;
-+	cmd->dpll_idx_opt = dpll_idx & ICE_AQC_GET_CGU_IN_MEAS_DPLL_IDX_M;
-+
-+	return ice_aq_send_cmd(hw, &desc, meas, meas_num * sizeof(*meas), NULL);
-+}
-+
- /**
-  * ice_aq_get_cgu_abilities - get cgu abilities
-  * @hw: pointer to the HW struct
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
-index 64c530b39191..c70f56d897dc 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.h
-+++ b/drivers/net/ethernet/intel/ice/ice_common.h
-@@ -229,6 +229,9 @@ void ice_replay_post(struct ice_hw *hw);
- struct ice_q_ctx *
- ice_get_lan_q_ctx(struct ice_hw *hw, u16 vsi_handle, u8 tc, u16 q_handle);
- int ice_sbq_rw_reg(struct ice_hw *hw, struct ice_sbq_msg_input *in, u16 flag);
-+int ice_aq_get_cgu_input_pin_measure(struct ice_hw *hw, u8 dpll_idx,
-+				     struct ice_cgu_input_measure *meas,
-+				     u16 meas_num);
- int
- ice_aq_get_cgu_abilities(struct ice_hw *hw,
- 			 struct ice_aqc_get_cgu_abilities *abilities);
-diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.c b/drivers/net/ethernet/intel/ice/ice_dpll.c
-index 0f7440a889ac..b9363230f6ac 100644
---- a/drivers/net/ethernet/intel/ice/ice_dpll.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dpll.c
-@@ -11,6 +11,8 @@
- #define ICE_DPLL_RCLK_NUM_PER_PF		1
- #define ICE_DPLL_PIN_ESYNC_PULSE_HIGH_PERCENT	25
- #define ICE_DPLL_PIN_GEN_RCLK_FREQ		1953125
-+#define ICE_DPLL_INPUT_REF_NUM			10
-+#define ICE_DPLL_PHASE_OFFSET_PERIOD		2
- 
- /**
-  * enum ice_dpll_pin_type - enumerate ice pin types:
-@@ -587,6 +589,63 @@ static int ice_dpll_mode_get(const struct dpll_device *dpll, void *dpll_priv,
- 	return 0;
- }
- 
-+/**
-+ * ice_dpll_features_set - set dpll's features
-+ * @dpll: registered dpll pointer
-+ * @dpll_priv: private data pointer passed on dpll registration
-+ * @features: mask of features to be set
-+ * @extack: error reporting
-+ *
-+ * Dpll subsystem callback. Enable/disable features of dpll.
-+ *
-+ * Context: Acquires and releases pf->dplls.lock
-+ * Return: 0 - success
-+ */
-+static int ice_dpll_features_set(const struct dpll_device *dpll,
-+				 void *dpll_priv, u32 features,
-+				 struct netlink_ext_ack *extack)
-+{
-+	struct ice_dpll *d = dpll_priv;
-+	struct ice_pf *pf = d->pf;
-+
-+	mutex_lock(&pf->dplls.lock);
-+	if (features & DPLL_FEATURES_ALL_INPUTS_PHASE_OFFSET_MONITOR)
-+		d->phase_offset_monitor_period = ICE_DPLL_PHASE_OFFSET_PERIOD;
-+	else
-+		d->phase_offset_monitor_period = 0;
-+	mutex_unlock(&pf->dplls.lock);
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_dpll_features_get - get dpll's features
-+ * @dpll: registered dpll pointer
-+ * @dpll_priv: private data pointer passed on dpll registration
-+ * @features: on success holds currently enabled features of dpll
-+ * @extack: error reporting
-+ *
-+ * Dpll subsystem callback. Provides currently enabled features of dpll.
-+ *
-+ * Context: Acquires and releases pf->dplls.lock
-+ * Return: 0 - success
-+ */
-+static int ice_dpll_features_get(const struct dpll_device *dpll,
-+				 void *dpll_priv, u32 *features,
-+				 struct netlink_ext_ack *extack)
-+{
-+	struct ice_dpll *d = dpll_priv;
-+	struct ice_pf *pf = d->pf;
-+
-+	mutex_lock(&pf->dplls.lock);
-+	*features = 0;
-+	if (d->phase_offset_monitor_period)
-+		*features |= DPLL_FEATURES_ALL_INPUTS_PHASE_OFFSET_MONITOR;
-+	mutex_unlock(&pf->dplls.lock);
-+
-+	return 0;
-+}
-+
- /**
-  * ice_dpll_pin_state_set - set pin's state on dpll
-  * @pin: pointer to a pin
-@@ -1093,12 +1152,15 @@ ice_dpll_phase_offset_get(const struct dpll_pin *pin, void *pin_priv,
- 			  const struct dpll_device *dpll, void *dpll_priv,
- 			  s64 *phase_offset, struct netlink_ext_ack *extack)
- {
-+	struct ice_dpll_pin *p = pin_priv;
- 	struct ice_dpll *d = dpll_priv;
- 	struct ice_pf *pf = d->pf;
- 
- 	mutex_lock(&pf->dplls.lock);
- 	if (d->active_input == pin)
- 		*phase_offset = d->phase_offset * ICE_DPLL_PHASE_OFFSET_FACTOR;
-+	else if (d->phase_offset_monitor_period)
-+		*phase_offset = p->phase_offset * ICE_DPLL_PHASE_OFFSET_FACTOR;
- 	else
- 		*phase_offset = 0;
- 	mutex_unlock(&pf->dplls.lock);
-@@ -1457,6 +1519,8 @@ static const struct dpll_pin_ops ice_dpll_output_ops = {
- static const struct dpll_device_ops ice_dpll_ops = {
- 	.lock_status_get = ice_dpll_lock_status_get,
- 	.mode_get = ice_dpll_mode_get,
-+	.features_set = ice_dpll_features_set,
-+	.features_get = ice_dpll_features_get,
- };
- 
- /**
-@@ -1503,6 +1567,110 @@ static void ice_dpll_notify_changes(struct ice_dpll *d)
- 	}
- }
- 
-+/**
-+ * ice_dpll_is_pps_phase_monitor - check if dpll capable of phase offset monitor
-+ * @pf: pf private structure
-+ *
-+ * Check if firmware is capable of supporting admin command to provide
-+ * phase offset monitoring on all the input pins on PPS dpll.
-+ *
-+ * Returns:
-+ * * true - PPS dpll phase offset monitoring is supported
-+ * * false - PPS dpll phase offset monitoring is not supported
-+ */
-+static bool ice_dpll_is_pps_phase_monitor(struct ice_pf *pf)
-+{
-+	struct ice_cgu_input_measure meas[ICE_DPLL_INPUT_REF_NUM];
-+	int ret = ice_aq_get_cgu_input_pin_measure(&pf->hw, DPLL_TYPE_PPS, meas,
-+						   ARRAY_SIZE(meas));
-+
-+	if (ret && pf->hw.adminq.sq_last_status == ICE_AQ_RC_ESRCH)
-+		return false;
-+
-+	return true;
-+}
-+
-+/**
-+ * ice_dpll_pins_notify_mask - notify dpll subsystem about bulk pin changes
-+ * @pins: array of ice_dpll_pin pointers registered within dpll subsystem
-+ * @pin_num: number of pins
-+ * @phase_offset_ntf_mask: bitmask of pin indexes to notify
-+ *
-+ * Iterate over array of pins and call dpll subsystem pin notify if
-+ * corresponding pin index within bitmask is set.
-+ *
-+ * Context: Must be called while pf->dplls.lock is released.
-+ */
-+static void ice_dpll_pins_notify_mask(struct ice_dpll_pin *pins,
-+				      u8 pin_num,
-+				      u32 phase_offset_ntf_mask)
-+{
-+	int i = 0;
-+
-+	for (i = 0; i < pin_num; i++)
-+		if (phase_offset_ntf_mask & (1 << i))
-+			dpll_pin_change_ntf(pins[i].pin);
-+}
-+
-+/**
-+ * ice_dpll_pps_update_phase_offsets - update phase offset measurements
-+ * @pf: pf private structure
-+ * @phase_offset_pins_updated: returns mask of updated input pin indexes
-+ *
-+ * Read phase offset measurements for PPS dpll device and store values in
-+ * input pins array. On success phase_offset_pins_updated - fills bitmask of
-+ * updated input pin indexes, pins shall be notified.
-+ *
-+ * Context: Shall be called with pf->dplls.lock being locked.
-+ * Returns:
-+ * * 0 - success or no data available
-+ * * negative - AQ failure
-+ */
-+static int ice_dpll_pps_update_phase_offsets(struct ice_pf *pf,
-+					     u32 *phase_offset_pins_updated)
-+{
-+	struct ice_cgu_input_measure meas[ICE_DPLL_INPUT_REF_NUM];
-+	struct ice_dpll_pin *p;
-+	s64 phase_offset, tmp;
-+	int i, j, ret;
-+
-+	*phase_offset_pins_updated = 0;
-+	ret = ice_aq_get_cgu_input_pin_measure(&pf->hw, DPLL_TYPE_PPS, meas,
-+					       ARRAY_SIZE(meas));
-+	if (ret && pf->hw.adminq.sq_last_status == ICE_AQ_RC_EAGAIN) {
-+		return 0;
-+	} else if (ret) {
-+		dev_err(ice_pf_to_dev(pf),
-+			"failed to get input pin measurements dpll=%d, ret=%d %s\n",
-+			DPLL_TYPE_PPS, ret,
-+			ice_aq_str(pf->hw.adminq.sq_last_status));
-+		return ret;
-+	}
-+	for (i = 0; i < pf->dplls.num_inputs; i++) {
-+		p = &pf->dplls.inputs[i];
-+		phase_offset = 0;
-+		for (j = 0; j < ICE_CGU_INPUT_PHASE_OFFSET_BYTES; j++) {
-+			tmp = meas[i].phase_offset[j];
-+#ifdef __LITTLE_ENDIAN
-+			phase_offset += tmp << 8 * j;
-+#else
-+			phase_offset += tmp << 8 *
-+				(ICE_CGU_INPUT_PHASE_OFFSET_BYTES - 1 - j);
-+#endif
-+		}
-+		phase_offset = sign_extend64(phase_offset, 47);
-+		if (p->phase_offset != phase_offset) {
-+			dev_dbg(ice_pf_to_dev(pf),
-+				"phase offset changed for pin:%d old:%llx, new:%llx\n",
-+				p->idx, p->phase_offset, phase_offset);
-+			p->phase_offset = phase_offset;
-+			*phase_offset_pins_updated |= (1 << i);
-+		}
-+	}
-+
-+	return 0;
-+}
-+
- /**
-  * ice_dpll_update_state - update dpll state
-  * @pf: pf private structure
-@@ -1589,14 +1757,19 @@ static void ice_dpll_periodic_work(struct kthread_work *work)
- 	struct ice_pf *pf = container_of(d, struct ice_pf, dplls);
- 	struct ice_dpll *de = &pf->dplls.eec;
- 	struct ice_dpll *dp = &pf->dplls.pps;
-+	u32 phase_offset_ntf = 0;
- 	int ret = 0;
- 
- 	if (ice_is_reset_in_progress(pf->state))
- 		goto resched;
- 	mutex_lock(&pf->dplls.lock);
-+	d->periodic_counter++;
- 	ret = ice_dpll_update_state(pf, de, false);
- 	if (!ret)
- 		ret = ice_dpll_update_state(pf, dp, false);
-+	if (!ret && dp->phase_offset_monitor_period &&
-+	    d->periodic_counter % dp->phase_offset_monitor_period == 0)
-+		ret = ice_dpll_pps_update_phase_offsets(pf, &phase_offset_ntf);
- 	if (ret) {
- 		d->cgu_state_acq_err_num++;
- 		/* stop rescheduling this worker */
-@@ -1611,6 +1784,9 @@ static void ice_dpll_periodic_work(struct kthread_work *work)
- 	mutex_unlock(&pf->dplls.lock);
- 	ice_dpll_notify_changes(de);
- 	ice_dpll_notify_changes(dp);
-+	if (phase_offset_ntf)
-+		ice_dpll_pins_notify_mask(d->inputs, d->num_inputs,
-+					  phase_offset_ntf);
- 
- resched:
- 	/* Run twice a second or reschedule if update failed */
-@@ -1986,7 +2162,6 @@ ice_dpll_deinit_dpll(struct ice_pf *pf, struct ice_dpll *d, bool cgu)
-  * @pf: board private structure
-  * @d: dpll to be initialized
-  * @cgu: if cgu is present and controlled by this NIC
-- * @type: type of dpll being initialized
-  *
-  * Allocate dpll instance for this board in dpll subsystem, if cgu is controlled
-  * by this NIC, register dpll with the callback ops.
-@@ -2368,6 +2543,8 @@ static int ice_dpll_init_info(struct ice_pf *pf, bool cgu)
- 	dp->mode = DPLL_MODE_AUTOMATIC;
- 	dp->info.type = DPLL_TYPE_PPS;
- 	dp->info.ops = &ice_dpll_ops;
-+	dp->info.capabilities = !ice_dpll_is_pps_phase_monitor(pf) ? 0 :
-+				DPLL_FEATURES_ALL_INPUTS_PHASE_OFFSET_MONITOR;
- 
- 	dev_dbg(ice_pf_to_dev(pf),
- 		"%s - success, inputs:%u, outputs:%u rclk-parents:%u\n",
-diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.h b/drivers/net/ethernet/intel/ice/ice_dpll.h
-index 9db7463e293a..430f7fb95690 100644
---- a/drivers/net/ethernet/intel/ice/ice_dpll.h
-+++ b/drivers/net/ethernet/intel/ice/ice_dpll.h
-@@ -19,6 +19,7 @@
-  * @prop: pin properties
-  * @freq: current frequency of a pin
-  * @phase_adjust: current phase adjust value
-+ * @phase_offset: monitored phase offset value
-  */
- struct ice_dpll_pin {
- 	struct dpll_pin *pin;
-@@ -31,6 +32,7 @@ struct ice_dpll_pin {
- 	struct dpll_pin_properties prop;
- 	u32 freq;
- 	s32 phase_adjust;
-+	s64 phase_offset;
- 	u8 status;
- };
- 
-@@ -47,6 +49,7 @@ struct ice_dpll_pin {
-  * @input_prio: priorities of each input
-  * @dpll_state: current dpll sync state
-  * @prev_dpll_state: last dpll sync state
-+ * @phase_offset_monitor_period: period for phase offset monitor read frequency
-  * @active_input: pointer to active input pin
-  * @prev_input: pointer to previous active input pin
-  */
-@@ -64,6 +67,7 @@ struct ice_dpll {
- 	enum dpll_lock_status dpll_state;
- 	enum dpll_lock_status prev_dpll_state;
- 	enum dpll_mode mode;
-+	u32 phase_offset_monitor_period;
- 	struct dpll_pin *active_input;
- 	struct dpll_pin *prev_input;
- 	struct dpll_device_info info;
-@@ -81,6 +85,7 @@ struct ice_dpll {
-  * @num_inputs: number of input pins available on dpll
-  * @num_outputs: number of output pins available on dpll
-  * @cgu_state_acq_err_num: number of errors returned during periodic work
-+ * @periodic_counter: counter of periodic work executions
-  * @base_rclk_idx: idx of first pin used for clock revocery pins
-  * @clock_id: clock_id of dplls
-  * @input_phase_adj_max: max phase adjust value for an input pins
-@@ -98,6 +103,7 @@ struct ice_dplls {
- 	u8 num_inputs;
- 	u8 num_outputs;
- 	int cgu_state_acq_err_num;
-+	u32 periodic_counter;
- 	u8 base_rclk_idx;
- 	u64 clock_id;
- 	s32 input_phase_adj_max;
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 1fbe13ee93a8..9abc179e1bd3 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -7914,6 +7914,10 @@ const char *ice_aq_str(enum ice_aq_err aq_err)
- 		return "ICE_AQ_RC_EPERM";
- 	case ICE_AQ_RC_ENOENT:
- 		return "ICE_AQ_RC_ENOENT";
-+	case ICE_AQ_RC_ESRCH:
-+		return "ICE_AQ_RC_ESRCH";
-+	case ICE_AQ_RC_EAGAIN:
-+		return "ICE_AQ_RC_EAGAIN";
- 	case ICE_AQ_RC_ENOMEM:
- 		return "ICE_AQ_RC_ENOMEM";
- 	case ICE_AQ_RC_EBUSY:
--- 
-2.38.1
+On 4/8/2025 5:47 AM, Larysa Zaremba wrote:
+> From: Victor Raj <victor.raj@intel.com>
+> 
+> Move intel specific header files into new folder
+> include/linux/intel.
+
+I believe MAINTAINERS needs to be updated since the existing paths don't 
+cover this.
+
+Thanks,
+Tony
+> Suggested-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+> Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
+> Signed-off-by: Victor Raj <victor.raj@intel.com>
+> Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
+> ---
+>   drivers/infiniband/hw/irdma/i40iw_if.c                        | 2 +-
+>   drivers/infiniband/hw/irdma/main.h                            | 2 +-
+>   drivers/infiniband/hw/irdma/osdep.h                           | 2 +-
+>   drivers/net/ethernet/intel/i40e/i40e.h                        | 4 ++--
+>   drivers/net/ethernet/intel/i40e/i40e_client.c                 | 2 +-
+>   drivers/net/ethernet/intel/i40e/i40e_common.c                 | 2 +-
+>   drivers/net/ethernet/intel/i40e/i40e_prototype.h              | 2 +-
+>   drivers/net/ethernet/intel/i40e/i40e_txrx.c                   | 2 +-
+>   drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h            | 2 +-
+>   drivers/net/ethernet/intel/iavf/iavf.h                        | 2 +-
+>   drivers/net/ethernet/intel/iavf/iavf_common.c                 | 2 +-
+>   drivers/net/ethernet/intel/iavf/iavf_main.c                   | 2 +-
+>   drivers/net/ethernet/intel/iavf/iavf_prototype.h              | 2 +-
+>   drivers/net/ethernet/intel/iavf/iavf_txrx.c                   | 2 +-
+>   drivers/net/ethernet/intel/iavf/iavf_types.h                  | 4 +---
+>   drivers/net/ethernet/intel/iavf/iavf_virtchnl.c               | 2 +-
+>   drivers/net/ethernet/intel/ice/ice.h                          | 2 +-
+>   drivers/net/ethernet/intel/ice/ice_common.h                   | 2 +-
+>   drivers/net/ethernet/intel/ice/ice_idc_int.h                  | 2 +-
+>   drivers/net/ethernet/intel/ice/ice_txrx_lib.c                 | 2 +-
+>   drivers/net/ethernet/intel/ice/ice_vf_lib.h                   | 2 +-
+>   drivers/net/ethernet/intel/ice/ice_virtchnl.h                 | 2 +-
+>   drivers/net/ethernet/intel/idpf/idpf.h                        | 2 +-
+>   drivers/net/ethernet/intel/idpf/idpf_txrx.h                   | 2 +-
+>   drivers/net/ethernet/intel/libie/rx.c                         | 2 +-
+>   include/linux/{net => }/intel/i40e_client.h                   | 0
+>   include/linux/{net => }/intel/iidc.h                          | 0
+>   include/linux/{net => }/intel/libie/rx.h                      | 0
+>   include/linux/{avf => intel}/virtchnl.h                       | 0
+>   .../ethernet/intel/idpf => include/linux/intel}/virtchnl2.h   | 0
+>   .../intel/idpf => include/linux/intel}/virtchnl2_lan_desc.h   | 0
+>   31 files changed, 26 insertions(+), 28 deletions(-)
+>   rename include/linux/{net => }/intel/i40e_client.h (100%)
+>   rename include/linux/{net => }/intel/iidc.h (100%)
+>   rename include/linux/{net => }/intel/libie/rx.h (100%)
+>   rename include/linux/{avf => intel}/virtchnl.h (100%)
+>   rename {drivers/net/ethernet/intel/idpf => include/linux/intel}/virtchnl2.h (100%)
+>   rename {drivers/net/ethernet/intel/idpf => include/linux/intel}/virtchnl2_lan_desc.h (100%)
 
