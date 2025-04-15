@@ -1,67 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F127A8A570
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Apr 2025 19:29:36 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D904BA8A571
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Apr 2025 19:29:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CD6E7805B7;
-	Tue, 15 Apr 2025 17:29:34 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8D50D61173;
+	Tue, 15 Apr 2025 17:29:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3R0vnqYPRvFp; Tue, 15 Apr 2025 17:29:32 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id MNUal6YDKqdX; Tue, 15 Apr 2025 17:29:35 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B961B80CA5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 99D8761099
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744738172;
-	bh=NTdIP6yrFJ8UUQJb7MULw3+MpB9bVrRGvrZm5ApWHQI=;
+	s=default; t=1744738175;
+	bh=NH025oeYcM/mfaqwnZrA4xOnC10l+DF/HtlMFyaGy54=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=n3SZKKfsgqb/jiPN4uQqYUXLQzmZGpiRy/qyqt1YHjZbLpljgLlsutGrbh0yj5NRd
-	 v49oKuKa+SN2zjIWGaj0RRrJ0jDcKVuEmeqPyO13NEEoVvbJ3DXFTPyrUx3twLvsn9
-	 YwxDwmgyOqZ8uNQ+L4MD7IP5ADtWJEH7EOAb/VoqUWH1qAp72UhH2clBJbos6c4ZjA
-	 8Fp71zWQYPxEHQdt48kPg43cPEI5ZqzFpWYCndPf9O0I5h3Xm0VI54IkTVnlV1CTzD
-	 8lAPaH70wg2mCPu9NJHXWc67IoJmmUUGrhjXR46jlkmF7z9p4f1WuH9YH5iZA3aDfa
-	 BwwknpmU3Plew==
+	b=LsI0UX0H6KjWZGtuUb0hirtvx9QqoB6prEOVcb2qricYGw9BZbBBgZ9kQkbcEAVGT
+	 Og6xY+5p0ivRjtq9K7iYpUPYsWobwL63Cvm0hIF9pQVWBmcjbGvWdV4KTg3YJQiIfK
+	 jpVCTm/e+SAlXcKhs8D1Mlt5Kui2V+95MAv2zSSdoC8oUAnVIaYC2cF29179eyk2AA
+	 Y/UUeBfLveWQDD1LAC85G9IM2zYjJrZFzTuQsOapmT72q0neiLGSiG6H5QvYR00np7
+	 VASknBD30jTPOjIxkuZwwxeMoTurNMEWwD5uWvpY7AonNeLUZabEW1c9v5n70gelTx
+	 /hp6pfswc5mpw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B961B80CA5;
-	Tue, 15 Apr 2025 17:29:32 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 99D8761099;
+	Tue, 15 Apr 2025 17:29:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 60368200
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 17:29:31 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 243FA109
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 17:29:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4FA2A400C5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 17:29:30 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 15DC6400C5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 17:29:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3yPkxRyn6mbJ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 15 Apr 2025 17:29:29 +0000 (UTC)
+ id DQOxOctFNqlX for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 15 Apr 2025 17:29:30 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
  helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 04A43403CB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 04A43403CB
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 17E50404D8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 17E50404D8
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 04A43403CB
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 17:29:28 +0000 (UTC)
-X-CSE-ConnectionGUID: CTsg+Wt6RVOZu4UZ2bsJZQ==
-X-CSE-MsgGUID: gnqhruK4TzqApbO1q9mNyw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11404"; a="46275703"
-X-IronPort-AV: E=Sophos;i="6.15,213,1739865600"; d="scan'208";a="46275703"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 17E50404D8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 17:29:30 +0000 (UTC)
+X-CSE-ConnectionGUID: zUtZcnoXT16LxNps20r+wg==
+X-CSE-MsgGUID: oF/xlmcVQAiOxdFv0EcYNQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11404"; a="46275729"
+X-IronPort-AV: E=Sophos;i="6.15,213,1739865600"; d="scan'208";a="46275729"
 Received: from fmviesa010.fm.intel.com ([10.60.135.150])
  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Apr 2025 10:29:23 -0700
-X-CSE-ConnectionGUID: PYBh1ZCGTU2zmhbSXP+jXA==
-X-CSE-MsgGUID: HPpz6voRQJS6rGy8NeyGIw==
+ 15 Apr 2025 10:29:27 -0700
+X-CSE-ConnectionGUID: Q5yDxASCQlyldvAVCZwBxg==
+X-CSE-MsgGUID: gljhbGdbSeGJrefdyNpTWQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,213,1739865600"; d="scan'208";a="130729718"
+X-IronPort-AV: E=Sophos;i="6.15,213,1739865600"; d="scan'208";a="130729732"
 Received: from newjersey.igk.intel.com ([10.102.20.203])
- by fmviesa010.fm.intel.com with ESMTP; 15 Apr 2025 10:29:19 -0700
+ by fmviesa010.fm.intel.com with ESMTP; 15 Apr 2025 10:29:23 -0700
 From: Alexander Lobakin <aleksander.lobakin@intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: Alexander Lobakin <aleksander.lobakin@intel.com>,
@@ -77,8 +77,8 @@ Cc: Alexander Lobakin <aleksander.lobakin@intel.com>,
  Jesper Dangaard Brouer <hawk@kernel.org>,
  John Fastabend <john.fastabend@gmail.com>, Simon Horman <horms@kernel.org>,
  bpf@vger.kernel.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org
-Date: Tue, 15 Apr 2025 19:28:16 +0200
-Message-ID: <20250415172825.3731091-8-aleksander.lobakin@intel.com>
+Date: Tue, 15 Apr 2025 19:28:17 +0200
+Message-ID: <20250415172825.3731091-9-aleksander.lobakin@intel.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250415172825.3731091-1-aleksander.lobakin@intel.com>
 References: <20250415172825.3731091-1-aleksander.lobakin@intel.com>
@@ -86,25 +86,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1744738169; x=1776274169;
+ t=1744738170; x=1776274170;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=pX0JSn/zMAX5UcgOnlJbrKknoIMx4EDvUg8VXC/h7h8=;
- b=UCKF4bvp5BuLm0/MgFYzYNRDlNoApej+EXZQEll4OXaAf6lx8ub+WPvc
- UPbdtAYT/JhVhUvfDztbGa9V5n/YGnF/a0JRCOgb3i1DCksR4BYtYGodK
- Kes1mba8fOWpSgymxD69tIB04EcvGxo3mPbrxTj6eXvlFu2DlmcRfZVj2
- 9bP7+K8Hcf+c9u+lVrXkTEk1I2Z69gWOgUL+E4gydl9J78+3NHHOtdfz7
- 4cqQNNoM0zn+esvuTRtBwVnPWdIwyQ1MBuaqHF9K+I0JjvHMu2eOXaCNO
- hpWau+EzRHSIkuSHo/bDV3VNovcjGBVbN/8GWF+tPGg1HXtTuFt+oTs77
- g==;
+ bh=Y9dVgg5kD0QtEYGYSr3pkltx/82Vqvg5iLnymUVyNlk=;
+ b=LadYh2IAA3abiQ4bb6oWpHOhhRG6rbjkF5xWtGC/TD5iDMwpKL1xydxp
+ pZFfn0BQWEvtm7Qw2XY3yZwnP2kGTK3mkWRyBOgAtnbl8CAopEdBK4tX1
+ HUYx2TYw25OdQswfFaaLRHn6c38S6YYB7dgkqQW917p+982Xwk36szKPD
+ dJGCbBoci91PF++1Z7dh//WkTx6GvXAGTAoTB5wKZ5u9Ii1nXyDQkFHjv
+ yLOGJth/9b5UwpC5SQZeGa2rS2YETTYTklVmnXDlZN3psLh2yhETvfHHM
+ ZFcW1V78uGOIIk7LuWibcPGazw2pQEDOOXXtKAWK1OFppgK+T1iC+lMI+
+ w==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=UCKF4bvp
-Subject: [Intel-wired-lan] [PATCH iwl-next 07/16] libeth: xdp: add XDPSQ
- cleanup timers
+ header.a=rsa-sha256 header.s=Intel header.b=LadYh2IA
+Subject: [Intel-wired-lan] [PATCH iwl-next 08/16] libeth: xdp: add helpers
+ for preparing/processing &libeth_xdp_buff
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -120,165 +120,358 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When XDP Tx queues are not interrupt-driven but use lazy cleaning,
-i.e. only when there are less than `threshold` free descriptors left,
-we also need cleanup timers to avoid &xdp_buff and &xdp_frame stall
-for too long, especially with Page Pool (it warns every about inflight
-pages every 60 second).
-Let's say we sent 256 frames and don't need to send more, but we clean
-only when the number of pending items >= 384. In that case, those 256
-will stall until 128 more are sent. For this, add simple helpers to
-run a timer which will clean the queue regardless, after 1 second of
-the last send.
-The timer is triggered when finalizing the queue. As long as there is
-regular active traffic, the timer doesn't fire.
+Add convenience helpers to build an &xdp_buff. This means: general
+initialization before the NAPI loop, adding head, adding frags etc.
+libeth_xdp_process_buff() is the same what everybody have in their
+drivers:
+
+dma_sync_for_cpu();
+
+if (!frag) {
+	add_head();
+	prefetch();
+} else {
+	add_frag();
+}
+
+Note that I don't use net_prefetch(), sticking to the original
+prefetch(). In none of my tests prefetching 128 bytes yielded better
+perf than 64 bytes. That might differ if the headers are huge enough,
+but then additional tunneling etc. overhead takes place, you either
+way won't win a lot.
+
+&libeth_xdp_stash is for cases when you exit the polling loop without
+finishing building the buff. If that happens, you need to store the
+buffer in the queue structure until the next loop and then restore it.
+It makes no sense to place a whole full &xdp_buff there. Define a
+minimal structure, which would store only the fields essential to
+restore it.
+I was able to pack it into 16 bytes, which is only 8 bytes bigger
+than `struct sk_buff *skb` on x64.
 
 Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 ---
- include/net/libeth/types.h              | 21 ++++++++-
- include/net/libeth/xdp.h                | 57 +++++++++++++++++++++++++
- drivers/net/ethernet/intel/libeth/xdp.c | 23 ++++++++++
- 3 files changed, 100 insertions(+), 1 deletion(-)
+ include/net/libeth/types.h              |  23 ++++
+ include/net/libeth/xdp.h                | 151 ++++++++++++++++++++++++
+ drivers/net/ethernet/intel/libeth/xdp.c |  90 ++++++++++++++
+ 3 files changed, 264 insertions(+)
 
 diff --git a/include/net/libeth/types.h b/include/net/libeth/types.h
-index abfccae1a346..4df703a9eb59 100644
+index 4df703a9eb59..7b27c1966d45 100644
 --- a/include/net/libeth/types.h
 +++ b/include/net/libeth/types.h
-@@ -4,7 +4,7 @@
- #ifndef __LIBETH_TYPES_H
- #define __LIBETH_TYPES_H
- 
--#include <linux/spinlock.h>
-+#include <linux/workqueue.h>
- 
- /**
-  * struct libeth_sq_napi_stats - "hot" counters to update in Tx completion loop
-@@ -60,4 +60,23 @@ struct libeth_xdpsq_lock {
- 	bool				share;
+@@ -79,4 +79,27 @@ struct libeth_xdpsq_timer {
+ 	struct delayed_work		dwork;
  };
  
-+/* XDPSQ clean-up timers */
++/* Rx polling path */
 +
 +/**
-+ * struct libeth_xdpsq_timer - timer for cleaning up XDPSQs w/o interrupts
-+ * @xdpsq: queue this timer belongs to
-+ * @lock: lock for the queue
-+ * @dwork: work performing cleanups
++ * struct libeth_xdp_buff_stash - struct for stashing &xdp_buff onto a queue
++ * @data: pointer to the start of the frame, xdp_buff.data
++ * @headroom: frame headroom, xdp_buff.data - xdp_buff.data_hard_start
++ * @len: frame linear space length, xdp_buff.data_end - xdp_buff.data
++ * @frame_sz: truesize occupied by the frame, xdp_buff.frame_sz
++ * @flags: xdp_buff.flags
 + *
-+ * XDPSQs not using interrupts but lazy cleaning, i.e. only when there's no
-+ * space for sending the current queued frame/bulk, must fire up timers to
-+ * make sure there are no stale buffers to free.
++ * &xdp_buff is 56 bytes long on x64, &libeth_xdp_buff is 64 bytes. This
++ * structure carries only necessary fields to save/restore a partially built
++ * frame on the queue structure to finish it during the next NAPI poll.
 + */
-+struct libeth_xdpsq_timer {
-+	void				*xdpsq;
-+	struct libeth_xdpsq_lock	*lock;
++struct libeth_xdp_buff_stash {
++	void				*data;
++	u16				headroom;
++	u16				len;
 +
-+	struct delayed_work		dwork;
-+};
++	u32				frame_sz:24;
++	u32				flags:8;
++} __aligned_largest;
 +
  #endif /* __LIBETH_TYPES_H */
 diff --git a/include/net/libeth/xdp.h b/include/net/libeth/xdp.h
-index 47ec5c59a586..54cf1e7cc1fc 100644
+index 54cf1e7cc1fc..8149eba93af7 100644
 --- a/include/net/libeth/xdp.h
 +++ b/include/net/libeth/xdp.h
-@@ -177,6 +177,63 @@ static inline void libeth_xdpsq_unlock(struct libeth_xdpsq_lock *lock)
- 		__libeth_xdpsq_unlock(lock);
+@@ -60,6 +60,42 @@ static_assert(offsetof(struct libeth_xdp_buff, desc) ==
+ static_assert(IS_ALIGNED(sizeof(struct xdp_buff_xsk),
+ 			 __alignof(struct libeth_xdp_buff)));
+ 
++/**
++ * __LIBETH_XDP_ONSTACK_BUFF - declare a &libeth_xdp_buff on the stack
++ * @name: name of the variable to declare
++ * @...: sizeof() of the driver-private data
++ */
++#define __LIBETH_XDP_ONSTACK_BUFF(name, ...)				      \
++	___LIBETH_XDP_ONSTACK_BUFF(name, ##__VA_ARGS__)
++/**
++ * LIBETH_XDP_ONSTACK_BUFF - declare a &libeth_xdp_buff on the stack
++ * @name: name of the variable to declare
++ * @...: type or variable name of the driver-private data
++ */
++#define LIBETH_XDP_ONSTACK_BUFF(name, ...)				      \
++	__LIBETH_XDP_ONSTACK_BUFF(name, __libeth_xdp_priv_sz(__VA_ARGS__))
++
++#define ___LIBETH_XDP_ONSTACK_BUFF(name, ...)				      \
++	_DEFINE_FLEX(struct libeth_xdp_buff, name, priv,		      \
++		     LIBETH_XDP_PRIV_SZ(__VA_ARGS__ + 0),		      \
++		     /* no init */);					      \
++	LIBETH_XDP_ASSERT_PRIV_SZ(__VA_ARGS__ + 0)
++
++#define __libeth_xdp_priv_sz(...)					      \
++	CONCATENATE(__libeth_xdp_psz, COUNT_ARGS(__VA_ARGS__))(__VA_ARGS__)
++
++#define __libeth_xdp_psz0(...)
++#define __libeth_xdp_psz1(...)		sizeof(__VA_ARGS__)
++
++#define LIBETH_XDP_PRIV_SZ(sz)						      \
++	(ALIGN(sz, __alignof(struct libeth_xdp_buff)) / sizeof(long))
++
++/* Performs XSK_CHECK_PRIV_TYPE() */
++#define LIBETH_XDP_ASSERT_PRIV_SZ(sz)					      \
++	static_assert(offsetofend(struct xdp_buff_xsk, cb) >=		      \
++		      struct_size_t(struct libeth_xdp_buff, priv,	      \
++				    LIBETH_XDP_PRIV_SZ(sz)))
++
+ /* XDPSQ sharing */
+ 
+ DECLARE_STATIC_KEY_FALSE(libeth_xdpsq_share);
+@@ -956,6 +992,65 @@ __libeth_xdp_xmit_do_bulk(struct libeth_xdp_tx_bulk *bq,
+ 
+ /* Rx polling path */
+ 
++void libeth_xdp_load_stash(struct libeth_xdp_buff *dst,
++			   const struct libeth_xdp_buff_stash *src);
++void libeth_xdp_save_stash(struct libeth_xdp_buff_stash *dst,
++			   const struct libeth_xdp_buff *src);
++void __libeth_xdp_return_stash(struct libeth_xdp_buff_stash *stash);
++
++/**
++ * libeth_xdp_init_buff - initialize a &libeth_xdp_buff for Rx NAPI poll
++ * @dst: onstack buffer to initialize
++ * @src: XDP buffer stash placed on the queue
++ * @rxq: registered &xdp_rxq_info corresponding to this queue
++ *
++ * Should be called before the main NAPI polling loop. Loads the content of
++ * the previously saved stash or initializes the buffer from scratch.
++ */
++static inline void
++libeth_xdp_init_buff(struct libeth_xdp_buff *dst,
++		     const struct libeth_xdp_buff_stash *src,
++		     struct xdp_rxq_info *rxq)
++{
++	if (likely(!src->data))
++		dst->data = NULL;
++	else
++		libeth_xdp_load_stash(dst, src);
++
++	dst->base.rxq = rxq;
++}
++
++/**
++ * libeth_xdp_save_buff - save a partially built buffer on a queue
++ * @dst: XDP buffer stash placed on the queue
++ * @src: onstack buffer to save
++ *
++ * Should be called after the main NAPI polling loop. If the loop exited before
++ * the buffer was finished, saves its content on the queue, so that it can be
++ * completed during the next poll. Otherwise, clears the stash.
++ */
++static inline void libeth_xdp_save_buff(struct libeth_xdp_buff_stash *dst,
++					const struct libeth_xdp_buff *src)
++{
++	if (likely(!src->data))
++		dst->data = NULL;
++	else
++		libeth_xdp_save_stash(dst, src);
++}
++
++/**
++ * libeth_xdp_return_stash - free an XDP buffer stash from a queue
++ * @stash: stash to free
++ *
++ * If the queue is about to be destroyed, but it still has an incompleted
++ * buffer stash, this helper should be called to free it.
++ */
++static inline void libeth_xdp_return_stash(struct libeth_xdp_buff_stash *stash)
++{
++	if (stash->data)
++		__libeth_xdp_return_stash(stash);
++}
++
+ static inline void libeth_xdp_return_va(const void *data, bool napi)
+ {
+ 	netmem_ref netmem = virt_to_netmem(data);
+@@ -997,6 +1092,62 @@ static inline void __libeth_xdp_return_buff(struct libeth_xdp_buff *xdp,
+ 	xdp->data = NULL;
  }
  
-+/* XDPSQ clean-up timers */
-+
-+void libeth_xdpsq_init_timer(struct libeth_xdpsq_timer *timer, void *xdpsq,
-+			     struct libeth_xdpsq_lock *lock,
-+			     void (*poll)(struct work_struct *work));
++bool libeth_xdp_buff_add_frag(struct libeth_xdp_buff *xdp,
++			      const struct libeth_fqe *fqe,
++			      u32 len);
 +
 +/**
-+ * libeth_xdpsq_deinit_timer - deinitialize &libeth_xdpsq_timer
-+ * @timer: timer to deinitialize
++ * libeth_xdp_prepare_buff - fill &libeth_xdp_buff with head FQE data
++ * @xdp: XDP buffer to attach the head to
++ * @fqe: FQE containing the head buffer
++ * @len: buffer len passed from HW
 + *
-+ * Flush and disable the underlying workqueue.
++ * Internal, use libeth_xdp_process_buff() instead. Initializes XDP buffer
++ * head with the Rx buffer data: data pointer, length, headroom, and
++ * truesize/tailroom. Zeroes the flags.
 + */
-+static inline void libeth_xdpsq_deinit_timer(struct libeth_xdpsq_timer *timer)
++static inline void libeth_xdp_prepare_buff(struct libeth_xdp_buff *xdp,
++					   const struct libeth_fqe *fqe,
++					   u32 len)
 +{
-+	cancel_delayed_work_sync(&timer->dwork);
++	const struct page *page = __netmem_to_page(fqe->netmem);
++
++	xdp_init_buff(&xdp->base, fqe->truesize, xdp->base.rxq);
++	xdp_prepare_buff(&xdp->base, page_address(page) + fqe->offset,
++			 page->pp->p.offset, len, true);
 +}
 +
 +/**
-+ * libeth_xdpsq_queue_timer - run &libeth_xdpsq_timer
-+ * @timer: timer to queue
++ * libeth_xdp_process_buff - attach Rx buffer to &libeth_xdp_buff
++ * @xdp: XDP buffer to attach the Rx buffer to
++ * @fqe: Rx buffer to process
++ * @len: received data length from the descriptor
 + *
-+ * Should be called after the queue was filled and the transmission was run
-+ * to complete the pending buffers if no further sending will be done in a
-+ * second (-> lazy cleaning won't happen).
-+ * If the timer was already run, it will be requeued back to one second
-+ * timeout again.
++ * If the XDP buffer is empty, attaches the Rx buffer as head and initializes
++ * the required fields. Otherwise, attaches the buffer as a frag.
++ * Already performs DMA sync-for-CPU and frame start prefetch
++ * (for head buffers only).
++ *
++ * Return: true on success, false if the descriptor must be skipped (empty or
++ * no space for a new frag).
 + */
-+static inline void libeth_xdpsq_queue_timer(struct libeth_xdpsq_timer *timer)
++static inline bool libeth_xdp_process_buff(struct libeth_xdp_buff *xdp,
++					   const struct libeth_fqe *fqe,
++					   u32 len)
 +{
-+	mod_delayed_work_on(raw_smp_processor_id(), system_bh_highpri_wq,
-+			    &timer->dwork, HZ);
++	if (!libeth_rx_sync_for_cpu(fqe, len))
++		return false;
++
++	if (xdp->data)
++		return libeth_xdp_buff_add_frag(xdp, fqe, len);
++
++	libeth_xdp_prepare_buff(xdp, fqe, len);
++
++	prefetch(xdp->data);
++
++	return true;
 +}
 +
-+/**
-+ * libeth_xdpsq_run_timer - wrapper to run a queue clean-up on a timer event
-+ * @work: workqueue belonging to the corresponding timer
-+ * @poll: driver-specific completion queue poll function
-+ *
-+ * Run the polling function on the locked queue and requeue the timer if
-+ * there's more work to do.
-+ * Designed to be used via LIBETH_XDP_DEFINE_TIMER() below.
-+ */
-+static __always_inline void
-+libeth_xdpsq_run_timer(struct work_struct *work,
-+		       u32 (*poll)(void *xdpsq, u32 budget))
-+{
-+	struct libeth_xdpsq_timer *timer = container_of(work, typeof(*timer),
-+							dwork.work);
-+
-+	libeth_xdpsq_lock(timer->lock);
-+
-+	if (poll(timer->xdpsq, U32_MAX))
-+		libeth_xdpsq_queue_timer(timer);
-+
-+	libeth_xdpsq_unlock(timer->lock);
-+}
-+
- /* Common Tx bits */
+ /* Tx buffer completion */
  
- /**
+ void libeth_xdp_return_buff_bulk(const struct skb_shared_info *sinfo,
 diff --git a/drivers/net/ethernet/intel/libeth/xdp.c b/drivers/net/ethernet/intel/libeth/xdp.c
-index 0c0aa3b1d49d..25be680de627 100644
+index 25be680de627..ca87789178ed 100644
 --- a/drivers/net/ethernet/intel/libeth/xdp.c
 +++ b/drivers/net/ethernet/intel/libeth/xdp.c
-@@ -54,6 +54,29 @@ __libeth_xdpsq_unlock(struct libeth_xdpsq_lock *lock)
- }
- EXPORT_SYMBOL_GPL(__libeth_xdpsq_unlock);
+@@ -172,6 +172,64 @@ EXPORT_SYMBOL_GPL(libeth_xdp_xmit_return_bulk);
  
-+/* XDPSQ clean-up timers */
+ /* Rx polling path */
+ 
++/**
++ * libeth_xdp_load_stash - recreate an &xdp_buff from libeth_xdp buffer stash
++ * @dst: target &libeth_xdp_buff to initialize
++ * @src: source stash
++ *
++ * External helper used by libeth_xdp_init_buff(), do not call directly.
++ * Recreate an onstack &libeth_xdp_buff using the stash saved earlier.
++ * The only field untouched (rxq) is initialized later in the
++ * abovementioned function.
++ */
++void libeth_xdp_load_stash(struct libeth_xdp_buff *dst,
++			   const struct libeth_xdp_buff_stash *src)
++{
++	dst->data = src->data;
++	dst->base.data_end = src->data + src->len;
++	dst->base.data_meta = src->data;
++	dst->base.data_hard_start = src->data - src->headroom;
++
++	dst->base.frame_sz = src->frame_sz;
++	dst->base.flags = src->flags;
++}
++EXPORT_SYMBOL_GPL(libeth_xdp_load_stash);
 +
 +/**
-+ * libeth_xdpsq_init_timer - initialize an XDPSQ clean-up timer
-+ * @timer: timer to initialize
-+ * @xdpsq: queue this timer belongs to
-+ * @lock: corresponding XDPSQ lock
-+ * @poll: queue polling/completion function
++ * libeth_xdp_save_stash - convert &xdp_buff to a libeth_xdp buffer stash
++ * @dst: target &libeth_xdp_buff_stash to initialize
++ * @src: source XDP buffer
 + *
-+ * XDPSQ clean-up timers must be set up before using at the queue configuration
-+ * time. Set the required pointers and the cleaning callback.
++ * External helper used by libeth_xdp_save_buff(), do not call directly.
++ * Use the fields from the passed XDP buffer to initialize the stash on the
++ * queue, so that a partially received frame can be finished later during
++ * the next NAPI poll.
 + */
-+void libeth_xdpsq_init_timer(struct libeth_xdpsq_timer *timer, void *xdpsq,
-+			     struct libeth_xdpsq_lock *lock,
-+			     void (*poll)(struct work_struct *work))
++void libeth_xdp_save_stash(struct libeth_xdp_buff_stash *dst,
++			   const struct libeth_xdp_buff *src)
 +{
-+	timer->xdpsq = xdpsq;
-+	timer->lock = lock;
++	dst->data = src->data;
++	dst->headroom = src->data - src->base.data_hard_start;
++	dst->len = src->base.data_end - src->data;
 +
-+	INIT_DELAYED_WORK(&timer->dwork, poll);
++	dst->frame_sz = src->base.frame_sz;
++	dst->flags = src->base.flags;
++
++	WARN_ON_ONCE(dst->flags != src->base.flags);
 +}
-+EXPORT_SYMBOL_GPL(libeth_xdpsq_init_timer);
++EXPORT_SYMBOL_GPL(libeth_xdp_save_stash);
 +
- /* ``XDP_TX`` bulking */
++void __libeth_xdp_return_stash(struct libeth_xdp_buff_stash *stash)
++{
++	LIBETH_XDP_ONSTACK_BUFF(xdp);
++
++	libeth_xdp_load_stash(xdp, stash);
++	libeth_xdp_return_buff_slow(xdp);
++
++	stash->data = NULL;
++}
++EXPORT_SYMBOL_GPL(__libeth_xdp_return_stash);
++
+ /**
+  * libeth_xdp_return_buff_slow - free &libeth_xdp_buff
+  * @xdp: buffer to free/return
+@@ -185,6 +243,38 @@ void __cold libeth_xdp_return_buff_slow(struct libeth_xdp_buff *xdp)
+ }
+ EXPORT_SYMBOL_GPL(libeth_xdp_return_buff_slow);
  
- static void __cold
++/**
++ * libeth_xdp_buff_add_frag - add frag to XDP buffer
++ * @xdp: head XDP buffer
++ * @fqe: Rx buffer containing the frag
++ * @len: frag length reported by HW
++ *
++ * External helper used by libeth_xdp_process_buff(), do not call directly.
++ * Frees both head and frag buffers on error.
++ *
++ * Return: true success, false on error (no space for a new frag).
++ */
++bool libeth_xdp_buff_add_frag(struct libeth_xdp_buff *xdp,
++			      const struct libeth_fqe *fqe,
++			      u32 len)
++{
++	netmem_ref netmem = fqe->netmem;
++
++	if (!xdp_buff_add_frag(&xdp->base, netmem,
++			       fqe->offset + netmem_get_pp(netmem)->p.offset,
++			       len, fqe->truesize))
++		goto recycle;
++
++	return true;
++
++recycle:
++	libeth_rx_recycle_slow(netmem);
++	libeth_xdp_return_buff_slow(xdp);
++
++	return false;
++}
++EXPORT_SYMBOL_GPL(libeth_xdp_buff_add_frag);
++
+ /* Tx buffer completion */
+ 
+ static void libeth_xdp_put_netmem_bulk(netmem_ref netmem,
 -- 
 2.49.0
 
