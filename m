@@ -1,67 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EC4B0A8A61D
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Apr 2025 19:57:21 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 46948A8A61F
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Apr 2025 19:57:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 51C9241421;
-	Tue, 15 Apr 2025 17:57:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B9176810E3;
+	Tue, 15 Apr 2025 17:57:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8CQG81Pp65KS; Tue, 15 Apr 2025 17:57:19 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 37FJjyOpCEdA; Tue, 15 Apr 2025 17:57:24 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 98E8F4141A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 87075811B7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744739839;
-	bh=/YuvNgHeS/WKwX8zpJz8BN8j2/VQ4gahWHduUA6olYQ=;
+	s=default; t=1744739843;
+	bh=iKV+ovO037z+eHm/s28TYXo6U9soRamWZjX37BNMiwc=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=w4Y6EDC+7sNXFh0pHBoxpvlHXxGJjjtWpANZSLYeH0OIkbMHMec5V1m8TJSYO5wOQ
-	 zywezDPypdSBgc3R/2aQgjz6TW4vDRfw+/NFYIXPoxPxQJvJTl3qk9LJ6a8XNiKhq2
-	 OQ3cywFTHb4Hpcm/ZoMHBW1H2/1NXX9HaXykLvE7n1B1o5hiuQg6IPE290zpsFKX2U
-	 9m0kSCyNSJiacHcPB+336uSL0vWORUVJFqpUuGa0Dj8yzCgBvEiSU8OU2zTQG9EZQ2
-	 Njmy6I7QZKxgQt6w4txYNJRupU2W2ZsbxRCWwyfGEEodj2C/MMziHzXHynblvmzMXi
-	 qXhb6ufVMoZkA==
+	b=5Dyb6XUxsHH0rjLVLB+QpCOw9ZCyV0+sz7Ez1ysQu+w1bm5IU3F//YO/aMgNeFSOD
+	 5EiXoN1UVG4AEftHf8g/sG0Mez1zwIV892Oas85Z27AYlhrDtUwY2rgrKubdyESEYO
+	 XNHLoBKPbe/8DVrtIh6a8pEyphqOwXmtsL5fOKoS3LwSidAyCf96srZCjAaS1djYQU
+	 NOvD/hYZTiBinNf2M+rFktR6hsPrtCWqjd3HGIEtldAuGo69SsVToUBV2QYfYfQQ7m
+	 P5OjTFHOtL7J9l5al4Ipqd17Rl26vrDC0Gk7FiB5bYjTvSKgVOvFVSrsi1aQ3IZ5Zt
+	 JUCErD0h5ZVlg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 98E8F4141A;
-	Tue, 15 Apr 2025 17:57:19 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 87075811B7;
+	Tue, 15 Apr 2025 17:57:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 8DEDC200
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 17:57:17 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 0858C109
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 17:57:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 73E5361296
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 17:57:17 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id E29EA61B05
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 17:57:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ran4_S6qhoxw for <intel-wired-lan@lists.osuosl.org>;
- Tue, 15 Apr 2025 17:57:17 +0000 (UTC)
+ id oWOs_UfcSM58 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 15 Apr 2025 17:57:21 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
  helo=mgamail.intel.com; envelope-from=arkadiusz.kubalewski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org BDF1A61266
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BDF1A61266
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 148466F4B9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 148466F4B9
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BDF1A61266
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 17:57:16 +0000 (UTC)
-X-CSE-ConnectionGUID: IFEWtpy+SmiSl8tuUfgTTg==
-X-CSE-MsgGUID: IQ+slMlfTEqhK1bswzsdTQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11404"; a="57650431"
-X-IronPort-AV: E=Sophos;i="6.15,213,1739865600"; d="scan'208";a="57650431"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 148466F4B9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 17:57:21 +0000 (UTC)
+X-CSE-ConnectionGUID: f+8MlpzDTxmq0P33vK3W+g==
+X-CSE-MsgGUID: hyKjDFQqRgu5zDHKDnRhvg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11404"; a="57650447"
+X-IronPort-AV: E=Sophos;i="6.15,213,1739865600"; d="scan'208";a="57650447"
 Received: from orviesa001.jf.intel.com ([10.64.159.141])
  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Apr 2025 10:57:16 -0700
-X-CSE-ConnectionGUID: 1paBYhYjQUCMwOECNWnWAQ==
-X-CSE-MsgGUID: 052QC8zvStWULQUhjqUnaA==
+ 15 Apr 2025 10:57:21 -0700
+X-CSE-ConnectionGUID: HhTcK1BEQkO8Af/lYKzu/Q==
+X-CSE-MsgGUID: m+uDoqLlR8ywSInP9jezvA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,213,1739865600"; d="scan'208";a="167364089"
+X-IronPort-AV: E=Sophos;i="6.15,213,1739865600"; d="scan'208";a="167364093"
 Received: from amlin-018-114.igk.intel.com ([10.102.18.114])
- by orviesa001.jf.intel.com with ESMTP; 15 Apr 2025 10:57:12 -0700
+ by orviesa001.jf.intel.com with ESMTP; 15 Apr 2025 10:57:17 -0700
 From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 To: donald.hunter@gmail.com, kuba@kernel.org, davem@davemloft.net,
  edumazet@google.com, pabeni@redhat.com, horms@kernel.org,
@@ -72,8 +72,8 @@ Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, linux-rdma@vger.kernel.org,
  Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
  Milena Olech <milena.olech@intel.com>
-Date: Tue, 15 Apr 2025 19:51:13 +0200
-Message-Id: <20250415175115.1066641-2-arkadiusz.kubalewski@intel.com>
+Date: Tue, 15 Apr 2025 19:51:14 +0200
+Message-Id: <20250415175115.1066641-3-arkadiusz.kubalewski@intel.com>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20250415175115.1066641-1-arkadiusz.kubalewski@intel.com>
 References: <20250415175115.1066641-1-arkadiusz.kubalewski@intel.com>
@@ -81,25 +81,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1744739837; x=1776275837;
+ t=1744739841; x=1776275841;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=ADm87zp4oj22kclvsUXxO5Xj2GRPDd9DwVbR0PrmVKs=;
- b=fHHUmF0hGz7bkma8WwAykhK1E/DKeLkhXrbCWK5edkl13TfzO5Du4aK1
- wW5+2deqmvIbTE4pLVBOz2b+2udqzLyfKGOjrT4oUPQS5J7YkCB4M+U3p
- ko8zuRMPYGWqsKEP5e3QBKnFb66Hy1x7CnPA+imxa7rOXWa9dcL2ik6tD
- mFGMe4UYzISwslmZrSG16BpXwJw6Ay2+BWnraxmjRK9rt8wMLGmZk1mSo
- w1hA9YCDwvgKOGJ6EBuUENjx7nOY4R0RgdVMDx2MH320nEc450627zywE
- gnqMuGQPwbNolk+14vPDyN1M6Ty/pBR9VRofZ3IHUAxcdOrWnI1MdEJza
+ bh=8rXi3dbAE1bxba56UKbsqD19JMkDwMpzdxi2YKKytME=;
+ b=LpVkqoFtKNhgJDRLrsbSN7SOEte1jqXR75s0oHuJcXMRxNYOyhyZoBEZ
+ 9de6V/IPC0PhLNpimmZMh3k8dkNGQCsMDhuGot+jLvhkoLxFS9eWc6hHf
+ UQ5gqpc9hLbR4TGOH0Ak5NYFiibDmzt6/TpPxrQzBCgLmwxLQRcqDESOc
+ BEbyhoCQnYl9Q3wlr/5xBqH1azNMdONcpZwcvsDxPk+SFlSfXxuh5XSyk
+ 5mSvkc0FfCGrnplbBM6ot5QVNcrHyILxx9aak8olIRsz3xX6END+TNBfc
+ Hgq4mZERmIsjMGTIgu27TQKsF60dM0tKXmBoQz+ilootYjWFNDQs4ycfU
  A==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=fHHUmF0h
-Subject: [Intel-wired-lan] [PATCH net-next v1 1/3] dpll: add reference-sync
- netlink attribute
+ header.a=rsa-sha256 header.s=Intel header.b=LpVkqoFt
+Subject: [Intel-wired-lan] [PATCH net-next v1 2/3] dpll: add reference sync
+ get/set
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -115,137 +115,358 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add new netlink attribute to allow user space configuration of reference
-sync pin pairs, where both pins are used to provide one clock signal
-consisting of both: base frequency and sync signal.
+Define function for reference sync pin registration and callback ops to
+set/get current feature state.
+
+Implement netlink handler to fill netlink messages with reference sync
+pin configuration of capable pins (pin-get).
+
+Implement netlink handler to call proper ops and configure reference
+sync pin state (pin-set).
 
 Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Reviewed-by: Milena Olech <milena.olech@intel.com>
 Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 ---
- Documentation/netlink/specs/dpll.yaml | 19 +++++++++++++++++++
- drivers/dpll/dpll_nl.c                | 10 ++++++++--
- drivers/dpll/dpll_nl.h                |  1 +
- include/uapi/linux/dpll.h             |  1 +
- 4 files changed, 29 insertions(+), 2 deletions(-)
+ drivers/dpll/dpll_core.c    |  27 ++++++
+ drivers/dpll/dpll_core.h    |   1 +
+ drivers/dpll/dpll_netlink.c | 188 ++++++++++++++++++++++++++++++++----
+ include/linux/dpll.h        |  10 ++
+ 4 files changed, 208 insertions(+), 18 deletions(-)
 
-diff --git a/Documentation/netlink/specs/dpll.yaml b/Documentation/netlink/specs/dpll.yaml
-index 8feefeae5376..333b4596b36f 100644
---- a/Documentation/netlink/specs/dpll.yaml
-+++ b/Documentation/netlink/specs/dpll.yaml
-@@ -406,6 +406,15 @@ attribute-sets:
-         doc: |
-           A ratio of high to low state of a SYNC signal pulse embedded
-           into base clock frequency. Value is in percents.
-+      -
-+        name: reference-sync
-+        type: nest
-+        multi-attr: true
-+        nested-attributes: reference-sync
-+        doc: |
-+          Capable pin provides list of pins that can be bound to create a
-+          reference-sync pin pair.
+diff --git a/drivers/dpll/dpll_core.c b/drivers/dpll/dpll_core.c
+index 20bdc52f63a5..3295e39b0aea 100644
+--- a/drivers/dpll/dpll_core.c
++++ b/drivers/dpll/dpll_core.c
+@@ -506,6 +506,7 @@ dpll_pin_alloc(u64 clock_id, u32 pin_idx, struct module *module,
+ 	refcount_set(&pin->refcount, 1);
+ 	xa_init_flags(&pin->dpll_refs, XA_FLAGS_ALLOC);
+ 	xa_init_flags(&pin->parent_refs, XA_FLAGS_ALLOC);
++	xa_init_flags(&pin->sync_pins, XA_FLAGS_ALLOC);
+ 	ret = xa_alloc_cyclic(&dpll_pin_xa, &pin->id, pin, xa_limit_32b,
+ 			      &dpll_pin_xa_id, GFP_KERNEL);
+ 	if (ret < 0)
+@@ -514,6 +515,7 @@ dpll_pin_alloc(u64 clock_id, u32 pin_idx, struct module *module,
+ err_xa_alloc:
+ 	xa_destroy(&pin->dpll_refs);
+ 	xa_destroy(&pin->parent_refs);
++	xa_destroy(&pin->sync_pins);
+ 	dpll_pin_prop_free(&pin->prop);
+ err_pin_prop:
+ 	kfree(pin);
+@@ -595,6 +597,7 @@ void dpll_pin_put(struct dpll_pin *pin)
+ 		xa_erase(&dpll_pin_xa, pin->id);
+ 		xa_destroy(&pin->dpll_refs);
+ 		xa_destroy(&pin->parent_refs);
++		xa_destroy(&pin->sync_pins);
+ 		dpll_pin_prop_free(&pin->prop);
+ 		kfree_rcu(pin, rcu);
+ 	}
+@@ -783,6 +786,30 @@ void dpll_pin_on_pin_unregister(struct dpll_pin *parent, struct dpll_pin *pin,
+ }
+ EXPORT_SYMBOL_GPL(dpll_pin_on_pin_unregister);
+ 
++/**
++ * dpll_pin_ref_sync_pair_add - create a reference sync signal pin pair
++ * @base: pin which produces the base frequency
++ * @sync: pin which produces the sync signal
++ *
++ * Once pins are paired, the user-space configuration of reference sync pair
++ * is possible.
++ * Context: Acquires a lock (dpll_lock)
++ * Return:
++ * * 0 on success
++ * * negative - error value
++ */
++int dpll_pin_ref_sync_pair_add(struct dpll_pin *base, struct dpll_pin *sync)
++{
++	int ret;
 +
-   -
-     name: pin-parent-device
-     subset-of: pin
-@@ -436,6 +445,14 @@ attribute-sets:
-         name: frequency-min
-       -
-         name: frequency-max
-+  -
-+    name: reference-sync
-+    subset-of: pin
-+    attributes:
-+      -
-+        name: id
-+      -
-+        name: state
- 
- operations:
-   enum-name: dpll_cmd
-@@ -574,6 +591,7 @@ operations:
-             - esync-frequency
-             - esync-frequency-supported
-             - esync-pulse
-+            - reference-sync
- 
-       dump:
-         request:
-@@ -601,6 +619,7 @@ operations:
-             - parent-pin
-             - phase-adjust
-             - esync-frequency
-+            - reference-sync
-     -
-       name: pin-create-ntf
-       doc: Notification about pin appearing
-diff --git a/drivers/dpll/dpll_nl.c b/drivers/dpll/dpll_nl.c
-index fe9b6893d261..d709a8dc304f 100644
---- a/drivers/dpll/dpll_nl.c
-+++ b/drivers/dpll/dpll_nl.c
-@@ -24,6 +24,11 @@ const struct nla_policy dpll_pin_parent_pin_nl_policy[DPLL_A_PIN_STATE + 1] = {
- 	[DPLL_A_PIN_STATE] = NLA_POLICY_RANGE(NLA_U32, 1, 3),
- };
- 
-+const struct nla_policy dpll_reference_sync_nl_policy[DPLL_A_PIN_STATE + 1] = {
-+	[DPLL_A_PIN_ID] = { .type = NLA_U32, },
-+	[DPLL_A_PIN_STATE] = NLA_POLICY_RANGE(NLA_U32, 1, 3),
-+};
++	mutex_lock(&dpll_lock);
++	ret = xa_insert(&base->sync_pins, sync->pin_idx, sync, GFP_KERNEL);
++	mutex_unlock(&dpll_lock);
 +
- /* DPLL_CMD_DEVICE_ID_GET - do */
- static const struct nla_policy dpll_device_id_get_nl_policy[DPLL_A_TYPE + 1] = {
- 	[DPLL_A_MODULE_NAME] = { .type = NLA_NUL_STRING, },
-@@ -62,7 +67,7 @@ static const struct nla_policy dpll_pin_get_dump_nl_policy[DPLL_A_PIN_ID + 1] =
++	return ret;
++}
++EXPORT_SYMBOL_GPL(dpll_pin_ref_sync_pair_add);
++
+ static struct dpll_device_registration *
+ dpll_device_registration_first(struct dpll_device *dpll)
+ {
+diff --git a/drivers/dpll/dpll_core.h b/drivers/dpll/dpll_core.h
+index 2b6d8ef1cdf3..b77e021356ca 100644
+--- a/drivers/dpll/dpll_core.h
++++ b/drivers/dpll/dpll_core.h
+@@ -56,6 +56,7 @@ struct dpll_pin {
+ 	struct module *module;
+ 	struct xarray dpll_refs;
+ 	struct xarray parent_refs;
++	struct xarray sync_pins;
+ 	struct dpll_pin_properties prop;
+ 	refcount_t refcount;
+ 	struct rcu_head rcu;
+diff --git a/drivers/dpll/dpll_netlink.c b/drivers/dpll/dpll_netlink.c
+index c130f87147fa..cd2bffdefb39 100644
+--- a/drivers/dpll/dpll_netlink.c
++++ b/drivers/dpll/dpll_netlink.c
+@@ -48,6 +48,24 @@ dpll_msg_add_dev_parent_handle(struct sk_buff *msg, u32 id)
+ 	return 0;
+ }
+ 
++static bool dpll_pin_available(struct dpll_pin *pin)
++{
++	struct dpll_pin_ref *par_ref;
++	unsigned long i;
++
++	if (!xa_get_mark(&dpll_pin_xa, pin->id, DPLL_REGISTERED))
++		return false;
++	xa_for_each(&pin->parent_refs, i, par_ref)
++		if (xa_get_mark(&dpll_pin_xa, par_ref->pin->id,
++				DPLL_REGISTERED))
++			return true;
++	xa_for_each(&pin->dpll_refs, i, par_ref)
++		if (xa_get_mark(&dpll_device_xa, par_ref->dpll->id,
++				DPLL_REGISTERED))
++			return true;
++	return false;
++}
++
+ /**
+  * dpll_msg_add_pin_handle - attach pin handle attribute to a given message
+  * @msg: pointer to sk_buff message to attach a pin handle
+@@ -408,6 +426,47 @@ dpll_msg_add_pin_esync(struct sk_buff *msg, struct dpll_pin *pin,
+ 	return -EMSGSIZE;
+ }
+ 
++static int
++dpll_msg_add_pin_ref_sync(struct sk_buff *msg, struct dpll_pin *pin,
++			  struct dpll_pin_ref *ref,
++			  struct netlink_ext_ack *extack)
++{
++	const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
++	struct dpll_device *dpll = ref->dpll;
++	enum dpll_pin_state state;
++	void *pin_priv, *sp_priv;
++	struct dpll_pin *sp;
++	struct nlattr *nest;
++	unsigned long index;
++	int ret;
++
++	pin_priv = dpll_pin_on_dpll_priv(dpll, pin);
++	xa_for_each(&pin->sync_pins, index, sp) {
++		if (!dpll_pin_available(sp))
++			continue;
++		sp_priv = dpll_pin_on_dpll_priv(dpll, sp);
++		if (WARN_ON(!ops->ref_sync_get))
++			return -EOPNOTSUPP;
++		ret = ops->ref_sync_get(pin, pin_priv, sp, sp_priv,
++					&state, extack);
++		if (ret)
++			return ret;
++		nest = nla_nest_start(msg, DPLL_A_PIN_REFERENCE_SYNC);
++		if (!nest)
++			return -EMSGSIZE;
++		if (nla_put_s32(msg, DPLL_A_PIN_ID, sp->id))
++			goto nest_cancel;
++		if (nla_put_s32(msg, DPLL_A_PIN_STATE, state))
++			goto nest_cancel;
++		nla_nest_end(msg, nest);
++	}
++	return 0;
++
++nest_cancel:
++	nla_nest_cancel(msg, nest);
++	return -EMSGSIZE;
++}
++
+ static bool dpll_pin_is_freq_supported(struct dpll_pin *pin, u32 freq)
+ {
+ 	int fs;
+@@ -550,6 +609,10 @@ dpll_cmd_pin_get_one(struct sk_buff *msg, struct dpll_pin *pin,
+ 	if (ret)
+ 		return ret;
+ 	ret = dpll_msg_add_pin_esync(msg, pin, ref, extack);
++	if (ret)
++		return ret;
++	if (!xa_empty(&pin->sync_pins))
++		ret = dpll_msg_add_pin_ref_sync(msg, pin, ref, extack);
+ 	if (ret)
+ 		return ret;
+ 	if (xa_empty(&pin->parent_refs))
+@@ -642,24 +705,6 @@ __dpll_device_change_ntf(struct dpll_device *dpll)
+ 	return dpll_device_event_send(DPLL_CMD_DEVICE_CHANGE_NTF, dpll);
+ }
+ 
+-static bool dpll_pin_available(struct dpll_pin *pin)
+-{
+-	struct dpll_pin_ref *par_ref;
+-	unsigned long i;
+-
+-	if (!xa_get_mark(&dpll_pin_xa, pin->id, DPLL_REGISTERED))
+-		return false;
+-	xa_for_each(&pin->parent_refs, i, par_ref)
+-		if (xa_get_mark(&dpll_pin_xa, par_ref->pin->id,
+-				DPLL_REGISTERED))
+-			return true;
+-	xa_for_each(&pin->dpll_refs, i, par_ref)
+-		if (xa_get_mark(&dpll_device_xa, par_ref->dpll->id,
+-				DPLL_REGISTERED))
+-			return true;
+-	return false;
+-}
+-
+ /**
+  * dpll_device_change_ntf - notify that the dpll device has been changed
+  * @dpll: registered dpll pointer
+@@ -887,6 +932,108 @@ dpll_pin_esync_set(struct dpll_pin *pin, struct nlattr *a,
+ 	return ret;
+ }
+ 
++static int
++dpll_pin_ref_sync_state_set(struct dpll_pin *pin, unsigned long sync_pin_idx,
++			    const enum dpll_pin_state state,
++			    struct netlink_ext_ack *extack)
++
++{
++	struct dpll_pin_ref *ref, *failed;
++	const struct dpll_pin_ops *ops;
++	enum dpll_pin_state old_state;
++	struct dpll_pin *sync_pin;
++	struct dpll_device *dpll;
++	unsigned long i;
++	int ret;
++
++	if (state != DPLL_PIN_STATE_CONNECTED &&
++	    state != DPLL_PIN_STATE_DISCONNECTED)
++		return -EINVAL;
++	sync_pin = xa_find(&pin->sync_pins, &sync_pin_idx, ULONG_MAX,
++			   XA_PRESENT);
++	if (!sync_pin) {
++		NL_SET_ERR_MSG(extack, "reference sync pin not found");
++		return -EINVAL;
++	}
++	if (!dpll_pin_available(sync_pin)) {
++		NL_SET_ERR_MSG(extack, "reference sync pin not available");
++		return -EINVAL;
++	}
++	ref = dpll_xa_ref_dpll_first(&pin->dpll_refs);
++	ASSERT_NOT_NULL(ref);
++	ops = dpll_pin_ops(ref);
++	if (!ops->ref_sync_set || !ops->ref_sync_get) {
++		NL_SET_ERR_MSG(extack, "reference sync not supported by this pin");
++		return -EOPNOTSUPP;
++	}
++	dpll = ref->dpll;
++	ret = ops->ref_sync_get(pin, dpll_pin_on_dpll_priv(dpll, pin), sync_pin,
++				dpll_pin_on_dpll_priv(dpll, sync_pin),
++				&old_state, extack);
++	if (ret) {
++		NL_SET_ERR_MSG(extack, "unable to get old reference sync state");
++		return -EINVAL;
++	}
++	if (state == old_state)
++		return 0;
++	xa_for_each(&pin->dpll_refs, i, ref) {
++		ops = dpll_pin_ops(ref);
++		dpll = ref->dpll;
++		ret = ops->ref_sync_set(pin, dpll_pin_on_dpll_priv(dpll, pin),
++					sync_pin,
++					dpll_pin_on_dpll_priv(dpll, sync_pin),
++					state, extack);
++		if (ret) {
++			failed = ref;
++			NL_SET_ERR_MSG_FMT(extack, "reference sync set failed for dpll_id:%u",
++					   dpll->id);
++			goto rollback;
++		}
++	}
++	__dpll_pin_change_ntf(pin);
++
++	return 0;
++
++rollback:
++	xa_for_each(&pin->dpll_refs, i, ref) {
++		if (ref == failed)
++			break;
++		ops = dpll_pin_ops(ref);
++		dpll = ref->dpll;
++		if (ops->ref_sync_set(pin, dpll_pin_on_dpll_priv(dpll, pin),
++				      sync_pin,
++				      dpll_pin_on_dpll_priv(dpll, sync_pin),
++				      old_state, extack))
++			NL_SET_ERR_MSG(extack, "set reference sync rollback failed");
++	}
++	return ret;
++}
++
++static int
++dpll_pin_ref_sync_set(struct dpll_pin *pin, struct nlattr *nest,
++		      struct netlink_ext_ack *extack)
++{
++	struct nlattr *tb[DPLL_A_PIN_MAX + 1];
++	enum dpll_pin_state state;
++	u32 sync_pin_id;
++
++	nla_parse_nested(tb, DPLL_A_PIN_MAX, nest,
++			 dpll_reference_sync_nl_policy, extack);
++	if (!tb[DPLL_A_PIN_ID]) {
++		NL_SET_ERR_MSG(extack, "sync pin id expected");
++		return -EINVAL;
++	}
++	sync_pin_id = nla_get_u32(tb[DPLL_A_PIN_ID]);
++
++	if (!tb[DPLL_A_PIN_STATE]) {
++		NL_SET_ERR_MSG(extack, "sync pin state expected");
++		return -EINVAL;
++	}
++	state = nla_get_u32(tb[DPLL_A_PIN_STATE]);
++
++	return dpll_pin_ref_sync_state_set(pin, sync_pin_id, state, extack);
++}
++
+ static int
+ dpll_pin_on_pin_state_set(struct dpll_pin *pin, u32 parent_idx,
+ 			  enum dpll_pin_state state,
+@@ -1193,6 +1340,11 @@ dpll_pin_set_from_nlattr(struct dpll_pin *pin, struct genl_info *info)
+ 			if (ret)
+ 				return ret;
+ 			break;
++		case DPLL_A_PIN_REFERENCE_SYNC:
++			ret = dpll_pin_ref_sync_set(pin, a, info->extack);
++			if (ret)
++				return ret;
++			break;
+ 		}
+ 	}
+ 
+diff --git a/include/linux/dpll.h b/include/linux/dpll.h
+index 5e4f9ab1cf75..f1f1fdda67fe 100644
+--- a/include/linux/dpll.h
++++ b/include/linux/dpll.h
+@@ -95,6 +95,14 @@ struct dpll_pin_ops {
+ 			 const struct dpll_device *dpll, void *dpll_priv,
+ 			 struct dpll_pin_esync *esync,
+ 			 struct netlink_ext_ack *extack);
++	int (*ref_sync_set)(const struct dpll_pin *pin, void *pin_priv,
++			    const struct dpll_pin *ref_pin, void *ref_pin_priv,
++			    const enum dpll_pin_state state,
++			    struct netlink_ext_ack *extack);
++	int (*ref_sync_get)(const struct dpll_pin *pin, void *pin_priv,
++			    const struct dpll_pin *ref_pin, void *ref_pin_priv,
++			    enum dpll_pin_state *state,
++			    struct netlink_ext_ack *extack);
  };
  
- /* DPLL_CMD_PIN_SET - do */
--static const struct nla_policy dpll_pin_set_nl_policy[DPLL_A_PIN_ESYNC_FREQUENCY + 1] = {
-+static const struct nla_policy dpll_pin_set_nl_policy[DPLL_A_PIN_REFERENCE_SYNC + 1] = {
- 	[DPLL_A_PIN_ID] = { .type = NLA_U32, },
- 	[DPLL_A_PIN_FREQUENCY] = { .type = NLA_U64, },
- 	[DPLL_A_PIN_DIRECTION] = NLA_POLICY_RANGE(NLA_U32, 1, 2),
-@@ -72,6 +77,7 @@ static const struct nla_policy dpll_pin_set_nl_policy[DPLL_A_PIN_ESYNC_FREQUENCY
- 	[DPLL_A_PIN_PARENT_PIN] = NLA_POLICY_NESTED(dpll_pin_parent_pin_nl_policy),
- 	[DPLL_A_PIN_PHASE_ADJUST] = { .type = NLA_S32, },
- 	[DPLL_A_PIN_ESYNC_FREQUENCY] = { .type = NLA_U64, },
-+	[DPLL_A_PIN_REFERENCE_SYNC] = NLA_POLICY_NESTED(dpll_reference_sync_nl_policy),
- };
+ struct dpll_pin_frequency {
+@@ -194,6 +202,8 @@ int dpll_pin_on_pin_register(struct dpll_pin *parent, struct dpll_pin *pin,
+ void dpll_pin_on_pin_unregister(struct dpll_pin *parent, struct dpll_pin *pin,
+ 				const struct dpll_pin_ops *ops, void *priv);
  
- /* Ops table for dpll */
-@@ -139,7 +145,7 @@ static const struct genl_split_ops dpll_nl_ops[] = {
- 		.doit		= dpll_nl_pin_set_doit,
- 		.post_doit	= dpll_pin_post_doit,
- 		.policy		= dpll_pin_set_nl_policy,
--		.maxattr	= DPLL_A_PIN_ESYNC_FREQUENCY,
-+		.maxattr	= DPLL_A_PIN_REFERENCE_SYNC,
- 		.flags		= GENL_ADMIN_PERM | GENL_CMD_CAP_DO,
- 	},
- };
-diff --git a/drivers/dpll/dpll_nl.h b/drivers/dpll/dpll_nl.h
-index f491262bee4f..3da10cfe9a6e 100644
---- a/drivers/dpll/dpll_nl.h
-+++ b/drivers/dpll/dpll_nl.h
-@@ -14,6 +14,7 @@
- /* Common nested types */
- extern const struct nla_policy dpll_pin_parent_device_nl_policy[DPLL_A_PIN_PHASE_OFFSET + 1];
- extern const struct nla_policy dpll_pin_parent_pin_nl_policy[DPLL_A_PIN_STATE + 1];
-+extern const struct nla_policy dpll_reference_sync_nl_policy[DPLL_A_PIN_STATE + 1];
++int dpll_pin_ref_sync_pair_add(struct dpll_pin *base, struct dpll_pin *sync);
++
+ int dpll_device_change_ntf(struct dpll_device *dpll);
  
- int dpll_lock_doit(const struct genl_split_ops *ops, struct sk_buff *skb,
- 		   struct genl_info *info);
-diff --git a/include/uapi/linux/dpll.h b/include/uapi/linux/dpll.h
-index bf97d4b6d51f..f6cb6209566c 100644
---- a/include/uapi/linux/dpll.h
-+++ b/include/uapi/linux/dpll.h
-@@ -237,6 +237,7 @@ enum dpll_a_pin {
- 	DPLL_A_PIN_ESYNC_FREQUENCY,
- 	DPLL_A_PIN_ESYNC_FREQUENCY_SUPPORTED,
- 	DPLL_A_PIN_ESYNC_PULSE,
-+	DPLL_A_PIN_REFERENCE_SYNC,
- 
- 	__DPLL_A_PIN_MAX,
- 	DPLL_A_PIN_MAX = (__DPLL_A_PIN_MAX - 1)
+ int dpll_pin_change_ntf(struct dpll_pin *pin);
 -- 
 2.38.1
 
