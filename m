@@ -1,67 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E4E2A8A56F
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Apr 2025 19:29:34 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F127A8A570
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Apr 2025 19:29:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DE6DF60BCD;
-	Tue, 15 Apr 2025 17:29:32 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CD6E7805B7;
+	Tue, 15 Apr 2025 17:29:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XMlWKFP7cdEF; Tue, 15 Apr 2025 17:29:32 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 3R0vnqYPRvFp; Tue, 15 Apr 2025 17:29:32 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E7E4960BB9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B961B80CA5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
 	s=default; t=1744738172;
-	bh=CyjdLE4+Kxx4kj3FizqCwYSIPGyJXt1XigaC4KXsPzk=;
+	bh=NTdIP6yrFJ8UUQJb7MULw3+MpB9bVrRGvrZm5ApWHQI=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=VsvfmSsTEEIKtGHor5eZaes3vomsaUIpSTYIUYwdU41ArNG8XGWGmEZQa+MtLzCDc
-	 rqbMTCJecn01pQbFXJfUEVhseiZCOPBfsnmUj9Fd48x7SUZqPlILj2zVQ8oEQqXmsL
-	 5Bdh3Td4qQB5a2Y+bL8hS1M9+vfE7LcP530smuiIYf3JqyQnXkijQHSGzfmeM49+C8
-	 9j4x9Jdx62HaujLo9Ua4wfFK/4aZDUtIoBp8NEGBbeiw1Xa4q8KD3pHKpk1CQa1Lua
-	 wCh6qySr2YBjzuY33YhEDucdPt4xzevibLxD4ufCJr4Y+GwfvA8B5+LIoJzMSOHOyc
-	 AIbnsf7her4iA==
+	b=n3SZKKfsgqb/jiPN4uQqYUXLQzmZGpiRy/qyqt1YHjZbLpljgLlsutGrbh0yj5NRd
+	 v49oKuKa+SN2zjIWGaj0RRrJ0jDcKVuEmeqPyO13NEEoVvbJ3DXFTPyrUx3twLvsn9
+	 YwxDwmgyOqZ8uNQ+L4MD7IP5ADtWJEH7EOAb/VoqUWH1qAp72UhH2clBJbos6c4ZjA
+	 8Fp71zWQYPxEHQdt48kPg43cPEI5ZqzFpWYCndPf9O0I5h3Xm0VI54IkTVnlV1CTzD
+	 8lAPaH70wg2mCPu9NJHXWc67IoJmmUUGrhjXR46jlkmF7z9p4f1WuH9YH5iZA3aDfa
+	 BwwknpmU3Plew==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E7E4960BB9;
-	Tue, 15 Apr 2025 17:29:31 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B961B80CA5;
+	Tue, 15 Apr 2025 17:29:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 28386109
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 17:29:30 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 60368200
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 17:29:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 03481400C5
+ by smtp2.osuosl.org (Postfix) with ESMTP id 4FA2A400C5
  for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 17:29:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KsSz5CQ6quBP for <intel-wired-lan@lists.osuosl.org>;
- Tue, 15 Apr 2025 17:29:28 +0000 (UTC)
+ id 3yPkxRyn6mbJ for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 15 Apr 2025 17:29:29 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
  helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A456040329
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A456040329
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 04A43403CB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 04A43403CB
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A456040329
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 04A43403CB
  for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Apr 2025 17:29:28 +0000 (UTC)
-X-CSE-ConnectionGUID: HBkt+erBQwm23/UjyMegog==
-X-CSE-MsgGUID: h1LYjYQSTu2U2gFXpsEL8w==
-X-IronPort-AV: E=McAfee;i="6700,10204,11404"; a="46275691"
-X-IronPort-AV: E=Sophos;i="6.15,213,1739865600"; d="scan'208";a="46275691"
+X-CSE-ConnectionGUID: CTsg+Wt6RVOZu4UZ2bsJZQ==
+X-CSE-MsgGUID: gnqhruK4TzqApbO1q9mNyw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11404"; a="46275703"
+X-IronPort-AV: E=Sophos;i="6.15,213,1739865600"; d="scan'208";a="46275703"
 Received: from fmviesa010.fm.intel.com ([10.60.135.150])
  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Apr 2025 10:29:19 -0700
-X-CSE-ConnectionGUID: FrlRCKaUR/mJqEaVYzKFxw==
-X-CSE-MsgGUID: aZ42Y15jRx62rbj5ls6ovA==
+ 15 Apr 2025 10:29:23 -0700
+X-CSE-ConnectionGUID: PYBh1ZCGTU2zmhbSXP+jXA==
+X-CSE-MsgGUID: HPpz6voRQJS6rGy8NeyGIw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,213,1739865600"; d="scan'208";a="130729712"
+X-IronPort-AV: E=Sophos;i="6.15,213,1739865600"; d="scan'208";a="130729718"
 Received: from newjersey.igk.intel.com ([10.102.20.203])
- by fmviesa010.fm.intel.com with ESMTP; 15 Apr 2025 10:29:15 -0700
+ by fmviesa010.fm.intel.com with ESMTP; 15 Apr 2025 10:29:19 -0700
 From: Alexander Lobakin <aleksander.lobakin@intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: Alexander Lobakin <aleksander.lobakin@intel.com>,
@@ -77,8 +77,8 @@ Cc: Alexander Lobakin <aleksander.lobakin@intel.com>,
  Jesper Dangaard Brouer <hawk@kernel.org>,
  John Fastabend <john.fastabend@gmail.com>, Simon Horman <horms@kernel.org>,
  bpf@vger.kernel.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org
-Date: Tue, 15 Apr 2025 19:28:15 +0200
-Message-ID: <20250415172825.3731091-7-aleksander.lobakin@intel.com>
+Date: Tue, 15 Apr 2025 19:28:16 +0200
+Message-ID: <20250415172825.3731091-8-aleksander.lobakin@intel.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250415172825.3731091-1-aleksander.lobakin@intel.com>
 References: <20250415172825.3731091-1-aleksander.lobakin@intel.com>
@@ -89,23 +89,22 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1744738169; x=1776274169;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=lClT+Klml37vwVCESX+E8Q3/HH+MU78140BiOZ1bWJE=;
- b=CCp3xMyJM42Q1+g9LlE8vcmqFyQS0URjsWD4NxVddRGrKJRc0ZrBpe3G
- 6ADucjV8vJOQvVd0e+o6+xcsfMi1PGANtQz9/5Dmqxtlys5f8dCaw7/Ec
- DBahnJDYzpDfbjnemWUogSAoDhHWnuu02eAPL9hvUeRcfVmjS0KjplhEX
- +s+++qRuWKr0btMmCqfKhf5jgSBOoc3kL+DTFB0+8V1HRQzMFCDwmz1fn
- wI14LJliNfoADSylBiB3mNAODoDo8a0EBiQQfk15kK3rb0ZqHH6ANMEtf
- Xk2rftl3LnCgfCid6dosbuWhiYkUvqsHZnIK9SiPh+rGI3m3pPbGXPhNy
+ bh=pX0JSn/zMAX5UcgOnlJbrKknoIMx4EDvUg8VXC/h7h8=;
+ b=UCKF4bvp5BuLm0/MgFYzYNRDlNoApej+EXZQEll4OXaAf6lx8ub+WPvc
+ UPbdtAYT/JhVhUvfDztbGa9V5n/YGnF/a0JRCOgb3i1DCksR4BYtYGodK
+ Kes1mba8fOWpSgymxD69tIB04EcvGxo3mPbrxTj6eXvlFu2DlmcRfZVj2
+ 9bP7+K8Hcf+c9u+lVrXkTEk1I2Z69gWOgUL+E4gydl9J78+3NHHOtdfz7
+ 4cqQNNoM0zn+esvuTRtBwVnPWdIwyQ1MBuaqHF9K+I0JjvHMu2eOXaCNO
+ hpWau+EzRHSIkuSHo/bDV3VNovcjGBVbN/8GWF+tPGg1HXtTuFt+oTs77
  g==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=CCp3xMyJ
-Subject: [Intel-wired-lan] [PATCH iwl-next 06/16] libeth: xdp: add XDPSQ
- locking helpers
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=UCKF4bvp
+Subject: [Intel-wired-lan] [PATCH iwl-next 07/16] libeth: xdp: add XDPSQ
+ cleanup timers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -121,288 +120,161 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Unfortunately, it's not always possible to allocate
-max(num_rxqs, nr_cpu_ids) even on hi-end NICs.
-To mitigate this, add simple locking helpers to libeth_xdp.
-As long as XDPSQs are not shared, the whole functionality is gated
-behind a static lock. Otherwise, each bulk flush locks the queue for
-the time of cleaning and filling the descriptors.
-As long as this particular queue is not used by more than 1 CPU,
-the impact is minimal (runtime check for boolean twice per 16+
-descriptors).
+When XDP Tx queues are not interrupt-driven but use lazy cleaning,
+i.e. only when there are less than `threshold` free descriptors left,
+we also need cleanup timers to avoid &xdp_buff and &xdp_frame stall
+for too long, especially with Page Pool (it warns every about inflight
+pages every 60 second).
+Let's say we sent 256 frames and don't need to send more, but we clean
+only when the number of pending items >= 384. In that case, those 256
+will stall until 128 more are sent. For this, add simple helpers to
+run a timer which will clean the queue regardless, after 1 second of
+the last send.
+The timer is triggered when finalizing the queue. As long as there is
+regular active traffic, the timer doesn't fire.
 
-Suggested-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com> # static key
 Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 ---
- include/net/libeth/types.h              |  21 +++-
- include/net/libeth/xdp.h                | 127 +++++++++++++++++++++++-
- drivers/net/ethernet/intel/libeth/xdp.c |  47 +++++++++
- 3 files changed, 192 insertions(+), 3 deletions(-)
+ include/net/libeth/types.h              | 21 ++++++++-
+ include/net/libeth/xdp.h                | 57 +++++++++++++++++++++++++
+ drivers/net/ethernet/intel/libeth/xdp.c | 23 ++++++++++
+ 3 files changed, 100 insertions(+), 1 deletion(-)
 
 diff --git a/include/net/libeth/types.h b/include/net/libeth/types.h
-index ad7a5c1f119f..abfccae1a346 100644
+index abfccae1a346..4df703a9eb59 100644
 --- a/include/net/libeth/types.h
 +++ b/include/net/libeth/types.h
 @@ -4,7 +4,7 @@
  #ifndef __LIBETH_TYPES_H
  #define __LIBETH_TYPES_H
  
--#include <linux/types.h>
-+#include <linux/spinlock.h>
+-#include <linux/spinlock.h>
++#include <linux/workqueue.h>
  
  /**
   * struct libeth_sq_napi_stats - "hot" counters to update in Tx completion loop
-@@ -41,4 +41,23 @@ struct libeth_xdpsq_napi_stats {
- 	};
+@@ -60,4 +60,23 @@ struct libeth_xdpsq_lock {
+ 	bool				share;
  };
  
-+/* XDP */
-+
-+/*
-+ * The following structures should be embedded into driver's queue structure
-+ * and passed to the libeth_xdp helpers, never used directly.
-+ */
-+
-+/* XDPSQ sharing */
++/* XDPSQ clean-up timers */
 +
 +/**
-+ * struct libeth_xdpsq_lock - locking primitive for sharing XDPSQs
-+ * @lock: spinlock for locking the queue
-+ * @share: whether this particular queue is shared
++ * struct libeth_xdpsq_timer - timer for cleaning up XDPSQs w/o interrupts
++ * @xdpsq: queue this timer belongs to
++ * @lock: lock for the queue
++ * @dwork: work performing cleanups
++ *
++ * XDPSQs not using interrupts but lazy cleaning, i.e. only when there's no
++ * space for sending the current queued frame/bulk, must fire up timers to
++ * make sure there are no stale buffers to free.
 + */
-+struct libeth_xdpsq_lock {
-+	spinlock_t			lock;
-+	bool				share;
++struct libeth_xdpsq_timer {
++	void				*xdpsq;
++	struct libeth_xdpsq_lock	*lock;
++
++	struct delayed_work		dwork;
 +};
 +
  #endif /* __LIBETH_TYPES_H */
 diff --git a/include/net/libeth/xdp.h b/include/net/libeth/xdp.h
-index 0db6f9c56516..47ec5c59a586 100644
+index 47ec5c59a586..54cf1e7cc1fc 100644
 --- a/include/net/libeth/xdp.h
 +++ b/include/net/libeth/xdp.h
-@@ -60,6 +60,123 @@ static_assert(offsetof(struct libeth_xdp_buff, desc) ==
- static_assert(IS_ALIGNED(sizeof(struct xdp_buff_xsk),
- 			 __alignof(struct libeth_xdp_buff)));
+@@ -177,6 +177,63 @@ static inline void libeth_xdpsq_unlock(struct libeth_xdpsq_lock *lock)
+ 		__libeth_xdpsq_unlock(lock);
+ }
  
-+/* XDPSQ sharing */
++/* XDPSQ clean-up timers */
 +
-+DECLARE_STATIC_KEY_FALSE(libeth_xdpsq_share);
++void libeth_xdpsq_init_timer(struct libeth_xdpsq_timer *timer, void *xdpsq,
++			     struct libeth_xdpsq_lock *lock,
++			     void (*poll)(struct work_struct *work));
 +
 +/**
-+ * libeth_xdpsq_num - calculate optimal number of XDPSQs for this device + sys
-+ * @rxq: current number of active Rx queues
-+ * @txq: current number of active Tx queues
-+ * @max: maximum number of Tx queues
++ * libeth_xdpsq_deinit_timer - deinitialize &libeth_xdpsq_timer
++ * @timer: timer to deinitialize
 + *
-+ * Each RQ must have its own XDPSQ for XSk pairs, each CPU must have own XDPSQ
-+ * for lockless sending (``XDP_TX``, .ndo_xdp_xmit()). Cap the maximum of these
-+ * two with the number of SQs the device can have (minus used ones).
-+ *
-+ * Return: number of XDP Tx queues the device needs to use.
++ * Flush and disable the underlying workqueue.
 + */
-+static inline u32 libeth_xdpsq_num(u32 rxq, u32 txq, u32 max)
++static inline void libeth_xdpsq_deinit_timer(struct libeth_xdpsq_timer *timer)
 +{
-+	return min(max(nr_cpu_ids, rxq), max - txq);
++	cancel_delayed_work_sync(&timer->dwork);
 +}
 +
 +/**
-+ * libeth_xdpsq_shared - whether XDPSQs can be shared between several CPUs
-+ * @num: number of active XDPSQs
++ * libeth_xdpsq_queue_timer - run &libeth_xdpsq_timer
++ * @timer: timer to queue
 + *
-+ * Return: true if there's no 1:1 XDPSQ/CPU association, false otherwise.
++ * Should be called after the queue was filled and the transmission was run
++ * to complete the pending buffers if no further sending will be done in a
++ * second (-> lazy cleaning won't happen).
++ * If the timer was already run, it will be requeued back to one second
++ * timeout again.
 + */
-+static inline bool libeth_xdpsq_shared(u32 num)
++static inline void libeth_xdpsq_queue_timer(struct libeth_xdpsq_timer *timer)
 +{
-+	return num < nr_cpu_ids;
++	mod_delayed_work_on(raw_smp_processor_id(), system_bh_highpri_wq,
++			    &timer->dwork, HZ);
 +}
 +
 +/**
-+ * libeth_xdpsq_id - get XDPSQ index corresponding to this CPU
-+ * @num: number of active XDPSQs
++ * libeth_xdpsq_run_timer - wrapper to run a queue clean-up on a timer event
++ * @work: workqueue belonging to the corresponding timer
++ * @poll: driver-specific completion queue poll function
 + *
-+ * Helper for libeth_xdp routines, do not use in drivers directly.
-+ *
-+ * Return: XDPSQ index needs to be used on this CPU.
++ * Run the polling function on the locked queue and requeue the timer if
++ * there's more work to do.
++ * Designed to be used via LIBETH_XDP_DEFINE_TIMER() below.
 + */
-+static inline u32 libeth_xdpsq_id(u32 num)
++static __always_inline void
++libeth_xdpsq_run_timer(struct work_struct *work,
++		       u32 (*poll)(void *xdpsq, u32 budget))
 +{
-+	u32 ret = raw_smp_processor_id();
++	struct libeth_xdpsq_timer *timer = container_of(work, typeof(*timer),
++							dwork.work);
 +
-+	if (static_branch_unlikely(&libeth_xdpsq_share) &&
-+	    libeth_xdpsq_shared(num))
-+		ret %= num;
++	libeth_xdpsq_lock(timer->lock);
 +
-+	return ret;
-+}
++	if (poll(timer->xdpsq, U32_MAX))
++		libeth_xdpsq_queue_timer(timer);
 +
-+void __libeth_xdpsq_get(struct libeth_xdpsq_lock *lock,
-+			const struct net_device *dev);
-+void __libeth_xdpsq_put(struct libeth_xdpsq_lock *lock,
-+			const struct net_device *dev);
-+
-+/**
-+ * libeth_xdpsq_get - initialize &libeth_xdpsq_lock
-+ * @lock: lock to initialize
-+ * @dev: netdev which this lock belongs to
-+ * @share: whether XDPSQs can be shared
-+ *
-+ * Tracks the current XDPSQ association and enables the static lock
-+ * if needed.
-+ */
-+static inline void libeth_xdpsq_get(struct libeth_xdpsq_lock *lock,
-+				    const struct net_device *dev,
-+				    bool share)
-+{
-+	if (unlikely(share))
-+		__libeth_xdpsq_get(lock, dev);
-+}
-+
-+/**
-+ * libeth_xdpsq_put - deinitialize &libeth_xdpsq_lock
-+ * @lock: lock to deinitialize
-+ * @dev: netdev which this lock belongs to
-+ *
-+ * Tracks the current XDPSQ association and disables the static lock
-+ * if needed.
-+ */
-+static inline void libeth_xdpsq_put(struct libeth_xdpsq_lock *lock,
-+				    const struct net_device *dev)
-+{
-+	if (static_branch_unlikely(&libeth_xdpsq_share) && lock->share)
-+		__libeth_xdpsq_put(lock, dev);
-+}
-+
-+void __libeth_xdpsq_lock(struct libeth_xdpsq_lock *lock);
-+void __libeth_xdpsq_unlock(struct libeth_xdpsq_lock *lock);
-+
-+/**
-+ * libeth_xdpsq_lock - grab &libeth_xdpsq_lock if needed
-+ * @lock: lock to take
-+ *
-+ * Touches the underlying spinlock only if the static key is enabled
-+ * and the queue itself is marked as shareable.
-+ */
-+static inline void libeth_xdpsq_lock(struct libeth_xdpsq_lock *lock)
-+{
-+	if (static_branch_unlikely(&libeth_xdpsq_share) && lock->share)
-+		__libeth_xdpsq_lock(lock);
-+}
-+
-+/**
-+ * libeth_xdpsq_unlock - free &libeth_xdpsq_lock if needed
-+ * @lock: lock to free
-+ *
-+ * Touches the underlying spinlock only if the static key is enabled
-+ * and the queue itself is marked as shareable.
-+ */
-+static inline void libeth_xdpsq_unlock(struct libeth_xdpsq_lock *lock)
-+{
-+	if (static_branch_unlikely(&libeth_xdpsq_share) && lock->share)
-+		__libeth_xdpsq_unlock(lock);
++	libeth_xdpsq_unlock(timer->lock);
 +}
 +
  /* Common Tx bits */
  
  /**
-@@ -168,6 +285,7 @@ struct libeth_xdp_tx_bulk {
-  * @count: number of descriptors on that queue
-  * @pending: pointer to the number of sent-not-completed descs on that queue
-  * @xdp_tx: pointer to the above
-+ * @lock: corresponding XDPSQ lock
-  *
-  * Abstraction for driver-independent implementation of Tx. Placed on the stack
-  * and filled by the driver before the transmission, so that the generic
-@@ -182,6 +300,7 @@ struct libeth_xdpsq {
- 
- 	u32				*pending;
- 	u32				*xdp_tx;
-+	struct libeth_xdpsq_lock	*lock;
- };
- 
- /**
-@@ -218,7 +337,8 @@ struct libeth_xdp_tx_desc {
-  *
-  * Internal abstraction for placing @n XDP Tx frames on the HW XDPSQ. Used for
-  * all types of frames.
-- * @unroll greatly increases the object code size, but also greatly increases
-+ * @prep must lock the queue as this function releases it at the end. @unroll
-+ * greatly increases the object code size, but also greatly increases
-  * performance.
-  * The compilers inline all those onstack abstractions to direct data accesses.
-  *
-@@ -242,7 +362,7 @@ libeth_xdp_tx_xmit_bulk(const struct libeth_xdp_tx_frame *bulk, void *xdpsq,
- 
- 	n = min(n, prep(xdpsq, &sq));
- 	if (unlikely(!n))
--		return 0;
-+		goto unlock;
- 
- 	ntu = *sq.ntu;
- 
-@@ -291,6 +411,9 @@ libeth_xdp_tx_xmit_bulk(const struct libeth_xdp_tx_frame *bulk, void *xdpsq,
- 	if (sq.xdp_tx)
- 		*sq.xdp_tx += n;
- 
-+unlock:
-+	libeth_xdpsq_unlock(sq.lock);
-+
- 	return n;
- }
- 
 diff --git a/drivers/net/ethernet/intel/libeth/xdp.c b/drivers/net/ethernet/intel/libeth/xdp.c
-index 904b19df4f79..0c0aa3b1d49d 100644
+index 0c0aa3b1d49d..25be680de627 100644
 --- a/drivers/net/ethernet/intel/libeth/xdp.c
 +++ b/drivers/net/ethernet/intel/libeth/xdp.c
-@@ -7,6 +7,53 @@
+@@ -54,6 +54,29 @@ __libeth_xdpsq_unlock(struct libeth_xdpsq_lock *lock)
+ }
+ EXPORT_SYMBOL_GPL(__libeth_xdpsq_unlock);
  
- #include "priv.h"
- 
-+/* XDPSQ sharing */
++/* XDPSQ clean-up timers */
 +
-+DEFINE_STATIC_KEY_FALSE(libeth_xdpsq_share);
-+EXPORT_SYMBOL_GPL(libeth_xdpsq_share);
-+
-+void __libeth_xdpsq_get(struct libeth_xdpsq_lock *lock,
-+			const struct net_device *dev)
++/**
++ * libeth_xdpsq_init_timer - initialize an XDPSQ clean-up timer
++ * @timer: timer to initialize
++ * @xdpsq: queue this timer belongs to
++ * @lock: corresponding XDPSQ lock
++ * @poll: queue polling/completion function
++ *
++ * XDPSQ clean-up timers must be set up before using at the queue configuration
++ * time. Set the required pointers and the cleaning callback.
++ */
++void libeth_xdpsq_init_timer(struct libeth_xdpsq_timer *timer, void *xdpsq,
++			     struct libeth_xdpsq_lock *lock,
++			     void (*poll)(struct work_struct *work))
 +{
-+	bool warn;
++	timer->xdpsq = xdpsq;
++	timer->lock = lock;
 +
-+	spin_lock_init(&lock->lock);
-+	lock->share = true;
-+
-+	warn = !static_key_enabled(&libeth_xdpsq_share);
-+	static_branch_inc(&libeth_xdpsq_share);
-+
-+	if (warn && net_ratelimit())
-+		netdev_warn(dev, "XDPSQ sharing enabled, possible XDP Tx slowdown\n");
++	INIT_DELAYED_WORK(&timer->dwork, poll);
 +}
-+EXPORT_SYMBOL_GPL(__libeth_xdpsq_get);
-+
-+void __libeth_xdpsq_put(struct libeth_xdpsq_lock *lock,
-+			const struct net_device *dev)
-+{
-+	static_branch_dec(&libeth_xdpsq_share);
-+
-+	if (!static_key_enabled(&libeth_xdpsq_share) && net_ratelimit())
-+		netdev_notice(dev, "XDPSQ sharing disabled\n");
-+
-+	lock->share = false;
-+}
-+EXPORT_SYMBOL_GPL(__libeth_xdpsq_put);
-+
-+void __acquires(&lock->lock)
-+__libeth_xdpsq_lock(struct libeth_xdpsq_lock *lock)
-+{
-+	spin_lock(&lock->lock);
-+}
-+EXPORT_SYMBOL_GPL(__libeth_xdpsq_lock);
-+
-+void __releases(&lock->lock)
-+__libeth_xdpsq_unlock(struct libeth_xdpsq_lock *lock)
-+{
-+	spin_unlock(&lock->lock);
-+}
-+EXPORT_SYMBOL_GPL(__libeth_xdpsq_unlock);
++EXPORT_SYMBOL_GPL(libeth_xdpsq_init_timer);
 +
  /* ``XDP_TX`` bulking */
  
