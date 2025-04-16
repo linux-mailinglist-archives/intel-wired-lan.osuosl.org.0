@@ -1,97 +1,101 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A2FEA8AD20
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Apr 2025 02:59:55 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C931CA8ADFE
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Apr 2025 04:16:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 58AF68346C;
-	Wed, 16 Apr 2025 00:59:54 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4480981FB2;
+	Wed, 16 Apr 2025 02:16:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TVmOhUGlClst; Wed, 16 Apr 2025 00:59:53 +0000 (UTC)
+ id aq0oQ_u0gG6e; Wed, 16 Apr 2025 02:16:15 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CB6808340C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4B72A81F4C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744765193;
-	bh=g/67YHTEWGBhb8hK2XA67rXZbWA1CeLBweZw5/jNpLA=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=P6Wf4OcxyrhRFGj8qwrZXS+Jt4eXoZLBKkA9VVgv+iqFnXdIdWm/ZfIZEO/kgQfxH
-	 +xkfV9QBUXaDATmyNuLZWKtHMvxhhkfdQ0j4NV35T4BK3v3Y6Yn7AkBKZLaWhSrFlE
-	 q70ienl9TvJXn7Ikbe0ehNoG80X9/cgFScscGLOM/dh6tNK9BRHmMDleuOFN168ryd
-	 fu21y4gSGQHWKAVHiiTD3nT+kpq6RzRrXZIUp/Gt6AtqV3vXKBeovsH+aptC0T4eaR
-	 Hw4J+//9wCa/15MCEwldlPJbwP4pLhxiwO68IjTOCz9lSL51YjxYLkFLZHP320HGGE
-	 HlHl7gbPY7JrQ==
+	s=default; t=1744769775;
+	bh=dszeMrw8wBGDhJaqDJIFLaLMDJG3O3X78Cnd7QO1I1k=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=wQ+Iw4CBNO6kWyteYP2ijof0KrEkmpk5rtlq8Ifs223xaedGOq63h1ugNHO5ArxHx
+	 +em6KYR7k/T8du3R30+DrB0MBvTs9POfon3O5C3+SZXHNhXFm3aD5GG5hfYFBvFvcs
+	 N/ECZC7FCMclEUAGgo4sjZoXNewDaYIgGIzhjfmJqqiRCfOOzgSdhcYqDdR62Wa9CP
+	 f/If6e1kfQq8eN0iiA19QE/obzp4+6MU1GcW9DEjY30Ah4Fa+EDydAw2YrUbwpi+NU
+	 Jb6qly35oKE9Jg1HBEnc/BRKaCusluxWAk3+rBGQ0MygkngAYSnX1C8D2pC7X4uzam
+	 TR97/FpmZisaQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CB6808340C;
-	Wed, 16 Apr 2025 00:59:53 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4B72A81F4C;
+	Wed, 16 Apr 2025 02:16:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 45F3FDE
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Apr 2025 00:59:52 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 41E31435
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Apr 2025 02:16:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 36FDB610F9
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Apr 2025 00:59:52 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3367A83BA4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Apr 2025 02:16:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id cs3Kpw5TiNew for <intel-wired-lan@lists.osuosl.org>;
- Wed, 16 Apr 2025 00:59:51 +0000 (UTC)
-X-Greylist: delayed 350 seconds by postgrey-1.37 at util1.osuosl.org;
- Wed, 16 Apr 2025 00:59:51 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org AB3BF61028
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AB3BF61028
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
- helo=sea.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp3.osuosl.org (Postfix) with ESMTPS id AB3BF61028
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Apr 2025 00:59:51 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 0F78945157;
- Wed, 16 Apr 2025 00:54:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B1BAC4CEE7;
- Wed, 16 Apr 2025 00:54:00 +0000 (UTC)
-Date: Tue, 15 Apr 2025 17:53:59 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Cc: Jaroslav Pulchart <jaroslav.pulchart@gooddata.com>,
- <jdamato@fastly.com>, <intel-wired-lan@lists.osuosl.org>,
- <netdev@vger.kernel.org>, Tony Nguyen <anthony.l.nguyen@intel.com>, "Igor
- Raits" <igor@gooddata.com>, Daniel Secik <daniel.secik@gooddata.com>,
- "Zdenek Pesek" <zdenek.pesek@gooddata.com>, "Eric Dumazet"
- <edumazet@google.com>, Martin Karsten <mkarsten@uwaterloo.ca>, "Ahmed Zaki"
- <ahmed.zaki@intel.com>, "Czapnik, Lukasz" <lukasz.czapnik@intel.com>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Message-ID: <20250415175359.3c6117c9@kernel.org>
-In-Reply-To: <4a061a51-8a6c-42b8-9957-66073b4bc65f@intel.com>
-References: <CAK8fFZ4hY6GUJNENz3wY9jaYLZXGfpr7dnZxzGMYoE44caRbgw@mail.gmail.com>
- <4a061a51-8a6c-42b8-9957-66073b4bc65f@intel.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id yXZIPq6xO0bI for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 16 Apr 2025 02:16:12 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
+ helo=mgamail.intel.com; envelope-from=tatyana.e.nikolova@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3641581F4C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3641581F4C
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3641581F4C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Apr 2025 02:16:11 +0000 (UTC)
+X-CSE-ConnectionGUID: Agq/5X4ISU27Juy1KfuARw==
+X-CSE-MsgGUID: K4v1TqbVQT+2YWournSaXg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11404"; a="50125552"
+X-IronPort-AV: E=Sophos;i="6.15,214,1739865600"; d="scan'208";a="50125552"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+ by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Apr 2025 19:16:11 -0700
+X-CSE-ConnectionGUID: x/ISpcDZRkiwnOOAhxYGEw==
+X-CSE-MsgGUID: p4m+Hoz5TmWraD5vmKhY2w==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,214,1739865600"; d="scan'208";a="130605788"
+Received: from bnkannan-mobl1.amr.corp.intel.com (HELO
+ soc-PF51RAGT.clients.intel.com) ([10.246.114.218])
+ by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Apr 2025 19:16:11 -0700
+From: Tatyana Nikolova <tatyana.e.nikolova@intel.com>
+To: jgg@nvidia.com,
+	leon@kernel.org,
+	intel-wired-lan@lists.osuosl.org
+Cc: linux-rdma@vger.kernel.org,
+	netdev@vger.kernel.org
+Date: Tue, 15 Apr 2025 21:15:44 -0500
+Message-ID: <20250416021549.606-1-tatyana.e.nikolova@intel.com>
+X-Mailer: git-send-email 2.45.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1744764841;
- bh=zTO0PGprkgHrXrHtmLAb9UQPjHOxwm5tC+XNO/WFDMM=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=gpYpTJ/XcB6rNrlzdN38czMx28ncPMQWzIk4XV0cH7UgdExtg3aRPzYT/S8Y2y0OH
- xQm3dnFps5nHcA6JK15Vp1xw2yTsebsBUkxslUPoG3DsYdqMsf8gz3WKMZCEMMtTBj
- NTtrdi9tYicLe4ALM03thVyzN2SW4iEVCq4nFasbLcEx3zgqhwYAQOB4FDItwuYLaR
- CE//60QH70NzCGgXI7NHPZKumXZ8W23OyEQpd4IxnVzG3oyTXu/+btdI8ya4Qltu0+
- 0dMTvc8vMkKV/+76f9GybP0MX6TI2LAbbry5SQQ3mY0x1cYNOLHRiwyhr7fdXbl5XY
- Om/IrgVbCbtUg==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1744769772; x=1776305772;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=igbLN6YEauLxV1FxrClG0VZk6wS5aG4GlZD9dd2WrU8=;
+ b=YcxlQSuu1c/5OQo9kwUZh3X3NKxBym4tHPQoXMXgQl6dt9S+nrYxKa61
+ HnIS8ovqarZvalLxIZkTs8gEDdJeOI/AUVRpsZtHDBp50rHENSJS0rRJf
+ BlfnxoDp+IGJAMZktPjia5A3DyU1wc2eH6Kla0IuvtME/nQque2wIHdvj
+ 0qdZrJZhxYKQGTCCMT4S2fb8J/Pq7X6xhpwf2QFK8syUTfs3lXfXYHUQU
+ P2kxUQABIcb45e4QA7lic6Yu6y0En4X3CGpWsZJa4SmgUB/Lke3vAf1a0
+ DvAGhRtOGm+F/7RwK/zpwDVbgkThg5XXJTWRN3GSTDC6RH4FBr+6JFslX
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=gpYpTJ/X
-Subject: Re: [Intel-wired-lan] Increased memory usage on NUMA nodes with ICE
- driver after upgrade to 6.13.y (regression in commit 492a044508ad)
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=YcxlQSuu
+Subject: [Intel-wired-lan] [iwl-next v5 0/5] Refactor to prepare for Intel
+ IPU E2000 (GEN3)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -107,22 +111,88 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, 15 Apr 2025 16:38:40 +0200 Przemek Kitszel wrote:
-> > We traced the issue to commit 492a044508ad13a490a24c66f311339bf891cb5f
-> > "ice: Add support for persistent NAPI config".  
-> 
-> thank you for the report and bisection,
-> this commit is ice's opt-in into using persistent napi_config
-> 
-> I have checked the code, and there is nothing obvious to inflate memory
-> consumption in the driver/core in the touched parts. I have not yet
-> looked into how much memory is eaten by the hash array of now-kept
-> configs.
+To align with review comments, the patch series [v1] introducing RDMA
+RoCEv2 support for the Intel Infrastructure Processing Unit (IPU) E2000
+line of products is going to be submitted in three parts:
 
-+1 also unclear to me how that commit makes any difference.
+1. Modify ice to use specific and common IIDC definitions and
+   pass a core device info to irdma.
 
-Jaroslav, when you say "traced" what do you mean?
-CONFIG_MEM_ALLOC_PROFILING ?
+2. Add RDMA support to idpf and modify idpf to use specific and
+   common IIDC definitions and pass a core device info to irdma.
 
-The napi_config struct is just 24B. The queue struct (we allocate
-napi_config for each queue) is 320B...
+3. Add RDMA RoCEv2 support for the E2000 products, referred to as
+   GEN3 to irdma.
+
+This first part is a 5 patch series based on the original
+"iidc/ice/irdma: Update IDC to support multiple consumers" patch
+to allow for multiple CORE PCI drivers, using the auxbus.
+
+Patches:
+1) Move header file to new name for clarity and replace ice
+   specific DSCP define with a kernel equivalent one in irdma
+2) Unify naming convention
+3) Separate header file into common and driver specific info
+4) Replace ice specific DSCP define with a kernel equivalent
+   one in ice
+5) Implement core device info struct and update drivers to use it
+
+This patch series is based on v6.15-rc1.
+
+Changelog:
+
+V4 to V5 changes:
+
+- Use exported symbols instead of a device ops struct
+- Rename the IDC header file iidc.h to iidc_rdma.h
+- Move ice specific functionality to iidc_rdma_ice.h
+- Use iidc_* naming convention
+- Replace ice specific DSCP define with a kernel equivalent one
+
+V3 to V4 changes:
+
+- Split up the patch series [v3] into three parts and
+  send out independently the ice/iidc related changes patch -
+  "iidc/ice/irdma: Update IDC to support multiple consumers" 
+
+[v4] https://lore.kernel.org/all/20250225050428.2166-1-tatyana.e.nikolova@intel.com/
+[v3] https://lore.kernel.org/all/20250207194931.1569-1-tatyana.e.nikolova@intel.com/
+[v2] https://lore.kernel.org/all/20240824031924.421-1-tatyana.e.nikolova@intel.com/
+[v1] https://lore.kernel.org/all/20240724233917.704-1-tatyana.e.nikolova@intel.com/
+
+Dave Ertman (4):
+  iidc/ice/irdma: Rename IDC header file
+  iidc/ice/irdma: Rename to iidc_* convention
+  iidc/ice/irdma: Break iidc.h into two headers
+  iidc/ice/irdma: Update IDC to support multiple consumers
+
+Tatyana Nikolova (1):
+  ice: Replace ice specific DSCP mapping num with a kernel define
+
+ MAINTAINERS                                   |   2 +-
+ drivers/infiniband/hw/irdma/main.c            | 125 ++++++-----
+ drivers/infiniband/hw/irdma/main.h            |   3 +-
+ drivers/infiniband/hw/irdma/osdep.h           |   2 +-
+ drivers/infiniband/hw/irdma/type.h            |   4 +-
+ .../net/ethernet/intel/ice/devlink/devlink.c  |  45 +++-
+ drivers/net/ethernet/intel/ice/ice.h          |   6 +-
+ drivers/net/ethernet/intel/ice/ice_dcb.c      |   2 +-
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c  |  47 +++-
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.h  |   9 +
+ drivers/net/ethernet/intel/ice/ice_dcb_nl.c   |   4 +-
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  |   8 +-
+ drivers/net/ethernet/intel/ice/ice_idc.c      | 204 +++++++++++-------
+ drivers/net/ethernet/intel/ice/ice_idc_int.h  |   5 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     |  18 +-
+ drivers/net/ethernet/intel/ice/ice_type.h     |   6 +-
+ include/linux/net/intel/iidc.h                | 109 ----------
+ include/linux/net/intel/iidc_rdma.h           |  68 ++++++
+ include/linux/net/intel/iidc_rdma_ice.h       |  70 ++++++
+ 19 files changed, 449 insertions(+), 288 deletions(-)
+ delete mode 100644 include/linux/net/intel/iidc.h
+ create mode 100644 include/linux/net/intel/iidc_rdma.h
+ create mode 100644 include/linux/net/intel/iidc_rdma_ice.h
+
+-- 
+2.37.3
+
