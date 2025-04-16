@@ -1,105 +1,112 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 586D1A8B40A
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Apr 2025 10:39:18 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B12F9811C4;
-	Wed, 16 Apr 2025 08:39:16 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pDlPyS40oYJr; Wed, 16 Apr 2025 08:39:15 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4B6FB84013
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744792755;
-	bh=cy8lrhUYXbh/wstrbtier4d1430xfwYguKMBQ7FCrd8=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=pFUAL3fsukcu2KKx8aC260GXiRN3k6VGA66n2wPmKPK8jiVPXFHKeFoFU6QM/EcpT
-	 V+h3MVkZPjcJaPRjbp1V68qc6gdTPKAVfeeiGuKjqbv8YHlIycsxBdkp+Tam1L1Yb7
-	 536N5yitgiASMfRC+829hvsZICUiD0B9htaSOr4/1KNAAPSenqD50ExwE6wA5kv3UY
-	 u0rIeldxNl6AaTUDAzgWcnY9O3jO6qkVh53jP463nDhbzJa4OGf2TOZCPGFLS7rZUf
-	 QotMGFqXPsGG+s3QMNQkhKvwLbvbVlXhES1slgUD2r690E3Ie7iu+5X1QUXHf9Sh7x
-	 WG6xn0fG/PvxA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4B6FB84013;
-	Wed, 16 Apr 2025 08:39:15 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id B7476E83
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Apr 2025 08:39:13 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 823C2A8B771
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Apr 2025 13:09:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B42D8411D2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Apr 2025 08:39:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DB36C4135A;
+	Wed, 16 Apr 2025 11:09:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8qgXUQ7gfGDQ for <intel-wired-lan@lists.osuosl.org>;
- Wed, 16 Apr 2025 08:39:11 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
- helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5CA7241384
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5CA7241384
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5CA7241384
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Apr 2025 08:39:11 +0000 (UTC)
-X-CSE-ConnectionGUID: if2sDO4aTxiJj6+ACJh6hQ==
-X-CSE-MsgGUID: qDMIoCcdRvmp/bkjJRr+jA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11404"; a="56964225"
-X-IronPort-AV: E=Sophos;i="6.15,215,1739865600"; d="scan'208";a="56964225"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Apr 2025 01:39:10 -0700
-X-CSE-ConnectionGUID: UlmooonnRjWzijH/ukxW+Q==
-X-CSE-MsgGUID: 96hi/cq+QKK9RNtdxa7bBQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,215,1739865600"; d="scan'208";a="130334305"
-Received: from mev-dev.igk.intel.com ([10.237.112.144])
- by orviesa006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Apr 2025 01:39:08 -0700
-Date: Wed, 16 Apr 2025 10:38:48 +0200
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: Tony Nguyen <anthony.l.nguyen@intel.com>
-Cc: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- aleksander.lobakin@intel.com, przemyslaw.kitszel@intel.com,
- piotr.kwapulinski@intel.com, aleksandr.loktionov@intel.com,
- jedrzej.jagielski@intel.com, larysa.zaremba@intel.com
-Message-ID: <Z/9smCtvgpqrE6Sb@mev-dev.igk.intel.com>
-References: <20250410100121.2353754-1-michal.swiatkowski@linux.intel.com>
- <97602d95-8465-4e74-bbf3-6e70c7e6373f@intel.com>
+ id UfSPhLz3YPFh; Wed, 16 Apr 2025 11:09:53 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 592CA411C6
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1744801793;
+	bh=9sGBx/7Vpt85bGQXkOcKMWCGaBdunxMD0SLk88jGe2Y=;
+	h=Date:From:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=gp7PaTMJijZA2Ait/6f/xCxiekVLohztqUn+pnE/Mg/6014EPeuw8sXy7IB1Wil1x
+	 86assln0zMq07CC2F7XsU93pHJUDrafhsIYlnRlFr7LIGICa5ByYT/O+y/l4KkoB5D
+	 KUZyRjp/cndZ0nMdK7Ogf9rmaqZge6CpCoz/Y9IAs4xwItRacT0ombUPQTCoNyoW5V
+	 X5Pqv259PcyH4RroQcDwbqJ4i9m3bO7IIylYim8yKvqHPHibrqiK9RBMRTFUnNQhlr
+	 AzOoTo3YMs/EcgKn9f2Tc4h0N7QbfqNQ3Me6UeZsdc3FRNiDdEz/mGOXsIpApMNahO
+	 q//0r7AU8kM5g==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 592CA411C6;
+	Wed, 16 Apr 2025 11:09:53 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id A49DB435
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Apr 2025 11:09:51 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8AD4040BA8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Apr 2025 11:09:51 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id nTvZhJboedTV for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 16 Apr 2025 11:09:51 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::430; helo=mail-wr1-x430.google.com;
+ envelope-from=dan.carpenter@linaro.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 6F97440AB9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6F97440AB9
+Received: from mail-wr1-x430.google.com (mail-wr1-x430.google.com
+ [IPv6:2a00:1450:4864:20::430])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6F97440AB9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Apr 2025 11:09:50 +0000 (UTC)
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-3913d129c1aso441777f8f.0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Apr 2025 04:09:50 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1744801788; x=1745406588;
+ h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=9sGBx/7Vpt85bGQXkOcKMWCGaBdunxMD0SLk88jGe2Y=;
+ b=ec5+KBNLD4mwMoCa66PgFiJTG4BeOvIHEjx2D7VIllFQ1bdaSh8XKw1Afi9/EbvVJZ
+ OoK1Kor7lTBWCNe7eyvDbvYmn1bA6FORRa3PeNc7TBRStbqQl3OuPYwHhHmV9zeqMk1E
+ eVhShJd4XohCu13qC7V2ORR28rBwAQavfp8bJqBcqA9hixTwm/q7sooFNwAWLop76zGz
+ 7fRCnyYIjywY5whh+2pIEjdN9zyHCt3XhhqH1n5KLm+KyH3GtpkPvHzvJIYl85KuTjLA
+ Ohqh0Uwf1DUDTVRDSPWuV3aYVmaKcX7+dJm8GGteFURRWrxyTzQE66XVc0dfe5mJage9
+ p0Xg==
+X-Gm-Message-State: AOJu0YzkeH7GHNXZbcY0GpXJ61gdimnPW1qHT9nBdRplsOdK1XYdZ0O3
+ kYU7e9uvQGr5+Gh3x1ohHtJNN4CBjxp2A2HdGG6hTV75efWEC0TFRDcyOeooR2w=
+X-Gm-Gg: ASbGncuEWKF13OqKTiHjAMFpN+JF8zUo36B7at3QF8aO/ftrzYJD8YPVAl3fyyEtb/v
+ SDshFsBW4nyIwXYFjSNRY0rCqEf1nY19MZOBffCxaav4XyM14OpgPSNj55V6cN3vS+C2dzJY1JI
+ AZ6S6rGXsFpMbZxaqngQnhbK0pHo9NeFi7h+q20UctkZUUgrID74trbrAWCtK4LKYzJm0f3bDUj
+ R6uPu3hxd7AYq6CyZ+ZT5xx/441AmMQDVEoBEGjn1OFWAoQT58NBL72/tGWqM2c9XCvQrZGTh6H
+ PZdBcJM2D5CS+GVfd4xghJDVi9YQLaiHIaOzcBln3x4kqA==
+X-Google-Smtp-Source: AGHT+IHx7MYQN4B8vZhw3h6d0Xyzb/YDJ0VgXDSFIkh0nx2d4MfQsJUNDMvihMSE7oLeCoFPsNBDwg==
+X-Received: by 2002:a5d:6485:0:b0:390:f0ff:2c10 with SMTP id
+ ffacd0b85a97d-39ee5ee4ab8mr1258006f8f.19.1744801788124; 
+ Wed, 16 Apr 2025 04:09:48 -0700 (PDT)
+Received: from localhost ([196.207.164.177])
+ by smtp.gmail.com with UTF8SMTPSA id
+ ffacd0b85a97d-39eaf43ce30sm17232725f8f.62.2025.04.16.04.09.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 16 Apr 2025 04:09:47 -0700 (PDT)
+Date: Wed, 16 Apr 2025 14:09:44 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Christopher S M Hall <christopher.s.hall@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+Message-ID: <Z_-P-Hc1yxcw0lTB@stanley.mountain>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <97602d95-8465-4e74-bbf3-6e70c7e6373f@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1744792751; x=1776328751;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=pX+6weCz14O5wsilpAD5fH7Ohv4TXG1wxvEX2Xz6Jy0=;
- b=AD6+SySDSJ9pJlWtt12WTDLwPplho7wRezmySpXbh7FT7rPsIMSPQJOe
- 42bXafIQSRs29PA0TtZf2+4TTsDOQFcN6S3+6QvbGCbWysQ6TrTXcfa3f
- ve5IOI3aqSDtIqKPrlQVidpfo5BycnHWSfNNU2fCL+bkdJkgnwmeFqx6j
- XLlXHO+qGGgimflnkeS9meTPMABoEjAIaiepjieYGD8eCmqsX2Tt1Pqcv
- yP8qTxTMlty2/aww28dDztdykgDAIRAasL/3bZRZP59f39KmxrqXZpwMJ
- QR4yGfBB1eeTbSibI76vfo43fDVJkL44awLoUCl4N/glLV0O0Qi5fVNQm
- w==;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1744801788; x=1745406588; darn=lists.osuosl.org;
+ h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=9sGBx/7Vpt85bGQXkOcKMWCGaBdunxMD0SLk88jGe2Y=;
+ b=wJOY9FcKSPbWi8HcdPvxUXWpFIuXA5pA/T26Mu5+9k1fQw81wesxPQahzN4BNmRzWd
+ H3XpBqciYtiYzUDlkG8f67HQwN8Dmcm5q9KFAiUZJZ5rH3AmKNZu9txyGmS9ZhlJpx4j
+ +i5uVvxNAoOy+Vkosg/EkC2C3d95pADXp+tZ0R0HxapbN1AeXiZGJD4hkKzGDTVJNjQS
+ B/GqIdOhRtSG+6dqrk4aOCLa+JDPyvyLjHkd4YUiwCEWhv+2ZZL9+WZfldvATNApPUqe
+ 2EOMxJxY3jnrUEbYfyV3ApvrPm38fM/fQ2+BLdNat38cGDVKbGMzuL7fhrwEph1PtSea
+ NjZA==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
+ dmarc=pass (p=none dis=none)
+ header.from=linaro.org
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=AD6+SySD
-Subject: Re: [Intel-wired-lan] [iwl-next v2 0/8] libie: commonize adminq
- structure
+ unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256
+ header.s=google header.b=wJOY9FcK
+Subject: [Intel-wired-lan] [bug report] igc: add lock preventing multiple
+ simultaneous PTM transactions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -115,113 +122,96 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Apr 15, 2025 at 03:59:55PM -0700, Tony Nguyen wrote:
-> 
-> 
-> On 4/10/2025 3:01 AM, Michal Swiatkowski wrote:
-> > Hi,
-> > 
-> > It is a prework to allow reusing some specific Intel code (eq. fwlog).
-> > 
-> > Move common *_aq_desc structure to libie header and changing
-> > it in ice, ixgbe, i40e and iavf.
-> > 
-> > Only generic adminq commands can be easily moved to common header, as
-> > rest is slightly different. Format remains the same. It will be better
-> > to correctly move it when it will be needed to commonize other part of
-> > the code.
-> > 
-> > Move *_aq_str() to new libie module (libie_adminq) and use it across
-> > drivers. The functions are exactly the same in each driver. Some more
-> > adminq helpers/functions can be moved to libie_adminq when needed.
-> 
-> This doesn't apply anymore after Dave's series [0]. Can you rebase and
-> resend?
+Hello Christopher S M Hall,
 
-Sure, I will resend, thanks.
+Commit 1a931c4f5e68 ("igc: add lock preventing multiple simultaneous
+PTM transactions") from Apr 1, 2025 (linux-next), leads to the
+following Smatch static checker warning:
 
-> 
-> Thanks,
-> Tony
-> 
-> [0] https://lore.kernel.org/intel-wired-lan/20250407191517.767433-1-david.m.ertman@intel.com/
-> 
-> > v1 --> v2: [1]
-> >   * add short descriptions in kdoc (patch 1, 5)
-> >   * handle all error types in switch to allow clean build (patch 3)
-> > 
-> > [1] https://lore.kernel.org/netdev/20250312062426.2544608-1-michal.swiatkowski@linux.intel.com/
-> > 
-> > Michal Swiatkowski (8):
-> >    ice, libie: move generic adminq descriptors to lib
-> >    ixgbe: use libie adminq descriptors
-> >    i40e: use libie adminq descriptors
-> >    iavf: use libie adminq descriptors
-> >    libie: add adminq helper for converting err to str
-> >    ice: use libie_aq_str
-> >    iavf: use libie_aq_str
-> >    i40e: use libie_aq_str
-> > 
-> >   drivers/net/ethernet/intel/Kconfig            |   3 +
-> >   drivers/net/ethernet/intel/libie/Kconfig      |   6 +
-> >   drivers/net/ethernet/intel/libie/Makefile     |   4 +
-> >   drivers/net/ethernet/intel/i40e/i40e_adminq.h |  12 +-
-> >   .../net/ethernet/intel/i40e/i40e_adminq_cmd.h | 155 +---
-> >   .../net/ethernet/intel/i40e/i40e_prototype.h  |  15 +-
-> >   drivers/net/ethernet/intel/i40e/i40e_type.h   |   6 +-
-> >   drivers/net/ethernet/intel/iavf/iavf_adminq.h |  12 +-
-> >   .../net/ethernet/intel/iavf/iavf_adminq_cmd.h |  83 +-
-> >   .../net/ethernet/intel/iavf/iavf_prototype.h  |   3 +-
-> >   drivers/net/ethernet/intel/iavf/iavf_type.h   |   2 +-
-> >   drivers/net/ethernet/intel/ice/ice.h          |   1 -
-> >   .../net/ethernet/intel/ice/ice_adminq_cmd.h   | 269 +------
-> >   drivers/net/ethernet/intel/ice/ice_common.h   |   6 +-
-> >   drivers/net/ethernet/intel/ice/ice_controlq.h |   8 +-
-> >   drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h |  12 +-
-> >   .../ethernet/intel/ixgbe/ixgbe_type_e610.h    | 226 +-----
-> >   include/linux/net/intel/libie/adminq.h        | 306 ++++++++
-> >   drivers/net/ethernet/intel/i40e/i40e_adminq.c |  68 +-
-> >   drivers/net/ethernet/intel/i40e/i40e_client.c |   7 +-
-> >   drivers/net/ethernet/intel/i40e/i40e_common.c | 730 ++++++++----------
-> >   drivers/net/ethernet/intel/i40e/i40e_dcb.c    |  10 +-
-> >   drivers/net/ethernet/intel/i40e/i40e_dcb_nl.c |   8 +-
-> >   .../net/ethernet/intel/i40e/i40e_debugfs.c    |  46 +-
-> >   .../net/ethernet/intel/i40e/i40e_ethtool.c    |  36 +-
-> >   drivers/net/ethernet/intel/i40e/i40e_main.c   | 240 +++---
-> >   drivers/net/ethernet/intel/i40e/i40e_nvm.c    |  18 +-
-> >   .../ethernet/intel/i40e/i40e_virtchnl_pf.c    |  27 +-
-> >   drivers/net/ethernet/intel/iavf/iavf_adminq.c |  62 +-
-> >   drivers/net/ethernet/intel/iavf/iavf_common.c | 110 +--
-> >   drivers/net/ethernet/intel/iavf/iavf_main.c   |   5 +-
-> >   .../net/ethernet/intel/iavf/iavf_virtchnl.c   |   2 +-
-> >   .../net/ethernet/intel/ice/devlink/devlink.c  |  10 +-
-> >   .../net/ethernet/intel/ice/devlink/health.c   |   6 +-
-> >   drivers/net/ethernet/intel/ice/ice_common.c   | 388 +++++-----
-> >   drivers/net/ethernet/intel/ice/ice_controlq.c |  53 +-
-> >   drivers/net/ethernet/intel/ice/ice_dcb.c      |  36 +-
-> >   drivers/net/ethernet/intel/ice/ice_dcb_lib.c  |   2 +-
-> >   drivers/net/ethernet/intel/ice/ice_ddp.c      |  47 +-
-> >   drivers/net/ethernet/intel/ice/ice_dpll.c     |  20 +-
-> >   drivers/net/ethernet/intel/ice/ice_ethtool.c  |  12 +-
-> >   .../net/ethernet/intel/ice/ice_fw_update.c    |  38 +-
-> >   drivers/net/ethernet/intel/ice/ice_fwlog.c    |  16 +-
-> >   drivers/net/ethernet/intel/ice/ice_lag.c      |   4 +-
-> >   drivers/net/ethernet/intel/ice/ice_lib.c      |  10 +-
-> >   drivers/net/ethernet/intel/ice/ice_main.c     |  63 +-
-> >   drivers/net/ethernet/intel/ice/ice_nvm.c      |  38 +-
-> >   drivers/net/ethernet/intel/ice/ice_ptp_hw.c   |  20 +-
-> >   drivers/net/ethernet/intel/ice/ice_sched.c    |  18 +-
-> >   drivers/net/ethernet/intel/ice/ice_sriov.c    |   4 +-
-> >   drivers/net/ethernet/intel/ice/ice_switch.c   |  55 +-
-> >   drivers/net/ethernet/intel/ice/ice_vf_mbx.c   |   6 +-
-> >   drivers/net/ethernet/intel/ice/ice_virtchnl.c |   6 +-
-> >   .../net/ethernet/intel/ice/ice_vlan_mode.c    |   6 +-
-> >   .../net/ethernet/intel/ice/ice_vsi_vlan_lib.c |  24 +-
-> >   drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 272 +++----
-> >   .../ethernet/intel/ixgbe/ixgbe_fw_update.c    |   4 +-
-> >   drivers/net/ethernet/intel/libie/adminq.c     |  50 ++
-> >   58 files changed, 1570 insertions(+), 2136 deletions(-)
-> >   create mode 100644 include/linux/net/intel/libie/adminq.h
-> >   create mode 100644 drivers/net/ethernet/intel/libie/adminq.c
-> > 
-> 
+	drivers/net/ethernet/intel/igc/igc_ptp.c:1311 igc_ptp_reset()
+	warn: sleeping in atomic context
+
+drivers/net/ethernet/intel/igc/igc_ptp.c
+    1280 void igc_ptp_reset(struct igc_adapter *adapter)
+    1281 {
+    1282         struct igc_hw *hw = &adapter->hw;
+    1283         u32 cycle_ctrl, ctrl, stat;
+    1284         unsigned long flags;
+    1285         u32 timadj;
+    1286 
+    1287         if (!(adapter->ptp_flags & IGC_PTP_ENABLED))
+    1288                 return;
+    1289 
+    1290         /* reset the tstamp_config */
+    1291         igc_ptp_set_timestamp_mode(adapter, &adapter->tstamp_config);
+    1292 
+    1293         spin_lock_irqsave(&adapter->tmreg_lock, flags);
+                 ^^^^^^^^^^^^^^^^^
+Holding a spin_lock
+
+    1294 
+    1295         switch (adapter->hw.mac.type) {
+    1296         case igc_i225:
+    1297                 timadj = rd32(IGC_TIMADJ);
+    1298                 timadj |= IGC_TIMADJ_ADJUST_METH;
+    1299                 wr32(IGC_TIMADJ, timadj);
+    1300 
+    1301                 wr32(IGC_TSAUXC, 0x0);
+    1302                 wr32(IGC_TSSDP, 0x0);
+    1303                 wr32(IGC_TSIM,
+    1304                      IGC_TSICR_INTERRUPTS |
+    1305                      (adapter->pps_sys_wrap_on ? IGC_TSICR_SYS_WRAP : 0));
+    1306                 wr32(IGC_IMS, IGC_IMS_TS);
+    1307 
+    1308                 if (!igc_is_crosststamp_supported(adapter))
+    1309                         break;
+    1310 
+--> 1311                 mutex_lock(&adapter->ptm_lock);
+                         ^^^^^^^^^^
+So we can't take a mutex.
+
+    1312                 wr32(IGC_PCIE_DIG_DELAY, IGC_PCIE_DIG_DELAY_DEFAULT);
+    1313                 wr32(IGC_PCIE_PHY_DELAY, IGC_PCIE_PHY_DELAY_DEFAULT);
+    1314 
+    1315                 cycle_ctrl = IGC_PTM_CYCLE_CTRL_CYC_TIME(IGC_PTM_CYC_TIME_DEFAULT);
+    1316 
+    1317                 wr32(IGC_PTM_CYCLE_CTRL, cycle_ctrl);
+    1318 
+    1319                 ctrl = IGC_PTM_CTRL_EN |
+    1320                         IGC_PTM_CTRL_START_NOW |
+    1321                         IGC_PTM_CTRL_SHRT_CYC(IGC_PTM_SHORT_CYC_DEFAULT) |
+    1322                         IGC_PTM_CTRL_PTM_TO(IGC_PTM_TIMEOUT_DEFAULT);
+    1323 
+    1324                 wr32(IGC_PTM_CTRL, ctrl);
+    1325 
+    1326                 /* Force the first cycle to run. */
+    1327                 igc_ptm_trigger(hw);
+    1328 
+    1329                 if (readx_poll_timeout_atomic(rd32, IGC_PTM_STAT, stat,
+    1330                                               stat, IGC_PTM_STAT_SLEEP,
+    1331                                               IGC_PTM_STAT_TIMEOUT))
+    1332                         netdev_err(adapter->netdev, "Timeout reading IGC_PTM_STAT register\n");
+    1333 
+    1334                 igc_ptm_reset(hw);
+    1335                 mutex_unlock(&adapter->ptm_lock);
+    1336                 break;
+    1337         default:
+    1338                 /* No work to do. */
+    1339                 goto out;
+    1340         }
+    1341 
+    1342         /* Re-initialize the timer. */
+    1343         if (hw->mac.type == igc_i225) {
+    1344                 igc_ptp_time_restore(adapter);
+    1345         } else {
+    1346                 timecounter_init(&adapter->tc, &adapter->cc,
+    1347                                  ktime_to_ns(ktime_get_real()));
+    1348         }
+    1349 out:
+    1350         spin_unlock_irqrestore(&adapter->tmreg_lock, flags);
+    1351 
+    1352         wrfl();
+    1353 }
+
+regards,
+dan carpenter
