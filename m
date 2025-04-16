@@ -1,107 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 12E5AA9047C
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Apr 2025 15:39:03 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 752C0A904BE
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Apr 2025 15:49:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BB80D83F54;
-	Wed, 16 Apr 2025 13:39:01 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7EE8384852;
+	Wed, 16 Apr 2025 13:48:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Lcxb0nYxKdcW; Wed, 16 Apr 2025 13:39:01 +0000 (UTC)
+ id AU9eRruv3Q81; Wed, 16 Apr 2025 13:48:58 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3B38781053
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E2CE581E99
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744810741;
-	bh=nrrD3/sSaPsl3a1EqfKuMRRLXEiXUHmBEshVkFhljRY=;
+	s=default; t=1744811337;
+	bh=G+fPDxzNd9VxC6nzh7mH9IVn094AHlAt+wdqSRQ6qFk=;
 	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=39LpPsl61j4PJfpFrbCLe8UgsqNhtuhCpsy+xFpaAqqXoYwNvC5pX6euFGUE2S674
-	 eRcMJjlSJxaSdxBuzJhmcIgy3T59R8lXeVUGockFu6jaI3jcTinrDIPx/FWlhJY8km
-	 i9oQapIJrUfAppp34w9f6zrQWEsjXW817v3bXKDO/zY5yZW0+aEQMyKi9aPPPOM/CE
-	 fIqsEAnzVqjzcMg4C2vaAtDHCLPMyXrPN22npHYXIeQ97Lp+V/Eqto90c7XhcqQigj
-	 lqtOXlgO5DMLlGMsgJyyFUNr/hvsnsZm33yZp957HdlHoXwnhk6P+aKvhn4J5i/4u6
-	 /C3Ht7ogJswkQ==
+	b=ztjS1IyLbVWNneSGXrxjos44GgzepgUu+TyetgTMY90xn1OUuEDX+9EE86+Pfg65D
+	 B3BJgb2KyrCRjS6R2787+B7GxDOesKlXK5g5NAPokhVWafJZmHn7m6gVklLMRprF+p
+	 HkedSvIOb9F+nR88chR9K1y8Jd0VF+sbdeRzk9tmZ3+CCEhfNA6xbKMyy8hRn6DAXE
+	 7sxTdfnn2iHo+rsOLObIQtqb5V/IBUC92uoZgWcT2CP83fvdP506vDrX6zAYUqP2Q7
+	 LP7s1+MMfLhbizpxrFd7EoHwQVTNJy5v8l0zc6stBi4hCk4RAdnoSguSFgQY4UN7Ij
+	 gt0Gea91EA0sQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3B38781053;
-	Wed, 16 Apr 2025 13:39:01 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E2CE581E99;
+	Wed, 16 Apr 2025 13:48:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 966AA435
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Apr 2025 13:38:59 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 36F68DE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Apr 2025 13:48:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7BAB641E87
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Apr 2025 13:38:59 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1CB88813A7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Apr 2025 13:48:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id E_gM5L4OJocV for <intel-wired-lan@lists.osuosl.org>;
- Wed, 16 Apr 2025 13:38:58 +0000 (UTC)
-X-Greylist: delayed 45897 seconds by postgrey-1.37 at util1.osuosl.org;
- Wed, 16 Apr 2025 13:38:58 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org BA2AA40165
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BA2AA40165
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
- envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-Received: from sea.source.kernel.org (sea.source.kernel.org
- [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp2.osuosl.org (Postfix) with ESMTPS id BA2AA40165
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Apr 2025 13:38:58 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id TltinDyu_eS8 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 16 Apr 2025 13:48:55 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=147.75.193.91;
+ helo=nyc.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 5EE0281DFE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5EE0281DFE
+Received: from nyc.source.kernel.org (nyc.source.kernel.org [147.75.193.91])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5EE0281DFE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Apr 2025 13:48:55 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id D583C4A131;
- Wed, 16 Apr 2025 13:38:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 02A17C4CEEA;
- Wed, 16 Apr 2025 13:38:56 +0000 (UTC)
-Date: Wed, 16 Apr 2025 06:38:56 -0700
+ by nyc.source.kernel.org (Postfix) with ESMTP id 02BACA49FA7;
+ Wed, 16 Apr 2025 13:43:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 99163C4CEE2;
+ Wed, 16 Apr 2025 13:48:53 +0000 (UTC)
+Date: Wed, 16 Apr 2025 06:48:52 -0700
 From: Jakub Kicinski <kuba@kernel.org>
-To: Jacob Keller <jacob.e.keller@intel.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Tony Nguyen
- <anthony.l.nguyen@intel.com>, Przemek Kitszel
- <przemyslaw.kitszel@intel.com>, Saeed Mahameed <saeedm@nvidia.com>, Leon
- Romanovsky <leon@kernel.org>, Tariq Toukan <tariqt@nvidia.com>, Bryan
- Whitehead <bryan.whitehead@microchip.com>, UNGLinuxDriver@microchip.com,
- Horatiu Vultur <horatiu.vultur@microchip.com>, Paul Barker
- <paul.barker.ct@bp.renesas.com>, Niklas =?UTF-8?B?U8O2ZGVybHVuZA==?=
- <niklas.soderlund@ragnatech.se>, Richard Cochran
- <richardcochran@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Russell
- King <linux@armlinux.org.uk>, Andrei Botila <andrei.botila@oss.nxp.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Vadim Fedorenko
- <vadim.fedorenko@linux.dev>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-rdma@vger.kernel.org, linux-renesas-soc@vger.kernel.org
-Message-ID: <20250416063856.3b653d81@kernel.org>
-In-Reply-To: <20250414-jk-supported-perout-flags-v2-0-f6b17d15475c@intel.com>
-References: <20250414-jk-supported-perout-flags-v2-0-f6b17d15475c@intel.com>
+To: Jaroslav Pulchart <jaroslav.pulchart@gooddata.com>
+Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>, jdamato@fastly.com,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, Tony Nguyen
+ <anthony.l.nguyen@intel.com>, Igor Raits <igor@gooddata.com>, Daniel Secik
+ <daniel.secik@gooddata.com>, Zdenek Pesek <zdenek.pesek@gooddata.com>, Eric
+ Dumazet <edumazet@google.com>, Martin Karsten <mkarsten@uwaterloo.ca>,
+ Ahmed Zaki <ahmed.zaki@intel.com>, "Czapnik, Lukasz"
+ <lukasz.czapnik@intel.com>, Michal Swiatkowski
+ <michal.swiatkowski@linux.intel.com>
+Message-ID: <20250416064852.39fd4b8f@kernel.org>
+In-Reply-To: <CAK8fFZ6ML1v8VCjN3F-r+SFT8oF0xNpi3hjA77aRNwr=HcWqNA@mail.gmail.com>
+References: <CAK8fFZ4hY6GUJNENz3wY9jaYLZXGfpr7dnZxzGMYoE44caRbgw@mail.gmail.com>
+ <4a061a51-8a6c-42b8-9957-66073b4bc65f@intel.com>
+ <20250415175359.3c6117c9@kernel.org>
+ <CAK8fFZ6ML1v8VCjN3F-r+SFT8oF0xNpi3hjA77aRNwr=HcWqNA@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1744810737;
- bh=nrrD3/sSaPsl3a1EqfKuMRRLXEiXUHmBEshVkFhljRY=;
+ d=kernel.org; s=k20201202; t=1744811334;
+ bh=fSgnS50n0wAp/FpMmJ8OfCsZHIEtqenXia+MkV04Ttk=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=EI7+v9/TV3vL8wNZFHf5NwXTl/I+OIoNCxeCgleOMSMSQ2et4YlX2E/CtICiF2aRX
- oW/4Id4sKByywPbfG/aMVtG/Yz6mzSPnvXl2qgsmgXLSFguGJM7kQXBF+k8BF1GIN4
- ThZ3NCRohH1sv1xyMoYbOtaw0ZOb6F3NrppLlR07Zo+WDcVKWUg5pMJEKTrkuBgExU
- gZz5KUkCuI4y1NsrxDznV0Gbp9y/3WlyHjn121kUA2n1+qTCsnrR97CYFi3SpyQJeO
- +/nIc8jEkEOxLOCWZx+MQxt08+oXFr7HQg9OEzZXHNTxnFCn+qtGuDHzV8KoVlsfLf
- +2x4BlPNPwstA==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ b=WCT0p4IAWVA73/cdlDpYRp/1K7sljtWEcYQghVQx6eIaMgugfHYFzXAIIuV2yXINx
+ NTuFIyoHx1BsXrGZ1oDjz2YDerUiyj1uhv1dYf/12w5P5rjoUZ9hJS3VaQ2mT7KX8e
+ uU2A9aooBg9of/3dbiveMKODEaCn0OL7DenHZuGkl/QoRbBChuyBcjt6wPG7rUCfX8
+ +GZhDdZagJLc5+sjKms7IbfoOMr6JyQ3uDD0uqcAGyyNROWrXnx+oDZXB6eZRQ8uqj
+ uD29rhwITXInKYyglxPRBwaTKdRIMnx+3amQJSSOIBw2aiurfLTkrrtAzw2aQTxmLK
+ ryIGf9MiDUTew==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=EI7+v9/T
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 0/2] net: ptp: driver
- opt-in for supported PTP ioctl flags
+ header.s=k20201202 header.b=WCT0p4IA
+Subject: Re: [Intel-wired-lan] Increased memory usage on NUMA nodes with ICE
+ driver after upgrade to 6.13.y (regression in commit 492a044508ad)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -117,9 +107,46 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, 14 Apr 2025 14:26:29 -0700 Jacob Keller wrote:
-> Both the PTP_EXTTS_REQUEST(2) and PTP_PEROUT_REQUEST(2) ioctls take flags
-> from userspace to modify their behavior. Drivers are supposed to check
-> these flags, rejecting requests for flags they do not support.
+On Wed, 16 Apr 2025 09:13:23 +0200 Jaroslav Pulchart wrote:
+> By "traced" I mean using the kernel and checking memory situation on
+> numa nodes with and without production load.  Numa nodes, with X810
+> NIC, showing a quite less available memory with default queue length
+> (num of all cpus) and it needs to be lowered to 1-2 (for unused
+> interfaces) and up-to-count of numa node cores on used interfaces to
+> make the memory allocation reasonable and server avoiding "kswapd"...
+> 
+> See "MemFree" on numa 0 + 1 on different/smaller but utilized (running
+> VMs + using network) host server with 8 numa nodes (32GB RAM each, 28G
+> in Hugepase for VMs and 4GB for host os):
 
-Applied, thanks!
+FWIW you can also try the tools/net/ynl/samples/page-pool
+application, not sure if Intel NICs init page pools appropriately
+but this will show you exactly how much memory is sitting on Rx rings
+of the driver (and in net socket buffers).
+
+> 6.13.y vanilla (lot of kswapd0 in background):
+>     NUMA nodes:     0       1       2       3       4       5       6       7
+>     HPTotalGiB:     28      28      28      28      28      28      28      28
+>     HPFreeGiB:      0       0       0       0       0       0       0       0
+>     MemTotal:       32220   32701   32701   32686   32701   32701
+> 32701   32696
+>     MemFree:        274     254     1327    1928    1949    2683    2624    2769
+> 6.13.y + Revert (no memory issues at all):
+>     NUMA nodes: 0 1 2 3 4 5 6 7
+>     HPTotalGiB: 28 28 28 28 28 28 28 28
+>     HPFreeGiB: 0 0 0 0 0 0 0 0
+>     MemTotal: 32220 32701 32701 32686 32701 32701 32701 32696
+>     MemFree: 2213 2438 3402 3108 2846 2672 2592 3063
+> 
+> We need to lower the queue on all X810 interfaces from default (64 in
+> this case), to ensure we have memory available for host OS services.
+>     ethtool -L em2 combined 1
+>     ethtool -L p3p2 combined 1
+>     ethtool -L em1 combined 6
+>     ethtool -L p3p1 combined 6
+> This trick "does not work" without the revert.
+
+And you're reverting just and exactly 492a044508ad13 ?
+The memory for persistent config is allocated in alloc_netdev_mqs()
+unconditionally. I'm lost as to how this commit could make any
+difference :(
