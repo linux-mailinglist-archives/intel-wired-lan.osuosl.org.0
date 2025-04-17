@@ -1,103 +1,96 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9EB9CA91006
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Apr 2025 02:13:18 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7DA0DA91176
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Apr 2025 04:09:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 41BE242458;
-	Thu, 17 Apr 2025 00:13:17 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 188C683AAF;
+	Thu, 17 Apr 2025 02:09:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NkvAWGo4RVBK; Thu, 17 Apr 2025 00:13:16 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id CxXmshVz8nTg; Thu, 17 Apr 2025 02:09:26 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B8BBE417E0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 83B4883AAB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744848796;
-	bh=H3O1/6RUG3DuP7F3e/a1vYh4XqtWkoDastPHR9QLzoc=;
+	s=default; t=1744855766;
+	bh=6WcjTCq7iOZ/iKYMIhB0dmq/MioUwIT7SwqQewJoxcU=;
 	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=IEr2wkgPYKYnySjh4t0O1GC5YLodFI3WvdRZK+zbJewrNoZZOUp5zsiPJ0fzo/mH9
-	 3fCx2U43vPEYke5mMN885v418A8uvT41+tZSavXTbyXEPi8xZEM5lx6S2mm3voK4ay
-	 bgzPDEIO12CEkp4Sb0cTsiLcCypbGVHxUzG7bMXfAMMaWF/quh+QilbfBHKLqAabld
-	 ytKcDQTDIZEzYQugQHFPOgWe/2jOi8X+H8fexvUosPxkpHvbIN6UiC5W4Ko6tOssqW
-	 eZhiVk0FDifkZ5h/V0MloLA7m9jpNEi9uXuJeB0GE0HW6Hy6FHAXA6vrrTSOKsW3ka
-	 3wXgXVofle3cw==
+	b=LsuJFFcrRYIPX05r65Va2sb+pBQwoE/9KliM0WhKfDh5XN76mx78s2G+dcZW3XfS5
+	 f/sksO6fxeT4P/HKaQ66i9ucRFuyGHmJSHElrw3RlnyorOB2aoVueNMB2xtyNDWW8c
+	 2FCUynWi7t3pu11r6SZYTf3iRslogrm0MOmS2ytTOVui2VK62ZFmiaTPjQxVabdztE
+	 jWA2d3TUed6LMs0Cv1dt5dlu8ZwEtJGutwJsoGxQqS5SMJ+msH/vj6UVZlpYo8eCWn
+	 Yw+ZbhO0nLXQYQfH+6EtDlFMci/StN6/saEIsignXe+v4ot3p+ljKXN51yBsSeP7Tv
+	 K2PKPPzAygYcQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B8BBE417E0;
-	Thu, 17 Apr 2025 00:13:16 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 83B4883AAB;
+	Thu, 17 Apr 2025 02:09:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id A976711B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Apr 2025 00:13:15 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 0525311B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Apr 2025 02:09:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8FCD840BE1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Apr 2025 00:13:15 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id DF1D641416
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Apr 2025 02:09:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id jhzyxJbbCr9h for <intel-wired-lan@lists.osuosl.org>;
- Thu, 17 Apr 2025 00:13:15 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
- helo=tor.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org EFCE5409F2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EFCE5409F2
-Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
- by smtp4.osuosl.org (Postfix) with ESMTPS id EFCE5409F2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Apr 2025 00:13:14 +0000 (UTC)
+ id mx81CqbeEFDG for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 17 Apr 2025 02:09:24 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 618C9400FB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 618C9400FB
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 618C9400FB
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Apr 2025 02:09:24 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id E39FC68429;
- Thu, 17 Apr 2025 00:12:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6DD50C4CEE2;
- Thu, 17 Apr 2025 00:13:12 +0000 (UTC)
-Date: Wed, 16 Apr 2025 17:13:11 -0700
+ by dfw.source.kernel.org (Postfix) with ESMTP id ED7F85C579B;
+ Thu, 17 Apr 2025 02:07:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0B754C4CEEA;
+ Thu, 17 Apr 2025 02:09:22 +0000 (UTC)
+Date: Wed, 16 Apr 2025 19:09:21 -0700
 From: Jakub Kicinski <kuba@kernel.org>
-To: "Keller, Jacob E" <jacob.e.keller@intel.com>
-Cc: Jaroslav Pulchart <jaroslav.pulchart@gooddata.com>, "Kitszel,
- Przemyslaw" <przemyslaw.kitszel@intel.com>, "Damato, Joe"
- <jdamato@fastly.com>, "intel-wired-lan@lists.osuosl.org"
- <intel-wired-lan@lists.osuosl.org>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>, "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
- Igor Raits <igor@gooddata.com>, Daniel Secik <daniel.secik@gooddata.com>,
- Zdenek Pesek <zdenek.pesek@gooddata.com>, "Dumazet, Eric"
- <edumazet@google.com>, Martin Karsten <mkarsten@uwaterloo.ca>, "Zaki,
- Ahmed" <ahmed.zaki@intel.com>, "Czapnik, Lukasz"
- <lukasz.czapnik@intel.com>, "Michal Swiatkowski"
- <michal.swiatkowski@linux.intel.com>
-Message-ID: <20250416171311.30b76ec1@kernel.org>
-In-Reply-To: <CO1PR11MB5089365F31BCD97E59CCFA83D6BD2@CO1PR11MB5089.namprd11.prod.outlook.com>
-References: <CAK8fFZ4hY6GUJNENz3wY9jaYLZXGfpr7dnZxzGMYoE44caRbgw@mail.gmail.com>
- <4a061a51-8a6c-42b8-9957-66073b4bc65f@intel.com>
- <20250415175359.3c6117c9@kernel.org>
- <CAK8fFZ6ML1v8VCjN3F-r+SFT8oF0xNpi3hjA77aRNwr=HcWqNA@mail.gmail.com>
- <20250416064852.39fd4b8f@kernel.org>
- <CAK8fFZ4bKHa8L6iF7dZNBRxujdmsoFN05p73Ab6mkPf6FGhmMQ@mail.gmail.com>
- <CO1PR11MB5089365F31BCD97E59CCFA83D6BD2@CO1PR11MB5089.namprd11.prod.outlook.com>
+To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Cc: donald.hunter@gmail.com, davem@davemloft.net, edumazet@google.com,
+ pabeni@redhat.com, horms@kernel.org, vadim.fedorenko@linux.dev,
+ jiri@resnulli.us, anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ andrew+netdev@lunn.ch, saeedm@nvidia.com, leon@kernel.org,
+ tariqt@nvidia.com, jonathan.lemon@gmail.com, richardcochran@gmail.com,
+ aleksandr.loktionov@intel.com, milena.olech@intel.com,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-rdma@vger.kernel.org
+Message-ID: <20250416190921.3cfd6326@kernel.org>
+In-Reply-To: <20250415181543.1072342-2-arkadiusz.kubalewski@intel.com>
+References: <20250415181543.1072342-1-arkadiusz.kubalewski@intel.com>
+ <20250415181543.1072342-2-arkadiusz.kubalewski@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1744848792;
- bh=6SjWXyZeZ7k56pWGMKnGwNYjc5GwbN6XrG18Hplr6Bs=;
+ d=kernel.org; s=k20201202; t=1744855762;
+ bh=v0j0T5Wcrf9Gx1tBLBUdRLrzr+SLUjSSw73EKC3/EJY=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=QXEavcoDyiRCE8Oe3BYIEQEl1xn2S9aSNUoBbbG8U05ZfAClSvQL6VG4onUpafULf
- haqlEocegnyxKjIBG8UPoeoj5uA7sh0zC59OVou3dtKInnna1YIElRgANpJkhGoG3k
- 1aTG6v5lCaRRb8uQHppNys0+/NE7YTfUckmOJe3+Y8LQgiZIYEcan1W0od3/3xJQrB
- 3k6NAEQE1HhWhh00zFU+5DKAp/tUWf722blWRQVamKooWOgXpRyWf/TNQ3rqTNvl1d
- sqTZNdN0E4gA2Yu/yyhFUBA02zunWTlr7RTP2bSdARNaEzjN9q2BpGpYR+1qwunn63
- sPm2FM38NMN1A==
+ b=kFMPt/kBIQJMKPoOpqZkInVTpPszcv+egMTMGs//lSDmewfmqo1f4KkVetZr4Jkaq
+ 6rtyMk2jWpRtyh3JIE97kg/7nb+KkAJRsspcGZ3CWSnWp45KMs8ins8/u0ZSITh2Tr
+ mFI7mSaKiGN9t6fAKYHPdYrCW3Hhd4c5dYzBuV2ONSGRjHfw5a0ESVsfOd91N3Khtj
+ Kev3hHqm4cOOR4HAdotIndOEjJYjVHcZOwiZ7GOpoSm84BDm7s5LYoXQoItdzGizmf
+ 89qDIVSnsCXFKa7HTwOHS+GYKcNoDGtuNtHmUqWvOMZr+hYoUM0ZvQWGhBVaifTCp/
+ A5AqUVaOg3ewA==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=QXEavcoD
-Subject: Re: [Intel-wired-lan] Increased memory usage on NUMA nodes with ICE
- driver after upgrade to 6.13.y (regression in commit 492a044508ad)
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=kFMPt/kB
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 1/4] dpll: use struct
+ dpll_device_info for dpll registration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -113,16 +106,12 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 16 Apr 2025 22:57:10 +0000 Keller, Jacob E wrote:
-> > > And you're reverting just and exactly 492a044508ad13 ?
-> > > The memory for persistent config is allocated in alloc_netdev_mqs()
-> > > unconditionally. I'm lost as to how this commit could make any
-> > > difference :(  
-> > 
-> > Yes, reverted the 492a044508ad13.  
-> 
-> Struct napi_config *is* 1056 bytes
+On Tue, 15 Apr 2025 20:15:40 +0200 Arkadiusz Kubalewski wrote:
+> @@ -408,14 +408,14 @@ EXPORT_SYMBOL_GPL(dpll_device_register);
+>   * Context: Acquires a lock (dpll_lock)
+>   */
+>  void dpll_device_unregister(struct dpll_device *dpll,
+> -			    const struct dpll_device_ops *ops, void *priv)
+> +			    const struct dpll_device_info *info, void *priv)
 
-You're probably looking at 6.15-rcX kernels. Yes, the affinity mask
-can be large depending on the kernel config. But report is for 6.13,
-AFAIU. In 6.13 and 6.14 napi_config was tiny.
+Some kdoc unhappiness here, W=1 build should lead you to it.
