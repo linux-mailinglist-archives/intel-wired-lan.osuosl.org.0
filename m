@@ -1,88 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 926DBA91871
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Apr 2025 11:57:21 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 09531A91884
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Apr 2025 12:00:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 180E86F59A;
-	Thu, 17 Apr 2025 09:57:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 26B42849DD;
+	Thu, 17 Apr 2025 09:59:39 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0Il-ZZCO_Rdn; Thu, 17 Apr 2025 09:57:18 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id PE0KJGFUbtBf; Thu, 17 Apr 2025 09:59:37 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CD8F7608AA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E2C5A84941
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1744883835;
-	bh=Qpa0GejaPGa/YgV9J5BKfK35uNrTR6xbnqfjaQWItJ8=;
+	s=default; t=1744883977;
+	bh=glMFihfGC+1JyTwFt+Mu0ExdnvDPdZFZwlen3T2Owjw=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=bsiZrE/Kny1ONGXPtiIf4LGYU0IMkVIun1zouP6TolY/OyvmFThYeqZxJbO1n+1qD
-	 IuWtzy4mifMuyL9r3rhqUQgZOIItwsaoldvl2Pas9UDuQUmsz2tJI78+kLE77EtIKP
-	 oPLgVyyFTNyBBqdfI8M/nad9OYuba+KfRoGFWQCmlvHMkAAtYbpdvdzhGXldpKjZ3R
-	 arTcDVlrJVIDqZjqG9LDAfPP5NZqDd0J/9XeW9WfB0IbDbRKlc+l3cES5mcOt/pHDR
-	 O8/IJFDmymPTaRxWGjEkm92K1lCjwlGVKCurryvWPpv4daoq5HI66vfqVUSM0PsjWG
-	 jOqIGypKpa5AQ==
+	b=YMCrVkEM2Z1JNmi1FyU1HVHqNY+5fgJv5uVrAPE7bduMe4cj4XGrQ+jfB3cEPtz7b
+	 KGFxEKpNkwpEUNd4Dm6BBPNCXbBkbSbKg7kTLw4DhG3m13+nWhVqIe+a0E17bu7Aa7
+	 uLhW2lYIC5BMHHo+ihOD5xDulV+J29c630fkVOS3NE8cFFHzDH5I5v32DLTwoK43dn
+	 t16ptzIJhZ/RsxuDUJiWAI3hlvYvgx8szBb5GCXpMtIiL/asj2TxIznzZ+f+z0VsUk
+	 f6Ok1vSxK0XuvSnt9EjXDx5P4/+3LjmHaXuWQMynH9WzVOPTfxUQyRXzOULqAsGOyF
+	 gEpzWsKZjhqCA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CD8F7608AA;
-	Thu, 17 Apr 2025 09:57:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E2C5A84941;
+	Thu, 17 Apr 2025 09:59:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 92DFA11B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Apr 2025 09:57:13 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id AEC6B11F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Apr 2025 09:59:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 84624412CF
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Apr 2025 09:57:13 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 8FCEF6F676
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Apr 2025 09:59:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ol2ywnmuv86w for <intel-wired-lan@lists.osuosl.org>;
- Thu, 17 Apr 2025 09:57:12 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id yV3Esou_uSSh for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 17 Apr 2025 09:59:34 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::431; helo=mail-wr1-x431.google.com;
+ client-ip=2a00:1450:4864:20::330; helo=mail-wm1-x330.google.com;
  envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 8A5A741203
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8A5A741203
-Received: from mail-wr1-x431.google.com (mail-wr1-x431.google.com
- [IPv6:2a00:1450:4864:20::431])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 8A5A741203
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Apr 2025 09:57:09 +0000 (UTC)
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-39ee57c0b8cso570921f8f.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Apr 2025 02:57:09 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 294AA61122
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 294AA61122
+Received: from mail-wm1-x330.google.com (mail-wm1-x330.google.com
+ [IPv6:2a00:1450:4864:20::330])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 294AA61122
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Apr 2025 09:59:33 +0000 (UTC)
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-43d04dc73b7so5128775e9.3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Apr 2025 02:59:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1744883828; x=1745488628;
+ d=1e100.net; s=20230601; t=1744883971; x=1745488771;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Qpa0GejaPGa/YgV9J5BKfK35uNrTR6xbnqfjaQWItJ8=;
- b=mIxWDxzUaJOSaR5sMf86PPiEk51iNmHVyaySTxz6XsEmgGdthdJdBFsYY9+Zcpm6Zg
- TllnbQ/S/Z2kZgK3B8/XK12X9dHxm+It5BQts0fsS79vJHPTW/RNyKF415okRxoeZc26
- H9c7odaap+3XmihrE+c1yyuIQoVXGqC9oRXNnfFy7qriMCvXOW0aW7OMJk+pXukdPZA/
- t6w4bOrwz9QpHYg9TijrF6naBKKrnZthQ/muaomWy5dit8rKe34O8XiNlmuFWG/vjJHD
- SwjxeEcXzgmBh1h/zhjuxg1N+dS1flTm5z4SePVM9A3VOOreyl+ID0vU0gZDx7E0FDMQ
- 5ImQ==
+ bh=glMFihfGC+1JyTwFt+Mu0ExdnvDPdZFZwlen3T2Owjw=;
+ b=mbY7qIPaLACfJTaa8xttqnRS1wfnv5e6CHSidR3YlWLaxkL9v1mgw9LxBvLYUr0P+Z
+ CQ6RWQlaqDJZ7PKpBAQyZnibOWhMFtlGeXEIYmUc60Slm1y4LFewPCkGiZJ19UvEQ9k1
+ 40LEviTvMcFhWmJj5rRDlZ07Kf14MyaG5xpZKxQwd7OjG4jLcXE/b7Gx5f/4b418CVYi
+ IyCmWCupmRQ7NHn58gh2CjmTXS/TfvBiqoYNOtm19rXgVEz7e//3S4njmGJGILvNRfC+
+ eDXpJ+/1k/CfL63fv7byhbOpthr9CcLVvVW2v9RiS7jvR6ki1NkgEcCo6FZ1JF4kH+P0
+ a+tg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVz3oB5QQ2Fws92UHrQ9vuiRg+XxNFjLl1RQvQmf12lvvPvEneSNRR6drHJnbF/377OGmM26A0WnBLGgUv4YMY=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YxONkrUVxCfJw699djK+wh81WYv/jjOwDXLEZwMeRWX0Ax9SLKm
- FLgPeJukisMDNZPSVj/l4zGBjHF/y9BlJq9lNLSYkC3cn9otHeCQHpAPv+hhSa8=
-X-Gm-Gg: ASbGncsOh0cM8swrZC3/LCnBGeb6NQ4YjDeXkEeFSH992D55FKuNSPeS/DSs3panxv3
- zHcSMwjo1e4oRcgjASMm3IuKwdzEKnIhl2aG6ku1MtzNrpBQtwL536Rp/X+m2a1ZBFW3ROrfpET
- VQggGXmpHOkqpmHsa+/nI/O8t7zZ9dDNW5QCCIexoVyucx1zeZyHK955iJ8eGtbJXLioBpzl1T5
- cP4M/MR2BltlRKm1vnVHXWz+oHMsCKHX55AoTJWyqGucfEDd2mWg9hdhdmfETNxiuuEgCnNS2TR
- FFDFg4WtguT8zBSTEsXQ/3jgNK49hvK5twLi7q5Wo1hx09ikw7mnrX8nH6M=
-X-Google-Smtp-Source: AGHT+IHiGt3l/NvC3zreHayL8q6Ll/TbkBU6XHlIyltvZMzxuQ1tIBzUxWef/1T1KtUtmPP2UFlABQ==
-X-Received: by 2002:a05:6000:2404:b0:391:3406:b4e2 with SMTP id
- ffacd0b85a97d-39ee5baf441mr4170193f8f.49.1744883827740; 
- Thu, 17 Apr 2025 02:57:07 -0700 (PDT)
+ AJvYcCXTa+raKJlTqW4L4mnKSTz9RwwCAnMj93ca9cvqJn1aPIYChu3yZCmTjCltZaifJtScWA3AN9C1M6iF9E04rXM=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YxAU2VVVGVP++Th64lCZ5kOfTWGhiEs/qDdrTlgYYeJV/DGIPd1
+ z+YVYPwDW7iXiLDjpHrF1nNrjAfMbIqpA9Q5Dgtzci7XXFxfchPv1q3hEKhLaCs=
+X-Gm-Gg: ASbGncsJJ4iVse7+Sq++AyjNj1byNxC0+UeU4Xtz8kb4zv7Um9OOVnqA56Wu5Y5zeeR
+ OPhuFvm8Ic7jKR1OQ9E3vuUBPgdDX8EfDDnJhE2Q8M7nOgrFTY+zghNIx0vFbzcXRtbPs3o0X4E
+ BvZlPlOlUWJjVBXultED/xpBO08ilKlu0Yr7Rgnj+74yOO7Cqa9Gdg8mcG/9FiTBbDenZjEvHhA
+ f9THQLBrwZpwOM07qfpu3/QcurLPRmgpehDgSr+dSFUIsK941jrfmVGlxnASH6jKRCcFZAfT0kJ
+ fmXHUyS7477Pw75EB4TdKE6IpSO3gkGEFg/hUZ9rfoBOGFC5
+X-Google-Smtp-Source: AGHT+IE3fUywynuHYSYOtj1852EpIi6J5HPvBsrMHhDQq7lQ8vg3DUWM86whi2+QZP/4BiiULL8bGg==
+X-Received: by 2002:a05:600c:a15:b0:43c:fb95:c76f with SMTP id
+ 5b1f17b1804b1-4405d61ce41mr54767445e9.9.1744883971030; 
+ Thu, 17 Apr 2025 02:59:31 -0700 (PDT)
 Received: from jiri-mlt ([193.47.165.251]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-39eae96c684sm19781607f8f.33.2025.04.17.02.57.00
+ 5b1f17b1804b1-4405b4c8216sm48011265e9.7.2025.04.17.02.59.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Apr 2025 02:57:07 -0700 (PDT)
-Date: Thu, 17 Apr 2025 11:56:56 +0200
+ Thu, 17 Apr 2025 02:59:30 -0700 (PDT)
+Date: Thu, 17 Apr 2025 11:59:20 +0200
 From: Jiri Pirko <jiri@resnulli.us>
 To: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>
 Cc: "donald.hunter@gmail.com" <donald.hunter@gmail.com>, 
@@ -104,37 +104,37 @@ Cc: "donald.hunter@gmail.com" <donald.hunter@gmail.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
  "linux-rdma@vger.kernel.org" <linux-rdma@vger.kernel.org>
-Message-ID: <slvow56opklcc2hwz4vzq4t7olazddmvn4lxhoveb43f6mz4p2@6vq3iz7kiuce>
+Message-ID: <y5d6hkhdgwprncbnfmznuk5otluqz3vqi6fof6cyr4dc673cqx@5kr6ys6g53ev>
 References: <20250415181543.1072342-1-arkadiusz.kubalewski@intel.com>
- <20250415181543.1072342-2-arkadiusz.kubalewski@intel.com>
- <zurfm4rox22l3dnffbfloax5mu6csiycqqfoyh5nrcsd4ada6h@wmeh5ks4gli6>
- <SJ2PR11MB84526DB089614BD2972F6BA49BBC2@SJ2PR11MB8452.namprd11.prod.outlook.com>
+ <20250415181543.1072342-4-arkadiusz.kubalewski@intel.com>
+ <lljouuqzmhcb2esfrxrviohrwgweee6632ntfoca5fqho736il@auarfibpahpf>
+ <SJ2PR11MB84521AE1C30176E2A31C4F709BBC2@SJ2PR11MB8452.namprd11.prod.outlook.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <SJ2PR11MB84526DB089614BD2972F6BA49BBC2@SJ2PR11MB8452.namprd11.prod.outlook.com>
+In-Reply-To: <SJ2PR11MB84521AE1C30176E2A31C4F709BBC2@SJ2PR11MB8452.namprd11.prod.outlook.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1744883828; x=1745488628;
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1744883971; x=1745488771;
  darn=lists.osuosl.org; 
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=Qpa0GejaPGa/YgV9J5BKfK35uNrTR6xbnqfjaQWItJ8=;
- b=BzxojK4GvtRlLqJtlufogVY7eiZdF+Mqr/gxtjHEexVVrfEX6PNTl+U+TPwEay3RmC
- s8s7BgBTcp5RLy/VJBWsN1F073R4k4e+yRrat2Cp/NwVTaN5f2Goz9xKstwgczjacV04
- uD+7jDdgmmMWyZvhM41HT+9Gz0VByOZFt3CsBe5o/d7CMWMqT3FGmXppXdeoZ+gh+wzE
- uP1L94Yb6WcN1PGVc2M5s2AWepxt/187IZTttbiS0HCtky2nms+kU0XedWGASdCLYr1P
- djq97QyYWyqIEQiGliVx8QmAkyW1y6v7pHrXPxWHnpRssSP/meG13yItZAEORMQsk7Vm
- FtZw==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=glMFihfGC+1JyTwFt+Mu0ExdnvDPdZFZwlen3T2Owjw=;
+ b=sbhMkaxyLmchcp0lxBOjTk0AJtehQ6PyFAwTEIm8erUYNu0JVSREXYkMhBP1zm2vZw
+ FPNrAg7DAudAbVDlznBJQq7NPfc9NZ8jlzimCU49TTg9BzRxq1Tp/LP9QP3lkAMdUSS0
+ 84vhAhm9kTrI/m9ylmx3U0Dg0TNVnchDNV0dyVI9ujSEDD4vqOijGhna1eIW6eqNOUhT
+ aylhQ3IK3gGEijY2LAmhQXBQ7WCh4UXxg/eQQzAyK67QIQTorze+gLR1SegMKdyPYDkj
+ RZrFXK2JXugRIFraXGzsABjvIy/PSG/LXQZFrCboUCnVpL9124gu/EeTa9gf6dIps51v
+ bm9A==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=resnulli.us
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=resnulli-us.20230601.gappssmtp.com
  header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=BzxojK4G
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 1/4] dpll: use struct
- dpll_device_info for dpll registration
+ header.s=20230601 header.b=sbhMkaxy
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 3/4] dpll:
+ features_get/set callbacks
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -150,424 +150,206 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Thu, Apr 17, 2025 at 11:33:13AM +0200, arkadiusz.kubalewski@intel.com wrote:
+Thu, Apr 17, 2025 at 11:23:09AM +0200, arkadiusz.kubalewski@intel.com wrote:
 >>From: Jiri Pirko <jiri@resnulli.us>
->>Sent: Wednesday, April 16, 2025 2:13 PM
+>>Sent: Wednesday, April 16, 2025 2:11 PM
 >>
->>Tue, Apr 15, 2025 at 08:15:40PM +0200, arkadiusz.kubalewski@intel.com
+>>Tue, Apr 15, 2025 at 08:15:42PM +0200, arkadiusz.kubalewski@intel.com
 >>wrote:
->>>Instead of passing list of properties as arguments to
->>>dpll_device_register(..) use a dedicated struct.
+>>>Add new callback ops for a dpll device.
+>>>- features_get(..) - to obtain currently configured features from dpll
+>>>  device,
+>>>- feature_set(..) - to allow dpll device features configuration.
+>>>Provide features attribute and allow control over it to the users if
+>>>device driver implements callbacks.
 >>>
+>>>Reviewed-by: Milena Olech <milena.olech@intel.com>
 >>>Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 >>>---
 >>>v2:
->>>- new commit
+>>>- adapt changes and align wiht new dpll_device_info struct
 >>>---
->>> drivers/dpll/dpll_core.c                      | 34 ++++++++++++-------
->>> drivers/dpll/dpll_core.h                      |  2 +-
->>> drivers/dpll/dpll_netlink.c                   |  7 ++--
->>> drivers/net/ethernet/intel/ice/ice_dpll.c     | 16 +++++----
->>> drivers/net/ethernet/intel/ice/ice_dpll.h     |  1 +
->>> .../net/ethernet/mellanox/mlx5/core/dpll.c    | 10 +++---
->>> drivers/ptp/ptp_ocp.c                         |  7 ++--
->>> include/linux/dpll.h                          | 11 ++++--
->>> 8 files changed, 57 insertions(+), 31 deletions(-)
+>>> drivers/dpll/dpll_netlink.c | 79 ++++++++++++++++++++++++++++++++++++-
+>>> include/linux/dpll.h        |  5 +++
+>>> 2 files changed, 82 insertions(+), 2 deletions(-)
 >>>
->>>diff --git a/drivers/dpll/dpll_core.c b/drivers/dpll/dpll_core.c
->>>index 20bdc52f63a5..af9cda45a89c 100644
->>>--- a/drivers/dpll/dpll_core.c
->>>+++ b/drivers/dpll/dpll_core.c
->>>@@ -34,7 +34,7 @@ static u32 dpll_pin_xa_id;
+>>>diff --git a/drivers/dpll/dpll_netlink.c b/drivers/dpll/dpll_netlink.c
+>>>index 2de9ec08d551..acfdd87fcffe 100644
+>>>--- a/drivers/dpll/dpll_netlink.c
+>>>+++ b/drivers/dpll/dpll_netlink.c
+>>>@@ -126,6 +126,25 @@ dpll_msg_add_mode_supported(struct sk_buff *msg,
+>>>struct dpll_device *dpll,
+>>> 	return 0;
+>>> }
 >>>
->>> struct dpll_device_registration {
->>> 	struct list_head list;
->>>-	const struct dpll_device_ops *ops;
->>>+	const struct dpll_device_info *info;
->>> 	void *priv;
->>> };
->>>
->>>@@ -327,12 +327,12 @@ EXPORT_SYMBOL_GPL(dpll_device_put);
->>>
->>> static struct dpll_device_registration *
->>> dpll_device_registration_find(struct dpll_device *dpll,
->>>-			      const struct dpll_device_ops *ops, void *priv)
->>>+			      const struct dpll_device_info *info, void *priv)
->>> {
->>> 	struct dpll_device_registration *reg;
->>>
->>> 	list_for_each_entry(reg, &dpll->registration_list, list) {
->>>-		if (reg->ops == ops && reg->priv == priv)
->>>+		if (reg->info == info && reg->priv == priv)
->>> 			return reg;
->>> 	}
->>> 	return NULL;
->>>@@ -341,8 +341,7 @@ dpll_device_registration_find(struct dpll_device
->>>*dpll,
->>> /**
->>>  * dpll_device_register - register the dpll device in the subsystem
->>>  * @dpll: pointer to a dpll
->>>- * @type: type of a dpll
->>>- * @ops: ops for a dpll device
->>>+ * @info: dpll device information and operations from registerer
->>>  * @priv: pointer to private information of owner
->>>  *
->>>  * Make dpll device available for user space.
->>>@@ -352,11 +351,13 @@ dpll_device_registration_find(struct dpll_device
->>>*dpll,
->>>  * * 0 on success
->>>  * * negative - error value
->>>  */
->>>-int dpll_device_register(struct dpll_device *dpll, enum dpll_type type,
->>>-			 const struct dpll_device_ops *ops, void *priv)
->>>+int dpll_device_register(struct dpll_device *dpll,
->>>+			 const struct dpll_device_info *info, void *priv)
->>
->>I don't like this. If you need some capabilities value, put it into ops
->>struct.
->>
->
->Hmm, this would seems strange, the _ops indicates operations, would
->have to rename the struct..
-
-I don't think so. Happens all the time in kernel for ops to contain
-other things.
-
-
->
->In theory I could decide on capabilities per ops provided from driver..
->i.e. If phase_input_monitor_feature_set()/phase_input_feature_get() are
->present then capability phase_input_monitor is provided..
->Makes sense?
-
-Yes, that is more or less what I suggested in reply to the other patch
-in this set.
-
-
->
->>
->>> {
->>>+	const struct dpll_device_ops *ops = info->ops;
->>> 	struct dpll_device_registration *reg;
->>> 	bool first_registration = false;
->>>+	enum dpll_type type = info->type;
->>>
->>> 	if (WARN_ON(!ops))
->>> 		return -EINVAL;
->>>@@ -368,7 +369,7 @@ int dpll_device_register(struct dpll_device *dpll,
->>>enum dpll_type type,
->>> 		return -EINVAL;
->>>
->>> 	mutex_lock(&dpll_lock);
->>>-	reg = dpll_device_registration_find(dpll, ops, priv);
->>>+	reg = dpll_device_registration_find(dpll, info, priv);
->>> 	if (reg) {
->>> 		mutex_unlock(&dpll_lock);
->>> 		return -EEXIST;
->>>@@ -379,9 +380,8 @@ int dpll_device_register(struct dpll_device *dpll,
->>>enum dpll_type type,
->>> 		mutex_unlock(&dpll_lock);
->>> 		return -ENOMEM;
->>> 	}
->>>-	reg->ops = ops;
->>>+	reg->info = info;
->>> 	reg->priv = priv;
->>>-	dpll->type = type;
->>> 	first_registration = list_empty(&dpll->registration_list);
->>> 	list_add_tail(&reg->list, &dpll->registration_list);
->>> 	if (!first_registration) {
->>>@@ -408,14 +408,14 @@ EXPORT_SYMBOL_GPL(dpll_device_register);
->>>  * Context: Acquires a lock (dpll_lock)
->>>  */
->>> void dpll_device_unregister(struct dpll_device *dpll,
->>>-			    const struct dpll_device_ops *ops, void *priv)
->>>+			    const struct dpll_device_info *info, void *priv)
->>> {
->>> 	struct dpll_device_registration *reg;
->>>
->>> 	mutex_lock(&dpll_lock);
->>> 	ASSERT_DPLL_REGISTERED(dpll);
->>> 	dpll_device_delete_ntf(dpll);
->>>-	reg = dpll_device_registration_find(dpll, ops, priv);
->>>+	reg = dpll_device_registration_find(dpll, info, priv);
->>> 	if (WARN_ON(!reg)) {
->>> 		mutex_unlock(&dpll_lock);
->>> 		return;
->>>@@ -807,7 +807,15 @@ const struct dpll_device_ops *dpll_device_ops(struct
->>>dpll_device *dpll)
->>> 	struct dpll_device_registration *reg;
->>>
->>> 	reg = dpll_device_registration_first(dpll);
->>>-	return reg->ops;
->>>+	return reg->info->ops;
+>>>+static int
+>>>+dpll_msg_add_features(struct sk_buff *msg, struct dpll_device *dpll,
+>>>+		      struct netlink_ext_ack *extack)
+>>>+{
+>>>+	const struct dpll_device_ops *ops = dpll_device_ops(dpll);
+>>>+	u32 features;
+>>>+	int ret;
+>>>+
+>>>+	if (!ops->features_get)
+>>>+		return 0;
+>>>+	ret = ops->features_get(dpll, dpll_priv(dpll), &features, extack);
+>>>+	if (ret)
+>>>+		return ret;
+>>>+	if (nla_put_u32(msg, DPLL_A_FEATURES, features))
+>>>+		return -EMSGSIZE;
+>>>+
+>>>+	return 0;
 >>>+}
 >>>+
->>>+const struct dpll_device_info *dpll_device_info(struct dpll_device *dpll)
+>>> static int
+>>> dpll_msg_add_lock_status(struct sk_buff *msg, struct dpll_device *dpll,
+>>> 			 struct netlink_ext_ack *extack)
+>>>@@ -592,6 +611,11 @@ dpll_device_get_one(struct dpll_device *dpll, struct
+>>>sk_buff *msg,
+>>> 		return ret;
+>>> 	if (nla_put_u32(msg, DPLL_A_TYPE, info->type))
+>>> 		return -EMSGSIZE;
+>>>+	if (nla_put_u32(msg, DPLL_A_CAPABILITIES, info->capabilities))
+>>>+		return -EMSGSIZE;
+>>>+	ret = dpll_msg_add_features(msg, dpll, extack);
+>>>+	if (ret)
+>>>+		return ret;
+>>>
+>>> 	return 0;
+>>> }
+>>>@@ -747,6 +771,34 @@ int dpll_pin_change_ntf(struct dpll_pin *pin)
+>>> }
+>>> EXPORT_SYMBOL_GPL(dpll_pin_change_ntf);
+>>>
+>>>+static int
+>>>+dpll_features_set(struct dpll_device *dpll, struct nlattr *a,
+>>>+		  struct netlink_ext_ack *extack)
+>>>+{
+>>>+	const struct dpll_device_info *info = dpll_device_info(dpll);
+>>>+	const struct dpll_device_ops *ops = dpll_device_ops(dpll);
+>>>+	u32 features = nla_get_u32(a), old_features;
+>>>+	int ret;
+>>>+
+>>>+	if (features && !(info->capabilities & features)) {
+>>>+		NL_SET_ERR_MSG_ATTR(extack, a, "dpll device not capable of this
+>>>features");
+>>>+		return -EOPNOTSUPP;
+>>>+	}
+>>>+	if (!ops->features_get || !ops->features_set) {
+>>>+		NL_SET_ERR_MSG(extack, "dpll device not supporting any
+>>>features");
+>>>+		return -EOPNOTSUPP;
+>>>+	}
+>>>+	ret = ops->features_get(dpll, dpll_priv(dpll), &old_features,
+>>>extack);
+>>>+	if (ret) {
+>>>+		NL_SET_ERR_MSG(extack, "unable to get old features value");
+>>>+		return ret;
+>>>+	}
+>>>+	if (old_features == features)
+>>>+		return -EINVAL;
+>>>+
+>>>+	return ops->features_set(dpll, dpll_priv(dpll), features, extack);
 >>
->>Makes me wonder what you would need this for. I guess "nothing"?
+>>So you allow to enable/disable them all in once. What if user want to
+>>enable feature A and does not care about feature B that may of may not
+>>be previously set?
+>
+>Assumed that user would always request full set.
+
+Ugh.
+
+
+>
+>>How many of the features do you expect to appear in the future. I'm
+>>asking because this could be just a bool attr with a separate op to the
+>>driver. If we have 3, no problem. Benefit is, you may also extend it
+>>easily to pass some non-bool configuration. My point is, what is the
+>>benefit of features bitset here?
 >>
 >
->Now using it to get info struct from dpll.. if struct is removed then yeah.
+>Not much, at least right now..
+>Maybe one similar in nearest feature. Sure, we can go that way.
+>
+>But you mean uAPI part also have this enabled somehow per feature or
+>leave the feature bits there?
+
+I don't see reason for u32/bitfield32 bits here. Just have attr per
+feature to enable/disable it, no problem. It will be easier to work with.
+
+
 >
 >Thank you!
 >Arkadiusz
 >
 >>
->>>+{
->>>+	struct dpll_device_registration *reg;
+>>
+>>>+}
 >>>+
->>>+	reg = dpll_device_registration_first(dpll);
->>>+	return reg->info;
->>> }
->>>
->>> static struct dpll_pin_registration *
->>>diff --git a/drivers/dpll/dpll_core.h b/drivers/dpll/dpll_core.h
->>>index 2b6d8ef1cdf3..baeb10d7dc1e 100644
->>>--- a/drivers/dpll/dpll_core.h
->>>+++ b/drivers/dpll/dpll_core.h
->>>@@ -30,7 +30,6 @@ struct dpll_device {
->>> 	u32 device_idx;
->>> 	u64 clock_id;
->>> 	struct module *module;
->>>-	enum dpll_type type;
->>> 	struct xarray pin_refs;
->>> 	refcount_t refcount;
->>> 	struct list_head registration_list;
->>>@@ -84,6 +83,7 @@ void *dpll_pin_on_pin_priv(struct dpll_pin *parent,
->>>struct dpll_pin *pin);
->>> const struct dpll_device_ops *dpll_device_ops(struct dpll_device *dpll);
->>> struct dpll_device *dpll_device_get_by_id(int id);
->>> const struct dpll_pin_ops *dpll_pin_ops(struct dpll_pin_ref *ref);
->>>+const struct dpll_device_info *dpll_device_info(struct dpll_device
->>>*dpll);
->>> struct dpll_pin_ref *dpll_xa_ref_dpll_first(struct xarray *xa_refs);
->>> extern struct xarray dpll_device_xa;
->>> extern struct xarray dpll_pin_xa;
->>>diff --git a/drivers/dpll/dpll_netlink.c b/drivers/dpll/dpll_netlink.c
->>>index c130f87147fa..2de9ec08d551 100644
->>>--- a/drivers/dpll/dpll_netlink.c
->>>+++ b/drivers/dpll/dpll_netlink.c
->>>@@ -564,6 +564,7 @@ static int
->>> dpll_device_get_one(struct dpll_device *dpll, struct sk_buff *msg,
->>> 		    struct netlink_ext_ack *extack)
->>> {
->>>+	const struct dpll_device_info *info = dpll_device_info(dpll);
->>> 	int ret;
->>>
->>> 	ret = dpll_msg_add_dev_handle(msg, dpll);
->>>@@ -589,7 +590,7 @@ dpll_device_get_one(struct dpll_device *dpll, struct
->>>sk_buff *msg,
->>> 	ret = dpll_msg_add_mode_supported(msg, dpll, extack);
->>> 	if (ret)
->>> 		return ret;
->>>-	if (nla_put_u32(msg, DPLL_A_TYPE, dpll->type))
->>>+	if (nla_put_u32(msg, DPLL_A_TYPE, info->type))
->>> 		return -EMSGSIZE;
->>>
->>> 	return 0;
->>>@@ -1415,11 +1416,13 @@ dpll_device_find(u64 clock_id, struct nlattr
->>>*mod_name_attr,
->>> 	unsigned long i;
->>>
->>> 	xa_for_each_marked(&dpll_device_xa, i, dpll, DPLL_REGISTERED) {
->>>+		const struct dpll_device_info *info = dpll_device_info(dpll);
->>>+
->>> 		cid_match = clock_id ? dpll->clock_id == clock_id : true;
->>> 		mod_match = mod_name_attr ? (module_name(dpll->module) ?
->>> 			!nla_strcmp(mod_name_attr,
->>> 				    module_name(dpll->module)) : false) : true;
->>>-		type_match = type ? dpll->type == type : true;
->>>+		type_match = type ? info->type == type : true;
->>> 		if (cid_match && mod_match && type_match) {
->>> 			if (dpll_match) {
->>> 				NL_SET_ERR_MSG(extack, "multiple matches");
->>>diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.c
->>>b/drivers/net/ethernet/intel/ice/ice_dpll.c
->>>index bce3ad6ca2a6..0f7440a889ac 100644
->>>--- a/drivers/net/ethernet/intel/ice/ice_dpll.c
->>>+++ b/drivers/net/ethernet/intel/ice/ice_dpll.c
->>>@@ -1977,7 +1977,7 @@ static void
->>> ice_dpll_deinit_dpll(struct ice_pf *pf, struct ice_dpll *d, bool cgu)
->>> {
->>> 	if (cgu)
->>>-		dpll_device_unregister(d->dpll, &ice_dpll_ops, d);
->>>+		dpll_device_unregister(d->dpll, &d->info, d);
->>> 	dpll_device_put(d->dpll);
->>> }
->>>
->>>@@ -1996,8 +1996,7 @@ ice_dpll_deinit_dpll(struct ice_pf *pf, struct
->>>ice_dpll *d, bool cgu)
->>>  * * negative - initialization failure reason
->>>  */
 >>> static int
->>>-ice_dpll_init_dpll(struct ice_pf *pf, struct ice_dpll *d, bool cgu,
->>>-		   enum dpll_type type)
->>>+ice_dpll_init_dpll(struct ice_pf *pf, struct ice_dpll *d, bool cgu)
->>> {
->>> 	u64 clock_id = pf->dplls.clock_id;
->>> 	int ret;
->>>@@ -2012,7 +2011,7 @@ ice_dpll_init_dpll(struct ice_pf *pf, struct
->>>ice_dpll *d, bool cgu,
->>> 	d->pf = pf;
->>> 	if (cgu) {
->>> 		ice_dpll_update_state(pf, d, true);
->>>-		ret = dpll_device_register(d->dpll, type, &ice_dpll_ops, d);
->>>+		ret = dpll_device_register(d->dpll, &d->info, d);
->>> 		if (ret) {
->>> 			dpll_device_put(d->dpll);
->>> 			return ret;
->>>@@ -2363,7 +2362,12 @@ static int ice_dpll_init_info(struct ice_pf *pf,
->>>bool cgu)
->>> 	if (ret)
->>> 		return ret;
->>> 	de->mode = DPLL_MODE_AUTOMATIC;
->>>+	de->info.type = DPLL_TYPE_EEC;
->>>+	de->info.ops = &ice_dpll_ops;
+>>> dpll_pin_freq_set(struct dpll_pin *pin, struct nlattr *a,
+>>> 		  struct netlink_ext_ack *extack)
+>>>@@ -1536,10 +1588,33 @@ int dpll_nl_device_get_doit(struct sk_buff *skb,
+>>struct genl_info *info)
+>>> 	return genlmsg_reply(msg, info);
+>>> }
+>>>
+>>>+static int
+>>>+dpll_set_from_nlattr(struct dpll_device *dpll, struct genl_info *info)
+>>>+{
+>>>+	struct nlattr *a;
+>>>+	int rem, ret;
 >>>+
->>> 	dp->mode = DPLL_MODE_AUTOMATIC;
->>>+	dp->info.type = DPLL_TYPE_PPS;
->>>+	dp->info.ops = &ice_dpll_ops;
+>>>+	nla_for_each_attr(a, genlmsg_data(info->genlhdr),
+>>>+			  genlmsg_len(info->genlhdr), rem) {
+>>>+		switch (nla_type(a)) {
+>>>+		case DPLL_A_FEATURES:
+>>>+			ret = dpll_features_set(dpll, a, info->extack);
+>>>+			if (ret)
+>>>+				return ret;
+>>>+			break;
+>>>+		default:
+>>>+			break;
+>>>+		}
+>>>+	}
+>>>+
+>>>+	return 0;
+>>>+}
+>>>+
+>>> int dpll_nl_device_set_doit(struct sk_buff *skb, struct genl_info *info)
+>>> {
+>>>-	/* placeholder for set command */
+>>>-	return 0;
+>>>+	struct dpll_device *dpll = info->user_ptr[0];
+>>>+
+>>>+	return dpll_set_from_nlattr(dpll, info);
+>>> }
 >>>
->>> 	dev_dbg(ice_pf_to_dev(pf),
->>> 		"%s - success, inputs:%u, outputs:%u rclk-parents:%u\n",
->>>@@ -2426,10 +2430,10 @@ void ice_dpll_init(struct ice_pf *pf)
->>> 	err = ice_dpll_init_info(pf, cgu);
->>> 	if (err)
->>> 		goto err_exit;
->>>-	err = ice_dpll_init_dpll(pf, &pf->dplls.eec, cgu, DPLL_TYPE_EEC);
->>>+	err = ice_dpll_init_dpll(pf, &pf->dplls.eec, cgu);
->>> 	if (err)
->>> 		goto deinit_info;
->>>-	err = ice_dpll_init_dpll(pf, &pf->dplls.pps, cgu, DPLL_TYPE_PPS);
->>>+	err = ice_dpll_init_dpll(pf, &pf->dplls.pps, cgu);
->>> 	if (err)
->>> 		goto deinit_eec;
->>> 	err = ice_dpll_init_pins(pf, cgu);
->>>diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.h
->>>b/drivers/net/ethernet/intel/ice/ice_dpll.h
->>>index c320f1bf7d6d..9db7463e293a 100644
->>>--- a/drivers/net/ethernet/intel/ice/ice_dpll.h
->>>+++ b/drivers/net/ethernet/intel/ice/ice_dpll.h
->>>@@ -66,6 +66,7 @@ struct ice_dpll {
->>> 	enum dpll_mode mode;
->>> 	struct dpll_pin *active_input;
->>> 	struct dpll_pin *prev_input;
->>>+	struct dpll_device_info info;
->>> };
->>>
->>> /** ice_dplls - store info required for CCU (clock controlling unit)
->>>diff --git a/drivers/net/ethernet/mellanox/mlx5/core/dpll.c
->>>b/drivers/net/ethernet/mellanox/mlx5/core/dpll.c
->>>index 1e5522a19483..f722b1de0754 100644
->>>--- a/drivers/net/ethernet/mellanox/mlx5/core/dpll.c
->>>+++ b/drivers/net/ethernet/mellanox/mlx5/core/dpll.c
->>>@@ -20,6 +20,7 @@ struct mlx5_dpll {
->>> 	} last;
->>> 	struct notifier_block mdev_nb;
->>> 	struct net_device *tracking_netdev;
->>>+	struct dpll_device_info info;
->>> };
->>>
->>> static int mlx5_dpll_clock_id_get(struct mlx5_core_dev *mdev, u64
->>>*clock_id)
->>>@@ -444,8 +445,9 @@ static int mlx5_dpll_probe(struct auxiliary_device
->>>*adev,
->>> 		goto err_free_mdpll;
->>> 	}
->>>
->>>-	err = dpll_device_register(mdpll->dpll, DPLL_TYPE_EEC,
->>>-				   &mlx5_dpll_device_ops, mdpll);
->>>+	mdpll->info.type = DPLL_TYPE_EEC;
->>>+	mdpll->info.ops = &mlx5_dpll_device_ops;
->>>+	err = dpll_device_register(mdpll->dpll, &mdpll->info, mdpll);
->>> 	if (err)
->>> 		goto err_put_dpll_device;
->>>
->>>@@ -481,7 +483,7 @@ static int mlx5_dpll_probe(struct auxiliary_device
->>>*adev,
->>> err_put_dpll_pin:
->>> 	dpll_pin_put(mdpll->dpll_pin);
->>> err_unregister_dpll_device:
->>>-	dpll_device_unregister(mdpll->dpll, &mlx5_dpll_device_ops, mdpll);
->>>+	dpll_device_unregister(mdpll->dpll, &mdpll->info, mdpll);
->>> err_put_dpll_device:
->>> 	dpll_device_put(mdpll->dpll);
->>> err_free_mdpll:
->>>@@ -500,7 +502,7 @@ static void mlx5_dpll_remove(struct auxiliary_device
->>>*adev)
->>> 	dpll_pin_unregister(mdpll->dpll, mdpll->dpll_pin,
->>> 			    &mlx5_dpll_pins_ops, mdpll);
->>> 	dpll_pin_put(mdpll->dpll_pin);
->>>-	dpll_device_unregister(mdpll->dpll, &mlx5_dpll_device_ops, mdpll);
->>>+	dpll_device_unregister(mdpll->dpll, &mdpll->info, mdpll);
->>> 	dpll_device_put(mdpll->dpll);
->>> 	kfree(mdpll);
->>>
->>>diff --git a/drivers/ptp/ptp_ocp.c b/drivers/ptp/ptp_ocp.c
->>>index 7945c6be1f7c..b3c5d294acb4 100644
->>>--- a/drivers/ptp/ptp_ocp.c
->>>+++ b/drivers/ptp/ptp_ocp.c
->>>@@ -382,6 +382,7 @@ struct ptp_ocp {
->>> 	struct ptp_ocp_sma_connector sma[OCP_SMA_NUM];
->>> 	const struct ocp_sma_op *sma_op;
->>> 	struct dpll_device *dpll;
->>>+	struct dpll_device_info	dpll_info;
->>> };
->>>
->>> #define OCP_REQ_TIMESTAMP	BIT(0)
->>>@@ -4745,7 +4746,9 @@ ptp_ocp_probe(struct pci_dev *pdev, const struct
->>>pci_device_id *id)
->>> 		goto out;
->>> 	}
->>>
->>>-	err = dpll_device_register(bp->dpll, DPLL_TYPE_PPS, &dpll_ops, bp);
->>>+	bp->dpll_info.type = DPLL_TYPE_PPS;
->>>+	bp->dpll_info.ops = &dpll_ops;
->>>+	err = dpll_device_register(bp->dpll, &bp->dpll_info, bp);
->>> 	if (err)
->>> 		goto out;
->>>
->>>@@ -4796,7 +4799,7 @@ ptp_ocp_remove(struct pci_dev *pdev)
->>> 			dpll_pin_put(bp->sma[i].dpll_pin);
->>> 		}
->>> 	}
->>>-	dpll_device_unregister(bp->dpll, &dpll_ops, bp);
->>>+	dpll_device_unregister(bp->dpll, &bp->dpll_info, bp);
->>> 	dpll_device_put(bp->dpll);
->>> 	devlink_unregister(devlink);
->>> 	ptp_ocp_detach(bp);
+>>> int dpll_nl_device_get_dumpit(struct sk_buff *skb, struct
+>>>netlink_callback *cb)
 >>>diff --git a/include/linux/dpll.h b/include/linux/dpll.h
->>>index 5e4f9ab1cf75..0489464af958 100644
+>>>index 0489464af958..90c743daf64b 100644
 >>>--- a/include/linux/dpll.h
 >>>+++ b/include/linux/dpll.h
->>>@@ -97,6 +97,11 @@ struct dpll_pin_ops {
->>> 			 struct netlink_ext_ack *extack);
+>>>@@ -30,6 +30,10 @@ struct dpll_device_ops {
+>>> 				       void *dpll_priv,
+>>> 				       unsigned long *qls,
+>>> 				       struct netlink_ext_ack *extack);
+>>>+	int (*features_set)(const struct dpll_device *dpll, void *dpll_priv,
+>>>+			    u32 features, struct netlink_ext_ack *extack);
+>>>+	int (*features_get)(const struct dpll_device *dpll, void *dpll_priv,
+>>>+			    u32 *features, struct netlink_ext_ack *extack);
 >>> };
 >>>
->>>+struct dpll_device_info {
->>>+	enum dpll_type type;
->>>+	const struct dpll_device_ops *ops;
->>>+};
->>>+
->>> struct dpll_pin_frequency {
->>> 	u64 min;
->>> 	u64 max;
->>>@@ -170,11 +175,11 @@ dpll_device_get(u64 clock_id, u32 dev_driver_id,
->>>struct module *module);
+>>> struct dpll_pin_ops {
+>>>@@ -99,6 +103,7 @@ struct dpll_pin_ops {
 >>>
->>> void dpll_device_put(struct dpll_device *dpll);
+>>> struct dpll_device_info {
+>>> 	enum dpll_type type;
+>>>+	u32 capabilities;
+>>> 	const struct dpll_device_ops *ops;
+>>> };
 >>>
->>>-int dpll_device_register(struct dpll_device *dpll, enum dpll_type type,
->>>-			 const struct dpll_device_ops *ops, void *priv);
->>>+int dpll_device_register(struct dpll_device *dpll,
->>>+			 const struct dpll_device_info *info, void *priv);
->>>
->>> void dpll_device_unregister(struct dpll_device *dpll,
->>>-			    const struct dpll_device_ops *ops, void *priv);
->>>+			    const struct dpll_device_info *info, void *priv);
->>>
->>> struct dpll_pin *
->>> dpll_pin_get(u64 clock_id, u32 dev_driver_id, struct module *module,
 >>>--
 >>>2.38.1
 >>>
