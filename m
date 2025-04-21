@@ -1,147 +1,96 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 632D2A951B3
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Apr 2025 15:31:16 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5937CA9518A
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Apr 2025 15:22:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8AA8340395;
-	Mon, 21 Apr 2025 13:31:14 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D232C812E5;
+	Mon, 21 Apr 2025 13:22:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XaXFjj_IUoLB; Mon, 21 Apr 2025 13:31:14 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 5isbzZuNdfUX; Mon, 21 Apr 2025 13:22:40 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D8618402F3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4A344812E7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1745242273;
-	bh=zVbdfyjXXUzkgsvwIg3jwWbyVaRbh5FQH6V+d4QgSvc=;
+	s=default; t=1745241760;
+	bh=QW0iMo6yzF5GPDGIc+Ipe4a7z9cuV1jVdBOAXYFzUGo=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=pFTn2hS15ss+BtEqEACYdLBKf8yG4W2Kc3lZJHsxmvFhvykJwp3DMt/pl2rrtTZIy
-	 nI8GdzvtWa5qy/9mtYXv/tPVJqkW/dFWmqyz6i0fs11N11Y/5QRk8Wobyfej75+k0v
-	 gpqILkJyKjvBxgWOnKxfPOT8QGQcU+pTlN5BHne9xF0ma/Q3fkBQs7wqHNDmDQyrRw
-	 P/kotVh5Fi6JzzSudqbtt3hb8JKJX51oI4jddLLquJoBlCZqx/TJEbPFpGrPhxeHN2
-	 1pQHROd3z3JjOlO20261xqInxx160c/uKGIT1dG2LVt/b7Ad69YP/4yAZgNI51fY7D
-	 cyHyfsupfMxgw==
+	b=8YVUC/sGyLfpc2L8MhSadHtApjCWYcS1C3+FaMr2fFwiEB3dEGQbfkVTXGbT7DJc5
+	 YldUtHgAnYFBU0v3UNfeYRh2j54V43hNbk3rhYkX0XNb8xOnmUMeRzwj+8xqH14zQx
+	 a6YwprmSBzTLZpQ+YgcIjbsVzDQrv6qBgSpgoc4A3waU46LS0H250SBLpgQ9UCZmm4
+	 51gjmFOPpzID8k45o52aItmItGD7QF7rvxPpsMtKRanh+5ECDljhWOkh68RTX5ikab
+	 NyIEtu63sdILgzkS667dGp/UKtNBhyzIgT6HOjUMtoNHk4Je9+v8sVmpgK6nc3hCwv
+	 RxAX7IeN5PBNQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D8618402F3;
-	Mon, 21 Apr 2025 13:31:13 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4A344812E7;
+	Mon, 21 Apr 2025 13:22:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 5ACEE1A0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Apr 2025 13:31:12 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 05AA168
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Apr 2025 13:22:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4C4176085F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Apr 2025 13:31:12 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id EB3FF40BA5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Apr 2025 13:22:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id M35ktSl9moRy for <intel-wired-lan@lists.osuosl.org>;
- Mon, 21 Apr 2025 13:31:11 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=103.168.172.153;
- helo=fhigh-a2-smtp.messagingengine.com;
- envelope-from=marmarek@invisiblethingslab.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A488260A76
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A488260A76
-Received: from fhigh-a2-smtp.messagingengine.com
- (fhigh-a2-smtp.messagingengine.com [103.168.172.153])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A488260A76
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Apr 2025 13:31:11 +0000 (UTC)
-Received: from phl-compute-05.internal (phl-compute-05.phl.internal
- [10.202.2.45])
- by mailfhigh.phl.internal (Postfix) with ESMTP id 9CA681140247;
- Mon, 21 Apr 2025 09:19:16 -0400 (EDT)
-Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-05.internal (MEProxy); Mon, 21 Apr 2025 09:19:16 -0400
-X-ME-Sender: <xms:1EUGaAOBAhZkwXwzh3HU6Yb_nouafcl3par1ACCb-ylstV0RkebMqA>
- <xme:1EUGaG-8s286vBiyLKywdyhTFoD9BxQ50tw0FjplTw2-0ja9PquDDJM_dA0XrPUW8
- VkQFe2JUEalyg>
-X-ME-Received: <xmr:1EUGaHRNh_rI7INPcpx0an_JhVLQFa_I-NdJffOynRT9mEAbtF8FxPD5z6SklnV1EMr9p2ppL6iYwP7s2JZ9sg1teJxDHTWU9w>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvgedtleeiucetufdoteggodetrf
- dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggv
- pdfurfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpih
- gvnhhtshculddquddttddmnecujfgurhepfffhvfevuffkfhggtggujgesghdtreertddt
- jeenucfhrhhomhepofgrrhgvkhcuofgrrhgtiiihkhhofihskhhiqdfikphrvggtkhhiuc
- eomhgrrhhmrghrvghksehinhhvihhsihgslhgvthhhihhnghhslhgrsgdrtghomheqnecu
- ggftrfgrthhtvghrnhepgfduleetfeevhfefheeiteeliefhjefhleduveetteekveettd
- dvgeeuteefjedunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhf
- rhhomhepmhgrrhhmrghrvghksehinhhvihhsihgslhgvthhhihhnghhslhgrsgdrtghomh
- dpnhgspghrtghpthhtohepkedpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtohepvhhi
- thgrlhihrdhlihhfshhhihhtshesihhnthgvlhdrtghomhdprhgtphhtthhopehjvghssh
- gvrdgsrhgrnhguvggsuhhrghesihhnthgvlhdrtghomhdprhgtphhtthhopegrnhhthhho
- nhihrdhlrdhnghhuhigvnhesihhnthgvlhdrtghomhdprhgtphhtthhopehnvghtuggvvh
- esvhhgvghrrdhkvghrnhgvlhdrohhrghdprhgtphhtthhopehinhhtvghlqdifihhrvggu
- qdhlrghnsehlihhsthhsrdhoshhuohhslhdrohhrghdprhgtphhtthhopehrvghgrhgvsh
- hsihhonhhssehlihhsthhsrdhlihhnuhigrdguvghvpdhrtghpthhtohepshhtrggslhgv
- sehvghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtohepshgrshhhrghlsehkvghrnh
- gvlhdrohhrgh
-X-ME-Proxy: <xmx:1EUGaIueBX-ENHBjt7DTNYlMFF21tNKIdqI7ymi-0PO62W_vIt5P_Q>
- <xmx:1EUGaIcnPRA2UWqw-XFvbNQ-TgSEH4rgzF54qPvD21XpHmxL_rlMow>
- <xmx:1EUGaM26595kmVrL__Q2j41Nsl81BIIucpNDrV44cHhAhAdxlO0ybg>
- <xmx:1EUGaM9IGIgVs5uo11bWgEEsScsDu3HKqbUE3HuLf8quWFa4RxY1mw>
- <xmx:1EUGaORDDeFLL8wGE2OIlC6I4sQImaigSz6YR9KgFP2mgoFhIbLE106L>
-Feedback-ID: i1568416f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 21 Apr 2025 09:19:14 -0400 (EDT)
-Date: Mon, 21 Apr 2025 15:19:12 +0200
-From: Marek =?utf-8?Q?Marczykowski-G=C3=B3recki?=
- <marmarek@invisiblethingslab.com>
-To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>
-Cc: Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, regressions@lists.linux.dev,
- stable@vger.kernel.org, Sasha Levin <sashal@kernel.org>
-Message-ID: <aAZF0JUKCF0UvfF6@mail-itl>
-References: <Z_z9EjcKtwHCQcZR@mail-itl>
- <b1f5e997-033c-33ed-5e3b-6fe2632bf718@intel.com>
- <Z_0GYR8jR-5NWZ9K@mail-itl>
- <50da66d0-fe66-0563-4d34-7bd2e25695a4@intel.com>
- <b5d72f51-3cd0-aeca-60af-41a20ad59cd5@intel.com>
- <Z_-l2q9ZhszFxiqA@mail-itl>
- <d37a7c9e-7b3f-afc2-b010-e9785f39a785@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id A8-rtdzYSQz1 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 21 Apr 2025 13:22:37 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 6AE3A40B42
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6AE3A40B42
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6AE3A40B42
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Apr 2025 13:22:37 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id DF1BE61155;
+ Mon, 21 Apr 2025 13:22:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 532B2C4CEF0;
+ Mon, 21 Apr 2025 13:22:32 +0000 (UTC)
+Date: Mon, 21 Apr 2025 14:22:30 +0100
+From: Simon Horman <horms@kernel.org>
+To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Cc: donald.hunter@gmail.com, kuba@kernel.org, davem@davemloft.net,
+ edumazet@google.com, pabeni@redhat.com, vadim.fedorenko@linux.dev,
+ jiri@resnulli.us, anthony.l.nguyen@intel.com,
+ przemyslaw.kitszel@intel.com, andrew+netdev@lunn.ch,
+ aleksandr.loktionov@intel.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ linux-rdma@vger.kernel.org, Milena Olech <milena.olech@intel.com>
+Message-ID: <20250421132230.GE2789685@horms.kernel.org>
+References: <20250415175115.1066641-1-arkadiusz.kubalewski@intel.com>
+ <20250415175115.1066641-3-arkadiusz.kubalewski@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="FtZpEP7ZV9KwPWkb"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <d37a7c9e-7b3f-afc2-b010-e9785f39a785@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- invisiblethingslab.com; h=cc:cc:content-type:content-type:date
- :date:from:from:in-reply-to:in-reply-to:message-id:mime-version
- :references:reply-to:subject:subject:to:to; s=fm2; t=1745241556;
- x=1745327956; bh=zVbdfyjXXUzkgsvwIg3jwWbyVaRbh5FQH6V+d4QgSvc=; b=
- MrbIe4s3pdaO7DysJAHQIpmTwPlQv69KKw52uSk0OzmgnV8RuwrGEXUEc7HyhNlV
- 8ccAU/EWcSAf1tgIjuGNlqNGUCQSdirl2FJlK3utznREFFZ8xwepZDgePKjaKdPK
- DEG3I+akFUaMepkP2xssYZh6gU+TDZhiMgMd4z18j+No4bK7qC5EGOtSR/PZcNlM
- bxXfKLZeO36BjJ6XGVpAJ4lz6uAGDP1Vvb4Fv81/FiUgrdwiEOE2KDUS2O+TJgIz
- 4ZuEd/ESo4JpDKZjfEp5splwh/dSkpP+zEMgFd+chqUbiMsvFx3a9golsyNCmpEx
- zIC0PDUrhP/vIN1/I8O20w==
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
- :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
- 1745241556; x=1745327956; bh=zVbdfyjXXUzkgsvwIg3jwWbyVaRbh5FQH6V
- +d4QgSvc=; b=e9j+OPzzFw0c/WfO5vtzydbJNlOm1jp+0KzcfRpTpbM0EFzEy+0
- nbucO3P6Lx4CCupQvtsat7JapPgtzP7cLlB3g7osJwx+GZHNGrJz+K9A46DKYvCl
- DAbOxNVcK8WI7urCxh/tM9SLml9a5XS6TJ0oDN3fJnmHiPv8e8gi+f0eHtkbuP/z
- NjQHQJplVrzdi7I7csrhQ8/L4zWGchXlqG4MRVSyaAum4EwiVZK3Ki/bR1EQAVre
- u0jmPJgo0avxPanY+XBtayNiMU/SsrahDtFXqc59pnTReU95WRlCheHuoMtrvHkh
- SnUDwo1yu1ZOAoqlDJQRMPkc0uhx1yqz8ow==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=invisiblethingslab.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key, unprotected) header.d=invisiblethingslab.com
- header.i=@invisiblethingslab.com header.a=rsa-sha256 header.s=fm2
- header.b=MrbIe4s3; 
+In-Reply-To: <20250415175115.1066641-3-arkadiusz.kubalewski@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1745241755;
+ bh=O/Wl7D2AALWkD5h899UW87JVEqspsVHGQ7Vw+1YDJhw=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=XcEVkLLa18wZ/O/fdSVxTbdHCC+nICbmRPV8gkt1GbLw7ut8rPyP+enBmJ8BpaqWJ
+ nhpRMbAjrqJJPDT5ZpWQYYQkjkuGYgbkV5t/cml7Uf0qhK7BJmuXBvliG7SKCkeM0h
+ RT1Uhlqj/IoUY/8H5uRs5o7QDnS66tDCLJAO8MjYrW8r/p3Cm39rfDdjqd8bqjD7Uk
+ oum9ogqBnYatc27BOKnnqIP6WmZnHmdGKD/PL4otQH0S8eNOF3ArFjj9dcFEIlxZH8
+ xkFgqZn6HPRZ1iYjeCIPDxDFkUFzjI33Y4EKTRSkYhP02vdmbzlHhQzYvyhj7EBnp7
+ PFxw2WOx4gmJA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=messagingengine.com header.i=@messagingengine.com
- header.a=rsa-sha256 header.s=fm2 header.b=e9j+OPzz
-Subject: Re: [Intel-wired-lan] [REGRESSION] e1000e heavy packet loss on
- Meteor Lake - 6.14.2
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=XcEVkLLa
+Subject: Re: [Intel-wired-lan] [PATCH net-next v1 2/3] dpll: add reference
+ sync get/set
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -157,74 +106,39 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+On Tue, Apr 15, 2025 at 07:51:14PM +0200, Arkadiusz Kubalewski wrote:
+> Define function for reference sync pin registration and callback ops to
+> set/get current feature state.
+> 
+> Implement netlink handler to fill netlink messages with reference sync
+> pin configuration of capable pins (pin-get).
+> 
+> Implement netlink handler to call proper ops and configure reference
+> sync pin state (pin-set).
+> 
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Reviewed-by: Milena Olech <milena.olech@intel.com>
+> Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 
---FtZpEP7ZV9KwPWkb
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Date: Mon, 21 Apr 2025 15:19:12 +0200
-From: Marek =?utf-8?Q?Marczykowski-G=C3=B3recki?= <marmarek@invisiblethingslab.com>
-To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>
-Cc: Jesse Brandeburg <jesse.brandeburg@intel.com>,
-	Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
-	intel-wired-lan@lists.osuosl.org, regressions@lists.linux.dev,
-	stable@vger.kernel.org, Sasha Levin <sashal@kernel.org>
-Subject: Re: [Intel-wired-lan] [REGRESSION] e1000e heavy packet loss on
- Meteor Lake - 6.14.2
+...
 
-On Mon, Apr 21, 2025 at 03:44:02PM +0300, Lifshits, Vitaly wrote:
->=20
->=20
-> On 4/16/2025 3:43 PM, Marek Marczykowski-G=C3=B3recki wrote:
-> > On Wed, Apr 16, 2025 at 03:09:39PM +0300, Lifshits, Vitaly wrote:
-> > > Can you please also share the output of ethtool -i? I would like to k=
-now the
-> > > NVM version that you have on your device.
-> >=20
-> > driver: e1000e
-> > version: 6.14.1+
-> > firmware-version: 1.1-4
-> > expansion-rom-version:
-> > bus-info: 0000:00:1f.6
-> > supports-statistics: yes
-> > supports-test: yes
-> > supports-eeprom-access: yes
-> > supports-register-dump: yes
-> > supports-priv-flags: yes
-> >=20
->=20
-> Your firmware version is not the latest, can you check with the board
-> manufacturer if there is a BIOS update to your system?
+> diff --git a/drivers/dpll/dpll_core.h b/drivers/dpll/dpll_core.h
+> index 2b6d8ef1cdf3..b77e021356ca 100644
+> --- a/drivers/dpll/dpll_core.h
+> +++ b/drivers/dpll/dpll_core.h
+> @@ -56,6 +56,7 @@ struct dpll_pin {
+>  	struct module *module;
+>  	struct xarray dpll_refs;
+>  	struct xarray parent_refs;
+> +	struct xarray sync_pins;
 
-I can check, but still, it's a regression in the Linux driver - old
-kernel did work perfectly well on this hw. Maybe new driver tries to use
-some feature that is missing (or broken) in the old firmware?
+nit: Please add sync_pins to the Kernel doc for struct dpll_pin.
 
-> Also, you mentioned that on another system this issue doesn't reproduce, =
-do
-> they have the same firmware version?
+     And, separately, it would be quite nice if documentation
+     of the non-existent rclk_dev_name member removed too.
 
-The other one has also 1.1-4 firmware. And I re-checked, e1000e from
-6.14.2 works fine there.
+>  	struct dpll_pin_properties prop;
+>  	refcount_t refcount;
+>  	struct rcu_head rcu;
 
---=20
-Best Regards,
-Marek Marczykowski-G=C3=B3recki
-Invisible Things Lab
-
---FtZpEP7ZV9KwPWkb
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhrpukzGPukRmQqkK24/THMrX1ywFAmgGRdAACgkQ24/THMrX
-1yxLeAf8DvKL+foWSoIwDphGGhQZ3unGbl5ca72JDBQ6KcM6JxaNauYhY9mpzz+C
-ZESupbqixbb+HLmbIbEQLVlDyfxAW6x6y4sBV+8c3fy8678Z+c2PcHIgiX8YV0a1
-Ntrjn9GRZBWi2e6RmJSCHijHtRlfQsjDxSWiwT1WxjuNVROgsLOW9LXPZmXvasnp
-UDTqgIhH6jcNFhaQ/pQcoGyZ31vG6pVLeloePXDOlJ35Gb+4Cts6jTeqBxxyF0R8
-O1TMVSAYc3G6wlH7o1eSQ4pLeORMY0H8m/kf1dMOLj7osPorfDauk5KLXVm2WWJh
-VEKHuDwHUdeCHvG8BvsOAKR9tsuung==
-=gE/2
------END PGP SIGNATURE-----
-
---FtZpEP7ZV9KwPWkb--
+...
