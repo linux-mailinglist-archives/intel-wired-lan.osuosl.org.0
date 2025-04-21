@@ -1,60 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 92E06A9527E
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Apr 2025 16:08:51 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D71EA9529E
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Apr 2025 16:19:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1301D403FE;
-	Mon, 21 Apr 2025 14:08:48 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0FA1680EF0;
+	Mon, 21 Apr 2025 14:19:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id n5frxk_AmssP; Mon, 21 Apr 2025 14:08:47 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id L4I3xfX81C4e; Mon, 21 Apr 2025 14:19:48 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6688540650
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5C64080E60
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1745244527;
-	bh=YrTSPXG4k0Hzwi1ZGTug3BljLO15RmvDpt449VgiKKU=;
+	s=default; t=1745245188;
+	bh=R6T144mn1gf1almbWLpMGOt9TlXFcsHxsRAhcafCgJI=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=aGcedaLCQFqK9zYici/LQ3x0gQhjQj7i9z4qCg87xuGMRjcW9WJxJNKSJ53cX3dPp
-	 LOfjsYW4bPXRmGWgR/Lfmdtl01Yn39CiHCmMvSQ4+HhIsXR7smvx/j7r32sg9ovqWf
-	 0b2imqoVO3wxOnKv0xj6tlvekJcNlWOqhrINrBH88TEowYGqFkfHU+n9wRrNTY6M1r
-	 uKeu9QwPGUDhrSjx8T+lJkYJCAEWVYWuah7QPxbR/+6cB0XZJujuBFEIudg7ZE4avP
-	 TRl6rsAeqfV0c4SHBGYfmqnQgzM6ncu6J72fmPiTr0wNZOiHMf8m5OpS2oL8cyrIrA
-	 tF1Kph9dM36fw==
+	b=zwfXDKFr4gEANbcqhNi2d+l6777r6ShYT5KmRImuI7KqikHaRROrsbYHzu2LkCL0f
+	 DOuFdK6l6p1R2uqmTBWvUcSChwdTtx1w8TfOc1XRjLAu+xfQlUOCMxkK+EH9v9dhnl
+	 ndoqvg6Oh6Q06BXCnsrADpA6R5GN1ZqHVKM7dG1cvhUgxaNUOmZttGI9BMivjJsCTg
+	 T5psV84bP8LS8X45pC7v3eSUJopt9VOaK/VVLgd5FfEJr+82Wh2i/IH+0EKs+jAhWK
+	 VqhrUblkly3XmCarS+PXOBL4XMbzS264wjlmNvHzGe8ll2vJsnnAawxwdF7RDowm0p
+	 e4l28fd5iXuuQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6688540650;
-	Mon, 21 Apr 2025 14:08:47 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5C64080E60;
+	Mon, 21 Apr 2025 14:19:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 6EDF91A0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Apr 2025 14:08:46 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id DD6CD1C0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Apr 2025 14:19:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 604D740355
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Apr 2025 14:08:46 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id C3767406C8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Apr 2025 14:19:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YHpp3ZEjP4u6 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 21 Apr 2025 14:08:45 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
- helo=tor.source.kernel.org; envelope-from=horms@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 94EBD403C1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 94EBD403C1
-Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 94EBD403C1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Apr 2025 14:08:45 +0000 (UTC)
+ id djFIV061ZJRv for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 21 Apr 2025 14:19:46 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 265C94058F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 265C94058F
+Received: from sea.source.kernel.org (sea.source.kernel.org
+ [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 265C94058F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Apr 2025 14:19:46 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id C1BF060008;
- Mon, 21 Apr 2025 14:08:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4EA64C4CEE4;
- Mon, 21 Apr 2025 14:08:38 +0000 (UTC)
-Date: Mon, 21 Apr 2025 15:08:36 +0100
+ by sea.source.kernel.org (Postfix) with ESMTP id 08C5D4A0AF;
+ Mon, 21 Apr 2025 14:19:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 51A95C4CEE4;
+ Mon, 21 Apr 2025 14:19:39 +0000 (UTC)
+Date: Mon, 21 Apr 2025 15:19:37 +0100
 From: Simon Horman <horms@kernel.org>
 To: Larysa Zaremba <larysa.zaremba@intel.com>
 Cc: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
@@ -83,32 +84,31 @@ Cc: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
  Milena Olech <milena.olech@intel.com>, pavan.kumar.linga@intel.com,
  "Singhai, Anjali" <anjali.singhai@intel.com>,
  Phani R Burra <phani.r.burra@intel.com>
-Message-ID: <20250421140836.GH2789685@horms.kernel.org>
+Message-ID: <20250421141937.GI2789685@horms.kernel.org>
 References: <20250408124816.11584-1-larysa.zaremba@intel.com>
- <20250408124816.11584-4-larysa.zaremba@intel.com>
+ <20250408124816.11584-7-larysa.zaremba@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250408124816.11584-4-larysa.zaremba@intel.com>
+In-Reply-To: <20250408124816.11584-7-larysa.zaremba@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1745244524;
- bh=y+u9o3uYT+ExmvtSXbLZr8bAFVgoBqK/gneBhs8PZLk=;
+ d=kernel.org; s=k20201202; t=1745245185;
+ bh=Tr9+pqiq4D1eXz6CFkFBVMqYsvom8aBnfD6QBxYvocg=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ee9IrGNVBY468I0nIZFGOEwSSO4iJvmV3Vd8XmWujePOkW+RQw0qoTf5gPE74TnZX
- C8qwUs7dBOH7vUuZLAMHPY+whZ5y16Alj+g6qhK4NH9aSW8/lQwyAugMGUmHKBPgkX
- Ts1mQDeM8F3kFazN6V7zQoAIWI9/BkSajNLajuJFM0ROiLpWxVBeDRz0eNKGLZmJSl
- jLi7vAzRyzF0K2AP8N2qSWfhDO6AFW5+6nFbaFugRIYCz8i1SYJEZgZLK5F91i+MwP
- 7PLXue2MFhNahQ6ie5tjBbSvEt2QfpqOrxjN8pZJABKrBwRH6YHk0J4IJEkLmDcQTW
- sZljmP2HBMWYw==
+ b=t3Jo7K93LVgH9rdJjTmiOPAouPdZfKVSSsI7tt0fE5/7NBNVaKUOx2TsqBgxaCnsx
+ Z7XXaeoqdpcPl/j8zO29nasbGPGUeZReKOfPCG6Ag71sWYNoH69DrPvAqv6XHr5h4+
+ c+8qagFwgMr0+CDx/i7qjqdHTkccn08kGgN1SR9suu+8LjldZMoLT4aNJ7bqJ5pfez
+ XQFZ1fmQeeyR5vpQHfmuVM4+O+Tcys00pb6Xq31Y6QNAr4YSADBc0pEUsdetpE8Reo
+ mWdp8kB+FdDO3RCPww9QmdbioUw8FXut2rQ1PvdJcPYRb7qQvxIZB0P1JAhK30yoyY
+ nDS0mdRdLjsHw==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=ee9IrGNV
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 03/14] libeth: add PCI device
- initialization helpers to libeth
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=t3Jo7K93
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 06/14] libeth: add
+ bookkeeping support for control queue messages
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -124,91 +124,82 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Apr 08, 2025 at 02:47:49PM +0200, Larysa Zaremba wrote:
+On Tue, Apr 08, 2025 at 02:47:52PM +0200, Larysa Zaremba wrote:
 > From: Phani R Burra <phani.r.burra@intel.com>
 > 
-> Add memory related support functions for drivers to access MMIO space and
-> allocate/free dma buffers.
+> All send control queue messages are allocated/freed in libeth itself
+> and tracked with the unique transaction (Xn) ids until they receive
+> response or time out. Responses can be received out of order, therefore
+> transactions are stored in an array and tracked though a bitmap.
+> 
+> Pre-allocated DMA memory is used where possible. It reduces the driver
+> overhead in handling memory allocation/free and message timeouts.
 > 
 > Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 > Signed-off-by: Phani R Burra <phani.r.burra@intel.com>
 > Co-developed-by: Victor Raj <victor.raj@intel.com>
 > Signed-off-by: Victor Raj <victor.raj@intel.com>
-> Co-developed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
-> Signed-off-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
 > Co-developed-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
 > Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
 > Co-developed-by: Larysa Zaremba <larysa.zaremba@intel.com>
 > Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
-
-...
-
-> diff --git a/drivers/net/ethernet/intel/libeth/pci.c b/drivers/net/ethernet/intel/libeth/pci.c
+> ---
+>  drivers/net/ethernet/intel/libeth/controlq.c | 578 +++++++++++++++++++
+>  include/net/libeth/controlq.h                | 169 ++++++
+>  2 files changed, 747 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/intel/libeth/controlq.c b/drivers/net/ethernet/intel/libeth/controlq.c
 
 ...
 
 > +/**
-> + * __libeth_pci_map_mmio_region - map PCI device MMIO region
-> + * @mmio_info: struct to store the mapped MMIO region
-> + * @offset: MMIO region start offset
-> + * @size: MMIO region size
-> + * @num_args: number of additional arguments present
+> + * libeth_ctlq_xn_deinit - deallocate and free the transaction manager resources
+> + * @xnm: pointer to the transaction manager
+> + * @ctx: controlq context structure
 > + *
-> + * Return: true on success, false on memory map failure.
+> + * All Rx processing must be stopped beforehand.
 > + */
-> +bool __libeth_pci_map_mmio_region(struct libeth_mmio_info *mmio_info,
-> +				  resource_size_t offset,
-> +				  resource_size_t size, int num_args, ...)
+> +void libeth_ctlq_xn_deinit(struct libeth_ctlq_xn_manager *xnm,
+> +			   struct libeth_ctlq_ctx *ctx)
 > +{
-> +	struct pci_dev *pdev = mmio_info->pdev;
-> +	struct libeth_pci_mmio_region *mr;
-> +	resource_size_t pa;
-> +	void __iomem *va;
-> +	int bar_idx = 0;
-> +	va_list args;
+> +	bool must_wait = false;
+> +	u32 i;
 > +
-> +	if (num_args) {
-> +		va_start(args, num_args);
-> +		bar_idx = va_arg(args, int);
-> +		va_end(args);
+> +	/* Should be no new clear bits after this */
+> +	spin_lock(&xnm->free_xns_bm_lock);
+> +		xnm->shutdown = true;
+
+nit: The line above is not correctly indented.
+
+     Flagged by Smatch.
+
+> +
+> +	for_each_clear_bit(i, xnm->free_xns_bm, LIBETH_CTLQ_MAX_XN_ENTRIES) {
+> +		struct libeth_ctlq_xn *xn = &xnm->ring[i];
+> +
+> +		spin_lock(&xn->xn_lock);
+> +
+> +		if (xn->state == LIBETH_CTLQ_XN_WAITING ||
+> +		    xn->state == LIBETH_CTLQ_XN_IDLE) {
+> +			complete(&xn->cmd_completion_event);
+> +			must_wait = true;
+> +		} else if (xn->state == LIBETH_CTLQ_XN_ASYNC) {
+> +			__libeth_ctlq_xn_push_free(xnm, xn);
+> +		}
+> +
+> +		spin_unlock(&xn->xn_lock);
 > +	}
 > +
-> +	mr = libeth_find_mmio_region(&mmio_info->mmio_list, offset, bar_idx);
-> +	if (mr) {
-> +		pci_warn(pdev, "Mapping of BAR%u with offset %llu already exists\n",
-> +			 bar_idx, offset);
+> +	spin_unlock(&xnm->free_xns_bm_lock);
+> +
+> +	if (must_wait)
+> +		wait_for_completion(&xnm->can_destroy);
+> +
+> +	libeth_ctlq_xn_deinit_dma(&ctx->mmio_info.pdev->dev, xnm,
+> +				  LIBETH_CTLQ_MAX_XN_ENTRIES);
+> +	kfree(xnm);
+> +	libeth_ctlq_deinit(ctx);
+> +}
+> +EXPORT_SYMBOL_NS_GPL(libeth_ctlq_xn_deinit, "LIBETH_CP");
 
-Hi Phani, Larysa, all,
-
-I think that the format specifier here should be %zu rather than %llu.
-
-On ARM W=1 builds gcc 14.2.0 flags this as follows:
-
-    CALL    scripts/checksyscalls.sh
-    CC      drivers/net/ethernet/intel/libeth/pci.o
-  In file included from ./include/linux/device.h:15,
-                   from ./include/linux/pci.h:37,
-                   from ./include/net/libeth/pci.h:7,
-                   from drivers/net/ethernet/intel/libeth/pci.c:4:
-  .../pci.c: In function '__libeth_pci_map_mmio_region':
-  .../pci.c:92:32: warning: format '%llu' expects argument of type 'long long unsigned int', but argument 4 has type 'resource_size_t' {aka 'unsigned int'} [-Wformat=]
-     92 |                 pci_warn(pdev, "Mapping of BAR%u with offset %llu already exists\n",
-        |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  .../dev_printk.h:110:30: note: in definition of macro 'dev_printk_index_wrap'
-    110 |                 _p_func(dev, fmt, ##__VA_ARGS__);                       \
-        |                              ^~~
-  .../dev_printk.h:156:61: note: in expansion of macro 'dev_fmt'
-    156 |         dev_printk_index_wrap(_dev_warn, KERN_WARNING, dev, dev_fmt(fmt), ##__VA_ARGS__)
-        |                                                             ^~~~~~~
-  .../pci.h:2704:41: note: in expansion of macro 'dev_warn'
-   2704 | #define pci_warn(pdev, fmt, arg...)     dev_warn(&(pdev)->dev, fmt, ##arg)
-        |                                         ^~~~~~~~
-  .../pci.c:92:17: note: in expansion of macro 'pci_warn'
-     92 |                 pci_warn(pdev, "Mapping of BAR%u with offset %llu already exists\n",
-        |                 ^~~~~~~~
-  .../pci.c:92:65: note: format string is defined here
-     92 |                 pci_warn(pdev, "Mapping of BAR%u with offset %llu already exists\n",
-        |                                                              ~~~^
-        |                                                                 |
-        |                                                                 long long unsigned int
-        |                                                              %u
+...
