@@ -1,87 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AA02CA97346
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Apr 2025 19:03:27 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E78C9A97348
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Apr 2025 19:03:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 44D3340C09;
-	Tue, 22 Apr 2025 17:03:26 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 86933810B6;
+	Tue, 22 Apr 2025 17:03:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id jtFvli4GqQEP; Tue, 22 Apr 2025 17:03:25 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id RzlJ6-LtbQPu; Tue, 22 Apr 2025 17:03:26 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5CB2140C0F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1D4FC810BF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1745341405;
-	bh=OexSN05te0CUVU2iPyR6GLq5LTsS442VVb6xGCgLR2I=;
+	s=default; t=1745341406;
+	bh=h2lcNF0/63PIBryOzP+S0gn+/jBuoOne3WBLSHYRiVs=;
 	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=7sb/cocXnjFav44mn60/NcujY8Dn3kWtafvU+SBbNuojkIegyq6br58Osr6+/Akkj
-	 n+EkY3Na1F5NMK8FVf6DDx1FaaP7EzFyC+s2aqwlQbde+R0ABusKPl50Pc1LhUBzzu
-	 powkktn/8Uz9qGaIUNSAtq3edtdsgRMA3kXyz6ufE8H064InRP2sQVjSytcSt+YrCI
-	 l8l2EzxdeEyRxIfWWVV6WYLgq23ak5utRRNxXzWA14AYzNqCpXZx2kZF0MNAeJ34RH
-	 YKWxpiE9QoMZ9x70KxDypaciEQbR79N5LShDtafW0PgUb+jGTrE1srSzu1o2asOdRI
-	 pmBWIr++QvR6A==
+	b=D7eeoqPSFF8Pm6u9hBW7+oU93/XNruE5Vp0YXxABPV4sF4C1xSBQGsvaC7L8+a4cg
+	 KrDEmKRRi5Oy6ugzIE3vemmQ80AruZsjE3xRElNVdH3s7yTbGRyaNahgAAHeEVipEk
+	 NxSyvaBlsTV9dAHKPlXgKFDa487Wy/eAKsgRzEFjVa5LZvMgEjpGqRNa1H1cF9ZC49
+	 KQkGJLva5krpesWAV0eUG/uFqSpbH/85Q7QRbku9hm6J7oY+PV0Sp1QzFtW21CGmi3
+	 e4LcTaGkh+YoyjLRFA4lNiOTNMYhf7aom/1xsfIsmPUFlO/be4SI0Q/97sosoxFQAJ
+	 IjsTxkLDHUI/A==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5CB2140C0F;
-	Tue, 22 Apr 2025 17:03:25 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1D4FC810BF;
+	Tue, 22 Apr 2025 17:03:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id C8B441BC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Apr 2025 17:03:23 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 6837219F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Apr 2025 17:03:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B97D540C09
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Apr 2025 17:03:23 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4E43B40C00
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Apr 2025 17:03:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 6g3f98gDknJW for <intel-wired-lan@lists.osuosl.org>;
+ id FJRApAjalF34 for <intel-wired-lan@lists.osuosl.org>;
  Tue, 22 Apr 2025 17:03:23 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.15;
  helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org ED64A4086B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ED64A4086B
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4A49C40BF9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4A49C40BF9
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.15])
- by smtp4.osuosl.org (Postfix) with ESMTPS id ED64A4086B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Apr 2025 17:03:22 +0000 (UTC)
-X-CSE-ConnectionGUID: wLCYsPXVQE+TBFDkb5zYng==
-X-CSE-MsgGUID: ISJFpwKsRna7MXg9Yz2tsA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11411"; a="47039258"
-X-IronPort-AV: E=Sophos;i="6.15,231,1739865600"; d="scan'208";a="47039258"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4A49C40BF9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Apr 2025 17:03:23 +0000 (UTC)
+X-CSE-ConnectionGUID: fxMdc2FZRqOgjfa2UEfe9g==
+X-CSE-MsgGUID: Ac0z03ZTR6mi/8mcB7CkaQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11411"; a="47039266"
+X-IronPort-AV: E=Sophos;i="6.15,231,1739865600"; d="scan'208";a="47039266"
 Received: from fmviesa004.fm.intel.com ([10.60.135.144])
  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Apr 2025 10:03:19 -0700
-X-CSE-ConnectionGUID: vvNi0YLJTWOPtn08UcKe2Q==
-X-CSE-MsgGUID: OjsMaRuMTNu3D4WFLlc4bw==
+ 22 Apr 2025 10:03:22 -0700
+X-CSE-ConnectionGUID: SL+xFD9BSYKxTXiSkQ4QEA==
+X-CSE-MsgGUID: 0rvtHFFXTRa0TqVAnUwfDQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,231,1739865600"; d="scan'208";a="137154513"
+X-IronPort-AV: E=Sophos;i="6.15,231,1739865600"; d="scan'208";a="137154527"
 Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
  by fmviesa004.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Apr 2025 10:03:19 -0700
+ 22 Apr 2025 10:03:21 -0700
 Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
  ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14; Tue, 22 Apr 2025 10:03:18 -0700
+ 15.2.1544.14; Tue, 22 Apr 2025 10:03:21 -0700
 Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
  ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14 via Frontend Transport; Tue, 22 Apr 2025 10:03:18 -0700
-Received: from NAM02-DM3-obe.outbound.protection.outlook.com (104.47.56.48) by
+ 15.2.1544.14 via Frontend Transport; Tue, 22 Apr 2025 10:03:21 -0700
+Received: from NAM02-DM3-obe.outbound.protection.outlook.com (104.47.56.43) by
  edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Tue, 22 Apr 2025 10:03:16 -0700
+ 15.1.2507.44; Tue, 22 Apr 2025 10:03:20 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=vuyIQwE12qW1mNDs2wOxcQeJKLkiI9W8QJDUpSIIM2tzgj1bsiCVPHOLmPzvUlm+lyVRh6Ie8y/mVFAcCbKN8aOwmYtdZah5cbpHF17e+yA+ciPXkDtxTyeDI/6RmwvqIh0jD2JcW5hvDW7oUNgdYx0rc7F0oBEGrCes4bG3/Lo9zFBtCBf0so2Ew3+wX0WBDhn3cTklwfIAZSLV2yWcd+x+ehoG6lEhnIOhjNktKmbPVlkkq0pOsG3EFpDZiz4ogzj5/IoVYjpk83UnqBSxHrIojn9iYNtdcfUYvWh3HQHaqPOCN07m7Py1SBeH9NnIkwu15ksthMnGHluGp9Qiug==
+ b=yG1eQX0UPiiUsH+71BLIDiQmQw6F8HuYsvicRfPvAeiUAwAhazUAhMaJC2jCcLhTjz9vPpuh60ro/hYJoQ2Ua23MP7rXso4uMx14vo+35xLv8AGUne+PBj1UYYhMqbErvBxTlHF1HMBtHNY2h+M/P48qrIYno7oXGOyWlUMnk9qVKfRd96TcPyoI0wRv9KbWfc17xEx4SdRx+zkFchD0mdEygV6bUTDRPcnY11aIaTlRj2SLU+cZSml84BnPE5iHWFtr6wcKhOezf2hT1z1H73fVfkWUHZAX1YX8C505kBCd7ClmY6ZPSuYrZeW4UY6VvDkcuP8YSTetuVNjk7Sixw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=OexSN05te0CUVU2iPyR6GLq5LTsS442VVb6xGCgLR2I=;
- b=v02YGfkbRQgOsTp+JL3kX48EiHWWbody9b3Kv8WvzbkSlFzrlacUaEo9OdXxtBW+pHA+z6+liZhU9FxS18QJ8pHbLYYC6r2L4OQYfdDRYC2PO2Yf7eG2Ooj0DmExzLa/hTSXYzSkqNPcI2D9y5ixiyy0ep7h+w0gY+yVmjHVM+Px2rQViKvKotid3QpYXioImZ1yjDO9CR49ouZsjPy2F+xmexeD8f1fuTRBUSLT56YLuNRKPDj721/DyrmGaP/jIVbfKHQMqBMiUhBwPaAjHKK4WE/oQsEjCQOTyRvvKuPNW1ECO+o5ayV1P9GuDdHznBY3Cl3/JMyVZGdkzDCi4A==
+ bh=h2lcNF0/63PIBryOzP+S0gn+/jBuoOne3WBLSHYRiVs=;
+ b=NouWVnaufcS199x68ZMfW6zA+n/vR7EFvhAxXXU3+VZ7gZMeITs9gDwMk4LJxggdrYkPf2KsQyKCCaS8adwyATVSWCVggCH6EnSJKfVKr9yBt/4iDnCotPRl1sW7rgFPGXozEtopU7WMbhdbPilZG2oOR1bCd1qwm8AiWnHE+DGW+dhoiFp5TxLfsS994WZzXfNF5HUlQ0P7wUfDiEF62wrVfo8WT7PQq5wJfsjnkhiJHQFNHdKIksQW1p6oPSzL5Yc+JE+begVc3HR+zf8C5a/q/JOhu/oIB2VPcU+Ft5aaFciKwjyvn5RnwzJlzwtXiTx1HLZv8Ke7KYCQW0mAtw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
@@ -89,108 +89,105 @@ Received: from SJ0PR11MB5866.namprd11.prod.outlook.com (2603:10b6:a03:429::10)
  by PH7PR11MB7499.namprd11.prod.outlook.com (2603:10b6:510:278::12)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8655.34; Tue, 22 Apr
- 2025 17:02:45 +0000
+ 2025 17:03:16 +0000
 Received: from SJ0PR11MB5866.namprd11.prod.outlook.com
  ([fe80::265f:31c0:f775:c25b]) by SJ0PR11MB5866.namprd11.prod.outlook.com
  ([fe80::265f:31c0:f775:c25b%3]) with mapi id 15.20.8655.033; Tue, 22 Apr 2025
- 17:02:45 +0000
+ 17:03:16 +0000
 From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
-To: "Kubiak, Michal" <michal.kubiak@intel.com>,
+To: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-CC: "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>, "Lobakin,
- Aleksander" <aleksander.lobakin@intel.com>, "Kitszel, Przemyslaw"
- <przemyslaw.kitszel@intel.com>, "dawid.osuchowski@linux.intel.com"
- <dawid.osuchowski@linux.intel.com>, "Keller, Jacob E"
- <jacob.e.keller@intel.com>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>, "Kubiak, Michal" <michal.kubiak@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH iwl-net 1/3] ice: fix Tx scheduler
- error handling in XDP callback
-Thread-Index: AQHbs5yL4SGxMKu6ykqX8GFqTi8DZbOv6WrA
-Date: Tue, 22 Apr 2025 17:02:45 +0000
-Message-ID: <SJ0PR11MB58666BDBAB168D94E0EEE64BE5BB2@SJ0PR11MB5866.namprd11.prod.outlook.com>
-References: <20250422153659.284868-1-michal.kubiak@intel.com>
- <20250422153659.284868-2-michal.kubiak@intel.com>
-In-Reply-To: <20250422153659.284868-2-michal.kubiak@intel.com>
+CC: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Kolacinski, Karol"
+ <karol.kolacinski@intel.com>, "Olech, Milena" <milena.olech@intel.com>,
+ "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH iwl-next v5 2/3] ice: change SMA pins
+ to SDP in PTP API
+Thread-Index: AQHbs6C6fC0aMwpX70mJs8vMBh8+ObOv6ZMQ
+Date: Tue, 22 Apr 2025 17:03:16 +0000
+Message-ID: <SJ0PR11MB58667D4EC93EE07538F4C3AEE5BB2@SJ0PR11MB5866.namprd11.prod.outlook.com>
+References: <20250422160149.1131069-1-arkadiusz.kubalewski@intel.com>
+ <20250422160149.1131069-3-arkadiusz.kubalewski@intel.com>
+In-Reply-To: <20250422160149.1131069-3-arkadiusz.kubalewski@intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-ms-publictraffictype: Email
 x-ms-traffictypediagnostic: SJ0PR11MB5866:EE_|PH7PR11MB7499:EE_
-x-ms-office365-filtering-correlation-id: dfe98c21-8f53-46d6-f5d5-08dd81bf80cf
+x-ms-office365-filtering-correlation-id: b430ba8f-fca2-49cd-9adb-08dd81bf935f
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
  ARA:13230040|376014|1800799024|366016|7053199007|38070700018; 
-x-microsoft-antispam-message-info: =?us-ascii?Q?FF8fO6ruOECeD3uEFq6T67Xf64IzAxQP4Uc4CTs/3fbzXlfM+rTHV4JsWYfR?=
- =?us-ascii?Q?FpR2Nv7Sa87J4ISeaB2SVAMN9flwEi6i37nAZQAOVTc4jaip0IJ76Bavfzxf?=
- =?us-ascii?Q?yFDsfhSZKvknWOG8Al2tRFF0sk0RdvtpgViKHmO96YyPjYUx6/SQtTa+Hy++?=
- =?us-ascii?Q?QfuA4s6e1lwXiYx2GhmmrAWfG8bg7IhV+8Rd8VvDlD+Kyh2U04C5vwDDJEU8?=
- =?us-ascii?Q?22XLU28CLtHkekzGtyHS4GbrPBKs0lZVN0b9kPbJPDmTurXSSW9JN2yWV6d2?=
- =?us-ascii?Q?TB547j1x+bqEeCZUYigNu5ZKjPHCZSfVS1DBwuXRqVBfGerz3GFTHXM5YGG6?=
- =?us-ascii?Q?iTIolYh0s3TKvOZ3GDnu/VU1vWziqTZpqNjjhQJm7i1mOb1/2LopBNCOcgoS?=
- =?us-ascii?Q?CBj+b05Z3UCgkc3IBCJW3iufeIdBKm3euoOLUaFskMGzuerlXZcxYyOw0GRc?=
- =?us-ascii?Q?OUWzvGHYwOFWHdidT5VQGwxmwJfQhNUNXfd3sJGE/52HkcihsVtVlJH2q47U?=
- =?us-ascii?Q?h/DSX4bzfdL1jO7xPTnmUTipe/ztm91QudIJiyCoWVdcJ/kblQnsfniUAKSP?=
- =?us-ascii?Q?Z7tSC92QdrUD/CISg7AYbSecA3xsyDZrJD6Ouaz84EKsOIDpomoC/yutKtN0?=
- =?us-ascii?Q?fTCEOfaCLR/kRsHIdOxZKWypi6lABMAGQOc0JiqJFUsqz8lQRz/SY9NmBI/Q?=
- =?us-ascii?Q?IZFTzM41h5L+ZzdyHLjn/GRKb9c79z8ooi6w/DHkSf7pWa0CRaLMXgcXCa1z?=
- =?us-ascii?Q?yjdkWnODZrBtSiGQtp/qS2D6wz0y9TYSwg+egA+6IeggRT0aPYUnc7/HKMZ1?=
- =?us-ascii?Q?1XyyXhj0MQuFqp7fAhr1mLmnfJTBij+zN6AWoJ9nnNv13kN10LYGV9M5rpdf?=
- =?us-ascii?Q?TyuNM1vDK9dAgKuGT2bNNTXRe6+uyT8HvO+SvhnP/wz9tv8UQCgoq2rg2rcG?=
- =?us-ascii?Q?NH9DH1Hquu8XXWk+Dd6rf0J5ETk0rQpfZ53B+ACWFdwRWYTZhJNKt6YEeqwf?=
- =?us-ascii?Q?S76PhTTW9Ou8G2/K1GiSQUjE5c/OSizIdGb9hW5W8pO/FLkvaT4JYf2u9rCR?=
- =?us-ascii?Q?e0O7uq3Tcfzp8v+pMG97f9vrpYEO+NUjcAqnTqEAyS1+mw/z2rEFz1kwspGX?=
- =?us-ascii?Q?vehA/XmtvMRgWF605szyY2HiBUbEFoMe422nPxsvnBj6G/nBbKJ8eUKkeGa8?=
- =?us-ascii?Q?fNnFES8W90gCqLlFTCBzeXU9nhC1MXmz0a6B61Jn91Avb/aGrP9oBbeGaI9m?=
- =?us-ascii?Q?V1z/LHP5tgdPj9dvf2NxqDTDxJnz8cUHvo8y1EzV621ewReCo5RRbjT7FWk3?=
- =?us-ascii?Q?S7KPofjq4wiuI18qM71aJ86+iSrVDuNrOsCY5jJOEDfkuQz63MP6jYp9+yer?=
- =?us-ascii?Q?qxJLz+Ox6FLKtmODbkWSJlLGttXXBjBV8j5jyEFfsg88hsPt+CXly7JALdZY?=
- =?us-ascii?Q?byeJEz5GyeOMEOyhBK62LCLq3Rq4l1WEkv2VxdooDHqldHUbwrKE/g=3D=3D?=
+x-microsoft-antispam-message-info: =?us-ascii?Q?zFQUB1ttf/HVdDH1sD8r39n3o8cKAKeCQFYCPWdCUEwGb8SWTf5TzitCrtMr?=
+ =?us-ascii?Q?5oJ9Y220YVJIsSfGSD+PfLMEgSPZD1XjP3FAxCM0s2cYC2Rq79joJyulFoM8?=
+ =?us-ascii?Q?hqCK7UABLGA/Ij1T2jNe6CJYrf0qhVejSd13vUxxaTPd7KILNVZ4NXJrHf0C?=
+ =?us-ascii?Q?+SHrzMT3WP4tQITlXhtA1CBK4zvfl9ueYS194ZZETvsbBpz9BijBq2E6ye8J?=
+ =?us-ascii?Q?Znw3zuSOfh+0RWjrGuR6jDcwKniqhbGw8S8pyNU+Ib7dZQBmwv4nNMz3Ut8v?=
+ =?us-ascii?Q?2qprRdFywFLgniXYO53qgvLJq0RU2o8OeeIyLk/ZuJKQjA94WXSxAV5FLYkS?=
+ =?us-ascii?Q?tIYB+CPsL4g35F98eNd381MN/fl58NckwuUxD1+542toxar8rrmKmI59G3Pm?=
+ =?us-ascii?Q?GZ0srK1ojjzCKMZlT1rjp5oUC01k/soN3VJ0TatRg8w0D6QhfRAb6Zski0Jc?=
+ =?us-ascii?Q?Z5JkesfUEdg50Gm+Xz76SuVoCQE2rKwk/HqDWndFItF3PzihlDX7fFi/Xr3c?=
+ =?us-ascii?Q?KiUmWQdx/Rgm6yCkGu1q010h1ApfPdP660Xnbpf/1yVT07gN5k3KWy/JmJy/?=
+ =?us-ascii?Q?xm/NNqBzxfbXuktjzLVV+GiCvrYchsycvykKnoVWw/dEDOwQR1oNGDvttFIJ?=
+ =?us-ascii?Q?WN1yPcgzF9g8Jf98Z3kyLs+Zug6wIn7earnUnXO5GfWxVZHUd4kH746I3dWU?=
+ =?us-ascii?Q?IKvHTupldGzOGn1988KWFH78rLiHguZtl8DNOIveucl3INiDi79qBBcTpnKV?=
+ =?us-ascii?Q?a9j6C+uLoOjzhlGFAre96jwt/wwPkrQdSCtqanJCkueYzJg0o1uH6O14+NNv?=
+ =?us-ascii?Q?VOSS8yVFycPH/UgDlm/a6r32Y1he0nOgCNHZU1DxgmWOigpZbLsgULkwPosg?=
+ =?us-ascii?Q?Ow6jnGm8OAvPHToR0kg6JmRLmmw9uIYf/h6FMA8HIgsFFMlXKfbhwp5rIHDk?=
+ =?us-ascii?Q?hAyIKzKTFbUS6YlLhM6B54B4UONOyPLx5GymI0mCOQEqnDEkc6QtMAcNTQvQ?=
+ =?us-ascii?Q?aLCWyHoNWSpx+IbRXPOwhSU3kAYTg1G3tHm2LkDIga/5Wu3ktmKT5/xb2+dM?=
+ =?us-ascii?Q?ZdfZQR8bMN7CSUPXSnVGbaueqXzLNZSUxnwZJ4AzSjZYosPF0jFwMGB+HvS+?=
+ =?us-ascii?Q?Oc5r0l2bOCryoEtLTM8piXy24kAmy9jXntQzePa8yGMkq+Up3n2orN4mZOmz?=
+ =?us-ascii?Q?QbWukTeL/NIhVU/oXAqzJs+p5kKPzKIzFlGQI4LpT1aq3MzhwIBOch4Csa2E?=
+ =?us-ascii?Q?7QD7NFeRfsSceUJpptJGXZUfjWHNSsZhyG2tI00ghkAzZ88kaqWMmO35p+eC?=
+ =?us-ascii?Q?rfwR47dyUICoTJBBtBQ94gshMAnv6cUI5/cI9JKI7WhdgYKJUTIMMS6lNLHQ?=
+ =?us-ascii?Q?AtT896IOkLKGKeHoHWgpzl6ELTESrWFtWLsX8ajKg6f0SArrNix63FMAbPRV?=
+ =?us-ascii?Q?1//KP34cr6agTa2GY7WqAYD6rKYER5W6Prf+zdQ82V+Ht+jOdiyFOQ=3D=3D?=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:SJ0PR11MB5866.namprd11.prod.outlook.com; PTR:; CAT:NONE;
  SFS:(13230040)(376014)(1800799024)(366016)(7053199007)(38070700018); DIR:OUT;
  SFP:1101; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?H/XsWal7ofPFLU1MQ0gkR3dlVd48wD6fsXmQ1jTLeGWFKJt7Q9fDVv1CVcHt?=
- =?us-ascii?Q?lJ9F9pAtebbwwlS6mZjxg8WxAXnz96HzexH3TDbNHGPKKh1T9/onqigrlvFu?=
- =?us-ascii?Q?A1X5AfxrHptD1hTPZEIcsWJIizugORhMpa7k1U6ZbIrNisgT4E61iKdp+9Bp?=
- =?us-ascii?Q?iSUzjqHvku/MT0IRQO+c6w+21n7N44DecVGX6qWkyFFA0RUlMgjvPsAuZqDR?=
- =?us-ascii?Q?bXWGkP2p0JZa1RnEJQ1eYuyIiweJivTVvnOn95WEKIsEAYodzr1J1UFFu5Zp?=
- =?us-ascii?Q?mRjg2AcGhSCshpTXJmsqrlG3fZPUqAVkVx7ZXyGh8dV/PQo+YOoNIIbNMZf2?=
- =?us-ascii?Q?wZF2nMvLDeXT9Eefa/5AMEmlsITj4VYxIa1uSoacOZhBx+MY2N/Jpnt8ec1f?=
- =?us-ascii?Q?H7N/T9LqHWMp0L94lwwtTMCa2nFPHRXfWdCof9+c6TC2aSysmXRXVRqraKV7?=
- =?us-ascii?Q?2btxtL93Yj/WjOzuu/fX1+lQ+mQMxhKZUrEpLUinGfyv6An3An8vQQj7qbtL?=
- =?us-ascii?Q?GiMeyHTsd6x5U2EJNkXjjvqpDZ1s45Z1hcsQVNgEWKSBU77WypTygw5jkxxs?=
- =?us-ascii?Q?OsJthNuCdjvsotlGOhr1SyhCKwe1Xc+Jnp5fw1NbxK3VKdqzKYSX2u4vKCMv?=
- =?us-ascii?Q?hQzKFC+Y5a3xZh+uL4AVJPADQK9vxNBv+unmmgI0R7JuL6nzXFDQLwxrqDCn?=
- =?us-ascii?Q?UTMVIsXiY+QHZT/Ywy0MZXYK7gbDrPZtx0Pom9RhZWMyoknEu5PTRacQ4dMr?=
- =?us-ascii?Q?qC78+JERFMkbX+Jdb2+nOc8ze1pGUbI3JFw8X2HJyZd8hddkXIYPLhB0e8Ls?=
- =?us-ascii?Q?FCxQt6ExEKEais/eNR+axdsF/gAQQQG9dqZciuz8t2O/X4wiozxjjp4UTywI?=
- =?us-ascii?Q?VZ7o6ETRq0ueTGZQ0nDEfIXVTFoQCyXTCY439HcTFHvgCcBdlXXXilizZ2pQ?=
- =?us-ascii?Q?bCnbqPBzpcu5WqK3+/JtYStXMCHfpUfuOX23QYebVyRJ0pKU8m39gcETO0lV?=
- =?us-ascii?Q?n99mnUVQai7LrxrhdQH1XkkGHtbxYtWg3/LcnZ34JZyv4Y6LbRYE4fr5R0SX?=
- =?us-ascii?Q?pDpS1TR43iGpocXDejTjPHy2goTMjzb1sKVzAjYCsegyRVFiZ9qUiajK4+6M?=
- =?us-ascii?Q?GgQyYjfZEAhmvKpT6r0JnV2K/L7RCAlp7tfNpv9/fjDr2xoYZfTwWWPOTHld?=
- =?us-ascii?Q?kKbhqfxOQq8MiQSkmQaszj/N9NXGSBti0UIw74tBqCSt9YsHcaC4kPcyulhf?=
- =?us-ascii?Q?4lZs2TAHZ6s5U0HrJm7h09ZbFg0AwuIH6vYFL8foTlAR1pLXBnlRQvTwC6IV?=
- =?us-ascii?Q?0EeM8AD9H7NqdrvM8VSpKz+bZmyBpmH6XFmJMmSNzwXXHNoyMQvj37/O192E?=
- =?us-ascii?Q?ri463KgOrZnYZbLGwv/xEzccj4OU3SUNx9wk0WEfxHkzIl2hYnTPRSdskJ2Z?=
- =?us-ascii?Q?o+3LUr7O7TAE0P2NIPZ5G5chB9iYwqKtlVLBArbaChNIhjEG2OcmXNj5g+Tb?=
- =?us-ascii?Q?pyBgYldzPYZMZj32kWyZZ974YlzNJamhgAxR3vHl6Aou8RRiQ8CPNgYwmvi1?=
- =?us-ascii?Q?Feg1cjU6LTJh352cUkt/niG7Yebd75RyyOIY4UJTHn+cPACYsKDbUCvF3IcN?=
- =?us-ascii?Q?3w=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?CZpwDIb3GU/wlaNoyWlZVIItafWIBGVbq3bEZ/6I8mKtCjKQMqSDAsqdziHN?=
+ =?us-ascii?Q?OCeKIcsQ1FbRnzjNwlysNabuIfh+18/J7oWgi3yLXJEoZ/+A9K+S3WNcI6uF?=
+ =?us-ascii?Q?ray1vOgyfe16vMCUvmxPIYh3Z2Fnmm2F3sAwe8oKFF2hali58+plTi7XG8FJ?=
+ =?us-ascii?Q?4cjp3vFtyjx8a8gXv+ShjZIKb/K4hTvqElc5vBxms6a2tXnmbEzqSwjDhI2w?=
+ =?us-ascii?Q?FLIAQZC5f8pTu7kZ8Lko1OVT2HCtP9T4rp+VTM7oWC+taUwNKhz2F1Sndg0n?=
+ =?us-ascii?Q?RQjAbDP0Bz9SR6kUg4BrQ0yp1N/acTXy+WpYltGZrynT9bNi3LSfNU3/sYNq?=
+ =?us-ascii?Q?9o8wwSsion4Pd8GbGH1mZdxax8gpPpSN5wp+LR+nJcBNaaj4CDZPL+qnjHc9?=
+ =?us-ascii?Q?Su9qyvd59UNbEJVWtFgbpo/MRRZC7zKTbc2O5dfYLH3fmCBFnd8V52hCKQGb?=
+ =?us-ascii?Q?Xin+OQwQU/T85LwBwqfLYTZ3qVOwf4zmvGmMzWF5Jz0van/H9YhY25YCY+1X?=
+ =?us-ascii?Q?1k80eHugC7SCskFZT0bxbhu1T/kGrWB/Q81WqzAInaTGOJX3lcdaFvLhHYZx?=
+ =?us-ascii?Q?FQKf2IsYKcSqRUZk/d+FG4KIuFBBx8XOfjfB63YIv8a0eGBFNhaDOlMWqAgc?=
+ =?us-ascii?Q?off7UCIvhakbS2HDqv6jNg+aTQRBxtSp6hypH9e5xAQL8QWGN/+xmqgIl2jO?=
+ =?us-ascii?Q?7JEtxmVbijbnly7Ct5Lczas1WZT7I8KWg6zVrslR3wCWIoERP5OdGZ9Xkygg?=
+ =?us-ascii?Q?C4ed99uxyF3tF2vDCrd5FPPTDp4vPYyLaAjf4NxGFKb+xkY7nHD+FPphq7Wc?=
+ =?us-ascii?Q?An9s6YsRqBRkPXVWARHnlllhZllOyHyQxplHj8wOZru/o8NhHScgRQUN2rxa?=
+ =?us-ascii?Q?/qBwbhNjoIeVcJ43MFNQO+UKhP0EInAYPgUBHk6oJjolT4TIi/5XxfkvLQ0G?=
+ =?us-ascii?Q?Lu1JJNZzGEbPCG+iLvdWtbidNKtOzj9wniTxvEqeOA2YUDshXc6XXzBG+Iyi?=
+ =?us-ascii?Q?ktmmC0VSEroefboTVTSUVT6DSA0FL//hJpYj/v1hJUtJcYv7IEt7N8guhFMi?=
+ =?us-ascii?Q?e0+F2j2sz2URmN6I1mWK4Zn8EbF+nSaqsjfsT7qpjqG53GVa91ZU5iXmYpl2?=
+ =?us-ascii?Q?1SsNjChpw8SlOMOW5GuisTUynHHW7PgWFkAIGwOi6THly7UC/vC5vTzwumN0?=
+ =?us-ascii?Q?FqKHGTZqxbaV0jYuiHpLc4SgVyuxKzLcBPBywYtj3F4Div8ScGGrKsk5B5h8?=
+ =?us-ascii?Q?zllAbZE+Xi+XFwnAO8xmGX5ek1Hc3p6UgsBEcJgDUnh0NZjd8fB45/NFlYQF?=
+ =?us-ascii?Q?BCKwVjjwvsxV5+oFedWwbharzyyjV+JoUmongQaJNZ+mYI8yVAB1TG7EEQh6?=
+ =?us-ascii?Q?LC+9g3ZfT8OggZFvkXn/hAmpccCAWJ8W3turhJMY9EK/+zST8ofzNWBwMThl?=
+ =?us-ascii?Q?ciX5fJEJnyWbZ+9OvO5vdArzXi4QdoIURfaVm4vAIwqj43+sPwg9r1c+WgFH?=
+ =?us-ascii?Q?JZ5R+55kbSz+qVEgKP/h7de4qgJe6m54IFj2VwssHbMyU8Db0iV0m2WTPN9Q?=
+ =?us-ascii?Q?4rSigD8Lq2JdFUqTuGrWtm6pHBZNxti2v5mRs8SWvLlmA5cA295n+FghOwhb?=
+ =?us-ascii?Q?AA=3D=3D?=
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB5866.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: dfe98c21-8f53-46d6-f5d5-08dd81bf80cf
-X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Apr 2025 17:02:45.5799 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: b430ba8f-fca2-49cd-9adb-08dd81bf935f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Apr 2025 17:03:16.7706 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 3FJu6G/B/9xKT23Qs/KVl6osHGwWBsCECEtS0a4bXrI4uthC24pEezg9G5dzVnCJZcz8+anHYy1eLC47S/RO6TVKMj33+Q4CW7XijlX5Qa0=
+X-MS-Exchange-CrossTenant-userprincipalname: Y09Xu1cHXmCqq2fEmArP82FHnh1u89SPOWpS2Sjhg6WKasThlRbiFMGAw4AIr+rvP/lMGPCr5Eyygd/eT/iiAXhG/Jg2u9qHe9XdZsBCwxI=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB7499
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
@@ -198,13 +195,13 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1745341403; x=1776877403;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=y5wvj9Nyp7cHTvXhrmcsrXcGhgH1XEOFXqxTlMV6W98=;
- b=LVTixw1AfaVFRr8j448ZEgfZYI1Qda1X+WK6fj96yOIpGfEs/iquq53V
- kqU9LTbocqw49YKCtTIhBhOVUyOue6hRvp1cjMHLhIIMEfhzLOrCbZ9I5
- YWMYWUeL5A70OsfN3Sf/+ofltgk7uoD5nhWQ1Ze18vLd4UdokjhNNjkx1
- MZONFoUEYTEak94mZvztvEjeNeR124l7Z4iET32dQ9nJ03ZbIy7FVlhEA
- gID6UaWRdQeSudCINYmr10XupzEtW5ZWDcRoB4ZEi9tP5xzd+u190UZI9
- 5W0ungiMjSaVbZ+x+t7dyyyId17eZefEsVo03LZPfx/rGwkin8KS0hU71
+ bh=H2efSTDdrpOjKX07NdS1gQbYEkfX+RQbMdyOpRY1/q0=;
+ b=XxBcCMe4h0nO0zdCxXPU9tFuDWeKhazz3nKWRpAnbRdr+Tkz3bnVtZCr
+ jkvyypESXoecYYIqKz5ja70xQO7dl2fwjkd/1LlJRrgcom/SoK6MVzQg0
+ EtGgfjLskChu2CgL/nB6YmJ46SS/cH6FSRpp6EhZfXg4PpfNjNdGNXXCM
+ zNjUCi/1xEDxgfTfFMNEtBnu6ARRX6Yk4voRklYlvjmFqcuItefFS3tuU
+ rajSMYt7vxBJMi7EPdfLOwL4fYKdgNiEyTBUIG/GtgUXYvXkP40oyBXan
+ 1D9dATV0leHAcYiUVYwgXXKJ5QgfR+GQNmeSfAL39+BSraVr7v/zPDXj4
  A==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
@@ -212,11 +209,11 @@ X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=LVTixw1A
+ header.s=Intel header.b=XxBcCMe4
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net 1/3] ice: fix Tx scheduler
- error handling in XDP callback
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v5 2/3] ice: change SMA pins
+ to SDP in PTP API
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -236,198 +233,444 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 > -----Original Message-----
 > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Michal Kubiak
-> Sent: Tuesday, April 22, 2025 5:37 PM
+> Arkadiusz Kubalewski
+> Sent: Tuesday, April 22, 2025 6:02 PM
 > To: intel-wired-lan@lists.osuosl.org
-> Cc: Fijalkowski, Maciej <maciej.fijalkowski@intel.com>; Lobakin, Aleksand=
-er
-> <aleksander.lobakin@intel.com>; Kitszel, Przemyslaw
-> <przemyslaw.kitszel@intel.com>; dawid.osuchowski@linux.intel.com; Keller,
-> Jacob E <jacob.e.keller@intel.com>; netdev@vger.kernel.org; Kubiak, Micha=
-l
-> <michal.kubiak@intel.com>
-> Subject: [Intel-wired-lan] [PATCH iwl-net 1/3] ice: fix Tx scheduler erro=
-r
-> handling in XDP callback
+> Cc: netdev@vger.kernel.org; Kolacinski, Karol <karol.kolacinski@intel.com=
+>;
+> Olech, Milena <milena.olech@intel.com>; Kubalewski, Arkadiusz
+> <arkadiusz.kubalewski@intel.com>
+> Subject: [Intel-wired-lan] [PATCH iwl-next v5 2/3] ice: change SMA pins t=
+o SDP
+> in PTP API
 >=20
-> When the XDP program is loaded, the XDP callback adds new Tx queues.
-> This means that the callback must update the Tx scheduler with the new
-> queue number. In the event of a Tx scheduler failure, the XDP callback sh=
-ould
-> also fail and roll back any changes previously made for XDP preparation.
+> From: Karol Kolacinski <karol.kolacinski@intel.com>
 >=20
-> The previous implementation had a bug that not all changes made by the XD=
-P
-> callback were rolled back. This caused the crash with the following call =
-trace:
+> This change aligns E810 PTP pin control to all other products.
 >=20
-> [  +9.549584] ice 0000:ca:00.0: Failed VSI LAN queue config for XDP, erro=
-r: -5 [
-> +0.382335] Oops: general protection fault, probably for non-canonical
-> address 0x50a2250a90495525: 0000 [#1] SMP NOPTI [  +0.010710] CPU:
-> 103 UID: 0 PID: 0 Comm: swapper/103 Not tainted 6.14.0-net-next-mar-31+
-> #14 PREEMPT(voluntary) [  +0.010175] Hardware name: Intel Corporation
-> M50CYP2SBSTD/M50CYP2SBSTD, BIOS
-> SE5C620.86B.01.01.0005.2202160810 02/16/2022 [  +0.010946] RIP:
-> 0010:__ice_update_sample+0x39/0xe0 [ice]
+> Currently, SMA/U.FL port expanders are controlled together with SDP pins
+> connected to 1588 clock. To align this, separate this control by exposing=
+ only
+> SDP20..23 pins in PTP API on adapters with DPLL.
 >=20
-> [...]
+> Clear error for all E810 on absent NVM pin section or other errors to all=
+ow
+> proper initialization on SMA E810 with NVM section.
 >=20
-> [  +0.002715] Call Trace:
-> [  +0.002452]  <IRQ>
-> [  +0.002021]  ? __die_body.cold+0x19/0x29 [  +0.003922]  ?
-> die_addr+0x3c/0x60 [  +0.003319]  ? exc_general_protection+0x17c/0x400
-> [  +0.004707]  ? asm_exc_general_protection+0x26/0x30
-> [  +0.004879]  ? __ice_update_sample+0x39/0xe0 [ice] [  +0.004835]
-> ice_napi_poll+0x665/0x680 [ice] [  +0.004320]  __napi_poll+0x28/0x190 [
-> +0.003500]  net_rx_action+0x198/0x360 [  +0.003752]  ?
-> update_rq_clock+0x39/0x220 [  +0.004013]  handle_softirqs+0xf1/0x340 [
-> +0.003840]  ? sched_clock_cpu+0xf/0x1f0 [  +0.003925]
-> __irq_exit_rcu+0xc2/0xe0 [  +0.003665]  common_interrupt+0x85/0xa0 [
-> +0.003839]  </IRQ> [  +0.002098]  <TASK> [  +0.002106]
-> asm_common_interrupt+0x26/0x40 [  +0.004184] RIP:
-> 0010:cpuidle_enter_state+0xd3/0x690
+> Use ARRAY_SIZE for pin array instead of internal definition.
 >=20
-> Fix this by performing the missing unmapping of XDP queues from q_vectors
-> and setting the XDP rings pointer back to NULL after all those queues are
-> released.
-> Also, add an immediate exit from the XDP callback in case of ring prepara=
-tion
-> failure.
->=20
-> Fixes: efc2214b6047 ("ice: Add support for XDP")
-> Reviewed-by: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
+> Reviewed-by: Milena Olech <milena.olech@intel.com>
 Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-
-> Signed-off-by: Michal Kubiak <michal.kubiak@intel.com>
+> Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
+> Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_main.c | 47 ++++++++++++++++-------
->  1 file changed, 33 insertions(+), 14 deletions(-)
+> v5:
+> - no change.
+> ---
+>  drivers/net/ethernet/intel/ice/ice_ptp.c | 254 ++++-------------------
+>  drivers/net/ethernet/intel/ice/ice_ptp.h |   3 -
+>  2 files changed, 39 insertions(+), 218 deletions(-)
 >=20
-> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c
-> b/drivers/net/ethernet/intel/ice/ice_main.c
-> index 8119913b5f69..34df104ac567 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_main.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-> @@ -2740,6 +2740,27 @@ void ice_map_xdp_rings(struct ice_vsi *vsi)
->  	}
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c
+> b/drivers/net/ethernet/intel/ice/ice_ptp.c
+> index b79a148ed0f2..b948a6d9226c 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ptp.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+> @@ -40,21 +40,19 @@ static const struct ice_ptp_pin_desc
+> ice_pin_desc_e810[] =3D {
+>  	{  ONE_PPS,   { -1,  5 }, { 0, 1 }},
+>  };
+>=20
+> -static const char ice_pin_names_nvm[][64] =3D {
+> -	"GNSS",
+> -	"SMA1",
+> -	"U.FL1",
+> -	"SMA2",
+> -	"U.FL2",
+> +static const char ice_pin_names_dpll[][64] =3D {
+> +	"SDP20",
+> +	"SDP21",
+> +	"SDP22",
+> +	"SDP23",
+>  };
+>=20
+> -static const struct ice_ptp_pin_desc ice_pin_desc_e810_sma[] =3D {
+> +static const struct ice_ptp_pin_desc ice_pin_desc_dpll[] =3D {
+>  	/* name,   gpio,       delay */
+> -	{  GNSS, {  1, -1 }, { 0, 0 }},
+> -	{  SMA1, {  1,  0 }, { 0, 1 }},
+> -	{  UFL1, { -1,  0 }, { 0, 1 }},
+> -	{  SMA2, {  3,  2 }, { 0, 1 }},
+> -	{  UFL2, {  3, -1 }, { 0, 0 }},
+> +	{  SDP0, { -1,  0 }, { 0, 1 }},
+> +	{  SDP1, {  1, -1 }, { 0, 0 }},
+> +	{  SDP2, { -1,  2 }, { 0, 1 }},
+> +	{  SDP3, {  3, -1 }, { 0, 0 }},
+>  };
+>=20
+>  static struct ice_pf *ice_get_ctrl_pf(struct ice_pf *pf) @@ -92,101 +90,=
+6 @@
+> static int ice_ptp_find_pin_idx(struct ice_pf *pf, enum ptp_pin_function =
+func,
+>  	return -1;
 >  }
 >=20
-> +/**
-> + * ice_unmap_xdp_rings - Unmap XDP rings from interrupt vectors
-> + * @vsi: the VSI with XDP rings being unmapped  */ static void
-> +ice_unmap_xdp_rings(struct ice_vsi *vsi) {
-> +	int v_idx;
-> +
-> +	ice_for_each_q_vector(vsi, v_idx) {
-> +		struct ice_q_vector *q_vector =3D vsi->q_vectors[v_idx];
-> +		struct ice_tx_ring *ring;
-> +
-> +		ice_for_each_tx_ring(ring, q_vector->tx)
-> +			if (!ring->tx_buf || !ice_ring_is_xdp(ring))
-> +				break;
-> +
-> +		/* restore the value of last node prior to XDP setup */
-> +		q_vector->tx.tx_ring =3D ring;
-> +	}
-> +}
-> +
->  /**
->   * ice_prepare_xdp_rings - Allocate, configure and setup Tx rings for XD=
-P
->   * @vsi: VSI to bring up Tx rings used by XDP @@ -2803,7 +2824,7 @@ int
-> ice_prepare_xdp_rings(struct ice_vsi *vsi, struct bpf_prog *prog,
->  	if (status) {
->  		dev_err(dev, "Failed VSI LAN queue config for XDP, error:
-> %d\n",
->  			status);
-> -		goto clear_xdp_rings;
-> +		goto unmap_xdp_rings;
->  	}
->=20
->  	/* assign the prog only when it's not already present on VSI; @@ -
-> 2819,6 +2840,8 @@ int ice_prepare_xdp_rings(struct ice_vsi *vsi, struct
-> bpf_prog *prog,
->  		ice_vsi_assign_bpf_prog(vsi, prog);
->=20
->  	return 0;
-> +unmap_xdp_rings:
-> +	ice_unmap_xdp_rings(vsi);
->  clear_xdp_rings:
->  	ice_for_each_xdp_txq(vsi, i)
->  		if (vsi->xdp_rings[i]) {
-> @@ -2835,6 +2858,8 @@ int ice_prepare_xdp_rings(struct ice_vsi *vsi, stru=
-ct
-> bpf_prog *prog,
->  	mutex_unlock(&pf->avail_q_mutex);
->=20
->  	devm_kfree(dev, vsi->xdp_rings);
-> +	vsi->xdp_rings =3D NULL;
-> +
->  	return -ENOMEM;
->  }
->=20
-> @@ -2850,7 +2875,7 @@ int ice_destroy_xdp_rings(struct ice_vsi *vsi, enum
-> ice_xdp_cfg cfg_type)  {
->  	u16 max_txqs[ICE_MAX_TRAFFIC_CLASS] =3D { 0 };
->  	struct ice_pf *pf =3D vsi->back;
-> -	int i, v_idx;
-> +	int i;
->=20
->  	/* q_vectors are freed in reset path so there's no point in detaching
->  	 * rings
-> @@ -2858,17 +2883,7 @@ int ice_destroy_xdp_rings(struct ice_vsi *vsi,
-> enum ice_xdp_cfg cfg_type)
->  	if (cfg_type =3D=3D ICE_XDP_CFG_PART)
->  		goto free_qmap;
->=20
-> -	ice_for_each_q_vector(vsi, v_idx) {
-> -		struct ice_q_vector *q_vector =3D vsi->q_vectors[v_idx];
-> -		struct ice_tx_ring *ring;
+> -/**
+> - * ice_ptp_update_sma_data - update SMA pins data according to pins setu=
+p
+> - * @pf: Board private structure
+> - * @sma_pins: parsed SMA pins status
+> - * @data: SMA data to update
+> - */
+> -static void ice_ptp_update_sma_data(struct ice_pf *pf, unsigned int
+> sma_pins[],
+> -				    u8 *data)
+> -{
+> -	const char *state1, *state2;
 > -
-> -		ice_for_each_tx_ring(ring, q_vector->tx)
-> -			if (!ring->tx_buf || !ice_ring_is_xdp(ring))
-> -				break;
-> -
-> -		/* restore the value of last node prior to XDP setup */
-> -		q_vector->tx.tx_ring =3D ring;
+> -	/* Set the right state based on the desired configuration.
+> -	 * When bit is set, functionality is disabled.
+> -	 */
+> -	*data &=3D ~ICE_ALL_SMA_MASK;
+> -	if (!sma_pins[UFL1 - 1]) {
+> -		if (sma_pins[SMA1 - 1] =3D=3D PTP_PF_EXTTS) {
+> -			state1 =3D "SMA1 Rx, U.FL1 disabled";
+> -			*data |=3D ICE_SMA1_TX_EN;
+> -		} else if (sma_pins[SMA1 - 1] =3D=3D PTP_PF_PEROUT) {
+> -			state1 =3D "SMA1 Tx U.FL1 disabled";
+> -			*data |=3D ICE_SMA1_DIR_EN;
+> -		} else {
+> -			state1 =3D "SMA1 disabled, U.FL1 disabled";
+> -			*data |=3D ICE_SMA1_MASK;
+> -		}
+> -	} else {
+> -		/* U.FL1 Tx will always enable SMA1 Rx */
+> -		state1 =3D "SMA1 Rx, U.FL1 Tx";
 > -	}
-> +	ice_unmap_xdp_rings(vsi);
+> -
+> -	if (!sma_pins[UFL2 - 1]) {
+> -		if (sma_pins[SMA2 - 1] =3D=3D PTP_PF_EXTTS) {
+> -			state2 =3D "SMA2 Rx, U.FL2 disabled";
+> -			*data |=3D ICE_SMA2_TX_EN |
+> ICE_SMA2_UFL2_RX_DIS;
+> -		} else if (sma_pins[SMA2 - 1] =3D=3D PTP_PF_PEROUT) {
+> -			state2 =3D "SMA2 Tx, U.FL2 disabled";
+> -			*data |=3D ICE_SMA2_DIR_EN |
+> ICE_SMA2_UFL2_RX_DIS;
+> -		} else {
+> -			state2 =3D "SMA2 disabled, U.FL2 disabled";
+> -			*data |=3D ICE_SMA2_MASK;
+> -		}
+> -	} else {
+> -		if (!sma_pins[SMA2 - 1]) {
+> -			state2 =3D "SMA2 disabled, U.FL2 Rx";
+> -			*data |=3D ICE_SMA2_DIR_EN | ICE_SMA2_TX_EN;
+> -		} else {
+> -			state2 =3D "SMA2 Tx, U.FL2 Rx";
+> -			*data |=3D ICE_SMA2_DIR_EN;
+> -		}
+> -	}
+> -
+> -	dev_dbg(ice_pf_to_dev(pf), "%s, %s\n", state1, state2);
+> -}
+> -
+> -/**
+> - * ice_ptp_set_sma_cfg - set the configuration of the SMA control logic
+> - * @pf: Board private structure
+> - *
+> - * Return: 0 on success, negative error code otherwise
+> - */
+> -static int ice_ptp_set_sma_cfg(struct ice_pf *pf) -{
+> -	const struct ice_ptp_pin_desc *ice_pins =3D pf->ptp.ice_pin_desc;
+> -	struct ptp_pin_desc *pins =3D pf->ptp.pin_desc;
+> -	unsigned int sma_pins[ICE_SMA_PINS_NUM] =3D {};
+> -	int err;
+> -	u8 data;
+> -
+> -	/* Read initial pin state value */
+> -	err =3D ice_read_sma_ctrl(&pf->hw, &data);
+> -	if (err)
+> -		return err;
+> -
+> -	/* Get SMA/U.FL pins states */
+> -	for (int i =3D 0; i < pf->ptp.info.n_pins; i++)
+> -		if (pins[i].func) {
+> -			int name_idx =3D ice_pins[i].name_idx;
+> -
+> -			switch (name_idx) {
+> -			case SMA1:
+> -			case UFL1:
+> -			case SMA2:
+> -			case UFL2:
+> -				sma_pins[name_idx - 1] =3D pins[i].func;
+> -				break;
+> -			default:
+> -				continue;
+> -			}
+> -		}
+> -
+> -	ice_ptp_update_sma_data(pf, sma_pins, &data);
+> -	return ice_write_sma_ctrl(&pf->hw, data);
+> -}
+> -
+>  /**
+>   * ice_ptp_cfg_tx_interrupt - Configure Tx timestamp interrupt for the d=
+evice
+>   * @pf: Board private structure
+> @@ -1878,63 +1781,6 @@ static void ice_ptp_enable_all_perout(struct
+> ice_pf *pf)
+>  					   true);
+>  }
 >=20
->  free_qmap:
->  	mutex_lock(&pf->avail_q_mutex);
-> @@ -3013,11 +3028,14 @@ ice_xdp_setup_prog(struct ice_vsi *vsi, struct
-> bpf_prog *prog,
->  		xdp_ring_err =3D ice_vsi_determine_xdp_res(vsi);
->  		if (xdp_ring_err) {
->  			NL_SET_ERR_MSG_MOD(extack, "Not enough Tx
-> resources for XDP");
-> +			goto resume_if;
->  		} else {
->  			xdp_ring_err =3D ice_prepare_xdp_rings(vsi, prog,
->=20
-> ICE_XDP_CFG_FULL);
-> -			if (xdp_ring_err)
-> +			if (xdp_ring_err) {
->  				NL_SET_ERR_MSG_MOD(extack, "Setting up
-> XDP Tx resources failed");
-> +				goto resume_if;
-> +			}
->  		}
->  		xdp_features_set_redirect_target(vsi->netdev, true);
->  		/* reallocate Rx queues that are used for zero-copy */ @@ -
-> 3035,6 +3053,7 @@ ice_xdp_setup_prog(struct ice_vsi *vsi, struct bpf_prog
-> *prog,
->  			NL_SET_ERR_MSG_MOD(extack, "Freeing XDP Rx
-> resources failed");
+> -/**
+> - * ice_ptp_disable_shared_pin - Disable enabled pin that shares GPIO
+> - * @pf: Board private structure
+> - * @pin: Pin index
+> - * @func: Assigned function
+> - *
+> - * Return: 0 on success, negative error code otherwise
+> - */
+> -static int ice_ptp_disable_shared_pin(struct ice_pf *pf, unsigned int pi=
+n,
+> -				      enum ptp_pin_function func)
+> -{
+> -	unsigned int gpio_pin;
+> -
+> -	switch (func) {
+> -	case PTP_PF_PEROUT:
+> -		gpio_pin =3D pf->ptp.ice_pin_desc[pin].gpio[1];
+> -		break;
+> -	case PTP_PF_EXTTS:
+> -		gpio_pin =3D pf->ptp.ice_pin_desc[pin].gpio[0];
+> -		break;
+> -	default:
+> -		return -EOPNOTSUPP;
+> -	}
+> -
+> -	for (unsigned int i =3D 0; i < pf->ptp.info.n_pins; i++) {
+> -		struct ptp_pin_desc *pin_desc =3D &pf->ptp.pin_desc[i];
+> -		unsigned int chan =3D pin_desc->chan;
+> -
+> -		/* Skip pin idx from the request */
+> -		if (i =3D=3D pin)
+> -			continue;
+> -
+> -		if (pin_desc->func =3D=3D PTP_PF_PEROUT &&
+> -		    pf->ptp.ice_pin_desc[i].gpio[1] =3D=3D gpio_pin) {
+> -			pf->ptp.perout_rqs[chan].period.sec =3D 0;
+> -			pf->ptp.perout_rqs[chan].period.nsec =3D 0;
+> -			pin_desc->func =3D PTP_PF_NONE;
+> -			pin_desc->chan =3D 0;
+> -			dev_dbg(ice_pf_to_dev(pf), "Disabling pin %u with
+> shared output GPIO pin %u\n",
+> -				i, gpio_pin);
+> -			return ice_ptp_cfg_perout(pf, &pf-
+> >ptp.perout_rqs[chan],
+> -						  false);
+> -		} else if (pf->ptp.pin_desc->func =3D=3D PTP_PF_EXTTS &&
+> -			   pf->ptp.ice_pin_desc[i].gpio[0] =3D=3D gpio_pin) {
+> -			pf->ptp.extts_rqs[chan].flags &=3D
+> ~PTP_ENABLE_FEATURE;
+> -			pin_desc->func =3D PTP_PF_NONE;
+> -			pin_desc->chan =3D 0;
+> -			dev_dbg(ice_pf_to_dev(pf), "Disabling pin %u with
+> shared input GPIO pin %u\n",
+> -				i, gpio_pin);
+> -			return ice_ptp_cfg_extts(pf, &pf-
+> >ptp.extts_rqs[chan],
+> -						 false);
+> -		}
+> -	}
+> -
+> -	return 0;
+> -}
+> -
+>  /**
+>   * ice_verify_pin - verify if pin supports requested pin function
+>   * @info: the driver's PTP info structure @@ -1969,14 +1815,6 @@ static =
+int
+> ice_verify_pin(struct ptp_clock_info *info, unsigned int pin,
+>  		return -EOPNOTSUPP;
 >  	}
 >=20
-> +resume_if:
->  	if (if_running)
->  		ret =3D ice_up(vsi);
+> -	/* On adapters with SMA_CTRL disable other pins that share same
+> GPIO */
+> -	if (ice_is_feature_supported(pf, ICE_F_SMA_CTRL)) {
+> -		ice_ptp_disable_shared_pin(pf, pin, func);
+> -		pf->ptp.pin_desc[pin].func =3D func;
+> -		pf->ptp.pin_desc[pin].chan =3D chan;
+> -		return ice_ptp_set_sma_cfg(pf);
+> -	}
+> -
+>  	return 0;
+>  }
 >=20
+> @@ -2499,14 +2337,14 @@ static void ice_ptp_setup_pin_cfg(struct ice_pf
+> *pf)
+>  	for (unsigned int i =3D 0; i < pf->ptp.info.n_pins; i++) {
+>  		const struct ice_ptp_pin_desc *desc =3D &pf-
+> >ptp.ice_pin_desc[i];
+>  		struct ptp_pin_desc *pin =3D &pf->ptp.pin_desc[i];
+> -		const char *name =3D NULL;
+> +		const char *name;
+>=20
+>  		if (!ice_is_feature_supported(pf, ICE_F_SMA_CTRL))
+>  			name =3D ice_pin_names[desc->name_idx];
+> -		else if (desc->name_idx !=3D GPIO_NA)
+> -			name =3D ice_pin_names_nvm[desc->name_idx];
+> -		if (name)
+> -			strscpy(pin->name, name, sizeof(pin->name));
+> +		else
+> +			name =3D ice_pin_names_dpll[desc->name_idx];
+> +
+> +		strscpy(pin->name, name, sizeof(pin->name));
+>=20
+>  		pin->index =3D i;
+>  	}
+> @@ -2518,8 +2356,8 @@ static void ice_ptp_setup_pin_cfg(struct ice_pf *pf=
+)
+>   * ice_ptp_disable_pins - Disable PTP pins
+>   * @pf: pointer to the PF structure
+>   *
+> - * Disable the OS access to the SMA pins. Called to clear out the OS
+> - * indications of pin support when we fail to setup the SMA control regi=
+ster.
+> + * Disable the OS access to the pins. Called to clear out the OS
+> + * indications of pin support when we fail to setup pin array.
+>   */
+>  static void ice_ptp_disable_pins(struct ice_pf *pf)  { @@ -2560,40 +2398=
+,30
+> @@ static int ice_ptp_parse_sdp_entries(struct ice_pf *pf, __le16 *entrie=
+s,
+>  	for (i =3D 0; i < num_entries; i++) {
+>  		u16 entry =3D le16_to_cpu(entries[i]);
+>  		DECLARE_BITMAP(bitmap, GPIO_NA);
+> -		unsigned int bitmap_idx;
+> +		unsigned int idx;
+>  		bool dir;
+>  		u16 gpio;
+>=20
+>  		*bitmap =3D FIELD_GET(ICE_AQC_NVM_SDP_AC_PIN_M,
+> entry);
+> +
+> +		/* Check if entry's pin bitmap is valid. */
+> +		if (bitmap_empty(bitmap, GPIO_NA))
+> +			continue;
+> +
+>  		dir =3D !!FIELD_GET(ICE_AQC_NVM_SDP_AC_DIR_M, entry);
+>  		gpio =3D FIELD_GET(ICE_AQC_NVM_SDP_AC_SDP_NUM_M,
+> entry);
+> -		for_each_set_bit(bitmap_idx, bitmap, GPIO_NA + 1) {
+> -			unsigned int idx;
+>=20
+> -			/* Check if entry's pin bit is valid */
+> -			if (bitmap_idx >=3D NUM_PTP_PINS_NVM &&
+> -			    bitmap_idx !=3D GPIO_NA)
+> -				continue;
+> -
+> -			/* Check if pin already exists */
+> -			for (idx =3D 0; idx < ICE_N_PINS_MAX; idx++)
+> -				if (pins[idx].name_idx =3D=3D bitmap_idx)
+> -					break;
+> -
+> -			if (idx =3D=3D ICE_N_PINS_MAX) {
+> -				/* Pin not found, setup its entry and name */
+> -				idx =3D n_pins++;
+> -				pins[idx].name_idx =3D bitmap_idx;
+> -				if (bitmap_idx =3D=3D GPIO_NA)
+> -					strscpy(pf->ptp.pin_desc[idx].name,
+> -						ice_pin_names[gpio],
+> -						sizeof(pf->ptp.pin_desc[idx]
+> -							       .name));
+> -			}
+> +		for (idx =3D 0; idx < ICE_N_PINS_MAX; idx++) {
+> +			if (pins[idx].name_idx =3D=3D gpio)
+> +				break;
+> +		}
+>=20
+> -			/* Setup in/out GPIO number */
+> -			pins[idx].gpio[dir] =3D gpio;
+> +		if (idx =3D=3D ICE_N_PINS_MAX) {
+> +			/* Pin not found, setup its entry and name */
+> +			idx =3D n_pins++;
+> +			pins[idx].name_idx =3D gpio;
+>  		}
+> +		pins[idx].gpio[dir] =3D gpio;
+>  	}
+>=20
+>  	for (i =3D 0; i < n_pins; i++) {
+> @@ -2621,10 +2449,10 @@ static void ice_ptp_set_funcs_e82x(struct ice_pf
+> *pf)
+>=20
+>  	if (pf->hw.mac_type =3D=3D ICE_MAC_GENERIC_3K_E825) {
+>  		pf->ptp.ice_pin_desc =3D ice_pin_desc_e825c;
+> -		pf->ptp.info.n_pins =3D
+> ICE_PIN_DESC_ARR_LEN(ice_pin_desc_e825c);
+> +		pf->ptp.info.n_pins =3D ARRAY_SIZE(ice_pin_desc_e825c);
+>  	} else {
+>  		pf->ptp.ice_pin_desc =3D ice_pin_desc_e82x;
+> -		pf->ptp.info.n_pins =3D
+> ICE_PIN_DESC_ARR_LEN(ice_pin_desc_e82x);
+> +		pf->ptp.info.n_pins =3D ARRAY_SIZE(ice_pin_desc_e82x);
+>  	}
+>  	ice_ptp_setup_pin_cfg(pf);
+>  }
+> @@ -2650,15 +2478,13 @@ static void ice_ptp_set_funcs_e810(struct ice_pf
+> *pf)
+>  	if (err) {
+>  		/* SDP section does not exist in NVM or is corrupted */
+>  		if (ice_is_feature_supported(pf, ICE_F_SMA_CTRL)) {
+> -			ptp->ice_pin_desc =3D ice_pin_desc_e810_sma;
+> -			ptp->info.n_pins =3D
+> -
+> 	ICE_PIN_DESC_ARR_LEN(ice_pin_desc_e810_sma);
+> +			ptp->ice_pin_desc =3D ice_pin_desc_dpll;
+> +			ptp->info.n_pins =3D ARRAY_SIZE(ice_pin_desc_dpll);
+>  		} else {
+>  			pf->ptp.ice_pin_desc =3D ice_pin_desc_e810;
+> -			pf->ptp.info.n_pins =3D
+> -				ICE_PIN_DESC_ARR_LEN(ice_pin_desc_e810);
+> -			err =3D 0;
+> +			pf->ptp.info.n_pins =3D
+> ARRAY_SIZE(ice_pin_desc_e810);
+>  		}
+> +		err =3D 0;
+>  	} else {
+>  		desc =3D devm_kcalloc(ice_pf_to_dev(pf), ICE_N_PINS_MAX,
+>  				    sizeof(struct ice_ptp_pin_desc), @@ -
+> 2676,8 +2502,6 @@ static void ice_ptp_set_funcs_e810(struct ice_pf *pf)
+>  	ptp->info.pin_config =3D ptp->pin_desc;
+>  	ice_ptp_setup_pin_cfg(pf);
+>=20
+> -	if (ice_is_feature_supported(pf, ICE_F_SMA_CTRL))
+> -		err =3D ice_ptp_set_sma_cfg(pf);
+>  err:
+>  	if (err) {
+>  		devm_kfree(ice_pf_to_dev(pf), desc);
+> @@ -2703,7 +2527,7 @@ static void ice_ptp_set_funcs_e830(struct ice_pf
+> *pf)  #endif /* CONFIG_ICE_HWTS */
+>  	/* Rest of the config is the same as base E810 */
+>  	pf->ptp.ice_pin_desc =3D ice_pin_desc_e810;
+> -	pf->ptp.info.n_pins =3D ICE_PIN_DESC_ARR_LEN(ice_pin_desc_e810);
+> +	pf->ptp.info.n_pins =3D ARRAY_SIZE(ice_pin_desc_e810);
+>  	ice_ptp_setup_pin_cfg(pf);
+>  }
+>=20
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h
+> b/drivers/net/ethernet/intel/ice/ice_ptp.h
+> index 3b769a0cad00..c8dac5a5bcd9 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ptp.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
+> @@ -202,9 +202,6 @@ enum ice_ptp_pin_nvm {
+>=20
+>  /* Pin definitions for PTP */
+>  #define ICE_N_PINS_MAX			6
+> -#define ICE_SMA_PINS_NUM		4
+> -#define ICE_PIN_DESC_ARR_LEN(_arr)	(sizeof(_arr) / \
+> -					 sizeof(struct ice_ptp_pin_desc))
+>=20
+>  /**
+>   * struct ice_ptp_pin_desc - hardware pin description data
 > --
-> 2.45.2
+> 2.38.1
 
