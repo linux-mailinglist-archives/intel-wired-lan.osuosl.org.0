@@ -1,94 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A519A9946E
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Apr 2025 18:14:40 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 668A3A99668
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Apr 2025 19:21:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 615F740897;
-	Wed, 23 Apr 2025 16:14:34 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1398C6128F;
+	Wed, 23 Apr 2025 17:21:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id l6lHQBLiCk3H; Wed, 23 Apr 2025 16:14:33 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id P1FjXVzLxtAT; Wed, 23 Apr 2025 17:21:37 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 91EB740904
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7C06A61283
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1745424873;
-	bh=N0GuzpYJ9PjJ5qIG1ZTeBmnHXrY4A3yI5cAwgF/TDQ4=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=78ruFvOEd7Z67cgiZfNWvoolxOiTCGYHZdApTmtpv5REYKIK71g6t63N5K2TBqoHO
-	 mEWPE2Vp0oO9KS3EVhPEL38VBKMaFKXwvQY9bNsLUPy0oxCa5hZiyHneKhWUaVudS1
-	 LQfwxddJJ7mx8PKv2UemKPYBmxq/SbFdRRv/cUO3vmNuQCYF3aZeVsHSLJp3YQtDpK
-	 +CqKXe01wSf6c/uxnZYFOwWYZBWni0R9L0EqMRxSUZk+5FFmmdW+UryNeJncUMRpBh
-	 yd+gASPNRKoi1Cx5DjzJ1Hd9WUl/s/wnBTgf5KHhLuEFcVmuCrZrTVBRcWFXZjWQBD
-	 Kk1dMdv2KUhag==
+	s=default; t=1745428897;
+	bh=7lTS8htftavndaqoP3t1tXAiwm/cUa/UaK8NxYVtnZk=;
+	h=Date:To:Cc:From:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=B8xjxw2W8DmEj89cMs3HcH9b+m5W2MxyvyRviLxZKhT4VhSmRsr7ylX5vX1n2Rc6K
+	 EmBxghxIYS0ynNbYPx0v5O4gollUmNfZt3qonUMftRcmZLwJKnltd8HvuF45s7PNGx
+	 ARekFEIYJXhLasZcWTN1WoYT+8CWidRwGSJ0mIAlq9ZvwXLFzEuCUc5ARlDMv8Mtw2
+	 kh+OInDZuWN874RpUFOqszqHPZq4tUCGxF+evNp0QHexhUN6hxovUyCIn81GEPh6zl
+	 u/exsman1bfNpkCrc3NXZyXo9P84iPpEKS7S0ia+axzbems4MPpGZ3CT7/673a7mmZ
+	 XFx37ylx2oSuA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 91EB740904;
-	Wed, 23 Apr 2025 16:14:33 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7C06A61283;
+	Wed, 23 Apr 2025 17:21:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 2E2F01BC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Apr 2025 16:14:32 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 2ABA02A6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Apr 2025 17:21:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 142CC81ECA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Apr 2025 16:14:32 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 10D7E822DF
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Apr 2025 17:21:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0VqFv6GeFbGk for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Apr 2025 16:14:31 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
+ id x1twN4LmXmuZ for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Apr 2025 17:21:34 +0000 (UTC)
+X-Greylist: delayed 516 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 23 Apr 2025 17:21:34 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 50D8782229
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 50D8782229
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=129.97.134.17;
+ helo=caffeine.csclub.uwaterloo.ca; envelope-from=lsorense@csclub.uwaterloo.ca;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 46CF581DCA
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 46CF581DCA
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 46CF581DCA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Apr 2025 16:14:30 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id D5EF95C592E;
- Wed, 23 Apr 2025 16:12:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1B3FDC4CEE2;
- Wed, 23 Apr 2025 16:14:27 +0000 (UTC)
-Date: Wed, 23 Apr 2025 17:14:25 +0100
-From: Simon Horman <horms@kernel.org>
-To: "Ertman, David M" <david.m.ertman@intel.com>
-Cc: "Nikolova, Tatyana E" <tatyana.e.nikolova@intel.com>,
- "jgg@nvidia.com" <jgg@nvidia.com>, "leon@kernel.org" <leon@kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "linux-rdma@vger.kernel.org" <linux-rdma@vger.kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>
-Message-ID: <20250423161425.GA2843373@horms.kernel.org>
-References: <20250416021549.606-1-tatyana.e.nikolova@intel.com>
- <20250416021549.606-6-tatyana.e.nikolova@intel.com>
- <20250417112143.GE2430521@horms.kernel.org>
- <IA1PR11MB6194FD66BA60E12D6430DF22DDBF2@IA1PR11MB6194.namprd11.prod.outlook.com>
+Received: from caffeine.csclub.uwaterloo.ca (caffeine.csclub.uwaterloo.ca
+ [129.97.134.17])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 50D8782229
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Apr 2025 17:21:33 +0000 (UTC)
+Received: by caffeine.csclub.uwaterloo.ca (Postfix, from userid 20367)
+ id 97DED460E57; Wed, 23 Apr 2025 13:12:54 -0400 (EDT)
+Date: Wed, 23 Apr 2025 13:12:54 -0400
+To: intel-wired-lan@lists.osuosl.org
+Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ LKML <linux-kernel@vger.kernel.org>, Netdev <netdev@vger.kernel.org>,
+ Len Sorensen <lsorense@csclub.uwaterloo.ca>
+Message-ID: <aAkflkxbvC8MB8PG@csclub.uwaterloo.ca>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <IA1PR11MB6194FD66BA60E12D6430DF22DDBF2@IA1PR11MB6194.namprd11.prod.outlook.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1745424869;
- bh=Z/4DmM8gueZBF5pkQ33eV/TOGnbp2ifSLowAhDlqItU=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=rzl9HJgsjiv6OYRiFt5O2M0ta6p8Ba77FyXKYN2G+cx5d/s5boXYxcdHFaeuOgmyt
- 6I19ywl2bpMIKMIuH6g/GCL3Q4vlp4avUahDcq8p04KXmOYsa9LWESKzUxgswLn5eQ
- iwM9/QtSrE3MjM2UYlUzaau1gdcQ+2pkFhsBxN4mKvKofdnyr+MWLtkT1g7sIuQeGJ
- UiTSV6ZIoJ2lG9f0bGah41y6kr+oQxcbfVPLFWaw34SMT9KuHpSCDUW7raJZo0k1Ab
- xaMc4diV6LsDmovTDwWNifJRz7+kWEHsA4thtGUp/yf3zXdVl9AexBTHSVVfLDFZDH
- Q9HaurUSXyKwA==
+From: Lennart Sorensen <lsorense@csclub.uwaterloo.ca>
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=rzl9HJgs
-Subject: Re: [Intel-wired-lan] [iwl-next v5 5/5] iidc/ice/irdma: Update IDC
- to support multiple consumers
+ dmarc=pass (p=none dis=none)
+ header.from=csclub.uwaterloo.ca
+Subject: [Intel-wired-lan] Fix promiscous and multicast mode on iavf after
+ reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,70 +84,41 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Apr 18, 2025 at 05:14:24PM +0000, Ertman, David M wrote:
-> > -----Original Message-----
-> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> > Simon Horman
-> > Sent: Thursday, April 17, 2025 4:22 AM
-> > To: Nikolova, Tatyana E <tatyana.e.nikolova@intel.com>
-> > Cc: jgg@nvidia.com; leon@kernel.org; intel-wired-lan@lists.osuosl.org; linux-
-> > rdma@vger.kernel.org; netdev@vger.kernel.org
-> > Subject: Re: [Intel-wired-lan] [iwl-next v5 5/5] iidc/ice/irdma: Update IDC to
-> > support multiple consumers
-> > 
-> > On Tue, Apr 15, 2025 at 09:15:49PM -0500, Tatyana Nikolova wrote:
-> > > From: Dave Ertman <david.m.ertman@intel.com>
-> > >
-> > > In preparation of supporting more than a single core PCI driver
-> > > for RDMA, move ice specific structs like qset_params, qos_info
-> > > and qos_params from iidc_rdma.h to iidc_rdma_ice.h.
-> > >
-> > > Previously, the ice driver was just exporting its entire PF struct
-> > > to the auxiliary driver, but since each core driver will have its own
-> > > different PF struct, implement a universal struct that all core drivers
-> > > can provide to the auxiliary driver through the probe call.
-> > >
-> > > Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> > > Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
-> > > Co-developed-by: Mustafa Ismail <mustafa.ismail@intel.com>
-> > > Signed-off-by: Mustafa Ismail <mustafa.ismail@intel.com>
-> > > Co-developed-by: Shiraz Saleem <shiraz.saleem@intel.com>
-> > > Signed-off-by: Shiraz Saleem <shiraz.saleem@intel.com>
-> > > Co-developed-by: Tatyana Nikolova <tatyana.e.nikolova@intel.com>
-> > > Signed-off-by: Tatyana Nikolova <tatyana.e.nikolova@intel.com>
-> > 
-> > ...
-> > 
-> > > diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink.c
-> > b/drivers/net/ethernet/intel/ice/devlink/devlink.c
-> > > index fcb199efbea5..4af60e2f37df 100644
-> > > --- a/drivers/net/ethernet/intel/ice/devlink/devlink.c
-> > > +++ b/drivers/net/ethernet/intel/ice/devlink/devlink.c
-> > > @@ -1339,8 +1339,13 @@ ice_devlink_enable_roce_get(struct devlink
-> > *devlink, u32 id,
-> > >  			    struct devlink_param_gset_ctx *ctx)
-> > >  {
-> > >  	struct ice_pf *pf = devlink_priv(devlink);
-> > > +	struct iidc_rdma_core_dev_info *cdev;
-> > >
-> > > -	ctx->val.vbool = pf->rdma_mode & IIDC_RDMA_PROTOCOL_ROCEV2
-> > ? true : false;
-> > > +	cdev = pf->cdev_info;
-> > > +	if (!cdev)
-> > > +		return -ENODEV;
-> > 
-> > Is it possible for cdev to be NULL here?
-> > 
-> > Likewise for other checks for NULL arguments passed to functions
-> > elsewhere in this patch.
-> 
-> Hi Simon,
-> 
-> In the resume path from Sx states it is possible to have a NULL pointer for
-> the cdev_info pointer.  This is due to us not wanting to fail on resuming unless
-> absolutely necessary.  I went through the rest of the patch looking for NULL checks
-> and all of them are valid from my inspection (possible to be NULL).
-> 
-> Thanks for the review!
+I discovered that anything that causes a reset in iavf makes breaks
+promiscous mode and multicast.  This is because the host side ice
+driver clears the VF from filters when it is reset.  iavf then correctly
+calls iavf_configure, but since the current_netdev_promisc_flags already
+match the netdev promisc settings, nothing is done, so the promisc and
+multicast settings are not sent to the ice host driver after the reset.
+As a result the iavf side shows promisc enabled but it isn't working.
+Disabling and re-enabling promisc on the iavf side fixes it of course.
+Simple test case to show this is to enable promisc, check that packets
+are being seen, then change the mtu size (which does a reset) and check
+packets received again, and promisc is no longer active.  Disabling
+promisc and enabling it again restores receiving the packets.
 
-Likewise, thanks for checking.
+The following seems to work for me, but I am not sure it is the correct
+place to clear the saved flags.
+
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+index 6d7ba4d67a19..4018a08d63c1 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_main.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+@@ -3233,6 +3233,14 @@ static void iavf_reset_task(struct work_struct *work)
+ 		iavf_shutdown_adminq(hw);
+ 		iavf_init_adminq(hw);
+ 		iavf_request_reset(adapter);
++
++		/* Clear remembered promisc and multicast flags since
++		 * reset clears them on the host so they will get force
++		 * applied again through iavf_configure() down below.
++		 */
++		spin_lock_bh(&adapter->current_netdev_promisc_flags_lock);
++		adapter->current_netdev_promisc_flags &= ~(IFF_PROMISC | IFF_ALLMULTI);
++		spin_unlock_bh(&adapter->current_netdev_promisc_flags_lock);
+ 	}
+ 	adapter->flags |= IAVF_FLAG_RESET_PENDING;
+ 
+
+-- 
+Len Sorensen
