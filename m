@@ -1,69 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E0803A99876
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Apr 2025 21:27:45 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6F56C610F8;
-	Wed, 23 Apr 2025 19:27:39 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id qIb7fs1PSdXN; Wed, 23 Apr 2025 19:27:38 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2E462612A8
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1745436458;
-	bh=eYxDync0oKB3YKamc3fhAL0HvWNOWYNFX8i/OJ67MDQ=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=ZTTgcChtEdRqg27yroQbcZ1ibdQavpaezbiM0VH227Iv7WwcRnDQm68jiOlrrHbR8
-	 Z0NCXj90hBI1uuSjX6ih8kY0oOtABYxQMjClouzIX44UkZo4DrSWxtYMMFbHpaH18T
-	 Xm4tbfxrPGBkp2PgO7uDUjMdaCSrSZlGuLS7tLnJMOkg6Ox001xDPskDP4urCjvMDF
-	 d6sXmsegiqobwdGN7QGuC6o3qtKPdaCGS0OBmSEoawRtgzttx/P94es/9jxcYm/MvZ
-	 83eSZymQXYZfNAgyA0gLMzyuGh85TMri9CrUCuLrORi7vA8oIIdU8xdCAjBGR7rDz6
-	 2N4E6iLDnECeQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2E462612A8;
-	Wed, 23 Apr 2025 19:27:38 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id D265A1BC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Apr 2025 19:27:35 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6492BA99879
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Apr 2025 21:27:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C3EFE81E3F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Apr 2025 19:27:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6D8AF83313;
+	Wed, 23 Apr 2025 19:27:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id df_7WPvAtzCe for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Apr 2025 19:27:35 +0000 (UTC)
+ id gw7z0N2c1K6c; Wed, 23 Apr 2025 19:27:42 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 334FC832AA
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1745436462;
+	bh=TMCcsQGL/kP5+nqUNAX/K+sei4GGjpm4ItFpBLXKmkg=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=47Xwv0khRF34aJK4ZZHXySAROvVw/DZzgZCIgfR02iv4oBjqboPBzVkTHkrG5hW0n
+	 bUAs6QNQkPZoUUkkMSNl/01MgRrIB+vo5uXPbvxgFlD2K5kngdLze3lmgJ6KxoXJCR
+	 uuM03j+hz1oSwznrecrXcf6Ct82SMypdj4YwrWEpamE8u5EmfuHbnwNevmVJ6lUYxq
+	 kmt5q4SmiSwK8D/DDx96BjPQ07cVwZKZ1kvLIL5tznP1GONN5Z3xjkwqtfc2U0TuYj
+	 v0KJPv/2ZfweHV1wouQQU5OXhNe73deUzeexoqe2QfDwXZgaWqizg+FoRiLTxI5bKN
+	 gQ6E+5sKNUCOQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 334FC832AA;
+	Wed, 23 Apr 2025 19:27:42 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id D27E21BC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Apr 2025 19:27:39 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id C47778225F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Apr 2025 19:27:39 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id gYDHyz7C58Ov for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Apr 2025 19:27:38 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.15;
  helo=mgamail.intel.com; envelope-from=ahmed.zaki@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4333981493
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4333981493
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A79F98221D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A79F98221D
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.15])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4333981493
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Apr 2025 19:27:34 +0000 (UTC)
-X-CSE-ConnectionGUID: ecnesCXLQWGnXtzIA/+Myg==
-X-CSE-MsgGUID: Fw0DvjCUQy+8AliQTlkZCg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11412"; a="47176426"
-X-IronPort-AV: E=Sophos;i="6.15,233,1739865600"; d="scan'208";a="47176426"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id A79F98221D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Apr 2025 19:27:38 +0000 (UTC)
+X-CSE-ConnectionGUID: UbC1R/xDQpezcD3OC569Dg==
+X-CSE-MsgGUID: VujE+7+NSH2gEB0cGyCJaw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11412"; a="47176446"
+X-IronPort-AV: E=Sophos;i="6.15,233,1739865600"; d="scan'208";a="47176446"
 Received: from fmviesa001.fm.intel.com ([10.60.135.141])
  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Apr 2025 12:27:31 -0700
-X-CSE-ConnectionGUID: K+eldu/FR+qVDtjih6HyZQ==
-X-CSE-MsgGUID: JZZonfMGRd61PQowEVLKxQ==
+ 23 Apr 2025 12:27:38 -0700
+X-CSE-ConnectionGUID: 6I1O4STKRpqYJPY0FfyMbw==
+X-CSE-MsgGUID: ODq0Fav7TlK1dKRR7oALWg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,233,1739865600"; d="scan'208";a="163442555"
+X-IronPort-AV: E=Sophos;i="6.15,233,1739865600"; d="scan'208";a="163442598"
 Received: from aschofie-mobl2.amr.corp.intel.com (HELO azaki-desk1.intel.com)
  ([10.125.108.47])
  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Apr 2025 12:27:24 -0700
+ 23 Apr 2025 12:27:30 -0700
 From: Ahmed Zaki <ahmed.zaki@intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: netdev@vger.kernel.org, ahmed.zaki@intel.com, sridhar.samudrala@intel.com,
@@ -72,8 +72,8 @@ Cc: netdev@vger.kernel.org, ahmed.zaki@intel.com, sridhar.samudrala@intel.com,
  przemyslaw.kitszel@intel.com, andrew+netdev@lunn.ch, davem@davemloft.net,
  edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
  almasrymina@google.com, willemb@google.com, pmenzel@molgen.mpg.de
-Date: Wed, 23 Apr 2025 13:27:04 -0600
-Message-ID: <20250423192705.1648119-3-ahmed.zaki@intel.com>
+Date: Wed, 23 Apr 2025 13:27:05 -0600
+Message-ID: <20250423192705.1648119-4-ahmed.zaki@intel.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20250423192705.1648119-1-ahmed.zaki@intel.com>
 References: <20250423192705.1648119-1-ahmed.zaki@intel.com>
@@ -81,26 +81,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1745436454; x=1776972454;
+ t=1745436459; x=1776972459;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=RhyE7FG8F621lcXZeIbCln8kuoij5NjrmbhdkjDdHyw=;
- b=ii08O8OVqnW2KU8Vcj7CT77QO4EQHlkmQVxGfVj4a5zrAi2p7GEr8K6v
- wVOKltXaDQA/kt0ZESudLZJx1DJ7RMTuQUYe2v7YIa473U89SmBKPA23l
- OgbrYWNGtGkk+dCnxYcYHkJYIfGvTXIidYDEVO6+WLc7HR04uLQEK4oMY
- zjQpKBkCFR/X1Eq/v7Y1cyPCvm9D3YCeICSey7br67GCpMZH0S+ti3uhA
- 2FmuS7wYEIq+nTpKNLUpM3gQB+sWg1c5LVOKbVhNWHF3oPhmsa/p1DsSB
- XNZ7svx1S1AYjJuF6j2mwzkDfMPe5EhzQQNPo5Ig4+rumJapoh9FIt5Tk
- Q==;
+ bh=mfY85NeeEIzK1YcTbYddQVB/TjbEzEmgFmjrKsQEAkQ=;
+ b=PU53tW6I7YrjWtykVdOQ5bdMkuh+XA1gfii0RzakFYWCIIqN4aGnVH4e
+ rYYVs6mqmC1J9HR3CQhDd/HRxchRrQre2H8U+5qyjYX+YrAYoScuS1woY
+ 4qKUhWdhL60ndFxxjJMAplC6n0udIOnOoyNpra719Vgg6YLNQZMLzGh2o
+ aCVBFtvIMvi6SDZLppZHLMreJx2yZBTOiOGDEF48hyrWErxCkO9/r8YW5
+ ZS0s5VD85lbxGTkK2MlD+gTjI4zcuh0tOxv4LtfWXmoIwbUoz7J8zodJm
+ mD5Ky3aMFucP+Xv2MWYsRj4xD4u+nl+ybfhRXGGcgkuNy1LZsqpSvhNl1
+ w==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=ii08O8OV
-Subject: [Intel-wired-lan] [PATCH iwl-next v5 2/3] virtchnl2: add flow
- steering support
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=PU53tW6I
+Subject: [Intel-wired-lan] [PATCH iwl-next v5 3/3] idpf: add flow steering
+ support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -116,291 +115,574 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Sudheer Mogilappagari <sudheer.mogilappagari@intel.com>
+Use the new virtchnl2 OP codes to communicate with the Control Plane to
+add flow steering filters. We add the basic functionality for add/delete
+with TCP/UDP IPv4 only. Support for other OP codes and protocols will be
+added later.
 
-Add opcodes and corresponding message structure to add and delete
-flow steering rules. Flow steering enables configuration
-of rules to take an action or subset of actions based on a match
-criteria. Actions could be redirect to queue, redirect to queue
-group, drop packet or mark.
+Standard 'ethtool -N|--config-ntuple' should be used, for example:
 
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+    # ethtool -N ens801f0d1 flow-type tcp4 src-ip 10.0.0.1 action 6
+
+to route all IPv4/TCP traffic from IP 10.0.0.1 to queue 6.
+
 Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
-Co-developed-by: Dinesh Kumar <dinesh.kumar@intel.com>
-Signed-off-by: Dinesh Kumar <dinesh.kumar@intel.com>
-Signed-off-by: Sudheer Mogilappagari <sudheer.mogilappagari@intel.com>
 Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
 ---
- drivers/net/ethernet/intel/idpf/virtchnl2.h | 204 +++++++++++++++++++-
- 1 file changed, 200 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/intel/idpf/idpf.h        |  13 +
+ .../net/ethernet/intel/idpf/idpf_ethtool.c    | 298 +++++++++++++++++-
+ drivers/net/ethernet/intel/idpf/idpf_lib.c    |   5 +
+ .../net/ethernet/intel/idpf/idpf_virtchnl.c   | 108 +++++++
+ .../net/ethernet/intel/idpf/idpf_virtchnl.h   |   6 +
+ 5 files changed, 425 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/idpf/virtchnl2.h b/drivers/net/ethernet/intel/idpf/virtchnl2.h
-index 1094b3989bf0..af0f975060c9 100644
---- a/drivers/net/ethernet/intel/idpf/virtchnl2.h
-+++ b/drivers/net/ethernet/intel/idpf/virtchnl2.h
-@@ -78,6 +78,10 @@ enum virtchnl2_op {
- 	VIRTCHNL2_OP_PTP_ADJ_DEV_CLK_FINE		= 546,
- 	VIRTCHNL2_OP_PTP_ADJ_DEV_CLK_TIME		= 547,
- 	VIRTCHNL2_OP_PTP_GET_VPORT_TX_TSTAMP_CAPS	= 548,
-+	/* Opcodes 549 - 550 are reserved */
-+	VIRTCHNL2_OP_ADD_FLOW_RULE			= 551,
-+	VIRTCHNL2_OP_GET_FLOW_RULE			= 552,
-+	VIRTCHNL2_OP_DEL_FLOW_RULE			= 553,
+diff --git a/drivers/net/ethernet/intel/idpf/idpf.h b/drivers/net/ethernet/intel/idpf/idpf.h
+index c21903310354..0f3553782ea2 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf.h
++++ b/drivers/net/ethernet/intel/idpf/idpf.h
+@@ -252,6 +252,12 @@ struct idpf_port_stats {
+ 	struct virtchnl2_vport_stats vport_stats;
  };
  
- /**
-@@ -192,8 +196,9 @@ enum virtchnl2_cap_other {
- 	VIRTCHNL2_CAP_RDMA			= BIT_ULL(0),
- 	VIRTCHNL2_CAP_SRIOV			= BIT_ULL(1),
- 	VIRTCHNL2_CAP_MACFILTER			= BIT_ULL(2),
--	VIRTCHNL2_CAP_FLOW_DIRECTOR		= BIT_ULL(3),
--	/* Queue based scheduling using split queue model */
-+	/* BIT 3 is free and can be used for future caps.
-+	 * Queue based scheduling using split queue model
-+	 */
- 	VIRTCHNL2_CAP_SPLITQ_QSCHED		= BIT_ULL(4),
- 	VIRTCHNL2_CAP_CRC			= BIT_ULL(5),
- 	VIRTCHNL2_CAP_ADQ			= BIT_ULL(6),
-@@ -207,16 +212,36 @@ enum virtchnl2_cap_other {
- 	/* EDT: Earliest Departure Time capability used for Timing Wheel */
- 	VIRTCHNL2_CAP_EDT			= BIT_ULL(14),
- 	VIRTCHNL2_CAP_ADV_RSS			= BIT_ULL(15),
--	VIRTCHNL2_CAP_FDIR			= BIT_ULL(16),
-+	/* BIT 16 is free and can be used for future caps */
- 	VIRTCHNL2_CAP_RX_FLEX_DESC		= BIT_ULL(17),
- 	VIRTCHNL2_CAP_PTYPE			= BIT_ULL(18),
- 	VIRTCHNL2_CAP_LOOPBACK			= BIT_ULL(19),
- 	/* Other capability 20 is reserved */
-+	VIRTCHNL2_CAP_FLOW_STEER		= BIT_ULL(21),
- 
- 	/* this must be the last capability */
- 	VIRTCHNL2_CAP_OEM			= BIT_ULL(63),
- };
- 
-+/**
-+ * enum virtchnl2_action_types - Available actions for sideband flow steering
-+ * @VIRTCHNL2_ACTION_DROP: Drop the packet
-+ * @VIRTCHNL2_ACTION_PASSTHRU: Forward the packet to the next classifier/stage
-+ * @VIRTCHNL2_ACTION_QUEUE: Forward the packet to a receive queue
-+ * @VIRTCHNL2_ACTION_Q_GROUP: Forward the packet to a receive queue group
-+ * @VIRTCHNL2_ACTION_MARK: Mark the packet with specific marker value
-+ * @VIRTCHNL2_ACTION_COUNT: Increment the corresponding counter
-+ */
-+
-+enum virtchnl2_action_types {
-+	VIRTCHNL2_ACTION_DROP		= BIT(0),
-+	VIRTCHNL2_ACTION_PASSTHRU	= BIT(1),
-+	VIRTCHNL2_ACTION_QUEUE		= BIT(2),
-+	VIRTCHNL2_ACTION_Q_GROUP	= BIT(3),
-+	VIRTCHNL2_ACTION_MARK		= BIT(4),
-+	VIRTCHNL2_ACTION_COUNT		= BIT(5),
++struct idpf_fsteer_fltr {
++	struct list_head list;
++	u32 loc;
++	u32 q_index;
 +};
 +
- /* underlying device type */
- enum virtchl2_device_type {
- 	VIRTCHNL2_MEV_DEVICE			= 0,
-@@ -572,9 +597,16 @@ VIRTCHNL2_CHECK_STRUCT_LEN(8, virtchnl2_queue_reg_chunks);
  /**
-  * enum virtchnl2_vport_flags - Vport flags that indicate vport capabilities.
-  * @VIRTCHNL2_VPORT_UPLINK_PORT: Representatives of underlying physical ports
-+ * @VIRTCHNL2_VPORT_INLINE_FLOW_STEER: Inline flow steering enabled
-+ * @VIRTCHNL2_VPORT_INLINE_FLOW_STEER_RXQ: Inline flow steering enabled
-+ *  with explicit Rx queue action
-+ * @VIRTCHNL2_VPORT_SIDEBAND_FLOW_STEER: Sideband flow steering enabled
+  * struct idpf_tx_tstamp_stats - Tx timestamp statistics
+  * @tx_hwtstamp_lock: Lock to protect Tx tstamp stats
+@@ -406,6 +412,8 @@ struct idpf_rss_data {
+  *		      ethtool
+  * @user_flags: User toggled config flags
+  * @mac_filter_list: List of MAC filters
++ * @num_fsteer_fltrs: number of flow steering filters
++ * @flow_steer_list: list of flow steering filters
+  *
+  * Used to restore configuration after a reset as the vport will get wiped.
   */
- enum virtchnl2_vport_flags {
- 	VIRTCHNL2_VPORT_UPLINK_PORT	= BIT(0),
-+	VIRTCHNL2_VPORT_INLINE_FLOW_STEER	= BIT(1),
-+	VIRTCHNL2_VPORT_INLINE_FLOW_STEER_RXQ	= BIT(2),
-+	VIRTCHNL2_VPORT_SIDEBAND_FLOW_STEER	= BIT(3),
+@@ -417,6 +425,8 @@ struct idpf_vport_user_config_data {
+ 	u32 num_req_rxq_desc;
+ 	DECLARE_BITMAP(user_flags, __IDPF_USER_FLAGS_NBITS);
+ 	struct list_head mac_filter_list;
++	u32 num_fsteer_fltrs;
++	struct list_head flow_steer_list;
  };
  
  /**
-@@ -599,6 +631,14 @@ enum virtchnl2_vport_flags {
-  * @rx_desc_ids: See VIRTCHNL2_RX_DESC_IDS definitions.
-  * @tx_desc_ids: See VIRTCHNL2_TX_DESC_IDS definitions.
-  * @pad1: Padding.
-+ * @inline_flow_caps: Bit mask of supported inline-flow-steering
-+ *  flow types (See enum virtchnl2_flow_types)
-+ * @sideband_flow_caps: Bit mask of supported sideband-flow-steering
-+ *  flow types (See enum virtchnl2_flow_types)
-+ * @sideband_flow_actions: Bit mask of supported action types
-+ *  for sideband flow steering (See enum virtchnl2_action_types)
-+ * @flow_steer_max_rules: Max rules allowed for inline and sideband
-+ *  flow steering combined
-  * @rss_algorithm: RSS algorithm.
-  * @rss_key_size: RSS key size.
-  * @rss_lut_size: RSS LUT size.
-@@ -631,7 +671,11 @@ struct virtchnl2_create_vport {
- 	__le16 vport_flags;
- 	__le64 rx_desc_ids;
- 	__le64 tx_desc_ids;
--	u8 pad1[72];
-+	u8 pad1[48];
-+	__le64 inline_flow_caps;
-+	__le64 sideband_flow_caps;
-+	__le32 sideband_flow_actions;
-+	__le32 flow_steer_max_rules;
- 	__le32 rss_algorithm;
- 	__le16 rss_key_size;
- 	__le16 rss_lut_size;
-@@ -1580,4 +1624,156 @@ struct virtchnl2_ptp_adj_dev_clk_time {
- };
- VIRTCHNL2_CHECK_STRUCT_LEN(8, virtchnl2_ptp_adj_dev_clk_time);
+@@ -878,4 +888,7 @@ int idpf_sriov_configure(struct pci_dev *pdev, int num_vfs);
+ u8 idpf_vport_get_hsplit(const struct idpf_vport *vport);
+ bool idpf_vport_set_hsplit(const struct idpf_vport *vport, u8 val);
  
-+#define VIRTCHNL2_MAX_NUM_PROTO_HDRS	4
-+#define VIRTCHNL2_MAX_SIZE_RAW_PACKET	256
-+#define VIRTCHNL2_MAX_NUM_ACTIONS	8
++int idpf_add_del_fsteer_filters(struct idpf_adapter *adapter,
++				struct virtchnl2_flow_rule_add_del *rule,
++				enum virtchnl2_op opcode);
+ #endif /* !_IDPF_H_ */
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
+index 7a4793749bc5..8a7145dd912b 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
+@@ -3,6 +3,7 @@
+ 
+ #include "idpf.h"
+ #include "idpf_ptp.h"
++#include "idpf_virtchnl.h"
+ 
+ /**
+  * idpf_get_rxnfc - command to get RX flow classification rules
+@@ -13,26 +14,312 @@
+  * Returns Success if the command is supported.
+  */
+ static int idpf_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd,
+-			  u32 __always_unused *rule_locs)
++			  u32 *rule_locs)
+ {
++	struct idpf_netdev_priv *np = netdev_priv(netdev);
++	struct idpf_vport_user_config_data *user_config;
++	struct idpf_fsteer_fltr *f;
+ 	struct idpf_vport *vport;
++	unsigned int cnt = 0;
++	int err = 0;
+ 
+ 	idpf_vport_ctrl_lock(netdev);
+ 	vport = idpf_netdev_to_vport(netdev);
++	user_config = &np->adapter->vport_config[np->vport_idx]->user_config;
+ 
+ 	switch (cmd->cmd) {
+ 	case ETHTOOL_GRXRINGS:
+ 		cmd->data = vport->num_rxq;
+-		idpf_vport_ctrl_unlock(netdev);
+-
+-		return 0;
++		break;
++	case ETHTOOL_GRXCLSRLCNT:
++		cmd->rule_cnt = user_config->num_fsteer_fltrs;
++		cmd->data = idpf_fsteer_max_rules(vport);
++		break;
++	case ETHTOOL_GRXCLSRULE:
++		err = -EINVAL;
++		list_for_each_entry(f, &user_config->flow_steer_list, list)
++			if (f->loc == cmd->fs.location) {
++				cmd->fs.ring_cookie = f->q_index;
++				err = 0;
++				break;
++			}
++		break;
++	case ETHTOOL_GRXCLSRLALL:
++		cmd->data = idpf_fsteer_max_rules(vport);
++		list_for_each_entry(f, &user_config->flow_steer_list, list) {
++			if (cnt == cmd->rule_cnt) {
++				err = -EMSGSIZE;
++				break;
++			}
++			rule_locs[cnt] = f->loc;
++			cnt++;
++		}
++		if (!err)
++			cmd->rule_cnt = user_config->num_fsteer_fltrs;
++		break;
+ 	default:
+ 		break;
+ 	}
+ 
+ 	idpf_vport_ctrl_unlock(netdev);
+ 
+-	return -EOPNOTSUPP;
++	return err;
++}
++
++static void idpf_fsteer_fill_ipv4(struct virtchnl2_proto_hdrs *hdrs,
++				  struct ethtool_rx_flow_spec *fsp)
++{
++	struct iphdr *iph;
++
++	hdrs->proto_hdr[0].hdr_type = cpu_to_le32(VIRTCHNL2_PROTO_HDR_IPV4);
++
++	iph = (struct iphdr *)hdrs->proto_hdr[0].buffer_spec;
++	iph->saddr = fsp->h_u.tcp_ip4_spec.ip4src;
++	iph->daddr = fsp->h_u.tcp_ip4_spec.ip4dst;
++
++	iph = (struct iphdr *)hdrs->proto_hdr[0].buffer_mask;
++	iph->saddr = fsp->m_u.tcp_ip4_spec.ip4src;
++	iph->daddr = fsp->m_u.tcp_ip4_spec.ip4dst;
++}
++
++static void idpf_fsteer_fill_udp(struct virtchnl2_proto_hdrs *hdrs,
++				 struct ethtool_rx_flow_spec *fsp,
++				 bool v4)
++{
++	struct udphdr *udph, *udpm;
++
++	hdrs->proto_hdr[1].hdr_type = cpu_to_le32(VIRTCHNL2_PROTO_HDR_UDP);
++
++	udph = (struct udphdr *)hdrs->proto_hdr[1].buffer_spec;
++	udpm = (struct udphdr *)hdrs->proto_hdr[1].buffer_mask;
++
++	if (v4) {
++		udph->source = fsp->h_u.udp_ip4_spec.psrc;
++		udph->dest = fsp->h_u.udp_ip4_spec.pdst;
++		udpm->source = fsp->m_u.udp_ip4_spec.psrc;
++		udpm->dest = fsp->m_u.udp_ip4_spec.pdst;
++	} else {
++		udph->source = fsp->h_u.udp_ip6_spec.psrc;
++		udph->dest = fsp->h_u.udp_ip6_spec.pdst;
++		udpm->source = fsp->m_u.udp_ip6_spec.psrc;
++		udpm->dest = fsp->m_u.udp_ip6_spec.pdst;
++	}
++}
++
++static void idpf_fsteer_fill_tcp(struct virtchnl2_proto_hdrs *hdrs,
++				 struct ethtool_rx_flow_spec *fsp,
++				 bool v4)
++{
++	struct tcphdr *tcph, *tcpm;
++
++	hdrs->proto_hdr[1].hdr_type = cpu_to_le32(VIRTCHNL2_PROTO_HDR_TCP);
++
++	tcph = (struct tcphdr *)hdrs->proto_hdr[1].buffer_spec;
++	tcpm = (struct tcphdr *)hdrs->proto_hdr[1].buffer_mask;
++
++	if (v4) {
++		tcph->source = fsp->h_u.tcp_ip4_spec.psrc;
++		tcph->dest = fsp->h_u.tcp_ip4_spec.pdst;
++		tcpm->source = fsp->m_u.tcp_ip4_spec.psrc;
++		tcpm->dest = fsp->m_u.tcp_ip4_spec.pdst;
++	} else {
++		tcph->source = fsp->h_u.tcp_ip6_spec.psrc;
++		tcph->dest = fsp->h_u.tcp_ip6_spec.pdst;
++		tcpm->source = fsp->m_u.tcp_ip6_spec.psrc;
++		tcpm->dest = fsp->m_u.tcp_ip6_spec.pdst;
++	}
++}
 +
 +/**
-+ * struct virtchnl2_proto_hdr - represent one protocol header
-+ * @hdr_type: See enum virtchnl2_proto_hdr_type
-+ * @pad: padding
-+ * @buffer_spec: binary buffer based on header type.
-+ * @buffer_mask: mask applied on buffer_spec.
++ * idpf_add_flow_steer - add a Flow Steering filter
++ * @netdev: network interface device structure
++ * @cmd: command to add Flow Steering filter
 + *
-+ * Structure to hold protocol headers based on hdr_type
++ * Return: 0 on success and negative values for failure
 + */
-+struct virtchnl2_proto_hdr {
-+	__le32 hdr_type;
-+	u8 pad[4];
-+	u8 buffer_spec[64];
-+	u8 buffer_mask[64];
-+};
-+VIRTCHNL2_CHECK_STRUCT_LEN(136, virtchnl2_proto_hdr);
++static int idpf_add_flow_steer(struct net_device *netdev,
++			       struct ethtool_rxnfc *cmd)
++{
++	struct idpf_fsteer_fltr *fltr, *parent = NULL, *f;
++	struct idpf_netdev_priv *np = netdev_priv(netdev);
++	struct idpf_vport_user_config_data *user_config;
++	struct ethtool_rx_flow_spec *fsp = &cmd->fs;
++	struct virtchnl2_flow_rule_add_del *rule;
++	struct idpf_vport_config *vport_config;
++	struct virtchnl2_rule_action_set *acts;
++	struct virtchnl2_flow_rule_info *info;
++	struct virtchnl2_proto_hdrs *hdrs;
++	struct idpf_vport *vport;
++	u32 flow_type, q_index;
++	u16 num_rxq;
++	int err;
++
++	vport = idpf_netdev_to_vport(netdev);
++	vport_config = vport->adapter->vport_config[np->vport_idx];
++	user_config = &vport_config->user_config;
++	num_rxq = user_config->num_req_rx_qs;
++
++	flow_type = fsp->flow_type & ~(FLOW_EXT | FLOW_MAC_EXT | FLOW_RSS);
++	if (flow_type != fsp->flow_type)
++		return -EINVAL;
++
++	if (!idpf_sideband_action_ena(vport, fsp) ||
++	    !idpf_sideband_flow_type_ena(vport, flow_type))
++		return -EOPNOTSUPP;
++
++	if (user_config->num_fsteer_fltrs > idpf_fsteer_max_rules(vport))
++		return -ENOSPC;
++
++	q_index = fsp->ring_cookie;
++	if (q_index >= num_rxq)
++		return -EINVAL;
++
++	rule = kzalloc(struct_size(rule, rule_info, 1), GFP_KERNEL);
++	if (!rule)
++		return -ENOMEM;
++
++	rule->vport_id = cpu_to_le32(vport->vport_id);
++	rule->count = cpu_to_le32(1);
++	info = &rule->rule_info[0];
++	info->rule_id = cpu_to_le32(fsp->location);
++
++	hdrs = &info->rule_cfg.proto_hdrs;
++	hdrs->tunnel_level = 0;
++	hdrs->count = cpu_to_le32(2);
++
++	acts = &info->rule_cfg.action_set;
++	acts->count = cpu_to_le32(1);
++	acts->actions[0].action_type = cpu_to_le32(VIRTCHNL2_ACTION_QUEUE);
++	acts->actions[0].act_conf.q_id = cpu_to_le32(q_index);
++
++	switch (flow_type) {
++	case UDP_V4_FLOW:
++		idpf_fsteer_fill_ipv4(hdrs, fsp);
++		idpf_fsteer_fill_udp(hdrs, fsp, true);
++		break;
++	case TCP_V4_FLOW:
++		idpf_fsteer_fill_ipv4(hdrs, fsp);
++		idpf_fsteer_fill_tcp(hdrs, fsp, true);
++		break;
++	default:
++		err = -EINVAL;
++		goto out;
++	}
++
++	err = idpf_add_del_fsteer_filters(vport->adapter, rule,
++					  VIRTCHNL2_OP_ADD_FLOW_RULE);
++	if (err)
++		goto out;
++
++	if (info->status != cpu_to_le32(VIRTCHNL2_FLOW_RULE_SUCCESS)) {
++		err = -EIO;
++		goto out;
++	}
++
++	fltr = kzalloc(sizeof(*fltr), GFP_KERNEL);
++	if (!fltr) {
++		err = -ENOMEM;
++		goto out;
++	}
++
++	fltr->loc = fsp->location;
++	fltr->q_index = q_index;
++	list_for_each_entry(f, &user_config->flow_steer_list, list) {
++		if (f->loc >= fltr->loc)
++			break;
++		parent = f;
++	}
++
++	parent ? list_add(&fltr->list, &parent->list) :
++		 list_add(&fltr->list, &user_config->flow_steer_list);
++
++	user_config->num_fsteer_fltrs++;
++
++out:
++	kfree(rule);
++	return err;
++}
 +
 +/**
-+ * struct virtchnl2_proto_hdrs - struct to represent match criteria
-+ * @tunnel_level: specify where protocol header(s) start from.
-+ *                 must be 0 when sending a raw packet request.
-+ *                 0 - from the outer layer
-+ *                 1 - from the first inner layer
-+ *                 2 - from the second inner layer
-+ * @pad: Padding bytes
-+ * @count: total number of protocol headers in proto_hdr. 0 for raw packet.
-+ * @proto_hdr: Array of protocol headers
-+ * @raw: struct holding raw packet buffer when count is 0
-+ */
-+struct virtchnl2_proto_hdrs {
-+	u8 tunnel_level;
-+	u8 pad[3];
-+	__le32 count;
-+	union {
-+		struct virtchnl2_proto_hdr
-+			proto_hdr[VIRTCHNL2_MAX_NUM_PROTO_HDRS];
-+		struct {
-+			__le16 pkt_len;
-+			u8 spec[VIRTCHNL2_MAX_SIZE_RAW_PACKET];
-+			u8 mask[VIRTCHNL2_MAX_SIZE_RAW_PACKET];
-+		} raw;
-+	};
-+};
-+VIRTCHNL2_CHECK_STRUCT_LEN(552, virtchnl2_proto_hdrs);
-+
-+/**
-+ * struct virtchnl2_rule_action - struct representing single action for a flow
-+ * @action_type: see enum virtchnl2_action_types
-+ * @act_conf: union representing action depending on action_type.
-+ * @act_conf.q_id: queue id to redirect the packets to.
-+ * @act_conf.q_grp_id: queue group id to redirect the packets to.
-+ * @act_conf.ctr_id: used for count action. If input value 0xFFFFFFFF control
-+ *                    plane assigns a new counter and returns the counter ID to
-+ *                    the driver. If input value is not 0xFFFFFFFF then it must
-+ *                    be an existing counter given to the driver for an earlier
-+ *                    flow. Then this flow will share the counter.
-+ * @act_conf.mark_id: Value used to mark the packets. Used for mark action.
-+ * @act_conf.reserved: Reserved for future use.
-+ */
-+struct virtchnl2_rule_action {
-+	__le32 action_type;
-+	union {
-+		__le32 q_id;
-+		__le32 q_grp_id;
-+		__le32 ctr_id;
-+		__le32 mark_id;
-+		u8 reserved[8];
-+	} act_conf;
-+};
-+VIRTCHNL2_CHECK_STRUCT_LEN(12, virtchnl2_rule_action);
-+
-+/**
-+ * struct virtchnl2_rule_action_set - struct representing multiple actions
-+ * @count: number of valid actions in the action set of a rule
-+ * @actions: array of struct virtchnl2_rule_action
-+ */
-+struct virtchnl2_rule_action_set {
-+	/* action count must be less than VIRTCHNL2_MAX_NUM_ACTIONS */
-+	__le32 count;
-+	struct virtchnl2_rule_action actions[VIRTCHNL2_MAX_NUM_ACTIONS];
-+};
-+VIRTCHNL2_CHECK_STRUCT_LEN(100, virtchnl2_rule_action_set);
-+
-+/**
-+ * struct virtchnl2_flow_rule - represent one flow steering rule
-+ * @proto_hdrs: array of protocol header buffers representing match criteria
-+ * @action_set: series of actions to be applied for given rule
-+ * @priority: rule priority.
-+ * @pad: padding for future extensions.
-+ */
-+struct virtchnl2_flow_rule {
-+	struct virtchnl2_proto_hdrs proto_hdrs;
-+	struct virtchnl2_rule_action_set action_set;
-+	__le32 priority;
-+	u8 pad[8];
-+};
-+VIRTCHNL2_CHECK_STRUCT_LEN(664, virtchnl2_flow_rule);
-+
-+enum virtchnl2_flow_rule_status {
-+	VIRTCHNL2_FLOW_RULE_SUCCESS			= 1,
-+	VIRTCHNL2_FLOW_RULE_NORESOURCE			= 2,
-+	VIRTCHNL2_FLOW_RULE_EXIST			= 3,
-+	VIRTCHNL2_FLOW_RULE_TIMEOUT			= 4,
-+	VIRTCHNL2_FLOW_RULE_FLOW_TYPE_NOT_SUPPORTED	= 5,
-+	VIRTCHNL2_FLOW_RULE_MATCH_KEY_NOT_SUPPORTED	= 6,
-+	VIRTCHNL2_FLOW_RULE_ACTION_NOT_SUPPORTED	= 7,
-+	VIRTCHNL2_FLOW_RULE_ACTION_COMBINATION_INVALID	= 8,
-+	VIRTCHNL2_FLOW_RULE_ACTION_DATA_INVALID		= 9,
-+	VIRTCHNL2_FLOW_RULE_NOT_ADDED			= 10,
-+};
-+
-+/**
-+ * struct virtchnl2_flow_rule_info: structure representing single flow rule
-+ * @rule_id: rule_id associated with the flow_rule.
-+ * @rule_cfg: structure representing rule.
-+ * @status: status of rule programming. See enum virtchnl2_flow_rule_status.
-+ */
-+struct virtchnl2_flow_rule_info {
-+	__le32 rule_id;
-+	struct virtchnl2_flow_rule rule_cfg;
-+	__le32 status;
-+};
-+VIRTCHNL2_CHECK_STRUCT_LEN(672, virtchnl2_flow_rule_info);
-+
-+/**
-+ * struct virtchnl2_flow_rule_add_del - add/delete a flow steering rule
-+ * @vport_id: vport id for which the rule is to be added or deleted.
-+ * @count: Indicates number of rules to be added or deleted.
-+ * @rule_info: Array of flow rules to be added or deleted.
++ * idpf_del_flow_steer - delete a Flow Steering filter
++ * @netdev: network interface device structure
++ * @cmd: command to add Flow Steering filter
 + *
-+ * For VIRTCHNL2_OP_FLOW_RULE_ADD, rule_info contains list of rules to be
-+ * added. If rule_id is 0xFFFFFFFF, then the rule is programmed and not cached.
-+ *
-+ * For VIRTCHNL2_OP_FLOW_RULE_DEL, there are two possibilities. The structure
-+ * can contain either array of rule_ids or array of match keys to be deleted.
-+ * When match keys are used the corresponding rule_ids must be 0xFFFFFFFF.
-+ *
-+ * status member of each rule indicates the result. Maximum of 6 rules can be
-+ * added or deleted using this method. Driver has to retry in case of any
-+ * failure of ADD or DEL opcode. CP doesn't retry in case of failure.
++ * Return: 0 on success and negative values for failure
 + */
-+struct virtchnl2_flow_rule_add_del {
-+	__le32 vport_id;
-+	__le32 count;
-+	struct virtchnl2_flow_rule_info rule_info[] __counted_by_le(count);
-+};
-+VIRTCHNL2_CHECK_STRUCT_LEN(8, virtchnl2_flow_rule_add_del);
++static int idpf_del_flow_steer(struct net_device *netdev,
++			       struct ethtool_rxnfc *cmd)
++{
++	struct idpf_netdev_priv *np = netdev_priv(netdev);
++	struct idpf_vport_user_config_data *user_config;
++	struct ethtool_rx_flow_spec *fsp = &cmd->fs;
++	struct virtchnl2_flow_rule_add_del *rule;
++	struct idpf_vport_config *vport_config;
++	struct virtchnl2_flow_rule_info *info;
++	struct idpf_fsteer_fltr *f, *iter;
++	struct idpf_vport *vport;
++	int err;
 +
- #endif /* _VIRTCHNL_2_H_ */
++	vport = idpf_netdev_to_vport(netdev);
++	vport_config = vport->adapter->vport_config[np->vport_idx];
++	user_config = &vport_config->user_config;
++
++	if (!idpf_sideband_action_ena(vport, fsp))
++		return -EOPNOTSUPP;
++
++	rule = kzalloc(struct_size(rule, rule_info, 1), GFP_KERNEL);
++	if (!rule)
++		return -ENOMEM;
++
++	rule->vport_id = cpu_to_le32(vport->vport_id);
++	rule->count = cpu_to_le32(1);
++	info = &rule->rule_info[0];
++	info->rule_id = cpu_to_le32(fsp->location);
++
++	err = idpf_add_del_fsteer_filters(vport->adapter, rule,
++					  VIRTCHNL2_OP_DEL_FLOW_RULE);
++	if (err)
++		goto out;
++
++	if (info->status != cpu_to_le32(VIRTCHNL2_FLOW_RULE_SUCCESS)) {
++		err = -EIO;
++		goto out;
++	}
++
++	list_for_each_entry_safe(f, iter,
++				 &user_config->flow_steer_list, list) {
++		if (f->loc == fsp->location) {
++			list_del(&f->list);
++			kfree(f);
++			user_config->num_fsteer_fltrs--;
++			goto out;
++		}
++	}
++	err = -EINVAL;
++
++out:
++	kfree(rule);
++	return err;
++}
++
++static int idpf_set_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd)
++{
++	int ret = -EOPNOTSUPP;
++
++	idpf_vport_ctrl_lock(netdev);
++	switch (cmd->cmd) {
++	case ETHTOOL_SRXCLSRLINS:
++		ret = idpf_add_flow_steer(netdev, cmd);
++		break;
++	case ETHTOOL_SRXCLSRLDEL:
++		ret = idpf_del_flow_steer(netdev, cmd);
++		break;
++	default:
++		break;
++	}
++
++	idpf_vport_ctrl_unlock(netdev);
++	return ret;
+ }
+ 
+ /**
+@@ -1400,6 +1687,7 @@ static const struct ethtool_ops idpf_ethtool_ops = {
+ 	.get_sset_count		= idpf_get_sset_count,
+ 	.get_channels		= idpf_get_channels,
+ 	.get_rxnfc		= idpf_get_rxnfc,
++	.set_rxnfc		= idpf_set_rxnfc,
+ 	.get_rxfh_key_size	= idpf_get_rxfh_key_size,
+ 	.get_rxfh_indir_size	= idpf_get_rxfh_indir_size,
+ 	.get_rxfh		= idpf_get_rxfh,
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
+index bab12ecb2df5..7d42f21c86b6 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
+@@ -755,6 +755,10 @@ static int idpf_cfg_netdev(struct idpf_vport *vport)
+ 
+ 	if (idpf_is_cap_ena_all(adapter, IDPF_RSS_CAPS, IDPF_CAP_RSS))
+ 		dflt_features |= NETIF_F_RXHASH;
++	if (idpf_is_cap_ena(adapter, IDPF_OTHER_CAPS,
++			    VIRTCHNL2_CAP_FLOW_STEER) &&
++	    idpf_vport_is_cap_ena(vport, VIRTCHNL2_VPORT_SIDEBAND_FLOW_STEER))
++		dflt_features |= NETIF_F_NTUPLE;
+ 	if (idpf_is_cap_ena_all(adapter, IDPF_CSUM_CAPS, IDPF_CAP_TX_CSUM_L4V4))
+ 		csum_offloads |= NETIF_F_IP_CSUM;
+ 	if (idpf_is_cap_ena_all(adapter, IDPF_CSUM_CAPS, IDPF_CAP_TX_CSUM_L4V6))
+@@ -1481,6 +1485,7 @@ void idpf_init_task(struct work_struct *work)
+ 	spin_lock_init(&vport_config->mac_filter_list_lock);
+ 
+ 	INIT_LIST_HEAD(&vport_config->user_config.mac_filter_list);
++	INIT_LIST_HEAD(&vport_config->user_config.flow_steer_list);
+ 
+ 	err = idpf_check_supported_desc_ids(vport);
+ 	if (err) {
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+index 06c33b638e60..8b8c5415e418 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+@@ -890,6 +890,41 @@ static int idpf_send_get_caps_msg(struct idpf_adapter *adapter)
+ 	return 0;
+ }
+ 
++/**
++ * idpf_add_del_fsteer_filters - Send virtchnl add/del Flow Steering message
++ * @adapter: adapter info struct
++ * @rule: Flow steering rule to add/delete
++ * @opcode: VIRTCHNL2_OP_ADD_FLOW_RULE to add filter, or
++ *          VIRTCHNL2_OP_DEL_FLOW_RULE to delete. All other values are invalid.
++ *
++ * Send ADD/DELETE flow steering virtchnl message and receive the result.
++ *
++ * Return: 0 on success, negative on failure.
++ */
++int idpf_add_del_fsteer_filters(struct idpf_adapter *adapter,
++				struct virtchnl2_flow_rule_add_del *rule,
++				enum virtchnl2_op opcode)
++{
++	int rule_count = le32_to_cpu(rule->count);
++	struct idpf_vc_xn_params xn_params = {};
++	ssize_t reply_sz;
++
++	if (opcode != VIRTCHNL2_OP_ADD_FLOW_RULE &&
++	    opcode != VIRTCHNL2_OP_DEL_FLOW_RULE)
++		return -EINVAL;
++
++	xn_params.vc_op = opcode;
++	xn_params.timeout_ms = IDPF_VC_XN_DEFAULT_TIMEOUT_MSEC;
++	xn_params.async = false;
++	xn_params.send_buf.iov_base = rule;
++	xn_params.send_buf.iov_len = struct_size(rule, rule_info, rule_count);
++	xn_params.recv_buf.iov_base = rule;
++	xn_params.recv_buf.iov_len = struct_size(rule, rule_info, rule_count);
++
++	reply_sz = idpf_vc_xn_exec(adapter, &xn_params);
++	return reply_sz < 0 ? reply_sz : 0;
++}
++
+ /**
+  * idpf_vport_alloc_max_qs - Allocate max queues for a vport
+  * @adapter: Driver specific private structure
+@@ -3491,6 +3526,79 @@ bool idpf_is_capability_ena(struct idpf_adapter *adapter, bool all,
+ 		return !!(*cap_field & flag);
+ }
+ 
++/**
++ * idpf_vport_is_cap_ena - Check if vport capability is enabled
++ * @vport: Private data struct
++ * @flag: flag(s) to check
++ *
++ * Return: true if the capability is supported, false otherwise
++ */
++bool idpf_vport_is_cap_ena(struct idpf_vport *vport, u16 flag)
++{
++	struct virtchnl2_create_vport *vport_msg;
++
++	vport_msg = vport->adapter->vport_params_recvd[vport->idx];
++
++	return !!(le16_to_cpu(vport_msg->vport_flags) & flag);
++}
++
++/**
++ * idpf_sideband_flow_type_ena - Check if steering is enabled for flow type
++ * @vport: Private data struct
++ * @flow_type: flow type to check (from ethtool.h)
++ *
++ * Return: true if sideband filters are allowed for @flow_type, false otherwise
++ */
++bool idpf_sideband_flow_type_ena(struct idpf_vport *vport, u32 flow_type)
++{
++	struct virtchnl2_create_vport *vport_msg;
++	__le64 caps;
++
++	vport_msg = vport->adapter->vport_params_recvd[vport->idx];
++	caps = vport_msg->sideband_flow_caps;
++
++	switch (flow_type) {
++	case TCP_V4_FLOW:
++		return !!(caps & cpu_to_le64(VIRTCHNL2_FLOW_IPV4_TCP));
++	case UDP_V4_FLOW:
++		return !!(caps & cpu_to_le64(VIRTCHNL2_FLOW_IPV4_UDP));
++	default:
++		return false;
++	}
++}
++
++/**
++ * idpf_sideband_action_ena - Check if steering is enabled for action
++ * @vport: Private data struct
++ * @fsp: flow spec
++ *
++ * Return: true if sideband filters are allowed for @fsp, false otherwise
++ */
++bool idpf_sideband_action_ena(struct idpf_vport *vport,
++			      struct ethtool_rx_flow_spec *fsp)
++{
++	struct virtchnl2_create_vport *vport_msg;
++	unsigned int supp_actions;
++
++	vport_msg = vport->adapter->vport_params_recvd[vport->idx];
++	supp_actions = le32_to_cpu(vport_msg->sideband_flow_actions);
++
++	/* Actions Drop/Wake are not supported */
++	if (fsp->ring_cookie == RX_CLS_FLOW_DISC ||
++	    fsp->ring_cookie == RX_CLS_FLOW_WAKE)
++		return false;
++
++	return !!(supp_actions & VIRTCHNL2_ACTION_QUEUE);
++}
++
++unsigned int idpf_fsteer_max_rules(struct idpf_vport *vport)
++{
++	struct virtchnl2_create_vport *vport_msg;
++
++	vport_msg = vport->adapter->vport_params_recvd[vport->idx];
++	return le32_to_cpu(vport_msg->flow_steer_max_rules);
++}
++
+ /**
+  * idpf_get_vport_id: Get vport id
+  * @vport: virtual port structure
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h
+index 3522c1238ea2..165767705469 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h
++++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h
+@@ -105,6 +105,12 @@ int idpf_get_reg_intr_vecs(struct idpf_vport *vport,
+ int idpf_queue_reg_init(struct idpf_vport *vport);
+ int idpf_vport_queue_ids_init(struct idpf_vport *vport);
+ 
++bool idpf_vport_is_cap_ena(struct idpf_vport *vport, u16 flag);
++bool idpf_sideband_flow_type_ena(struct idpf_vport *vport, u32 flow_type);
++bool idpf_sideband_action_ena(struct idpf_vport *vport,
++			      struct ethtool_rx_flow_spec *fsp);
++unsigned int idpf_fsteer_max_rules(struct idpf_vport *vport);
++
+ int idpf_recv_mb_msg(struct idpf_adapter *adapter);
+ int idpf_send_mb_msg(struct idpf_adapter *adapter, u32 op,
+ 		     u16 msg_size, u8 *msg, u16 cookie);
 -- 
 2.43.0
 
