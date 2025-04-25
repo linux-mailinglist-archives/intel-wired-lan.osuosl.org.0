@@ -1,75 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BC81BA9BE6A
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Apr 2025 08:08:32 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 04CCEA9BE6B
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Apr 2025 08:08:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 79E4F83A87;
-	Fri, 25 Apr 2025 06:08:31 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B3D1C415D4;
+	Fri, 25 Apr 2025 06:08:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 07nYz547ii5S; Fri, 25 Apr 2025 06:08:30 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id WpFYHq0BNuRL; Fri, 25 Apr 2025 06:08:32 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AE31A83A7C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0629A4163D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1745561310;
-	bh=kS2sleWUNGhjGLI6wfrnJn1nQTmsnUnuzb5IPU71QG4=;
+	s=default; t=1745561312;
+	bh=/YgGlZBEulRNE0Xxq27bv7mxlhEf29KwcRtPWa9Md14=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=c/qQFrD55Irs59K944tym+ZJrL2K+IzUvY/Q2EIr6HflTXjBsfJyV5RSHOaqqxmdT
-	 jrptCOqRb2makSSlMM1F0cQw70pJjC0YkDHw1dghR5tF+8nCLX5994YGZcOSvgyR60
-	 bqQNTLgRZFHzQANMyrDLsCQz0kpMSplWnLmXtuCF8Z8tsFcdu9Zas3eld/hsm+1/4f
-	 WaTcihwqVVa5gyni5UPgz1dLl4wMCoPNqO/p4n+tUZu+X1i23dHvsrlfrY0QUsHkFO
-	 6RL+99KmM2rkyeW9x8vib8NCkQyWPZcK3MxauGmSFJ8WdTt2DJ4Mox11EzllluvEzv
-	 OsF/nNG70FP4Q==
+	b=W7E88cQP4dkMR8f9PMcO79uPp1F61KwKQKPzgd0tsCZcSykanCV9ID4Qkt/dCjbRc
+	 G95lHv4qkzuyM8riyBmzw1TyLYTd/m7msuzed1+5PvYHC+LDmVyuhhIULNqSMGnXwT
+	 V7+t3aPuTHErUShPCnKjDktlpa5r7B33AMASGMW6/Xv5HZ7Tga5oVLJhG9O9qmHgcR
+	 7Qg08Lecnczh0IWrXQ4CIJetRb+iQJ56z9ffBfcG3L3jyLZlz7uc8GWsOnb3oVOcwC
+	 LMnvsBOODnuY9zl0wk2m/zvp4E0jppIetLMFzmHOBIsZWl8wyDZSEeyHgNobmFpM2+
+	 M3k572Agv8ccg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AE31A83A7C;
-	Fri, 25 Apr 2025 06:08:29 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0629A4163D;
+	Fri, 25 Apr 2025 06:08:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id D2418127
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Apr 2025 06:08:27 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 29B92C1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Apr 2025 06:08:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C33EE60AB0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Apr 2025 06:08:27 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0FD8E60AD2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Apr 2025 06:08:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Lg01rXioBcij for <intel-wired-lan@lists.osuosl.org>;
- Fri, 25 Apr 2025 06:08:26 +0000 (UTC)
+ id WlCI6VIqov5w for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 25 Apr 2025 06:08:29 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
  helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B0C6060A6F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B0C6060A6F
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6554560AB0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6554560AB0
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
- by smtp3.osuosl.org (Postfix) with ESMTPS id B0C6060A6F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Apr 2025 06:08:26 +0000 (UTC)
-X-CSE-ConnectionGUID: VDHQoPT+TBCUADVXcv9VMA==
-X-CSE-MsgGUID: IMB5ahwSSZaTKjKPAM7vCA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11413"; a="58578914"
-X-IronPort-AV: E=Sophos;i="6.15,238,1739865600"; d="scan'208";a="58578914"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6554560AB0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Apr 2025 06:08:29 +0000 (UTC)
+X-CSE-ConnectionGUID: 3uDvR0jfQ8SlNm/qzTe5XA==
+X-CSE-MsgGUID: 9p0cEG2XRDOr20RtRVwU/w==
+X-IronPort-AV: E=McAfee;i="6700,10204,11413"; a="58578916"
+X-IronPort-AV: E=Sophos;i="6.15,238,1739865600"; d="scan'208";a="58578916"
 Received: from orviesa010.jf.intel.com ([10.64.159.150])
  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Apr 2025 23:08:25 -0700
-X-CSE-ConnectionGUID: PGa92BiYTcC+BfA434S8Mw==
-X-CSE-MsgGUID: msc8aY3QTjmVutd6rpoipg==
+ 24 Apr 2025 23:08:27 -0700
+X-CSE-ConnectionGUID: HGo+9RhaTF2IkobJr9RnuQ==
+X-CSE-MsgGUID: ME/HMHgBS7mZ0QCPfWtKjg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,238,1739865600"; d="scan'208";a="132703173"
+X-IronPort-AV: E=Sophos;i="6.15,238,1739865600"; d="scan'208";a="132703186"
 Received: from gk3153-dr2-r750-36946.igk.intel.com ([10.102.20.192])
- by orviesa010.jf.intel.com with ESMTP; 24 Apr 2025 23:08:23 -0700
+ by orviesa010.jf.intel.com with ESMTP; 24 Apr 2025 23:08:26 -0700
 From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: netdev@vger.kernel.org, aleksander.lobakin@intel.com,
  przemyslaw.kitszel@intel.com, piotr.kwapulinski@intel.com,
  aleksandr.loktionov@intel.com, jedrzej.jagielski@intel.com,
  larysa.zaremba@intel.com, anthony.l.nguyen@intel.com
-Date: Fri, 25 Apr 2025 08:08:05 +0200
-Message-ID: <20250425060809.3966772-5-michal.swiatkowski@linux.intel.com>
+Date: Fri, 25 Apr 2025 08:08:06 +0200
+Message-ID: <20250425060809.3966772-6-michal.swiatkowski@linux.intel.com>
 X-Mailer: git-send-email 2.42.0
 In-Reply-To: <20250425060809.3966772-1-michal.swiatkowski@linux.intel.com>
 References: <20250425060809.3966772-1-michal.swiatkowski@linux.intel.com>
@@ -77,25 +77,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1745561305; x=1777097305;
+ t=1745561308; x=1777097308;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=2HbfinEFyAup30Yyf7hag84o6TC5VvayxX0bVDYd0C4=;
- b=nJMxozcen1Txb8+k9OyGRIGuBgf6R03VG/fOpxRiwZMYSDdj1gTK1lcR
- rKIXCK51X/KMSaFmpUR4Fr4ONXZfQFIsDGfDJ33iGTt3M0w5iDjZ6HMEE
- dy+HrYcNHRawXW9N787FjsS+J4XwnGAzBT4dZ/qztRBH4vBV5REtJ5ZXq
- goJsgqxH5GphFF+DXMwt6TTootWY1iBxFveV29cSwLU4ULtuc9M9cAg/c
- 6cP57s+eAeBSc2c2QtBLXozhNtYMSrAZsXGooQtARnsErJLNl7kjoW2QW
- t5LZf6XaCIetGJLSevAU492p9+PaySMZ1VmOF/V875ExvkV9QN9VfWlGs
+ bh=ivqr/h7pnRe28nJQTWu+qhpH6A/QCdxCMJRiBxIoaEk=;
+ b=k+iGL1eeLHt9jCx0FHVTtphrzh422uRX+s3on2uLlqFaxCwEupTlOu+l
+ TJSYgOwiBvGsuok9G8chpb4qlPXhsuTTy9DInX6+U1oAiitzPKxFuN0Hl
+ qllFWiH/reXk669j2/msku+a7DiPcPSaVYikVhkrJcvW6WFysINmZ2pFP
+ +yBDtDJqT3uYAOAq93tAJ/BVX9xX27D2zjtoSe7AmZf5mOX/HNTjcsPe+
+ AXFnycHBN+s8Mp4SndX1vY8bt9y8jTCmrtSeiU//Uup6Myx0Lfita4Zd7
+ FpvO+RNjap29/TWSOdG0q1ejUc1FTbEGcMF8MbD4gEva6yjyJZxcGQnQg
  w==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=nJMxozce
-Subject: [Intel-wired-lan] [iwl-next v3 4/8] iavf: use libie adminq
- descriptors
+ header.a=rsa-sha256 header.s=Intel header.b=k+iGL1ee
+Subject: [Intel-wired-lan] [iwl-next v3 5/8] libie: add adminq helper for
+ converting err to str
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -111,619 +111,122 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Use libie_aq_desc instead of iavf_aq_desc. Do needed changes to allow
-clean build
+Add a new module for common handling of Admin Queue related logic.
+Start by a helper for error to string conversion. This lives inside
+libie/, but is a separate module what follows our logic of splitting
+into topical modules, to avoid pulling in not needed stuff, and have
+better organization in general.
 
-Use libie_aq_raw() wherever it can be used.
+Olek suggested how to better solve the error to string conversion.
+
+It will be used in follow-up patches in ice, i40e and iavf.
 
 Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Suggested-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 ---
- drivers/net/ethernet/intel/iavf/iavf_adminq.h |  12 +-
- .../net/ethernet/intel/iavf/iavf_adminq_cmd.h |  83 +----------
- .../net/ethernet/intel/iavf/iavf_prototype.h  |   4 +-
- drivers/net/ethernet/intel/iavf/iavf_type.h   |   2 +-
- drivers/net/ethernet/intel/iavf/iavf_adminq.c |  62 ++++----
- drivers/net/ethernet/intel/iavf/iavf_common.c | 134 +++++++++---------
- 6 files changed, 106 insertions(+), 191 deletions(-)
+ drivers/net/ethernet/intel/libie/Kconfig  |  6 +++
+ drivers/net/ethernet/intel/libie/Makefile |  4 ++
+ include/linux/net/intel/libie/adminq.h    |  2 +
+ drivers/net/ethernet/intel/libie/adminq.c | 52 +++++++++++++++++++++++
+ 4 files changed, 64 insertions(+)
+ create mode 100644 drivers/net/ethernet/intel/libie/adminq.c
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_adminq.h b/drivers/net/ethernet/intel/iavf/iavf_adminq.h
-index 406506f64bdd..bbf5c4b3a2ae 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_adminq.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf_adminq.h
-@@ -9,7 +9,7 @@
- #include "iavf_adminq_cmd.h"
- 
- #define IAVF_ADMINQ_DESC(R, i)   \
--	(&(((struct iavf_aq_desc *)((R).desc_buf.va))[i]))
-+	(&(((struct libie_aq_desc *)((R).desc_buf.va))[i]))
- 
- #define IAVF_ADMINQ_DESC_ALIGNMENT 4096
- 
-@@ -39,7 +39,7 @@ struct iavf_asq_cmd_details {
- 	u16 flags_dis;
- 	bool async;
- 	bool postpone;
--	struct iavf_aq_desc *wb_desc;
-+	struct libie_aq_desc *wb_desc;
- };
- 
- #define IAVF_ADMINQ_DETAILS(R, i)   \
-@@ -47,7 +47,7 @@ struct iavf_asq_cmd_details {
- 
- /* ARQ event information */
- struct iavf_arq_event_info {
--	struct iavf_aq_desc desc;
-+	struct libie_aq_desc desc;
- 	u16 msg_len;
- 	u16 buf_len;
- 	u8 *msg_buf;
-@@ -72,8 +72,8 @@ struct iavf_adminq_info {
- 	struct mutex arq_mutex; /* Receive queue lock */
- 
- 	/* last status values on send and receive queues */
--	enum iavf_admin_queue_err asq_last_status;
--	enum iavf_admin_queue_err arq_last_status;
-+	enum libie_aq_err asq_last_status;
-+	enum libie_aq_err arq_last_status;
- };
- 
- /**
-@@ -123,6 +123,6 @@ static inline int iavf_aq_rc_to_posix(int aq_ret, int aq_rc)
- #define IAVF_AQ_LARGE_BUF	512
- #define IAVF_ASQ_CMD_TIMEOUT	250000  /* usecs */
- 
--void iavf_fill_default_direct_cmd_desc(struct iavf_aq_desc *desc, u16 opcode);
-+void iavf_fill_default_direct_cmd_desc(struct libie_aq_desc *desc, u16 opcode);
- 
- #endif /* _IAVF_ADMINQ_H_ */
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_adminq_cmd.h b/drivers/net/ethernet/intel/iavf/iavf_adminq_cmd.h
-index bc512308557b..0482c9ce9b9c 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf_adminq_cmd.h
-@@ -4,6 +4,8 @@
- #ifndef _IAVF_ADMINQ_CMD_H_
- #define _IAVF_ADMINQ_CMD_H_
- 
-+#include <linux/net/intel/libie/adminq.h>
+diff --git a/drivers/net/ethernet/intel/libie/Kconfig b/drivers/net/ethernet/intel/libie/Kconfig
+index 33aff6bc8f81..e6072758e3d8 100644
+--- a/drivers/net/ethernet/intel/libie/Kconfig
++++ b/drivers/net/ethernet/intel/libie/Kconfig
+@@ -8,3 +8,9 @@ config LIBIE
+ 	  libie (Intel Ethernet library) is a common library built on top of
+ 	  libeth and containing vendor-specific routines shared between several
+ 	  Intel Ethernet drivers.
 +
- /* This header file defines the iavf Admin Queue commands and is shared between
-  * iavf Firmware and Software.
-  *
-@@ -21,87 +23,6 @@
- /* API version 1.7 implements additional link and PHY-specific APIs  */
- #define IAVF_MINOR_VER_GET_LINK_INFO_XL710 0x0007
++config LIBIE_ADMINQ
++	tristate
++	help
++	  Helper functions used by Intel Ethernet drivers for administration
++	  queue command interface (aka adminq).
+diff --git a/drivers/net/ethernet/intel/libie/Makefile b/drivers/net/ethernet/intel/libie/Makefile
+index ffd27fab916a..e98f00b865d3 100644
+--- a/drivers/net/ethernet/intel/libie/Makefile
++++ b/drivers/net/ethernet/intel/libie/Makefile
+@@ -4,3 +4,7 @@
+ obj-$(CONFIG_LIBIE)	+= libie.o
  
--struct iavf_aq_desc {
--	__le16 flags;
--	__le16 opcode;
--	__le16 datalen;
--	__le16 retval;
--	__le32 cookie_high;
--	__le32 cookie_low;
--	union {
--		struct {
--			__le32 param0;
--			__le32 param1;
--			__le32 param2;
--			__le32 param3;
--		} internal;
--		struct {
--			__le32 param0;
--			__le32 param1;
--			__le32 addr_high;
--			__le32 addr_low;
--		} external;
--		u8 raw[16];
--	} params;
--};
--
--/* Flags sub-structure
-- * |0  |1  |2  |3  |4  |5  |6  |7  |8  |9  |10 |11 |12 |13 |14 |15 |
-- * |DD |CMP|ERR|VFE| * *  RESERVED * * |LB |RD |VFC|BUF|SI |EI |FE |
-- */
--
--/* command flags and offsets*/
--#define IAVF_AQ_FLAG_DD_SHIFT	0
--#define IAVF_AQ_FLAG_CMP_SHIFT	1
--#define IAVF_AQ_FLAG_ERR_SHIFT	2
--#define IAVF_AQ_FLAG_VFE_SHIFT	3
--#define IAVF_AQ_FLAG_LB_SHIFT	9
--#define IAVF_AQ_FLAG_RD_SHIFT	10
--#define IAVF_AQ_FLAG_VFC_SHIFT	11
--#define IAVF_AQ_FLAG_BUF_SHIFT	12
--#define IAVF_AQ_FLAG_SI_SHIFT	13
--#define IAVF_AQ_FLAG_EI_SHIFT	14
--#define IAVF_AQ_FLAG_FE_SHIFT	15
--
--#define IAVF_AQ_FLAG_DD		BIT(IAVF_AQ_FLAG_DD_SHIFT)  /* 0x1    */
--#define IAVF_AQ_FLAG_CMP	BIT(IAVF_AQ_FLAG_CMP_SHIFT) /* 0x2    */
--#define IAVF_AQ_FLAG_ERR	BIT(IAVF_AQ_FLAG_ERR_SHIFT) /* 0x4    */
--#define IAVF_AQ_FLAG_VFE	BIT(IAVF_AQ_FLAG_VFE_SHIFT) /* 0x8    */
--#define IAVF_AQ_FLAG_LB		BIT(IAVF_AQ_FLAG_LB_SHIFT)  /* 0x200  */
--#define IAVF_AQ_FLAG_RD		BIT(IAVF_AQ_FLAG_RD_SHIFT)  /* 0x400  */
--#define IAVF_AQ_FLAG_VFC	BIT(IAVF_AQ_FLAG_VFC_SHIFT) /* 0x800  */
--#define IAVF_AQ_FLAG_BUF	BIT(IAVF_AQ_FLAG_BUF_SHIFT) /* 0x1000 */
--#define IAVF_AQ_FLAG_SI		BIT(IAVF_AQ_FLAG_SI_SHIFT)  /* 0x2000 */
--#define IAVF_AQ_FLAG_EI		BIT(IAVF_AQ_FLAG_EI_SHIFT)  /* 0x4000 */
--#define IAVF_AQ_FLAG_FE		BIT(IAVF_AQ_FLAG_FE_SHIFT)  /* 0x8000 */
--
--/* error codes */
--enum iavf_admin_queue_err {
--	IAVF_AQ_RC_OK		= 0,  /* success */
--	IAVF_AQ_RC_EPERM	= 1,  /* Operation not permitted */
--	IAVF_AQ_RC_ENOENT	= 2,  /* No such element */
--	IAVF_AQ_RC_ESRCH	= 3,  /* Bad opcode */
--	IAVF_AQ_RC_EINTR	= 4,  /* operation interrupted */
--	IAVF_AQ_RC_EIO		= 5,  /* I/O error */
--	IAVF_AQ_RC_ENXIO	= 6,  /* No such resource */
--	IAVF_AQ_RC_E2BIG	= 7,  /* Arg too long */
--	IAVF_AQ_RC_EAGAIN	= 8,  /* Try again */
--	IAVF_AQ_RC_ENOMEM	= 9,  /* Out of memory */
--	IAVF_AQ_RC_EACCES	= 10, /* Permission denied */
--	IAVF_AQ_RC_EFAULT	= 11, /* Bad address */
--	IAVF_AQ_RC_EBUSY	= 12, /* Device or resource busy */
--	IAVF_AQ_RC_EEXIST	= 13, /* object already exists */
--	IAVF_AQ_RC_EINVAL	= 14, /* Invalid argument */
--	IAVF_AQ_RC_ENOTTY	= 15, /* Not a typewriter */
--	IAVF_AQ_RC_ENOSPC	= 16, /* No space left or alloc failure */
--	IAVF_AQ_RC_ENOSYS	= 17, /* Function not implemented */
--	IAVF_AQ_RC_ERANGE	= 18, /* Parameter out of range */
--	IAVF_AQ_RC_EFLUSHED	= 19, /* Cmd flushed due to prev cmd error */
--	IAVF_AQ_RC_BAD_ADDR	= 20, /* Descriptor contains a bad pointer */
--	IAVF_AQ_RC_EMODE	= 21, /* Op not allowed in current dev mode */
--	IAVF_AQ_RC_EFBIG	= 22, /* File too large */
--};
--
- /* Admin Queue command opcodes */
- enum iavf_admin_queue_opc {
- 	/* aq commands */
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_prototype.h b/drivers/net/ethernet/intel/iavf/iavf_prototype.h
-index cac9d1a35a52..34b5ed87a9aa 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_prototype.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf_prototype.h
-@@ -22,7 +22,7 @@ enum iavf_status iavf_clean_arq_element(struct iavf_hw *hw,
- 					struct iavf_arq_event_info *e,
- 					u16 *events_pending);
- enum iavf_status iavf_asq_send_command(struct iavf_hw *hw,
--				       struct iavf_aq_desc *desc,
-+				       struct libie_aq_desc *desc,
- 				       void *buff, /* can be NULL */
- 				       u16 buff_size,
- 				       struct iavf_asq_cmd_details *cmd_details);
-@@ -34,7 +34,7 @@ void iavf_debug_aq(struct iavf_hw *hw, enum iavf_debug_mask mask,
- 
- bool iavf_check_asq_alive(struct iavf_hw *hw);
- enum iavf_status iavf_aq_queue_shutdown(struct iavf_hw *hw, bool unloading);
--const char *iavf_aq_str(struct iavf_hw *hw, enum iavf_admin_queue_err aq_err);
-+const char *iavf_aq_str(struct iavf_hw *hw, enum libie_aq_err aq_err);
- const char *iavf_stat_str(struct iavf_hw *hw, enum iavf_status stat_err);
- 
- enum iavf_status iavf_aq_set_rss_lut(struct iavf_hw *hw, u16 seid,
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_type.h b/drivers/net/ethernet/intel/iavf/iavf_type.h
-index f9e1319620f4..c9961a2d1217 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_type.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf_type.h
-@@ -19,7 +19,7 @@
- 
- /* forward declaration */
- struct iavf_hw;
--typedef void (*IAVF_ADMINQ_CALLBACK)(struct iavf_hw *, struct iavf_aq_desc *);
-+typedef void (*IAVF_ADMINQ_CALLBACK)(struct iavf_hw *, struct libie_aq_desc *);
- 
- /* Data type manipulation macros. */
- 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_adminq.c b/drivers/net/ethernet/intel/iavf/iavf_adminq.c
-index 82fcd18ad660..6937b7dd44cb 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_adminq.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_adminq.c
-@@ -18,7 +18,7 @@ static enum iavf_status iavf_alloc_adminq_asq_ring(struct iavf_hw *hw)
- 	ret_code = iavf_allocate_dma_mem(hw, &hw->aq.asq.desc_buf,
- 					 iavf_mem_atq_ring,
- 					 (hw->aq.num_asq_entries *
--					 sizeof(struct iavf_aq_desc)),
-+					 sizeof(struct libie_aq_desc)),
- 					 IAVF_ADMINQ_DESC_ALIGNMENT);
- 	if (ret_code)
- 		return ret_code;
-@@ -45,7 +45,7 @@ static enum iavf_status iavf_alloc_adminq_arq_ring(struct iavf_hw *hw)
- 	ret_code = iavf_allocate_dma_mem(hw, &hw->aq.arq.desc_buf,
- 					 iavf_mem_arq_ring,
- 					 (hw->aq.num_arq_entries *
--					 sizeof(struct iavf_aq_desc)),
-+					 sizeof(struct libie_aq_desc)),
- 					 IAVF_ADMINQ_DESC_ALIGNMENT);
- 
- 	return ret_code;
-@@ -81,7 +81,7 @@ static void iavf_free_adminq_arq(struct iavf_hw *hw)
-  **/
- static enum iavf_status iavf_alloc_arq_bufs(struct iavf_hw *hw)
- {
--	struct iavf_aq_desc *desc;
-+	struct libie_aq_desc *desc;
- 	struct iavf_dma_mem *bi;
- 	enum iavf_status ret_code;
- 	int i;
-@@ -111,9 +111,9 @@ static enum iavf_status iavf_alloc_arq_bufs(struct iavf_hw *hw)
- 		/* now configure the descriptors for use */
- 		desc = IAVF_ADMINQ_DESC(hw->aq.arq, i);
- 
--		desc->flags = cpu_to_le16(IAVF_AQ_FLAG_BUF);
-+		desc->flags = cpu_to_le16(LIBIE_AQ_FLAG_BUF);
- 		if (hw->aq.arq_buf_size > IAVF_AQ_LARGE_BUF)
--			desc->flags |= cpu_to_le16(IAVF_AQ_FLAG_LB);
-+			desc->flags |= cpu_to_le16(LIBIE_AQ_FLAG_LB);
- 		desc->opcode = 0;
- 		/* This is in accordance with Admin queue design, there is no
- 		 * register for buffer size configuration
-@@ -122,12 +122,12 @@ static enum iavf_status iavf_alloc_arq_bufs(struct iavf_hw *hw)
- 		desc->retval = 0;
- 		desc->cookie_high = 0;
- 		desc->cookie_low = 0;
--		desc->params.external.addr_high =
-+		desc->params.generic.addr_high =
- 			cpu_to_le32(upper_32_bits(bi->pa));
--		desc->params.external.addr_low =
-+		desc->params.generic.addr_low =
- 			cpu_to_le32(lower_32_bits(bi->pa));
--		desc->params.external.param0 = 0;
--		desc->params.external.param1 = 0;
-+		desc->params.generic.param0 = 0;
-+		desc->params.generic.param1 = 0;
- 	}
- 
- alloc_arq_bufs:
-@@ -558,8 +558,8 @@ static u16 iavf_clean_asq(struct iavf_hw *hw)
- 	struct iavf_adminq_ring *asq = &hw->aq.asq;
- 	struct iavf_asq_cmd_details *details;
- 	u16 ntc = asq->next_to_clean;
--	struct iavf_aq_desc desc_cb;
--	struct iavf_aq_desc *desc;
-+	struct libie_aq_desc desc_cb;
-+	struct libie_aq_desc *desc;
- 
- 	desc = IAVF_ADMINQ_DESC(*asq, ntc);
- 	details = IAVF_ADMINQ_DETAILS(*asq, ntc);
-@@ -573,7 +573,7 @@ static u16 iavf_clean_asq(struct iavf_hw *hw)
- 			desc_cb = *desc;
- 			cb_func(hw, &desc_cb);
- 		}
--		memset((void *)desc, 0, sizeof(struct iavf_aq_desc));
-+		memset((void *)desc, 0, sizeof(struct libie_aq_desc));
- 		memset((void *)details, 0,
- 		       sizeof(struct iavf_asq_cmd_details));
- 		ntc++;
-@@ -615,14 +615,14 @@ bool iavf_asq_done(struct iavf_hw *hw)
-  *  queue.  It runs the queue, cleans the queue, etc
-  **/
- enum iavf_status iavf_asq_send_command(struct iavf_hw *hw,
--				       struct iavf_aq_desc *desc,
-+				       struct libie_aq_desc *desc,
- 				       void *buff, /* can be NULL */
- 				       u16  buff_size,
- 				       struct iavf_asq_cmd_details *cmd_details)
- {
- 	struct iavf_dma_mem *dma_buff = NULL;
- 	struct iavf_asq_cmd_details *details;
--	struct iavf_aq_desc *desc_on_ring;
-+	struct libie_aq_desc *desc_on_ring;
- 	bool cmd_completed = false;
- 	enum iavf_status status = 0;
- 	u16  retval = 0;
-@@ -637,7 +637,7 @@ enum iavf_status iavf_asq_send_command(struct iavf_hw *hw,
- 		goto asq_send_command_error;
- 	}
- 
--	hw->aq.asq_last_status = IAVF_AQ_RC_OK;
-+	hw->aq.asq_last_status = LIBIE_AQ_RC_OK;
- 
- 	val = rd32(hw, IAVF_VF_ATQH1);
- 	if (val >= hw->aq.num_asq_entries) {
-@@ -717,9 +717,9 @@ enum iavf_status iavf_asq_send_command(struct iavf_hw *hw,
- 		/* Update the address values in the desc with the pa value
- 		 * for respective buffer
- 		 */
--		desc_on_ring->params.external.addr_high =
-+		desc_on_ring->params.generic.addr_high =
- 				cpu_to_le32(upper_32_bits(dma_buff->pa));
--		desc_on_ring->params.external.addr_low =
-+		desc_on_ring->params.generic.addr_low =
- 				cpu_to_le32(lower_32_bits(dma_buff->pa));
- 	}
- 
-@@ -766,13 +766,13 @@ enum iavf_status iavf_asq_send_command(struct iavf_hw *hw,
- 			retval &= 0xff;
- 		}
- 		cmd_completed = true;
--		if ((enum iavf_admin_queue_err)retval == IAVF_AQ_RC_OK)
-+		if ((enum libie_aq_err)retval == LIBIE_AQ_RC_OK)
- 			status = 0;
--		else if ((enum iavf_admin_queue_err)retval == IAVF_AQ_RC_EBUSY)
-+		else if ((enum libie_aq_err)retval == LIBIE_AQ_RC_EBUSY)
- 			status = IAVF_ERR_NOT_READY;
- 		else
- 			status = IAVF_ERR_ADMIN_QUEUE_ERROR;
--		hw->aq.asq_last_status = (enum iavf_admin_queue_err)retval;
-+		hw->aq.asq_last_status = (enum libie_aq_err)retval;
- 	}
- 
- 	iavf_debug(hw, IAVF_DEBUG_AQ_MESSAGE,
-@@ -809,12 +809,12 @@ enum iavf_status iavf_asq_send_command(struct iavf_hw *hw,
-  *
-  *  Fill the desc with default values
-  **/
--void iavf_fill_default_direct_cmd_desc(struct iavf_aq_desc *desc, u16 opcode)
-+void iavf_fill_default_direct_cmd_desc(struct libie_aq_desc *desc, u16 opcode)
- {
- 	/* zero out the desc */
--	memset((void *)desc, 0, sizeof(struct iavf_aq_desc));
-+	memset((void *)desc, 0, sizeof(struct libie_aq_desc));
- 	desc->opcode = cpu_to_le16(opcode);
--	desc->flags = cpu_to_le16(IAVF_AQ_FLAG_SI);
-+	desc->flags = cpu_to_le16(LIBIE_AQ_FLAG_SI);
+ libie-y			:= rx.o
++
++obj-$(CONFIG_LIBIE_ADMINQ) 	+= libie_adminq.o
++
++libie_adminq-y			:= adminq.o
+diff --git a/include/linux/net/intel/libie/adminq.h b/include/linux/net/intel/libie/adminq.h
+index 989de2eb6d19..1dd5d5924aee 100644
+--- a/include/linux/net/intel/libie/adminq.h
++++ b/include/linux/net/intel/libie/adminq.h
+@@ -304,4 +304,6 @@ static inline void *libie_aq_raw(struct libie_aq_desc *desc)
+ 	return &desc->params.raw;
  }
  
- /**
-@@ -832,7 +832,7 @@ enum iavf_status iavf_clean_arq_element(struct iavf_hw *hw,
- 					u16 *pending)
- {
- 	u16 ntc = hw->aq.arq.next_to_clean;
--	struct iavf_aq_desc *desc;
-+	struct libie_aq_desc *desc;
- 	enum iavf_status ret_code = 0;
- 	struct iavf_dma_mem *bi;
- 	u16 desc_idx;
-@@ -866,9 +866,9 @@ enum iavf_status iavf_clean_arq_element(struct iavf_hw *hw,
- 	desc_idx = ntc;
- 
- 	hw->aq.arq_last_status =
--		(enum iavf_admin_queue_err)le16_to_cpu(desc->retval);
-+		(enum libie_aq_err)le16_to_cpu(desc->retval);
- 	flags = le16_to_cpu(desc->flags);
--	if (flags & IAVF_AQ_FLAG_ERR) {
-+	if (flags & LIBIE_AQ_FLAG_ERR) {
- 		ret_code = IAVF_ERR_ADMIN_QUEUE_ERROR;
- 		iavf_debug(hw,
- 			   IAVF_DEBUG_AQ_MESSAGE,
-@@ -892,14 +892,14 @@ enum iavf_status iavf_clean_arq_element(struct iavf_hw *hw,
- 	 * size
- 	 */
- 	bi = &hw->aq.arq.r.arq_bi[ntc];
--	memset((void *)desc, 0, sizeof(struct iavf_aq_desc));
-+	memset((void *)desc, 0, sizeof(struct libie_aq_desc));
- 
--	desc->flags = cpu_to_le16(IAVF_AQ_FLAG_BUF);
-+	desc->flags = cpu_to_le16(LIBIE_AQ_FLAG_BUF);
- 	if (hw->aq.arq_buf_size > IAVF_AQ_LARGE_BUF)
--		desc->flags |= cpu_to_le16(IAVF_AQ_FLAG_LB);
-+		desc->flags |= cpu_to_le16(LIBIE_AQ_FLAG_LB);
- 	desc->datalen = cpu_to_le16((u16)bi->size);
--	desc->params.external.addr_high = cpu_to_le32(upper_32_bits(bi->pa));
--	desc->params.external.addr_low = cpu_to_le32(lower_32_bits(bi->pa));
-+	desc->params.generic.addr_high = cpu_to_le32(upper_32_bits(bi->pa));
-+	desc->params.generic.addr_low = cpu_to_le32(lower_32_bits(bi->pa));
- 
- 	/* set tail = the last cleaned desc index. */
- 	wr32(hw, IAVF_VF_ARQT1, ntc);
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_common.c b/drivers/net/ethernet/intel/iavf/iavf_common.c
-index aa751ce3425b..cc71e48b5689 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_common.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_common.c
-@@ -12,55 +12,47 @@
-  * @hw: pointer to the HW structure
-  * @aq_err: the AQ error code to convert
-  **/
--const char *iavf_aq_str(struct iavf_hw *hw, enum iavf_admin_queue_err aq_err)
-+const char *iavf_aq_str(struct iavf_hw *hw, enum libie_aq_err aq_err)
- {
- 	switch (aq_err) {
--	case IAVF_AQ_RC_OK:
-+	case LIBIE_AQ_RC_OK:
- 		return "OK";
--	case IAVF_AQ_RC_EPERM:
--		return "IAVF_AQ_RC_EPERM";
--	case IAVF_AQ_RC_ENOENT:
--		return "IAVF_AQ_RC_ENOENT";
--	case IAVF_AQ_RC_ESRCH:
--		return "IAVF_AQ_RC_ESRCH";
--	case IAVF_AQ_RC_EINTR:
--		return "IAVF_AQ_RC_EINTR";
--	case IAVF_AQ_RC_EIO:
--		return "IAVF_AQ_RC_EIO";
--	case IAVF_AQ_RC_ENXIO:
--		return "IAVF_AQ_RC_ENXIO";
--	case IAVF_AQ_RC_E2BIG:
--		return "IAVF_AQ_RC_E2BIG";
--	case IAVF_AQ_RC_EAGAIN:
--		return "IAVF_AQ_RC_EAGAIN";
--	case IAVF_AQ_RC_ENOMEM:
--		return "IAVF_AQ_RC_ENOMEM";
--	case IAVF_AQ_RC_EACCES:
--		return "IAVF_AQ_RC_EACCES";
--	case IAVF_AQ_RC_EFAULT:
--		return "IAVF_AQ_RC_EFAULT";
--	case IAVF_AQ_RC_EBUSY:
--		return "IAVF_AQ_RC_EBUSY";
--	case IAVF_AQ_RC_EEXIST:
--		return "IAVF_AQ_RC_EEXIST";
--	case IAVF_AQ_RC_EINVAL:
--		return "IAVF_AQ_RC_EINVAL";
--	case IAVF_AQ_RC_ENOTTY:
--		return "IAVF_AQ_RC_ENOTTY";
--	case IAVF_AQ_RC_ENOSPC:
--		return "IAVF_AQ_RC_ENOSPC";
--	case IAVF_AQ_RC_ENOSYS:
--		return "IAVF_AQ_RC_ENOSYS";
--	case IAVF_AQ_RC_ERANGE:
--		return "IAVF_AQ_RC_ERANGE";
--	case IAVF_AQ_RC_EFLUSHED:
--		return "IAVF_AQ_RC_EFLUSHED";
--	case IAVF_AQ_RC_BAD_ADDR:
--		return "IAVF_AQ_RC_BAD_ADDR";
--	case IAVF_AQ_RC_EMODE:
--		return "IAVF_AQ_RC_EMODE";
--	case IAVF_AQ_RC_EFBIG:
--		return "IAVF_AQ_RC_EFBIG";
-+	case LIBIE_AQ_RC_EPERM:
-+		return "LIBIE_AQ_RC_EPERM";
-+	case LIBIE_AQ_RC_ENOENT:
-+		return "LIBIE_AQ_RC_ENOENT";
-+	case LIBIE_AQ_RC_ESRCH:
-+		return "LIBIE_AQ_RC_ESRCH";
-+	case LIBIE_AQ_RC_EIO:
-+		return "LIBIE_AQ_RC_EIO";
-+	case LIBIE_AQ_RC_EAGAIN:
-+		return "LIBIE_AQ_RC_EAGAIN";
-+	case LIBIE_AQ_RC_ENOMEM:
-+		return "LIBIE_AQ_RC_ENOMEM";
-+	case LIBIE_AQ_RC_EACCES:
-+		return "LIBIE_AQ_RC_EACCES";
-+	case LIBIE_AQ_RC_EBUSY:
-+		return "LIBIE_AQ_RC_EBUSY";
-+	case LIBIE_AQ_RC_EEXIST:
-+		return "LIBIE_AQ_RC_EEXIST";
-+	case LIBIE_AQ_RC_EINVAL:
-+		return "LIBIE_AQ_RC_EINVAL";
-+	case LIBIE_AQ_RC_ENOSPC:
-+		return "LIBIE_AQ_RC_ENOSPC";
-+	case LIBIE_AQ_RC_ENOSYS:
-+		return "LIBIE_AQ_RC_ENOSYS";
-+	case LIBIE_AQ_RC_EMODE:
-+		return "LIBIE_AQ_RC_EMODE";
-+	case LIBIE_AQ_RC_ENOSEC:
-+		return "LIBIE_AQ_RC_ENOSEC";
-+	case LIBIE_AQ_RC_EBADSIG:
-+		return "LIBIE_AQ_RC_EBADSIG";
-+	case LIBIE_AQ_RC_ESVN:
-+		return "LIBIE_AQ_RC_ESVN";
-+	case LIBIE_AQ_RC_EBADMAN:
-+		return "LIBIE_AQ_RC_EBADMAN";
-+	case LIBIE_AQ_RC_EBADBUF:
-+		return "LIBIE_AQ_RC_EBADBUF";
- 	}
- 
- 	snprintf(hw->err_str, sizeof(hw->err_str), "%d", aq_err);
-@@ -228,7 +220,7 @@ const char *iavf_stat_str(struct iavf_hw *hw, enum iavf_status stat_err)
- void iavf_debug_aq(struct iavf_hw *hw, enum iavf_debug_mask mask, void *desc,
- 		   void *buffer, u16 buf_len)
- {
--	struct iavf_aq_desc *aq_desc = (struct iavf_aq_desc *)desc;
-+	struct libie_aq_desc *aq_desc = (struct libie_aq_desc *)desc;
- 	u8 *buf = (u8 *)buffer;
- 
- 	if ((!(mask & hw->debug_mask)) || !desc)
-@@ -244,11 +236,11 @@ void iavf_debug_aq(struct iavf_hw *hw, enum iavf_debug_mask mask, void *desc,
- 		   le32_to_cpu(aq_desc->cookie_high),
- 		   le32_to_cpu(aq_desc->cookie_low));
- 	iavf_debug(hw, mask, "\tparam (0,1)  0x%08X 0x%08X\n",
--		   le32_to_cpu(aq_desc->params.internal.param0),
--		   le32_to_cpu(aq_desc->params.internal.param1));
-+		   le32_to_cpu(aq_desc->params.generic.param0),
-+		   le32_to_cpu(aq_desc->params.generic.param1));
- 	iavf_debug(hw, mask, "\taddr (h,l)   0x%08X 0x%08X\n",
--		   le32_to_cpu(aq_desc->params.external.addr_high),
--		   le32_to_cpu(aq_desc->params.external.addr_low));
-+		   le32_to_cpu(aq_desc->params.generic.addr_high),
-+		   le32_to_cpu(aq_desc->params.generic.addr_low));
- 
- 	if (buffer && aq_desc->datalen) {
- 		u16 len = le16_to_cpu(aq_desc->datalen);
-@@ -297,11 +289,11 @@ bool iavf_check_asq_alive(struct iavf_hw *hw)
-  **/
- enum iavf_status iavf_aq_queue_shutdown(struct iavf_hw *hw, bool unloading)
- {
--	struct iavf_aq_desc desc;
--	struct iavf_aqc_queue_shutdown *cmd =
--		(struct iavf_aqc_queue_shutdown *)&desc.params.raw;
-+	struct iavf_aqc_queue_shutdown *cmd;
-+	struct libie_aq_desc desc;
- 	enum iavf_status status;
- 
-+	cmd = libie_aq_raw(&desc);
- 	iavf_fill_default_direct_cmd_desc(&desc, iavf_aqc_opc_queue_shutdown);
- 
- 	if (unloading)
-@@ -327,12 +319,13 @@ static enum iavf_status iavf_aq_get_set_rss_lut(struct iavf_hw *hw,
- 						u8 *lut, u16 lut_size,
- 						bool set)
- {
-+	struct iavf_aqc_get_set_rss_lut *cmd_resp;
-+	struct libie_aq_desc desc;
- 	enum iavf_status status;
--	struct iavf_aq_desc desc;
--	struct iavf_aqc_get_set_rss_lut *cmd_resp =
--		   (struct iavf_aqc_get_set_rss_lut *)&desc.params.raw;
- 	u16 flags;
- 
-+	cmd_resp = libie_aq_raw(&desc);
++const char *libie_aq_str(enum libie_aq_err err);
 +
- 	if (set)
- 		iavf_fill_default_direct_cmd_desc(&desc,
- 						  iavf_aqc_opc_set_rss_lut);
-@@ -341,8 +334,8 @@ static enum iavf_status iavf_aq_get_set_rss_lut(struct iavf_hw *hw,
- 						  iavf_aqc_opc_get_rss_lut);
- 
- 	/* Indirect command */
--	desc.flags |= cpu_to_le16((u16)IAVF_AQ_FLAG_BUF);
--	desc.flags |= cpu_to_le16((u16)IAVF_AQ_FLAG_RD);
-+	desc.flags |= cpu_to_le16((u16)LIBIE_AQ_FLAG_BUF);
-+	desc.flags |= cpu_to_le16((u16)LIBIE_AQ_FLAG_RD);
- 
- 	vsi_id = FIELD_PREP(IAVF_AQC_SET_RSS_LUT_VSI_ID_MASK, vsi_id) |
- 		 FIELD_PREP(IAVF_AQC_SET_RSS_LUT_VSI_VALID, 1);
-@@ -392,11 +385,12 @@ iavf_status iavf_aq_get_set_rss_key(struct iavf_hw *hw, u16 vsi_id,
- 				    struct iavf_aqc_get_set_rss_key_data *key,
- 				    bool set)
- {
--	enum iavf_status status;
--	struct iavf_aq_desc desc;
--	struct iavf_aqc_get_set_rss_key *cmd_resp =
--			(struct iavf_aqc_get_set_rss_key *)&desc.params.raw;
- 	u16 key_size = sizeof(struct iavf_aqc_get_set_rss_key_data);
-+	struct iavf_aqc_get_set_rss_key *cmd_resp;
-+	struct libie_aq_desc desc;
-+	enum iavf_status status;
+ #endif /* __LIBIE_ADMINQ_H */
+diff --git a/drivers/net/ethernet/intel/libie/adminq.c b/drivers/net/ethernet/intel/libie/adminq.c
+new file mode 100644
+index 000000000000..55356548e3f0
+--- /dev/null
++++ b/drivers/net/ethernet/intel/libie/adminq.c
+@@ -0,0 +1,52 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/* Copyright (C) 2025 Intel Corporation */
 +
-+	cmd_resp = libie_aq_raw(&desc);
- 
- 	if (set)
- 		iavf_fill_default_direct_cmd_desc(&desc,
-@@ -406,8 +400,8 @@ iavf_status iavf_aq_get_set_rss_key(struct iavf_hw *hw, u16 vsi_id,
- 						  iavf_aqc_opc_get_rss_key);
- 
- 	/* Indirect command */
--	desc.flags |= cpu_to_le16((u16)IAVF_AQ_FLAG_BUF);
--	desc.flags |= cpu_to_le16((u16)IAVF_AQ_FLAG_RD);
-+	desc.flags |= cpu_to_le16((u16)LIBIE_AQ_FLAG_BUF);
-+	desc.flags |= cpu_to_le16((u16)LIBIE_AQ_FLAG_RD);
- 
- 	vsi_id = FIELD_PREP(IAVF_AQC_SET_RSS_KEY_VSI_ID_MASK, vsi_id) |
- 		 FIELD_PREP(IAVF_AQC_SET_RSS_KEY_VSI_VALID, 1);
-@@ -452,18 +446,18 @@ enum iavf_status iavf_aq_send_msg_to_pf(struct iavf_hw *hw,
- 					struct iavf_asq_cmd_details *cmd_details)
- {
- 	struct iavf_asq_cmd_details details;
--	struct iavf_aq_desc desc;
-+	struct libie_aq_desc desc;
- 	enum iavf_status status;
- 
- 	iavf_fill_default_direct_cmd_desc(&desc, iavf_aqc_opc_send_msg_to_pf);
--	desc.flags |= cpu_to_le16((u16)IAVF_AQ_FLAG_SI);
-+	desc.flags |= cpu_to_le16((u16)LIBIE_AQ_FLAG_SI);
- 	desc.cookie_high = cpu_to_le32(v_opcode);
- 	desc.cookie_low = cpu_to_le32(v_retval);
- 	if (msglen) {
--		desc.flags |= cpu_to_le16((u16)(IAVF_AQ_FLAG_BUF
--						| IAVF_AQ_FLAG_RD));
-+		desc.flags |= cpu_to_le16((u16)(LIBIE_AQ_FLAG_BUF
-+						| LIBIE_AQ_FLAG_RD));
- 		if (msglen > IAVF_AQ_LARGE_BUF)
--			desc.flags |= cpu_to_le16((u16)IAVF_AQ_FLAG_LB);
-+			desc.flags |= cpu_to_le16((u16)LIBIE_AQ_FLAG_LB);
- 		desc.datalen = cpu_to_le16(msglen);
- 	}
- 	if (!cmd_details) {
++#include <linux/module.h>
++#include <linux/net/intel/libie/adminq.h>
++
++static const char * const libie_aq_str_arr[] = {
++#define LIBIE_AQ_STR(x)					\
++	[LIBIE_AQ_RC_##x]	= "LIBIE_AQ_RC" #x
++	LIBIE_AQ_STR(OK),
++	LIBIE_AQ_STR(EPERM),
++	LIBIE_AQ_STR(ENOENT),
++	LIBIE_AQ_STR(ESRCH),
++	LIBIE_AQ_STR(EIO),
++	LIBIE_AQ_STR(EAGAIN),
++	LIBIE_AQ_STR(ENOMEM),
++	LIBIE_AQ_STR(EACCES),
++	LIBIE_AQ_STR(EBUSY),
++	LIBIE_AQ_STR(EEXIST),
++	LIBIE_AQ_STR(EINVAL),
++	LIBIE_AQ_STR(ENOSPC),
++	LIBIE_AQ_STR(ENOSYS),
++	LIBIE_AQ_STR(EMODE),
++	LIBIE_AQ_STR(ENOSEC),
++	LIBIE_AQ_STR(EBADSIG),
++	LIBIE_AQ_STR(ESVN),
++	LIBIE_AQ_STR(EBADMAN),
++	LIBIE_AQ_STR(EBADBUF),
++#undef LIBIE_AQ_STR
++	"LIBIE_AQ_RC_UNKNOWN",
++};
++
++#define __LIBIE_AQ_STR_NUM (ARRAY_SIZE(libie_aq_str_arr) - 1)
++
++/**
++ * libie_aq_str - get error string based on aq error
++ * @err: admin queue error type
++ *
++ * Return: error string for passed error code
++ */
++const char *libie_aq_str(enum libie_aq_err err)
++{
++	if (err >= ARRAY_SIZE(libie_aq_str_arr) ||
++	    !libie_aq_str_arr[err])
++		err = __LIBIE_AQ_STR_NUM;
++
++	return libie_aq_str_arr[err];
++}
++EXPORT_SYMBOL_NS_GPL(libie_aq_str, "LIBIE_ADMINQ");
++
++MODULE_DESCRIPTION("Intel(R) Ethernet common library - adminq helpers");
++MODULE_LICENSE("GPL");
 -- 
 2.42.0
 
