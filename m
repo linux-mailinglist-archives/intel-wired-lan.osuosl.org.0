@@ -2,215 +2,169 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5FC7FA9F424
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Apr 2025 17:12:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 77F51A9F422
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Apr 2025 17:12:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DB42640314;
-	Mon, 28 Apr 2025 15:12:19 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2928940220;
+	Mon, 28 Apr 2025 15:12:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4BRskegCa8ax; Mon, 28 Apr 2025 15:12:19 +0000 (UTC)
+ id AnM4-kcozzy5; Mon, 28 Apr 2025 15:11:59 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9375140321
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 820DD4030E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1745853138;
-	bh=3nc9iISA11fW0ksDxFW2+XyDFC0WBO944oRKCJJUGqY=;
-	h=From:To:CC:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	s=default; t=1745853119;
+	bh=bii84k2PSsRjXh40KifrKxUEqiTjcBYHwDngS0hjXyY=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=48/K7htZJwMgdYaXVT7CJ9KAGqQldVp4PLnARXHisGI9WIvziSXI9MUiSYGUnzIJ1
-	 4JzyrrPGJzTGdEwnXXT/Jgu4LV7M9u5jBFRNqTim0t2umGdVtqzjKqp8gVehubAHeU
-	 mIZb2RlqpurSVhm5qpaimu65Db2aLRECb3N3aYQz7rvL7QLimOFQPJmkeR3/RY0xYS
-	 qTfdWIbcqQA4FIyLZsvntCPHXIKTDh+PgKXn3fZc/rEdOaynH2AmTR/JCGnWOR+fo8
-	 GlDXrN5xq7+1YbdFJVvGX8Cp+Q1ZsdvdtbzK2AULsEgd/QdqWt31OkYeVCT1C6rGWu
-	 yteg2+pDEjDdw==
+	b=Y5XOgKMzO1xyAdl9vHRzsBT1JmUUxXer6k9p9afsjrdKiNoXcJUbWWwvMdj5ZDzyI
+	 nIDZxIDpuMT6IWGrq/MBQlq11PwUKkdxwVM2xJCY9BFcVy1liBRpql8I27EadPr2nP
+	 TpNmCtWf5zB6t8G6qNvF99d0tdH5V1Bphur7KbwXF4IV6sWm0VNsQaoJ6bh23GyXL1
+	 dx29JzPSEqISId4857/Juq1Dp5PAep1BLdruARe9FGbWOYIhATp746gvwTZFcIYi/p
+	 HJ/lwb8b/M4qo/PGePiickSplwh34Yqd/hMzObY6O3IVMil+W4x13SHEn0ahrl42Ed
+	 HZk2EhHweK2eA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9375140321;
-	Mon, 28 Apr 2025 15:12:18 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 820DD4030E;
+	Mon, 28 Apr 2025 15:11:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id B3CCE194
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Apr 2025 06:03:30 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 46EE7194
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Apr 2025 11:54:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 99C79811E6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Apr 2025 06:03:30 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3864A80FF2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Apr 2025 11:54:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id cXxVXLqXOmmx for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Apr 2025 06:03:29 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
- helo=mgamail.intel.com; envelope-from=chaitanya.kumar.borah@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 1237E811E2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1237E811E2
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1237E811E2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Apr 2025 06:03:28 +0000 (UTC)
-X-CSE-ConnectionGUID: +GAO16QHRVS2Q7b+qWiigg==
-X-CSE-MsgGUID: 6ot3K6tIREeDaSovTMs3Eg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11416"; a="58761119"
-X-IronPort-AV: E=Sophos;i="6.15,245,1739865600"; d="scan'208";a="58761119"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
- by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Apr 2025 23:03:28 -0700
-X-CSE-ConnectionGUID: mpLEL6evRLW7CLcxP4n3ZA==
-X-CSE-MsgGUID: 86J3dlYnSk2Wc3K10MIYfQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,245,1739865600"; d="scan'208";a="133943470"
-Received: from orsmsx901.amr.corp.intel.com ([10.22.229.23])
- by orviesa007.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Apr 2025 23:03:28 -0700
-Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14; Sun, 27 Apr 2025 23:03:27 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14 via Frontend Transport; Sun, 27 Apr 2025 23:03:27 -0700
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.41) by
- edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Sun, 27 Apr 2025 23:03:27 -0700
+ id 5o_-LYeBsqsh for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Apr 2025 11:54:58 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.223.84;
+ helo=nam11-dm6-obe.outbound.protection.outlook.com;
+ envelope-from=ian.ray@gehealthcare.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 6932080B9E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6932080B9E
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam11on2084.outbound.protection.outlook.com [40.107.223.84])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 6932080B9E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Apr 2025 11:54:58 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=ZI2+neI+HJJxdA5wzNnVIMJAOq83L7avMUmt6Y0XMGxLBIYDbN5/0d82byn4ah+hiMJpRVYr5r195pJhd/6Z5lKqfw97JOA0nHmKz1Q8XVDITYeyyiWScPgZ2Vf03q5dyIVI8ya0Sv6auwV/nbRjbhjkNUNnH3p3uYgqP4IrY/LWyaxrXtrmwWEPayzA1Frj6iWIG3VVdMa115aw85kD7oqdQrCjGbJp5iIJ81+DFG9csTXpTjfkLfKqHBLzcW0oQ439H0MuwSUp/jYx/s6I6Ra3vvbJVxcA3Ok9PL8VIdJ63CnmjRR/ohkPd3W+peIouoDp8WK43lDHzFbqcaH0gQ==
+ b=f9aekAn5dnEAW3x2mXGpvqCRh1fXxZRYZC8pbuKx35pcbnQiKV/n0YfK8sEQZwt1bB+r/9qE3X9NhPY7bc3egE96kBtOFkVNAEVzJd1/3hIOOiIirQk2oJ/3XdMKwkdJmAUCZCJ9E2IqzAr4HOfFRaw/OJ476LC2fWHfESMhUM9wB2MdhyjVVzh3laG4E1pMvFq9maBMBQJCFAhpQ23XnAvofJRYufH3IyRm3GY0Wan9hXjdaQpw3R1uapqm0Fkl2xPtLmVdfeW4uiJaV0gR249ciBw2iTOYzOeStJTvcc17R014J/FWnqE72K7Ok0FUKTUT4eh+r7sovbKFyjY95A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=3nc9iISA11fW0ksDxFW2+XyDFC0WBO944oRKCJJUGqY=;
- b=U79qtqgJ4f33K38afs49qpeaVGguw1XfJsufXL7nEZyLcTgk9ZaxEMSoVisLX19wcy0aR9G5Se6CIDCTBz2rx5Z0jYVaiJqJwn7oZ5xRx1RCYKja6s2xu5bx1KdUemNljKUAZKGnWOqU7KL8bj35f3p+BEBpfTK/TUUJnhdI8igC6640yx4VgHOMxmLHk2e6zQGWRs3k9BPwD/1p2INVHP7SWOwJ2yt4/2rBf8w29mCwwR3bYoRIg8RYnTQK68+kIRxJZCV0x+ZPVEhStNSomTvabKMpvHSOvv7anZ0rpnnu34IpxVkD7xVHNqnBpbEw8IDcN8HUsuM+R56vVPQdHA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from SJ1PR11MB6129.namprd11.prod.outlook.com (2603:10b6:a03:488::12)
- by PH7PR11MB8010.namprd11.prod.outlook.com (2603:10b6:510:249::13)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8678.27; Mon, 28 Apr
- 2025 06:02:43 +0000
-Received: from SJ1PR11MB6129.namprd11.prod.outlook.com
- ([fe80::21c3:4b36:8cc5:b525]) by SJ1PR11MB6129.namprd11.prod.outlook.com
- ([fe80::21c3:4b36:8cc5:b525%6]) with mapi id 15.20.8678.025; Mon, 28 Apr 2025
- 06:02:43 +0000
-From: "Borah, Chaitanya Kumar" <chaitanya.kumar.borah@intel.com>
-To: "Hall, Christopher S" <christopher.s.hall@intel.com>
-CC: "intel-xe@lists.freedesktop.org" <intel-xe@lists.freedesktop.org>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>, "Keller, 
- Jacob E" <jacob.e.keller@intel.com>, "intel-wired-lan@lists.osuosl.org"
- <intel-wired-lan@lists.osuosl.org>, "Saarinen, Jani"
- <jani.saarinen@intel.com>, "Kurmi, Suresh Kumar"
- <suresh.kumar.kurmi@intel.com>, "De Marchi, Lucas" <lucas.demarchi@intel.com>
-Thread-Topic: Regression on drm-tip
-Thread-Index: Adu4ALP69bWLWL9KT+ihsftv/RDZHQ==
-Date: Mon, 28 Apr 2025 06:02:43 +0000
-Message-ID: <SJ1PR11MB6129BBB9E38F6DB731604E94B9812@SJ1PR11MB6129.namprd11.prod.outlook.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SJ1PR11MB6129:EE_|PH7PR11MB8010:EE_
-x-ms-office365-filtering-correlation-id: e6b83bb0-0833-4ccd-654d-08dd861a4ab5
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0; ARA:13230040|376014|366016|1800799024|38070700018;
-x-microsoft-antispam-message-info: =?iso-8859-1?Q?0DwIhuO1xQgC3zbCHBuixdf1Z2bVuLaeM3hCqkmc9wVDexTKd7W3HMIMbz?=
- =?iso-8859-1?Q?9V9b81HpIyMaA/CDv5UsZYf9UtogyYf/nFwKT+7RGkEsSPhsZ/HWB9/Ul+?=
- =?iso-8859-1?Q?nEM/LRMfOpojfBeRMVd8WHCTDRYZZCTMMgPZ1ieICr1rM77YYmE+F0kt8g?=
- =?iso-8859-1?Q?eSYQe+aOQLc5J7vEfx35vhMcoQ6+VnNJCYZyYn+CSoWP3kPC3YfmnEtp2S?=
- =?iso-8859-1?Q?Tvr7JMBPc+FCe8TwcrjxTAED7Q60tQUAHLsrJ3HeFgQCMCG+5U0pkbBR0a?=
- =?iso-8859-1?Q?Y3a1RkxkK3ShpDS67FXBlvbYjJ2Abiim5YYsytOHghUrhf788N3I3A3We7?=
- =?iso-8859-1?Q?oiEsfEbINRQ04uzTx6eCV38TfREqc0pW+ZSdTpzbvE/Q4TGL4rMSdD6JRp?=
- =?iso-8859-1?Q?lvInTewGLDpp2I238KT7r0x+qvL6BUDL5yHzanOLBPOzXDiMbUrADnJWKL?=
- =?iso-8859-1?Q?dtjwd6Eg76PYbaMqp92ISIZjSZU3o9ix9RNDapodkVDnA4619RUCNJHqLi?=
- =?iso-8859-1?Q?LOn2sDumITkA0u62CL3VjfQledeDQNLKKAy+9ivKVl8N/q959pRzIl98BC?=
- =?iso-8859-1?Q?6/nVL1TZe1FCFwiJ4jHXYccj/O/vXJTaQE+uAsPWAaAuTrkuBHYUW+A2Cp?=
- =?iso-8859-1?Q?EurBL/tCCu40PvIDFIPYKO0VszGuYUVm/coLO5eDDFmb3L7SwaMRDynaUT?=
- =?iso-8859-1?Q?qWVsK1aROJI/0XU07a90ZhG8eGpQ855I8x9ueJ4ymrFCAbxWy1P3xltMtK?=
- =?iso-8859-1?Q?ZzbmqxzKHp7/G7IoJhSUsvhJbLV4c1WOOxazy1xQe4gReNHXMz1wpaJcOW?=
- =?iso-8859-1?Q?UNjMe44+JEflLuO+NcVBtb35ZJAqQTIL+ZUyUcD8Y1DBn3GUIFp9+FHLdq?=
- =?iso-8859-1?Q?3C1Mz16VoudtinBZimcrn8d0Ci9Gagzb+xDQmUnFT5i32lEJRkVjVJGVA8?=
- =?iso-8859-1?Q?wnD+owTJ+f1Q2vf9pt4tt6pRijw65PiuBqdt8yCyxIA1JkwTUQSDnkls3Y?=
- =?iso-8859-1?Q?xt554ClJ5GJm/F2H2LgZGb+aDy86mCMLQxa50vDNeuDDmk5sh4GQ9VvQYS?=
- =?iso-8859-1?Q?FnMTsiGj0cw/Y88zJA/JovLHtim8WHiAMDMXwPHvLvs+SKi0f46g/stHZl?=
- =?iso-8859-1?Q?ZAOVTvpTpseXeQxLlZYGPSzRpDko3ttnwB4g68FPRsdFCzWWRlDd41TjlP?=
- =?iso-8859-1?Q?MoSUWKm1TpUlEERvzdltnF3luZgS24cSQCy+gc7hucUE5ul3LzM4H0W+yp?=
- =?iso-8859-1?Q?fCDoakIgPXthKniC3yKhz9IP1kvvL4kKXLKGIosAIpH3hmzdkeSQRy8XZu?=
- =?iso-8859-1?Q?zss7n8SajhDHyEv3pecEG+1a52n2HOJZuYIZSDwfeG7YLOiTFYt3jeY0D9?=
- =?iso-8859-1?Q?wepeB8UUzWZ8Faq0aGZb9aj81wu9traPd1ypFysnuP/77x0AxPLx/Tjx8p?=
- =?iso-8859-1?Q?29nyANjyBnzwZ7s1DojjneLm5cb80n88RwsuiQVkzBwBdVtMjIQunNgVN5?=
- =?iso-8859-1?Q?M=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ1PR11MB6129.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(366016)(1800799024)(38070700018); DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?9r3MV4sKRVwH+o2IfwoEY2tL8xj44aTvsEuxACMYiYw0p8NixoKpNFlicH?=
- =?iso-8859-1?Q?uA6PJ/iMZvAb72AkNILqUcTEshN5hi6dGuJ58XFiHgtiAnj7ZE8G20k7kj?=
- =?iso-8859-1?Q?Iew4Ez1WdTrQRE8VME1ysVaGkzGMFK+O6igOolHNtv6jAfBIaFXjb51eVt?=
- =?iso-8859-1?Q?fxHIaaBsfkLIxyLHlpncbG9tXrNvRMTKPDmqdtp8qvMzlEBrRke1JE1eGF?=
- =?iso-8859-1?Q?rL76t7tB74Oov2QPlCmv0gAl4a8wtTyHkvZr1ADsDFmYAI9FjrVea+D3Cn?=
- =?iso-8859-1?Q?jqox7KamSA+Gty+SiDo4ywKTFe8dgX4zVPJparu0DlZLJ/1SlIwDs/nKj6?=
- =?iso-8859-1?Q?yWh0Qs3xj86XN1V8FN+tIRYqwSzom1uHc0HYZCks3puA4hXnUCjPld1rWt?=
- =?iso-8859-1?Q?6k3cXP3QvZ3Sib+axtRmVLq2QRwvlX0oD+Fm4onnlgklIVy5t+Ek3sn491?=
- =?iso-8859-1?Q?+6fwOxNX2i668Bto+62MULKFeRK1hNax9RDJWrGcgR0CKDEkqiA0UVBg38?=
- =?iso-8859-1?Q?4/SZ5UsATJZr7zqbEwTlB+XgrFuc02D2VQshpr6zxT77GNl9meDkdvXAyD?=
- =?iso-8859-1?Q?zgXnp2xrwDB+kvS5EVnbJKA/CKdF3cGhDe9+vphwEzmErg7CR/Fin+mQD8?=
- =?iso-8859-1?Q?Jy6/1CjAkUTOLqy61VTwGvaFLEkZV4T6L/LJ2ivBuZlCyiiRfTlkVWucC5?=
- =?iso-8859-1?Q?FZiRFUBnWjJMGu17kKGPqumKBGnACIYyO7FOkvnsrcO9TkqlqpfYIFLvhE?=
- =?iso-8859-1?Q?22uIT2niR+v8lkTruPCbvn3oCjpThw9jVrvdn+ZdvPnlV7rkX3r5fxHPBx?=
- =?iso-8859-1?Q?vapmcB4zdjjEWSbEDZ173v/ZGOYK+2dMW4AIcSGeaCqNgDYrU41edDp/ok?=
- =?iso-8859-1?Q?dDt8j/tB2Jf8ZhxO57dsXNu97JFirLy3X6zP6sbqepsr+1P90e2/IgaYLP?=
- =?iso-8859-1?Q?glTCaYmFQ/mgn2qAu4wWNdxl65Ax/U516qRa3k99cXPogtzKgykHwGFXFd?=
- =?iso-8859-1?Q?E4bEWfV+g1GbMbZqp58p6adz2MzRcClGioW4m8piP0SMrNwFL1afIN75vI?=
- =?iso-8859-1?Q?VVxh4tw7BgGzeAMwoFnDvFpO3xRX6VcaPmRZo/WJnpslDEdGsxt/izpaUS?=
- =?iso-8859-1?Q?n6WlhcyuzqcEzKzuZkSBIBe96nU2CpUQaWUJQAxONVyM9z77NY6Bi8q8es?=
- =?iso-8859-1?Q?uuG3irdsgpZNIq+8PLHKi6kaj3e6RGesoyCixgXNfH4nbNb1bAz+ZEwa9v?=
- =?iso-8859-1?Q?ypINDx8R5j8Qp7V3eG0SdpzCeYiv0itjlzOea3yfHmRfI+QcVPPtB2k/FL?=
- =?iso-8859-1?Q?V85pViGvZ8C0Xuh5qn1wHSB+ZRNJ8labnLOkZvFdotwb2vdMvjFicDKUei?=
- =?iso-8859-1?Q?5WdC4iW1Zq8GSGoJW50/iLfSidfm/F7WE9gfnZ75WKUduzdGBr36SoSSd5?=
- =?iso-8859-1?Q?2IK6P3zH0iIOJ5k+CcEHd+JYOyX56To6izHx/fqkLCCe+76g26K0Mw/Zn/?=
- =?iso-8859-1?Q?dd0HaPASgdO15jETDoTb7sz+f6xXsmTjpPVOLdyo8zoc3obeqsofjCNnUT?=
- =?iso-8859-1?Q?FDdbBza7ThDdT/X1HYaBbKnTCJv0LKczinnZbbCkOGVx+zMa9M0jlX5Ped?=
- =?iso-8859-1?Q?mtVYA+jFNWQ7ndi5XKZ9fevSRmc+u2I/wE0y7BjsFR8mJVHJEU6LGOBw?=
- =?iso-8859-1?Q?=3D=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ bh=bii84k2PSsRjXh40KifrKxUEqiTjcBYHwDngS0hjXyY=;
+ b=dos1JW9wkrbJaZCre9QeNntxsBl3tWq9vMEJ2ZZj5x+UhJg7pknLG6IgWM9LsB6wuwnnS21TrEf9m2s0C2OSLVY2zc7vOr30ONM3dwlCPBcXor+e9Cx2WiElI/Hhw1FDpz+69de7iZ8Dlzvjrfiy4S5jZFcc/VoyHwgbKuP1jtzPjfpa3ym0eUzNO5YcKIUo8TEap4vi5AWuVWbQ9H9brnNoo3I0bKziVGvt7xv6EdSUtuk+4r/vA1F4TxwxXcQ54WwzhRxPYy6k9mee0wvOolUmxA4f0EPwAR2Jm8pLKPXDkuUuAJKU49ywFizR5xY+dVCtMmSt9zi67pCkK7JbsQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=fail (sender ip is
+ 165.85.157.49) smtp.rcpttodomain=lists.osuosl.org
+ smtp.mailfrom=gehealthcare.com; dmarc=fail (p=quarantine sp=quarantine
+ pct=100) action=quarantine header.from=gehealthcare.com; dkim=none (message
+ not signed); arc=none (0)
+Received: from DM6PR08CA0051.namprd08.prod.outlook.com (2603:10b6:5:1e0::25)
+ by CH3PR22MB5643.namprd22.prod.outlook.com (2603:10b6:610:1e4::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8678.31; Mon, 28 Apr
+ 2025 11:54:55 +0000
+Received: from CY4PEPF0000FCBF.namprd03.prod.outlook.com
+ (2603:10b6:5:1e0:cafe::2) by DM6PR08CA0051.outlook.office365.com
+ (2603:10b6:5:1e0::25) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8655.37 via Frontend Transport; Mon,
+ 28 Apr 2025 11:54:55 +0000
+X-MS-Exchange-Authentication-Results: spf=fail (sender IP is 165.85.157.49)
+ smtp.mailfrom=gehealthcare.com; dkim=none (message not signed)
+ header.d=none;dmarc=fail action=quarantine header.from=gehealthcare.com;
+Received-SPF: Fail (protection.outlook.com: domain of gehealthcare.com does
+ not designate 165.85.157.49 as permitted sender)
+ receiver=protection.outlook.com; client-ip=165.85.157.49;
+ helo=mkerelay1.compute.ge-healthcare.net;
+Received: from mkerelay1.compute.ge-healthcare.net (165.85.157.49) by
+ CY4PEPF0000FCBF.mail.protection.outlook.com (10.167.242.101) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8678.33 via Frontend Transport; Mon, 28 Apr 2025 11:54:55 +0000
+Received: from 56525d0f2b9b.fihel.lab.ge-healthcare.net
+ (zoo13.fihel.lab.ge-healthcare.net [10.168.174.111])
+ by builder1.fihel.lab.ge-healthcare.net (Postfix) with ESMTP id 1AB7CCFB78;
+ Mon, 28 Apr 2025 14:54:52 +0300 (EEST)
+From: Ian Ray <ian.ray@gehealthcare.com>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>
+Cc: brian.ruley@gehealthcare.com, Ian Ray <ian.ray@gehealthcare.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Date: Mon, 28 Apr 2025 14:54:49 +0300
+Message-ID: <20250428115450.639-1-ian.ray@gehealthcare.com>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CY4PEPF0000FCBF:EE_|CH3PR22MB5643:EE_
+Content-Type: text/plain
+X-MS-Office365-Filtering-Correlation-Id: ed4f78fa-a157-4956-a0e3-08dd864b7e2a
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|376014|36860700013|82310400026; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?Gz9T/ypckKvcDqjFhy1kRw09iNagIchqUOwed2bIaSGFIDRPp8LIMogBQgcs?=
+ =?us-ascii?Q?SoSrRv5RHjCs9lkwfcoGIIv/OekmfXwk+znoEVahj9CFNLHCfgs89MKb3Gho?=
+ =?us-ascii?Q?MIF89jF876k1blL/azYC0Ffq9rEI8EhNVOu+ROHtH1+Hc2uD2qWpoebG6469?=
+ =?us-ascii?Q?tbeLRb/OK97Lj1W0f2qw/zjxq2gjZAjzDUN3Y6Lavobre9/sxiME9WGxPlN+?=
+ =?us-ascii?Q?d61gfUWBrv72MpEpO+0Gj2rBMqxLmFNOPiKUdGsk7ew0o0S+UHqLALOxstak?=
+ =?us-ascii?Q?4Ok0yuVRS4g1dV+c0eQQCvyzjSPCEBr0PgP86VHgbtyxsNGs3tvh8WhKMxlo?=
+ =?us-ascii?Q?2639ODcR1mg9kgmxzb6uIyhzvgSFDM96gMHVDlLFKQfw+U7ItaRxugm9rA0E?=
+ =?us-ascii?Q?AvFqNvFdhHFzlGJG1AFm5zGGLjwyDNIV/ycSDU/eL/jcPZopvCWqfndLezwo?=
+ =?us-ascii?Q?e0Ye9+tF63Kv5lSer8EVGhh+i0ZD4vAvIBwhA65P4Wu0xwfwx0JRaVpDh3X4?=
+ =?us-ascii?Q?913Cdm54JOm4qoShvtoIEWc3MJen2Sd+grFbOMrwsbs4nhgR0VVAKuipi2sh?=
+ =?us-ascii?Q?LHIoGZjeO6R1SNxdqOvcfoC4hDI6MhZOtbp7A6nA3oJeSoovmVq6BUi96AXP?=
+ =?us-ascii?Q?N1RpieIvps76VA7qjPc/qGJpehyA3XzbQBxGANe1hkgPji70VRkuGcSeNf6X?=
+ =?us-ascii?Q?bclovExEx7hE82LeU1pfw2OyQV8D6a5rF0eMx4YZAn6Di4yS+egQcqfWL8oq?=
+ =?us-ascii?Q?G77Js9rMY0qh/deI6kaaD/1z79l41k0Sj9DOdcGGc27bzGUjUaFWDd8LQFuD?=
+ =?us-ascii?Q?/tn5RrBJkERLW73auTlj8uVlOW8qGoN6qOIfsLwAvs9h4Oxrr1Vqg1ViSkiq?=
+ =?us-ascii?Q?SKg+x8f4rg/IbwEYZDffTBEH+C9k9Cd7bfT6xAt/Ivk35sQH/PyaX5DRo5eo?=
+ =?us-ascii?Q?jSzCNpBpKz7Chp1knj19XNEU7PFQUGCLTqGmx9Bi0ZsHkVQxjzQ1FjybYrKP?=
+ =?us-ascii?Q?4EEJkat9K9TzeZb7F2goPWswSd2iX9djC976cjxnhmICJmZjp2MdEbp0EnBR?=
+ =?us-ascii?Q?GtHKZPOR7tGKPLhKJXjvtsivbFxd+aV2uWRmz+ksVqoiQJK7k/DUEIU5sIKU?=
+ =?us-ascii?Q?ZPF7aROARSe1daFhEzI505vEmsoaZexAFrpDYclrTzpYVW8h7ftz8ElggA3E?=
+ =?us-ascii?Q?/YMB2xVaY0XDe5txN4OMvZQ0vbxKaMDMtfTmmQZuQA/OsMA0Pe0vONQ0xoMl?=
+ =?us-ascii?Q?cimV+K6MBYGSDMXqI/PghNlMfYmp+qswqJ3ukDKf98/sso+upSkkqIsWheyr?=
+ =?us-ascii?Q?qvHlJ4MDyNRR5TABYoXN/7Hp9XyT5hNHLuGSRZA7Nvv9vvPoWpknCJ9teeWc?=
+ =?us-ascii?Q?QWGW3TQ+tSg6U62KfSx7FolL5yTsJPlhmynaNsRSAcVWSg41p8aoRlmzSSsD?=
+ =?us-ascii?Q?POpFVg3QXwIoLC9xyz2Bjqh3FXVazopWjgvn1B8unRbDHHacKChmtoBRb9jl?=
+ =?us-ascii?Q?wtZZUDxkwR9pPaP7nEdRk+0nRdOez/UYYspZ?=
+X-Forefront-Antispam-Report: CIP:165.85.157.49; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mkerelay1.compute.ge-healthcare.net;
+ PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(36860700013)(82310400026); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: gehealthcare.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Apr 2025 11:54:55.1902 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: ed4f78fa-a157-4956-a0e3-08dd864b7e2a
+X-MS-Exchange-CrossTenant-Id: 9a309606-d6ec-4188-a28a-298812b4bbbf
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=9a309606-d6ec-4188-a28a-298812b4bbbf; Ip=[165.85.157.49];
+ Helo=[mkerelay1.compute.ge-healthcare.net]
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SJ1PR11MB6129.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e6b83bb0-0833-4ccd-654d-08dd861a4ab5
-X-MS-Exchange-CrossTenant-originalarrivaltime: 28 Apr 2025 06:02:43.6603 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: G6RAtBajF5X3qSgEJx/TWrYwgwN1yfNe7sHEXXOfN9nESQFfgdwjV6ZmXV3oKAbiraIj2tdZmlDEQ5xFbl77Wsi8MLHw7QIwuuGyBngYwQQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB8010
-X-OriginatorOrg: intel.com
-X-Mailman-Approved-At: Mon, 28 Apr 2025 15:12:16 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1745820209; x=1777356209;
- h=from:to:cc:subject:date:message-id:
- content-transfer-encoding:mime-version;
- bh=WNkcQ+atNvqxkvzJO49eb359BfWbAANrf5TA/JfvH/Y=;
- b=ft4XdUEwFU/Hb2dBzDLb1kg7X05rAN1bWpAoNe+Yn/Jzhz1eked/Rjwg
- MpAODhUGzFCaLCGCaTl8iIjoJSJKrV/ZCDQsB6PPfPkieBlSnG4zyVdvF
- E6GZUBbMcbxFxgAff6s9V5ZqlGZsXmtNYc6sFQfMzkkRhfDpU5MCm0HI7
- HCx8hC9pBoaP1frAcN0/K5JFzHI3qN0fTPe0c8YbFIRjLRx81kuUeaBtq
- GgLyjWMLCdfuKcPoTFiFL7Ehm7XHcZ15obuzCozfq3vWI18dVHnXmbfJ5
- tt1ejysdWnIJo7bKBLSSeSUU1zOVsYsNy36BZ43nI/cg3ojb9GENd6lUI
- w==;
+X-MS-Exchange-CrossTenant-AuthSource: TreatMessagesAsInternal-CY4PEPF0000FCBF.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR22MB5643
+X-Mailman-Approved-At: Mon, 28 Apr 2025 15:11:57 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gehealthcare.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=bii84k2PSsRjXh40KifrKxUEqiTjcBYHwDngS0hjXyY=;
+ b=Wk8oJgFQISz9pEodmkYiu8E799kaxwJ2GIPBpvn8y56K0euMkDsZMW3hyijBkgkY/oA6/SZKc5ihz8Kbg7//nCeUjUcvBn+3hM05cZGeygbj1iwC/qKT3sCB6ginloTVBuTmBFjTdzRG/crQu5/sOMFhZZ6ILuo1N2TXZ3XHQwLcYZpgQrpLJk31JS2gV6Dq9p1rcBZ8ahOV/ikpKIS1P5jUDjWhR5xMlc9sDh7OG2Fq0DW+0vHgKtHmOfw6t+lQJCIDF2DXHsQldTfEfxLwL1ZdDnuAtvS0nFHDTrCA2NiBA5w7y0wEcNEotSuTVrtmSGYxhSxvwasxM/a063fzPw==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
+ dmarc=pass (p=quarantine dis=none)
+ header.from=gehealthcare.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=ft4XdUEw
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: [Intel-wired-lan] Regression on drm-tip
+ unprotected) header.d=gehealthcare.com header.i=@gehealthcare.com
+ header.a=rsa-sha256 header.s=selector1 header.b=Wk8oJgFQ
+Subject: [Intel-wired-lan] [PATCH] igb: Fix watchdog_task race with shutdown
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -226,69 +180,83 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello Christopher,
+A rare [1] race condition is observed between the igb_watchdog_task and
+shutdown on a dual-core i.MX6 based system with two I210 controllers.
 
-This mail is regarding a regression we are seeing in our CI runs[1] on drm-=
-tip[2] repository.
+Using printk, the igb_watchdog_task is hung in igb_read_phy_reg because
+__igb_shutdown has already called __igb_close.
 
-```````````````````````````````````````````````````````````````````````````=
-``````
-<4>[    7.891028] =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-<4>[    7.891293] [ BUG: Invalid wait context ]
-<4>[    7.891526] 6.15.0-rc3-CI_DRM_16443-gdc80d6a10c1c+ #1 Tainted: G     =
-   W         =20
-<4>[    7.891792] -----------------------------
-<4>[    7.892070] (udev-worker)/286 is trying to lock:
-<4>[    7.892349] ffff88811671bcc8 (&adapter->ptm_lock){....}-{3:3}, at: ig=
-c_ptp_reset+0x155/0x320 [igc]
-<4>[    7.892660] other info that might help us debug this:
-<4>[    7.892943] context-{4:4}
-<4>[    7.893226] 2 locks held by (udev-worker)/286:
-<4>[    7.893515]  #0: ffff888103bd41b0 (&dev->mutex){....}-{3:3}, at: __dr=
-iver_attach+0x104/0x220
-<4>[    7.893823]  #1: ffff88811671bb70 (&adapter->tmreg_lock){....}-{2:2},=
- at: igc_ptp_reset+0x53/0x320 [igc]
-<4>[    7.894134] stack backtrace:
-<4>[    7.894439] CPU: 2 UID: 0 PID: 286 Comm: (udev-worker) Tainted: G    =
-    W           6.15.0-rc3-CI_DRM_16443-gdc80d6a10c1c+ #1 PREEMPT(voluntary=
-)=20
-<4>[    7.894442] Tainted: [W]=3DWARN
-<4>[    7.894443] Hardware name: Intel(R) Client Systems NUC11TNHi3/NUC11TN=
-Bi3, BIOS TNTGL357.0067.2022.0718.1742 07/18/2022
-```````````````````````````````````````````````````````````````````````````=
-``````
-Detailed log can be found in [3].
+Fix this by locking in igb_watchdog_task (in the same way as is done in
+igb_reset_task).
 
-After bisecting the tree, the following patch [4] seems to be the first "ba=
-d"
-commit
+reboot             kworker
 
-```````````````````````````````````````````````````````````````````````````=
-``````````````````````````````
-commit 1a931c4f5e6862e61a4b130cb76b422e1415f644
-Author: Christopher S M Hall mailto:christopher.s.hall@intel.com
-Date:=A0=A0 Tue Apr 1 16:35:34 2025 -0700
+__igb_shutdown
+  rtnl_lock
+  __igb_close
+  :                igb_watchdog_task
+  :                :
+  :                igb_read_phy_reg (hung)
+  rtnl_unlock
 
-=A0=A0=A0 igc: add lock preventing multiple simultaneous PTM transactions
-```````````````````````````````````````````````````````````````````````````=
-``````````````````````````````
+[1] Note that this is easier to reproduce with 'initcall_debug' logging
+and additional and printk logging in igb_main.
 
-We also verified that if we revert the patch the issue is not seen.
+Signed-off-by: Ian Ray <ian.ray@gehealthcare.com>
+---
+ drivers/net/ethernet/intel/igb/igb_main.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
 
-Could you please check why the patch causes this regression and provide a f=
-ix if necessary?
-
-Thank you.
-
-Regards
-
-Chaitanya
-
-[1] https://intel-gfx-ci.01.org/tree/drm-tip/shard-tglu.html
-[2] https://cgit.freedesktop.org/drm-tip/tree/
-[3] https://intel-gfx-ci.01.org/tree/drm-tip/CI_DRM_16443/fi-tgl-1115g4/boo=
-t0.txt
-[4] https://cgit.freedesktop.org/drm-tip/commit/?id=3D1a931c4f5e6862e61a4b1=
-30cb76b422e1415f644
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index c646c71915f0..a4910e565a3f 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -5544,6 +5544,8 @@ static void igb_watchdog_task(struct work_struct *work)
+ 	u32 connsw;
+ 	u16 phy_data, retry_count = 20;
+ 
++	rtnl_lock();
++
+ 	link = igb_has_link(adapter);
+ 
+ 	if (adapter->flags & IGB_FLAG_NEED_LINK_UPDATE) {
+@@ -5680,7 +5682,7 @@ static void igb_watchdog_task(struct work_struct *work)
+ 				if (adapter->flags & IGB_FLAG_MEDIA_RESET) {
+ 					schedule_work(&adapter->reset_task);
+ 					/* return immediately */
+-					return;
++					goto unlock;
+ 				}
+ 			}
+ 			pm_schedule_suspend(netdev->dev.parent,
+@@ -5693,7 +5695,7 @@ static void igb_watchdog_task(struct work_struct *work)
+ 			if (adapter->flags & IGB_FLAG_MEDIA_RESET) {
+ 				schedule_work(&adapter->reset_task);
+ 				/* return immediately */
+-				return;
++				goto unlock;
+ 			}
+ 		}
+ 	}
+@@ -5714,7 +5716,7 @@ static void igb_watchdog_task(struct work_struct *work)
+ 				adapter->tx_timeout_count++;
+ 				schedule_work(&adapter->reset_task);
+ 				/* return immediately since reset is imminent */
+-				return;
++				goto unlock;
+ 			}
+ 		}
+ 
+@@ -5751,6 +5753,9 @@ static void igb_watchdog_task(struct work_struct *work)
+ 			mod_timer(&adapter->watchdog_timer,
+ 				  round_jiffies(jiffies + 2 * HZ));
+ 	}
++
++unlock:
++	rtnl_unlock();
+ }
+ 
+ enum latency_range {
+-- 
+2.49.0
 
