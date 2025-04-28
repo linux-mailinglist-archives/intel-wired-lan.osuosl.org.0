@@ -1,113 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C65BA9F652
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Apr 2025 18:57:12 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C1410A9F765
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Apr 2025 19:36:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8D83E60BEC;
-	Mon, 28 Apr 2025 16:57:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6DA9E81170;
+	Mon, 28 Apr 2025 17:36:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id z7BkAny6ckbc; Mon, 28 Apr 2025 16:57:10 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id N-ZSgwfQ6wes; Mon, 28 Apr 2025 17:36:14 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EA96560BAC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D763D8120C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1745859430;
-	bh=Jp77ggnfBxCRkbuxBrXgEU+2BKtBt4rw8EnF8Qkf3bM=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=voYBvtCif/XZ9wh9+cnlRCchN9LZoXStE5eDW0Oau1Qf4IfNnliuCjdjZLcPz9+Kz
-	 bWIr0vkbCUqBKDB2YZPpwjrzR+eBrAd5dhUapY/lrEkjT1s8G+OrjTsMbesIwgrs6A
-	 S3aGOeCMNu00dq0NLRFm2j+xUk/ov0lfEJIRXXSla7pZfUSa6rYQJJtf6yKwdqnAhe
-	 Lyh5CUiqE4XGwDzYB3NAip1n/few0CdDrGz8ljyTTm19cuquUDy+P/WyQR69CrJrYo
-	 4P5ai7ak+dwNWllmzmT+MdfcwnCNNmU/noi101494jRWdrRHmSegQrQsQOpzWMzdC9
-	 uMTDeOJzJRhaQ==
+	s=default; t=1745861774;
+	bh=mEG0AhVDscq/a9oUfohORBpgIuze2OuqahAaYVhyLvI=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=ctJGQ+DRJr2REFplksEerRug8T7kEzn5JAzzRCvtQ8pmdNvSmSDlGjASPWW6ndoMd
+	 Fjt8ubvOfApm+xfCs/7XTQ//pldho+qm4LFIX/daPHxV5kVc+XSr0ccOAzaK/enRof
+	 6An+jUqhlxO/hGHNnNHLKNI9VBeCJRzVfO1VFQfYZCxNJE8eeSmGQJyfWxDqZBpRBT
+	 lEImtFAQNr1MqJ6Od1Urxoon+3PxN2I4iVubsZVuoHAcw+LeyS53US99gBuZoMAwUf
+	 j+v0yL1Y2M4YD4/6wpmySrqbI5DgYbpis5XtFv4WN2npXzhXNJDm9EG4NWcL7Nnt0q
+	 PdWE9tX762b/A==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EA96560BAC;
-	Mon, 28 Apr 2025 16:57:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D763D8120C;
+	Mon, 28 Apr 2025 17:36:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 1923231
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Apr 2025 16:57:08 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id A27B8117
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Apr 2025 17:36:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0B1F340193
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Apr 2025 16:57:08 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 913B481211
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Apr 2025 17:36:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YobOG4ep30_o for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Apr 2025 16:57:07 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
- helo=tor.source.kernel.org; envelope-from=horms@kernel.org;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id vv6yBKAJudQG for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Apr 2025 17:36:12 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
+ helo=mgamail.intel.com; envelope-from=pavan.kumar.linga@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 42BE040FCE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 42BE040FCE
-Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 42BE040FCE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Apr 2025 16:57:07 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 9F8D161165;
- Mon, 28 Apr 2025 16:56:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A8016C4CEE4;
- Mon, 28 Apr 2025 16:56:59 +0000 (UTC)
-Date: Mon, 28 Apr 2025 17:56:57 +0100
-From: Simon Horman <horms@kernel.org>
-To: Larysa Zaremba <larysa.zaremba@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Jonathan Corbet <corbet@lwn.net>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Jiri Pirko <jiri@resnulli.us>,
- Tatyana Nikolova <tatyana.e.nikolova@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- Michael Ellerman <mpe@ellerman.id.au>,
- Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Lee Trager <lee@trager.us>, Madhavan Srinivasan <maddy@linux.ibm.com>,
- Sridhar Samudrala <sridhar.samudrala@intel.com>,
- Jacob Keller <jacob.e.keller@intel.com>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- Ahmed Zaki <ahmed.zaki@intel.com>, netdev@vger.kernel.org,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- "Karlsson, Magnus" <magnus.karlsson@intel.com>,
- Emil Tantilov <emil.s.tantilov@intel.com>,
- Madhu Chittim <madhu.chittim@intel.com>, Josh Hay <joshua.a.hay@intel.com>,
- Milena Olech <milena.olech@intel.com>, pavan.kumar.linga@intel.com,
- "Singhai, Anjali" <anjali.singhai@intel.com>,
- Phani R Burra <phani.r.burra@intel.com>
-Message-ID: <20250428165657.GE3339421@horms.kernel.org>
-References: <20250424113241.10061-1-larysa.zaremba@intel.com>
- <20250424113241.10061-4-larysa.zaremba@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4E7FD810E0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4E7FD810E0
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4E7FD810E0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Apr 2025 17:36:11 +0000 (UTC)
+X-CSE-ConnectionGUID: 3yvq8i9QT5e1TcdE7oEXKA==
+X-CSE-MsgGUID: vflq6/ZxS12QZFxoXia44g==
+X-IronPort-AV: E=McAfee;i="6700,10204,11417"; a="58452150"
+X-IronPort-AV: E=Sophos;i="6.15,246,1739865600"; d="scan'208";a="58452150"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+ by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Apr 2025 10:36:11 -0700
+X-CSE-ConnectionGUID: Od3fpHeCQFSoyDbsxUB1Ew==
+X-CSE-MsgGUID: JGdMBqnyRyqiatnsrkNcPg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,246,1739865600"; d="scan'208";a="138679006"
+Received: from unknown (HELO localhost.jf.intel.com) ([10.166.80.55])
+ by fmviesa004.fm.intel.com with ESMTP; 28 Apr 2025 10:36:11 -0700
+From: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, milena.olech@intel.com, anton.nadezhdin@intel.com,
+ Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+Date: Mon, 28 Apr 2025 10:35:43 -0700
+Message-ID: <20250428173552.2884-1-pavan.kumar.linga@intel.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250424113241.10061-4-larysa.zaremba@intel.com>
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1745859425;
- bh=ZVz/phxXgV/uhXfx52GtvXgEsnsHvFfAcq8ln7+IPzY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ME35vYQ/VH0HQptcDvrpE5BVTSCvw+KZks+EMhweVEEGIR1r0Tk1DP1ZV3cw8N9mt
- EpiCGCFNCTVbHLiwxmsXneao9mB2mpkc0BHHj9dQqu+2bgcA9EPEucL+UeuNx16TfE
- v8/fFCEmQv9z1nE3t1srwRIxY4x0xBx6fYbE2P38P5Wx1RLCQszj9yM7hGsxCp+Y8X
- 9nfqGizpRaEp/Ozg3P2UOtl9YfOMFjoT3ibjjJQEnPZTGftRP9P8rzWwTY1Cp02UW/
- IaqfKADAPkkKkFJDHCqzcAXRFCxXp7Yfb7el6rHaBRFV9Lf1Z/Nt+9sM5qTLmzvLJC
- HBlO8v32Kit5Q==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1745861772; x=1777397772;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=z+f9DxelzQ/kStLYGXCnqtAx62i1gnnSuzlHnC3GjRo=;
+ b=l7mKbxM1uQThki5GdbLLrDnqfieLq8IoiQ2CN7OPm1RTHes8nfrW/aDb
+ FQ58+iVpwYpgwKZyCs2z7wXbOY1XUrO0e9LENUNCK7w9yFTbbFSRsMhLI
+ O2TbmjMRO9u1ICDKFOlGcsGfY8VWVOryHaknBigF0u0v/Xe7ms4ZeFoce
+ Vhbrnl/fy8s4u/kfOc4Lsga+g/6Wgk9Mwa+iaXBlBrNCa74Ovl13yeliX
+ JTArlkRIY5a/yTtwLswYvTDHtGpIb/BGH5GaMCTYOLkB8AYh2P0aMzEYm
+ F8q/A0IEiG7+bHatbV/Zz2hZaM5FVyCUTCY6NIZVHWGgfvo7/KG5ea/Dm
+ A==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=ME35vYQ/
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 03/14] libie: add PCI
- device initialization helpers to libie
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=l7mKbxM1
+Subject: [Intel-wired-lan] [PATCH iwl-next v3 0/9] refactor IDPF resource
+ access
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -123,54 +107,57 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Apr 24, 2025 at 01:32:26PM +0200, Larysa Zaremba wrote:
-> From: Phani R Burra <phani.r.burra@intel.com>
-> 
-> Add memory related support functions for drivers to access MMIO space and
-> allocate/free dma buffers.
-> 
-> Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-> Signed-off-by: Phani R Burra <phani.r.burra@intel.com>
-> Co-developed-by: Victor Raj <victor.raj@intel.com>
-> Signed-off-by: Victor Raj <victor.raj@intel.com>
-> Co-developed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
-> Signed-off-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
-> Co-developed-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
-> Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
-> Co-developed-by: Larysa Zaremba <larysa.zaremba@intel.com>
-> Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
+Queue and vector resources for a given vport, are stored in the
+idpf_vport structure. At the time of configuration, these
+resources are accessed using vport pointer. Meaning, all the
+config path functions are tied to the default queue and vector
+resources of the vport.
 
-...
+There are use cases which can make use of config path functions
+to configure queue and vector resources that are not tied to any
+vport. One such use case is PTP secondary mailbox creation
+(it would be in a followup series). To configure queue and interrupt
+resources for such cases, we can make use of the existing config
+infrastructure by passing the necessary queue and vector resources info.
 
-> diff --git a/include/linux/intel/libie/pci.h b/include/linux/intel/libie/pci.h
+To achieve this, group the existing queue and vector resources into
+default resource group and refactor the code to pass the resource
+pointer to the config path functions.
 
-...
+This series also includes patches which generalizes the send virtchnl
+message APIs and mailbox API that are necessary for the implementation
+of PTP secondary mailbox.
 
-> +#define libie_pci_map_mmio_region(mmio_info, offset, size, ...)	\
-> +	__libie_pci_map_mmio_region(mmio_info, offset, size,		\
-> +				     COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
-> +
-> +#define libie_pci_get_mmio_addr(mmio_info, offset, ...)		\
-> +	__libie_pci_get_mmio_addr(mmio_info, offset,			\
-> +				   COUNT_ARGS(__VA_ARGS__), ##__VA_ARGS__)
+---
+v3:
+* rebase on top of libeth XDP and other patches
 
-Perhaps I'm missing something terribly obvious.  But it seems to me that
-both libie_pci_map_mmio_region() and libie_pci_get_mmio_addr() are always
-called with the same number of arguments in this patchset. And if so,
-perhaps the va_args handling would be best dropped.
+v2:
+* rebase on top of PTP patch series
 
-> +
-> +bool __libie_pci_map_mmio_region(struct libie_mmio_info *mmio_info,
-> +				 resource_size_t offset, resource_size_t size,
-> +				 int num_args, ...);
-> +void __iomem *__libie_pci_get_mmio_addr(struct libie_mmio_info *mmio_info,
-> +					resource_size_t region_offset,
-> +					int num_args, ...);
-> +void libie_pci_unmap_all_mmio_regions(struct libie_mmio_info *mmio_info);
-> +int libie_pci_init_dev(struct pci_dev *pdev);
-> +void libie_pci_deinit_dev(struct pci_dev *pdev);
-> +
-> +#endif /* __LIBIE_PCI_H */
-> -- 
-> 2.47.0
-> 
+Pavan Kumar Linga (9):
+  idpf: introduce local idpf structure to store virtchnl queue chunks
+  idpf: use existing queue chunk info instead of preparing it
+  idpf: introduce idpf_q_vec_rsrc struct and move vector resources to it
+  idpf: move queue resources to idpf_q_vec_rsrc structure
+  idpf: reshuffle idpf_vport struct members to avoid holes
+  idpf: add rss_data field to RSS function parameters
+  idpf: generalize send virtchnl message API
+  idpf: avoid calling get_rx_ptypes for each vport
+  idpf: generalize mailbox API
+
+ drivers/net/ethernet/intel/idpf/idpf.h        |  152 ++-
+ drivers/net/ethernet/intel/idpf/idpf_dev.c    |   12 +-
+ .../net/ethernet/intel/idpf/idpf_ethtool.c    |   87 +-
+ drivers/net/ethernet/intel/idpf/idpf_lib.c    |  233 ++--
+ drivers/net/ethernet/intel/idpf/idpf_ptp.c    |   17 +-
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c   |  639 +++++-----
+ drivers/net/ethernet/intel/idpf/idpf_txrx.h   |   36 +-
+ drivers/net/ethernet/intel/idpf/idpf_vf_dev.c |   15 +-
+ .../net/ethernet/intel/idpf/idpf_virtchnl.c   | 1130 ++++++++---------
+ .../net/ethernet/intel/idpf/idpf_virtchnl.h   |   81 +-
+ 10 files changed, 1252 insertions(+), 1150 deletions(-)
+
+-- 
+2.43.0
+
