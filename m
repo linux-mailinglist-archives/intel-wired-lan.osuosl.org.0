@@ -2,106 +2,112 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E556AA4604
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Apr 2025 10:55:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D4AEAA4607
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Apr 2025 10:55:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EA16140B88;
-	Wed, 30 Apr 2025 08:55:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 167D540B4C;
+	Wed, 30 Apr 2025 08:55:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id EkgZiwpqxUbv; Wed, 30 Apr 2025 08:55:36 +0000 (UTC)
+ id LMxhBk678iU8; Wed, 30 Apr 2025 08:55:57 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 686E440B4C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 456C040B45
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1746003336;
-	bh=i5n/QBBCIbFs4WoqsOrE9BwODhXGV1zqidoqKOH0uxk=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1746003357;
+	bh=s+2WfS2L0GRB4IkQUZbuZB3cNhN0r9lJ9I7LbbPvQus=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=9ujlC6HnuhF13QXpNCkvZ0QYRTf2uqb69mhEkb/uLWSG3q0WltYQJfl/uWAlQ4nPv
-	 9//D9QZILd0coMRWzBE2+5/uHOmufoXHZE6KNPKy/lBiiV3IZfvoLPQ1slUJcFQbXX
-	 FWV89CJ/xlK9uonTN6IVV686OXyNCUtN6z3N8fJ+d27TPcJETs2DDZwDDdpTYTjf+b
-	 iTix5JMR0o/m2QO1VhWkbXdCX9QnujbsVhc+QfpxDKIOQZjJpQIUZ94i6WaAPFP/dd
-	 TA9M4MommMruqlCyPmfVMXxXcQ8TGvLJNE+dTfVVHsqwQuA/ltNtjfqPbXr+cotVVQ
-	 3m2wTqGtLv3vg==
+	b=GaHnGLPjEEd8rp2NHhgj2z5p3wExBDtDVx+vcpL0CBsSbHfWf4lehHCiYDIMACZCV
+	 IKzZRCO2EyBXphB5qlDxGSO98e26L9B6xINgskdDA+zsXGk+XBNZFy1YUrG2LSmNyz
+	 3VsotqUcINDoZN5Po+l/BzwisiwFFexGTQV1xGC7jglKXd/q6fsdpfb+ocA24nhARP
+	 J8+GDms74zSldVU8xQ+4tqVdy0RK6rK1b8it5kOwSt8EuLTZEEBB7Ce6rjoxNGu48E
+	 KveanzOnYCCCKTAQcwFelJK2TP8C3hvaFjkr5bsuLUjsZX/XEqVWktKe/RMl5QOPi8
+	 lCzAuq16+O3LQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 686E440B4C;
-	Wed, 30 Apr 2025 08:55:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 456C040B45;
+	Wed, 30 Apr 2025 08:55:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 82219943
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Apr 2025 08:55:34 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 04AE8943
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Apr 2025 08:55:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 747F380FA4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Apr 2025 08:55:34 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id DFFE160E5D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Apr 2025 08:55:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id I74A4glJXlCm for <intel-wired-lan@lists.osuosl.org>;
- Wed, 30 Apr 2025 08:55:34 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
- helo=mgamail.intel.com; envelope-from=dawid.osuchowski@linux.intel.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id oZpVZ-veracZ for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 30 Apr 2025 08:55:55 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
+ helo=tor.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 88EB080F47
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 88EB080F47
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 88EB080F47
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Apr 2025 08:55:33 +0000 (UTC)
-X-CSE-ConnectionGUID: kVYpZFLBTtmm38Sjal5cfg==
-X-CSE-MsgGUID: ywwtfQppRhSxqvoofwksuQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11418"; a="51473557"
-X-IronPort-AV: E=Sophos;i="6.15,251,1739865600"; d="scan'208";a="51473557"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Apr 2025 01:55:32 -0700
-X-CSE-ConnectionGUID: 9zYzTEY/S9OmEGRlOgoJjw==
-X-CSE-MsgGUID: s009mo7cQjSj0j7CF7wssg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,251,1739865600"; d="scan'208";a="133961827"
-Received: from gomezolx-mobl.ger.corp.intel.com (HELO [10.245.87.99])
- ([10.245.87.99])
- by orviesa006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Apr 2025 01:55:30 -0700
-Message-ID: <d1485d62-a746-4660-82d2-35965a349a34@linux.intel.com>
-Date: Wed, 30 Apr 2025 10:55:25 +0200
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 234FC60758
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 234FC60758
+Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 234FC60758
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Apr 2025 08:55:54 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id 92B3C615F2;
+ Wed, 30 Apr 2025 08:55:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 37F93C4CEEC;
+ Wed, 30 Apr 2025 08:55:47 +0000 (UTC)
+Date: Wed, 30 Apr 2025 09:55:45 +0100
+From: Simon Horman <horms@kernel.org>
+To: Jacob Keller <jacob.e.keller@intel.com>
+Cc: Larysa Zaremba <larysa.zaremba@intel.com>,
+ intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Jonathan Corbet <corbet@lwn.net>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Jiri Pirko <jiri@resnulli.us>,
+ Tatyana Nikolova <tatyana.e.nikolova@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Michael Ellerman <mpe@ellerman.id.au>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Lee Trager <lee@trager.us>, Madhavan Srinivasan <maddy@linux.ibm.com>,
+ Sridhar Samudrala <sridhar.samudrala@intel.com>,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
+ Ahmed Zaki <ahmed.zaki@intel.com>, netdev@vger.kernel.org,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ "Karlsson, Magnus" <magnus.karlsson@intel.com>,
+ Emil Tantilov <emil.s.tantilov@intel.com>,
+ Madhu Chittim <madhu.chittim@intel.com>, Josh Hay <joshua.a.hay@intel.com>,
+ Milena Olech <milena.olech@intel.com>, pavan.kumar.linga@intel.com,
+ "Singhai, Anjali" <anjali.singhai@intel.com>
+Message-ID: <20250430085545.GT3339421@horms.kernel.org>
+References: <20250424113241.10061-1-larysa.zaremba@intel.com>
+ <20250424113241.10061-2-larysa.zaremba@intel.com>
+ <20250428161542.GD3339421@horms.kernel.org>
+ <10fd9a4b-f071-47eb-bdde-13438218aee9@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
- magnus.karlsson@intel.com, michal.kubiak@intel.com,
- =?UTF-8?Q?Tobias_B=C3=B6hm?= <tobias.boehm@hetzner-cloud.de>,
- Marcus Wichelmann <marcus.wichelmann@hetzner-cloud.de>
-References: <20250429155205.1444438-1-maciej.fijalkowski@intel.com>
-Content-Language: pl, en-US
-From: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
-In-Reply-To: <20250429155205.1444438-1-maciej.fijalkowski@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <10fd9a4b-f071-47eb-bdde-13438218aee9@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1746003334; x=1777539334;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=MAtLAD56QOPPSbm74mSzW0LRN2+jjBX+qq4vmsqEOYI=;
- b=TmhOtZBLljei4TnlJtRjgBo/bL3ppAGieSHYm356kCCqwsjN8RGjv9yU
- DXWhu1KgmhHfzoYDMjj4MnAEqyEe3MJvExas9wyzFBBXErxLP5EG/cEi3
- YHzesapSmYb0foqo/9EuZu0OTh/mOe7vsmsYEN/DjvHSgFOgKCgQasOAT
- vALwmF0fsY8+yBcPuGHobouTIIoNgYv1m5X7vcXAt7Me3tKyvHx/n4XGT
- UV0esiwEd6wTJTtrTBqnt/P3UY5+vlQA70Z7KGYErCUFbKj5YHIPu+tkT
- GwDuxWlo5sbAqvkKurHJHGan3lZ4Bex5mJUfmyzlJDqRdjY0cHCrOZc/o
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=TmhOtZBL
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] ixgbe: fix ndo_xdp_xmit()
- workloads
+ d=kernel.org; s=k20201202; t=1746003353;
+ bh=xJSCsiMDZtliKUeMolwZ4YJOBTCwMnJKsGuYigXuz80=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=LI1+81mjJXx23UKkeUU42/jgvJ0TacUjkeoQJ09A6EuBGvNiFLjDZU8n8Hmdyimtw
+ nFOc0P4neTQgPtilp1PoVwE6XhA1tkA0qW3nJSnFcgB9kRxxhD2GYJR59POLppBHLf
+ fpIXuyVkeihmh3+RF3qAi8vGaJSR8SEz81RdoGhGyoQXvRX75eM9ltt+3jktJ3hY6j
+ W3RXh228Dy5hbwHNWI5v+3FAEtm43bgY3WDUhZn3U/0hpzNEje7+unz8fcempxxely
+ mLecdZcVRmXHhs9B5eL22UyOYK7FSrj+0dMScbHs3GfsGD4w9AMIOPPY3DQHOKOfZu
+ KyQj5g2Ul0wAg==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=LI1+81mj
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 01/14] virtchnl: create
+ 'include/linux/intel' and move necessary header files
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -117,30 +123,98 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2025-04-29 5:52 PM, Maciej Fijalkowski wrote:
-> Currently ixgbe driver checks periodically in its watchdog subtask if
-> there is anything to be transmitted (consdidering both Tx and XDP rings)
-
-typo: s/consdidering/considering
-
-> under state of carrier not being 'ok'. Such event is interpreted as Tx
-> hang and therefore results in interface reset.
+On Tue, Apr 29, 2025 at 11:47:58AM -0700, Jacob Keller wrote:
 > 
-> This is currently problematic for ndo_xdp_xmit() as it is allowed to
-> produce descriptors when interface is going through reset or its carrier
-> is turned off.
 > 
-> Furthermore, XDP rings should not really be objects of Tx hang
-> detection. This mechanism is rather a matter of ndo_tx_timeout() being
-> called from dev_watchdog against Tx rings exposed to networking stack.
+> On 4/28/2025 9:15 AM, Simon Horman wrote:
+> > On Thu, Apr 24, 2025 at 01:32:24PM +0200, Larysa Zaremba wrote:
+> >> From: Victor Raj <victor.raj@intel.com>
+> >>
+> >> Move intel specific header files into new folder
+> >> include/linux/intel.
+> >>
+> >> Suggested-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+> >> Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
+> >> Signed-off-by: Victor Raj <victor.raj@intel.com>
+> >> Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
+> >> ---
+> >>  MAINTAINERS                                                 | 6 +++---
+> >>  drivers/infiniband/hw/irdma/i40iw_if.c                      | 2 +-
+> >>  drivers/infiniband/hw/irdma/main.h                          | 2 +-
+> >>  drivers/infiniband/hw/irdma/osdep.h                         | 2 +-
+> >>  drivers/net/ethernet/intel/i40e/i40e.h                      | 4 ++--
+> >>  drivers/net/ethernet/intel/i40e/i40e_client.c               | 2 +-
+> >>  drivers/net/ethernet/intel/i40e/i40e_common.c               | 2 +-
+> >>  drivers/net/ethernet/intel/i40e/i40e_prototype.h            | 2 +-
+> >>  drivers/net/ethernet/intel/i40e/i40e_txrx.c                 | 2 +-
+> >>  drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h          | 2 +-
+> >>  drivers/net/ethernet/intel/iavf/iavf.h                      | 2 +-
+> >>  drivers/net/ethernet/intel/iavf/iavf_common.c               | 2 +-
+> >>  drivers/net/ethernet/intel/iavf/iavf_main.c                 | 2 +-
+> >>  drivers/net/ethernet/intel/iavf/iavf_prototype.h            | 2 +-
+> >>  drivers/net/ethernet/intel/iavf/iavf_txrx.c                 | 2 +-
+> >>  drivers/net/ethernet/intel/iavf/iavf_types.h                | 4 +---
+> >>  drivers/net/ethernet/intel/iavf/iavf_virtchnl.c             | 2 +-
+> >>  drivers/net/ethernet/intel/ice/ice.h                        | 2 +-
+> >>  drivers/net/ethernet/intel/ice/ice_common.h                 | 2 +-
+> >>  drivers/net/ethernet/intel/ice/ice_idc_int.h                | 2 +-
+> >>  drivers/net/ethernet/intel/ice/ice_txrx_lib.c               | 2 +-
+> >>  drivers/net/ethernet/intel/ice/ice_vf_lib.h                 | 2 +-
+> >>  drivers/net/ethernet/intel/ice/ice_virtchnl.h               | 2 +-
+> >>  drivers/net/ethernet/intel/idpf/idpf.h                      | 2 +-
+> >>  drivers/net/ethernet/intel/idpf/idpf_txrx.h                 | 2 +-
+> >>  drivers/net/ethernet/intel/libie/rx.c                       | 2 +-
+> >>  include/linux/{net => }/intel/i40e_client.h                 | 0
+> >>  include/linux/{net => }/intel/iidc.h                        | 0
+> >>  include/linux/{net => }/intel/libie/rx.h                    | 0
+> >>  include/linux/{avf => intel}/virtchnl.h                     | 0
+> >>  .../ethernet/intel/idpf => include/linux/intel}/virtchnl2.h | 0
+> >>  .../intel/idpf => include/linux/intel}/virtchnl2_lan_desc.h | 0
+> >>  32 files changed, 29 insertions(+), 31 deletions(-)
+> >>  rename include/linux/{net => }/intel/i40e_client.h (100%)
+> >>  rename include/linux/{net => }/intel/iidc.h (100%)
+> >>  rename include/linux/{net => }/intel/libie/rx.h (100%)
+> >>  rename include/linux/{avf => intel}/virtchnl.h (100%)
+> >>  rename {drivers/net/ethernet/intel/idpf => include/linux/intel}/virtchnl2.h (100%)
+> >>  rename {drivers/net/ethernet/intel/idpf => include/linux/intel}/virtchnl2_lan_desc.h (100%)
+> >>
+> >> diff --git a/MAINTAINERS b/MAINTAINERS
+> >> index 657a67f9031e..2e2a57dfea8f 100644
+> >> --- a/MAINTAINERS
+> >> +++ b/MAINTAINERS
+> >> @@ -11884,8 +11884,8 @@ T:	git git://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git
+> >>  F:	Documentation/networking/device_drivers/ethernet/intel/
+> >>  F:	drivers/net/ethernet/intel/
+> >>  F:	drivers/net/ethernet/intel/*/
+> >> -F:	include/linux/avf/virtchnl.h
+> >> -F:	include/linux/net/intel/iidc.h
+> >> +F:	include/linux/intel/iidc.h
+> >> +F:	include/linux/intel/virtchnl.h
+> > 
+> > I'm not sure that I understand the motivation for moving files out of
+> > include/linux/net, but I guess the answer is that my suggestion, which
+> > would be to move files into include/linux/net, is somehow less good.
+> > 
+> > But if file are moving out of include/linux/net then I think it would
+> > make sense to make a corresponding update to NETWORKING DRIVERS.
+> > 
+> > Also, include/linux/intel, does feel a bit too general. These files
+> > seem to relate to NICs (of some sort of flavour or another). But Intel
+> > does a lot more than make NICs.
+> > 
 > 
-> Taking into account issues described above, let us have a two fold fix -
-> do not respect XDP rings in local ixgbe watchdog and do not produce Tx
-> descriptors in ndo_xdp_xmit callback when there is some problem with
-> carrier currently. For now, keep the Tx hang checks in clean Tx irq
-> routine, but adjust it to not execute it for XDP rings.
+> 'include/linux/net/intel' seems fine to me. I agree with moving
+> virtchnl.h there since it is quite clear that any historical ambitions
+> about AVF being vendor agnostic are long dead, so having it in its own
+> 'non-intel' folder is silly.
+> 
+> Strictly speaking, I think the goal of moving the files is due to the
+> fact that a lot of the core ixd code is not really network layer but
+> instead PCI layer.
 
-suggestion: s/adjust it to not execute it/adjust it to not execute
+Sure. I was more thinking out loud in my previous email than requesting any
+action. Thanks for filling in my understanding of the situation.
 
-Best regards,
-Dawid
+But could we please consider updating NETWORKING DRIVERS so
+that get_maintainers.pl can help people to CC netdev and it's maintainers
+as appropriate?
