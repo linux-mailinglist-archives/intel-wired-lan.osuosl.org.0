@@ -2,73 +2,73 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 76F3AAA667B
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  2 May 2025 00:54:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6345EAA667D
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  2 May 2025 00:55:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C7BB560764;
-	Thu,  1 May 2025 22:54:47 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E2720612DB;
+	Thu,  1 May 2025 22:54:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id QHrywrev0Q_H; Thu,  1 May 2025 22:54:47 +0000 (UTC)
+ id D_UsC2mHwRiW; Thu,  1 May 2025 22:54:50 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0309C6123E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8C08F61113
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1746140087;
-	bh=M/yjSRIbGflTDSPl43f3RtWmirb/fiqDnWGDKzd6f04=;
+	s=default; t=1746140090;
+	bh=3PszxB2ATVFRc/T1fnfswZB4EaZ9DtPQ0x2xFlUj6a8=;
 	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=it6NkNQHaMpO26l+vXZInXxCWRTuk6hjiDhqlmOoC0+2wwQFMLfH56LW6WM8Uz7x5
-	 f2R3i1vj08LpwvC8R4/Pk1kUQiP2aRhjRPOx6oXagbcbyDHs4Ie7GbYHFCEdyDsmTO
-	 MVKi5CYNsjI3MPG/Sa9/x/g1dcgx/wquOoKY4OyEmigdV43t0xbAPl7Cuz+5EONjSv
-	 EK4FedkitFmsJOz9UiQXBwH/YUer+PPHQAWZDsyeDblK9f1S66CIFdfj1C+j7zgQSZ
-	 NafFQ4GNitKWuzS74rKQ0H/QhALDgE8FdBYevovoE6KkWWbTNx8XYF9f/0inZAc0qK
-	 OrT1yKFPWE2Tw==
+	b=iRKc21INQa6m2/W7+/fSacfMwLc32k0wDCBiq5X2IZzxtzmwJGFrgnYOcgeZ2Ev+5
+	 CHtFEhS07t1YCBZ0jcK8uw7YeBfccZnuYJguhPpY5D52+DtYa9mf1bbrFnYIxHdkiI
+	 Su02P54BfIXk5i4dVCzxUYO3xzCA3jD0OAyZcehq1Sh+Iw/EG+eHO0Pqf7sUbdkTna
+	 +EvBMf0Hj9ttO5bUD+LS00H8Jn0bBna6llAuERC5c7JyGF617MEGE9VMzb/qBDahjd
+	 +3Ro2u2ljKmDT06538hrsCRCDYjdSFEYlMHR5dXT5vuMphCqmUOBIERSakL/8lYn3i
+	 c8KDZ24zLsuuA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0309C6123E;
-	Thu,  1 May 2025 22:54:47 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8C08F61113;
+	Thu,  1 May 2025 22:54:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 68D8122A
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 May 2025 22:54:38 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 648FEE4
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 May 2025 22:54:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2BC3B417B1
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 May 2025 22:54:36 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7C8DF417BD
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 May 2025 22:54:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id IO2CVByHkasy for <intel-wired-lan@lists.osuosl.org>;
- Thu,  1 May 2025 22:54:35 +0000 (UTC)
+ id uou0O94kYKhh for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  1 May 2025 22:54:36 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
  helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 91452417B0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 91452417B0
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 3FBC0417B0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3FBC0417B0
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 91452417B0
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 May 2025 22:54:35 +0000 (UTC)
-X-CSE-ConnectionGUID: dhVRuz//T1OT4NL4mFuiOg==
-X-CSE-MsgGUID: JM8NJr8sTWGiv8FqiOxwRA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11420"; a="58811733"
-X-IronPort-AV: E=Sophos;i="6.15,254,1739865600"; d="scan'208";a="58811733"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 3FBC0417B0
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 May 2025 22:54:36 +0000 (UTC)
+X-CSE-ConnectionGUID: O/mGDa5BSP2nz2E5NaD0kg==
+X-CSE-MsgGUID: q97M3jS3S3K0Hqr7UJF3xg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11420"; a="58811737"
+X-IronPort-AV: E=Sophos;i="6.15,254,1739865600"; d="scan'208";a="58811737"
 Received: from fmviesa003.fm.intel.com ([10.60.135.143])
  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  01 May 2025 15:54:36 -0700
-X-CSE-ConnectionGUID: uPXsd7ZCQQyDNap6ptzdtQ==
-X-CSE-MsgGUID: YEh+XF3RRhKuXSGWGiFpyw==
+X-CSE-ConnectionGUID: Wv6uAUsiSPOs/ilUTAjA/A==
+X-CSE-MsgGUID: H8OqoeyrSmO7yEg4h/RKxw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,254,1739865600"; d="scan'208";a="138514300"
+X-IronPort-AV: E=Sophos;i="6.15,254,1739865600"; d="scan'208";a="138514304"
 Received: from jekeller-desk.jf.intel.com ([10.166.241.15])
  by fmviesa003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 May 2025 15:54:34 -0700
+ 01 May 2025 15:54:35 -0700
 From: Jacob Keller <jacob.e.keller@intel.com>
-Date: Thu, 01 May 2025 15:54:20 -0700
+Date: Thu, 01 May 2025 15:54:21 -0700
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250501-kk-tspll-improvements-alignment-v4-9-24c83d0ce7a8@intel.com>
+Message-Id: <20250501-kk-tspll-improvements-alignment-v4-10-24c83d0ce7a8@intel.com>
 References: <20250501-kk-tspll-improvements-alignment-v4-0-24c83d0ce7a8@intel.com>
 In-Reply-To: <20250501-kk-tspll-improvements-alignment-v4-0-24c83d0ce7a8@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>, 
@@ -83,25 +83,25 @@ Cc: Jacob Keller <jacob.e.keller@intel.com>,
 X-Mailer: b4 0.14.2
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1746140076; x=1777676076;
+ t=1746140077; x=1777676077;
  h=from:date:subject:mime-version:content-transfer-encoding:
  message-id:references:in-reply-to:to:cc;
- bh=p2ifKL5IrrpxwpF8I/RdIitdsMsZUbE9VlVfq98qPEU=;
- b=UQ07uVP8ltfTpdCj840ELqAoO8qd6f6Ceb8JT9lcQzc6DYOSCnDbHKMP
- Arl/rZbjZx7fNHRRMPqB+IR0PJqs9xboTu+ggfisRVK55iOzBdLvA6Pfv
- P+aWzy2/mwSa/uvnLb68l9GBIGY56H4+Al0dA/0oNUqKybM2hv5z7ejc4
- ZhBAMdJzRlexXYKgXqROHWJ25+qKBbAdF5PaU4Ggjh7gUMV+IA7nkbY16
- BXhpacKN0rdvbicVSnisTWneNDhMlpsdl2B2ZTUE5XIkETxfr5y8i/Fiz
- R8ewTwU1PEjv+Jd1zH3LeVVIHJwFHtrf75+x/l/meUX3BOcBf1EWBFCZA
- A==;
+ bh=e347D5nfDz+pL6fVZlkXe+VXq7VGPZcIxW6zH5eaMP0=;
+ b=PAi4FNjbHo4xYo/YfGpYHbhaOG3J6/o7WlRMXMjr1LjxyV6AbH+onqQ1
+ XjaYPbGrN5RzrO4YLOnZX6lTC+CUZU6zB8pI+txK4JHBw5xpHTYHc4HSu
+ XwNwAiS6t+MggvN8Nujv5quhxUX2Pr6cio0AcByIRFQ04gUis8/2lfO9t
+ rNG4Ql5v1dtzrKvrXqiUKrs1SojbdIJ1/RHA+P9NAea/8N+2jglFPu4pF
+ Ag6OTPLcwRrO6k1+QjGSPDq4JAgyq8AbKgGoRuMPReXaFCxsbdSETk8wy
+ z0c07M2YSHKqSbZI/cXQEfiSDjPYLUGYw4BnzzIAqqsc02M01B2sHVMyd
+ w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=UQ07uVP8
-Subject: [Intel-wired-lan] [PATCH v4 09/15] ice: read TSPLL registers again
- before reporting status
+ header.a=rsa-sha256 header.s=Intel header.b=PAi4FNjb
+Subject: [Intel-wired-lan] [PATCH v4 10/15] ice: use bitfields instead of
+ unions for CGU regs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -117,47 +117,594 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-After programming the TSPLL, re-read the registers before reporting status.
-This ensures the debug log message will show what was actually programmed,
-rather than relying on a cached value.
+From: Karol Kolacinski <karol.kolacinski@intel.com>
 
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+Switch from unions with bitfield structs to definitions with bitfield
+masks. This is necessary, because some registers have different
+field definitions or even use a different register for the same fields
+based on HW type.
+
+Remove unused register fields.
+
+Reviewed-by: Milena Olech <milena.olech@intel.com>
+Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_tspll.c | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_common.h | 212 ++++---------------------
+ drivers/net/ethernet/intel/ice/ice_tspll.c  | 234 ++++++++++++++--------------
+ 2 files changed, 153 insertions(+), 293 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
+index 65016843ddb0685d8e7c3bc11538b2b136530915..3f74570b99bf539b1cc58c22fa6f6880ad853793 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.h
++++ b/drivers/net/ethernet/intel/ice/ice_common.h
+@@ -39,194 +39,46 @@
+ #define FEC_RECEIVER_ID_PCS0 (0x33 << FEC_RECV_ID_SHIFT)
+ #define FEC_RECEIVER_ID_PCS1 (0x34 << FEC_RECV_ID_SHIFT)
+ 
+-#define ICE_CGU_R9 0x24
+-union ice_cgu_r9 {
+-	struct {
+-		u32 time_ref_freq_sel : 3;
+-		u32 clk_eref1_en : 1;
+-		u32 clk_eref0_en : 1;
+-		u32 time_ref_en : 1;
+-		u32 time_sync_en : 1;
+-		u32 one_pps_out_en : 1;
+-		u32 clk_ref_synce_en : 1;
+-		u32 clk_synce1_en : 1;
+-		u32 clk_synce0_en : 1;
+-		u32 net_clk_ref1_en : 1;
+-		u32 net_clk_ref0_en : 1;
+-		u32 clk_synce1_amp : 2;
+-		u32 misc6 : 1;
+-		u32 clk_synce0_amp : 2;
+-		u32 one_pps_out_amp : 2;
+-		u32 misc24 : 12;
+-	};
+-	u32 val;
+-};
++#define ICE_CGU_R9			0x24
++#define ICE_CGU_R9_TIME_REF_FREQ_SEL	GENMASK(2, 0)
++#define ICE_CGU_R9_CLK_EREF0_EN		BIT(4)
++#define ICE_CGU_R9_TIME_REF_EN		BIT(5)
++#define ICE_CGU_R9_TIME_SYNC_EN		BIT(6)
++#define ICE_CGU_R9_ONE_PPS_OUT_EN	BIT(7)
++#define ICE_CGU_R9_ONE_PPS_OUT_AMP	GENMASK(19, 18)
+ 
+-#define ICE_CGU_R16 0x40
+-union ice_cgu_r16 {
+-	struct {
+-		u32 synce_remndr : 6;
+-		u32 synce_phlmt_en : 1;
+-		u32 misc13 : 17;
+-		u32 ck_refclkfreq : 8;
+-	};
+-	u32 val;
+-};
++#define ICE_CGU_R16			0x40
++#define ICE_CGU_R16_TSPLL_CK_REFCLKFREQ	GENMASK(31, 24)
+ 
+-#define ICE_CGU_R19 0x4c
+-union ice_cgu_r19_e82x {
+-	struct {
+-		u32 fbdiv_intgr : 8;
+-		u32 fdpll_ulck_thr : 5;
+-		u32 misc15 : 3;
+-		u32 ndivratio : 4;
+-		u32 tspll_iref_ndivratio : 3;
+-		u32 misc19 : 1;
+-		u32 japll_ndivratio : 4;
+-		u32 japll_iref_ndivratio : 3;
+-		u32 misc27 : 1;
+-	};
+-	u32 val;
+-};
++#define ICE_CGU_R19			0x4C
++#define ICE_CGU_R19_TSPLL_FBDIV_INTGR_E82X	GENMASK(7, 0)
++#define ICE_CGU_R19_TSPLL_FBDIV_INTGR_E825	GENMASK(9, 0)
++#define ICE_CGU_R19_TSPLL_NDIVRATIO	GENMASK(19, 16)
+ 
+-union ice_cgu_r19_e825 {
+-	struct {
+-		u32 tspll_fbdiv_intgr : 10;
+-		u32 fdpll_ulck_thr : 5;
+-		u32 misc15 : 1;
+-		u32 tspll_ndivratio : 4;
+-		u32 tspll_iref_ndivratio : 3;
+-		u32 misc19 : 1;
+-		u32 japll_ndivratio : 4;
+-		u32 japll_postdiv_pdivratio : 3;
+-		u32 misc27 : 1;
+-	};
+-	u32 val;
+-};
++#define ICE_CGU_R22			0x58
++#define ICE_CGU_R22_TIME1588CLK_DIV	GENMASK(23, 20)
++#define ICE_CGU_R22_TIME1588CLK_DIV2	BIT(30)
+ 
+-#define ICE_CGU_R22 0x58
+-union ice_cgu_r22 {
+-	struct {
+-		u32 fdpll_frac_div_out_nc : 2;
+-		u32 fdpll_lock_int_for : 1;
+-		u32 synce_hdov_int_for : 1;
+-		u32 synce_lock_int_for : 1;
+-		u32 fdpll_phlead_slip_nc : 1;
+-		u32 fdpll_acc1_ovfl_nc : 1;
+-		u32 fdpll_acc2_ovfl_nc : 1;
+-		u32 synce_status_nc : 6;
+-		u32 fdpll_acc1f_ovfl : 1;
+-		u32 misc18 : 1;
+-		u32 fdpllclk_div : 4;
+-		u32 time1588clk_div : 4;
+-		u32 synceclk_div : 4;
+-		u32 synceclk_sel_div2 : 1;
+-		u32 fdpllclk_sel_div2 : 1;
+-		u32 time1588clk_sel_div2 : 1;
+-		u32 misc3 : 1;
+-	};
+-	u32 val;
+-};
++#define ICE_CGU_R23			0x5C
++#define ICE_CGU_R24			0x60
++#define ICE_CGU_R24_FBDIV_FRAC		GENMASK(21, 0)
++#define ICE_CGU_R23_R24_TSPLL_ENABLE	BIT(24)
++#define ICE_CGU_R23_R24_REF1588_CK_DIV	GENMASK(30, 27)
++#define ICE_CGU_R23_R24_TIME_REF_SEL	BIT(31)
+ 
+-#define ICE_CGU_R23 0x5C
+-union ice_cgu_r23 {
+-	struct {
+-		u32 cgupll_fbdiv_intgr : 10;
+-		u32 ux56pll_fbdiv_intgr : 10;
+-		u32 misc20 : 4;
+-		u32 ts_pll_enable : 1;
+-		u32 time_sync_tspll_align_sel : 1;
+-		u32 ext_synce_sel : 1;
+-		u32 ref1588_ck_div : 4;
+-		u32 time_ref_sel : 1;
++#define ICE_CGU_BW_TDC			0x31C
++#define ICE_CGU_BW_TDC_PLLLOCK_SEL	GENMASK(30, 29)
+ 
+-	};
+-	u32 val;
+-};
++#define ICE_CGU_RO_LOCK			0x3F0
++#define ICE_CGU_RO_LOCK_TRUE_LOCK	BIT(12)
++#define ICE_CGU_RO_LOCK_UNLOCK		BIT(13)
+ 
+-#define ICE_CGU_R24 0x60
+-union ice_cgu_r24 {
+-	struct {
+-		u32 fbdiv_frac : 22;
+-		u32 misc20 : 2;
+-		u32 ts_pll_enable : 1;
+-		u32 time_sync_tspll_align_sel : 1;
+-		u32 ext_synce_sel : 1;
+-		u32 ref1588_ck_div : 4;
+-		u32 time_ref_sel : 1;
+-	};
+-	u32 val;
+-};
++#define ICE_CGU_CNTR_BIST		0x344
++#define ICE_CGU_CNTR_BIST_PLLLOCK_SEL_0	BIT(15)
++#define ICE_CGU_CNTR_BIST_PLLLOCK_SEL_1	BIT(16)
+ 
+-#define TSPLL_CNTR_BIST_SETTINGS 0x344
+-union tspll_cntr_bist_settings {
+-	struct {
+-		u32 i_irefgen_settling_time_cntr_7_0 : 8;
+-		u32 i_irefgen_settling_time_ro_standby_1_0 : 2;
+-		u32 reserved195 : 5;
+-		u32 i_plllock_sel_0 : 1;
+-		u32 i_plllock_sel_1 : 1;
+-		u32 i_plllock_cnt_6_0 : 7;
+-		u32 i_plllock_cnt_10_7 : 4;
+-		u32 reserved200 : 4;
+-	};
+-	u32 val;
+-};
+-
+-#define TSPLL_RO_BWM_LF 0x370
+-union tspll_ro_bwm_lf {
+-	struct {
+-		u32 bw_freqov_high_cri_7_0 : 8;
+-		u32 bw_freqov_high_cri_9_8 : 2;
+-		u32 biascaldone_cri : 1;
+-		u32 plllock_gain_tran_cri : 1;
+-		u32 plllock_true_lock_cri : 1;
+-		u32 pllunlock_flag_cri : 1;
+-		u32 afcerr_cri : 1;
+-		u32 afcdone_cri : 1;
+-		u32 feedfwrdgain_cal_cri_7_0 : 8;
+-		u32 m2fbdivmod_cri_7_0 : 8;
+-	};
+-	u32 val;
+-};
+-
+-#define TSPLL_RO_LOCK_E825C 0x3f0
+-union tspll_ro_lock_e825c {
+-	struct {
+-		u32 bw_freqov_high_cri_7_0 : 8;
+-		u32 bw_freqov_high_cri_9_8 : 2;
+-		u32 reserved455 : 1;
+-		u32 plllock_gain_tran_cri : 1;
+-		u32 plllock_true_lock_cri : 1;
+-		u32 pllunlock_flag_cri : 1;
+-		u32 afcerr_cri : 1;
+-		u32 afcdone_cri : 1;
+-		u32 feedfwrdgain_cal_cri_7_0 : 8;
+-		u32 reserved462 : 8;
+-	};
+-	u32 val;
+-};
+-
+-#define TSPLL_BW_TDC_E825C 0x31c
+-union tspll_bw_tdc_e825c {
+-	struct {
+-		u32 i_tdc_offset_lock_1_0 : 2;
+-		u32 i_bbthresh1_2_0 : 3;
+-		u32 i_bbthresh2_2_0 : 3;
+-		u32 i_tdcsel_1_0 : 2;
+-		u32 i_tdcovccorr_en_h : 1;
+-		u32 i_divretimeren : 1;
+-		u32 i_bw_ampmeas_window : 1;
+-		u32 i_bw_lowerbound_2_0 : 3;
+-		u32 i_bw_upperbound_2_0 : 3;
+-		u32 i_bw_mode_1_0 : 2;
+-		u32 i_ft_mode_sel_2_0 : 3;
+-		u32 i_bwphase_4_0 : 5;
+-		u32 i_plllock_sel_1_0 : 2;
+-		u32 i_afc_divratio : 1;
+-	};
+-	u32 val;
+-};
++#define ICE_CGU_RO_BWM_LF		0x370
++#define ICE_CGU_RO_BWM_LF_TRUE_LOCK	BIT(12)
+ 
+ int ice_init_hw(struct ice_hw *hw);
+ void ice_deinit_hw(struct ice_hw *hw);
 diff --git a/drivers/net/ethernet/intel/ice/ice_tspll.c b/drivers/net/ethernet/intel/ice/ice_tspll.c
-index 8de1ad1da8346d4be4224b923de3baeffc954198..74384725869399b4aa999d5b1fe33a5b19e0c2fd 100644
+index 74384725869399b4aa999d5b1fe33a5b19e0c2fd..54f7b8a18a2f48b1866d2fe6e505d32b6717965c 100644
 --- a/drivers/net/ethernet/intel/ice/ice_tspll.c
 +++ b/drivers/net/ethernet/intel/ice/ice_tspll.c
-@@ -201,8 +201,11 @@ static int ice_tspll_cfg_e82x(struct ice_hw *hw, enum ice_tspll_freq clk_freq,
+@@ -127,11 +127,7 @@ static void ice_tspll_log_cfg(struct ice_hw *hw, bool enable, u8 clk_src,
+ static int ice_tspll_cfg_e82x(struct ice_hw *hw, enum ice_tspll_freq clk_freq,
+ 			      enum ice_clk_src clk_src)
+ {
+-	union tspll_ro_bwm_lf bwm_lf;
+-	union ice_cgu_r19_e82x dw19;
+-	union ice_cgu_r22 dw22;
+-	union ice_cgu_r24 dw24;
+-	union ice_cgu_r9 dw9;
++	u32 val, r9, r24;
+ 
+ 	if (clk_freq >= NUM_ICE_TSPLL_FREQ) {
+ 		dev_warn(ice_hw_to_dev(hw), "Invalid TIME_REF frequency %u\n",
+@@ -151,61 +147,74 @@ static int ice_tspll_cfg_e82x(struct ice_hw *hw, enum ice_tspll_freq clk_freq,
+ 		return -EINVAL;
+ 	}
+ 
+-	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R9, &dw9.val);
+-	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R24, &dw24.val);
+-	ICE_READ_CGU_REG_OR_DIE(hw, TSPLL_RO_BWM_LF, &bwm_lf.val);
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R9, &r9);
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R24, &r24);
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_RO_BWM_LF, &val);
+ 
+-	ice_tspll_log_cfg(hw, dw24.ts_pll_enable, dw24.time_ref_sel,
+-			  dw9.time_ref_freq_sel, bwm_lf.plllock_true_lock_cri,
++	ice_tspll_log_cfg(hw, !!FIELD_GET(ICE_CGU_R23_R24_TSPLL_ENABLE, r24),
++			  FIELD_GET(ICE_CGU_R23_R24_TIME_REF_SEL, r24),
++			  FIELD_GET(ICE_CGU_R9_TIME_REF_FREQ_SEL, r9),
++			  !!FIELD_GET(ICE_CGU_RO_BWM_LF_TRUE_LOCK, val),
+ 			  false);
+ 
+ 	/* Disable the PLL before changing the clock source or frequency */
+-	if (dw24.ts_pll_enable) {
+-		dw24.ts_pll_enable = 0;
+-		ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R24, dw24.val);
++	if (FIELD_GET(ICE_CGU_R23_R24_TSPLL_ENABLE, r24)) {
++		r24 &= ~ICE_CGU_R23_R24_TSPLL_ENABLE;
++		ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R24, r24);
+ 	}
+ 
+ 	/* Set the frequency */
+-	dw9.time_ref_freq_sel = clk_freq;
+-	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R9, dw9.val);
++	r9 &= ~ICE_CGU_R9_TIME_REF_FREQ_SEL;
++	r9 |= FIELD_PREP(ICE_CGU_R9_TIME_REF_FREQ_SEL, clk_freq);
++	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R9, r9);
+ 
+ 	/* Configure the TSPLL feedback divisor */
+-	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R19, &dw19.val);
+-	dw19.fbdiv_intgr = e82x_tspll_params[clk_freq].feedback_div;
+-	dw19.ndivratio = 1;
+-	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R19, dw19.val);
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R19, &val);
++	val &= ~(ICE_CGU_R19_TSPLL_FBDIV_INTGR_E82X | ICE_CGU_R19_TSPLL_NDIVRATIO);
++	val |= FIELD_PREP(ICE_CGU_R19_TSPLL_FBDIV_INTGR_E82X,
++			  e82x_tspll_params[clk_freq].feedback_div);
++	val |= FIELD_PREP(ICE_CGU_R19_TSPLL_NDIVRATIO, 1);
++	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R19, val);
+ 
+ 	/* Configure the TSPLL post divisor */
+-	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R22, &dw22.val);
+-	dw22.time1588clk_div = e82x_tspll_params[clk_freq].post_pll_div;
+-	dw22.time1588clk_sel_div2 = 0;
+-	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R22, dw22.val);
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R22, &val);
++	val &= ~(ICE_CGU_R22_TIME1588CLK_DIV |
++		 ICE_CGU_R22_TIME1588CLK_DIV2);
++	val |= FIELD_PREP(ICE_CGU_R22_TIME1588CLK_DIV,
++			  e82x_tspll_params[clk_freq].post_pll_div);
++	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R22, val);
+ 
+ 	/* Configure the TSPLL pre divisor and clock source */
+-	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R24, &dw24.val);
+-	dw24.ref1588_ck_div = e82x_tspll_params[clk_freq].refclk_pre_div;
+-	dw24.fbdiv_frac = e82x_tspll_params[clk_freq].frac_n_div;
+-	dw24.time_ref_sel = clk_src;
+-	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R24, dw24.val);
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R24, &r24);
++	r24 &= ~(ICE_CGU_R23_R24_REF1588_CK_DIV | ICE_CGU_R24_FBDIV_FRAC |
++		 ICE_CGU_R23_R24_TIME_REF_SEL);
++	r24 |= FIELD_PREP(ICE_CGU_R23_R24_REF1588_CK_DIV,
++			  e82x_tspll_params[clk_freq].refclk_pre_div);
++	r24 |= FIELD_PREP(ICE_CGU_R24_FBDIV_FRAC,
++			  e82x_tspll_params[clk_freq].frac_n_div);
++	r24 |= FIELD_PREP(ICE_CGU_R23_R24_TIME_REF_SEL, clk_src);
++	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R24, r24);
+ 
+ 	/* Finally, enable the PLL */
+-	dw24.ts_pll_enable = 1;
+-	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R24, dw24.val);
++	r24 |= ICE_CGU_R23_R24_TSPLL_ENABLE;
++	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R24, r24);
+ 
+ 	/* Wait to verify if the PLL locks */
+ 	usleep_range(1000, 5000);
+ 
+-	ICE_READ_CGU_REG_OR_DIE(hw, TSPLL_RO_BWM_LF, &bwm_lf.val);
+-	if (!bwm_lf.plllock_true_lock_cri) {
+-		dev_warn(ice_hw_to_dev(hw), "TSPLL failed to lock\n");
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_RO_BWM_LF, &val);
++	if (!(val & ICE_CGU_RO_BWM_LF_TRUE_LOCK)) {
++		dev_warn(ice_hw_to_dev(hw), "CGU PLL failed to lock\n");
  		return -EBUSY;
  	}
  
--	ice_tspll_log_cfg(hw, dw24.ts_pll_enable, clk_src, clk_freq, true,
--			  true);
-+	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R9, &dw9.val);
-+	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R24, &dw24.val);
-+
-+	ice_tspll_log_cfg(hw, dw24.ts_pll_enable, dw24.time_ref_sel,
-+			  dw9.time_ref_freq_sel, true, false);
+-	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R9, &dw9.val);
+-	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R24, &dw24.val);
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R9, &r9);
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R24, &r24);
+ 
+-	ice_tspll_log_cfg(hw, dw24.ts_pll_enable, dw24.time_ref_sel,
+-			  dw9.time_ref_freq_sel, true, false);
++	ice_tspll_log_cfg(hw, !!FIELD_GET(ICE_CGU_R23_R24_TSPLL_ENABLE, r24),
++			  FIELD_GET(ICE_CGU_R23_R24_TIME_REF_SEL, r24),
++			  FIELD_GET(ICE_CGU_R9_TIME_REF_FREQ_SEL, r9),
++			  true, true);
  
  	return 0;
  }
-@@ -343,8 +346,11 @@ static int ice_tspll_cfg_e825c(struct ice_hw *hw, enum ice_tspll_freq clk_freq,
+@@ -221,14 +230,12 @@ static int ice_tspll_cfg_e82x(struct ice_hw *hw, enum ice_tspll_freq clk_freq,
+  */
+ static int ice_tspll_dis_sticky_bits_e82x(struct ice_hw *hw)
+ {
+-	union tspll_cntr_bist_settings cntr_bist;
++	u32 val;
+ 
+-	ICE_READ_CGU_REG_OR_DIE(hw, TSPLL_CNTR_BIST_SETTINGS, &cntr_bist.val);
+-	/* Disable sticky lock detection so lock err reported is accurate */
+-	cntr_bist.i_plllock_sel_0 = 0;
+-	cntr_bist.i_plllock_sel_1 = 0;
+-
+-	return ice_write_cgu_reg(hw, TSPLL_CNTR_BIST_SETTINGS, cntr_bist.val);
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_CNTR_BIST, &val);
++	val &= ~(ICE_CGU_CNTR_BIST_PLLLOCK_SEL_0 |
++		 ICE_CGU_CNTR_BIST_PLLLOCK_SEL_1);
++	return ice_write_cgu_reg(hw, ICE_CGU_CNTR_BIST, val);
+ }
+ 
+ /**
+@@ -249,12 +256,7 @@ static int ice_tspll_dis_sticky_bits_e82x(struct ice_hw *hw)
+ static int ice_tspll_cfg_e825c(struct ice_hw *hw, enum ice_tspll_freq clk_freq,
+ 			       enum ice_clk_src clk_src)
+ {
+-	union tspll_ro_lock_e825c ro_lock;
+-	union ice_cgu_r19_e825 dw19;
+-	union ice_cgu_r16 dw16;
+-	union ice_cgu_r23 dw23;
+-	union ice_cgu_r22 dw22;
+-	union ice_cgu_r9 dw9;
++	u32 val, r9, r23;
+ 
+ 	if (clk_freq >= NUM_ICE_TSPLL_FREQ) {
+ 		dev_warn(ice_hw_to_dev(hw), "Invalid TIME_REF frequency %u\n",
+@@ -273,84 +275,91 @@ static int ice_tspll_cfg_e825c(struct ice_hw *hw, enum ice_tspll_freq clk_freq,
+ 		return -EINVAL;
+ 	}
+ 
+-	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R9, &dw9.val);
+-	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R16, &dw16.val);
+-	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R23, &dw23.val);
+-	ICE_READ_CGU_REG_OR_DIE(hw, TSPLL_RO_LOCK_E825C, &ro_lock.val);
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R9, &r9);
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R23, &r23);
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_RO_LOCK, &val);
+ 
+-	ice_tspll_log_cfg(hw, dw23.ts_pll_enable, dw23.time_ref_sel,
+-			  dw9.time_ref_freq_sel,
+-			  ro_lock.plllock_true_lock_cri, false);
++	ice_tspll_log_cfg(hw, !!FIELD_GET(ICE_CGU_R23_R24_TSPLL_ENABLE, r23),
++			  FIELD_GET(ICE_CGU_R23_R24_TIME_REF_SEL, r23),
++			  FIELD_GET(ICE_CGU_R9_TIME_REF_FREQ_SEL, r9),
++			  !!FIELD_GET(ICE_CGU_RO_LOCK_TRUE_LOCK, val),
++			  false);
+ 
+ 	/* Disable the PLL before changing the clock source or frequency */
+-	if (dw23.ts_pll_enable) {
+-		dw23.ts_pll_enable = 0;
+-		ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R23, dw23.val);
++	if (FIELD_GET(ICE_CGU_R23_R24_TSPLL_ENABLE, r23)) {
++		r23 &= ~ICE_CGU_R23_R24_TSPLL_ENABLE;
++		ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R23, r23);
+ 	}
+ 
+-	if (dw9.time_sync_en) {
+-		dw9.time_sync_en = 0;
+-		ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R9, dw9.val);
++	if (FIELD_GET(ICE_CGU_R9_TIME_SYNC_EN, r9)) {
++		r9 &= ~ICE_CGU_R9_TIME_SYNC_EN;
++		ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R9, r9);
+ 	}
+ 
+-	/* Set the frequency */
+-	dw9.time_ref_freq_sel = clk_freq;
+-
+-	/* Enable the correct receiver */
+-	if (clk_src == ICE_CLK_SRC_TCXO) {
+-		dw9.time_ref_en = 0;
+-		dw9.clk_eref0_en = 1;
+-	} else {
+-		dw9.time_ref_en = 1;
+-		dw9.clk_eref0_en = 0;
+-	}
+-	dw9.time_sync_en = 1;
+-	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R9, dw9.val);
++	/* Set the frequency and enable the correct receiver */
++	r9 &= ~(ICE_CGU_R9_TIME_REF_FREQ_SEL | ICE_CGU_R9_CLK_EREF0_EN |
++		ICE_CGU_R9_TIME_REF_EN);
++	r9 |= FIELD_PREP(ICE_CGU_R9_TIME_REF_FREQ_SEL, clk_freq);
++	if (clk_src == ICE_CLK_SRC_TCXO)
++		r9 |= ICE_CGU_R9_CLK_EREF0_EN;
++	else
++		r9 |= ICE_CGU_R9_TIME_REF_EN;
++	r9 |= ICE_CGU_R9_TIME_SYNC_EN;
++	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R9, r9);
+ 
+ 	/* Choose the referenced frequency */
+-	dw16.ck_refclkfreq = ICE_TSPLL_CK_REFCLKFREQ_E825;
+-	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R16, dw16.val);
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R16, &val);
++	val &= ~ICE_CGU_R16_TSPLL_CK_REFCLKFREQ;
++	val |= FIELD_PREP(ICE_CGU_R16_TSPLL_CK_REFCLKFREQ,
++			  ICE_TSPLL_CK_REFCLKFREQ_E825);
++	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R16, val);
+ 
+ 	/* Configure the TSPLL feedback divisor */
+-	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R19, &dw19.val);
+-	dw19.tspll_fbdiv_intgr = ICE_TSPLL_FBDIV_INTGR_E825;
+-	dw19.tspll_ndivratio = ICE_TSPLL_NDIVRATIO_E825;
+-	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R19, dw19.val);
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R19, &val);
++	val &= ~(ICE_CGU_R19_TSPLL_FBDIV_INTGR_E825 |
++		 ICE_CGU_R19_TSPLL_NDIVRATIO);
++	val |= FIELD_PREP(ICE_CGU_R19_TSPLL_FBDIV_INTGR_E825,
++			  ICE_TSPLL_FBDIV_INTGR_E825);
++	val |= FIELD_PREP(ICE_CGU_R19_TSPLL_NDIVRATIO,
++			  ICE_TSPLL_NDIVRATIO_E825);
++	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R19, val);
+ 
+-	/* Configure the TSPLL post divisor */
+-	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R22, &dw22.val);
+-	/* These two are constant for E825C */
+-	dw22.time1588clk_div = 5;
+-	dw22.time1588clk_sel_div2 = 0;
+-	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R22, dw22.val);
++	/* Configure the TSPLL post divisor, these two are constant */
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R22, &val);
++	val &= ~(ICE_CGU_R22_TIME1588CLK_DIV |
++		 ICE_CGU_R22_TIME1588CLK_DIV2);
++	val |= FIELD_PREP(ICE_CGU_R22_TIME1588CLK_DIV, 5);
++	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R22, val);
+ 
+-	/* Configure the TSPLL pre divisor and clock source */
+-	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R23, &dw23.val);
+-	dw23.ref1588_ck_div = 0;
+-	dw23.time_ref_sel = clk_src;
+-	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R23, dw23.val);
++	/* Configure the TSPLL pre divisor (constant) and clock source */
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R23, &r23);
++	r23 &= ~(ICE_CGU_R23_R24_REF1588_CK_DIV | ICE_CGU_R23_R24_TIME_REF_SEL);
++	r23 |= FIELD_PREP(ICE_CGU_R23_R24_TIME_REF_SEL, clk_src);
++	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R23, r23);
+ 
+ 	/* Clear the R24 register. */
+ 	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R24, 0);
+ 
+ 	/* Finally, enable the PLL */
+-	dw23.ts_pll_enable = 1;
+-	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R23, dw23.val);
++	r23 |= ICE_CGU_R23_R24_TSPLL_ENABLE;
++	ICE_WRITE_CGU_REG_OR_DIE(hw, ICE_CGU_R23, r23);
+ 
+ 	/* Wait to verify if the PLL locks */
+ 	usleep_range(1000, 5000);
+ 
+-	ICE_READ_CGU_REG_OR_DIE(hw, TSPLL_RO_LOCK_E825C, &ro_lock.val);
+-	if (!ro_lock.plllock_true_lock_cri) {
+-		dev_warn(ice_hw_to_dev(hw), "TSPLL failed to lock\n");
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_RO_LOCK, &val);
++	if (!(val & ICE_CGU_RO_LOCK_TRUE_LOCK)) {
++		dev_warn(ice_hw_to_dev(hw), "CGU PLL failed to lock\n");
  		return -EBUSY;
  	}
  
--	ice_tspll_log_cfg(hw, dw23.ts_pll_enable, clk_src, clk_freq, true,
--			  true);
-+	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R9, &dw9.val);
-+	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R23, &dw23.val);
-+
-+	ice_tspll_log_cfg(hw, dw23.ts_pll_enable, dw23.time_ref_sel,
-+			  dw9.time_ref_freq_sel, true, true);
+-	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R9, &dw9.val);
+-	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R23, &dw23.val);
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R9, &r9);
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R23, &r23);
+ 
+-	ice_tspll_log_cfg(hw, dw23.ts_pll_enable, dw23.time_ref_sel,
+-			  dw9.time_ref_freq_sel, true, true);
++	ice_tspll_log_cfg(hw, !!FIELD_GET(ICE_CGU_R23_R24_TSPLL_ENABLE, r23),
++			  FIELD_GET(ICE_CGU_R23_R24_TIME_REF_SEL, r23),
++			  FIELD_GET(ICE_CGU_R9_TIME_REF_FREQ_SEL, r9),
++			  true, true);
  
  	return 0;
  }
+@@ -366,15 +375,13 @@ static int ice_tspll_cfg_e825c(struct ice_hw *hw, enum ice_tspll_freq clk_freq,
+  */
+ static int ice_tspll_dis_sticky_bits_e825c(struct ice_hw *hw)
+ {
+-	union tspll_bw_tdc_e825c bw_tdc;
++	u32 val;
+ 
+-	ICE_READ_CGU_REG_OR_DIE(hw, TSPLL_BW_TDC_E825C, &bw_tdc.val);
+-	bw_tdc.i_plllock_sel_1_0 = 0;
+-	return ice_write_cgu_reg(hw, TSPLL_BW_TDC_E825C, bw_tdc.val);
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_BW_TDC, &val);
++	val &= ~ICE_CGU_BW_TDC_PLLLOCK_SEL;
++	return ice_write_cgu_reg(hw, ICE_CGU_BW_TDC, val);
+ }
+ 
+-#define ICE_ONE_PPS_OUT_AMP_MAX 3
+-
+ /**
+  * ice_tspll_cfg_pps_out_e825c - Enable/disable 1PPS output and set amplitude
+  * @hw: pointer to the HW struct
+@@ -384,12 +391,13 @@ static int ice_tspll_dis_sticky_bits_e825c(struct ice_hw *hw)
+  */
+ int ice_tspll_cfg_pps_out_e825c(struct ice_hw *hw, bool enable)
+ {
+-	union ice_cgu_r9 r9;
++	u32 val;
+ 
+-	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R9, &r9.val);
+-	r9.one_pps_out_en = enable;
+-	r9.one_pps_out_amp = enable * ICE_ONE_PPS_OUT_AMP_MAX;
+-	return ice_write_cgu_reg(hw, ICE_CGU_R9, r9.val);
++	ICE_READ_CGU_REG_OR_DIE(hw, ICE_CGU_R9, &val);
++	val &= ~(ICE_CGU_R9_ONE_PPS_OUT_EN | ICE_CGU_R9_ONE_PPS_OUT_AMP);
++	val |= FIELD_PREP(ICE_CGU_R9_ONE_PPS_OUT_EN, enable) |
++	       ICE_CGU_R9_ONE_PPS_OUT_AMP;
++	return ice_write_cgu_reg(hw, ICE_CGU_R9, val);
+ }
+ 
+ /**
 
 -- 
 2.48.1.397.gec9d649cc640
