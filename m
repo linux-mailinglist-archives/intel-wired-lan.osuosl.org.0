@@ -1,78 +1,106 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 94551AA68DD
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  2 May 2025 04:47:33 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B2A3DAA68E8
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  2 May 2025 04:58:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4976F82422;
-	Fri,  2 May 2025 02:47:29 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2DCD8412AD;
+	Fri,  2 May 2025 02:58:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KJpLdqjSex1I; Fri,  2 May 2025 02:47:28 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ebZyul-2rQYK; Fri,  2 May 2025 02:58:19 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9FEAF824DD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B7572415BC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1746154048;
-	bh=IDZoZ15OxTKB7hScqs1Pqxl9eBesTabmYzyix+1Qh8k=;
-	h=Date:To:Cc:References:In-Reply-To:From:Subject:List-Id:
+	s=default; t=1746154698;
+	bh=e7DRHyVTuKzj6SGuQ2EGjyRngeXb3SUK2opH5fygLyw=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=TOBEuS8+jJI1WDhhnOs4JqOQx+/iwzTnOHAJ975tHzQtButQ5h+L3r3jrYJvF8/H+
-	 3KUXQdvExOZMbvUrAERvguRLjZHPzNpYNkhsO1gcjrEy98+86/ChyeZcxTjX0QETMA
-	 ZXtkgULqFjmEOPCB2ppDm7xnXgmIVvyUsRK2mkFwhU+nNKXsGkdHCaoBrihPz3eCKL
-	 nMVPx36fv8csQFLy/OXSm42PrjIpbfSSNF02n3d2yhfPrG+3NH2kfE7/Apq+dSFmdJ
-	 +vehj/xfiHS9CsyNO7m3b3F8ZJr8+FE7LxlIchoiSftp9E6dbjGcliHlNHO7RRIq8L
-	 BarFahEwWAPGg==
+	b=wIUaY7njQagk1TBjCycxLGMBxsxX8VLVF2vdAEQpR7EiErlZdwTv1WzBECtXWJkSU
+	 Kr29iYCSne4oRfefQJbhDpw5r9DkFj+1zsPE0tSyiKaDq8juYvT11CTctbsOXquDe3
+	 ZFpuktvYTc2Zeqr70pqc25PqVr5WOmDBkIi/5GeJzIBPmNtEaV7uWp8cEqjchua3E8
+	 oWqSlY+EpljNheis/wZmiyneCOOTfgicxBH4YMKNunVzSlCW/eIVgEYxO+QyPwHvwR
+	 NRNl+IwHnU36w92DJCchqcALUgUcasq4w8C8Glkjk0nPBXpQ0V9RZ0KsZb6pq62mqy
+	 +RcwuZHSli2vg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9FEAF824DD;
-	Fri,  2 May 2025 02:47:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B7572415BC;
+	Fri,  2 May 2025 02:58:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 42936113
- for <intel-wired-lan@lists.osuosl.org>; Fri,  2 May 2025 02:47:27 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id C2BCD113
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  2 May 2025 02:58:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3458840590
- for <intel-wired-lan@lists.osuosl.org>; Fri,  2 May 2025 02:47:27 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id BF466607D0
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  2 May 2025 02:58:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NlihAikh_O1L for <intel-wired-lan@lists.osuosl.org>;
- Fri,  2 May 2025 02:47:26 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=129.97.134.17;
- helo=caffeine.csclub.uwaterloo.ca; envelope-from=lsorense@csclub.uwaterloo.ca;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 6E983404CD
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6E983404CD
-Received: from caffeine.csclub.uwaterloo.ca (caffeine.csclub.uwaterloo.ca
- [129.97.134.17])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6E983404CD
- for <intel-wired-lan@lists.osuosl.org>; Fri,  2 May 2025 02:47:25 +0000 (UTC)
-Received: by caffeine.csclub.uwaterloo.ca (Postfix, from userid 20367)
- id F32084603B6; Thu,  1 May 2025 22:48:35 -0400 (EDT)
-Date: Thu, 1 May 2025 22:48:35 -0400
-To: Jacob Keller <jacob.e.keller@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org,
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id EXdxlyC0rL4e for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  2 May 2025 02:58:15 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 87B48607B9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 87B48607B9
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 87B48607B9
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  2 May 2025 02:58:15 +0000 (UTC)
+X-CSE-ConnectionGUID: C3YKlfeQRj2jQcyQ07ag3w==
+X-CSE-MsgGUID: JvgxWVGLRESH8spo62fMJw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11420"; a="47979451"
+X-IronPort-AV: E=Sophos;i="6.15,255,1739865600"; d="scan'208";a="47979451"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+ by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 May 2025 19:58:15 -0700
+X-CSE-ConnectionGUID: 3DGAyZvLT7yMCTjVMI8iKQ==
+X-CSE-MsgGUID: o2DMp5ZpRI6L8Q0XlB/mtg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,255,1739865600"; d="scan'208";a="134485173"
+Received: from lkp-server01.sh.intel.com (HELO 1992f890471c) ([10.239.97.150])
+ by fmviesa007.fm.intel.com with ESMTP; 01 May 2025 19:58:12 -0700
+Received: from kbuild by 1992f890471c with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1uAgbJ-0004Vt-2Z;
+ Fri, 02 May 2025 02:58:09 +0000
+Date: Fri, 2 May 2025 10:57:12 +0800
+From: kernel test robot <lkp@intel.com>
+To: Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ intel-wired-lan@lists.osuosl.org, linux-rt-devel@lists.linux.dev
+Cc: oe-kbuild-all@lists.linux.dev, Tony Nguyen <anthony.l.nguyen@intel.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- LKML <linux-kernel@vger.kernel.org>, Netdev <netdev@vger.kernel.org>
-Message-ID: <aBQyg2RBReEBc47P@csclub.uwaterloo.ca>
-References: <aAkflkxbvC8MB8PG@csclub.uwaterloo.ca>
- <8236bef5-d1e3-42ab-ba1f-b1d89f305d0a@intel.com>
- <aAu2zoNIuRk-nwWt@csclub.uwaterloo.ca>
- <ffe2bfff-ffc5-4ae0-b95b-6915e5274bd7@intel.com>
+ Clark Williams <clrkwllms@kernel.org>,
+ Steven Rostedt <rostedt@goodmis.org>, Thomas Gleixner <tglx@linutronix.de>,
+ Wander Lairson Costa <wander@redhat.com>
+Message-ID: <202505021206.Ab0hOnzq-lkp@intel.com>
+References: <20250430144452.8zcAZc29@linutronix.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ffe2bfff-ffc5-4ae0-b95b-6915e5274bd7@intel.com>
-From: Lennart Sorensen <lsorense@csclub.uwaterloo.ca>
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+In-Reply-To: <20250430144452.8zcAZc29@linutronix.de>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1746154696; x=1777690696;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=PgdIpn3TsAM1M0QU6nF1cNfMOhGv5+4ZfjkqR8RMiDo=;
+ b=MWsEfnmKdvxJflPWsJMTZYA6pegj7srDG3Oau7/AUQe7bu50XthMzU7v
+ c1c8qtJgqLXFVVckj1TmYTHzcbE5dyL8+kcn0HYgDugDVK4eZ3zWmR6p6
+ hP4ho67DI2ickZp1NeD9bhTOj2dyJACkF9WA3EOhjWf8Q7ZlclgdNvZHz
+ IIw25i4Dd6QFdXNO4g7kr6vRnbT5mZsQ8PfjRPsRNEkoXiPOLFU5j6w46
+ /sD1d4L4J5afBoRbv5SsCYWowyGsI8maXeoU46oo4q7v0NP8BXFCSt+/0
+ OvqztnNpAVrY+rephWGupg/C+MgPzyrzae4u7Bq+JcvUCNwkTvb4xeE8v
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=csclub.uwaterloo.ca
-Subject: Re: [Intel-wired-lan] Fix promiscous and multicast mode on iavf
- after reset
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=MWsEfnmK
+Subject: Re: [Intel-wired-lan] [PATCH] igb: Request igb_msix_other as a
+ threaded interrupt handler
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -88,52 +116,134 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Apr 29, 2025 at 11:44:55AM -0700, Jacob Keller wrote:
-> Yes. That's the trouble with the current approach. The VF interface has
-> to work well when the VF driver is running different operating systems
-> or versions, and if we change the behavior with a new opcode or similar
-> that would be difficult.
-> 
-> The reset logic is likely a haphazard mess of different "solutions" to
-> various issues we've had. It grew more or less organically out of i40evf
-> code from years ago.
-> 
-> Agreed. Obviously, our own testing never caught this. :(
+Hi Sebastian,
 
-Yes you need to actually run with promisc on, not just using tcpdump
-once in a while.  So someone using the interface connected to a virtual
-bridge that would want promisc to allow all traffic to be received that
-then hits a tx hang would see it, but probably that is about the only
-time you would have hit it.  tx hangs don't seem to be nearly as common
-as they were back in the igbe and ixgbe days fortunately.
+kernel test robot noticed the following build errors:
 
-In my particular case it was enabling promisc mode, then changing the
-mtu that resulted in very often loosing promisc mode.
+[auto build test ERROR on tnguy-next-queue/dev-queue]
+[also build test ERROR on tnguy-net-queue/dev-queue linus/master v6.15-rc4 next-20250501]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-> We might be able to get away with improving the PF to stop losing as
-> much data, but I worry that could lead to a similar sort of race
-> condition as this but in reverse, where VF thinks that it was cleared. I
-> guess the VF would send a new config and that would either be a no-op or
-> just restore config.
-> 
-> That makes me think this fix to the VF is required regardless of what or
-> how we modify the PF.
+url:    https://github.com/intel-lab-lkp/linux/commits/Sebastian-Andrzej-Siewior/igb-Request-igb_msix_other-as-a-threaded-interrupt-handler/20250430-225615
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+patch link:    https://lore.kernel.org/r/20250430144452.8zcAZc29%40linutronix.de
+patch subject: [Intel-wired-lan] [PATCH] igb: Request igb_msix_other as a threaded interrupt handler
+config: loongarch-randconfig-002-20250502 (https://download.01.org/0day-ci/archive/20250502/202505021206.Ab0hOnzq-lkp@intel.com/config)
+compiler: loongarch64-linux-gcc (GCC) 14.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250502/202505021206.Ab0hOnzq-lkp@intel.com/reproduce)
 
-It seems better to make the VF driver handle it since you don't know
-what kernel version the host is running and hence what it is going to
-do when you do reset (unless you up the API version of course, which
-seems excessive just for this, and you would still have to handle the
-case when the host is older).
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202505021206.Ab0hOnzq-lkp@intel.com/
 
-Of course it seems that if the driver wasn't caching the current settings
-for promisc and multicast and simply sent the config everytime any config
-changed, it would be working, but it would also be wasteful.  I don't
-remember when the cache was introduced, but I think it was done as part
-of not sending a message for promisc and a separate one for multicast
-since it sometimes resulted in the wrong setting in the end.  But the
-caching thing has not been around for the entire life of the iavf/i40evf
-driver so it may in fact have worked in the past and was accidentally
-broken as part of fixing the other issue.
+All errors (new ones prefixed by >>):
+
+   drivers/net/ethernet/intel/igb/igb_main.c: In function 'igb_request_msix':
+>> drivers/net/ethernet/intel/igb/igb_main.c:916:61: error: passing argument 4 of 'request_threaded_irq' makes integer from pointer without a cast [-Wint-conversion]
+     916 |                                    igb_msix_other, 0, netdev->name, adapter);
+         |                                                       ~~~~~~^~~~~~
+         |                                                             |
+         |                                                             char *
+   In file included from include/linux/kernel_stat.h:8,
+                    from include/linux/cgroup.h:26,
+                    from include/net/netprio_cgroup.h:11,
+                    from include/linux/netdevice.h:42,
+                    from drivers/net/ethernet/intel/igb/igb_main.c:12:
+   include/linux/interrupt.h:153:36: note: expected 'long unsigned int' but argument is of type 'char *'
+     153 |                      unsigned long flags, const char *name, void *dev);
+         |                      ~~~~~~~~~~~~~~^~~~~
+>> drivers/net/ethernet/intel/igb/igb_main.c:916:69: error: passing argument 5 of 'request_threaded_irq' from incompatible pointer type [-Wincompatible-pointer-types]
+     916 |                                    igb_msix_other, 0, netdev->name, adapter);
+         |                                                                     ^~~~~~~
+         |                                                                     |
+         |                                                                     struct igb_adapter *
+   include/linux/interrupt.h:153:55: note: expected 'const char *' but argument is of type 'struct igb_adapter *'
+     153 |                      unsigned long flags, const char *name, void *dev);
+         |                                           ~~~~~~~~~~~~^~~~
+>> drivers/net/ethernet/intel/igb/igb_main.c:915:15: error: too few arguments to function 'request_threaded_irq'
+     915 |         err = request_threaded_irq(adapter->msix_entries[vector].vector,
+         |               ^~~~~~~~~~~~~~~~~~~~
+   include/linux/interrupt.h:151:1: note: declared here
+     151 | request_threaded_irq(unsigned int irq, irq_handler_t handler,
+         | ^~~~~~~~~~~~~~~~~~~~
+
+
+vim +/request_threaded_irq +916 drivers/net/ethernet/intel/igb/igb_main.c
+
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  901  
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  902  /**
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  903   *  igb_request_msix - Initialize MSI-X interrupts
+b980ac18c95f32 drivers/net/ethernet/intel/igb/igb_main.c Jeff Kirsher              2013-02-23  904   *  @adapter: board private structure to initialize
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  905   *
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  906   *  igb_request_msix allocates MSI-X vectors and requests interrupts from the
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  907   *  kernel.
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  908   **/
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  909  static int igb_request_msix(struct igb_adapter *adapter)
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  910  {
+6c19d772618fea drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  911  	unsigned int num_q_vectors = adapter->num_q_vectors;
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  912  	struct net_device *netdev = adapter->netdev;
+52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  913  	int i, err = 0, vector = 0, free_vector = 0;
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  914  
+086e5c4c0db155 drivers/net/ethernet/intel/igb/igb_main.c Sebastian Andrzej Siewior 2025-04-30 @915  	err = request_threaded_irq(adapter->msix_entries[vector].vector,
+50d325bb05cef2 drivers/net/ethernet/intel/igb/igb_main.c Wander Lairson Costa      2024-11-06 @916  				   igb_msix_other, 0, netdev->name, adapter);
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  917  	if (err)
+52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  918  		goto err_out;
+047e0030f1e601 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  919  
+6c19d772618fea drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  920  	if (num_q_vectors > MAX_Q_VECTORS) {
+6c19d772618fea drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  921  		num_q_vectors = MAX_Q_VECTORS;
+6c19d772618fea drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  922  		dev_warn(&adapter->pdev->dev,
+6c19d772618fea drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  923  			 "The number of queue vectors (%d) is higher than max allowed (%d)\n",
+6c19d772618fea drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  924  			 adapter->num_q_vectors, MAX_Q_VECTORS);
+6c19d772618fea drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  925  	}
+6c19d772618fea drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  926  	for (i = 0; i < num_q_vectors; i++) {
+047e0030f1e601 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  927  		struct igb_q_vector *q_vector = adapter->q_vector[i];
+047e0030f1e601 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  928  
+52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  929  		vector++;
+52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  930  
+7b06a6909555ff drivers/net/ethernet/intel/igb/igb_main.c Jarod Wilson              2015-10-19  931  		q_vector->itr_register = adapter->io_addr + E1000_EITR(vector);
+047e0030f1e601 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  932  
+0ba829943c5180 drivers/net/ethernet/intel/igb/igb_main.c Alexander Duyck           2011-08-26  933  		if (q_vector->rx.ring && q_vector->tx.ring)
+047e0030f1e601 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  934  			sprintf(q_vector->name, "%s-TxRx-%u", netdev->name,
+0ba829943c5180 drivers/net/ethernet/intel/igb/igb_main.c Alexander Duyck           2011-08-26  935  				q_vector->rx.ring->queue_index);
+0ba829943c5180 drivers/net/ethernet/intel/igb/igb_main.c Alexander Duyck           2011-08-26  936  		else if (q_vector->tx.ring)
+047e0030f1e601 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  937  			sprintf(q_vector->name, "%s-tx-%u", netdev->name,
+0ba829943c5180 drivers/net/ethernet/intel/igb/igb_main.c Alexander Duyck           2011-08-26  938  				q_vector->tx.ring->queue_index);
+0ba829943c5180 drivers/net/ethernet/intel/igb/igb_main.c Alexander Duyck           2011-08-26  939  		else if (q_vector->rx.ring)
+047e0030f1e601 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  940  			sprintf(q_vector->name, "%s-rx-%u", netdev->name,
+0ba829943c5180 drivers/net/ethernet/intel/igb/igb_main.c Alexander Duyck           2011-08-26  941  				q_vector->rx.ring->queue_index);
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  942  		else
+047e0030f1e601 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  943  			sprintf(q_vector->name, "%s-unused", netdev->name);
+047e0030f1e601 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  944  
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  945  		err = request_irq(adapter->msix_entries[vector].vector,
+a0607fd3a25ba1 drivers/net/igb/igb_main.c                Joe Perches               2009-11-18  946  				  igb_msix_ring, 0, q_vector->name,
+047e0030f1e601 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  947  				  q_vector);
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  948  		if (err)
+52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  949  			goto err_free;
+1911329ae9ce05 drivers/net/ethernet/intel/igb/igb_main.c Kurt Kanzenbach           2025-03-19  950  
+1911329ae9ce05 drivers/net/ethernet/intel/igb/igb_main.c Kurt Kanzenbach           2025-03-19  951  		netif_napi_set_irq(&q_vector->napi,
+1911329ae9ce05 drivers/net/ethernet/intel/igb/igb_main.c Kurt Kanzenbach           2025-03-19  952  				   adapter->msix_entries[vector].vector);
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  953  	}
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  954  
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  955  	igb_configure_msix(adapter);
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  956  	return 0;
+52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  957  
+52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  958  err_free:
+52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  959  	/* free already assigned IRQs */
+52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  960  	free_irq(adapter->msix_entries[free_vector++].vector, adapter);
+52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  961  
+52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  962  	vector--;
+52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  963  	for (i = 0; i < vector; i++) {
+52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  964  		free_irq(adapter->msix_entries[free_vector++].vector,
+52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  965  			 adapter->q_vector[i]);
+52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  966  	}
+52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  967  err_out:
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  968  	return err;
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  969  }
+9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  970  
 
 -- 
-Len Sorensen
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
