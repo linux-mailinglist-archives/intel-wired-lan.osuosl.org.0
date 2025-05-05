@@ -1,106 +1,234 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E35B7AA8D70
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 May 2025 09:53:01 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 385C1AA8DAE
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 May 2025 09:57:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A2E96813FE;
-	Mon,  5 May 2025 07:53:00 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KFhq22qG4sgL; Mon,  5 May 2025 07:52:59 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1A7D98134E
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1746431579;
-	bh=ns4DXjz5Gog4ZbAQMZbWEMUVZXGiMtd0V5FKn0CX9Rc=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=6ZmP8yMaDdn9xKnEgiboFz1OdhCxJt07yJaq5Bn0B4ttA4dlpLlYDUCOkf2ifRpPu
-	 y7hW7A2Tf8F156/7vWuNfhAD9YuUOTphQitJOe98oOwhjkxFHWu0lfC7DL+lZABKJq
-	 WctSgaDIRivFx1jL5a618mdyQ0n7vL1JNbihrcQd8pWaZ1kjBv8T7gLztBzz++dFiH
-	 GEUe1T/c9Oc42q+9cMEjrgh197CfmjhI5vu5o9eoMK68BHGNDDtZq2qbq1Y9FFNPxV
-	 7sisucCbH1wXExOM9rh/7DMDP+6SOrmBvopm8dG9wGM+NpdTXys/e9ck1n2X1iTGGf
-	 lcD4RPziuGB/w==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1A7D98134E;
-	Mon,  5 May 2025 07:52:59 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 1EC91EA
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 07:52:57 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 009B7600D1
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 07:52:57 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EA03A6060B;
+	Mon,  5 May 2025 07:57:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id A3IMCFvyo2Zc for <intel-wired-lan@lists.osuosl.org>;
- Mon,  5 May 2025 07:52:56 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.15;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org BD53760585
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BD53760585
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BD53760585
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 07:52:55 +0000 (UTC)
-X-CSE-ConnectionGUID: XlJS6b9MTtOP6mxYNPzmYw==
-X-CSE-MsgGUID: BY8VzE5KQeO+9vuz5rwkqg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11423"; a="51681691"
-X-IronPort-AV: E=Sophos;i="6.15,262,1739865600"; d="scan'208";a="51681691"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
- by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 May 2025 00:52:55 -0700
-X-CSE-ConnectionGUID: 9Xg5PftQQ2CGLpvp1msGMQ==
-X-CSE-MsgGUID: 732HjBh5RdCIOOfGcVGS3w==
+ id lbVNwh99ySY7; Mon,  5 May 2025 07:57:48 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A551160845
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1746431866;
+	bh=vFPMWeYjxXGqvHBERxxgBFORkJUFkTDA9Y5Nr51RhpE=;
+	h=Date:From:To:CC:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=B4Ev1ngVBoeF4C9HMuiFiqpDF00MuwvqA3DUVuGZ71UlGq7mDPMYG5MFNlVGlzkJj
+	 FQLeaBIqLyp4pyfAg9ddtKE7Gg6lJDvwMuPaIuOQXVbNFemCN8KnvqxtELkkMSzuA+
+	 RzIK1l+6IX49h82a1VqR2vdJaEyiUS645B7rscOiqT89g2/SiJxZNxd8jbjtB4ZEPi
+	 Yo3StZdDwVU/Mhj7SuRgLk9eKwwBKzGxTmGoiNKrW9nTLpZ5n7SXo1bdSLTuo831Kk
+	 arcQHG8a3U3dmu3t6EpODhQyaHtnqM21DY3QsD2HxJUjx8byXt1Ttq5vrLPKlxk2/j
+	 V+PuBHxdBe1Dg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id A551160845;
+	Mon,  5 May 2025 07:57:46 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 35D8CEA
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 07:57:45 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 219E1401C8
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 07:57:45 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id dPJObeFVXLDv for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  5 May 2025 07:57:44 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
+ helo=mgamail.intel.com; envelope-from=larysa.zaremba@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 464C5401B8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 464C5401B8
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 464C5401B8
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 07:57:44 +0000 (UTC)
+X-CSE-ConnectionGUID: iArjk/WhRfSC6rdx7Bsedg==
+X-CSE-MsgGUID: HzQp4hilRZWuQVD67Wqj9Q==
+X-IronPort-AV: E=McAfee;i="6700,10204,11423"; a="48037931"
+X-IronPort-AV: E=Sophos;i="6.15,262,1739865600"; d="scan'208";a="48037931"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 May 2025 00:57:43 -0700
+X-CSE-ConnectionGUID: HthAnBvITq+//IRZ4hUwGQ==
+X-CSE-MsgGUID: knq29cpRSp+cYfbqMEX5aw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,262,1739865600"; d="scan'208";a="139951025"
-Received: from lkp-server01.sh.intel.com (HELO 1992f890471c) ([10.239.97.150])
- by orviesa003.jf.intel.com with ESMTP; 05 May 2025 00:52:52 -0700
-Received: from kbuild by 1992f890471c with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1uBqd7-0005d7-0C;
- Mon, 05 May 2025 07:52:49 +0000
-Date: Mon, 5 May 2025 15:52:12 +0800
-From: kernel test robot <lkp@intel.com>
-To: Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- intel-wired-lan@lists.osuosl.org, linux-rt-devel@lists.linux.dev
-Cc: oe-kbuild-all@lists.linux.dev, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Clark Williams <clrkwllms@kernel.org>,
- Steven Rostedt <rostedt@goodmis.org>, Thomas Gleixner <tglx@linutronix.de>,
- Wander Lairson Costa <wander@redhat.com>
-Message-ID: <202505051357.VxQIHWOY-lkp@intel.com>
-References: <20250430144452.8zcAZc29@linutronix.de>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+X-IronPort-AV: E=Sophos;i="6.15,262,1739865600"; d="scan'208";a="166095687"
+Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
+ by orviesa002.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 May 2025 00:57:43 -0700
+Received: from ORSMSX902.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14; Mon, 5 May 2025 00:57:42 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14 via Frontend Transport; Mon, 5 May 2025 00:57:42 -0700
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.42) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.44; Mon, 5 May 2025 00:57:42 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=G4eiWcx2vsaHa6kKcbhJ6j8wwApAX5PXmCiVrP7aDkGOtgwXxyHg+ZpMyIKHI3bLoepWZqA7t1YN+1tgqG1KyOWegLqkk44KtVup7Egc9HYTuB3SDmebTFEiI9EX70XYvd/VpRFK9oryPk181inbnsFRYvDX0XYVOux6XVCbTFcn6frT8DOlo5JVGdJ5uH45e1se5QigMVQ/nkn2emoJeciftTTD7eqQVqcJFEtRKQhCM+eUBZt9E+d98OL2sMaHUn3l6sydG5CzbPsMAFI+dtw3ETnfHad1W2YaTxv1Wv3QaVNVOpm6j6RlGmIwikZAw4MRRHAcySeMXLJm60ajOg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=vFPMWeYjxXGqvHBERxxgBFORkJUFkTDA9Y5Nr51RhpE=;
+ b=It/tKVwdGjMiBfKj6PIpc5HHG8ESgho1X4alObGZY1MqLwB8Fy6j9aMPRv7RYEcUEdbzj4HvpPr5yFU3oRm54aE9sdzhYbMBtvhAMb61OkshNaTQ6gXXovGBkXQlkn0wZLNsAjwWmFmPdUFYdTO4Yhca+EfQ0N1glKydi9pceHG8D+5+XBgZjEpOb09TvrNSmRIdPMjC/ii/0kgtwB6BRoHDaTXUTHvMREZMbCnCsGXMWeKl2wb5nkYSetOKWFM+x9DPipELGIAxohE7Pyqu3wTJJyU0euSekyNjQcSnzuBEDlN1dJ7qw+suI043YccsOFP2ro+Fel8zevFOUxOy2Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SN7PR11MB7540.namprd11.prod.outlook.com (2603:10b6:806:340::7)
+ by PH3PPFE994B740C.namprd11.prod.outlook.com (2603:10b6:518:1::d5b)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8699.26; Mon, 5 May
+ 2025 07:56:54 +0000
+Received: from SN7PR11MB7540.namprd11.prod.outlook.com
+ ([fe80::399f:ff7c:adb2:8d29]) by SN7PR11MB7540.namprd11.prod.outlook.com
+ ([fe80::399f:ff7c:adb2:8d29%4]) with mapi id 15.20.8699.019; Mon, 5 May 2025
+ 07:56:54 +0000
+Date: Mon, 5 May 2025 09:56:37 +0200
+From: Larysa Zaremba <larysa.zaremba@intel.com>
+To: Simon Horman <horms@kernel.org>
+CC: Jacob Keller <jacob.e.keller@intel.com>,
+ <intel-wired-lan@lists.osuosl.org>, Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "Jonathan
+ Corbet" <corbet@lwn.net>, Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ "Jiri Pirko" <jiri@resnulli.us>, Tatyana Nikolova
+ <tatyana.e.nikolova@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>, Michael Ellerman
+ <mpe@ellerman.id.au>, "Maciej Fijalkowski" <maciej.fijalkowski@intel.com>,
+ Lee Trager <lee@trager.us>, Madhavan Srinivasan <maddy@linux.ibm.com>,
+ Sridhar Samudrala <sridhar.samudrala@intel.com>, Michal Swiatkowski
+ <michal.swiatkowski@linux.intel.com>, Mateusz Polchlopek
+ <mateusz.polchlopek@intel.com>, Ahmed Zaki <ahmed.zaki@intel.com>,
+ <netdev@vger.kernel.org>, <linux-doc@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, "Karlsson, Magnus"
+ <magnus.karlsson@intel.com>, Emil Tantilov <emil.s.tantilov@intel.com>,
+ "Madhu Chittim" <madhu.chittim@intel.com>, Josh Hay <joshua.a.hay@intel.com>, 
+ "Milena Olech" <milena.olech@intel.com>, <pavan.kumar.linga@intel.com>,
+ "Singhai, Anjali" <anjali.singhai@intel.com>
+Message-ID: <aBhvNfWP-Rmec3Ci@soc-5CG4396X81.clients.intel.com>
+References: <20250424113241.10061-1-larysa.zaremba@intel.com>
+ <20250424113241.10061-2-larysa.zaremba@intel.com>
+ <20250428161542.GD3339421@horms.kernel.org>
+ <10fd9a4b-f071-47eb-bdde-13438218aee9@intel.com>
+ <20250430085545.GT3339421@horms.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-In-Reply-To: <20250430144452.8zcAZc29@linutronix.de>
+In-Reply-To: <20250430085545.GT3339421@horms.kernel.org>
+X-ClientProxiedBy: VI1PR04CA0070.eurprd04.prod.outlook.com
+ (2603:10a6:802:2::41) To SN7PR11MB7540.namprd11.prod.outlook.com
+ (2603:10b6:806:340::7)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN7PR11MB7540:EE_|PH3PPFE994B740C:EE_
+X-MS-Office365-Filtering-Correlation-Id: 889457f6-d4e6-48d2-00bb-08dd8baa66f9
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|10070799003|366016|376014|7416014; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?1UORFBkVc2BM/Qn0+3FYMXjzabRijWg63Vas+jYP5AM1RZXqYL1fqvEBhhqB?=
+ =?us-ascii?Q?ruUFFRZJgFYZfshdhyiCcBMCv+uLbpem0Zje0CmNeyp8wuTGSri3tEP35b5J?=
+ =?us-ascii?Q?npLHTURcSBECn3fV88GlBc5c1ayKq9PufLv5Wf4Bfy8zpppF5UGtqzsHEOKP?=
+ =?us-ascii?Q?/2POAV0IyCve8p+sBWmSTdkczHK6vM5mtC9Ey2sS4AD8Oe8RF+Gisa+2UUo6?=
+ =?us-ascii?Q?/ubSCJsXLc2bl/nBgWg+tpeyZqJWL9F9aab9QCvSwgHLE1SYLpPEun3+sYMX?=
+ =?us-ascii?Q?bqbjLXUGX16WPrYuyWESvNthfb58KB0TBY6Ni9WNiXTFpiHmQV6bQwAWzVRD?=
+ =?us-ascii?Q?mUqZjX62BAJ2YLbZKhmwBh5Psh46oE+VJFlaypjk3SWe8ztgNKTJzztaixLy?=
+ =?us-ascii?Q?fBi7xK9PKuLAdHjuzoPnOy+3FcNrH0vkjsb9kohJ8sPbKonkH4mvGrM6Qi1B?=
+ =?us-ascii?Q?SPUd8amg0/gRVivOuj3tvlcxGub420C1YGvN02GPGPy20kKP5pF4CR3C5aLQ?=
+ =?us-ascii?Q?1anMvlYP6/d3lsRotqh+w8ih0NrrPq8EZ8bNXpVkPLGPX7ciGD/YdDjKT7RM?=
+ =?us-ascii?Q?KjNYaAsvajlrd2gzyUziYJ/0YBWMzXtSmNRrf8FKotGDMIFn8VXybHh+ZGjL?=
+ =?us-ascii?Q?5mBkpjeBWqB5GbPnxc4Pkz5wywg8ERCDEfGOVgKv4d2nkr60XDqX6JaCRJhT?=
+ =?us-ascii?Q?UskX5cvkKn7Uyarv7yuUMfBWN5LiG9z2aMB9gTtpn3Q9gVshlhubMSSHlKac?=
+ =?us-ascii?Q?0N7tygajqoBzWDBHyI7vkOXoKgWBt4QkbR6JjaKaJKe1vuTixajIWl6GVxwJ?=
+ =?us-ascii?Q?qVzjT9wml/HBSLpYQji6oecIQ7N3Ms2nQQrauEeAQ88Ii4+V+L1dBI6YVJDq?=
+ =?us-ascii?Q?uwXihVmietelDBjUMcqqtXnO2RUcm/YVNDh3rgz+GqRvLuwT9IiJteXcuhz/?=
+ =?us-ascii?Q?7pIC3YaFaP7Vh5cSNx+EQo4AG8WDNce4D+3v6684kScMhOMBqTG5zoVvISvt?=
+ =?us-ascii?Q?zPR8tsCwaNemkGcU2u4UpdHbZvTlpJ9Pm2DvRPYv2vq45BM24AL6kyhE2hHL?=
+ =?us-ascii?Q?/XmjJ0Br5EP9ne4ERmmbPJ7vEw5zDKnlcXxth0CKJZwKvKXKj6e6qp1/Scrc?=
+ =?us-ascii?Q?qE2ZBeHlJo4p/m38CCFeQ9Mz6Hfvj45a7ruDU8msmLZMhRfnX244rRYE2aHn?=
+ =?us-ascii?Q?FQa9h4l9UkM959AXcKqlsRNVZo+A41PtJH7GDD+xTtbN7C8nCGHmLGGtUCap?=
+ =?us-ascii?Q?Zqw9dB84hRWubSq4S/4wUwoP+VSiX4ZrpLmtK/5zfXtz7jiYqP1R0064aBDM?=
+ =?us-ascii?Q?/XGQGqKuNcbB533IvEF36yWdj4q3sHHwhKtIWlUPXU8vdFy4o6sqWp66kw35?=
+ =?us-ascii?Q?agc4tLWg3FKVpQGE5mvu5S4WoFgFXQIpDV8bVo8Rr8hCK9k+68f2Bfhq7OHT?=
+ =?us-ascii?Q?MgE6EWcusCc=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN7PR11MB7540.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(10070799003)(366016)(376014)(7416014); DIR:OUT;
+ SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Dtv0WoyNmumAnqPzWCX7Jn8Go+gXknfAMfOLxAKH2XfZ7xislOmRRaqeq1ih?=
+ =?us-ascii?Q?12xnNOJ7+hdaKxpDRcAeRRHdvW9C7ZMjcEYJVitE6StFeM+2f4Ul0cKcUKs1?=
+ =?us-ascii?Q?wOibX7QA9TZTWqcvRWfN0PCiRwXL/nq/+DA3W56UKLN1yUiY10iiYBJcfhQR?=
+ =?us-ascii?Q?qx9bYiPSFEzXmuMZdO9ihZNj3xtd+CpzCTVfMzMCfM2FNa0Zj81j/J4klUcj?=
+ =?us-ascii?Q?eDwRWSYuwZIImv3PzVR1uFjl1tFcB5xvSZOSkktzVtztZLyVf8mv0Tu8VS2o?=
+ =?us-ascii?Q?qECXWLkHX8KGlnIj75KDQoSTQJFj8UWF5h/9D6p4dWW+MqlNccZa+9pOUqGx?=
+ =?us-ascii?Q?fKWjAHrs18xqQSRKAWt2RlymGw5XZBB11jLMCPaMHLpqWdrXvq8p410Bmuat?=
+ =?us-ascii?Q?0lLZKjMUyFHbvRa8lRf1Ldg9tENBIi9doK7yNUn6p/iOrBSbOzL+50yUsIRg?=
+ =?us-ascii?Q?n00MZsLb4oD0jRbAz10tPRHaaYGzf5/tHkVLxyZBbANzWYiX6qrRmJScUXpe?=
+ =?us-ascii?Q?jjsJuQyPtVtg6aei8RLs4dOvMO/ReQ/K/f6e9TFWdwIcOiRDX95KiWiKt2Qk?=
+ =?us-ascii?Q?GP6pbwEBOX1yG1JOLJd4OjJ2wl+MUakEiw6L1WU/xeWh5XY92i0BfUtQxpwg?=
+ =?us-ascii?Q?S1aCLGl8mPwRbQD/eL9utWdU9M0DaI83+c1r+pMz6KzQ39DbjHgcHo9IjkqN?=
+ =?us-ascii?Q?cLqg7d4n0CXhKGOmHqYL1wuiN0DGbd6QPsPxdMdPgZGDc6bnwBaiwOhv3u36?=
+ =?us-ascii?Q?Cuf/CuI8KiY3sSZ4ldwp8WKsLb8vy4GzRDMdpaaEhtX4nO5/ggVpqxlANm+5?=
+ =?us-ascii?Q?ENc4Dr97B4OkVoEg5jx0qMXPjXw10MUkHT3xklMr0hpAclsiBlf4npj3TDTG?=
+ =?us-ascii?Q?9A5f8QTFKyXne2v2UAQQ9dqYb+tg5qyNlhhZTre8u/AmB2KJ/M0Mf3FXax8f?=
+ =?us-ascii?Q?R4VWOou2dUb2+ApzYcBt8NW/86VofQX0k0bUfzkteAY2amjgrYgrogbhZNu9?=
+ =?us-ascii?Q?u+M+gia6WIengnWCyMuxJslOeMpz6nOeB6QaD0Aj+DBstvh/9aySCUqFAA6d?=
+ =?us-ascii?Q?gAzb3rt+8m6i8KOPXtRQnYlmxVgtw3yesS43tJgN5MWHTCEa51iXtbFCaBLH?=
+ =?us-ascii?Q?sgceILV8FHBGNNARkAM9aQIC+9mvE3Wwf+2B4Oq/YdqubfaHrkeMG/5NRXCY?=
+ =?us-ascii?Q?dJbo5aOJcl4nPpnmAr61dhdFMM0NLFuOr4YqbXEWYjZzzQpCEKqagEwPEE+7?=
+ =?us-ascii?Q?8mquwRVVmAmKUBOjGuea0UAkcrk4HBgqcFGOnCj3h+5rbcwBD0WTXRff+y72?=
+ =?us-ascii?Q?f9e14G4K2Bjw84X+0iMiccbMYjF/MkUr+9LgTzpMHpJLXOrlRLFkZCVhsDEV?=
+ =?us-ascii?Q?LKPcyIY84DDsYedFfaMsWSc8cmAlaqff1TrUKO/hwP7Fb9CuXZhyDtaxioRG?=
+ =?us-ascii?Q?b1+Q5r1UCg6GxYnRPTTAYql+ZhLQDvD7oIP89eSwMgTEaZNdtxPw2Zau824T?=
+ =?us-ascii?Q?Ir+t/o9r2hq3NJLmaTFW/z2Xegj/NtkJRf9pptlxN2PnAGAJdu7vuPKtjJG6?=
+ =?us-ascii?Q?4tUugYaBLAwP3Fe47hBR7MNTceZUh59136GfzwffdB011M9T6cE4I9BGFK/+?=
+ =?us-ascii?Q?6jwOmz0EaKMTyXX9FjLylbGw00982BrqOFg9i1NS5OZeB5foYnCR4ll8aTtG?=
+ =?us-ascii?Q?MX07bQ=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 889457f6-d4e6-48d2-00bb-08dd8baa66f9
+X-MS-Exchange-CrossTenant-AuthSource: SN7PR11MB7540.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 May 2025 07:56:54.7329 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 1giccoXnmlwI3hy78N8tX8fhwRmqr34ZSYKOVYmSQTpseYXZl/0AUsoCW2Bry1ri0YJPgbGDA9K9ofj1vP5+rdxOtLWuQ7+R/xp/YoWWGAg=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH3PPFE994B740C
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1746431576; x=1777967576;
+ t=1746431864; x=1777967864;
  h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=HPafJSzg8AswL4683yI+rs2BiCy6AV8f/eteILcdfMg=;
- b=U/7uUIfaMedIKPRPuDjSrkqzzj+ImJ7Ve9EyAlUzkW3yE8h9/7EBNSgk
- NsTRm83PiBHLKe/4mFe6gXg9gpOJCgerZ6eIjlkkLPU5nqPOPd4ND/lxo
- rLTI7ZR5Ual0xyU4lhdxHRQoxcfXDMl7SJArMoLWNbxevCfzLK8Q37CW/
- 70s98gSSPEB4j7mORoAfAwooTsGFLuQ36c7F3Gyb4qpvy1zxX24Lk+o0s
- d5OG8c5oSJfsFt6Q4qKhmgTkwQNGc/DZMg0CiUYVD5EcHen8F5Ns3TQMo
- 0AradwvUb8Hq1kd3Iu4X3eWHkHiDrjmyjB+jqRHsd7APc4JrZ0SFlc3cC
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ in-reply-to:mime-version;
+ bh=p8ZCDP46p8y36meRVDzHJ/uVmBxZ8JAzsQQ/dA1KoIo=;
+ b=WP9nXly6JFLIqfTnfTbAM4bw1Vrh9sKk/3KOvBE5xjdaABZ+LptPbiYP
+ dkTYEWyguLcMxU19DATSDWtnaNX6yNXFZHlvZRbj61gF/ylabRkJ2Bin0
+ sBzkw9nDmP3FC+TpbU9dRukT/8pamXXPlghgdke2eWR2dPveDLWi9Gg0o
+ TwOlR8x3HO2IdD5SnrOFNUmKlnzwI+Vyi3AYgXsbmUOxPIYDjU/p+QNW1
+ GIlylw7O0RFj7rshgLQb28U8DL7580BviH8l0c7QIa4pvxMUKvsO5Wmky
+ xzpChmLVswjOII4FgUBZIY63fbAWMpq7v1q6z8ha6R6hnpPKjx+xZZDYo
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=U/7uUIfa
-Subject: Re: [Intel-wired-lan] [PATCH] igb: Request igb_msix_other as a
- threaded interrupt handler
+ header.s=Intel header.b=WP9nXly6
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 01/14] virtchnl: create
+ 'include/linux/intel' and move necessary header files
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -116,135 +244,110 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Sebastian,
+On Wed, Apr 30, 2025 at 09:55:45AM +0100, Simon Horman wrote:
+> On Tue, Apr 29, 2025 at 11:47:58AM -0700, Jacob Keller wrote:
+> > 
+> > 
+> > On 4/28/2025 9:15 AM, Simon Horman wrote:
+> > > On Thu, Apr 24, 2025 at 01:32:24PM +0200, Larysa Zaremba wrote:
+> > >> From: Victor Raj <victor.raj@intel.com>
+> > >>
+> > >> Move intel specific header files into new folder
+> > >> include/linux/intel.
+> > >>
+> > >> Suggested-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+> > >> Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
+> > >> Signed-off-by: Victor Raj <victor.raj@intel.com>
+> > >> Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
+> > >> ---
+> > >>  MAINTAINERS                                                 | 6 +++---
+> > >>  drivers/infiniband/hw/irdma/i40iw_if.c                      | 2 +-
+> > >>  drivers/infiniband/hw/irdma/main.h                          | 2 +-
+> > >>  drivers/infiniband/hw/irdma/osdep.h                         | 2 +-
+> > >>  drivers/net/ethernet/intel/i40e/i40e.h                      | 4 ++--
+> > >>  drivers/net/ethernet/intel/i40e/i40e_client.c               | 2 +-
+> > >>  drivers/net/ethernet/intel/i40e/i40e_common.c               | 2 +-
+> > >>  drivers/net/ethernet/intel/i40e/i40e_prototype.h            | 2 +-
+> > >>  drivers/net/ethernet/intel/i40e/i40e_txrx.c                 | 2 +-
+> > >>  drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h          | 2 +-
+> > >>  drivers/net/ethernet/intel/iavf/iavf.h                      | 2 +-
+> > >>  drivers/net/ethernet/intel/iavf/iavf_common.c               | 2 +-
+> > >>  drivers/net/ethernet/intel/iavf/iavf_main.c                 | 2 +-
+> > >>  drivers/net/ethernet/intel/iavf/iavf_prototype.h            | 2 +-
+> > >>  drivers/net/ethernet/intel/iavf/iavf_txrx.c                 | 2 +-
+> > >>  drivers/net/ethernet/intel/iavf/iavf_types.h                | 4 +---
+> > >>  drivers/net/ethernet/intel/iavf/iavf_virtchnl.c             | 2 +-
+> > >>  drivers/net/ethernet/intel/ice/ice.h                        | 2 +-
+> > >>  drivers/net/ethernet/intel/ice/ice_common.h                 | 2 +-
+> > >>  drivers/net/ethernet/intel/ice/ice_idc_int.h                | 2 +-
+> > >>  drivers/net/ethernet/intel/ice/ice_txrx_lib.c               | 2 +-
+> > >>  drivers/net/ethernet/intel/ice/ice_vf_lib.h                 | 2 +-
+> > >>  drivers/net/ethernet/intel/ice/ice_virtchnl.h               | 2 +-
+> > >>  drivers/net/ethernet/intel/idpf/idpf.h                      | 2 +-
+> > >>  drivers/net/ethernet/intel/idpf/idpf_txrx.h                 | 2 +-
+> > >>  drivers/net/ethernet/intel/libie/rx.c                       | 2 +-
+> > >>  include/linux/{net => }/intel/i40e_client.h                 | 0
+> > >>  include/linux/{net => }/intel/iidc.h                        | 0
+> > >>  include/linux/{net => }/intel/libie/rx.h                    | 0
+> > >>  include/linux/{avf => intel}/virtchnl.h                     | 0
+> > >>  .../ethernet/intel/idpf => include/linux/intel}/virtchnl2.h | 0
+> > >>  .../intel/idpf => include/linux/intel}/virtchnl2_lan_desc.h | 0
+> > >>  32 files changed, 29 insertions(+), 31 deletions(-)
+> > >>  rename include/linux/{net => }/intel/i40e_client.h (100%)
+> > >>  rename include/linux/{net => }/intel/iidc.h (100%)
+> > >>  rename include/linux/{net => }/intel/libie/rx.h (100%)
+> > >>  rename include/linux/{avf => intel}/virtchnl.h (100%)
+> > >>  rename {drivers/net/ethernet/intel/idpf => include/linux/intel}/virtchnl2.h (100%)
+> > >>  rename {drivers/net/ethernet/intel/idpf => include/linux/intel}/virtchnl2_lan_desc.h (100%)
+> > >>
+> > >> diff --git a/MAINTAINERS b/MAINTAINERS
+> > >> index 657a67f9031e..2e2a57dfea8f 100644
+> > >> --- a/MAINTAINERS
+> > >> +++ b/MAINTAINERS
+> > >> @@ -11884,8 +11884,8 @@ T:	git git://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git
+> > >>  F:	Documentation/networking/device_drivers/ethernet/intel/
+> > >>  F:	drivers/net/ethernet/intel/
+> > >>  F:	drivers/net/ethernet/intel/*/
+> > >> -F:	include/linux/avf/virtchnl.h
+> > >> -F:	include/linux/net/intel/iidc.h
+> > >> +F:	include/linux/intel/iidc.h
+> > >> +F:	include/linux/intel/virtchnl.h
+> > > 
+> > > I'm not sure that I understand the motivation for moving files out of
+> > > include/linux/net, but I guess the answer is that my suggestion, which
+> > > would be to move files into include/linux/net, is somehow less good.
+> > > 
+> > > But if file are moving out of include/linux/net then I think it would
+> > > make sense to make a corresponding update to NETWORKING DRIVERS.
+> > > 
+> > > Also, include/linux/intel, does feel a bit too general. These files
+> > > seem to relate to NICs (of some sort of flavour or another). But Intel
+> > > does a lot more than make NICs.
+> > > 
+> > 
+> > 'include/linux/net/intel' seems fine to me. I agree with moving
+> > virtchnl.h there since it is quite clear that any historical ambitions
+> > about AVF being vendor agnostic are long dead, so having it in its own
+> > 'non-intel' folder is silly.
+> > 
+> > Strictly speaking, I think the goal of moving the files is due to the
+> > fact that a lot of the core ixd code is not really network layer but
+> > instead PCI layer.
+> 
+> Sure. I was more thinking out loud in my previous email than requesting any
+> action. Thanks for filling in my understanding of the situation.
+>
 
-kernel test robot noticed the following build warnings:
+Olek suggested this because intel was the only resident in include/linux/net and 
+include/linux/intel was vacant.
+ 
+> But could we please consider updating NETWORKING DRIVERS so
+> that get_maintainers.pl can help people to CC netdev and it's maintainers
+> as appropriate?
 
-[auto build test WARNING on tnguy-next-queue/dev-queue]
-[also build test WARNING on tnguy-net-queue/dev-queue linus/master v6.15-rc5 next-20250502]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+I am not sure what kind of update do you mean, include/linux/net directory was 
+not under any maintainer. include/linux/mlx5 and include/linux/mlx4 are only 
+under vendor maintainers.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Sebastian-Andrzej-Siewior/igb-Request-igb_msix_other-as-a-threaded-interrupt-handler/20250430-225615
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-patch link:    https://lore.kernel.org/r/20250430144452.8zcAZc29%40linutronix.de
-patch subject: [Intel-wired-lan] [PATCH] igb: Request igb_msix_other as a threaded interrupt handler
-config: i386-allmodconfig (https://download.01.org/0day-ci/archive/20250505/202505051357.VxQIHWOY-lkp@intel.com/config)
-compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250505/202505051357.VxQIHWOY-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202505051357.VxQIHWOY-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/net/ethernet/intel/igb/igb_main.c: In function 'igb_request_msix':
->> drivers/net/ethernet/intel/igb/igb_main.c:916:61: warning: passing argument 4 of 'request_threaded_irq' makes integer from pointer without a cast [-Wint-conversion]
-     916 |                                    igb_msix_other, 0, netdev->name, adapter);
-         |                                                       ~~~~~~^~~~~~
-         |                                                             |
-         |                                                             char *
-   In file included from arch/x86/include/asm/highmem.h:24,
-                    from include/linux/highmem-internal.h:25,
-                    from include/linux/highmem.h:14,
-                    from include/linux/pagemap.h:11,
-                    from drivers/net/ethernet/intel/igb/igb_main.c:11:
-   include/linux/interrupt.h:153:36: note: expected 'long unsigned int' but argument is of type 'char *'
-     153 |                      unsigned long flags, const char *name, void *dev);
-         |                      ~~~~~~~~~~~~~~^~~~~
-   drivers/net/ethernet/intel/igb/igb_main.c:916:69: error: passing argument 5 of 'request_threaded_irq' from incompatible pointer type [-Werror=incompatible-pointer-types]
-     916 |                                    igb_msix_other, 0, netdev->name, adapter);
-         |                                                                     ^~~~~~~
-         |                                                                     |
-         |                                                                     struct igb_adapter *
-   include/linux/interrupt.h:153:55: note: expected 'const char *' but argument is of type 'struct igb_adapter *'
-     153 |                      unsigned long flags, const char *name, void *dev);
-         |                                           ~~~~~~~~~~~~^~~~
-   drivers/net/ethernet/intel/igb/igb_main.c:915:15: error: too few arguments to function 'request_threaded_irq'
-     915 |         err = request_threaded_irq(adapter->msix_entries[vector].vector,
-         |               ^~~~~~~~~~~~~~~~~~~~
-   include/linux/interrupt.h:151:1: note: declared here
-     151 | request_threaded_irq(unsigned int irq, irq_handler_t handler,
-         | ^~~~~~~~~~~~~~~~~~~~
-   cc1: some warnings being treated as errors
-
-
-vim +/request_threaded_irq +916 drivers/net/ethernet/intel/igb/igb_main.c
-
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  901  
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  902  /**
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  903   *  igb_request_msix - Initialize MSI-X interrupts
-b980ac18c95f32 drivers/net/ethernet/intel/igb/igb_main.c Jeff Kirsher              2013-02-23  904   *  @adapter: board private structure to initialize
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  905   *
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  906   *  igb_request_msix allocates MSI-X vectors and requests interrupts from the
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  907   *  kernel.
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  908   **/
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  909  static int igb_request_msix(struct igb_adapter *adapter)
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  910  {
-6c19d772618fea drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  911  	unsigned int num_q_vectors = adapter->num_q_vectors;
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  912  	struct net_device *netdev = adapter->netdev;
-52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  913  	int i, err = 0, vector = 0, free_vector = 0;
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  914  
-086e5c4c0db155 drivers/net/ethernet/intel/igb/igb_main.c Sebastian Andrzej Siewior 2025-04-30  915  	err = request_threaded_irq(adapter->msix_entries[vector].vector,
-50d325bb05cef2 drivers/net/ethernet/intel/igb/igb_main.c Wander Lairson Costa      2024-11-06 @916  				   igb_msix_other, 0, netdev->name, adapter);
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  917  	if (err)
-52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  918  		goto err_out;
-047e0030f1e601 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  919  
-6c19d772618fea drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  920  	if (num_q_vectors > MAX_Q_VECTORS) {
-6c19d772618fea drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  921  		num_q_vectors = MAX_Q_VECTORS;
-6c19d772618fea drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  922  		dev_warn(&adapter->pdev->dev,
-6c19d772618fea drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  923  			 "The number of queue vectors (%d) is higher than max allowed (%d)\n",
-6c19d772618fea drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  924  			 adapter->num_q_vectors, MAX_Q_VECTORS);
-6c19d772618fea drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  925  	}
-6c19d772618fea drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  926  	for (i = 0; i < num_q_vectors; i++) {
-047e0030f1e601 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  927  		struct igb_q_vector *q_vector = adapter->q_vector[i];
-047e0030f1e601 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  928  
-52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  929  		vector++;
-52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  930  
-7b06a6909555ff drivers/net/ethernet/intel/igb/igb_main.c Jarod Wilson              2015-10-19  931  		q_vector->itr_register = adapter->io_addr + E1000_EITR(vector);
-047e0030f1e601 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  932  
-0ba829943c5180 drivers/net/ethernet/intel/igb/igb_main.c Alexander Duyck           2011-08-26  933  		if (q_vector->rx.ring && q_vector->tx.ring)
-047e0030f1e601 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  934  			sprintf(q_vector->name, "%s-TxRx-%u", netdev->name,
-0ba829943c5180 drivers/net/ethernet/intel/igb/igb_main.c Alexander Duyck           2011-08-26  935  				q_vector->rx.ring->queue_index);
-0ba829943c5180 drivers/net/ethernet/intel/igb/igb_main.c Alexander Duyck           2011-08-26  936  		else if (q_vector->tx.ring)
-047e0030f1e601 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  937  			sprintf(q_vector->name, "%s-tx-%u", netdev->name,
-0ba829943c5180 drivers/net/ethernet/intel/igb/igb_main.c Alexander Duyck           2011-08-26  938  				q_vector->tx.ring->queue_index);
-0ba829943c5180 drivers/net/ethernet/intel/igb/igb_main.c Alexander Duyck           2011-08-26  939  		else if (q_vector->rx.ring)
-047e0030f1e601 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  940  			sprintf(q_vector->name, "%s-rx-%u", netdev->name,
-0ba829943c5180 drivers/net/ethernet/intel/igb/igb_main.c Alexander Duyck           2011-08-26  941  				q_vector->rx.ring->queue_index);
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  942  		else
-047e0030f1e601 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  943  			sprintf(q_vector->name, "%s-unused", netdev->name);
-047e0030f1e601 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  944  
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  945  		err = request_irq(adapter->msix_entries[vector].vector,
-a0607fd3a25ba1 drivers/net/igb/igb_main.c                Joe Perches               2009-11-18  946  				  igb_msix_ring, 0, q_vector->name,
-047e0030f1e601 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  947  				  q_vector);
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  948  		if (err)
-52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  949  			goto err_free;
-1911329ae9ce05 drivers/net/ethernet/intel/igb/igb_main.c Kurt Kanzenbach           2025-03-19  950  
-1911329ae9ce05 drivers/net/ethernet/intel/igb/igb_main.c Kurt Kanzenbach           2025-03-19  951  		netif_napi_set_irq(&q_vector->napi,
-1911329ae9ce05 drivers/net/ethernet/intel/igb/igb_main.c Kurt Kanzenbach           2025-03-19  952  				   adapter->msix_entries[vector].vector);
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  953  	}
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  954  
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  955  	igb_configure_msix(adapter);
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  956  	return 0;
-52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  957  
-52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  958  err_free:
-52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  959  	/* free already assigned IRQs */
-52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  960  	free_irq(adapter->msix_entries[free_vector++].vector, adapter);
-52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  961  
-52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  962  	vector--;
-52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  963  	for (i = 0; i < vector; i++) {
-52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  964  		free_irq(adapter->msix_entries[free_vector++].vector,
-52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  965  			 adapter->q_vector[i]);
-52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  966  	}
-52285b762b3681 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  967  err_out:
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  968  	return err;
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  969  }
-9d5c824399dea8 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  970  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+For sure I should add include/linux/intel/* under Tony.
+Do you think it also should be added to general networking maintainers?
