@@ -1,107 +1,143 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6AEF1AA9631
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 May 2025 16:47:23 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 07EF9AA975F
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 May 2025 17:23:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1D1844055F;
-	Mon,  5 May 2025 14:47:22 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CB95081E17;
+	Mon,  5 May 2025 15:23:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id QM1eLAontGuu; Mon,  5 May 2025 14:47:21 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 35T6iguI8w_O; Mon,  5 May 2025 15:23:13 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6B8D640561
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 15BE981DF3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1746456440;
-	bh=5zk9g7of7ePVo+KRkEdBj6czyMLA87NIuzRG+Y9lXf4=;
+	s=default; t=1746458593;
+	bh=MoWRCytYofcbmuOStnCO0pg77uWdv/IDSrUkvPfyl/I=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=GhdD2D+QtKlWN7D7y37dmfQwwQ9/ckoUOtolJKV+bk08GYcSaJ7FRfn0ncKqWWldQ
-	 /6Hu5ODkue35EeZ65lEAudV3Uh4jzc/Kaj0Oh/s79dkew1XQ6EDUqY6RdzoQxXguZR
-	 r8cjcRDw2L8MNszTkckcPmNnwEivooG/QNEcAbjHRuPzXTr4uoMFLiuKG9TaNXPi0t
-	 H1OLed2B4bJhkKar+r+oEJ1+Hlhq/V661lFadgk/ZLwHN6G6ofATTatFBeLQz5kS6l
-	 B2tmy51qqPINA0lm5zj1pPAhQ+7ObYT8RVRbVT+tiVO8P5BcOASagYSvUqaJjMdQH8
-	 wSW3WLtc41u+A==
+	b=n0w72NkKNNo+4Dn5rDjsI+L5mYeYJPYgN/i6Ljg/rZPVOUirSwhyygxsvrs3JjJXA
+	 Fa3kUP43BsxAZ+myruoqDClK2nvkbM6WH0NWnUDynFy/hSNAcZ9jOf2xy2sjgo/kFb
+	 Jm+tsDaJfXjS8k3ExKfXzZ4LHLM2ho1edc/uhOULEVhGhWLSCATRG/5vz7guS0lk/f
+	 fUbrxC3HK6A9vDeg5hWHCuZOr3lpr/lBc2ZIlN/hu206ugby+NNqbFHc/G4kt56Kiu
+	 2+C4A3vmdfGY8AQAewptnGAoWeNa1dtPTA9tdwKnL3Y5L3wVySG+Gpm8GgvAddK92v
+	 NGn9SPl+Swl0A==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6B8D640561;
-	Mon,  5 May 2025 14:47:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 15BE981DF3;
+	Mon,  5 May 2025 15:23:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 2BA4CEA
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 14:47:18 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 237FA12E
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 15:23:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1B1B3400FF
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 14:47:18 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 12BAB605A9
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 15:23:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7Vf5mGkz7V7E for <intel-wired-lan@lists.osuosl.org>;
- Mon,  5 May 2025 14:47:17 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org ED91C4010F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ED91C4010F
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
- by smtp2.osuosl.org (Postfix) with ESMTPS id ED91C4010F
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 14:47:16 +0000 (UTC)
-X-CSE-ConnectionGUID: 9T1QiFghQImrB32sX0ajdg==
-X-CSE-MsgGUID: sMXAaVbGT7uUW08evp8u2Q==
-X-IronPort-AV: E=McAfee;i="6700,10204,11424"; a="65601528"
-X-IronPort-AV: E=Sophos;i="6.15,262,1739865600"; d="scan'208";a="65601528"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
- by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 May 2025 07:47:15 -0700
-X-CSE-ConnectionGUID: 7TXq1Rm9QciuytgD3KTM1g==
-X-CSE-MsgGUID: Am5BMt+bTkaEe4DPpej3nQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,262,1739865600"; d="scan'208";a="135610547"
-Received: from lkp-server01.sh.intel.com (HELO 1992f890471c) ([10.239.97.150])
- by fmviesa008.fm.intel.com with ESMTP; 05 May 2025 07:47:13 -0700
-Received: from kbuild by 1992f890471c with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1uBx66-0005oH-04;
- Mon, 05 May 2025 14:47:10 +0000
-Date: Mon, 5 May 2025 22:46:21 +0800
-From: kernel test robot <lkp@intel.com>
-To: Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- intel-wired-lan@lists.osuosl.org, linux-rt-devel@lists.linux.dev
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Clark Williams <clrkwllms@kernel.org>,
- Steven Rostedt <rostedt@goodmis.org>, Thomas Gleixner <tglx@linutronix.de>,
- Wander Lairson Costa <wander@redhat.com>
-Message-ID: <202505052153.9092Udjg-lkp@intel.com>
-References: <20250430144452.8zcAZc29@linutronix.de>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 9ogWUzVFZ7fE for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  5 May 2025 15:23:10 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=85.10.215.232;
+ helo=dediextern.your-server.de; envelope-from=tobias.boehm@hetzner-cloud.de;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A2C806059F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A2C806059F
+Received: from dediextern.your-server.de (dediextern.your-server.de
+ [85.10.215.232])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A2C806059F
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 15:23:09 +0000 (UTC)
+Received: from sslproxy06.your-server.de ([78.46.172.3])
+ by dediextern.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
+ (Exim 4.94.2) (envelope-from <tobias.boehm@hetzner-cloud.de>)
+ id 1uBxep-000NE8-6S; Mon, 05 May 2025 17:23:03 +0200
+Received: from [2003:f6:af22:6538:f6a8:dff:fe1e:4c1d]
+ by sslproxy06.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
+ (Exim 4.96) (envelope-from <tobias.boehm@hetzner-cloud.de>)
+ id 1uBxeo-0003en-0Z; Mon, 05 May 2025 17:23:02 +0200
+Message-ID: <1713bf39-2bcb-4a43-94c7-a61ff97e2522@hetzner-cloud.de>
+Date: Mon, 5 May 2025 17:23:02 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250430144452.8zcAZc29@linutronix.de>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1746456437; x=1777992437;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=wE4nT2xLxpIB7XTJiSrioIseWEG9d23zD4aDgBKd05Q=;
- b=VaqjCK/b68Zg2F2H+l0BN0sHN0aYNBET90u2Q0OlCXnx6ul72Va/YmF1
- HXU2XyEOB0ZF2F0OkNbqRvvyqwkmAIx+S5vX013qhVVLvxXIO26b+7Gct
- WAwDgMjsu6ATw0oHojck6ZoZyzLppyp6VjZY/fkzR7GUN2RhclROtKUEu
- Np4vCVqxanmhMXs6wFuWdP7do7RHfe5+bgYAU19nqVFrXrJocmrfAhPug
- 7t8/YAgEBFlqB6igwsOT3FE77XLqwI8BteeSghcAmhAWkDpuFPySJ7tTa
- xUOd1LdZoJebK736os3wH8vUGhI05iM5tUPHcU+otF1dmzYpjbqayiY1b
- Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=VaqjCK/b
-Subject: Re: [Intel-wired-lan] [PATCH] igb: Request igb_msix_other as a
- threaded interrupt handler
+User-Agent: Mozilla Thunderbird
+From: =?UTF-8?Q?Tobias_B=C3=B6hm?= <tobias.boehm@hetzner-cloud.de>
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Marcus Wichelmann <marcus.wichelmann@hetzner-cloud.de>
+Cc: Michal Kubiak <michal.kubiak@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Jay Vosburgh <jv@jvosburgh.net>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, bpf@vger.kernel.org, linux-kernel@vger.kernel.org,
+ sdn@hetzner-cloud.de
+References: <d33f0ab4-4dc4-49cd-bbd0-055f58dd6758@hetzner-cloud.de>
+ <Z/fWHYETBYQuCno5@localhost.localdomain>
+ <ff7ca6ea-a122-4d7d-9ef2-d091cbdd96d2@hetzner-cloud.de>
+ <Z/jPgceDT4gRu9/R@localhost.localdomain> <aAEUcXIRnWolGWnA@boxer>
+ <b06ede77-541b-453f-9e7a-79f3e5591f66@hetzner-cloud.de>
+ <aAkz/+Rx5w3OHH4/@boxer>
+ <eca1880f-253a-4955-afe6-732d7c6926ee@hetzner-cloud.de>
+Content-Language: en-US
+Autocrypt: addr=tobias.boehm@hetzner-cloud.de; keydata=
+ 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
+ p0ms75naziM=
+Organization: Hetzner Cloud GmbH
+In-Reply-To: <eca1880f-253a-4955-afe6-732d7c6926ee@hetzner-cloud.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Authenticated-Sender: tobias.boehm@hetzner-cloud.de
+X-Virus-Scanned: Clear (ClamAV 1.0.7/27629/Mon May  5 10:35:28 2025)
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=hetzner-cloud.de
+Subject: Re: [Intel-wired-lan] [BUG] ixgbe: Detected Tx Unit Hang (XDP)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -117,175 +153,209 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Sebastian,
+Am 24.04.25 um 12:19 schrieb Tobias Böhm:
+> Am 23.04.25 um 20:39 schrieb Maciej Fijalkowski:
+>> On Wed, Apr 23, 2025 at 04:20:07PM +0200, Marcus Wichelmann wrote:
+>>> Am 17.04.25 um 16:47 schrieb Maciej Fijalkowski:
+>>>> On Fri, Apr 11, 2025 at 10:14:57AM +0200, Michal Kubiak wrote:
+>>>>> On Thu, Apr 10, 2025 at 04:54:35PM +0200, Marcus Wichelmann wrote:
+>>>>>> Am 10.04.25 um 16:30 schrieb Michal Kubiak:
+>>>>>>> On Wed, Apr 09, 2025 at 05:17:49PM +0200, Marcus Wichelmann wrote:
+>>>>>>>> Hi,
+>>>>>>>>
+>>>>>>>> in a setup where I use native XDP to redirect packets to a 
+>>>>>>>> bonding interface
+>>>>>>>> that's backed by two ixgbe slaves, I noticed that the ixgbe 
+>>>>>>>> driver constantly
+>>>>>>>> resets the NIC with the following kernel output:
+>>>>>>>>
+>>>>>>>>    ixgbe 0000:01:00.1 ixgbe-x520-2: Detected Tx Unit Hang (XDP)
+>>>>>>>>      Tx Queue             <4>
+>>>>>>>>      TDH, TDT             <17e>, <17e>
+>>>>>>>>      next_to_use          <181>
+>>>>>>>>      next_to_clean        <17e>
+>>>>>>>>    tx_buffer_info[next_to_clean]
+>>>>>>>>      time_stamp           <0>
+>>>>>>>>      jiffies              <10025c380>
+>>>>>>>>    ixgbe 0000:01:00.1 ixgbe-x520-2: tx hang 19 detected on queue 
+>>>>>>>> 4, resetting adapter
+>>>>>>>>    ixgbe 0000:01:00.1 ixgbe-x520-2: initiating reset due to tx 
+>>>>>>>> timeout
+>>>>>>>>    ixgbe 0000:01:00.1 ixgbe-x520-2: Reset adapter
+>>>>>>>>
+>>>>>>>> This only occurs in combination with a bonding interface and 
+>>>>>>>> XDP, so I don't
+>>>>>>>> know if this is an issue with ixgbe or the bonding driver.
+>>>>>>>> I first discovered this with Linux 6.8.0-57, but kernel 6.14.0 
+>>>>>>>> and 6.15.0-rc1
+>>>>>>>> show the same issue.
+>>>>>>>>
+>>>>>>>>
+>>>>>>>> I managed to reproduce this bug in a lab environment. Here are 
+>>>>>>>> some details
+>>>>>>>> about my setup and the steps to reproduce the bug:
+>>>>>>>>
+>>>>>>>> [...]
+>>>>>>>>
+>>>>>>>> Do you have any ideas what may be causing this issue or what I 
+>>>>>>>> can do to
+>>>>>>>> diagnose this further?
+>>>>>>>>
+>>>>>>>> Please let me know when I should provide any more information.
+>>>>>>>>
+>>>>>>>>
+>>>>>>>> Thanks!
+>>>>>>>> Marcus
+>>>>>>>>
+>>>>>>>
+>>>>> [...]
+>>>>>
+>>>>> Hi Marcus,
+>>>>>
+>>>>>> thank you for looking into it. And not even 24 hours after my 
+>>>>>> report, I'm
+>>>>>> very impressed! ;)
+>>>>>
+>>>>> Thanks! :-)
+>>>>>
+>>>>>> Interesting. I just tried again but had no luck yet with 
+>>>>>> reproducing it
+>>>>>> without a bonding interface. May I ask how your setup looks like?
+>>>>>
+>>>>> For now, I've just grabbed the first available system with the HW
+>>>>> controlled by the "ixgbe" driver. In my case it was:
+>>>>>
+>>>>>    Ethernet controller: Intel Corporation Ethernet Controller X550
+>>>>>
+>>>>> Also, for my first attempt, I didn't use the upstream kernel - I 
+>>>>> just tried
+>>>>> the kernel installed on that system. It was the Fedora kernel:
+>>>>>
+>>>>>    6.12.8-200.fc41.x86_64
+>>>>>
+>>>>>
+>>>>> I think that may be the "beauty" of timing issues - sometimes you 
+>>>>> can change
+>>>>> just one piece in your system and get a completely different 
+>>>>> replication ratio.
+>>>>> Anyway, the higher the repro probability, the easier it is to debug
+>>>>> the timing problem. :-)
+>>>>
+>>>> Hi Marcus, to break the silence could you try to apply the diff 
+>>>> below on
+>>>> your side?
+>>>
+>>> Hi, thank you for the patch. We've tried it and with your changes we 
+>>> can no
+>>> longer trigger the error and the NIC is no longer being reset.
+>>>
+>>>> We see several issues around XDP queues in ixgbe, but before we
+>>>> proceed let's this small change on your side.
+>>>
+>>> How confident are you that this patch is sufficient to make things 
+>>> stable enough
+>>> for production use? Was it just the Tx hang detection that was 
+>>> misbehaving for
+>>> the XDP case, or is there an underlying issue with the XDP queues 
+>>> that is not
+>>> solved by disabling the detection for it?
+>>
+>> I believe that correct way to approach this is to move the Tx hang
+>> detection onto ixgbe_tx_timeout() as that is the place where this logic
+>> belongs to. By doing so I suppose we would kill two birds with one stone
+>> as mentioned ndo is called under netdev watchdog which is not a subject
+>> for XDP Tx queues.
+>>
+>>>
+>>> With our current setup we cannot verify accurately, that we have no 
+>>> packet loss
+>>> or stuck queues. We can do additional tests to verify that.
+> 
+> 
+> Hi Maciej,
+> 
+> I'm a colleague of Marcus and involved in the testing as well.
+>>>> Additional question, do you have enabled pause frames on your setup?
+>>>
+>>> Pause frames were enabled, but we can also reproduce it after 
+>>> disabling them,
+>>> without your patch.
+>>
+>> Please give your setup a go with pause frames enabled and applied patch
+>> that i shared previously and let us see the results. As said above I do
+>> not think it is correct to check for hung queues in Tx descriptor 
+>> cleaning
+>> routine. This is a job of ndo_tx_timeout callback.
+>>
+> 
+> We have tested with pause frames enabled and applied patch and can not 
+> trigger the error anymore in our lab setup.
+> 
+>>>
+>>> Thanks!
+>>
+>> Thanks for feedback and testing. I'll provide a proper fix tomorrow 
+>> and CC
+>> you so you could take it for a spin.
+>>
+> 
+> That sounds great. We'd be happy to test with the proper fix in our 
+> original setup.
 
-kernel test robot noticed the following build errors:
+Hi,
 
-[auto build test ERROR on tnguy-next-queue/dev-queue]
-[also build test ERROR on tnguy-net-queue/dev-queue linus/master v6.15-rc5 next-20250502]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+During further testing with this patch applied we noticed new warnings 
+that show up. We've also tested with the new patch sent ("[PATCH 
+iwl-net] ixgbe: fix ndo_xdp_xmit() workloads") and see the same warnings.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Sebastian-Andrzej-Siewior/igb-Request-igb_msix_other-as-a-threaded-interrupt-handler/20250430-225615
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-patch link:    https://lore.kernel.org/r/20250430144452.8zcAZc29%40linutronix.de
-patch subject: [Intel-wired-lan] [PATCH] igb: Request igb_msix_other as a threaded interrupt handler
-config: x86_64-allyesconfig (https://download.01.org/0day-ci/archive/20250505/202505052153.9092Udjg-lkp@intel.com/config)
-compiler: clang version 20.1.2 (https://github.com/llvm/llvm-project 58df0ef89dd64126512e4ee27b4ac3fd8ddf6247)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250505/202505052153.9092Udjg-lkp@intel.com/reproduce)
+I'm sending this observation to this thread because I'm not sure if it 
+is related to those patches or if it was already present but hidden by 
+the resets of the original issue reported by Marcus.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202505052153.9092Udjg-lkp@intel.com/
+After processing test traffic (~10kk packets as described in Marcus' 
+reproducer setup) and idling for a minute the following warnings keep 
+being logged as long as the NIC idles:
 
-All errors (new ones prefixed by >>):
+   page_pool_release_retry() stalled pool shutdown: id 968, 2 inflight 
+60 sec
+   page_pool_release_retry() stalled pool shutdown: id 963, 2 inflight 
+60 sec
+   page_pool_release_retry() stalled pool shutdown: id 968, 2 inflight 
+120 sec
+   page_pool_release_retry() stalled pool shutdown: id 963, 2 inflight 
+120 sec
+   page_pool_release_retry() stalled pool shutdown: id 968, 2 inflight 
+181 sec
+   page_pool_release_retry() stalled pool shutdown: id 963, 2 inflight 
+181 sec
+   page_pool_release_retry() stalled pool shutdown: id 968, 2 inflight 
+241 sec
+   page_pool_release_retry() stalled pool shutdown: id 963, 2 inflight 
+241 sec
 
->> drivers/net/ethernet/intel/igb/igb_main.c:916:48: error: too few arguments to function call, expected 6, have 5
-     915 |         err = request_threaded_irq(adapter->msix_entries[vector].vector,
-         |               ~~~~~~~~~~~~~~~~~~~~
-     916 |                                    igb_msix_other, 0, netdev->name, adapter);
-         |                                                                            ^
-   include/linux/interrupt.h:151:1: note: 'request_threaded_irq' declared here
-     151 | request_threaded_irq(unsigned int irq, irq_handler_t handler,
-         | ^                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     152 |                      irq_handler_t thread_fn,
-         |                      ~~~~~~~~~~~~~~~~~~~~~~~~
-     153 |                      unsigned long flags, const char *name, void *dev);
-         |                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/net/ethernet/intel/igb/igb_main.c:3229:46: warning: shift count >= width of type [-Wshift-count-overflow]
-    3229 |         err = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(64));
-         |                                                     ^~~~~~~~~~~~~~~~
-   include/linux/dma-mapping.h:73:54: note: expanded from macro 'DMA_BIT_MASK'
-      73 | #define DMA_BIT_MASK(n) (((n) == 64) ? ~0ULL : ((1ULL<<(n))-1))
-         |                                                      ^ ~~~
-   drivers/net/ethernet/intel/igb/igb_main.c:6199:14: warning: division by zero is undefined [-Wdivision-by-zero]
-    6199 |         cmd_type |= IGB_SET_FLAG(tx_flags, IGB_TX_FLAGS_VLAN,
-         |                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    6200 |                                  (E1000_ADVTXD_DCMD_VLE));
-         |                                  ~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/net/ethernet/intel/igb/igb_main.c:6189:26: note: expanded from macro 'IGB_SET_FLAG'
-    6189 |          ((u32)(_input & _flag) / (_flag / _result)))
-         |                                 ^ ~~~~~~~~~~~~~~~~~
-   drivers/net/ethernet/intel/igb/igb_main.c:6203:14: warning: division by zero is undefined [-Wdivision-by-zero]
-    6203 |         cmd_type |= IGB_SET_FLAG(tx_flags, IGB_TX_FLAGS_TSO,
-         |                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    6204 |                                  (E1000_ADVTXD_DCMD_TSE));
-         |                                  ~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/net/ethernet/intel/igb/igb_main.c:6189:26: note: expanded from macro 'IGB_SET_FLAG'
-    6189 |          ((u32)(_input & _flag) / (_flag / _result)))
-         |                                 ^ ~~~~~~~~~~~~~~~~~
-   drivers/net/ethernet/intel/igb/igb_main.c:6207:14: warning: division by zero is undefined [-Wdivision-by-zero]
-    6207 |         cmd_type |= IGB_SET_FLAG(tx_flags, IGB_TX_FLAGS_TSTAMP,
-         |                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    6208 |                                  (E1000_ADVTXD_MAC_TSTAMP));
-         |                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/net/ethernet/intel/igb/igb_main.c:6189:26: note: expanded from macro 'IGB_SET_FLAG'
-    6189 |          ((u32)(_input & _flag) / (_flag / _result)))
-         |                                 ^ ~~~~~~~~~~~~~~~~~
-   drivers/net/ethernet/intel/igb/igb_main.c:6211:14: warning: division by zero is undefined [-Wdivision-by-zero]
-    6211 |         cmd_type ^= IGB_SET_FLAG(skb->no_fcs, 1, E1000_ADVTXD_DCMD_IFCS);
-         |                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/net/ethernet/intel/igb/igb_main.c:6189:26: note: expanded from macro 'IGB_SET_FLAG'
-    6189 |          ((u32)(_input & _flag) / (_flag / _result)))
-         |                                 ^ ~~~~~~~~~~~~~~~~~
-   drivers/net/ethernet/intel/igb/igb_main.c:6227:19: warning: division by zero is undefined [-Wdivision-by-zero]
-    6227 |         olinfo_status |= IGB_SET_FLAG(tx_flags,
-         |                          ^~~~~~~~~~~~~~~~~~~~~~
-    6228 |                                       IGB_TX_FLAGS_CSUM,
-         |                                       ~~~~~~~~~~~~~~~~~~
-    6229 |                                       (E1000_TXD_POPTS_TXSM << 8));
-         |                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/net/ethernet/intel/igb/igb_main.c:6189:26: note: expanded from macro 'IGB_SET_FLAG'
-    6189 |          ((u32)(_input & _flag) / (_flag / _result)))
-         |                                 ^ ~~~~~~~~~~~~~~~~~
-   drivers/net/ethernet/intel/igb/igb_main.c:6232:19: warning: division by zero is undefined [-Wdivision-by-zero]
-    6232 |         olinfo_status |= IGB_SET_FLAG(tx_flags,
-         |                          ^~~~~~~~~~~~~~~~~~~~~~
-    6233 |                                       IGB_TX_FLAGS_IPV4,
-         |                                       ~~~~~~~~~~~~~~~~~~
-    6234 |                                       (E1000_TXD_POPTS_IXSM << 8));
-         |                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/net/ethernet/intel/igb/igb_main.c:6189:26: note: expanded from macro 'IGB_SET_FLAG'
-    6189 |          ((u32)(_input & _flag) / (_flag / _result)))
-         |                                 ^ ~~~~~~~~~~~~~~~~~
-   7 warnings and 1 error generated.
+Just sending a single packet makes the warnings stop being logged.
 
+After sending heavy test traffic again new warnings start to be logged 
+after a minute of idling:
 
-vim +916 drivers/net/ethernet/intel/igb/igb_main.c
+   page_pool_release_retry() stalled pool shutdown: id 987, 2 inflight 
+60 sec
+   page_pool_release_retry() stalled pool shutdown: id 979, 2 inflight 
+60 sec
+   page_pool_release_retry() stalled pool shutdown: id 987, 2 inflight 
+120 sec
+   page_pool_release_retry() stalled pool shutdown: id 979, 2 inflight 
+120 sec
 
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  901  
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  902  /**
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  903   *  igb_request_msix - Initialize MSI-X interrupts
-b980ac18c95f325 drivers/net/ethernet/intel/igb/igb_main.c Jeff Kirsher              2013-02-23  904   *  @adapter: board private structure to initialize
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  905   *
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  906   *  igb_request_msix allocates MSI-X vectors and requests interrupts from the
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  907   *  kernel.
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  908   **/
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  909  static int igb_request_msix(struct igb_adapter *adapter)
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  910  {
-6c19d772618fea4 drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  911  	unsigned int num_q_vectors = adapter->num_q_vectors;
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  912  	struct net_device *netdev = adapter->netdev;
-52285b762b36816 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  913  	int i, err = 0, vector = 0, free_vector = 0;
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  914  
-086e5c4c0db155f drivers/net/ethernet/intel/igb/igb_main.c Sebastian Andrzej Siewior 2025-04-30  915  	err = request_threaded_irq(adapter->msix_entries[vector].vector,
-50d325bb05cef24 drivers/net/ethernet/intel/igb/igb_main.c Wander Lairson Costa      2024-11-06 @916  				   igb_msix_other, 0, netdev->name, adapter);
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  917  	if (err)
-52285b762b36816 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  918  		goto err_out;
-047e0030f1e6012 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  919  
-6c19d772618fea4 drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  920  	if (num_q_vectors > MAX_Q_VECTORS) {
-6c19d772618fea4 drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  921  		num_q_vectors = MAX_Q_VECTORS;
-6c19d772618fea4 drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  922  		dev_warn(&adapter->pdev->dev,
-6c19d772618fea4 drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  923  			 "The number of queue vectors (%d) is higher than max allowed (%d)\n",
-6c19d772618fea4 drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  924  			 adapter->num_q_vectors, MAX_Q_VECTORS);
-6c19d772618fea4 drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  925  	}
-6c19d772618fea4 drivers/net/ethernet/intel/igb/igb_main.c Aleksandr Loktionov       2021-04-22  926  	for (i = 0; i < num_q_vectors; i++) {
-047e0030f1e6012 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  927  		struct igb_q_vector *q_vector = adapter->q_vector[i];
-047e0030f1e6012 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  928  
-52285b762b36816 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  929  		vector++;
-52285b762b36816 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  930  
-7b06a6909555ffb drivers/net/ethernet/intel/igb/igb_main.c Jarod Wilson              2015-10-19  931  		q_vector->itr_register = adapter->io_addr + E1000_EITR(vector);
-047e0030f1e6012 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  932  
-0ba829943c5180d drivers/net/ethernet/intel/igb/igb_main.c Alexander Duyck           2011-08-26  933  		if (q_vector->rx.ring && q_vector->tx.ring)
-047e0030f1e6012 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  934  			sprintf(q_vector->name, "%s-TxRx-%u", netdev->name,
-0ba829943c5180d drivers/net/ethernet/intel/igb/igb_main.c Alexander Duyck           2011-08-26  935  				q_vector->rx.ring->queue_index);
-0ba829943c5180d drivers/net/ethernet/intel/igb/igb_main.c Alexander Duyck           2011-08-26  936  		else if (q_vector->tx.ring)
-047e0030f1e6012 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  937  			sprintf(q_vector->name, "%s-tx-%u", netdev->name,
-0ba829943c5180d drivers/net/ethernet/intel/igb/igb_main.c Alexander Duyck           2011-08-26  938  				q_vector->tx.ring->queue_index);
-0ba829943c5180d drivers/net/ethernet/intel/igb/igb_main.c Alexander Duyck           2011-08-26  939  		else if (q_vector->rx.ring)
-047e0030f1e6012 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  940  			sprintf(q_vector->name, "%s-rx-%u", netdev->name,
-0ba829943c5180d drivers/net/ethernet/intel/igb/igb_main.c Alexander Duyck           2011-08-26  941  				q_vector->rx.ring->queue_index);
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  942  		else
-047e0030f1e6012 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  943  			sprintf(q_vector->name, "%s-unused", netdev->name);
-047e0030f1e6012 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  944  
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  945  		err = request_irq(adapter->msix_entries[vector].vector,
-a0607fd3a25ba18 drivers/net/igb/igb_main.c                Joe Perches               2009-11-18  946  				  igb_msix_ring, 0, q_vector->name,
-047e0030f1e6012 drivers/net/igb/igb_main.c                Alexander Duyck           2009-10-27  947  				  q_vector);
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  948  		if (err)
-52285b762b36816 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  949  			goto err_free;
-1911329ae9ce059 drivers/net/ethernet/intel/igb/igb_main.c Kurt Kanzenbach           2025-03-19  950  
-1911329ae9ce059 drivers/net/ethernet/intel/igb/igb_main.c Kurt Kanzenbach           2025-03-19  951  		netif_napi_set_irq(&q_vector->napi,
-1911329ae9ce059 drivers/net/ethernet/intel/igb/igb_main.c Kurt Kanzenbach           2025-03-19  952  				   adapter->msix_entries[vector].vector);
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  953  	}
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  954  
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  955  	igb_configure_msix(adapter);
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  956  	return 0;
-52285b762b36816 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  957  
-52285b762b36816 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  958  err_free:
-52285b762b36816 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  959  	/* free already assigned IRQs */
-52285b762b36816 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  960  	free_irq(adapter->msix_entries[free_vector++].vector, adapter);
-52285b762b36816 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  961  
-52285b762b36816 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  962  	vector--;
-52285b762b36816 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  963  	for (i = 0; i < vector; i++) {
-52285b762b36816 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  964  		free_irq(adapter->msix_entries[free_vector++].vector,
-52285b762b36816 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  965  			 adapter->q_vector[i]);
-52285b762b36816 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  966  	}
-52285b762b36816 drivers/net/ethernet/intel/igb/igb_main.c Stefan Assmann            2012-12-04  967  err_out:
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  968  	return err;
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  969  }
-9d5c824399dea88 drivers/net/igb/igb_main.c                Auke Kok                  2008-01-24  970  
+Detaching the XDP program stops the warnings as well.
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+As before pause frames were enabled.
+
+Just like with the original issue we were not always successful to 
+reproduce those warnings. With more traffic chances seem to be higher to 
+trigger it.
+
+Please let me know if I should provide any further information.
+
+Thanks,
+Tobias
