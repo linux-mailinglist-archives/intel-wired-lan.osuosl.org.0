@@ -1,143 +1,108 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 07EF9AA975F
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 May 2025 17:23:16 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id F2F30AA9D07
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 May 2025 22:14:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CB95081E17;
-	Mon,  5 May 2025 15:23:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 586DF40807;
+	Mon,  5 May 2025 20:14:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 35T6iguI8w_O; Mon,  5 May 2025 15:23:13 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id BxDO2XDpCGnS; Mon,  5 May 2025 20:14:42 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 15BE981DF3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8B7C3405FD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1746458593;
-	bh=MoWRCytYofcbmuOStnCO0pg77uWdv/IDSrUkvPfyl/I=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=n0w72NkKNNo+4Dn5rDjsI+L5mYeYJPYgN/i6Ljg/rZPVOUirSwhyygxsvrs3JjJXA
-	 Fa3kUP43BsxAZ+myruoqDClK2nvkbM6WH0NWnUDynFy/hSNAcZ9jOf2xy2sjgo/kFb
-	 Jm+tsDaJfXjS8k3ExKfXzZ4LHLM2ho1edc/uhOULEVhGhWLSCATRG/5vz7guS0lk/f
-	 fUbrxC3HK6A9vDeg5hWHCuZOr3lpr/lBc2ZIlN/hu206ugby+NNqbFHc/G4kt56Kiu
-	 2+C4A3vmdfGY8AQAewptnGAoWeNa1dtPTA9tdwKnL3Y5L3wVySG+Gpm8GgvAddK92v
-	 NGn9SPl+Swl0A==
+	s=default; t=1746476082;
+	bh=cXBrNCrJ/nxEFnAiUgcKZGOxgOZ/CMUqHp9sp+2q/HU=;
+	h=From:Date:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=tFR/DaIPaYKfDzO8BRZzT195gPfn0yfEiaeg3Gd7051nCkVvoWpJQd7AVf9Xu+Ds3
+	 xydmAvTxTafZhDr2mf5MgI1qNpfQThZ+VxDOH+yzOXqN0w/xk0KzJgPMGr+zRT83ff
+	 CZF8UB1PCPkrv2HNI/pWu3Lh/yBJmoX3vPGMxzriAMkOjOyaWseJCfboK+3imcw4Xh
+	 UIL+Hh4lNq2ycNykbixkS2PJ0xqm/yE386Fp0B9lhlpmrtIOPmzIXa1hdTcIF6YXgB
+	 HomKPAFEiRBOkGuYcGOXs4SKHMHS7M3ivUfF4KIJtpj0eSqbnftd28tBZzCqK0k8ID
+	 AtjAMQagnO1yQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 15BE981DF3;
-	Mon,  5 May 2025 15:23:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8B7C3405FD;
+	Mon,  5 May 2025 20:14:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 237FA12E
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 15:23:11 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id B928112E
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 20:14:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 12BAB605A9
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 15:23:11 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9772340781
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 20:14:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9ogWUzVFZ7fE for <intel-wired-lan@lists.osuosl.org>;
- Mon,  5 May 2025 15:23:10 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=85.10.215.232;
- helo=dediextern.your-server.de; envelope-from=tobias.boehm@hetzner-cloud.de;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id nHuCwkP5FYdi for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  5 May 2025 20:14:39 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
+ helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A2C806059F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A2C806059F
-Received: from dediextern.your-server.de (dediextern.your-server.de
- [85.10.215.232])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A2C806059F
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 15:23:09 +0000 (UTC)
-Received: from sslproxy06.your-server.de ([78.46.172.3])
- by dediextern.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
- (Exim 4.94.2) (envelope-from <tobias.boehm@hetzner-cloud.de>)
- id 1uBxep-000NE8-6S; Mon, 05 May 2025 17:23:03 +0200
-Received: from [2003:f6:af22:6538:f6a8:dff:fe1e:4c1d]
- by sslproxy06.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
- (Exim 4.96) (envelope-from <tobias.boehm@hetzner-cloud.de>)
- id 1uBxeo-0003en-0Z; Mon, 05 May 2025 17:23:02 +0200
-Message-ID: <1713bf39-2bcb-4a43-94c7-a61ff97e2522@hetzner-cloud.de>
-Date: Mon, 5 May 2025 17:23:02 +0200
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org B6E5E40786
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B6E5E40786
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B6E5E40786
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 20:14:39 +0000 (UTC)
+X-CSE-ConnectionGUID: 5Xu1VlYbSVG+6IhbNWjxig==
+X-CSE-MsgGUID: o8auSsANQI+3XAFaTovtNw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11424"; a="65635325"
+X-IronPort-AV: E=Sophos;i="6.15,264,1739865600"; d="scan'208";a="65635325"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 May 2025 13:14:39 -0700
+X-CSE-ConnectionGUID: gJ7iz3zkTyu5ibLBsilZ/w==
+X-CSE-MsgGUID: bXwDivo5S4OnSfMzr4B1kQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,264,1739865600"; d="scan'208";a="158593552"
+Received: from jekeller-desk.jf.intel.com ([10.166.241.15])
+ by fmviesa002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 May 2025 13:14:39 -0700
+From: Jacob Keller <jacob.e.keller@intel.com>
+Date: Mon, 05 May 2025 13:14:21 -0700
+Message-Id: <20250505-jk-hash-ena-refactor-v2-0-c1f62aee1ffe@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: =?UTF-8?Q?Tobias_B=C3=B6hm?= <tobias.boehm@hetzner-cloud.de>
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Marcus Wichelmann <marcus.wichelmann@hetzner-cloud.de>
-Cc: Michal Kubiak <michal.kubiak@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Jay Vosburgh <jv@jvosburgh.net>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, bpf@vger.kernel.org, linux-kernel@vger.kernel.org,
- sdn@hetzner-cloud.de
-References: <d33f0ab4-4dc4-49cd-bbd0-055f58dd6758@hetzner-cloud.de>
- <Z/fWHYETBYQuCno5@localhost.localdomain>
- <ff7ca6ea-a122-4d7d-9ef2-d091cbdd96d2@hetzner-cloud.de>
- <Z/jPgceDT4gRu9/R@localhost.localdomain> <aAEUcXIRnWolGWnA@boxer>
- <b06ede77-541b-453f-9e7a-79f3e5591f66@hetzner-cloud.de>
- <aAkz/+Rx5w3OHH4/@boxer>
- <eca1880f-253a-4955-afe6-732d7c6926ee@hetzner-cloud.de>
-Content-Language: en-US
-Autocrypt: addr=tobias.boehm@hetzner-cloud.de; keydata=
- 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
- p0ms75naziM=
-Organization: Hetzner Cloud GmbH
-In-Reply-To: <eca1880f-253a-4955-afe6-732d7c6926ee@hetzner-cloud.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Authenticated-Sender: tobias.boehm@hetzner-cloud.de
-X-Virus-Scanned: Clear (ClamAV 1.0.7/27629/Mon May  5 10:35:28 2025)
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=hetzner-cloud.de
-Subject: Re: [Intel-wired-lan] [BUG] ixgbe: Detected Tx Unit Hang (XDP)
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAB0cGWgC/32Oyw6CMBREf4V07TV9AcWV/2FclHKRKhbTEsQQ/
+ t2CGzaynEzOmZlIQG8xkFMyEY+DDbZzMfBDQkyj3Q3BVjETTnlKJRdwf0CjQwPoNHistek7D4U
+ 2DHmphE6RRPQVGzuu2gux7xYcjj25xqaxIQKfdW9ga7+vHhhQECYXKksLKcvybF2P7dF0z2XpB
+ wu6AyvBqJa5SmXON/DyZuDbB8UfCY+SnCqJulI1o9lWMs/zF2w3j1xEAQAA
+X-Change-ID: 20250423-jk-hash-ena-refactor-9ac1e2b83a5e
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>, 
+ Anthony Nguyen <anthony.l.nguyen@intel.com>, 
+ netdev <netdev@vger.kernel.org>
+Cc: Jacob Keller <jacob.e.keller@intel.com>, 
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>, 
+ Simon Horman <horms@kernel.org>
+X-Mailer: b4 0.14.2
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1746476080; x=1778012080;
+ h=from:subject:date:message-id:mime-version:
+ content-transfer-encoding:to:cc;
+ bh=mAmTw853O4UNXFX6YsFjv+tnx+KBU9pCsTdd3ISM8iM=;
+ b=GyLGbCI7ETRm0/5iMXTPHXKYQpGvcgJAvmKo3rPaL2Ghh4GBTN8WYpBS
+ j4ROwR5euficce+8tUqyjD8buxUhjxvPfIAm/gQ2/XYZIUI3m3CD1bLwM
+ kYyzogobqL34P6u20S5CpAwcRPyVHs9LdZ3HkMGTico07Tnk/8zVoRbUD
+ Y05OmBWwtZX8OvDimSPXniiHYZeHHsUd2+nFvRYQJEj64gdUwa5Jb0vAb
+ Q8c93zbLjUcgNVSDgAL8aM1V7uwpSGhBlsTtYZCtl8BaeA97/E8ZLkBNv
+ 36/W9ld7Pd5GuO7YyWKAZBmcsKoGawmcvDJL8MS79x3aMFVJnBw0aYD+L
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=GyLGbCI7
+Subject: [Intel-wired-lan] [PATCH iwl-next v2 0/2] net: intel: cleanup RSS
+ hash configuration bits
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -153,209 +118,69 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Am 24.04.25 um 12:19 schrieb Tobias Böhm:
-> Am 23.04.25 um 20:39 schrieb Maciej Fijalkowski:
->> On Wed, Apr 23, 2025 at 04:20:07PM +0200, Marcus Wichelmann wrote:
->>> Am 17.04.25 um 16:47 schrieb Maciej Fijalkowski:
->>>> On Fri, Apr 11, 2025 at 10:14:57AM +0200, Michal Kubiak wrote:
->>>>> On Thu, Apr 10, 2025 at 04:54:35PM +0200, Marcus Wichelmann wrote:
->>>>>> Am 10.04.25 um 16:30 schrieb Michal Kubiak:
->>>>>>> On Wed, Apr 09, 2025 at 05:17:49PM +0200, Marcus Wichelmann wrote:
->>>>>>>> Hi,
->>>>>>>>
->>>>>>>> in a setup where I use native XDP to redirect packets to a 
->>>>>>>> bonding interface
->>>>>>>> that's backed by two ixgbe slaves, I noticed that the ixgbe 
->>>>>>>> driver constantly
->>>>>>>> resets the NIC with the following kernel output:
->>>>>>>>
->>>>>>>>    ixgbe 0000:01:00.1 ixgbe-x520-2: Detected Tx Unit Hang (XDP)
->>>>>>>>      Tx Queue             <4>
->>>>>>>>      TDH, TDT             <17e>, <17e>
->>>>>>>>      next_to_use          <181>
->>>>>>>>      next_to_clean        <17e>
->>>>>>>>    tx_buffer_info[next_to_clean]
->>>>>>>>      time_stamp           <0>
->>>>>>>>      jiffies              <10025c380>
->>>>>>>>    ixgbe 0000:01:00.1 ixgbe-x520-2: tx hang 19 detected on queue 
->>>>>>>> 4, resetting adapter
->>>>>>>>    ixgbe 0000:01:00.1 ixgbe-x520-2: initiating reset due to tx 
->>>>>>>> timeout
->>>>>>>>    ixgbe 0000:01:00.1 ixgbe-x520-2: Reset adapter
->>>>>>>>
->>>>>>>> This only occurs in combination with a bonding interface and 
->>>>>>>> XDP, so I don't
->>>>>>>> know if this is an issue with ixgbe or the bonding driver.
->>>>>>>> I first discovered this with Linux 6.8.0-57, but kernel 6.14.0 
->>>>>>>> and 6.15.0-rc1
->>>>>>>> show the same issue.
->>>>>>>>
->>>>>>>>
->>>>>>>> I managed to reproduce this bug in a lab environment. Here are 
->>>>>>>> some details
->>>>>>>> about my setup and the steps to reproduce the bug:
->>>>>>>>
->>>>>>>> [...]
->>>>>>>>
->>>>>>>> Do you have any ideas what may be causing this issue or what I 
->>>>>>>> can do to
->>>>>>>> diagnose this further?
->>>>>>>>
->>>>>>>> Please let me know when I should provide any more information.
->>>>>>>>
->>>>>>>>
->>>>>>>> Thanks!
->>>>>>>> Marcus
->>>>>>>>
->>>>>>>
->>>>> [...]
->>>>>
->>>>> Hi Marcus,
->>>>>
->>>>>> thank you for looking into it. And not even 24 hours after my 
->>>>>> report, I'm
->>>>>> very impressed! ;)
->>>>>
->>>>> Thanks! :-)
->>>>>
->>>>>> Interesting. I just tried again but had no luck yet with 
->>>>>> reproducing it
->>>>>> without a bonding interface. May I ask how your setup looks like?
->>>>>
->>>>> For now, I've just grabbed the first available system with the HW
->>>>> controlled by the "ixgbe" driver. In my case it was:
->>>>>
->>>>>    Ethernet controller: Intel Corporation Ethernet Controller X550
->>>>>
->>>>> Also, for my first attempt, I didn't use the upstream kernel - I 
->>>>> just tried
->>>>> the kernel installed on that system. It was the Fedora kernel:
->>>>>
->>>>>    6.12.8-200.fc41.x86_64
->>>>>
->>>>>
->>>>> I think that may be the "beauty" of timing issues - sometimes you 
->>>>> can change
->>>>> just one piece in your system and get a completely different 
->>>>> replication ratio.
->>>>> Anyway, the higher the repro probability, the easier it is to debug
->>>>> the timing problem. :-)
->>>>
->>>> Hi Marcus, to break the silence could you try to apply the diff 
->>>> below on
->>>> your side?
->>>
->>> Hi, thank you for the patch. We've tried it and with your changes we 
->>> can no
->>> longer trigger the error and the NIC is no longer being reset.
->>>
->>>> We see several issues around XDP queues in ixgbe, but before we
->>>> proceed let's this small change on your side.
->>>
->>> How confident are you that this patch is sufficient to make things 
->>> stable enough
->>> for production use? Was it just the Tx hang detection that was 
->>> misbehaving for
->>> the XDP case, or is there an underlying issue with the XDP queues 
->>> that is not
->>> solved by disabling the detection for it?
->>
->> I believe that correct way to approach this is to move the Tx hang
->> detection onto ixgbe_tx_timeout() as that is the place where this logic
->> belongs to. By doing so I suppose we would kill two birds with one stone
->> as mentioned ndo is called under netdev watchdog which is not a subject
->> for XDP Tx queues.
->>
->>>
->>> With our current setup we cannot verify accurately, that we have no 
->>> packet loss
->>> or stuck queues. We can do additional tests to verify that.
-> 
-> 
-> Hi Maciej,
-> 
-> I'm a colleague of Marcus and involved in the testing as well.
->>>> Additional question, do you have enabled pause frames on your setup?
->>>
->>> Pause frames were enabled, but we can also reproduce it after 
->>> disabling them,
->>> without your patch.
->>
->> Please give your setup a go with pause frames enabled and applied patch
->> that i shared previously and let us see the results. As said above I do
->> not think it is correct to check for hung queues in Tx descriptor 
->> cleaning
->> routine. This is a job of ndo_tx_timeout callback.
->>
-> 
-> We have tested with pause frames enabled and applied patch and can not 
-> trigger the error anymore in our lab setup.
-> 
->>>
->>> Thanks!
->>
->> Thanks for feedback and testing. I'll provide a proper fix tomorrow 
->> and CC
->> you so you could take it for a spin.
->>
-> 
-> That sounds great. We'd be happy to test with the proper fix in our 
-> original setup.
+The virtchnl API does not define the RSS Hash configuration bits directly
+in virtchnl.h, but instead implicitly relies on the hardware definitions
+for X710 and X722 in the i40e driver.
 
-Hi,
+This results in duplicating the same bit definitions across 3 drivers. The
+actual virtchnl.h header makes no mention of this, and its very unclear
+what the bits mean without deep knowledge of the way RSS configuration
+works over virtchnl.
 
-During further testing with this patch applied we noticed new warnings 
-that show up. We've also tested with the new patch sent ("[PATCH 
-iwl-net] ixgbe: fix ndo_xdp_xmit() workloads") and see the same warnings.
+In addition, the use of the term 'hena' is confusing. It comes from the
+I40E_PFQF_HENA registers, indicating which hash types are enabled.
 
-I'm sending this observation to this thread because I'm not sure if it 
-is related to those patches or if it was already present but hidden by 
-the resets of the original issue reported by Marcus.
+Rename the 'hena' fields and related functions to use 'hashcfg' as a
+shorthand for hash configuration.
 
-After processing test traffic (~10kk packets as described in Marcus' 
-reproducer setup) and idling for a minute the following warnings keep 
-being logged as long as the NIC idles:
+We could define the enumeration of packet types in virtchnl.h. Indeed, this
+is what the out-of-tree releases of virtchnl.h do. However, this is
+somewhat confusing for i40e. The X710 and X722 hardware use these bits
+directly with PF hardware registers. It looks confusing to use "VIRTCHNL_*"
+names for such access.
 
-   page_pool_release_retry() stalled pool shutdown: id 968, 2 inflight 
-60 sec
-   page_pool_release_retry() stalled pool shutdown: id 963, 2 inflight 
-60 sec
-   page_pool_release_retry() stalled pool shutdown: id 968, 2 inflight 
-120 sec
-   page_pool_release_retry() stalled pool shutdown: id 963, 2 inflight 
-120 sec
-   page_pool_release_retry() stalled pool shutdown: id 968, 2 inflight 
-181 sec
-   page_pool_release_retry() stalled pool shutdown: id 963, 2 inflight 
-181 sec
-   page_pool_release_retry() stalled pool shutdown: id 968, 2 inflight 
-241 sec
-   page_pool_release_retry() stalled pool shutdown: id 963, 2 inflight 
-241 sec
+Instead, we move these definitions to libie as part of new pctype.h header
+file. This allows us to remove all duplicate definitions and have a single
+place for Linux to define the bit meanings. The virtchnl.h header can point
+to this enumeration to clarify where the values are defined.
 
-Just sending a single packet makes the warnings stop being logged.
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+---
+Changes in v2:
+- Convert kdoc comment in pctype.h to regular, since it feels too noisy to
+  add a near-duplicate message for each enum value to the kdoc comment.
+- Link to v1: https://lore.kernel.org/r/20250430-jk-hash-ena-refactor-v1-0-8310a4785472@intel.com
 
-After sending heavy test traffic again new warnings start to be logged 
-after a minute of idling:
+---
+Jacob Keller (2):
+      net: intel: rename 'hena' to 'hashcfg' for clarity
+      net: intel: move RSS packet classifier types to libie
 
-   page_pool_release_retry() stalled pool shutdown: id 987, 2 inflight 
-60 sec
-   page_pool_release_retry() stalled pool shutdown: id 979, 2 inflight 
-60 sec
-   page_pool_release_retry() stalled pool shutdown: id 987, 2 inflight 
-120 sec
-   page_pool_release_retry() stalled pool shutdown: id 979, 2 inflight 
-120 sec
+ drivers/net/ethernet/intel/i40e/i40e_txrx.h        | 43 ++++++------
+ drivers/net/ethernet/intel/i40e/i40e_type.h        | 32 ---------
+ drivers/net/ethernet/intel/iavf/iavf.h             | 10 +--
+ drivers/net/ethernet/intel/iavf/iavf_txrx.h        | 40 ++++++-----
+ drivers/net/ethernet/intel/iavf/iavf_type.h        | 32 ---------
+ drivers/net/ethernet/intel/ice/ice_flow.h          | 68 ++++++------------
+ drivers/net/ethernet/intel/ice/ice_virtchnl.h      |  4 +-
+ include/linux/avf/virtchnl.h                       | 23 +++---
+ include/linux/net/intel/libie/pctype.h             | 41 +++++++++++
+ drivers/net/ethernet/intel/i40e/i40e_ethtool.c     | 81 +++++++++++-----------
+ drivers/net/ethernet/intel/i40e/i40e_main.c        | 25 +++----
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c        | 25 +++----
+ drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c | 46 ++++++------
+ drivers/net/ethernet/intel/iavf/iavf_main.c        | 17 ++---
+ drivers/net/ethernet/intel/iavf/iavf_virtchnl.c    | 33 ++++-----
+ drivers/net/ethernet/intel/ice/ice_flow.c          | 45 ++++++------
+ drivers/net/ethernet/intel/ice/ice_lib.c           |  2 +-
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c      | 44 ++++++------
+ .../ethernet/intel/ice/ice_virtchnl_allowlist.c    |  2 +-
+ 19 files changed, 286 insertions(+), 327 deletions(-)
+---
+base-commit: 836b313a14a316290886dcc2ce7e78bf5ecc8658
+change-id: 20250423-jk-hash-ena-refactor-9ac1e2b83a5e
 
-Detaching the XDP program stops the warnings as well.
+Best regards,
+-- 
+Jacob Keller <jacob.e.keller@intel.com>
 
-As before pause frames were enabled.
-
-Just like with the original issue we were not always successful to 
-reproduce those warnings. With more traffic chances seem to be higher to 
-trigger it.
-
-Please let me know if I should provide any further information.
-
-Thanks,
-Tobias
