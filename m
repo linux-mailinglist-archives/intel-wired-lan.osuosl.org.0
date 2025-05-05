@@ -2,72 +2,71 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 061E0AAA081
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 May 2025 00:35:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C2872AAA082
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 May 2025 00:35:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 812F04084D;
-	Mon,  5 May 2025 22:35:31 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8469040879;
+	Mon,  5 May 2025 22:35:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id eAe_hhp6xv8z; Mon,  5 May 2025 22:35:30 +0000 (UTC)
+ id KEsfKXVZn88u; Mon,  5 May 2025 22:35:34 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AD56E40860
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6764740877
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1746484530;
-	bh=mVl1iAvnd+snZCsANxYPy3Y3pns4DPbRaU4+Wn+MDcQ=;
+	s=default; t=1746484534;
+	bh=JCC+eF3Nw2SJSo7EnMe2QPDn5iaYFrs4wioZCTf2SZM=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=LU3VENfL4w9bd2RoFCyoup/dEo0l9YAJ4L2wtRSKZ5q6dCUgujE5QdtmJRln48H82
-	 qUfrBWlt8gEWwnBPfNgSR/hh9a1N+eNQA5RGEsv64/oqLJYjxNIbzo5UdYGhot1xGp
-	 m14H2AUZowD5cWjqlWczyvPfDNkw9U5ddKFTnEMSBzHGhNqAApB4ThilmIwbcRCQ6P
-	 6EAse5WUC87scvafVQ+ybF11dC2T9MhNoa8ogQX6GQwDsumq3p2FCgT8RAAW8dl58a
-	 UVmzP0RW8DbVEaUDSR2gSaofvxCpoGkecvMZeOAyd094HagmJib517FkZKr4FTAPGB
-	 wqtvrzWXb80TQ==
+	b=71ykebrnC2ATy5pm1Djc1PuIKiYJcUXWMVoBgYJdD3m8KIoxPOVqqv3ze8IU2XA3L
+	 SI/fBvgvWVyLIWa0fPW/sHoP3qPnVxm5sah+WNYxrkJQ9SDLsqk0igyf1hOTfsFmLK
+	 8SVjWWM6IjDPn04VNCc0EmI3a9bQFqQpAGWcwkHTc8ofC3zg5beNCfWBQaijDKASXb
+	 9LQWT7c7LrHgJnVFFzq232sV2EnHUFP8SuW75c/ntY8MwU6gDRD/x+Ymj4v6+zEglm
+	 udLHuVQwI65857vMcfvHcsnCsinqu6UqGocv+GFnjw4FQsVZ5i8/3hL+C42F6tGYh4
+	 0qCcKk3aok4XA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AD56E40860;
-	Mon,  5 May 2025 22:35:30 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6764740877;
+	Mon,  5 May 2025 22:35:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id B393F12E
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 22:35:28 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 5BE6C12E
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 22:35:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 95EE44084D
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 22:35:28 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 585DC80D8A
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 22:35:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id B4eoG5at0e7V for <intel-wired-lan@lists.osuosl.org>;
- Mon,  5 May 2025 22:35:28 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 80tr3HPcRR80 for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  5 May 2025 22:35:32 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
  envelope-from=sashal@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D8FF640844
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D8FF640844
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D8FF640844
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 22:35:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 7A16680CE0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7A16680CE0
+Received: from sea.source.kernel.org (sea.source.kernel.org
+ [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 7A16680CE0
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 22:35:32 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 597C55C3ECC;
- Mon,  5 May 2025 22:33:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F9EFC4CEEE;
- Mon,  5 May 2025 22:35:24 +0000 (UTC)
+ by sea.source.kernel.org (Postfix) with ESMTP id 799A643578;
+ Mon,  5 May 2025 22:35:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7467DC4CEED;
+ Mon,  5 May 2025 22:35:30 +0000 (UTC)
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Song Yoong Siang <yoong.siang.song@intel.com>,
- Avigail Dahan <avigailx.dahan@intel.com>,
+Cc: Karol Kolacinski <karol.kolacinski@intel.com>,
+ Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>, Sasha Levin <sashal@kernel.org>,
- ast@kernel.org, daniel@iogearbox.net, davem@davemloft.net, kuba@kernel.org,
- hawk@kernel.org, john.fastabend@gmail.com, przemyslaw.kitszel@intel.com,
- andrew+netdev@lunn.ch, edumazet@google.com, pabeni@redhat.com,
- netdev@vger.kernel.org, bpf@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org
-Date: Mon,  5 May 2025 18:12:11 -0400
-Message-Id: <20250505221419.2672473-515-sashal@kernel.org>
+ przemyslaw.kitszel@intel.com, andrew+netdev@lunn.ch, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ richardcochran@gmail.com, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org
+Date: Mon,  5 May 2025 18:12:14 -0400
+Message-Id: <20250505221419.2672473-518-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250505221419.2672473-1-sashal@kernel.org>
 References: <20250505221419.2672473-1-sashal@kernel.org>
@@ -77,24 +76,23 @@ X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.14.5
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1746484526;
- bh=rPXg2sY7ZfWVK8DP/KT2YWCX2cEprik+eD4oek2lEXE=;
+ d=kernel.org; s=k20201202; t=1746484532;
+ bh=/gmC/LwgV+P9VSR2RvnXgektOsV3wus6WxQdu8FpCHA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=lcx3CuAx9kWyuEf2iKhiRmkR2AU9epXvIs6wb49zwtGVQcWH95qSsP3yEIY/3rDkH
- N6hDyUP/dua2oFC4cYy1V7XtsyiaN92GQDa9jS4kTPOLYbB8IulRp83sdKeEuQGs0n
- GoQ8QTUcl5NXZv2IMcMxJq7bG1LjhPNY2VkTB6rD49A+o5J+zdUFKjWIR82UzP7b+V
- Wd0KZkqW/bv9i4mPy8W4W+h9ERwAVCE9zFP+piRP2WW4j0lqUJWiFwcEclRxHBOato
- N5nJJvMXAQyiRqoWsKhU8kLP5hJEJ5uRMZ1DncSzHtz1HcpLC1hXad/IZbTbY2dT48
- 0oHVBzSzOKJCA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=kusESlna6ppCO670sw4HZuUXPX8jEs+UXq4RRGS3XkO5lKjgH9E4AvI5xdofSBBcX
+ Qbed/afc89MOo47KK8QJLhOA33ah1MJ6bKShaeACD6cxgCvhI6jRh55v7oP5dYOzuB
+ eQFmkJmDSVmOaM6k0IGxfWWznlwPbFOI92jHJinCDUmep/IM0Lil67cWub+eFrmvXe
+ 7BclBUrnYdSh0nFbtw3NRy1q5pgr1U3yOegGTA5Czah7B/KyGEYvDUSsOCrzJXjC4q
+ 3erbaadKTYmBWiaDuhuVvUYJQ30MLEfEh/JpNjSIvbsoqf4WtZzAmeTQUbjDiW948k
+ 9itN/rx50k/Lg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=lcx3CuAx
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.14 515/642] igc: Avoid
- unnecessary link down event in XDP_SETUP_PROG process
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=kusESlna
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.14 518/642] ice: Don't check
+ device type when checking GNSS presence
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -110,134 +108,353 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Song Yoong Siang <yoong.siang.song@intel.com>
+From: Karol Kolacinski <karol.kolacinski@intel.com>
 
-[ Upstream commit be324b790368c1522f07c6bb5654122e07b5e588 ]
+[ Upstream commit e2c6737e6e82e9991646cd5389391bb6d3572a68 ]
 
-The igc_close()/igc_open() functions are too drastic for installing a new
-XDP prog because they cause undesirable link down event and device reset.
+Don't check if the device type is E810T as non-E810T devices can support
+GNSS too and PCA9575 check is enough to determine if GNSS is present or
+not.
 
-To avoid delays in Ethernet traffic, improve the XDP_SETUP_PROG process by
-using the same sequence as igc_xdp_setup_pool(), which performs only the
-necessary steps, as follows:
- 1. stop the traffic and clean buffer
- 2. stop NAPI
- 3. install the XDP program
- 4. resume NAPI
- 5. allocate buffer and resume the traffic
+Rename ice_gnss_is_gps_present() to ice_gnss_is_module_present()
+because GNSS module supports multiple GNSS providers, not only GPS.
 
-This patch has been tested using the 'ip link set xdpdrv' command to attach
-a simple XDP prog that always returns XDP_PASS.
+Move functions related to PCA9575 from ice_ptp_hw.c to ice_common.c
+to be able to access them when PTP is disabled in the kernel, but GNSS
+is enabled.
 
-Before this patch, attaching xdp program will cause ptp4l to lose sync for
-few seconds, as shown in ptp4l log below:
-  ptp4l[198.082]: rms    4 max    8 freq   +906 +/-   2 delay    12 +/-   0
-  ptp4l[199.082]: rms    3 max    4 freq   +906 +/-   3 delay    12 +/-   0
-  ptp4l[199.536]: port 1 (enp2s0): link down
-  ptp4l[199.536]: port 1 (enp2s0): SLAVE to FAULTY on FAULT_DETECTED (FT_UNSPECIFIED)
-  ptp4l[199.600]: selected local clock 22abbc.fffe.bb1234 as best master
-  ptp4l[199.600]: port 1 (enp2s0): assuming the grand master role
-  ptp4l[199.600]: port 1 (enp2s0): master state recommended in slave only mode
-  ptp4l[199.600]: port 1 (enp2s0): defaultDS.priority1 probably misconfigured
-  ptp4l[202.266]: port 1 (enp2s0): link up
-  ptp4l[202.300]: port 1 (enp2s0): FAULTY to LISTENING on INIT_COMPLETE
-  ptp4l[205.558]: port 1 (enp2s0): new foreign master 44abbc.fffe.bb2144-1
-  ptp4l[207.558]: selected best master clock 44abbc.fffe.bb2144
-  ptp4l[207.559]: port 1 (enp2s0): LISTENING to UNCALIBRATED on RS_SLAVE
-  ptp4l[208.308]: port 1 (enp2s0): UNCALIBRATED to SLAVE on MASTER_CLOCK_SELECTED
-  ptp4l[208.933]: rms  742 max 1303 freq   -195 +/- 682 delay    12 +/-   0
-  ptp4l[209.933]: rms  178 max  274 freq   +387 +/- 243 delay    12 +/-   0
+Remove logical AND with ICE_AQC_LINK_TOPO_NODE_TYPE_M in
+ice_get_pca9575_handle(), which has no effect, and reorder device type
+checks to check the device_id first, then set other variables.
 
-After this patch, attaching xdp program no longer cause ptp4l to lose sync,
-as shown in ptp4l log below:
-  ptp4l[201.183]: rms    1 max    3 freq   +959 +/-   1 delay     8 +/-   0
-  ptp4l[202.183]: rms    1 max    3 freq   +961 +/-   2 delay     8 +/-   0
-  ptp4l[203.183]: rms    2 max    3 freq   +958 +/-   2 delay     8 +/-   0
-  ptp4l[204.183]: rms    3 max    5 freq   +961 +/-   3 delay     8 +/-   0
-  ptp4l[205.183]: rms    2 max    4 freq   +964 +/-   3 delay     8 +/-   0
-
-Besides, before this patch, attaching xdp program will causes flood ping to
-lose 10 packets, as shown in ping statistics below:
-  --- 169.254.1.2 ping statistics ---
-  100000 packets transmitted, 99990 received, +6 errors, 0.01% packet loss, time 34001ms
-  rtt min/avg/max/mdev = 0.028/0.301/3104.360/13.838 ms, pipe 10, ipg/ewma 0.340/0.243 ms
-
-After this patch, attaching xdp program no longer cause flood ping to loss
-any packets, as shown in ping statistics below:
-  --- 169.254.1.2 ping statistics ---
-  100000 packets transmitted, 100000 received, 0% packet loss, time 32326ms
-  rtt min/avg/max/mdev = 0.027/0.231/19.589/0.155 ms, pipe 2, ipg/ewma 0.323/0.322 ms
-
-On the other hand, this patch has been tested with tools/testing/selftests/
-bpf/xdp_hw_metadata app to make sure AF_XDP zero-copy is working fine with
-XDP Tx and Rx metadata. Below is the result of last packet after received
-10000 UDP packets with interval 1 ms:
-  poll: 1 (0) skip=0 fail=0 redir=10000
-  xsk_ring_cons__peek: 1
-  0x55881c7ef7a8: rx_desc[9999]->addr=8f110 addr=8f110 comp_addr=8f110 EoP
-  rx_hash: 0xFB9BB6A3 with RSS type:0x1
-  HW RX-time:   1733923136269470866 (sec:1733923136.2695) delta to User RX-time sec:0.0000 (43.280 usec)
-  XDP RX-time:   1733923136269482482 (sec:1733923136.2695) delta to User RX-time sec:0.0000 (31.664 usec)
-  No rx_vlan_tci or rx_vlan_proto, err=-95
-  0x55881c7ef7a8: ping-pong with csum=ab19 (want 315b) csum_start=34 csum_offset=6
-  0x55881c7ef7a8: complete tx idx=9999 addr=f010
-  HW TX-complete-time:   1733923136269591637 (sec:1733923136.2696) delta to User TX-complete-time sec:0.0001 (108.571 usec)
-  XDP RX-time:   1733923136269482482 (sec:1733923136.2695) delta to User TX-complete-time sec:0.0002 (217.726 usec)
-  HW RX-time:   1733923136269470866 (sec:1733923136.2695) delta to HW TX-complete-time sec:0.0001 (120.771 usec)
-  0x55881c7ef7a8: complete rx idx=10127 addr=8f110
-
-Signed-off-by: Song Yoong Siang <yoong.siang.song@intel.com>
-Tested-by: Avigail Dahan <avigailx.dahan@intel.com>
+Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
+Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com> (A Contingent worker at Intel)
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/ethernet/intel/igc/igc_xdp.c | 19 +++++++++++++++----
- 1 file changed, 15 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_common.c | 90 ++++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_common.h |  2 +
+ drivers/net/ethernet/intel/ice/ice_gnss.c   | 29 +++----
+ drivers/net/ethernet/intel/ice/ice_gnss.h   |  4 +-
+ drivers/net/ethernet/intel/ice/ice_lib.c    |  2 +-
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 93 ---------------------
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h |  1 -
+ 7 files changed, 105 insertions(+), 116 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_xdp.c b/drivers/net/ethernet/intel/igc/igc_xdp.c
-index 869815f48ac1d..9eb47b4beb062 100644
---- a/drivers/net/ethernet/intel/igc/igc_xdp.c
-+++ b/drivers/net/ethernet/intel/igc/igc_xdp.c
-@@ -14,6 +14,7 @@ int igc_xdp_set_prog(struct igc_adapter *adapter, struct bpf_prog *prog,
- 	bool if_running = netif_running(dev);
- 	struct bpf_prog *old_prog;
- 	bool need_update;
-+	unsigned int i;
- 
- 	if (dev->mtu > ETH_DATA_LEN) {
- 		/* For now, the driver doesn't support XDP functionality with
-@@ -24,8 +25,13 @@ int igc_xdp_set_prog(struct igc_adapter *adapter, struct bpf_prog *prog,
- 	}
- 
- 	need_update = !!adapter->xdp_prog != !!prog;
--	if (if_running && need_update)
--		igc_close(dev);
-+	if (if_running && need_update) {
-+		for (i = 0; i < adapter->num_rx_queues; i++) {
-+			igc_disable_rx_ring(adapter->rx_ring[i]);
-+			igc_disable_tx_ring(adapter->tx_ring[i]);
-+			napi_disable(&adapter->rx_ring[i]->q_vector->napi);
-+		}
-+	}
- 
- 	old_prog = xchg(&adapter->xdp_prog, prog);
- 	if (old_prog)
-@@ -36,8 +42,13 @@ int igc_xdp_set_prog(struct igc_adapter *adapter, struct bpf_prog *prog,
- 	else
- 		xdp_features_clear_redirect_target(dev);
- 
--	if (if_running && need_update)
--		igc_open(dev);
-+	if (if_running && need_update) {
-+		for (i = 0; i < adapter->num_rx_queues; i++) {
-+			napi_enable(&adapter->rx_ring[i]->q_vector->napi);
-+			igc_enable_tx_ring(adapter->tx_ring[i]);
-+			igc_enable_rx_ring(adapter->rx_ring[i]);
-+		}
-+	}
- 
- 	return 0;
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index 1e801300310e9..f48cb93e10183 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -5765,6 +5765,96 @@ ice_aq_write_i2c(struct ice_hw *hw, struct ice_aqc_link_topo_addr topo_addr,
+ 	return ice_aq_send_cmd(hw, &desc, NULL, 0, cd);
  }
+ 
++/**
++ * ice_get_pca9575_handle - find and return the PCA9575 controller
++ * @hw: pointer to the hw struct
++ * @pca9575_handle: GPIO controller's handle
++ *
++ * Find and return the GPIO controller's handle in the netlist.
++ * When found - the value will be cached in the hw structure and following calls
++ * will return cached value.
++ *
++ * Return: 0 on success, -ENXIO when there's no PCA9575 present.
++ */
++int ice_get_pca9575_handle(struct ice_hw *hw, u16 *pca9575_handle)
++{
++	struct ice_aqc_get_link_topo *cmd;
++	struct ice_aq_desc desc;
++	int err;
++	u8 idx;
++
++	/* If handle was read previously return cached value */
++	if (hw->io_expander_handle) {
++		*pca9575_handle = hw->io_expander_handle;
++		return 0;
++	}
++
++#define SW_PCA9575_SFP_TOPO_IDX		2
++#define SW_PCA9575_QSFP_TOPO_IDX	1
++
++	/* Check if the SW IO expander controlling SMA exists in the netlist. */
++	if (hw->device_id == ICE_DEV_ID_E810C_SFP)
++		idx = SW_PCA9575_SFP_TOPO_IDX;
++	else if (hw->device_id == ICE_DEV_ID_E810C_QSFP)
++		idx = SW_PCA9575_QSFP_TOPO_IDX;
++	else
++		return -ENXIO;
++
++	/* If handle was not detected read it from the netlist */
++	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_get_link_topo);
++	cmd = &desc.params.get_link_topo;
++	cmd->addr.topo_params.node_type_ctx =
++		ICE_AQC_LINK_TOPO_NODE_TYPE_GPIO_CTRL;
++	cmd->addr.topo_params.index = idx;
++
++	err = ice_aq_send_cmd(hw, &desc, NULL, 0, NULL);
++	if (err)
++		return -ENXIO;
++
++	/* Verify if we found the right IO expander type */
++	if (desc.params.get_link_topo.node_part_num !=
++	    ICE_AQC_GET_LINK_TOPO_NODE_NR_PCA9575)
++		return -ENXIO;
++
++	/* If present save the handle and return it */
++	hw->io_expander_handle =
++		le16_to_cpu(desc.params.get_link_topo.addr.handle);
++	*pca9575_handle = hw->io_expander_handle;
++
++	return 0;
++}
++
++/**
++ * ice_read_pca9575_reg - read the register from the PCA9575 controller
++ * @hw: pointer to the hw struct
++ * @offset: GPIO controller register offset
++ * @data: pointer to data to be read from the GPIO controller
++ *
++ * Return: 0 on success, negative error code otherwise.
++ */
++int ice_read_pca9575_reg(struct ice_hw *hw, u8 offset, u8 *data)
++{
++	struct ice_aqc_link_topo_addr link_topo;
++	__le16 addr;
++	u16 handle;
++	int err;
++
++	memset(&link_topo, 0, sizeof(link_topo));
++
++	err = ice_get_pca9575_handle(hw, &handle);
++	if (err)
++		return err;
++
++	link_topo.handle = cpu_to_le16(handle);
++	link_topo.topo_params.node_type_ctx =
++		FIELD_PREP(ICE_AQC_LINK_TOPO_NODE_CTX_M,
++			   ICE_AQC_LINK_TOPO_NODE_CTX_PROVIDED);
++
++	addr = cpu_to_le16((u16)offset);
++
++	return ice_aq_read_i2c(hw, link_topo, 0, addr, 1, data, NULL);
++}
++
+ /**
+  * ice_aq_set_gpio
+  * @hw: pointer to the hw struct
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
+index 15ba385437389..54a8692839dd0 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.h
++++ b/drivers/net/ethernet/intel/ice/ice_common.h
+@@ -306,5 +306,7 @@ int
+ ice_aq_write_i2c(struct ice_hw *hw, struct ice_aqc_link_topo_addr topo_addr,
+ 		 u16 bus_addr, __le16 addr, u8 params, const u8 *data,
+ 		 struct ice_sq_cd *cd);
++int ice_get_pca9575_handle(struct ice_hw *hw, u16 *pca9575_handle);
++int ice_read_pca9575_reg(struct ice_hw *hw, u8 offset, u8 *data);
+ bool ice_fw_supports_report_dflt_cfg(struct ice_hw *hw);
+ #endif /* _ICE_COMMON_H_ */
+diff --git a/drivers/net/ethernet/intel/ice/ice_gnss.c b/drivers/net/ethernet/intel/ice/ice_gnss.c
+index b2148dbe49b28..6b26290452d48 100644
+--- a/drivers/net/ethernet/intel/ice/ice_gnss.c
++++ b/drivers/net/ethernet/intel/ice/ice_gnss.c
+@@ -381,32 +381,23 @@ void ice_gnss_exit(struct ice_pf *pf)
+ }
+ 
+ /**
+- * ice_gnss_is_gps_present - Check if GPS HW is present
++ * ice_gnss_is_module_present - Check if GNSS HW is present
+  * @hw: pointer to HW struct
++ *
++ * Return: true when GNSS is present, false otherwise.
+  */
+-bool ice_gnss_is_gps_present(struct ice_hw *hw)
++bool ice_gnss_is_module_present(struct ice_hw *hw)
+ {
+-	if (!hw->func_caps.ts_func_info.src_tmr_owned)
+-		return false;
++	int err;
++	u8 data;
+ 
+-	if (!ice_is_gps_in_netlist(hw))
++	if (!hw->func_caps.ts_func_info.src_tmr_owned ||
++	    !ice_is_gps_in_netlist(hw))
+ 		return false;
+ 
+-#if IS_ENABLED(CONFIG_PTP_1588_CLOCK)
+-	if (ice_is_e810t(hw)) {
+-		int err;
+-		u8 data;
+-
+-		err = ice_read_pca9575_reg(hw, ICE_PCA9575_P0_IN, &data);
+-		if (err || !!(data & ICE_P0_GNSS_PRSNT_N))
+-			return false;
+-	} else {
+-		return false;
+-	}
+-#else
+-	if (!ice_is_e810t(hw))
++	err = ice_read_pca9575_reg(hw, ICE_PCA9575_P0_IN, &data);
++	if (err || !!(data & ICE_P0_GNSS_PRSNT_N))
+ 		return false;
+-#endif /* IS_ENABLED(CONFIG_PTP_1588_CLOCK) */
+ 
+ 	return true;
+ }
+diff --git a/drivers/net/ethernet/intel/ice/ice_gnss.h b/drivers/net/ethernet/intel/ice/ice_gnss.h
+index 75e567ad70594..15daf603ed7bf 100644
+--- a/drivers/net/ethernet/intel/ice/ice_gnss.h
++++ b/drivers/net/ethernet/intel/ice/ice_gnss.h
+@@ -37,11 +37,11 @@ struct gnss_serial {
+ #if IS_ENABLED(CONFIG_GNSS)
+ void ice_gnss_init(struct ice_pf *pf);
+ void ice_gnss_exit(struct ice_pf *pf);
+-bool ice_gnss_is_gps_present(struct ice_hw *hw);
++bool ice_gnss_is_module_present(struct ice_hw *hw);
+ #else
+ static inline void ice_gnss_init(struct ice_pf *pf) { }
+ static inline void ice_gnss_exit(struct ice_pf *pf) { }
+-static inline bool ice_gnss_is_gps_present(struct ice_hw *hw)
++static inline bool ice_gnss_is_module_present(struct ice_hw *hw)
+ {
+ 	return false;
+ }
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index d0faa087793da..e0785e820d601 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -3882,7 +3882,7 @@ void ice_init_feature_support(struct ice_pf *pf)
+ 			ice_set_feature_support(pf, ICE_F_CGU);
+ 		if (ice_is_clock_mux_in_netlist(&pf->hw))
+ 			ice_set_feature_support(pf, ICE_F_SMA_CTRL);
+-		if (ice_gnss_is_gps_present(&pf->hw))
++		if (ice_gnss_is_module_present(&pf->hw))
+ 			ice_set_feature_support(pf, ICE_F_GNSS);
+ 		break;
+ 	default:
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+index ec91822e92806..53ce40fa2fe6b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+@@ -5315,68 +5315,6 @@ ice_get_phy_tx_tstamp_ready_e810(struct ice_hw *hw, u8 port, u64 *tstamp_ready)
+  * to access the extended GPIOs available.
+  */
+ 
+-/**
+- * ice_get_pca9575_handle
+- * @hw: pointer to the hw struct
+- * @pca9575_handle: GPIO controller's handle
+- *
+- * Find and return the GPIO controller's handle in the netlist.
+- * When found - the value will be cached in the hw structure and following calls
+- * will return cached value
+- */
+-static int
+-ice_get_pca9575_handle(struct ice_hw *hw, u16 *pca9575_handle)
+-{
+-	struct ice_aqc_get_link_topo *cmd;
+-	struct ice_aq_desc desc;
+-	int status;
+-	u8 idx;
+-
+-	/* If handle was read previously return cached value */
+-	if (hw->io_expander_handle) {
+-		*pca9575_handle = hw->io_expander_handle;
+-		return 0;
+-	}
+-
+-	/* If handle was not detected read it from the netlist */
+-	cmd = &desc.params.get_link_topo;
+-	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_get_link_topo);
+-
+-	/* Set node type to GPIO controller */
+-	cmd->addr.topo_params.node_type_ctx =
+-		(ICE_AQC_LINK_TOPO_NODE_TYPE_M &
+-		 ICE_AQC_LINK_TOPO_NODE_TYPE_GPIO_CTRL);
+-
+-#define SW_PCA9575_SFP_TOPO_IDX		2
+-#define SW_PCA9575_QSFP_TOPO_IDX	1
+-
+-	/* Check if the SW IO expander controlling SMA exists in the netlist. */
+-	if (hw->device_id == ICE_DEV_ID_E810C_SFP)
+-		idx = SW_PCA9575_SFP_TOPO_IDX;
+-	else if (hw->device_id == ICE_DEV_ID_E810C_QSFP)
+-		idx = SW_PCA9575_QSFP_TOPO_IDX;
+-	else
+-		return -EOPNOTSUPP;
+-
+-	cmd->addr.topo_params.index = idx;
+-
+-	status = ice_aq_send_cmd(hw, &desc, NULL, 0, NULL);
+-	if (status)
+-		return -EOPNOTSUPP;
+-
+-	/* Verify if we found the right IO expander type */
+-	if (desc.params.get_link_topo.node_part_num !=
+-		ICE_AQC_GET_LINK_TOPO_NODE_NR_PCA9575)
+-		return -EOPNOTSUPP;
+-
+-	/* If present save the handle and return it */
+-	hw->io_expander_handle =
+-		le16_to_cpu(desc.params.get_link_topo.addr.handle);
+-	*pca9575_handle = hw->io_expander_handle;
+-
+-	return 0;
+-}
+-
+ /**
+  * ice_read_sma_ctrl
+  * @hw: pointer to the hw struct
+@@ -5441,37 +5379,6 @@ int ice_write_sma_ctrl(struct ice_hw *hw, u8 data)
+ 	return status;
+ }
+ 
+-/**
+- * ice_read_pca9575_reg
+- * @hw: pointer to the hw struct
+- * @offset: GPIO controller register offset
+- * @data: pointer to data to be read from the GPIO controller
+- *
+- * Read the register from the GPIO controller
+- */
+-int ice_read_pca9575_reg(struct ice_hw *hw, u8 offset, u8 *data)
+-{
+-	struct ice_aqc_link_topo_addr link_topo;
+-	__le16 addr;
+-	u16 handle;
+-	int err;
+-
+-	memset(&link_topo, 0, sizeof(link_topo));
+-
+-	err = ice_get_pca9575_handle(hw, &handle);
+-	if (err)
+-		return err;
+-
+-	link_topo.handle = cpu_to_le16(handle);
+-	link_topo.topo_params.node_type_ctx =
+-		FIELD_PREP(ICE_AQC_LINK_TOPO_NODE_CTX_M,
+-			   ICE_AQC_LINK_TOPO_NODE_CTX_PROVIDED);
+-
+-	addr = cpu_to_le16((u16)offset);
+-
+-	return ice_aq_read_i2c(hw, link_topo, 0, addr, 1, data, NULL);
+-}
+-
+ /**
+  * ice_ptp_read_sdp_ac - read SDP available connections section from NVM
+  * @hw: pointer to the HW struct
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
+index 6779ce120515a..15f048d9b5823 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
++++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
+@@ -395,7 +395,6 @@ int ice_phy_cfg_intr_e82x(struct ice_hw *hw, u8 quad, bool ena, u8 threshold);
+ /* E810 family functions */
+ int ice_read_sma_ctrl(struct ice_hw *hw, u8 *data);
+ int ice_write_sma_ctrl(struct ice_hw *hw, u8 data);
+-int ice_read_pca9575_reg(struct ice_hw *hw, u8 offset, u8 *data);
+ int ice_ptp_read_sdp_ac(struct ice_hw *hw, __le16 *entries, uint *num_entries);
+ int ice_cgu_get_num_pins(struct ice_hw *hw, bool input);
+ enum dpll_pin_type ice_cgu_get_pin_type(struct ice_hw *hw, u8 pin, bool input);
 -- 
 2.39.5
 
