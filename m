@@ -1,60 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A4F7AAA097
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 May 2025 00:36:58 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 889EAAAA21A
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 May 2025 00:55:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EE2AB40228;
-	Mon,  5 May 2025 22:36:56 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D444460BA5;
+	Mon,  5 May 2025 22:55:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id LDz8ibg4MMpW; Mon,  5 May 2025 22:36:56 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 31gLf05vXqvJ; Mon,  5 May 2025 22:55:07 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 725FA4048A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 50CC460B94
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1746484616;
-	bh=54Kjb/1jyfIBZiqUcuMeQBQfEfP0KyqJRHiKwmImeWU=;
+	s=default; t=1746485707;
+	bh=OJ+iY2X3mB8wAL+OiuTolRbExwIkxFjfxTRovpLJVtE=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=G7FqPc4jOpN4Qe5BrJgFT9VBdW1+rHwVIU+YgmgTn7dkzZFvGs4r5Dwrfj/mWMlP1
-	 1b29Xmv8yhAP3PQitWXVTH2sy9uKo0REy60fQCHVPbO4OfeeelUYyPXf73WYLTdtZt
-	 Ciw5Y08P89ZuMZIzFXz+0eU+TLrq+mc5zw4uy0fcoF7guUtZNp4MZ1fN2xGrYOuSKA
-	 4culb3s6UnA/E8z6U9tSq/9mwynr3oannf8GP06tqqUexLOwsnPj2wG582wS5zen4t
-	 /Q2Fu2SVJSC3gnVDY5wMllH/dJS6iaxD5zpjHpPry3Los0MGeJHMbNz+It38/bOd4T
-	 jRrtnUEimKC1g==
+	b=fENLWLhJbQt3szsHbvQmK88YCMszXIXj26EStzOOpeNfzWVgCICZboK1KcoqX1+AK
+	 n/gjY4JDGD49jeaS/+siIpEL+DLJjevrnmLiIIpP3e78uiDu64d/Kqv7OHiFTyHK1F
+	 O5z8dD5+99FH7WyDqy8F5VrWEfcp43XJ7aqwxtIqSQ1TPar1C35+cUpnCGiu2FIGP7
+	 jD0yoGB+yow5lhhzvpwJFT6CLTS10f4j0EhhodlOJqWMSsxM21ZRQTR26KN8oLo7RE
+	 Hj2eMF2Vp8ikRfCFQburMFNdJxm9NeTjQW01rVekGQKPwY4UCbSKTYUka8dcyq6w9m
+	 wy/ai8X4t5iTQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 725FA4048A;
-	Mon,  5 May 2025 22:36:56 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 50CC460B94;
+	Mon,  5 May 2025 22:55:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id AA118D5
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 22:36:54 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id C77E620F9
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 22:55:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8C0DB403F3
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 22:36:54 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id A9220400AB
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 22:55:04 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id v-ICcVki5PK8 for <intel-wired-lan@lists.osuosl.org>;
- Mon,  5 May 2025 22:36:52 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
- envelope-from=sashal@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 9E9D340251
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9E9D340251
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9E9D340251
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 22:36:52 +0000 (UTC)
+ id 2KM1l6SU3sNz for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  5 May 2025 22:55:03 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
+ helo=tor.source.kernel.org; envelope-from=sashal@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 82A3C400CC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 82A3C400CC
+Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 82A3C400CC
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 May 2025 22:55:03 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id B5E3A5C58B3;
- Mon,  5 May 2025 22:34:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0C672C4CEF1;
- Mon,  5 May 2025 22:36:49 +0000 (UTC)
+ by tor.source.kernel.org (Postfix) with ESMTP id EFCA3629CB;
+ Mon,  5 May 2025 22:54:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 009B6C4CEED;
+ Mon,  5 May 2025 22:54:59 +0000 (UTC)
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -65,34 +64,34 @@ Cc: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
  przemyslaw.kitszel@intel.com, andrew+netdev@lunn.ch, davem@davemloft.net,
  edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-Date: Mon,  5 May 2025 18:12:57 -0400
-Message-Id: <20250505221419.2672473-561-sashal@kernel.org>
+Date: Mon,  5 May 2025 18:38:28 -0400
+Message-Id: <20250505223922.2682012-432-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250505221419.2672473-1-sashal@kernel.org>
-References: <20250505221419.2672473-1-sashal@kernel.org>
+In-Reply-To: <20250505223922.2682012-1-sashal@kernel.org>
+References: <20250505223922.2682012-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.14.5
+X-stable-base: Linux 6.12.26
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1746484611;
- bh=DZcrPpJm0WGlKa/b3sE1W3dZ54GcaR0gvKshv7RVs7o=;
+ d=kernel.org; s=k20201202; t=1746485701;
+ bh=r4fgLAAVznNRNX+Ukr/B1QOru5Iw0iU6f8ToF0OtkFg=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=fGcQl+g8gMs5NqsIj8LHqag+t18Nm5y5J/fyi7I4dvYkdfus/BP+TMk9pqn77ajd+
- 3FtQ4U77p4q1TavMxmaV5TM1FwcdCv3vLLj7LrTu9WRAIdblUVgKSDYmBPCPtzj1H6
- RH7z/U09SY21TDBtJvhouZ/l/EarxYCalOxdhrnLKyS2ZZdOyGhZdmUWy2L3Em6EGp
- HW6i/O1axXQbMljmLnLpbW8j4bp5aJY+ZCuEhJalVPZU5jUaYM4vnuMMVlxqNXIf7c
- RTqU8aw/CeaTSo+a68ei2QhEShNDJ9rwPOmEoY3wZW4mPdd4Muvsf+n0d9oA3BXhPW
- Gorx4/Ak2bUmw==
+ b=An6mkgLOpfOXnvmTSu6c058drQew3R7QVXZ9mBTuqmg/20vHz4R55mN5X6vnuQshd
+ WLDUZG2N7Pd0IAUgksHroYOPrVgSfLy9wM9p+ppUAUlFJwmTSAR4jaHApIyKGWXJgX
+ cGOoglwEc3lrKyXFLxq84fK7aA+SzIt6t2zWT1xxscN4RIPgjf6EAe+gmWbrdLGKwP
+ zhZs9GZpHbNc3tjuWDyGp3wc5R049Dyhrvx0u39og2lqlgmMNrjTp9GGHczdBrmrKe
+ BW3/qLbwgZJeu6KLieQkDdFTR1OMC8mbVz0HwOp5QBFnE1qb7KOIrLiIqHY0NWUqnq
+ cIxVWJMQ+R/yQ==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=fGcQl+g8
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.14 561/642] ice: count combined
- queues using Rx/Tx count
+ header.a=rsa-sha256 header.s=k20201202 header.b=An6mkgLO
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.12 432/486] ice: init flow
+ director before RDMA
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -110,12 +109,10 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 
-[ Upstream commit c3a392bdd31adc474f1009ee85c13fdd01fe800d ]
+[ Upstream commit d67627e7b53203ca150e54723abbed81a0716286 ]
 
-Previous implementation assumes that there is 1:1 matching between
-vectors and queues. It isn't always true.
-
-Get minimum value from Rx/Tx queues to determine combined queues number.
+Flow director needs only one MSI-X. Load it before RDMA to save MSI-X
+for it.
 
 Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
 Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com>
@@ -123,23 +120,45 @@ Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_main.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index f241493a6ac88..6bbb304ad9ab7 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -3817,8 +3817,7 @@ static u32 ice_get_combined_cnt(struct ice_vsi *vsi)
- 	ice_for_each_q_vector(vsi, q_idx) {
- 		struct ice_q_vector *q_vector = vsi->q_vectors[q_idx];
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index ca707dfcb286e..63d2105fce933 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -5175,11 +5175,12 @@ int ice_load(struct ice_pf *pf)
  
--		if (q_vector->rx.rx_ring && q_vector->tx.tx_ring)
--			combined++;
-+		combined += min(q_vector->num_ring_tx, q_vector->num_ring_rx);
- 	}
+ 	ice_napi_add(vsi);
  
- 	return combined;
++	ice_init_features(pf);
++
+ 	err = ice_init_rdma(pf);
+ 	if (err)
+ 		goto err_init_rdma;
+ 
+-	ice_init_features(pf);
+ 	ice_service_task_restart(pf);
+ 
+ 	clear_bit(ICE_DOWN, pf->state);
+@@ -5187,6 +5188,7 @@ int ice_load(struct ice_pf *pf)
+ 	return 0;
+ 
+ err_init_rdma:
++	ice_deinit_features(pf);
+ 	ice_tc_indir_block_unregister(vsi);
+ err_tc_indir_block_register:
+ 	ice_unregister_netdev(vsi);
+@@ -5210,8 +5212,8 @@ void ice_unload(struct ice_pf *pf)
+ 
+ 	devl_assert_locked(priv_to_devlink(pf));
+ 
+-	ice_deinit_features(pf);
+ 	ice_deinit_rdma(pf);
++	ice_deinit_features(pf);
+ 	ice_tc_indir_block_unregister(vsi);
+ 	ice_unregister_netdev(vsi);
+ 	ice_devlink_destroy_pf_port(pf);
 -- 
 2.39.5
 
