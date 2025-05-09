@@ -1,152 +1,142 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EDAC7AB06F9
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 May 2025 02:17:49 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 50A9AAB0A50
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 May 2025 08:12:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3CAD141512;
-	Fri,  9 May 2025 00:17:42 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8AEB761162;
+	Fri,  9 May 2025 06:12:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id G6mnBGB_ZtCj; Fri,  9 May 2025 00:17:41 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 9s6EbMEapEol; Fri,  9 May 2025 06:12:15 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 52FEB414CA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B73236116D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1746749861;
-	bh=bgHJflbPL1ZQTYsAd2pB4rR8mFMyVmjAMJfDeemkDT8=;
+	s=default; t=1746771135;
+	bh=JsqZgIgkSuMcTrxJQRDgcEGPZOgCfhwflJ33fpoq6jw=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=I4AFq4EJNqbbPR51t43IdnMicrSXRhfiJ7Xhu6EmM+yd4w4d6MrwKXEEBR2jNKFOZ
-	 G24CWFEjAOjmfvmtd6X6Hd/cJrAMluZJev7n2n+u9zPqaz9zdJKDMya0WtXYtCrq8Y
-	 A1OJjmtDxCMLIY7qDHnUbtPBLThjOVGPFAprHhsc/8v1EpntW0ZhDpGIaBE3qfpSIq
-	 TC/N5gQ4xKjhdHLpsu21XUnMfakm/48+6M0AI2/8yvNa8dfw18WDRhRU3PimaxYUHo
-	 0dqTROTYKLAtUoD22VOLNZAce3Pb1H/X9NLL2ViQE/aiCDQ2WB5Jz+o/vz6ivtZfOV
-	 ds40dlIdfOOrA==
+	b=avb9R+Mx441bDKjv2WRC4JIR++DaWH5uiCEl6i/u37mBFwNeSBJZoLHkIyIzU+QbK
+	 6pBnYHRIxKXVL6rP1rNY4x39IzVnLSdYzeprOyxVEEttjcanzp0rICixjIe8M8BOmb
+	 AU/vC9iq/LhUiYd7lpZN8ecK8QiXxvxhrcAzD9gKeQ3N3I+KwY4YxlUr7vHXAHYdA5
+	 T8nB6KmDGL8It48fR1tZuhSqg1Ab5Mdp7XZkz7UiisqYzAftlJRLTx2V2g2euvT60l
+	 UqCh+rm59Y+zLSePHkbRig5NIzypN7d/XJ6bqqc6uRRtZ0yTcskUg88sWeaNco/itk
+	 J3vO8llED9Bbw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 52FEB414CA;
-	Fri,  9 May 2025 00:17:41 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B73236116D;
+	Fri,  9 May 2025 06:12:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 29AB71A9
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 May 2025 00:17:39 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 99DFB1A9
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 May 2025 06:12:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0F1B083750
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 May 2025 00:17:39 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8B2DD8195C
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 May 2025 06:12:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id FrG9KCq-oWSb for <intel-wired-lan@lists.osuosl.org>;
- Fri,  9 May 2025 00:17:38 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=202.12.124.155;
- helo=fhigh-b4-smtp.messagingengine.com;
- envelope-from=marmarek@invisiblethingslab.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 19E0483443
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 19E0483443
-Received: from fhigh-b4-smtp.messagingengine.com
- (fhigh-b4-smtp.messagingengine.com [202.12.124.155])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 19E0483443
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 May 2025 00:17:37 +0000 (UTC)
-Received: from phl-compute-03.internal (phl-compute-03.phl.internal
- [10.202.2.43])
- by mailfhigh.stl.internal (Postfix) with ESMTP id 7711425400F3;
- Thu,  8 May 2025 20:17:36 -0400 (EDT)
-Received: from phl-mailfrontend-01 ([10.202.2.162])
- by phl-compute-03.internal (MEProxy); Thu, 08 May 2025 20:17:36 -0400
-X-ME-Sender: <xms:n0kdaM_jyzM0Mj6qJqYvb4-ZOESNADMDs94fkOWFRsmvRpnVaDdmWA>
- <xme:n0kdaEsVRgnEck-1zYNBg7wez07XgycZY2Zjd2kvObJw3cOeQOL1CalMpDI2nEDRG
- gx_qkfPRPCZ0Q>
-X-ME-Received: <xmr:n0kdaCDLfIxUt3D02DlLhJEqxUt0OiMcTqW_DOuB_lSMKd4L9LsvbEEATgYalzwZue3dUu712EMScjA7hHwqDGD6nP5hE9tpAg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvleduudeiucetufdoteggodetrf
- dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggv
- pdfurfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpih
- gvnhhtshculddquddttddmnecujfgurhepfffhvfevuffkfhggtggujgesghdtreertddt
- jeenucfhrhhomhepofgrrhgvkhcuofgrrhgtiiihkhhofihskhhiqdfikphrvggtkhhiuc
- eomhgrrhhmrghrvghksehinhhvihhsihgslhgvthhhihhnghhslhgrsgdrtghomheqnecu
- ggftrfgrthhtvghrnhepgfduleetfeevhfefheeiteeliefhjefhleduveetteekveettd
- dvgeeuteefjedunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhf
- rhhomhepmhgrrhhmrghrvghksehinhhvihhsihgslhgvthhhihhnghhslhgrsgdrtghomh
- dpnhgspghrtghpthhtohepledpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtohepphhm
- vghniigvlhesmhholhhgvghnrdhmphhgrdguvgdprhgtphhtthhopehvihhtrghlhidrlh
- hifhhshhhithhssehinhhtvghlrdgtohhmpdhrtghpthhtoheprghnthhhohhnhidrlhdr
- nhhguhihvghnsehinhhtvghlrdgtohhmpdhrtghpthhtohepphhriigvmhihshhlrgifrd
- hkihhtshiivghlsehinhhtvghlrdgtohhmpdhrtghpthhtohepnhgvthguvghvsehvghgv
- rhdrkhgvrhhnvghlrdhorhhgpdhrtghpthhtohepihhnthgvlhdqfihirhgvugdqlhgrnh
- eslhhishhtshdrohhsuhhoshhlrdhorhhgpdhrtghpthhtoheprhgvghhrvghsshhiohhn
- sheslhhishhtshdrlhhinhhugidruggvvhdprhgtphhtthhopehsthgrsghlvgesvhhgvg
- hrrdhkvghrnhgvlhdrohhrghdprhgtphhtthhopehsrghshhgrlheskhgvrhhnvghlrdho
- rhhg
-X-ME-Proxy: <xmx:oEkdaMeoBDYQtrGOZOnFG1VmLHKojrxNh6QVm4NzkfIZImjijPZVTQ>
- <xmx:oEkdaBNrVpVy4pPbBQkjnxPHw-mtom2XhGdXFIf9YyUkA3MPVjP_kw>
- <xmx:oEkdaGlFaepKy2O1nPmTmaWgXUj0qzDJVSqaV9x0BWBf0cujwnMC7A>
- <xmx:oEkdaDt1mOAbQN6NUCE7beRz8Gij4RqlB_bwM7qpCBYMWUwlhvvYHQ>
- <xmx:oEkdaGSZkcJvQWro2fvms4v08_gsHZWCni7f9hkkYd5V_hI1eaVusN_S>
-Feedback-ID: i1568416f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 8 May 2025 20:17:34 -0400 (EDT)
-Date: Fri, 9 May 2025 02:17:32 +0200
-From: Marek =?utf-8?Q?Marczykowski-G=C3=B3recki?=
- <marmarek@invisiblethingslab.com>
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-Cc: Vitaly Lifshits <vitaly.lifshits@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- regressions@lists.linux.dev, stable@vger.kernel.org,
- Sasha Levin <sashal@kernel.org>
-Message-ID: <aB1JnJG_CH5vxAsw@mail-itl>
-References: <50da66d0-fe66-0563-4d34-7bd2e25695a4@intel.com>
- <b5d72f51-3cd0-aeca-60af-41a20ad59cd5@intel.com>
- <Z_-l2q9ZhszFxiqA@mail-itl>
- <d37a7c9e-7b3f-afc2-b010-e9785f39a785@intel.com>
- <aAZF0JUKCF0UvfF6@mail-itl> <aAZH7fpaGf7hvX6T@mail-itl>
- <e0034a96-e285-98c8-b526-fb167747aedc@intel.com>
- <aB0zLQawNrImVqPE@mail-itl>
- <c918d4f5-ee53-4f64-b152-cea0f6d99c4f@molgen.mpg.de>
- <aB0-JLSDT03fosST@mail-itl>
+ id D_S9N3kUFcIj for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  9 May 2025 06:12:12 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::532; helo=mail-ed1-x532.google.com;
+ envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org F3F3981587
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F3F3981587
+Received: from mail-ed1-x532.google.com (mail-ed1-x532.google.com
+ [IPv6:2a00:1450:4864:20::532])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id F3F3981587
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 May 2025 06:12:09 +0000 (UTC)
+Received: by mail-ed1-x532.google.com with SMTP id
+ 4fb4d7f45d1cf-5fcaff7274bso145651a12.2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 08 May 2025 23:12:09 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1746771128; x=1747375928;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=JsqZgIgkSuMcTrxJQRDgcEGPZOgCfhwflJ33fpoq6jw=;
+ b=ERH2F3Z1z38r2nQdKylhBr9uKnrBZChzyPck1y4McsLRKbWLKU9w6S9AiVTdz3+ZeY
+ 6yp1+HNC5dhVU+JJ3DtVoHbkx2d5gslPPVnaJb2V7TMXje+x0qYOOsZnuD5gYZY8syOX
+ HRn94wxlf5GXN+XtZf2+sBvDj+GL+q0OESBy/mixiFWhcPWfqYP2TA6806xsV+G9rWQO
+ DgXtmnsspw1RqRgtX8JlVGavlkBKs0iGEgCr0LjEpxrqdFvT8MhOPShwshfh7GpHydmB
+ LA7bbsGqOM0r+jlvLHVEom92aCo0i0vsuV3Y7rzT9jFfqYk9lVaTSPrBYKsDkPvHpa4G
+ qFPQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU+GjBKVJTYzI9aEReU/eOgcBCFkiqUNtp0519Vj6XD6o26UuZsIUim02XPAbCVKNPCj1dj8G+iRHPnXLPyVPk=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YwLwWug8oxLj1xcP/KLfjr2CVXp+7424SGZOAwmmuswOX/r/uJ7
+ edFEqHc7DolmTOyKpr8poJ8F1IVYgrXWwa1ABCyelwwZPn/WS0hPS2UcLNg9RJg=
+X-Gm-Gg: ASbGncuz0E9vgPto6tLMNmuhU9snfWlwu78TF8HW4bmWRP8jZX7wi1JaFjL7WLuY5eP
+ HEsqf6i5SS94g9ok75sKdexuZ3X2YEdsdkr0iNFtpU2atk4NkgnkoPaF5Oy7VxdCGKvz+tBh+dA
+ SMC1QsYqp44UVl9sh+Ynqvb92mPbZkvNokOQZH374lFNHiWWYF8Ht1QLspimHpg1dCA6GsbzEQy
+ K0rTHzhZdfSNQdodf3PXrTYVfvtWfpqGffN3hVgQurJ+P9PGUqegG46fhgzyegkgR28xGPPFcqz
+ uiQCEYj5kDJor6EleIfkJKobPkNksPje5HOz2wEBgn1RxnXMn6rvgDwSRAUrM4V099TzEHIB
+X-Google-Smtp-Source: AGHT+IFwTIvZ/JDXp63lVD7yCHCYF/5x6H0kXJQDeAXO5fUwzIWcY8Yr2zXT/J8iEsgfDbopaGw9rw==
+X-Received: by 2002:a17:906:bf46:b0:ac7:ec31:deb0 with SMTP id
+ a640c23a62f3a-ad218e91c5fmr193282666b.9.1746771127738; 
+ Thu, 08 May 2025 23:12:07 -0700 (PDT)
+Received: from jiri-mlt.client.nvidia.com ([193.47.165.251])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-ad2197c5b9csm98887566b.159.2025.05.08.23.12.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 08 May 2025 23:12:07 -0700 (PDT)
+Date: Fri, 9 May 2025 08:11:56 +0200
+From: Jiri Pirko <jiri@resnulli.us>
+To: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>
+Cc: "donald.hunter@gmail.com" <donald.hunter@gmail.com>, 
+ "kuba@kernel.org" <kuba@kernel.org>,
+ "davem@davemloft.net" <davem@davemloft.net>, 
+ "edumazet@google.com" <edumazet@google.com>,
+ "pabeni@redhat.com" <pabeni@redhat.com>, 
+ "horms@kernel.org" <horms@kernel.org>,
+ "vadim.fedorenko@linux.dev" <vadim.fedorenko@linux.dev>, 
+ "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, "Kitszel,
+ Przemyslaw" <przemyslaw.kitszel@intel.com>, 
+ "andrew+netdev@lunn.ch" <andrew+netdev@lunn.ch>,
+ "saeedm@nvidia.com" <saeedm@nvidia.com>, 
+ "leon@kernel.org" <leon@kernel.org>, "tariqt@nvidia.com" <tariqt@nvidia.com>, 
+ "jonathan.lemon@gmail.com" <jonathan.lemon@gmail.com>,
+ "richardcochran@gmail.com" <richardcochran@gmail.com>, 
+ "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>, "Olech,
+ Milena" <milena.olech@intel.com>, 
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-rdma@vger.kernel.org" <linux-rdma@vger.kernel.org>
+Message-ID: <zosr5eqz5sh2z5uqxghdko2fug2zlzr6dbwbmavesiysabvvgj@zr6pxggacpwg>
+References: <20250508122128.1216231-1-arkadiusz.kubalewski@intel.com>
+ <20250508122128.1216231-2-arkadiusz.kubalewski@intel.com>
+ <timzeiuivkgvdzmyafp752acgfkieuqhivcab55x24ow7apovp@4lsq6esrrusg>
+ <SJ2PR11MB845211DED1A8ECD92116E0019B8BA@SJ2PR11MB8452.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="n/MWWdr08H3gZy0e"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <aB0-JLSDT03fosST@mail-itl>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- invisiblethingslab.com; h=cc:cc:content-type:content-type:date
- :date:from:from:in-reply-to:in-reply-to:message-id:mime-version
- :references:reply-to:subject:subject:to:to; s=fm3; t=1746749856;
- x=1746836256; bh=bgHJflbPL1ZQTYsAd2pB4rR8mFMyVmjAMJfDeemkDT8=; b=
- gC5tilBAAP54Lw04gwewVC6RS8re5PYM06mtGXclfNM1rIiH68Dz0tPN3W/gehL+
- YQMkieZNr8FzBW1Eq0d2SKKfEs3TajsAlTfjoLts9V7M+7BOUP00UTB5FUko0bv1
- CEcWbxGmPLVTe6Faam1cV9GYtVWWDCw4Jon+6Yri1ZV9FlZTE9gUj7xqjZEZ6SSC
- x70RLp37F6i2Pkf+Mc/Mu8fFaiHBKQTYCHTooCBYt+D3RzPy8H9dQKhFq4sonGyu
- 6tdN5iXWuZtZsQGEiY6s8wVH831jn3fgknqWu7RpdzauIz5cFoZyW4Nu/hiSkrRQ
- oQ6F5zLq6eWEWCzXCGvZdA==
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
- :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
- 1746749856; x=1746836256; bh=bgHJflbPL1ZQTYsAd2pB4rR8mFMyVmjAMJf
- DeemkDT8=; b=ssaGgH705DTYvEOmTn32UH7m1LusRBexQqyf+Z6EQf0M5OMB0C0
- MkY+qWFDeUh7VIv6P/5YuUZZ8kYot8k6qLjtE8XuVIQVPjJ8bcGKg3kPnaey/LRN
- rMhMsLlxl7LlebcV++G9BCW5rK6D/RkySncJ8jH+sOWejFURQqKZ5v/GFCo22XzO
- kYOcXuLO/MnRKniFiTO6PZa+ArHeiGSV0e7S3yEEJl1Xo/ocb49pX7N5MVotJbcR
- 4LcW/BJ9OZ13jw0E7+iNud7SNseLDbP223IPdBcsaGHXbx2/kY2YLHzXRuR+vM4r
- Ty//7aVwf/qtZSVAwhmcmewb5sB5is7BZdA==
+In-Reply-To: <SJ2PR11MB845211DED1A8ECD92116E0019B8BA@SJ2PR11MB8452.namprd11.prod.outlook.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1746771128; x=1747375928;
+ darn=lists.osuosl.org; 
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=JsqZgIgkSuMcTrxJQRDgcEGPZOgCfhwflJ33fpoq6jw=;
+ b=FrVwo2iy1Wtk88yOhqdKPlQDuglUVMWpjivDDHVuigRanqej5kTBDccuNzhmvBvqtw
+ lEOXmG8YWHmMzzB+nifca4qRJKEYmyxxesHnu9RpboOee9b3TO47C/A+StgUGPSYib0A
+ doXovZyhqdMPIMBVz3Z+vW8y0lbdxnSZPMvOh+S/NCWFsL0dZU00wygBKNEdWQrZyZ14
+ 7ZGKLiz90GEAt/3V6YVw9uQTn/YXkwVd9JU3FaqQDJpbis6BgWR/KLJpbADeq7Mr6cv1
+ n83s55Kmfhr8sQceIPk9Z6OK18h8A2o7r+r3v7bOVGR+RNGb+J5uhZickKTdoepXc6ez
+ dqJQ==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=invisiblethingslab.com
+ dmarc=none (p=none dis=none)
+ header.from=resnulli.us
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key, unprotected) header.d=invisiblethingslab.com
- header.i=@invisiblethingslab.com header.a=rsa-sha256 header.s=fm3
- header.b=gC5tilBA; 
  dkim=pass (2048-bit key,
- unprotected) header.d=messagingengine.com header.i=@messagingengine.com
- header.a=rsa-sha256 header.s=fm3 header.b=ssaGgH70
-Subject: Re: [Intel-wired-lan] [REGRESSION] e1000e heavy packet loss on
- Meteor Lake - 6.14.2
+ unprotected) header.d=resnulli-us.20230601.gappssmtp.com
+ header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
+ header.s=20230601 header.b=FrVwo2iy
+Subject: Re: [Intel-wired-lan] [PATCH net-next v3 1/3] dpll: add
+ phase-offset-monitor feature to netlink spec
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -162,152 +152,108 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Thu, May 08, 2025 at 05:29:07PM +0200, arkadiusz.kubalewski@intel.com wrote:
+>>From: Jiri Pirko <jiri@resnulli.us>
+>>Sent: Thursday, May 8, 2025 4:26 PM
+>>
+>>Thu, May 08, 2025 at 02:21:26PM +0200, arkadiusz.kubalewski@intel.com
+>>wrote:
+>>>Add enum dpll_feature_state for control over features.
+>>>
+>>>Add dpll device level attribute:
+>>>DPLL_A_PHASE_OFFSET_MONITOR - to allow control over a phase offset monitor
+>>>feature. Attribute is present and shall return current state of a feature
+>>>(enum dpll_feature_state), if the device driver provides such capability,
+>>>otherwie attribute shall not be present.
+>>>
+>>>Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+>>>Reviewed-by: Milena Olech <milena.olech@intel.com>
+>>>Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+>>>---
+>>>v3:
+>>>- replace feature flags and capabilities with per feature attribute
+>>>  approach,
+>>>- add dpll documentation for phase-offset-monitor feature.
+>>>---
+>>> Documentation/driver-api/dpll.rst     | 16 ++++++++++++++++
+>>> Documentation/netlink/specs/dpll.yaml | 24 ++++++++++++++++++++++++
+>>> drivers/dpll/dpll_nl.c                |  5 +++--
+>>> include/uapi/linux/dpll.h             | 12 ++++++++++++
+>>> 4 files changed, 55 insertions(+), 2 deletions(-)
+>>>
+>>>diff --git a/Documentation/driver-api/dpll.rst b/Documentation/driver-
+>>>api/dpll.rst
+>>>index e6855cd37e85..04efb425b411 100644
+>>>--- a/Documentation/driver-api/dpll.rst
+>>>+++ b/Documentation/driver-api/dpll.rst
+>>>@@ -214,6 +214,22 @@ offset values are fractional with 3-digit decimal
+>>>places and shell be
+>>> divided with ``DPLL_PIN_PHASE_OFFSET_DIVIDER`` to get integer part and
+>>> modulo divided to get fractional part.
+>>>
+>>>+Phase offset monitor
+>>>+====================
+>>>+
+>>>+Phase offset measurement is typically performed against the current
+>>>active
+>>>+source. However, some DPLL (Digital Phase-Locked Loop) devices may offer
+>>>+the capability to monitor phase offsets across all available inputs.
+>>>+The attribute and current feature state shall be included in the response
+>>>+message of the ``DPLL_CMD_DEVICE_GET`` command for supported DPLL
+>>devices.
+>>>+In such cases, users can also control the feature using the
+>>>+``DPLL_CMD_DEVICE_SET`` command by setting the ``enum
+>>>dpll_feature_state``
+>>>+values for the attribute.
+>>>+
+>>>+  =============================== ========================
+>>>+  ``DPLL_A_PHASE_OFFSET_MONITOR`` attr state of a feature
+>>>+  =============================== ========================
+>>>+
+>>> Embedded SYNC
+>>> =============
+>>>
+>>>diff --git a/Documentation/netlink/specs/dpll.yaml
+>>>b/Documentation/netlink/specs/dpll.yaml
+>>>index 8feefeae5376..e9774678b3f3 100644
+>>>--- a/Documentation/netlink/specs/dpll.yaml
+>>>+++ b/Documentation/netlink/specs/dpll.yaml
+>>>@@ -240,6 +240,20 @@ definitions:
+>>>       integer part of a measured phase offset value.
+>>>       Value of (DPLL_A_PHASE_OFFSET % DPLL_PHASE_OFFSET_DIVIDER) is a
+>>>       fractional part of a measured phase offset value.
+>>>+  -
+>>>+    type: enum
+>>>+    name: feature-state
+>>>+    doc: |
+>>>+      Allow control (enable/disable) and status checking over features.
+>>>+    entries:
+>>>+      -
+>>>+        name: disable
+>>>+        doc: |
+>>>+          feature shall be disabled
+>>>+      -
+>>>+        name: enable
+>>>+        doc: |
+>>>+          feature shall be enabled
+>>
+>>Is it necessary to introduce an enum for simple bool?
+>>I mean, we used to handle this by U8 attr with 0/1 value. Idk what's the
+>>usual way carry boolean values to do this these days, but enum looks
+>>like overkill.
+>>
+>
+>Well, yeah.. tricky.. There is no bool type in the attribute types?
+>Input/output pin direction or eec/pps dpll types are also 2-value-enums
+>we use same way..
+>
+>Had to use something as it is better then plain 0/1, also those values
+>could be reused for any other feature.
 
---n/MWWdr08H3gZy0e
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Date: Fri, 9 May 2025 02:17:32 +0200
-From: Marek =?utf-8?Q?Marczykowski-G=C3=B3recki?= <marmarek@invisiblethingslab.com>
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-Cc: Vitaly Lifshits <vitaly.lifshits@intel.com>,
-	Tony Nguyen <anthony.l.nguyen@intel.com>,
-	Przemek Kitszel <przemyslaw.kitszel@intel.com>,
-	netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
-	regressions@lists.linux.dev, stable@vger.kernel.org,
-	Sasha Levin <sashal@kernel.org>
-Subject: Re: [Intel-wired-lan] [REGRESSION] e1000e heavy packet loss on
- Meteor Lake - 6.14.2
+Okay, I don't mind.
 
-On Fri, May 09, 2025 at 01:28:36AM +0200, Marek Marczykowski-G=C3=B3recki w=
-rote:
-> On Fri, May 09, 2025 at 01:13:28AM +0200, Paul Menzel wrote:
-> > Dear Marek, dear Vitaly,
-> >=20
-> >=20
-> > Am 09.05.25 um 00:41 schrieb Marek Marczykowski-G=C3=B3recki:
-> > > On Thu, May 08, 2025 at 09:26:18AM +0300, Lifshits, Vitaly
-> > > > On 4/21/2025 4:28 PM, Marek Marczykowski-G=C3=B3recki wrote:
-> > > > > On Mon, Apr 21, 2025 at 03:19:12PM +0200, Marek Marczykowski-G=C3=
-=B3recki wrote:
-> > > > > > On Mon, Apr 21, 2025 at 03:44:02PM +0300, Lifshits, Vitaly wrot=
-e:
-> > > > > > >=20
-> > > > > > >=20
-> > > > > > > On 4/16/2025 3:43 PM, Marek Marczykowski-G=C3=B3recki wrote:
-> > > > > > > > On Wed, Apr 16, 2025 at 03:09:39PM +0300, Lifshits, Vitaly =
-wrote:
-> > > > > > > > > Can you please also share the output of ethtool -i? I wou=
-ld like to know the
-> > > > > > > > > NVM version that you have on your device.
-> > > > > > > >=20
-> > > > > > > > driver: e1000e
-> > > > > > > > version: 6.14.1+
-> > > > > > > > firmware-version: 1.1-4
-> > > > > > > > expansion-rom-version:
-> > > > > > > > bus-info: 0000:00:1f.6
-> > > > > > > > supports-statistics: yes
-> > > > > > > > supports-test: yes
-> > > > > > > > supports-eeprom-access: yes
-> > > > > > > > supports-register-dump: yes
-> > > > > > > > supports-priv-flags: yes
-> > > > > > > >=20
-> > > > > > >=20
-> > > > > > > Your firmware version is not the latest, can you check with t=
-he board
-> > > > > > > manufacturer if there is a BIOS update to your system?
-> > > > > >=20
-> > > > > > I can check, but still, it's a regression in the Linux driver -=
- old
-> > > > > > kernel did work perfectly well on this hw. Maybe new driver tri=
-es to use
-> > > > > > some feature that is missing (or broken) in the old firmware?
-> > > > >=20
-> > > > > A little bit of context: I'm maintaining the kernel package for a=
- Qubes
-> > > > > OS distribution. While I can try to update firmware on my test sy=
-stem, I
-> > > > > have no influence on what hardware users will use this kernel, and
-> > > > > which firmware version they will use (and whether all the vendors
-> > > > > provide newer firmware at all). I cannot ship a kernel that is kn=
-own
-> > > > > to break network on some devices.
-> > > > >=20
-> > > > > > > Also, you mentioned that on another system this issue doesn't=
- reproduce, do
-> > > > > > > they have the same firmware version?
-> > > > > >=20
-> > > > > > The other one has also 1.1-4 firmware. And I re-checked, e1000e=
- from
-> > > > > > 6.14.2 works fine there.
-> >=20
-> > > > Thank you for your detailed feedback and for providing the requested
-> > > > information.
-> > > >=20
-> > > > We have conducted extensive testing of this patch across multiple s=
-ystems
-> > > > and have not observed any packet loss issues. Upon comparing the me=
-ntioned
-> > > > setups, we noted that while the LAN controller is similar, the CPU =
-differs.
-> > > > We believe that the issue may be related to transitions in the CPU'=
-s low
-> > > > power states.
-> > > >=20
-> > > > Consequently, we kindly request that you disable the CPU low power =
-state
-> > > > transitions in the S0 system state and verify if the issue persists=
-=2E You can
-> > > > disable this in the kernel parameters on the command line with idle=
-=3Dpoll.
-> > > > Please note that this command is intended for debugging purposes on=
-ly, as it
-> > > > may result in higher power consumption.
-> > >=20
-> > > I tried with idle=3Dpoll, and it didn't help, I still see a lot of pa=
-cket
-> > > losses. But I can also confirm that idle=3Dpoll makes the system use
-> > > significantly more power (previously at 25-30W, with this option stays
-> > > at about 42W).
-> > >=20
-> > > Is there any other info I can provide, enable some debug features or
-> > > something?
-> > >=20
-> > > I see the problem is with receiving packets - in my simple ping test,
-> > > the ping target sees all the echo requests (and respond to them), but
-> > > the responses aren't reaching ping back (and are not visible on tcpdu=
-mp
-> > > on the problematic system either).
-> >=20
-> > As the cause is still unclear, can the commit please be reverted in the
-> > master branch due adhere to Linux=E2=80=99 no-regression policy, so tha=
-t it can be
-> > reverted from the stable series?
-> >=20
-> > Marek, did you also test 6.15 release candidates?
->=20
-> The last test I did was on 6.15-rc3. I can re-test on -rc5.
-
-Same with 6.15-rc5.
-
---=20
-Best Regards,
-Marek Marczykowski-G=C3=B3recki
-Invisible Things Lab
-
---n/MWWdr08H3gZy0e
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhrpukzGPukRmQqkK24/THMrX1ywFAmgdSZwACgkQ24/THMrX
-1yzoAQgAioPuDagIQxZe0pqULGrZjcrKqwKAiq91lo8jeuvVdB7Yd8j9r++ORea9
-uKZ9wGXKSwB8ZXBJ628zNTRbNUcLlCToAqmHkxXFvLk839u9G55nvVW6g8aT6Ahg
-zBkvllcehFRPSLPd0KfHPVaeoj6squmhG8TnFs/bsn/heimrnCHIzCU7RayK2tim
-UBRAwloLWZJmk5+p+fIvYoODDlvpUlXY8/pnaRFWb2YOMX+ylFzCF1MEelNh36VN
-w1WCAlylz7kMG0bp0NuVEequjHbOU+7A2ppHPQdEjFMj4h6bDvprc1SnzTG+0GR/
-AMGxAIrdhQnrGDsKREVZsassJjIG4Q==
-=NlgR
------END PGP SIGNATURE-----
-
---n/MWWdr08H3gZy0e--
+>
+>Thank you!
+>Arkadiusz
+> 
+>[...]
