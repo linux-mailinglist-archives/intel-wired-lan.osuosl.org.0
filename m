@@ -1,120 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 80F65AB213B
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 10 May 2025 06:58:36 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 87C22AB24DB
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 10 May 2025 19:46:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EDC6183B4E;
-	Sat, 10 May 2025 04:58:33 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6E8D2403D9;
+	Sat, 10 May 2025 17:46:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id y3WFz_YTrRKW; Sat, 10 May 2025 04:58:33 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id XCvpfS0tHcdv; Sat, 10 May 2025 17:46:49 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B850883B25
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 61BA940356
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1746853112;
-	bh=r+X410cT7F4Pp3UKILHwY2TVKJ2didIf9eg67M7lzks=;
-	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=37wz+ARNfE656opsZmR3fi66hsQrwjZsJgddvZuFiRClvSE+JjrXMrzKf8VNXadFQ
-	 nV2vYB1OqAHnG6JEyRgV6UfluHfPi12wWrALEulftuKWVrQ2qiHkWL7tRCFtsz0vrV
-	 5C6t0Y/s1Z28FpC/PJkY8pFqZKNWV25QnLBOz7Dai7UYvufdCJxV/UP++8tLBnu4bW
-	 hxzbHy7GuF4WB58oiIubVoGmFl2P6d7MvPoYM+rbwuXiC1PxEuZJZ1g2nByE8YkR3J
-	 xsRAXS7w6b9mPT5b3pGHZ+qi3cuTuepLcOHXriedg1oqRip0Fj+kknAT2oCMWBM0jL
-	 pHCl7JiPbMzXQ==
+	s=default; t=1746899209;
+	bh=QUX7TQfxmIjp5XGpz04Qyr9G0cX5C8z09k3HQaQDhqI=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=H+KSJBIer9c6qn9nCtSsn0AXPLRcphx/BDEM9Z3/kSi+EhhviPFtoVzuNsvs3Fk21
+	 3jibLLnS+6sn3N+ablxpbuV+dazvIn21cOy9ebmvLbj0B3uimj40DZy/SggTO1RZ6V
+	 TCI0cAl6GikSeuhvT9OA3hwe83T02D1RSeGavBQ5Vt1u6Bv8GSbMDDhcGxOm9aD8b3
+	 dBeD/pBWRjpOviPxCWuMdJj648SSYQI2wItZL52E6EwexiKQu9sJmmqI8EzqeaOZ7m
+	 yXfk6lIqsrSI1GR4AnKx5ewInsaiPktT8qqI+MXU+TBrttucJRtMqGcUcvnqNIYfRP
+	 wrpHdlxpsGOzg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B850883B25;
-	Sat, 10 May 2025 04:58:32 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 61BA940356;
+	Sat, 10 May 2025 17:46:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 2B36F154
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 May 2025 04:58:31 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 1CC27E0
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 May 2025 17:46:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 10D3E6084D
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 May 2025 04:58:31 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 02DE4606F3
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 May 2025 17:46:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id yZdTJLW2-MCO for <intel-wired-lan@lists.osuosl.org>;
- Sat, 10 May 2025 04:58:30 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::629; helo=mail-ej1-x629.google.com;
- envelope-from=jagadeesharm14@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B999F607AE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B999F607AE
-Received: from mail-ej1-x629.google.com (mail-ej1-x629.google.com
- [IPv6:2a00:1450:4864:20::629])
- by smtp3.osuosl.org (Postfix) with ESMTPS id B999F607AE
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 May 2025 04:58:29 +0000 (UTC)
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-acb415dd8faso464806766b.2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 09 May 2025 21:58:29 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746853107; x=1747457907;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=r+X410cT7F4Pp3UKILHwY2TVKJ2didIf9eg67M7lzks=;
- b=TLZKfwVy89iOQjqjHfuSH3ERnfQ3AKMr/uSRX5PgTEAXDZf32/hazfh48EK/d7ydZL
- EXdSjGtTQZuEwImdP4fpUxzrlakdtQkxn5emU4Km89+KjMGDJCPVBlDIJfUI5m/lxBpz
- R0mWtE9l0dDsfajt3C+2iC8Dqus787sznl14mjIteEvQTQxOqsFE1Ad7FRczoFdAvMrQ
- SkP2GFbP2jub0/7UwdK8NhuUqoccYwEXNcv8Y1cGUke7eBDK6BlPVVxJLnGpXedOazmy
- qUEa7ilw0unNzdkMIWCevL09T+aEWAfzjuK9QYTK0O8ETNwadS40EjHg9c0Q8afWbNmi
- 7JkA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUZS3I2AHPuENQeeeRzlqny3Mqdbo20ZTZrunX2Ixos93/lwD6WWto08zDUbxmYJ6CsRZ2r/otSYYgUn1NlwsM=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzIifIfDUuFruFqIyJb1yLt3MBEXsmNO5zOX6b7ipdbSNbNqpuI
- Qq9W4dptsjjdOH2nt0k3Bm7W/JcABZpC7wKcN5JMJdVqQl3nIYMdykPVI83UwxUIg+QFIHO8TFj
- 86hl5TT8rzQ5A2YTN5rbrLEykRCU=
-X-Gm-Gg: ASbGncuHa9K6EG28aIngHvpqPNplfPhVhGRZJwKrwQT/xfRr0/Ts1DZbsgia25FJ5tO
- kCbKu4AUxMKrcZtmRG+tCiRYJ+qCaBZ90FMohHJyU14Px5JUsLqWD37Sa8CpE9ReNW2gAkgxlzX
- ddwNCfnn4aPrZRgna0+As/WnUCQdSxZG3LIg==
-X-Google-Smtp-Source: AGHT+IEaB8ciOOStpiDcz17DoJIKHJS5xv7itHo1ehWc/jJtaQmTKXajRcEeSkBPiOIvC2eQpsgJsXGOFW7+QoxlJAQ=
-X-Received: by 2002:a17:907:a701:b0:ad2:31c7:1ab with SMTP id
- a640c23a62f3a-ad231c705f2mr195036666b.41.1746853107188; Fri, 09 May 2025
- 21:58:27 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250508061439.8900-1-jagadeesharm14@gmail.com>
- <8a9fda50-6040-4cca-b99f-46bb9258a6f0@molgen.mpg.de>
-In-Reply-To: <8a9fda50-6040-4cca-b99f-46bb9258a6f0@molgen.mpg.de>
-From: jagadesh kumar <jagadeesharm14@gmail.com>
-Date: Sat, 10 May 2025 10:28:14 +0530
-X-Gm-Features: ATxdqUFBhDKSWn7Tg2KbsE5MwRsJQ-JifG8TbvqiPlcw8I7rFGlf5vlUbTROFME
-Message-ID: <CANHhatDxo_xfOr1WU574a5uROos2obKSk+qk0F=e7V=rggT21w@mail.gmail.com>
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>, 
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S . Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- intel-wired-lan@lists.osuosl.org, 
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
- Jagadeesh <jagadeesh.yalapalli@einfochips.com>
-Content-Type: multipart/alternative; boundary="000000000000edc9830634c0ee46"
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1746853107; x=1747457907; darn=lists.osuosl.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=r+X410cT7F4Pp3UKILHwY2TVKJ2didIf9eg67M7lzks=;
- b=Hn4gZtHtCGAb/fSNVPj1BryKF2qDAswUqN+ePHvat/msDD3+rzHYXinZUlDmfru8W9
- MsLDPMGxCc6uxQ0PjGzHqCjE3+Ebc1lQ5t+WSMYTojRSwRjK7JRar5rpTPqqH12xC21i
- KrPJivfLDvrNYQNxqop6UQ6wp3t/C2s2gL1YylEiEIVaCY5PiOOyFUUsV9Lyz9mhiFUI
- 9MTgB9LA9AHpuD3AQZehZK04onXOC3MuQdrXK2oMIVU09aCR99vP7ASw86AaS4HitJ2c
- xvmW6DGzojk2Q/oaMq9CN8DGOiT5w8WVa8C2JDfALuZABRaU4k2D0mNHhv3/FxUl+ZNs
- /I6g==
+ id s2gzofQMdBoM for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 10 May 2025 17:46:46 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.15;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 064EF6066C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 064EF6066C
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 064EF6066C
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 May 2025 17:46:45 +0000 (UTC)
+X-CSE-ConnectionGUID: Lsg8epJzTM6wXT9fqfk2dQ==
+X-CSE-MsgGUID: N4/vj264RpaT4tQHuGwmUA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11429"; a="52371650"
+X-IronPort-AV: E=Sophos;i="6.15,278,1739865600"; d="scan'208";a="52371650"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+ by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 May 2025 10:46:44 -0700
+X-CSE-ConnectionGUID: BkrzTiR6RfGxQFtfP8I0Uw==
+X-CSE-MsgGUID: HKSfWt0wScaa68f7hwg2XA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,278,1739865600"; d="scan'208";a="141687772"
+Received: from lkp-server01.sh.intel.com (HELO 1992f890471c) ([10.239.97.150])
+ by orviesa003.jf.intel.com with ESMTP; 10 May 2025 10:46:44 -0700
+Received: from kbuild by 1992f890471c with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1uDoHZ-000DFd-0u
+ for intel-wired-lan@lists.osuosl.org; Sat, 10 May 2025 17:46:41 +0000
+Date: Sun, 11 May 2025 01:45:48 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202505110135.iWzCJ1aw-lkp@intel.com>
+User-Agent: s-nail v14.9.24
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1746899206; x=1778435206;
+ h=date:from:to:subject:message-id;
+ bh=n0pqJSHLSG7/GUGcdbuFKIqiLFmtZZCsOEPHL1bpcoE=;
+ b=bT/RJzGbvC/ITREkB1p6HSky5sXszQEx1s6oDQHWyo4ldi7VkzRHx5qG
+ NptKnZKciVI4L4+qkAHcbS1XYltZ+gNBfEfg9wUGfDex2PdEVomzjt3JQ
+ 74dZVS0IZaWLquEiRpWHW5Fg1/kiVBIx6Ll9tLJL8k060OaNpHmcgkvEN
+ iSy9qvHm13om15ny1M+mzR4kfdeRgsIehn+I0vFzSp0FUs30AuDmH3OAn
+ fcqT2NGxwhP8CZyqk4l30Ptm19Fvg25Lh8X56U626cqaC3mum/zFM2/JB
+ K9jni4oPl+ibaKHpc9YhKvPd/oHN8Y3a2ukV0pIaRN6Dr49KBJDEIffwr
+ A==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=Hn4gZtHt
-Subject: Re: [Intel-wired-lan] [PATCH v1] e1000e: Replace schedule_work with
- delayed workqueue for watchdog.
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=bT/RJzGb
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ b74ad830a99f47b47e3f8d98d7d78614edab6217
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -130,225 +104,136 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---000000000000edc9830634c0ee46
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: b74ad830a99f47b47e3f8d98d7d78614edab6217  net: intel: move RSS packet classifier types to libie
 
-Thanks for feedback.
+elapsed time: 1451m
 
-Resolved the naming convention of Author/signoff part,
+configs tested: 117
+configs skipped: 4
 
-Check After previously reverted or rejected patches.
-understand the impact of usage of "queue_delayed_work" functions in
-watchdog related routines.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Impact : (59653e6497d1: e1000e: Make
-watchdog use delayed work). This was resulted in driver crashes and
-connections to reset unexpectedly.
+tested configs:
+alpha                             allnoconfig    gcc-14.2.0
+alpha                            allyesconfig    gcc-14.2.0
+arc                              allmodconfig    gcc-14.2.0
+arc                               allnoconfig    gcc-14.2.0
+arc                              allyesconfig    gcc-14.2.0
+arc                   randconfig-001-20250510    gcc-14.2.0
+arc                   randconfig-002-20250510    gcc-13.3.0
+arm                               allnoconfig    clang-21
+arm                        keystone_defconfig    gcc-14.2.0
+arm                         mv78xx0_defconfig    clang-19
+arm                   randconfig-001-20250510    gcc-10.5.0
+arm                   randconfig-002-20250510    clang-21
+arm                   randconfig-003-20250510    gcc-10.5.0
+arm                   randconfig-004-20250510    gcc-7.5.0
+arm                           sunxi_defconfig    gcc-14.2.0
+arm64                             allnoconfig    gcc-14.2.0
+arm64                 randconfig-001-20250510    gcc-7.5.0
+arm64                 randconfig-002-20250510    gcc-5.5.0
+arm64                 randconfig-003-20250510    clang-21
+arm64                 randconfig-004-20250510    gcc-7.5.0
+csky                              allnoconfig    gcc-14.2.0
+csky                  randconfig-001-20250510    gcc-14.2.0
+csky                  randconfig-002-20250510    gcc-13.3.0
+hexagon                          allmodconfig    clang-17
+hexagon                           allnoconfig    clang-21
+hexagon                          allyesconfig    clang-21
+hexagon               randconfig-001-20250510    clang-21
+hexagon               randconfig-002-20250510    clang-21
+i386                             allmodconfig    gcc-12
+i386                              allnoconfig    gcc-12
+i386                             allyesconfig    gcc-12
+i386        buildonly-randconfig-001-20250510    gcc-12
+i386        buildonly-randconfig-002-20250510    gcc-12
+i386        buildonly-randconfig-003-20250510    gcc-12
+i386        buildonly-randconfig-004-20250510    gcc-12
+i386        buildonly-randconfig-005-20250510    gcc-12
+i386        buildonly-randconfig-006-20250510    gcc-12
+i386                                defconfig    clang-20
+loongarch                         allnoconfig    gcc-14.2.0
+loongarch             randconfig-001-20250510    gcc-13.3.0
+loongarch             randconfig-002-20250510    gcc-14.2.0
+m68k                             allmodconfig    gcc-14.2.0
+m68k                              allnoconfig    gcc-14.2.0
+m68k                             allyesconfig    gcc-14.2.0
+microblaze                       allmodconfig    gcc-14.2.0
+microblaze                        allnoconfig    gcc-14.2.0
+microblaze                       allyesconfig    gcc-14.2.0
+mips                              allnoconfig    gcc-14.2.0
+mips                           mtx1_defconfig    clang-21
+mips                        omega2p_defconfig    clang-21
+nios2                             allnoconfig    gcc-14.2.0
+nios2                 randconfig-001-20250510    gcc-11.5.0
+nios2                 randconfig-002-20250510    gcc-7.5.0
+openrisc                          allnoconfig    gcc-14.2.0
+openrisc                         allyesconfig    gcc-14.2.0
+openrisc                            defconfig    gcc-14.2.0
+parisc                           allmodconfig    gcc-14.2.0
+parisc                            allnoconfig    gcc-14.2.0
+parisc                           allyesconfig    gcc-14.2.0
+parisc                              defconfig    gcc-14.2.0
+parisc                randconfig-001-20250510    gcc-6.5.0
+parisc                randconfig-002-20250510    gcc-12.4.0
+powerpc                          allmodconfig    gcc-14.2.0
+powerpc                           allnoconfig    gcc-14.2.0
+powerpc                      chrp32_defconfig    clang-19
+powerpc                      ep88xc_defconfig    gcc-14.2.0
+powerpc               mpc834x_itxgp_defconfig    clang-21
+powerpc                      ppc64e_defconfig    gcc-14.2.0
+powerpc               randconfig-001-20250510    gcc-7.5.0
+powerpc               randconfig-002-20250510    clang-17
+powerpc               randconfig-003-20250510    clang-21
+powerpc64             randconfig-001-20250510    clang-18
+powerpc64             randconfig-002-20250510    gcc-10.5.0
+powerpc64             randconfig-003-20250510    clang-21
+riscv                             allnoconfig    gcc-14.2.0
+riscv             nommu_k210_sdcard_defconfig    gcc-14.2.0
+riscv                 randconfig-001-20250510    gcc-14.2.0
+riscv                 randconfig-002-20250510    gcc-7.5.0
+s390                             allmodconfig    clang-18
+s390                              allnoconfig    clang-21
+s390                             allyesconfig    gcc-14.2.0
+s390                  randconfig-001-20250510    gcc-7.5.0
+s390                  randconfig-002-20250510    clang-21
+sh                               allmodconfig    gcc-14.2.0
+sh                                allnoconfig    gcc-14.2.0
+sh                               allyesconfig    gcc-14.2.0
+sh                        apsh4ad0a_defconfig    gcc-14.2.0
+sh                             espt_defconfig    gcc-14.2.0
+sh                            hp6xx_defconfig    gcc-14.2.0
+sh                            migor_defconfig    gcc-14.2.0
+sh                    randconfig-001-20250510    gcc-9.3.0
+sh                    randconfig-002-20250510    gcc-11.5.0
+sparc                            allmodconfig    gcc-14.2.0
+sparc                             allnoconfig    gcc-14.2.0
+sparc                 randconfig-001-20250510    gcc-12.4.0
+sparc                 randconfig-002-20250510    gcc-14.2.0
+sparc64                          alldefconfig    gcc-14.2.0
+sparc64               randconfig-001-20250510    gcc-10.5.0
+sparc64               randconfig-002-20250510    gcc-14.2.0
+um                               allmodconfig    clang-19
+um                                allnoconfig    clang-21
+um                               allyesconfig    gcc-12
+um                    randconfig-001-20250510    gcc-12
+um                    randconfig-002-20250510    gcc-12
+x86_64                            allnoconfig    clang-20
+x86_64                           allyesconfig    clang-20
+x86_64      buildonly-randconfig-001-20250510    clang-20
+x86_64      buildonly-randconfig-002-20250510    clang-20
+x86_64      buildonly-randconfig-003-20250510    gcc-12
+x86_64      buildonly-randconfig-004-20250510    gcc-11
+x86_64      buildonly-randconfig-005-20250510    gcc-12
+x86_64      buildonly-randconfig-006-20250510    clang-20
+x86_64                              defconfig    gcc-11
+x86_64                          rhel-9.4-rust    clang-18
+xtensa                            allnoconfig    gcc-14.2.0
+xtensa                randconfig-001-20250510    gcc-8.5.0
+xtensa                randconfig-002-20250510    gcc-14.2.0
 
-May be There is no proper synchronization for above patch changes.
-
-Thanks & Regards,
-Jagadeesh Yalapalli.
-
-On Thu, May 8, 2025 at 10:10=E2=80=AFPM Paul Menzel <pmenzel@molgen.mpg.de>=
- wrote:
-
-> Dear Jagadeesh,
->
->
-> Thank you for your patch.
->
-> Am 08.05.25 um 08:14 schrieb Jagadeesh Yalapalli:
-> > From: Jagadeesh <jagadeesh.yalapalli@einfochips.com>
->
-> Is this your full name, or should *Jagadeesh Yalapalli* be used?
->
->      git config --global user.name "Jagadeesh Yalapalli"
->
-> >
-> >      Replace direct schedule_work() usage with queue_delayed_work() to
-> allow
-> >      better timing control for the watchdog task. This resolves potenti=
-al
-> >      race conditions during interface reset operations.
->
-> What error do you get (without your patch)?
->
-> >      - Added watchdog_wq workqueue_struct and watchdog_dq delayed_work
-> >      - Updated e1000_watchdog() to use queue_delayed_work()
-> >      - Removed obsolete TODO comment about delayed workqueue
-> >
-> >      Tested in Qemu :
-> >      / # for i in {1..1000}; do
-> >      >     echo 1 > /sys/class/net/eth0/device/reset
-> >      >     sleep 0.1
-> >      > done
-> >      [  726.357499] e1000e 0000:00:02.0: resetting
-> >      [  726.390737] e1000e 0000:00:02.0: reset done
->
-> Please do not copy the output of git show, but send the patch with `git
-> format-patch` and `git send-email`.
->
-> > Signed-off-by: Jagadeesh <jagadeesh.yalapalli@einfochips.com>
-> > ---
-> >   drivers/net/ethernet/intel/e1000e/e1000.h  | 2 ++
-> >   drivers/net/ethernet/intel/e1000e/netdev.c | 3 +--
-> >   2 files changed, 3 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/drivers/net/ethernet/intel/e1000e/e1000.h
-> b/drivers/net/ethernet/intel/e1000e/e1000.h
-> > index ba9c19e6994c..1e7b365c4f31 100644
-> > --- a/drivers/net/ethernet/intel/e1000e/e1000.h
-> > +++ b/drivers/net/ethernet/intel/e1000e/e1000.h
-> > @@ -194,6 +194,8 @@ struct e1000_adapter {
-> >       struct timer_list blink_timer;
-> >
-> >       struct work_struct reset_task;
-> > +     struct workqueue_struct *watchdog_wq;
-> > +     struct delayed_work watchdog_dq;
-> >       struct work_struct watchdog_task;
-> >
-> >       const struct e1000_info *ei;
-> > diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c
-> b/drivers/net/ethernet/intel/e1000e/netdev.c
-> > index 8ebcb6a7d608..87a915d09f4e 100644
-> > --- a/drivers/net/ethernet/intel/e1000e/netdev.c
-> > +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-> > @@ -5178,9 +5178,8 @@ static void e1000_watchdog(struct timer_list *t)
-> >       struct e1000_adapter *adapter =3D from_timer(adapter, t,
-> watchdog_timer);
-> >
-> >       /* Do the rest outside of interrupt context */
-> > -     schedule_work(&adapter->watchdog_task);
-> > +     queue_delayed_work(adapter->watchdog_wq, &adapter->watchdog_dq, 0=
-);
-> >
-> > -     /* TODO: make this use queue_delayed_work() */
-> >   }
-> >
-> >   static void e1000_watchdog_task(struct work_struct *work)
->
->
-> Kind regards,
->
-> Paul
->
-
---000000000000edc9830634c0ee46
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Thanks for feedback.<br><br>Resolved the naming convention=
- of Author/signoff part,<br><br>Check After previously reverted or rejected=
- patches.<div>understand the impact of usage of &quot;<span style=3D"color:=
-rgb(80,0,80)">queue_delayed_work&quot;</span>=C2=A0functions in watchdog re=
-lated routines.<br><br>Impact : (59653e6497d1: e1000e: Make <br>watchdog us=
-e delayed work). This was resulted in driver crashes and <br>connections to=
- reset unexpectedly.<br><br>May be There is no proper synchronization for a=
-bove patch changes.<br><br>Thanks &amp; Regards,<br>Jagadeesh Yalapalli.</d=
-iv></div><br><div class=3D"gmail_quote gmail_quote_container"><div dir=3D"l=
-tr" class=3D"gmail_attr">On Thu, May 8, 2025 at 10:10=E2=80=AFPM Paul Menze=
-l &lt;<a href=3D"mailto:pmenzel@molgen.mpg.de">pmenzel@molgen.mpg.de</a>&gt=
-; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px=
- 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Dear Ja=
-gadeesh,<br>
-<br>
-<br>
-Thank you for your patch.<br>
-<br>
-Am 08.05.25 um 08:14 schrieb Jagadeesh Yalapalli:<br>
-&gt; From: Jagadeesh &lt;<a href=3D"mailto:jagadeesh.yalapalli@einfochips.c=
-om" target=3D"_blank">jagadeesh.yalapalli@einfochips.com</a>&gt;<br>
-<br>
-Is this your full name, or should *Jagadeesh Yalapalli* be used?<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0git config --global <a href=3D"http://user.name" rel=3D=
-"noreferrer" target=3D"_blank">user.name</a> &quot;Jagadeesh Yalapalli&quot=
-;<br>
-<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 Replace direct schedule_work() usage with queue_de=
-layed_work() to allow<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 better timing control for the watchdog task. This =
-resolves potential<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 race conditions during interface reset operations.=
-<br>
-<br>
-What error do you get (without your patch)?<br>
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 - Added watchdog_wq workqueue_struct and watchdog_=
-dq delayed_work<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 - Updated e1000_watchdog() to use queue_delayed_wo=
-rk()<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 - Removed obsolete TODO comment about delayed work=
-queue<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 Tested in Qemu :<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 / # for i in {1..1000}; do<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0echo 1 &gt; /sys/class/net=
-/eth0/device/reset<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0sleep 0.1<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; done<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 [=C2=A0 726.357499] e1000e 0000:00:02.0: resetting=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 [=C2=A0 726.390737] e1000e 0000:00:02.0: reset don=
-e<br>
-<br>
-Please do not copy the output of git show, but send the patch with `git <br=
->
-format-patch` and `git send-email`.<br>
-<br>
-&gt; Signed-off-by: Jagadeesh &lt;<a href=3D"mailto:jagadeesh.yalapalli@ein=
-fochips.com" target=3D"_blank">jagadeesh.yalapalli@einfochips.com</a>&gt;<b=
-r>
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0drivers/net/ethernet/intel/e1000e/e1000.h=C2=A0 | 2 ++<br>
-&gt;=C2=A0 =C2=A0drivers/net/ethernet/intel/e1000e/netdev.c | 3 +--<br>
-&gt;=C2=A0 =C2=A02 files changed, 3 insertions(+), 2 deletions(-)<br>
-&gt; <br>
-&gt; diff --git a/drivers/net/ethernet/intel/e1000e/e1000.h b/drivers/net/e=
-thernet/intel/e1000e/e1000.h<br>
-&gt; index ba9c19e6994c..1e7b365c4f31 100644<br>
-&gt; --- a/drivers/net/ethernet/intel/e1000e/e1000.h<br>
-&gt; +++ b/drivers/net/ethernet/intel/e1000e/e1000.h<br>
-&gt; @@ -194,6 +194,8 @@ struct e1000_adapter {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0struct timer_list blink_timer;<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0struct work_struct reset_task;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0struct workqueue_struct *watchdog_wq;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0struct delayed_work watchdog_dq;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0struct work_struct watchdog_task;<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0const struct e1000_info *ei;<br>
-&gt; diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/=
-ethernet/intel/e1000e/netdev.c<br>
-&gt; index 8ebcb6a7d608..87a915d09f4e 100644<br>
-&gt; --- a/drivers/net/ethernet/intel/e1000e/netdev.c<br>
-&gt; +++ b/drivers/net/ethernet/intel/e1000e/netdev.c<br>
-&gt; @@ -5178,9 +5178,8 @@ static void e1000_watchdog(struct timer_list *t)=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0struct e1000_adapter *adapter =3D from_timer=
-(adapter, t, watchdog_timer);<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* Do the rest outside of interrupt context =
-*/<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0schedule_work(&amp;adapter-&gt;watchdog_task);<br=
->
-&gt; +=C2=A0 =C2=A0 =C2=A0queue_delayed_work(adapter-&gt;watchdog_wq, &amp;=
-adapter-&gt;watchdog_dq, 0);<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0/* TODO: make this use queue_delayed_work() */<br=
->
-&gt;=C2=A0 =C2=A0}<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0static void e1000_watchdog_task(struct work_struct *work)<=
-br>
-<br>
-<br>
-Kind regards,<br>
-<br>
-Paul<br>
-</blockquote></div>
-
---000000000000edc9830634c0ee46--
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
