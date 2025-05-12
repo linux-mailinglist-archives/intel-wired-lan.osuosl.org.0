@@ -1,229 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CF570AB38AF
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 May 2025 15:22:58 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8C8C540913;
-	Mon, 12 May 2025 13:22:57 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id L_s2O2wjD2TO; Mon, 12 May 2025 13:22:56 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 73A3E40939
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1747056176;
-	bh=ulAs7s2Hq8GIKCICRUSDIeeUQDLzBQHlzJKh8FR2yr8=;
-	h=Date:From:To:CC:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=QNk2XsGiEOgGQPoqUMQOJUlswTulG72ycDulRvr03Qi0gvk0eASImGcMVvR1loB8W
-	 HkM0c9DVGR+Yma7KsnOcvrTDSgxvRs5UsFUG/1/NdWuS612hmzQN9MC/Z7jh02FHYc
-	 QBv+FRxTpDbJfTG9491u+z3RSKQVM9owtXvOEuE40djWuS/Y1MlEkAoP8aAA6W2uHF
-	 u+wI93Gy7ql76PveNCqf1oHtAMcWN6SlNKljS2B1iuCNnS1j8yyerGxFphJqRTxocQ
-	 iL1zJHti812YDlQTxVLQrkQKgQfJM4Rcmj81oRpjybIl9wKiClgjfoSIx0tIA0IKt9
-	 DdTlZ7ib6dKFg==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 73A3E40939;
-	Mon, 12 May 2025 13:22:56 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 692F617D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 May 2025 13:22:54 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id E59C8AB39F2
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 May 2025 16:02:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 65EBF81465
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 May 2025 13:22:54 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id EB84E80E97;
+	Mon, 12 May 2025 14:02:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RBszLq8tP8fJ for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 May 2025 13:22:53 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.9;
- helo=mgamail.intel.com; envelope-from=larysa.zaremba@intel.com;
+ id B_eCzy1NJPOR; Mon, 12 May 2025 14:02:15 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 70ED680DFC
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1747058534;
+	bh=D8dOrIpf5gasDQq3XbyUO/hsTRTs4JSa+iG3I9Xvokk=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=bsJ5PyuqmIrLCuVAMVFaBJZ5I+iOXfPij791UslQfgI8A/vE4xK3onOSQkw3OZ5Gu
+	 xDPmNSpsN7Y2o8HuT6OVNaK1q+4Shq1nKv9YWtD1lzDk70MfZBLORSkylrF7GaEI7B
+	 NDVxjVRYv7ymj9bCJ+tlb97y3pFdPpPcoClZq5OBV6dbjteZY4PZaIQVUS/rKElwWt
+	 nABegKXvmiM57EOl5TjpRUWOldj+1Z6Rf7E70ClHfqMRM9/MvBvWVJMpbbZM2okPDR
+	 V2KxWoYVoTQ9QA/2gQLMd6IpjG+9Du0T0neh9rtFQ4cP9giHeV8xgaQHbAocaHtd6t
+	 /8ja9e++Xa5+w==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 70ED680DFC;
+	Mon, 12 May 2025 14:02:14 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 5A02E154
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 May 2025 14:02:13 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 4B52460639
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 May 2025 14:02:13 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id b6m_PLnStSiu for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 12 May 2025 14:02:12 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 62BA6812D2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 62BA6812D2
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 62BA6812D2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 May 2025 13:22:53 +0000 (UTC)
-X-CSE-ConnectionGUID: ZTcFZeIbSGa8AybbFGTnGQ==
-X-CSE-MsgGUID: 0JHC9glkSCOw+cxJsboXzA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11431"; a="71363797"
-X-IronPort-AV: E=Sophos;i="6.15,282,1739865600"; d="scan'208";a="71363797"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 May 2025 06:22:52 -0700
-X-CSE-ConnectionGUID: 7d2PxyiJSQaVGmhBITJ27A==
-X-CSE-MsgGUID: cVeKd9M3TQ6XvyUGjbyy1w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,282,1739865600"; d="scan'208";a="137834945"
-Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
- by fmviesa010.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 May 2025 06:22:52 -0700
-Received: from ORSMSX903.amr.corp.intel.com (10.22.229.25) by
- ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14; Mon, 12 May 2025 06:22:51 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.14 via Frontend Transport; Mon, 12 May 2025 06:22:51 -0700
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.47) by
- edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.44; Mon, 12 May 2025 06:22:50 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=HuwzlvNOGgOMU3Qmo2JNsMUkcB6lyY7yacuR078WXeP8fAM3D6EHGRclP0bD3TUnSsKVf78qqPum0neW+OkDg9XdTIGA/WIw2D7t+oitG0l2E8G6h7vjMmZSWH9cgXW8pQdNl9Pavj4gYWmA90YqBeV6kFbDfGZAIZkReeq02f5Iv5F7DuWQBmpF596R3znZaj5aY1EaJEUx9xIsUEd+MaHcAn3BO7TBLhSPOvYXrckA9leRpFmaEz8oSWX8A+aJBhmCST+W+MBrt21HuoKKlZ4Zxl8P5a+1It3gjXhvomDg5U55HsCQek5Ax7BuZC5K4V0BGBUnx7N8KbbWKLJ+Rg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ulAs7s2Hq8GIKCICRUSDIeeUQDLzBQHlzJKh8FR2yr8=;
- b=K3S+Fxwd3JB9Log6acuePWHECNfvjhDo0DtmR4m/HNXbQwxxufgw+PLbDpg39VcWfmUoQQSoUhtyy1sFMFtKAYtwHTqL7qEhMJsv54IOmGaWZ/Adg+tjKy1puCrfqvpo7LUFW3ue12NUAFWnBxW/f7lxVjr4xs1Ne7Wn7Q34an31N0fPb+xybhP51Gv5w3ibLupSO2c3YlWriWPmwGbhbmxU2yQkcGZe+PlxnJScGWunf+zZ56wrGA1QasyhU2XBLiHmcyKrUCcZHSsT3BlZsRMzEd4ra810nGhGKiWu+pfSKuZExz/XIfPAxWnk/TYRhY7oNhtk6Q261InQu1YI3Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from SN7PR11MB7540.namprd11.prod.outlook.com (2603:10b6:806:340::7)
- by LV8PR11MB8582.namprd11.prod.outlook.com (2603:10b6:408:1f7::8)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8722.28; Mon, 12 May
- 2025 13:22:12 +0000
-Received: from SN7PR11MB7540.namprd11.prod.outlook.com
- ([fe80::399f:ff7c:adb2:8d29]) by SN7PR11MB7540.namprd11.prod.outlook.com
- ([fe80::399f:ff7c:adb2:8d29%4]) with mapi id 15.20.8722.027; Mon, 12 May 2025
- 13:22:11 +0000
-Date: Mon, 12 May 2025 15:21:58 +0200
-From: Larysa Zaremba <larysa.zaremba@intel.com>
-To: Simon Horman <horms@kernel.org>
-CC: <intel-wired-lan@lists.osuosl.org>, Tony Nguyen
- <anthony.l.nguyen@intel.com>, "David S. Miller" <davem@davemloft.net>, "Eric
- Dumazet" <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
- <pabeni@redhat.com>, Jonathan Corbet <corbet@lwn.net>, Przemek Kitszel
- <przemyslaw.kitszel@intel.com>, Jiri Pirko <jiri@resnulli.us>, "Tatyana
- Nikolova" <tatyana.e.nikolova@intel.com>, Andrew Lunn
- <andrew+netdev@lunn.ch>, Alexander Lobakin <aleksander.lobakin@intel.com>,
- Michael Ellerman <mpe@ellerman.id.au>, Maciej Fijalkowski
- <maciej.fijalkowski@intel.com>, "Lee Trager" <lee@trager.us>, Madhavan
- Srinivasan <maddy@linux.ibm.com>, "Sridhar Samudrala"
- <sridhar.samudrala@intel.com>, Jacob Keller <jacob.e.keller@intel.com>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>, Mateusz Polchlopek
- <mateusz.polchlopek@intel.com>, Ahmed Zaki <ahmed.zaki@intel.com>,
- <netdev@vger.kernel.org>, <linux-doc@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, "Karlsson, Magnus"
- <magnus.karlsson@intel.com>, Emil Tantilov <emil.s.tantilov@intel.com>,
- "Madhu Chittim" <madhu.chittim@intel.com>, Josh Hay <joshua.a.hay@intel.com>, 
- "Milena Olech" <milena.olech@intel.com>, <pavan.kumar.linga@intel.com>,
- "Singhai, Anjali" <anjali.singhai@intel.com>
-Message-ID: <aCH19kCiDI0GUs8s@soc-5CG4396X81.clients.intel.com>
-References: <20250509134319.66631-1-larysa.zaremba@intel.com>
- <20250512124906.GA1417107@horms.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20250512124906.GA1417107@horms.kernel.org>
-X-ClientProxiedBy: PR0P264CA0062.FRAP264.PROD.OUTLOOK.COM
- (2603:10a6:100:1d::26) To SN7PR11MB7540.namprd11.prod.outlook.com
- (2603:10b6:806:340::7)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 3DC9260B1C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3DC9260B1C
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3DC9260B1C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 May 2025 14:02:10 +0000 (UTC)
+Received: from [141.14.220.36] (g36.guest.molgen.mpg.de [141.14.220.36])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 6183D601EBF02;
+ Mon, 12 May 2025 16:01:51 +0200 (CEST)
+Message-ID: <13094fae-7fad-42df-b915-1e40c5d290ec@molgen.mpg.de>
+Date: Mon, 12 May 2025 16:01:50 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SN7PR11MB7540:EE_|LV8PR11MB8582:EE_
-X-MS-Office365-Filtering-Correlation-Id: b87d16db-ca35-4f99-8361-08dd915800e0
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|376014|7416014|1800799024|366016|10070799003; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?VH/3jUkuAVGY6d+pl72lp1mbtZsTO/syprBrsRB+j/xXixSKPgwUYGOjk9z6?=
- =?us-ascii?Q?AFleSxcmfKTqTBJmnJRkvGnvIvDNK8wl104HoeFeQxLidayTzKHc4rjfH98O?=
- =?us-ascii?Q?J9EDFO1hbxH54m9DFUlW/w4wCghRfKvnBQIwuCk7aeHI0257NEWIZajQTe3d?=
- =?us-ascii?Q?qm8i2VBbJW85Mxj1v8KgJxIlThpF5Pw2Lo+rmDElYRvksfbc2VCtv8ANStb7?=
- =?us-ascii?Q?P6/W9KwR6TnasxU0NSsb6MKLXHE3UIACrs6uMtF+4dPxbVYLh7M3xteML17m?=
- =?us-ascii?Q?r72ocFjzkBJrVZHxpnNTcCAQ69AeZYWnT11A+ijgXUFLkrRk3OZIE8U+zjB8?=
- =?us-ascii?Q?JNqlhIurH4MOz/wDw3aL7TkzEviu8N0ARZpS+M47vPGwuByFrrhkxwYmOZRu?=
- =?us-ascii?Q?HbYNmH/tSS8d8GFDaER90Q38Pa52aZVdbvIYow+Y33Gh0OTcsbyNjBA3JWBc?=
- =?us-ascii?Q?ce4WO/Y9S86qsp2eEZ0jd69bE5yGZdx4B53xeGpGy2xoGFwNPE9xcZhGRKPH?=
- =?us-ascii?Q?409Dp6FAbFmyojL4xgpcwn6DVM2VpQHVuL5pS3SwOsM+aiWNJPjNReNNjHjF?=
- =?us-ascii?Q?NBEcGjBOH8eOexqAkHa3/yejxq9Hnfq4q58ZaiEzt3mY5IWssUSoSDx4wqAu?=
- =?us-ascii?Q?A2ZRBGzl7pGsHJd1MhueZvkB8S4AuX1loI73qfjO2hCCYe/Qq+ywXN8+/PVc?=
- =?us-ascii?Q?XS74IUzw+X6A+4tv9mIkkMo9BzguAijZ8yvuMABoB+KiDi/sZN9R4mInpOLO?=
- =?us-ascii?Q?a2g4qtA6Cm4DO1a4ZxUJCiAU4sFc/ovqrsAR+ZQXneoTXRXmjDH0Rn5gturc?=
- =?us-ascii?Q?h511HgV47harLLpr7PMEc5QoVaqvcS1Ybt7rd2WPLPhoFsW75Yvnc7Qya/cp?=
- =?us-ascii?Q?dl65L0FHzuiDgVVkUXJQ/AEkzb1BEtXGME+Ka5tdmJlvABLU9KLFnoVBBL14?=
- =?us-ascii?Q?QJQpgay7h0o8nzD8uvmqe5OAseDrF2dY3xbOUeHIh1FtSFu3/PrOwMvLDunU?=
- =?us-ascii?Q?5w5wGRB4qg1im9DgJTRbk4a+XzEbbjyLAv7OUESmGDrtOEjm1qe0IZCH7HZY?=
- =?us-ascii?Q?UDAckKp0xvtoyChV/fe0yweNe9gMnj81fPIlQ6XoHP3WzaowRNQKzwn76bHb?=
- =?us-ascii?Q?qJzSxvTNw2E+/On1Nl7vQ0n9XPrL7IT51hUHYiqoVdo3eTOUSeIQSWYAUKeO?=
- =?us-ascii?Q?zo0tdxJcxYrKYxvpUNa9f+19+08iBihPMZ9JLbdQIiN4ejhp58bjtb0NPyy8?=
- =?us-ascii?Q?QaI5GuSJFNkTc94iZjJ8WKTs5VDw0/ANEBCNZ6wTePJbeEsTSgwHi3VdN3bl?=
- =?us-ascii?Q?CqVjBPz0aXu+hgbjQqecVCxILqp1dUDCsYv0QXX1mfIODyCjyu9GIifm+LR9?=
- =?us-ascii?Q?75ky8JE=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN7PR11MB7540.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(7416014)(1800799024)(366016)(10070799003); DIR:OUT;
- SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?phsgsa2prtPv73yqV4nzFrb8mbYekzTBOUIbA5DGjdoc7AgVe5wUpUBsqzwR?=
- =?us-ascii?Q?0+SEzfSyweY/on6th9k2ft23e0aBo/flkfgd2Q/eu+QL+CxrUcqj9qud+JRA?=
- =?us-ascii?Q?KNnXlAEcYHVBPwiWg9IdtvkdOq1w/jm3azoVjREYbXoWWGqlVIXauN5rcbN0?=
- =?us-ascii?Q?KNW2oSQHI7RgXtxOGYsV30L4pxj4PFea2Mx8q1U3HnoOksZDnSdZ/ESq6kAM?=
- =?us-ascii?Q?GzZ1AwUrmaKzLLrQXmwaV2dHCa2bLnEJNELgRY41M3DwUGxkzot5DF9OUtF5?=
- =?us-ascii?Q?/bOqiOisNafXNDIngsGJL7BXWEFH207Hrv9JaiNHXiGXcA5xyPqTdbf8bUcj?=
- =?us-ascii?Q?qMfGvTXZQalSyUqf9bHxKkBiXfNt6asmqI9SkR/hx1Vi6y1CnIIrV7rGDeP8?=
- =?us-ascii?Q?cxsStJ/G9pr2xG5sE0ST6k0rOPD7a+/Vz8JqPcOMY0Wz+sHj6IcanS4QeFFD?=
- =?us-ascii?Q?NPENI78Fx6fiXdH5WakHrC1JXfvzih9B7C6ME3BOZsrcGKbQ0psy7kxP/w0p?=
- =?us-ascii?Q?EooWqE9ImGUuEaKFv0KEmZqWok1aaWfYkkiWay4THRcnkneKTVkeGFNKg1hG?=
- =?us-ascii?Q?h95Pl/xmeb7v49gWPKjqLYDI8pB1lepsXzSXEjolYOHp6BSLIdE9G2shmH1v?=
- =?us-ascii?Q?znvQu6vnRwuaxuwVWX4EZBq1LKzVz1rL5BiuZOAN6JSr+Qx35cnetNXu9ahO?=
- =?us-ascii?Q?6c5A3Py2JkpEEqtmz2KlZNPiJQ1RD7zf/O/F3FPjJ7NHdehPrfY5/lwUiDEO?=
- =?us-ascii?Q?dhMMy21l0dXuhja4tAjEFNMu4XsuENv7wKlAQLpsujM+h1zGlDK1jTMh6rcN?=
- =?us-ascii?Q?OMQi9uaDYbFJsLscBbqU9x53Nfv368cUYU2042r0kMbMBVNRetUn2uFPPL7G?=
- =?us-ascii?Q?FvXUToXV+HiOmyb1uXavcRzD0JOklQEO3uTWT58OKOZFQQ3n/gymHORFWnMU?=
- =?us-ascii?Q?fCis6UMKFvcvRt2whtKRLYTgDEVDlsRTgpe3NZVCWiZF0yZTfW0eaxPEOvV3?=
- =?us-ascii?Q?z2HaZWBegI7TSCMkctHMPDVBfhYzdpgVyJoAdb8jSatvBOKkynqtTeZNIYB3?=
- =?us-ascii?Q?lAJKLCUZLqK2nvYL24F1Ke8E7IOhV5yr97R2auc8cEvr5Q5ZD7tW0gjZnitu?=
- =?us-ascii?Q?BW47G8sU50IUfAfDR3vptwvsmgGGh8vuPZrfx+/NDLFgQuZL0RjYdfAqe1/7?=
- =?us-ascii?Q?06yb+X4BMqh2yz2MpMBN/dpP32Q3QdLfBSo24fht9xocU2QHRzye/qofnDLg?=
- =?us-ascii?Q?OBNoBVIij/Mk224shgbzMncTkwZMjIcnNJbhb/dlLfd+wMGb/VUHE5OTC5Qa?=
- =?us-ascii?Q?yB6rm87Kt6yPscLJ+NZ3NahxdWfxgAzrovsWMP0jWb5OPdQENw7IBk4NT0V1?=
- =?us-ascii?Q?qaRKnhepqxyIMhN/VMQhmvAkVDAACmDQrgozwNx/wZphvpBI1LilzKzOQL4E?=
- =?us-ascii?Q?QUEQ+6Vr+YZ8GlB/kxk6CtSzr4a7V5J2D72G/KTKz0ZoLEr5scypoNA7KD+j?=
- =?us-ascii?Q?Qn6tzep23FLkegxKW2Rt8Eqbm0dkyf4bBzSh/p/tA+jn85Lp1NpdMz6GkTuW?=
- =?us-ascii?Q?gnwpdCKfhDapmpNLhoDcWKUeTWUxS7QqiPRqzrnuUdK52IUlBie82VIF57K/?=
- =?us-ascii?Q?aoQ6TMV1mhC3HSaNMFM7WmaOBKFMlX1skX5H6iLZGCOjJKxXBGKFJ0Hwe9wH?=
- =?us-ascii?Q?u592jQ=3D=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: b87d16db-ca35-4f99-8361-08dd915800e0
-X-MS-Exchange-CrossTenant-AuthSource: SN7PR11MB7540.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 May 2025 13:22:11.6591 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: x1c5Xr3eaMmbyqZT8vP1pG6EM/5iZJbPOC8xvwjkNjLm3T71cCycjiLC+lV7I41vuO77CQ8SUPlth6x3YWhJO8fSCIiB433NehyP2MnqOY0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV8PR11MB8582
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1747056173; x=1778592173;
- h=date:from:to:cc:subject:message-id:references:
- in-reply-to:mime-version;
- bh=c5tMMG/67+49haFFi2g3okC7Sud1/nKnVqir2aPoWQ0=;
- b=MFZXZ3cFQfZ1lZvT2bKtr/HtAQpWIufVKR+RyfhY8Fwq1J+1cC+VcuzI
- Yu8g5mvk9MuSRMd8fmCzqaONdVwFwWb3k7w0SYpj7W8iKTn1zALil4mtU
- IxaA0BvaG+ssVpnytxAT6unwCSbCT/4ATkUfLM85P3lt8JMLx7BHRJQ09
- mCDSmDJo3zD/IbfvIB6ylOQnUUy2vowC5Y95R+0F2YSxSAJy8cOmy5zfJ
- eU0JXjKLgMLuz0/+O0gAmYCYxI14zavYSXZS+8mCjAAsv9z8FGMcaALI8
- kXjudXNvRN+oQ7xO/dXVqLynG1Fh1Ys5RnD2hObUK2XPhbS6Li08HNFHI
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=MFZXZ3cF
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3 00/15] Introduce iXD driver
+User-Agent: Mozilla Thunderbird
+To: Karol Kolacinski <karol.kolacinski@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ richardcochran@gmail.com
+References: <20250512123509.1194023-3-karol.kolacinski@intel.com>
+ <20250512123509.1194023-4-karol.kolacinski@intel.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20250512123509.1194023-4-karol.kolacinski@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 2/2] ice: update cached PHC
+ time for all ports
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -239,36 +90,498 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, May 12, 2025 at 01:49:06PM +0100, Simon Horman wrote:
-> On Fri, May 09, 2025 at 03:42:57PM +0200, Larysa Zaremba wrote:
-> > This patch series adds the iXD driver, which supports the Intel(R)
-> > Control Plane PCI Function on Intel E2100 and later IPUs and FNICs.
-> > It facilitates a centralized control over multiple IDPF PFs/VFs/SFs
-> > exposed by the same card. The reason for the separation is to be able
-> > to offload the control plane to the host different from where the data
-> > plane is running.
-> > 
-> > This is the first phase in the release of this driver where we implement the
-> > initialization of the core PCI driver. Subsequent phases will implement
-> > advanced features like usage of idpf ethernet aux device, link management,
-> > NVM update via devlink, switchdev port representors, data and exception path,
-> > flow rule programming, etc.
+Dear Karol,
+
+
+Thank you for your patch. Maybe for summary adda *at once*?
+
+ice: update cached PHC time for all ports at once
+
+Am 12.05.25 um 14:34 schrieb Karol Kolacinski:
+> Cached PHC time can be updated simultaneously for all active ports
+> instead of each port updating it for itself.
 > 
-> Hi Larysa,
+> This approach makes only one thread updating cached PHC time, which
+> results in less threads to prioritize and only one PHC time read instead
+> of 8 every 500 ms.
 > 
-> I am having a bit of trouble figuring out where to cleanly apply this
-> series to. Could you help me out?
+> Remove per-PF PTP kworker and use do_aux_work for PTP periodic work and
+> system_unbound_wq for ov_work.
 
-Tree did change quite a bit in a short span of time between me fetching and 
-sending, sorry for the trouble.
+Nice improvement.
 
-The base commit is 10f540c09cf9 "ice: default to TIME_REF instead of TXCO on 
-E825-C". In case you cannot access it, I have pushed the tree to my github.
+Could the kworker been seen in the process list before? Maybe add a way 
+how to test your patch?
 
-https://github.com/walking-machine/linux/commits/ixd_phase1_iwl_v3
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
+> ---
+>   drivers/net/ethernet/intel/ice/ice_ptp.c | 223 +++++++++++------------
+>   drivers/net/ethernet/intel/ice/ice_ptp.h |   6 +-
+>   2 files changed, 110 insertions(+), 119 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+> index 0a1f6e0e4a22..d9393be89b0e 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ptp.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+> @@ -938,6 +938,7 @@ static int ice_ptp_init_tx(struct ice_pf *pf, struct ice_ptp_tx *tx, u8 port)
+>   /**
+>    * ice_ptp_update_cached_phctime - Update the cached PHC time values
+>    * @pf: Board specific private structure
+> + * @systime: Cached PHC time to write
+>    *
+>    * This function updates the system time values which are cached in the PF
+>    * structure and the Rx rings.
+> @@ -952,11 +953,10 @@ static int ice_ptp_init_tx(struct ice_pf *pf, struct ice_ptp_tx *tx, u8 port)
+>    * * 0 - OK, successfully updated
+>    * * -EAGAIN - PF was busy, need to reschedule the update
+>    */
+> -static int ice_ptp_update_cached_phctime(struct ice_pf *pf)
+> +static int ice_ptp_update_cached_phctime(struct ice_pf *pf, u64 systime)
+>   {
+>   	struct device *dev = ice_pf_to_dev(pf);
+>   	unsigned long update_before;
+> -	u64 systime;
+>   	int i;
+>   
+>   	update_before = pf->ptp.cached_phc_jiffies + msecs_to_jiffies(2000);
+> @@ -969,13 +969,14 @@ static int ice_ptp_update_cached_phctime(struct ice_pf *pf)
+>   		pf->ptp.late_cached_phc_updates++;
+>   	}
+>   
+> -	/* Read the current PHC time */
+> -	systime = ice_ptp_read_src_clk_reg(pf, NULL);
+> -
+>   	/* Update the cached PHC time stored in the PF structure */
+>   	WRITE_ONCE(pf->ptp.cached_phc_time, systime);
+>   	WRITE_ONCE(pf->ptp.cached_phc_jiffies, jiffies);
+>   
+> +	/* Nothing to do if link is down */
+> +	if (!pf->ptp.port.link_up)
+> +		return 0;
+> +
+>   	if (test_and_set_bit(ICE_CFG_BUSY, pf->state))
+>   		return -EAGAIN;
+>   
+> @@ -1000,6 +1001,43 @@ static int ice_ptp_update_cached_phctime(struct ice_pf *pf)
+>   	return 0;
+>   }
+>   
+> +/**
+> + * ice_ptp_update_cached_phctime_all - Update the cached PHC time for all ports
+> + * @pf: Board specific private structure
+> + *
+> + * Return:
+> + * * 0 - OK, successfully updated
+> + * * -EAGAIN - PF was busy, need to reschedule the update
+> + */
+> +static int ice_ptp_update_cached_phctime_all(struct ice_pf *pf)
+> +{
+> +	u64 time = ice_ptp_read_src_clk_reg(pf, NULL);
+> +	struct list_head *entry;
+> +	int ret = 0;
+> +
+> +	list_for_each(entry, &pf->adapter->ports.ports) {
+> +		struct ice_ptp_port *port = list_entry(entry,
+> +						       struct ice_ptp_port,
+> +						       list_node);
+> +		struct ice_pf *peer_pf = ptp_port_to_pf(port);
+> +		int err;
+> +
+> +		err = ice_ptp_update_cached_phctime(peer_pf, time);
+> +		if (err) {
+> +			/* If another thread is updating the Rx rings, we won't
+> +			 * properly reset them here. This could lead to
+> +			 * reporting of invalid timestamps, but there isn't much
+> +			 * we can do.
+> +			 */
+> +			dev_warn(ice_pf_to_dev(peer_pf), "Unable to immediately update cached PHC time, err=%d\n",
+> +				 err);
 
-This version is probably much closer to what would be in dev-queue eventually, 
-compared to a properly rebased one. Some patches were pulled out of dev-queue 
-because of validation problems, but should be back pretty soon, as far as I 
-know. Those patches are the reason why I have an additional fix in the github 
-tree.
+What should a user do in this case? Reset the device?
+
+> +			ret = err;
+
+Shouldn’t you return right away? Should the function return, how many 
+ports failed to update?
+
+> +		}
+> +	}
+> +
+> +	return ret;
+> +}
+> +
+>   /**
+>    * ice_ptp_reset_cached_phctime - Reset cached PHC time after an update
+>    * @pf: Board specific private structure
+> @@ -1015,24 +1053,12 @@ static int ice_ptp_update_cached_phctime(struct ice_pf *pf)
+>    */
+>   static void ice_ptp_reset_cached_phctime(struct ice_pf *pf)
+>   {
+> -	struct device *dev = ice_pf_to_dev(pf);
+> -	int err;
+> -
+>   	/* Update the cached PHC time immediately if possible, otherwise
+>   	 * schedule the work item to execute soon.
+>   	 */
+> -	err = ice_ptp_update_cached_phctime(pf);
+> -	if (err) {
+> -		/* If another thread is updating the Rx rings, we won't
+> -		 * properly reset them here. This could lead to reporting of
+> -		 * invalid timestamps, but there isn't much we can do.
+> -		 */
+> -		dev_warn(dev, "%s: ICE_CFG_BUSY, unable to immediately update cached PHC time\n",
+> -			 __func__);
+> -
+> +	if (ice_ptp_update_cached_phctime_all(pf)) {
+>   		/* Queue the work item to update the Rx rings when possible */
+> -		kthread_queue_delayed_work(pf->ptp.kworker, &pf->ptp.work,
+> -					   msecs_to_jiffies(10));
+> +		ptp_schedule_worker(pf->ptp.clock, msecs_to_jiffies(10));
+>   	}
+>   
+>   	/* Mark any outstanding timestamps as stale, since they might have
+> @@ -1157,7 +1183,7 @@ static int ice_ptp_check_tx_fifo(struct ice_ptp_port *port)
+>   
+>   /**
+>    * ice_ptp_wait_for_offsets - Check for valid Tx and Rx offsets
+> - * @work: Pointer to the kthread_work structure for this task
+> + * @work: Pointer to the work_struct structure for this task
+>    *
+>    * Check whether hardware has completed measuring the Tx and Rx offset values
+>    * used to configure and enable vernier timestamp calibration.
+> @@ -1170,37 +1196,30 @@ static int ice_ptp_check_tx_fifo(struct ice_ptp_port *port)
+>    * This function reschedules itself until both Tx and Rx calibration have
+>    * completed.
+>    */
+> -static void ice_ptp_wait_for_offsets(struct kthread_work *work)
+> +static void ice_ptp_wait_for_offsets(struct work_struct *work)
+>   {
+> +	struct delayed_work *dwork = to_delayed_work(work);
+>   	struct ice_ptp_port *port;
+> +	int tx_err, rx_err;
+>   	struct ice_pf *pf;
+> -	struct ice_hw *hw;
+> -	int tx_err;
+> -	int rx_err;
+>   
+> -	port = container_of(work, struct ice_ptp_port, ov_work.work);
+> +	port = container_of(dwork, struct ice_ptp_port, ov_work);
+>   	pf = ptp_port_to_pf(port);
+> -	hw = &pf->hw;
+>   
+> -	if (ice_is_reset_in_progress(pf->state)) {
+> -		/* wait for device driver to complete reset */
+> -		kthread_queue_delayed_work(pf->ptp.kworker,
+> -					   &port->ov_work,
+> -					   msecs_to_jiffies(100));
+> -		return;
+> -	}
+> +	if (ice_is_reset_in_progress(pf->state))
+> +		goto err;
+>   
+>   	tx_err = ice_ptp_check_tx_fifo(port);
+>   	if (!tx_err)
+> -		tx_err = ice_phy_cfg_tx_offset_e82x(hw, port->port_num);
+> -	rx_err = ice_phy_cfg_rx_offset_e82x(hw, port->port_num);
+> -	if (tx_err || rx_err) {
+> -		/* Tx and/or Rx offset not yet configured, try again later */
+> -		kthread_queue_delayed_work(pf->ptp.kworker,
+> -					   &port->ov_work,
+> -					   msecs_to_jiffies(100));
+> +		tx_err = ice_phy_cfg_tx_offset_e82x(&pf->hw, port->port_num);
+> +
+> +	rx_err = ice_phy_cfg_rx_offset_e82x(&pf->hw, port->port_num);
+> +	if (tx_err || rx_err)
+>   		return;
+> -	}
+> +err:
+> +	/* Tx and/or Rx offset not yet configured, try again later */
+> +	queue_delayed_work(system_unbound_wq, &port->ov_work,
+> +			   msecs_to_jiffies(100));
+>   }
+>   
+>   /**
+> @@ -1223,7 +1242,7 @@ ice_ptp_port_phy_stop(struct ice_ptp_port *ptp_port)
+>   		err = 0;
+>   		break;
+>   	case ICE_MAC_GENERIC:
+> -		kthread_cancel_delayed_work_sync(&ptp_port->ov_work);
+> +		cancel_delayed_work_sync(&ptp_port->ov_work);
+>   
+>   		err = ice_stop_phy_timer_e82x(hw, port, true);
+>   		break;
+> @@ -1271,7 +1290,7 @@ ice_ptp_port_phy_restart(struct ice_ptp_port *ptp_port)
+>   		break;
+>   	case ICE_MAC_GENERIC:
+>   		/* Start the PHY timer in Vernier mode */
+> -		kthread_cancel_delayed_work_sync(&ptp_port->ov_work);
+> +		cancel_delayed_work_sync(&ptp_port->ov_work);
+>   
+>   		/* temporarily disable Tx timestamps while calibrating
+>   		 * PHY offset
+> @@ -1291,11 +1310,7 @@ ice_ptp_port_phy_restart(struct ice_ptp_port *ptp_port)
+>   		ptp_port->tx.calibrating = false;
+>   		spin_unlock_irqrestore(&ptp_port->tx.lock, flags);
+>   
+> -		kthread_queue_delayed_work(pf->ptp.kworker, &ptp_port->ov_work,
+> -					   0);
+> -		break;
+> -	case ICE_MAC_GENERIC_3K_E825:
+> -		err = ice_start_phy_timer_eth56g(hw, port);
+> +		queue_delayed_work(system_unbound_wq, &ptp_port->ov_work, 0);
+>   		break;
+>   	default:
+>   		err = -ENODEV;
+> @@ -2578,22 +2593,27 @@ static void ice_ptp_maybe_trigger_tx_interrupt(struct ice_pf *pf)
+>   	}
+>   }
+>   
+> -static void ice_ptp_periodic_work(struct kthread_work *work)
+> +/**
+> + * ice_ptp_periodic_work - Do PTP periodic work
+> + * @info: Driver's PTP info structure
+> + *
+> + * Return: delay of the next auxiliary work scheduling time (>=0) or negative
+> + *         value in case further scheduling is not required
+> + */
+> +static long ice_ptp_periodic_work(struct ptp_clock_info *info)
+>   {
+> -	struct ice_ptp *ptp = container_of(work, struct ice_ptp, work.work);
+> -	struct ice_pf *pf = container_of(ptp, struct ice_pf, ptp);
+> +	struct ice_pf *pf = ptp_info_to_pf(info);
+>   	int err;
+>   
+>   	if (pf->ptp.state != ICE_PTP_READY)
+> -		return;
+> +		return 0;
+>   
+> -	err = ice_ptp_update_cached_phctime(pf);
+> +	err = ice_ptp_update_cached_phctime_all(pf);
+>   
+>   	ice_ptp_maybe_trigger_tx_interrupt(pf);
+>   
+> -	/* Run twice a second or reschedule if phc update failed */
+> -	kthread_queue_delayed_work(ptp->kworker, &ptp->work,
+> -				   msecs_to_jiffies(err ? 10 : 500));
+> +	/* Run twice a second or reschedule if PHC update failed */
+> +	return msecs_to_jiffies(err ? 10 : MSEC_PER_SEC / 2);
+>   }
+>   
+>   /**
+> @@ -2617,6 +2637,7 @@ static void ice_ptp_set_caps(struct ice_pf *pf)
+>   	info->n_ext_ts = GLTSYN_EVNT_H_IDX_MAX;
+>   	info->enable = ice_ptp_gpio_enable;
+>   	info->verify = ice_verify_pin;
+> +	info->do_aux_work = ice_ptp_periodic_work;
+>   
+>   	info->supported_extts_flags = PTP_RISING_EDGE |
+>   				      PTP_FALLING_EDGE |
+> @@ -2850,7 +2871,8 @@ void ice_ptp_prepare_for_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
+>   	/* Disable timestamping for both Tx and Rx */
+>   	ice_ptp_disable_timestamp_mode(pf);
+>   
+> -	kthread_cancel_delayed_work_sync(&ptp->work);
+> +	if (ice_pf_src_tmr_owned(pf))
+> +		ptp_cancel_worker_sync(ptp->clock);
+>   
+>   	if (reset_type == ICE_RESET_PFR)
+>   		return;
+> @@ -2858,6 +2880,9 @@ void ice_ptp_prepare_for_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
+>   	if (ice_pf_src_tmr_owned(pf) && hw->mac_type == ICE_MAC_GENERIC_3K_E825)
+>   		ice_ptp_prepare_rebuild_sec(pf, false, reset_type);
+>   
+> +	if (hw->mac_type == ICE_MAC_GENERIC)
+> +		cancel_delayed_work_sync(&pf->ptp.port.ov_work);
+> +
+>   	ice_ptp_release_tx_tracker(pf, &pf->ptp.port.tx);
+>   
+>   	/* Disable periodic outputs */
+> @@ -2964,17 +2989,18 @@ void ice_ptp_rebuild(struct ice_pf *pf, enum ice_reset_req reset_type)
+>   		goto err;
+>   	}
+>   
+> -	if (ice_pf_src_tmr_owned(pf) && reset_type != ICE_RESET_PFR) {
+> -		err = ice_ptp_rebuild_owner(pf);
+> -		if (err)
+> -			goto err;
+> +	if (ice_pf_src_tmr_owned(pf)) {
+> +		if (reset_type != ICE_RESET_PFR) {
+> +			err = ice_ptp_rebuild_owner(pf);
+> +			if (err)
+> +				goto err;
+> +		}
+> +
+> +		ptp_schedule_worker(ptp->clock, 0);
+>   	}
+>   
+>   	ptp->state = ICE_PTP_READY;
+>   
+> -	/* Start periodic work going */
+> -	kthread_queue_delayed_work(ptp->kworker, &ptp->work, 0);
+> -
+>   	dev_info(ice_pf_to_dev(pf), "PTP reset successful\n");
+>   	return;
+>   
+> @@ -3110,34 +3136,6 @@ static int ice_ptp_init_owner(struct ice_pf *pf)
+>   	return err;
+>   }
+>   
+> -/**
+> - * ice_ptp_init_work - Initialize PTP work threads
+> - * @pf: Board private structure
+> - * @ptp: PF PTP structure
+> - */
+> -static int ice_ptp_init_work(struct ice_pf *pf, struct ice_ptp *ptp)
+> -{
+> -	struct kthread_worker *kworker;
+> -
+> -	/* Initialize work functions */
+> -	kthread_init_delayed_work(&ptp->work, ice_ptp_periodic_work);
+> -
+> -	/* Allocate a kworker for handling work required for the ports
+> -	 * connected to the PTP hardware clock.
+> -	 */
+> -	kworker = kthread_run_worker(0, "ice-ptp-%s",
+> -					dev_name(ice_pf_to_dev(pf)));
+> -	if (IS_ERR(kworker))
+> -		return PTR_ERR(kworker);
+> -
+> -	ptp->kworker = kworker;
+> -
+> -	/* Start periodic work going */
+> -	kthread_queue_delayed_work(ptp->kworker, &ptp->work, 0);
+> -
+> -	return 0;
+> -}
+> -
+>   /**
+>    * ice_ptp_init_port - Initialize PTP port structure
+>    * @pf: Board private structure
+> @@ -3157,8 +3155,7 @@ static int ice_ptp_init_port(struct ice_pf *pf, struct ice_ptp_port *ptp_port)
+>   	case ICE_MAC_GENERIC_3K_E825:
+>   		return ice_ptp_init_tx(pf, &ptp_port->tx, ptp_port->port_num);
+>   	case ICE_MAC_GENERIC:
+> -		kthread_init_delayed_work(&ptp_port->ov_work,
+> -					  ice_ptp_wait_for_offsets);
+> +		INIT_DELAYED_WORK(&ptp_port->ov_work, ice_ptp_wait_for_offsets);
+>   		return ice_ptp_init_tx_e82x(pf, &ptp_port->tx,
+>   					    ptp_port->port_num);
+>   	default:
+> @@ -3202,8 +3199,7 @@ static void ice_ptp_init_tx_interrupt_mode(struct ice_pf *pf)
+>    * functions connected to the clock hardware.
+>    *
+>    * The clock owner will allocate and register a ptp_clock with the
+> - * PTP_1588_CLOCK infrastructure. All functions allocate a kthread and work
+> - * items used for asynchronous work such as Tx timestamps and periodic work.
+> + * PTP_1588_CLOCK infrastructure.
+>    */
+>   void ice_ptp_init(struct ice_pf *pf)
+>   {
+> @@ -3251,9 +3247,8 @@ void ice_ptp_init(struct ice_pf *pf)
+>   
+>   	ptp->state = ICE_PTP_READY;
+>   
+> -	err = ice_ptp_init_work(pf, ptp);
+> -	if (err)
+> -		goto err_exit;
+> +	if (ice_pf_src_tmr_owned(pf))
+> +		ptp_schedule_worker(ptp->clock, 0);
+>   
+>   	dev_info(ice_pf_to_dev(pf), "PTP init successful\n");
+>   	return;
+> @@ -3277,37 +3272,35 @@ void ice_ptp_init(struct ice_pf *pf)
+>    */
+>   void ice_ptp_release(struct ice_pf *pf)
+>   {
+> -	if (pf->ptp.state != ICE_PTP_READY)
+> +	struct ice_ptp *ptp = &pf->ptp;
+> +
+> +	if (ptp->state != ICE_PTP_READY)
+>   		return;
+>   
+> -	pf->ptp.state = ICE_PTP_UNINIT;
+> +	ptp->state = ICE_PTP_UNINIT;
+>   
+>   	/* Disable timestamping for both Tx and Rx */
+>   	ice_ptp_disable_timestamp_mode(pf);
+>   
+>   	ice_ptp_cleanup_pf(pf);
+>   
+> -	ice_ptp_release_tx_tracker(pf, &pf->ptp.port.tx);
+> -
+> +	ice_ptp_release_tx_tracker(pf, &ptp->port.tx);
+>   	ice_ptp_disable_all_extts(pf);
+> +	if (pf->hw.mac_type == ICE_MAC_GENERIC)
+> +		cancel_delayed_work_sync(&ptp->port.ov_work);
+> +	ice_ptp_port_phy_stop(&ptp->port);
+> +	mutex_destroy(&ptp->port.ps_lock);
+>   
+> -	kthread_cancel_delayed_work_sync(&pf->ptp.work);
+> -
+> -	ice_ptp_port_phy_stop(&pf->ptp.port);
+> -	mutex_destroy(&pf->ptp.port.ps_lock);
+> -	if (pf->ptp.kworker) {
+> -		kthread_destroy_worker(pf->ptp.kworker);
+> -		pf->ptp.kworker = NULL;
+> -	}
+> -
+> -	if (!pf->ptp.clock)
+> +	if (!ptp->clock)
+>   		return;
+>   
+>   	/* Disable periodic outputs */
+>   	ice_ptp_disable_all_perout(pf);
+> +	if (ice_pf_src_tmr_owned(pf))
+> +		ptp_cancel_worker_sync(ptp->clock);
+>   
+> -	ptp_clock_unregister(pf->ptp.clock);
+> -	pf->ptp.clock = NULL;
+> +	ptp_clock_unregister(ptp->clock);
+> +	ptp->clock = NULL;
+>   
+>   	dev_info(ice_pf_to_dev(pf), "Removed PTP clock\n");
+>   }
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
+> index c8dac5a5bcd9..0f6154d7f473 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ptp.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
+> @@ -139,7 +139,7 @@ struct ice_ptp_tx {
+>    *
+>    * @list_node: list member structure
+>    * @tx: Tx timestamp tracking for this port
+> - * @ov_work: delayed work task for tracking when PHY offset is valid
+> + * @ov_work: delayed work for tracking when PHY offset is valid
+>    * @ps_lock: mutex used to protect the overall PTP PHY start procedure
+>    * @link_up: indicates whether the link is up
+>    * @tx_fifo_busy_cnt: number of times the Tx FIFO was busy
+> @@ -148,7 +148,7 @@ struct ice_ptp_tx {
+>   struct ice_ptp_port {
+>   	struct list_head list_node;
+>   	struct ice_ptp_tx tx;
+> -	struct kthread_delayed_work ov_work;
+> +	struct delayed_work ov_work;
+>   	struct mutex ps_lock; /* protects overall PTP PHY start procedure */
+>   	bool link_up;
+>   	u8 tx_fifo_busy_cnt;
+> @@ -227,7 +227,6 @@ struct ice_ptp_pin_desc {
+>    * @work: delayed work function for periodic tasks
+>    * @cached_phc_time: a cached copy of the PHC time for timestamp extension
+>    * @cached_phc_jiffies: jiffies when cached_phc_time was last updated
+> - * @kworker: kwork thread for handling periodic work
+>    * @ext_ts_irq: the external timestamp IRQ in use
+>    * @pin_desc: structure defining pins
+>    * @ice_pin_desc: internal structure describing pin relations
+> @@ -251,7 +250,6 @@ struct ice_ptp {
+>   	struct kthread_delayed_work work;
+>   	u64 cached_phc_time;
+>   	unsigned long cached_phc_jiffies;
+> -	struct kthread_worker *kworker;
+>   	u8 ext_ts_irq;
+>   	struct ptp_pin_desc pin_desc[ICE_N_PINS_MAX];
+>   	const struct ice_ptp_pin_desc *ice_pin_desc;
+
+
+Kind regards,
+
+Paul
