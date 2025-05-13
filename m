@@ -2,106 +2,111 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49B53AB55DC
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 May 2025 15:21:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8E6A0AB5658
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 May 2025 15:41:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id ADB0940E61;
-	Tue, 13 May 2025 13:21:35 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D953D410A6;
+	Tue, 13 May 2025 13:41:09 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id X2ckpQduGOmn; Tue, 13 May 2025 13:21:35 +0000 (UTC)
+ id y2olnFQUafUS; Tue, 13 May 2025 13:41:09 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EDB6E40E1C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E004F40EC3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1747142495;
-	bh=jJJ/QQSDwnX6m6dvqiV5wg7VLvG97TCkpffWq8xfx6c=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1747143668;
+	bh=olkgELY0zeDUN5PqLBrjj3wdi9hHgekOQB3YGpc6x2M=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=SuAX1X2xlXTcgL0p2VRDdaIggh0kicj/OJULf5eS7lOJOLSCoJgo6h2qFl/WcdQaI
-	 NtjT/Xe1REhlQaDOv2RKOmBRLyp2wpTdgBpn8iv2mIHOBF/ackvoYbx2wLEg7hnKvw
-	 OuXArhq9Zarq3kKcQVCNfSMUzsA78VDwyOOPg/9SOuPksrImruYywSPvrOyDm2Lgou
-	 hEoxJZ8GgnPMdxeC2enfYt1I/tCe21/i+i8il3NVxsIPLcwE5qjg1b07RVufcQd1Bz
-	 HX5WOw8ZCf9RH5h/EhD8o8Y9lms26Ne5VbbB0FoAGkxRg7kJW9yspm2ZA8tgg4/jXx
-	 GEndlTyCCBGEw==
+	b=ZtGQ9C6Q2cwHZoDlcWV+V8xoUwWj1XD0q9HzuaFVp+mFh1Lzdy8NZiZDOD1UkNsQP
+	 r4qTczb+eikV8RX582ZaJoYQPE5205Pi/vAEUqmZDsBu9Q1pB2WxwUD4Cc1eXv0wXj
+	 FscHJwfCOmRA0uLDQAn9faWF5dOdeTHH0jKAiR2W3YXgoK+G2LBWiRSJNfkhMmlRMb
+	 XNxCmlgjczComzSvDMccE5h1JEgePYgLDh9L5+Wsw9YxQ744E/J6BXql2FlfxDwi68
+	 ab1+xPJAx5X70bSYBegZuIcgI3TXvsNEV+fAyhjTKKM6ZEDJv7ywq59zhGczibEtvB
+	 e4aU4j5z/gYHg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EDB6E40E1C;
-	Tue, 13 May 2025 13:21:34 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E004F40EC3;
+	Tue, 13 May 2025 13:41:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id D738C12A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 May 2025 13:21:32 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id EEFB9150
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 May 2025 13:41:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C865A81EE5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 May 2025 13:21:32 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id DFD2840E5F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 May 2025 13:41:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uF9ynNy03i4d for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 May 2025 13:21:31 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
- helo=mgamail.intel.com; envelope-from=dawid.osuchowski@linux.intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id qEnz9LqgbONn for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 May 2025 13:41:06 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=147.75.193.91;
+ helo=nyc.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 43F30813A9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 43F30813A9
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 43F30813A9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 May 2025 13:21:31 +0000 (UTC)
-X-CSE-ConnectionGUID: 8B8/g0OZRbaYcwxJDbCIIQ==
-X-CSE-MsgGUID: yphMyPL0S9yPYLB12fRa4A==
-X-IronPort-AV: E=McAfee;i="6700,10204,11431"; a="66537733"
-X-IronPort-AV: E=Sophos;i="6.15,285,1739865600"; d="scan'208";a="66537733"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
- by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 May 2025 06:21:31 -0700
-X-CSE-ConnectionGUID: Qd7J/lAsQY+9a3S9ZfTPEQ==
-X-CSE-MsgGUID: HMxCdOBPQY+FmIGVVUcbdA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,285,1739865600"; d="scan'208";a="141756581"
-Received: from soc-5cg4396xfb.clients.intel.com (HELO [172.28.180.78])
- ([172.28.180.78])
- by fmviesa003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 May 2025 06:21:28 -0700
-Message-ID: <dbc58b6f-b15e-42d9-b4d7-344b9ab53f74@linux.intel.com>
-Date: Tue, 13 May 2025 15:21:24 +0200
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 6B7674071D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6B7674071D
+Received: from nyc.source.kernel.org (nyc.source.kernel.org [147.75.193.91])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6B7674071D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 May 2025 13:41:06 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by nyc.source.kernel.org (Postfix) with ESMTP id 53F1AA4D858;
+ Tue, 13 May 2025 13:41:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 47246C4CEE4;
+ Tue, 13 May 2025 13:40:58 +0000 (UTC)
+Date: Tue, 13 May 2025 14:40:55 +0100
+From: Simon Horman <horms@kernel.org>
+To: Larysa Zaremba <larysa.zaremba@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Jonathan Corbet <corbet@lwn.net>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Jiri Pirko <jiri@resnulli.us>,
+ Tatyana Nikolova <tatyana.e.nikolova@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Michael Ellerman <mpe@ellerman.id.au>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Lee Trager <lee@trager.us>, Madhavan Srinivasan <maddy@linux.ibm.com>,
+ Sridhar Samudrala <sridhar.samudrala@intel.com>,
+ Jacob Keller <jacob.e.keller@intel.com>,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
+ Ahmed Zaki <ahmed.zaki@intel.com>, netdev@vger.kernel.org,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ "Karlsson, Magnus" <magnus.karlsson@intel.com>,
+ Emil Tantilov <emil.s.tantilov@intel.com>,
+ Madhu Chittim <madhu.chittim@intel.com>, Josh Hay <joshua.a.hay@intel.com>,
+ Milena Olech <milena.olech@intel.com>, pavan.kumar.linga@intel.com,
+ "Singhai, Anjali" <anjali.singhai@intel.com>
+Message-ID: <20250513134055.GB3339421@horms.kernel.org>
+References: <20250509134319.66631-1-larysa.zaremba@intel.com>
+ <20250512124906.GA1417107@horms.kernel.org>
+ <aCH19kCiDI0GUs8s@soc-5CG4396X81.clients.intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Zilin Guan <zilin@seu.edu.cn>
-Cc: andrew+netdev@lunn.ch, anthony.l.nguyen@intel.com, davem@davemloft.net,
- edumazet@google.com, intel-wired-lan@lists.osuosl.org,
- jianhao.xu@seu.edu.cn, kuba@kernel.org, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org, pabeni@redhat.com, przemyslaw.kitszel@intel.com
-References: <170f287e-23b1-468b-9b59-08680de1ecf1@linux.intel.com>
- <20250513122441.4065314-1-zilin@seu.edu.cn>
-Content-Language: pl, en-US
-From: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
-In-Reply-To: <20250513122441.4065314-1-zilin@seu.edu.cn>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <aCH19kCiDI0GUs8s@soc-5CG4396X81.clients.intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1747142491; x=1778678491;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=5dffDf9PmzYG0Regdsf+hGkrpIjHmeqazNk/TmzOfCA=;
- b=fTD1kUN4Lsgxy0BpiMx+t65pHVW/MX0PuROSPBkNzgzWZW92AzuFZ1Vd
- DTlkdbFAh/aKyujiKamqYNWDOkZCaH99Eun64LcVUwmyi/5XWtZ/jkKgm
- V41dS3RRewKWh1mC+/AM6k3LKeZmkD2nK9ZJv3GvFzEjJFOKjb/VgM2kC
- l9hu9IPpsZ+sshhZz5jkj62bNqpZ5SP4rDNQTAcS5eLi1opoEABwrG784
- DuwOhDeEeACt6fIvKd368kNrlGhtI3VoWjaaklFk5eycVQUsrj65JHjvP
- 5s8dBeupiz20ttvDuq9et2QTcibQA9yGp6SHn5CK55S8+M4/hX/UHOQrL
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ d=kernel.org; s=k20201202; t=1747143664;
+ bh=S00eQUskUp0D65XsF+o/OCXFi+oPqCIXuzNkGKHgNjY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=sA03TyxpdSkLcwUQ6qaOB9Kn1Tplkuq75cj2Zf4bbNLaRdG+LXqWkFjj91hDS4zWs
+ +tlyO0fPEGFlzjTNk01cKiEmKosvj0hwU17+nM7m77dDSIAdp9kpULZenwB21O0vyw
+ wgJYKLIxf4rnLtTZbVXhR3sUmENZWweOs1NdHo+X9hX6KNxC+ulrptUkxmMb7ysg8Y
+ +5ZlsMPZOb6uTT78QuRBIBJFUMP22YkTwXUx1GxB6tn9xF/RibgfQAwXr4dH/ZEW9V
+ AaO93EmzvnPamQ0UydWpVQ74EW/eHcfM7e5yEfRZZDiSgTvo0GIhmzWo5QmsYk5ONl
+ DeMdEv8DRHyrA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=fTD1kUN4
-Subject: Re: [Intel-wired-lan] [PATCH] ixgbe/ipsec: use memzero_explicit()
- for stack SA structs
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=sA03Tyxp
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3 00/15] Introduce iXD driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -117,65 +122,43 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2025-05-13 2:24 PM, Zilin Guan wrote:
-> OK, I will resend the patch to the iwl-net branch and include the Fixes
-> tag. Before I do that, I noticed that in ixgbe_ipsec_add_sa() we clear
-> the Tx SA struct with memset 0 on key-parsing failure but do not clear
-> the Rx SA struct in the corresponding error path:
+On Mon, May 12, 2025 at 03:21:58PM +0200, Larysa Zaremba wrote:
+> On Mon, May 12, 2025 at 01:49:06PM +0100, Simon Horman wrote:
+> > On Fri, May 09, 2025 at 03:42:57PM +0200, Larysa Zaremba wrote:
+> > > This patch series adds the iXD driver, which supports the Intel(R)
+> > > Control Plane PCI Function on Intel E2100 and later IPUs and FNICs.
+> > > It facilitates a centralized control over multiple IDPF PFs/VFs/SFs
+> > > exposed by the same card. The reason for the separation is to be able
+> > > to offload the control plane to the host different from where the data
+> > > plane is running.
+> > > 
+> > > This is the first phase in the release of this driver where we implement the
+> > > initialization of the core PCI driver. Subsequent phases will implement
+> > > advanced features like usage of idpf ethernet aux device, link management,
+> > > NVM update via devlink, switchdev port representors, data and exception path,
+> > > flow rule programming, etc.
+> > 
+> > Hi Larysa,
+> > 
+> > I am having a bit of trouble figuring out where to cleanly apply this
+> > series to. Could you help me out?
 > 
-> 617     /* get the key and salt */
-> 618     ret = ixgbe_ipsec_parse_proto_keys(xs, rsa.key, &rsa.salt);
-> 619     if (ret) {
-> 620         NL_SET_ERR_MSG_MOD(extack,
->                                "Failed to get key data for Rx SA table");
-> 621         return ret;      /* <- no memzero_explicit() here */
-> 622     }
-> ...
-> 728     if (ret) {
-> 729         NL_SET_ERR_MSG_MOD(extack,
->                                "Failed to get key data for Tx SA table");
-> 730         memset(&tsa, 0, sizeof(tsa));
-> 731         return ret;      /* <- clears tsa on error */
-> 732     }
+> Tree did change quite a bit in a short span of time between me fetching and 
+> sending, sorry for the trouble.
 > 
-> Both paths return immediately on key-parsing failure, should I add a
-> memzero_explicit(&rsa, sizeof(rsa)) before Rx-SA's return or remove the
-> memset(&tsa, ...) in the Tx-SA path to keep them consistent?
-
- From the code in ixgbe_ipsec_parse_proto_keys() it seems that copying 
-of the salt and key values occurs at the end of the function and only in 
-case of success, see below.
-
----
-if (key_len == IXGBE_IPSEC_KEY_BITS) {
-	*mysalt = ((u32 *)key_data)[4];
-} else if (key_len != (IXGBE_IPSEC_KEY_BITS - (sizeof(*mysalt) * 8))) {
-	netdev_err(dev, "IPsec hw offload only supports keys up to 128 bits 
-with a 32 bit salt\n");
-	return -EINVAL;
-} else {
-	netdev_info(dev, "IPsec hw offload parameters missing 32 bit salt 
-value\n");
-	*mysalt = 0;
-}
-memcpy(mykey, key_data, 16);
-
-return 0;
----
-
-In my (limited) understanding the memset(&tsa, 0, ...) call in case of 
-error after the ixgbe_ipsec_parse_proto_keys() is redundant, as there is 
-nothing to clear in the tsa.key and tsa.salt. The rsa and tsa also 
-contain the pointer to the xfrm_state and I am unsure whether we should 
-clear that as well.
-
-Please note that I do not have much experience with ipsec so take my 
-opinion with a grain of salt. Best for someone more experienced to assess.
-
-Thanks,
-Dawid
-
+> The base commit is 10f540c09cf9 "ice: default to TIME_REF instead of TXCO on 
+> E825-C". In case you cannot access it, I have pushed the tree to my github.
 > 
-> Best Regards,
-> Zilin Guan
+> https://github.com/walking-machine/linux/commits/ixd_phase1_iwl_v3
 
+Thanks. I did not have that commit present locally, but I was able
+to fetch it from the URL above. And the series did indeed apply cleanly
+on top of it.
+
+> This version is probably much closer to what would be in dev-queue eventually, 
+> compared to a properly rebased one. Some patches were pulled out of dev-queue 
+> because of validation problems, but should be back pretty soon, as far as I 
+> know. Those patches are the reason why I have an additional fix in the github 
+> tree.
+
+Understood.
