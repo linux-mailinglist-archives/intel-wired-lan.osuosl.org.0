@@ -1,118 +1,123 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2905CAB4BC4
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 May 2025 08:13:46 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 74558AB4BDD
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 May 2025 08:24:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D6D6E60AF1;
-	Tue, 13 May 2025 06:13:44 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 22FC540D13;
+	Tue, 13 May 2025 06:23:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vFeKlbLbg9qd; Tue, 13 May 2025 06:13:44 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id rToOSJKlLukN; Tue, 13 May 2025 06:23:58 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5786A608D9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 91D4140D04
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1747116824;
-	bh=GRrv0KBdwMIbTaSxKoyl49v0JwxRka2NNqw0EGI4u2Y=;
-	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
+	s=default; t=1747117438;
+	bh=4Xe4uYghntGHOIEC3/13sie1Qhs4ut1BoBFJ4y42rbE=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=jLjG++lVpBxj2iHlbFEClOLY36jLMKD3llJ7I6vfsA2ypw0b/P+8rIVzNXnnY95jI
-	 jG4PTK/7g2QF0FAi8tzQBN0Yc0THQmpfrMbRBFBe24evD0tzXT//zc30Mdlq1qpxiR
-	 B41BFBZUBeqqd4QtKmnAt3qt98CyPVKOFA7P+zRa00xv9RAhEQgbbiRIaPMFX0MwLA
-	 7g+mzbZmZH9GxRadJ45ucYUxo5p37pCOd6f/T7yXhNmy5DobGRHJ1gEeIN69l7ZanU
-	 I/7Js5PR2WgytYCyzYhzsQsh0cQyhql5s4Xq9dVu72zYUJPFof9yEjro2Ol/ul/tkZ
-	 dJ7OHNHYv/9aw==
+	b=dRmkpWJa15fhyP619BLggrKj+DcRG1V6V1V6+h8Wji/yj7zP1rqvlaf6cDjOWM7de
+	 MyHcjSesBZ7cTUQ2TrAdf1L9WcF66dpSQKN707pund0nwhb2qy86ZUQfFSc5gNj1wE
+	 pUWwzqJCqG7bfwgWpRmNrlc6vD179XMBtZVQjBIbLmU+VirL+hALnmafUO/Nrz+ASU
+	 guLURSXIwE581QQ+TSgCtkrsKg6p1M6ePfH+vTnSRNnczVw4X8zxWreKG8YhZulhuH
+	 GxpCCrKDbgIUyhkSsLm9dgZYz1lZK7FQgMkGqBjny2kECcumBWgUJaVMuK89FebXxh
+	 ogICuN8VmTylw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5786A608D9;
-	Tue, 13 May 2025 06:13:44 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 91D4140D04;
+	Tue, 13 May 2025 06:23:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id D0575154
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 May 2025 06:13:42 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id F0C0D154
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 May 2025 06:23:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C14AC60A93
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 May 2025 06:13:42 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id D28D760A9E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 May 2025 06:23:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RHwfyxMn6A_s for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 May 2025 06:13:42 +0000 (UTC)
+ id CoQAXYhhY2L0 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 May 2025 06:23:56 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::134; helo=mail-il1-x134.google.com;
- envelope-from=kerneljasonxing@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 26DE9608D9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 26DE9608D9
-Received: from mail-il1-x134.google.com (mail-il1-x134.google.com
- [IPv6:2607:f8b0:4864:20::134])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 26DE9608D9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 May 2025 06:13:41 +0000 (UTC)
-Received: by mail-il1-x134.google.com with SMTP id
- e9e14a558f8ab-3d81cba18e1so43532875ab.3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 May 2025 23:13:41 -0700 (PDT)
+ client-ip=2607:f8b0:4864:20::433; helo=mail-pf1-x433.google.com;
+ envelope-from=haifeng.xu@shopee.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 3A28D60594
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3A28D60594
+Received: from mail-pf1-x433.google.com (mail-pf1-x433.google.com
+ [IPv6:2607:f8b0:4864:20::433])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3A28D60594
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 May 2025 06:23:55 +0000 (UTC)
+Received: by mail-pf1-x433.google.com with SMTP id
+ d2e1a72fcca58-7426159273fso1906031b3a.3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 May 2025 23:23:55 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747116821; x=1747721621;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=GRrv0KBdwMIbTaSxKoyl49v0JwxRka2NNqw0EGI4u2Y=;
- b=Cib+t+Fn6zMDdghd/stXVsB32C1R7vIJj2JA1/yuIdjRaroEmx6vGZXTebdCk2Nq1e
- P7vuWunkFy1e9Krw277ClAp+C7DfOJA59J6lLDD6orjw3eiG1GqrJ0O4W49nITq61Nn4
- ttPlY8j4b8dv00dKCHRSjXW2BPMklAGUhaUFma8p/2426e5avINOriySGnGXrjwwx0iz
- T4rvdMWec2qUHAqOJJenlmBqQTupH9yoclApY9bhKDbeg5NEoL+i/JcF7zR3EwsGjGoB
- y9CXCkJi74GEQpYUNNws6AhYxYCm17i4EkMrYo8qSNjVQjI4FXg1s35mmkH3bvb/+GKt
- X68A==
+ d=1e100.net; s=20230601; t=1747117435; x=1747722235;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to:subject
+ :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=4Xe4uYghntGHOIEC3/13sie1Qhs4ut1BoBFJ4y42rbE=;
+ b=ceOcSVWgu/4tOxem7sy6z4QXIV6psqvKkwvlztIuP2o4fttW5EDSKUC/CMoDqoniTW
+ pN4b+5xNG1GqDx6qbQOa7/7eeQB+utPsUJ9M+wnYW9jS4Kv42GCXEbwAzeTwrClkNbNY
+ Lsb/uXacH6mFyQ+E0ngPrFZxij60ZLQ0agyM/HhHQFqtgOFcDH+4YztnPmHnICvZQdbp
+ b9Ch3k0AYmfGaCwFDGlG+1M+5G4fqAKym4g48RdrCn0ptjZFxoKMAvS8GDRFkL6QgIRM
+ AcW6a519zZnQnjBD4lWMiFGgoXIZFIWoCtW6OQm+y8CGzpQ4SVfxoza4HTew7u7dbrkS
+ Mf1w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVT3IolVBUZgZeiEWWPEfDrCoNKggICsn9NzUe319UyJK4Nr9YVGQmTGGJvQZJho/FgkEUq7plbButflcNUZfE=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzAcBWPnWv0q8JUarxKfwL4PrDK16dd446Ywtl7zJcVCvE8yJ9R
- rGQoDZ2WK2lb1QmFltsBwrTW5sdiSTMQHf59AySTZPzYZxoqsyuOjDgHXJo1f2+zVaRsIm8/zIP
- YI8zZxQu4Q46bW4QZ7Xa0KBQeYwY=
-X-Gm-Gg: ASbGnctYDeMafF6DSh4Wz2rCnA4B3lvbLEa0ewDbWyJXHgwJ2Ke7RTyHD376MWT5kHU
- npcu2twf65N7CalnC17rGU512C1lJilwwoLZhrPtU+2zzET+UIKmpKngEywRR3Q+W7erHRbZ9Gc
- ihqLyR812n8z2cjzzxhCEeizQZ2wZRPkY=
-X-Google-Smtp-Source: AGHT+IGJZDF4NmipsMzJ9kqrpdBnFCV6X6NeqcTgJgg52cCnXj6HQ3Wru4YWMFFl+fq0OYumq3vu6Hni/ERH+jo3xBc=
-X-Received: by 2002:a05:6e02:12e9:b0:3da:7cb7:79c with SMTP id
- e9e14a558f8ab-3da7e1e7d16mr162013555ab.13.1747116821018; Mon, 12 May 2025
- 23:13:41 -0700 (PDT)
+ AJvYcCVdn5LuKhDTXCWyodV85SWzbHS8mULyxVuV8i4aS+WyN5DLk6fzwLOwrvCCH2xvQ96Pd2jAf81slJu7r+gQ5X8=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YzgZ7opPyLOICxXV5YzgE5QcFO05HiWhj7I1RRZPZw2JNk932U5
+ ceGvO4SQsUmk++hdamunLM4DOPpDRkxYb6c6FgyOZTrkIJ10Ft48w8MxSk4TrcQ=
+X-Gm-Gg: ASbGncvR5FEvNQ0hvxNSziWzeO86boRB+6wAdbBcpQ4GTIriY6F/3UnXsSD2lJguQmX
+ yX+OYD3KTNjuOQyZx+ozW+J9x+HZ7fVvQpp1q7IyKPTSCZX5StgidxIlkrRvpeS4nbhO0/B3OaP
+ 4jO1ViSNPMCdfKir00SaEvc/rEUhHDvFXQgFxCCvOuBtCU1KIjutdq4+lc241cfurrGWBZ2flwH
+ V5aS4Dhp7zMVa+E+kyvF6Eg+ZpOPH9us+VceyMPsUjLr+QWNz+/wZ/m3jORcD7CtmT3nEuDlebu
+ CQxRNRyrjSaSx+yvz1EPj60G8Z/unPNna9GgGy8HsN1NhTUmVSqYtEt+vv5Tmpcl
+X-Google-Smtp-Source: AGHT+IGaYQuRICfs2SknzMpxDQM2zuaFYRjcuLtZoCaPh500iOYbo4XJp56Xa+ir6JeYYEIEzfycdw==
+X-Received: by 2002:a05:6a00:4652:b0:740:6f69:8d94 with SMTP id
+ d2e1a72fcca58-7423b3f12e7mr22633670b3a.0.1747117435423; 
+ Mon, 12 May 2025 23:23:55 -0700 (PDT)
+Received: from [10.54.24.77] ([143.92.118.3]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-74237a1088csm6987174b3a.113.2025.05.12.23.23.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 12 May 2025 23:23:55 -0700 (PDT)
+Message-ID: <bf9a3230-26b9-40f7-aff0-99c802fb7764@shopee.com>
+Date: Tue, 13 May 2025 14:23:50 +0800
 MIME-Version: 1.0
-References: <0c8bf3f2-1620-420e-8858-fe1c2ff5a8e9@shopee.com>
-In-Reply-To: <0c8bf3f2-1620-420e-8858-fe1c2ff5a8e9@shopee.com>
-From: Jason Xing <kerneljasonxing@gmail.com>
-Date: Tue, 13 May 2025 14:13:05 +0800
-X-Gm-Features: AX0GCFuIQfkAVza6hbhK4sPe4d8m2OQUcFRXo71Y2QtNp3SmxPrR8NWz9WuNVT8
-Message-ID: <CAL+tcoAYvN20aMz-WYFEUeBypS8yMJ53YgdMUHCX6FCr__qT9A@mail.gmail.com>
-To: Haifeng Xu <haifeng.xu@shopee.com>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>, 
+User-Agent: Mozilla Thunderbird
+To: Jason Xing <kerneljasonxing@gmail.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
  Jesse Brandeburg <jesse.brandeburg@intel.com>,
- "David S. Miller" <davem@davemloft.net>, 
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, 
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
  linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+References: <0c8bf3f2-1620-420e-8858-fe1c2ff5a8e9@shopee.com>
+ <CAL+tcoAYvN20aMz-WYFEUeBypS8yMJ53YgdMUHCX6FCr__qT9A@mail.gmail.com>
+From: Haifeng Xu <haifeng.xu@shopee.com>
+In-Reply-To: <CAL+tcoAYvN20aMz-WYFEUeBypS8yMJ53YgdMUHCX6FCr__qT9A@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1747116821; x=1747721621; darn=lists.osuosl.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
+ d=shopee.com; s=shopee.com; t=1747117435; x=1747722235; darn=lists.osuosl.org; 
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to:subject
+ :user-agent:mime-version:date:message-id:from:to:cc:subject:date
  :message-id:reply-to;
- bh=GRrv0KBdwMIbTaSxKoyl49v0JwxRka2NNqw0EGI4u2Y=;
- b=AxJjkD4qpZ4dlhJ7apimT2rpoED5xyxNmSLoyazJZj6v6Wu/qNfyVtrG0QPdr77K8y
- 8QQTGhUON0fSDDaXHkKbIblvmDszr6hRud6+ZUnRG9X9wiHChuUA4GyZx9nZGWRue4CF
- EucZmiNwiF4HidAKNx30t1unGJ8T7bh9ZSbFCEQ9Qggvz/vZLnLJbwkeBQvh0JSxmwqF
- GKWRN+0WYtcHmwHIDV5Ayt0w8whoQ3yEmQD1s3jb7fx8BvaFaED8Xnmqqr/Bq3CmrNT3
- AVvyRXGSpuFctlMdsPjb6XM6AfcDIS65wPOpky+LRCf4qExMlC4nDhPMAz7eZAJi+lxA
- ekBw==
+ bh=4Xe4uYghntGHOIEC3/13sie1Qhs4ut1BoBFJ4y42rbE=;
+ b=afKtQfiF4JYS+60FkmCBzZLQALFegSVHa1rPK+fXmFBu9w+m48lfAAePIVadNxHQhD
+ OJ52WdsX1Unitt1f3o3z1Jh7MHkusWk4zmc0iT+uflFiLscNv1LxRPcZA7qdIsDcrnOG
+ 55zrmg9YyzbUOMSIpoHYhe4EPysGPbKh4Il/P6tKcbUrBBO6KNPruBjkj9Wh3+NB7mcq
+ lFUd2JmFjga5Pey9MSijO/mmgiD061uFuwnILNGXfTjNYPSt9vhLaqheGK/ByqqLWOcA
+ e+oPxeYenC0swXfewCs0DMHsEbSwqbgx45Cq2NmBDRTlc3Q8mnIQrVlxSc05irgSqL8v
+ +KgA==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=gmail.com
+ dmarc=pass (p=reject dis=none)
+ header.from=shopee.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=AxJjkD4q
+ unprotected) header.d=shopee.com header.i=@shopee.com header.a=rsa-sha256
+ header.s=shopee.com header.b=afKtQfiF
 Subject: Re: [Intel-wired-lan] i40e: How the packets will be processed when
  status_error_len is 0
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -130,32 +135,46 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, May 13, 2025 at 12:08=E2=80=AFPM Haifeng Xu <haifeng.xu@shopee.com>=
- wrote:
->
-> Hi all,
->
->         If the packets arrive at the rx and then raise soft irq to handle=
- it, but in i40e_clean_rx_irq, status_error_len is 0 and return.
-
-Directly "return"? What version of I40E are you looking at?
-
->         The data isn't fetchted from the rx buffer, so the how the packet=
-s arrive at the rx will be processed?
-
-In i40e_clean_rx_irq(), packets are one by one constructed into the
-sk_buff and then passed to the stack by napi_gro_receive().
-
-AFAIK, common drivers implement nearly the same scenario.
 
 
-Thanks,
-Jason
+On 2025/5/13 14:13, Jason Xing wrote:
+> On Tue, May 13, 2025 at 12:08 PM Haifeng Xu <haifeng.xu@shopee.com> wrote:
+>>
+>> Hi all,
+>>
+>>         If the packets arrive at the rx and then raise soft irq to handle it, but in i40e_clean_rx_irq, status_error_len is 0 and return.
+> 
+> Directly "return"? What version of I40E are you looking at?
 
+stable kenrel 5.15.162,
 
->
->         FYI, the every rx/tx queue has been bounded to one cpu(64 queues,=
- 64 cpus).
->
-> Thanks!
->
+i40e_clean_rx_irq
+...
+	qword = le64_to_cpu(rx_desc->wb.qword1.status_error_len);
+	...
+	size = (qword & I40E_RXD_QW1_LENGTH_PBUF_MASK) >>
+		       I40E_RXD_QW1_LENGTH_PBUF_SHIFT;
+	if (!size)
+		break;
+...
+
+if status_error_len is 0, the i40e_clean_rx_irq returns 0.
+> 
+>>         The data isn't fetchted from the rx buffer, so the how the packets arrive at the rx will be processed?
+> 
+> In i40e_clean_rx_irq(), packets are one by one constructed into the
+> sk_buff and then passed to the stack by napi_gro_receive().
+> 
+> AFAIK, common drivers implement nearly the same scenario.
+> 
+> 
+> Thanks,
+> Jason
+> 
+> 
+>>
+>>         FYI, the every rx/tx queue has been bounded to one cpu(64 queues, 64 cpus).
+>>
+>> Thanks!
+>>
+
