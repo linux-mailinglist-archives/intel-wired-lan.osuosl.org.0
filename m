@@ -1,112 +1,107 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8E6A0AB5658
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 May 2025 15:41:11 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0CB56AB568A
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 May 2025 15:55:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D953D410A6;
-	Tue, 13 May 2025 13:41:09 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 10AA260F3E;
+	Tue, 13 May 2025 13:55:09 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id y2olnFQUafUS; Tue, 13 May 2025 13:41:09 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 1ueHPbWpd4Yk; Tue, 13 May 2025 13:55:08 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E004F40EC3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6EA6460F68
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1747143668;
-	bh=olkgELY0zeDUN5PqLBrjj3wdi9hHgekOQB3YGpc6x2M=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1747144508;
+	bh=NjfRD/DsZJJcLPkAcD7iJQ4ZSl1fXjvB1vOhL36DLGM=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=ZtGQ9C6Q2cwHZoDlcWV+V8xoUwWj1XD0q9HzuaFVp+mFh1Lzdy8NZiZDOD1UkNsQP
-	 r4qTczb+eikV8RX582ZaJoYQPE5205Pi/vAEUqmZDsBu9Q1pB2WxwUD4Cc1eXv0wXj
-	 FscHJwfCOmRA0uLDQAn9faWF5dOdeTHH0jKAiR2W3YXgoK+G2LBWiRSJNfkhMmlRMb
-	 XNxCmlgjczComzSvDMccE5h1JEgePYgLDh9L5+Wsw9YxQ744E/J6BXql2FlfxDwi68
-	 ab1+xPJAx5X70bSYBegZuIcgI3TXvsNEV+fAyhjTKKM6ZEDJv7ywq59zhGczibEtvB
-	 e4aU4j5z/gYHg==
+	b=XMliQVtmQtIqqVi8YqQ/3PkrtTShI9GPklhI1LXbtpswgTfHdjRAH9GgLJ3HSY7Sj
+	 c5HAlBLfPkimaQG7NJ6NhWG2N7mDjt2y7H8LNpgCGze27o9dZkuBuNXp/7xe+2zgkl
+	 WydrXCTmkkIxJGfEGzLSp+YH7izTowN7AhbITab80Xe4RHUQK3JtC6pMJ1+fR2X/JY
+	 CsaK4gPyiBzctBK/l7izVfU+iaySrlRmwAnbFg3ny4AfKnCZerdUm++ld06A3Llm10
+	 eVpthddz7KZC8ZNOncSDPsU62h4SEU0lEyHK04+hfwAPGBZT6DwRFyHY7x01Mjk/Lu
+	 o2GZsXkpjQcAg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E004F40EC3;
-	Tue, 13 May 2025 13:41:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6EA6460F68;
+	Tue, 13 May 2025 13:55:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id EEFB9150
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 May 2025 13:41:07 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 54DA612A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 May 2025 13:55:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DFD2840E5F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 May 2025 13:41:07 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 46B5840D81
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 May 2025 13:55:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id qEnz9LqgbONn for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 May 2025 13:41:06 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=147.75.193.91;
- helo=nyc.source.kernel.org; envelope-from=horms@kernel.org;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id J9RHj0sW6WLC for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 May 2025 13:55:06 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
+ helo=mgamail.intel.com; envelope-from=dawid.osuchowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 6B7674071D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6B7674071D
-Received: from nyc.source.kernel.org (nyc.source.kernel.org [147.75.193.91])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 6B7674071D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 May 2025 13:41:06 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id 53F1AA4D858;
- Tue, 13 May 2025 13:41:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 47246C4CEE4;
- Tue, 13 May 2025 13:40:58 +0000 (UTC)
-Date: Tue, 13 May 2025 14:40:55 +0100
-From: Simon Horman <horms@kernel.org>
-To: Larysa Zaremba <larysa.zaremba@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Jonathan Corbet <corbet@lwn.net>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Jiri Pirko <jiri@resnulli.us>,
- Tatyana Nikolova <tatyana.e.nikolova@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- Michael Ellerman <mpe@ellerman.id.au>,
- Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Lee Trager <lee@trager.us>, Madhavan Srinivasan <maddy@linux.ibm.com>,
- Sridhar Samudrala <sridhar.samudrala@intel.com>,
- Jacob Keller <jacob.e.keller@intel.com>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- Ahmed Zaki <ahmed.zaki@intel.com>, netdev@vger.kernel.org,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- "Karlsson, Magnus" <magnus.karlsson@intel.com>,
- Emil Tantilov <emil.s.tantilov@intel.com>,
- Madhu Chittim <madhu.chittim@intel.com>, Josh Hay <joshua.a.hay@intel.com>,
- Milena Olech <milena.olech@intel.com>, pavan.kumar.linga@intel.com,
- "Singhai, Anjali" <anjali.singhai@intel.com>
-Message-ID: <20250513134055.GB3339421@horms.kernel.org>
-References: <20250509134319.66631-1-larysa.zaremba@intel.com>
- <20250512124906.GA1417107@horms.kernel.org>
- <aCH19kCiDI0GUs8s@soc-5CG4396X81.clients.intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 1F67D40A95
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1F67D40A95
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1F67D40A95
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 May 2025 13:55:05 +0000 (UTC)
+X-CSE-ConnectionGUID: bLgSkKiLSXSB7SOtlxPeyA==
+X-CSE-MsgGUID: NemAUzANQJ648shD7KlpPw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11431"; a="49108495"
+X-IronPort-AV: E=Sophos;i="6.15,285,1739865600"; d="scan'208";a="49108495"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 May 2025 06:55:05 -0700
+X-CSE-ConnectionGUID: 7XxQKHkaTE6S7XI3NYacNA==
+X-CSE-MsgGUID: 0AYzIPiiTZKaWICIsKL6IQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,285,1739865600"; d="scan'208";a="168649104"
+Received: from soc-5cg4396xfb.clients.intel.com (HELO [172.28.180.78])
+ ([172.28.180.78])
+ by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 May 2025 06:55:02 -0700
+Message-ID: <a5274434-83db-4fa7-b52d-a0ca8dd16a68@linux.intel.com>
+Date: Tue, 13 May 2025 15:54:47 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <aCH19kCiDI0GUs8s@soc-5CG4396X81.clients.intel.com>
+User-Agent: Mozilla Thunderbird
+To: Zilin Guan <zilin@seu.edu.cn>
+Cc: andrew+netdev@lunn.ch, anthony.l.nguyen@intel.com, davem@davemloft.net,
+ edumazet@google.com, intel-wired-lan@lists.osuosl.org,
+ jianhao.xu@seu.edu.cn, kuba@kernel.org, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org, pabeni@redhat.com, przemyslaw.kitszel@intel.com
+References: <170f287e-23b1-468b-9b59-08680de1ecf1@linux.intel.com>
+ <20250513133152.4071482-1-zilin@seu.edu.cn>
+Content-Language: pl, en-US
+From: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
+In-Reply-To: <20250513133152.4071482-1-zilin@seu.edu.cn>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1747143664;
- bh=S00eQUskUp0D65XsF+o/OCXFi+oPqCIXuzNkGKHgNjY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=sA03TyxpdSkLcwUQ6qaOB9Kn1Tplkuq75cj2Zf4bbNLaRdG+LXqWkFjj91hDS4zWs
- +tlyO0fPEGFlzjTNk01cKiEmKosvj0hwU17+nM7m77dDSIAdp9kpULZenwB21O0vyw
- wgJYKLIxf4rnLtTZbVXhR3sUmENZWweOs1NdHo+X9hX6KNxC+ulrptUkxmMb7ysg8Y
- +5ZlsMPZOb6uTT78QuRBIBJFUMP22YkTwXUx1GxB6tn9xF/RibgfQAwXr4dH/ZEW9V
- AaO93EmzvnPamQ0UydWpVQ74EW/eHcfM7e5yEfRZZDiSgTvo0GIhmzWo5QmsYk5ONl
- DeMdEv8DRHyrA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1747144506; x=1778680506;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=kKIjOmw+tzOAdv1WgTckM5jUXEQMA06F5Lq5DwBDtnM=;
+ b=UvzYMTzxM77+JjPozqRyuk2QTZS3RB0+44Fw76D+ne1CfdagPyxtg6mU
+ YsPls7t7Eb3v+Koiu6VRqGqOlzRZdwkgYlY/MCxsTb2+aZ/hkbC5wHPaH
+ bySYOW5AwVJ02/uXiY0PqjrDyzyxrKV2Z+SidlUeFbpr7AwsM0d+bQb9v
+ UABRSIEiQdg8Y5QLuDVqGS/t8uoNs1rqyHrP5Coz++HXSPFWSRFQvMzrm
+ eRvzY8RnM0HZHYx4ycj1iQ3UOv1dPKlkBmK7oqJ9MaYKqXl49hs8guLSE
+ piX/g7CnNqcA50TkPaSJL9pYqHZzZEsNiEl9CZDh2X9DVhz+n5zAq4Kjy
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=sA03Tyxp
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3 00/15] Introduce iXD driver
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=UvzYMTzx
+Subject: Re: [Intel-wired-lan] [PATCH] ixgbe/ipsec: use memzero_explicit()
+ for stack SA structs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -122,43 +117,12 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, May 12, 2025 at 03:21:58PM +0200, Larysa Zaremba wrote:
-> On Mon, May 12, 2025 at 01:49:06PM +0100, Simon Horman wrote:
-> > On Fri, May 09, 2025 at 03:42:57PM +0200, Larysa Zaremba wrote:
-> > > This patch series adds the iXD driver, which supports the Intel(R)
-> > > Control Plane PCI Function on Intel E2100 and later IPUs and FNICs.
-> > > It facilitates a centralized control over multiple IDPF PFs/VFs/SFs
-> > > exposed by the same card. The reason for the separation is to be able
-> > > to offload the control plane to the host different from where the data
-> > > plane is running.
-> > > 
-> > > This is the first phase in the release of this driver where we implement the
-> > > initialization of the core PCI driver. Subsequent phases will implement
-> > > advanced features like usage of idpf ethernet aux device, link management,
-> > > NVM update via devlink, switchdev port representors, data and exception path,
-> > > flow rule programming, etc.
-> > 
-> > Hi Larysa,
-> > 
-> > I am having a bit of trouble figuring out where to cleanly apply this
-> > series to. Could you help me out?
-> 
-> Tree did change quite a bit in a short span of time between me fetching and 
-> sending, sorry for the trouble.
-> 
-> The base commit is 10f540c09cf9 "ice: default to TIME_REF instead of TXCO on 
-> E825-C". In case you cannot access it, I have pushed the tree to my github.
-> 
-> https://github.com/walking-machine/linux/commits/ixd_phase1_iwl_v3
+On 2025-05-13 3:31 PM, Zilin Guan wrote:
+> If this change is required, should I submit it as a new standalone patch,
+> or include it in a v2 of the existing patch series?
 
-Thanks. I did not have that commit present locally, but I was able
-to fetch it from the URL above. And the series did indeed apply cleanly
-on top of it.
+I think you could include it with the v2, as it touches the same stack 
+SA structs (if you decide to reuse memzero_explicit() on them).
 
-> This version is probably much closer to what would be in dev-queue eventually, 
-> compared to a properly rebased one. Some patches were pulled out of dev-queue 
-> because of validation problems, but should be back pretty soon, as far as I 
-> know. Those patches are the reason why I have an additional fix in the github 
-> tree.
-
-Understood.
+Thanks,
+Dawid
