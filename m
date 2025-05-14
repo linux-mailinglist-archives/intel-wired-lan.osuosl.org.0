@@ -1,94 +1,106 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0B456AB6027
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 May 2025 02:26:45 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A483FAB6180
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 May 2025 06:31:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 69D2D412ED;
-	Wed, 14 May 2025 00:26:43 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id GWPdjeTkw3Ie; Wed, 14 May 2025 00:26:42 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 85BDD41247
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1747182402;
-	bh=C/HMfa+Co2WJH9KVWtwrH7KUUyiJr2eddjLTWfXwMVk=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=H+SbPfUCr9ch3BsST8U7m4/C7WtKwfhtM36TgD3a36t0WXpF1D2U72v1KqlwwKv2B
-	 dH/7ffMqgzpLK8etozEKCOgPL4dPb7GFSKTiRyGosgvU946JPnSh+INYDM9NZmmE6+
-	 Nr9ssdd/UjaFxx+McxKXxMQh1KfUnGMuR+iDPHBwcbzK4aqQ1V5GrDP965OOdgZY+w
-	 Wc7cCMnaVHq7jpZDuxjCOQsx9HL8OQoAhmR5m2iAtfZOavL6ktHTsrqnVUr8IXgySn
-	 bklu0LWr+VgCTjb1TT+hj6mRXlAOJxU4a0ziqTrLiDkLu/hyT6YSnuB+HR1deJvYdH
-	 81DEoQ8C2GmQw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 85BDD41247;
-	Wed, 14 May 2025 00:26:42 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id E6222153
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 May 2025 00:26:40 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D757560779
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 May 2025 00:26:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 60C1260FFC;
+	Wed, 14 May 2025 04:31:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id B_X1dfh3DwRD for <intel-wired-lan@lists.osuosl.org>;
- Wed, 14 May 2025 00:26:40 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
- helo=sea.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D4A2160815
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D4A2160815
-Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D4A2160815
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 May 2025 00:26:39 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 0ECF6443DC;
- Wed, 14 May 2025 00:26:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 355CFC4CEE4;
- Wed, 14 May 2025 00:26:38 +0000 (UTC)
-Date: Tue, 13 May 2025 17:26:37 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Marek Pazdan <mpazdan@arista.com>
-Cc: andrew@lunn.ch, aleksander.lobakin@intel.com, almasrymina@google.com,
- andrew+netdev@lunn.ch, anthony.l.nguyen@intel.com, daniel.zahka@gmail.com,
- davem@davemloft.net, ecree.xilinx@gmail.com, edumazet@google.com,
- gal@nvidia.com, horms@kernel.org, intel-wired-lan@lists.osuosl.org,
- jianbol@nvidia.com, kory.maincent@bootlin.com,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org, pabeni@redhat.com,
- przemyslaw.kitszel@intel.com, willemb@google.com
-Message-ID: <20250513172637.2e2b2faf@kernel.org>
-In-Reply-To: <20250513224017.202236-1-mpazdan@arista.com>
-References: <6f127b5b-77c6-4bd4-8124-8eea6a12ca61@lunn.ch>
- <20250513224017.202236-1-mpazdan@arista.com>
+ id veV_2QP3-56G; Wed, 14 May 2025 04:31:09 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7F11A60FCC
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1747197069;
+	bh=FrVHf60mTQSM7dsn8mNLYq4at6HWl8foIYOLtvR/ZDs=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=iAwuadnC04rZAg2GJyAZeY6h8wEePJQ5g1dt/Srwl091tlU9IBJ1WjyFwTXhQHxGS
+	 49pOiaaMar0KF/Dz/j8NdjrEAmiflRI0UH3cT3bYbn5TKXXa3tQ1ChKy7swj6vsenR
+	 Fy5rQihOVQshYL6e4retCTILfO4qa+KPU+XLmv9AR6Fo7yJjD+0Tqpisuw2Nbg93HN
+	 ytRpT0EVkyb/RfgmyRer/xxf231562IwDZ42jZKKc1y88OnpZSdXwXP2diZzRwhzO3
+	 jOHUdtSMEbBatEMMNSNpgpqsYz3f8sHBZiewCY0QsidqXDNofpFRW885UR6v23lpYK
+	 MMH20k9ouMfCg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7F11A60FCC;
+	Wed, 14 May 2025 04:31:09 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id C5ACF12A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 May 2025 04:31:07 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id AB5E340159
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 May 2025 04:31:07 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id iXV7KzHDK6Uo for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 14 May 2025 04:31:06 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
+ helo=mgamail.intel.com; envelope-from=faizal.abdul.rahim@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org AEAA4402E8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AEAA4402E8
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id AEAA4402E8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 May 2025 04:31:05 +0000 (UTC)
+X-CSE-ConnectionGUID: an2kPQSYTVyRcVAk2NicwQ==
+X-CSE-MsgGUID: Wh20z/lXSpCvNWKyu+hBbg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11432"; a="36699057"
+X-IronPort-AV: E=Sophos;i="6.15,287,1739865600"; d="scan'208";a="36699057"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+ by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 May 2025 21:31:04 -0700
+X-CSE-ConnectionGUID: DHBPF/FdQXG07/G2fbxIjw==
+X-CSE-MsgGUID: aHeTynuCSKKzAsZEw9nuzA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,287,1739865600"; d="scan'208";a="142861732"
+Received: from mohdfai2-ilbpg12-1.png.intel.com ([10.88.227.73])
+ by orviesa004.jf.intel.com with ESMTP; 13 May 2025 21:31:01 -0700
+From: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Vladimir Oltean <vladimir.oltean@nxp.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org,
+ Faizal Rahim <faizal.abdul.rahim@linux.intel.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Chwee-Lin Choong <chwee.lin.choong@intel.com>
+Date: Wed, 14 May 2025 00:29:37 -0400
+Message-Id: <20250514042945.2685273-1-faizal.abdul.rahim@linux.intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1747182398;
- bh=EUluESMZDGaIO+DzKufN5yyjenqOI9VWfQxvCpUImNk=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=S0lmm3iN4inA8geQlL9uLNH9ydXunty8+r6V04c8henGjojGqR5BbLBQH/JSUEVXH
- PrgETC5srsGw9EWkPVnn76z2AqENuxc2tOfMaYpVzHwM9M8lHgl63sx3fVzhDsfSRx
- KxPYNai0lG3ZC6u0kLIQlTnBYSeuHPRbRbYYQ2RYhOMfD8TEFxEbBrhhuWHp/1IwRl
- PJCVUf+aWlIwLmRUXW4MX3qlr5JV1u0OnaaLs6qpv8PIkjuz2wMThus1/rJVVQxqBm
- J5gkXZulYFBuDhYPxIjeZm2OU7+7W6n6zBNiiO/2KhQxLJGcgedE+/Gicy0ZiiW2oD
- /u7wG7JGNsxvQ==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1747197065; x=1778733065;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=jescl6f+uybA68SsSMxRC4QbDzkbPdEF/STWwsg9JYM=;
+ b=ghEE/WRVjRWaxelmPI70HuUfydBExBilLjVIT938Cszwb0SuVkZNZGGk
+ pGOXPNfYbwhR48/s1PwYcCA10UrNA+nbgrjnTU/rWPWTbmmaT7ersHf0K
+ tHCU1R6T22m2oBlUj4zJdK+98cBYhH7mWUxZ3ae+cflEuHS8vWdIfYjr4
+ yUtSQwa4J4ndGEw87zunNJcAaCf4hz7v94KjH5ZlDVCq2/bHb854oQU/j
+ lD1T4kcTf3QJH57eLVe8lcnLNRW3Y7MTiVyNh8oODrGNZlLiSCArSR6BD
+ obLaM4DnLGgjQtIMzQgaqMcnjBXfKltDPlG7QzoaqdHOgy1RmXYwif12+
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=S0lmm3iN
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 1/2] ethtool: qsfp
- transceiver reset, interrupt and presence pin control
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=ghEE/WRV
+Subject: [Intel-wired-lan] [PATCH iwl-next v2 0/8] igc: harmonize queue
+ priority and add preemptible queue support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,119 +116,49 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, 13 May 2025 22:40:00 +0000 Marek Pazdan wrote:
-> Common Management Interface Specification defines
-> Management Signaling Layer (MSL) control and status signals. This change
-> provides API for following signals status reading:
-> - signal allowing the host to request module reset (Reset)
-> - signal allowing the host to detect module presence (Presence)
-> - signal allowing the host to detect module interrupt (Int)
-> Additionally API allows for Reset signal assertion with
-> following constraints:
-> - reset cannot be asserted if firmware update is in progress
-> - if reset is asserted, firmware update cannot be started
-> - if reset is asserted, power mode cannot be get/set
-> In all above constraint cases -EBUSY error is returned.
-> 
-> After reset, module will set all registers to default
-> values. Default value for Page0 byte 93 register is 0x00 what implies that
-> module power mode after reset depends on LPMode HW pin state.
-> If software power mode control is required, bit 0 of Page0 byte93 needs
-> to be enabled.
-> Module reset assertion implies failure of every module's related
-> SMBus transactions. Device driver developers should take this into
-> consideration if driver provides API for querying module's related data.
-> One example can be HWMON providing module temperature report.
-> In such case driver should monitor module status and in time of reset
-> assertion it should return HWMON report which informs that temperature
-> data is not available due to module's reset state.
-> The same applies to power mode set/get. Ethtool API has already
-> checking for module reset state but similar checking needs to be
-> implemented in the driver if it requests power mode for other
-> functionality.
-> Additionally module reset is link hitful operation. Link is brought down
-> when reset is asserted. If device driver doesn't provide functionality
-> for monitoring transceiver state, it needs to be implemented in parallel
-> to get/set_module_mgmt_signal API. When module reset gets deasserted,
-> transceiver process reinitialization. The end of reinitialization
-> process is signalled via Page 00h Byte 6 bit 0 "Initialization complete
-> flags". If there is no implementation for monitoring this bit in place,
-> it needs to be added to bring up the link after transceiver
-> initialization is complete.
-> 
-> Signed-off-by: Marek Pazdan <mpazdan@arista.com>
+MAC Merge support for frame preemption was previously added for igc:
+https://patchwork.kernel.org/project/netdevbpf/patch/20250318030742.2567080-1-faizal.abdul.rahim@linux.intel.com/
 
-A few drive by comments, I leave the real review to Andrew.
+This series builds on that work and adds support for:
+- Harmonizing taprio and mqprio queue priority behavior, based on past
+  discussions and suggestions:
+  https://lore.kernel.org/all/20250214102206.25dqgut5tbak2rkz@skbuf/
+- Enabling preemptible queue support for both taprio and mqprio, with
+  priority harmonization as a prerequisite.
 
-Instead of posting in-reply-to please add lore links to previous
-versions, eg.
-v2:
-https://lore.kernel.org/all/20250513224017.202236-1-mpazdan@arista.com/ under the --- separator.
+Patch organization:
+- Patches 1–3: Preparation work for patches 6 and 7
+- Patches 4–5: Queue priority harmonization
+- Patches 6–8: Add preemptible queue support
 
-I almost missed this posting.
+v2 changes:
+- v1: https://patchwork.kernel.org/project/netdevbpf/cover/20250428060225.1306986-1-faizal.abdul.rahim@linux.intel.com/
+- Move RXDCTL macros for consistency with TXDCTL (Ruinskiy, Dima)
+- Rename RX descriptor control macros with RXDCTL prefix (Ruinskiy, Dima)
+- Add FPE acronym explanation in commit description (Loktionov, Aleksandr)
+- Add Reviewed-by tag from Aleksandr for patch 6
 
-When you post v3 please make sure to CC Ido and Danielle who
-implemented the FW flashing for modules.
+Chwee-Lin Choong (1):
+  igc: SW pad preemptible frames for correct mCRC calculation
 
-> diff --git a/Documentation/netlink/specs/ethtool.yaml b/Documentation/netlink/specs/ethtool.yaml
-> index c650cd3dcb80..38eebbe18f55 100644
-> --- a/Documentation/netlink/specs/ethtool.yaml
-> +++ b/Documentation/netlink/specs/ethtool.yaml
-> @@ -1528,6 +1528,24 @@ attribute-sets:
->          name: hwtstamp-flags
->          type: nest
->          nested-attributes: bitset
-> +  -
-> +    name: module-mgmt
-> +    attr-cnt-name: __ethtool-a-module-mgmt-cnt
-> +    attributes:
-> +      -
-> +        name: unspec
-> +        type: unused
-> +        value: 0
+Faizal Rahim (7):
+  igc: move TXDCTL and RXDCTL related macros
+  igc: add DCTL prefix to related macros
+  igc: refactor TXDCTL macros to use FIELD_PREP and GEN_MASK
+  igc: assign highest TX queue number as highest priority in mqprio
+  igc: add private flag to reverse TX queue priority in TSN mode
+  igc: add preemptible queue support in taprio
+  igc: add preemptible queue support in mqprio
 
-no need, just skip the unspec attr and YNL will number the first one
-from 1 keeping 0 as rejected type.
+ drivers/net/ethernet/intel/igc/igc.h         |  33 +++++-
+ drivers/net/ethernet/intel/igc/igc_base.h    |   8 --
+ drivers/net/ethernet/intel/igc/igc_defines.h |   1 +
+ drivers/net/ethernet/intel/igc/igc_ethtool.c |  12 +-
+ drivers/net/ethernet/intel/igc/igc_main.c    |  56 ++++++---
+ drivers/net/ethernet/intel/igc/igc_tsn.c     | 116 ++++++++++++++++---
+ drivers/net/ethernet/intel/igc/igc_tsn.h     |   5 +
+ 7 files changed, 188 insertions(+), 43 deletions(-)
 
-> +      -
-> +        name: header
-> +        type: nest
-> +        nested-attributes: header
-> +      -
-> +        name: type
-> +        type: u8
-
-u32 will give us more flexibility later. And attr sizes in netlink are
-aligned to 4B so a u8 consumes 4 bytes anyway.
-
-> +      -
-> +        name: value
-> +        type: u8
-
-Do you think we'll never need to set / clear / change multiple bits at
-once? We could wrap the type / value into a nest and support repeating
-that nest (multi-attr: true)
-
-> +/**
-> + * enum ethtool_module_mgmt_signal_type - plug-in module discrete
-> + *	status hardware signals for management as per CMIS spec.
-> + * @ETHTOOL_MODULE_MGMT_RESET: Signal allowing the host to request
-> + *	a module reset.
-> + * @ETHTOOL_MODULE_MGMT_INT: Signal allowing the module to assert
-> + *	an interrupt request to the host.
-> + * @ETHTOOL_MODULE_MGMT_PRESENT: Signal allowing the module to signal
-> + *	its presence status to the host.
-
-Not sure what the use case would be for setting INT and PRESENT.
-So the combined API (driver facing) to treat RESET and read-only
-bits as equivalent may not be the best fit. Just a feeling tho.
-
-> + */
-> +enum ethtool_module_mgmt_signal_type {
-> +	ETHTOOL_MODULE_MGMT_RESET = 1,
-> +	ETHTOOL_MODULE_MGMT_INT,
-> +	ETHTOOL_MODULE_MGMT_PRESENT,
-
-Please define the enums in the YNL spec, see
-https://lore.kernel.org/all/20250508193645.78e1e4d9@kernel.org/
+--
+2.34.1
 
