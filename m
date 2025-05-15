@@ -1,92 +1,101 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 639ABAB852D
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 May 2025 13:46:53 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 395A4AB866D
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 May 2025 14:33:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1DA9540630;
-	Thu, 15 May 2025 11:46:52 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EC7556114D;
+	Thu, 15 May 2025 12:33:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id I5QH5prvU_AK; Thu, 15 May 2025 11:46:51 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id GpaHNH5uYKXw; Thu, 15 May 2025 12:33:41 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7A5C44055A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 45FA061147
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1747309611;
-	bh=3t8AVsvUFFxY362jwv8uM+rFUxwTs0dmvxCxlUfsoOc=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=FiKDhe99o2EqGgy99sVopi6ciyDd5dCuUkTMOPE/SpFnZdmx1U5uTWCuANItQjAa6
-	 UMfFDyiv+YPMQRhPPfePNu5hzOQxWNJgBcNal9o9p4daLkeWLMZjh7yVcCPah7MK0N
-	 tbOQr8+0Mt4zAEopRKtn6ZHreATxD77H/hCs30gM5daaH4pZtsSkyj773GYsmgvW9v
-	 wAeNZAcFQpAoUj4SN4dvqe3Rs2qEDOh+QhYv3NdCnNjc2L0bkimy2HceOcHKkCj6ng
-	 aEI6dLS8zC/wQ/INhCcj0FC/U7qyri2exNQ99RLjyjTZ5W6PXIWGLGoXQH5qUA33uU
-	 /5ySu6dBb49yA==
+	s=default; t=1747312421;
+	bh=ooK61hDBSJU00rWbCaJb0aWxT9i4TsPe6OheW0ZA01Y=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=10MACZ7oOnIOTN5EFhwN4wB9V2+EWTr9ANE588Bp3FWtaPmyuhQLWot0dG+wKcxqB
+	 EA17/gFMnwYsowELqL6dGUBhteR+xmLIeunNXde/AytjYzHpn8017HwzwJUQGZ2d0q
+	 v4It3SmEvjhsh1TdgXSJ3a8ig00FO778i49+GlADPnS57MubOXVgEZDShjPMVtS8sa
+	 ahn0DzMbAfAWQbzQ5KJSWxlN8A7CcIIbm+wiiitKo2kpzMnWt5ZGnZq+pEcsw8KVHB
+	 Oo3kUO1vwFWv1g10NQWimbgvykJdYsGv3cg4nNKE/qtq5xHGyHDAMLkf91r2mwvKg6
+	 h723w1yqLqVhg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7A5C44055A;
-	Thu, 15 May 2025 11:46:51 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 45FA061147;
+	Thu, 15 May 2025 12:33:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 75672119
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 11:46:50 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id B4C0413D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 12:33:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 66F1E80D75
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 11:46:50 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9A9CE83925
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 12:33:39 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id rw073WL8LPeK for <intel-wired-lan@lists.osuosl.org>;
- Thu, 15 May 2025 11:46:50 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org CDFDF80DEA
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CDFDF80DEA
-Received: from nyc.source.kernel.org (nyc.source.kernel.org
- [IPv6:2604:1380:45d1:ec00::3])
- by smtp1.osuosl.org (Postfix) with ESMTPS id CDFDF80DEA
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 11:46:49 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id D4FE8A4E2D7;
- Thu, 15 May 2025 11:46:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BB4AFC4CEE7;
- Thu, 15 May 2025 11:46:46 +0000 (UTC)
-Date: Thu, 15 May 2025 12:46:44 +0100
-From: Simon Horman <horms@kernel.org>
-To: Michal Kubiak <michal.kubiak@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, maciej.fijalkowski@intel.com,
- aleksander.lobakin@intel.com, przemyslaw.kitszel@intel.com,
- dawid.osuchowski@linux.intel.com, jacob.e.keller@intel.com,
- jbrandeburg@cloudflare.com, netdev@vger.kernel.org
-Message-ID: <20250515114644.GW3339421@horms.kernel.org>
-References: <20250513105529.241745-1-michal.kubiak@intel.com>
- <20250513105529.241745-4-michal.kubiak@intel.com>
+ id T6My_pYJlv52 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 15 May 2025 12:33:38 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
+ helo=mgamail.intel.com; envelope-from=anton.nadezhdin@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3466D80E66
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3466D80E66
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3466D80E66
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 12:33:37 +0000 (UTC)
+X-CSE-ConnectionGUID: ZBnX03VnQten31hAOctOOw==
+X-CSE-MsgGUID: /5IZs/goTzu1gweQvaWDiA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11434"; a="74646885"
+X-IronPort-AV: E=Sophos;i="6.15,291,1739865600"; d="scan'208";a="74646885"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 May 2025 05:33:37 -0700
+X-CSE-ConnectionGUID: czHv+sB6SY61qvbGgeYHYQ==
+X-CSE-MsgGUID: hDCdknInQrKlBNvDORWoeQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,291,1739865600"; d="scan'208";a="143309978"
+Received: from admindev-x299-aorus-gaming-3-pro.igk.intel.com ([10.91.3.52])
+ by orviesa004.jf.intel.com with ESMTP; 15 May 2025 05:33:35 -0700
+From: Anton Nadezhdin <anton.nadezhdin@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
+ richardcochran@gmail.com, Anton Nadezhdin <anton.nadezhdin@intel.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Date: Thu, 15 May 2025 14:32:36 +0200
+Message-Id: <20250515123236.232338-1-anton.nadezhdin@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250513105529.241745-4-michal.kubiak@intel.com>
+Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
+ 80-298 Gdansk - KRS 101882 - NIP 957-07-52-316
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1747309608;
- bh=vxJ1lJpDsokpa+3eqqj8W/hw7hRFfKPXaUCS5sNBDaw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=S5GJrYui6Neqip2Tdi88KT8vqKUr/aOlX5Mr8fasyFqNbjETDWUYwIOA7LxlACcRU
- XprmjGC7X7/CLN/CjPZhoUce8NSMNl/ef9cqoVju34XMiYNOOTMCbI1Wh4aS7DF9WO
- Fxm98Kt9cBE1VsTJ515XLRwTgq69KlZTOW6JwYSRqgjPjD6wg3NdePNGnTHoECTROV
- aLkV4x/GAb2RPDve7E+bA/Py0uIRCw0ddS7sv4DhkDwTlXn1Mw6n5hHu8gcrXMOLyA
- 1fBs1VOzPa1tkPYCeNurRTVf1yqTTkth9t/ydkcsuWb9vciKZ1gaxT8bOOm8A/532+
- CM/Klz9/j7nGA==
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1747312418; x=1778848418;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=d8ge57CmNBGpOr47ySBYCPdt/LmqgPo3Abd1sYrRyc4=;
+ b=T20X5/L23H9JIYI/kOYayAwGjfhTUvSt5n2haJISqp4zSv76Lpg3wjlb
+ 0/VcznIpdcv7hRL7N9Y4/Wb/67phwuKO+MCQuwdzwaE3M/af8VxEzC4B4
+ QwbKLPyBmM9Ku2WBhb1BXpzkGMIviac9V6FiPtfKD0z6YFUHzP1Vrwljj
+ L+NM7oYYtuEjF/dwRu1137XyhpY+Cap/PtzcX4Eo0+K9CHsOgzG3HNzsr
+ li4mgcp+4gMPbdhhwoT7oQ8FVI891Wh/W3hAvbQ5DTas8oX/3frFTrba1
+ BVdL1z8G3uvld4koJF7OgPUOTiL4hFUUbo8qqq7JrPP7QwfcO8QwkGOHY
+ w==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=S5GJrYui
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v3 3/3] ice: fix rebuilding
- the Tx scheduler tree for large queue counts
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=T20X5/L2
+Subject: [Intel-wired-lan] [PATCH iwl-net v3] ice/ptp: fix crosstimestamp
+ reporting
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -102,45 +111,42 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, May 13, 2025 at 12:55:29PM +0200, Michal Kubiak wrote:
-> The current implementation of the Tx scheduler allows the tree to be
-> rebuilt as the user adds more Tx queues to the VSI. In such a case,
-> additional child nodes are added to the tree to support the new number
-> of queues.
-> Unfortunately, this algorithm does not take into account that the limit
-> of the VSI support node may be exceeded, so an additional node in the
-> VSI layer may be required to handle all the requested queues.
-> 
-> Such a scenario occurs when adding XDP Tx queues on machines with many
-> CPUs. Although the driver still respects the queue limit returned by
-> the FW, the Tx scheduler was unable to add those queues to its tree
-> and returned one of the errors below.
-> 
-> Such a scenario occurs when adding XDP Tx queues on machines with many
-> CPUs (e.g. at least 321 CPUs, if there is already 128 Tx/Rx queue pairs).
-> Although the driver still respects the queue limit returned by the FW,
-> the Tx scheduler was unable to add those queues to its tree and returned
-> the following errors:
-> 
->      Failed VSI LAN queue config for XDP, error: -5
-> or:
->      Failed to set LAN Tx queue context, error: -22
-> 
-> Fix this problem by extending the tree rebuild algorithm to check if the
-> current VSI node can support the requested number of queues. If it
-> cannot, create as many additional VSI support nodes as necessary to
-> handle all the required Tx queues. Symmetrically, adjust the VSI node
-> removal algorithm to remove all nodes associated with the given VSI.
-> Also, make the search for the next free VSI node more restrictive. That is,
-> add queue group nodes only to the VSI support nodes that have a matching
-> VSI handle.
-> Finally, fix the comment describing the tree update algorithm to better
-> reflect the current scenario.
-> 
-> Fixes: b0153fdd7e8a ("ice: update VSI config dynamically")
-> Reviewed-by: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Signed-off-by: Michal Kubiak <michal.kubiak@intel.com>
+Set use_nsecs=true as timestamp is reported in ns. Lack of this result
+in smaller timestamp error window which cause error during phc2sys
+execution on E825 NICs:
+phc2sys[1768.256]: ioctl PTP_SYS_OFFSET_PRECISE: Invalid argument
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+Before commit "Provide infrastructure for converting to/from a base clock"
+the parameter use_nsec was not required. "Remove convert_art_to_tsc()"
+rework shall already contain use_nsecs=true.
+
+Testing hints (ethX is PF netdev):
+phc2sys -s ethX -c CLOCK_REALTIME  -O 37 -m
+phc2sys[1769.256]: CLOCK_REALTIME phc offset -5 s0 freq      -0 delay    0
+
+Fixes: d4bea547ebb57 ("ice/ptp: Remove convert_art_to_tsc()")
+Fixes" 6b2e29977518e ("timekeeping: Provide infrastructure for converting to/from a base clock")
+Signed-off-by: Anton Nadezhdin <anton.nadezhdin@intel.com>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_ptp.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+index 1fd1ae03eb90..11ed48a62b53 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+@@ -2307,6 +2307,7 @@ static int ice_capture_crosststamp(ktime_t *device,
+ 	ts = ((u64)ts_hi << 32) | ts_lo;
+ 	system->cycles = ts;
+ 	system->cs_id = CSID_X86_ART;
++	system->use_nsecs = true;
+ 
+ 	/* Read Device source clock time */
+ 	ts_lo = rd32(hw, cfg->dev_time_l[tmr_idx]);
+
+base-commit: 7e5af365e38059ed585917623c1ba3a6c04a8c10
+-- 
+2.34.1
 
