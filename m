@@ -1,57 +1,59 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 12385AB7B11
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 May 2025 03:42:00 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F83FAB7AF1
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 May 2025 03:23:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 973B160E08;
-	Thu, 15 May 2025 01:41:58 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8A3B041558;
+	Thu, 15 May 2025 01:23:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xeqyxaAGzE8k; Thu, 15 May 2025 01:41:58 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id uskDkYJ6jtiF; Thu, 15 May 2025 01:23:48 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0B2A5605B1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EA33041529
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1747273318;
-	bh=Rgze/gk20gcMc5t1HLHy2uBvblNz3B5eJhJy+7TrjeQ=;
+	s=default; t=1747272228;
+	bh=ZNEVePrYcEKpGjmy4ptaEK0bCgRenH9d4U+STgUBLp8=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=q1uw9lfm+SNaX1jXirbYgArjeuNkqT9vJ1m2s88GNQSpURV2jNABfAvmHLfTrpC+O
-	 l6c33Dsy9+bu2DoWArwjCWsnxmcfobX4Rr/t7j2WoB8enNoGj4bbC2AFscq+4SJG3C
-	 mmlTyYC5rL/k5sVqCHF4M+A0mKJ6GJycrnCAZOeJeEdP1zNV1B8v/cr2PetvRfO3JR
-	 Apa7f3iJLte9t40VFHTHHujyQ2o0oWIqx/msV/1BHyyQOSmIgitPKtd6C1VDbNcqha
-	 GEbHP+Ld90dwmC0TXpzAeswtTKnG4VZWQmkbMRDmI2PtDX+X7e6JGUTsSmT7DjtYxu
-	 ujTY3CO6y2dbQ==
+	b=aVHCZFtmex7YSN8xJeYugtjHNmy4clfoAby6d3iB/zoYA5MGbE5eREX3bnCizOosf
+	 C52uiJrKto5Nwd+ZSxr2h7SZDsan2sTCiQEY+d8AiGxfve8z5cRLTnwMOGw/8i/aj/
+	 rLvBcO50yd+dWVThN9s1eV5MCkEXGOeQxBsPUVSKQcEcGv94u2XvUoX8CYZM4f/UTN
+	 rRP7ojGTPksAaFZECz1SqIBFigxNTpr8y0/9CyXCFdBpscERnYAFicEtA/Owi9cz2R
+	 w5+SXN55SBJ8ANw0wiSz8ilCy/7g2R3WFIQWssW6Y2hXFrefhapHpgk8MSRB5DAyGA
+	 OXQ2PzaQfi5xQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0B2A5605B1;
-	Thu, 15 May 2025 01:41:58 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id EA33041529;
+	Thu, 15 May 2025 01:23:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 2C8C7153
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 01:41:56 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id B34F5179
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 01:23:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1E02A40291
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 01:41:56 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id A47F340254
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 01:23:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id R5qsQUwIOVVy for <intel-wired-lan@lists.osuosl.org>;
- Thu, 15 May 2025 01:41:55 +0000 (UTC)
+ id UWunAphlIeya for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 15 May 2025 01:23:46 +0000 (UTC)
+X-Greylist: delayed 793 seconds by postgrey-1.37 at util1.osuosl.org;
+ Thu, 15 May 2025 01:23:45 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 92AD6401B0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 92AD6401B0
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
  helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org AFFA940254
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AFFA940254
 Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
- by smtp2.osuosl.org (Postfix) with ESMTPS id AFFA940254
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 01:41:54 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 92AD6401B0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 01:23:45 +0000 (UTC)
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
  (envelope-from <andrew@lunn.ch>)
- id 1uFN7A-00CcQf-1f; Thu, 15 May 2025 03:10:24 +0200
-Date: Thu, 15 May 2025 03:10:24 +0200
+ id 1uFNJz-00CcSc-Nn; Thu, 15 May 2025 03:23:39 +0200
+Date: Thu, 15 May 2025 03:23:39 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: Marek Pazdan <mpazdan@arista.com>
 Cc: aleksander.lobakin@intel.com, almasrymina@google.com,
@@ -62,29 +64,31 @@ Cc: aleksander.lobakin@intel.com, almasrymina@google.com,
  kory.maincent@bootlin.com, kuba@kernel.org,
  linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
  pabeni@redhat.com, przemyslaw.kitszel@intel.com, willemb@google.com
-Message-ID: <c6c33e70-267f-4433-95ca-93efca0dfbe8@lunn.ch>
+Message-ID: <200f7d11-50c2-4ee2-a80b-15341fbbd5f4@lunn.ch>
 References: <6f127b5b-77c6-4bd4-8124-8eea6a12ca61@lunn.ch>
  <20250513224017.202236-1-mpazdan@arista.com>
+ <20250513224017.202236-2-mpazdan@arista.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250513224017.202236-1-mpazdan@arista.com>
+In-Reply-To: <20250513224017.202236-2-mpazdan@arista.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
  c=relaxed/relaxed; d=lunn.ch; 
  s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
  References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
  Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
  Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
- bh=Rgze/gk20gcMc5t1HLHy2uBvblNz3B5eJhJy+7TrjeQ=; b=nE+5GleEusC4oX5Y2MkFdKdCYH
- /EM4+ydrgWChVXHmg84vCY1rG6uY25n6p53c+IhIq0E2Or94kZ45GNvQIkXBPg2ne4YpXZBE/uyhk
- U61rEsohwGSEmsuBqA3UDukS/G9q/AzG7qwbBn7SScTFm8yWGSwrqumNVArLs//GCbok=;
+ bh=ZNEVePrYcEKpGjmy4ptaEK0bCgRenH9d4U+STgUBLp8=; b=TqrC6tHx2nDhX1MPJu5HfQDFFF
+ 7iqxY6YE+cP/esAGf7veHNXV1UqPnK7nme2FRbF2NuoIM2IJw58Wj7bkVswUBcQrkVJntiDzFCHdt
+ tu1FC0gCzbV4WHr4o5HNEWiaqNxr5IwE+rAp/swFVcVA9BuGHRag39g70xUNxAlv4Grs=;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=lunn.ch
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=lunn.ch header.i=@lunn.ch
- header.a=rsa-sha256 header.s=20171124 header.b=nE+5GleE
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 1/2] ethtool: qsfp
+ dkim=pass (1024-bit key,
+ unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256
+ header.s=20171124 header.b=TqrC6tHx
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 2/2] ice: add qsfp
  transceiver reset, interrupt and presence pin control
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -101,43 +105,56 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, May 13, 2025 at 10:40:00PM +0000, Marek Pazdan wrote:
-> Common Management Interface Specification defines
-> Management Signaling Layer (MSL) control and status signals. This change
-> provides API for following signals status reading:
-> - signal allowing the host to request module reset (Reset)
-> - signal allowing the host to detect module presence (Presence)
-> - signal allowing the host to detect module interrupt (Int)
-
-What is missing from here is the use cases you are trying to
-address. Why should user space want to reset the module? Why does user
-spare care if there is a module inserted or not. What is user space
-going to do with an interrupt?
-
-> Additionally API allows for Reset signal assertion with
-> following constraints:
-> - reset cannot be asserted if firmware update is in progress
-> - if reset is asserted, firmware update cannot be started
-> - if reset is asserted, power mode cannot be get/set
-> In all above constraint cases -EBUSY error is returned.
-
-Seems like there should be one more condition. Reset cannot be
-asserted if the interface is admin up. I assume a reset is disruptive
-to the link, so you don't want it to happen when the link is in use.
-
-> +static int module_mgmt_get(struct net_device *dev,
-> +			   struct module_mgmt_reply_data *data,
-> +			   const struct genl_info *info)
+> + * ice_get_module_mgmt_signal - get module management signal status
+> + * @dev: network interface device structure
+> + * @params: ethtool module management signal params
+> + * @extack: extended ACK from the Netlink message
+> + *
+> + * Returns -EIO if AQ command for GPIO get failed, otherwise
+> + * returns 0 and current status of requested signal in params.
+> + */
+> +static int
+> +ice_get_module_mgmt_signal(struct net_device *dev,
+> +			   struct ethtool_module_mgmt_params *params,
+> +			   struct netlink_ext_ack *extack)
 > +{
-> +	const struct ethtool_ops *ops = dev->ethtool_ops;
-> +	struct netlink_ext_ack *extack = info ? info->extack : NULL;
+> +	struct ice_netdev_priv *np = netdev_priv(dev);
+> +	struct ice_pf *pf = np->vsi->back;
+> +	struct ice_hw *hw = &pf->hw;
+> +	u16 gpio_handle = 0; /* SOC/on-chip GPIO */
+> +	bool value;
+> +	int ret = 0;
 > +
-> +	if (!ops->get_module_mgmt_signal)
-> +		return -EOPNOTSUPP;
-> +
-> +	return ops->get_module_mgmt_signal(dev, &data->mgmt, extack);
+> +	if (hw->has_module_mgmt_gpio) {
+> +		switch (params->type) {
+> +		case ETHTOOL_MODULE_MGMT_RESET:
+> +			ret = ice_aq_get_gpio(hw, gpio_handle,
+> +					      ICE_MGMT_PIN_RESET, &value, NULL);
+> +			break;
 
-Should there be a module_busy() check here? Can you get these
-parameters if the module is in reset?
+Reset, i can kind of understand being used this way.
 
-	Andrew
+> +		case ETHTOOL_MODULE_MGMT_INT:
+> +			ret = ice_aq_get_gpio(hw, gpio_handle,
+> +					      ICE_MGMT_PIN_INT, &value, NULL);
+> +			break;
+> +		case ETHTOOL_MODULE_MGMT_PRESENT:
+> +			ret = ice_aq_get_gpio(hw, gpio_handle,
+> +					      ICE_MGMT_PIN_PRESENT, &value, NULL);
+> +			break;
+
+but not these two. These represent events. I've not looked at the
+datasheet... Does the GPIO controller support interrupts? For PRESENT
+you are interested in the edges, maybe with some debounce logic. For
+INT, i _guess_ it is active low? But i've no idea what user space is
+going to actually do on an interrupt, and how is it going to clear the
+interrupt? This smells like a user space driver, which is not
+something we want. Even if there is a legitimate use case, which there
+might be for PRESENT, polling does not make much sense when the kernel
+can broadcast a netlink message to user space if the GPIO controller
+has interrupt support.
+
+    Andrew
+
+---
+pw-bot: cr
