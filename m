@@ -1,94 +1,105 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 25389AB8821
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 May 2025 15:35:58 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4147FAB8D9E
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 May 2025 19:22:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 46CC760909;
-	Thu, 15 May 2025 13:35:56 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id EAFCF831CA;
+	Thu, 15 May 2025 17:22:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id MpUfzc0yUvVv; Thu, 15 May 2025 13:35:55 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 2bW5DiwkJxa8; Thu, 15 May 2025 17:22:15 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B499A6111F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 58E3883145
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1747316155;
-	bh=/DPsrwmF974vCBzbWVGcNP7I9w/35MqrbcKI8oMydv0=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=1a3cair6oRBCyPB9b6ffGaEWBHpVescu4B5MNKgaVnskkWxaHBorUD26hrxSzqnvP
-	 AVdwN3s55EYc89m8iIPbEA4Fi4XF44GBOHITlk2rMd6so6Z+WBxSYXLHMmHcjZA6QX
-	 A/xBVhgj93ozvyqz5V8pa19Z2vBY3Soq7pOCTGvZZZrQhy2JA1UKyLPY/8UuS7JiU/
-	 nd78X6Y91cXuEvJEqUvJgqo/R6eKh0Kiklui2n6RQ6JcmlxZvxuWFS//37WItOkt05
-	 wub75E7tBGehxH6OXiJkX07QWaImZ0PdN9RkeHQfTIVyDhktKO1tKuw3kgHTPg6sLn
-	 yWmFQLVU8JjPA==
+	s=default; t=1747329735;
+	bh=AmaE7zmMQ/HYq+spNziv4SnDbQjnhMZn5DIjgMiKoKE=;
+	h=Date:From:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=NRUWn2hY1oyuJxaaJ5lMyOB/bNw9WWSjyCwEB4sNUIlKuivpy+CjZsbLtp4tOMfUs
+	 prP16yL9DjBk0ANrWGoQ7vOSV5CqJc/K0SqOmZs3wBntMLYkKhtpg5hovBR50d+rng
+	 x4MtCzWO9JPb8lbQqZt44kx22YOrzoxvo+faPPFWbD0n1g5mlLvoN/VwUA8gEi+OQ2
+	 t2p3rtWE8tRwjqlgAqX1JvzuukTTV3WJoxCx+0enqLUMlJT8qaL962g8j+6PqXRjsP
+	 hLd9cQBdRann0btIb4QBi2xPc9+utHghKDPJq8kWyRVtXk+rov1AC1S0yW948RT8m6
+	 v8j2t6fXjQJPg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B499A6111F;
-	Thu, 15 May 2025 13:35:55 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 58E3883145;
+	Thu, 15 May 2025 17:22:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 2BDB813D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 13:35:54 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 19CF413D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 12:50:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 2821B40962
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 13:35:54 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id F34C140C08
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 12:50:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id bBKMApHCRd9o for <intel-wired-lan@lists.osuosl.org>;
- Thu, 15 May 2025 13:35:53 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
- envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 70DBF40237
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 70DBF40237
-Received: from tor.source.kernel.org (tor.source.kernel.org
- [IPv6:2600:3c04:e001:324:0:1991:8:25])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 70DBF40237
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 13:35:53 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id BBE8861126;
- Thu, 15 May 2025 13:35:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C7600C4CEE7;
- Thu, 15 May 2025 13:35:50 +0000 (UTC)
-Date: Thu, 15 May 2025 06:35:49 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: <long.yunjian@zte.com.cn>
-Cc: <anthony.l.nguyen@intel.com>, <przemyslaw.kitszel@intel.com>,
- <andrew+netdev@lunn.ch>, <davem@davemloft.net>, <edumazet@google.com>,
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id S7DLDXgzHJg6 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 15 May 2025 12:50:31 +0000 (UTC)
+X-Greylist: delayed 326 seconds by postgrey-1.37 at util1.osuosl.org;
+ Thu, 15 May 2025 12:50:30 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org B931A40C38
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B931A40C38
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=58.251.27.85;
+ helo=mxct.zte.com.cn; envelope-from=long.yunjian@zte.com.cn;
+ receiver=<UNKNOWN> 
+Received: from mxct.zte.com.cn (mxct.zte.com.cn [58.251.27.85])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B931A40C38
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 12:50:30 +0000 (UTC)
+Received: from mxde.zte.com.cn (unknown [10.35.20.121])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mxct.zte.com.cn (FangMail) with ESMTPS id 4Zyqfw0Gb1z57fJ
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 20:44:56 +0800 (CST)
+Received: from mxhk.zte.com.cn (unknown [192.168.250.137])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mxde.zte.com.cn (FangMail) with ESMTPS id 4Zyqfs5gf8zBRHKT
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 20:44:53 +0800 (CST)
+Received: from mxct.zte.com.cn (unknown [192.168.251.13])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mxhk.zte.com.cn (FangMail) with ESMTPS id 4ZyqfR5K0yz8R03x
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 20:44:31 +0800 (CST)
+Received: from mse-fl1.zte.com.cn (unknown [10.5.228.132])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mxct.zte.com.cn (FangMail) with ESMTPS id 4Zyqf73n23z51SY2;
+ Thu, 15 May 2025 20:44:15 +0800 (CST)
+Received: from njb2app05.zte.com.cn ([10.55.22.121])
+ by mse-fl1.zte.com.cn with SMTP id 54FCiADT030587;
+ Thu, 15 May 2025 20:44:11 +0800 (+08)
+ (envelope-from long.yunjian@zte.com.cn)
+Received: from mapi (njy2app01[null]) by mapi (Zmail) with MAPI id mid201;
+ Thu, 15 May 2025 20:44:14 +0800 (CST)
+Date: Thu, 15 May 2025 20:44:14 +0800 (CST)
+X-Zmail-TransId: 2af96825e19effffffff8ff-d246d
+X-Mailer: Zmail v1.0
+Message-ID: <20250515204414844_YQsk90Odo5a3bx9qvo8g@zte.com.cn>
+Mime-Version: 1.0
+From: <long.yunjian@zte.com.cn>
+To: <anthony.l.nguyen@intel.com>
+Cc: <przemyslaw.kitszel@intel.com>, <andrew+netdev@lunn.ch>,
+ <davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>,
  <pabeni@redhat.com>, <intel-wired-lan@lists.osuosl.org>,
  <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <fang.yumeng@zte.com.cn>, <xu.lifeng1@zte.com.cn>,
  <ouyang.maochun@zte.com.cn>, <mou.yi@zte.com.cn>
-Message-ID: <20250515063549.0f7c0a34@kernel.org>
-In-Reply-To: <20250515204414844_YQsk90Odo5a3bx9qvo8g@zte.com.cn>
-References: <20250515204414844_YQsk90Odo5a3bx9qvo8g@zte.com.cn>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1747316151;
- bh=3mpHCNTdw83e6Xd1/Q/RuiqfzIT6w2eWI6KqpTfF1x0=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=N5xPPuIIRv1L5ax5/TiPgkKU6kHc0WesdMdEwwtk8AxN2Q7DG6Fh63Nc+9PHiQP4z
- Pu8RxK6WZgQVre3aFVAPL9jxrWWfn4+8xnL6reOVyN+Sy/3LD9P1E++WrqxHgNmYhx
- 10DxmTtdfm9B6OmXi/CwFgMldi4ilG3YVT+vk1/1EE6j/XlI2VOBke3Y0uja7R4Ah5
- ghERYicesxT5rWmr8yuOU0/n5zNQsE3Qip+mjB/6XwvWLlPW3eIVbrmllO4iCLq0mg
- vbT8hnVnZ4gxnzDsGgh27kW5ZEEFCB1f+kss5O33niU4wETfippNLxC0UjttwlnR1L
- B0YwDbG25UYWA==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=N5xPPuII
-Subject: Re: [Intel-wired-lan] [PATCH linux-next] net: e100: Use
- str_read_write() helper
+Content-Type: text/plain;
+	charset="UTF-8"
+X-MAIL: mse-fl1.zte.com.cn 54FCiADT030587
+X-Fangmail-Anti-Spam-Filtered: true
+X-Fangmail-MID-QID: 6825E1C6.001/4Zyqfw0Gb1z57fJ
+X-Mailman-Approved-At: Thu, 15 May 2025 17:22:12 +0000
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=zte.com.cn
+Subject: [Intel-wired-lan] =?utf-8?q?=5BPATCH_linux-next=5D_net=3A_e100?=
+ =?utf-8?q?=3A_Use_str=5Fread=5Fwrite=28=29_helper?=
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,10 +115,53 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 15 May 2025 20:44:14 +0800 (CST) long.yunjian@zte.com.cn wrote:
-> From: Yumeng Fang <fang.yumeng@zte.com.cn>
-> 
-> Remove hard-coded strings by using the str_read_write() helper.
+From: Yumeng Fang <fang.yumeng@zte.com.cn>
 
-Please don't send "string_choices" conversions to netdev.
-This is pointless churn.
+Remove hard-coded strings by using the str_read_write() helper.
+
+Signed-off-by: Yumeng Fang <fang.yumeng@zte.com.cn>
+---
+ drivers/net/ethernet/intel/e100.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/e100.c b/drivers/net/ethernet/intel/e100.c
+index c0ead54ea186..ab93caab72bb 100644
+--- a/drivers/net/ethernet/intel/e100.c
++++ b/drivers/net/ethernet/intel/e100.c
+@@ -147,6 +147,7 @@
+ #include <linux/firmware.h>
+ #include <linux/rtnetlink.h>
+ #include <linux/unaligned.h>
++#include <linux/string_choices.h>
+
+
+ #define DRV_NAME		"e100"
+@@ -946,7 +947,7 @@ static u16 mdio_ctrl_hw(struct nic *nic, u32 addr, u32 dir, u32 reg, u16 data)
+ 	spin_unlock_irqrestore(&nic->mdio_lock, flags);
+ 	netif_printk(nic, hw, KERN_DEBUG, nic->netdev,
+ 		     "%s:addr=%d, reg=%d, data_in=0x%04X, data_out=0x%04X\n",
+-		     dir == mdi_read ? "READ" : "WRITE",
++		     str_read_write(dir == mdi_read),
+ 		     addr, reg, data, data_out);
+ 	return (u16)data_out;
+ }
+@@ -1009,7 +1010,7 @@ static u16 mdio_ctrl_phy_mii_emulated(struct nic *nic,
+ 		default:
+ 			netif_printk(nic, hw, KERN_DEBUG, nic->netdev,
+ 				     "%s:addr=%d, reg=%d, data=0x%04X: unimplemented emulation!\n",
+-				     dir == mdi_read ? "READ" : "WRITE",
++				     str_read_write(dir == mdi_read),
+ 				     addr, reg, data);
+ 			return 0xFFFF;
+ 		}
+@@ -1018,7 +1019,7 @@ static u16 mdio_ctrl_phy_mii_emulated(struct nic *nic,
+ 		default:
+ 			netif_printk(nic, hw, KERN_DEBUG, nic->netdev,
+ 				     "%s:addr=%d, reg=%d, data=0x%04X: unimplemented emulation!\n",
+-				     dir == mdi_read ? "READ" : "WRITE",
++				     str_read_write(dir == mdi_read),
+ 				     addr, reg, data);
+ 			return 0xFFFF;
+ 		}
+-- 
+2.25.1
