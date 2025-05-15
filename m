@@ -2,106 +2,91 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 415E5AB8461
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 May 2025 12:53:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BCE68AB8527
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 15 May 2025 13:46:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EC3E041516;
-	Thu, 15 May 2025 10:52:59 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5008A41564;
+	Thu, 15 May 2025 11:46:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id S_yY2XPcaKRV; Thu, 15 May 2025 10:52:59 +0000 (UTC)
+ id DmCL4oOzAMDb; Thu, 15 May 2025 11:46:22 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6CAEF40CF2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BE1914156D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1747306379;
-	bh=RghYQjQEpBN55gJjX50MHE7tfMz1PujuHhKbS9q6ixo=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1747309582;
+	bh=/ZhKCQ2bUCgswyRWRf3ouln9u/AW4Q2hbY1K7nFMKDw=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=zzfcb5HH0L+DLzHAGPYbCfiJOjc+nJFYtzhP2Dv4vkIwTi2MnZbCmTayevWfX+raQ
-	 ooVFYGjeG71iUrkhmmqHmBc6jjgZKhPrSkinf/zotyEzH4Vo7jGY9kIv7F/rJSFlQ3
-	 gp5MJ5H3jEkORMy6q4LUdpux6Vi4nUlCFjX7Y14KBk4YqpjEWtMiL9EaDns/GN8KL3
-	 9q3u4UwnsYC5ySG9b04A6K/0rcK8k/zJbfVgvy8vOzF3DF9/cqreijVS/qP7FQX3bc
-	 w32loX8l+oDK11SEm1s5HIHFVQ9UmJRfl66rgj4v9LGEJFhTdpQn4Udplmzv0RD+Gl
-	 IMOKZSvPJYUOQ==
+	b=csB5X8J9EzisBuRHgbFrmKw1At6v5i7gsTd6wlswEBlH8Zpn586x55BJ/FUANu158
+	 jJPpAE+gnmUVLX0hRxBMaCUeYrHwPcgJwrR83vD3IpQz73QgDjy+XJ2QSGM14Mcx3s
+	 T3i3FKDiyFWnSi/atHeGfAcUweGpqv6ZXXRdLKfgu2RSRiUMqCEXZiKov+z6jaP2XJ
+	 1+cU1SCCLyjWDZRtJKgQhqtGhNpmnCJ34/IarG8AVHE4LZ6zE+5e/LZgol7JxNqokb
+	 uJSAs6VY1eidyOcJ0yUPtEQQ9Vb7QA+bqpJFirGSkGrkaHhXv1Lxjwnr0UGQWcSqR/
+	 Wtw+B7SFVXXng==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6CAEF40CF2;
-	Thu, 15 May 2025 10:52:59 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BE1914156D;
+	Thu, 15 May 2025 11:46:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id B856513D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 10:52:57 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 18E5B153
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 11:46:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A992B6071F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 10:52:57 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id F311D40607
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 11:46:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5-bFLV2ni3_v for <intel-wired-lan@lists.osuosl.org>;
- Thu, 15 May 2025 10:52:57 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
- helo=mgamail.intel.com; envelope-from=martyna.szapar-mudlaw@linux.intel.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id vTYH33bjyxKa for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 15 May 2025 11:46:20 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
+ helo=sea.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1AD116068A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1AD116068A
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1AD116068A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 10:52:56 +0000 (UTC)
-X-CSE-ConnectionGUID: mGcr2rmjQ+aN+rqJM/1V5Q==
-X-CSE-MsgGUID: I1clZq6xSVWPCaPvbI3QYA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11433"; a="66641230"
-X-IronPort-AV: E=Sophos;i="6.15,290,1739865600"; d="scan'208";a="66641230"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
- by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 May 2025 03:52:57 -0700
-X-CSE-ConnectionGUID: vXcliIivSTyFGvZjGVwE8A==
-X-CSE-MsgGUID: roBxfZv1TSCgUz6qCwmjGw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,290,1739865600"; d="scan'208";a="139234033"
-Received: from mszapar-mobl1.ger.corp.intel.com (HELO [10.245.119.244])
- ([10.245.119.244])
- by orviesa008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 May 2025 03:52:55 -0700
-Message-ID: <c13179c7-74e2-4843-a052-571f6f0c033d@linux.intel.com>
-Date: Thu, 15 May 2025 12:52:52 +0200
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 65E454057A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 65E454057A
+Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 65E454057A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 15 May 2025 11:46:20 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sea.source.kernel.org (Postfix) with ESMTP id C953F49C03;
+ Thu, 15 May 2025 11:46:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BDF68C4CEE7;
+ Thu, 15 May 2025 11:46:17 +0000 (UTC)
+Date: Thu, 15 May 2025 12:46:15 +0100
+From: Simon Horman <horms@kernel.org>
+To: Michal Kubiak <michal.kubiak@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, maciej.fijalkowski@intel.com,
+ aleksander.lobakin@intel.com, przemyslaw.kitszel@intel.com,
+ dawid.osuchowski@linux.intel.com, jacob.e.keller@intel.com,
+ jbrandeburg@cloudflare.com, netdev@vger.kernel.org,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Message-ID: <20250515114615.GU3339421@horms.kernel.org>
+References: <20250513105529.241745-1-michal.kubiak@intel.com>
+ <20250513105529.241745-2-michal.kubiak@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-References: <20250409113622.161379-2-martyna.szapar-mudlaw@linux.intel.com>
- <20250409113622.161379-4-martyna.szapar-mudlaw@linux.intel.com>
- <55ae83fc-8333-4a04-9320-053af1fd6f46@molgen.mpg.de>
- <4012b88a-091d-4f81-92ab-ad32727914ff@linux.intel.com>
- <355fc4f1-0116-4028-a455-ec76772f19b3@molgen.mpg.de>
-Content-Language: en-US
-From: "Szapar-Mudlaw, Martyna" <martyna.szapar-mudlaw@linux.intel.com>
-In-Reply-To: <355fc4f1-0116-4028-a455-ec76772f19b3@molgen.mpg.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250513105529.241745-2-michal.kubiak@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1747306378; x=1778842378;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=ovFJnUrpIEp4+ba9a6q5iRMCX72A5K+Jk4wxyKuysrw=;
- b=VxeJelswaxEVZ9QUbzOMvCrE3FIV29/SS/5fUpWnuX0BC920lk8tjlK5
- HVtBPvlfSe5ubpwbgZfkyR5q9oFf92D6Fit5qGALR0Y8+76pG8spJfgwj
- cALel6FGu8UAl/DKu4kBVy09z5Ri7y0I2JG8XXWh0shPEBqTpratvyDEp
- MkzrTF1nnRWTgVtDnDnCY/dVW6HKvGuGbMv4cNgKIHWJbFsh4symU8ym4
- f3Xz75szHWJn6Mh0U6R2ooDvQOHHRxv6Stz22Ta1qGMVA6byxp1Pssckz
- D6ajyud7GJLnIJnheI7fn3FDyK4zflvWgIRzHnjON1ax9C7ecBi4cs+xC
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=VxeJelsw
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 1/2] ice: add
- link_down_events statistic
+ d=kernel.org; s=k20201202; t=1747309579;
+ bh=sOOr/cGmH1ZHziLiI3ddYS5UABl35cDPdQilJlXbXw4=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Fea3SdvkxuOMxetev5CptIA99sIoAXbCdjBNw6fyelAoRe6Y6iHC/XJQxP5+1F2lr
+ ax0w/uVNcYCRLF9PubVoUNjVB5EPpMpcA/XICK3ipe+IEiIh9M7BA2JYn790PKcl3k
+ 5Z+sLJuVD5DGJJtyjuu1PvlhqcFNjxy/WIWyzzFq/86QBmefiCh/Ofxp0p0ZlOhzjI
+ UWHRF4J+HmKaX62D0mSXcIaGHfgo05djHnu4BsonnChfWoaOWFuVq53f2I7g20mbQ4
+ AnC4owNvheAsVQm92CgnMzYY032g1Jwaa9pxZWKVJIMVScWgjn6t0DTZZJAueuQTFZ
+ tq4WVnVz1pj+Q==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=Fea3Sdvk
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v3 1/3] ice: fix Tx scheduler
+ error handling in XDP callback
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -117,44 +102,57 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+On Tue, May 13, 2025 at 12:55:27PM +0200, Michal Kubiak wrote:
+> When the XDP program is loaded, the XDP callback adds new Tx queues.
+> This means that the callback must update the Tx scheduler with the new
+> queue number. In the event of a Tx scheduler failure, the XDP callback
+> should also fail and roll back any changes previously made for XDP
+> preparation.
+> 
+> The previous implementation had a bug that not all changes made by the
+> XDP callback were rolled back. This caused the crash with the following
+> call trace:
+> 
+> [  +9.549584] ice 0000:ca:00.0: Failed VSI LAN queue config for XDP, error: -5
+> [  +0.382335] Oops: general protection fault, probably for non-canonical address 0x50a2250a90495525: 0000 [#1] SMP NOPTI
+> [  +0.010710] CPU: 103 UID: 0 PID: 0 Comm: swapper/103 Not tainted 6.14.0-net-next-mar-31+ #14 PREEMPT(voluntary)
+> [  +0.010175] Hardware name: Intel Corporation M50CYP2SBSTD/M50CYP2SBSTD, BIOS SE5C620.86B.01.01.0005.2202160810 02/16/2022
+> [  +0.010946] RIP: 0010:__ice_update_sample+0x39/0xe0 [ice]
+> 
+> [...]
+> 
+> [  +0.002715] Call Trace:
+> [  +0.002452]  <IRQ>
+> [  +0.002021]  ? __die_body.cold+0x19/0x29
+> [  +0.003922]  ? die_addr+0x3c/0x60
+> [  +0.003319]  ? exc_general_protection+0x17c/0x400
+> [  +0.004707]  ? asm_exc_general_protection+0x26/0x30
+> [  +0.004879]  ? __ice_update_sample+0x39/0xe0 [ice]
+> [  +0.004835]  ice_napi_poll+0x665/0x680 [ice]
+> [  +0.004320]  __napi_poll+0x28/0x190
+> [  +0.003500]  net_rx_action+0x198/0x360
+> [  +0.003752]  ? update_rq_clock+0x39/0x220
+> [  +0.004013]  handle_softirqs+0xf1/0x340
+> [  +0.003840]  ? sched_clock_cpu+0xf/0x1f0
+> [  +0.003925]  __irq_exit_rcu+0xc2/0xe0
+> [  +0.003665]  common_interrupt+0x85/0xa0
+> [  +0.003839]  </IRQ>
+> [  +0.002098]  <TASK>
+> [  +0.002106]  asm_common_interrupt+0x26/0x40
+> [  +0.004184] RIP: 0010:cpuidle_enter_state+0xd3/0x690
+> 
+> Fix this by performing the missing unmapping of XDP queues from
+> q_vectors and setting the XDP rings pointer back to NULL after all those
+> queues are released.
+> Also, add an immediate exit from the XDP callback in case of ring
+> preparation failure.
+> 
+> Fixes: efc2214b6047 ("ice: Add support for XDP")
+> Reviewed-by: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
+> Signed-off-by: Michal Kubiak <michal.kubiak@intel.com>
+> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 
-
-On 5/12/2025 11:27 AM, Paul Menzel wrote:
-> Dear Martyna,
-> 
-> 
-> Thank you for your reply.
-> 
-> Am 14.04.25 um 15:12 schrieb Szapar-Mudlaw, Martyna:
-> 
->> On 4/9/2025 2:08 PM, Paul Menzel wrote:
-> 
->>> Am 09.04.25 um 13:36 schrieb Martyna Szapar-Mudlaw:
->>>> Introduce a new ethtool statistic to ice driver, `link_down_events`,
->>>> to track the number of times the link transitions from up to down.
->>>> This counter can help diagnose issues related to link stability,
->>>> such as port flapping or unexpected link drops.
->>>>
->>>> The counter increments when a link-down event occurs and is exposed
->>>> via ethtool stats as `link_down_events.nic`.
->>>
->>> It’d be great if you pasted an example output.
->>
->> In v2 (which I just submitted) the generic ethtool statistic is used 
->> for this, instead of driver specific, so I guess no need to paste the 
->> example output now.
-> 
-> I think it’s always good also as a reference how to test the patch. I 
-> just saw your v3. Should you resent, it’d be great if you added the 
-> example output.
-> 
-> […]
-
-Done in v4 updated cover letter.
-
-> 
-> 
-> Kind regards,
-> 
-> Paul
+Reviewed-by: Simon Horman <horms@kernel.org>
 
