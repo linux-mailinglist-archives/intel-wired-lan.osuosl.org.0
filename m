@@ -1,76 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C8D62ABD623
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 May 2025 13:08:46 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9E44FABD627
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 May 2025 13:08:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B7CEF60769;
-	Tue, 20 May 2025 11:08:43 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BBF8581852;
+	Tue, 20 May 2025 11:08:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id aTffHEqB3fnn; Tue, 20 May 2025 11:08:43 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id PipRICAqfdNl; Tue, 20 May 2025 11:08:43 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C814C60770
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BF8FB80D93
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1747739322;
-	bh=AlDtQ4wQi3BlEM8wgkVRN0eVYU6iMCBm3bByH10KTPY=;
+	s=default; t=1747739323;
+	bh=zigzM8yODy1KVdK+8PtD0Sk5FOZayfInw0Q+o7Bevko=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=Kglm+HMrgPqs3UtiPaAfsQjrmBimXQ4fyptacvfkcSpBNUWmOTcytuBxPukS4srTG
-	 cFmVipSghKM7IXNJX4NSyIn9aUhtSz7iEe82NQIC58JyeiHljy+qnVF5cRgs14N2ub
-	 wM3EDk8XBq1fYWoxjGg9sbu8CaIYK9hbSdAMQh9JnUia4mCzSZ2POV1KaPB5+yFq4w
-	 Ck2U0/F7SgwXiEAHKZqh2mxqFYWIrTJ7nnZt6Qq34jBhqRL71+sfMz8VNllFqTrlLV
-	 luSZAABqABSKgL165Sv6uZs+7jhneuGYPf8khQCpwdjx/wLiGcxZiUNaxzMzVZ+o02
-	 yGxYjStNivgOQ==
+	b=9yZaS4nGCUKXK5NIO945aomce6+4651RQb01pMYWAVOD00xSyJAEFk91Kao6QFcnf
+	 jMGDPqi1Jnn5KXjUAW7ZPAA53IQjkgqvXT8Rszv9sT51J1zcia7dq8SvA3f6G89W4C
+	 hPSoAiZ2GpCKaEWzdEHqZszMX45bsKC1889BNETJUkbrafZ+s+yQ/jrsmzxVJTEOeh
+	 EEFVKbIt9kFvdOIXk2dDbmonGOz6z/dN273xtL98T9mHyuK9j7himebWq64o80TLs1
+	 nct4t4kAQGKWKNVfiCQ1CBg6wkSiM3/I3Ki91zRFuAQ7s6oldhlVTkKBQvTvBJu9ae
+	 aOoGKcZYUWJyg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C814C60770;
-	Tue, 20 May 2025 11:08:42 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BF8FB80D93;
+	Tue, 20 May 2025 11:08:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 9FFDBD4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 May 2025 11:08:41 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id AEAC8193
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 May 2025 11:08:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6958A40514
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 May 2025 11:08:39 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 921E3404ED
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 May 2025 11:08:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id EwFdyl9PoVD7 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 20 May 2025 11:08:38 +0000 (UTC)
+ id Kyyix4m_0Zqm for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 20 May 2025 11:08:40 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
  helo=mgamail.intel.com; envelope-from=karol.kolacinski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 8E2F8404CE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8E2F8404CE
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org B619C404CE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B619C404CE
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 8E2F8404CE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 May 2025 11:08:38 +0000 (UTC)
-X-CSE-ConnectionGUID: FoHOj7maQfmbdMa3B3Y0Qw==
-X-CSE-MsgGUID: /nc9lEO4Tney85lOtQqEeg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11438"; a="75069270"
-X-IronPort-AV: E=Sophos;i="6.15,302,1739865600"; d="scan'208";a="75069270"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B619C404CE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 May 2025 11:08:40 +0000 (UTC)
+X-CSE-ConnectionGUID: W3R5hys/Rmy0Yps3Qb3v4Q==
+X-CSE-MsgGUID: gbv/W2U6STO6UIjvKwE1Tg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11438"; a="75069275"
+X-IronPort-AV: E=Sophos;i="6.15,302,1739865600"; d="scan'208";a="75069275"
 Received: from orviesa007.jf.intel.com ([10.64.159.147])
  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 May 2025 04:08:38 -0700
-X-CSE-ConnectionGUID: cyiam4L1SMGuKxH6WjvuAg==
-X-CSE-MsgGUID: NJLlTBXvRkOPtZQyzcCsJg==
+ 20 May 2025 04:08:40 -0700
+X-CSE-ConnectionGUID: c88esvYTSYuupUNX6/zYkQ==
+X-CSE-MsgGUID: WJo0o7K7TG603MLiFaN08w==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,302,1739865600"; d="scan'208";a="140173010"
+X-IronPort-AV: E=Sophos;i="6.15,302,1739865600"; d="scan'208";a="140173056"
 Received: from kkolacin-desk1.ger.corp.intel.com (HELO
  kkolacin-desk1.igk.intel.com) ([10.217.160.155])
- by orviesa007.jf.intel.com with ESMTP; 20 May 2025 04:08:37 -0700
+ by orviesa007.jf.intel.com with ESMTP; 20 May 2025 04:08:39 -0700
 From: Karol Kolacinski <karol.kolacinski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
  przemyslaw.kitszel@intel.com, richardcochran@gmail.com,
  Karol Kolacinski <karol.kolacinski@intel.com>,
  Milena Olech <milena.olech@intel.com>
-Date: Tue, 20 May 2025 13:06:27 +0200
-Message-ID: <20250520110823.1937981-8-karol.kolacinski@intel.com>
+Date: Tue, 20 May 2025 13:06:28 +0200
+Message-ID: <20250520110823.1937981-9-karol.kolacinski@intel.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250520110823.1937981-6-karol.kolacinski@intel.com>
 References: <20250520110823.1937981-6-karol.kolacinski@intel.com>
@@ -78,25 +78,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1747739318; x=1779275318;
+ t=1747739321; x=1779275321;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=bcCKb0KaJeCEq1X8BWOkiQ1irtSZA//moyW5UfSE7E0=;
- b=bqya3Q5NvKIFSb/2jsRqmAzExe9d2g4Ae7vmLkGHmhf1FNSlGUEP4B3s
- eqwn3iL97qaVHTi0kslhYPmWQp8wciGx6g/h/5Bm4o28OZAk9wkt1icXa
- sb1xKuNstNF3/dW+ivn5BbnqFddrKlRklhtcJ86IDtZO8XfbXW+Jw2ufw
- O2cGQLc6amewp+zQMomlOmc38rlNDSeJnF8+iUrp5Mdg3OHcejA87cS7M
- 2JS2UctdZ5iJvgCxXep/09P5NI/Bn8vBT3+WjE48Anb5icgZ6Iar7+oZ9
- V4J2/0sHPquOR+6ar0439RpXMdGjASnyQY0P5xOj7uiXamNLVEThvbNVv
+ bh=rvPdRz/sYTGHQMcSoWlf7Xu8TrXi28+sjBOoZ7Jh8/U=;
+ b=IKN66+E6WRdV656zqRsK6TBfFaYEqliVfaojDE0tJ1YgUNskMJXKErAi
+ oAbx5pv/9iYj67GAYyQnaNMkavFSmscoWooJ8O6+m892/KKs9tsfnJc9c
+ 1YvT8VxWUOOcB4mrdFRrCaya/E2sW6qGDTKyNZ0agEzhogOBKSYQwhVzo
+ OQKGZG/3JFgyCzX0yS2RajSDSp3FlTbxPEnojmwtwZtnYpwzOxJpVLaIk
+ 4IOoaPgWnK0Pn08HrxzlfLLrSz6E2Jifd2bBO0sv8v/WIp7LANk0bH9YJ
+ qXlGWNeES4udifSlxZueeBX3SHzKOHQb+PB+PF4zP6UqSbHLcFSoEaf8c
  w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=bqya3Q5N
-Subject: [Intel-wired-lan] [PATCH iwl-next 2/4] ice: refactor
- ice_sq_send_cmd and ice_shutdown_sq
+ header.a=rsa-sha256 header.s=Intel header.b=IKN66+E6
+Subject: [Intel-wired-lan] [PATCH iwl-next 3/4] ice: use spin_lock for
+ sideband queue send queue
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -112,287 +112,307 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Refactor ice_sq_send_cmd() and ice_shutdown_sq() to be able to use
-a simpler locking, e.g. for new methods, which depend on the control
-queue.
+Sideband queue is a HW queue and has much faster completion time than
+other queues.
+
+With <5 us for read on average it is possible to use spin_lock to be
+able to read/write sideband queue messages in the interrupt top half.
+
+Add send queue lock/unlock operations and assign them based on the queue
+type. Use ice_sq_spin_lock/unlock for sideband queue and
+ice_sq_mutex_lock/unlock for other queues.
 
 Reviewed-by: Milena Olech <milena.olech@intel.com>
 Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_controlq.c | 155 ++++++++----------
- 1 file changed, 72 insertions(+), 83 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_common.c   |   8 +-
+ drivers/net/ethernet/intel/ice/ice_common.h   |   3 +-
+ drivers/net/ethernet/intel/ice/ice_controlq.c | 105 +++++++++++++++---
+ drivers/net/ethernet/intel/ice/ice_controlq.h |  19 +++-
+ 4 files changed, 111 insertions(+), 24 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index 53b9b5b54187..058c93f6429b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -1,5 +1,5 @@
+ // SPDX-License-Identifier: GPL-2.0
+-/* Copyright (c) 2018-2023, Intel Corporation. */
++/* Copyright (c) 2018-2025, Intel Corporation. */
+ 
+ #include "ice_common.h"
+ #include "ice_sched.h"
+@@ -1627,8 +1627,10 @@ ice_sq_send_cmd_retry(struct ice_hw *hw, struct ice_ctl_q_info *cq,
+ 
+ 		memcpy(desc, &desc_cpy, sizeof(desc_cpy));
+ 
+-		msleep(ICE_SQ_SEND_DELAY_TIME_MS);
+-
++		if (cq->qtype == ICE_CTL_Q_SB)
++			udelay(ICE_CTL_Q_SQ_CMD_TIMEOUT_SPIN);
++		else
++			fsleep(ICE_CTL_Q_SQ_CMD_TIMEOUT);
+ 	} while (++idx < ICE_SQ_SEND_MAX_EXECUTE);
+ 
+ 	return status;
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
+index 3f74570b99bf..b1c766cb4ec5 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.h
++++ b/drivers/net/ethernet/intel/ice/ice_common.h
+@@ -1,5 +1,5 @@
+ /* SPDX-License-Identifier: GPL-2.0 */
+-/* Copyright (c) 2018, Intel Corporation. */
++/* Copyright (c) 2018-2025, Intel Corporation. */
+ 
+ #ifndef _ICE_COMMON_H_
+ #define _ICE_COMMON_H_
+@@ -15,6 +15,7 @@
+ #include "ice_switch.h"
+ #include "ice_fdir.h"
+ 
++#define ICE_SQ_SEND_ATOMIC_DELAY_TIME_US 100
+ #define ICE_SQ_SEND_DELAY_TIME_MS	10
+ #define ICE_SQ_SEND_MAX_EXECUTE		3
+ 
 diff --git a/drivers/net/ethernet/intel/ice/ice_controlq.c b/drivers/net/ethernet/intel/ice/ice_controlq.c
-index 5fb3a8441beb..fb7e1218797c 100644
+index fb7e1218797c..b873a9fb3f0b 100644
 --- a/drivers/net/ethernet/intel/ice/ice_controlq.c
 +++ b/drivers/net/ethernet/intel/ice/ice_controlq.c
-@@ -456,35 +456,34 @@ static int ice_init_rq(struct ice_hw *hw, struct ice_ctl_q_info *cq)
-  * @hw: pointer to the hardware structure
-  * @cq: pointer to the specific Control queue
-  *
-- * The main shutdown routine for the Control Transmit Queue
-+ * The main shutdown routine for the Control Transmit Queue.
-+ *
-+ * Return:
-+ * * %0      - success
-+ * * %-EBUSY - no send queue descriptors
-  */
- static int ice_shutdown_sq(struct ice_hw *hw, struct ice_ctl_q_info *cq)
- {
--	int ret_code = 0;
-+	if (!cq->sq.count)
-+		return -EBUSY;
+@@ -1,5 +1,5 @@
+ // SPDX-License-Identifier: GPL-2.0
+-/* Copyright (c) 2018, Intel Corporation. */
++/* Copyright (c) 2018-2025, Intel Corporation. */
  
- 	mutex_lock(&cq->sq_lock);
+ #include "ice_common.h"
  
--	if (!cq->sq.count) {
--		ret_code = -EBUSY;
--		goto shutdown_sq_out;
--	}
--
+@@ -467,7 +467,7 @@ static int ice_shutdown_sq(struct ice_hw *hw, struct ice_ctl_q_info *cq)
+ 	if (!cq->sq.count)
+ 		return -EBUSY;
+ 
+-	mutex_lock(&cq->sq_lock);
++	cq->sq_ops.lock(&cq->sq_lock);
+ 
  	/* Stop processing of the control queue */
  	wr32(hw, cq->sq.head, 0);
- 	wr32(hw, cq->sq.tail, 0);
- 	wr32(hw, cq->sq.len, 0);
- 	wr32(hw, cq->sq.bal, 0);
+@@ -477,7 +477,7 @@ static int ice_shutdown_sq(struct ice_hw *hw, struct ice_ctl_q_info *cq)
  	wr32(hw, cq->sq.bah, 0);
--
  	cq->sq.count = 0;	/* to indicate uninitialized queue */
  
-+	mutex_unlock(&cq->sq_lock);
-+
+-	mutex_unlock(&cq->sq_lock);
++	cq->sq_ops.unlock(&cq->sq_lock);
+ 
  	/* free ring buffers and the ring itself */
  	ICE_FREE_CQ_BUFS(hw, cq, sq);
- 	ice_free_cq_ring(hw, &cq->sq);
+@@ -776,15 +776,75 @@ int ice_init_all_ctrlq(struct ice_hw *hw)
+ 	return ice_init_ctrlq(hw, ICE_CTL_Q_MAILBOX);
+ }
  
--shutdown_sq_out:
--	mutex_unlock(&cq->sq_lock);
--	return ret_code;
-+	return 0;
++/**
++ * ice_sq_spin_lock - Call spin_lock_irqsave for union ice_sq_lock
++ * @lock: lock handle
++ */
++static void ice_sq_spin_lock(union ice_sq_lock *lock)
++	__acquires(&lock->sq_spinlock)
++{
++	spin_lock_irqsave(&lock->sq_spinlock, lock->sq_flags);
++}
++
++/**
++ * ice_sq_spin_unlock - Call spin_unlock_irqrestore for union ice_sq_lock
++ * @lock: lock handle
++ */
++static void ice_sq_spin_unlock(union ice_sq_lock *lock)
++	__releases(&lock->sq_spinlock)
++{
++	spin_unlock_irqrestore(&lock->sq_spinlock, lock->sq_flags);
++}
++
++/**
++ * ice_sq_mutex_lock - Call mutex_lock for union ice_sq_lock
++ * @lock: lock handle
++ */
++static void ice_sq_mutex_lock(union ice_sq_lock *lock)
++	__acquires(&lock->sq_mutex)
++{
++	mutex_lock(&lock->sq_mutex);
++}
++
++/**
++ * ice_sq_mutex_unlock - Call mutex_unlock for union ice_sq_lock
++ * @lock: lock handle
++ */
++static void ice_sq_mutex_unlock(union ice_sq_lock *lock)
++	__releases(&lock->sq_mutex)
++{
++	mutex_unlock(&lock->sq_mutex);
++}
++
++static struct ice_sq_ops ice_spin_ops = {
++	.lock = ice_sq_spin_lock,
++	.unlock = ice_sq_spin_unlock,
++};
++
++static struct ice_sq_ops ice_mutex_ops = {
++	.lock = ice_sq_mutex_lock,
++	.unlock = ice_sq_mutex_unlock,
++};
++
+ /**
+  * ice_init_ctrlq_locks - Initialize locks for a control queue
++ * @hw: pointer to the hardware structure
+  * @cq: pointer to the control queue
++ * @q_type: specific control queue type
+  *
+  * Initializes the send and receive queue locks for a given control queue.
+  */
+-static void ice_init_ctrlq_locks(struct ice_ctl_q_info *cq)
++static void ice_init_ctrlq_locks(struct ice_hw *hw, struct ice_ctl_q_info *cq,
++				 enum ice_ctl_q q_type)
+ {
+-	mutex_init(&cq->sq_lock);
++	if (q_type == ICE_CTL_Q_SB) {
++		cq->sq_ops = ice_spin_ops;
++		spin_lock_init(&cq->sq_lock.sq_spinlock);
++	} else {
++		cq->sq_ops = ice_mutex_ops;
++		mutex_init(&cq->sq_lock.sq_mutex);
++	}
++
+ 	mutex_init(&cq->rq_lock);
+ }
+ 
+@@ -806,23 +866,26 @@ static void ice_init_ctrlq_locks(struct ice_ctl_q_info *cq)
+  */
+ int ice_create_all_ctrlq(struct ice_hw *hw)
+ {
+-	ice_init_ctrlq_locks(&hw->adminq);
++	ice_init_ctrlq_locks(hw, &hw->adminq, ICE_CTL_Q_ADMIN);
+ 	if (ice_is_sbq_supported(hw))
+-		ice_init_ctrlq_locks(&hw->sbq);
+-	ice_init_ctrlq_locks(&hw->mailboxq);
++		ice_init_ctrlq_locks(hw, &hw->sbq, ICE_CTL_Q_SB);
++	ice_init_ctrlq_locks(hw, &hw->mailboxq, ICE_CTL_Q_MAILBOX);
+ 
+ 	return ice_init_all_ctrlq(hw);
  }
  
  /**
-@@ -990,56 +989,55 @@ static bool ice_sq_done(struct ice_hw *hw, struct ice_ctl_q_info *cq)
-  * Main command for the transmit side of a control queue. It puts the command
-  * on the queue, bumps the tail, waits for processing of the command, captures
-  * command status and results, etc.
-+ *
-+ * Return:
-+ * * %0       - success
-+ * * %-EIO    - incorrect control send queue state, timeout or FW error
-+ * * %-EINVAL - incorrect arguments
-+ * * %-ENOSPC - control send queue is full
+  * ice_destroy_ctrlq_locks - Destroy locks for a control queue
++ * @hw: pointer to the hardware structure
+  * @cq: pointer to the control queue
+  *
+  * Destroys the send and receive queue locks for a given control queue.
   */
--int
--ice_sq_send_cmd(struct ice_hw *hw, struct ice_ctl_q_info *cq,
--		struct libie_aq_desc *desc, void *buf, u16 buf_size,
--		struct ice_sq_cd *cd)
-+int ice_sq_send_cmd(struct ice_hw *hw, struct ice_ctl_q_info *cq,
-+		    struct libie_aq_desc *desc, void *buf, u16 buf_size,
-+		    struct ice_sq_cd *cd)
+-static void ice_destroy_ctrlq_locks(struct ice_ctl_q_info *cq)
++static void ice_destroy_ctrlq_locks(struct ice_hw *hw,
++				    struct ice_ctl_q_info *cq)
  {
--	struct ice_dma_mem *dma_buf = NULL;
- 	struct libie_aq_desc *desc_on_ring;
--	bool cmd_completed = false;
--	int status = 0;
--	u16 retval = 0;
--	u32 val = 0;
--
--	/* if reset is in progress return a soft error */
-+	struct ice_dma_mem *dma_buf;
-+	int err = 0;
-+	u32 val;
-+	/* If reset is in progress return a soft error. */
- 	if (hw->reset_ongoing)
- 		return -EBUSY;
--	mutex_lock(&cq->sq_lock);
+-	mutex_destroy(&cq->sq_lock);
++	if (cq->qtype != ICE_CTL_Q_SB)
++		mutex_destroy(&cq->sq_lock.sq_mutex);
+ 	mutex_destroy(&cq->rq_lock);
+ }
  
-+	if (!buf && buf_size)
-+		return -EINVAL;
+@@ -840,10 +903,10 @@ void ice_destroy_all_ctrlq(struct ice_hw *hw)
+ 	/* shut down all the control queues first */
+ 	ice_shutdown_all_ctrlq(hw, true);
+ 
+-	ice_destroy_ctrlq_locks(&hw->adminq);
++	ice_destroy_ctrlq_locks(hw, &hw->adminq);
+ 	if (ice_is_sbq_supported(hw))
+-		ice_destroy_ctrlq_locks(&hw->sbq);
+-	ice_destroy_ctrlq_locks(&hw->mailboxq);
++		ice_destroy_ctrlq_locks(hw, &hw->sbq);
++	ice_destroy_ctrlq_locks(hw, &hw->mailboxq);
+ }
+ 
+ /**
+@@ -972,9 +1035,15 @@ static bool ice_sq_done(struct ice_hw *hw, struct ice_ctl_q_info *cq)
+ 	 */
+ 	udelay(5);
+ 
+-	return !rd32_poll_timeout(hw, cq->sq.head,
+-				  head, head == cq->sq.next_to_use,
+-				  20, ICE_CTL_Q_SQ_CMD_TIMEOUT);
++	if (cq->qtype == ICE_CTL_Q_SB)
++		return !read_poll_timeout_atomic(rd32, head,
++						 head == cq->sq.next_to_use, 5,
++						 ICE_CTL_Q_SQ_CMD_TIMEOUT_SPIN,
++						 false, hw, cq->sq.head);
 +
-+	mutex_lock(&cq->sq_lock);
++	return !rd32_poll_timeout(hw, cq->sq.head, head,
++				  head == cq->sq.next_to_use, 20,
++				  ICE_CTL_Q_SQ_CMD_TIMEOUT);
+ }
+ 
+ /**
+@@ -1011,7 +1080,7 @@ int ice_sq_send_cmd(struct ice_hw *hw, struct ice_ctl_q_info *cq,
+ 	if (!buf && buf_size)
+ 		return -EINVAL;
+ 
+-	mutex_lock(&cq->sq_lock);
++	cq->sq_ops.lock(&cq->sq_lock);
  	cq->sq_last_status = LIBIE_AQ_RC_OK;
  
  	if (!cq->sq.count) {
- 		ice_debug(hw, ICE_DBG_AQ_MSG, "Control Send queue not initialized.\n");
--		status = -EIO;
--		goto sq_send_command_error;
--	}
--
--	if ((buf && !buf_size) || (!buf && buf_size)) {
--		status = -EINVAL;
--		goto sq_send_command_error;
-+		err = -EIO;
-+		goto err;
+@@ -1132,7 +1201,7 @@ int ice_sq_send_cmd(struct ice_hw *hw, struct ice_ctl_q_info *cq,
  	}
  
- 	if (buf) {
--		if (buf_size > cq->sq_buf_size) {
-+		if (!buf_size || buf_size > cq->sq_buf_size) {
- 			ice_debug(hw, ICE_DBG_AQ_MSG, "Invalid buffer size for Control Send queue: %d.\n",
- 				  buf_size);
--			status = -EINVAL;
--			goto sq_send_command_error;
-+			err = -EINVAL;
-+			goto err;
- 		}
- 
- 		desc->flags |= cpu_to_le16(LIBIE_AQ_FLAG_BUF);
- 		if (buf_size > LIBIE_AQ_LG_BUF)
- 			desc->flags |= cpu_to_le16(LIBIE_AQ_FLAG_LB);
- 	}
--
- 	val = rd32(hw, cq->sq.head);
- 	if (val >= cq->num_sq_entries) {
- 		ice_debug(hw, ICE_DBG_AQ_MSG, "head overrun at %d in the Control Send Queue ring\n",
- 			  val);
--		status = -EIO;
--		goto sq_send_command_error;
-+		err = -EIO;
-+		goto err;
- 	}
- 
- 	/* Call clean and check queue available function to reclaim the
-@@ -1049,25 +1047,23 @@ ice_sq_send_cmd(struct ice_hw *hw, struct ice_ctl_q_info *cq,
- 	 */
- 	if (ice_clean_sq(hw, cq) == 0) {
- 		ice_debug(hw, ICE_DBG_AQ_MSG, "Error: Control Send Queue is full.\n");
--		status = -ENOSPC;
--		goto sq_send_command_error;
-+		err = -ENOSPC;
-+		goto err;
- 	}
- 
--	/* initialize the temp desc pointer with the right desc */
-+	/* Initialize the desc_on_ring with the right descriptor. */
- 	desc_on_ring = ICE_CTL_Q_DESC(cq->sq, cq->sq.next_to_use);
--
--	/* if the desc is available copy the temp desc to the right place */
- 	memcpy(desc_on_ring, desc, sizeof(*desc_on_ring));
- 
--	/* if buf is not NULL assume indirect command */
-+	/* If buf is not NULL, assume indirect command. */
- 	if (buf) {
- 		dma_buf = &cq->sq.r.sq_bi[cq->sq.next_to_use];
--		/* copy the user buf into the respective DMA buf */
-+		/* Copy the user buf into the respective DMA buf. */
- 		memcpy(dma_buf->va, buf, buf_size);
- 		desc_on_ring->datalen = cpu_to_le16(buf_size);
- 
--		/* Update the address values in the desc with the pa value
--		 * for respective buffer
-+		/* Update the address values in the desc with the pa value for
-+		 * respective buffer.
- 		 */
- 		desc_on_ring->params.generic.addr_high =
- 			cpu_to_le32(upper_32_bits(dma_buf->pa));
-@@ -1075,9 +1071,7 @@ ice_sq_send_cmd(struct ice_hw *hw, struct ice_ctl_q_info *cq,
- 			cpu_to_le32(lower_32_bits(dma_buf->pa));
- 	}
- 
--	/* Debug desc and buffer */
- 	ice_debug(hw, ICE_DBG_AQ_DESC, "ATQ: Control Send queue desc and buffer:\n");
--
- 	ice_debug_cq(hw, cq, (void *)desc_on_ring, buf, buf_size, false);
- 
- 	(cq->sq.next_to_use)++;
-@@ -1086,65 +1080,60 @@ ice_sq_send_cmd(struct ice_hw *hw, struct ice_ctl_q_info *cq,
- 	wr32(hw, cq->sq.tail, cq->sq.next_to_use);
- 	ice_flush(hw);
- 
--	/* If the message is posted, don't wait for completion. */
--	if (cd && cd->postpone)
--		goto sq_send_command_error;
--
--	/* Wait for the command to complete. If it finishes within the
--	 * timeout, copy the descriptor back to temp.
--	 */
--	if (ice_sq_done(hw, cq)) {
-+	if (cd && cd->postpone) {
-+		/* If the message is postponed, don't wait for completion. */
-+		ice_debug(hw, ICE_DBG_AQ_MSG, "ATQ: Skipping completion\n");
-+	} else if (ice_sq_done(hw, cq)) {
-+		/* Wait for the command to complete. If it finishes within
-+		 * the timeout, copy the descriptor back to temp.
-+		 */
- 		memcpy(desc, desc_on_ring, sizeof(*desc));
- 		if (buf) {
--			/* get returned length to copy */
-+			/* Get returned length to copy. */
- 			u16 copy_size = le16_to_cpu(desc->datalen);
- 
- 			if (copy_size > buf_size) {
- 				ice_debug(hw, ICE_DBG_AQ_MSG, "Return len %d > than buf len %d\n",
- 					  copy_size, buf_size);
--				status = -EIO;
-+				err = -EIO;
- 			} else {
- 				memcpy(buf, dma_buf->va, copy_size);
- 			}
- 		}
--		retval = le16_to_cpu(desc->retval);
--		if (retval) {
-+
-+		/* Strip off FW internal code. */
-+		cq->sq_last_status =
-+			(enum libie_aq_err)(le16_to_cpu(desc->retval) & 0xFF);
-+		if (cq->sq_last_status) {
- 			ice_debug(hw, ICE_DBG_AQ_MSG, "Control Send Queue command 0x%04X completed with error 0x%X\n",
- 				  le16_to_cpu(desc->opcode),
--				  retval);
--
--			/* strip off FW internal code */
--			retval &= 0xff;
-+				  cq->sq_last_status);
-+			err = -EIO;
- 		}
--		cmd_completed = true;
--		if (!status && retval != LIBIE_AQ_RC_OK)
--			status = -EIO;
--		cq->sq_last_status = (enum libie_aq_err)retval;
--	}
--
--	ice_debug(hw, ICE_DBG_AQ_MSG, "ATQ: desc and buffer writeback:\n");
- 
--	ice_debug_cq(hw, cq, (void *)desc, buf, buf_size, true);
-+		if (err)
-+			goto err;
- 
--	/* save writeback AQ if requested */
--	if (cd && cd->wb_desc)
--		memcpy(cd->wb_desc, desc_on_ring, sizeof(*cd->wb_desc));
-+		ice_debug(hw, ICE_DBG_AQ_MSG, "ATQ: desc and buffer writeback:\n");
-+		ice_debug_cq(hw, cq, (void *)desc, buf, buf_size, true);
- 
--	/* update the error if time out occurred */
--	if (!cmd_completed) {
-+		/* Save writeback AQ if requested. */
-+		if (cd && cd->wb_desc)
-+			memcpy(cd->wb_desc, desc_on_ring, sizeof(*cd->wb_desc));
-+	} else {
-+		/* Update the error if timeout occurred. */
- 		if (rd32(hw, cq->rq.len) & cq->rq.len_crit_mask ||
--		    rd32(hw, cq->sq.len) & cq->sq.len_crit_mask) {
-+		    rd32(hw, cq->sq.len) & cq->sq.len_crit_mask)
- 			ice_debug(hw, ICE_DBG_AQ_MSG, "Critical FW error.\n");
--			status = -EIO;
--		} else {
-+		else
- 			ice_debug(hw, ICE_DBG_AQ_MSG, "Control Send Queue Writeback timeout.\n");
--			status = -EIO;
--		}
-+
-+		err = -EIO;
- 	}
- 
--sq_send_command_error:
-+err:
- 	mutex_unlock(&cq->sq_lock);
--	return status;
-+	return err;
+ err:
+-	mutex_unlock(&cq->sq_lock);
++	cq->sq_ops.unlock(&cq->sq_lock);
+ 	return err;
  }
  
- /**
+diff --git a/drivers/net/ethernet/intel/ice/ice_controlq.h b/drivers/net/ethernet/intel/ice/ice_controlq.h
+index 7c98d3a0314e..776ec57b2061 100644
+--- a/drivers/net/ethernet/intel/ice/ice_controlq.h
++++ b/drivers/net/ethernet/intel/ice/ice_controlq.h
+@@ -1,5 +1,5 @@
+ /* SPDX-License-Identifier: GPL-2.0 */
+-/* Copyright (c) 2018, Intel Corporation. */
++/* Copyright (c) 2018-2025, Intel Corporation. */
+ 
+ #ifndef _ICE_CONTROLQ_H_
+ #define _ICE_CONTROLQ_H_
+@@ -44,6 +44,7 @@ enum ice_ctl_q {
+ 
+ /* Control Queue timeout settings - max delay 1s */
+ #define ICE_CTL_Q_SQ_CMD_TIMEOUT	USEC_PER_SEC
++#define ICE_CTL_Q_SQ_CMD_TIMEOUT_SPIN	100
+ #define ICE_CTL_Q_ADMIN_INIT_TIMEOUT	10    /* Count 10 times */
+ #define ICE_CTL_Q_ADMIN_INIT_MSEC	100   /* Check every 100msec */
+ 
+@@ -88,6 +89,19 @@ struct ice_rq_event_info {
+ 	u8 *msg_buf;
+ };
+ 
++union ice_sq_lock {
++	struct mutex sq_mutex;	/* Non-atomic SQ lock. */
++	struct {
++		spinlock_t sq_spinlock;	/* Atomic SQ lock. */
++		unsigned long sq_flags;		/* Send queue IRQ flags. */
++	};
++};
++
++struct ice_sq_ops {
++	void (*lock)(union ice_sq_lock *lock);
++	void (*unlock)(union ice_sq_lock *lock);
++};
++
+ /* Control Queue information */
+ struct ice_ctl_q_info {
+ 	enum ice_ctl_q qtype;
+@@ -98,7 +112,8 @@ struct ice_ctl_q_info {
+ 	u16 rq_buf_size;		/* receive queue buffer size */
+ 	u16 sq_buf_size;		/* send queue buffer size */
+ 	enum libie_aq_err sq_last_status;	/* last status on send queue */
+-	struct mutex sq_lock;		/* Send queue lock */
++	union ice_sq_lock sq_lock;	/* Send queue lock. */
++	struct ice_sq_ops sq_ops;	/* Send queue ops. */
+ 	struct mutex rq_lock;		/* Receive queue lock */
+ };
+ 
 -- 
 2.49.0
 
