@@ -1,74 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D1009ABE3D8
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 May 2025 21:40:00 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 53AAFABE3D9
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 May 2025 21:40:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6ED1240A91;
+	by smtp3.osuosl.org (Postfix) with ESMTP id D6DAB610B3;
 	Tue, 20 May 2025 19:39:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NjUPQhzA1PEE; Tue, 20 May 2025 19:39:58 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id w7IeHzk0MhN2; Tue, 20 May 2025 19:39:59 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BF32540A6E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 58100610A7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1747769998;
-	bh=EQYEJ/ZuWGBDv8FdA1UYvCzPHdlJewMWZya9RpkGm7Y=;
+	s=default; t=1747769999;
+	bh=C3nnJ6oQlD2ATaLqTA6oRPsA/tHUx1YHfphzrgtRO4Q=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=5R9V6fPXUii46NGDhKEEpgbYSJ+W1BNd0+iXycGbjZmL7rJa+yeYooB3PsIsAz+cT
-	 Ycug4Gx0yMcrRKLTdWWL00g96Kcg2UHc3aw96MY6O27EYqSgWTPsykIbYFFmj53Lfa
-	 ZEM/A1+Nf7KcNSKkNk1+OGgkONDoGeM1ZxG5Xz552ksXWJKF131T1usYYTuqQNbGju
-	 zR0+wHxo+QNKrsomFrEo0+fpGViYd/QVve0XpwB0EIjgTpQtNvp1CQzSzedty41ugQ
-	 L8So6i3tOJkEYivtYHFu9FeQe7MsOAAnkBI62h2ITa6rmakuKCLcdnJoT2Aew9SrIj
-	 53lQWN9O1qUUg==
+	b=O7fwPy0yHHu4qFDNm8IbAu70KsNe9UV22G6Uwh/69dTRvsWHeJzu3vgdoFDaZVBTT
+	 KELeYr2KwRUFIdH4W5si20JExiUAkZA7/3Aa4ZnCURVNMJvBnBeckfMC1jeto3mj/L
+	 RxgUHgz+rpnjfoj3Hg8n+3dTz/J0dUEAFFrHZ199hORjWXVXPa5QOrt/jWN/JBATQZ
+	 6JrNoBG/eQBGgmFvW4sVpcQPZUmfVnE2OIj6ychY1pblE1cJ3SbrggrcKv3g9yqOmi
+	 gdGkQLOwglw7z2qI5N2tvKVwlvyD42qttGivHolTSy8HjKh0l/WLqSsLPtn39x6v62
+	 gUGn5VMuAngmA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BF32540A6E;
-	Tue, 20 May 2025 19:39:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 58100610A7;
+	Tue, 20 May 2025 19:39:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 4D9B3D4
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 6D9EBD4
  for <intel-wired-lan@lists.osuosl.org>; Tue, 20 May 2025 19:39:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3FDB840A91
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6AC6881E07
  for <intel-wired-lan@lists.osuosl.org>; Tue, 20 May 2025 19:39:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ystf-DJQ3FXb for <intel-wired-lan@lists.osuosl.org>;
- Tue, 20 May 2025 19:39:55 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id cracA5TxS5eA for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 20 May 2025 19:39:56 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
  helo=mgamail.intel.com; envelope-from=david.m.ertman@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 6F01B40A78
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6F01B40A78
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org BFA3281DF3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BFA3281DF3
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 6F01B40A78
+ by smtp1.osuosl.org (Postfix) with ESMTPS id BFA3281DF3
  for <intel-wired-lan@lists.osuosl.org>; Tue, 20 May 2025 19:39:55 +0000 (UTC)
-X-CSE-ConnectionGUID: wB6G6ZiGT22439goFMOUKA==
-X-CSE-MsgGUID: BSY5PI+lQZuqyuuyeQlD0A==
-X-IronPort-AV: E=McAfee;i="6700,10204,11439"; a="75123545"
-X-IronPort-AV: E=Sophos;i="6.15,302,1739865600"; d="scan'208";a="75123545"
+X-CSE-ConnectionGUID: cuvBh80tRW+yDQ9Dan6i9Q==
+X-CSE-MsgGUID: 3gecEVoWTW6uuIxugqi+bg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11439"; a="75123546"
+X-IronPort-AV: E=Sophos;i="6.15,302,1739865600"; d="scan'208";a="75123546"
 Received: from fmviesa008.fm.intel.com ([10.60.135.148])
  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 May 2025 12:39:54 -0700
-X-CSE-ConnectionGUID: sBQz+k2NTUOIVPx9PO6RRw==
-X-CSE-MsgGUID: apS0tliHQeKAdECwMgGOYA==
+ 20 May 2025 12:39:55 -0700
+X-CSE-ConnectionGUID: xFq5zES8TCGA1Zn0Onc8Fg==
+X-CSE-MsgGUID: vy+v9qsPRamfwY/dclC6pw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,302,1739865600"; d="scan'208";a="140198868"
+X-IronPort-AV: E=Sophos;i="6.15,302,1739865600"; d="scan'208";a="140198871"
 Received: from dmert-vmdev.jf.intel.com ([10.165.17.51])
  by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  20 May 2025 12:39:54 -0700
 From: Dave Ertman <david.m.ertman@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Date: Tue, 20 May 2025 15:39:23 -0400
-Message-ID: <20250520193930.3763888-2-david.m.ertman@intel.com>
+Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Date: Tue, 20 May 2025 15:39:24 -0400
+Message-ID: <20250520193930.3763888-3-david.m.ertman@intel.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250520193930.3763888-1-david.m.ertman@intel.com>
 References: <20250520193930.3763888-1-david.m.ertman@intel.com>
@@ -79,22 +78,23 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1747769996; x=1779305996;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=FWNZxsutR3o1v0SrrJkWkxur54vX6QruKgZ85TVWQd0=;
- b=YoU4DHicz8vGS16cGGe3Ym2PTaFrFcW+9PF+a7Xad0wbSJ2n26seiAQw
- zWuSTvdQDtA4jOXijggIIKauKGVuF3A+6+1q1kePqpHw0wOWrTydjRWmd
- rKDXuV3/b7deFsxVy5AnKZccN5BF2Y1f7Fo4lUlSZ5+EOIZjePGhfJuMN
- gYPKtndJzQj22Wooya4sR2WwD2EEJS3ikkwNHTy/NgpYkE+rMC6I89p7e
- eI1MTYe3lOxgEe0d5J0CAEXU71vI8e638ZmpYYHRZf6izNfU9/64ITgp+
- P4RTFrqNDbz5TFUTsRGnrhJxK+pfOuOD4P0tlVgX3DMK/5vRL9yoUis5X
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=z2es/tY4Vv86xArJxnQz8mDZrDjH7nKpNM4N584f5TE=;
+ b=d7+ci3lDxvjWf9spwJKj8ZObPcM2FHup2tKia7Eor/Cyq3KiLfeWcut1
+ myliOuNWC+tnraUfxb/dX3CkpVVo+KdUFhhdwQMQ+TMlg9EE/JMejItGF
+ XQkj4FSyW1kLNv/zmcAd3xIgz69uAVQtxQp02xn3aLCzhW3ItaeBMKMVk
+ iSWCa5VbWDT8hkCjb+5+HtWcUezgkq7EubMg5DKGkIt9vwKy8CSMcJ1P4
+ jVecNtY3q5HWrm1yQXCJwdvULh7QAiy18koWNJIIxravC+REnYZfvl/Ga
+ AFFzEUvgtN7HPn6jkxst3FvS4Q9VYATIbgz+d8L4DxpdzS0X5ggZkuvA2
+ A==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=YoU4DHic
-Subject: [Intel-wired-lan] [PATCH iwl-next v2 1/8] [PATCH iwl-next 1/8] ice:
- Remove casts on void pointers in LAG code
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=d7+ci3lD
+Subject: [Intel-wired-lan] [PATCH iwl-next v2 2/8] [PATCH iwl-next 2/8] ice:
+ replace u8 elements with bool where
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -110,145 +110,54 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This series will be touching on the LAG code in the ice driver,
-to prevent moving or propagating casting on void pointers, clean
-them up first.
+appropriate
 
-This also allows for moving the variable initialization into the
-variable declaration.
+In preparation for the new LAG functionality implementation, there are
+a couple of existing LAG elements of the capabilities struct that should
+be bool instead of u8.  Since we are adding a new element to this struct
+that should also be a bool, fix the existing LAG u8 in this patch and
+eliminate !! operators where possible.
 
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_lag.c | 24 ++++++++----------------
- 1 file changed, 8 insertions(+), 16 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_common.c | 4 ++--
+ drivers/net/ethernet/intel/ice/ice_type.h   | 5 +++--
+ 2 files changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_lag.c b/drivers/net/ethernet/intel/ice/ice_lag.c
-index 2410aee59fb2..5cb3e1a9657d 100644
---- a/drivers/net/ethernet/intel/ice/ice_lag.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lag.c
-@@ -321,7 +321,7 @@ ice_lag_cfg_drop_fltr(struct ice_lag *lag, bool add)
- static void
- ice_lag_cfg_pf_fltrs(struct ice_lag *lag, void *ptr)
- {
--	struct netdev_notifier_bonding_info *info;
-+	struct netdev_notifier_bonding_info *info = ptr;
- 	struct netdev_bonding_info *bonding_info;
- 	struct net_device *event_netdev;
- 	struct device *dev;
-@@ -331,7 +331,6 @@ ice_lag_cfg_pf_fltrs(struct ice_lag *lag, void *ptr)
- 	if (event_netdev != lag->netdev)
- 		return;
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index f7fd0a2451de..29a02a0348b1 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -2219,10 +2219,10 @@ ice_parse_common_caps(struct ice_hw *hw, struct ice_hw_common_caps *caps,
+ 			  caps->reset_restrict_support);
+ 		break;
+ 	case ICE_AQC_CAPS_FW_LAG_SUPPORT:
+-		caps->roce_lag = !!(number & ICE_AQC_BIT_ROCEV2_LAG);
++		caps->roce_lag = number & ICE_AQC_BIT_ROCEV2_LAG;
+ 		ice_debug(hw, ICE_DBG_INIT, "%s: roce_lag = %u\n",
+ 			  prefix, caps->roce_lag);
+-		caps->sriov_lag = !!(number & ICE_AQC_BIT_SRIOV_LAG);
++		caps->sriov_lag = number & ICE_AQC_BIT_SRIOV_LAG;
+ 		ice_debug(hw, ICE_DBG_INIT, "%s: sriov_lag = %u\n",
+ 			  prefix, caps->sriov_lag);
+ 		break;
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index 3d68f465952d..e40ea754f91b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -293,8 +293,9 @@ struct ice_hw_common_caps {
+ 	u8 dcb;
+ 	u8 ieee_1588;
+ 	u8 rdma;
+-	u8 roce_lag;
+-	u8 sriov_lag;
++
++	bool roce_lag;
++	bool sriov_lag;
  
--	info = (struct netdev_notifier_bonding_info *)ptr;
- 	bonding_info = &info->bonding_info;
- 	dev = ice_pf_to_dev(lag->pf);
- 
-@@ -831,13 +830,12 @@ ice_lag_cfg_cp_fltr(struct ice_lag *lag, bool add)
-  */
- static void ice_lag_info_event(struct ice_lag *lag, void *ptr)
- {
--	struct netdev_notifier_bonding_info *info;
-+	struct netdev_notifier_bonding_info *info = ptr;
- 	struct netdev_bonding_info *bonding_info;
- 	struct net_device *event_netdev;
- 	const char *lag_netdev_name;
- 
- 	event_netdev = netdev_notifier_info_to_dev(ptr);
--	info = ptr;
- 	lag_netdev_name = netdev_name(lag->netdev);
- 	bonding_info = &info->bonding_info;
- 
-@@ -1302,11 +1300,10 @@ static void ice_lag_init_feature_support_flag(struct ice_pf *pf)
-  */
- static void ice_lag_changeupper_event(struct ice_lag *lag, void *ptr)
- {
--	struct netdev_notifier_changeupper_info *info;
-+	struct netdev_notifier_changeupper_info *info = ptr;
- 	struct ice_lag *primary_lag;
- 	struct net_device *netdev;
- 
--	info = ptr;
- 	netdev = netdev_notifier_info_to_dev(ptr);
- 
- 	/* not for this netdev */
-@@ -1366,7 +1363,7 @@ static void ice_lag_changeupper_event(struct ice_lag *lag, void *ptr)
-  */
- static void ice_lag_monitor_link(struct ice_lag *lag, void *ptr)
- {
--	struct netdev_notifier_changeupper_info *info;
-+	struct netdev_notifier_changeupper_info *info = ptr;
- 	struct ice_hw *prim_hw, *active_hw;
- 	struct net_device *event_netdev;
- 	struct ice_pf *pf;
-@@ -1383,7 +1380,6 @@ static void ice_lag_monitor_link(struct ice_lag *lag, void *ptr)
- 	prim_hw = &pf->hw;
- 	prim_port = prim_hw->port_info->lport;
- 
--	info = (struct netdev_notifier_changeupper_info *)ptr;
- 	if (info->upper_dev != lag->upper_netdev)
- 		return;
- 
-@@ -1412,8 +1408,8 @@ static void ice_lag_monitor_link(struct ice_lag *lag, void *ptr)
-  */
- static void ice_lag_monitor_active(struct ice_lag *lag, void *ptr)
- {
-+	struct netdev_notifier_bonding_info *info = ptr;
- 	struct net_device *event_netdev, *event_upper;
--	struct netdev_notifier_bonding_info *info;
- 	struct netdev_bonding_info *bonding_info;
- 	struct ice_netdev_priv *event_np;
- 	struct ice_pf *pf, *event_pf;
-@@ -1438,7 +1434,6 @@ static void ice_lag_monitor_active(struct ice_lag *lag, void *ptr)
- 	event_port = event_pf->hw.port_info->lport;
- 	prim_port = pf->hw.port_info->lport;
- 
--	info = (struct netdev_notifier_bonding_info *)ptr;
- 	bonding_info = &info->bonding_info;
- 
- 	if (!bonding_info->slave.state) {
-@@ -1485,8 +1480,8 @@ static void ice_lag_monitor_active(struct ice_lag *lag, void *ptr)
- static bool
- ice_lag_chk_comp(struct ice_lag *lag, void *ptr)
- {
-+	struct netdev_notifier_bonding_info *info = ptr;
- 	struct net_device *event_netdev, *event_upper;
--	struct netdev_notifier_bonding_info *info;
- 	struct netdev_bonding_info *bonding_info;
- 	struct list_head *tmp;
- 	struct device *dev;
-@@ -1512,7 +1507,6 @@ ice_lag_chk_comp(struct ice_lag *lag, void *ptr)
- 		return false;
- 	}
- 
--	info = (struct netdev_notifier_bonding_info *)ptr;
- 	bonding_info = &info->bonding_info;
- 	lag->bond_mode = bonding_info->master.bond_mode;
- 	if (lag->bond_mode != BOND_MODE_ACTIVEBACKUP) {
-@@ -1622,10 +1616,9 @@ ice_lag_unregister(struct ice_lag *lag, struct net_device *event_netdev)
- static void
- ice_lag_monitor_rdma(struct ice_lag *lag, void *ptr)
- {
--	struct netdev_notifier_changeupper_info *info;
-+	struct netdev_notifier_changeupper_info *info = ptr;
- 	struct net_device *netdev;
- 
--	info = ptr;
- 	netdev = netdev_notifier_info_to_dev(ptr);
- 
- 	if (netdev != lag->netdev)
-@@ -1795,9 +1788,8 @@ ice_lag_event_handler(struct notifier_block *notif_blk, unsigned long event,
- 	lag_work->lag = lag;
- 	lag_work->event = event;
- 	if (event == NETDEV_CHANGEUPPER) {
--		struct netdev_notifier_changeupper_info *info;
-+		struct netdev_notifier_changeupper_info *info = ptr;
- 
--		info = ptr;
- 		upper_netdev = info->upper_dev;
- 	} else {
- 		upper_netdev = netdev_master_upper_dev_get(netdev);
+ 	bool nvm_update_pending_nvm;
+ 	bool nvm_update_pending_orom;
 -- 
 2.49.0
 
