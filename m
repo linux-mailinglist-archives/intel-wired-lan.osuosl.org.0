@@ -1,101 +1,101 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E01ADABF7BD
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 May 2025 16:23:58 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 60ACA83AEF;
-	Wed, 21 May 2025 14:23:57 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vo6U-SRRolAo; Wed, 21 May 2025 14:23:56 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5DA6583AF2
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1747837436;
-	bh=u9ffq0pWBGpO7eR+5xkFFo9aW3N22A/dMNXcVpw7mZ8=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=dFdWtrNxHO15DnbIatHHBOVS6+zHnMFBFM21ORhmid+x+p0llfOp/LK88rN+ZNDKy
-	 fmweOqfi4VxTE3mt19bFmGXlQYvaOBMOhS8JGl75fwscomSe/HRML46hXJxy7X00I8
-	 HMSyS6IAofy+UsR1Y0E/rfF0TlwdiGYcEVwVWLFs5ptLhs/f7Xca45L4g1nrttLjep
-	 f9ZyTV81Y7s7eQydxM+OxNMWIrxdKREf6KAoXjBg5liXlxxpApzXIIxoNUxlO5rK1m
-	 rqHqUyBiUIJd2F6deSBNucvaCxZ9X1yNnGShFrp4f2utP7cAhH6rhdp204xKuzg5o5
-	 n9bXOMEKX+4uA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5DA6583AF2;
-	Wed, 21 May 2025 14:23:56 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id B76A261
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 May 2025 14:23:54 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C221ABF7E9
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 May 2025 16:34:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A9C016071F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 May 2025 14:23:54 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E125960B6A;
+	Wed, 21 May 2025 14:34:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xufpOOtw0loO for <intel-wired-lan@lists.osuosl.org>;
- Wed, 21 May 2025 14:23:54 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
- helo=mgamail.intel.com; envelope-from=dawid.osuchowski@linux.intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C6F80606E7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C6F80606E7
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C6F80606E7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 May 2025 14:23:53 +0000 (UTC)
-X-CSE-ConnectionGUID: GP1io6BBQruZBfn4M5bi5w==
-X-CSE-MsgGUID: isHcgt02QmGGJ42C8zVuBg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11440"; a="53627262"
-X-IronPort-AV: E=Sophos;i="6.15,303,1739865600"; d="scan'208";a="53627262"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
- by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 May 2025 07:23:54 -0700
-X-CSE-ConnectionGUID: tsejvJ3ZQz2SyGRCTkvlyA==
-X-CSE-MsgGUID: 5VUxIBPFQHmxZ+YtD1+DmQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,303,1739865600"; d="scan'208";a="139943813"
-Received: from pae-dbg-x10sri-f_n1_f_263.igk.intel.com (HELO
- localhost.igk.intel.com) ([172.28.191.222])
- by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 May 2025 07:23:52 -0700
-From: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org,
- Dawid Osuchowski <dawid.osuchowski@linux.intel.com>,
- Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Date: Wed, 21 May 2025 16:23:32 +0200
-Message-ID: <20250521142332.449045-1-dawid.osuchowski@linux.intel.com>
-X-Mailer: git-send-email 2.47.0
+ id lt_iLLEO14BJ; Wed, 21 May 2025 14:34:10 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 54ED56074F
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1747838050;
+	bh=MMHwpfK/dx4bkPxI8KYOmFNyMUz6j0MRQFeBVjTxzvY=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=9GOWeTADtQYN+wFJcBi45Ag//F31rKTiLBByNV2hvUJabP60Tp0jqeVuABqSpxb9P
+	 aVDZkY2PGSXJgTShVx8lMxZRcaC44+yptSrAvod3xwD2gRQFaIuehiz0UqMRQgiyAs
+	 5Soou9iHAIwNm9Vi/wdW5hZbvhErBz2ORQ9tGkhYezlqp37c7jrR72z+OI+A/c8KgZ
+	 dfxgpckHgpRdW171fJ8j8/8RD9ttEF/wc8F9EfgTMA43eMtIOsMhY/aXA19dJFNhcg
+	 osU9uQaIJtsL/8/fVVCPITOwLE21uv8/jEKcBP+OJfYhpltRSpQieBwj6BWIvNciUT
+	 QoWEcpCVk1X1Q==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 54ED56074F;
+	Wed, 21 May 2025 14:34:10 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3B8D761
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 May 2025 14:34:08 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id D9D5C60889
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 May 2025 14:34:05 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id OpcYIjIJVC6W for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 21 May 2025 14:34:05 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
+ envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1CBF06074F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1CBF06074F
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1CBF06074F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 May 2025 14:34:04 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id AC4F76111C;
+ Wed, 21 May 2025 14:34:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 844E2C4CEE4;
+ Wed, 21 May 2025 14:34:02 +0000 (UTC)
+Date: Wed, 21 May 2025 07:34:01 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Stanislav Fomichev <stfomichev@gmail.com>
+Cc: netdev@vger.kernel.org, davem@davemloft.net, edumazet@google.com,
+ pabeni@redhat.com, skalluru@marvell.com, manishc@marvell.com,
+ andrew+netdev@lunn.ch, michael.chan@broadcom.com,
+ pavan.chebbi@broadcom.com, ajit.khaparde@broadcom.com,
+ sriharsha.basavapatna@broadcom.com, somnath.kotur@broadcom.com,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ tariqt@nvidia.com, saeedm@nvidia.com, louis.peens@corigine.com,
+ shshaikh@marvell.com, GR-Linux-NIC-Dev@marvell.com, ecree.xilinx@gmail.com,
+ horms@kernel.org, dsahern@kernel.org, ruanjinjie@huawei.com,
+ mheib@redhat.com, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-rdma@vger.kernel.org,
+ oss-drivers@corigine.com, linux-net-drivers@amd.com, leon@kernel.org
+Message-ID: <20250521073401.67fbd1bc@kernel.org>
+In-Reply-To: <20250520203614.2693870-3-stfomichev@gmail.com>
+References: <20250520203614.2693870-1-stfomichev@gmail.com>
+ <20250520203614.2693870-3-stfomichev@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1747837434; x=1779373434;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=1NlA7Lajb+p5gKLZ4hdgRlVo+SU6VX1Ll7WgBh1g5DE=;
- b=kSbehpNahOgGjqUew/hGXbVTySLqxRMxxEntGg3p8QtJfEy1wRWe4klS
- 1ZSS6FlVJ0MPW7b7M2TOgcNAOhC7EntU9ku1xgekXWm9zaSdrMfEu5vLD
- WSidsujrC+mY45ONLr4RXvV5cqmfXKlMxyeM9PhFTg4Kc1BvSDvlPxi32
- OnC4WMVKJftNYtcIn/MiwWnQvmrzUNVbD/yEIUYVLZFN+P6URo6GynoGo
- 5saYQMJnsdfaA5Qzcv30ofcWUaZtKmtPRbyBN+Ny0nix0xBN0pMO0vHIK
- Wvn1f1VqNcV7MuahpIq/B6/+wbsxkuu19N2e76kvfOngGZhvXMxWw8PSO
- g==;
+ d=kernel.org; s=k20201202; t=1747838043;
+ bh=6P7mIPj7B7sJ/vEA58VPqJNIo45jgikPcikO/uSzLsk=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=ROoqVqcZH42CiPfobRxDgWMXSJf4HEuZ6B1czaH2zeQkFIBOACu3jK8u2NIUfuT6v
+ cYl6uDa7GJEkHJsvzeCIYZcttLv4QoAEOf41rqvjb5Fi38bWgvQWJhiY0AT/e8LBp9
+ Ac1NNbYgfSr6KOmglkrkgrTWucmupgDw+Cuh51tJnNGZgvSPRMUi2sTjnL0i4TGEhe
+ xz78vjUlWFWZ09t83r11c+9EqGCDiQq4psW8ZeLppzE9UZohwQ42LIckZ9attzA8m+
+ q+RLSpOQAhFx+hLxVAW3lVIvpDO79xY6PzqU2fXrwFGMN5nFPnW7Hz2Zl1D6e3X2pF
+ yLD8HBwBPJVkQ==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=kSbehpNa
-Subject: [Intel-wired-lan] [PATCH iwl-next] i40e: add link_down_events
- statistic
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=ROoqVqcZ
+Subject: Re: [Intel-wired-lan] [PATCH net-next 2/3] udp_tunnel: remove
+ rtnl_lock dependency
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -111,82 +111,64 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Introduce a link_down_events counter to the i40e driver, incremented
-each time the link transitions from up to down.
-This counter can help diagnose issues related to link stability,
-such as port flapping or unexpected link drops.
+On Tue, 20 May 2025 13:36:13 -0700 Stanislav Fomichev wrote:
+> Drivers that are using ops lock and don't depend on RTNL lock
+> still need to manage it because udp_tunnel's RTNL dependency.
+> Introduce new udp_tunnel_nic_lock and use it instead of
+> rtnl_lock. Drop non-UDP_TUNNEL_NIC_INFO_MAY_SLEEP mode from
+> udp_tunnel infra (udp_tunnel_nic_device_sync_work needs to
+> grab udp_tunnel_nic_lock mutex and might sleep).
 
-The value is exposed via ethtool's get_link_ext_stats() interface.
+There is a netdevsim-based test for this that needs to be fixed up.
 
-Co-developed-by: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
-Signed-off-by: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Signed-off-by: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
----
-Based on series [1] from Martyna where this was implemented for ixgbe
-and ice drivers.
+> diff --git a/include/net/udp_tunnel.h b/include/net/udp_tunnel.h
+> index 2df3b8344eb5..7f5537fdf2c9 100644
+> --- a/include/net/udp_tunnel.h
+> +++ b/include/net/udp_tunnel.h
+> @@ -221,19 +221,17 @@ static inline void udp_tunnel_encap_enable(struct sock *sk)
+>  #define UDP_TUNNEL_NIC_MAX_TABLES	4
+>  
+>  enum udp_tunnel_nic_info_flags {
+> -	/* Device callbacks may sleep */
+> -	UDP_TUNNEL_NIC_INFO_MAY_SLEEP	= BIT(0),
 
-[1] https://lore.kernel.org/netdev/20250515105011.1310692-1-martyna.szapar-mudlaw@linux.intel.com/
----
- drivers/net/ethernet/intel/i40e/i40e.h         |  1 +
- drivers/net/ethernet/intel/i40e/i40e_ethtool.c | 10 ++++++++++
- drivers/net/ethernet/intel/i40e/i40e_main.c    |  3 +++
- 3 files changed, 14 insertions(+)
+Could we use a different lock for sleeping and non-sleeping drivers?
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
-index c67963bfe14e..54d5fdc303ca 100644
---- a/drivers/net/ethernet/intel/i40e/i40e.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e.h
-@@ -548,6 +548,7 @@ struct i40e_pf {
- 	u16 empr_count; /* EMP reset count */
- 	u16 pfr_count; /* PF reset count */
- 	u16 sw_int_count; /* SW interrupt count */
-+	u32 link_down_events;
- 
- 	struct mutex switch_mutex;
- 	u16 lan_vsi;       /* our default LAN VSI */
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-index 21dd70125a16..adcf068202b0 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-@@ -2749,6 +2749,15 @@ static void i40e_diag_test(struct net_device *netdev,
- 	netif_info(pf, drv, netdev, "testing failed\n");
- }
- 
-+static void i40e_get_link_ext_stats(struct net_device *netdev,
-+				    struct ethtool_link_ext_stats *stats)
-+{
-+	struct i40e_netdev_priv *np = netdev_priv(netdev);
-+	struct i40e_pf *pf = np->vsi->back;
-+
-+	stats->link_down_events = pf->link_down_events;
-+}
-+
- static void i40e_get_wol(struct net_device *netdev,
- 			 struct ethtool_wolinfo *wol)
- {
-@@ -5807,6 +5816,7 @@ static const struct ethtool_ops i40e_ethtool_ops = {
- 	.get_regs		= i40e_get_regs,
- 	.nway_reset		= i40e_nway_reset,
- 	.get_link		= ethtool_op_get_link,
-+	.get_link_ext_stats	= i40e_get_link_ext_stats,
- 	.get_wol		= i40e_get_wol,
- 	.set_wol		= i40e_set_wol,
- 	.set_eeprom		= i40e_set_eeprom,
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index e421156717a4..d7368fa31ec8 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -9933,6 +9933,9 @@ static void i40e_link_event(struct i40e_pf *pf)
- 	     new_link == netif_carrier_ok(vsi->netdev)))
- 		return;
- 
-+	if (!new_link && old_link)
-+		pf->link_down_events++;
-+
- 	i40e_print_link_message(vsi, new_link);
- 
- 	/* Notify the base of the switch tree connected to
--- 
-2.47.0
+> @@ -554,11 +543,11 @@ static void __udp_tunnel_nic_reset_ntf(struct net_device *dev)
+>  	struct udp_tunnel_nic *utn;
+>  	unsigned int i, j;
+>  
+> -	ASSERT_RTNL();
+> +	mutex_lock(&udp_tunnel_nic_lock);
+>  
+>  	utn = dev->udp_tunnel_nic;
 
+utn and info's lifetimes are tied to the lifetime of the device
+I think their existence can remain protected by the external locks
+
+>  	if (!utn)
+> -		return;
+> +		goto unlock;
+>  
+>  	utn->need_sync = false;
+>  	for (i = 0; i < utn->n_tables; i++)
+
+> -	rtnl_lock();
+> +	mutex_lock(&udp_tunnel_nic_lock);
+>  	utn->work_pending = 0;
+>  	__udp_tunnel_nic_device_sync(utn->dev, utn);
+>  
+> -	if (utn->need_replay)
+> +	if (utn->need_replay) {
+> +		rtnl_lock();
+>  		udp_tunnel_nic_replay(utn->dev, utn);
+> -	rtnl_unlock();
+> +		rtnl_unlock();
+> +	}
+> +	mutex_unlock(&udp_tunnel_nic_lock);
+>  }
+
+What's the lock ordering between the new lock and rtnl lock?
+
+BTW the lock could live in utn, right? We can't use the instance
+lock because of sharing, but we could put the lock in utn?
