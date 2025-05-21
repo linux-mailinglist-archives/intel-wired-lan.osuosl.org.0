@@ -1,93 +1,127 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 344CFABEECE
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 May 2025 10:59:01 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 348E1ABEFDA
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 May 2025 11:33:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E0AB760771;
-	Wed, 21 May 2025 08:58:59 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B1D7C40AF1;
+	Wed, 21 May 2025 09:33:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id espqeyd1C15y; Wed, 21 May 2025 08:58:59 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id dTwqcvPDJEeN; Wed, 21 May 2025 09:33:06 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3F1D6608EB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CD80540B09
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1747817939;
-	bh=NmVTXwCrgz5/Cwr9ZIYVuSQlhEJSsULUOJ6ssZhudRI=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1747819985;
+	bh=vkYo+JENFnccANTascGsFiw8HxP19vFtSh3alcpT2Q0=;
+	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=xS723EoliZwN9XL4KG7OTH89ORgjGYcrGU24whXzvTPantnCdbVzzEUIysQ+gux+u
-	 aWbsa+2cnqez5KuOF5qg/nEa0S11jnNMkX+HUlVZ0ImphDMAgkP1XoZ21HMgd2c9kM
-	 1MC1bPRcjS4pdn2MXIX5NfaIZcWrMMp21IglS6hI8ahE3mJK2F12JrUszAWSAeZ8uu
-	 J9ry1IQRu+5R6s/btVIoCRiddai7EHgIQSPrYyqbRRKY8u+6QOTZZ2LDkxjDltEqqi
-	 sQB+P7xzF32kyDpsxBXtVcYZyJGObM4kM3ReFdLcDDvkP+KDX/wz/I+r3Oj+VhZAVK
-	 yX7uxcoSJ6AQQ==
+	b=E6J80vl6DRMNkf0dptPoT5Xs/PqxDjf7oIbNIIRTQ3FppDlWXJJUgRFepA9cpN9dG
+	 kE3F8bWSQ9DABYONYYQRQWHeHSsmCOb76ThXcOSnrovnH6DRX26aGczQQ1HStoqNBr
+	 /Ni6MJE4SDgXj+36/KqRfHehCvKcokUUJvZnz86Ok8hVOIZl38pP7p9j9m1xrmO7kP
+	 7nbEp4XYZ7MMwFwDi/CIZCeYG3tNbvy92RsSPBRMXmSBW0Np7YaqTy7A+O4l7LkkuY
+	 vT3qXrZrUDBbU8aQ+Op+gnLwtXe+UlXq90N1TbJuOCuAsDlCRVAjyJXlwI9fG4D4Cz
+	 uwlzglZMwgvHg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3F1D6608EB;
-	Wed, 21 May 2025 08:58:59 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CD80540B09;
+	Wed, 21 May 2025 09:33:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 7BDE211B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 May 2025 08:58:57 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id DFA341BF
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 May 2025 09:33:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 62267404D8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 May 2025 08:58:57 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id D151B81FE0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 May 2025 09:33:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ATJCgTD3tPuR for <intel-wired-lan@lists.osuosl.org>;
- Wed, 21 May 2025 08:58:56 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id zwXSDyKCiWpu for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 21 May 2025 09:33:03 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org B89B8408D5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B89B8408D5
-Received: from sea.source.kernel.org (sea.source.kernel.org
- [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B89B8408D5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 May 2025 08:58:56 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 0AB6F45426;
- Wed, 21 May 2025 08:58:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74656C4CEE4;
- Wed, 21 May 2025 08:58:53 +0000 (UTC)
-Date: Wed, 21 May 2025 09:58:51 +0100
-From: Simon Horman <horms@kernel.org>
-To: Krishna Kumar <krikku@gmail.com>
-Cc: netdev@vger.kernel.org, davem@davemloft.net, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, edumazet@google.com,
- intel-wired-lan@lists.osuosl.org, andrew+netdev@lunn.ch,
- kuba@kernel.org, pabeni@redhat.com, sridhar.samudrala@intel.com,
- ahmed.zaki@intel.com, krishna.ku@flipkart.com
-Message-ID: <20250521085851.GQ365796@horms.kernel.org>
-References: <20250520170656.2875753-1-krikku@gmail.com>
+ client-ip=2a00:1450:4864:20::62f; helo=mail-ej1-x62f.google.com;
+ envelope-from=jaroslav.pulchart@gooddata.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A1DA881510
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A1DA881510
+Received: from mail-ej1-x62f.google.com (mail-ej1-x62f.google.com
+ [IPv6:2a00:1450:4864:20::62f])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id A1DA881510
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 May 2025 09:33:02 +0000 (UTC)
+Received: by mail-ej1-x62f.google.com with SMTP id
+ a640c23a62f3a-ad55d6aeb07so261703166b.0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 May 2025 02:33:02 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1747819980; x=1748424780;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=vkYo+JENFnccANTascGsFiw8HxP19vFtSh3alcpT2Q0=;
+ b=LMa424GQ8uEVCjYS8MwuDB1+R1brDuKCCeQxXkV+tWgw7NrsU363ezcxks3MbylBpC
+ 1jOIv7Oa+2xskU2p/+KnSydbBEgnUXACPdTN71CE802vhQiVNe7UqBw/U7wOv110uOlu
+ 608t8QIaPdivuAN9fpgRbxLr6m03wiaaXku0w2TNyvkBan/Tjkl+0vgddwt84MZ7++8v
+ XBNyvwZE/OFSiR98j9p60FU+X0joStq4hl9a0MyMw0aaHVTKP7H0syaEzD4jMEEMBRdq
+ lrVs5ko9uVgng88JjVG25CcsnJLiVATQzBnsn/7WO/AMKKVy+U5VimxWQUXdyVHRlE6Q
+ MUVA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUNpJhS0/kecfp8WZ+UDHq9cJdv7ZMTmF72tHq6jBCP8V5ZtUVxo0w2GulL1TXH3LwoO15nv/Go4IH0ofSgTr4=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyuccLgkO27N8SGaQLXsr/svO5+IcR7d0lg1ivwhOdI+d2shEkj
+ 8dbYSJLD1aOzIPnAXbz9QystHT1aczo8JIafwuEqDKYNSdAw/0/MEngT5dzov5fPTvHE3hT/+qV
+ HGtOwCwfrioy2/7v3+jT6k/xyHjsOPvoVqMJFjVmy
+X-Gm-Gg: ASbGncs4mNGMiK9vskg6Me7eeL/YQNlx6GivhF9h1xqUUIsbgjTnXKrRTk7ct+jh+5E
+ CFsZeUG1WkqYc2Zeu82wZBwDaEfItLWEaoUL95LofowkOqb0AlGdx3BC5DdiFUYnXjJHeDitxWN
+ qrd+xNv35cHBPtRY54tPutJIWo/5LWGezpFQ==
+X-Google-Smtp-Source: AGHT+IHvk2bPlobCip1hMc7eQf+cGP3po5I5kYODyx8N2bNesyKp6saqB4cpY8WXWKBKe+boxz5je39HJ8d8k36qUkc=
+X-Received: by 2002:a17:907:7f8e:b0:ad2:53b1:d60f with SMTP id
+ a640c23a62f3a-ad536bdfe89mr1361448466b.34.1747819980375; Wed, 21 May 2025
+ 02:33:00 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250520170656.2875753-1-krikku@gmail.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1747817935;
- bh=thJ7ueoFNpIdnDT3hVYMlZ4dOo2TwzqeL+wDkr8GQDA=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=qlVqA6Qzo2o/gIDllg+3y2w0ifELKPTUZug1Q1lkDN/qXHK0yDzX4+w+5+LLk0kxO
- BapqunvNSTXXEr0qvvhA4W4yirdtSKbqp+NmWIM4PLOH3PBetFBnldIOv2ahAu2eRa
- jKcweKkOUPhP5ZFXU5MYLOhgMOzL1O8dLO6m2apGTZLPe2W3TH7w+qaLyQT0xQo3fa
- yUEct5QzxGPr4uibPgK7s/YMHnbycmkTK1tAWHasQMC3+Mc1AdDjna5EzYBTNKvva7
- CDhrftW7B1fF6VCyKBRWUlzfFk8aLTid921lt6WuDZHfPamuoIsXr9n7U4Xbw0Golx
- bBA/JxA6KgoDA==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+References: <CAK8fFZ4hY6GUJNENz3wY9jaYLZXGfpr7dnZxzGMYoE44caRbgw@mail.gmail.com>
+ <4a061a51-8a6c-42b8-9957-66073b4bc65f@intel.com>
+ <20250415175359.3c6117c9@kernel.org>
+ <CAK8fFZ6ML1v8VCjN3F-r+SFT8oF0xNpi3hjA77aRNwr=HcWqNA@mail.gmail.com>
+ <20250416064852.39fd4b8f@kernel.org>
+ <CAK8fFZ4bKHa8L6iF7dZNBRxujdmsoFN05p73Ab6mkPf6FGhmMQ@mail.gmail.com>
+ <CO1PR11MB5089365F31BCD97E59CCFA83D6BD2@CO1PR11MB5089.namprd11.prod.outlook.com>
+ <20250416171311.30b76ec1@kernel.org>
+ <CO1PR11MB508931FBA3D5DFE7D8F07844D6BC2@CO1PR11MB5089.namprd11.prod.outlook.com>
+In-Reply-To: <CO1PR11MB508931FBA3D5DFE7D8F07844D6BC2@CO1PR11MB5089.namprd11.prod.outlook.com>
+From: Jaroslav Pulchart <jaroslav.pulchart@gooddata.com>
+Date: Wed, 21 May 2025 11:32:34 +0200
+X-Gm-Features: AX0GCFvzmySlCZOEPOh4YPucD9a8dSs_7jeJwaM4qIdxSAFhySfTiyNah7vS34E
+Message-ID: <CAK8fFZ6dZWv6rtd6U_qY+qPe2hzmkzi-af=T-AGxCsV6ZgaW-w@mail.gmail.com>
+To: "Keller, Jacob E" <jacob.e.keller@intel.com>
+Cc: Jakub Kicinski <kuba@kernel.org>, "Kitszel,
+ Przemyslaw" <przemyslaw.kitszel@intel.com>, 
+ "Damato, Joe" <jdamato@fastly.com>, 
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, 
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Nguyen,
+ Anthony L" <anthony.l.nguyen@intel.com>, 
+ Igor Raits <igor@gooddata.com>, Daniel Secik <daniel.secik@gooddata.com>, 
+ Zdenek Pesek <zdenek.pesek@gooddata.com>, "Dumazet, Eric" <edumazet@google.com>,
+ Martin Karsten <mkarsten@uwaterloo.ca>, "Zaki, Ahmed" <ahmed.zaki@intel.com>, 
+ "Czapnik, Lukasz" <lukasz.czapnik@intel.com>, 
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Content-Type: multipart/alternative; boundary="0000000000000fdbce0635a20d23"
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gooddata.com; s=google; t=1747819980; x=1748424780; darn=lists.osuosl.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=vkYo+JENFnccANTascGsFiw8HxP19vFtSh3alcpT2Q0=;
+ b=f2SnyvBiVVnINCErevMqkAavHeYHMtJUfQ0aCVqkOBmulgDurfFyTQgbDfqHypM76q
+ pMuzei5rrU/LSSVP39O/lyKluhQzj4CQFJFJzV16wY4isEnPPmPaU3tr2IcKDI2kCxux
+ uDoW1f8Ax/DviZHtHikHucuIMhyqZSpMcykQM=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=qlVqA6Qz
-Subject: Re: [Intel-wired-lan] [PATCH v2 net] net: ice: Perform accurate
- aRFS flow match
+ header.from=gooddata.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=gooddata.com header.i=@gooddata.com header.a=rsa-sha256
+ header.s=google header.b=f2SnyvBi
+Subject: Re: [Intel-wired-lan] Increased memory usage on NUMA nodes with ICE
+ driver after upgrade to 6.13.y (regression in commit 492a044508ad)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -103,93 +137,157 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, May 20, 2025 at 10:36:56PM +0530, Krishna Kumar wrote:
-> This patch fixes an issue seen in a large-scale deployment under heavy
-> incoming pkts where the aRFS flow wrongly matches a flow and reprograms the
-> NIC with wrong settings. That mis-steering causes RX-path latency spikes
-> and noisy neighbor effects when many connections collide on the same
-> hash (some of our production servers have 20-30K connections).
-> 
-> set_rps_cpu() calls ndo_rx_flow_steer() with flow_id that is calculated by
-> hashing the skb sized by the per rx-queue table size. This results in
-> multiple connections (even across different rx-queues) getting the same
-> hash value. The driver steer function modifies the wrong flow to use this
-> rx-queue, e.g.: Flow#1 is first added:
->     Flow#1:  <ip1, port1, ip2, port2>, Hash 'h', q#10
-> 
-> Later when a new flow needs to be added:
-> 	    Flow#2:  <ip3, port3, ip4, port4>, Hash 'h', q#20
-> 
-> The driver finds the hash 'h' from Flow#1 and updates it to use q#20. This
-> results in both flows getting un-optimized - packets for Flow#1 goes to
-> q#20, and then reprogrammed back to q#10 later and so on; and Flow #2
-> programming is never done as Flow#1 is matched first for all misses. Many
-> flows may wrongly share the same hash and reprogram rules of the original
-> flow each with their own q#.
-> 
-> Tested on two 144-core servers with 16K netperf sessions for 180s. Netperf
-> clients are pinned to cores 0-71 sequentially (so that wrong packets on q#s
-> 72-143 can be measured). IRQs are set 1:1 for queues -> CPUs, enable XPS,
-> enable aRFS (global value is 144 * rps_flow_cnt).
-> 
-> Test notes about results from ice_rx_flow_steer():
-> ---------------------------------------------------
-> 1. "Skip:" counter increments here:
->     if (fltr_info->q_index == rxq_idx ||
-> 	arfs_entry->fltr_state != ICE_ARFS_ACTIVE)
-> 	    goto out;
-> 2. "Add:" counter increments here:
->     ret = arfs_entry->fltr_info.fltr_id;
->     INIT_HLIST_NODE(&arfs_entry->list_entry);
-> 3. "Update:" counter increments here:
->     /* update the queue to forward to on an already existing flow */
-> 
-> Runtime comparison: original code vs with the patch for different
-> rps_flow_cnt values.
-> 
-> +-------------------------------+--------------+--------------+
-> | rps_flow_cnt                  |      512     |    2048      |
-> +-------------------------------+--------------+--------------+
-> | Ratio of Pkts on Good:Bad q's | 214 vs 822K  | 1.1M vs 980K |
-> | Avoid wrong aRFS programming  | 0 vs 310K    | 0 vs 30K     |
-> | CPU User                      | 216 vs 183   | 216 vs 206   |
-> | CPU System                    | 1441 vs 1171 | 1447 vs 1320 |
-> | CPU Softirq                   | 1245 vs 920  | 1238 vs 961  |
-> | CPU Total                     | 29 vs 22.7   | 29 vs 24.9   |
-> | aRFS Update                   | 533K vs 59   | 521K vs 32   |
-> | aRFS Skip                     | 82M vs 77M   | 7.2M vs 4.5M |
-> +-------------------------------+--------------+--------------+
-> 
-> A separate TCP_STREAM and TCP_RR with 1,4,8,16,64,128,256,512 connections
-> showed no performance degradation.
-> 
-> Some points on the patch/aRFS behavior:
-> 1. Enabling full tuple matching ensures flows are always correctly matched,
->    even with smaller hash sizes.
-> 2. 5-6% drop in CPU utilization as the packets arrive at the correct CPUs
->    and fewer calls to driver for programming on misses.
-> 3. Larger hash tables reduces mis-steering due to more unique flow hashes,
->    but still has clashes. However, with larger per-device rps_flow_cnt, old
->    flows take more time to expire and new aRFS flows cannot be added if h/w
->    limits are reached (rps_may_expire_flow() succeeds when 10*rps_flow_cnt
->    pkts have been processed by this cpu that are not part of the flow).
-> 
-> Changes since v1:
->   - Added "Fixes:" tag and documented return values.
->   - Added @ for function parameters.
->   - Updated subject line to denote target tree (net)
+--0000000000000fdbce0635a20d23
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Thanks for the updates, much appreciated.
+Hello
 
-I don't think it is necessary to repost because of this, but for future
-reference, these days it is preferred to place change information, like
-that immediately above, below the scissors ("---"). That way it is visible
-to reviewers and appears in mailing list archives and so on.  But it is
-omitted from git history, as there the commit message is truncated at the
-scissors.
+some observation
+* I'm still observing this "problem" with latest 6.14.y
+* there must be multiple problems, the memory utilization is slowly going
+down at home NUMA nodes where intel x810 NIC are (like some memory leak)
 
-> Fixes: 28bf26724fdb0 ("ice: Implement aRFS")
-> Signed-off-by: Krishna Kumar <krikku@gmail.com>
+Were you able to reproduce the memory problems in your testbed?
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+Best,
+Jaroslav
 
+=C4=8Dt 17. 4. 2025 v 19:52 odes=C3=ADlatel Keller, Jacob E <jacob.e.keller=
+@intel.com>
+napsal:
+
+>
+>
+> > -----Original Message-----
+> > From: Jakub Kicinski <kuba@kernel.org>
+> > Sent: Wednesday, April 16, 2025 5:13 PM
+> > To: Keller, Jacob E <jacob.e.keller@intel.com>
+> > Cc: Jaroslav Pulchart <jaroslav.pulchart@gooddata.com>; Kitszel,
+> Przemyslaw
+> > <przemyslaw.kitszel@intel.com>; Damato, Joe <jdamato@fastly.com>;
+> intel-wired-
+> > lan@lists.osuosl.org; netdev@vger.kernel.org; Nguyen, Anthony L
+> > <anthony.l.nguyen@intel.com>; Igor Raits <igor@gooddata.com>; Daniel
+> Secik
+> > <daniel.secik@gooddata.com>; Zdenek Pesek <zdenek.pesek@gooddata.com>;
+> > Dumazet, Eric <edumazet@google.com>; Martin Karsten
+> > <mkarsten@uwaterloo.ca>; Zaki, Ahmed <ahmed.zaki@intel.com>; Czapnik,
+> > Lukasz <lukasz.czapnik@intel.com>; Michal Swiatkowski
+> > <michal.swiatkowski@linux.intel.com>
+> > Subject: Re: [Intel-wired-lan] Increased memory usage on NUMA nodes wit=
+h
+> ICE
+> > driver after upgrade to 6.13.y (regression in commit 492a044508ad)
+> >
+> > On Wed, 16 Apr 2025 22:57:10 +0000 Keller, Jacob E wrote:
+> > > > > And you're reverting just and exactly 492a044508ad13 ?
+> > > > > The memory for persistent config is allocated in alloc_netdev_mqs=
+()
+> > > > > unconditionally. I'm lost as to how this commit could make any
+> > > > > difference :(
+> > > >
+> > > > Yes, reverted the 492a044508ad13.
+> > >
+> > > Struct napi_config *is* 1056 bytes
+> >
+> > You're probably looking at 6.15-rcX kernels. Yes, the affinity mask
+> > can be large depending on the kernel config. But report is for 6.13,
+> > AFAIU. In 6.13 and 6.14 napi_config was tiny.
+>
+> Regardless, it should still be ~64KB even in that case which is a far cry
+> from eating all available memory. Something else must be going on....
+>
+> Thanks,
+> Jake
+>
+
+
+--=20
+Jaroslav Pulchart
+Sr. Principal SW Engineer
+GoodData
+
+--0000000000000fdbce0635a20d23
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hello<div><br></div><div>some observation</div><div>* I&#3=
+9;m still observing this &quot;problem&quot;=C2=A0with=C2=A0latest 6.14.y</=
+div><div>* there must be multiple problems, the memory=C2=A0utilization is =
+slowly going down at home NUMA nodes where intel x810 NIC are (like some me=
+mory leak)</div><div><br></div><div>Were you able to reproduce the memory p=
+roblems in your testbed?</div><div><br></div><div>Best,</div><div>Jaroslav=
+=C2=A0</div></div><br><div class=3D"gmail_quote gmail_quote_container"><div=
+ dir=3D"ltr" class=3D"gmail_attr">=C4=8Dt 17. 4. 2025 v=C2=A019:52 odes=C3=
+=ADlatel Keller, Jacob E &lt;<a href=3D"mailto:jacob.e.keller@intel.com">ja=
+cob.e.keller@intel.com</a>&gt; napsal:<br></div><blockquote class=3D"gmail_=
+quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,=
+204);padding-left:1ex"><br>
+<br>
+&gt; -----Original Message-----<br>
+&gt; From: Jakub Kicinski &lt;<a href=3D"mailto:kuba@kernel.org" target=3D"=
+_blank">kuba@kernel.org</a>&gt;<br>
+&gt; Sent: Wednesday, April 16, 2025 5:13 PM<br>
+&gt; To: Keller, Jacob E &lt;<a href=3D"mailto:jacob.e.keller@intel.com" ta=
+rget=3D"_blank">jacob.e.keller@intel.com</a>&gt;<br>
+&gt; Cc: Jaroslav Pulchart &lt;<a href=3D"mailto:jaroslav.pulchart@gooddata=
+.com" target=3D"_blank">jaroslav.pulchart@gooddata.com</a>&gt;; Kitszel, Pr=
+zemyslaw<br>
+&gt; &lt;<a href=3D"mailto:przemyslaw.kitszel@intel.com" target=3D"_blank">=
+przemyslaw.kitszel@intel.com</a>&gt;; Damato, Joe &lt;<a href=3D"mailto:jda=
+mato@fastly.com" target=3D"_blank">jdamato@fastly.com</a>&gt;; intel-wired-=
+<br>
+&gt; <a href=3D"mailto:lan@lists.osuosl.org" target=3D"_blank">lan@lists.os=
+uosl.org</a>; <a href=3D"mailto:netdev@vger.kernel.org" target=3D"_blank">n=
+etdev@vger.kernel.org</a>; Nguyen, Anthony L<br>
+&gt; &lt;<a href=3D"mailto:anthony.l.nguyen@intel.com" target=3D"_blank">an=
+thony.l.nguyen@intel.com</a>&gt;; Igor Raits &lt;<a href=3D"mailto:igor@goo=
+ddata.com" target=3D"_blank">igor@gooddata.com</a>&gt;; Daniel Secik<br>
+&gt; &lt;<a href=3D"mailto:daniel.secik@gooddata.com" target=3D"_blank">dan=
+iel.secik@gooddata.com</a>&gt;; Zdenek Pesek &lt;<a href=3D"mailto:zdenek.p=
+esek@gooddata.com" target=3D"_blank">zdenek.pesek@gooddata.com</a>&gt;;<br>
+&gt; Dumazet, Eric &lt;<a href=3D"mailto:edumazet@google.com" target=3D"_bl=
+ank">edumazet@google.com</a>&gt;; Martin Karsten<br>
+&gt; &lt;<a href=3D"mailto:mkarsten@uwaterloo.ca" target=3D"_blank">mkarste=
+n@uwaterloo.ca</a>&gt;; Zaki, Ahmed &lt;<a href=3D"mailto:ahmed.zaki@intel.=
+com" target=3D"_blank">ahmed.zaki@intel.com</a>&gt;; Czapnik,<br>
+&gt; Lukasz &lt;<a href=3D"mailto:lukasz.czapnik@intel.com" target=3D"_blan=
+k">lukasz.czapnik@intel.com</a>&gt;; Michal Swiatkowski<br>
+&gt; &lt;<a href=3D"mailto:michal.swiatkowski@linux.intel.com" target=3D"_b=
+lank">michal.swiatkowski@linux.intel.com</a>&gt;<br>
+&gt; Subject: Re: [Intel-wired-lan] Increased memory usage on NUMA nodes wi=
+th ICE<br>
+&gt; driver after upgrade to 6.13.y (regression in commit 492a044508ad)<br>
+&gt; <br>
+&gt; On Wed, 16 Apr 2025 22:57:10 +0000 Keller, Jacob E wrote:<br>
+&gt; &gt; &gt; &gt; And you&#39;re reverting just and exactly 492a044508ad1=
+3 ?<br>
+&gt; &gt; &gt; &gt; The memory for persistent config is allocated in alloc_=
+netdev_mqs()<br>
+&gt; &gt; &gt; &gt; unconditionally. I&#39;m lost as to how this commit cou=
+ld make any<br>
+&gt; &gt; &gt; &gt; difference :(<br>
+&gt; &gt; &gt;<br>
+&gt; &gt; &gt; Yes, reverted the 492a044508ad13.<br>
+&gt; &gt;<br>
+&gt; &gt; Struct napi_config *is* 1056 bytes<br>
+&gt; <br>
+&gt; You&#39;re probably looking at 6.15-rcX kernels. Yes, the affinity mas=
+k<br>
+&gt; can be large depending on the kernel config. But report is for 6.13,<b=
+r>
+&gt; AFAIU. In 6.13 and 6.14 napi_config was tiny.<br>
+<br>
+Regardless, it should still be ~64KB even in that case which is a far cry f=
+rom eating all available memory. Something else must be going on....<br>
+<br>
+Thanks,<br>
+Jake<br>
+</blockquote></div><div><br clear=3D"all"></div><div><br></div><span class=
+=3D"gmail_signature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_s=
+ignature"><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr">Jaro=
+slav Pulchart<br></div><div dir=3D"ltr">Sr. Principal SW Engineer<br>GoodDa=
+ta</div></div></div></div></div></div>
+
+--0000000000000fdbce0635a20d23--
