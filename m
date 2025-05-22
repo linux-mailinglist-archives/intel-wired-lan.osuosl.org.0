@@ -2,218 +2,80 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A67DAC0067
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 May 2025 01:08:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 102B1AC04CA
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 May 2025 08:47:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E25FB83B7E;
-	Wed, 21 May 2025 23:08:41 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B319183C44;
+	Thu, 22 May 2025 06:47:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8AXGtWJFpkVC; Wed, 21 May 2025 23:08:41 +0000 (UTC)
+ id uZd7zE5gqdUH; Thu, 22 May 2025 06:47:57 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6B8728333E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 98C5483CDF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1747868921;
-	bh=jqpSQYLwlaBp9BrMONmSRS72PeQePV3OVGgspyOOVVE=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1747896476;
+	bh=F2Bty2tJkoDjimSwJZS25H2hJB8MsY/0un+2dbiWG2w=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=wO+uTRZBaz/1wZD2UvX+Ag4HbXJpQJorIndui8ohYd0mQ4ji1cv4jjJGfarub+Z4R
-	 NKcoPBDZldAhwkCBAXEq3Igg/vW81ehgCSPMTtxrUnWediTQ3GuLOCBEkqQLcOQsDh
-	 W2M1rczgFwVEV+vpHRarSd5UIKD/ylDPIooH4Z0jKt5QiLkdJCMpHaGlohQt7M++Je
-	 y4mDOHliAf7T3yCw3dHxaEg9d/rU++bFOunc9jAoKYrnX7sLXHLmWcjtKvSum2viNE
-	 Q7EkSapwvB++eA33WAvfydSxE3YxOeNCKAjwhgNHKR8maRo7QdsSnyE4bTr2fG6/Mm
-	 TV4glmrNbHKIw==
+	b=osNu7ztg/24VxZct+ZnewgTXZINfIL6iK+n4Msf1yycphYREqXJBu5uHUZ876I2QD
+	 gQvwx8TYhtZ4n6PB3aqd5WyHhKVqVsjCm56moHOz1wR2GyuH5lx+1BsHrd6wGfBkmG
+	 BHdTvalcH1kzVEpncxhVCghiFNpI3qy+p0aO0+YdndPuJcFkuz2Unm7sl2jZhIdt5s
+	 tLcZ/8oLafvYJSaANR6m7epMBkucDORqJ5RXsR+G3cc/oLoZVmLCMKHf9FOiuj7e/O
+	 qb8N0qluSPSj8qe+7QTHxpylMJbWEZqVpld8At6sHW2Qa6+9o6G4sLFj9NtXF8zRKw
+	 dvb2nQiGzeMkg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6B8728333E;
-	Wed, 21 May 2025 23:08:41 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 98C5483CDF;
+	Thu, 22 May 2025 06:47:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 3CB9314F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 May 2025 23:08:39 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id B2E4269
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 May 2025 06:47:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 54C4E81934
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 May 2025 23:08:38 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id AFCF681EC0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 May 2025 06:47:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id h8Mb8CEWbRla for <intel-wired-lan@lists.osuosl.org>;
- Wed, 21 May 2025 23:08:37 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
- helo=mgamail.intel.com; envelope-from=samuel.salin@intel.com;
+ id dmRQHefyNm8j for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 22 May 2025 06:47:53 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org B35F5819D5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B35F5819D5
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id B35F5819D5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 May 2025 23:08:37 +0000 (UTC)
-X-CSE-ConnectionGUID: R6R2T7sURVCw8aYTtHgI/A==
-X-CSE-MsgGUID: Q7QLrXr6QDWA1bTa6oNPUA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11440"; a="60509721"
-X-IronPort-AV: E=Sophos;i="6.15,304,1739865600"; d="scan'208";a="60509721"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 May 2025 16:08:37 -0700
-X-CSE-ConnectionGUID: /SRaznZDR/GdHWydpBNZOA==
-X-CSE-MsgGUID: NVZKkwNhRHy6PFbEVQlEWg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,304,1739865600"; d="scan'208";a="140142537"
-Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
- by orviesa006.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 May 2025 16:08:38 -0700
-Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
- ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.25; Wed, 21 May 2025 16:08:37 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.25 via Frontend Transport; Wed, 21 May 2025 16:08:37 -0700
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.170)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.55; Wed, 21 May 2025 16:08:36 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=JkT6wzyPM6lgr0a9oFlKHyGfPf17EaR9EsQLmFXJ2TPcwpdt//Oae4z3pqYhcadJum9WkWvsfFraUoIsFr5PHyspAe1faIdZMJJhu/8vWgvcxb4am5FiYU7YnEudxG9FuNaES8IfaTsB5LwXzMuYlQsS7OREKmbPd0kKWbivfgl7YroTkDoGaA86bcHPvAKQ39OlLQPAJUjjMGjKPepCKYW29I8XOH/GFeTiRXuoVAUAIdBgQtEf8vKvjlq3WpZ+efsMMf29YJl+zDRL5pMA9ouBG4CE3RiXgxoysiSG8gkUE1cJ4qC/Aj4WhiJ0LbyBZrvIOxZaIoCpsL694Vamkg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=jqpSQYLwlaBp9BrMONmSRS72PeQePV3OVGgspyOOVVE=;
- b=MLgZA5RHCe8B7lac3aXTsO3V5nAwrrtKChE3z7JkZ7rrU4s7JFibtzr+ncEhbpbF90WLxYD88FO/CVs13V1rexO9+ZE4GXwOgw7vkvKu95bEgINlQr+FaHm8UWjgL39sC+ufzs/ILdRi2YG8qYCg/IVxxKZZVLEkztSkKGrgbDzDnxTwao8+/MWX2NTIFXdoF9T3ulTJNFibqHox6XYPIPCr91BTn1ehzAnlsSHvzyhsOr1oFufxhzFRB41Lx3OtoXLA/PAmUYspW3YPqsDrs6DVvbVzeh4NxNkJ3tBu5AesNEbECqul1/C9CtfLsNY5Dx8G84J+XbEICGNt9KtF3A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from SJ1PR11MB6297.namprd11.prod.outlook.com (2603:10b6:a03:458::8)
- by BL1PR11MB5224.namprd11.prod.outlook.com (2603:10b6:208:30a::7)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8769.20; Wed, 21 May
- 2025 23:08:27 +0000
-Received: from SJ1PR11MB6297.namprd11.prod.outlook.com
- ([fe80::dc50:edbf:3882:abf7]) by SJ1PR11MB6297.namprd11.prod.outlook.com
- ([fe80::dc50:edbf:3882:abf7%6]) with mapi id 15.20.8746.030; Wed, 21 May 2025
- 23:08:27 +0000
-From: "Salin, Samuel" <samuel.salin@intel.com>
-To: "Linga, Pavan Kumar" <pavan.kumar.linga@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-CC: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Olech, Milena"
- <milena.olech@intel.com>, "Nadezhdin, Anton" <anton.nadezhdin@intel.com>,
- "Linga, Pavan Kumar" <pavan.kumar.linga@intel.com>, "Chittim, Madhu"
- <madhu.chittim@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH iwl-next v4 9/9] idpf: generalize
- mailbox API
-Thread-Index: AQHbwGNZiCI67Jj+LkypCPVZIlj84rPdxdDg
-Date: Wed, 21 May 2025 23:08:27 +0000
-Message-ID: <SJ1PR11MB629770E3D4294C5768AC60D49B9EA@SJ1PR11MB6297.namprd11.prod.outlook.com>
-References: <20250508215013.32668-1-pavan.kumar.linga@intel.com>
- <20250508215013.32668-10-pavan.kumar.linga@intel.com>
-In-Reply-To: <20250508215013.32668-10-pavan.kumar.linga@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SJ1PR11MB6297:EE_|BL1PR11MB5224:EE_
-x-ms-office365-filtering-correlation-id: d1d2c864-7178-4b8a-c344-08dd98bc655b
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|376014|366016|7053199007|38070700018; 
-x-microsoft-antispam-message-info: =?us-ascii?Q?vgAtWjYSKNUUCkcCBej4wtSmJjURLHITTGrQtg2NTK2tX0qae/H5CzxNxRvh?=
- =?us-ascii?Q?atYi5d3qbA1Ng6hVdvq1WkS+YoE8JhSfkC3PzxZqaZhG6w2tH4ZwfzIeVAsz?=
- =?us-ascii?Q?qsXnUMxozi53255ZVSw/zuYkf0+0h6BMhVLJVpT/XHVrNQ4yijIejDfujQTH?=
- =?us-ascii?Q?OnpmntfOEP8l7f0GxPh+vE5cS+iHaVnUnBrUF0jfGwgsLu0EvOKmn8P0XaW5?=
- =?us-ascii?Q?JI6OVpD7Zyuau9tHcsDDr4XD+pFYNE57MfxYn/Le/c6kMoA+xY4SWpFiyGQI?=
- =?us-ascii?Q?+jhdhuy35mRlvADszUo5t0rxICMqE35j3VrlVcC2XBOYemwVs1/iJ18BM9If?=
- =?us-ascii?Q?f/Hz6PRP9UeP6uy7t7gNCCBozdKxkaZyZWq9PKGLmcKqu04r2JgzUaOvwr41?=
- =?us-ascii?Q?X4dhYoh9g74tOhnIZOJUkjjOQy373ma0fMZ2qjK/LbmaiRlagPsJeGQLe0XX?=
- =?us-ascii?Q?QEVG43CIyxjhEuVebdYBlkstagFFFFkUljL/R5G3+v4ZZ6V4n5n+hJtKP3gU?=
- =?us-ascii?Q?oleCKCnOQTd5xMI3t88oENGwI2bbp1aavhNksV3nW+bykFEeXt819Ss0hBTR?=
- =?us-ascii?Q?1n7q/PNk0lTZZKrSYMdicjSou6Pq5Tu+w36kNuJgu6eAzUp8tYMdIvNBgQWM?=
- =?us-ascii?Q?VDw5sqyhdg05MuZs3R0MlicYIOs/+mlAJ8zYrdPN+zCMpVqfa2F5ELA9veSY?=
- =?us-ascii?Q?diLQTeNLrgkaJeK0pvHYIiZA4z2fe5/2Jto9PfUtjEUEtzenCi40UECBxucL?=
- =?us-ascii?Q?L0kq+YsvAlASHZkAR/lFyxURdoc5YZeJmZL8HAreXGlI+Qc2D9tadnknri+C?=
- =?us-ascii?Q?4BfkMe62nvAgTZAiwXeebwWwK5CpgndxeKoJ1pYvsusSDi0m2Ui0tuLoir90?=
- =?us-ascii?Q?hlzNGbjuTi3+RiS2ehCZjWBlkodCZowQByNlLO4r4QkqaNGbNSBanwy23pdp?=
- =?us-ascii?Q?RTlsZhd4/EhZsWej6O2LYK6uZFd2uN3QG24Za8Dv7S/PnzHV/LcVUhOixM+W?=
- =?us-ascii?Q?06JIop+b9QLEsywZnaxFxyJYby5OJSkbcQvLtnUQdWR9bxMdpRQ3DuQs0CQk?=
- =?us-ascii?Q?ODLea5EF+HUE3/NnFOgmv3WfSLYRklTGHVK8dGZb8BEkT0oxNBa3oZgX2/rN?=
- =?us-ascii?Q?lyp0oweQo5vdYCbzLWiggoR08fjKPkoiOWoHpHB5BJeFcmmr7qslkXY5IS2R?=
- =?us-ascii?Q?+tGjXJpM3x+g46IyYvQRDZnBSergKdU3FHKpQjHx0U+UW1/968oDUQdKa6n0?=
- =?us-ascii?Q?Czcp4BOsgBj1VsURiWcVFLdmDYtn3PnklIv37AxPRMxapGCFiPSZpKwk7jP3?=
- =?us-ascii?Q?EwmNJS2195xfr5Hb/y/QRKNnL9PvtST82tlKN1xvALUM+EocW9krRH6HpbXB?=
- =?us-ascii?Q?LpQApdkGtxbjRcfzBdYA+nh1fPy9an67u6sh6dN5MjxLh51eCSBGkwMhCJXT?=
- =?us-ascii?Q?iPCtjySlMu/Inuib2JwnYEmDClMwmTBJ/5I11Q1QgZSAbQYnKRLh142WA7uI?=
- =?us-ascii?Q?XQiwVqZzFFbhlx0=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ1PR11MB6297.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(376014)(366016)(7053199007)(38070700018); DIR:OUT;
- SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?Usx8WTQ0NmPkT1eGBC8ra57ZG6Lel4A5oZLWiF7YVivBU8/UR6lYmD+KvX7b?=
- =?us-ascii?Q?kFqXz4+Yd+W1Q3MySSPVTxjEEB6vu5EMQkZhYAsD5npRI5A1yTq4QiOfmttJ?=
- =?us-ascii?Q?mBpC6tZadXNeIkrCOz3nsrePrfpiRZSgyHd59UGbhSxq7PIfFSbmuT9EjOWc?=
- =?us-ascii?Q?rmG15DfU9LTwJpl8SZnvd0+Rsz7EpYOlYF5hKzf/14FFgz26vNNUWA4qPZjP?=
- =?us-ascii?Q?N+dnqFqF55AbZx7q2K+XOzPh2xym2SrTz/2Y2PBXDOqMcee9H/yNmR/u248M?=
- =?us-ascii?Q?yWwV4v9V/zQd6nmarxTqqtBBVOQ7dFyp3JxUINx0wiTBaBZWaojDxE/PWIz7?=
- =?us-ascii?Q?kqnlU9xrpLRCr61IE4dLkTMIBaRy7/yjXm6DHzp4bmp2J0fiATjyts8y1rBa?=
- =?us-ascii?Q?oSQQoPhSHUgJ4KhIkFjSlj0crkqNI6wsQHHnJI3OTZQ5G2NSDKuWbOzhdTJ+?=
- =?us-ascii?Q?9PPfbpGbLxcIldcmjagueedkGPCroSqdIciFOgkoo9FmlozDcQlABF5wLzva?=
- =?us-ascii?Q?tJbrRD3NN18FGiFvGDLTSE/uH+xNa3hF4F/XVbIRgVUTRX7kOjsHw5sxgjQU?=
- =?us-ascii?Q?VOOD05+Bh/Rr4NLSAlO9smZTEsSXBdmQlniU5HuXgfYvZ3TH3XJg0ys+Uizm?=
- =?us-ascii?Q?sQx5zH9NTMQ6mpR+QxIZyk1Ra02J0KzLcMDc/Fy8dYIPhtk/9HOQxQz1UCxi?=
- =?us-ascii?Q?qOtGJoOHbzs16DjeanzGLoPKfsz15wxEcrEa/p0A1IqCBVAU9MJ74vkAj211?=
- =?us-ascii?Q?dU6HOp6uxPGLRe7SGrcdA8gTKMCij1Ih7QnfMWOei4Nv8ovaxg6HHKnQbP8V?=
- =?us-ascii?Q?u6zkVYkVCWrMlkxFJFVd2j7FvlZluLw7fuYEUWhPUEVp8WpKytvJYDfVMkDm?=
- =?us-ascii?Q?NzKxCxYRN4GVXHwD5pFKBBuevXROtLBR4RorjnvX6dQBFdnq6ohkmLmsO5jg?=
- =?us-ascii?Q?1QNIYQ5bzeWaLvIkZtn4hzAUUjMnt/tAiGK1ks7N5xsSFECwexDIdKFlpeQl?=
- =?us-ascii?Q?TvL9WtXQbnVJxYhJj7thlR2cfdTd5i/lK97JiH/ublZQCvCcaTLoyYlUeEXp?=
- =?us-ascii?Q?81s3V8k1xvUV/cZvCaLPEonXVKyXalf3ANj1rMJHgqHy0ugsWeW/xNEBmNAs?=
- =?us-ascii?Q?z/pGsB5S/Kb534SAdGz8smbuUDW3QpByrE3dty9XzV8BwOJzzs4IUiWHE4BW?=
- =?us-ascii?Q?jZux0c47dl2NSRM35/y3IGpVLohKEBxU+CP2cUNqd1rSB7ZDW3Znsg08mqSX?=
- =?us-ascii?Q?xU8oHxBMEUuwdPnGHbJTyDnBhokqxDTe7+dqfbrjoXyn3KSMISqNrjAsNeWd?=
- =?us-ascii?Q?SkPoPNnniWe5TG6v0MxwK6ZkTTIa4DxfM0M5jnkR+bY67mceqDDzB/Axtd7b?=
- =?us-ascii?Q?eMinauitqxNFZLJozRu/gPBcVTTb65neCl/v5K81mlC/r1wC+3FYPIPzjvyF?=
- =?us-ascii?Q?gXQKwcENXo8tz2KXBt8pVVhtRIfdEgol89Du7maLcPJ8wvEw0VNmamXrOo2K?=
- =?us-ascii?Q?jHFycN23XsEfzrJ/RwdqFM4mdj4X6uw6FxFZY753Cu11+HPBqFYuyprbjRKn?=
- =?us-ascii?Q?Ocun8JCPZCu+40j9PdSzjKFdvyQBb5oiBNsCLIYQ?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4B18D83C89
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4B18D83C89
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4B18D83C89
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 May 2025 06:47:51 +0000 (UTC)
+Received: from [192.168.0.192] (ip5f5af503.dynamic.kabel-deutschland.de
+ [95.90.245.3])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 3594761E64855;
+ Thu, 22 May 2025 08:47:31 +0200 (CEST)
+Message-ID: <2d18429a-f999-4166-90db-834ea03a6e7a@molgen.mpg.de>
+Date: Thu, 22 May 2025 08:47:30 +0200
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SJ1PR11MB6297.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d1d2c864-7178-4b8a-c344-08dd98bc655b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 21 May 2025 23:08:27.7812 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Tt4i56GdNsLf05dKC5N03y11D2NVmZwUaINzQBtl7FefeLJXfXqC9ZUb3YPb5hEOdEW28i756z+qBs6ZcoYghQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR11MB5224
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1747868918; x=1779404918;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=jqpSQYLwlaBp9BrMONmSRS72PeQePV3OVGgspyOOVVE=;
- b=OsSaAaj9V49Dzr+Z5EcZOqCYrAhC2bNaSZgYMAcV76GlA3MG3VZ6a/u0
- UNW0L2xRb/zdeTx2ul0vhQLJ4B7EAQvTr2OQSegyDUZJOf0KxylRJwjNr
- Alfw9fV/JuGkI0SWryg+2Lge1yJPRbZCVb3XFBsmDNUeZr2XWkPLA9xCV
- IKy1k6hL7SIAtaCO60TcdHDZaCMRwLV733CP+VM1C740hR1b+Cj20I9Zq
- xRlH5I7oOQoTEbFSLgVR+9Gie1YwedHpINM6OAjuBgdR80hPbrnxqV4lF
- nGRARmgSrrskU5s5dGbqEfvnGY1PoepgTgaQIj+QA6EPYGIe5ASV+/EYs
- g==;
+User-Agent: Mozilla Thunderbird
+To: Karol Kolacinski <karol.kolacinski@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ richardcochran@gmail.com, Milena Olech <milena.olech@intel.com>
+References: <20250520110823.1937981-6-karol.kolacinski@intel.com>
+ <20250520110823.1937981-7-karol.kolacinski@intel.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20250520110823.1937981-7-karol.kolacinski@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=OsSaAaj9
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 9/9] idpf: generalize
- mailbox API
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 1/4] ice: skip completion for
+ sideband queue writes
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -229,27 +91,294 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Dear Karol,
 
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Pavan Kumar Linga
-> Sent: Thursday, May 8, 2025 2:50 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: netdev@vger.kernel.org; Olech, Milena <milena.olech@intel.com>;
-> Nadezhdin, Anton <anton.nadezhdin@intel.com>; Linga, Pavan Kumar
-> <pavan.kumar.linga@intel.com>; Chittim, Madhu
-> <madhu.chittim@intel.com>
-> Subject: [Intel-wired-lan] [PATCH iwl-next v4 9/9] idpf: generalize mailb=
-ox API
->=20
-> Add a control queue parameter to all mailbox APIs in order to make use of
-> those APIs for non-default mailbox as well.
->=20
-> Signed-off-by: Anton Nadezhdin <anton.nadezhdin@intel.com>
-> Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
-> Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+Thank you for your patch.
+
+Am 20.05.25 um 13:06 schrieb Karol Kolacinski:
+> Sideband queue (SBQ) is a HW queue with very short completion time. All
+> SBQ writes were posted by default, which means that the driver did not
+> have to wait for completion from the neighbor device, because there was
+> none. This introduced unnecessary delays, where only those delays were
+> "ensuring" that the command is "completed" and this was a potential race
+> condition.
+> 
+> Add the possibility to perform non-posted writes where it's necessary to
+> wait for completion, instead of relying on fake completion from the FW,
+> where only the delays are guarding the writes.
+> 
+> Flush the SBQ by reading address 0 from the PHY 0 before issuing SYNC
+> command to ensure that writes to all PHYs were completed and skip SBQ
+> message completion if it's posted.
+
+How can these delays be analyzed, and verified that these are gone? It’d 
+be great if you added that to the commit mesasge.
+
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Reviewed-by: Milena Olech <milena.olech@intel.com>
+> Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
 > ---
-> 2.43.0
+>   drivers/net/ethernet/intel/ice/ice_common.c   | 13 ++--
+>   drivers/net/ethernet/intel/ice/ice_controlq.c |  4 ++
+>   drivers/net/ethernet/intel/ice/ice_controlq.h |  1 +
+>   drivers/net/ethernet/intel/ice/ice_ptp_hw.c   | 62 +++++++++++--------
+>   drivers/net/ethernet/intel/ice/ice_sbq_cmd.h  |  5 +-
+>   5 files changed, 52 insertions(+), 33 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+> index 11a954e8dc62..53b9b5b54187 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_common.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_common.c
+> @@ -1523,6 +1523,7 @@ int ice_sbq_rw_reg(struct ice_hw *hw, struct ice_sbq_msg_input *in, u16 flags)
+>   {
+>   	struct ice_sbq_cmd_desc desc = {0};
+>   	struct ice_sbq_msg_req msg = {0};
+> +	struct ice_sq_cd cd = {};
+>   	u16 msg_len;
+>   	int status;
+>   
+> @@ -1535,7 +1536,7 @@ int ice_sbq_rw_reg(struct ice_hw *hw, struct ice_sbq_msg_input *in, u16 flags)
+>   	msg.msg_addr_low = cpu_to_le16(in->msg_addr_low);
+>   	msg.msg_addr_high = cpu_to_le32(in->msg_addr_high);
+>   
+> -	if (in->opcode)
+> +	if (in->opcode == ice_sbq_msg_wr_p || in->opcode == ice_sbq_msg_wr_np)
 
-Tested-by: Samuel Salin <Samuel.salin@intel.com>
+For me, it’d be helpful, if the suffixes were `_posted` and `_nonposted`.
+
+
+Kind regards,
+
+Paul
+
+
+>   		msg.data = cpu_to_le32(in->data);
+>   	else
+>   		/* data read comes back in completion, so shorten the struct by
+> @@ -1543,10 +1544,12 @@ int ice_sbq_rw_reg(struct ice_hw *hw, struct ice_sbq_msg_input *in, u16 flags)
+>   		 */
+>   		msg_len -= sizeof(msg.data);
+>   
+> +	cd.postpone = in->opcode == ice_sbq_msg_wr_p;
+> +
+>   	desc.flags = cpu_to_le16(flags);
+>   	desc.opcode = cpu_to_le16(ice_sbq_opc_neigh_dev_req);
+>   	desc.param0.cmd_len = cpu_to_le16(msg_len);
+> -	status = ice_sbq_send_cmd(hw, &desc, &msg, msg_len, NULL);
+> +	status = ice_sbq_send_cmd(hw, &desc, &msg, msg_len, &cd);
+>   	if (!status && !in->opcode)
+>   		in->data = le32_to_cpu
+>   			(((struct ice_sbq_msg_cmpl *)&msg)->data);
+> @@ -6260,7 +6263,7 @@ int ice_read_cgu_reg(struct ice_hw *hw, u32 addr, u32 *val)
+>   	struct ice_sbq_msg_input cgu_msg = {
+>   		.opcode = ice_sbq_msg_rd,
+>   		.dest_dev = ice_sbq_dev_cgu,
+> -		.msg_addr_low = addr
+> +		.msg_addr_low = addr,
+>   	};
+>   	int err;
+>   
+> @@ -6290,10 +6293,10 @@ int ice_read_cgu_reg(struct ice_hw *hw, u32 addr, u32 *val)
+>   int ice_write_cgu_reg(struct ice_hw *hw, u32 addr, u32 val)
+>   {
+>   	struct ice_sbq_msg_input cgu_msg = {
+> -		.opcode = ice_sbq_msg_wr,
+> +		.opcode = ice_sbq_msg_wr_np,
+>   		.dest_dev = ice_sbq_dev_cgu,
+>   		.msg_addr_low = addr,
+> -		.data = val
+> +		.data = val,
+>   	};
+>   	int err;
+>   
+> diff --git a/drivers/net/ethernet/intel/ice/ice_controlq.c b/drivers/net/ethernet/intel/ice/ice_controlq.c
+> index dcb837cadd18..5fb3a8441beb 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_controlq.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_controlq.c
+> @@ -1086,6 +1086,10 @@ ice_sq_send_cmd(struct ice_hw *hw, struct ice_ctl_q_info *cq,
+>   	wr32(hw, cq->sq.tail, cq->sq.next_to_use);
+>   	ice_flush(hw);
+>   
+> +	/* If the message is posted, don't wait for completion. */
+> +	if (cd && cd->postpone)
+> +		goto sq_send_command_error;
+> +
+>   	/* Wait for the command to complete. If it finishes within the
+>   	 * timeout, copy the descriptor back to temp.
+>   	 */
+> diff --git a/drivers/net/ethernet/intel/ice/ice_controlq.h b/drivers/net/ethernet/intel/ice/ice_controlq.h
+> index 788040dd662e..7c98d3a0314e 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_controlq.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_controlq.h
+> @@ -77,6 +77,7 @@ struct ice_ctl_q_ring {
+>   /* sq transaction details */
+>   struct ice_sq_cd {
+>   	struct libie_aq_desc *wb_desc;
+> +	u8 postpone : 1;
+>   };
+>   
+>   /* rq event information */
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+> index 523f95271f35..9a4ecf1249ee 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+> @@ -352,6 +352,13 @@ void ice_ptp_src_cmd(struct ice_hw *hw, enum ice_ptp_tmr_cmd cmd)
+>   static void ice_ptp_exec_tmr_cmd(struct ice_hw *hw)
+>   {
+>   	struct ice_pf *pf = container_of(hw, struct ice_pf, hw);
+> +	struct ice_sbq_msg_input msg = {
+> +		.dest_dev = ice_sbq_dev_phy_0,
+> +		.opcode = ice_sbq_msg_rd,
+> +	};
+> +
+> +	/* Flush SBQ by reading address 0 on PHY 0 */
+> +	ice_sbq_rw_reg(hw, &msg, LIBIE_AQ_FLAG_RD);
+>   
+>   	if (!ice_is_primary(hw))
+>   		hw = ice_get_primary_hw(pf);
+> @@ -417,10 +424,10 @@ static int ice_write_phy_eth56g(struct ice_hw *hw, u8 port, u32 addr, u32 val)
+>   {
+>   	struct ice_sbq_msg_input msg = {
+>   		.dest_dev = ice_ptp_get_dest_dev_e825(hw, port),
+> -		.opcode = ice_sbq_msg_wr,
+> +		.opcode = ice_sbq_msg_wr_p,
+>   		.msg_addr_low = lower_16_bits(addr),
+>   		.msg_addr_high = upper_16_bits(addr),
+> -		.data = val
+> +		.data = val,
+>   	};
+>   	int err;
+>   
+> @@ -2342,11 +2349,12 @@ static bool ice_is_40b_phy_reg_e82x(u16 low_addr, u16 *high_addr)
+>   static int
+>   ice_read_phy_reg_e82x(struct ice_hw *hw, u8 port, u16 offset, u32 *val)
+>   {
+> -	struct ice_sbq_msg_input msg = {0};
+> +	struct ice_sbq_msg_input msg = {
+> +		.opcode = ice_sbq_msg_rd,
+> +	};
+>   	int err;
+>   
+>   	ice_fill_phy_msg_e82x(hw, &msg, port, offset);
+> -	msg.opcode = ice_sbq_msg_rd;
+>   
+>   	err = ice_sbq_rw_reg(hw, &msg, LIBIE_AQ_FLAG_RD);
+>   	if (err) {
+> @@ -2419,12 +2427,13 @@ ice_read_64b_phy_reg_e82x(struct ice_hw *hw, u8 port, u16 low_addr, u64 *val)
+>   static int
+>   ice_write_phy_reg_e82x(struct ice_hw *hw, u8 port, u16 offset, u32 val)
+>   {
+> -	struct ice_sbq_msg_input msg = {0};
+> +	struct ice_sbq_msg_input msg = {
+> +		.opcode = ice_sbq_msg_wr_p,
+> +		.data = val,
+> +	};
+>   	int err;
+>   
+>   	ice_fill_phy_msg_e82x(hw, &msg, port, offset);
+> -	msg.opcode = ice_sbq_msg_wr;
+> -	msg.data = val;
+>   
+>   	err = ice_sbq_rw_reg(hw, &msg, LIBIE_AQ_FLAG_RD);
+>   	if (err) {
+> @@ -2578,15 +2587,15 @@ static int ice_fill_quad_msg_e82x(struct ice_hw *hw,
+>   int
+>   ice_read_quad_reg_e82x(struct ice_hw *hw, u8 quad, u16 offset, u32 *val)
+>   {
+> -	struct ice_sbq_msg_input msg = {0};
+> +	struct ice_sbq_msg_input msg = {
+> +		.opcode = ice_sbq_msg_rd,
+> +	};
+>   	int err;
+>   
+>   	err = ice_fill_quad_msg_e82x(hw, &msg, quad, offset);
+>   	if (err)
+>   		return err;
+>   
+> -	msg.opcode = ice_sbq_msg_rd;
+> -
+>   	err = ice_sbq_rw_reg(hw, &msg, LIBIE_AQ_FLAG_RD);
+>   	if (err) {
+>   		ice_debug(hw, ICE_DBG_PTP, "Failed to send message to PHY, err %d\n",
+> @@ -2612,16 +2621,16 @@ ice_read_quad_reg_e82x(struct ice_hw *hw, u8 quad, u16 offset, u32 *val)
+>   int
+>   ice_write_quad_reg_e82x(struct ice_hw *hw, u8 quad, u16 offset, u32 val)
+>   {
+> -	struct ice_sbq_msg_input msg = {0};
+> +	struct ice_sbq_msg_input msg = {
+> +		.opcode = ice_sbq_msg_wr_p,
+> +		.data = val,
+> +	};
+>   	int err;
+>   
+>   	err = ice_fill_quad_msg_e82x(hw, &msg, quad, offset);
+>   	if (err)
+>   		return err;
+>   
+> -	msg.opcode = ice_sbq_msg_wr;
+> -	msg.data = val;
+> -
+>   	err = ice_sbq_rw_reg(hw, &msg, LIBIE_AQ_FLAG_RD);
+>   	if (err) {
+>   		ice_debug(hw, ICE_DBG_PTP, "Failed to send message to PHY, err %d\n",
+> @@ -4259,13 +4268,14 @@ static void ice_ptp_init_phy_e82x(struct ice_ptp_hw *ptp)
+>    */
+>   static int ice_read_phy_reg_e810(struct ice_hw *hw, u32 addr, u32 *val)
+>   {
+> -	struct ice_sbq_msg_input msg = {0};
+> +	struct ice_sbq_msg_input msg = {
+> +		.dest_dev = ice_sbq_dev_phy_0,
+> +		.opcode = ice_sbq_msg_rd,
+> +		.msg_addr_low = lower_16_bits(addr),
+> +		.msg_addr_high = upper_16_bits(addr),
+> +	};
+>   	int err;
+>   
+> -	msg.msg_addr_low = lower_16_bits(addr);
+> -	msg.msg_addr_high = upper_16_bits(addr);
+> -	msg.opcode = ice_sbq_msg_rd;
+> -	msg.dest_dev = ice_sbq_dev_phy_0;
+>   
+>   	err = ice_sbq_rw_reg(hw, &msg, LIBIE_AQ_FLAG_RD);
+>   	if (err) {
+> @@ -4289,15 +4299,15 @@ static int ice_read_phy_reg_e810(struct ice_hw *hw, u32 addr, u32 *val)
+>    */
+>   static int ice_write_phy_reg_e810(struct ice_hw *hw, u32 addr, u32 val)
+>   {
+> -	struct ice_sbq_msg_input msg = {0};
+> +	struct ice_sbq_msg_input msg = {
+> +		.dest_dev = ice_sbq_dev_phy_0,
+> +		.opcode = ice_sbq_msg_wr_p,
+> +		.msg_addr_low = lower_16_bits(addr),
+> +		.msg_addr_high = upper_16_bits(addr),
+> +		.data = val,
+> +	};
+>   	int err;
+>   
+> -	msg.msg_addr_low = lower_16_bits(addr);
+> -	msg.msg_addr_high = upper_16_bits(addr);
+> -	msg.opcode = ice_sbq_msg_wr;
+> -	msg.dest_dev = ice_sbq_dev_phy_0;
+> -	msg.data = val;
+> -
+>   	err = ice_sbq_rw_reg(hw, &msg, LIBIE_AQ_FLAG_RD);
+>   	if (err) {
+>   		ice_debug(hw, ICE_DBG_PTP, "Failed to send message to PHY, err %d\n",
+> diff --git a/drivers/net/ethernet/intel/ice/ice_sbq_cmd.h b/drivers/net/ethernet/intel/ice/ice_sbq_cmd.h
+> index 183dd5457d6a..7960f888a655 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_sbq_cmd.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_sbq_cmd.h
+> @@ -53,8 +53,9 @@ enum ice_sbq_dev_id {
+>   };
+>   
+>   enum ice_sbq_msg_opcode {
+> -	ice_sbq_msg_rd	= 0x00,
+> -	ice_sbq_msg_wr	= 0x01
+> +	ice_sbq_msg_rd		= 0x00,
+> +	ice_sbq_msg_wr_p	= 0x01,
+> +	ice_sbq_msg_wr_np	= 0x02,
+>   };
+>   
+>   #define ICE_SBQ_MSG_FLAGS	0x40
+
