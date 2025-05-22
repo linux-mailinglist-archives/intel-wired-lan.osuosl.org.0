@@ -1,98 +1,118 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1D763AC07C4
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 May 2025 10:52:25 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 52EE6AC07CC
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 May 2025 10:54:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B3749419AB;
-	Thu, 22 May 2025 08:52:23 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0A98C83C87;
+	Thu, 22 May 2025 08:54:07 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id bn2aKtoko42U; Thu, 22 May 2025 08:54:06 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2772683C60
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1747904046;
+	bh=JsEDHBZOOtazqkfVbNehyiVOpjWayP5/qV2gqESfGGw=;
+	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=3MMd45wvYe0FcrSGwKUyCaLnnkcrUjTRzM7ZDuSydhICLzr7h2YI2X9e88SCJRz8W
+	 +R3pxxajv+Avy4Xd/I7WRZEnLWsfqt54KhycGTzvuw2YHwQigepYFbxZP54hdaeRSk
+	 TSR6HS8VFlHcP0acwFjS6v+4Xtrec3nlWnKHjEKEXfKP2I53DPV5i4ZiYyITgnoJ40
+	 VpMf2eozaeDD4TFLezMErUf6klhSELWukP+b6p8mKgyCYhQwZhREWrPmmeOeS1OIFl
+	 tv4mG0kSMohOUZfQDsLo0c2dIYXTtBX7XARJJBZ6cU1U32LmShGN+yaS+HdCPZ5R+i
+	 ESCu5JU3b19gg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2772683C60;
+	Thu, 22 May 2025 08:54:06 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3EDBDBC
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 May 2025 08:54:04 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 988C4419AB
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 May 2025 08:54:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2RhSmHdFz2ks; Thu, 22 May 2025 08:52:23 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 132A7419E2
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1747903943;
-	bh=N0FIsTiv8hRCu13jqJK7f5YF3s6fvjE5zNheTOmQwgM=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=XnZFaNfS/dv5WtcOz+Yd07Adc7Olnsio5lyulP1qDWixWIyQIUQ1I46qyK8h12vRG
-	 Fsa2odTwrFd/rP5Dbo6DgZX2q1fU0QubS+sBeSPHPxEGN82ph/9g1ikph8vsJFEyKO
-	 QFbPGpBGlGf2cwPQWRdS+3XrBf8lW5nA/LUIehYM3kEsafikyEaHDV4GJO5uN13sid
-	 A9Ukuvk61k/u6dyTqpBDS/W/ogi+T+sdi/jBCLyPWA5d5C/kBU58QncYCzYKRjJSRZ
-	 kez3ddkNF+AqzmIB/ITFONdkDKIuYC8dggNREtKDkzGMtwtXgXxI4Sav70IgmWg2hl
-	 LWB8cK9eXUm8w==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 132A7419E2;
-	Thu, 22 May 2025 08:52:23 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id D58AE69
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 May 2025 08:52:20 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C720E613BB
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 May 2025 08:52:20 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id jea6a94HTWlD for <intel-wired-lan@lists.osuosl.org>;
- Thu, 22 May 2025 08:52:20 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
- helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 0BE8861389
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0BE8861389
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 0BE8861389
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 May 2025 08:52:19 +0000 (UTC)
-X-CSE-ConnectionGUID: 0Z89HJ/5SCOVqMneDvue+A==
-X-CSE-MsgGUID: hrZsY4ShTqC+oJx3M1HDlw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11440"; a="75313062"
-X-IronPort-AV: E=Sophos;i="6.15,305,1739865600"; d="scan'208";a="75313062"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 May 2025 01:52:19 -0700
-X-CSE-ConnectionGUID: cF7LHSLRQJSLoecNMXXQYA==
-X-CSE-MsgGUID: C4rqEeTFR4+bQmFsaQsdzQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,305,1739865600"; d="scan'208";a="141419693"
-Received: from gk3153-dr2-r750-36946.igk.intel.com ([10.102.20.192])
- by orviesa008.jf.intel.com with ESMTP; 22 May 2025 01:52:18 -0700
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- Ahmed Zaki <ahmed.zaki@intel.com>
-Date: Thu, 22 May 2025 10:52:06 +0200
-Message-ID: <20250522085206.1119209-1-michal.swiatkowski@linux.intel.com>
-X-Mailer: git-send-email 2.42.0
+ id axxKwuK18erK for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 22 May 2025 08:54:03 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::62a; helo=mail-pl1-x62a.google.com;
+ envelope-from=krikku@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org E2EAA419BC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E2EAA419BC
+Received: from mail-pl1-x62a.google.com (mail-pl1-x62a.google.com
+ [IPv6:2607:f8b0:4864:20::62a])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E2EAA419BC
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 May 2025 08:54:02 +0000 (UTC)
+Received: by mail-pl1-x62a.google.com with SMTP id
+ d9443c01a7336-231fc83a33aso48229265ad.0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 May 2025 01:54:02 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1747904042; x=1748508842;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=JsEDHBZOOtazqkfVbNehyiVOpjWayP5/qV2gqESfGGw=;
+ b=OggUX8zH5vN5cl04pvcQyFVvTZuiHXZ76lpSqKB00KA2T8jwndGEuRTl4Z7uHxXdWa
+ Zfz7k9WFojs9lit9NY/SYmNPpFC4uwFGv66HRgio7O7Y0gK/LmCtsbXj+9ZCrwQzi0hr
+ 0ZRao7rcGTKrAXnRMhMUZqBvNkY1VTPP6yMEqO3JqqMdGtOd7WeXlYO5qNZm72PAhOL5
+ bIdu46IZ+Zp1Zdua2KR47U9y9k+DTUgWozNClyIzGVHO9bayX7exXyTjPlEUwl497o/R
+ jmnlFaZjvpKfcSyOPGBjovENsUWqQ18JawqUVn3+qNKHyJcA1C6hNDGKZMwqEz6W23m/
+ pYaw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXsHf+E0qIdt/bibC/tZzrG+Cy8MuCneXztu3gfC+sC2Bjmm/8FKJx69wEyhp3bD2xgq0mvcQwjUe1sX5G1wvY=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yzm6tAPF17DSrnanlcAQ27e6TMouveb0W3DLv3qF6kU3glh7SCW
+ SSLWYXSRR/rhLKPur7XfDGHAdbVphasYwXFt4mAf2ydylN/9JnfeZ9DkFGR7LSTyYG+5J3W6oKS
+ DWA04jkSVe40JR9NsBMQw3or8mOmqX5k=
+X-Gm-Gg: ASbGncurLBafxcWoZ+ZgvYo7pzs8w7nOuWj0QIuvVRxR5eXOBj2Q6Ypz0Gupo1W0u9x
+ KLW/+j+7sGMhxrv3DGwAdzO4jjmHIy9cj39eN8cO1SllUk9ZZi+fQwMxJQvfodr6PuyleiLEpql
+ Rep3RfCz9S6iKnpbDGwd9EGQZC1nKQaqtPpQ==
+X-Google-Smtp-Source: AGHT+IHvZ7DVS9R7C0uR7/ESSCBO20xscG251oAVQCQVj4jvT3GvYy/BzbWJ4IBsZHUSyWpqWDJI+BneTq2LjzVg6Jw=
+X-Received: by 2002:a17:902:fc46:b0:231:cb8e:472e with SMTP id
+ d9443c01a7336-231de3b9eedmr348242115ad.46.1747904042215; Thu, 22 May 2025
+ 01:54:02 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1747903940; x=1779439940;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=0+8eI1HxrSZFjYuny+D0+8nQ3/TGskQCq0fRWoB+Eas=;
- b=L988hToXN0za0L3fFyNrezX0yKfQ9eyQvsNYISa7Ee+93gd6ltfEIDPv
- BhWiALMwNORAKWbSsCjGatDzUIRZXMa6c55YCayqA16xT90ryGTmDMAhP
- h1QapJt7Rf6OgIaYVXPMJV+Yr9lImevHX9Hy4GCRnKuOeyKS6N3bTI0Nd
- WZEW39rUDcG759RyI40XLREOF1eUQ4pY1XJ2ue04p6UNCUD6FInzLUh6X
- sVJFIGMzSpG2nJSesZLjUvgd3vwKM2eQaEr2Irkf/+v072SLI99Idup5G
- V3wyvc1wmoxqWHjinPXw+vnn9hlAtT+jKRvFsqP2okc9JeJWPdIpaLiwN
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=L988hToX
-Subject: [Intel-wired-lan] [PATCH iwl-net v1] idpf: return 0 size for RSS
- key if not supported
+References: <20250520170656.2875753-1-krikku@gmail.com>
+ <20250521085851.GQ365796@horms.kernel.org>
+In-Reply-To: <20250521085851.GQ365796@horms.kernel.org>
+From: Krishna Kumar <krikku@gmail.com>
+Date: Thu, 22 May 2025 14:23:25 +0530
+X-Gm-Features: AX0GCFv7gof8BoB4Ci3vKRuBaXy9gDGycYaSQ8C2QpMFxquFvGVwWqPO6FNr8hw
+Message-ID: <CACLgkEYgaqhEONPwgXq6X6WFiA767qu-WdJ7OrXZm6CYE=qiJQ@mail.gmail.com>
+To: Simon Horman <horms@kernel.org>
+Cc: netdev@vger.kernel.org, davem@davemloft.net, anthony.l.nguyen@intel.com, 
+ przemyslaw.kitszel@intel.com, edumazet@google.com, 
+ intel-wired-lan@lists.osuosl.org, andrew+netdev@lunn.ch, kuba@kernel.org, 
+ pabeni@redhat.com, sridhar.samudrala@intel.com, ahmed.zaki@intel.com, 
+ krishna.ku@flipkart.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1747904042; x=1748508842; darn=lists.osuosl.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=JsEDHBZOOtazqkfVbNehyiVOpjWayP5/qV2gqESfGGw=;
+ b=Bd1OQ+nIo25kPv45ItQY4VKe15QEN0XdDlt+UUueBcblXTKPttetvQk3DtJRMRuVQw
+ 7dA26CkcHQiH+4OSlpPupqxxZo87jVrujDDYiyxIiX4BTxBFBW+Icx+BitcIm9wsutwf
+ mr2P8km34CjfUJXUK5eUyza8BtXBGrpttW8wCcZJ1VJ7kD4nDLXUHY9bRRZ9IpMX3+zn
+ r4QmfNzcdO4HKxRm+Bop9CDG9VT0Yft/D7Uo658qf7q3rBBii2EtSZ10h0qqh1CCQJbF
+ +DG4zAkYrrLU9PmwEMvX+Cp9X4NiCmz+yVY0yOxmJ8YB5CugEaQe6IY4RVHC2UdRSLrq
+ FbFw==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20230601 header.b=Bd1OQ+nI
+Subject: Re: [Intel-wired-lan] [PATCH v2 net] net: ice: Perform accurate
+ aRFS flow match
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -108,91 +128,30 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Returning -EOPNOTSUPP from function returning u32 is leading to
-cast and invalid size value as a result.
+On Wed, May 21, 2025 at 2:28=E2=80=AFPM Simon Horman <horms@kernel.org> wro=
+te:
 
--EOPNOTSUPP as a size probably will lead to allocation fail.
+> Thanks for the updates, much appreciated.
+>
+> I don't think it is necessary to repost because of this, but for future
+> reference, these days it is preferred to place change information, like
+> that immediately above, below the scissors ("---"). That way it is visibl=
+e
+> to reviewers and appears in mailing list archives and so on.  But it is
+> omitted from git history, as there the commit message is truncated at the
+> scissors.
+>
+> > Fixes: 28bf26724fdb0 ("ice: Implement aRFS")
+> > Signed-off-by: Krishna Kumar <krikku@gmail.com>
+>
+> Reviewed-by: Simon Horman <horms@kernel.org>
 
-Command: ethtool -x eth0
-It is visible on all devices that don't have RSS caps set.
+Thanks, Simon, for your feedback and review.
 
-[  136.615917] Call Trace:
-[  136.615921]  <TASK>
-[  136.615927]  ? __warn+0x89/0x130
-[  136.615942]  ? __alloc_frozen_pages_noprof+0x322/0x330
-[  136.615953]  ? report_bug+0x164/0x190
-[  136.615968]  ? handle_bug+0x58/0x90
-[  136.615979]  ? exc_invalid_op+0x17/0x70
-[  136.615987]  ? asm_exc_invalid_op+0x1a/0x20
-[  136.616001]  ? rss_prepare_get.constprop.0+0xb9/0x170
-[  136.616016]  ? __alloc_frozen_pages_noprof+0x322/0x330
-[  136.616028]  __alloc_pages_noprof+0xe/0x20
-[  136.616038]  ___kmalloc_large_node+0x80/0x110
-[  136.616072]  __kmalloc_large_node_noprof+0x1d/0xa0
-[  136.616081]  __kmalloc_noprof+0x32c/0x4c0
-[  136.616098]  ? rss_prepare_get.constprop.0+0xb9/0x170
-[  136.616105]  rss_prepare_get.constprop.0+0xb9/0x170
-[  136.616114]  ethnl_default_doit+0x107/0x3d0
-[  136.616131]  genl_family_rcv_msg_doit+0x100/0x160
-[  136.616147]  genl_rcv_msg+0x1b8/0x2c0
-[  136.616156]  ? __pfx_ethnl_default_doit+0x10/0x10
-[  136.616168]  ? __pfx_genl_rcv_msg+0x10/0x10
-[  136.616176]  netlink_rcv_skb+0x58/0x110
-[  136.616186]  genl_rcv+0x28/0x40
-[  136.616195]  netlink_unicast+0x19b/0x290
-[  136.616206]  netlink_sendmsg+0x222/0x490
-[  136.616215]  __sys_sendto+0x1fd/0x210
-[  136.616233]  __x64_sys_sendto+0x24/0x30
-[  136.616242]  do_syscall_64+0x82/0x160
-[  136.616252]  ? __sys_recvmsg+0x83/0xe0
-[  136.616265]  ? syscall_exit_to_user_mode+0x10/0x210
-[  136.616275]  ? do_syscall_64+0x8e/0x160
-[  136.616282]  ? __count_memcg_events+0xa1/0x130
-[  136.616295]  ? count_memcg_events.constprop.0+0x1a/0x30
-[  136.616306]  ? handle_mm_fault+0xae/0x2d0
-[  136.616319]  ? do_user_addr_fault+0x379/0x670
-[  136.616328]  ? clear_bhb_loop+0x45/0xa0
-[  136.616340]  ? clear_bhb_loop+0x45/0xa0
-[  136.616349]  ? clear_bhb_loop+0x45/0xa0
-[  136.616359]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
-[  136.616369] RIP: 0033:0x7fd30ba7b047
-[  136.616376] Code: 0c 00 f7 d8 64 89 02 48 c7 c0 ff ff ff ff eb b8 0f 1f 00 f3 0f 1e fa 80 3d bd d5 0c 00 00 41 89 ca 74 10 b8 2c 00 00 00 0f 05 <48> 3d 00 f0 ff ff 77 71 c3 55 48 83 ec 30 44 89 4c 24 2c 4c 89 44
-[  136.616381] RSP: 002b:00007ffde1796d68 EFLAGS: 00000202 ORIG_RAX: 000000000000002c
-[  136.616388] RAX: ffffffffffffffda RBX: 000055d7bd89f2a0 RCX: 00007fd30ba7b047
-[  136.616392] RDX: 0000000000000028 RSI: 000055d7bd89f3b0 RDI: 0000000000000003
-[  136.616396] RBP: 00007ffde1796e10 R08: 00007fd30bb4e200 R09: 000000000000000c
-[  136.616399] R10: 0000000000000000 R11: 0000000000000202 R12: 000055d7bd89f340
-[  136.616403] R13: 000055d7bd89f3b0 R14: 000055d78943f200 R15: 0000000000000000
+Hi Paul, Ahmed,
 
-Fixes: 02cbfba1add5 ("idpf: add ethtool callbacks")
-Reviewed-by: Ahmed Zaki <ahmed.zaki@intel.com>
-Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
----
- drivers/net/ethernet/intel/idpf/idpf_ethtool.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+I have uploaded all the scripts and a README describing the steps @
+      https://github.com/kkumar-fk/community-net-scripts
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
-index 59b1a1a09996..f72420cf6821 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
-@@ -46,7 +46,7 @@ static u32 idpf_get_rxfh_key_size(struct net_device *netdev)
- 	struct idpf_vport_user_config_data *user_config;
- 
- 	if (!idpf_is_cap_ena_all(np->adapter, IDPF_RSS_CAPS, IDPF_CAP_RSS))
--		return -EOPNOTSUPP;
-+		return 0;
- 
- 	user_config = &np->adapter->vport_config[np->vport_idx]->user_config;
- 
-@@ -65,7 +65,7 @@ static u32 idpf_get_rxfh_indir_size(struct net_device *netdev)
- 	struct idpf_vport_user_config_data *user_config;
- 
- 	if (!idpf_is_cap_ena_all(np->adapter, IDPF_RSS_CAPS, IDPF_CAP_RSS))
--		return -EOPNOTSUPP;
-+		return 0;
- 
- 	user_config = &np->adapter->vport_config[np->vport_idx]->user_config;
- 
--- 
-2.42.0
-
+Thanks,
+- Krishna
