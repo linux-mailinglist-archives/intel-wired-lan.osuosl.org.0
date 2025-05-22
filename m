@@ -1,118 +1,92 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 52EE6AC07CC
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 May 2025 10:54:08 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7B7A4AC0D28
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 May 2025 15:48:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0A98C83C87;
-	Thu, 22 May 2025 08:54:07 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2822861452;
+	Thu, 22 May 2025 13:48:01 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id bn2aKtoko42U; Thu, 22 May 2025 08:54:06 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id NmUrilr3oPVF; Thu, 22 May 2025 13:48:00 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2772683C60
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AD22261437
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1747904046;
-	bh=JsEDHBZOOtazqkfVbNehyiVOpjWayP5/qV2gqESfGGw=;
-	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
+	s=default; t=1747921680;
+	bh=hmcEnUhrHc593BJNaHdgiOLbYv5+4Gg8NWVkmMIuc/w=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=3MMd45wvYe0FcrSGwKUyCaLnnkcrUjTRzM7ZDuSydhICLzr7h2YI2X9e88SCJRz8W
-	 +R3pxxajv+Avy4Xd/I7WRZEnLWsfqt54KhycGTzvuw2YHwQigepYFbxZP54hdaeRSk
-	 TSR6HS8VFlHcP0acwFjS6v+4Xtrec3nlWnKHjEKEXfKP2I53DPV5i4ZiYyITgnoJ40
-	 VpMf2eozaeDD4TFLezMErUf6klhSELWukP+b6p8mKgyCYhQwZhREWrPmmeOeS1OIFl
-	 tv4mG0kSMohOUZfQDsLo0c2dIYXTtBX7XARJJBZ6cU1U32LmShGN+yaS+HdCPZ5R+i
-	 ESCu5JU3b19gg==
+	b=JQ1X3HOc20n6bftGdnUg/7omuwuVE7wR0/9e2kA+K/4JsTr2q0AOpPZzxKgkTcQG+
+	 H4OtFT3ogALCke7qbxbil0nw3BwxgXn7KjOXvpfVEyKEwqjc9n2d2Ip1kBHZEZnY26
+	 utyV2/G/5RnABYt2tc/FemmVAMLdFFLduhokMialWNDHAWqndb72hr9ES8BkaPD7EG
+	 oCEvyIwFZWIhBxMJs64XZaGbcJiHKyFrfNPPPtpiIib130MuCxopSsbBThjZa9e3Q0
+	 dwkSQZs65X8RZ3xAdpphac9oIABwEUYqn15RbbkFym20ajif3GGZL4yUF8LuBgCFUu
+	 U2aZG0yiMnx0g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2772683C60;
-	Thu, 22 May 2025 08:54:06 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id AD22261437;
+	Thu, 22 May 2025 13:48:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 3EDBDBC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 May 2025 08:54:04 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 060E0BC
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 May 2025 13:48:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 988C4419AB
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 May 2025 08:54:03 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id E106141EBE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 May 2025 13:47:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id axxKwuK18erK for <intel-wired-lan@lists.osuosl.org>;
- Thu, 22 May 2025 08:54:03 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::62a; helo=mail-pl1-x62a.google.com;
- envelope-from=krikku@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org E2EAA419BC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E2EAA419BC
-Received: from mail-pl1-x62a.google.com (mail-pl1-x62a.google.com
- [IPv6:2607:f8b0:4864:20::62a])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E2EAA419BC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 May 2025 08:54:02 +0000 (UTC)
-Received: by mail-pl1-x62a.google.com with SMTP id
- d9443c01a7336-231fc83a33aso48229265ad.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 May 2025 01:54:02 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747904042; x=1748508842;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=JsEDHBZOOtazqkfVbNehyiVOpjWayP5/qV2gqESfGGw=;
- b=OggUX8zH5vN5cl04pvcQyFVvTZuiHXZ76lpSqKB00KA2T8jwndGEuRTl4Z7uHxXdWa
- Zfz7k9WFojs9lit9NY/SYmNPpFC4uwFGv66HRgio7O7Y0gK/LmCtsbXj+9ZCrwQzi0hr
- 0ZRao7rcGTKrAXnRMhMUZqBvNkY1VTPP6yMEqO3JqqMdGtOd7WeXlYO5qNZm72PAhOL5
- bIdu46IZ+Zp1Zdua2KR47U9y9k+DTUgWozNClyIzGVHO9bayX7exXyTjPlEUwl497o/R
- jmnlFaZjvpKfcSyOPGBjovENsUWqQ18JawqUVn3+qNKHyJcA1C6hNDGKZMwqEz6W23m/
- pYaw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXsHf+E0qIdt/bibC/tZzrG+Cy8MuCneXztu3gfC+sC2Bjmm/8FKJx69wEyhp3bD2xgq0mvcQwjUe1sX5G1wvY=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yzm6tAPF17DSrnanlcAQ27e6TMouveb0W3DLv3qF6kU3glh7SCW
- SSLWYXSRR/rhLKPur7XfDGHAdbVphasYwXFt4mAf2ydylN/9JnfeZ9DkFGR7LSTyYG+5J3W6oKS
- DWA04jkSVe40JR9NsBMQw3or8mOmqX5k=
-X-Gm-Gg: ASbGncurLBafxcWoZ+ZgvYo7pzs8w7nOuWj0QIuvVRxR5eXOBj2Q6Ypz0Gupo1W0u9x
- KLW/+j+7sGMhxrv3DGwAdzO4jjmHIy9cj39eN8cO1SllUk9ZZi+fQwMxJQvfodr6PuyleiLEpql
- Rep3RfCz9S6iKnpbDGwd9EGQZC1nKQaqtPpQ==
-X-Google-Smtp-Source: AGHT+IHvZ7DVS9R7C0uR7/ESSCBO20xscG251oAVQCQVj4jvT3GvYy/BzbWJ4IBsZHUSyWpqWDJI+BneTq2LjzVg6Jw=
-X-Received: by 2002:a17:902:fc46:b0:231:cb8e:472e with SMTP id
- d9443c01a7336-231de3b9eedmr348242115ad.46.1747904042215; Thu, 22 May 2025
- 01:54:02 -0700 (PDT)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 6cY3ZbbAX8hF for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 22 May 2025 13:47:59 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
+ helo=tor.source.kernel.org; envelope-from=horms@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 46C3740642
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 46C3740642
+Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 46C3740642
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 May 2025 13:47:59 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id A9F2A62A46;
+ Thu, 22 May 2025 13:47:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D9AD9C4CEE4;
+ Thu, 22 May 2025 13:47:55 +0000 (UTC)
+Date: Thu, 22 May 2025 14:47:53 +0100
+From: Simon Horman <horms@kernel.org>
+To: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ kuba@kernel.org, dawid.osuchowski@linux.intel.com,
+ pmenzel@molgen.mpg.de, Kory Maincent <kory.maincent@bootlin.com>,
+ Rinitha S <sx.rinitha@intel.com>
+Message-ID: <20250522134753.GE365796@horms.kernel.org>
+References: <20250515105011.1310692-1-martyna.szapar-mudlaw@linux.intel.com>
+ <20250515105011.1310692-2-martyna.szapar-mudlaw@linux.intel.com>
 MIME-Version: 1.0
-References: <20250520170656.2875753-1-krikku@gmail.com>
- <20250521085851.GQ365796@horms.kernel.org>
-In-Reply-To: <20250521085851.GQ365796@horms.kernel.org>
-From: Krishna Kumar <krikku@gmail.com>
-Date: Thu, 22 May 2025 14:23:25 +0530
-X-Gm-Features: AX0GCFv7gof8BoB4Ci3vKRuBaXy9gDGycYaSQ8C2QpMFxquFvGVwWqPO6FNr8hw
-Message-ID: <CACLgkEYgaqhEONPwgXq6X6WFiA767qu-WdJ7OrXZm6CYE=qiJQ@mail.gmail.com>
-To: Simon Horman <horms@kernel.org>
-Cc: netdev@vger.kernel.org, davem@davemloft.net, anthony.l.nguyen@intel.com, 
- przemyslaw.kitszel@intel.com, edumazet@google.com, 
- intel-wired-lan@lists.osuosl.org, andrew+netdev@lunn.ch, kuba@kernel.org, 
- pabeni@redhat.com, sridhar.samudrala@intel.com, ahmed.zaki@intel.com, 
- krishna.ku@flipkart.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1747904042; x=1748508842; darn=lists.osuosl.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=JsEDHBZOOtazqkfVbNehyiVOpjWayP5/qV2gqESfGGw=;
- b=Bd1OQ+nIo25kPv45ItQY4VKe15QEN0XdDlt+UUueBcblXTKPttetvQk3DtJRMRuVQw
- 7dA26CkcHQiH+4OSlpPupqxxZo87jVrujDDYiyxIiX4BTxBFBW+Icx+BitcIm9wsutwf
- mr2P8km34CjfUJXUK5eUyza8BtXBGrpttW8wCcZJ1VJ7kD4nDLXUHY9bRRZ9IpMX3+zn
- r4QmfNzcdO4HKxRm+Bop9CDG9VT0Yft/D7Uo658qf7q3rBBii2EtSZ10h0qqh1CCQJbF
- +DG4zAkYrrLU9PmwEMvX+Cp9X4NiCmz+yVY0yOxmJ8YB5CugEaQe6IY4RVHC2UdRSLrq
- FbFw==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=Bd1OQ+nI
-Subject: Re: [Intel-wired-lan] [PATCH v2 net] net: ice: Perform accurate
- aRFS flow match
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250515105011.1310692-2-martyna.szapar-mudlaw@linux.intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1747921677;
+ bh=Z+6STB0mJB9ZfxXG40/d45IvVbxmdQAgRwvRZ4HssVU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=C8V2N1yxhqtKwY9LWQkGqWIAMFxG17rIK8gKEqIXw8oLQJcTVZYl95N31DWBXSvIv
+ l1FZ0kQ5rswjd1AjCy99mQiR47y6EFx0e7vYGGt9IXJYSoO5ovfIMsPd3fLr7q8O77
+ hpvx1v2vXQjy5k2ilFeknvmRVnbLaDSXsQyhke875+2yHPCuhYiI7e8jbh8jX59lsf
+ G7zT9u9OrAOJJGdInwNx88hZKyg3QCXUJq1j7oGxZGtofW7QxiGqQMALunSEZzRbYQ
+ 820QO48eDIMZpZhO3KsUkgXBoKVua5SSx9HmnBLdLfHwveZLcNMJ3uNe0oIpuVh2Yt
+ 5lD25Nb8izyFA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=C8V2N1yx
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 1/2] ice: add
+ link_down_events statistic
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -128,30 +102,17 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, May 21, 2025 at 2:28=E2=80=AFPM Simon Horman <horms@kernel.org> wro=
-te:
+On Thu, May 15, 2025 at 12:50:09PM +0200, Martyna Szapar-Mudlaw wrote:
+> Introduce a link_down_events counter to the ice driver, incremented
+> each time the link transitions from up to down.
+> This counter can help diagnose issues related to link stability,
+> such as port flapping or unexpected link drops.
+> 
+> The value is exposed via ethtool's get_link_ext_stats() interface.
+> 
+> Reviewed-by: Kory Maincent <kory.maincent@bootlin.com>
+> Tested-by: Rinitha S <sx.rinitha@intel.com> (A Contingent worker at Intel)
+> Signed-off-by: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>
 
-> Thanks for the updates, much appreciated.
->
-> I don't think it is necessary to repost because of this, but for future
-> reference, these days it is preferred to place change information, like
-> that immediately above, below the scissors ("---"). That way it is visibl=
-e
-> to reviewers and appears in mailing list archives and so on.  But it is
-> omitted from git history, as there the commit message is truncated at the
-> scissors.
->
-> > Fixes: 28bf26724fdb0 ("ice: Implement aRFS")
-> > Signed-off-by: Krishna Kumar <krikku@gmail.com>
->
-> Reviewed-by: Simon Horman <horms@kernel.org>
+Reviewed-by: Simon Horman <horms@kernel.org>
 
-Thanks, Simon, for your feedback and review.
-
-Hi Paul, Ahmed,
-
-I have uploaded all the scripts and a README describing the steps @
-      https://github.com/kkumar-fk/community-net-scripts
-
-Thanks,
-- Krishna
