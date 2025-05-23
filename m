@@ -1,129 +1,100 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 587F1AC27C7
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 May 2025 18:42:11 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CDC6341C2D;
-	Fri, 23 May 2025 16:42:09 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id PpaSd5w9vLKN; Fri, 23 May 2025 16:42:09 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AFE2941C18
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1748018528;
-	bh=8ou1hprUM55W6alIfCZ5jKlFd1kfNwRV+g441aKqk40=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=Bouq983+By/Tf5cIbIQX7Jv0VMFaEva/mRa4/QtFDDB+JZj9rd/Vo/EBUI8iwt6Xt
-	 eNrWEV1g9SSckoMVwwDUAZXln4u6C2QCSH2VvP2HNgkfHONR4bjiTze85ADsvgdYoJ
-	 Mvnl5+/cTWj7Yka/3udrJJHC6mVXONQFFOHuHKHV9nb2a1GEBYLtPJ43NJ8jcNuEdq
-	 TU6DpRDkKPfbOgO5Evm+cAg7kkN+3lINskWCXBTRWPWvmTGArSIjNVJ62/235DIXMB
-	 xdewc7H3Upy43t+6Zzdd8+fB9J3K3gJUq7k78fC0wR5MiXWMYVPV1nfkEEjQ39BanW
-	 fvFZH+VrcS9RA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AFE2941C18;
-	Fri, 23 May 2025 16:42:08 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 6034D68
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 May 2025 16:42:06 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 26834AC2813
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 May 2025 19:06:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 46A0F83C3B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 May 2025 16:42:06 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0802C80D2D;
+	Fri, 23 May 2025 17:06:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XfTyBSM8QuPk for <intel-wired-lan@lists.osuosl.org>;
- Fri, 23 May 2025 16:42:05 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=85.10.215.232;
- helo=dediextern.your-server.de;
- envelope-from=marcus.wichelmann@hetzner-cloud.de; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org BE2FA83C22
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BE2FA83C22
-Received: from dediextern.your-server.de (dediextern.your-server.de
- [85.10.215.232])
- by smtp1.osuosl.org (Postfix) with ESMTPS id BE2FA83C22
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 May 2025 16:42:03 +0000 (UTC)
-Received: from sslproxy04.your-server.de ([78.46.152.42])
- by dediextern.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
- (Exim 4.94.2) (envelope-from <marcus.wichelmann@hetzner-cloud.de>)
- id 1uIVSy-000NZD-Hd; Fri, 23 May 2025 18:41:52 +0200
-Received: from localhost ([127.0.0.1])
- by sslproxy04.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
- (Exim 4.96) (envelope-from <marcus.wichelmann@hetzner-cloud.de>)
- id 1uIVSy-000HYh-0z; Fri, 23 May 2025 18:41:52 +0200
-Message-ID: <52d2e85a-6d79-468e-a86c-444e71811dfc@hetzner-cloud.de>
-Date: Fri, 23 May 2025 18:41:51 +0200
+ id Ag100pedZclM; Fri, 23 May 2025 17:06:04 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D2A1980D3C
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1748019963;
+	bh=Y4Iz5NwZIsXtLEvK7zaVsoOOA0FW8K1n6XiacEG73wo=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=jRltDyDMRSx1NDaxsNLWegRRIeD4JYylnOwDYkyC8ob3TnBBq6f6zersy+fZWXcuM
+	 4LISBpTRhtsWuuFE6g+TWybToeYw1+elgk40K4p35Ytp1Xk/HtZGgxffklTjUtJP9N
+	 IEPh/fmiLd5K2tujPg7+lnepxgXVyucSAg6imDmRgTit/HtKAXXvrDiMbpxilO1pfT
+	 7LudxJPNydSFreG7pLQeaYOVeCwxwZ+mC+QhTeJ+BZFdLnrXGODNeE9XYmwGloBkJe
+	 d7osiBaqxgUhQlt62zkA4/E7a1XvuyCSPkIn2zFo0ntK94d7dfDdfQyme2offaCntm
+	 2OK2Ef0R6swnw==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id D2A1980D3C;
+	Fri, 23 May 2025 17:06:03 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 23A1768
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 May 2025 17:06:02 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 11BD940BB0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 May 2025 17:06:02 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id xg5ATtaxBnim for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 23 May 2025 17:06:01 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
+ helo=mgamail.intel.com; envelope-from=tatyana.e.nikolova@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org E83BF400F6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E83BF400F6
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E83BF400F6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 May 2025 17:06:00 +0000 (UTC)
+X-CSE-ConnectionGUID: ThQ6M4C/SqysXQ5V6URfJA==
+X-CSE-MsgGUID: 31VuEkU0TkyXYkf7ZPnvWw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11441"; a="60738373"
+X-IronPort-AV: E=Sophos;i="6.15,309,1739865600"; d="scan'208";a="60738373"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 May 2025 10:06:00 -0700
+X-CSE-ConnectionGUID: QJUtUc19R5WI37SD/xrM1A==
+X-CSE-MsgGUID: 0eFFd0u0RQ6eytnK7PAJXQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,309,1739865600"; d="scan'208";a="164457417"
+Received: from pthorat-mobl.amr.corp.intel.com (HELO
+ soc-PF51RAGT.clients.intel.com) ([10.246.116.180])
+ by fmviesa002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 May 2025 10:05:59 -0700
+From: Tatyana Nikolova <tatyana.e.nikolova@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: jgg@nvidia.com, leon@kernel.org, linux-rdma@vger.kernel.org,
+ netdev@vger.kernel.org, kuba@kernel.org, anthony.l.nguyen@intel.com,
+ Tatyana Nikolova <tatyana.e.nikolova@intel.com>
+Date: Fri, 23 May 2025 12:04:29 -0500
+Message-ID: <20250523170435.668-1-tatyana.e.nikolova@intel.com>
+X-Mailer: git-send-email 2.45.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
- magnus.karlsson@intel.com, michal.kubiak@intel.com,
- =?UTF-8?Q?Tobias_B=C3=B6hm?= <tobias.boehm@hetzner-cloud.de>
-References: <20250429155205.1444438-1-maciej.fijalkowski@intel.com>
-Content-Language: en-US
-From: Marcus Wichelmann <marcus.wichelmann@hetzner-cloud.de>
-Autocrypt: addr=marcus.wichelmann@hetzner-cloud.de; keydata=
- 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
- wySmewx3h/yfMh0aFxHhvLPxrO2IEQ==
-In-Reply-To: <20250429155205.1444438-1-maciej.fijalkowski@intel.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Authenticated-Sender: marcus.wichelmann@hetzner-cloud.de
-X-Virus-Scanned: Clear (ClamAV 1.0.7/27646/Fri May 23 10:35:45 2025)
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=hetzner-cloud.de
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] ixgbe: fix ndo_xdp_xmit()
- workloads
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1748019961; x=1779555961;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=GwH5EQqeA1kYy7kbiPpZ6eaEDgz5rff8/jLIjUHdyVc=;
+ b=Qwz9grtiaZU3n0BZY7ez9ZMq6uQ5REgJI7YF/mZHbWKLTqeA0jWYyMOD
+ 8MVFz0DNEdG3lMfSOYn0qhyJICY7xqphvh5LyKJgHXQjeAg2YAGN+cbp5
+ HgIuqdDzFYFLKVuje9tP+XnKnAPsjhiROre+QLz6G/xAxbK9xBDUf2yGH
+ EEm5BoLi4cg5oqpTqMQZol9XDxaSV/r2toWYWiB/t7JI9LiGsmpdZmR/F
+ 21yLmsyr/J5W9+/d5IcVi3fh5AErmjb6EfduXR+lDL0SD4S1m/WL6grfl
+ XP+r8RRCShUapWSXyJAPHE4UoKJtEq45yGh6ehuICzhN7L2kZAz57LNow
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Qwz9grti
+Subject: [Intel-wired-lan] [iwl-next 0/6] Add RDMA support for Intel IPU
+ E2000 in idpf
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -139,157 +110,78 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Am 29.04.25 um 17:52 schrieb Maciej Fijalkowski:
-> Currently ixgbe driver checks periodically in its watchdog subtask if
-> there is anything to be transmitted (consdidering both Tx and XDP rings=
-)
-> under state of carrier not being 'ok'. Such event is interpreted as Tx
-> hang and therefore results in interface reset.
->=20
-> This is currently problematic for ndo_xdp_xmit() as it is allowed to
-> produce descriptors when interface is going through reset or its carrie=
-r
-> is turned off.
->=20
-> Furthermore, XDP rings should not really be objects of Tx hang
-> detection. This mechanism is rather a matter of ndo_tx_timeout() being
-> called from dev_watchdog against Tx rings exposed to networking stack.
->=20
-> Taking into account issues described above, let us have a two fold fix =
--
-> do not respect XDP rings in local ixgbe watchdog and do not produce Tx
-> descriptors in ndo_xdp_xmit callback when there is some problem with
-> carrier currently. For now, keep the Tx hang checks in clean Tx irq
-> routine, but adjust it to not execute it for XDP rings.
->=20
-> Cc: Tobias B=C3=B6hm <tobias.boehm@hetzner-cloud.de>
-> Reported-by: Marcus Wichelmann <marcus.wichelmann@hetzner-cloud.de>
-> Closes: https://lore.kernel.org/netdev/eca1880f-253a-4955-afe6-732d7c69=
-26ee@hetzner-cloud.de/
-> Fixes: 6453073987ba ("ixgbe: add initial support for xdp redirect")
-> Fixes: 33fdc82f0883 ("ixgbe: add support for XDP_TX action")
-> Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-> ---
->  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 34 ++++++-------------=
+This idpf patch series is the second part of the staged submission
+for introducing RDMA RoCEv2 support for the IPU E2000 line of products,
+referred to as GEN3.
 
->  1 file changed, 11 insertions(+), 23 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/ne=
-t/ethernet/intel/ixgbe/ixgbe_main.c
-> index 467f81239e12..21bfea8aeb67 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> @@ -966,10 +966,6 @@ static void ixgbe_update_xoff_rx_lfc(struct ixgbe_=
-adapter *adapter)
->  	for (i =3D 0; i < adapter->num_tx_queues; i++)
->  		clear_bit(__IXGBE_HANG_CHECK_ARMED,
->  			  &adapter->tx_ring[i]->state);
-> -
-> -	for (i =3D 0; i < adapter->num_xdp_queues; i++)
-> -		clear_bit(__IXGBE_HANG_CHECK_ARMED,
-> -			  &adapter->xdp_ring[i]->state);
->  }
-> =20
->  static void ixgbe_update_xoff_received(struct ixgbe_adapter *adapter)
-> @@ -1263,10 +1259,13 @@ static bool ixgbe_clean_tx_irq(struct ixgbe_q_v=
-ector *q_vector,
->  				   total_bytes);
->  	adapter->tx_ipsec +=3D total_ipsec;
-> =20
-> +	if (ring_is_xdp(tx_ring))
-> +		return !!budget;
-> +
->  	if (check_for_tx_hang(tx_ring) && ixgbe_check_tx_hang(tx_ring)) {
->  		/* schedule immediate reset if we believe we hung */
->  		struct ixgbe_hw *hw =3D &adapter->hw;
-> -		e_err(drv, "Detected Tx Unit Hang %s\n"
-> +		e_err(drv, "Detected Tx Unit Hang\n"
->  			"  Tx Queue             <%d>\n"
->  			"  TDH, TDT             <%x>, <%x>\n"
->  			"  next_to_use          <%x>\n"
-> @@ -1274,16 +1273,14 @@ static bool ixgbe_clean_tx_irq(struct ixgbe_q_v=
-ector *q_vector,
->  			"tx_buffer_info[next_to_clean]\n"
->  			"  time_stamp           <%lx>\n"
->  			"  jiffies              <%lx>\n",
-> -			ring_is_xdp(tx_ring) ? "(XDP)" : "",
->  			tx_ring->queue_index,
->  			IXGBE_READ_REG(hw, IXGBE_TDH(tx_ring->reg_idx)),
->  			IXGBE_READ_REG(hw, IXGBE_TDT(tx_ring->reg_idx)),
->  			tx_ring->next_to_use, i,
->  			tx_ring->tx_buffer_info[i].time_stamp, jiffies);
-> =20
-> -		if (!ring_is_xdp(tx_ring))
-> -			netif_stop_subqueue(tx_ring->netdev,
-> -					    tx_ring->queue_index);
-> +		netif_stop_subqueue(tx_ring->netdev,
-> +				    tx_ring->queue_index);
-> =20
->  		e_info(probe,
->  		       "tx hang %d detected on queue %d, resetting adapter\n",
-> @@ -1296,9 +1293,6 @@ static bool ixgbe_clean_tx_irq(struct ixgbe_q_vec=
-tor *q_vector,
->  		return true;
->  	}
-> =20
-> -	if (ring_is_xdp(tx_ring))
-> -		return !!budget;
-> -
->  #define TX_WAKE_THRESHOLD (DESC_NEEDED * 2)
->  	txq =3D netdev_get_tx_queue(tx_ring->netdev, tx_ring->queue_index);
->  	if (!__netif_txq_completed_wake(txq, total_packets, total_bytes,
-> @@ -7791,12 +7785,9 @@ static void ixgbe_check_hang_subtask(struct ixgb=
-e_adapter *adapter)
->  		return;
-> =20
->  	/* Force detection of hung controller */
-> -	if (netif_carrier_ok(adapter->netdev)) {
-> +	if (netif_carrier_ok(adapter->netdev))
->  		for (i =3D 0; i < adapter->num_tx_queues; i++)
->  			set_check_for_tx_hang(adapter->tx_ring[i]);
-> -		for (i =3D 0; i < adapter->num_xdp_queues; i++)
-> -			set_check_for_tx_hang(adapter->xdp_ring[i]);
-> -	}
-> =20
->  	if (!(adapter->flags & IXGBE_FLAG_MSIX_ENABLED)) {
->  		/*
-> @@ -8011,13 +8002,6 @@ static bool ixgbe_ring_tx_pending(struct ixgbe_a=
-dapter *adapter)
->  			return true;
->  	}
-> =20
-> -	for (i =3D 0; i < adapter->num_xdp_queues; i++) {
-> -		struct ixgbe_ring *ring =3D adapter->xdp_ring[i];
-> -
-> -		if (ring->next_to_use !=3D ring->next_to_clean)
-> -			return true;
-> -	}
-> -
->  	return false;
->  }
-> =20
-> @@ -10742,6 +10726,10 @@ static int ixgbe_xdp_xmit(struct net_device *d=
-ev, int n,
->  	if (unlikely(test_bit(__IXGBE_DOWN, &adapter->state)))
->  		return -ENETDOWN;
-> =20
-> +	if (!netif_carrier_ok(adapter->netdev) ||
-> +	    !netif_running(adapter->netdev))
-> +		return -ENETDOWN;
-> +
->  	if (unlikely(flags & ~XDP_XMIT_FLAGS_MASK))
->  		return -EINVAL;
-> =20
+To support RDMA GEN3 devices, the idpf driver uses
+common definitions of the IIDC interface and implements
+specific device functionality in iidc_rdma_idpf.h.
 
-Hi,
+The IPU model can host one or more logical network endpoints called
+vPorts per PCI function that are flexibly associated with a physical
+port or an internal communication port.
 
-thank you very much for this patch.
+Other features as it pertains to GEN3 devices include:
+* MMIO learning
+* RDMA capability negotiation
+* RDMA vectors discovery between idpf and control plane
 
-We have done more tests now in a production-like environment and I can co=
-nfirm again
-that this solves our issue and no more interface resets occur.
+These patches are split from the submission
+"Add RDMA support for Intel IPU E2000 (GEN3)" [1]
+and are based on 6.15-rc1 + "Prepare for Intel IPU E2000 (GEN3)" [4]. 
+A shared pull request will be sent following review.
 
-Tested-by: Marcus Wichelmann <marcus.wichelmann@hetzner-cloud.de>
+Changelog:
 
-Kind regards,
-Marcus
+Changes since split:
+* Replace core dev_ops with exported symbols
+* Align with new header split scheme (iidc_rdma.h common header
+and iidc_rdma_idpf.h specific header)
+* Align with new naming scheme (idc_rdma -> iidc_rdma)
+* The idpf patches are submitted separately from the ice and
+irdma changes.
+
+At [3]:
+* Reduce required minimum RDMA vectors to 2
+
+At [2]:
+* RDMA vector number adjustment
+* Fix unplugging vport auxiliary device twice
+* General cleanup and minor improvements
+
+[1] https://lore.kernel.org/all/20240724233917.704-1-tatyana.e.nikolova@intel.com/
+[2] https://lore.kernel.org/all/20240824031924.421-1-tatyana.e.nikolova@intel.com/
+[3] https://lore.kernel.org/all/20250207194931.1569-1-tatyana.e.nikolova@intel.com/
+[4] https://lore.kernel.org/all/20250509200712.2911060-1-anthony.l.nguyen@intel.com/
+
+Joshua Hay (6):
+  idpf: use reserved RDMA vectors from control plane
+  idpf: implement core RDMA auxiliary dev create, init, and destroy
+  idpf: implement RDMA vport auxiliary dev create, init, and destroy
+  idpf: implement remaining IDC RDMA core callbacks and handlers
+  idpf: implement IDC vport aux driver MTU change handler
+  idpf: implement get LAN MMIO memory regions
+
+ drivers/net/ethernet/intel/idpf/Makefile      |   1 +
+ drivers/net/ethernet/intel/idpf/idpf.h        | 117 ++++-
+ .../net/ethernet/intel/idpf/idpf_controlq.c   |  14 +-
+ .../net/ethernet/intel/idpf/idpf_controlq.h   |  19 +-
+ drivers/net/ethernet/intel/idpf/idpf_dev.c    |  49 +-
+ drivers/net/ethernet/intel/idpf/idpf_idc.c    | 496 ++++++++++++++++++
+ drivers/net/ethernet/intel/idpf/idpf_lib.c    |  93 +++-
+ drivers/net/ethernet/intel/idpf/idpf_main.c   |  32 +-
+ drivers/net/ethernet/intel/idpf/idpf_mem.h    |   8 +-
+ drivers/net/ethernet/intel/idpf/idpf_txrx.h   |   1 +
+ drivers/net/ethernet/intel/idpf/idpf_vf_dev.c |  45 +-
+ .../net/ethernet/intel/idpf/idpf_virtchnl.c   | 190 ++++++-
+ .../net/ethernet/intel/idpf/idpf_virtchnl.h   |   3 +
+ drivers/net/ethernet/intel/idpf/virtchnl2.h   |  52 +-
+ include/linux/net/intel/iidc_rdma_idpf.h      |  55 ++
+ 15 files changed, 1104 insertions(+), 71 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/idpf/idpf_idc.c
+ create mode 100644 include/linux/net/intel/iidc_rdma_idpf.h
+
+-- 
+2.37.3
+
