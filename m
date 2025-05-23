@@ -1,66 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE6A2AC28BA
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 May 2025 19:34:34 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 84EADAC28BB
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 May 2025 19:34:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5666C83FF3;
-	Fri, 23 May 2025 17:34:33 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 31D0783FFC;
+	Fri, 23 May 2025 17:34:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id d2BlBvXBX9tn; Fri, 23 May 2025 17:34:32 +0000 (UTC)
+ id VIkVFbod2KXf; Fri, 23 May 2025 17:34:34 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A7E4A83FF4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 498A483FFE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1748021672;
-	bh=cnDNL8vsunz0ImYGc7s5s7Vk8zccaFJ+cLJMV99Nkrw=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=qwZgDogwibF2VT7v53YEWLT+5XRPEUv73DfrO8k9+buyjTSCkxVvQVE7im1kmgF76
-	 w2VMAm5vj6BvINefwuMVlBdx69z06USD8Ij0t/hs6iAlooq2rGvzzQNpHm7DjzvsCl
-	 Nwy9nf6ISve2l4vRViAXsfHW7so6OH3j1M5sBNomtBNc2A2BtJNLHGfr5Tk4yayrOp
-	 ExYf+3rxGkJHXjQX193ylACyIBQ2tDTVTkB/PScrpNKpm6DUwpp2dCJ6avTCgGBRCd
-	 723vx7cshCRxWaRm17dIGZ0Oonf/6/nW2BgPhcAE+/qlMoBCTUCwnnnxixElqQrBxH
-	 YBIKq9Ug5UQaA==
+	s=default; t=1748021674;
+	bh=74wEvFaRtG633CxtkAmxNq/ygU+LJvJJjm6gAZZDM/s=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=W/Cj+OzZqHst0xIkihMLMmN5FTW1TKuOZfv81KiHBHcAoDW066/LObHRTDZgDL8fq
+	 UVFx+38UMpwVrYAZq6HrzoImGvSJhdxY6jXNO+9Kp/io+avrVsJmx3oOFhaNuvY5IL
+	 dRvp7abokMWpfnHFoCQTP9KtpWpPNmSpukh1UZv6UjGzuRusvpXkr2quzUGldI4Vi+
+	 +IIpbFGv4KWlt/W/npaOVtTDnfpruMhokmNXmJjNbKAz1nahB9X5veHFsOwCIq1SFp
+	 p4670vXugWnSuaj3r8uVq1BZfqrupSMA23TwCgkI/e2CRYjT6UfN3Av8XU+MxzlCRt
+	 WCa1LC8jYG6YA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A7E4A83FF4;
-	Fri, 23 May 2025 17:34:32 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 498A483FFE;
+	Fri, 23 May 2025 17:34:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 5BE1C68
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 May 2025 17:34:31 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 75B1368
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 May 2025 17:34:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4D33641C12
+ by smtp4.osuosl.org (Postfix) with ESMTP id B648641C12
  for <intel-wired-lan@lists.osuosl.org>; Fri, 23 May 2025 17:34:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id gd0tb5b0ML3V for <intel-wired-lan@lists.osuosl.org>;
- Fri, 23 May 2025 17:34:30 +0000 (UTC)
+ id XDk9JgtQjLp1 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 23 May 2025 17:34:31 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
  helo=mgamail.intel.com; envelope-from=arkadiusz.kubalewski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 7FEBA41BC7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7FEBA41BC7
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org EE1EF41BCE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EE1EF41BCE
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 7FEBA41BC7
+ by smtp4.osuosl.org (Postfix) with ESMTPS id EE1EF41BCE
  for <intel-wired-lan@lists.osuosl.org>; Fri, 23 May 2025 17:34:30 +0000 (UTC)
-X-CSE-ConnectionGUID: la7RufanT92MCEQck0qPcQ==
-X-CSE-MsgGUID: tOOohAdUQlaSt1ypjrZBEA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11441"; a="60343203"
-X-IronPort-AV: E=Sophos;i="6.15,309,1739865600"; d="scan'208";a="60343203"
+X-CSE-ConnectionGUID: 7vCsXvBCSueqWe6L+/0t0w==
+X-CSE-MsgGUID: 7txPStOsSwSnvdqD6yXkWw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11441"; a="60343214"
+X-IronPort-AV: E=Sophos;i="6.15,309,1739865600"; d="scan'208";a="60343214"
 Received: from orviesa008.jf.intel.com ([10.64.159.148])
  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  23 May 2025 10:34:29 -0700
-X-CSE-ConnectionGUID: AiGkHfu6Rrmy5vk/yzVusA==
-X-CSE-MsgGUID: NH/AlwqpTr2K5UL3z9bQ+g==
+X-CSE-ConnectionGUID: 74aNxdbuQviu7Jiggnwokg==
+X-CSE-MsgGUID: GL52UcBGRBSbQAZ4kf0u8Q==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,309,1739865600"; d="scan'208";a="142178952"
+X-IronPort-AV: E=Sophos;i="6.15,309,1739865600"; d="scan'208";a="142178954"
 Received: from amlin-018-114.igk.intel.com ([10.102.18.114])
- by orviesa008.jf.intel.com with ESMTP; 23 May 2025 10:32:57 -0700
+ by orviesa008.jf.intel.com with ESMTP; 23 May 2025 10:33:02 -0700
 From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 To: donald.hunter@gmail.com, kuba@kernel.org, davem@davemloft.net,
  edumazet@google.com, pabeni@redhat.com, horms@kernel.org,
@@ -70,34 +71,36 @@ To: donald.hunter@gmail.com, kuba@kernel.org, davem@davemloft.net,
 Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, linux-rdma@vger.kernel.org,
  linux-doc@vger.kernel.org,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-Date: Fri, 23 May 2025 19:26:47 +0200
-Message-Id: <20250523172650.1517164-1-arkadiusz.kubalewski@intel.com>
+ Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
+ Milena Olech <milena.olech@intel.com>
+Date: Fri, 23 May 2025 19:26:48 +0200
+Message-Id: <20250523172650.1517164-2-arkadiusz.kubalewski@intel.com>
 X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20250523172650.1517164-1-arkadiusz.kubalewski@intel.com>
+References: <20250523172650.1517164-1-arkadiusz.kubalewski@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1748021670; x=1779557670;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=gYYx1l/Pn+n5FEnkn32ZPkxnX8faGzxv7Jv7CihnuCw=;
- b=GacP2L6dds2FFTJzENQVmpBj+sCC/DTkVN4/s6k3R7NiX9wnHBsGA2g1
- ffSMJzMRbeIWW52rdvkLxB8tK/EHb8pY13PW7v04mfDZmm7O6y1v5x7Bv
- 9bQdwbgxE1VlWOawbZpvSXUDWqIqw+JkmpEbXWLuDdPQlgfCsKpQzhGJc
- v/Svwh0Oe7UaRCSLiW2DH6t68VyYiMZZg0uNm5+0KkAdFIb74jD5U7aXp
- e6b/virTOnLbPYS5UacX6A5eZfSAJTH/FQMrD9i1Yiyge1dmQXl7D7jjI
- Ih640lEwmp/cGaFmLlrXoXjsw8CNPy+Wd7VkKYtBeaE4ypu7bnvOtYvCE
- Q==;
+ t=1748021671; x=1779557671;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=o/MfV3NBdoLlJ+2K8YIIS097SZ/GoVrhpmXnuk4lhS0=;
+ b=MQm3du/RIKlE2r8UVGsVIRid9JiwJhR4U2PQAzWSkbGuf+TuiQLfhMX/
+ USZ6QjwrCCw1H2WtgJr7H11R6E8e/Jo7LtvH4MFfyCj25K09amnntt38H
+ dUbm4gscIFBWn3tM0cDI9232kwrfzDmGIa0+e/6YocfeUkM8YKUugA4FX
+ hgIeCJ1VPIO7QdlFHRLIquP6WSi9YLxF0iEe4BMFsn+LO+T103Aj8FioZ
+ yu9+XXxrKhBGCEfugd06Y/MmLL5D5cYh4ykU/onLLv/NerRsEU3d9Zm0y
+ Ax5Wpu36FEx68KmnlmSffG0x3n7qzI522qXVH8+gbsDOBkXrkRovwyv2S
+ g==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=GacP2L6d
-Subject: [Intel-wired-lan] [PATCH net-next v4 0/3] dpll: add Reference SYNC
- feature
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=MQm3du/R
+Subject: [Intel-wired-lan] [PATCH net-next v4 1/3] dpll: add reference-sync
+ netlink attribute
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -113,79 +116,177 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The device may support the Reference SYNC feature, which allows the
-combination of two inputs into a Reference SYNC pair. In this
-configuration, clock signals from both inputs are used to synchronize
-the dpll device. The higher frequency signal is utilized for the loop
-bandwidth of the DPLL, while the lower frequency signal is used to
-syntonize the output signal of the DPLL device. This feature enables
-the provision of a high-quality loop bandwidth signal from an external
-source.
+Add new netlink attribute to allow user space configuration of reference
+sync pin pairs, where both pins are used to provide one clock signal
+consisting of both: base frequency and sync signal.
 
-A capable input provides a list of inputs that can be paired to create
-a Reference SYNC pair. To control this feature, the user must request a
-desired state for a target pin: use ``DPLL_PIN_STATE_CONNECTED`` to
-enable or ``DPLL_PIN_STATE_DISCONNECTED`` to disable the feature. Only
-two pins can be bound to form a Reference SYNC pair at any given time.
-
-Verify pins bind state/capabilities:
-$ ./tools/net/ynl/pyynl/cli.py \
- --spec Documentation/netlink/specs/dpll.yaml \
- --do pin-get \
- --json '{"id":0}'
-{'board-label': 'CVL-SDP22',
- 'id': 0,
- [...]
- 'reference-sync': [{'id': 1, 'state': 'disconnected'}],
- [...]}
-
-Bind the pins by setting connected state between them:
-$ ./tools/net/ynl/pyynl/cli.py \
- --spec Documentation/netlink/specs/dpll.yaml \
- --do pin-set \
- --json '{"id":0, "reference-sync":{"id":1, "state":"connected"}}'
-
-Verify pins bind state:
-$ ./tools/net/ynl/pyynl/cli.py \
- --spec Documentation/netlink/specs/dpll.yaml \
- --do pin-get \
- --json '{"id":0}'
-{'board-label': 'CVL-SDP22',
- 'id': 0,
- [...]
- 'reference-sync': [{'id': 1, 'state': 'connected'}],
- [...]}
-
-Unbind the pins by setting disconnected state between them:
-$ ./tools/net/ynl/pyynl/cli.py \
- --spec Documentation/netlink/specs/dpll.yaml \
- --do pin-set \
- --json '{"id":0, "reference-sync":{"id":1, "state":"disconnected"}}'
-
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Reviewed-by: Milena Olech <milena.olech@intel.com>
+Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+---
 v4:
 - no change.
+---
+ Documentation/driver-api/dpll.rst     | 25 +++++++++++++++++++++++++
+ Documentation/netlink/specs/dpll.yaml | 19 +++++++++++++++++++
+ drivers/dpll/dpll_nl.c                | 10 ++++++++--
+ drivers/dpll/dpll_nl.h                |  1 +
+ include/uapi/linux/dpll.h             |  1 +
+ 5 files changed, 54 insertions(+), 2 deletions(-)
 
-Arkadiusz Kubalewski (3):
-  dpll: add reference-sync netlink attribute
-  dpll: add reference sync get/set
-  ice: add ref-sync dpll pins
-
- Documentation/driver-api/dpll.rst             |  25 +++
- Documentation/netlink/specs/dpll.yaml         |  19 ++
- drivers/dpll/dpll_core.c                      |  45 +++++
- drivers/dpll/dpll_core.h                      |   2 +
- drivers/dpll/dpll_netlink.c                   | 190 ++++++++++++++++--
- drivers/dpll/dpll_netlink.h                   |   2 +
- drivers/dpll/dpll_nl.c                        |  10 +-
- drivers/dpll/dpll_nl.h                        |   1 +
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   |   2 +
- drivers/net/ethernet/intel/ice/ice_dpll.c     | 186 +++++++++++++++++
- include/linux/dpll.h                          |  13 ++
- include/uapi/linux/dpll.h                     |   1 +
- 12 files changed, 475 insertions(+), 21 deletions(-)
-
-
-base-commit: ea15e046263b19e91ffd827645ae5dfa44ebd044
+diff --git a/Documentation/driver-api/dpll.rst b/Documentation/driver-api/dpll.rst
+index e6855cd37e85..7570890c6cd1 100644
+--- a/Documentation/driver-api/dpll.rst
++++ b/Documentation/driver-api/dpll.rst
+@@ -235,6 +235,31 @@ the pin.
+   ``DPLL_A_PIN_ESYNC_PULSE``                pulse type of Embedded SYNC
+   ========================================= =================================
+ 
++Reference SYNC
++==============
++
++The device may support the Reference SYNC feature, which allows the combination
++of two inputs into a Reference SYNC pair. In this configuration, clock signals
++from both inputs are used to synchronize the dpll device. The higher frequency
++signal is utilized for the loop bandwidth of the DPLL, while the lower frequency
++signal is used to syntonize the output signal of the DPLL device. This feature
++enables the provision of a high-quality loop bandwidth signal from an external
++source.
++
++A capable input provides a list of inputs that can be paired to create a
++Reference SYNC pair. To control this feature, the user must request a desired
++state for a target pin: use ``DPLL_PIN_STATE_CONNECTED`` to enable or
++``DPLL_PIN_STATE_DISCONNECTED`` to disable the feature. Only two pins can be
++bound to form a Reference SYNC pair at any given time.
++
++  ============================== ==========================================
++  ``DPLL_A_PIN_REFERENCE_SYNC``  nested attribute for providing info or
++                                 requesting configuration of the Reference
++                                 SYNC feature
++    ``DPLL_A_PIN_ID``            target pin id for Reference SYNC pair
++    ``DPLL_A_PIN_STATE``         state of Reference SYNC pair connection
++  ============================== ==========================================
++
+ Configuration commands group
+ ============================
+ 
+diff --git a/Documentation/netlink/specs/dpll.yaml b/Documentation/netlink/specs/dpll.yaml
+index 8feefeae5376..333b4596b36f 100644
+--- a/Documentation/netlink/specs/dpll.yaml
++++ b/Documentation/netlink/specs/dpll.yaml
+@@ -406,6 +406,15 @@ attribute-sets:
+         doc: |
+           A ratio of high to low state of a SYNC signal pulse embedded
+           into base clock frequency. Value is in percents.
++      -
++        name: reference-sync
++        type: nest
++        multi-attr: true
++        nested-attributes: reference-sync
++        doc: |
++          Capable pin provides list of pins that can be bound to create a
++          reference-sync pin pair.
++
+   -
+     name: pin-parent-device
+     subset-of: pin
+@@ -436,6 +445,14 @@ attribute-sets:
+         name: frequency-min
+       -
+         name: frequency-max
++  -
++    name: reference-sync
++    subset-of: pin
++    attributes:
++      -
++        name: id
++      -
++        name: state
+ 
+ operations:
+   enum-name: dpll_cmd
+@@ -574,6 +591,7 @@ operations:
+             - esync-frequency
+             - esync-frequency-supported
+             - esync-pulse
++            - reference-sync
+ 
+       dump:
+         request:
+@@ -601,6 +619,7 @@ operations:
+             - parent-pin
+             - phase-adjust
+             - esync-frequency
++            - reference-sync
+     -
+       name: pin-create-ntf
+       doc: Notification about pin appearing
+diff --git a/drivers/dpll/dpll_nl.c b/drivers/dpll/dpll_nl.c
+index fe9b6893d261..d709a8dc304f 100644
+--- a/drivers/dpll/dpll_nl.c
++++ b/drivers/dpll/dpll_nl.c
+@@ -24,6 +24,11 @@ const struct nla_policy dpll_pin_parent_pin_nl_policy[DPLL_A_PIN_STATE + 1] = {
+ 	[DPLL_A_PIN_STATE] = NLA_POLICY_RANGE(NLA_U32, 1, 3),
+ };
+ 
++const struct nla_policy dpll_reference_sync_nl_policy[DPLL_A_PIN_STATE + 1] = {
++	[DPLL_A_PIN_ID] = { .type = NLA_U32, },
++	[DPLL_A_PIN_STATE] = NLA_POLICY_RANGE(NLA_U32, 1, 3),
++};
++
+ /* DPLL_CMD_DEVICE_ID_GET - do */
+ static const struct nla_policy dpll_device_id_get_nl_policy[DPLL_A_TYPE + 1] = {
+ 	[DPLL_A_MODULE_NAME] = { .type = NLA_NUL_STRING, },
+@@ -62,7 +67,7 @@ static const struct nla_policy dpll_pin_get_dump_nl_policy[DPLL_A_PIN_ID + 1] =
+ };
+ 
+ /* DPLL_CMD_PIN_SET - do */
+-static const struct nla_policy dpll_pin_set_nl_policy[DPLL_A_PIN_ESYNC_FREQUENCY + 1] = {
++static const struct nla_policy dpll_pin_set_nl_policy[DPLL_A_PIN_REFERENCE_SYNC + 1] = {
+ 	[DPLL_A_PIN_ID] = { .type = NLA_U32, },
+ 	[DPLL_A_PIN_FREQUENCY] = { .type = NLA_U64, },
+ 	[DPLL_A_PIN_DIRECTION] = NLA_POLICY_RANGE(NLA_U32, 1, 2),
+@@ -72,6 +77,7 @@ static const struct nla_policy dpll_pin_set_nl_policy[DPLL_A_PIN_ESYNC_FREQUENCY
+ 	[DPLL_A_PIN_PARENT_PIN] = NLA_POLICY_NESTED(dpll_pin_parent_pin_nl_policy),
+ 	[DPLL_A_PIN_PHASE_ADJUST] = { .type = NLA_S32, },
+ 	[DPLL_A_PIN_ESYNC_FREQUENCY] = { .type = NLA_U64, },
++	[DPLL_A_PIN_REFERENCE_SYNC] = NLA_POLICY_NESTED(dpll_reference_sync_nl_policy),
+ };
+ 
+ /* Ops table for dpll */
+@@ -139,7 +145,7 @@ static const struct genl_split_ops dpll_nl_ops[] = {
+ 		.doit		= dpll_nl_pin_set_doit,
+ 		.post_doit	= dpll_pin_post_doit,
+ 		.policy		= dpll_pin_set_nl_policy,
+-		.maxattr	= DPLL_A_PIN_ESYNC_FREQUENCY,
++		.maxattr	= DPLL_A_PIN_REFERENCE_SYNC,
+ 		.flags		= GENL_ADMIN_PERM | GENL_CMD_CAP_DO,
+ 	},
+ };
+diff --git a/drivers/dpll/dpll_nl.h b/drivers/dpll/dpll_nl.h
+index f491262bee4f..3da10cfe9a6e 100644
+--- a/drivers/dpll/dpll_nl.h
++++ b/drivers/dpll/dpll_nl.h
+@@ -14,6 +14,7 @@
+ /* Common nested types */
+ extern const struct nla_policy dpll_pin_parent_device_nl_policy[DPLL_A_PIN_PHASE_OFFSET + 1];
+ extern const struct nla_policy dpll_pin_parent_pin_nl_policy[DPLL_A_PIN_STATE + 1];
++extern const struct nla_policy dpll_reference_sync_nl_policy[DPLL_A_PIN_STATE + 1];
+ 
+ int dpll_lock_doit(const struct genl_split_ops *ops, struct sk_buff *skb,
+ 		   struct genl_info *info);
+diff --git a/include/uapi/linux/dpll.h b/include/uapi/linux/dpll.h
+index bf97d4b6d51f..f6cb6209566c 100644
+--- a/include/uapi/linux/dpll.h
++++ b/include/uapi/linux/dpll.h
+@@ -237,6 +237,7 @@ enum dpll_a_pin {
+ 	DPLL_A_PIN_ESYNC_FREQUENCY,
+ 	DPLL_A_PIN_ESYNC_FREQUENCY_SUPPORTED,
+ 	DPLL_A_PIN_ESYNC_PULSE,
++	DPLL_A_PIN_REFERENCE_SYNC,
+ 
+ 	__DPLL_A_PIN_MAX,
+ 	DPLL_A_PIN_MAX = (__DPLL_A_PIN_MAX - 1)
 -- 
 2.38.1
 
