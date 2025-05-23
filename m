@@ -1,145 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3F9CCAC2278
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 May 2025 14:16:27 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3080BAC252C
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 May 2025 16:38:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E04D681225;
-	Fri, 23 May 2025 12:16:25 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CCA26417D1;
+	Fri, 23 May 2025 14:38:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id E5KYEgX23xeK; Fri, 23 May 2025 12:16:25 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id k77g5YsYfT3Q; Fri, 23 May 2025 14:38:06 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DF562810AC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ACCA4417D4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1748002584;
-	bh=UVs+40bTDiF7EnRvr0lzQVjEjCbory2b3GEFHaMHFi0=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=8WtRK1N3nLKdBJ7lT4+2aTgr2HfnBUE5ZQkl/9VKVn3V5fbeWv2OPncQDEu4rNljR
-	 sfzEvjtq7vvpNIUAUuYg9SSD+VAPOWval6emRRZRLbDaKZcLu/J6dQvCo5r+brPT/+
-	 jxG3SkYlloe0OGn+DsJoa4WGvXFyRxJQeYb5W1aZ4Gmg4W53t42CuOWBaExp9FUEIn
-	 dM4WDwQKKJb3TF+FJgLBy82YMYHF1x03gAyZsTED4jKedIEc/hbjWqOGuZIOSVovjI
-	 dIYGR78qfaIANFctA1bb4FOc45q5QLjxFn1P6vuXTO4ExsQ+TorvSGG9ANEyjLQTTd
-	 KgLKL0pIHC+sg==
+	s=default; t=1748011085;
+	bh=4CqyVUhiqEjWtZcoIzBFT6Y5BIvZrINL4wjtIJLmzq0=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=7ZmlASLEWWoRajcGuWijrsV59+4foKvlPAwUJ/L4MW5VZ/SwugploPgYzVuVzDcLu
+	 A+u5sMs7wj/OR1ZjyxjPAAnVlHT0lxC7sgHJvwCbTYQeoTyX6jKbdN+r6aKd80zL0q
+	 LZFinNFb46j9LFkNhXOuVvCL3RsCFR4uy6IL7WTnKd+4lnzwK5qkOuU0f9cgUyaRBc
+	 rdhV19jcsmh1cWE8vOECeZEAYkFWMVfC8FlPSmf1uTva0k2xduM/13nkT29ZxlOqvw
+	 W/01C/hW828nSAbHXbx28sCLEnGofj3b7bF8LAK05J8LTxSDrYwlHc6W+2Jz1Tx9gy
+	 IePhq2UBNw1Cw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DF562810AC;
-	Fri, 23 May 2025 12:16:24 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id ACCA4417D4;
+	Fri, 23 May 2025 14:38:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 8D397CA
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 May 2025 12:16:22 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 2EC5F119
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 May 2025 14:38:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7F73741F34
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 May 2025 12:16:22 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1C8B140FED
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 May 2025 14:38:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id U1r59Mjv5YuX for <intel-wired-lan@lists.osuosl.org>;
- Fri, 23 May 2025 12:16:21 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::42c; helo=mail-wr1-x42c.google.com;
- envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org E8E4241F2E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E8E4241F2E
-Received: from mail-wr1-x42c.google.com (mail-wr1-x42c.google.com
- [IPv6:2a00:1450:4864:20::42c])
- by smtp2.osuosl.org (Postfix) with ESMTPS id E8E4241F2E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 May 2025 12:16:20 +0000 (UTC)
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-3a35c894313so6235741f8f.2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 May 2025 05:16:20 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1748002579; x=1748607379;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=UVs+40bTDiF7EnRvr0lzQVjEjCbory2b3GEFHaMHFi0=;
- b=ciphFJQo6RocgDTSfHi3PdP+Ox8dbi+vosGoj6cV8aKKcrj6lYC8fb+OU2QMzxe4ZN
- Jf61Ou2ZTKbERbGJSWO4j6lbUSSSeV0rzuhSxWnQTW6hgFfx/M+AP7/1E0XIeYkQSIUm
- EsF3qaKwN3LTaSnEem4IVlC+fxqJjAbGKGozFYv68YuF004r1CZUdZLTlWf+AARWEZZd
- Eh+DAA2L8tI5R+KuHSrKx3U9g0sLRi4B6JYtUjBrnG3pRefK+t0OGeuF1Jgn3GXpNAo9
- Wr2MJRidne+3cFbr7AmvfgevvSDv5NT+dgMxANpXcb9J/Vxl1+nwnEbXCxPnO3ZeXkUD
- hmgA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWOkfEc+RkeZXUQUNWRWz1u/l0DMDLF8vxh8ZqtIH1wAZBsFyQKDeBD0KBq69Hnnm5olSNikIRhITUgz9dJJ3s=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzRb36006k7dWG8qGx1t0OzmYVWDBPm7dZO83WnCHVRrjFYVQv0
- toyigbS++XICHYvtSBnPdYHI28L8hwD/nxZkWv5m0+ewSWhIhdcp/fNi6OPpVFj8kig=
-X-Gm-Gg: ASbGnctTdSmhU170iEZpAqXAdLI8XgD2XnwgwgLdkTXlMWoVQLnZtjcKfUbT1xcJdA8
- q7vb8g+zgUTdbMFjshbMEVoZmXSugEIJlt564BdTxXgZeHNaeLr2+0dGF3+3zDH2wSei9SxFyir
- 7ul+PorN1ifL78KGH0KHhQjnylTiXG916rxYKO348CtDwbYkY0epdxBm5JDm5m/rRqUNPzKyYOs
- Yu82bmsNYk8T3AYzil6kFb/QdDynWVO/h/5gpdFBN/xXNx3dpmGAyQflp7bNUyeXnPh7+g4/LCC
- OwQ25YkCq9NiPihBlaOOL5EhEwWPUC8Bj4/+8Xv1DQV9nOtwkL05udaM8mhLJ/W0A2eHVTqTSBj
- bhNQ=
-X-Google-Smtp-Source: AGHT+IFHQ5u5SVMHD2atXwAihGnBWqM0BV44tFIPABcerUSfvuw7HC46EhyErks5GY3aIXUfMPmPcQ==
-X-Received: by 2002:a05:6000:2f87:b0:3a3:62c6:d2cd with SMTP id
- ffacd0b85a97d-3a4c20fe8f6mr3242914f8f.14.1748002578824; 
- Fri, 23 May 2025 05:16:18 -0700 (PDT)
-Received: from jiri-mlt (37-48-1-197.nat.epc.tmcz.cz. [37.48.1.197])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a35ca5a04csm26001714f8f.23.2025.05.23.05.16.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 23 May 2025 05:16:18 -0700 (PDT)
-Date: Fri, 23 May 2025 14:16:15 +0200
-From: Jiri Pirko <jiri@resnulli.us>
-To: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>
-Cc: "donald.hunter@gmail.com" <donald.hunter@gmail.com>, 
- "kuba@kernel.org" <kuba@kernel.org>,
- "davem@davemloft.net" <davem@davemloft.net>, 
- "edumazet@google.com" <edumazet@google.com>,
- "pabeni@redhat.com" <pabeni@redhat.com>, 
- "horms@kernel.org" <horms@kernel.org>,
- "vadim.fedorenko@linux.dev" <vadim.fedorenko@linux.dev>, 
- "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, "Kitszel,
- Przemyslaw" <przemyslaw.kitszel@intel.com>, 
- "andrew+netdev@lunn.ch" <andrew+netdev@lunn.ch>,
- "saeedm@nvidia.com" <saeedm@nvidia.com>, 
- "leon@kernel.org" <leon@kernel.org>, "tariqt@nvidia.com" <tariqt@nvidia.com>, 
- "jonathan.lemon@gmail.com" <jonathan.lemon@gmail.com>,
- "richardcochran@gmail.com" <richardcochran@gmail.com>, 
- "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>, "Olech,
- Milena" <milena.olech@intel.com>, 
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "linux-rdma@vger.kernel.org" <linux-rdma@vger.kernel.org>
-Message-ID: <35nkufpaaljicqt22ta4ysj3zvursnnu5efpjzf7fdih4y5otx@q2o5puhnd3pa>
-References: <20250508122128.1216231-1-arkadiusz.kubalewski@intel.com>
- <20250508122128.1216231-3-arkadiusz.kubalewski@intel.com>
- <rwterkiyhdjcedboj773zc5s3d6purz6yaccfowco7m5zd7q3c@or4r33ay2dxh>
- <SJ2PR11MB8452820F6BDF445F29D368C99B8BA@SJ2PR11MB8452.namprd11.prod.outlook.com>
- <we7ev4qegycbn6vp2epoeq45kulkpurdh2dga7zgmx6xq5hy2e@nkjmo3njtwo7>
- <SA1PR11MB84468A82953226F3C16D9CCB9B98A@SA1PR11MB8446.namprd11.prod.outlook.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <SA1PR11MB84468A82953226F3C16D9CCB9B98A@SA1PR11MB8446.namprd11.prod.outlook.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1748002579; x=1748607379;
- darn=lists.osuosl.org; 
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=UVs+40bTDiF7EnRvr0lzQVjEjCbory2b3GEFHaMHFi0=;
- b=d84C2ae//DDfur92eK0vlKRc9mVbHlUAMtaNltSiUJRJXk+AA5GHPdhY7hRev1GvkH
- 4vYu5ZrYColwf/Zp1TP/KayxkLiTknZ1ECIhbVvgLeEyfn+EkB9nZAnHz+D2TuzJCAuP
- LMWY9PSNN+eBGgh23wczelawMgLL6NuR5k9OICEI0P5aYEBAAlfxvBFB3Ecu5CbaokJ+
- bpUfAvKMPwQDOYSBDCad6Hvgl/Zr88cR3zvoFB8KXcPn9vSR4bnBirjmbiaHu2vZYlOn
- keCBgqYwCaxx5ZbyFOAIY9w6v4FgsN7pWy9VAe82EnRTw05Zy8NDS0OMbCB16Rjvxjxi
- NV5Q==
+ id WWkWlFTBn1yf for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 23 May 2025 14:38:02 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 161EF40BF7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 161EF40BF7
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 161EF40BF7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 May 2025 14:38:01 +0000 (UTC)
+X-CSE-ConnectionGUID: dkuJoJTkS2id/yiHUffJpg==
+X-CSE-MsgGUID: r3CKL/VCSLK6gPRjGnL1Gg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11441"; a="61120688"
+X-IronPort-AV: E=Sophos;i="6.15,309,1739865600"; d="scan'208";a="61120688"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+ by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 May 2025 07:38:01 -0700
+X-CSE-ConnectionGUID: oy9PQ8F5QkKsemY2VHiVjg==
+X-CSE-MsgGUID: hvzVRA4LTBSLhNYOIdwMlw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,309,1739865600"; d="scan'208";a="146329429"
+Received: from lkp-server01.sh.intel.com (HELO 1992f890471c) ([10.239.97.150])
+ by orviesa005.jf.intel.com with ESMTP; 23 May 2025 07:38:00 -0700
+Received: from kbuild by 1992f890471c with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1uITX4-000QTA-0A
+ for intel-wired-lan@lists.osuosl.org; Fri, 23 May 2025 14:37:58 +0000
+Date: Fri, 23 May 2025 22:37:19 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202505232209.E1ug62b2-lkp@intel.com>
+User-Agent: s-nail v14.9.24
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1748011082; x=1779547082;
+ h=date:from:to:subject:message-id;
+ bh=Hu4waaCcbKHzXEO3kNB1cU7iMJoBwi8c8i/fcyaKMuA=;
+ b=d52SDh0+fimSgvJwrrMWr8GTqXyAtWeh3pXN5r7CAB0KizrEomKkA+PX
+ 0WQOKT3vt7h9StbmLSsDx2bIomolr9OG05J7P5PuFhy0sqQDVCU8n0sJ/
+ rtGFTL85l8cisxPpwxPH2X9luQJ115HKIKCWQsPC9P+9CXthnrHp8Enlo
+ 7Gqeb4xoLPN3vmt6lHZ4b6la+kFt+JRGE6B5WgjJf4190qwvdKNP9BOFy
+ zI/SRnzbmXlSbEakMjI6enDKXCsAIFYDLOvgzwfFpVT0fbUjXpi9QtOg1
+ iMJPNatDT1wTas3Ek0DyoBnkjBMEh2TD4sRYTpVtnnMKg1w3PvuR6NziS
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=resnulli.us
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=resnulli-us.20230601.gappssmtp.com
- header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=d84C2ae/
-Subject: Re: [Intel-wired-lan] [PATCH net-next v3 2/3] dpll: add
- phase_offset_monitor_get/set callback ops
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=d52SDh0+
+Subject: [Intel-wired-lan] [tnguy-net-queue:200GbE] BUILD SUCCESS
+ 3fab2d2d901a87710f691ba9488b3fd284ee8296
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -155,191 +104,169 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fri, May 23, 2025 at 09:45:29AM +0200, arkadiusz.kubalewski@intel.com wrote:
->>From: Jiri Pirko <jiri@resnulli.us>
->>Sent: Friday, May 9, 2025 8:15 AM
->>
->>Thu, May 08, 2025 at 05:20:24PM +0200, arkadiusz.kubalewski@intel.com
->>wrote:
->>>>From: Jiri Pirko <jiri@resnulli.us>
->>>>Sent: Thursday, May 8, 2025 4:31 PM
->>>>
->>>>Thu, May 08, 2025 at 02:21:27PM +0200, arkadiusz.kubalewski@intel.com
->>>>wrote:
->>>>>Add new callback operations for a dpll device:
->>>>>- phase_offset_monitor_get(..) - to obtain current state of phase offset
->>>>>  monitor feature from dpll device,
->>>>>- phase_offset_monitor_set(..) - to allow feature configuration.
->>>>>
->>>>>Obtain the feature state value using the get callback and provide it to
->>>>>the user if the device driver implements callbacks.
->>>>>
->>>>>Execute the set callback upon user requests.
->>>>>
->>>>>Reviewed-by: Milena Olech <milena.olech@intel.com>
->>>>>Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
->>>>>---
->>>>>v3:
->>>>>- remove feature flags and capabilities,
->>>>>- add separated (per feature) callback ops,
->>>>>- use callback ops to determine feature availability.
->>>>>---
->>>>> drivers/dpll/dpll_netlink.c | 76 ++++++++++++++++++++++++++++++++++++-
->>>>> include/linux/dpll.h        |  8 ++++
->>>>> 2 files changed, 82 insertions(+), 2 deletions(-)
->>>>>
->>>>>diff --git a/drivers/dpll/dpll_netlink.c b/drivers/dpll/dpll_netlink.c
->>>>>index c130f87147fa..6d2980455a46 100644
->>>>>--- a/drivers/dpll/dpll_netlink.c
->>>>>+++ b/drivers/dpll/dpll_netlink.c
->>>>>@@ -126,6 +126,26 @@ dpll_msg_add_mode_supported(struct sk_buff *msg,
->>>>>struct dpll_device *dpll,
->>>>> 	return 0;
->>>>> }
->>>>>
->>>>>+static int
->>>>>+dpll_msg_add_phase_offset_monitor(struct sk_buff *msg, struct
->>>>>dpll_device
->>>>>*dpll,
->>>>>+				  struct netlink_ext_ack *extack)
->>>>>+{
->>>>>+	const struct dpll_device_ops *ops = dpll_device_ops(dpll);
->>>>>+	enum dpll_feature_state state;
->>>>>+	int ret;
->>>>>+
->>>>>+	if (ops->phase_offset_monitor_set && ops->phase_offset_monitor_get) {
->>>>>+		ret = ops->phase_offset_monitor_get(dpll, dpll_priv(dpll),
->>>>>+						    &state, extack);
->>>>>+		if (ret)
->>>>>+			return -EINVAL;
->>>>
->>>>Why you don't propagate "ret"?
->>>>
->>>
->>>My bad, will fix that.
->>>
->>>>
->>>>>+		if (nla_put_u32(msg, DPLL_A_PHASE_OFFSET_MONITOR, state))
->>>>>+			return -EMSGSIZE;
->>>>>+	}
->>>>>+
->>>>>+	return 0;
->>>>>+}
->>>>>+
->>>>> static int
->>>>> dpll_msg_add_lock_status(struct sk_buff *msg, struct dpll_device *dpll,
->>>>> 			 struct netlink_ext_ack *extack)
->>>>>@@ -591,6 +611,9 @@ dpll_device_get_one(struct dpll_device *dpll, struct
->>>>>sk_buff *msg,
->>>>> 		return ret;
->>>>> 	if (nla_put_u32(msg, DPLL_A_TYPE, dpll->type))
->>>>> 		return -EMSGSIZE;
->>>>>+	ret = dpll_msg_add_phase_offset_monitor(msg, dpll, extack);
->>>>>+	if (ret)
->>>>>+		return ret;
->>>>>
->>>>> 	return 0;
->>>>> }
->>>>>@@ -746,6 +769,31 @@ int dpll_pin_change_ntf(struct dpll_pin *pin)
->>>>> }
->>>>> EXPORT_SYMBOL_GPL(dpll_pin_change_ntf);
->>>>>
->>>>>+static int
->>>>>+dpll_phase_offset_monitor_set(struct dpll_device *dpll, struct nlattr
->>>>>*a,
->>>>>+			      struct netlink_ext_ack *extack)
->>>>>+{
->>>>>+	const struct dpll_device_ops *ops = dpll_device_ops(dpll);
->>>>>+	enum dpll_feature_state state = nla_get_u32(a), old_state;
->>>>>+	int ret;
->>>>>+
->>>>>+	if (!(ops->phase_offset_monitor_set && ops-
->>>>>phase_offset_monitor_get)) {
->>>>>+		NL_SET_ERR_MSG_ATTR(extack, a, "dpll device not capable of
->>>>>phase offset monitor");
->>>>>+		return -EOPNOTSUPP;
->>>>>+	}
->>>>>+	ret = ops->phase_offset_monitor_get(dpll, dpll_priv(dpll),
->>>>>&old_state,
->>>>>+					    extack);
->>>>>+	if (ret) {
->>>>>+		NL_SET_ERR_MSG(extack, "unable to get current state of phase
->>>>>offset monitor");
->>>>>+		return -EINVAL;
->>
->>Propagate ret.
->>
->
->Sure, will do.
->
->>
->>>>>+	}
->>>>>+	if (state == old_state)
->>>>>+		return 0;
->>>>>+
->>>>>+	return ops->phase_offset_monitor_set(dpll, dpll_priv(dpll), state,
->>>>>+					     extack);
->>>>
->>>>Why you need to do this get/set dance? I mean, just call the driver
->>>>set() op and let it do what is needed there, no?
->>>>
->>>
->>>We did it this way from the beginning (during various pin-set related
->>>flows).
->>
->>Hmm, idk if it is absolutelly necessary to stick with this pattern all
->>the time. I mean, what's the benefit here? I don't see any.
->>
->
->Driver implementing callback could do that, or can be done here. Here is
->earlier/better, right?
->
->Why would we remove this pattern for one flow, and use different for
->other flows? Doesn't make much sense to me, we could change for all to
->make it consistent.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 200GbE
+branch HEAD: 3fab2d2d901a87710f691ba9488b3fd284ee8296  Merge tag 'linux-can-fixes-for-6.15-20250521' of git://git.kernel.org/pub/scm/linux/kernel/git/mkl/linux-can
 
-Fair.
+elapsed time: 1616m
 
->
->>
->>>
->>>>
->>>>>+}
->>>>>+
->>>>> static int
->>>>> dpll_pin_freq_set(struct dpll_pin *pin, struct nlattr *a,
->>>>> 		  struct netlink_ext_ack *extack)
->>>>>@@ -1533,10 +1581,34 @@ int dpll_nl_device_get_doit(struct sk_buff *skb,
->>>>>struct genl_info *info)
->>>>> 	return genlmsg_reply(msg, info);
->>>>> }
->>>>>
->>>>>+static int
->>>>>+dpll_set_from_nlattr(struct dpll_device *dpll, struct genl_info *info)
->>>>>+{
->>>>>+	struct nlattr *a;
->>>>>+	int rem, ret;
->>>>>+
->>>>>+	nla_for_each_attr(a, genlmsg_data(info->genlhdr),
->>>>>+			  genlmsg_len(info->genlhdr), rem) {
->>>>
->>>>Hmm, why you iterate? Why you just don't parse to attr array, as it is
->>>>usually done?
->>>>
->>>
->>>Hmm, AFAIR there are issues when you parse nested stuff with the array
->>>approach, here nothing is nested, but we already have the same approach on
->>>parsing pin related stuff (dpll_pin_set_from_nlattr(..)), just did the
->>>same
->>>here.
->>
->>The only reason to iterate over attrs is then you have multiattr. Is
->>ever attr is there only once, no need for iteration.
->>
->
->Ok, will do.
->
->Thank you!
->Arkadiusz
->
->[...]
+configs tested: 150
+configs skipped: 4
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+tested configs:
+alpha                             allnoconfig    gcc-14.2.0
+alpha                            allyesconfig    gcc-14.2.0
+arc                              allmodconfig    gcc-14.2.0
+arc                               allnoconfig    gcc-14.2.0
+arc                              allyesconfig    gcc-14.2.0
+arc                          axs103_defconfig    gcc-14.2.0
+arc                   randconfig-001-20250523    gcc-15.1.0
+arc                   randconfig-002-20250523    gcc-10.5.0
+arc                           tb10x_defconfig    gcc-14.2.0
+arm                              allmodconfig    gcc-14.2.0
+arm                               allnoconfig    clang-21
+arm                              allyesconfig    gcc-14.2.0
+arm                            dove_defconfig    gcc-14.2.0
+arm                      integrator_defconfig    clang-21
+arm                      jornada720_defconfig    clang-21
+arm                             mxs_defconfig    clang-21
+arm                   randconfig-001-20250523    clang-16
+arm                   randconfig-002-20250523    gcc-8.5.0
+arm                   randconfig-003-20250523    gcc-7.5.0
+arm                   randconfig-004-20250523    clang-21
+arm                         s5pv210_defconfig    gcc-14.2.0
+arm                       spear13xx_defconfig    gcc-14.2.0
+arm                           stm32_defconfig    gcc-14.2.0
+arm64                            allmodconfig    clang-19
+arm64                             allnoconfig    gcc-14.2.0
+arm64                 randconfig-001-20250523    gcc-8.5.0
+arm64                 randconfig-002-20250523    clang-16
+arm64                 randconfig-003-20250523    clang-21
+arm64                 randconfig-004-20250523    gcc-8.5.0
+csky                              allnoconfig    gcc-14.2.0
+csky                  randconfig-001-20250523    gcc-10.5.0
+csky                  randconfig-002-20250523    gcc-14.2.0
+hexagon                          alldefconfig    clang-21
+hexagon                          allmodconfig    clang-17
+hexagon                           allnoconfig    clang-21
+hexagon                          allyesconfig    clang-21
+hexagon               randconfig-001-20250523    clang-21
+hexagon               randconfig-002-20250523    clang-21
+i386                             allmodconfig    gcc-12
+i386                              allnoconfig    gcc-12
+i386                             allyesconfig    gcc-12
+i386        buildonly-randconfig-001-20250523    clang-20
+i386        buildonly-randconfig-002-20250523    clang-20
+i386        buildonly-randconfig-003-20250523    clang-20
+i386        buildonly-randconfig-004-20250523    clang-20
+i386        buildonly-randconfig-005-20250523    clang-20
+i386        buildonly-randconfig-006-20250523    clang-20
+i386                                defconfig    clang-20
+loongarch                        allmodconfig    gcc-14.2.0
+loongarch                         allnoconfig    gcc-14.2.0
+loongarch             randconfig-001-20250523    gcc-15.1.0
+loongarch             randconfig-002-20250523    gcc-14.2.0
+m68k                             allmodconfig    gcc-14.2.0
+m68k                              allnoconfig    gcc-14.2.0
+m68k                             allyesconfig    gcc-14.2.0
+m68k                         amcore_defconfig    gcc-14.2.0
+m68k                          hp300_defconfig    gcc-14.2.0
+m68k                       m5208evb_defconfig    gcc-14.2.0
+m68k                            mac_defconfig    gcc-14.2.0
+microblaze                       allmodconfig    gcc-14.2.0
+microblaze                        allnoconfig    gcc-14.2.0
+microblaze                       allyesconfig    gcc-14.2.0
+mips                              allnoconfig    gcc-14.2.0
+mips                        bcm47xx_defconfig    clang-18
+mips                      bmips_stb_defconfig    clang-21
+mips                      maltaaprp_defconfig    clang-21
+mips                          rb532_defconfig    clang-18
+nios2                             allnoconfig    gcc-14.2.0
+nios2                 randconfig-001-20250523    gcc-10.5.0
+nios2                 randconfig-002-20250523    gcc-10.5.0
+openrisc                          allnoconfig    gcc-14.2.0
+openrisc                         allyesconfig    gcc-14.2.0
+openrisc                            defconfig    gcc-14.2.0
+openrisc                 simple_smp_defconfig    gcc-14.2.0
+parisc                           alldefconfig    gcc-14.2.0
+parisc                           allmodconfig    gcc-14.2.0
+parisc                            allnoconfig    gcc-14.2.0
+parisc                           allyesconfig    gcc-14.2.0
+parisc                generic-32bit_defconfig    gcc-14.2.0
+parisc                randconfig-001-20250523    gcc-9.3.0
+parisc                randconfig-002-20250523    gcc-7.5.0
+powerpc                          allmodconfig    gcc-14.2.0
+powerpc                           allnoconfig    gcc-14.2.0
+powerpc                          allyesconfig    clang-21
+powerpc                       ebony_defconfig    clang-21
+powerpc                        fsp2_defconfig    gcc-14.2.0
+powerpc                      katmai_defconfig    clang-21
+powerpc                      mgcoge_defconfig    clang-21
+powerpc                 mpc837x_rdb_defconfig    gcc-14.2.0
+powerpc                    mvme5100_defconfig    gcc-14.2.0
+powerpc               randconfig-001-20250523    clang-21
+powerpc               randconfig-002-20250523    clang-21
+powerpc               randconfig-003-20250523    clang-20
+powerpc                         wii_defconfig    gcc-14.2.0
+powerpc64             randconfig-001-20250523    clang-21
+powerpc64             randconfig-002-20250523    clang-19
+powerpc64             randconfig-003-20250523    clang-21
+riscv                            allmodconfig    clang-21
+riscv                             allnoconfig    gcc-14.2.0
+riscv                            allyesconfig    clang-16
+riscv                 randconfig-001-20250523    gcc-8.5.0
+riscv                 randconfig-002-20250523    clang-17
+s390                             allmodconfig    clang-18
+s390                              allnoconfig    clang-21
+s390                             allyesconfig    gcc-14.2.0
+s390                  randconfig-001-20250523    gcc-6.5.0
+s390                  randconfig-002-20250523    clang-21
+sh                               allmodconfig    gcc-14.2.0
+sh                                allnoconfig    gcc-14.2.0
+sh                               allyesconfig    gcc-14.2.0
+sh                         ecovec24_defconfig    gcc-14.2.0
+sh                            hp6xx_defconfig    gcc-14.2.0
+sh                 kfr2r09-romimage_defconfig    gcc-14.2.0
+sh                          polaris_defconfig    gcc-14.2.0
+sh                    randconfig-001-20250523    gcc-12.4.0
+sh                    randconfig-002-20250523    gcc-6.5.0
+sh                      rts7751r2d1_defconfig    gcc-14.2.0
+sh                   rts7751r2dplus_defconfig    gcc-14.2.0
+sh                           se7343_defconfig    gcc-14.2.0
+sh                           se7780_defconfig    gcc-14.2.0
+sh                   sh7724_generic_defconfig    gcc-14.2.0
+sh                             shx3_defconfig    gcc-14.2.0
+sh                              ul2_defconfig    gcc-14.2.0
+sparc                            allmodconfig    gcc-14.2.0
+sparc                             allnoconfig    gcc-14.2.0
+sparc                 randconfig-001-20250523    gcc-10.3.0
+sparc                 randconfig-002-20250523    gcc-10.3.0
+sparc64               randconfig-001-20250523    gcc-9.3.0
+sparc64               randconfig-002-20250523    gcc-7.5.0
+um                               allmodconfig    clang-19
+um                                allnoconfig    clang-21
+um                               allyesconfig    gcc-12
+um                             i386_defconfig    gcc-12
+um                    randconfig-001-20250523    gcc-12
+um                    randconfig-002-20250523    gcc-12
+um                           x86_64_defconfig    clang-21
+x86_64                            allnoconfig    clang-20
+x86_64                           allyesconfig    clang-20
+x86_64      buildonly-randconfig-001-20250523    gcc-12
+x86_64      buildonly-randconfig-002-20250523    clang-20
+x86_64      buildonly-randconfig-003-20250523    clang-20
+x86_64      buildonly-randconfig-004-20250523    clang-20
+x86_64      buildonly-randconfig-005-20250523    clang-20
+x86_64      buildonly-randconfig-006-20250523    gcc-12
+x86_64                              defconfig    gcc-11
+x86_64                          rhel-9.4-rust    clang-18
+xtensa                            allnoconfig    gcc-14.2.0
+xtensa                randconfig-001-20250523    gcc-9.3.0
+xtensa                randconfig-002-20250523    gcc-11.5.0
+xtensa                    xip_kc705_defconfig    gcc-14.2.0
+
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
