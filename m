@@ -1,94 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 549E7AC31D0
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 25 May 2025 00:34:49 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D531BAC3277
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 25 May 2025 07:24:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 88C8540643;
-	Sat, 24 May 2025 22:34:47 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id X-LM-QumeBvG; Sat, 24 May 2025 22:34:46 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5B6A84060F
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1748126086;
-	bh=umbdIs24G4OFojKtwGtJaLeECfYFfZlltOoWAGTio9o=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=pUXxOgo7PB96D99F/O/krQHRu77RqsxhSDRg4hWZKqPlC/08Sn3ExSYdnybTK8/Pg
-	 JE8HYwd/k7KztVg5VIrcCARrvZF/L16LNrJB8cSMei52pQzQEuHvLuqGmignJoz7ks
-	 Pw10H5ig7TBZgjIrE4RyBtrkObm4YwTak5qfBU9lBWD3t4TnJB6rWGy3J1rOmaeVlw
-	 kkFyfPbnkR1MPCIZ1aGiRwVXYLYlchld/Br6sIW+5B7MFov4oMs4NY5wJBsMvBXYjr
-	 wiRvcAzs8lVDxPOKBukoJkaQ9YVEesf107XD8pDfOzsjFsmbGZfV34sh6KyX5gg39r
-	 dpZzlqOQMHYRA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5B6A84060F;
-	Sat, 24 May 2025 22:34:46 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 24FF8119
- for <intel-wired-lan@lists.osuosl.org>; Sat, 24 May 2025 22:34:45 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0AF2E811AC
- for <intel-wired-lan@lists.osuosl.org>; Sat, 24 May 2025 22:34:45 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C91EA80808;
+	Sun, 25 May 2025 05:24:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id iUjuY6kbHE96 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 24 May 2025 22:34:44 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org E432B811A9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E432B811A9
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E432B811A9
- for <intel-wired-lan@lists.osuosl.org>; Sat, 24 May 2025 22:34:43 +0000 (UTC)
-X-CSE-ConnectionGUID: ehP3SiRRRtyW9JhsPPH2BQ==
-X-CSE-MsgGUID: sujelzpbQpGw8znxgmbXGw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11443"; a="60798955"
-X-IronPort-AV: E=Sophos;i="6.15,311,1739865600"; d="scan'208";a="60798955"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
- by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 May 2025 15:34:42 -0700
-X-CSE-ConnectionGUID: FAkSyNkjR06no6+w7acxXw==
-X-CSE-MsgGUID: /RNMkPZfQzekletJSHln8g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,311,1739865600"; d="scan'208";a="141586963"
-Received: from lkp-server01.sh.intel.com (HELO 1992f890471c) ([10.239.97.150])
- by orviesa009.jf.intel.com with ESMTP; 24 May 2025 15:34:42 -0700
-Received: from kbuild by 1992f890471c with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1uIxRv-000RUi-1r
- for intel-wired-lan@lists.osuosl.org; Sat, 24 May 2025 22:34:39 +0000
-Date: Sun, 25 May 2025 06:34:32 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202505250623.5ys7HkYA-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1748126084; x=1779662084;
- h=date:from:to:subject:message-id;
- bh=m0qtBkFEOo7HCX3RFpwD5fJG6pBHdp+9m0N++siONkQ=;
- b=JEKGHS+UZew0xh4HOWNQ3IpgQrhnebHSq2twszOvjKShH5s10fL3ppsL
- tR2U09rAPUiFsEMLn/m5UL2dWM7lhNZLJyZNMGJfK6OE5C3/5p4QTD8ni
- lol77S49iMxJ5hd+ILt4hFERmsU649w9ADsyc9BlyQN7IQxqWosAQ6rzh
- uetBlVpVdxq2ONAmeQ+k+4jtdBjjGvjdHnFTG+JKX78WH1GAh2UX1Tzyj
- 7fDU/vlVDRjaDORIoixvucYVht73RZpNRNczjC3ESL/wtHCiGbu2UmllR
- kZA3PvSULY+/ALfYqgW3XRNpkAHLQNJnK8I2isktF/JGpikvj96zQ5Rqt
- Q==;
+ id coG04m0KbgFZ; Sun, 25 May 2025 05:24:11 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 983BA8080B
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1748150650;
+	bh=B75YSALI4/7Eq7EZqbZGPxr/BsYOYK7c/4597QJVTl0=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=2GMoUY3EITdvYmMhme5AwVHpBBll5VcOhUFaF2ILPjjTFgFfow99+Y1FeT6JsLEkP
+	 965nM5kgbW7Q7Aj2+R+v/wduCjPY4uyoWE4IriMzGE2IG8hJSIVEkReX4Xd7nrqi0w
+	 lGEHHdfXPP5YPp9br+/Aa+wrIXNNiovdin0hmGq3IeoKxzxh2353SyT2GC4WlsjjBD
+	 OIL7UU7jAEw0cLvJZnF9yzFtaX9f4ztUakI65LwYg6TV7ql4D5o9V7/B0HcOYCF/1o
+	 Qq0/1dzkztRud51VjDmQihVAM+ggn7cwaKTx11ujG4jNw8RwbEKxiC3f4IMtd5COwE
+	 Xv/zX/HzWrEcA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 983BA8080B;
+	Sun, 25 May 2025 05:24:10 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 1280E68
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 25 May 2025 05:24:09 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 041A2807EC
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 25 May 2025 05:24:09 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 1LNk7b1JA-FU for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 25 May 2025 05:24:08 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org E2D9E807EB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E2D9E807EB
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E2D9E807EB
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 25 May 2025 05:24:06 +0000 (UTC)
+Received: from [192.168.2.107] (p5b13a30a.dip0.t-ipconnect.de [91.19.163.10])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 45C1161E64783;
+ Sun, 25 May 2025 07:23:36 +0200 (CEST)
+Message-ID: <86b40e25-23af-4542-86de-415677b38486@molgen.mpg.de>
+Date: Sun, 25 May 2025 07:23:34 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+To: Tatyana Nikolova <tatyana.e.nikolova@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, jgg@nvidia.com, leon@kernel.org,
+ linux-rdma@vger.kernel.org, netdev@vger.kernel.org, kuba@kernel.org,
+ anthony.l.nguyen@intel.com, Joshua Hay <joshua.a.hay@intel.com>
+References: <20250523170435.668-1-tatyana.e.nikolova@intel.com>
+ <20250523170435.668-2-tatyana.e.nikolova@intel.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20250523170435.668-2-tatyana.e.nikolova@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=JEKGHS+U
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- fe87904d244d3b80ac786ea99a8201459d16e5a5
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
+Subject: Re: [Intel-wired-lan] [iwl-next 1/6] idpf: use reserved RDMA
+ vectors from control plane
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,141 +90,298 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: fe87904d244d3b80ac786ea99a8201459d16e5a5  ixgbe: Fix typos and clarify comments in X550 driver code
+Dear Tatyana,
 
-elapsed time: 1447m
 
-configs tested: 122
-configs skipped: 6
+Thank you for your patch.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Am 23.05.25 um 19:04 schrieb Tatyana Nikolova:
+> From: Joshua Hay <joshua.a.hay@intel.com>
+> 
+> Fetch the number of reserved RDMA vectors from the control plane.
+> Adjust the number of reserved LAN vectors if necessary. Adjust the
+> minimum number of vectors the OS should reserve to include RDMA; and
+> fail if the OS cannot reserve enough vectors for the minimum number of
+> LAN and RDMA vectors required. Create a separate msix table for the
+> reserved RDMA vectors, which will just get handed off to the RDMA core
+> device to do with what it will.
 
-tested configs:
-alpha                             allnoconfig    gcc-14.2.0
-alpha                            allyesconfig    gcc-14.2.0
-arc                              allmodconfig    gcc-14.2.0
-arc                               allnoconfig    gcc-14.2.0
-arc                              allyesconfig    gcc-14.2.0
-arc                   randconfig-001-20250524    gcc-15.1.0
-arc                   randconfig-002-20250524    gcc-15.1.0
-arm                               allnoconfig    clang-21
-arm                              allyesconfig    gcc-14.2.0
-arm                         at91_dt_defconfig    clang-21
-arm                         axm55xx_defconfig    clang-21
-arm                   randconfig-001-20250524    gcc-7.5.0
-arm                   randconfig-002-20250524    gcc-7.5.0
-arm                   randconfig-003-20250524    clang-20
-arm                   randconfig-004-20250524    gcc-7.5.0
-arm                           stm32_defconfig    gcc-14.2.0
-arm                           tegra_defconfig    gcc-14.2.0
-arm64                            allmodconfig    clang-19
-arm64                             allnoconfig    gcc-14.2.0
-arm64                 randconfig-001-20250524    gcc-5.5.0
-arm64                 randconfig-002-20250524    gcc-7.5.0
-arm64                 randconfig-003-20250524    clang-19
-arm64                 randconfig-004-20250524    gcc-7.5.0
-csky                              allnoconfig    gcc-14.2.0
-csky                  randconfig-001-20250524    gcc-11.5.0
-csky                  randconfig-002-20250524    gcc-9.3.0
-hexagon                          allmodconfig    clang-17
-hexagon                           allnoconfig    clang-21
-hexagon                          allyesconfig    clang-21
-hexagon               randconfig-001-20250524    clang-21
-hexagon               randconfig-002-20250524    clang-21
-i386                             alldefconfig    gcc-12
-i386                             allmodconfig    gcc-12
-i386                              allnoconfig    gcc-12
-i386                             allyesconfig    gcc-12
-i386        buildonly-randconfig-001-20250524    clang-20
-i386        buildonly-randconfig-002-20250524    gcc-12
-i386        buildonly-randconfig-003-20250524    gcc-12
-i386        buildonly-randconfig-004-20250524    gcc-12
-i386        buildonly-randconfig-005-20250524    clang-20
-i386        buildonly-randconfig-006-20250524    clang-20
-i386                                defconfig    clang-20
-loongarch                         allnoconfig    gcc-14.2.0
-loongarch             randconfig-001-20250524    gcc-13.3.0
-loongarch             randconfig-002-20250524    gcc-15.1.0
-m68k                              allnoconfig    gcc-14.2.0
-m68k                          atari_defconfig    gcc-14.2.0
-m68k                        m5407c3_defconfig    gcc-14.2.0
-microblaze                        allnoconfig    gcc-14.2.0
-mips                              allnoconfig    gcc-14.2.0
-nios2                             allnoconfig    gcc-14.2.0
-nios2                 randconfig-001-20250524    gcc-13.3.0
-nios2                 randconfig-002-20250524    gcc-9.3.0
-openrisc                          allnoconfig    gcc-14.2.0
-openrisc                         allyesconfig    gcc-14.2.0
-openrisc                            defconfig    gcc-14.2.0
-parisc                           allmodconfig    gcc-14.2.0
-parisc                            allnoconfig    gcc-14.2.0
-parisc                           allyesconfig    gcc-14.2.0
-parisc                              defconfig    gcc-14.2.0
-parisc                randconfig-001-20250524    gcc-6.5.0
-parisc                randconfig-002-20250524    gcc-8.5.0
-powerpc                          allmodconfig    gcc-14.2.0
-powerpc                           allnoconfig    gcc-14.2.0
-powerpc                     rainier_defconfig    gcc-14.2.0
-powerpc               randconfig-001-20250524    gcc-5.5.0
-powerpc               randconfig-002-20250524    gcc-7.5.0
-powerpc               randconfig-003-20250524    clang-21
-powerpc                    sam440ep_defconfig    gcc-14.2.0
-powerpc                     stx_gp3_defconfig    gcc-14.2.0
-powerpc64             randconfig-001-20250524    gcc-7.5.0
-powerpc64             randconfig-002-20250524    gcc-10.5.0
-powerpc64             randconfig-003-20250524    clang-21
-riscv                             allnoconfig    gcc-14.2.0
-riscv                               defconfig    clang-21
-riscv                 randconfig-001-20250524    clang-21
-riscv                 randconfig-002-20250524    gcc-9.3.0
-s390                             allmodconfig    clang-18
-s390                              allnoconfig    clang-21
-s390                             allyesconfig    gcc-14.2.0
-s390                                defconfig    clang-21
-s390                  randconfig-001-20250524    clang-17
-s390                  randconfig-002-20250524    gcc-8.5.0
-sh                               allmodconfig    gcc-14.2.0
-sh                                allnoconfig    gcc-14.2.0
-sh                               allyesconfig    gcc-14.2.0
-sh                                  defconfig    gcc-14.2.0
-sh                          kfr2r09_defconfig    gcc-14.2.0
-sh                    randconfig-001-20250524    gcc-13.3.0
-sh                    randconfig-002-20250524    gcc-7.5.0
-sh                   rts7751r2dplus_defconfig    gcc-14.2.0
-sh                   secureedge5410_defconfig    gcc-14.2.0
-sh                              ul2_defconfig    gcc-14.2.0
-sparc                            allmodconfig    gcc-14.2.0
-sparc                             allnoconfig    gcc-14.2.0
-sparc                 randconfig-001-20250524    gcc-6.5.0
-sparc                 randconfig-002-20250524    gcc-6.5.0
-sparc                       sparc32_defconfig    gcc-14.2.0
-sparc64                             defconfig    gcc-14.2.0
-sparc64               randconfig-001-20250524    gcc-8.5.0
-sparc64               randconfig-002-20250524    gcc-6.5.0
-um                               allmodconfig    clang-19
-um                                allnoconfig    clang-21
-um                               allyesconfig    gcc-12
-um                                  defconfig    clang-21
-um                             i386_defconfig    gcc-12
-um                    randconfig-001-20250524    gcc-12
-um                    randconfig-002-20250524    clang-21
-um                           x86_64_defconfig    clang-21
-x86_64                            allnoconfig    clang-20
-x86_64                           allyesconfig    clang-20
-x86_64      buildonly-randconfig-001-20250524    gcc-12
-x86_64      buildonly-randconfig-002-20250524    gcc-12
-x86_64      buildonly-randconfig-003-20250524    gcc-12
-x86_64      buildonly-randconfig-004-20250524    gcc-12
-x86_64      buildonly-randconfig-005-20250524    gcc-11
-x86_64      buildonly-randconfig-006-20250524    clang-20
-x86_64                              defconfig    gcc-11
-x86_64                          rhel-9.4-rust    clang-18
-xtensa                            allnoconfig    gcc-14.2.0
-xtensa                randconfig-001-20250524    gcc-8.5.0
-xtensa                randconfig-002-20250524    gcc-8.5.0
+How can this all be tested? It’d be great if you added the commands and 
+outputs.
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+> Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
+> Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
+> Signed-off-by: Tatyana Nikolova <tatyana.e.nikolova@intel.com>
+> ---
+>   drivers/net/ethernet/intel/idpf/idpf.h      | 28 +++++++-
+>   drivers/net/ethernet/intel/idpf/idpf_lib.c  | 74 +++++++++++++++++----
+>   drivers/net/ethernet/intel/idpf/idpf_txrx.h |  1 +
+>   drivers/net/ethernet/intel/idpf/virtchnl2.h |  5 +-
+>   4 files changed, 92 insertions(+), 16 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf.h b/drivers/net/ethernet/intel/idpf/idpf.h
+> index 66544faab710..8ef7120e6717 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf.h
+> +++ b/drivers/net/ethernet/intel/idpf/idpf.h
+> @@ -489,10 +489,11 @@ struct idpf_vc_xn_manager;
+>    * @flags: See enum idpf_flags
+>    * @reset_reg: See struct idpf_reset_reg
+>    * @hw: Device access data
+> - * @num_req_msix: Requested number of MSIX vectors
+>    * @num_avail_msix: Available number of MSIX vectors
+>    * @num_msix_entries: Number of entries in MSIX table
+>    * @msix_entries: MSIX table
+> + * @num_rdma_msix_entries: Available number of MSIX vectors for RDMA
+> + * @rdma_msix_entries: RDMA MSIX table
+>    * @req_vec_chunks: Requested vector chunk data
+>    * @mb_vector: Mailbox vector data
+>    * @vector_stack: Stack to store the msix vector indexes
+> @@ -542,10 +543,11 @@ struct idpf_adapter {
+>   	DECLARE_BITMAP(flags, IDPF_FLAGS_NBITS);
+>   	struct idpf_reset_reg reset_reg;
+>   	struct idpf_hw hw;
+> -	u16 num_req_msix;
+>   	u16 num_avail_msix;
+>   	u16 num_msix_entries;
+>   	struct msix_entry *msix_entries;
+> +	u16 num_rdma_msix_entries;
+> +	struct msix_entry *rdma_msix_entries;
+>   	struct virtchnl2_alloc_vectors *req_vec_chunks;
+>   	struct idpf_q_vector mb_vector;
+>   	struct idpf_vector_lifo vector_stack;
+> @@ -609,6 +611,17 @@ static inline int idpf_is_queue_model_split(u16 q_model)
+>   bool idpf_is_capability_ena(struct idpf_adapter *adapter, bool all,
+>   			    enum idpf_cap_field field, u64 flag);
+>   
+> +/**
+> + * idpf_is_rdma_cap_ena - Determine if RDMA is supported
+> + * @adapter: private data struct
+> + *
+> + * Return: true if RDMA capability is enabled, false otherwise
+> + */
+> +static inline bool idpf_is_rdma_cap_ena(struct idpf_adapter *adapter)
+> +{
+> +	return idpf_is_cap_ena(adapter, IDPF_OTHER_CAPS, VIRTCHNL2_CAP_RDMA);
+> +}
+> +
+>   #define IDPF_CAP_RSS (\
+>   	VIRTCHNL2_CAP_RSS_IPV4_TCP	|\
+>   	VIRTCHNL2_CAP_RSS_IPV4_TCP	|\
+> @@ -663,6 +676,17 @@ static inline u16 idpf_get_reserved_vecs(struct idpf_adapter *adapter)
+>   	return le16_to_cpu(adapter->caps.num_allocated_vectors);
+>   }
+>   
+> +/**
+> + * idpf_get_reserved_rdma_vecs - Get reserved RDMA vectors
+> + * @adapter: private data struct
+> + *
+> + * Return: number of vectors reserved for RDMA
+> + */
+> +static inline u16 idpf_get_reserved_rdma_vecs(struct idpf_adapter *adapter)
+> +{
+> +	return le16_to_cpu(adapter->caps.num_rdma_allocated_vectors);
+> +}
+> +
+>   /**
+>    * idpf_get_default_vports - Get default number of vports
+>    * @adapter: private data struct
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
+> index aa755dedb41d..0d5c57502cac 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
+> @@ -87,6 +87,8 @@ void idpf_intr_rel(struct idpf_adapter *adapter)
+>   	idpf_deinit_vector_stack(adapter);
+>   	kfree(adapter->msix_entries);
+>   	adapter->msix_entries = NULL;
+> +	kfree(adapter->rdma_msix_entries);
+> +	adapter->rdma_msix_entries = NULL;
+>   }
+>   
+>   /**
+> @@ -314,13 +316,33 @@ int idpf_req_rel_vector_indexes(struct idpf_adapter *adapter,
+>    */
+>   int idpf_intr_req(struct idpf_adapter *adapter)
+>   {
+> +	u16 num_lan_vecs, min_lan_vecs, num_rdma_vecs = 0, min_rdma_vecs = 0;
+>   	u16 default_vports = idpf_get_default_vports(adapter);
+>   	int num_q_vecs, total_vecs, num_vec_ids;
+>   	int min_vectors, v_actual, err;
+
+Unrelated, but `v_actual` is strangely named, when all other variables 
+seem to use vec.
+
+>   	unsigned int vector;
+>   	u16 *vecids;
+> +	int i;
+
+size_t?
+
+>   
+>   	total_vecs = idpf_get_reserved_vecs(adapter);
+> +	num_lan_vecs = total_vecs;
+> +	if (idpf_is_rdma_cap_ena(adapter)) {
+> +		num_rdma_vecs = idpf_get_reserved_rdma_vecs(adapter);
+> +		min_rdma_vecs = IDPF_MIN_RDMA_VEC;
+> +
+> +		if (!num_rdma_vecs) {
+> +			/* If idpf_get_reserved_rdma_vecs is 0, vectors are
+> +			 * pulled from the LAN pool.
+> +			 */
+> +			num_rdma_vecs = min_rdma_vecs;
+> +		} else if (num_rdma_vecs < min_rdma_vecs) {
+> +			dev_err(&adapter->pdev->dev,
+> +				"Not enough vectors reserved for RDMA (min: %u, current: %u)\n",
+> +				min_rdma_vecs, num_rdma_vecs);
+> +			return -EINVAL;
+> +		}
+> +	}
+> +
+>   	num_q_vecs = total_vecs - IDPF_MBX_Q_VEC;
+>   
+>   	err = idpf_send_alloc_vectors_msg(adapter, num_q_vecs);
+> @@ -331,52 +353,75 @@ int idpf_intr_req(struct idpf_adapter *adapter)
+>   		return -EAGAIN;
+>   	}
+>   
+> -	min_vectors = IDPF_MBX_Q_VEC + IDPF_MIN_Q_VEC * default_vports;
+> +	min_lan_vecs = IDPF_MBX_Q_VEC + IDPF_MIN_Q_VEC * default_vports;
+> +	min_vectors = min_lan_vecs + min_rdma_vecs;
+>   	v_actual = pci_alloc_irq_vectors(adapter->pdev, min_vectors,
+>   					 total_vecs, PCI_IRQ_MSIX);
+>   	if (v_actual < min_vectors) {
+> -		dev_err(&adapter->pdev->dev, "Failed to allocate MSIX vectors: %d\n",
+> +		dev_err(&adapter->pdev->dev, "Failed to allocate minimum MSIX vectors required: %d\n",
+>   			v_actual);
+>   		err = -EAGAIN;
+>   		goto send_dealloc_vecs;
+>   	}
+>   
+> -	adapter->msix_entries = kcalloc(v_actual, sizeof(struct msix_entry),
+> -					GFP_KERNEL);
+> +	if (idpf_is_rdma_cap_ena(adapter)) {
+> +		if (v_actual < total_vecs) {
+> +			dev_warn(&adapter->pdev->dev,
+> +				 "Warning: not enough vectors available. Defaulting to minimum for RDMA and remaining for LAN.\n");
+
+Also log `v_actual`, `total_vecs` and `IDPF_MIN_RDMA_VEC`?
+
+> +			num_rdma_vecs = IDPF_MIN_RDMA_VEC;
+> +		}
+>   
+> +		adapter->rdma_msix_entries =
+> +			kcalloc(num_rdma_vecs,
+> +				sizeof(struct msix_entry), GFP_KERNEL);
+> +		if (!adapter->rdma_msix_entries) {
+> +			err = -ENOMEM;
+> +			goto free_irq;
+> +		}
+> +	}
+> +
+> +	num_lan_vecs = v_actual - num_rdma_vecs;
+> +	adapter->msix_entries = kcalloc(num_lan_vecs, sizeof(struct msix_entry),
+> +					GFP_KERNEL);
+>   	if (!adapter->msix_entries) {
+>   		err = -ENOMEM;
+> -		goto free_irq;
+> +		goto free_rdma_msix;
+>   	}
+>   
+>   	idpf_set_mb_vec_id(adapter);
+>   
+> -	vecids = kcalloc(total_vecs, sizeof(u16), GFP_KERNEL);
+> +	vecids = kcalloc(v_actual, sizeof(u16), GFP_KERNEL);
+>   	if (!vecids) {
+>   		err = -ENOMEM;
+>   		goto free_msix;
+>   	}
+>   
+> -	num_vec_ids = idpf_get_vec_ids(adapter, vecids, total_vecs,
+> +	num_vec_ids = idpf_get_vec_ids(adapter, vecids, v_actual,
+>   				       &adapter->req_vec_chunks->vchunks);
+>   	if (num_vec_ids < v_actual) {
+>   		err = -EINVAL;
+>   		goto free_vecids;
+>   	}
+>   
+> -	for (vector = 0; vector < v_actual; vector++) {
+> -		adapter->msix_entries[vector].entry = vecids[vector];
+> -		adapter->msix_entries[vector].vector =
+> +	for (i = 0, vector = 0; vector < num_lan_vecs; vector++, i++) {
+> +		adapter->msix_entries[i].entry = vecids[vector];
+> +		adapter->msix_entries[i].vector =
+> +			pci_irq_vector(adapter->pdev, vector);
+
+Excuse my ignorance, but why are two counting variables needed, that 
+seem to be identical?
+
+> +	}
+> +	for (i = 0; i < num_rdma_vecs; vector++, i++) {
+> +		adapter->rdma_msix_entries[i].entry = vecids[vector];
+> +		adapter->rdma_msix_entries[i].vector =
+>   			pci_irq_vector(adapter->pdev, vector);
+>   	}
+>   
+> -	adapter->num_req_msix = total_vecs;
+> -	adapter->num_msix_entries = v_actual;
+>   	/* 'num_avail_msix' is used to distribute excess vectors to the vports
+>   	 * after considering the minimum vectors required per each default
+>   	 * vport
+>   	 */
+> -	adapter->num_avail_msix = v_actual - min_vectors;
+> +	adapter->num_avail_msix = num_lan_vecs - min_lan_vecs;
+> +	adapter->num_msix_entries = num_lan_vecs;
+> +	if (idpf_is_rdma_cap_ena(adapter))
+> +		adapter->num_rdma_msix_entries = num_rdma_vecs;
+>   
+>   	/* Fill MSIX vector lifo stack with vector indexes */
+>   	err = idpf_init_vector_stack(adapter);
+> @@ -398,6 +443,9 @@ int idpf_intr_req(struct idpf_adapter *adapter)
+>   free_msix:
+>   	kfree(adapter->msix_entries);
+>   	adapter->msix_entries = NULL;
+> +free_rdma_msix:
+> +	kfree(adapter->rdma_msix_entries);
+> +	adapter->rdma_msix_entries = NULL;
+>   free_irq:
+>   	pci_free_irq_vectors(adapter->pdev);
+>   send_dealloc_vecs:
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+> index b029f566e57c..9cb97397d89b 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+> @@ -57,6 +57,7 @@
+>   /* Default vector sharing */
+>   #define IDPF_MBX_Q_VEC		1
+>   #define IDPF_MIN_Q_VEC		1
+> +#define IDPF_MIN_RDMA_VEC	2
+>   
+>   #define IDPF_DFLT_TX_Q_DESC_COUNT		512
+>   #define IDPF_DFLT_TX_COMPLQ_DESC_COUNT		512
+> diff --git a/drivers/net/ethernet/intel/idpf/virtchnl2.h b/drivers/net/ethernet/intel/idpf/virtchnl2.h
+> index 63deb120359c..80c17e4a394e 100644
+> --- a/drivers/net/ethernet/intel/idpf/virtchnl2.h
+> +++ b/drivers/net/ethernet/intel/idpf/virtchnl2.h
+> @@ -473,6 +473,8 @@ VIRTCHNL2_CHECK_STRUCT_LEN(8, virtchnl2_version_info);
+>    *			segment offload.
+>    * @max_hdr_buf_per_lso: Max number of header buffers that can be used for
+>    *			 an LSO.
+> + * @num_rdma_allocated_vectors: Maximum number of allocated RDMA vectors for
+> + *				the device.
+>    * @pad1: Padding for future extensions.
+>    *
+>    * Dataplane driver sends this message to CP to negotiate capabilities and
+> @@ -520,7 +522,8 @@ struct virtchnl2_get_capabilities {
+>   	__le32 device_type;
+>   	u8 min_sso_packet_len;
+>   	u8 max_hdr_buf_per_lso;
+> -	u8 pad1[10];
+> +	__le16 num_rdma_allocated_vectors;
+> +	u8 pad1[8];
+>   };
+>   VIRTCHNL2_CHECK_STRUCT_LEN(80, virtchnl2_get_capabilities);
+
+
+Kind regards,
+
+Paul
+
