@@ -1,129 +1,104 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 13846AC3D18
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 May 2025 11:42:12 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2603DAC3D54
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 May 2025 11:51:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1E72B607DE;
-	Mon, 26 May 2025 09:42:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A8FEF80CE4;
+	Mon, 26 May 2025 09:51:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id d6hlA4lfxJID; Mon, 26 May 2025 09:42:09 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Xq_2VlgSlE_y; Mon, 26 May 2025 09:51:51 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8C2AC607E0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 248B580CE8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1748252529;
-	bh=27+HxxD+Nnzh7/t8b6hLfpxekNp9wQ15a2r2Zx2hs2E=;
+	s=default; t=1748253111;
+	bh=QLGPvtJJlPAMlq4PZzIy8aEez8qffEYrBiyp0ppfbZs=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=ofy9cMRSJ21RxOr8VycnQZqidHp6PVi2ZexOlJTuICLLXoFiXlnQCkuoHQzQrQQxm
-	 N9EqIDR4+kpU6kXX09Wba8zn6LYWfKRoG8oTZn+/bJH/GkkG+uYn4l/We4vlFu20lA
-	 fLJ66ndhEmQLZQiXAxhdK069Bo8uOI6K8SFk6U7fuZbZll3naCvlO0DipDbhFnH040
-	 egtxI1evbzQAgFwsr+zDRAjPK1JLLo3JVPIuKtH5XRogvkFLiPTUOVKAssuVbkGp/R
-	 hD89TXnPTldYpAT097uKeq40931fALibjfW/KV/vFD8UjkwPfxMiG+r7Xl6V6W5RWX
-	 OLOZawFk+/GLw==
+	b=bnouw2iremTXZnOEVUs1poKOLHw0A7BnR0MZ9IM4aNG6i/XX8AhKQlAnoekLbg/eC
+	 4+Fk9lpZNic+NJlDCqJfIIJqI+GFyuYeZCGQwULjYAVp1Md+jBg4uTDU1qc0o3aEkX
+	 rqVdF4+5VJLlvMbuqWttOED2oNKZFIzhWttjV109Yo/1VhqpJ3urIn4unnTTJX12JU
+	 ls3O1I1MnZagR/1G+l0sU0OceEOAHCzyk/Vf83lKE65kpqEbxScNjHRWFP2RrOKfQ3
+	 mHWEbriULT+x2nxbqw5dhVlMFcw7NDgVYFf7ulEprKYhqtEYMowlbfjLKUXXWSp6YZ
+	 p0YJOB4PjWzLA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8C2AC607E0;
-	Mon, 26 May 2025 09:42:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 248B580CE8;
+	Mon, 26 May 2025 09:51:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 09BCE68
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 May 2025 09:42:08 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 9B95819D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 May 2025 09:51:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id EF80D401D6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 May 2025 09:42:07 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8CB0D80CD2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 May 2025 09:51:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id EjojhWfzpUBV for <intel-wired-lan@lists.osuosl.org>;
- Mon, 26 May 2025 09:42:07 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::32b; helo=mail-wm1-x32b.google.com;
- envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org D5D3D401D4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D5D3D401D4
-Received: from mail-wm1-x32b.google.com (mail-wm1-x32b.google.com
- [IPv6:2a00:1450:4864:20::32b])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D5D3D401D4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 May 2025 09:42:06 +0000 (UTC)
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-441d437cfaaso12108385e9.1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 May 2025 02:42:06 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1748252524; x=1748857324;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=27+HxxD+Nnzh7/t8b6hLfpxekNp9wQ15a2r2Zx2hs2E=;
- b=Bsy93abgAH2AgLFI3owZstHv/Tsh9+zI8OLUMeBhc7aFXh1qs4qmm+1Yasu6cwyQ2A
- jkduVd+y/J+e0kcLL1lGGGMf9LGHVHA/KNBKrNgKnj3ULmJIwrJ6NwzU/EnpGk5wSxRt
- LbEmNNOSIXObZEeGxr3DPQcixAeCfRCdNMLNlIE9646Q72nSHE4M+N90IGNf0z/VExgJ
- V45oRlsNJ+i7cAptZ2UP8H6QHn272aMH3fjMu0U0omGaUqO9gCvjaiGDvPAGkZizHnAY
- E2KtGmNePDTxVMojscjJxoxyErMuQKvsN6fW3Ip5lCmUisXX5qEt/mi0d3lyYUp/0mxy
- OquA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV8QstxV94U2TOqlWr8cEVuPnI1eZ0sMoOamq+4yxBzGTkZVBPAVLCxdwQ73yfspW3R+NFIiEkpcE3Q4Ib9+/w=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yw8lSuL6KDnBYb2Y1V6mnX6oFdHvZRipkyq2K+Ie81ng8Dp7yHq
- cqtXjwdso47BOFnNci9QpFpyPkTJw4qMlb8Gf+a3MVymBsXHJQe2hPI9nNXEMQ8V3pI=
-X-Gm-Gg: ASbGnct1zmHv9paw3g2YkovaQxSBfyC5tGHUABPWT+8EM2L0I8XUN6unm3M47FgnDP1
- 6Ld7CmFXiLMFtBg/1oZLLoyNI2LRt4IAEVZfBUlh1DXleh3+j10Zaacb0PNZb7dxDCoprt1qB4z
- rosfK7c0MvYyb5Me3itP6caIYrq7El/4z2zgpvXKDyvHFa0ZcSiRVuXwQEFjTfPVDM6CUjayOyc
- qRaCdQAbWytC9cT4MlkgyGPMSA+wkHExBR6x5YdFH8uY68m12sMRiO/V4+hHvOxb9I7zH0ft5j4
- n/3l4jufLrURLpG5d3X9YLuXqltX6SUZ7aBuruXHFtcHYLPk58FGgXt5SsNQ8Ht/ROGiBdMf/e8
- LuDk=
-X-Google-Smtp-Source: AGHT+IGj/TCuJ1rymJwAmhwD9hEHb2YavTmDlg3uKm0ah5yuR6f/5Sm9EUvqo4UPAzGWQCJs2xZcoA==
-X-Received: by 2002:a05:600c:3c84:b0:442:d9f2:c6ef with SMTP id
- 5b1f17b1804b1-44c9301660cmr86938965e9.2.1748252524118; 
- Mon, 26 May 2025 02:42:04 -0700 (PDT)
-Received: from jiri-mlt (37-48-1-197.nat.epc.tmcz.cz. [37.48.1.197])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-447f6b29619sm242667995e9.7.2025.05.26.02.42.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 26 May 2025 02:42:03 -0700 (PDT)
-Date: Mon, 26 May 2025 11:42:01 +0200
-From: Jiri Pirko <jiri@resnulli.us>
-To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-Cc: donald.hunter@gmail.com, kuba@kernel.org, davem@davemloft.net, 
- edumazet@google.com, pabeni@redhat.com, horms@kernel.org,
- vadim.fedorenko@linux.dev, 
- anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com, andrew+netdev@lunn.ch,
- aleksandr.loktionov@intel.com, corbet@lwn.net, netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-rdma@vger.kernel.org, 
- linux-doc@vger.kernel.org, Milena Olech <milena.olech@intel.com>
-Message-ID: <pu6s2lvqaulyurarklqxumdtcd3tql7djhyun3ylgvyv3lmsf7@oun62hhb5hkk>
-References: <20250523172650.1517164-1-arkadiusz.kubalewski@intel.com>
- <20250523172650.1517164-2-arkadiusz.kubalewski@intel.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 5fHIcbXsWp1T for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 26 May 2025 09:51:47 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3E31580CA7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3E31580CA7
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3E31580CA7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 May 2025 09:51:47 +0000 (UTC)
+X-CSE-ConnectionGUID: efg8aigJTTuOcgv87UwQmw==
+X-CSE-MsgGUID: BTqlKk68RuCw84A0xQl/Hg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11444"; a="61631861"
+X-IronPort-AV: E=Sophos;i="6.15,315,1739865600"; d="scan'208";a="61631861"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+ by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 May 2025 02:51:47 -0700
+X-CSE-ConnectionGUID: MpZRJJz4QTupfXrYoxvo/A==
+X-CSE-MsgGUID: f38UmJFZTmW3MP8a2UHD2g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,315,1739865600"; d="scan'208";a="142679357"
+Received: from mev-dev.igk.intel.com ([10.237.112.144])
+ by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 May 2025 02:51:43 -0700
+Date: Mon, 26 May 2025 11:51:06 +0200
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: Haoxiang Li <haoxiang_li2024@163.com>
+Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, sergey.temerkhanov@intel.com,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, stable@vger.kernel.org
+Message-ID: <aDQ5ipcH346PJPGp@mev-dev.igk.intel.com>
+References: <20250524072658.3586149-1-haoxiang_li2024@163.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250523172650.1517164-2-arkadiusz.kubalewski@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1748252524; x=1748857324;
- darn=lists.osuosl.org; 
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=27+HxxD+Nnzh7/t8b6hLfpxekNp9wQ15a2r2Zx2hs2E=;
- b=yIRasTD6Y4vBUU60cG+gomQwZLvOTBONo6srpEPaTNePrnpzGHlKpCE5tf1fzZqgEf
- ZKsc8PHipLwCX/sNUdBz1TsncFKjZU8hWblIxnAMLYxjPjE3Y7gPVJ4bV59bCHjUW5mC
- yl2RvT8OLFcGf7/KFvEDFnBgnFaGzYU0sdesXPTrO8kaWZihLiVpA+6bCPKnI/3wH0uJ
- w9NxEvP3pr6TA9brlcU6BotGzNH7jVahfpa5RSLpl3cpLqitVGoHR9fYQcEY9SqNLXtw
- +ca4Bd/sXReq8S/5CZh7AUGVofpwO9K86+czTlRnMMyGMNpT0m5H8raTYKE0zZjTDzcj
- PBdQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+In-Reply-To: <20250524072658.3586149-1-haoxiang_li2024@163.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1748253107; x=1779789107;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=3qgtqvR99/jckDm4wJuF1A1c37Gw/lv4DloT3Rig0lQ=;
+ b=iy90u/JMsFfKIfBDYntdkO0Pkr2DKZsBSFTEFpJpggfFzEG7uf52CuiS
+ GhebsKL1Yi9ihSKCXwMwZJ2Wl3Bx6QpWLrvJm3noXSPfblFPShsFszCHp
+ YXXtt+dTTUNjfWxL1soGnsUFJmSUnZI3fuymEp6KG7b4+3tT7B3EKfG8B
+ OPUj4W42prHKTmgLuai3exPdpDn+dOuzJfEb+PmJ0d6RcV1v5LeujRbn6
+ rPG92s8PSFYc9pQb0t9SEgGXt7ToV84WG7g3XjEUoK/oVH+femjoppCsZ
+ tJiHTcaFHEVMS5nIx1+s6QKz4VYHiak6XCWpJ3G/sRyJP1keVPjtldLwA
+ g==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=resnulli.us
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=resnulli-us.20230601.gappssmtp.com
- header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=yIRasTD6
-Subject: Re: [Intel-wired-lan] [PATCH net-next v4 1/3] dpll: add
- reference-sync netlink attribute
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=iy90u/JM
+Subject: Re: [Intel-wired-lan] [PATCH] ice: Fix a null pointer dereference
+ in ice_copy_and_init_pkg()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -139,13 +114,37 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fri, May 23, 2025 at 07:26:48PM +0200, arkadiusz.kubalewski@intel.com wrote:
->Add new netlink attribute to allow user space configuration of reference
->sync pin pairs, where both pins are used to provide one clock signal
->consisting of both: base frequency and sync signal.
->
->Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
->Reviewed-by: Milena Olech <milena.olech@intel.com>
->Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+On Sat, May 24, 2025 at 03:26:58PM +0800, Haoxiang Li wrote:
+> Add check for the return value of devm_kmemdup()
+> to prevent potential null pointer dereference.
+> 
+> Fixes: 2ffd87d38d6b ("ice: Move support DDP code out of ice_flex_pipe.c")
 
-Reviewed-by: Jiri Pirko <jiri@nvidia.com>
+This commit is only moving the code to new file. I think it should be:
+c76488109616 ("ice: Implement Dynamic Device Personalization (DDP) download")
+
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Haoxiang Li <haoxiang_li2024@163.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_ddp.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ddp.c b/drivers/net/ethernet/intel/ice/ice_ddp.c
+> index 59323c019544..351824dc3c62 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ddp.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_ddp.c
+> @@ -2301,6 +2301,8 @@ enum ice_ddp_state ice_copy_and_init_pkg(struct ice_hw *hw, const u8 *buf,
+>  		return ICE_DDP_PKG_ERR;
+>  
+>  	buf_copy = devm_kmemdup(ice_hw_to_dev(hw), buf, len, GFP_KERNEL);
+> +	if (!buf_copy)
+> +		return ICE_DDP_PKG_ERR;
+
+Fix looks fine, thanks
+Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+
+>  
+>  	state = ice_init_pkg(hw, buf_copy, len);
+>  	if (!ice_is_init_pkg_successful(state)) {
+> -- 
+> 2.25.1
