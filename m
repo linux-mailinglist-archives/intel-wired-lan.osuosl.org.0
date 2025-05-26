@@ -1,228 +1,129 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 625CFAC3C95
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 May 2025 11:23:32 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9787380DA1;
-	Mon, 26 May 2025 09:23:29 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id fdyI-JDyZefN; Mon, 26 May 2025 09:23:28 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D587F80AF3
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1748251408;
-	bh=wzXeFZsicbZgaPV8QVkWzIT9gcieaViC9R0+wGacjzY=;
-	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=qqNIWa2PRaFnnLMn5nOeojF29pHZsniYyr/j2pnenPk0JXTst7XO4yJjtiu8Jhg5y
-	 gPkS9PnakM4IX5ZPXuktoz3c9Rj+VhfFNZ0jEWYfh+FhaCUqNT32sY8EKdBh4nuFqk
-	 NmuHrGG5bmbmLWo8RQso/4Tx1dzM4mWK6IYPrK//8uhk925wS0dLivcZJZO9q8SUPC
-	 zvl8c0KiccCJ4B0m/fEktItoFeEN0fhCf5i8xJCne7moGrbkFIk2hCmQQX+DBeJbaS
-	 6ad8VkSdK/jNvBXl3LnYahGLPet9E1yRWSDLa5JPOjbBA0mGCNYbKTgyeb56r+sVoO
-	 X/7sYG7yVUUTQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D587F80AF3;
-	Mon, 26 May 2025 09:23:28 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id E171268
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 May 2025 09:23:26 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id A092DAC3D02
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 May 2025 11:36:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C7E346070D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 May 2025 09:23:26 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 95E3B607F0;
+	Mon, 26 May 2025 09:36:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id nbUAzvnZwKIe for <intel-wired-lan@lists.osuosl.org>;
- Mon, 26 May 2025 09:23:26 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
- helo=mgamail.intel.com; envelope-from=dima.ruinskiy@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org BFF2460008
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BFF2460008
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BFF2460008
- for <intel-wired-lan@osuosl.org>; Mon, 26 May 2025 09:23:25 +0000 (UTC)
-X-CSE-ConnectionGUID: 3jMWbDzBR522Jt5zWBXzfQ==
-X-CSE-MsgGUID: twIlLDp1Sy2lJixLrgytBA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11444"; a="52840493"
-X-IronPort-AV: E=Sophos;i="6.15,315,1739865600"; d="scan'208";a="52840493"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
- by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 May 2025 02:23:25 -0700
-X-CSE-ConnectionGUID: Y4ZpoEKrQaCA6a7js7PdTQ==
-X-CSE-MsgGUID: pwpPMOaKRlOoe3rUiJ80EQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,315,1739865600"; d="scan'208";a="179481769"
-Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
- by orviesa001.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 May 2025 02:23:26 -0700
-Received: from ORSMSX902.amr.corp.intel.com (10.22.229.24) by
- ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.25; Mon, 26 May 2025 02:23:24 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.25 via Frontend Transport; Mon, 26 May 2025 02:23:24 -0700
-Received: from NAM04-MW2-obe.outbound.protection.outlook.com (40.107.101.73)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.55; Mon, 26 May 2025 02:23:24 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=oQZI2p8ezlZk3sSZEg8WY2bGvsagT/YWP9UN7b1CwrZSxv35HRr/KkTdIxvzCFxIBGtSrsiE1/UCPNs6KQP0ePRe3J9wSZObhE6w9fV9sl8YK09uUqcgK9KRNCjnq29bbP3y2KIa1++cTrhyEM0/2Zq9yAe1n3rlFWIM3eUPlkJzf4y+ku/4szZeJiyZ3hegM9lkPUxmluELILhS8UJnapoQ8zSc4Lpt/xDQWq0pv9NyrBTvKJHpFRDZMgGTNFlLXf4BIZjAp6oCOW89HJ22vAeiq+bkNt6/P5hPiHzgAYyCvgWxACFLRd6outz46DbsSxbvUoBLs+uJb+Trufznrg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=wzXeFZsicbZgaPV8QVkWzIT9gcieaViC9R0+wGacjzY=;
- b=nlsC/IXnToWfROuflY3P1xjlXzvudE9vQ2568B0Hak2OINjw7VDogF/n0AfBu1Pe1lES+NZTGCDbaZa0niQjwmLGy9xsmwtYG06QpGl8NnK3r2AG+h4yW4eYICa5zfa5zvKY/NhS2wnDNPoSl8l6BBOE3KRI49JAXUgYtRB7R6B3Wvi0SQewze2rmA1f+wcS09sFiQnIK0MuhLOHcw/IRxb1BxI9kOg0V4V+kXjdEZwfN0QAQ2mbIEiw8J6WFVIjBf5uzLxoNBLQqq9CmyRVYr+S2MYwlKMyeDtFGHWsdMu60G3wjtnMY+TOIeHw1cKXIQjsiOEIbQ6BKyJBY+yiWw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MN0PR11MB6280.namprd11.prod.outlook.com (2603:10b6:208:3c0::15)
- by PH0PR11MB5807.namprd11.prod.outlook.com (2603:10b6:510:140::14)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8722.29; Mon, 26 May
- 2025 09:23:08 +0000
-Received: from MN0PR11MB6280.namprd11.prod.outlook.com
- ([fe80::3f63:c727:6606:c089]) by MN0PR11MB6280.namprd11.prod.outlook.com
- ([fe80::3f63:c727:6606:c089%5]) with mapi id 15.20.8769.025; Mon, 26 May 2025
- 09:23:08 +0000
-Message-ID: <c2e87c57-15c1-4b16-b447-49abef86bc39@intel.com>
-Date: Mon, 26 May 2025 12:23:04 +0300
-User-Agent: Mozilla Thunderbird
-To: Mateusz Kusiak <mateusz.kusiak@3mdeb.com>, <intel-wired-lan@osuosl.org>
-CC: Maciej Pijanowski <maciej.pijanowski@3mdeb.com>
-References: <203b3dac-87dc-451a-92d9-bcbc0e0a7a4f@3mdeb.com>
-Content-Language: en-US
-From: "Ruinskiy, Dima" <dima.ruinskiy@intel.com>
-In-Reply-To: <203b3dac-87dc-451a-92d9-bcbc0e0a7a4f@3mdeb.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: TL2P290CA0011.ISRP290.PROD.OUTLOOK.COM
- (2603:1096:950:2::14) To MN0PR11MB6280.namprd11.prod.outlook.com
- (2603:10b6:208:3c0::15)
+ id BuNzG_9eAHVR; Mon, 26 May 2025 09:36:16 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 277AC60668
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1748252176;
+	bh=X9BRM0LvviL+8wFs3cVyB9IuGOiHLgzwjeAZMfe4f9o=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=Au6/gkV8gQyw5JLTD1xqyJrFwlnuLMr1h0a21xi33FYD7R1aPExSkK181BTctaSRS
+	 FRPCxOxkejjcI1WOvgg8EtOAqBZuzTb31IbLQSpAw3EVX9/hdanVq4XeHRvyFhtIAC
+	 oBqY2xeZuGyCa31R40un8mwiKoEHgpcFv+00AG+n9HhHsZazava8Nh2SehT9bUBuYm
+	 l0FzsK1D7EFfI0jsJcAJf+iMb+hjc1BvJoHW3J8Ysbj8t0BL9A4xMHzrRdA7McWn9+
+	 SyC3spiE5s7TtbXHOqtY/4PU0cBRGktfGgn6NwptChnwSbdxM5jK1cS6hIwXQBeobn
+	 4dBOfPcE5bWmg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 277AC60668;
+	Mon, 26 May 2025 09:36:16 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3281719D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 May 2025 09:36:15 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 18EAD80B27
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 May 2025 09:36:15 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id KnlXvG-tItJJ for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 26 May 2025 09:36:14 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::32f; helo=mail-wm1-x32f.google.com;
+ envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org DEE1D809CA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DEE1D809CA
+Received: from mail-wm1-x32f.google.com (mail-wm1-x32f.google.com
+ [IPv6:2a00:1450:4864:20::32f])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id DEE1D809CA
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 May 2025 09:36:11 +0000 (UTC)
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-43d2d952eb1so15340745e9.1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 May 2025 02:36:11 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1748252170; x=1748856970;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=X9BRM0LvviL+8wFs3cVyB9IuGOiHLgzwjeAZMfe4f9o=;
+ b=mg48BGgYbbDoltIuAIGmhNdaSKaNfzEhA/HMStMtEYfVYoDh2vYxUasBairEDlThVO
+ 6/BFl/UHuBKbew2f65EI9Pq4YtKVGX/sDzEZQtK6l5a8+iqsKSujJBD4RU7w34cnHejT
+ YKG7ee6bvlqIsONR+QKAuP2pFYnW0+MRz2LjRu0l1YYQ0Z0uA+cEPKuR/Nf/OAew1AhT
+ b1rhxRd4M6ibhWPFl3vI9ldcYTMZkrwDRD1R7nz1o+jNqTdGE9i6ocaw2T0lT+fP4STM
+ a60+9QKXHsIOnT9gR66d47AGFi8+kGvwWQhTvC7k18AOtOPd4LePauUnwd9lYlhGESfI
+ MFrQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWs4Wh1XpUJltAB+/OyGYj1LUKpvLZOw8I+HGNSHDK9feaPEqvkWhUB7ofDPgGr1jDKWRJGvM920GNeSHAo0Eo=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyWyj7Wr9wPrxEC8fmPjB+V81RhV+wd1F0LbxOKK+axZqYIYbx8
+ 0FU/RlnovLhKlPdQGa2S4nO7DqKcAeJGbXwOJP2T84+8YBVTkrHrOOw9M+wX6gGmlRU=
+X-Gm-Gg: ASbGnctz8oQKXWGE1F7T3XH6SBx9yI6LFyebIoOzStYOss+bUFkMTYulSRwYSI96iI9
+ 17ClvDOpqGViDee7xPdv+XVDm/EY9hK0uEs6C9e49HevizzzNtT55VcIDmFL+LfQlkT76GpUxRC
+ abwL5hekUW93wHBb2DXJCTviU4GShstBTSnfeEcsKhHGhp5ijRdxbiInKIYvomJFOQm3RwsiTT6
+ bKQ9Qe8EpOtr3V+a7yloefniYArgBVeIeiezoXWm/40xSeLpiXSVc1EUCrG9moHSz2Y7pn8BUsw
+ AUeIwrMXghFVM4qR3ITW9cJfDtkUK4uPd4/MM35YkCwAHFzFKOXehx9x0wos/9a/qZOHpzwIgMM
+ nO/4=
+X-Google-Smtp-Source: AGHT+IGDSx/uqIzjPbt/RIIG6sl81DhorcyGxspFB+QasTmVd+rJASc8gBkYSwK9BSg3kAtpjSzzEA==
+X-Received: by 2002:a05:6000:2082:b0:3a3:ec58:ea98 with SMTP id
+ ffacd0b85a97d-3a4cb45f1dbmr6352050f8f.22.1748252169629; 
+ Mon, 26 May 2025 02:36:09 -0700 (PDT)
+Received: from jiri-mlt (37-48-1-197.nat.epc.tmcz.cz. [37.48.1.197])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-442eb8c92d9sm227117135e9.2.2025.05.26.02.36.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 26 May 2025 02:36:09 -0700 (PDT)
+Date: Mon, 26 May 2025 11:36:05 +0200
+From: Jiri Pirko <jiri@resnulli.us>
+To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Cc: donald.hunter@gmail.com, kuba@kernel.org, davem@davemloft.net, 
+ edumazet@google.com, pabeni@redhat.com, horms@kernel.org,
+ vadim.fedorenko@linux.dev, 
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com, andrew+netdev@lunn.ch,
+ aleksandr.loktionov@intel.com, milena.olech@intel.com, corbet@lwn.net,
+ netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ linux-doc@vger.kernel.org
+Message-ID: <2xdi4cs4iuvio4mm5qx3ybu2i7ceiwexjgj426uodujgza742y@t7cjhunlpbvd>
+References: <20250523154224.1510987-1-arkadiusz.kubalewski@intel.com>
+ <20250523154224.1510987-2-arkadiusz.kubalewski@intel.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MN0PR11MB6280:EE_|PH0PR11MB5807:EE_
-X-MS-Office365-Filtering-Correlation-Id: a628cd3e-a28f-463c-611e-08dd9c36ed8d
-X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|366016|1800799024;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?Ym45Z1Q5ci85OElURDd2TVJZaHIxa1lTK1ZtaDlQTnc3TlVZSTlqQ3dDMzVC?=
- =?utf-8?B?WFk4Zmlrb2ZNdmxNRXVBZlNXS2ptaEx2RC9mK3c1RVBnbU5TY0FROXdoYzEx?=
- =?utf-8?B?U2xQc0xzSHV2UjEwWUx5ckxnZnN1MlpxVnVpVjl4RnB2Q0FHZHMzTHYzU2ZB?=
- =?utf-8?B?R1UrdjBPcTdRdjZ5b3lGNS9Ub20vRnFuKzcvOXI2N3Z5OWJkSFB2WDIrNlY5?=
- =?utf-8?B?ejVtODNSc1dzODZKWWc1RHhwOVJ4cW9EazZia3MzQ0FpRGJ6RU5XVk9PazdB?=
- =?utf-8?B?SkZLVmZxWjdqWmNtUjVUL29INytLYTdwQmdwTEJySUlSRHhEeExodGZDYjFU?=
- =?utf-8?B?dXVYdFlLaFZxYU1RaDZRTldOQjRubkNwa2I1c3Nac2RKdU4zeGsyVTJsR1pV?=
- =?utf-8?B?OHl0RHpoZi9nTnZMYlV2TW8yWUh6V1BLZFhoVjVhdEpLRVp3N05UNUlYUEx6?=
- =?utf-8?B?aDcyNmgyNEpEbjM3NUtCYjVleDRNdldaQ3VteDBHT25MUjNwcFZ6K2ZRVlFh?=
- =?utf-8?B?Q3hhc08zR0FSa21ibjF1TVBCV3A0RTZvemVKYUlPaEtOVFRVMm1xVXlFcFdO?=
- =?utf-8?B?SmwxZlFLTnJCeTd4cmdsc3dmZVh0a0o4SkwvSHFOZ2xhZEk4bng5RnV0MnhH?=
- =?utf-8?B?ZmZ0L1plbGJONzdCUEV4dkhuZXRFS3dFSFNablYvU1dBc0licTA2aUNSZW13?=
- =?utf-8?B?Mk1UMWJtcVFFUUt1UnhxQVFmZ3JMVTJjbzVsR3YxZW5sQ3VuYVJpYVFWQXJI?=
- =?utf-8?B?YlhjUmZVTmZnK1ZGcktYM0VqUTA1RnVHd2N0MWtraHdBYkFDSFRiaWZiMjlP?=
- =?utf-8?B?VzR6UVQ5NGJpanU0UE1kUjNua1k2SHZENEhhN3RsaGZVcmZhL0NnNE40MkhP?=
- =?utf-8?B?RDE4UHlBdUxPM3pyZExpTEFlckdhUXN1ajBnbkRMOXlnR2dLbmw0bXRiL0ll?=
- =?utf-8?B?RVI2VFRTSTFVK0R4SHB0a0NmV1Q5dlU0WHVSR3JxZFlUZXZvV0lMNndLRDl3?=
- =?utf-8?B?M3c4TGFVYWdmakg2OFZmL0hyOTZ4Y0J4SWVYVVBIWmNRbTlrRFd2ditFaWhB?=
- =?utf-8?B?VW9zNU9UTXlMMjV0S0FXNDY1QUFaV3I1MHhobWZFeWtEU0JjcUtvNFczSHlN?=
- =?utf-8?B?akZYdWdVMHNUSkhBSEI3NGpiL3E2a1l1cjQySDlHazlMdXZUNHdncFdZWFlk?=
- =?utf-8?B?WjduK3VrdnpoeTRjcld6K2l1NUxtaVRrc2tlRzBzTjBubVI3RlRJc0lWb1Ro?=
- =?utf-8?B?enhGOXJKckpoZjFValJ4THp5KzNvRXVvYytJZGdVTFU1R1JmTzVGSGJ2YXR4?=
- =?utf-8?B?VnZOUzZpQzJjUzl6c0lDOEZZMHJuNmdMcTVuR1JjUlRqYUFldkpVRlpMbEsv?=
- =?utf-8?B?YURadkxORGlXd1h0NkM3bUh4NzZIL09JUDJEa0xIVmJaS3Q2eldjUjJjYnVS?=
- =?utf-8?B?UlhJb2JhMndydHJva21JT2ZVMVpHWjBUQzBZRUlPa1B4dVZkNHlIbGt0UWJ0?=
- =?utf-8?B?aFpEUnVuVTR4Z0FJQ3diQUVuTm1xbERZb0hiOVZIVSswRFNNUWF3dEp5V0wr?=
- =?utf-8?B?L0JtdGUwMmZ5MkZheVpWZ3NPK0RLa00rc3RKeUdXYjFxMnRScDJLaU5WVFFM?=
- =?utf-8?B?ZHdjRHNyS1RRWnhsd1QxbGdjR3hMM0VGeXQxaWNaNDg5N29hakdtWVJOaVdV?=
- =?utf-8?B?c25VYS9tWFU4cDVVOTQraHd3SzVuWmVreG1Jd1VjelI3V2tNdld1WDh0NTZN?=
- =?utf-8?B?TWVMZUM0S3I3bTdGVkhDUFo5a2VmSXdRSjFGMWJ1dkU4ZUtzcGlVQ3M4MG8v?=
- =?utf-8?B?Q1N2YnY5a0dHOGpuSjljVzhxYWNKeGIxWEJmSWJTYTFNTFdvczJVaGlsYUVP?=
- =?utf-8?B?S2djUmFJRmwxM0pJRW40YjRvQmZBbmJiaWtiMDE0REZWQ1lWTy8xZ3daQ3lV?=
- =?utf-8?Q?wwEM9oJk9LA=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN0PR11MB6280.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(366016)(1800799024); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?KzF2WVdLdlF0bmN6QkNTRjY0WXAxLzlkRTVKVFN1RE4wZWVNV3RPVWdjM1R2?=
- =?utf-8?B?c1V1QTRiV2Y0ako5eVpVR2hGV1dXZ0ZlV1JyajRBYU8vTEFnMmNKb3N3NFN3?=
- =?utf-8?B?QVhuRkZTckE2M0RxeE1aRUZoblBzMmlYemNiZFdieXpTKzliTlJ6bGtSOFp2?=
- =?utf-8?B?UVlTU09QUjVuK3d1b0JZVkY4RWJMeGxiSGFaQ1BOU3ZEWit4d3J4RTdZN2lR?=
- =?utf-8?B?RVJGQzBxSTNWazl2ZWljTVJ4N0RMdGVrWCtrSHZrUS9mb25OSEU2T1NxWG1h?=
- =?utf-8?B?VFBlakw4OVliUDBvVTU5aDFjcGFQdDVBTWNyaXJMZ21MS0JVdS9taUE5Z1lU?=
- =?utf-8?B?dERUMVJmd2hiZ2ZyZk4vNHBLL3dHVUZaWDJORGdDKzE0bnlWNDNSMUhIVlI1?=
- =?utf-8?B?VU1xcDZmdUU0aHljeHoyVWhIWHI3Vll6VEl5THhvazJiUFlXUmsza1hDSnA0?=
- =?utf-8?B?MVFUeUlOcS9MazZWc2VTVkp3ZlFTVHBTbHBzbFQ5M1AwN2pMMmw5ak40NXlo?=
- =?utf-8?B?OUdKU3VzZjAxVzErQzk2dE80ZHF6aTFFTEU3ajlEUEpnNXQ3NDVTVVZ4T1V0?=
- =?utf-8?B?QTRLTmk1Q1hka0k3QmNSZmEwTEgvNDZ3Y2t0VFNZN0N3OW9YdEI0d2hEY29P?=
- =?utf-8?B?ZWR3T0kzSTFCL0hEWG1ScW1rRGtqditQRGxDUjU0QzNkeUJRQW5uUmdGWEFi?=
- =?utf-8?B?bm9uaVFTRnNhMm1VY2NzOTUzSmVyMmk0aHpGWTE3d2YvNUt0VFpaSWJwWWdy?=
- =?utf-8?B?ZVRPUGJpQlJMZE4xOWhRU05teFRIZlpIU01vU0R5UnZDNUlpODU2YlVEYllu?=
- =?utf-8?B?bHBwaGFIOGI0R0FzRGt5WWExcFhlYnUzd2twSnZnRnJRS0JuQ1J1elpmSVBG?=
- =?utf-8?B?a04zZk5QSjhFeEJMZ0lhaTBZeFRXVllrWkNIZEUxUTZ1dTBhTVo3cnlPMWZX?=
- =?utf-8?B?WkxSeDVhNU9Ecy8rZ2tjVVp0eFJ0eitFQVJ3SVMrbUVKWDNEL2hYQ0diTnc0?=
- =?utf-8?B?UmRSeFZSUG1HeWI4R1R5SUZBaE5IQnkwWVN1NGpqUTNEek01dmpISUdPZTgz?=
- =?utf-8?B?VldYVFFncWN4b2Rad0FmZHJrWnNURFlTTDNNNUFnWk53SkdUVzYwMURKdDdR?=
- =?utf-8?B?U2dZb0lKQlo5KzhKZ0VrTlhTSm5nbzEzeU53Q0s1cEZVbGw5bTJtb1FoWW1t?=
- =?utf-8?B?YSsvcmNGMytHWlQ5L1dtQXlNTVpyTDRKbnF4RmxCUW9TTENYKzRzaG1GQ0xw?=
- =?utf-8?B?WWdSVlFTbnl1K2ZhRk1aSndFeWt1RXR4Ui9hSWVZa1ZKQS9RZkNhQUVIN1dG?=
- =?utf-8?B?ZXRIRDRQcFRXSHlWTEhGNitjQ0xUUnFTS29uTzYrRll5eU1kOW0xVDRuZmpj?=
- =?utf-8?B?OUpmeEx2ZHZhb1pMaVdwdC9wTTErTXBhaVJJWHphV1BCNnVlRFB4K3NNUWlL?=
- =?utf-8?B?enlweEZMWkpXNEtIdHB5QkxVbmF2cEM0Q0tvOFFqc3RLUTBCWXd0aHdqQzFT?=
- =?utf-8?B?M010aWJPZi80UjlLSUNlOHY5RjBiVUVJQjJlUUpoMEFva2daZ3hqSXg5L2Fk?=
- =?utf-8?B?cGNGRlNFSDV2SlpLOHFWM1FUWjdNb0Ruc2d1a090dFpIbFNMOFBhNWVnRjE0?=
- =?utf-8?B?bkNsbzN3cDFKanp0Z01SNjl5WmNkbDB0VjRic2V3RjlvVEl1TEdjbkdtRGp5?=
- =?utf-8?B?bVJMUHlkNi95OTYvUTZ1amdYM2Q0Y2xyVnVValNLNHNvNFdrNk80aklPaVY2?=
- =?utf-8?B?YTZoR096aXZvNzJyQnJXamJNQ0k2aTdDOS9lNG5xSWlHcThnd2NjTkdLSTZQ?=
- =?utf-8?B?RGFOS2ZsT0llYUNxcGpuMVRwejhWL2gzVHJlQk5YcEtCbEgwN0NtZk8rNkJz?=
- =?utf-8?B?WnZKS001WXhYd1g3R3k3dUNtYWtxWHZJU3N5NWUwYjNCOFZSd1JLczFMUjl1?=
- =?utf-8?B?UHRHMStRRnVUMU9oOWxmVW9KUUhmeXhrVUkwYlowWkl3bFhKdk5OWEMveCsz?=
- =?utf-8?B?YmhidE81T2Z4MDljSVRxUDBxZDBtc002U1JWaCt2SnBYOEJlUDZjcHFFM25k?=
- =?utf-8?B?c0ttNm05UWdDTm5JclRiZ1ZIREMwYnZwWVhOeE5FZG9Nd3J4LzB4djJGVUdx?=
- =?utf-8?B?dHVaelhSTVpBWTI5czJxNGw3VzN0OUtoQUp6WWhQZlVPc0M1TUdwdFUwckUv?=
- =?utf-8?B?dXc9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: a628cd3e-a28f-463c-611e-08dd9c36ed8d
-X-MS-Exchange-CrossTenant-AuthSource: MN0PR11MB6280.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 May 2025 09:23:08.6289 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ahCBDm8PJoiDYvAKe0PHbJcvKLYyeyllSrnUp/Otpmy1w9z+d6KiPCJH491pq5/4Au2i908lvyw0wWWlvQl6iQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5807
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1748251406; x=1779787406;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=03piBCrJ+c6xhaa712R+Sjuk+vi080NSgUzRsB+vFFE=;
- b=P7w/iB6v1LWDXEierMyFGJZRxOkH+OBI8mChNV0yDfZbLgtYgpNSxgWr
- 38OEuWWM0/2fuUhjjSZgqrr6MBfZezcGC74imWgf3e2uTPtT7VWF96uHa
- vFhCDw//xsNqMQ4SC8gn+THyPdvVOD7TUtx9AbgCazWOzHagImx1GOcy5
- zgia3RqDtZaa32Q+hxachugoGN70mwTiqbhtl5but0dwkmOt2rtmEPS+e
- 8osQ+QTkO7DVNRZy1QEczW8RibOP0e+EJfPX4C4wpuKf6QWlae2cjDFqf
- K9ettF/0lGh/w2hnSsRnrsonw2+TQRdtl+sJRAUOQaDbleM5NlLKZmvlw
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250523154224.1510987-2-arkadiusz.kubalewski@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1748252170; x=1748856970;
+ darn=lists.osuosl.org; 
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=X9BRM0LvviL+8wFs3cVyB9IuGOiHLgzwjeAZMfe4f9o=;
+ b=ePTCqrEXLQe1k4jZkfpCc2KsaszhKJGFC8sgFWzham3pl1U5I+EXoD7ZqephJamuyn
+ 3QWeYoMyV3JJmb3Uifbo70lOytR14wrc859r+hpGR+XcFj9LiFb42e933X/vXJKU+x/m
+ w32oX+aRQINPryIsprlXwDIPSB/Q/eGO6JaPA0FlYihj1OrrBQ2VinNHkZ2xzMOjNOUj
+ 6WRWXU7GuSgV4R28AgudfXiuaz3iPFQ0oTjUvPZgtRkviaVH5TWxRZP2iRB7aZA/aknk
+ 8xDUs7L/xcgiKdofBOqOP1WC+gnw+GWJYSb2JWZ34kg8gqWOJ+oVudinb0VVAvzxTsA+
+ ettg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=resnulli.us
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=P7w/iB6v
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] igc: Multiple failed link-ups on boot
+ unprotected) header.d=resnulli-us.20230601.gappssmtp.com
+ header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
+ header.s=20230601 header.b=ePTCqrEX
+Subject: Re: [Intel-wired-lan] [PATCH net-next v4 1/3] dpll: add
+ phase-offset-monitor feature to netlink spec
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -238,127 +139,17 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 22/05/2025 10:21, Mateusz Kusiak wrote:
-> Hello,
-> I was wondering I could get some help understanding the igc/i225 combo.
-> 
-> The issue I'm having is during boot-time, the i225 fails to establish 
-> link multiple times and it takes a long time (2.5s) for successful link 
-> up. I know this because I enabled debug logs in igc driver. I retested 
-> this on newest 6.14.7 kernel and a few switches/routers and the result 
-> seems to be the same. Is this behavior expected?
-> 
-> Log:
-> 
-> [    4.544381] igc 0000:01:00.0: PCIe PTM not supported by PCIe bus/ 
-> controller
-> [    4.578713] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> Timeout is expired after a phy reset
-> [    4.579619] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> Masking off all interrupts
-> [    4.599721] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> Issuing a global reset to MAC
-> [    4.599961] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> PHC added
-> [    4.607852] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> Masking off all interrupts
-> [    4.627957] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> Issuing a global reset to MAC
-> [    4.627962] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> Programming MAC Address into RAR[0]
-> [    4.627967] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> Clearing RAR[1-15]
-> [    4.628015] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> Zeroing the MTA
-> [    4.628041] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> Zeroing the UTA
-> [    4.628059] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> After fix-ups FlowControl is now = 3
-> [    4.628061] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> Reconfiguring auto-neg advertisement params
-> [    4.628597] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> autoneg_advertised af
-> [    4.628598] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> Advertise 10mb Half duplex
-> [    4.628599] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> Advertise 10mb Full duplex
-> [    4.628600] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> Advertise 100mb Half duplex
-> [    4.628600] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> Advertise 100mb Full duplex
-> [    4.628601] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> Advertise 1000mb Full duplex
-> [    4.628602] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> Advertise 2500mb Full duplex
-> [    4.628679] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> Auto-Neg Advertising de1
-> [    4.629139] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> Restarting Auto-Neg
-> [    4.630941] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> Unable to establish link!!!
-> [    4.630942] igc 0000:01:00.0 (unnamed net_device) (uninitialized): 
-> Initializing the Flow Control address, type and timer regs
-> [    4.633280] igc 0000:01:00.0: 4.000 Gb/s available PCIe bandwidth 
-> (5.0 GT/s PCIe x1 link)
-> [    4.642420] igc 0000:01:00.0 eth0: MAC: <REDACTED>
-> [    4.871840] igc 0000:01:00.0 eth0: changing MTU from 1500 to 9000
-> [    4.871856] igc 0000:01:00.0 eth0: Masking off all interrupts
-> [    4.891959] igc 0000:01:00.0 eth0: Issuing a global reset to MAC
-> [    4.891964] igc 0000:01:00.0 eth0: Programming MAC Address into RAR[0]
-> [    4.891968] igc 0000:01:00.0 eth0: Clearing RAR[1-15]
-> [    4.892016] igc 0000:01:00.0 eth0: Zeroing the MTA
-> [    4.892042] igc 0000:01:00.0 eth0: Zeroing the UTA
-> [    4.892060] igc 0000:01:00.0 eth0: After fix-ups FlowControl is now = 3
-> [    4.892063] igc 0000:01:00.0 eth0: Reconfiguring auto-neg 
-> advertisement params
-> [    4.892599] igc 0000:01:00.0 eth0: autoneg_advertised af
-> [    4.892600] igc 0000:01:00.0 eth0: Advertise 10mb Half duplex
-> [    4.892600] igc 0000:01:00.0 eth0: Advertise 10mb Full duplex
-> [    4.892601] igc 0000:01:00.0 eth0: Advertise 100mb Half duplex
-> [    4.892602] igc 0000:01:00.0 eth0: Advertise 100mb Full duplex
-> [    4.892602] igc 0000:01:00.0 eth0: Advertise 1000mb Full duplex
-> [    4.892603] igc 0000:01:00.0 eth0: Advertise 2500mb Full duplex
-> [    4.892680] igc 0000:01:00.0 eth0: Auto-Neg Advertising de1
-> [    4.893139] igc 0000:01:00.0 eth0: Restarting Auto-Neg
-> [    4.894945] igc 0000:01:00.0 eth0: Unable to establish link!!!
-> [    4.894946] igc 0000:01:00.0 eth0: Initializing the Flow Control 
-> address, type and timer regs
-> [    4.923528] igc 0000:01:00.0 eth0: Timeout is expired after a phy reset
-> [    4.923853] igc 0000:01:00.0 eth0: After fix-ups FlowControl is now = 3
-> [    4.923857] igc 0000:01:00.0 eth0: Reconfiguring auto-neg 
-> advertisement params
-> [    4.924395] igc 0000:01:00.0 eth0: autoneg_advertised af
-> [    4.924397] igc 0000:01:00.0 eth0: Advertise 10mb Half duplex
-> [    4.924398] igc 0000:01:00.0 eth0: Advertise 10mb Full duplex
-> [    4.924400] igc 0000:01:00.0 eth0: Advertise 100mb Half duplex
-> [    4.924402] igc 0000:01:00.0 eth0: Advertise 100mb Full duplex
-> [    4.924404] igc 0000:01:00.0 eth0: Advertise 1000mb Full duplex
-> [    4.924405] igc 0000:01:00.0 eth0: Advertise 2500mb Full duplex
-> [    4.924485] igc 0000:01:00.0 eth0: Auto-Neg Advertising de1
-> [    4.924946] igc 0000:01:00.0 eth0: Restarting Auto-Neg
-> [    4.926752] igc 0000:01:00.0 eth0: Unable to establish link!!!
-> [    4.926754] igc 0000:01:00.0 eth0: Initializing the Flow Control 
-> address, type and timer regs
-> [    4.926828] igc 0000:01:00.0 eth0: Set default MAC address filter: 
-> address <REDACTED>
-> [    4.926830] igc 0000:01:00.0 eth0: MAC address filter set in HW: index 0
-> [    7.036586] igc 0000:01:00.0 eth0: Flow Control = FULL.
-> [    7.036590] igc 0000:01:00.0 eth0: 100 Mbs,
-> [    7.036591] igc 0000:01:00.0 eth0: Full Duplex
-> [    7.036593] igc 0000:01:00.0 eth0: hw->fc.current_mode = 3
-> [    7.036596] igc 0000:01:00.0 eth0: 100 Mbs,
-> [    7.036597] igc 0000:01:00.0 eth0: Full Duplex
-> [    7.036604] igc 0000:01:00.0 eth0: 100 Mbs,
-> [    7.036605] igc 0000:01:00.0 eth0: Full Duplex
-> [    7.036607] igc 0000:01:00.0 eth0: NIC Link is Up 100 Mbps Full 
-> Duplex, Flow Control: RX/TX
-> 
-> Thanks,
-> Mateusz
-> 
+Fri, May 23, 2025 at 05:42:22PM +0200, arkadiusz.kubalewski@intel.com wrote:
+>Add enum dpll_feature_state for control over features.
+>
+>Add dpll device level attribute:
+>DPLL_A_PHASE_OFFSET_MONITOR - to allow control over a phase offset monitor
+>feature. Attribute is present and shall return current state of a feature
+>(enum dpll_feature_state), if the device driver provides such capability,
+>otherwie attribute shall not be present.
+>
+>Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+>Reviewed-by: Milena Olech <milena.olech@intel.com>
+>Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 
-Hi Mateusz,
-2.5 seconds to establish link seems to be well within the IEEE 
-specification (4-5 seconds in nominal operation). So, yes, I would say 
-it is expected.
-
+Reviewed-by: Jiri Pirko <jiri@nvidia.com>
