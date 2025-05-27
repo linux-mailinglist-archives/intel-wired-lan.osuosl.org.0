@@ -2,91 +2,86 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 92374AC5C0F
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 May 2025 23:13:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BFA1AAC5C56
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 May 2025 23:42:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CC6378101F;
-	Tue, 27 May 2025 21:13:42 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8063181134;
+	Tue, 27 May 2025 21:42:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pmdpw0hRX67G; Tue, 27 May 2025 21:13:42 +0000 (UTC)
+ id XHXvHfs7qjTv; Tue, 27 May 2025 21:42:37 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 44F1E81097
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 806D580EC0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1748380422;
-	bh=lwjcejsgwEmNYg9nHk4XBk4Rx/Y1yysKSIvGN1YC2j4=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=0D2pb9TZUEitIuuWKxXprwF4wXKMhyk+u7rm8ljkSZRbKPErYnyfPVqNo94ijAaGH
-	 VECUMaJq/zrp8NFr7Bno0cn7kvg6Bxr2+gx1DJsFRW3vZTCKOiLapZFO5WGDLtNOX7
-	 0+eCNqtiJ1WKtSznmdq/15dM/jeTSs6yOKTnt9DfJU94MX1QsqQAKb9Z6q931igF32
-	 sgAAQJ0Tnuna8XsWi8WEVwho2YMNxJOGzcNbGsu4+KAa3Uv7bBq8A6W7nVPxKaN4J7
-	 EFIbGqczDvrDBxyLplvkSSBtbIhQptb6Z3x6hWoauouxn6xM5g/js8YAIsyP0X5Z7q
-	 HPM+miOyUhMcw==
+	s=default; t=1748382157;
+	bh=i+gW2LdhsX8mVrWu3C6sM6tUvLVRRXub0MosDWgoTfc=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=Jzw4rVo9EQ14nJ03tDjjCXdudsk5QkTlVFLBCf3Ayq+NZgeYYVfALX8g93X3bujYQ
+	 PHhBp4IkB/tBNF6OzE5cb5TKoCXfZT51/3V8Rv7FriWdwEpUzyeFy4HKn39dTeZ/rO
+	 LqBnN2oyThf6qGH9iWSAbJzHwkGtYJh/YkYuFXjVh0A/9FGr/t3uOi8o2d6jX0dy5l
+	 Hrp9JTgHulHX/6kXSiyeDR9aQuHcvl4upVaax7mjVnnf9sC5BFo7ae8k1a8+zmWHLu
+	 DVUWqsghTa8g4w8lvjiGFePPlbqlOb98n5SX9z8HxH29bG3D1741M6g5Yi1KhwmCF7
+	 z2aV3SYhtO/7g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 44F1E81097;
-	Tue, 27 May 2025 21:13:42 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 806D580EC0;
+	Tue, 27 May 2025 21:42:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 4F652127
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 May 2025 21:13:41 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 05E4E127
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 May 2025 21:42:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 353308101B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 May 2025 21:13:41 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id E05C840204
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 May 2025 21:42:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id R6wWa4eUmjbH for <intel-wired-lan@lists.osuosl.org>;
- Tue, 27 May 2025 21:13:40 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=185.132.181.8;
- helo=dispatch1-eu1.ppe-hosted.com; envelope-from=post@mikaelkw.online;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 7B5318100F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7B5318100F
-Received: from dispatch1-eu1.ppe-hosted.com (dispatch1-eu1.ppe-hosted.com
- [185.132.181.8])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7B5318100F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 May 2025 21:13:40 +0000 (UTC)
-Received: from engine.ppe-hosted.com (unknown [10.70.45.172])
- by dispatch1-eu1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTPS id
- 2B536200A3; Tue, 27 May 2025 21:13:38 +0000 (UTC)
-X-Virus-Scanned: Proofpoint Essentials engine
-Received: from test-ubuntu-rev3.. (78-26-16-15.network.trollfjord.no
- [78.26.16.15])
- by mx1-eu1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id 2FD35B0005D; 
- Tue, 27 May 2025 21:13:35 +0000 (UTC)
-From: Mikael Wessel <post@mikaelkw.online>
-To: netdev@vger.kernel.org
-Cc: intel-wired-lan@lists.osuosl.org, torvalds@linuxfoundation.org,
- anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com, andrew@lunn.ch,
- kuba@kernel.org, pabeni@redhat.com, security@kernel.org,
- stable@vger.kernel.org, davem@davemloft.net, edumazet@google.com,
- linux-kernel@vger.kernel.org, Mikael Wessel <post@mikaelkw.online>
-Date: Tue, 27 May 2025 23:13:32 +0200
-Message-ID: <20250527211332.50455-1-post@mikaelkw.online>
-X-Mailer: git-send-email 2.48.1
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id JYF1YjROUUwk for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 May 2025 21:42:35 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
+ helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 382104098E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 382104098E
+Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 382104098E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 May 2025 21:42:33 +0000 (UTC)
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+ (envelope-from <andrew@lunn.ch>)
+ id 1uK241-00E6ye-OG; Tue, 27 May 2025 23:42:25 +0200
+Date: Tue, 27 May 2025 23:42:25 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Mikael Wessel <post@mikaelkw.online>
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ torvalds@linuxfoundation.org, anthony.l.nguyen@intel.com,
+ przemyslaw.kitszel@intel.com, kuba@kernel.org, pabeni@redhat.com,
+ security@kernel.org, stable@vger.kernel.org, davem@davemloft.net,
+ edumazet@google.com, linux-kernel@vger.kernel.org
+Message-ID: <10cf162e-ca02-44b0-b238-74a93fe05f54@lunn.ch>
+References: <20250527211332.50455-1-post@mikaelkw.online>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-MDID: 1748380417-IY5a2VRwpn3R
-X-PPE-STACK: {"stack":"eu1"}
-X-MDID-O: eu1; fra; 1748380417; IY5a2VRwpn3R; <post@mikaelkw.online>;
- 7544ea0f74a3697a45f5192d6efff48c
-X-PPE-TRUSTED: V=1;DIR=OUT;
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mikaelkw.online; 
- h=cc:cc:content-transfer-encoding:content-transfer-encoding:date:date:from:from:message-id:message-id:mime-version:mime-version:subject:subject:to:to;
- s=pp-selector; bh=lwjcejsgwEmNYg9nHk4XBk4Rx/Y1yysKSIvGN1YC2j4=;
- b=FqgwUhohgsOkn4WR3lqS0LrQ7GIsqQrMYaREKDemPQ8N7Zsmds+g0D8VI19XEjK+MZtD96LFPcBYOGF2dHecLUIKsiQtU8NXTBaJW29U8qwY5xCC28kEKdadKhIboZxQm4wZYOFGQV0Y66dIirfp4lCjc4l2lAwFSDn7l6ER8r6d5RZapoiXkz9DEerO5cXufTlVedPjuZ1JJI+CR6lNm1CSwxU+rF8Kq+BCbTtcptfFYmsqPwP/aPt0C9hQQnJAnfF9NXS1KycPc4kBQppWLOjVlDXjqcoszlCV7Ilt/ao2yCZuI8fI+LIrpjC82AuS8OnWr3T25rgXOp6ZhXeF9Q==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250527211332.50455-1-post@mikaelkw.online>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; d=lunn.ch; 
+ s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+ Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+ bh=i+gW2LdhsX8mVrWu3C6sM6tUvLVRRXub0MosDWgoTfc=; b=GwH/VnrMSLT1WoOmGD2gqW5PKI
+ pgPx7dreOe02g96LUx9QD2tM3nNkyJfD4n0vJbwdCvXAp5h/V01RTeOZpuMHGlGPpWoo14pa+n2m3
+ gk4hh3fcOMAGURgHjs/uQecCMNZTf64588vX+MkpN9jBF5xaYyOlrsLKm9N8ETXPsVXk=;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=mikaelkw.online
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=mikaelkw.online header.i=@mikaelkw.online
- header.a=rsa-sha256 header.s=pp-selector header.b=FqgwUhoh
-Subject: [Intel-wired-lan] [PATCH] e1000e: fix heap overflow in
+ header.from=lunn.ch
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256
+ header.s=20171124 header.b=GwH/VnrM
+Subject: Re: [Intel-wired-lan] [PATCH] e1000e: fix heap overflow in
  e1000_set_eeprom()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -103,54 +98,44 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The ETHTOOL_SETEEPROM ioctl copies user data into a kmalloc'ed buffer
-without validating eeprom->len and eeprom->offset. A CAP_NET_ADMIN
-user can overflow the heap and crash the kernel or gain code execution.
+On Tue, May 27, 2025 at 11:13:32PM +0200, Mikael Wessel wrote:
+> The ETHTOOL_SETEEPROM ioctl copies user data into a kmalloc'ed buffer
+> without validating eeprom->len and eeprom->offset. A CAP_NET_ADMIN
+> user can overflow the heap and crash the kernel or gain code execution.
+> 
+> Validate length and offset before kmalloc() to avoid leaking eeprom_buff.
+> 
+> Fixes: bc7f75fa9788 ("[E1000E]: New pci-express e1000 driver (currently for ICH9 devices only)")
+> Reported-by: Mikael Wessel <post@mikaelkw.online>
+> Signed-off-by: Mikael Wessel <post@mikaelkw.online>
+> Cc: stable@vger.kernel.org
+> ---
+>  drivers/net/ethernet/intel/e1000e/ethtool.c | 9 +++++----
+>  1 file changed, 5 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/e1000e/ethtool.c b/drivers/net/ethernet/intel/e1000e/ethtool.c
+> index 98e541e39730..d04e59528619 100644
+> --- a/drivers/net/ethernet/intel/e1000e/ethtool.c
+> +++ b/drivers/net/ethernet/intel/e1000e/ethtool.c
+> @@ -561,7 +561,7 @@ static int e1000_set_eeprom(struct net_device *netdev,
+>  		return -EOPNOTSUPP;
+>  
+>  	if (eeprom->magic !=
+> -	    (adapter->pdev->vendor | (adapter->pdev->device << 16)))
+> +		(adapter->pdev->vendor | (adapter->pdev->device << 16)))
+>  		return -EFAULT;
 
-Validate length and offset before kmalloc() to avoid leaking eeprom_buff.
+That look like a white space change, which should not be part of a
+fix.
 
-Fixes: bc7f75fa9788 ("[E1000E]: New pci-express e1000 driver (currently for ICH9 devices only)")
-Reported-by: Mikael Wessel <post@mikaelkw.online>
-Signed-off-by: Mikael Wessel <post@mikaelkw.online>
-Cc: stable@vger.kernel.org
+Please also take a read of
+
+https://www.kernel.org/doc/html/latest/process/maintainer-netdev.html
+
+You need to set the tree in the Subject line.
+
+    Andrew
+
 ---
- drivers/net/ethernet/intel/e1000e/ethtool.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/e1000e/ethtool.c b/drivers/net/ethernet/intel/e1000e/ethtool.c
-index 98e541e39730..d04e59528619 100644
---- a/drivers/net/ethernet/intel/e1000e/ethtool.c
-+++ b/drivers/net/ethernet/intel/e1000e/ethtool.c
-@@ -561,7 +561,7 @@ static int e1000_set_eeprom(struct net_device *netdev,
- 		return -EOPNOTSUPP;
- 
- 	if (eeprom->magic !=
--	    (adapter->pdev->vendor | (adapter->pdev->device << 16)))
-+		(adapter->pdev->vendor | (adapter->pdev->device << 16)))
- 		return -EFAULT;
- 
- 	if (adapter->flags & FLAG_READ_ONLY_NVM)
-@@ -569,6 +569,10 @@ static int e1000_set_eeprom(struct net_device *netdev,
- 
- 	max_len = hw->nvm.word_size * 2;
- 
-+	/* bounds check: offset + len must not exceed EEPROM size */
-+	if (eeprom->offset + eeprom->len > max_len)
-+		return -EINVAL;
-+
- 	first_word = eeprom->offset >> 1;
- 	last_word = (eeprom->offset + eeprom->len - 1) >> 1;
- 	eeprom_buff = kmalloc(max_len, GFP_KERNEL);
-@@ -596,9 +600,6 @@ static int e1000_set_eeprom(struct net_device *netdev,
- 	for (i = 0; i < last_word - first_word + 1; i++)
- 		le16_to_cpus(&eeprom_buff[i]);
- 
--        if (eeprom->len > max_len ||
--            eeprom->offset > max_len - eeprom->len)
--                return -EINVAL;
- 	memcpy(ptr, bytes, eeprom->len);
- 
- 	for (i = 0; i < last_word - first_word + 1; i++)
--- 
-2.48.1
-
+pw-bot: cr
+	
