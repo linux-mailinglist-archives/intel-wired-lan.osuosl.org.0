@@ -1,89 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BBA13AC6659
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 May 2025 11:55:30 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AB0C6AC6726
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 May 2025 12:40:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6426C408FD;
-	Wed, 28 May 2025 09:55:29 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1DC3E8068F;
+	Wed, 28 May 2025 10:40:52 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id wRxwgkhSIwuv; Wed, 28 May 2025 09:55:28 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 1BvIM0N0hMDw; Wed, 28 May 2025 10:40:51 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D253840904
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7BC0580710
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1748426128;
-	bh=qfs5sydxU/IPHzD0INetpctdTLt+8lwuFJLSZAEPLBI=;
+	s=default; t=1748428851;
+	bh=0jQL35fZcG/Xut+Ytu12ngY9CVxfLuMZVPAxM6eDluA=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=hwiNYz+d85/2CzeVTDiPAzw4iUjnrmKf0dtHf3yDkdvXRyD0O2CV5IIrePCBVcMhR
-	 0iR18p5BMUBiiuWMuRzGdHdCYXuX25ORdyFBjOKrgcCzJg0UuMO8RltZU+bGQIZtNf
-	 wj9+Fhs5yp6sm1jlC4W5koO56ah/8xmstj35vDR+QDb83l9nwGh7ykxp5fQb2xZZdp
-	 W5Dt8Q+uTfVOscqYANscjrNz2kd4dU2NYBegv0e/8tegCkfI9ybKshuhAxdbxHQIDn
-	 iVAAWq2b8YKPY30UB5IL5ol+NuIB/cjv3/KOpiRN28HQ3iMf+WtdfumucOMWqOGMkN
-	 XuKtHpykZoQkg==
+	b=CnJAGYFKwUW2+Pug9e1aKWW/6+ULQyQLNm12Ysl+97Si93LQ8sGONm7PBXcReHhnQ
+	 Iywoq5s4m6+C8pZE9JXoS6V+IEMBXwwtTdGNJlHhDOeKF5gbLKI3+rB52HHOuyanQB
+	 RZL8ZHd95aY0QlKEUyyG118SgYx5LrfkKjh5VPKj/5lk2vy8XnDAvIgKsysYIL2mar
+	 u6MMzgH8k1mRdCunzf80eSBVhfODLtlBTE0OLaKKPEJalA05YZhioWLrD1L85Zi6Fa
+	 uxrcE/n9H2Ni6Mk8NLSxU9266BcUO56ZFbZVzKQ+8+tfUb3tgEOSQLQhzTWj5VlUmw
+	 rIWUEKVDjjn7w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D253840904;
-	Wed, 28 May 2025 09:55:28 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7BC0580710;
+	Wed, 28 May 2025 10:40:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 27693B66
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 May 2025 09:55:27 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id CC0CFB66
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 May 2025 10:40:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0D9E8408FB
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 May 2025 09:55:27 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id B1F368070D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 May 2025 10:40:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id g9MdgDsl7v1B for <intel-wired-lan@lists.osuosl.org>;
- Wed, 28 May 2025 09:55:26 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id oR5TrW4IOwVc for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 28 May 2025 10:40:49 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
  envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 656AA4085F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 656AA4085F
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 656AA4085F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 May 2025 09:55:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 1303C806F7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1303C806F7
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1303C806F7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 May 2025 10:40:48 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 2FF4A5C41AD;
- Wed, 28 May 2025 09:53:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DDF01C4CEE7;
- Wed, 28 May 2025 09:55:23 +0000 (UTC)
-Date: Wed, 28 May 2025 10:55:21 +0100
+ by tor.source.kernel.org (Postfix) with ESMTP id 61025614B4;
+ Wed, 28 May 2025 10:40:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 42EA0C4CEE7;
+ Wed, 28 May 2025 10:40:45 +0000 (UTC)
+Date: Wed, 28 May 2025 11:40:43 +0100
 From: Simon Horman <horms@kernel.org>
-To: Ahmed Zaki <ahmed.zaki@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Message-ID: <20250528095521.GZ365796@horms.kernel.org>
-References: <20250523205537.161754-1-ahmed.zaki@intel.com>
+To: Tatyana Nikolova <tatyana.e.nikolova@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, jgg@nvidia.com, leon@kernel.org,
+ linux-rdma@vger.kernel.org, netdev@vger.kernel.org, kuba@kernel.org,
+ anthony.l.nguyen@intel.com, Joshua Hay <joshua.a.hay@intel.com>
+Message-ID: <20250528104043.GA365796@horms.kernel.org>
+References: <20250523170435.668-1-tatyana.e.nikolova@intel.com>
+ <20250523170435.668-3-tatyana.e.nikolova@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250523205537.161754-1-ahmed.zaki@intel.com>
+In-Reply-To: <20250523170435.668-3-tatyana.e.nikolova@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1748426124;
- bh=8xrW4ntslI00KnqZvc12wjEJHecgCd4hcQMfyEsns9Y=;
+ d=kernel.org; s=k20201202; t=1748428847;
+ bh=VX4AsLj/Fc3QRbtPLrfPBaZuthCoHrVRnGWu/0hh6/s=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=GxCqvIHNjHViEnMkU8/Hj/6Lp2KmpMqSJ6uD6FYoHI/5GwCZQtIZt4kZZagHMVTP3
- kPS+JB6Caz8wI0fWL28BaMNstC+OgLV4clgWN2eI/AalUmbJOs680KVrOyw7pkHYlv
- ty1QRtYrUk82Uan/fyQr5eHpCrmERSMpfjKfVU16VQXXt/NLKchZlGuwxap/jimCsI
- 9K0V4l5XziZW+bfzeKH8SnmQKNFyBfoOUGycGeIPezE65Tigsk932BM8rfW8fg9fYz
- CGTCaDQPehHLpTwJc++J7uyuZtopGH1BFjqPez6oFvmf8oR7tWDcGqQji+lPybDSox
- kR5qHgBB3Hzew==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=DBNy2Q7AqCm7rbyZI1/Jwu3dX6jaQZ/uR/Rm/RMLrneZa5W0YNMtjfnF4IhVJ81Vz
+ j1htjKwNoaxpCO69J7Sxq0+CjDEeD2DrE00VFngcduUeDKqDAD2/8j2ZRNVU7No2WD
+ 3q9yS/S2311vS0svJnbhPEdfvNn6TSF388x/PAiWmEcWZjbkMAyG3+DSN3/MHdlZ1M
+ B0hZpF1RFvR0Lbj6Pdv4JyDRMRRpyv+k3JAhFkAFmQ1gkgcsgn6lchNfQmfPkYOHSs
+ 4J0dC1ZockszvKCn866jqlPRcaaCumJj80bWPOQ9pYeYLIbZeqBp7NAvRHO3Au2GZ+
+ 0ypxKvEiA9HQw==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=GxCqvIHN
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] idpf: convert control queue
- mutex to a spinlock
+ header.a=rsa-sha256 header.s=k20201202 header.b=DBNy2Q7A
+Subject: Re: [Intel-wired-lan] [iwl-next 2/6] idpf: implement core RDMA
+ auxiliary dev create, init, and destroy
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -99,76 +101,89 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, May 23, 2025 at 02:55:37PM -0600, Ahmed Zaki wrote:
-> With VIRTCHNL2_CAP_MACFILTER enabled, the following warning is generated
-> on module load:
+On Fri, May 23, 2025 at 12:04:31PM -0500, Tatyana Nikolova wrote:
+> From: Joshua Hay <joshua.a.hay@intel.com>
 > 
-> [  324.701677] BUG: sleeping function called from invalid context at kernel/locking/mutex.c:578
-> [  324.701684] in_atomic(): 1, irqs_disabled(): 0, non_block: 0, pid: 1582, name: NetworkManager
-> [  324.701689] preempt_count: 201, expected: 0
-> [  324.701693] RCU nest depth: 0, expected: 0
-> [  324.701697] 2 locks held by NetworkManager/1582:
-> [  324.701702]  #0: ffffffff9f7be770 (rtnl_mutex){....}-{3:3}, at: rtnl_newlink+0x791/0x21e0
-> [  324.701730]  #1: ff1100216c380368 (_xmit_ETHER){....}-{2:2}, at: __dev_open+0x3f0/0x870
-> [  324.701749] Preemption disabled at:
-> [  324.701752] [<ffffffff9cd23b9d>] __dev_open+0x3dd/0x870
-> [  324.701765] CPU: 30 UID: 0 PID: 1582 Comm: NetworkManager Not tainted 6.15.0-rc5+ #2 PREEMPT(voluntary)
-> [  324.701771] Hardware name: Intel Corporation M50FCP2SBSTD/M50FCP2SBSTD, BIOS SE5C741.86B.01.01.0001.2211140926 11/14/2022
-> [  324.701774] Call Trace:
-> [  324.701777]  <TASK>
-> [  324.701779]  dump_stack_lvl+0x5d/0x80
-> [  324.701788]  ? __dev_open+0x3dd/0x870
-> [  324.701793]  __might_resched.cold+0x1ef/0x23d
-> <..>
-> [  324.701818]  __mutex_lock+0x113/0x1b80
-> <..>
-> [  324.701917]  idpf_ctlq_clean_sq+0xad/0x4b0 [idpf]
-> [  324.701935]  ? kasan_save_track+0x14/0x30
-> [  324.701941]  idpf_mb_clean+0x143/0x380 [idpf]
-> <..>
-> [  324.701991]  idpf_send_mb_msg+0x111/0x720 [idpf]
-> [  324.702009]  idpf_vc_xn_exec+0x4cc/0x990 [idpf]
-> [  324.702021]  ? rcu_is_watching+0x12/0xc0
-> [  324.702035]  idpf_add_del_mac_filters+0x3ed/0xb50 [idpf]
-> <..>
-> [  324.702122]  __hw_addr_sync_dev+0x1cf/0x300
-> [  324.702126]  ? find_held_lock+0x32/0x90
-> [  324.702134]  idpf_set_rx_mode+0x317/0x390 [idpf]
-> [  324.702152]  __dev_open+0x3f8/0x870
-> [  324.702159]  ? __pfx___dev_open+0x10/0x10
-> [  324.702174]  __dev_change_flags+0x443/0x650
-> <..>
-> [  324.702208]  netif_change_flags+0x80/0x160
-> [  324.702218]  do_setlink.isra.0+0x16a0/0x3960
-> <..>
-> [  324.702349]  rtnl_newlink+0x12fd/0x21e0
+> Add the initial idpf_idc.c file with the functions to kick off the IDC
+> initialization, create and initialize a core RDMA auxiliary device, and
+> destroy said device.
 > 
-> The sequence is as follows:
-> 	rtnl_newlink()->
-> 	__dev_change_flags()->
-> 	__dev_open()->
-> 	dev_set_rx_mode() - >  # disables BH and grabs "dev->addr_list_lock"
-> 	idpf_set_rx_mode() ->  # proceed only if VIRTCHNL2_CAP_MACFILTER is ON
-> 	__dev_uc_sync() ->
-> 	idpf_add_mac_filter ->
-> 	idpf_add_del_mac_filters ->
-> 	idpf_send_mb_msg() ->
-> 	idpf_mb_clean() ->
-> 	idpf_ctlq_clean_sq()   # mutex_lock(cq_lock)
+> The RDMA core has a dependency on the vports being created by the
+> control plane before it can be initialized. Therefore, once all the
+> vports are up after a hard reset (either during driver load or a function
+> level reset), the core RDMA device info will be created. It is populated
+> with the function type (as distinguished by the IDC initialization
+> function pointer), the core idc_ops function points (just stubs for
+> now), the reserved RDMA MSIX table, and various other info the core RDMA
+> auxiliary driver will need. It is then plugged on to the bus.
 > 
-> Fix by converting cq_lock to a spinlock. All operations under the new
-> lock are safe except freeing the DMA memory, which may use vunmap(). Fix
-> by requesting a contiguous physical memory for the DMA mapping.
+> During a function level reset or driver unload, the device will be
+> unplugged from the bus and destroyed.
+> 
+> Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
+> Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
+> Signed-off-by: Tatyana Nikolova <tatyana.e.nikolova@intel.com>
 
-Hi Ahmed,
+...
 
-If I understand things correctly, then by safe you mean won't sleep.  But
-if so my question is if the path that frees DMA memory which is updated by
-this patch is run in a context where sleeping is not allowed.
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_idc.c b/drivers/net/ethernet/intel/idpf/idpf_idc.c
 
-> 
-> Fixes: a251eee62133 ("idpf: add SRIOV support and other ndo_ops")
-> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
+...
+
+> +/**
+> + * idpf_idc_init_aux_core_dev - initialize Auxiliary Device(s)
+> + * @adapter: driver private data structure
+> + * @ftype: PF or VF
+> + *
+> + * Return: 0 on success or error code on failure.
+> + */
+> +int idpf_idc_init_aux_core_dev(struct idpf_adapter *adapter,
+> +			       enum iidc_function_type ftype)
+> +{
+> +	struct iidc_rdma_core_dev_info *cdev_info;
+> +	struct iidc_rdma_priv_dev_info *privd;
+> +	int err;
+> +
+> +	adapter->cdev_info = kzalloc(sizeof(*cdev_info), GFP_KERNEL);
+> +	if (!adapter->cdev_info)
+> +		return -ENOMEM;
+> +
+> +	privd = kzalloc(sizeof(*privd), GFP_KERNEL);
+> +	if (!privd) {
+> +		err = -ENOMEM;
+> +		goto err_privd_alloc;
+
+Hi Joshua, Tatyana, all,
+
+Jumping to err_privd_alloc will free cdev_info.
+However cdev_info isn't initialised until a few lines
+further down.
+
+Flagged by Smatch.
+
+> +	}
+> +
+> +	cdev_info = adapter->cdev_info;
+> +	cdev_info->iidc_priv = privd;
+> +	cdev_info->pdev = adapter->pdev;
+> +	cdev_info->rdma_protocol = IIDC_RDMA_PROTOCOL_ROCEV2;
+> +	privd->ftype = ftype;
+> +
+> +	idpf_idc_init_msix_data(adapter);
+> +
+> +	err = idpf_plug_core_aux_dev(cdev_info);
+> +	if (err)
+> +		goto err_plug_aux_dev;
+> +
+> +	return 0;
+> +
+> +err_plug_aux_dev:
+> +	kfree(privd);
+> +err_privd_alloc:
+> +	kfree(cdev_info);
+> +	adapter->cdev_info = NULL;
+> +
+> +	return err;
+> +}
 
 ...
