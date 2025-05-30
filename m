@@ -2,58 +2,60 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5DF0AAC85BD
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 30 May 2025 02:49:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A9DDAC85CB
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 30 May 2025 02:56:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 37B5C41C83;
-	Fri, 30 May 2025 00:49:21 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3AEB640C0E;
+	Fri, 30 May 2025 00:56:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id MLkNGkchiIdl; Fri, 30 May 2025 00:49:20 +0000 (UTC)
+ id WwF7LOakBWW2; Fri, 30 May 2025 00:56:32 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9128441C80
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C656440C7C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1748566160;
-	bh=8Bl71w9e4E6Qo6rtxryDax3y08LU+Nx9kHzGp2J0tEk=;
+	s=default; t=1748566592;
+	bh=XkEkIQyx+DkxwQbUFbw/COCbajasDnfPyEBJ9wORWlg=;
 	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=fBAZU6i9bjM2+e2+m8F/qLxJFNEbMxRFPEbgG1njragjlagoYywcZ0F0jqA4XWDki
-	 S8574dG361rv0Z91/WXQq26xfMeF+5558az4J5ZoOYfqeuhN7qXwn1BoESrKjbfVmp
-	 9v5iErLxRPTpqTndsp64WZvw87eGhCIi3C/le2H0HDtHM7MBf+yFqRPFEJys60hO6N
-	 ozw5JrrJJmc5Z7D2ueXIzIZOySq1EUkjmyXOCVY8aBtUsvcnmVRUX+V8Yyu1sbNGbJ
-	 x92FC8XyPyFzVJWpKup6WW7smPgRFzBju3GW3rzADMJDsElRothWfMPreRU8c10t7E
-	 SSp77t/z4VExg==
+	b=64rs1MUDxSpoh3hga0QHMSmpFO0JmQBixiozjjBfjTFTFzuLd+DO+C27rpYGMoM90
+	 88UFHxoPGf7k291M7s/dzP+ozwr1CoYaU2l34twxlMg64qAlDiEM5JHfYe15q0Kzyj
+	 f4r2fJRALnDmP/wf7pKMmawpAeatafU2YsyQWjgdCgtsCCsjsouCBelDT4hWOSppQA
+	 xQ4mIY/p8D2esfORfZWnFq+Cw3q8flo1dPSrY4tY6tjV0Rq+0LCU7wvXqB0QnfAWC+
+	 UreC7yrTHIMKCQF/7xvySiSHXc43t7lY0TJJffwSuDqG0HitrXu36Z0UYzTr+DEJQl
+	 cwUN3MVoQIPmg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9128441C80;
-	Fri, 30 May 2025 00:49:20 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C656440C7C;
+	Fri, 30 May 2025 00:56:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 47F46127
- for <intel-wired-lan@lists.osuosl.org>; Fri, 30 May 2025 00:49:19 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 1379D236
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 30 May 2025 00:56:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3995A84154
- for <intel-wired-lan@lists.osuosl.org>; Fri, 30 May 2025 00:49:19 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 057B640BF6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 30 May 2025 00:56:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id LTlAetjgUxeX for <intel-wired-lan@lists.osuosl.org>;
- Fri, 30 May 2025 00:49:18 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
- helo=tor.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 9269784152
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9269784152
-Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 9269784152
- for <intel-wired-lan@lists.osuosl.org>; Fri, 30 May 2025 00:49:18 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id QQtUoXqYs5uJ for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 30 May 2025 00:56:30 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
+ envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 60A6440BF1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 60A6440BF1
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 60A6440BF1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 30 May 2025 00:56:30 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 7A6AF60010;
- Fri, 30 May 2025 00:49:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0D524C4CEE7;
- Fri, 30 May 2025 00:49:16 +0000 (UTC)
-Date: Thu, 29 May 2025 17:49:14 -0700
+ by tor.source.kernel.org (Postfix) with ESMTP id 6EDAE60010;
+ Fri, 30 May 2025 00:56:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 51CDEC4CEE7;
+ Fri, 30 May 2025 00:56:28 +0000 (UTC)
+Date: Thu, 29 May 2025 17:56:27 -0700
 From: Jakub Kicinski <kuba@kernel.org>
 To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 Cc: donald.hunter@gmail.com, davem@davemloft.net, edumazet@google.com,
@@ -63,32 +65,32 @@ Cc: donald.hunter@gmail.com, davem@davemloft.net, edumazet@google.com,
  netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, linux-rdma@vger.kernel.org,
  linux-doc@vger.kernel.org, Milena Olech <milena.olech@intel.com>
-Message-ID: <20250529174914.179c1a34@kernel.org>
-In-Reply-To: <20250523172650.1517164-2-arkadiusz.kubalewski@intel.com>
+Message-ID: <20250529175627.4e6a3b07@kernel.org>
+In-Reply-To: <20250523172650.1517164-3-arkadiusz.kubalewski@intel.com>
 References: <20250523172650.1517164-1-arkadiusz.kubalewski@intel.com>
- <20250523172650.1517164-2-arkadiusz.kubalewski@intel.com>
+ <20250523172650.1517164-3-arkadiusz.kubalewski@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1748566156;
- bh=8Bl71w9e4E6Qo6rtxryDax3y08LU+Nx9kHzGp2J0tEk=;
+ d=kernel.org; s=k20201202; t=1748566589;
+ bh=yg6Wh8XDP53XOaEfOboKxLKTBHVS/nUo2gmPowtLxbo=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=G/1oTXcJfmrJCGtkYZhcTh5rIRqFiCd1irrdkiqp+Y9mefG/2ac0qSvw0Siko8rua
- nkWTbjqN2s0i9vCAzlyfo9hgqUVVST/i0soLWxMWm4yQjizSGOXk60eYH6ZwA9gJo6
- msmtC3+9MnNrYGQlmDNGHFCkGVQQGq8RIj0S5Yda/uLOFsYE213XkUgtCGmPje2a/i
- nJd9uNugpY/u0gfYejO2l96XH7tkBD1HPcsSg/Db/NMqAqynIl3Osi86IwwxKaHs/C
- O4wBg4PoQsi8v2s94WAEuZbI5Pi3nUZx9xV0csl4K6W3CCPBHPZxn0r9/DU8BDQdqh
- /pMKhYRPE4aHg==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ b=D5yTMsUXYJkXKA/3AcLLVZtYKMkrbG7yBjq6Hz2CnCLmzDpTU+WuwJY/phWaP7LWK
+ DH4sGRZP5sNjiuZI2lbzQ42iNVCv7M0Lqom0Yvd9yfFjLlLPun+tW5laqn3p8EPiO6
+ VhGLVjm8KUzTfHtQPYo9eDBQnBW6wmwRx5MTcO3HPFAmIWG/wBR2Tn7rVV4fgCHfUF
+ buiRCeXTUvQPm9FWsgGuzQBy2kAfzGJAMk+NYCX5cWZivNmpmV7UDFhsAFL+3BQwo6
+ gsjjyQFKCMLAJ0P8cRIkGgi58XLvnhBBxXbrTn0iq0kNZELtg4Aj+XGs1NTiEORLZN
+ Cx4g/jqxeB+WA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=G/1oTXcJ
-Subject: Re: [Intel-wired-lan] [PATCH net-next v4 1/3] dpll: add
- reference-sync netlink attribute
+ header.s=k20201202 header.b=D5yTMsUX
+Subject: Re: [Intel-wired-lan] [PATCH net-next v4 2/3] dpll: add reference
+ sync get/set
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,31 +106,69 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, 23 May 2025 19:26:48 +0200 Arkadiusz Kubalewski wrote:
-> +The device may support the Reference SYNC feature, which allows the combination
-> +of two inputs into a Reference SYNC pair. In this configuration, clock signals
-> +from both inputs are used to synchronize the dpll device. The higher frequency
-> +signal is utilized for the loop bandwidth of the DPLL, while the lower frequency
-> +signal is used to syntonize the output signal of the DPLL device. This feature
-> +enables the provision of a high-quality loop bandwidth signal from an external
-> +source.
+On Fri, 23 May 2025 19:26:49 +0200 Arkadiusz Kubalewski wrote:
+> +static int
+> +dpll_pin_ref_sync_state_set(struct dpll_pin *pin,
+> +			    unsigned long ref_sync_pin_idx,
+> +			    const enum dpll_pin_state state,
+> +			    struct netlink_ext_ack *extack)
+> +
+> +{
+> +	struct dpll_pin_ref *ref, *failed;
+> +	const struct dpll_pin_ops *ops;
+> +	enum dpll_pin_state old_state;
+> +	struct dpll_pin *ref_sync_pin;
+> +	struct dpll_device *dpll;
+> +	unsigned long i;
+> +	int ret;
+> +
+> +	ref_sync_pin =3D xa_find(&pin->ref_sync_pins, &ref_sync_pin_idx,
+> +			       ULONG_MAX, XA_PRESENT);
+> +	if (!ref_sync_pin) {
+> +		NL_SET_ERR_MSG(extack, "reference sync pin not found");
+> +		return -EINVAL;
+> +	}
+> +	if (!dpll_pin_available(ref_sync_pin)) {
+> +		NL_SET_ERR_MSG(extack, "reference sync pin not available");
+> +		return -EINVAL;
+> +	}
+> +	ref =3D dpll_xa_ref_dpll_first(&pin->dpll_refs);
+> +	ASSERT_NOT_NULL(ref);
 
-I'm uninitiated into the deeper arts of time sync, but to me this
-sounds like a reference clock. Are you trying not to call it clock
-because in time clock means a ticker, and this is an oscillator?
+why the assert? The next line will crash very.. "informatively"
+if ref is NULL =F0=9F=A4=B7=EF=B8=8F
 
-> +A capable input provides a list of inputs that can be paired to create a
-> +Reference SYNC pair. To control this feature, the user must request a desired
-> +state for a target pin: use ``DPLL_PIN_STATE_CONNECTED`` to enable or
-> +``DPLL_PIN_STATE_DISCONNECTED`` to disable the feature. Only two pins can be
-> +bound to form a Reference SYNC pair at any given time.
+> +static int
+> +dpll_pin_ref_sync_set(struct dpll_pin *pin, struct nlattr *nest,
+> +		      struct netlink_ext_ack *extack)
+> +{
+> +	struct nlattr *tb[DPLL_A_PIN_MAX + 1];
+> +	enum dpll_pin_state state;
+> +	u32 sync_pin_id;
+> +
+> +	nla_parse_nested(tb, DPLL_A_PIN_MAX, nest,
+> +			 dpll_reference_sync_nl_policy, extack);
+> +	if (!tb[DPLL_A_PIN_ID]) {
 
-Mostly I got confused by the doc saying "Reference SYNC pair".
-I was expecting that you'll have to provide 2 ref sync signals.
-But IIUC the first signal is still the existing signal we lock
-into, so the pair is of a reference sync + an input pin?
-Not a pair of two reference syncs.
+NL_REQ_ATTR_CHECK(), please
 
-IOW my reading of the doc made me expect 2 pins to always be passed in
-as ref sync, but the example from the cover letter shows only adding
-one.
+	if (NL_REQ_ATTR_CHECK(extack, nest, tb, DPLL_A_PIN_ID) ||
+	    NL_REQ_ATTR_CHECK(extack, nest, tb, DPLL_A_PIN_STATE))
+		return -EINVAL;
+
+it will set ATTR_MISS metadata for you. Not 100% sure if Python YNL
+can decode miss attrs in nests but that's a SMOP :) C YNL can do it.
+
+> +		NL_SET_ERR_MSG(extack, "sync pin id expected");
+> +		return -EINVAL;
+> +	}
+> +	sync_pin_id =3D nla_get_u32(tb[DPLL_A_PIN_ID]);
+> +
+> +	if (!tb[DPLL_A_PIN_STATE]) {
+> +		NL_SET_ERR_MSG(extack, "sync pin state expected");
+> +		return -EINVAL;
+> +	}
+> +	state =3D nla_get_u32(tb[DPLL_A_PIN_STATE]);
+> +
+> +	return dpll_pin_ref_sync_state_set(pin, sync_pin_id, state, extack);
+> +}
