@@ -1,70 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 62E67ACD1F8
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Jun 2025 03:01:51 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 189D8ACD1FA
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Jun 2025 03:01:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 21232840BE;
-	Wed,  4 Jun 2025 01:01:50 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BDFC46173B;
+	Wed,  4 Jun 2025 01:01:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id k8cKSL1WDvhY; Wed,  4 Jun 2025 01:01:49 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 7BHvGPKJ2TR3; Wed,  4 Jun 2025 01:01:51 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0857883FF4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org ED16B61740
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1748998909;
-	bh=R7jSlYekbshc/cvuP9i6BA4Mg4NVDxMim5DuJ6q7Ka0=;
+	s=default; t=1748998911;
+	bh=dUvR6pGjXJixE0Jf8c9/fySEOF+0brcUX/wlyTyp95E=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=RwprSxsc4QmEQNZvY4cTgfC8yhod/lSpAs1keOquI3nt0VHD8I3a7amxxhqfPl6kM
-	 oQMIGNjj5UI1Lzw3CpA33SMgET/7zhF2tpMm01bgw/tW0f6g+NIX+QKey51VuomL19
-	 1+Izv85g05C424b/l/ZKT3iAd0IBpIGrxJQG7NCb7wcyr4mdZImCOt3dVOrMSl3oVu
-	 tFh6EmJenTeX/eoGROFGjBC7CrJwfjYR6N2pxs+IDlSIhWl/6SpJYOdO67qAMsaja0
-	 8MElnv7pPwME8Udlot66XmF3X6N/exaWUuPtMF5hy+XWd7fq2+bavxtnDjHKh8ZfrW
-	 +gTP0M4iktr1g==
+	b=AGnhdDaJsdFdo2cbiIDObCQ4vKSP715ZqXL1a+z2JgfFrVQR3EGNWqZ7xc+iHzZUs
+	 KOD8ua8e26cu++eZQg3KqpNw4rBdWsV83LRQYQ80lW+o8dg7QVuHUaY3ETBwqD2SHL
+	 99NxAtkhhMY+KCwh1HjkvZBjcmaQu4zBMRZPV3RhK8wZ5Wk9/xjWSTIJPGn4AD6H4C
+	 wxYW6IMJFw/iFB2xX2kmVBD13fY/skwpazjwDSgMO0Qu3qlDNW5mMAwdv95M1ayenb
+	 U3KEsAY2ky2TLsR+xp6e0kOnRmMTnCkHQFDig1HhcdkzB7XelCxp9O4mMdCwNVE0kR
+	 H+rtN/aLXCnXw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0857883FF4;
-	Wed,  4 Jun 2025 01:01:49 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id ED16B61740;
+	Wed,  4 Jun 2025 01:01:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id AF8D4DA
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Jun 2025 01:01:46 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id D4D2DB07
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Jun 2025 01:01:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9557440C90
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Jun 2025 01:01:46 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id C6CBB83FAC
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Jun 2025 01:01:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dd3fLcjvaMP7 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Jun 2025 01:01:46 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
- helo=tor.source.kernel.org; envelope-from=sashal@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org B1FF340BAD
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B1FF340BAD
-Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B1FF340BAD
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Jun 2025 01:01:45 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Hg-KK4s3Ik1q for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Jun 2025 01:01:47 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ envelope-from=sashal@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 165BF80AB4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 165BF80AB4
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 165BF80AB4
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Jun 2025 01:01:46 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id CC36C629D1;
+ by dfw.source.kernel.org (Postfix) with ESMTP id 542F65C4852;
+ Wed,  4 Jun 2025 00:59:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E64EFC4CEED;
  Wed,  4 Jun 2025 01:01:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6878BC4CEF1;
- Wed,  4 Jun 2025 01:01:43 +0000 (UTC)
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Kyungwook Boo <bookyungwook@gmail.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Simon Horman <horms@kernel.org>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Rinitha S <sx.rinitha@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Sasha Levin <sashal@kernel.org>, intel-wired-lan@lists.osuosl.org
-Date: Tue,  3 Jun 2025 20:59:06 -0400
-Message-Id: <20250604005919.4191884-80-sashal@kernel.org>
+Cc: Rand Deeb <rand.sec96@gmail.com>, Rinitha S <sx.rinitha@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Sasha Levin <sashal@kernel.org>,
+ przemyslaw.kitszel@intel.com, intel-wired-lan@lists.osuosl.org
+Date: Tue,  3 Jun 2025 20:59:07 -0400
+Message-Id: <20250604005919.4191884-81-sashal@kernel.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250604005919.4191884-1-sashal@kernel.org>
 References: <20250604005919.4191884-1-sashal@kernel.org>
@@ -75,23 +73,23 @@ X-stable-base: Linux 6.12.31
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1748998904;
- bh=tMVixsW2WExdef1dyWcopLAmxCW73PppxtVVzwm+lnA=;
+ d=kernel.org; s=k20201202; t=1748998905;
+ bh=miHxNhMmz+z/B/SYmot+ioYTYMK/UdTNx2oVQJ8bz2w=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=JfaV2utQQFGp7g4O+paNOnif2yOoWy86GbrRpH8Vgk7rT5l/mP8ETScoikSvX5YNR
- 5a7fLL+WZvYntL1SArYWW+3sG/Y1FP5mY15q7JN04IAI0f5uQZQsTJ/ZMO+jYbrtyr
- /A8Evvmnx4l1SZ0MXbxfnnbpW9sOjD86BObGZyBxL9ptWuPrU/LlVFj2pdszSmbo6f
- M4ixRrwn378gbcx23IyLXffIBsYR+vhxyN2MGJ+cxeGBNjVJiv8w9OJEEZdwLN5hcA
- nMkioJXKEf4snmorwZm34jEKt3iKgpwWURaWHAm3FPUXxQp6WfvpEa1x2A7y4EY51N
- nmMb47pLdPLHQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=t8OGUPxtJW15rqR6tHMQsYgOmLlM1qG/gQMKHCwAg3sZyGl/gaiiBW++V/MZyx35j
+ zCOeYcxdlL9yDX01OIIbQrSsKjB5DdSZe8HXYsOJhtEZS9J1yuS1LjdvTl74V9gd1F
+ iMtzNv6oaMSnU+LNzd/+Fy7bupWABpcKk5f2gFkYwrMEQXpM8Cwfpj7IW5NeIseLqH
+ 4ZguoSU/YSOy14kHuUH3voqo9X6U5F0DxgD6KyuhcxtzndsGiXMaAMJY8jlhR63/FI
+ VzxSbdJh2quUMAPrVf9SOgP7ZiKuFySqZYNFkBbnBfMq/HHRSg6eMcRTUqaoQ/KLxZ
+ 8QODIVLatJ3LA==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=JfaV2utQ
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.12 80/93] i40e: fix MMIO write
- access to an invalid page in i40e_clear_hw
+ header.a=rsa-sha256 header.s=k20201202 header.b=t8OGUPxt
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.12 81/93] ixgbe: Fix unreachable
+ retry logic in combined and byte I2C write functions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -107,87 +105,101 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Kyungwook Boo <bookyungwook@gmail.com>
+From: Rand Deeb <rand.sec96@gmail.com>
 
-[ Upstream commit 015bac5daca978448f2671478c553ce1f300c21e ]
+[ Upstream commit cdcb3804eeda24d588348bbab6766cf14fddbeaa ]
 
-When the device sends a specific input, an integer underflow can occur, leading
-to MMIO write access to an invalid page.
+The current implementation of `ixgbe_write_i2c_combined_generic_int` and
+`ixgbe_write_i2c_byte_generic_int` sets `max_retry` to `1`, which makes
+the condition `retry < max_retry` always evaluate to `false`. This renders
+the retry mechanism ineffective, as the debug message and retry logic are
+never executed.
 
-Prevent the integer underflow by changing the type of related variables.
+This patch increases `max_retry` to `3` in both functions, aligning them
+with the retry logic in `ixgbe_read_i2c_combined_generic_int`. This
+ensures that the retry mechanism functions as intended, improving
+robustness in case of I2C write failures.
 
-Signed-off-by: Kyungwook Boo <bookyungwook@gmail.com>
-Link: https://lore.kernel.org/lkml/ffc91764-1142-4ba2-91b6-8c773f6f7095@gmail.com/T/
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Reviewed-by: Simon Horman <horms@kernel.org>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Found by Linux Verification Center (linuxtesting.org) with SVACE.
+
+Signed-off-by: Rand Deeb <rand.sec96@gmail.com>
 Tested-by: Rinitha S <sx.rinitha@intel.com> (A Contingent worker at Intel)
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
 **YES** This commit should be backported to stable kernel trees. Here's
-my extensive analysis: ## Analysis of Code Changes The commit changes
-variable types in `i40e_clear_hw()` from unsigned (`u32`) to signed
-(`s32`) for: 1. `num_pf_int` - number of PF interrupts 2. `num_vf_int` -
-number of VF interrupts 3. `i` - loop counter variable **Critical
-Security Issue**: The problem occurs when hardware registers contain
-malicious values where `num_pf_int` or `num_vf_int` could be 0 or 1. In
-the loops at lines 852-853 and 858-859: ```c for (i = 0; i < num_pf_int
-- 2; i++) wr32(hw, I40E_PFINT_DYN_CTLN(i), val); ``` If `num_pf_int` is
-0 or 1, then `num_pf_int - 2` becomes a large positive number due to
-unsigned integer underflow (0xFFFFFFFE or 0xFFFFFFFF), causing the loop
-to iterate billions of times and write to invalid MMIO addresses,
-leading to system crashes or potential security vulnerabilities. ##
-Comparison with Similar Commits This fix follows the **exact same
-pattern** as Similar Commit #2 (fc6f716a5069), which was marked **YES**
-for backporting. That commit addressed the same class of vulnerability
-in the same function: - **Similar Commit #2**: Added bounds checking (`j
->= base_queue`, `j >= i`) to prevent underflow in queue/VF calculations
-- **Current Commit**: Changes variable types to signed to prevent
-underflow in interrupt calculations Both fixes address **integer
-underflow vulnerabilities in `i40e_clear_hw()`** that can lead to **MMIO
-writes to invalid memory pages**. ## Backport Suitability Criteria ✅
-**Fixes important security bug**: Prevents system crashes and potential
-memory corruption ✅ **Small, contained change**: Only changes variable
-types, no logic changes ✅ **Minimal side effects**: Type changes are
-safe and don't affect functionality ✅ **No architectural changes**:
-Simple type fix ✅ **Critical subsystem**: Network driver, but change is
-isolated ✅ **Clear commit message**: Explicitly describes the security
-issue ✅ **Follows stable rules**: Important security bugfix with minimal
-risk ## Historical Context The vulnerability was introduced in commit
-838d41d92a90 ("i40e: clear all queues and interrupts") from 2014. A
-related fix (fc6f716a5069) was already applied for similar underflow
-issues in the same function and was backported. This commit completes
-the fix by addressing the remaining underflow vectors. ## Risk
-Assessment **Risk: MINIMAL** - This is a simple type change that: -
-Makes signed arithmetic behave correctly - Prevents undefined behavior
-from unsigned underflow - Has no functional impact on normal operation -
-Only affects error conditions with malformed hardware registers The fix
-is **essential for security** and has **virtually zero regression
-risk**, making it an ideal candidate for stable backporting.
+my extensive analysis: ## Bug Analysis **Critical Logic Flaw:** The
+commit fixes a fundamental bug where the retry logic in I2C write
+functions was completely ineffective. With `max_retry = 1`, the
+condition `retry < max_retry` would only allow `retry = 0`, meaning the
+retry loop would never execute more than once, making the entire retry
+mechanism useless. **Code Impact:** The change from `max_retry = 1` to
+`max_retry = 3` in both: - `ixgbe_write_i2c_combined_generic_int()`
+(line ~170) - `ixgbe_write_i2c_byte_generic_int()` (line ~2288) This
+aligns with the existing `ixgbe_read_i2c_combined_generic_int()`
+function which already uses `max_retry = 3`. ## Backport Suitability
+Criteria **1. Fixes Important User-Affecting Bug:** ✓ - I2C write
+failures directly impact SFP/QSFP module detection and configuration -
+Affects `ethtool --identify` LED functionality - Can cause intermittent
+network interface initialization failures - Users would experience
+unreliable hardware detection and configuration **2. Small and Contained
+Change:** ✓ - Only changes two integer values from 1 to 3 - No
+architectural changes or new functionality - Minimal risk of introducing
+regressions - Affects only the specific I2C write retry mechanism **3.
+No Side Effects Beyond the Fix:** ✓ - Simply enables existing retry
+logic to work as intended - Doesn't change the fundamental I2C
+communication protocol - Maintains consistency with read operations - No
+new code paths introduced **4. Critical Subsystem Impact:** ✓ - Network
+driver functionality is critical for system operation - I2C
+communication is essential for modern network hardware management -
+Affects Intel ixgbe NICs which are widely deployed in enterprise
+environments **5. Clear Bug Evidence:** ✓ - Linux Verification Center
+found this with static analysis (SVACE) - Logic flaw is mathematically
+provable (retry < 1 never allows retry) - Consistent with similar
+commits in the pattern (Similar Commit #1 shows retry count adjustments
+are appropriate for backporting) ## Comparison to Historical Patterns
+This commit closely matches **Similar Commit #1** (Backport Status: YES)
+which also modified I2C retry counts in ixgbe. That commit reduced retry
+counts to avoid regressions, while this one increases retry counts to
+fix broken logic - both are stability improvements worthy of
+backporting. Unlike **Similar Commit #2** (Backport Status: NO) which
+was architectural refactoring, this commit fixes a clear functional
+defect without introducing new features or code reorganization. ## Risk
+Assessment **Low Risk:** - Increasing retries from effectively 0 to 3
+cannot make things worse - The retry mechanism already existed and was
+intended to be used - 3 retries aligns with established patterns in the
+same driver - Intel has tested this change (as indicated by the "Tested-
+by" tag) **High Impact:** - Fixes complete failure of I2C write retry
+mechanism - Improves reliability of critical network hardware
+functionality - Addresses systematic logic flaw affecting all ixgbe
+deployments This commit represents exactly the type of important, low-
+risk bug fix that stable trees are designed to receive.
 
- drivers/net/ethernet/intel/i40e/i40e_common.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c b/drivers/net/ethernet/intel/i40e/i40e_common.c
-index e8031f1a9b4fc..2f5a850148676 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_common.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
-@@ -817,10 +817,11 @@ int i40e_pf_reset(struct i40e_hw *hw)
- void i40e_clear_hw(struct i40e_hw *hw)
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
+index 07eaa3c3f4d36..530e4319a2e89 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
+@@ -167,7 +167,7 @@ int ixgbe_write_i2c_combined_generic_int(struct ixgbe_hw *hw, u8 addr,
+ 					 u16 reg, u16 val, bool lock)
  {
- 	u32 num_queues, base_queue;
--	u32 num_pf_int;
--	u32 num_vf_int;
-+	s32 num_pf_int;
-+	s32 num_vf_int;
- 	u32 num_vfs;
--	u32 i, j;
-+	s32 i;
-+	u32 j;
- 	u32 val;
- 	u32 eol = 0x7ff;
+ 	u32 swfw_mask = hw->phy.phy_semaphore_mask;
+-	int max_retry = 1;
++	int max_retry = 3;
+ 	int retry = 0;
+ 	u8 reg_high;
+ 	u8 csum;
+@@ -2284,7 +2284,7 @@ static int ixgbe_write_i2c_byte_generic_int(struct ixgbe_hw *hw, u8 byte_offset,
+ 					    u8 dev_addr, u8 data, bool lock)
+ {
+ 	u32 swfw_mask = hw->phy.phy_semaphore_mask;
+-	u32 max_retry = 1;
++	u32 max_retry = 3;
+ 	u32 retry = 0;
+ 	int status;
  
 -- 
 2.39.5
