@@ -2,131 +2,97 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4211DACCE8C
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Jun 2025 23:00:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A29FBACD152
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Jun 2025 02:54:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A1AA28114C;
-	Tue,  3 Jun 2025 21:00:55 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id EC40282B21;
+	Wed,  4 Jun 2025 00:54:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dlPimgzw5Efh; Tue,  3 Jun 2025 21:00:55 +0000 (UTC)
+ id 6D9fqSbpMdqj; Wed,  4 Jun 2025 00:54:48 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A94A481153
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D40708179D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1748984454;
-	bh=+PKgRqE/agxHfUSUWE1ZX+G/aaQhrQ+OflgKrEMgMlM=;
-	h=From:Date:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1748998487;
+	bh=x9p0McvhpC5QxFUCoI+PAOg+dLw2bWIJELsr9LuXA/M=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=FK1RcB4LF/xDY5KN/K1qa05ODoXnUGkTSRl3fWlyYWs8l2zHHS8a9jHSN+y5oPGf4
-	 KwzHik5CwUT6uE/fuGmtIah45dkPCiUc9Js7Az03R10EOTSfMxCtHrPpswBHX5rHiL
-	 4pdJs4peoT3e/aYwzwDNv5u6uoN9W0oGjb/LRBWDoJVvtLKg1tupREy3a12ZfUerY4
-	 jsJLXL2kbfIMu/9N2WERtvyxP98TGdF0yrHyPwXRaKWDS/ffUAXNGRK5oh0OweufMj
-	 NI5aXusvFMunFa4THhD2rHT+VZ3OYSLOf3wSMv6fm3s7Fm5bzd/WW1rby+0h9TIhhW
-	 S1Fb34creFWkQ==
+	b=G1tvlHnLGKpROvDnpzEyIb2r2VAYgp3KnBp6e9W+BKuBZL8LDhikCuo5eSVfzFrim
+	 JMmbaugHxYq5VdnulzffTXANZhTJbrA4LnINWvBAxP98dvMqtIwPGD0knpBPUoyc9j
+	 rzWseSU+vlsI/m7FfuwkKFM3BC9hrbm7FQ7AlTylTJOrwZA3eiDBEEc4LfI5uuRxqM
+	 zhmaSxiVSO9ev7A0aOBEMUPR0UVtGTN4HeFuIAhAWwvFomjom5YNlcawubfQAKznVI
+	 6pliY2TppiKHX/RYhA1RLcdADOU/a2UC9U7mhPBGZw0TM7rG5tgQha9rNFZoTd754J
+	 k1fEx89ZtvmJw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A94A481153;
-	Tue,  3 Jun 2025 21:00:54 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D40708179D;
+	Wed,  4 Jun 2025 00:54:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 5C9451F7
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Jun 2025 21:00:52 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 8709AB07
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Jun 2025 00:54:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4E7A040187
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Jun 2025 21:00:52 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6D35480D69
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Jun 2025 00:54:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ukyzQIPf32_G for <intel-wired-lan@lists.osuosl.org>;
- Tue,  3 Jun 2025 21:00:51 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id VehdotUhgQW1 for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Jun 2025 00:54:45 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::52e; helo=mail-ed1-x52e.google.com;
- envelope-from=jacek@jacekk.info; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org DB3CF40166
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DB3CF40166
-Received: from mail-ed1-x52e.google.com (mail-ed1-x52e.google.com
- [IPv6:2a00:1450:4864:20::52e])
- by smtp2.osuosl.org (Postfix) with ESMTPS id DB3CF40166
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Jun 2025 21:00:50 +0000 (UTC)
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-6020ff8d54bso11065660a12.2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 03 Jun 2025 14:00:50 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1748984448; x=1749589248;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:subject:user-agent:mime-version:date:message-id:from
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=+PKgRqE/agxHfUSUWE1ZX+G/aaQhrQ+OflgKrEMgMlM=;
- b=b7a2E/hiMcfhDyTw4xpSXFlSK06mz8WljltIOi6lFpe1jMkVuDVxKMZr/xQwl1yOno
- AY0rFyeRfc8IqlaSSMkh/nW/Fbv1mniFEzQZ9iVUDtibSFfaK/8OYcTwC7kVwLvJgDFR
- c+tKkUwTGdGOFhm0Ea0hNWCj2BHyrruy6Z6Lz9BHb8oRNrzqAH7kcPXrIYqI48Q12LRc
- MIg26rP5sDgSxulFtVDEUuF5rJFxm4NfsCFuMUg9ySUw3sZ62LYzFUskhXAHlPwoqCC9
- rWSuxhnGPHwi3ThYPQzh4FXt0v/B0oLjst6I86Txlk3wb0SDX37YsAZLRmqMqEFZnHh4
- GEZg==
-X-Gm-Message-State: AOJu0YwuxvKgS/uVPnk3MAnmoqOO8K6Qbki5TopsSPu752nSVyfKkRzZ
- iI7ZDFdbQVfx4V7mu6GjHvJSydJdiNmRKA1FbTZq/BMo2oYxSGlXn0XMCJL7r+rb/Q==
-X-Gm-Gg: ASbGnctAC81IpGhQjsyJFvAOsOCNOSqtllR6DoJxs+4LZDtUP6iA0DSpFWWvDTO9rVl
- 4IeTKNh2KD9EnK22qFda5ctjHaJjrq9unedAYxDJIj123VkghcEouaueQXDYsO97Zkh7hPalIQU
- +KfI6xQMtWHwP/+KfVt8xHB7KCzcDo3Z7/0470udCbiMqdeSEkNBmFdb2usyHcwEBhW2aKor1cu
- 6GPnxJbm3W2icqAPCDvRS8IxDTI2ewbO55jYmVacKLpadC3uHIBhzXfSyrToVLcBhEbU1HQqF8x
- Cc0xW17vCHWW29afiS/bnKKGSiK9YKmriS79FPKehITJW13N1A==
-X-Google-Smtp-Source: AGHT+IFE/zq55kKCpFNUP8s47xQ1VlVxdxq1nZI5gpd41ZgPDjMuxiJo036Y0yIPNM78hWufsGJ+cQ==
-X-Received: by 2002:a17:907:6d0f:b0:acb:b900:2bca with SMTP id
- a640c23a62f3a-addf8a92b51mr10123066b.0.1748984448317; 
- Tue, 03 Jun 2025 14:00:48 -0700 (PDT)
-Received: from [10.2.1.100] ([194.53.194.238])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-ada6ad3d7ebsm1002032566b.159.2025.06.03.14.00.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 03 Jun 2025 14:00:47 -0700 (PDT)
-From: Jacek Kowalski <jacek@jacekk.info>
-X-Google-Original-From: Jacek Kowalski <Jacek@jacekk.info>
-Message-ID: <c0ece81e-6fee-41bb-96c9-eef36b09af37@jacekk.info>
-Date: Tue, 3 Jun 2025 23:00:46 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>, Vlad URSU <vlad@ursu.me>, 
- Tony Nguyen <anthony.l.nguyen@intel.com>,
+ client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ envelope-from=sashal@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A702B80D4F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A702B80D4F
+Received: from sea.source.kernel.org (sea.source.kernel.org
+ [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id A702B80D4F
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Jun 2025 00:54:45 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sea.source.kernel.org (Postfix) with ESMTP id 0180F43FCD;
+ Wed,  4 Jun 2025 00:54:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BB387C4CEEF;
+ Wed,  4 Jun 2025 00:54:43 +0000 (UTC)
+From: Sasha Levin <sashal@kernel.org>
+To: patches@lists.linux.dev,
+	stable@vger.kernel.org
+Cc: Kyungwook Boo <bookyungwook@gmail.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org
-References: <5555d3bd-44f6-45c1-9413-c29fe28e79eb@jacekk.info>
- <23bb365c-9d96-487f-84cc-2ca1235a97bb@ursu.me>
- <03216908-6675-4487-a7e1-4a42d169c401@intel.com>
- <47b2fe98-da85-4cef-9668-51c36ac66ce5@ursu.me>
- <8adbc5a0-782d-4a07-93d7-c64ae0e3d805@intel.com>
- <20f39efe-ba5b-44b2-bfe6-b4ca17d6b0c1@ursu.me>
- <1e92a26e-1fb9-44bb-86df-8007cf9ee711@intel.com>
-Content-Language: en-US
-In-Reply-To: <1e92a26e-1fb9-44bb-86df-8007cf9ee711@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=jacekk.info; s=g2024; t=1748984448; x=1749589248; darn=lists.osuosl.org;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:subject:user-agent:mime-version:date:message-id:from:from:to
- :cc:subject:date:message-id:reply-to;
- bh=+PKgRqE/agxHfUSUWE1ZX+G/aaQhrQ+OflgKrEMgMlM=;
- b=2NmRsm4kSo/avy7DN8VXLDB5eNw2f1sJZGiRYD/VrhuccioT4WSIklZF3aMekNJco2
- NpqRJ640jDl1RQJPcPXiZklAElj6uQJ2J7qCtQ65nOGeXw+KWSt6Lz6Hh2pVqsiJO2Fq
- ubNL/ZeY+ySvl1mSquZnWW21HQFpGrLm/X3WR8k5LyJccHM7UsbOzqwUO7Bb529ZI6yy
- +aMjwoOj+LcM1xKpac8n6OBHao55DeJVkQArkcxLwxj5chtL9wtLJ14eFoo3M/M3FR6Z
- 2dbV5mwc5/5ASu0v7y5P+1rBUtdiZDYsPnK25mr83aHTi1OajD78y7AsDwbWTBPu0OaL
- yOSw==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=jacekk.info
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=jacekk.info header.i=@jacekk.info header.a=rsa-sha256
- header.s=g2024 header.b=2NmRsm4k
-Subject: Re: [Intel-wired-lan] [PATCH] e1000e: disregard NVM checksum on tgp
- when valid checksum mask is not set
+ Simon Horman <horms@kernel.org>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Rinitha S <sx.rinitha@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Sasha Levin <sashal@kernel.org>, intel-wired-lan@lists.osuosl.org
+Date: Tue,  3 Jun 2025 20:50:32 -0400
+Message-Id: <20250604005049.4147522-101-sashal@kernel.org>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250604005049.4147522-1-sashal@kernel.org>
+References: <20250604005049.4147522-1-sashal@kernel.org>
+MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.15
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1748998484;
+ bh=eKMQyV1C91DAC7hK8qLEUulNHkD5CAVhLyhXYXFIokA=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=OVzj0JtPptA4vX4EFGtMMKNUPUl5gyvhQBjzYa1CKVylxY2IsdysaSjryFqpZGZHp
+ 9AyN0Q2zqj/IHmJ99XmRIkgQ5AsiJ9d9C+SgWvFTvANriBU+2CM/uz4roCb+UJMZKP
+ slrr956A86fU5Wx3BzhGvmm48jC/IHvOc1bHdVGK1dJSLr525FscXxkQcBrB546sKx
+ 3pQJ5VXKVOWg2pSi4f9gUTVC74ZSPqphbeLZ221YUA4rQi5z1VIS7PfhMeeCqnPDPi
+ WD1BlM2CNOpJC5c3zEp74z1avfLcs/mCBk3dkiT9OJeX7mphxjhlrgkFboEY5eXCHo
+ PnXFWB0Avxyrg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=OVzj0JtP
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.15 101/118] i40e: fix MMIO write
+ access to an invalid page in i40e_clear_hw
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -142,21 +108,88 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
->>> If no update is available, perhaps we can consider ignoring the 
->>> checksum on TGP systems if one of the following conditions is met:
->>> 1. SW compatibility bit is not set (current Jacek's approach)
->>> 2. The checksum word at offset 0x3F retains its factory default value 
->>> of 0xFFFF.
->>
->> I am already on the latest firmware. I have also tried downgrading to 
->> earlier versions and they have the same problem.
-> 
-> Ok, so in this case I think that we should go with option 2.
-> 
-> Jacek - can you please add this check to your patch?
+From: Kyungwook Boo <bookyungwook@gmail.com>
 
-Yes, I'll prepare v2 by the end of this week.
+[ Upstream commit 015bac5daca978448f2671478c553ce1f300c21e ]
 
+When the device sends a specific input, an integer underflow can occur, leading
+to MMIO write access to an invalid page.
+
+Prevent the integer underflow by changing the type of related variables.
+
+Signed-off-by: Kyungwook Boo <bookyungwook@gmail.com>
+Link: https://lore.kernel.org/lkml/ffc91764-1142-4ba2-91b6-8c773f6f7095@gmail.com/T/
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Reviewed-by: Simon Horman <horms@kernel.org>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Tested-by: Rinitha S <sx.rinitha@intel.com> (A Contingent worker at Intel)
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+
+**YES** This commit should be backported to stable kernel trees. Here's
+my extensive analysis: ## Analysis of Code Changes The commit changes
+variable types in `i40e_clear_hw()` from unsigned (`u32`) to signed
+(`s32`) for: 1. `num_pf_int` - number of PF interrupts 2. `num_vf_int` -
+number of VF interrupts 3. `i` - loop counter variable **Critical
+Security Issue**: The problem occurs when hardware registers contain
+malicious values where `num_pf_int` or `num_vf_int` could be 0 or 1. In
+the loops at lines 852-853 and 858-859: ```c for (i = 0; i < num_pf_int
+- 2; i++) wr32(hw, I40E_PFINT_DYN_CTLN(i), val); ``` If `num_pf_int` is
+0 or 1, then `num_pf_int - 2` becomes a large positive number due to
+unsigned integer underflow (0xFFFFFFFE or 0xFFFFFFFF), causing the loop
+to iterate billions of times and write to invalid MMIO addresses,
+leading to system crashes or potential security vulnerabilities. ##
+Comparison with Similar Commits This fix follows the **exact same
+pattern** as Similar Commit #2 (fc6f716a5069), which was marked **YES**
+for backporting. That commit addressed the same class of vulnerability
+in the same function: - **Similar Commit #2**: Added bounds checking (`j
+>= base_queue`, `j >= i`) to prevent underflow in queue/VF calculations
+- **Current Commit**: Changes variable types to signed to prevent
+underflow in interrupt calculations Both fixes address **integer
+underflow vulnerabilities in `i40e_clear_hw()`** that can lead to **MMIO
+writes to invalid memory pages**. ## Backport Suitability Criteria ✅
+**Fixes important security bug**: Prevents system crashes and potential
+memory corruption ✅ **Small, contained change**: Only changes variable
+types, no logic changes ✅ **Minimal side effects**: Type changes are
+safe and don't affect functionality ✅ **No architectural changes**:
+Simple type fix ✅ **Critical subsystem**: Network driver, but change is
+isolated ✅ **Clear commit message**: Explicitly describes the security
+issue ✅ **Follows stable rules**: Important security bugfix with minimal
+risk ## Historical Context The vulnerability was introduced in commit
+838d41d92a90 ("i40e: clear all queues and interrupts") from 2014. A
+related fix (fc6f716a5069) was already applied for similar underflow
+issues in the same function and was backported. This commit completes
+the fix by addressing the remaining underflow vectors. ## Risk
+Assessment **Risk: MINIMAL** - This is a simple type change that: -
+Makes signed arithmetic behave correctly - Prevents undefined behavior
+from unsigned underflow - Has no functional impact on normal operation -
+Only affects error conditions with malformed hardware registers The fix
+is **essential for security** and has **virtually zero regression
+risk**, making it an ideal candidate for stable backporting.
+
+ drivers/net/ethernet/intel/i40e/i40e_common.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c b/drivers/net/ethernet/intel/i40e/i40e_common.c
+index 370b4bddee441..b11c35e307ca9 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_common.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
+@@ -817,10 +817,11 @@ int i40e_pf_reset(struct i40e_hw *hw)
+ void i40e_clear_hw(struct i40e_hw *hw)
+ {
+ 	u32 num_queues, base_queue;
+-	u32 num_pf_int;
+-	u32 num_vf_int;
++	s32 num_pf_int;
++	s32 num_vf_int;
+ 	u32 num_vfs;
+-	u32 i, j;
++	s32 i;
++	u32 j;
+ 	u32 val;
+ 	u32 eol = 0x7ff;
+ 
 -- 
-Best regards,
-   Jacek Kowalski
+2.39.5
+
