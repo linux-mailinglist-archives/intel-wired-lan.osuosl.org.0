@@ -1,94 +1,172 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 664E9AD0E90
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  7 Jun 2025 18:27:14 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B58AAD1896
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Jun 2025 08:33:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1013040AA9;
-	Sat,  7 Jun 2025 16:27:13 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5017880D78;
+	Mon,  9 Jun 2025 06:33:06 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id HUEfBEHljOuW; Mon,  9 Jun 2025 06:33:05 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AFC2680D84
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1749450785;
+	bh=MmAYUg7O6dkTdkIiBtg/5kdLBbcYIVSTeEcnUEGi/DI=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=OFn/p3KaOJdAy80DnN3qNPg1sK7ALRrKvZ3bHM5dJ1rCHKoe7VAI84HmNYN3V6uEe
+	 WcyT1JCQ4+IUhb9FEm5i50GNJJEqgpslpXCnNSv0q1gDxF4PuLVovwkzyONARTIKgi
+	 ZB9yFau7gX+sjSJFYuBmVRSCkDYiGaHoo3bb/zmrcYIih64GJvD5KfaUq0HTl2EG2E
+	 8RHu76LOxGpj6XYEAmiPSnME+NQGC8QuTvlyVSEv1Hfk62kKFetiC7XScWk9JMfQ9P
+	 Kh8obcK9MlWP0Js3A6otehzo2SG4Iu8QLiKSFa/BIel9+A3aH+fnOOgIQJCsplwRFq
+	 8/gP7aQtYQRBA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id AFC2680D84;
+	Mon,  9 Jun 2025 06:33:05 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id E94D31F2
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Jun 2025 06:33:04 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id DB2F6409C9
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Jun 2025 06:33:04 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id rBttrdt3i3VK; Sat,  7 Jun 2025 16:27:12 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D4BF640AB0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1749313631;
-	bh=FZZH8/I1RnHKJu3fRPLmtcujItHGh2hnBY1hKWMMQs4=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=JklL4Av7meN9oNbnJxBx60b5QeAwQNaMrbnXX4ni16hwO3Aa+IBNCYBGczMEVA3dI
-	 dz5nh8kB1UPI3ZxFisIs+RM2HPjpQkFrcJVkl/7tcWHDgDbW++NuUqM23PFSVXKWUd
-	 Ru2r/g0QQJ+5Pt6+7H+DK69LLoOE0PPvGvr/UlwfqDN7J3DnGj8Lpvtm3RmzA2TALl
-	 bcSIrfNQvbnLyoDdBV0IMRITYXExGLbFhNXq83B0jPubJiBsYdHCtI6FPF2kQTtxSu
-	 kNWtxQc9pzDuJcSkEhF+pC5YZEXqkNr52apVAIsL0rOCI4uR6/mVd9L5fjTWAMmC66
-	 pPT/xgPAChlUQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D4BF640AB0;
-	Sat,  7 Jun 2025 16:27:11 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 6A68CC8
- for <intel-wired-lan@lists.osuosl.org>; Sat,  7 Jun 2025 16:27:10 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5001460A83
- for <intel-wired-lan@lists.osuosl.org>; Sat,  7 Jun 2025 16:27:10 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sG5OOtTCQ5mw for <intel-wired-lan@lists.osuosl.org>;
- Sat,  7 Jun 2025 16:27:09 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.15;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 067D7608C7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 067D7608C7
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 067D7608C7
- for <intel-wired-lan@lists.osuosl.org>; Sat,  7 Jun 2025 16:27:08 +0000 (UTC)
-X-CSE-ConnectionGUID: JO1QzqROQsqxRKZe82KqJA==
-X-CSE-MsgGUID: zi/XUqFaQsCRCaca0VqbWQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11457"; a="55105060"
-X-IronPort-AV: E=Sophos;i="6.16,218,1744095600"; d="scan'208";a="55105060"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jun 2025 09:27:08 -0700
-X-CSE-ConnectionGUID: 9YXivJWHTgajZWd8k3d9Nw==
-X-CSE-MsgGUID: xJQYedMHT8qJ1wegXpGLjA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,218,1744095600"; d="scan'208";a="150973273"
-Received: from lkp-server01.sh.intel.com (HELO e8142ee1dce2) ([10.239.97.150])
- by fmviesa005.fm.intel.com with ESMTP; 07 Jun 2025 09:27:06 -0700
-Received: from kbuild by e8142ee1dce2 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1uNwNs-0005td-2E
- for intel-wired-lan@lists.osuosl.org; Sat, 07 Jun 2025 16:27:04 +0000
-Date: Sun, 08 Jun 2025 00:26:52 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202506080043.t6YolQ0G-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1749313630; x=1780849630;
- h=date:from:to:subject:message-id;
- bh=Bg22AllOLkDhfUqnuFbl9D8taLVFVdff10Cwc/kmb6A=;
- b=eeb7G8XaMDRV10x0JietMJ1ytydHXdhMAHRicRy0sf1Bux4cFY4Ef5PN
- 3hGHBA1EaCcjjh32qNFn1j6jajlkzxyxiC/fAd5UYHRBUX8MY9n9agiEV
- cGs/OjEGYBJ+8o/990ZbbQAgwMw8WIy38qAE2vEjIjRnouaxtml73BwhR
- XAiLVtOyPoSC2UTengiUym4+Lvl17ZuxeYwkEq4KrMHFMZdVVnkCzuNwr
- SDtRjvpyioX2quAGX2r/MRV4Yku4xqdoXtdGpzxtRncn0Sj9JlnOhp0V3
- V9RsJ/KPTowySc+aVsAmmhfQhjqhuqlRHCnL2PSsb+ESTBmJpPaRDutG0
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ id WZ27zSjDpilM for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  9 Jun 2025 06:33:04 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.220.88;
+ helo=nam11-co1-obe.outbound.protection.outlook.com;
+ envelope-from=ian.ray@gehealthcare.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 20C77409BD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 20C77409BD
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com
+ (mail-co1nam11on2088.outbound.protection.outlook.com [40.107.220.88])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 20C77409BD
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Jun 2025 06:33:03 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=t/nImNYuP+mRD5wT+27xKPxiZFfffxbkvir4jHjhbnFV9shDSyBud3ldVYuJUi7Wz5Nr8V1WYQzQsNqwRwGvQIB17n2LokfvR/BVJXKQoHHpFEwi7K1FEIlijlfFd+l6k95ayzpZ87NhaTQ+vpX3+AC25kAJWkHxHI2O76xRgHgbciJ3ZiKQMG5DTs1HHDVuPXX6Lwg9JPz63Hl4gsbJhjZvYZRG43gi6vGJ8y9GHIXQWaTEm3w1pZhaeCK8YKQ3M4R4g6EAezzrwef3qGkuoXvO/nzLqMDPyG51AH0YP0aRzp8oGlFutEBI3rHAVTyeY6sabpAfzW/5CpuUu+o18w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=MmAYUg7O6dkTdkIiBtg/5kdLBbcYIVSTeEcnUEGi/DI=;
+ b=QGJ6uddIn9eihynipaVxlsuQ9lC/Xdf+DcuQywY+VmxxM2Ft70UKtnwLyhCubgFvea7NdciQQoW/y4Ur+XxuiO3Esbej5i653/VtUTP5VE1aNjT6VISf9GGWO+L3pJGmVPUOcPWHcnYokT1V0tToFFO6W3vgfocAEPHbtcm+375mdv0NsAD+j6B8Z7v6s7HKvM+m6dk/ahPPGNwdp+VQSPQmUSs9D6Vv8eCwWsAC3u5UU1ZOV3yh1NbmcX/ZxGo098tYHeKw3FaELOQo2CWgRlQjwvPfQLCYfFGVFyNPkoWASBMCyLWqkJghq3C9MrT1s8GbbIcisoTWgh31djS/Cg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=fail (sender ip is
+ 165.85.157.49) smtp.rcpttodomain=lists.osuosl.org
+ smtp.mailfrom=gehealthcare.com; dmarc=fail (p=quarantine sp=quarantine
+ pct=100) action=quarantine header.from=gehealthcare.com; dkim=none (message
+ not signed); arc=none (0)
+Received: from DS7PR03CA0250.namprd03.prod.outlook.com (2603:10b6:5:3b3::15)
+ by LV8PR22MB5198.namprd22.prod.outlook.com (2603:10b6:408:1cc::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8813.22; Mon, 9 Jun
+ 2025 06:33:02 +0000
+Received: from CH3PEPF00000016.namprd21.prod.outlook.com
+ (2603:10b6:5:3b3:cafe::90) by DS7PR03CA0250.outlook.office365.com
+ (2603:10b6:5:3b3::15) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8792.35 via Frontend Transport; Mon,
+ 9 Jun 2025 06:33:02 +0000
+X-MS-Exchange-Authentication-Results: spf=fail (sender IP is 165.85.157.49)
+ smtp.mailfrom=gehealthcare.com; dkim=none (message not signed)
+ header.d=none;dmarc=fail action=quarantine header.from=gehealthcare.com;
+Received-SPF: Fail (protection.outlook.com: domain of gehealthcare.com does
+ not designate 165.85.157.49 as permitted sender)
+ receiver=protection.outlook.com; client-ip=165.85.157.49;
+ helo=mkerelay2.compute.ge-healthcare.net;
+Received: from mkerelay2.compute.ge-healthcare.net (165.85.157.49) by
+ CH3PEPF00000016.mail.protection.outlook.com (10.167.244.121) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8835.2 via Frontend Transport; Mon, 9 Jun 2025 06:33:02 +0000
+Received: from 50995b80b0f4 (zoo13.fihel.lab.ge-healthcare.net
+ [10.168.174.111])
+ by builder1.fihel.lab.ge-healthcare.net (Postfix) with SMTP id 61CCDCFB78;
+ Mon,  9 Jun 2025 09:32:59 +0300 (EEST)
+Date: Mon, 9 Jun 2025 09:32:58 +0300
+From: Ian Ray <ian.ray@gehealthcare.com>
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: horms@kernel.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+ brian.ruley@gehealthcare.com, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Message-ID: <aEaAGqP-KtcYCMs-@50995b80b0f4>
+References: <20250603080949.1681-1-ian.ray@gehealthcare.com>
+ <20250605184339.7a4e0f96@kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250605184339.7a4e0f96@kernel.org>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH3PEPF00000016:EE_|LV8PR22MB5198:EE_
+X-MS-Office365-Filtering-Correlation-Id: 78273920-4ec6-4f47-2d9b-08dda71f7bf6
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|376014|36860700013|82310400026; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?0EUZVTxUZmGOQ+1cN7Vq2K/B3OJ76+a8yx2ITFQIGa6+vDQCRpZvuHMJ37kf?=
+ =?us-ascii?Q?6l30cmqoeboYsutYFefNi68bkGtJ2Xi4Bz0LPPWs4DLYQ+Hn4PvHfWbmxRMx?=
+ =?us-ascii?Q?NamO++jfXcDiAtVu2UR1DSRRB1cpHC6oVa8InYmqjTnOSQ8bRVH+pjjHxAAk?=
+ =?us-ascii?Q?qUuEdengWr5Ap5CVb2moJi2UzAVQMaHUPIDcIF2gbeYT1x7QHV52EyYUWnG2?=
+ =?us-ascii?Q?nVMI34jf7YAQCSVDg0aMJTC970okIXrstFFETPSON9Sb1iNdb6NSN2gxSeVe?=
+ =?us-ascii?Q?JlxqxK4EZqjf+QAGW6hwppw5ofpUeERIsSSe5psx6gBkvNW/7NACBGO3vNuX?=
+ =?us-ascii?Q?1p3OyXaPXTt7VVA+PbJ+HQrbocj+sPJzCXZawv2jIfOCPJzAPnsKtGDKg1En?=
+ =?us-ascii?Q?0r69jKLdcMy+X7OvPsQu36LJuXabUxxRaIRR7zCzLp2Ev5ji7kora5AbJMUP?=
+ =?us-ascii?Q?027SD5lhV+px/AQmqmj1+cAeXpIb+G3kxqa+0o6zWogOKXOlIZWoMWAYenJo?=
+ =?us-ascii?Q?VpezRk2Ph348d8A+tSMeAY24Dgww1kigQgSbrwraA7ulgQTnD/5FtzXx81HF?=
+ =?us-ascii?Q?yg74fWb7q54+xICru1W3EM4iu+U4zZ/Q6W6EjlwQYsvOqNBgA8qWP+DeD+pr?=
+ =?us-ascii?Q?To+F/NL0p+AMHgTB90aSwuJ7Nr3Bod74qHTbEolm/4nkFCrjVcKCTgbcQBgb?=
+ =?us-ascii?Q?01mDb+IXoWEPw6iJgpOK2CmcCUCuzGw//irSuq4iExtSSXN+GG7TyY9mOaF4?=
+ =?us-ascii?Q?5eKHAikX5DBbO5ZahILHG5sxhADfBI6ZqTiP1ro50cIGEs2imPYpzn4guThC?=
+ =?us-ascii?Q?RNuNfhDt0JhHwqvUT9hbCs7SQuoxW8lM83vQYQtkxFH5xKbEXgrXyOopoyNk?=
+ =?us-ascii?Q?+G11+mIodadAb5TVCVQEEfTbFqzS3lv2d6xJJhbxKlYGD92zXfI3pj0e3vfr?=
+ =?us-ascii?Q?VVSRvOVeFkJ6ZJQsrdhYoxkCoTeJv31JlPknVixEnDuKgpPsrqhEWtplpmTV?=
+ =?us-ascii?Q?wx4oDgFGLD/8M+08YuIn1hAHGlXq5bBUvDSkzDrCuUcJiMARsnCMlmLzweJg?=
+ =?us-ascii?Q?IyWoGOXYdiTP/NSvXFj+JJkEWDO5VkQKaIrO9/tUJM4uCo7B91eoJ1EkKp+W?=
+ =?us-ascii?Q?CwRrBU2zmnQ1DA7hAs47zYoT1xqdhUhGPmkuXXZdembH7qcPjVjkq2ri/CZm?=
+ =?us-ascii?Q?p8kddxjboPWYdntBOY20RePBkLYCGCA90V+8QQydvc7UsMYF2myJnshhZXRQ?=
+ =?us-ascii?Q?WBPSEOW4UuAy8Tu86WiS1J8mxOehrH5xd8pNkMgZOKEY6Z2v49v2mG40vSkJ?=
+ =?us-ascii?Q?lmgyaAIO3/xrpy74J8rOMjfG9//y/JBH9zc1kNGb7aiZdZX+gg+neZ7lH2A0?=
+ =?us-ascii?Q?FW5bG9pXE/fhJ/MLNz9ktOw/HgqpkobHK1UwUg/QA7w3Ko+kSnHknSPLl7JD?=
+ =?us-ascii?Q?wIkSGwaZ7zW1zSozxAc68SCXyEXW1podytZ1/z+E4FPAW3YnxtSMqum0wcMl?=
+ =?us-ascii?Q?r0lymfMIsNxIHSkFoVsYR3hYvmziXqLABdJT?=
+X-Forefront-Antispam-Report: CIP:165.85.157.49; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mkerelay2.compute.ge-healthcare.net;
+ PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(36860700013)(82310400026); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: gehealthcare.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jun 2025 06:33:02.0719 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 78273920-4ec6-4f47-2d9b-08dda71f7bf6
+X-MS-Exchange-CrossTenant-Id: 9a309606-d6ec-4188-a28a-298812b4bbbf
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=9a309606-d6ec-4188-a28a-298812b4bbbf; Ip=[165.85.157.49];
+ Helo=[mkerelay2.compute.ge-healthcare.net]
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TreatMessagesAsInternal-CH3PEPF00000016.namprd21.prod.outlook.com
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV8PR22MB5198
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gehealthcare.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=MmAYUg7O6dkTdkIiBtg/5kdLBbcYIVSTeEcnUEGi/DI=;
+ b=gosGOGoXoBO6EFKSYJ7BLzdxI/HVgSxGIoekTpHZVDjT7XYqX5FhEiNcxi/kRSkMki5i2CmOIGi0cZTTtoWlaczV9vfq77CCxj72YuPScUdfdyDbVvszTuFQPeuuwhcokYmXac8EeXkie4PalmhFJYScIEgrGA+IjM0vaKwgugA6wjjEH8hPIvIjEOCQehW3PsHocbEnKBcVIxAmJms/29AQmZc+D+foXSn0C5tPEskCX9EFjCU4QSh2NNj1S2IKA7W3+6GwxctMT5hCu49PIWJXwvKzaEsd6BIvPK6BZa0k39DxV/8xkCxhsw3JCVlia8HA8E0Gw5NKuZLcrrartQ==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=gehealthcare.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=eeb7G8Xa
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- c1589adc4856d13b67b3cc8939c8af579fbdb5da
+ unprotected) header.d=gehealthcare.com header.i=@gehealthcare.com
+ header.a=rsa-sha256 header.s=selector1 header.b=gosGOGoX
+Subject: Re: [Intel-wired-lan] [PATCH v2] igb: Fix watchdog_task race with
+ shutdown
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,144 +182,24 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: c1589adc4856d13b67b3cc8939c8af579fbdb5da  e1000: Move cancel_work_sync to avoid deadlock
+On Thu, Jun 05, 2025 at 06:43:39PM -0700, Jakub Kicinski wrote:
+> On Tue,  3 Jun 2025 11:09:49 +0300 Ian Ray wrote:
+> >       set_bit(__IGB_DOWN, &adapter->state);
+> > +     timer_delete_sync(&adapter->watchdog_timer);
+> > +     timer_delete_sync(&adapter->phy_info_timer);
+> > +
+> > +     cancel_work_sync(&adapter->watchdog_task);
+> 
+> This doesn't look very race-proof as watchdog_task
+> can schedule the timer as its last operation?
 
-elapsed time: 1352m
+Thanks for the reply.  __IGB_DOWN is the key to this design.
 
-configs tested: 125
-configs skipped: 8
+If watchdog_task runs *before* __IGB_DOWN is set, then the
+timer is stopped (by this patch) as required.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+However, if watchdog_task runs *after* __IGB_DOWN is set,
+then the timer will not even be started (by watchdog_task).
 
-tested configs:
-alpha                             allnoconfig    gcc-15.1.0
-alpha                               defconfig    gcc-15.1.0
-arc                              allmodconfig    gcc-15.1.0
-arc                               allnoconfig    gcc-15.1.0
-arc                              allyesconfig    gcc-15.1.0
-arc                                 defconfig    gcc-15.1.0
-arc                        nsim_700_defconfig    gcc-15.1.0
-arc                   randconfig-001-20250607    gcc-15.1.0
-arc                   randconfig-002-20250607    gcc-15.1.0
-arc                    vdk_hs38_smp_defconfig    gcc-15.1.0
-arm                              allmodconfig    gcc-15.1.0
-arm                               allnoconfig    clang-21
-arm                              allyesconfig    gcc-15.1.0
-arm                   randconfig-001-20250607    clang-21
-arm                   randconfig-002-20250607    gcc-13.3.0
-arm                   randconfig-003-20250607    gcc-15.1.0
-arm                   randconfig-004-20250607    gcc-14.3.0
-arm64                            allmodconfig    clang-19
-arm64                             allnoconfig    gcc-15.1.0
-arm64                 randconfig-001-20250607    clang-21
-arm64                 randconfig-002-20250607    clang-21
-arm64                 randconfig-003-20250607    clang-21
-arm64                 randconfig-004-20250607    clang-21
-csky                              allnoconfig    gcc-15.1.0
-csky                  randconfig-001-20250607    gcc-12.4.0
-csky                  randconfig-002-20250607    gcc-9.3.0
-hexagon                           allnoconfig    clang-21
-hexagon               randconfig-001-20250607    clang-21
-hexagon               randconfig-002-20250607    clang-21
-i386                             allmodconfig    gcc-12
-i386                              allnoconfig    gcc-12
-i386                             allyesconfig    gcc-12
-i386        buildonly-randconfig-001-20250607    clang-20
-i386        buildonly-randconfig-002-20250607    gcc-12
-i386        buildonly-randconfig-003-20250607    gcc-12
-i386        buildonly-randconfig-004-20250607    gcc-12
-i386        buildonly-randconfig-005-20250607    clang-20
-i386        buildonly-randconfig-006-20250607    clang-20
-i386                                defconfig    clang-20
-loongarch                        allmodconfig    gcc-15.1.0
-loongarch                         allnoconfig    gcc-15.1.0
-loongarch             randconfig-001-20250607    gcc-13.3.0
-loongarch             randconfig-002-20250607    gcc-15.1.0
-m68k                             allmodconfig    gcc-15.1.0
-m68k                              allnoconfig    gcc-15.1.0
-m68k                             allyesconfig    gcc-15.1.0
-microblaze                       allmodconfig    gcc-15.1.0
-microblaze                        allnoconfig    gcc-15.1.0
-microblaze                       allyesconfig    gcc-15.1.0
-mips                              allnoconfig    gcc-15.1.0
-mips                         rt305x_defconfig    clang-21
-nios2                             allnoconfig    gcc-14.2.0
-nios2                 randconfig-001-20250607    gcc-10.5.0
-nios2                 randconfig-002-20250607    gcc-8.5.0
-openrisc                          allnoconfig    gcc-15.1.0
-openrisc                         allyesconfig    gcc-15.1.0
-openrisc                            defconfig    gcc-15.1.0
-parisc                           allmodconfig    gcc-15.1.0
-parisc                            allnoconfig    gcc-15.1.0
-parisc                           allyesconfig    gcc-15.1.0
-parisc                              defconfig    gcc-15.1.0
-parisc                generic-32bit_defconfig    gcc-15.1.0
-parisc                randconfig-001-20250607    gcc-12.4.0
-parisc                randconfig-002-20250607    gcc-12.4.0
-powerpc                          allmodconfig    gcc-15.1.0
-powerpc                           allnoconfig    gcc-15.1.0
-powerpc                          allyesconfig    clang-21
-powerpc                       eiger_defconfig    clang-21
-powerpc                   lite5200b_defconfig    clang-21
-powerpc               randconfig-001-20250607    gcc-10.5.0
-powerpc               randconfig-002-20250607    clang-21
-powerpc               randconfig-003-20250607    clang-21
-powerpc64             randconfig-001-20250607    clang-19
-powerpc64             randconfig-002-20250607    clang-21
-powerpc64             randconfig-003-20250607    gcc-8.5.0
-riscv                            allmodconfig    clang-21
-riscv                             allnoconfig    gcc-15.1.0
-riscv                            allyesconfig    clang-16
-riscv                               defconfig    clang-21
-riscv                 randconfig-001-20250607    clang-21
-riscv                 randconfig-002-20250607    clang-16
-s390                             allmodconfig    clang-18
-s390                              allnoconfig    clang-21
-s390                             allyesconfig    gcc-15.1.0
-s390                                defconfig    clang-21
-s390                  randconfig-001-20250607    clang-16
-s390                  randconfig-002-20250607    gcc-14.3.0
-sh                               allmodconfig    gcc-15.1.0
-sh                                allnoconfig    gcc-15.1.0
-sh                               allyesconfig    gcc-15.1.0
-sh                        apsh4ad0a_defconfig    gcc-15.1.0
-sh                                  defconfig    gcc-15.1.0
-sh                        dreamcast_defconfig    gcc-15.1.0
-sh                         ecovec24_defconfig    gcc-15.1.0
-sh                             espt_defconfig    gcc-15.1.0
-sh                            hp6xx_defconfig    gcc-15.1.0
-sh                    randconfig-001-20250607    gcc-14.3.0
-sh                    randconfig-002-20250607    gcc-9.3.0
-sparc                            alldefconfig    gcc-15.1.0
-sparc                            allmodconfig    gcc-15.1.0
-sparc                             allnoconfig    gcc-15.1.0
-sparc                 randconfig-001-20250607    gcc-10.3.0
-sparc                 randconfig-002-20250607    gcc-12.4.0
-sparc64                             defconfig    gcc-15.1.0
-sparc64               randconfig-001-20250607    gcc-9.3.0
-sparc64               randconfig-002-20250607    gcc-13.3.0
-um                                allnoconfig    clang-21
-um                                  defconfig    clang-21
-um                             i386_defconfig    gcc-12
-um                    randconfig-001-20250607    clang-21
-um                    randconfig-002-20250607    gcc-12
-um                           x86_64_defconfig    clang-21
-x86_64                            allnoconfig    clang-20
-x86_64                           allyesconfig    clang-20
-x86_64      buildonly-randconfig-001-20250607    clang-20
-x86_64      buildonly-randconfig-002-20250607    clang-20
-x86_64      buildonly-randconfig-003-20250607    clang-20
-x86_64      buildonly-randconfig-004-20250607    gcc-12
-x86_64      buildonly-randconfig-005-20250607    gcc-12
-x86_64      buildonly-randconfig-006-20250607    gcc-12
-x86_64                              defconfig    gcc-11
-x86_64                          rhel-9.4-rust    clang-18
-xtensa                            allnoconfig    gcc-15.1.0
-xtensa                randconfig-001-20250607    gcc-10.5.0
-xtensa                randconfig-002-20250607    gcc-8.5.0
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Regards,
+Ian
