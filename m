@@ -1,89 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C8C7AD23CE
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Jun 2025 18:25:53 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id F09B6AD23D0
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Jun 2025 18:25:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 33C4240C2E;
-	Mon,  9 Jun 2025 16:25:51 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B1258613CE;
+	Mon,  9 Jun 2025 16:25:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mZ7ZuhVMRDrZ; Mon,  9 Jun 2025 16:25:50 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 88vR1A34T7Uu; Mon,  9 Jun 2025 16:25:53 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7726840C49
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 19274613E8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1749486350;
-	bh=a7EpK0zw2/veQxMvxmxEv0B+FifXXBoF9kaDm9Vzf5w=;
+	s=default; t=1749486353;
+	bh=rIrnh6Y6z0RsAszSzJMckGXGP+N0IS1GPSV62LbBz1M=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=unhk/7M2URb4qirsu1eVYGW7kDF338faxl5QEbxf+uJsQ0v4ycUnwrbT/JCtErb31
-	 A7N1Rqgxd+Hf05Vj5J2SAC4Uh+D4xhpi0cf+/8tfvGKevMFJwnzHw4pkhR/IhVAWxQ
-	 WRd8/3weEqDnsBG8Hb5pNZ/l8I8P/X3zCX1fRK6oiLMV65mkNSo4MtHkTX6izU4Xxg
-	 JwmLvJyM8Ubv5LmTVmBHCYDOVvT0ZiZkwAtS4ude2vpffslgY8umLficWjob48/9fI
-	 vnbPmEYdbFSyOYaCsre1zIFRcFJZDIVbx1sREm6x1m+FnRE8rN9/Ah/MChCK/F2Ja2
-	 wIpcwPEFaBVpQ==
+	b=4C3ResiOiBVIc4De3Ys7KjPxbGvvbBV4nlSh6XbbBya0zcb7GtfO47K8UKWuzVAFX
+	 dqa6lXchbtsti94BLstSN5yre47aHZ7JdXvydT5tqQNUTSW0eSqKVRcODjaM+zOqPj
+	 kyNyysCNntYZzbruBJbp+SsigQSCnd8n6a4xLZ8hZwzN2jQh7Aj5SipfCLuEnsj5N2
+	 Mvf2cf5eOOC5Xio+V6qQTUL3g35qjHCA1FdgLdDY3whkFSMHlYS5zkk9QY88VvaFVA
+	 7s+njMueafgwGQK1Qsv3WwV8s1YPoxAGl+F9jOqCrlw4+y8XTM/utgEnkuPn/D7kel
+	 8phlDOEdIC4iQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7726840C49;
-	Mon,  9 Jun 2025 16:25:50 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 19274613E8;
+	Mon,  9 Jun 2025 16:25:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 54683CD
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Jun 2025 16:25:49 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id A93541F2
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Jun 2025 16:25:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3B55640C26
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Jun 2025 16:25:49 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9B628613AB
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Jun 2025 16:25:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id aInB_2Yr-1GU for <intel-wired-lan@lists.osuosl.org>;
- Mon,  9 Jun 2025 16:25:48 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 3Rg4Le93aJhj for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  9 Jun 2025 16:25:50 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::634; helo=mail-pl1-x634.google.com;
+ client-ip=2607:f8b0:4864:20::42b; helo=mail-pf1-x42b.google.com;
  envelope-from=stfomichev@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 8423940958
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8423940958
-Received: from mail-pl1-x634.google.com (mail-pl1-x634.google.com
- [IPv6:2607:f8b0:4864:20::634])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 8423940958
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Jun 2025 16:25:48 +0000 (UTC)
-Received: by mail-pl1-x634.google.com with SMTP id
- d9443c01a7336-231e98e46c0so41712215ad.3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 09 Jun 2025 09:25:48 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org F07DB613CE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F07DB613CE
+Received: from mail-pf1-x42b.google.com (mail-pf1-x42b.google.com
+ [IPv6:2607:f8b0:4864:20::42b])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id F07DB613CE
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Jun 2025 16:25:49 +0000 (UTC)
+Received: by mail-pf1-x42b.google.com with SMTP id
+ d2e1a72fcca58-74800b81f1bso3430529b3a.1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 09 Jun 2025 09:25:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1749486348; x=1750091148;
+ d=1e100.net; s=20230601; t=1749486349; x=1750091149;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=a7EpK0zw2/veQxMvxmxEv0B+FifXXBoF9kaDm9Vzf5w=;
- b=MCARWIEHZAD0OfjXlvtmvjN4XKnewhrJ6vRbSHBsYkB4dXyO9l8ZIcVG9Pb/V46kyu
- B0lJFEvoFbgFbQ72NN2sBCFPh5lnOtVw0PWaI/TmP7uhmTuYZ0QHaMbbkdFgE9xUwCH/
- f2rEb9yKIRhJSKquVd/wI3K01NLEsSOc1MZ6/Jub/FvG+CY9CDB6mBXlHiK3lqqxewhR
- YnZVmSjkqI9LNhpZvQEuMCKjG23+COgcghYJANShGGQWNX7xZSkLjBO7MIe4l4Ifdgul
- SEh1Kg4ooPhXTXGHwcZhrqhpJT9aUiYs9LmU3eiFoC0RoImFaOYwSH6iF2j2s5n48MBA
- tOzw==
+ bh=rIrnh6Y6z0RsAszSzJMckGXGP+N0IS1GPSV62LbBz1M=;
+ b=R7XBJseThXrMHfH2xURCALbn++YrkeuP5zM7X/2COaaZR7Rv42pFMpxWTFJYGIhAS1
+ KGcgO63SCXs0lvYj9jnfOdFcGMx8PmPBhG73BLJwDCrFnXKJsfT4JeaKVpCLnvEreiGh
+ bLXU7fNE3q4wMURTIfSIKRWRIrZRp0rfQU3fJEOh6jJvz/qCajVUlJ6PZIsYv0aCqM5T
+ X6hb2/1vMeLTj+THiXrcOyH/3DYa5bq31KXn5mzz/73Yx+lNK9Hf9ztFJF1Yxy5z+6jY
+ c+LX8dmgNp8oUiTIhG17l+UWzjLG1lj3dOnOVBjtaKQG/YE52rVTl+UEL/YV25Mp52MB
+ xdXQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX+jDz+qaRlUbRPk7LwfQzg/jGuIAI6Sceg6669D0WAX6m7npzv7nSgf4o3jEQ4d43hCjYo9cyVjfocH51VG8E=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YwbmM/X8WJc3fRTzO9+x1UvLs00Dx7W3eqWdnBjpaSa4VUqV+12
- 6t8B2ttTNo7iNXU9p4aS3vlw8FekyTx8YtiYrJ2h2L0wr9mPh76EEmM=
-X-Gm-Gg: ASbGncuoF44++l54otvCAVnBOaNomXbykHMsd364pVTcZaajmnWRZYPjecL8ugwYpU1
- yqVMvHbMI8dA+qOz4ZchQHw8p5ILodaNkjCcLkgRjnleflEjIr0dudTjvAIfGLVFHl97hY8tbYg
- tZ0/Fzi8z6uq8sn0MASjIC9fvi4FO1Y8iejbO1bpb3X/MeUWdP+Tf/COTbUa5j7SfMNwYQXY1M5
- x5gYz19GKTb6Q82/ulGE90Hx4NodSfDKr1YDDMiGhd+0zI5CvlNrXQYRxo9gnL/yYK97TEp36S+
- +YOo2ADnuD/u67VVYXIlfagw5uo++jahkb8kvVkncrqg3EIhFKAq0CutrnSFHT8lLj2oQJIM65q
- p3zGl3CUGZ4GV
-X-Google-Smtp-Source: AGHT+IGapDPv1cHR0dWqimNSNGAmR6AOYZGplgx4b+X7CrIfkEPxGuAl3kbxQrojEm2Tk0pvayZItw==
-X-Received: by 2002:a17:902:f688:b0:234:b41e:378f with SMTP id
- d9443c01a7336-23601cfdb18mr199068395ad.15.1749486347764; 
- Mon, 09 Jun 2025 09:25:47 -0700 (PDT)
+ AJvYcCXshnNPOc13+kaxUeNuf0grCXzuv9l+lJ9QeX3Nn91Sl1tJ/BpMe86BIiPulnS3OmQQTUZE/qGCOAp8VoRJuu4=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yz8fnwy6XSM7NOfSNbc4nulZN/21g4csYaeuvL2TTQpZOJSTKHQ
+ 4Z+o4luepJa9OxkglQoz2QxTLcU0Xns7a7JbrJEdwajEKifH91oggIc=
+X-Gm-Gg: ASbGnctQB/E1fsyXmENIPFMIBroFkqJYV30cRYQHCjYmoP8jSCMgSDZAIX2lX+wZ6QM
+ 4QMljX904kH1JDR0J4D6AIAoz+uVklMLCCxQBDAFYqRsE7xixOeTJnOGIdpdvmHEJ/7sCAjdBUy
+ sRuCxknAejvKqcIeLhIffJdf4di2Q5dbjAp6yWHlhm5AVD4TuL6FRCvBvBncptsUlNNYQFRVPI2
+ MPB+Q/LSiXmsoVnDW/aTbh6pnPfBtYa/FJMdN+d3BchT+1VtrR6o9TsmSixoZf6qgemJAZ92XLz
+ Chl+WBxma09VsTGgOWr2TYJQDPBUju4z07b3lphD6/gnuW3f1bSqw2gGfPR9X9RkvQekhLCxSwR
+ zqHFrlVPuG9C5
+X-Google-Smtp-Source: AGHT+IHWJwEpttKcOYtxUVS3ky2ehdeYMgNt9I8XWQyiwY2W97FEQfM0AyDBiEXIyrcRZ6JMgZ6g5w==
+X-Received: by 2002:a05:6a21:1fc5:b0:1f5:7ba7:69d8 with SMTP id
+ adf61e73a8af0-21ee25321f3mr19247516637.15.1749486349275; 
+ Mon, 09 Jun 2025 09:25:49 -0700 (PDT)
 Received: from localhost (c-73-158-218-242.hsd1.ca.comcast.net.
  [73.158.218.242]) by smtp.gmail.com with UTF8SMTPSA id
- d9443c01a7336-236032fcfccsm56699935ad.101.2025.06.09.09.25.46
+ d2e1a72fcca58-7482b0ea2b2sm5915308b3a.161.2025.06.09.09.25.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Jun 2025 09:25:47 -0700 (PDT)
+ Mon, 09 Jun 2025 09:25:48 -0700 (PDT)
 From: Stanislav Fomichev <stfomichev@gmail.com>
 To: netdev@vger.kernel.org
 Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
@@ -98,34 +98,35 @@ Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
  ruanjinjie@huawei.com, stfomichev@gmail.com, linux-kernel@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, linux-rdma@vger.kernel.org,
  oss-drivers@corigine.com, linux-net-drivers@amd.com,
- linux-kselftest@vger.kernel.org, leon@kernel.org
-Date: Mon,  9 Jun 2025 09:25:40 -0700
-Message-ID: <20250609162541.1230022-4-stfomichev@gmail.com>
+ linux-kselftest@vger.kernel.org, leon@kernel.org,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Date: Mon,  9 Jun 2025 09:25:41 -0700
+Message-ID: <20250609162541.1230022-5-stfomichev@gmail.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250609162541.1230022-1-stfomichev@gmail.com>
 References: <20250609162541.1230022-1-stfomichev@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1749486348; x=1750091148; darn=lists.osuosl.org;
+ d=gmail.com; s=20230601; t=1749486349; x=1750091149; darn=lists.osuosl.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=a7EpK0zw2/veQxMvxmxEv0B+FifXXBoF9kaDm9Vzf5w=;
- b=bTSvrd15LtIjAGRO16oZe3mSZ6PrscHIUZ8O33l3WQsgyQPBn+oIZ5PiJuRlb6y7ww
- 0JTLaJen6/gp8ofm0Jb5Ll9TIyS+sVGRUAQt0v2siCKLhJwSdGkEsYDYELEvOICK8yyc
- TUNM0xyw2csojux9hL+giapPMiOQ9nTA1ceL47XBHaffqmGKQH+zGPd062R0rD/PFXVx
- 6i6gUbE5KWfiekGluapQ2KAEmbgcCGeaE9IH25XbAYRDGNBvbRfu7a5L5pOTAe6EiUCo
- qxA0qWMgfFf9Z7YqB3BFymJPk2tMd8KNDMwNfKU/7L8SQVrUa34Jyj5TchFhZufJmMTP
- meTA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=rIrnh6Y6z0RsAszSzJMckGXGP+N0IS1GPSV62LbBz1M=;
+ b=cZ5IK7ZYVqgZH1+RQbVZsLzakm2kH5VyJWlOR22PsNvrr4woxif5nfcAHE7smdE1eq
+ orOD9hVrDH04sQkhE2rDcwn+SXXk8rKfz8AcV2MAbGyrC1bYMkhLZHFe4Ng+CTGUJ5JC
+ FsOuep7zP5p5xeV7VjuwxHmaZSullCtiUbX29Nx3hZY1OUrejoFZuiY3SwWZCegyIgDn
+ doYE/cZddVZcm75xhJHNqr5nmwuGrS7fMy6DCiakk8MdkvaLrsgaSug50jurfOc3Ree/
+ mVUu1VCvM3jpWFCqFMdUqPvgaPfvVjbfaH1avoRoplnsUAdwCuP2BT1mRti/cET7ygZH
+ ct7A==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=bTSvrd15
-Subject: [Intel-wired-lan] [PATCH net-next v2 3/4] netdevsim: remove
- udp_ports_sleep
+ header.a=rsa-sha256 header.s=20230601 header.b=cZ5IK7ZY
+Subject: [Intel-wired-lan] [PATCH net-next v2 4/4] Revert "bnxt_en: bring
+ back rtnl_lock() in the bnxt_open() path"
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -141,159 +142,142 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Now that there is only one path in udp_tunnel, there is no need to
-have udp_ports_sleep knob. Remove it and adjust the test.
+This reverts commit 325eb217e41fa14f307c7cc702bd18d0bb38fe84.
+
+udp_tunnel infra doesn't need RTNL, should be safe to get back
+to only netdev instance lock.
 
 Cc: Michael Chan <michael.chan@broadcom.com>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Signed-off-by: Stanislav Fomichev <stfomichev@gmail.com>
 ---
- drivers/net/netdevsim/netdevsim.h                      |  2 --
- drivers/net/netdevsim/udp_tunnels.c                    |  8 --------
- .../selftests/drivers/net/netdevsim/udp_tunnel_nic.sh  | 10 ----------
- 3 files changed, 20 deletions(-)
+ drivers/net/ethernet/broadcom/bnxt/bnxt.c | 36 +++++------------------
+ 1 file changed, 7 insertions(+), 29 deletions(-)
 
-diff --git a/drivers/net/netdevsim/netdevsim.h b/drivers/net/netdevsim/netdevsim.h
-index d04401f0bdf7..511ed72a93ce 100644
---- a/drivers/net/netdevsim/netdevsim.h
-+++ b/drivers/net/netdevsim/netdevsim.h
-@@ -131,7 +131,6 @@ struct netdevsim {
- 	struct nsim_macsec macsec;
- 	struct {
- 		u32 inject_error;
--		u32 sleep;
- 		u32 __ports[2][NSIM_UDP_TUNNEL_N_PORTS];
- 		u32 (*ports)[NSIM_UDP_TUNNEL_N_PORTS];
- 		struct dentry *ddir;
-@@ -342,7 +341,6 @@ struct nsim_dev {
- 		bool ipv4_only;
- 		bool shared;
- 		bool static_iana_vxlan;
--		u32 sleep;
- 	} udp_ports;
- 	struct nsim_dev_psample *psample;
- 	u16 esw_mode;
-diff --git a/drivers/net/netdevsim/udp_tunnels.c b/drivers/net/netdevsim/udp_tunnels.c
-index 10cbbf1c584b..89fff76e51cf 100644
---- a/drivers/net/netdevsim/udp_tunnels.c
-+++ b/drivers/net/netdevsim/udp_tunnels.c
-@@ -18,9 +18,6 @@ nsim_udp_tunnel_set_port(struct net_device *dev, unsigned int table,
- 	ret = -ns->udp_ports.inject_error;
- 	ns->udp_ports.inject_error = 0;
- 
--	if (ns->udp_ports.sleep)
--		msleep(ns->udp_ports.sleep);
--
- 	if (!ret) {
- 		if (ns->udp_ports.ports[table][entry]) {
- 			WARN(1, "entry already in use\n");
-@@ -47,8 +44,6 @@ nsim_udp_tunnel_unset_port(struct net_device *dev, unsigned int table,
- 	ret = -ns->udp_ports.inject_error;
- 	ns->udp_ports.inject_error = 0;
- 
--	if (ns->udp_ports.sleep)
--		msleep(ns->udp_ports.sleep);
- 	if (!ret) {
- 		u32 val = be16_to_cpu(ti->port) << 16 | ti->type;
- 
-@@ -170,7 +165,6 @@ int nsim_udp_tunnels_info_create(struct nsim_dev *nsim_dev,
- 		       GFP_KERNEL);
- 	if (!info)
- 		return -ENOMEM;
--	ns->udp_ports.sleep = nsim_dev->udp_ports.sleep;
- 
- 	if (nsim_dev->udp_ports.sync_all) {
- 		info->set_port = NULL;
-@@ -213,6 +207,4 @@ void nsim_udp_tunnels_debugfs_create(struct nsim_dev *nsim_dev)
- 			    &nsim_dev->udp_ports.shared);
- 	debugfs_create_bool("udp_ports_static_iana_vxlan", 0600, nsim_dev->ddir,
- 			    &nsim_dev->udp_ports.static_iana_vxlan);
--	debugfs_create_u32("udp_ports_sleep", 0600, nsim_dev->ddir,
--			   &nsim_dev->udp_ports.sleep);
+diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt.c b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
+index a3dadde65b8d..1da208c36572 100644
+--- a/drivers/net/ethernet/broadcom/bnxt/bnxt.c
++++ b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
+@@ -14055,28 +14055,13 @@ static void bnxt_unlock_sp(struct bnxt *bp)
+ 	netdev_unlock(bp->dev);
  }
-diff --git a/tools/testing/selftests/drivers/net/netdevsim/udp_tunnel_nic.sh b/tools/testing/selftests/drivers/net/netdevsim/udp_tunnel_nic.sh
-index 92c2f0376c08..8c5fe7bdf1ce 100755
---- a/tools/testing/selftests/drivers/net/netdevsim/udp_tunnel_nic.sh
-+++ b/tools/testing/selftests/drivers/net/netdevsim/udp_tunnel_nic.sh
-@@ -266,7 +266,6 @@ for port in 0 1; do
- 	echo $NSIM_ID > /sys/bus/netdevsim/new_device
-     else
- 	echo 1 > $NSIM_DEV_DFS/udp_ports_open_only
--	echo 1 > $NSIM_DEV_DFS/udp_ports_sleep
- 	echo 1 > $NSIM_DEV_SYS/new_port
-     fi
-     NSIM_NETDEV=`get_netdev_name old_netdevs`
-@@ -350,7 +349,6 @@ old_netdevs=$(ls /sys/class/net)
- port=0
- echo $NSIM_ID > /sys/bus/netdevsim/new_device
- echo 0 > $NSIM_DEV_SYS/del_port
--echo 1000 > $NSIM_DEV_DFS/udp_ports_sleep
- echo 0 > $NSIM_DEV_SYS/new_port
- NSIM_NETDEV=`get_netdev_name old_netdevs`
  
-@@ -428,7 +426,6 @@ echo 0 > $NSIM_DEV_SYS/del_port
- for port in 0 1; do
-     if [ $port -ne 0 ]; then
- 	echo 1 > $NSIM_DEV_DFS/udp_ports_open_only
--	echo 1 > $NSIM_DEV_DFS/udp_ports_sleep
-     fi
+-/* Same as bnxt_lock_sp() with additional rtnl_lock */
+-static void bnxt_rtnl_lock_sp(struct bnxt *bp)
+-{
+-	clear_bit(BNXT_STATE_IN_SP_TASK, &bp->state);
+-	rtnl_lock();
+-	netdev_lock(bp->dev);
+-}
+-
+-static void bnxt_rtnl_unlock_sp(struct bnxt *bp)
+-{
+-	set_bit(BNXT_STATE_IN_SP_TASK, &bp->state);
+-	netdev_unlock(bp->dev);
+-	rtnl_unlock();
+-}
+-
+ /* Only called from bnxt_sp_task() */
+ static void bnxt_reset(struct bnxt *bp, bool silent)
+ {
+-	bnxt_rtnl_lock_sp(bp);
++	bnxt_lock_sp(bp);
+ 	if (test_bit(BNXT_STATE_OPEN, &bp->state))
+ 		bnxt_reset_task(bp, silent);
+-	bnxt_rtnl_unlock_sp(bp);
++	bnxt_unlock_sp(bp);
+ }
  
-     echo $port > $NSIM_DEV_SYS/new_port
-@@ -486,7 +483,6 @@ echo 1 > $NSIM_DEV_DFS/udp_ports_sync_all
- for port in 0 1; do
-     if [ $port -ne 0 ]; then
- 	echo 1 > $NSIM_DEV_DFS/udp_ports_open_only
--	echo 1 > $NSIM_DEV_DFS/udp_ports_sleep
-     fi
+ /* Only called from bnxt_sp_task() */
+@@ -14084,9 +14069,9 @@ static void bnxt_rx_ring_reset(struct bnxt *bp)
+ {
+ 	int i;
  
-     echo $port > $NSIM_DEV_SYS/new_port
-@@ -543,7 +539,6 @@ echo 0 > $NSIM_DEV_SYS/del_port
- for port in 0 1; do
-     if [ $port -ne 0 ]; then
- 	echo 1 > $NSIM_DEV_DFS/udp_ports_open_only
--	echo 1 > $NSIM_DEV_DFS/udp_ports_sleep
-     fi
+-	bnxt_rtnl_lock_sp(bp);
++	bnxt_lock_sp(bp);
+ 	if (!test_bit(BNXT_STATE_OPEN, &bp->state)) {
+-		bnxt_rtnl_unlock_sp(bp);
++		bnxt_unlock_sp(bp);
+ 		return;
+ 	}
+ 	/* Disable and flush TPA before resetting the RX ring */
+@@ -14125,7 +14110,7 @@ static void bnxt_rx_ring_reset(struct bnxt *bp)
+ 	}
+ 	if (bp->flags & BNXT_FLAG_TPA)
+ 		bnxt_set_tpa(bp, true);
+-	bnxt_rtnl_unlock_sp(bp);
++	bnxt_unlock_sp(bp);
+ }
  
-     echo $port > $NSIM_DEV_SYS/new_port
-@@ -573,7 +568,6 @@ echo 1 > $NSIM_DEV_DFS/udp_ports_ipv4_only
- for port in 0 1; do
-     if [ $port -ne 0 ]; then
- 	echo 1 > $NSIM_DEV_DFS/udp_ports_open_only
--	echo 1 > $NSIM_DEV_DFS/udp_ports_sleep
-     fi
+ static void bnxt_fw_fatal_close(struct bnxt *bp)
+@@ -15017,17 +15002,15 @@ static void bnxt_fw_reset_task(struct work_struct *work)
+ 		bp->fw_reset_state = BNXT_FW_RESET_STATE_OPENING;
+ 		fallthrough;
+ 	case BNXT_FW_RESET_STATE_OPENING:
+-		while (!rtnl_trylock()) {
++		while (!netdev_trylock(bp->dev)) {
+ 			bnxt_queue_fw_reset_work(bp, HZ / 10);
+ 			return;
+ 		}
+-		netdev_lock(bp->dev);
+ 		rc = bnxt_open(bp->dev);
+ 		if (rc) {
+ 			netdev_err(bp->dev, "bnxt_open() failed during FW reset\n");
+ 			bnxt_fw_reset_abort(bp, rc);
+ 			netdev_unlock(bp->dev);
+-			rtnl_unlock();
+ 			goto ulp_start;
+ 		}
  
-     echo $port > $NSIM_DEV_SYS/new_port
-@@ -634,7 +628,6 @@ echo 0 > $NSIM_DEV_SYS/del_port
- for port in 0 1; do
-     if [ $port -ne 0 ]; then
- 	echo 1 > $NSIM_DEV_DFS/udp_ports_open_only
--	echo 1 > $NSIM_DEV_DFS/udp_ports_sleep
-     fi
+@@ -15047,7 +15030,6 @@ static void bnxt_fw_reset_task(struct work_struct *work)
+ 			bnxt_dl_health_fw_status_update(bp, true);
+ 		}
+ 		netdev_unlock(bp->dev);
+-		rtnl_unlock();
+ 		bnxt_ulp_start(bp, 0);
+ 		bnxt_reenable_sriov(bp);
+ 		netdev_lock(bp->dev);
+@@ -15996,7 +15978,7 @@ static int bnxt_queue_start(struct net_device *dev, void *qmem, int idx)
+ 		   rc);
+ 	napi_enable_locked(&bnapi->napi);
+ 	bnxt_db_nq_arm(bp, &cpr->cp_db, cpr->cp_raw_cons);
+-	netif_close(dev);
++	bnxt_reset_task(bp, true);
+ 	return rc;
+ }
  
-     echo $port > $NSIM_DEV_SYS/new_port
-@@ -690,7 +683,6 @@ echo 0 > $NSIM_DEV_SYS/del_port
- for port in 0 1; do
-     if [ $port -ne 0 ]; then
- 	echo 1 > $NSIM_DEV_DFS/udp_ports_open_only
--	echo 1 > $NSIM_DEV_DFS/udp_ports_sleep
-     fi
+@@ -16812,7 +16794,6 @@ static int bnxt_resume(struct device *device)
+ 	struct bnxt *bp = netdev_priv(dev);
+ 	int rc = 0;
  
-     echo $port > $NSIM_DEV_SYS/new_port
-@@ -750,7 +742,6 @@ echo 0 > $NSIM_DEV_SYS/del_port
- for port in 0 1; do
-     if [ $port -ne 0 ]; then
- 	echo 1 > $NSIM_DEV_DFS/udp_ports_open_only
--	echo 1 > $NSIM_DEV_DFS/udp_ports_sleep
-     fi
+-	rtnl_lock();
+ 	netdev_lock(dev);
+ 	rc = pci_enable_device(bp->pdev);
+ 	if (rc) {
+@@ -16857,7 +16838,6 @@ static int bnxt_resume(struct device *device)
  
-     echo $port > $NSIM_DEV_SYS/new_port
-@@ -809,7 +800,6 @@ echo $NSIM_ID > /sys/bus/netdevsim/new_device
- echo 0 > $NSIM_DEV_SYS/del_port
+ resume_exit:
+ 	netdev_unlock(bp->dev);
+-	rtnl_unlock();
+ 	bnxt_ulp_start(bp, rc);
+ 	if (!rc)
+ 		bnxt_reenable_sriov(bp);
+@@ -17023,7 +17003,6 @@ static void bnxt_io_resume(struct pci_dev *pdev)
+ 	int err;
  
- echo 0 > $NSIM_DEV_DFS/udp_ports_open_only
--echo 1 > $NSIM_DEV_DFS/udp_ports_sleep
- echo 1 > $NSIM_DEV_DFS/udp_ports_shared
+ 	netdev_info(bp->dev, "PCI Slot Resume\n");
+-	rtnl_lock();
+ 	netdev_lock(netdev);
  
- old_netdevs=$(ls /sys/class/net)
+ 	err = bnxt_hwrm_func_qcaps(bp);
+@@ -17041,7 +17020,6 @@ static void bnxt_io_resume(struct pci_dev *pdev)
+ 		netif_device_attach(netdev);
+ 
+ 	netdev_unlock(netdev);
+-	rtnl_unlock();
+ 	bnxt_ulp_start(bp, err);
+ 	if (!err)
+ 		bnxt_reenable_sriov(bp);
 -- 
 2.49.0
 
