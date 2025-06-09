@@ -1,98 +1,242 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2CF95AD23EC
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Jun 2025 18:30:48 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C1885AD2641
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Jun 2025 20:56:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B366C81FCA;
-	Mon,  9 Jun 2025 16:30:46 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 41EAE614B2;
+	Mon,  9 Jun 2025 18:56:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id aDZgXEMr8OcZ; Mon,  9 Jun 2025 16:30:45 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id sto-_u3ty1Xi; Mon,  9 Jun 2025 18:56:15 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9610881FD0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CBED0614C4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1749486645;
-	bh=pyTdNPS2eCmGoxikJ1wbbAOK1mpbBMoDp9E1Cy8WDxo=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=fnPijZZRIJEBsc94wJP3KuG9KJVw3aer4h/El/Fbn6k9jwtWVad5vPwNJaN/IHN2B
-	 el/T5Kn0LJ5r85UORdx3LxSXlC+oc21+5Jvt29UkGVIFQIKKYli+fCSgafrNctGiDW
-	 UzYERMvNKTHSKEJoKmvqSMau6Nacy9UtSgHc7W+fMKn1vPqwjT853qg0DK6ww3ndrY
-	 RUlulOkntIHtn+DgzMST8cLyqIPoDf9+RHuEaY4FAuZF1gB0b3OOeMfxQULFltL3RS
-	 gIxWb/KTEug14QtNCPVZ3ZaQjs5jPlCBvOtVxFLx/QGjAfjZVOQqBCWjSNz69jpenk
-	 aRoK9wSiHt+qQ==
+	s=default; t=1749495374;
+	bh=i07Tqlq+2O4rKpv9s1E/MpRhdcf40pVLFR7jWhKGauU=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=fYYvI1eLg2UIwy2OgkvFXKmcJGyDNIasrTQ1ptVAOlcmQKl9TKA4V2MqTRoT/DjHG
+	 0nUXAaZb0FwzUmkUx8HzeFTykswl/Bo42pUHCetK3jMBzOTuZl4zxwwyK5HXwuVVhp
+	 SQ0xUpiEB+7jtj2GJER+HxOw4n3h0vBrlmxtyrhbfp1wLWiXcFN+WQGshIp7iqOy+G
+	 Y7094wyoLtO+OozkYuuXpnwnr2ckx+2zwJmfm4sK9QTF8r2gYnwKkLQlgR+hgIjUW8
+	 PJeq4SyCv3lkdrcWCWas8WmnCvPHfmjZrPiG3nM9FgeueRSsQn4wE0zYhAQuplUprX
+	 J++R8oXcX62RQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9610881FD0;
-	Mon,  9 Jun 2025 16:30:45 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CBED0614C4;
+	Mon,  9 Jun 2025 18:56:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id D86E61F2
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Jun 2025 16:30:43 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 1499DCD
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Jun 2025 18:56:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id BE40981FD2
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Jun 2025 16:30:43 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0392A40AF2
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Jun 2025 18:56:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HPRL7Rzs4qlV for <intel-wired-lan@lists.osuosl.org>;
- Mon,  9 Jun 2025 16:30:43 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
- helo=mgamail.intel.com; envelope-from=milena.olech@intel.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id SeYuVGcrNbCC for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  9 Jun 2025 18:56:08 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
+ helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org B9ED181E59
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B9ED181E59
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
- by smtp1.osuosl.org (Postfix) with ESMTPS id B9ED181E59
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Jun 2025 16:30:42 +0000 (UTC)
-X-CSE-ConnectionGUID: IFXDcJM8RSmBHFQfd+21jQ==
-X-CSE-MsgGUID: SxnJGddUQPClcJliCyOmBQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11459"; a="62607315"
-X-IronPort-AV: E=Sophos;i="6.16,222,1744095600"; d="scan'208";a="62607315"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
- by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Jun 2025 09:30:32 -0700
-X-CSE-ConnectionGUID: meUgPIj0SmCtvitbTehL0Q==
-X-CSE-MsgGUID: 5zxv/20OSs63knzf8yH8sg==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 10A6141E25
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 10A6141E25
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 10A6141E25
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Jun 2025 18:56:07 +0000 (UTC)
+X-CSE-ConnectionGUID: TpoMc9LnQPOKMeg0lzwf0Q==
+X-CSE-MsgGUID: ev7A8R+zQWCmXVyWJELqng==
+X-IronPort-AV: E=McAfee;i="6800,10657,11459"; a="62938789"
+X-IronPort-AV: E=Sophos;i="6.16,223,1744095600"; d="scan'208";a="62938789"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+ by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Jun 2025 11:56:07 -0700
+X-CSE-ConnectionGUID: +suP6i3aTOaWlKvXPrlAfg==
+X-CSE-MsgGUID: SNL8cN+xQYCXKZ1YOcVrtA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,222,1744095600"; d="scan'208";a="146443819"
-Received: from gklab-003-014.igk.intel.com ([10.91.173.44])
- by fmviesa006.fm.intel.com with ESMTP; 09 Jun 2025 09:30:30 -0700
-From: Milena Olech <milena.olech@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, Milena Olech <milena.olech@intel.com>,
- Karol Kolacinski <karol.kolacinski@intel.com>,
- Willem de Bruijn <willemb@google.com>
-Date: Mon,  9 Jun 2025 18:28:09 +0200
-Message-ID: <20250609162845.167410-4-milena.olech@intel.com>
-X-Mailer: git-send-email 2.43.5
+X-IronPort-AV: E=Sophos;i="6.16,223,1744095600"; d="scan'208";a="146495335"
+Received: from orsmsx901.amr.corp.intel.com ([10.22.229.23])
+ by orviesa006.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Jun 2025 11:56:06 -0700
+Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.25; Mon, 9 Jun 2025 11:56:05 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.25 via Frontend Transport; Mon, 9 Jun 2025 11:56:05 -0700
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (40.107.243.60)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.55; Mon, 9 Jun 2025 11:56:04 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=ugLLREuq76q1yc7B8rRIO8sm6O8DjkFNptawnGqY3oYABPVuZeKGFwAQXKbCHzHhWOtSnbVsEBsbZ1LlJJ2OjSBPAC2+o7NB7uKEyxzH5h5T4NqJ6SFeULnGV0rwCzcOiAT6BOrfWFC5LqbeheuAnpo0u1EDvQrlXB0/UXfxaVhjz779eVi5RvVQgvnfpP/q3UE4mJC0KpkwkEyW4stP8Zp2Y6Evh0FIkeT4L5awqnIM3goaRJOm/oZWEIbKzchq1SOSMX8IvPb+Jko3mExG/Q2Q+iGNDmTb4hD19Yiwe2FrgO9jZcEa0XBrS7AQi3fQ1b8JqoiE/4B6NCmG/rUMug==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=i07Tqlq+2O4rKpv9s1E/MpRhdcf40pVLFR7jWhKGauU=;
+ b=g0i5/gVFpshG/E3xLzswbGE2gZhVafhlU84WPYGzlHAPt+6F46l/F9tYRA8ncax0OcLL/VXFlEM6AqTDN2x9nE1FPnaQtsKG2fjG6wWFx53PPY5ezQbsOWC0a6s9ce9+121X/dY6LxJns7By9dAUJnxu8ffm7gTI+pYHeUcosK9MT9BE0QUdxVcmXA74g6dEWA0YNmetPuaYPrBiqEZjOHTGQGKsIAEL0M5+3mBUeFoKqlba5ZwRd3XFd5I8j0v2LAD59JDFTk3pVYjlZDnHmpBYRQmHe86XrUxVpW28Xe2ADAUAJ5xYO1uMRqfQ96lxtXwY8HA+uCB6VnGg//RPuQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from IA3PR11MB8986.namprd11.prod.outlook.com (2603:10b6:208:577::21)
+ by SJ0PR11MB5865.namprd11.prod.outlook.com (2603:10b6:a03:428::13)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8792.34; Mon, 9 Jun
+ 2025 18:56:02 +0000
+Received: from IA3PR11MB8986.namprd11.prod.outlook.com
+ ([fe80::395e:7a7f:e74c:5408]) by IA3PR11MB8986.namprd11.prod.outlook.com
+ ([fe80::395e:7a7f:e74c:5408%7]) with mapi id 15.20.8769.022; Mon, 9 Jun 2025
+ 18:56:01 +0000
+From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
+To: Stanislav Fomichev <stfomichev@gmail.com>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>
+CC: "davem@davemloft.net" <davem@davemloft.net>, "edumazet@google.com"
+ <edumazet@google.com>, "kuba@kernel.org" <kuba@kernel.org>,
+ "pabeni@redhat.com" <pabeni@redhat.com>, "skalluru@marvell.com"
+ <skalluru@marvell.com>, "manishc@marvell.com" <manishc@marvell.com>,
+ "andrew+netdev@lunn.ch" <andrew+netdev@lunn.ch>, "michael.chan@broadcom.com"
+ <michael.chan@broadcom.com>, "pavan.chebbi@broadcom.com"
+ <pavan.chebbi@broadcom.com>, "ajit.khaparde@broadcom.com"
+ <ajit.khaparde@broadcom.com>, "sriharsha.basavapatna@broadcom.com"
+ <sriharsha.basavapatna@broadcom.com>, "somnath.kotur@broadcom.com"
+ <somnath.kotur@broadcom.com>, "Nguyen, Anthony L"
+ <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
+ <przemyslaw.kitszel@intel.com>, "tariqt@nvidia.com" <tariqt@nvidia.com>,
+ "saeedm@nvidia.com" <saeedm@nvidia.com>, "louis.peens@corigine.com"
+ <louis.peens@corigine.com>, "shshaikh@marvell.com" <shshaikh@marvell.com>,
+ "GR-Linux-NIC-Dev@marvell.com" <GR-Linux-NIC-Dev@marvell.com>,
+ "ecree.xilinx@gmail.com" <ecree.xilinx@gmail.com>, "horms@kernel.org"
+ <horms@kernel.org>, "dsahern@kernel.org" <dsahern@kernel.org>,
+ "shuah@kernel.org" <shuah@kernel.org>, "mheib@redhat.com" <mheib@redhat.com>, 
+ "ruanjinjie@huawei.com" <ruanjinjie@huawei.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-rdma@vger.kernel.org" <linux-rdma@vger.kernel.org>,
+ "oss-drivers@corigine.com" <oss-drivers@corigine.com>,
+ "linux-net-drivers@amd.com" <linux-net-drivers@amd.com>,
+ "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>,
+ "leon@kernel.org" <leon@kernel.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net-next v2 3/4] netdevsim: remove
+ udp_ports_sleep
+Thread-Index: AQHb2Vs+vvxRuHozsU+/NH0bGgPxDbP7LXIg
+Date: Mon, 9 Jun 2025 18:56:01 +0000
+Message-ID: <IA3PR11MB8986C1AECE9F09A36FB37D3BE56BA@IA3PR11MB8986.namprd11.prod.outlook.com>
+References: <20250609162541.1230022-1-stfomichev@gmail.com>
+ <20250609162541.1230022-4-stfomichev@gmail.com>
+In-Reply-To: <20250609162541.1230022-4-stfomichev@gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: IA3PR11MB8986:EE_|SJ0PR11MB5865:EE_
+x-ms-office365-filtering-correlation-id: f7f5dc51-5d50-480e-ed38-08dda787476e
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|1800799024|7416014|376014|366016|7053199007|38070700018; 
+x-microsoft-antispam-message-info: =?us-ascii?Q?lgM0j8hgoGHK8Bkxbq22iHV3TfKdB3LEgq0yZG+4fCTKGbgbiyvkM39IEY8f?=
+ =?us-ascii?Q?UkyZrXCjyZ0Mf8ah/wyK9XW+sJ0ncfz/Fkf7r0Z3Mb/Z0i6EJq2r15yUmOMV?=
+ =?us-ascii?Q?IExCmKl6v2zP5x5/yMHOGVKFuJGrNJnszJ0V90x4wpYAf399mDBRiLtPDm/7?=
+ =?us-ascii?Q?Hh7QDcENJPrDPLnA/MyDHTQY0wEGgC92G0S6PHJr6UNOeKwnhc9wjh3mZNde?=
+ =?us-ascii?Q?ToQxEzL7ugLjYCuZORAkogB5/9N2/jDm3ii4CPk7gjt2uGlmae+fgfOp55vD?=
+ =?us-ascii?Q?2PeN5ALJR9CmdHW8oiBF4/hSXUUuvZLWsy07DiTejRHJO4msS6zZy/WIc5KF?=
+ =?us-ascii?Q?DbHkJBst9OHMLBfhn/v6FdoP0UAIWNmXPVNwyVx5RBtC003b7tq/m42Hkdf3?=
+ =?us-ascii?Q?FFFv1JQ1GIguhRSJFVNsIce2VVNG5Y5LzqXptwUserPSvf93xU8SVaTpO82i?=
+ =?us-ascii?Q?RnqUxo1Lc/3Z9Fg9q9GG8XQIGOtxy78aN4tqQjiIYGKBn27iecxMe/Pnt7b8?=
+ =?us-ascii?Q?2JGw+s6YI7gwZFE27mh7iaie9V3k1+pl4tGw2qFVGpJ4xITKr4yQpCfAE0jg?=
+ =?us-ascii?Q?sYdYvmaJmaiitpKlG20qr4y9XO8XomybxfJ+X8HeAkU4VR/ZyX/aDDfdSV5v?=
+ =?us-ascii?Q?73fevi+WPoYaP6ooSSvzArr1y9xIpFYTC3a0dr4dz2daEQX09s1pmrXYx1T2?=
+ =?us-ascii?Q?QVa/Aud2ZUoLLugsroApDG/Xaff9g65Dvxj79iuZ2PudvvnktaUPTPw9Rynb?=
+ =?us-ascii?Q?Gj2IFyJujVukzgq+QD2ATcZT1SZkHZ1oM3GtyVQND3TJ0ocPPizf6roHo3ia?=
+ =?us-ascii?Q?sFkAEuxuaq+BA5zg9YFrnNgxK66i6M9/BPFq+Z5GbyzmVYIqtwssCTMK8/mq?=
+ =?us-ascii?Q?4px74yC7aR8ZVqQ28QJtMV8X1JAsAntL8CapaxbZfvvaMmaDoqzSj1cLbzLK?=
+ =?us-ascii?Q?RB5I1JvMPh/EqRnKZN0EqDz0xraLJozUvtq67RFPoinOG/bd2dU1ULSev7S1?=
+ =?us-ascii?Q?JSmLdVAgmPo220srhoAj34prtaWBVE3MdngoGFvROFkiEzoB8N4e8oRpMY8P?=
+ =?us-ascii?Q?H4YRiqyPf+1kzjiQA8SWzECj/IiQRytIqW/8JSkaTialfIeGmKSbJSxMTTdx?=
+ =?us-ascii?Q?mGXDoxZTdu6v6u2QLnXrbf8yWeD399XYNLon2kuPveOOHh+2RwdyMBnqQbDu?=
+ =?us-ascii?Q?uZORjSXVJ1UvxcdwS+7wV/nb7NehrhzQ92zVS3l9AnBf71pTJqMFzBFKD+ZT?=
+ =?us-ascii?Q?mMzwU941igIpI8984Ju8WUJdVCCjOoFZBAVab6n7jSyxjAsY8YiRM1ynRpU5?=
+ =?us-ascii?Q?QDEW/sIAfn3bLsbzXkuszPjPSqpIT6fwFrSCVAqHGUyLWyih4oy3TZNR4y2Q?=
+ =?us-ascii?Q?wLD/C/BDTbwk3aOHHLE9cnPLOg9CJOAVudPXISGZTD3nnFiW3ex8L+KVLAYG?=
+ =?us-ascii?Q?rl4RFVyBmRcnGpo9v+f1zCpVC2gV7sTiOX+ZdFC/NmDOJfoxSni6yw=3D=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:IA3PR11MB8986.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(7416014)(376014)(366016)(7053199007)(38070700018);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?sAm2Hrofu/zKbqWOuLov1MUGGkL6RegKnfS7xJpDL9XMf0Zp51e1d07ec0yY?=
+ =?us-ascii?Q?aoVxrvyzh7lFW4c6dIAo2ApVH52A9FsOe272M6eq5t70h6JeJ0/SvW5P6BzW?=
+ =?us-ascii?Q?bbO5UdP1Fq09LpPuG+tQsx5+Sx/dGkj9VmbKhUApNkpfRs3N34xjEzg8ZiHb?=
+ =?us-ascii?Q?7Qdy8+MFsrs59StNBpGVwkDh0EuauqjzWUAEF7TU0CucB3r9eQTzSf9ubD6s?=
+ =?us-ascii?Q?AzG/GTjUVcLGzRrDwlTiwhaGJnvHfAMjLR5/bYZQjqqKM+tyLZTi9Y/jUn5x?=
+ =?us-ascii?Q?KRh+FX/Jwh4kVkBWT5qbI7oGsDrQPVXD1Gf+dflvfuwpUnQZUhilAAdcWrdT?=
+ =?us-ascii?Q?Ne3GkvVeJ8fxKIZ2Ekmfd0Pho+VeqL9LH5QF9g+OMzy8ZCtytq+jFwDO/3Or?=
+ =?us-ascii?Q?5pfmdlXyMOONlTXq9nXr0Sby13MPMnme1jpx6n+eFH6FP/ZMOHGP1S08nEyw?=
+ =?us-ascii?Q?A6gk8/IZ3Yd10yCLn7onmOVHDdcwEBUrbvm1sy8SUPCOa/BDoEhhBZrDj7iH?=
+ =?us-ascii?Q?ZJDpdf3AY5YcjZfEoCKY11yCHaUba5Pkdn7fZcqBp+VK+/G0ldw8B+bfZS5+?=
+ =?us-ascii?Q?WlTv/D9m2hwvF1jL+ji0M0iEzTVecX4MJsflwx+4ss61jkjIMAna6g2s2Prj?=
+ =?us-ascii?Q?J7j52qnciDsuGpPwWFgnnX5krUnXpitd+mvxvn/cn/DIu7q1iXqQoD24W/gP?=
+ =?us-ascii?Q?DNX4nMMzS+e6PuPuUcGS0apTLGugmbfoPR7U8Mc4tmDjTJgDXG662kTvkek/?=
+ =?us-ascii?Q?SwJCT1Plt8UjNMfY5NoEHuqno4IV/roa8pGcYGVz7U4RUD9gE/j2ePpB3Z3Y?=
+ =?us-ascii?Q?4pU5ERSgAjKa53jfV9bTZf9Y38JgqfbLbLUN8nvPbrgI03v9GWGcHH01Hp2a?=
+ =?us-ascii?Q?97v3yhO3e9mnrSj/w1WjWN+AEr/pgPpCrZIN5qnGt0k7J3PL3dI3bFQqafLk?=
+ =?us-ascii?Q?AIY7jXlcbZsgSfqSeIK2DpmMh7dLAypHRtCXrKc54c/7IvFkaaCsh/1IJwlz?=
+ =?us-ascii?Q?1T9ewjypdSV4liimP6RODUAB6bLMqCKKGQ+c1emaopsi8UzuZ+XnVNk2iVwl?=
+ =?us-ascii?Q?9coIf4D/VWzJhbjtWzk8Qu9oHsZJnMfIJfWUpx/Nqgv+YU23boFSlQSq6CU2?=
+ =?us-ascii?Q?x0LTBD8jsURAa2sNJg01vECf5NYMPQ5rV2jl9zk52OGjSOF6lgOS9r7MOkmG?=
+ =?us-ascii?Q?mIgVdQJ/oTRqUHuXFfnDqc38EFNtBawOk2SLVWBanhxf+jgLV44LUFHK00Ew?=
+ =?us-ascii?Q?N6Gs7gBXSps6U6yJ+fO5PxKDNJRb8gVqTpTVMYhSJrm2HwNIBeCBgUoFyJy/?=
+ =?us-ascii?Q?+g6uhnkQx7XlqCfuZzExHLK5GOfDjU5MIldOI+YJsF+Nnu3gQ/O9ytnnOkER?=
+ =?us-ascii?Q?6kg8yQxyhrwyv48bJXNqFfwjZO4fLGFNZqV19J1G4iFo0RpaCralbaQrSiuj?=
+ =?us-ascii?Q?yfJp50suQ2cOC1vyuDNmptFEAu2vq8J6KdSOI15NSYXRoM+1TNpjPC+zphIO?=
+ =?us-ascii?Q?p8b+qDAMSJhinHwO1XQ0CwvX/fmKY6Bl//Rb94NNIi0Y5Im1Zgln5UrDaR/s?=
+ =?us-ascii?Q?JuPOrVclW0Fifb3HbLjjA9gcFNPbRFC26exeuBi6osv8/8cV9moZnmlvCPYO?=
+ =?us-ascii?Q?MQ=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB8986.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f7f5dc51-5d50-480e-ed38-08dda787476e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Jun 2025 18:56:01.7169 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 7KMRrOkDnZHf/RPcQPRu6ymh3qbo8Og8hEd6FbEGM7ZcDXLNh+qVd334gT4h3rKOwAdcmJc01pO7J65UYMDxv2hsdY7ONEzFzQ22fSyJhpM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR11MB5865
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1749486643; x=1781022643;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=VCIDEXG69TzvNMN9DuQrTdls76vDokMst2vOttWIPro=;
- b=h8s4Bf3mbgXFnsmBmxl5o+EaOhduDYTxm9KqNufc0Mpb78/jkUkX5Dc6
- u1AXXRCkaCEW/pHVzUrVQoIOXo/XOLwdKxZPjTmRauy7jTXZqbBw60B3c
- pW0kEojcdvYbLlqIj2/rdcfqcmX/8rdmcl7CDBf23exxXQ/1FfOsd2miX
- OCWBYe6VQcmGAQjdjKlT6tyxeuDaeVtK/ZQIyVPlcI682eJuxe1EJsT7P
- 36E5f9vSMiydaEHmIv+yPDmtYajDMNsED81ffbVqhqt+g5+pFOLTi7zJa
- DuxN1+S3IUFC/3FRNq/t4nxU+YOpZnpcN8FY33GGwS/58wxCXKTdATpxa
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1749495368; x=1781031368;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=xlqFfQSvj4BIJk3q7mG8XKgFEvtQY+gciXM5IE6H5M4=;
+ b=JXkZHJGglmmbOLdeuNTPg/jOpenQb7u1tqjFxD8PzkAS4HEiPO4FvpU2
+ +93lVjkFLug6k1rN1KlVQd2rgl3J+ByVLiK7Bjpq0slVmRYud0zcEfGBp
+ yieyubS7qNp9D2tYIA/qb9utJQbYzlP5hW4sW+/944YpsRpmDOLU3LmeA
+ ldpto/l/3JRcIDnum5K5bR0NVthTNWrh1RMWIS4eTPOfFJNY9xVjLA1tw
+ WG73YA4bM662D7x6bTL11Qx3NoGoIFKZlvZpg5DvXqhgSJqj0LuR7nbP+
+ UcSny51s6pR9hc3d9/SIoU2zxKBhZ0xjYzy31BY8tYHgrQSWC2/kV56dT
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=h8s4Bf3m
-Subject: [Intel-wired-lan] [PATCH v2 iwl-next] idpf: add cross timestamping
+ header.s=Intel header.b=JXkZHJGg
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 3/4] netdevsim: remove
+ udp_ports_sleep
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -108,348 +252,187 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add cross timestamp support through virtchnl mailbox messages and directly,
-through PCIe BAR registers. Cross timestamping assumes that both system
-time and device clock time values are cached simultaneously, what is
-triggered by HW. Feature is enabled for both ARM and x86 archs.
 
-Signed-off-by: Milena Olech <milena.olech@intel.com>
-Reviewed-by: Karol Kolacinski <karol.kolacinski@intel.com>
-Reviewed-by: Willem de Bruijn <willemb@google.com>
----
-v1 -> v2: rebase on the top of iXD, fix kernel doc, use IS_ENABLED
-directly in the code flow
 
- drivers/net/ethernet/intel/idpf/idpf_ptp.c    | 136 ++++++++++++++++++
- drivers/net/ethernet/intel/idpf/idpf_ptp.h    |  19 ++-
- .../ethernet/intel/idpf/idpf_virtchnl_ptp.c   |  62 +++++++-
- 3 files changed, 215 insertions(+), 2 deletions(-)
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
+> Of Stanislav Fomichev
+> Sent: Monday, June 9, 2025 6:26 PM
+> To: netdev@vger.kernel.org
+> Cc: davem@davemloft.net; edumazet@google.com; kuba@kernel.org;
+> pabeni@redhat.com; skalluru@marvell.com; manishc@marvell.com;
+> andrew+netdev@lunn.ch; michael.chan@broadcom.com;
+> pavan.chebbi@broadcom.com; ajit.khaparde@broadcom.com;
+> sriharsha.basavapatna@broadcom.com; somnath.kotur@broadcom.com;
+> Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw
+> <przemyslaw.kitszel@intel.com>; tariqt@nvidia.com; saeedm@nvidia.com;
+> louis.peens@corigine.com; shshaikh@marvell.com; GR-Linux-NIC-
+> Dev@marvell.com; ecree.xilinx@gmail.com; horms@kernel.org;
+> dsahern@kernel.org; shuah@kernel.org; mheib@redhat.com;
+> ruanjinjie@huawei.com; stfomichev@gmail.com; linux-
+> kernel@vger.kernel.org; intel-wired-lan@lists.osuosl.org; linux-
+> rdma@vger.kernel.org; oss-drivers@corigine.com; linux-net-
+> drivers@amd.com; linux-kselftest@vger.kernel.org; leon@kernel.org
+> Subject: [Intel-wired-lan] [PATCH net-next v2 3/4] netdevsim: remove
+> udp_ports_sleep
+>=20
+> Now that there is only one path in udp_tunnel, there is no need to
+> have udp_ports_sleep knob. Remove it and adjust the test.
+>=20
+> Cc: Michael Chan <michael.chan@broadcom.com>
+> Signed-off-by: Stanislav Fomichev <stfomichev@gmail.com>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_ptp.c b/drivers/net/ethernet/intel/idpf/idpf_ptp.c
-index cb46185da749..43b7efc88a85 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_ptp.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_ptp.c
-@@ -49,6 +49,13 @@ void idpf_ptp_get_features_access(const struct idpf_adapter *adapter)
- 							   direct,
- 							   mailbox);
- 
-+	/* Get the cross timestamp */
-+	direct = VIRTCHNL2_CAP_PTP_GET_CROSS_TIME;
-+	mailbox = VIRTCHNL2_CAP_PTP_GET_CROSS_TIME_MB;
-+	ptp->get_cross_tstamp_access = idpf_ptp_get_access(adapter,
-+							   direct,
-+							   mailbox);
-+
- 	/* Adjust the device clock time */
- 	direct = VIRTCHNL2_CAP_PTP_ADJ_DEVICE_CLK;
- 	mailbox = VIRTCHNL2_CAP_PTP_ADJ_DEVICE_CLK_MB;
-@@ -171,6 +178,127 @@ static int idpf_ptp_read_src_clk_reg(struct idpf_adapter *adapter, u64 *src_clk,
- 	return 0;
- }
- 
-+#if IS_ENABLED(CONFIG_ARM_ARCH_TIMER) || IS_ENABLED(CONFIG_X86)
-+/**
-+ * idpf_ptp_get_sync_device_time_direct - Get the cross time stamp values
-+ *					  directly
-+ * @adapter: Driver specific private structure
-+ * @dev_time: 64bit main timer value
-+ * @sys_time: 64bit system time value
-+ */
-+static void idpf_ptp_get_sync_device_time_direct(struct idpf_adapter *adapter,
-+						 u64 *dev_time, u64 *sys_time)
-+{
-+	u32 dev_time_lo, dev_time_hi, sys_time_lo, sys_time_hi;
-+	struct idpf_ptp *ptp = adapter->ptp;
-+
-+	spin_lock(&ptp->read_dev_clk_lock);
-+
-+	idpf_ptp_enable_shtime(adapter);
-+
-+	dev_time_lo = readl(ptp->dev_clk_regs.dev_clk_ns_l);
-+	dev_time_hi = readl(ptp->dev_clk_regs.dev_clk_ns_h);
-+
-+	sys_time_lo = readl(ptp->dev_clk_regs.sys_time_ns_l);
-+	sys_time_hi = readl(ptp->dev_clk_regs.sys_time_ns_h);
-+
-+	spin_unlock(&ptp->read_dev_clk_lock);
-+
-+	*dev_time = (u64)dev_time_hi << 32 | dev_time_lo;
-+	*sys_time = (u64)sys_time_hi << 32 | sys_time_lo;
-+}
-+
-+/**
-+ * idpf_ptp_get_sync_device_time_mailbox - Get the cross time stamp values
-+ *					   through mailbox
-+ * @adapter: Driver specific private structure
-+ * @dev_time: 64bit main timer value expressed in nanoseconds
-+ * @sys_time: 64bit system time value expressed in nanoseconds
-+ *
-+ * Return: 0 on success, -errno otherwise.
-+ */
-+static int idpf_ptp_get_sync_device_time_mailbox(struct idpf_adapter *adapter,
-+						 u64 *dev_time, u64 *sys_time)
-+{
-+	struct idpf_ptp_dev_timers cross_time;
-+	int err;
-+
-+	err = idpf_ptp_get_cross_time(adapter, &cross_time);
-+	if (err)
-+		return err;
-+
-+	*dev_time = cross_time.dev_clk_time_ns;
-+	*sys_time = cross_time.sys_time_ns;
-+
-+	return err;
-+}
-+
-+/**
-+ * idpf_ptp_get_sync_device_time - Get the cross time stamp info
-+ * @device: Current device time
-+ * @system: System counter value read synchronously with device time
-+ * @ctx: Context provided by timekeeping code
-+ *
-+ * The device and the system clocks time read simultaneously.
-+ *
-+ * Return: 0 on success, -errno otherwise.
-+ */
-+static int idpf_ptp_get_sync_device_time(ktime_t *device,
-+					 struct system_counterval_t *system,
-+					 void *ctx)
-+{
-+	struct idpf_adapter *adapter = ctx;
-+	u64 ns_time_dev, ns_time_sys;
-+	int err;
-+
-+	switch (adapter->ptp->get_cross_tstamp_access) {
-+	case IDPF_PTP_NONE:
-+		return -EOPNOTSUPP;
-+	case IDPF_PTP_DIRECT:
-+		idpf_ptp_get_sync_device_time_direct(adapter, &ns_time_dev,
-+						     &ns_time_sys);
-+		break;
-+	case IDPF_PTP_MAILBOX:
-+		err = idpf_ptp_get_sync_device_time_mailbox(adapter,
-+							    &ns_time_dev,
-+							    &ns_time_sys);
-+		if (err)
-+			return err;
-+		break;
-+	default:
-+		return -EOPNOTSUPP;
-+	}
-+
-+	*device = ns_to_ktime(ns_time_dev);
-+
-+	system->cs_id = IS_ENABLED(CONFIG_X86) ? CSID_X86_ART
-+					       : CSID_ARM_ARCH_COUNTER;
-+	system->cycles = ns_time_sys;
-+	system->use_nsecs = true;
-+
-+	return 0;
-+}
-+
-+/**
-+ * idpf_ptp_get_crosststamp - Capture a device cross timestamp
-+ * @info: the driver's PTP info structure
-+ * @cts: The memory to fill the cross timestamp info
-+ *
-+ * Capture a cross timestamp between the system time and the device PTP hardware
-+ * clock.
-+ *
-+ * Return: cross timestamp value on success, -errno on failure.
-+ */
-+static int idpf_ptp_get_crosststamp(struct ptp_clock_info *info,
-+				    struct system_device_crosststamp *cts)
-+{
-+	struct idpf_adapter *adapter = idpf_ptp_info_to_adapter(info);
-+
-+	return get_device_system_crosststamp(idpf_ptp_get_sync_device_time,
-+					     adapter, NULL, cts);
-+}
-+#endif /* CONFIG_ARM_ARCH_TIMER || CONFIG_X86 */
-+
- /**
-  * idpf_ptp_gettimex64 - Get the time of the clock
-  * @info: the driver's PTP info structure
-@@ -664,6 +792,14 @@ static void idpf_ptp_set_caps(const struct idpf_adapter *adapter)
- 	info->verify = idpf_ptp_verify_pin;
- 	info->enable = idpf_ptp_gpio_enable;
- 	info->do_aux_work = idpf_ptp_do_aux_work;
-+#if IS_ENABLED(CONFIG_ARM_ARCH_TIMER)
-+	info->getcrosststamp = idpf_ptp_get_crosststamp;
-+#elif IS_ENABLED(CONFIG_X86)
-+	if (pcie_ptm_enabled(adapter->pdev) &&
-+	    boot_cpu_has(X86_FEATURE_ART) &&
-+	    boot_cpu_has(X86_FEATURE_TSC_KNOWN_FREQ))
-+		info->getcrosststamp = idpf_ptp_get_crosststamp;
-+#endif /* CONFIG_ARM_ARCH_TIMER */
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_ptp.h b/drivers/net/ethernet/intel/idpf/idpf_ptp.h
-index a876749d6116..cd19f65f9fff 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_ptp.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf_ptp.h
-@@ -21,6 +21,8 @@ struct idpf_ptp_cmd {
-  * @dev_clk_ns_h: high part of the device clock register
-  * @phy_clk_ns_l: low part of the PHY clock register
-  * @phy_clk_ns_h: high part of the PHY clock register
-+ * @sys_time_ns_l: low part of the system time register
-+ * @sys_time_ns_h: high part of the system time register
-  * @incval_l: low part of the increment value register
-  * @incval_h: high part of the increment value register
-  * @shadj_l: low part of the shadow adjust register
-@@ -42,6 +44,10 @@ struct idpf_ptp_dev_clk_regs {
- 	void __iomem *phy_clk_ns_l;
- 	void __iomem *phy_clk_ns_h;
- 
-+	/* System time */
-+	void __iomem *sys_time_ns_l;
-+	void __iomem *sys_time_ns_h;
-+
- 	/* Main timer adjustments */
- 	void __iomem *incval_l;
- 	void __iomem *incval_h;
-@@ -162,6 +168,7 @@ struct idpf_ptp_vport_tx_tstamp_caps {
-  * @dev_clk_regs: the set of registers to access the device clock
-  * @caps: PTP capabilities negotiated with the Control Plane
-  * @get_dev_clk_time_access: access type for getting the device clock time
-+ * @get_cross_tstamp_access: access type for the cross timestamping
-  * @set_dev_clk_time_access: access type for setting the device clock time
-  * @adj_dev_clk_time_access: access type for the adjusting the device clock
-  * @tx_tstamp_access: access type for the Tx timestamp value read
-@@ -182,10 +189,11 @@ struct idpf_ptp {
- 	struct idpf_ptp_dev_clk_regs dev_clk_regs;
- 	u32 caps;
- 	enum idpf_ptp_access get_dev_clk_time_access:2;
-+	enum idpf_ptp_access get_cross_tstamp_access:2;
- 	enum idpf_ptp_access set_dev_clk_time_access:2;
- 	enum idpf_ptp_access adj_dev_clk_time_access:2;
- 	enum idpf_ptp_access tx_tstamp_access:2;
--	u8 rsv;
-+	u8 rsv:6;
- 	struct idpf_ptp_secondary_mbx secondary_mbx;
- 	spinlock_t read_dev_clk_lock;
- };
-@@ -264,6 +272,8 @@ void idpf_ptp_get_features_access(const struct idpf_adapter *adapter);
- bool idpf_ptp_get_txq_tstamp_capability(struct idpf_tx_queue *txq);
- int idpf_ptp_get_dev_clk_time(struct idpf_adapter *adapter,
- 			      struct idpf_ptp_dev_timers *dev_clk_time);
-+int idpf_ptp_get_cross_time(struct idpf_adapter *adapter,
-+			    struct idpf_ptp_dev_timers *cross_time);
- int idpf_ptp_set_dev_clk_time(struct idpf_adapter *adapter, u64 time);
- int idpf_ptp_adj_dev_clk_fine(struct idpf_adapter *adapter, u64 incval);
- int idpf_ptp_adj_dev_clk_time(struct idpf_adapter *adapter, s64 delta);
-@@ -305,6 +315,13 @@ idpf_ptp_get_dev_clk_time(struct idpf_adapter *adapter,
- 	return -EOPNOTSUPP;
- }
- 
-+static inline int
-+idpf_ptp_get_cross_time(struct idpf_adapter *adapter,
-+			struct idpf_ptp_dev_timers *cross_time)
-+{
-+	return -EOPNOTSUPP;
-+}
-+
- static inline int idpf_ptp_set_dev_clk_time(struct idpf_adapter *adapter,
- 					    u64 time)
- {
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl_ptp.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl_ptp.c
-index 7dee41953c92..98a62d5583fd 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl_ptp.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl_ptp.c
-@@ -29,6 +29,7 @@ int idpf_ptp_get_caps(struct idpf_adapter *adapter)
- 		.timeout_ms = IDPF_VC_XN_DEFAULT_TIMEOUT_MSEC,
- 	};
- 	struct libie_mmio_info	*mmio_info = &adapter->ctlq_ctx.mmio_info;
-+	struct virtchnl2_ptp_cross_time_reg_offsets cross_tstamp_offsets;
- 	struct virtchnl2_ptp_clk_adj_reg_offsets clk_adj_offsets;
- 	struct virtchnl2_ptp_clk_reg_offsets clock_offsets;
- 	struct idpf_ptp_secondary_mbx *scnd_mbx;
-@@ -70,7 +71,7 @@ int idpf_ptp_get_caps(struct idpf_adapter *adapter)
- 
- 	access_type = ptp->get_dev_clk_time_access;
- 	if (access_type != IDPF_PTP_DIRECT)
--		goto discipline_clock;
-+		goto cross_tstamp;
- 
- 	clock_offsets = recv_ptp_caps_msg->clk_offsets;
- 
-@@ -90,6 +91,23 @@ int idpf_ptp_get_caps(struct idpf_adapter *adapter)
- 	ptp->dev_clk_regs.cmd_sync =
- 		libie_pci_get_mmio_addr(mmio_info, temp_offset);
- 
-+cross_tstamp:
-+	access_type = ptp->get_cross_tstamp_access;
-+	if (access_type != IDPF_PTP_DIRECT)
-+		goto discipline_clock;
-+
-+	cross_tstamp_offsets = recv_ptp_caps_msg->cross_time_offsets;
-+
-+	temp_offset = le32_to_cpu(cross_tstamp_offsets.sys_time_ns_l);
-+	ptp->dev_clk_regs.sys_time_ns_l =
-+		libie_pci_get_mmio_addr(mmio_info, temp_offset);
-+	temp_offset = le32_to_cpu(cross_tstamp_offsets.sys_time_ns_h);
-+	ptp->dev_clk_regs.sys_time_ns_h =
-+		libie_pci_get_mmio_addr(mmio_info, temp_offset);
-+	temp_offset = le32_to_cpu(cross_tstamp_offsets.cmd_sync_trigger);
-+	ptp->dev_clk_regs.cmd_sync =
-+		libie_pci_get_mmio_addr(mmio_info, temp_offset);
-+
- discipline_clock:
- 	access_type = ptp->adj_dev_clk_time_access;
- 	if (access_type != IDPF_PTP_DIRECT)
-@@ -178,6 +196,48 @@ int idpf_ptp_get_dev_clk_time(struct idpf_adapter *adapter,
- 	return err;
- }
- 
-+/**
-+ * idpf_ptp_get_cross_time - Send virtchnl get cross time message
-+ * @adapter: Driver specific private structure
-+ * @cross_time: Pointer to the device clock structure where the value is set
-+ *
-+ * Send virtchnl get cross time message to get the time of the clock and the
-+ * system time.
-+ *
-+ * Return: 0 on success, -errno otherwise.
-+ */
-+int idpf_ptp_get_cross_time(struct idpf_adapter *adapter,
-+			    struct idpf_ptp_dev_timers *cross_time)
-+{
-+	struct virtchnl2_ptp_get_cross_time *cross_time_resp;
-+	struct virtchnl2_ptp_get_cross_time cross_time_msg;
-+	struct libie_ctlq_xn_send_params xn_params = {
-+		.chnl_opcode = VIRTCHNL2_OP_PTP_GET_CROSS_TIME,
-+		.timeout_ms = IDPF_VC_XN_DEFAULT_TIMEOUT_MSEC,
-+	};
-+	int reply_sz;
-+	int err;
-+
-+	err = idpf_send_mb_msg(adapter, &xn_params, &cross_time_msg,
-+			       sizeof(cross_time_msg));
-+	if (err)
-+		return err;
-+
-+	reply_sz = xn_params.recv_mem.iov_len;
-+	if (reply_sz != sizeof(*cross_time_resp)) {
-+		err = -EIO;
-+		goto free_resp;
-+	}
-+
-+	cross_time_resp = xn_params.recv_mem.iov_base;
-+	cross_time->dev_clk_time_ns = le64_to_cpu(cross_time_resp->dev_time_ns);
-+	cross_time->sys_time_ns = le64_to_cpu(cross_time_resp->sys_time_ns);
-+
-+free_resp:
-+	libie_ctlq_release_rx_buf(&xn_params.recv_mem);
-+	return err;
-+}
-+
- /**
-  * idpf_ptp_set_dev_clk_time - Send virtchnl set device time message
-  * @adapter: Driver specific private structure
-
-base-commit: c1589adc4856d13b67b3cc8939c8af579fbdb5da
--- 
-2.43.5
+> ---
+>  drivers/net/netdevsim/netdevsim.h                      |  2 --
+>  drivers/net/netdevsim/udp_tunnels.c                    |  8 --------
+>  .../selftests/drivers/net/netdevsim/udp_tunnel_nic.sh  | 10 ---------
+> -
+>  3 files changed, 20 deletions(-)
+>=20
+> diff --git a/drivers/net/netdevsim/netdevsim.h
+> b/drivers/net/netdevsim/netdevsim.h
+> index d04401f0bdf7..511ed72a93ce 100644
+> --- a/drivers/net/netdevsim/netdevsim.h
+> +++ b/drivers/net/netdevsim/netdevsim.h
+> @@ -131,7 +131,6 @@ struct netdevsim {
+>  	struct nsim_macsec macsec;
+>  	struct {
+>  		u32 inject_error;
+> -		u32 sleep;
+>  		u32 __ports[2][NSIM_UDP_TUNNEL_N_PORTS];
+>  		u32 (*ports)[NSIM_UDP_TUNNEL_N_PORTS];
+>  		struct dentry *ddir;
+> @@ -342,7 +341,6 @@ struct nsim_dev {
+>  		bool ipv4_only;
+>  		bool shared;
+>  		bool static_iana_vxlan;
+> -		u32 sleep;
+>  	} udp_ports;
+>  	struct nsim_dev_psample *psample;
+>  	u16 esw_mode;
+> diff --git a/drivers/net/netdevsim/udp_tunnels.c
+> b/drivers/net/netdevsim/udp_tunnels.c
+> index 10cbbf1c584b..89fff76e51cf 100644
+> --- a/drivers/net/netdevsim/udp_tunnels.c
+> +++ b/drivers/net/netdevsim/udp_tunnels.c
+> @@ -18,9 +18,6 @@ nsim_udp_tunnel_set_port(struct net_device *dev,
+> unsigned int table,
+>  	ret =3D -ns->udp_ports.inject_error;
+>  	ns->udp_ports.inject_error =3D 0;
+>=20
+> -	if (ns->udp_ports.sleep)
+> -		msleep(ns->udp_ports.sleep);
+> -
+>  	if (!ret) {
+>  		if (ns->udp_ports.ports[table][entry]) {
+>  			WARN(1, "entry already in use\n");
+> @@ -47,8 +44,6 @@ nsim_udp_tunnel_unset_port(struct net_device *dev,
+> unsigned int table,
+>  	ret =3D -ns->udp_ports.inject_error;
+>  	ns->udp_ports.inject_error =3D 0;
+>=20
+> -	if (ns->udp_ports.sleep)
+> -		msleep(ns->udp_ports.sleep);
+>  	if (!ret) {
+>  		u32 val =3D be16_to_cpu(ti->port) << 16 | ti->type;
+>=20
+> @@ -170,7 +165,6 @@ int nsim_udp_tunnels_info_create(struct nsim_dev
+> *nsim_dev,
+>  		       GFP_KERNEL);
+>  	if (!info)
+>  		return -ENOMEM;
+> -	ns->udp_ports.sleep =3D nsim_dev->udp_ports.sleep;
+>=20
+>  	if (nsim_dev->udp_ports.sync_all) {
+>  		info->set_port =3D NULL;
+> @@ -213,6 +207,4 @@ void nsim_udp_tunnels_debugfs_create(struct
+> nsim_dev *nsim_dev)
+>  			    &nsim_dev->udp_ports.shared);
+>  	debugfs_create_bool("udp_ports_static_iana_vxlan", 0600,
+> nsim_dev->ddir,
+>  			    &nsim_dev->udp_ports.static_iana_vxlan);
+> -	debugfs_create_u32("udp_ports_sleep", 0600, nsim_dev->ddir,
+> -			   &nsim_dev->udp_ports.sleep);
+>  }
+> diff --git
+> a/tools/testing/selftests/drivers/net/netdevsim/udp_tunnel_nic.sh
+> b/tools/testing/selftests/drivers/net/netdevsim/udp_tunnel_nic.sh
+> index 92c2f0376c08..8c5fe7bdf1ce 100755
+> --- a/tools/testing/selftests/drivers/net/netdevsim/udp_tunnel_nic.sh
+> +++ b/tools/testing/selftests/drivers/net/netdevsim/udp_tunnel_nic.sh
+> @@ -266,7 +266,6 @@ for port in 0 1; do
+>  	echo $NSIM_ID > /sys/bus/netdevsim/new_device
+>      else
+>  	echo 1 > $NSIM_DEV_DFS/udp_ports_open_only
+> -	echo 1 > $NSIM_DEV_DFS/udp_ports_sleep
+>  	echo 1 > $NSIM_DEV_SYS/new_port
+>      fi
+>      NSIM_NETDEV=3D`get_netdev_name old_netdevs` @@ -350,7 +349,6 @@
+> old_netdevs=3D$(ls /sys/class/net)
+>  port=3D0
+>  echo $NSIM_ID > /sys/bus/netdevsim/new_device  echo 0 >
+> $NSIM_DEV_SYS/del_port -echo 1000 > $NSIM_DEV_DFS/udp_ports_sleep
+> echo 0 > $NSIM_DEV_SYS/new_port  NSIM_NETDEV=3D`get_netdev_name
+> old_netdevs`
+>=20
+> @@ -428,7 +426,6 @@ echo 0 > $NSIM_DEV_SYS/del_port  for port in 0 1;
+> do
+>      if [ $port -ne 0 ]; then
+>  	echo 1 > $NSIM_DEV_DFS/udp_ports_open_only
+> -	echo 1 > $NSIM_DEV_DFS/udp_ports_sleep
+>      fi
+>=20
+>      echo $port > $NSIM_DEV_SYS/new_port @@ -486,7 +483,6 @@ echo 1 >
+> $NSIM_DEV_DFS/udp_ports_sync_all  for port in 0 1; do
+>      if [ $port -ne 0 ]; then
+>  	echo 1 > $NSIM_DEV_DFS/udp_ports_open_only
+> -	echo 1 > $NSIM_DEV_DFS/udp_ports_sleep
+>      fi
+>=20
+>      echo $port > $NSIM_DEV_SYS/new_port @@ -543,7 +539,6 @@ echo 0 >
+> $NSIM_DEV_SYS/del_port  for port in 0 1; do
+>      if [ $port -ne 0 ]; then
+>  	echo 1 > $NSIM_DEV_DFS/udp_ports_open_only
+> -	echo 1 > $NSIM_DEV_DFS/udp_ports_sleep
+>      fi
+>=20
+>      echo $port > $NSIM_DEV_SYS/new_port @@ -573,7 +568,6 @@ echo 1 >
+> $NSIM_DEV_DFS/udp_ports_ipv4_only  for port in 0 1; do
+>      if [ $port -ne 0 ]; then
+>  	echo 1 > $NSIM_DEV_DFS/udp_ports_open_only
+> -	echo 1 > $NSIM_DEV_DFS/udp_ports_sleep
+>      fi
+>=20
+>      echo $port > $NSIM_DEV_SYS/new_port @@ -634,7 +628,6 @@ echo 0 >
+> $NSIM_DEV_SYS/del_port  for port in 0 1; do
+>      if [ $port -ne 0 ]; then
+>  	echo 1 > $NSIM_DEV_DFS/udp_ports_open_only
+> -	echo 1 > $NSIM_DEV_DFS/udp_ports_sleep
+>      fi
+>=20
+>      echo $port > $NSIM_DEV_SYS/new_port @@ -690,7 +683,6 @@ echo 0 >
+> $NSIM_DEV_SYS/del_port  for port in 0 1; do
+>      if [ $port -ne 0 ]; then
+>  	echo 1 > $NSIM_DEV_DFS/udp_ports_open_only
+> -	echo 1 > $NSIM_DEV_DFS/udp_ports_sleep
+>      fi
+>=20
+>      echo $port > $NSIM_DEV_SYS/new_port @@ -750,7 +742,6 @@ echo 0 >
+> $NSIM_DEV_SYS/del_port  for port in 0 1; do
+>      if [ $port -ne 0 ]; then
+>  	echo 1 > $NSIM_DEV_DFS/udp_ports_open_only
+> -	echo 1 > $NSIM_DEV_DFS/udp_ports_sleep
+>      fi
+>=20
+>      echo $port > $NSIM_DEV_SYS/new_port @@ -809,7 +800,6 @@ echo
+> $NSIM_ID > /sys/bus/netdevsim/new_device  echo 0 >
+> $NSIM_DEV_SYS/del_port
+>=20
+>  echo 0 > $NSIM_DEV_DFS/udp_ports_open_only -echo 1 >
+> $NSIM_DEV_DFS/udp_ports_sleep  echo 1 > $NSIM_DEV_DFS/udp_ports_shared
+>=20
+>  old_netdevs=3D$(ls /sys/class/net)
+> --
+> 2.49.0
 
