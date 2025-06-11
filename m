@@ -1,84 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4BA17AD5C70
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Jun 2025 18:39:11 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C324EAD640F
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Jun 2025 01:54:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DEBD260A9C;
-	Wed, 11 Jun 2025 16:39:07 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7C70F60A81;
+	Wed, 11 Jun 2025 23:54:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2RLuwsNloNh8; Wed, 11 Jun 2025 16:39:07 +0000 (UTC)
+ id QdWTLHc7ZY8E; Wed, 11 Jun 2025 23:54:20 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B8CAD60AA5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 06FB960755
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1749659946;
-	bh=4uDHSKKkJPErGs0m/th6Q5+CwwWkeTLPAHn4+TjzoMk=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1749686060;
+	bh=9RBoQGXVToQPIzS2tvyGTjgUAGyZTcLHYtuDQiTqx08=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=sMghbrFEHO7QURqpfPqKubUp2zPZqt2aJpchOX7DO9ZJyff954SdDEiwZUpuxvxR/
-	 LYBCWmWa243uuwr/FaXe0ruPyhHFRCOuAkI/SXOa+g9fBtxYDlMkIlpTS6rAGMICLt
-	 L33lH3TxcG2NVI39i7dGR1tWCEQMnwVjSy1lLqQdWlcCyHNBvom/ojk1qwG7GYdS6n
-	 QV+hF0nM8B43B8JHupCjTU7lJ6PHQUquTIp41Bouim648ixlWyddZ6xWnXpF79p7vo
-	 f+YfZ3CS6CtoIeJkNyhwQXAyH45hO73GHX58PU6uRjWTMV95JnEceC6CdFUF+VuMKx
-	 Wm3tZqj0J/WHg==
+	b=nsU8cuUy7m2QY1zJdH6ZY+PDBP4zUgGvSDaW273LMb/lWJjIPdMByN6xlRZsXzhDs
+	 4QDO5AtkUp8aDafXr99kE9Rj79JsGfiv1c78xGsVxOT7OrgJT3IR8f6qLL6niYcwE3
+	 sKwAS2psSIcqJcIA5+LdCB+heWf2I2xvD3TIXRerf3Upuux+7QIE7NoCQvmRz0HLwh
+	 kEu/snlvfkr3ZKg3j6jIMldfMsN2HbOeIQPltfDLhPYHpmSd0OwfKY7LJ7oVsNo9Pu
+	 Bqx3Vc0mVSeXfhPtE8wgAsZhVPn+r8Yx+fLCvJmjviTZWXY0IGL81T2XoD6oyeGDDW
+	 0qssCyKQvtQAA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B8CAD60AA5;
-	Wed, 11 Jun 2025 16:39:06 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 06FB960755;
+	Wed, 11 Jun 2025 23:54:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 060ED237
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jun 2025 16:39:05 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id D20DA183
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jun 2025 23:54:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DC152425F4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jun 2025 16:39:04 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id AF37640284
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jun 2025 23:54:18 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0pAkV0aKeIK0 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 Jun 2025 16:39:04 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
- helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org A40FE40BFE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A40FE40BFE
-Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A40FE40BFE
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jun 2025 16:39:03 +0000 (UTC)
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
- (envelope-from <andrew@lunn.ch>)
- id 1uPOTZ-00FQV8-W7; Wed, 11 Jun 2025 18:38:57 +0200
-Date: Wed, 11 Jun 2025 18:38:57 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Khalid Mughal <khalid.mughal@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- Sridhar Samudrala <sridhar.samudrala@intel.com>
-Message-ID: <83e44167-43eb-4abd-b536-c2e290ab4382@lunn.ch>
-References: <20250611155402.1260634-1-khalid.mughal@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id f2Le2NGqoOy2 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 Jun 2025 23:54:18 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 259B940398
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 259B940398
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 259B940398
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jun 2025 23:54:17 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 2D1F35C385A;
+ Wed, 11 Jun 2025 23:52:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4094C4CEE3;
+ Wed, 11 Jun 2025 23:54:15 +0000 (UTC)
+Date: Wed, 11 Jun 2025 16:54:15 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Cc: donald.hunter@gmail.com, davem@davemloft.net, edumazet@google.com,
+ pabeni@redhat.com, horms@kernel.org, vadim.fedorenko@linux.dev,
+ jiri@resnulli.us, anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ andrew+netdev@lunn.ch, aleksandr.loktionov@intel.com, corbet@lwn.net,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-rdma@vger.kernel.org,
+ linux-doc@vger.kernel.org, Milena Olech <milena.olech@intel.com>, Jiri
+ Pirko <jiri@nvidia.com>
+Message-ID: <20250611165415.3c9ed314@kernel.org>
+In-Reply-To: <20250610040436.1669826-2-arkadiusz.kubalewski@intel.com>
+References: <20250610040436.1669826-1-arkadiusz.kubalewski@intel.com>
+ <20250610040436.1669826-2-arkadiusz.kubalewski@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250611155402.1260634-1-khalid.mughal@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; d=lunn.ch; 
- s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
- Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
- Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
- bh=4uDHSKKkJPErGs0m/th6Q5+CwwWkeTLPAHn4+TjzoMk=; b=BXeNDlcBYR6bll7NfoIECM9ODt
- izTiFlZKr+f2PR0u6hqkVtqcGB7vOOTLHNrInnGyUAPYvLXeKmBqbvqME4IyvWt78GgADdyFAhgc3
- wkBF+HG7dkSqUGw6USbbc7UGWiz/ifh6pkyNP8zMMXHattsDJJef3VmibTLXgI6i09tw=;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=lunn.ch
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256
- header.s=20171124 header.b=BXeNDlcB
-Subject: Re: [Intel-wired-lan] [PATCH] net: Add new iccnet driver
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1749686056;
+ bh=26gfdBmSWheCaqCXB++m2kn/LihOibkm/qsTpeORxfA=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=rh6rYxliD9fzaxoXSHa2EInXnh2859WCJCuJ0LBSovBptDG6/HuiMz66Q+NV0u8PX
+ iZ7sDYXGP7w1T1cjNEa8OfhvJsplsoH6AnjVEZ/5XrfGC1lWfJyA0PKPlQNafyCoFp
+ TDw6SAx5Tx+/EHnovqZBy3zEPWvfsJ6p/8ycIakZRUXzgV0bd0Uuumh9eNfuI2Ja3d
+ sjCcB/urTdfteIpcD8BZ/TzLzhFIZT5BzvDzY0W92UAuZ8pkfQ1VGd+pyjwdueLLYc
+ 8thuFIOB6FFaTtAKMh1ujh1fqtkGpm0/JyU6o3z6RFqaDe2K32r9ONONULUZ63rPnN
+ Xs2/PLxwv8qwQ==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=rh6rYxli
+Subject: Re: [Intel-wired-lan] [PATCH net-next v5 1/3] dpll: add
+ reference-sync netlink attribute
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -94,39 +107,19 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Jun 11, 2025 at 08:54:02AM -0700, Khalid Mughal wrote:
-> Intel(R) IPU ICCNET (Inter-Complex Communication Network) Driver:
-> 
-> The iccnet (Inter-Core Communication Network) driver enables sideband
-> channel communication between the Management-Complex and the
-> Compute-Complex, both powered by ARMv8 CPUs, on the Intel IPU
-> (Infrastructure Processing Unit). The driver establishes descriptor
-> rings for transmission and reception using a shared memory region
-> accessible to both CPU complexes. The TX ring of one CPU maps
-> directly to the RX ring of the other CPU.
+On Tue, 10 Jun 2025 06:04:34 +0200 Arkadiusz Kubalewski wrote:
+> +The device may support the Reference SYNC feature, which allows the combination
+> +of two inputs into a input pair. In this configuration, clock signals
+> +from both inputs are used to synchronize the dpll device. The higher frequency
+                                                ^^^^
+                                                DPLL ?
 
-https://www.spinics.net/lists/netdev/msg1000950.html
+> +signal is utilized for the loop bandwidth of the DPLL, while the lower frequency
+> +signal is used to syntonize the output signal of the DPLL device. This feature
+> +enables the provision of a high-quality loop bandwidth signal from an external
+> +source.
 
-I suspect the developer was a student on a placement at TI for a
-while, so it had the typical student code problems, and he had
-problems thinking about the big picture, a generic solution rather
-than a solution specific to TIs use case.
-
-Please could you read through the comments i made to various versions
-of that patchset and see what applies to what you are doing. Two
-similar systems within a year suggests we need a generic shared memory
-solution, or at least a shared core library which can then be wrapped
-for individual use cases.
-
-> v2:
-> - Fixed issues highlighted by Marcin Szycik
-> v3:
-> - Fixed internal-kbuild-all build warning
-> v4:
-> - Changed iccnet header padding
-
-As far as i know, these never made it to the list, so don't exist. It
-is good it had internal review, but please don't pollute the commit
-with stuff nobody else can see.
-
-     Andrew
+Looks like there is a conflict between this series and patches sent
+by Tony the day before. You'll have to rebase.
+-- 
+pw-bot: cr
