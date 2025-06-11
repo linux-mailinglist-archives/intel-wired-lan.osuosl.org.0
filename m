@@ -1,97 +1,103 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 37661AD55FB
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Jun 2025 14:53:05 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 84FC9AD568C
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Jun 2025 15:10:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D2A4C4218F;
-	Wed, 11 Jun 2025 12:53:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 42B8C40B28;
+	Wed, 11 Jun 2025 13:10:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HLXFtvwXnv0M; Wed, 11 Jun 2025 12:53:03 +0000 (UTC)
+ id P_9oxpZYc_or; Wed, 11 Jun 2025 13:10:14 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EE7964231A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 887C940B31
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1749646383;
-	bh=W+1qZnFIRYM45Zamdr2iPDX0osJGfhrsHr1ASxqz7CI=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=7dLgkpZUjtRfX3QUNsDLK65Avsk2uMyy//PpLJ4S6btNXQyM80KJJA2Tm/uc49Wxu
-	 UzcLkjjiOTQEhqKNjpcSw6mN1llPRUlzC7TGLdYpvSHaMTDFav3hkOGei4rmoiANJa
-	 6bxtBCy5Q8GHG8zlstygsHHrfOQADEypxCI/yXFW5HvHMz509219ohcxK848cVi3b9
-	 JmAgOlZQAYrrGhODkHZJ0ZIRHsqVKZr9YW2rsCGdxcCod6x2ExU3B/CMw0FsrfTdL/
-	 15aRu5Uf7qHt/9EjY8lhhmjrKdvQMFehp22ZnqsbNoivesWhY9FfdvGC/+kXHPl2iM
-	 ctvsaA7oPf//A==
+	s=default; t=1749647414;
+	bh=Xh7rY6tSMgRGvd8PCMytb/LOBWFRtUFgY86dQOnY+mE=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=TC1EiLfX554U/ae+CD8l/qyxRUxKyohF5s9Ye6atG4hbm6CrpgGRQt9PfElLzDGEa
+	 x+5mbrA7nNcJ2/2pv/W/0gI4yxGur1cjBS3lptRlGavhdBIEF5BUgldhRpVfxJ+lim
+	 BJbkVoamJW32hUAFes5VEPVvF4i+cMNU5bB5sj1RlxuSyOXIrjVSrbn2Ez/GYnfrbt
+	 OLMROt8Wygl3RdNbYxMBoys+zVL1qaf8JlsQKtCNqIxtoxxE9xT6NysDE4SSuQjQbF
+	 Yg0Uu1KOiUzsbS/DMyXmei7fqbVJShVdTlIO+AzBSD3uuQfhNNSVEh6o7lQqQ1d0kT
+	 TPMxkCxyUl7Qw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EE7964231A;
-	Wed, 11 Jun 2025 12:53:02 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 887C940B31;
+	Wed, 11 Jun 2025 13:10:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 9D599237
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jun 2025 12:53:01 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 2A5BF183
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jun 2025 13:10:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8388F80D8A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jun 2025 12:53:01 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1F24740420
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jun 2025 13:10:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id EZmcSdIoeK8B for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 Jun 2025 12:53:00 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
- helo=mgamail.intel.com; envelope-from=vitaly.lifshits@intel.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 7731byz7gzW2 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 Jun 2025 13:10:10 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
+ helo=mgamail.intel.com; envelope-from=marcin.szycik@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 7E39880DA0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7E39880DA0
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7E39880DA0
- for <intel-wired-lan@osuosl.org>; Wed, 11 Jun 2025 12:53:00 +0000 (UTC)
-X-CSE-ConnectionGUID: NcD3+ndWTzCEiDPlL9YJXA==
-X-CSE-MsgGUID: UmAFZ+L/Qdu8kW1dpRjWSA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11461"; a="51651603"
-X-IronPort-AV: E=Sophos;i="6.16,227,1744095600"; d="scan'208";a="51651603"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
- by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Jun 2025 05:52:59 -0700
-X-CSE-ConnectionGUID: ugtYyrTBQ3i8s022TCti7A==
-X-CSE-MsgGUID: 6zJ9qamiRcilvW58b1sgUw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 4548C40202
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4548C40202
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4548C40202
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jun 2025 13:10:09 +0000 (UTC)
+X-CSE-ConnectionGUID: jNmkYUjFRFuV+DdyNqYPIQ==
+X-CSE-MsgGUID: cQGMH+M5ToGciuRp7SHwBQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11461"; a="62069266"
+X-IronPort-AV: E=Sophos;i="6.16,227,1744095600"; d="scan'208";a="62069266"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Jun 2025 06:10:09 -0700
+X-CSE-ConnectionGUID: xRPWljmnSziSX86ZH+ZVSQ==
+X-CSE-MsgGUID: Hb/O2B0ZTAKaYyBy5WNGRQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,227,1744095600"; d="scan'208";a="151973507"
-Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.51])
- by orviesa003.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Jun 2025 05:52:59 -0700
-From: Vitaly Lifshits <vitaly.lifshits@intel.com>
-To: intel-wired-lan@osuosl.org
-Cc: Vitaly Lifshits <vitaly.lifshits@intel.com>
-Date: Wed, 11 Jun 2025 15:52:54 +0300
-Message-Id: <20250611125254.3648822-1-vitaly.lifshits@intel.com>
-X-Mailer: git-send-email 2.34.1
+X-IronPort-AV: E=Sophos;i="6.16,227,1744095600"; d="scan'208";a="184400678"
+Received: from mszycik-mobl1.ger.corp.intel.com (HELO [10.245.114.89])
+ ([10.245.114.89])
+ by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Jun 2025 06:10:08 -0700
+Message-ID: <f64586a7-2201-4416-8aa0-96d43ecc7c67@linux.intel.com>
+Date: Wed, 11 Jun 2025 15:10:00 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+To: Dave Ertman <david.m.ertman@intel.com>, intel-wired-lan@lists.osuosl.org
+References: <20250609131141.758051-1-david.m.ertman@intel.com>
+ <20250609131141.758051-9-david.m.ertman@intel.com>
+Content-Language: en-US
+From: Marcin Szycik <marcin.szycik@linux.intel.com>
+In-Reply-To: <20250609131141.758051-9-david.m.ertman@intel.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1749646380; x=1781182380;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=ZrENPsnFTQoZXfluWwt8R8ZSCrlmBRDZfrfRssD76AM=;
- b=K1KPezUMOxaQzqxgHDvR2zLjWnIa3Kq9UsIljn/h05BfIXxF9jVzeurg
- XqMqACSSOoqJ3KYxUxWkZFk3abSPY03vuctp/aJrmhyzH7Xm253BkpNVr
- evzbFC9nculFSRUwQi4PjjqQbgYrawk6T5e93QfcJGPUB9PSXVWkIORe9
- mEbHv7G6/Ekm7ue1tRY7b6qyNHsibOkQBbhBovmZu0/8CG/cATCPSMpYJ
- Z0TNsk9E5jUVuwyeLtzr5L32DCuLsqVB9XZlcHXP84JGcEhoiIHWM4/Pb
- NdCB9s6fM4cYQHK3K9ip3MFEaT5IHOgxytMGVvzadzDhzPpbIOHcWb8Yw
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1749647411; x=1781183411;
+ h=message-id:date:mime-version:subject:to:references:from:
+ in-reply-to:content-transfer-encoding;
+ bh=PljYfrU+liUkFXXjfE+L+bxSmpwVmGHUXsooE7lPRJo=;
+ b=d2rKVl1obl6Ag8Mkz5e5xD258k2bL1HBSTPMvGbLvwjMSCqtxINSb6hf
+ tQwn2onvsEuNRsmevy7gj6M9QfWMoBohe8Rmnk2fW65TcvypFhPST+24U
+ NF4dp+nr597Wd8ZoijuZZK66/SII9vSLD76mW4YQ82QgShY0axiWBBYEm
+ NQ/hC1kYMABW9UqGZVfhWL3KWEwDDADnnSWPPxdCPm0/YjvLXdNUkeEfS
+ CcXWnOGfii+jfTj08h68ihkX0WROBueJN/Ll6NLbBDjnqE9rltYDX0o7i
+ JP5Q3+x4GiuIPRBT65wa7Mfy+c3sTTUatMzbAqUfeAwC2DVG9WllIUUo1
+ A==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=K1KPezUM
-Subject: [Intel-wired-lan] [PATCH iwl-net v2 1/1] igc: disable L1.2 PCI-E
- link substate to avoid performance issue
+ header.s=Intel header.b=d2rKVl1o
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3 8/8] ice: Implement
+ support for SRIOV VFs across Active/Active bonds
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -107,56 +113,93 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-I226 devices advertise support for the PCI-E link L1.2 substate. However,
-due to a hardware limitation, the exit latency from this low-power state
-is longer than the packet buffer can tolerate under high traffic
-conditions. This can lead to packet loss and degraded performance.
+On 09.06.2025 15:11, Dave Ertman wrote:
 
-To mitigate this, disable the L1.2 substate. The increased power draw
-between L1.1 and L1.2 is insignificant.
+(...)
 
-Link: https://lore.kernel.org/intel-wired-lan/15248b4f-3271-42dd-8e35-02bfc92b25e1@intel.com
-Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
-Fixes: 43546211738e ("igc: Add new device ID's")
----
- drivers/net/ethernet/intel/igc/igc_main.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+> +static void ice_lag_aa_move_vf_qs(struct ice_lag *lag, u8 dest, u16 vsi_num,
+> +				  bool all, bool *odd, struct ice_pf *e_pf)
+> +{
+> +	DEFINE_RAW_FLEX(struct ice_aqc_cfg_txqs_buf, qbuf, queue_info, 1);
+> +	struct ice_hw *old_hw, *new_hw, *pri_hw, *sec_hw;
+> +	struct device *dev = ice_pf_to_dev(lag->pf);
+> +	struct ice_vsi_ctx *pv_ctx, *sv_ctx;
+> +	struct ice_lag_netdev_list ndlist;
+> +	u16 num_q, qbuf_size, sec_vsi_num;
+> +	u8 pri_lport, sec_lport;
+> +	u32 pvf_teid, svf_teid;
+> +	u16 vf_id;
+> +
+> +	vf_id = lag->pf->vsi[vsi_num]->vf->vf_id;
+> +	/* If sec_vf[] not defined, then no second interface to share with */
+> +	if (lag->sec_vf[vf_id])
+> +		sec_vsi_num = lag->sec_vf[vf_id]->idx;
+> +	else
+> +		return;
+> +
+> +	pri_lport = lag->bond_lport_pri;
+> +	sec_lport = lag->bond_lport_sec;
+> +
+> +	if (pri_lport == ICE_LAG_INVALID_PORT ||
+> +	    sec_lport == ICE_LAG_INVALID_PORT)
+> +		return;
+> +
+> +	if (!e_pf)
+> +		ice_lag_build_netdev_list(lag, &ndlist);
+> +
+> +	pri_hw = &lag->pf->hw;
+> +	if (e_pf && lag->pf != e_pf)
+> +		sec_hw = &e_pf->hw;
+> +	else
+> +		sec_hw = ice_lag_find_hw_by_lport(lag, sec_lport);
+> +
+> +	if (!pri_hw || !sec_hw)
+> +		return;
+> +
+> +	if (dest == ICE_LAGP_IDX) {
+> +		old_hw = sec_hw;
+> +		new_hw = pri_hw;
+> +		ice_lag_config_eswitch(lag, lag->pf->vsi[0]->netdev);
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 27575a1e1777..3ada48b85bd9 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -7113,6 +7113,10 @@ static int igc_probe(struct pci_dev *pdev,
- 	adapter->port_num = hw->bus.func;
- 	adapter->msg_enable = netif_msg_init(debug, DEFAULT_MSG_ENABLE);
- 
-+	/* Disable ASPM L1.2 on I226 devices to avoid packet loss */
-+	if (igc_is_device_id_i226(hw))
-+		pci_disable_link_state(pdev, PCIE_LINK_STATE_L1_2);
-+
- 	err = pci_save_state(pdev);
- 	if (err)
- 		goto err_ioremap;
-@@ -7498,6 +7502,9 @@ static int __igc_resume(struct device *dev, bool rpm)
- 	pci_enable_wake(pdev, PCI_D3hot, 0);
- 	pci_enable_wake(pdev, PCI_D3cold, 0);
- 
-+	if (igc_is_device_id_i226(hw))
-+		pci_disable_link_state(pdev, PCIE_LINK_STATE_L1_2);
-+
- 	if (igc_init_interrupt_scheme(adapter, true)) {
- 		netdev_err(netdev, "Unable to allocate memory for queues\n");
- 		return -ENOMEM;
-@@ -7623,6 +7630,9 @@ static pci_ers_result_t igc_io_slot_reset(struct pci_dev *pdev)
- 		pci_enable_wake(pdev, PCI_D3hot, 0);
- 		pci_enable_wake(pdev, PCI_D3cold, 0);
- 
-+		if (igc_is_device_id_i226(hw))
-+			pci_disable_link_state_locked(pdev, PCIE_LINK_STATE_L1_2);
-+
- 		/* In case of PCI error, adapter loses its HW address
- 		 * so we should re-assign it here.
- 		 */
--- 
-2.34.1
+ice_get_main_vsi(lag->pf)->netdev should probably be used instead for clarity.
+Actually now that I look at it, pf->vsi[0] is used multiple times in ice_lag.c,
+might be a case for a small refactor at some point later.
 
+> +	} else {
+> +		struct ice_pf *sec_pf = sec_hw->back;
+> +
+> +		old_hw = pri_hw;
+> +		new_hw = sec_hw;
+> +		ice_lag_config_eswitch(lag, sec_pf->vsi[0]->netdev);
+
+Same
+
+(...)
+
+>  /**
+> - * ice_lag_config_eswitch - configure eswitch to work with LAG
+> - * @lag: lag info struct
+> - * @netdev: active network interface device struct
+> - *
+> - * Updates all port representors in eswitch to use @netdev for Tx.
+> - *
+> - * Configures the netdev to keep dst metadata (also used in representor Tx).
+> - * This is required for an uplink without switchdev mode configured.
+> - */
+> -static void ice_lag_config_eswitch(struct ice_lag *lag,
+> -				   struct net_device *netdev)
+> -{
+> -	struct ice_repr *repr;
+> -	unsigned long id;
+> -
+> -	xa_for_each(&lag->pf->eswitch.reprs, id, repr)
+> -		repr->dst->u.port_info.lower_dev = netdev;
+> -
+> -	netif_keep_dst(netdev);
+> -}
+
+There's already patch 4/8 that moves a function with no changes, this should be
+a part of it.
+
+Thanks,
+Marcin
