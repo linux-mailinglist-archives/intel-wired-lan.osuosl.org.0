@@ -1,100 +1,102 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A4ED4AD4EB2
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Jun 2025 10:46:20 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2D9FCAD4EB4
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Jun 2025 10:46:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D87FC410CA;
-	Wed, 11 Jun 2025 08:46:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8379C41798;
+	Wed, 11 Jun 2025 08:46:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3UDwr5DF_aFn; Wed, 11 Jun 2025 08:46:13 +0000 (UTC)
+ id lRLVz4doYufU; Wed, 11 Jun 2025 08:46:15 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5AD28411FE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EDEA3417A3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1749631573;
-	bh=PqyhDfYRH0ZfqG/O0chZNeBVr/FMgh5lWTAcb6Hajf4=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=aa+AAuh8K59JNaaOeb9lhOZRNkcftrKIOHezANsUaE48CA0GqPhOgzAwyGqtunlPm
-	 VG9oCpxAZNr3EoR9w2qvgTaBNk0etLwVpCMDojI9q8O3gFgCNZ4xzV8gGUX/p4laYn
-	 HZ5BZYT7FePdpZY4urRKffUR2/8oqoz4QcdO2tBqEAuFv3D9YavbEzeit9XoZxfA5E
-	 jZQJWPVsQZkYaJQhZMzhoqtiNaY4LwVB4Z+22TcoAidlL91SDT8GKCLi6zKjlWyoBA
-	 4EpN4zUNdn8L1KaUa1UGvjF7rkeG3+maPIf7BEQrcOGASdpHZr+10iDrfS80lYfTVy
-	 yUiVORrCs/KAw==
+	s=default; t=1749631575;
+	bh=RTRqZCA3uzrD9DGZL1q4NZ5R5uEiUmvqYP2tQvsob/k=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=0CVWNa0Rvy8hcqOE9XptG1yfSw1BtG3mfKmZo1Qgc33sqI8NY3ZQ6KKp++ej/RDJT
+	 0Tvg8GL90cBaNrdjIt6xLCf9RGvktw2416+OXfouBv0CYLWPivyYtJcI2/g1MmDlr3
+	 lgPMi2mE3BBNmdSjwiYUkM72UEF+8enBg0EXf8hSA2dCFbJXtqAdvLX7Chkik1UDy4
+	 MMeyiPFRxP5UXrPOihsIPeuRamonrPnYiPrOk7wA8E4+nLkjoSug4hHKKG6qik8ojJ
+	 G8xF9yWNOpRaaeWXRWdHITVx13hPPayu15YMPxt4crMPqSM+fNuUxTuC8lCU9Nx6mG
+	 5CeLJ5bYLbk6A==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5AD28411FE;
-	Wed, 11 Jun 2025 08:46:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id EDEA3417A3;
+	Wed, 11 Jun 2025 08:46:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 590F11F2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jun 2025 08:46:12 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 39A6C237
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jun 2025 08:46:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4ABE7403BD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jun 2025 08:46:12 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 372D6403BD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jun 2025 08:46:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id o6Z3JTcX-NBK for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 Jun 2025 08:46:09 +0000 (UTC)
+ id Gq2Qhkb0ugUr for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 Jun 2025 08:46:11 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
  helo=mgamail.intel.com; envelope-from=konrad.knitter@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org ED9A3403CA
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ED9A3403CA
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org E27A9403D5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E27A9403D5
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id ED9A3403CA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jun 2025 08:46:08 +0000 (UTC)
-X-CSE-ConnectionGUID: jjbg0gnTSuSdEQ+TJhYi5w==
-X-CSE-MsgGUID: jJlfzjzYTrKepsAWu7HdKA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11460"; a="62046151"
-X-IronPort-AV: E=Sophos;i="6.16,227,1744095600"; d="scan'208";a="62046151"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E27A9403D5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Jun 2025 08:46:10 +0000 (UTC)
+X-CSE-ConnectionGUID: WH1iaB6/QTOy6ZSQ0MBw0w==
+X-CSE-MsgGUID: 1WfDNOO6QdCdDfUdQhMF7g==
+X-IronPort-AV: E=McAfee;i="6800,10657,11460"; a="62046153"
+X-IronPort-AV: E=Sophos;i="6.16,227,1744095600"; d="scan'208";a="62046153"
 Received: from fmviesa004.fm.intel.com ([10.60.135.144])
  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Jun 2025 01:46:08 -0700
-X-CSE-ConnectionGUID: PgUZ6FMQQ5iE88b0EVrLEg==
-X-CSE-MsgGUID: mv/cWiQBTwuxby+dZJQ7Nw==
+ 11 Jun 2025 01:46:11 -0700
+X-CSE-ConnectionGUID: 2rNX7uIhR72Ef4PSnjgtxA==
+X-CSE-MsgGUID: 2iB52CDzS4OYqj8Uc4mvrQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,227,1744095600"; d="scan'208";a="152298372"
+X-IronPort-AV: E=Sophos;i="6.16,227,1744095600"; d="scan'208";a="152298376"
 Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmviesa004.fm.intel.com with ESMTP; 11 Jun 2025 01:46:06 -0700
+ by fmviesa004.fm.intel.com with ESMTP; 11 Jun 2025 01:46:09 -0700
 Received: from kord.igk.intel.com (kord.igk.intel.com [10.123.220.9])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 834F5332AE;
- Wed, 11 Jun 2025 09:46:05 +0100 (IST)
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 79BC5332AE;
+ Wed, 11 Jun 2025 09:46:08 +0100 (IST)
 From: Konrad Knitter <konrad.knitter@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org,
-	Konrad Knitter <konrad.knitter@intel.com>
-Date: Wed, 11 Jun 2025 11:01:19 +0200
-Message-Id: <20250611090122.4312-1-konrad.knitter@intel.com>
+Cc: netdev@vger.kernel.org, Konrad Knitter <konrad.knitter@intel.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Date: Wed, 11 Jun 2025 11:01:20 +0200
+Message-Id: <20250611090122.4312-2-konrad.knitter@intel.com>
 X-Mailer: git-send-email 2.38.1
+In-Reply-To: <20250611090122.4312-1-konrad.knitter@intel.com>
+References: <20250611090122.4312-1-konrad.knitter@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1749631569; x=1781167569;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=+hlyDmCmIQ4PsUfkbEueYhY4IaOnijscWCQJVN/4tnQ=;
- b=eva4gneovopDVBHYVDgnnGbiz02YkcW9Qmh2DXGU0WFzchOxh8QQ6sv+
- QZp3sP85dyGUMANKZ+/XpuqFiKoQ8l17S/ds6oxwRl3WSR7k6sIp4lEJn
- 0QAlO9sft5FaAEsUkVk2b8b+c10imFKWu/pO3ILa5feVkcTJws7UpIfVk
- 8F00IUn0pGDuRmf+tImlmgaEvCJGzcYZo6m205Qwbkft1J/Kxs0gA2WSY
- THEoKkOFI8gDZ4LtWZjYCWpKI4x/WayvsYaK6YqOfa5JulrkL/Vwm5Nuf
- FO5piKdjOZ18d6uJZtX267ih8THSqBuuMFzL8x5CBHS3QXTy9WEsuo8eD
- Q==;
+ t=1749631571; x=1781167571;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=lefHV1vQLDgNtGs4h7hH9bY2WDelV3RUOmHc9mMdkE0=;
+ b=BDWIflgrv9LjZksvI1JC+F5QftFpPQs4AB3tJSrZ3NwFHngsIm37NqQQ
+ HTxLn4bj7SaRF3MteITkf+gAi5OVgvQQP9/1l7OoM9pGPDLbf9LXYO4OE
+ dxqxvzWJ1948Y1FaPpOPGa/kCyoHaaUeAwVBLc4xdRcv6Xby208sgfqEc
+ rvZYpUEpm2Iyn+Cel2po2n+Z94W73TjgRMwdr5S95jPTQ6AsZFHtol/KS
+ l+oIQGh9EzxrUdlVmHOZ1cPNCLp01TlvGo509y9aECUlnLD3oT+hR48Co
+ pzhl16T/NpS2Szc/JS3jvHvi0d9GNHeKGTWCbtnKp49OGDDvHZWiD11yG
+ A==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=eva4gneo
-Subject: [Intel-wired-lan] [PATCH iwl-next v1 0/3] add override mask from
- factory settings
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=BDWIflgr
+Subject: [Intel-wired-lan] [PATCH iwl-next v1 1/3] devlink: add overwrite
+ mask from factory settings
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -110,31 +112,61 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Support for restoring settings and identifiers from factory settings
-instead of using those found in the image during the update.
- 
-Restoring data from factory settings requires restoring both settings
-and identifiers simultaneously. Other combinations are not supported.
- 
-The following command can be used to overwrite settings and
-identifiers with data from factory settings.
- 
-$ devlink dev flash <pci-address> <update-image.bin> overwrite settings
-     overwrite identifier overwrite from_factory_settings
+Certain sections of the device flash, containing settings or device
+identifying information, may be set by the OEM.
 
-Konrad Knitter (3):
-  devlink: add overwrite mask from factory settings
-  ice: add overwrite mask from factory settings
-  ixgbe: add overwrite mask from factory settings
+This patch introduce the ability for users to decide whether these
+sections should be overwritten with data from the image or retained
+from the factory settings.
 
+The new option, DEVLINK_FLASH_OVERWRITE_FROM_FACTORY_SETTINGS, is
+intended to be used alongside DEVLINK_FLASH_OVERWRITE_IDENTIFIERS
+and/or DEVLINK_FLASH_OVERWRITE_SETTINGS.
+
+This combination allows restoration of data such as MAC addresses set
+by the OEM manufacturer, rather than using those found in the image.
+
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Signed-off-by: Konrad Knitter <konrad.knitter@intel.com>
+---
  Documentation/networking/devlink/devlink-flash.rst | 3 +++
- Documentation/networking/devlink/ice.rst           | 6 ++++++
- drivers/net/ethernet/intel/ice/ice_fw_update.c     | 4 ++++
- drivers/net/ethernet/intel/ixgbe/ixgbe_fw_update.c | 6 ++++++
- drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h | 1 +
  include/uapi/linux/devlink.h                       | 2 ++
- 6 files changed, 22 insertions(+)
+ 2 files changed, 5 insertions(+)
 
+diff --git a/Documentation/networking/devlink/devlink-flash.rst b/Documentation/networking/devlink/devlink-flash.rst
+index 603e732f00cc..7b04fcb95279 100644
+--- a/Documentation/networking/devlink/devlink-flash.rst
++++ b/Documentation/networking/devlink/devlink-flash.rst
+@@ -36,6 +36,9 @@ This mask indicates the set of sections which are allowed to be overwritten.
+        components being updated with the identifiers found in the provided
+        image. This includes MAC addresses, serial IDs, and similar device
+        identifiers.
++   * - ``DEVLINK_FLASH_OVERWRITE_FROM_FACTORY_SETTINGS``
++     - Indicates that device shall overwrite settings and identifiers from
++       factory settings section instead of provided image.
+ 
+ Multiple overwrite bits may be combined and requested together. If no bits
+ are provided, it is expected that the device only update firmware binaries
+diff --git a/include/uapi/linux/devlink.h b/include/uapi/linux/devlink.h
+index a5ee0f13740a..b7c4b367df64 100644
+--- a/include/uapi/linux/devlink.h
++++ b/include/uapi/linux/devlink.h
+@@ -270,6 +270,7 @@ enum {
+ enum devlink_flash_overwrite {
+ 	DEVLINK_FLASH_OVERWRITE_SETTINGS_BIT,
+ 	DEVLINK_FLASH_OVERWRITE_IDENTIFIERS_BIT,
++	DEVLINK_FLASH_OVERWRITE_FROM_FACTORY_SETTINGS_BIT,
+ 
+ 	__DEVLINK_FLASH_OVERWRITE_MAX_BIT,
+ 	DEVLINK_FLASH_OVERWRITE_MAX_BIT = __DEVLINK_FLASH_OVERWRITE_MAX_BIT - 1
+@@ -277,6 +278,7 @@ enum devlink_flash_overwrite {
+ 
+ #define DEVLINK_FLASH_OVERWRITE_SETTINGS _BITUL(DEVLINK_FLASH_OVERWRITE_SETTINGS_BIT)
+ #define DEVLINK_FLASH_OVERWRITE_IDENTIFIERS _BITUL(DEVLINK_FLASH_OVERWRITE_IDENTIFIERS_BIT)
++#define DEVLINK_FLASH_OVERWRITE_FROM_FACTORY_SETTINGS _BITUL(DEVLINK_FLASH_OVERWRITE_FROM_FACTORY_SETTINGS_BIT)
+ 
+ #define DEVLINK_SUPPORTED_FLASH_OVERWRITE_SECTIONS \
+ 	(_BITUL(__DEVLINK_FLASH_OVERWRITE_MAX_BIT) - 1)
 -- 
 2.38.1
 
