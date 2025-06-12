@@ -1,67 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 75DE8AD764A
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Jun 2025 17:34:47 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 41A00AD764B
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Jun 2025 17:34:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 336FD408A5;
-	Thu, 12 Jun 2025 15:34:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C6EB381FF5;
+	Thu, 12 Jun 2025 15:34:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8V4H86DAi3kb; Thu, 12 Jun 2025 15:34:45 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id BdYkBScxokTw; Thu, 12 Jun 2025 15:34:51 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6B4B5408A9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 190B382034
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1749742485;
-	bh=RUKhMGbQ+xkUmtd0e7jFjTQSh8zLZYtF+r5FQ6Mdbmo=;
+	s=default; t=1749742491;
+	bh=RbuYMM4ouWesxTcEJmwsDKKvLgeic0+xh3ZK+w9iw6o=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=sjEN5ZRbwxaP+oQ9Nt/t1mX07TpNxJJatCm3iPIYohiBFCHsSHeQAvpEzbfW3HJuG
-	 c/fnplz042M4OoysjFO3ddMmekBpKp0qm24slISH/sZe+tgf+QpBAjhY7pVpJCjLCF
-	 r60By2XVzt/nMQ/hPZ3gPQ79N62F6TZQ9ZAC4YVs41pYx15tyCRCoSt5JI3bhc21QL
-	 WywJuRBrFQ3PhUQ1P8KKcDxDw8oSppNBN1/ddc/uS0C60vJB2D7SmYw9HOSOSyM2kj
-	 EK2ZACPrCYrItQsf1SNBwY0qkqGwy8T31eM54/VLpojskZuoiFS1MfSGIbo72iV0Wn
-	 UXAqeevNSghtw==
+	b=yAzY71tzXF8k2iUa5yeLUCvtroh9Z5lLIsK0+SiSmTP7zHLmDrfdZt7VupgNQ1/TW
+	 6uwWv4BtQHIxZc/5I0LAEddptVNURyK9H/5t9hu6ilaEmPWsbBAQ7l/9z3MnABs695
+	 gvvOZwr1UgFz+Nh86LtPh+WKa5lVFz4hYXJqpopTjxzuISm/8UlVJBiyTn2WHz7dgF
+	 bO5cOD0pQEX3yMlv3f7Y/I53K9F+PGxw5fUqs7AwJcL8BQDY3Gmm+y5yme7cAw1QrR
+	 vgmQab8zNy0G/b4fzIVHlyh7gbUc/v56lAzpkyBX++19+DcI+WSGvlI/E4gEAmtrlZ
+	 t3WdT0IPQAwkw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6B4B5408A9;
-	Thu, 12 Jun 2025 15:34:45 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 190B382034;
+	Thu, 12 Jun 2025 15:34:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id A366F1E0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Jun 2025 15:34:43 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 1BAF81E0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Jun 2025 15:34:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A126B40029
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Jun 2025 15:34:43 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0DD5B40029
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Jun 2025 15:34:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 6GPt5yAY8qLa for <intel-wired-lan@lists.osuosl.org>;
- Thu, 12 Jun 2025 15:34:43 +0000 (UTC)
+ id VH0rPL_c4q4V for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 12 Jun 2025 15:34:48 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.18;
  helo=mgamail.intel.com; envelope-from=arkadiusz.kubalewski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org E863A400D6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E863A400D6
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 07AD6400D6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 07AD6400D6
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.18])
- by smtp2.osuosl.org (Postfix) with ESMTPS id E863A400D6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Jun 2025 15:34:42 +0000 (UTC)
-X-CSE-ConnectionGUID: VlhaI/cHRbKwSHfy6GeBIw==
-X-CSE-MsgGUID: RP9/SHbORhmu+kpj6wllEg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11462"; a="51158640"
-X-IronPort-AV: E=Sophos;i="6.16,231,1744095600"; d="scan'208";a="51158640"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 07AD6400D6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Jun 2025 15:34:47 +0000 (UTC)
+X-CSE-ConnectionGUID: pvAYDKriQs6B7xvyVtj2tw==
+X-CSE-MsgGUID: ZSyNIcC5R4e1MmiZtCDSkA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11462"; a="51158664"
+X-IronPort-AV: E=Sophos;i="6.16,231,1744095600"; d="scan'208";a="51158664"
 Received: from orviesa004.jf.intel.com ([10.64.159.144])
  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Jun 2025 08:34:42 -0700
-X-CSE-ConnectionGUID: JrzIpQRLTg6XOetjR8fz0A==
-X-CSE-MsgGUID: hGLqhkKbT2eelqeARiBd8g==
+ 12 Jun 2025 08:34:47 -0700
+X-CSE-ConnectionGUID: yD96rCnPQBirbgisAh42LA==
+X-CSE-MsgGUID: a3DEEEMgS+6NJdG28rZ3HQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,231,1744095600"; d="scan'208";a="152546847"
+X-IronPort-AV: E=Sophos;i="6.16,231,1744095600"; d="scan'208";a="152546859"
 Received: from amlin-018-114.igk.intel.com ([10.102.18.114])
- by orviesa004.jf.intel.com with ESMTP; 12 Jun 2025 08:34:38 -0700
+ by orviesa004.jf.intel.com with ESMTP; 12 Jun 2025 08:34:43 -0700
 From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 To: donald.hunter@gmail.com, kuba@kernel.org, davem@davemloft.net,
  edumazet@google.com, pabeni@redhat.com, horms@kernel.org,
@@ -72,8 +72,8 @@ Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, linux-doc@vger.kernel.org,
  Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
  Jiri Pirko <jiri@nvidia.com>
-Date: Thu, 12 Jun 2025 17:28:33 +0200
-Message-Id: <20250612152835.1703397-2-arkadiusz.kubalewski@intel.com>
+Date: Thu, 12 Jun 2025 17:28:34 +0200
+Message-Id: <20250612152835.1703397-3-arkadiusz.kubalewski@intel.com>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20250612152835.1703397-1-arkadiusz.kubalewski@intel.com>
 References: <20250612152835.1703397-1-arkadiusz.kubalewski@intel.com>
@@ -81,25 +81,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1749742483; x=1781278483;
+ t=1749742488; x=1781278488;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=4Ax1CIXKHFAYOVj6YnQTFaocDQpTvLqh5wBBaU6pP4A=;
- b=ZMtz17wgJREC/63WieF/2SVkDNnHr5o3ukNpKN09JbB0cuV+tmeB8gsa
- pCTJzBcExPAEC26tniWlgV3R+ycUAyYrRsykmZLJG7/C0b/sEQOcJAvP4
- 5I1CzZQky46hNOWbBra9HBLcScVTpGv/QA4raUt2wNeSOpVS0LDgfIq1J
- UsTTGB1xZfCFtUw4dki6yx45pwbiQ+Cya50p9gFcNXmOo1pbApFIZpQLX
- PqFqIpIjdNTPFsEQOGASvAbmBP7/OE6NInFoipeONQYBC4h6D2K2Y2ayx
- gzv4VoP9+rPP824S2p4W6S11xzO8hlyTmRY1IXcDHORRFO+Ej+2+lAOc7
- w==;
+ bh=ulq1yqKmf8fL2jCSz7K+/u1HCcvKOUaDR5zV9O5dvCA=;
+ b=gOv2tYLOF1Ar62aX2VjnamjRXY84AGlXybRUEEIPMBovb7kvAgxZXDYT
+ jWr2WBSWdfiWQ1bAHsmU4rxjh7//Y2Au+Pr2dg0wTto4Re6498Ll4fLUX
+ xbIR5l9ywpaifs2OSH3RJQ7hmrue75XpJEUlFDIdSDhrcHjMfNqdQC7Dt
+ m1ZvnRfCFCskJuOYbXobrt4UkbNqBrSSCvKYsYhTE/bUunUz29ExjjaW9
+ NF6QGZACgJXOWl9T16xkBZL7OZl5fkBRaMvKpf0efKOXSzZe3oQh7kDwA
+ HTEldvwGImDn7yB8+/UCezpCrB7GOAkkdySFhFOdd1J5QhIB+srE204I4
+ A==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ZMtz17wg
-Subject: [Intel-wired-lan] [PATCH net-next v6 1/3] dpll: add
- phase-offset-monitor feature to netlink spec
+ header.a=rsa-sha256 header.s=Intel header.b=gOv2tYLO
+Subject: [Intel-wired-lan] [PATCH net-next v6 2/3] dpll: add
+ phase_offset_monitor_get/set callback ops
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -115,15 +115,16 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add enum dpll_feature_state for control over features.
+Add new callback operations for a dpll device:
+- phase_offset_monitor_get(..) - to obtain current state of phase offset
+  monitor feature from dpll device,
+- phase_offset_monitor_set(..) - to allow feature configuration.
 
-Add dpll device level attribute:
-DPLL_A_PHASE_OFFSET_MONITOR - to allow control over a phase offset monitor
-feature. Attribute is present and shall return current state of a feature
-(enum dpll_feature_state), if the device driver provides such capability,
-otherwie attribute shall not be present.
+Obtain the feature state value using the get callback and provide it to
+the user if the device driver implements callbacks.
 
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Execute the set callback upon user requests.
+
 Reviewed-by: Milena Olech <milena.olech@intel.com>
 Reviewed-by: Jiri Pirko <jiri@nvidia.com>
 Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
@@ -131,151 +132,132 @@ Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 v6:
 - rebase.
 ---
- Documentation/driver-api/dpll.rst     | 18 ++++++++++++++++++
- Documentation/netlink/specs/dpll.yaml | 24 ++++++++++++++++++++++++
- drivers/dpll/dpll_nl.c                |  5 +++--
- include/uapi/linux/dpll.h             | 12 ++++++++++++
- 4 files changed, 57 insertions(+), 2 deletions(-)
+ drivers/dpll/dpll_netlink.c | 69 +++++++++++++++++++++++++++++++++++--
+ include/linux/dpll.h        |  8 +++++
+ 2 files changed, 75 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/driver-api/dpll.rst b/Documentation/driver-api/dpll.rst
-index e6855cd37e85..195e1e5d9a58 100644
---- a/Documentation/driver-api/dpll.rst
-+++ b/Documentation/driver-api/dpll.rst
-@@ -214,6 +214,24 @@ offset values are fractional with 3-digit decimal places and shell be
- divided with ``DPLL_PIN_PHASE_OFFSET_DIVIDER`` to get integer part and
- modulo divided to get fractional part.
+diff --git a/drivers/dpll/dpll_netlink.c b/drivers/dpll/dpll_netlink.c
+index c130f87147fa..4619aaa18b9c 100644
+--- a/drivers/dpll/dpll_netlink.c
++++ b/drivers/dpll/dpll_netlink.c
+@@ -126,6 +126,26 @@ dpll_msg_add_mode_supported(struct sk_buff *msg, struct dpll_device *dpll,
+ 	return 0;
+ }
  
-+Phase offset monitor
-+====================
++static int
++dpll_msg_add_phase_offset_monitor(struct sk_buff *msg, struct dpll_device *dpll,
++				  struct netlink_ext_ack *extack)
++{
++	const struct dpll_device_ops *ops = dpll_device_ops(dpll);
++	enum dpll_feature_state state;
++	int ret;
 +
-+Phase offset measurement is typically performed against the current active
-+source. However, some DPLL (Digital Phase-Locked Loop) devices may offer
-+the capability to monitor phase offsets across all available inputs.
-+The attribute and current feature state shall be included in the response
-+message of the ``DPLL_CMD_DEVICE_GET`` command for supported DPLL devices.
-+In such cases, users can also control the feature using the
-+``DPLL_CMD_DEVICE_SET`` command by setting the ``enum dpll_feature_state``
-+values for the attribute.
-+Once enabled the phase offset measurements for the input shall be returned
-+in the ``DPLL_A_PIN_PHASE_OFFSET`` attribute.
++	if (ops->phase_offset_monitor_set && ops->phase_offset_monitor_get) {
++		ret = ops->phase_offset_monitor_get(dpll, dpll_priv(dpll),
++						    &state, extack);
++		if (ret)
++			return ret;
++		if (nla_put_u32(msg, DPLL_A_PHASE_OFFSET_MONITOR, state))
++			return -EMSGSIZE;
++	}
 +
-+  =============================== ========================
-+  ``DPLL_A_PHASE_OFFSET_MONITOR`` attr state of a feature
-+  =============================== ========================
++	return 0;
++}
 +
- Embedded SYNC
- =============
+ static int
+ dpll_msg_add_lock_status(struct sk_buff *msg, struct dpll_device *dpll,
+ 			 struct netlink_ext_ack *extack)
+@@ -591,6 +611,9 @@ dpll_device_get_one(struct dpll_device *dpll, struct sk_buff *msg,
+ 		return ret;
+ 	if (nla_put_u32(msg, DPLL_A_TYPE, dpll->type))
+ 		return -EMSGSIZE;
++	ret = dpll_msg_add_phase_offset_monitor(msg, dpll, extack);
++	if (ret)
++		return ret;
  
-diff --git a/Documentation/netlink/specs/dpll.yaml b/Documentation/netlink/specs/dpll.yaml
-index 115d1a8f50bd..3bd6851c1d3c 100644
---- a/Documentation/netlink/specs/dpll.yaml
-+++ b/Documentation/netlink/specs/dpll.yaml
-@@ -240,6 +240,20 @@ definitions:
-       integer part of a measured phase offset value.
-       Value of (DPLL_A_PHASE_OFFSET % DPLL_PHASE_OFFSET_DIVIDER) is a
-       fractional part of a measured phase offset value.
-+  -
-+    type: enum
-+    name: feature-state
-+    doc: |
-+      Allow control (enable/disable) and status checking over features.
-+    entries:
-+      -
-+        name: disable
-+        doc: |
-+          feature shall be disabled
-+      -
-+        name: enable
-+        doc: |
-+          feature shall be enabled
+ 	return 0;
+ }
+@@ -746,6 +769,31 @@ int dpll_pin_change_ntf(struct dpll_pin *pin)
+ }
+ EXPORT_SYMBOL_GPL(dpll_pin_change_ntf);
  
- attribute-sets:
-   -
-@@ -293,6 +307,14 @@ attribute-sets:
-           be put to message multiple times to indicate possible parallel
-           quality levels (e.g. one specified by ITU option 1 and another
-           one specified by option 2).
-+      -
-+        name: phase-offset-monitor
-+        type: u32
-+        enum: feature-state
-+        doc: Receive or request state of phase offset monitor feature.
-+          If enabled, dpll device shall monitor and notify all currently
-+          available inputs for changes of their phase offset against the
-+          dpll device.
-   -
-     name: pin
-     enum-name: dpll_a_pin
-@@ -483,6 +505,7 @@ operations:
-             - temp
-             - clock-id
-             - type
-+            - phase-offset-monitor
++static int
++dpll_phase_offset_monitor_set(struct dpll_device *dpll, struct nlattr *a,
++			      struct netlink_ext_ack *extack)
++{
++	const struct dpll_device_ops *ops = dpll_device_ops(dpll);
++	enum dpll_feature_state state = nla_get_u32(a), old_state;
++	int ret;
++
++	if (!(ops->phase_offset_monitor_set && ops->phase_offset_monitor_get)) {
++		NL_SET_ERR_MSG_ATTR(extack, a, "dpll device not capable of phase offset monitor");
++		return -EOPNOTSUPP;
++	}
++	ret = ops->phase_offset_monitor_get(dpll, dpll_priv(dpll), &old_state,
++					    extack);
++	if (ret) {
++		NL_SET_ERR_MSG(extack, "unable to get current state of phase offset monitor");
++		return ret;
++	}
++	if (state == old_state)
++		return 0;
++
++	return ops->phase_offset_monitor_set(dpll, dpll_priv(dpll), state,
++					     extack);
++}
++
+ static int
+ dpll_pin_freq_set(struct dpll_pin *pin, struct nlattr *a,
+ 		  struct netlink_ext_ack *extack)
+@@ -1533,10 +1581,27 @@ int dpll_nl_device_get_doit(struct sk_buff *skb, struct genl_info *info)
+ 	return genlmsg_reply(msg, info);
+ }
  
-       dump:
-         reply: *dev-attrs
-@@ -499,6 +522,7 @@ operations:
-         request:
-           attributes:
-             - id
-+            - phase-offset-monitor
-     -
-       name: device-create-ntf
-       doc: Notification about device appearing
-diff --git a/drivers/dpll/dpll_nl.c b/drivers/dpll/dpll_nl.c
-index fe9b6893d261..8de90310c3be 100644
---- a/drivers/dpll/dpll_nl.c
-+++ b/drivers/dpll/dpll_nl.c
-@@ -37,8 +37,9 @@ static const struct nla_policy dpll_device_get_nl_policy[DPLL_A_ID + 1] = {
++static int
++dpll_set_from_nlattr(struct dpll_device *dpll, struct genl_info *info)
++{
++	int ret;
++
++	if (info->attrs[DPLL_A_PHASE_OFFSET_MONITOR]) {
++		struct nlattr *a = info->attrs[DPLL_A_PHASE_OFFSET_MONITOR];
++
++		ret = dpll_phase_offset_monitor_set(dpll, a, info->extack);
++		if (ret)
++			return ret;
++	}
++
++	return 0;
++}
++
+ int dpll_nl_device_set_doit(struct sk_buff *skb, struct genl_info *info)
+ {
+-	/* placeholder for set command */
+-	return 0;
++	struct dpll_device *dpll = info->user_ptr[0];
++
++	return dpll_set_from_nlattr(dpll, info);
+ }
+ 
+ int dpll_nl_device_get_dumpit(struct sk_buff *skb, struct netlink_callback *cb)
+diff --git a/include/linux/dpll.h b/include/linux/dpll.h
+index 5e4f9ab1cf75..6ad6c2968a28 100644
+--- a/include/linux/dpll.h
++++ b/include/linux/dpll.h
+@@ -30,6 +30,14 @@ struct dpll_device_ops {
+ 				       void *dpll_priv,
+ 				       unsigned long *qls,
+ 				       struct netlink_ext_ack *extack);
++	int (*phase_offset_monitor_set)(const struct dpll_device *dpll,
++					void *dpll_priv,
++					enum dpll_feature_state state,
++					struct netlink_ext_ack *extack);
++	int (*phase_offset_monitor_get)(const struct dpll_device *dpll,
++					void *dpll_priv,
++					enum dpll_feature_state *state,
++					struct netlink_ext_ack *extack);
  };
  
- /* DPLL_CMD_DEVICE_SET - do */
--static const struct nla_policy dpll_device_set_nl_policy[DPLL_A_ID + 1] = {
-+static const struct nla_policy dpll_device_set_nl_policy[DPLL_A_PHASE_OFFSET_MONITOR + 1] = {
- 	[DPLL_A_ID] = { .type = NLA_U32, },
-+	[DPLL_A_PHASE_OFFSET_MONITOR] = NLA_POLICY_MAX(NLA_U32, 1),
- };
- 
- /* DPLL_CMD_PIN_ID_GET - do */
-@@ -105,7 +106,7 @@ static const struct genl_split_ops dpll_nl_ops[] = {
- 		.doit		= dpll_nl_device_set_doit,
- 		.post_doit	= dpll_post_doit,
- 		.policy		= dpll_device_set_nl_policy,
--		.maxattr	= DPLL_A_ID,
-+		.maxattr	= DPLL_A_PHASE_OFFSET_MONITOR,
- 		.flags		= GENL_ADMIN_PERM | GENL_CMD_CAP_DO,
- 	},
- 	{
-diff --git a/include/uapi/linux/dpll.h b/include/uapi/linux/dpll.h
-index bf97d4b6d51f..349e1b3ca1ae 100644
---- a/include/uapi/linux/dpll.h
-+++ b/include/uapi/linux/dpll.h
-@@ -192,6 +192,17 @@ enum dpll_pin_capabilities {
- 
- #define DPLL_PHASE_OFFSET_DIVIDER	1000
- 
-+/**
-+ * enum dpll_feature_state - Allow control (enable/disable) and status checking
-+ *   over features.
-+ * @DPLL_FEATURE_STATE_DISABLE: feature shall be disabled
-+ * @DPLL_FEATURE_STATE_ENABLE: feature shall be enabled
-+ */
-+enum dpll_feature_state {
-+	DPLL_FEATURE_STATE_DISABLE,
-+	DPLL_FEATURE_STATE_ENABLE,
-+};
-+
- enum dpll_a {
- 	DPLL_A_ID = 1,
- 	DPLL_A_MODULE_NAME,
-@@ -204,6 +215,7 @@ enum dpll_a {
- 	DPLL_A_TYPE,
- 	DPLL_A_LOCK_STATUS_ERROR,
- 	DPLL_A_CLOCK_QUALITY_LEVEL,
-+	DPLL_A_PHASE_OFFSET_MONITOR,
- 
- 	__DPLL_A_MAX,
- 	DPLL_A_MAX = (__DPLL_A_MAX - 1)
+ struct dpll_pin_ops {
 -- 
 2.38.1
 
