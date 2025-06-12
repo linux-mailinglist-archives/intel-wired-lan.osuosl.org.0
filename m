@@ -1,112 +1,111 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42B58AD7958
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Jun 2025 19:49:23 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id AD07FAD77BE
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Jun 2025 18:14:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 86B4861407;
-	Thu, 12 Jun 2025 17:49:12 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6B4C140898;
+	Thu, 12 Jun 2025 16:14:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KyBA29RMpWqb; Thu, 12 Jun 2025 17:49:11 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id pa2PQnFjtyTx; Thu, 12 Jun 2025 16:14:03 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 66DAC61410
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D57F24089D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1749750550;
-	bh=ztowZjbygS/U6LoTHLM9WPQ3ECJHFYZWZ2wZR/N4wEQ=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=woT3AZ8Ioy982XOfbBSH6rPKG9ip3N/DYHj2KeM21GJoh/uS/x5Uyye1VdsY8xwvK
-	 rsTZej/VIpSGtOQz0aZI2RblQPZiXVJHswUQDAnPdT+9OdhLQzzDTXxhPytvHPQ9u9
-	 n5JR6P/vDllOn7STCFBJAKGEHqeU9iYudYcC88PLV6lcFmYizyiyp3+a+YxsARrEhK
-	 19ALhZWsv1u4wVl8ObaauXpUQ4e3Fhr3AK0LmenSm553uo/f4veRUbZbbXfE4BbIy2
-	 X57uugR6DPBJYpz6ZTulUwD1Fa4fMKZhpI3TKBJVN5RsflTJLT0ip5WBxHyvkCb7eW
-	 YBH4zp7lKYzew==
+	s=default; t=1749744842;
+	bh=ihkZgVUzQqGvvmt/oKfsiY5SM+COVVcX+bS+R4pesBQ=;
+	h=From:To:CC:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=s6d4+lvO/pnTpC1ewg6iWz4JLO2plQE3IxRmTxsqZtMFsQPk9y0SVpskdtr4vzoWA
+	 a0KaX1wu3gE8YX2Fg22H1x3cyL6eHBA3EknzFD3xv+wgpMOB6j3Rmqq+gKFgn0tJsG
+	 n2Sh3XokzhNlrIwnMCHN6DfrESktDjEEfe3GJ6ZM4zFdG30ZjQXfrCu1rfaM5D0ag7
+	 H0U6pqkG4/3A3pf+LkUgu/4uvsInn6x033xviGEr6Rm4PJReLoM8OkaPK7rc1fqvIR
+	 nr/NoQN1aFaOwMcl1RJrsWfROxl7L5xwmITUkrGaOOel/foJlqib2ZItdb7hOssdot
+	 UN8df/+TbPtgA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 66DAC61410;
-	Thu, 12 Jun 2025 17:49:10 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D57F24089D;
+	Thu, 12 Jun 2025 16:14:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 766551BD
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Jun 2025 16:10:48 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 207B61E0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Jun 2025 16:14:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6886783434
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Jun 2025 16:10:48 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 125DE838E0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Jun 2025 16:14:01 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id z-28lxWl8CPY for <intel-wired-lan@lists.osuosl.org>;
- Thu, 12 Jun 2025 16:10:47 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
- helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
+ id 4kXKOI2Tangr for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 12 Jun 2025 16:14:00 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=99.78.197.220;
+ helo=smtp-fw-80009.amazon.com; envelope-from=prvs=251035ea3=enjuk@amazon.co.jp;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org B484883410
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B484883410
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
- by smtp1.osuosl.org (Postfix) with ESMTPS id B484883410
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Jun 2025 16:10:47 +0000 (UTC)
-X-CSE-ConnectionGUID: YKrtmXyFSLKNnovlrzIywA==
-X-CSE-MsgGUID: AxsL02k6QGqELaTVeLWRWQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11462"; a="55739201"
-X-IronPort-AV: E=Sophos;i="6.16,231,1744095600"; d="scan'208";a="55739201"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
- by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Jun 2025 09:10:48 -0700
-X-CSE-ConnectionGUID: 6p3/DrJsTg6ZPyqWIzD1aw==
-X-CSE-MsgGUID: Uk5iDxCfSqaD0NS/1emfpQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,231,1744095600"; d="scan'208";a="148468690"
-Received: from newjersey.igk.intel.com ([10.102.20.203])
- by orviesa008.jf.intel.com with ESMTP; 12 Jun 2025 09:10:43 -0700
-From: Alexander Lobakin <aleksander.lobakin@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: Alexander Lobakin <aleksander.lobakin@intel.com>,
- Michal Kubiak <michal.kubiak@intel.com>,
- Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>, Simon Horman <horms@kernel.org>,
- nex.sw.ncis.osdt.itp.upstreaming@intel.com, bpf@vger.kernel.org,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org
-Date: Thu, 12 Jun 2025 18:02:34 +0200
-Message-ID: <20250612160234.68682-18-aleksander.lobakin@intel.com>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250612160234.68682-1-aleksander.lobakin@intel.com>
-References: <20250612160234.68682-1-aleksander.lobakin@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 7908283410
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7908283410
+Received: from smtp-fw-80009.amazon.com (smtp-fw-80009.amazon.com
+ [99.78.197.220])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 7908283410
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Jun 2025 16:14:00 +0000 (UTC)
+X-IronPort-AV: E=Sophos;i="6.16,231,1744070400"; d="scan'208";a="210882419"
+Received: from pdx4-co-svc-p1-lb2-vlan2.amazon.com (HELO
+ smtpout.prod.us-west-2.prod.farcaster.email.amazon.dev) ([10.25.36.210])
+ by smtp-border-fw-80009.pdx80.corp.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jun 2025 16:13:59 +0000
+Received: from EX19MTAUWA002.ant.amazon.com [10.0.21.151:58684]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.29.22:2525]
+ with esmtp (Farcaster)
+ id 95d2bb70-4aa7-4273-81da-24e1eb19dfa0; Thu, 12 Jun 2025 16:13:59 +0000 (UTC)
+X-Farcaster-Flow-ID: 95d2bb70-4aa7-4273-81da-24e1eb19dfa0
+Received: from EX19D003ANC003.ant.amazon.com (10.37.240.197) by
+ EX19MTAUWA002.ant.amazon.com (10.250.64.202) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1544.14;
+ Thu, 12 Jun 2025 16:13:59 +0000
+Received: from b0be8375a521.amazon.com (10.37.245.11) by
+ EX19D003ANC003.ant.amazon.com (10.37.240.197) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1544.14;
+ Thu, 12 Jun 2025 16:13:55 +0000
+From: Kohei Enju <enjuk@amazon.com>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel
+ <przemyslaw.kitszel@intel.com>
+CC: <intel-wired-lan@lists.osuosl.org>, <netdev@vger.kernel.org>, Andrew Lunn
+ <andrew+netdev@lunn.ch>, "David S . Miller" <davem@davemloft.net>, "Eric
+ Dumazet" <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+ <pabeni@redhat.com>, Kohei Enju <kohei.enju@gmail.com>, Kohei Enju
+ <enjuk@amazon.com>
+Date: Fri, 13 Jun 2025 01:13:40 +0900
+Message-ID: <20250612161343.66065-2-enjuk@amazon.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mailman-Approved-At: Thu, 12 Jun 2025 17:48:58 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1749744648; x=1781280648;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=X29ySbF7NIGDlQVp1woOlVIfnUo3FpZJcl8ba1PlchM=;
- b=HCF+7YLO5YHN4Mt8/qS9QehXe1gCyUZlj77SyO+NF9Velst+o53JQEuP
- g81BEN1PGQMXJd2r5gu62w1HUdIxEs33zPORwXSYVVrCgRbd+CMWnOHzS
- KY4Gm9eWRBh90OhWlfTRShLsm/hK0v/38ShMF2n+zGepatZkcB3G5CeQJ
- etUp95qsWaBfhb//j07Bg8dK5P/wad+WEO2uYr80jYEcR3AKmN98CI4Vo
- J74J8ECS21n57i02RgjH5wANYmiwQJ3DjsJdV19kcaFPliy64wmB6/Vl6
- I1jUXFD+YjzGM2U5IbdyMiijj3A8MzCZiG9GJlmd6VGOyZBhDJ4rFa+Xl
+Content-Type: text/plain
+X-Originating-IP: [10.37.245.11]
+X-ClientProxiedBy: EX19D044UWA004.ant.amazon.com (10.13.139.7) To
+ EX19D003ANC003.ant.amazon.com (10.37.240.197)
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
+ t=1749744840; x=1781280840;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=ihkZgVUzQqGvvmt/oKfsiY5SM+COVVcX+bS+R4pesBQ=;
+ b=Ao77tH7ic5k5iEOb+DSCfXndVJaS6DO2F4c1D6XTJgwQui+Ves4Bi95B
+ NLqgOJIi5iHTrl3QQrN/7IfE4Y0aBE2TFqEQ1P/SFPo1qzbx8eYHSyDuR
+ GhmGGUXyPhqLN6s23r7CDmCYsOxdQ4YgoggmOdYka4jOMx2JBOn/jVvPk
+ +7UhhHrNdAzKIU461hufsCIgBb7VbPSAmLhMB9dLLclsqelgjyXvL1Tli
+ vXasrW9AAJ9xgAlzZRdi4kNeVk7QhegPEsBxeYquWiB6fA4Xp0S2r5ya1
+ kpsp7FodXLckg8J7hfopyCPZqisYlbPoxWmgT55tqxO8ubnV7C4MhuNba
  g==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
+ dmarc=pass (p=quarantine dis=none)
+ header.from=amazon.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=HCF+7YLO
-Subject: [Intel-wired-lan] [PATCH iwl-next v2 17/17] libeth: xdp,
- xsk: access adjacent u32s as u64 where applicable
+ dkim=pass (2048-bit key,
+ unprotected) header.d=amazon.com header.i=@amazon.com header.a=rsa-sha256
+ header.s=amazoncorp2 header.b=Ao77tH7i
+Subject: [Intel-wired-lan] [PATCH iwl-next v1] igbvf: remove unused
+ interrupt counter fields from struct igbvf_adapter
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -122,134 +121,58 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 64-bit systems, writing/reading one u64 is faster than two u32s even
-when they're are adjacent in a struct. The compilers won't guarantee
-they will combine those; I observed both successful and unsuccessful
-attempts with both GCC and Clang, and it's not easy to say what it
-depends on.
-There's a few places in libeth_xdp winning up to several percent from
-combined access (both performance and object code size, especially
-when unrolling). Add __LIBETH_WORD_ACCESS and use it there on LE.
-Drivers are free to optimize HW-specific callbacks under the same
-definition.
+Remove `int_counter0` and `int_counter1` from struct igbvf_adapter since
+they are only incremented in interrupt handlers igbvf_intr_msix_rx() and
+igbvf_msix_other(), but never read or used anywhere in the driver.
 
-Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+Note that igbvf_intr_msix_tx() does not have similar counter increments,
+suggesting that these were likely overlooked during development.
+
+Eliminate the fields and their unnecessary accesses in interrupt
+handlers.
+
+Tested-by: Kohei Enju <enjuk@amazon.com>
+Signed-off-by: Kohei Enju <enjuk@amazon.com>
 ---
- include/net/libeth/xdp.h | 29 ++++++++++++++++++++++++++---
- include/net/libeth/xsk.h | 10 +++++-----
- 2 files changed, 31 insertions(+), 8 deletions(-)
+ drivers/net/ethernet/intel/igbvf/igbvf.h  | 2 --
+ drivers/net/ethernet/intel/igbvf/netdev.c | 4 ----
+ 2 files changed, 6 deletions(-)
 
-diff --git a/include/net/libeth/xdp.h b/include/net/libeth/xdp.h
-index dba09a9168f1..6ce6aec6884c 100644
---- a/include/net/libeth/xdp.h
-+++ b/include/net/libeth/xdp.h
-@@ -475,6 +475,21 @@ struct libeth_xdp_tx_desc {
- 	((const void *)(uintptr_t)(priv));				      \
- })
+diff --git a/drivers/net/ethernet/intel/igbvf/igbvf.h b/drivers/net/ethernet/intel/igbvf/igbvf.h
+index ca6e44245a7b..ba9c3fee6da7 100644
+--- a/drivers/net/ethernet/intel/igbvf/igbvf.h
++++ b/drivers/net/ethernet/intel/igbvf/igbvf.h
+@@ -238,8 +238,6 @@ struct igbvf_adapter {
+ 	int int_mode;
+ 	u32 eims_enable_mask;
+ 	u32 eims_other;
+-	u32 int_counter0;
+-	u32 int_counter1;
  
-+/*
-+ * On 64-bit systems, assigning one u64 is faster than two u32s. When ::len
-+ * occupies lowest 32 bits (LE), whole ::opts can be assigned directly instead.
-+ */
-+#ifdef __LITTLE_ENDIAN
-+#define __LIBETH_WORD_ACCESS		1
-+#endif
-+#ifdef __LIBETH_WORD_ACCESS
-+#define __libeth_xdp_tx_len(flen, ...)					      \
-+	.opts = ((flen) | FIELD_PREP(GENMASK_ULL(63, 32), (__VA_ARGS__ + 0)))
-+#else
-+#define __libeth_xdp_tx_len(flen, ...)					      \
-+	.len = (flen), .flags = (__VA_ARGS__ + 0)
-+#endif
-+
- /**
-  * libeth_xdp_tx_xmit_bulk - main XDP Tx function
-  * @bulk: array of frames to send
-@@ -870,8 +885,7 @@ static inline u32 libeth_xdp_xmit_queue_head(struct libeth_xdp_tx_bulk *bq,
+ 	u32 eeprom_wol;
+ 	u32 wol;
+diff --git a/drivers/net/ethernet/intel/igbvf/netdev.c b/drivers/net/ethernet/intel/igbvf/netdev.c
+index beb01248600f..33104408007a 100644
+--- a/drivers/net/ethernet/intel/igbvf/netdev.c
++++ b/drivers/net/ethernet/intel/igbvf/netdev.c
+@@ -855,8 +855,6 @@ static irqreturn_t igbvf_msix_other(int irq, void *data)
+ 	struct igbvf_adapter *adapter = netdev_priv(netdev);
+ 	struct e1000_hw *hw = &adapter->hw;
  
- 	bq->bulk[bq->count++] = (typeof(*bq->bulk)){
- 		.xdpf	= xdpf,
--		.len	= xdpf->len,
--		.flags	= LIBETH_XDP_TX_FIRST,
-+		__libeth_xdp_tx_len(xdpf->len, LIBETH_XDP_TX_FIRST),
- 	};
+-	adapter->int_counter1++;
+-
+ 	hw->mac.get_link_status = 1;
+ 	if (!test_bit(__IGBVF_DOWN, &adapter->state))
+ 		mod_timer(&adapter->watchdog_timer, jiffies + 1);
+@@ -899,8 +897,6 @@ static irqreturn_t igbvf_intr_msix_rx(int irq, void *data)
+ 	struct net_device *netdev = data;
+ 	struct igbvf_adapter *adapter = netdev_priv(netdev);
  
- 	if (!xdp_frame_has_frags(xdpf))
-@@ -902,7 +916,7 @@ static inline bool libeth_xdp_xmit_queue_frag(struct libeth_xdp_tx_bulk *bq,
- 
- 	bq->bulk[bq->count++] = (typeof(*bq->bulk)){
- 		.dma	= dma,
--		.len	= skb_frag_size(frag),
-+		__libeth_xdp_tx_len(skb_frag_size(frag)),
- 	};
- 
- 	return true;
-@@ -1260,6 +1274,7 @@ bool libeth_xdp_buff_add_frag(struct libeth_xdp_buff *xdp,
-  * Internal, use libeth_xdp_process_buff() instead. Initializes XDP buffer
-  * head with the Rx buffer data: data pointer, length, headroom, and
-  * truesize/tailroom. Zeroes the flags.
-+ * Uses faster single u64 write instead of per-field access.
-  */
- static inline void libeth_xdp_prepare_buff(struct libeth_xdp_buff *xdp,
- 					   const struct libeth_fqe *fqe,
-@@ -1267,7 +1282,15 @@ static inline void libeth_xdp_prepare_buff(struct libeth_xdp_buff *xdp,
- {
- 	const struct page *page = __netmem_to_page(fqe->netmem);
- 
-+#ifdef __LIBETH_WORD_ACCESS
-+	static_assert(offsetofend(typeof(xdp->base), flags) -
-+		      offsetof(typeof(xdp->base), frame_sz) ==
-+		      sizeof(u64));
-+
-+	*(u64 *)&xdp->base.frame_sz = fqe->truesize;
-+#else
- 	xdp_init_buff(&xdp->base, fqe->truesize, xdp->base.rxq);
-+#endif
- 	xdp_prepare_buff(&xdp->base, page_address(page) + fqe->offset,
- 			 page->pp->p.offset, len, true);
- }
-diff --git a/include/net/libeth/xsk.h b/include/net/libeth/xsk.h
-index 213778a68476..481a7b28e6f2 100644
---- a/include/net/libeth/xsk.h
-+++ b/include/net/libeth/xsk.h
-@@ -26,8 +26,8 @@ static inline bool libeth_xsk_tx_queue_head(struct libeth_xdp_tx_bulk *bq,
- {
- 	bq->bulk[bq->count++] = (typeof(*bq->bulk)){
- 		.xsk	= xdp,
--		.len	= xdp->base.data_end - xdp->data,
--		.flags	= LIBETH_XDP_TX_FIRST,
-+		__libeth_xdp_tx_len(xdp->base.data_end - xdp->data,
-+				    LIBETH_XDP_TX_FIRST),
- 	};
- 
- 	if (likely(!xdp_buff_has_frags(&xdp->base)))
-@@ -48,7 +48,7 @@ static inline void libeth_xsk_tx_queue_frag(struct libeth_xdp_tx_bulk *bq,
- {
- 	bq->bulk[bq->count++] = (typeof(*bq->bulk)){
- 		.xsk	= frag,
--		.len	= frag->base.data_end - frag->data,
-+		__libeth_xdp_tx_len(frag->base.data_end - frag->data),
- 	};
- }
- 
-@@ -199,7 +199,7 @@ __libeth_xsk_xmit_fill_buf_md(const struct xdp_desc *xdesc,
- 	ctx = xsk_buff_raw_get_ctx(sq->pool, xdesc->addr);
- 	desc = (typeof(desc)){
- 		.addr	= ctx.dma,
--		.len	= xdesc->len,
-+		__libeth_xdp_tx_len(xdesc->len),
- 	};
- 
- 	BUILD_BUG_ON(!__builtin_constant_p(tmo == libeth_xsktmo));
-@@ -226,7 +226,7 @@ __libeth_xsk_xmit_fill_buf(const struct xdp_desc *xdesc,
- {
- 	return (struct libeth_xdp_tx_desc){
- 		.addr	= xsk_buff_raw_get_dma(sq->pool, xdesc->addr),
--		.len	= xdesc->len,
-+		__libeth_xdp_tx_len(xdesc->len),
- 	};
- }
- 
+-	adapter->int_counter0++;
+-
+ 	/* Write the ITR value calculated at the end of the
+ 	 * previous interrupt.
+ 	 */
 -- 
 2.49.0
 
