@@ -1,94 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 54D85AD91F9
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Jun 2025 17:52:18 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6CB6E40A9D;
-	Fri, 13 Jun 2025 15:52:16 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TJc0q4Oz-nW6; Fri, 13 Jun 2025 15:52:15 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CC50840AA3
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1749829935;
-	bh=yV1sWZeZVf/FIQXque4O5JP0sG577Rz8Lj6jjxTnW8c=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=LuHCM96WTCwzX7L/9GPXXa8oiabA03N+nsc3uKfY/19YLqldGd/BSypSl3jKmf0lc
-	 YttOwj6Q6C8deWdOWhPWfB4t/uMDq4sm1go2Omcf7KQKXsZEq8n5Hrwd1Azbd2cfrR
-	 bl5Wi89Gppain3vJg5JOZpCVlYcfuUD/LChacO9oJyRhsWz2A3dISTOFxQ5nsWeRtY
-	 iQoII4lA8MMI2dLnIORn93Vjl9txvexgBfm49xcz4UNoOT0QU3qCl2OHiGolzdQ6Ri
-	 gYrRiJC9k0/SiJ+x3iPxeywP9TfPvO+7xFQ+Zc58hG1wiylhxrYbhilQQ0VrqWm/+Z
-	 0OmDOTCUdzSdA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CC50840AA3;
-	Fri, 13 Jun 2025 15:52:15 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id E7B84183
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 15:52:13 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0DC09AD9295
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Jun 2025 18:08:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D98E3842B5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 15:52:13 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8CDEF842CF;
+	Fri, 13 Jun 2025 16:08:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id BfHX1WujqghA for <intel-wired-lan@lists.osuosl.org>;
- Fri, 13 Jun 2025 15:52:13 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=95.215.58.182;
- helo=out-182.mta1.migadu.com; envelope-from=vadim.fedorenko@linux.dev;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org E2FAE842AF
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E2FAE842AF
-Received: from out-182.mta1.migadu.com (out-182.mta1.migadu.com
- [95.215.58.182])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E2FAE842AF
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 15:52:12 +0000 (UTC)
-Message-ID: <2ac62524-e45f-4ef6-a8b4-01adfd1391c2@linux.dev>
-Date: Fri, 13 Jun 2025 16:52:01 +0100
-MIME-Version: 1.0
-To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
- donald.hunter@gmail.com, kuba@kernel.org, davem@davemloft.net,
- edumazet@google.com, pabeni@redhat.com, horms@kernel.org, jiri@resnulli.us,
- anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- andrew+netdev@lunn.ch, aleksandr.loktionov@intel.com,
- milena.olech@intel.com, corbet@lwn.net
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-doc@vger.kernel.org
-References: <20250612152835.1703397-1-arkadiusz.kubalewski@intel.com>
-Content-Language: en-US
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
- include these headers.
-From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-In-Reply-To: <20250612152835.1703397-1-arkadiusz.kubalewski@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Migadu-Flow: FLOW_OUT
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linux.dev; s=key1; t=1749829927;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=yV1sWZeZVf/FIQXque4O5JP0sG577Rz8Lj6jjxTnW8c=;
- b=hZXefQ1zsdCjt1DrWrZaHhu7+CM+Ie5JgTIalZx7nqY2js+eUhbVLFm+cSahtcLnRIBMtM
- 6Sz8pXb9SRPlAlw2wYYU4/SHhLiAkOSjhVDfP9VYIdDUZ9PPtKK+y8h7nhiqz3VPpTXXrV
- dwMnBcwhhkVjWndrPKIgkldwS4zTTlA=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ id PWRWZtmeeqai; Fri, 13 Jun 2025 16:08:50 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 939F68435B
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1749830930;
+	bh=Yh2s/JlWAxm7JiIOG35EuY5bO3nnzYYM7DzjporTELQ=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=km/C6d9O3Ed8k+SPSj4PrwnJz5qOB8DEIQH5Odcm/SE8ywu7o4BBIh+DN7bRoDBvx
+	 8LLg3oi2u4ABzEUYfAmM7cvQNUG4rSM+lim9pN8Xdo7As+P568rSCc2puiMKjYr5jS
+	 i/tnB8bGzK+hkbvpu6vb5c1X3OJYg1ZkyEvalqkjfDWySovPqPj94Hd2L5H6hF1qLb
+	 3g4MILoi5Gc8MUAewKJruFQ9XLzB//nls36ykqoJAmukeJ56g6BE3B7hkuzjzqcN/W
+	 YfFmUypbZjfebIVeXD9hlWIWXzoz24NDvNq4y5uMqDaB44hHTzqw4RtU2qQJ679TZX
+	 dAGfpgnNJ0NJg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 939F68435B;
+	Fri, 13 Jun 2025 16:08:50 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 80349115
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 16:08:49 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 66D554049A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 16:08:49 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id t4xM2RX2JBNE for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 13 Jun 2025 16:08:48 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 5777740487
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5777740487
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5777740487
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 16:08:48 +0000 (UTC)
+X-CSE-ConnectionGUID: vq6MdWQQT2uXkyfHD5hX5A==
+X-CSE-MsgGUID: a6iIVO/vRXyFz3iSDT3ZDQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11463"; a="62329101"
+X-IronPort-AV: E=Sophos;i="6.16,234,1744095600"; d="scan'208";a="62329101"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+ by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jun 2025 09:08:47 -0700
+X-CSE-ConnectionGUID: +z0P6RuOSXmWkTFyTlVYaQ==
+X-CSE-MsgGUID: bJaON0TVQFS/3L1VDLC13w==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,234,1744095600"; d="scan'208";a="148331024"
+Received: from lkp-server01.sh.intel.com (HELO e8142ee1dce2) ([10.239.97.150])
+ by fmviesa010.fm.intel.com with ESMTP; 13 Jun 2025 09:02:53 -0700
+Received: from kbuild by e8142ee1dce2 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1uQ6rg-000Cm1-2Y
+ for intel-wired-lan@lists.osuosl.org; Fri, 13 Jun 2025 16:02:48 +0000
+Date: Sat, 14 Jun 2025 00:01:52 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202506140042.6oesIzO6-lkp@intel.com>
+User-Agent: s-nail v14.9.24
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1749830928; x=1781366928;
+ h=date:from:to:subject:message-id;
+ bh=XkEo133++/d+kYopnCd47mH5CmX5kEMXl0K3IsXmLtE=;
+ b=nwiFSx4y2ALPhfFgoGH6+orY1x7FbxGMarCkPh+T5is6Ad68nQqUCWOH
+ t1wQqYhczTw4Vwd1EofumUh4d0Ub/FvJrAeBQnQcKqn4bGxJCskytHmz3
+ sFO0UV3IgRiOTG5PtEhw0X6FqClGY4iVoN/jXEHtiu+QYXzObQOECk8Pw
+ C7tLCXYqekttl74HaJE7n90SM7jNVr8mwoBFoLAn/EYtIK2MD/D4BPk4V
+ t0hDOocUsP0zKCYrNCdJjl9uj3EXVyuayopkH/t4K4m4KBpDgR5yORv61
+ ZlG8aQR6MpqoAamSvuHDqd+OSDADdBcx0S9kmOdlItQXymeJMdPIR2Q+o
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=linux.dev
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256
- header.s=key1 header.b=hZXefQ1z
-Subject: Re: [Intel-wired-lan] [PATCH net-next v6 0/3] dpll: add all inputs
- phase offset monitor
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=nwiFSx4y
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ 4b5e2cf7bca50835e5030137d47d759da3646379
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,81 +104,116 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 12/06/2025 16:28, Arkadiusz Kubalewski wrote:
-> Add dpll device level feature: phase offset monitor.
-> 
-> Phase offset measurement is typically performed against the current active
-> source. However, some DPLL (Digital Phase-Locked Loop) devices may offer
-> the capability to monitor phase offsets across all available inputs.
-> The attribute and current feature state shall be included in the response
-> message of the ``DPLL_CMD_DEVICE_GET`` command for supported DPLL devices.
-> In such cases, users can also control the feature using the
-> ``DPLL_CMD_DEVICE_SET`` command by setting the ``enum dpll_feature_state``
-> values for the attribute.
-> Once enabled the phase offset measurements for the input shall be returned
-> in the ``DPLL_A_PIN_PHASE_OFFSET`` attribute.
-> 
-> Implement feature support in ice driver for dpll-enabled devices.
-> 
-> Verify capability:
-> $ ./tools/net/ynl/pyynl/cli.py \
->   --spec Documentation/netlink/specs/dpll.yaml \
->   --dump device-get
-> [{'clock-id': 4658613174691613800,
->    'id': 0,
->    'lock-status': 'locked-ho-acq',
->    'mode': 'automatic',
->    'mode-supported': ['automatic'],
->    'module-name': 'ice',
->    'type': 'eec'},
->   {'clock-id': 4658613174691613800,
->    'id': 1,
->    'lock-status': 'locked-ho-acq',
->    'mode': 'automatic',
->    'mode-supported': ['automatic'],
->    'module-name': 'ice',
->    'phase-offset-monitor': 'disable',
->    'type': 'pps'}]
-> 
-> Enable the feature:
-> $ ./tools/net/ynl/pyynl/cli.py \
->   --spec Documentation/netlink/specs/dpll.yaml \
->   --do device-set --json '{"id":1, "phase-offset-monitor":"enable"}'
-> 
-> Verify feature is enabled:
-> $ ./tools/net/ynl/pyynl/cli.py \
->   --spec Documentation/netlink/specs/dpll.yaml \
->   --dump device-get
-> [
->   [...]
->   {'capabilities': {'all-inputs-phase-offset-monitor'},
->    'clock-id': 4658613174691613800,
->    'id': 1,
->   [...]
->    'phase-offset-monitor': 'enable',
->   [...]]
-> 
-> v6:
-> - rebase.
-> 
-> Arkadiusz Kubalewski (3):
->    dpll: add phase-offset-monitor feature to netlink spec
->    dpll: add phase_offset_monitor_get/set callback ops
->    ice: add phase offset monitor for all PPS dpll inputs
-> 
->   Documentation/driver-api/dpll.rst             |  18 ++
->   Documentation/netlink/specs/dpll.yaml         |  24 +++
->   drivers/dpll/dpll_netlink.c                   |  69 ++++++-
->   drivers/dpll/dpll_nl.c                        |   5 +-
->   .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  20 ++
->   drivers/net/ethernet/intel/ice/ice_common.c   |  26 +++
->   drivers/net/ethernet/intel/ice/ice_common.h   |   3 +
->   drivers/net/ethernet/intel/ice/ice_dpll.c     | 193 +++++++++++++++++-
->   drivers/net/ethernet/intel/ice/ice_dpll.h     |   8 +
->   drivers/net/ethernet/intel/ice/ice_main.c     |   4 +
->   include/linux/dpll.h                          |   8 +
->   include/uapi/linux/dpll.h                     |  12 ++
->   12 files changed, 384 insertions(+), 6 deletions(-)
-> 
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: 4b5e2cf7bca50835e5030137d47d759da3646379  idpf: convert control queue mutex to a spinlock
 
-Acked-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
+elapsed time: 1456m
+
+configs tested: 97
+configs skipped: 1
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+tested configs:
+alpha                             allnoconfig    gcc-15.1.0
+alpha                            allyesconfig    gcc-15.1.0
+arc                              allmodconfig    gcc-15.1.0
+arc                               allnoconfig    gcc-15.1.0
+arc                              allyesconfig    gcc-15.1.0
+arc                   randconfig-001-20250613    gcc-12.4.0
+arc                   randconfig-002-20250613    gcc-12.4.0
+arm                               allnoconfig    clang-21
+arm                   randconfig-001-20250613    clang-21
+arm                   randconfig-002-20250613    clang-20
+arm                   randconfig-003-20250613    gcc-8.5.0
+arm                   randconfig-004-20250613    clang-21
+arm64                             allnoconfig    gcc-15.1.0
+arm64                 randconfig-001-20250613    gcc-15.1.0
+arm64                 randconfig-002-20250613    clang-21
+arm64                 randconfig-003-20250613    clang-21
+arm64                 randconfig-004-20250613    gcc-15.1.0
+csky                              allnoconfig    gcc-15.1.0
+csky                  randconfig-001-20250613    gcc-15.1.0
+csky                  randconfig-002-20250613    gcc-15.1.0
+hexagon                          allmodconfig    clang-17
+hexagon                           allnoconfig    clang-21
+hexagon                          allyesconfig    clang-21
+hexagon               randconfig-001-20250613    clang-21
+hexagon               randconfig-002-20250613    clang-21
+i386                             allmodconfig    gcc-12
+i386                              allnoconfig    gcc-12
+i386                             allyesconfig    gcc-12
+i386        buildonly-randconfig-001-20250613    gcc-12
+i386        buildonly-randconfig-002-20250613    gcc-11
+i386        buildonly-randconfig-003-20250613    gcc-12
+i386        buildonly-randconfig-004-20250613    clang-20
+i386        buildonly-randconfig-005-20250613    clang-20
+i386        buildonly-randconfig-006-20250613    gcc-12
+i386                                defconfig    clang-20
+loongarch                        allmodconfig    gcc-15.1.0
+loongarch                         allnoconfig    gcc-15.1.0
+loongarch             randconfig-001-20250613    gcc-15.1.0
+loongarch             randconfig-002-20250613    gcc-15.1.0
+m68k                             allmodconfig    gcc-15.1.0
+m68k                              allnoconfig    gcc-15.1.0
+m68k                             allyesconfig    gcc-15.1.0
+microblaze                       allmodconfig    gcc-15.1.0
+microblaze                        allnoconfig    gcc-15.1.0
+microblaze                       allyesconfig    gcc-15.1.0
+mips                              allnoconfig    gcc-15.1.0
+nios2                             allnoconfig    gcc-14.2.0
+nios2                 randconfig-001-20250613    gcc-11.5.0
+nios2                 randconfig-002-20250613    gcc-11.5.0
+openrisc                          allnoconfig    gcc-15.1.0
+parisc                            allnoconfig    gcc-15.1.0
+parisc                randconfig-001-20250613    gcc-8.5.0
+parisc                randconfig-002-20250613    gcc-13.3.0
+powerpc                           allnoconfig    gcc-15.1.0
+powerpc               randconfig-001-20250613    clang-21
+powerpc               randconfig-002-20250613    gcc-8.5.0
+powerpc               randconfig-003-20250613    gcc-9.3.0
+powerpc64             randconfig-001-20250613    gcc-8.5.0
+powerpc64             randconfig-002-20250613    gcc-8.5.0
+powerpc64             randconfig-003-20250613    gcc-10.5.0
+riscv                             allnoconfig    gcc-15.1.0
+riscv                 randconfig-001-20250613    gcc-8.5.0
+riscv                 randconfig-002-20250613    clang-21
+s390                             allmodconfig    clang-18
+s390                              allnoconfig    clang-21
+s390                             allyesconfig    gcc-15.1.0
+s390                  randconfig-001-20250613    clang-21
+s390                  randconfig-002-20250613    clang-21
+sh                               allmodconfig    gcc-15.1.0
+sh                                allnoconfig    gcc-15.1.0
+sh                               allyesconfig    gcc-15.1.0
+sh                    randconfig-001-20250613    gcc-15.1.0
+sh                    randconfig-002-20250613    gcc-15.1.0
+sparc                            allmodconfig    gcc-15.1.0
+sparc                             allnoconfig    gcc-15.1.0
+sparc                 randconfig-001-20250613    gcc-10.3.0
+sparc                 randconfig-002-20250613    gcc-13.3.0
+sparc64               randconfig-001-20250613    gcc-15.1.0
+sparc64               randconfig-002-20250613    gcc-8.5.0
+um                               allmodconfig    clang-19
+um                                allnoconfig    clang-21
+um                               allyesconfig    gcc-12
+um                    randconfig-001-20250613    gcc-12
+um                    randconfig-002-20250613    gcc-12
+x86_64                            allnoconfig    clang-20
+x86_64                           allyesconfig    clang-20
+x86_64      buildonly-randconfig-001-20250613    clang-20
+x86_64      buildonly-randconfig-002-20250613    gcc-12
+x86_64      buildonly-randconfig-003-20250613    gcc-12
+x86_64      buildonly-randconfig-004-20250613    gcc-12
+x86_64      buildonly-randconfig-005-20250613    clang-20
+x86_64      buildonly-randconfig-006-20250613    gcc-12
+x86_64                              defconfig    gcc-11
+x86_64                          rhel-9.4-rust    clang-18
+xtensa                            allnoconfig    gcc-15.1.0
+xtensa                randconfig-001-20250613    gcc-8.5.0
+xtensa                randconfig-002-20250613    gcc-15.1.0
+
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
