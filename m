@@ -1,89 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B733FAD964F
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Jun 2025 22:33:32 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C5299AD9652
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Jun 2025 22:33:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6C7CD60DA2;
-	Fri, 13 Jun 2025 20:33:31 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7189681092;
+	Fri, 13 Jun 2025 20:33:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id wtQk9oa2E3dl; Fri, 13 Jun 2025 20:33:30 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id w_VonSWw4I_z; Fri, 13 Jun 2025 20:33:33 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CACE960E0B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9BC3D80EE2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1749846810;
-	bh=OBk8y2WrRSYe0+qd1bXdlKUoFp7dWqpBPCvB8ZCmdDU=;
+	s=default; t=1749846813;
+	bh=Z1eKBxLffGBEe4AlTfaor7d8YdO+Y5hGW4DOpCWQYdg=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=fMXFuPK7vyCo1K2KjZK7hfg5CxNBxsGPQVhrsMo3tILW9a9BrMiIQaClYuHOyEAkY
-	 upS72r0w3xdY4C3JAgpM59kvWxMTReEi8oqXAHrj8fxcOo1xDGpatbysyXk7+/PaXe
-	 ntYKkvuOgefoWaZ96rVqc0aQSr6yP+/vAUIMQZuvB/Pani3qt66ELcDEcLhgeLL0vk
-	 7nPgLzMeh41WiMCCMUei8jQR6eXyk+i6iiY3PhJ6YwDfUv5YtZXfqT7Z1vgUVT5KqD
-	 Hkwiz0P7yFvyPp+xtcRT1Zfl7PJqdgvxvZho3LxnAGgYvWMEExVWazoME/494lRs4G
-	 8h0YGRDhNUsnw==
+	b=bNQ4vdDrSao1w0vTZQGXj8QGIPUqQ3BIifXTWO0T9qYy0dXQU0jt1O0l+FqOJOYXO
+	 Jwcc54wsG3TaCw/RmSf9b5MfoFDLR3TNNxwSuSjVihQ4CrEaGgdRX8NjGt6iKOhYM1
+	 Zw8UX48VrtXqfDR9uOg+ejOrHzmUlHqu6PI/C0TRM9ivz/pdBk9AxPd4nxKVrsXeka
+	 qnimBCoVDOrJXsM7YJmv6xNW7U/VFMTarVjpvG8/oR4MaKpjn60tfaMPISvW1mpgbl
+	 KPymN42em8tVF/laYHPx6qn7znX9GX4ERRTRH0RVNs+o0KkgA8boqKqydbxsfYkEkL
+	 Y0WAO+yn/S+UA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CACE960E0B;
-	Fri, 13 Jun 2025 20:33:30 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9BC3D80EE2;
+	Fri, 13 Jun 2025 20:33:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id A61A9183
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 20:33:29 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 11763183
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 20:33:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8C6B160BF1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 20:33:29 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 02B6360BF1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 20:33:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KRnfciryHNlS for <intel-wired-lan@lists.osuosl.org>;
- Fri, 13 Jun 2025 20:33:29 +0000 (UTC)
+ id wd1rD49x5eGi for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 13 Jun 2025 20:33:30 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::102a; helo=mail-pj1-x102a.google.com;
+ client-ip=2607:f8b0:4864:20::536; helo=mail-pg1-x536.google.com;
  envelope-from=stfomichev@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org F3E3860671
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F3E3860671
-Received: from mail-pj1-x102a.google.com (mail-pj1-x102a.google.com
- [IPv6:2607:f8b0:4864:20::102a])
- by smtp3.osuosl.org (Postfix) with ESMTPS id F3E3860671
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 20:33:28 +0000 (UTC)
-Received: by mail-pj1-x102a.google.com with SMTP id
- 98e67ed59e1d1-3116db72bd7so2766148a91.2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 13:33:28 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 3CED960671
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3CED960671
+Received: from mail-pg1-x536.google.com (mail-pg1-x536.google.com
+ [IPv6:2607:f8b0:4864:20::536])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3CED960671
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 20:33:30 +0000 (UTC)
+Received: by mail-pg1-x536.google.com with SMTP id
+ 41be03b00d2f7-b1396171fb1so1769099a12.2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 13:33:30 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1749846808; x=1750451608;
+ d=1e100.net; s=20230601; t=1749846809; x=1750451609;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=OBk8y2WrRSYe0+qd1bXdlKUoFp7dWqpBPCvB8ZCmdDU=;
- b=ZqYngfeKuyDkhRPKV5JMi9E2qqqvneHaK7t8NhiDsu/5CV9hjAPcd0lWSomuPqOSlK
- B2fHzb6M9lfBUiVgvuRtjDxHILAx+X94PPmu15i2YZwAlFKa4x1LThAuLgAth4TUmeOF
- mqD+uaWEpS5xk3RtCsAD6Q1h5Mx/cbu0dWt8txkhxOa/iFZsiIX/tlvhOFrA8/baNZsC
- SlXkEBSzf6odXSQDWNWpf7RnwR+M2LRyuUf9nTBpTmL5nssDSry6a5+Ts8kcKDyO0uNM
- VfEi4BQ52NFGtTUC2cy2KBMe3uUyppme8k8V07fhooPNKtsYtRD3ykk1G2lw0yinsqlN
- MT/g==
+ bh=Z1eKBxLffGBEe4AlTfaor7d8YdO+Y5hGW4DOpCWQYdg=;
+ b=A0wCAhVh+Zy0D8nwhr0agqQbaOgpWxP6h/2sxgWY4ya7Uy1w5h4xoxkEwSP60plpEu
+ 4pFLFvtb6kENUe3++Y5ScxttevFaCMWM9xaYYgaB2hgQy/zH4gpMbG7c6FIfl7++PYqQ
+ gbhOEMX24fPJTX+EZtAFSdDrYQSQLFquWZyuQh0MEvT2zFvpgtMM7aqCA5+JvWrRvYls
+ B3KshBdGSUpn374UXptHPYChPZHHmnt4xkbnHl2Nl7et2Vo/HrRZCUSZdeHB5+1EAOUJ
+ 7lyQ+q+fBfHvdF6JucyVAAGktvci5ZnMTWymabu+J/p8kl0lNtysToJZnE12Bsc3rzIj
+ c9sg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW7eJ7EP6jePrupWi7HIwqcZq2vwwL7IIeesve7HaOWLv5LP+6lQFmpUexz5fGWqGLO6EfERlLa/dQx7Ojn+Ts=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YxXKVHqJ7R3S4HSfUK/JBcun+oFhYhgoEwQaQNJzFmPjBRl1GyL
- sNDj29FA7OQqGfK38RrdRkwThOa5+liqjp4Ldd1jHtBiPmNwSecEvgY=
-X-Gm-Gg: ASbGncs+ZEeKRnxTkGDDpGzNCpqOgDRb7Cgg0k7ELeYcvn8QbKcJpbZ6kD9Hgf4YJNu
- 5SWCcwJgagxYZi0NBgpGYsin/mLZX17zSp9rL1sZT9/Wk2LBq6IGnBhUH78OdqjCuBe7hMVIy8F
- qbb0gvz8qElVuUI9HJxauC/e6t5nCBZvuixFcL+w/DEz/raJ4adWhTL1szorB6zTK6DMpBGLxSJ
- V+rXwweNzkjZh0ER+pS1pSg/t1nE5wFemeMD7XrtJPE/t527CX1yvU/OCPiN7nMh86YkjRzQS1T
- 2+dcrMk6pTt0mxq2IzPw8ZRH2OYsR/zuAStXLjz4VIFg4ajZKvq189iZDwWoPXWWTfdiKG6kwPH
- O81LaWS62mTUWYKxlQFsiuGc=
-X-Google-Smtp-Source: AGHT+IHoQe9kZNmiwFgO4UN/YI6LxV+FrHuaz2eiRSh2X5ivyPpLydz1ZML9qM0wZPZU19hVvxBN7A==
-X-Received: by 2002:a17:90b:58e6:b0:312:db8:dbd1 with SMTP id
- 98e67ed59e1d1-313f1ca7bb8mr1421800a91.5.1749846808151; 
- Fri, 13 Jun 2025 13:33:28 -0700 (PDT)
+ AJvYcCX/xe6YmKvO2Yd03pQF9QK9NcipV7/pausEWjoDc9+JEuBTHINmo2X4CsN51xEjIovc02hLImG485yqv8BM1hM=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yyrzim/PmMPBwuJX0TGHW2ayuKdoKoawaiy7deywEfIsnPYnWJq
+ RnOMEKx67lPxRwKGGBXxZk+rH8r4OyVO9QCiFDlUZC3x0sxrkXhulbs=
+X-Gm-Gg: ASbGncsXyZLaatA9j72u1QhHCSFVlSqRMHOFdsjlkq8p0XakX53efL47VwU9zhRWbVD
+ ozUGk/GtrfNKSLwg4QU87zvK3vMd/f3yEfYsiW1CvHHrJsjtTytC1jSi6DoHcVis7ssmPurdLTp
+ ab/XPnMHESES2JSwXy7cgXvm1rqI9CvKuJXYgJXwoDNlrx6OPjT0v40ncmzn8h9YVmodIfzAm9N
+ 7poiSqlmS1YsTajqgl9Eu7ovRafDrHsjNT/SCLS/MG/zQVv+fYeLyRNqlqLyd468PuvYI/bMNF3
+ QkoRsVZHuKXVdmUxvZe/CnfkJA4Rr75qYZbhtOIrJ+8jJtF0KEcTm1cIsxMyXrbe9NNG4YYNBpC
+ NdSly6i5DPy7oxKmlQnBjcT0=
+X-Google-Smtp-Source: AGHT+IFzjhuaffrLRD3SnaPHtjYEGlUXNW0DyfRHXKa+uMaTmfULw+e9Y+axbj6oEJJJ9nwLktaA9A==
+X-Received: by 2002:a05:6a21:6191:b0:21a:ecf5:ea71 with SMTP id
+ adf61e73a8af0-21fbd4d6179mr1086802637.15.1749846809450; 
+ Fri, 13 Jun 2025 13:33:29 -0700 (PDT)
 Received: from localhost (c-73-158-218-242.hsd1.ca.comcast.net.
  [73.158.218.242]) by smtp.gmail.com with UTF8SMTPSA id
- d9443c01a7336-2365deaa9dfsm18866135ad.172.2025.06.13.13.33.27
+ d2e1a72fcca58-748900051a6sm2084709b3a.42.2025.06.13.13.33.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Jun 2025 13:33:27 -0700 (PDT)
+ Fri, 13 Jun 2025 13:33:29 -0700 (PDT)
 From: Stanislav Fomichev <stfomichev@gmail.com>
 To: netdev@vger.kernel.org
 Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
@@ -100,33 +100,32 @@ Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
  linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
  linux-rdma@vger.kernel.org, oss-drivers@corigine.com,
  linux-net-drivers@amd.com, linux-kselftest@vger.kernel.org, leon@kernel.org
-Date: Fri, 13 Jun 2025 13:33:20 -0700
-Message-ID: <20250613203325.1127217-2-stfomichev@gmail.com>
+Date: Fri, 13 Jun 2025 13:33:21 -0700
+Message-ID: <20250613203325.1127217-3-stfomichev@gmail.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250613203325.1127217-1-stfomichev@gmail.com>
 References: <20250613203325.1127217-1-stfomichev@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1749846808; x=1750451608; darn=lists.osuosl.org;
+ d=gmail.com; s=20230601; t=1749846809; x=1750451609; darn=lists.osuosl.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=OBk8y2WrRSYe0+qd1bXdlKUoFp7dWqpBPCvB8ZCmdDU=;
- b=OV0Wrbma9gYeXUTCcg5vfrBlVinr6LWqFTd7YeMidLgOndRNcrh9NFuWHzlxbttz1i
- Nb48hqIabZ7xI52d9mUU+b/ICH2i99GDwjoZCZuQln+01ig+6xtjhhdHDu/XzkOthh8k
- zB2rvgZ6InqD5z4SnOtKdZ9RIzBNnLqVr95F59+F0rkpEkXKpzzwoxGu+4EX5JE7ARdi
- GaH4lngSjs0ADy8V8GyxAEO/3mzJOotaRx62k6UrWDuLtbqXVniAr+wa4gTdVTDzdyRH
- dZo+pQJlq74w75XEv+TJntqmpuriVN1QC0qgEVWCz8iMoXEJ0coGEGr7YLY87IJK9qQx
- r7ww==
+ bh=Z1eKBxLffGBEe4AlTfaor7d8YdO+Y5hGW4DOpCWQYdg=;
+ b=hhRmav6FpaZBYIqShT0sffEiebDQ/EKcGW39n9BptN/zAu7zN3WUi9rPlOv8/RVZ6/
+ SSlzeswRqOkOtGS6yTIJdxdVXBqh7SR9rH7CQzIZaTSNTTYk2KkuELVvEM9PtGrFu+YS
+ 7KKCrgqGUyWjdptfTiTzExB1rzpTOfJE3Qa2Qoh/+UowP87g7XP88aw1Y6I3Wol0j+Jd
+ rU6F8a4CrbbmZaWjTppR1nmzogw8Wb9d3mKcYYeuLcgoaqYxGVBIHKn6p3BT7Sv39yMa
+ XEHt2Z6vIp8Xf5FAbu0meCoxaYpM4Av0WJFVkL1a4kE2UFizVD4x8SaMPBTnb9jUR3Q7
+ qFbw==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=OV0Wrbma
-Subject: [Intel-wired-lan] [PATCH net-next v4 1/6] geneve: rely on rtnl lock
- in geneve_offload_rx_ports
+ header.a=rsa-sha256 header.s=20230601 header.b=hhRmav6F
+Subject: [Intel-wired-lan] [PATCH net-next v4 2/6] vxlan: drop sock_lock
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -142,50 +141,260 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-udp_tunnel_push_rx_port will grab mutex in the next patch so
-we can't use rcu. geneve_offload_rx_ports is called
-from geneve_netdevice_event for NETDEV_UDP_TUNNEL_PUSH_INFO and
-NETDEV_UDP_TUNNEL_DROP_INFO which both have ASSERT_RTNL.
-Entries are added to and removed from the sock_list under rtnl
-lock as well (when adding or removing a tunneling device).
+We won't be able to sleep soon in vxlan_offload_rx_ports and won't be
+able to grab sock_lock. Instead of having separate spinlock to
+manage sockets, rely on rtnl lock. This is similar to how geneve
+manages its sockets.
 
 Signed-off-by: Stanislav Fomichev <stfomichev@gmail.com>
 ---
- drivers/net/geneve.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ drivers/net/vxlan/vxlan_core.c      | 34 +++++++++++++----------------
+ drivers/net/vxlan/vxlan_private.h   |  2 +-
+ drivers/net/vxlan/vxlan_vnifilter.c | 18 ++++++---------
+ 3 files changed, 23 insertions(+), 31 deletions(-)
 
-diff --git a/drivers/net/geneve.c b/drivers/net/geneve.c
-index ffc15a432689..9efedc6758bf 100644
---- a/drivers/net/geneve.c
-+++ b/drivers/net/geneve.c
-@@ -41,6 +41,7 @@ MODULE_PARM_DESC(log_ecn_error, "Log packets received with corrupted ECN");
- /* per-network namespace private data for this module */
- struct geneve_net {
- 	struct list_head	geneve_list;
-+	/* sock_list is protected by rtnl lock */
- 	struct list_head	sock_list;
- };
+diff --git a/drivers/net/vxlan/vxlan_core.c b/drivers/net/vxlan/vxlan_core.c
+index 97792de896b7..01362e98325c 100644
+--- a/drivers/net/vxlan/vxlan_core.c
++++ b/drivers/net/vxlan/vxlan_core.c
+@@ -1487,19 +1487,19 @@ static bool __vxlan_sock_release_prep(struct vxlan_sock *vs)
+ {
+ 	struct vxlan_net *vn;
  
-@@ -1179,8 +1180,9 @@ static void geneve_offload_rx_ports(struct net_device *dev, bool push)
- 	struct geneve_net *gn = net_generic(net, geneve_net_id);
- 	struct geneve_sock *gs;
- 
--	rcu_read_lock();
--	list_for_each_entry_rcu(gs, &gn->sock_list, list) {
 +	ASSERT_RTNL();
 +
-+	list_for_each_entry(gs, &gn->sock_list, list) {
- 		if (push) {
- 			udp_tunnel_push_rx_port(dev, gs->sock,
- 						UDP_TUNNEL_TYPE_GENEVE);
-@@ -1189,7 +1191,6 @@ static void geneve_offload_rx_ports(struct net_device *dev, bool push)
- 						UDP_TUNNEL_TYPE_GENEVE);
+ 	if (!vs)
+ 		return false;
+ 	if (!refcount_dec_and_test(&vs->refcnt))
+ 		return false;
+ 
+ 	vn = net_generic(sock_net(vs->sock->sk), vxlan_net_id);
+-	spin_lock(&vn->sock_lock);
+ 	hlist_del_rcu(&vs->hlist);
+ 	udp_tunnel_notify_del_rx_port(vs->sock,
+ 				      (vs->flags & VXLAN_F_GPE) ?
+ 				      UDP_TUNNEL_TYPE_VXLAN_GPE :
+ 				      UDP_TUNNEL_TYPE_VXLAN);
+-	spin_unlock(&vn->sock_lock);
+ 
+ 	return true;
+ }
+@@ -2847,26 +2847,23 @@ static void vxlan_cleanup(struct timer_list *t)
+ 
+ static void vxlan_vs_del_dev(struct vxlan_dev *vxlan)
+ {
+-	struct vxlan_net *vn = net_generic(vxlan->net, vxlan_net_id);
++	ASSERT_RTNL();
+ 
+-	spin_lock(&vn->sock_lock);
+ 	hlist_del_init_rcu(&vxlan->hlist4.hlist);
+ #if IS_ENABLED(CONFIG_IPV6)
+ 	hlist_del_init_rcu(&vxlan->hlist6.hlist);
+ #endif
+-	spin_unlock(&vn->sock_lock);
+ }
+ 
+ static void vxlan_vs_add_dev(struct vxlan_sock *vs, struct vxlan_dev *vxlan,
+ 			     struct vxlan_dev_node *node)
+ {
+-	struct vxlan_net *vn = net_generic(vxlan->net, vxlan_net_id);
+ 	__be32 vni = vxlan->default_dst.remote_vni;
+ 
++	ASSERT_RTNL();
++
+ 	node->vxlan = vxlan;
+-	spin_lock(&vn->sock_lock);
+ 	hlist_add_head_rcu(&node->hlist, vni_head(vs, vni));
+-	spin_unlock(&vn->sock_lock);
+ }
+ 
+ /* Setup stats when device is created */
+@@ -3291,9 +3288,10 @@ static void vxlan_offload_rx_ports(struct net_device *dev, bool push)
+ 	struct vxlan_net *vn = net_generic(net, vxlan_net_id);
+ 	unsigned int i;
+ 
+-	spin_lock(&vn->sock_lock);
++	ASSERT_RTNL();
++
+ 	for (i = 0; i < PORT_HASH_SIZE; ++i) {
+-		hlist_for_each_entry_rcu(vs, &vn->sock_list[i], hlist) {
++		hlist_for_each_entry(vs, &vn->sock_list[i], hlist) {
+ 			unsigned short type;
+ 
+ 			if (vs->flags & VXLAN_F_GPE)
+@@ -3307,7 +3305,6 @@ static void vxlan_offload_rx_ports(struct net_device *dev, bool push)
+ 				udp_tunnel_drop_rx_port(dev, vs->sock, type);
  		}
  	}
--	rcu_read_unlock();
+-	spin_unlock(&vn->sock_lock);
  }
  
  /* Initialize the device structure. */
+@@ -3537,12 +3534,13 @@ static struct vxlan_sock *vxlan_socket_create(struct net *net, bool ipv6,
+ 					      __be16 port, u32 flags,
+ 					      int ifindex)
+ {
+-	struct vxlan_net *vn = net_generic(net, vxlan_net_id);
+ 	struct vxlan_sock *vs;
+ 	struct socket *sock;
+ 	unsigned int h;
+ 	struct udp_tunnel_sock_cfg tunnel_cfg;
+ 
++	ASSERT_RTNL();
++
+ 	vs = kzalloc(sizeof(*vs), GFP_KERNEL);
+ 	if (!vs)
+ 		return ERR_PTR(-ENOMEM);
+@@ -3560,13 +3558,11 @@ static struct vxlan_sock *vxlan_socket_create(struct net *net, bool ipv6,
+ 	refcount_set(&vs->refcnt, 1);
+ 	vs->flags = (flags & VXLAN_F_RCV_FLAGS);
+ 
+-	spin_lock(&vn->sock_lock);
+ 	hlist_add_head_rcu(&vs->hlist, vs_head(net, port));
+ 	udp_tunnel_notify_add_rx_port(sock,
+ 				      (vs->flags & VXLAN_F_GPE) ?
+ 				      UDP_TUNNEL_TYPE_VXLAN_GPE :
+ 				      UDP_TUNNEL_TYPE_VXLAN);
+-	spin_unlock(&vn->sock_lock);
+ 
+ 	/* Mark socket as an encapsulation socket. */
+ 	memset(&tunnel_cfg, 0, sizeof(tunnel_cfg));
+@@ -3590,26 +3586,27 @@ static struct vxlan_sock *vxlan_socket_create(struct net *net, bool ipv6,
+ 
+ static int __vxlan_sock_add(struct vxlan_dev *vxlan, bool ipv6)
+ {
+-	struct vxlan_net *vn = net_generic(vxlan->net, vxlan_net_id);
+ 	bool metadata = vxlan->cfg.flags & VXLAN_F_COLLECT_METADATA;
+ 	struct vxlan_sock *vs = NULL;
+ 	struct vxlan_dev_node *node;
+ 	int l3mdev_index = 0;
+ 
++	ASSERT_RTNL();
++
+ 	if (vxlan->cfg.remote_ifindex)
+ 		l3mdev_index = l3mdev_master_upper_ifindex_by_index(
+ 			vxlan->net, vxlan->cfg.remote_ifindex);
+ 
+ 	if (!vxlan->cfg.no_share) {
+-		spin_lock(&vn->sock_lock);
++		rcu_read_lock();
+ 		vs = vxlan_find_sock(vxlan->net, ipv6 ? AF_INET6 : AF_INET,
+ 				     vxlan->cfg.dst_port, vxlan->cfg.flags,
+ 				     l3mdev_index);
+ 		if (vs && !refcount_inc_not_zero(&vs->refcnt)) {
+-			spin_unlock(&vn->sock_lock);
++			rcu_read_unlock();
+ 			return -EBUSY;
+ 		}
+-		spin_unlock(&vn->sock_lock);
++		rcu_read_unlock();
+ 	}
+ 	if (!vs)
+ 		vs = vxlan_socket_create(vxlan->net, ipv6,
+@@ -4875,7 +4872,6 @@ static __net_init int vxlan_init_net(struct net *net)
+ 	unsigned int h;
+ 
+ 	INIT_LIST_HEAD(&vn->vxlan_list);
+-	spin_lock_init(&vn->sock_lock);
+ 	vn->nexthop_notifier_block.notifier_call = vxlan_nexthop_event;
+ 
+ 	for (h = 0; h < PORT_HASH_SIZE; ++h)
+diff --git a/drivers/net/vxlan/vxlan_private.h b/drivers/net/vxlan/vxlan_private.h
+index d328aed9feef..6c625fb29c6c 100644
+--- a/drivers/net/vxlan/vxlan_private.h
++++ b/drivers/net/vxlan/vxlan_private.h
+@@ -19,8 +19,8 @@ extern const struct rhashtable_params vxlan_vni_rht_params;
+ /* per-network namespace private data for this module */
+ struct vxlan_net {
+ 	struct list_head  vxlan_list;
++	/* sock_list is protected by rtnl lock */
+ 	struct hlist_head sock_list[PORT_HASH_SIZE];
+-	spinlock_t	  sock_lock;
+ 	struct notifier_block nexthop_notifier_block;
+ };
+ 
+diff --git a/drivers/net/vxlan/vxlan_vnifilter.c b/drivers/net/vxlan/vxlan_vnifilter.c
+index 186d0660669a..4ff56d9f8f28 100644
+--- a/drivers/net/vxlan/vxlan_vnifilter.c
++++ b/drivers/net/vxlan/vxlan_vnifilter.c
+@@ -40,11 +40,11 @@ static void vxlan_vs_add_del_vninode(struct vxlan_dev *vxlan,
+ 				     struct vxlan_vni_node *v,
+ 				     bool del)
+ {
+-	struct vxlan_net *vn = net_generic(vxlan->net, vxlan_net_id);
+ 	struct vxlan_dev_node *node;
+ 	struct vxlan_sock *vs;
+ 
+-	spin_lock(&vn->sock_lock);
++	ASSERT_RTNL();
++
+ 	if (del) {
+ 		if (!hlist_unhashed(&v->hlist4.hlist))
+ 			hlist_del_init_rcu(&v->hlist4.hlist);
+@@ -52,7 +52,7 @@ static void vxlan_vs_add_del_vninode(struct vxlan_dev *vxlan,
+ 		if (!hlist_unhashed(&v->hlist6.hlist))
+ 			hlist_del_init_rcu(&v->hlist6.hlist);
+ #endif
+-		goto out;
++		return;
+ 	}
+ 
+ #if IS_ENABLED(CONFIG_IPV6)
+@@ -67,23 +67,21 @@ static void vxlan_vs_add_del_vninode(struct vxlan_dev *vxlan,
+ 		node = &v->hlist4;
+ 		hlist_add_head_rcu(&node->hlist, vni_head(vs, v->vni));
+ 	}
+-out:
+-	spin_unlock(&vn->sock_lock);
+ }
+ 
+ void vxlan_vs_add_vnigrp(struct vxlan_dev *vxlan,
+ 			 struct vxlan_sock *vs,
+ 			 bool ipv6)
+ {
+-	struct vxlan_net *vn = net_generic(vxlan->net, vxlan_net_id);
+ 	struct vxlan_vni_group *vg = rtnl_dereference(vxlan->vnigrp);
+ 	struct vxlan_vni_node *v, *tmp;
+ 	struct vxlan_dev_node *node;
+ 
++	ASSERT_RTNL();
++
+ 	if (!vg)
+ 		return;
+ 
+-	spin_lock(&vn->sock_lock);
+ 	list_for_each_entry_safe(v, tmp, &vg->vni_list, vlist) {
+ #if IS_ENABLED(CONFIG_IPV6)
+ 		if (ipv6)
+@@ -94,26 +92,24 @@ void vxlan_vs_add_vnigrp(struct vxlan_dev *vxlan,
+ 		node->vxlan = vxlan;
+ 		hlist_add_head_rcu(&node->hlist, vni_head(vs, v->vni));
+ 	}
+-	spin_unlock(&vn->sock_lock);
+ }
+ 
+ void vxlan_vs_del_vnigrp(struct vxlan_dev *vxlan)
+ {
+ 	struct vxlan_vni_group *vg = rtnl_dereference(vxlan->vnigrp);
+-	struct vxlan_net *vn = net_generic(vxlan->net, vxlan_net_id);
+ 	struct vxlan_vni_node *v, *tmp;
+ 
++	ASSERT_RTNL();
++
+ 	if (!vg)
+ 		return;
+ 
+-	spin_lock(&vn->sock_lock);
+ 	list_for_each_entry_safe(v, tmp, &vg->vni_list, vlist) {
+ 		hlist_del_init_rcu(&v->hlist4.hlist);
+ #if IS_ENABLED(CONFIG_IPV6)
+ 		hlist_del_init_rcu(&v->hlist6.hlist);
+ #endif
+ 	}
+-	spin_unlock(&vn->sock_lock);
+ }
+ 
+ static void vxlan_vnifilter_stats_get(const struct vxlan_vni_node *vninode,
 -- 
 2.49.0
 
