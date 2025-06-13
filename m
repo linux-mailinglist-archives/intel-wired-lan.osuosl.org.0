@@ -1,89 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5299AD9652
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Jun 2025 22:33:35 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 85757AD9654
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Jun 2025 22:33:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7189681092;
-	Fri, 13 Jun 2025 20:33:34 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id w_VonSWw4I_z; Fri, 13 Jun 2025 20:33:33 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9BC3D80EE2
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1749846813;
-	bh=Z1eKBxLffGBEe4AlTfaor7d8YdO+Y5hGW4DOpCWQYdg=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=bNQ4vdDrSao1w0vTZQGXj8QGIPUqQ3BIifXTWO0T9qYy0dXQU0jt1O0l+FqOJOYXO
-	 Jwcc54wsG3TaCw/RmSf9b5MfoFDLR3TNNxwSuSjVihQ4CrEaGgdRX8NjGt6iKOhYM1
-	 Zw8UX48VrtXqfDR9uOg+ejOrHzmUlHqu6PI/C0TRM9ivz/pdBk9AxPd4nxKVrsXeka
-	 qnimBCoVDOrJXsM7YJmv6xNW7U/VFMTarVjpvG8/oR4MaKpjn60tfaMPISvW1mpgbl
-	 KPymN42em8tVF/laYHPx6qn7znX9GX4ERRTRH0RVNs+o0KkgA8boqKqydbxsfYkEkL
-	 Y0WAO+yn/S+UA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9BC3D80EE2;
-	Fri, 13 Jun 2025 20:33:33 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 11763183
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 20:33:31 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 02B6360BF1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 20:33:31 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3388360E97;
+	Fri, 13 Jun 2025 20:33:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id wd1rD49x5eGi for <intel-wired-lan@lists.osuosl.org>;
- Fri, 13 Jun 2025 20:33:30 +0000 (UTC)
+ id s3PGwagpmY3R; Fri, 13 Jun 2025 20:33:35 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 54D5060E9D
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1749846814;
+	bh=lVRJB0mAROdkAD/JQ6joFIuc5JYFNtzq7KuywkkJrkU=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=j49z6+1lSdZ3zmn0vl+ZVkqwARWnNVWI3mlHO28q5wMHDhQtTgeVt7T2AuuDIa7jm
+	 I+DavDjG0Bup9OuWbce8wBpLikmvmMoySmu4otxhcE0XcrDC4JD+whyvkKokJC6egx
+	 KoMHdNbELbH907zvDsw9sdx2rGY3WMEMKITdrYH/+lxrr5dL0zEh0bKhWb7YxJTw6/
+	 +BfKKDyh1FKeaaqVwSTvmHg4Q1XWR37cdhLL89mn1h2pUsBfTQW3g5r1MNWzvUPEFk
+	 8Ek97Cka399BgUxuI+e2J3GodynqUGWsfgrc9KXs4SQ9rIejRaBRDBvVkjAMrF9qaN
+	 0cwJa5DxFecew==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 54D5060E9D;
+	Fri, 13 Jun 2025 20:33:34 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 1D7F81BD
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 20:33:33 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 034DF60E4A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 20:33:33 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id aJ7XwzDJMFiT for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 13 Jun 2025 20:33:31 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::536; helo=mail-pg1-x536.google.com;
+ client-ip=2607:f8b0:4864:20::631; helo=mail-pl1-x631.google.com;
  envelope-from=stfomichev@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 3CED960671
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3CED960671
-Received: from mail-pg1-x536.google.com (mail-pg1-x536.google.com
- [IPv6:2607:f8b0:4864:20::536])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3CED960671
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 20:33:30 +0000 (UTC)
-Received: by mail-pg1-x536.google.com with SMTP id
- 41be03b00d2f7-b1396171fb1so1769099a12.2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 13:33:30 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org CAD1B60E0B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CAD1B60E0B
+Received: from mail-pl1-x631.google.com (mail-pl1-x631.google.com
+ [IPv6:2607:f8b0:4864:20::631])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id CAD1B60E0B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 20:33:31 +0000 (UTC)
+Received: by mail-pl1-x631.google.com with SMTP id
+ d9443c01a7336-234d366e5f2so33021585ad.1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Jun 2025 13:33:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1749846809; x=1750451609;
+ d=1e100.net; s=20230601; t=1749846811; x=1750451611;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Z1eKBxLffGBEe4AlTfaor7d8YdO+Y5hGW4DOpCWQYdg=;
- b=A0wCAhVh+Zy0D8nwhr0agqQbaOgpWxP6h/2sxgWY4ya7Uy1w5h4xoxkEwSP60plpEu
- 4pFLFvtb6kENUe3++Y5ScxttevFaCMWM9xaYYgaB2hgQy/zH4gpMbG7c6FIfl7++PYqQ
- gbhOEMX24fPJTX+EZtAFSdDrYQSQLFquWZyuQh0MEvT2zFvpgtMM7aqCA5+JvWrRvYls
- B3KshBdGSUpn374UXptHPYChPZHHmnt4xkbnHl2Nl7et2Vo/HrRZCUSZdeHB5+1EAOUJ
- 7lyQ+q+fBfHvdF6JucyVAAGktvci5ZnMTWymabu+J/p8kl0lNtysToJZnE12Bsc3rzIj
- c9sg==
+ bh=lVRJB0mAROdkAD/JQ6joFIuc5JYFNtzq7KuywkkJrkU=;
+ b=xRCG6FiZhR/qr4bo5GKMeYk5Auo68ZasflnxOXCYqVt4M/gXOg5PXAe+o5gVJhU3xR
+ SOIsAT9/gggLCnJ4jZzSPL6uyRU+eY5+DDbzwhA5xPXXWNo08n0qhjemMcfa5B0UlKWm
+ 4FgBURevhPEXRT1+0hZFkHjPdbQSFy7fbh1Im0H73iTthsEGUJVzA1fiQvGfImyHYhAX
+ 90OclE/iFHxWcJ3Bi+R8ie5bbFLRtmaEcBR2Yo9SXxN0fQnAHTEfZ/cWh+0qDOXdYFoN
+ O6hK4sH/ngMLg5cGwsKWvnVfHw0MNUXzHo3KZQWDWMufrJfEVii78pC/BQ2J71/CVKFa
+ Q9Yg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX/xe6YmKvO2Yd03pQF9QK9NcipV7/pausEWjoDc9+JEuBTHINmo2X4CsN51xEjIovc02hLImG485yqv8BM1hM=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yyrzim/PmMPBwuJX0TGHW2ayuKdoKoawaiy7deywEfIsnPYnWJq
- RnOMEKx67lPxRwKGGBXxZk+rH8r4OyVO9QCiFDlUZC3x0sxrkXhulbs=
-X-Gm-Gg: ASbGncsXyZLaatA9j72u1QhHCSFVlSqRMHOFdsjlkq8p0XakX53efL47VwU9zhRWbVD
- ozUGk/GtrfNKSLwg4QU87zvK3vMd/f3yEfYsiW1CvHHrJsjtTytC1jSi6DoHcVis7ssmPurdLTp
- ab/XPnMHESES2JSwXy7cgXvm1rqI9CvKuJXYgJXwoDNlrx6OPjT0v40ncmzn8h9YVmodIfzAm9N
- 7poiSqlmS1YsTajqgl9Eu7ovRafDrHsjNT/SCLS/MG/zQVv+fYeLyRNqlqLyd468PuvYI/bMNF3
- QkoRsVZHuKXVdmUxvZe/CnfkJA4Rr75qYZbhtOIrJ+8jJtF0KEcTm1cIsxMyXrbe9NNG4YYNBpC
- NdSly6i5DPy7oxKmlQnBjcT0=
-X-Google-Smtp-Source: AGHT+IFzjhuaffrLRD3SnaPHtjYEGlUXNW0DyfRHXKa+uMaTmfULw+e9Y+axbj6oEJJJ9nwLktaA9A==
-X-Received: by 2002:a05:6a21:6191:b0:21a:ecf5:ea71 with SMTP id
- adf61e73a8af0-21fbd4d6179mr1086802637.15.1749846809450; 
- Fri, 13 Jun 2025 13:33:29 -0700 (PDT)
+ AJvYcCVuDriptr6dkWgusSgAdbDHYWVqQtcgNVwSzlOegw4Mzu2FJSyrxzYqwEshxEhxKlhVTtzmrEVbeva0TtjqMbw=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YywqQBTa2GaKXq4zxhFmYRke5iQYvj1/er08uLNbZB1R8eZCotJ
+ yrAtAzp1GKsrxExbaAfCQOdbAI8Uoi/ASBGlx4RbJH1IWDla7AUS8Rc=
+X-Gm-Gg: ASbGncvKDGyGV/n9oWBkPVg7ohvVwwkZFTSbq0AGZ+Xh7tu/8CaoEftmkX4YISnLwGj
+ V1f8Lp6+U3gtUH8KVmi0ofsO57i414Aii1CxBrFwKwUbJttJOMJP43dQHgGupe5nRfI48/20yjA
+ ntkd9YIKKR8KyzBit/sar8mZibZgWhKf1mflgK4pERSs+ReKuHm/uZgQxiZioTMOrh+txAHoZJS
+ V8WQqAOMqZ4gXwMsRKhoyt0igriQDrEKbRqEOxnrkn2DF6WIOgP7+Z02UMQKH9n24ztPsSNEBQT
+ OXrJhxkjX1Lia6fNoXPxAQfvk/YrAwgLjJxQNXCn0r7yGozf49Ib5AM9FfUaJYIDsrEe+Hg/e7J
+ AzhdB3s9gqZB7yh+x2ufgdBo=
+X-Google-Smtp-Source: AGHT+IHRu02QDEyv0tuIpUgdp3unMAw8XjNcsqVTneLyS6OnE1yVl5lkmGFVawicZgvW0E4VV835yw==
+X-Received: by 2002:a17:902:f647:b0:234:c7e6:8459 with SMTP id
+ d9443c01a7336-2366b32a0fbmr10840975ad.20.1749846810919; 
+ Fri, 13 Jun 2025 13:33:30 -0700 (PDT)
 Received: from localhost (c-73-158-218-242.hsd1.ca.comcast.net.
  [73.158.218.242]) by smtp.gmail.com with UTF8SMTPSA id
- d2e1a72fcca58-748900051a6sm2084709b3a.42.2025.06.13.13.33.28
+ 98e67ed59e1d1-313c1c5fd94sm4279571a91.36.2025.06.13.13.33.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Jun 2025 13:33:29 -0700 (PDT)
+ Fri, 13 Jun 2025 13:33:30 -0700 (PDT)
 From: Stanislav Fomichev <stfomichev@gmail.com>
 To: netdev@vger.kernel.org
 Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
@@ -100,32 +100,33 @@ Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
  linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
  linux-rdma@vger.kernel.org, oss-drivers@corigine.com,
  linux-net-drivers@amd.com, linux-kselftest@vger.kernel.org, leon@kernel.org
-Date: Fri, 13 Jun 2025 13:33:21 -0700
-Message-ID: <20250613203325.1127217-3-stfomichev@gmail.com>
+Date: Fri, 13 Jun 2025 13:33:22 -0700
+Message-ID: <20250613203325.1127217-4-stfomichev@gmail.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250613203325.1127217-1-stfomichev@gmail.com>
 References: <20250613203325.1127217-1-stfomichev@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1749846809; x=1750451609; darn=lists.osuosl.org;
+ d=gmail.com; s=20230601; t=1749846811; x=1750451611; darn=lists.osuosl.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Z1eKBxLffGBEe4AlTfaor7d8YdO+Y5hGW4DOpCWQYdg=;
- b=hhRmav6FpaZBYIqShT0sffEiebDQ/EKcGW39n9BptN/zAu7zN3WUi9rPlOv8/RVZ6/
- SSlzeswRqOkOtGS6yTIJdxdVXBqh7SR9rH7CQzIZaTSNTTYk2KkuELVvEM9PtGrFu+YS
- 7KKCrgqGUyWjdptfTiTzExB1rzpTOfJE3Qa2Qoh/+UowP87g7XP88aw1Y6I3Wol0j+Jd
- rU6F8a4CrbbmZaWjTppR1nmzogw8Wb9d3mKcYYeuLcgoaqYxGVBIHKn6p3BT7Sv39yMa
- XEHt2Z6vIp8Xf5FAbu0meCoxaYpM4Av0WJFVkL1a4kE2UFizVD4x8SaMPBTnb9jUR3Q7
- qFbw==
+ bh=lVRJB0mAROdkAD/JQ6joFIuc5JYFNtzq7KuywkkJrkU=;
+ b=Jz0SbhTgz7kPds7dJEWzMJHG2K5DlV9f+lb9IjqSdS8X+n1LTGXfaHTsbVdXkWilFy
+ QZXSykdqprenyDx/M68TVcdgKSi4XiC7aL+umTAJ1cdR349aBm3XLqbDXLv+z1po8VsR
+ DuiCsGkkU29W8ZKjSC0OPQRvSK8Lg9stCuDHw6vQkp/JOT1uHSrp6NA43FqFiiiGxxDs
+ DZQuTTp3Svgdend6zP9MMHzalkSYGBGwDExyIBqcntq3/Bqa4uwInB35kyJsXfqGyafz
+ rx916X6ZMJBlJzBsZ2bC3QI05RGA23qUVLubsKYNaG0SjpFcvCb9qwrFBsQsOOAybazf
+ n/iw==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=hhRmav6F
-Subject: [Intel-wired-lan] [PATCH net-next v4 2/6] vxlan: drop sock_lock
+ header.a=rsa-sha256 header.s=20230601 header.b=Jz0SbhTg
+Subject: [Intel-wired-lan] [PATCH net-next v4 3/6] udp_tunnel: remove
+ rtnl_lock dependency
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -141,260 +142,672 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-We won't be able to sleep soon in vxlan_offload_rx_ports and won't be
-able to grab sock_lock. Instead of having separate spinlock to
-manage sockets, rely on rtnl lock. This is similar to how geneve
-manages its sockets.
+Drivers that are using ops lock and don't depend on RTNL lock
+still need to manage it because udp_tunnel's RTNL dependency.
+Introduce new udp_tunnel_nic_lock and use it instead of
+rtnl_lock. Drop non-UDP_TUNNEL_NIC_INFO_MAY_SLEEP mode from
+udp_tunnel infra (udp_tunnel_nic_device_sync_work needs to
+grab udp_tunnel_nic_lock mutex and might sleep).
 
+Cover more places in v4:
+
+- netlink
+  - udp_tunnel_notify_add_rx_port (ndo_open)
+    - triggers udp_tunnel_nic_device_sync_work
+  - udp_tunnel_notify_del_rx_port (ndo_stop)
+    - triggers udp_tunnel_nic_device_sync_work
+  - udp_tunnel_get_rx_info (__netdev_update_features)
+    - triggers NETDEV_UDP_TUNNEL_PUSH_INFO
+  - udp_tunnel_drop_rx_info (__netdev_update_features)
+    - triggers NETDEV_UDP_TUNNEL_DROP_INFO
+  - udp_tunnel_nic_reset_ntf (ndo_open)
+
+- notifiers
+  - udp_tunnel_nic_netdevice_event, depending on the event:
+    - triggers NETDEV_UDP_TUNNEL_PUSH_INFO
+    - triggers NETDEV_UDP_TUNNEL_DROP_INFO
+
+- ethnl_tunnel_info_reply_size
+- udp_tunnel_nic_set_port_priv (two intel drivers)
+
+Cc: Michael Chan <michael.chan@broadcom.com>
+Suggested-by: Jakub Kicinski <kuba@kernel.org>
 Signed-off-by: Stanislav Fomichev <stfomichev@gmail.com>
 ---
- drivers/net/vxlan/vxlan_core.c      | 34 +++++++++++++----------------
- drivers/net/vxlan/vxlan_private.h   |  2 +-
- drivers/net/vxlan/vxlan_vnifilter.c | 18 ++++++---------
- 3 files changed, 23 insertions(+), 31 deletions(-)
+ .../net/ethernet/broadcom/bnx2x/bnx2x_main.c  |  3 +-
+ drivers/net/ethernet/broadcom/bnxt/bnxt.c     |  6 +-
+ drivers/net/ethernet/emulex/benet/be_main.c   |  3 +-
+ drivers/net/ethernet/intel/i40e/i40e_main.c   |  1 -
+ drivers/net/ethernet/intel/ice/ice_main.c     |  1 -
+ .../net/ethernet/mellanox/mlx4/en_netdev.c    |  3 +-
+ .../net/ethernet/mellanox/mlx5/core/en_main.c |  3 +-
+ .../ethernet/netronome/nfp/nfp_net_common.c   |  3 +-
+ .../net/ethernet/qlogic/qede/qede_filter.c    |  3 -
+ .../net/ethernet/qlogic/qlcnic/qlcnic_main.c  |  1 -
+ drivers/net/ethernet/sfc/ef10.c               |  1 -
+ drivers/net/netdevsim/udp_tunnels.c           |  4 -
+ include/net/udp_tunnel.h                      | 87 ++++++++++++++-----
+ net/core/dev.c                                |  2 +
+ net/ipv4/udp_tunnel_core.c                    | 16 ++--
+ net/ipv4/udp_tunnel_nic.c                     | 78 +++++++++++++----
+ 16 files changed, 142 insertions(+), 73 deletions(-)
 
-diff --git a/drivers/net/vxlan/vxlan_core.c b/drivers/net/vxlan/vxlan_core.c
-index 97792de896b7..01362e98325c 100644
---- a/drivers/net/vxlan/vxlan_core.c
-+++ b/drivers/net/vxlan/vxlan_core.c
-@@ -1487,19 +1487,19 @@ static bool __vxlan_sock_release_prep(struct vxlan_sock *vs)
- {
- 	struct vxlan_net *vn;
+diff --git a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c
+index c9a1a1d504c0..3ee4b848ef53 100644
+--- a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c
++++ b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c
+@@ -10219,8 +10219,7 @@ static int bnx2x_udp_tunnel_sync(struct net_device *netdev, unsigned int table)
  
-+	ASSERT_RTNL();
-+
- 	if (!vs)
- 		return false;
- 	if (!refcount_dec_and_test(&vs->refcnt))
- 		return false;
+ static const struct udp_tunnel_nic_info bnx2x_udp_tunnels = {
+ 	.sync_table	= bnx2x_udp_tunnel_sync,
+-	.flags		= UDP_TUNNEL_NIC_INFO_MAY_SLEEP |
+-			  UDP_TUNNEL_NIC_INFO_OPEN_ONLY,
++	.flags		= UDP_TUNNEL_NIC_INFO_OPEN_ONLY,
+ 	.tables		= {
+ 		{ .n_entries = 1, .tunnel_types = UDP_TUNNEL_TYPE_VXLAN,  },
+ 		{ .n_entries = 1, .tunnel_types = UDP_TUNNEL_TYPE_GENEVE, },
+diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt.c b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
+index 869580b6f70d..7946586802af 100644
+--- a/drivers/net/ethernet/broadcom/bnxt/bnxt.c
++++ b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
+@@ -15573,8 +15573,7 @@ static int bnxt_udp_tunnel_unset_port(struct net_device *netdev, unsigned int ta
+ static const struct udp_tunnel_nic_info bnxt_udp_tunnels = {
+ 	.set_port	= bnxt_udp_tunnel_set_port,
+ 	.unset_port	= bnxt_udp_tunnel_unset_port,
+-	.flags		= UDP_TUNNEL_NIC_INFO_MAY_SLEEP |
+-			  UDP_TUNNEL_NIC_INFO_OPEN_ONLY,
++	.flags		= UDP_TUNNEL_NIC_INFO_OPEN_ONLY,
+ 	.tables		= {
+ 		{ .n_entries = 1, .tunnel_types = UDP_TUNNEL_TYPE_VXLAN,  },
+ 		{ .n_entries = 1, .tunnel_types = UDP_TUNNEL_TYPE_GENEVE, },
+@@ -15582,8 +15581,7 @@ static const struct udp_tunnel_nic_info bnxt_udp_tunnels = {
+ }, bnxt_udp_tunnels_p7 = {
+ 	.set_port	= bnxt_udp_tunnel_set_port,
+ 	.unset_port	= bnxt_udp_tunnel_unset_port,
+-	.flags		= UDP_TUNNEL_NIC_INFO_MAY_SLEEP |
+-			  UDP_TUNNEL_NIC_INFO_OPEN_ONLY,
++	.flags		= UDP_TUNNEL_NIC_INFO_OPEN_ONLY,
+ 	.tables		= {
+ 		{ .n_entries = 1, .tunnel_types = UDP_TUNNEL_TYPE_VXLAN,  },
+ 		{ .n_entries = 1, .tunnel_types = UDP_TUNNEL_TYPE_GENEVE, },
+diff --git a/drivers/net/ethernet/emulex/benet/be_main.c b/drivers/net/ethernet/emulex/benet/be_main.c
+index 3d2e21592119..f49400ba9729 100644
+--- a/drivers/net/ethernet/emulex/benet/be_main.c
++++ b/drivers/net/ethernet/emulex/benet/be_main.c
+@@ -4031,8 +4031,7 @@ static int be_vxlan_unset_port(struct net_device *netdev, unsigned int table,
+ static const struct udp_tunnel_nic_info be_udp_tunnels = {
+ 	.set_port	= be_vxlan_set_port,
+ 	.unset_port	= be_vxlan_unset_port,
+-	.flags		= UDP_TUNNEL_NIC_INFO_MAY_SLEEP |
+-			  UDP_TUNNEL_NIC_INFO_OPEN_ONLY,
++	.flags		= UDP_TUNNEL_NIC_INFO_OPEN_ONLY,
+ 	.tables		= {
+ 		{ .n_entries = 1, .tunnel_types = UDP_TUNNEL_TYPE_VXLAN, },
+ 	},
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 1156a5b3055c..3b4f59d978a5 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -15895,7 +15895,6 @@ static int i40e_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
  
- 	vn = net_generic(sock_net(vs->sock->sk), vxlan_net_id);
--	spin_lock(&vn->sock_lock);
- 	hlist_del_rcu(&vs->hlist);
- 	udp_tunnel_notify_del_rx_port(vs->sock,
- 				      (vs->flags & VXLAN_F_GPE) ?
- 				      UDP_TUNNEL_TYPE_VXLAN_GPE :
- 				      UDP_TUNNEL_TYPE_VXLAN);
--	spin_unlock(&vn->sock_lock);
+ 	pf->udp_tunnel_nic.set_port = i40e_udp_tunnel_set_port;
+ 	pf->udp_tunnel_nic.unset_port = i40e_udp_tunnel_unset_port;
+-	pf->udp_tunnel_nic.flags = UDP_TUNNEL_NIC_INFO_MAY_SLEEP;
+ 	pf->udp_tunnel_nic.shared = &pf->udp_tunnel_shared;
+ 	pf->udp_tunnel_nic.tables[0].n_entries = I40E_MAX_PF_UDP_OFFLOAD_PORTS;
+ 	pf->udp_tunnel_nic.tables[0].tunnel_types = UDP_TUNNEL_TYPE_VXLAN |
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 7a4b302d356b..d4209569f06b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -4767,7 +4767,6 @@ int ice_init_dev(struct ice_pf *pf)
  
- 	return true;
- }
-@@ -2847,26 +2847,23 @@ static void vxlan_cleanup(struct timer_list *t)
+ 	pf->hw.udp_tunnel_nic.set_port = ice_udp_tunnel_set_port;
+ 	pf->hw.udp_tunnel_nic.unset_port = ice_udp_tunnel_unset_port;
+-	pf->hw.udp_tunnel_nic.flags = UDP_TUNNEL_NIC_INFO_MAY_SLEEP;
+ 	pf->hw.udp_tunnel_nic.shared = &pf->hw.udp_tunnel_shared;
+ 	if (pf->hw.tnl.valid_count[TNL_VXLAN]) {
+ 		pf->hw.udp_tunnel_nic.tables[0].n_entries =
+diff --git a/drivers/net/ethernet/mellanox/mlx4/en_netdev.c b/drivers/net/ethernet/mellanox/mlx4/en_netdev.c
+index 281b34af0bb4..d2071aff7b8f 100644
+--- a/drivers/net/ethernet/mellanox/mlx4/en_netdev.c
++++ b/drivers/net/ethernet/mellanox/mlx4/en_netdev.c
+@@ -2670,8 +2670,7 @@ static int mlx4_udp_tunnel_sync(struct net_device *dev, unsigned int table)
  
- static void vxlan_vs_del_dev(struct vxlan_dev *vxlan)
- {
--	struct vxlan_net *vn = net_generic(vxlan->net, vxlan_net_id);
-+	ASSERT_RTNL();
+ static const struct udp_tunnel_nic_info mlx4_udp_tunnels = {
+ 	.sync_table	= mlx4_udp_tunnel_sync,
+-	.flags		= UDP_TUNNEL_NIC_INFO_MAY_SLEEP |
+-			  UDP_TUNNEL_NIC_INFO_IPV4_ONLY,
++	.flags		= UDP_TUNNEL_NIC_INFO_IPV4_ONLY,
+ 	.tables		= {
+ 		{ .n_entries = 1, .tunnel_types = UDP_TUNNEL_TYPE_VXLAN, },
+ 	},
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en_main.c b/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
+index ea822c69d137..ccde53f94045 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/en_main.c
+@@ -5303,8 +5303,7 @@ void mlx5e_vxlan_set_netdev_info(struct mlx5e_priv *priv)
  
--	spin_lock(&vn->sock_lock);
- 	hlist_del_init_rcu(&vxlan->hlist4.hlist);
- #if IS_ENABLED(CONFIG_IPV6)
- 	hlist_del_init_rcu(&vxlan->hlist6.hlist);
- #endif
--	spin_unlock(&vn->sock_lock);
- }
+ 	priv->nic_info.set_port = mlx5e_vxlan_set_port;
+ 	priv->nic_info.unset_port = mlx5e_vxlan_unset_port;
+-	priv->nic_info.flags = UDP_TUNNEL_NIC_INFO_MAY_SLEEP |
+-				UDP_TUNNEL_NIC_INFO_STATIC_IANA_VXLAN;
++	priv->nic_info.flags = UDP_TUNNEL_NIC_INFO_STATIC_IANA_VXLAN;
+ 	priv->nic_info.tables[0].tunnel_types = UDP_TUNNEL_TYPE_VXLAN;
+ 	/* Don't count the space hard-coded to the IANA port */
+ 	priv->nic_info.tables[0].n_entries =
+diff --git a/drivers/net/ethernet/netronome/nfp/nfp_net_common.c b/drivers/net/ethernet/netronome/nfp/nfp_net_common.c
+index 932f59d70f41..132626a3f9f7 100644
+--- a/drivers/net/ethernet/netronome/nfp/nfp_net_common.c
++++ b/drivers/net/ethernet/netronome/nfp/nfp_net_common.c
+@@ -2394,8 +2394,7 @@ static int nfp_udp_tunnel_sync(struct net_device *netdev, unsigned int table)
  
- static void vxlan_vs_add_dev(struct vxlan_sock *vs, struct vxlan_dev *vxlan,
- 			     struct vxlan_dev_node *node)
- {
--	struct vxlan_net *vn = net_generic(vxlan->net, vxlan_net_id);
- 	__be32 vni = vxlan->default_dst.remote_vni;
+ static const struct udp_tunnel_nic_info nfp_udp_tunnels = {
+ 	.sync_table     = nfp_udp_tunnel_sync,
+-	.flags          = UDP_TUNNEL_NIC_INFO_MAY_SLEEP |
+-			  UDP_TUNNEL_NIC_INFO_OPEN_ONLY,
++	.flags          = UDP_TUNNEL_NIC_INFO_OPEN_ONLY,
+ 	.tables         = {
+ 		{
+ 			.n_entries      = NFP_NET_N_VXLAN_PORTS,
+diff --git a/drivers/net/ethernet/qlogic/qede/qede_filter.c b/drivers/net/ethernet/qlogic/qede/qede_filter.c
+index 985026dd816f..7e341e026489 100644
+--- a/drivers/net/ethernet/qlogic/qede/qede_filter.c
++++ b/drivers/net/ethernet/qlogic/qede/qede_filter.c
+@@ -987,20 +987,17 @@ static int qede_udp_tunnel_sync(struct net_device *dev, unsigned int table)
  
-+	ASSERT_RTNL();
-+
- 	node->vxlan = vxlan;
--	spin_lock(&vn->sock_lock);
- 	hlist_add_head_rcu(&node->hlist, vni_head(vs, vni));
--	spin_unlock(&vn->sock_lock);
- }
+ static const struct udp_tunnel_nic_info qede_udp_tunnels_both = {
+ 	.sync_table	= qede_udp_tunnel_sync,
+-	.flags		= UDP_TUNNEL_NIC_INFO_MAY_SLEEP,
+ 	.tables		= {
+ 		{ .n_entries = 1, .tunnel_types = UDP_TUNNEL_TYPE_VXLAN,  },
+ 		{ .n_entries = 1, .tunnel_types = UDP_TUNNEL_TYPE_GENEVE, },
+ 	},
+ }, qede_udp_tunnels_vxlan = {
+ 	.sync_table	= qede_udp_tunnel_sync,
+-	.flags		= UDP_TUNNEL_NIC_INFO_MAY_SLEEP,
+ 	.tables		= {
+ 		{ .n_entries = 1, .tunnel_types = UDP_TUNNEL_TYPE_VXLAN,  },
+ 	},
+ }, qede_udp_tunnels_geneve = {
+ 	.sync_table	= qede_udp_tunnel_sync,
+-	.flags		= UDP_TUNNEL_NIC_INFO_MAY_SLEEP,
+ 	.tables		= {
+ 		{ .n_entries = 1, .tunnel_types = UDP_TUNNEL_TYPE_GENEVE, },
+ 	},
+diff --git a/drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c b/drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c
+index eb69121df726..53cdd36c4123 100644
+--- a/drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c
++++ b/drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c
+@@ -486,7 +486,6 @@ static int qlcnic_udp_tunnel_sync(struct net_device *dev, unsigned int table)
  
- /* Setup stats when device is created */
-@@ -3291,9 +3288,10 @@ static void vxlan_offload_rx_ports(struct net_device *dev, bool push)
- 	struct vxlan_net *vn = net_generic(net, vxlan_net_id);
- 	unsigned int i;
+ static const struct udp_tunnel_nic_info qlcnic_udp_tunnels = {
+ 	.sync_table	= qlcnic_udp_tunnel_sync,
+-	.flags		= UDP_TUNNEL_NIC_INFO_MAY_SLEEP,
+ 	.tables		= {
+ 		{ .n_entries = 1, .tunnel_types = UDP_TUNNEL_TYPE_VXLAN, },
+ 	},
+diff --git a/drivers/net/ethernet/sfc/ef10.c b/drivers/net/ethernet/sfc/ef10.c
+index 47349c148c0c..fcec81f862ec 100644
+--- a/drivers/net/ethernet/sfc/ef10.c
++++ b/drivers/net/ethernet/sfc/ef10.c
+@@ -3985,7 +3985,6 @@ static int efx_ef10_udp_tnl_unset_port(struct net_device *dev,
+ static const struct udp_tunnel_nic_info efx_ef10_udp_tunnels = {
+ 	.set_port	= efx_ef10_udp_tnl_set_port,
+ 	.unset_port	= efx_ef10_udp_tnl_unset_port,
+-	.flags          = UDP_TUNNEL_NIC_INFO_MAY_SLEEP,
+ 	.tables         = {
+ 		{
+ 			.n_entries = 16,
+diff --git a/drivers/net/netdevsim/udp_tunnels.c b/drivers/net/netdevsim/udp_tunnels.c
+index 640b4983a9a0..10cbbf1c584b 100644
+--- a/drivers/net/netdevsim/udp_tunnels.c
++++ b/drivers/net/netdevsim/udp_tunnels.c
+@@ -112,12 +112,10 @@ nsim_udp_tunnels_info_reset_write(struct file *file, const char __user *data,
+ 	struct net_device *dev = file->private_data;
+ 	struct netdevsim *ns = netdev_priv(dev);
  
--	spin_lock(&vn->sock_lock);
-+	ASSERT_RTNL();
-+
- 	for (i = 0; i < PORT_HASH_SIZE; ++i) {
--		hlist_for_each_entry_rcu(vs, &vn->sock_list[i], hlist) {
-+		hlist_for_each_entry(vs, &vn->sock_list[i], hlist) {
- 			unsigned short type;
- 
- 			if (vs->flags & VXLAN_F_GPE)
-@@ -3307,7 +3305,6 @@ static void vxlan_offload_rx_ports(struct net_device *dev, bool push)
- 				udp_tunnel_drop_rx_port(dev, vs->sock, type);
- 		}
+-	rtnl_lock();
+ 	if (dev->reg_state == NETREG_REGISTERED) {
+ 		memset(ns->udp_ports.ports, 0, sizeof(ns->udp_ports.__ports));
+ 		udp_tunnel_nic_reset_ntf(dev);
  	}
--	spin_unlock(&vn->sock_lock);
+-	rtnl_unlock();
+ 
+ 	return count;
  }
- 
- /* Initialize the device structure. */
-@@ -3537,12 +3534,13 @@ static struct vxlan_sock *vxlan_socket_create(struct net *net, bool ipv6,
- 					      __be16 port, u32 flags,
- 					      int ifindex)
- {
--	struct vxlan_net *vn = net_generic(net, vxlan_net_id);
- 	struct vxlan_sock *vs;
- 	struct socket *sock;
- 	unsigned int h;
- 	struct udp_tunnel_sock_cfg tunnel_cfg;
- 
-+	ASSERT_RTNL();
-+
- 	vs = kzalloc(sizeof(*vs), GFP_KERNEL);
- 	if (!vs)
- 		return ERR_PTR(-ENOMEM);
-@@ -3560,13 +3558,11 @@ static struct vxlan_sock *vxlan_socket_create(struct net *net, bool ipv6,
- 	refcount_set(&vs->refcnt, 1);
- 	vs->flags = (flags & VXLAN_F_RCV_FLAGS);
- 
--	spin_lock(&vn->sock_lock);
- 	hlist_add_head_rcu(&vs->hlist, vs_head(net, port));
- 	udp_tunnel_notify_add_rx_port(sock,
- 				      (vs->flags & VXLAN_F_GPE) ?
- 				      UDP_TUNNEL_TYPE_VXLAN_GPE :
- 				      UDP_TUNNEL_TYPE_VXLAN);
--	spin_unlock(&vn->sock_lock);
- 
- 	/* Mark socket as an encapsulation socket. */
- 	memset(&tunnel_cfg, 0, sizeof(tunnel_cfg));
-@@ -3590,26 +3586,27 @@ static struct vxlan_sock *vxlan_socket_create(struct net *net, bool ipv6,
- 
- static int __vxlan_sock_add(struct vxlan_dev *vxlan, bool ipv6)
- {
--	struct vxlan_net *vn = net_generic(vxlan->net, vxlan_net_id);
- 	bool metadata = vxlan->cfg.flags & VXLAN_F_COLLECT_METADATA;
- 	struct vxlan_sock *vs = NULL;
- 	struct vxlan_dev_node *node;
- 	int l3mdev_index = 0;
- 
-+	ASSERT_RTNL();
-+
- 	if (vxlan->cfg.remote_ifindex)
- 		l3mdev_index = l3mdev_master_upper_ifindex_by_index(
- 			vxlan->net, vxlan->cfg.remote_ifindex);
- 
- 	if (!vxlan->cfg.no_share) {
--		spin_lock(&vn->sock_lock);
-+		rcu_read_lock();
- 		vs = vxlan_find_sock(vxlan->net, ipv6 ? AF_INET6 : AF_INET,
- 				     vxlan->cfg.dst_port, vxlan->cfg.flags,
- 				     l3mdev_index);
- 		if (vs && !refcount_inc_not_zero(&vs->refcnt)) {
--			spin_unlock(&vn->sock_lock);
-+			rcu_read_unlock();
- 			return -EBUSY;
- 		}
--		spin_unlock(&vn->sock_lock);
-+		rcu_read_unlock();
+@@ -181,8 +179,6 @@ int nsim_udp_tunnels_info_create(struct nsim_dev *nsim_dev,
+ 		info->sync_table = NULL;
  	}
- 	if (!vs)
- 		vs = vxlan_socket_create(vxlan->net, ipv6,
-@@ -4875,7 +4872,6 @@ static __net_init int vxlan_init_net(struct net *net)
- 	unsigned int h;
  
- 	INIT_LIST_HEAD(&vn->vxlan_list);
--	spin_lock_init(&vn->sock_lock);
- 	vn->nexthop_notifier_block.notifier_call = vxlan_nexthop_event;
+-	if (ns->udp_ports.sleep)
+-		info->flags |= UDP_TUNNEL_NIC_INFO_MAY_SLEEP;
+ 	if (nsim_dev->udp_ports.open_only)
+ 		info->flags |= UDP_TUNNEL_NIC_INFO_OPEN_ONLY;
+ 	if (nsim_dev->udp_ports.ipv4_only)
+diff --git a/include/net/udp_tunnel.h b/include/net/udp_tunnel.h
+index 2df3b8344eb5..0106e2dc2af1 100644
+--- a/include/net/udp_tunnel.h
++++ b/include/net/udp_tunnel.h
+@@ -130,22 +130,6 @@ void udp_tunnel_drop_rx_port(struct net_device *dev, struct socket *sock,
+ void udp_tunnel_notify_add_rx_port(struct socket *sock, unsigned short type);
+ void udp_tunnel_notify_del_rx_port(struct socket *sock, unsigned short type);
  
- 	for (h = 0; h < PORT_HASH_SIZE; ++h)
-diff --git a/drivers/net/vxlan/vxlan_private.h b/drivers/net/vxlan/vxlan_private.h
-index d328aed9feef..6c625fb29c6c 100644
---- a/drivers/net/vxlan/vxlan_private.h
-+++ b/drivers/net/vxlan/vxlan_private.h
-@@ -19,8 +19,8 @@ extern const struct rhashtable_params vxlan_vni_rht_params;
- /* per-network namespace private data for this module */
- struct vxlan_net {
- 	struct list_head  vxlan_list;
-+	/* sock_list is protected by rtnl lock */
- 	struct hlist_head sock_list[PORT_HASH_SIZE];
--	spinlock_t	  sock_lock;
- 	struct notifier_block nexthop_notifier_block;
+-static inline void udp_tunnel_get_rx_info(struct net_device *dev)
+-{
+-	ASSERT_RTNL();
+-	if (!(dev->features & NETIF_F_RX_UDP_TUNNEL_PORT))
+-		return;
+-	call_netdevice_notifiers(NETDEV_UDP_TUNNEL_PUSH_INFO, dev);
+-}
+-
+-static inline void udp_tunnel_drop_rx_info(struct net_device *dev)
+-{
+-	ASSERT_RTNL();
+-	if (!(dev->features & NETIF_F_RX_UDP_TUNNEL_PORT))
+-		return;
+-	call_netdevice_notifiers(NETDEV_UDP_TUNNEL_DROP_INFO, dev);
+-}
+-
+ /* Transmit the skb using UDP encapsulation. */
+ void udp_tunnel_xmit_skb(struct rtable *rt, struct sock *sk, struct sk_buff *skb,
+ 			 __be32 src, __be32 dst, __u8 tos, __u8 ttl,
+@@ -221,19 +205,17 @@ static inline void udp_tunnel_encap_enable(struct sock *sk)
+ #define UDP_TUNNEL_NIC_MAX_TABLES	4
+ 
+ enum udp_tunnel_nic_info_flags {
+-	/* Device callbacks may sleep */
+-	UDP_TUNNEL_NIC_INFO_MAY_SLEEP	= BIT(0),
+ 	/* Device only supports offloads when it's open, all ports
+ 	 * will be removed before close and re-added after open.
+ 	 */
+-	UDP_TUNNEL_NIC_INFO_OPEN_ONLY	= BIT(1),
++	UDP_TUNNEL_NIC_INFO_OPEN_ONLY	= BIT(0),
+ 	/* Device supports only IPv4 tunnels */
+-	UDP_TUNNEL_NIC_INFO_IPV4_ONLY	= BIT(2),
++	UDP_TUNNEL_NIC_INFO_IPV4_ONLY	= BIT(1),
+ 	/* Device has hard-coded the IANA VXLAN port (4789) as VXLAN.
+ 	 * This port must not be counted towards n_entries of any table.
+ 	 * Driver will not receive any callback associated with port 4789.
+ 	 */
+-	UDP_TUNNEL_NIC_INFO_STATIC_IANA_VXLAN	= BIT(3),
++	UDP_TUNNEL_NIC_INFO_STATIC_IANA_VXLAN	= BIT(2),
  };
  
-diff --git a/drivers/net/vxlan/vxlan_vnifilter.c b/drivers/net/vxlan/vxlan_vnifilter.c
-index 186d0660669a..4ff56d9f8f28 100644
---- a/drivers/net/vxlan/vxlan_vnifilter.c
-+++ b/drivers/net/vxlan/vxlan_vnifilter.c
-@@ -40,11 +40,11 @@ static void vxlan_vs_add_del_vninode(struct vxlan_dev *vxlan,
- 				     struct vxlan_vni_node *v,
- 				     bool del)
- {
--	struct vxlan_net *vn = net_generic(vxlan->net, vxlan_net_id);
- 	struct vxlan_dev_node *node;
- 	struct vxlan_sock *vs;
+ struct udp_tunnel_nic;
+@@ -324,6 +306,9 @@ struct udp_tunnel_nic_ops {
+ 	size_t (*dump_size)(struct net_device *dev, unsigned int table);
+ 	int (*dump_write)(struct net_device *dev, unsigned int table,
+ 			  struct sk_buff *skb);
++	void (*assert_locked)(struct net_device *dev);
++	void (*lock)(struct net_device *dev);
++	void (*unlock)(struct net_device *dev);
+ };
  
--	spin_lock(&vn->sock_lock);
-+	ASSERT_RTNL();
+ #ifdef CONFIG_INET
+@@ -352,8 +337,29 @@ static inline void
+ udp_tunnel_nic_set_port_priv(struct net_device *dev, unsigned int table,
+ 			     unsigned int idx, u8 priv)
+ {
+-	if (udp_tunnel_nic_ops)
++	if (udp_tunnel_nic_ops) {
++		udp_tunnel_nic_ops->lock(dev);
+ 		udp_tunnel_nic_ops->set_port_priv(dev, table, idx, priv);
++		udp_tunnel_nic_ops->unlock(dev);
++	}
++}
 +
- 	if (del) {
- 		if (!hlist_unhashed(&v->hlist4.hlist))
- 			hlist_del_init_rcu(&v->hlist4.hlist);
-@@ -52,7 +52,7 @@ static void vxlan_vs_add_del_vninode(struct vxlan_dev *vxlan,
- 		if (!hlist_unhashed(&v->hlist6.hlist))
- 			hlist_del_init_rcu(&v->hlist6.hlist);
- #endif
--		goto out;
++static inline void udp_tunnel_nic_assert_locked(struct net_device *dev)
++{
++	if (udp_tunnel_nic_ops)
++		udp_tunnel_nic_ops->assert_locked(dev);
++}
++
++static inline void udp_tunnel_nic_lock(struct net_device *dev)
++{
++	if (udp_tunnel_nic_ops)
++		udp_tunnel_nic_ops->lock(dev);
++}
++
++static inline void udp_tunnel_nic_unlock(struct net_device *dev)
++{
++	if (udp_tunnel_nic_ops)
++		udp_tunnel_nic_ops->unlock(dev);
+ }
+ 
+ static inline void
+@@ -395,17 +401,50 @@ static inline void udp_tunnel_nic_reset_ntf(struct net_device *dev)
+ static inline size_t
+ udp_tunnel_nic_dump_size(struct net_device *dev, unsigned int table)
+ {
++	size_t ret;
++
+ 	if (!udp_tunnel_nic_ops)
+ 		return 0;
+-	return udp_tunnel_nic_ops->dump_size(dev, table);
++
++	udp_tunnel_nic_ops->lock(dev);
++	ret = udp_tunnel_nic_ops->dump_size(dev, table);
++	udp_tunnel_nic_ops->unlock(dev);
++
++	return ret;
+ }
+ 
+ static inline int
+ udp_tunnel_nic_dump_write(struct net_device *dev, unsigned int table,
+ 			  struct sk_buff *skb)
+ {
++	int ret;
++
+ 	if (!udp_tunnel_nic_ops)
+ 		return 0;
+-	return udp_tunnel_nic_ops->dump_write(dev, table, skb);
++
++	udp_tunnel_nic_ops->lock(dev);
++	ret = udp_tunnel_nic_ops->dump_write(dev, table, skb);
++	udp_tunnel_nic_ops->unlock(dev);
++
++	return ret;
++}
++
++static inline void udp_tunnel_get_rx_info(struct net_device *dev)
++{
++	ASSERT_RTNL();
++	if (!(dev->features & NETIF_F_RX_UDP_TUNNEL_PORT))
 +		return;
- 	}
- 
- #if IS_ENABLED(CONFIG_IPV6)
-@@ -67,23 +67,21 @@ static void vxlan_vs_add_del_vninode(struct vxlan_dev *vxlan,
- 		node = &v->hlist4;
- 		hlist_add_head_rcu(&node->hlist, vni_head(vs, v->vni));
- 	}
--out:
--	spin_unlock(&vn->sock_lock);
++	udp_tunnel_nic_assert_locked(dev);
++	call_netdevice_notifiers(NETDEV_UDP_TUNNEL_PUSH_INFO, dev);
  }
- 
- void vxlan_vs_add_vnigrp(struct vxlan_dev *vxlan,
- 			 struct vxlan_sock *vs,
- 			 bool ipv6)
- {
--	struct vxlan_net *vn = net_generic(vxlan->net, vxlan_net_id);
- 	struct vxlan_vni_group *vg = rtnl_dereference(vxlan->vnigrp);
- 	struct vxlan_vni_node *v, *tmp;
- 	struct vxlan_dev_node *node;
- 
-+	ASSERT_RTNL();
 +
- 	if (!vg)
- 		return;
- 
--	spin_lock(&vn->sock_lock);
- 	list_for_each_entry_safe(v, tmp, &vg->vni_list, vlist) {
- #if IS_ENABLED(CONFIG_IPV6)
- 		if (ipv6)
-@@ -94,26 +92,24 @@ void vxlan_vs_add_vnigrp(struct vxlan_dev *vxlan,
- 		node->vxlan = vxlan;
- 		hlist_add_head_rcu(&node->hlist, vni_head(vs, v->vni));
- 	}
--	spin_unlock(&vn->sock_lock);
- }
- 
- void vxlan_vs_del_vnigrp(struct vxlan_dev *vxlan)
- {
- 	struct vxlan_vni_group *vg = rtnl_dereference(vxlan->vnigrp);
--	struct vxlan_net *vn = net_generic(vxlan->net, vxlan_net_id);
- 	struct vxlan_vni_node *v, *tmp;
- 
++static inline void udp_tunnel_drop_rx_info(struct net_device *dev)
++{
 +	ASSERT_RTNL();
++	if (!(dev->features & NETIF_F_RX_UDP_TUNNEL_PORT))
++		return;
++	udp_tunnel_nic_assert_locked(dev);
++	call_netdevice_notifiers(NETDEV_UDP_TUNNEL_DROP_INFO, dev);
++}
 +
- 	if (!vg)
- 		return;
- 
--	spin_lock(&vn->sock_lock);
- 	list_for_each_entry_safe(v, tmp, &vg->vni_list, vlist) {
- 		hlist_del_init_rcu(&v->hlist4.hlist);
- #if IS_ENABLED(CONFIG_IPV6)
- 		hlist_del_init_rcu(&v->hlist6.hlist);
  #endif
+diff --git a/net/core/dev.c b/net/core/dev.c
+index 5baa4691074f..43f56b44f351 100644
+--- a/net/core/dev.c
++++ b/net/core/dev.c
+@@ -10771,12 +10771,14 @@ int __netdev_update_features(struct net_device *dev)
+ 			 * *before* calling udp_tunnel_get_rx_info,
+ 			 * but *after* calling udp_tunnel_drop_rx_info.
+ 			 */
++			udp_tunnel_nic_lock(dev);
+ 			if (features & NETIF_F_RX_UDP_TUNNEL_PORT) {
+ 				dev->features = features;
+ 				udp_tunnel_get_rx_info(dev);
+ 			} else {
+ 				udp_tunnel_drop_rx_info(dev);
+ 			}
++			udp_tunnel_nic_unlock(dev);
+ 		}
+ 
+ 		if (diff & NETIF_F_HW_VLAN_CTAG_FILTER) {
+diff --git a/net/ipv4/udp_tunnel_core.c b/net/ipv4/udp_tunnel_core.c
+index 2326548997d3..433283dd0e70 100644
+--- a/net/ipv4/udp_tunnel_core.c
++++ b/net/ipv4/udp_tunnel_core.c
+@@ -134,15 +134,17 @@ void udp_tunnel_notify_add_rx_port(struct socket *sock, unsigned short type)
+ 	struct udp_tunnel_info ti;
+ 	struct net_device *dev;
+ 
++	ASSERT_RTNL();
++
+ 	ti.type = type;
+ 	ti.sa_family = sk->sk_family;
+ 	ti.port = inet_sk(sk)->inet_sport;
+ 
+-	rcu_read_lock();
+-	for_each_netdev_rcu(net, dev) {
++	for_each_netdev(net, dev) {
++		udp_tunnel_nic_lock(dev);
+ 		udp_tunnel_nic_add_port(dev, &ti);
++		udp_tunnel_nic_unlock(dev);
  	}
--	spin_unlock(&vn->sock_lock);
+-	rcu_read_unlock();
+ }
+ EXPORT_SYMBOL_GPL(udp_tunnel_notify_add_rx_port);
+ 
+@@ -154,15 +156,17 @@ void udp_tunnel_notify_del_rx_port(struct socket *sock, unsigned short type)
+ 	struct udp_tunnel_info ti;
+ 	struct net_device *dev;
+ 
++	ASSERT_RTNL();
++
+ 	ti.type = type;
+ 	ti.sa_family = sk->sk_family;
+ 	ti.port = inet_sk(sk)->inet_sport;
+ 
+-	rcu_read_lock();
+-	for_each_netdev_rcu(net, dev) {
++	for_each_netdev(net, dev) {
++		udp_tunnel_nic_lock(dev);
+ 		udp_tunnel_nic_del_port(dev, &ti);
++		udp_tunnel_nic_unlock(dev);
+ 	}
+-	rcu_read_unlock();
+ }
+ EXPORT_SYMBOL_GPL(udp_tunnel_notify_del_rx_port);
+ 
+diff --git a/net/ipv4/udp_tunnel_nic.c b/net/ipv4/udp_tunnel_nic.c
+index b6d2d16189c0..ff66db48453c 100644
+--- a/net/ipv4/udp_tunnel_nic.c
++++ b/net/ipv4/udp_tunnel_nic.c
+@@ -29,6 +29,7 @@ struct udp_tunnel_nic_table_entry {
+  * struct udp_tunnel_nic - UDP tunnel port offload state
+  * @work:	async work for talking to hardware from process context
+  * @dev:	netdev pointer
++ * @lock:	protects all fields
+  * @need_sync:	at least one port start changed
+  * @need_replay: space was freed, we need a replay of all ports
+  * @work_pending: @work is currently scheduled
+@@ -41,6 +42,8 @@ struct udp_tunnel_nic {
+ 
+ 	struct net_device *dev;
+ 
++	struct mutex lock;
++
+ 	u8 need_sync:1;
+ 	u8 need_replay:1;
+ 	u8 work_pending:1;
+@@ -298,22 +301,11 @@ __udp_tunnel_nic_device_sync(struct net_device *dev, struct udp_tunnel_nic *utn)
+ static void
+ udp_tunnel_nic_device_sync(struct net_device *dev, struct udp_tunnel_nic *utn)
+ {
+-	const struct udp_tunnel_nic_info *info = dev->udp_tunnel_nic_info;
+-	bool may_sleep;
+-
+ 	if (!utn->need_sync)
+ 		return;
+ 
+-	/* Drivers which sleep in the callback need to update from
+-	 * the workqueue, if we come from the tunnel driver's notification.
+-	 */
+-	may_sleep = info->flags & UDP_TUNNEL_NIC_INFO_MAY_SLEEP;
+-	if (!may_sleep)
+-		__udp_tunnel_nic_device_sync(dev, utn);
+-	if (may_sleep || utn->need_replay) {
+-		queue_work(udp_tunnel_nic_workqueue, &utn->work);
+-		utn->work_pending = 1;
+-	}
++	queue_work(udp_tunnel_nic_workqueue, &utn->work);
++	utn->work_pending = 1;
  }
  
- static void vxlan_vnifilter_stats_get(const struct vxlan_vni_node *vninode,
+ static bool
+@@ -554,12 +546,12 @@ static void __udp_tunnel_nic_reset_ntf(struct net_device *dev)
+ 	struct udp_tunnel_nic *utn;
+ 	unsigned int i, j;
+ 
+-	ASSERT_RTNL();
+-
+ 	utn = dev->udp_tunnel_nic;
+ 	if (!utn)
+ 		return;
+ 
++	mutex_lock(&utn->lock);
++
+ 	utn->need_sync = false;
+ 	for (i = 0; i < utn->n_tables; i++)
+ 		for (j = 0; j < info->tables[i].n_entries; j++) {
+@@ -569,7 +561,7 @@ static void __udp_tunnel_nic_reset_ntf(struct net_device *dev)
+ 
+ 			entry->flags &= ~(UDP_TUNNEL_NIC_ENTRY_DEL |
+ 					  UDP_TUNNEL_NIC_ENTRY_OP_FAIL);
+-			/* We don't release rtnl across ops */
++			/* We don't release utn lock across ops */
+ 			WARN_ON(entry->flags & UDP_TUNNEL_NIC_ENTRY_FROZEN);
+ 			if (!entry->use_cnt)
+ 				continue;
+@@ -579,6 +571,8 @@ static void __udp_tunnel_nic_reset_ntf(struct net_device *dev)
+ 		}
+ 
+ 	__udp_tunnel_nic_device_sync(dev, utn);
++
++	mutex_unlock(&utn->lock);
+ }
+ 
+ static size_t
+@@ -643,6 +637,33 @@ __udp_tunnel_nic_dump_write(struct net_device *dev, unsigned int table,
+ 	return -EMSGSIZE;
+ }
+ 
++static void __udp_tunnel_nic_assert_locked(struct net_device *dev)
++{
++	struct udp_tunnel_nic *utn;
++
++	utn = dev->udp_tunnel_nic;
++	if (utn)
++		lockdep_assert_held(&utn->lock);
++}
++
++static void __udp_tunnel_nic_lock(struct net_device *dev)
++{
++	struct udp_tunnel_nic *utn;
++
++	utn = dev->udp_tunnel_nic;
++	if (utn)
++		mutex_lock(&utn->lock);
++}
++
++static void __udp_tunnel_nic_unlock(struct net_device *dev)
++{
++	struct udp_tunnel_nic *utn;
++
++	utn = dev->udp_tunnel_nic;
++	if (utn)
++		mutex_unlock(&utn->lock);
++}
++
+ static const struct udp_tunnel_nic_ops __udp_tunnel_nic_ops = {
+ 	.get_port	= __udp_tunnel_nic_get_port,
+ 	.set_port_priv	= __udp_tunnel_nic_set_port_priv,
+@@ -651,6 +672,9 @@ static const struct udp_tunnel_nic_ops __udp_tunnel_nic_ops = {
+ 	.reset_ntf	= __udp_tunnel_nic_reset_ntf,
+ 	.dump_size	= __udp_tunnel_nic_dump_size,
+ 	.dump_write	= __udp_tunnel_nic_dump_write,
++	.assert_locked	= __udp_tunnel_nic_assert_locked,
++	.lock		= __udp_tunnel_nic_lock,
++	.unlock		= __udp_tunnel_nic_unlock,
+ };
+ 
+ static void
+@@ -710,11 +734,15 @@ static void udp_tunnel_nic_device_sync_work(struct work_struct *work)
+ 		container_of(work, struct udp_tunnel_nic, work);
+ 
+ 	rtnl_lock();
++	mutex_lock(&utn->lock);
++
+ 	utn->work_pending = 0;
+ 	__udp_tunnel_nic_device_sync(utn->dev, utn);
+ 
+ 	if (utn->need_replay)
+ 		udp_tunnel_nic_replay(utn->dev, utn);
++
++	mutex_unlock(&utn->lock);
+ 	rtnl_unlock();
+ }
+ 
+@@ -730,6 +758,7 @@ udp_tunnel_nic_alloc(const struct udp_tunnel_nic_info *info,
+ 		return NULL;
+ 	utn->n_tables = n_tables;
+ 	INIT_WORK(&utn->work, udp_tunnel_nic_device_sync_work);
++	mutex_init(&utn->lock);
+ 
+ 	for (i = 0; i < n_tables; i++) {
+ 		utn->entries[i] = kcalloc(info->tables[i].n_entries,
+@@ -821,8 +850,11 @@ static int udp_tunnel_nic_register(struct net_device *dev)
+ 	dev_hold(dev);
+ 	dev->udp_tunnel_nic = utn;
+ 
+-	if (!(info->flags & UDP_TUNNEL_NIC_INFO_OPEN_ONLY))
++	if (!(info->flags & UDP_TUNNEL_NIC_INFO_OPEN_ONLY)) {
++		udp_tunnel_nic_lock(dev);
+ 		udp_tunnel_get_rx_info(dev);
++		udp_tunnel_nic_unlock(dev);
++	}
+ 
+ 	return 0;
+ }
+@@ -832,6 +864,8 @@ udp_tunnel_nic_unregister(struct net_device *dev, struct udp_tunnel_nic *utn)
+ {
+ 	const struct udp_tunnel_nic_info *info = dev->udp_tunnel_nic_info;
+ 
++	udp_tunnel_nic_lock(dev);
++
+ 	/* For a shared table remove this dev from the list of sharing devices
+ 	 * and if there are other devices just detach.
+ 	 */
+@@ -841,8 +875,10 @@ udp_tunnel_nic_unregister(struct net_device *dev, struct udp_tunnel_nic *utn)
+ 		list_for_each_entry(node, &info->shared->devices, list)
+ 			if (node->dev == dev)
+ 				break;
+-		if (list_entry_is_head(node, &info->shared->devices, list))
++		if (list_entry_is_head(node, &info->shared->devices, list)) {
++			udp_tunnel_nic_unlock(dev);
+ 			return;
++		}
+ 
+ 		list_del(&node->list);
+ 		kfree(node);
+@@ -852,6 +888,7 @@ udp_tunnel_nic_unregister(struct net_device *dev, struct udp_tunnel_nic *utn)
+ 		if (first) {
+ 			udp_tunnel_drop_rx_info(dev);
+ 			utn->dev = first->dev;
++			udp_tunnel_nic_unlock(dev);
+ 			goto release_dev;
+ 		}
+ 
+@@ -862,6 +899,7 @@ udp_tunnel_nic_unregister(struct net_device *dev, struct udp_tunnel_nic *utn)
+ 	 * from the work which we will boot immediately.
+ 	 */
+ 	udp_tunnel_nic_flush(dev, utn);
++	udp_tunnel_nic_unlock(dev);
+ 
+ 	/* Wait for the work to be done using the state, netdev core will
+ 	 * retry unregister until we give up our reference on this device.
+@@ -910,12 +948,16 @@ udp_tunnel_nic_netdevice_event(struct notifier_block *unused,
+ 		return NOTIFY_DONE;
+ 
+ 	if (event == NETDEV_UP) {
++		udp_tunnel_nic_lock(dev);
+ 		WARN_ON(!udp_tunnel_nic_is_empty(dev, utn));
+ 		udp_tunnel_get_rx_info(dev);
++		udp_tunnel_nic_unlock(dev);
+ 		return NOTIFY_OK;
+ 	}
+ 	if (event == NETDEV_GOING_DOWN) {
++		udp_tunnel_nic_lock(dev);
+ 		udp_tunnel_nic_flush(dev, utn);
++		udp_tunnel_nic_unlock(dev);
+ 		return NOTIFY_OK;
+ 	}
+ 
 -- 
 2.49.0
 
