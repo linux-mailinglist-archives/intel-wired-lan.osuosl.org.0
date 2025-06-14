@@ -1,58 +1,58 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 68032AD9EB0
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Jun 2025 20:09:28 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id BAE71AD9EAF
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Jun 2025 20:09:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EE550810CF;
-	Sat, 14 Jun 2025 18:09:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 05B0A607A3;
+	Sat, 14 Jun 2025 18:09:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7DNrf6s-Nicl; Sat, 14 Jun 2025 18:09:20 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ObocWW60l5te; Sat, 14 Jun 2025 18:09:20 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C250B810B9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5189860EB4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1749924559;
-	bh=/QL7866X9t7XSuLkXbjQo6/eELxtGPuFclKWjRKQ1Sg=;
+	s=default; t=1749924560;
+	bh=15jQg4hR7vSG2EHRFtcDbjsg1nvaXfwJaxzYZopfidg=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=7U/u9r41L1MC9T7eBneypPcE0c5/oizWehwMiEWaUafVnykNyB0LCVP4s+37emIpd
-	 qDs9OJ5NQ7L9ty4zvdldXzYnu/YsP5uMiy9t0h3PAJOqmn9Mr2OUfx2moo9eugLKNu
-	 fblDGwFEABlluHoGPZ0AlE0cW7Mcr+2cBBAKEI6VAGpBGUmS+ZmCQupjx9xrBB6dP+
-	 1JXSiyZJ+j49bES1M9ykErhM5OXYk91jFgFoYjM66NfTdXgLdiW3DUnHyHrdP9nuZp
-	 OqP1mFizA5r1qBzp0jgSXbFOASWBODWYSNA/RtvK03aInGvtiKq62uhTj+w149Ce1R
-	 HNHX2OdVwLTCA==
+	b=PQUSWAvIAVmSNEC3JMKfC9s1jT8iPQpL1km6rEEHTMfGpmBzt6/of5PZp3MOI5LVA
+	 KUCuS7+LUUceyKug2/kv344h72ltLd8FRQb0kupCRoG9AGsdCq10qTiogrjaCrybpk
+	 JFxAiP+Yhb/aQY2H8JXrb+vydtoQ5ENls4lKnOk+o/luNSFOIvG2qVYg93YLtH+1qS
+	 l/vHJ/2in0cUnb1JKT6lbQUYEeBEqzficQwqF4+oWuuvBLlkyDL/U1RtD86j5MpI20
+	 UE37+JTneyWAEBPml2JHeO7p4KlyLdttkN8SUldMHLG5LvQRo+hRkt9BNiW14/np+L
+	 AEM5uTQbxrQIg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C250B810B9;
-	Sat, 14 Jun 2025 18:09:19 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5189860EB4;
+	Sat, 14 Jun 2025 18:09:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id A6E0C151
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Jun 2025 18:09:17 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 4EB14177
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Jun 2025 18:09:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 98EEE4033D
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Jun 2025 18:09:17 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 40994405D3
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Jun 2025 18:09:18 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id gwSL0hHopkZT for <intel-wired-lan@lists.osuosl.org>;
- Sat, 14 Jun 2025 18:09:15 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 6801340B3B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6801340B3B
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6801340B3B
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Jun 2025 18:09:15 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id OpVDo612sgmk for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 14 Jun 2025 18:09:17 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=147.75.193.91;
+ helo=nyc.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 8B4174050E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8B4174050E
+Received: from nyc.source.kernel.org (nyc.source.kernel.org [147.75.193.91])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8B4174050E
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Jun 2025 18:09:17 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 9BFE85C59AB;
- Sat, 14 Jun 2025 18:06:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D58DC4AF09;
- Sat, 14 Jun 2025 18:09:14 +0000 (UTC)
+ by nyc.source.kernel.org (Postfix) with ESMTP id 1EDDAA50918;
+ Sat, 14 Jun 2025 18:09:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 38E4EC4CEF0;
+ Sat, 14 Jun 2025 18:09:15 +0000 (UTC)
 From: Jakub Kicinski <kuba@kernel.org>
 To: davem@davemloft.net
 Cc: netdev@vger.kernel.org, edumazet@google.com, pabeni@redhat.com,
@@ -61,8 +61,8 @@ Cc: netdev@vger.kernel.org, edumazet@google.com, pabeni@redhat.com,
  jacob.e.keller@intel.com, michal.swiatkowski@linux.intel.com, joe@dama.to,
  Jakub Kicinski <kuba@kernel.org>,
  Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Date: Sat, 14 Jun 2025 11:09:06 -0700
-Message-ID: <20250614180907.4167714-7-kuba@kernel.org>
+Date: Sat, 14 Jun 2025 11:09:07 -0700
+Message-ID: <20250614180907.4167714-8-kuba@kernel.org>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250614180907.4167714-1-kuba@kernel.org>
 References: <20250614180907.4167714-1-kuba@kernel.org>
@@ -70,21 +70,21 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=kernel.org; s=k20201202; t=1749924555;
- bh=KNIACJe6x9oNwcWL3LLP7JjD3ww7BSRVaLKKHwihEiY=;
+ bh=X0mP9OHWTTAw1gQ3zIlbt3YiOvIsGkRLLNr6heRWY0E=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=bc2oyWi/Pynx1/B1TgAF9fDXjtYKaiVr+Xzq7/NbLlpYXTfWcZpIDhvPi0LIu2Aoh
- qSB2eqPSPRd5nx7WWP+F+ZqhQ0wJF4W0EWvBNy/0Z02XT0hUN5+bnyR4CYdz+mkggF
- wVrhcR6jpsWHGJBppHY6WcTxvTyQ2trrzEJhlW2TKES2+ebavdDUlBnYdt7Yh4rjqf
- +HJ64aRRgp6Bh36SRwZhrWWSkVad/fHi9lbD/5wGrEuBwm9O7W4C6xVA2zR9WoztWr
- x33bn6wZgN7VBAimQcazJ4XnJECbwD7B8Uzzpk+JP2j4uK29y8j2vLWXxpeqbEPARm
- 38hrBpU/hvZoQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ b=FNK4W8Hj85ZZ33too2Rt1MVCX5IGDObS0slyViC5x76LPtPfJnG4i1sDy8dGkkmZj
+ gM7YGPZmXw7May9y5wbLSOCwj39An9gH0bB6kWKuDXxrzgLyV/33w0V9ymjOtu3DjE
+ /iLrJUpw9lclvV9jfoTr4FEcjNOFf9bRwK7IK4xgoy4o7N99kXBvSiblJmW78kDFmx
+ k6IKMSr603V05M6EmMOX0pjrsATrQ09s/5yULl58WN6nac8P0u7D+KMYffuy8C1j7i
+ qMggOEVoFHQQbSAk7XLNDqWAIeTS90yicPHtz6NBlBVN3aQK1FVv7RNA7Sh2n0YoBU
+ e9LNArsYxxPxw==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=bc2oyWi/
-Subject: [Intel-wired-lan] [PATCH net-next v2 6/7] eth: ice: migrate to new
+ header.a=rsa-sha256 header.s=k20201202 header.b=FNK4W8Hj
+Subject: [Intel-wired-lan] [PATCH net-next v2 7/7] eth: iavf: migrate to new
  RXFH callbacks
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -111,150 +111,118 @@ people refactoring the code.
 Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Signed-off-by: Jakub Kicinski <kuba@kernel.org>
 ---
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 59 ++++++--------------
- 1 file changed, 18 insertions(+), 41 deletions(-)
+ .../net/ethernet/intel/iavf/iavf_ethtool.c    | 52 ++++---------------
+ 1 file changed, 11 insertions(+), 41 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 5863a86482f5..ea7e8b879b48 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -2797,14 +2797,7 @@ ice_set_link_ksettings(struct net_device *netdev,
- 	return err;
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+index 2b2b315205b5..05d72be3fe80 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+@@ -1307,14 +1307,7 @@ static int iavf_del_fdir_ethtool(struct iavf_adapter *adapter, struct ethtool_rx
+ 	return iavf_fdir_del_fltr(adapter, false, fsp->location);
  }
  
 -/**
-- * ice_parse_hdrs - parses headers from RSS hash input
-- * @nfc: ethtool rxnfc command
+- * iavf_adv_rss_parse_hdrs - parses headers from RSS hash input
+- * @cmd: ethtool rxnfc command
 - *
 - * This function parses the rxnfc command and returns intended
 - * header types for RSS configuration
 - */
--static u32 ice_parse_hdrs(struct ethtool_rxnfc *nfc)
-+static u32 ice_parse_hdrs(const struct ethtool_rxfh_fields *nfc)
+-static u32 iavf_adv_rss_parse_hdrs(struct ethtool_rxnfc *cmd)
++static u32 iavf_adv_rss_parse_hdrs(const struct ethtool_rxfh_fields *cmd)
  {
- 	u32 hdrs = ICE_FLOW_SEG_HDR_NONE;
+ 	u32 hdrs = IAVF_ADV_RSS_FLOW_SEG_HDR_NONE;
  
-@@ -2869,15 +2862,7 @@ static u32 ice_parse_hdrs(struct ethtool_rxnfc *nfc)
+@@ -1350,15 +1343,8 @@ static u32 iavf_adv_rss_parse_hdrs(struct ethtool_rxnfc *cmd)
  	return hdrs;
  }
  
 -/**
-- * ice_parse_hash_flds - parses hash fields from RSS hash input
-- * @nfc: ethtool rxnfc command
+- * iavf_adv_rss_parse_hash_flds - parses hash fields from RSS hash input
+- * @cmd: ethtool rxnfc command
 - * @symm: true if Symmetric Topelitz is set
 - *
-- * This function parses the rxnfc command and returns intended
-- * hash fields for RSS configuration
+- * This function parses the rxnfc command and returns intended hash fields for
+- * RSS configuration
 - */
--static u64 ice_parse_hash_flds(struct ethtool_rxnfc *nfc, bool symm)
-+static u64 ice_parse_hash_flds(const struct ethtool_rxfh_fields *nfc, bool symm)
+-static u64 iavf_adv_rss_parse_hash_flds(struct ethtool_rxnfc *cmd, bool symm)
++static u64
++iavf_adv_rss_parse_hash_flds(const struct ethtool_rxfh_fields *cmd, bool symm)
  {
- 	u64 hfld = ICE_HASH_INVALID;
+ 	u64 hfld = IAVF_ADV_RSS_HASH_INVALID;
  
-@@ -2974,16 +2959,13 @@ static u64 ice_parse_hash_flds(struct ethtool_rxnfc *nfc, bool symm)
+@@ -1416,17 +1402,12 @@ static u64 iavf_adv_rss_parse_hash_flds(struct ethtool_rxnfc *cmd, bool symm)
  	return hfld;
  }
  
 -/**
-- * ice_set_rss_hash_opt - Enable/Disable flow types for RSS hash
-- * @vsi: the VSI being configured
-- * @nfc: ethtool rxnfc command
+- * iavf_set_adv_rss_hash_opt - Enable/Disable flow types for RSS hash
+- * @adapter: pointer to the VF adapter structure
+- * @cmd: ethtool rxnfc command
 - *
 - * Returns Success if the flow input set is supported.
 - */
  static int
--ice_set_rss_hash_opt(struct ice_vsi *vsi, struct ethtool_rxnfc *nfc)
-+ice_set_rxfh_fields(struct net_device *netdev,
-+		    const struct ethtool_rxfh_fields *nfc,
-+		    struct netlink_ext_ack *extack)
+-iavf_set_adv_rss_hash_opt(struct iavf_adapter *adapter,
+-			  struct ethtool_rxnfc *cmd)
++iavf_set_rxfh_fields(struct net_device *netdev,
++		     const struct ethtool_rxfh_fields *cmd,
++		     struct netlink_ext_ack *extack)
  {
-+	struct ice_netdev_priv *np = netdev_priv(netdev);
-+	struct ice_vsi *vsi = np->vsi;
- 	struct ice_pf *pf = vsi->back;
- 	struct ice_rss_hash_cfg cfg;
- 	struct device *dev;
-@@ -3029,14 +3011,11 @@ ice_set_rss_hash_opt(struct ice_vsi *vsi, struct ethtool_rxnfc *nfc)
- 	return 0;
++	struct iavf_adapter *adapter = netdev_priv(netdev);
+ 	struct iavf_adv_rss *rss_old, *rss_new;
+ 	bool rss_new_add = false;
+ 	bool symm = false;
+@@ -1493,17 +1474,10 @@ iavf_set_adv_rss_hash_opt(struct iavf_adapter *adapter,
+ 	return err;
  }
  
 -/**
-- * ice_get_rss_hash_opt - Retrieve hash fields for a given flow-type
-- * @vsi: the VSI being configured
-- * @nfc: ethtool rxnfc command
+- * iavf_get_adv_rss_hash_opt - Retrieve hash fields for a given flow-type
+- * @adapter: pointer to the VF adapter structure
+- * @cmd: ethtool rxnfc command
+- *
+- * Returns Success if the flow input set is supported.
 - */
--static void
--ice_get_rss_hash_opt(struct ice_vsi *vsi, struct ethtool_rxnfc *nfc)
-+static int
-+ice_get_rxfh_fields(struct net_device *netdev, struct ethtool_rxfh_fields *nfc)
+ static int
+-iavf_get_adv_rss_hash_opt(struct iavf_adapter *adapter,
+-			  struct ethtool_rxnfc *cmd)
++iavf_get_rxfh_fields(struct net_device *netdev, struct ethtool_rxfh_fields *cmd)
  {
-+	struct ice_netdev_priv *np = netdev_priv(netdev);
-+	struct ice_vsi *vsi = np->vsi;
- 	struct ice_pf *pf = vsi->back;
- 	struct device *dev;
++	struct iavf_adapter *adapter = netdev_priv(netdev);
+ 	struct iavf_adv_rss *rss;
  	u64 hash_flds;
-@@ -3049,21 +3028,21 @@ ice_get_rss_hash_opt(struct ice_vsi *vsi, struct ethtool_rxnfc *nfc)
- 	if (ice_is_safe_mode(pf)) {
- 		dev_dbg(dev, "Advanced RSS disabled. Package download failed, vsi num = %d\n",
- 			vsi->vsi_num);
--		return;
-+		return 0;
- 	}
- 
- 	hdrs = ice_parse_hdrs(nfc);
- 	if (hdrs == ICE_FLOW_SEG_HDR_NONE) {
- 		dev_dbg(dev, "Header type is not valid, vsi num = %d\n",
- 			vsi->vsi_num);
--		return;
-+		return 0;
- 	}
- 
- 	hash_flds = ice_get_rss_cfg(&pf->hw, vsi->idx, hdrs, &symm);
- 	if (hash_flds == ICE_HASH_INVALID) {
- 		dev_dbg(dev, "No hash fields found for the given header type, vsi num = %d\n",
- 			vsi->vsi_num);
--		return;
-+		return 0;
- 	}
- 
- 	if (hash_flds & ICE_FLOW_HASH_FLD_IPV4_SA ||
-@@ -3090,6 +3069,8 @@ ice_get_rss_hash_opt(struct ice_vsi *vsi, struct ethtool_rxnfc *nfc)
- 	    hash_flds & ICE_FLOW_HASH_FLD_GTPU_UP_TEID ||
- 	    hash_flds & ICE_FLOW_HASH_FLD_GTPU_DWN_TEID)
- 		nfc->data |= (u64)RXH_GTP_TEID;
-+
-+	return 0;
- }
- 
- /**
-@@ -3109,8 +3090,6 @@ static int ice_set_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd)
- 		return ice_add_fdir_ethtool(vsi, cmd);
+ 	u32 hdrs;
+@@ -1568,9 +1542,6 @@ static int iavf_set_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd)
  	case ETHTOOL_SRXCLSRLDEL:
- 		return ice_del_fdir_ethtool(vsi, cmd);
+ 		ret = iavf_del_fdir_ethtool(adapter, cmd);
+ 		break;
 -	case ETHTOOL_SRXFH:
--		return ice_set_rss_hash_opt(vsi, cmd);
- 	default:
- 		break;
- 	}
-@@ -3153,10 +3132,6 @@ ice_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd,
- 	case ETHTOOL_GRXCLSRLALL:
- 		ret = ice_get_fdir_fltr_ids(hw, cmd, (u32 *)rule_locs);
- 		break;
--	case ETHTOOL_GRXFH:
--		ice_get_rss_hash_opt(vsi, cmd);
--		ret = 0;
+-		ret = iavf_set_adv_rss_hash_opt(adapter, cmd);
 -		break;
  	default:
  		break;
  	}
-@@ -4816,6 +4791,8 @@ static const struct ethtool_ops ice_ethtool_ops = {
- 	.get_rxfh_indir_size	= ice_get_rxfh_indir_size,
- 	.get_rxfh		= ice_get_rxfh,
- 	.set_rxfh		= ice_set_rxfh,
-+	.get_rxfh_fields	= ice_get_rxfh_fields,
-+	.set_rxfh_fields	= ice_set_rxfh_fields,
- 	.get_channels		= ice_get_channels,
- 	.set_channels		= ice_set_channels,
- 	.get_ts_info		= ice_get_ts_info,
+@@ -1612,9 +1583,6 @@ static int iavf_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd,
+ 	case ETHTOOL_GRXCLSRLALL:
+ 		ret = iavf_get_fdir_fltr_ids(adapter, cmd, (u32 *)rule_locs);
+ 		break;
+-	case ETHTOOL_GRXFH:
+-		ret = iavf_get_adv_rss_hash_opt(adapter, cmd);
+-		break;
+ 	default:
+ 		break;
+ 	}
+@@ -1812,6 +1780,8 @@ static const struct ethtool_ops iavf_ethtool_ops = {
+ 	.get_rxfh_indir_size	= iavf_get_rxfh_indir_size,
+ 	.get_rxfh		= iavf_get_rxfh,
+ 	.set_rxfh		= iavf_set_rxfh,
++	.get_rxfh_fields	= iavf_get_rxfh_fields,
++	.set_rxfh_fields	= iavf_set_rxfh_fields,
+ 	.get_channels		= iavf_get_channels,
+ 	.set_channels		= iavf_set_channels,
+ 	.get_rxfh_key_size	= iavf_get_rxfh_key_size,
 -- 
 2.49.0
 
