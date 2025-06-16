@@ -1,89 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 557CCADB552
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Jun 2025 17:28:07 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 61D8CADB56D
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Jun 2025 17:30:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 63DF140931;
-	Mon, 16 Jun 2025 15:28:04 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1531580DB6;
+	Mon, 16 Jun 2025 15:30:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Is9qZFbuKHTY; Mon, 16 Jun 2025 15:28:04 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id lSiadrD0byee; Mon, 16 Jun 2025 15:30:29 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E327E40921
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9A01E80DA7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1750087683;
-	bh=EywZQByriqxyaKItN5w0ENYjV/SBb1jnJW8uecqoy3g=;
+	s=default; t=1750087829;
+	bh=2cvWGfqvAHegxKwTqRT6pqv8NWEdRZnW6ynL47ZacAE=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=8KgCjVXkxgJ49VEZjhx7FcEzE9Bp/tOZhek+Qt/sGKNR6SSvPGfQu96MIkx2R3ScA
-	 LJCV2nXx0ekQAkUo30oAzvXI8WGV3to0DfJxgrIo2TbLm8Dc36OrVn7b27encTtIJw
-	 Fjf55AUBpnE0yoNpe3w7b59fDdVGR/rT/mtjYe3XT9QAx8pKS9Yk9RGennwrnmnUcA
-	 zbWCbrcXAywlGAQwfiPR68jMf0/cHUdmK7DbSqlXEZfVnTB0RW1O7+cfkC4rd76dK+
-	 bxTvMqTfqAhsI1we8JqLg78OL4GgD5PbOUxIGhZ2L2kSIvgtDTY6dcB4P/agtPnabZ
-	 L/j1BMfSG6qDg==
+	b=n4dj2s3bOJxaQjI7m+2tWmSsAUE+xdA1r4N1IUInfXBC8hGrGrks71gDMx9lDlZmH
+	 JcfNt/LseHGeRpWaUF+bxMFeQCLRWYgdwoe7aRU0jdfCdHHBB8h3alpWu2Zj9lO9q8
+	 cY2jn9c/schzTINvjTHD91zsvSeN8c35XKhs8tVfxwmzipgdQwxdV6pwiPmncHnIpl
+	 mrCYHiyKfcE6BsS81SIZmMb9c8wn2bHZtqHtmsQOFlMjMcbbNEuZTcYJKmOIXAuQcK
+	 mZjCqZURFWfMCVKXSbv2NgO0ajlzl6DY4yHOVrhrS602WckGsXPAHrvOT5M74eFZlE
+	 2tEN1qYxpV02w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E327E40921;
-	Mon, 16 Jun 2025 15:28:03 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9A01E80DA7;
+	Mon, 16 Jun 2025 15:30:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id BEE0C151
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Jun 2025 15:28:02 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id D31D4151
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Jun 2025 15:30:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id BC0134088C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Jun 2025 15:28:02 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id C4D234073C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Jun 2025 15:30:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Qt0OE6Oukdep for <intel-wired-lan@lists.osuosl.org>;
- Mon, 16 Jun 2025 15:28:02 +0000 (UTC)
+ id 9W0E_VB5FMkC for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 16 Jun 2025 15:30:27 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::32f; helo=mail-wm1-x32f.google.com;
+ client-ip=2a00:1450:4864:20::431; helo=mail-wr1-x431.google.com;
  envelope-from=joe@dama.to; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 10360408DF
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 10360408DF
-Received: from mail-wm1-x32f.google.com (mail-wm1-x32f.google.com
- [IPv6:2a00:1450:4864:20::32f])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 10360408DF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Jun 2025 15:28:01 +0000 (UTC)
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-450cb2ddd46so26103905e9.2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Jun 2025 08:28:01 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org E0C6140738
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E0C6140738
+Received: from mail-wr1-x431.google.com (mail-wr1-x431.google.com
+ [IPv6:2a00:1450:4864:20::431])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E0C6140738
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Jun 2025 15:30:26 +0000 (UTC)
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-3a54700a463so3387504f8f.1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Jun 2025 08:30:26 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1750087680; x=1750692480;
+ d=1e100.net; s=20230601; t=1750087825; x=1750692625;
  h=in-reply-to:content-disposition:mime-version:references
  :mail-followup-to:message-id:subject:cc:to:from:date
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=EywZQByriqxyaKItN5w0ENYjV/SBb1jnJW8uecqoy3g=;
- b=F2rE3feJIu8vHI29OODCVM7rSiFy1J6lpewbmpUgyczVsqhYIU/t3B2eqiubeVHCuU
- XAYPI6fzFi3z+3rD1X+Oaw53+1MQqyeTYfM+sYbkTeViTE92xKODaYDwHg9aj2yRCatv
- JNMhN7EwzwUJAkI0kVsZT5aWh1LicsjD7TbpjKaU3NZ1VCIp9x2k4PPE1m9VqCoNqKZJ
- ySkHW69tsNZ68hNJ0ouKfZyf7ZoYqKa922k0Yv8OlyPhtxDKqx2CeGAueI/gV/yJXgYZ
- Akh06h7cF0SPxjFayZzZO9uVwdkvOzhSPpbX6xBQRY2jbsT7cW+K/NOudO7yqf6FGQc9
- ZAbQ==
+ bh=2cvWGfqvAHegxKwTqRT6pqv8NWEdRZnW6ynL47ZacAE=;
+ b=CF56Fwhd77Bu3DLhELXF30JvqgUp2p7y0nv684h93zNO9eLBRRCqO31NeSZJLvEjqC
+ GQPrjWjlYA+LEi9gUViEQUNGXb5WxfkdOkQWJlKOyz2EcBZBg7foPeJ/J9/cJZ+G44Xo
+ Il02wD6es76eyp7vtkawbRJ6nM1M4ERfH8CE5ZwwS+CFBS9eqKPFpTl8Hk5EjJB10fAZ
+ pIb54Mmt3pnQpLI2YuIkL0BmFAd2dyKbHFuIgLp3hNUYkNFxApZBbDqNUUWvsT2EftyF
+ dk5Mubx8PTq7v3dOfTn1QBL9jWeXFWhu+Ngk12+3kX6CJQeKyd4s/37pVD/HNn8n5ZfI
+ U2GA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWGbQFEyHImFTX91OgjYPYLHWERsM3sGYyJu1yopB1NvbGOLQjfk6keLJjyzFo9kE4Pbu26v2qDyBQQhinU8IM=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YznkOvPx1eTlh4BAvJ84wBgAI6Cg8J5oTdyiC4/EXYllIiJiz3y
- yf9Dr7GWvZkWJkWdP163C9LsdTo5lerNTMN3j6ayBz76l+ORz7pZOBukLk/EqZv0O9E=
-X-Gm-Gg: ASbGnctqbW4kA4rAEIfSiHN2V5xlSe2kOISheumQB0DkGaxTNhTc4RAbwhb3bEjACL5
- sJbcSe7+eHMVVd/5+K7wPYkcOjmPh3yb0I7mYOl1KLgWRFJKJnMQHW21k+i32BikrUdMGuSaEgp
- UugAn203DN3fM/q04jEZE0blBRNvtMR8tOdJfTxLzzf4eDoK4XgNf3DgrwVEDsyOKtYVgmZsIW8
- RL+/HSUeXW9F4JmlGl54qjXSYrPPKKNmyNpH2vxlft0tJpxladv22sr6FgtkWIvpIzzEp6oe+A2
- JGk20M4rF3ee6XPuGmF3uKRVYaqBxu1XaqOxfNejoG/BOeM3T5w0BJXJXfZzP7HezFw=
-X-Google-Smtp-Source: AGHT+IFQ94WybWoeIXZsZB8kvlpjrnVoEs1KWw2ZohRTy2I4x2HUzm4lT9NO6WRU8shndKD74kYMXg==
-X-Received: by 2002:a05:600c:1d01:b0:442:ccf9:e6f2 with SMTP id
- 5b1f17b1804b1-4533caa6bb6mr91893515e9.16.1750087680082; 
- Mon, 16 Jun 2025 08:28:00 -0700 (PDT)
+ AJvYcCUeq7sX5gZw/U99LV/u6D36ItfVdD3BCDfhBL0YfChWaMbTxDvs139/i9/kPWo1bP296qwb362yViHPP8M2J8U=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YxeOSq5OR3gmPCEq9KLu1icp/q31zOfeWGTG0DNbB7lGvbl2rYp
+ +/n5h31vtW3El2985F31yd6gbKNgZDzErjO7tilDDGkSWGzl6z0PST8Rd0XKZFtRfxo=
+X-Gm-Gg: ASbGnctMyjpSTS2eU2iHPLdOjUPqev+5l35Ho/X7tunqZfF7FliPQRc//IEk+MeIJ1y
+ cD4/QYXuyb2j7L2RWZYmxiZxaeKh1UPpfBsXJj7pq65j0AcLoq5+2i16FdOCtwfVTU7vHPzEkx8
+ bTbZTisXK+bacQ5XP7GYlKoVmuSTVT4FFIf+sK7VqY+NDytQr9KxJXvdol3R4aVcbMuI1QKbeBY
+ UwM7JmwIITIf/YECZqJTmRpeXLOhz27wnwD2hFPUI5ASXrg8r0tdiP5Wu/6r+TKzg6RwIua0waE
+ FzCPzpGoOh6KTTZU4WFMGEgIcI9yia193DRXzQrRdvc8uaaWwrVmv+RFS4FVUOPF6o8=
+X-Google-Smtp-Source: AGHT+IG596tYxW0ljWuNt4gT0TSmu4NhzRCCR7j9XtoZvCcR0RQqrU2i7H9ddacVmwF3JsA/oLlLSw==
+X-Received: by 2002:a05:6000:40c9:b0:3a4:f7dd:6fad with SMTP id
+ ffacd0b85a97d-3a572e67394mr9107688f8f.14.1750087824809; 
+ Mon, 16 Jun 2025 08:30:24 -0700 (PDT)
 Received: from MacBook-Air.local ([5.100.243.24])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a568a6ee12sm11379533f8f.31.2025.06.16.08.27.58
+ ffacd0b85a97d-3a568b5bfefsm11133140f8f.88.2025.06.16.08.30.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Jun 2025 08:27:59 -0700 (PDT)
-Date: Mon, 16 Jun 2025 18:27:56 +0300
+ Mon, 16 Jun 2025 08:30:24 -0700 (PDT)
+Date: Mon, 16 Jun 2025 18:30:21 +0300
 From: Joe Damato <joe@dama.to>
 To: Jakub Kicinski <kuba@kernel.org>
 Cc: davem@davemloft.net, netdev@vger.kernel.org, edumazet@google.com,
@@ -92,7 +92,7 @@ Cc: davem@davemloft.net, netdev@vger.kernel.org, edumazet@google.com,
  przemyslaw.kitszel@intel.com, jacob.e.keller@intel.com,
  michal.swiatkowski@linux.intel.com,
  Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Message-ID: <aFA3_EErsL_9lLlv@MacBook-Air.local>
+Message-ID: <aFA4jSmkt-U5SfJj@MacBook-Air.local>
 Mail-Followup-To: Joe Damato <joe@dama.to>,
  Jakub Kicinski <kuba@kernel.org>, davem@davemloft.net,
  netdev@vger.kernel.org, edumazet@google.com, pabeni@redhat.com,
@@ -102,34 +102,33 @@ Mail-Followup-To: Joe Damato <joe@dama.to>,
  michal.swiatkowski@linux.intel.com,
  Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 References: <20250614180907.4167714-1-kuba@kernel.org>
- <20250614180907.4167714-5-kuba@kernel.org>
+ <20250614180907.4167714-6-kuba@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250614180907.4167714-5-kuba@kernel.org>
+In-Reply-To: <20250614180907.4167714-6-kuba@kernel.org>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=dama-to.20230601.gappssmtp.com; s=20230601; t=1750087680; x=1750692480;
+ d=dama-to.20230601.gappssmtp.com; s=20230601; t=1750087825; x=1750692625;
  darn=lists.osuosl.org; 
  h=in-reply-to:content-disposition:mime-version:references
  :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
  :subject:date:message-id:reply-to;
- bh=EywZQByriqxyaKItN5w0ENYjV/SBb1jnJW8uecqoy3g=;
- b=jdVToftV5KFzBqX87GU1u/PGwad7GDRyOOOYjztcyWlN1F6Ep8fyk/0cVEGrVccZ5m
- 7o/9dcddhSCbWNzehxYm0XxoYVxSNShyBAqjpEdMfTu1UK3rn9eDt/8dIJ0bEzM1VPTO
- yFhmZJfTH3iSnJ8HL7vyvHvfUn41VUBTT/9XHYEeDvydLFgyvUrlenYtFEuNgduqHxGX
- mX0huTpc701XcVxWVGr8UaOb7M7xAxqwKqqBf575bKmfoXni3eIKJ1s3LGmiyHyLBVOo
- NABZUnc6FFfSYuoXCpGBVrk+/IA1+ZaMK9YTrAp/N/nhb1eEevxK1B6626nCfxNBiYjx
- rR0g==
+ bh=2cvWGfqvAHegxKwTqRT6pqv8NWEdRZnW6ynL47ZacAE=;
+ b=PqbFhyvCu73YgBzyUqpO58svSfRRUwE/lwFW4s/8Mp2CUlwvKDIbuzBzYYIbhLz3g0
+ ksZpsWi5AYCkrfyQsT5isF9Jaou/ZBRgH08yQIg8wumuTmWt1JrR9QMlMIM0J6deJxIU
+ AVGCCFl6Lffz7tHwR7CaDB2h1vp0MlWAL/b9i4I6Xm8xa9zCJ7VgkIC+AcTKDlXOP+X6
+ yVGmBGuF58vA/MicHS7UPRg7pBV1WOaXyBFBrCyTdfUzbD02FJrbWGiD+8A64p3NzKzL
+ XUXms06buaxca4OyPSGGWBh44IzjyUc199DKYDHTYak4iimkGyhmkZkQsTKulEXN3i9o
+ Ex7w==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=dama.to
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=dama-to.20230601.gappssmtp.com
+ dkim=pass (2048-bit key) header.d=dama-to.20230601.gappssmtp.com
  header.i=@dama-to.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=jdVToftV
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 4/7] eth: fm10k: migrate
- to new RXFH callbacks
+ header.s=20230601 header.b=PqbFhyvC
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 5/7] eth: i40e: migrate to
+ new RXFH callbacks
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -145,16 +144,19 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sat, Jun 14, 2025 at 11:09:04AM -0700, Jakub Kicinski wrote:
+On Sat, Jun 14, 2025 at 11:09:05AM -0700, Jakub Kicinski wrote:
 > Migrate to new callbacks added by commit 9bb00786fc61 ("net: ethtool:
 > add dedicated callbacks for getting and setting rxfh fields").
-> .get callback moves out of the switch and set_rxnfc disappears
-> as ETHTOOL_SRXFH as the only functionality.
+> 
+> I'm deleting all the boilerplate kdoc from the affected functions.
+> It is somewhere between pointless and incorrect, just a burden for
+> people refactoring the code.
 > 
 > Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 > Signed-off-by: Jakub Kicinski <kuba@kernel.org>
 > ---
->  .../net/ethernet/intel/fm10k/fm10k_ethtool.c  | 34 ++++++-------------
->  1 file changed, 10 insertions(+), 24 deletions(-)
+>  .../net/ethernet/intel/i40e/i40e_ethtool.c    | 38 +++++++------------
+>  1 file changed, 14 insertions(+), 24 deletions(-)
+>
 
 Reviewed-by: Joe Damato <joe@dama.to>
