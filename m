@@ -1,98 +1,135 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AD752ADB28A
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Jun 2025 15:52:37 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2D2BBADB533
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Jun 2025 17:24:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6FD998048E;
-	Mon, 16 Jun 2025 13:52:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8401F80DA7;
+	Mon, 16 Jun 2025 15:24:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id G2uS88kWiFdN; Mon, 16 Jun 2025 13:52:34 +0000 (UTC)
+ id Cv9YT6KKclPj; Mon, 16 Jun 2025 15:24:05 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C5BA380532
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0699580DA3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1750081954;
-	bh=ZqgJTIhg7iSMIBl5K+qfEaosU7aiutQuyXZGQz/k4Oo=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=SYU3N+v5OpfTs/AYZH5sCrta5MfndXfpXnzZPAKnO9nj/4PXYjKuPPJCtmHyDe0eu
-	 1fCwJSvpGd6eRq+nNA0LAAD/FsSUnF1lnV5l/bBa+ur0duXgohHSaoIqaDDdrgHsW5
-	 UdFp60ln80ktH5xiMUYBSJ37QhF1rJbs8Lw6VYBoxN58T3E3JoQy5Y043A4qDkLHGw
-	 J6WiXi42yIMpjfgY1KVfslr2DXgct01i6+/OWempdWLio3yFdGxIXodF1tRPA6eTIC
-	 /qV28RpUprqMqcTDLHGiuu89+7yHl7xkWMOFCJZGHFVJLgZ0FpTqzIbAUQ5/8WmlrD
-	 JOkHn+x6bjsYA==
+	s=default; t=1750087445;
+	bh=wF60HHVrNcI4iTxK1p8Ap3HWFqO5znVdWpUelG2IIFA=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=SPsI8vXZyXzTyL7SOXM01zHPK7r9hyaYuOeoqdSDnDVCV3CHYvhXvtT9MFYUpWYaa
+	 /Ek5F45mWoKwjC8zfnuFshVb+8n2klSbIks0MaynQFbOMJvLytbpOptW4Cy7FU38fL
+	 F2f+n5xnceHuq1wbReTXN973WA7AnAsAh6GhOJ8TXLnp09NPsZEq/tftD9bWuq3lXt
+	 lt0wttbV6W0P46VW0g2rbtE4HxrBTCO6Qjrd8qlxqU9kI5nrkXLlYef5RZ0yaZwvQw
+	 +Z1IhvqodOxVxNF7GQ9SItYwZB9zXmKYE74U4AWdk+LdCGPVwML2EcJ3DTBKJS+jrw
+	 yckqRfDNS4rZw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C5BA380532;
-	Mon, 16 Jun 2025 13:52:34 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0699580DA3;
+	Mon, 16 Jun 2025 15:24:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 9F03216B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Jun 2025 13:52:32 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id E81D7151
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Jun 2025 15:24:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9B4B280D8A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Jun 2025 13:52:32 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id CEE854030B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Jun 2025 15:24:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KQi38zUywxqL for <intel-wired-lan@lists.osuosl.org>;
- Mon, 16 Jun 2025 13:52:32 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.9;
- helo=mgamail.intel.com; envelope-from=jedrzej.jagielski@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org E58B680CB4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E58B680CB4
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E58B680CB4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Jun 2025 13:52:31 +0000 (UTC)
-X-CSE-ConnectionGUID: BEHyJCJhRXSps25vY5MmNw==
-X-CSE-MsgGUID: Gg+5vfjjREySH9EmaWY0WA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11465"; a="74758752"
-X-IronPort-AV: E=Sophos;i="6.16,241,1744095600"; d="scan'208";a="74758752"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
- by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Jun 2025 06:52:26 -0700
-X-CSE-ConnectionGUID: ZBlJptONQkaeR5d+jI1KUg==
-X-CSE-MsgGUID: VJnSZJrpSKeMAIz1gubSjQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,241,1744095600"; d="scan'208";a="148382406"
-Received: from os-delivery.igk.intel.com ([10.102.18.218])
- by fmviesa007.fm.intel.com with ESMTP; 16 Jun 2025 06:52:24 -0700
-From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: anthony.l.nguyen@intel.com, netdev@vger.kernel.org,
- Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Date: Mon, 16 Jun 2025 15:36:36 +0200
-Message-Id: <20250616133636.1304288-1-jedrzej.jagielski@intel.com>
-X-Mailer: git-send-email 2.31.1
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id TiwXMHzhrnHY for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 16 Jun 2025 15:24:02 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::431; helo=mail-wr1-x431.google.com;
+ envelope-from=joe@dama.to; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 43251402F6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 43251402F6
+Received: from mail-wr1-x431.google.com (mail-wr1-x431.google.com
+ [IPv6:2a00:1450:4864:20::431])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 43251402F6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Jun 2025 15:24:00 +0000 (UTC)
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-3a536ecbf6fso3145939f8f.2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Jun 2025 08:24:00 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1750087439; x=1750692239;
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=wF60HHVrNcI4iTxK1p8Ap3HWFqO5znVdWpUelG2IIFA=;
+ b=QI7puLaoFujgDgNG0lBh/uq937B4ZPFoLi8XSZbVtJ0Wz1A/Xxl4DLgWi47ZiT6TP1
+ iOX1YZYxfiukQsm3fbfD51lJ/Gb8JzlH5q/CfDVjAeJPPsfzDQqG7/aiIY3rCnjnUFDK
+ YGxEW//bwTquA89LbstdNTF34a2qmKZmIEPiXSw0gkwX1ZkEjIqvLrOoqhCsxXcTYSSx
+ zJHo90HJVYvigbKMxV8QlpqP7cHBAiTp7YZNL4PUTxyOQwM2Xvegjn86UjYWeJDkbjSB
+ QjLrWP/pgD7UsTzhmu8waEWguUunHY2xiuzPz3Hq4aYQzLGhN3AF5TOSkHUPlqdy82l1
+ erzQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWfSiBOMpBHvgvcYkkPSIc2iSh1GFYRjbdZY6nr2whrCoRmRqBDE/doIaDc94qYmNSzkE+qR55GvYBo73zmGrI=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyIwMPhWl8hMhgInZomMYlX3Y0ldLCysVIuB8UJb0+AIQZO557A
+ djXf13xCu3Zxb9mmgKN5uP7+RPqaCsyLHlyRgBz9VXDuO1oZtYrtFeRIMVvkoUAYH8I=
+X-Gm-Gg: ASbGnctX/phiwfIL12UB1rhpTXIFw1eigdQ+1/QnLigaCe6OPa1b/SHESJMjI3oj9FW
+ BsmDMtuWOXYwuYM573HhayUZp/f0aO7jMfrWBQjyJBW0V1JPgDjgxNYsB/doF1/MfJqxaesvj6P
+ 8T+qt+Z1i6kD2Cr/f1UGa0s8HkC2b7X+MUAo/rUX+B5vCMPNQ22rN14/njs9Mw0wYKFL118P5TZ
+ hX3BXiCyyCWyYfN8j8eblSV4psA+cWMh1OSO4bhjvXdrl/sBKrg0BuXgtwoAHVTRLYkNHXVEBYF
+ CPXLEKeHRYJavZsm8WzJRvaTTlAlWfH+Bp9EKYxAlA4zYvi7d/FOxI+trVVNKdUkl2Q=
+X-Google-Smtp-Source: AGHT+IGwvOWKyM412fudvPrM6z8FEgTIk+C6r8GvJ8HOktClslj4MXAPMSdndeNeikNtUQWd0wrJpg==
+X-Received: by 2002:a05:6000:288d:b0:3a5:1cc5:aa6f with SMTP id
+ ffacd0b85a97d-3a5723a3539mr8133077f8f.34.1750087439181; 
+ Mon, 16 Jun 2025 08:23:59 -0700 (PDT)
+Received: from MacBook-Air.local ([5.100.243.24])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3a568a5407csm11512896f8f.12.2025.06.16.08.23.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 16 Jun 2025 08:23:58 -0700 (PDT)
+Date: Mon, 16 Jun 2025 18:23:55 +0300
+From: Joe Damato <joe@dama.to>
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: davem@davemloft.net, netdev@vger.kernel.org, edumazet@google.com,
+ pabeni@redhat.com, andrew+netdev@lunn.ch, horms@kernel.org,
+ intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
+ przemyslaw.kitszel@intel.com, jacob.e.keller@intel.com,
+ michal.swiatkowski@linux.intel.com,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Message-ID: <aFA3C5sSiI5F7eZH@MacBook-Air.local>
+Mail-Followup-To: Joe Damato <joe@dama.to>,
+ Jakub Kicinski <kuba@kernel.org>, davem@davemloft.net,
+ netdev@vger.kernel.org, edumazet@google.com, pabeni@redhat.com,
+ andrew+netdev@lunn.ch, horms@kernel.org,
+ intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
+ przemyslaw.kitszel@intel.com, jacob.e.keller@intel.com,
+ michal.swiatkowski@linux.intel.com,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+References: <20250614180907.4167714-1-kuba@kernel.org>
+ <20250614180907.4167714-3-kuba@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1750081952; x=1781617952;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=tmGIZrqUdKwsTfypfMjWY4BiQcvZrniX9b2OdyQnEfA=;
- b=NaU3XpiDCsCm2XuDaCgo/Vv1CSNxOOYOP4LY+iyG6ThhWmgwHFVllYrs
- GYcxeDnUVq12mv99Sx7r5pQob/hlI7TiO6satvE1OywaE7OrBM+Wauj50
- eOv2XF2elvJfPqI7HUQiL28si5+mzl+7/QXVyMbN/yksHDgwH8ayi1CY/
- 4hLjrG06GU/rSuexYhIxa3Mb8Iu92FgR+nJE0C+4ohViLuIJBqQqe+dIB
- dNqQfzPbDBDeIdwiBuXBJawhwoFX7aCtwEEUtzzOwut5F6aC9QCVxoYYw
- 0GJYj52GrCFxii8s8V81P5N6ynhgK2xmvRoqps/GQ2YW/c6UYGhOF4hZl
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=NaU3XpiD
-Subject: [Intel-wired-lan] [PATCH iwl-net v1] ixgbe: initialize aci.lock
- before it's used
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250614180907.4167714-3-kuba@kernel.org>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=dama-to.20230601.gappssmtp.com; s=20230601; t=1750087439; x=1750692239;
+ darn=lists.osuosl.org; 
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=wF60HHVrNcI4iTxK1p8Ap3HWFqO5znVdWpUelG2IIFA=;
+ b=Boc5RYC5jtljFZ6+O56J6KcZJC6NAg7HZGwnPah3DsTfcLN5mNDhZpeBW+vgbe+pKX
+ rBSwF8iedFnDL5tPgvuH5jwgqkkUliaAsQZVOW1WbeRFPUXsB0T1l3iCcq3FWG6DR72S
+ TMxJM8drjuFL/BurkqSOEa/ZWWl1MZge/dlNEghaAjLQ1z8cBf5E5U0bOvkshim5EuGz
+ ksSx1xHb0Fg0lfG0qE+Om/6kD/0bxG614RC6+5uP2zFKFKmrbW6dXz+jQvqhKA/541FR
+ GWz+/zSiMEI21ylP3MzAhegyGa6olFKwpcmpFNu2z1dXxx1IPdYNV7Nkat3HZLYsv8Ts
+ xrog==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=dama.to
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=dama-to.20230601.gappssmtp.com
+ header.i=@dama-to.20230601.gappssmtp.com header.a=rsa-sha256
+ header.s=20230601 header.b=Boc5RYC5
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 2/7] eth: igc: migrate to
+ new RXFH callbacks
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -108,91 +145,15 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Currently aci.lock is initialized too late. A bunch of ACI callbacks
-using the lock are called prior it's initialized.
+On Sat, Jun 14, 2025 at 11:09:02AM -0700, Jakub Kicinski wrote:
+> Migrate to new callbacks added by commit 9bb00786fc61 ("net: ethtool:
+> add dedicated callbacks for getting and setting rxfh fields").
+> 
+> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> Signed-off-by: Jakub Kicinski <kuba@kernel.org>
+> ---
+>  drivers/net/ethernet/intel/igc/igc_ethtool.c | 18 ++++++++++--------
+>  1 file changed, 10 insertions(+), 8 deletions(-)
+>
 
-Commit 337369f8ce9e ("locking/mutex: Add MUTEX_WARN_ON() into fast path")
-highlights that issue what results in call trace.
-
-[    4.092899] DEBUG_LOCKS_WARN_ON(lock->magic != lock)
-[    4.092910] WARNING: CPU: 0 PID: 578 at kernel/locking/mutex.c:154 mutex_lock+0x6d/0x80
-[    4.098757] Call Trace:
-[    4.098847]  <TASK>
-[    4.098922]  ixgbe_aci_send_cmd+0x8c/0x1e0 [ixgbe]
-[    4.099108]  ? hrtimer_try_to_cancel+0x18/0x110
-[    4.099277]  ixgbe_aci_get_fw_ver+0x52/0xa0 [ixgbe]
-[    4.099460]  ixgbe_check_fw_error+0x1fc/0x2f0 [ixgbe]
-[    4.099650]  ? usleep_range_state+0x69/0xd0
-[    4.099811]  ? usleep_range_state+0x8c/0xd0
-[    4.099964]  ixgbe_probe+0x3b0/0x12d0 [ixgbe]
-[    4.100132]  local_pci_probe+0x43/0xa0
-[    4.100267]  work_for_cpu_fn+0x13/0x20
-[    4.101647]  </TASK>
-
-Move aci.lock mutex initialization to ixgbe_sw_init() before any ACI
-command is sent. Along with that move also related SWFW semaphore in
-order to reduce size of ixgbe_probe() and that way all locks are
-initialized in ixgbe_sw_init().
-
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Fixes: 4600cdf9f5ac ("ixgbe: Enable link management in E610 device")
-Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 03d31e5b131d..18cae81dc794 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -6801,6 +6801,13 @@ static int ixgbe_sw_init(struct ixgbe_adapter *adapter,
- 		break;
- 	}
- 
-+	/* Make sure the SWFW semaphore is in a valid state */
-+	if (hw->mac.ops.init_swfw_sync)
-+		hw->mac.ops.init_swfw_sync(hw);
-+
-+	if (hw->mac.type == ixgbe_mac_e610)
-+		mutex_init(&hw->aci.lock);
-+
- #ifdef IXGBE_FCOE
- 	/* FCoE support exists, always init the FCoE lock */
- 	spin_lock_init(&adapter->fcoe.lock);
-@@ -11473,10 +11480,6 @@ static int ixgbe_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	if (err)
- 		goto err_sw_init;
- 
--	/* Make sure the SWFW semaphore is in a valid state */
--	if (hw->mac.ops.init_swfw_sync)
--		hw->mac.ops.init_swfw_sync(hw);
--
- 	if (ixgbe_check_fw_error(adapter))
- 		return ixgbe_recovery_probe(adapter);
- 
-@@ -11680,8 +11683,6 @@ static int ixgbe_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	ether_addr_copy(hw->mac.addr, hw->mac.perm_addr);
- 	ixgbe_mac_set_default_filter(adapter);
- 
--	if (hw->mac.type == ixgbe_mac_e610)
--		mutex_init(&hw->aci.lock);
- 	timer_setup(&adapter->service_timer, ixgbe_service_timer, 0);
- 
- 	if (ixgbe_removed(hw->hw_addr)) {
-@@ -11837,9 +11838,9 @@ static int ixgbe_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	devl_unlock(adapter->devlink);
- 	ixgbe_release_hw_control(adapter);
- 	ixgbe_clear_interrupt_scheme(adapter);
-+err_sw_init:
- 	if (hw->mac.type == ixgbe_mac_e610)
- 		mutex_destroy(&adapter->hw.aci.lock);
--err_sw_init:
- 	ixgbe_disable_sriov(adapter);
- 	adapter->flags2 &= ~IXGBE_FLAG2_SEARCH_FOR_SFP;
- 	iounmap(adapter->io_addr);
-
-base-commit: a76bd1156de9fd1d4be4502cbb5160a709ff4cd7
--- 
-2.31.1
-
+Reviewed-by: Joe Damato <joe@dama.to>
