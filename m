@@ -1,73 +1,73 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 509BFADB94A
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Jun 2025 21:03:09 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3DAB1ADB949
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Jun 2025 21:03:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E691E809EB;
-	Mon, 16 Jun 2025 19:03:05 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 82624608B1;
+	Mon, 16 Jun 2025 19:03:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id lTqN8fMuGAOw; Mon, 16 Jun 2025 19:03:05 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id DkkQNOAk8MSF; Mon, 16 Jun 2025 19:03:05 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0EB4A80983
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D26F1608A2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
 	s=default; t=1750100585;
-	bh=/MSOwAPR+CK6Ot9RLSdkw949AtDTxcitl0N2nXgm+3Q=;
+	bh=DbQ6Z8UW7jJAudWegBR+8jTkEmioYEEzKFiNEVqPRmE=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=hCL4vDTpffwq2lBD54SOdc6rV444OaAAyRPbeuRyvBvbMozLdMlL5eiLEmyqrWbWZ
-	 tIpiEGCKpB8ONb4Ld+EljLcCxAzsRt9mbLornjHEqo4qFChQRBUEWnbmggYwYREi64
-	 FUvbNNAVuwBt8hsDAp4cccAfi5ZRIn3X1piJsqkPQObfN1CCfZ8cUkhsF65Rg19WfO
-	 vgZAz/6j9jfEW2I7XCoKtGLsjG+cO6/XcKGFj/Efur6EJQkMfC76GfZDIuTE8jByNp
-	 PRAnqE0IztoMMBzkFSwqu7Aenns69QLn9PQlacCi1/Vi9ExN1q12XS7OpK1Us4qwQF
-	 UbPcm9BGDjMFQ==
+	b=1meGmU4orZhr+az4XwzoF4YGeBJOMYu/ovP+tH5YIsIk4Um+pb8tLf+YjkiORO1cD
+	 /x9wuF+yXeEYWKeYpQlIBgvPW4uhv5X54P6Inm9iwLdIXyyEUT2JZs3XTKE9+Rb4aJ
+	 K3I3rq37QEi2C5/nvDoo9lt4c9Y3hHFp7t/1T9pvhspnifCtAv3L2EtqZmeOrZ0MpC
+	 x+ltDhGzyEQmVt95OXiKr1y0k42b95jo149IlxQEVIy+9zR+9VBzuqh3qxsptLxyee
+	 4R+Uug+juruV+4laufLDsml2jQMll69TXEUl91Q/SIY82fFLL8Gj6KOvzbO0Pp9u0p
+	 AChfJhwZxqjnw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0EB4A80983;
+	by smtp3.osuosl.org (Postfix) with ESMTP id D26F1608A2;
 	Mon, 16 Jun 2025 19:03:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 26FAD16B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Jun 2025 19:03:03 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 1481C16B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Jun 2025 19:03:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 14FB880890
+ by smtp1.osuosl.org (Postfix) with ESMTP id 43E458089C
  for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Jun 2025 19:02:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id nfBa-8g1xBee for <intel-wired-lan@lists.osuosl.org>;
+ id iSW4F7nPtTbg for <intel-wired-lan@lists.osuosl.org>;
  Mon, 16 Jun 2025 19:02:58 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
  helo=mgamail.intel.com; envelope-from=david.m.ertman@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4E0EC80892
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4E0EC80892
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8C1658087E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8C1658087E
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4E0EC80892
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8C1658087E
  for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Jun 2025 19:02:58 +0000 (UTC)
-X-CSE-ConnectionGUID: XTeXXxJCRficLX7eGHb+bQ==
-X-CSE-MsgGUID: 1m/8203jT3OEWJAmoamXDg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11465"; a="52122669"
-X-IronPort-AV: E=Sophos;i="6.16,241,1744095600"; d="scan'208";a="52122669"
+X-CSE-ConnectionGUID: 5/2a552EQpK1Y8g6r8oLRw==
+X-CSE-MsgGUID: EvowRjkkRAiUn9cH6XaTFA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11465"; a="52122670"
+X-IronPort-AV: E=Sophos;i="6.16,241,1744095600"; d="scan'208";a="52122670"
 Received: from orviesa004.jf.intel.com ([10.64.159.144])
  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  16 Jun 2025 12:02:56 -0700
-X-CSE-ConnectionGUID: rDudKqqqQP2H/mfAL/4D0Q==
-X-CSE-MsgGUID: qyidj959Tzem7tOmss/r0g==
+X-CSE-ConnectionGUID: a9SZ+RSoS3OchgxIpdweog==
+X-CSE-MsgGUID: a5zpPRwWRMKDwqTkd2FZKQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,241,1744095600"; d="scan'208";a="153513108"
+X-IronPort-AV: E=Sophos;i="6.16,241,1744095600"; d="scan'208";a="153513112"
 Received: from dmert-mdev.jf.intel.com ([10.166.5.145])
  by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  16 Jun 2025 12:02:56 -0700
 From: Dave Ertman <david.m.ertman@intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Date: Mon, 16 Jun 2025 13:03:19 +0200
-Message-ID: <20250616110323.788970-5-david.m.ertman@intel.com>
+Date: Mon, 16 Jun 2025 13:03:20 +0200
+Message-ID: <20250616110323.788970-6-david.m.ertman@intel.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250616110323.788970-1-david.m.ertman@intel.com>
 References: <20250616110323.788970-1-david.m.ertman@intel.com>
@@ -78,22 +78,22 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1750100578; x=1781636578;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=37l7VPXwq9Hk+ZEPneI/NC8rr6JigtSOHPh44mkVlb0=;
- b=Fv698dEe0bwWOXW3KvIGCggCNPLwyF60fOPJMFqBskZleERAqGojyIbA
- uwIgWY8K9vMtdAGF7A+RTuO42mMme1Y13mtTU2P+HAk+ojk/8bHMicZR8
- 0caj2+FkxhqsdQCVS48yzkxRdNUZi+oBCFjjrrbl5JmARut9oTvwPblVL
- HaXBWYbEzIyQH5dNhmyPWqfdH7pkwaNx9ekj6ps8VZIKqnb8K8Bw/JrFe
- yGuynDxA0El3pw8gy5y9Y2qBZtXQa9QLoJ9/gFYjN0LE42aaiRIUdS5+f
- HYRqhIymHBm83CR91Rc/DuuFIB61k6m0kfmn33hXY706Zi0MqsgIrKrUu
- Q==;
+ bh=2bZ2/lwrF2v7o+4RVDT5j7+eRKnfyaswaj6pAag2nPc=;
+ b=nU5fUOpPAcYMf2NWJ6XQ2ICqNPTmbuJ5vas2qZyGGzJOJ4jR+N0ke+6o
+ gbNMjsSyanTZSPmD23h/chheVol2NGn9tZ9R2h/adk1eri5LRtLIyALlS
+ ykVc8YDP0UzHaMabx0rcr5SIsqQ3vPgNxhmyJwDQjbE9bFQ41gILSY1Qm
+ 7VLsSsZfZn6NrEDxSTtNPCQHveh5TAsyMWGFK06imKLhErSgLTb4a5qxY
+ oy8CiqMybNSrIc6fmxB1t25o7HTFXffmmvDF39K9EQpWSoxcrGNNIRMEQ
+ EAQlh3Zt14R3axjGCNG7Lqj6bTPp+U5WeIuRoTJk75DBTwWv9wt6ZAWVs
+ w==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Fv698dEe
-Subject: [Intel-wired-lan] [PATCH iwl-next v4 4/8] [PATCH iwl-next v3 4/8]
- ice: move LAG function in code to prepare for
+ header.a=rsa-sha256 header.s=Intel header.b=nU5fUOpP
+Subject: [Intel-wired-lan] [PATCH iwl-next v4 5/8] [PATCH iwl-next v3 5/8]
+ ice: Cleanup variable initialization in LAG
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -109,202 +109,192 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Active-Active
+code
 
-In the SRIOV LAG Active-Active, the functions ice_lag_cfg_pf_fltr's
-and ice_lag_config_eswitch's content are moved to earlier locations
-in the source file.  Also, ice_lag_cfg_pf_fltr is renamed, and its
-flow is changed.
+In preparation for implementing SRIOV Active-Active LAG support,
+cleanup several unneeded variable initializations in declaration
+blocks.
 
-To reduce the delta in the larger patch, move the original functions
-to their new location so that only functional changes are needed in
-the larger patch.
+Also move a couple of variable initializations into declaration
+block that shouold be there.
 
 Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_lag.c | 147 ++++++++++++-----------
- 1 file changed, 74 insertions(+), 73 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_lag.c | 54 ++++++++----------------
+ 1 file changed, 17 insertions(+), 37 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_lag.c b/drivers/net/ethernet/intel/ice/ice_lag.c
-index 3d5918a270a4..0c6dbf712897 100644
+index 0c6dbf712897..f73536d696b4 100644
 --- a/drivers/net/ethernet/intel/ice/ice_lag.c
 +++ b/drivers/net/ethernet/intel/ice/ice_lag.c
-@@ -100,6 +100,28 @@ static bool netif_is_same_ice(struct ice_pf *pf, struct net_device *netdev)
- 	return true;
- }
+@@ -234,13 +234,12 @@ ice_lag_cfg_fltr(struct ice_lag *lag, u32 act, u16 recipe_id, u16 *rule_idx,
+ 		 u8 direction, bool add)
+ {
+ 	struct ice_sw_rule_lkup_rx_tx *s_rule;
++	struct ice_hw *hw = &lag->pf->hw;
+ 	u16 s_rule_sz, vsi_num;
+-	struct ice_hw *hw;
+ 	u8 *eth_hdr;
+ 	u32 opc;
+ 	int err;
  
-+/**
-+ * ice_lag_config_eswitch - configure eswitch to work with LAG
-+ * @lag: lag info struct
-+ * @netdev: active network interface device struct
-+ *
-+ * Updates all port representors in eswitch to use @netdev for Tx.
-+ *
-+ * Configures the netdev to keep dst metadata (also used in representor Tx).
-+ * This is required for an uplink without switchdev mode configured.
-+ */
-+static void ice_lag_config_eswitch(struct ice_lag *lag,
-+				   struct net_device *netdev)
-+{
-+	struct ice_repr *repr;
-+	unsigned long id;
-+
-+	xa_for_each(&lag->pf->eswitch.reprs, id, repr)
-+		repr->dst->u.port_info.lower_dev = netdev;
-+
-+	netif_keep_dst(netdev);
-+}
-+
- /**
-  * ice_netdev_to_lag - return pointer to associated lag struct from netdev
-  * @netdev: pointer to net_device struct to query
-@@ -354,6 +376,58 @@ ice_lag_cfg_pf_fltrs(struct ice_lag *lag, void *ptr)
- 	}
- }
+-	hw = &lag->pf->hw;
+ 	vsi_num = ice_get_hw_vsi_num(hw, 0);
  
-+/**
-+ * ice_lag_cfg_cp_fltr - configure filter for control packets
-+ * @lag: local interface's lag struct
-+ * @add: add or remove rule
-+ */
-+static void
-+ice_lag_cfg_cp_fltr(struct ice_lag *lag, bool add)
-+{
-+	struct ice_sw_rule_lkup_rx_tx *s_rule = NULL;
-+	struct ice_vsi *vsi;
-+	u16 buf_len, opc;
-+
-+	vsi = lag->pf->vsi[0];
-+
-+	buf_len = ICE_SW_RULE_RX_TX_HDR_SIZE(s_rule, ICE_TRAIN_PKT_LEN);
-+	s_rule = kzalloc(buf_len, GFP_KERNEL);
-+	if (!s_rule) {
-+		netdev_warn(lag->netdev, "-ENOMEM error configuring CP filter\n");
-+		return;
-+	}
-+
-+	if (add) {
-+		s_rule->hdr.type = cpu_to_le16(ICE_AQC_SW_RULES_T_LKUP_RX);
-+		s_rule->recipe_id = cpu_to_le16(ICE_LAG_SRIOV_CP_RECIPE);
-+		s_rule->src = cpu_to_le16(vsi->port_info->lport);
-+		s_rule->act = cpu_to_le32(ICE_FWD_TO_VSI |
-+					  ICE_SINGLE_ACT_LAN_ENABLE |
-+					  ICE_SINGLE_ACT_VALID_BIT |
-+					  FIELD_PREP(ICE_SINGLE_ACT_VSI_ID_M,
-+						     vsi->vsi_num));
-+		s_rule->hdr_len = cpu_to_le16(ICE_TRAIN_PKT_LEN);
-+		memcpy(s_rule->hdr_data, lacp_train_pkt, ICE_TRAIN_PKT_LEN);
-+		opc = ice_aqc_opc_add_sw_rules;
-+	} else {
-+		opc = ice_aqc_opc_remove_sw_rules;
-+		s_rule->index = cpu_to_le16(lag->cp_rule_idx);
-+	}
-+	if (ice_aq_sw_rules(&lag->pf->hw, s_rule, buf_len, 1, opc, NULL)) {
-+		netdev_warn(lag->netdev, "Error %s CP rule for fail-over\n",
-+			    add ? "ADDING" : "REMOVING");
-+		goto err_cp_free;
-+	}
-+
-+	if (add)
-+		lag->cp_rule_idx = le16_to_cpu(s_rule->index);
-+	else
-+		lag->cp_rule_idx = 0;
-+
-+err_cp_free:
-+	kfree(s_rule);
-+}
-+
- /**
-  * ice_display_lag_info - print LAG info
-  * @lag: LAG info struct
-@@ -768,57 +842,6 @@ void ice_lag_move_vf_nodes_cfg(struct ice_lag *lag, u8 src_prt, u8 dst_prt)
- 	ice_lag_destroy_netdev_list(lag, &ndlist);
- }
- 
--/**
-- * ice_lag_cfg_cp_fltr - configure filter for control packets
-- * @lag: local interface's lag struct
-- * @add: add or remove rule
-- */
--static void
--ice_lag_cfg_cp_fltr(struct ice_lag *lag, bool add)
--{
+ 	s_rule_sz = ICE_SW_RULE_RX_TX_ETH_HDR_SIZE(s_rule);
+@@ -384,12 +383,10 @@ ice_lag_cfg_pf_fltrs(struct ice_lag *lag, void *ptr)
+ static void
+ ice_lag_cfg_cp_fltr(struct ice_lag *lag, bool add)
+ {
 -	struct ice_sw_rule_lkup_rx_tx *s_rule = NULL;
 -	struct ice_vsi *vsi;
--	u16 buf_len, opc;
--
++	struct ice_sw_rule_lkup_rx_tx *s_rule;
++	struct ice_vsi *vsi = lag->pf->vsi[0];
+ 	u16 buf_len, opc;
+ 
 -	vsi = lag->pf->vsi[0];
 -
--	buf_len = ICE_SW_RULE_RX_TX_HDR_SIZE(s_rule, ICE_TRAIN_PKT_LEN);
--	s_rule = kzalloc(buf_len, GFP_KERNEL);
--	if (!s_rule) {
--		netdev_warn(lag->netdev, "-ENOMEM error configuring CP filter\n");
--		return;
--	}
+ 	buf_len = ICE_SW_RULE_RX_TX_HDR_SIZE(s_rule, ICE_TRAIN_PKT_LEN);
+ 	s_rule = kzalloc(buf_len, GFP_KERNEL);
+ 	if (!s_rule) {
+@@ -477,12 +474,11 @@ static u16
+ ice_lag_qbuf_recfg(struct ice_hw *hw, struct ice_aqc_cfg_txqs_buf *qbuf,
+ 		   u16 vsi_num, u16 numq, u8 tc)
+ {
++	struct ice_pf *pf = hw->back;
+ 	struct ice_q_ctx *q_ctx;
+ 	u16 qid, count = 0;
+-	struct ice_pf *pf;
+ 	int i;
+ 
+-	pf = hw->back;
+ 	for (i = 0; i < numq; i++) {
+ 		q_ctx = ice_get_lan_q_ctx(hw, vsi_num, tc, i);
+ 		if (!q_ctx) {
+@@ -898,13 +894,12 @@ ice_lag_reclaim_vf_tc(struct ice_lag *lag, struct ice_hw *src_hw, u16 vsi_num,
+ 	u16 numq, valq, num_moved, qbuf_size;
+ 	u16 buf_size = __struct_size(buf);
+ 	struct ice_aqc_cfg_txqs_buf *qbuf;
++	struct ice_hw *hw = &lag->pf->hw;
+ 	struct ice_sched_node *n_prt;
+ 	__le32 teid, parent_teid;
+ 	struct ice_vsi_ctx *ctx;
+-	struct ice_hw *hw;
+ 	u32 tmp_teid;
+ 
+-	hw = &lag->pf->hw;
+ 	ctx = ice_get_vsi_ctx(hw, vsi_num);
+ 	if (!ctx) {
+ 		dev_warn(dev, "Unable to locate VSI context for LAG reclaim\n");
+@@ -1179,11 +1174,8 @@ ice_lag_set_swid(u16 primary_swid, struct ice_lag *local_lag,
+  */
+ static void ice_lag_primary_swid(struct ice_lag *lag, bool link)
+ {
+-	struct ice_hw *hw;
+-	u16 swid;
 -
--	if (add) {
--		s_rule->hdr.type = cpu_to_le16(ICE_AQC_SW_RULES_T_LKUP_RX);
--		s_rule->recipe_id = cpu_to_le16(ICE_LAG_SRIOV_CP_RECIPE);
--		s_rule->src = cpu_to_le16(vsi->port_info->lport);
--		s_rule->act = cpu_to_le32(ICE_FWD_TO_VSI |
--					  ICE_SINGLE_ACT_LAN_ENABLE |
--					  ICE_SINGLE_ACT_VALID_BIT |
--					  FIELD_PREP(ICE_SINGLE_ACT_VSI_ID_M, vsi->vsi_num));
--		s_rule->hdr_len = cpu_to_le16(ICE_TRAIN_PKT_LEN);
--		memcpy(s_rule->hdr_data, lacp_train_pkt, ICE_TRAIN_PKT_LEN);
--		opc = ice_aqc_opc_add_sw_rules;
--	} else {
--		opc = ice_aqc_opc_remove_sw_rules;
--		s_rule->index = cpu_to_le16(lag->cp_rule_idx);
--	}
--	if (ice_aq_sw_rules(&lag->pf->hw, s_rule, buf_len, 1, opc, NULL)) {
--		netdev_warn(lag->netdev, "Error %s CP rule for fail-over\n",
--			    add ? "ADDING" : "REMOVING");
--		goto cp_free;
--	}
+-	hw = &lag->pf->hw;
+-	swid = hw->port_info->sw_id;
++	struct ice_hw *hw = &lag->pf->hw;
++	u16 swid = hw->port_info->sw_id;
+ 
+ 	if (ice_share_res(hw, ICE_AQC_RES_TYPE_SWID, link, swid))
+ 		dev_warn(ice_pf_to_dev(lag->pf), "Failure to set primary interface shared status\n");
+@@ -1196,12 +1188,10 @@ static void ice_lag_primary_swid(struct ice_lag *lag, bool link)
+  */
+ static void ice_lag_add_prune_list(struct ice_lag *lag, struct ice_pf *event_pf)
+ {
+-	u16 num_vsi, rule_buf_sz, vsi_list_id, event_vsi_num, prim_vsi_idx;
+-	struct ice_sw_rule_vsi_list *s_rule = NULL;
++	u16 rule_buf_sz, vsi_list_id, event_vsi_num, prim_vsi_idx, num_vsi = 1;
++	struct ice_sw_rule_vsi_list *s_rule;
+ 	struct device *dev;
+ 
+-	num_vsi = 1;
 -
--	if (add)
--		lag->cp_rule_idx = le16_to_cpu(s_rule->index);
--	else
--		lag->cp_rule_idx = 0;
+ 	dev = ice_pf_to_dev(lag->pf);
+ 	event_vsi_num = event_pf->vsi[0]->vsi_num;
+ 	prim_vsi_idx = lag->pf->vsi[0]->idx;
+@@ -1237,12 +1227,10 @@ static void ice_lag_add_prune_list(struct ice_lag *lag, struct ice_pf *event_pf)
+  */
+ static void ice_lag_del_prune_list(struct ice_lag *lag, struct ice_pf *event_pf)
+ {
+-	u16 num_vsi, vsi_num, vsi_idx, rule_buf_sz, vsi_list_id;
+-	struct ice_sw_rule_vsi_list *s_rule = NULL;
++	u16 vsi_num, vsi_idx, rule_buf_sz, vsi_list_id, num_vsi = 1;
++	struct ice_sw_rule_vsi_list *s_rule;
+ 	struct device *dev;
+ 
+-	num_vsi = 1;
 -
--cp_free:
--	kfree(s_rule);
--}
--
- /**
-  * ice_lag_info_event - handle NETDEV_BONDING_INFO event
-  * @lag: LAG info struct
-@@ -996,28 +1019,6 @@ static void ice_lag_link(struct ice_lag *lag)
- 	netdev_info(lag->netdev, "Shared SR-IOV resources in bond are active\n");
+ 	dev = ice_pf_to_dev(lag->pf);
+ 	vsi_num = event_pf->vsi[0]->vsi_num;
+ 	vsi_idx = lag->pf->vsi[0]->idx;
+@@ -1665,11 +1653,9 @@ static void ice_lag_chk_disabled_bond(struct ice_lag *lag, void *ptr)
+  */
+ static void ice_lag_disable_sriov_bond(struct ice_lag *lag)
+ {
+-	struct ice_netdev_priv *np;
+-	struct ice_pf *pf;
++	struct ice_netdev_priv *np = netdev_priv(lag->netdev);
++	struct ice_pf *pf = np->vsi->back;
+ 
+-	np = netdev_priv(lag->netdev);
+-	pf = np->vsi->back;
+ 	ice_clear_feature_support(pf, ICE_F_SRIOV_LAG);
  }
  
--/**
-- * ice_lag_config_eswitch - configure eswitch to work with LAG
-- * @lag: lag info struct
-- * @netdev: active network interface device struct
-- *
-- * Updates all port representors in eswitch to use @netdev for Tx.
-- *
-- * Configures the netdev to keep dst metadata (also used in representor Tx).
-- * This is required for an uplink without switchdev mode configured.
-- */
--static void ice_lag_config_eswitch(struct ice_lag *lag,
--				   struct net_device *netdev)
--{
--	struct ice_repr *repr;
--	unsigned long id;
+@@ -1838,10 +1824,8 @@ ice_lag_event_handler(struct notifier_block *notif_blk, unsigned long event,
+  */
+ static int ice_register_lag_handler(struct ice_lag *lag)
+ {
++	struct notifier_block *notif_blk = &lag->notif_block;
+ 	struct device *dev = ice_pf_to_dev(lag->pf);
+-	struct notifier_block *notif_blk;
 -
--	xa_for_each(&lag->pf->eswitch.reprs, id, repr)
--		repr->dst->u.port_info.lower_dev = netdev;
+-	notif_blk = &lag->notif_block;
+ 
+ 	if (!notif_blk->notifier_call) {
+ 		notif_blk->notifier_call = ice_lag_event_handler;
+@@ -1861,10 +1845,9 @@ static int ice_register_lag_handler(struct ice_lag *lag)
+  */
+ static void ice_unregister_lag_handler(struct ice_lag *lag)
+ {
++	struct notifier_block *notif_blk = &lag->notif_block;
+ 	struct device *dev = ice_pf_to_dev(lag->pf);
+-	struct notifier_block *notif_blk;
+ 
+-	notif_blk = &lag->notif_block;
+ 	if (notif_blk->notifier_call) {
+ 		unregister_netdevice_notifier(notif_blk);
+ 		dev_dbg(dev, "LAG event handler unregistered\n");
+@@ -1926,13 +1909,12 @@ ice_lag_move_vf_nodes_tc_sync(struct ice_lag *lag, struct ice_hw *dest_hw,
+ 	u16 numq, valq, num_moved, qbuf_size;
+ 	u16 buf_size = __struct_size(buf);
+ 	struct ice_aqc_cfg_txqs_buf *qbuf;
++	struct ice_hw *hw = &lag->pf->hw;
+ 	struct ice_sched_node *n_prt;
+ 	__le32 teid, parent_teid;
+ 	struct ice_vsi_ctx *ctx;
+-	struct ice_hw *hw;
+ 	u32 tmp_teid;
+ 
+-	hw = &lag->pf->hw;
+ 	ctx = ice_get_vsi_ctx(hw, vsi_num);
+ 	if (!ctx) {
+ 		dev_warn(dev, "LAG rebuild failed after reset due to VSI Context failure\n");
+@@ -2123,9 +2105,7 @@ int ice_init_lag(struct ice_pf *pf)
+  */
+ void ice_deinit_lag(struct ice_pf *pf)
+ {
+-	struct ice_lag *lag;
 -
--	netif_keep_dst(netdev);
--}
--
- /**
-  * ice_lag_unlink - handle unlink event
-  * @lag: LAG info struct
+-	lag = pf->lag;
++	struct ice_lag *lag = pf->lag;
+ 
+ 	if (!lag)
+ 		return;
 -- 
 2.49.0
 
