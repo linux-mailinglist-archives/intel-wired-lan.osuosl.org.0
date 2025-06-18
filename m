@@ -1,103 +1,105 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4ADB6ADF979
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Jun 2025 00:35:11 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B07AFADF957
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Jun 2025 00:25:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D2C6E4097F;
-	Wed, 18 Jun 2025 22:35:09 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id F3E3F60B9D;
+	Wed, 18 Jun 2025 22:25:08 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id s42_ZDleDH2q; Wed, 18 Jun 2025 22:25:08 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 26C2B60A79
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1750285508;
+	bh=mUEZo/bWy4Wf+whxWjOmWfvGhWo4n/HLal3jZ/Fc57o=;
+	h=From:Date:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=3tDgODr/jkVQrVVDatOZr9ULpgzrfifhw0P4i1jUvjYjx3BNeW0Mlp4QeSCczxJVV
+	 96yL3M1wJsq585sHgEl5y5KJzNViUUg2/1pC/0mlsN93n0a6QO4WSV1xKyoEr+8ELG
+	 TukNdfVaMS7t7iWsb6lK2Ex/tRqxIrFP4UcNTnthhYtZFwz8jjyjMvZhiSVCbstXZv
+	 t4z5ORDy7uV3llIDkXroZKdxoCoE9Zu4Y/oUsdSZHxR8Q1yklCH+h1xZoXKHZafGoI
+	 RMOUicfYIuoUg9CUklDJW99h1/bOU+ypzi0DVR53KB+xo/AA5mGuye3VoRfmwWQW+y
+	 rdx7aXEIcx0Nw==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 26C2B60A79;
+	Wed, 18 Jun 2025 22:25:08 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 0BA75E2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jun 2025 22:25:07 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id E605D407AF
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jun 2025 22:25:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id lSf4SnmHctaX; Wed, 18 Jun 2025 22:35:09 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BF2934077C
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1750286108;
-	bh=TEUK2iYhSISuYbhQ8sfXPieZPIqAkTCAr0cGeA8h18I=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=mBsxf1g9mAykgV9vdB4MNLZPiRA4UemVjTsvIKtlgXZ/HYloAgahTLpqpIJ5xRYPZ
-	 8P/5jIrIL8thzixe+J3W3XY1tGQKL2D+nZV+cpRUuR4DOWOjSE0RtGx06NuTKysqsS
-	 GSRVwiqVStUaYlYqmjemEQTOLPOYXgNI9m2Dd10r0wIEehOBHT2fKqCHlHYmP79E9F
-	 V5jNL8H9q+p0QIcGGXqjbxC2AMKCbOduX6pYljQVD//ZDLqRx0cL8ri3+vg6ufLQlR
-	 yU637nfqkQdotpgrRPTLxoyo8ON/FVYPgctKp8AmUcbGWTQxOOXhBK/JM+o78HnYXL
-	 m3Hz/PBng/Giw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BF2934077C;
-	Wed, 18 Jun 2025 22:35:08 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 8D60416B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jun 2025 19:53:00 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7F715807E4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jun 2025 19:53:00 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1pFdU6epU80f for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Jun 2025 19:52:59 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=dechen@redhat.com;
+ id cMEwAn96y1-B for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Jun 2025 22:25:06 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
+ helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4315280767
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4315280767
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4315280767
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jun 2025 19:52:58 +0000 (UTC)
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-32-FPh4BImVPFWtyhUVmE0FaA-1; Wed,
- 18 Jun 2025 15:52:52 -0400
-X-MC-Unique: FPh4BImVPFWtyhUVmE0FaA-1
-X-Mimecast-MFC-AGG-ID: FPh4BImVPFWtyhUVmE0FaA_1750276371
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9536F180028D; Wed, 18 Jun 2025 19:52:50 +0000 (UTC)
-Received: from dechen-thinkpadx1carbongen9.rht.csb (dhcp129-124.rdu.redhat.com
- [10.13.129.124])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9B9F918003FC; Wed, 18 Jun 2025 19:52:48 +0000 (UTC)
-From: Dennis Chen <dechen@redhat.com>
-To: netdev@vger.kernel.org
-Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, intel-wired-lan@lists.osuosl.org,
- Dennis Chen <dechen@redhat.com>
-Date: Wed, 18 Jun 2025 15:52:40 -0400
-Message-ID: <20250618195240.95454-1-dechen@redhat.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org C554540402
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C554540402
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C554540402
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jun 2025 22:25:05 +0000 (UTC)
+X-CSE-ConnectionGUID: ngwgYkbpR5+JuDA4Suky0g==
+X-CSE-MsgGUID: 5m+TRLR4Ry6wrVN+9P9N8w==
+X-IronPort-AV: E=McAfee;i="6800,10657,11468"; a="52447733"
+X-IronPort-AV: E=Sophos;i="6.16,246,1744095600"; d="scan'208";a="52447733"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+ by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Jun 2025 15:25:04 -0700
+X-CSE-ConnectionGUID: Dd23nvGPSJSF6pDs1bvqEQ==
+X-CSE-MsgGUID: iWxuQtHMSRuepUX3zNd2kg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,246,1744095600"; d="scan'208";a="149870000"
+Received: from jekeller-desk.jf.intel.com ([10.166.241.15])
+ by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Jun 2025 15:25:04 -0700
+From: Jacob Keller <jacob.e.keller@intel.com>
+Date: Wed, 18 Jun 2025 15:24:35 -0700
+Message-Id: <20250618-e810-live-migration-jk-migration-prep-v1-0-72a37485453e@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mailman-Approved-At: Wed, 18 Jun 2025 22:35:07 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1750276377;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=TEUK2iYhSISuYbhQ8sfXPieZPIqAkTCAr0cGeA8h18I=;
- b=ZUl14hYyyAD5XtniYFLcunL9QYsnIw7eApJO+mxx0jD3bey2sc46kb+gkVUaZoCvkuOKJH
- lPJr2C+CmIRsg5nK/jNuUF9b69fhNh92CMtekiisv5pe0UZNEqmnL1wDxDZU+6SD4YNPKg
- 9OACElThCmiKg/R4MbjGW8VHDhP+I7s=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
- header.s=mimecast20190719 header.b=ZUl14hYy
-Subject: [Intel-wired-lan] [PATCH net] i40e: report VF tx_dropped with
- tx_errors instead of tx_discards
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAKM8U2gC/03NwQqEMAwE0F+RnA20trrFXxEPolHjaldaUUH8d
+ 8OePL5hmLkgUmCKUCYXBNo58s8LdJpAOzZ+IORODJnKclVoh+S0wpl3woWH0GzSx+n7whpoRWd
+ cp3JjbWs/IFsS9nz+fyrgY0ZP5wb1fT9yJPNqgQAAAA==
+X-Change-ID: 20250618-e810-live-migration-jk-migration-prep-838d05344c47
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Cc: Jacob Keller <jacob.e.keller@intel.com>, netdev@vger.kernel.org, 
+ Madhu Chittim <madhu.chittim@intel.com>, Yahui Cao <yahui.cao@intel.com>, 
+ Anthony Nguyen <anthony.l.nguyen@intel.com>, 
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
+X-Mailer: b4 0.14.2
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1750285506; x=1781821506;
+ h=from:subject:date:message-id:mime-version:
+ content-transfer-encoding:to:cc;
+ bh=/C0mKxIHEbpL62vBDZxpL6tZO8RNdm66a6YCQJP1wVE=;
+ b=NQl+GN2agLmrUrvZXh3QLk0o5ekAX8BBbOi95z+nLj5yQbNG8K1JosR0
+ fAGw60dKm+7ZCLs5ioSOIMp7YMdzg0NhcR3Rh5oLORk02H6bWu021wpKB
+ wPXFPZHzG6jhvLvCKrUpr5BYrKs9R5dU6mZ4ePEEIFdmz8JMvZ6HpgEG4
+ qCiCphY9SJPIAPL/JEB8eZ8q2c+S87wAwFmdMhXLjYolZQYYjdBFsrsMi
+ O5J0BYtaVG1ecoddAcnuU/I4ld2N3/xawEpcqSZEp8EZ/KoiLlKWeHPdF
+ Ip38ozq92qtNWMbuVHx/4Vvpr7VNxsXk/b9TdwkQckZWSWscYAibrr+YA
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=NQl+GN2a
+Subject: [Intel-wired-lan] [PATCH iwl-next 0/8] ice: cleanups and
+ preparation for live migration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -113,98 +115,76 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Currently the tx_dropped field in VF stats is not updated correctly
-when reading stats from the PF. This is because it reads from
-i40e_eth_stats.tx_discards which seems to be unused for per VSI stats,
-as it is not updated by i40e_update_eth_stats() and the corresponding
-register, GLV_TDPC, is not implemented[1].
+Various cleanups and preparation to the ice driver code for supporting
+SR-IOV live migration.
 
-Use i40e_eth_stats.tx_errors instead, which is actually updated by
-i40e_update_eth_stats() by reading from GLV_TEPC.
+The logic for unpacking Rx queue context data is added. This is the inverse
+of the existing packing logic. Thanks to <linux/packing.h> this is trivial
+to add.
 
-To test, create a VF and try to send bad packets through it:
+Code to enable both reading and writing the Tx queue context for a queue
+over a shared hardware register interface is added. Thanks to ice_adapter,
+this is locked across all PFs that need to use it, preventing concurrency
+issues with multiple PFs.
 
-$ echo 1 > /sys/class/net/enp2s0f0/device/sriov_numvfs
-$ cat test.py
-from scapy.all import *
+The RSS hash configuration requested by a VF is cached within the VF
+structure. This will be used to track and restore the same configuration
+during migration load.
 
-vlan_pkt = Ether(dst="ff:ff:ff:ff:ff:ff") / Dot1Q(vlan=999) / IP(dst="192.168.0.1") / ICMP()
-ttl_pkt = IP(dst="8.8.8.8", ttl=0) / ICMP()
+ice_sriov_set_msix_vec_count() is updated to use pci_iov_vf_id() instead of
+open-coding a worse equivalent, and checks to avoid rebuilding MSI-X if the
+current request is for the existing amount of vectors.
 
-print("Send packet with bad VLAN tag")
-sendp(vlan_pkt, iface="enp2s0f0v0")
-print("Send packet with TTL=0")
-sendp(ttl_pkt, iface="enp2s0f0v0")
-$ ip -s link show dev enp2s0f0
-16: enp2s0f0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
-    link/ether 3c:ec:ef:b7:e0:ac brd ff:ff:ff:ff:ff:ff
-    RX:  bytes packets errors dropped  missed   mcast
-             0       0      0       0       0       0
-    TX:  bytes packets errors dropped carrier collsns
-             0       0      0       0       0       0
-    vf 0     link/ether e2:c6:fd:c1:1e:92 brd ff:ff:ff:ff:ff:ff, spoof checking on, link-state auto, trust off
-    RX: bytes  packets  mcast   bcast   dropped
-             0        0       0       0        0
-    TX: bytes  packets   dropped
-             0        0        0
-$ python test.py
-Send packet with bad VLAN tag
-.
-Sent 1 packets.
-Send packet with TTL=0
-.
-Sent 1 packets.
-$ ip -s link show dev enp2s0f0
-16: enp2s0f0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
-    link/ether 3c:ec:ef:b7:e0:ac brd ff:ff:ff:ff:ff:ff
-    RX:  bytes packets errors dropped  missed   mcast
-             0       0      0       0       0       0
-    TX:  bytes packets errors dropped carrier collsns
-             0       0      0       0       0       0
-    vf 0     link/ether e2:c6:fd:c1:1e:92 brd ff:ff:ff:ff:ff:ff, spoof checking on, link-state auto, trust off
-    RX: bytes  packets  mcast   bcast   dropped
-             0        0       0       0        0
-    TX: bytes  packets   dropped
-             0        0        0
+A new ice_get_vf_by_dev() helper function is added to simplify accessing a
+VF from its PCI device structure. This will be used more heavily within the
+live migration code itself.
 
-A packet with non-existent VLAN tag and a packet with TTL = 0 are sent,
-but tx_dropped is not incremented.
+REVIEW NOTES:
 
-After patch:
+This is the first eight patches of my full series to support live
+migration. The full series (based on net-next) is available at [1] for
+early preview if you want to see the changes in context.
 
-$ ip -s link show dev enp2s0f0
-19: enp2s0f0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
-    link/ether 3c:ec:ef:b7:e0:ac brd ff:ff:ff:ff:ff:ff
-    RX:  bytes packets errors dropped  missed   mcast
-             0       0      0       0       0       0
-    TX:  bytes packets errors dropped carrier collsns
-             0       0      0       0       0       0
-    vf 0     link/ether 4a:b7:3d:37:f7:56 brd ff:ff:ff:ff:ff:ff, spoof checking on, link-state auto, trust off
-    RX: bytes  packets  mcast   bcast   dropped
-             0        0       0       0        0
-    TX: bytes  packets   dropped
-             0        0        2
+Some of these changes are not "used" until the live migration patches
+themselves. However, I felt they were sufficiently large and review-able on
+their own. Additionally, if I keep them included within the live migration
+series it is 15 patches which is at the limit of acceptable size for
+netdev. I'd prefer to merge these cleanups first in order to reduce the
+burden of review for the whole feature.
 
-Fixes: dc645daef9af5bcbd9c ("i40e: implement VF stats NDO")
-Signed-off-by: Dennis Chen <dechen@redhat.com>
-    Link: https://www.intel.com/content/www/us/en/content-details/596333/intel-ethernet-controller-x710-tm4-at2-carlsville-datasheet.html
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+Link: [1] https://github.com/jacob-keller/linux/tree/e810-live-migration/jk-migration-tlv
 ---
- drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Jacob Keller (8):
+      ice: add support for reading and unpacking Rx queue context
+      ice: add functions to get and set Tx queue context
+      ice: save RSS hash configuration for migration
+      ice: move ice_vsi_update_l2tsel to ice_lib.c
+      ice: expose VF functions used by live migration
+      ice: use pci_iov_vf_id() to get VF ID
+      ice: avoid rebuilding if MSI-X vector count is unchanged
+      ice: introduce ice_get_vf_by_dev() wrapper
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-index 88e6bef69342..2dbe38eb9494 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-@@ -5006,7 +5006,7 @@ int i40e_get_vf_stats(struct net_device *netdev, int vf_id,
- 	vf_stats->broadcast  = stats->rx_broadcast;
- 	vf_stats->multicast  = stats->rx_multicast;
- 	vf_stats->rx_dropped = stats->rx_discards + stats->rx_discards_other;
--	vf_stats->tx_dropped = stats->tx_discards;
-+	vf_stats->tx_dropped = stats->tx_errors;
- 
- 	return 0;
- }
+ drivers/net/ethernet/intel/ice/ice_adapter.h    |   2 +
+ drivers/net/ethernet/intel/ice/ice_adminq_cmd.h |  14 +-
+ drivers/net/ethernet/intel/ice/ice_common.h     |   6 +
+ drivers/net/ethernet/intel/ice/ice_hw_autogen.h |  12 ++
+ drivers/net/ethernet/intel/ice/ice_lib.h        |   8 +
+ drivers/net/ethernet/intel/ice/ice_sriov.h      |   7 +
+ drivers/net/ethernet/intel/ice/ice_vf_lib.h     |  34 +++-
+ drivers/net/ethernet/intel/ice/ice_virtchnl.h   |  19 ++
+ drivers/net/ethernet/intel/ice/ice_adapter.c    |   1 +
+ drivers/net/ethernet/intel/ice/ice_common.c     | 233 +++++++++++++++++++++++-
+ drivers/net/ethernet/intel/ice/ice_lib.c        |  35 ++++
+ drivers/net/ethernet/intel/ice/ice_sriov.c      |  19 +-
+ drivers/net/ethernet/intel/ice/ice_vf_lib.c     |   3 +
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c   |  59 +-----
+ 14 files changed, 384 insertions(+), 68 deletions(-)
+---
+base-commit: d16813402994bde9201030ef877c9d753227e6dd
+change-id: 20250618-e810-live-migration-jk-migration-prep-838d05344c47
+
+Best regards,
 -- 
-2.49.0
+Jacob Keller <jacob.e.keller@intel.com>
 
