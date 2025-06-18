@@ -1,81 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F9CFADEAF1
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Jun 2025 13:55:14 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2FD57404BE;
-	Wed, 18 Jun 2025 11:55:13 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pLS4S8CdkNS1; Wed, 18 Jun 2025 11:55:12 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 30BEF404C0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1750247712;
-	bh=iURbASIfWMGd94ptwunIdrKEdZf9EdWFhIp+Fs8Z42k=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=VN2KBqY2gA7VY0aWxcQdtKYcgY2NRB9Xkr2aUgik8rcMt4iXq0S+DJclOuCrwYJpx
-	 b7wTaZvz1u3WIPANYHOcJa4DW/O1C/qnH8mRI+1lKsUGpLOsPtH3wRaglIFf3jzkv3
-	 25uuUfI5+KOdmCgsvOQ8avrR7lXhU0W/IPF5g+mGK8FDFSWQKmzIcAayDZZvLSutRq
-	 A8T1iSFnfnJLFkPANJqgRIms9oGKGf9A1BXA1c8p9wpHPU+r9M0RG01itNWHtB8Yq6
-	 T28ojk99QS6y28vrZL6QBCGyz6WFjHuwTOpX70RROwh4QGXvRuuIhN1QaLl6XYtCa7
-	 1a7G4D0vaygQw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 30BEF404C0;
-	Wed, 18 Jun 2025 11:55:12 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 33DAA151
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jun 2025 11:55:10 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 99337ADEB46
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Jun 2025 14:05:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 1D3C180ED1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jun 2025 11:55:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C7FC180F84;
+	Wed, 18 Jun 2025 12:05:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id V4-6ur_7K-3N for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Jun 2025 11:55:09 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org C11F380E89
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C11F380E89
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C11F380E89
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jun 2025 11:55:07 +0000 (UTC)
-Received: from [141.14.220.36] (g36.guest.molgen.mpg.de [141.14.220.36])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 7646E61E64783;
- Wed, 18 Jun 2025 13:54:47 +0200 (CEST)
-Message-ID: <580ed7b6-1045-4347-a88e-edbf982cb287@molgen.mpg.de>
-Date: Wed, 18 Jun 2025 13:54:46 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, Tony Nguyen
- <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
- Jacob Keller <jacob.e.keller@intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Jesse Brandeburg <jbrandeburg@cloudflare.com>
-References: <20250618112925.12193-2-przemyslaw.kitszel@intel.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20250618112925.12193-2-przemyslaw.kitszel@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: convert ice_add_prof()
- to bitmap
+ id ahk1znDyrau8; Wed, 18 Jun 2025 12:05:44 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7F8D880E37
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1750248343;
+	bh=ID71H+yrzmdTTebD2jgmtZAYq7BfhShSzBMbN6Q2sFE=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=iizw7TdqU5SZFJSO8d/S5UMuyKp+h4EnjYkGZtvpMWEuI1seE1Ngk3E/HfFRN+uqq
+	 Da+okO+ljj8k2As6ut9w+DYJLfs2t2N5Zd8Mucu2Q7hy7XKAh7HqMZp2hy2tsjpxBo
+	 48hweEu2/KI6wtZlqGG4t5wUyZ1kk24jd4uSf2A881ZZJWF9bCYVT5hA623wdH0ua1
+	 XTzKVy4CkAL17M5Q3zOX/gao+3vofYw1wjZ2bhF02j5VAvlNwFSaA0NVXrmjwng8E7
+	 B0sQEZkgslyggfE5hgR7eU3JW38ABYnGyqtmlyRyaBrTJaX5pBGOVfLnFKSotrnfKf
+	 FkIcKpqgDh+2w==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7F8D880E37;
+	Wed, 18 Jun 2025 12:05:43 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 59ED0151
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jun 2025 12:05:42 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4002540407
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jun 2025 12:05:42 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Wud-UR1PoEGP for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Jun 2025 12:05:41 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 2055D40363
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2055D40363
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2055D40363
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jun 2025 12:05:40 +0000 (UTC)
+X-CSE-ConnectionGUID: PI4gj1MoShi982wIVqMeag==
+X-CSE-MsgGUID: YflQXAJrSkuVqxUUxlKAlQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11468"; a="52602544"
+X-IronPort-AV: E=Sophos;i="6.16,246,1744095600"; d="scan'208";a="52602544"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Jun 2025 05:05:40 -0700
+X-CSE-ConnectionGUID: drivrShbTtqriD8/IrjvWw==
+X-CSE-MsgGUID: QZFbgwi3SOyYJugCoxKo7g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,246,1744095600"; d="scan'208";a="149487726"
+Received: from lkp-server01.sh.intel.com (HELO e8142ee1dce2) ([10.239.97.150])
+ by orviesa009.jf.intel.com with ESMTP; 18 Jun 2025 05:05:39 -0700
+Received: from kbuild by e8142ee1dce2 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1uRrXs-000JkE-2v
+ for intel-wired-lan@lists.osuosl.org; Wed, 18 Jun 2025 12:05:36 +0000
+Date: Wed, 18 Jun 2025 20:04:52 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202506182042.Uyb4zL0d-lkp@intel.com>
+User-Agent: s-nail v14.9.24
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1750248341; x=1781784341;
+ h=date:from:to:subject:message-id;
+ bh=DEBrAPypDd8zwkU1D+jb7x5ofqwRi3KLOHAIUqV66g8=;
+ b=llt0mn6HgOfTc2sxu8s8b3bPrZiPedoZGqVAWbbk9yrLBxvlhni/tUT4
+ ivlDRWbkCLHfXwfEiXfLwh6HCN/cSygjgEHubztkohc05Y4Z2VYCHtU9i
+ Y12ytWSnPHfz6gMeIDNBV9IAWDj38tEgfApPIlnAJYW3PJggr+dRm+LZs
+ +nUVCjTEctI+mwTXOqotM6Wat5jG/yjj5fT1r56KnJAay9A75bbh1Uq+x
+ 4e6HqdZVM6UHJU9dcgMW4Bznm/2cjhSGXAEDCk7tP3Fx6S2BEbFFWjzow
+ tCBC+MFufXTEqii7NECJIJEXq7sfSqFVhCKgKLcJh1UmsR0ZlBY32IxV1
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=llt0mn6H
+Subject: [Intel-wired-lan] [tnguy-net-queue:200GbE] BUILD SUCCESS
+ 7b4ac12cc929e281cf7edc22203e0533790ebc2b
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -91,189 +104,266 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Przemek, dear Jesse,
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 200GbE
+branch HEAD: 7b4ac12cc929e281cf7edc22203e0533790ebc2b  openvswitch: Allocate struct ovs_pcpu_storage dynamically
 
+elapsed time: 1374m
 
-Thank you for the patch.
+configs tested: 247
+configs skipped: 11
 
-Am 18.06.25 um 13:28 schrieb Przemek Kitszel:
-> From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-> 
-> Previously the ice_add_prof() took an array of u8 and looped over it with
-> for_each_set_bit(), examining each 8 bit value as a bitmap.
-> This was just hard to understand and unnecessary, and was triggering
-> undefined behavior sanitizers with unaligned accesses within bitmap
-> fields (on our internal tools/builds). Since the @ptype being passed in
-> was already declared as a bitmap, refactor this to use native types with
-> the advantage of simplifying the code to use a single loop.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Any tests to verify no regressions are introduced?
+tested configs:
+alpha                             allnoconfig    gcc-15.1.0
+alpha                            allyesconfig    clang-19
+alpha                            allyesconfig    gcc-15.1.0
+alpha                               defconfig    gcc-15.1.0
+arc                              allmodconfig    clang-19
+arc                              allmodconfig    gcc-15.1.0
+arc                               allnoconfig    gcc-15.1.0
+arc                              allyesconfig    clang-19
+arc                              allyesconfig    gcc-15.1.0
+arc                                 defconfig    gcc-15.1.0
+arc                   randconfig-001-20250618    gcc-11.5.0
+arc                   randconfig-002-20250618    gcc-11.5.0
+arc                   randconfig-002-20250618    gcc-15.1.0
+arm                              allmodconfig    clang-19
+arm                              allmodconfig    gcc-15.1.0
+arm                               allnoconfig    clang-21
+arm                               allnoconfig    gcc-15.1.0
+arm                              allyesconfig    clang-19
+arm                              allyesconfig    gcc-15.1.0
+arm                                 defconfig    gcc-15.1.0
+arm                            hisi_defconfig    gcc-15.1.0
+arm                         lpc32xx_defconfig    gcc-14.2.0
+arm                        neponset_defconfig    gcc-15.1.0
+arm                          pxa3xx_defconfig    gcc-15.1.0
+arm                   randconfig-001-20250618    gcc-11.5.0
+arm                   randconfig-001-20250618    gcc-15.1.0
+arm                   randconfig-002-20250618    gcc-10.5.0
+arm                   randconfig-002-20250618    gcc-11.5.0
+arm                   randconfig-003-20250618    clang-21
+arm                   randconfig-003-20250618    gcc-11.5.0
+arm                   randconfig-004-20250618    gcc-11.5.0
+arm                       spear13xx_defconfig    gcc-15.1.0
+arm                        vexpress_defconfig    gcc-15.1.0
+arm64                            allmodconfig    clang-19
+arm64                             allnoconfig    gcc-15.1.0
+arm64                               defconfig    gcc-15.1.0
+arm64                 randconfig-001-20250618    clang-21
+arm64                 randconfig-001-20250618    gcc-11.5.0
+arm64                 randconfig-002-20250618    clang-21
+arm64                 randconfig-002-20250618    gcc-11.5.0
+arm64                 randconfig-003-20250618    gcc-11.5.0
+arm64                 randconfig-003-20250618    gcc-14.3.0
+arm64                 randconfig-004-20250618    clang-16
+arm64                 randconfig-004-20250618    gcc-11.5.0
+csky                              allnoconfig    gcc-15.1.0
+csky                                defconfig    gcc-15.1.0
+csky                  randconfig-001-20250618    gcc-13.3.0
+csky                  randconfig-001-20250618    gcc-8.5.0
+csky                  randconfig-002-20250618    gcc-15.1.0
+csky                  randconfig-002-20250618    gcc-8.5.0
+hexagon                          allmodconfig    clang-17
+hexagon                          allmodconfig    clang-19
+hexagon                           allnoconfig    clang-21
+hexagon                           allnoconfig    gcc-15.1.0
+hexagon                          allyesconfig    clang-19
+hexagon                          allyesconfig    clang-21
+hexagon                             defconfig    gcc-15.1.0
+hexagon               randconfig-001-20250618    clang-19
+hexagon               randconfig-001-20250618    gcc-8.5.0
+hexagon               randconfig-002-20250618    clang-16
+hexagon               randconfig-002-20250618    gcc-8.5.0
+i386                             allmodconfig    clang-20
+i386                             allmodconfig    gcc-12
+i386                              allnoconfig    clang-20
+i386                              allnoconfig    gcc-12
+i386                             allyesconfig    clang-20
+i386                             allyesconfig    gcc-12
+i386        buildonly-randconfig-001-20250618    clang-20
+i386        buildonly-randconfig-002-20250618    clang-20
+i386        buildonly-randconfig-002-20250618    gcc-12
+i386        buildonly-randconfig-003-20250618    clang-20
+i386        buildonly-randconfig-004-20250618    clang-20
+i386        buildonly-randconfig-005-20250618    clang-20
+i386        buildonly-randconfig-006-20250618    clang-20
+i386                                defconfig    clang-20
+i386                  randconfig-001-20250618    gcc-12
+i386                  randconfig-002-20250618    gcc-12
+i386                  randconfig-003-20250618    gcc-12
+i386                  randconfig-004-20250618    gcc-12
+i386                  randconfig-005-20250618    gcc-12
+i386                  randconfig-006-20250618    gcc-12
+i386                  randconfig-007-20250618    gcc-12
+i386                  randconfig-011-20250618    gcc-12
+i386                  randconfig-012-20250618    gcc-12
+i386                  randconfig-013-20250618    gcc-12
+i386                  randconfig-014-20250618    gcc-12
+i386                  randconfig-015-20250618    gcc-12
+i386                  randconfig-016-20250618    gcc-12
+i386                  randconfig-017-20250618    gcc-12
+loongarch                        allmodconfig    gcc-15.1.0
+loongarch                         allnoconfig    gcc-15.1.0
+loongarch                           defconfig    gcc-15.1.0
+loongarch             randconfig-001-20250618    gcc-15.1.0
+loongarch             randconfig-001-20250618    gcc-8.5.0
+loongarch             randconfig-002-20250618    gcc-15.1.0
+loongarch             randconfig-002-20250618    gcc-8.5.0
+m68k                             allmodconfig    gcc-15.1.0
+m68k                              allnoconfig    gcc-15.1.0
+m68k                             allyesconfig    gcc-15.1.0
+m68k                                defconfig    gcc-15.1.0
+m68k                       m5208evb_defconfig    gcc-15.1.0
+m68k                          sun3x_defconfig    gcc-15.1.0
+microblaze                       alldefconfig    gcc-15.1.0
+microblaze                       allmodconfig    gcc-15.1.0
+microblaze                        allnoconfig    gcc-15.1.0
+microblaze                       allyesconfig    gcc-15.1.0
+microblaze                          defconfig    gcc-15.1.0
+mips                              allnoconfig    gcc-15.1.0
+mips                          ath25_defconfig    clang-21
+mips                         db1xxx_defconfig    gcc-15.1.0
+mips                           ip30_defconfig    gcc-14.2.0
+mips                           xway_defconfig    clang-21
+nios2                         10m50_defconfig    gcc-14.2.0
+nios2                            alldefconfig    gcc-14.2.0
+nios2                             allnoconfig    gcc-14.2.0
+nios2                               defconfig    gcc-15.1.0
+nios2                 randconfig-001-20250618    gcc-11.5.0
+nios2                 randconfig-001-20250618    gcc-8.5.0
+nios2                 randconfig-002-20250618    gcc-8.5.0
+openrisc                          allnoconfig    clang-21
+openrisc                          allnoconfig    gcc-15.1.0
+openrisc                         allyesconfig    gcc-15.1.0
+openrisc                            defconfig    gcc-12
+openrisc                       virt_defconfig    gcc-15.1.0
+parisc                           allmodconfig    gcc-15.1.0
+parisc                            allnoconfig    clang-21
+parisc                            allnoconfig    gcc-15.1.0
+parisc                           allyesconfig    gcc-15.1.0
+parisc                              defconfig    gcc-12
+parisc                randconfig-001-20250618    gcc-10.5.0
+parisc                randconfig-001-20250618    gcc-8.5.0
+parisc                randconfig-002-20250618    gcc-8.5.0
+parisc64                            defconfig    gcc-15.1.0
+powerpc                          allmodconfig    gcc-15.1.0
+powerpc                           allnoconfig    clang-21
+powerpc                           allnoconfig    gcc-15.1.0
+powerpc                          allyesconfig    clang-21
+powerpc                          allyesconfig    gcc-15.1.0
+powerpc                      arches_defconfig    gcc-14.2.0
+powerpc                      pcm030_defconfig    clang-21
+powerpc                      ppc64e_defconfig    gcc-15.1.0
+powerpc               randconfig-001-20250618    gcc-8.5.0
+powerpc               randconfig-002-20250618    clang-19
+powerpc               randconfig-002-20250618    gcc-8.5.0
+powerpc               randconfig-003-20250618    clang-21
+powerpc               randconfig-003-20250618    gcc-8.5.0
+powerpc                     tqm8560_defconfig    gcc-15.1.0
+powerpc64             randconfig-001-20250618    gcc-8.5.0
+powerpc64             randconfig-002-20250618    clang-21
+powerpc64             randconfig-002-20250618    gcc-8.5.0
+powerpc64             randconfig-003-20250618    gcc-15.1.0
+riscv                            allmodconfig    clang-21
+riscv                            allmodconfig    gcc-15.1.0
+riscv                             allnoconfig    clang-21
+riscv                             allnoconfig    gcc-15.1.0
+riscv                            allyesconfig    clang-16
+riscv                            allyesconfig    gcc-15.1.0
+riscv                               defconfig    gcc-12
+riscv                    nommu_k210_defconfig    gcc-14.2.0
+riscv                 randconfig-001-20250618    clang-20
+riscv                 randconfig-001-20250618    gcc-15.1.0
+riscv                 randconfig-002-20250618    clang-21
+riscv                 randconfig-002-20250618    gcc-15.1.0
+s390                             allmodconfig    clang-18
+s390                             allmodconfig    gcc-15.1.0
+s390                              allnoconfig    clang-21
+s390                             allyesconfig    gcc-15.1.0
+s390                                defconfig    gcc-12
+s390                  randconfig-001-20250618    gcc-15.1.0
+s390                  randconfig-001-20250618    gcc-8.5.0
+s390                  randconfig-002-20250618    gcc-15.1.0
+sh                               allmodconfig    gcc-15.1.0
+sh                                allnoconfig    gcc-15.1.0
+sh                               allyesconfig    gcc-15.1.0
+sh                                  defconfig    gcc-12
+sh                        edosk7760_defconfig    gcc-15.1.0
+sh                    randconfig-001-20250618    gcc-15.1.0
+sh                    randconfig-002-20250618    gcc-15.1.0
+sh                          sdk7780_defconfig    gcc-15.1.0
+sh                          sdk7786_defconfig    gcc-15.1.0
+sh                           se7724_defconfig    gcc-15.1.0
+sh                           sh2007_defconfig    gcc-14.2.0
+sparc                            allmodconfig    gcc-15.1.0
+sparc                             allnoconfig    gcc-15.1.0
+sparc                 randconfig-001-20250618    gcc-15.1.0
+sparc                 randconfig-001-20250618    gcc-8.5.0
+sparc                 randconfig-002-20250618    gcc-13.3.0
+sparc                 randconfig-002-20250618    gcc-15.1.0
+sparc64                             defconfig    gcc-12
+sparc64               randconfig-001-20250618    gcc-13.3.0
+sparc64               randconfig-001-20250618    gcc-15.1.0
+sparc64               randconfig-002-20250618    gcc-15.1.0
+sparc64               randconfig-002-20250618    gcc-8.5.0
+um                               allmodconfig    clang-19
+um                                allnoconfig    clang-21
+um                               allyesconfig    clang-19
+um                               allyesconfig    gcc-12
+um                                  defconfig    gcc-12
+um                             i386_defconfig    gcc-12
+um                    randconfig-001-20250618    clang-21
+um                    randconfig-001-20250618    gcc-15.1.0
+um                    randconfig-002-20250618    clang-21
+um                    randconfig-002-20250618    gcc-15.1.0
+um                           x86_64_defconfig    gcc-12
+um                           x86_64_defconfig    gcc-14.2.0
+x86_64                            allnoconfig    clang-20
+x86_64                           allyesconfig    clang-20
+x86_64      buildonly-randconfig-001-20250618    clang-20
+x86_64      buildonly-randconfig-001-20250618    gcc-12
+x86_64      buildonly-randconfig-002-20250618    clang-20
+x86_64      buildonly-randconfig-002-20250618    gcc-12
+x86_64      buildonly-randconfig-003-20250618    gcc-12
+x86_64      buildonly-randconfig-004-20250618    clang-20
+x86_64      buildonly-randconfig-004-20250618    gcc-12
+x86_64      buildonly-randconfig-005-20250618    clang-20
+x86_64      buildonly-randconfig-005-20250618    gcc-12
+x86_64      buildonly-randconfig-006-20250618    gcc-12
+x86_64                              defconfig    clang-20
+x86_64                              defconfig    gcc-11
+x86_64                                  kexec    clang-20
+x86_64                randconfig-001-20250618    gcc-12
+x86_64                randconfig-002-20250618    gcc-12
+x86_64                randconfig-003-20250618    gcc-12
+x86_64                randconfig-004-20250618    gcc-12
+x86_64                randconfig-005-20250618    gcc-12
+x86_64                randconfig-006-20250618    gcc-12
+x86_64                randconfig-007-20250618    gcc-12
+x86_64                randconfig-008-20250618    gcc-12
+x86_64                randconfig-071-20250618    clang-20
+x86_64                randconfig-072-20250618    clang-20
+x86_64                randconfig-073-20250618    clang-20
+x86_64                randconfig-074-20250618    clang-20
+x86_64                randconfig-075-20250618    clang-20
+x86_64                randconfig-076-20250618    clang-20
+x86_64                randconfig-077-20250618    clang-20
+x86_64                randconfig-078-20250618    clang-20
+x86_64                               rhel-9.4    clang-20
+x86_64                           rhel-9.4-bpf    gcc-12
+x86_64                         rhel-9.4-kunit    gcc-12
+x86_64                           rhel-9.4-ltp    gcc-12
+x86_64                          rhel-9.4-rust    clang-18
+x86_64                          rhel-9.4-rust    clang-20
+xtensa                            allnoconfig    gcc-15.1.0
+xtensa                randconfig-001-20250618    gcc-13.3.0
+xtensa                randconfig-001-20250618    gcc-15.1.0
+xtensa                randconfig-002-20250618    gcc-11.5.0
+xtensa                randconfig-002-20250618    gcc-15.1.0
 
-> Co-developed-by: Jacob Keller <jacob.e.keller@intel.com>
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-> Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-> Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> CC: Jesse Brandeburg <jbrandeburg@cloudflare.com>
-> Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> ---
->   .../net/ethernet/intel/ice/ice_flex_pipe.h    |  7 +-
->   .../net/ethernet/intel/ice/ice_flex_pipe.c    | 78 +++++++------------
->   drivers/net/ethernet/intel/ice/ice_flow.c     |  4 +-
->   3 files changed, 34 insertions(+), 55 deletions(-)
-
-More removed lines than added ones is always a good diff stat.
-
-> diff --git a/drivers/net/ethernet/intel/ice/ice_flex_pipe.h b/drivers/net/ethernet/intel/ice/ice_flex_pipe.h
-> index 28b0897adf32..ee5d9f9c9d53 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_flex_pipe.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_flex_pipe.h
-> @@ -39,9 +39,10 @@ bool ice_hw_ptype_ena(struct ice_hw *hw, u16 ptype);
->   
->   /* XLT2/VSI group functions */
->   int
-> -ice_add_prof(struct ice_hw *hw, enum ice_block blk, u64 id, u8 ptypes[],
-> -	     const struct ice_ptype_attributes *attr, u16 attr_cnt,
-> -	     struct ice_fv_word *es, u16 *masks, bool symm, bool fd_swap);
-> +ice_add_prof(struct ice_hw *hw, enum ice_block blk, u64 id,
-> +	     unsigned long *ptypes, const struct ice_ptype_attributes *attr,
-> +	     u16 attr_cnt, struct ice_fv_word *es, u16 *masks, bool symm,
-> +	     bool fd_swap);
->   struct ice_prof_map *
->   ice_search_prof_id(struct ice_hw *hw, enum ice_block blk, u64 id);
->   int
-> diff --git a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
-> index ed95072ca6e3..363ae79a3620 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
-> @@ -3043,16 +3043,16 @@ ice_disable_fd_swap(struct ice_hw *hw, u8 prof_id)
->    * the ID value used here.
->    */
->   int
-> -ice_add_prof(struct ice_hw *hw, enum ice_block blk, u64 id, u8 ptypes[],
-> -	     const struct ice_ptype_attributes *attr, u16 attr_cnt,
-> -	     struct ice_fv_word *es, u16 *masks, bool symm, bool fd_swap)
-> +ice_add_prof(struct ice_hw *hw, enum ice_block blk, u64 id,
-> +	     unsigned long *ptypes, const struct ice_ptype_attributes *attr,
-> +	     u16 attr_cnt, struct ice_fv_word *es, u16 *masks, bool symm,
-> +	     bool fd_swap)
->   {
-> -	u32 bytes = DIV_ROUND_UP(ICE_FLOW_PTYPE_MAX, BITS_PER_BYTE);
->   	DECLARE_BITMAP(ptgs_used, ICE_XLT1_CNT);
->   	struct ice_prof_map *prof;
-> -	u8 byte = 0;
-> -	u8 prof_id;
->   	int status;
-> +	u8 prof_id;
-> +	u16 ptype;
->   
->   	bitmap_zero(ptgs_used, ICE_XLT1_CNT);
->   
-> @@ -3102,57 +3102,35 @@ ice_add_prof(struct ice_hw *hw, enum ice_block blk, u64 id, u8 ptypes[],
->   	prof->context = 0;
->   
->   	/* build list of ptgs */
-> -	while (bytes && prof->ptg_cnt < ICE_MAX_PTG_PER_PROFILE) {
-> -		u8 bit;
-> +	for_each_set_bit(ptype, ptypes, ICE_FLOW_PTYPE_MAX) {
-> +		u8 ptg;
->   
-> -		if (!ptypes[byte]) {
-> -			bytes--;
-> -			byte++;
-> +		/* The package should place all ptypes in a non-zero
-> +		 * PTG, so the following call should never fail.
-> +		 */
-> +		if (ice_ptg_find_ptype(hw, blk, ptype, &ptg))
->   			continue;
-> -		}
->   
-> -		/* Examine 8 bits per byte */
-> -		for_each_set_bit(bit, (unsigned long *)&ptypes[byte],
-> -				 BITS_PER_BYTE) {
-> -			u16 ptype;
-> -			u8 ptg;
-> -
-> -			ptype = byte * BITS_PER_BYTE + bit;
-> -
-> -			/* The package should place all ptypes in a non-zero
-> -			 * PTG, so the following call should never fail.
-> -			 */
-> -			if (ice_ptg_find_ptype(hw, blk, ptype, &ptg))
-> -				continue;
-> +		/* If PTG is already added, skip and continue */
-> +		if (test_bit(ptg, ptgs_used))
-> +			continue;
->   
-> -			/* If PTG is already added, skip and continue */
-> -			if (test_bit(ptg, ptgs_used))
-> -				continue;
-> +		set_bit(ptg, ptgs_used);
-> +		/* Check to see there are any attributes for this ptype, and
-> +		 * add them if found.
-> +		 */
-> +		status = ice_add_prof_attrib(prof, ptg, ptype, attr, attr_cnt);
-> +		if (status == -ENOSPC)
-> +			break;
-> +		if (status) {
-> +			/* This is simple a ptype/PTG with no attribute */
-> +			prof->ptg[prof->ptg_cnt] = ptg;
-> +			prof->attr[prof->ptg_cnt].flags = 0;
-> +			prof->attr[prof->ptg_cnt].mask = 0;
->   
-> -			__set_bit(ptg, ptgs_used);
-> -			/* Check to see there are any attributes for
-> -			 * this PTYPE, and add them if found.
-> -			 */
-> -			status = ice_add_prof_attrib(prof, ptg, ptype,
-> -						     attr, attr_cnt);
-> -			if (status == -ENOSPC)
-> +			if (++prof->ptg_cnt >= ICE_MAX_PTG_PER_PROFILE)
->   				break;
-> -			if (status) {
-> -				/* This is simple a PTYPE/PTG with no
-> -				 * attribute
-> -				 */
-> -				prof->ptg[prof->ptg_cnt] = ptg;
-> -				prof->attr[prof->ptg_cnt].flags = 0;
-> -				prof->attr[prof->ptg_cnt].mask = 0;
-> -
-> -				if (++prof->ptg_cnt >=
-> -				    ICE_MAX_PTG_PER_PROFILE)
-> -					break;
-> -			}
->   		}
-> -
-> -		bytes--;
-> -		byte++;
->   	}
->   
->   	list_add(&prof->list, &hw->blk[blk].es.prof_map);
-> diff --git a/drivers/net/ethernet/intel/ice/ice_flow.c b/drivers/net/ethernet/intel/ice/ice_flow.c
-> index d97b751052f2..c63e43b8b110 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_flow.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_flow.c
-> @@ -1421,7 +1421,7 @@ ice_flow_add_prof_sync(struct ice_hw *hw, enum ice_block blk,
->   	}
->   
->   	/* Add a HW profile for this flow profile */
-> -	status = ice_add_prof(hw, blk, prof_id, (u8 *)params->ptypes,
-> +	status = ice_add_prof(hw, blk, prof_id, params->ptypes,
->   			      params->attr, params->attr_cnt, params->es,
->   			      params->mask, symm, true);
->   	if (status) {
-> @@ -1617,7 +1617,7 @@ ice_flow_set_parser_prof(struct ice_hw *hw, u16 dest_vsi, u16 fdir_vsi,
->   		break;
->   	}
->   
-> -	status = ice_add_prof(hw, blk, id, (u8 *)prof->ptypes,
-> +	status = ice_add_prof(hw, blk, id, prof->ptypes,
->   			      params->attr, params->attr_cnt,
->   			      params->es, params->mask, false, false);
->   	if (status)
-
-Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
-
-
-Kind regards,
-
-Paul
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
