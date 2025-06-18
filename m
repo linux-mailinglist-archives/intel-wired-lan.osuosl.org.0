@@ -1,61 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 43C17ADE441
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Jun 2025 09:08:26 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 63DCCADE43F
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Jun 2025 09:08:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7D9588089A;
-	Wed, 18 Jun 2025 07:08:24 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1EDB980843;
+	Wed, 18 Jun 2025 07:08:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id npdPGFNJ6jJT; Wed, 18 Jun 2025 07:08:24 +0000 (UTC)
+ id WK7GGEwqx7SV; Wed, 18 Jun 2025 07:08:21 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D6BAD80976
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8B55880890
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1750230503;
-	bh=Pnn4Hm43CIo/zzl8zpkEc7JtKaF/FVJfKrxwItM+yGQ=;
+	s=default; t=1750230501;
+	bh=MGK97/9CBMGDn1jVvJaZcWRYHnqpFOoQ221JfSRUEOg=;
 	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=Wxo5JCwII2hvpFy0aRUVa7m16fYqsnR0mIaqF5Tr3a11Hyr5pJ2XQzrSSxDEEbtML
-	 4Yw4UJsywIMZCOXj3h6yKE9s52z1c0iY8ryJnz2qgPoOMoYNM9BD2gfhoDiUHvYj76
-	 9xA/+N2ToDizdRpDHeWcgAI7bA5iv7r/0kyLB1bQLV2XSu5yuNFCsT3sDYINgY69rr
-	 AxHxO7X6FxASXwAL2CKiPR0MaL1ZO5+JARQMyI9vXkn+9tEgG7Ysv/+0htKIxtVige
-	 gpQ7ns4m4LgLvbQnXiRJ+cKtKQ5p9UG+AKji1Rv7v4fszLr2ovuhKsa28nZSMsga2R
-	 QWkE0TJZn6dvA==
+	b=b7yUdn//h0gNCpzhPFuN4LvIK60uQUyvB7KG/Rx4JWZopJNWxepQhHzoHl1qFtn1Y
+	 Guid2q7vnrH4jDTZTrpbc2xs49RvfCMAQ0S0HSS20iPJVx2ZCS7wEjFXgQM7gx1l1t
+	 REPrgZWqsjw+efY9gE2LNLzn0hARehbHKPm8X18eMVXzKNLDFQYdeCmRWSzVZqBkV1
+	 JBV9AQEOpxCuSicG7YrwmggwaaGe72Tbns2SuN0w8B+meeWqzMI6+1pm8lk/B9wA7m
+	 WP1wRq3w2t+sRMyU81cXdazYGW5Mjo2mR3OFGuOE5eBUFGqz6uZfXu97hZd6Kz+d6b
+	 vfx0SHrlC3yJg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D6BAD80976;
-	Wed, 18 Jun 2025 07:08:23 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8B55880890;
+	Wed, 18 Jun 2025 07:08:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with UTF8SMTP id DEACE16B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jun 2025 07:08:21 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with UTF8SMTP id 6B07C16B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jun 2025 07:08:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with UTF8SMTP id C3A08400E5
+ by smtp2.osuosl.org (Postfix) with UTF8SMTP id 67F1F40199
  for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jun 2025 07:08:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024)
- with UTF8SMTP id 2Mzxea-J7Lus for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Jun 2025 07:08:20 +0000 (UTC)
+ with UTF8SMTP id Kg3Ke3DqlzM7 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Jun 2025 07:08:19 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
  client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
  envelope-from=t-8ch@linutronix.de; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 183B240183
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 183B240183
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org B5DA3400E5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B5DA3400E5
 Received: from galois.linutronix.de (Galois.linutronix.de
  [IPv6:2a0a:51c0:0:12e:550::1])
- by smtp2.osuosl.org (Postfix) with UTF8SMTPS id 183B240183
+ by smtp2.osuosl.org (Postfix) with UTF8SMTPS id B5DA3400E5
  for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jun 2025 07:08:19 +0000 (UTC)
 From: =?utf-8?q?Thomas_Wei=C3=9Fschuh?= <thomas.weissschuh@linutronix.de>
-Date: Wed, 18 Jun 2025 09:08:06 +0200
+Date: Wed, 18 Jun 2025 09:08:07 +0200
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20250618-restricted-pointers-net-v3-1-3b7a531e58bb@linutronix.de>
+Message-Id: <20250618-restricted-pointers-net-v3-2-3b7a531e58bb@linutronix.de>
 References: <20250618-restricted-pointers-net-v3-0-3b7a531e58bb@linutronix.de>
 In-Reply-To: <20250618-restricted-pointers-net-v3-0-3b7a531e58bb@linutronix.de>
 To: Tony Nguyen <anthony.l.nguyen@intel.com>, 
@@ -69,43 +69,43 @@ Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-rdma@vger.kernel.org, 
  Aleksandr Loktionov <aleksandr.loktionov@intel.com>, 
  =?utf-8?q?Thomas_Wei=C3=9Fschuh?= <thomas.weissschuh@linutronix.de>
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1750230493; l=3588;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1750230493; l=1753;
  i=thomas.weissschuh@linutronix.de; s=20240209; h=from:subject:message-id;
- bh=VgzO4u3etHcLffOF3xhhiZh9bVwVLrrF0zhyWf94M9M=;
- b=ZSn6tbJlBAQuZDrKZwcxind4Bzcli+CboU+yxVGcsUAndSbJCxxjcn4uyf10K/otTkoFJv81k
- MkzDi8UAsN7CqRFSohVHZ1sLl1VML81rr7KqkI+4bwBg51TXnQOhqZT
+ bh=LwyFCg1hPwOB3FrGaSxk8SWGYFXPgImSK0vRpO9RTGI=;
+ b=13EGGL/pGeWrq7COE6/dKm8CewTN7vPHrb2NvryTUPw/D9EerXvdGKcYEGE1UY6c7bzvm7zga
+ ltZrQmo2USMB4QuewDf0McoGBUfAx+i/7ntsCusdqHTzWh4p1uLIHWU
 X-Developer-Key: i=thomas.weissschuh@linutronix.de; a=ed25519;
  pk=pfvxvpFUDJV2h2nY0FidLUml22uGLSjByFbM6aqQQws=
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1750230496;
+ d=linutronix.de; s=2020; t=1750230497;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Pnn4Hm43CIo/zzl8zpkEc7JtKaF/FVJfKrxwItM+yGQ=;
- b=iDPg3MqbrX4IK3hVciyJJKtY8Okjzk5VMBh4dRi8oNkcQdjrLdqvWd4dlHwM3PUIpUPElz
- DtQIJp/KXRdsOStSTESGCiRWn7kplEnQgGhnXssL5ilNnSOVTtKrDoYlkpROfUwtYQPTYa
- 8rNqxZpXmwASSzVXsSaQF8w8QOu/Z16SeTOqlLMTCp8wI7gMvRp0ujN4dquC8bQ7UCgq/R
- dLneKN2GHHxayQK4qFengglnG4f8Vc2Q42D4uXxbj4qKRcy9AJZL3RcKRthYvTdHyNNvP4
- X7fG7jd/5K4O6bbzFQhY/oZVQ59GaAjC3OpKwX8a+FGSR3KbmtFLMD7OLFHznA==
+ bh=MGK97/9CBMGDn1jVvJaZcWRYHnqpFOoQ221JfSRUEOg=;
+ b=FQpO8WFl2oBTyLCDow7uKVsRvnflLcvil+7wIDFgdbPYXYP/UbzO7jjfqqYFBvVMijtijt
+ YkOqKWQxoOhHtRNArJVJBdxMWLFOPkskfRORyNBv8btHYBfzgjszPzjDoSxyYXQDgf7sNV
+ RdYITFD9Jfhkl2a1bhMEz3IZmneFo3YxNrKnBY384JHbkbHIudc364rm8A5vDYIdhmwM/Q
+ g+EI8SBWc9pAf3EVMRm0g/VyFT1NLp9mZhH2cBDSXBVSvo3PcQ7/vU5ioHYREQr78mpsaq
+ Uby/FexnPEbHm4HZ4W3WFQufnUJQKWCs6jxK2Lc8dz3aqNXn+dRJfSnmfR4Rig==
 X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1750230496;
+ d=linutronix.de; s=2020e; t=1750230497;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Pnn4Hm43CIo/zzl8zpkEc7JtKaF/FVJfKrxwItM+yGQ=;
- b=3tzqTR45S2VDKs4Spdxdu+o51E/aoxyzs9bZXBdY1C86VZPxFJ84CQ5cBk5zhnDZjFJCJy
- 2mHvWfP+XLz4LRBw==
+ bh=MGK97/9CBMGDn1jVvJaZcWRYHnqpFOoQ221JfSRUEOg=;
+ b=qw4ozD8ypbX6sEExvdeQ6aL78/JpSKiRdkhsJQnbbvL+r5jKr7ObW3DBGMXoq8jE2aXhrl
+ rcKFMOmoRHWciQAQ==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=linutronix.de
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
- header.a=rsa-sha256 header.s=2020 header.b=iDPg3Mqb; 
+ header.a=rsa-sha256 header.s=2020 header.b=FQpO8WFl; 
  dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=3tzqTR45
-Subject: [Intel-wired-lan] [PATCH net-next v3 1/2] ice: Don't use %pK
+ header.a=ed25519-sha256 header.s=2020e header.b=qw4ozD8y
+Subject: [Intel-wired-lan] [PATCH net-next v3 2/2] net/mlx5: Don't use %pK
  through printk or tracepoints
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -127,7 +127,7 @@ values into the kernel log.
 Since commit ad67b74d2469 ("printk: hash addresses printed with %p")
 the regular %p has been improved to avoid this issue.
 Furthermore, restricted pointers ("%pK") were never meant to be used
-through printk(). They can still unintentionally leak raw pointers or
+through tracepoints. They can still unintentionally leak raw pointers or
 acquire sleeping locks in atomic contexts.
 
 Switch to the regular pointer formatting which is safer and
@@ -136,75 +136,25 @@ There are still a few users of %pK left, but these use it through seq_file,
 for which its usage is safe.
 
 Signed-off-by: Thomas Weißschuh <thomas.weissschuh@linutronix.de>
-Acked-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Reviewed-by: Tariq Toukan <tariqt@nvidia.com>
 ---
- drivers/net/ethernet/intel/ice/ice_main.c  |  2 +-
- drivers/net/ethernet/intel/ice/ice_trace.h | 10 +++++-----
- 2 files changed, 6 insertions(+), 6 deletions(-)
+ drivers/net/ethernet/mellanox/mlx5/core/sf/dev/diag/dev_tracepoint.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 0a11b4281092e25bb7b66d48867f7c4f9fb2286d..c94bf3b8c19ce8963ebcbc486c6f446c077762b1 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -9168,7 +9168,7 @@ static int ice_create_q_channels(struct ice_vsi *vsi)
- 		list_add_tail(&ch->list, &vsi->ch_list);
- 		vsi->tc_map_vsi[i] = ch->ch_vsi;
- 		dev_dbg(ice_pf_to_dev(pf),
--			"successfully created channel: VSI %pK\n", ch->ch_vsi);
-+			"successfully created channel: VSI %p\n", ch->ch_vsi);
- 	}
- 	return 0;
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_trace.h b/drivers/net/ethernet/intel/ice/ice_trace.h
-index 07aab6e130cd553fa1fcaa2feac9d14f0433239a..4f35ef8d6b299b4acd6c85992c2c93b164a88372 100644
---- a/drivers/net/ethernet/intel/ice/ice_trace.h
-+++ b/drivers/net/ethernet/intel/ice/ice_trace.h
-@@ -130,7 +130,7 @@ DECLARE_EVENT_CLASS(ice_tx_template,
- 				   __entry->buf = buf;
- 				   __assign_str(devname);),
- 
--		    TP_printk("netdev: %s ring: %pK desc: %pK buf %pK", __get_str(devname),
-+		    TP_printk("netdev: %s ring: %p desc: %p buf %p", __get_str(devname),
- 			      __entry->ring, __entry->desc, __entry->buf)
- );
- 
-@@ -158,7 +158,7 @@ DECLARE_EVENT_CLASS(ice_rx_template,
- 				   __entry->desc = desc;
- 				   __assign_str(devname);),
- 
--		    TP_printk("netdev: %s ring: %pK desc: %pK", __get_str(devname),
-+		    TP_printk("netdev: %s ring: %p desc: %p", __get_str(devname),
- 			      __entry->ring, __entry->desc)
- );
- DEFINE_EVENT(ice_rx_template, ice_clean_rx_irq,
-@@ -182,7 +182,7 @@ DECLARE_EVENT_CLASS(ice_rx_indicate_template,
- 				   __entry->skb = skb;
- 				   __assign_str(devname);),
- 
--		    TP_printk("netdev: %s ring: %pK desc: %pK skb %pK", __get_str(devname),
-+		    TP_printk("netdev: %s ring: %p desc: %p skb %p", __get_str(devname),
- 			      __entry->ring, __entry->desc, __entry->skb)
- );
- 
-@@ -205,7 +205,7 @@ DECLARE_EVENT_CLASS(ice_xmit_template,
- 				   __entry->skb = skb;
- 				   __assign_str(devname);),
- 
--		    TP_printk("netdev: %s skb: %pK ring: %pK", __get_str(devname),
-+		    TP_printk("netdev: %s skb: %p ring: %p", __get_str(devname),
- 			      __entry->skb, __entry->ring)
- );
- 
-@@ -228,7 +228,7 @@ DECLARE_EVENT_CLASS(ice_tx_tstamp_template,
- 		    TP_fast_assign(__entry->skb = skb;
- 				   __entry->idx = idx;),
- 
--		    TP_printk("skb %pK idx %d",
-+		    TP_printk("skb %p idx %d",
- 			      __entry->skb, __entry->idx)
- );
- #define DEFINE_TX_TSTAMP_OP_EVENT(name) \
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/sf/dev/diag/dev_tracepoint.h b/drivers/net/ethernet/mellanox/mlx5/core/sf/dev/diag/dev_tracepoint.h
+index 0537de86f9817dc80bd897688c539135b1ad37ac..9b0f44253f332aa602a84a1f6d7532a500dd4f55 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/sf/dev/diag/dev_tracepoint.h
++++ b/drivers/net/ethernet/mellanox/mlx5/core/sf/dev/diag/dev_tracepoint.h
+@@ -28,7 +28,7 @@ DECLARE_EVENT_CLASS(mlx5_sf_dev_template,
+ 				   __entry->hw_fn_id = sfdev->fn_id;
+ 				   __entry->sfnum = sfdev->sfnum;
+ 		    ),
+-		    TP_printk("(%s) sfdev=%pK aux_id=%d hw_id=0x%x sfnum=%u\n",
++		    TP_printk("(%s) sfdev=%p aux_id=%d hw_id=0x%x sfnum=%u\n",
+ 			      __get_str(devname), __entry->sfdev,
+ 			      __entry->aux_id, __entry->hw_fn_id,
+ 			      __entry->sfnum)
 
 -- 
 2.49.0
