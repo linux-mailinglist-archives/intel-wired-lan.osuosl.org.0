@@ -1,74 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 52440ADF95B
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Jun 2025 00:25:16 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 495F5ADF95D
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Jun 2025 00:25:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B7B8D60BB6;
-	Wed, 18 Jun 2025 22:25:12 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 165ED40BE1;
+	Wed, 18 Jun 2025 22:25:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7v0HLxKLpKvc; Wed, 18 Jun 2025 22:25:12 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Ni1oWY31NCns; Wed, 18 Jun 2025 22:25:14 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0F7B260BD3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9713E40BDA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1750285512;
-	bh=6Bx6/8xaD9TjLDYbeIRnTx/ogOKIZRi4FYBu++INF4M=;
+	s=default; t=1750285514;
+	bh=1NHYr8aGUptu0TzmzatOG0bb2JNF80ghiV4Z/5NbEAQ=;
 	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=fFneHapQf92OS4c4kn5czRI2p4W+B+KGWsDFWFCGBaVn0+w1cqYTp5WdwmL6URk4A
-	 dhDTBR0i3uFZOkCQu9BIlbvKdmRlzowuDgK4QiIgjjMkFEmpA8I6NQz+IqY+ass8ZQ
-	 vm0maTPAFFHIj4Z9BsdseAMybVy5Tmnx/xncZqXx/e0sKvEqjh7xZYOmVijVVMy86p
-	 4dwPT6RTjYN6Zrhhexm9/POk69xl4hEUe2aKHQAT62h8Ct7q3W8oS8fzbH9x2ZZInR
-	 Mfek79KoAL0ZzD4GhwAa3dk7wFAm+246cunmL3cW7FcjxCXWYxG/7XsUuu/Qjva/U9
-	 juo0qCiEUAo1g==
+	b=b/wEJwfqyQ/aTAhnBynfCxbY9lyHRPVE1u5yc1hc+5x6q1rIMSZNEDO5Osf8IDVPy
+	 VBMu6JwTWjfrl6xoHee5xudD/gQehe9pFeC6Nxde/fn8+2KqX0KTXKTAjXRcKhLmZe
+	 OM1fdKEk8ltlLu+tEnzvrFQ9fIiGOK5Y2mMYXMJg3d9M22WeFfRuvk7y9PnmQJs7e+
+	 A9NBWXhannXuwTrWA8QPr7uJBg6yCHgf39fqGkGlO0tioDbCn8ak4O9b7e5NwH1ppc
+	 gv8crZIZImUEun1oV5C9K8ooVT8lABad1JWS8FM4nkx21ax/4kbvnaY+aFNcc+fJSz
+	 yh6UaHbt4jfjA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0F7B260BD3;
-	Wed, 18 Jun 2025 22:25:12 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9713E40BDA;
+	Wed, 18 Jun 2025 22:25:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 6421F151
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jun 2025 22:25:08 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 25057151
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jun 2025 22:25:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id AC38E405A1
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5F7EA40611
  for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jun 2025 22:25:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id O_nhxgy7-_TJ for <intel-wired-lan@lists.osuosl.org>;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id O0siOQve9RL3 for <intel-wired-lan@lists.osuosl.org>;
  Wed, 18 Jun 2025 22:25:07 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
  helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org F07E6405AC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F07E6405AC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org DB82740776
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DB82740776
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
- by smtp2.osuosl.org (Postfix) with ESMTPS id F07E6405AC
+ by smtp4.osuosl.org (Postfix) with ESMTPS id DB82740776
  for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Jun 2025 22:25:06 +0000 (UTC)
-X-CSE-ConnectionGUID: +gzybSI3SSOM19TflVENiQ==
-X-CSE-MsgGUID: 411ykal8SDGcZk1z5je+3Q==
-X-IronPort-AV: E=McAfee;i="6800,10657,11468"; a="52447749"
-X-IronPort-AV: E=Sophos;i="6.16,246,1744095600"; d="scan'208";a="52447749"
+X-CSE-ConnectionGUID: /6xM6PH8Q+i0GddqtSnwDw==
+X-CSE-MsgGUID: Dq8fzEEWQUGwqG4tnEHkhg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11468"; a="52447747"
+X-IronPort-AV: E=Sophos;i="6.16,246,1744095600"; d="scan'208";a="52447747"
 Received: from orviesa010.jf.intel.com ([10.64.159.150])
  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  18 Jun 2025 15:25:05 -0700
-X-CSE-ConnectionGUID: PYL5fvQDTumpd28MpXVjtA==
-X-CSE-MsgGUID: DoY/6CX5QCqTYK+r68ZviA==
+X-CSE-ConnectionGUID: aWr4bGGJQZC/O/irigi/bg==
+X-CSE-MsgGUID: 6u20SeATScKTjJtyswVBuw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,246,1744095600"; d="scan'208";a="149870018"
+X-IronPort-AV: E=Sophos;i="6.16,246,1744095600"; d="scan'208";a="149870021"
 Received: from jekeller-desk.jf.intel.com ([10.166.241.15])
  by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  18 Jun 2025 15:25:04 -0700
 From: Jacob Keller <jacob.e.keller@intel.com>
-Date: Wed, 18 Jun 2025 15:24:40 -0700
+Date: Wed, 18 Jun 2025 15:24:41 -0700
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20250618-e810-live-migration-jk-migration-prep-v1-5-72a37485453e@intel.com>
+Message-Id: <20250618-e810-live-migration-jk-migration-prep-v1-6-72a37485453e@intel.com>
 References: <20250618-e810-live-migration-jk-migration-prep-v1-0-72a37485453e@intel.com>
 In-Reply-To: <20250618-e810-live-migration-jk-migration-prep-v1-0-72a37485453e@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
@@ -82,22 +82,22 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1750285507; x=1781821507;
  h=from:date:subject:mime-version:content-transfer-encoding:
  message-id:references:in-reply-to:to:cc;
- bh=rhq8dzIz8pax8Wh2vmobZ3l9cl/j650dJwwNvVc6lLA=;
- b=SS7imEW4AGTBpF2su2DNqz+I0x9aF4O0C31y/GEqclgNx2HCbuUdbioO
- 6L2QoYCmjvE4NRG4KLahTartSmwPricnca3bLwgm6Mlqg4zQUO+LvxI6q
- vlUOOTzHIIFALn32Z6aBePKI1rZIhHhaiSvrGbh2g/h4e6l48tm1S3132
- Gqh4DieM3shT4+/lliFzCi0n1uBvjHvq9cxSnp87ojiLIPQID8eFRIihv
- fMg3gOVh2rAxfpQBBy6AepD2NhXHEpBHu7IaeVV0xYNcJntX0YUInZr/w
- mbUvOwR8igbnG/+lbCcL0Tp8S1shIBUR44WkChhjx1tpwSGQP8jse+pve
- Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=zUZHmZmw6lY/vlzhJ9yLe5OVqlfvZktLRz2vwpEcRl4=;
+ b=IlIzCFiM1BEvou9eJPd6ZJvnUD2KuogmGMrPKIgzDonkjZthsCU/eTUL
+ 09H9+tYcOTkQFN+oD3Nlx1vR/3pQh9abGSxjjmUPfvHa96ilFkAmThunM
+ VGm5yoU/5B8W77zIOo/Dvae9rA8JvreqH0UA2eYEGcJGMxR8X1+VrMziz
+ r8EjGGyKepMlklwnhhTnLl6bIWwTNiB9rOeafz1KPBJP+qZjX4LsHGsW8
+ o0K0mawzRIA9L4d+fR7taLWEVQDIVr7D9G/cijmP8Bs3UTk9co8L9bjOd
+ vVVwgGZA0vs0KWD9c3GDxrzxSRV/PB3e36cq+/yQiAR1iUV9OPRt36TZY
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=SS7imEW4
-Subject: [Intel-wired-lan] [PATCH iwl-next 5/8] ice: expose VF functions
- used by live migration
+ header.a=rsa-sha256 header.s=Intel header.b=IlIzCFiM
+Subject: [Intel-wired-lan] [PATCH iwl-next 6/8] ice: use pci_iov_vf_id() to
+ get VF ID
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -113,133 +113,45 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The live migration process will require configuring the target VF with the
-data provided from the source host. A few helper functions in ice_sriov.c
-and ice_virtchnl.c will be needed for this process, but are currently
-static.
+The ice_sriov_set_msix_vec_count() obtains the VF device ID in a strange
+way by iterating over the possible VF IDs and calling
+pci_iov_virtfn_devfn to calculate the device and function combos and
+compare them to the pdev->devfn.
 
-Expose these functions in their respective headers so that the live
-migration module can use them during the migration process.
+This is unnecessary. The pci_iov_vf_id() helper already exists which does
+the reverse calculation of pci_iov_virtfn_devfn(), which is much simpler
+and avoids the loop construction. Use this instead.
 
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_sriov.h    |  7 +++++++
- drivers/net/ethernet/intel/ice/ice_virtchnl.h | 19 +++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_virtchnl.c | 13 ++++++-------
- 3 files changed, 32 insertions(+), 7 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_sriov.c | 12 +++---------
+ 1 file changed, 3 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.h b/drivers/net/ethernet/intel/ice/ice_sriov.h
-index 96549ca5c52c5b0483266096a49e278d2206a01d..d1a998a4bef64c4d573abc8c3489e12d7d7a4471 100644
---- a/drivers/net/ethernet/intel/ice/ice_sriov.h
-+++ b/drivers/net/ethernet/intel/ice/ice_sriov.h
-@@ -64,6 +64,7 @@ bool
- ice_vc_validate_pattern(struct ice_vf *vf, struct virtchnl_proto_hdrs *proto);
- u32 ice_sriov_get_vf_total_msix(struct pci_dev *pdev);
- int ice_sriov_set_msix_vec_count(struct pci_dev *vf_dev, int msix_vec_count);
-+int ice_vf_vsi_dis_single_txq(struct ice_vf *vf, struct ice_vsi *vsi, u16 q_id);
- #else /* CONFIG_PCI_IOV */
- static inline void ice_process_vflr_event(struct ice_pf *pf) { }
- static inline void ice_free_vfs(struct ice_pf *pf) { }
-@@ -164,5 +165,11 @@ ice_sriov_set_msix_vec_count(struct pci_dev *vf_dev, int msix_vec_count)
- {
- 	return -EOPNOTSUPP;
- }
-+
-+static inline int ice_vf_vsi_dis_single_txq(struct ice_vf *vf,
-+					    struct ice_vsi *vsi, u16 q_id)
-+{
-+	return -EOPNOTSUPP;
-+}
- #endif /* CONFIG_PCI_IOV */
- #endif /* _ICE_SRIOV_H_ */
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.h b/drivers/net/ethernet/intel/ice/ice_virtchnl.h
-index b3eece8c67804a808e51875a975be2176b1cab37..71bb456e2d71a5fe73e0372ac3cf5ed67ee197b2 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl.h
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.h
-@@ -92,12 +92,31 @@ ice_vc_send_msg_to_vf(struct ice_vf *vf, u32 v_opcode,
- bool ice_vc_isvalid_vsi_id(struct ice_vf *vf, u16 vsi_id);
- void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event,
- 			   struct ice_mbx_data *mbxdata);
-+void ice_vf_ena_rxq_interrupt(struct ice_vsi *vsi, u32 q_idx);
-+void ice_vf_ena_txq_interrupt(struct ice_vsi *vsi, u32 q_idx);
-+int ice_vf_ena_vlan_promisc(struct ice_vf *vf, struct ice_vsi *vsi,
-+			    struct ice_vlan *vlan);
-+bool ice_is_vlan_promisc_allowed(struct ice_vf *vf);
- #else /* CONFIG_PCI_IOV */
- static inline void ice_virtchnl_set_dflt_ops(struct ice_vf *vf) { }
- static inline void ice_virtchnl_set_repr_ops(struct ice_vf *vf) { }
- static inline void ice_vc_notify_vf_link_state(struct ice_vf *vf) { }
- static inline void ice_vc_notify_link_state(struct ice_pf *pf) { }
- static inline void ice_vc_notify_reset(struct ice_pf *pf) { }
-+static inline void ice_vf_ena_rxq_interrupt(struct ice_vsi *vsi, u32 q_idx) { }
-+static inline void ice_vf_ena_txq_interrupt(struct ice_vsi *vsi, u32 q_idx) { }
-+
-+static inline int ice_vf_ena_vlan_promisc(struct ice_vf *vf,
-+					  struct ice_vsi *vsi,
-+					  struct ice_vlan *vlan)
-+{
-+	return -EOPNOTSUPP;
-+}
-+
-+static inline bool ice_is_vlan_promisc_allowed(struct ice_vf *vf)
-+{
-+	return false;
-+}
+diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
+index 8d77c387357bbba27fbcec4bb2019274d2a2eb99..4c0955be2ad20c3902cf891a66f857585fcab98b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sriov.c
++++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
+@@ -952,17 +952,11 @@ int ice_sriov_set_msix_vec_count(struct pci_dev *vf_dev, int msix_vec_count)
+ 	if (msix_vec_count < ICE_MIN_INTR_PER_VF)
+ 		return -EINVAL;
  
- static inline int
- ice_vc_send_msg_to_vf(struct ice_vf *vf, u32 v_opcode,
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-index 691ebb143e75863d25d6c0fbd1f0f330b363f919..25796727307978a89815e94caf6fa75030426658 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-@@ -1427,7 +1427,7 @@ static bool ice_vc_validate_vqs_bitmaps(struct virtchnl_queue_select *vqs)
-  * @vsi: VSI of the VF to configure
-  * @q_idx: VF queue index used to determine the queue in the PF's space
-  */
--static void ice_vf_ena_txq_interrupt(struct ice_vsi *vsi, u32 q_idx)
-+void ice_vf_ena_txq_interrupt(struct ice_vsi *vsi, u32 q_idx)
- {
- 	struct ice_hw *hw = &vsi->back->hw;
- 	u32 pfq = vsi->txq_map[q_idx];
-@@ -1450,7 +1450,7 @@ static void ice_vf_ena_txq_interrupt(struct ice_vsi *vsi, u32 q_idx)
-  * @vsi: VSI of the VF to configure
-  * @q_idx: VF queue index used to determine the queue in the PF's space
-  */
--static void ice_vf_ena_rxq_interrupt(struct ice_vsi *vsi, u32 q_idx)
-+void ice_vf_ena_rxq_interrupt(struct ice_vsi *vsi, u32 q_idx)
- {
- 	struct ice_hw *hw = &vsi->back->hw;
- 	u32 pfq = vsi->rxq_map[q_idx];
-@@ -1566,8 +1566,7 @@ static int ice_vc_ena_qs_msg(struct ice_vf *vf, u8 *msg)
-  * disabled then clear q_id bit in the enabled queues bitmap and return
-  * success. Otherwise return error.
-  */
--static int
--ice_vf_vsi_dis_single_txq(struct ice_vf *vf, struct ice_vsi *vsi, u16 q_id)
-+int ice_vf_vsi_dis_single_txq(struct ice_vf *vf, struct ice_vsi *vsi, u16 q_id)
- {
- 	struct ice_txq_meta txq_meta = { 0 };
- 	struct ice_tx_ring *ring;
-@@ -2606,7 +2605,7 @@ static bool ice_vf_vlan_offload_ena(u32 caps)
-  * ice_is_vlan_promisc_allowed - check if VLAN promiscuous config is allowed
-  * @vf: VF used to determine if VLAN promiscuous config is allowed
-  */
--static bool ice_is_vlan_promisc_allowed(struct ice_vf *vf)
-+bool ice_is_vlan_promisc_allowed(struct ice_vf *vf)
- {
- 	if ((test_bit(ICE_VF_STATE_UC_PROMISC, vf->vf_states) ||
- 	     test_bit(ICE_VF_STATE_MC_PROMISC, vf->vf_states)) &&
-@@ -2625,8 +2624,8 @@ static bool ice_is_vlan_promisc_allowed(struct ice_vf *vf)
-  * This function should only be called if VLAN promiscuous mode is allowed,
-  * which can be determined via ice_is_vlan_promisc_allowed().
-  */
--static int ice_vf_ena_vlan_promisc(struct ice_vf *vf, struct ice_vsi *vsi,
--				   struct ice_vlan *vlan)
-+int ice_vf_ena_vlan_promisc(struct ice_vf *vf, struct ice_vsi *vsi,
-+			    struct ice_vlan *vlan)
- {
- 	u8 promisc_m = 0;
- 	int status;
+-	/* Transition of PCI VF function number to function_id */
+-	for (id = 0; id < pci_num_vf(pdev); id++) {
+-		if (vf_dev->devfn == pci_iov_virtfn_devfn(pdev, id))
+-			break;
+-	}
+-
+-	if (id == pci_num_vf(pdev))
+-		return -ENOENT;
++	id = pci_iov_vf_id(vf_dev);
++	if (id < 0)
++		return id;
+ 
+ 	vf = ice_get_vf_by_id(pf, id);
+-
+ 	if (!vf)
+ 		return -ENOENT;
+ 
 
 -- 
 2.48.1.397.gec9d649cc640
