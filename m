@@ -1,152 +1,118 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A09FAE0915
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Jun 2025 16:49:31 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D75D9AE0AA2
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Jun 2025 17:38:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C15794084D;
-	Thu, 19 Jun 2025 14:49:29 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0C4E960BA2;
+	Thu, 19 Jun 2025 15:38:32 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Q32qAowW4ZFD; Thu, 19 Jun 2025 15:38:31 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A949E60BD0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1750347510;
+	bh=c9+fapjdmBeY0w3po+Bvl8MFGEVG8isZtJ2mY2vLdko=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=QARAXGtHTdIlzjPoLAKQhLQWRu0nCaMIDSY/hmbxQhuV3HLVxi1Ugy7qwK4hkEQ7a
+	 mmMP11bqWUOS0XW3ZsnoCKjGzFsMgcPQ3bmRoBBYDx2CTg/05zj/CfqDJxEBvAtcB4
+	 fKmUciViU5mPnSAjHT9fST/kKn6oaA60h1NXFBYvKXC+UH1RLPmm1BKiAk5nlvpiBe
+	 8f2T76cXjrtKLSwWnftKFFtoQ1wJe5JFXwsLTC9fRQK2GxC3gQgHKUBcz5rnIp+Ti8
+	 36cTYhN4ikSVAIRK8hRQDN9DX3VRjzPombRKw7+gXCKmi5OD98/wM+grgFUDIQCSUN
+	 dbdKJYt6R1Y6w==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id A949E60BD0;
+	Thu, 19 Jun 2025 15:38:30 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id A5E42E2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jun 2025 15:38:29 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8C774403AF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jun 2025 15:38:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7msiyGe0cqQD; Thu, 19 Jun 2025 14:49:28 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5BF6C4087B
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1750344568;
-	bh=bJZoX1H0pKg0M1SA/qWQWR7S8HdwU3H818dBwncJTdc=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=1725R3DJ7vR2M4ele6r1ckeh6C0wTAhDf3Gwp5EuHWuXxyDcshHK50AwFi16tm5vY
-	 qdiAaCvblv4judSsE+pBvtYDvOy6aiC8eKSJX0hUrlobXGpUW/PAp5sOS3nhLyXxww
-	 EKRLzG0RxewCSTovKGzYh1NiAjB3QMao0KuvaIGsKh6CClwhod6bXDZLYD4Oj7ozlR
-	 FFy4JEfKxHEuqePWzeR0HCC8jarvQsoknSnLs+LvKSMSreiUeEZZSDJt1LJZM4PaPG
-	 Uj6Ld6hNzVhy37wcC8Z0dv1wtrN0LBpFVrYErOkhmHw7qwNQ7MNGNn9jMjz3Bg0A/s
-	 VQ7r6zZ9zYvfg==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5BF6C4087B;
-	Thu, 19 Jun 2025 14:49:28 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id BCFA5181
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jun 2025 14:49:26 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A3C5E40385
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jun 2025 14:49:26 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XzxmqR0MqQyk for <intel-wired-lan@lists.osuosl.org>;
- Thu, 19 Jun 2025 14:49:25 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=103.168.172.154;
- helo=fhigh-a3-smtp.messagingengine.com;
- envelope-from=marmarek@invisiblethingslab.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 805904005D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 805904005D
-Received: from fhigh-a3-smtp.messagingengine.com
- (fhigh-a3-smtp.messagingengine.com [103.168.172.154])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 805904005D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jun 2025 14:49:25 +0000 (UTC)
-Received: from phl-compute-09.internal (phl-compute-09.phl.internal
- [10.202.2.49])
- by mailfhigh.phl.internal (Postfix) with ESMTP id 581E4114020C;
- Thu, 19 Jun 2025 10:49:24 -0400 (EDT)
-Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-09.internal (MEProxy); Thu, 19 Jun 2025 10:49:24 -0400
-X-ME-Sender: <xms:cyNUaEnYa0G1sUb84ZBhFlK4VUI7EnqZb09Th03Ch3b__EKDbZfkZA>
- <xme:cyNUaD3JfrhPZhAYb_im_3cEsgIMcIR4uwiVk8XU57QqPDTmjMZ5IW9VTRpHFChca
- -Xc5QZbI_4DxA>
-X-ME-Received: <xmr:cyNUaCrVZNisjWjtpJLFBwpZlx_bqvLZOROBm1V6HEJVhgEJ6Vf4YvrwGLffyBmRMU6PcMdDhn2LLTAwtkiciuaSy0K5SivFwvA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtddvgdehkedtucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceurghi
- lhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurh
- epfffhvfevuffkfhggtggujgesghdtreertddtjeenucfhrhhomhepofgrrhgvkhcuofgr
- rhgtiiihkhhofihskhhiqdfikphrvggtkhhiuceomhgrrhhmrghrvghksehinhhvihhsih
- gslhgvthhhihhnghhslhgrsgdrtghomheqnecuggftrfgrthhtvghrnhepheduvdfghfet
- gefftdfhfeethfehhefhtefgvefhvdetkeekkeduhedtgeeiieehnecuffhomhgrihhnpe
- hlrghunhgthhhprggurdhnvghtpdhkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhi
- iigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehmrghrmhgrrhgvkhesihhnvhhish
- hisghlvghthhhinhhgshhlrggsrdgtohhmpdhnsggprhgtphhtthhopedutddpmhhouggv
- pehsmhhtphhouhhtpdhrtghpthhtohepvhhithgrlhihrdhlihhfshhhihhtshesihhnth
- gvlhdrtghomhdprhgtphhtthhopegthhhrihhsthhirghnsehhvghushgvlhdrvghupdhr
- tghpthhtohepphhmvghniigvlhesmhholhhgvghnrdhmphhgrdguvgdprhgtphhtthhope
- grnhhthhhonhihrdhlrdhnghhuhigvnhesihhnthgvlhdrtghomhdprhgtphhtthhopehp
- rhiivghmhihslhgrfidrkhhithhsiigvlhesihhnthgvlhdrtghomhdprhgtphhtthhope
- hnvghtuggvvhesvhhgvghrrdhkvghrnhgvlhdrohhrghdprhgtphhtthhopehinhhtvghl
- qdifihhrvgguqdhlrghnsehlihhsthhsrdhoshhuohhslhdrohhrghdprhgtphhtthhope
- hrvghgrhgvshhsihhonhhssehlihhsthhsrdhlihhnuhigrdguvghvpdhrtghpthhtohep
- shhtrggslhgvsehvghgvrhdrkhgvrhhnvghlrdhorhhg
-X-ME-Proxy: <xmx:cyNUaAnrDe5gOluv7mW957b8hkPn-cs_e4l4l_hd67YhsdAQtUd_yg>
- <xmx:cyNUaC3tppNB8Tf7EBGAdh3Lj7Y3neFd0u-PJVqLE7hWQE-OLXCA3g>
- <xmx:cyNUaHsGjAPJ0XRwSVxI2FMYnwLQD7wl-HlbaIrc4VXiI_yLMtkolA>
- <xmx:cyNUaOXVcmZYTyvSqiDSrseLZCxfNBnn0urA6Rg9YdpFvsbWI0Mjpg>
- <xmx:dCNUaJ12bXse_-m0zr5Z1uEkvH76zhMMJ9d66p-WRWHZpM_FKcqjxUym>
-Feedback-ID: i1568416f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 19 Jun 2025 10:49:20 -0400 (EDT)
-Date: Thu, 19 Jun 2025 16:49:18 +0200
-From: Marek =?utf-8?Q?Marczykowski-G=C3=B3recki?=
- <marmarek@invisiblethingslab.com>
-To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>
-Cc: Christian Heusel <christian@heusel.eu>,
- Paul Menzel <pmenzel@molgen.mpg.de>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
+ id zdIznnXloDhH for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 19 Jun 2025 15:38:28 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
+ helo=mgamail.intel.com; envelope-from=yoong.siang.song@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5FF4140299
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5FF4140299
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5FF4140299
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Jun 2025 15:38:28 +0000 (UTC)
+X-CSE-ConnectionGUID: MvWyFT82QauRS5NPPuxH7Q==
+X-CSE-MsgGUID: VtqfIxt0QZqXWxzk/8iMQQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11469"; a="56425681"
+X-IronPort-AV: E=Sophos;i="6.16,249,1744095600"; d="scan'208";a="56425681"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+ by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Jun 2025 08:38:17 -0700
+X-CSE-ConnectionGUID: xl3ttfQLSL6jMsqtEydclw==
+X-CSE-MsgGUID: 9w88Gj9+Qi+FwjFKM2De2Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,249,1744095600"; d="scan'208";a="150115355"
+Received: from p12ill20yoongsia.png.intel.com ([10.88.227.38])
+ by orviesa010.jf.intel.com with ESMTP; 19 Jun 2025 08:38:11 -0700
+From: Song Yoong Siang <yoong.siang.song@intel.com>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Richard Cochran <richardcochran@gmail.com>,
+ Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ Jonathan Corbet <corbet@lwn.net>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- regressions@lists.linux.dev, stable@vger.kernel.org,
- Sasha Levin <sashal@kernel.org>
-Message-ID: <aFQjby7mQxvShBm7@mail-itl>
-References: <aAZF0JUKCF0UvfF6@mail-itl> <aAZH7fpaGf7hvX6T@mail-itl>
- <e0034a96-e285-98c8-b526-fb167747aedc@intel.com>
- <aB0zLQawNrImVqPE@mail-itl>
- <c918d4f5-ee53-4f64-b152-cea0f6d99c4f@molgen.mpg.de>
- <aB0-JLSDT03fosST@mail-itl> <aB1JnJG_CH5vxAsw@mail-itl>
- <aFK_ExmGqmi-oQby@mail-itl>
- <87584d6f-5a31-47aa-bba3-1aadfc18fbe6@heusel.eu>
- <9fb5f018-7333-421b-8e2d-1f6eb98cffaa@intel.com>
+ Shinas Rasheed <srasheed@marvell.com>, Kevin Tian <kevin.tian@intel.com>,
+ Brett Creeley <brett.creeley@amd.com>,
+ Blanco Alcaine Hector <hector.blanco.alcaine@intel.com>,
+ Joshua Hay <joshua.a.hay@intel.com>, Sasha Neftin <sasha.neftin@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ Jacob Keller <jacob.e.keller@intel.com>,
+ Kurt Kanzenbach <kurt@linutronix.de>,
+ Wojciech Drewek <wojciech.drewek@intel.com>,
+ Marcin Szycik <marcin.szycik@linux.intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Date: Thu, 19 Jun 2025 23:37:38 +0800
+Message-Id: <20250619153738.2788568-1-yoong.siang.song@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="vm5OGfsTLL6JBXBT"
-Content-Disposition: inline
-In-Reply-To: <9fb5f018-7333-421b-8e2d-1f6eb98cffaa@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- invisiblethingslab.com; h=cc:cc:content-type:content-type:date
- :date:from:from:in-reply-to:in-reply-to:message-id:mime-version
- :references:reply-to:subject:subject:to:to; s=fm1; t=1750344564;
- x=1750430964; bh=bJZoX1H0pKg0M1SA/qWQWR7S8HdwU3H818dBwncJTdc=; b=
- gRjTxKXa7EdZ4uJc6H+pm7CbN5FBQHL15xnfO/fGHk7dALRSpHGbMhV4avHhue87
- pZlE7Gu6B21nUzZB5pavhcr5OTavYOmn48ofCng6C89hkpX5fQ/dU1zzLsbSiEk5
- HmG8Bawu8LuUbPtIkOzqM6SQgI9lS+bXkEfyVkFCJi/9dumFfKrdG4Z4XC+xK4w5
- ZmRnlB7Z0cy8HCl9AR4FQfd8Oa155Kuqz711wdKts1hYq4sT0Eq8UAwPCjjcFKKo
- FBnwcQkynhl1OlBIKIXkRsqTCo4IZwroPRn/clzJMpTJGbi2gzFSosfJOrm94LYq
- l44aKq+9AJxKluDYsDok2g==
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
- :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
- 1750344564; x=1750430964; bh=bJZoX1H0pKg0M1SA/qWQWR7S8HdwU3H818d
- BwncJTdc=; b=iPTH6ECAQoWMY49Z8UaWWfUnvlldg3wFE6G50XJv0/Wj8W07mSn
- XY5Syj7xDtGWCCDDr/LddbbemYIJgvoU3Yr4WxrI4hUF2NGspsdv3zSgZEVKPHDa
- x9Ewh9MdGlA/uZMA+GUhSbBygjUKjxNhNRlycrFZIMBE+eMY+iklJ0urU6K8c3js
- oDV58o+zO+XqQIfAVEa6AXc8lZpBEoG+vZt6RFSUYNmFMHdNubrIng3R02P20Jj6
- u/WsLZMiBsy76X7fGYMoKv2brBjN94lkcLLmKCxvhlBNed+VkFGGR+0th9wKD6oc
- nZDkuXbotYM6vHRoDyr3GhHq6UV+8qOf+ww==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1750347508; x=1781883508;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=cemE3KPr09GBuAk4yA33g6zjJYuMfVRlqLTDeiEf3kU=;
+ b=c+VRZvM1Us0ttWGzI9dafuy+wJvwFGaeu3BQiiVRdv1/g66VSJkMEFvR
+ paofVJkB2c7yf+yolfwcgRAaIk6RLzGo1PsSzzpTDJcCy4z4NbRkMM85l
+ FZZMDaD5Vhz30HsQX/DAJhKL82SXby+00+6OsCZdmsf63qFlIKAqSIAxV
+ uSa+Q/j9WQY/ilbDsfm5kAR9eJqNAzLnNe66IFQEhFubmZe7WujYSQ3Sl
+ 6VkBvCJekGNyX45asu19gLpOw3jLlxTBwDeKn75I1gXe13W6o8AFjSt8P
+ 0uqRJiP3mJEArXi7GAyOSMdi+KYdMqpnJqtSiKyUN4I1SzRTZFvC/aY0f
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=invisiblethingslab.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key, unprotected) header.d=invisiblethingslab.com
- header.i=@invisiblethingslab.com header.a=rsa-sha256 header.s=fm1
- header.b=gRjTxKXa; 
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=messagingengine.com header.i=@messagingengine.com
- header.a=rsa-sha256 header.s=fm1 header.b=iPTH6ECA
-Subject: Re: [Intel-wired-lan] [REGRESSION] e1000e heavy packet loss on
- Meteor Lake - 6.14.2
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=c+VRZvM1
+Subject: [Intel-wired-lan] [PATCH iwl-next,
+ v2 1/1] igc: Add wildcard rule support to ethtool NFC using Default
+ Queue
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -162,200 +128,234 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Introduce support for a lowest priority wildcard (catch-all) rule in
+ethtool's Network Flow Classification (NFC) for the igc driver. The
+wildcard rule directs all unmatched network traffic, including traffic not
+captured by Receive Side Scaling (RSS), to a specified queue. This
+functionality utilizes the Default Queue feature available in I225/I226
+hardware.
 
---vm5OGfsTLL6JBXBT
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Date: Thu, 19 Jun 2025 16:49:18 +0200
-From: Marek =?utf-8?Q?Marczykowski-G=C3=B3recki?= <marmarek@invisiblethingslab.com>
-To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>
-Cc: Christian Heusel <christian@heusel.eu>,
-	Paul Menzel <pmenzel@molgen.mpg.de>,
-	Tony Nguyen <anthony.l.nguyen@intel.com>,
-	Przemek Kitszel <przemyslaw.kitszel@intel.com>,
-	netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
-	regressions@lists.linux.dev, stable@vger.kernel.org,
-	Sasha Levin <sashal@kernel.org>
-Subject: Re: [Intel-wired-lan] [REGRESSION] e1000e heavy packet loss on
- Meteor Lake - 6.14.2
+The implementation has been validated on Intel ADL-S systems with two
+back-to-back connected I226 network interfaces.
 
-On Thu, Jun 19, 2025 at 03:20:35PM +0300, Lifshits, Vitaly wrote:
->=20
->=20
-> On 6/18/2025 4:41 PM, Christian Heusel wrote:
-> > On 25/06/18 03:28PM, Marek Marczykowski-G=C3=B3recki wrote:
-> > > On Fri, May 09, 2025 at 02:17:32AM +0200, Marek Marczykowski-G=C3=B3r=
-ecki wrote:
-> > > > On Fri, May 09, 2025 at 01:28:36AM +0200, Marek Marczykowski-G=C3=
-=B3recki wrote:
-> > > > > On Fri, May 09, 2025 at 01:13:28AM +0200, Paul Menzel wrote:
-> > > > > > Dear Marek, dear Vitaly,
-> > > > > >=20
-> > > > > >=20
-> > > > > > Am 09.05.25 um 00:41 schrieb Marek Marczykowski-G=C3=B3recki:
-> > > > > > > On Thu, May 08, 2025 at 09:26:18AM +0300, Lifshits, Vitaly
-> > > > > > > > On 4/21/2025 4:28 PM, Marek Marczykowski-G=C3=B3recki wrote:
-> > > > > > > > > On Mon, Apr 21, 2025 at 03:19:12PM +0200, Marek Marczykow=
-ski-G=C3=B3recki wrote:
-> > > > > > > > > > On Mon, Apr 21, 2025 at 03:44:02PM +0300, Lifshits, Vit=
-aly wrote:
-> > > > > > > > > > >=20
-> > > > > > > > > > >=20
-> > > > > > > > > > > On 4/16/2025 3:43 PM, Marek Marczykowski-G=C3=B3recki=
- wrote:
-> > > > > > > > > > > > On Wed, Apr 16, 2025 at 03:09:39PM +0300, Lifshits,=
- Vitaly wrote:
-> > > > > > > > > > > > > Can you please also share the output of ethtool -=
-i? I would like to know the
-> > > > > > > > > > > > > NVM version that you have on your device.
-> > > > > > > > > > > >=20
-> > > > > > > > > > > > driver: e1000e
-> > > > > > > > > > > > version: 6.14.1+
-> > > > > > > > > > > > firmware-version: 1.1-4
-> > > > > > > > > > > > expansion-rom-version:
-> > > > > > > > > > > > bus-info: 0000:00:1f.6
-> > > > > > > > > > > > supports-statistics: yes
-> > > > > > > > > > > > supports-test: yes
-> > > > > > > > > > > > supports-eeprom-access: yes
-> > > > > > > > > > > > supports-register-dump: yes
-> > > > > > > > > > > > supports-priv-flags: yes
-> > > > > > > > > > > >=20
-> > > > > > > > > > >=20
-> > > > > > > > > > > Your firmware version is not the latest, can you chec=
-k with the board
-> > > > > > > > > > > manufacturer if there is a BIOS update to your system?
-> > > > > > > > > >=20
-> > > > > > > > > > I can check, but still, it's a regression in the Linux =
-driver - old
-> > > > > > > > > > kernel did work perfectly well on this hw. Maybe new dr=
-iver tries to use
-> > > > > > > > > > some feature that is missing (or broken) in the old fir=
-mware?
-> > > > > > > > >=20
-> > > > > > > > > A little bit of context: I'm maintaining the kernel packa=
-ge for a Qubes
-> > > > > > > > > OS distribution. While I can try to update firmware on my=
- test system, I
-> > > > > > > > > have no influence on what hardware users will use this ke=
-rnel, and
-> > > > > > > > > which firmware version they will use (and whether all the=
- vendors
-> > > > > > > > > provide newer firmware at all). I cannot ship a kernel th=
-at is known
-> > > > > > > > > to break network on some devices.
-> > > > > > > > >=20
-> > > > > > > > > > > Also, you mentioned that on another system this issue=
- doesn't reproduce, do
-> > > > > > > > > > > they have the same firmware version?
-> > > > > > > > > >=20
-> > > > > > > > > > The other one has also 1.1-4 firmware. And I re-checked=
-, e1000e from
-> > > > > > > > > > 6.14.2 works fine there.
-> > > > > >=20
-> > > > > > > > Thank you for your detailed feedback and for providing the =
-requested
-> > > > > > > > information.
-> > > > > > > >=20
-> > > > > > > > We have conducted extensive testing of this patch across mu=
-ltiple systems
-> > > > > > > > and have not observed any packet loss issues. Upon comparin=
-g the mentioned
-> > > > > > > > setups, we noted that while the LAN controller is similar, =
-the CPU differs.
-> > > > > > > > We believe that the issue may be related to transitions in =
-the CPU's low
-> > > > > > > > power states.
-> > > > > > > >=20
-> > > > > > > > Consequently, we kindly request that you disable the CPU lo=
-w power state
-> > > > > > > > transitions in the S0 system state and verify if the issue =
-persists. You can
-> > > > > > > > disable this in the kernel parameters on the command line w=
-ith idle=3Dpoll.
-> > > > > > > > Please note that this command is intended for debugging pur=
-poses only, as it
-> > > > > > > > may result in higher power consumption.
-> > > > > > >=20
-> > > > > > > I tried with idle=3Dpoll, and it didn't help, I still see a l=
-ot of packet
-> > > > > > > losses. But I can also confirm that idle=3Dpoll makes the sys=
-tem use
-> > > > > > > significantly more power (previously at 25-30W, with this opt=
-ion stays
-> > > > > > > at about 42W).
-> > > > > > >=20
-> > > > > > > Is there any other info I can provide, enable some debug feat=
-ures or
-> > > > > > > something?
-> > > > > > >=20
-> > > > > > > I see the problem is with receiving packets - in my simple pi=
-ng test,
-> > > > > > > the ping target sees all the echo requests (and respond to th=
-em), but
-> > > > > > > the responses aren't reaching ping back (and are not visible =
-on tcpdump
-> > > > > > > on the problematic system either).
-> > > > > >=20
-> > > > > > As the cause is still unclear, can the commit please be reverte=
-d in the
-> > > > > > master branch due adhere to Linux=E2=80=99 no-regression policy=
-, so that it can be
-> > > > > > reverted from the stable series?
-> > > > > >=20
-> > > > > > Marek, did you also test 6.15 release candidates?
-> > > > >=20
-> > > > > The last test I did was on 6.15-rc3. I can re-test on -rc5.
-> > > >=20
-> > > > Same with 6.15-rc5.
-> > >=20
-> > > And the same issue still applies to 6.16-rc2. FWIW Qubes OS kernel has
-> > > this buggy patch revered and nobody complained (contrary to the versi=
-on
-> > > with the patch included). Should I submit the revert patch?
->=20
-> It is not a good idea to revert this patch as most of the systems will
-> encounter the original issues (PHY access and packet loss). The reason I
-> first introduced this patch was because big vendors reported the packet l=
-oss
-> issue. You can refer to the following sightings:
-> https://answers.launchpad.net/ubuntu/+question/816003
-> https://bugs.launchpad.net/ubuntu/+source/linux/+bug/2066064
-> https://bugzilla.kernel.org/show_bug.cgi?id=3D218869
+Testing Procedure:
+1. On the Device Under Test (DUT), verify the initial statistic:
+   $ ethtool -S enp1s0 | grep rx_q.*packets
+        rx_queue_0_packets: 0
+        rx_queue_1_packets: 0
+        rx_queue_2_packets: 0
+        rx_queue_3_packets: 0
 
-It would be useful to have any of those links in the original commit...
+2. From the Link Partner, send 10 ARP packets:
+   $ arping -c 10 -I enp170s0 169.254.1.2
 
-> As an intermediate solution we can either use a privileged flag to make it
-> configurable. I will share with you a patch that might fix the issue
-> on your system that I would like you to try.
+3. On the DUT, verify the packet reception on Queue 0:
+   $ ethtool -S enp1s0 | grep rx_q.*packets
+        rx_queue_0_packets: 10
+        rx_queue_1_packets: 0
+        rx_queue_2_packets: 0
+        rx_queue_3_packets: 0
 
-Yes, that patch works :)
+4. On the DUT, add a wildcard rule to route all packets to Queue 3:
+   $ sudo ethtool -N enp1s0 flow-type ether queue 3
 
-> FYI, we are currently investigating a similar issue that seems to be due =
-to
-> a misconfiguration of the system firmware.
+5. From the Link Partner, send another 10 ARP packets:
+   $ arping -c 10 -I enp170s0 169.254.1.2
 
-Can you share some details? I can forward the info to firmware
-developers for this system (it's Dasharo - coreboot-based firmware).
+6. Now, packets are routed to Queue 3 by the wildcard (Default Queue) rule:
+   $ ethtool -S enp1s0 | grep rx_q.*packets
+        rx_queue_0_packets: 10
+        rx_queue_1_packets: 0
+        rx_queue_2_packets: 0
+        rx_queue_3_packets: 10
 
---=20
-Best Regards,
-Marek Marczykowski-G=C3=B3recki
-Invisible Things Lab
+7. On the DUT, add a EtherType rule to route ARP packet to Queue 1:
+   $ sudo ethtool -N enp1s0 flow-type ether proto 0x0806 queue 1
 
---vm5OGfsTLL6JBXBT
-Content-Type: application/pgp-signature; name=signature.asc
+8. From the Link Partner, send another 10 ARP packets:
+   $ arping -c 10 -I enp170s0 169.254.1.2
 
------BEGIN PGP SIGNATURE-----
+9. Now, packets are routed to Queue 1 by the EtherType rule because it is
+   higher priority than the wildcard (Default Queue) rule:
+   $ ethtool -S enp1s0 | grep rx_q.*packets
+        rx_queue_0_packets: 10
+        rx_queue_1_packets: 10
+        rx_queue_2_packets: 0
+        rx_queue_3_packets: 10
 
-iQEzBAEBCAAdFiEEhrpukzGPukRmQqkK24/THMrX1ywFAmhUI28ACgkQ24/THMrX
-1ywBswf/axdjrt0YTe8yVedsXB0BdcGcvKydnbQDSnI3snpPrt37TBA6mWrSTDRL
-V4iYeWjfNMn2kPGi2uRq7uzx/WRU/Fu/Uc/AAFD8sSQl4dw4fNUIIX/CZTmEcvH+
-kTUGDOhO6NPUCryKOHqSx8M3nMuIc+dHeQt6NrXhJMsp9t8NkS8cijtT7XuEHajv
-ESc7VynKZNzS5vG4Jx1FlCXh1b1P3cXAKsaV/7k5mEIkjxtph1w/2lOTczq4iFaD
-QDR6cW563uPfgdJLnk8uzKnLCjWfAZyCVJhTjpXUUIBIkVMf2Z/lnAl1Nh41/FIo
-T2AARajG/M4oB/SV7F4hu61RfJXv5g==
-=bkS0
------END PGP SIGNATURE-----
+10. On the DUT, delete all the NFC rules:
+    $ sudo ethtool -N enp1s0 delete 63
+    $ sudo ethtool -N enp1s0 delete 64
 
---vm5OGfsTLL6JBXBT--
+11. From the Link Partner, send another 10 ARP packets:
+    $ arping -c 10 -I enp170s0 169.254.1.2
+
+12. Now, packets are routed to Queue 0 because the value of Default Queue
+    is reset back to 0:
+    $ ethtool -S enp1s0 | grep rx_q.*packets
+         rx_queue_0_packets: 20
+         rx_queue_1_packets: 10
+         rx_queue_2_packets: 0
+         rx_queue_3_packets: 10
+
+Co-developed-by: Blanco Alcaine Hector <hector.blanco.alcaine@intel.com>
+Signed-off-by: Blanco Alcaine Hector <hector.blanco.alcaine@intel.com>
+Signed-off-by: Song Yoong Siang <yoong.siang.song@intel.com>
+---
+V2:
+  - use Ethtool wildcard rule instead of extra uAPI (Jakub Kicinski & Jacob Keller)
+  - combine MRQC register definitions into a single location (Kurt Kanzenbach)
+  - use FIELD_PREP (Kurt Kanzenbach)
+  - use RCT rule (Wojciech Drewek)
+  - no need brackets for single line code (Wojciech Drewek)
+  - use imperative mood in commit message (Marcin Szycik)
+  - ensure igc_ prefix in function name (Marcin Szycik)
+
+V1: https://patchwork.ozlabs.org/project/intel-wired-lan/cover/20240730012212.775814-1-yoong.siang.song@intel.com/
+---
+ drivers/net/ethernet/intel/igc/igc.h         | 15 ++++++-------
+ drivers/net/ethernet/intel/igc/igc_defines.h |  4 ++++
+ drivers/net/ethernet/intel/igc/igc_ethtool.c | 18 ++++++++++++++++
+ drivers/net/ethernet/intel/igc/igc_main.c    | 22 ++++++++++++++++++++
+ 4 files changed, 52 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index 1525ae25fd3e..c580ecc954be 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -406,10 +406,6 @@ extern char igc_driver_name[];
+ #define IGC_FLAG_RSS_FIELD_IPV4_UDP	BIT(6)
+ #define IGC_FLAG_RSS_FIELD_IPV6_UDP	BIT(7)
+ 
+-#define IGC_MRQC_ENABLE_RSS_MQ		0x00000002
+-#define IGC_MRQC_RSS_FIELD_IPV4_UDP	0x00400000
+-#define IGC_MRQC_RSS_FIELD_IPV6_UDP	0x00800000
+-
+ /* RX-desc Write-Back format RSS Type's */
+ enum igc_rss_type_num {
+ 	IGC_RSS_TYPE_NO_HASH		= 0,
+@@ -635,6 +631,7 @@ enum igc_filter_match_flags {
+ 	IGC_FILTER_FLAG_DST_MAC_ADDR =	BIT(3),
+ 	IGC_FILTER_FLAG_USER_DATA =	BIT(4),
+ 	IGC_FILTER_FLAG_VLAN_ETYPE =	BIT(5),
++	IGC_FILTER_FLAG_DEFAULT_QUEUE = BIT(6),
+ };
+ 
+ struct igc_nfc_filter {
+@@ -662,10 +659,14 @@ struct igc_nfc_rule {
+ 	bool flex;
+ };
+ 
+-/* IGC supports a total of 32 NFC rules: 16 MAC address based, 8 VLAN priority
+- * based, 8 ethertype based and 32 Flex filter based rules.
++/* IGC supports a total of 65 NFC rules, listed below in order of priority:
++ *  - 16 MAC address based filtering rules (highest priority)
++ *  - 8 ethertype based filtering rules
++ *  - 32 Flex filter based filtering rules
++ *  - 8 VLAN priority based filtering rules
++ *  - 1 default queue rule (lowest priority)
+  */
+-#define IGC_MAX_RXNFC_RULES		64
++#define IGC_MAX_RXNFC_RULES		65
+ 
+ struct igc_flex_filter {
+ 	u8 index;
+diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+index 86b346687196..498ba1522ca4 100644
+--- a/drivers/net/ethernet/intel/igc/igc_defines.h
++++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+@@ -383,11 +383,15 @@
+ #define IGC_RXDEXT_STATERR_IPE		0x40000000
+ #define IGC_RXDEXT_STATERR_RXE		0x80000000
+ 
++#define IGC_MRQC_ENABLE_RSS_MQ		0x00000002
+ #define IGC_MRQC_RSS_FIELD_IPV4_TCP	0x00010000
+ #define IGC_MRQC_RSS_FIELD_IPV4		0x00020000
+ #define IGC_MRQC_RSS_FIELD_IPV6_TCP_EX	0x00040000
+ #define IGC_MRQC_RSS_FIELD_IPV6		0x00100000
+ #define IGC_MRQC_RSS_FIELD_IPV6_TCP	0x00200000
++#define IGC_MRQC_RSS_FIELD_IPV4_UDP	0x00400000
++#define IGC_MRQC_RSS_FIELD_IPV6_UDP	0x00800000
++#define IGC_MRQC_DEFAULT_QUEUE_MASK	GENMASK(5, 3)
+ 
+ /* Header split receive */
+ #define IGC_RFCTL_IPV6_EX_DIS	0x00010000
+diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+index a7f397b58cd6..ecb35b693ce5 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
++++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+@@ -1283,6 +1283,24 @@ static void igc_ethtool_init_nfc_rule(struct igc_nfc_rule *rule,
+ 		rule->flex = true;
+ 	else
+ 		rule->flex = false;
++
++	/* The wildcard rule is only applied if:
++	 *  a) None of the other filtering rules match (match_flags is zero)
++	 *  b) The flow type is ETHER_FLOW only (no additional fields set)
++	 *  c) Mask for Source MAC address is not specified (all zeros)
++	 *  d) Mask for Destination MAC address is not specified (all zeros)
++	 *  e) Mask for L2 EtherType is not specified (zero)
++	 *
++	 * If all these conditions are met, the rule is treated as a wildcard
++	 * rule. Default queue feature will be used, so that all packets that do
++	 * not match any other rule will be routed to the default queue.
++	 */
++	if (!rule->filter.match_flags &&
++	    fsp->flow_type == ETHER_FLOW &&
++	    is_zero_ether_addr(fsp->m_u.ether_spec.h_source) &&
++	    is_zero_ether_addr(fsp->m_u.ether_spec.h_dest) &&
++	    !fsp->m_u.ether_spec.h_proto)
++		rule->filter.match_flags = IGC_FILTER_FLAG_DEFAULT_QUEUE;
+ }
+ 
+ /**
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 2e12915b42a9..87311ea47018 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -3874,6 +3874,22 @@ static void igc_del_flex_filter(struct igc_adapter *adapter,
+ 	wr32(IGC_WUFC, wufc);
+ }
+ 
++static void igc_set_default_queue_filter(struct igc_adapter *adapter, u32 queue)
++{
++	struct igc_hw *hw = &adapter->hw;
++	u32 mrqc = rd32(IGC_MRQC);
++
++	mrqc &= ~IGC_MRQC_DEFAULT_QUEUE_MASK;
++	mrqc |= FIELD_PREP(IGC_MRQC_DEFAULT_QUEUE_MASK, queue);
++	wr32(IGC_MRQC, mrqc);
++}
++
++static void igc_reset_default_queue_filter(struct igc_adapter *adapter)
++{
++	/* Reset the default queue to its default value which is Queue 0 */
++	igc_set_default_queue_filter(adapter, 0);
++}
++
+ static int igc_enable_nfc_rule(struct igc_adapter *adapter,
+ 			       struct igc_nfc_rule *rule)
+ {
+@@ -3912,6 +3928,9 @@ static int igc_enable_nfc_rule(struct igc_adapter *adapter,
+ 			return err;
+ 	}
+ 
++	if (rule->filter.match_flags & IGC_FILTER_FLAG_DEFAULT_QUEUE)
++		igc_set_default_queue_filter(adapter, rule->action);
++
+ 	return 0;
+ }
+ 
+@@ -3939,6 +3958,9 @@ static void igc_disable_nfc_rule(struct igc_adapter *adapter,
+ 	if (rule->filter.match_flags & IGC_FILTER_FLAG_DST_MAC_ADDR)
+ 		igc_del_mac_filter(adapter, IGC_MAC_FILTER_TYPE_DST,
+ 				   rule->filter.dst_addr);
++
++	if (rule->filter.match_flags & IGC_FILTER_FLAG_DEFAULT_QUEUE)
++		igc_reset_default_queue_filter(adapter);
+ }
+ 
+ /**
+-- 
+2.34.1
+
