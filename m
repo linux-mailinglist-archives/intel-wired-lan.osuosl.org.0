@@ -1,236 +1,99 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 46BC7AE1C87
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Jun 2025 15:47:04 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 261EDAE209E
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Jun 2025 19:16:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 785B5411CA;
-	Fri, 20 Jun 2025 13:47:02 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CCC4460F4D;
+	Fri, 20 Jun 2025 17:16:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TZXqZoNYkzD8; Fri, 20 Jun 2025 13:47:02 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id X0dinuM0Dj4z; Fri, 20 Jun 2025 17:16:00 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C8035411D6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D093960F40
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1750427221;
-	bh=byzsH2VE9+YKpbc+/ZwuxCvR/78GrdVl3iaifoJHMcQ=;
-	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=UMZvvdaJRWlx81QZGBAJkg1kKs0AKEez5OsXF+vlZpAIrKSyHxC2AGriPiFFz+Dq9
-	 yc96n7ayYgyPUltgSVkvudQ8+hfav8huy5or6rOqYHQs6q2S9Yzhg7EtzZrk7LObA4
-	 IlWVWpB+8dePrLycD1BFOOBVBAlsjque5eoKl375dnf/CATAtmtS0Y6fLq447YhGaR
-	 xoSMwdnpzjj/jokrordCge5giWc2rhu5irnj7ieyua9NYN9/bhSNxuHEiEm42D4JPa
-	 qRfjTwLJ6phPcy7AQYWpL1FB0wYl8N7vmV5nCpFMXiPQLoZH0eYKRvujGFCmptzs5z
-	 g92Aqr2dFwAQg==
+	s=default; t=1750439759;
+	bh=5kXcC8QQLYOrX3Us/al/vglnH6Ajygklch2upCQxhfs=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=qPNCLelALtmqAbKdDqKg43G2/F4MyPRs+vqWtT9/gG1hbdc2JqV61Z65EnWMVmcs7
+	 /kgey5oJPAXDDJs8ajUwJ5BKZMJoS6paoInk0+KUO1u5f9jgjpjUuZbwZ7eoNBaPh2
+	 RAMCUXkATmT85TNTSdA+uHxNqS3szAGPA6p38Fx+706oTuyJf5mtqhRycPZFqvxkkD
+	 vtrtSGft/NsVoe12tSkxq+tPGgiiFMoid0h5Rqxv+kvInL0IJ4E6vEpWhV5RXpAFdC
+	 LAlepkHEaQ3qaaLn4erDLG+JFOgANGaP7RRJgaLHb0PgRjgKHv8v3SzGWmFlm0+iN6
+	 t9uCPKmt53yHQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C8035411D6;
-	Fri, 20 Jun 2025 13:47:01 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D093960F40;
+	Fri, 20 Jun 2025 17:15:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id BAEB3154
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jun 2025 13:47:00 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 540D7154
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jun 2025 17:15:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 9CF0F400AF
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jun 2025 13:47:00 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 39E8160F39
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jun 2025 17:15:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id hoT017WpeIXy for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 Jun 2025 13:47:00 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.15;
- helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id iKFYgK1EvmCq for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 20 Jun 2025 17:15:57 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
+ helo=mgamail.intel.com; envelope-from=ahmed.zaki@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C11904006C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C11904006C
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.15])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C11904006C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jun 2025 13:46:58 +0000 (UTC)
-X-CSE-ConnectionGUID: +2+pK7GPRdiFcDEOgNNDRQ==
-X-CSE-MsgGUID: uiM1cuMWQBOLFPVsxBisvg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11469"; a="52836990"
-X-IronPort-AV: E=Sophos;i="6.16,251,1744095600"; d="scan'208";a="52836990"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Jun 2025 06:46:58 -0700
-X-CSE-ConnectionGUID: Sj7/GUW3Qr6kmLv8bEXZ3g==
-X-CSE-MsgGUID: md0oC4MvRiWL3GxZTHpfZg==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 40BDF60ECF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 40BDF60ECF
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 40BDF60ECF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Jun 2025 17:15:56 +0000 (UTC)
+X-CSE-ConnectionGUID: rHG4yqgdTy+OXR3Hlai3aQ==
+X-CSE-MsgGUID: Fb06OdUJQOyn34mW2cw3gg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11469"; a="63319133"
+X-IronPort-AV: E=Sophos;i="6.16,252,1744095600"; d="scan'208";a="63319133"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+ by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Jun 2025 10:15:56 -0700
+X-CSE-ConnectionGUID: Jb7UL1fLQvam+xCkIIAJ2w==
+X-CSE-MsgGUID: GSSCs/JhR0K5dybLFAunlQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,251,1744095600"; d="scan'208";a="151605134"
-Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
- by fmviesa010.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Jun 2025 06:46:58 -0700
-Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
- ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.25; Fri, 20 Jun 2025 06:46:57 -0700
-Received: from ORSEDG902.ED.cps.intel.com (10.7.248.12) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.25 via Frontend Transport; Fri, 20 Jun 2025 06:46:57 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (40.107.223.79)
- by edgegateway.intel.com (134.134.137.112) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.25; Fri, 20 Jun 2025 06:46:57 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=c36cu+EhOJq6wS3SgJlmdq7W7FA7c55vnn298INZUkqZ1PR01PkwakMg1cR8/LGQetZenucLz2+/BEhrnSpZdvKSHKQDs6CHzqRhduyO2D+fYBmCOIluHu/fwXX/DYV6ojAcKJuMy9v1GX0Chp+JUa4ukgobO0b1ma4N1olr3gd1amrjCYlAEHoHC+q7/WHH0BoltKS2beqD9d0nzSskLLKrYk8IRAeW4wW5MlLOA3quXOnemMH24qtSKLMWOns68OXsYb8Q762DLI2y1kX3nawS8/f9HMb/L4Ly8h4b5CHkNuA6ZTVQYnpwallJ8Te3MGwohoKPLpgRWiNvpm+Eug==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=byzsH2VE9+YKpbc+/ZwuxCvR/78GrdVl3iaifoJHMcQ=;
- b=rqEC3kCrAQ3pcNnizEqxhPWiPRiJG92FKkLxCSOI2/+xq6DheLYEd20ma/IGHzVWz3tMyx8LBAIs8tvDpmEujTb4lLTzRUumYE78iFPH0h0tzMzNhPSm6n+WJZHVE/vcbES9UwxlhEt+8I5TaccAEG8kfNHB+btThEsa+qGs3IcRLLD/dpQkW10HtFZrG2t/vUxjAjemcJ5TKyiV+tFUj6myzTS0xkHxbS92HX9wtGUveqlLtSubGcmDMEiwp+40bOdStrL2RjRApEkGxm3F9u6iBAzq6eAqwd64EahAJjxcEZkSYDNgPG3zy3WdWliY6aNZ6t+NnyL+jeOMFLEGbg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DS0PR11MB8718.namprd11.prod.outlook.com (2603:10b6:8:1b9::20)
- by SA0PR11MB4622.namprd11.prod.outlook.com (2603:10b6:806:9c::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8857.22; Fri, 20 Jun
- 2025 13:46:55 +0000
-Received: from DS0PR11MB8718.namprd11.prod.outlook.com
- ([fe80::4b3b:9dbe:f68c:d808]) by DS0PR11MB8718.namprd11.prod.outlook.com
- ([fe80::4b3b:9dbe:f68c:d808%3]) with mapi id 15.20.8857.021; Fri, 20 Jun 2025
- 13:46:55 +0000
-Message-ID: <b1a1979a-424a-4590-9f44-236d4f9a2f58@intel.com>
-Date: Fri, 20 Jun 2025 15:46:49 +0200
-User-Agent: Mozilla Thunderbird
-To: Arnd Bergmann <arnd@kernel.org>
-CC: Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel
- <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David
- S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "Jakub
- Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Arnd Bergmann
- <arnd@arndb.de>, Aleksandr Loktionov <aleksandr.loktionov@intel.com>, "Simon
- Horman" <horms@kernel.org>, <intel-wired-lan@lists.osuosl.org>,
- <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>
-References: <20250620111141.3365031-1-arnd@kernel.org>
-From: Alexander Lobakin <aleksander.lobakin@intel.com>
-Content-Language: en-US
-In-Reply-To: <20250620111141.3365031-1-arnd@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: DU7P189CA0006.EURP189.PROD.OUTLOOK.COM
- (2603:10a6:10:552::6) To DS0PR11MB8718.namprd11.prod.outlook.com
- (2603:10b6:8:1b9::20)
+X-IronPort-AV: E=Sophos;i="6.16,252,1744095600"; d="scan'208";a="150561270"
+Received: from bkammerd-mobl.amr.corp.intel.com (HELO azaki-desk1.intel.com)
+ ([10.124.221.233])
+ by fmviesa007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Jun 2025 10:15:54 -0700
+From: Ahmed Zaki <ahmed.zaki@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, Ahmed Zaki <ahmed.zaki@intel.com>,
+ Madhu Chittim <madhu.chittim@intel.com>
+Date: Fri, 20 Jun 2025 11:15:48 -0600
+Message-ID: <20250620171548.959863-1-ahmed.zaki@intel.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS0PR11MB8718:EE_|SA0PR11MB4622:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4600f7db-c485-4e55-4bd8-08ddb000eb5b
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|7416014|376014|366016|7053199007; 
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?UUc5NHdBaFIxWTV4WVkrZngwWm9mNDNiNllnNUo2M0xWVWJYMEJMZG8wcDRR?=
- =?utf-8?B?Yi96Tmx2ZDhxZURESFZHK29VNUlPdzVMZjV6Q1dNK0cwVEVKRW9FVklyUHVG?=
- =?utf-8?B?SjZaa25ZRmVSWmRjREFRcjMyWENnd1cwMUZheWF2dVdOcCsvSFQ5Y0FhaHJ2?=
- =?utf-8?B?dEw5ZmlKalJZOEQxVVZQVUgwcGVjT1VEdkEvd2ZGZytta1FOY2IxbUN3RFhk?=
- =?utf-8?B?Z3hEWkptWlIxUFBMSzQrNDJmM0dScmVJWWNKSzBJbjFHUmpUTE9wR1E3Ty9i?=
- =?utf-8?B?dkJURElYcE9RZUFoUmVYOXVhOEJOVkd3VWw4eExPOTVVelJFWWh5Z1VJblhq?=
- =?utf-8?B?bUppOHhDQnUybmhob3JiQjNpTFBqWUFXT2liWisxckx1K0NkZFZjMytEaE80?=
- =?utf-8?B?RTR3b1VPeFc1UzV2ZVJjL0xHV2xXazlEWTZaV0owOGlXYjZ0MFUzcEF6eHVi?=
- =?utf-8?B?M2NQRi9TT3l3TEtVMzlQZWpyTHBsTG1hSElCUHowcDkvUXFiTlpNT0p5OUxo?=
- =?utf-8?B?SGx6ZzgxYmRwRkJJSjlZV2wzNEsxRThTeUxMTmQwQy8zVS83b21tSWpqU1JY?=
- =?utf-8?B?a0o4ekc2a0kzQjFYTUpPbWlmRTBCUjhFYno0UFBvUWJ3WWF2Ti9Wcmt6TWpN?=
- =?utf-8?B?VkxtSCt1dzhKWmdJazR4eWM1T3BRdG5mcGlDSGxkME5OaURSZFJuK3M0bndI?=
- =?utf-8?B?NnIzNUlhdWllZ25VUTZoOVF5bmd0dXFYeXFMV05yN3p6RzhjWW9QSXZaUEg1?=
- =?utf-8?B?UEFrVnA4Um9zeFR0ZzlNcFlFWlJLQlV5K1lvMjV0TGlOWSszQi9DVmFmbzJ0?=
- =?utf-8?B?RWFsUXR0bGhPUXhwN2VDbTVGblhVNUZ4MUpNaDFpM05WblFFNTkxWGdXMEFG?=
- =?utf-8?B?OW9tRzI1NngvWDd5SUV2dTNLTTcyY0ZiVHpkVkx3MjJIOEpMY1ZHcTJCWE01?=
- =?utf-8?B?cGE2ZFYrT1E1VjFyd3gxV1k5SzVJRGg1MVM3SHAzZGJ6bU9qb0N6M1d3VzJN?=
- =?utf-8?B?ZVlRdVRkOUU2OEkyc0lSWDV4OEdTWjcyZTI4WkV5SUhLUWozQmNoWlU4MFl3?=
- =?utf-8?B?ZU9ST1k2cHFnNVMxTFdLVW5HQVE3TmIvdTZmUGdQMzVMNlNMYmk5NHRLR3hW?=
- =?utf-8?B?M0dZc3hJVCtGdEN1bVJ2SFpzTGFGWGphdnFTSm1PYTRKZFYzN1l5WCtCYklV?=
- =?utf-8?B?ZlJQT0ZGQnA1MjErME5nOVhZMnluNFMySy95NC9LZFJiYTJsOFZXRTZrRFgv?=
- =?utf-8?B?Y1Y4WitmejBFZjJpMDVBL1JiUCtFVUpyOHlQTjg4L1p1UjdPTUJBVEN6T1ZL?=
- =?utf-8?B?UjBxQmtrQUtPc0JXTktKRjFkQW1tMXhtbmxvb1V4TkpKTkxMbGhBWVo0K21i?=
- =?utf-8?B?UGdJR043YUdsNFU0YmEwbk9IOHhMQkR3enlZYTRoQkdXZlZSQ2lpdlE4M1hl?=
- =?utf-8?B?THRHWlNwTkFFMkZvMzY2SDR4ZzNmU2pVWHlZZnJQRmdKWnhrc2VvcytmQXFl?=
- =?utf-8?B?cDZWNkViaUhsRmI0QzNsN1FJa0Q2UWdRZEN3SEJMcXh3c3Q5djhoR3hOMlhM?=
- =?utf-8?B?LzZtL2NURkNNcG1lNy80UnhFNHlpUXF5c1Z6ekUvREQrMVZuKzZmejJYdGM0?=
- =?utf-8?B?S3RxaTh1MmgxNkdkQ1dpbUMvQ2picnNDRFg5R1BsQ280dExHNGY3bmVpWkJk?=
- =?utf-8?B?VDVIYnNoTEkreFZUcmhubkpwcDdrSVJlZ2VlRnVnWEI2VHJTRlg0M0hXMDB6?=
- =?utf-8?B?VnROYmNtdHZXTVdCQVRGYXhoTTVrcllmL0VLYlgyTXlHVEYwTjhkT1dQbjdW?=
- =?utf-8?B?SENMNlUzMnFpNUlYOHZST1dGOC9VdXZGUDkyNnJHN3VSRytpWEJHSUFWVm5n?=
- =?utf-8?B?dXVjdVp5Z1lBdkNoN1FOenF2M0tVc3lqUXNRZ2doT1k3WW1vWStEMUQrU1dS?=
- =?utf-8?Q?1Y8zAN7Bw8w=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS0PR11MB8718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(7416014)(376014)(366016)(7053199007); DIR:OUT;
- SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?d3VHWCtySFFVREhoeHFZeXVVZUpUZU1Fa2gyVlVyZVlPcFdIb29oaG0reFdT?=
- =?utf-8?B?R2FKSlhlR3hlZDY1OTZiRlVncGRaTlF1SFc0b3EzY3lXZ3NMNHh5L25xZ0Z2?=
- =?utf-8?B?cEZCT2ZkWlc4em5Gdkk5cWFDK0w0NDdXamJrVFZmZ3NCa2RFYWhVendUSThj?=
- =?utf-8?B?bjZnOFVDNlJ1Znd0UTBzcjlOZGh3S3VJV0g0SWxSamlNUi8zV1RrK1IxWXhT?=
- =?utf-8?B?UzVDYW1IQkVzdUEwVG5DUXdFSHViVjVUSVVndUJDRDlUdmNIVHNJc0pmeGQx?=
- =?utf-8?B?V2lMZ0ttMnFSYmN6T0JWNytUSWJ6RE8wbVVhQnhoVVdzWm0zOUdrd3RQTFJT?=
- =?utf-8?B?c1VwN29pUGoyV0lXRmVDS1pxK3IxTWozM3h4WHYyeHNBSGV0elBBWUVtZWZP?=
- =?utf-8?B?VW84b1JOalZQRVQxMlgwN0VlQjFQU2U1eGw3L0xwc0drTHlvWjBGK2xFeTZL?=
- =?utf-8?B?VUlnaDF1cTZaSWpzT045SXhQQ1lkTlNhVCtWRXZvVm5HeEdqTGt2ZmlLcnc5?=
- =?utf-8?B?SmdoL3BKeUJmODlHNVBDRm5EN1BISE1lL1VDaHgwQUNLejVtZC80VXEvVHJT?=
- =?utf-8?B?ZWNRMGVWdmpJZnZaTjFXc1VQUjJVV3dTZ0R4TFVCK3hwTS9tUlJGT2tUR1lG?=
- =?utf-8?B?NXg4Skt6RWJKaUZ5QW02RmdGajNDZUtvZXQ2b2xPOG83dVdaUitrQnFDaDFa?=
- =?utf-8?B?eDl2cmtBQlNiQ29DaXcreldiajlRT0VaYjV1UVdLSkJnOTlwbitmY2RrYy83?=
- =?utf-8?B?N0N2K3ZwR1VKT0MvYjl4YWwvMkdxS2lMZ1ovbGRRUTNUV3pqUXViYy9yc3RH?=
- =?utf-8?B?MGJqT0NnaVJJRlpIY1J3Z1dTUHJhOEZKR2l2UFJZNEN1QlZobFRhMFF4dHBB?=
- =?utf-8?B?eE92ZytyUHNnKzROTFo1dktYUTA0VSs1OVVnUFNnUklqc2lDdlRyNEhwclN3?=
- =?utf-8?B?bEkvSWNaVzRYQVljeHBWUHkrWDBhU01TcmNPbWNyNjNVV1d3VjFvRjZWSk1F?=
- =?utf-8?B?TkVMTmxqcnVoM2dPaFNPQkQ2QVRlOWw0Q0UweEVqeGxjcnl6Y09pMWt5cEFv?=
- =?utf-8?B?d0U0cXdGVytKKzNvaTFDWmJDS3BDaGJ4RFk0cS9JcmdOUGQxajZOaE9hdXp0?=
- =?utf-8?B?cTFpNXhQZG9rTkRPaEFJYUU1QjUzZkVlU2Z3ckpIYUVVNDM5Wk5YNHl4K1VX?=
- =?utf-8?B?VmpDY24yNWpGTkZia0RoUThXdzBiVUkxdUhUTWh6U01MYXV5cG96NVh6TitD?=
- =?utf-8?B?TGFYVkNXVC9DS3NNdXAxUGZoQ3F4aHNYRThhQkxaaXRKdExva2RUeWc0MTV1?=
- =?utf-8?B?ZnR0eHd4b3IyYUthMDdFaGFHOUdVaWI1NEl2SXlQNTVEZ1RydnpvRVd6cWF2?=
- =?utf-8?B?b0hEZFdoRFBZYXpIQWkyMkE2anBXNy85NDZLLzZtaHBlMEpPUjMrckFiY05a?=
- =?utf-8?B?OFJvQzlxdjFtVnFBTTJMc2x4RXJSTTU0NWNaOUxheFZJVWV0K2RrelJaYU9j?=
- =?utf-8?B?MUZubTBzR2RacjZtYnE1eWMwWjE5cGxZTkRwQnMyenozQzNDKzJzL0pvMHZC?=
- =?utf-8?B?SWgrbDFpU1dYVUFJS1NRWTF6WWNRcGxnTVArN0kwRXFEV2k4Mmp6MWdwVUxV?=
- =?utf-8?B?RVdyUVIzK1kwWEd4U3pQNXBlek1aVHp3ejltOTRldzd5NlNmOC9QaHFJMVpJ?=
- =?utf-8?B?eTYwcHdTc1M1WjZJRE9OVzJLYm1WVkxzUFFoblN6T1BTczNiTHpkVUZjeXMy?=
- =?utf-8?B?TlgwS0oramlsdVlDMVFKaCtnNGlaNjMzdHhRNXo5Q1FTUk9iWDQ5MmJETjNw?=
- =?utf-8?B?UXE0S0pDdGY5VG1BNnkvZjA3K1U3Q2hxR3NpWHllMXBKWkxndVpqQWRGdytp?=
- =?utf-8?B?SUVhQXkyMmVjVnd5U3hjWVZobzQ2RWdPem9hRk9TbVIxMVI2TUpxa0VveGlI?=
- =?utf-8?B?NjlDZ3pScnNhbXdZVHAvbTVZaUtuQnVXWDJyL0l4YzRmR2dsVUVScjAxN2FB?=
- =?utf-8?B?azdTTXZENy9LR2ZiUlAvd3pGS0l0SjJ1NDJKMUZqdWVwdE5aWjRwTytPY2hQ?=
- =?utf-8?B?K2RtdGkxZFlvSVZPQXZ5aWp2cUtiUkRkdnFoa1pWRlZlYUtlQTEzdS9BZFpV?=
- =?utf-8?B?RVR5U1o4dXNZV1ZkM09lZmJIYmlEZHRPNkVTMTMxRDduWk9PZzNzYUZqQm5G?=
- =?utf-8?B?TlE9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4600f7db-c485-4e55-4bd8-08ddb000eb5b
-X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB8718.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jun 2025 13:46:55.4327 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: rY965ZvLymKBvsgv2vS21hGFhJst/0hLxNAq6eMH0k12OB21Nm7RCoWe7CuetpsYexCW1nBn3UtdqI/wndhP5I1q26C54fkcvx4V7CI/eo8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR11MB4622
-X-OriginatorOrg: intel.com
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1750427219; x=1781963219;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=xe2hP2s58bX8ZsyLbI/onhaWauvh4ZP26w8f40mI/94=;
- b=klMLmIbGI635+q2inPwUabL+XETajUnbtCuu2qSaYbs+TiN7q8VZgVQ9
- 0rajX5uni0W5QqGJ92zd2PGkC3lA41IXQrWCsrerdq8jOdaiQ8d1oKiuB
- oiXzhozqAkE0aSAkLMcPQquW4XbMqHiIgHka+xgtxrHI73TymYr3TIXf8
- hXYLeKEzg1vNhvLyudspoqhWTk+7y3FjbjSUlCAjFc75kVR6PPqexxTIK
- YO9Oq5iZ4masWCLX59lrx5dsVbudGiuiJG4PP0Re2/x+SQ5wSet9rnwMB
- s+FUNcFS5O+LaEm6EdphmB4OHblZteNkQlcC4uC+eHplne66gp3dPIEjJ
+ t=1750439757; x=1781975757;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=12W0ZR+4pCI8ZVLHl0FFNTCmWkoM2S9vQhdIYiHJutU=;
+ b=mL3rVK6oOs6Z4PN4DXW6AZXsjnHQ96WVGq1ZF0cHxitYPq0n+uuCBu5c
+ AS9dMM3SdoQj5kLg/Bv3DDUpCcoEZVTOZbnmQ2OMSL5Yf9NOXYa5EpZvy
+ IxVYrLWlORom8+WihFb8D2waO4uiT0nI9xCnLiaj3EAiBrBHbYcUklusM
+ cwJjgTOSfg3Q5fdEmJfSNCkPeIMPJ0g2XyryMnuzmb/8marbxKcOQMe9v
+ V9oGJqDoTqSoHh9PlYSFDGeklt4sOBxdV3xnjv7iYEwuAkzci22++6Y7U
+ QDtYZDOwbGVKNhq0gbkD6Gx1gOaqXkuu/ui297kcl8qwnaZclYopZpRZj
  A==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=klMLmIbG
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH] ethernet: intel: fix building with
- large NR_CPUS
+ header.s=Intel header.b=mL3rVK6o
+Subject: [Intel-wired-lan] [PATCH iwl-next] idpf: preserve coalescing
+ settings across resets
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -246,50 +109,295 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Arnd Bergmann <arnd@kernel.org>
-Date: Fri, 20 Jun 2025 13:11:17 +0200
+The IRQ coalescing config currently reside only inside struct
+idpf_q_vector. However, all idpf_q_vector structs are de-allocated and
+re-allocated during resets. This leads to user-set coalesce configuration
+to be lost.
 
-> From: Arnd Bergmann <arnd@arndb.de>
-> 
-> With large values of CONFIG_NR_CPUS, three Intel ethernet drivers fail to
-> compile like:
-> 
-> In function ‘i40e_free_q_vector’,
->     inlined from ‘i40e_vsi_alloc_q_vectors’ at drivers/net/ethernet/intel/i40e/i40e_main.c:12112:3:
->   571 |         _compiletime_assert(condition, msg, __compiletime_assert_, __COUNTER__)
-> include/linux/rcupdate.h:1084:17: note: in expansion of macro ‘BUILD_BUG_ON’
->  1084 |                 BUILD_BUG_ON(offsetof(typeof(*(ptr)), rhf) >= 4096);    \
-> drivers/net/ethernet/intel/i40e/i40e_main.c:5113:9: note: in expansion of macro ‘kfree_rcu’
->  5113 |         kfree_rcu(q_vector, rcu);
->       |         ^~~~~~~~~
-> 
-> The problem is that the 'rcu' member in 'q_vector' is too far from the start
-> of the structure. Move this member before the CPU mask instead, in all three
-> drivers.
-> 
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> ---
->  drivers/net/ethernet/intel/fm10k/fm10k.h | 2 +-
->  drivers/net/ethernet/intel/i40e/i40e.h   | 2 +-
->  drivers/net/ethernet/intel/ixgbe/ixgbe.h | 2 +-
->  3 files changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/fm10k/fm10k.h b/drivers/net/ethernet/intel/fm10k/fm10k.h
-> index 6119a4108838..757a6fd81b7b 100644
-> --- a/drivers/net/ethernet/intel/fm10k/fm10k.h
-> +++ b/drivers/net/ethernet/intel/fm10k/fm10k.h
-> @@ -187,6 +187,7 @@ struct fm10k_q_vector {
->  	u32 __iomem *itr;	/* pointer to ITR register for this vector */
->  	u16 v_idx;		/* index of q_vector within interface array */
->  	struct fm10k_ring_container rx, tx;
-> +	struct rcu_head rcu;	/* to avoid race with update stats on free */
->  
->  	struct napi_struct napi;
+Add new fields to struct idpf_vport_user_config_data to save the user
+settings and re-apply them after reset.
 
-I'd place it *after* ::napi as the latter is hot and better to still be
-near rx/tx etc.
+Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
+Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
+---
+ drivers/net/ethernet/intel/idpf/idpf.h        | 19 ++++++++++
+ .../net/ethernet/intel/idpf/idpf_ethtool.c    | 36 ++++++++++++++-----
+ drivers/net/ethernet/intel/idpf/idpf_lib.c    | 19 ++++++++--
+ drivers/net/ethernet/intel/idpf/idpf_main.c   |  1 +
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c   | 13 ++++---
+ 5 files changed, 74 insertions(+), 14 deletions(-)
 
-Same for the rest of the drivers.
+diff --git a/drivers/net/ethernet/intel/idpf/idpf.h b/drivers/net/ethernet/intel/idpf/idpf.h
+index aa2e97e2cd32..1f7127f3324c 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf.h
++++ b/drivers/net/ethernet/intel/idpf/idpf.h
+@@ -396,10 +396,28 @@ struct idpf_rss_data {
+ 	u32 *cached_lut;
+ };
+ 
++/**
++ * struct idpf_q_coalesce - User defined coalescing configuration values for
++ *			   a single queue.
++ * @tx_intr_mode: Dynamic TX ITR or not
++ * @rx_intr_mode: Dynamic RX ITR or not
++ * @tx_coalesce_usecs: TX interrupt throttling rate
++ * @rx_coalesce_usecs: RX interrupt throttling rate
++ *
++ * Used to restore user coalescing configuration after a reset.
++ */
++struct idpf_q_coalesce {
++	u32 tx_intr_mode;
++	u32 rx_intr_mode;
++	u32 tx_coalesce_usecs;
++	u32 rx_coalesce_usecs;
++};
++
+ /**
+  * struct idpf_vport_user_config_data - User defined configuration values for
+  *					each vport.
+  * @rss_data: See struct idpf_rss_data
++ * @q_coalesce: Array of per queue coalescing data
+  * @num_req_tx_qs: Number of user requested TX queues through ethtool
+  * @num_req_rx_qs: Number of user requested RX queues through ethtool
+  * @num_req_txq_desc: Number of user requested TX queue descriptors through
+@@ -415,6 +433,7 @@ struct idpf_rss_data {
+  */
+ struct idpf_vport_user_config_data {
+ 	struct idpf_rss_data rss_data;
++	struct idpf_q_coalesce *q_coalesce;
+ 	u16 num_req_tx_qs;
+ 	u16 num_req_rx_qs;
+ 	u32 num_req_txq_desc;
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
+index 62a08bddfd57..1de71dec9b7e 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
+@@ -1384,12 +1384,14 @@ static int idpf_get_per_q_coalesce(struct net_device *netdev, u32 q_num,
+ /**
+  * __idpf_set_q_coalesce - set ITR values for specific queue
+  * @ec: ethtool structure from user to update ITR settings
++ * @q_coal: per queue coalesce settings
+  * @qv: queue vector for which itr values has to be set
+  * @is_rxq: is queue type rx
+  *
+  * Returns 0 on success, negative otherwise.
+  */
+ static int __idpf_set_q_coalesce(const struct ethtool_coalesce *ec,
++				 struct idpf_q_coalesce *q_coal,
+ 				 struct idpf_q_vector *qv, bool is_rxq)
+ {
+ 	u32 use_adaptive_coalesce, coalesce_usecs;
+@@ -1433,20 +1435,25 @@ static int __idpf_set_q_coalesce(const struct ethtool_coalesce *ec,
+ 
+ 	if (is_rxq) {
+ 		qv->rx_itr_value = coalesce_usecs;
++		q_coal->rx_coalesce_usecs = coalesce_usecs;
+ 		if (use_adaptive_coalesce) {
+ 			qv->rx_intr_mode = IDPF_ITR_DYNAMIC;
++			q_coal->rx_intr_mode = IDPF_ITR_DYNAMIC;
+ 		} else {
+ 			qv->rx_intr_mode = !IDPF_ITR_DYNAMIC;
+-			idpf_vport_intr_write_itr(qv, qv->rx_itr_value,
+-						  false);
++			q_coal->rx_intr_mode = !IDPF_ITR_DYNAMIC;
++			idpf_vport_intr_write_itr(qv, coalesce_usecs, false);
+ 		}
+ 	} else {
+ 		qv->tx_itr_value = coalesce_usecs;
++		q_coal->tx_coalesce_usecs = coalesce_usecs;
+ 		if (use_adaptive_coalesce) {
+ 			qv->tx_intr_mode = IDPF_ITR_DYNAMIC;
++			q_coal->tx_intr_mode = IDPF_ITR_DYNAMIC;
+ 		} else {
+ 			qv->tx_intr_mode = !IDPF_ITR_DYNAMIC;
+-			idpf_vport_intr_write_itr(qv, qv->tx_itr_value, true);
++			q_coal->tx_intr_mode = !IDPF_ITR_DYNAMIC;
++			idpf_vport_intr_write_itr(qv, coalesce_usecs, true);
+ 		}
+ 	}
+ 
+@@ -1459,6 +1466,7 @@ static int __idpf_set_q_coalesce(const struct ethtool_coalesce *ec,
+ /**
+  * idpf_set_q_coalesce - set ITR values for specific queue
+  * @vport: vport associated to the queue that need updating
++ * @q_coal: per queue coalesce settings
+  * @ec: coalesce settings to program the device with
+  * @q_num: update ITR/INTRL (coalesce) settings for this queue number/index
+  * @is_rxq: is queue type rx
+@@ -1466,6 +1474,7 @@ static int __idpf_set_q_coalesce(const struct ethtool_coalesce *ec,
+  * Return 0 on success, and negative on failure
+  */
+ static int idpf_set_q_coalesce(const struct idpf_vport *vport,
++			       struct idpf_q_coalesce *q_coal,
+ 			       const struct ethtool_coalesce *ec,
+ 			       int q_num, bool is_rxq)
+ {
+@@ -1474,7 +1483,7 @@ static int idpf_set_q_coalesce(const struct idpf_vport *vport,
+ 	qv = is_rxq ? idpf_find_rxq_vec(vport, q_num) :
+ 		      idpf_find_txq_vec(vport, q_num);
+ 
+-	if (qv && __idpf_set_q_coalesce(ec, qv, is_rxq))
++	if (qv && __idpf_set_q_coalesce(ec, q_coal, qv, is_rxq))
+ 		return -EINVAL;
+ 
+ 	return 0;
+@@ -1495,10 +1504,14 @@ static int idpf_set_coalesce(struct net_device *netdev,
+ 			     struct netlink_ext_ack *extack)
+ {
+ 	struct idpf_netdev_priv *np = netdev_priv(netdev);
++	struct idpf_vport_user_config_data *user_config;
++	struct idpf_q_coalesce *q_coal;
+ 	struct idpf_q_vec_rsrc *rsrc;
+ 	struct idpf_vport *vport;
+ 	int err = 0;
+ 
++	user_config = &np->adapter->vport_config[np->vport_idx]->user_config;
++
+ 	idpf_vport_ctrl_lock(netdev);
+ 	vport = idpf_netdev_to_vport(netdev);
+ 
+@@ -1507,13 +1520,15 @@ static int idpf_set_coalesce(struct net_device *netdev,
+ 
+ 	rsrc = &vport->dflt_qv_rsrc;
+ 	for (u16 i = 0; i < rsrc->num_txq; i++) {
+-		err = idpf_set_q_coalesce(vport, ec, i, false);
++		q_coal = &user_config->q_coalesce[i];
++		err = idpf_set_q_coalesce(vport, q_coal, ec, i, false);
+ 		if (err)
+ 			goto unlock_mutex;
+ 	}
+ 
+ 	for (u16 i = 0; i < rsrc->num_rxq; i++) {
+-		err = idpf_set_q_coalesce(vport, ec, i, true);
++		q_coal = &user_config->q_coalesce[i];
++		err = idpf_set_q_coalesce(vport, q_coal, ec, i, true);
+ 		if (err)
+ 			goto unlock_mutex;
+ 	}
+@@ -1535,20 +1550,25 @@ static int idpf_set_coalesce(struct net_device *netdev,
+ static int idpf_set_per_q_coalesce(struct net_device *netdev, u32 q_num,
+ 				   struct ethtool_coalesce *ec)
+ {
++	struct idpf_netdev_priv *np = netdev_priv(netdev);
++	struct idpf_vport_user_config_data *user_config;
++	struct idpf_q_coalesce *q_coal;
+ 	struct idpf_vport *vport;
+ 	int err;
+ 
+ 	idpf_vport_ctrl_lock(netdev);
+ 	vport = idpf_netdev_to_vport(netdev);
++	user_config = &np->adapter->vport_config[np->vport_idx]->user_config;
++	q_coal = &user_config->q_coalesce[q_num];
+ 
+-	err = idpf_set_q_coalesce(vport, ec, q_num, false);
++	err = idpf_set_q_coalesce(vport, q_coal, ec, q_num, false);
+ 	if (err) {
+ 		idpf_vport_ctrl_unlock(netdev);
+ 
+ 		return err;
+ 	}
+ 
+-	err = idpf_set_q_coalesce(vport, ec, q_num, true);
++	err = idpf_set_q_coalesce(vport, q_coal, ec, q_num, true);
+ 
+ 	idpf_vport_ctrl_unlock(netdev);
+ 
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
+index fab0775e65c3..d5db66922845 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
+@@ -1085,8 +1085,10 @@ static struct idpf_vport *idpf_vport_alloc(struct idpf_adapter *adapter,
+ 	if (!vport)
+ 		return vport;
+ 
++	num_max_q = max(max_q->max_txq, max_q->max_rxq);
+ 	if (!adapter->vport_config[idx]) {
+ 		struct idpf_vport_config *vport_config;
++		struct idpf_q_coalesce *q_coal;
+ 
+ 		vport_config = kzalloc(sizeof(*vport_config), GFP_KERNEL);
+ 		if (!vport_config) {
+@@ -1095,6 +1097,21 @@ static struct idpf_vport *idpf_vport_alloc(struct idpf_adapter *adapter,
+ 			return NULL;
+ 		}
+ 
++		q_coal = kcalloc(num_max_q, sizeof(*q_coal), GFP_KERNEL);
++		if (!q_coal) {
++			kfree(vport_config);
++			kfree(vport);
++
++			return NULL;
++		}
++		for (int i = 0; i < num_max_q; i++) {
++			q_coal[i].tx_intr_mode = IDPF_ITR_DYNAMIC;
++			q_coal[i].tx_coalesce_usecs = IDPF_ITR_TX_DEF;
++			q_coal[i].rx_intr_mode = IDPF_ITR_DYNAMIC;
++			q_coal[i].rx_coalesce_usecs = IDPF_ITR_RX_DEF;
++		}
++		vport_config->user_config.q_coalesce = q_coal;
++
+ 		adapter->vport_config[idx] = vport_config;
+ 	}
+ 
+@@ -1104,8 +1121,6 @@ static struct idpf_vport *idpf_vport_alloc(struct idpf_adapter *adapter,
+ 	vport->default_vport = adapter->num_alloc_vports <
+ 			       idpf_get_default_vports(adapter);
+ 
+-	num_max_q = max(max_q->max_txq, max_q->max_rxq);
+-
+ 	rsrc = &vport->dflt_qv_rsrc;
+ 	rsrc->q_vector_idxs = kcalloc(num_max_q, sizeof(u16), GFP_KERNEL);
+ 	if (!rsrc->q_vector_idxs)
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_main.c b/drivers/net/ethernet/intel/idpf/idpf_main.c
+index 0efd9c0c7a90..6e0757ab406e 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_main.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_main.c
+@@ -62,6 +62,7 @@ static void idpf_remove(struct pci_dev *pdev)
+ 	destroy_workqueue(adapter->vc_event_wq);
+ 
+ 	for (i = 0; i < adapter->max_vports; i++) {
++		kfree(adapter->vport_config[i]->user_config.q_coalesce);
+ 		kfree(adapter->vport_config[i]);
+ 		adapter->vport_config[i] = NULL;
+ 	}
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+index f3a7ca4523b6..1991d06fe1ac 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+@@ -4373,9 +4373,13 @@ int idpf_vport_intr_alloc(struct idpf_vport *vport,
+ 			  struct idpf_q_vec_rsrc *rsrc)
+ {
+ 	u16 txqs_per_vector, rxqs_per_vector, bufqs_per_vector;
++	struct idpf_vport_user_config_data *user_config;
+ 	struct idpf_q_vector *q_vector;
++	struct idpf_q_coalesce *q_coal;
+ 	u32 complqs_per_vector;
++	u16 idx = vport->idx;
+ 
++	user_config = &vport->adapter->vport_config[idx]->user_config;
+ 	rsrc->q_vectors = kcalloc(rsrc->num_q_vectors,
+ 				  sizeof(struct idpf_q_vector), GFP_KERNEL);
+ 	if (!rsrc->q_vectors)
+@@ -4393,14 +4397,15 @@ int idpf_vport_intr_alloc(struct idpf_vport *vport,
+ 
+ 	for (u16 v_idx = 0; v_idx < rsrc->num_q_vectors; v_idx++) {
+ 		q_vector = &rsrc->q_vectors[v_idx];
++		q_coal = &user_config->q_coalesce[v_idx];
+ 		q_vector->vport = vport;
+ 
+-		q_vector->tx_itr_value = IDPF_ITR_TX_DEF;
+-		q_vector->tx_intr_mode = IDPF_ITR_DYNAMIC;
++		q_vector->tx_itr_value = q_coal->tx_coalesce_usecs;
++		q_vector->tx_intr_mode = q_coal->tx_intr_mode;
+ 		q_vector->tx_itr_idx = VIRTCHNL2_ITR_IDX_1;
+ 
+-		q_vector->rx_itr_value = IDPF_ITR_RX_DEF;
+-		q_vector->rx_intr_mode = IDPF_ITR_DYNAMIC;
++		q_vector->rx_itr_value = q_coal->rx_coalesce_usecs;
++		q_vector->rx_intr_mode = q_coal->rx_intr_mode;
+ 		q_vector->rx_itr_idx = VIRTCHNL2_ITR_IDX_0;
+ 
+ 		q_vector->tx = kcalloc(txqs_per_vector, sizeof(*q_vector->tx),
+-- 
+2.43.0
 
-Thanks,
-Olek
