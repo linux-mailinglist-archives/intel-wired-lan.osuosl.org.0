@@ -1,86 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 62927AE4A8A
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Jun 2025 18:20:42 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0AD4DAE4C18
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Jun 2025 19:45:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 137BF8206E;
-	Mon, 23 Jun 2025 16:20:41 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8EC02811EA;
+	Mon, 23 Jun 2025 17:45:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id FVamzwKhW1va; Mon, 23 Jun 2025 16:20:40 +0000 (UTC)
+ id FfkEsmPu3iQc; Mon, 23 Jun 2025 17:45:33 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8D1C7820A6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 97C9D811F8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1750695640;
-	bh=wndlzR2olmUc9vN+a61+mXuJB5JjMBfvuK0gronPu5Y=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=z48JvCAjuXzgQoPZMg8qNxCLqCsPanRgrE1A9LU9AsICK9eZ3NuBLjZlFq7b5bQjz
-	 yyba5gvEso7b3YJAC/NSCS+FwCpEb9IXgiMV9XO/ii6sMyqeuB8/NogRYIndTlgAcz
-	 6oO4babV4SmKVoAzE8gXd7bTPqIFjHBV4Ky4V2nXjHfBJAp2TkO9rXs2/N5YKh9E0R
-	 P5HJ9HQfyO+ogosjkygnVYBkglRk44I93R6M510iaIWMVVGvFQ7R9BmdOenEenW+UD
-	 xmPYN0+PZs491/SBb7aTT8rMCkOuN40rjQD6anpAZJYsKIj3Q0vEgVX9qh4NqmvHa4
-	 VHj6st/3mqoow==
+	s=default; t=1750700733;
+	bh=z+mTHekPicguApDc91NjslffEi7PoMbr2YzcPmjuxA8=;
+	h=Date:From:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=ON/OK38qGSdJsg0Wtr1Nz+WTVKPK5ZElETj9vWhYL7BVfc+Sb2Mp0xz6KBC5lEnTi
+	 KPqKMayMV96KjlbnLORI6TSysx0GosbGIxNyonuLMUeqIPuLSn879TUOaguO/vDn/I
+	 fNpAIayySGXNyHRVtrzCT+I4AyLb4IEZVFowR1On2+7ZI4ur7pHMdALBne9Xce7wDF
+	 pishCFJNTmirILuiSX5EmH1DxBE27yW+wPlF1eQJYgzn7/HBPJUgLl7bX0hReqpAFo
+	 ynvg62qpP/OI1Fb6yqm71fJIxGtiJGoAQ5f18EoEudsJqy6oSBS6nTWw9/dfx8Llxk
+	 N6Q/YUftgUvoQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8D1C7820A6;
-	Mon, 23 Jun 2025 16:20:40 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 97C9D811F8;
+	Mon, 23 Jun 2025 17:45:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 61810443
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jun 2025 16:20:38 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id F39D612C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jun 2025 17:45:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 47AE4401C8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jun 2025 16:20:38 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id F07B040663
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jun 2025 17:45:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id fJqDjTh--veG for <intel-wired-lan@lists.osuosl.org>;
- Mon, 23 Jun 2025 16:20:37 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
- helo=sea.source.kernel.org; envelope-from=horms@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org B83634025F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B83634025F
-Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B83634025F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jun 2025 16:20:37 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id lumHowZYNSBk for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 23 Jun 2025 17:45:31 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 30075405B7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 30075405B7
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 30075405B7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jun 2025 17:45:31 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 1FB494A8F8;
- Mon, 23 Jun 2025 16:20:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5EE59C4CEEA;
- Mon, 23 Jun 2025 16:20:34 +0000 (UTC)
-Date: Mon, 23 Jun 2025 17:20:32 +0100
-From: Simon Horman <horms@kernel.org>
-To: Jamie Bainbridge <jamie.bainbridge@gmail.com>
-Message-ID: <20250623162032.GB506049@horms.kernel.org>
-References: <39898c5f9a1d6172aa346ad96a831a899a58ec54.1750633468.git.jamie.bainbridge@gmail.com>
+ by dfw.source.kernel.org (Postfix) with ESMTP id 6730D5C5E1A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Jun 2025 17:43:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D49EC4CEEA;
+ Mon, 23 Jun 2025 17:45:29 +0000 (UTC)
+Date: Mon, 23 Jun 2025 10:45:28 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: netdev@vger.kernel.org, netdev-driver-reviewers@vger.kernel.org
+Cc: intel-wired-lan@lists.osuosl.org
+Message-ID: <20250623104528.74ce41da@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <39898c5f9a1d6172aa346ad96a831a899a58ec54.1750633468.git.jamie.bainbridge@gmail.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1750695637;
- bh=ghy4DPgcI6c8nygLNevpmDIsNbsgcFIhd8rwOHjZ4ZI=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=TCqJVVsFGirXl78BUR1zqYsgcE3iurRB1CAvoT3bbrZITcGkwRxePpBgvwV/VTPMk
- FF+ESiGGZVMSU9ebqgpMfaMV5g1CgAU2cOGlsVrKrqQIOmZZ0ojAYcIclHNAT8fqt9
- gokBLExkwgb1ml9gblL7akCyCPkhY9zo8ZMHAtGvH6TRK5YKkWpNhLlIw41wb9s9wD
- lq80Sn0EjEojukuDF9Iy1gP0sE6C+cIvRpPmghdU6XNCpuTSyeCrJf/JxYrwdpMG80
- yJUfzRDak9p7VPgR+VfZgp73n3acVrLLYJGJLjytOl3jfaGtO8pRqZVf6YoFcek8IU
- 2mt+gWm2R2wAg==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ d=kernel.org; s=k20201202; t=1750700729;
+ bh=z+mTHekPicguApDc91NjslffEi7PoMbr2YzcPmjuxA8=;
+ h=Date:From:To:Cc:Subject:From;
+ b=MsIaowWc5mfT8EzmdTiyIcuqDxMf4f9UUiX9+sTPPpy0rmBl6rF5vHZyEztGPIqYE
+ ngSG3hrgz6za4M/iOYnMhSWHpKGH+Dn+9D2NtvTq/XX/lFIygzH4Ec4LqXoDgD0RUy
+ jWxPmHipZ5A0Rqrep0fHxNHobfQaI6HwsqPaEV7+yrnckx1eix6jIUlA0WMNDGqTNp
+ 8JvYgUyH2RiDMdAFl/s9OY9VetThsa/2ydKqTHVGb6JPQbRb66bke6I+cykytxpgKx
+ Ho8gX4ls2fJOkn5hVU93uhYdF+Zt3Xg0A3xJanTNaizN1UE9FngTsrTDJt8Wysb3pe
+ o/ZQW+gcJmPOw==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=TCqJVVsF
-Subject: Re: [Intel-wired-lan] [PATCH net] i40e: Match VF MAC deletion
- behaviour with OOT driver
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=MsIaowWc
+Subject: [Intel-wired-lan] [ANN] development stats for time periods
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -93,41 +90,22 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Ivan Vecera <ivecera@redhat.com>, Brett Creeley <brett.creeley@amd.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>, linux-kernel@vger.kernel.org,
- Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>,
- netdev@vger.kernel.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Jun 23, 2025 at 09:04:41AM +1000, Jamie Bainbridge wrote:
-> When the PF is processing an AQ message to delete a VF's MACs from the
-> MAC filter, the Linux kernel driver checks if the PF set the MAC and if
-> the VF is trusted. However, the out-of-tree driver has intentionally
-> removed the check for VF trust with OOT driver version 2.26.8.
-> 
-> This results in an undesirable behaviour difference between the OOT
-> driver and the Linux driver, where if a trusted VF with a PF-set MAC
-> sets itself down (which sends an AQ message to delete the VF's MAC
-> filters) then the VF MAC is erased from the interface with the Linux
-> kernel driver but not with the OOT driver.
-> 
-> This results in the VF losing its PF-set MAC which should not happen.
-> 
-> Change the Linux kernel driver and comment to match the OOT behaviour.
-> 
-> Fixes: ea2a1cfc3b201 ("i40e: Fix VF MAC filter removal")
-> Signed-off-by: Jamie Bainbridge <jamie.bainbridge@gmail.com>
+Hi!
 
-Hi Jamie,
+The first half of 2025 is coming to a close and I suspect some
+companies are working through employee performance reviews.
 
-I hate to be a pain but I'm wondering if we could rephrase the subject
-and patch description to emphasis that this is correcting undesirable
-(incorrect?) behaviour. And as a footnote, that the new behaviour matches
-the OOT driver.
+Our development stats are are bit awkward to use for performance
+reviews because release cycles don't align with 6mo or 12mo windows.
+I added a cron job to generate the development stats each weekend
+for the last X months:
+https://netdev.bots.linux.dev/static/nipa/stats-1mo/
+https://netdev.bots.linux.dev/static/nipa/stats-3mo/
+https://netdev.bots.linux.dev/static/nipa/stats-6mo/
+https://netdev.bots.linux.dev/static/nipa/stats-12mo/
+This should hopefully make it easier to claim credit for upstream work.
 
-Correctness is what matters most from an upstream PoV.
-
-Thanks!
+HTH
