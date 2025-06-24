@@ -1,100 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8B7ABAE6894
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Jun 2025 16:27:38 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D19E4AE6BFE
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Jun 2025 18:03:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 05F5C6124E;
-	Tue, 24 Jun 2025 14:27:36 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7B15880DA2;
+	Tue, 24 Jun 2025 16:03:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id LqkN_tLAUvny; Tue, 24 Jun 2025 14:27:35 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 34R4phInpsxO; Tue, 24 Jun 2025 16:03:12 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 875B360E80
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F34EB80D94
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1750775255;
-	bh=9DS9akJwWsLfvg3xtWIixrSnXK9PoZs9INX8gSMuq0I=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1750780992;
+	bh=xqeaO97v0nlxXhZ8zzacXPQKw15x34UZU+/5Fbj7H4Y=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=5EPL6rsmjPO0hVuKM2HtHMKGtiOU9NjkwdbpPQJ2+LDOuuZcj+C7Qcf9awoWiwJy/
-	 v/YJethFVoKS2yfHtcAnqlVRPZ1eMeBws2WR7GAC3lxXGK1+HlDkn+GtU2PjHlzOaD
-	 2Co59eo1chx9NbX/tbKTymprpXIZ67OVgHprGtsEtnJo7lvwvLJp8GyxNtNCNnMvlZ
-	 olQvYfEFbbh6btUfYbdl99637rS+aFZexacdaIbx//HvEG+LqP2+syTA5QvOcQXn6J
-	 eal47ua1iwGoI902hr7s9lvCbAsiy24LX46hmmaMRTFFW50c3yBj+ToBa8I2CqkeBU
-	 cBuIEPwmuYOMg==
+	b=sa7Bc35HW1aTL1pHIriXMfCq9pyA5llwVof5wPVAtxZCNPR1Sb5tGp5LaToaoBeZk
+	 z+GW+XJSTDYUB4adgRMKDQDPe4Z4e8IKcZb0s74EFTT5bYgggEvq2cOUm/rWnm3/VE
+	 rBm8NcAfpCrEHOo1xhegUKFQxWgs82VwmKh2MZdhqk+yyfiV9GhOq7X5oSkPVF+7nT
+	 h+1GeiUIk7qLiOgSWMu4Z10hb6ck3YXzwbQ3IAuGM3gDWw0YEPQYNGT44AqQC6+NRc
+	 AaWP1f0qFYrOWQUKsZQqDxPFBiuhvU/vCYHSPGmadpRji0NQXB42GCUaXPggU2VBJn
+	 gpoagqtcbv30A==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 875B360E80;
-	Tue, 24 Jun 2025 14:27:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id F34EB80D94;
+	Tue, 24 Jun 2025 16:03:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 1C59A154
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jun 2025 14:27:34 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id E1883154
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jun 2025 16:03:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 760BA60C26
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jun 2025 14:27:33 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id C7B9241173
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jun 2025 16:03:09 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id C4F0OCdaFNiG for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Jun 2025 14:27:33 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
- helo=mgamail.intel.com; envelope-from=emil.s.tantilov@intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id yXbG4OThfvsb for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Jun 2025 16:03:09 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
+ helo=sea.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org EB71860BEE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EB71860BEE
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
- by smtp3.osuosl.org (Postfix) with ESMTPS id EB71860BEE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jun 2025 14:27:32 +0000 (UTC)
-X-CSE-ConnectionGUID: F2Re9bZITwaoi+3i1z/F1A==
-X-CSE-MsgGUID: SIB7vhFfSkaYqoXCjlx0fA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11474"; a="70441040"
-X-IronPort-AV: E=Sophos;i="6.16,261,1744095600"; d="scan'208";a="70441040"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
- by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jun 2025 07:27:32 -0700
-X-CSE-ConnectionGUID: NS39t5JmSteAzcSN/VsMGg==
-X-CSE-MsgGUID: 6ZcSDeVRRHuTjO8Ox5u3Jg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,261,1744095600"; d="scan'208";a="155965570"
-Received: from estantil-desk.jf.intel.com ([10.166.241.24])
- by fmviesa003.fm.intel.com with ESMTP; 24 Jun 2025 07:27:31 -0700
-From: Emil Tantilov <emil.s.tantilov@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, Aleksandr.Loktionov@intel.com,
- przemyslaw.kitszel@intel.com, david.m.ertman@intel.com,
- anthony.l.nguyen@intel.com, michal.swiatkowski@linux.intel.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com
-Date: Tue, 24 Jun 2025 07:26:41 -0700
-Message-Id: <20250624142641.7010-3-emil.s.tantilov@intel.com>
-X-Mailer: git-send-email 2.17.2
-In-Reply-To: <20250624142641.7010-1-emil.s.tantilov@intel.com>
-References: <20250624142641.7010-1-emil.s.tantilov@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 496BD41147
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 496BD41147
+Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 496BD41147
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jun 2025 16:03:09 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sea.source.kernel.org (Postfix) with ESMTP id 92D114ABBA;
+ Tue, 24 Jun 2025 16:03:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5A8F9C4CEF0;
+ Tue, 24 Jun 2025 16:03:06 +0000 (UTC)
+Date: Tue, 24 Jun 2025 17:03:04 +0100
+From: Simon Horman <horms@kernel.org>
+To: Jacek Kowalski <jacek@jacekk.info>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Message-ID: <20250624160304.GB5265@horms.kernel.org>
+References: <fe064a2c-31d6-4671-ba30-198d121782d0@jacekk.info>
+ <b7856437-2c74-4e01-affa-3bbc57ce6c51@jacekk.info>
+ <20250624095313.GB8266@horms.kernel.org>
+ <cca5cdd3-79b3-483d-9967-8a134dd23219@jacekk.info>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cca5cdd3-79b3-483d-9967-8a134dd23219@jacekk.info>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1750775253; x=1782311253;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references;
- bh=pMVZuMp81uJ7pEBtzL1PGYWRrDHY2p+u4Dzw0rMjW6c=;
- b=Hb5JRC++kvWQUwsUIE8MwaW28MA7WzvHtMxaH5lqxA+L/Uzbla6a9h1H
- wTkcxpG2dAZZeV5v8NnWG+zpOvxhNUJrrdr6Cc+5UG1NsufKBK3La+Zyz
- wj51LwEILCtkZeBYVK2wucS3zMZpWd0EMYfM7Pgs+ws1M122QrnGy0KjF
- JeB0ZOhA9qe7DXw+SFStBHcycOKyrrVN7+npF1F5eJozbhUb51tUXece4
- dr6ogeOfmWiI0bUMvEfVMzWTqJ/8tRN/c6JiEAzOkbbioIaR/I+iHFeCc
- qDKWeGKAZu7EyPd/evKKQURDg2F+qytFe8qbgGemfOPCIedaisza/wiuw
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Hb5JRC++
-Subject: [Intel-wired-lan] [PATCH iwl-net 2/2] ice: fix possible leak in
- ice_plug_aux_dev() error path
+ d=kernel.org; s=k20201202; t=1750780988;
+ bh=KV3OmoqbIFpb1DXvXtj2VuD9NpNW4mY2HLxDfq8IF0M=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=LiQWlWfwV8V7sLkemZoKsu0cwJ6bIcmlCznpocInMarpQoeifFuQdfbcn91HnDsGh
+ cZu+i1Yhb7yVxf6XAgl5tSjvEgnqPwBim6IGIPIDrA6CsgyiEF9Lv02DIHjjCWvJjE
+ LNAG06rYU+c+zuSn/8UKg7agdqm+m2qiB/V01M2TlJef/hfpM6pN2zlk552rkCvb6p
+ IUrrgt+0aD5mf3mvvQcSwxAFL7yN8O1dJWQnzB1c3+/+rPQnIdIIEd6Q/vuuNesVbe
+ raLU0NYRgFcKXmyQStCc8p6skBx/Stk/umfLfFsqGE29qsHAvrNZl1yBV595XVUENo
+ kuMdf+BaUuBjA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=LiQWlWfw
+Subject: Re: [Intel-wired-lan] [PATCH v2 2/2] e1000e: ignore factory-default
+ checksum value on TGP platform
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -110,56 +108,32 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fix a memory leak in the error path where kfree(iadev) was not called
-following an error in auxiliary_device_add().
+On Tue, Jun 24, 2025 at 02:51:09PM +0200, Jacek Kowalski wrote:
+> > > +	if (hw->mac.type == e1000_pch_tgp && checksum == (u16)NVM_SUM_FACTORY_DEFAULT) {
+> > 
+> > I see that a similar cast is applied to NVM_SUM. But why?
+> > If it's not necessary then I would advocate dropping it.
+> 
+> It's like that since the beginning of git history, tracing back to e1000:
+> 
+> $ git show 1da177e4c3f4:drivers/net/e1000/e1000_hw.c | grep -A 1 EEPROM_SUM
+>     if(checksum == (uint16_t) EEPROM_SUM)
+>         return E1000_SUCCESS;
+> (...)
+> 
+> 
+> I'd really prefer to keep it as-is here for a moment, since similar
+> constructs are not only here, and then clean them up separately.
+> 
+> Examples instances from drivers/net/ethernet/intel:
+> 
+> e1000/e1000_ethtool.c:  if ((checksum != (u16)EEPROM_SUM) && !(*data))
+> e1000/e1000_hw.c:       if (checksum == (u16)EEPROM_SUM)
+> e1000e/ethtool.c:       if ((checksum != (u16)NVM_SUM) && !(*data))
+> igb/e1000_82575.c:      if (checksum != (u16) NVM_SUM) {
+> igb/e1000_nvm.c:        if (checksum != (u16) NVM_SUM) {
+> igc/igc_nvm.c:  if (checksum != (u16)NVM_SUM) {
 
-Fixes: f9f5301e7e2d ("ice: Register auxiliary device to provide RDMA")
-Signed-off-by: Emil Tantilov <emil.s.tantilov@intel.com>
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_idc.c | 19 +++++++++++--------
- 1 file changed, 11 insertions(+), 8 deletions(-)
+Ok. But can we look into cleaning this up as a follow-up?
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_idc.c b/drivers/net/ethernet/intel/ice/ice_idc.c
-index 420d45c2558b..8c4a3dc22a7c 100644
---- a/drivers/net/ethernet/intel/ice/ice_idc.c
-+++ b/drivers/net/ethernet/intel/ice/ice_idc.c
-@@ -322,16 +322,12 @@ int ice_plug_aux_dev(struct ice_pf *pf)
- 		"roce" : "iwarp";
- 
- 	ret = auxiliary_device_init(adev);
--	if (ret) {
--		kfree(iadev);
--		return ret;
--	}
-+	if (ret)
-+		goto free_iadev;
- 
- 	ret = auxiliary_device_add(adev);
--	if (ret) {
--		auxiliary_device_uninit(adev);
--		return ret;
--	}
-+	if (ret)
-+		goto aux_dev_uninit;
- 
- 	mutex_lock(&pf->adev_mutex);
- 	cdev->adev = adev;
-@@ -339,6 +335,13 @@ int ice_plug_aux_dev(struct ice_pf *pf)
- 	set_bit(ICE_FLAG_AUX_DEV_CREATED, pf->flags);
- 
- 	return 0;
-+
-+aux_dev_uninit:
-+	auxiliary_device_uninit(adev);
-+free_iadev:
-+	kfree(iadev);
-+
-+	return ret;
- }
- 
- /* ice_unplug_aux_dev - unregister and free AUX device
--- 
-2.37.3
-
+Reviewed-by: Simon Horman <horms@kernel.org>
