@@ -2,91 +2,128 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C748AE6E8D
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Jun 2025 20:25:00 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D1CFAE6EAD
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Jun 2025 20:35:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A63F360D69;
-	Tue, 24 Jun 2025 18:24:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B13DB60E37;
+	Tue, 24 Jun 2025 18:35:04 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id fNEXHfq9Qcwi; Tue, 24 Jun 2025 18:24:58 +0000 (UTC)
+ id 4WLN0KSeiHQZ; Tue, 24 Jun 2025 18:35:04 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8FB2061364
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3110F60E22
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1750789497;
-	bh=pO5c56z/t3gKNv+VQXj4/uUsjjOXgK7D5pir9ckHkxk=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1750790104;
+	bh=+oUXxIfYOVwST5bWKMo3Tg1ykdOeL3eZDAJJuwYSVG8=;
+	h=From:Date:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=yzE5eiVI1Zu/wq4FI79keSUg4RCmTLqrh/acDAyyyK3d0jtCV8i0nvulMw+qpCNHd
-	 2Qx2MLH4Q2KaiQcjApQRwAL7+Iy+sCdVBOFJcw3UffB9KEwLsT70jekt4zIpE4k7B1
-	 RR7YM/bqwwfdCzh7//Niuw5LLWZPngs/t3fHcvUud9BrHsMXCFhoCDYRT3EeQNqTFq
-	 lrGxvimBvW0nsSGAtj33dqjGJT0t3CVQgncelug3a5ZKxQ4ixPn/OdSObGudLqoqO/
-	 7yjO25SLkPureSOMC4LnXMhKeHdOpyG33wAPeB3HuLLHcvUtrrH5jlS+TaxbymgIfU
-	 xWjJIQPOk325w==
+	b=LzWzd3HRoGLC32Yk7ding2vAHsoSWmxhv3tdmshLvkxGr8oI9xsgHDDPak9hXduOZ
+	 +3hS12KrcoWd4meaWqsT/i/yvm8RJhbZSAbb76IvimYMUjXVcGNW3hZAQJOEkiI09/
+	 uUlslSvrxZ/k6UHl/mIOaS2kDIcuNtf/Sq2DJxZyCDEObZvtnFZqVPm0iO5TGmwp+k
+	 /sydnU9NY5bY4WhNgh+zrKIra98sZIMvCH3eJ1m5wjNkprMnJp8VNXpaTI6z1GwQeY
+	 KNMQBAgV8BuQX+vPo63exOS/4IYxG6vH4lLjE/jl23dKzBCADn9tf6yg+d1TqAqXzF
+	 qQ0lOOjJxzuHw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8FB2061364;
-	Tue, 24 Jun 2025 18:24:57 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3110F60E22;
+	Tue, 24 Jun 2025 18:35:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 3C45D43F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jun 2025 18:24:56 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 178D912C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jun 2025 18:35:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 22B4D40B09
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jun 2025 18:24:56 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id F195F40536
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jun 2025 18:35:01 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id BBv6nWV0RGwc for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Jun 2025 18:24:55 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=147.75.193.91;
- helo=nyc.source.kernel.org; envelope-from=horms@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 77D1040210
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 77D1040210
-Received: from nyc.source.kernel.org (nyc.source.kernel.org [147.75.193.91])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 77D1040210
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jun 2025 18:24:55 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id 10C1BA52063;
- Tue, 24 Jun 2025 18:24:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 94AE8C4CEE3;
- Tue, 24 Jun 2025 18:24:52 +0000 (UTC)
-Date: Tue, 24 Jun 2025 19:24:50 +0100
-From: Simon Horman <horms@kernel.org>
-To: Ahmed Zaki <ahmed.zaki@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- Madhu Chittim <madhu.chittim@intel.com>
-Message-ID: <20250624182450.GC1562@horms.kernel.org>
-References: <20250620171548.959863-1-ahmed.zaki@intel.com>
- <20250621121346.GD71935@horms.kernel.org>
- <c4164071-60c8-4b06-a710-70d5fbef2b11@intel.com>
- <20250624094029.GA8266@horms.kernel.org>
- <4adc2963-a5f2-459c-9535-301e207f8cb2@intel.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id CHLCnuuRD7Se for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Jun 2025 18:35:01 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::531; helo=mail-ed1-x531.google.com;
+ envelope-from=jacek@jacekk.info; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org DBDFA404E5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DBDFA404E5
+Received: from mail-ed1-x531.google.com (mail-ed1-x531.google.com
+ [IPv6:2a00:1450:4864:20::531])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id DBDFA404E5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jun 2025 18:35:00 +0000 (UTC)
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-607ea238c37so1753550a12.2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jun 2025 11:35:00 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1750790099; x=1751394899;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:subject:user-agent:mime-version:date:message-id:from
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=+oUXxIfYOVwST5bWKMo3Tg1ykdOeL3eZDAJJuwYSVG8=;
+ b=KORh2l3tGexSCd3WAHOrq6LQHniSjL93Mq/i4ML2B9YTEqZgSIDMnItuSmd9K/t0g1
+ 8gk2Dj5K+P0iaoDYrs3yibb41Yde4/6PcMZygHYcVYpOgXkhaBBsUaBv5m6SksMZhxPe
+ h8W8F5AjMZJReI6JtQMIgutQ4eNYCXpBzr2D6fGyLyy0Pd090h3GkjOiK8VM5hVXWyX6
+ S/gBzZVSONCkfmkPn8rylMckTrdz11nvB6rsdjbLcoVHG1+O9Head+WRAg7SmHbLov2/
+ kK7ug1M2K+YOYyKZUESHS8DuQ7ARHBLto5UqEr7pJ0/1KM9FtJKNzA66nthKfbSjqLvE
+ MkKg==
+X-Gm-Message-State: AOJu0YyVteKUN2d5rLTyDwHMdpMzlrqF5wmvG0CRX21Je59CZzNvh+Qb
+ e7LfMQeOMF0PKAYWTsWoOlWdg06tsRHXbTlfIv2vn+0BmM+0GZdwfPr3tNla8RU1Dw==
+X-Gm-Gg: ASbGnct2MpXpBXUID9DxY4jehf+pEJVwG9LSZVPZEZkRUT/CZrjCLeOZHixGXDhvMxo
+ dgxkNke3Y7moj/PmJLqJoYle0DIzQJVJmIGT7PTljOorWYdTLod+d+CcivwgMrXJX45Ljb0+bBe
+ RGs4SAuBQ0y9odeLm/VcRWJVCmhDgpjrkzSC/mHsoRZcQIQBhuc2njTH4v1aZxU9D5XdgNUfjQw
+ HJB5jnnQl0RypTBeZpHDFwrm5aaNqOiH/nC768D1+zTYVV2A/TNtkslBaAfdTlnP4G8WBKMMoUd
+ pjMBnrlVcmZxvmIfPABTP91iXL2AMTFiy59qCm3MSWO+XkB/bec86BMRRtVds+8/psW+Uqlg9PE
+ =
+X-Google-Smtp-Source: AGHT+IF2Q7EXG3dh+dQGTwWFowwLHHyt4QaH8eo9c5nwntSUh27oaezGZyQ+fWjE9kDMnfbTjUYneg==
+X-Received: by 2002:a05:6402:1e91:b0:604:e440:1d0b with SMTP id
+ 4fb4d7f45d1cf-60c46435e1amr762835a12.4.1750790098337; 
+ Tue, 24 Jun 2025 11:34:58 -0700 (PDT)
+Received: from [192.168.0.114] ([91.196.212.106])
+ by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-60c2f1ae651sm1380305a12.28.2025.06.24.11.34.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 24 Jun 2025 11:34:57 -0700 (PDT)
+From: Jacek Kowalski <jacek@jacekk.info>
+X-Google-Original-From: Jacek Kowalski <Jacek@jacekk.info>
+Message-ID: <e4903c9f-6b84-4831-8530-40ff6e27a367@jacekk.info>
+Date: Tue, 24 Jun 2025 20:34:56 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <4adc2963-a5f2-459c-9535-301e207f8cb2@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1750789493;
- bh=qNzBolCW/0TvKofxzonjiIYCSzhbbAmy3dKIcNzAgTE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=KomAcBErbOUZfvwqOJPLJQvI2j1QdeW93ZEl78I/KDTKwRbnzu51ZytpHdWs6GzNw
- 4kaB+ox690ZSLCjV6D/CJy/qPNqIRdR+v+2SpxIgW54DbdFintkPZ1GFaUIkWbjxCt
- oUifIM1IDB0ZidfArMbIg2UnD2wUPvJUz3xKcp9IAWbPtmZCRr+v5XRokDuwcg6orC
- gzpGrbMvf9B+fqzBlehymS//4sHFKNwLZpejOzo4mqj9Ld14y+auqB7lyEWPP8b/hG
- st5LM5TRvve2ONH9BjKdx2mlcyTK+4rPjmi1vi6ZAWQApNnCLG/ldE1QZfiWRoHm9R
- iyvB7Nu70Bn8g==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=KomAcBEr
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] idpf: preserve coalescing
- settings across resets
+User-Agent: Mozilla Thunderbird
+To: Vlad URSU <vlad@ursu.me>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+References: <fe064a2c-31d6-4671-ba30-198d121782d0@jacekk.info>
+ <b7856437-2c74-4e01-affa-3bbc57ce6c51@jacekk.info>
+ <8538df94-8ce3-422d-a360-dd917c7e153a@jacekk.info>
+ <431c1aaa-304d-4291-97f8-c092a6bee884@ursu.me>
+Content-Language: en-US
+In-Reply-To: <431c1aaa-304d-4291-97f8-c092a6bee884@ursu.me>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=jacekk.info; s=g2024; t=1750790099; x=1751394899; darn=lists.osuosl.org;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:subject:user-agent:mime-version:date:message-id:from:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=+oUXxIfYOVwST5bWKMo3Tg1ykdOeL3eZDAJJuwYSVG8=;
+ b=vU4h4cLnLSMYNg9eU7502tAQpFphDmkizXmAxpTVCcrNJUojhLB+mO8nP5tBPEBglO
+ liQrPwngF/WVJdilb/LSS0jnTolZRTAfWcTkO7UOFI1SCyXT4VW3BHAN+8/3T1B1Dw04
+ BRCBlEAmgvzTj3NSb162LAqyVLIzV356HZzJhFGbEwmSGBATctc9s2ShA/l4XbBtgAEV
+ 46i0kQNEuTNWsDiidKAJ/gvRzQwf9WkwY9NSeZZd31t/cUElKGvUSfMUsMFVoBxln5jm
+ 0ksas5PYr7Ekc4lpSJcn3C3ReuoeuEr5ECyECDPuGY/n7o6QhnbaPwRuKTdjL7WTNNPp
+ nG/Q==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=jacekk.info
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=jacekk.info header.i=@jacekk.info header.a=rsa-sha256
+ header.s=g2024 header.b=vU4h4cLn
+Subject: Re: [Intel-wired-lan] [PATCH v2 2/2] e1000e: ignore factory-default
+ checksum value on TGP platform
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -102,64 +139,22 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Jun 24, 2025 at 10:13:38AM -0600, Ahmed Zaki wrote:
-> 
-> 
-> On 2025-06-24 3:40 a.m., Simon Horman wrote:
-> > On Mon, Jun 23, 2025 at 09:48:02AM -0600, Ahmed Zaki wrote:
-> > > 
-> > > 
-> > > On 2025-06-21 6:13 a.m., Simon Horman wrote:
-> > > > On Fri, Jun 20, 2025 at 11:15:48AM -0600, Ahmed Zaki wrote:
-> > > > > The IRQ coalescing config currently reside only inside struct
-> > > > > idpf_q_vector. However, all idpf_q_vector structs are de-allocated and
-> > > > > re-allocated during resets. This leads to user-set coalesce configuration
-> > > > > to be lost.
-> > > > > 
-> > > > > Add new fields to struct idpf_vport_user_config_data to save the user
-> > > > > settings and re-apply them after reset.
-> > > > > 
-> > > > > Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
-> > > > > Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
-> > > > 
-> > > > Hi Ahmed,
-> > > > 
-> > > > I am wondering if this patch also preserves coalescing settings in the case
-> > > > where.
-> > > > 
-> > > > 1. User sets coalescence for n queues
-> > > > 2. The number of queues is reduced, say to m (where m < n)
-> > > > 3. The user then increases the number of queues, say back to n
-> > > > 
-> > > > It seems to me that in this scenario it's reasonable to preserve
-> > > > the settings for queues 0 to m, bit not queues m + 1 to n.
-> > > 
-> > > Hi Simon,
-> > > 
-> > > I just did a quick test and it seems new settings are preserved in the above
-> > > scenario: all n queues have the new coalescing settings.
-> > 
-> > Hi Ahmed,
-> > 
-> > Thanks for looking into this.
-> > 
-> > > > But perhaps this point is orthogonal to this change.
-> > > > I am unsure.
-> > > > 
-> > > 
-> > > Agreed, but let me know if it is a showstopper.
-> > 
-> > If preserving the status of all n queues, rather than just the first m
-> > queues, in the scenario described above is new behaviour added by this
-> > patch then I would lean towards yes. Else no.
-> > 
-> > 
-> 
-> I don't believe we can call this new behavior. Actually, the napi IRQ
-> affinity pushed to CORE few weeks ago behaves in the same manner; deleting
-> queues and re-adding them restores the user-set IRQ affinity.
+> You are comparing the wrong value with NVM_SUM_FACTORY_DEFAULT. You 
+> should check it against the checksum word 0x3F (NVM bytes 0x7E and
+> 0x7F) which is used to ensure that the base NVM image is a valid
+> image, and which in my case is left unchanged by Dell in the 
+> firmware.
 
-Right, in that case it's certainly not a showstopper.
+You are right that I'm comparing the wrong value. But it is only a 
+matter of variable name:
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+-	if (hw->mac.type == e1000_pch_tgp && checksum ==
+(u16)NVM_SUM_FACTORY_DEFAULT) {
++	if (hw->mac.type == e1000_pch_tgp && nvm_data ==
+(u16)NVM_SUM_FACTORY_DEFAULT) {
 
+Could you check my change with this modification?
+
+-- 
+Best regards,
+   Jacek Kowalski
