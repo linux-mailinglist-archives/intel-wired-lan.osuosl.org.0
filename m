@@ -1,96 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E50ECAE6173
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Jun 2025 11:53:24 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id EA8EBAE61CE
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Jun 2025 12:07:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E9C3E81151;
-	Tue, 24 Jun 2025 09:53:21 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DE60040944;
+	Tue, 24 Jun 2025 10:07:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Mj2PmM-wvOSU; Tue, 24 Jun 2025 09:53:21 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id gTgDnM9ngpyT; Tue, 24 Jun 2025 10:07:37 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 62B8B81127
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 68B3340968
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1750758801;
-	bh=DgY1oEAnmupr2fJD+to2MfR6XTRfzNdUVI9fZq4+pzk=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=Xa2vkymTpItflZc841TnYgftGnmk6tGbMQKOFVlE5ffuv9Gy/TCbjq4mqbKBIGWHs
-	 OHEBiqmdurKZ+mXiGJRQv7eO7oSG5/v/JWx1yZ+Ktk26vIrIfARlI750sLLUmj2van
-	 TXloR/EYXiGUQQZFICzoUEuUTNQqaF/yFlNkbXzjLf5lewwgNRay6ehyBL07gUFQY+
-	 DhPN5i4vSI7ZuaXcbks21RiJf9NksGISFcvBfZjNA16p9xKuoD5bNVliKHt23oKXxi
-	 42KzNB/nDt9JkVIfz4UNaRGoE96N1++fdjaV25eeWOqfIMLrIZyTgDlQIV5MrfDiKI
-	 t6Evey+0WOIhw==
+	s=default; t=1750759657;
+	bh=M4jt+G9pbN7GzALH/vkEgnR9vDgRFdzzKARWvp/0jQ8=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=07cYWhthKRcQi4QDPXQzl3vc0wPhv9+kKKxUSie7coZ6KY6wtyJ7Jp+IrQTBf3EHc
+	 eukVIKBfWJPorsImvBF6Lb0kizbw7mEKNxHo5PU628sEGSuOse3mP6DhIvk2OljATN
+	 bU3qm2WNJh+/lWibBg8oNholRKuQ3gdUmnugwM63LSl3CIaAmI6HDslEtymrNfcA+o
+	 gVIeEP8E9UYAsZhohjMFg/0hNGjNUR7IjCw51LlRMUE5U0tvedS3fXgutDij3dc3j8
+	 Ss+iiCaj2KaPH6ONhZzti2bx7WIiMIi0rKYsso+sZ/AgW3chJtbu0xkOc/8CrNdPth
+	 n9cgGXGZLMAfA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 62B8B81127;
-	Tue, 24 Jun 2025 09:53:21 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 68B3340968;
+	Tue, 24 Jun 2025 10:07:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id ABADE154
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jun 2025 09:53:19 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id C0A9012C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jun 2025 10:07:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9CDB38100D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jun 2025 09:53:19 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id B291940266
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jun 2025 10:07:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Blzt5DmNhm8y for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Jun 2025 09:53:19 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id SZroROIqylne for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Jun 2025 10:07:35 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0773B80E74
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0773B80E74
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0773B80E74
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jun 2025 09:53:18 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 5E2115C63C0;
- Tue, 24 Jun 2025 09:51:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6AD82C4CEE3;
- Tue, 24 Jun 2025 09:53:15 +0000 (UTC)
-Date: Tue, 24 Jun 2025 10:53:13 +0100
-From: Simon Horman <horms@kernel.org>
-To: Jacek Kowalski <jacek@jacekk.info>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Message-ID: <20250624095313.GB8266@horms.kernel.org>
-References: <fe064a2c-31d6-4671-ba30-198d121782d0@jacekk.info>
- <b7856437-2c74-4e01-affa-3bbc57ce6c51@jacekk.info>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 1167E40198
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1167E40198
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1167E40198
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Jun 2025 10:07:34 +0000 (UTC)
+X-CSE-ConnectionGUID: zzFGCk1SRD23V7pyw9mi+Q==
+X-CSE-MsgGUID: TCqF1AXETK2JAMFxtdjdMw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11473"; a="64053072"
+X-IronPort-AV: E=Sophos;i="6.16,261,1744095600"; d="scan'208";a="64053072"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+ by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Jun 2025 03:07:34 -0700
+X-CSE-ConnectionGUID: L2Yz06IJTGGtZIT8D9jOFw==
+X-CSE-MsgGUID: s/+iqz9kRF+jDpXSSPVQoQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,261,1744095600"; d="scan'208";a="152400221"
+Received: from os-delivery.igk.intel.com ([10.102.21.165])
+ by fmviesa008.fm.intel.com with ESMTP; 24 Jun 2025 03:07:33 -0700
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, przemyslaw.kitszel@intel.com,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Date: Tue, 24 Jun 2025 11:26:36 +0200
+Message-ID: <20250624092636.798390-1-michal.swiatkowski@linux.intel.com>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <b7856437-2c74-4e01-affa-3bbc57ce6c51@jacekk.info>
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1750758797;
- bh=5XAANTXu2gUsMh7qkGkdsQ8FsRgV4pWlfxM+TMLWEqc=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=kcgmJv7Oh6Z55J+dMDRSbEDApbfm0GMGr/iBroe01z57sF4pu8159EHNG15Z7RWst
- UN6v6ULBSKQ0VNmcSy75aH3eEP3tnqzjL9BiW5Ts3JoPBuFA+awnTJ05JpqCmJC11V
- bYNizUAEgtY93RtqDHBdnXI7Y2T+ughdJbFth5Dlt53J0Iy4JUYJZp7yNEV6s81NZC
- cR1Jv8ECkGHTG345c2CGTY0f8XJ+xIpUpsTUWyh/8xbS4Pi2/+kA4BXKDUXdlVShmJ
- SAuc3Rnisb3Yf2/qBQJoZL3w12dyVtFFX7/5wqHcuLhHqJrP5TdoYGikGQsOxCfufC
- lhEp53L3Y6J6w==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1750759655; x=1782295655;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=xefSx1wRgI7n8DHq6ASFIeX2Mwzkl89ly+dTVL1gfnY=;
+ b=ALUc5ILBHbVqCZLyUiopqTvv/r00LecqoTp4iw0IOdIs1jdfJv2ohI0G
+ UU8VULF5+YHa1QHBGKGosVNMHqdiYZ2vaBU3Trb6ZVBTa6roy/78tsdaW
+ FCYhJInA/A/bVTouC3UncVEL8TKi+ZcHzDZT6QotofsYVGisDpsQppmKe
+ 9jFCGkbpcFRlsubU5f/bsCa4tJMS4brZkg/1vRJARG0DyMeEA6NcyIaK3
+ 5DCgkjmWa0ZGteUzeVLrNTpfBuVm3kr7SXKCKfKvFMSHouSc63Wkt1egY
+ oAxREGgMR3qNKlCfdhm17VUU7Bha1UJ5lv1XjLyuORTvd5XcbSlTRMhpk
+ A==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=kcgmJv7O
-Subject: Re: [Intel-wired-lan] [PATCH v2 2/2] e1000e: ignore factory-default
- checksum value on TGP platform
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=ALUc5ILB
+Subject: [Intel-wired-lan] [PATCH iwl-net v1] ice: check correct pointer in
+ fwlog debugfs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -106,60 +107,28 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Jun 23, 2025 at 06:01:16PM +0200, Jacek Kowalski wrote:
-> As described by Vitaly Lifshits:
-> 
-> > Starting from Tiger Lake, LAN NVM is locked for writes by SW, so the
-> > driver cannot perform checksum validation and correction. This means
-> > that all NVM images must leave the factory with correct checksum and
-> > checksum valid bit set.
-> 
-> Unfortunately some systems have left the factory with an empty checksum.
-> NVM is not modifiable on this platform, hence ignore checksum 0xFFFF on
-> Tiger Lake systems to work around this.
-> 
-> Signed-off-by: Jacek Kowalski <Jacek@jacekk.info>
-> Fixes: 4051f68318ca9 ("e1000e: Do not take care about recovery NVM checksum")
-> Cc: stable@vger.kernel.org
-> ---
-> v2: new check to fix yet another checksum issue
->  drivers/net/ethernet/intel/e1000e/defines.h | 1 +
->  drivers/net/ethernet/intel/e1000e/nvm.c     | 5 +++++
->  2 files changed, 6 insertions(+)
-> 
-> diff --git a/drivers/net/ethernet/intel/e1000e/defines.h b/drivers/net/ethernet/intel/e1000e/defines.h
-> index 8294a7c4f122..01696eb8dace 100644
-> --- a/drivers/net/ethernet/intel/e1000e/defines.h
-> +++ b/drivers/net/ethernet/intel/e1000e/defines.h
-> @@ -637,6 +637,7 @@
->  
->  /* For checksumming, the sum of all words in the NVM should equal 0xBABA. */
->  #define NVM_SUM                    0xBABA
-> +#define NVM_SUM_FACTORY_DEFAULT    0xFFFF
->  
->  /* PBA (printed board assembly) number words */
->  #define NVM_PBA_OFFSET_0           8
-> diff --git a/drivers/net/ethernet/intel/e1000e/nvm.c b/drivers/net/ethernet/intel/e1000e/nvm.c
-> index e609f4df86f4..37cbf9236d84 100644
-> --- a/drivers/net/ethernet/intel/e1000e/nvm.c
-> +++ b/drivers/net/ethernet/intel/e1000e/nvm.c
-> @@ -558,6 +558,11 @@ s32 e1000e_validate_nvm_checksum_generic(struct e1000_hw *hw)
->  		checksum += nvm_data;
->  	}
->  
-> +	if (hw->mac.type == e1000_pch_tgp && checksum == (u16)NVM_SUM_FACTORY_DEFAULT) {
+pf->ice_debugfs_pf_fwlog should be check for an error here.
 
-I see that a similar cast is applied to NVM_SUM. But why?
-If it's not necessary then I would advocate dropping it.
+Fixes: 96a9a9341cda ("ice: configure FW logging")
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_debugfs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> +		e_dbg("Factory-default NVM Checksum on TGP platform - ignoring\n");
-> +		return 0;
-> +	}
-> +
->  	if (checksum != (u16)NVM_SUM) {
->  		e_dbg("NVM Checksum Invalid\n");
->  		return -E1000_ERR_NVM;
-> -- 
-> 2.47.2
-> 
-> 
+diff --git a/drivers/net/ethernet/intel/ice/ice_debugfs.c b/drivers/net/ethernet/intel/ice/ice_debugfs.c
+index 9fc0fd95a13d..cb71eca6a85b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_debugfs.c
++++ b/drivers/net/ethernet/intel/ice/ice_debugfs.c
+@@ -606,7 +606,7 @@ void ice_debugfs_fwlog_init(struct ice_pf *pf)
+ 
+ 	pf->ice_debugfs_pf_fwlog = debugfs_create_dir("fwlog",
+ 						      pf->ice_debugfs_pf);
+-	if (IS_ERR(pf->ice_debugfs_pf))
++	if (IS_ERR(pf->ice_debugfs_pf_fwlog))
+ 		goto err_create_module_files;
+ 
+ 	fw_modules_dir = debugfs_create_dir("modules",
+-- 
+2.49.0
+
