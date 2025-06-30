@@ -1,137 +1,123 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C8E11AED5CF
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 30 Jun 2025 09:36:04 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E3272AED764
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 30 Jun 2025 10:33:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BB60B40D2D;
-	Mon, 30 Jun 2025 07:35:42 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3B46841C67;
+	Mon, 30 Jun 2025 08:33:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7qX0LpE4sH6H; Mon, 30 Jun 2025 07:35:42 +0000 (UTC)
+ id 76bqD9mI1k9x; Mon, 30 Jun 2025 08:33:07 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0FFE940D48
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9A3D741C61
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1751268942;
-	bh=FJjHWRQFQERSX4N8A4WdlcHVSnGx7v+vOq1gWp3YDfQ=;
-	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=ejs7At3LD52MBKzL3KxGeXMoN7iI2o7rx6CuwUtIgLMUR4vPHz6l5rCRv1VBjLk7q
-	 EniGA5EkbjOsphj+u4y4SQVm8MRUVG0HOiDewbGPQtgYPGB4se9HD0LWJT2yLcbf20
-	 fqyP12yzBlz1BI0LTkRBmijD7vn3h0nifCpjzv+WUeMf9CKw7GktykiVa/zwshgJZZ
-	 gR629op9ri0f13ylBfrXEf66LXOSO5YT4zD8l/vZeVurJpO9nby2i4+m5EASgivcr2
-	 U8f0epV7eV57lOMwuOQm7QQaMBArAAyb1xD+vX1S5hMZCUfihdNowSBWAMVpuwPzpP
-	 cGcf0WSMHHykQ==
+	s=default; t=1751272387;
+	bh=qpyS8LE74rjVWypnTyY2H6hMEBjb9bnQNwFoy1XdUH4=;
+	h=From:Date:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=qFqdZWNJWHJvPkjCunvJlmjmgViNFo3OHly2CLgQdDX/d3U1RXPxNXC2YJ46Femka
+	 wP1pGQ0vnhuPWWixTCJJV4lhk4QN2hjR8kxmLh1eEahZypZdVMMrugTJOGFdGzbtDa
+	 eb7Kvt+F1rOJeNeDzChAY5OcHAUGupIVuyvbLtoickYuhgAJfg90Wt5dblTUT97kBL
+	 EXlp0UYBoYmg16hTitOMr3iPwxWZJaRbsMpF7qLganYzgS5x0Afk33pn3+9H8Zn7HJ
+	 nwA5Q0uHahh0lQrKlgxnTgxF4mQnHKX28c0IRMBBJ8u5vpGu+RNHukZtR99mFptyjp
+	 ArBvebcntqv0w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0FFE940D48;
-	Mon, 30 Jun 2025 07:35:42 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9A3D741C61;
+	Mon, 30 Jun 2025 08:33:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id E5551DF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Jun 2025 07:35:38 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 951611C9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Jun 2025 08:33:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id CB0A66133C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Jun 2025 07:35:38 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 7AF3660EE1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Jun 2025 08:33:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sqMflVUV8yK3 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 30 Jun 2025 07:35:38 +0000 (UTC)
+ id YoWFLyapKHAr for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 30 Jun 2025 08:33:05 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::52b; helo=mail-ed1-x52b.google.com;
- envelope-from=jaroslav.pulchart@gooddata.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org CE0C660EFE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CE0C660EFE
-Received: from mail-ed1-x52b.google.com (mail-ed1-x52b.google.com
- [IPv6:2a00:1450:4864:20::52b])
- by smtp3.osuosl.org (Postfix) with ESMTPS id CE0C660EFE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Jun 2025 07:35:37 +0000 (UTC)
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-6070293103cso3018373a12.0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Jun 2025 00:35:37 -0700 (PDT)
+ client-ip=2a00:1450:4864:20::530; helo=mail-ed1-x530.google.com;
+ envelope-from=jacek@jacekk.info; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 0EDFA60E9A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0EDFA60E9A
+Received: from mail-ed1-x530.google.com (mail-ed1-x530.google.com
+ [IPv6:2a00:1450:4864:20::530])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0EDFA60E9A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Jun 2025 08:33:03 +0000 (UTC)
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-60c4521ae2cso7606348a12.0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Jun 2025 01:33:03 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751268935; x=1751873735;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1751272382; x=1751877182;
+ h=content-transfer-encoding:content-language:cc:to:subject:user-agent
+ :mime-version:date:message-id:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=FJjHWRQFQERSX4N8A4WdlcHVSnGx7v+vOq1gWp3YDfQ=;
- b=auS2LgIgFxselLv6Z8m6yIEHjZlxYRe4ccWmNXbaRyy+K1cDTdYNup13ssKaGDpJtI
- jkz8LSsYNQGv1OqiVTPoGss5oAYiV9TOGWCTTlzsN1WQYOY1hQ7m//UlYyEfo01I1HbC
- gNy+zdoAyf7DUTpCHrrGH+40jgodndaZPAye9jLyLCXHHpabtZ75HOb2RFTm2bQWJVcs
- 4U5ftqxW8fleo5CW66P16DaS9/r0i8ciJnJ3xxR0njaWHCxmz4qkc3sVAkd2IfWX9doU
- D02FlbAlf4nowckxR/VCLglt7oWF353ohlozz4aOLNzHqXHvHbkc0kyOeI3sPKIqvKaS
- potg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWtmOx9qKqj7fYViBHR2f85QjFR6y8/okjpH+XznKTe+jwneVaM0Iphn8VHnMMYv10IJ4wTOxjJXGKQHnkAios=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YwlAi3X8/HArstl8bT+yJLLzaed0naCFu1Xc/KVn+4mnv+ACxwm
- bitpOpdzjvNpdEmPc8J3O3Kv4PLLF0J5dVUUOdoR4x0vR+uGVWpTZbcWa9EnqHMHgFEtSml9aDe
- 1H9X6LWYCPz2LClIB+U/Hs2w+UenkiY8Vsrzv8HQV
-X-Gm-Gg: ASbGncsq4s5uAmFTN3Q+35/z5xTq44ufbHSKVaXX76yy3Ij+d8bcwrEeCruspwpEsXP
- Jf5Lwr5+/5nzGQ4q+8lHjQksfpkERyWuNc/8zobczALqRvXzSUzcnZZdw7oPxD49vFsaYzJ82Ky
- BM7x6AiPoScFBW08lsnvE5Iun5wVE12N0c4/0+LgtGzCHz
-X-Google-Smtp-Source: AGHT+IFMO9vHwLlWhqFkVz4+FGrfY8iZ2eqXMm803NsyFasOLkn+3FGD3IdYRV5I0g/CF4qb6/D0+Zkfi0DytQwrHaI=
-X-Received: by 2002:a17:907:9d17:b0:ae0:ad8c:a559 with SMTP id
- a640c23a62f3a-ae34fd336d5mr1176803866b.4.1751268935410; Mon, 30 Jun 2025
- 00:35:35 -0700 (PDT)
+ bh=qpyS8LE74rjVWypnTyY2H6hMEBjb9bnQNwFoy1XdUH4=;
+ b=r9YuJvbTQjBPTXeHU/lc8qK9Qc/MhMTtIQ5nok6ti7kkgAqqpwRtoSDu9n+/mU+feU
+ ypVt1UBwm286LIgNJNLk6IxNd+e3E8sALUzTDBMd+T2nENG0SwmP0RSR7XzVv73gel8A
+ vMdE5v7WG9YHixmN3c4kFrPARGEefzKUUAvQcKSumWH9jCVoMKCXguEgCGf9ik5H57Cd
+ s9CLmbHhuRthb7Q1yYAsik1Ak/oVlykYDHaPS1q5pU7JQ6LP9tGpcSYkLuY4RHHk6rV7
+ 6Dn+eVHzf7g30WRDwiI0NZEmi9lH6EDLYGPT6hBslp7Av2BxO2ZeFy9eD7TI3dsZR3MS
+ soMA==
+X-Gm-Message-State: AOJu0YzASEjXtR7KjJ2yzt7SH7uWoMBHKPy9rHAkDff6uDwoc6B8W/QK
+ 2xCi0CHLbcsNMkCntHjItfhOReyrvM0WTYUYeRCQTjw3ZqBZ803z7/xaMdiaL2beagliaET98Uc
+ jGM1vrw==
+X-Gm-Gg: ASbGncuF1X/nVWGG0GgE9wWIewHWFWXSWWR1CY5wLvnwmoGPQ0LSwF32qcBQNJ9h0y8
+ s+S4I2y0hBJOkp2Rx7InTnMGJQxfsiPK5PjI42zO+EvUhh2pJHS7lLez6y+vhhStO/KLd9nEGJK
+ St/z1lxz4R85gTsgaGAPo3QzpLUuQzKUifLpU97pDDkCSTcQsrTrn1G3xPNNDWiZzPxjOlC/tcG
+ rm92+vGl3YQjZ4ntah1jcns2X7U3+ED6IL6DZGML3Nv5J+BmlP5R+RPoZ1JcLoCml4f7imnvczk
+ u2NBJZDPfcjc431iHNvf9mx+3shFxM0NqEMrUJhwB9mBptJPPp1woa6iqZFd98jG
+X-Google-Smtp-Source: AGHT+IEt6nK6ONEVCjiWWd2acis9X9s/bUWZV3VYUllsvHKoMSkoTMNF2l8dRHX2bk07NlBfVDF31g==
+X-Received: by 2002:a17:906:7308:b0:ae0:ce90:4b6c with SMTP id
+ a640c23a62f3a-ae3501a6b84mr1082075066b.49.1751272381452; 
+ Mon, 30 Jun 2025 01:33:01 -0700 (PDT)
+Received: from [192.168.0.114] ([91.196.212.106])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-ae36327ce4asm551563766b.163.2025.06.30.01.33.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 30 Jun 2025 01:33:01 -0700 (PDT)
+From: Jacek Kowalski <jacek@jacekk.info>
+X-Google-Original-From: Jacek Kowalski <Jacek@jacekk.info>
+Message-ID: <3fb71ecc-9096-4496-9152-f43b8721d937@jacekk.info>
+Date: Mon, 30 Jun 2025 10:33:00 +0200
 MIME-Version: 1.0
-References: <CAK8fFZ4hY6GUJNENz3wY9jaYLZXGfpr7dnZxzGMYoE44caRbgw@mail.gmail.com>
- <4a061a51-8a6c-42b8-9957-66073b4bc65f@intel.com>
- <20250415175359.3c6117c9@kernel.org>
- <CAK8fFZ6ML1v8VCjN3F-r+SFT8oF0xNpi3hjA77aRNwr=HcWqNA@mail.gmail.com>
- <20250416064852.39fd4b8f@kernel.org>
- <CAK8fFZ4bKHa8L6iF7dZNBRxujdmsoFN05p73Ab6mkPf6FGhmMQ@mail.gmail.com>
- <CO1PR11MB5089365F31BCD97E59CCFA83D6BD2@CO1PR11MB5089.namprd11.prod.outlook.com>
- <20250416171311.30b76ec1@kernel.org>
- <CO1PR11MB508931FBA3D5DFE7D8F07844D6BC2@CO1PR11MB5089.namprd11.prod.outlook.com>
- <CAK8fFZ6+BNjNdemB+P=SuwU6X9a9CmtkR8Nux-XG7QHdcswvQQ@mail.gmail.com>
- <CAK8fFZ4BJ-T40eNzO1rDLLpSRkeaHGctATsGLKD3bqVCa4RFEQ@mail.gmail.com>
- <CAK8fFZ5XTO9dGADuMSV0hJws-6cZE9equa3X6dfTBgDyzE1pEQ@mail.gmail.com>
- <b3eb99da-9293-43e8-a24d-f4082f747d6c@intel.com>
- <CAK8fFZ7LREBEdhXjBAKuaqktOz1VwsBTxcCpLBsa+dkMj4Pyyw@mail.gmail.com>
- <20250625132545.1772c6ab@kernel.org>
- <CAK8fFZ7KDaPk_FVDbTdFt8soEWrpJ_g0_fiKEg1WzjRp1BC0Qg@mail.gmail.com>
-In-Reply-To: <CAK8fFZ7KDaPk_FVDbTdFt8soEWrpJ_g0_fiKEg1WzjRp1BC0Qg@mail.gmail.com>
-From: Jaroslav Pulchart <jaroslav.pulchart@gooddata.com>
-Date: Mon, 30 Jun 2025 09:35:09 +0200
-X-Gm-Features: Ac12FXy0zTWCIUI055ElkQjsOkkMKHSQo1G-_vNnBe4EjUhDGc4Z9aQ9tsVUJsk
-Message-ID: <CAK8fFZ5rS8Xg11LvyQHzFh3aVHbKdRHpuhrpV_Wc7oYRcMZFRA@mail.gmail.com>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, 
- "Keller, Jacob E" <jacob.e.keller@intel.com>, "Damato,
- Joe" <jdamato@fastly.com>, 
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>, 
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>, 
- "Czapnik, Lukasz" <lukasz.czapnik@intel.com>, "Dumazet,
- Eric" <edumazet@google.com>, 
- "Zaki, Ahmed" <ahmed.zaki@intel.com>, Martin Karsten <mkarsten@uwaterloo.ca>, 
- Igor Raits <igor@gooddata.com>, Daniel Secik <daniel.secik@gooddata.com>, 
- Zdenek Pesek <zdenek.pesek@gooddata.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+To: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Simon Horman <horms@kernel.org>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gooddata.com; s=google; t=1751268935; x=1751873735; darn=lists.osuosl.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
+ d=jacekk.info; s=g2024; t=1751272382; x=1751877182; darn=lists.osuosl.org;
+ h=content-transfer-encoding:content-language:cc:to:subject:user-agent
+ :mime-version:date:message-id:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=FJjHWRQFQERSX4N8A4WdlcHVSnGx7v+vOq1gWp3YDfQ=;
- b=CiDs1Wy2Fd3ycWfp5TsccOWw9dZjCyNRpyiKYpZljudBhxPI3d3KY2eo+x4XfycO/U
- 7I8sbNJIDLxu+7GolTZzoDl+AXNpeQI3T5TwQl9vcV8chhjFUZf8Q7e7edCvGimgcI97
- 3vv+b4K8wvB+2E4Pfp5Uj8ZePLjfklYtt+Aew=
+ bh=qpyS8LE74rjVWypnTyY2H6hMEBjb9bnQNwFoy1XdUH4=;
+ b=VYqtIEHgNZ39g9k0WrmdSIQsBM0tL3LSvYjQIIJC6YE8ZD9CvCIeJTuZu7Y6JTUoPt
+ phgKyQOIenObUKzsQyQA8h8AKmXjS13MrnzvDBI56f7AhWmelnVUYfUkTwJZfCM42zg+
+ qWH7EzifDlaRpVRZnYsAg2CnqaLqrns62qO/r1NSrEePCZs5peveKJAWKCBcd3s+DVOM
+ bUDMw6dILxAJWlnv2vjPKSEN5xtR88yL2zqF0bxxPuLoxthbMau5RFKxDwrsAJ20t0PE
+ h0l2DC3705Fesmy6NtGrqSnU1SKXr/sp77oj0xAu0ToAZUHwMRIjSBVntOV+xG3/LLFF
+ /UMA==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=gooddata.com
+ dmarc=none (p=none dis=none)
+ header.from=jacekk.info
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=gooddata.com header.i=@gooddata.com header.a=rsa-sha256
- header.s=google header.b=CiDs1Wy2
-Subject: Re: [Intel-wired-lan] Increased memory usage on NUMA nodes with ICE
- driver after upgrade to 6.13.y (regression in commit 492a044508ad)
+ dkim=pass (2048-bit key,
+ unprotected) header.d=jacekk.info header.i=@jacekk.info header.a=rsa-sha256
+ header.s=g2024 header.b=VYqtIEHg
+Subject: [Intel-wired-lan] [PATCH v4 0/2] e1000e: disregard NVM checksums
+ for known-bad cases on Tiger Lake
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -147,98 +133,52 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
->
-> >
-> > On Wed, 25 Jun 2025 19:51:08 +0200 Jaroslav Pulchart wrote:
-> > > Great, please send me a link to the related patch set. I can apply th=
-em in
-> > > our kernel build and try them ASAP!
-> >
-> > Sorry if I'm repeating the question - have you tried
-> > CONFIG_MEM_ALLOC_PROFILING? Reportedly the overhead in recent kernels
-> > is low enough to use it for production workloads.
->
-> I try it now, the fresh booted server:
->
-> # sort -g /proc/allocinfo| tail -n 15
->     45409728   236509 fs/dcache.c:1681 func:__d_alloc
->     71041024    17344 mm/percpu-vm.c:95 func:pcpu_alloc_pages
->     71524352    11140 kernel/dma/direct.c:141 func:__dma_direct_alloc_pag=
-es
->     85098496     4486 mm/slub.c:2452 func:alloc_slab_page
->    115470992   101647 fs/ext4/super.c:1388 [ext4] func:ext4_alloc_inode
->    134479872    32832 kernel/events/ring_buffer.c:811 func:perf_mmap_allo=
-c_page
->    141426688    34528 mm/filemap.c:1978 func:__filemap_get_folio
->    191594496    46776 mm/memory.c:1056 func:folio_prealloc
->    360710144      172 mm/khugepaged.c:1084 func:alloc_charge_folio
->    444076032    33790 mm/slub.c:2450 func:alloc_slab_page
->    530579456   129536 mm/page_ext.c:271 func:alloc_page_ext
->    975175680      465 mm/huge_memory.c:1165 func:vma_alloc_anon_folio_pmd
->   1022427136   249616 mm/memory.c:1054 func:folio_prealloc
->   1105125376   139252 drivers/net/ethernet/intel/ice/ice_txrx.c:681
-> [ice] func:ice_alloc_mapped_page
->   1621598208   395848 mm/readahead.c:186 func:ractl_alloc_folio
->
+As described by Vitaly Lifshits:
 
-The "drivers/net/ethernet/intel/ice/ice_txrx.c:681 [ice]
-func:ice_alloc_mapped_page" is just growing...
+> Starting from Tiger Lake, LAN NVM is locked for writes by SW, so the
+> driver cannot perform checksum validation and correction. This means
+> that all NVM images must leave the factory with correct checksum and
+> checksum valid bit set.
 
-# uptime ; sort -g /proc/allocinfo| tail -n 15
- 09:33:58 up 4 days, 6 min,  1 user,  load average: 6.65, 8.18, 9.81
 
-# sort -g /proc/allocinfo| tail -n 15
-    85216896   443838 fs/dcache.c:1681 func:__d_alloc
-   106156032    25917 mm/shmem.c:1854 func:shmem_alloc_folio
-   116850096   102861 fs/ext4/super.c:1388 [ext4] func:ext4_alloc_inode
-   134479872    32832 kernel/events/ring_buffer.c:811 func:perf_mmap_alloc_=
-page
-   143556608     6894 mm/slub.c:2452 func:alloc_slab_page
-   186793984    45604 mm/memory.c:1056 func:folio_prealloc
-   362807296    88576 mm/percpu-vm.c:95 func:pcpu_alloc_pages
-   530579456   129536 mm/page_ext.c:271 func:alloc_page_ext
-   598237184    51309 mm/slub.c:2450 func:alloc_slab_page
-   838860800      400 mm/huge_memory.c:1165 func:vma_alloc_anon_folio_pmd
-   929083392   226827 mm/filemap.c:1978 func:__filemap_get_folio
-  1034657792   252602 mm/memory.c:1054 func:folio_prealloc
-  1262485504      602 mm/khugepaged.c:1084 func:alloc_charge_folio
-  1335377920   325970 mm/readahead.c:186 func:ractl_alloc_folio
-  2544877568   315003 drivers/net/ethernet/intel/ice/ice_txrx.c:681
-[ice] func:ice_alloc_mapped_page
+There are two issues we have found so far on some Tiger Lake systems:
 
->
-> >
-> > > st 25. 6. 2025 v 16:03 odes=C3=ADlatel Przemek Kitszel <
-> > > przemyslaw.kitszel@intel.com> napsal:
-> > >
-> > > > On 6/25/25 14:17, Jaroslav Pulchart wrote:
-> > > > > Hello
-> > > > >
-> > > > > We are still facing the memory issue with Intel 810 NICs (even on=
- latest
-> > > > > 6.15.y).
-> > > > >
-> > > > > Our current stabilization and solution is to move everything to a=
- new
-> > > > > INTEL-FREE server and get rid of last Intel sights there (after I=
-ntel's
-> > > > > CPU vulnerabilities fuckups NICs are next step).
-> > > > >
-> > > > > Any help welcomed,
-> > > > > Jaroslav P.
-> > > > >
-> > > > >
-> > > >
-> > > > Thank you for urging us, I can understand the frustration.
-> > > >
-> > > > We have identified some (unrelated) memory leaks, will soon ship fi=
-xes.
-> > > > And, as there were no clear issue with any commit/version you have
-> > > > posted to be a culprit, there is a chance that our random findings =
-could
-> > > > help. Anyway going to zero kmemleak reports is good in itself, that=
- is
-> > > > a good start.
-> > > >
-> > > > Will ask my VAL too to increase efforts in this area too.
-> >
+1. Checksum valid bit unset in NVM
+
+Some Dell laptops, i.e. Latitude 5420, have a valid bit unset and
+incorrect checksum over NVM contents.
+
+2. Checksum word in NVM is uninitialized (0xFFFF)
+
+Other Dell system, Optiplex 5090 Micro, has a valid bit set while
+a checksum word contains 0xFFFF ("empty"/uninitialized value).
+
+
+Both issues result in the driver refusing to work with error:
+
+> e1000e 0000:XX:XX.X: The NVM Checksum Is Not Valid
+
+The network card is rendered unusable.
+
+
+Patches work around those problems by ignoring NVM checksum when those
+exact error conditions are detected on TGP-based systems.
+
+
+v1 -> v2: work around issue #2
+v2 -> v3: fix wrong comparison in workaround for #2, drop u16 cast
+v3 -> v4: rename constant, reformat files, update commit description
+
+Jacek Kowalski (2):
+  e1000e: disregard NVM checksum on tgp when valid checksum bit is not
+    set
+  e1000e: ignore uninitialized checksum word on tgp
+
+ drivers/net/ethernet/intel/e1000e/defines.h | 3 +++
+ drivers/net/ethernet/intel/e1000e/ich8lan.c | 2 ++
+ drivers/net/ethernet/intel/e1000e/nvm.c     | 6 ++++++
+ 3 files changed, 11 insertions(+)
+
+-- 
+2.47.2
+
