@@ -1,111 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 68721AEF90A
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Jul 2025 14:44:33 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0BAD5AEFAA3
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  1 Jul 2025 15:32:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8AF9541DED;
-	Tue,  1 Jul 2025 12:44:31 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A0BA460E32;
+	Tue,  1 Jul 2025 13:32:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YtLsHU3FuDH4; Tue,  1 Jul 2025 12:44:30 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id o1z32hZWiXbL; Tue,  1 Jul 2025 13:32:47 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B311441DB4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 16CA760DC7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1751373870;
-	bh=u7HVFMPJAt1WeX7ij/W3jz0RpayYJ4zFyBYCplxep88=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=xdt9yLAv98Ye7P84ffemsUpDfLfCGW4+DFQR91IMz9jgUZeQ/pNUSqmGVEdYkxUy/
-	 nnLnt/xiE34s87OVI2uTrKyM12MCPcW1bVsMAlwzFesAAYdySe35Az+NsdWKcQllKU
-	 dr13z1zvvxkTvWl8qz1JAaA7QPkEj0m/ktdQdQmKcNX4waEK1uwNgE7ND+0OajF/pM
-	 kHn6BD1GKPECyn3wFAqp4nwmB3EYcBwNYsghRIcNCCahWPWeBVJFxNQMIiJJof4L1J
-	 D4OVLY22wtscqCW8sSR/Gh0FgSVeydrmD7KMMZb0V9EqJddzNQOrSpBchDDlqoagNW
-	 G+hVNYEPj45Hw==
+	s=default; t=1751376767;
+	bh=sDhJGDpmG6BVat65armpZgb/DRIJQGyhOYfN9Q9GpVk=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=5zIEwXn2IDS8NRUNfVetqaEjPlPfuIoAIFEIaBEqKM8kdibuRD9sFSSfT+I6N4048
+	 usjN/oSZpKUrzWKH4ozS+onD6a6MTngf5KTosaR9rBezvNa1d/tZ7wwiNCECfDUjWV
+	 3MSe3ixk7IM57jSWFk2wFVrKNrbWXahIq/5t8vOQVX4nFv6fpk2dljp0Dn0IrxVs/l
+	 m4iSHhiiTZsn8qUMTekG7EVo+equuvAA2S1DQco0TlJHq0JsQH3JW9yIIVnadH7TG6
+	 P8PWtySjqKorgiel3Ru/eSAnihwWRPbUAu3KH5adNzlnSqh56IJcHz3WfQCB42j22m
+	 WVizappjKc5yA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B311441DB4;
-	Tue,  1 Jul 2025 12:44:30 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 16CA760DC7;
+	Tue,  1 Jul 2025 13:32:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 5C116DF
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Jul 2025 12:44:29 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 59011179
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Jul 2025 13:32:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4252041D24
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Jul 2025 12:44:29 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4AE23406A3
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Jul 2025 13:32:45 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2FsRsH41UGRa for <intel-wired-lan@lists.osuosl.org>;
- Tue,  1 Jul 2025 12:44:28 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=209.85.167.49;
- helo=mail-lf1-f49.google.com; envelope-from=timo.teras@gmail.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org E0A374055A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E0A374055A
-Received: from mail-lf1-f49.google.com (mail-lf1-f49.google.com
- [209.85.167.49])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E0A374055A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Jul 2025 12:44:27 +0000 (UTC)
-Received: by mail-lf1-f49.google.com with SMTP id
- 2adb3069b0e04-555024588a8so3392935e87.0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 01 Jul 2025 05:44:27 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751373865; x=1751978665;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=u7HVFMPJAt1WeX7ij/W3jz0RpayYJ4zFyBYCplxep88=;
- b=Iku0E6ZcBiRPr5eYIMrQjynKTstzP/PGdxm4o3jduLF0b4ao8WLNd+kKHyPdNDiMAo
- Pdymdt5YIyqmxciD2ANBycGxbmbnAbMPOg+f/fCkTwEsUR7ikbyh13zUA38HAlw0ze44
- 5KU6mxY1Ybu6E7hvZOL8abVu4oV3awy6eDX6dNcbXL1psmZ1rYtkPRYVU5LnEOB73w6M
- wiXXRPFOFlU1wRpxBA8jSj16OnxDSvS44NY57ppHUwlLI5C4jyfsMNz+yKC2Fd2k/12i
- jw1F6nzDdyAqTX2NY6Nyz+RMFnkUTMTpX2hPMhvxJu6G8Zhel/XrUF7YFhmbYC1/ubcf
- UCFQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUBUtMWKnErgimhwK+xJPpOxWEGXdXwrueo1IIkQnz0a0Hj7g5FKp1cUrN/h5iwQvZlVdh/hjEwdyg6vSC2Sq8=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzLlqN2oTip+KJIGgfIB078CGQXKuLRJP4BgbyRhLjjxf0WqY4H
- jFJpT0xHwRQmxMPx+3kIkQcF6w1PxDRi8I2NF/zz5cD2n9wqfj2UIF+D
-X-Gm-Gg: ASbGncuIq9Ic6bSTbxyE5/K61kS1Dk827tmBo8c5ENrzIyapfR8Y8XUVz4uX988rV5N
- 6qFEWkT+SrxbZV24j80545gngwkVFJB5L51rurpfWvtYeEVoCrFZ36BnZMwm+l8X/bZD3VJ6rsj
- fVWMmF/z0ThAn0KTA4IQyNsAG0B6qlfk9tgKtlsb9lrUy0rQVdGPRFympM5sCBg5mHikczH4e1M
- +J9xL9ZrpEVpRFKMH27XD6F8uDlHfyNI3UcWu5o4zL4dzZidkWrGhNAMx+sQvAj3ACzKeagLIg0
- RnxJzCVIV9nbJtXVp+yNJ9zA31rCuyKiPXQFlqg9/6PxZ06Rwyo7bcPtrpIkvvK0paxkVo7kM4P
- nktUzJGZZ7KCZvHLcydxj
-X-Google-Smtp-Source: AGHT+IEBV0/jUI6S0AOqcejoj0LNvQaJQtl1dQ8lichKDf56ZXv2ttjcgUReFpC0tfClg4HsVD1pdQ==
-X-Received: by 2002:a05:6512:3083:b0:549:5866:6489 with SMTP id
- 2adb3069b0e04-5550ba224f5mr5695523e87.47.1751373865250; 
- Tue, 01 Jul 2025 05:44:25 -0700 (PDT)
-Received: from onyx.my.domain (88-112-35-58.elisa-laajakaista.fi.
- [88.112.35.58]) by smtp.gmail.com with ESMTPSA id
- 2adb3069b0e04-5550b2c615fsm1839514e87.154.2025.07.01.05.44.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 01 Jul 2025 05:44:25 -0700 (PDT)
-Date: Tue, 1 Jul 2025 15:44:23 +0300
-From: Timo Teras <timo.teras@iki.fi>
-To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>
-Cc: En-Wei WU <en-wei.wu@canonical.com>, Tony Nguyen
- <anthony.l.nguyen@intel.com>, Przemek Kitszel
- <przemyslaw.kitszel@intel.com>, Jesse Brandeburg
- <jesse.brandeburg@intel.com>, <netdev@vger.kernel.org>,
- <intel-wired-lan@lists.osuosl.org>, <regressions@lists.linux.dev>,
- <stable@vger.kernel.org>, <sashal@kernel.org>
-Message-ID: <20250701154423.1917c3de@onyx.my.domain>
-In-Reply-To: <3023fe74-29c7-4a41-b805-c6b00fb0b3cc@intel.com>
-References: <CAMqyJG3LVqfgqMcTxeaPur_Jq0oQH7GgdxRuVtRX_6TTH2mX5Q@mail.gmail.com>
- <3023fe74-29c7-4a41-b805-c6b00fb0b3cc@intel.com>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-alpine-linux-musl)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+ id A9tDXp_oterp for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  1 Jul 2025 13:32:44 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5115440572
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5115440572
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5115440572
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Jul 2025 13:32:43 +0000 (UTC)
+X-CSE-ConnectionGUID: Y87cYhGjSOimwMNcH1l2nQ==
+X-CSE-MsgGUID: 6uq/PyXeSMmYH0Yxk+KFrA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11481"; a="53578551"
+X-IronPort-AV: E=Sophos;i="6.16,279,1744095600"; d="scan'208";a="53578551"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+ by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Jul 2025 06:32:43 -0700
+X-CSE-ConnectionGUID: 2dXgg30NS7q0gPod1v/VHQ==
+X-CSE-MsgGUID: kd1rtE2gRWm/rcUt+QIpPw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,279,1744095600"; d="scan'208";a="153382263"
+Received: from lkp-server01.sh.intel.com (HELO e8142ee1dce2) ([10.239.97.150])
+ by fmviesa007.fm.intel.com with ESMTP; 01 Jul 2025 06:32:43 -0700
+Received: from kbuild by e8142ee1dce2 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1uWb6G-000aDV-1T
+ for intel-wired-lan@lists.osuosl.org; Tue, 01 Jul 2025 13:32:40 +0000
+Date: Tue, 01 Jul 2025 21:31:58 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202507012149.cIw0wFMx-lkp@intel.com>
+User-Agent: s-nail v14.9.24
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1751376764; x=1782912764;
+ h=date:from:to:subject:message-id;
+ bh=okQn0eDVryL9w1WInGnN1fsjyk6ID3fJgEzi0N4ULMo=;
+ b=K34sQvAjfTSIqqmwsxhJzb8KLZNW8fUqazZaIkb1VGnqVm2e4FhFTqfa
+ oV1TyU5Z5HpCi/dErvByCW0Apt2tKdlyI+9FZi/ENQKksw/gzyPh0Oxd2
+ qAvW9yJLa7TBdS56taxo6F0KKebIZsUoIsF3Vf4AkKg5YYCjIo5oD6Ghj
+ eHT7kRM1r/5KO9dAhB0EAgqrBZWyc1U14OUJqoP05pbdM/KM1w27bTe5B
+ /1UZj2aJcip6PAwjXO3l5/laFfcN8D8Lbf3VK+lchR8gD502pZ6axs4UT
+ BsyGJubLc4lw+kDH+nYsV2VpZBP28yu6E4UHG2ruUhtqLPrfYdC0Wnhah
+ g==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=iki.fi
-Subject: Re: [Intel-wired-lan] [REGRESSION] Packet loss after hot-plugging
- ethernet cable on HP Zbook (Arrow Lake)
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=K34sQvAj
+Subject: [Intel-wired-lan] [tnguy-next-queue:10GbE] BUILD SUCCESS
+ 99e3eb454cc48b9f2691256780aeb247bdc0ee3d
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -121,150 +104,262 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, 1 Jul 2025 14:46:18 +0300
-"Lifshits, Vitaly" <vitaly.lifshits@intel.com> wrote:
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 10GbE
+branch HEAD: 99e3eb454cc48b9f2691256780aeb247bdc0ee3d  net: ethtool: avoid OOB accesses in PAUSE_SET
 
-> On 7/1/2025 8:31 AM, En-Wei WU wrote:
-> > Hi,
-> > 
-> > I'm seeing a regression on an HP ZBook using the e1000e driver
-> > (chipset PCI ID: [8086:57a0]) -- the system can't get an IP address
-> > after hot-plugging an Ethernet cable. In this case, the Ethernet
-> > cable was unplugged at boot. The network interface eno1 was present
-> > but stuck in the DHCP process. Using tcpdump, only TX packets were
-> > visible and never got any RX -- indicating a possible packet loss or
-> > link-layer issue.
-> > 
-> > This is on the vanilla Linux 6.16-rc4 (commit
-> > 62f224733431dbd564c4fe800d4b67a0cf92ed10).
-> > 
-> > Bisect says it's this commit:
-> > 
-> > commit efaaf344bc2917cbfa5997633bc18a05d3aed27f
-> > Author: Vitaly Lifshits <vitaly.lifshits@intel.com>
-> > Date:   Thu Mar 13 16:05:56 2025 +0200
-> > 
-> >      e1000e: change k1 configuration on MTP and later platforms
-> > 
-> >      Starting from Meteor Lake, the Kumeran interface between the
-> > integrated MAC and the I219 PHY works at a different frequency.
-> > This causes sporadic MDI errors when accessing the PHY, and in rare
-> > circumstances could lead to packet corruption.
-> > 
-> >      To overcome this, introduce minor changes to the Kumeran idle
-> >      state (K1) parameters during device initialization. Hardware
-> > reset reverts this configuration, therefore it needs to be applied
-> > in a few places.
-> > 
-> >      Fixes: cc23f4f0b6b9 ("e1000e: Add support for Meteor Lake")
-> >      Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
-> >      Tested-by: Avigail Dahan <avigailx.dahan@intel.com>
-> >      Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
-> > 
-> >   drivers/net/ethernet/intel/e1000e/defines.h |  3 +++
-> >   drivers/net/ethernet/intel/e1000e/ich8lan.c | 80
-> > +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-----
-> >   drivers/net/ethernet/intel/e1000e/ich8lan.h |  4 ++++
-> >   3 files changed, 82 insertions(+), 5 deletions(-)
-> > 
-> > Reverting this patch resolves the issue.
-> > 
-> > Based on the symptoms and the bisect result, this issue might be
-> > similar to
-> > https://lore.kernel.org/intel-wired-lan/20250626153544.1853d106@onyx.my.domain/
-> > 
-> > 
-> > Affected machine is:
-> > HP ZBook X G1i 16 inch Mobile Workstation PC, BIOS 01.02.03
-> > 05/27/2025 (see end of message for dmesg from boot)
-> > 
-> > CPU model name:
-> > Intel(R) Core(TM) Ultra 7 265H (Arrow Lake)
-> > 
-> > ethtool output:
-> > driver: e1000e
-> > version: 6.16.0-061600rc4-generic
-> > firmware-version: 0.1-4
-> > expansion-rom-version:
-> > bus-info: 0000:00:1f.6
-> > supports-statistics: yes
-> > supports-test: yes
-> > supports-eeprom-access: yes
-> > supports-register-dump: yes
-> > supports-priv-flags: yes
-> > 
-> > lspci output:
-> > 0:1f.6 Ethernet controller [0200]: Intel Corporation Device
-> > [8086:57a0] DeviceName: Onboard Ethernet
-> >          Subsystem: Hewlett-Packard Company Device [103c:8e1d]
-> >          Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop-
-> > ParErr- Stepping- SERR- FastB2B- DisINTx+
-> >          Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast
-> > >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
-> >          Latency: 0
-> >          Interrupt: pin D routed to IRQ 162
-> >          IOMMU group: 17
-> >          Region 0: Memory at 92280000 (32-bit, non-prefetchable)
-> > [size=128K] Capabilities: [c8] Power Management version 3
-> >                  Flags: PMEClk- DSI+ D1- D2- AuxCurrent=0mA
-> > PME(D0+,D1-,D2-,D3hot+,D3cold+)
-> >                  Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=1
-> > PME- Capabilities: [d0] MSI: Enable+ Count=1/1 Maskable- 64bit+
-> >                  Address: 00000000fee00798  Data: 0000
-> >          Kernel driver in use: e1000e
-> >          Kernel modules: e1000e
-> > 
-> > The relevant dmesg:
-> > <<<cable disconnected>>>
-> > 
-> > [    0.927394] e1000e: Intel(R) PRO/1000 Network Driver
-> > [    0.927398] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
-> > [    0.927933] e1000e 0000:00:1f.6: enabling device (0000 -> 0002)
-> > [    0.928249] e1000e 0000:00:1f.6: Interrupt Throttling Rate
-> > (ints/sec) set to dynamic conservative mode
-> > [    1.155716] e1000e 0000:00:1f.6 0000:00:1f.6 (uninitialized):
-> > registered PHC clock
-> > [    1.220694] e1000e 0000:00:1f.6 eth0: (PCI Express:2.5GT/s:Width
-> > x1) 24:fb:e3:bf:28:c6
-> > [    1.220721] e1000e 0000:00:1f.6 eth0: Intel(R) PRO/1000 Network
-> > Connection [    1.220903] e1000e 0000:00:1f.6 eth0: MAC: 16, PHY:
-> > 12, PBA No: FFFFFF-0FF [    1.222632] e1000e 0000:00:1f.6 eno1:
-> > renamed from eth0
-> > 
-> > <<<cable connected>>>
-> > 
-> > [  153.932626] e1000e 0000:00:1f.6 eno1: NIC Link is Up 1000 Mbps
-> > Half Duplex, Flow Control: None
-> > [  153.934527] e1000e 0000:00:1f.6 eno1: NIC Link is Down
-> > [  157.622238] e1000e 0000:00:1f.6 eno1: NIC Link is Up 1000 Mbps
-> > Full Duplex, Flow Control: None
-> > 
-> > No error message seen after hot-plugging the Ethernet cable.
-> >   
-> 
-> Thank your for the report.
-> 
-> We did not encounter this issue during our patch testing. However, we 
-> will attempt to reproduce it in our lab.
-> 
-> One detail that caught my attention is that flow control is disabled
-> in both scenarios. Could you please check whether the issue persists
-> when flow control is enabled? This might require connecting to a link
-> partner that supports flow control.
+elapsed time: 1292m
 
-I wrote the other similar report from Dell Pro referenced earlier.
-Additional testing on the Dell provided the following insight:
+configs tested: 243
+configs skipped: 6
 
-- A fast cable out/in will work. The cable should be disconnected
-  for 10-15 seconds for the issue to trigger.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-- Sometimes the first spurious link up is 1000 mbps/half and sometimes
-  10 mbps/half.
+tested configs:
+alpha                            alldefconfig    gcc-15.1.0
+alpha                             allnoconfig    gcc-15.1.0
+alpha                            allyesconfig    clang-19
+alpha                            allyesconfig    gcc-15.1.0
+alpha                               defconfig    gcc-15.1.0
+arc                              allmodconfig    clang-19
+arc                              allmodconfig    gcc-15.1.0
+arc                               allnoconfig    gcc-15.1.0
+arc                              allyesconfig    clang-19
+arc                              allyesconfig    gcc-15.1.0
+arc                                 defconfig    gcc-15.1.0
+arc                   randconfig-001-20250701    gcc-13.3.0
+arc                   randconfig-001-20250701    gcc-8.5.0
+arc                   randconfig-002-20250701    gcc-15.1.0
+arc                   randconfig-002-20250701    gcc-8.5.0
+arm                              allmodconfig    clang-19
+arm                              allmodconfig    gcc-15.1.0
+arm                               allnoconfig    clang-21
+arm                               allnoconfig    gcc-15.1.0
+arm                              allyesconfig    clang-19
+arm                              allyesconfig    gcc-15.1.0
+arm                                 defconfig    gcc-15.1.0
+arm                      integrator_defconfig    gcc-15.1.0
+arm                        mvebu_v7_defconfig    gcc-15.1.0
+arm                   randconfig-001-20250701    clang-17
+arm                   randconfig-001-20250701    gcc-8.5.0
+arm                   randconfig-002-20250701    gcc-8.5.0
+arm                   randconfig-003-20250701    clang-21
+arm                   randconfig-003-20250701    gcc-8.5.0
+arm                   randconfig-004-20250701    clang-21
+arm                   randconfig-004-20250701    gcc-8.5.0
+arm                           sama5_defconfig    gcc-15.1.0
+arm                         vf610m4_defconfig    gcc-15.1.0
+arm                         wpcm450_defconfig    gcc-15.1.0
+arm64                            allmodconfig    clang-19
+arm64                             allnoconfig    gcc-15.1.0
+arm64                               defconfig    gcc-15.1.0
+arm64                 randconfig-001-20250701    clang-21
+arm64                 randconfig-001-20250701    gcc-8.5.0
+arm64                 randconfig-002-20250701    gcc-15.1.0
+arm64                 randconfig-002-20250701    gcc-8.5.0
+arm64                 randconfig-003-20250701    clang-18
+arm64                 randconfig-003-20250701    gcc-8.5.0
+arm64                 randconfig-004-20250701    gcc-8.5.0
+csky                              allnoconfig    gcc-15.1.0
+csky                                defconfig    gcc-15.1.0
+csky                  randconfig-001-20250701    gcc-11.5.0
+csky                  randconfig-001-20250701    gcc-13.3.0
+csky                  randconfig-002-20250701    gcc-10.5.0
+csky                  randconfig-002-20250701    gcc-13.3.0
+hexagon                          allmodconfig    clang-17
+hexagon                          allmodconfig    clang-19
+hexagon                           allnoconfig    clang-21
+hexagon                           allnoconfig    gcc-15.1.0
+hexagon                          allyesconfig    clang-19
+hexagon                          allyesconfig    clang-21
+hexagon                             defconfig    gcc-15.1.0
+hexagon               randconfig-001-20250701    clang-21
+hexagon               randconfig-001-20250701    gcc-13.3.0
+hexagon               randconfig-002-20250701    clang-21
+hexagon               randconfig-002-20250701    gcc-13.3.0
+i386                             allmodconfig    clang-20
+i386                              allnoconfig    clang-20
+i386                             allyesconfig    clang-20
+i386        buildonly-randconfig-001-20250701    gcc-12
+i386        buildonly-randconfig-002-20250701    gcc-12
+i386        buildonly-randconfig-003-20250701    gcc-12
+i386        buildonly-randconfig-004-20250701    gcc-12
+i386        buildonly-randconfig-005-20250701    gcc-12
+i386        buildonly-randconfig-006-20250701    clang-20
+i386        buildonly-randconfig-006-20250701    gcc-12
+i386                                defconfig    clang-20
+i386                  randconfig-001-20250701    clang-20
+i386                  randconfig-002-20250701    clang-20
+i386                  randconfig-003-20250701    clang-20
+i386                  randconfig-004-20250701    clang-20
+i386                  randconfig-005-20250701    clang-20
+i386                  randconfig-006-20250701    clang-20
+i386                  randconfig-007-20250701    clang-20
+i386                  randconfig-011-20250701    clang-20
+i386                  randconfig-012-20250701    clang-20
+i386                  randconfig-013-20250701    clang-20
+i386                  randconfig-014-20250701    clang-20
+i386                  randconfig-015-20250701    clang-20
+i386                  randconfig-016-20250701    clang-20
+i386                  randconfig-017-20250701    clang-20
+loongarch                        allmodconfig    gcc-15.1.0
+loongarch                         allnoconfig    gcc-15.1.0
+loongarch                           defconfig    gcc-15.1.0
+loongarch             randconfig-001-20250701    gcc-13.3.0
+loongarch             randconfig-002-20250701    gcc-13.3.0
+loongarch             randconfig-002-20250701    gcc-15.1.0
+m68k                             allmodconfig    gcc-15.1.0
+m68k                              allnoconfig    gcc-15.1.0
+m68k                             allyesconfig    gcc-15.1.0
+m68k                         amcore_defconfig    gcc-15.1.0
+m68k                                defconfig    gcc-15.1.0
+m68k                       m5275evb_defconfig    gcc-15.1.0
+m68k                        m5307c3_defconfig    gcc-15.1.0
+microblaze                       allmodconfig    gcc-15.1.0
+microblaze                        allnoconfig    gcc-15.1.0
+microblaze                       allyesconfig    gcc-15.1.0
+microblaze                          defconfig    gcc-15.1.0
+mips                              allnoconfig    gcc-15.1.0
+nios2                             allnoconfig    gcc-14.2.0
+nios2                             allnoconfig    gcc-15.1.0
+nios2                               defconfig    gcc-15.1.0
+nios2                 randconfig-001-20250701    gcc-13.3.0
+nios2                 randconfig-001-20250701    gcc-14.2.0
+nios2                 randconfig-002-20250701    gcc-13.3.0
+openrisc                          allnoconfig    clang-21
+openrisc                         allyesconfig    gcc-15.1.0
+openrisc                            defconfig    gcc-12
+openrisc                 simple_smp_defconfig    gcc-15.1.0
+parisc                           allmodconfig    gcc-15.1.0
+parisc                            allnoconfig    clang-21
+parisc                           allyesconfig    gcc-15.1.0
+parisc                              defconfig    gcc-12
+parisc                randconfig-001-20250701    gcc-13.3.0
+parisc                randconfig-001-20250701    gcc-14.3.0
+parisc                randconfig-002-20250701    gcc-10.5.0
+parisc                randconfig-002-20250701    gcc-13.3.0
+parisc64                            defconfig    gcc-15.1.0
+powerpc                          allmodconfig    gcc-15.1.0
+powerpc                           allnoconfig    clang-21
+powerpc                          allyesconfig    clang-21
+powerpc                          allyesconfig    gcc-15.1.0
+powerpc                   currituck_defconfig    gcc-15.1.0
+powerpc                   motionpro_defconfig    gcc-15.1.0
+powerpc                 mpc8313_rdb_defconfig    gcc-15.1.0
+powerpc                 mpc8315_rdb_defconfig    gcc-15.1.0
+powerpc                    mvme5100_defconfig    gcc-15.1.0
+powerpc               randconfig-001-20250701    gcc-13.3.0
+powerpc               randconfig-002-20250701    clang-21
+powerpc               randconfig-002-20250701    gcc-13.3.0
+powerpc               randconfig-003-20250701    clang-21
+powerpc               randconfig-003-20250701    gcc-13.3.0
+powerpc                     sequoia_defconfig    gcc-15.1.0
+powerpc                     tqm8540_defconfig    gcc-15.1.0
+powerpc64                        alldefconfig    gcc-15.1.0
+powerpc64             randconfig-001-20250701    clang-21
+powerpc64             randconfig-001-20250701    gcc-13.3.0
+powerpc64             randconfig-002-20250701    clang-21
+powerpc64             randconfig-002-20250701    gcc-13.3.0
+powerpc64             randconfig-003-20250701    gcc-10.5.0
+powerpc64             randconfig-003-20250701    gcc-13.3.0
+riscv                            allmodconfig    clang-21
+riscv                            allmodconfig    gcc-15.1.0
+riscv                             allnoconfig    clang-21
+riscv                            allyesconfig    clang-16
+riscv                            allyesconfig    gcc-15.1.0
+riscv                               defconfig    gcc-12
+riscv                    nommu_virt_defconfig    gcc-15.1.0
+riscv                 randconfig-001-20250701    gcc-12
+riscv                 randconfig-001-20250701    gcc-14.3.0
+riscv                 randconfig-002-20250701    gcc-10.5.0
+riscv                 randconfig-002-20250701    gcc-12
+s390                             allmodconfig    clang-18
+s390                             allmodconfig    gcc-15.1.0
+s390                              allnoconfig    clang-21
+s390                             allyesconfig    gcc-15.1.0
+s390                                defconfig    gcc-12
+s390                  randconfig-001-20250701    gcc-12
+s390                  randconfig-001-20250701    gcc-9.3.0
+s390                  randconfig-002-20250701    clang-17
+s390                  randconfig-002-20250701    gcc-12
+sh                               allmodconfig    gcc-15.1.0
+sh                                allnoconfig    gcc-15.1.0
+sh                               allyesconfig    gcc-15.1.0
+sh                                  defconfig    gcc-12
+sh                        edosk7705_defconfig    gcc-15.1.0
+sh                    randconfig-001-20250701    gcc-12
+sh                    randconfig-001-20250701    gcc-15.1.0
+sh                    randconfig-002-20250701    gcc-12
+sh                    randconfig-002-20250701    gcc-13.3.0
+sh                          rsk7201_defconfig    gcc-15.1.0
+sh                          sdk7786_defconfig    gcc-15.1.0
+sh                           se7343_defconfig    gcc-15.1.0
+sh                   sh7724_generic_defconfig    gcc-15.1.0
+sh                        sh7763rdp_defconfig    gcc-15.1.0
+sh                  sh7785lcr_32bit_defconfig    gcc-15.1.0
+sh                            titan_defconfig    gcc-15.1.0
+sparc                            allmodconfig    gcc-15.1.0
+sparc                             allnoconfig    gcc-15.1.0
+sparc                 randconfig-001-20250701    gcc-10.3.0
+sparc                 randconfig-001-20250701    gcc-12
+sparc                 randconfig-002-20250701    gcc-12
+sparc                 randconfig-002-20250701    gcc-15.1.0
+sparc64                             defconfig    gcc-12
+sparc64               randconfig-001-20250701    gcc-12
+sparc64               randconfig-001-20250701    gcc-8.5.0
+sparc64               randconfig-002-20250701    gcc-12
+sparc64               randconfig-002-20250701    gcc-12.4.0
+um                               allmodconfig    clang-19
+um                                allnoconfig    clang-21
+um                               allyesconfig    clang-19
+um                               allyesconfig    gcc-12
+um                                  defconfig    gcc-12
+um                             i386_defconfig    gcc-12
+um                    randconfig-001-20250701    gcc-12
+um                    randconfig-002-20250701    gcc-12
+um                           x86_64_defconfig    gcc-12
+um                           x86_64_defconfig    gcc-15.1.0
+x86_64                            allnoconfig    clang-20
+x86_64                           allyesconfig    clang-20
+x86_64      buildonly-randconfig-001-20250701    gcc-12
+x86_64      buildonly-randconfig-002-20250701    gcc-12
+x86_64      buildonly-randconfig-003-20250701    gcc-12
+x86_64      buildonly-randconfig-004-20250701    gcc-12
+x86_64      buildonly-randconfig-005-20250701    clang-20
+x86_64      buildonly-randconfig-005-20250701    gcc-12
+x86_64      buildonly-randconfig-006-20250701    clang-20
+x86_64      buildonly-randconfig-006-20250701    gcc-12
+x86_64                              defconfig    clang-20
+x86_64                                  kexec    clang-20
+x86_64                randconfig-001-20250701    gcc-12
+x86_64                randconfig-002-20250701    gcc-12
+x86_64                randconfig-003-20250701    gcc-12
+x86_64                randconfig-004-20250701    gcc-12
+x86_64                randconfig-005-20250701    gcc-12
+x86_64                randconfig-006-20250701    gcc-12
+x86_64                randconfig-007-20250701    gcc-12
+x86_64                randconfig-008-20250701    gcc-12
+x86_64                randconfig-071-20250701    gcc-12
+x86_64                randconfig-072-20250701    gcc-12
+x86_64                randconfig-073-20250701    gcc-12
+x86_64                randconfig-074-20250701    gcc-12
+x86_64                randconfig-075-20250701    gcc-12
+x86_64                randconfig-076-20250701    gcc-12
+x86_64                randconfig-077-20250701    gcc-12
+x86_64                randconfig-078-20250701    gcc-12
+x86_64                               rhel-9.4    clang-20
+x86_64                           rhel-9.4-bpf    gcc-12
+x86_64                         rhel-9.4-kunit    gcc-12
+x86_64                           rhel-9.4-ltp    gcc-12
+x86_64                          rhel-9.4-rust    clang-20
+xtensa                            allnoconfig    gcc-15.1.0
+xtensa                  nommu_kc705_defconfig    gcc-15.1.0
+xtensa                randconfig-001-20250701    gcc-12
+xtensa                randconfig-001-20250701    gcc-15.1.0
+xtensa                randconfig-002-20250701    gcc-12
+xtensa                randconfig-002-20250701    gcc-13.3.0
+xtensa                         virt_defconfig    gcc-15.1.0
 
-- Using ethtool -r to renegotiate the link will make things work in
-  the defunct state.
-
-And yes, my issue seems to be exactly the same.
-
-Thanks,
-Timo
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
