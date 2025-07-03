@@ -1,102 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E4777AF72C6
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Jul 2025 13:46:48 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 12E61AF766F
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Jul 2025 16:00:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AFEA661163;
-	Thu,  3 Jul 2025 11:46:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C3CD383B18;
+	Thu,  3 Jul 2025 14:00:53 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id OPw3ECY4VphC; Thu,  3 Jul 2025 14:00:53 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 201F183B1F
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1751551253;
+	bh=yOIHMLaEOUKcCow9x9L9uw0W9MNdXNKuSiuXWmkvR0I=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=lppI0OGZl8MHY51zc8YbYGqd8iJPImNMKFkzAxHVhXIyi5ZBSEQeXS9zY/kCks82+
+	 U3OeyOsfR0GqqDRy3n+0AbhMnV+Ris1XkpSa7BBBnLHC94MCmRVoPje9Eoq3qTgf6n
+	 Vul2x827enphUVOO+4h8XqPTv9kpZmztmxg/q064zyD/lSM6JaSIStUr5kIqFapcV1
+	 FFHM4X1IuuEIv+S/ICwiquAc713HrnaCVzGsm89nZZsQdGpTVX1SLfEyl/n0uKhSCq
+	 YsKJbDc2b10m+Grfl5LSrPjDiQhmA34gt1+Tih4nebz6vmtoSFADph60WhplJbuqf5
+	 8Trv+U2MFOOUQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 201F183B1F;
+	Thu,  3 Jul 2025 14:00:53 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3338A128
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Jul 2025 14:00:51 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 240EA608CC
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Jul 2025 14:00:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sacMqqpC4Wdq; Thu,  3 Jul 2025 11:46:46 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C3F9D60EE3
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1751543205;
-	bh=7uMbRHs7u9EISY41PQb4N5gzjdzx9Shxz/34N9ubolM=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=tUrzyFA8x0M913KSzSYJbrQlJp45xzTtX2L+SxnA+fupqhU+p0Lx7DoEjgJdCSByy
-	 JSkKATQvpMitR40GUEn47GWAjlhPdHW6Vpp/I/wQYDDak+7yuXEAT4YKHhJd/s6SE/
-	 PnnTxcKGu1arFCVR9FXUGquzRw8YmJuBk5TnCJ82gH3PQvz4Wi0FiiCztOdTPb8WGH
-	 gkf5qGi1g4u/fLwQl83e0APAZzBoTZ+nXQfgjS48BCn5eZ+T4NskkMKiDe+4/VoOuC
-	 e2ScxpWfgOIbnTk9XH8tEUx4EBN3fpuHufCMU3iuY5h5NejnyYzcjmIUHLfEb2Kk8w
-	 fRCo4QA/2Lj2A==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C3F9D60EE3;
-	Thu,  3 Jul 2025 11:46:45 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 2C61A128
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Jul 2025 11:46:44 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 12799401FB
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Jul 2025 11:46:44 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5y9h8Qz--Dv9 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  3 Jul 2025 11:46:43 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.9;
- helo=mgamail.intel.com; envelope-from=jedrzej.jagielski@intel.com;
+ id z702jw9XvNeM for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  3 Jul 2025 14:00:50 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 2BF104052D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2BF104052D
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2BF104052D
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Jul 2025 11:46:43 +0000 (UTC)
-X-CSE-ConnectionGUID: dcA7cnsLTIenJRaO3OQRNA==
-X-CSE-MsgGUID: mgQSzay/TJKhhAhHi2ae+A==
-X-IronPort-AV: E=McAfee;i="6800,10657,11482"; a="76411129"
-X-IronPort-AV: E=Sophos;i="6.16,284,1744095600"; d="scan'208";a="76411129"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Jul 2025 04:46:43 -0700
-X-CSE-ConnectionGUID: WitRaSFrRIKq6SVESFwcMA==
-X-CSE-MsgGUID: poo7VvSxTBKyx4CmnSkXVQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,284,1744095600"; d="scan'208";a="153780339"
-Received: from os-delivery.igk.intel.com ([10.102.18.218])
- by orviesa006.jf.intel.com with ESMTP; 03 Jul 2025 04:46:41 -0700
-From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: anthony.l.nguyen@intel.com, netdev@vger.kernel.org, jiri@resnulli.us,
- david.kaplan@amd.com, dhowells@redhat.com,
- Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
- David Kaplan <David.Kaplan@amd.com>, Jakub Kicinski <kuba@kernel.org>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Date: Thu,  3 Jul 2025 13:30:22 +0200
-Message-Id: <20250703113022.1451223-2-jedrzej.jagielski@intel.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20250703113022.1451223-1-jedrzej.jagielski@intel.com>
-References: <20250703113022.1451223-1-jedrzej.jagielski@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org BAB2060638
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BAB2060638
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id BAB2060638
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Jul 2025 14:00:49 +0000 (UTC)
+Received: from [141.14.220.36] (g36.guest.molgen.mpg.de [141.14.220.36])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id F230E601F9C7D;
+ Thu, 03 Jul 2025 16:00:34 +0200 (CEST)
+Message-ID: <4290ec59-645d-4675-9c98-f59246796f3c@molgen.mpg.de>
+Date: Thu, 3 Jul 2025 16:00:34 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+To: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, andrew@lunn.ch, 
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
+References: <20250703140918.287365-1-piotr.kwapulinski@intel.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20250703140918.287365-1-piotr.kwapulinski@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1751543204; x=1783079204;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=KZQ0phePQAB4080RNDczJJT3Ff0gY6JEBjYAn+tJzi8=;
- b=Nuzt0dvxqhYrK6RfHP6FNQrN+LJzki2ZhqEx7sY6wCpnHo1E4eKWRAIH
- 4UlYsVSt13gMGfN9QeH7bBB79b+2xZBBzmhzn4FFA+6Y7OM3OypDDokyo
- tWbbPYfBihn2E1fXg6Sd2fLxiYewSpu6veCS3NcMoJnMJlZ1GR5m3RUZl
- lXBz5cCZXIQUP02LjtGkZehd8AlQ+Hced7/ypodXc5R8D7YYBxeJNgEKD
- gGfl0s6tZ5XNdJy+elDbxZTa3HURbiLdHEkD/+OB4YUg/B9TRqxkEQs3U
- xG5aA+yA48J7q78EDKCiOLxAiZQZ7RZBRa9tWqSA7dX7SUEGavnZu7fEI
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Nuzt0dvx
-Subject: [Intel-wired-lan] [PATCH iwl-net v1 2/2] ixgbe: prevent from
- unwanted interfaces names changes
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
+Subject: Re: [Intel-wired-lan] [iwl-next] ixgbe: add the 2.5G and 5G speed
+ in auto-negotiation for E610
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -112,51 +88,82 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Users of the ixgbe drivers report that after adding devlink
-support by the commit a0285236ab93 ("ixgbe: add initial devlink support")
-their configs got broken due to unwanted changes of interfaces names.
-It's caused by changing names by devlink port initialization flow.
+Dear Piotr,
 
-To prevent from that add an empty implementation of ndo_get_phys_port_name
-callback.
 
-Reported-by: David Howells <dhowells@redhat.com>
-Closes: https://lkml.org/lkml/2025/4/24/2052
-Reported-by: David Kaplan <David.Kaplan@amd.com>
-Closes:https://www.spinics.net/lists/netdev/msg1099410.html
-Suggested-by: Jakub Kicinski <kuba@kernel.org>
-Acked-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Fixes: a0285236ab93 ("ixgbe: add initial devlink support")
-Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+Thank you for your patch.
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 48063586063c..e63a1831e661 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -11043,6 +11043,12 @@ static int ixgbe_xdp_xmit(struct net_device *dev, int n,
- 	return nxmit;
- }
- 
-+static int ixgbe_get_phys_port_name(struct net_device *netdev, char *name, size_t len)
-+{
-+	/* Avoid devlink adding unwanted suffix to interface name. */
-+	return 0;
-+}
-+
- static const struct net_device_ops ixgbe_netdev_ops = {
- 	.ndo_open		= ixgbe_open,
- 	.ndo_stop		= ixgbe_close,
-@@ -11088,6 +11094,7 @@ static const struct net_device_ops ixgbe_netdev_ops = {
- 	.ndo_bpf		= ixgbe_xdp,
- 	.ndo_xdp_xmit		= ixgbe_xdp_xmit,
- 	.ndo_xsk_wakeup         = ixgbe_xsk_wakeup,
-+	.ndo_get_phys_port_name = ixgbe_get_phys_port_name,
- };
- 
- static void ixgbe_disable_txr_hw(struct ixgbe_adapter *adapter,
--- 
-2.31.1
+Am 03.07.25 um 16:09 schrieb Piotr Kwapulinski:
+> Enable the 2.5G and 5G speed in auto-negotiation for E610 at driver load.
+
+The removed comment says there were incompatibilities with “certain 
+switches“. What changed? Please elaborate in the commit message.
+
+
+Kind regards,
+
+Paul
+
+
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+> ---
+>   drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 35 +++++++------------
+>   1 file changed, 12 insertions(+), 23 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+> index d741164..b202639 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+> @@ -1953,6 +1953,16 @@ int ixgbe_identify_phy_e610(struct ixgbe_hw *hw)
+>   	    phy_type_low  & IXGBE_PHY_TYPE_LOW_1G_SGMII    ||
+>   	    phy_type_high & IXGBE_PHY_TYPE_HIGH_1G_USXGMII)
+>   		hw->phy.speeds_supported |= IXGBE_LINK_SPEED_1GB_FULL;
+> +	if (phy_type_low  & IXGBE_PHY_TYPE_LOW_2500BASE_T   ||
+> +	    phy_type_low  & IXGBE_PHY_TYPE_LOW_2500BASE_X   ||
+> +	    phy_type_low  & IXGBE_PHY_TYPE_LOW_2500BASE_KX  ||
+> +	    phy_type_high & IXGBE_PHY_TYPE_HIGH_2500M_SGMII ||
+> +	    phy_type_high & IXGBE_PHY_TYPE_HIGH_2500M_USXGMII)
+> +		hw->phy.speeds_supported |= IXGBE_LINK_SPEED_2_5GB_FULL;
+> +	if (phy_type_low  & IXGBE_PHY_TYPE_LOW_5GBASE_T  ||
+> +	    phy_type_low  & IXGBE_PHY_TYPE_LOW_5GBASE_KR ||
+> +	    phy_type_high & IXGBE_PHY_TYPE_HIGH_5G_USXGMII)
+> +		hw->phy.speeds_supported |= IXGBE_LINK_SPEED_5GB_FULL;
+>   	if (phy_type_low  & IXGBE_PHY_TYPE_LOW_10GBASE_T       ||
+>   	    phy_type_low  & IXGBE_PHY_TYPE_LOW_10G_SFI_DA      ||
+>   	    phy_type_low  & IXGBE_PHY_TYPE_LOW_10GBASE_SR      ||
+> @@ -1963,31 +1973,10 @@ int ixgbe_identify_phy_e610(struct ixgbe_hw *hw)
+>   	    phy_type_high & IXGBE_PHY_TYPE_HIGH_10G_USXGMII)
+>   		hw->phy.speeds_supported |= IXGBE_LINK_SPEED_10GB_FULL;
+>   
+> -	/* 2.5 and 5 Gbps link speeds must be excluded from the
+> -	 * auto-negotiation set used during driver initialization due to
+> -	 * compatibility issues with certain switches. Those issues do not
+> -	 * exist in case of E610 2.5G SKU device (0x57b1).
+> -	 */
+> -	if (!hw->phy.autoneg_advertised &&
+> -	    hw->device_id != IXGBE_DEV_ID_E610_2_5G_T)
+> +	/* Initialize autoneg speeds */
+> +	if (!hw->phy.autoneg_advertised)
+>   		hw->phy.autoneg_advertised = hw->phy.speeds_supported;
+>   
+> -	if (phy_type_low  & IXGBE_PHY_TYPE_LOW_2500BASE_T   ||
+> -	    phy_type_low  & IXGBE_PHY_TYPE_LOW_2500BASE_X   ||
+> -	    phy_type_low  & IXGBE_PHY_TYPE_LOW_2500BASE_KX  ||
+> -	    phy_type_high & IXGBE_PHY_TYPE_HIGH_2500M_SGMII ||
+> -	    phy_type_high & IXGBE_PHY_TYPE_HIGH_2500M_USXGMII)
+> -		hw->phy.speeds_supported |= IXGBE_LINK_SPEED_2_5GB_FULL;
+> -
+> -	if (!hw->phy.autoneg_advertised &&
+> -	    hw->device_id == IXGBE_DEV_ID_E610_2_5G_T)
+> -		hw->phy.autoneg_advertised = hw->phy.speeds_supported;
+> -
+> -	if (phy_type_low  & IXGBE_PHY_TYPE_LOW_5GBASE_T  ||
+> -	    phy_type_low  & IXGBE_PHY_TYPE_LOW_5GBASE_KR ||
+> -	    phy_type_high & IXGBE_PHY_TYPE_HIGH_5G_USXGMII)
+> -		hw->phy.speeds_supported |= IXGBE_LINK_SPEED_5GB_FULL;
+> -
+>   	/* Set PHY ID */
+>   	memcpy(&hw->phy.id, pcaps.phy_id_oui, sizeof(u32));
+>   
 
