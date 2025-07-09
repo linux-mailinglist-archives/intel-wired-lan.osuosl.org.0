@@ -1,112 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 34527AFEA3C
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Jul 2025 15:31:58 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A1B1F4085E;
-	Wed,  9 Jul 2025 13:31:56 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id bzOv1hEWxCa4; Wed,  9 Jul 2025 13:31:56 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B932140905
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1752067915;
-	bh=jhrQrdwjqbXJ+aeZgreDfDq+/3Niqi/WqrCzbRM6tNs=;
-	h=Date:From:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=u11K9sglkuh07ui9o5sZkaFSkUp7Al8LUdzTjuecfMidmNBhsQVjs3/Dj/Zivw3OF
-	 g4LtkiGoa5Ib7yowW5Aj4aDVe5OROwQYN4h8XC6QqXYR2dK7OZKVhzX5xZ1+Buz6FD
-	 QtRcH1DydFe//U4S9MlCs0Y0/cwrT9V8P4SJzCZGTWGnU09MvG3eno5Sz3j+XxXxTj
-	 zU7cXTP1Bn0W8CaddpqocA/FAI8N7DANpNNFNCqRIW0KYnrtyTHIgpnHTkfKLz8wZC
-	 CxbuSmDCCpdKeDu5yNlQFL2kej9aH9A471/KMCtRZJrd+tWAl2+4XXPrmcKbY+Dh+w
-	 lPp9QBz+tIJNQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B932140905;
-	Wed,  9 Jul 2025 13:31:55 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id EDCB315F
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Jul 2025 13:31:53 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2D476AFED26
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Jul 2025 17:09:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D45A281291
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Jul 2025 13:31:53 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CC914815DF;
+	Wed,  9 Jul 2025 15:09:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sS_iv1r7z6dw for <intel-wired-lan@lists.osuosl.org>;
- Wed,  9 Jul 2025 13:31:52 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::436; helo=mail-wr1-x436.google.com;
- envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org F3E8E812A3
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F3E8E812A3
-Received: from mail-wr1-x436.google.com (mail-wr1-x436.google.com
- [IPv6:2a00:1450:4864:20::436])
- by smtp1.osuosl.org (Postfix) with ESMTPS id F3E8E812A3
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Jul 2025 13:31:49 +0000 (UTC)
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-3ab112dea41so2989534f8f.1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 09 Jul 2025 06:31:49 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752067908; x=1752672708;
- h=content-disposition:mime-version:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=jhrQrdwjqbXJ+aeZgreDfDq+/3Niqi/WqrCzbRM6tNs=;
- b=VemgQRdXHOMNlPxorFPDdhCd21G3uHJInPEsevTqKhQgzdqfIHcc+0Kiao6sHgj6jA
- MCKnZsQo0FGzlSB2f647Zlc1A17eWTG+yhtoFAseLIQf5BFfw0gsMN22VG868dkodSvy
- gdw04g+y4ZNOxho7pn2AKqNsVqhBaudt64MVF9KQJIBw50ZvuQi22f5pgVmOCz3i4kvX
- AWJtmSJGhLaIsYUyZxq29TBh/fcmlPAUzPCz1DYjVMWYSc72Fq1M2fSVc+Yl0XHx/19w
- mmg5bM7Tyv1vxo+x0GPwEKbpWtmA0IM5BShV9PkgQqRyD9YR60/KZZjLQrpVOQtmfCQc
- Og1g==
-X-Gm-Message-State: AOJu0Yx+YjAy53PWnFCHUIY/FRTKli+wfwp0l6rIrXc1zauUb6vOHwG7
- ifxtPf4LRY2AEFXJcrUX6YmSLqNRBfVJLECWj7Zr8TFUVPyrVKNVv2TmDKXMre94VAg=
-X-Gm-Gg: ASbGncsu1GWvH6j7hOMxIgArErPh+9fQqvOvE+boFdgpHiXuZPXaoKcYN/LnYmmo6Gf
- Pk6/YdBVbJMefMr1I3gdT9eKjHMCdm7Dt9H2G9vNqP2g4EpRSh3mAXftxC3nVjw92OftJU17z/a
- TayP38c1A1v/eZilajtVooN8H4jKP5nurMbJ8faABZ8/t2moh5UfHgO2pSkWwJhKSqZbb18krkS
- rH5NPWb9xsf2r9EABdZpRSVlQfn7bPP7pHFuCn4TYimsq89jR1TnsM+H+c3b8BYpRTR2ggUPBtz
- l1ZRL1KExWv2tourQEbTldRj2fyL3bu+eKMkuUCmK2aV0hHYSXQaFoexVup0Wjee
-X-Google-Smtp-Source: AGHT+IEk97BLNurfRb2arivCq/fz9GGxVHcyANgW+U18S50uKk61NNc1T3JRkZwVCKl6dS6rw+q/Gg==
-X-Received: by 2002:a05:6000:2f82:b0:3a5:1410:71c0 with SMTP id
- ffacd0b85a97d-3b5e4529863mr2085134f8f.38.1752067907535; 
- Wed, 09 Jul 2025 06:31:47 -0700 (PDT)
-Received: from jiri-mlt ([193.47.165.251]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b470f871casm15853784f8f.45.2025.07.09.06.31.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 09 Jul 2025 06:31:47 -0700 (PDT)
-Date: Wed, 9 Jul 2025 15:31:42 +0200
-From: Jiri Pirko <jiri@resnulli.us>
-To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com
-Cc: intel-wired-lan@lists.osuosl.org
-Message-ID: <gv5l3vrfkyn6ara6l7uvn54qb7tuwvfn452o6ixfzjtvqbgxlx@jf4gnjrkuha2>
+ id N8NsbvXA8p1g; Wed,  9 Jul 2025 15:09:25 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 862778156F
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1752073764;
+	bh=EZ0M9HodEwlry/eKWkrULViGPOxu/dhAZfcXYMZH7Dg=;
+	h=From:Date:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=6ExNzgT73kfyoloBxSZiW/Ptb93YPoTyiVl+eBmQaEb1aVnvuJkpyYvXUjiQ/KpJn
+	 +ukathT5uZyY36RdQ9Ihh1IKyDUW+p1hHJhd9h8LJR2tZ0W0GPv0BYIj4HQXp/a6KL
+	 mWakxcaE3OQdy7QUfEJciTQO12F9PpksqL5jVjT9iUbS3QmqhFEwTotvy4RX2QczNb
+	 2swC7molI+9O4UvrV08H4iW6nIJ3o9DcTO8Ejj1mOi5AF+wWpHvdAoVsboUdbvVn1s
+	 wy7fYqm125gQtmXEQA8YmM0BN5GBYHHHF0ThMmbpTywIN5kYN5Q4QqabXCv/t1Bf0v
+	 8Zd8GswNw9EHA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 862778156F;
+	Wed,  9 Jul 2025 15:09:24 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id AD8E912E
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Jul 2025 14:40:33 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id AA84460A5E
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Jul 2025 14:40:33 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id MVUtcLIploPp for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  9 Jul 2025 14:40:32 +0000 (UTC)
+X-Greylist: delayed 360 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 09 Jul 2025 14:40:30 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D5F49606FA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D5F49606FA
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=151.80.40.192;
+ helo=smtp.blochl.de; envelope-from=markus@blochl.de; receiver=<UNKNOWN> 
+Received: from smtp.blochl.de (mail.blochl.de [151.80.40.192])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D5F49606FA
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Jul 2025 14:40:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.blochl.de E74C64466472
+Received: from workknecht.fritz.box (ppp-93-104-0-143.dynamic.mnet-online.de
+ [93.104.0.143])
+ by smtp.blochl.de (Postfix) with ESMTPSA id E74C64466472;
+ Wed, 09 Jul 2025 14:34:24 +0000 (UTC)
+X-Virus-Status: Clean
+X-Virus-Scanned: clamav-milter 1.4.2 at 472b552e6fe8
+From: =?utf-8?q?Markus_Bl=C3=B6chl?= <markus@blochl.de>
+Date: Wed, 09 Jul 2025 16:34:19 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1752067908; x=1752672708;
- darn=lists.osuosl.org; 
- h=content-disposition:mime-version:message-id:subject:cc:to:from:date
- :from:to:cc:subject:date:message-id:reply-to;
- bh=jhrQrdwjqbXJ+aeZgreDfDq+/3Niqi/WqrCzbRM6tNs=;
- b=r2TmCHwdDu2tqFLFUTuziB6FnzI4mD26DIVfY0TP93yLj6/C2zCl8qb2Dp/ksh8LxF
- HXlv4rSxTJOG4bdMHDC+50b5eMmEYYnRbge2aCJaTHnlq7eZof1prgokKHFwTvunbL3/
- TW6Sl7XPbaP4jwTogRVNFwsDUIDczb1Tf0NyWPQJthlUmKhG/nN1Gcv5mDd3qJeVGimV
- ihP0xWsb3EZTWziiSTrJuAgpKgLcQKsLjCWXj8NOKYOcWxr95ZDKcAmwZybLecjSjf2q
- cXKHYuxPNYbQ/hXFSu2uWNhNgtSgRcqh+Hb+OBEY2c96QFU4ZnnGLcS4uhr4b3bFcGyH
- Ri/w==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20250709-e1000e_crossts-v1-1-f8a80c792e4f@blochl.de>
+X-B4-Tracking: v=1; b=H4sIAOp9bmgC/x3MQQqAIBBA0avIrBMm0ayuEhFSU82mwokIxLsnL
+ d/i/wRCkUmgVwkiPSx8HgV1pWDew7GR5qUYDBqHHjtNNSLSNMdT5BbtvXWNt2vTmgAluiKt/P7
+ DYcz5A02qk+JgAAAA
+X-Change-ID: 20250709-e1000e_crossts-7745674f682a
+To: Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
+ Richard Cochran <richardcochran@gmail.com>, 
+ Thomas Gleixner <tglx@linutronix.de>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ markus.bloechl@ipetronik.com, John Stultz <jstultz@google.com>, 
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org
+X-Mailer: b4 0.14.2
+X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.6.4
+ (smtp.blochl.de [0.0.0.0]); Wed, 09 Jul 2025 14:34:25 +0000 (UTC)
+X-Mailman-Approved-At: Wed, 09 Jul 2025 15:09:23 +0000
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=resnulli.us
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=resnulli-us.20230601.gappssmtp.com
- header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=r2TmCHwd
-Subject: [Intel-wired-lan] fwupd - devlink firmware flashing support
+ header.from=blochl.de
+X-Mailman-Original-Authentication-Results: mail.blochl.de;
+ dmarc=none (p=none dis=none)
+ header.from=blochl.de
+X-Mailman-Original-Authentication-Results: mail.blochl.de;
+ spf=fail smtp.mailfrom=blochl.de
+Subject: [Intel-wired-lan] [PATCH] e1000e: Populate entire
+ system_counterval_t in get_time_fn() callback
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -122,61 +105,48 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi.
+get_time_fn() callback implementations are expected to fill out the
+entire system_counterval_t struct as it may be initially uninitialized.
 
-I'm currently working on fwupd plugin for devlink. I have somehow
-working version tested with netdevsim and mlx5. I'm curious if you would
-be interested into supporting your nics as well. Here's the code:
-https://github.com/jpirko/fwupd/tree/wip_devlink_rfc1
+This broke with the removal of convert_art_to_tsc() helper functions
+which left use_nsecs uninitialized.
 
-In plugins/devlink/tests/example/ you can find how to build cab file for
-netdevsim. To flash it, get the device id from command:
-$ sudo ./build/src/fwupdtool get-devices
-and flash it using:
-$ sudo ./build/src/fwupdtool install plugins/devlink/tests/example/firmware.cab fa645832a32a760dc0d20ec0cac7dcd13ca3d104
+Assign the entire struct again.
 
-for mlx5 cx6dx nic I'm using following example xml:
-$ cat cx6dx-22_45_1020.firmware.metainfo.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<component type="firmware">
-  <id>com.nvidia.ConnectX6dx.firmware</id>
-  <name>ConnectX6dx Test Firmware</name>
-  <summary>Test firmware for ConnectX6dx device</summary>
-  <description>
-    <p>Test firmware package for ConnectX6dx device</p>
-  </description>
-  <provides>
-    <firmware type="flashed">f7f61adf-77b6-5e21-bb80-0112a70ab91c</firmware>
-  </provides>
-  <metadata_license>CC0-1.0</metadata_license>
-  <project_license>GPL-2.0+</project_license>
-  <developer_name>Test Developer</developer_name>
-  <releases>
-    <release urgency="high" version="22.45.1020" date="2025-07-01">
-      <description>
-        <p>Test firmware release for ConnectX6dx device</p>
-      </description>
-    </release>
-  </releases>
-  <requires>
-    <firmware compare="ge" version="0.0.1"/>
-  </requires>
-  <custom>
-    <value key="LVFS::UpdateProtocol">org.kernel.devlink</value>
-    <value key="LVFS::DeviceFlags">omit-component-name,needs-activation</value>
-  </custom>
-</component>
+Fixes: bd48b50be50a ("e1000e: Replace convert_art_to_tsc()")
+Cc: stable@vger.kernel.org
+---
+Notes:
 
-You need to change the GUID hash be whatever is generated for your
-device.
+Related-To: <https://lore.kernel.org/lkml/txyrr26hxe3xpq3ebqb5ewkgvhvp7xalotaouwludjtjifnah2@7tmgczln4aoo/>
+---
+ drivers/net/ethernet/intel/e1000e/ptp.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-Also, note the flags. That may be different for you, idk. You may not
-need omit-component-name, as I think for ice you support flashing with
-component name.
+diff --git a/drivers/net/ethernet/intel/e1000e/ptp.c b/drivers/net/ethernet/intel/e1000e/ptp.c
+index ea3c3eb2ef2020d513d49c1368679f27d17edb04..f01506504ee3a11822930115e9ed07661d81532c 100644
+--- a/drivers/net/ethernet/intel/e1000e/ptp.c
++++ b/drivers/net/ethernet/intel/e1000e/ptp.c
+@@ -124,8 +124,11 @@ static int e1000e_phc_get_syncdevicetime(ktime_t *device,
+ 	sys_cycles = er32(PLTSTMPH);
+ 	sys_cycles <<= 32;
+ 	sys_cycles |= er32(PLTSTMPL);
+-	system->cycles = sys_cycles;
+-	system->cs_id = CSID_X86_ART;
++	*system = (struct system_counterval_t) {
++		.cycles = sys_cycles,
++		.cs_id = CSID_X86_ART,
++		.use_nsecs = false,
++	};
+ 
+ 	return 0;
+ }
 
-Let me know if I can do anything to assist you.
+---
+base-commit: 733923397fd95405a48f165c9b1fbc8c4b0a4681
+change-id: 20250709-e1000e_crossts-7745674f682a
 
-Thanks!
-
-Jiri
+Best regards,
+-- 
+Markus Blöchl <markus@blochl.de>
 
