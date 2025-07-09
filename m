@@ -1,103 +1,265 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 764A1AFD931
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Jul 2025 23:07:05 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8E2CFAFDC8C
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Jul 2025 02:50:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2D0A840BC6;
-	Tue,  8 Jul 2025 21:07:04 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BB81181584;
+	Wed,  9 Jul 2025 00:50:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XefSgdn5oDIM; Tue,  8 Jul 2025 21:07:02 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id F0KpRmLSBS5V; Wed,  9 Jul 2025 00:50:35 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8380F40C90
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1DB768150D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1752008821;
-	bh=7Zes30T5bHW0uHDw6d/yklbHcRT5/GS7iQNDipU7bsA=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1752022235;
+	bh=h3OoZeTJnbUJUxwJwJfqMy/3A5n7Ams5KsS54nomeOQ=;
+	h=Date:From:To:CC:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=BajKwbfWEkdl+JSD6/Mlm5bKQKt8MywkKkBLW6Zvikclw3iwsMSx+Rxe4PWSkXM5G
-	 cw+PDu0+wfcPxOLeQnevKXSnT6Cp4w/2bJ4Q3fu13vCeK3gWyBFaakuh7zP4l4GaqO
-	 zIW32L12gn9njIRxIVDzYsM0wSzhINMvymrfXTEwrbUNtebAtZSw3kY2cUiMrWycyl
-	 +HgdKP9EokBYnSDAvJzZQ4+J8GPDtcNmtMgz0y0QfbUSB3r4jFTWpSh+N2QJkgSlpu
-	 Vgt8xdgXyUIhpGK24MlHbbWT9ShSCryuINd/rN3lkmZo7ulrZ9TwLppcejGz7efsdq
-	 q0qsA/Ujqmvvg==
+	b=pcwK3zotnUxpzyh69bKDBYkoJu6FSAy4knziEn5J07FjQ3rjHnyK3Ls5zy2iY6e/b
+	 F8iT7+XwuYwxgypHBOdueQoK9wt+JYwRVLSlk5M+5X+9/KenZZef3ycqQiJtXifhAw
+	 ux+NtNGIRybY2P1D6o9W36NpmLEPJ7jsnUM/EQjO+pibb45yoAAVH1uyN79jKPHLvN
+	 f7wfH/zmSsk/qV4ILa1fHIbb36DAq/OPZRYtIzXxJdUzTrEm1joiyX0zaMu2cSwRjM
+	 OIDrJRQwlLPiX9IY5xLjRi29dZrON4rTVTHFYHw5QEgzwStBebjKUDeWVNftVflF5m
+	 zbG35/BIDqtPg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8380F40C90;
-	Tue,  8 Jul 2025 21:07:01 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1DB768150D;
+	Wed,  9 Jul 2025 00:50:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id E45D015F
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Jul 2025 21:06:59 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id B62FA12E
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Jul 2025 00:50:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E0A2B40101
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Jul 2025 21:06:58 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id B36514016B
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Jul 2025 00:50:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id H9KPHKXmdgJq for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Jul 2025 21:06:57 +0000 (UTC)
+ id QxfQyG-m-Ka8 for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  9 Jul 2025 00:50:33 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
- helo=mgamail.intel.com; envelope-from=tatyana.e.nikolova@intel.com;
+ helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 5E82E400F6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5E82E400F6
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org BC60B40118
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BC60B40118
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5E82E400F6
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Jul 2025 21:06:57 +0000 (UTC)
-X-CSE-ConnectionGUID: NpSI0552QyG7CAS1wsjMDQ==
-X-CSE-MsgGUID: JzXoGMqpSpu5Kv9kJYwJBw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11487"; a="54391733"
-X-IronPort-AV: E=Sophos;i="6.16,298,1744095600"; d="scan'208";a="54391733"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id BC60B40118
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Jul 2025 00:50:32 +0000 (UTC)
+X-CSE-ConnectionGUID: 8JYVPJk+SvanNTRIuEkMYw==
+X-CSE-MsgGUID: uuPSj2oHRt2MTD7glwOUdg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11487"; a="54403421"
+X-IronPort-AV: E=Sophos;i="6.16,298,1744095600"; 
+ d="asc'?scan'208";a="54403421"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Jul 2025 14:06:57 -0700
-X-CSE-ConnectionGUID: 55l3q/+OSJCS49rCdmcYlw==
-X-CSE-MsgGUID: hg70wwo/Sr6Ny0M1UF5Dbw==
+ 08 Jul 2025 17:50:31 -0700
+X-CSE-ConnectionGUID: MC2oJgsgSdmC///ZzH5clQ==
+X-CSE-MsgGUID: tGuCMijzRwOkbxMW8yf3aQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,298,1744095600"; d="scan'208";a="179276563"
-Received: from pthorat-mobl.amr.corp.intel.com (HELO
- soc-PF51RAGT.clients.intel.com) ([10.246.116.180])
- by fmviesa002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Jul 2025 14:06:56 -0700
-From: Tatyana Nikolova <tatyana.e.nikolova@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: jgg@nvidia.com, leon@kernel.org, linux-rdma@vger.kernel.org,
- netdev@vger.kernel.org, kuba@kernel.org,
- Joshua Hay <joshua.a.hay@intel.com>,
- Tatyana Nikolova <tatyana.e.nikolova@intel.com>
-Date: Tue,  8 Jul 2025 16:05:54 -0500
-Message-ID: <20250708210554.1662-7-tatyana.e.nikolova@intel.com>
-X-Mailer: git-send-email 2.45.1
-In-Reply-To: <20250708210554.1662-1-tatyana.e.nikolova@intel.com>
-References: <20250708210554.1662-1-tatyana.e.nikolova@intel.com>
+X-IronPort-AV: E=Sophos;i="6.16,298,1744095600"; 
+ d="asc'?scan'208";a="155367707"
+Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
+ by orviesa009.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Jul 2025 17:50:32 -0700
+Received: from ORSMSX902.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.25; Tue, 8 Jul 2025 17:50:31 -0700
+Received: from ORSEDG903.ED.cps.intel.com (10.7.248.13) by
+ ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.25 via Frontend Transport; Tue, 8 Jul 2025 17:50:31 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (40.107.236.59)
+ by edgegateway.intel.com (134.134.137.113) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.25; Tue, 8 Jul 2025 17:50:30 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=UkmcrmDPBwgDL5Mc8WGZnsHvjH0zvbA0mN4RbAxQMQXHkzxjzligDq2EjTwI/JOjsB31vjXvwXSAcYf+I2KGgvKOqbSsY9tENtcSKHBC2zetguwFENlzaiLAnjJP/ncX5AngjQFeym5cE0T/zTFaZ+H1heW7ODWHDC6DlA5OrwE6LvnmuBW4o2l+GWic19+A94aWPiwM/q33jMpyNW/JnZfYNZCXIjbtZIo5yXFtKhKjie8CrGb3T5VsBGayMOuqrllPejF+vzmEc2LkH2FMZ+pnMleX3bIyqCbGhWbrj+Bd1OKOiIOPh1O/pBG3nDupNYoDEgwzK56CSrIDMjAaxA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=h3OoZeTJnbUJUxwJwJfqMy/3A5n7Ams5KsS54nomeOQ=;
+ b=sFYEkUqCNRQpmPaE7wl+c9UwuMYNvSUuC1TeUYdy/ks+JbLn58SwK4MzYeCE6C88SAmIEbwYlkZUbvdHY7WsY+XAU2oJxZQkVDRh+l0jGuszDuuawX9ahbojx65GqaL5c7eP/dfm3RcsnIacK/hbFTVC7c62DTiolMKAyafZSN08rTLnuJE9ObvZQiwKUArRD45+DLBnmsdzDrJhxfDnNC9XCt1l3zbC48MLBuYvFAi2oNod6banx0dxYNngy5SXzYjCjEjQ230RZnDq/1tJQr8DNnPRyELq9uTH8YgZQrZViiRUwnNjScUGXcYPXGvahDX47VykWbdcOLZtrOZWdA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
+ by IA0PR11MB7882.namprd11.prod.outlook.com (2603:10b6:208:40f::10)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8901.27; Wed, 9 Jul
+ 2025 00:50:27 +0000
+Received: from CO1PR11MB5089.namprd11.prod.outlook.com
+ ([fe80::81f7:c6c0:ca43:11c3]) by CO1PR11MB5089.namprd11.prod.outlook.com
+ ([fe80::81f7:c6c0:ca43:11c3%5]) with mapi id 15.20.8901.024; Wed, 9 Jul 2025
+ 00:50:27 +0000
+Message-ID: <a4b27e11-a3fd-4df0-8dd4-60d1a4aec5a8@intel.com>
+Date: Tue, 8 Jul 2025 17:50:23 -0700
+User-Agent: Mozilla Thunderbird
+From: Jacob Keller <jacob.e.keller@intel.com>
+To: Jaroslav Pulchart <jaroslav.pulchart@gooddata.com>
+CC: Maciej Fijalkowski <maciej.fijalkowski@intel.com>, Jakub Kicinski
+ <kuba@kernel.org>, Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "Damato, Joe" <jdamato@fastly.com>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>, "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>, "Czapnik, Lukasz"
+ <lukasz.czapnik@intel.com>, "Dumazet, Eric" <edumazet@google.com>, "Zaki,
+ Ahmed" <ahmed.zaki@intel.com>, Martin Karsten <mkarsten@uwaterloo.ca>, "Igor
+ Raits" <igor@gooddata.com>, Daniel Secik <daniel.secik@gooddata.com>, "Zdenek
+ Pesek" <zdenek.pesek@gooddata.com>
+References: <CAK8fFZ4hY6GUJNENz3wY9jaYLZXGfpr7dnZxzGMYoE44caRbgw@mail.gmail.com>
+ <CAK8fFZ5rS8Xg11LvyQHzFh3aVHbKdRHpuhrpV_Wc7oYRcMZFRA@mail.gmail.com>
+ <c764ad97-9c6a-46f5-a03b-cfa812cdb8e1@intel.com>
+ <CAK8fFZ4bRJz2WnhoYdG8PVYi6=EKYTXBE5tu8pR4=CQoifqUuA@mail.gmail.com>
+ <f2e43212-dc49-4f87-9bbc-53a77f3523e5@intel.com>
+ <CAK8fFZ6FU1+1__FndEoFQgHqSXN+330qvNTWMvMfiXc2DpN8NQ@mail.gmail.com>
+ <08fae312-2e3e-4622-94ab-7960accc8008@intel.com>
+ <366dbe9f-af4d-48ec-879e-1ac54cd5f3b6@intel.com>
+ <CAK8fFZ6PPw1nshtSp+QZ_2VVWVrsCKZDdsxdPF9Tjc0=_gi=Wg@mail.gmail.com>
+ <bdab5970-0701-4ba7-abd2-2009a92c130a@intel.com>
+ <CAK8fFZ5XPQ-mW5z9qJNJhqFukdtYGJawYTYuhHYDTCvcD37oFw@mail.gmail.com>
+ <d3c4f2f0-4c22-449b-9f8d-677c4671ee17@intel.com>
+ <CAK8fFZ4L=bJtkDcj3Vi2G0Y4jpki3qtEf8F0bxgG3x9ZHWrOUA@mail.gmail.com>
+ <aff93c23-4f46-4d52-bdaa-9ed365e87782@intel.com>
+ <252667f3-47b2-4d1f-86d6-c34ba43a6d47@intel.com>
+ <ee05284e-3ab1-482f-a727-981b9fd4e9ee@intel.com>
+Content-Language: en-US
+Autocrypt: addr=jacob.e.keller@intel.com; keydata=
+ xjMEaFx9ShYJKwYBBAHaRw8BAQdAE+TQsi9s60VNWijGeBIKU6hsXLwMt/JY9ni1wnsVd7nN
+ J0phY29iIEtlbGxlciA8amFjb2IuZS5rZWxsZXJAaW50ZWwuY29tPsKTBBMWCgA7FiEEIEBU
+ qdczkFYq7EMeapZdPm8PKOgFAmhcfUoCGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4AA
+ CgkQapZdPm8PKOiZAAEA4UV0uM2PhFAw+tlK81gP+fgRqBVYlhmMyroXadv0lH4BAIf4jLxI
+ UPEL4+zzp4ekaw8IyFz+mRMUBaS2l+cpoBUBzjgEaFx9ShIKKwYBBAGXVQEFAQEHQF386lYe
+ MPZBiQHGXwjbBWS5OMBems5rgajcBMKc4W4aAwEIB8J4BBgWCgAgFiEEIEBUqdczkFYq7EMe
+ apZdPm8PKOgFAmhcfUoCGwwACgkQapZdPm8PKOjbUQD+MsPBANqBUiNt+7w0dC73R6UcQzbg
+ cFx4Yvms6cJjeD4BAKf193xbq7W3T7r9BdfTw6HRFYDiHXgkyoc/2Q4/T+8H
+In-Reply-To: <ee05284e-3ab1-482f-a727-981b9fd4e9ee@intel.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="------------ojVJDDYBbyvl0r81ShAMXUsc"
+X-ClientProxiedBy: MW2PR16CA0071.namprd16.prod.outlook.com
+ (2603:10b6:907:1::48) To CO1PR11MB5089.namprd11.prod.outlook.com
+ (2603:10b6:303:9b::16)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CO1PR11MB5089:EE_|IA0PR11MB7882:EE_
+X-MS-Office365-Filtering-Correlation-Id: 11cc8220-eb50-47ea-08ea-08ddbe829839
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|7416014|376014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?UWtBUnZPTFM4SE1MRkhTc1JoZmNEWFlGQnQ5YnF0clJGczlaNEtlc3BBSi85?=
+ =?utf-8?B?a21DeW8reFAvZUdlcXBLWi96YkVaazg4bTFIOHdmNDZUMkhscVYrZDVZM0cx?=
+ =?utf-8?B?MTJxUjEyVUpOWDVGcFRFNmkrbnlkR2FQRGpvdG1UanhCakNZUUR6SDFGbWFq?=
+ =?utf-8?B?M1lCcW9UcWQ2dE82N2ZJWUlCNzEyek5rdXZDd3hsMDFOa21TRWkySzd1MFhS?=
+ =?utf-8?B?QTFSVE44WkxjUmxzWlUxK3JMV1JBUHRRcDJveDhKS25zajdyN1hLbUoza2Nk?=
+ =?utf-8?B?VDhYNVA0SUpDZzdmZG9MRWZ0QzJQNElEMW5FanpWVWg1amtVV0VpOVorRGgw?=
+ =?utf-8?B?MTlNa09hR0NrcU9Gd0M3MFpYVktpZWtoQ1FTSVRYVEJRMzgxUEJoQVFIcjF1?=
+ =?utf-8?B?SSt1WEVxa1ErUkFhMWdDK1F6V1lnbzE0clErZkJkd3B4c1pBV2NscGtuWjFa?=
+ =?utf-8?B?dFhnejM2dGd4OHZRd0UyamVJQ1RMRGlxcktGclF4eEJwb0tjNzc3dmY4QW5h?=
+ =?utf-8?B?RkFJbVhET29jTTBtbFJkUld4VW52WUtRZjE0bjU0UWNCZDg3UUEzWGpSVGJa?=
+ =?utf-8?B?TU9qem40cXoxTC9qVUNoVlpvSDlITVEyUGptaWhBNE1zSk4xQkw1MlBjMy9X?=
+ =?utf-8?B?eVpSRVY0QXhxc3N5NGFLaWpPQlJIQjBKeS94OTdIb2FCNHBERlVnVHBGaVFC?=
+ =?utf-8?B?bGIwR0NuQmpWdzlaNjlsRVJ3QjU3N0QzYTJ6ZjhvTWdqRnpiUi9PQk1sSzA0?=
+ =?utf-8?B?V2syZzFUTFVCMStqb09zcld0VHRQUmVXNnpXdlI1Y3ByRkJJa2xhTno0bjJl?=
+ =?utf-8?B?d1ZHa1luMEJ3ZmJqSm02ZEU2emFIVjZPb2pzZVp0VFRFRStvUEdpbnkyMVZs?=
+ =?utf-8?B?WHJlRksxWEdDNjlkUFMzckNqZmlnL01PVk5ZZGQwdHNNaDVDSGhKbnF1eXg5?=
+ =?utf-8?B?dnh4NEtpZWxMK1haWnRHTDVmSWxxcWk2bkgyRERIS2ZNcHoyNFRWS3A1bGhk?=
+ =?utf-8?B?UEpTRXhabUJXN0lmeDVJUVo1MGtVVWpEbS9HK2grbjdGcHdFMXkySVNkY0dN?=
+ =?utf-8?B?Yng2alZFR3FQYTZQS1dNakZrYTdnT3UwZkNZbDI3MU1adlFHb0FnRU5mZTM3?=
+ =?utf-8?B?NnJxVmFTamN1RmVvcFhKNUF6UFVJVnhmcWkrNWdOTkdDeDh5L1V1R2NBT25y?=
+ =?utf-8?B?NUExYmhqQ2NKVDRRS3hhelQ5MDM5NXJKb0NCb1JnOUhFWWxNWVd0VTA4YzZZ?=
+ =?utf-8?B?Y0JDV3Bhc0RsVUp4c016WEQ5R3FjVHlQMXJqaWNJMDRRNkY0amxxZDAzRzkv?=
+ =?utf-8?B?cXZGVEtPb3Fib1p4MkVSbGFxMEowc3YvUnRKVk0zRmc5K0sybjZDbURyQU44?=
+ =?utf-8?B?YlVCTXpzeTJlNDNkcHhvOTNFZTlVaCtNaU1yTURuR2VjRDVtMzNBa1d5Vytu?=
+ =?utf-8?B?Y0t4NVFkcTg5Y3B6K1FsR3BMTGM2ZGpOVEMxL01iUUpiZUxlaXJWM2tLdDFH?=
+ =?utf-8?B?TTVyYSt5T3dEdXNXUThVc1czWEQzOVhUVTJpRW10M21aVmErZk9aeGtHMU1N?=
+ =?utf-8?B?WXBCd3MwOE9WUGs4cm8rZG44bnRrdTZYTHJpNzNnMC9vbjk4T1pIbVlIeENt?=
+ =?utf-8?B?Snp1Y3pXcVl2Q3BGOENsWTJ6djhmQjg2NG5kSEw4L0lLS2VmWm14bjBQeHFw?=
+ =?utf-8?B?ZzBvZWJqdFkrUVAzSG9UMzNKSkc4bzNvOExpYzBqN1AwUXFhU2JzL210R2ZF?=
+ =?utf-8?B?RWxoUXVpVUw1Tmw4NDJYbHpZOE5hUG95dVI3VWZ5WUhaeW1vclB6SWxWNHlj?=
+ =?utf-8?B?L0F0eVgxdU5WbWpmNGJtalRXSEVlWnNRR1pmSDFDSHRJckl0OU9Ub2REOUxn?=
+ =?utf-8?B?T0FzMXhxQ0hpOTVjZkE5QTdqTzRVYkRQTkNIbC91ZklwR3RhYnRYa2cyK3ly?=
+ =?utf-8?Q?Fha1E0ddxZo=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CO1PR11MB5089.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(1800799024)(7416014)(376014); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UjAzL3JzM1FYaTFzYzVhSVgyTGlkWFdZQnpzWHBzdzBQTXZYYllSNjRNSVVn?=
+ =?utf-8?B?SzIrcVJZRnBsMWUrdHlNOUdxR0VhekFDZGRibUZwRGRXdmw0ZWpVN1ZrTEl2?=
+ =?utf-8?B?bUl1Ui95OVRYcHFBUlVSWHBlaUoxVloxRlJXeVpBTHlSTExoaStYS2huRDFv?=
+ =?utf-8?B?MWxDK3BDaE9Uc0Z2RGdRL2FPdldTaURyajd0Wk9ReVcybWN1cS9nNzQ1QkFS?=
+ =?utf-8?B?c0ozUWFUTkRCY2tyby9aeUJIdHdyN0tkUS9COGhXUmFRWUZaTzZGckFMclVE?=
+ =?utf-8?B?aUg2MVZJdm91SUpTYlZPdmdyOVZHd0Q1QXBpTEdKRVdIN2dsUkVZcWtZS0lN?=
+ =?utf-8?B?d0lZTldmSGtWOWQwc0Rlc3ZPdlN6c0ExZjdkcTU5OEZOc2pOTHFGZmdWT3o1?=
+ =?utf-8?B?YVZOUWlDdi81cEQ1TVZYYXpGSjFpbE51emNvUjhKWVF0MGRDdlJnYkxTa3A5?=
+ =?utf-8?B?eVBCVnZtZUMxOFFOTnVYc2xFanhtRGdRVVBaRGF6RkhZQ0FQckM1cStVL1Ny?=
+ =?utf-8?B?cW1nMlozUHE2NVBINjlXaGJ5dnF6L2pGejJyaEQzOWI1UjA4REVQWUVianZs?=
+ =?utf-8?B?Y3lydzQ1eUd6N3hZZStnNXVvMWZ3clNXYlVUL3dWM09wOVg3cGQ3OWpYT0gr?=
+ =?utf-8?B?cytUVEk3d1FFUkJxMk10MFQrNndsbVp3YWQrc0o1RmpMaEp1T1dkclF6Tm1J?=
+ =?utf-8?B?RjdQeDFNVjBnU1RHQWxPM3RJSUZQME1Pc3FtdTVoWXYrTkcvNkNHc2htRXNM?=
+ =?utf-8?B?ZHYybUc0TGJ2Yyt3ZGRBVGlVRVEvU3ErN3QrQjR5Vm1xRXcvVUo0aXZnZmhK?=
+ =?utf-8?B?dzZaa1Ivb3JWYjlyOGh6MUxKbXMxV0FnQnpyNXVCeXZCZlEvcUVadDFZYkli?=
+ =?utf-8?B?Zk1PRE1zTHZNNXVyODYxdWZhUFFlM0RVTXBaRTRhaTJGV0xJVlVBME12S3Ez?=
+ =?utf-8?B?NnJzdm9qWHlDSVpsSW9Zd29vRUdzWDBwKzlMRDdxYi8zc3JLRWIvVVd0VExj?=
+ =?utf-8?B?cTNYSHJnMi9qc1c2eW1qNEc1MTRvZ0tyOGlHMmVtZkVLRDhOdWJteFY0SG4r?=
+ =?utf-8?B?a0ZtVS9lR3NUejNVSi9UMi9CTXhHOCtmTm1kVVNKWkRBYndFOU81bUFDQU1Q?=
+ =?utf-8?B?dndwQ1VFUTNXM1ZSV0Fkc3VxTlNUQmQ3dXRjdXRRSkllQy84VEgrNGY1cWJH?=
+ =?utf-8?B?UW5xamtSeThTZGh5ems2bmZPTnJoN1JkUUI2cmNxc3RVcEhoR0lmV2g1SjZM?=
+ =?utf-8?B?aUJTQWN5WmUwczdhRGRUUHRMK2dyRlhYV0pKa3dyVzJyc2g0OHN2KzJwZlla?=
+ =?utf-8?B?VmNyWnRxYWxkcGh3bkFUSmk4SEJSYkpaS1ZuNjIzcTkrbXUvVFZHOFBGUmZC?=
+ =?utf-8?B?MXpDdkRTKzE2K2NpQzRYd0J4TjZmWHdrb1ZhNkU4dXRtZ2oxcE5GM2V6V0Ft?=
+ =?utf-8?B?bTE2cGNNc0h6NVFQdG5jSUgvVE1qRlYzcVZtWUNUWEN4Wk1SUURBVVpJSU9y?=
+ =?utf-8?B?dUZhNUlqVEtiS0VtdllYeGFPTFo3aWJhWXNheWRxc2hZTTJ4ekRTMUtJUEJT?=
+ =?utf-8?B?NW9EVEgvbXIvUWtzZkhmeWl3cmtDL0NLQUlHVUR0cVhFYnA5c09VOHE4OUFG?=
+ =?utf-8?B?UlFqL2FQVUVYa21HY2FiYlVTUE53QzdEYU9NQTBwbXBKdXJHU0JneVJ6RHc2?=
+ =?utf-8?B?ZzNiRUJoNnhIRTlBdVhSQW1ILzdMWFFZbXJjdGxuaWZKR2FodkVvbGNCYXdC?=
+ =?utf-8?B?MjhETEhHMkluaGZNWUNqR0JqVlJBbklWLzVxVE1zUzBCV2Z4dHc0enA4SnUx?=
+ =?utf-8?B?Z0NIVTFndmc0MGNqc0lHNEZaNHA3N1VNVmVwLzVIenRXTWdOQURPOHRIMEkx?=
+ =?utf-8?B?VEhsajh5VWNpMHZhclJzVE9XN3FYUXVGeDN4TWdEV1l1MjEzVUJLdmo2S1Zn?=
+ =?utf-8?B?MUNpN21ZaTJsY1JkZWx3emVlWGJEM2hRRERTMWg3UmhKalMxZ1IySUVLejhX?=
+ =?utf-8?B?bFZPZVFPLzdpcDgxQlFZTEFKNWNYN2JjQkFqNXoxTWgvTzUwelpFQ1dpOHVL?=
+ =?utf-8?B?aThUcVJqMDhBSHBSWlQrVk9RSHJ3eHlQbFVoVU9oZG1MSGF3cEtkajhqOWp3?=
+ =?utf-8?B?bEtOTkFGYmsxelZ5SWFaeHlJSE9iRkd2UmVFaWdFWDE4WXF5YjlVRk9XWStB?=
+ =?utf-8?B?Y3c9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 11cc8220-eb50-47ea-08ea-08ddbe829839
+X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jul 2025 00:50:26.9542 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: vaVZODRR0VLwUQGgh0lrUaXKcjSJEqOOrgsb8EOg//Zg4H/grv589lkIemJ39cxeDkI7fKO5Nf80g6GNVHZz8rdgHBBO2nryah/GqvtjZ7M=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR11MB7882
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1752008817; x=1783544817;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=9/1DYxk/SPsNxVAFT2mzUgfbgR/7yZwwtnxExsR5Jz8=;
- b=R26bxtuTXE63k/JyU9oFxKdVKp512rp6kD2CHSPtQtXVyqw6Nhi+vuTO
- WmsMM43cCfUT+HdRWi8S7yJ80zW0ksp7UnVlMLahIMRXLxflb5VNYL9hz
- C0nX8mzGkrsyS2MurA9C6rzIdb/pX14Z0HLKNnG/+dODqN2/gZTwaXBF/
- 2uSuEEVEvI4Ot0HoGYREnN0N0/s1lYGw2pHb4FsMWpFvPjlvmwqTUwRZi
- b9RM/IK/KH1ta21QTtE/w8EHXWD+2oheISnETFVdY7LLyhGUQQ5poCsHj
- pk40WeDqc6PJR79dlWwGpL8DML2/JnnGflBByUAtQ67sf/2JFdXefy5Vr
+ t=1752022232; x=1783558232;
+ h=message-id:date:subject:from:to:cc:references:
+ in-reply-to:mime-version;
+ bh=h3OoZeTJnbUJUxwJwJfqMy/3A5n7Ams5KsS54nomeOQ=;
+ b=DjZI6wkxXMe0DVPmuv4Cc8Z/7cykWsVWq51G2+xvgxJQBXmbFPX3GEBj
+ VYJCtlz9gVQHF1F3ikHkKTnHtebGW7Wye1iPo2EtmnA6JXLk1Hv0Rc5OZ
+ 0EsxhyIVasBLloffch48nFioCdGrg4eAmvTbJMn2PtPGZTVnruTCXIY9d
+ e25iMEHJlWzg/dwhduN/uQn0IAJFYLcs9YZa5bimQjSLS4R/xz/0B1Qvw
+ WS/15mFbsNyA0j5xhLjg3G8yq3yrVfsD8ZuWTxq4w/6EM0XxQWoYk1Zsl
+ D2o2fs13RP4CMpo+eeXw+OdAd5IDCVsvZIQXK48ohucNt4HCDM81+NS/O
  g==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=R26bxtuT
-Subject: [Intel-wired-lan] [iwl-next v3 6/6] idpf: implement get LAN MMIO
- memory regions
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=DjZI6wkx
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] Increased memory usage on NUMA nodes with ICE
+ driver after upgrade to 6.13.y (regression in commit 492a044508ad)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -113,837 +275,98 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Joshua Hay <joshua.a.hay@intel.com>
+--------------ojVJDDYBbyvl0r81ShAMXUsc
+Content-Type: multipart/mixed; boundary="------------kNlAxPnNOGb9XrM3qAb0hvc6";
+ protected-headers="v1"
+From: Jacob Keller <jacob.e.keller@intel.com>
+To: Jaroslav Pulchart <jaroslav.pulchart@gooddata.com>
+Cc: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "Damato, Joe" <jdamato@fastly.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ "Czapnik, Lukasz" <lukasz.czapnik@intel.com>,
+ "Dumazet, Eric" <edumazet@google.com>, "Zaki, Ahmed" <ahmed.zaki@intel.com>,
+ Martin Karsten <mkarsten@uwaterloo.ca>, Igor Raits <igor@gooddata.com>,
+ Daniel Secik <daniel.secik@gooddata.com>,
+ Zdenek Pesek <zdenek.pesek@gooddata.com>
+Message-ID: <a4b27e11-a3fd-4df0-8dd4-60d1a4aec5a8@intel.com>
+Subject: Re: [Intel-wired-lan] Increased memory usage on NUMA nodes with ICE
+ driver after upgrade to 6.13.y (regression in commit 492a044508ad)
+References: <CAK8fFZ4hY6GUJNENz3wY9jaYLZXGfpr7dnZxzGMYoE44caRbgw@mail.gmail.com>
+ <20250625132545.1772c6ab@kernel.org>
+ <CAK8fFZ7KDaPk_FVDbTdFt8soEWrpJ_g0_fiKEg1WzjRp1BC0Qg@mail.gmail.com>
+ <CAK8fFZ5rS8Xg11LvyQHzFh3aVHbKdRHpuhrpV_Wc7oYRcMZFRA@mail.gmail.com>
+ <c764ad97-9c6a-46f5-a03b-cfa812cdb8e1@intel.com>
+ <CAK8fFZ4bRJz2WnhoYdG8PVYi6=EKYTXBE5tu8pR4=CQoifqUuA@mail.gmail.com>
+ <f2e43212-dc49-4f87-9bbc-53a77f3523e5@intel.com>
+ <CAK8fFZ6FU1+1__FndEoFQgHqSXN+330qvNTWMvMfiXc2DpN8NQ@mail.gmail.com>
+ <08fae312-2e3e-4622-94ab-7960accc8008@intel.com>
+ <366dbe9f-af4d-48ec-879e-1ac54cd5f3b6@intel.com>
+ <CAK8fFZ6PPw1nshtSp+QZ_2VVWVrsCKZDdsxdPF9Tjc0=_gi=Wg@mail.gmail.com>
+ <bdab5970-0701-4ba7-abd2-2009a92c130a@intel.com>
+ <CAK8fFZ5XPQ-mW5z9qJNJhqFukdtYGJawYTYuhHYDTCvcD37oFw@mail.gmail.com>
+ <d3c4f2f0-4c22-449b-9f8d-677c4671ee17@intel.com>
+ <CAK8fFZ4L=bJtkDcj3Vi2G0Y4jpki3qtEf8F0bxgG3x9ZHWrOUA@mail.gmail.com>
+ <aff93c23-4f46-4d52-bdaa-9ed365e87782@intel.com>
+ <252667f3-47b2-4d1f-86d6-c34ba43a6d47@intel.com>
+ <ee05284e-3ab1-482f-a727-981b9fd4e9ee@intel.com>
+In-Reply-To: <ee05284e-3ab1-482f-a727-981b9fd4e9ee@intel.com>
 
-The RDMA driver needs to map its own MMIO regions for the sake of
-performance, meaning the IDPF needs to avoid mapping portions of the BAR
-space. However, to be HW agnostic, the IDPF cannot assume where
-these are and must avoid mapping hard coded regions as much as possible.
+--------------kNlAxPnNOGb9XrM3qAb0hvc6
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-The IDPF maps the bare minimum to load and communicate with the
-control plane, i.e., the mailbox registers and the reset state
-registers. Because of how and when mailbox reigster offsets are
-initialized, it is easier to adjust the existing defines to be relative
-to the mailbox region starting address. Use a specific mailbox register
-write function that uses these relative offsets. The reset state
-register addresses are calculated the same way as for other registers,
-described below.
 
-The IDPF then calls a new virtchnl op to fetch a list of MMIO regions
-that it should map. The addresses for the registers in these regions are
-calculated by determining what region the register resides in, adjusting
-the offset to be relative to that region, and then adding the
-register's offset to that region's mapped address.
 
-If the new virtchnl op is not supported, the IDPF will fallback to
-mapping the whole bar. However, it will still map them as separate
-regions outside the mailbox and reset state registers. This way we can
-use the same logic in both cases to access the MMIO space.
+On 7/7/2025 3:03 PM, Jacob Keller wrote:
+> Bad news: my hypothesis was incorrect.
+>=20
+> Good news: I can immediately see the problem if I set MTU to 9K and
+> start an iperf3 session and just watch the count of allocations from
+> ice_alloc_mapped_pages(). It goes up consistently, so I can quickly tel=
+l
+> if a change is helping.
+>=20
+> I ported the stats from i40e for tracking the page allocations, and I
+> can see that we're allocating new pages despite not actually performing=
 
-Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
-Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
-Signed-off-by: Tatyana Nikolova <tatyana.e.nikolova@intel.com>
----
+> releases.
+>=20
+> I don't yet have a good understanding of what causes this, and the logi=
+c
+> in ice is pretty hard to track...
+>=20
+> I'm going to try the page pool patches myself to see if this test bed
+> triggers the same problems. Unfortunately I think I need someone else
+> with more experience with the hotpath code to help figure out whats
+> going wrong here...
 
-v3:
-- Use managed version of pci_request_region API
+I believe I have isolated this and figured out the issue: With 9K MTU,
+sometimes the hardware posts a multi-buffer frame with an extra
+descriptor that has a size of 0 bytes with no data in it. When this
+happens, our logic for tracking buffers fails to free this buffer. We
+then later overwrite the page because we failed to either free or re-use
+the page, and our overwriting logic doesn't verify this.
 
-v2:
-- Don't dereference cdev_info before NULL check in deinit_core_aux_device
+I will have a fix with a more detailed description posted tomorrow.
 
-Changes since split (v1):
-- use struct resource to track mbx and rstat offsets
-- minor cleanup, added more comments, and more explanation in commit
-  msg, s/addr/vaddr
-- align with header naming, add idpf specific memory region support to
-  idpf specific header
+--------------kNlAxPnNOGb9XrM3qAb0hvc6--
 
-[3]:
-- header cleanup
+--------------ojVJDDYBbyvl0r81ShAMXUsc
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature.asc"
 
- drivers/net/ethernet/intel/idpf/idpf.h        |  71 ++++++++-
- .../net/ethernet/intel/idpf/idpf_controlq.c   |  14 +-
- .../net/ethernet/intel/idpf/idpf_controlq.h   |  19 ++-
- drivers/net/ethernet/intel/idpf/idpf_dev.c    |  36 +++--
- drivers/net/ethernet/intel/idpf/idpf_idc.c    |  32 +++-
- drivers/net/ethernet/intel/idpf/idpf_main.c   |  32 +++-
- drivers/net/ethernet/intel/idpf/idpf_mem.h    |   8 +-
- drivers/net/ethernet/intel/idpf/idpf_vf_dev.c |  32 ++--
- .../net/ethernet/intel/idpf/idpf_virtchnl.c   | 149 +++++++++++++++++-
- drivers/net/ethernet/intel/idpf/virtchnl2.h   |  31 +++-
- include/linux/net/intel/iidc_rdma_idpf.h      |   8 +
- 11 files changed, 380 insertions(+), 52 deletions(-)
+-----BEGIN PGP SIGNATURE-----
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf.h b/drivers/net/ethernet/intel/idpf/idpf.h
-index f1bb10ae34b3..8c93fbcb41bb 100644
---- a/drivers/net/ethernet/intel/idpf/idpf.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf.h
-@@ -17,6 +17,7 @@ struct idpf_vport_max_q;
- #include <linux/sctp.h>
- #include <linux/ethtool_netlink.h>
- #include <net/gro.h>
-+#include <linux/ioport.h>
- #include <linux/net/intel/iidc_rdma.h>
- #include <linux/net/intel/iidc_rdma_idpf.h>
- 
-@@ -196,7 +197,8 @@ struct idpf_vport_max_q {
-  * @ptp_reg_init: PTP register initialization
-  */
- struct idpf_reg_ops {
--	void (*ctlq_reg_init)(struct idpf_ctlq_create_info *cq);
-+	void (*ctlq_reg_init)(struct idpf_adapter *adapter,
-+			      struct idpf_ctlq_create_info *cq);
- 	int (*intr_reg_init)(struct idpf_vport *vport);
- 	void (*mb_intr_reg_init)(struct idpf_adapter *adapter);
- 	void (*reset_reg_init)(struct idpf_adapter *adapter);
-@@ -205,15 +207,25 @@ struct idpf_reg_ops {
- 	void (*ptp_reg_init)(const struct idpf_adapter *adapter);
- };
- 
-+#define IDPF_MMIO_REG_NUM_STATIC	2
-+#define IDPF_PF_MBX_REGION_SZ		4096
-+#define IDPF_PF_RSTAT_REGION_SZ		2048
-+#define IDPF_VF_MBX_REGION_SZ		10240
-+#define IDPF_VF_RSTAT_REGION_SZ		2048
-+
- /**
-  * struct idpf_dev_ops - Device specific operations
-  * @reg_ops: Register operations
-  * @idc_init: IDC initialization
-+ * @static_reg_info: array of mailbox and rstat register info
-  */
- struct idpf_dev_ops {
- 	struct idpf_reg_ops reg_ops;
- 
- 	int (*idc_init)(struct idpf_adapter *adapter);
-+
-+	/* static_reg_info[0] is mailbox region, static_reg_info[1] is rstat */
-+	struct resource static_reg_info[IDPF_MMIO_REG_NUM_STATIC];
- };
- 
- /**
-@@ -754,6 +766,35 @@ static inline u8 idpf_get_min_tx_pkt_len(struct idpf_adapter *adapter)
- 	return pkt_len ? pkt_len : IDPF_TX_MIN_PKT_LEN;
- }
- 
-+/**
-+ * idpf_get_mbx_reg_addr - Get BAR0 mailbox register address
-+ * @adapter: private data struct
-+ * @reg_offset: register offset value
-+ *
-+ * Return: BAR0 mailbox register address based on register offset.
-+ */
-+static inline void __iomem *idpf_get_mbx_reg_addr(struct idpf_adapter *adapter,
-+						  resource_size_t reg_offset)
-+{
-+	return adapter->hw.mbx.vaddr + reg_offset;
-+}
-+
-+/**
-+ * idpf_get_rstat_reg_addr - Get BAR0 rstat register address
-+ * @adapter: private data struct
-+ * @reg_offset: register offset value
-+ *
-+ * Return: BAR0 rstat register address based on register offset.
-+ */
-+static inline
-+void __iomem *idpf_get_rstat_reg_addr(struct idpf_adapter *adapter,
-+				      resource_size_t reg_offset)
-+{
-+	reg_offset -= adapter->dev_ops.static_reg_info[1].start;
-+
-+	return adapter->hw.rstat.vaddr + reg_offset;
-+}
-+
- /**
-  * idpf_get_reg_addr - Get BAR0 register address
-  * @adapter: private data struct
-@@ -764,7 +805,31 @@ static inline u8 idpf_get_min_tx_pkt_len(struct idpf_adapter *adapter)
- static inline void __iomem *idpf_get_reg_addr(struct idpf_adapter *adapter,
- 					      resource_size_t reg_offset)
- {
--	return (void __iomem *)(adapter->hw.hw_addr + reg_offset);
-+	struct idpf_hw *hw = &adapter->hw;
-+
-+	for (int i = 0; i < hw->num_lan_regs; i++) {
-+		struct idpf_mmio_reg *region = &hw->lan_regs[i];
-+
-+		if (reg_offset >= region->addr_start &&
-+		    reg_offset < (region->addr_start + region->addr_len)) {
-+			/*
-+			 * Convert the offset so that it is relative to the
-+			 * start of the region.  Then add the base address of
-+			 * the region to get the final address.
-+			 */
-+			reg_offset -= region->addr_start;
-+
-+			return region->vaddr + reg_offset;
-+		}
-+	}
-+
-+	/* It's impossible to hit this case with offsets from the CP. But if we
-+	 * do for any other reason, the kernel will panic on that register
-+	 * access. Might as well do it here to make it clear what's happening.
-+	 */
-+	BUG();
-+
-+	return NULL;
- }
- 
- /**
-@@ -778,7 +843,7 @@ static inline bool idpf_is_reset_detected(struct idpf_adapter *adapter)
- 	if (!adapter->hw.arq)
- 		return true;
- 
--	return !(readl(idpf_get_reg_addr(adapter, adapter->hw.arq->reg.len)) &
-+	return !(readl(idpf_get_mbx_reg_addr(adapter, adapter->hw.arq->reg.len)) &
- 		 adapter->hw.arq->reg.len_mask);
- }
- 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_controlq.c b/drivers/net/ethernet/intel/idpf/idpf_controlq.c
-index b28991dd1870..9c5c628eb469 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_controlq.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_controlq.c
-@@ -36,19 +36,19 @@ static void idpf_ctlq_init_regs(struct idpf_hw *hw, struct idpf_ctlq_info *cq,
- {
- 	/* Update tail to post pre-allocated buffers for rx queues */
- 	if (is_rxq)
--		wr32(hw, cq->reg.tail, (u32)(cq->ring_size - 1));
-+		idpf_mbx_wr32(hw, cq->reg.tail, (u32)(cq->ring_size - 1));
- 
- 	/* For non-Mailbox control queues only TAIL need to be set */
- 	if (cq->q_id != -1)
- 		return;
- 
- 	/* Clear Head for both send or receive */
--	wr32(hw, cq->reg.head, 0);
-+	idpf_mbx_wr32(hw, cq->reg.head, 0);
- 
- 	/* set starting point */
--	wr32(hw, cq->reg.bal, lower_32_bits(cq->desc_ring.pa));
--	wr32(hw, cq->reg.bah, upper_32_bits(cq->desc_ring.pa));
--	wr32(hw, cq->reg.len, (cq->ring_size | cq->reg.len_ena_mask));
-+	idpf_mbx_wr32(hw, cq->reg.bal, lower_32_bits(cq->desc_ring.pa));
-+	idpf_mbx_wr32(hw, cq->reg.bah, upper_32_bits(cq->desc_ring.pa));
-+	idpf_mbx_wr32(hw, cq->reg.len, (cq->ring_size | cq->reg.len_ena_mask));
- }
- 
- /**
-@@ -329,7 +329,7 @@ int idpf_ctlq_send(struct idpf_hw *hw, struct idpf_ctlq_info *cq,
- 	 */
- 	dma_wmb();
- 
--	wr32(hw, cq->reg.tail, cq->next_to_use);
-+	idpf_mbx_wr32(hw, cq->reg.tail, cq->next_to_use);
- 
- err_unlock:
- 	mutex_unlock(&cq->cq_lock);
-@@ -521,7 +521,7 @@ int idpf_ctlq_post_rx_buffs(struct idpf_hw *hw, struct idpf_ctlq_info *cq,
- 
- 		dma_wmb();
- 
--		wr32(hw, cq->reg.tail, cq->next_to_post);
-+		idpf_mbx_wr32(hw, cq->reg.tail, cq->next_to_post);
- 	}
- 
- 	mutex_unlock(&cq->cq_lock);
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_controlq.h b/drivers/net/ethernet/intel/idpf/idpf_controlq.h
-index c1aba09e9856..c882428edc24 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_controlq.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf_controlq.h
-@@ -94,12 +94,27 @@ struct idpf_mbxq_desc {
- 	u32 pf_vf_id;		/* used by CP when sending to PF */
- };
- 
-+/*
-+ * Max number of MMIO regions not including the mailbox and rstat regions in
-+ * the fallback case when the whole bar is mapped.
-+ */
-+#define IDPF_MMIO_MAP_FALLBACK_MAX_REMAINING		3
-+
-+struct idpf_mmio_reg {
-+	void __iomem *vaddr;
-+	resource_size_t addr_start;
-+	resource_size_t addr_len;
-+};
-+
- /* Define the driver hardware struct to replace other control structs as needed
-  * Align to ctlq_hw_info
-  */
- struct idpf_hw {
--	void __iomem *hw_addr;
--	resource_size_t hw_addr_len;
-+	struct idpf_mmio_reg mbx;
-+	struct idpf_mmio_reg rstat;
-+	/* Array of remaining LAN BAR regions */
-+	int num_lan_regs;
-+	struct idpf_mmio_reg *lan_regs;
- 
- 	struct idpf_adapter *back;
- 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_dev.c b/drivers/net/ethernet/intel/idpf/idpf_dev.c
-index dd227a4368fb..bfa60f7d43de 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_dev.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_dev.c
-@@ -10,10 +10,13 @@
- 
- /**
-  * idpf_ctlq_reg_init - initialize default mailbox registers
-+ * @adapter: adapter structure
-  * @cq: pointer to the array of create control queues
-  */
--static void idpf_ctlq_reg_init(struct idpf_ctlq_create_info *cq)
-+static void idpf_ctlq_reg_init(struct idpf_adapter *adapter,
-+			       struct idpf_ctlq_create_info *cq)
- {
-+	resource_size_t mbx_start = adapter->dev_ops.static_reg_info[0].start;
- 	int i;
- 
- 	for (i = 0; i < IDPF_NUM_DFLT_MBX_Q; i++) {
-@@ -22,22 +25,22 @@ static void idpf_ctlq_reg_init(struct idpf_ctlq_create_info *cq)
- 		switch (ccq->type) {
- 		case IDPF_CTLQ_TYPE_MAILBOX_TX:
- 			/* set head and tail registers in our local struct */
--			ccq->reg.head = PF_FW_ATQH;
--			ccq->reg.tail = PF_FW_ATQT;
--			ccq->reg.len = PF_FW_ATQLEN;
--			ccq->reg.bah = PF_FW_ATQBAH;
--			ccq->reg.bal = PF_FW_ATQBAL;
-+			ccq->reg.head = PF_FW_ATQH - mbx_start;
-+			ccq->reg.tail = PF_FW_ATQT - mbx_start;
-+			ccq->reg.len = PF_FW_ATQLEN - mbx_start;
-+			ccq->reg.bah = PF_FW_ATQBAH - mbx_start;
-+			ccq->reg.bal = PF_FW_ATQBAL - mbx_start;
- 			ccq->reg.len_mask = PF_FW_ATQLEN_ATQLEN_M;
- 			ccq->reg.len_ena_mask = PF_FW_ATQLEN_ATQENABLE_M;
- 			ccq->reg.head_mask = PF_FW_ATQH_ATQH_M;
- 			break;
- 		case IDPF_CTLQ_TYPE_MAILBOX_RX:
- 			/* set head and tail registers in our local struct */
--			ccq->reg.head = PF_FW_ARQH;
--			ccq->reg.tail = PF_FW_ARQT;
--			ccq->reg.len = PF_FW_ARQLEN;
--			ccq->reg.bah = PF_FW_ARQBAH;
--			ccq->reg.bal = PF_FW_ARQBAL;
-+			ccq->reg.head = PF_FW_ARQH - mbx_start;
-+			ccq->reg.tail = PF_FW_ARQT - mbx_start;
-+			ccq->reg.len = PF_FW_ARQLEN - mbx_start;
-+			ccq->reg.bah = PF_FW_ARQBAH - mbx_start;
-+			ccq->reg.bal = PF_FW_ARQBAL - mbx_start;
- 			ccq->reg.len_mask = PF_FW_ARQLEN_ARQLEN_M;
- 			ccq->reg.len_ena_mask = PF_FW_ARQLEN_ARQENABLE_M;
- 			ccq->reg.head_mask = PF_FW_ARQH_ARQH_M;
-@@ -130,7 +133,7 @@ static int idpf_intr_reg_init(struct idpf_vport *vport)
-  */
- static void idpf_reset_reg_init(struct idpf_adapter *adapter)
- {
--	adapter->reset_reg.rstat = idpf_get_reg_addr(adapter, PFGEN_RSTAT);
-+	adapter->reset_reg.rstat = idpf_get_rstat_reg_addr(adapter, PFGEN_RSTAT);
- 	adapter->reset_reg.rstat_m = PFGEN_RSTAT_PFR_STATE_M;
- }
- 
-@@ -144,9 +147,9 @@ static void idpf_trigger_reset(struct idpf_adapter *adapter,
- {
- 	u32 reset_reg;
- 
--	reset_reg = readl(idpf_get_reg_addr(adapter, PFGEN_CTRL));
-+	reset_reg = readl(idpf_get_rstat_reg_addr(adapter, PFGEN_CTRL));
- 	writel(reset_reg | PFGEN_CTRL_PFSWR,
--	       idpf_get_reg_addr(adapter, PFGEN_CTRL));
-+	       idpf_get_rstat_reg_addr(adapter, PFGEN_CTRL));
- }
- 
- /**
-@@ -195,4 +198,9 @@ void idpf_dev_ops_init(struct idpf_adapter *adapter)
- 	idpf_reg_ops_init(adapter);
- 
- 	adapter->dev_ops.idc_init = idpf_idc_register;
-+
-+	resource_set_range(&adapter->dev_ops.static_reg_info[0],
-+			   PF_FW_BASE, IDPF_PF_MBX_REGION_SZ);
-+	resource_set_range(&adapter->dev_ops.static_reg_info[1],
-+			   PFGEN_RTRIG, IDPF_PF_RSTAT_REGION_SZ);
- }
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_idc.c b/drivers/net/ethernet/intel/idpf/idpf_idc.c
-index eff9ba204f5f..c03869791eed 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_idc.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_idc.c
-@@ -408,7 +408,7 @@ int idpf_idc_init_aux_core_dev(struct idpf_adapter *adapter,
- {
- 	struct iidc_rdma_core_dev_info *cdev_info;
- 	struct iidc_rdma_priv_dev_info *privd;
--	int err;
-+	int err, i;
- 
- 	adapter->cdev_info = kzalloc(sizeof(*cdev_info), GFP_KERNEL);
- 	if (!adapter->cdev_info)
-@@ -426,14 +426,36 @@ int idpf_idc_init_aux_core_dev(struct idpf_adapter *adapter,
- 	cdev_info->rdma_protocol = IIDC_RDMA_PROTOCOL_ROCEV2;
- 	privd->ftype = ftype;
- 
-+	privd->mapped_mem_regions =
-+		kcalloc(adapter->hw.num_lan_regs,
-+			sizeof(struct iidc_rdma_lan_mapped_mem_region),
-+			GFP_KERNEL);
-+	if (!privd->mapped_mem_regions) {
-+		err = -ENOMEM;
-+		goto err_plug_aux_dev;
-+	}
-+
-+	privd->num_memory_regions = cpu_to_le16(adapter->hw.num_lan_regs);
-+	for (i = 0; i < adapter->hw.num_lan_regs; i++) {
-+		privd->mapped_mem_regions[i].region_addr =
-+			adapter->hw.lan_regs[i].vaddr;
-+		privd->mapped_mem_regions[i].size =
-+			cpu_to_le64(adapter->hw.lan_regs[i].addr_len);
-+		privd->mapped_mem_regions[i].start_offset =
-+			cpu_to_le64(adapter->hw.lan_regs[i].addr_start);
-+	}
-+
- 	idpf_idc_init_msix_data(adapter);
- 
- 	err = idpf_plug_core_aux_dev(cdev_info);
- 	if (err)
--		goto err_plug_aux_dev;
-+		goto err_free_mem_regions;
- 
- 	return 0;
- 
-+err_free_mem_regions:
-+	kfree(privd->mapped_mem_regions);
-+	privd->mapped_mem_regions = NULL;
- err_plug_aux_dev:
- 	kfree(privd);
- err_privd_alloc:
-@@ -449,12 +471,16 @@ int idpf_idc_init_aux_core_dev(struct idpf_adapter *adapter,
-  */
- void idpf_idc_deinit_core_aux_device(struct iidc_rdma_core_dev_info *cdev_info)
- {
-+	struct iidc_rdma_priv_dev_info *privd;
-+
- 	if (!cdev_info)
- 		return;
- 
- 	idpf_unplug_aux_dev(cdev_info->adev);
- 
--	kfree(cdev_info->iidc_priv);
-+	privd = cdev_info->iidc_priv;
-+	kfree(privd->mapped_mem_regions);
-+	kfree(privd);
- 	kfree(cdev_info);
- }
- 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_main.c b/drivers/net/ethernet/intel/idpf/idpf_main.c
-index 0efd9c0c7a90..b7422be3e967 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_main.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_main.c
-@@ -106,15 +106,37 @@ static void idpf_shutdown(struct pci_dev *pdev)
-  */
- static int idpf_cfg_hw(struct idpf_adapter *adapter)
- {
-+	resource_size_t res_start, mbx_start, rstat_start;
- 	struct pci_dev *pdev = adapter->pdev;
- 	struct idpf_hw *hw = &adapter->hw;
-+	struct device *dev = &pdev->dev;
-+	long len;
-+
-+	res_start = pci_resource_start(pdev, 0);
-+
-+	/* Map mailbox space for virtchnl communication */
-+	mbx_start = res_start + adapter->dev_ops.static_reg_info[0].start;
-+	len = resource_size(&adapter->dev_ops.static_reg_info[0]);
-+	hw->mbx.vaddr = devm_ioremap(dev, mbx_start, len);
-+	if (!hw->mbx.vaddr) {
-+		pci_err(pdev, "failed to allocate BAR0 mbx region\n");
-+
-+		return -ENOMEM;
-+	}
-+	hw->mbx.addr_start = adapter->dev_ops.static_reg_info[0].start;
-+	hw->mbx.addr_len = len;
- 
--	hw->hw_addr = pcim_iomap_table(pdev)[0];
--	if (!hw->hw_addr) {
--		pci_err(pdev, "failed to allocate PCI iomap table\n");
-+	/* Map rstat space for resets */
-+	rstat_start = res_start + adapter->dev_ops.static_reg_info[1].start;
-+	len = resource_size(&adapter->dev_ops.static_reg_info[1]);
-+	hw->rstat.vaddr = devm_ioremap(dev, rstat_start, len);
-+	if (!hw->rstat.vaddr) {
-+		pci_err(pdev, "failed to allocate BAR0 rstat region\n");
- 
- 		return -ENOMEM;
- 	}
-+	hw->rstat.addr_start = adapter->dev_ops.static_reg_info[1].start;
-+	hw->rstat.addr_len = len;
- 
- 	hw->back = adapter;
- 
-@@ -161,9 +183,9 @@ static int idpf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	if (err)
- 		goto err_free;
- 
--	err = pcim_iomap_regions(pdev, BIT(0), pci_name(pdev));
-+	err = pcim_request_region(pdev, 0, pci_name(pdev));
- 	if (err) {
--		pci_err(pdev, "pcim_iomap_regions failed %pe\n", ERR_PTR(err));
-+		pci_err(pdev, "pcim_request_region failed %pe\n", ERR_PTR(err));
- 
- 		goto err_free;
- 	}
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_mem.h b/drivers/net/ethernet/intel/idpf/idpf_mem.h
-index b21a04fccf0f..2aaabdc02dd2 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_mem.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf_mem.h
-@@ -12,9 +12,9 @@ struct idpf_dma_mem {
- 	size_t size;
- };
- 
--#define wr32(a, reg, value)	writel((value), ((a)->hw_addr + (reg)))
--#define rd32(a, reg)		readl((a)->hw_addr + (reg))
--#define wr64(a, reg, value)	writeq((value), ((a)->hw_addr + (reg)))
--#define rd64(a, reg)		readq((a)->hw_addr + (reg))
-+#define idpf_mbx_wr32(a, reg, value)	writel((value), ((a)->mbx.vaddr + (reg)))
-+#define idpf_mbx_rd32(a, reg)		readl((a)->mbx.vaddr + (reg))
-+#define idpf_mbx_wr64(a, reg, value)	writeq((value), ((a)->mbx.vaddr + (reg)))
-+#define idpf_mbx_rd64(a, reg)		readq((a)->mbx.vaddr + (reg))
- 
- #endif /* _IDPF_MEM_H_ */
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c b/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
-index 2f84bd596ae4..259d50fded67 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
-@@ -9,10 +9,13 @@
- 
- /**
-  * idpf_vf_ctlq_reg_init - initialize default mailbox registers
-+ * @adapter: adapter structure
-  * @cq: pointer to the array of create control queues
-  */
--static void idpf_vf_ctlq_reg_init(struct idpf_ctlq_create_info *cq)
-+static void idpf_vf_ctlq_reg_init(struct idpf_adapter *adapter,
-+				  struct idpf_ctlq_create_info *cq)
- {
-+	resource_size_t mbx_start = adapter->dev_ops.static_reg_info[0].start;
- 	int i;
- 
- 	for (i = 0; i < IDPF_NUM_DFLT_MBX_Q; i++) {
-@@ -21,22 +24,22 @@ static void idpf_vf_ctlq_reg_init(struct idpf_ctlq_create_info *cq)
- 		switch (ccq->type) {
- 		case IDPF_CTLQ_TYPE_MAILBOX_TX:
- 			/* set head and tail registers in our local struct */
--			ccq->reg.head = VF_ATQH;
--			ccq->reg.tail = VF_ATQT;
--			ccq->reg.len = VF_ATQLEN;
--			ccq->reg.bah = VF_ATQBAH;
--			ccq->reg.bal = VF_ATQBAL;
-+			ccq->reg.head = VF_ATQH - mbx_start;
-+			ccq->reg.tail = VF_ATQT - mbx_start;
-+			ccq->reg.len = VF_ATQLEN - mbx_start;
-+			ccq->reg.bah = VF_ATQBAH - mbx_start;
-+			ccq->reg.bal = VF_ATQBAL - mbx_start;
- 			ccq->reg.len_mask = VF_ATQLEN_ATQLEN_M;
- 			ccq->reg.len_ena_mask = VF_ATQLEN_ATQENABLE_M;
- 			ccq->reg.head_mask = VF_ATQH_ATQH_M;
- 			break;
- 		case IDPF_CTLQ_TYPE_MAILBOX_RX:
- 			/* set head and tail registers in our local struct */
--			ccq->reg.head = VF_ARQH;
--			ccq->reg.tail = VF_ARQT;
--			ccq->reg.len = VF_ARQLEN;
--			ccq->reg.bah = VF_ARQBAH;
--			ccq->reg.bal = VF_ARQBAL;
-+			ccq->reg.head = VF_ARQH - mbx_start;
-+			ccq->reg.tail = VF_ARQT - mbx_start;
-+			ccq->reg.len = VF_ARQLEN - mbx_start;
-+			ccq->reg.bah = VF_ARQBAH - mbx_start;
-+			ccq->reg.bal = VF_ARQBAL - mbx_start;
- 			ccq->reg.len_mask = VF_ARQLEN_ARQLEN_M;
- 			ccq->reg.len_ena_mask = VF_ARQLEN_ARQENABLE_M;
- 			ccq->reg.head_mask = VF_ARQH_ARQH_M;
-@@ -129,7 +132,7 @@ static int idpf_vf_intr_reg_init(struct idpf_vport *vport)
-  */
- static void idpf_vf_reset_reg_init(struct idpf_adapter *adapter)
- {
--	adapter->reset_reg.rstat = idpf_get_reg_addr(adapter, VFGEN_RSTAT);
-+	adapter->reset_reg.rstat = idpf_get_rstat_reg_addr(adapter, VFGEN_RSTAT);
- 	adapter->reset_reg.rstat_m = VFGEN_RSTAT_VFR_STATE_M;
- }
- 
-@@ -180,4 +183,9 @@ void idpf_vf_dev_ops_init(struct idpf_adapter *adapter)
- 	idpf_vf_reg_ops_init(adapter);
- 
- 	adapter->dev_ops.idc_init = idpf_idc_vf_register;
-+
-+	resource_set_range(&adapter->dev_ops.static_reg_info[0],
-+			   VF_BASE, IDPF_VF_MBX_REGION_SZ);
-+	resource_set_range(&adapter->dev_ops.static_reg_info[1],
-+			   VFGEN_RSTAT, IDPF_VF_RSTAT_REGION_SZ);
- }
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-index 957b3b77700a..0d2199ac5c3e 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-@@ -870,6 +870,7 @@ static int idpf_send_get_caps_msg(struct idpf_adapter *adapter)
- 	caps.other_caps =
- 		cpu_to_le64(VIRTCHNL2_CAP_SRIOV			|
- 			    VIRTCHNL2_CAP_RDMA                  |
-+			    VIRTCHNL2_CAP_LAN_MEMORY_REGIONS	|
- 			    VIRTCHNL2_CAP_MACFILTER		|
- 			    VIRTCHNL2_CAP_SPLITQ_QSCHED		|
- 			    VIRTCHNL2_CAP_PROMISC		|
-@@ -892,6 +893,128 @@ static int idpf_send_get_caps_msg(struct idpf_adapter *adapter)
- 	return 0;
- }
- 
-+/**
-+ * idpf_send_get_lan_memory_regions - Send virtchnl get LAN memory regions msg
-+ * @adapter: Driver specific private struct
-+ *
-+ * Return: 0 on success or error code on failure.
-+ */
-+static int idpf_send_get_lan_memory_regions(struct idpf_adapter *adapter)
-+{
-+	struct virtchnl2_get_lan_memory_regions *rcvd_regions __free(kfree);
-+	struct idpf_vc_xn_params xn_params = {
-+		.vc_op = VIRTCHNL2_OP_GET_LAN_MEMORY_REGIONS,
-+		.recv_buf.iov_len = IDPF_CTLQ_MAX_BUF_LEN,
-+		.timeout_ms = IDPF_VC_XN_DEFAULT_TIMEOUT_MSEC,
-+	};
-+	int num_regions, size;
-+	struct idpf_hw *hw;
-+	ssize_t reply_sz;
-+	int err = 0;
-+
-+	rcvd_regions = kzalloc(IDPF_CTLQ_MAX_BUF_LEN, GFP_KERNEL);
-+	if (!rcvd_regions)
-+		return -ENOMEM;
-+
-+	xn_params.recv_buf.iov_base = rcvd_regions;
-+	reply_sz = idpf_vc_xn_exec(adapter, &xn_params);
-+	if (reply_sz < 0)
-+		return reply_sz;
-+
-+	num_regions = le16_to_cpu(rcvd_regions->num_memory_regions);
-+	size = struct_size(rcvd_regions, mem_reg, num_regions);
-+	if (reply_sz < size)
-+		return -EIO;
-+
-+	if (size > IDPF_CTLQ_MAX_BUF_LEN)
-+		return -EINVAL;
-+
-+	hw = &adapter->hw;
-+	hw->lan_regs = kcalloc(num_regions, sizeof(*hw->lan_regs), GFP_KERNEL);
-+	if (!hw->lan_regs)
-+		return -ENOMEM;
-+
-+	for (int i = 0; i < num_regions; i++) {
-+		hw->lan_regs[i].addr_len =
-+			le64_to_cpu(rcvd_regions->mem_reg[i].size);
-+		hw->lan_regs[i].addr_start =
-+			le64_to_cpu(rcvd_regions->mem_reg[i].start_offset);
-+	}
-+	hw->num_lan_regs = num_regions;
-+
-+	return err;
-+}
-+
-+/**
-+ * idpf_calc_remaining_mmio_regs - calculate MMIO regions outside mbx and rstat
-+ * @adapter: Driver specific private structure
-+ *
-+ * Called when idpf_send_get_lan_memory_regions is not supported. This will
-+ * calculate the offsets and sizes for the regions before, in between, and
-+ * after the mailbox and rstat MMIO mappings.
-+ *
-+ * Return: 0 on success or error code on failure.
-+ */
-+static int idpf_calc_remaining_mmio_regs(struct idpf_adapter *adapter)
-+{
-+	struct resource *rstat_reg = &adapter->dev_ops.static_reg_info[1];
-+	struct resource *mbx_reg = &adapter->dev_ops.static_reg_info[0];
-+	struct idpf_hw *hw = &adapter->hw;
-+
-+	hw->num_lan_regs = IDPF_MMIO_MAP_FALLBACK_MAX_REMAINING;
-+	hw->lan_regs = kcalloc(hw->num_lan_regs, sizeof(*hw->lan_regs),
-+			       GFP_KERNEL);
-+	if (!hw->lan_regs)
-+		return -ENOMEM;
-+
-+	/* Region preceding mailbox */
-+	hw->lan_regs[0].addr_start = 0;
-+	hw->lan_regs[0].addr_len = mbx_reg->start;
-+	/* Region between mailbox and rstat */
-+	hw->lan_regs[1].addr_start = mbx_reg->end + 1;
-+	hw->lan_regs[1].addr_len = rstat_reg->start -
-+					hw->lan_regs[1].addr_start;
-+	/* Region after rstat */
-+	hw->lan_regs[2].addr_start = rstat_reg->end + 1;
-+	hw->lan_regs[2].addr_len = pci_resource_len(adapter->pdev, 0) -
-+					hw->lan_regs[2].addr_start;
-+
-+	return 0;
-+}
-+
-+/**
-+ * idpf_map_lan_mmio_regs - map remaining LAN BAR regions
-+ * @adapter: Driver specific private structure
-+ *
-+ * Return: 0 on success or error code on failure.
-+ */
-+static int idpf_map_lan_mmio_regs(struct idpf_adapter *adapter)
-+{
-+	struct pci_dev *pdev = adapter->pdev;
-+	struct idpf_hw *hw = &adapter->hw;
-+	resource_size_t res_start;
-+
-+	res_start = pci_resource_start(pdev, 0);
-+
-+	for (int i = 0; i < hw->num_lan_regs; i++) {
-+		resource_size_t start;
-+		long len;
-+
-+		len = hw->lan_regs[i].addr_len;
-+		if (!len)
-+			continue;
-+		start = hw->lan_regs[i].addr_start + res_start;
-+
-+		hw->lan_regs[i].vaddr = devm_ioremap(&pdev->dev, start, len);
-+		if (!hw->lan_regs[i].vaddr) {
-+			pci_err(pdev, "failed to allocate BAR0 region\n");
-+			return -ENOMEM;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
- /**
-  * idpf_vport_alloc_max_qs - Allocate max queues for a vport
-  * @adapter: Driver specific private structure
-@@ -2803,7 +2926,7 @@ int idpf_init_dflt_mbx(struct idpf_adapter *adapter)
- 	struct idpf_hw *hw = &adapter->hw;
- 	int err;
- 
--	adapter->dev_ops.reg_ops.ctlq_reg_init(ctlq_info);
-+	adapter->dev_ops.reg_ops.ctlq_reg_init(adapter, ctlq_info);
- 
- 	err = idpf_ctlq_init(hw, IDPF_NUM_DFLT_MBX_Q, ctlq_info);
- 	if (err)
-@@ -2963,6 +3086,30 @@ int idpf_vc_core_init(struct idpf_adapter *adapter)
- 		msleep(task_delay);
- 	}
- 
-+	if (idpf_is_cap_ena(adapter, IDPF_OTHER_CAPS, VIRTCHNL2_CAP_LAN_MEMORY_REGIONS)) {
-+		err = idpf_send_get_lan_memory_regions(adapter);
-+		if (err) {
-+			dev_err(&adapter->pdev->dev, "Failed to get LAN memory regions: %d\n",
-+				err);
-+			return -EINVAL;
-+		}
-+	} else {
-+		/* Fallback to mapping the remaining regions of the entire BAR */
-+		err = idpf_calc_remaining_mmio_regs(adapter);
-+		if (err) {
-+			dev_err(&adapter->pdev->dev, "Failed to allocate BAR0 region(s): %d\n",
-+				err);
-+			return -ENOMEM;
-+		}
-+	}
-+
-+	err = idpf_map_lan_mmio_regs(adapter);
-+	if (err) {
-+		dev_err(&adapter->pdev->dev, "Failed to map BAR0 region(s): %d\n",
-+			err);
-+		return -ENOMEM;
-+	}
-+
- 	pci_sriov_set_totalvfs(adapter->pdev, idpf_get_max_vfs(adapter));
- 	num_max_vports = idpf_get_max_vports(adapter);
- 	adapter->max_vports = num_max_vports;
-diff --git a/drivers/net/ethernet/intel/idpf/virtchnl2.h b/drivers/net/ethernet/intel/idpf/virtchnl2.h
-index b82218d20909..870e1de5755f 100644
---- a/drivers/net/ethernet/intel/idpf/virtchnl2.h
-+++ b/drivers/net/ethernet/intel/idpf/virtchnl2.h
-@@ -69,6 +69,7 @@ enum virtchnl2_op {
- 	VIRTCHNL2_OP_ADD_MAC_ADDR		= 535,
- 	VIRTCHNL2_OP_DEL_MAC_ADDR		= 536,
- 	VIRTCHNL2_OP_CONFIG_PROMISCUOUS_MODE	= 537,
-+	/* Opcodes 538 through 540 are reserved. */
- 
- 	/* TimeSync opcodes */
- 	VIRTCHNL2_OP_PTP_GET_CAPS			= 541,
-@@ -79,6 +80,7 @@ enum virtchnl2_op {
- 	VIRTCHNL2_OP_PTP_ADJ_DEV_CLK_FINE		= 546,
- 	VIRTCHNL2_OP_PTP_ADJ_DEV_CLK_TIME		= 547,
- 	VIRTCHNL2_OP_PTP_GET_VPORT_TX_TSTAMP_CAPS	= 548,
-+	VIRTCHNL2_OP_GET_LAN_MEMORY_REGIONS		= 549,
- };
- 
- /**
-@@ -212,7 +214,8 @@ enum virtchnl2_cap_other {
- 	VIRTCHNL2_CAP_RX_FLEX_DESC		= BIT_ULL(17),
- 	VIRTCHNL2_CAP_PTYPE			= BIT_ULL(18),
- 	VIRTCHNL2_CAP_LOOPBACK			= BIT_ULL(19),
--	/* Other capability 20 is reserved */
-+	/* Other capability 20-21 is reserved */
-+	VIRTCHNL2_CAP_LAN_MEMORY_REGIONS	= BIT_ULL(22),
- 
- 	/* this must be the last capability */
- 	VIRTCHNL2_CAP_OEM			= BIT_ULL(63),
-@@ -1587,4 +1590,30 @@ struct virtchnl2_ptp_adj_dev_clk_time {
- };
- VIRTCHNL2_CHECK_STRUCT_LEN(8, virtchnl2_ptp_adj_dev_clk_time);
- 
-+/**
-+ * struct virtchnl2_mem_region - MMIO memory region
-+ * @start_offset: starting offset of the MMIO memory region
-+ * @size: size of the MMIO memory region
-+ */
-+struct virtchnl2_mem_region {
-+	__le64 start_offset;
-+	__le64 size;
-+};
-+VIRTCHNL2_CHECK_STRUCT_LEN(16, virtchnl2_mem_region);
-+
-+/**
-+ * struct virtchnl2_get_lan_memory_regions - List of LAN MMIO memory regions
-+ * @num_memory_regions: number of memory regions
-+ * @pad: Padding
-+ * @mem_reg: List with memory region info
-+ *
-+ * PF/VF sends this message to learn what LAN MMIO memory regions it should map.
-+ */
-+struct virtchnl2_get_lan_memory_regions {
-+	__le16 num_memory_regions;
-+	u8 pad[6];
-+	struct virtchnl2_mem_region mem_reg[];
-+};
-+VIRTCHNL2_CHECK_STRUCT_LEN(8, virtchnl2_get_lan_memory_regions);
-+
- #endif /* _VIRTCHNL_2_H_ */
-diff --git a/include/linux/net/intel/iidc_rdma_idpf.h b/include/linux/net/intel/iidc_rdma_idpf.h
-index 16c970dd4c6e..bab697e18fd6 100644
---- a/include/linux/net/intel/iidc_rdma_idpf.h
-+++ b/include/linux/net/intel/iidc_rdma_idpf.h
-@@ -31,10 +31,18 @@ enum iidc_function_type {
- 	IIDC_FUNCTION_TYPE_VF,
- };
- 
-+struct iidc_rdma_lan_mapped_mem_region {
-+	u8 __iomem *region_addr;
-+	__le64 size;
-+	__le64 start_offset;
-+};
-+
- struct iidc_rdma_priv_dev_info {
- 	struct msix_entry *msix_entries;
- 	u16 msix_count; /* How many vectors are reserved for this device */
- 	enum iidc_function_type ftype;
-+	__le16 num_memory_regions;
-+	struct iidc_rdma_lan_mapped_mem_region *mapped_mem_regions;
- };
- 
- int idpf_idc_vport_dev_ctrl(struct iidc_rdma_core_dev_info *cdev_info, bool up);
--- 
-2.37.3
+wnsEABYIACMWIQQgQFSp1zOQVirsQx5qll0+bw8o6AUCaG28zwUDAAAAAAAKCRBqll0+bw8o6CvA
+AQCt/Qw80vmB1iPjuxn3xf74fcyPYv9Fg34MiU6NaKVdcAEAlSIqzxQvrlCOpuwwKGFNFUuyGluJ
+VwLvFvAzrVoncQM=
+=ChyH
+-----END PGP SIGNATURE-----
 
+--------------ojVJDDYBbyvl0r81ShAMXUsc--
