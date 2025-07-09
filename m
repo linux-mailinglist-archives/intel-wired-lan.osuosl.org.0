@@ -1,109 +1,112 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9294BAFDDC7
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Jul 2025 05:03:39 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 34527AFEA3C
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  9 Jul 2025 15:31:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0AAEB8115C;
-	Wed,  9 Jul 2025 03:03:38 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A1B1F4085E;
+	Wed,  9 Jul 2025 13:31:56 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id bzOv1hEWxCa4; Wed,  9 Jul 2025 13:31:56 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B932140905
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1752067915;
+	bh=jhrQrdwjqbXJ+aeZgreDfDq+/3Niqi/WqrCzbRM6tNs=;
+	h=Date:From:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=u11K9sglkuh07ui9o5sZkaFSkUp7Al8LUdzTjuecfMidmNBhsQVjs3/Dj/Zivw3OF
+	 g4LtkiGoa5Ib7yowW5Aj4aDVe5OROwQYN4h8XC6QqXYR2dK7OZKVhzX5xZ1+Buz6FD
+	 QtRcH1DydFe//U4S9MlCs0Y0/cwrT9V8P4SJzCZGTWGnU09MvG3eno5Sz3j+XxXxTj
+	 zU7cXTP1Bn0W8CaddpqocA/FAI8N7DANpNNFNCqRIW0KYnrtyTHIgpnHTkfKLz8wZC
+	 CxbuSmDCCpdKeDu5yNlQFL2kej9aH9A471/KMCtRZJrd+tWAl2+4XXPrmcKbY+Dh+w
+	 lPp9QBz+tIJNQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id B932140905;
+	Wed,  9 Jul 2025 13:31:55 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id EDCB315F
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Jul 2025 13:31:53 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id D45A281291
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Jul 2025 13:31:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id b1TfKYpFE9EU; Wed,  9 Jul 2025 03:03:37 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org ED7218116B
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1752030217;
-	bh=cfm0zb/m+RhyGTppeh4DfJ1QuFlcmx6SqXuSao/tX+U=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=orj4g9Nd/EFfYg2QVd4DA3ue4nrWvPSKeikJt6hIOPL/e8cSfAM5oEwki+mjUWAbu
-	 yqnhpRAopRNT9i5Jk88I8wmpH4Ccbvv448nbDbUqdmplqi9SLwb9YkINfSgV2i0aFo
-	 Doq1EruhENk5GeGJ3z7TKidGQITqId7h5mrHnfp7NYm2HXonPywq5nMh/J4VugbGKa
-	 399grSrj+hUmyy9Y/tmjPsonI00p5kc5QbIkcgX5WpAiW21QAiKqPoZWQSiTNSxeMt
-	 rKVLRaPMAUiaZpfcqUxSezVsPlCq7ikRFuiS+djDm9tVpZsTsA63Vk363BFrEI2WkK
-	 ZvCx6beOKjHAA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id ED7218116B;
-	Wed,  9 Jul 2025 03:03:36 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 13A7B15F
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Jul 2025 03:03:35 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id EE1BE607AF
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Jul 2025 03:03:34 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id yxfjJsQOv6RZ for <intel-wired-lan@lists.osuosl.org>;
- Wed,  9 Jul 2025 03:03:34 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1F19B60794
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1F19B60794
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1F19B60794
- for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Jul 2025 03:03:33 +0000 (UTC)
-X-CSE-ConnectionGUID: kLz2qZfkQQuzzUMWQtXRSg==
-X-CSE-MsgGUID: o/XwdGZIQGapPEo9/NGHzQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11487"; a="56887614"
-X-IronPort-AV: E=Sophos;i="6.16,298,1744095600"; d="scan'208";a="56887614"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Jul 2025 20:03:33 -0700
-X-CSE-ConnectionGUID: AF4LIbfdR2OXu4UASMSicA==
-X-CSE-MsgGUID: 3fGwvMpQTW+jbBZUovUC5g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,298,1744095600"; d="scan'208";a="156384912"
-Received: from lkp-server01.sh.intel.com (HELO 9ee84586c615) ([10.239.97.150])
- by fmviesa010.fm.intel.com with ESMTP; 08 Jul 2025 20:03:30 -0700
-Received: from kbuild by 9ee84586c615 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1uZL5j-000319-2w;
- Wed, 09 Jul 2025 03:03:27 +0000
-Date: Wed, 9 Jul 2025 11:03:16 +0800
-From: kernel test robot <lkp@intel.com>
-To: Jacek Kowalski <jacek@jacekk.info>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Simon Horman <horms@kernel.org>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
- netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
-Message-ID: <202507091034.uiPhnpcc-lkp@intel.com>
-References: <e199da76-00d0-43d3-8f61-f433bc0352ad@jacekk.info>
+ id sS_iv1r7z6dw for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  9 Jul 2025 13:31:52 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::436; helo=mail-wr1-x436.google.com;
+ envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org F3E8E812A3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F3E8E812A3
+Received: from mail-wr1-x436.google.com (mail-wr1-x436.google.com
+ [IPv6:2a00:1450:4864:20::436])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id F3E8E812A3
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  9 Jul 2025 13:31:49 +0000 (UTC)
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-3ab112dea41so2989534f8f.1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 09 Jul 2025 06:31:49 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1752067908; x=1752672708;
+ h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=jhrQrdwjqbXJ+aeZgreDfDq+/3Niqi/WqrCzbRM6tNs=;
+ b=VemgQRdXHOMNlPxorFPDdhCd21G3uHJInPEsevTqKhQgzdqfIHcc+0Kiao6sHgj6jA
+ MCKnZsQo0FGzlSB2f647Zlc1A17eWTG+yhtoFAseLIQf5BFfw0gsMN22VG868dkodSvy
+ gdw04g+y4ZNOxho7pn2AKqNsVqhBaudt64MVF9KQJIBw50ZvuQi22f5pgVmOCz3i4kvX
+ AWJtmSJGhLaIsYUyZxq29TBh/fcmlPAUzPCz1DYjVMWYSc72Fq1M2fSVc+Yl0XHx/19w
+ mmg5bM7Tyv1vxo+x0GPwEKbpWtmA0IM5BShV9PkgQqRyD9YR60/KZZjLQrpVOQtmfCQc
+ Og1g==
+X-Gm-Message-State: AOJu0Yx+YjAy53PWnFCHUIY/FRTKli+wfwp0l6rIrXc1zauUb6vOHwG7
+ ifxtPf4LRY2AEFXJcrUX6YmSLqNRBfVJLECWj7Zr8TFUVPyrVKNVv2TmDKXMre94VAg=
+X-Gm-Gg: ASbGncsu1GWvH6j7hOMxIgArErPh+9fQqvOvE+boFdgpHiXuZPXaoKcYN/LnYmmo6Gf
+ Pk6/YdBVbJMefMr1I3gdT9eKjHMCdm7Dt9H2G9vNqP2g4EpRSh3mAXftxC3nVjw92OftJU17z/a
+ TayP38c1A1v/eZilajtVooN8H4jKP5nurMbJ8faABZ8/t2moh5UfHgO2pSkWwJhKSqZbb18krkS
+ rH5NPWb9xsf2r9EABdZpRSVlQfn7bPP7pHFuCn4TYimsq89jR1TnsM+H+c3b8BYpRTR2ggUPBtz
+ l1ZRL1KExWv2tourQEbTldRj2fyL3bu+eKMkuUCmK2aV0hHYSXQaFoexVup0Wjee
+X-Google-Smtp-Source: AGHT+IEk97BLNurfRb2arivCq/fz9GGxVHcyANgW+U18S50uKk61NNc1T3JRkZwVCKl6dS6rw+q/Gg==
+X-Received: by 2002:a05:6000:2f82:b0:3a5:1410:71c0 with SMTP id
+ ffacd0b85a97d-3b5e4529863mr2085134f8f.38.1752067907535; 
+ Wed, 09 Jul 2025 06:31:47 -0700 (PDT)
+Received: from jiri-mlt ([193.47.165.251]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3b470f871casm15853784f8f.45.2025.07.09.06.31.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 09 Jul 2025 06:31:47 -0700 (PDT)
+Date: Wed, 9 Jul 2025 15:31:42 +0200
+From: Jiri Pirko <jiri@resnulli.us>
+To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com
+Cc: intel-wired-lan@lists.osuosl.org
+Message-ID: <gv5l3vrfkyn6ara6l7uvn54qb7tuwvfn452o6ixfzjtvqbgxlx@jf4gnjrkuha2>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <e199da76-00d0-43d3-8f61-f433bc0352ad@jacekk.info>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1752030214; x=1783566214;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=aIRy4P+mVHLYqEJlA1GuRMWQ8jpHGslA2lnonIu+p34=;
- b=bOJNn0N2PhU5/U80crGorG4l/0GVbV1YVbYCXz4D9NHhR4wUQbpRpav1
- En+4FKv1Uil5azyffCZJjz3fzc2JxyTqUCvKpLm2eoJL514iI5XsdEcpd
- 1K/yeyCzGeKhEpGfNmFuOBIpKo54SW+Jb5/mwVNAxYFfMyMqjPuXv47QO
- QbLPDJSucY7LEZFZGY6QtQMuvWdc+6rhqgmsqh5A/kb1GyYrOOoZO9emN
- q4pBR2KDqq+5tybuDftFPKk0vlfYpbNd9vH3GN/RFB//FIOgy/PiW/Bt2
- POq/6EQnfJyNQAwhxGNzicWZ+CPsiWi38CklpHHGhC4IkALI9gU3115Uo
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1752067908; x=1752672708;
+ darn=lists.osuosl.org; 
+ h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=jhrQrdwjqbXJ+aeZgreDfDq+/3Niqi/WqrCzbRM6tNs=;
+ b=r2TmCHwdDu2tqFLFUTuziB6FnzI4mD26DIVfY0TP93yLj6/C2zCl8qb2Dp/ksh8LxF
+ HXlv4rSxTJOG4bdMHDC+50b5eMmEYYnRbge2aCJaTHnlq7eZof1prgokKHFwTvunbL3/
+ TW6Sl7XPbaP4jwTogRVNFwsDUIDczb1Tf0NyWPQJthlUmKhG/nN1Gcv5mDd3qJeVGimV
+ ihP0xWsb3EZTWziiSTrJuAgpKgLcQKsLjCWXj8NOKYOcWxr95ZDKcAmwZybLecjSjf2q
+ cXKHYuxPNYbQ/hXFSu2uWNhNgtSgRcqh+Hb+OBEY2c96QFU4ZnnGLcS4uhr4b3bFcGyH
+ Ri/w==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=resnulli.us
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=bOJNn0N2
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 1/5] e1000: drop
- unnecessary constant casts to u16
+ unprotected) header.d=resnulli-us.20230601.gappssmtp.com
+ header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
+ header.s=20230601 header.b=r2TmCHwd
+Subject: [Intel-wired-lan] fwupd - devlink firmware flashing support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -119,65 +122,61 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Jacek,
+Hi.
 
-kernel test robot noticed the following build warnings:
+I'm currently working on fwupd plugin for devlink. I have somehow
+working version tested with netdevsim and mlx5. I'm curious if you would
+be interested into supporting your nics as well. Here's the code:
+https://github.com/jpirko/fwupd/tree/wip_devlink_rfc1
 
-[auto build test WARNING on tnguy-next-queue/dev-queue]
+In plugins/devlink/tests/example/ you can find how to build cab file for
+netdevsim. To flash it, get the device id from command:
+$ sudo ./build/src/fwupdtool get-devices
+and flash it using:
+$ sudo ./build/src/fwupdtool install plugins/devlink/tests/example/firmware.cab fa645832a32a760dc0d20ec0cac7dcd13ca3d104
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Jacek-Kowalski/e1000-drop-unnecessary-constant-casts-to-u16/20250708-161919
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-patch link:    https://lore.kernel.org/r/e199da76-00d0-43d3-8f61-f433bc0352ad%40jacekk.info
-patch subject: [PATCH iwl-next v2 1/5] e1000: drop unnecessary constant casts to u16
-config: riscv-randconfig-002-20250709 (https://download.01.org/0day-ci/archive/20250709/202507091034.uiPhnpcc-lkp@intel.com/config)
-compiler: clang version 21.0.0git (https://github.com/llvm/llvm-project 01c97b4953e87ae455bd4c41e3de3f0f0f29c61c)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250709/202507091034.uiPhnpcc-lkp@intel.com/reproduce)
+for mlx5 cx6dx nic I'm using following example xml:
+$ cat cx6dx-22_45_1020.firmware.metainfo.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="firmware">
+  <id>com.nvidia.ConnectX6dx.firmware</id>
+  <name>ConnectX6dx Test Firmware</name>
+  <summary>Test firmware for ConnectX6dx device</summary>
+  <description>
+    <p>Test firmware package for ConnectX6dx device</p>
+  </description>
+  <provides>
+    <firmware type="flashed">f7f61adf-77b6-5e21-bb80-0112a70ab91c</firmware>
+  </provides>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <developer_name>Test Developer</developer_name>
+  <releases>
+    <release urgency="high" version="22.45.1020" date="2025-07-01">
+      <description>
+        <p>Test firmware release for ConnectX6dx device</p>
+      </description>
+    </release>
+  </releases>
+  <requires>
+    <firmware compare="ge" version="0.0.1"/>
+  </requires>
+  <custom>
+    <value key="LVFS::UpdateProtocol">org.kernel.devlink</value>
+    <value key="LVFS::DeviceFlags">omit-component-name,needs-activation</value>
+  </custom>
+</component>
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202507091034.uiPhnpcc-lkp@intel.com/
+You need to change the GUID hash be whatever is generated for your
+device.
 
-All warnings (new ones prefixed by >>):
+Also, note the flags. That may be different for you, idk. You may not
+need omit-component-name, as I think for ice you support flashing with
+component name.
 
->> drivers/net/ethernet/intel/e1000/e1000_main.c:316:16: warning: result of comparison of constant -1 with expression of type 'u16' (aka 'unsigned short') is always true [-Wtautological-constant-out-of-range-compare]
-     316 |                 if ((old_vid != E1000_MNG_VLAN_NONE) &&
-         |                      ~~~~~~~ ^  ~~~~~~~~~~~~~~~~~~~
-   1 warning generated.
+Let me know if I can do anything to assist you.
 
+Thanks!
 
-vim +316 drivers/net/ethernet/intel/e1000/e1000_main.c
+Jiri
 
-   297	
-   298	static void e1000_update_mng_vlan(struct e1000_adapter *adapter)
-   299	{
-   300		struct e1000_hw *hw = &adapter->hw;
-   301		struct net_device *netdev = adapter->netdev;
-   302		u16 vid = hw->mng_cookie.vlan_id;
-   303		u16 old_vid = adapter->mng_vlan_id;
-   304	
-   305		if (!e1000_vlan_used(adapter))
-   306			return;
-   307	
-   308		if (!test_bit(vid, adapter->active_vlans)) {
-   309			if (hw->mng_cookie.status &
-   310			    E1000_MNG_DHCP_COOKIE_STATUS_VLAN_SUPPORT) {
-   311				e1000_vlan_rx_add_vid(netdev, htons(ETH_P_8021Q), vid);
-   312				adapter->mng_vlan_id = vid;
-   313			} else {
-   314				adapter->mng_vlan_id = E1000_MNG_VLAN_NONE;
-   315			}
- > 316			if ((old_vid != E1000_MNG_VLAN_NONE) &&
-   317			    (vid != old_vid) &&
-   318			    !test_bit(old_vid, adapter->active_vlans))
-   319				e1000_vlan_rx_kill_vid(netdev, htons(ETH_P_8021Q),
-   320						       old_vid);
-   321		} else {
-   322			adapter->mng_vlan_id = vid;
-   323		}
-   324	}
-   325	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
