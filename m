@@ -1,135 +1,183 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35A74B04D7F
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Jul 2025 03:36:46 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C5D32B058FD
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Jul 2025 13:38:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9AF9740E6D;
-	Tue, 15 Jul 2025 01:36:44 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1AD2861076;
+	Tue, 15 Jul 2025 11:37:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id M2dFtD8ifcZt; Tue, 15 Jul 2025 01:36:44 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id RqiNJB-eN8dr; Tue, 15 Jul 2025 11:37:57 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BED0140EEC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7F07B60ECE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1752543403;
-	bh=O0I2h7kwG1ot4lSFYJ1j2OOXBhzbpB1bqoYYYUE5GhI=;
+	s=default; t=1752579477;
+	bh=EiQhKXWfmwzHyjhIqKzdgdzdHG7JhE1QoHzpErzbBMg=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=JbFwCERKCTU2jwajjTZhrKCTry9l5ERU2RyB5JViFTu1Z4cwL4RdKnU6HvXcT8+t+
-	 n8ohU2b8wlTbxXDPowUOl0sxZermAr9c9X0Z/bcM0+yGGuqX42BALgMrcrGKlPBKac
-	 vmuYCkXnKmJqxQngT50XtUqxYF4p7MigHkyTcELIxVBhZw4Drl0A50mQXdrU0c1TdB
-	 Kg2aDxvFFGvi2JtFgENztKZd7v0ziyrtk4zyrXwR4P+kBVtN6GoqqDXYRMS7/UuYR3
-	 o4sK5kWB20GCKBT7s2SrMw2+cPQ+M2jmJ4eqNQyC3EU8JAOMSCzmRXNW07q/90xIvR
-	 SyCYl5KSUToRA==
+	b=6V7wyeAz0sm9Z1F3os559BHxELkvRHFR99EJUVvpxBd8bwu2is15NbXyNSTbUYk+T
+	 J+1NtgClBU4KFIWxgzOXGOh65dBbN1dD13S4/g9Kfx+DJiY+Lfc+jq5WjF2a9nnpgF
+	 xeZN4reRury/HnAegG8HCTNggyrW0mf0OVUcd25NwiIoBzyn/J63gaxP2xyPBzmwp9
+	 bNMGTN0Na7VQdaE9VGBCeFkCB6a3SsIHI1GxOzBsj0LRbo8KmbVeP06/Yd2Z1XItVT
+	 XpcAgpz2jN1g/0rfz0mM3xHp2sT9SWmiEdTuTjY7Lr/1Scb77dgFipgsX908pYBXpB
+	 k+yUSoAA6LKOg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BED0140EEC;
-	Tue, 15 Jul 2025 01:36:43 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7F07B60ECE;
+	Tue, 15 Jul 2025 11:37:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 0D130DF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Jul 2025 01:36:42 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 1A00F11AA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Jul 2025 11:37:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id F278940064
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Jul 2025 01:36:41 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0B4EC40F20
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Jul 2025 11:37:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XVI5GA5I6h5M for <intel-wired-lan@lists.osuosl.org>;
- Tue, 15 Jul 2025 01:36:41 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=166.125.252.92;
- helo=invmail4.hynix.com; envelope-from=byungchul@sk.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 7C55640054
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7C55640054
-Received: from invmail4.hynix.com (exvmail4.hynix.com [166.125.252.92])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7C55640054
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Jul 2025 01:36:38 +0000 (UTC)
-X-AuditID: a67dfc5b-669ff7000002311f-cc-6875b0a2a86a
-Date: Tue, 15 Jul 2025 10:36:26 +0900
-From: Byungchul Park <byungchul@sk.com>
-To: Mina Almasry <almasrymina@google.com>
-Cc: willy@infradead.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mm@kvack.org,
- kernel_team@skhynix.com, ilias.apalodimas@linaro.org,
- harry.yoo@oracle.com, akpm@linux-foundation.org,
- andrew+netdev@lunn.ch, asml.silence@gmail.com, toke@redhat.com,
- david@redhat.com, Liam.Howlett@oracle.com, vbabka@suse.cz,
- rppt@kernel.org, surenb@google.com, mhocko@suse.com,
- linux-rdma@vger.kernel.org, bpf@vger.kernel.org,
- vishal.moola@gmail.com, hannes@cmpxchg.org, ziy@nvidia.com,
- jackmanb@google.com, wei.fang@nxp.com, shenwei.wang@nxp.com,
- xiaoning.wang@nxp.com, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, sgoutham@marvell.com,
- gakula@marvell.com, sbhatta@marvell.com, hkelam@marvell.com,
- bbhushan2@marvell.com, tariqt@nvidia.com, ast@kernel.org,
- daniel@iogearbox.net, hawk@kernel.org, john.fastabend@gmail.com,
- sdf@fomichev.me, saeedm@nvidia.com, leon@kernel.org,
- mbloch@nvidia.com, danishanwar@ti.com, rogerq@kernel.org,
- nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com,
- shayne.chen@mediatek.com, sean.wang@mediatek.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- aleksander.lobakin@intel.com, horms@kernel.org, m-malladi@ti.com,
- krzysztof.kozlowski@linaro.org, matthias.schiffer@ew.tq-group.com,
- robh@kernel.org, imx@lists.linux.dev, intel-wired-lan@lists.osuosl.org,
- linux-arm-kernel@lists.infradead.org,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Message-ID: <20250715013626.GA49874@system.software.com>
-References: <20250714120047.35901-1-byungchul@sk.com>
- <20250714120047.35901-3-byungchul@sk.com>
- <CAHS8izO393X_BDJxnX2d-auhTwrUZK5wYdoAh_tJc0GBf0AqcQ@mail.gmail.com>
- <CAHS8izNh7aCJOb1WKTx7CXNDPv_UBqFyq2XEHHhqHH=5JPmJCQ@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id qLx4VXy_UA_g for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 15 Jul 2025 11:37:55 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=52.101.65.13;
+ helo=du2pr03cu002.outbound.protection.outlook.com;
+ envelope-from=malin.jonsson@est.tech; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D624140F1D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D624140F1D
+Received: from DU2PR03CU002.outbound.protection.outlook.com
+ (mail-northeuropeazon11011013.outbound.protection.outlook.com [52.101.65.13])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D624140F1D
+ for <intel-wired-lan@osuosl.org>; Tue, 15 Jul 2025 11:37:54 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=mVPFgis8a6PjkALHggzcWg7IH/DLsi6Ez7Vb+PMqxCCCC8fHZCRQ/14tam+7UTx84WPNOie5NvnVGlceWawRw6YdDUqsDBrpZ9x1wvcLgMzcbnnZozzQUb0StpCwuBIHdPSOq2O1xrFcQgvRKZ02Rt499Npfzqj0i4XmblegK1gOWosV5/CJGlgSCzfLrohX7Yt6tsfxOKceyQAxCSt6OsThhwXu5mkiEZfppS1HV8801Mrn9cICnB+UJIXUadvRhZSAJLKeyltGg3eLPseS4jnhwX681mAG77RUvgVoE+OUw/ghzrt1uQSzH6JOQM3+GvL+gjpb0dc5e9FtTjrgXA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=xvd1qoU4pYIAoQzn00hIzbgFbTQ3Bm8G9flXeAoOi5s=;
+ b=mDDAk3L7uPFFBe0q6A3F0xKW7igN85FZct9bHemWJpDcNhdfdzm0cSMXkSPLJ57hJw+S97RQQuC5FzH5yJwDsdH+w/Q7Jjqd84p2svLfqjm6G575Szkr3+9rlm/RlMACgcGz6Oj6kKn9mmCDMtcCyXJBO3r8bKjYcsedHKpXAAqmQtP7U1dVc6iiIsXNyan+7Yar9v/btZbzOSNs7nfkk0rOvt6IFFsC7U6y1ZFY+W5Wzwc35FE+6qDSMFN8in0DA+8yGkNYpQSQOMuAbSk790Ricl5z4MhHGCAbnAiZ8Tm/V12FzrI+p2aDayKqZewHb7IpoqwxwqWdaI8diYjctQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=est.tech; dmarc=pass action=none header.from=est.tech;
+ dkim=pass header.d=est.tech; arc=none
+Received: from DU2P189MB2588.EURP189.PROD.OUTLOOK.COM (2603:10a6:10:49f::19)
+ by AM7P189MB0995.EURP189.PROD.OUTLOOK.COM (2603:10a6:20b:17e::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8922.32; Tue, 15 Jul
+ 2025 11:37:51 +0000
+Received: from DU2P189MB2588.EURP189.PROD.OUTLOOK.COM
+ ([fe80::8636:4f22:3af7:9aa1]) by DU2P189MB2588.EURP189.PROD.OUTLOOK.COM
+ ([fe80::8636:4f22:3af7:9aa1%6]) with mapi id 15.20.8922.028; Tue, 15 Jul 2025
+ 11:37:50 +0000
+Date: Tue, 15 Jul 2025 13:37:49 +0200
+From: Malin Jonsson <malin.jonsson@est.tech>
+To: Alexander Lobakin <aleksander.lobakin@intel.com>
+Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>, yong.g.gu@ericsson.com,
+ roland.kovacs@est.tech, intel-wired-lan@osuosl.org
+Message-ID: <aHY9jcuesPs5-zdh@jotunheim>
+References: <20250711064746.649332-1-malin.jonsson@est.tech>
+ <f6027166-2ab1-4221-9636-7ed40f1865d3@intel.com>
+ <332dedfe-d3a4-446b-8a00-8d56bc54318d@intel.com>
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAHS8izNh7aCJOb1WKTx7CXNDPv_UBqFyq2XEHHhqHH=5JPmJCQ@mail.gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Brightmail-Tracker: H4sIAAAAAAAAA02Sf1DTdRjH7/P98dmXxbwvC/OjZN1NzaJLKb3ruYuM669v3XXleVdXeuYu
- vrbRQBuMH51dE8YVmEiBnpuzRgwEZo6GwKKBNEhROoGBOAUGghkgaKEsBou1wXnx3+t5nvc9
- r89z9+Fo+W94HadOyxC1aUqNAksZ6XR02QvltTpVwvGRBDDbz2LoeVDGgm0uG86MOFnwVBP4
- pXuOAnNNA4KHgQEJOAoGaXjQfglDeZmfhkDtUQbMXQYGZu3zNPxxcVQCHe5/GbA53oLhyjsM
- uL5spKFtdhOMHuvAcNSwQIPRl48hdHOBhebAPQnkOqsoaL5bL4HuhiIWSucraGjUj4RdY/0s
- 9DaZMfTm9SDwnQ2xcMcdFk5VDUqgyGZC4L5QjSHXsA2m6h9K4K/j7TQMFyXB4slMuGh5Avyd
- UwgGKq5REHI5JXDVd46FdnsjBX23AjT4vz6NoXD6GIJrxiYKfj9dy4K1s48Kv2MX9IeCFJR4
- LBjGDMMIPG2jDJw6XITA3uJl4W9X+OSFOTNOel1om7pPC84hKxLOV9+ghPHiRUrwtlyhhJ9N
- QxLB4tAJdVXxQrlrghIKvR5acNQUYMEx861EGOx3YaHj5AIj1Fm/EMbrjOid9R9IE5NFjTpT
- 1G7dsU+q+jN4FR/0bcz+yvCqHtU+WYiiOMJvJ7crmthHrD9xno4ww28i4+2zVIQxv5l4vYGl
- fiz/HLG2fBPOSzmat3JkotmJIsUqfoYmnbOdTCT1OK8jP9zyLrGMBzKWX8BEQnL+PiJHnAF2
- eRBDLhtvL4XosCL4nSes4MIcR84scsvtp0le/aklcxS/k/zovYcjvJrfQFobLlGRnYTPlRJb
- 3jRePmEt+bXKyxQjuWmFwrRCYfpfYVqhsCCmBsnVaZmpSrVm+xZVTpo6e8tHB1IdKPy5Kz8P
- 7naime5dbsRzSBEtg8kMlZxVZqbnpLoR4WhFrGxySKuSy5KVOZ+J2gMfanUaMd2N4jhGsUb2
- kj8rWc5/rMwQPxHFg6L20ZTiotbp0aHLJRbfnqD/+hrjZl3vu3e3lea8kaKwlV/vmohPeWW+
- RlOyz/5p6tZF2d7px64EVYkbSrNi9O+/9tNEUtL8qt3Jlmcqb9IlfW0XYvb2eJ468WZr/mG8
- Py5rrW3jy9Gt+vdCRwaKd6y+MXLuH/uhgcnnE7pSfNr9alz8dvf36xPde2L7nlUw6Srli/G0
- Nl35H/YfORbYAwAA
-X-Brightmail-Tracker: H4sIAAAAAAAAA02Se0xTZxiH853v3GhWd9ahfsFdkk5cRjJ02UzeZNO56LKTZTNzI/G2RJtx
- sjZcZC0lYHZBKYHWiTLcBrUwwMrVja4IdK6iaQmXdXNShBy5CohDAd2EEitI12KW8d/zvu8v
- v+f74+OxqpKN4XWp6ZI+VZOsZhW0YufrOS9XOozaTVVyPNgazrHQPVvBQP2DTKi+4WLAX0vg
- 16sPKLDVNSOYCw5w4DQPYpht62DhTMU8hqDjOA22P000BBoeYphoH+Og0/OIhnrn+zBSdYsG
- d14LBm8gFsZOdLJw3LSAoWQ4l4VQ/wIDF4N3OTjqqqHAW9oVHqeaOLjaXMDAqYdnMbRk3wgL
- x/sY6LlgY6EnpxvB8LkQA7c8Yet0zSAHBfVWBJ5LtSwcNb0K001zHPz9bRuGkYJtsFScAe3l
- a2DeN41g4GwvBSG3i4Mrwz8x0NbQQsG10SCG+a9LWbDMnEDQW3KBgt9LHQzYfdeo8Ds+gr7Q
- IgVF/nIWxk0jCPzeMRpOHylA0NAqM/CP20Rv2y56p+9h0TVkR+L52uuUOHlyiRLl1t8o8Rfr
- ECeWO41iY02ceMZ9mxItsh+LzjozKzrvf8OJg31uVuwsXqDFRvtX4mRjCfrguX2KNxKlZF2G
- pN+49aBC+9fiFTZteH1mvmlLNnI8Y0FRPBFeI9nfnccRpoVYMtkWoCLMCi8SWQ4u76OFl4i9
- tZCxIAWPBTtPbl90ociwSriPiS/goyOppwUjqRyVl1kpABnPNdORkEq4h8gxV5B5fHiKdJXc
- XA7hsGKxzB9W8GFeR6qX+Mfr50lO0+llc5Swi/wo32UjvFp4gVxu7qBOoietK5qsK5qs/zdZ
- VzSVI7oORetSM1I0uuTN8YYkbVaqLjP+k0MpThT+uVVfLBa60FzPOx4k8Ej9hBLupGtVjCbD
- kJXiQYTH6mjlnSG9VqVM1GQdlvSHDuiNyZLBg9bxtHqt8t3d0kGV8KkmXUqSpDRJ/9+V4qNi
- spH3SP6X0TuqO8z1e+17PlP3LiRtLWqxzuYdqFjz+UTCsQ3EkLg2dkdQnrB9vOqH/W+mp+Q9
- 2/4IJWw0HvZ9GI97ft5smyrcUJRws2N0on8+7o/tpe1dA6auJEug+K2ZtPd2vu3tL5sJmddf
- cg/szbr8/VT3/i1ljnzn7pxN9OqY3LHrp9S0Qat5JQ7rDZp/AaLKAyC1AwAA
-X-CFilter-Loop: Reflected
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+In-Reply-To: <332dedfe-d3a4-446b-8a00-8d56bc54318d@intel.com>
+X-ClientProxiedBy: GV3P280CA0096.SWEP280.PROD.OUTLOOK.COM
+ (2603:10a6:150:8::35) To DU2P189MB2588.EURP189.PROD.OUTLOOK.COM
+ (2603:10a6:10:49f::19)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU2P189MB2588:EE_|AM7P189MB0995:EE_
+X-MS-Office365-Filtering-Correlation-Id: a1b0d2e0-e183-452b-d565-08ddc394079f
+X-LD-Processed: d2585e63-66b9-44b6-a76e-4f4b217d97fd,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0; ARA:13230040|376014|1800799024|10070799003|366016;
+X-Microsoft-Antispam-Message-Info: =?iso-8859-1?Q?8Gp4WglRmFI5Nkk8tdjq6FytcMyfaH8LHLf5fK3NBS3iF3gVsr8SGVczQn?=
+ =?iso-8859-1?Q?6tUtFy03d+a5vhhCqB9hub60SRdbbuuXv/1dMmfYelwNmsA/d+F688QYd5?=
+ =?iso-8859-1?Q?Gz58B9FumXSKmG5WpAN0U+kL4DDpArGM1h73muDyH2HNZ9mOK/SYDkU4Wq?=
+ =?iso-8859-1?Q?XDUdOTgZ4HpEbD5IwFGjeDYk/RVXuKRChXeKt7co67yqNtUjK0NZ2K6VM9?=
+ =?iso-8859-1?Q?eMgdkU9u/BxKyPD2wuvCbw6vNilffxBv4vYF7vllz11xdEmYalXilK4CXA?=
+ =?iso-8859-1?Q?pOLcCAQNkQkoFIxFdUnmqz9dNujDMl+SI0gZEikbiufsvNMB9MBSdAi1JM?=
+ =?iso-8859-1?Q?zxJroXXKgeQzOFBn0PY43fgZc/wZsOuUDvKL+fGyZIbugvMR/4if+J9G2t?=
+ =?iso-8859-1?Q?1HRBZLlmaq1Oaj1Sh2bxjjK1Y8DAkI8tz3gHBIuTcqYZsiC+XjN2a0Q76k?=
+ =?iso-8859-1?Q?fVKhHlHtlW/bn/O53ZQPxysboZnFMVYatpROjbYIfkqGQ5lRauBTXYlGzd?=
+ =?iso-8859-1?Q?FvkyjLNppHQj/nGOD+mfQC8VBXUDeAvNkhspsM0TyKJNZJNzDaQGcLputs?=
+ =?iso-8859-1?Q?JU3vgWctV5w7kRQDRcFURFNkJnqNRqSW49Xz0Q/yqs19ThINM4xU9qqX0/?=
+ =?iso-8859-1?Q?gTPS0be/Kixrpa8RDrHpKP9MFIh6M8osyZc/pMnEzlKq9Obk0UUbTAevSL?=
+ =?iso-8859-1?Q?ehq7BWRQFfpwJRvc/ZFtEFx39DF+Nv2s3AkX8R8hpMRIaZoTyWg2jWmeY8?=
+ =?iso-8859-1?Q?4PAvBNEta+lTgZKHVUyVJ9RRHsTZnnGy4Ywuus+KVU6FHdviX+6vbPUp2d?=
+ =?iso-8859-1?Q?FCqa09AqezHJB0Q4czkLoC/h2dLF5xSiE5Xo6et1C76Yu6lhuKxTPdKcZL?=
+ =?iso-8859-1?Q?rTB9Y68wRULqbiTowPUEIzssVO7tguvolxqoWgXqbdUQ6Qss3y/JkdLc2k?=
+ =?iso-8859-1?Q?UEj1jF/6ELcJ6GiiOyf3YvaupquWCjhFJHwXIiZxjDo2cGcK+QL97IDw6R?=
+ =?iso-8859-1?Q?T89ZP75geEKAx0y5u/xBDI+QkS3bFVNl5OP/gyu6xjEGJuRdYTCoFz/QSR?=
+ =?iso-8859-1?Q?wcOolbwr4OjLAQ6sfsKPkeiomUVcIo8fbqoCpOhTkNhCGPBXfAJuOy+ep4?=
+ =?iso-8859-1?Q?HAWls9UR9wXCFC7w3bBNlURHnnSWxwqYpEeDKemEXnLagBsqTvqRodbdiz?=
+ =?iso-8859-1?Q?q5G4BPqTH1FChhlSswNEI6sgzCWHotxSdbxkHUtCD2c+vwAhCjZFgTGgeS?=
+ =?iso-8859-1?Q?6/RkjWVpAh8RiaVQxx4NNQZ/pjR5TxTGbvRNnqvPzvNyHCT0FjxP0O4Qh4?=
+ =?iso-8859-1?Q?iedSR1fK7ZEFHMB+xFnt3fL+7MJC8PJmKhhXyF3vmRhbaY8lJD5UY0l3pN?=
+ =?iso-8859-1?Q?k6vtsBK/EfM5Nm1NoWPMkskzch+NWFXGENO6Hkezasz3/sxTtJjOrzRavU?=
+ =?iso-8859-1?Q?aBWeeLbhAyAhqEL8ZImsEWFCOz0DMCfloPdhmQCE/mIaZcr7nqZToHLGun?=
+ =?iso-8859-1?Q?4=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DU2P189MB2588.EURP189.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(1800799024)(10070799003)(366016); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?UozT4HX3CfN7c7aQDUti8IKUuzDDP/ua/7TJiOkj5oCI1BM9INBRszLAM7?=
+ =?iso-8859-1?Q?B2MSnLtn/maLbmS4F14I9OgjOcaluYgKErvZ94Mqz/Rh4/3eMSPlQ3rFDa?=
+ =?iso-8859-1?Q?eU/xZy0igZhscHYmr0Mx82bmy2kZV3U80ZZUumuXIvs1D+SaI8Sa7Fai9E?=
+ =?iso-8859-1?Q?TOZZhJ37+5lEDUqT+UKJRcvhmep/7KaxRetBp4RE3BRQvqDDcoH0rwszPh?=
+ =?iso-8859-1?Q?+yDlr7ndPIvKaCDOfRxmDKT194xSIMcwwM6YNZD/jiIPsW0IYmvbaFJ38D?=
+ =?iso-8859-1?Q?CWY6WZGC2SI/X/TJuRXQ0LMZwgOx+Ro3qBrfLSdfoet8dq7+1MXaRCXv89?=
+ =?iso-8859-1?Q?eCApWgLQ8AD4IUgQzAbhxqdQvC/dhQFRtwN586dwolsVphgAvHZaLrwqOq?=
+ =?iso-8859-1?Q?2uF46a5bA6GCGOo8vos7r7MuG7OowN69oLfY4Yv/UkPEUobewroDa8woq6?=
+ =?iso-8859-1?Q?nGzaQ+YdNep9smR9oedPnNHGP/Ctz9lGsMHfDhrsKofUfPBL2xi0Hpf22u?=
+ =?iso-8859-1?Q?G+z7Y5O6jXSyNIbLKUYnI9EOS3HvK79vlCA84BvdHLBgB+R/S6eTnB0OBJ?=
+ =?iso-8859-1?Q?lhb+TbWLaMjhI7ReVKG+YZiLvcq3bQcx/SxCbgc3foLAybAJ9ghhymE42Q?=
+ =?iso-8859-1?Q?ArLqSUzs8pZEgwyPOmVYndU03MatJqBZjcLaNhd2waLjsOLDxrac+wThn0?=
+ =?iso-8859-1?Q?1uScgPxlBY5CuFKk+44GO6NYXhrAtSCgdztxNwMvTD2MkDiPwouUu4FfTX?=
+ =?iso-8859-1?Q?c+b8ly25pnF+jn4b/9SGiLuxyPAOtNw4pso5fEUxLcYIDCkjDxt3aUbXGx?=
+ =?iso-8859-1?Q?dMfKRhnoZGjBo7dC4mqEmhuSldE8/xVfF1c03LlHNnFUGy4bzSWap27TeL?=
+ =?iso-8859-1?Q?xNqgDdUSvfRRlKtZlhZ/fYmUv/e09JqEPsYBZp9Tm0JQYj163BsCLABt4m?=
+ =?iso-8859-1?Q?EBdlqIpYLNoUId8iCqLpmSd7Mb5kFczpQVscQp7rv3vNJUcuwxII6osksO?=
+ =?iso-8859-1?Q?iJJsClaZbhPBeBMfh8Z40dXGNp1bbc+VHITrELJKccXC1pwjyOmhtCcVck?=
+ =?iso-8859-1?Q?VbHDMc7He8PNvihLLdAGgzwMGxnQyE/QcAlWGpoixeDMcF9eIbHlqHi6hU?=
+ =?iso-8859-1?Q?F0M6lbvAYH0/7n3Up0ZQLHVSMj9P3vj7EZYzfBORsmG9wMR07YLKcl5CET?=
+ =?iso-8859-1?Q?EoPaBNmmhFB1d6OOjwamXxDtkJ9n+XRa3LfqHHNhQrG4BZGe64sjVF++9X?=
+ =?iso-8859-1?Q?yoDUh5V5+F4RIF8agLAuUNkLvmgps0S7K3T22XcsGXlDRAzf+hEEVLjhHu?=
+ =?iso-8859-1?Q?WuvI2wQp3U5EHr9LVeWFSt2F+2evCHNeAysx0tDHAbRweSFL1aAtl3jhjQ?=
+ =?iso-8859-1?Q?Et4VKHUNgVx+vWMtWgucpnOk/6SiYMxMi/7q1h9Kr8AYD/NA7eMborVbzs?=
+ =?iso-8859-1?Q?z7RHfW22lWIpuiYtRlC6ZesvJYRIfyyDgJnAuBEcPJiQM+kCUpaCM/Xgpk?=
+ =?iso-8859-1?Q?VB80hHcwh5i9G3Lr9if68Ym0vxBtyFzicyzU4WRwMcvg5lTlMIXCGawQCM?=
+ =?iso-8859-1?Q?6FoWzj7eoPpIp1oWl97W66nmQNCnSKfQ05Lpjffn+lZd5CTGVERclUn9eh?=
+ =?iso-8859-1?Q?NVM2MdAB9FpJDMd39Ef+jtcspGuANVfyufP92ZYHikrM7CI+FlKv1oa51g?=
+ =?iso-8859-1?Q?USfeDY3FHh5MUqUpO5HTaS2wiSlFI7PWuHVt2Q9jZdYlSyXxw7+TlbV4+a?=
+ =?iso-8859-1?Q?K7ug=3D=3D?=
+X-OriginatorOrg: est.tech
+X-MS-Exchange-CrossTenant-Network-Message-Id: a1b0d2e0-e183-452b-d565-08ddc394079f
+X-MS-Exchange-CrossTenant-AuthSource: DU2P189MB2588.EURP189.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jul 2025 11:37:50.8805 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: d2585e63-66b9-44b6-a76e-4f4b217d97fd
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: AGaRqCxpKf5eWVlrH1nROi7IfL4AXwrf99Bt2Bmu5rji9RDw+u4MVSwYZB3w947b0SLW2InScXL5LaR0F6hrmA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM7P189MB0995
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=est.tech; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=xvd1qoU4pYIAoQzn00hIzbgFbTQ3Bm8G9flXeAoOi5s=;
+ b=MSrP6+Z/I27/pMNbA1nSzRgawrJ/EGMyYQpnTnqcf9Th/eNZtiUJdS4hFfkM/9PHb0ntN2HTzRXWSOxLjdOtCgermFGjUUs2M/CvdoTFs9KJOMFaJjNvEhKnDYNhyMDXWrUsGvpBbCA1ulRpSDEJPrcUQoMhcrlArNuLOxCutGMockS8PpQJMAN2lmbUp3hj90vaKTQrJt8lOsU0zPVYKwa24r37bbxGiaCGlsfTEISBoUpNULAxDj0n+GH6awsZ114x7KaW5pq3xVa/6w+I7drdjClwYRn6fyii5QurqieEDSUcjoUL2xqpnJxH+scyR7t3x7fSlMMM3vhUBSGnfw==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=sk.com
-Subject: Re: [Intel-wired-lan] [PATCH net-next v10 02/12] netmem: use
- netmem_desc instead of page to access ->pp in __netmem_get_pp()
+ header.from=est.tech
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=fail reason="signature verification failed" (2048-bit key,
+ unprotected) header.d=est.tech header.i=@est.tech header.a=rsa-sha256
+ header.s=selector1 header.b=MSrP6+Z/
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=est.tech;
+Subject: Re: [Intel-wired-lan] [PATCH 1/1] idpf: Add missing dependencies
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -145,113 +193,81 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Jul 14, 2025 at 12:58:15PM -0700, Mina Almasry wrote:
-> On Mon, Jul 14, 2025 at 12:37â€¯PM Mina Almasry <almasrymina@google.com> wrote:
-> >
-> > On Mon, Jul 14, 2025 at 5:01â€¯AM Byungchul Park <byungchul@sk.com> wrote:
-> > >
-> > > To eliminate the use of the page pool fields in struct page, the page
-> > > pool code should use netmem descriptor and APIs instead.
-> > >
-> > > However, __netmem_get_pp() still accesses ->pp via struct page.  So
-> > > change it to use struct netmem_desc instead, since ->pp no longer will
-> > > be available in struct page.
-> > >
-> > > While at it, add a helper, pp_page_to_nmdesc(), that can be used to
-> > > extract netmem_desc from page only if it's pp page.  For now that
-> > > netmem_desc overlays on page, it can be achieved by just casting.
-> > >
-> > > Signed-off-by: Byungchul Park <byungchul@sk.com>
-> > > ---
-> > >  include/net/netmem.h | 13 ++++++++++++-
-> > >  1 file changed, 12 insertions(+), 1 deletion(-)
-> > >
-> > > diff --git a/include/net/netmem.h b/include/net/netmem.h
-> > > index 535cf17b9134..2b8a7b51ac99 100644
-> > > --- a/include/net/netmem.h
-> > > +++ b/include/net/netmem.h
-> > > @@ -267,6 +267,17 @@ static inline struct net_iov *__netmem_clear_lsb(netmem_ref netmem)
-> > >         return (struct net_iov *)((__force unsigned long)netmem & ~NET_IOV);
-> > >  }
-> > >
-> > > +static inline struct netmem_desc *pp_page_to_nmdesc(struct page *page)
-> > > +{
-> > > +       DEBUG_NET_WARN_ON_ONCE(!page_pool_page_is_pp(page));
-> > > +
-> > > +       /* XXX: How to extract netmem_desc from page must be changed,
-> > > +        * once netmem_desc no longer overlays on page and will be
-> > > +        * allocated through slab.
-> > > +        */
-> > > +       return (struct netmem_desc *)page;
-> > > +}
-> > > +
-> >
-> > Same thing. Do not create a generic looking pp_page_to_nmdesc helper
-> > which does not check that the page is the correct type. The
-> > DEBUG_NET... is not good enough.
-> >
-> > You don't need to add a generic helper here. There is only one call
-> > site. Open code this in the callsite. The one callsite is marked as
-> > unsafe, only called by code that knows that the netmem is specifically
-> > a pp page. Open code this in the unsafe callsite, instead of creating
-> > a generic looking unsafe helper and not even documenting it's unsafe.
-> >
-> 
-> On second read through the series, I actually now think this is a
-> great idea :-) Adding this helper has simplified the series greatly. I
-> did not realize you were converting entire drivers to netmem just to
-> get rid of page->pp accesses. Adding a pp_page_to_nmdesc helper makes
-> the entire series simpler.
-> 
-> You're also calling it only from code paths like drivers that already
-> assumed that the page is a pp page and did page->pp deference without
-> a check, so this should be safe.
-> 
-> Only thing I would change is add a comment explaining that the calling
-> code needs to check the page is pp page or know it's a pp page (like a
-> driver that supports pp).
-> 
-> 
-> > >  /**
-> > >   * __netmem_get_pp - unsafely get pointer to the &page_pool backing @netmem
-> > >   * @netmem: netmem reference to get the pointer from
-> > > @@ -280,7 +291,7 @@ static inline struct net_iov *__netmem_clear_lsb(netmem_ref netmem)
-> > >   */
-> > >  static inline struct page_pool *__netmem_get_pp(netmem_ref netmem)
-> > >  {
-> > > -       return __netmem_to_page(netmem)->pp;
-> > > +       return pp_page_to_nmdesc(__netmem_to_page(netmem))->pp;
-> > >  }
-> >
-> > This makes me very sad. Casting from netmem -> page -> nmdesc...
-> >
-> > Instead, we should be able to go from netmem directly to nmdesc. I
-> > would suggest rename __netmem_clear_lsb to netmem_to_nmdesc and have
-> > it return netmem_desc instead of net_iov. Then use it here.
-> >
-> > We could have an unsafe version of netmem_to_nmdesc which converts the
-> > netmem to netmem_desc without clearing the lsb and mark it unsafe.
-> >
-> 
-> This, I think, we should address to keep some sanity in the code and
-> reduce the casts and make it a bit more maintainable.
+On mån, 14 jul 2025, Alexander Lobakin wrote:
 
-I will reflect your suggestions.  To summarize:
-
-   1) The current implementation of pp_page_to_nmdesc() is good enough
-      to keep, but add a comment on it like "Check if the page is a pp
-      page before calling this function or know it's a pp page.".
-
-   2) Introduce the unsafe version, __netmem_to_nmdesc(), and use it in
-      __netmem_get_pp().
-
-   3) Rename __netmem_clear_lsb() to netmem_to_nmdesc(), and return
-      netmem_desc, and use it in all users of __netmem_clear_lsb().
-
-Anything else?
-
-	Byungchul
+> From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Date: Fri, 11 Jul 2025 12:25:09 +0200
 > 
-> --
+> > On 7/11/25 08:47, Malin Jonsson wrote:
+> >> The idpf driver depends on both AUXILIARY_BUS and NET_DEVLINK, but
+> >> they're not selected by the Kconfig. Let's fix this so idpf builds even
+> >> with a stripped config.
+> >>
+> >> Reported-by: Yong Gu <yong.g.gu@ericsson.com>
+> >> Signed-off-by: Malin Jonsson <malin.jonsson@est.tech>
+> > 
+> > Thank you for the fix!
+> > if you have a Link to the public report, please add it as a Closes: tag
+> > 
+> > Would be also great to add a Fixes: tag with the commit that introduces
+> > the need for given dependency/ies
+> > (there should be one tag only (per your commit), if both deps were
+> > introduced by the very same pull request, just use the earlier commit)
+> > 
+> >> ---
+> >>   drivers/net/ethernet/intel/idpf/Kconfig | 2 ++
+> >>   1 file changed, 2 insertions(+)
+> >>
+> >> diff --git a/drivers/net/ethernet/intel/idpf/Kconfig b/drivers/net/
+> >> ethernet/intel/idpf/Kconfig
+> >> index 1f893221e2c99..5c7ce626aae16 100644
+> >> --- a/drivers/net/ethernet/intel/idpf/Kconfig
+> >> +++ b/drivers/net/ethernet/intel/idpf/Kconfig
+> >> @@ -8,6 +8,8 @@ config IDPF
+> >>       select LIBETH
+> >>       select LIBETH_CP
+> >>       select LIBETH_IRQ
+> >> +    select AUXILIARY_BUS
+> >> +    select NET_DEVLINK
+> 
+> Uhm, idpf currently uses neither of those...
+
+Correct, I didn't do my due diligence before I submitted the fix:
+
+I maintain a custom kernel for an Intel chip that's still under development (PMR),
+and we receive patches before submission to go with early releases of the PMR simulator.
+
+The patches that introduce the dependencies are not on the list yet - I
+only realised this when I started searching the list for the commits in question.
+> 
+> Could you give a real output with the linker being unable to resolve
+> auxbus and/or devlink symbols for idpf.ko?
+
+This information doesn't apply to the upstream driver of course, but for completeness' sake:
+
+ERROR: modpost: "devlink_info_version_running_put" [drivers/net/ethernet/intel/idpf/idpf.ko] undefined!
+ERROR: modpost: "auxiliary_driver_unregister" [drivers/net/ethernet/intel/idpf/idpf.ko] undefined!
+ERROR: modpost: "priv_to_devlink" [drivers/net/ethernet/intel/idpf/idpf.ko] undefined!
+ERROR: modpost: "devl_nested_devlink_set" [drivers/net/ethernet/intel/idpf/idpf.ko] undefined!
+ERROR: modpost: "__auxiliary_device_add" [drivers/net/ethernet/intel/idpf/idpf.ko] undefined!
+ERROR: modpost: "devl_port_register_with_ops" [drivers/net/ethernet/intel/idpf/idpf.ko] undefined!
+ERROR: modpost: "devlink_info_serial_number_put" [drivers/net/ethernet/intel/idpf/idpf.ko] undefined!
+ERROR: modpost: "devl_unlock" [drivers/net/ethernet/intel/idpf/idpf.ko] undefined!
+ERROR: modpost: "devl_port_unregister" [drivers/net/ethernet/intel/idpf/idpf.ko] undefined!
+ERROR: modpost: "devlink_priv" [drivers/net/ethernet/intel/idpf/idpf.ko] undefined!
+WARNING: modpost: suppressed 10 unresolved symbol warnings because there were too many)
+make[2]: *** [scripts/Makefile.modpost:147: Module.symvers] Error 1
+make[1]: *** [/repo/malin/elin/linux/Makefile:1956: modpost] Error 2
+
+> 
+> > 
+> > looks good, but please notice that we keep this list sorted
+> > 
+> >>       help
+> >>         This driver supports Intel(R) Infrastructure Data Path Function
+> >>         devices.
+> 
 > Thanks,
-> Mina
+> Olek
+
+Cheers //malin
