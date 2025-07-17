@@ -2,150 +2,108 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B4D58B0892C
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Jul 2025 11:22:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0EF7BB0894A
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Jul 2025 11:29:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 58DA460A6E;
-	Thu, 17 Jul 2025 09:22:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C1366615A8;
+	Thu, 17 Jul 2025 09:29:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xjCLi5Q4D5We; Thu, 17 Jul 2025 09:22:07 +0000 (UTC)
+ id oZClYjk8h6Mu; Thu, 17 Jul 2025 09:29:40 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C600F60AA0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3D6806120D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1752744127;
-	bh=i00DCL7LArMdrcvWGazqRQUXotNFwoxDDFzCPluiP0Y=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1752744580;
+	bh=V89MAA/c0mz56dFR3ArAryzZWzfKryLUbi0DIVB49js=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=6BezNwVB0brefoBsjUfX5h9UubKXkbOrn2U/FeT8QAFDw318sMYnKi7AcmHyp3g1V
-	 42wafDhPRg98NYL5WBUoPFGPd0V10fMkX0fr05fNxZryud/DPH2z7Ht9PyoIz03tOy
-	 DT4G1TzZYEN1HwyRvtRIIQ7DfQVF1vsZtaWD+HjO2yA0Tcu7lnZJeBturK7HJdgl0E
-	 8BXT5ufhPD/DvrraKWqhm0QLlbFat2RIaUOYyMJ8H3iP6V2AIbMNmup9WlRb/vCXuC
-	 SV3dD9W4+Rn/u1QKkJYsK7JuHQWmyDZxxHlG7WVR6fGVXRlnxDELazCE8M1O+E8IIH
-	 6QjgUQEDUoyFw==
+	b=rRQ7Gn5Vguwd86V6AVeVTAMSmTQOrUbuAdyw+6ODk8wvZTv7POgK+XWz5Kk+eb35P
+	 PREjgyWQqp8tYCiEOdmTMAtXpcBfe6RrynpgzX+IAN9SEiyamfoiJgxLbVz052bR4b
+	 uuJRcjLsZyk+LBpK77tKl90shim0S8W4mFVq5MjPx4Vi2m7bzwU08Yivdo28hyClXQ
+	 4lrLrY4vnjqGEW/8CuydOiYxKShjLfYv35rbP43/8UhpMgP0SNh/KXql4h3H1OefyB
+	 R2QBAP5Nx3I0Ypf/hTFT2mK3SnCZGsej/CY/EOOt3D2z4ty9Fs82RRbETpbzGXnsVZ
+	 CvxqOyXV/OPPQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C600F60AA0;
-	Thu, 17 Jul 2025 09:22:07 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3D6806120D;
+	Thu, 17 Jul 2025 09:29:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 44587117
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 09:22:06 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id BC1B0A59
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 09:29:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 29F5660A48
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 09:22:06 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id A2411410C8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 09:29:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id PdRAtCsSarV2 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 17 Jul 2025 09:22:05 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::536; helo=mail-ed1-x536.google.com;
- envelope-from=asml.silence@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 194DC608D7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 194DC608D7
-Received: from mail-ed1-x536.google.com (mail-ed1-x536.google.com
- [IPv6:2a00:1450:4864:20::536])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 194DC608D7
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 09:22:04 +0000 (UTC)
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-60707b740a6so996636a12.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 02:22:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1752744123; x=1753348923;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=i00DCL7LArMdrcvWGazqRQUXotNFwoxDDFzCPluiP0Y=;
- b=ds9dLkTr8Ske5/FY3PqtCmU+LHf3CQPeT6y3J0kK/uztgGRA3Rt9bthDhPBH/9vhD3
- EXhjJSVpBxvlJqRucZmPTuXgI8Q55VlNnMLP0IEOSA27CxK94WZO+swyXfNfE/zmbXO5
- 4JCNIdVfoxAF7oN/vChQIph17X3SVjtdkLUFhhJLDQQFjJ25oc45b+oabual6IH6NqPo
- z4ou6tWL0ltk/gcOAeBH2wuMmTQ8stGVzp/rjlMRTUxGz8IT6O1u4d+ZJzlVp7reDPbq
- iIEbqJcNOy5+C3/aHGXlF4AJZNh0z+Wv6OXbrE0juIr24CdGejJ1Q2kZ21LWmt5onfi7
- uzcA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXL2C7SiNhEaiZrPqpKT//l1WCXDGI2kRPrKg6GiUxTF2lAc0itViQZPM/JTHPS/jCPVlV6xz+42SDvI7zfRgw=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yw0twr47JsrK8m9GU8/VlhxL1W+VUyh6ktFLmTT0HGXiMxGztt2
- a3AysHYCFPbOdIIT//yb7rPLoOTQtQZNnf7Av/zG0w7JcLhQU/I13uPu
-X-Gm-Gg: ASbGncvlmIDWB110zXk4pVpqEJRO+zhGmZ9oz75UjNXMgzIOuscro4PzY8ZU3C8iYAE
- f8myr/+M20l66p/tslXR3XXNsklgFOSPazNPkqZAWoB9CvmrOiuNNvbhIjbzOj2IEUQUeKaF51b
- xDSNE+qL1rFpQIRgCvLmUROQ8I2nkqGff+/Y7HpsZy6X8k+xFm2HlCpO+FIiXtcqOeSqjk0+bD+
- OIqVUuDKwowDxWRgNBjVk/R22WDYHLUGN5RhHT5AF5ayh3YA49iWe/cuLCKwlBGk3oEh63G2/f8
- V1o0/WFmIhkAnBVkdlhtr9I+/WpB43ml4072MXQjgLlcucXadB7WsvMDZ2rXB301fKq3cyszkNu
- rHzQB4tBigxw9NsjCByarqzRpnWL5l/pukiGEykcXCBuneQ==
-X-Google-Smtp-Source: AGHT+IEm/CZVfnHKhdEovv47xnxQCwkLFXlL7R6Fz8Q/9sjCF0i+Wwcn8Nmka6MicAHPOBghKdtX1Q==
-X-Received: by 2002:a17:907:3e9c:b0:ae3:c968:370 with SMTP id
- a640c23a62f3a-ae9ce1e8c11mr471633566b.59.1752744122539; 
- Thu, 17 Jul 2025 02:22:02 -0700 (PDT)
-Received: from ?IPV6:2620:10d:c096:325::1ac? ([2620:10d:c092:600::1:72cc])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-ae6e7eec2a0sm1338371766b.67.2025.07.17.02.21.59
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 17 Jul 2025 02:22:01 -0700 (PDT)
-Message-ID: <325c6297-b47f-43ad-8d2f-276cf70f3d57@gmail.com>
-Date: Thu, 17 Jul 2025 10:23:25 +0100
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id h5YrtUvvXmca for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 17 Jul 2025 09:29:38 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
+ helo=mgamail.intel.com; envelope-from=dawid.osuchowski@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org DB8EA410C3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DB8EA410C3
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id DB8EA410C3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 09:29:37 +0000 (UTC)
+X-CSE-ConnectionGUID: CnFmHaYXQdqjjYoFYKX1Fw==
+X-CSE-MsgGUID: ClBG2t+tTP2dnVFMht/o/Q==
+X-IronPort-AV: E=McAfee;i="6800,10657,11493"; a="66080640"
+X-IronPort-AV: E=Sophos;i="6.16,318,1744095600"; d="scan'208";a="66080640"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jul 2025 02:29:37 -0700
+X-CSE-ConnectionGUID: kTMDdV3RTKKJ60e/F1mtvw==
+X-CSE-MsgGUID: AdDq3+OvQXeQF1kxDk/1CA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,318,1744095600"; d="scan'208";a="188685491"
+Received: from soc-5cg4396xfb.clients.intel.com (HELO [172.28.180.72])
+ ([172.28.180.72])
+ by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jul 2025 02:29:35 -0700
+Message-ID: <b5b46a1f-41e1-4a25-bb6c-885ad2851aeb@linux.intel.com>
+Date: Thu, 17 Jul 2025 11:29:30 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-From: Pavel Begunkov <asml.silence@gmail.com>
-To: Mina Almasry <almasrymina@google.com>, Byungchul Park <byungchul@sk.com>, 
- "Lobakin, Aleksander" <aleksander.lobakin@intel.com>
-Cc: willy@infradead.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mm@kvack.org, kernel_team@skhynix.com,
- ilias.apalodimas@linaro.org, harry.yoo@oracle.com,
- akpm@linux-foundation.org, andrew+netdev@lunn.ch, toke@redhat.com,
- david@redhat.com, Liam.Howlett@oracle.com, vbabka@suse.cz, rppt@kernel.org,
- surenb@google.com, mhocko@suse.com, linux-rdma@vger.kernel.org,
- bpf@vger.kernel.org, vishal.moola@gmail.com, hannes@cmpxchg.org,
- ziy@nvidia.com, jackmanb@google.com, wei.fang@nxp.com, shenwei.wang@nxp.com,
- xiaoning.wang@nxp.com, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, sgoutham@marvell.com, gakula@marvell.com,
- sbhatta@marvell.com, hkelam@marvell.com, bbhushan2@marvell.com,
- tariqt@nvidia.com, ast@kernel.org, daniel@iogearbox.net, hawk@kernel.org,
- john.fastabend@gmail.com, sdf@fomichev.me, saeedm@nvidia.com,
- leon@kernel.org, mbloch@nvidia.com, danishanwar@ti.com, rogerq@kernel.org,
- nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com,
- shayne.chen@mediatek.com, sean.wang@mediatek.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, horms@kernel.org, m-malladi@ti.com,
- krzysztof.kozlowski@linaro.org, matthias.schiffer@ew.tq-group.com,
- robh@kernel.org, imx@lists.linux.dev, intel-wired-lan@lists.osuosl.org,
- linux-arm-kernel@lists.infradead.org, linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20250714120047.35901-1-byungchul@sk.com>
- <20250714120047.35901-3-byungchul@sk.com>
- <CAHS8izO393X_BDJxnX2d-auhTwrUZK5wYdoAh_tJc0GBf0AqcQ@mail.gmail.com>
- <CAHS8izNh7aCJOb1WKTx7CXNDPv_UBqFyq2XEHHhqHH=5JPmJCQ@mail.gmail.com>
- <20250715013626.GA49874@system.software.com>
- <CAHS8izNgfrN-MimH1uv349AqNudvQJoeOsyHpoBT_QokF3Zv=w@mail.gmail.com>
- <20250716045124.GB12760@system.software.com>
- <CAHS8izMK2JA4rGNMRMqQbZtJVEP8b_QPLXzoKNeVgQFzAmdv3g@mail.gmail.com>
- <6e4a4ae7-b84e-470d-81e9-a58ecf9c9157@gmail.com>
-Content-Language: en-US
-In-Reply-To: <6e4a4ae7-b84e-470d-81e9-a58ecf9c9157@gmail.com>
+To: Yuto Ohnuki <ytohnuki@amazon.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S . Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20250717084609.28436-1-ytohnuki@amazon.com>
+Content-Language: pl, en-US
+From: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
+In-Reply-To: <20250717084609.28436-1-ytohnuki@amazon.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1752744123; x=1753348923; darn=lists.osuosl.org;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
- :cc:subject:date:message-id:reply-to;
- bh=i00DCL7LArMdrcvWGazqRQUXotNFwoxDDFzCPluiP0Y=;
- b=dGn4kc6FZ44pf859sSH/czFytt32hqsLZoed7yciM5ELTT+A3Qk8tYiZx3VlWNGBFc
- uUrOI6WRMpTRSuH6d1w80Tv/KkWZyad31xpU5RAWgKB28roxqJYYIRgYlBev03ystTsK
- kmmTAUER7fRpAaHpEDn78i6Hi2j7RznreXFT4ioanYbE/LPkqA68qjmgRarrWi9/4iDR
- 9/+midSRH4btwPPopqZtyb5mYVu/Kgg2vXjDiA/PChc+LA5sjamMnSAgzAebmQdZKsZD
- bE9e0aWpcf5ZkhymdgZALSPUUp0RvL23s0O+/vkJwKJiJ95CNQD1zMUN58I9eyCORyg1
- IMWw==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=dGn4kc6F
-Subject: Re: [Intel-wired-lan] [PATCH net-next v10 02/12] netmem: use
- netmem_desc instead of page to access ->pp in __netmem_get_pp()
+Content-Transfer-Encoding: 7bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1752744578; x=1784280578;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=PeRZn0vzFIsX5vcaApJyGGbknSYq0vd9WAI4xB1Xxcs=;
+ b=daIaCpDydpqERdFAdV2xkYBzc5XO6b9WBBMay9Cg7jGb5bZL8ZplusIC
+ K9qyXyozOGM+3TZJMMF5ztM1I1Fj88qYqJcxRYkkCu8rw6Iy949ObyKCo
+ h8VKS+jw8pJE61PqMoSJtNC+Z4uMSgCGi8YMMSgN+9FsMvVQnBHKs0VC1
+ JwBD5r4mseEBblf7l4MhRBTCP5IINjnluv9PxR+W/5aGM/GAbBK9kyM4I
+ D0o7zDQuCPcy3MmMg+jBZQaGSsJUBcrnHKwNYPRI6dULWnxLlezDyRB4f
+ feKuYsd5rrcvUNYn6xBL77YUpZGdfHdMG4ZngKqaqbfwi9NJPfjyJQVRa
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=daIaCpDy
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1] ixgbevf: remove unused
+ fields from struct ixgbevf_adapter
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -161,40 +119,44 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 7/17/25 10:17, Pavel Begunkov wrote:
-> On 7/16/25 20:41, Mina Almasry wrote:
-> ...>> I will kill __netmem_get_pp() as you and I prefer.  However,
->>> __netmem_get_pp() users e.i. libeth_xdp_return_va() and
->>> libeth_xdp_tx_fill_buf() should be altered.  I will modify the code like:
->>>
->>> as is: __netmem_get_pp(netmem)
->>> to be: __netmem_nmdesc(netmem)->pp
->>>
->>> Is it okay with you?
->>>
->>
->> When Pavel and I were saying 'remove __netmem_get_pp', I think we
->> meant to remove the entire concept of unsafe netmem -> page
->> conversions. I think we both don't like them. From this perspective,
->> __netmem_nmdesc(netmem)->pp is just as bad as __netmem_get_pp(netmem).
+On 2025-07-17 10:46 AM, Yuto Ohnuki wrote:
+> Remove hw_rx_no_dma_resources and eitr_param fields from struct
+> ixgbevf_adapter since these fields are never referenced in the driver.
 > 
-> Yes. It'd great to have all of them gone. IMHO it's much better
-> to let the caller do the casting so at least it's explicit and
-> assumptions are not hidden. E.g. instead of
+> Note that the interrupt throttle rate is controlled by the
+> rx_itr_setting and tx_itr_setting variables.
 > 
-> pp = __netmem_nmdesc(netmem)->pp;
+> This change simplifies the ixgbevf driver by removing unused fields,
+> which improves maintainability.
 > 
-> It'd be
+> Signed-off-by: Yuto Ohnuki <ytohnuki@amazon.com>
+> ---
+>   drivers/net/ethernet/intel/ixgbevf/ixgbevf.h | 3 ---
+>   1 file changed, 3 deletions(-)
 > 
-> struct page *page = __netmem_to_page(netmem);
-> 
-> page_to_nmdesc(page)->pp;
-> // or page_get_pp(page), or whatever the helper is
-> 
-> That might be easier as well.
+> diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf.h b/drivers/net/ethernet/intel/ixgbevf/ixgbevf.h
+> index 4384e892f967..3a379e6a3a2a 100644
+> --- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf.h
+> +++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf.h
+> @@ -346,7 +346,6 @@ struct ixgbevf_adapter {
+>   	int num_rx_queues;
+>   	struct ixgbevf_ring *rx_ring[MAX_TX_QUEUES]; /* One per active queue */
+>   	u64 hw_csum_rx_error;
+> -	u64 hw_rx_no_dma_resources;
+>   	int num_msix_vectors;
+>   	u64 alloc_rx_page_failed;
+>   	u64 alloc_rx_buff_failed;
+> @@ -363,8 +362,6 @@ struct ixgbevf_adapter {
+>   	/* structs defined in ixgbe_vf.h */
+>   	struct ixgbe_hw hw;
+>   	u16 msg_enable;
+> -	/* Interrupt Throttle Rate */
+> -	u32 eitr_param;
+>   
+>   	struct ixgbevf_hw_stats stats;
+>   
 
-FWIW, no need to respin a v12 for that
+Reviewed-by: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
 
--- 
-Pavel Begunkov
-
+Thanks,
+Dawid
