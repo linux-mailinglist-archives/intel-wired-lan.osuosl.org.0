@@ -1,55 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B69CB083B2
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Jul 2025 06:19:06 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1FAB0B084F0
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Jul 2025 08:32:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AC99D83F3E;
-	Thu, 17 Jul 2025 04:19:04 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 601574168A;
+	Thu, 17 Jul 2025 06:32:39 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id u31yX1h-ooNF; Thu, 17 Jul 2025 04:19:03 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id AsOYUBeJPHOq; Thu, 17 Jul 2025 06:32:38 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4591B83C28
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DFDEE4168C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1752725943;
-	bh=yfVOr55isbNfPjyVqGPpmaSUDU/B6XhKN+b19bqU6Pw=;
+	s=default; t=1752733957;
+	bh=Pg2azoYqDdE4dNBLBiUQo4d2AuUDCB+rchkE67GZzC4=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=JxAe2v0D/HVL1anpmUu+6PXaY0ZTeK5Ec62usXfo4IV4wl6j9QspZUEmH5KYZJq3d
-	 tDVPZ/gJdjVKDG6gkI0GPUgTKMHU1k0BoOBrKlMWnWH9DTcWlR/5l+gmiPY3/K2gto
-	 ucPNloULIDWuSXYl/T/qhMjWnUZG8KlVACQqgAnIcTeQNZn5ul8je1MqlkhJi+HteH
-	 cs0EEwsYWf1sC+vl5OJH43pA/7SRMVtydevPsyZbDOFoeLIRVjJNTg+U/W++jtMV9Z
-	 N5HSnIx+DVW5WTdINYDP02LLSZdKHbWtKW8Ou8Jl1U4L23Ohb5FbX3H8FNBby7lazv
-	 L9oHDYo8lxrlQ==
+	b=5pNgz9oEt+E3i8/eSjFoIC3F7MuNkitLPlzHUyZnNKy0ZiMJem5PxIU0GLttaTGRx
+	 3eORABHY4La7gqRkMbfOrHQRFlH9icnm8ViikR+J7eUAF3ldxLAC3b7ilXrtNgOFsN
+	 fBsfeanRQFw4XNQ8LRl2LJTVcgkjSs034j7oRALkcRcQXN96+9OwWVPmbvRGvRruZP
+	 lLU/VDTR1NXQAX+92vzzWb2dP/ueSI7TMtbo1iClW8eD67ehZDjv8EtrmaOkCHE99B
+	 MRmmbG2p8WRZkmFfw0oQwPoBWc14A5x6G4bfZr6ig2bD2Vfd7nYCNGPstwJ0cjR/bb
+	 +FTV7YLWhC+0g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4591B83C28;
-	Thu, 17 Jul 2025 04:19:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DFDEE4168C;
+	Thu, 17 Jul 2025 06:32:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 9146111AA
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 04:19:01 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 4674B1A16
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 06:32:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 764BA83C0F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 04:19:01 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2D2EF607A0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 06:32:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CDPJFwdbFiE8 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 17 Jul 2025 04:19:00 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id LbF5IxnqtQ6K for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 17 Jul 2025 06:32:35 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=166.125.252.92;
  helo=invmail4.hynix.com; envelope-from=byungchul@sk.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A6CA483BD1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A6CA483BD1
-Received: from invmail4.hynix.com (exvmail4.hynix.com [166.125.252.92])
- by smtp1.osuosl.org (Postfix) with ESMTP id A6CA483BD1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 04:18:57 +0000 (UTC)
-X-AuditID: a67dfc5b-681ff7000002311f-f3-687879af9283
-Date: Thu, 17 Jul 2025 13:18:50 +0900
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 2712E6072A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2712E6072A
+Received: from invmail4.hynix.com (exvmail4.skhynix.com [166.125.252.92])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2712E6072A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 06:32:32 +0000 (UTC)
+X-AuditID: a67dfc5b-681ff7000002311f-f3-687898feb6e6
+Date: Thu, 17 Jul 2025 15:32:25 +0900
 From: Byungchul Park <byungchul@sk.com>
 To: Mina Almasry <almasrymina@google.com>
 Cc: "Lobakin, Aleksander" <aleksander.lobakin@intel.com>,
@@ -79,7 +79,7 @@ Cc: "Lobakin, Aleksander" <aleksander.lobakin@intel.com>,
  imx@lists.linux.dev, intel-wired-lan@lists.osuosl.org,
  linux-arm-kernel@lists.infradead.org,
  linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Message-ID: <20250717041850.GA70234@system.software.com>
+Message-ID: <20250717063225.GA28772@system.software.com>
 References: <20250714120047.35901-1-byungchul@sk.com>
  <20250714120047.35901-3-byungchul@sk.com>
  <CAHS8izO393X_BDJxnX2d-auhTwrUZK5wYdoAh_tJc0GBf0AqcQ@mail.gmail.com>
@@ -94,43 +94,42 @@ Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
 In-Reply-To: <CAHS8izMK2JA4rGNMRMqQbZtJVEP8b_QPLXzoKNeVgQFzAmdv3g@mail.gmail.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Brightmail-Tracker: H4sIAAAAAAAAA02SbUybVRiGd97vVmreVdSzzWVJceqWgKhonsRlIVOT18QZzf7o9sNV+8ZW
- +VgK7crU2DEU1zg2xjS0KwY2thU6KSkCpXa4FRzVfUEHWAe0g7lljLIPBg2lldqWLPLvyrmf
- c1/PSQ5Hyl3Mak5TVCpqi5QFCkZKSaczjmW3lhnUueXhx8HqOM3AwMMGGuzzBjh13UWDvwnD
- r/3zBFibOxDMRkdYcO4fJeFhbx8DxxsiJERbD1BgvVJBwZxjgYSb5ydY8Hn/pcDu3Aqhk7co
- 8FR2ktAztx4mDvoYOFARI8Ec/IaBxLUYDWeid1kod9kIODPVzkJ/RxUNRxZOkNBpvJ503Rim
- 4arbysDVfQMIgqcTNNzyJoVh2ygLVXYLAu9vTQyUV7wC4fZZFu7/0EtCqCofFmv1cL7+KYhc
- CCMYOTFEQMLjYuFysIWGXkcnAYPjURIi39cxYJo+iGDI7CbgYl0rDY0XBonkHttgOBEnoMZf
- z8CNihACf88EBUf3ViFwdAdoeOBJPjk2b2Xytwg94Xuk4BprRMIvTX8Twu1Di4QQ6P6TELos
- Y6xQ79QJbbaNwnHPJCGYAn5ScDbvZwTnzGFWGB32MIKvNkYJbY1fC7fbzOi9tdulm1RigUYv
- al/cvFOqDk6qd02/ZZirOYuM6GaeCUk4zOfhvTEz+4i/vXefSjHFr8d3r1jJFDP88zgQiKY5
- k9+AG7uraROSciTfkoHHp66hVPAEr8PHxgPpyzIesD14CaWG5PwIiX+Mm5ilYCX+w/xPeohM
- tsZ/8idbuSSvwacWuaXjdXhf+9G0TMK/j4OD7Wl+ks/CZzv6iFQn5iMSHLfMEUtbr8LnbAHq
- EFppWaawLFNY/ldYlinqEdWM5JoifaFSU5CXoy4r0hhyPikudKLkfz75VXyHC830b/MinkOK
- DNnO1t1qOa3Ul5QVehHmSEWmrMavV8tlKmXZHlFb/JFWVyCWeNEajlI8LXs5slsl5z9Vloqf
- i+IuUfsoJTjJaiNS1m7fkm3dY7yTsUmX+Kwroh89/OxY1+89b1+MziRKFereygdf+mo+9PVl
- tby6Oftj3+tbK2fXybOKE5eOTH7wwip3abX7NdWAPpb/XMvPqFr5zLvyFQZdZk5oqCFoXGux
- 77AFc1Wmuu8WFCty/trwzpuOcwsTmW88dsf9heRybt/4VEhBlaiVL20ktSXK/wCz2PrZywMA
- AA==
-X-Brightmail-Tracker: H4sIAAAAAAAAA02SfUxbVRiHPffcLxpq7iq661hYUjONNeIWMb7qtiyZH0eSGc1mFheNVLna
- BijYjg5MjDjqlIYBG2JGVwy4jq+OlbQDuq1jpEVWRAcrDOuAMsAtI+sGbkDWgdTSxch/zzm/
- 9zy/94/DY0UVu47X6vZJep06W8nKaNk7rxU/7ygs0Gyyj24Gq+MkC5fv1TFgv18ADdfcDASa
- RDg3cJ8Ca3M7grnICAfOklEM97ovsnC8bgFDpPUQDdZ+Ew3zjgcYrvdMcuD3/kOD3bkTxutv
- 0OD5rgODb34jTJb7WThkWsRQHfqWhejVRQbOR+5wcMDdSIGvpjd2vNXGwUB7GQM/PDiBoaPo
- WqxwapiBwbNWFgaLLyMInYwycMMbaw03jnJQZrcg8F5oYuGA6UUIt81xMFvVjWG8bDssHzVC
- T+0TsNAXRjBy4goFUY+bg0uhUwx0OzooGJqIYFgorWHBfLscwZXqsxT8VtPKgK1viIrtsQuG
- o0sUVAZqWZgyjSMI+CZpOPZNGQJHZ5CBvz0mevsO4gvPYOIesyFyuulPitysWKZIsPNXipyx
- jHGk1plPXI0qctwzTRFzMICJs7mEJc67RzgyOuxhif/oIk1ctq/JTVc1ejdlr2xLppStNUr6
- F7ZlyDShaU3e7TcK5iu7UBG6nmZGCbwopIkHZ2bpFaaFjeKdfiteYVZ4RgwGI3FOEp4VbZ2H
- GTOS8Vg4lShO3LqKVoLHhHzx54lg/LFcANEe+h2tDCmEESz+uGRmHwZrxN7qv+JDOGZd+ikQ
- s/IxThYblvmH1xvE4rZj8bIE4T0xNNQW58eFp8Su9otUBXrUsspkWWWy/G+yrDLVIroZJWl1
- xhy1NvulVEOWplCnLUj9NDfHiWKftf6rpcNuNDf4lhcJPFImyjNa92sUjNpoKMzxIpHHyiR5
- ZcCoUcgz1YVfSvrcj/X52ZLBi5J5WrlWnr5HylAIn6v3SVmSlCfp/0spPmFdETpPzTds2TOr
- Gh5gNyX58/DIm96+c/YzL7soopp5xfT0jqro9GKdN1L63KCtIqWnqqV9/yNpH6b3n349+f26
- 4vXOveNHvtj2SYe7NPHSqx/t2vDBk7tbVL/84W+pv7AzTbe193tqq843fbB8ytiVyn6Wtdb1
- dtHdzJJ0bef6XHPKGJbCStqgUW9WYb1B/S+S5G2AqAMAAA==
+X-Brightmail-Tracker: H4sIAAAAAAAAA02Sa0yTdxTG83/vNNS8VLf9p1tcuonRRNyULSfZJUa/vF9cNC5ZolFo5J1t
+ BkhaqUCyjWmXzWZUho7QUhSlaLmMYhGoWjptkbK5bLRSrHIrOI2biMxLR7mUvS0x49uT5zl5
+ fuckhyMVLmYlp8k/JGrzVblKRkbJHqWe3RCvKlK/fbXxfbA6mhkIPD1DQ9N0EZyPuGgINmC4
+ 0jdNgLWxA8Gz2CALzmNDJDzt9jNQdyZKQqy1jALrHwYKnjtmSLjXM85Cr3eegibndhg9d58C
+ 97edJPier4Hx470MlBlmSTCPfMPAwp1ZGrpikywccdkJ6HrYzkJfh4mGkzP1JHSWRiTW3QEa
+ bl62MnDzaADBSPMCDfe9EnDCPsSCqcmCwPtzAwNHDJthov0ZC1M/dpMwatoC8So99NS+DNEb
+ EwgG60MELLhdLPw+0kJDt6OTgP6xGAnR72sYMD46jiBkvkzAbzWtNNhu9BPSHrtgYGGOgBPB
+ WgbuGkYRBH3jFFR/bULg8IRp+MctnTw7bWW2bBV8E49JwTVsQ8LFhtuE8KA8Tghhz6+EcMky
+ zAq1zkKhzb5eqHP/RQjGcJAUnI3HGMH5pIIVhgbcjNBbNUsJbbavhAdtZrTj9d2yD3LEXI1e
+ 1G78KFum7g+U0QXhbUUXfOmlKL7JiFI4zGdiv7WKeqHtxttkQlP8Gnyh20MnNMOvxeFwLOmv
+ 4Ndhm+cHyZdxJN+Sisce3kGJYDlfiM+OhZNFch7wTw1xlBhS8IMkrpwzMotBGv7F/GdyiJRa
+ 504FpVZO0qvw+Ti3aK/GR9urk7AUfice6W9P6pf4N/HVDj+R6MR8NAVfujaGFrd+FV+zh6ly
+ lGZZgrAsQVj+R1iWIGoR1YgUmnx9nkqTm5mhLs7XFGXsP5jnRNI/n/tibo8LPenb5UU8h5Sp
+ 8uzWw2oFrdLrivO8CHOkcoX8RFCvVshzVMUlovZglrYwV9R50SqOUr4i3xQ9nKPgD6gOiZ+L
+ YoGofZESXMrKUiQ3zWTU1L+2J572HrE9csWnK0/v+24Hf2pS8FdsSO9xTm+OOPZmRajTusrh
+ f7NQKNtQ0fKpedI29aW/efBeRhOxr+Bk17vBkg/fmnrj+q2ZbeLfmfV7W8wHQuO3qudV2ouV
+ 8/C4zvFZ4PTHZKXnk5rJoZK1y1zxUF0osGzf6p3rtiopnVr1znpSq1P9B9AI6bPLAwAA
+X-Brightmail-Tracker: H4sIAAAAAAAAA02SbUxTdxTG87//+0ZHl7uObTeaOVPiyDBzsjlzli0LiVl2x+Je4hYzPkwK
+ 3KydUKS1HSwaO6hZbGytAgtU0DJQS0HAdkDVjm0tEZx7kYKk8lIEHXMBpw5EK6XsFrOMb895
+ npPfcz4cFiuq6FWsRrtb1GlVBUpaRsree738xXh1iXqj3aSE2rYWGvpn6yloflACp675KAg1
+ 8XD+8gMCat2dCOaiIwx4DoximO3ppaGhfh5DtN1KQu3vZhLutT3E8MeFSQb6AoskNHu2wvjJ
+ KRL8X3dhCN5bB5OH+miwmhcw1ET207A0vEDB99G/GSjzuQgI1l2UxukOBi532iiofHgCQ5fp
+ mlR4fYiCgXO1NAyU9yOItCxRMBWQWmdcowzYmh0IAj800VBmfgVmOuYYuFPVg2HclgnxaiNc
+ cD4N85dmEIycuELAkt/HwG+RVgp62roIGJyIYpg/WEeD5dYhBFdqzhHwS107BY2XBgnpjm0w
+ tBQjoCLkpOG6eRxBKDhJwtGvbAjausMU3PWbycwtQnDmNhZ8Y41I+K7pKiHctMcJIdz9MyGc
+ dYwxgtNjELyudKHB/xchWMIhLHjcB2jB888RRhgd8tNCX/UCKXgb9wk3vTXogzXZsjfyxQKN
+ UdS99GaOTD3Yb6V2hbeUnAk+b0Lxly0oieW5TbzLchUnNMmt48/0dFMJTXNpfDgcXfZTuBf4
+ xu7Dki9jMdeazE9MD6NE8CRn4L+dCJMJLeeAP90UR4klBTeC+W9iFvpR8AR/sebG8hKWqLFj
+ IYnKSno1fyrOPrKf48s7ji6XJXEf8pHBjmX9FJfK/9jZS9jR444VJMcKkuN/kmMFyYlIN0rR
+ aI2FKk3Bqxv0O9WlWk3JhryiQg+SnvXk3thhH5obeDuAOBYpk+U57V+oFZTKqC8tDCCexcoU
+ eUXIqFbI81WlX4q6oh06Q4GoD6DVLKl8Rp61XcxRcJ+pdos7RXGXqPsvJdikVSaUGtnYWlyf
+ nzwQW6/NWHz2RmY8Y7OtYr3BuiYNu/233M25VWPFn6Qzn37cmfvO5m2f75jatG/y/vkG5s5Q
+ XtnZd+++76z80zCWFrFPn05d6+4q/mjeNew9+Gt21tbsrP25ssrje3RrZ4/DT9Yj44/d33N7
+ wWR5y753e16L7bVe72JdUVRJ6tWqjHSs06v+BSardbOoAwAA
 X-CFilter-Loop: Reflected
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=sk.com
 Subject: Re: [Intel-wired-lan] [PATCH net-next v10 02/12] netmem: use
@@ -321,17 +320,9 @@ On Wed, Jul 16, 2025 at 12:41:04PM -0700, Mina Almasry wrote:
 > 
 > Yes. netmem_nmdesc should replace __netmem_clear_lsb.
 
-Trivial concern.  I don't think the contraint that the nmdesc must be
-the first field in struct net_iov is __unnecessary__.  Thus, I think
-netmem_nmdesc() should be something like:
-
-	if (netmem_is_net_iov(netmem))
-		return &(struct net_iov *)((__force unsigned long)netmem &
-			~NET_IOV)->desc;
-	return __netmem_to_nmdesc(netmem);
-
-Do you want to keep the current contraint so that the just casting to
-struct netmem_desc after the clearing, can work in netmem_nmdesc()?
+Even though the unsafe version is required in this series, on second
+though, the safe version, netmem_nmdesc() doesn't have to be a part of
+this series.  Let's do adding the safe version on top after.
 
 	Byungchul
 
