@@ -1,55 +1,55 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0D4C9B081ED
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Jul 2025 02:54:42 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B69CB083B2
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Jul 2025 06:19:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8B85B41538;
-	Thu, 17 Jul 2025 00:54:40 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AC99D83F3E;
+	Thu, 17 Jul 2025 04:19:04 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id jZA5o88EnUct; Thu, 17 Jul 2025 00:54:39 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id u31yX1h-ooNF; Thu, 17 Jul 2025 04:19:03 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8048D41539
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4591B83C28
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1752713679;
-	bh=e+p3E4tZzme/ucD/eZnNvb8gNfkG/no9zrj8lOtg47c=;
+	s=default; t=1752725943;
+	bh=yfVOr55isbNfPjyVqGPpmaSUDU/B6XhKN+b19bqU6Pw=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=KCmgxMGVYFt7GE7zck5HUVJAndWqz8MR4/Vw13k795FaVMt7puj+tJ7sa3Y2nrT5S
-	 EyYDINz9R2ioV143I/eBKt3OJZMVkhHIZoDfqsCrHM7hqT4fGSj1ixfEo5RooPcs5p
-	 SM+HCZgfAp/tKed9toUJL58q//jEa82uaDLrW2POSQdBaODvjn2T6u78XSRQ0VMM6N
-	 irU3lcehUqzrRYLlYeu2MtS7f5JaWTg0F/DlU+Fv1vZklnToWsNzzdbh9cKYHHjGmL
-	 04FWN7P3QQAT+VdkwPbf2xMl0+pQk/O3d1P3OHT6S+xZ/zfQBV7CdtNgaqIJyKUIWZ
-	 2sGsvvgun/e6w==
+	b=JxAe2v0D/HVL1anpmUu+6PXaY0ZTeK5Ec62usXfo4IV4wl6j9QspZUEmH5KYZJq3d
+	 tDVPZ/gJdjVKDG6gkI0GPUgTKMHU1k0BoOBrKlMWnWH9DTcWlR/5l+gmiPY3/K2gto
+	 ucPNloULIDWuSXYl/T/qhMjWnUZG8KlVACQqgAnIcTeQNZn5ul8je1MqlkhJi+HteH
+	 cs0EEwsYWf1sC+vl5OJH43pA/7SRMVtydevPsyZbDOFoeLIRVjJNTg+U/W++jtMV9Z
+	 N5HSnIx+DVW5WTdINYDP02LLSZdKHbWtKW8Ou8Jl1U4L23Ohb5FbX3H8FNBby7lazv
+	 L9oHDYo8lxrlQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8048D41539;
-	Thu, 17 Jul 2025 00:54:39 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4591B83C28;
+	Thu, 17 Jul 2025 04:19:03 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 5A3E0234
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 00:54:38 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 9146111AA
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 04:19:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 40D0B61160
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 00:54:38 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 764BA83C0F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 04:19:01 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HVhjcqxdu82X for <intel-wired-lan@lists.osuosl.org>;
- Thu, 17 Jul 2025 00:54:37 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id CDPJFwdbFiE8 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 17 Jul 2025 04:19:00 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=166.125.252.92;
  helo=invmail4.hynix.com; envelope-from=byungchul@sk.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A0D3361107
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A0D3361107
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A6CA483BD1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A6CA483BD1
 Received: from invmail4.hynix.com (exvmail4.hynix.com [166.125.252.92])
- by smtp3.osuosl.org (Postfix) with ESMTP id A0D3361107
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 00:54:34 +0000 (UTC)
-X-AuditID: a67dfc5b-681ff7000002311f-47-687849c8d648
-Date: Thu, 17 Jul 2025 09:54:27 +0900
+ by smtp1.osuosl.org (Postfix) with ESMTP id A6CA483BD1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 04:18:57 +0000 (UTC)
+X-AuditID: a67dfc5b-681ff7000002311f-f3-687879af9283
+Date: Thu, 17 Jul 2025 13:18:50 +0900
 From: Byungchul Park <byungchul@sk.com>
 To: Mina Almasry <almasrymina@google.com>
 Cc: "Lobakin, Aleksander" <aleksander.lobakin@intel.com>,
@@ -79,7 +79,7 @@ Cc: "Lobakin, Aleksander" <aleksander.lobakin@intel.com>,
  imx@lists.linux.dev, intel-wired-lan@lists.osuosl.org,
  linux-arm-kernel@lists.infradead.org,
  linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Message-ID: <20250717005427.GA58539@system.software.com>
+Message-ID: <20250717041850.GA70234@system.software.com>
 References: <20250714120047.35901-1-byungchul@sk.com>
  <20250714120047.35901-3-byungchul@sk.com>
  <CAHS8izO393X_BDJxnX2d-auhTwrUZK5wYdoAh_tJc0GBf0AqcQ@mail.gmail.com>
@@ -94,42 +94,43 @@ Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
 In-Reply-To: <CAHS8izMK2JA4rGNMRMqQbZtJVEP8b_QPLXzoKNeVgQFzAmdv3g@mail.gmail.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Brightmail-Tracker: H4sIAAAAAAAAA02SbUyTZxSG87zfbWj20jH2iCFbuphlJrK5ke0kk+lIFt4l27KFmOzjhzbj
- je2ASgoUMC4yQBcQqwM3pFZXtfI9qYVCxcpGIVjn5rAgqYKtwEpg1I8pNNQWWAsx49+V59y5
- r3OShyPll5gkTq0pELUaZY6CkVLS+3Fnt1z7sFj1RqCfBmN7GwM3n5yhoXWxGBrv2WlwN2O4
- PLRIgLGlC8F8aIwFa+U4CU8GrjJw7kyQhJDlCAXGvyooWGh/SoJ/cJIFl3OJglbrx+BrmKbA
- 8X03Cf0Lm2DyqIuBIxVhEuq9BxlYuROm4UroAQtl9iYCrszZWBjq0tNw/Ol5ErpL70VdU6M0
- DPcYGRguv4nA27ZCw7QzKgw0jbOgbzUgcP7azEBZxVsQsM2z8OjHARJ8+h2wfEIHg6ZECF4P
- IBg7f4uAFYedhRveCzQMtHcTMDIRIiFYfYqBqvtHEdyq7yHgj1MWGszXR4joHpkwuhIhoNZt
- YmCqwofA3T9Jwcnv9Ajaez00/OuInhxeNDI70oX+wENSsN81I6Gz+TYhzBxbJgRP7++EcMlw
- lxVM1kKho2mzcM4xSwhVHjcpWFsqGcH6uIYVxkcdjOA6EaaEDvMBYaajHn2a/KV0W5aYo9aJ
- 2tff2y1VLfSVo7xDycW+BitRinyJVUjCYT4Vl/5ioZ/x7epaNsYUvwlfbPSTMWb4V7HHE1rl
- BP41bO79IZqXciR/IQ5PzN1BscHzfCE+O+GhYizjAXsv1qFYSM6PkfinSBWzNojH1+r/Xg2R
- 0dbIaXe0lYvyRty4zK09v4TLbSdXZRL+M+wdsa3yC/wr+Leuq0SsE/NBCe4z+Zm1rTfgviYP
- dQzFG9YpDOsUhv8VhnUKE6JakFyt0eUq1TmpKaoSjbo45eu9uVYU/dAN30a+sqPHQ5lOxHNI
- ESfbbSlSyWmlLr8k14kwRyoSZLVunUouy1KW7BO1e3dpC3PEfCfayFGKF2VvBouy5PweZYGY
- LYp5ovbZlOAkSaVo+9ZKTXg53nwjbf+05DnC1eZOm03fWZZ0eFb2cN6X7M9Y+jzy0csZ2ZGU
- vLe3JRUFtg8SB1WXC2rcu4ZPv//N4Xcs2s5U058G10CC0OLc0Fwu1vVkdNq+qBbSJh8M1c3s
- kT2aSwRSL/1gekt25tL+fVPH0w/VVM+/e2DiZ/8/EP5EQeWrlFs3k9p85X9lTB/3zAMAAA==
-X-Brightmail-Tracker: H4sIAAAAAAAAA02Sa0xbZRjH95733OioOZa6nWy6zZpFJRFGxPgkc4bNLBxMXLb4wXiZo5GT
- tRs3W6hgXGRt1awBBuJwdFSZY1BgQikWKlamLdk652UrjHS0a7kIwQ3dlEsoVFjLYuTb73n+
- T37/98PLYlktvYlV5xeJmnxlroKWkJJ9Ow3PeLNKVDs8/q1Q33GBhuszZyloWyiB5hEnBb4W
- Hr67tkBAfWs3gtlIgAH7iSCGmf7LNJw7O48hYqsgof43IwlzHYsYJi6NMeB1/0tCm/0VCDdN
- kuD6pAeDZ247jJ300lBhXMJQF/qIhpXhJQq+j/zFgN5pJcBjuRIb7zgYuNZdScFni+cx9JSN
- xArHhygY6K2nYcBwHUHowgoFk+5Y67Q1yEBlmxmB+2ILDXrjszDtmGXg3ql+DOHKDFg+rYNL
- DRtg/uo0gsD5GwSsuJwM/Bpqp6C/o4eAwdEIhvlyCw2mP08iuFHXS8DPFhsFjVcHidg7XoWh
- lSgBNb4GGsaNYQQ+zxgJZ45XIujo81Pwt8tIZrwkeKbvYsF5qxEJ37TcJISpqmVC8Pf9RAjf
- mm8xQoO9WOiyJgvnXH8Qgsnvw4K99QQt2P/5lBGCQy5a8J5eIoWuxg+Fqa46tH/LG5IXcsRc
- tU7UpL6YLVHN/WhAhR8/VhJushNlKLzBhBJYnkvnb5bXMHEmue18Z/MEjjPNPcn7/ZFVlnNP
- 84191ZQJSVjMtSfyo3eGUTxI4or5r0b9ZJylHPChzs9R/EjGBTBfGzXRD4KH+St1v68e4Zg1
- +oUvZmVjvJlvXmYfrLfyBseZ1bIE7gAfGnSs8iPcE/wP3ZeJKvSQeY3JvMZk/t9kXmNqQGQr
- kqvzdXlKde5zKdqjqtJ8dUnKOwV5dhT7rU3HotVONDuQ6UYcixSJ0mzbeyoZpdRpS/PciGex
- Qi6t8elUMmmOsvR9UVNwSFOcK2rdaDNLKjZKX35NzJZxh5VF4lFRLBQ1/6UEm7CpDFVFA7qN
- u2y/FO78MqPz0GLwrZHJpFP9T70pV08Eds8Yvt4mLV83mpWJXqdqLYb9qDrgPWLPsZK+g0VT
- VfqDexL08t3r0psOUPf2Zr29Pn1qvXMy0Zb2aFJqT+ptZdqOtt6gLOvw8HjKwgfstmprRN9u
- uRjQVxQcf/eIo+/5x5MzlxSkVqVMS8YarfI+rd0rxKkDAAA=
+X-Brightmail-Tracker: H4sIAAAAAAAAA02SbUybVRiGd97vVmreVdSzzWVJceqWgKhonsRlIVOT18QZzf7o9sNV+8ZW
+ +VgK7crU2DEU1zg2xjS0KwY2thU6KSkCpXa4FRzVfUEHWAe0g7lljLIPBg2lldqWLPLvyrmf
+ c1/PSQ5Hyl3Mak5TVCpqi5QFCkZKSaczjmW3lhnUueXhx8HqOM3AwMMGGuzzBjh13UWDvwnD
+ r/3zBFibOxDMRkdYcO4fJeFhbx8DxxsiJERbD1BgvVJBwZxjgYSb5ydY8Hn/pcDu3Aqhk7co
+ 8FR2ktAztx4mDvoYOFARI8Ec/IaBxLUYDWeid1kod9kIODPVzkJ/RxUNRxZOkNBpvJ503Rim
+ 4arbysDVfQMIgqcTNNzyJoVh2ygLVXYLAu9vTQyUV7wC4fZZFu7/0EtCqCofFmv1cL7+KYhc
+ CCMYOTFEQMLjYuFysIWGXkcnAYPjURIi39cxYJo+iGDI7CbgYl0rDY0XBonkHttgOBEnoMZf
+ z8CNihACf88EBUf3ViFwdAdoeOBJPjk2b2Xytwg94Xuk4BprRMIvTX8Twu1Di4QQ6P6TELos
+ Y6xQ79QJbbaNwnHPJCGYAn5ScDbvZwTnzGFWGB32MIKvNkYJbY1fC7fbzOi9tdulm1RigUYv
+ al/cvFOqDk6qd02/ZZirOYuM6GaeCUk4zOfhvTEz+4i/vXefSjHFr8d3r1jJFDP88zgQiKY5
+ k9+AG7uraROSciTfkoHHp66hVPAEr8PHxgPpyzIesD14CaWG5PwIiX+Mm5ilYCX+w/xPeohM
+ tsZ/8idbuSSvwacWuaXjdXhf+9G0TMK/j4OD7Wl+ks/CZzv6iFQn5iMSHLfMEUtbr8LnbAHq
+ EFppWaawLFNY/ldYlinqEdWM5JoifaFSU5CXoy4r0hhyPikudKLkfz75VXyHC830b/MinkOK
+ DNnO1t1qOa3Ul5QVehHmSEWmrMavV8tlKmXZHlFb/JFWVyCWeNEajlI8LXs5slsl5z9Vloqf
+ i+IuUfsoJTjJaiNS1m7fkm3dY7yTsUmX+Kwroh89/OxY1+89b1+MziRKFereygdf+mo+9PVl
+ tby6Oftj3+tbK2fXybOKE5eOTH7wwip3abX7NdWAPpb/XMvPqFr5zLvyFQZdZk5oqCFoXGux
+ 77AFc1Wmuu8WFCty/trwzpuOcwsTmW88dsf9heRybt/4VEhBlaiVL20ktSXK/wCz2PrZywMA
+ AA==
+X-Brightmail-Tracker: H4sIAAAAAAAAA02SfUxbVRiHPffcLxpq7iq661hYUjONNeIWMb7qtiyZH0eSGc1mFheNVLna
+ BijYjg5MjDjqlIYBG2JGVwy4jq+OlbQDuq1jpEVWRAcrDOuAMsAtI+sGbkDWgdTSxch/zzm/
+ 9zy/94/DY0UVu47X6vZJep06W8nKaNk7rxU/7ygs0Gyyj24Gq+MkC5fv1TFgv18ADdfcDASa
+ RDg3cJ8Ca3M7grnICAfOklEM97ovsnC8bgFDpPUQDdZ+Ew3zjgcYrvdMcuD3/kOD3bkTxutv
+ 0OD5rgODb34jTJb7WThkWsRQHfqWhejVRQbOR+5wcMDdSIGvpjd2vNXGwUB7GQM/PDiBoaPo
+ WqxwapiBwbNWFgaLLyMInYwycMMbaw03jnJQZrcg8F5oYuGA6UUIt81xMFvVjWG8bDssHzVC
+ T+0TsNAXRjBy4goFUY+bg0uhUwx0OzooGJqIYFgorWHBfLscwZXqsxT8VtPKgK1viIrtsQuG
+ o0sUVAZqWZgyjSMI+CZpOPZNGQJHZ5CBvz0mevsO4gvPYOIesyFyuulPitysWKZIsPNXipyx
+ jHGk1plPXI0qctwzTRFzMICJs7mEJc67RzgyOuxhif/oIk1ctq/JTVc1ejdlr2xLppStNUr6
+ F7ZlyDShaU3e7TcK5iu7UBG6nmZGCbwopIkHZ2bpFaaFjeKdfiteYVZ4RgwGI3FOEp4VbZ2H
+ GTOS8Vg4lShO3LqKVoLHhHzx54lg/LFcANEe+h2tDCmEESz+uGRmHwZrxN7qv+JDOGZd+ikQ
+ s/IxThYblvmH1xvE4rZj8bIE4T0xNNQW58eFp8Su9otUBXrUsspkWWWy/G+yrDLVIroZJWl1
+ xhy1NvulVEOWplCnLUj9NDfHiWKftf6rpcNuNDf4lhcJPFImyjNa92sUjNpoKMzxIpHHyiR5
+ ZcCoUcgz1YVfSvrcj/X52ZLBi5J5WrlWnr5HylAIn6v3SVmSlCfp/0spPmFdETpPzTds2TOr
+ Gh5gNyX58/DIm96+c/YzL7soopp5xfT0jqro9GKdN1L63KCtIqWnqqV9/yNpH6b3n349+f26
+ 4vXOveNHvtj2SYe7NPHSqx/t2vDBk7tbVL/84W+pv7AzTbe193tqq843fbB8ytiVyn6Wtdb1
+ dtHdzJJ0bef6XHPKGJbCStqgUW9WYb1B/S+S5G2AqAMAAA==
 X-CFilter-Loop: Reflected
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=sk.com
 Subject: Re: [Intel-wired-lan] [PATCH net-next v10 02/12] netmem: use
@@ -157,6 +158,104 @@ On Wed, Jul 16, 2025 at 12:41:04PM -0700, Mina Almasry wrote:
 > > > >
 > > > > On Mon, Jul 14, 2025 at 12:58:15PM -0700, Mina Almasry wrote:
 > > > > > On Mon, Jul 14, 2025 at 12:37 PM Mina Almasry <almasrymina@google.com> wrote:
+> > > > > >
+> > > > > > On Mon, Jul 14, 2025 at 5:01 AM Byungchul Park <byungchul@sk.com> wrote:
+> > > > > > >
+> > > > > > > To eliminate the use of the page pool fields in struct page, the page
+> > > > > > > pool code should use netmem descriptor and APIs instead.
+> > > > > > >
+> > > > > > > However, __netmem_get_pp() still accesses ->pp via struct page.  So
+> > > > > > > change it to use struct netmem_desc instead, since ->pp no longer will
+> > > > > > > be available in struct page.
+> > > > > > >
+> > > > > > > While at it, add a helper, pp_page_to_nmdesc(), that can be used to
+> > > > > > > extract netmem_desc from page only if it's pp page.  For now that
+> > > > > > > netmem_desc overlays on page, it can be achieved by just casting.
+> > > > > > >
+> > > > > > > Signed-off-by: Byungchul Park <byungchul@sk.com>
+> > > > > > > ---
+> > > > > > >  include/net/netmem.h | 13 ++++++++++++-
+> > > > > > >  1 file changed, 12 insertions(+), 1 deletion(-)
+> > > > > > >
+> > > > > > > diff --git a/include/net/netmem.h b/include/net/netmem.h
+> > > > > > > index 535cf17b9134..2b8a7b51ac99 100644
+> > > > > > > --- a/include/net/netmem.h
+> > > > > > > +++ b/include/net/netmem.h
+> > > > > > > @@ -267,6 +267,17 @@ static inline struct net_iov *__netmem_clear_lsb(netmem_ref netmem)
+> > > > > > >         return (struct net_iov *)((__force unsigned long)netmem & ~NET_IOV);
+> > > > > > >  }
+> > > > > > >
+> > > > > > > +static inline struct netmem_desc *pp_page_to_nmdesc(struct page *page)
+> > > > > > > +{
+> > > > > > > +       DEBUG_NET_WARN_ON_ONCE(!page_pool_page_is_pp(page));
+> > > > > > > +
+> > > > > > > +       /* XXX: How to extract netmem_desc from page must be changed,
+> > > > > > > +        * once netmem_desc no longer overlays on page and will be
+> > > > > > > +        * allocated through slab.
+> > > > > > > +        */
+> > > > > > > +       return (struct netmem_desc *)page;
+> > > > > > > +}
+> > > > > > > +
+> > > > > >
+> > > > > > Same thing. Do not create a generic looking pp_page_to_nmdesc helper
+> > > > > > which does not check that the page is the correct type. The
+> > > > > > DEBUG_NET... is not good enough.
+> > > > > >
+> > > > > > You don't need to add a generic helper here. There is only one call
+> > > > > > site. Open code this in the callsite. The one callsite is marked as
+> > > > > > unsafe, only called by code that knows that the netmem is specifically
+> > > > > > a pp page. Open code this in the unsafe callsite, instead of creating
+> > > > > > a generic looking unsafe helper and not even documenting it's unsafe.
+> > > > > >
+> > > > >
+> > > > > On second read through the series, I actually now think this is a
+> > > > > great idea :-) Adding this helper has simplified the series greatly. I
+> > > > > did not realize you were converting entire drivers to netmem just to
+> > > > > get rid of page->pp accesses. Adding a pp_page_to_nmdesc helper makes
+> > > > > the entire series simpler.
+> > > > >
+> > > > > You're also calling it only from code paths like drivers that already
+> > > > > assumed that the page is a pp page and did page->pp deference without
+> > > > > a check, so this should be safe.
+> > > > >
+> > > > > Only thing I would change is add a comment explaining that the calling
+> > > > > code needs to check the page is pp page or know it's a pp page (like a
+> > > > > driver that supports pp).
+> > > > >
+> > > > >
+> > > > > > >  /**
+> > > > > > >   * __netmem_get_pp - unsafely get pointer to the &page_pool backing @netmem
+> > > > > > >   * @netmem: netmem reference to get the pointer from
+> > > > > > > @@ -280,7 +291,7 @@ static inline struct net_iov *__netmem_clear_lsb(netmem_ref netmem)
+> > > > > > >   */
+> > > > > > >  static inline struct page_pool *__netmem_get_pp(netmem_ref netmem)
+> > > > > > >  {
+> > > > > > > -       return __netmem_to_page(netmem)->pp;
+> > > > > > > +       return pp_page_to_nmdesc(__netmem_to_page(netmem))->pp;
+> > > > > > >  }
+> > > > > >
+> > > > > > This makes me very sad. Casting from netmem -> page -> nmdesc...
+> > > > > >
+> > > > > > Instead, we should be able to go from netmem directly to nmdesc. I
+> > > > > > would suggest rename __netmem_clear_lsb to netmem_to_nmdesc and have
+> > > > > > it return netmem_desc instead of net_iov. Then use it here.
+> > > > > >
+> > > > > > We could have an unsafe version of netmem_to_nmdesc which converts the
+> > > > > > netmem to netmem_desc without clearing the lsb and mark it unsafe.
+> > > > > >
+> > > > >
+> > > > > This, I think, we should address to keep some sanity in the code and
+> > > > > reduce the casts and make it a bit more maintainable.
+> > > >
+> > > > I will reflect your suggestions.  To summarize:
+> > > >
+> > > >    1) The current implementation of pp_page_to_nmdesc() is good enough
+> > > >       to keep, but add a comment on it like "Check if the page is a pp
+> > > >       page before calling this function or know it's a pp page.".
+> > > >
+> > >
+> > > Yes please.
+> > >
 > > > >    2) Introduce the unsafe version, __netmem_to_nmdesc(), and use it in
 > > > >       __netmem_get_pp().
 > > > >
@@ -196,14 +295,7 @@ On Wed, Jul 16, 2025 at 12:41:04PM -0700, Mina Almasry wrote:
 > for a long time, so I guess lets continue to support them rather than
 > try to remove them in this series. A followup series could try to
 > remove them.
-
-At the beginning of this work, I was unconfortable to see the network
-code keeps the unsafe version maybe for optimization(?).  I decided to
-accept it, thinking there must be some reason.
-
-However, it'd be good that a followup series would try to remove them as
-you said.
-
+> 
 > > > >    3) Rename __netmem_clear_lsb() to netmem_to_nmdesc(), and return
 > > > >       netmem_desc, and use it in all users of __netmem_clear_lsb().
 > > > >
@@ -220,11 +312,6 @@ you said.
 > > in this series since it should be used to remove __netmem_get_pp() as I
 > 
 > lets keep __netmem_get_pp, which does a `return
-
-Okay.  I will.
-
-	Byungchul
-
 > __netmem_nmdesc(netmem)->pp;` In general we avoid allowing the driver
 > to do any netmem casts in the driver code, and we do any casting in
 > core.
@@ -233,7 +320,21 @@ Okay.  I will.
 > >
 > 
 > Yes. netmem_nmdesc should replace __netmem_clear_lsb.
-> 
+
+Trivial concern.  I don't think the contraint that the nmdesc must be
+the first field in struct net_iov is __unnecessary__.  Thus, I think
+netmem_nmdesc() should be something like:
+
+	if (netmem_is_net_iov(netmem))
+		return &(struct net_iov *)((__force unsigned long)netmem &
+			~NET_IOV)->desc;
+	return __netmem_to_nmdesc(netmem);
+
+Do you want to keep the current contraint so that the just casting to
+struct netmem_desc after the clearing, can work in netmem_nmdesc()?
+
+	Byungchul
+
 > > I assume __netmem_nmdesc() is an unsafe version not clearing lsb.  The
 > 
 > Yes.
