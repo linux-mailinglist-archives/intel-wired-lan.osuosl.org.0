@@ -2,189 +2,93 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 70D0AB0A6BD
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 18 Jul 2025 17:00:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E0B2B0A6D7
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 18 Jul 2025 17:11:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EC8544111C;
-	Fri, 18 Jul 2025 15:00:19 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E7A3541194;
+	Fri, 18 Jul 2025 15:11:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Kfwt-dLuxp_W; Fri, 18 Jul 2025 15:00:19 +0000 (UTC)
+ id Kq5pqrfdFfWc; Fri, 18 Jul 2025 15:11:28 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5D0B44116A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E0C2240D50
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1752850818;
-	bh=5KUVVw8QFOwW/eO5P2Va5I82DixybRl2nX/TlW+fPNc=;
-	h=From:To:CC:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=rBJAEhc3Xv/6e/mru1DI6j6OX8hWcBm9hg29NvaA37EkYmMyf+RjMX9QuF3XL3bwB
-	 d/gpeLEy4H6feoP/HVbTLFfIA5be5uRVUR1NTy4CtXC82Zl6TUpfEvsZsFhg1OUsxE
-	 5dkSKdwx63FO46m/uoX70aYA87wNwPiWB8inb287REyqoT0IPvOAzf+M90N5Azh3KL
-	 NE7GQZm+oIHTvoSmeWz7mrnmXLug7HR/8FKFIqlOLz/dmu/cYtuumgk108xlYw+jGD
-	 vUdk4g7F2HslzN+XWXWXa5DqH/JQblDD7FTmj6WaUzv78Fx+uqJA/g8TAriDZ36DGm
-	 WUb6vXKM8Rimw==
+	s=default; t=1752851487;
+	bh=tZMh/R60M8z51N5eSY59QgwrkaO0AKF+ZVVlEoIkGqQ=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=aVf/qrtDeIRC4pEA5kVUhBzHKosex6nW3LsTbl+X139D+F2EC8wyG95oYui2CI5iD
+	 bxcvC2JaOJ2YwQUVf5GDiKPkwSDX/WV28gMfqWYrOS5A8vuMRrr6y7egGZ5+PEZAid
+	 Ms9BPuJd09FTsFfXdQTWtLzeyCkzuo0VNPSRbsXpoWUlGOFPZ6hhozOLlCvZxka+u5
+	 oAwo6aayS6kpXvqCw5DLBmPIu/JXEx+qi+NFUPdwlabP2pidSyLxHf5PBcLrkdOuN2
+	 iwN9ZRCYWjYhH324p7eXc08xlOMZlWOY1w8VYn+HWTIGrgOwxLQp4HQO1WqKNzbHES
+	 cJEECW2rwKMLA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5D0B44116A;
-	Fri, 18 Jul 2025 15:00:18 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E0C2240D50;
+	Fri, 18 Jul 2025 15:11:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id D7A90A59
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 16:09:06 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 7CEA0DA
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Jul 2025 15:11:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D51594051A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 16:09:06 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6D8BA842E7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Jul 2025 15:11:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8VMVnEavTkJU for <intel-wired-lan@lists.osuosl.org>;
- Thu, 17 Jul 2025 16:09:06 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.223.71;
- helo=nam11-dm6-obe.outbound.protection.outlook.com;
- envelope-from=tariqt@nvidia.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 0EB2440D2E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0EB2440D2E
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam11on2071.outbound.protection.outlook.com [40.107.223.71])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0EB2440D2E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Jul 2025 16:09:05 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=lY7oMpbtLxYSmPIoOLPWskhAS1M0zIYr4GKwOWpao2lZVPwR/E5CnvGiOqGTuv5qgl6dXiAD/QgxlqcgUc9s/BOaaPIcND/Ig+i0Dy6OtMhuNYRq9CZ3haMekkEeV79Ea31HA6N9T7mZNcDYdN4OxHB0bCgUZR5f/gN/jq/aso9F8zmUarxLVnVW1Q4DSIZt1ijMJBdHxZGqKsx4l3/PbbGSDVTDgmV4p1iolbAbLvhOXxeW+xCp4ms+Q7EqS5KJdBr7Dy21w/R92zApMlGK2GCrQmjkIfUqmt061G7h65flTY0LiJ6p1AyqhYqbN/sB1XiPQvDY6qmwDGcDEPkVNw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=5KUVVw8QFOwW/eO5P2Va5I82DixybRl2nX/TlW+fPNc=;
- b=KpiWBSVuJRYPRNlXAztairu3thvzpoyNOT/3p76J/AiCZxNVGn+sEwdSQ0kM35Yrr4Z98zKo6LMRrudO/BWVqostMa+KNSXJO59lQ9C2cjrPDhIk8DKQNSaADoSnWzXrfiEKqNEvWKqOPT67nSdCy/xpsP034NEy89gyjmMNhvkkEunvm4WUqLXE/mDVRVCuq5BD8d1WA+pMgBB5iRRHJGyftp8S8RRcyvl5+3WVHnBd++htXSeKM00v0/G286B3bgLiCjlYlpG9c68aIo2CcMjjnib28ns8tZVdR/J6sKr4fFr4GTL4BTgeLeb03zVOTgYVTuS8jL8Is9nDRvJZ7Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=google.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-Received: from BN9PR03CA0188.namprd03.prod.outlook.com (2603:10b6:408:f9::13)
- by BL1PR12MB5921.namprd12.prod.outlook.com (2603:10b6:208:398::5)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8901.20; Thu, 17 Jul
- 2025 16:09:02 +0000
-Received: from BL6PEPF0001AB58.namprd02.prod.outlook.com
- (2603:10b6:408:f9:cafe::39) by BN9PR03CA0188.outlook.office365.com
- (2603:10b6:408:f9::13) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.8943.20 via Frontend Transport; Thu,
- 17 Jul 2025 16:09:02 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- BL6PEPF0001AB58.mail.protection.outlook.com (10.167.241.10) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8943.21 via Frontend Transport; Thu, 17 Jul 2025 16:09:02 +0000
-Received: from rnnvmail204.nvidia.com (10.129.68.6) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Thu, 17 Jul
- 2025 09:08:42 -0700
-Received: from rnnvmail203.nvidia.com (10.129.68.9) by rnnvmail204.nvidia.com
- (10.129.68.6) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Thu, 17 Jul
- 2025 09:08:41 -0700
-Received: from vdi.nvidia.com (10.127.8.10) by mail.nvidia.com (10.129.68.9)
- with Microsoft SMTP Server id 15.2.1544.14 via Frontend Transport; Thu, 17
- Jul 2025 09:08:34 -0700
-From: Tariq Toukan <tariqt@nvidia.com>
-To: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David
- S. Miller" <davem@davemloft.net>, Jiri Pirko <jiri@resnulli.us>, Jiri Pirko
- <jiri@nvidia.com>
-CC: Saeed Mahameed <saeed@kernel.org>, Gal Pressman <gal@nvidia.com>, "Leon
- Romanovsky" <leon@kernel.org>, Shahar Shitrit <shshitrit@nvidia.com>, "Donald
- Hunter" <donald.hunter@gmail.com>, Jonathan Corbet <corbet@lwn.net>, "Brett
- Creeley" <brett.creeley@amd.com>, Michael Chan <michael.chan@broadcom.com>,
- Pavan Chebbi <pavan.chebbi@broadcom.com>, Cai Huoqing
- <cai.huoqing@linux.dev>, Tony Nguyen <anthony.l.nguyen@intel.com>, "Przemek
- Kitszel" <przemyslaw.kitszel@intel.com>, Sunil Goutham
- <sgoutham@marvell.com>, Linu Cherian <lcherian@marvell.com>, Geetha sowjanya
- <gakula@marvell.com>, Jerin Jacob <jerinj@marvell.com>, hariprasad
- <hkelam@marvell.com>, "Subbaraya Sundeep" <sbhatta@marvell.com>, Saeed
- Mahameed <saeedm@nvidia.com>, "Tariq Toukan" <tariqt@nvidia.com>, Mark Bloch
- <mbloch@nvidia.com>, Ido Schimmel <idosch@nvidia.com>, Petr Machata
- <petrm@nvidia.com>, Manish Chopra <manishc@marvell.com>,
- <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-doc@vger.kernel.org>, <intel-wired-lan@lists.osuosl.org>,
- <linux-rdma@vger.kernel.org>
-Date: Thu, 17 Jul 2025 19:07:22 +0300
-Message-ID: <1752768442-264413-6-git-send-email-tariqt@nvidia.com>
-X-Mailer: git-send-email 2.8.0
-In-Reply-To: <1752768442-264413-1-git-send-email-tariqt@nvidia.com>
-References: <1752768442-264413-1-git-send-email-tariqt@nvidia.com>
-MIME-Version: 1.0
-Content-Type: text/plain
-X-NV-OnPremToCloud: AnonymousSubmission
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL6PEPF0001AB58:EE_|BL1PR12MB5921:EE_
-X-MS-Office365-Filtering-Correlation-Id: 9ab750ba-6db9-496d-e106-08ddc54c3f5f
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|82310400026|36860700013|376014|7416014|1800799024; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?JrrnWwQWmd5OCYRyi3hELGx3sZUiEh0s5beXo9r+4ktuD74SCdlBs4xw4LAr?=
- =?us-ascii?Q?H0N4pz7bgQsqjcyjnRJlKWaqsOnsIXPm2fD6oy9QF3rKTFpJ5IGxfM6oCzpx?=
- =?us-ascii?Q?sLEbjo6abbGE651VnFld64fQ0r4LKfBqvUSiAVyU3GuH+k9VZbK41nBenChQ?=
- =?us-ascii?Q?NFrQ0Hl/pG9b1F2ia2xjk2k8x8uUSZVeKmOdA9o4bM612f0fdv2VQj6OnM8o?=
- =?us-ascii?Q?i+Lve/AXowzJp0xE1DXh+Sg74gwX30Lwj6+WdhEVGiBcEpaCRgJkNWsDwAdS?=
- =?us-ascii?Q?UHjuvt6+b2EEznaeULIE+rWrOxzehLFb7br3nMJwl1TXBYPHiuXMBLm7t3YT?=
- =?us-ascii?Q?qSPcObhyTyP+5XxhaQ6pH0Gvl13EOcZz7zqCquW/lIqBLOGT5LutQu+IjBRT?=
- =?us-ascii?Q?KC931yM7WHhPxdKZVHyhKTXlCVEwYRHzcv9E7x+OVt4L+z65JaUijk/TEcnN?=
- =?us-ascii?Q?SDYGzjTDzcU2ScWQwOPxjKdSD7kQqMewax9jOsqPeUbjqRuFiuBAg5SqKzhn?=
- =?us-ascii?Q?xL2PJ1meDHooepAj48V/mEKsTFrqxM+6CpVuMUcReEf7Yp5Ppm0chojhAnwn?=
- =?us-ascii?Q?CJ9X6hUFgZ9DooMreF0C1LbOLwJGw+Xki18A8qYMRSQVTeyaxh24Lcpmf7oy?=
- =?us-ascii?Q?jWW52QKtymv+g+OIaPIuBeicw79itZrQfKDJ9o7WI3bXNzXZEy3sU5XtsBio?=
- =?us-ascii?Q?DC9okpcGed0tYPUxwfpi+wjbS8onqua9vC5gwBH2YZTc//g5aQCj58WZwErf?=
- =?us-ascii?Q?rZ/W50BSRks56apYPxdfh+FDcjE7QTnP+AwRp9d+pgdQfbO9G1yj9dck82/Z?=
- =?us-ascii?Q?YuoLdi7YJ5B754TJg9QYFOcYGrQxR6CtqqqColLjlXuE/AFRWrZGSBAlNojP?=
- =?us-ascii?Q?zpZqRh2GwJRSr6PkNJ9o4x3n0l92zAnoJmqaUI2Ob2y2tJv+zoA3UjPOkkLw?=
- =?us-ascii?Q?YFMVvlFMASHSfjp+nqBZEIu51/GRxXEurTU5W7rsnGtShyNt/7sYx+kj88UT?=
- =?us-ascii?Q?cG8TJPyyTjWEsT5KMOjO3dwnJyStRFoFt1fTdYiaz0fqQ7Gq+R2bZxkUnZ4P?=
- =?us-ascii?Q?DsAENCv0WBD4ld4YnjL7axzXKc+8YCfvAN61dVSpxYR1iBUz/f0GfmwZd3uA?=
- =?us-ascii?Q?5q0sUhWcLbAWfiXn2tOK/8AwqLZpIp6QJGJOStL98XIXsgb5zP7CAgmCHFtX?=
- =?us-ascii?Q?3sIHQmZxoHlHvZ0PGW+R3nV9j+c2pyrUVFTd3elpa6rEZcoLVNVSuZ2WiDTz?=
- =?us-ascii?Q?7QD/Ts/5o6TTApYhbSqqRtqznqOCWETUcQw6sY7dJWk/uIyGupdZjiLawtLc?=
- =?us-ascii?Q?tmJoI2ffJFGxGilrcGEEq1KXsZFsIcyeaGTVBEUGj3z323SLh6ro2L43Udi2?=
- =?us-ascii?Q?eBDEIAx830Qdx3zlVo6edyF5Q40F5Cw1tPUgYLqhRWIXcfZuxQD8zo76rRux?=
- =?us-ascii?Q?roYGP1OVhrk8xV7KMwK4kI6G8JMkIeAs3lBhKX0R0XT8koBPFDgUi9ZqIWj7?=
- =?us-ascii?Q?KribJWCeQ56xACYZt7h2Q8qxJWobutbkjxjc?=
-X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
- SFS:(13230040)(82310400026)(36860700013)(376014)(7416014)(1800799024); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jul 2025 16:09:02.5695 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9ab750ba-6db9-496d-e106-08ddc54c3f5f
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BL6PEPF0001AB58.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR12MB5921
-X-Mailman-Approved-At: Fri, 18 Jul 2025 15:00:13 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=Nvidia.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5KUVVw8QFOwW/eO5P2Va5I82DixybRl2nX/TlW+fPNc=;
- b=r/G99WsW1S+nnBbfI/BK1XMTOIKd1Hwsllk+Ctb3kMsyun+qG0G/obh23tWhvD6KlzS+OS7rDD2/ggEZgE7/+ArgbpF6y4R9tzeSrXpmPLxq/+P2mONv51RdZ1D8HJU6Z2vIm0zzUASydt3cpdMKopuRNbKd/1luYfifBJrTe3tN9BFJoKDycGkBNmiP+8QbnCXI6Nm7yr13OVQFJ4vpV/XWDKxr5LyjRyumz+P4/9KozHiPQbBRdhLZReS9tLxryFtK/W6aa6i1uCZ/NgplDZYICJ8J0MeEG5NhXxxpeWRBT2phod/0uFHM8U7z26hx6f/N/Bk/F9mM7Q5kCBWIuA==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=nvidia.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Qjo18OiME0fl for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 18 Jul 2025 15:11:25 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 70F37842E4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 70F37842E4
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 70F37842E4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Jul 2025 15:11:25 +0000 (UTC)
+X-CSE-ConnectionGUID: 7NuwsvglQmWYwhtN7u4djQ==
+X-CSE-MsgGUID: M9GqcINqQzWfToSagQ+7wA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11496"; a="58961418"
+X-IronPort-AV: E=Sophos;i="6.16,321,1744095600"; d="scan'208";a="58961418"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+ by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Jul 2025 08:11:23 -0700
+X-CSE-ConnectionGUID: skUOdTT7S2K3x2HdvI6Z1g==
+X-CSE-MsgGUID: xR+TK770TwSuY4qQ7WmoGw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,321,1744095600"; d="scan'208";a="158565484"
+Received: from lkp-server01.sh.intel.com (HELO 9ee84586c615) ([10.239.97.150])
+ by orviesa008.jf.intel.com with ESMTP; 18 Jul 2025 08:11:22 -0700
+Received: from kbuild by 9ee84586c615 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1ucmk3-000EmF-2G
+ for intel-wired-lan@lists.osuosl.org; Fri, 18 Jul 2025 15:11:19 +0000
+Date: Fri, 18 Jul 2025 23:10:41 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202507182329.qz1emSLz-lkp@intel.com>
+User-Agent: s-nail v14.9.24
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1752851486; x=1784387486;
+ h=date:from:to:subject:message-id;
+ bh=JJicFku09+PoL3KFjMcKyPF5tMTKi1YTWhAXWcyhV04=;
+ b=JjQ7EhK7UYVrfCk3QRNBBxGxYtzBC/sNZSPVXLdc/z5BhMGYOf5nMq5G
+ 5aQJCWqheCfc40/L/cfXhvdUOPC41p7z1/vl6rS6vRlNBBDn7FdyGtUvG
+ JGA5QUFLdqWqwRez7njF7GsBXom6RwhwWCv4mZNp7HJkVFjFhF449DKM3
+ HJl5QnXRmB4ta5H0ts8AcIlX9QyZ9QC+27wKYb6POmnpZh3IjTe9NhhXe
+ D54OYDwyg3cPdgJWtpxP2l4qqJa6q15burLpbJvG/dngTP65fmFAvZNnu
+ AJ9vl0djhaBgdWY3QKz/mXytBIGHksgGb2l6v0v9TsL0wU9SFikMMmHyh
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=Nvidia.com header.i=@Nvidia.com header.a=rsa-sha256
- header.s=selector2 header.b=r/G99WsW
-Subject: [Intel-wired-lan] [PATCH net-next 5/5] net/mlx5e: Set default grace
- period delay for TX and RX reporters
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=JjQ7EhK7
+Subject: [Intel-wired-lan] [tnguy-net-queue:200GbE] BUILD SUCCESS
+ a2bbaff6816a1531fd61b07739c3f2a500cd3693
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -200,84 +104,182 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Shahar Shitrit <shshitrit@nvidia.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 200GbE
+branch HEAD: a2bbaff6816a1531fd61b07739c3f2a500cd3693  Merge tag 'for-net-2025-07-17' of git://git.kernel.org/pub/scm/linux/kernel/git/bluetooth/bluetooth
 
-System errors can sometimes cause multiple errors to be reported
-to the TX reporter at the same time. For instance, lost interrupts
-may cause several SQs to time out simultaneously. When dev_watchdog
-notifies the driver for that, it iterates over all SQs to trigger
-recovery for the timed-out ones, via TX health reporter.
-However, grace period allows only one recovery at a time, so only
-the first SQ recovers while others remain blocked. Since no further
-recoveries are allowed during the grace period, subsequent errors
-cause the reporter to enter an ERROR state, requiring manual
-intervention.
+elapsed time: 1409m
 
-To address this, set the TX reporter's default grace period
-delay to 0.5 second. This allows the reporter to detect and handle
-all timed-out SQs within this delay window before initiating the
-grace period.
+configs tested: 163
+configs skipped: 5
 
-To account for the possibility of a similar issue in the RX reporter,
-its default grace period delay is also configured.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Additionally, while here, align the TX definition prefix with the RX,
-as these are used only in EN driver.
+tested configs:
+alpha                             allnoconfig    gcc-15.1.0
+alpha                            allyesconfig    gcc-15.1.0
+arc                              allmodconfig    gcc-15.1.0
+arc                               allnoconfig    gcc-15.1.0
+arc                              allyesconfig    gcc-15.1.0
+arc                        nsim_700_defconfig    gcc-15.1.0
+arc                     nsimosci_hs_defconfig    gcc-15.1.0
+arc                   randconfig-001-20250717    gcc-8.5.0
+arc                   randconfig-001-20250718    gcc-10.5.0
+arc                   randconfig-002-20250717    gcc-15.1.0
+arc                   randconfig-002-20250718    gcc-8.5.0
+arm                              allmodconfig    gcc-15.1.0
+arm                               allnoconfig    clang-21
+arm                              allyesconfig    gcc-15.1.0
+arm                         bcm2835_defconfig    clang-21
+arm                         orion5x_defconfig    clang-21
+arm                            qcom_defconfig    clang-21
+arm                   randconfig-001-20250717    clang-21
+arm                   randconfig-001-20250718    gcc-8.5.0
+arm                   randconfig-002-20250717    gcc-8.5.0
+arm                   randconfig-002-20250718    gcc-8.5.0
+arm                   randconfig-003-20250717    gcc-8.5.0
+arm                   randconfig-003-20250718    gcc-8.5.0
+arm                   randconfig-004-20250717    clang-21
+arm                   randconfig-004-20250718    gcc-10.5.0
+arm                          sp7021_defconfig    gcc-15.1.0
+arm64                            allmodconfig    clang-19
+arm64                             allnoconfig    gcc-15.1.0
+arm64                 randconfig-001-20250717    clang-18
+arm64                 randconfig-001-20250718    gcc-13.4.0
+arm64                 randconfig-002-20250717    clang-18
+arm64                 randconfig-002-20250718    gcc-8.5.0
+arm64                 randconfig-003-20250717    gcc-10.5.0
+arm64                 randconfig-003-20250718    clang-21
+arm64                 randconfig-004-20250717    clang-21
+arm64                 randconfig-004-20250718    gcc-8.5.0
+csky                              allnoconfig    gcc-15.1.0
+csky                  randconfig-001-20250718    gcc-15.1.0
+csky                  randconfig-002-20250718    gcc-15.1.0
+hexagon                          allmodconfig    clang-17
+hexagon                           allnoconfig    clang-21
+hexagon                          allyesconfig    clang-21
+hexagon               randconfig-001-20250718    clang-21
+hexagon               randconfig-002-20250718    clang-21
+i386                             alldefconfig    gcc-12
+i386                             allmodconfig    gcc-12
+i386                              allnoconfig    gcc-12
+i386                             allyesconfig    gcc-12
+i386        buildonly-randconfig-001-20250717    gcc-12
+i386        buildonly-randconfig-001-20250718    gcc-12
+i386        buildonly-randconfig-002-20250717    gcc-12
+i386        buildonly-randconfig-002-20250718    clang-20
+i386        buildonly-randconfig-003-20250717    clang-20
+i386        buildonly-randconfig-003-20250718    gcc-12
+i386        buildonly-randconfig-004-20250717    clang-20
+i386        buildonly-randconfig-004-20250718    gcc-11
+i386        buildonly-randconfig-005-20250717    clang-20
+i386        buildonly-randconfig-005-20250718    gcc-12
+i386        buildonly-randconfig-006-20250717    gcc-12
+i386        buildonly-randconfig-006-20250718    clang-20
+i386                                defconfig    clang-20
+loongarch                        allmodconfig    clang-19
+loongarch                         allnoconfig    clang-21
+loongarch             randconfig-001-20250718    gcc-15.1.0
+loongarch             randconfig-002-20250718    gcc-15.1.0
+m68k                             alldefconfig    gcc-15.1.0
+m68k                             allmodconfig    gcc-15.1.0
+m68k                              allnoconfig    gcc-15.1.0
+m68k                             allyesconfig    gcc-15.1.0
+m68k                         amcore_defconfig    gcc-15.1.0
+microblaze                       allmodconfig    gcc-15.1.0
+microblaze                        allnoconfig    gcc-15.1.0
+microblaze                       allyesconfig    gcc-15.1.0
+microblaze                          defconfig    gcc-15.1.0
+mips                              allnoconfig    gcc-15.1.0
+mips                          ath25_defconfig    clang-21
+nios2                             allnoconfig    gcc-11.5.0
+nios2                               defconfig    gcc-11.5.0
+nios2                 randconfig-001-20250718    gcc-8.5.0
+nios2                 randconfig-002-20250718    gcc-11.5.0
+openrisc                          allnoconfig    gcc-15.1.0
+openrisc                         allyesconfig    gcc-15.1.0
+parisc                           allmodconfig    gcc-15.1.0
+parisc                            allnoconfig    gcc-15.1.0
+parisc                           allyesconfig    gcc-15.1.0
+parisc                              defconfig    gcc-15.1.0
+parisc                generic-32bit_defconfig    gcc-15.1.0
+parisc                randconfig-001-20250718    gcc-14.3.0
+parisc                randconfig-002-20250718    gcc-13.4.0
+parisc64                            defconfig    gcc-15.1.0
+powerpc                          allmodconfig    gcc-15.1.0
+powerpc                           allnoconfig    gcc-15.1.0
+powerpc                          allyesconfig    clang-21
+powerpc                    gamecube_defconfig    clang-21
+powerpc                      mgcoge_defconfig    clang-21
+powerpc                  mpc866_ads_defconfig    clang-21
+powerpc                      pcm030_defconfig    clang-21
+powerpc                      ppc44x_defconfig    clang-21
+powerpc               randconfig-001-20250718    gcc-9.3.0
+powerpc               randconfig-002-20250718    gcc-11.5.0
+powerpc               randconfig-003-20250718    clang-17
+powerpc64             randconfig-001-20250718    clang-18
+powerpc64             randconfig-002-20250718    clang-21
+powerpc64             randconfig-003-20250718    gcc-8.5.0
+riscv                            allmodconfig    clang-21
+riscv                             allnoconfig    gcc-15.1.0
+riscv                            allyesconfig    clang-16
+riscv                 randconfig-001-20250717    gcc-14.3.0
+riscv                 randconfig-001-20250718    clang-21
+riscv                 randconfig-002-20250717    clang-21
+riscv                 randconfig-002-20250718    clang-16
+s390                             allmodconfig    clang-18
+s390                              allnoconfig    clang-21
+s390                             allyesconfig    gcc-15.1.0
+s390                  randconfig-001-20250717    gcc-8.5.0
+s390                  randconfig-001-20250718    clang-21
+s390                  randconfig-002-20250717    gcc-9.3.0
+s390                  randconfig-002-20250718    clang-21
+sh                               allmodconfig    gcc-15.1.0
+sh                                allnoconfig    gcc-15.1.0
+sh                               allyesconfig    gcc-15.1.0
+sh                         apsh4a3a_defconfig    gcc-15.1.0
+sh                        edosk7760_defconfig    gcc-15.1.0
+sh                    randconfig-001-20250717    gcc-14.3.0
+sh                    randconfig-001-20250718    gcc-15.1.0
+sh                    randconfig-002-20250717    gcc-9.3.0
+sh                    randconfig-002-20250718    gcc-15.1.0
+sh                           se7722_defconfig    gcc-15.1.0
+sh                           se7780_defconfig    gcc-15.1.0
+sparc                            allmodconfig    gcc-15.1.0
+sparc                             allnoconfig    gcc-15.1.0
+sparc                               defconfig    gcc-15.1.0
+sparc                 randconfig-001-20250717    gcc-14.3.0
+sparc                 randconfig-001-20250718    gcc-10.3.0
+sparc                 randconfig-002-20250717    gcc-8.5.0
+sparc                 randconfig-002-20250718    gcc-11.5.0
+sparc                       sparc32_defconfig    gcc-15.1.0
+sparc64               randconfig-001-20250717    gcc-12.4.0
+sparc64               randconfig-001-20250718    gcc-10.5.0
+sparc64               randconfig-002-20250717    clang-21
+sparc64               randconfig-002-20250718    clang-20
+um                               allmodconfig    clang-19
+um                                allnoconfig    clang-21
+um                               allyesconfig    gcc-12
+um                    randconfig-001-20250717    gcc-12
+um                    randconfig-001-20250718    gcc-12
+um                    randconfig-002-20250717    gcc-12
+um                    randconfig-002-20250718    gcc-12
+x86_64                            allnoconfig    clang-20
+x86_64                           allyesconfig    clang-20
+x86_64      buildonly-randconfig-001-20250718    clang-20
+x86_64      buildonly-randconfig-002-20250718    gcc-12
+x86_64      buildonly-randconfig-003-20250718    gcc-12
+x86_64      buildonly-randconfig-004-20250718    clang-20
+x86_64      buildonly-randconfig-005-20250718    clang-20
+x86_64      buildonly-randconfig-006-20250718    clang-20
+x86_64                              defconfig    gcc-11
+x86_64                          rhel-9.4-rust    clang-20
+xtensa                            allnoconfig    gcc-15.1.0
+xtensa                randconfig-001-20250717    gcc-13.4.0
+xtensa                randconfig-001-20250718    gcc-8.5.0
+xtensa                randconfig-002-20250717    gcc-9.3.0
+xtensa                randconfig-002-20250718    gcc-12.4.0
 
-Signed-off-by: Shahar Shitrit <shshitrit@nvidia.com>
-Reviewed-by: Jiri Pirko <jiri@nvidia.com>
-Reviewed-by: Carolina Jubran <cjubran@nvidia.com>
-Signed-off-by: Tariq Toukan <tariqt@nvidia.com>
----
- drivers/net/ethernet/mellanox/mlx5/core/en/reporter_rx.c | 3 +++
- drivers/net/ethernet/mellanox/mlx5/core/en/reporter_tx.c | 7 +++++--
- 2 files changed, 8 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/reporter_rx.c b/drivers/net/ethernet/mellanox/mlx5/core/en/reporter_rx.c
-index e106f0696486..feb3f2bce830 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/en/reporter_rx.c
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/en/reporter_rx.c
-@@ -645,6 +645,7 @@ void mlx5e_reporter_icosq_resume_recovery(struct mlx5e_channel *c)
- }
- 
- #define MLX5E_REPORTER_RX_GRACEFUL_PERIOD 500
-+#define MLX5E_REPORTER_RX_GRACEFUL_PERIOD_DELAY 500
- 
- static const struct devlink_health_reporter_ops mlx5_rx_reporter_ops = {
- 	.name = "rx",
-@@ -652,6 +653,8 @@ static const struct devlink_health_reporter_ops mlx5_rx_reporter_ops = {
- 	.diagnose = mlx5e_rx_reporter_diagnose,
- 	.dump = mlx5e_rx_reporter_dump,
- 	.default_graceful_period = MLX5E_REPORTER_RX_GRACEFUL_PERIOD,
-+	.default_graceful_period_delay =
-+		MLX5E_REPORTER_RX_GRACEFUL_PERIOD_DELAY,
- };
- 
- void mlx5e_reporter_rx_create(struct mlx5e_priv *priv)
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/reporter_tx.c b/drivers/net/ethernet/mellanox/mlx5/core/en/reporter_tx.c
-index 6fb0d143ad1b..515b77585926 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/en/reporter_tx.c
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/en/reporter_tx.c
-@@ -514,14 +514,17 @@ void mlx5e_reporter_tx_ptpsq_unhealthy(struct mlx5e_ptpsq *ptpsq)
- 	mlx5e_health_report(priv, priv->tx_reporter, err_str, &err_ctx);
- }
- 
--#define MLX5_REPORTER_TX_GRACEFUL_PERIOD 500
-+#define MLX5E_REPORTER_TX_GRACEFUL_PERIOD 500
-+#define MLX5E_REPORTER_TX_GRACEFUL_PERIOD_DELAY 500
- 
- static const struct devlink_health_reporter_ops mlx5_tx_reporter_ops = {
- 		.name = "tx",
- 		.recover = mlx5e_tx_reporter_recover,
- 		.diagnose = mlx5e_tx_reporter_diagnose,
- 		.dump = mlx5e_tx_reporter_dump,
--		.default_graceful_period = MLX5_REPORTER_TX_GRACEFUL_PERIOD,
-+		.default_graceful_period = MLX5E_REPORTER_TX_GRACEFUL_PERIOD,
-+		.default_graceful_period_delay =
-+			MLX5E_REPORTER_TX_GRACEFUL_PERIOD_DELAY,
- };
- 
- void mlx5e_reporter_tx_create(struct mlx5e_priv *priv)
--- 
-2.31.1
-
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
