@@ -1,99 +1,214 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD7C9B098CD
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 18 Jul 2025 02:14:30 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 00981B0A09A
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 18 Jul 2025 12:27:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 478D0606D7;
-	Fri, 18 Jul 2025 00:14:29 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6CC8D8435F;
+	Fri, 18 Jul 2025 10:27:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VTQnTSDsMAwK; Fri, 18 Jul 2025 00:14:28 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id uYnO6tLIqdFQ; Fri, 18 Jul 2025 10:27:12 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 883FA60B02
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6C89184360
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1752797667;
-	bh=Q581S2DV0Kr965GB7ZJlzWFZiedezqBb8ADHMlZBsQg=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1752834432;
+	bh=nabCQO1+6nOiasgFZYnHK6TtGooV0VY78qI8BWa0V6A=;
+	h=Date:From:To:CC:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=PL0x3KBJ0UMAbGssRJAgaym/sTTcWOOiXT4Eg4jNinI6eQPqJxerMFpCTV2sz/zdT
-	 h2OiveBQ2S92k02M6AiRC5XZCjflTsH+hOhJEmJIqOqCQNBMIJKjXC58xFBSfdF+9/
-	 ogKnLO5rvuaamIT7gLOGv+JqyH/bJjCsJ6qgFu7uhePgASw5A4D2lWsfIR2AX4lSbI
-	 Mt76LH6WpG1k4SWoOtR3WOfKnwpUXnG3qvG4Z5r5lhpGAFm730DRMhbSDucpJE9g8w
-	 Opk8U80d6FPGhmHgaZg/ll1BUEqsJWB2viVYcE/iDerlLJ+9sXSFDUSh9hV37VMKZC
-	 BunaWWllGuKNA==
+	b=9aN/poEJ+dCSv7QCFIWfMvOQGvTD3XAbZqwzM93y32c1bxo05hIaS/cb1MXdykqbj
+	 9ueh+pxhyqui4B7IuT+dU5QpuhVI0ZGmgGuvPGuJqYm/ceAQri22zsMBIHOTHrL4FO
+	 QywN5iDwhk38N8xM48DCVOnOPqFPjqJqU4f6SoaSOI3zQrmnO/z3YpEE821tiFLRp8
+	 RiuXu7v6JUWGOggCqefMmKKNuhgjahbCIo9zp/xeGGn5ZSwUdB3WgNSf/ylae12hoX
+	 6PhBhX4bISlLp4A18p01DDmGzUsniLP0S68+BDaFiNiNVh9CabvXn03VBgq8dYXiCe
+	 1gJJRSNzT8aTw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 883FA60B02;
-	Fri, 18 Jul 2025 00:14:27 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6C89184360;
+	Fri, 18 Jul 2025 10:27:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 4E9751A6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Jul 2025 00:14:26 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 10D7CDA
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Jul 2025 10:27:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 39712408D1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Jul 2025 00:14:25 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 024E140D2A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Jul 2025 10:27:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2w0QQ7CbljRh for <intel-wired-lan@lists.osuosl.org>;
- Fri, 18 Jul 2025 00:14:24 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
- helo=mgamail.intel.com; envelope-from=joshua.a.hay@intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id reWSbcXd7Jwy for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 18 Jul 2025 10:27:10 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
+ helo=mgamail.intel.com; envelope-from=larysa.zaremba@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org D00B740917
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D00B740917
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D00B740917
- for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Jul 2025 00:14:23 +0000 (UTC)
-X-CSE-ConnectionGUID: xBZnhUkARIWfRd609eGX/w==
-X-CSE-MsgGUID: 654vaw6RRUCt6vKmcZ+LlQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11495"; a="65345439"
-X-IronPort-AV: E=Sophos;i="6.16,320,1744095600"; d="scan'208";a="65345439"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
- by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Jul 2025 17:14:24 -0700
-X-CSE-ConnectionGUID: wigq1F4dTQWCRqcMeT23eQ==
-X-CSE-MsgGUID: JXNhbiXMSci8vvPTKRSF7g==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5552A41245
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5552A41245
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5552A41245
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 18 Jul 2025 10:27:10 +0000 (UTC)
+X-CSE-ConnectionGUID: h6d6BgfhQgyxBvBvM575ZA==
+X-CSE-MsgGUID: VkJIumnBTr+Tq9SgFDt2Aw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11495"; a="55068729"
+X-IronPort-AV: E=Sophos;i="6.16,321,1744095600"; d="scan'208";a="55068729"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+ by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Jul 2025 03:27:09 -0700
+X-CSE-ConnectionGUID: KbrYzOtYQNuyFKci94BhSA==
+X-CSE-MsgGUID: HriPrbJ3QbGqT9o+1zi/6g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,320,1744095600"; d="scan'208";a="188908872"
-Received: from dcskidmo-m40.jf.intel.com ([10.166.241.13])
- by fmviesa001.fm.intel.com with ESMTP; 17 Jul 2025 17:14:23 -0700
-From: Joshua Hay <joshua.a.hay@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, Joshua Hay <joshua.a.hay@intel.com>,
- Madhu Chittim <madhu.chittim@intel.com>
-Date: Thu, 17 Jul 2025 17:21:50 -0700
-Message-Id: <20250718002150.2724409-7-joshua.a.hay@intel.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20250718002150.2724409-1-joshua.a.hay@intel.com>
-References: <20250718002150.2724409-1-joshua.a.hay@intel.com>
+X-IronPort-AV: E=Sophos;i="6.16,321,1744095600"; d="scan'208";a="157412129"
+Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
+ by orviesa010.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Jul 2025 03:27:09 -0700
+Received: from ORSMSX903.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26; Fri, 18 Jul 2025 03:27:08 -0700
+Received: from ORSEDG902.ED.cps.intel.com (10.7.248.12) by
+ ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26 via Frontend Transport; Fri, 18 Jul 2025 03:27:08 -0700
+Received: from NAM04-MW2-obe.outbound.protection.outlook.com (40.107.101.57)
+ by edgegateway.intel.com (134.134.137.112) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.25; Fri, 18 Jul 2025 03:27:08 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=fj0k4NxoLe2IkMkzoXONriDdnP0MHze/yF8kRgLgdvcDndmwbx+mfLAPzR6DIRNhmJQa0S9W0DaY3fsVISNiaeau36pcaEf+ErDiUa2qZJQ2+su7QsvDrEBpTmNIB8ljWdyMakfRTHRgMDysNP86N9ZAbY2maUkyyILL2xqFsLr6Jag1afp8ZvuJ7rwnD6upIvgYjmjxF4h2lGRsXn293vr8LpYpGqghAXVipsMecQMZPYpusCmCDlnSQN4U3vjqUnO+PBFy0ghapLO+KToLm9c1+ghJifVEz3b9KBeN9lnPYgm50tjxMGEDXMy2RNeTYrUEKZ1cZC6YtwCdhtOWwg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=nabCQO1+6nOiasgFZYnHK6TtGooV0VY78qI8BWa0V6A=;
+ b=NqycuaoTc+tYd5Jky2dLfoCJ3c2O0MpcZ6WNUoA14gJgInNiEA1woB6Dbv7s2scoNzyJnksnSNAQrFq8IpvP08w1Ah/ggUy6W3ouXNFNmVtrQ560qoM0I2N/rc1pPIUXm+15bfhwO1J7RXKycWgoauf9nXcWb/0VtNj3atE+qjodk21v+qV82HFMxkYNBsVdJcITFYhn0/XCEAyknaE/Co8/5nccJpvfOIilLYA5az73gqYbwHF/LhJtNj6rVDzA0boDGm1QBfs5gDe6Pd4sdiqYgVxI5LxnOpR//AvO/V904KqHekdZKA1tbvb295kh4fspXM4g8J3Dm77DELYKkw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SN7PR11MB7540.namprd11.prod.outlook.com (2603:10b6:806:340::7)
+ by MN6PR11MB8101.namprd11.prod.outlook.com (2603:10b6:208:46e::18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8943.25; Fri, 18 Jul
+ 2025 10:27:06 +0000
+Received: from SN7PR11MB7540.namprd11.prod.outlook.com
+ ([fe80::399f:ff7c:adb2:8d29]) by SN7PR11MB7540.namprd11.prod.outlook.com
+ ([fe80::399f:ff7c:adb2:8d29%4]) with mapi id 15.20.8922.037; Fri, 18 Jul 2025
+ 10:27:06 +0000
+Date: Fri, 18 Jul 2025 12:26:55 +0200
+From: Larysa Zaremba <larysa.zaremba@intel.com>
+To: Jason Xing <kerneljasonxing@gmail.com>
+CC: Jakub Kicinski <kuba@kernel.org>, Stanislav Fomichev <sdf@fomichev.me>,
+ "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ <przemyslaw.kitszel@intel.com>, Maciej Fijalkowski
+ <maciej.fijalkowski@intel.com>, <intel-wired-lan@lists.osuosl.org>, netdev
+ <netdev@vger.kernel.org>
+Message-ID: <aHohbwWCF0ccpmtj@soc-5CG4396X81.clients.intel.com>
+References: <CAL+tcoCTHTptwmok9vhp7GEwQgMhNsBJxT3PStJDeVOLR_-Q3g@mail.gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <CAL+tcoCTHTptwmok9vhp7GEwQgMhNsBJxT3PStJDeVOLR_-Q3g@mail.gmail.com>
+X-ClientProxiedBy: WA0P291CA0021.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d0:1::25) To SN7PR11MB7540.namprd11.prod.outlook.com
+ (2603:10b6:806:340::7)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN7PR11MB7540:EE_|MN6PR11MB8101:EE_
+X-MS-Office365-Filtering-Correlation-Id: 46d64e91-440d-464a-56ba-08ddc5e5a497
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0; ARA:13230040|366016|10070799003|376014|1800799024;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?NVDbudlLGJKirWf9K2q3/sCPM1sGtySzPR9CoJKz+T6VmtUA6pozEYEgTDZo?=
+ =?us-ascii?Q?v2YtNmikT4QXyr5EkEPqztAIrTdROBkSjSqHnHW+IFbkqOlBqL6mRSUKwbZx?=
+ =?us-ascii?Q?6YaTld2QFgARqKlATjmMwg/5nyvKW6NOdNZdhXlYOT/DYxg/kVRBiVFvBZKN?=
+ =?us-ascii?Q?5bAcr5hP/iP8oV1b/9djsA1HSNa52TfNdl42ols7T4/V2PZI/xPgpoRj265r?=
+ =?us-ascii?Q?PN27cGiftMofYNZApWxQldRahGfOqWbID9eq/H+1a0XeA2kUd6MwQC4naTfr?=
+ =?us-ascii?Q?TNBgTxMJWcFhYYOXBAoSKErP0RSfDcnPXp7k95AnGbfXJ9Feb3I5PqTe4UBv?=
+ =?us-ascii?Q?GLUNfGLfgehuYihMi2MrJSMkwZENO9fWEWPZZHCtJNJ0PS9GbQp9j4jwv/UK?=
+ =?us-ascii?Q?lLUKt0cFVMtBRqjaL0jnhSpI7mKcBwHxjssLQCqTNi91Yh22yTr2N6q5loBM?=
+ =?us-ascii?Q?J8MQRyKrID42MPAXDymOr3tKSmmKmfrBRfoSKddTYBHK5kDUv39sExqXrw9w?=
+ =?us-ascii?Q?xt2CgkrjFnwxW/f0Jqm7Sd5VpRQ2413WGpxN4pRhJiI+7VYgFvUmuBeOHYWU?=
+ =?us-ascii?Q?mQG1bQ3OiDCV4nv/wAUfQ0NnEeLiDhGyVyTnolrnVzOD/zte6csMY+j1AQw8?=
+ =?us-ascii?Q?l9KPVK5K/XGxV1G2OzDeT66K4kru1vcDUIAyRefIHwuujUStXZtyvdqeZD5n?=
+ =?us-ascii?Q?BF7/H9bmhcFMOd2zd9bGDMTXLT7OSPLnrWO31zfp5MTnKrFeG3K4RJ7hM3VJ?=
+ =?us-ascii?Q?20M9mIY6q3g81Dp6YU1doGmq5s12rOLaN2kwqRQWmVwdxF3K9RgDDV0GHiZ6?=
+ =?us-ascii?Q?cTGhM22RplD7jYi6OfzgHma2KrFSHkC54ySFDvxN15/fKO5t+oegGnRVBKg7?=
+ =?us-ascii?Q?AAwFdMG++LF3/em9bKONHrdSjzsIv43+6KhIiih2VOUrCtR10+7+1J+pGn5M?=
+ =?us-ascii?Q?MiX2HEXQPk7lqRGNOnSsADawv/LMZw1jEr6zX+HTSS3+dWgI8AGhPwIZaRc8?=
+ =?us-ascii?Q?BTwVqjdJD13Gz+NaZQzWjG51IUDboB3TJA/OWh+O/oWBHwlESEnVuLFfI3Yj?=
+ =?us-ascii?Q?HMZfRkUlYEkQkxnX6RNxhbug+Se9iHwI+2LVQVSk2CGmeASdphILknpWKVpG?=
+ =?us-ascii?Q?RPPPP+HiUxX7s2qDchNNJye1WZXDDf6GRRuGpVmdRa3gKkp8FEMX86xobKIO?=
+ =?us-ascii?Q?OgdIlrZ5tIsYNFIFk5Luy5u09BHVJX//wYN9P5wae6phw+u/USOYWQlkkRT0?=
+ =?us-ascii?Q?mFEkmuFdjLo58om81w4qHqKydMaEWi4YHuLOL+gxWy7eeOtRFZ8+UtaJt8ue?=
+ =?us-ascii?Q?BnsaL491GPLxjNy2O7Fjpikl/JnO0wq2lhZOY2f48JQYQTkpsN8z9/Hb2Yi8?=
+ =?us-ascii?Q?tVYMyG8Hkb62A9p4V8FovYLxsonWJRfcwVE12gU7Zx2Lt6Ey6SCKM60KEfC9?=
+ =?us-ascii?Q?9rVkemQlcmg=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN7PR11MB7540.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(10070799003)(376014)(1800799024); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?gNVzCb+TmenhP1w8FLyS/GueJkJKDHpyTEDmNtlYsD8qxqcE70Q93SGPPnN0?=
+ =?us-ascii?Q?USq8voqClWJPBHwPX7+3g3gd/UdDyn5CBlf9JQ+1nyFG28QkIe+ZhtMWYhcn?=
+ =?us-ascii?Q?GLBLu3FsLpAu1IHzPBNMhQeuovR4e0fvLFVgttRkXftqWsj4buiX6975BCWn?=
+ =?us-ascii?Q?ROicBrVWm4uaRDfSbURAziHqCawrIPGrWNn99gipWMl3HL4XuWe7e66hK2iM?=
+ =?us-ascii?Q?uP8OZBxjzhKXMpKOAEFYGWB04sM2SkOCxuQgTqJ9h8MsHl9vVukSUcad6jHB?=
+ =?us-ascii?Q?5Bl9B/RRPTYsrPN3OcueYcb7rwsEVWVtFv0EHGQc05h+KR9FiuczkbMb7V/F?=
+ =?us-ascii?Q?nIl6c5IfkPX9fFQXKcAc7ZSfliJUyObKrUSG+zFl2AiTUUKviZYa7csVHT6O?=
+ =?us-ascii?Q?HXfl/oHdLS4tx5D5NQPsCgNhogSoco0b95+StQwf+LjNWWIphIptJMyhCkU2?=
+ =?us-ascii?Q?JGto2YA4K2FMQKVOcfQLocXtVRgU/7Cuzy3H8JiTQbqi0iNbg3vIu3lvIFa2?=
+ =?us-ascii?Q?GpaqsyBk+rxOb1/wC684zpRk5kPjxXJA8uEUWaNK1vcp5Yfs9hnj8S8qZ7Ug?=
+ =?us-ascii?Q?uGrIqSOMhJ0UJ69ov3czdCBgqzSiiOVRauaOS7HANWUbNAIujsgKc5HiKsK2?=
+ =?us-ascii?Q?3cavRk/MDGYzbrAdQtvFE5F9gkaP/wvGePpp222lpvPSo+5VxeHdeSt4cE+k?=
+ =?us-ascii?Q?Q0VkGWXpADrZE+TIgLsh12ManeV6DkQwnexUSe1ExHBhzBoTTwn4BT/8JHzZ?=
+ =?us-ascii?Q?CsaUFdJpai/pKJQO215++3F0uev/wQYt2fNY04Xvk7aLSy5CD8CMQmP0ebuv?=
+ =?us-ascii?Q?+PLjb41jOjxd1MiVpavOM0iUhkvso380fTsHjiSvLfuh90wukOvqblMrQo6z?=
+ =?us-ascii?Q?bE1n8nIdeYprLX+h/rgdUYGXZvvzh9/VMyf9TrTGtWm8C7med3h9ddhtf52p?=
+ =?us-ascii?Q?ur2ipmYIkMOlXibhZreZqJTHBKO22+1gfGcMhhsrkPUjIbKIM8qxFyy54odD?=
+ =?us-ascii?Q?wsYV5wQ1Sgd76wK3ZyHVQ+UNo5l/a4X6YElBQYGDUxEWqbGSKT0Vbhdl2W3u?=
+ =?us-ascii?Q?BWC29HbaBsgGZ2y6foa+CjVpoBVUiXAfB7T3VbKJrjsya4bOrbqsQYESEkpf?=
+ =?us-ascii?Q?jKxSIOe1UD+/U9Pkj7ZKsbWamm4ABIAtRanYO5mUZi5TeWOXiPiR6NBjdXrS?=
+ =?us-ascii?Q?XgUyLaBgOK1fZTigv2x8ZfntzSxwqhNjAMaAweUTNtyQJ7NOHvpqu+ajom37?=
+ =?us-ascii?Q?N/0Ix5a3/29eNz5zj1F4bW/kcSpvcDr1Y4w9lEJVJup1B0lrZ/iFxZ49h6PD?=
+ =?us-ascii?Q?cPNEzwF/8i3zOFj9cSnm+4l+5FPqFqywAdcIvhNi7GGqu661Sp0FJpaWLdOX?=
+ =?us-ascii?Q?ZoP5nRO0pZTxbAw+mHsN7MKF4Y87kJX/B498eRYQBwh8eUAkVT/ufkchx8BE?=
+ =?us-ascii?Q?zo2cLm4JrBjbGXHsby3NGHNwGCl+u3zaUr1nwtMOeCUQWTWZXdHt15yTsb9m?=
+ =?us-ascii?Q?RxRnOOVnA2DgXjRPcLldZHlkutbaMHVYRVUJmTE1/eeYoWsb0YYU93sc2JoW?=
+ =?us-ascii?Q?xHfKm4twhRdis/oJbOhHRU3419M3YM6ihGJf/x6qDFLB3bItUlszgRJTHOT1?=
+ =?us-ascii?Q?YImHTvhTX3PItPY6qZXaMztbt3euKKjUBEA2PFGbKe8+7SnjiIxcapjGWBf9?=
+ =?us-ascii?Q?SnTk0g=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 46d64e91-440d-464a-56ba-08ddc5e5a497
+X-MS-Exchange-CrossTenant-AuthSource: SN7PR11MB7540.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Jul 2025 10:27:05.8730 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: HQwUdbR3cZzBLeBN4C0J/6hoFz+Y/eMaISBdi128tP4dMf+OEpUrf/yzgba/WHLNEoL5GkwyLPzQuP+XzzamyK8XCDgFOY10VL8ecMoaTOE=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN6PR11MB8101
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1752797664; x=1784333664;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=5Ta0SNxtHCspkj/bhUWmTkorIU46+UKCQQSMoWLnkKA=;
- b=XL2YxRTZ0n2GvFQ3bVTIOPW5Fweb50eGTo903TQYTdLFpnmXei0q453u
- rLjReGBrXuSLFHp5Bc45JcP5LO/bwMi1+OSIU5F+wcZPxZgxVenAUlakZ
- RZ5z2Y2uGicAU8OMacDGmbyIftZivhEdKvRb+6p2fjZ6+veBittlfjvfX
- s1fHqxD2RDWCh6Sm3hWP9f2+a3Ee8/e9AzCQ2rVAm5gEbEo7mFssvhOS+
- gfgYPleE2J9tJ0Baxpo6fmHzIvO2AZLNY1s4Y9dayMrxoGL4ihdUFE8rH
- cQmF7xAxl/SCcJYMPApp2JOCJWUE1cZGjNfMR/A7xkfTezJ8uSJiSdKgP
+ t=1752834430; x=1784370430;
+ h=date:from:to:cc:subject:message-id:references:
+ in-reply-to:mime-version;
+ bh=IIeE8UuCglFENcGSaMlNKJFrOkbQagKj9YzyKt2vVwg=;
+ b=mFww9/KHfOb2lLScQ5YQVvBJaWC06RPJhyRpmZdrRd/s/GAcOXdPSQdu
+ b2AFmEsvdNSP1jQfTH1rYPwfW9PH3y33KGQKibfvzb3z+JSktbjDl0qDz
+ eyjLzVDOZX4OVpVvsnXfM0Be2XVpqq9HRgHEe/+orqGqjVk8YU/hHHaMO
+ i8TPpWGKef/9QUjFGpdq2/SkFo0LnDNblAhpwRxO/Q/R1csgAQvciSm5M
+ TfXCcXlOLnHsL9SYeutOPXmvHrYmKsVhSs24+W7kUlTERw/83pKbz2yMg
+ ZrV4U4AerGshMMRA/5p5jVR6ahjGgUCsrXpXPRNrZAUR/s20ALueDDkV1
  Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=XL2YxRTZ
-Subject: [Intel-wired-lan] [PATCH net v2 6/6] idpf: remove obsolete stashing
- code
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=mFww9/KH
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] ixgbe driver stops sending normal data when
+ using xsk
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -109,731 +224,48 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-With the new Tx buffer management scheme, there is no need for all of
-the stashing mechanisms, the hash table, the reserve buffer stack, etc.
-Remove all of that.
+On Wed, Jul 16, 2025 at 11:41:42AM +0800, Jason Xing wrote:
+> Hi all,
+> 
+> I'm currently faced with one tough issue caused by zero copy mode in
+> xsk with ixgbe driver loaded. The case is that if we use xdpsock to
+> send descs, nearly at the same time normal packets from other tx
+> queues cannot be transmitted/completed at all.
+> 
+> Here is how I try:
+> 1. run iperf or ping to see if the transmission is successful.
+> 2. then run "timeout 5 ./xdpsock -i enp2s0f0 -t  -z -s 64"
+> 
+> You will obviously find the whole machine loses connection. It can
+> only recover as soon as the xdpsock is stopped due to timeout.
+> 
+> I tried a lot and then traced down to this line in ixgbe driver:
+> ixgbe_clean_tx_irq()
+>     -> if (!(eop_desc->wb.status & cpu_to_le32(IXGBE_TXD_STAT_DD)))
+>             break;
+> The above line always 'breaks' the sending process.
+> 
+> I also managed to make the external ixgbe 6.15 work and it turned out
+> to be the same issue as before.
+> 
+> I have no idea on how to analyze further in this driver. Could someone
+> point out a direction that I can take? Is it a known issue?
+> 
+> Thanks,
+> Jason
+> 
 
-Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
-Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
----
- drivers/net/ethernet/intel/idpf/idpf_txrx.c | 376 ++------------------
- drivers/net/ethernet/intel/idpf/idpf_txrx.h |  47 +--
- 2 files changed, 23 insertions(+), 400 deletions(-)
+I was able to reproduce the described behaviour, xdpsock does break the IP 
+communication. However, in my case this was not because of ixgbe not being able 
+to send, but because of queue 0 RX packets being dropped, which is the indended 
+outcome in xdpsock, even in Tx only mode.
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-index cfda566270c7..2fc1ef880bc3 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-@@ -8,48 +8,12 @@
- #include "idpf_ptp.h"
- #include "idpf_virtchnl.h"
- 
--struct idpf_tx_stash {
--	struct hlist_node hlist;
--	struct libeth_sqe buf;
--};
--
- #define idpf_tx_buf_next(buf)		(*(u32 *)&(buf)->priv)
--#define idpf_tx_buf_compl_tag(buf)	(*(u32 *)&(buf)->priv)
- LIBETH_SQE_CHECK_PRIV(u32);
- 
- static bool idpf_chk_linearize(struct sk_buff *skb, unsigned int max_bufs,
- 			       unsigned int count);
- 
--/**
-- * idpf_buf_lifo_push - push a buffer pointer onto stack
-- * @stack: pointer to stack struct
-- * @buf: pointer to buf to push
-- *
-- * Returns 0 on success, negative on failure
-- **/
--static int idpf_buf_lifo_push(struct idpf_buf_lifo *stack,
--			      struct idpf_tx_stash *buf)
--{
--	if (unlikely(stack->top == stack->size))
--		return -ENOSPC;
--
--	stack->bufs[stack->top++] = buf;
--
--	return 0;
--}
--
--/**
-- * idpf_buf_lifo_pop - pop a buffer pointer from stack
-- * @stack: pointer to stack struct
-- **/
--static struct idpf_tx_stash *idpf_buf_lifo_pop(struct idpf_buf_lifo *stack)
--{
--	if (unlikely(!stack->top))
--		return NULL;
--
--	return stack->bufs[--stack->top];
--}
--
- /**
-  * idpf_tx_timeout - Respond to a Tx Hang
-  * @netdev: network interface device structure
-@@ -78,14 +42,11 @@ void idpf_tx_timeout(struct net_device *netdev, unsigned int txqueue)
- static void idpf_tx_buf_rel_all(struct idpf_tx_queue *txq)
- {
- 	struct libeth_sq_napi_stats ss = { };
--	struct idpf_buf_lifo *buf_stack;
--	struct idpf_tx_stash *stash;
- 	struct libeth_cq_pp cp = {
- 		.dev	= txq->dev,
- 		.ss	= &ss,
- 	};
--	struct hlist_node *tmp;
--	u32 i, tag;
-+	u32 i;
- 
- 	/* Buffers already cleared, nothing to do */
- 	if (!txq->tx_buf)
-@@ -97,33 +58,6 @@ static void idpf_tx_buf_rel_all(struct idpf_tx_queue *txq)
- 
- 	kfree(txq->tx_buf);
- 	txq->tx_buf = NULL;
--
--	if (!idpf_queue_has(FLOW_SCH_EN, txq))
--		return;
--
--	buf_stack = &txq->stash->buf_stack;
--	if (!buf_stack->bufs)
--		return;
--
--	/*
--	 * If a Tx timeout occurred, there are potentially still bufs in the
--	 * hash table, free them here.
--	 */
--	hash_for_each_safe(txq->stash->sched_buf_hash, tag, tmp, stash,
--			   hlist) {
--		if (!stash)
--			continue;
--
--		libeth_tx_complete(&stash->buf, &cp);
--		hash_del(&stash->hlist);
--		idpf_buf_lifo_push(buf_stack, stash);
--	}
--
--	for (i = 0; i < buf_stack->size; i++)
--		kfree(buf_stack->bufs[i]);
--
--	kfree(buf_stack->bufs);
--	buf_stack->bufs = NULL;
- }
- 
- /**
-@@ -199,9 +133,6 @@ static void idpf_tx_desc_rel_all(struct idpf_vport *vport)
-  */
- static int idpf_tx_buf_alloc_all(struct idpf_tx_queue *tx_q)
- {
--	struct idpf_buf_lifo *buf_stack;
--	int i;
--
- 	/* Allocate book keeping buffers only. Buffers to be supplied to HW
- 	 * are allocated by kernel network stack and received as part of skb
- 	 */
-@@ -213,29 +144,6 @@ static int idpf_tx_buf_alloc_all(struct idpf_tx_queue *tx_q)
- 	if (!tx_q->tx_buf)
- 		return -ENOMEM;
- 
--	if (!idpf_queue_has(FLOW_SCH_EN, tx_q))
--		return 0;
--
--	buf_stack = &tx_q->stash->buf_stack;
--
--	/* Initialize tx buf stack for out-of-order completions if
--	 * flow scheduling offload is enabled
--	 */
--	buf_stack->bufs = kcalloc(tx_q->desc_count, sizeof(*buf_stack->bufs),
--				  GFP_KERNEL);
--	if (!buf_stack->bufs)
--		return -ENOMEM;
--
--	buf_stack->size = tx_q->desc_count;
--	buf_stack->top = tx_q->desc_count;
--
--	for (i = 0; i < tx_q->desc_count; i++) {
--		buf_stack->bufs[i] = kzalloc(sizeof(*buf_stack->bufs[i]),
--					     GFP_KERNEL);
--		if (!buf_stack->bufs[i])
--			return -ENOMEM;
--	}
--
- 	return 0;
- }
- 
-@@ -349,8 +257,6 @@ static int idpf_tx_desc_alloc_all(struct idpf_vport *vport)
- 	for (i = 0; i < vport->num_txq_grp; i++) {
- 		for (j = 0; j < vport->txq_grps[i].num_txq; j++) {
- 			struct idpf_tx_queue *txq = vport->txq_grps[i].txqs[j];
--			u8 gen_bits = 0;
--			u16 bufidx_mask;
- 
- 			err = idpf_tx_desc_alloc(vport, txq);
- 			if (err) {
-@@ -359,34 +265,6 @@ static int idpf_tx_desc_alloc_all(struct idpf_vport *vport)
- 					i);
- 				goto err_out;
- 			}
--
--			if (!idpf_is_queue_model_split(vport->txq_model))
--				continue;
--
--			txq->compl_tag_cur_gen = 0;
--
--			/* Determine the number of bits in the bufid
--			 * mask and add one to get the start of the
--			 * generation bits
--			 */
--			bufidx_mask = txq->desc_count - 1;
--			while (bufidx_mask >> 1) {
--				txq->compl_tag_gen_s++;
--				bufidx_mask = bufidx_mask >> 1;
--			}
--			txq->compl_tag_gen_s++;
--
--			gen_bits = IDPF_TX_SPLITQ_COMPL_TAG_WIDTH -
--							txq->compl_tag_gen_s;
--			txq->compl_tag_gen_max = GETMAXVAL(gen_bits);
--
--			/* Set bufid mask based on location of first
--			 * gen bit; it cannot simply be the descriptor
--			 * ring size-1 since we can have size values
--			 * where not all of those bits are set.
--			 */
--			txq->compl_tag_bufid_m =
--				GETMAXVAL(txq->compl_tag_gen_s);
- 		}
- 
- 		if (!idpf_is_queue_model_split(vport->txq_model))
-@@ -1041,9 +919,6 @@ static void idpf_txq_group_rel(struct idpf_vport *vport)
- 
- 		kfree(txq_grp->complq);
- 		txq_grp->complq = NULL;
--
--		if (flow_sch_en)
--			kfree(txq_grp->stashes);
- 	}
- 	kfree(vport->txq_grps);
- 	vport->txq_grps = NULL;
-@@ -1404,7 +1279,6 @@ static int idpf_txq_group_alloc(struct idpf_vport *vport, u16 num_txq)
- 	for (i = 0; i < vport->num_txq_grp; i++) {
- 		struct idpf_txq_group *tx_qgrp = &vport->txq_grps[i];
- 		struct idpf_adapter *adapter = vport->adapter;
--		struct idpf_txq_stash *stashes;
- 		int j;
- 
- 		tx_qgrp->vport = vport;
-@@ -1417,15 +1291,6 @@ static int idpf_txq_group_alloc(struct idpf_vport *vport, u16 num_txq)
- 				goto err_alloc;
- 		}
- 
--		if (split && flow_sch_en) {
--			stashes = kcalloc(num_txq, sizeof(*stashes),
--					  GFP_KERNEL);
--			if (!stashes)
--				goto err_alloc;
--
--			tx_qgrp->stashes = stashes;
--		}
--
- 		for (j = 0; j < tx_qgrp->num_txq; j++) {
- 			struct idpf_tx_queue *q = tx_qgrp->txqs[j];
- 
-@@ -1445,11 +1310,6 @@ static int idpf_txq_group_alloc(struct idpf_vport *vport, u16 num_txq)
- 			if (!flow_sch_en)
- 				continue;
- 
--			if (split) {
--				q->stash = &stashes[j];
--				hash_init(q->stash->sched_buf_hash);
--			}
--
- 			idpf_queue_set(FLOW_SCH_EN, q);
- 
- 			q->refillq = kzalloc(sizeof(*q->refillq), GFP_KERNEL);
-@@ -1741,87 +1601,6 @@ static void idpf_tx_read_tstamp(struct idpf_tx_queue *txq, struct sk_buff *skb)
- 	spin_unlock_bh(&tx_tstamp_caps->status_lock);
- }
- 
--/**
-- * idpf_tx_clean_stashed_bufs - clean bufs that were stored for
-- * out of order completions
-- * @txq: queue to clean
-- * @compl_tag: completion tag of packet to clean (from completion descriptor)
-- * @cleaned: pointer to stats struct to track cleaned packets/bytes
-- * @budget: Used to determine if we are in netpoll
-- */
--static void idpf_tx_clean_stashed_bufs(struct idpf_tx_queue *txq,
--				       u16 compl_tag,
--				       struct libeth_sq_napi_stats *cleaned,
--				       int budget)
--{
--	struct idpf_tx_stash *stash;
--	struct hlist_node *tmp_buf;
--	struct libeth_cq_pp cp = {
--		.dev	= txq->dev,
--		.ss	= cleaned,
--		.napi	= budget,
--	};
--
--	/* Buffer completion */
--	hash_for_each_possible_safe(txq->stash->sched_buf_hash, stash, tmp_buf,
--				    hlist, compl_tag) {
--		if (unlikely(idpf_tx_buf_compl_tag(&stash->buf) != compl_tag))
--			continue;
--
--		hash_del(&stash->hlist);
--
--		if (stash->buf.type == LIBETH_SQE_SKB &&
--		    (skb_shinfo(stash->buf.skb)->tx_flags & SKBTX_IN_PROGRESS))
--			idpf_tx_read_tstamp(txq, stash->buf.skb);
--
--		libeth_tx_complete(&stash->buf, &cp);
--
--		/* Push shadow buf back onto stack */
--		idpf_buf_lifo_push(&txq->stash->buf_stack, stash);
--	}
--}
--
--/**
-- * idpf_stash_flow_sch_buffers - store buffer parameters info to be freed at a
-- * later time (only relevant for flow scheduling mode)
-- * @txq: Tx queue to clean
-- * @tx_buf: buffer to store
-- */
--static int idpf_stash_flow_sch_buffers(struct idpf_tx_queue *txq,
--				       struct idpf_tx_buf *tx_buf)
--{
--	struct idpf_tx_stash *stash;
--
--	if (unlikely(tx_buf->type <= LIBETH_SQE_CTX))
--		return 0;
--
--	stash = idpf_buf_lifo_pop(&txq->stash->buf_stack);
--	if (unlikely(!stash)) {
--		net_err_ratelimited("%s: No out-of-order TX buffers left!\n",
--				    netdev_name(txq->netdev));
--
--		return -ENOMEM;
--	}
--
--	/* Store buffer params in shadow buffer */
--	stash->buf.skb = tx_buf->skb;
--	stash->buf.bytes = tx_buf->bytes;
--	stash->buf.packets = tx_buf->packets;
--	stash->buf.type = tx_buf->type;
--	stash->buf.nr_frags = tx_buf->nr_frags;
--	dma_unmap_addr_set(&stash->buf, dma, dma_unmap_addr(tx_buf, dma));
--	dma_unmap_len_set(&stash->buf, len, dma_unmap_len(tx_buf, len));
--	idpf_tx_buf_compl_tag(&stash->buf) = idpf_tx_buf_compl_tag(tx_buf);
--
--	/* Add buffer to buf_hash table to be freed later */
--	hash_add(txq->stash->sched_buf_hash, &stash->hlist,
--		 idpf_tx_buf_compl_tag(&stash->buf));
--
--	tx_buf->type = LIBETH_SQE_EMPTY;
--
--	return 0;
--}
--
- #define idpf_tx_splitq_clean_bump_ntc(txq, ntc, desc, buf)	\
- do {								\
- 	if (unlikely(++(ntc) == (txq)->desc_count)) {		\
-@@ -1849,14 +1628,8 @@ do {								\
-  * Separate packet completion events will be reported on the completion queue,
-  * and the buffers will be cleaned separately. The stats are not updated from
-  * this function when using flow-based scheduling.
-- *
-- * Furthermore, in flow scheduling mode, check to make sure there are enough
-- * reserve buffers to stash the packet. If there are not, return early, which
-- * will leave next_to_clean pointing to the packet that failed to be stashed.
-- *
-- * Return: false in the scenario above, true otherwise.
-  */
--static bool idpf_tx_splitq_clean(struct idpf_tx_queue *tx_q, u16 end,
-+static void idpf_tx_splitq_clean(struct idpf_tx_queue *tx_q, u16 end,
- 				 int napi_budget,
- 				 struct libeth_sq_napi_stats *cleaned,
- 				 bool descs_only)
-@@ -1870,12 +1643,11 @@ static bool idpf_tx_splitq_clean(struct idpf_tx_queue *tx_q, u16 end,
- 		.napi	= napi_budget,
- 	};
- 	struct idpf_tx_buf *tx_buf;
--	bool clean_complete = true;
- 
- 	if (descs_only) {
- 		/* Bump ring index to mark as cleaned. */
- 		tx_q->next_to_clean = end;
--		return true;
-+		return;
- 	}
- 
- 	tx_desc = &tx_q->flex_tx[ntc];
-@@ -1896,53 +1668,24 @@ static bool idpf_tx_splitq_clean(struct idpf_tx_queue *tx_q, u16 end,
- 			break;
- 
- 		eop_idx = tx_buf->rs_idx;
-+		libeth_tx_complete(tx_buf, &cp);
- 
--		if (descs_only) {
--			if (IDPF_TX_BUF_RSV_UNUSED(tx_q) < tx_buf->nr_frags) {
--				clean_complete = false;
--				goto tx_splitq_clean_out;
--			}
--
--			idpf_stash_flow_sch_buffers(tx_q, tx_buf);
-+		/* unmap remaining buffers */
-+		while (ntc != eop_idx) {
-+			idpf_tx_splitq_clean_bump_ntc(tx_q, ntc,
-+						      tx_desc, tx_buf);
- 
--			while (ntc != eop_idx) {
--				idpf_tx_splitq_clean_bump_ntc(tx_q, ntc,
--							      tx_desc, tx_buf);
--				idpf_stash_flow_sch_buffers(tx_q, tx_buf);
--			}
--		} else {
-+			/* unmap any remaining paged data */
- 			libeth_tx_complete(tx_buf, &cp);
--
--			/* unmap remaining buffers */
--			while (ntc != eop_idx) {
--				idpf_tx_splitq_clean_bump_ntc(tx_q, ntc,
--							      tx_desc, tx_buf);
--
--				/* unmap any remaining paged data */
--				libeth_tx_complete(tx_buf, &cp);
--			}
- 		}
- 
- fetch_next_txq_desc:
- 		idpf_tx_splitq_clean_bump_ntc(tx_q, ntc, tx_desc, tx_buf);
- 	}
- 
--tx_splitq_clean_out:
- 	tx_q->next_to_clean = ntc;
--
--	return clean_complete;
- }
- 
--#define idpf_tx_clean_buf_ring_bump_ntc(txq, ntc, buf)	\
--do {							\
--	(buf)++;					\
--	(ntc)++;					\
--	if (unlikely((ntc) == (txq)->desc_count)) {	\
--		buf = (txq)->tx_buf;			\
--		ntc = 0;				\
--	}						\
--} while (0)
--
- /**
-  * idpf_tx_clean_bufs - clean flow scheduling TX queue buffers
-  * @txq: queue to clean
-@@ -1953,18 +1696,16 @@ do {							\
-  * Clean all buffers associated with the packet starting at buf_id. Returns the
-  * byte/segment count for the cleaned packet.
-  */
--static bool idpf_tx_clean_bufs(struct idpf_tx_queue *txq, u32 buf_id,
-+static void idpf_tx_clean_bufs(struct idpf_tx_queue *txq, u32 buf_id,
- 			       struct libeth_sq_napi_stats *cleaned,
- 			       int budget)
- {
--	u32 idx = buf_id & txq->compl_tag_bufid_m;
- 	struct idpf_tx_buf *tx_buf = NULL;
- 	struct libeth_cq_pp cp = {
- 		.dev	= txq->dev,
- 		.ss	= cleaned,
- 		.napi	= budget,
- 	};
--	u16 ntc, orig_idx = idx;
- 
- 	tx_buf = &txq->tx_buf[buf_id];
- 	if (tx_buf->type == LIBETH_SQE_SKB) {
-@@ -1982,67 +1723,6 @@ static bool idpf_tx_clean_bufs(struct idpf_tx_queue *txq, u32 buf_id,
- 		libeth_tx_complete(tx_buf, &cp);
- 		idpf_post_buf_refill(txq->refillq, buf_id);
- 	}
--
--	return true;
--
--	tx_buf = &txq->tx_buf[idx];
--
--	if (unlikely(tx_buf->type <= LIBETH_SQE_CTX ||
--		     idpf_tx_buf_compl_tag(tx_buf) != buf_id))
--		return false;
--
--	if (tx_buf->type == LIBETH_SQE_SKB) {
--		if (skb_shinfo(tx_buf->skb)->tx_flags & SKBTX_IN_PROGRESS)
--			idpf_tx_read_tstamp(txq, tx_buf->skb);
--
--		libeth_tx_complete(tx_buf, &cp);
--	}
--
--	idpf_tx_clean_buf_ring_bump_ntc(txq, idx, tx_buf);
--
--	while (idpf_tx_buf_compl_tag(tx_buf) == buf_id) {
--		libeth_tx_complete(tx_buf, &cp);
--		idpf_tx_clean_buf_ring_bump_ntc(txq, idx, tx_buf);
--	}
--
--	/*
--	 * It's possible the packet we just cleaned was an out of order
--	 * completion, which means we can stash the buffers starting from
--	 * the original next_to_clean and reuse the descriptors. We need
--	 * to compare the descriptor ring next_to_clean packet's "first" buffer
--	 * to the "first" buffer of the packet we just cleaned to determine if
--	 * this is the case. Howevever, next_to_clean can point to either a
--	 * reserved buffer that corresponds to a context descriptor used for the
--	 * next_to_clean packet (TSO packet) or the "first" buffer (single
--	 * packet). The orig_idx from the packet we just cleaned will always
--	 * point to the "first" buffer. If next_to_clean points to a reserved
--	 * buffer, let's bump ntc once and start the comparison from there.
--	 */
--	ntc = txq->next_to_clean;
--	tx_buf = &txq->tx_buf[ntc];
--
--	if (tx_buf->type == LIBETH_SQE_CTX)
--		idpf_tx_clean_buf_ring_bump_ntc(txq, ntc, tx_buf);
--
--	/*
--	 * If ntc still points to a different "first" buffer, clean the
--	 * descriptor ring and stash all of the buffers for later cleaning. If
--	 * we cannot stash all of the buffers, next_to_clean will point to the
--	 * "first" buffer of the packet that could not be stashed and cleaning
--	 * will start there next time.
--	 */
--	if (unlikely(tx_buf != &txq->tx_buf[orig_idx] &&
--		     !idpf_tx_splitq_clean(txq, orig_idx, budget, cleaned,
--					   true)))
--		return true;
--
--	/*
--	 * Otherwise, update next_to_clean to reflect the cleaning that was
--	 * done above.
--	 */
--	txq->next_to_clean = idx;
--
--	return true;
- }
- 
- /**
-@@ -2061,22 +1741,18 @@ static void idpf_tx_handle_rs_completion(struct idpf_tx_queue *txq,
- 					 struct libeth_sq_napi_stats *cleaned,
- 					 int budget)
- {
--	u16 compl_tag;
-+	/*
-+	 * RS completion contains queue head for queue based scheduling or
-+	 * completion tag for flow based scheduling.
-+	 */
-+	u16 rs_compl_val = le16_to_cpu(desc->q_head_compl_tag.q_head);
- 
- 	if (!idpf_queue_has(FLOW_SCH_EN, txq)) {
--		u16 head = le16_to_cpu(desc->q_head_compl_tag.q_head);
--
--		idpf_tx_splitq_clean(txq, head, budget, cleaned, false);
-+		idpf_tx_splitq_clean(txq, rs_compl_val, budget, cleaned, false);
- 		return;
- 	}
- 
--	compl_tag = le16_to_cpu(desc->q_head_compl_tag.compl_tag);
--
--	/* If we didn't clean anything on the ring, this packet must be
--	 * in the hash table. Go clean it there.
--	 */
--	if (!idpf_tx_clean_bufs(txq, compl_tag, cleaned, budget))
--		idpf_tx_clean_stashed_bufs(txq, compl_tag, cleaned, budget);
-+	idpf_tx_clean_bufs(txq, rs_compl_val, cleaned, budget);
- }
- 
- /**
-@@ -2193,8 +1869,7 @@ static bool idpf_tx_clean_complq(struct idpf_compl_queue *complq, int budget,
- 		/* Update BQL */
- 		nq = netdev_get_tx_queue(tx_q->netdev, tx_q->idx);
- 
--		dont_wake = !complq_ok || IDPF_TX_BUF_RSV_LOW(tx_q) ||
--			    np->state != __IDPF_VPORT_UP ||
-+		dont_wake = !complq_ok || np->state != __IDPF_VPORT_UP ||
- 			    !netif_carrier_ok(tx_q->netdev);
- 		/* Check if the TXQ needs to and can be restarted */
- 		__netif_txq_completed_wake(nq, tx_q->cleaned_pkts, tx_q->cleaned_bytes,
-@@ -2265,7 +1940,6 @@ static int idpf_txq_has_room(struct idpf_tx_queue *tx_q, u32 descs_needed,
- 	if (IDPF_DESC_UNUSED(tx_q) < descs_needed ||
- 	    IDPF_TX_COMPLQ_PENDING(tx_q->txq_grp) >
- 		IDPF_TX_COMPLQ_OVERFLOW_THRESH(tx_q->txq_grp->complq) ||
--	    IDPF_TX_BUF_RSV_LOW(tx_q) ||
- 	    idpf_tx_splitq_get_free_bufs(tx_q->refillq) < bufs_needed)
- 		return 0;
- 	return 1;
-@@ -2389,10 +2063,8 @@ static unsigned int idpf_tx_splitq_bump_ntu(struct idpf_tx_queue *txq, u16 ntu)
- {
- 	ntu++;
- 
--	if (ntu == txq->desc_count) {
-+	if (ntu == txq->desc_count)
- 		ntu = 0;
--		txq->compl_tag_cur_gen = IDPF_TX_ADJ_COMPL_TAG_GEN(txq);
--	}
- 
- 	return ntu;
- }
-@@ -2574,8 +2246,6 @@ static void idpf_tx_splitq_map(struct idpf_tx_queue *tx_q,
- 			if (unlikely(++i == tx_q->desc_count)) {
- 				tx_desc = &tx_q->flex_tx[0];
- 				i = 0;
--				tx_q->compl_tag_cur_gen =
--					IDPF_TX_ADJ_COMPL_TAG_GEN(tx_q);
- 			} else {
- 				tx_desc++;
- 			}
-@@ -2606,7 +2276,6 @@ static void idpf_tx_splitq_map(struct idpf_tx_queue *tx_q,
- 		if (unlikely(++i == tx_q->desc_count)) {
- 			tx_desc = &tx_q->flex_tx[0];
- 			i = 0;
--			tx_q->compl_tag_cur_gen = IDPF_TX_ADJ_COMPL_TAG_GEN(tx_q);
- 		} else {
- 			tx_desc++;
- 		}
-@@ -3040,10 +2709,9 @@ static netdev_tx_t idpf_tx_splitq_frame(struct sk_buff *skb,
- 
- 		tx_params.dtype = IDPF_TX_DESC_DTYPE_FLEX_FLOW_SCHE;
- 		tx_params.eop_cmd = IDPF_TXD_FLEX_FLOW_CMD_EOP;
--		/* Set the RE bit to catch any packets that may have not been
--		 * stashed during RS completion cleaning. MIN_GAP is set to
--		 * MIN_RING size to ensure it will be set at least once each
--		 * time around the ring.
-+		/* Set the RE bit to periodically "clean" the descriptor ring.
-+		 * MIN_GAP is set to MIN_RING size to ensure it will be set at
-+		 * least once each time around the ring.
- 		 */
- 		if (idpf_tx_splitq_need_re(tx_q)) {
- 			tx_params.eop_cmd |= IDPF_TXD_FLEX_FLOW_CMD_RE;
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-index 36020db47880..256aa3a10463 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-@@ -117,10 +117,6 @@ do {								\
- 	((((txq)->next_to_clean > (txq)->next_to_use) ? 0 : (txq)->desc_count) + \
- 	(txq)->next_to_clean - (txq)->next_to_use - 1)
- 
--#define IDPF_TX_BUF_RSV_UNUSED(txq)	((txq)->stash->buf_stack.top)
--#define IDPF_TX_BUF_RSV_LOW(txq)	(IDPF_TX_BUF_RSV_UNUSED(txq) < \
--					 (txq)->desc_count >> 2)
--
- #define IDPF_TX_COMPLQ_OVERFLOW_THRESH(txcq)	((txcq)->desc_count >> 1)
- /* Determine the absolute number of completions pending, i.e. the number of
-  * completions that are expected to arrive on the TX completion queue.
-@@ -130,12 +126,6 @@ do {								\
- 	0 : U32_MAX) + \
- 	(txq)->num_completions_pending - (txq)->complq->num_completions)
- 
--#define IDPF_TX_SPLITQ_COMPL_TAG_WIDTH	16
--/* Adjust the generation for the completion tag and wrap if necessary */
--#define IDPF_TX_ADJ_COMPL_TAG_GEN(txq) \
--	((++(txq)->compl_tag_cur_gen) >= (txq)->compl_tag_gen_max ? \
--	0 : (txq)->compl_tag_cur_gen)
--
- #define IDPF_TXBUF_NULL			U32_MAX
- 
- #define IDPF_TXD_LAST_DESC_CMD (IDPF_TX_DESC_CMD_EOP | IDPF_TX_DESC_CMD_RS)
-@@ -153,18 +143,6 @@ union idpf_tx_flex_desc {
- 
- #define idpf_tx_buf libeth_sqe
- 
--/**
-- * struct idpf_buf_lifo - LIFO for managing OOO completions
-- * @top: Used to know how many buffers are left
-- * @size: Total size of LIFO
-- * @bufs: Backing array
-- */
--struct idpf_buf_lifo {
--	u16 top;
--	u16 size;
--	struct idpf_tx_stash **bufs;
--};
--
- /**
-  * struct idpf_tx_offload_params - Offload parameters for a given packet
-  * @tx_flags: Feature flags enabled for this packet
-@@ -475,17 +453,6 @@ struct idpf_tx_queue_stats {
- #define IDPF_ITR_IDX_SPACING(spacing, dflt)	(spacing ? spacing : dflt)
- #define IDPF_DIM_DEFAULT_PROFILE_IX		1
- 
--/**
-- * struct idpf_txq_stash - Tx buffer stash for Flow-based scheduling mode
-- * @buf_stack: Stack of empty buffers to store buffer info for out of order
-- *	       buffer completions. See struct idpf_buf_lifo
-- * @sched_buf_hash: Hash table to store buffers
-- */
--struct idpf_txq_stash {
--	struct idpf_buf_lifo buf_stack;
--	DECLARE_HASHTABLE(sched_buf_hash, 12);
--} ____cacheline_aligned;
--
- /**
-  * struct idpf_rx_queue - software structure representing a receive queue
-  * @rx: universal receive descriptor array
-@@ -630,11 +597,7 @@ libeth_cacheline_set_assert(struct idpf_rx_queue, 64,
-  *		   only once at the end of the cleaning routine.
-  * @clean_budget: singleq only, queue cleaning budget
-  * @cleaned_pkts: Number of packets cleaned for the above said case
-- * @stash: Tx buffer stash for Flow-based scheduling mode
-  * @refillq: Pointer to refill queue
-- * @compl_tag_bufid_m: Completion tag buffer id mask
-- * @compl_tag_cur_gen: Used to keep track of current completion tag generation
-- * @compl_tag_gen_max: To determine when compl_tag_cur_gen should be reset
-  * @cached_tstamp_caps: Tx timestamp capabilities negotiated with the CP
-  * @tstamp_task: Work that handles Tx timestamp read
-  * @stats_sync: See struct u64_stats_sync
-@@ -665,7 +628,6 @@ struct idpf_tx_queue {
- 	u16 desc_count;
- 
- 	u16 tx_min_pkt_len;
--	u16 compl_tag_gen_s;
- 
- 	struct net_device *netdev;
- 	__cacheline_group_end_aligned(read_mostly);
-@@ -682,13 +644,8 @@ struct idpf_tx_queue {
- 	};
- 	u16 cleaned_pkts;
- 
--	struct idpf_txq_stash *stash;
- 	struct idpf_sw_queue *refillq;
- 
--	u16 compl_tag_bufid_m;
--	u16 compl_tag_cur_gen;
--	u16 compl_tag_gen_max;
--
- 	struct idpf_ptp_vport_tx_tstamp_caps *cached_tstamp_caps;
- 	struct work_struct *tstamp_task;
- 
-@@ -706,7 +663,7 @@ struct idpf_tx_queue {
- 	__cacheline_group_end_aligned(cold);
- };
- libeth_cacheline_set_assert(struct idpf_tx_queue, 64,
--			    120 + sizeof(struct u64_stats_sync),
-+			    104 + sizeof(struct u64_stats_sync),
- 			    32);
- 
- /**
-@@ -917,7 +874,6 @@ struct idpf_rxq_group {
-  * @vport: Vport back pointer
-  * @num_txq: Number of TX queues associated
-  * @txqs: Array of TX queue pointers
-- * @stashes: array of OOO stashes for the queues
-  * @complq: Associated completion queue pointer, split queue only
-  * @num_completions_pending: Total number of completions pending for the
-  *			     completion queue, acculumated for all TX queues
-@@ -932,7 +888,6 @@ struct idpf_txq_group {
- 
- 	u16 num_txq;
- 	struct idpf_tx_queue *txqs[IDPF_LARGE_MAX_Q];
--	struct idpf_txq_stash *stashes;
- 
- 	struct idpf_compl_queue *complq;
- 
--- 
-2.39.2
+When I run `tcpdump -nn -e -p -i <ifname>` on the link partner, I see that the 
+ixgbe host spams ARP packets just fine.
 
+When debugging low-level stuff such as XDP, I advise you to send packets at the 
+lower level, e.g. with scapy's sendp().
+
+In case you have a different problem, please provide lspci card description and 
+some truncated output of the commands that you are running and the resulting 
+dmesg.
