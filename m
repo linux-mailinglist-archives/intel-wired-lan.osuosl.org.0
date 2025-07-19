@@ -1,59 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8B46CB0AD08
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 19 Jul 2025 02:48:02 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E3457B0AD0B
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 19 Jul 2025 02:48:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B683D8463E;
-	Sat, 19 Jul 2025 00:47:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9B02E41B47;
+	Sat, 19 Jul 2025 00:48:52 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id S-gU8TOvgIRt; Sat, 19 Jul 2025 00:47:43 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id i3Cowc0TvNct; Sat, 19 Jul 2025 00:48:52 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 241BB8463A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1C33D41AAF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1752886063;
-	bh=4yatukhwSwtUvcmgaGLBH8DEQ3xgjC3LfJj0epSaLCA=;
+	s=default; t=1752886132;
+	bh=VvbfGzkdMwjga7KAUkbPD5HkMtVt7ildJw96kWX5FJ8=;
 	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=qJ8rN2m1Ld2q24DOaKI3OK091W6CkLeZXo4vGDaoJ03jAHI+5HpNXqKXIOdCJ61sc
-	 vvdLZ9/Uk0a92Kz32hHpnbPTvl+bTonuUhj6qeJ64cyf/JGuA8EK9+t2hRVuX8LIKL
-	 7x3ewAFXay8ovkgo3WxR+A8KSVW8/zUmkjbD2nN7UQovLQcuXbRM9X3jJ9CBQi6SGa
-	 NAtz5Y9CU1biCagXveYVyKAgGVunTMkSOeRxt5tY5oKdNRRgJqWlil7dlRA2fKkAyB
-	 b5mfsnI9KrH+Fks/w29eKZMrJAAO/haK+UvzM+1tTI4RvLNZt7+dJG7tQNZVr08MWg
-	 BjIgmmv7mrzSA==
+	b=faVz/J5BtQCFCTcrf37Drj3EtCm4zwlNB2JgASGY5qonvTDEg8UXl/akOdZKrQBcV
+	 VHz/y3HlyyghwmyQlgu/JGVe2Cy969eod4I/H6szOCwwLVytadS8/PpkLsYKzhkuuy
+	 wAwbZXQ7fdWJBUQWtMm/M5HHX9oYWOulKXLfhWIvmEqUleQKs/WWHOBEknQYVmkFCR
+	 aX+N0bkCJ/pvhABAKrji/EcLg0ci7T7rUOBRGq0k7RnjbAtdnLqJz5z8O8ElFeKD7C
+	 pEJD1pPLB5/JQvApSkiKyqL/hLtxmx97BlOmOgWioGyZLbzxHqYwaqxAmOgByAy9oI
+	 1L3WjQXyxukzA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 241BB8463A;
-	Sat, 19 Jul 2025 00:47:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1C33D41AAF;
+	Sat, 19 Jul 2025 00:48:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 2AF462734
- for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Jul 2025 00:47:42 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id A1233DA
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Jul 2025 00:48:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 1C36384637
- for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Jul 2025 00:47:42 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9217A84633
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Jul 2025 00:48:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7S-fVd-bhqGZ for <intel-wired-lan@lists.osuosl.org>;
- Sat, 19 Jul 2025 00:47:41 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 5B64A84633
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5B64A84633
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5B64A84633
- for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Jul 2025 00:47:41 +0000 (UTC)
+ id 3va1OsCzqmQe for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 19 Jul 2025 00:48:48 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
+ envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8C8998462D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8C8998462D
+Received: from nyc.source.kernel.org (nyc.source.kernel.org
+ [IPv6:2604:1380:45d1:ec00::3])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8C8998462D
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 19 Jul 2025 00:48:48 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 219595C4A53;
- Sat, 19 Jul 2025 00:47:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A2896C4CEEB;
- Sat, 19 Jul 2025 00:47:38 +0000 (UTC)
-Date: Fri, 18 Jul 2025 17:47:37 -0700
+ by nyc.source.kernel.org (Postfix) with ESMTP id F1940A574C5;
+ Sat, 19 Jul 2025 00:48:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79D91C4CEEB;
+ Sat, 19 Jul 2025 00:48:45 +0000 (UTC)
+Date: Fri, 18 Jul 2025 17:48:44 -0700
 From: Jakub Kicinski <kuba@kernel.org>
 To: Tariq Toukan <tariqt@nvidia.com>
 Cc: Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
@@ -75,31 +77,31 @@ Cc: Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
  <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-doc@vger.kernel.org>, <intel-wired-lan@lists.osuosl.org>,
  <linux-rdma@vger.kernel.org>
-Message-ID: <20250718174737.1d1177cd@kernel.org>
-In-Reply-To: <1752768442-264413-1-git-send-email-tariqt@nvidia.com>
+Message-ID: <20250718174844.71062bc9@kernel.org>
+In-Reply-To: <1752768442-264413-5-git-send-email-tariqt@nvidia.com>
 References: <1752768442-264413-1-git-send-email-tariqt@nvidia.com>
+ <1752768442-264413-5-git-send-email-tariqt@nvidia.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1752886059;
- bh=XWuJCJJk0aV1qvt1Ws58hkJTkIsuqdkQoYz9oZwo0A8=;
+ d=kernel.org; s=k20201202; t=1752886126;
+ bh=6dgQXljSybQMUm6Fi1nMuC1dGZk4ySO6T8l7XezcvZo=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=rFghbRVZUQtS04xAEUavFtutQFmD8yLdkuOrSdpLL7c0Na4XiUXsAtxW6wDwztw3w
- XhxiZbMRo6PVPayxGEye1e9kHjqqmPfuSBkibINJfSce7CBGXv/MT2QAV5v+9GnLhM
- muW7QjvrVXFzBX7jB+1tCZKE3bF2HIlgZBGVT1Ob16bluI3YuNWd8JLqfBpiUDAzFc
- x58WpHF08HMRyq/mc4j5jIMTFtC9DVVGIbAafBzvCyAMOadb+ggVDkBBYt41qDGvHI
- 4vyhzzN0OPjTENEdko/RT71JSsyxVMDx125WBvK++u53IkIExjDt4y0qQBC74xrugD
- IATv9Up02IfUg==
+ b=RRn+v0du7QIiWPRCfKBtIBvk//B/sECBTAJBbZpMZ/cAkX57sHJVXka3QUbfTbLPq
+ u9K9xdYVvB/1xJik/oswl+jrHqXvj8ILkEEFkE1hqq8n7L1dyWRVO5RuLXuvAEn0tW
+ NlZfUj8oKhJqnhMDe55vhLSofpezBhBPM4Grt9DsE1UFO7eOF6QRDFmQbuBwOGkGOx
+ Av8RPO7Ikn25OPKIaMX707BKInxE3O/XoTRMJn3a2hXPUxspfooodUnKLNCpfiCPuD
+ 6zpK/boMpZ1CVKwEmaRnHFRuxX7d38j9F3Zkh27N3rWTLgdtbyu7zxUJUjzaVXSgiC
+ i6U1K+CLmd7bA==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=rFghbRVZ
-Subject: Re: [Intel-wired-lan] [PATCH net-next 0/5] Expose grace period
- delay for devlink health reporter
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=RRn+v0du
+Subject: Re: [Intel-wired-lan] [PATCH net-next 4/5] devlink: Make health
+ reporter grace period delay configurable
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -115,45 +117,11 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 17 Jul 2025 19:07:17 +0300 Tariq Toukan wrote:
-> Currently, the devlink health reporter initiates the grace period
-> immediately after recovering an error, which blocks further recovery
-> attempts until the grace period concludes. Since additional errors
-> are not generally expected during this short interval, any new error
-> reported during the grace period is not only rejected but also causes
-> the reporter to enter an error state that requires manual intervention.
-> 
-> This approach poses a problem in scenarios where a single root cause
-> triggers multiple related errors in quick succession - for example,
-> a PCI issue affecting multiple hardware queues. Because these errors
-> are closely related and occur rapidly, it is more effective to handle
-> them together rather than handling only the first one reported and
-> blocking any subsequent recovery attempts. Furthermore, setting the
-> reporter to an error state in this context can be misleading, as these
-> multiple errors are manifestations of a single underlying issue, making
-> it unlike the general case where additional errors are not expected
-> during the grace period.
-> 
-> To resolve this, introduce a configurable grace period delay attribute
-> to the devlink health reporter. This delay starts when the first error
-> is recovered and lasts for a user-defined duration. Once this grace
-> period delay expires, the actual grace period begins. After the grace
-> period ends, a new reported error will start the same flow again.
-> 
-> Timeline summary:
-> 
-> ----|--------|------------------------------/----------------------/--
-> error is  error is    grace period delay          grace period
-> reported  recovered  (recoveries allowed)     (recoveries blocked)
-> 
-> With grace period delay, create a time window during which recovery
-> attempts are permitted, allowing all reported errors to be handled
-> sequentially before the grace period starts. Once the grace period
-> begins, it prevents any further error recoveries until it ends.
+On Thu, 17 Jul 2025 19:07:21 +0300 Tariq Toukan wrote:
+> +	DEVLINK_ATTR_HEALTH_REPORTER_GRACEFUL_PERIOD_DELAY,	/* u64 */
 
-We are rate limiting recoveries, the "networking solution" to the
-problem you're describing would be to introduce a burst size.
-Some kind of poor man's token bucket filter.
+/me pulls out a ruler
 
-Could you say more about what designs were considered and why this
-one was chosen?
+50 characters, -ENAMETOOLONG
+-- 
+pw-bot: cr
