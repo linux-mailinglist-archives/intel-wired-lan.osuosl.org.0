@@ -1,89 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C9A2B0B47D
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 20 Jul 2025 11:11:42 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A828B0B47E
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 20 Jul 2025 11:11:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6679F611A1;
-	Sun, 20 Jul 2025 09:11:40 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E50DC419E1;
+	Sun, 20 Jul 2025 09:11:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZzqFz_HgI8AI; Sun, 20 Jul 2025 09:11:39 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id f4v6Xg8tno1z; Sun, 20 Jul 2025 09:11:44 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CF7A361499
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6191641994
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1753002699;
-	bh=Rt9sbSI84k+hriqQ4Yv6ukeqAyVbcIdSlA7NkaxNd1E=;
+	s=default; t=1753002704;
+	bh=AqFKurrhgXKGO68xSd3MOtKTSUiUpTZQiZZDyPjY9jc=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=JoLhMZb2Z/ofdip0FiFaxhib+JH0ZSLIWhBuDCCtNfpNCJwe9quqSjepcP23bnoSR
-	 +TbktiEFw4pjsqjQ7U5EFNIw9nsfQ0EXoV+eRl+3MlsufemBSv5vRtH/u6dPPh9Nop
-	 RppJTbFdoI7rBoQL+hl0IsVQZMMSY13whuUYVx+9FrARuMcEb9R9r64TwkYLLubUOd
-	 5PUuhwBhpglRMWOWRz+cPWxlj/sl9afxy7wpRL+mptmh9lPh9p0L8WdF/EEh5MMGpb
-	 42t80uv1NV6Nr4zHIvHuFrrzJdweA8ftpKa/8l2xGHe3eDSFeHCGtBte1qJpKd2ipk
-	 DkDLmsyyosYEw==
+	b=nwQBkpAlla7H8UhpshmmZr5D7j52GKDwWAtaIVAgu3cwLObw4CcZ7apOe+Qi45xOn
+	 f+JjW0JBB58bflWuC1JV5JM/BaRSViBZv9MTWfBrygc5xgjR60g6PivBq57R6ccVMc
+	 DyxRALrHmu4pgBrkExipHvqFfCSfGr9Eq22v46AS/g3xi2JxZUwOVBvjB2KKmmRnNj
+	 8dofqxCh2UPnTuh4szN2949q/fQnLC9BlbTrVYV7RuIsOWcCQPgfaEqsgAGyy2nzvc
+	 NvEu28Q7erPjYd6wAylhK9JKIdSM2lhXItieWnH1FGhYWITGO5yEzu1doikEZXGP11
+	 JFHTVnKu/Ecpg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CF7A361499;
-	Sun, 20 Jul 2025 09:11:39 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6191641994;
+	Sun, 20 Jul 2025 09:11:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 46A69DA
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Jul 2025 09:11:38 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id B73ABDA
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Jul 2025 09:11:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3820D81F0C
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Jul 2025 09:11:38 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 9DE9940877
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Jul 2025 09:11:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ShuKDE3uRjvF for <intel-wired-lan@lists.osuosl.org>;
- Sun, 20 Jul 2025 09:11:37 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id AGcywSAmhSPV for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 20 Jul 2025 09:11:43 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::42f; helo=mail-pf1-x42f.google.com;
+ client-ip=2607:f8b0:4864:20::42e; helo=mail-pf1-x42e.google.com;
  envelope-from=kerneljasonxing@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 9C5DE81ED9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9C5DE81ED9
-Received: from mail-pf1-x42f.google.com (mail-pf1-x42f.google.com
- [IPv6:2607:f8b0:4864:20::42f])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 9C5DE81ED9
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Jul 2025 09:11:37 +0000 (UTC)
-Received: by mail-pf1-x42f.google.com with SMTP id
- d2e1a72fcca58-74b56b1d301so2246076b3a.1
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Jul 2025 02:11:37 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 1B18F40757
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1B18F40757
+Received: from mail-pf1-x42e.google.com (mail-pf1-x42e.google.com
+ [IPv6:2607:f8b0:4864:20::42e])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1B18F40757
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Jul 2025 09:11:42 +0000 (UTC)
+Received: by mail-pf1-x42e.google.com with SMTP id
+ d2e1a72fcca58-748d982e92cso2312229b3a.1
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Jul 2025 02:11:42 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753002697; x=1753607497;
+ d=1e100.net; s=20230601; t=1753002702; x=1753607502;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Rt9sbSI84k+hriqQ4Yv6ukeqAyVbcIdSlA7NkaxNd1E=;
- b=iwaZI+bSzWTCK7Zk/9ldt9tc3u6XBRyoagL5heFbJmNtapW6EfCSN1tUwCPDhscCxr
- 066qqojb/90YIG5hunhiZV1bVULwybNMNhAJ1rhcHVx7EEUBp2X9TApzP2KCQOsNIU1G
- laIpWkizSRphgLeKWfKJrACQCXYkK2J2q1m8gYf0hk3tPf7nshEZqX0EwfFt38zqMbmt
- bxknWLWBoGdlAFDHE8K01u6FDmj69MESy+Ngc5fWGjMU4vYHlw4VRg0GF8OehJlr/YdI
- 2mLHV8RS7XXEc8LKfQs5bwqL4A2EP5LCWYMas5GDLF10D/0zJP7UvpGOqfqiFk1MNCpb
- BiOg==
+ bh=AqFKurrhgXKGO68xSd3MOtKTSUiUpTZQiZZDyPjY9jc=;
+ b=I3mKG3pC3IuacMZD2T7/x93MynoPworwlyySS98MotL3X7BLvTWTCBnyiOUjumdFwS
+ ADQYMVZwNDudvdMXlkKbSLsM1fC9h/v9jF7CMRNpeFUUgZCCxLTNqp3XJozZSbyjZJCf
+ bc2Rf2a7tKLJw7jxEVz+suybyVuhNBaipVypILcdH+ZMa7yqeCmSr4rWnQbhBe2PSIGw
+ rWEAIwjujweZbYv9BXCNmplKbadl+0CX89KvhQDZUjfFCcsjgi2X142uz8fwn/PT3YkP
+ JExVYz5AaDK6yi2y1dFm23j1Fpu+NDCGzS7a8wUaMWC5itXXPDLfnSXlUGf300VDoa9R
+ FJYA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWLTH2GfIPBtbt4Y+EOj2ATAoUJqcaw/B8+2shndiaj81CycGlGm7r3oicmwj+YGwY9VtNbubLd/HVNokhop94=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzFRoH6IgK05gAySMQLpaJ5gWIXpDIynkb+ySqJPXqJbj+HXUii
- VlvQRW5PkK9KodT+yYXzubKs6Vy0W3Pj4m7Ngp/vQ437E9jIZBSyZIpp
-X-Gm-Gg: ASbGncscyMC9uVd7WzWZcRcnzn3iZXtHCf+GFqwDDyEj1OTu75KgWIrf+u8bsNeuZ21
- 8g60TKKeSobJ6IiFbXMT8luRcXy5/4Rscqppig1OzvTGYHTLYdN/8fWIc8GRpPSdORYt15ImxWa
- 84ctTsEEF4QQ49z9E9l4eZGqBgPcot6kpGkXRoZgEA1AJdSboOc7OMQm8ZpW6XFNH6cEtq1RM5R
- xgRMCkwep7L5sTS/klnMh0dDIRvVwAIzPZOcGz5Wpv45+F0KlTXGmE81XSV/V02g8QNY0IzJaYi
- L5G+FQ1pFL1L62O3jeQ+zKWJtnUBL+y3jqJZLfMyTRSQ5fSLS5LmIY53lewHbBJDe3FpJWsB5x0
- 9BtkiVpGe3KedBuy4awiKvT3EB8RMBn64vZJql2v4x3AwWkdB6oTRDbW234c=
-X-Google-Smtp-Source: AGHT+IE1nwxPPLoq731AChr7kpARPbWq+izW7FIXX6nSxuCyYB+jHt/5I11t6TB2f0G51tM6hDiVXQ==
-X-Received: by 2002:a05:6a00:1795:b0:74e:aba0:6dfd with SMTP id
- d2e1a72fcca58-75723165609mr19294085b3a.10.1753002696663; 
- Sun, 20 Jul 2025 02:11:36 -0700 (PDT)
+ AJvYcCW46+uVgqkO4f5D2FPF0duRCOvP7OrhXwZgwGJcB4hjzvx4bti5z9w/WONZM0IEMWpX4f4TBn8cHHN/qtzHTO4=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yw34YHHy+dIQOGt9T/5lVX0iYUi1rJFAAI/fAe3qzIYaXHko6Mb
+ 1fb5lB/pYn6B9HfCi5zNNfOQj0dfJ/wsgPrSUCxq7wpJgPiAQ2lYAUQg
+X-Gm-Gg: ASbGnct+OwUrcIoHDyL4XcVjmY+wtn39GT+w660OvzOafR62nlc+lMKOOGcGT0CVe3G
+ rcb/7lhZRM/O0upWa1rUMll+BNFYrxPFOuHs3RzUw+uG15x+w1ISC5FUpyGHKJDYOZ+PW1SfBhY
+ aO3iu2QFoT3+ISXlQNq3VJ2a//tpIUzlJ8LLtOFjcaLz1Bk9+b99TDgYxknRNGbRPtf43w12oZY
+ h0E1ueyR5ICv5lpGYMCOOdSdfIPMAbg+zBD8oSe2Qg/A8X+ozsATIhPOhpp+1x9dLuoBD6MsnVL
+ +GkqTqJkNNjK6/PGq8/6pateBlX9fKSNkhyH0VjBXib0j5ME4RjHrP3jFUzTjbtv0Eg41Oflppk
+ fG6bR09rv/d0X4bfL4ecUNNP1dhFpSv8z75RDYQAWF/zoT5oaQKV5NXoi5SsRyysaj6rHyA==
+X-Google-Smtp-Source: AGHT+IEJ5FcxXi7E152V9I7QXWTjGS6Pd9anA1JjNHWubokETEfoWd1owh9KeIXXmgfMtvGvcqAZ0A==
+X-Received: by 2002:a05:6a00:887:b0:747:b043:41e5 with SMTP id
+ d2e1a72fcca58-756ea7bf745mr21985436b3a.16.1753002702304; 
+ Sun, 20 Jul 2025 02:11:42 -0700 (PDT)
 Received: from KERNELXING-MC1.tencent.com ([111.201.24.59])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-759cb76d53fsm3902585b3a.105.2025.07.20.02.11.31
+ d2e1a72fcca58-759cb76d53fsm3902585b3a.105.2025.07.20.02.11.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 20 Jul 2025 02:11:36 -0700 (PDT)
+ Sun, 20 Jul 2025 02:11:41 -0700 (PDT)
 From: Jason Xing <kerneljasonxing@gmail.com>
 To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
  andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
@@ -93,33 +93,33 @@ To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
  daniel@iogearbox.net, hawk@kernel.org, john.fastabend@gmail.com
 Cc: bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
  netdev@vger.kernel.org, Jason Xing <kernelxing@tencent.com>
-Date: Sun, 20 Jul 2025 17:11:19 +0800
-Message-Id: <20250720091123.474-2-kerneljasonxing@gmail.com>
+Date: Sun, 20 Jul 2025 17:11:20 +0800
+Message-Id: <20250720091123.474-3-kerneljasonxing@gmail.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20250720091123.474-1-kerneljasonxing@gmail.com>
 References: <20250720091123.474-1-kerneljasonxing@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1753002697; x=1753607497; darn=lists.osuosl.org;
+ d=gmail.com; s=20230601; t=1753002702; x=1753607502; darn=lists.osuosl.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Rt9sbSI84k+hriqQ4Yv6ukeqAyVbcIdSlA7NkaxNd1E=;
- b=ULVlgzfFbO+4x9K1/2Lw+7RU26jlLvR9yAbJnn8Cksf5pDh5aQYfAwb1E+as4h6Tsb
- kxENgw9NXetEOmEVhISU1RXRKEDr8d+ugGwOKx0I3RYu2Id79hTtr+j8YpedO/6u6vJo
- DPCht43Fu+GxMUCyDElNiU5YZkzwwylUx/SpqAq/e3tcfxTS/sLq6Bsv4kzKrJO2czp9
- sSWuTDHguDI4mvsFImSAs4oQYCMiSzcVRl2GYGlstnDKZvKDp1SnoLJiMBqJ7kB8ENo3
- AvFLtnfvstRgGqVA8NmWQI3VqBYzeK1uTW2JdyT0yL8+JyTU40+AgAbGyRBH5JkRaeqG
- CoaA==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=AqFKurrhgXKGO68xSd3MOtKTSUiUpTZQiZZDyPjY9jc=;
+ b=eOy1zjgloz7lZobgCaDlT9i7fS/CJbZV88u1kuCXUrcODxHncFqH9d56YsH736mRZW
+ CP+RYrvbLZqmti9bYEvKwMdTDhhtwCbYBfzDLb/eSKxPu3a4spOs7VHC0DAM44sfs86Z
+ jISCMMGigPoQxJOVnK+xbNsgyZbYiosTLqXWB7Blt99t3j3BAoaL93sQ8+94iKMqoeeN
+ hBrI32NZRvztvrwRpvXIUs+Lg+xuOrjczorv5UHBi9QbGLyA7PTI/T5CeJlmF+RrnIrh
+ Cj97FX+u+P1YfkKVdszf2WFW1UyeQ8Ki+Em6hqgVyibszzo109+fBbDJ4BUEsgHzOXow
+ ZFKw==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=ULVlgzfF
-Subject: [Intel-wired-lan] [PATCH net-next 1/5] ixgbe: xsk: remove budget
- from ixgbe_clean_xdp_tx_irq
+ header.a=rsa-sha256 header.s=20230601 header.b=eOy1zjgl
+Subject: [Intel-wired-lan] [PATCH net-next 2/5] ixgbe: xsk: resolve the
+ underflow of budget in ixgbe_xmit_zc
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -137,55 +137,57 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Jason Xing <kernelxing@tencent.com>
 
-Since 'budget' parameter in ixgbe_clean_xdp_tx_irq() takes no effect,
-the patch removes it. No functional change here.
+Resolve the budget underflow which leads to returning true in ixgbe_xmit_zc
+even when the budget of descs are thoroughly consumed.
 
+Before this patch, when the budget is decreased to zero and finishes
+sending the last allowed desc in ixgbe_xmit_zc, it will always turn back
+and enter into the while() statement to see if it should keep processing
+packets, but in the meantime it unexpectedly decreases the value again to
+'unsigned int (0--)', namely, UINT_MAX. Finally, the ixgbe_xmit_zc returns
+true, showing 'we complete cleaning the budget'. That also means
+'clean_complete = true' in ixgbe_poll.
+
+The true theory behind this is if that budget number of descs are consumed,
+it implies that we might have more descs to be done. So we should return
+false in ixgbe_xmit_zc to tell napi poll to find another chance to start
+polling to handle the rest of descs. On the contrary, returning true here
+means job done and we know we finish all the possible descs this time and
+we don't intend to start a new napi poll.
+
+It is apparently against our expectations. Please also see how
+ixgbe_clean_tx_irq() handles the problem: it uses do..while() statement
+to make sure the budget can be decreased to zero at most and the underflow
+never happens.
+
+Fixes: 8221c5eba8c1 ("ixgbe: add AF_XDP zero-copy Tx support")
 Signed-off-by: Jason Xing <kernelxing@tencent.com>
 ---
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c        | 2 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h | 2 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c         | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 6122a0abb41f..a59fd8f74b5e 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -3591,7 +3591,7 @@ int ixgbe_poll(struct napi_struct *napi, int budget)
- 
- 	ixgbe_for_each_ring(ring, q_vector->tx) {
- 		bool wd = ring->xsk_pool ?
--			  ixgbe_clean_xdp_tx_irq(q_vector, ring, budget) :
-+			  ixgbe_clean_xdp_tx_irq(q_vector, ring) :
- 			  ixgbe_clean_tx_irq(q_vector, ring, budget);
- 
- 		if (!wd)
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h
-index 78deea5ec536..788722fe527a 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h
-@@ -42,7 +42,7 @@ int ixgbe_clean_rx_irq_zc(struct ixgbe_q_vector *q_vector,
- 			  const int budget);
- void ixgbe_xsk_clean_rx_ring(struct ixgbe_ring *rx_ring);
- bool ixgbe_clean_xdp_tx_irq(struct ixgbe_q_vector *q_vector,
--			    struct ixgbe_ring *tx_ring, int napi_budget);
-+			    struct ixgbe_ring *tx_ring);
- int ixgbe_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags);
- void ixgbe_xsk_clean_tx_ring(struct ixgbe_ring *tx_ring);
- 
 diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-index ac58964b2f08..0ade15058d98 100644
+index 0ade15058d98..a463c5ac9c7c 100644
 --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
 +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-@@ -454,7 +454,7 @@ static void ixgbe_clean_xdp_tx_buffer(struct ixgbe_ring *tx_ring,
- }
+@@ -398,7 +398,7 @@ static bool ixgbe_xmit_zc(struct ixgbe_ring *xdp_ring, unsigned int budget)
+ 	dma_addr_t dma;
+ 	u32 cmd_type;
  
- bool ixgbe_clean_xdp_tx_irq(struct ixgbe_q_vector *q_vector,
--			    struct ixgbe_ring *tx_ring, int napi_budget)
-+			    struct ixgbe_ring *tx_ring)
- {
- 	u16 ntc = tx_ring->next_to_clean, ntu = tx_ring->next_to_use;
- 	unsigned int total_packets = 0, total_bytes = 0;
+-	while (budget-- > 0) {
++	while (likely(budget)) {
+ 		if (unlikely(!ixgbe_desc_unused(xdp_ring))) {
+ 			work_done = false;
+ 			break;
+@@ -433,6 +433,8 @@ static bool ixgbe_xmit_zc(struct ixgbe_ring *xdp_ring, unsigned int budget)
+ 		xdp_ring->next_to_use++;
+ 		if (xdp_ring->next_to_use == xdp_ring->count)
+ 			xdp_ring->next_to_use = 0;
++
++		budget--;
+ 	}
+ 
+ 	if (tx_desc) {
 -- 
 2.41.3
 
