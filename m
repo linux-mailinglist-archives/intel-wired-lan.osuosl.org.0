@@ -2,87 +2,88 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2CFB5B0B47B
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 20 Jul 2025 11:11:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0C9A2B0B47D
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 20 Jul 2025 11:11:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 97B6261070;
-	Sun, 20 Jul 2025 09:11:35 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6679F611A1;
+	Sun, 20 Jul 2025 09:11:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Hj5pV9HxHlJj; Sun, 20 Jul 2025 09:11:35 +0000 (UTC)
+ id ZzqFz_HgI8AI; Sun, 20 Jul 2025 09:11:39 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 20A596108C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CF7A361499
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1753002695;
-	bh=iWrXKbM+G34xoKVnK1eplahDGaVhKpTnihCDqzU7Q9c=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=k+2wHgHNlCjgOum+BKFZ5vUXGjEMvm8hxPrXp5e0c+0t4EMPZPAg+Lbb4NdT+qaiy
-	 ww2ER7/1qkV+6j+dltDKRgERN/qPJUxW1/VYUB7EIybcSHN4J5M8zojF2a11DXu4x9
-	 Hzzce1c2qc/SsK6UEMXcXZqoGjvL8uRQSMjFmcTu4P19a4O7lDYguW0wbNXyBqelS2
-	 po1mjCQbQgR+Go/i0v9dGl49EijGZEBapmvL4B+XSkSg3trdN1iqUszvG9CmoBTNXx
-	 9w33A6bP6RTfh6is+xBvX2sKz+B21Ob6/D5UYPuKd3czA85P6Lg/aYVhlwOQBZTHUt
-	 hWOQraV8PkC4g==
+	s=default; t=1753002699;
+	bh=Rt9sbSI84k+hriqQ4Yv6ukeqAyVbcIdSlA7NkaxNd1E=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=JoLhMZb2Z/ofdip0FiFaxhib+JH0ZSLIWhBuDCCtNfpNCJwe9quqSjepcP23bnoSR
+	 +TbktiEFw4pjsqjQ7U5EFNIw9nsfQ0EXoV+eRl+3MlsufemBSv5vRtH/u6dPPh9Nop
+	 RppJTbFdoI7rBoQL+hl0IsVQZMMSY13whuUYVx+9FrARuMcEb9R9r64TwkYLLubUOd
+	 5PUuhwBhpglRMWOWRz+cPWxlj/sl9afxy7wpRL+mptmh9lPh9p0L8WdF/EEh5MMGpb
+	 42t80uv1NV6Nr4zHIvHuFrrzJdweA8ftpKa/8l2xGHe3eDSFeHCGtBte1qJpKd2ipk
+	 DkDLmsyyosYEw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 20A596108C;
-	Sun, 20 Jul 2025 09:11:35 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CF7A361499;
+	Sun, 20 Jul 2025 09:11:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id C78C7117
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Jul 2025 09:11:32 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 46A69DA
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Jul 2025 09:11:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B88E484572
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Jul 2025 09:11:32 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3820D81F0C
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Jul 2025 09:11:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sYa1NuirvdHv for <intel-wired-lan@lists.osuosl.org>;
- Sun, 20 Jul 2025 09:11:32 +0000 (UTC)
+ id ShuKDE3uRjvF for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 20 Jul 2025 09:11:37 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::429; helo=mail-pf1-x429.google.com;
+ client-ip=2607:f8b0:4864:20::42f; helo=mail-pf1-x42f.google.com;
  envelope-from=kerneljasonxing@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 32B7281ED9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 32B7281ED9
-Received: from mail-pf1-x429.google.com (mail-pf1-x429.google.com
- [IPv6:2607:f8b0:4864:20::429])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 32B7281ED9
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Jul 2025 09:11:32 +0000 (UTC)
-Received: by mail-pf1-x429.google.com with SMTP id
- d2e1a72fcca58-74ce477af25so2178181b3a.3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Jul 2025 02:11:32 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 9C5DE81ED9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9C5DE81ED9
+Received: from mail-pf1-x42f.google.com (mail-pf1-x42f.google.com
+ [IPv6:2607:f8b0:4864:20::42f])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 9C5DE81ED9
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Jul 2025 09:11:37 +0000 (UTC)
+Received: by mail-pf1-x42f.google.com with SMTP id
+ d2e1a72fcca58-74b56b1d301so2246076b3a.1
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Jul 2025 02:11:37 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753002691; x=1753607491;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=iWrXKbM+G34xoKVnK1eplahDGaVhKpTnihCDqzU7Q9c=;
- b=v2qzW0soyv9+iNeTSrMCCnPD1DBgwuyS8No5Kvk2LeP+CGXQwc0qM/uQKoZhjjfXme
- YbfGeoCcOnY1tRfbc0MX769hqlACnIFO/4ThPiyLiqQxL7tlD4JUjPYQGDwjXajxdPGb
- IYdLk5EKfE/psmAzz6hLaOY45vdDQn1I5hnu95TbEejePz6PPGTtsqIubtEG6lwdoBX4
- zxhIT0EyCVKUn1enHq08jyEPYBTJ6mINN/2TJxkEkQbVCi8w9m4z2NrrdONSidpzXc9h
- JrqjrmjOCGSyhXoXo2Mu+vKSj9zMFL+wlCTaA5yCKrWAzBBlpqYXhSvYCA7BgKouDBiT
- 3Shw==
+ d=1e100.net; s=20230601; t=1753002697; x=1753607497;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Rt9sbSI84k+hriqQ4Yv6ukeqAyVbcIdSlA7NkaxNd1E=;
+ b=iwaZI+bSzWTCK7Zk/9ldt9tc3u6XBRyoagL5heFbJmNtapW6EfCSN1tUwCPDhscCxr
+ 066qqojb/90YIG5hunhiZV1bVULwybNMNhAJ1rhcHVx7EEUBp2X9TApzP2KCQOsNIU1G
+ laIpWkizSRphgLeKWfKJrACQCXYkK2J2q1m8gYf0hk3tPf7nshEZqX0EwfFt38zqMbmt
+ bxknWLWBoGdlAFDHE8K01u6FDmj69MESy+Ngc5fWGjMU4vYHlw4VRg0GF8OehJlr/YdI
+ 2mLHV8RS7XXEc8LKfQs5bwqL4A2EP5LCWYMas5GDLF10D/0zJP7UvpGOqfqiFk1MNCpb
+ BiOg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVIZYujrA27TY1S6uw/3DUHfeSPl4fkC2N8VRh7K/DfbeRl2oIPm5ORXXi9EszTK64OCowiY1f1Uroq5PY37W8=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yw+6b7FZ9B8BNg4Qg0YhQkV/2f9fUS4U8NbpPCF72PZNBckPIfr
- zFUq4BZHi/L1EQcFhvLjgnZ8M/OYmQ/EyVJ3MHYZquu992+It3wqZxXl
-X-Gm-Gg: ASbGncueSg9NflFg70MIHU7QedZmeI+a50trKpXv5DBa3FCPt6E4cUVKuOc/cwJsJDG
- w528cpdxZZPh3l0M8lXfwm55CR2B+uz8YEUoIZtKDNCNXoQANAxBS8X51BHClnW7poJ5ru7B/ce
- p851KNWWwnPHwJqgX80hK9de6d71EAa3+4baXSbZJ0WdNaqWXCd9O5GpnmH4MUZ+TXB/Dmvj8ep
- dlXkpDTD3S6P2Ha3vKgAqPJIghWgHA9eZBqvmK3ytNq2Bmx3tuwL8uR3m5KZ0Mnq2c3+x/0Asdt
- QIraINq4EUP6QU4u+c/koERTnBobWeuZGmnvjxB1rTBSr+kolbSbk2K13d/eLlaJxeFIgxw0U9L
- 7KXV0dBSQaNLrZQ+7VtNt7utyFk0Wcyhqw6fXqToH88WvaercMdoOtl0lTtA=
-X-Google-Smtp-Source: AGHT+IFxnWK1x+9KvMP+PbmzAvTkrGWlhYtcdtm8EXw47+H9FngwkBEW6Wbvc53qUZM+VZOp33M0dw==
-X-Received: by 2002:a05:6a20:9389:b0:234:3932:2958 with SMTP id
- adf61e73a8af0-2381245729dmr24494413637.20.1753002691445; 
- Sun, 20 Jul 2025 02:11:31 -0700 (PDT)
+ AJvYcCWLTH2GfIPBtbt4Y+EOj2ATAoUJqcaw/B8+2shndiaj81CycGlGm7r3oicmwj+YGwY9VtNbubLd/HVNokhop94=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YzFRoH6IgK05gAySMQLpaJ5gWIXpDIynkb+ySqJPXqJbj+HXUii
+ VlvQRW5PkK9KodT+yYXzubKs6Vy0W3Pj4m7Ngp/vQ437E9jIZBSyZIpp
+X-Gm-Gg: ASbGncscyMC9uVd7WzWZcRcnzn3iZXtHCf+GFqwDDyEj1OTu75KgWIrf+u8bsNeuZ21
+ 8g60TKKeSobJ6IiFbXMT8luRcXy5/4Rscqppig1OzvTGYHTLYdN/8fWIc8GRpPSdORYt15ImxWa
+ 84ctTsEEF4QQ49z9E9l4eZGqBgPcot6kpGkXRoZgEA1AJdSboOc7OMQm8ZpW6XFNH6cEtq1RM5R
+ xgRMCkwep7L5sTS/klnMh0dDIRvVwAIzPZOcGz5Wpv45+F0KlTXGmE81XSV/V02g8QNY0IzJaYi
+ L5G+FQ1pFL1L62O3jeQ+zKWJtnUBL+y3jqJZLfMyTRSQ5fSLS5LmIY53lewHbBJDe3FpJWsB5x0
+ 9BtkiVpGe3KedBuy4awiKvT3EB8RMBn64vZJql2v4x3AwWkdB6oTRDbW234c=
+X-Google-Smtp-Source: AGHT+IE1nwxPPLoq731AChr7kpARPbWq+izW7FIXX6nSxuCyYB+jHt/5I11t6TB2f0G51tM6hDiVXQ==
+X-Received: by 2002:a05:6a00:1795:b0:74e:aba0:6dfd with SMTP id
+ d2e1a72fcca58-75723165609mr19294085b3a.10.1753002696663; 
+ Sun, 20 Jul 2025 02:11:36 -0700 (PDT)
 Received: from KERNELXING-MC1.tencent.com ([111.201.24.59])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-759cb76d53fsm3902585b3a.105.2025.07.20.02.11.26
+ d2e1a72fcca58-759cb76d53fsm3902585b3a.105.2025.07.20.02.11.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 20 Jul 2025 02:11:31 -0700 (PDT)
+ Sun, 20 Jul 2025 02:11:36 -0700 (PDT)
 From: Jason Xing <kerneljasonxing@gmail.com>
 To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
  andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
@@ -92,30 +93,33 @@ To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
  daniel@iogearbox.net, hawk@kernel.org, john.fastabend@gmail.com
 Cc: bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
  netdev@vger.kernel.org, Jason Xing <kernelxing@tencent.com>
-Date: Sun, 20 Jul 2025 17:11:18 +0800
-Message-Id: <20250720091123.474-1-kerneljasonxing@gmail.com>
+Date: Sun, 20 Jul 2025 17:11:19 +0800
+Message-Id: <20250720091123.474-2-kerneljasonxing@gmail.com>
 X-Mailer: git-send-email 2.33.0
+In-Reply-To: <20250720091123.474-1-kerneljasonxing@gmail.com>
+References: <20250720091123.474-1-kerneljasonxing@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1753002691; x=1753607491; darn=lists.osuosl.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=iWrXKbM+G34xoKVnK1eplahDGaVhKpTnihCDqzU7Q9c=;
- b=NAVIfwOQFqHnLGVcCavVuyIus98UjUDJoVL41j2kW9z/l+qq4emsNhRZQnbPyGpGOV
- 9uWflsS5udc+TH8kj39seWz2x+TM9Z6ci65tNb1ce5ke0ijt4hsjnDVsUbvyTKpPKsEE
- EZcSUmq42Yhc7x8yIWJZZSRJ2hQL18yQeDcvLJz2zabFytTH/V4t2RzDHjUUNhqwtVIU
- OmO54KrAw+RgUE0yB9qSENykRPo9M0NffHL52MSZvLC8kwAy4Wj+tzxMUBRMdVU2h+5D
- jwbeYCgU/GO1u4MRd1QUXqZbmaC+C50md9xpWpy/WVq3yCYEWy/7iOccRUxpr8OTQNzJ
- 4oQA==
+ d=gmail.com; s=20230601; t=1753002697; x=1753607497; darn=lists.osuosl.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Rt9sbSI84k+hriqQ4Yv6ukeqAyVbcIdSlA7NkaxNd1E=;
+ b=ULVlgzfFbO+4x9K1/2Lw+7RU26jlLvR9yAbJnn8Cksf5pDh5aQYfAwb1E+as4h6Tsb
+ kxENgw9NXetEOmEVhISU1RXRKEDr8d+ugGwOKx0I3RYu2Id79hTtr+j8YpedO/6u6vJo
+ DPCht43Fu+GxMUCyDElNiU5YZkzwwylUx/SpqAq/e3tcfxTS/sLq6Bsv4kzKrJO2czp9
+ sSWuTDHguDI4mvsFImSAs4oQYCMiSzcVRl2GYGlstnDKZvKDp1SnoLJiMBqJ7kB8ENo3
+ AvFLtnfvstRgGqVA8NmWQI3VqBYzeK1uTW2JdyT0yL8+JyTU40+AgAbGyRBH5JkRaeqG
+ CoaA==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=NAVIfwOQ
-Subject: [Intel-wired-lan] [PATCH net-next 0/5] ixgbe: xsk: a couple of
- changes for zerocopy
+ header.a=rsa-sha256 header.s=20230601 header.b=ULVlgzfF
+Subject: [Intel-wired-lan] [PATCH net-next 1/5] ixgbe: xsk: remove budget
+ from ixgbe_clean_xdp_tx_irq
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -133,21 +137,55 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Jason Xing <kernelxing@tencent.com>
 
-The series mostly follows the development of i40e/ice to improve the
-performance for zerocopy mode in the tx path.
+Since 'budget' parameter in ixgbe_clean_xdp_tx_irq() takes no effect,
+the patch removes it. No functional change here.
 
-Jason Xing (5):
-  ixgbe: xsk: remove budget from ixgbe_clean_xdp_tx_irq
-  ixgbe: xsk: resolve the underflow of budget in ixgbe_xmit_zc
-  ixgbe: xsk: use ixgbe_desc_unused as the budget in ixgbe_xmit_zc
-  ixgbe: xsk: support batched xsk Tx interfaces to increase performance
-  ixgbe: xsk: add TX multi-buffer support
+Signed-off-by: Jason Xing <kernelxing@tencent.com>
+---
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c        | 2 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h | 2 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c         | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |   6 +-
- .../ethernet/intel/ixgbe/ixgbe_txrx_common.h  |   2 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c  | 121 ++++++++++++------
- 3 files changed, 86 insertions(+), 43 deletions(-)
-
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index 6122a0abb41f..a59fd8f74b5e 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -3591,7 +3591,7 @@ int ixgbe_poll(struct napi_struct *napi, int budget)
+ 
+ 	ixgbe_for_each_ring(ring, q_vector->tx) {
+ 		bool wd = ring->xsk_pool ?
+-			  ixgbe_clean_xdp_tx_irq(q_vector, ring, budget) :
++			  ixgbe_clean_xdp_tx_irq(q_vector, ring) :
+ 			  ixgbe_clean_tx_irq(q_vector, ring, budget);
+ 
+ 		if (!wd)
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h
+index 78deea5ec536..788722fe527a 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h
+@@ -42,7 +42,7 @@ int ixgbe_clean_rx_irq_zc(struct ixgbe_q_vector *q_vector,
+ 			  const int budget);
+ void ixgbe_xsk_clean_rx_ring(struct ixgbe_ring *rx_ring);
+ bool ixgbe_clean_xdp_tx_irq(struct ixgbe_q_vector *q_vector,
+-			    struct ixgbe_ring *tx_ring, int napi_budget);
++			    struct ixgbe_ring *tx_ring);
+ int ixgbe_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags);
+ void ixgbe_xsk_clean_tx_ring(struct ixgbe_ring *tx_ring);
+ 
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+index ac58964b2f08..0ade15058d98 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+@@ -454,7 +454,7 @@ static void ixgbe_clean_xdp_tx_buffer(struct ixgbe_ring *tx_ring,
+ }
+ 
+ bool ixgbe_clean_xdp_tx_irq(struct ixgbe_q_vector *q_vector,
+-			    struct ixgbe_ring *tx_ring, int napi_budget)
++			    struct ixgbe_ring *tx_ring)
+ {
+ 	u16 ntc = tx_ring->next_to_clean, ntu = tx_ring->next_to_use;
+ 	unsigned int total_packets = 0, total_bytes = 0;
 -- 
 2.41.3
 
