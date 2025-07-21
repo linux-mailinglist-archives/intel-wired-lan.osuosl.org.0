@@ -1,143 +1,119 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB5E9B0B4FA
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 20 Jul 2025 12:47:55 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 675DBB0BA4C
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Jul 2025 04:19:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 85E5D41300;
-	Sun, 20 Jul 2025 10:47:43 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xGeU9iu2wLIm; Sun, 20 Jul 2025 10:47:43 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0B782410F8
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1753008463;
-	bh=jXppDYkB/CLtGMSTjlPO5sKSjzJTwa5EEMJH+XUJYU8=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=EGygo9qO2rATJVsSba9KoNmt8F9kV80oeMqg3imghLLccYWiehwgMCFB5MaQhALhN
-	 ZeJ3NoVt8dumoOiGtbMy2jAlmjbD6ye/dtfWQrpCQFAkHSJ61xucOKeY6bhjETpfCk
-	 1a88971vTu6Yjad/63lSIh+eW5P/n9BMkcpQUp8wHMIYIhEqG5bDI7nsb2Qn+b4jyc
-	 aaYaQNjXNvTU+60UG3aSZKmpUjS05s8QNe2OfMzrRmu8ao2v+RBMQKKV/0mz9JL9Hu
-	 x9dfGFDzIKvtuZ/211ljCyWIJvDiANVaQ1wIEFny/jDVEexXze3Hg6hu4ARRWQH046
-	 nn9ClmtKjJseA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0B782410F8;
-	Sun, 20 Jul 2025 10:47:43 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 9AA7A1F7
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Jul 2025 10:47:41 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8BCF6841F3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Jul 2025 10:47:41 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 28BB0842AC;
+	Mon, 21 Jul 2025 02:19:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id s4s6ov5g20g3 for <intel-wired-lan@lists.osuosl.org>;
- Sun, 20 Jul 2025 10:47:41 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::32a; helo=mail-wm1-x32a.google.com;
- envelope-from=ttoukan.linux@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org D5467841F1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D5467841F1
-Received: from mail-wm1-x32a.google.com (mail-wm1-x32a.google.com
- [IPv6:2a00:1450:4864:20::32a])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D5467841F1
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Jul 2025 10:47:40 +0000 (UTC)
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-4560d176f97so38152635e9.0
- for <intel-wired-lan@lists.osuosl.org>; Sun, 20 Jul 2025 03:47:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753008459; x=1753613259;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=jXppDYkB/CLtGMSTjlPO5sKSjzJTwa5EEMJH+XUJYU8=;
- b=tUqKpzYum/1DEFovsUVRMQKZeK6JVHRk65y7rAQdrlKwTj0qsta2NhqC8e/nZWVcya
- TcTjctpRRLqsQSC6CdWwnbuoiyKEx2lFAq0hbmFw7MzQRXt0krAzFWqNIbqQ4pjL1BS6
- SLDzuFVeMOhNJcR4eMZBDxve3lE7V71Vjy/PsKhB14OmWfzObC8AiEsvO4/IXLA/hX8D
- tg0SzZ114neX2rx5+u9HotV5aQZJDefcSWTlydSsnb/d9AiI5IhLpwH43w7ro9nPbldm
- /pA1knQDNfdKvBkKK5Ig6xTjudcNKnQBZdrv5PU7GQP57UrIKr7WFcT4mRvyyvCtx4+i
- 9C8w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWj/4TMSj+NjY89/7h9pgprCFGXaBS+IY638X3JDKeAHm7fv9qfEDD+gcRc8zl9wS8n7ZquusVmr7cIuaN20gg=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yy27UkPw81g63+enA7G0l4ht4xwLrkBgeyryj4dV8Oq3OAg4rcw
- gmm5i3fAxW9CcMxQlmJWxUsXjWhoEIXpnQ1Vml0dtfrIMWrxVc0c9UtH
-X-Gm-Gg: ASbGncuA474O/rlZlFJ4kmiAmUs3lneE70YJxFqD9tZ6CjaQvyPN8cLeBasZEwVBv9/
- VFmR9MbH+xXHpYs5C9LnZWYEpjs3RYvIWQLVWC37u63NhBciFc2O5AB3sVGWGpLXYNvy/vHakYW
- VmeJeCjWzmZsceNMwAz7+fY5DjL2r7VuoMXfFg8V6nxfq5lAkNAEJjIeqLpAnUyU8hbMeIOYaTJ
- C6qyQHUPWEUYeJD40EGV+ibGlQ7IdlcWx3x3JvaaQ9lZAS84gGXQY4kFcch+OmMbhOslUgCzoPp
- rJkev/5cUwR1gLoC8SVowsCC5v4FdXkk3T2fe+Ak6JV8zGl0ru3GAY95cxEZY0fVldn0Pac0oRe
- pqc6fM3vkdqC02wLm5oXYkihH495fZMGOnej8XgeT6FOX4vZaMSfWa0YlIA==
-X-Google-Smtp-Source: AGHT+IGFX2jZ4V6/iEd8Ara4dWX6b93jNPyhb58hgpz2fHfo6DiHF+DpKuDmcFkoxMPT94DFoU2yDw==
-X-Received: by 2002:a05:600c:4ed3:b0:456:1a69:94fb with SMTP id
- 5b1f17b1804b1-4562e33d914mr159581915e9.13.1753008458288; 
- Sun, 20 Jul 2025 03:47:38 -0700 (PDT)
-Received: from [172.27.57.153] ([193.47.165.251])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b61ca486edsm7329869f8f.56.2025.07.20.03.47.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 20 Jul 2025 03:47:37 -0700 (PDT)
-Message-ID: <8933092f-c178-4207-acce-107c471d606e@gmail.com>
-Date: Sun, 20 Jul 2025 13:47:33 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Jakub Kicinski <kuba@kernel.org>, Tariq Toukan <tariqt@nvidia.com>
-Cc: Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Jiri Pirko <jiri@resnulli.us>,
- Jiri Pirko <jiri@nvidia.com>, Saeed Mahameed <saeed@kernel.org>,
- Gal Pressman <gal@nvidia.com>, Leon Romanovsky <leon@kernel.org>,
- Shahar Shitrit <shshitrit@nvidia.com>,
- Donald Hunter <donald.hunter@gmail.com>, Jonathan Corbet <corbet@lwn.net>,
- Brett Creeley <brett.creeley@amd.com>,
- Michael Chan <michael.chan@broadcom.com>,
- Pavan Chebbi <pavan.chebbi@broadcom.com>, Cai Huoqing
- <cai.huoqing@linux.dev>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Sunil Goutham <sgoutham@marvell.com>, Linu Cherian <lcherian@marvell.com>,
- Geetha sowjanya <gakula@marvell.com>, Jerin Jacob <jerinj@marvell.com>,
- hariprasad <hkelam@marvell.com>, Subbaraya Sundeep <sbhatta@marvell.com>,
- Saeed Mahameed <saeedm@nvidia.com>, Mark Bloch <mbloch@nvidia.com>,
- Ido Schimmel <idosch@nvidia.com>, Petr Machata <petrm@nvidia.com>,
- Manish Chopra <manishc@marvell.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-rdma@vger.kernel.org
-References: <1752768442-264413-1-git-send-email-tariqt@nvidia.com>
- <1752768442-264413-5-git-send-email-tariqt@nvidia.com>
- <20250718175136.265a64aa@kernel.org>
-Content-Language: en-US
-From: Tariq Toukan <ttoukan.linux@gmail.com>
-In-Reply-To: <20250718175136.265a64aa@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1753008459; x=1753613259; darn=lists.osuosl.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=jXppDYkB/CLtGMSTjlPO5sKSjzJTwa5EEMJH+XUJYU8=;
- b=AuUTnFV3KOttD3glS8Px49qeqfBQUsKQiGqwgjFnheOztRUTraaRxkHNLLcNBFxsmz
- g5nlWullf1aS1qe4NVtrYYlie6vq5zAuqWdSaPeMeD23nltorAERDLflRdjL2kFPowCI
- rFPKwi1Ljfr/9HgNkWde6daPYhgZ8bpQ1KVXpvMRK8tNaG2kOdVAhG1I+uDssIyb0kyG
- HXMXE7aFFZ3kJW6dL/DukrXRlN685aZQyiNfm38KuiiRGQLwKgw6r9xY1w1fZH65pc9i
- FhV1tH9k+4yErNrvIPEOS+haSUtKXhOeyN3embh+W4IPqhlORgzD467pzw/DETQ+R8IV
- SsiA==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=AuUTnFV3
-Subject: Re: [Intel-wired-lan] [PATCH net-next 4/5] devlink: Make health
- reporter grace period delay configurable
+ id RvM8pQBuu3nH; Mon, 21 Jul 2025 02:19:10 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2958F842C2
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1753064350;
+	bh=1/kIG9TrjmROALwhsmc6Z2cpkes2LxzDbMcoyPKDtO0=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=DcYfNmHqyx711I0J9unD9GtOJkAbWaldWeZLxCnmL2c7EugMnXvG7BUS3vyHJnO8T
+	 B9r0vg/EXoaq2MFnkDvyN9clFnl4wGzsh4IHlmatGP9HVVuiMwO4Pc0x+Ezwr9gg5k
+	 Kb5npVbssmoixrQ1Cu6s5cX+eZxaO/uxni3zKr3bjQbYUZLb9XjXcKcQaU/jT0xBTF
+	 RWnio/OrDnQ3OxWejZCl9B/XuPiHo3ImWjLbghQ69JvGDDbWZ7jOWonc+b46MfsEui
+	 7hN1BtiZAgpYTEfMKWt7bb9LwWDLWW0tZMHDKJrbzVevxYeMH2M6B/cYF6aKwGU4r6
+	 RDPN3irpXiYog==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2958F842C2;
+	Mon, 21 Jul 2025 02:19:10 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 60DB2D7F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jul 2025 02:19:06 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 52ED940B7B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jul 2025 02:19:06 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ViuVemInxP6G for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 21 Jul 2025 02:19:05 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=166.125.252.92;
+ helo=invmail4.hynix.com; envelope-from=byungchul@sk.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 0AB3A40B6D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0AB3A40B6D
+Received: from invmail4.hynix.com (exvmail4.hynix.com [166.125.252.92])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0AB3A40B6D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jul 2025 02:19:04 +0000 (UTC)
+X-AuditID: a67dfc5b-669ff7000002311f-22-687da385c1a5
+From: Byungchul Park <byungchul@sk.com>
+To: willy@infradead.org,
+	netdev@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org, linux-mm@kvack.org, kernel_team@skhynix.com,
+ almasrymina@google.com, ilias.apalodimas@linaro.org, harry.yoo@oracle.com,
+ akpm@linux-foundation.org, andrew+netdev@lunn.ch, asml.silence@gmail.com,
+ toke@redhat.com, david@redhat.com, Liam.Howlett@oracle.com, vbabka@suse.cz,
+ rppt@kernel.org, surenb@google.com, mhocko@suse.com,
+ linux-rdma@vger.kernel.org, bpf@vger.kernel.org, vishal.moola@gmail.com,
+ hannes@cmpxchg.org, ziy@nvidia.com, jackmanb@google.com, wei.fang@nxp.com,
+ shenwei.wang@nxp.com, xiaoning.wang@nxp.com, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ sgoutham@marvell.com, gakula@marvell.com, sbhatta@marvell.com,
+ hkelam@marvell.com, bbhushan2@marvell.com, tariqt@nvidia.com,
+ ast@kernel.org, daniel@iogearbox.net, hawk@kernel.org,
+ john.fastabend@gmail.com, sdf@fomichev.me, saeedm@nvidia.com,
+ leon@kernel.org, mbloch@nvidia.com, danishanwar@ti.com, rogerq@kernel.org,
+ nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com,
+ shayne.chen@mediatek.com, sean.wang@mediatek.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, aleksander.lobakin@intel.com,
+ horms@kernel.org, m-malladi@ti.com, krzysztof.kozlowski@linaro.org,
+ matthias.schiffer@ew.tq-group.com, robh@kernel.org, imx@lists.linux.dev,
+ intel-wired-lan@lists.osuosl.org, linux-arm-kernel@lists.infradead.org,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Date: Mon, 21 Jul 2025 11:18:23 +0900
+Message-Id: <20250721021835.63939-1-byungchul@sk.com>
+X-Mailer: git-send-email 2.17.1
+X-Brightmail-Tracker: H4sIAAAAAAAAAzWSfUxTZxSHfe97P0ql5toZveqMSTM1MZEPP+JxIUYNWV5dXKb8tWmijdzY
+ blBJEQQjsdMqAUdlc5vAykQLSCkKaYVWVrp5QUHcEFGwagWFzAArfiENpUDXbvO/J/nlnOec
+ 5CfDSolZItPqDot6nTpNxcpp+VjspTWnLXmahPPeeDDX17Fwb/wiA7bJHLj8zMVAj1WAX7sn
+ KTDXNiF4F3zCgb3Ah2G8rZ0Fy8UAhmBDEQ3mu0YaJuqnMPx1a5CDDmmGBpt9JwxUv6DBne/E
+ 0DqxAgbPdrBQZAxhKO0/xUL4cYiBluBLDk64aiho+buRg+4mEwM/TFVhcBqeRVxDfQzcbzaz
+ cP/kPQT9dWEGXkgRob/Gx4HJVoZA+s3KwgnjOvA3vuPg9Y9tGAZMW2C2JBtuVSyEwB0/gidV
+ vRSE3S4OuvqvMtBW76TgwfMghsC35SwUjp1F0FvaTMEf5Q0MVN55QEXuSIG+8DQF53oqWBgy
+ DiDoaR2k4edvTAjqPV4G3rgjL4cmzeyWbaTV/woT19NKRK5ZH1FkuHiWIl5PJ0Wulz3lSIU9
+ izhqVhOLe4Qihd4eTOy1BSyxv/2eI74+N0s6SkI0cVQeJ8OOUvT5si/lSalimjZb1Mdv3i/X
+ TDX5uAzPppzuMyc5AypdU4hiZAK/XqgaHWLe80/W2/8yy68SvN4gjvICPlEYH2ynC5Fchvk/
+ Y4UWRwkVDT7gtwqucIiLMs2vEILO0yjKCn6D8DJ4nftv6XLB1vA7jg4LfH6McMN283/bYuFG
+ jZcuRnMr0JxapNTqstPV2rT1cZpcnTYn7sChdDuKNKs6b3qPC73tTpEQL0OqWEUGnadRMurs
+ zNx0CQkyrFqgIO1HNUpFqjr3qKg/tE+flSZmSmipjFYtUqwNHElV8gfVh8WvRTFD1L9PKVnM
+ EgNKXN67ccLwcWBmkWt2emRvfrnDsjfZOW/OrjflLZZPvmoeS3k0ok/qNHV6ZvqPNzWycmne
+ w92u5O+My4bLejsWOxOokmRH4/YyJqvO/cWuoh1XinfO3z666vynO157PjPsj72gjMPWyaqV
+ r851+T/czP3S5UvSbeuTCuriPoo5NhSYq6IzNerE1Vifqf4H/jYm1FUDAAA=
+X-Brightmail-Tracker: H4sIAAAAAAAAAzWSe0hTcRzF+913w8FlSd2MjEZSRGbR69uDHvSHP4Kixx9BBbnq1sbUZFtT
+ A0ndKrJcT0NNaeJzTprMcquW1mZpb91KVpraouhh9tCkq9XaiP77HA6cc/44HKm4TMdxmnSD
+ qEtXpSoZGSXbtNKUeLQyR72gr3oOlDkaGOgarqDB/jMLagfcNPhtAtzs/ElAWX0zghGphwXn
+ iV4ShtvaGaisGCVBaiykoOypmYIfjjES3t4LsdDh/U2B3bkR+mveUeA57iLB9yMBQqc7GCg0
+ j5NQ0neUgfDLcRpuSUMs5LvrCPCV34/IT9dY6Gy20HBhrJoEV+5ApPBNNw2BG2UMBExdCPoa
+ wjS880ZaB+t6WbDYSxF4W20M5JsXweC1ERa+FrWR0G9ZC3+KjXDPOhlGHw4i6Kl+TkDY42bh
+ Sd8VGtocLgKevZZIGD1VzkDB59MInpfcIOBReSMNVQ+fEZEd26A7/IuA834rA2/M/Qj8vhAF
+ l/IsCBwtQRq+eczU2vXYN/iFxO5XVQhftb0g8PszfwgcbHlA4Oulr1hsdR7CTXVzcaXnA4EL
+ gn4SO+tPMNj5/RyLe7s9DO4oHqdwU9UR/L6pBG2O3yFbtU9M1RhFXdLqFJl6rLmXzWhZntV5
+ 0sTmopLEAjSRE/jFwkXbfTrKDD9bCAYlMsqx/EJhONROFSAZR/KPY4RbTcVE1JjErxPc4XE2
+ yhSfIEiuYyjKcn6JMCRdZ/+FzhDsjbfJM4izogn1KFaTbkxTaVKXzNdr1dnpmqz5ew+mOVHk
+ NjU5v8660Ugg2Yt4Dilj5BlUjlpBq4z67DQvEjhSGSvH7YfVCvk+VfZhUXdwt+5Qqqj3omkc
+ pZwi37BdTFHwB1QGUSuKGaLuv0twE+NyUcXdXY9nDRmC1EtlZkqAdUjihKUfdmoL7x5wKeJD
+ cZqpeIuta3elI+nsaG2pPSnxqad0Ums42fugbY0jRbNV2p8HA/FHrOE7N9O08/JbJsfUZvc7
+ Z4YCyaZlrUv9088Nr9qT99mwYoXBkmksuvNdW9XlnvMxK+9rw8mYuNc+0yklpVerFs4ldXrV
+ XyhXj/QyAwAA
+X-CFilter-Loop: Reflected
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=sk.com
+Subject: [Intel-wired-lan] [PATCH net-next v12 00/12] Split netmem from
+ struct page
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -153,27 +129,175 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Hi all,
+
+The MM subsystem is trying to reduce struct page to a single pointer.
+See the following link for your information:
+
+   https://kernelnewbies.org/MatthewWilcox/Memdescs/Path
+
+The first step towards that is splitting struct page by its individual
+users, as has already been done with folio and slab.  This patchset does
+that for page pool.
+
+Matthew Wilcox tried and stopped the same work, you can see in:
+
+   https://lore.kernel.org/linux-mm/20230111042214.907030-1-willy@infradead.org/
+
+I focused on removing the page pool members in struct page this time,
+not moving the allocation code of page pool from net to mm.  It can be
+done later if needed.
+
+The final patch that removes the page pool fields will be posted once
+all the conversions are completed.
+
+	Byungchul
+---
+Changes from v11:
+	1. Rebase on net-next/main as of Jul 21.
+	2. Change page_pool_page_is_pp() to check for const type of
+	   page.  For now that it's called along with every
+	   pp_page_to_nmdesc() call as Pavel suggested,
+	   page_pool_page_is_pp() should also cover const type of page.
+
+Changes from v10:
+	1. Introduce __netmem_to_nmdesc() and use it in
+	   __netmem_get_pp(). (feedbacked by Mina)
+	2. Fix a bug that fails on casting 'const page -> const
+	   netmem_desc', by using macros and _Generic. (feedbacked by
+	   test robot)
+	3. Add comment on pp_page_to_nmdesc() to ask for more attention
+	   before using the helper. (feedbacked by Mina)
+
+Changes from v9:
+	1. Remove the patch 'page_pool: access ->pp_magic through
+	   netmem_desc in page_pool_page_is_pp()' and decide to wait for
+	   Pavel's work of PageNetpp() to identify page type for page
+	   pool, that doesn't need to access ->pp_magic.
+	2. Rename page_to_nmdesc() to pp_page_to_nmdesc() and add
+	   DEBUG_NET_WARN_ON_ONCE(!page_pool_page_is_pp(page)) in it,
+	   just in case. (feedbacked by Pavel)
+	3. Apply just simple casting from page to netmem_desc for
+	   accessing ->pp and ->pp_ref_count, instead of full converting
+	   page to netmem_ref for network drivers e.g. mlx4, netdevsim,
+	   and mt76.
+	4. Expand the support for drivers to access ->pp and
+	   ->pp_ref_count to fec, octeontx2-pf, iavf, idpf, mlx5, ti,
+	   and xdp.
+	5. Squash each helper with its first user. (feedbacked by Mina)
+
+Changes from v8:
+	1. Rebase on net-next/main as of Jul 10.
+	2. Exclude non-controversial patches that have already been
+	   merged to net-next.
+	3. Re-add the patches that focus on removing accessing the page
+	   pool fields in struct page.
+	4. Add utility APIs e.g. casting, to use struct netmem_desc as
+	   descriptor, to support __netmem_get_pp() that has started to
+	   be used again e.g. by libeth.
+
+Changes from v7 (no actual updates):
+	1. Exclude "netmem: introduce struct netmem_desc mirroring
+	   struct page" that might be controversial.
+	2. Exclude "netmem: introduce a netmem API,
+	   virt_to_head_netmem()" since there are no users.
+
+Changes from v6 (no actual updates):
+	1. Rebase on net-next/main as of Jun 25.
+	2. Supplement a comment describing struct net_iov.
+	3. Exclude a controversial patch, "page_pool: access ->pp_magic
+	   through struct netmem_desc in page_pool_page_is_pp()".
+	4. Exclude "netmem: remove __netmem_get_pp()" since the API
+	   started to be used again by libeth.
+
+Changes from v5 (no actual updates):
+	1. Rebase on net-next/main as of Jun 20.
+	2. Add given 'Reviewed-by's and 'Acked-by's, thanks to all.
+	3. Add missing cc's.
+
+Changes from v4:
+	1. Add given 'Reviewed-by's, thanks to all.
+	2. Exclude potentially controversial patches.
+
+Changes from v3:
+	1. Relocates ->owner and ->type of net_iov out of netmem_desc
+	   and make them be net_iov specific.
+	2. Remove __force when casting struct page to struct netmem_desc.
+
+Changes from v2:
+	1. Introduce a netmem API, virt_to_head_netmem(), and use it
+	   when it's needed.
+	2. Introduce struct netmem_desc as a new struct and union'ed
+	   with the existing fields in struct net_iov.
+	3. Make page_pool_page_is_pp() access ->pp_magic through struct
+	   netmem_desc instead of struct page.
+	4. Move netmem alloc APIs from include/net/netmem.h to
+	   net/core/netmem_priv.h.
+	5. Apply trivial feedbacks, thanks to Mina, Pavel, and Toke.
+	6. Add given 'Reviewed-by's, thanks to Mina.
+
+Changes from v1:
+	1. Rebase on net-next's main as of May 26.
+	2. Check checkpatch.pl, feedbacked by SJ Park.
+	3. Add converting of page to netmem in mt76.
+	4. Revert 'mlx5: use netmem descriptor and APIs for page pool'
+	   since it's on-going by Tariq Toukan.  I will wait for his
+	   work to be done.
+	5. Revert 'page_pool: use netmem APIs to access page->pp_magic
+	   in page_pool_page_is_pp()' since we need more discussion.
+	6. Revert 'mm, netmem: remove the page pool members in struct
+	   page' since there are some prerequisite works to remove the
+	   page pool fields from struct page.  I can submit this patch
+	   separatedly later.
+	7. Cancel relocating a page pool member in struct page.
+	8. Modify static assert for offests and size of struct
+	   netmem_desc.
+
+Changes from rfc:
+	1. Rebase on net-next's main branch.
+	   https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/
+	2. Fix a build error reported by kernel test robot.
+	   https://lore.kernel.org/all/202505100932.uzAMBW1y-lkp@intel.com/
+	3. Add given 'Reviewed-by's, thanks to Mina and Ilias.
+	4. Do static_assert() on the size of struct netmem_desc instead
+	   of placing place-holder in struct page, feedbacked by
+	   Matthew.
+	5. Do struct_group_tagged(netmem_desc) on struct net_iov instead
+	   of wholly renaming it to strcut netmem_desc, feedbacked by
+	   Mina and Pavel.
+
+Byungchul Park (12):
+  netmem: introduce struct netmem_desc mirroring struct page
+  netmem: use netmem_desc instead of page to access ->pp in
+    __netmem_get_pp()
+  netmem, mlx4: access ->pp_ref_count through netmem_desc instead of
+    page
+  netdevsim: access ->pp through netmem_desc instead of page
+  mt76: access ->pp through netmem_desc instead of page
+  net: fec: access ->pp through netmem_desc instead of page
+  octeontx2-pf: access ->pp through netmem_desc instead of page
+  iavf: access ->pp through netmem_desc instead of page
+  idpf: access ->pp through netmem_desc instead of page
+  mlx5: access ->pp through netmem_desc instead of page
+  net: ti: icssg-prueth: access ->pp through netmem_desc instead of page
+  libeth: xdp: access ->pp through netmem_desc instead of page
+
+ drivers/net/ethernet/freescale/fec_main.c     |  10 +-
+ drivers/net/ethernet/intel/iavf/iavf_txrx.c   |   2 +-
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c   |   8 +-
+ .../marvell/octeontx2/nic/otx2_txrx.c         |   2 +-
+ drivers/net/ethernet/mellanox/mlx4/en_rx.c    |   4 +-
+ .../net/ethernet/mellanox/mlx5/core/en/xdp.c  |   3 +-
+ .../net/ethernet/ti/icssg/icssg_prueth_sr1.c  |   4 +-
+ drivers/net/netdevsim/netdev.c                |   6 +-
+ drivers/net/wireless/mediatek/mt76/mt76.h     |   3 +-
+ include/linux/mm.h                            |   4 +-
+ include/net/libeth/xdp.h                      |   2 +-
+ include/net/netmem.h                          | 153 +++++++++++++++---
+ 12 files changed, 161 insertions(+), 40 deletions(-)
 
 
-On 19/07/2025 3:51, Jakub Kicinski wrote:
-> On Thu, 17 Jul 2025 19:07:21 +0300 Tariq Toukan wrote:
->> diff --git a/include/uapi/linux/devlink.h b/include/uapi/linux/devlink.h
->> index e72bcc239afd..42a11b7e4a70 100644
->> --- a/include/uapi/linux/devlink.h
->> +++ b/include/uapi/linux/devlink.h
->> @@ -634,6 +634,8 @@ enum devlink_attr {
->>   
->>   	DEVLINK_ATTR_REGION_DIRECT,		/* flag */
->>   
->> +	DEVLINK_ATTR_HEALTH_REPORTER_GRACEFUL_PERIOD_DELAY,	/* u64 */
->> +
->>   	DEVLINK_ATTR_RATE_TC_BWS,		/* nested */
->>   	DEVLINK_ATTR_RATE_TC_INDEX,		/* u8 */
->>   	DEVLINK_ATTR_RATE_TC_BW,		/* u32 */
-> 
-> BTW the patch from Carolina to cut the TC attributes from the main enum
-> is higher prio that this.
-> 
-
-WIP. We'll send it soon.
+base-commit: 4701ee5044fb3992f1c910630a9673c2dc600ce5
+-- 
+2.17.1
 
