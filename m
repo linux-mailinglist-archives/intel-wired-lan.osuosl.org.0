@@ -1,120 +1,125 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A8A24B0BF95
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Jul 2025 11:03:50 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C216B0BFCA
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Jul 2025 11:16:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E6057427E7;
-	Mon, 21 Jul 2025 09:03:48 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D0D8140C8D;
+	Mon, 21 Jul 2025 09:16:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ccKIhRumWaaL; Mon, 21 Jul 2025 09:03:48 +0000 (UTC)
+ id sJTdmnXboaoB; Mon, 21 Jul 2025 09:16:22 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4387C427E4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 05E5940E3A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1753088628;
-	bh=eGz9tABlj+U/GQqGIPNZErlvt1NjJTBIq6a5O+QSzd0=;
+	s=default; t=1753089382;
+	bh=aWTCrJr+jkFbr7yY/GDDx9r5qnemW4sfX9ZnAt73ZW0=;
 	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=4TrZi01mCanSJJeIZLRCwkVZgVV2WeC0Svg1Pz1TV/CvmPZZvChB8Zh25LqjsRADh
-	 70H3KQPgg5cwcmoUWcuFkAkS1hcktt0U6GmLBE2CujC5s8EesbRECIt2F/aOYFbZj4
-	 aREpxs+GJUphlHA6jwEkIvLvzvMX9WZfaJ/Aq9Ujx7yla8stPMC9KNSEhTg5k0JCN/
-	 FSyOodESxGDo3C4th8AUWpWHT1P7LDrosiMq0KgNc1Dwy6cHsnqVWDGM3fvH/NtVs+
-	 9YR1tiODLvFh81theon4NZj4UYV0w8Ame/q9Mm+sE8cz+uxWp3UOaI14sKvG/M7FtQ
-	 u3a7mwdjOJxOA==
+	b=Td120iEl1vWFl3voP5ICxW4wd6Yj6vSp3D/BftsZStI95JT4dsrrXriCW28dqMGxz
+	 4u6SiKuQz1caOZ/TKCsyTvz2tzGnsJsAWgls3rp1B+liWzmBFNcCvfX9UG99R5MwgI
+	 CSMHbvAZq64Z5rYv5UklP/2LJVFX8DTO5L6/rDHp8Nl5VGZznk7TJhkieozDRZ8Uel
+	 V5A20zPeEnRCzqPCH/zHqf1/HZmBVbm3HG1oA/PlxYq0hAsSwXk+eqTfZtJMqS5GKT
+	 N4EQ+QJPjijSRKWVD4+0xI12IskpNgNjw3fzP4zKHeaMSG4TvZeu1ORtUxnOL/UV+C
+	 bfrvW5Da+ZfDw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4387C427E4;
-	Mon, 21 Jul 2025 09:03:48 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 05E5940E3A;
+	Mon, 21 Jul 2025 09:16:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 711881F7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jul 2025 09:03:46 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 38F7E127
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jul 2025 09:16:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 25EBC427D7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jul 2025 09:03:46 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3686E40E3A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jul 2025 09:16:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id fm2tzkkGbfHs for <intel-wired-lan@lists.osuosl.org>;
- Mon, 21 Jul 2025 09:03:45 +0000 (UTC)
+ id vSZunIbabXeW for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 21 Jul 2025 09:16:19 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::133; helo=mail-il1-x133.google.com;
+ client-ip=2607:f8b0:4864:20::135; helo=mail-il1-x135.google.com;
  envelope-from=kerneljasonxing@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 6C0F4427DA
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6C0F4427DA
-Received: from mail-il1-x133.google.com (mail-il1-x133.google.com
- [IPv6:2607:f8b0:4864:20::133])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 6C0F4427DA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jul 2025 09:03:45 +0000 (UTC)
-Received: by mail-il1-x133.google.com with SMTP id
- e9e14a558f8ab-3de252f75d7so41127445ab.3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jul 2025 02:03:45 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org E8CC040B9E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E8CC040B9E
+Received: from mail-il1-x135.google.com (mail-il1-x135.google.com
+ [IPv6:2607:f8b0:4864:20::135])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E8CC040B9E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jul 2025 09:16:18 +0000 (UTC)
+Received: by mail-il1-x135.google.com with SMTP id
+ e9e14a558f8ab-3dda399db09so54677675ab.3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Jul 2025 02:16:18 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753088624; x=1753693424;
+ d=1e100.net; s=20230601; t=1753089378; x=1753694178;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=eGz9tABlj+U/GQqGIPNZErlvt1NjJTBIq6a5O+QSzd0=;
- b=kuh7HrimU742e9ebATGtORF6SedK3CExOHzuoFu0bSV/cvlTuH5MBM8NDVgWA5CQi0
- SsSDntG05mWNBml76mlddlakwNYWF2+aFOL8YW0sEtRAsJO25v45aHlaZ7sZQJ+yO3Qp
- rgYjT6iNGeJ35k0SJvC8hKqq9v/4iiRg4rug0nOCAxqs4hl4d+8UMdnuhERzCjhxfLZy
- GnEr8mOOTEu5W7RbS+Vw+Ovex8xhHwZlWN+O6is56u8CMQcOY6gbNH95qx7MM9Wuh2B8
- DC8tFbpT7rpOm3AfGUhZuhtsLIoHgQBciqU3a+XtxhC5ZKPReupfqnrcqjm2cT4U7hOT
- 25jA==
+ bh=aWTCrJr+jkFbr7yY/GDDx9r5qnemW4sfX9ZnAt73ZW0=;
+ b=UfT0iSNfmwhpE0It7BGk4joQf4fdhlbaaFLXh6sr+1Kporh7xocHzFdITob2Jn6HhB
+ Dfm6KbuqtxG3NlJOrBvwI9WnrHvK0zUA1IougYVxwT0npaxNCCee0pzrH4UaJVYxYtwZ
+ dUXqZUHe+eAd6q5sUfONL864Z/jhp+oEIlHLZIdYvyJFSliURuFJj1J8Qilq6fCfWX18
+ SAwC4ZQttsvU+ACtXmYC7SPzg6ERnUVijCyU6rqMUtrr+HwPmi/lu6ndq7QyGT+7dTOj
+ wBcwF4s4Y+oVuCDHqS2/S7PUyeMRW6/HCzwj+whja+ZJgpVifL3sm9sENXep/HN4EbLE
+ O4Og==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW89RFU1E0AagCz/7aSI7jKmGMabH1/xBFgKtVBfNnGBfEIjhvXiau7qPoHU/g/oSpQyO+hT/FL9Np6A0hW0M0=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzNkLBqfCG54zhWc1zY8CgGvhpHVJUuBZBamk8rgDIa95w2Pe+u
- isCYz1m1ErX/Pmz529i/a8G4N6YmM1QVXTz5pek1cF6rZu7DGvOW90AqGgy/fHRDrMuxKlbVshU
- X4b7psErlS+NkGHdlLC447uFSLztTYxs=
-X-Gm-Gg: ASbGncuZm5EHFlIrHewnR//zDhRygbR7DnvzK/G8KWKQTQ/SmFPttKILyrOwzC5H+Hj
- NTYKUZvqJvru3jw/jU6msUXWsY/fxN42mj4rWcG77yqEyS/77Hzx/tKk0XDESVRISJ/mW3AA3Te
- xjd2IOU6UJqRSduc0zVGfVIYrTZcb4Y+HR/xJcnUpNZtaiJEgn4bOgVb+ejYo1Zjm1wjhyz9Lkk
- IDMoA==
-X-Google-Smtp-Source: AGHT+IHBmuJ4qV9IXEf74vNoOSu9MKPOXTxuc6Ipnr/G9UnNSNFG1wh2bTO/QVE9Adxi2a/oLhwsvFNKrBvFv1AZ7pE=
-X-Received: by 2002:a92:c26f:0:b0:3e2:9b48:4585 with SMTP id
- e9e14a558f8ab-3e29b48537amr120828795ab.3.1753088624175; Mon, 21 Jul 2025
- 02:03:44 -0700 (PDT)
+ AJvYcCVkdGevdZO3pjt2c5P4bXx79OOJnHPwr2lyrUxi4LaZr8Ih+6ZktzRvrZLfZyz1pZoNRmSpL8nzW51bDdb1S9c=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyW3V3vFO+atu6C34U/OdNMNV0WmSKTVtJPbHBt4jFuzbU7Zk/G
+ wTEN09lP7dyPjpowFy6WVIYGTfPefweZ/lTuvF2KknjxJoExsrb2AlZbul1tMhKoC+BD/LWLTC8
+ 3Vt8Vy9pk/TP5DIee4A5TvH+vZzr9Lj0=
+X-Gm-Gg: ASbGnctDoJ1E8M0EaiylVBO9e+tliCkjl9/xyinW1RFwC4Sma1FkkIODmj4jSYZvTeP
+ jC3GDs3ZWwnQHhsk047BhV4hT3bI4bticlETGc5xIsdORIRCtXuU49xUrw7lPjSSr0audK0Zxpv
+ f2zpGqraI1amyWbumzCaz4MbtwfxgBlh6nhat0pUkBQTowBa1aNjsJtfGoQnBDjORNv9IK0C2N/
+ EpU7g==
+X-Google-Smtp-Source: AGHT+IG2nZhptU5sMShiQM05wOmbJqhauf2H0RI8O2kKSAiSqbryj8HoWrcq2C8YGYvMd2oBpjurux1VpzbYVEFH93k=
+X-Received: by 2002:a05:6e02:19c7:b0:3dd:e7d6:18bb with SMTP id
+ e9e14a558f8ab-3e2824f58c8mr214595465ab.17.1753089377803; Mon, 21 Jul 2025
+ 02:16:17 -0700 (PDT)
 MIME-Version: 1.0
-References: <CAL+tcoCTHTptwmok9vhp7GEwQgMhNsBJxT3PStJDeVOLR_-Q3g@mail.gmail.com>
- <aHohbwWCF0ccpmtj@soc-5CG4396X81.clients.intel.com>
- <CAL+tcoCJ9ghWVQ1afD_WJmx-3n+80Th7jPw-N-k9Z6ZjJErSkw@mail.gmail.com>
- <aH3rRHm8rQ35MqMd@soc-5CG4396X81.clients.intel.com>
-In-Reply-To: <aH3rRHm8rQ35MqMd@soc-5CG4396X81.clients.intel.com>
+References: <20250721083343.16482-1-kerneljasonxing@gmail.com>
+ <20250721083343.16482-2-kerneljasonxing@gmail.com>
+ <8c9e97e4-3590-49a8-940b-717deac0078d@molgen.mpg.de>
+In-Reply-To: <8c9e97e4-3590-49a8-940b-717deac0078d@molgen.mpg.de>
 From: Jason Xing <kerneljasonxing@gmail.com>
-Date: Mon, 21 Jul 2025 17:03:07 +0800
-X-Gm-Features: Ac12FXzB9cHju70bPo1uCg6BdrKE5YjftjAU7o6wChSg7hKVFMxEiNutyLzNKj8
-Message-ID: <CAL+tcoAQF_Aom4dn--RQzowiUO1haNPw=_Rzw2C7MJRF_sSUOw@mail.gmail.com>
-To: Larysa Zaremba <larysa.zaremba@intel.com>
-Cc: Jakub Kicinski <kuba@kernel.org>, Stanislav Fomichev <sdf@fomichev.me>, 
- "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, przemyslaw.kitszel@intel.com,
- Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- intel-wired-lan@lists.osuosl.org, netdev <netdev@vger.kernel.org>
+Date: Mon, 21 Jul 2025 17:15:41 +0800
+X-Gm-Features: Ac12FXxJ1BHePlaT48Hqw0KdfZnHkKmI2oq2Xb6hjs7o-cBEjOG5DrUKN96fo1c
+Message-ID: <CAL+tcoAP7Zk7A4pzK-za+_NMoX11SGR3ubtY6R+aaywoEq_H+g@mail.gmail.com>
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com, 
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com, 
+ kuba@kernel.org, pabeni@redhat.com, bjorn@kernel.org, 
+ magnus.karlsson@intel.com, maciej.fijalkowski@intel.com, 
+ jonathan.lemon@gmail.com, sdf@fomichev.me, ast@kernel.org, 
+ daniel@iogearbox.net, hawk@kernel.org, john.fastabend@gmail.com, 
+ mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com, 
+ linux-stm32@st-md-mailman.stormreply.com, bpf@vger.kernel.org, 
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
+ Jason Xing <kernelxing@tencent.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1753088624; x=1753693424; darn=lists.osuosl.org;
+ d=gmail.com; s=20230601; t=1753089378; x=1753694178; darn=lists.osuosl.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=eGz9tABlj+U/GQqGIPNZErlvt1NjJTBIq6a5O+QSzd0=;
- b=nTFBgfbax81sWOG41mTtKmiYR1arcB1O3bjifbmIlQ/eGPK6FIOGO7viS4+5cmlioP
- EuLie4HjhD7JWpE5TAo5/uFPKZ1gDBWfw77HN10JWYQ7jpXrDg/x44LJ/hVlI0WEziGY
- gG8XRoc5FwvrfZRF+EjCzUUoC3szPFT7FEDEuEVhaGflQ+1DMb3DPcpvjhKsaF60ufaz
- Yo+f7W4lYYiRDlu+oLH3wjovrS6//B2TZlyowRpRw53Q8vcCImgwAgP+4NIZn36ljajE
- yk3YgFXTXzRAPXi9uE+uf/3tjxR3ciRbal4a/tiqb2yzEHnMLXXx7h5TPbS3k9/RwQvS
- oFVQ==
+ bh=aWTCrJr+jkFbr7yY/GDDx9r5qnemW4sfX9ZnAt73ZW0=;
+ b=BKJD/t74/OfuFQTKG6ijCvW5Nk3ARkTV4mn+Nke0AqCRcbFAlHTlQA1yGbX6nHQiZf
+ BygwCanCI4DQ29I+CJYNLzyCAUUfmcn0ZfLj2avjrWF42ZJB9Bq1U1LHMdFXPUAA7El+
+ 3HhgnWMzz1AVLU8iEMZMAWjH1RsZ6MR5h+OIxW3Fp4iwCUpRg40RBKMEeua9pYspSpeL
+ 5vrKYNF8A1MPF7IEsC8JBHwqK1GRmjKoAJxLLYl+XtBn6MwRQBgWJGa7LmkMyzVbk1d8
+ S3TyKaCP31wtUlX3Horl0r47Q8w3sSS4OnAI4U8iKh9sJv5az0EyTcb5MHIA9YnHZEaQ
+ KvCA==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=nTFBgfba
-Subject: Re: [Intel-wired-lan] ixgbe driver stops sending normal data when
- using xsk
+ header.a=rsa-sha256 header.s=20230601 header.b=BKJD/t74
+Subject: Re: [Intel-wired-lan] [PATCH net-next 1/2] stmmac: xsk: fix
+ underflow of budget in zerocopy mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -130,91 +135,123 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Jul 21, 2025 at 3:25=E2=80=AFPM Larysa Zaremba <larysa.zaremba@inte=
-l.com> wrote:
->
-> On Sat, Jul 19, 2025 at 01:26:18PM +0800, Jason Xing wrote:
-> > On Fri, Jul 18, 2025 at 6:27=E2=80=AFPM Larysa Zaremba <larysa.zaremba@=
-intel.com> wrote:
-> > >
-> > > On Wed, Jul 16, 2025 at 11:41:42AM +0800, Jason Xing wrote:
-> > > > Hi all,
-> > > >
-> > > > I'm currently faced with one tough issue caused by zero copy mode i=
-n
-> > > > xsk with ixgbe driver loaded. The case is that if we use xdpsock to
-> > > > send descs, nearly at the same time normal packets from other tx
-> > > > queues cannot be transmitted/completed at all.
-> > > >
-> > > > Here is how I try:
-> > > > 1. run iperf or ping to see if the transmission is successful.
-> > > > 2. then run "timeout 5 ./xdpsock -i enp2s0f0 -t  -z -s 64"
-> > > >
-> > > > You will obviously find the whole machine loses connection. It can
-> > > > only recover as soon as the xdpsock is stopped due to timeout.
-> > > >
-> > > > I tried a lot and then traced down to this line in ixgbe driver:
-> > > > ixgbe_clean_tx_irq()
-> > > >     -> if (!(eop_desc->wb.status & cpu_to_le32(IXGBE_TXD_STAT_DD)))
-> > > >             break;
-> > > > The above line always 'breaks' the sending process.
-> > > >
-> > > > I also managed to make the external ixgbe 6.15 work and it turned o=
-ut
-> > > > to be the same issue as before.
-> > > >
-> > > > I have no idea on how to analyze further in this driver. Could some=
-one
-> > > > point out a direction that I can take? Is it a known issue?
-> > > >
-> > > > Thanks,
-> > > > Jason
-> > > >
-> > >
-> > > I was able to reproduce the described behaviour, xdpsock does break t=
-he IP
-> > > communication. However, in my case this was not because of ixgbe not =
-being able
-> > > to send, but because of queue 0 RX packets being dropped, which is th=
-e indended
-> > > outcome in xdpsock, even in Tx only mode.
-> >
-> > Thanks for your feedback. It would be great if you could elaborate
-> > more on this. How did you spot that it's queue 0 that causes the
-> > problem?
->
-> If you do not specify -q parameter, xdpsock loads on the queue pair 0.
->
-> > Why is xdpsock breaking IP communication intended?
->
-> Because when a packet arrives on the AF_XDP-managed queue (0 in this case=
-), the
-> default xdpsock XDP program provided by libxdp returns XDP_REDIRECT even =
-in
-> tx-only mode, XDP_PASS for all other queues (1-39). XDP_REDIRECT results =
-in a
-> packet leaving the kernel network stack, it is now managed by the AF_XDP
-> userspace program. I think it is possible to modify libxdp to return XDP_=
-PASS
-> when the socket is tx-only.
->
-> >
-> > When you try i40e, you will find the connection behaves normally. Ping
-> > can work as usual. As I depicted before, with ixgbe driver, ping even
-> > doesn't work at all.
->
-> I think this is due to RSS configuration, ping packets on i40e go to anot=
-her
-> queue.
+Hi Paul,
 
-Thanks so much for your detailed explanation.
+On Mon, Jul 21, 2025 at 4:56=E2=80=AFPM Paul Menzel <pmenzel@molgen.mpg.de>=
+ wrote:
+>
+> Dear Jason,
+>
+>
+> Thank you for your patch.
 
-But, I still doubt it's not the reason why xdpsock breaks with ixgbe
-driver loaded because I tried the following commands:
-1. ping <ip>
-2. timeout 3 ./xdpsock -i enp2s0f0np0 -t -q 11  -z -s 64
-Whatever the queue value I adjusted, ping always fails with
-"Destination Host Unreachable" warning.
+Thanks for your quick response and review :)
+
+>
+> Am 21.07.25 um 10:33 schrieb Jason Xing:
+> > From: Jason Xing <kernelxing@tencent.com>
+> >
+> > The issue can happen when the budget number of descs are consumed. As
+>
+> Instead of =E2=80=9CThe issue=E2=80=9D, I=E2=80=99d use =E2=80=9CAn under=
+flow =E2=80=A6=E2=80=9D.
+
+Will change it.
+
+>
+> > long as the budget is decreased to zero, it will again go into
+> > while (budget-- > 0) statement and get decreased by one, so the
+> > underflow issue can happen. It will lead to returning true whereas the
+> > expected value should be false.
+>
+> What is =E2=80=9Cit=E2=80=9D?
+
+It means 'underflow of budget' behavior.
+
+>
+> > In this case where all the budget are used up, it means zc function
+>
+> *is* used?
+
+Got it.
+
+>
+> > should return false to let the poll run again because normally we
+> > might have more data to process.
+>
+> Do you have a reproducer, you could add to the commit message?
+
+Sorry, I didn't have a reproducer. I cooked this patch after analyzing
+the whole logic (because recently I'm reading the zc xmit
+implementation among various drivers.)
+
+>
+> > Fixes: 132c32ee5bc0 ("net: stmmac: Add TX via XDP zero-copy socket")
+> > Signed-off-by: Jason Xing <kernelxing@tencent.com>
+> > ---
+> >   drivers/net/ethernet/stmicro/stmmac/stmmac_main.c | 4 +++-
+> >   1 file changed, 3 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/driver=
+s/net/ethernet/stmicro/stmmac/stmmac_main.c
+> > index f350a6662880..ea5541f9e9a6 100644
+> > --- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> > +++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+> > @@ -2596,7 +2596,7 @@ static bool stmmac_xdp_xmit_zc(struct stmmac_priv=
+ *priv, u32 queue, u32 budget)
+> >
+> >       budget =3D min(budget, stmmac_tx_avail(priv, queue));
+> >
+> > -     while (budget-- > 0) {
+> > +     while (budget > 0) {
+>
+> So, if the while loop should not be entered with budget being 0, then
+> the line could  be changed to `while (--budget > 0) {`? But then it
+> wouldn=E2=80=99t be called for budget being 1.
+
+Right, so it shouldn't be '--budget'.
+
+>
+> A for loop might be the better choice for a loop with budget as counting
+> variable?
+
+Sorry, I didn't follow you.
+
+>
+> >               struct stmmac_metadata_request meta_req;
+> >               struct xsk_tx_metadata *meta =3D NULL;
+> >               dma_addr_t dma_addr;
+> > @@ -2681,6 +2681,8 @@ static bool stmmac_xdp_xmit_zc(struct stmmac_priv=
+ *priv, u32 queue, u32 budget)
+> >
+> >               tx_q->cur_tx =3D STMMAC_GET_ENTRY(tx_q->cur_tx, priv->dma=
+_conf.dma_tx_size);
+> >               entry =3D tx_q->cur_tx;
+> > +
+> > +             budget--;
+> >       }
+> >       u64_stats_update_begin(&txq_stats->napi_syncp);
+> >       u64_stats_add(&txq_stats->napi.tx_set_ic_bit, tx_set_ic_bit);
+>
+> Excuse my ignorance, but I do not yet see the problem that the while
+> loop is entered and buffer is set to 0. Is it later the return condition?
+
+Let me give a simple example. Supposing the budget is one initially,
+at the first round, the budget will be zero. Later, after this desc
+being processed, the 'while (budget-- > 0)' statement will be accessed
+again, and then the budget will be decreased by one which is u32(0 -
+1), namely, UINT_MAX. !!UINT_MAX is true while the expected return
+value is false (!!0, 0 is the expected budget value).
+
+i40e_clean_tx_irq() handles this correctly, FYI.
 
 Thanks,
 Jason
+
+>
+>      return !!budget && work_done;
+>
+>
+> Kind regards,
+>
+> Paul
