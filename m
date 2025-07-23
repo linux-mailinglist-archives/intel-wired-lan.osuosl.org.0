@@ -1,103 +1,106 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A3E75B0E9CA
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Jul 2025 06:48:41 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0DC25B0E9D2
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Jul 2025 06:50:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EDBD280CCB;
-	Wed, 23 Jul 2025 04:48:39 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AFB8780CCA;
+	Wed, 23 Jul 2025 04:50:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4_mPWOQjOyhf; Wed, 23 Jul 2025 04:48:39 +0000 (UTC)
+ id 8gi1uE-nAfdD; Wed, 23 Jul 2025 04:50:00 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 511B380CCC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1676F80C3C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1753246119;
-	bh=b+GT+S1VonwXFIy8ZT9VZzn25ILjotrI37Uxrba5dpk=;
+	s=default; t=1753246200;
+	bh=wRcNoWllLZ+xZgnWNw5Oi4BwJvp1nKsxsMy6VvGD9A4=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=sxcAVPBJp9cV+NYuGQq8BqNHM5N2b4kVzDC9Ei5L3YfYEMZRqedVQV9rzfPd2IsWR
-	 f7b5L+O4+fF2jMzzaSVzY6PLGb4JG6UzbWIcxXUja8xUsUWVU7MAQ68Zo/TP6i60y0
-	 ZQ/9Vg+VvLsRcorpiZZRDISFPwMqLOURv+iio2ybrTMf1uxjeq96blZXiTQJxkAByX
-	 mWxxumLRfsbwarZ/BIBqVXCg227utqqSBuOU9+5DJZ3CkZxWbO7xnbmDMEYOMVu0Nj
-	 kKmOu125UTpYOj+ZbmepkHo3PeyWnPzcYEMSoqOdLKGKWko2VRTZHLwkNfrZumotr8
-	 wVGmDWMBlNeFA==
+	b=vf0+cd1o+mzMe3WgJbiX34D9DmRF49ucm1C/mWulTFs1yCYNvr/sJfeNFHJHcqdsY
+	 e8OIXS0mdR2w7t3G51guAHa60Wthfixrc1yTVw+BcOOIPbA2x32n7sQwbaxkmUMcxw
+	 tXQ1E7Mb5twb2ncVBd1KbK10GUE/hPQ2Ko6ddh8CMU7XA6F8B4+eWQJTdSYkwCgHPL
+	 +2J49M8bjrxKhB8tw/zWZ2apyLPy0hHz7MDNOp0odBflqkqcNK/OHK+OeTi4KGVjEX
+	 Lvauf9eBk5G9VM6Du+icmH/OqcAAHQvTBryawA1ePTVRKGBo03Q8tmdPUAGfQDennk
+	 3/kSZdl/iKQOw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 511B380CCC;
-	Wed, 23 Jul 2025 04:48:39 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1676F80C3C;
+	Wed, 23 Jul 2025 04:50:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 110C1DA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 04:48:37 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id C67C3E0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 04:49:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id EB98E40FAD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 04:48:36 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id ACFB84073E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 04:49:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id r4xNtaLbH3AE for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Jul 2025 04:48:36 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id L-XJY8k1gTZh for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Jul 2025 04:49:58 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
  helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4DA5C40C93
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4DA5C40C93
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4DA5C40C93
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 04:48:36 +0000 (UTC)
-X-CSE-ConnectionGUID: EYou51E7TAS3CTsFaabLuQ==
-X-CSE-MsgGUID: ECaVzh+UQRSoc1mypOnVyA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11500"; a="54613673"
-X-IronPort-AV: E=Sophos;i="6.16,333,1744095600"; d="scan'208";a="54613673"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
- by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Jul 2025 21:48:36 -0700
-X-CSE-ConnectionGUID: sNJc5pEmTV238Zug66iE+w==
-X-CSE-MsgGUID: 5xsNh3H2RwSNGd3ttfay0g==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 03F17400A4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 03F17400A4
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 03F17400A4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 04:49:57 +0000 (UTC)
+X-CSE-ConnectionGUID: vP4ZdYw7RTusPzkySZfUzg==
+X-CSE-MsgGUID: CWEcdQ8rSNKNO2BczUU+lQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11500"; a="55455934"
+X-IronPort-AV: E=Sophos;i="6.16,333,1744095600"; d="scan'208";a="55455934"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+ by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Jul 2025 21:49:57 -0700
+X-CSE-ConnectionGUID: HYkRLkIRT0ObbXeX4vJvig==
+X-CSE-MsgGUID: XUU0kdGGQd2s737DBzYrvg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,333,1744095600"; d="scan'208";a="164973226"
+X-IronPort-AV: E=Sophos;i="6.16,333,1744095600"; d="scan'208";a="163561384"
 Received: from mev-dev.igk.intel.com ([10.237.112.144])
- by orviesa005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Jul 2025 21:48:34 -0700
-Date: Wed, 23 Jul 2025 06:47:25 +0200
+ by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Jul 2025 21:49:56 -0700
+Date: Wed, 23 Jul 2025 06:48:51 +0200
 From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: Simon Horman <horms@kernel.org>
+To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
 Cc: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- przemyslaw.kitszel@intel.com, dawid.osuchowski@linux.intel.com
-Message-ID: <aIBpMBCIab9WMUvp@mev-dev.igk.intel.com>
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
+ "dawid.osuchowski@linux.intel.com" <dawid.osuchowski@linux.intel.com>
+Message-ID: <aIBps1pWsmrZhoDu@mev-dev.igk.intel.com>
 References: <20250722104600.10141-1-michal.swiatkowski@linux.intel.com>
- <20250722104600.10141-10-michal.swiatkowski@linux.intel.com>
- <20250722145428.GM2459@horms.kernel.org>
+ <20250722104600.10141-3-michal.swiatkowski@linux.intel.com>
+ <IA3PR11MB8986DF9CBA9DD7D092D11D14E55CA@IA3PR11MB8986.namprd11.prod.outlook.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250722145428.GM2459@horms.kernel.org>
+In-Reply-To: <IA3PR11MB8986DF9CBA9DD7D092D11D14E55CA@IA3PR11MB8986.namprd11.prod.outlook.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1753246116; x=1784782116;
+ t=1753246198; x=1784782198;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=qNjmRPPIJN5Zjpha05dmWoSkyDjdBWOVgWeDdaqiQpY=;
- b=SwoNWemPJu1AFwMgjOlqUcS15Lo7BQ6/K8XfuFVvP4idhzRYfjejIe9m
- sxXyQM6CsjijCle54cbqw4nohj7cQoY0nZiWjbdkG0GHXN9WY0J0cCvRp
- 4G8iLcAqJUYhNy7lQoHRJEl2KL+olSETnaFttBZeDYJwb46yuPWAO0GxN
- AVY/bzjhk2McX8uhaCMhBTuh8uQ5ksfYkLlDt89TfIs3L3wH4kgAVvJdi
- uSFKWnh6+bodP3CsYTVnypXqrhVdOL96fAZm34pjQZN25GdC3isARQdWI
- 0ST1GuX4b1q97pAnI8l/BSUPJsBUWjKwVMQupMYhUhv6TZ825X/gk8AyP
+ bh=1+i5fwHsssFH8fer9hR+N6BmV3M+1an/8DwXt1LUWZ4=;
+ b=XDwsdq71cLlO2GSU6i6iqbGZZyuyed7zuNaLK6z7hju+zFE93FaguKRK
+ XiFRNXS2OQAcD3oBbYmJrBL5QAcLKNfz45vrgoAUtbafRtEWdFQkNbwJw
+ qSUh5oYUrXEgoUiJF+IBD0ivcHRJI964RmBfTVu8L7251lL6bpt8OEHkR
+ dRivxCnEPka3zkeffzXfUHlvK8+WPDe0V+hWVH2AAaC02uC6UDuDDBQve
+ LmpZD6XNR5sVI6jHAghxEGuaaov7Y2hwjXHwxmksHxbBnqa/ObB0X7ud9
+ PdhSLIiyg18VuZXwuBzSL1t7vBcpppIiB5Z1yZGg1yalTcbEW22gr4A9X
  w==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=SwoNWemP
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 09/15] ice: drop driver
- specific structure from fwlog code
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=XDwsdq71
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 02/15] ice: move
+ get_fwlog_data() to fwlog file
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -113,57 +116,50 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Jul 22, 2025 at 03:54:28PM +0100, Simon Horman wrote:
-> On Tue, Jul 22, 2025 at 12:45:54PM +0200, Michal Swiatkowski wrote:
-> > In debugfs pass ice_fwlog structure instead of ice_pf.
+On Tue, Jul 22, 2025 at 12:02:52PM +0000, Loktionov, Aleksandr wrote:
+> 
+> 
+> > -----Original Message-----
+> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
+> > Of Michal Swiatkowski
+> > Sent: Tuesday, July 22, 2025 12:46 PM
+> > To: intel-wired-lan@lists.osuosl.org
+> > Cc: netdev@vger.kernel.org; Kitszel, Przemyslaw
+> > <przemyslaw.kitszel@intel.com>; dawid.osuchowski@linux.intel.com;
+> > Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> > Subject: [Intel-wired-lan] [PATCH iwl-next v1 02/15] ice: move
+> > get_fwlog_data() to fwlog file
 > > 
-> > The debgufs dirs specific for fwlog can be stored in fwlog structure.
+> > Change the function prototype to receive hw structure instead of pf to
+> > simplify the call. Instead of passing whole event pass only msg_buf
+> > pointer and length.
 > > 
-> > Add debugfs entry point to fwlog api.
+> > Make ice_fwlog_ring_full() static as it isn't  called from any other
+> > context.
 > > 
 > > Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 > > Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> 
-> ...
-> 
-> > diff --git a/drivers/net/ethernet/intel/ice/ice_debugfs.c b/drivers/net/ethernet/intel/ice/ice_debugfs.c
-> 
-> ...
-> 
-> > @@ -580,9 +569,10 @@ static const struct file_operations ice_debugfs_data_fops = {
-> >  
-> >  /**
-> >   * ice_debugfs_fwlog_init - setup the debugfs directory
-> > - * @pf: the ice that is starting up
-> > + * @fwlog: pointer to the fwlog structure
-> > + * @root: debugfs root entry on which fwlog director will be registered
-> >   */
-> > -void ice_debugfs_fwlog_init(struct ice_pf *pf)
-> > +void ice_debugfs_fwlog_init(struct ice_fwlog *fwlog, struct dentry *root)
+> > ---
+> >  drivers/net/ethernet/intel/ice/ice_fwlog.c | 27 +++++++++++++++++++-
+> > drivers/net/ethernet/intel/ice/ice_fwlog.h |  2 +-
+> > drivers/net/ethernet/intel/ice/ice_main.c  | 29 ++--------------------
+> >  3 files changed, 29 insertions(+), 29 deletions(-)
+> > 
+> > diff --git a/drivers/net/ethernet/intel/ice/ice_fwlog.c
+> > b/drivers/net/ethernet/intel/ice/ice_fwlog.c
+> > index e48856206648..ea5d6d2d3f30 100644
+> > --- a/drivers/net/ethernet/intel/ice/ice_fwlog.c
+> > +++ b/drivers/net/ethernet/intel/ice/ice_fwlog.c
+> > @@ -6,7 +6,7 @@
+> >  #include "ice_common.h"
+> >  #include "ice_fwlog.h"
+> > 
+> > -bool ice_fwlog_ring_full(struct ice_fwlog_ring *rings)
+> > +static bool ice_fwlog_ring_full(struct ice_fwlog_ring *rings)
 > >  {
-> >  	struct dentry *fw_modules_dir;
-> >  	struct dentry **fw_modules;
-> > @@ -598,41 +588,39 @@ void ice_debugfs_fwlog_init(struct ice_pf *pf)
-> >  
-> >  	pf->ice_debugfs_pf_fwlog = debugfs_create_dir("fwlog",
-> >  						      pf->ice_debugfs_pf);
-> 
-> pf no longer exists in this context.
+> >  	u16 head, tail;
+> > 
+> Can you consider adding kernel-doc for ice_fwlog_ring_full()?
 > 
 
-Right, sorry, I missed that. I will build check each commit before
-sending v2.
-
-Thanks
-
-> > -	if (IS_ERR(pf->ice_debugfs_pf_fwlog))
-> > +	if (IS_ERR(fwlog->debugfs))
-> >  		goto err_create_module_files;
-> >  
-> > -	fw_modules_dir = debugfs_create_dir("modules",
-> > -					    pf->ice_debugfs_pf_fwlog);
-> > +	fw_modules_dir = debugfs_create_dir("modules", fwlog->debugfs);
-> >  	if (IS_ERR(fw_modules_dir))
-> >  		goto err_create_module_files;
-> 
-> ...
+I will add it.
