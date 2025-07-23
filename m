@@ -2,89 +2,90 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE6D6B0EDAB
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Jul 2025 10:53:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 22BDCB0EDB2
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Jul 2025 10:54:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3500D60D8B;
-	Wed, 23 Jul 2025 08:53:36 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D374860A44;
+	Wed, 23 Jul 2025 08:54:18 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ifn27G_BCOLB; Wed, 23 Jul 2025 08:53:35 +0000 (UTC)
+ id gqSYU_Ing7B3; Wed, 23 Jul 2025 08:54:18 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 630D960AB8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4717060A65
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1753260815;
-	bh=z65j03WrO/n63aEHTvzMDd01RGJ+Quvw3MkBxukbbRo=;
-	h=From:Date:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=tr8dCB2Mhigni8i2DjRr6e5839W+ae4D17fboj/8taIlcmCZtkyo5LLZobVdc8r60
-	 SR94wXub88XDjDvAa8ZgX/QHeRdvPc0ibejYXsEEb7Dlv/6SweTt+v9cc7gjVIu2vh
-	 xvOFg36ruLIpvesL2q3FP/V+uhPUzZZ094O4Nvs2iaJGjKHmlXMrRvpQKbyUuvqtSq
-	 qTvB7q1g4Jb19DKCL1mjyPcvBOVRIHeFCJGiX4Aks4A7pQX1pBOFyX9Qdony66xhIM
-	 Mcq4S8xQZLAxcD+NMHxrVx3vn0uKPSmqzfyOq/Awy5vjCNNr9hIWA9q1OK5aQykSoN
-	 jjh6WFC1Ywksw==
+	s=default; t=1753260858;
+	bh=YwFhinLP1Fsp+cB7676+3LQ6AV0wismQsbpAI8a2BLo=;
+	h=From:Date:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=k3IcsLJaC60p48AMBq181vKj1HsoryCJurGNDHM9vrkZltjxROV3xExRbaoLm3Nyt
+	 dG+Ah5X6ge6CP6VXjzKot4w6RnsgGlsRRUj8wVNSiEQB4yezMYJScbI5rSxKKflEwy
+	 Nppz5eVvSyezSVYTsl5IbHIo0Sn2MUZeRv6J8C+AfrdvZwQIwvrHridKctfiPqVuHY
+	 JmrONPYKdnoE1uREpqvsdiuzbR6ZzCiKfcFoCAGYHppk+CF8RAFoud1cQRucsKv3xD
+	 ZcByl/MZvQZjKAY4gHVaGnZprVZYocx3az7QiQWRDdaC0PQd0MroAALXY7sA9hhRMs
+	 YgiyZiBjZbZvg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 630D960AB8;
-	Wed, 23 Jul 2025 08:53:35 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4717060A65;
+	Wed, 23 Jul 2025 08:54:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 33B62CD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 08:53:34 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 047C6CD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 08:54:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1776940CC2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 08:53:34 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id DEF7940B21
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 08:54:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id znOC38uGDBrM for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Jul 2025 08:53:33 +0000 (UTC)
+ id zl3rBX8EoP-C for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Jul 2025 08:54:16 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::62b; helo=mail-ej1-x62b.google.com;
+ client-ip=2a00:1450:4864:20::532; helo=mail-ed1-x532.google.com;
  envelope-from=jacek@jacekk.info; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 00A7C40B87
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 00A7C40B87
-Received: from mail-ej1-x62b.google.com (mail-ej1-x62b.google.com
- [IPv6:2a00:1450:4864:20::62b])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 00A7C40B87
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 08:53:32 +0000 (UTC)
-Received: by mail-ej1-x62b.google.com with SMTP id
- a640c23a62f3a-ae6fa02d8feso932832166b.0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 01:53:32 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org E7EEB40B87
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E7EEB40B87
+Received: from mail-ed1-x532.google.com (mail-ed1-x532.google.com
+ [IPv6:2a00:1450:4864:20::532])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E7EEB40B87
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 08:54:15 +0000 (UTC)
+Received: by mail-ed1-x532.google.com with SMTP id
+ 4fb4d7f45d1cf-60780d74c8cso11113799a12.2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 01:54:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753260811; x=1753865611;
- h=content-transfer-encoding:content-language:cc:to:subject:user-agent
- :mime-version:date:message-id:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=z65j03WrO/n63aEHTvzMDd01RGJ+Quvw3MkBxukbbRo=;
- b=Ny9OzFf8vjVWTHCllV9HST/tXuKWaBjSzHbrmDUtmSEuZQU5H/XN5CGzEhvpn5q5z6
- lk0An1+Gyli3XKlf8VtCp7zPFMvUrwih4gBCPb+IWBlY0sZdwLQwhNKYEVseK7RURmAM
- KeDVcOjDq0TZ/i3Ozia3vO5z3yRs/Mip0SEKCLSUEqE0Pa/t4UMCRII/GyIrDJWK6gXd
- y8laC8gLFDuUdK9ivHVuZEoojqZtmyMhcoAYR/V4v4hoZlw3ZDuLMBZn+FqPpVZ9eZGE
- U+evwTyrfAu31drmCZEFeozEtDZrB9TOlaN48pE3dAIJuitPeGAkM3CBDghlbQcXXnTG
- /fFQ==
-X-Gm-Message-State: AOJu0Yxz/a3D2EgdZRS+dtwAqQIKJSS9WVjlwbxkRvhNPq1/SgtVECec
- OU2Z5vtlaUsN7gVurQc0n9e+Zkr52vC+8eiRKQuIyNfBPnWn0zTIll0voaLW07F5eQ==
-X-Gm-Gg: ASbGncudNA9O4WT9T+0Os24kY/F84i4whtGbhYtNMFNueAspxCTf5NPbYgwnM4U1O79
- c4B4QCT1jQFy2DDEH/N06PIiI8J8wZXsgXTM6NV1rzphgSRo7XL+KhTHCYGaNgcIZxy+Ky966TM
- UFYJBWWDQ6QDSFQYYyOZj0lOOr7jPvmbs5y+ImZ5YrzDtQ3RxnodiLsTJWqWpw6g4LXISEnQpqG
- vN2ilrr2wxDyj52cnnN0Uvg7ZTd9XlW0bXaxQn54mCFKgrEj3mIWv8JqEuDI/P4GDFPxrud1WHg
- 7qWZ3UGjsV4dqb5siibGbjUwfyj1gSbRncy5pbCh0751hzorayOGTOCWa6jAnrgp9gXe+iyykqs
- B1daSBAWjrtHBaFlq4/soAcfV
-X-Google-Smtp-Source: AGHT+IEAKKNfk8z8hc+e0fC3ZbDRCqVmoShe8CkCXPCmslS/ifB1iVUmtn6ibbbWnqxC+LicuSBrgw==
-X-Received: by 2002:a17:907:7f0c:b0:ae0:9fdf:25e8 with SMTP id
- a640c23a62f3a-af2f8d4ecf2mr165925266b.47.1753260810410; 
- Wed, 23 Jul 2025 01:53:30 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1753260854; x=1753865654;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:subject:user-agent:mime-version:date:message-id:from
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=YwFhinLP1Fsp+cB7676+3LQ6AV0wismQsbpAI8a2BLo=;
+ b=Hl66PSmrkYfU4cof8Tf/nznY1sHhnBwildQzP1gdhMs4Ljl/mAmic2eZRBAFl6Wvi4
+ XD2X9fDYNNFe+Ipu1YDYNxQ2SrMVV+6GFSwltmRtZe4P1zVXDl/g9VD+Fusq3qkg5VYk
+ qCMdRTR5VaHmtOFmpaSfvZBbs1pRZQ6gvIaBvFW7ofQl6n5a+adRvHlo1C/H+2uTcQ+v
+ jGDCUn1PT1ibbUyIHUzBoulS5d2H1ZUps4FrOeDsHS9pXzjeZPDjerOtCs31qVLJbTNd
+ 42skrlUY8oAHZY+icnnSDkAYRajAYAVuNeMAMS5dYqrzE+0fUcIzVMH2VVO3UHwb5w9/
+ f70w==
+X-Gm-Message-State: AOJu0YxD6vaNc5MCn8AeuBs6XJnvIJhm3yNVGxW6ZP4W75O738jwcyaW
+ OQelaMhwpcT8yEpRs8qX2QmMEKrUspaxittfgg1RSfySduEEGG5K6mVkQae7FMM+gQ==
+X-Gm-Gg: ASbGnctXYet8KX5kwKPsfJ7FHsTVEcFw+xkkNzBKqIWJVq0Ltg1cGtC4NGhtlhWdT7S
+ SLTpJtLNgI6654mLFGueuRW7efatM1zlgcH7xJoU+SWUBzntIQ+hmA7MglGP4REZfIwy02HlnSP
+ i/ZEwNoq97f2RdZEZ3dvxhoA+FbhVlDVAvj/eSHkVGHjTxlxHwiDd4cW8LobYFajs/bj8wnsKbb
+ h16UfuTBRpl+8NUcrJOgTAZIhm7EU9CMlD1aTGp7YPEbbo2VSaysPiFG00rHfT70y6U2vUJc/d1
+ 4PsNwpQUa5CM56yPm1Alq6lSrQIK0m8bZwPmpHPql8R7zwYNqhnpFQNxMLTAelUjvoyrHuv7Rf+
+ KsdNlv8CvmXTfQvqvoeDKWBrT
+X-Google-Smtp-Source: AGHT+IEOfAQFG4XfDLR1ZHY1+R3DV8DpDsiIuZ1b48cLRDUnrFY8OtpIByBn69HwDiml2biFfyRhAg==
+X-Received: by 2002:a05:6402:3716:b0:602:e46:638 with SMTP id
+ 4fb4d7f45d1cf-6149b5c412fmr2018190a12.26.1753260853543; 
+ Wed, 23 Jul 2025 01:54:13 -0700 (PDT)
 Received: from [192.168.0.114] ([91.196.212.106])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-aec6c79a089sm1007376066b.20.2025.07.23.01.53.29
+ 4fb4d7f45d1cf-612c903f9basm8265087a12.47.2025.07.23.01.54.12
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 23 Jul 2025 01:53:30 -0700 (PDT)
+ Wed, 23 Jul 2025 01:54:13 -0700 (PDT)
 From: Jacek Kowalski <jacek@jacekk.info>
 X-Google-Original-From: Jacek Kowalski <Jacek@jacekk.info>
-Message-ID: <2f87d6e9-9eb6-4532-8a1d-c88e91aac563@jacekk.info>
-Date: Wed, 23 Jul 2025 10:53:28 +0200
+Message-ID: <6abd035f-c568-424c-bdbc-6b9cbcb45e1e@jacekk.info>
+Date: Wed, 23 Jul 2025 10:54:11 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 To: Tony Nguyen <anthony.l.nguyen@intel.com>,
@@ -94,30 +95,31 @@ To: Tony Nguyen <anthony.l.nguyen@intel.com>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
  Simon Horman <horms@kernel.org>
 Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+References: <2f87d6e9-9eb6-4532-8a1d-c88e91aac563@jacekk.info>
 Content-Language: en-US
+In-Reply-To: <2f87d6e9-9eb6-4532-8a1d-c88e91aac563@jacekk.info>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=jacekk.info; s=g2024; t=1753260811; x=1753865611; darn=lists.osuosl.org;
- h=content-transfer-encoding:content-language:cc:to:subject:user-agent
- :mime-version:date:message-id:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=z65j03WrO/n63aEHTvzMDd01RGJ+Quvw3MkBxukbbRo=;
- b=c1BO6vJMcSP8ZKqlqlDkAnFvXBsrdAKH4GysITZN37uNqqIvb85a7URhzg/iVsm1cT
- TOAyazGeoxOWEMFIGg2FxySP4fWA1tRF9D8mUnxc+nRSFooanlBBcn/DLAUDyEi+NhDR
- 8SdUMEti3MxNQFcIfJIUeKaBOTNrz8xr/8xeTsHmx0bb/Ssci0MLezOhxDFDLMxE6sy0
- uUSVvh6IFxVYMkaSgsq3y6f3FUFyur16G7UPgtJ6fI+NueVtnByAQVpdqwAgeTgsf1SP
- T9+8xH5X6QmfqqHDnJgwpxmU1zVqo1NPIlpovCw2L8avpGGVxLNE7Vx/LA8xJqGcsP1A
- /zCQ==
+ d=jacekk.info; s=g2024; t=1753260854; x=1753865654; darn=lists.osuosl.org;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:subject:user-agent:mime-version:date:message-id:from:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=YwFhinLP1Fsp+cB7676+3LQ6AV0wismQsbpAI8a2BLo=;
+ b=B8nCamQZGXZoBL92Aw5YJZtk1KiHsWVUqJKNZO9KKSZ5cFAg21RnpfP6hCLBaW2VZk
+ jTpgF1VyecPtnM/DZHaThfVUDHAxkN7FRWI+1EAgCHZtd5E4FHyTNVW8Mi+ZhJrVEh6R
+ lL/4P2cQWX1ifGYKSCrkd7UQH+1Txd5Zrw9PwbDTGX1ocx0o61YWr6/eIlcUjWQ2OnLa
+ RUZGMf9aJwUpiuSsmZWJJ/szz1kq4wPZfNPkbq6uNgWWCMXPfXl3XS0GPlFKpmSbc3gn
+ elbS4Xtc/BWLshkH+2BJlW6AtCI3gXXV1JIOX92hNuoGh7G9erpaqVXGmx2ye+Te1ktw
+ aOMg==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=jacekk.info
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=jacekk.info header.i=@jacekk.info header.a=rsa-sha256
- header.s=g2024 header.b=c1BO6vJM
-Subject: [Intel-wired-lan] [PATCH iwl-next v3 0/5] drop unnecessary constant
- casts to u16
+ dkim=pass (2048-bit key) header.d=jacekk.info header.i=@jacekk.info
+ header.a=rsa-sha256 header.s=g2024 header.b=B8nCamQZ
+Subject: [Intel-wired-lan] [PATCH iwl-next v3 1/5] e1000: drop unnecessary
+ constant casts to u16
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -133,50 +135,83 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-As requested by Simon Horman, here's the patch set to drop casts of
-constants to u16 in comparisons and subtractions. Changes are applied
-across all Intel wired drivers.
+Remove unnecessary casts of constant values to u16.
+C's integer promotion rules make them ints no matter what.
 
-Per C language specification, arithmetic types with rank lower than integer
-are automatically promoted to at least (signed/unsigned) int on comparisons
-and subtractions. There is no point in casting to types smaller than
-integer, i.e. u16, in such code paths.
+Additionally replace E1000_MNG_VLAN_NONE with resulting value
+rather than casting -1 to u16.
 
-Additionally:
-- drop casts in "return (int)checksum;" where checksum is u16,
-- *_MNG_VLAN_NONE constants equal to -1 that are cast to (u16)
-  are now set to 0xFFFF.
-
-v1 -> v2: drop casts in subtractions as well
-v2 -> v3: update descs, rework *_MNG_VLAN_NONE, drop parentheses
-
-Jacek Kowalski (5):
-  e1000: drop unnecessary constant casts to u16
-  e1000e: drop unnecessary constant casts to u16
-  igb: drop unnecessary constant casts to u16
-  igc: drop unnecessary constant casts to u16
-  ixgbe: drop unnecessary casts to u16 / int
-
+Signed-off-by: Jacek Kowalski <jacek@jacekk.info>
+Suggested-by: Simon Horman <horms@kernel.org>
+---
  drivers/net/ethernet/intel/e1000/e1000.h         | 2 +-
  drivers/net/ethernet/intel/e1000/e1000_ethtool.c | 2 +-
  drivers/net/ethernet/intel/e1000/e1000_hw.c      | 4 ++--
  drivers/net/ethernet/intel/e1000/e1000_main.c    | 3 +--
- drivers/net/ethernet/intel/e1000e/e1000.h        | 2 +-
- drivers/net/ethernet/intel/e1000e/ethtool.c      | 2 +-
- drivers/net/ethernet/intel/e1000e/netdev.c       | 4 ++--
- drivers/net/ethernet/intel/e1000e/nvm.c          | 4 ++--
- drivers/net/ethernet/intel/igb/e1000_82575.c     | 4 ++--
- drivers/net/ethernet/intel/igb/e1000_i210.c      | 2 +-
- drivers/net/ethernet/intel/igb/e1000_nvm.c       | 4 ++--
- drivers/net/ethernet/intel/igb/igb.h             | 2 +-
- drivers/net/ethernet/intel/igb/igb_main.c        | 3 +--
- drivers/net/ethernet/intel/igc/igc_i225.c        | 2 +-
- drivers/net/ethernet/intel/igc/igc_nvm.c         | 4 ++--
- drivers/net/ethernet/intel/ixgbe/ixgbe_common.c  | 4 ++--
- drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c    | 4 ++--
- drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c    | 4 ++--
- 18 files changed, 27 insertions(+), 29 deletions(-)
+ 4 files changed, 5 insertions(+), 6 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/e1000/e1000.h b/drivers/net/ethernet/intel/e1000/e1000.h
+index 75f3fd1d8d6e..ea6ccf4b728b 100644
+--- a/drivers/net/ethernet/intel/e1000/e1000.h
++++ b/drivers/net/ethernet/intel/e1000/e1000.h
+@@ -116,7 +116,7 @@ struct e1000_adapter;
+ #define E1000_MASTER_SLAVE	e1000_ms_hw_default
+ #endif
+ 
+-#define E1000_MNG_VLAN_NONE	(-1)
++#define E1000_MNG_VLAN_NONE	0xFFFF
+ 
+ /* wrapper around a pointer to a socket buffer,
+  * so a DMA handle can be stored along with the buffer
+diff --git a/drivers/net/ethernet/intel/e1000/e1000_ethtool.c b/drivers/net/ethernet/intel/e1000/e1000_ethtool.c
+index d06d29c6c037..726365c567ef 100644
+--- a/drivers/net/ethernet/intel/e1000/e1000_ethtool.c
++++ b/drivers/net/ethernet/intel/e1000/e1000_ethtool.c
+@@ -806,7 +806,7 @@ static int e1000_eeprom_test(struct e1000_adapter *adapter, u64 *data)
+ 	}
+ 
+ 	/* If Checksum is not Correct return error else test passed */
+-	if ((checksum != (u16)EEPROM_SUM) && !(*data))
++	if (checksum != EEPROM_SUM && !(*data))
+ 		*data = 2;
+ 
+ 	return *data;
+diff --git a/drivers/net/ethernet/intel/e1000/e1000_hw.c b/drivers/net/ethernet/intel/e1000/e1000_hw.c
+index f9328f2e669f..0e5de52b1067 100644
+--- a/drivers/net/ethernet/intel/e1000/e1000_hw.c
++++ b/drivers/net/ethernet/intel/e1000/e1000_hw.c
+@@ -3970,7 +3970,7 @@ s32 e1000_validate_eeprom_checksum(struct e1000_hw *hw)
+ 		return E1000_SUCCESS;
+ 
+ #endif
+-	if (checksum == (u16)EEPROM_SUM)
++	if (checksum == EEPROM_SUM)
+ 		return E1000_SUCCESS;
+ 	else {
+ 		e_dbg("EEPROM Checksum Invalid\n");
+@@ -3997,7 +3997,7 @@ s32 e1000_update_eeprom_checksum(struct e1000_hw *hw)
+ 		}
+ 		checksum += eeprom_data;
+ 	}
+-	checksum = (u16)EEPROM_SUM - checksum;
++	checksum = EEPROM_SUM - checksum;
+ 	if (e1000_write_eeprom(hw, EEPROM_CHECKSUM_REG, 1, &checksum) < 0) {
+ 		e_dbg("EEPROM Write Error\n");
+ 		return -E1000_ERR_EEPROM;
+diff --git a/drivers/net/ethernet/intel/e1000/e1000_main.c b/drivers/net/ethernet/intel/e1000/e1000_main.c
+index d8595e84326d..292389aceb2d 100644
+--- a/drivers/net/ethernet/intel/e1000/e1000_main.c
++++ b/drivers/net/ethernet/intel/e1000/e1000_main.c
+@@ -313,8 +313,7 @@ static void e1000_update_mng_vlan(struct e1000_adapter *adapter)
+ 		} else {
+ 			adapter->mng_vlan_id = E1000_MNG_VLAN_NONE;
+ 		}
+-		if ((old_vid != (u16)E1000_MNG_VLAN_NONE) &&
+-		    (vid != old_vid) &&
++		if (old_vid != E1000_MNG_VLAN_NONE && vid != old_vid &&
+ 		    !test_bit(old_vid, adapter->active_vlans))
+ 			e1000_vlan_rx_kill_vid(netdev, htons(ETH_P_8021Q),
+ 					       old_vid);
 -- 
 2.47.2
 
