@@ -2,86 +2,90 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F576B0F68C
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Jul 2025 17:08:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 151AAB0FB21
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Jul 2025 21:50:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A9F9C40826;
-	Wed, 23 Jul 2025 15:08:45 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 914C3412BE;
+	Wed, 23 Jul 2025 19:50:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id gh0CHF8GKAFu; Wed, 23 Jul 2025 15:08:45 +0000 (UTC)
+ id yEepdAQ-uhHZ; Wed, 23 Jul 2025 19:50:39 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BEA5540843
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6E845412C5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1753283324;
-	bh=ZKbZ8cnQOOtrgfGFkg29kEiIrGzXYKMrp4uzCCBKFmk=;
+	s=default; t=1753300239;
+	bh=MSN5oDyythOLuinb0IG27KapVbySgS51yT8RwugRQeg=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=OQ/xoAnZ0j8C221e59NZAYd0XSHY4W0omRZd0BnoiqtisM+DUxEdd+BeUVcNAlQfQ
-	 kF7NxWRpiv7bjE0rtRjToCqxHY6aVucAab49RZb+BFPkD9hujOMRCHZOk8HfvlwQdp
-	 5s8ZspH39H5/5DX2nhdRgU1g6fdfZBEkpi5vVcFqjgD8vCSyuNOiSHmJ6K7nHnXmGM
-	 gQmgc/YryCvkc/4MYo5X97S5lFUsbZpCXthdKxsAFohHdbvVqKAwdHa3RYYsSkxgqJ
-	 5l26QUg1MYIlzH/OattUO0mfIDvhgGqE7u3OVyEU0LqKuSDUT9v03vuWu0PHNl5SlD
-	 RaWJx0fCADVJg==
+	b=24F5GD0eqZX57q1uuBfw59S1oL5Gr0GcYygDF6aFyTb877+QCAMYM8+yc53Q6GYvU
+	 lnbCrVv54dIAYaAoc0dx38XQwGfQsJr2R70bz38h+vwhJHSD8WyH/MQDQZGvRxO8xL
+	 2LmTyYJndit4C1d985+M7VCvgEJA1Ib68nAYFx0LaMTYbDGCghgRuAZDa2c4Z2yS0k
+	 Uu2RdXtL0b1SOVjv/isp+DmQZcQnSqKv7WJq6A4VYxTsw2MHFZMotNi9h0RIzdh1Uj
+	 BSC06IXxd+1pUGjJtgVl8E2wjqPB74gNa/IRgAtEonzRX4xtj9FfMpBsT+1xQx/5sn
+	 Q8fC+ndMWwPyg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BEA5540843;
-	Wed, 23 Jul 2025 15:08:44 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6E845412C5;
+	Wed, 23 Jul 2025 19:50:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id C735DCD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 15:08:42 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id C708DE0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 19:50:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B8F9360E5B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 15:08:42 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id B9014403B6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 19:50:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id q1RHnbcxYsfy for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Jul 2025 15:08:41 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 5Xpac2y75ol2 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Jul 2025 19:50:37 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
  helo=tor.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 92D9B60E58
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 92D9B60E58
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org B95454018F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B95454018F
 Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 92D9B60E58
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 15:08:41 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id B95454018F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 19:50:36 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id EA016601D1;
- Wed, 23 Jul 2025 15:08:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C75B0C4CEE7;
- Wed, 23 Jul 2025 15:08:38 +0000 (UTC)
-Date: Wed, 23 Jul 2025 16:08:35 +0100
+ by tor.source.kernel.org (Postfix) with ESMTP id 0C103600AC;
+ Wed, 23 Jul 2025 19:50:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4CE5FC4CEE7;
+ Wed, 23 Jul 2025 19:50:33 +0000 (UTC)
+Date: Wed, 23 Jul 2025 20:50:31 +0100
 From: Simon Horman <horms@kernel.org>
-To: Joshua Hay <joshua.a.hay@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-Message-ID: <20250723150835.GF1036606@horms.kernel.org>
-References: <20250718002150.2724409-1-joshua.a.hay@intel.com>
+To: Jacob Keller <jacob.e.keller@intel.com>
+Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
+ netdev@vger.kernel.org, Anthony Nguyen <anthony.l.nguyen@intel.com>,
+ Kunwu Chan <chentao@kylinos.cn>, Wang Haoran <haoranwangsec@gmail.com>,
+ Amir Mohammad Jahangirzad <a.jahangirzad@gmail.com>
+Message-ID: <20250723195031.GN1036606@horms.kernel.org>
+References: <20250722-jk-drop-debugfs-read-access-v1-1-27f13f08d406@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250718002150.2724409-1-joshua.a.hay@intel.com>
+In-Reply-To: <20250722-jk-drop-debugfs-read-access-v1-1-27f13f08d406@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1753283319;
- bh=6ac3yCnZRiKybVgrw6uQZVIG3hlH9OMCgFZI/ldwaNg=;
+ d=kernel.org; s=k20201202; t=1753300234;
+ bh=LGcjkGATmLPxpS7ECi/3/0+JXTkhYN+AR1f9tzDK3sk=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=pCcuC1j4/HvMAX6yDgfCynzSqRMJKiz6BFuNsLjc4qnyCMxvg59LqbpoKMD4FFxoe
- Aah0Xn5Q3OO0fstFULQZANvHkTSSLTXmWkJnsv2Ipz5ZUyVWd4JYI0tzdi6iH4wzNF
- 2oxLvqVobo73qklxtrhDb8rajRKlXJjD4KX9ZT3gptbG9PQpHx5ANNnX0ldmD1OKvX
- BTyINyWt8LLZQsJFJqSmKCY1fIyVBEzUH++/W4clUsc87UQN/28sc84ScqM8meLwQR
- 7H82UuRfdO3gmvW0751Hm1RnzzpjR9kz1nx5SqjcU6FJDVhdevS4YFGYm44nEaJYlg
- W2uslGEdGJZVg==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=jXEklpbbz1tX/sWH4sr5sIuFdPCdKy5ivOc5P4MdWN1vntWPag9nEgzjxkfQ2aMJV
+ yz2qW+J5Q0+sAen9aEY2P9dehdzOYmcirGronbeXeVv3IrD/xeDTqUL1wLffAjsyiT
+ O1iDFQnnFGyzdJTwt+I8TuL1C9hB/XfRkT1JbfZ5napwqGwAxcndkY+xs2A5bgc9Lj
+ pyPUO+BGPyhDLiQP0qQyrrFICIwECbU5DbwGfnb9AGWEAPiPfOTKhCpMl7a0piWa7z
+ 3jfrLFDrZD8mrqofgVSI5hOosDyliRQhCxFeg2lpZU2fcT35mV+bVS2hMcCC8UXDol
+ zxsTABQkcKt/w==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=pCcuC1j4
-Subject: Re: [Intel-wired-lan] [PATCH net v2 0/6] idpf: replace Tx flow
- scheduling buffer ring with buffer pool
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=jXEklpbb
+Subject: Re: [Intel-wired-lan] [PATCH] i40e: remove read access to debugfs
+ files
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -97,55 +101,71 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Jul 17, 2025 at 05:21:44PM -0700, Joshua Hay wrote:
-> This series fixes a stability issue in the flow scheduling Tx send/clean
-> path that results in a Tx timeout.
+On Tue, Jul 22, 2025 at 05:14:37PM -0700, Jacob Keller wrote:
+> The 'command' and 'netdev_ops' debugfs files are a legacy debugging
+> interface supported by the i40e driver since its early days by commit
+> 02e9c290814c ("i40e: debugfs interface").
 > 
-> The existing guardrails in the Tx path were not sufficient to prevent
-> the driver from reusing completion tags that were still in flight (held
-> by the HW).  This collision would cause the driver to erroneously clean
-> the wrong packet thus leaving the descriptor ring in a bad state.
+> Both of these debugfs files provide a read handler which is mostly useless,
+> and which is implemented with questionable logic. They both use a static
+> 256 byte buffer which is initialized to the empty string. In the case of
+> the 'command' file this buffer is literally never used and simply wastes
+> space. In the case of the 'netdev_ops' file, the last command written is
+> saved here.
 > 
-> The main point of this refactor is to replace the flow scheduling buffer
-> ring with a large pool/array of buffers.  The completion tag then simply
-> is the index into this array.  The driver tracks the free tags and pulls
-> the next free one from a refillq.  The cleaning routines simply use the
-> completion tag from the completion descriptor to index into the array to
-> quickly find the buffers to clean.
+> On read, the files contents are presented as the name of the device
+> followed by a colon and then the contents of their respective static
+> buffer. For 'command' this will always be "<device>: ". For 'netdev_ops',
+> this will be "<device>: <last command written>". But note the buffer is
+> shared between all devices operated by this module. At best, it is mostly
+> meaningless information, and at worse it could be accessed simultaneously
+> as there doesn't appear to be any locking mechanism.
 > 
-> All of the code to support the refactor is added first to ensure traffic
-> still passes with each patch.  The final patch then removes all of the
-> obsolete stashing code.
+> We have also recently received multiple reports for both read functions
+> about their use of snprintf and potential overflow that could result in
+> reading arbitrary kernel memory. For the 'command' file, this is definitely
+> impossible, since the static buffer is always zero and never written to.
+> For the 'netdev_ops' file, it does appear to be possible, if the user
+> carefully crafts the command input, it will be copied into the buffer,
+> which could be large enough to cause snprintf to truncate, which then
+> causes the copy_to_user to read beyond the length of the buffer allocated
+> by kzalloc.
 > 
+> A minimal fix would be to replace snprintf() with scnprintf() which would
+> cap the return to the number of bytes written, preventing an overflow. A
+> more involved fix would be to drop the mostly useless static buffers,
+> saving 512 bytes and modifying the read functions to stop needing those as
+> input.
+> 
+> Instead, lets just completely drop the read access to these files. These
+> are debug interfaces exposed as part of debugfs, and I don't believe that
+> dropping read access will break any script, as the provided output is
+> pretty useless. You can find the netdev name through other more standard
+> interfaces, and the 'netdev_ops' interface can easily result in garbage if
+> you issue simultaneous writes to multiple devices at once.
+> 
+> In order to properly remove the i40e_dbg_netdev_ops_buf, we need to
+> refactor its write function to avoid using the static buffer. Instead, use
+> the same logic as the i40e_dbg_command_write, with an allocated buffer.
+> Update the code to use this instead of the static buffer, and ensure we
+> free the buffer on exit. This fixes simultaneous writes to 'netdev_ops' on
+> multiple devices, and allows us to remove the now unused static buffer
+> along with removing the read access.
+> 
+> Reported-by: Kunwu Chan <chentao@kylinos.cn>
+> Closes: https://lore.kernel.org/intel-wired-lan/20231208031950.47410-1-chentao@kylinos.cn/
+> Reported-by: Wang Haoran <haoranwangsec@gmail.com>
+> Closes: https://lore.kernel.org/all/CANZ3JQRRiOdtfQJoP9QM=6LS1Jto8PGBGw6y7-TL=BcnzHQn1Q@mail.gmail.com/
+> Reported-by: Amir Mohammad Jahangirzad <a.jahangirzad@gmail.com>
+> Closes: https://lore.kernel.org/all/20250722115017.206969-1-a.jahangirzad@gmail.com/
+> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 > ---
-> v2:
-> - Add a new patch "idpf: simplify and fix splitq Tx packet rollback
->   error path" that fixes a bug in the error path. It also sets up
->   changes in patch 4 that are necessary to prevent a crash when a packet
->   rollback occurs using the buffer pool.
-> 
-> v1:
-> https://lore.kernel.org/intel-wired-lan/c6444d15-bc20-41a8-9230-9bb266cb2ac6@molgen.mpg.de/T/#maf9f464c598951ee860e5dd24ef8a451a488c5a0
-> 
-> Joshua Hay (6):
->   idpf: add support for Tx refillqs in flow scheduling mode
->   idpf: improve when to set RE bit logic
->   idpf: simplify and fix splitq Tx packet rollback error path
->   idpf: replace flow scheduling buffer ring with buffer pool
->   idpf: stop Tx if there are insufficient buffer resources
->   idpf: remove obsolete stashing code
-> 
->  .../ethernet/intel/idpf/idpf_singleq_txrx.c   |  61 +-
->  drivers/net/ethernet/intel/idpf/idpf_txrx.c   | 723 +++++++-----------
->  drivers/net/ethernet/intel/idpf/idpf_txrx.h   |  87 +--
->  3 files changed, 356 insertions(+), 515 deletions(-)
+> I found several reports of the issues with these read functions going at
+> least as far back  as 2023, with suggestions to remove the read access even
+> back then. None of the fixes got accepted or applied, but neither did Intel
+> follow up with removing the interfaces. Its time to just drop the read
+> access altogether.
 
-Hi Joshua, all,
+Thanks for the excellent patch description.
 
-Perhaps it is not followed much anymore, but at least according to [1]
-patches for stable should not be more than 100 lines, with context.
-
-This patch-set is an order of magnitude larger.
-Can something be done to create a more minimal fix?
-
-[1] https://docs.kernel.org/process/stable-kernel-rules.html#stable-kernel-rules
+Reviewed-by: Simon Horman <horms@kernel.org>
