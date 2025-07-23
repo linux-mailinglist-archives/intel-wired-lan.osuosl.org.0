@@ -1,105 +1,99 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F4CDB0E7AE
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Jul 2025 02:46:12 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 34CC4B0E7BF
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Jul 2025 02:57:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3DAC060ACA;
-	Wed, 23 Jul 2025 00:46:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D68DE80B21;
+	Wed, 23 Jul 2025 00:57:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id eil_ZfO8uzVi; Wed, 23 Jul 2025 00:46:10 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id FXmeOVwd_q1x; Wed, 23 Jul 2025 00:57:41 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2C76960AE2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D77D680B22
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1753231570;
-	bh=EzVYKRPUoLMbZhMXhnqZLUvf4Ph0hmmnJRRw1r0LqQQ=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1753232260;
+	bh=x3FL8Gxb1ISuG718kL3NTt/SlchHD/k8VwiZPUBoC/s=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=7pOtGKKnD8k/7Fhp5VNqZuEEOWFjThHXMnI6HN4mb8TI4P9Y3K3ms/BGIQ9nqUpuG
-	 sxk4SjrMrXBZHhD4AR6TIzyKNXSoJz1PuaPpIMYJ7P2Uno5x0KLw+Aogwc4GOf5/bW
-	 djxo9CxdodChmT10g0Fv0BKBfouneMgeP63QcYD7HRCX4OvkDgOFB94rDfm3si9VWc
-	 ZKnqi1RiVKCWBUPGdHo+Aao5oJ26a+isV349iH+juhCXEtfl8WGbPubEX4hM7BgurW
-	 7E5TUtseyEW5Ury/+8yh3goO/7rhemWb4giPLnL0Kx5Yj5kRws6IiymF33JzB96rZk
-	 +2Ec6p1QIWM4Q==
+	b=Kw6wTlAs6pxzW7XCl7ApfFXlHtKM57F2z9OO2vBoSRLj3VYJ70/thhsc3oBbcuQ0y
+	 UZM/2vObjvqbF7/+ZGj/mp/rnvWMoXsuhJ8OzPZ0VQ11MT9waUYS5Fc4QWLTF33m7b
+	 9WHlFsfHw9l0R5EH9AQAyNgHKpfjoOWBZmDrL5KteBSKuUa5NydJzyi7wFuYCq9B74
+	 gNxfXECNBpSp2LOl+jd2/9l30yO9ac6BLh3mIb8NNWZmkzDydW9nF0k0eeEXDhbmJc
+	 x9EBjC5hFs63H4HE2VHlyuMenefmp41+Wz+8P6GKCx8diDjK8dHqC99ddQcVaQiyEr
+	 inu6porlAb3hQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2C76960AE2;
-	Wed, 23 Jul 2025 00:46:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D77D680B22;
+	Wed, 23 Jul 2025 00:57:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id CE2D7DA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 00:46:08 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 4BA08E0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 00:57:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B48FB4022D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 00:46:08 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 315FD40825
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 00:57:39 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pTBqSmkEBd3U for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Jul 2025 00:46:06 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 7CEF140365
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7CEF140365
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 7CEF140365
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 00:46:06 +0000 (UTC)
-X-CSE-ConnectionGUID: 8XJTK8z4TreqnyRqisfqIQ==
-X-CSE-MsgGUID: AFnc8fdwQpq7FugNPoeHkQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11500"; a="73070999"
-X-IronPort-AV: E=Sophos;i="6.16,333,1744095600"; d="scan'208";a="73070999"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
- by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Jul 2025 17:46:06 -0700
-X-CSE-ConnectionGUID: gP2NMNzdQ0qN6ZacAGwNYw==
-X-CSE-MsgGUID: S+cN/JPRQpSdoF+7BjI3UA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,333,1744095600"; d="scan'208";a="163521129"
-Received: from lkp-server01.sh.intel.com (HELO 9ee84586c615) ([10.239.97.150])
- by orviesa003.jf.intel.com with ESMTP; 22 Jul 2025 17:46:04 -0700
-Received: from kbuild by 9ee84586c615 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1ueNcP-000IpX-1p;
- Wed, 23 Jul 2025 00:46:01 +0000
-Date: Wed, 23 Jul 2025 08:45:06 +0800
-From: kernel test robot <lkp@intel.com>
-To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- intel-wired-lan@lists.osuosl.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
- netdev@vger.kernel.org, przemyslaw.kitszel@intel.com,
- dawid.osuchowski@linux.intel.com,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Message-ID: <202507230823.PGjL5fXz-lkp@intel.com>
-References: <20250722104600.10141-16-michal.swiatkowski@linux.intel.com>
+ id XgEiWHsmB8SX for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Jul 2025 00:57:38 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
+ envelope-from=sashal@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 68FD44059F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 68FD44059F
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 68FD44059F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 00:57:38 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id CF583668BB;
+ Wed, 23 Jul 2025 00:57:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5DD02C4CEEB;
+ Wed, 23 Jul 2025 00:57:34 +0000 (UTC)
+From: Sasha Levin <sashal@kernel.org>
+To: patches@lists.linux.dev,
+	stable@vger.kernel.org
+Cc: Arnd Bergmann <arnd@arndb.de>, "David S . Miller" <davem@davemloft.net>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Sunitha Mekala <sunithax.d.mekala@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Sasha Levin <sashal@kernel.org>,
+ przemyslaw.kitszel@intel.com, intel-wired-lan@lists.osuosl.org
+Date: Tue, 22 Jul 2025 20:57:16 -0400
+Message-Id: <20250723005722.1022962-3-sashal@kernel.org>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250723005722.1022962-1-sashal@kernel.org>
+References: <20250723005722.1022962-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250722104600.10141-16-michal.swiatkowski@linux.intel.com>
+Content-Type: text/plain; charset=UTF-8
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.15.7
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1753231567; x=1784767567;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=7XyjFlMsulsdWRKzxiiAS8MziCD9vuAz5vMiVUvsDrE=;
- b=ZK3X9fZj810VLSHh/KDBBJGWCeLKydxBefD2ggNEYGaQ/isQH7ybbz6l
- gZK3xEqaCMU4q5eN4k1jmse5ve4tTRPcIZz6s2elYPSu0IwkdSb+hA0FK
- i6zJ4dBQk0bCX015N5KibKneU6SfeeGNmU1IU/DgaPEoQYhEyxG958l4t
- 6ODptpzojyUj86m1XTNU3D+Y24RCysSGAW0Igusnwbbbk7cEG89j3tdMu
- moHbS1qMRH3W8Sp3Pv1ih+yqBOAYBASYhBFMVK0aFdb6o2BF9V27KDq/7
- cpvgWLHCAetez/xc4Q71falp26iVmmkJzs4Q+6iqtQC4puGpBlfD7X5jb
- Q==;
+ d=kernel.org; s=k20201202; t=1753232256;
+ bh=eRGZgiepFENo5HzI1+vv24JQbE+Pcu1r/GeDZjn5IWI=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=WCShDo4UzAVzFOmmdj85IZ3y1EGIi8Jy9TIglHdTK4AjwKvkW/xRV2ZnOvsreUltF
+ WRvmGVwcb9Qev7yUHlVKhWh45twAE5xQeCat4J3/E+0+ieeNEOIJWMXUy3WEtCdX6X
+ oR3M/hw+3J+GqInP4VBo36GiBwSrcrrpTdOF4+PjZq4/GNAbRwXdlk+vYDiAMGsU0C
+ caRbN1bhOd5yT01Ys4+8Zhyytk1hDcPExbQ1JbA38ALrJ/rSGaqjdo2WuC+F+7g7Fe
+ lQs5HuA9bf0c42dtW4UnwWS3gwmK8NcfjSK55FanbDAgXZHyCHQ0Z54ChbxkOUtKc/
+ WXkVgyR1gUnuA==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=ZK3X9fZj
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 15/15] ixgbe: fwlog
- support for e610
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=WCShDo4U
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.15 3/8] ethernet: intel: fix
+ building with large NR_CPUS
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -115,34 +109,150 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Michal,
+From: Arnd Bergmann <arnd@arndb.de>
 
-kernel test robot noticed the following build errors:
+[ Upstream commit 24171a5a4a952c26568ff0d2a0bc8c4708a95e1d ]
 
-[auto build test ERROR on tnguy-next-queue/dev-queue]
+With large values of CONFIG_NR_CPUS, three Intel ethernet drivers fail to
+compile like:
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Michal-Swiatkowski/ice-make-fwlog-functions-static/20250722-191011
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-patch link:    https://lore.kernel.org/r/20250722104600.10141-16-michal.swiatkowski%40linux.intel.com
-patch subject: [Intel-wired-lan] [PATCH iwl-next v1 15/15] ixgbe: fwlog support for e610
-config: powerpc-randconfig-002-20250722 (https://download.01.org/0day-ci/archive/20250723/202507230823.PGjL5fXz-lkp@intel.com/config)
-compiler: clang version 22.0.0git (https://github.com/llvm/llvm-project 853c343b45b3e83cc5eeef5a52fc8cc9d8a09252)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250723/202507230823.PGjL5fXz-lkp@intel.com/reproduce)
+In function ‘i40e_free_q_vector’,
+    inlined from ‘i40e_vsi_alloc_q_vectors’ at drivers/net/ethernet/intel/i40e/i40e_main.c:12112:3:
+  571 |         _compiletime_assert(condition, msg, __compiletime_assert_, __COUNTER__)
+include/linux/rcupdate.h:1084:17: note: in expansion of macro ‘BUILD_BUG_ON’
+ 1084 |                 BUILD_BUG_ON(offsetof(typeof(*(ptr)), rhf) >= 4096);    \
+drivers/net/ethernet/intel/i40e/i40e_main.c:5113:9: note: in expansion of macro ‘kfree_rcu’
+ 5113 |         kfree_rcu(q_vector, rcu);
+      |         ^~~~~~~~~
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202507230823.PGjL5fXz-lkp@intel.com/
+The problem is that the 'rcu' member in 'q_vector' is too far from the start
+of the structure. Move this member before the CPU mask instead, in all three
+drivers.
 
-All errors (new ones prefixed by >>, old ones prefixed by <<):
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Acked-by: David S. Miller <davem@davemloft.net>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Reviewed-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+Tested-by: Sunitha Mekala <sunithax.d.mekala@intel.com> (A Contingent worker at Intel)
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
 
->> ERROR: modpost: "libie_aq_str" [drivers/net/ethernet/intel/i40e/i40e.ko] undefined!
->> ERROR: modpost: "libie_aq_str" [drivers/net/ethernet/intel/iavf/iavf.ko] undefined!
->> ERROR: modpost: "libie_aq_str" [drivers/net/ethernet/intel/ice/ice.ko] undefined!
->> ERROR: modpost: "libie_get_fwlog_data" [drivers/net/ethernet/intel/ice/ice.ko] undefined!
->> ERROR: modpost: "libie_fwlog_init" [drivers/net/ethernet/intel/ice/ice.ko] undefined!
->> ERROR: modpost: "libie_fwlog_deinit" [drivers/net/ethernet/intel/ice/ice.ko] undefined!
+LLM Generated explanations, may be completely bogus:
 
+**YES**
+
+This commit should be backported to stable kernel trees for the
+following reasons:
+
+1. **Compilation Failure Fix**: This fixes a build-time compilation
+   failure that occurs with large values of CONFIG_NR_CPUS. The error
+   prevents the kernel from building successfully, which is a
+   significant issue for systems configured with high CPU counts.
+
+2. **Root Cause**: The issue stems from the `kfree_rcu()` macro in
+   `include/linux/rcupdate.h:1084` which includes a
+   `BUILD_BUG_ON(offsetof(typeof(*(ptr)), rhf) >= 4096)` check. This
+   compile-time assertion ensures that the RCU head field is within the
+   first 4096 bytes of the structure.
+
+3. **Simple and Safe Fix**: The fix is straightforward - it moves the
+   `struct rcu_head rcu` member earlier in the structure, placing it
+   before the `cpumask_t affinity_mask` member. This is a safe change
+   because:
+   - It only reorders structure members
+   - The RCU head doesn't need to be at any specific location
+     functionally
+   - Moving it earlier reduces the offset from the structure start
+   - No functional code changes are required
+
+4. **Affects Multiple Drivers**: The issue affects three Intel ethernet
+   drivers (i40e, ixgbe, fm10k), all of which are fixed identically by
+   moving the rcu member earlier in their respective q_vector
+   structures.
+
+5. **Configuration-Dependent Bug**: This bug only manifests with large
+   CONFIG_NR_CPUS values (likely >= 512 or higher), where the
+   `cpumask_t` type becomes large enough to push the rcu member beyond
+   the 4096-byte offset limit. Systems with high core counts are
+   becoming more common in production environments.
+
+6. **No Risk of Regression**: The change is minimal and doesn't alter
+   any functionality. It's purely a structural reordering that maintains
+   all existing behavior while fixing the compilation issue.
+
+7. **Meets Stable Criteria**: This fix clearly meets the stable kernel
+   criteria as it:
+   - Fixes a real bug (compilation failure)
+   - Is minimal and contained
+   - Has no risk of introducing new issues
+   - Affects users with legitimate configurations
+
+The commit is an excellent candidate for stable backporting as it fixes
+a real compilation issue that prevents kernel builds on systems with
+large CPU counts, and the fix is trivial with no risk of regression.
+
+ drivers/net/ethernet/intel/fm10k/fm10k.h | 3 ++-
+ drivers/net/ethernet/intel/i40e/i40e.h   | 2 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe.h | 3 ++-
+ 3 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/fm10k/fm10k.h b/drivers/net/ethernet/intel/fm10k/fm10k.h
+index 6119a41088381..65a2816142d96 100644
+--- a/drivers/net/ethernet/intel/fm10k/fm10k.h
++++ b/drivers/net/ethernet/intel/fm10k/fm10k.h
+@@ -189,13 +189,14 @@ struct fm10k_q_vector {
+ 	struct fm10k_ring_container rx, tx;
+ 
+ 	struct napi_struct napi;
++	struct rcu_head rcu;	/* to avoid race with update stats on free */
++
+ 	cpumask_t affinity_mask;
+ 	char name[IFNAMSIZ + 9];
+ 
+ #ifdef CONFIG_DEBUG_FS
+ 	struct dentry *dbg_q_vector;
+ #endif /* CONFIG_DEBUG_FS */
+-	struct rcu_head rcu;	/* to avoid race with update stats on free */
+ 
+ 	/* for dynamic allocation of rings associated with this q_vector */
+ 	struct fm10k_ring ring[] ____cacheline_internodealigned_in_smp;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
+index c67963bfe14ed..7c600d6e66ba7 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e.h
++++ b/drivers/net/ethernet/intel/i40e/i40e.h
+@@ -945,6 +945,7 @@ struct i40e_q_vector {
+ 	u16 reg_idx;		/* register index of the interrupt */
+ 
+ 	struct napi_struct napi;
++	struct rcu_head rcu;	/* to avoid race with update stats on free */
+ 
+ 	struct i40e_ring_container rx;
+ 	struct i40e_ring_container tx;
+@@ -955,7 +956,6 @@ struct i40e_q_vector {
+ 	cpumask_t affinity_mask;
+ 	struct irq_affinity_notify affinity_notify;
+ 
+-	struct rcu_head rcu;	/* to avoid race with update stats on free */
+ 	char name[I40E_INT_NAME_STR_LEN];
+ 	bool arm_wb_state;
+ 	bool in_busy_poll;
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
+index e6a380d4929bd..fb43fba5daa1f 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
+@@ -505,9 +505,10 @@ struct ixgbe_q_vector {
+ 	struct ixgbe_ring_container rx, tx;
+ 
+ 	struct napi_struct napi;
++	struct rcu_head rcu;	/* to avoid race with update stats on free */
++
+ 	cpumask_t affinity_mask;
+ 	int numa_node;
+-	struct rcu_head rcu;	/* to avoid race with update stats on free */
+ 	char name[IFNAMSIZ + 9];
+ 
+ 	/* for dynamic allocation of rings associated with this q_vector */
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.39.5
+
