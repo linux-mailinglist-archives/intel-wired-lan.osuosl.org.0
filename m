@@ -1,240 +1,218 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 234FAB0EF6B
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Jul 2025 12:11:15 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C8F44B0EFF2
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 23 Jul 2025 12:36:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A695580E80;
-	Wed, 23 Jul 2025 10:11:12 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3I7eKq6sqlaJ; Wed, 23 Jul 2025 10:11:12 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CB5FB80E81
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1753265471;
-	bh=miZn/Ati0A3I48XmZJulhsst6aR3wWoyrCg5LAUq1IY=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=3tcY8ea6mqrdSN9kCXJK39wynKhOsE7TTNaT7sdSbhrw9KpnpblfiZlyJqQ2SDjfl
-	 rwWqvlmeRAKTeN9UAak0AFVA7Fb1awo+IPmxkSOpw350xpdRy2F1lwX+g/by61rlqv
-	 ef274jcD22syOHUveefa6WaUOngXwHG9F5ewjQGwtSjtRUFaI/mEg5iV/agoJFDvSc
-	 t0ZEtCQ8D2IyGxRtorpisD41DjNlxaOS0Efo1bJC7laqnmzDrJ1d4CvzXgTUHqYlrw
-	 6neGhJT+pE6T5LvWndFSCWE8fcEglpdfMnT4/OLF5+SHzdjAjbmGiP7MbvOHaiJABB
-	 AwZjTVbvBY7hQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CB5FB80E81;
-	Wed, 23 Jul 2025 10:11:11 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 0EB4EDA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 10:11:10 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id F1C69407F3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 10:11:09 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2DC8540F32;
+	Wed, 23 Jul 2025 10:36:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id f92E7qY7U35w for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Jul 2025 10:11:09 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
+ id 3mk8SJgCIqjN; Wed, 23 Jul 2025 10:36:42 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D2DF340F34
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1753267001;
+	bh=DwNVXXRJ/krHno529j0zwxU+EG4euEa0oeczIJEUNqI=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=gqiXuvvGiF7HG1/bNJPYnqYNTQP3xz2jRwM76xLvgBNwXEsWOCIjPIVF2XBChMrCz
+	 Ovwi41+xECZubA4uX37GlcdnixUYjZb75gtQojfNNtrdcOYMHqYMGEWxijp0JWPqgR
+	 OkqihUSVKSYZfv3YSKNkkPVFoEK7DXl4Ymys9vS9Gfn4AciATTeXyIUiXyWzv6it8M
+	 QwbngzRA9QL1Z9sUw3QD2TPahy4hBFNVyYbCRbQtwH/Z/WEHtLNzL67Op846n3TDMZ
+	 CUafD9SNlbB2dx7PU9Rdxi1q3dE7fWTD2nv5cn97LchMk4m2jqI2AaJz0miQCVQBtu
+	 eHNIicxk4xz9Q==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id D2DF340F34;
+	Wed, 23 Jul 2025 10:36:41 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id E5DD2DA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 10:36:39 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id D77C54006A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 10:36:39 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id zQXPhh4E3qAW for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Jul 2025 10:36:39 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
  helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4E4F2407D3
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4E4F2407D3
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4E4F2407D3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 10:11:09 +0000 (UTC)
-X-CSE-ConnectionGUID: Oe+hbo6XRgysL7WR8CYAiQ==
-X-CSE-MsgGUID: 2KY65EYpRJ+fMgD/egLm4A==
-X-IronPort-AV: E=McAfee;i="6800,10657,11500"; a="80989778"
-X-IronPort-AV: E=Sophos;i="6.16,333,1744095600"; d="scan'208";a="80989778"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jul 2025 03:11:09 -0700
-X-CSE-ConnectionGUID: cGjuzhDLR1iWl6aP/Gtylw==
-X-CSE-MsgGUID: JMzWV6rMTCmlhPatdF8JFg==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org DE225400FC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DE225400FC
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id DE225400FC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Jul 2025 10:36:38 +0000 (UTC)
+X-CSE-ConnectionGUID: HnA/BNGST0eHmbIbHMBvXA==
+X-CSE-MsgGUID: awDOtgU8RLCRPPj+v14t4w==
+X-IronPort-AV: E=McAfee;i="6800,10657,11500"; a="43164567"
+X-IronPort-AV: E=Sophos;i="6.16,333,1744095600"; d="scan'208";a="43164567"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Jul 2025 03:36:31 -0700
+X-CSE-ConnectionGUID: 2pX1d7BYSrKyw5sdmJj/aA==
+X-CSE-MsgGUID: 4I1wQ6lrSZm+xFeiFBhW8A==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,333,1744095600"; d="scan'208";a="159803711"
-Received: from orsmsx901.amr.corp.intel.com ([10.22.229.23])
- by orviesa008.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jul 2025 03:11:09 -0700
-Received: from ORSMSX902.amr.corp.intel.com (10.22.229.24) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Wed, 23 Jul 2025 03:11:08 -0700
-Received: from ORSEDG901.ED.cps.intel.com (10.7.248.11) by
+X-IronPort-AV: E=Sophos;i="6.16,333,1744095600"; d="scan'208";a="159167771"
+Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
+ by orviesa009.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Jul 2025 03:36:30 -0700
+Received: from ORSMSX903.amr.corp.intel.com (10.22.229.25) by
  ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26 via Frontend Transport; Wed, 23 Jul 2025 03:11:08 -0700
-Received: from NAM04-DM6-obe.outbound.protection.outlook.com (40.107.102.48)
+ 15.2.1748.26; Wed, 23 Jul 2025 03:36:30 -0700
+Received: from ORSEDG901.ED.cps.intel.com (10.7.248.11) by
+ ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26 via Frontend Transport; Wed, 23 Jul 2025 03:36:29 -0700
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (40.107.237.64)
  by edgegateway.intel.com (134.134.137.111) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Wed, 23 Jul 2025 03:11:08 -0700
+ 15.2.1748.26; Wed, 23 Jul 2025 03:36:29 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=jMj/unHa3Gb8K0WcfM+2fYXhCeTOWhL8mNiKMSevgS1B+4VKoq8NjWTv3yagpuvfFWe7OHtra7IFVorE5TN5LHdxem++DRU/kKQFgLeRp37XJCVsAoh8iK15xx/4A7TeZusoW31yMF9uA0wrFZ4mXLb1yGABh38BqBwPCVlBCch/wUGUBYFhdN0X9EPIczbV1XN2/mb4ZtueNjrkFY7V7wY4NfWSEulC8NBZhoIxOtB/RKRZVDXauld7jmCjeeQAlWzp8hS9pWVPObMJHvOoRY+XWrVG9oLIJtzADtOe/TkQgepsvD5sNFQLXngcLnWF0kcgIFaTUvRLHwgsgaUo/A==
+ b=PFkztPMKqsk0ZPLFTA6ebLspOR8nS5UQNroNXxbGKCnrbdfRx35hXgEYWlknMZK6hY9EGC6GYJHJfAUciqRmZB5OdsZDZjNQ+jNdBgWY87mNNB73aueX+iPstzR+70CdY2oxHH2yEiJJHP6awCnqIMN2V0kT/O3/S8/kZuIv3ebJabWZGH/zyG4iefUrRPhq5bJkGpBpkE7yXtiD9USb/IfCS9dobafshiYSVKpHstnX5tG7cJXP8zWAkf0k4TL58b7p3DQE1pz9tTU7RR4qJzk0t1KL8SvaHYyHxUaHdoQPdoPINB/xwOujoP8m7X5uf3kqaHx92NMbysrk8ERrqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=miZn/Ati0A3I48XmZJulhsst6aR3wWoyrCg5LAUq1IY=;
- b=HiS9TDQkYxXfcEknTsNPmMv6iI0rsoc2Q6ybkfLdOz41rpeNRNbyCnY5x6JRPJ3Dn12YqU41WK7eX2o5kCZPtGWYuvpSsuBp8jdvAH1oH8vkRyui4F3cE4ldnHacarzdcv5zVF0uqOHGg91c/j8DAOigAEnlU4hzF//p8KIKUPKaFGD1A8zXAWzPYzNGs+qdZIWn2Akm3NS9wX9sSjZn+XE8yAv+JFKMYKPgYXs5hLiqnG9cpthN7b7fgSTgvSn/hcAbZdwXoXxw3UPVukgZ5Myfw1ZE9JbMKydTvmI7s4DDG+Px+HXMkHkOd4vEOkD9RiSa+mDtj/mm4vYKcoI2cQ==
+ bh=DwNVXXRJ/krHno529j0zwxU+EG4euEa0oeczIJEUNqI=;
+ b=GRbQwL8C2X3Ctzv6bss5n92uDe/tFlMhZ/fGi1ZcUpO8xipG9YwusjBvryWLRAWMIUoAC7McHSuVdHefhMU2qeNeIQ4WugXrt5w34Du0KB2SNulnl1YggnkbrWXFX/Emyc9IguQEBcXh0LgwXEFtNLicUHyOzQXqdrZOtBdW5I/2fAxb2BFx4ev72c9t2V8hTVddxO9uEvD62A+6xC8DE6OkILfz37ROmlD+tsKDbNDglFZbEP2XFrztN9cyy25mJ0xrWHl626+iTD3iZMsssAZl2dB5te3YadQxoUugC5aIvhD37cu+Oci9SyhMhpMsUgF6mhHA+pQcsbSoYN9rjA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Received: from IA3PR11MB8986.namprd11.prod.outlook.com (2603:10b6:208:577::21)
- by DS4PPF409BB8CE8.namprd11.prod.outlook.com (2603:10b6:f:fc02::21)
+ by IA3PR11MB9276.namprd11.prod.outlook.com (2603:10b6:208:572::19)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8922.39; Wed, 23 Jul
- 2025 10:10:38 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8943.25; Wed, 23 Jul
+ 2025 10:36:27 +0000
 Received: from IA3PR11MB8986.namprd11.prod.outlook.com
  ([fe80::395e:7a7f:e74c:5408]) by IA3PR11MB8986.namprd11.prod.outlook.com
  ([fe80::395e:7a7f:e74c:5408%4]) with mapi id 15.20.8922.037; Wed, 23 Jul 2025
- 10:10:38 +0000
+ 10:36:27 +0000
 From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
-To: Jacek Kowalski <jacek@jacekk.info>, "Nguyen, Anthony L"
- <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
- <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David
- S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "Jakub
- Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Simon Horman
- <horms@kernel.org>
-CC: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>
-Thread-Topic: [Intel-wired-lan] [PATCH iwl-next v3 5/5] ixgbe: drop
- unnecessary casts to u16 / int
-Thread-Index: AQHb+6+hvQpvsxfyJE6shbPf2+xpj7Q/fJ+Q
-Date: Wed, 23 Jul 2025 10:10:38 +0000
-Message-ID: <IA3PR11MB89861CD793372D790961D65AE55FA@IA3PR11MB8986.namprd11.prod.outlook.com>
-References: <2f87d6e9-9eb6-4532-8a1d-c88e91aac563@jacekk.info>
- <9e21249d-b5a7-4949-b724-e29d7b7ea417@jacekk.info>
-In-Reply-To: <9e21249d-b5a7-4949-b724-e29d7b7ea417@jacekk.info>
+To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+CC: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Kitszel, Przemyslaw"
+ <przemyslaw.kitszel@intel.com>, "dawid.osuchowski@linux.intel.com"
+ <dawid.osuchowski@linux.intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH iwl-next v1 05/15] ice: add pdev into
+ fwlog structure and use it for logging
+Thread-Index: AQHb+vjSJq82MJccXk2rlRKhyzGL5bQ/hT0w
+Date: Wed, 23 Jul 2025 10:36:27 +0000
+Message-ID: <IA3PR11MB89866C84FFEC1183637926B9E55FA@IA3PR11MB8986.namprd11.prod.outlook.com>
+References: <20250722104600.10141-1-michal.swiatkowski@linux.intel.com>
+ <20250722104600.10141-6-michal.swiatkowski@linux.intel.com>
+In-Reply-To: <20250722104600.10141-6-michal.swiatkowski@linux.intel.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: IA3PR11MB8986:EE_|DS4PPF409BB8CE8:EE_
-x-ms-office365-filtering-correlation-id: 90afe162-aa6c-4e1b-a882-08ddc9d12c3c
+x-ms-traffictypediagnostic: IA3PR11MB8986:EE_|IA3PR11MB9276:EE_
+x-ms-office365-filtering-correlation-id: 21c90e36-16f6-45ae-cb77-08ddc9d4c78a
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|376014|1800799024|921020|38070700018; 
-x-microsoft-antispam-message-info: =?utf-8?B?SWFEYjNVVkFQTVJMVkZMcWN1eFd1Yi93aTFFMkVCZ0NOL2QvNERMRGo2aDMz?=
- =?utf-8?B?NTJIU2Z1VmhaYllmMnJsd2dQRmNsMnhCMHVOMWluR3pmZWZOQjhvRTFSRXpj?=
- =?utf-8?B?MWp2MFF5R0Vib25tOVIvUVExNWZoRm9YWUpJMlNuTjhDTFg5c1MvUXZycmtV?=
- =?utf-8?B?LzNOcERsK0lPOGJXYkRORG8xekVXWnJMYnEyUHNydlBoZDduQ204N3RqbHV2?=
- =?utf-8?B?UTEzb3JiWjVzbGpaOWw3TUVCZmg4VU55SXgzQ2xuaVZ4R00wOUZSZXB4Rjk4?=
- =?utf-8?B?TVF6TXkyZjBzMndaWDF2bk5NalUrcnBxWkRXTlREcFZkZ201aXRnMitPUy9i?=
- =?utf-8?B?RDJNVGRlVWFHV1ZVSjJqZk9UYjNqbHJRU294YXRzL1B0Z0I5S2pOYUV6cVd1?=
- =?utf-8?B?aHBRMmxscmNjV1RNYmpGT0N6Y1p0cEtUYUszNTdmSlJWekpTRlROd1NTMHhR?=
- =?utf-8?B?eTBQaGF4S0NGcmgvRG9MRzJ1Z2lMTHFTbUxIclllT1lCVWFxbWhTUDJ1TjZS?=
- =?utf-8?B?NW9PbDVITm5KbzFGKzFPczJkWGRCQ2lTUTRaRGVBSXBGZUFzZ0czb2VWbSty?=
- =?utf-8?B?L2tlWkgyaWZXdHJTZXdQcE9qSkJWUzV0QVJoMDBramVZS1dPd2xVZm1xdUN1?=
- =?utf-8?B?VVF1VmxtMWVDS2dkVTJYcVJXMTEyY3ZDbEhkNDRaMm5va2tvc1JQdnAramlC?=
- =?utf-8?B?ZER3cnBTSlBBeU5SMk9FRktLQWxZcEgvZmNzejR2UXo0b09WSENuUkZQdGJU?=
- =?utf-8?B?RURwTEdtUUZFckd0VlVsMm5hQVBQL1RKK1R3V25HV3RlT2JHU05RYUV6WnJG?=
- =?utf-8?B?T2M1WGRIcm9qb0R5SnNiN0k0SDZoYnhvWld5REdlRFdobzV0QlRkU2VseFlK?=
- =?utf-8?B?TGZrc1BiLzBYSzJPajRzM0FrU2M2ZnpnQksycWdXeVN0NnptRXAxUWFzSHpj?=
- =?utf-8?B?TWhZSnlkRm8va1RMbHRaSVN2d1Q0ZHBOeXhQeGNob0FWS2xwYlpyV3U3cjBa?=
- =?utf-8?B?d3FmYTRWTXQzalJkSE5ua3JwdXNtMFJnNjVvVWVCaXJuN1JkN3g3Y1BFcC80?=
- =?utf-8?B?L1g1Sk5kQ2VSRXhaMjROelF1Y2c2VzJQK3VEZzlVY1Nrb3hSL0dMN2kwQkpx?=
- =?utf-8?B?VXRoWnpoQ1VsMDVHVFB4ZFY2U2dHdUM0Tkw1bk9kaCtqbStWV1E5RmRKMTk0?=
- =?utf-8?B?VURpc29pQTBQZXdGdVFOdDBIV0J4bE1BK29EUmlWUnl0dkxpa3U5VzZuSjVH?=
- =?utf-8?B?RnpYVWZ3L0VXRXIzRnlZSEMwWEU3Yi8vTWxJUjJ1ZENrZ0JWeU1WUjIvS0NZ?=
- =?utf-8?B?cEFZK1NhMzBGRm1TcHk2MkVFYU9wM2VNdmpIc0NaRjErWUhiWjlnV3oxM0Fp?=
- =?utf-8?B?S2RtVXRFV0VQZmJyRzZ2c3JHR2FhWmdrS3UwQ094VHo0Tkx1RmVSak0zV1BW?=
- =?utf-8?B?cEwrMWgxbTFYTzJEdkl5NlpSNXFiakZ1V3VPVE9aL3JFQ2xKdE1oVEdac3pC?=
- =?utf-8?B?K1krZ3d4MHl5ZEt3VGpaTjVTeThYclRYVEprdnYrTkQxSnVTUEd0MEJmclNR?=
- =?utf-8?B?Y0dCd09iY2dlR1BJdEt3VzIrMHFzT0hlMVRpblpNRUEyL3JnenBrV095K2F5?=
- =?utf-8?B?SVZjTHQrSlJ4dEJGczN2bDl2S3NUTzkyRUQxS0drL2FucVJJU0tWQXhsRlZy?=
- =?utf-8?B?aVhnSEJpNW1UNEdsNGxQYXF2RFNJSWY0bEN3SWRnQmNKdXhWWmw0czZISlp5?=
- =?utf-8?B?R0lQOEpDM3FkZzUvV0k0ZlJrQzd3ZzVZWnVaeWhOMHIzbmkvSEZydmNnWGhY?=
- =?utf-8?B?Wlk5MS9DRWsxaUx0UDhvdFJqR1hYeGxadVp0ZHFQZmVWMVgwRHJxa0dCYWts?=
- =?utf-8?B?NlBENm1GTlJPSkF4YlhRd2ZQQlZCQWNlUXRRa3hja25ucU1sOEtNWFA3Yml3?=
- =?utf-8?B?UkY0NE1JU3ZRNWFKYkhCeHFrMGV1SHBmR3BjOWo0R1pYMXZVUzAxMUlmOWJz?=
- =?utf-8?Q?xCmOulYcp5KgtnZoJCzBjKXyrSrrjs=3D?=
+x-microsoft-antispam: BCL:0; ARA:13230040|366016|1800799024|376014|38070700018;
+x-microsoft-antispam-message-info: =?us-ascii?Q?yxlpF3Cn3ymtRGMfksDkS8ReKh+YKyWDrtDRVaD2glriVaDCxWPzl8AE64G0?=
+ =?us-ascii?Q?seEwRXb1OSIHGaD9+wdC1fjYrODpkWTvSh6rogoYwVDBl7lPVmrkmFV2qjTZ?=
+ =?us-ascii?Q?4ASMhG75tXHBUKSw5pLLt3GNMeKEmbvooJa4ZNHOBsyABbbKw8qM1AQKYTci?=
+ =?us-ascii?Q?YWrGI5VXwoyQ5+F2KlVwchKDDTAlwFL7kn80O63hMjK3kxI6TPLDkYTjgmjb?=
+ =?us-ascii?Q?bz2flBlYktPOaP4FmyOUHO+NQv+SZwdVRGmSNer+Oll0VFd1YE33MEmG+5BS?=
+ =?us-ascii?Q?ILWBOxMnMCGftDEwdEPlbne3sPgwxD1xlI8X3S2VWJyVWNxuNOgxtDenrG2x?=
+ =?us-ascii?Q?kmM/PCgyaAOdA8nXJiPDrtXcE6UlbhiARuHHNyhWajkcJzyXA6sJKHFqFLre?=
+ =?us-ascii?Q?eqgOoF/9pmp3W+qellKE1qRGRuZGHqPUqty4HoQ+cv5N45VvXRk5vFwnA0f0?=
+ =?us-ascii?Q?0F+h6H+NKPYhDy897m9xwnWSvsk5BPbyTLQJaw7R8XRjuHp62WoeQC4abVg8?=
+ =?us-ascii?Q?W8Gx8qRy8VzhLsc1mwKzeJPPz+Sgn8H1aqj53gxCz4WaK+eA5YVXETq9rZCV?=
+ =?us-ascii?Q?XStrxYHJhGrxuNoNOy3HnrolPIAY7K7l1ylZ4+oL9T6or4fL0XqKIfgW7g4B?=
+ =?us-ascii?Q?0hB9edMnvVEPJsTwzGHKs6IYMAHtcIqws+s93dBoyzfFZjJuEq5uZBwp4OpE?=
+ =?us-ascii?Q?l7RijevvOizllyRB+NzOyfu7/sSyP7SILt2eGIg8HdKKRtDlBEJMOwgiw4tr?=
+ =?us-ascii?Q?tMk4jw6VpmtEd+Ridk73Zymdvurn0WoMS8+iLCi/VlBfxEQbqZ+jbBcMik4Z?=
+ =?us-ascii?Q?XirFUhdvmM8tRn/mhoWDVbCzeaPOFS4QTKC3qkEnl5SFXwiFO99nkmWGe7fn?=
+ =?us-ascii?Q?JyGlOsSFEh7Q06a4+hCyzJtjzJ06ua8kiEpQ4z4r5nRuqcnFFBBG+JDnasBl?=
+ =?us-ascii?Q?Mc3hZBqP0kSgvkW3s5+soFKbMJzuBd0xjtxhYS0QNeOBecAHZsmAHI1MCqWv?=
+ =?us-ascii?Q?P6Mau0mK0D0vQ7vl25zEAkz5aENk+/Ac0kUtjxbJk73rkiH3rp4I+pFdMZ84?=
+ =?us-ascii?Q?B/aItVshkFj1tP/x15h9SHzyDXfYNt6RFuGgQYqb5DJzg1RdwybThuGzqoN4?=
+ =?us-ascii?Q?O8hTpyKuRd9v5lUwuOBBKuXfWukHNQkX7nYeBBCQGGVVb2XPCCA+xJdZDhfY?=
+ =?us-ascii?Q?O2XzewKMjItcHl1NxArtNhlgywaBWxLTpGgdqeERkFgL1lLw+qI5AQOnnGnq?=
+ =?us-ascii?Q?XFtjU0GYF4cpUwrwcbrs3B5aJSH0Ti0O/MJg0QdaqXOGA60Lbx34zjk4meAs?=
+ =?us-ascii?Q?ITia6cafV/o0t+NKlPPych0XZFYOfrhZHU/LSHxn3aWWxjXHOJekoLCOYm9r?=
+ =?us-ascii?Q?JpxbPNrBdCESCZN4p4xvfi/7SdCJoU8cFCf6PphkE0iD4fSV5e2S6K8VN3Gy?=
+ =?us-ascii?Q?k/KjrID2m6SWMcayis+fmolUwP8Ou8VZgYHaUZ8sjB3LOoMfOmWeHYgeC8Qu?=
+ =?us-ascii?Q?BEe5LmEz0OoER0I=3D?=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:IA3PR11MB8986.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(376014)(1800799024)(921020)(38070700018); DIR:OUT;
- SFP:1101; 
+ SFS:(13230040)(366016)(1800799024)(376014)(38070700018); DIR:OUT; SFP:1101; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?YXdLMGljVm1KY1JTR2tWY05CVHdRQ0doaE5CMkEwU0NRSTVOUlFTVmUzRUhY?=
- =?utf-8?B?VVQveHNPNCtIN1Bwcm5OQVZDT1VEdk05KzhCOUZvVmlCa0toNHJ0VTQyVEsv?=
- =?utf-8?B?Q3d2ajRVbFYrVlFIbU03ZEw1dEQwMEtuVnYvSUlpZ1pDT2lHY2c5QXJyUlQ3?=
- =?utf-8?B?TzFCUDJaczZHQ0ptS2hWNU1ISFhKeTh4b2VwZ0xEL3JwbXoyZUlpTktncW1J?=
- =?utf-8?B?ZTIrWCtNbHRiTEZPaElZODNuUGtTZ3JDaDlMT2d3dlFQVXQ5VFp5eXhGMGt4?=
- =?utf-8?B?aTdubEk1QWlPRXhKRWlWaXNkcDBuRlg2Q3F3TTBPdjZuQ1hjdjFZcW1kZExn?=
- =?utf-8?B?ZnFJVlJibWtaOExBRStQTkgzY3FsTEM1YWpsTmFlendyMmFWMVVjalhRSWVU?=
- =?utf-8?B?aHNDUVh1ZXdDcHN4b1VQUFJrSGk1ODhKNGxYb1lGb3dZVDZnSnZobUx4clBs?=
- =?utf-8?B?TVpWM1l1SzVJWGJncFFrNFlQM21lZEk4WHVVejhmSDRPWXpIeW9GUS9URlF2?=
- =?utf-8?B?MFk3bGQrQWNTZU1Nd3E4SEpZTzRMYmppOUZMUEV3NVZXc0Mwai9yS0hlSU4y?=
- =?utf-8?B?MTRySWFsSHk5ZTB1ZHRtYlVoQ3E3aXRBckhmbUMvc0puMXpoSjQrM0NRQkRQ?=
- =?utf-8?B?VnFKdWltZm1zWXYwcUpCNHUwVDZuZStSb0pVRWFqOGphT1dNejZNWjJDdUVt?=
- =?utf-8?B?T3I1eldFemd6SDBYLzFBMS9XdVorcGlnWitIcEhXdE9YeEg4WU84RWhqemt1?=
- =?utf-8?B?K3Y1OElwZ21OSzlmRUpvNnV6UnM2UE5jM0pHQTF4cTdIejk2K0VnSTZRQkxP?=
- =?utf-8?B?N0c5VyttbzFjQnRDdGtHOGJtRlJ2UlFWUUpvUThZOC9EWjFadDdubVV6TVhz?=
- =?utf-8?B?OWszMlRkTzBkU3BXZ29ZMTRvT3p2UUdhMTMwQ3hhNk1hMjh3UmZMaWF6RUFK?=
- =?utf-8?B?MmZSWXQ0ZjFXQkxKVy90WTc0OEczRmM2TE9mUGhwUlFhMUY2ZzZSdHBUZ2JQ?=
- =?utf-8?B?blJCQTI0ZlNKdlJJNGtGb3kxbm1pQkx4by9CeWV4Q1UxYXliL0w4MzZFUU5H?=
- =?utf-8?B?ZjJwSVloNmlRTkdQK05pbzRUOXYya3VIVzJ3dFlzYWpNSGFQUStXTEdHTm4z?=
- =?utf-8?B?aVZHaFFxZFVVeHhqSWkwNEVWc0htVGlZdU9iTUltQVg4a29QS3hNNHMxZnIz?=
- =?utf-8?B?Zy83UFN2SFZROEMwSG9nOGUyMC82cldzTUVkbktNOVFUTzhiMHFwZGtOLzMv?=
- =?utf-8?B?enpLRXZkOW9YS3gxV1o5WlB3QWhxcWhzTXNvTVM0R1BFUmQyLzQvUEVDMWVY?=
- =?utf-8?B?WVFtUStZL1gzbWxmZUF1RjFESEU3alJXYWhYeVlkZHd5WDRBUklxbEpwRlZO?=
- =?utf-8?B?SmNIemZzaTBJYURkYld1TitTc3h1TlcvRXBGNm1meGdPejFwQmIxVlJON3BD?=
- =?utf-8?B?eld6TWNPTzc4M0REdEkvWFdPUWN3bi8wYlo0N1V3b0VyTG5rTFUzSXY4dzgy?=
- =?utf-8?B?RldjTTB0RGNnMmVLaE9GcGVrKzRzcklaWmdpRm5VaWNqdFU1c2xDK01LQ3Jx?=
- =?utf-8?B?b2VhblhRejlnT09zdzl4b0xlMSticncwQ2dGT2k0TG5tNHpuTXU4SHRTelRz?=
- =?utf-8?B?Ky9WM2NzT0w0OE9hQmdsRkZSS1ZmR0ZQVVRSQXdqUnBUYVVwWHl5VVBzUVJy?=
- =?utf-8?B?VkRtcWhOSFA1ejRkbnl5T0dsUGhKYTFSK01jcE1VcHN0a1BQVW9ZWjBXWnJm?=
- =?utf-8?B?cjRmME1vemtQallJemhSN0o3ZCtzVmF0cnRDZGh4NFVONDhQRThOVUhZUjFt?=
- =?utf-8?B?SytBd3VDVUN2RXVZLzhjejNWLzROd1F3QU5IcjFzMnlmQUlFS3ZJT01UNUhT?=
- =?utf-8?B?b2ZQUytwTXhVaWZyRDVPdEdVRFEzSHJFanB0bllCTlBGT01WYThLMGlrMEpp?=
- =?utf-8?B?a1hyNUp0NW1jVDAyUnphQW1wWTdnOVBmVk1GaGJDWVNVc1dHSjBwL1RFUUow?=
- =?utf-8?B?NmU2UDUveTlPRUkzMCtIS3VXbFJScEVDUjcxdGpqK1lmVmdYQmw2LzZVMGVL?=
- =?utf-8?B?N0hKVEwwdnZyUmlWejhKREVMUHpMaUl6TE5YdmtOVGR3UHcvZFpOM3kyeTJq?=
- =?utf-8?B?L1FMdEF6QzBUdHhVci8wOGtkLzFvY2xQbllieHFzNEd0RUo3R1pvVk91dEMx?=
- =?utf-8?B?dnc9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?lfGWEmC8AgxwJAX8EgxSnZtm7mJEd9UmqveKysBRoUObudBqLh7r1lmRdxh/?=
+ =?us-ascii?Q?1GZxY8gxZalqUz5Hoc700cHN/yoMitIOSxW6Tp+PiSfL+IVOgeUueFJfXhs1?=
+ =?us-ascii?Q?lJeMhrF3NpuwO54CSB1prD0SA1K9Sqg+JYIz1NsgoT083DSHMb9jEh6bG/Wy?=
+ =?us-ascii?Q?hTB60CPSrMY9HzmGvc+btqzsmeDG2JnkhnenNSMiY2KRTBFL5xguEFzbSKRz?=
+ =?us-ascii?Q?iQ+2HHZFVUZp8DLTYepgVxunFejz6KOoIVp54m2T447YwOxU4qnF+ya5e0vQ?=
+ =?us-ascii?Q?CSTaSPh3u56HuXFPafjI/5n5XtaaXZc5g6YdyTzSbOwSdrlFevMtA2keqS0L?=
+ =?us-ascii?Q?pEOp6I9Ix3c3ozq+8H12G9gYMowAYXV0lZ2R2KOCF3bh/pfm17fnXxd0TVFK?=
+ =?us-ascii?Q?6A06+7St1I/X+/8VfzvAJA8t+jP+GmxHqGyb6T7SGVGI+Pe7g6Q3ikN8tp7a?=
+ =?us-ascii?Q?PU2zIYz5vACWLphCx8GCTm0JPClrEapuZO2t/PFsAqIEI2Q7bU5ktpNTNhag?=
+ =?us-ascii?Q?cU+bVRjW7Fzdlnpi9BS5YXm9EkRjsGlXgYhiI3r+T5ZJKzJ0ve+kMBX26CxO?=
+ =?us-ascii?Q?joY/YVzEs8G7wPW7vNxaHB6IgqK0HpQDcI/fTC1D8r98HuTC86uppBtM+RFA?=
+ =?us-ascii?Q?QLmsFJBPZF4DeNOPAFRDJKSwDYtPQBsT/O/rXN6D0ffCQX537BAHwVX8GChb?=
+ =?us-ascii?Q?9s231nY6OYJyKGDug6SQJqF6MXVJUjG1P4ZZdgV9BCFqHqa8AeX3ncbnkMia?=
+ =?us-ascii?Q?Nhl2gO5waVin1hhX7O0R//AXRrmhzMJuvmfHixOBOOiM/Al37bawx7mfQntE?=
+ =?us-ascii?Q?Y8gx1tuAz50iAtzQR3NpOrt2xtbgQ4y1t/6pfjweE+yCMSBjh+hyqPdZI2U5?=
+ =?us-ascii?Q?/w1IJ5iQYJKGVUYqJR5lU27kTK9MIdlr93v9enqDgoDOU+b3/wT0yham8GzF?=
+ =?us-ascii?Q?r7wH+fitQ+olfb7RKQNLGO/hZaY23QIIU4CDachL7TfxDVnOkTMTK369nWKo?=
+ =?us-ascii?Q?pZcILkGQslWeC5fIn875RimoLmgjcWPhbNUJxdqN7zHWAmM0bnu56Cnl29gR?=
+ =?us-ascii?Q?rZHwJ+FdM2D3YNC7/gDhUe3aMd9OgUe5NaeqmsIr2rtA720/UFcvHdn8W1+Y?=
+ =?us-ascii?Q?7MmEH3otXgv5qzyd5MmJWruo59htHRYLaR9kKBU9xGMCpEedLLvxuRHE/j4t?=
+ =?us-ascii?Q?xReVDRZwK8nsUGFbhfdDA2DPLUtLO9WFDujiyHhMyTkM7qQb3tIS9wIyCAk2?=
+ =?us-ascii?Q?OtF8CPaScLn8KZGQJkSBLCTwA9o+6NVxMpLwnJMphwFjwp+F+/Eh7KkhPeLX?=
+ =?us-ascii?Q?rbbIt56NoEr5lf7SgorRVJoW/8tjFbni9BLDJYG49PM0JvMlCiYzgzeYYuWa?=
+ =?us-ascii?Q?UnYY+k2wuAVsbc4iflmRioW8TS9V9IxUzNb+d2fyxjJsAqPk9gwINkFZcjpe?=
+ =?us-ascii?Q?VtTdFyMmsLsFWDKu+sdJ7YaJltcrJQsjUbMrNujQBGj/qJ2+gp8Xxnp9Xu1g?=
+ =?us-ascii?Q?pabtgNg6ZLqDoIrojEXynDiZRT4FwK0R+VEQ2rwogqphOzudA6PA99oGgX7G?=
+ =?us-ascii?Q?/M4K1eAhjexVWx9roYJVdUUta3fK7urEVj213xZA79Z30pL0Mqhm1oYL/krb?=
+ =?us-ascii?Q?sg=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB8986.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 90afe162-aa6c-4e1b-a882-08ddc9d12c3c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Jul 2025 10:10:38.3788 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 21c90e36-16f6-45ae-cb77-08ddc9d4c78a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Jul 2025 10:36:27.4016 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: JfSnkV9d3CkNGm9vjjYPXVlgMG4M/H3RpkAH9mBbGpxatB4EJaf8Swy3yQAPUn0OmiQRvSlh/ZMsflDYY0Arg7vmuV+bs96Q8/HU34G+1z8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS4PPF409BB8CE8
+X-MS-Exchange-CrossTenant-userprincipalname: xcaikApQ7eRHwsaw92zLVMKmLk/p0DsEY0WJYh5oK6OrS0sAKI/d9R5HXwBplBXLX7n8+yO+6GEn+SI94VmJIiRhkrk0Hdkzxdgcg2/dhjA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA3PR11MB9276
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1753265469; x=1784801469;
+ t=1753266999; x=1784802999;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=miZn/Ati0A3I48XmZJulhsst6aR3wWoyrCg5LAUq1IY=;
- b=NerRKGgC4j4FryCSNos1ZEu0k3ITgbDTN/6ZyVxBUeHgUi/9yH0bbvTI
- 3FCxeuyX1OM+NKa3/ILtYLvAVq/QcYMVV8us2TGuogeDnGYh+LbCut238
- Howh6NYBmi2+35D4DxKlfLqlHmzuyEWMHCNdFgcRGnJNlFfbJ11bLawGQ
- kXmpiny92mmgGT8HoZOG4AoNT6hZmWucPCi4p6Gt9vE6mUI6TOMHo1q6f
- piCo2CDVONO3xOlt4oHrsFp54Ld0GnNZwf0J3LTJ/lIt0XbV/AHwpxv/n
- V3fyLiH9XqMXzMLPU2M77ZxAlDNJc8f95YaQLyKcSFnIYIjw9WTXxgbh5
+ bh=B/KkGFHwnbsugqKzBVWOTbF0mDdKMDYWLgYU/sbO1WE=;
+ b=iAxq63Z7m7IpU4i7z3yvlLVb1QvRnU/7kLawVeJ05CSkyjBrvk+x3B+Q
+ UAtWpkVMHz6cIuFYQEYHnENTIX17pq/sE8/eUIb54E8mxxwbk2pxiHY6u
+ YD4xzn8ArEp3D+TzzP7IK9nvyrVIE0NgfuGoJDj/0AmMufIzgX2CdNLjU
+ L2ww1nzi4/PoSJCqLqaUzSuCzDdzx5A+uLoTFCmi027YK+68rDSMvLzqo
+ 19NqldlQkkdPoNqzi/QtxsdlqUJHykmJnquvrkOCtA5DOhNam1WXAlxk9
+ WAt2QNYj1ad2HMG0OxKYHAGsRQZPQZEYwp73wtNCKqfWOy6STwRSqSwbr
  g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=NerRKGgC
+ header.s=Intel header.b=iAxq63Z7
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3 5/5] ixgbe: drop
- unnecessary casts to u16 / int
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 05/15] ice: add pdev into
+ fwlog structure and use it for logging
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -250,56 +228,298 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogSW50ZWwtd2lyZWQtbGFu
-IDxpbnRlbC13aXJlZC1sYW4tYm91bmNlc0Bvc3Vvc2wub3JnPiBPbiBCZWhhbGYNCj4gT2YgSmFj
-ZWsgS293YWxza2kNCj4gU2VudDogV2VkbmVzZGF5LCBKdWx5IDIzLCAyMDI1IDEwOjU2IEFNDQo+
-IFRvOiBOZ3V5ZW4sIEFudGhvbnkgTCA8YW50aG9ueS5sLm5ndXllbkBpbnRlbC5jb20+OyBLaXRz
-emVsLA0KPiBQcnplbXlzbGF3IDxwcnplbXlzbGF3LmtpdHN6ZWxAaW50ZWwuY29tPjsgQW5kcmV3
-IEx1bm4NCj4gPGFuZHJldytuZXRkZXZAbHVubi5jaD47IERhdmlkIFMuIE1pbGxlciA8ZGF2ZW1A
-ZGF2ZW1sb2Z0Lm5ldD47IEVyaWMNCj4gRHVtYXpldCA8ZWR1bWF6ZXRAZ29vZ2xlLmNvbT47IEph
-a3ViIEtpY2luc2tpIDxrdWJhQGtlcm5lbC5vcmc+OyBQYW9sbw0KPiBBYmVuaSA8cGFiZW5pQHJl
-ZGhhdC5jb20+OyBTaW1vbiBIb3JtYW4gPGhvcm1zQGtlcm5lbC5vcmc+DQo+IENjOiBpbnRlbC13
-aXJlZC1sYW5AbGlzdHMub3N1b3NsLm9yZzsgbmV0ZGV2QHZnZXIua2VybmVsLm9yZw0KPiBTdWJq
-ZWN0OiBbSW50ZWwtd2lyZWQtbGFuXSBbUEFUQ0ggaXdsLW5leHQgdjMgNS81XSBpeGdiZTogZHJv
-cA0KPiB1bm5lY2Vzc2FyeSBjYXN0cyB0byB1MTYgLyBpbnQNCj4gDQo+IFJlbW92ZSB1bm5lY2Vz
-c2FyeSBjYXN0cyBvZiBjb25zdGFudCB2YWx1ZXMgdG8gdTE2Lg0KPiBDJ3MgaW50ZWdlciBwcm9t
-b3Rpb24gcnVsZXMgbWFrZSB0aGVtIGludHMgbm8gbWF0dGVyIHdoYXQuDQo+IA0KPiBBZGRpdGlv
-bmFsbHkgZHJvcCBjYXN0IGZyb20gdTE2IHRvIGludCBpbiByZXR1cm4gc3RhdGVtZW50cy4NCj4g
-DQo+IFNpZ25lZC1vZmYtYnk6IEphY2VrIEtvd2Fsc2tpIDxqYWNla0BqYWNla2suaW5mbz4NCj4g
-U3VnZ2VzdGVkLWJ5OiBTaW1vbiBIb3JtYW4gPGhvcm1zQGtlcm5lbC5vcmc+DQpSZXZpZXdlZC1i
-eTogQWxla3NhbmRyIExva3Rpb25vdiA8YWxla3NhbmRyLmxva3Rpb25vdkBpbnRlbC5jb20+DQo+
-IC0tLQ0KPiAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfY29tbW9uLmMg
-fCA0ICsrLS0NCj4gIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX3g1NDAu
-YyAgIHwgNCArKy0tDQo+ICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV94
-NTUwLmMgICB8IDQgKystLQ0KPiAgMyBmaWxlcyBjaGFuZ2VkLCA2IGluc2VydGlvbnMoKyksIDYg
-ZGVsZXRpb25zKC0pDQo+IA0KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50
-ZWwvaXhnYmUvaXhnYmVfY29tbW9uLmMNCj4gYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9p
-eGdiZS9peGdiZV9jb21tb24uYw0KPiBpbmRleCA0ZmYxOTQyNmFiNzQuLjNlYTY3NjVmOWM1ZCAx
-MDA2NDQNCj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfY29t
-bW9uLmMNCj4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfY29t
-bW9uLmMNCj4gQEAgLTE3MzksOSArMTczOSw5IEBAIGludCBpeGdiZV9jYWxjX2VlcHJvbV9jaGVj
-a3N1bV9nZW5lcmljKHN0cnVjdA0KPiBpeGdiZV9odyAqaHcpDQo+ICAJCX0NCj4gIAl9DQo+IA0K
-PiAtCWNoZWNrc3VtID0gKHUxNilJWEdCRV9FRVBST01fU1VNIC0gY2hlY2tzdW07DQo+ICsJY2hl
-Y2tzdW0gPSBJWEdCRV9FRVBST01fU1VNIC0gY2hlY2tzdW07DQo+IA0KPiAtCXJldHVybiAoaW50
-KWNoZWNrc3VtOw0KPiArCXJldHVybiBjaGVja3N1bTsNCj4gIH0NCj4gDQo+ICAvKioNCj4gZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX3g1NDAuYw0K
-PiBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX3g1NDAuYw0KPiBpbmRl
-eCBjMjM1M2FlZDAxMjAuLmU2N2UyZmViMDQ1YiAxMDA2NDQNCj4gLS0tIGEvZHJpdmVycy9uZXQv
-ZXRoZXJuZXQvaW50ZWwvaXhnYmUvaXhnYmVfeDU0MC5jDQo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0
-aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX3g1NDAuYw0KPiBAQCAtMzczLDkgKzM3Myw5IEBAIHN0
-YXRpYyBpbnQgaXhnYmVfY2FsY19lZXByb21fY2hlY2tzdW1fWDU0MChzdHJ1Y3QNCj4gaXhnYmVf
-aHcgKmh3KQ0KPiAgCQl9DQo+ICAJfQ0KPiANCj4gLQljaGVja3N1bSA9ICh1MTYpSVhHQkVfRUVQ
-Uk9NX1NVTSAtIGNoZWNrc3VtOw0KPiArCWNoZWNrc3VtID0gSVhHQkVfRUVQUk9NX1NVTSAtIGNo
-ZWNrc3VtOw0KPiANCj4gLQlyZXR1cm4gKGludCljaGVja3N1bTsNCj4gKwlyZXR1cm4gY2hlY2tz
-dW07DQo+ICB9DQo+IA0KPiAgLyoqDQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5l
-dC9pbnRlbC9peGdiZS9peGdiZV94NTUwLmMNCj4gYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
-bC9peGdiZS9peGdiZV94NTUwLmMNCj4gaW5kZXggYmZhNjQ3MDg2YzcwLi42NTBjM2U1MjJjM2Ug
-MTAwNjQ0DQo+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX3g1
-NTAuYw0KPiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV94NTUw
-LmMNCj4gQEAgLTEwNjAsOSArMTA2MCw5IEBAIHN0YXRpYyBpbnQgaXhnYmVfY2FsY19jaGVja3N1
-bV9YNTUwKHN0cnVjdA0KPiBpeGdiZV9odyAqaHcsIHUxNiAqYnVmZmVyLA0KPiAgCQkJcmV0dXJu
-IHN0YXR1czsNCj4gIAl9DQo+IA0KPiAtCWNoZWNrc3VtID0gKHUxNilJWEdCRV9FRVBST01fU1VN
-IC0gY2hlY2tzdW07DQo+ICsJY2hlY2tzdW0gPSBJWEdCRV9FRVBST01fU1VNIC0gY2hlY2tzdW07
-DQo+IA0KPiAtCXJldHVybiAoaW50KWNoZWNrc3VtOw0KPiArCXJldHVybiBjaGVja3N1bTsNCj4g
-IH0NCj4gDQo+ICAvKiogaXhnYmVfY2FsY19lZXByb21fY2hlY2tzdW1fWDU1MCAtIENhbGN1bGF0
-ZXMgYW5kIHJldHVybnMgdGhlDQo+IGNoZWNrc3VtDQo+IC0tDQo+IDIuNDcuMg0KDQo=
+
+
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
+> Of Michal Swiatkowski
+> Sent: Tuesday, July 22, 2025 12:46 PM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: netdev@vger.kernel.org; Kitszel, Przemyslaw
+> <przemyslaw.kitszel@intel.com>; dawid.osuchowski@linux.intel.com;
+> Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> Subject: [Intel-wired-lan] [PATCH iwl-next v1 05/15] ice: add pdev
+> into fwlog structure and use it for logging
+>=20
+> Prepare the code to be moved to the library. ice_debug() won't be
+> there so switch to dev_dbg().
+>=20
+> Add struct pdev pointer in fwlog to track on which pdev the fwlog was
+> created.
+>=20
+> Switch the dev passed in dev_warn() to the one stored in fwlog.
+>=20
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_common.c  |  3 +-
+> drivers/net/ethernet/intel/ice/ice_debugfs.c |  2 +-
+>  drivers/net/ethernet/intel/ice/ice_fwlog.c   | 37 ++++++++++---------
+> -
+>  drivers/net/ethernet/intel/ice/ice_fwlog.h   |  7 ++--
+>  4 files changed, 26 insertions(+), 23 deletions(-)
+>=20
+> diff --git a/drivers/net/ethernet/intel/ice/ice_common.c
+> b/drivers/net/ethernet/intel/ice/ice_common.c
+> index 5d7f348aa596..7f293c791775 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_common.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_common.c
+> @@ -992,6 +992,7 @@ int ice_init_hw(struct ice_hw *hw)  {
+>  	struct ice_aqc_get_phy_caps_data *pcaps __free(kfree) =3D NULL;
+>  	void *mac_buf __free(kfree) =3D NULL;
+> +	struct ice_pf *pf =3D hw->back;
+>  	u16 mac_buf_len;
+>  	int status;
+>=20
+> @@ -1012,7 +1013,7 @@ int ice_init_hw(struct ice_hw *hw)
+>  	if (status)
+>  		goto err_unroll_cqinit;
+>=20
+> -	status =3D ice_fwlog_init(hw, &hw->fwlog);
+> +	status =3D ice_fwlog_init(hw, &hw->fwlog, pf->pdev);
+>  	if (status)
+>  		ice_debug(hw, ICE_DBG_FW_LOG, "Error initializing FW
+> logging: %d\n",
+>  			  status);
+> diff --git a/drivers/net/ethernet/intel/ice/ice_debugfs.c
+> b/drivers/net/ethernet/intel/ice/ice_debugfs.c
+> index dbcc0cb438aa..1e036bc128c5 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_debugfs.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_debugfs.c
+> @@ -450,7 +450,7 @@ ice_debugfs_log_size_write(struct file *filp,
+> const char __user *buf,
+>  	}
+>=20
+>  	/* free all the buffers and the tracking info and resize */
+> -	ice_fwlog_realloc_rings(hw, &hw->fwlog, index);
+> +	ice_fwlog_realloc_rings(&hw->fwlog, index);
+>=20
+>  	/* if we get here, nothing went wrong; return count since we
+> didn't
+>  	 * really write anything
+> diff --git a/drivers/net/ethernet/intel/ice/ice_fwlog.c
+> b/drivers/net/ethernet/intel/ice/ice_fwlog.c
+> index a010f655ffb7..b1c1359d5ab5 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_fwlog.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_fwlog.c
+> @@ -73,13 +73,11 @@ static void ice_fwlog_free_ring_buffs(struct
+> ice_fwlog_ring *rings)  #define ICE_FWLOG_INDEX_TO_BYTES(n) ((128 *
+> 1024) << (n))
+>  /**
+>   * ice_fwlog_realloc_rings - reallocate the FW log rings
+> - * @hw: pointer to the HW structure
+>   * @fwlog: pointer to the fwlog structure
+>   * @index: the new index to use to allocate memory for the log data
+>   *
+>   */
+> -void ice_fwlog_realloc_rings(struct ice_hw *hw, struct ice_fwlog
+> *fwlog,
+> -			     int index)
+> +void ice_fwlog_realloc_rings(struct ice_fwlog *fwlog, int index)
+>  {
+>  	struct ice_fwlog_ring ring;
+>  	int status, ring_size;
+> @@ -109,7 +107,7 @@ void ice_fwlog_realloc_rings(struct ice_hw *hw,
+> struct ice_fwlog *fwlog,
+>=20
+>  	status =3D ice_fwlog_alloc_ring_buffs(&ring);
+>  	if (status) {
+> -		dev_warn(ice_hw_to_dev(hw), "Unable to allocate memory
+> for FW log ring data buffers\n");
+> +		dev_warn(&fwlog->pdev->dev, "Unable to allocate memory
+> for FW log
+> +ring data buffers\n");
+>  		ice_fwlog_free_ring_buffs(&ring);
+>  		kfree(ring.rings);
+>  		return;
+> @@ -165,16 +163,16 @@ static int ice_aq_fwlog_get(struct ice_hw *hw,
+> struct ice_fwlog_cfg *cfg)
+>=20
+>  	status =3D ice_aq_send_cmd(hw, &desc, buf, ICE_AQ_MAX_BUF_LEN,
+> NULL);
+>  	if (status) {
+> -		ice_debug(hw, ICE_DBG_FW_LOG, "Failed to get FW log
+> configuration\n");
+> +		dev_dbg(&hw->fwlog.pdev->dev, "Failed to get FW log
+> +configuration\n");
+>  		goto status_out;
+>  	}
+>=20
+>  	module_id_cnt =3D le16_to_cpu(cmd->ops.cfg.mdl_cnt);
+>  	if (module_id_cnt < ICE_AQC_FW_LOG_ID_MAX) {
+> -		ice_debug(hw, ICE_DBG_FW_LOG, "FW returned less than the
+> expected number of FW log module IDs\n");
+> +		dev_dbg(&hw->fwlog.pdev->dev, "FW returned less than the
+> expected
+> +number of FW log module IDs\n");
+>  	} else if (module_id_cnt > ICE_AQC_FW_LOG_ID_MAX) {
+> -		ice_debug(hw, ICE_DBG_FW_LOG, "FW returned more than
+> expected number of FW log module IDs, setting module_id_cnt to
+> software expected max %u\n",
+> -			  ICE_AQC_FW_LOG_ID_MAX);
+> +		dev_dbg(&hw->fwlog.pdev->dev, "FW returned more than
+> expected number of FW log module IDs, setting module_id_cnt to
+> software expected max %u\n",
+> +			ICE_AQC_FW_LOG_ID_MAX);
+>  		module_id_cnt =3D ICE_AQC_FW_LOG_ID_MAX;
+>  	}
+>=20
+> @@ -225,8 +223,8 @@ static void ice_fwlog_set_supported(struct ice_hw
+> *hw, struct ice_fwlog *fwlog)
+>=20
+>  	status =3D ice_aq_fwlog_get(hw, cfg);
+>  	if (status)
+> -		ice_debug(hw, ICE_DBG_FW_LOG, "ice_aq_fwlog_get failed,
+> FW logging is not supported on this version of FW, status %d\n",
+> -			  status);
+> +		dev_dbg(&fwlog->pdev->dev, "ice_aq_fwlog_get failed, FW
+> logging is not supported on this version of FW, status %d\n",
+> +			status);
+>  	else
+>  		fwlog->supported =3D true;
+>=20
+> @@ -237,17 +235,20 @@ static void ice_fwlog_set_supported(struct
+> ice_hw *hw, struct ice_fwlog *fwlog)
+>   * ice_fwlog_init - Initialize FW logging configuration
+>   * @hw: pointer to the HW structure
+>   * @fwlog: pointer to the fwlog structure
+> + * @pdev: pointer to the pci dev used in dev_warn()
+>   *
+>   * This function should be called on driver initialization during
+>   * ice_init_hw().
+>   */
+> -int ice_fwlog_init(struct ice_hw *hw, struct ice_fwlog *fwlog)
+> +int ice_fwlog_init(struct ice_hw *hw, struct ice_fwlog *fwlog,
+> +		   struct pci_dev *pdev)
+>  {
+>  	/* only support fw log commands on PF 0 */
+>  	if (hw->bus.func)
+>  		return -EINVAL;
+>=20
+>  	ice_fwlog_set_supported(hw, fwlog);
+> +	fwlog->pdev =3D pdev;
+>=20
+>  	if (ice_fwlog_supported(fwlog)) {
+>  		int status;
+> @@ -261,7 +262,7 @@ int ice_fwlog_init(struct ice_hw *hw, struct
+> ice_fwlog *fwlog)
+>  					    sizeof(*fwlog->ring.rings),
+>  					    GFP_KERNEL);
+>  		if (!fwlog->ring.rings) {
+> -			dev_warn(ice_hw_to_dev(hw), "Unable to allocate
+> memory for FW log rings\n");
+> +			dev_warn(&fwlog->pdev->dev, "Unable to allocate
+> memory for FW log
+> +rings\n");
+>  			return -ENOMEM;
+>  		}
+>=20
+> @@ -270,7 +271,7 @@ int ice_fwlog_init(struct ice_hw *hw, struct
+> ice_fwlog *fwlog)
+>=20
+>  		status =3D ice_fwlog_alloc_ring_buffs(&fwlog->ring);
+>  		if (status) {
+> -			dev_warn(ice_hw_to_dev(hw), "Unable to allocate
+> memory for FW log ring data buffers\n");
+> +			dev_warn(&fwlog->pdev->dev, "Unable to allocate
+> memory for FW log
+> +ring data buffers\n");
+>  			ice_fwlog_free_ring_buffs(&fwlog->ring);
+>  			kfree(fwlog->ring.rings);
+>  			return status;
+> @@ -278,7 +279,7 @@ int ice_fwlog_init(struct ice_hw *hw, struct
+> ice_fwlog *fwlog)
+>=20
+>  		ice_debugfs_fwlog_init(hw->back);
+>  	} else {
+> -		dev_warn(ice_hw_to_dev(hw), "FW logging is not supported
+> in this NVM image. Please update the NVM to get FW log support\n");
+> +		dev_warn(&fwlog->pdev->dev, "FW logging is not supported
+> in this NVM
+> +image. Please update the NVM to get FW log support\n");
+>  	}
+>=20
+>  	return 0;
+> @@ -308,7 +309,7 @@ void ice_fwlog_deinit(struct ice_hw *hw, struct
+> ice_fwlog *fwlog)
+>  	fwlog->cfg.options &=3D ~ICE_FWLOG_OPTION_ARQ_ENA;
+>  	status =3D ice_fwlog_set(hw, &fwlog->cfg);
+>  	if (status)
+> -		dev_warn(ice_hw_to_dev(hw), "Unable to turn off FW
+> logging, status: %d\n",
+> +		dev_warn(&fwlog->pdev->dev, "Unable to turn off FW
+> logging, status:
+> +%d\n",
+>  			 status);
+>=20
+>  	kfree(pf->ice_debugfs_pf_fwlog_modules);
+> @@ -317,7 +318,7 @@ void ice_fwlog_deinit(struct ice_hw *hw, struct
+> ice_fwlog *fwlog)
+>=20
+>  	status =3D ice_fwlog_unregister(hw, fwlog);
+>  	if (status)
+> -		dev_warn(ice_hw_to_dev(hw), "Unable to unregister FW
+> logging, status: %d\n",
+> +		dev_warn(&fwlog->pdev->dev, "Unable to unregister FW
+> logging, status:
+> +%d\n",
+>  			 status);
+>=20
+>  	if (fwlog->ring.rings) {
+> @@ -436,7 +437,7 @@ int ice_fwlog_register(struct ice_hw *hw, struct
+> ice_fwlog *fwlog)
+>=20
+>  	status =3D ice_aq_fwlog_register(hw, true);
+>  	if (status)
+> -		ice_debug(hw, ICE_DBG_FW_LOG, "Failed to register for
+> firmware logging events over ARQ\n");
+> +		dev_dbg(&fwlog->pdev->dev, "Failed to register for
+> firmware logging
+> +events over ARQ\n");
+>  	else
+>  		fwlog->cfg.options |=3D ICE_FWLOG_OPTION_IS_REGISTERED;
+>=20
+> @@ -457,7 +458,7 @@ int ice_fwlog_unregister(struct ice_hw *hw, struct
+> ice_fwlog *fwlog)
+>=20
+>  	status =3D ice_aq_fwlog_register(hw, false);
+>  	if (status)
+> -		ice_debug(hw, ICE_DBG_FW_LOG, "Failed to unregister from
+> firmware logging events over ARQ\n");
+> +		dev_dbg(&fwlog->pdev->dev, "Failed to unregister from
+> firmware
+> +logging events over ARQ\n");
+>  	else
+>  		fwlog->cfg.options &=3D ~ICE_FWLOG_OPTION_IS_REGISTERED;
+>=20
+> diff --git a/drivers/net/ethernet/intel/ice/ice_fwlog.h
+> b/drivers/net/ethernet/intel/ice/ice_fwlog.h
+> index 334a125eac80..9c56ca6cbef0 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_fwlog.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_fwlog.h
+> @@ -68,16 +68,17 @@ struct ice_fwlog {
+>  	struct ice_fwlog_cfg cfg;
+>  	bool supported; /* does hardware support FW logging? */
+>  	struct ice_fwlog_ring ring;
+> +	struct pci_dev *pdev;
+>  };
+>=20
+>  bool ice_fwlog_ring_empty(struct ice_fwlog_ring *rings);  void
+> ice_fwlog_ring_increment(u16 *item, u16 size); -int
+> ice_fwlog_init(struct ice_hw *hw, struct ice_fwlog *fwlog);
+> +int ice_fwlog_init(struct ice_hw *hw, struct ice_fwlog *fwlog,
+> +		   struct pci_dev *pdev);
+>  void ice_fwlog_deinit(struct ice_hw *hw, struct ice_fwlog *fwlog);
+> int ice_fwlog_set(struct ice_hw *hw, struct ice_fwlog_cfg *cfg);  int
+> ice_fwlog_register(struct ice_hw *hw, struct ice_fwlog *fwlog);  int
+> ice_fwlog_unregister(struct ice_hw *hw, struct ice_fwlog *fwlog); -
+> void ice_fwlog_realloc_rings(struct ice_hw *hw, struct ice_fwlog
+> *fwlog,
+> -			     int index);
+> +void ice_fwlog_realloc_rings(struct ice_fwlog *fwlog, int index);
+>  void ice_get_fwlog_data(struct ice_fwlog *fwlog, u8 *buf, u16 len);
+> #endif /* _ICE_FWLOG_H_ */
+> --
+> 2.49.0
+
