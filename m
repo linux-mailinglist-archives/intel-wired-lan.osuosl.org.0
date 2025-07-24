@@ -1,142 +1,221 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CCE87B10802
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Jul 2025 12:46:19 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 706E8B10808
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Jul 2025 12:47:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 167626122A;
-	Thu, 24 Jul 2025 10:46:18 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0E92240E5A;
+	Thu, 24 Jul 2025 10:47:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id U7OFWsNdNGN8; Thu, 24 Jul 2025 10:46:17 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id TLgtR2UBuokV; Thu, 24 Jul 2025 10:47:52 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5381461182
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 70A0D40E5F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1753353977;
-	bh=YEUPeEfAoqVDN5AzS+Zi6ECP6+DLN/BEyFRoJmYLtxk=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1753354072;
+	bh=lsP3P01v8DMJWAArOlY9ylE5OpsUXKc40Abt05W0lSM=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=n2Sjg67n0UZrYw0EAiU1caOzFwiTBSQtBxw6UlIFlSYIwLAizdKJweMFy1pQiBuX3
-	 HcEjfXv3ld2f8gtDdujSkhctmACviat4dCqzklvCOQQXJI7SWzzidrYNGVUKPD1jVD
-	 2rF4czSftiZhVjFy1ym2X9GTeZV4VzLQ4ISzjRCle1saWhlVg9jRCAvStAxINZAXVx
-	 b1FUd/n0xQHTBYrhRmEkN79QPfemp5cOKsXfbDZG3/kZUUnHfpax7PFONUjBSA4HT2
-	 3OhJsvoXVH6QsO6mcMElnbSIj6PMLpQLoC5xZ3TYb3dwH5hiwp8sIZ4NaqCOdIYHxi
-	 Rfcm9UKDJz6rg==
+	b=orZ1z9SEIfySFtkmAnCH2MoKNCt0E5WowWjv/N93tl97HXg1cThylOmTBIdn4SWFM
+	 7GXu1Ou3T1GjT8MoJ03FtcUoaqcdvLWnvPwYJPBrJu/D+RyrM+5LBThmZyzOKdf3ke
+	 x+FNRs2LcRgwEQiNYMiJWyzUyvJ5w7Tvzdnh7rxaveBDBuaa62SD2eElvqltYTJdPW
+	 1ADzkQs+2rTjGULWYg1PjVJkSvhskwswxdo7uG3V03UBhD5hNx5C62G/3dqcdJ0XcL
+	 rt8p0lzcIlqn+qBclmxyesP7VmkKvTOUsnrnUQJzNNg28aBdj+HvyUn5S44UGsqKVb
+	 wprf/stftmjcA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5381461182;
-	Thu, 24 Jul 2025 10:46:17 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 70A0D40E5F;
+	Thu, 24 Jul 2025 10:47:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 9D353128
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 10:46:16 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id F33F1DA
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 10:47:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8E853403CE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 10:46:16 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id E4A4B40D4B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 10:47:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id v9DkgGZ9yYpE for <intel-wired-lan@lists.osuosl.org>;
- Thu, 24 Jul 2025 10:46:14 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::32e; helo=mail-wm1-x32e.google.com;
- envelope-from=ttoukan.linux@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 2E1B7400A9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2E1B7400A9
-Received: from mail-wm1-x32e.google.com (mail-wm1-x32e.google.com
- [IPv6:2a00:1450:4864:20::32e])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2E1B7400A9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 10:46:14 +0000 (UTC)
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-4560add6cd2so7145385e9.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 03:46:13 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753353972; x=1753958772;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=YEUPeEfAoqVDN5AzS+Zi6ECP6+DLN/BEyFRoJmYLtxk=;
- b=QVHEk1QVO6dnvEy1mvtC1el4uwgPsCPj0qmhzIqoBURnmbjOxcbkmYDinSa/hHjN1d
- K32QRppPtszp+o7Dy8FAdw3P6zXl5anDPYc+tDNs8q0tJNOs/UTQ3u6HSbuZSZ+QSBZ6
- MomokOuQtl4qAgbPijRv89Ovwu+ui6oBLo4w7JQON2HZb3BJlxUl5l9qM6Zp9GCSnPVe
- KlVWLq+ElE0IiUGd5SF/7xSLZEc7NVG74KAOpn2FjtpgnhWxQ366M2J1QkdszSDQorfQ
- QW3MxQWGC2xyj1qNgVz6lpcJWSlyY42g3KMsiPyoZ8Rux3LJqZvOx3Qe79Ksd9Am9yVL
- TKfw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWzrVGctj2O3Elk+kGYip9bz6mHLCHuHjr8L75DkrJOFL7Wn4s4YjtzBUjkLqfGP3mQHXsAqV6mTk5UXXIIeis=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Ywb50KwEDjz4aUNzKFHES4UmW95qojn1Ijfnkd5/v8k1QfjzHlc
- AvXPyWdCI4S01ThwGMY4IyubYMFY+/pUTMF97jlAVhOcTCFmd/DvlhQv
-X-Gm-Gg: ASbGncv4Tg4fWDjPx8noLCDBfHn5BFIOV2Hz9aBO4MRddl2MGEueiGX1uFpN+ooQjZ/
- v3/5OzlseUmYna7dhshU80QWZKunyW0ouaIr95hCb2x2sOveIpCx68FnY+B7SgwEuEZQsrjjs+X
- IJ3oYZdWfje9bZRPM9tcmGiOF7Vt9um4lRYKtmjCD4eGwe76bO+03ChD26J4jzAyYnTyJTxku/O
- xgO+L6g6CSttRhRkWGR92zqdYZMd3oQ3h+DyLNQcEOWTA+9goPM+86lxXYT7aeIbKuW2+hoYbpV
- c4aUeYHnF7HQ5HvMbGnBg8CnrofGxvqEI15LK4gigAl97QRVw2w3oc63BOwLUEHSK4Ttp+TTCXZ
- jkdIX78ZgJ4LCh3D18lTC+y+SqSh8GB6nfIA40YUJbC9piyI=
-X-Google-Smtp-Source: AGHT+IGtbri2LyVwVV5y2rXjxBpJkNTC31WMYq6VcMg7L3LFbeb1UNBKa0ttb0d56fjHKoQjRi9rpw==
-X-Received: by 2002:a05:600c:4f06:b0:450:c9e3:91fe with SMTP id
- 5b1f17b1804b1-45870973ccbmr11393355e9.0.1753353971581; 
- Thu, 24 Jul 2025 03:46:11 -0700 (PDT)
-Received: from [10.221.199.138] ([165.85.126.46])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b76fcb8205sm1773660f8f.55.2025.07.24.03.46.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 24 Jul 2025 03:46:11 -0700 (PDT)
-Message-ID: <6892bb46-e2eb-4373-9ac0-6c43eca78b8e@gmail.com>
-Date: Thu, 24 Jul 2025 13:46:08 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Jakub Kicinski <kuba@kernel.org>, Tariq Toukan <tariqt@nvidia.com>
-Cc: Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Jiri Pirko <jiri@resnulli.us>,
- Jiri Pirko <jiri@nvidia.com>, Saeed Mahameed <saeed@kernel.org>,
- Gal Pressman <gal@nvidia.com>, Leon Romanovsky <leon@kernel.org>,
- Shahar Shitrit <shshitrit@nvidia.com>,
- Donald Hunter <donald.hunter@gmail.com>, Jonathan Corbet <corbet@lwn.net>,
- Brett Creeley <brett.creeley@amd.com>,
- Michael Chan <michael.chan@broadcom.com>,
- Pavan Chebbi <pavan.chebbi@broadcom.com>, Cai Huoqing
- <cai.huoqing@linux.dev>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Sunil Goutham <sgoutham@marvell.com>, Linu Cherian <lcherian@marvell.com>,
- Geetha sowjanya <gakula@marvell.com>, Jerin Jacob <jerinj@marvell.com>,
- hariprasad <hkelam@marvell.com>, Subbaraya Sundeep <sbhatta@marvell.com>,
- Saeed Mahameed <saeedm@nvidia.com>, Mark Bloch <mbloch@nvidia.com>,
- Ido Schimmel <idosch@nvidia.com>, Petr Machata <petrm@nvidia.com>,
- Manish Chopra <manishc@marvell.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-rdma@vger.kernel.org
-References: <1752768442-264413-1-git-send-email-tariqt@nvidia.com>
- <20250718174737.1d1177cd@kernel.org>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 9M1rIcMQiR0J for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 24 Jul 2025 10:47:50 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
+ helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4E7DC40674
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4E7DC40674
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4E7DC40674
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 10:47:50 +0000 (UTC)
+X-CSE-ConnectionGUID: /AVu36ONSJK0oZoCRob/Mg==
+X-CSE-MsgGUID: yJcpgT+4QJaE0+M12Q+fGg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11501"; a="55511951"
+X-IronPort-AV: E=Sophos;i="6.16,336,1744095600"; d="scan'208";a="55511951"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Jul 2025 03:47:50 -0700
+X-CSE-ConnectionGUID: yAWYiqpMTN+h+3Rqy4/mHQ==
+X-CSE-MsgGUID: tuCM+rmdQK6sIIKwkv896A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,336,1744095600"; d="scan'208";a="191074530"
+Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
+ by fmviesa001.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Jul 2025 03:47:49 -0700
+Received: from ORSMSX903.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26; Thu, 24 Jul 2025 03:47:48 -0700
+Received: from ORSEDG902.ED.cps.intel.com (10.7.248.12) by
+ ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26 via Frontend Transport; Thu, 24 Jul 2025 03:47:48 -0700
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (40.107.244.75)
+ by edgegateway.intel.com (134.134.137.112) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.25; Thu, 24 Jul 2025 03:47:48 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=fId9YeFMk3LAsVPMvesoXbJ7HYYija+fzNwgFwQQnKuLl6B/WWDeeVDDFo5qFxW7hljQ2p3uV+rE5yhFyUcZHRZNM1E/NkP3Myep4Xc5O/ek/8ptiaeRYEGZLZE9nKkn6PNiqikM027OkiRbEqTsMKEVF8YqMZcugIqHaboqkmpI8U8aab/UW3AS1hqBmINQek0L3Hghx4Fi8MHca5yftmZ//4cuwiw093vwgFRSFquFDmtYp4wOZFs86wDXt2CAzbm1VK8/RDw84yS5EIB69ohnobH2gwvQQAaR/wVNe3SoUYw102AVZE2e3xsDOhtF/YErppXhEvEW1OUZEdzsnA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=lsP3P01v8DMJWAArOlY9ylE5OpsUXKc40Abt05W0lSM=;
+ b=iUE825YSKdXqPpI5bMs0SipSjEatdt3dKCcI24a2sDx+ufkouSK0amhx61SVacXPe9MbhSHY222GXFktvgfyFmFstlvZVHFo8Pi/qE4UoiiBP1F/lQTppMVgzxsHd4z5Uno5VvoBZrsg51vEcTVp6xgKEOwqCYldziwt63nBBTUOTDgB7hqpEd+/KoOFrQ/cveTyZEMW5mrIYzh+Iw3PkOJu0f3HbleJi4RQHvIdaf+VToGbP4TtvqZuGVro2Y0NpLq6X/NFu1gOIXoILqFNW1xFH0wdanyEHMThNelxN2Uye+0jUFSdYG1OznbvYoj93UWpiNzqPTWN/7SXUNvtZw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from IA3PR11MB8986.namprd11.prod.outlook.com (2603:10b6:208:577::21)
+ by MN0PR11MB6207.namprd11.prod.outlook.com (2603:10b6:208:3c5::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8943.29; Thu, 24 Jul
+ 2025 10:47:45 +0000
+Received: from IA3PR11MB8986.namprd11.prod.outlook.com
+ ([fe80::395e:7a7f:e74c:5408]) by IA3PR11MB8986.namprd11.prod.outlook.com
+ ([fe80::395e:7a7f:e74c:5408%4]) with mapi id 15.20.8922.037; Thu, 24 Jul 2025
+ 10:47:45 +0000
+From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
+To: "Rinitha, SX" <sx.rinitha@intel.com>, "Kwapulinski, Piotr"
+ <piotr.kwapulinski@intel.com>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>
+CC: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "andrew@lunn.ch"
+ <andrew@lunn.ch>, "pmenzel@molgen.mpg.de" <pmenzel@molgen.mpg.de>,
+ "Kwapulinski, Piotr" <piotr.kwapulinski@intel.com>, "Kitszel, Przemyslaw"
+ <przemyslaw.kitszel@intel.com>
+Thread-Topic: [Intel-wired-lan] [iwl-next v2] ixgbe: add the 2.5G and 5G
+ speeds in auto-negotiation for E610
+Thread-Index: AQHb7OKCOvwkH5j2nEOH+xTzjK5FpbRBNfcAgAAA3nA=
+Date: Thu, 24 Jul 2025 10:47:45 +0000
+Message-ID: <IA3PR11MB8986C68BE894198CB16F6C21E55EA@IA3PR11MB8986.namprd11.prod.outlook.com>
+References: <20250704130624.372651-1-piotr.kwapulinski@intel.com>
+ <IA1PR11MB6241A1940E8E31B1F78BA87C8B5EA@IA1PR11MB6241.namprd11.prod.outlook.com>
+In-Reply-To: <IA1PR11MB6241A1940E8E31B1F78BA87C8B5EA@IA1PR11MB6241.namprd11.prod.outlook.com>
+Accept-Language: en-US
 Content-Language: en-US
-From: Tariq Toukan <ttoukan.linux@gmail.com>
-In-Reply-To: <20250718174737.1d1177cd@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1753353972; x=1753958772; darn=lists.osuosl.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=YEUPeEfAoqVDN5AzS+Zi6ECP6+DLN/BEyFRoJmYLtxk=;
- b=bruAPcy7cpkyiPUqRCskDsq80B9b3qe5HdBbl7RWnDKjrsLJUVyZrAnqomRdBl0/LG
- hBbpkmLe5t0qDpXegczlmpQMTHHj1rDE8ZxsjxmJb0NvZYz3y/RgAyX73RYq6sa6dXFz
- lAKHyyLDh6JzK9TJgVcRKXjq7Y+ILQIoLgaDzWDt8LeUQhjRQlPoXW83BcFPRLjS/X7J
- GJSGFQ/nbDzW9y67QSww+l66xUYUqmfMlIzoXubKQRyqqpK6ZGcObHhu8EI1XrBeAI4c
- 3D8QlV4DWs7Lw9KdIENqWvV4eK6QeS7iHkAj3ACfeO4cPa96m+dSHeJlfsXBj1p+oovv
- dNkQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: IA3PR11MB8986:EE_|MN0PR11MB6207:EE_
+x-ms-office365-filtering-correlation-id: b043fdc3-6ca5-4560-6d22-08ddca9f85f4
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|1800799024|366016|7053199007|38070700018; 
+x-microsoft-antispam-message-info: =?us-ascii?Q?Pll8H1GXSLYGewOY+FvOhnt9CR5kuMBO95krYOn3FkFuUeuQw1HvBCRdjx6V?=
+ =?us-ascii?Q?MYMf07P7iKxBIl6QsCIV3Emi94oOoNNiSLLD7vGxk/za/LtUoCha/9po3HLc?=
+ =?us-ascii?Q?bvMH5PAO574k+9ikvuZp5x7vzVYHiKFyt2l0gyzk/wY1Pp8yq1v9N9sdk3HX?=
+ =?us-ascii?Q?JkNzpPH2VcMY+WaKOBLKnRCCmAYrU8mIzeq0j+vCewGzUlH/pZMktRtdDc/y?=
+ =?us-ascii?Q?1K5kcHM1LrE9wZqCbq0gMnpzuzpWezUUeUTXEzrR38dB6WRZX+b8sfbTw7od?=
+ =?us-ascii?Q?gPbiaAQzh+Hg5fNOyRfW3NvP3b1DmcIdX+GJgLoKjLkg4aL2w7BG7mH4P5sY?=
+ =?us-ascii?Q?f3jSoEOTZmzJnfur2h8wPZjxTn49JkN15ZCbeGEbPMDM5XmaRzSXwRrHmFUL?=
+ =?us-ascii?Q?QXNSj9powxs3D492phJXFfRYM5cdNno1Nl2FzlG7qw9KQEP7tDuvcZ4pGCS6?=
+ =?us-ascii?Q?LWEgHdHA6QtrE6a/m/jo/QVxw4T4GUg2ygyUlYudq+ivFaayT857bhiGch/J?=
+ =?us-ascii?Q?e07AuKcQB+wUkyRtvj8kMAPedWBw7kEo53debC5Ffrz+IiReg3TjzoP/6tsM?=
+ =?us-ascii?Q?6e//h1C3LSJH0ZrjLcZvNY+xRdoY66DgI40TKsDDaAgPOZ20rGv+XS9HuXEf?=
+ =?us-ascii?Q?VFe5Y7PSRz6NznvAjtJ4AerQwYNsMtp0L0a3LFw5RM6XolwCU3F3ZFi4w7Io?=
+ =?us-ascii?Q?CAB2LLH8Lz0P+piCexL5Q5xRMsoWw4KM3rETlur5mZUXfz+dIje7Str4lQSJ?=
+ =?us-ascii?Q?63HFR4oAtz9WUFKQUlej6SNlXR2ohbeURle50jCLeP9dJHq19caJXkHV7wVU?=
+ =?us-ascii?Q?bSYI+QaZBoDuLIA9YvGVYNbrEOQ8QIjoQ+MMzFn6YQWApb4T/wheyut0uGzJ?=
+ =?us-ascii?Q?d5+jp0mgN3r0AmeOFGn2+nAclp0vAV01jQgnZ7/tF65ccvLuUKH9YE5jmuhy?=
+ =?us-ascii?Q?Hnaip3lMFq0CZeYtgLh69cj7ZF8Gxk1RDfF659lSWuADBmDu1OCZNozFfZ0t?=
+ =?us-ascii?Q?ImFgvk46YjZtsqy5+I2NBSefFvmLRFCgrG/RmF0wnKd5zLSrRIHiXD4PuPs1?=
+ =?us-ascii?Q?gWQGv7QJmOP8JXbrvvF9sk2ITeCXSvrDxYBmm+ihMNW4Qxyr6HseXAsYEWA8?=
+ =?us-ascii?Q?UHGSemI6i418zODGu/chz42NMeAyhqZi54VsSRwAnph0hPkuciLuyxLqDohb?=
+ =?us-ascii?Q?eQVfldZ25OKbz9J1Qf1u6oa9t9Iw/eZvGLdYFLExBuO6/khyxyNjPt7h46Wb?=
+ =?us-ascii?Q?SAEm4/Tc+jNftt2XbE/opWfea9N9enaWoLoiLxUqO8ynK8sl9Z67di2VXa6i?=
+ =?us-ascii?Q?FweM+Mk4eXRypUBXkRsEPEYmXUdQ1MXCCppx+AYEirmOxUiZZcWqJJXrcc0c?=
+ =?us-ascii?Q?z4qRXZiLE+h5Ho5BITRI4unAY/JgSN9TKcKahbO3lk0BAo0Fx6oqw2iUJ4oV?=
+ =?us-ascii?Q?eKMkGatZ9OtEAvkdj1EgQhOe52mzOGiLB1JKvhb+21KNs8dqnIEcuw=3D=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:IA3PR11MB8986.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(1800799024)(366016)(7053199007)(38070700018); DIR:OUT;
+ SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?s+hA9b2HAH2BLgTwBWa7rn76jB8ax+MRsceE6gaItwVSnfSulgAWCVaEzJch?=
+ =?us-ascii?Q?RcpWB/A84A44eQY9ZtX73tJKS/dJoqWzwT9g7Ncam9pL0EbtHmWRzl58f8CR?=
+ =?us-ascii?Q?zt6CTMpaWFKqHduDM7I85vtZh0DnBYEusqscI2MQBJvajfBZfhgy40PKKd1k?=
+ =?us-ascii?Q?YXuJREsinnjFpQ+l+k/w8pcBCq08B2APd9/bWSvQfLW5ffif4hXqmwzMGahF?=
+ =?us-ascii?Q?hqxJcb2iigkv6Lpp6kGU5l1cf2jyQbWCQ1Q1bgsf7X7d67U7BrCumqCBWvPD?=
+ =?us-ascii?Q?7M0bLGJv6D9mPF247MdUi/IlYXIiJ1bs4YO/YgKvnLYqE3fxLc8bENgbLsBN?=
+ =?us-ascii?Q?F1GoHigqzYbZlvQ1SQ/dub/OcfyXrriEnLBkhyBRUX086tVZj4f/SrHg1uLo?=
+ =?us-ascii?Q?eTe9b5jijGAUXvYtPSuAh0O8GKt2kAdYAyyJ+M7nIzctUBDp0C2tjV8vL1qD?=
+ =?us-ascii?Q?miRbxSlaHW4kC+iawYkZaNT5AHNr4UcsyO+fMdaeO1Gy8GbQnEUFOpOPt0LG?=
+ =?us-ascii?Q?cUnoVP0Nf4RDbnsxu57PhlhGRFBxok9ZLgLQpRgNlbwDbmVrHi5ONZh6kzSl?=
+ =?us-ascii?Q?h7rcpdPfS7DGPnG1Jrwb3L0A+BYYDwJTYSi+H0X0t0UH11GUrHRDzYrMoC8i?=
+ =?us-ascii?Q?bFE66Zn4qAVs7AuiR8le410FNNV5+CMLpOB4BD1h1w6EHzBl1Gr2GO9fNQ5S?=
+ =?us-ascii?Q?wZAYHCSVJXM7Ng+juHlm3a5LgY7TZ/ryFovUdtCDqeKQeuK/CdG5kGulO6Gb?=
+ =?us-ascii?Q?9IU7XfoUhJLwIJkIDhToVtnYc3MD7y+P5xX9HATp/P0nwcnaB+lVYIEnu7iI?=
+ =?us-ascii?Q?GXW4CSJLnPab9mj5UVUyyQ7wUKbg1RMN8VxsK1P6a8jXfKuggl1xKot/QeLB?=
+ =?us-ascii?Q?uOH/Bsfo6TLtMNrJ9bhTNp8+vh7fMbTfsQPi0uCBYd47Y8B3ANgXbdPgd6bU?=
+ =?us-ascii?Q?TPjavoqAlOx7vJPEUt9b1080fnPiaG3lRtD4zE74lMUcDdqiUPWmTXi9C003?=
+ =?us-ascii?Q?+MNJjF1UHg1gtdloPJfH3v2X+PogfFXBCjjJiGZ4ZcnZ3KqPZFYqPBDKfVk6?=
+ =?us-ascii?Q?rWK34e31K92B9XqMI6APGTWP5V6sfPKiE6fFlpFEH2cSV1Z2IZM12WtbAHIq?=
+ =?us-ascii?Q?e6elMB3v1U4HANcKQyhmEGSWaKFV/LddGusZDwG+/Jni2ddyDuu84oOu89q1?=
+ =?us-ascii?Q?OYvJTprmIYLIfJkq2Fl5eLFAtQ8Iy9UbSnEbrvg+FENKU3uvwJzzT4UiLASY?=
+ =?us-ascii?Q?b4dRpvNzBa66LWA+kGHa1CHdF5vitZlZJSNrQ80yCF4Mf6moLDwKdcccq9MD?=
+ =?us-ascii?Q?Jl6UVnMoQH1wd3wi+9DAImdkhKZAahzQM7pg+A0RYtwXNvgwhdTp6mPDT2b6?=
+ =?us-ascii?Q?uwB22iyKFG3W4vGyz+ziaLuOPRhZph4OMdpHsB5aRpZGYtr1JBxVijYAQQlJ?=
+ =?us-ascii?Q?K6FFneoaiNhvbTyiGL58jsURA3q41MH3AcY3iz/c3rzw1gGatiKc0Qhq0f23?=
+ =?us-ascii?Q?yMZuVEmZPsvbl9YbCH3w2YDRFlhYH/BBVabBH41cBIXoVnsTon6DZFamz4LG?=
+ =?us-ascii?Q?IMPQCZUKbJ4nH8+PgsqSieU2Y0d6XSTb9ey1SGfPcONUXyrixrPeIVvEaQDr?=
+ =?us-ascii?Q?tQ=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB8986.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b043fdc3-6ca5-4560-6d22-08ddca9f85f4
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Jul 2025 10:47:45.2071 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 73Bsf/Zea9C42DXhQsblIPeGDT7gwTiXPeswX4lWg8oWMOdcAL/TE5bF/SP61TSckM1U7elykZ+mao8bZw7t4qyWhGgYP4OuL0BplIkrF7s=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR11MB6207
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1753354071; x=1784890071;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=X5ihEhE2hwVde2hAqNwvk2xEdIk87JkRdH4iGOd/tDI=;
+ b=XioS2Kdj7p66gccGhGuNW2RKAB6aYUP6KrNSeqN1N4nY+Jw5ByQFITc/
+ b31hM8Uvnw9P8K4GuPdQKLS9UC5PehNr8Gr/PcUBDaT84SqU6w+e1vkob
+ WQXThgO7PJnj4ySRMdICtBf0wFaL6xXSmPSZQTdGh9RQ7eMfoeFITstHY
+ OghFo1ykFxMpQMZfTqrWvdbhsjGjAX9f7Q5R03wak0U7tMFHWN6aLoKRZ
+ pVTI77sslpOAOXAd4SLqiuigzr9NG9lAni+JWwI4Lu9gMYWNEWDiwQaTS
+ xBvdeYE+yaWtPCsSeHrD/I4JxbT3MlvyXcVbVaJpR1lVauzSAUKvEKaIY
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=bruAPcy7
-Subject: Re: [Intel-wired-lan] [PATCH net-next 0/5] Expose grace period
- delay for devlink health reporter
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=XioS2Kdj
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [iwl-next v2] ixgbe: add the 2.5G and 5G
+ speeds in auto-negotiation for E610
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -154,94 +233,44 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
 
-On 19/07/2025 3:47, Jakub Kicinski wrote:
-> On Thu, 17 Jul 2025 19:07:17 +0300 Tariq Toukan wrote:
->> Currently, the devlink health reporter initiates the grace period
->> immediately after recovering an error, which blocks further recovery
->> attempts until the grace period concludes. Since additional errors
->> are not generally expected during this short interval, any new error
->> reported during the grace period is not only rejected but also causes
->> the reporter to enter an error state that requires manual intervention.
->>
->> This approach poses a problem in scenarios where a single root cause
->> triggers multiple related errors in quick succession - for example,
->> a PCI issue affecting multiple hardware queues. Because these errors
->> are closely related and occur rapidly, it is more effective to handle
->> them together rather than handling only the first one reported and
->> blocking any subsequent recovery attempts. Furthermore, setting the
->> reporter to an error state in this context can be misleading, as these
->> multiple errors are manifestations of a single underlying issue, making
->> it unlike the general case where additional errors are not expected
->> during the grace period.
->>
->> To resolve this, introduce a configurable grace period delay attribute
->> to the devlink health reporter. This delay starts when the first error
->> is recovered and lasts for a user-defined duration. Once this grace
->> period delay expires, the actual grace period begins. After the grace
->> period ends, a new reported error will start the same flow again.
->>
->> Timeline summary:
->>
->> ----|--------|------------------------------/----------------------/--
->> error is  error is    grace period delay          grace period
->> reported  recovered  (recoveries allowed)     (recoveries blocked)
->>
->> With grace period delay, create a time window during which recovery
->> attempts are permitted, allowing all reported errors to be handled
->> sequentially before the grace period starts. Once the grace period
->> begins, it prevents any further error recoveries until it ends.
-> 
-> We are rate limiting recoveries, the "networking solution" to the
-> problem you're describing would be to introduce a burst size.
-> Some kind of poor man's token bucket filter.
-> 
-> Could you say more about what designs were considered and why this
-> one was chosen?
-> 
-
-Please see below.
-If no more comments, I'll add the below to the cover letter and re-spin.
-
-Regards,
-Tariq
-
-Design alternatives considered:
-
-1. Recover all queues upon any error:
-    A brute-force approach that recovers all queues on any error.
-    While simple, it is overly aggressive and disrupts unaffected queues
-    unnecessarily. Also, because this is handled entirely within the
-    driver, it leads to a driver-specific implementation rather than a
-    generic one.
-
-2. Per-queue reporter:
-    This design would isolate recovery handling per SQ or RQ, effectively
-    removing interdependencies between queues. While conceptually clean,
-    it introduces significant scalability challenges as the number of
-    queues grows, as well as synchronization challenges across multiple
-    reporters.
-
-3. Error aggregation with delayed handling:
-    Errors arriving during the grace period are saved and processed after
-    it ends. While addressing the issue of related errors whose recovery
-    is aborted as grace period started, this adds complexity due to
-    synchronization needs and contradicts the assumption that no errors
-    should occur during a healthy system’s grace period. Also, this
-    breaks the important role of grace period in preventing an infinite
-    loop of immediate error detection following recovery. In such cases
-    we want to stop.
-
-4. Allowing a fixed burst of errors before starting grace period:
-    Allows a set number of recoveries before the grace period begins.
-    However, it also requires limiting the error reporting window.
-    To keep the design simple, the burst threshold becomes redundant.
-
-The grace period delay design was chosen for its simplicity and
-precision in addressing the problem at hand. It effectively captures
-the temporal correlation of related errors and aligns with the original
-intent of the grace period as a stabilization window where further
-errors are unexpected, and if they do occur, they indicate an abnormal
-system state.
-
-
-
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
+> Of Rinitha, SX
+> Sent: Thursday, July 24, 2025 12:44 PM
+> To: Kwapulinski, Piotr <piotr.kwapulinski@intel.com>; intel-wired-
+> lan@lists.osuosl.org
+> Cc: netdev@vger.kernel.org; andrew@lunn.ch; pmenzel@molgen.mpg.de;
+> Kwapulinski, Piotr <piotr.kwapulinski@intel.com>; Kitszel, Przemyslaw
+> <przemyslaw.kitszel@intel.com>
+> Subject: Re: [Intel-wired-lan] [iwl-next v2] ixgbe: add the 2.5G and
+> 5G speeds in auto-negotiation for E610
+>=20
+> > -----Original Message-----
+> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
+> Of Piotr Kwapulinski
+> > Sent: 04 July 2025 18:36
+> > To: intel-wired-lan@lists.osuosl.org
+> > Cc: netdev@vger.kernel.org; andrew@lunn.ch; pmenzel@molgen.mpg.de;
+> Kwapulinski, Piotr <piotr.kwapulinski@intel.com>; Kitszel, Przemyslaw
+> <przemyslaw.kitszel@intel.com>
+> > Subject: [Intel-wired-lan] [iwl-next v2] ixgbe: add the 2.5G and 5G
+> speeds in auto-negotiation for E610
+> >
+> > The auto-negotiation limitation for 2.5G and 5G speeds is no longer
+> true for X550 successors like E610 adapter. Enable the 2.5G and 5G
+> speeds in auto-negotiation for E610 at driver load.
+> >
+> > Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> > Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+> > ---
+> > v1 -> v2
+> >  More details in commit message
+> > ---
+> > drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 35 +++++++----------
+> --
+> > 1 file changed, 12 insertions(+), 23 deletions(-)
+> >
+>=20
+> Tested-by: Rinitha S <sx.rinitha@intel.com> (A Contingent worker at
+> Intel)
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
