@@ -1,238 +1,195 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 816AAB1121B
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Jul 2025 22:21:51 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B96E9B11294
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Jul 2025 22:50:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 343A041B6A;
-	Thu, 24 Jul 2025 20:21:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CD67741B82;
+	Thu, 24 Jul 2025 20:50:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ItosDfEHBzPH; Thu, 24 Jul 2025 20:21:49 +0000 (UTC)
+ id zYlLwH0hBwHQ; Thu, 24 Jul 2025 20:50:47 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 52AB341B69
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8CD8D41B76
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1753388509;
-	bh=2IPF3nO/9tHyg8fS/CAEAXEkuHAGyEsqO1dXnaiLuTQ=;
-	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=vyyvZfl5mTd4ovc4aegHZ2p311M5XJwDHNSyvQYEJFhXkLdVOm5OE8vrzMurpr9xB
-	 /KjXxvLP4ckimPulmftEyiiLkC8OtGMQZcQEduU/lFQUwACwx9Qz9FrpPADuMhAqYi
-	 tqd9wh4LcFK1whKX1Ik0UcioiV7aEui2GPBzqZjm0NySSC99B/dN+2I47zlKruU9rI
-	 80LXabIQbKOak0YisuhdZIhweNmvG/JSr6QKJ0/QGfGZXPNXym6MVsjM/5bQ2gw+Dm
-	 xmrHZcJ6nAaQ9Gv58ToGrzEnmMWJpm/JfEtMZ+EmhUzbfBCVlfNK6RVi2ioMCeTOUC
-	 dywV/7NqwDudw==
+	s=default; t=1753390246;
+	bh=UmZIUH6Ox8b69qfqRnLk0n6ktL5XtZzhIGHfz+EkAYU=;
+	h=From:To:CC:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=hw7MSooysf1Lr8MmjIBAHF1vDBR5Mcy7Z45JdzaAI0iib6ZlnSi7OeAJ5wkwJKJxq
+	 y4qpEMc1GJoilAhwwbuFslCgxwx22mG6ZsHyvCH6mBBvwSF2tuYtlCiC0l4Zu43zDl
+	 FBNAGjdL04DRZ8v6z3LsPGKvBzxvv34i6pi/5+G/IA+gF+eQ85sHTrsAbqG/hA0QcZ
+	 SM5tqXddyzxgGCpBNoIwDPbOS2hgMvKx5mFydzxyX38q0QusqX+RgBvPjLpMn8+c1x
+	 vkGwFMobflhAC2Q/UyRVgQXOe8hh9Av4i0SaTyj2r0dLjpApeoAGKS+NIhkciUWx1i
+	 Y/tQrIzydDAsw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 52AB341B69;
-	Thu, 24 Jul 2025 20:21:49 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8CD8D41B76;
+	Thu, 24 Jul 2025 20:50:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 5E997CA9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 20:21:48 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id B3735B83
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 20:50:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 430FE4058F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 20:21:48 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id A49598249C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 20:50:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id nw8HEL61Ewpq for <intel-wired-lan@lists.osuosl.org>;
- Thu, 24 Jul 2025 20:21:47 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
- helo=mgamail.intel.com; envelope-from=anthony.l.nguyen@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org E0ED840187
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E0ED840187
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
- by smtp2.osuosl.org (Postfix) with ESMTPS id E0ED840187
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 20:21:46 +0000 (UTC)
-X-CSE-ConnectionGUID: Vz3/X3pEQWC0PiLnorDB9Q==
-X-CSE-MsgGUID: 65n0fMJnQte2UzcaZQwtag==
-X-IronPort-AV: E=McAfee;i="6800,10657,11501"; a="55421454"
-X-IronPort-AV: E=Sophos;i="6.16,337,1744095600"; d="scan'208";a="55421454"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jul 2025 13:21:46 -0700
-X-CSE-ConnectionGUID: FEhsqT4TSh+x0YvTHTCfFw==
-X-CSE-MsgGUID: BhUwMbBrTMisD3ri6sUwMw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,337,1744095600"; d="scan'208";a="160773526"
-Received: from orsmsx901.amr.corp.intel.com ([10.22.229.23])
- by fmviesa009.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jul 2025 13:21:46 -0700
-Received: from ORSMSX903.amr.corp.intel.com (10.22.229.25) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Thu, 24 Jul 2025 13:21:44 -0700
-Received: from ORSEDG901.ED.cps.intel.com (10.7.248.11) by
- ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26 via Frontend Transport; Thu, 24 Jul 2025 13:21:44 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (40.107.236.43)
- by edgegateway.intel.com (134.134.137.111) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Thu, 24 Jul 2025 13:21:44 -0700
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id cpKj67aTGTYH for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 24 Jul 2025 20:50:43 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.237.77;
+ helo=nam12-bn8-obe.outbound.protection.outlook.com;
+ envelope-from=tariqt@nvidia.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8846182238
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8846182238
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com
+ (mail-bn8nam12on2077.outbound.protection.outlook.com [40.107.237.77])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8846182238
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 20:50:43 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=a6JGrmYpmTsYbqnwvcTSWxpOHn3ckNRTs+Xe4cr+VZk/+fi90AkQfJ74cmJyA+265GI/dOIta819iZJlqsdk2hIzCUOcRgKhI6Iv+cRSpnCqYXDUhP92PB8GJPL3oYjR5JF+0j/ug1tfGEMAyyP3CehG4dkCyFrLz5/JypaFyFna6dWvHs5Qq5XRGqum+ZR5QvHw283j/Jjtj674cot59w78E39YeAeAACdq0i9yLOUqkrxpa2+2KSjIJVHSsBS/+IL7xx/WoGBVo9wlMqNt/ssvyAhs2Q+DabCmL6Rau+YxjkuRU7luQHjeG0PBEXCrhl04nHjrNHnmpGAyDRkGQQ==
+ b=W9iEEF0vO7/0nF2jFUtorfw8pnNZcmRc6kePwb476zW8k/UCFolTKXXJbwSxykjFsuCI6pWChPMvrO9djdjCAcWYlnL/bYJtpZGkPMFnV0ZppLMwvAmHrcphUvxRWMWx/k3Ji0ci1rxjwEBjfRC3Bg1wXYkF6BICDsgoJkT1cCX3JvEd17LRbJY1yTf+FyzHVSDKYgLjP884rYC40YBlCjhkgwQ1KobK4QcrmvmUKfsKZhs2SXr9aqgZhTNjGxuKw8TdCej020uTXXYaZKxtF5irvp3Gsg0YppxywL7j2dJKD8yBYyQLvex+GodHLi+7iBmDNt0+QFscGdt2dNrBLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=2IPF3nO/9tHyg8fS/CAEAXEkuHAGyEsqO1dXnaiLuTQ=;
- b=b8D1GnFkXjNgXyK26hm6Exp3m4LVzPA2IrJtzwoiIoHCc89PWsDNplV3hNBO2IxrbD0TXWXp1dhX1Glo4wbwVIKPjivLCHReTGkQUQgtHcanYEBMgTKpBC1ZE7WZcjbdDfKL0wHYnczVgtNckJgVzUhxAQ7eBmWG/ZkL1l6V+BAm9rpKFIObTyXn+gKpE6OhgZsID5xMbZd75HcdJuD0trRhMLQBNJZ3RhFrN99s4Q62I1/haG397QajMcCwyhWaFrsa0oeSBcEbMbDCARyodmNVnn/BsH4RM7i6DUkBByUdAS4M5oWNU0DtH49GJKMeGPYIzd5JjUYpvQC4QmJ4bA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BL3PR11MB6435.namprd11.prod.outlook.com (2603:10b6:208:3bb::9)
- by DS4PPFCAADA7A6C.namprd11.prod.outlook.com (2603:10b6:f:fc02::4d)
+ bh=UmZIUH6Ox8b69qfqRnLk0n6ktL5XtZzhIGHfz+EkAYU=;
+ b=AaN1woKYaaplydesxEDR+9PwRsanUErhF0J1rld9Ncjzm1OU3Eipw38fvZa5QJZLRJ9rt8PNDAG3uHF+4E4TRe3lawdOfNX9Nn0mpWi4R0IsOE2CIT7yhUnEv+nfibhwEsNY940dFbIOHGiNFovlJRKTxHTIL1Pk1fI4FQ4feb+mnR/deX8yFJRogyWoUbGR/ySGPV6ck68QzQNYyK5/0XXb1+fNx9wfYkSeiNs5wKGI5mVnAbXEn8gpTNoVMremoq03eeafah43Lm3n9zXR8Xl5+pE1BjUjg0hyFeJgWV+/sLsexa+2I+2ICAJcHQlAnwsoixKseX1De26kI0b4vQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.118.232) smtp.rcpttodomain=google.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+Received: from MW4PR03CA0319.namprd03.prod.outlook.com (2603:10b6:303:dd::24)
+ by MN2PR12MB4455.namprd12.prod.outlook.com (2603:10b6:208:265::23)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8943.28; Thu, 24 Jul
- 2025 20:21:22 +0000
-Received: from BL3PR11MB6435.namprd11.prod.outlook.com
- ([fe80::24ab:bc69:995b:e21]) by BL3PR11MB6435.namprd11.prod.outlook.com
- ([fe80::24ab:bc69:995b:e21%4]) with mapi id 15.20.8943.028; Thu, 24 Jul 2025
- 20:21:22 +0000
-Message-ID: <6ecfc595-04a8-42f4-b86d-fdaec793d4db@intel.com>
-Date: Thu, 24 Jul 2025 13:21:18 -0700
-User-Agent: Mozilla Thunderbird
-To: Jason Xing <kerneljasonxing@gmail.com>, <przemyslaw.kitszel@intel.com>,
- <andrew+netdev@lunn.ch>, <davem@davemloft.net>, <edumazet@google.com>,
- <kuba@kernel.org>, <pabeni@redhat.com>, <bjorn@kernel.org>,
- <magnus.karlsson@intel.com>, <maciej.fijalkowski@intel.com>,
- <jonathan.lemon@gmail.com>, <sdf@fomichev.me>, <ast@kernel.org>,
- <daniel@iogearbox.net>, <hawk@kernel.org>, <john.fastabend@gmail.com>
-CC: <bpf@vger.kernel.org>, <intel-wired-lan@lists.osuosl.org>,
- <netdev@vger.kernel.org>, Jason Xing <kernelxing@tencent.com>
-References: <20250720091123.474-1-kerneljasonxing@gmail.com>
- <20250720091123.474-3-kerneljasonxing@gmail.com>
-Content-Language: en-US
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-In-Reply-To: <20250720091123.474-3-kerneljasonxing@gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: MW4PR03CA0269.namprd03.prod.outlook.com
- (2603:10b6:303:b4::34) To BL3PR11MB6435.namprd11.prod.outlook.com
- (2603:10b6:208:3bb::9)
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8964.22; Thu, 24 Jul
+ 2025 20:50:40 +0000
+Received: from CY4PEPF0000EE3D.namprd03.prod.outlook.com
+ (2603:10b6:303:dd:cafe::d8) by MW4PR03CA0319.outlook.office365.com
+ (2603:10b6:303:dd::24) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8964.22 via Frontend Transport; Thu,
+ 24 Jul 2025 20:50:39 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.118.232) by
+ CY4PEPF0000EE3D.mail.protection.outlook.com (10.167.242.15) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8964.20 via Frontend Transport; Thu, 24 Jul 2025 20:50:39 +0000
+Received: from drhqmail201.nvidia.com (10.126.190.180) by mail.nvidia.com
+ (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Thu, 24 Jul
+ 2025 13:50:21 -0700
+Received: from drhqmail201.nvidia.com (10.126.190.180) by
+ drhqmail201.nvidia.com (10.126.190.180) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.14; Thu, 24 Jul 2025 13:50:21 -0700
+Received: from vdi.nvidia.com (10.127.8.10) by mail.nvidia.com
+ (10.126.190.180) with Microsoft SMTP Server id 15.2.1544.14 via Frontend
+ Transport; Thu, 24 Jul 2025 13:50:14 -0700
+From: Tariq Toukan <tariqt@nvidia.com>
+To: Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David
+ S. Miller" <davem@davemloft.net>, Jiri Pirko <jiri@nvidia.com>, Jiri Pirko
+ <jiri@resnulli.us>
+CC: Donald Hunter <donald.hunter@gmail.com>, Jonathan Corbet <corbet@lwn.net>, 
+ Brett Creeley <brett.creeley@amd.com>, Michael Chan
+ <michael.chan@broadcom.com>, Pavan Chebbi <pavan.chebbi@broadcom.com>, "Cai
+ Huoqing" <cai.huoqing@linux.dev>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>, Sunil Goutham
+ <sgoutham@marvell.com>, Linu Cherian <lcherian@marvell.com>, Geetha sowjanya
+ <gakula@marvell.com>, Jerin Jacob <jerinj@marvell.com>, hariprasad
+ <hkelam@marvell.com>, Subbaraya Sundeep <sbhatta@marvell.com>, Saeed Mahameed
+ <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Tariq Toukan
+ <tariqt@nvidia.com>, Mark Bloch <mbloch@nvidia.com>, Ido Schimmel
+ <idosch@nvidia.com>, Petr Machata <petrm@nvidia.com>, Manish Chopra
+ <manishc@marvell.com>, <netdev@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-doc@vger.kernel.org>,
+ <intel-wired-lan@lists.osuosl.org>, <linux-rdma@vger.kernel.org>, "Shahar
+ Shitrit" <shshitrit@nvidia.com>, Gal Pressman <gal@nvidia.com>
+Date: Thu, 24 Jul 2025 23:48:49 +0300
+Message-ID: <1753390134-345154-1-git-send-email-tariqt@nvidia.com>
+X-Mailer: git-send-email 2.8.0
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-NV-OnPremToCloud: AnonymousSubmission
+X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL3PR11MB6435:EE_|DS4PPFCAADA7A6C:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7a123bbf-c9f8-48d3-a510-08ddcaefa838
+X-MS-TrafficTypeDiagnostic: CY4PEPF0000EE3D:EE_|MN2PR12MB4455:EE_
+X-MS-Office365-Filtering-Correlation-Id: 76edf4fe-8cb5-45ac-1874-08ddcaf3bfa7
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|7416014|376014|366016|1800799024|921020|7053199007; 
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?MGc3ZWhJSmdPWkYxTUU1cHNDTTYwYmNiRTNaR0d6RmcwaitxcTlMVXQvTUlp?=
- =?utf-8?B?MGdTVFQvRFZYNjlzUk1aY2llSi9LVEtIN05iYVh0YTh2SUppekZHT05RRWMv?=
- =?utf-8?B?ODNWQ0NmN0VhNXIvajVzY2U5enRENjlkaGcwN3NMVnRuMWR1RG0rVmJ6NVRG?=
- =?utf-8?B?UmlIbkhjdlFweUJuM2VFVG03U0RHcUZsZDlyV2lLbjlWY2hkOFRGWjdCTEdu?=
- =?utf-8?B?UUErcDNFTVF6RTcvTHlzNzgyb0dwME0zUjY2QS96TXhKYmxaYjU1dmxjaXFC?=
- =?utf-8?B?S21IR1p4N1drOE5qWHNYQTBMWWN2ekR1b3dBcSt3YXVBTHlhTDA1Qno0ejVy?=
- =?utf-8?B?b296R09IcE41NDB6Um10YmJUdWpBSlhuRlJPRGlQRXJRcldEWm5JeG9RcUlR?=
- =?utf-8?B?a0VKUXhBdFpscGJwUzdwSE1QbS9RcUxzRVVZNDQxNDBtTWUwc1g2YWZSQ0sy?=
- =?utf-8?B?b3lGUkp4YmREeU5sUTA4QytBVk1JME9tSTNIZUJhQmN2VWMyN25ualNjUlRR?=
- =?utf-8?B?azNYTEFMSFFUQnBlRC9jWWdKVlFEOGlhVENzajVyVWY1YTRtQVg4OFhDQUM2?=
- =?utf-8?B?cWZ2WUN2UkRvek9yYUJZNlFkc1F2K1c1aWZqd2pkdVBMemtIWlNYSEhuSkdT?=
- =?utf-8?B?YlFTV1hkaERQZXdlSytIcGNDbitxdHQrMk5tTVIrd1cyd0YyNWlNUlcvdEEv?=
- =?utf-8?B?R1VETWxONDFrRU5XcjNUNWorZGhaZmk3MC9DMXlhZnZ0TURlcHJTU1IvME9o?=
- =?utf-8?B?MG1rbFhxejNqc3cwNVFCWC8xUzRETm05VVBHd2RnVmZxdStNMDdQMXZtOGV4?=
- =?utf-8?B?L3lIUm9oRGY1eHlOZWQ2aGJhSXBvYmFqZTgwTUdlT0lVTFNMMzdVcmpSK2t4?=
- =?utf-8?B?b3RENWphV1E3T2tISDdSK245UGxZMkRwekxXR2tERmw3MlVhWVdaMjJmRnc2?=
- =?utf-8?B?Mnc5NjIrZEMyNlUxUHpYN3o1NmlLRUZ4RUlMemJ6R2lUOXNucitoWUt5dTA5?=
- =?utf-8?B?QmlQUEdaTldkck9uTk96dHFEdmxZUTBsRlhPb1BQTWs3Si8wWHg1S1VxeGoy?=
- =?utf-8?B?aVZxVFZjQzkxTTkxQkl5ajM5UWZ1b2plZWt3NGxmaWhMRFV0SFNSUVV0STRJ?=
- =?utf-8?B?OHNIQlZja0dKb1kxSXR2L1ROWVdCNVlIaHFKYS9TS0lzRXNNOUY4dHpKbTdL?=
- =?utf-8?B?d2NOVkV6UlR4YlEzcXhHZVAzbEFHeFhyZmtEanZsZHYvQUsrSFZremlTc2Q3?=
- =?utf-8?B?a21SeFRkN1BaUUdTM0QwVGQ2V2d4cERZMnhlTDBncXVvLzlYOEhRMWJJeXB6?=
- =?utf-8?B?TkRiMTEzQlVLN3E1dytHV1FOUnFiaEkveUtpR1JtOG9RY1EzODVDK2FmUkJP?=
- =?utf-8?B?SFJBajRqY05hVWgwRnJSTXVFVnFROEZrdDZUUTB2ZUJqaTF3VkZWZFJwaEM0?=
- =?utf-8?B?bW45eStUc3VTNkwwUDg1bjJ5dDl4dVZpL2ZuUkhsNFZnb3QyL3pCSjRETHcv?=
- =?utf-8?B?eVNDYU92Yzg0ajFFeWI5K3BraU93ZmE2cHFIa2lNVGVJeittMEtuZjRTOGVj?=
- =?utf-8?B?b1hUZkd5VmY0TUJQM01zMTlPMEh5THo1a0VyVWdiYkhqSWlpNmhEVTZvaEFn?=
- =?utf-8?B?ZmhYdmtjZThXQk10Q2ozNXJBQ09oTThBVnRhdzdHRVJMRjJwelEvZ3pSbXU1?=
- =?utf-8?B?SUEvaGJHUEgyQVd3T3NjMGU2QjJuUS9ZQmF2MUJYUkEzVmpsakRGeVpNK2pt?=
- =?utf-8?B?RmxrN3BsWlRVcll3RHNnaWMxVFEvLzMyWUtCZE4vUEh4anIyNnp6V2pJUExV?=
- =?utf-8?B?cktDWE9KbVJLdjZlSkVvSjB4OHpoRWl4enlqTUk0RHRlL3d1b2FlRFYvRGRV?=
- =?utf-8?B?VUc5Qzk3cWNGNzcrY3Nmb3lCZ1FyRFFTRm5TU2Urdk9hZVNzb0FWWFZiekxx?=
- =?utf-8?B?Um1Vb2c5ZWgvbnVmeFBsQTh2Q2k1WmhUeHhOckJPRzlZMU1BUXZxQmQ1SG1j?=
- =?utf-8?B?MDU5dE9xcTdBPT0=?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BL3PR11MB6435.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(7416014)(376014)(366016)(1800799024)(921020)(7053199007);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?WHljUkFqNmpuTENPbmw0UUFzcEs4ZXpiTmVMVk9OTFFJUXU4VlA4U2N1dGRP?=
- =?utf-8?B?eUpGWlUrVGd2L2ZKeDdDejNYTVYrVDZFaXZoNGNEd3d0cU5jaDBtMldaQVYx?=
- =?utf-8?B?bXpkQ2dmemJ5Q0dnUHI0ckJiRVVXQ0podnVBcGoxc0ZrRzlweUFFSFpqRGxG?=
- =?utf-8?B?bGhWY01PU01ZV2N1MU4xQlRDK0IvVzFpS2ZCdWIrZC9ZOW1zdWZuRE1WZDk3?=
- =?utf-8?B?ei9XSENIMWI5Y2ZsOTFPRTB4ZnQ2bDNDQjlpaCszU0tjbTdlaUE0cEp3b0Fy?=
- =?utf-8?B?TUpmM0NrVlBhWGxtLzFWclQ1OVc3djNQRUNBZ3dadGx1S2tjWTc5UEl3eXhs?=
- =?utf-8?B?ditTSXZpWlpRY3dqNlRGU0tPdG1veGVsWkh1MnByNmZuZmw2d1VQZ0YwM1JH?=
- =?utf-8?B?WkdNSFNSeUsyOXRLbXMzbHFaNzQ4Y0xNYVRoTEw4NDVObUhnYzRldWZOZXZ5?=
- =?utf-8?B?REtBalU3eGN5bXF0L2lNQmFPSjRJT0pnNytqcDVGRmF2RTB2SHB4RVRyaXRl?=
- =?utf-8?B?bFgvenh4eDNDYll4cDNSWWJqMitmYXFJZU1wVHp3bWhTem4ySEt4U2I5TGtX?=
- =?utf-8?B?MEdhQ1FMTjM5MlB6Y29BZm5wSjdCcllSZjdRVWtaRlphNmtXcVpqeUs5YmpL?=
- =?utf-8?B?Tkc0bGNqcEZIYlhUc2pISUJ3Tk1GOUZFRHBmZm15SkloVjc3K0hONXFKWDZB?=
- =?utf-8?B?U0E1NW9Ob2V5T2lKYzNHYWpYTS9WN0pzOExZRG0zMG9LZ0hzWUZIU29OU1dj?=
- =?utf-8?B?QVRlYktJbTRIRjlqVW11ZldHeWRjZU41NGMwd3BGMzBUWUtWS3o0aFREdUlO?=
- =?utf-8?B?SHJnRWJVRU9lYWVFODBGMVVZcG5EQ0gzb05uN3plSG1McTlQeFdXTHFWT05M?=
- =?utf-8?B?NWgxR3hyaG9NZGljVFB0UEhuQURIc0xOcjQxS3dXYWM0ekxlRURuOGcrWGY2?=
- =?utf-8?B?Y0RuRDhqaGtiQjh4VGp4K01rdXYwOWJ4bmJVM3hVaFhFQlV3dlpwVlowQUwv?=
- =?utf-8?B?RW1FZEFtSXdTbjJXVDd1cEt3Qy85U0dVRUhaMmRaQW15YzJOYVE1WmI4Z3lE?=
- =?utf-8?B?TmxYdXd2R0tmc0ppaXhwd0lDNEkzUHFJUDRDTkNQaVo0ODJYdE5HeUxRYUIv?=
- =?utf-8?B?NmpGWElZTkVERHZDSkw2SVJYRXpva05BNGJEVGZDMWNLUkhob1BUSjRzeUhU?=
- =?utf-8?B?Sk9LWmpQanlLZnloR0ttdW53bEIxSkppT3o2NHJlN0NPbmcrMlhIKzVOZE5S?=
- =?utf-8?B?TlZPbW1vc0ZmMUJCRDM1MVR1aUxoWmxTMVdRTnFxNEJaZlkzSHlEeCt4U3hG?=
- =?utf-8?B?MGM2SXFsaGpRSUpSeXdyVnZPalNlNjkyWThuOXZXR0hPS3ZnR0hXcWhKTjBk?=
- =?utf-8?B?Q0JVMVhUQ2VWUUxLR0hJWnJZeWpyUjNqcHNPUU11aVdKcDRFN2VkalNwam1G?=
- =?utf-8?B?ZFd5SDBkVFZ4UThhRm1mRUxLcGF1UVhmRDJYNkpSTTZTbVhhTWlJYVJTVWdl?=
- =?utf-8?B?aEp3M1c2MmVpS1JKM05WZGZnRklMTWxmRmtXRjl0R1VONmpFdmRKNm5CWmVS?=
- =?utf-8?B?STRDenNrTldDZXA5d3RCUTd3Zm4rN3hEU0MyK1p6NURGMGZwbmlHWWVFSDlV?=
- =?utf-8?B?ZU11ek9UNm9RUjNLQmZMNnRjeWI4KzEyTjErc2xGczlUVTF1cGxZTFlWbS80?=
- =?utf-8?B?TkNMbFJOMmd2SlhnOUhIc2s1elhuamRFbGd6M2k1aHRtZHVaRW84OVJ1ZUdL?=
- =?utf-8?B?d2s0b0JEMk1pRFdFQUEyRUJUVnhoS1EyeWpBRHJ4amFTWlB5MWVoSE9MalJS?=
- =?utf-8?B?SDIyNDl4QlVKSEFnUHNXRGlQQmJKc1YwSTRocUVpNy8zekF3YmN3SFJOS09I?=
- =?utf-8?B?MkZwYXBoSnNOd1NvWDkwVWxsbC9JTXo3YTFiTEV4TlVNK3V0eVJ0SHNxdHVQ?=
- =?utf-8?B?b1ZCQTVpR1NHcWE5d3VEdWUvTVJpYkVSWWhwZFRhMFNzQVZ6Q2twdFhCTHZH?=
- =?utf-8?B?OFYxVkRMRWRGWkRVcHpoTVJBK2kwVXFZeUFWdmN3MXBQSVV2TytBdTFNUWNn?=
- =?utf-8?B?eGVvdlRwM2RvcVY1NStUNlpqbDhXTEJvTmpiUDFHTDI3SnNja1hKOUs2L2d4?=
- =?utf-8?B?THJsVktSeUJKVEhtTWxSMnNudVpreFlKbEpRWW44bGJBZU13a0d0OHdPcWdR?=
- =?utf-8?B?eXc9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7a123bbf-c9f8-48d3-a510-08ddcaefa838
-X-MS-Exchange-CrossTenant-AuthSource: BL3PR11MB6435.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Jul 2025 20:21:22.6734 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: oHgcfa923xX6Gn1st01fErMVjvdO83EClRqBdr4LVT9NdSHvsQMqmS5hajJsu+B6x/Fsbz4sbwVTNe5qvfoiuJrsYVb/NZDKNyuAtSoRPHA=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS4PPFCAADA7A6C
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1753388507; x=1784924507;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=R+89Ws0MwgTSJJVMN9D9vHOfa+rY0s0XUK64vTBhkvA=;
- b=g/ioImqTKhkT9HlteGtTw4lkuXIV1DIHHVVvevkPswPRL9DXWUNmbUpd
- DhDxreuR0w7FlFDj3YtCECBWmKvb8OHub/ygpPFV4RFO/pYH7/s4ZQUUK
- 7FqbFGwzyZ0oz9MimexBCdq1E9buSLBPr9e7V8vYoktTP4nnCVE4Ij2L/
- k6Apiuhw7xg2qA5p7TDvSdWbg2YlTnJ9CZ6C8FxMR/oVPjqJ5MQ30zcVf
- zdMJzsPOvv7wBHg17WQbgBU9RkAi8H6buO3JeRpKzG1BAob3Aqx7goVS9
- tUaVI5iNNYLROUoVIyePnRKjGVbxJ3o3sgrvT+P4zLnSAWCX0IESmreTu
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ ARA:13230040|376014|7416014|82310400026|36860700013|1800799024; 
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?YmE2bEVyb2QwNkVodkprWlRTa2FNM3JRS2I2SjBjTHRmemlSTzExd3h3VGw0?=
+ =?utf-8?B?Y1VRaUdCL1Y4Umoxa1k0d3BIT0J3eEhCY2JHMTFzWVNnV2NZNWdQeUlVeENG?=
+ =?utf-8?B?YUN2WjNGMk8wWGlhQkxDQjZEbG1DRzk5V2tZb1Y2MXgrRjUzd2FQOXY5NFNZ?=
+ =?utf-8?B?eTZIc2lTanRsSSs2T21xWEcwRGNoQWtvcW5iSEZDMTFiZStHRS9Vb0YwTWpT?=
+ =?utf-8?B?NmVCZGNTT1lwajZwb1k2M0c1REMrVWcwN1o0L1ZCTFJib3MzR1g5N2hLUEFW?=
+ =?utf-8?B?Rk9pbUNlSlFNUGtiWmJjaVhqT2g5cVovOXk0aXI0SkJ5WVJML1krclV5ZnFa?=
+ =?utf-8?B?OGJjZmI1OTFOc0NpU2ZIb3kwWFhRNkxhMEQ3RzdPbVBNT1VFaXp4ZXNzTSts?=
+ =?utf-8?B?WkFmTTk0bTlRdWU0MmlYMGdqMVAvWWU5RFlJQnZ6STYxYVVyYVVmdFJjRjVE?=
+ =?utf-8?B?Vis5NXVYd1p0ZUo5eXFocGcwOXFiN1lLTSszMWVWZkduRmpDK29Fc2wzWEJ2?=
+ =?utf-8?B?TExmcXZrKzJNLy9sUERYMzZ1b0VWbG9rQWc1aGI1NU9CcXZnM05yMWc0c3ZW?=
+ =?utf-8?B?Q3JpVUR4c3AzeHo1ckJZeHZVZDM5VzQ1ZmtjcW1XR0EyT3pUOTJRREhuV0xZ?=
+ =?utf-8?B?QnpSOXZLbC9kWndRRFRCNWNQSy9CcDBiK3M0QTVqWHlvZlIvMVRHalRUVGEy?=
+ =?utf-8?B?cFFKNFlDWngycjVvWHYycTNKVjkvMzJUbkdDbENjZzJMZW90L25HaTZmZmt0?=
+ =?utf-8?B?T1FQbEJsTlhQdGRNOHVobS9wbGZpMVBDTVVCY0hlVXRFbjdKOG1ZRVJkcEM2?=
+ =?utf-8?B?TG5XVDRNTHpoei8wM2hLdVR0cW5Tb0ZjUW0zSnBLTS9Na1BuVjVLYWxiQndj?=
+ =?utf-8?B?L016ZGJJTkJmRjFRTk0xQUY3dGhJcC9Lc0Q4MWQ2MTg5ekFJbWYyY3g0bC8w?=
+ =?utf-8?B?cFQ2Z2dyRjZrTnlsa0FXYTAzQVRhS3IrUW9EMDBKRU1ieFgvTVVBcFB4OHFM?=
+ =?utf-8?B?WUZLdGZBRjN3VUlpYVU2TldUMVBreFVuUW1FdjkwMWNGaG9aTVpmUThRTnRi?=
+ =?utf-8?B?aERXWTlXQjZIV0U3d2FUUE1wMzR2dHdvWUE0RGZaM3JrM1RCUUVCUSt6OWhI?=
+ =?utf-8?B?KysrOHZ4ZTlpdGI0NkJIeXBhbTU0RXU0aU1YcE1ISUhuTzFIZHhGUlNFRVhU?=
+ =?utf-8?B?SGZ4a2xneElIZHVJT3NGVnJFNThzdHZBZlhJUm9yaE1zbjRjRllKUFZYZjZI?=
+ =?utf-8?B?K1o3WVhQTjdpeXloc1IrcjFqQ3VxNkE5ZjBvL21zT3QxS0xVckZnUTVGWDQ1?=
+ =?utf-8?B?eldSOHY0YXluRTdLYTJWbjdXUUR4MHJmSUxNRERLZkxXNmJ6cGcxS2g0Nmwz?=
+ =?utf-8?B?MTBsQVZYYVBFZmNHQ0tGRzdWVzJwZzEzdGQzaDA3eW1GeHdsNm11SXpabitZ?=
+ =?utf-8?B?ekFxQWk0TzNhNmhKbndtbFV4dWVXRFB6TVRPczdKZWZvUUs1all1Vmd0VUZl?=
+ =?utf-8?B?Y2hHYWM1c0MvbVZPRkZ4TXZjcHVadkh5RksvRFljNmhuSk1rbjR3MmR0NEVh?=
+ =?utf-8?B?SGJERnk5YUVMeUxSN3pua1BHMElqYVRtTlRBcEQ1ejlhVUF2SHRFV0h5eFR5?=
+ =?utf-8?B?L1lxVE1GWk1EZitva1RPR3lCaFNZM2NXaHVGTkR6RkxYdU0xYkZTd1Jhd1Av?=
+ =?utf-8?B?dk4yUGMyanZPbkZHbXVPS0trcEpZSTJ2ZFpXTnZNczZSa0Y5UHYwUlI2MVA3?=
+ =?utf-8?B?NExSTUdEQlJLOFR4V2ZBUXlsemVnczJ1VUxMRk53YVNvTStCYTR4aitiT2t5?=
+ =?utf-8?B?akhhckJ4WXBwOGFaSEI2aDJVNDNka1hFK1d0TnhKeW5UM3JnSjVoWUxiMExC?=
+ =?utf-8?B?QzBHUFRjQWNzVUtLcFBNWGczSGlZTE45VUQrK29zNTJETmwzdFA5UDZCbk03?=
+ =?utf-8?B?M0Y2ZHpuMTdwRExVbDA4bUU3OGlpZnFNTHM2TDRZUmNNMkE2RkxVN25jTitM?=
+ =?utf-8?B?Qlh0TWRLVzRlM1NGL25naysxZWYwbnhNUDRRVE1xWCtySUNxK1J5VHkxcGxj?=
+ =?utf-8?B?MEdKWkIzSnY1WXI2SUJBNnpxZVBTaTA5WGo2dz09?=
+X-Forefront-Antispam-Report: CIP:216.228.118.232; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge1.nvidia.com; CAT:NONE;
+ SFS:(13230040)(376014)(7416014)(82310400026)(36860700013)(1800799024); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Jul 2025 20:50:39.6764 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 76edf4fe-8cb5-45ac-1874-08ddcaf3bfa7
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.232];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000EE3D.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB4455
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=Nvidia.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=UmZIUH6Ox8b69qfqRnLk0n6ktL5XtZzhIGHfz+EkAYU=;
+ b=PtwSpPJOAyUWHgD2IWZ5xTzs68Ja21goUAV5kmpiXf0PebcC1RPv5NOPIGwBdPrZxqKxFlZzgM6bBG5zNPKFGlLBlP+Qw0zkwyGczGpaaM57/hQlI3Egqebp3POJSqC8v7LUKXoFz/PDTaHEzWJfEUJ6A5gZN9/0fsjWkdGbz63vQkKr3SVD9yH9nWg/cDE480QAvTzaF8WVaygcRgSm3mZsUJJicJPBaXlOl4Z6f+BUUUY7qqd8oaEko67oT0mtR/9A0zz9MbI/HCOuElkmmNsAC6e1l2QNtyFI9K0ohl6WZRUYShRT4/U8iHD/l7zTk5Xq1kW+ih0MA/1Tlu2Vaw==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=nvidia.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=g/ioImqT
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next 2/5] ixgbe: xsk: resolve the
- underflow of budget in ixgbe_xmit_zc
+ unprotected) header.d=Nvidia.com header.i=@Nvidia.com header.a=rsa-sha256
+ header.s=selector2 header.b=PtwSpPJO
+Subject: [Intel-wired-lan] [PATCH net-next V2 0/5] Expose grace period delay
+ for devlink health reporter
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -248,73 +205,132 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Hi,
+
+This series by Shahar implements graceful period delay in devlink health
+reporter, and use it in mlx5e driver.
+
+Find previous version here:
+https://lore.kernel.org/all/1752768442-264413-1-git-send-email-tariqt@nvidia.com/
+
+See detailed feature description by Shahar below [1].
+
+Regards,
+Tariq
+
+V2:
+- Rebase.
+- Fix long attr name.
+- Extend the cover letter.
+
+[1]
+Currently, the devlink health reporter initiates the grace period
+immediately after recovering an error, which blocks further recovery
+attempts until the grace period concludes. Since additional errors are
+not generally expected during this short interval, any new error
+reported during the grace period is not only rejected but also causes
+the reporter to enter an error state that requires manual intervention.
+
+This approach poses a problem in scenarios where a single root cause
+triggers multiple related errors in quick succession - for example,
+a PCI issue affecting multiple hardware queues. Because these errors
+are closely related and occur rapidly, it is more effective to handle
+them together rather than handling only the first one reported and
+blocking any subsequent recovery attempts. Furthermore, setting the
+reporter to an error state in this context can be misleading, as these
+multiple errors are manifestations of a single underlying issue, making
+it unlike the general case where additional errors are not expected
+during the grace period.
+
+To resolve this, introduce a configurable grace period delay attribute
+to the devlink health reporter. This delay starts when the first error
+is recovered and lasts for a user-defined duration. Once this grace
+period delay expires, the actual grace period begins. After the grace
+period ends, a new reported error will start the same flow again.
+
+Timeline summary:
+
+----|--------|------------------------------/----------------------/--
+error is  error is    grace period delay          grace period
+reported  recovered  (recoveries allowed)     (recoveries blocked)
+
+With grace period delay, create a time window during which recovery
+attempts are permitted, allowing all reported errors to be handled
+sequentially before the grace period starts. Once the grace period
+begins, it prevents any further error recoveries until it ends.
+
+When grace period delay is set to 0, current behavior is preserved.
+
+Design alternatives considered:
+
+1. Recover all queues upon any error:
+   A brute-force approach that recovers all queues on any error.
+   While simple, it is overly aggressive and disrupts unaffected queues
+   unnecessarily. Also, because this is handled entirely within the
+   driver, it leads to a driver-specific implementation rather than a
+   generic one.
+
+2. Per-queue reporter:
+   This design would isolate recovery handling per SQ or RQ, effectively
+   removing inter-dependencies between queues. While conceptually clean,
+   it introduces significant scalability challenges as the number of
+   queues grows, as well as synchronization challenges across multiple
+   reporters.
+
+3. Error aggregation with delayed handling:
+   Errors arriving during the grace period are saved and processed after
+   it ends. While addressing the issue of related errors whose recovery
+   is aborted as grace period started, this adds complexity due to
+   synchronization needs and contradicts the assumption that no errors
+   should occur during a healthy system’s grace period. Also, this
+   breaks the important role of grace period in preventing an infinite
+   loop of immediate error detection following recovery. In such cases
+   we want to stop.
+
+4. Allowing a fixed burst of errors before starting grace period:
+   Allows a set number of recoveries before the grace period begins.
+   However, it also requires limiting the error reporting window.
+   To keep the design simple, the burst threshold becomes redundant.
+
+The grace period delay design was chosen for its simplicity and
+precision in addressing the problem at hand. It effectively captures
+the temporal correlation of related errors and aligns with the original
+intent of the grace period as a stabilization window where further
+errors are unexpected, and if they do occur, they indicate an abnormal
+system state.
 
 
-On 7/20/2025 2:11 AM, Jason Xing wrote:
-> From: Jason Xing <kernelxing@tencent.com>
-> 
-> Resolve the budget underflow which leads to returning true in ixgbe_xmit_zc
-> even when the budget of descs are thoroughly consumed.
-> 
-> Before this patch, when the budget is decreased to zero and finishes
-> sending the last allowed desc in ixgbe_xmit_zc, it will always turn back
-> and enter into the while() statement to see if it should keep processing
-> packets, but in the meantime it unexpectedly decreases the value again to
-> 'unsigned int (0--)', namely, UINT_MAX. Finally, the ixgbe_xmit_zc returns
-> true, showing 'we complete cleaning the budget'. That also means
-> 'clean_complete = true' in ixgbe_poll.
-> 
-> The true theory behind this is if that budget number of descs are consumed,
-> it implies that we might have more descs to be done. So we should return
-> false in ixgbe_xmit_zc to tell napi poll to find another chance to start
-> polling to handle the rest of descs. On the contrary, returning true here
-> means job done and we know we finish all the possible descs this time and
-> we don't intend to start a new napi poll.
-> 
-> It is apparently against our expectations. Please also see how
-> ixgbe_clean_tx_irq() handles the problem: it uses do..while() statement
-> to make sure the budget can be decreased to zero at most and the underflow
-> never happens.
-> 
-> Fixes: 8221c5eba8c1 ("ixgbe: add AF_XDP zero-copy Tx support")
+Shahar Shitrit (5):
+  devlink: Move graceful period parameter to reporter ops
+  devlink: Move health reporter recovery abort logic to a separate
+    function
+  devlink: Introduce grace period delay for health reporter
+  devlink: Make health reporter grace period delay configurable
+  net/mlx5e: Set default grace period delay for TX and RX reporters
 
-Hi Jason,
+ Documentation/netlink/specs/devlink.yaml      |   6 +
+ .../networking/devlink/devlink-health.rst     |   2 +-
+ drivers/net/ethernet/amd/pds_core/main.c      |   2 +-
+ .../net/ethernet/broadcom/bnxt/bnxt_devlink.c |   2 +-
+ .../net/ethernet/huawei/hinic/hinic_devlink.c |  10 +-
+ .../net/ethernet/intel/ice/devlink/health.c   |   3 +-
+ .../marvell/octeontx2/af/rvu_devlink.c        |  32 ++++--
+ .../mellanox/mlx5/core/diag/reporter_vnic.c   |   2 +-
+ .../mellanox/mlx5/core/en/reporter_rx.c       |  13 ++-
+ .../mellanox/mlx5/core/en/reporter_tx.c       |  13 ++-
+ .../net/ethernet/mellanox/mlx5/core/en_rep.c  |   2 +-
+ .../net/ethernet/mellanox/mlx5/core/health.c  |  41 ++++---
+ drivers/net/ethernet/mellanox/mlxsw/core.c    |   2 +-
+ drivers/net/ethernet/qlogic/qed/qed_devlink.c |  10 +-
+ drivers/net/netdevsim/health.c                |   4 +-
+ include/net/devlink.h                         |  15 ++-
+ include/uapi/linux/devlink.h                  |   2 +
+ net/devlink/health.c                          | 108 +++++++++++++-----
+ net/devlink/netlink_gen.c                     |   5 +-
+ 19 files changed, 189 insertions(+), 85 deletions(-)
 
-Seems like this one should be split off and go to iwl-net/net like the 
-other similar ones [1]? Also, some of the updates made to the other 
-series apply here as well?
 
-Thanks,
-Tony
-
-[1] 
-https://lore.kernel.org/netdev/20250723142327.85187-1-kerneljasonxing@gmail.com/
-
-> Signed-off-by: Jason Xing <kernelxing@tencent.com>
-> ---
->   drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 4 +++-
->   1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-> index 0ade15058d98..a463c5ac9c7c 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-> @@ -398,7 +398,7 @@ static bool ixgbe_xmit_zc(struct ixgbe_ring *xdp_ring, unsigned int budget)
->   	dma_addr_t dma;
->   	u32 cmd_type;
->   
-> -	while (budget-- > 0) {
-> +	while (likely(budget)) {
->   		if (unlikely(!ixgbe_desc_unused(xdp_ring))) {
->   			work_done = false;
->   			break;
-> @@ -433,6 +433,8 @@ static bool ixgbe_xmit_zc(struct ixgbe_ring *xdp_ring, unsigned int budget)
->   		xdp_ring->next_to_use++;
->   		if (xdp_ring->next_to_use == xdp_ring->count)
->   			xdp_ring->next_to_use = 0;
-> +
-> +		budget--;
->   	}
->   
->   	if (tx_desc) {
+base-commit: 8b5a19b4ff6a2096225d88cf24cfeef03edc1bed
+-- 
+2.31.1
 
