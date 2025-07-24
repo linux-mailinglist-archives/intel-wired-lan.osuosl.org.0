@@ -1,91 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6611B10567
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Jul 2025 11:14:11 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C060B105A3
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Jul 2025 11:20:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8E6B94127F;
-	Thu, 24 Jul 2025 09:14:10 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BF29B41297;
+	Thu, 24 Jul 2025 09:20:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8pxXeMeeYf1Y; Thu, 24 Jul 2025 09:14:09 +0000 (UTC)
+ id pvk8dq9pTMrd; Thu, 24 Jul 2025 09:20:08 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 61A7F41280
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3FCA941282
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1753348449;
-	bh=MWCblgyqYR6q/QNoyXJQIbRxFBTweC/0tUB3V+uiR9o=;
+	s=default; t=1753348808;
+	bh=Au08yxhes32pi74h+2+Y4ObUhls304Y/LMgbhIRZAsY=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=exqlwn//T0fXsJJWin8gq7b7rH79uEACvZk+kUrBKtjtQ3ogsfDawXE7r9PXtOYig
-	 Ihldn940MzhsoHXWlhYKRnmJb3qBfRT3ydJLLNLi/hD+K0i7w9Yk/rn5PmBPOqSTwN
-	 iuL0hRLd++1mlSh4onNfmAZ0vACB0Ly/NxQrDXsLNLdDPZ041pt5/f3mJchqFguzO8
-	 dBc4E1MLQyqy8I2k6XWNzw6gPDpfNJcsH7w9tml/99RCvEUAeJIqH6dzGRQV4aUz3S
-	 Y21TQl5xB3IJ81y3tjajYVRNpG/u5P+sRcm0ZbTo4w6rHNN/eYWc6gCemZskykgHyq
-	 7OxL4BvbBnS/Q==
+	b=AMymmtOcT49m5uS9MiSe36C6sbtBvWXQQJnyLaeOBJBvmrKNJhxjdeBZ+Dh4lYUXo
+	 LNQvDjqOT/T2DYHRM6P6NzDZfdD/0bkuZg9i75aSHY2XZP5v1o1Fd4e0cKN+wiTihh
+	 DIoBbWcX8R1HpweY8O26NUtRSLvn1000fKOmTrwo/GlLB7YKTn7ngnOjekcv4nHdnw
+	 y7/Z+//hzXgY/ujmHKChAn8DPYyiVpMGGTiHgrDEcMBFNGfsxSEUtzrCIOxPF26rsT
+	 ZFMeXIlVFNSDi/SJ3y6MM1osOZXGbqe10So7pPkL6kB4jsamW5HS+LaKgVyk5uk1/m
+	 8MM5IS/dFklNQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 61A7F41280;
-	Thu, 24 Jul 2025 09:14:09 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3FCA941282;
+	Thu, 24 Jul 2025 09:20:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 684E4115
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 09:14:08 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id BD8ED115
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 09:20:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5A015401C8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 09:14:08 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id BAD7641288
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 09:20:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id DaqEKfNVbtYL for <intel-wired-lan@lists.osuosl.org>;
- Thu, 24 Jul 2025 09:14:07 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 69ACE403E7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 69ACE403E7
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 69ACE403E7
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 09:14:07 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 0v0q-IlVo2op for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 24 Jul 2025 09:20:06 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 2B3BA41273
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2B3BA41273
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2B3BA41273
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 09:20:06 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id F02555C624E;
- Thu, 24 Jul 2025 09:14:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D23DCC4CEED;
- Thu, 24 Jul 2025 09:14:04 +0000 (UTC)
-Date: Thu, 24 Jul 2025 10:14:02 +0100
+ by dfw.source.kernel.org (Postfix) with ESMTP id 6ABF55C598D;
+ Thu, 24 Jul 2025 09:20:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F229C4CEED;
+ Thu, 24 Jul 2025 09:20:03 +0000 (UTC)
+Date: Thu, 24 Jul 2025 10:20:01 +0100
 From: Simon Horman <horms@kernel.org>
-To: "Hay, Joshua A" <joshua.a.hay@intel.com>
-Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>
-Message-ID: <20250724091402.GH1150792@horms.kernel.org>
+To: Joshua Hay <joshua.a.hay@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ Luigi Rizzo <lrizzo@google.com>, Brian Vazquez <brianvv@google.com>,
+ Madhu Chittim <madhu.chittim@intel.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Message-ID: <20250724092001.GI1150792@horms.kernel.org>
 References: <20250718002150.2724409-1-joshua.a.hay@intel.com>
- <20250723150835.GF1036606@horms.kernel.org>
- <DM4PR11MB6502F4622507B81F56DFFC65D45EA@DM4PR11MB6502.namprd11.prod.outlook.com>
+ <20250718002150.2724409-5-joshua.a.hay@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <DM4PR11MB6502F4622507B81F56DFFC65D45EA@DM4PR11MB6502.namprd11.prod.outlook.com>
+In-Reply-To: <20250718002150.2724409-5-joshua.a.hay@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1753348445;
- bh=0aWfHkSFO138/lUy44VYtrGkDTHvcLii7yoLMp/1Mpk=;
+ d=kernel.org; s=k20201202; t=1753348805;
+ bh=gRFHoDdViZAhEfGEzYU/dSV6M0YfSmmTUyLmjOCqTkw=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Sb/l33edbGZHf7SoDHDnCerGz9oL4N0UxC6dV4kIbmXikrYDrXrJoDBDK4gTPcSmu
- ypOMKRRn02j5vi3CQU5kUEKiS6209K7sJBxVT/13bQkaq1ykZPdYpkp7RjMlzWYKON
- BHkbgU024SbvqE38oDkR07b57hhfUweh+JYXSwCjNMEkapLQfR4FBp2bpGy+5oGNEs
- TPjnpDZ+3xytU98hTZGH80TQFJN9cq3UXqvmv+vyDlzz9bNn+bOoLvBi76ECXK0dbN
- UCIWYj0ct3J2jdBc0tvZfmj/is8Em+dtmMtLaw1jlytZtd/vw8+EBlr9eZardelr0A
- QQAzJc8TvsI3Q==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ b=csas9LGY3gRo4CflNztwworSXqvM8gHWVOt7FYpn4krG0uzPcST4ldUOXK9WiSfU+
+ Bl/gD///R2Xr1E+leO3FVoA/cmY7hrZsRWRGuf4zppDeRI2yzuSDciBKM9QeJU5YXF
+ 3lUoU30S9zsyrSCJdbGjvAlBVyOAIIj7XClzYuzCSu33qjjIPQHa+hQPQ9CiGfH0hq
+ 2RrLpttG9Y2Rr+AI6yRTXkj1QPGmmplS32ugXf96GFce1Bi01SIHjGkU0nlKqhI+od
+ 8ZNTjLOEoHZBU0hByVSAZ2XGWWAbxEsN7uEsj8rRIeg8Qxm2R1sT1jlamSiJ26Gchc
+ V1v7jSkIUff/g==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=Sb/l33ed
-Subject: Re: [Intel-wired-lan] [PATCH net v2 0/6] idpf: replace Tx flow
+ header.s=k20201202 header.b=csas9LGY
+Subject: Re: [Intel-wired-lan] [PATCH net v2 4/6] idpf: replace flow
  scheduling buffer ring with buffer pool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -102,78 +102,51 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Jul 24, 2025 at 12:03:33AM +0000, Hay, Joshua A wrote:
-> > On Thu, Jul 17, 2025 at 05:21:44PM -0700, Joshua Hay wrote:
-> > > This series fixes a stability issue in the flow scheduling Tx send/clean
-> > > path that results in a Tx timeout.
-> > >
-> > > The existing guardrails in the Tx path were not sufficient to prevent
-> > > the driver from reusing completion tags that were still in flight (held
-> > > by the HW).  This collision would cause the driver to erroneously clean
-> > > the wrong packet thus leaving the descriptor ring in a bad state.
-> > >
-> > > The main point of this refactor is to replace the flow scheduling buffer
-> > > ring with a large pool/array of buffers.  The completion tag then simply
-> > > is the index into this array.  The driver tracks the free tags and pulls
-> > > the next free one from a refillq.  The cleaning routines simply use the
-> > > completion tag from the completion descriptor to index into the array to
-> > > quickly find the buffers to clean.
-> > >
-> > > All of the code to support the refactor is added first to ensure traffic
-> > > still passes with each patch.  The final patch then removes all of the
-> > > obsolete stashing code.
-> > >
-> > > ---
-> > > v2:
-> > > - Add a new patch "idpf: simplify and fix splitq Tx packet rollback
-> > >   error path" that fixes a bug in the error path. It also sets up
-> > >   changes in patch 4 that are necessary to prevent a crash when a packet
-> > >   rollback occurs using the buffer pool.
-> > >
-> > > v1:
-> > > https://lore.kernel.org/intel-wired-lan/c6444d15-bc20-41a8-9230-
-> > 9bb266cb2ac6@molgen.mpg.de/T/#maf9f464c598951ee860e5dd24ef8a45
-> > 1a488c5a0
-> > >
-> > > Joshua Hay (6):
-> > >   idpf: add support for Tx refillqs in flow scheduling mode
-> > >   idpf: improve when to set RE bit logic
-> > >   idpf: simplify and fix splitq Tx packet rollback error path
-> > >   idpf: replace flow scheduling buffer ring with buffer pool
-> > >   idpf: stop Tx if there are insufficient buffer resources
-> > >   idpf: remove obsolete stashing code
-> > >
-> > >  .../ethernet/intel/idpf/idpf_singleq_txrx.c   |  61 +-
-> > >  drivers/net/ethernet/intel/idpf/idpf_txrx.c   | 723 +++++++-----------
-> > >  drivers/net/ethernet/intel/idpf/idpf_txrx.h   |  87 +--
-> > >  3 files changed, 356 insertions(+), 515 deletions(-)
-> > 
-> > Hi Joshua, all,
-> > 
-> > Perhaps it is not followed much anymore, but at least according to [1]
-> > patches for stable should not be more than 100 lines, with context.
-> > 
-> > This patch-set is an order of magnitude larger.
-> > Can something be done to create a more minimal fix?
-> > 
-> > [1] https://docs.kernel.org/process/stable-kernel-rules.html#stable-kernel-
-> > rules
-> 
-> Hi Simon,
-> 
-> It will be quite difficult to make this series smaller without any negative side effects. Here's a summary of why certain patches are necessary or where deferrals are possible (and the side effects):
-> 
-> "idpf: add support for Tx refillqs in flow scheduling mode" is required to keep the Tx path lockless. Otherwise, we would have to use locking in hot path to pass the tags freed in the cleaning thread back to whatever data struct the sending thread pulls the tags from.
-> 
-> Without "idpf: improve when to set RE bit logic", the driver will be much more susceptible to Tx timeouts when sending large packets.
-> 
-> "idpf: simplify and fix splitq Tx packet rollback error path" is a must to setup for the new buffer chaining. The previous implementation rolled back based on ring indexing, which will crash the system if a dma_mapping_error occurs or we run out of tags (more on that below). The buffer tags (indexes) pulled for a packet are not guaranteed to be contiguous, especially as out-of-order completions are processed. 
-> 
-> "idpf: stop Tx if there are insufficient buffer resources" could possibly be deferred, but that makes the rollback change above even more critical as we lose an extra layer of protection from running out of tags. It's also one of the smaller patches and won't make a significant difference in terms of size.
-> 
-> "idpf: remove obsolete stashing code" could also potentially be deferred but is 95% removing obsolete code, which leaves a lot of dead code.
+On Thu, Jul 17, 2025 at 05:21:48PM -0700, Joshua Hay wrote:
 
-Thanks Joshua,
+...
 
-if there is justification, which is indeed the case,
-then I withdraw my suggestion to create a smaller fix.
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+
+...
+
+> @@ -1959,10 +1966,29 @@ static bool idpf_tx_clean_buf_ring(struct idpf_tx_queue *txq, u16 compl_tag,
+>  	};
+>  	u16 ntc, orig_idx = idx;
+>  
+> +	tx_buf = &txq->tx_buf[buf_id];
+> +	if (tx_buf->type == LIBETH_SQE_SKB) {
+> +		if (skb_shinfo(tx_buf->skb)->tx_flags & SKBTX_IN_PROGRESS)
+> +			idpf_tx_read_tstamp(txq, tx_buf->skb);
+> +
+> +		libeth_tx_complete(tx_buf, &cp);
+> +		idpf_post_buf_refill(txq->refillq, buf_id);
+> +	}
+> +
+> +	while (idpf_tx_buf_next(tx_buf) != IDPF_TXBUF_NULL) {
+> +		u16 buf_id = idpf_tx_buf_next(tx_buf);
+> +
+> +		tx_buf = &txq->tx_buf[buf_id];
+> +		libeth_tx_complete(tx_buf, &cp);
+> +		idpf_post_buf_refill(txq->refillq, buf_id);
+> +	}
+> +
+> +	return true;
+
+This is not a full review.
+And I guess this is an artifact of the development of this patch-set.
+But the code in this function below this line appears to be unreachable.
+
+Flagged by Smatch.
+
+> +
+>  	tx_buf = &txq->tx_buf[idx];
+>  
+>  	if (unlikely(tx_buf->type <= LIBETH_SQE_CTX ||
+> -		     idpf_tx_buf_compl_tag(tx_buf) != compl_tag))
+> +		     idpf_tx_buf_compl_tag(tx_buf) != buf_id))
+>  		return false;
+>  
+>  	if (tx_buf->type == LIBETH_SQE_SKB) {
+
+...
