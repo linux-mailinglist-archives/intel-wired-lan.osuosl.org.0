@@ -1,220 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3DAA5B10BCB
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Jul 2025 15:44:10 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A719AB10BD3
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Jul 2025 15:47:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E02194131E;
-	Thu, 24 Jul 2025 13:44:06 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E42EA613E2;
+	Thu, 24 Jul 2025 13:47:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id SWYEMtAsCWWC; Thu, 24 Jul 2025 13:44:06 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id dlV_JUQeGgzB; Thu, 24 Jul 2025 13:47:29 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0099341334
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9DE77613D6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1753364646;
-	bh=liS8byiN4UzSdaGSJ9X8wyQ55Z1RVQlMaHtZkbRCGjM=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=cBImuW+5g2fbBPbu1y63PHaV4FlHerPIWCaLG6kKHHam4v3KXO1clLrYlEyq1CvUZ
-	 B5B+DNZtWVHpKh0xZPyQF4MV005bYSoQC/XDbcOtId9iT7AEsbYaBEzcWG3nU9j/64
-	 oeVyU2AKmoj+cz/yUNIc/jnMgCkNwEcep8uh+xMfRXDnA9W7n3DAvFJk2GwCXKORMX
-	 37rZbBvVmcdE3MUrtqCJ8Hlg5cuXcwmhBnG5QMM/fuu0+yN0ICemTVOMntXmpmLDFh
-	 CLIC1LqhAiNvf7apb8m1D741eZJB0n7X/KfckOyQ8b5Ynzz+Hrq5cej69Sp+43e8Gg
-	 UFKVjpRyJdtnw==
+	s=default; t=1753364848;
+	bh=L+7qXPuOn1n4E6jtXnyZlYGvcO22Wfrz5g7HaOly7gg=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=RM1C5h5QyjWqsC+GHPjXArM2gV+ij4wL948xbIDveFNE3NMXiv290tAUTJMtPYgbs
+	 whKLaMU6mau9Pfi4GWSxMNyWdvUWOACTbB4CBSNd2gcDg5TNgAx29Nw6Br52N2/4HB
+	 YWjNNNUmhmoIfIyQCOTVRhlp5lhzX0N+WePI27iy0CicdRJ5qelZTZ0tMdy3jCFclZ
+	 VZonZgyH+EuD00HPJpueCb1S1rbl+VPsol/1bkeCON3yNJndB6MOGEDYQiOwG4N/0G
+	 xBE2yCvA77qRAwzRrIETtT0WWnhsu/rHzcB7Znxu95VdHog/k4ADNzgmmU/Kx1OsZJ
+	 pg0tjCep6h5Lw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0099341334;
-	Thu, 24 Jul 2025 13:44:06 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9DE77613D6;
+	Thu, 24 Jul 2025 13:47:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 16904DA
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 13:44:05 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 6FAE3115
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 13:47:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id EE5134130A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 13:44:04 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 55A1D403CE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 13:47:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id cP9jdN8-A60G for <intel-wired-lan@lists.osuosl.org>;
- Thu, 24 Jul 2025 13:44:04 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
- helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id obKvbOxY4d4c for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 24 Jul 2025 13:47:26 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
+ helo=mgamail.intel.com; envelope-from=grzegorz.nitka@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org EBE94412F8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EBE94412F8
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
- by smtp4.osuosl.org (Postfix) with ESMTPS id EBE94412F8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 13:44:03 +0000 (UTC)
-X-CSE-ConnectionGUID: EqRh/XbTThetZQ3oPR0PfQ==
-X-CSE-MsgGUID: dvvOM6wURwyYE7dNLaqUbg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11501"; a="55553064"
-X-IronPort-AV: E=Sophos;i="6.16,337,1744095600"; d="scan'208";a="55553064"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
- by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jul 2025 06:44:04 -0700
-X-CSE-ConnectionGUID: 9BjWyBFpSKGNVCUis3HkpQ==
-X-CSE-MsgGUID: nbDuFLU9T/K94IFOrjw7+g==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org EEFA4417F2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EEFA4417F2
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id EEFA4417F2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 13:47:25 +0000 (UTC)
+X-CSE-ConnectionGUID: /AlHN7gAQtqdMAD68cjXOQ==
+X-CSE-MsgGUID: QTr4UMd1QE6jYWhTY/hwUw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11501"; a="59497595"
+X-IronPort-AV: E=Sophos;i="6.16,337,1744095600"; d="scan'208";a="59497595"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+ by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Jul 2025 06:47:25 -0700
+X-CSE-ConnectionGUID: 5Pnie9xfTLuzsTKWKRxQ/Q==
+X-CSE-MsgGUID: 9/S56+3MTRWWXyQsFjVsZA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,337,1744095600"; d="scan'208";a="159822044"
-Received: from orsmsx901.amr.corp.intel.com ([10.22.229.23])
- by fmviesa007.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jul 2025 06:44:02 -0700
-Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Thu, 24 Jul 2025 06:44:02 -0700
-Received: from ORSEDG902.ED.cps.intel.com (10.7.248.12) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26 via Frontend Transport; Thu, 24 Jul 2025 06:44:02 -0700
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (40.107.220.68)
- by edgegateway.intel.com (134.134.137.112) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.25; Thu, 24 Jul 2025 06:44:02 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=U3xWfIMmll2bpbzXPZA4+2a0B7alvQAuUpsOHOPoztkuyUpmOlVeWtmoCGNFPNdfX++SvsphPiTV5MNf7AVvPsKmP62kaU3+fR/lKyzNi9c4x0gbJqwDbdAkr/2DMVeCw8gUCQSZOAHk8u+8shAOMSwA4mmOZSt4vuv128P2/a/t2z0xOseSJ6MHcsUG9xm1Vcq+VyqxXOvOS4aCVS0oPQyFfT7xK+PYeJ8XduxXvKksbP3mCMhMsXjKmbIc8dPC9FNKDDUrhv2v6HbUQ6+Oijr0NhNY3OyNWOuJCO22e/B6JuwtI7EHIaTtRf0Ys1BH2Xfe6+jUNyO7h5XBcI58Og==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=liS8byiN4UzSdaGSJ9X8wyQ55Z1RVQlMaHtZkbRCGjM=;
- b=jVncBVG8XQ/puMXgHZ7m8Y1qE84dIepj0Z9L9WyclP+jRE/F7Ewu6b0MnQ+z+QBdqKlmGcYJ/RiNyfceYmaMx1C2bgGXPH7mfKrr3ZfEuNcsStc4MUApMxfUtrohdfVT8WESvY24tA4x12ktT60dirYb8pJx48+uJD/P2I1Y2pCZy/diaVROJndJ6rHK6zvLLJZuOrIIEOpCpw9/RCWgl9BIts/gNQV2IR9kPOp9Qt3Wyc5qW1Xz0zJz67yQJwIeUOb/azzwTBcYkFmysh01JeOU5qIjt/Xl5UtyVzem4/Mjyg9BaDp72Lqk29RkDqOA5YdudkYoBGSgcsMq3Yyj9A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from IA3PR11MB8986.namprd11.prod.outlook.com (2603:10b6:208:577::21)
- by SN7PR11MB6875.namprd11.prod.outlook.com (2603:10b6:806:2a6::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8922.39; Thu, 24 Jul
- 2025 13:44:00 +0000
-Received: from IA3PR11MB8986.namprd11.prod.outlook.com
- ([fe80::395e:7a7f:e74c:5408]) by IA3PR11MB8986.namprd11.prod.outlook.com
- ([fe80::395e:7a7f:e74c:5408%4]) with mapi id 15.20.8922.037; Thu, 24 Jul 2025
- 13:44:00 +0000
-From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
-To: "Nitka, Grzegorz" <grzegorz.nitka@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-CC: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Kubalewski, Arkadiusz"
- <arkadiusz.kubalewski@intel.com>, "Korba, Przemyslaw"
- <przemyslaw.korba@intel.com>, "Nguyen, Anthony L"
- <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
- <przemyslaw.kitszel@intel.com>, "Olech, Milena" <milena.olech@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH v8 iwl-next] ice: add recovery clock
- and clock 1588 control for E825c
-Thread-Index: AQHb/JaXJJ6a9Z+VzUmZvPalwzcpHLRBSK5g
-Date: Thu, 24 Jul 2025 13:44:00 +0000
-Message-ID: <IA3PR11MB898644529A711CF9228CB65DE55EA@IA3PR11MB8986.namprd11.prod.outlook.com>
-References: <20250724122736.3398010-1-grzegorz.nitka@intel.com>
-In-Reply-To: <20250724122736.3398010-1-grzegorz.nitka@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: IA3PR11MB8986:EE_|SN7PR11MB6875:EE_
-x-ms-office365-filtering-correlation-id: e96c586e-5571-4610-e698-08ddcab8251a
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|1800799024|366016|7053199007|38070700018; 
-x-microsoft-antispam-message-info: =?us-ascii?Q?pVpyslCnIgD5gZ7pmoNX8pAAYJ+NI5mEMNHtSDGhHf4cLAKKldYKQxgoxFAY?=
- =?us-ascii?Q?0kpH5JcpWX+zOf+NkpoDfjmVOYhsTw6Ml9afn2VqGMNvvSf0wgxOuFY4Lvaf?=
- =?us-ascii?Q?rFS3TYSkxlce3Pj8Ha9f4ez2tC88mg35JKkCMvtSdiHW4z4y9i9g6wGlPf/I?=
- =?us-ascii?Q?p0VRGJU12NDAyHicX/z2TgcJdXhbW3hYRhFL9FZGbGMjlg7Ph41qvVelvX70?=
- =?us-ascii?Q?bRxS9m1JU2vnLcD9zYs22TEe3xtohz0TefY072685PIzni8MrmIlMJIa6ksD?=
- =?us-ascii?Q?Unhs8WwmWIhhAtl67jF6wjnxr/a2sRbWW8+/vF0tZprxP2uIfs2/g7dZkzxZ?=
- =?us-ascii?Q?1TluLwMoE7la7IQ5f4TMbM1YYAHvwvJ7JweKZPXXYrArBQWVV4QqjVJVdZDJ?=
- =?us-ascii?Q?uoZf3XMg9MgdRTW8fx1icG6DASrc84ANsXi+rRcvNZwrUAtWut71zZNxC/+t?=
- =?us-ascii?Q?kCS4zts163TLxIc0icFNhmzdnE8dD7hrPDH2ekZVi9rEOHDqu09wPBjUUEfK?=
- =?us-ascii?Q?58335B2vQt0ZBt+R2eG1sqS/+l8d1iQyx12G6e21byOizI9OFivio239jmaL?=
- =?us-ascii?Q?EjLclyps37mLtTjGtxOVo3IhveXOTJyBeSQ7vgYs2GDdr+WNxUrYdCg+ZnDM?=
- =?us-ascii?Q?zpT4/JJvyUYepNYOZ/5ClK6OndFKuRYt0CS9riRtuUIy9gdErq0L9sxhRBC1?=
- =?us-ascii?Q?ej4zehq3PV3zQxYqCWtYkg91jXx3/UKBB9XJXAslsEh7/B7keOZlFju3uR7l?=
- =?us-ascii?Q?PP+gonSSCYmhsfEptClH5F8uhM0ly7H/5rQLIuqbLpjgVvTzJpzCYKe4vERd?=
- =?us-ascii?Q?ap8jM2sljf+Qdngj8dNtDUTBxRzC6DXZgA8ou/a4LhN10foV4SRaWeyWh8Ct?=
- =?us-ascii?Q?st1O3KeVSZJG5MYymlNWSnr8JPkFdsy77uIxkv/uXo3A5rcHTkrekGbM54a9?=
- =?us-ascii?Q?T6ceperslnN1XRN6jmcfeLJPtuO8FyIdGm6gjg+L2qQcHVba0F2VI1V2o8S0?=
- =?us-ascii?Q?iZsTTr2ZXWuWD7/oZi4hVWs36KVdupc7thlG2HGYDFQjNHZ3aTeIxp7N6LE+?=
- =?us-ascii?Q?Rl/xcJ2tmd43i2gY0oiD7dYuC7Y/z9mB1eJmqYtE+YIZ2hGoMQeOrOzFNsOx?=
- =?us-ascii?Q?jtEjCvknaiYt4zZG4RUpEXIIwP1VxA9sB5kIRwd3GXXZa0xVK3JIA6jECh66?=
- =?us-ascii?Q?WeuI1BIHD5fBNfoXphUG3Jp6hZIwnivUlgyQZSkj45+8HzHcRFBfT7yhDfj5?=
- =?us-ascii?Q?QDx0m0kE+MsNDxuug8vuoS1Gw2JnqKr3A2s8/kC+zxuQX0TPJYqVgtEv3Xc7?=
- =?us-ascii?Q?F77gHLZNbvB/XXmmcZq7C5UWWQFnpJm41f+Pia5lui0aE/suDNugs2DczADF?=
- =?us-ascii?Q?CJxa4WE49QL9Oi1i1XNmXHm/Vp9oMVYw070xaYTpf2NP6Y/NEAevSub4TTV8?=
- =?us-ascii?Q?nHSQ29xnBb7SR1GrZU3VAh0FapRwaCob4OSA8Agak2KREVrPiiSrfg=3D=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:IA3PR11MB8986.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(1800799024)(366016)(7053199007)(38070700018); DIR:OUT;
- SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?q04IUs+sKRgzbXOF4tg3leoHHy49KZ+OHDrFkMmnXGpxdUCHGSuHklC/EHMq?=
- =?us-ascii?Q?mf+0oC181mPsddYmyNdVXPThhirsB5WOJrk7aC0DrZDowmJt1Sb45R4Z5XeM?=
- =?us-ascii?Q?QMVbNEfv3hGXvdxO2krRG1h1d+gtZwr77it+sApwxW+llg6iVfuTzDINQncu?=
- =?us-ascii?Q?spije1wmWyl1pc4CYesKUatlvRhZIfOnB2kVZOV3q/WSg9O0eJQ1iDkcUlCm?=
- =?us-ascii?Q?CsTLSqrdVpouZ0w8lq4pT2xXsRob8xLsGdnRNKM6F97RQpCRW5hETKUV8wEn?=
- =?us-ascii?Q?IWD5Bci2wjQzAw2pLPshij74zasWLn2jp+Fag1ck5E/xFwt9EFVx7R/6zpvx?=
- =?us-ascii?Q?fOWihX00gX5Dsw7XmSEIgcWMnR2Wnb68kknKCWp3z9ATY3uP1WUstbeJhmtj?=
- =?us-ascii?Q?DhkfDLE08qtSwzQ1JkR08XZw8RH35FRfmuNOCP5FTMUSgikmWJ9z+Bg2Lls8?=
- =?us-ascii?Q?HZZ6Gjnc9MVwTKcT8eMWIn/ThNRtWheuY3m8DG132/mGjL8QBCXew5bylrdi?=
- =?us-ascii?Q?FnCbhGh8cp9Se2NZnAI/UI2WOe/Me3M1crvBVepuP7gLZP4ox6YYR2hwz4Zl?=
- =?us-ascii?Q?LIeSI9xf/aeT6tRdgcrBOEKQMe2yJd4uforB9LNlrHu8lNoYzXA03tza1iC0?=
- =?us-ascii?Q?iQpiugRxoNBz3sVw9ViklQgZeBENwG1VWWD/QvMnbj6EeUD6JUHyO1+b4IKv?=
- =?us-ascii?Q?Xbirha7Eb78iMavu4DCT1zkHaUHebY7lC64m7OO1dOEwIh4Bh2ImE1eoAVMb?=
- =?us-ascii?Q?HIbzV1FRF/UIzW5sHvW3zpfjvoHcNrir8XZvQ0SNz2qzQLxMR07UmPVku6J/?=
- =?us-ascii?Q?DPb2fKWvEnaBkB+DjiZCZi0UZ+5tuJHlcPvrUIs2qggZpU9nIgxRiDomV5nx?=
- =?us-ascii?Q?nLy/JhVyb8iavxhnP50iID0+Yg/mxWLVMCwg6XTOtrzcpiL1XAJfZ0sQKLVV?=
- =?us-ascii?Q?p5Y6osrBy520TRggeBChVApudQadmDmwaSpKHbxP5TbYwDeZCwWz40DtJG1c?=
- =?us-ascii?Q?r/6LnU9bdpqkDEnDJmFLtP9TnWc4brpRVwS0Jbxstmbs2oab9KKL4GZdHT/5?=
- =?us-ascii?Q?kNHdH27PQcjjyrOwole6s06ODbQaugIoDS6NzpnokBrRkJ6hE54buBJQIXku?=
- =?us-ascii?Q?jWUk0urmLqUrA4pcywifS/aTQa1rBYwkxzbVSzFlChHwzsFwtaA4gpIXMWCF?=
- =?us-ascii?Q?je2nzvkxXsJ0uZYa3ptnwdY5b0KqvpqNWDE+beFaYccmc9R7yRk3s+xV/aJP?=
- =?us-ascii?Q?gTJdcyr9gzZIjIIPmxbVkXowez10wmy7kDDcNX/cUnd5Z+fPx+JiEoOgbfGm?=
- =?us-ascii?Q?KKl/aFLeJU7Zuc6RW7b/4fOPUOqUBJj+n73cETs9HxRqNkvaY7LWyIlpQ6wc?=
- =?us-ascii?Q?4BOp/oBlTBMtGKsQvbr3+Va8rHh0PmK3Un1d0sfkocYQ4WdXHiB3kmzbaCq8?=
- =?us-ascii?Q?wUQSSz4OzKA5Qcd5dxT+U3kl+TQTY4Br7XMqN9vu/jSLOohEkC/dU8rZGz/c?=
- =?us-ascii?Q?8LOJtW1w5Cs63pMLuaw9AI9AHt/p88xIOwNs/NpDxr8YTiiqcGSybqtFF52R?=
- =?us-ascii?Q?HXYNn0qaujoOgQRzkkQjOD2kPTJu99n7GLcmcLYKzEwvC0mUOqq3KRXpQW0j?=
- =?us-ascii?Q?uQ=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+X-IronPort-AV: E=Sophos;i="6.16,337,1744095600"; d="scan'208";a="160225643"
+Received: from gklab-003-001.igk.intel.com ([10.91.173.48])
+ by fmviesa006.fm.intel.com with ESMTP; 24 Jul 2025 06:47:23 -0700
+From: Grzegorz Nitka <grzegorz.nitka@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu, 24 Jul 2025 15:46:13 +0200
+Message-Id: <20250724134613.3421079-1-grzegorz.nitka@intel.com>
+X-Mailer: git-send-email 2.39.3
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB8986.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e96c586e-5571-4610-e698-08ddcab8251a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Jul 2025 13:44:00.1459 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: qYSCOc54GbyndN39DSyKYb0xZInduzpSF+t5PaTOt41Sfw042rAemEWJcpMl3gOSLIJCU9YFP7SkGZ+NtndHXYrCBxB8oIDAkE84s7oKbdE=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR11MB6875
-X-OriginatorOrg: intel.com
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1753364644; x=1784900644;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=BT3VlG8FYImaP8VvMq9/aOK3axUO/ul9WegFe1kchEM=;
- b=iwH+QRREy6YhcGewFbrJZ5Y2NKJViGzwlsF+oqENG+QLeyg56SNMO9vc
- e8TCO3pIBvEpd2d/TV66Gh1ykYEu//OJJ2L8dw8hI8NPwsEq/sTulYXAd
- gK6NFD4cR2DJlt5sew5rNRlTp3z9Kp/DNChdBXEZ/UhN3/XfJHQvOHkyY
- 1Gr6Tq9K9tzsw+MgCvXE7tASzl4ypwCHi0OGOstIO9VXaP30pB86MLrSp
- +HbtjS/q1LxoBx+6DmqyFQooBCXpSWyRAFvzKwaQ+4JULOVz526EkbvZd
- /jVv+SSAIa+HEXSVeMB+VUY9xaI1gYEvIU5gBbC56RV9JK0xHGxR9SlzP
- w==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1753364846; x=1784900846;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=idCdAitwuUmGkxVUiWQWw18Oi7Xp5eG7uFISczZKy+w=;
+ b=kIjTIM0otOXXtK8m8XYCu3rtpAMQpwglBUhWjFMhLkNgCOxXqWS4kZyv
+ gMxNX2MR0IJgT0vrVxrAZxR6250EJTY3Q527LL728h37Ii9FC33O1dOzt
+ j0rJK6fsZW3oCHJuVm3YIHnomNdUqYJ5saoFqmUotNQfGDbjksXYPSi4I
+ 4o5Nz9WyLmJTtyiIT4FF5dE5gcHDKrcB4gFkeutB+fjLQaaQiE3iMehX0
+ ToFTyyyP4YJD5o92fmxR69FumCPrIfUl1dROixQzxBnMeXTlURZqLxJSd
+ OUJGTtG2RsjJCqbr4m8ruMXvnxsyGm26ahyly3vNwJEOCESpjxzlILlU0
+ A==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=iwH+QRRE
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH v8 iwl-next] ice: add recovery clock
- and clock 1588 control for E825c
+ header.s=Intel header.b=kIjTIM0o
+Subject: [Intel-wired-lan] [PATCH v1 iwl-next] ice: add TS PLL control for
+ E825 devices
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -227,147 +102,706 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org,
+ Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Add ability to control CGU (Clock Generation Unit) 1588 Clock Reference
+mux selection for E825 devices. There are two clock sources available
+which might serve as input source to TS PLL block:
+- internal cristal oscillator (TXCO)
+- signal from external DPLL
 
+E825 does not provide control over platform level DPLL but it provides
+control over TIME_REF output from platform level DPLL.
+Introduce a software controlled layer of abstraction:
+- create a DPLL (referred as TSPLL dpll) of PPS type for E825c,
+- define input pin for that dpll to mock TIME_REF pin
+- define output pin for that dpll to mock TIME_SYNC pin which supplies a
+  signal for master timer
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
-> Of Grzegorz Nitka
-> Sent: Thursday, July 24, 2025 2:28 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: netdev@vger.kernel.org; Kubalewski, Arkadiusz
-> <arkadiusz.kubalewski@intel.com>; Korba, Przemyslaw
-> <przemyslaw.korba@intel.com>; Nguyen, Anthony L
-> <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw
-> <przemyslaw.kitszel@intel.com>; Olech, Milena <milena.olech@intel.com>
-> Subject: [Intel-wired-lan] [PATCH v8 iwl-next] ice: add recovery clock
-> and clock 1588 control for E825c
->=20
-> From: Przemyslaw Korba <przemyslaw.korba@intel.com>
->=20
-> Add control for E825 input pins: phy clock recovery and clock 1588.
-> E825 does not provide control over platform level DPLL but it provides
-> control over PHY clock recovery, and PTP/timestamp driven inputs for
-> platform level DPLL.
->=20
-> Introduce a software controlled layer of abstraction to:
-> - create a DPLL of type EEC for E825c,
-> - create recovered clock pin for each PF, and control them through
-> writing to registers,
-> - create pin to control clock 1588 for PF0, and control it through
-> writing to registers.
->=20
-> Usage example:
-> - to get EEC PLL info
-> $ ynl --family dpll --dump device-get
-> [{'clock-id': 0,
->   'id': 6,
->   'lock-status': 'locked',
->   'mode': 'manual',
->   'mode-supported': ['manual'],
->   'module-name': 'ice',
->   'type': 'eec'},
-> ...
->   ]
->=20
-> - to get 1588 and rclk pins info
-> (note: in the output below, pin id=3D31 is a representor for 1588 input,
-> while pins 32..35 corresponds to PHY clock inputs to SyncE  module) $
-> ynl --family dpll --dump pin-get
-> [{'board-label': 'CLK_IN_0',
->   'capabilities': set(),
->   'clock-id': 0,
->   'id': 27,
->   'module-name': 'ice',
->   'parent-device': [{'direction': 'input',
->                      'parent-id': 6,
->                      'state': 'connected'}],
->   'phase-adjust-max': 0,
->   'phase-adjust-min': 0,
->   'type': 'mux'},
->  {'board-label': 'CLK_IN_1',
->   'capabilities': set(),
->   'clock-id': 0,
->   'id': 28,
->   'module-name': 'ice',
->   'parent-device': [{'direction': 'input',
->                      'parent-id': 6,
->                      'state': 'connected'}],
->   'phase-adjust-max': 0,
->   'phase-adjust-min': 0,
->   'type': 'mux'},
->  {'board-label': 'pin_1588',
->   'capabilities': {'state-can-change'},
->   'clock-id': 0,
->   'id': 31,
->   'module-name': 'ice',
->   'parent-pin': [{'parent-id': 27, 'state': 'disconnected'},
->                  {'parent-id': 28, 'state': 'disconnected'}],
->   'phase-adjust-max': 0,
->   'phase-adjust-min': 0,
->   'type': 'synce-eth-port'},
->  {'capabilities': {'state-can-change'},
->   'clock-id': 0,
->   'id': 32,
->   'module-name': 'ice',
->   'parent-pin': [{'parent-id': 27, 'state': 'disconnected'},
->                  {'parent-id': 28, 'state': 'disconnected'}],
->   'phase-adjust-max': 0,
->   'phase-adjust-min': 0,
->   'type': 'synce-eth-port'},
->  {'capabilities': {'state-can-change'},
->   'clock-id': 0,
->   'id': 33,
->   'module-name': 'ice',
->   'parent-pin': [{'parent-id': 27, 'state': 'disconnected'},
->                  {'parent-id': 28, 'state': 'disconnected'}],
->   'phase-adjust-max': 0,
->   'phase-adjust-min': 0,
->   'type': 'synce-eth-port'},
->  {'capabilities': {'state-can-change'},
->   'clock-id': 0,
->   'id': 34,
->   'module-name': 'ice',
->   'parent-pin': [{'parent-id': 27, 'state': 'disconnected'},
->                  {'parent-id': 28, 'state': 'disconnected'}],
->   'phase-adjust-max': 0,
->   'phase-adjust-min': 0,
->   'type': 'synce-eth-port'},
->  {'capabilities': {'state-can-change'},
->   'clock-id': 0,
->   'id': 35,
->   'module-name': 'ice',
->   'parent-pin': [{'parent-id': 27, 'state': 'disconnected'},
->                  {'parent-id': 28, 'state': 'disconnected'}],
->   'phase-adjust-max': 0,
->   'phase-adjust-min': 0,
->   'type': 'synce-eth-port'}]
->=20
-> - to set PHY0 clock as SyncE module input $ ynl --family dpll --do
-> pin-set --json '{"id":32,"parent-pin":\
->     {"parent-id":27, "state":"connected"}}'
->=20
-> - to set 1588 Main Timer as source into SyncE module $ ynl --family
-> dpll --do pin-set --json '{"id":31,"parent-pin":\
->     {"parent-id":27, "state":"connected"}}'
->=20
-> Reviewed-by: Milena Olech <milena.olech@intel.com>
-> Co-developed-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
-> Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
-> Signed-off-by: Przemyslaw Korba <przemyslaw.korba@intel.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Note:
+- there is only one frequency supported (156.25 MHz) for TIME_REF
+  signal for E825 devices.
+- TIME_SYNC pin is always connected, as it supplies eiher internal TXCO
+  signal or a signal from external DPLL always
 
-> ---
-> v7->v8:
-> - rebased
-> - removed unrelated changes
-> - change pin_1588 type to DPLL_PIN_TYPE_EXT
-> - use ICE_SYNCE_CLK_NUM to determine the number of rclk pins
-> ---
-...=20
-> base-commit: c4da238c4a0f62bbaa055f9d85559164df82bd07
-> --
-> 2.39.3
+Usage example:
+- to get TSPLL dpll info
+$ ynl --family dpll --dump device-get
+...
+ {'clock-id': 0,
+  'id': 9,
+  'lock-status': 'locked',
+  'mode': 'manual',
+  'mode-supported': ['manual'],
+  'module-name': 'ice',
+  'type': 'pps'}]
+...
+
+- to get TIMER_REF and TIME_SYNC pin info
+$ ynl --family dpll --dump pin-get
+...
+ {'board-label': 'TIME_REF',
+  'capabilities': {'state-can-change'},
+  'clock-id': 0,
+  'frequency': 156250000,
+  'frequency-supported': [{'frequency-max': 156250000,
+                           'frequency-min': 156250000}],
+  'id': 38,
+  'module-name': 'ice',
+  'parent-device': [{'direction': 'input',
+                     'parent-id': 9,
+                     'state': 'connected'}],
+  'phase-adjust-max': 0,
+  'phase-adjust-min': 0,
+  'type': 'ext'},
+ {'board-label': 'TIME_SYNC',
+  'capabilities': set(),
+  'clock-id': 0,
+  'id': 39,
+  'module-name': 'ice',
+  'parent-device': [{'direction': 'output',
+                     'parent-id': 9,
+                     'state': 'connected'}],
+  'phase-adjust-max': 0,
+  'phase-adjust-min': 0,
+  'type': 'int-oscillator'},
+...
+
+- to enable TIME_REF output
+$ ynl --family dpll --do pin-set --json '{"id":38,"parent-device":\
+{"parent-id":9, "state":"connected"}}'
+
+- to disable TIME_REF output (TXCO is enabled)
+$ ynl --family dpll --do pin-set --json '{"id":38,"parent-device":\
+{"parent-id":9, "state":"disconnected"}}'
+
+Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
+---
+This patch is based on:
+https://patchwork.ozlabs.org/project/intel-wired-lan/patch/20250724122736.3398010-1-grzegorz.nitka@intel.com/
+---
+ drivers/net/ethernet/intel/ice/ice_dpll.c  | 288 +++++++++++++++++++--
+ drivers/net/ethernet/intel/ice/ice_dpll.h  |   6 +
+ drivers/net/ethernet/intel/ice/ice_tspll.c |  65 +++++
+ drivers/net/ethernet/intel/ice/ice_tspll.h |   3 +
+ 4 files changed, 347 insertions(+), 15 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.c b/drivers/net/ethernet/intel/ice/ice_dpll.c
+index f89dec5e532e..e6c56b8d3ff2 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dpll.c
++++ b/drivers/net/ethernet/intel/ice/ice_dpll.c
+@@ -18,6 +18,9 @@
+ #define ICE_DPLL_SW_PIN_INPUT_BASE_SFP		4
+ #define ICE_DPLL_SW_PIN_INPUT_BASE_QSFP		6
+ #define ICE_DPLL_SW_PIN_OUTPUT_BASE		0
++#define ICE_DPLL_TSPLL_INPUT_NUM_E825		1
++#define ICE_DPLL_TSPLL_OUTPUT_NUM_E825		1
++#define ICE_DPLL_TSPLL_IDX_E825			1
+ 
+ #define ICE_DPLL_PIN_SW_INPUT_ABS(in_idx) \
+ 	(ICE_DPLL_SW_PIN_INPUT_BASE_SFP + (in_idx))
+@@ -64,6 +67,10 @@ enum ice_dpll_pin_type {
+ 	ICE_DPLL_PIN_TYPE_OUTPUT,
+ 	ICE_DPLL_PIN_TYPE_RCLK_INPUT,
+ 	ICE_DPLL_PIN_TYPE_SOFTWARE,
++	ICE_DPLL_PIN_TYPE_INPUT_E825,
++	ICE_DPLL_PIN_TYPE_OUTPUT_E825,
++	ICE_DPLL_PIN_TYPE_INPUT_TSPLL_E825,
++	ICE_DPLL_PIN_TYPE_OUTPUT_TSPLL_E825,
+ };
+ 
+ static const char * const pin_type_name[] = {
+@@ -76,11 +83,17 @@ static const char * const pin_type_name[] = {
+ static const char * const ice_dpll_sw_pin_sma[] = { "SMA1", "SMA2" };
+ static const char * const ice_dpll_sw_pin_ufl[] = { "U.FL1", "U.FL2" };
+ static const char ice_dpll_pin_1588[] = "pin_1588";
++static const char ice_dpll_pin_time_ref_e825[] = "TIME_REF";
++static const char ice_dpll_pin_time_sync_e825[] = "TIME_SYNC";
+ 
+ static const struct dpll_pin_frequency ice_esync_range[] = {
+ 	DPLL_PIN_FREQUENCY_RANGE(0, DPLL_PIN_FREQUENCY_1_HZ),
+ };
+ 
++static struct dpll_pin_frequency ice_cgu_pin_freq_156_25mhz[] = {
++	DPLL_PIN_FREQUENCY_RANGE(156250000, 156250000),
++};
++
+ /**
+  * ice_dpll_is_sw_pin - check if given pin shall be controlled by SW
+  * @pf: private board structure
+@@ -473,6 +486,11 @@ ice_dpll_pin_enable(struct ice_hw *hw, struct ice_dpll_pin *pin,
+ 		ret = ice_aq_set_output_pin_cfg(hw, pin->idx, flags, dpll_idx,
+ 						0, 0);
+ 		break;
++	case ICE_DPLL_PIN_TYPE_INPUT_TSPLL_E825:
++		ret = ice_tspll_set_cfg(pin->pf,
++					ICE_TSPLL_FREQ_156_250,
++					ICE_CLK_SRC_TIME_REF);
++		break;
+ 	default:
+ 		return -EINVAL;
+ 	}
+@@ -518,6 +536,11 @@ ice_dpll_pin_disable(struct ice_hw *hw, struct ice_dpll_pin *pin,
+ 			flags |= ICE_AQC_SET_CGU_OUT_CFG_ESYNC_EN;
+ 		ret = ice_aq_set_output_pin_cfg(hw, pin->idx, flags, 0, 0, 0);
+ 		break;
++	case ICE_DPLL_PIN_TYPE_INPUT_TSPLL_E825:
++		ret = ice_tspll_set_cfg(pin->pf,
++					ICE_TSPLL_FREQ_156_250,
++					ICE_CLK_SRC_TCXO);
++		break;
+ 	default:
+ 		return -EINVAL;
+ 	}
+@@ -641,6 +664,36 @@ static int ice_dpll_update_pin_1588_e825c(struct ice_hw *hw,
+ 	return 0;
+ }
+ 
++/**
++ * ice_dpll_input_tspll_update_e825c - updates input TSPLL pin state on E825
++ * @hw: board private hw structure
++ * @pin: pointer to a pin
++ *
++ * Update struct holding pin states info.
++ *
++ * Context: Called under pf->dplls.lock
++ * Return:
++ * * 0 - OK
++ * * negative - error
++ */
++static int ice_dpll_input_tspll_update_e825c(struct ice_pf *pf,
++					     struct ice_dpll_pin *pin)
++{
++	enum ice_clk_src clk_src;
++	struct ice_hw *hw;
++	int err;
++
++	hw = &pf->hw;
++	err = ice_tspll_get_clk_src(hw, &clk_src);
++	if (err)
++		return err;
++
++	pin->state[pf->dplls.tspll.dpll_idx] = clk_src == ICE_CLK_SRC_TIME_REF ?
++					DPLL_PIN_STATE_CONNECTED :
++					DPLL_PIN_STATE_DISCONNECTED;
++	return 0;
++}
++
+ /**
+  * ice_dpll_sw_pins_update - update status of all SW pins
+  * @pf: private board struct
+@@ -796,6 +849,11 @@ ice_dpll_pin_state_update(struct ice_pf *pf, struct ice_dpll_pin *pin,
+ 		if (ret)
+ 			goto err;
+ 		break;
++	case ICE_DPLL_PIN_TYPE_INPUT_TSPLL_E825:
++		ret = ice_dpll_input_tspll_update_e825c(pf, pin);
++		if (ret)
++			goto err;
++		return 0;
+ 	default:
+ 		return -EINVAL;
+ 	}
+@@ -1117,7 +1175,8 @@ ice_dpll_pin_state_get(const struct dpll_pin *pin, void *pin_priv,
+ 	if (ret)
+ 		goto unlock;
+ 	if (pin_type == ICE_DPLL_PIN_TYPE_INPUT ||
+-	    pin_type == ICE_DPLL_PIN_TYPE_OUTPUT)
++	    pin_type == ICE_DPLL_PIN_TYPE_OUTPUT ||
++	    pin_type == ICE_DPLL_PIN_TYPE_INPUT_TSPLL_E825)
+ 		*state = p->state[d->dpll_idx];
+ 	ret = 0;
+ unlock:
+@@ -1205,6 +1264,72 @@ ice_dpll_input_state_get(const struct dpll_pin *pin, void *pin_priv,
+ 				      extack, ICE_DPLL_PIN_TYPE_INPUT);
+ }
+ 
++/**
++ * ice_dpll_input_tspll_state_get_e825 - get E825 TSPLL input pin state on dpll
++ * @pin: pointer to a pin
++ * @pin_priv: private data pointer passed on pin registration
++ * @dpll: registered dpll pointer
++ * @dpll_priv: private data pointer passed on dpll registration
++ * @state: on success holds state of the pin
++ * @extack: error reporting
++ *
++ * Dpll subsystem callback. Check state of a input pin.
++ *
++ * Context: Calls a function which acquires and releases pf->dplls.lock
++ * Return:
++ * * 0 - success
++ * * negative - failed to get state
++ */
++
++static int
++ice_dpll_input_tspll_state_get_e825(const struct dpll_pin *pin, void *pin_priv,
++				    const struct dpll_device *dpll,
++				    void *dpll_priv,
++				    enum dpll_pin_state *state,
++				    struct netlink_ext_ack *extack)
++{
++	return ice_dpll_pin_state_get(pin, pin_priv, dpll, dpll_priv, state,
++				      extack,
++				      ICE_DPLL_PIN_TYPE_INPUT_TSPLL_E825);
++}
++
++/**
++ * ice_dpll_input_tspll_state_set_e825 - set E825 TSPLL input pin state on dpll
++ * @pin: pointer to a pin
++ * @pin_priv: private data pointer passed on pin registration
++ * @dpll: registered dpll pointer
++ * @dpll_priv: private data pointer passed on dpll registration
++ * @state: requested state of the pin
++ * @extack: error reporting
++ *
++ * Dpll subsystem callback. Set the state of a pin.
++ *
++ * Context: Acquires and releases pf->dplls.lock
++ * Return:
++ * * 0 - success
++ * * negative - error
++ */
++static int
++ice_dpll_input_tspll_state_set_e825(const struct dpll_pin *pin, void *pin_priv,
++				    const struct dpll_device *dpll,
++				    void *dpll_priv, enum dpll_pin_state state,
++				    struct netlink_ext_ack *extack)
++{
++	bool enable = state == DPLL_PIN_STATE_CONNECTED;
++	struct ice_dpll_pin *p = pin_priv;
++	struct ice_dpll *d = dpll_priv;
++
++	if (state == DPLL_PIN_STATE_SELECTABLE)
++		return -EINVAL;
++
++	if (!enable && p->state[d->dpll_idx] == DPLL_PIN_STATE_DISCONNECTED)
++		return 0;
++
++	return ice_dpll_pin_state_set(pin, pin_priv, dpll, dpll_priv, enable,
++				      extack,
++				      ICE_DPLL_PIN_TYPE_INPUT_TSPLL_E825);
++}
++
+ /**
+  * ice_dpll_sma_direction_set - set direction of SMA pin
+  * @p: pointer to a pin
+@@ -2851,6 +2976,18 @@ static const struct dpll_pin_ops ice_dpll_input_ops_e825c = {
+ 	.state_on_dpll_get = ice_dpll_pin_state_get_e825c,
+ };
+ 
++static const struct dpll_pin_ops ice_dpll_input_tspll_ops_e825 = {
++	.direction_get = ice_dpll_input_direction,
++	.state_on_dpll_get = ice_dpll_input_tspll_state_get_e825,
++	.state_on_dpll_set = ice_dpll_input_tspll_state_set_e825,
++	.frequency_get = ice_dpll_input_frequency_get,
++};
++
++static const struct dpll_pin_ops ice_dpll_output_tspll_ops_e825 = {
++	.direction_get = ice_dpll_output_direction,
++	.state_on_dpll_get = ice_dpll_pin_state_get_e825c,
++};
++
+ static const struct dpll_pin_ops ice_dpll_pin_sma_ops = {
+ 	.state_on_dpll_set = ice_dpll_sma_pin_state_set,
+ 	.state_on_dpll_get = ice_dpll_sw_pin_state_get,
+@@ -3674,6 +3811,7 @@ static void ice_dpll_deinit_pins(struct ice_pf *pf, bool cgu)
+ 	struct ice_dplls *d = &pf->dplls;
+ 	struct ice_dpll *de = &d->eec;
+ 	struct ice_dpll *dp = &d->pps;
++	struct ice_dpll *dt = &d->tspll;
+ 
+ 	ice_dpll_deinit_rclk_pin(pf);
+ 	if (cgu) {
+@@ -3682,9 +3820,20 @@ static void ice_dpll_deinit_pins(struct ice_pf *pf, bool cgu)
+ 		ice_dpll_unregister_pins(de->dpll, inputs, &ice_dpll_input_ops,
+ 					 num_inputs);
+ 	}
+-	if (pf->hw.mac_type == ICE_MAC_GENERIC_3K_E825)
++	if (pf->hw.mac_type == ICE_MAC_GENERIC_3K_E825) {
+ 		ice_dpll_unregister_pins(de->dpll, inputs,
+ 					 &ice_dpll_input_ops_e825c, num_inputs);
++		ice_dpll_unregister_pins(dt->dpll, &pf->dplls.tspll_in,
++					 &ice_dpll_input_tspll_ops_e825,
++					 ICE_DPLL_TSPLL_INPUT_NUM_E825);
++		ice_dpll_unregister_pins(dt->dpll, &pf->dplls.tspll_out,
++					 &ice_dpll_output_tspll_ops_e825,
++					 ICE_DPLL_TSPLL_OUTPUT_NUM_E825);
++		ice_dpll_release_pins(&pf->dplls.tspll_in,
++				      ICE_DPLL_TSPLL_INPUT_NUM_E825);
++		ice_dpll_release_pins(&pf->dplls.tspll_out,
++				      ICE_DPLL_TSPLL_OUTPUT_NUM_E825);
++	}
+ 	ice_dpll_release_pins(inputs, num_inputs);
+ 	if (cgu) {
+ 		ice_dpll_unregister_pins(dp->dpll, outputs,
+@@ -3779,6 +3928,26 @@ static int ice_dpll_init_pins(struct ice_pf *pf, bool cgu)
+ 						     ICE_DPLL_PIN_SW_NUM);
+ 		if (ret)
+ 			goto deinit_ufl;
++	} else if (pf->hw.mac_type == ICE_MAC_GENERIC_3K_E825) {
++		ret = ice_dpll_init_direct_pins(pf, cgu, &pf->dplls.tspll_in,
++						count,
++						ICE_DPLL_TSPLL_INPUT_NUM_E825,
++						&ice_dpll_input_tspll_ops_e825,
++						pf->dplls.tspll.dpll,
++						NULL);
++		if (ret)
++			goto deinit_inputs;
++		count += ICE_DPLL_TSPLL_INPUT_NUM_E825;
++
++		ret = ice_dpll_init_direct_pins(pf, cgu, &pf->dplls.tspll_out,
++						count,
++						ICE_DPLL_TSPLL_OUTPUT_NUM_E825,
++						&ice_dpll_output_tspll_ops_e825,
++						pf->dplls.tspll.dpll,
++						NULL);
++		if (ret)
++			goto deinit_tspll_in;
++		count += ICE_DPLL_TSPLL_OUTPUT_NUM_E825;
+ 	} else {
+ 		count += pf->dplls.num_outputs + 2 * ICE_DPLL_PIN_SW_NUM;
+ 	}
+@@ -3788,7 +3957,7 @@ static int ice_dpll_init_pins(struct ice_pf *pf, bool cgu)
+ 						     count,
+ 						     &ice_dpll_pin_1588_ops);
+ 			if (ret)
+-				goto deinit_inputs;
++				goto deinit_tspll_out;
+ 		}
+ 		count += ICE_DPLL_PIN_1588_NUM;
+ 	}
+@@ -3817,6 +3986,26 @@ static int ice_dpll_init_pins(struct ice_pf *pf, bool cgu)
+ 				    pf->dplls.num_outputs,
+ 				    output_ops, pf->dplls.pps.dpll,
+ 				    pf->dplls.eec.dpll);
++deinit_tspll_out:
++	if (pf->hw.mac_type == ICE_MAC_GENERIC_3K_E825) {
++		ice_dpll_unregister_pins(pf->dplls.tspll.dpll,
++					 &pf->dplls.tspll_out,
++					 &ice_dpll_output_tspll_ops_e825,
++					 ICE_DPLL_TSPLL_OUTPUT_NUM_E825);
++		ice_dpll_release_pins(&pf->dplls.tspll_out,
++				      ICE_DPLL_TSPLL_OUTPUT_NUM_E825);
++	}
++
++deinit_tspll_in:
++	if (pf->hw.mac_type == ICE_MAC_GENERIC_3K_E825) {
++		ice_dpll_unregister_pins(pf->dplls.tspll.dpll,
++					 &pf->dplls.tspll_in,
++					 &ice_dpll_input_tspll_ops_e825,
++					 ICE_DPLL_TSPLL_INPUT_NUM_E825);
++		ice_dpll_release_pins(&pf->dplls.tspll_in,
++				      ICE_DPLL_TSPLL_INPUT_NUM_E825);
++	}
++
+ deinit_inputs:
+ 	ice_dpll_deinit_direct_pins(pf, cgu, pf->dplls.inputs,
+ 				    pf->dplls.num_inputs,
+@@ -4035,12 +4224,12 @@ static int ice_dpll_init_info_direct_pins_e825c(struct ice_pf *pf,
+ 	bool input;
+ 
+ 	switch (pin_type) {
+-	case ICE_DPLL_PIN_TYPE_INPUT:
++	case ICE_DPLL_PIN_TYPE_INPUT_E825:
+ 		pins = pf->dplls.inputs;
+ 		num_pins = pf->dplls.num_inputs;
+ 		input = true;
+ 		break;
+-	case ICE_DPLL_PIN_TYPE_OUTPUT:
++	case ICE_DPLL_PIN_TYPE_OUTPUT_E825:
+ 		pins = pf->dplls.outputs;
+ 		num_pins = pf->dplls.num_outputs;
+ 		input = false;
+@@ -4059,6 +4248,49 @@ static int ice_dpll_init_info_direct_pins_e825c(struct ice_pf *pf,
+ 	return 0;
+ }
+ 
++/**
++ * ice_dpll_init_info_tspll_pins_e825 - initializes E825 TSPLL pins info
++ * @pf: board private structure
++ * @pin_type: type of pins being initialized
++ *
++ * Init information for E825 device TSPLL pins, cache them in pf's pins
++ * structures.
++ *
++ * Return:
++ * * 0 - success
++ * * negative - init failure reason
++ */
++static int ice_dpll_init_info_tspll_pins_e825(struct ice_pf *pf,
++					      enum ice_dpll_pin_type pin_type)
++{
++	struct ice_dpll_pin *pin;
++
++	switch (pin_type) {
++	case ICE_DPLL_PIN_TYPE_INPUT_TSPLL_E825:
++		pin = &pf->dplls.tspll_in;
++		pin->prop.board_label = ice_dpll_pin_time_ref_e825;
++		pin->prop.type = DPLL_PIN_TYPE_EXT;
++		pin->prop.capabilities |=
++			DPLL_PIN_CAPABILITIES_STATE_CAN_CHANGE;
++		pin->prop.freq_supported = ice_cgu_pin_freq_156_25mhz;
++		pin->prop.freq_supported_num =
++			ARRAY_SIZE(ice_cgu_pin_freq_156_25mhz);
++		pin->freq = pin->prop.freq_supported[0].min;
++		pin->pf = pf;
++		break;
++	case ICE_DPLL_PIN_TYPE_OUTPUT_TSPLL_E825:
++		pin = &pf->dplls.tspll_out;
++		pin->prop.board_label = ice_dpll_pin_time_sync_e825;
++		pin->prop.type = DPLL_PIN_TYPE_INT_OSCILLATOR;
++		pin->pf = pf;
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
+ /**
+  * ice_dpll_init_info_direct_pins - initializes direct pins info
+  * @pf: board private structure
+@@ -4297,10 +4529,7 @@ ice_dpll_init_pins_info(struct ice_pf *pf, enum ice_dpll_pin_type pin_type)
+ 	switch (pin_type) {
+ 	case ICE_DPLL_PIN_TYPE_INPUT:
+ 	case ICE_DPLL_PIN_TYPE_OUTPUT:
+-		if (pf->hw.mac_type == ICE_MAC_GENERIC_3K_E825)
+-			return ice_dpll_init_info_direct_pins_e825c(pf, pin_type);
+-		else
+-			return ice_dpll_init_info_direct_pins(pf, pin_type);
++		return ice_dpll_init_info_direct_pins(pf, pin_type);
+ 	case ICE_DPLL_PIN_TYPE_RCLK_INPUT:
+ 		if (pf->hw.mac_type == ICE_MAC_GENERIC_3K_E825)
+ 			return ice_dpll_init_info_pin_on_pin_e825c(pf);
+@@ -4308,6 +4537,12 @@ ice_dpll_init_pins_info(struct ice_pf *pf, enum ice_dpll_pin_type pin_type)
+ 			return ice_dpll_init_info_rclk_pin(pf);
+ 	case ICE_DPLL_PIN_TYPE_SOFTWARE:
+ 		return ice_dpll_init_info_sw_pins(pf);
++	case ICE_DPLL_PIN_TYPE_INPUT_E825:
++	case ICE_DPLL_PIN_TYPE_OUTPUT_E825:
++		return ice_dpll_init_info_direct_pins_e825c(pf, pin_type);
++	case ICE_DPLL_PIN_TYPE_INPUT_TSPLL_E825:
++	case ICE_DPLL_PIN_TYPE_OUTPUT_TSPLL_E825:
++		return ice_dpll_init_info_tspll_pins_e825(pf, pin_type);
+ 	default:
+ 		return -EINVAL;
+ 	}
+@@ -4342,18 +4577,28 @@ static int ice_dpll_init_info_e825c(struct ice_pf *pf)
+ {
+ 	struct ice_dplls *d = &pf->dplls;
+ 	struct ice_dpll *de = &d->eec;
++	struct ice_dpll *dt = &d->tspll;
+ 	int ret = 0;
+ 	int i;
+ 
+ 	d->clock_id = ice_generate_clock_id(pf);
+ 	d->num_inputs = ICE_SYNCE_CLK_NUM;
+ 	de->dpll_state = DPLL_LOCK_STATUS_LOCKED;
++	dt->dpll_state = DPLL_LOCK_STATUS_LOCKED;
+ 
+ 	d->inputs = kcalloc(d->num_inputs, sizeof(*d->inputs), GFP_KERNEL);
+ 	if (!d->inputs)
+ 		return -ENOMEM;
+ 
+-	ret = ice_dpll_init_pins_info(pf, ICE_DPLL_PIN_TYPE_INPUT);
++	ret = ice_dpll_init_pins_info(pf, ICE_DPLL_PIN_TYPE_INPUT_E825);
++	if (ret)
++		goto deinit_info;
++
++	ret = ice_dpll_init_pins_info(pf, ICE_DPLL_PIN_TYPE_INPUT_TSPLL_E825);
++	if (ret)
++		goto deinit_info;
++
++	ret = ice_dpll_init_pins_info(pf, ICE_DPLL_PIN_TYPE_OUTPUT_TSPLL_E825);
+ 	if (ret)
+ 		goto deinit_info;
+ 
+@@ -4375,7 +4620,11 @@ static int ice_dpll_init_info_e825c(struct ice_pf *pf)
+ 	ret = ice_dpll_init_pins_info(pf, ICE_DPLL_PIN_TYPE_RCLK_INPUT);
+ 	if (ret)
+ 		return ret;
++
+ 	de->mode = DPLL_MODE_MANUAL;
++	dt->mode = DPLL_MODE_MANUAL;
++	dt->dpll_idx = ICE_DPLL_TSPLL_IDX_E825;
++
+ 	dev_dbg(ice_pf_to_dev(pf),
+ 		"%s - success, inputs:%u, outputs:%u, rclk-parents:%u, pin_1588-parents:%u\n",
+ 		 __func__, d->num_inputs, d->num_outputs, d->rclk.num_parents,
+@@ -4510,6 +4759,8 @@ void ice_dpll_deinit(struct ice_pf *pf)
+ 	ice_dpll_deinit_pins(pf, cgu);
+ 	if (pf->hw.mac_type != ICE_MAC_GENERIC_3K_E825)
+ 		ice_dpll_deinit_dpll(pf, &pf->dplls.pps, cgu);
++	else
++		ice_dpll_deinit_dpll(pf, &pf->dplls.tspll, cgu);
+ 	ice_dpll_deinit_dpll(pf, &pf->dplls.eec, cgu);
+ 	ice_dpll_deinit_info(pf);
+ 	mutex_destroy(&pf->dplls.lock);
+@@ -4542,12 +4793,16 @@ void ice_dpll_init(struct ice_pf *pf)
+ 	err = ice_dpll_init_dpll(pf, &pf->dplls.eec, cgu, DPLL_TYPE_EEC);
+ 	if (err)
+ 		goto deinit_info;
+-	if (pf->hw.mac_type != ICE_MAC_GENERIC_3K_E825) {
++
++	if (pf->hw.mac_type == ICE_MAC_GENERIC_3K_E825)
++		err = ice_dpll_init_dpll(pf, &pf->dplls.tspll, cgu,
++					 DPLL_TYPE_PPS);
++	else
+ 		err = ice_dpll_init_dpll(pf, &pf->dplls.pps, cgu,
+ 					 DPLL_TYPE_PPS);
+-		if (err)
+-			goto deinit_eec;
+-	}
++	if (err)
++		goto deinit_eec;
++
+ 	err = ice_dpll_init_pins(pf, cgu);
+ 	if (err)
+ 		goto deinit_pps;
+@@ -4563,7 +4818,10 @@ void ice_dpll_init(struct ice_pf *pf)
+ deinit_pins:
+ 	ice_dpll_deinit_pins(pf, cgu);
+ deinit_pps:
+-	ice_dpll_deinit_dpll(pf, &pf->dplls.pps, cgu);
++	if (pf->hw.mac_type == ICE_MAC_GENERIC_3K_E825)
++		ice_dpll_deinit_dpll(pf, &pf->dplls.tspll, cgu);
++	else
++		ice_dpll_deinit_dpll(pf, &pf->dplls.pps, cgu);
+ deinit_eec:
+ 	ice_dpll_deinit_dpll(pf, &pf->dplls.eec, cgu);
+ deinit_info:
+diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.h b/drivers/net/ethernet/intel/ice/ice_dpll.h
+index 18a4b496ba49..cd662900075f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dpll.h
++++ b/drivers/net/ethernet/intel/ice/ice_dpll.h
+@@ -99,10 +99,13 @@ struct ice_dpll {
+  * @lock: locks access to configuration of a dpll
+  * @eec: pointer to EEC dpll dev
+  * @pps: pointer to PPS dpll dev
++ * @tspll: pointer to TSPLL dpll dev
+  * @inputs: input pins pointer
+  * @outputs: output pins pointer
+  * @pin_1588: pin controlling clock 1588 pointer
+  * @rclk: recovered pins pointer
++ * @tspll_in: TSPLL input pin
++ * @tspll_out: TSPLL output pin
+  * @num_inputs: number of input pins available on dpll
+  * @num_outputs: number of output pins available on dpll
+  * @cgu_state_acq_err_num: number of errors returned during periodic work
+@@ -119,12 +122,15 @@ struct ice_dplls {
+ 	struct mutex lock;
+ 	struct ice_dpll eec;
+ 	struct ice_dpll pps;
++	struct ice_dpll tspll;
+ 	struct ice_dpll_pin *inputs;
+ 	struct ice_dpll_pin *outputs;
+ 	struct ice_dpll_pin pin_1588;
+ 	struct ice_dpll_pin sma[ICE_DPLL_PIN_SW_NUM];
+ 	struct ice_dpll_pin ufl[ICE_DPLL_PIN_SW_NUM];
+ 	struct ice_dpll_pin rclk;
++	struct ice_dpll_pin tspll_in;
++	struct ice_dpll_pin tspll_out;
+ 	u8 num_inputs;
+ 	u8 num_outputs;
+ 	u8 sma_data;
+diff --git a/drivers/net/ethernet/intel/ice/ice_tspll.c b/drivers/net/ethernet/intel/ice/ice_tspll.c
+index 66320a4ab86f..6777ce8229cb 100644
+--- a/drivers/net/ethernet/intel/ice/ice_tspll.c
++++ b/drivers/net/ethernet/intel/ice/ice_tspll.c
+@@ -577,6 +577,71 @@ static int ice_tspll_dis_sticky_bits(struct ice_hw *hw)
+ 	}
+ }
+ 
++/**
++ * ice_tspll_get_clk_src - get current TSPLL clock source
++ * @hw: board private hw structure
++ * @clk_src: pointer to store clk_src value
++ *
++ * Get current TSPLL clock source settings.
++ *
++ * Return:
++ * * 0 - OK
++ * * negative - error
++ */
++int ice_tspll_get_clk_src(struct ice_hw *hw, enum ice_clk_src *clk_src)
++{
++	int err;
++	u32 val;
++
++	/* Disable sticky lock detection so lock status reported is accurate */
++	err = ice_tspll_dis_sticky_bits(hw);
++	if (err)
++		return err;
++
++	if (hw->mac_type == ICE_MAC_GENERIC_3K_E825)
++		err = ice_read_cgu_reg(hw, ICE_CGU_R23, &val);
++	else
++		err = ice_read_cgu_reg(hw, ICE_CGU_R24, &val);
++	if (err)
++		return err;
++
++	*clk_src = (enum ice_clk_src)FIELD_GET(ICE_CGU_R23_R24_TIME_REF_SEL,
++					       val);
++
++	return 0;
++}
++
++/**
++ * ice_tspll_set_cfg - configure TS PLL with new settings
++ * @hw: board private hw structure
++ * @clk_freq: clock frequency to program
++ * @clk_src: clock source to select (TIME_REF, or TCXO)
++ *
++ * Configure CGU with new clock source and clock frequency settings.
++ *
++ * Return:
++ * * 0 - OK
++ * * negative - error
++ */
++int ice_tspll_set_cfg(struct ice_pf *pf, enum ice_tspll_freq clk_freq,
++		      enum ice_clk_src clk_src)
++{
++	int ret;
++
++	if (!ice_tspll_check_params(&pf->hw, clk_freq, clk_src))
++		return -EINVAL;
++
++	ret = ice_tspll_dis_sticky_bits(&pf->hw);
++	if (ret)
++		return ret;
++
++	ret = ice_tspll_cfg(&pf->hw, clk_freq, clk_src);
++	if (ret)
++		return ret;
++
++	return 0;
++}
++
+ /**
+  * ice_tspll_init - Initialize TSPLL with settings from firmware
+  * @hw: Pointer to the HW structure
+diff --git a/drivers/net/ethernet/intel/ice/ice_tspll.h b/drivers/net/ethernet/intel/ice/ice_tspll.h
+index dec0b0105a5d..36fcf9e77a1f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_tspll.h
++++ b/drivers/net/ethernet/intel/ice/ice_tspll.h
+@@ -33,6 +33,9 @@ struct ice_tspll_params_e82x {
+ #define ICE_TSPLL_FBDIV_INTGR_E825		256
+ 
+ int ice_tspll_cfg_pps_out_e825c(struct ice_hw *hw, bool enable);
++int ice_tspll_get_clk_src(struct ice_hw *hw, enum ice_clk_src *clk_src);
++int ice_tspll_set_cfg(struct ice_pf *pf, enum ice_tspll_freq clk_freq,
++		      enum ice_clk_src clk_src);
+ int ice_tspll_init(struct ice_hw *hw);
+ 
+ #endif /* _ICE_TSPLL_H_ */
+
+base-commit: bcf813c1760bb8ac9dbea1b6221253b015f48939
+-- 
+2.39.3
 
