@@ -2,122 +2,106 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5DCACB11467
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Jul 2025 01:18:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 66CBAB11503
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Jul 2025 02:10:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DE3BC41B35;
-	Thu, 24 Jul 2025 23:18:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 27D9541B4E;
+	Fri, 25 Jul 2025 00:10:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ppaoQEyJHWNg; Thu, 24 Jul 2025 23:18:51 +0000 (UTC)
+ id Em1lPrYjAGnz; Fri, 25 Jul 2025 00:10:16 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2D7F54149C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 787A441B52
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1753399131;
-	bh=dEKAc56BHehGNaIvvH5Q0MuxTZULsqolyYCt/3SX6+s=;
-	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
+	s=default; t=1753402216;
+	bh=kCbcStO2purfk6GOxQKamWRgrHeVI3cgFRcPfdlpU1E=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=OhjFdhsSiphQ952u2aTKY9nuYolZOsmJo4UI9CwrlFoYSvca9hM0+4BXtiExtDCQn
-	 uIp/wF70Fs6/fz9ItJtBfCmy2ypW8EGicjvJN1bMh3oK9TypAkJIrddRhXqQozf6GR
-	 JM95/buOQDL5Hgbm9tREHFX3vhFAcAZxYBoX+TNS5iIhXmr5Jn2LA0tFy8tQFnUxsi
-	 wufNi/NA/masOFLz47aBUWTfvPOsgHnqxeUdIbdQXcd5PJEQQ6EIP4lf3FxUT0zNZ4
-	 DGZu0XVAJ6t5Y5WCOUwPubb2I6NkLxfhRdqIS2sJhRlDO7Yjt+JGbRCYeIIkP8TARn
-	 Y+PU6S18XecTw==
+	b=bItIX7I+9/2CRtjGrXvN8h8Mu5HIj4JTm5Ji+ZJcBau7kRgKvPOUm5Xh8kMLViUfi
+	 zSGkGX7VhRXdFBUyDhXkxmX1NOUKmXgqfsn+3h5OiUirsySSTvxQIH5mFv2Qmlx7oy
+	 GAwlZcOm0SHIN37cb9OW5xz/Pnp+De93oK5smZunWIz+MtjVB56E6emA4Vru44TqHk
+	 8n/aZ6CqCYg/sdVpzBe8baGe46mDCftEETux2ggTvmu+LdTkswYlQRdwUR/KJHNFO4
+	 NnXNTsSvcNz61oTGsRlDEMuPh3JUd8lpNDQNOEXVmJe/W7lFloRa7js046iMsd23q9
+	 wuYfNFBxPQ2Lw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2D7F54149C;
-	Thu, 24 Jul 2025 23:18:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 787A441B52;
+	Fri, 25 Jul 2025 00:10:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 903FE115
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 23:18:49 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 197D9B83
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Jul 2025 00:10:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 76C0140081
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 23:18:49 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id F343381BBD
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Jul 2025 00:10:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vkoRdImOJO55 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 24 Jul 2025 23:18:48 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::129; helo=mail-il1-x129.google.com;
- envelope-from=kerneljasonxing@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A7E324002C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A7E324002C
-Received: from mail-il1-x129.google.com (mail-il1-x129.google.com
- [IPv6:2607:f8b0:4864:20::129])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A7E324002C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 23:18:48 +0000 (UTC)
-Received: by mail-il1-x129.google.com with SMTP id
- e9e14a558f8ab-3e28cf0f464so7364185ab.1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 24 Jul 2025 16:18:48 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753399127; x=1754003927;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=dEKAc56BHehGNaIvvH5Q0MuxTZULsqolyYCt/3SX6+s=;
- b=DRZPw3mWp0a+ZUPh70GNdC8B+4loMHlVv8PFIB8kMDmLKfsnUqg9JTAuKojErHHuCn
- GxEpDdkCRU0FcZGQT7o6SbQBlqIAYiXnJ0N7yUl4HWH6Rez+jEjW1Q+Hg1zDCvABdSDP
- D+d3HzPfotTCoff4fZFnWm88NxhHMim41kFwytXwpsz3Td0vjFbfUNA6+2WVEKwxC2g2
- Z+GygVwn8hHEe6M3EFJ3ERwlJ51HT0aGLfEc5/HqPXBBVc5ZpNHpJMEr8QsNpQOukmGT
- G2eX6IcSl3TPfSNcGED8B+UJaniZMEN7M2NPiu7TNrJHe/WVUE3yHGfyuRr1Jk/scbLi
- VALw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX7JcSZz/ERLCohjndRAdvbwKXnWndX0xDdSEu8Yi+v07IZAXyv00vCT1oSXN7MZQe0ztjQHi8HeMVrqYKXqe0=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YwsXwPfW3eLiptN7gCjRwtLCMZCa5VgUPQSGfjc7TMWypHalukr
- TRWFHluonNVybh4hhMXBhllm3vI5v+EY7YXtcN5FAo8VQk+aLuk1GA/8BZgWBmjTF7jQjs21jpD
- dNA+bIJV7qqevAbp3zlnk2oaDx4DP8t4=
-X-Gm-Gg: ASbGncuS7pBZIGGULFgW68csyfe14zpBHulPOuTEmreI7mymubOA1VeymxMCT2IwdJF
- MKhHuplakrX03yclAteSuC86CbCsOsa1GTP5F7h6GaA/mLzcvHcVLCFaRZmAm6wgHF6nhRQOT6m
- 9jUrcz8/0waUNwptHuVi7YRw7Y03p7yQJi1GrY26ipZJi2TWhEneKBXdpvH+EnSS2aNfO+x8y0d
- 8cozuU=
-X-Google-Smtp-Source: AGHT+IE0Ki4xgb+U/YhxHbKgURvDFOGwE5ntgi5AIuY7AfeNBXyvCSHBjR/Xh9dRk3z7+RqsfjZZEVPXHpUj/qN1ApQ=
-X-Received: by 2002:a05:6e02:156d:b0:3e2:aadb:2be8 with SMTP id
- e9e14a558f8ab-3e3355b0625mr143710355ab.15.1753399127377; Thu, 24 Jul 2025
- 16:18:47 -0700 (PDT)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id dbGl59VdqFkI for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 25 Jul 2025 00:10:14 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
+ helo=sea.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4EAB981B71
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4EAB981B71
+Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4EAB981B71
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Jul 2025 00:10:14 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sea.source.kernel.org (Postfix) with ESMTP id AAF8145078;
+ Fri, 25 Jul 2025 00:10:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1C794C4CEED;
+ Fri, 25 Jul 2025 00:10:12 +0000 (UTC)
+Date: Thu, 24 Jul 2025 17:10:11 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Tariq Toukan <ttoukan.linux@gmail.com>
+Cc: Tariq Toukan <tariqt@nvidia.com>, Eric Dumazet <edumazet@google.com>,
+ Paolo Abeni <pabeni@redhat.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>, Jiri Pirko <jiri@resnulli.us>,
+ Jiri Pirko <jiri@nvidia.com>, Saeed Mahameed <saeed@kernel.org>, Gal
+ Pressman <gal@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Shahar
+ Shitrit <shshitrit@nvidia.com>, Donald Hunter <donald.hunter@gmail.com>,
+ Jonathan Corbet <corbet@lwn.net>, Brett Creeley <brett.creeley@amd.com>,
+ Michael Chan <michael.chan@broadcom.com>, Pavan Chebbi
+ <pavan.chebbi@broadcom.com>, Cai Huoqing <cai.huoqing@linux.dev>, Tony
+ Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel
+ <przemyslaw.kitszel@intel.com>, Sunil Goutham <sgoutham@marvell.com>, Linu
+ Cherian <lcherian@marvell.com>, Geetha sowjanya <gakula@marvell.com>, Jerin
+ Jacob <jerinj@marvell.com>, hariprasad <hkelam@marvell.com>, Subbaraya
+ Sundeep <sbhatta@marvell.com>, Saeed Mahameed <saeedm@nvidia.com>, Mark
+ Bloch <mbloch@nvidia.com>, Ido Schimmel <idosch@nvidia.com>, Petr Machata
+ <petrm@nvidia.com>, Manish Chopra <manishc@marvell.com>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-doc@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ linux-rdma@vger.kernel.org
+Message-ID: <20250724171011.2e8ebca4@kernel.org>
+In-Reply-To: <6892bb46-e2eb-4373-9ac0-6c43eca78b8e@gmail.com>
+References: <1752768442-264413-1-git-send-email-tariqt@nvidia.com>
+ <20250718174737.1d1177cd@kernel.org>
+ <6892bb46-e2eb-4373-9ac0-6c43eca78b8e@gmail.com>
 MIME-Version: 1.0
-References: <20250720091123.474-1-kerneljasonxing@gmail.com>
- <20250720091123.474-3-kerneljasonxing@gmail.com>
- <6ecfc595-04a8-42f4-b86d-fdaec793d4db@intel.com>
-In-Reply-To: <6ecfc595-04a8-42f4-b86d-fdaec793d4db@intel.com>
-From: Jason Xing <kerneljasonxing@gmail.com>
-Date: Fri, 25 Jul 2025 07:18:11 +0800
-X-Gm-Features: Ac12FXxcq3Vo79vPuWCMbML6IqnEs97yfg9Pzfq8kprmxnIU1JjJvwbLPY4pIyY
-Message-ID: <CAL+tcoBTejWSmv6XTpFqvgy4Qk4c39-OJm8Vqcwraa0cAST=sw@mail.gmail.com>
-To: Tony Nguyen <anthony.l.nguyen@intel.com>
-Cc: przemyslaw.kitszel@intel.com, andrew+netdev@lunn.ch, davem@davemloft.net, 
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, bjorn@kernel.org, 
- magnus.karlsson@intel.com, maciej.fijalkowski@intel.com, 
- jonathan.lemon@gmail.com, sdf@fomichev.me, ast@kernel.org, 
- daniel@iogearbox.net, hawk@kernel.org, john.fastabend@gmail.com, 
- bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
- Jason Xing <kernelxing@tencent.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1753399127; x=1754003927; darn=lists.osuosl.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=dEKAc56BHehGNaIvvH5Q0MuxTZULsqolyYCt/3SX6+s=;
- b=VbQgg2GtqtJyhuKjAOdeoMSfWI0wlEMZ1XjcaTC+7WOPqQcepd3wJ0az+BJ+n+nvsg
- Rzgi/guUepDGNlzdEAxPSBCcsBI5f5HqcG7a1rnjFCe3143bTdD9y4HvSqze+mEU+SOp
- 9tvFI04vHl/X9SZj1mhNEzlc97jGli2skqB6J2CadxNd+qP6FvD+akDbl2GRnYz77dFX
- oo/pWgpFVZyU/sP9A3bTzBB4wp+DkrURFv2M0a3Is7o4v5GxdC73wHd6CMnVg+qOsxXw
- DD8jBmvnUji+V9/E8pr1BYZVl/TVY0FReu7C0AuhnG00H8Zf1nCCnmDhm/Qbc4/Pzaki
- 6m7A==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1753402213;
+ bh=Efr02ucghVvgSDn8C24njX+4voOe5UznirPQXWvnDzk=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=Yubfi/yxAM3CCWJCHIwvB4ZciDHFX+FvkC+gpWLrp0y7BMH/0tT5k++48ChpPTqJ/
+ 4iN8qXIyppWRWsOrgDLLRISLbDrH4rwbgeHMMp1OFsQn2OkgMsGylgayJN+0Y/N4Bw
+ jBWU49qtKLt2bZTr5gn7Lwf61N8UE8J373uX9cEq2aJPDwe8aE09P9tNXb0UVT/zYZ
+ 13sm94F8Qip51ieaK7g8Amupe9wXYKFUE47ONq6/2AOitnsMsHhjjLp0bjaOiy+5kM
+ A4vejS5beOwQIx32BiEDFYqtF1qSl5pA3exUk6nNxCh5RTbazzASBLu0g9ZHNISD2y
+ XjrmJtxf3recQ==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=VbQgg2Gt
-Subject: Re: [Intel-wired-lan] [PATCH net-next 2/5] ixgbe: xsk: resolve the
- underflow of budget in ixgbe_xmit_zc
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=Yubfi/yx
+Subject: Re: [Intel-wired-lan] [PATCH net-next 0/5] Expose grace period
+ delay for devlink health reporter
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -133,79 +117,59 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Tony,
+On Thu, 24 Jul 2025 13:46:08 +0300 Tariq Toukan wrote:
+> Design alternatives considered:
+>=20
+> 1. Recover all queues upon any error:
+>     A brute-force approach that recovers all queues on any error.
+>     While simple, it is overly aggressive and disrupts unaffected queues
+>     unnecessarily. Also, because this is handled entirely within the
+>     driver, it leads to a driver-specific implementation rather than a
+>     generic one.
+>=20
+> 2. Per-queue reporter:
+>     This design would isolate recovery handling per SQ or RQ, effectively
+>     removing interdependencies between queues. While conceptually clean,
+>     it introduces significant scalability challenges as the number of
+>     queues grows, as well as synchronization challenges across multiple
+>     reporters.
+>=20
+> 3. Error aggregation with delayed handling:
+>     Errors arriving during the grace period are saved and processed after
+>     it ends. While addressing the issue of related errors whose recovery
+>     is aborted as grace period started, this adds complexity due to
+>     synchronization needs and contradicts the assumption that no errors
+>     should occur during a healthy system=E2=80=99s grace period. Also, th=
+is
+>     breaks the important role of grace period in preventing an infinite
+>     loop of immediate error detection following recovery. In such cases
+>     we want to stop.
+>=20
+> 4. Allowing a fixed burst of errors before starting grace period:
+>     Allows a set number of recoveries before the grace period begins.
+>     However, it also requires limiting the error reporting window.
+>     To keep the design simple, the burst threshold becomes redundant.
 
-On Fri, Jul 25, 2025 at 4:21=E2=80=AFAM Tony Nguyen <anthony.l.nguyen@intel=
-.com> wrote:
->
->
->
-> On 7/20/2025 2:11 AM, Jason Xing wrote:
-> > From: Jason Xing <kernelxing@tencent.com>
-> >
-> > Resolve the budget underflow which leads to returning true in ixgbe_xmi=
-t_zc
-> > even when the budget of descs are thoroughly consumed.
-> >
-> > Before this patch, when the budget is decreased to zero and finishes
-> > sending the last allowed desc in ixgbe_xmit_zc, it will always turn bac=
-k
-> > and enter into the while() statement to see if it should keep processin=
-g
-> > packets, but in the meantime it unexpectedly decreases the value again =
-to
-> > 'unsigned int (0--)', namely, UINT_MAX. Finally, the ixgbe_xmit_zc retu=
-rns
-> > true, showing 'we complete cleaning the budget'. That also means
-> > 'clean_complete =3D true' in ixgbe_poll.
-> >
-> > The true theory behind this is if that budget number of descs are consu=
-med,
-> > it implies that we might have more descs to be done. So we should retur=
-n
-> > false in ixgbe_xmit_zc to tell napi poll to find another chance to star=
-t
-> > polling to handle the rest of descs. On the contrary, returning true he=
-re
-> > means job done and we know we finish all the possible descs this time a=
-nd
-> > we don't intend to start a new napi poll.
-> >
-> > It is apparently against our expectations. Please also see how
-> > ixgbe_clean_tx_irq() handles the problem: it uses do..while() statement
-> > to make sure the budget can be decreased to zero at most and the underf=
-low
-> > never happens.
-> >
-> > Fixes: 8221c5eba8c1 ("ixgbe: add AF_XDP zero-copy Tx support")
->
-> Hi Jason,
->
-> Seems like this one should be split off and go to iwl-net/net like the
-> other similar ones [1]? Also, some of the updates made to the other
-> series apply here as well?
+We're talking about burst on order of 100s, right? The implementation
+is quite simple, store an array the size of burst in which you can
+save recovery timestamps (in a circular fashion). On error, count
+how many entries are in the past N msecs.
 
-The other three patches are built on top of this one. If without the
-patch, the whole series will be warned because of build failure. I was
-thinking we could backport this patch that will be backported to the
-net branch after the whole series goes into the net-next branch.
+It's a clear generalization of current scheme which can be thought of
+as having an array of size 1 (only one most recent recovery time is
+saved).
 
-Or you expect me to cook four patches without this one first so that
-you could easily cherry pick this one then without building conflict?
+> The grace period delay design was chosen for its simplicity and
+> precision in addressing the problem at hand. It effectively captures
+> the temporal correlation of related errors and aligns with the original
+> intent of the grace period as a stabilization window where further
+> errors are unexpected, and if they do occur, they indicate an abnormal
+> system state.
 
->
-> Thanks,
-> Tony
->
-> [1]
-> https://lore.kernel.org/netdev/20250723142327.85187-1-kerneljasonxing@gma=
-il.com/
+Admittedly part of what I find extremely confusing when thinking about
+this API is that the period when recovery is **not** allowed is called
+"grace period". Now we add something called "grace period delay" in
+some places in the code referred to as "reporter_delay"..
 
-Regarding this one, should I send a v4 version with the current patch
-included? And target [iwl-net/net] explicitly as well?
-
-I'm not sure if I follow you. Could you instruct me on how to proceed
-next in detail?
-
-Thanks,
-Jason
+It may be more palatable if we named the first period "error burst
+period" and, well, the later I suppose it's too late to rename..
