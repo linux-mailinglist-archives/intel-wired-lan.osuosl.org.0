@@ -1,96 +1,131 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BFF94B12FC1
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 27 Jul 2025 15:55:13 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 21824B12FC2
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 27 Jul 2025 15:58:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F3F9D611D5;
-	Sun, 27 Jul 2025 13:55:09 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9988F41CBA;
+	Sun, 27 Jul 2025 13:58:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sLh55dYyKzie; Sun, 27 Jul 2025 13:55:07 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id jCguCCGaNV29; Sun, 27 Jul 2025 13:58:24 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 61BA6611F7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 70D7541CBB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1753624507;
-	bh=q6VNmzrpOUtAwwVcZCWVjbM88APx2OpL4lQ5wzU94mc=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1753624704;
+	bh=0yaMYzF2veU+tL0RDS4L7bIfgl8wsKWQMLlbC1aOylk=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=wXH0onQSRhMTfXur8tN6wPomS5R2j5ul0wyGTOM7EBfsi/bEJtEjqa8/oFrE7wcZG
-	 nrxiM5q/wM6bhv4hCo0eTvTq6YvpRZ5aRm9TiKt81IJLzRBhAkHGnP3s0DDIo+EvJS
-	 ahDJwZCujKkdngo/hRGX5fEnFFBMqLNTCxwCH3swQldgzVOPFlYErWFVZ/TJ75FIMb
-	 1sOe5yG/Spoe4xmNoFoNtpBPxv3qCZAK9Iia4aE5Yazj2Z9c+WVb8G6GlO+EgBA0EQ
-	 h+Gs1P62/5qzXm9dkaZ7HvRwrRGuH9bkEgax3jutbs2d2nvWroi3LyucM2+ufh/Khm
-	 bi/h07ThQuipA==
+	b=YM63hTfW+YyPNuf4+/Y/tW7NQm0aLgjJ6xN1XVGXhXM4POpTRmtRsXhoai7wZ+IaI
+	 ogA0u8wiWEdQzuLDNaFTgVJ+WzmFeHTJ4ZGKgxqzKaBwYbGxaQUAv8N3rrSE168+21
+	 4ZoaybU2LwYCQg8qSLLvjeD1gJKMpc/jb6wRYNFQMw7TH1bDw+5XBMNGmiFtLJ3F20
+	 O/F7r5r99+4LjB/mZdRsZfbI5UPcPRfs2keb1KT9zMiLKqbkBOGqZTZveGDkJnW+mz
+	 RU4Z+mz8Z/aLgGgANvnIFkAp8bKYdSj/TRlpI+hEY0rMBZEp50rQRziHZI01akIt+P
+	 ZRMUgKULapeCw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 61BA6611F7;
-	Sun, 27 Jul 2025 13:55:07 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 70D7541CBB;
+	Sun, 27 Jul 2025 13:58:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 9BB0E1BE
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Jul 2025 13:55:06 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 883901BE
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Jul 2025 13:58:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8DD336115A
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Jul 2025 13:55:06 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 7A90F60FD6
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Jul 2025 13:58:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id SlwCcDY3Cved for <intel-wired-lan@lists.osuosl.org>;
- Sun, 27 Jul 2025 13:55:03 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
- helo=tor.source.kernel.org; envelope-from=horms@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org CCF8461181
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CCF8461181
-Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
- by smtp3.osuosl.org (Postfix) with ESMTPS id CCF8461181
- for <intel-wired-lan@lists.osuosl.org>; Sun, 27 Jul 2025 13:55:02 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 0F6FC600AE;
- Sun, 27 Jul 2025 13:55:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 953CDC4CEEB;
- Sun, 27 Jul 2025 13:54:57 +0000 (UTC)
-Date: Sun, 27 Jul 2025 14:54:55 +0100
-From: Simon Horman <horms@kernel.org>
-To: Jason Xing <kerneljasonxing@gmail.com>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, larysa.zaremba@intel.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, bjorn@kernel.org,
- maciej.fijalkowski@intel.com, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, Jason Xing <kernelxing@tencent.com>
-Message-ID: <20250727135455.GW1367887@horms.kernel.org>
-References: <20250726070356.58183-1-kerneljasonxing@gmail.com>
- <a8eba276-afbf-456c-943d-36144877cfc0@molgen.mpg.de>
- <CAL+tcoD3zwiWsrqDQp1uhegiiFnYs8jcpFVTpuacZ_c6y9-X+Q@mail.gmail.com>
+ id z2oDu61m1YlJ for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 27 Jul 2025 13:58:21 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=2a02:e00:ffe7:c::2;
+ helo=mail.valdk.tel; envelope-from=iam@valdikss.org.ru; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 0ACD1605E7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0ACD1605E7
+Received: from mail.valdk.tel (mail.valdk.tel [IPv6:2a02:e00:ffe7:c::2])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0ACD1605E7
+ for <intel-wired-lan@osuosl.org>; Sun, 27 Jul 2025 13:58:20 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon)
+ with ESMTPSA id E950C1B67D79; Sun, 27 Jul 2025 16:58:14 +0300 (MSK)
+Message-ID: <ac3d9591-f564-4306-9638-989ebb328d29@valdikss.org.ru>
+Date: Sun, 27 Jul 2025 16:58:13 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAL+tcoD3zwiWsrqDQp1uhegiiFnYs8jcpFVTpuacZ_c6y9-X+Q@mail.gmail.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1753624500;
- bh=VBV63q1aoWk9I7DKDbsgbXB12D2skcqyhUP3A3Znqjg=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=e13o1TjofSUu2+33Rj8v98FYFPhLBRjiUPY8/M9yqAbHmHcUbDqjjINQgKotQndC8
- t8iGZZX4sYj0ayE/LhVObXpdLfRyo34AGFD2St24K6+IHY1nR+HvPcUS/QJxXiIQ9+
- mZwgOzkomias7KOsMhxQW1mkAeWGt0mzyR9gN3D5r7CqfLHI+bEKy8bdG4R4R0JG+0
- SkWszvFgQUSWvAOlWHZ4mQgLrfxVZ8zziby+51GUTBESfiO5rvTphUDP0Z8un7Rz4G
- +qzpr6SDuW1P4d8Elc352ohHZLwspazWCLpI/J41RElps+eHiSBSja9fBJcA1+riuH
- TLdIqJ5ajfL8Q==
+User-Agent: Mozilla Thunderbird
+To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>, intel-wired-lan@osuosl.org
+References: <20250722200448.14963-1-iam@valdikss.org.ru>
+ <0c09a02b-71df-409f-96a0-6372d936ff82@intel.com>
+Content-Language: ru, en-US
+From: ValdikSS <iam@valdikss.org.ru>
+Autocrypt: addr=iam@valdikss.org.ru; keydata=
+ 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
+ OEcVmRU/pw5/zoQyQg==
+In-Reply-To: <0c09a02b-71df-409f-96a0-6372d936ff82@intel.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="------------x1G00DI03bPHsU44caBmdmHh"
+X-Last-TLS-Session-Version: TLSv1.3
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=valdikss.org.ru; s=msrv; t=1753624697;
+ h=from:subject:date:message-id:to:mime-version:content-type:
+ content-language:in-reply-to:references:autocrypt;
+ bh=0yaMYzF2veU+tL0RDS4L7bIfgl8wsKWQMLlbC1aOylk=;
+ b=2ttTQ5rtuQwD+kEQD1Cr17v4scY0A4uOOTDL585WwTWMx42gws+5CgBTv+obzTNcMnsGFZ
+ DVZG/f79i2sZB+8hAQHCJdUPe6BniLhW1u5vantBFItCpmGho0WQhtjqPm+v3QqL4l9PGb
+ x//b9oJQRa3aEBqZjWRUBxVFBXubvjZ3SACZd2VX3mhorSLsbZsYknVWD+FUJYqq/0awRI
+ d+Dqwfk1sF2lZDsNvcp4El3YEhYJs6D/JteN6tk8egglDB3gfZeNBmDVJrjf3+XaEk23Ka
+ 8sna9f2kX+hi5HtzqpYyKcnBMyNarwXYJ4ztBBmryEK2+I9tmZkZeGEcUUbCPA==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
+ dmarc=pass (p=reject dis=none)
+ header.from=valdikss.org.ru
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=e13o1Tjo
-Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-net] ixgbe: xsk: resolve the
- negative overflow of budget in ixgbe_xmit_zc
+ unprotected) header.d=valdikss.org.ru header.i=@valdikss.org.ru
+ header.a=rsa-sha256 header.s=msrv header.b=2ttTQ5rt
+Subject: Re: [Intel-wired-lan] [PATCH] igc: fix disabling L1.2 PCI-E link
+ substate on I226
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -106,89 +141,79 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sun, Jul 27, 2025 at 06:06:55PM +0800, Jason Xing wrote:
-> Hi Paul,
-> 
-> On Sun, Jul 27, 2025 at 4:36 PM Paul Menzel <pmenzel@molgen.mpg.de> wrote:
-> >
-> > Dear Jason,
-> >
-> >
-> > Thank you for the improved version.
-> >
-> > Am 26.07.25 um 09:03 schrieb Jason Xing:
-> > > From: Jason Xing <kernelxing@tencent.com>
-> > >
-> > > Resolve the budget negative overflow which leads to returning true in
-> > > ixgbe_xmit_zc even when the budget of descs are thoroughly consumed.
-> > >
-> > > Before this patch, when the budget is decreased to zero and finishes
-> > > sending the last allowed desc in ixgbe_xmit_zc, it will always turn back
-> > > and enter into the while() statement to see if it should keep processing
-> > > packets, but in the meantime it unexpectedly decreases the value again to
-> > > 'unsigned int (0--)', namely, UINT_MAX. Finally, the ixgbe_xmit_zc returns
-> > > true, showing 'we complete cleaning the budget'. That also means
-> > > 'clean_complete = true' in ixgbe_poll.
-> > >
-> > > The true theory behind this is if that budget number of descs are consumed,
-> > > it implies that we might have more descs to be done. So we should return
-> > > false in ixgbe_xmit_zc to tell napi poll to find another chance to start
-> > > polling to handle the rest of descs. On the contrary, returning true here
-> > > means job done and we know we finish all the possible descs this time and
-> > > we don't intend to start a new napi poll.
-> > >
-> > > It is apparently against our expectations. Please also see how
-> > > ixgbe_clean_tx_irq() handles the problem: it uses do..while() statement
-> > > to make sure the budget can be decreased to zero at most and the negative
-> > > overflow never happens.
-> > >
-> > > The patch adds 'likely' because we rarely would not hit the loop codition
-> > > since the standard budget is 256.
-> > >
-> > > Fixes: 8221c5eba8c1 ("ixgbe: add AF_XDP zero-copy Tx support")
-> > > Signed-off-by: Jason Xing <kernelxing@tencent.com>
-> > > Reviewed-by: Larysa Zaremba <larysa.zaremba@intel.com>
-> > > ---
-> > > Link: https://lore.kernel.org/all/20250720091123.474-3-kerneljasonxing@gmail.com/
-> > > 1. use 'negative overflow' instead of 'underflow' (Willem)
-> > > 2. add reviewed-by tag (Larysa)
-> > > 3. target iwl-net branch (Larysa)
-> > > 4. add the reason why the patch adds likely() (Larysa)
-> > > ---
-> > >   drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 4 +++-
-> > >   1 file changed, 3 insertions(+), 1 deletion(-)
-> > >
-> > > diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-> > > index ac58964b2f08..7b941505a9d0 100644
-> > > --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-> > > +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-> > > @@ -398,7 +398,7 @@ static bool ixgbe_xmit_zc(struct ixgbe_ring *xdp_ring, unsigned int budget)
-> > >       dma_addr_t dma;
-> > >       u32 cmd_type;
-> > >
-> > > -     while (budget-- > 0) {
-> > > +     while (likely(budget)) {
-> > >               if (unlikely(!ixgbe_desc_unused(xdp_ring))) {
-> > >                       work_done = false;
-> > >                       break;
-> > > @@ -433,6 +433,8 @@ static bool ixgbe_xmit_zc(struct ixgbe_ring *xdp_ring, unsigned int budget)
-> > >               xdp_ring->next_to_use++;
-> > >               if (xdp_ring->next_to_use == xdp_ring->count)
-> > >                       xdp_ring->next_to_use = 0;
-> > > +
-> > > +             budget--;
-> > >       }
-> > >
-> > >       if (tx_desc) {
-> >
-> > Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
-> >
-> > Is this just the smallest fix, and the rewrite to the more idiomatic for
-> > loop going to be done in a follow-up?
-> 
-> Thanks for the review. But I'm not that sure if it's worth a follow-up
-> patch. Or if anyone else also expects to see a 'for loop' version, I
-> can send a V3 patch then. I have no strong opinion either way.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--------------x1G00DI03bPHsU44caBmdmHh
+Content-Type: multipart/mixed; boundary="------------ZW6vxgf41ZW2PvbDKKvykBuB";
+ protected-headers="v1"
+From: ValdikSS <iam@valdikss.org.ru>
+To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>, intel-wired-lan@osuosl.org
+Message-ID: <ac3d9591-f564-4306-9638-989ebb328d29@valdikss.org.ru>
+Subject: Re: [PATCH] igc: fix disabling L1.2 PCI-E link substate on I226
+References: <20250722200448.14963-1-iam@valdikss.org.ru>
+ <0c09a02b-71df-409f-96a0-6372d936ff82@intel.com>
+In-Reply-To: <0c09a02b-71df-409f-96a0-6372d936ff82@intel.com>
 
-I think we have iterated over this enough (pun intended).
-If this patch is correct then lets stick with this approach.
+--------------ZW6vxgf41ZW2PvbDKKvykBuB
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
+
+T24gMjcuMDcuMjAyNSA0OjQ1IFBNLCBMaWZzaGl0cywgVml0YWx5IHdyb3RlOg0KPiBPbiA3
+LzIyLzIwMjUgMTE6MDQgUE0sIFZhbGRpa1NTIHdyb3RlOg0KPj4gRGV2aWNlIElEIGNvbXBh
+cmlzb24gaW4gaWdjX2lzX2RldmljZV9pZF9pMjI2IGlzIHBlcmZvcm1lZCBiZWZvcmUNCj4+
+IHRoZSBJRCBpcyBzZXQsIHJlc3VsdGluZyBpbiBhbHdheXMgZmFpbGluZyBjaGVjay4NCj4+
+DQo+PiBMaW5rOiBodHRwczovL2xvcmUua2VybmVsLm9yZy9pbnRlbC13aXJlZC0gDQo+PiBs
+YW4vMTUyNDhiNGYtMzI3MS00MmRkLThlMzUtMDJiZmM5MmIyNWUxQGludGVsLmNvbQ0KPj4g
+U2lnbmVkLW9mZi1ieTogVmFsZGlrU1MgPGlhbUB2YWxkaWtzcy5vcmcucnU+DQo+PiAtLS0N
+Cj4+IMKgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9pZ2NfbWFpbi5jIHwgMiAr
+LQ0KPj4gwqAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0p
+DQo+Pg0KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9p
+Z2NfbWFpbi5jIGIvZHJpdmVycy9uZXQvIA0KPj4gZXRoZXJuZXQvaW50ZWwvaWdjL2lnY19t
+YWluLmMNCj4+IGluZGV4IDAzMWMzMzJmNi4uMmRmMzYzNzNmIDEwMDY0NA0KPj4gLS0tIGEv
+ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWdjL2lnY19tYWluLmMNCj4+ICsrKyBiL2Ry
+aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9pZ2NfbWFpbi5jDQo+PiBAQCAtNzExNiw2
+ICs3MTE2LDcgQEAgc3RhdGljIGludCBpZ2NfcHJvYmUoc3RydWN0IHBjaV9kZXYgKnBkZXYs
+DQo+PiDCoMKgwqDCoMKgIGFkYXB0ZXItPm1zZ19lbmFibGUgPSBuZXRpZl9tc2dfaW5pdChk
+ZWJ1ZywgREVGQVVMVF9NU0dfRU5BQkxFKTsNCj4+IMKgwqDCoMKgwqAgLyogRGlzYWJsZSBB
+U1BNIEwxLjIgb24gSTIyNiBkZXZpY2VzIHRvIGF2b2lkIHBhY2tldCBsb3NzICovDQo+PiAr
+wqDCoMKgIGh3LT5kZXZpY2VfaWQgPSBwZGV2LT5kZXZpY2U7DQo+PiDCoMKgwqDCoMKgIGlm
+IChpZ2NfaXNfZGV2aWNlX2lkX2kyMjYoaHcpKQ0KPj4gwqDCoMKgwqDCoMKgwqDCoMKgIHBj
+aV9kaXNhYmxlX2xpbmtfc3RhdGUocGRldiwgUENJRV9MSU5LX1NUQVRFX0wxXzIpOw0KPj4g
+QEAgLTcxNDMsNyArNzE0NCw2IEBAIHN0YXRpYyBpbnQgaWdjX3Byb2JlKHN0cnVjdCBwY2lf
+ZGV2ICpwZGV2LA0KPj4gwqDCoMKgwqDCoCAvKiBQQ0kgY29uZmlnIHNwYWNlIGluZm8gKi8N
+Cj4+IMKgwqDCoMKgwqAgaHctPnZlbmRvcl9pZCA9IHBkZXYtPnZlbmRvcjsNCj4+IC3CoMKg
+wqAgaHctPmRldmljZV9pZCA9IHBkZXYtPmRldmljZTsNCj4+IMKgwqDCoMKgwqAgaHctPnJl
+dmlzaW9uX2lkID0gcGRldi0+cmV2aXNpb247DQo+PiDCoMKgwqDCoMKgIGh3LT5zdWJzeXN0
+ZW1fdmVuZG9yX2lkID0gcGRldi0+c3Vic3lzdGVtX3ZlbmRvcjsNCj4+IMKgwqDCoMKgwqAg
+aHctPnN1YnN5c3RlbV9kZXZpY2VfaWQgPSBwZGV2LT5zdWJzeXN0ZW1fZGV2aWNlOw0KPiAN
+Cj4gSGkgVmxhZGlrLA0KPiANCj4gVGhhbmsgeW91IGZvciB0aGUgZml4Lg0KPiANCj4gSSBi
+ZWxpZXZlIGl0IHdvdWxkIGJlIGJldHRlciB0byBtb3ZlIGFsbCB0aGUgZGV2aWNlIElEIHJl
+bGF0ZWQgDQo+IGFzc2lnbm1lbnRzIGludG8gYSBzaW5nbGUgYmxvY2sgYXQgdGhlIGJlZ2lu
+bmluZywgcmF0aGVyIHRoYW4gYXNzaWduaW5nIA0KPiBvbmx5IGh3LT5kZXZpY2VfaWQgZmly
+c3QgYW5kIHRoZSByZXN0IGxhdGVyLiBUaGlzIHdvdWxkIGltcHJvdmUgdGhlIA0KPiByZWFk
+YWJpbGl0eSBhbmQgZmxvdyBvZiB0aGUgY29kZS4NCg0KU29tZXRoaW5nIGxpa2UgdGhpcz8N
+Cg==
+
+--------------ZW6vxgf41ZW2PvbDKKvykBuB--
+
+--------------x1G00DI03bPHsU44caBmdmHh
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+wsF5BAABCAAjFiEEMiogvXcpmS32v71gXNcgLu+I93IFAmiGMHUFAwAAAAAACgkQXNcgLu+I93K3
+ihAAqYPAuzYEdbbkSYaV1bF5XZcKbRuPotT4iXXTIxtjJMSKHXIMu9xPC94q/83dN7AWfaaSgwtF
+kN+GzMPvFeVOfyYeDoA5d5xZKn9PgMCPQqr4ycptSrPT6mD73G1zCJK6EtCkCiXXH/B+WyFt2dEb
+X9R7CBYHh4CoPK4QT4/1fZFqxEP5d5906Bi0GzWBAvE1kG1NCodQdIhwsSuMlAXsBEPsUUoesLLg
+NSVCVb6VmFNM9pFb/er2OB+DbkhxeiMnIPjvd6n2je5Cbm6ZQE1szrTf69mitqVU+JYW1cUePolX
+mBYf85Pd5p1PRIHoLNQ+zHUxvKl115bb5/gih6DQSQUF53hfc+/Zl1+P640DwqwhEUBGR3RJvpa6
+XDWm0Bp5wnj67iOW6aw+p4KPMWX5NpEAxge9KglA4df9uQ5FZ1uZoP0hIc2QmaUYUhTo2a7Xn4Dl
+XTb3MZLtjHZDtyDYDsuTcPtH67CZ/C87z4XugfS3h8XQJ2+lVKnMxhkDXR2X0UvTZAI21j79iQ4L
+sgxviPYWFBiY2G3qRHxqylEcC7LgSCABn1HnXVqUePt3lh9L8yKNA7acWOVzOMgBtuUodSaDILS+
+oTh5QCRYuFoyLvreHNivWidHHiRURsS2NRYUAb+8WscXrv0koA/9gwomqVkIFTEywNfoWP3/jUaU
+uro=
+=lEs/
+-----END PGP SIGNATURE-----
+
+--------------x1G00DI03bPHsU44caBmdmHh--
