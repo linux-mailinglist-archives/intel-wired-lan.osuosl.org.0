@@ -1,128 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A4B9CB13FDF
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Jul 2025 18:19:06 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id DA9EEB140E6
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 28 Jul 2025 19:06:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3029340CBE;
-	Mon, 28 Jul 2025 16:19:05 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EB72A6078B;
+	Mon, 28 Jul 2025 17:06:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id FGLGHmRwX9r3; Mon, 28 Jul 2025 16:19:04 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id TIwRTOp1q68K; Mon, 28 Jul 2025 17:06:24 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2AD0740CDA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org ACC6960853
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1753719544;
-	bh=l2cj4YfPSXVmYoc4IiWft3+ar6a3KqtRrSDGyMRAmig=;
+	s=default; t=1753722383;
+	bh=q3anQ/O+b4yZIwGkQq/X6nZB/k648xGRDMEowHUTlnk=;
 	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=C58S39PbpFt+AB5GeOLEnJE5JzXzWLIzBDsLwvkD+M4wrnBBoO5YOglZr97RvwdFO
-	 +ESnzT0LpGphx9QK5k7twBAb36ZbbNMLIE4NphhFyRa+bHzQT3IOjZP5nMd5wXSAJY
-	 GYbIe9QO24Mc/74QkxKBSfXXz/hE6pOiXLsC56+/+SoHSzP4mNeo25DvZSmyrUbXaf
-	 Px3BNy5I7dpAXThLYiovnOtUKDRT0NgPUI8PTksxdT3Drou3OuOGPCyzXbcyaiKF47
-	 3KYdY1UTc9Fp6ZBjJIqrwLdHN02DCkzLUPGYGWDbwbUQO61CRlfLHjYO8e+WuqtYCv
-	 nETtTFh+k1k6w==
+	b=GVKp0Qbh35PPOTuCxKK2U43CJx9XJZEbahfOgYLjf93nMd0sAO3ncoAK8qYeddT2W
+	 KCnMB9sIdJCbekzdm50/RjZoB5kG81iZuXpGAcVv4WS+21fBQlW4RXmzpqGl1RhIRR
+	 l6kRxMk9JK2Tz+9hyCkt33u6WxsvAJDvCPfN+LRwWfyPBB7TZIVUNKDWQ0s7rVdnJQ
+	 3Da8bVM4IWYliYsRMV7NdbyV8jTMxxebnXJJeobQuNnVjK6JEqd9hMOCP2xhsMxPW/
+	 Rpack+1srcUiXibDRCt6d36Wo7e5pvPImFmi6IKELckr4DFKKLgwgs60ZSId9t1/IJ
+	 5Tvf5KQD3oDkA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2AD0740CDA;
-	Mon, 28 Jul 2025 16:19:04 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id ACC6960853;
+	Mon, 28 Jul 2025 17:06:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 057AC151
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Jul 2025 16:19:03 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 961591BE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Jul 2025 17:06:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id EB40640413
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Jul 2025 16:19:02 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9228460777
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Jul 2025 17:06:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HnGJv6lHNvB8 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 28 Jul 2025 16:19:02 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::532; helo=mail-pg1-x532.google.com;
- envelope-from=jbrandeburg@cloudflare.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 39A20400BB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 39A20400BB
-Received: from mail-pg1-x532.google.com (mail-pg1-x532.google.com
- [IPv6:2607:f8b0:4864:20::532])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 39A20400BB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Jul 2025 16:19:02 +0000 (UTC)
-Received: by mail-pg1-x532.google.com with SMTP id
- 41be03b00d2f7-b271f3ae786so3835470a12.3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Jul 2025 09:19:02 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753719541; x=1754324341;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=l2cj4YfPSXVmYoc4IiWft3+ar6a3KqtRrSDGyMRAmig=;
- b=HqvjC5go+cnFS+qvjCd34sw3CjOtG7DQQdfvhYMrHMe3BTSdynPok4tXYhha+yML7v
- Y661CEJjSjOsSrrWf4Gb+38Of15IzHIQcxnxDfK9zK+Ek0t49Loe3a+137WxDYHEp3E7
- XkWlGU7bjRGA0v5cc4jYRb7h0nT7CeWqm9B7ozYf4QVK2O5sOUvaMFYKAhwZx/s3eysb
- l8zef5hoQ1vOlH72RAH8y2sQUXvDAD9ikqQRgyQjvdg5fHNhrJALnRbLMxdJHUXFAGXw
- rzKSKae5Jgj8U/FJ8pcX17BThG4BFw1tRfRrlsIPaVkS5nu8rck5UHn3wEPbXBhrlLF+
- tykg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUB5C6q4DvGzVDq5gLc7UfMfZzuO/d5hhHm9T7zRyJrenqVIgCxNr82exYxh1C3bjK4pKi9ZOW3YUH20H/SPd4=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YxqIk8ITwdcAHgwMZzUG4cHAowbqbDlLE5R3gy1GC4pGhZST7Cm
- txPqE4bgtTYCfHWo7dk/V2P91ij6ZUl6gNQaEp2Loz1EAFiUHqTMp/mCCWwHR5rlwzA=
-X-Gm-Gg: ASbGncuZzofTiCPhHUCS81dBO0Sq6ObiFeIM6nADiswIFMQo5AgfrWCFSPIEXj/l37J
- kvK5XwC63HHvnyHUpYZSeB+cT+kj+J9InpN80AgiEVok5a/bPe2n0NYONjdlKUIQ2BQG4+57Zhf
- HdCD8VnEa4ZE631eSl6bltT5t7wDTb8J/vjC6/2nGeaZAUQGStg2sFb/HU/1GGSH2/jRlh1GTMA
- Ka4kIEG2xxw2AC3nEF5xVNq1GyzP+lzsQ8uGD8sFv1HoTG8PQXNnxYyhfVEs30yC5Xk0P66eq4n
- 6tQeyL+L2A7nQ82RGn+hkt0SmV8CuJ3NdR6FN6+QLp6pfnzWnwGeM5i4wUIUiLS6UrK0kkyxvRg
- q7pAG+RuigWFl1a9vw++pLZm6u+L8aH1M2NN8ec8ODA==
-X-Google-Smtp-Source: AGHT+IEFX22EWCqIkNp4/fQDHmFrpLU/BsbuivBi5shbtLhS/OV5Qc6cgb1uvEXTNr14F3ZT8SfVHQ==
-X-Received: by 2002:a17:90b:3c88:b0:313:2768:3f6b with SMTP id
- 98e67ed59e1d1-31e77b0a72dmr17767843a91.27.1753719541243; 
- Mon, 28 Jul 2025 09:19:01 -0700 (PDT)
-Received: from [127.0.0.1] ([104.28.237.250]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-31ec1c5cfc9sm4054288a91.28.2025.07.28.09.19.00
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 28 Jul 2025 09:19:00 -0700 (PDT)
-Message-ID: <8743bbc9-8299-495c-8aef-842197bd8714@cloudflare.com>
-Date: Mon, 28 Jul 2025 09:18:59 -0700
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 2ck7Dpa_tBq2 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 28 Jul 2025 17:06:21 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org DCB7060768
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DCB7060768
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id DCB7060768
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 28 Jul 2025 17:06:20 +0000 (UTC)
+Received: from [192.168.44.48] (unknown [185.238.219.127])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 04CFC61E6479F;
+ Mon, 28 Jul 2025 19:06:03 +0200 (CEST)
+Message-ID: <f23248bc-b873-41ed-b6b3-a9638b51eb3f@molgen.mpg.de>
+Date: Mon, 28 Jul 2025 19:06:02 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-To: Frederick Lawler <fred@cloudflare.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- AndrewLunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, kernel-team@cloudflare.com,
- intel-wired-lan@lists.osuosl.org
-References: <aIKWoZzEPoa1omlw@CMGLRV3>
+To: Joshua Hay <joshua.a.hay@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ Madhu Chittim <madhu.chittim@intel.com>
+References: <20250725184223.4084821-1-joshua.a.hay@intel.com>
+ <20250725184223.4084821-2-joshua.a.hay@intel.com>
 Content-Language: en-US
-From: Jesse Brandeburg <jbrandeburg@cloudflare.com>
-In-Reply-To: <aIKWoZzEPoa1omlw@CMGLRV3>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20250725184223.4084821-2-joshua.a.hay@intel.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=cloudflare.com; s=google09082023; t=1753719541; x=1754324341;
- darn=lists.osuosl.org; 
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=l2cj4YfPSXVmYoc4IiWft3+ar6a3KqtRrSDGyMRAmig=;
- b=BP1xfZsaHHiwrizOLNi5MU6WEIPURq682ifYNWDACHQGq5TjE1FbDVlva+UpvGD07o
- P2AliEgH5cooRlkI1mzvIeILToNvEtoqmyi3lYcuby+mgeLW80Z/Ioqu5T1BWor4a22O
- 6ebZwjCN7k26tRN1Tvp0ivrof5EeKUgAAE20NRliZGFGB6rYRm0F70PzX2Zk2rSbRmwF
- /a7XLRYjH/CBx1GZj0NkQdmXShs6Zn6xeJckcQeGo8G+dhYVI8HgfS/WStAUtpbga2fr
- Q9mW3BYom6aLeHemi6/wCAgNflOwSwoc4vRncU3C15jRSz/E59qfZoWShTf6WUYINH3y
- zcig==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=cloudflare.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=cloudflare.com header.i=@cloudflare.com
- header.a=rsa-sha256 header.s=google09082023 header.b=BP1xfZsa
-Subject: Re: [Intel-wired-lan] ice: General protection fault in
- ptp_clock_index
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v3 1/6] idpf: add support for
+ Tx refillqs in flow scheduling mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -138,144 +89,316 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-+IWL
+Dear Joshua,
 
-Hi Intel team, anyone have an idea on this? Looks like maybe removal of 
-device 0 that had originally registered PTP clock isn't handled well?
 
-On 7/24/25 1:25 PM, Frederick Lawler wrote:
-> Hi,
+Thank you for your patch.
+
+Am 25.07.25 um 20:42 schrieb Joshua Hay:
+> In certain production environments, it is possible for completion tags
+> to collide, meaning N packets with the same completion tag are in flight
+> at the same time. In this environment, any given Tx queue is effectively
+> used to send both slower traffic and higher throughput traffic
+> simultaneously. This is the result of a customer's specific
+> configuration in the device pipeline, the details of which Intel cannot
+> provide. This configuration results in a small number of out-of-order
+> completions, i.e., a small number of packets in flight. The existing
+> guardrails in the driver only protect against a large number of packets
+> in flight. The slower flow completions are delayed which causes the
+> out-of-order completions. The fast flow will continue sending traffic
+> and generating tags. Because tags are generated on the fly, the fast
+> flow eventually uses the same tag for a packet that is still in flight
+> from the slower flow. The driver has no idea which packet it should
+> clean when it processes the completion with that tag, but it will look
+> for the packet on the buffer ring before the hash table.  If the slower
+> flow packet completion is processed first, it will end up cleaning the
+> fast flow packet on the ring prematurely. This leaves the descriptor
+> ring in a bad state resulting in a crashes or Tx timeout.
+
+“in a crash” or just “crashes” wtih no article.
+
+> In summary, generating a tag when a packet is sent can lead to the same
+> tag being associated with multiple packets. This can lead to resource
+> leaks, crashes, and/or Tx timeouts.
 > 
-> On Linux 6.12.39, we appear to hit a race reading ethtool while the
-> device is removed.
+> Before we can replace the tag generation, we need a new mechanism for
+> the send path to know what tag to use next. The driver will allocate and
+> initialize a refillq for each TxQ with all of the possible free tag
+> values. During send, the driver grabs the next free tag from the refillq
+> from next_to_clean. While cleaning the packet, the clean routine posts
+> the tag back to the refillq's next_to_use to indicate that it is now
+> free to use.
 > 
-> We have automation to remove unused interfaces during early boot
-> process, and when systemd is restarting the network afterwards, we
-> get a page fault and get into a boot-crash-loop state. We're currently
-> renaming the interface to something like unused0 to circumvent the
-> issue.
+> This mechanism works exactly the same way as the existing Rx refill
+> queues, which post the cleaned buffer IDs back to the buffer queue to be
+> reposted to HW. Since we're using the refillqs for both Rx and Tx now,
+> genercize some of the existing refillq support.
+
+gener*i*cize
+
+> Note: the refillqs will not be used yet. This is only demonstrating how
+> they will be used to pass free tags back to the send path.
 > 
-> I was able to reproduce with the following snippet:
+> Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
+> Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
+> ---
+> v2:
+> - reorder refillq init logic to reduce indentation
+> - don't drop skb if get free bufid fails, increment busy counter
+> - add missing unlikely
+> ---
+>   drivers/net/ethernet/intel/idpf/idpf_txrx.c | 93 +++++++++++++++++++--
+>   drivers/net/ethernet/intel/idpf/idpf_txrx.h |  8 +-
+>   2 files changed, 91 insertions(+), 10 deletions(-)
 > 
-> $ watch -n0.1 /sbin/ethtool -T ext0
-> $ echo -n "1" | sudo tee /sys/class/net/ext0/device/remove
-> 
-> ice 0000:41:00.0: Removed PTP clock
-> 
-> ...
-> 
-> Oops: general protection fault, probably for non-canonical address 0xae09e2b3b0c665f1: 0000 [#1] PREEMPT SMP NOPTI
-> Tainted: [O]=OOT_MODULE
-> Hardware name: Lenovo HR355M-V3-G12/HR355M_V3_HPM, BIOS HR355M_V3.G.031 02/17/2025
-> RIP: 0010:ptp_clock_index (drivers/ptp/ptp_clock.c:476 (discriminator 1))
-> Code: 38 1b 4e 00 66 66 2e 0f 1f 84 00 00 00 00 00 66 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 f3 0f 1e fa 0f 1f 44 00 00 <8b> 87 94 03 00 00 e9 07 1b 4e 00 66 66 2e 0f 1f 84 00 00 00 00 00
-> All code
-> ========
->     0:	38 1b                	cmp    %bl,(%rbx)
->     2:	4e 00 66 66          	rex.WRX add %r12b,0x66(%rsi)
->     6:	2e 0f 1f 84 00 00 00 	cs nopl 0x0(%rax,%rax,1)
->     d:	00 00
->     f:	66 90                	xchg   %ax,%ax
->    11:	90                   	nop
->    12:	90                   	nop
->    13:	90                   	nop
->    14:	90                   	nop
->    15:	90                   	nop
->    16:	90                   	nop
->    17:	90                   	nop
->    18:	90                   	nop
->    19:	90                   	nop
->    1a:	90                   	nop
->    1b:	90                   	nop
->    1c:	90                   	nop
->    1d:	90                   	nop
->    1e:	90                   	nop
->    1f:	90                   	nop
->    20:	90                   	nop
->    21:	f3 0f 1e fa          	endbr64
->    25:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
->    2a:*	8b 87 94 03 00 00    	mov    0x394(%rdi),%eax		<-- trapping instruction
->    30:	e9 07 1b 4e 00       	jmp    0x4e1b3c
->    35:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
->    3c:	00 00 00 00
-> 
-> Code starting with the faulting instruction
-> ===========================================
->     0:	8b 87 94 03 00 00    	mov    0x394(%rdi),%eax
->     6:	e9 07 1b 4e 00       	jmp    0x4e1b12
->     b:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
->    12:	00 00 00 00
-> RSP: 0018:ffffb5664f657c88 EFLAGS: 00010282
-> RAX: ffff9f4854c201a0 RBX: ffffb5664f657d34 RCX: ffffffffc1c6a5c0
-> RDX: 555485607aaada55 RSI: ffffb5664f657d34 RDI: ae09e2b3b0c6625d
-> RBP: ffffb5664f657df0 R08: 0000000000000000 R09: ffff9f3124c570a8
-> R10: ffffb5664f657cc0 R11: 0000000000000001 R12: ffffffffafab4680
-> R13: 00007ffc828fdbb0 R14: ffff9f3124c57000 R15: ffffb5664f657d80
-> FS:  00007ff5abba1340(0000) GS:ffff9f402f600000(0000) knlGS:0000000000000000
-> CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> CR2: 00007ff5ac03f0c0 CR3: 0000000a8768e006 CR4: 0000000000770ef0
-> PKRU: 55555554
-> Call Trace:
-> <TASK>
-> ice_get_ts_info (drivers/net/ethernet/intel/ice/ice_ethtool.c:3776 (discriminator 1)) ice
-> __ethtool_get_ts_info (net/ethtool/common.c:713)
-> __ethtool_get_ts_info (net/ethtool/common.c:713)
-> dev_ethtool (net/ethtool/ioctl.c:2651 net/ethtool/ioctl.c:3312 net/ethtool/ioctl.c:3390)
-> ? srso_alias_return_thunk (arch/x86/lib/retpoline.S:182)
-> ? trace_call_bpf (kernel/trace/bpf_trace.c:151 (discriminator 38))
-> ? security_file_ioctl (security/security.c:2909)
-> ? trace_call_bpf (kernel/trace/bpf_trace.c:151 (discriminator 38))
-> ? __x64_sys_ioctl (fs/ioctl.c:893)
-> ? kprobe_ftrace_handler (arch/x86/kernel/kprobes/ftrace.c:45 (discriminator 1))
-> ? srso_alias_return_thunk (arch/x86/lib/retpoline.S:182)
-> dev_ioctl (net/core/dev_ioctl.c:720)
-> sock_ioctl (net/socket.c:1242 net/socket.c:1346)
-> __x64_sys_ioctl (fs/ioctl.c:51 fs/ioctl.c:907 fs/ioctl.c:893 fs/ioctl.c:893)
-> osnoise_arch_unregister (??:?)
-> entry_SYSCALL_64_after_hwframe (arch/x86/entry/entry_64.S:130)
-> RIP: 0033:0x7ff5abe13d1b
-> Code: 00 48 89 44 24 18 31 c0 48 8d 44 24 60 c7 04 24 10 00 00 00 48 89 44 24 08 48 8d 44 24 20 48 89 44 24 10 b8 10 00 00 00 0f 05 <89> c2 3d 00 f0 ff ff 77 1c 48 8b 44 24 18 64 48 2b 04 25 28 00 00
-> All code
-> ========
->     0:	00 48 89             	add    %cl,-0x77(%rax)
->     3:	44 24 18             	rex.R and $0x18,%al
->     6:	31 c0                	xor    %eax,%eax
->     8:	48 8d 44 24 60       	lea    0x60(%rsp),%rax
->     d:	c7 04 24 10 00 00 00 	movl   $0x10,(%rsp)
->    14:	48 89 44 24 08       	mov    %rax,0x8(%rsp)
->    19:	48 8d 44 24 20       	lea    0x20(%rsp),%rax
->    1e:	48 89 44 24 10       	mov    %rax,0x10(%rsp)
->    23:	b8 10 00 00 00       	mov    $0x10,%eax
->    28:	0f 05                	syscall
->    2a:*	89 c2                	mov    %eax,%edx		<-- trapping instruction
->    2c:	3d 00 f0 ff ff       	cmp    $0xfffff000,%eax
->    31:	77 1c                	ja     0x4f
->    33:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
->    38:	64                   	fs
->    39:	48                   	rex.W
->    3a:	2b                   	.byte 0x2b
->    3b:	04 25                	add    $0x25,%al
->    3d:	28 00                	sub    %al,(%rax)
-> 	...
-> 
-> Code starting with the faulting instruction
-> ===========================================
->     0:	89 c2                	mov    %eax,%edx
->     2:	3d 00 f0 ff ff       	cmp    $0xfffff000,%eax
->     7:	77 1c                	ja     0x25
->     9:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
->     e:	64                   	fs
->     f:	48                   	rex.W
->    10:	2b                   	.byte 0x2b
->    11:	04 25                	add    $0x25,%al
->    13:	28 00                	sub    %al,(%rax)
-> 	...
-> RSP: 002b:00007ffc828fdb20 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
-> RAX: ffffffffffffffda RBX: 000056370e675800 RCX: 00007ff5abe13d1b
-> RDX: 00007ffc828fdb80 RSI: 0000000000008946 RDI: 0000000000000005
-> RBP: 000056370e6757e0 R08: 00007ff5abee8c60 R09: 0000000000000000
-> R10: 00007ff5abd2f310 R11: 0000000000000246 R12: 00007ffc828fdd80
-> R13: 0000000000000005 R14: 00007ffc828fdb80 R15: 00007ffc828fff1a
-> </TASK>
-> 
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+> index 5cf440e09d0a..d5908126163d 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+> @@ -139,6 +139,9 @@ static void idpf_tx_desc_rel(struct idpf_tx_queue *txq)
+>   	if (!txq->desc_ring)
+>   		return;
+>   
+> +	if (txq->refillq)
+> +		kfree(txq->refillq->ring);
+> +
+>   	dmam_free_coherent(txq->dev, txq->size, txq->desc_ring, txq->dma);
+>   	txq->desc_ring = NULL;
+>   	txq->next_to_use = 0;
+> @@ -244,6 +247,7 @@ static int idpf_tx_desc_alloc(const struct idpf_vport *vport,
+>   			      struct idpf_tx_queue *tx_q)
+>   {
+>   	struct device *dev = tx_q->dev;
+> +	struct idpf_sw_queue *refillq;
+>   	int err;
+>   
+>   	err = idpf_tx_buf_alloc_all(tx_q);
+> @@ -267,6 +271,29 @@ static int idpf_tx_desc_alloc(const struct idpf_vport *vport,
+>   	tx_q->next_to_clean = 0;
+>   	idpf_queue_set(GEN_CHK, tx_q);
+>   
+> +	if (!idpf_queue_has(FLOW_SCH_EN, tx_q))
+> +		return 0;
+> +
+> +	refillq = tx_q->refillq;
+> +	refillq->desc_count = tx_q->desc_count;
+> +	refillq->ring = kcalloc(refillq->desc_count, sizeof(u32),
+> +				GFP_KERNEL);
+> +	if (!refillq->ring) {
+> +		err = -ENOMEM;
+> +		goto err_alloc;
+> +	}
+> +
+> +	for (u32 i = 0; i < refillq->desc_count; i++)
+
+No need to limit the length, as far as I can see.
+
+> +		refillq->ring[i] =
+> +			FIELD_PREP(IDPF_RFL_BI_BUFID_M, i) |
+> +			FIELD_PREP(IDPF_RFL_BI_GEN_M,
+> +				   idpf_queue_has(GEN_CHK, refillq));
+> +
+> +	/* Go ahead and flip the GEN bit since this counts as filling
+> +	 * up the ring, i.e. we already ring wrapped.
+> +	 */
+> +	idpf_queue_change(GEN_CHK, refillq);
+> +
+>   	return 0;
+>   
+>   err_alloc:
+> @@ -603,18 +630,18 @@ static int idpf_rx_hdr_buf_alloc_all(struct idpf_buf_queue *bufq)
+>   }
+>   
+>   /**
+> - * idpf_rx_post_buf_refill - Post buffer id to refill queue
+> + * idpf_post_buf_refill - Post buffer id to refill queue
+>    * @refillq: refill queue to post to
+>    * @buf_id: buffer id to post
+>    */
+> -static void idpf_rx_post_buf_refill(struct idpf_sw_queue *refillq, u16 buf_id)
+> +static void idpf_post_buf_refill(struct idpf_sw_queue *refillq, u16 buf_id)
+>   {
+>   	u32 nta = refillq->next_to_use;
+>   
+>   	/* store the buffer ID and the SW maintained GEN bit to the refillq */
+>   	refillq->ring[nta] =
+> -		FIELD_PREP(IDPF_RX_BI_BUFID_M, buf_id) |
+> -		FIELD_PREP(IDPF_RX_BI_GEN_M,
+> +		FIELD_PREP(IDPF_RFL_BI_BUFID_M, buf_id) |
+> +		FIELD_PREP(IDPF_RFL_BI_GEN_M,
+>   			   idpf_queue_has(GEN_CHK, refillq));
+>   
+>   	if (unlikely(++nta == refillq->desc_count)) {
+> @@ -995,6 +1022,11 @@ static void idpf_txq_group_rel(struct idpf_vport *vport)
+>   		struct idpf_txq_group *txq_grp = &vport->txq_grps[i];
+>   
+>   		for (j = 0; j < txq_grp->num_txq; j++) {
+> +			if (flow_sch_en) {
+> +				kfree(txq_grp->txqs[j]->refillq);
+> +				txq_grp->txqs[j]->refillq = NULL;
+> +			}
+> +
+>   			kfree(txq_grp->txqs[j]);
+>   			txq_grp->txqs[j] = NULL;
+>   		}
+> @@ -1414,6 +1446,13 @@ static int idpf_txq_group_alloc(struct idpf_vport *vport, u16 num_txq)
+>   			}
+>   
+>   			idpf_queue_set(FLOW_SCH_EN, q);
+> +
+> +			q->refillq = kzalloc(sizeof(*q->refillq), GFP_KERNEL);
+> +			if (!q->refillq)
+> +				goto err_alloc;
+> +
+> +			idpf_queue_set(GEN_CHK, q->refillq);
+> +			idpf_queue_set(RFL_GEN_CHK, q->refillq);
+>   		}
+>   
+>   		if (!split)
+> @@ -2005,6 +2044,8 @@ static void idpf_tx_handle_rs_completion(struct idpf_tx_queue *txq,
+>   
+>   	compl_tag = le16_to_cpu(desc->q_head_compl_tag.compl_tag);
+>   
+> +	idpf_post_buf_refill(txq->refillq, compl_tag);
+> +
+>   	/* If we didn't clean anything on the ring, this packet must be
+>   	 * in the hash table. Go clean it there.
+>   	 */
+> @@ -2364,6 +2405,37 @@ static unsigned int idpf_tx_splitq_bump_ntu(struct idpf_tx_queue *txq, u16 ntu)
+>   	return ntu;
+>   }
+>   
+> +/**
+> + * idpf_tx_get_free_buf_id - get a free buffer ID from the refill queue
+> + * @refillq: refill queue to get buffer ID from
+> + * @buf_id: return buffer ID
+> + *
+> + * Return: true if a buffer ID was found, false if not
+> + */
+> +static bool idpf_tx_get_free_buf_id(struct idpf_sw_queue *refillq,
+> +				    u16 *buf_id)
+> +{
+> +	u16 ntc = refillq->next_to_clean;
+
+Hmm, why not `u32`?
+
+     struct idpf_sw_queue {
+             __cacheline_group_begin_aligned(read_mostly);
+             u32 *ring;
+
+             DECLARE_BITMAP(flags, __IDPF_Q_FLAGS_NBITS);
+             u32 desc_count;
+             __cacheline_group_end_aligned(read_mostly);
+
+             __cacheline_group_begin_aligned(read_write);
+             u32 next_to_use;
+             u32 next_to_clean;
+             __cacheline_group_end_aligned(read_write);
+     };
+
+
+Kind regards,
+
+Paul Menzel
+
+
+> +	u32 refill_desc;
+> +
+> +	refill_desc = refillq->ring[ntc];
+> +
+> +	if (unlikely(idpf_queue_has(RFL_GEN_CHK, refillq) !=
+> +		     !!(refill_desc & IDPF_RFL_BI_GEN_M)))
+> +		return false;
+> +
+> +	*buf_id = FIELD_GET(IDPF_RFL_BI_BUFID_M, refill_desc);
+> +
+> +	if (unlikely(++ntc == refillq->desc_count)) {
+> +		idpf_queue_change(RFL_GEN_CHK, refillq);
+> +		ntc = 0;
+> +	}
+> +
+> +	refillq->next_to_clean = ntc;
+> +
+> +	return true;
+> +}
+> +
+>   /**
+>    * idpf_tx_splitq_map - Build the Tx flex descriptor
+>    * @tx_q: queue to send buffer on
+> @@ -2912,6 +2984,13 @@ static netdev_tx_t idpf_tx_splitq_frame(struct sk_buff *skb,
+>   	}
+>   
+>   	if (idpf_queue_has(FLOW_SCH_EN, tx_q)) {
+> +		if (unlikely(!idpf_tx_get_free_buf_id(tx_q->refillq,
+> +						      &tx_params.compl_tag))) {
+> +			u64_stats_update_begin(&tx_q->stats_sync);
+> +			u64_stats_inc(&tx_q->q_stats.q_busy);
+> +			u64_stats_update_end(&tx_q->stats_sync);
+> +		}
+> +
+>   		tx_params.dtype = IDPF_TX_DESC_DTYPE_FLEX_FLOW_SCHE;
+>   		tx_params.eop_cmd = IDPF_TXD_FLEX_FLOW_CMD_EOP;
+>   		/* Set the RE bit to catch any packets that may have not been
+> @@ -3464,7 +3543,7 @@ static int idpf_rx_splitq_clean(struct idpf_rx_queue *rxq, int budget)
+>   skip_data:
+>   		rx_buf->page = NULL;
+>   
+> -		idpf_rx_post_buf_refill(refillq, buf_id);
+> +		idpf_post_buf_refill(refillq, buf_id);
+>   		IDPF_RX_BUMP_NTC(rxq, ntc);
+>   
+>   		/* skip if it is non EOP desc */
+> @@ -3572,10 +3651,10 @@ static void idpf_rx_clean_refillq(struct idpf_buf_queue *bufq,
+>   		bool failure;
+>   
+>   		if (idpf_queue_has(RFL_GEN_CHK, refillq) !=
+> -		    !!(refill_desc & IDPF_RX_BI_GEN_M))
+> +		    !!(refill_desc & IDPF_RFL_BI_GEN_M))
+>   			break;
+>   
+> -		buf_id = FIELD_GET(IDPF_RX_BI_BUFID_M, refill_desc);
+> +		buf_id = FIELD_GET(IDPF_RFL_BI_BUFID_M, refill_desc);
+>   		failure = idpf_rx_update_bufq_desc(bufq, buf_id, buf_desc);
+>   		if (failure)
+>   			break;
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+> index 36a0f828a6f8..6924bee6ff5b 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+> @@ -107,8 +107,8 @@ do {								\
+>    */
+>   #define IDPF_TX_SPLITQ_RE_MIN_GAP	64
+>   
+> -#define IDPF_RX_BI_GEN_M		BIT(16)
+> -#define IDPF_RX_BI_BUFID_M		GENMASK(15, 0)
+> +#define IDPF_RFL_BI_GEN_M		BIT(16)
+> +#define IDPF_RFL_BI_BUFID_M		GENMASK(15, 0)
+>   
+>   #define IDPF_RXD_EOF_SPLITQ		VIRTCHNL2_RX_FLEX_DESC_ADV_STATUS0_EOF_M
+>   #define IDPF_RXD_EOF_SINGLEQ		VIRTCHNL2_RX_BASE_DESC_STATUS_EOF_M
+> @@ -621,6 +621,7 @@ libeth_cacheline_set_assert(struct idpf_rx_queue, 64,
+>    * @cleaned_pkts: Number of packets cleaned for the above said case
+>    * @tx_max_bufs: Max buffers that can be transmitted with scatter-gather
+>    * @stash: Tx buffer stash for Flow-based scheduling mode
+> + * @refillq: Pointer to refill queue
+>    * @compl_tag_bufid_m: Completion tag buffer id mask
+>    * @compl_tag_cur_gen: Used to keep track of current completion tag generation
+>    * @compl_tag_gen_max: To determine when compl_tag_cur_gen should be reset
+> @@ -670,6 +671,7 @@ struct idpf_tx_queue {
+>   
+>   	u16 tx_max_bufs;
+>   	struct idpf_txq_stash *stash;
+> +	struct idpf_sw_queue *refillq;
+>   
+>   	u16 compl_tag_bufid_m;
+>   	u16 compl_tag_cur_gen;
+> @@ -691,7 +693,7 @@ struct idpf_tx_queue {
+>   	__cacheline_group_end_aligned(cold);
+>   };
+>   libeth_cacheline_set_assert(struct idpf_tx_queue, 64,
+> -			    112 + sizeof(struct u64_stats_sync),
+> +			    120 + sizeof(struct u64_stats_sync),
+>   			    24);
+>   
+>   /**
 
