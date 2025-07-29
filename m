@@ -1,94 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F940B150DB
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Jul 2025 18:07:58 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 47BC4B15119
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Jul 2025 18:17:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5F716410B4;
-	Tue, 29 Jul 2025 16:07:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C7B5741721;
+	Tue, 29 Jul 2025 16:17:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id PINH0rzXgDGn; Tue, 29 Jul 2025 16:07:35 +0000 (UTC)
+ id WT9zVFXv_jaT; Tue, 29 Jul 2025 16:17:50 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B57CD40AF3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 40C384171A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1753805255;
-	bh=AojRXkOOFjA2N/3VnYTbAXR8Q5lK8XT727nyCzSJxAg=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1753805870;
+	bh=qgrdYlAwq9qL1RZu7ItpFhufs6pqCuDanSXXOYAYdSo=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=Nf0eCM/mDE2iipMA5JJYqzlH7hHvtT4QX9gvXtkWLfY28d15dwm6mpZRiUExsLAZH
-	 Pw8EKlZPuhI5Roh/g/z8h0vCYjJBehFsFpk5gp2UV+U4eAfFyq4fgmdcksfg0R7e+9
-	 sKzZHDJwV4AgTBT/Lh6Nf5/iTw0YVN4eISKuX8jeNFzfCIhSDxZnHjEt/3LVWoU8fQ
-	 6wKNDVU8HAzUeLJq9/O/aHZD5LlRLAo5X4LUFJobfd9s0WSsD1GG+MJ7xeNnxLp2XG
-	 DQb3DLAipAHoXt3p/E3Hey6VmdYbJIZ6oW0fxonxUj89PBdnfAmknbB8g6kuAPQvib
-	 2grG3piP9Crqg==
+	b=uvS/SslmXv8aolcI6IRoYeHH8/GaaxdOsENM6r23s/G4dxmC3BfWz1zkSeiBvYjjJ
+	 2WrZUzPzzKjaM6d320BL/j14mH1HZeteDydBWzmVfLkZti0tHg29Tn3EBj7KiBbXSl
+	 LRR/6dTRYXZe2+BQ+vjSwZpsA0P8aR/sSVEkL8W0rwRciQMZGtyqIBfM9+OK/04ut7
+	 pZRuVg3Aylfaiy9RxooEpB3CqsDvq4TGgNTBqaaUQBuiIOstu+SxTg8p29Ed8jCVhD
+	 vOGpJBUiREH4JGY/vbrEbu6OedQ5rHidwxdFQK7y5ltFFPJUh4RNjGPWlNpjm2i7s9
+	 kYRMcrRn5GuLQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B57CD40AF3;
-	Tue, 29 Jul 2025 16:07:35 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 40C384171A;
+	Tue, 29 Jul 2025 16:17:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 47C291BE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jul 2025 16:07:34 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id AA89B1BE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jul 2025 16:17:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2E12181137
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jul 2025 16:07:34 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 902A981199
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jul 2025 16:17:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5hrqoRW4SJk2 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 29 Jul 2025 16:07:33 +0000 (UTC)
-X-Greylist: delayed 380 seconds by postgrey-1.37 at util1-new.osuosl.org;
- Tue, 29 Jul 2025 16:07:32 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8338E81120
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8338E81120
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2001:41d0:1004:224b::ab; helo=out-171.mta0.migadu.com;
- envelope-from=vadim.fedorenko@linux.dev; receiver=<UNKNOWN> 
-Received: from out-171.mta0.migadu.com (out-171.mta0.migadu.com
- [IPv6:2001:41d0:1004:224b::ab])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8338E81120
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jul 2025 16:07:32 +0000 (UTC)
-Message-ID: <1a7f0aa0-47ae-4936-9e55-576cdf71f4cc@linux.dev>
-Date: Tue, 29 Jul 2025 17:01:06 +0100
-MIME-Version: 1.0
-To: Andrew Lunn <andrew@lunn.ch>
+ id LujcO_lT1Anl for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 29 Jul 2025 16:17:48 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
+ helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org ADF1F80FD8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org ADF1F80FD8
+Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id ADF1F80FD8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Jul 2025 16:17:47 +0000 (UTC)
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+ (envelope-from <andrew@lunn.ch>)
+ id 1ugn1F-003D8K-SQ; Tue, 29 Jul 2025 18:17:37 +0200
+Date: Tue, 29 Jul 2025 18:17:37 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Vadim Fedorenko <vadim.fedorenko@linux.dev>
 Cc: Michael Chan <michael.chan@broadcom.com>,
- Pavan Chebbi <pavan.chebbi@broadcom.com>, Tariq Toukan <tariqt@nvidia.com>,
- Gal Pressman <gal@nvidia.com>, intel-wired-lan@lists.osuosl.org,
- Donald Hunter <donald.hunter@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Simon Horman <horms@kernel.org>,
- netdev@vger.kernel.org
+ Pavan Chebbi <pavan.chebbi@broadcom.com>,
+ Tariq Toukan <tariqt@nvidia.com>, Gal Pressman <gal@nvidia.com>,
+ intel-wired-lan@lists.osuosl.org, Donald Hunter <donald.hunter@gmail.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Simon Horman <horms@kernel.org>, netdev@vger.kernel.org
+Message-ID: <9c1c8db9-b283-4097-bb3f-db4a295de2a5@lunn.ch>
 References: <20250729102354.771859-1-vadfed@meta.com>
  <982c780a-1ff1-4d79-9104-c61605c7e802@lunn.ch>
-Content-Language: en-US
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
- include these headers.
-From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-In-Reply-To: <982c780a-1ff1-4d79-9104-c61605c7e802@lunn.ch>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Migadu-Flow: FLOW_OUT
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linux.dev; s=key1; t=1753804868;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=AojRXkOOFjA2N/3VnYTbAXR8Q5lK8XT727nyCzSJxAg=;
- b=NyG2hHb5rIWP/mgK34lv6MFiSQFSSkv1SDG/UzC3R3zDbkdKl+7OClSATXiKAlhwpmX1pT
- 18n4YBWsvGXxAaznHbrvPMPXhQ0T4hzMelJUv5jNthW54oAJ3gNE2xtnqfiUz8qnz9RlaC
- q01oatMv2xEv8kauF8+LWXyuxpvVAbM=
+ <1a7f0aa0-47ae-4936-9e55-576cdf71f4cc@linux.dev>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1a7f0aa0-47ae-4936-9e55-576cdf71f4cc@linux.dev>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; d=lunn.ch; 
+ s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+ Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+ bh=qgrdYlAwq9qL1RZu7ItpFhufs6pqCuDanSXXOYAYdSo=; b=dw7oxMUbZlO9lcPni/j7pzg5wC
+ wUni7kuJEwYeZOUEFeelyVOtzIW3E48cry+bMdNaORw9Od4vnqcKE35HIzabjX32yG3Vwp/NiAxHq
+ 47m8JjINfqu7Z4uFPllQ/IlvdEeg3NHzEJOWcAkP9fde4IUIQaD+uRFYC+hTInYpJEjw=;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=linux.dev
+ header.from=lunn.ch
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (1024-bit key,
- unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256
- header.s=key1 header.b=NyG2hHb5
+ unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256
+ header.s=20171124 header.b=dw7oxMUb
 Subject: Re: [Intel-wired-lan] [RFC PATCH] ethtool: add FEC bins histogramm
  report
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -106,33 +101,50 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 29/07/2025 14:48, Andrew Lunn wrote:
->> +        name: fec-hist-bin-low
->> +        type: s32
+On Tue, Jul 29, 2025 at 05:01:06PM +0100, Vadim Fedorenko wrote:
+> On 29/07/2025 14:48, Andrew Lunn wrote:
+> > > +        name: fec-hist-bin-low
+> > > +        type: s32
+> > 
+> > Signed 32 bit
+> > 
+> > > +struct ethtool_fec_hist_range {
+> > > +	s16 low;
+> > 
+> > Signed 16 bit.
+> > 
+> > > +		if (nla_put_u32(skb, ETHTOOL_A_FEC_STAT_FEC_HIST_BIN_LOW,
+> > > +				ranges[i].low) ||
+> > 
+> > Unsigned 32 bit.
+> > 
+> > Could we have some consistency with the types.
 > 
-> Signed 32 bit
-> 
->> +struct ethtool_fec_hist_range {
->> +	s16 low;
-> 
-> Signed 16 bit.
-> 
->> +		if (nla_put_u32(skb, ETHTOOL_A_FEC_STAT_FEC_HIST_BIN_LOW,
->> +				ranges[i].low) ||
-> 
-> Unsigned 32 bit.
-> 
-> Could we have some consistency with the types.
+> Yeah, it looks a bit messy. AFAIK, any type of integer less than 32 bits
+> will be extended to 32 bits anyway,
 
-Yeah, it looks a bit messy. AFAIK, any type of integer less than 32 bits
-will be extended to 32 bits anyway, so I believe it's ok to keep smaller
-memory footprint for the histogram definition in the driver but still 
-use s32 as netlink attr type. I'll change the code to use nla_put_s32()
-to keep sign info.
+sign extended, not just extended. That makes things more fun.
 
-Does it look OK?
+> so I believe it's ok to keep smaller
+> memory footprint
 
+ .../net/ethernet/broadcom/bnxt/bnxt_ethtool.c
+ .../ethernet/fungible/funeth/funeth_ethtool.c
+ .../ethernet/hisilicon/hns3/hns3_ethtool.c   
+ drivers/net/ethernet/intel/ice/ice_ethtool.c 
+ .../marvell/octeontx2/nic/otx2_ethtool.c     
+ .../ethernet/mellanox/mlx5/core/en_ethtool.c 
+ drivers/net/ethernet/sfc/ethtool.c           
+ drivers/net/ethernet/sfc/siena/ethtool.c
 
-> 
-> 	Andrew
+These are all huge drivers, with extensive memory footprint.  How many
+bins are we talking about? 5? One per PCS? I suspect the size
+difference it deep in the noise.
 
+> for the histogram definition in the driver but still use
+> s32 as netlink attr type. I'll change the code to use nla_put_s32()
+> to keep sign info.
+
+So bins can have negative low/high values?
+
+	Andrew
