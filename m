@@ -1,97 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 534A5B15B59
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Jul 2025 11:19:02 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 527B9B15B65
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Jul 2025 11:22:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9733383C61;
-	Wed, 30 Jul 2025 09:19:00 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D05D140B58;
+	Wed, 30 Jul 2025 09:22:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id c1hmouk3H7m6; Wed, 30 Jul 2025 09:19:00 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id pbR17VXup0w0; Wed, 30 Jul 2025 09:22:47 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9AAD283C89
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0D80740B4C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1753867139;
-	bh=VmYBlQQFDG3sZpmVqr5cFhNHXDXlESp4GGVgtRZrgiI=;
+	s=default; t=1753867367;
+	bh=rtrloE9sFpUz4h4rprIGtpQUhs6s4RahC3fvX1JZSkY=;
 	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=HMDCr+/cb9S4xwaz8OU3D23FFTJEApL08nLhwIthRj+8aVRL4dhxvbgnNy0dwWuEr
-	 HdXhcQCLa14ITryWhXm9W6G3wk+yKv3yol7mVIfWlgmXw74cTTbWbPunU4rhGTowxe
-	 E4T2YkWZlBIKFzAZgjvpBC55Sx9+h2kxTc8Ff7QXLK/7nAUnRNbVL/0lFX94AE5vfJ
-	 m85jCdg+SWtI3lg95/9wN0EElra+P7h4Syfe9kS+PvHuy/SEuMZaP6HqgI9VUJqxAK
-	 3n1rHtiWxpq+iLHmZCcsRoS9RN5Sy6K9umJcMOWpvHzleW59Osj4te/DeMxZh162K6
-	 gqPyj+9QoyX1A==
+	b=7COo8Ou76crT2fGGx+wVDf+Mr6swwanJBojcEKhQdhfFoV5clx1df/n/LzcB9knYy
+	 gKw9UTjvMd665+c5Fg7d+uQgBQUyOHfaRb6IjoO2TFOaSi/Nn8Ew9WhdKiQ1QAv8sH
+	 31nGanbjU+gCVjZ7Pm9HkhWjV+QCdD4XIX6ay+ISAMs3ajedPINEa7gvy4AjzWulb/
+	 1k3SZQ7Xi39KwZkASHQw43zLaI4v6BWPSrMflYfzc9e0Ub80JjaG2zLYlabg9me9No
+	 9jxqJuL9laqeoMn8EjZegkwC9iQT3xzCYd1XD7M/aQsguEY+uTnRsR7K3W0beUIAgJ
+	 v3HTHU5g6D7+g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9AAD283C89;
-	Wed, 30 Jul 2025 09:18:59 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0D80740B4C;
+	Wed, 30 Jul 2025 09:22:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id B04E213D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jul 2025 09:18:57 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 11D73194
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jul 2025 09:22:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A21DB40817
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jul 2025 09:18:57 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id EC85D6136A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jul 2025 09:22:45 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZUbBbadMh0rD for <intel-wired-lan@lists.osuosl.org>;
- Wed, 30 Jul 2025 09:18:57 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=91.218.175.178;
- helo=out-178.mta0.migadu.com; envelope-from=vadim.fedorenko@linux.dev;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C3D284018E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C3D284018E
-Received: from out-178.mta0.migadu.com (out-178.mta0.migadu.com
- [91.218.175.178])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C3D284018E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jul 2025 09:18:56 +0000 (UTC)
-Message-ID: <bb66c931-ac17-4a70-ba11-2a109794b9e2@linux.dev>
-Date: Wed, 30 Jul 2025 10:18:46 +0100
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 5H521emUUN4Q for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 30 Jul 2025 09:22:45 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2001:41d0:203:375::b3; helo=out-179.mta1.migadu.com;
+ envelope-from=vadim.fedorenko@linux.dev; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 2877C61369
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2877C61369
+Received: from out-179.mta1.migadu.com (out-179.mta1.migadu.com
+ [IPv6:2001:41d0:203:375::b3])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 2877C61369
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jul 2025 09:22:44 +0000 (UTC)
+Message-ID: <15ca2392-1dbd-4f4d-a478-3d8edc32bc90@linux.dev>
+Date: Wed, 30 Jul 2025 10:22:36 +0100
 MIME-Version: 1.0
-To: Jakub Kicinski <kuba@kernel.org>
+To: Jakub Kicinski <kuba@kernel.org>, Vadim Fedorenko <vadfed@meta.com>
 Cc: Andrew Lunn <andrew@lunn.ch>, Michael Chan <michael.chan@broadcom.com>,
  Pavan Chebbi <pavan.chebbi@broadcom.com>, Tariq Toukan <tariqt@nvidia.com>,
  Gal Pressman <gal@nvidia.com>, intel-wired-lan@lists.osuosl.org,
  Donald Hunter <donald.hunter@gmail.com>, Paolo Abeni <pabeni@redhat.com>,
  Simon Horman <horms@kernel.org>, netdev@vger.kernel.org
 References: <20250729102354.771859-1-vadfed@meta.com>
- <982c780a-1ff1-4d79-9104-c61605c7e802@lunn.ch>
- <1a7f0aa0-47ae-4936-9e55-576cdf71f4cc@linux.dev>
- <9c1c8db9-b283-4097-bb3f-db4a295de2a5@lunn.ch>
- <4270ff14-06cd-4a78-afe7-1aa5f254ebb6@linux.dev>
- <c52af63b-1350-4574-874e-7d6c41bc615d@lunn.ch>
- <424e38be-127d-49d8-98bf-1b4a2075d710@linux.dev>
- <20250729185146.513504e0@kernel.org>
+ <20250729184529.149be2c3@kernel.org>
 Content-Language: en-US
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
  include these headers.
 From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-In-Reply-To: <20250729185146.513504e0@kernel.org>
+In-Reply-To: <20250729184529.149be2c3@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-Migadu-Flow: FLOW_OUT
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linux.dev; s=key1; t=1753867133;
+ d=linux.dev; s=key1; t=1753867361;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=VmYBlQQFDG3sZpmVqr5cFhNHXDXlESp4GGVgtRZrgiI=;
- b=govjFJeD4BfWbwfYKN2D0S82Fa3yJlgdQYp6pXamckQuhsH1SG0q/pUo5qVm2MQgkZGKUe
- jflU6UsZUtdNr3rh9wAklaq4Hjl6nk8gX0rlDJT75KOzUTMyTSAHHPYSNpBwmspge2n8D/
- fI3ZR/k6ytyBzeGRYcyc/YHpNtfM/+U=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=rtrloE9sFpUz4h4rprIGtpQUhs6s4RahC3fvX1JZSkY=;
+ b=OYO6I5Y2fAu0bstwMe43ByGLLWKHievWt+034SohhkqtNmRH2hqsj8WL126qhCJAAfaW4W
+ L5ZUAaGYvyGAnNTo6k14Xmeo9Bcy9nCyKqY2OR8+dS+/G/oSrSJ/YTM8dg8yRsrnyYmrWv
+ RFSFRyzu/0SCSpt6VRQTTSDe5bxC1GA=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=linux.dev
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (1024-bit key,
  unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256
- header.s=key1 header.b=govjFJeD
+ header.s=key1 header.b=OYO6I5Y2
 Subject: Re: [Intel-wired-lan] [RFC PATCH] ethtool: add FEC bins histogramm
  report
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -109,41 +103,84 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 30/07/2025 02:51, Jakub Kicinski wrote:
-> On Tue, 29 Jul 2025 19:07:59 +0100 Vadim Fedorenko wrote:
->> On 29/07/2025 18:31, Andrew Lunn wrote:
->>>> The only one bin will have negative value is the one to signal the end
->>>> of the list of the bins, which is not actually put into netlink message.
->>>> It actually better to change spec to have unsigned values, I believe.
->>>
->>> Can any of these NICs send runt packets? Can any send packets without
->>> an ethernet header and FCS?
->>>
->>> Seems to me, the bin (0,0) is meaningless, so can could be considered
->>> the end marker. You then have unsigned everywhere, keeping it KISS.
->>
->> I had to revisit the 802.3df-2024, and it looks like you are right:
->> "FEC_codeword_error_bin_i, where i=1 to 15, are optional 32-bit
->> counters. While align_status is true, for each codeword received with
->> exactly i correctable 10-bit symbols"
->>
->> That means bin (0,0) doesn't exist according to standard, so we can use
->> it as a marker even though some vendors provide this bin as part of
->> histogram.
+On 30/07/2025 02:45, Jakub Kicinski wrote:
+> On Tue, 29 Jul 2025 03:23:54 -0700 Vadim Fedorenko wrote:
+>> diff --git a/Documentation/netlink/specs/ethtool.yaml b/Documentation/netlink/specs/ethtool.yaml
+>> index 1063d5d32fea2..3781ced722fee 100644
+>> --- a/Documentation/netlink/specs/ethtool.yaml
+>> +++ b/Documentation/netlink/specs/ethtool.yaml
+>> @@ -1239,6 +1239,30 @@ attribute-sets:
+>>           name: corr-bits
+>>           type: binary
+>>           sub-type: u64
+>> +      -
+>> +        name: hist
+>> +        type: nest
+>> +        multi-attr: True
+>> +        nested-attributes: fec-hist
+>> +      -
+>> +        name: fec-hist-bin-low
+>> +        type: s32
+>> +      -
+>> +        name: fec-hist-bin-high
+>> +        type: s32
+>> +      -
+>> +        name: fec-hist-bin-val
+>> +        type: u64
+>> +  -
+>> +    name: fec-hist
+>> +    subset-of: fec-stat
 > 
-> IDK, 0,0 means all symbols were completely correct.
-> It may be useful for calculating bit error rate?
+> no need to make this a subset, better to make it its own attr set
 
-The standard doesn't have this bin, its value can be potentially
-deducted from all packets counter.
+like a set for general histogram? or still fec-specific?
 
 > 
-> A workaround for having the {-1, -1} sentinel could also be to skip
-> the first entry:
+>> +    attributes:
+>> +      -
+>> +        name: fec-hist-bin-low
+>> +      -
+>> +        name: fec-hist-bin-high
+>> +      -
+>> +        name: fec-hist-bin-val
+>>     -
+>>       name: fec
+>>       attr-cnt-name: __ethtool-a-fec-cnt
 > 
-> 	if (i && !ranges[i].low && !ranges[i].high)
-> 		break;
+>> +static const struct ethtool_fec_hist_range netdevsim_fec_ranges[] = {
+>> +	{  0,  0},
+>> +	{  1,  3},
+>> +	{  4,  7},
+>> +	{ -1, -1}
+>> +};
+> 
+> Let's add a define for the terminating element?
 
-I was thinking of this way, the problem is that in the core we rely on
-the driver to provide at least 2 bins and we cannot add any compile-time
-checks because it's all dynamic.
+I believe it's about (-1, -1) case. If we end up using (0, 0) then there
+is no need to define anything, right?
+
+> 
+>> +/**
+>> + * struct ethtool_fec_hist_range - byte range for FEC bins histogram statistics
+> 
+> byte range? thought these are bit errors..
+> 
+>> + * sentinel value of { -1, -1 } is used as marker for end of bins array
+>> + * @low: low bound of the bin (inclusive)
+>> + * @high: high bound of the bin (inclusive)
+>> + */
+> 
+>> +		len += nla_total_size_64bit(sizeof(u64) * ETHTOOL_FEC_HIST_MAX);
+> 
+> I don't think it's right, each attr is its own nla_total_size().
+> Add a nla_total_size(8) to the calculation below
+
+got it
+
+> 
+>> +		/* add FEC bins information */
+>> +		len += (nla_total_size(0) +  /* _A_FEC_HIST */
+>> +			nla_total_size(4) +  /* _A_FEC_HIST_BIN_LOW */
+>> +			nla_total_size(4)) * /* _A_FEC_HIST_BIN_HI */
+>> +			ETHTOOL_FEC_HIST_MAX;
+
