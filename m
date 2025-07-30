@@ -1,67 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 33F6EB16415
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Jul 2025 18:08:00 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C9CE9613DD;
-	Wed, 30 Jul 2025 16:07:58 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id hp26ANLPz3oD; Wed, 30 Jul 2025 16:07:58 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DD1D060B4E
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1753891677;
-	bh=ccHy1WKLjLpQ3WKFd51VqcSUmSMiXwrysA7o6PVhtL0=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=ciJ43M1SooQW3R0cOwLYnhF4DiR+mds9NwLnIdXjQekL7UNDSqSUyigdJn+149HmL
-	 hyqoWjo4Au9kZRAZQXol0axpp3U6+EN01qtxxp3GtfLKFMSSFXlzYrW8KgSnlxMFsp
-	 u0229E3eUmW4L3GKFlRRakxAW3x0EcA2BM15p+nlXFyinmLkQUSnMjXL/JqKPr4Fdm
-	 Y0QPMGCAPzhZVwJSM5ZAZjQDL+4IDsfvVoIMla5+cD8iYADHkjc8xl+/D94cvZcJFf
-	 IdkJkKzkSlkO+0LCRCBlt8AB/Qa1FAUWg9DTBh+DfWmYjn8ElGMNHayHXD+ZuolrY6
-	 4baJwll4HX6ZA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DD1D060B4E;
-	Wed, 30 Jul 2025 16:07:57 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 70CDE13D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jul 2025 16:07:56 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1E3F3B16416
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Jul 2025 18:08:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 56B1A83D66
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jul 2025 16:07:56 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BA96A83D11;
+	Wed, 30 Jul 2025 16:08:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id x8Y4sZLTItSr for <intel-wired-lan@lists.osuosl.org>;
- Wed, 30 Jul 2025 16:07:55 +0000 (UTC)
+ id pAFyHhrq2JPv; Wed, 30 Jul 2025 16:08:02 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 75BFD83D66
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1753891682;
+	bh=KTulEsRv1lf0HlUzXAeIV6TKszv1xfaxoPbz2vPXEEU=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=YPvzf8lQR7X7TveXY+IztVESJMwbG4PywaahJ9u+xWnKVFUhqClIPC7N4tWxj1X3G
+	 rwxoMAYZdQX9RrCPlCM22EAZNTxnt5cUbPzscP+pmYx1S62XfkkUz6rHy2nazmsEfN
+	 XEkMwQd9RMlVYr539H5FfsJdwOzxZlZq4VZDl6CqO3ptriZ7tu2XrLWjqouayO8rYE
+	 +4ffD5U2YsLjGGo94aDdZmK4ZJFHLVDay4JmAKVbjKaLXI1K78JWJ6Yey4LGL84Opu
+	 VavAIoBKSH9S6E6WdxEr5nKueP5jHj2eE+gTq7SJmNDL4AB5vaGrh0hum1Pxx/GGJb
+	 iHcGIz/IEosiA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 75BFD83D66;
+	Wed, 30 Jul 2025 16:08:02 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 03BA3186
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jul 2025 16:08:01 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id E9B318226D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jul 2025 16:08:00 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 6bqsIhUlwcOh for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 30 Jul 2025 16:08:00 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
  helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8AA6E83D11
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8AA6E83D11
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org DC5BA8224C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DC5BA8224C
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8AA6E83D11
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jul 2025 16:07:55 +0000 (UTC)
-X-CSE-ConnectionGUID: A44oFaqzQH2ZTNq95bLIcA==
-X-CSE-MsgGUID: bNAKdXb1STy0BMGI3cm+Fw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11507"; a="67278730"
-X-IronPort-AV: E=Sophos;i="6.16,350,1744095600"; d="scan'208";a="67278730"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id DC5BA8224C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Jul 2025 16:07:59 +0000 (UTC)
+X-CSE-ConnectionGUID: 2j93v0n5Tlegxa5uksZL1w==
+X-CSE-MsgGUID: nxdpvv0MR7iabsxz7v2uow==
+X-IronPort-AV: E=McAfee;i="6800,10657,11507"; a="67278755"
+X-IronPort-AV: E=Sophos;i="6.16,350,1744095600"; d="scan'208";a="67278755"
 Received: from fmviesa010.fm.intel.com ([10.60.135.150])
  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Jul 2025 09:07:55 -0700
-X-CSE-ConnectionGUID: XXvAdTJgQRSXAeuvDuikbw==
-X-CSE-MsgGUID: 07HKgeVIS+Se1wT+geQllg==
+ 30 Jul 2025 09:08:00 -0700
+X-CSE-ConnectionGUID: ZVqNrNZ1TAGUloREMaL49A==
+X-CSE-MsgGUID: aldWHSI+RRa6r1m0tx5PxA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,350,1744095600"; d="scan'208";a="163812864"
+X-IronPort-AV: E=Sophos;i="6.16,350,1744095600"; d="scan'208";a="163812869"
 Received: from newjersey.igk.intel.com ([10.102.20.203])
- by fmviesa010.fm.intel.com with ESMTP; 30 Jul 2025 09:07:50 -0700
+ by fmviesa010.fm.intel.com with ESMTP; 30 Jul 2025 09:07:55 -0700
 From: Alexander Lobakin <aleksander.lobakin@intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: Alexander Lobakin <aleksander.lobakin@intel.com>,
@@ -76,10 +76,10 @@ Cc: Alexander Lobakin <aleksander.lobakin@intel.com>,
  Daniel Borkmann <daniel@iogearbox.net>, Simon Horman <horms@kernel.org>,
  nxne.cnse.osdt.itp.upstreaming@intel.com, bpf@vger.kernel.org,
  netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- Joshua Hay <joshua.a.hay@intel.com>, Luigi Rizzo <lrizzo@google.com>,
- Brian Vazquez <brianvv@google.com>, Madhu Chittim <madhu.chittim@intel.com>
-Date: Wed, 30 Jul 2025 18:07:01 +0200
-Message-ID: <20250730160717.28976-3-aleksander.lobakin@intel.com>
+ Joshua Hay <joshua.a.hay@intel.com>,
+ Madhu Chittim <madhu.chittim@intel.com>
+Date: Wed, 30 Jul 2025 18:07:02 +0200
+Message-ID: <20250730160717.28976-4-aleksander.lobakin@intel.com>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20250730160717.28976-1-aleksander.lobakin@intel.com>
 References: <20250730160717.28976-1-aleksander.lobakin@intel.com>
@@ -87,25 +87,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1753891676; x=1785427676;
+ t=1753891680; x=1785427680;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=hMMUhtjFkGQwGNG2s1RT3EdTc5gLdms+67qwwdYi7Yk=;
- b=Il561vzjHEOMvBJEi6cudW8cPwvb1BNp/zdHdJKVshkOQg4CAKvkf20P
- L1/AwGa3p9Ns3OusT2ZCDYnv7FJaG2Ebk82nx5MJHB1T+wP2EMNHKUIHL
- dYlvF34x+suDGWo+UxpgxXxpB4vddVZJMwSMPw/QVmL56bpwWdkT5dcpD
- U3ye57I/pdWL7Qki6VJorDQkvld4kCTJmJXWM7SwPCyOCKEQjDiwHrBKM
- vhZpYaPx525Kko1Kmsq+qB0UeK5YCv5COAYOXrLgsgkh5WKvb6NuAXpEr
- oveyivgC8CSAIUFZ49osl0WdIKQpxQgnGiJT9berJlUQwfGFRjjWTq31p
- w==;
+ bh=iFdIu3q4bKeHjVsxAxW5j+y0lJTfdPS0eNCGIn0TM2g=;
+ b=kEasMkMHomAsW9QZAPkmwQZ/NWs3fRwB1msVwCMiX8nn7SGH2L6zmphe
+ lUOPRWtekxf4ad7xbrW9l2qF2xshrX3WqJB/mJndHF7NFT+dTUgCUkk+G
+ O8qn1Vgtavg0E5p9osfJ3ZB/f8I6DyHHSRgegLlWEW5A/ZPD9GgqRxrsD
+ G1dE3+AVPVbivZMDUvHp/zinyF9iKidpQv07yfbAsrQv+pNkY1jyHiOfx
+ Rth4ZJJviRJqxzU9nPiOd26eA8Js2iPuQ8YO2oKazj2/btbA1a89iKFWD
+ l1lQNaSMhXngKF4lXol/815aigudvDVBMxTsfjufaN3+wj/nBb4OiCLsd
+ A==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Il561vzj
-Subject: [Intel-wired-lan] [PATCH iwl-next v3 02/18] idpf: improve when to
- set RE bit logic
+ header.a=rsa-sha256 header.s=Intel header.b=kEasMkMH
+Subject: [Intel-wired-lan] [PATCH iwl-next v3 03/18] idpf: simplify and fix
+ splitq Tx packet rollback error path
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -123,113 +123,260 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Joshua Hay <joshua.a.hay@intel.com>
 
-Track the gap between next_to_use and the last RE index. Set RE again
-if the gap is large enough to ensure RE bit is set frequently. This is
-critical before removing the stashing mechanisms because the
-opportunistic descriptor ring cleaning from the out-of-order completions
-will go away. Previously the descriptors would be "cleaned" by both the
-descriptor (RE) completion and the out-of-order completions. Without the
-latter, we must ensure the RE bit is set more frequently. Otherwise,
-it's theoretically possible for the descriptor ring next_to_clean to
-never advance.  The previous implementation was dependent on the start
-of a packet falling on a 64th index in the descriptor ring, which is not
-guaranteed with large packets.
+Move (and rename) the existing rollback logic to singleq.c since that
+will be the only consumer. Create a simplified splitq specific rollback
+function to loop through and unmap tx_bufs based on the completion tag.
+This is critical before replacing the Tx buffer ring with the buffer
+pool since the previous rollback indexing will not work to unmap the
+chained buffers from the pool.
 
-Signed-off-by: Luigi Rizzo <lrizzo@google.com>
-Signed-off-by: Brian Vazquez <brianvv@google.com>
+Cache the next_to_use index before any portion of the packet is put on
+the descriptor ring. In case of an error, the rollback will bump tail to
+the correct next_to_use value. Because the splitq path now supports
+different types of context descriptors (and potentially multiple in the
+future), this will take care of rolling back any and all context
+descriptors encoded on the ring for the erroneous packet. The previous
+rollback logic was broken for PTP packets since it would not account for
+the PTP context descriptor.
+
+Fixes: 1a49cf814fe1 ("idpf: add Tx timestamp flows")
 Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
 Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
 Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 ---
- drivers/net/ethernet/intel/idpf/idpf_txrx.h |  6 ++++--
- drivers/net/ethernet/intel/idpf/idpf_txrx.c | 20 +++++++++++++++++++-
- 2 files changed, 23 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/intel/idpf/idpf_txrx.h   |  5 +-
+ .../ethernet/intel/idpf/idpf_singleq_txrx.c   | 57 +++++++++++-
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c   | 91 ++++++++-----------
+ 3 files changed, 95 insertions(+), 58 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-index 58232a1bd0a9..c75ca5d3e57c 100644
+index c75ca5d3e57c..a7632d845a2a 100644
 --- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
 +++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-@@ -610,6 +610,8 @@ libeth_cacheline_set_assert(struct idpf_rx_queue, 64,
-  * @netdev: &net_device corresponding to this queue
-  * @next_to_use: Next descriptor to use
-  * @next_to_clean: Next descriptor to clean
-+ * @last_re: last descriptor index that RE bit was set
-+ * @tx_max_bufs: Max buffers that can be transmitted with scatter-gather
-  * @cleaned_bytes: Splitq only, TXQ only: When a TX completion is received on
-  *		   the TX completion queue, it can be for any TXQ associated
-  *		   with that completion queue. This means we can clean up to
-@@ -620,7 +622,6 @@ libeth_cacheline_set_assert(struct idpf_rx_queue, 64,
-  *		   only once at the end of the cleaning routine.
-  * @clean_budget: singleq only, queue cleaning budget
-  * @cleaned_pkts: Number of packets cleaned for the above said case
-- * @tx_max_bufs: Max buffers that can be transmitted with scatter-gather
-  * @stash: Tx buffer stash for Flow-based scheduling mode
-  * @refillq: Pointer to refill queue
-  * @compl_tag_bufid_m: Completion tag buffer id mask
-@@ -663,6 +664,8 @@ struct idpf_tx_queue {
- 	__cacheline_group_begin_aligned(read_write);
- 	u16 next_to_use;
- 	u16 next_to_clean;
-+	u16 last_re;
-+	u16 tx_max_bufs;
- 
- 	union {
- 		u32 cleaned_bytes;
-@@ -670,7 +673,6 @@ struct idpf_tx_queue {
+@@ -196,6 +196,7 @@ struct idpf_tx_offload_params {
+  * @compl_tag: Associated tag for completion
+  * @td_tag: Descriptor tunneling tag
+  * @offload: Offload parameters
++ * @prev_ntu: stored TxQ next_to_use in case of rollback
+  */
+ struct idpf_tx_splitq_params {
+ 	enum idpf_tx_desc_dtype_value dtype;
+@@ -206,6 +207,8 @@ struct idpf_tx_splitq_params {
  	};
- 	u16 cleaned_pkts;
  
--	u16 tx_max_bufs;
- 	struct idpf_txq_stash *stash;
- 	struct idpf_sw_queue *refillq;
- 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-index 145447e81f30..3262707c8fab 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-@@ -294,6 +294,8 @@ static int idpf_tx_desc_alloc(const struct idpf_vport *vport,
- 	 */
- 	idpf_queue_change(GEN_CHK, refillq);
- 
-+	tx_q->last_re = tx_q->desc_count - IDPF_TX_SPLITQ_RE_MIN_GAP;
+ 	struct idpf_tx_offload_params offload;
 +
- 	return 0;
++	u16 prev_ntu;
+ };
  
- err_alloc:
-@@ -2912,6 +2914,21 @@ static void idpf_tx_set_tstamp_desc(union idpf_flex_tx_ctx_desc *ctx_desc,
- { }
- #endif /* CONFIG_PTP_1588_CLOCK */
+ enum idpf_tx_ctx_desc_eipt_offload {
+@@ -1042,8 +1045,6 @@ void idpf_tx_buf_hw_update(struct idpf_tx_queue *tx_q, u32 val,
+ 			   bool xmit_more);
+ unsigned int idpf_size_to_txd_count(unsigned int size);
+ netdev_tx_t idpf_tx_drop_skb(struct idpf_tx_queue *tx_q, struct sk_buff *skb);
+-void idpf_tx_dma_map_error(struct idpf_tx_queue *txq, struct sk_buff *skb,
+-			   struct idpf_tx_buf *first, u16 ring_idx);
+ unsigned int idpf_tx_desc_count_required(struct idpf_tx_queue *txq,
+ 					 struct sk_buff *skb);
+ void idpf_tx_timeout(struct net_device *netdev, unsigned int txqueue);
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
+index 555879b1248d..57c0f5ab8f9e 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
+@@ -179,6 +179,58 @@ static int idpf_tx_singleq_csum(struct sk_buff *skb,
+ 	return 1;
+ }
  
 +/**
-+ * idpf_tx_splitq_need_re - check whether RE bit needs to be set
-+ * @tx_q: pointer to Tx queue
-+ *
-+ * Return: true if RE bit needs to be set, false otherwise
++ * idpf_tx_singleq_dma_map_error - handle TX DMA map errors
++ * @txq: queue to send buffer on
++ * @skb: send buffer
++ * @first: original first buffer info buffer for packet
++ * @idx: starting point on ring to unwind
 + */
-+static bool idpf_tx_splitq_need_re(struct idpf_tx_queue *tx_q)
++static void idpf_tx_singleq_dma_map_error(struct idpf_tx_queue *txq,
++					  struct sk_buff *skb,
++					  struct idpf_tx_buf *first, u16 idx)
 +{
-+	int gap = tx_q->next_to_use - tx_q->last_re;
++	struct libeth_sq_napi_stats ss = { };
++	struct libeth_cq_pp cp = {
++		.dev	= txq->dev,
++		.ss	= &ss,
++	};
 +
-+	gap += (gap < 0) ? tx_q->desc_count : 0;
++	u64_stats_update_begin(&txq->stats_sync);
++	u64_stats_inc(&txq->q_stats.dma_map_errs);
++	u64_stats_update_end(&txq->stats_sync);
 +
-+	return gap >= IDPF_TX_SPLITQ_RE_MIN_GAP;
++	/* clear dma mappings for failed tx_buf map */
++	for (;;) {
++		struct idpf_tx_buf *tx_buf;
++
++		tx_buf = &txq->tx_buf[idx];
++		libeth_tx_complete(tx_buf, &cp);
++		if (tx_buf == first)
++			break;
++		if (idx == 0)
++			idx = txq->desc_count;
++		idx--;
++	}
++
++	if (skb_is_gso(skb)) {
++		union idpf_tx_flex_desc *tx_desc;
++
++		/* If we failed a DMA mapping for a TSO packet, we will have
++		 * used one additional descriptor for a context
++		 * descriptor. Reset that here.
++		 */
++		tx_desc = &txq->flex_tx[idx];
++		memset(tx_desc, 0, sizeof(*tx_desc));
++		if (idx == 0)
++			idx = txq->desc_count;
++		idx--;
++	}
++
++	/* Update tail in case netdev_xmit_more was previously true */
++	idpf_tx_buf_hw_update(txq, idx, false);
 +}
 +
  /**
-  * idpf_tx_splitq_frame - Sends buffer on Tx ring using flex descriptors
-  * @skb: send buffer
-@@ -2998,9 +3015,10 @@ static netdev_tx_t idpf_tx_splitq_frame(struct sk_buff *skb,
- 		 * MIN_RING size to ensure it will be set at least once each
- 		 * time around the ring.
- 		 */
--		if (!(tx_q->next_to_use % IDPF_TX_SPLITQ_RE_MIN_GAP)) {
-+		if (idpf_tx_splitq_need_re(tx_q)) {
- 			tx_params.eop_cmd |= IDPF_TXD_FLEX_FLOW_CMD_RE;
- 			tx_q->txq_grp->num_completions_pending++;
-+			tx_q->last_re = tx_q->next_to_use;
- 		}
+  * idpf_tx_singleq_map - Build the Tx base descriptor
+  * @tx_q: queue to send buffer on
+@@ -219,8 +271,9 @@ static void idpf_tx_singleq_map(struct idpf_tx_queue *tx_q,
+ 	for (frag = &skb_shinfo(skb)->frags[0];; frag++) {
+ 		unsigned int max_data = IDPF_TX_MAX_DESC_DATA_ALIGNED;
  
- 		if (skb->ip_summed == CHECKSUM_PARTIAL)
+-		if (dma_mapping_error(tx_q->dev, dma))
+-			return idpf_tx_dma_map_error(tx_q, skb, first, i);
++		if (unlikely(dma_mapping_error(tx_q->dev, dma)))
++			return idpf_tx_singleq_dma_map_error(tx_q, skb,
++							     first, i);
+ 
+ 		/* record length, and DMA address */
+ 		dma_unmap_len_set(tx_buf, len, size);
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+index 3262707c8fab..99d9081beef0 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+@@ -2339,57 +2339,6 @@ unsigned int idpf_tx_desc_count_required(struct idpf_tx_queue *txq,
+ 	return count;
+ }
+ 
+-/**
+- * idpf_tx_dma_map_error - handle TX DMA map errors
+- * @txq: queue to send buffer on
+- * @skb: send buffer
+- * @first: original first buffer info buffer for packet
+- * @idx: starting point on ring to unwind
+- */
+-void idpf_tx_dma_map_error(struct idpf_tx_queue *txq, struct sk_buff *skb,
+-			   struct idpf_tx_buf *first, u16 idx)
+-{
+-	struct libeth_sq_napi_stats ss = { };
+-	struct libeth_cq_pp cp = {
+-		.dev	= txq->dev,
+-		.ss	= &ss,
+-	};
+-
+-	u64_stats_update_begin(&txq->stats_sync);
+-	u64_stats_inc(&txq->q_stats.dma_map_errs);
+-	u64_stats_update_end(&txq->stats_sync);
+-
+-	/* clear dma mappings for failed tx_buf map */
+-	for (;;) {
+-		struct idpf_tx_buf *tx_buf;
+-
+-		tx_buf = &txq->tx_buf[idx];
+-		libeth_tx_complete(tx_buf, &cp);
+-		if (tx_buf == first)
+-			break;
+-		if (idx == 0)
+-			idx = txq->desc_count;
+-		idx--;
+-	}
+-
+-	if (skb_is_gso(skb)) {
+-		union idpf_tx_flex_desc *tx_desc;
+-
+-		/* If we failed a DMA mapping for a TSO packet, we will have
+-		 * used one additional descriptor for a context
+-		 * descriptor. Reset that here.
+-		 */
+-		tx_desc = &txq->flex_tx[idx];
+-		memset(tx_desc, 0, sizeof(*tx_desc));
+-		if (idx == 0)
+-			idx = txq->desc_count;
+-		idx--;
+-	}
+-
+-	/* Update tail in case netdev_xmit_more was previously true */
+-	idpf_tx_buf_hw_update(txq, idx, false);
+-}
+-
+ /**
+  * idpf_tx_splitq_bump_ntu - adjust NTU and generation
+  * @txq: the tx ring to wrap
+@@ -2438,6 +2387,37 @@ static bool idpf_tx_get_free_buf_id(struct idpf_sw_queue *refillq,
+ 	return true;
+ }
+ 
++/**
++ * idpf_tx_splitq_pkt_err_unmap - Unmap buffers and bump tail in case of error
++ * @txq: Tx queue to unwind
++ * @params: pointer to splitq params struct
++ * @first: starting buffer for packet to unmap
++ */
++static void idpf_tx_splitq_pkt_err_unmap(struct idpf_tx_queue *txq,
++					 struct idpf_tx_splitq_params *params,
++					 struct idpf_tx_buf *first)
++{
++	struct libeth_sq_napi_stats ss = { };
++	struct idpf_tx_buf *tx_buf = first;
++	struct libeth_cq_pp cp = {
++		.dev    = txq->dev,
++		.ss     = &ss,
++	};
++	u32 idx = 0;
++
++	u64_stats_update_begin(&txq->stats_sync);
++	u64_stats_inc(&txq->q_stats.dma_map_errs);
++	u64_stats_update_end(&txq->stats_sync);
++
++	do {
++		libeth_tx_complete(tx_buf, &cp);
++		idpf_tx_clean_buf_ring_bump_ntc(txq, idx, tx_buf);
++	} while (idpf_tx_buf_compl_tag(tx_buf) == params->compl_tag);
++
++	/* Update tail in case netdev_xmit_more was previously true. */
++	idpf_tx_buf_hw_update(txq, params->prev_ntu, false);
++}
++
+ /**
+  * idpf_tx_splitq_map - Build the Tx flex descriptor
+  * @tx_q: queue to send buffer on
+@@ -2482,8 +2462,9 @@ static void idpf_tx_splitq_map(struct idpf_tx_queue *tx_q,
+ 	for (frag = &skb_shinfo(skb)->frags[0];; frag++) {
+ 		unsigned int max_data = IDPF_TX_MAX_DESC_DATA_ALIGNED;
+ 
+-		if (dma_mapping_error(tx_q->dev, dma))
+-			return idpf_tx_dma_map_error(tx_q, skb, first, i);
++		if (unlikely(dma_mapping_error(tx_q->dev, dma)))
++			return idpf_tx_splitq_pkt_err_unmap(tx_q, params,
++							    first);
+ 
+ 		first->nr_frags++;
+ 		idpf_tx_buf_compl_tag(tx_buf) = params->compl_tag;
+@@ -2939,7 +2920,9 @@ static bool idpf_tx_splitq_need_re(struct idpf_tx_queue *tx_q)
+ static netdev_tx_t idpf_tx_splitq_frame(struct sk_buff *skb,
+ 					struct idpf_tx_queue *tx_q)
+ {
+-	struct idpf_tx_splitq_params tx_params = { };
++	struct idpf_tx_splitq_params tx_params = {
++		.prev_ntu = tx_q->next_to_use,
++	};
+ 	union idpf_flex_tx_ctx_desc *ctx_desc;
+ 	struct idpf_tx_buf *first;
+ 	unsigned int count;
 -- 
 2.50.1
 
