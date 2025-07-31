@@ -2,92 +2,92 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6244FB17095
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 31 Jul 2025 13:50:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C22AB17096
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 31 Jul 2025 13:50:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D342484274;
-	Thu, 31 Jul 2025 11:50:47 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 78DA684300;
+	Thu, 31 Jul 2025 11:50:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2JRups4OFtJX; Thu, 31 Jul 2025 11:50:47 +0000 (UTC)
+ id 9DKE26VQj9_V; Thu, 31 Jul 2025 11:50:47 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 978E184227
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 840CA84222
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1753962646;
-	bh=15W7D8zAS1cgTHPDiHFGDCKK1WdmECxugH9AJnOtswk=;
+	s=default; t=1753962647;
+	bh=rnmOlg4FhVWV1P+/rWHRkGnL7l5eX0EsIWscsrdTYUM=;
 	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=oczzz/p2dLYRQTsz+fBZPAUv478a34j34asgNGtwNOVswdmdkx+ENxri15v/4X00C
-	 4bYVVpNwxymntxwMdrDfh4rtdwgviFpd6L24PlrLWBolYA3uVyV58LLcAz4BKYUb7H
-	 uPkHKvAP28X+xZcTzXqwH3vmJlh8bJ5Jno5RZZenvUDeAx9AlDE2hLrZ6ddlcuuLoY
-	 aXGaoqhzvH4c47DXWPK2VZwwxp6rWk8foZDSJQkwvPCgaXar79sJiK1xsjnnP37iGu
-	 S86j9LVO8ceKLcgs2i5NjrmkCcD85Gk0P3VRYKTYY0Z+RzQDEWZswvrM/ppHoWgkeV
-	 gs9GKtcEJm0BQ==
+	b=5x6eOV/HqSCLIyBA/FjI7WrIW/XwIIITtz5yGxzD+Nt1EvcWg2+qMT+BHRFUSQqo7
+	 yp8SjVO1l2wSNeBd7l1jwJfRlincN08Lc3lNAg99331z6VTOSLuOS6+BdiQxoIVoDw
+	 NLl9S21ezhXqQb8YvmlR/cOuaCxoRZD7BIFtx1JBmR2D0I+HkQEZTnbtHKLA+XQynJ
+	 2ThvHGDnFjqW/Dw75J15t1oW/xYTJrxz9FAXSZti1VATtdGVBgLzdtg+XrrYRFxq6Z
+	 cJCrDtFxoMOoJITjh0ZQ9lmLNDy/dst2KrkyHbQvIoJCHMl+yvIcHpW7YDJ6geSgoq
+	 Kpn+WRhAK1p/g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 978E184227;
-	Thu, 31 Jul 2025 11:50:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 840CA84222;
+	Thu, 31 Jul 2025 11:50:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 4792D160
- for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Jul 2025 11:50:44 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 984FC160
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Jul 2025 11:50:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 31B6461B05
+ by smtp3.osuosl.org (Postfix) with ESMTP id 7D9DF617A7
  for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Jul 2025 11:50:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id gYcpR8loUM6V for <intel-wired-lan@lists.osuosl.org>;
+ id pntmz1ZKsQcr for <intel-wired-lan@lists.osuosl.org>;
  Thu, 31 Jul 2025 11:50:43 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
  helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 589E5617A7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 589E5617A7
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A076361AFF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A076361AFF
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 589E5617A7
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A076361AFF
  for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Jul 2025 11:50:43 +0000 (UTC)
-X-CSE-ConnectionGUID: 7mNnmrg7TsaseyizcddgDA==
-X-CSE-MsgGUID: vNMh65D2Q0SVJXaJgT/eMw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11507"; a="55981705"
-X-IronPort-AV: E=Sophos;i="6.17,353,1747724400"; d="scan'208";a="55981705"
+X-CSE-ConnectionGUID: G85tSxCkQIiUKzilDUIizw==
+X-CSE-MsgGUID: hyob/TjsQ6KrnENBjLowag==
+X-IronPort-AV: E=McAfee;i="6800,10657,11507"; a="55981706"
+X-IronPort-AV: E=Sophos;i="6.17,353,1747724400"; d="scan'208";a="55981706"
 Received: from orviesa007.jf.intel.com ([10.64.159.147])
  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  31 Jul 2025 04:50:43 -0700
-X-CSE-ConnectionGUID: 2LR/O2ZMS5udEv0+mwADVA==
-X-CSE-MsgGUID: dgUQLWO2QgG+Hzm65xrb/g==
+X-CSE-ConnectionGUID: AVYwlp2hQCSJ3O6GN95YLA==
+X-CSE-MsgGUID: yE6dY1/PRcKkzSRtsREPUw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.17,353,1747724400"; d="scan'208";a="163263549"
+X-IronPort-AV: E=Sophos;i="6.17,353,1747724400"; d="scan'208";a="163263550"
 Received: from lkp-server01.sh.intel.com (HELO 160750d4a34c) ([10.239.97.150])
  by orviesa007.jf.intel.com with ESMTP; 31 Jul 2025 04:50:42 -0700
 Received: from kbuild by 160750d4a34c with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1uhRnz-0003jm-2Q
+ (envelope-from <lkp@intel.com>) id 1uhRnz-0003jk-2M
  for intel-wired-lan@lists.osuosl.org; Thu, 31 Jul 2025 11:50:39 +0000
-Date: Thu, 31 Jul 2025 19:49:54 +0800
+Date: Thu, 31 Jul 2025 19:50:12 +0800
 From: kernel test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202507311945.wTuGkcpm-lkp@intel.com>
+Message-ID: <202507311903.1oldOcA9-lkp@intel.com>
 User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1753962644; x=1785498644;
  h=date:from:to:subject:message-id;
- bh=SU7Q8rzJAo06fbE+pG8hLbRMt6/B8gXQOGpzqERv5d0=;
- b=gevXbJ3mFn3HILuphQ0ZMTyVODMJ2gz34D2wAhKeTXlA+iz7ThUTyr4b
- JZT85w8xvZ3mudjVpWjW6nLC6SCuk3znayxb6m31RWQcJkoLeWzrM4e1H
- aPuVKLPcKtMk7pkSd0onkhtuo4DrCjIHwZPUfioEhoScsbg2zLYZyodwt
- F49nQyAO5G6mFaHvrghQY2YjMa5cAMsY/B12Rf+y4k2A+T043XJLkeIe5
- 3x0ongDN3CnuvioCesvQV5wk/izUAQr7vjv4opf86xGcASBiY/xGguSG2
- DZr2VZuWFtqsOEcNRBcms/oVp7t+3ogr8Wr0oPxe0DZm3iQfVbngQSbCT
+ bh=a1u/ZRx9d34sBWqTmvKx4MvLEUdLo419Xz3SZH7OglA=;
+ b=GMRyYBF+ffDLKePlBzEXNNIRHJv+WIfEGD1r1virdzPDebDQmQntlVMK
+ T1W3ymOJJG9I8hvN25+7hPTlmSurfUQyVYp0p2m8yrYcfKkv3sO1qFZ+O
+ CHCdXSgrEMUAo78L3GY0T1Eb3INSPOyiulZOgbIueoggn1P8WBRc1/MUP
+ WuUongnqs8TdPyTf+khN3Yx8qKgOj5g3YpduIw4N+tYhq8A/Fzck/1Hss
+ gT5xxOKNzsIzf7ocWuYmPtRupGp2zC4OE3MAqDXmvwIiKk2GTUa9R4UJz
+ 09CI5S/H3LMQdktW8v4T/OG2ejDipZVz1euhQWH3Yu/9VfOuJdc4QLJi9
  Q==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=gevXbJ3m
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- bd6c1d82a5485f0370dfb300d4170c452b9bf761
+ header.a=rsa-sha256 header.s=Intel header.b=GMRyYBF+
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ d9ade64184b4d1e25fe7b929fa7c89cbbb4f41c3
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -103,10 +103,10 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: bd6c1d82a5485f0370dfb300d4170c452b9bf761  igc: fix disabling L1.2 PCI-E link substate on I226 on init
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: d9ade64184b4d1e25fe7b929fa7c89cbbb4f41c3  igc: fix disabling L1.2 PCI-E link substate on I226 on init
 
-elapsed time: 729m
+elapsed time: 730m
 
 configs tested: 112
 configs skipped: 3
