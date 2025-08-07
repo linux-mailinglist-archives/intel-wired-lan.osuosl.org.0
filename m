@@ -1,92 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 581A0B1CC76
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Aug 2025 21:22:28 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7DB55B1D165
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 Aug 2025 06:05:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 860018470F;
-	Wed,  6 Aug 2025 19:22:26 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2CA0D6F56A;
+	Thu,  7 Aug 2025 04:05:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id a5S4NI0U4zuj; Wed,  6 Aug 2025 19:22:25 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id yp4LsuDcoevw; Thu,  7 Aug 2025 04:05:13 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B1FCF846EA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A18B66F574
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1754508145;
-	bh=IxXbI2/jSotBg9JdfibYRFKmVZwPkOII2gCIt2D5qWQ=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=uiGojzW/9WyNSJLpcV/2UVuE7E9jKRL0MY1m0xQB0Ec+JfT537oxAvqET1LkiInBw
-	 JpiAdyX50j0w0elVdnxE1BZ3qz5B9WKXYAXohk75zn4Ln+kJNKGFBKKZLSCNAt2K/F
-	 YyJysIK0C87IzJOw1nnMsOswA0mJrVCvXrjFnKX4ZswFTq/LuvuPVsXxoev5khy+vb
-	 yO2+mLT9rUzyQV+ZGJ48HMmzWQ4xtRBYBXsETSyxjOPaK0EY86w+cmHSHNjVe52WWv
-	 pkIyQUBDmDBJYvE5A+kyqu7tNTX+xdVKQtWjlMbKKmcJqA+0jOxxe8nq3yPoKHgXFq
-	 D/IXdxLV4WxcQ==
+	s=default; t=1754539513;
+	bh=wIjJxHZcE5PPj/tLXjzAMDCYiy8GUwmX2Tn8w4jqHxQ=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=1EJVrHqAO1Ds6QfJI0wGn3unmFZM1TemCjOk57+HaykIg5ncfIZ4m7I1sjP4U0KSh
+	 2AcKH7uCfEIdXKkpMUpiplJGDX0qg5YqmzjqSIAteozeTK+mRtv/60Vpocmnkw14lD
+	 DPemjhaUHTX2VfQO7yE5v18A/39jALDRWKfuKEycqRuA13AjItXebc0dg/IjtQle3C
+	 8NPJKMR7aFJgKyP7HF71kGmoZrztArR68TLMjzAz3R5shNf0hBIWSJwy9fxek5VrlQ
+	 zQkpEXokoSI5TdKeoPlj1BKm96VAMvlqPt6VPnk5oqH8SWxIVIuQ2/DgyEkdTJvWvg
+	 L86jcE829MSpA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B1FCF846EA;
-	Wed,  6 Aug 2025 19:22:25 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A18B66F574;
+	Thu,  7 Aug 2025 04:05:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 80B2C233
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Aug 2025 19:22:23 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 2CE79D79
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Aug 2025 04:05:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 713C38470B
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Aug 2025 19:22:23 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1372441D26
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Aug 2025 04:05:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1yjLYnu1PXLL for <intel-wired-lan@lists.osuosl.org>;
- Wed,  6 Aug 2025 19:22:23 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.18;
- helo=mgamail.intel.com; envelope-from=emil.s.tantilov@intel.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id XFHgVOpUEmsd for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  7 Aug 2025 04:05:11 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
+ helo=mgamail.intel.com; envelope-from=vitaly.lifshits@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org AB06A846FB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AB06A846FB
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.18])
- by smtp1.osuosl.org (Postfix) with ESMTPS id AB06A846FB
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Aug 2025 19:22:22 +0000 (UTC)
-X-CSE-ConnectionGUID: SwEgEXkhTJu4ldmlEyApKw==
-X-CSE-MsgGUID: rqxGg3ifRvKg5w/uM5hL8w==
-X-IronPort-AV: E=McAfee;i="6800,10657,11514"; a="56050242"
-X-IronPort-AV: E=Sophos;i="6.17,271,1747724400"; d="scan'208";a="56050242"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
- by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Aug 2025 12:22:21 -0700
-X-CSE-ConnectionGUID: azGAOUoMSdSZS8fTXhCKdA==
-X-CSE-MsgGUID: 4MemTOF5RUqEYpqi51pEhA==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 61C3A41D17
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 61C3A41D17
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 61C3A41D17
+ for <intel-wired-lan@osuosl.org>; Thu,  7 Aug 2025 04:05:11 +0000 (UTC)
+X-CSE-ConnectionGUID: 5W2kZ6gzT3G79w+I5muqYQ==
+X-CSE-MsgGUID: u0NC7VAeScCoWjkv2/WNZQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11514"; a="55902078"
+X-IronPort-AV: E=Sophos;i="6.17,271,1747724400"; d="scan'208";a="55902078"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Aug 2025 21:05:10 -0700
+X-CSE-ConnectionGUID: yBTfgLStRkuaOBzeGaMRlw==
+X-CSE-MsgGUID: JPzYG18BSNSzwEhnGKbu3w==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.17,271,1747724400"; d="scan'208";a="170123379"
-Received: from estantil-desk.jf.intel.com ([10.166.241.24])
- by fmviesa004.fm.intel.com with ESMTP; 06 Aug 2025 12:22:21 -0700
-From: Emil Tantilov <emil.s.tantilov@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  6 Aug 2025 12:21:30 -0700
-Message-Id: <20250806192130.3197-1-emil.s.tantilov@intel.com>
-X-Mailer: git-send-email 2.17.2
+X-IronPort-AV: E=Sophos;i="6.17,271,1747724400"; d="scan'208";a="195788265"
+Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.51])
+ by fmviesa001.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Aug 2025 21:05:09 -0700
+From: Vitaly Lifshits <vitaly.lifshits@intel.com>
+To: intel-wired-lan@osuosl.org
+Cc: Vitaly Lifshits <vitaly.lifshits@intel.com>,
+ Mikael Wessel <post@mikaelkw.online>
+Date: Thu,  7 Aug 2025 07:05:05 +0300
+Message-Id: <20250807040505.1716056-1-vitaly.lifshits@intel.com>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1754508142; x=1786044142;
- h=from:to:cc:subject:date:message-id;
- bh=PBgzgXlnFwuVjfkiimgPrmli4Kh0Vf3fNYbs219ZXz4=;
- b=DMZcAcx01ueRNUu4mxQOvKdHJJzzlV8mMi2JdgLf8ssnwdFadWMIakVb
- 7t297jbXGnwgbioawBKUb+w1jPHy7IRNGv7KxXi3MFXllZDm1SnZ5Jx8/
- W+gfWq5XGYdkJH3t5yixxzNYCgtX/7syCy/j7v0i5zaZlvPpFgWdcc5zC
- WVFbX5eld5xHBpHNmjZQHg4vjyKwIPlRt5RYH2VMZF8BwP/epQkiz725Z
- Wf+wi8aKtSrWNxkTFt9nOwPE7mG+vt61QVnq4dFbNjiKLFCpsQv0rfDkN
- gorXEDUCnAL8ITZ2I28PwCXYzGsiedK5BH4WanNo67ox8B4CUiXwqvStj
+ t=1754539511; x=1786075511;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=FTOmYlEDQxDsnhNCHrEPWH71YH9sa0gMi0lm3ToAiX4=;
+ b=PoKq7bGOV/5GHrQu89LdTR9ok5Lc/ob4OwHRM/bAObGq8i7k1pu+aOV8
+ 5nkc59KQW8c0U0uPmcOAmal1Q1vHdE5mR1cmWLlW1xuUFcPPa5372jkWh
+ kruGG7DBC38ohoiSN48wEBvzUabZHx2t+OwS7f7+bZFiXWRavuM07EDTK
+ xDY5JG/vQs2fOFaaXoql2cCIrUmQKpOxxDWDu1VqxRlsUiriVOQwA8j3O
+ A7osrI12EClVklDYi2RGj3O4hF8rmFxD9JY3crgq2bOnbGlgzx/VWzcTT
+ i4b5g32uwBk5+xYje+bbnc4sMo6ej1dxsElKQHiI8Xpg6YFrY2kmOh4+X
  g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=DMZcAcx0
-Subject: [Intel-wired-lan] [PATCH iwl-net] idpf: set mac type when adding
- and removing MAC filters
+ header.s=Intel header.b=PoKq7bGO
+Subject: [Intel-wired-lan] [PATCH iwl-net v2 1/1] e1000e: fix heap overflow
+ in e1000_set_eeprom
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -99,95 +105,45 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: willemb@google.com, decot@google.com, netdev@vger.kernel.org,
- Aleksandr.Loktionov@intel.com, andrew+netdev@lunn.ch, edumazet@google.com,
- jianliu@redhat.com, anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- kuba@kernel.org, pabeni@redhat.com, davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On control planes that allow changing the MAC address of the interface,
-the driver must provide a MAC type to avoid errors such as:
+Fix a possible heap overflow in e1000_set_eeprom function by adding
+input validation for the requested length of the change in the EEPROM.
 
-idpf 0000:0a:00.0: Transaction failed (op 535)
-idpf 0000:0a:00.0: Received invalid MAC filter payload (op 535) (len 0)
-
-These errors occur during driver load or when changing the MAC via:
-ip link set <iface> address <mac>
-
-Add logic to set the MAC type before performing ADD/DEL operations.
-Since only one primary MAC is supported per vport, the driver only needs
-to perform ADD in idpf_set_mac().
-
-Fixes: ce1b75d0635c ("idpf: add ptypes and MAC filter support")
-Reported-by: Jian Liu <jianliu@redhat.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Signed-off-by: Emil Tantilov <emil.s.tantilov@intel.com>
+Fixes: bc7f75fa9788 ("[E1000E]: New pci-express e1000 driver (currently for ICH9 devices only)")
+Co-developed-by: Mikael Wessel <post@mikaelkw.online>
+Signed-off-by: Mikael Wessel <post@mikaelkw.online>
+Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
 ---
- drivers/net/ethernet/intel/idpf/idpf_lib.c      |  6 ++----
- drivers/net/ethernet/intel/idpf/idpf_virtchnl.c | 11 +++++++++++
- 2 files changed, 13 insertions(+), 4 deletions(-)
+v2: Use check_add_overflow for boundary checking
+---
+ drivers/net/ethernet/intel/e1000e/ethtool.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-index 80382ff4a5fa..77d554b0944b 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-@@ -2284,17 +2284,15 @@ static int idpf_set_mac(struct net_device *netdev, void *p)
- 	if (ether_addr_equal(netdev->dev_addr, addr->sa_data))
- 		goto unlock_mutex;
+diff --git a/drivers/net/ethernet/intel/e1000e/ethtool.c b/drivers/net/ethernet/intel/e1000e/ethtool.c
+index 9364bc2b4eb1..2bfbc7fd9559 100644
+--- a/drivers/net/ethernet/intel/e1000e/ethtool.c
++++ b/drivers/net/ethernet/intel/e1000e/ethtool.c
+@@ -550,6 +550,7 @@ static int e1000_set_eeprom(struct net_device *netdev,
+ 	struct e1000_adapter *adapter = netdev_priv(netdev);
+ 	struct e1000_hw *hw = &adapter->hw;
+ 	u16 *eeprom_buff;
++	u32 total_len;
+ 	void *ptr;
+ 	int max_len;
+ 	int first_word;
+@@ -569,6 +570,10 @@ static int e1000_set_eeprom(struct net_device *netdev,
  
-+	ether_addr_copy(vport->default_mac_addr, addr->sa_data);
- 	vport_config = vport->adapter->vport_config[vport->idx];
- 	err = idpf_add_mac_filter(vport, np, addr->sa_data, false);
- 	if (err) {
- 		__idpf_del_mac_filter(vport_config, addr->sa_data);
-+		ether_addr_copy(vport->default_mac_addr, netdev->dev_addr);
- 		goto unlock_mutex;
- 	}
+ 	max_len = hw->nvm.word_size * 2;
  
--	if (is_valid_ether_addr(vport->default_mac_addr))
--		idpf_del_mac_filter(vport, np, vport->default_mac_addr, false);
--
--	ether_addr_copy(vport->default_mac_addr, addr->sa_data);
- 	eth_hw_addr_set(netdev, addr->sa_data);
- 
- unlock_mutex:
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-index 24febaaa8fbb..7563289dc1e3 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-@@ -3507,6 +3507,15 @@ u32 idpf_get_vport_id(struct idpf_vport *vport)
- 	return le32_to_cpu(vport_msg->vport_id);
- }
- 
-+static void idpf_set_mac_type(struct idpf_vport *vport,
-+			      struct virtchnl2_mac_addr *mac_addr)
-+{
-+	if (ether_addr_equal(vport->default_mac_addr, mac_addr->addr))
-+		mac_addr->type = VIRTCHNL2_MAC_ADDR_PRIMARY;
-+	else
-+		mac_addr->type = VIRTCHNL2_MAC_ADDR_EXTRA;
-+}
++	if (check_add_overflow(eeprom->offset, eeprom->len, &total_len) ||
++	    total_len > max_len)
++		return -EINVAL;
 +
- /**
-  * idpf_mac_filter_async_handler - Async callback for mac filters
-  * @adapter: private data struct
-@@ -3636,6 +3645,7 @@ int idpf_add_del_mac_filters(struct idpf_vport *vport,
- 			    list) {
- 		if (add && f->add) {
- 			ether_addr_copy(mac_addr[i].addr, f->macaddr);
-+			idpf_set_mac_type(vport, &mac_addr[i]);
- 			i++;
- 			f->add = false;
- 			if (i == total_filters)
-@@ -3643,6 +3653,7 @@ int idpf_add_del_mac_filters(struct idpf_vport *vport,
- 		}
- 		if (!add && f->remove) {
- 			ether_addr_copy(mac_addr[i].addr, f->macaddr);
-+			idpf_set_mac_type(vport, &mac_addr[i]);
- 			i++;
- 			f->remove = false;
- 			if (i == total_filters)
+ 	first_word = eeprom->offset >> 1;
+ 	last_word = (eeprom->offset + eeprom->len - 1) >> 1;
+ 	eeprom_buff = kmalloc(max_len, GFP_KERNEL);
 -- 
-2.37.3
+2.34.1
 
