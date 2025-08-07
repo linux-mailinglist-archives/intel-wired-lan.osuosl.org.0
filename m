@@ -1,98 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7DB55B1D165
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 Aug 2025 06:05:15 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D612AB1D1C6
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 Aug 2025 06:59:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2CA0D6F56A;
-	Thu,  7 Aug 2025 04:05:14 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7785F83FC3;
+	Thu,  7 Aug 2025 04:59:22 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id D9xyGf9OuOk7; Thu,  7 Aug 2025 04:59:22 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CC2A284011
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1754542761;
+	bh=9SFymbIGWzi/QX5vo4v0KkKpvo+GIxgk0RhPC3TwBJ0=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=ZP2vMOU3TAlVYCMMa2BpSeXCnZT276fjVYnllZ81xrF3ohUEMjSj05Ny4SPAZidrp
+	 my7L8VB7jotTa7kebqQluoSkIm0XHtCVYDEzjfh0InDg9HKP4mm3lQpm83bgXSG7aD
+	 j0N9UcGMqrkJ5Y1EzNdeIhGt7kw/zucn4uBB6i+sww2oz8AEMUs/nMq4xXJUrIMDVx
+	 z3OS502LMHXciaW57ql0lBchYDU91cErSdGP4us1d1ewiaBA1IZY7IGta0qBsnM0V4
+	 OXr7k8mCB2EenpGkuKh1S18BbVMffjfANhtCXlMKsYv2GuXKYAg1VZbPJtRHbtowpa
+	 ZNLJNud4C0J1g==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id CC2A284011;
+	Thu,  7 Aug 2025 04:59:21 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 165C631
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Aug 2025 04:59:20 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 04E8460901
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Aug 2025 04:59:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id yp4LsuDcoevw; Thu,  7 Aug 2025 04:05:13 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A18B66F574
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1754539513;
-	bh=wIjJxHZcE5PPj/tLXjzAMDCYiy8GUwmX2Tn8w4jqHxQ=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=1EJVrHqAO1Ds6QfJI0wGn3unmFZM1TemCjOk57+HaykIg5ncfIZ4m7I1sjP4U0KSh
-	 2AcKH7uCfEIdXKkpMUpiplJGDX0qg5YqmzjqSIAteozeTK+mRtv/60Vpocmnkw14lD
-	 DPemjhaUHTX2VfQO7yE5v18A/39jALDRWKfuKEycqRuA13AjItXebc0dg/IjtQle3C
-	 8NPJKMR7aFJgKyP7HF71kGmoZrztArR68TLMjzAz3R5shNf0hBIWSJwy9fxek5VrlQ
-	 zQkpEXokoSI5TdKeoPlj1BKm96VAMvlqPt6VPnk5oqH8SWxIVIuQ2/DgyEkdTJvWvg
-	 L86jcE829MSpA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A18B66F574;
-	Thu,  7 Aug 2025 04:05:13 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 2CE79D79
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Aug 2025 04:05:12 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1372441D26
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Aug 2025 04:05:12 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XFHgVOpUEmsd for <intel-wired-lan@lists.osuosl.org>;
- Thu,  7 Aug 2025 04:05:11 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
- helo=mgamail.intel.com; envelope-from=vitaly.lifshits@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 61C3A41D17
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 61C3A41D17
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 61C3A41D17
- for <intel-wired-lan@osuosl.org>; Thu,  7 Aug 2025 04:05:11 +0000 (UTC)
-X-CSE-ConnectionGUID: 5W2kZ6gzT3G79w+I5muqYQ==
-X-CSE-MsgGUID: u0NC7VAeScCoWjkv2/WNZQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11514"; a="55902078"
-X-IronPort-AV: E=Sophos;i="6.17,271,1747724400"; d="scan'208";a="55902078"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
- by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Aug 2025 21:05:10 -0700
-X-CSE-ConnectionGUID: yBTfgLStRkuaOBzeGaMRlw==
-X-CSE-MsgGUID: JPzYG18BSNSzwEhnGKbu3w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.17,271,1747724400"; d="scan'208";a="195788265"
-Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.51])
- by fmviesa001.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Aug 2025 21:05:09 -0700
-From: Vitaly Lifshits <vitaly.lifshits@intel.com>
-To: intel-wired-lan@osuosl.org
-Cc: Vitaly Lifshits <vitaly.lifshits@intel.com>,
- Mikael Wessel <post@mikaelkw.online>
-Date: Thu,  7 Aug 2025 07:05:05 +0300
-Message-Id: <20250807040505.1716056-1-vitaly.lifshits@intel.com>
-X-Mailer: git-send-email 2.34.1
+ id wW2uTq9zpnlC for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  7 Aug 2025 04:59:19 +0000 (UTC)
+X-Greylist: delayed 545 seconds by postgrey-1.37 at util1-new.osuosl.org;
+ Thu, 07 Aug 2025 04:59:18 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 43D99608D2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 43D99608D2
+Received-SPF: Pass (sender SPF authorized) identity=helo;
+ client-ip=2a01:37:3000::53df:4ef0:0; helo=bmailout2.hostsharing.net;
+ envelope-from=foo00@h08.hostsharing.net; receiver=<UNKNOWN> 
+Received: from bmailout2.hostsharing.net (bmailout2.hostsharing.net
+ [IPv6:2a01:37:3000::53df:4ef0:0])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 43D99608D2
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Aug 2025 04:59:17 +0000 (UTC)
+Received: from h08.hostsharing.net (h08.hostsharing.net
+ [IPv6:2a01:37:1000::53df:5f1c:0])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256
+ client-signature RSA-PSS (4096 bits) client-digest SHA256)
+ (Client CN "*.hostsharing.net", Issuer "RapidSSL TLS RSA CA G1" (verified OK))
+ by bmailout2.hostsharing.net (Postfix) with ESMTPS id 10B01200A446;
+ Thu,  7 Aug 2025 06:50:10 +0200 (CEST)
+Received: by h08.hostsharing.net (Postfix, from userid 100393)
+ id 088D3493353; Thu,  7 Aug 2025 06:50:09 +0200 (CEST)
+Date: Thu, 7 Aug 2025 06:50:09 +0200
+From: Lukas Wunner <lukas@wunner.de>
+To: Thinh Tran <thinhtr@linux.ibm.com>
+Cc: netdev@vger.kernel.org, kuba@kernel.org, anthony.l.nguyen@intel.com,
+ aleksandr.loktionov@intel.com, przemyslaw.kitszel@intel.com,
+ pmenzel@molgen.mpg.de, jesse.brandeburg@intel.com,
+ davem@davemloft.net, edumazet@google.com, pabeni@redhat.com,
+ intel-wired-lan@lists.osuosl.org, rob.thomas@ibm.com,
+ Jacob Keller <jacob.e.keller@intel.com>
+Message-ID: <aJQwgTbRY59C196Z@wunner.de>
+References: <20240515210705.620-1-thinhtr@linux.ibm.com>
+ <20240515210705.620-3-thinhtr@linux.ibm.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1754539511; x=1786075511;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=FTOmYlEDQxDsnhNCHrEPWH71YH9sa0gMi0lm3ToAiX4=;
- b=PoKq7bGOV/5GHrQu89LdTR9ok5Lc/ob4OwHRM/bAObGq8i7k1pu+aOV8
- 5nkc59KQW8c0U0uPmcOAmal1Q1vHdE5mR1cmWLlW1xuUFcPPa5372jkWh
- kruGG7DBC38ohoiSN48wEBvzUabZHx2t+OwS7f7+bZFiXWRavuM07EDTK
- xDY5JG/vQs2fOFaaXoql2cCIrUmQKpOxxDWDu1VqxRlsUiriVOQwA8j3O
- A7osrI12EClVklDYi2RGj3O4hF8rmFxD9JY3crgq2bOnbGlgzx/VWzcTT
- i4b5g32uwBk5+xYje+bbnc4sMo6ej1dxsElKQHiI8Xpg6YFrY2kmOh4+X
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=PoKq7bGO
-Subject: [Intel-wired-lan] [PATCH iwl-net v2 1/1] e1000e: fix heap overflow
- in e1000_set_eeprom
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240515210705.620-3-thinhtr@linux.ibm.com>
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=wunner.de
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net V4,
+ 2/2] i40e: Fully suspend and resume IO operations in EEH case
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -108,42 +98,49 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fix a possible heap overflow in e1000_set_eeprom function by adding
-input validation for the requested length of the change in the EEPROM.
+On Wed, May 15, 2024 at 04:07:05PM -0500, Thinh Tran wrote:
+> When EEH events occurs, the callback functions in the i40e, which are
+> managed by the EEH driver, will completely suspend and resume all IO
+> operations.
+> 
+> - In the PCI error detected callback, replaced i40e_prep_for_reset()
+>   with i40e_io_suspend(). The change is to fully suspend all I/O
+>   operations
+> - In the PCI error slot reset callback, replaced pci_enable_device_mem()
+>   with pci_enable_device(). This change enables both I/O and memory of
+>   the device.
+> - In the PCI error resume callback, replaced i40e_handle_reset_warning()
+>   with i40e_io_resume(). This change allows the system to resume I/O
+>   operations
 
-Fixes: bc7f75fa9788 ("[E1000E]: New pci-express e1000 driver (currently for ICH9 devices only)")
-Co-developed-by: Mikael Wessel <post@mikaelkw.online>
-Signed-off-by: Mikael Wessel <post@mikaelkw.online>
-Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
----
-v2: Use check_add_overflow for boundary checking
----
- drivers/net/ethernet/intel/e1000e/ethtool.c | 5 +++++
- 1 file changed, 5 insertions(+)
+The above was applied as commit c80b6538d35a.
 
-diff --git a/drivers/net/ethernet/intel/e1000e/ethtool.c b/drivers/net/ethernet/intel/e1000e/ethtool.c
-index 9364bc2b4eb1..2bfbc7fd9559 100644
---- a/drivers/net/ethernet/intel/e1000e/ethtool.c
-+++ b/drivers/net/ethernet/intel/e1000e/ethtool.c
-@@ -550,6 +550,7 @@ static int e1000_set_eeprom(struct net_device *netdev,
- 	struct e1000_adapter *adapter = netdev_priv(netdev);
- 	struct e1000_hw *hw = &adapter->hw;
- 	u16 *eeprom_buff;
-+	u32 total_len;
- 	void *ptr;
- 	int max_len;
- 	int first_word;
-@@ -569,6 +570,10 @@ static int e1000_set_eeprom(struct net_device *netdev,
- 
- 	max_len = hw->nvm.word_size * 2;
- 
-+	if (check_add_overflow(eeprom->offset, eeprom->len, &total_len) ||
-+	    total_len > max_len)
-+		return -EINVAL;
-+
- 	first_word = eeprom->offset >> 1;
- 	last_word = (eeprom->offset + eeprom->len - 1) >> 1;
- 	eeprom_buff = kmalloc(max_len, GFP_KERNEL);
--- 
-2.34.1
+> @@ -16481,7 +16483,8 @@ static pci_ers_result_t i40e_pci_error_slot_reset(struct pci_dev *pdev)
+>  	u32 reg;
+>  
+>  	dev_dbg(&pdev->dev, "%s\n", __func__);
+> -	if (pci_enable_device_mem(pdev)) {
+> +	/* enable I/O and memory of the device  */
+> +	if (pci_enable_device(pdev)) {
+>  		dev_info(&pdev->dev,
+>  			 "Cannot re-enable PCI device after reset.\n");
+>  		result = PCI_ERS_RESULT_DISCONNECT;
 
+Why was this change made?
+
+The driver calls pci_enable_device_mem() in i40e_probe(),
+so calling pci_enable_device() here doesn't seem to make any sense.
+
+The difference between pci_enable_device() and pci_enable_device_mem()
+is that the former also enables access to the I/O Space of the device.
+However I/O Space access is usually not used outside of x86.
+And your patch targets powerpc because you seek to support EEH,
+a powerpc-specific mechanism.
+
+Unfortunately the commit message is not helpful at all because it
+merely lists the code changes in prose form but doesn't explain
+the *reason* for the change.
+
+Thanks,
+
+Lukas
