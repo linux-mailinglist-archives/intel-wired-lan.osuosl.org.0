@@ -1,96 +1,117 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 11780B1F9B6
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 10 Aug 2025 13:00:39 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B99C260F44;
-	Sun, 10 Aug 2025 11:00:36 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 69JaYu2IGFgp; Sun, 10 Aug 2025 11:00:36 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0F40960F3D
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1754823636;
-	bh=y1OD/fs97lJSnzwe5rHz5qP8Wlog8IOWL6QwAL84Y1g=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=W/hcg1Dm5Znr9qqoG2xtxIbu/jBvX5RNLwTpkXyFBouitssk8cq1wXguSVoAcBDOo
-	 gx4M7/XjB4zK4wSQOKyqqKPGT3MxCj7cZSovxBBNJO0/YFo0bZkx7a3jO5MrDKIVkb
-	 KTV1q9Jv38fDCOgXbC762TFNv5h1tqCbLak4c+u+6U+Lr++Q/itmk+V/2+t1uFiCwr
-	 rUTtwng1KBsd5ti8ydSwiBHZwAScGtJEqV+8o5JCWtuK65/smMagivx1ilH/thL2Av
-	 3eH1h7cTVpnN1muOIh/foVYquVksPSc2BX2ERcX6nRJzj2DsYTJsAC8OFIMtMbyQCf
-	 If5ONZBO0Rxfg==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0F40960F3D;
-	Sun, 10 Aug 2025 11:00:36 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 207A3138
- for <intel-wired-lan@lists.osuosl.org>; Sun, 10 Aug 2025 11:00:34 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id AE061B1F9EA
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 10 Aug 2025 14:23:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1256440DA0
- for <intel-wired-lan@lists.osuosl.org>; Sun, 10 Aug 2025 11:00:34 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id ED89B40D8D;
+	Sun, 10 Aug 2025 12:23:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CPCxwASzwGe9 for <intel-wired-lan@lists.osuosl.org>;
- Sun, 10 Aug 2025 11:00:33 +0000 (UTC)
-X-Greylist: delayed 398 seconds by postgrey-1.37 at util1.osuosl.org;
- Sun, 10 Aug 2025 11:00:32 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 3EC2C40CD7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3EC2C40CD7
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=95.215.58.171;
- helo=out-171.mta1.migadu.com; envelope-from=vadim.fedorenko@linux.dev;
- receiver=<UNKNOWN> 
-Received: from out-171.mta1.migadu.com (out-171.mta1.migadu.com
- [95.215.58.171])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 3EC2C40CD7
- for <intel-wired-lan@lists.osuosl.org>; Sun, 10 Aug 2025 11:00:32 +0000 (UTC)
-Message-ID: <ec9e7da6-30f0-40aa-8cb7-bfa0ff814126@linux.dev>
-Date: Sun, 10 Aug 2025 11:52:55 +0100
+ id q64ms6iJaAWZ; Sun, 10 Aug 2025 12:23:26 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5CFD540D85
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1754828606;
+	bh=EVtfsPd4I2wMc65UP3tFTwUuyAKqcoFWuqbrTO5hc3I=;
+	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=BsRoyLEhmYJHondSB07TALAvark4RTur6VYUiiwiOeBvXWbISrH+vZgsztxLY7iWf
+	 ZQgDLq+lP8txGLpG24SaPhTJwt6E8n4WmfmWZvEkGcmAb2+ksjXnR6ZVUgvsVdcYd2
+	 B5NTj4TTvNDp7z2rdq1nWt4X2ma+3wzG0dmefbYxemFXg2R6gW3xSWiLhwRO/I8z8m
+	 Ww5p83mdo9y4Z+PQun6aOEeKffESIPrl1MK09D287z/FzkMYsS9s10SoismUMKwkG7
+	 aMI59Dhge73cHjj3VQ49dEU8+zsvKXI5kTFvherTK8kgGDDcwW+5BgaUVDf9Q5bmCP
+	 jDwuY6kUDw8ZQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5CFD540D85;
+	Sun, 10 Aug 2025 12:23:26 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 9E72F31
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 10 Aug 2025 12:23:24 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9BCF160F0A
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 10 Aug 2025 12:23:24 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id XGPKVlQpK-Kz for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 10 Aug 2025 12:23:24 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::12c; helo=mail-il1-x12c.google.com;
+ envelope-from=kerneljasonxing@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 07DBF60B91
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 07DBF60B91
+Received: from mail-il1-x12c.google.com (mail-il1-x12c.google.com
+ [IPv6:2607:f8b0:4864:20::12c])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 07DBF60B91
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 10 Aug 2025 12:23:23 +0000 (UTC)
+Received: by mail-il1-x12c.google.com with SMTP id
+ e9e14a558f8ab-3e5172e496aso31068805ab.1
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 10 Aug 2025 05:23:23 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1754828603; x=1755433403;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=EVtfsPd4I2wMc65UP3tFTwUuyAKqcoFWuqbrTO5hc3I=;
+ b=NzeiOaLrr9Cnh6JH2IH39s+VtKdw/s7Xdki9utL0AOkFha1mi1ySkTdjscD5rDfu1o
+ DAXbhrfTnmWqO/Nb4ch63I+biBEPbvIoOMYgeExelM6QatRwHQFaUElLP0izHeWwy6Dr
+ UVzvOXrpakE8U5WqZn4eAedgDcPA5s0vRZIpVpIcy3D2M2n5rUn0E58rFnfT8AQWV3KD
+ ScAN9DF+teVM8wHDidykx3zLRKsHPUXvLB50ugpeqNOQFYZ0lNlXbfAYVEO+HfpGwLYm
+ C+MIrUsP4C5d7or+12sNDaehAOt0KwZ3d07ErBuogBJvEo3Yk6TBeyPZ4hBjl0gQz0aW
+ 8XgQ==
+X-Gm-Message-State: AOJu0YzL16mWM0g/FtEz1zzlb/7JgTOL8VMV+1HsJwSQAIpvOLObr9Ei
+ 3LCyFUFbS+GYepvnagH8piZYDRXUChzi+PWV7vzgRAqI2ZA1CRJUequLYEc4xZPg91ZMVP5qi8U
+ 1F3T08qez8j9s6uhsSfCeZbpmnrLQhtM=
+X-Gm-Gg: ASbGncuwEIbqZsYbCamEJybaMb8my0tl/HvVmXfM4a0rdaJSrlqMuDM6LMRHacZ1DRk
+ 2H3nfj2Fc773t/3LuVKNBTAi5ngciRbKJ68jrwCLO/UkCebKoYLoxYjWhcXFPy5ffbUeA9RA/p2
+ Ifm/h3Jjyn5mVXjSqU8c+I+m4sK2slm3C4yGXCBmSzFJwPeK/IRsd0FxE34sXBKUwNxnSGdYyo4
+ HerlJA=
+X-Google-Smtp-Source: AGHT+IHNihEA/9zngYvPSNs+HownZUaFanokWYdKE2VIGwSEO56UAOstKHADV5YlIFRbtu+wKHQW5rqBGp0hc4GPY54=
+X-Received: by 2002:a05:6e02:481b:b0:3e5:3521:46e3 with SMTP id
+ e9e14a558f8ab-3e5352148b5mr175635875ab.23.1754828602934; Sun, 10 Aug 2025
+ 05:23:22 -0700 (PDT)
 MIME-Version: 1.0
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Andrew Lunn <andrew@lunn.ch>, Michael Chan <michael.chan@broadcom.com>,
- Pavan Chebbi <pavan.chebbi@broadcom.com>, Tariq Toukan <tariqt@nvidia.com>,
- Gal Pressman <gal@nvidia.com>, intel-wired-lan@lists.osuosl.org,
- Donald Hunter <donald.hunter@gmail.com>, Carolina Jubran
- <cjubran@nvidia.com>, Paolo Abeni <pabeni@redhat.com>,
- Simon Horman <horms@kernel.org>, netdev@vger.kernel.org
-References: <20250807155924.2272507-1-vadfed@meta.com>
- <20250808131522.0dc26de4@kernel.org>
-Content-Language: en-US
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
- include these headers.
-From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-In-Reply-To: <20250808131522.0dc26de4@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Migadu-Flow: FLOW_OUT
+References: <20250726070356.58183-1-kerneljasonxing@gmail.com>
+In-Reply-To: <20250726070356.58183-1-kerneljasonxing@gmail.com>
+From: Jason Xing <kerneljasonxing@gmail.com>
+Date: Sun, 10 Aug 2025 20:22:46 +0800
+X-Gm-Features: Ac12FXziDhm_YRFDlpDASBNgcsyzmA3IKpNb-ySl_K0wnEuCRdLMg9D0dDCsyuU
+Message-ID: <CAL+tcoAAq9ccjUybzxoYbVG6i3Ev1C098aGKWvAvKMUeFyG3Tw@mail.gmail.com>
+To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com, 
+ larysa.zaremba@intel.com, andrew+netdev@lunn.ch, davem@davemloft.net, 
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, bjorn@kernel.org, 
+ maciej.fijalkowski@intel.com
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
+ Jason Xing <kernelxing@tencent.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linux.dev; s=key1; t=1754823226;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=y1OD/fs97lJSnzwe5rHz5qP8Wlog8IOWL6QwAL84Y1g=;
- b=QQQ37w/YI/SfcG3Zp/Hf1ZO5W1fzmDFWZUzGSlKSN1aQWiwobf+1TkHMJAEjVJ0QaqXkBT
- m0z6rGFWi2n+n0G1kQRo4lypAMVR5X9oCtSJlQ1Qbj7wIPik3NhH3I60o8yGPwOZ39/VPl
- +sZ0KwK/wGR5UificM2Z9siE6qpIfJg=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=gmail.com; s=20230601; t=1754828603; x=1755433403; darn=lists.osuosl.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=EVtfsPd4I2wMc65UP3tFTwUuyAKqcoFWuqbrTO5hc3I=;
+ b=C90pVvYleOFFw8+7bMqHHrvlk6OfTbUQapmFEELqOhIQuppfdG8q/Sq6tSbU6gDcff
+ ssVl3qyyGOl6p6+Qsq8fVebCN+bvN+cySN7VyslRvPUQgIE7VsClttOOVQQi++6+2pf1
+ jKTZNXscf4qolnmq/n76fFw8vR55IWNYhIk70bQh3JlO7w4bM6O/S3KhWRhP/gZnlVAc
+ qSzkEnavrYSvWxQbnL7sNLRWazT5GZBeow/w9FFFN/xeBx4l0/oWuk15pQBOinRmX4lI
+ zxwYQErYpmAsijG10mARRfeUtxvcGZQsFbInsbQz/Rx/jGDJHmw9g27z2gi7IJN68/DY
+ GhnQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=linux.dev
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256
- header.s=key1 header.b=QQQ37w/Y
-Subject: Re: [Intel-wired-lan] [RFC PATCH v4] ethtool: add FEC bins
- histogramm report
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20230601 header.b=C90pVvYl
+Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-net] ixgbe: xsk: resolve the
+ negative overflow of budget in ixgbe_xmit_zc
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -106,67 +127,47 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 08/08/2025 21:15, Jakub Kicinski wrote:
-> On Thu, 7 Aug 2025 08:59:24 -0700 Vadim Fedorenko wrote:
->> +		/* add FEC bins information */
->> +		len += (nla_total_size(0) +  /* _A_FEC_HIST */
->> +			nla_total_size(4) +  /* _A_FEC_HIST_BIN_LOW */
->> +			nla_total_size(4) +  /* _A_FEC_HIST_BIN_HI */
->> +			/* _A_FEC_HIST_BIN_VAL + per-lane values */
->> +			nla_total_size_64bit(sizeof(u64) *
->> +					     (1 + ETHTOOL_MAX_LANES))) *
-> 
-> That's the calculation for basic stats because they are reported as a
-> raw array. Each nla_put() should correspond to a nla_total_size().
-> This patch nla_put()s things individually.
-> 
->> +			ETHTOOL_FEC_HIST_MAX;
->> +	}
->>   
->>   	return len;
->>   }
->>   
->> +static int fec_put_hist(struct sk_buff *skb, const struct ethtool_fec_hist *hist)
->> +{
->> +	const struct ethtool_fec_hist_range *ranges = hist->ranges;
->> +	const struct ethtool_fec_hist_value *values = hist->values;
->> +	struct nlattr *nest;
->> +	int i, j;
->> +
->> +	if (!ranges)
->> +		return 0;
->> +
->> +	for (i = 0; i < ETHTOOL_FEC_HIST_MAX; i++) {
->> +		if (i && !ranges[i].low && !ranges[i].high)
->> +			break;
->> +
->> +		if (WARN_ON_ONCE(values[i].bin_value == ETHTOOL_STAT_NOT_SET))
->> +			break;
->> +
->> +		nest = nla_nest_start(skb, ETHTOOL_A_FEC_STAT_HIST);
->> +		if (!nest)
->> +			return -EMSGSIZE;
->> +
->> +		if (nla_put_u32(skb, ETHTOOL_A_FEC_HIST_BIN_LOW,
->> +				ranges[i].low) ||
->> +		    nla_put_u32(skb, ETHTOOL_A_FEC_HIST_BIN_HIGH,
->> +				ranges[i].high) ||
->> +		    nla_put_uint(skb, ETHTOOL_A_FEC_HIST_BIN_VAL,
->> +				 values[i].bin_value))
->> +			goto err_cancel_hist;
->> +		for (j = 0; j < ETHTOOL_MAX_LANES; j++) {
->> +			if (values[i].bin_value_per_lane[j] == ETHTOOL_STAT_NOT_SET)
->> +				break;
->> +			nla_put_uint(skb, ETHTOOL_A_FEC_HIST_BIN_VAL_PER_LANE,
->> +				     values[i].bin_value_per_lane[j]);
-> 
-> TBH I'm a bit unsure if this is really worth breaking out into
-> individual nla_puts(). We generally recommend that, but here it's
-> an array of simple ints.. maybe we're better of with a binary / C
-> array of u64. Like the existing FEC stats but without also folding
-> the total value into index 0.
+On Sat, Jul 26, 2025 at 3:04=E2=80=AFPM Jason Xing <kerneljasonxing@gmail.c=
+om> wrote:
+>
+> From: Jason Xing <kernelxing@tencent.com>
+>
+> Resolve the budget negative overflow which leads to returning true in
+> ixgbe_xmit_zc even when the budget of descs are thoroughly consumed.
+>
+> Before this patch, when the budget is decreased to zero and finishes
+> sending the last allowed desc in ixgbe_xmit_zc, it will always turn back
+> and enter into the while() statement to see if it should keep processing
+> packets, but in the meantime it unexpectedly decreases the value again to
+> 'unsigned int (0--)', namely, UINT_MAX. Finally, the ixgbe_xmit_zc return=
+s
+> true, showing 'we complete cleaning the budget'. That also means
+> 'clean_complete =3D true' in ixgbe_poll.
+>
+> The true theory behind this is if that budget number of descs are consume=
+d,
+> it implies that we might have more descs to be done. So we should return
+> false in ixgbe_xmit_zc to tell napi poll to find another chance to start
+> polling to handle the rest of descs. On the contrary, returning true here
+> means job done and we know we finish all the possible descs this time and
+> we don't intend to start a new napi poll.
+>
+> It is apparently against our expectations. Please also see how
+> ixgbe_clean_tx_irq() handles the problem: it uses do..while() statement
+> to make sure the budget can be decreased to zero at most and the negative
+> overflow never happens.
+>
+> The patch adds 'likely' because we rarely would not hit the loop codition
+> since the standard budget is 256.
+>
+> Fixes: 8221c5eba8c1 ("ixgbe: add AF_XDP zero-copy Tx support")
+> Signed-off-by: Jason Xing <kernelxing@tencent.com>
+> Reviewed-by: Larysa Zaremba <larysa.zaremba@intel.com>
 
-Well, the current implementation is straight forward. Do you propose to
-have drivers fill in the amount of lanes they have histogram for, or
-should we always put array of ETHTOOL_MAX_LANES values and let
-user-space to figure out what to show?
+Hi Tony,
+
+Any update here? Thanks! I'm asking because I'm ready to send an afxdp
+patch series based on the patch :)
+
+Thanks,
+jason
