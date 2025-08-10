@@ -1,117 +1,133 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE061B1F9EA
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 10 Aug 2025 14:23:28 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id ED89B40D8D;
-	Sun, 10 Aug 2025 12:23:26 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id q64ms6iJaAWZ; Sun, 10 Aug 2025 12:23:26 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5CFD540D85
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1754828606;
-	bh=EVtfsPd4I2wMc65UP3tFTwUuyAKqcoFWuqbrTO5hc3I=;
-	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=BsRoyLEhmYJHondSB07TALAvark4RTur6VYUiiwiOeBvXWbISrH+vZgsztxLY7iWf
-	 ZQgDLq+lP8txGLpG24SaPhTJwt6E8n4WmfmWZvEkGcmAb2+ksjXnR6ZVUgvsVdcYd2
-	 B5NTj4TTvNDp7z2rdq1nWt4X2ma+3wzG0dmefbYxemFXg2R6gW3xSWiLhwRO/I8z8m
-	 Ww5p83mdo9y4Z+PQun6aOEeKffESIPrl1MK09D287z/FzkMYsS9s10SoismUMKwkG7
-	 aMI59Dhge73cHjj3VQ49dEU8+zsvKXI5kTFvherTK8kgGDDcwW+5BgaUVDf9Q5bmCP
-	 jDwuY6kUDw8ZQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5CFD540D85;
-	Sun, 10 Aug 2025 12:23:26 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 9E72F31
- for <intel-wired-lan@lists.osuosl.org>; Sun, 10 Aug 2025 12:23:24 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 74BEBB1FC0F
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 10 Aug 2025 22:25:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 9BCF160F0A
- for <intel-wired-lan@lists.osuosl.org>; Sun, 10 Aug 2025 12:23:24 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 66DCB61066;
+	Sun, 10 Aug 2025 20:25:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XGPKVlQpK-Kz for <intel-wired-lan@lists.osuosl.org>;
- Sun, 10 Aug 2025 12:23:24 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::12c; helo=mail-il1-x12c.google.com;
- envelope-from=kerneljasonxing@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 07DBF60B91
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 07DBF60B91
-Received: from mail-il1-x12c.google.com (mail-il1-x12c.google.com
- [IPv6:2607:f8b0:4864:20::12c])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 07DBF60B91
- for <intel-wired-lan@lists.osuosl.org>; Sun, 10 Aug 2025 12:23:23 +0000 (UTC)
-Received: by mail-il1-x12c.google.com with SMTP id
- e9e14a558f8ab-3e5172e496aso31068805ab.1
- for <intel-wired-lan@lists.osuosl.org>; Sun, 10 Aug 2025 05:23:23 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754828603; x=1755433403;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=EVtfsPd4I2wMc65UP3tFTwUuyAKqcoFWuqbrTO5hc3I=;
- b=NzeiOaLrr9Cnh6JH2IH39s+VtKdw/s7Xdki9utL0AOkFha1mi1ySkTdjscD5rDfu1o
- DAXbhrfTnmWqO/Nb4ch63I+biBEPbvIoOMYgeExelM6QatRwHQFaUElLP0izHeWwy6Dr
- UVzvOXrpakE8U5WqZn4eAedgDcPA5s0vRZIpVpIcy3D2M2n5rUn0E58rFnfT8AQWV3KD
- ScAN9DF+teVM8wHDidykx3zLRKsHPUXvLB50ugpeqNOQFYZ0lNlXbfAYVEO+HfpGwLYm
- C+MIrUsP4C5d7or+12sNDaehAOt0KwZ3d07ErBuogBJvEo3Yk6TBeyPZ4hBjl0gQz0aW
- 8XgQ==
-X-Gm-Message-State: AOJu0YzL16mWM0g/FtEz1zzlb/7JgTOL8VMV+1HsJwSQAIpvOLObr9Ei
- 3LCyFUFbS+GYepvnagH8piZYDRXUChzi+PWV7vzgRAqI2ZA1CRJUequLYEc4xZPg91ZMVP5qi8U
- 1F3T08qez8j9s6uhsSfCeZbpmnrLQhtM=
-X-Gm-Gg: ASbGncuwEIbqZsYbCamEJybaMb8my0tl/HvVmXfM4a0rdaJSrlqMuDM6LMRHacZ1DRk
- 2H3nfj2Fc773t/3LuVKNBTAi5ngciRbKJ68jrwCLO/UkCebKoYLoxYjWhcXFPy5ffbUeA9RA/p2
- Ifm/h3Jjyn5mVXjSqU8c+I+m4sK2slm3C4yGXCBmSzFJwPeK/IRsd0FxE34sXBKUwNxnSGdYyo4
- HerlJA=
-X-Google-Smtp-Source: AGHT+IHNihEA/9zngYvPSNs+HownZUaFanokWYdKE2VIGwSEO56UAOstKHADV5YlIFRbtu+wKHQW5rqBGp0hc4GPY54=
-X-Received: by 2002:a05:6e02:481b:b0:3e5:3521:46e3 with SMTP id
- e9e14a558f8ab-3e5352148b5mr175635875ab.23.1754828602934; Sun, 10 Aug 2025
- 05:23:22 -0700 (PDT)
+ id qazeziGnXCpz; Sun, 10 Aug 2025 20:25:25 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D4D7D6105E
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1754857525;
+	bh=JEEs/WXZSr2jxbEeUZJMjc8Ylm+M2pqjK649cPvZ/8g=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=CQx+gQn4S4gzDFB7Rv/be1DDgZoDVD3A5ZTNie9mLhtmboSVeiegY7j9PaxsdsfiG
+	 teBj+LBIt7z67dDHhRj4+1QUBVs46UbK1cVejIaovy/lk1scOAJAuARQ2J/NqdviB7
+	 2bBjGFdrxaQuLcVIyZRBBDiF6wawvRhOBSjw418m4vP2b/eUJ0EOQHcQnuMxURW42Z
+	 Pbk4MmWqGWPGGAGVHqaxWKMZyQOri2fHkwUsLt1H9cN+QR3SMcJ9mB4FZz946Kx02u
+	 Mb8WGOngTycKuJe2uFlMdRJIkAmOJPjE4zh3glJVlpYXvh/1TsAwOG/D4l4Qv6utpG
+	 PJJQ93msPojNQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id D4D7D6105E;
+	Sun, 10 Aug 2025 20:25:25 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 014D3154
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 10 Aug 2025 20:25:25 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id DBB7140F73
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 10 Aug 2025 20:25:24 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 8hI04zmtMrTz for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 10 Aug 2025 20:25:24 +0000 (UTC)
+X-Greylist: delayed 12230 seconds by postgrey-1.37 at util1.osuosl.org;
+ Sun, 10 Aug 2025 20:25:23 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org B4DD340F74
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B4DD340F74
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=205.220.177.32;
+ helo=mx0b-00069f02.pphosted.com; envelope-from=alok.a.tiwari@oracle.com;
+ receiver=<UNKNOWN> 
+Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com
+ [205.220.177.32])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B4DD340F74
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 10 Aug 2025 20:25:23 +0000 (UTC)
+Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 57AGcojI000959;
+ Sun, 10 Aug 2025 17:01:23 GMT
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 48dxcf19b8-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sun, 10 Aug 2025 17:01:23 +0000 (GMT)
+Received: from pps.filterd
+ (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2)
+ with ESMTP id 57AFhwVi038546; Sun, 10 Aug 2025 17:01:23 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
+ 48dvsebp9v-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sun, 10 Aug 2025 17:01:22 +0000
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 57AH1Mlk025629;
+ Sun, 10 Aug 2025 17:01:22 GMT
+Received: from ca-dev112.us.oracle.com (ca-dev112.us.oracle.com
+ [10.129.136.47])
+ by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id
+ 48dvsebp8b-1; Sun, 10 Aug 2025 17:01:22 +0000
+From: Alok Tiwari <alok.a.tiwari@oracle.com>
+To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, horms@kernel.org,
+ netdev@vger.kernel.org
+Cc: alok.a.tiwari@oracle.com, intel-wired-lan@lists.osuosl.org
+Date: Sun, 10 Aug 2025 10:01:14 -0700
+Message-ID: <20250810170118.1967090-1-alok.a.tiwari@oracle.com>
+X-Mailer: git-send-email 2.47.1
 MIME-Version: 1.0
-References: <20250726070356.58183-1-kerneljasonxing@gmail.com>
-In-Reply-To: <20250726070356.58183-1-kerneljasonxing@gmail.com>
-From: Jason Xing <kerneljasonxing@gmail.com>
-Date: Sun, 10 Aug 2025 20:22:46 +0800
-X-Gm-Features: Ac12FXziDhm_YRFDlpDASBNgcsyzmA3IKpNb-ySl_K0wnEuCRdLMg9D0dDCsyuU
-Message-ID: <CAL+tcoAAq9ccjUybzxoYbVG6i3Ev1C098aGKWvAvKMUeFyG3Tw@mail.gmail.com>
-To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com, 
- larysa.zaremba@intel.com, andrew+netdev@lunn.ch, davem@davemloft.net, 
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, bjorn@kernel.org, 
- maciej.fijalkowski@intel.com
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
- Jason Xing <kernelxing@tencent.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.9,FMLib:17.12.80.40
+ definitions=2025-08-10_05,2025-08-06_01,2025-03-28_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ mlxscore=0 phishscore=0
+ spamscore=0 suspectscore=0 mlxlogscore=999 adultscore=0 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2507300000
+ definitions=main-2508100123
+X-Proofpoint-GUID: KNSXnn_-usSM9SrCUyZ7hdpwkds2lVag
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwODEwMDEyNCBTYWx0ZWRfX37p3ZD43Bamh
+ JL0nfhVmPX/JgRaO8tyDGtQQ9xz5LwM06H4swE29pC/n+ZbOSN8Qhcn6f5rbq9sR2taLQsd6/EM
+ G0MZH1h0pus5ifXbNWCCEzSBV/8jO0ZUxbJzmsHe/uN/UgG8vQoBKLw/qIx8dCUMtn9TI2fv04k
+ u76xXX8TZAzFbA5i5jGoxR7lDOAjD40QRSeea/UuQQmSGtfolyyk0Q4FDnMzJtT7SC1VbrWVvMK
+ SjCQPfFHhAAqwgyzeA00h7VN/0HS8Pg7sC7vLTQftRmspcsGzbGlF2JNI/CqERdI2my9izOvlQW
+ yWpDCC1vCBOxkyRIFG6svl64IHUj5M7TvDwy5VLBeQPgXPkrULFkhD2bDAM3GEXxGdQp8iE5BU4
+ eM7pjS2djls52ijEugqrSGFmcLXe04uTECiHsql+DRF6pYPrPl2syYXBnmqxAL9PkMj2hEDL
+X-Authority-Analysis: v=2.4 cv=W8M4VQWk c=1 sm=1 tr=0 ts=6898d063 b=1 cx=c_pps
+ a=qoll8+KPOyaMroiJ2sR5sw==:117
+ a=qoll8+KPOyaMroiJ2sR5sw==:17
+ a=2OwXVqhp2XgA:10 a=yPCof4ZbAAAA:8 a=IAEjdJ3BLuIAbGQATbkA:9 cc=ntf
+ awl=host:12070
+X-Proofpoint-ORIG-GUID: KNSXnn_-usSM9SrCUyZ7hdpwkds2lVag
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1754828603; x=1755433403; darn=lists.osuosl.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=EVtfsPd4I2wMc65UP3tFTwUuyAKqcoFWuqbrTO5hc3I=;
- b=C90pVvYleOFFw8+7bMqHHrvlk6OfTbUQapmFEELqOhIQuppfdG8q/Sq6tSbU6gDcff
- ssVl3qyyGOl6p6+Qsq8fVebCN+bvN+cySN7VyslRvPUQgIE7VsClttOOVQQi++6+2pf1
- jKTZNXscf4qolnmq/n76fFw8vR55IWNYhIk70bQh3JlO7w4bM6O/S3KhWRhP/gZnlVAc
- qSzkEnavrYSvWxQbnL7sNLRWazT5GZBeow/w9FFFN/xeBx4l0/oWuk15pQBOinRmX4lI
- zxwYQErYpmAsijG10mARRfeUtxvcGZQsFbInsbQz/Rx/jGDJHmw9g27z2gi7IJN68/DY
- GhnQ==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ d=oracle.com; h=cc
+ :content-transfer-encoding:date:from:message-id:mime-version
+ :subject:to; s=corp-2025-04-25; bh=JEEs/WXZSr2jxbEeUZJMjc8Ylm+M2
+ pqjK649cPvZ/8g=; b=DtTuW4vEhRwkgDnw9r4qhnwy5eH4D9Uz/rP+h8PAoJnPy
+ wLLjUz2d5PUv9W/+KgYGziouHWax6Ntk7S8ETzycriDvvx+IXyHJl8eczCmWAgAy
+ +fDgG3hmXRv/BnkE6cc/zD2goLBkDVbe/oXIZQ3/5ibJm75der7B07zQ5EhYb0KC
+ 1GdZ2mxelPvK0uO1Y+6LGRu1ix+TkcHUoQHofzFK+Z+04FnYwnTBK4DUHgP1S+w/
+ 0W5EpFeSuoxcdc5r+lu+qQ1wJgrREeXuWk1BE98WAlR10IswbsUIVJmMfD0K1WP9
+ praGK56WV6ieEzC2CDp0A1CWvKMVi4sX+MVlNfjWQ==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=oracle.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=C90pVvYl
-Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-net] ixgbe: xsk: resolve the
- negative overflow of budget in ixgbe_xmit_zc
+ unprotected) header.d=oracle.com header.i=@oracle.com header.a=rsa-sha256
+ header.s=corp-2025-04-25 header.b=DtTuW4vE
+Subject: [Intel-wired-lan] [PATCH net] ixgbe: fix incorrect map used in eee
+ linkmode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -127,47 +143,43 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sat, Jul 26, 2025 at 3:04=E2=80=AFPM Jason Xing <kerneljasonxing@gmail.c=
-om> wrote:
->
-> From: Jason Xing <kernelxing@tencent.com>
->
-> Resolve the budget negative overflow which leads to returning true in
-> ixgbe_xmit_zc even when the budget of descs are thoroughly consumed.
->
-> Before this patch, when the budget is decreased to zero and finishes
-> sending the last allowed desc in ixgbe_xmit_zc, it will always turn back
-> and enter into the while() statement to see if it should keep processing
-> packets, but in the meantime it unexpectedly decreases the value again to
-> 'unsigned int (0--)', namely, UINT_MAX. Finally, the ixgbe_xmit_zc return=
-s
-> true, showing 'we complete cleaning the budget'. That also means
-> 'clean_complete =3D true' in ixgbe_poll.
->
-> The true theory behind this is if that budget number of descs are consume=
-d,
-> it implies that we might have more descs to be done. So we should return
-> false in ixgbe_xmit_zc to tell napi poll to find another chance to start
-> polling to handle the rest of descs. On the contrary, returning true here
-> means job done and we know we finish all the possible descs this time and
-> we don't intend to start a new napi poll.
->
-> It is apparently against our expectations. Please also see how
-> ixgbe_clean_tx_irq() handles the problem: it uses do..while() statement
-> to make sure the budget can be decreased to zero at most and the negative
-> overflow never happens.
->
-> The patch adds 'likely' because we rarely would not hit the loop codition
-> since the standard budget is 256.
->
-> Fixes: 8221c5eba8c1 ("ixgbe: add AF_XDP zero-copy Tx support")
-> Signed-off-by: Jason Xing <kernelxing@tencent.com>
-> Reviewed-by: Larysa Zaremba <larysa.zaremba@intel.com>
+incorrectly used ixgbe_lp_map in loops intended to populate the
+supported and advertised EEE linkmode bitmaps based on ixgbe_ls_map.
+This results in incorrect bit setting and potential out-of-bounds
+access, since ixgbe_lp_map and ixgbe_ls_map have different sizes
+and purposes.
 
-Hi Tony,
+ixgbe_lp_map[i] -> ixgbe_ls_map[i]
 
-Any update here? Thanks! I'm asking because I'm ready to send an afxdp
-patch series based on the patch :)
+Use ixgbe_ls_map for supported and advertised linkmodes, and keep
+ixgbe_lp_map usage only for link partner (lp_advertised) mapping.
 
-Thanks,
-jason
+Fixes: 9356b6db9d05 ("net: ethernet: ixgbe: Convert EEE to use linkmodes")
+Signed-off-by: Alok Tiwari <alok.a.tiwari@oracle.com>
+---
+ drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+index 25c3a09ad7f1..1a2f1bdb91aa 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+@@ -3571,13 +3571,13 @@ ixgbe_get_eee_fw(struct ixgbe_adapter *adapter, struct ethtool_keee *edata)
+ 
+ 	for (i = 0; i < ARRAY_SIZE(ixgbe_ls_map); ++i) {
+ 		if (hw->phy.eee_speeds_supported & ixgbe_ls_map[i].mac_speed)
+-			linkmode_set_bit(ixgbe_lp_map[i].link_mode,
++			linkmode_set_bit(ixgbe_ls_map[i].link_mode,
+ 					 edata->supported);
+ 	}
+ 
+ 	for (i = 0; i < ARRAY_SIZE(ixgbe_ls_map); ++i) {
+ 		if (hw->phy.eee_speeds_advertised & ixgbe_ls_map[i].mac_speed)
+-			linkmode_set_bit(ixgbe_lp_map[i].link_mode,
++			linkmode_set_bit(ixgbe_ls_map[i].link_mode,
+ 					 edata->advertised);
+ 	}
+ 
+-- 
+2.47.1
+
