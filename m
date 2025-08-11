@@ -1,120 +1,130 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 437F0B218CD
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Aug 2025 00:58:16 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id AA373B21985
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Aug 2025 01:48:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DC3D184219;
-	Mon, 11 Aug 2025 22:58:14 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6C5D061784;
+	Mon, 11 Aug 2025 23:48:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id OwmygfTbVyZH; Mon, 11 Aug 2025 22:58:14 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id rD5IatTIOguA; Mon, 11 Aug 2025 23:48:14 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AC1E884212
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 396AC61788
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1754953093;
-	bh=PVz4vozlHp9y1RUDr0UzibkJH7GSlun6qncNd3pvSP4=;
-	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
+	s=default; t=1754956094;
+	bh=U4XRSLXmEMw0woCxwm1Fun/oPeKwzB3yukJjNW3UI7g=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=46+5lgCSdELV4v6Xkm098BHdEMH3mFZPdC6LZnmzt09NN3OT9JA1E7W3KVMrhFVBC
-	 6lvXmfiQ+M5eFTqHM7Q7JbP+578O/+9gZEj/A7lg3S4cahPzzPZwpG+uryVLegkx0H
-	 +LQdkFM1pbmyr+kXQoE8Vvw0n4ilnka1VsqSkf6iMtQlp4pFmWDK1LEmKX2Ud6w0Z2
-	 mW6lxnwIWoL2GG7+LiQiUipA13XgHwSmroFaF830uiqqNauSsiRDGNtRbqdg/Bk3OD
-	 8h2lZWCF0s1fHgz88SkIy0mZUl+8oPuGX3t+ANo/Vbe1+2XrZWv40g5bra8lUxDMun
-	 qVjG9Im/hC/zQ==
+	b=nvt1j60+3su5YypUzaos6dZwJuBhdR4oZ48i3GDbre5m1xUezz4lIAUV+31v9MEia
+	 rWwFvlhqtBeuAPpIMYcS+PVdGa2vsIhDApGlPkWXUKUBrVMhP9tRFHJXhVaSh+nA+u
+	 fkjQFL3K5zsyGeBtl55v8QBV3jf32lVo4HzDzSyjhz01CmeFApGMPmoHc2o8GrIeYg
+	 LiOxmjQDHmIgWpbifpuXw5000sEYe8BcGzkwq72FsJEOIwRod9qf7qb9dX+ZDTQVdO
+	 BrydO9SEW/09lcd2uc0wDPcfSyJRKWL+/Uq13/gpAc6CD0U6oVHULtNhvge7QGLbMb
+	 6ahHyr1XkyEZw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AC1E884212;
-	Mon, 11 Aug 2025 22:58:13 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 396AC61788;
+	Mon, 11 Aug 2025 23:48:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 2544E158
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Aug 2025 22:58:12 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id BA194183
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Aug 2025 23:48:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0B11484205
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Aug 2025 22:58:12 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id ABE1884260
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Aug 2025 23:48:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id M4C5mzzrLEUk for <intel-wired-lan@lists.osuosl.org>;
- Mon, 11 Aug 2025 22:58:11 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::132; helo=mail-il1-x132.google.com;
- envelope-from=kerneljasonxing@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0A5A9841F7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0A5A9841F7
-Received: from mail-il1-x132.google.com (mail-il1-x132.google.com
- [IPv6:2607:f8b0:4864:20::132])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0A5A9841F7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Aug 2025 22:58:10 +0000 (UTC)
-Received: by mail-il1-x132.google.com with SMTP id
- e9e14a558f8ab-3e40ac40940so23573885ab.0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Aug 2025 15:58:10 -0700 (PDT)
+ id XmLkH_-C8lYw for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 11 Aug 2025 23:48:11 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::62d; helo=mail-pl1-x62d.google.com;
+ envelope-from=joe@dama.to; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 20D3584244
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 20D3584244
+Received: from mail-pl1-x62d.google.com (mail-pl1-x62d.google.com
+ [IPv6:2607:f8b0:4864:20::62d])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 20D3584244
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Aug 2025 23:48:10 +0000 (UTC)
+Received: by mail-pl1-x62d.google.com with SMTP id
+ d9443c01a7336-24099fade34so35367375ad.0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Aug 2025 16:48:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754953090; x=1755557890;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=PVz4vozlHp9y1RUDr0UzibkJH7GSlun6qncNd3pvSP4=;
- b=wsg7cYz2HziVGREQ6rxf9wGi1IDUNyLujO/JVGfpXjbSiLEOFbZtat5GoKFjjd/u+V
- rw575LnZV/YawG6shdMYi/ITnBji1nq+Sve6ZYBkd4mi5X2Vr4ziX34WPRThiCtwc3GA
- KXVIFJwliDk9ps0mcgbViAc3JGe+2xMlKekm9ueVInftfOcvVvIM79NGKVObpbRjTNls
- v9q6qSqLkk6brt1DcXMeAqtbVaV2G1LOTzsi1t3ilu64au8uCLO1zFH55uDQpvqU9WtD
- ZNGpbZiLXF4BBuFSvGsG44PwvbzjjS7aJXo6vEzx/d0DESBDEdiRGqUj2c8yGanjq0fm
- suVw==
+ d=1e100.net; s=20230601; t=1754956090; x=1755560890;
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=U4XRSLXmEMw0woCxwm1Fun/oPeKwzB3yukJjNW3UI7g=;
+ b=a2mtWb3BXx9YbhXy/n6CKIiku6bunFJYJ3petXsVwfRzA+SkdCTXP5omaLbqQR45Gs
+ bX/AINghRaFCFsU+bfvWOPQesapeHGkx4MOyIuhQckGTWSOL/6LCHnle8xx9ixvJYGm6
+ NGioEbxzSnrqr5Fn7BAb3SinXXYMg4j3Qdi7qwq9kajgz9OLH6FSd/5f/4DxlhARxudw
+ 2Ji7DRfzSKYutBPCO4FDskpYfoWUV2JeT1rdvZRPc3ojKQqVyqxLz/CmkrGVv9ochGXj
+ XF0OqBK2HgxQh+MsNLZ68MTS5D64BZdr3cjnOfpmaI120n43hf7gz/kmQgX9ElSI2Oup
+ Sp2g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX1a6jir9/oDG3djQ3m9m94o7O9slM46sRjswD2R2wjH9g1JVCmgPgiccDzbnhcjWeHqEIJ6Kd8Vqg5EBuRefI=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yzzjm9zuYwgm99YH6rTdkDdogV/zFtCVIaUi4r7PmHF9zhXV7ef
- GnGlJAzSN4XYvSN/xm0GlQ4CGY1yfaCY/W1ShzQpbW+6r501ozltDXd7hArx59QR/3p/T0SU59U
- qIzWUhUAkUZNl0lkWmafO7vxq6jOVkqo=
-X-Gm-Gg: ASbGnctDzDVF//Yz8Frkcnyi5bUZFDLxPLwQmM/N+UK6SFBLRV/u3DetGiToWWl2rAM
- o3uyaJ20TpCopH5/q1DivkBm0N/Pvv3QFyyDS1GngbRVh9rHNYbgVnbC/ka2m5dygmS85/FqRxY
- 7UN5DYTrL2U/+e4ROAQI1vz5Z8S+lG7St/h8JSJy40UUEdNhRcKGFoPNGMxAzrEKW3hYOO1PigR
- 5TLpQ==
-X-Google-Smtp-Source: AGHT+IHvOitDXKIs4WhQwxzhDVxXHbsLiBvTJ/NLngi6Pf7bissC+I+Jd34xd5hW6IYpkSwi6u/ca/v8Yk0jjErbqSg=
-X-Received: by 2002:a05:6e02:380f:b0:3e5:5952:80b9 with SMTP id
- e9e14a558f8ab-3e55acbab77mr20629895ab.11.1754953089909; Mon, 11 Aug 2025
- 15:58:09 -0700 (PDT)
+ AJvYcCVTxe2nuTzDTnmDplK/nTPWAu4f0qBQvUWzj3CWZcju5B2i66HzEeVmW2xEVy0IqPh0IAsG9h6dZWSSThiX00Q=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yw9nJygn8HKuvKyaqtiG5HD+inzDNcwehLpyieHV1Tx34vZvN3p
+ o6gULcalBT+Qeamvf7yxxmkbFvV0TZtHblO+JUKbb47keXXIrQP6jFUIJbfzb/8cW+Y=
+X-Gm-Gg: ASbGnctowmLjNkdG5SC0SO904+fRqnjdZzlOAnVcqsTUrp0/TkZ/DKCNhLxWhHkWZAU
+ rWSt8mjppbNgTLhIYb6W9nrqwKhYxy4t8YlrJHP5WLY3FFL47f29yme6NhDHZpAyAatXY2a0NAr
+ jNb57vnATJAVH8bWucAVNpZPUovtmNdQmqM7aKxeQmronz5WPp6Z/CjgxfhDtNkzSXR2wiMilLg
+ nAD07fJXZBif87Z/7NWMXxm5zPbG5RMMnrzx+2CMB+Gw0odFacus+g/DEOrAjA4fqKF9ubn8obo
+ 4OK8L0/HS+DhsPPq2vss5mZ73eu5BQHKuvkFLDVaAh6hQd9H5GKlLW9mW0UzOJJmU3FdIGSuJKk
+ kS23896r0aPHCHB5mfAOx1pHhF5tJskr53parn/aSjtkzDbSAIKYj8gD30t1Lu8DtuUU=
+X-Google-Smtp-Source: AGHT+IG07aJWSFz0EKwHxV+0m672OZTjD+dXJRBt0J7U3ZDXaKrxKPz/mMfIbtp585GM0LtN28ugxQ==
+X-Received: by 2002:a17:903:1ae6:b0:240:981d:a4f5 with SMTP id
+ d9443c01a7336-242fc357fc0mr20275505ad.42.1754956090207; 
+ Mon, 11 Aug 2025 16:48:10 -0700 (PDT)
+Received: from MacBook-Air.local (c-73-222-201-58.hsd1.ca.comcast.net.
+ [73.222.201.58]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2423783a84bsm252085905ad.51.2025.08.11.16.48.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 11 Aug 2025 16:48:09 -0700 (PDT)
+Date: Mon, 11 Aug 2025 16:48:07 -0700
+From: Joe Damato <joe@dama.to>
+To: Tianyu Xu <xtydtc@gmail.com>
+Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ andrew+netdev@lunn.ch, kuba@kernel.org, sdf@fomichev.me,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, tianyxu@cisco.com
+Message-ID: <aJqBN0xtMzt_cA87@MacBook-Air.local>
+Mail-Followup-To: Joe Damato <joe@dama.to>, Tianyu Xu <xtydtc@gmail.com>,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ andrew+netdev@lunn.ch, kuba@kernel.org, sdf@fomichev.me,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, tianyxu@cisco.com
+References: <20250811114153.25460-1-tianyxu@cisco.com>
 MIME-Version: 1.0
-References: <20250726070356.58183-1-kerneljasonxing@gmail.com>
- <CAL+tcoAAq9ccjUybzxoYbVG6i3Ev1C098aGKWvAvKMUeFyG3Tw@mail.gmail.com>
- <14d36e48-251d-4dbf-aafe-57259003e064@intel.com>
-In-Reply-To: <14d36e48-251d-4dbf-aafe-57259003e064@intel.com>
-From: Jason Xing <kerneljasonxing@gmail.com>
-Date: Tue, 12 Aug 2025 06:57:32 +0800
-X-Gm-Features: Ac12FXwQQL3r3LVvQt-AVF5C_Z3s4vocuCAGT8fKu417DwnUgPHzE98nCRDIaVY
-Message-ID: <CAL+tcoDNoZH_rnC9th8od-qu2QE8nWHgiWEATA8SVs_jc9rJnA@mail.gmail.com>
-To: Tony Nguyen <anthony.l.nguyen@intel.com>
-Cc: przemyslaw.kitszel@intel.com, larysa.zaremba@intel.com, 
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com, 
- kuba@kernel.org, pabeni@redhat.com, bjorn@kernel.org, 
- maciej.fijalkowski@intel.com, intel-wired-lan@lists.osuosl.org, 
- netdev@vger.kernel.org, Jason Xing <kernelxing@tencent.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250811114153.25460-1-tianyxu@cisco.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1754953090; x=1755557890; darn=lists.osuosl.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=PVz4vozlHp9y1RUDr0UzibkJH7GSlun6qncNd3pvSP4=;
- b=i+eoP/LuFj3o+q6SO+ARkAaz5USADme4YJ1ZyN+VICqu0jrnrebQNnUQ1GAWxvWxZv
- yAi2yt+qM4V9KGGWSfE3V4iy+nyfx/DIaUrvLifr5K8dCbusss7arhvWD4Xn4WDt7utN
- /h7i81WoLmHUCpAM1ltUMmJsyus8otiIsQdze38Yf0tku+o0bcNMoWZKq738HyZZSSPW
- O/WVzRQM7jkmqtONQF0WNdOgjMjCo49bma61iQufuzu+oSv+VlzpMASFXh5mk+qLe0mI
- p1I0/xj83KBj6oU7yxnQnDMjFWdS25/jUB6AbBXXDrlI+f5iOPthSjUyBGAhBN2v/K5F
- 28ww==
+ d=dama-to.20230601.gappssmtp.com; s=20230601; t=1754956090; x=1755560890;
+ darn=lists.osuosl.org; 
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=U4XRSLXmEMw0woCxwm1Fun/oPeKwzB3yukJjNW3UI7g=;
+ b=hgkLULaJLIj1hoUOxB52w7SQvujbnVGz2jkYeQVJWaGrFyQ7jSRlsLFzbORorKncRE
+ pjS+l5yMfUdQpVCzAb+bDdXMnsgFFVivor9TeN+6d4MRWAIdiIYVHDsZq3ZdrxnHXAyS
+ D1ealB21SVGx1Fpnaz9f4mVHjlDKeouzCBl2VmW2L86y9QCtgkBoQLZ22DJaKZfNLRKw
+ M+q6oNWEXd6cd4DdWpRi+uvJTLan0Z5APQPkbc53GOYIDdN8QihL9z8LFQh0I1Od9iP2
+ rNV83wGoV3QGp1IAlmDHE+7qQJ9960xmC0kYsBNuFbx4t9kdLOIl8tl9ujvsO5XKnwn0
+ AsQw==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=gmail.com
+ dmarc=none (p=none dis=none)
+ header.from=dama.to
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=i+eoP/Lu
-Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-net] ixgbe: xsk: resolve the
- negative overflow of budget in ixgbe_xmit_zc
+ dkim=pass (2048-bit key,
+ unprotected) header.d=dama-to.20230601.gappssmtp.com
+ header.i=@dama-to.20230601.gappssmtp.com header.a=rsa-sha256
+ header.s=20230601 header.b=hgkLULaJ
+Subject: Re: [Intel-wired-lan] [PATCH] igb: Fix NULL pointer dereference in
+ ethtool loopback test
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -130,77 +140,40 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Aug 12, 2025 at 5:38=E2=80=AFAM Tony Nguyen <anthony.l.nguyen@intel=
-.com> wrote:
->
->
->
-> On 8/10/2025 5:22 AM, Jason Xing wrote:
-> > On Sat, Jul 26, 2025 at 3:04=E2=80=AFPM Jason Xing <kerneljasonxing@gma=
-il.com> wrote:
-> >>
-> >> From: Jason Xing <kernelxing@tencent.com>
-> >>
-> >> Resolve the budget negative overflow which leads to returning true in
-> >> ixgbe_xmit_zc even when the budget of descs are thoroughly consumed.
-> >>
-> >> Before this patch, when the budget is decreased to zero and finishes
-> >> sending the last allowed desc in ixgbe_xmit_zc, it will always turn ba=
-ck
-> >> and enter into the while() statement to see if it should keep processi=
-ng
-> >> packets, but in the meantime it unexpectedly decreases the value again=
- to
-> >> 'unsigned int (0--)', namely, UINT_MAX. Finally, the ixgbe_xmit_zc ret=
-urns
-> >> true, showing 'we complete cleaning the budget'. That also means
-> >> 'clean_complete =3D true' in ixgbe_poll.
-> >>
-> >> The true theory behind this is if that budget number of descs are cons=
-umed,
-> >> it implies that we might have more descs to be done. So we should retu=
-rn
-> >> false in ixgbe_xmit_zc to tell napi poll to find another chance to sta=
-rt
-> >> polling to handle the rest of descs. On the contrary, returning true h=
-ere
-> >> means job done and we know we finish all the possible descs this time =
-and
-> >> we don't intend to start a new napi poll.
-> >>
-> >> It is apparently against our expectations. Please also see how
-> >> ixgbe_clean_tx_irq() handles the problem: it uses do..while() statemen=
-t
-> >> to make sure the budget can be decreased to zero at most and the negat=
-ive
-> >> overflow never happens.
-> >>
-> >> The patch adds 'likely' because we rarely would not hit the loop codit=
-ion
-> >> since the standard budget is 256.
-> >>
-> >> Fixes: 8221c5eba8c1 ("ixgbe: add AF_XDP zero-copy Tx support")
-> >> Signed-off-by: Jason Xing <kernelxing@tencent.com>
-> >> Reviewed-by: Larysa Zaremba <larysa.zaremba@intel.com>
-> >
-> > Hi Tony,
-> >
-> > Any update here? Thanks! I'm asking because I'm ready to send an afxdp
-> > patch series based on the patch :)
->
-> Hi Jason,
->
-> I have this slated to be part of my next net series. I do already have
-> this patch applied/staged on the Intel tree [1] (dev-queue branch). You
-> can base it on that and send the changes now; I'll ensure that this
-> patch is merged before sending the other series.
->
-> Thanks,
-> Tony
->
-> [1] https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git/
+On Mon, Aug 11, 2025 at 07:41:53PM +0800, Tianyu Xu wrote:
+> The igb driver currently causes a NULL pointer dereference
+> when executing the ethtool loopback test. This occurs because
+> there is no associated q_vector for the test ring when it is
+> set up, as interrupts are typically not added to the test rings.
+> 
+> Since commit 5ef44b3cb43b removed the napi_id assignment in
+> __xdp_rxq_info_reg(), there is no longer a need to pass a napi_id.
+> Therefore, simply use 0 as the final parameter.
+> 
+> Signed-off-by: Tianyu Xu <tianyxu@cisco.com>
+> ---
+>  drivers/net/ethernet/intel/igb/igb_main.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+> index a9a7a94ae..453deb6d1 100644
+> --- a/drivers/net/ethernet/intel/igb/igb_main.c
+> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
+> @@ -4453,8 +4453,7 @@ int igb_setup_rx_resources(struct igb_ring *rx_ring)
+>  	if (xdp_rxq_info_is_reg(&rx_ring->xdp_rxq))
+>  		xdp_rxq_info_unreg(&rx_ring->xdp_rxq);
+>  	res = xdp_rxq_info_reg(&rx_ring->xdp_rxq, rx_ring->netdev,
+> -			       rx_ring->queue_index,
+> -			       rx_ring->q_vector->napi.napi_id);
+> +			       rx_ring->queue_index, 0);
+>  	if (res < 0) {
+>  		dev_err(dev, "Failed to register xdp_rxq index %u\n",
+>  			rx_ring->queue_index);
 
-Great, thanks for the pointer!
+This LGTM but will probably need to be re-sent with a Fixes tag.
 
-Thanks,
-Jason
+See: https://www.kernel.org/doc/html/v6.16/process/maintainer-netdev.html#tl-dr
+
+If you repost, feel free to add:
+
+Reviewed-by: Joe Damato <joe@dama.to>
