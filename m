@@ -2,108 +2,97 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E7AD5B21193
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 11 Aug 2025 18:20:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A5C67B211E8
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 11 Aug 2025 18:28:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 97975414B4;
-	Mon, 11 Aug 2025 16:20:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 48BE74140A;
+	Mon, 11 Aug 2025 16:28:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id WXmJcTtkP7X5; Mon, 11 Aug 2025 16:20:54 +0000 (UTC)
+ id tWtR2uXzCZMB; Mon, 11 Aug 2025 16:28:34 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E2DB8414B3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AA5B64140B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1754929253;
-	bh=Wvuy6f4Et181R8FQVVI9EgvdDokYzoLm/J8PZv98554=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1754929714;
+	bh=NwmbUkUgL5DMkFILXXFXIxsHkXgpjTIjqTL5QZR9YZU=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=bsORRFluAXqlbBC5HZMHfH5etiVWaIM8QhtchzbselqmctPbRASzMfOIjaWi7xYT+
-	 swdaEveYUvtvUG5DbH2oAKFsfynv1/4vdmycVBSGzKhvai58Qn297gdsu6CrWLgxTd
-	 Djgqxb/FOsk792JTIVju3RqSb1ehZnQjOCe9VYBK2fhAc0fjm3XMPl6dnuIPqJps+9
-	 GnUtbB84NbJu/GzHYTtrvLotLNf+R0QvTu2stSm5bs2cY6oU3qiF3QHCIs5qCLcPRp
-	 S1XqHF32b8mw9m4+KqM38OyIXIBGSvGfWm5diFT/19AKLczLg0LBgymuCh1/9B8T27
-	 ixRnZg17oQPTA==
+	b=CHpa1195yhxdjbzQrrNCYgBanS1cVCWo14uSiSml+zy1S2eEnt5S7+Kt171l49I9l
+	 ZphpsA/fDFBzbT+Hz4/FPMniBP2lDXvVNCq00Q4w/AnhPaOX9FpgpR8zmNvpqyYQly
+	 GqXPI3JYL5JxqGvMcvKI6m1/xJJXZEYp5jte+dNskLzZWpbhoCXpSezouylOVSLT0s
+	 WYPVxy7HvZu3tfbdetMyN2s3k7pfzUqMEYINvviCgVp753xrirN6+QQsSF0SvOv1Nc
+	 P3A4Dap7tUrXpi3RsrEFy9HqgbBOzoF6+TmLq4aJrWcVM7+ewSGdgCOck91rse6Q87
+	 afIk/HBT32/+w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E2DB8414B3;
-	Mon, 11 Aug 2025 16:20:53 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id AA5B64140B;
+	Mon, 11 Aug 2025 16:28:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 13F9D154
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Aug 2025 16:20:52 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id DC6B4138
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Aug 2025 16:28:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 06203401DF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Aug 2025 16:20:52 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id CDC1D83EB8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Aug 2025 16:28:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vBNK4peWvfTr for <intel-wired-lan@lists.osuosl.org>;
- Mon, 11 Aug 2025 16:20:51 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
- helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 5601E400FB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5601E400FB
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5601E400FB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Aug 2025 16:20:51 +0000 (UTC)
-X-CSE-ConnectionGUID: lfj6gGplR0alm8sVMjombg==
-X-CSE-MsgGUID: lgZ8ARBhR3+5P3v6AgzB2A==
-X-IronPort-AV: E=McAfee;i="6800,10657,11518"; a="56899741"
-X-IronPort-AV: E=Sophos;i="6.17,278,1747724400"; d="scan'208";a="56899741"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Aug 2025 09:13:41 -0700
-X-CSE-ConnectionGUID: MwvZxrYnQ+eXfLz7etPE7g==
-X-CSE-MsgGUID: lYtQkMqMQ+yHvXWeVGkifA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.17,278,1747724400"; d="scan'208";a="165163259"
-Received: from newjersey.igk.intel.com ([10.102.20.203])
- by orviesa006.jf.intel.com with ESMTP; 11 Aug 2025 09:13:37 -0700
-From: Alexander Lobakin <aleksander.lobakin@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: Alexander Lobakin <aleksander.lobakin@intel.com>,
- Michal Kubiak <michal.kubiak@intel.com>,
- Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>, Simon Horman <horms@kernel.org>,
- nxne.cnse.osdt.itp.upstreaming@intel.com, bpf@vger.kernel.org,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org
-Date: Mon, 11 Aug 2025 18:10:44 +0200
-Message-ID: <20250811161044.32329-14-aleksander.lobakin@intel.com>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20250811161044.32329-1-aleksander.lobakin@intel.com>
-References: <20250811161044.32329-1-aleksander.lobakin@intel.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id E_c62SzTFs-p for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 11 Aug 2025 16:28:32 +0000 (UTC)
+X-Greylist: delayed 406 seconds by postgrey-1.37 at util1.osuosl.org;
+ Mon, 11 Aug 2025 16:28:32 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 37B5C83EC3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 37B5C83EC3
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
+ helo=tor.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 37B5C83EC3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Aug 2025 16:28:32 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id 86F8D60051;
+ Mon, 11 Aug 2025 16:21:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CB507C4CEED;
+ Mon, 11 Aug 2025 16:21:42 +0000 (UTC)
+Date: Mon, 11 Aug 2025 09:21:42 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Vadim Fedorenko <vadim.fedorenko@linux.dev>
+Cc: Andrew Lunn <andrew@lunn.ch>, Michael Chan <michael.chan@broadcom.com>,
+ Pavan Chebbi <pavan.chebbi@broadcom.com>, Tariq Toukan <tariqt@nvidia.com>,
+ Gal Pressman <gal@nvidia.com>, intel-wired-lan@lists.osuosl.org, Donald
+ Hunter <donald.hunter@gmail.com>, Carolina Jubran <cjubran@nvidia.com>,
+ Paolo Abeni <pabeni@redhat.com>, Simon Horman <horms@kernel.org>,
+ netdev@vger.kernel.org
+Message-ID: <20250811092142.5b9288d5@kernel.org>
+In-Reply-To: <34da824b-1922-418f-953f-99287443b088@linux.dev>
+References: <20250807155924.2272507-1-vadfed@meta.com>
+ <20250808131522.0dc26de4@kernel.org>
+ <ec9e7da6-30f0-40aa-8cb7-bfa0ff814126@linux.dev>
+ <20250811084142.459a9a75@kernel.org>
+ <34da824b-1922-418f-953f-99287443b088@linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1754929251; x=1786465251;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=CjvGV5hPrqqR5jpzUsV/mVpTr+53npZ/zD34Fh+5nM0=;
- b=SSjABsmkc0Uzveltawcv6E+8WI1Kx3Ggy+C28PYn51QseAM40Z6nebba
- E4sposPADE9D9EJiSTCB798r4RTsd57fPKk1Leha4ptXWTMQNBqqDk/2F
- aDBtTauISlJQSB7i5uwjDCDySL+pELP3tCyx/e+0sI+s/pcN+t7HqFx/n
- +8aFkcMfFeH2TMoJ0YRzvekttLn3wrqMuHW0nrLeB9qoDgIeQBpU+twH6
- fczq22vZGf2aV7doGcsDrFRjP/jBSeHKi1u4pYWNNHqt15LYZVeUAU/4V
- qjk+pvzdfGo1cv+cxGFOgCgKW0ipngozqSQM1ab6fqeHv3X6fmXpSGieg
- A==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=SSjABsmk
-Subject: [Intel-wired-lan] [PATCH iwl-next v4 13/13] idpf: add XDP RSS hash
- hint
+ d=kernel.org; s=k20201202; t=1754929303;
+ bh=TppvVuRqgbxW7gVpzMk+P0ZaW9d9lAQRUKQyT5Z2v1w=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=tCHyhKOOyF5jfDyd4f7gLKaTRa22khucAuazbs/JJoRwEFEWrpjyovdqZZxgwQPIR
+ NYyrEmK/enM5DSfwlSL453C6X48a2bPq9lNx0e+XhzRP7xveA4HGoNAvXe/155VIHB
+ iUvM63AZRadVkZNstmq2kKfClquu0JESlbmap5wumaVJoKuLiT+JxYq3ZXRw5dm5KC
+ f9sJYxxWUK5ZD916wCc8w8VF5gesTixTx61okipCy4ZbRgwTkT29oM00PfVsLqmJ/F
+ emQDqSAuS1skpGfFTv++fJxJeAWWShI7WlAu2aPmnoC20+tNejIFpYCtbMGgKma7ET
+ CedIGlBjG+IIQ==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=tCHyhKOO
+Subject: Re: [Intel-wired-lan] [RFC PATCH v4] ethtool: add FEC bins
+ histogramm report
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -119,135 +108,20 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add &xdp_metadata_ops with a callback to get RSS hash hint from the
-descriptor. Declare the splitq 32-byte descriptor as 4 u64s to parse
-them more efficiently when possible.
+On Mon, 11 Aug 2025 17:08:34 +0100 Vadim Fedorenko wrote:
+> On 11/08/2025 16:41, Jakub Kicinski wrote:
+> > On Sun, 10 Aug 2025 11:52:55 +0100 Vadim Fedorenko wrote:  
+> >> Well, the current implementation is straight forward. Do you propose to
+> >> have drivers fill in the amount of lanes they have histogram for, or
+> >> should we always put array of ETHTOOL_MAX_LANES values and let
+> >> user-space to figure out what to show?  
+> > 
+> > Similar logic to what you have, you can move the put outside of the
+> > loop, let the loop break or exit, and then @j will tell you how many
+> > entries to fill..  
+> 
+> I see. Fair, I can do it. After this change there will be no need to
+> change the code in the reply size calculation, right?
 
-Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
----
- drivers/net/ethernet/intel/idpf/xdp.h | 64 +++++++++++++++++++++++++++
- drivers/net/ethernet/intel/idpf/xdp.c | 28 +++++++++++-
- 2 files changed, 91 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/idpf/xdp.h b/drivers/net/ethernet/intel/idpf/xdp.h
-index db8ecc1843fe..66ad83a0e85e 100644
---- a/drivers/net/ethernet/intel/idpf/xdp.h
-+++ b/drivers/net/ethernet/intel/idpf/xdp.h
-@@ -99,6 +99,70 @@ static inline void idpf_xdp_tx_finalize(void *_xdpsq, bool sent, bool flush)
- 	libeth_xdpsq_unlock(&xdpsq->xdp_lock);
- }
- 
-+struct idpf_xdp_rx_desc {
-+	aligned_u64		qw0;
-+#define IDPF_XDP_RX_BUFQ	BIT_ULL(47)
-+#define IDPF_XDP_RX_GEN		BIT_ULL(46)
-+#define IDPF_XDP_RX_LEN		GENMASK_ULL(45, 32)
-+#define IDPF_XDP_RX_PT		GENMASK_ULL(25, 16)
-+
-+	aligned_u64		qw1;
-+#define IDPF_XDP_RX_BUF		GENMASK_ULL(47, 32)
-+#define IDPF_XDP_RX_EOP		BIT_ULL(1)
-+
-+	aligned_u64		qw2;
-+#define IDPF_XDP_RX_HASH	GENMASK_ULL(31, 0)
-+
-+	aligned_u64		qw3;
-+} __aligned(4 * sizeof(u64));
-+static_assert(sizeof(struct idpf_xdp_rx_desc) ==
-+	      sizeof(struct virtchnl2_rx_flex_desc_adv_nic_3));
-+
-+#define idpf_xdp_rx_bufq(desc)	!!((desc)->qw0 & IDPF_XDP_RX_BUFQ)
-+#define idpf_xdp_rx_gen(desc)	!!((desc)->qw0 & IDPF_XDP_RX_GEN)
-+#define idpf_xdp_rx_len(desc)	FIELD_GET(IDPF_XDP_RX_LEN, (desc)->qw0)
-+#define idpf_xdp_rx_pt(desc)	FIELD_GET(IDPF_XDP_RX_PT, (desc)->qw0)
-+#define idpf_xdp_rx_buf(desc)	FIELD_GET(IDPF_XDP_RX_BUF, (desc)->qw1)
-+#define idpf_xdp_rx_eop(desc)	!!((desc)->qw1 & IDPF_XDP_RX_EOP)
-+#define idpf_xdp_rx_hash(desc)	FIELD_GET(IDPF_XDP_RX_HASH, (desc)->qw2)
-+
-+static inline void
-+idpf_xdp_get_qw0(struct idpf_xdp_rx_desc *desc,
-+		 const struct virtchnl2_rx_flex_desc_adv_nic_3 *rxd)
-+{
-+#ifdef __LIBETH_WORD_ACCESS
-+	desc->qw0 = ((const typeof(desc))rxd)->qw0;
-+#else
-+	desc->qw0 = ((u64)le16_to_cpu(rxd->pktlen_gen_bufq_id) << 32) |
-+		    ((u64)le16_to_cpu(rxd->ptype_err_fflags0) << 16);
-+#endif
-+}
-+
-+static inline void
-+idpf_xdp_get_qw1(struct idpf_xdp_rx_desc *desc,
-+		 const struct virtchnl2_rx_flex_desc_adv_nic_3 *rxd)
-+{
-+#ifdef __LIBETH_WORD_ACCESS
-+	desc->qw1 = ((const typeof(desc))rxd)->qw1;
-+#else
-+	desc->qw1 = ((u64)le16_to_cpu(rxd->buf_id) << 32) |
-+		    rxd->status_err0_qw1;
-+#endif
-+}
-+
-+static inline void
-+idpf_xdp_get_qw2(struct idpf_xdp_rx_desc *desc,
-+		 const struct virtchnl2_rx_flex_desc_adv_nic_3 *rxd)
-+{
-+#ifdef __LIBETH_WORD_ACCESS
-+	desc->qw2 = ((const typeof(desc))rxd)->qw2;
-+#else
-+	desc->qw2 = ((u64)rxd->hash3 << 24) |
-+		    ((u64)rxd->ff2_mirrid_hash2.hash2 << 16) |
-+		    le16_to_cpu(rxd->hash1);
-+#endif
-+}
-+
- void idpf_xdp_set_features(const struct idpf_vport *vport);
- 
- int idpf_xdp(struct net_device *dev, struct netdev_bpf *xdp);
-diff --git a/drivers/net/ethernet/intel/idpf/xdp.c b/drivers/net/ethernet/intel/idpf/xdp.c
-index d2549f8b8e24..c143b5dc9e2b 100644
---- a/drivers/net/ethernet/intel/idpf/xdp.c
-+++ b/drivers/net/ethernet/intel/idpf/xdp.c
-@@ -340,12 +340,38 @@ int idpf_xdp_xmit(struct net_device *dev, int n, struct xdp_frame **frames,
- 				       idpf_xdp_tx_finalize);
- }
- 
-+static int idpf_xdpmo_rx_hash(const struct xdp_md *ctx, u32 *hash,
-+			      enum xdp_rss_hash_type *rss_type)
-+{
-+	const struct libeth_xdp_buff *xdp = (typeof(xdp))ctx;
-+	struct idpf_xdp_rx_desc desc __uninitialized;
-+	const struct idpf_rx_queue *rxq;
-+	struct libeth_rx_pt pt;
-+
-+	rxq = libeth_xdp_buff_to_rq(xdp, typeof(*rxq), xdp_rxq);
-+
-+	idpf_xdp_get_qw0(&desc, xdp->desc);
-+
-+	pt = rxq->rx_ptype_lkup[idpf_xdp_rx_pt(&desc)];
-+	if (!libeth_rx_pt_has_hash(rxq->xdp_rxq.dev, pt))
-+		return -ENODATA;
-+
-+	idpf_xdp_get_qw2(&desc, xdp->desc);
-+
-+	return libeth_xdpmo_rx_hash(hash, rss_type, idpf_xdp_rx_hash(&desc),
-+				    pt);
-+}
-+
-+static const struct xdp_metadata_ops idpf_xdpmo = {
-+	.xmo_rx_hash		= idpf_xdpmo_rx_hash,
-+};
-+
- void idpf_xdp_set_features(const struct idpf_vport *vport)
- {
- 	if (!idpf_is_queue_model_split(vport->rxq_model))
- 		return;
- 
--	libeth_xdp_set_features_noredir(vport->netdev);
-+	libeth_xdp_set_features_noredir(vport->netdev, &idpf_xdpmo);
- }
- 
- static int idpf_xdp_setup_prog(struct idpf_vport *vport,
--- 
-2.50.1
-
+I think you need to split in two, one for the normal val and one for
+the array.
