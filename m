@@ -2,97 +2,107 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A8FEB2115E
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 11 Aug 2025 18:16:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A698BB2117A
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 11 Aug 2025 18:20:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 07F87411C9;
-	Mon, 11 Aug 2025 16:16:39 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5C775415B6;
+	Mon, 11 Aug 2025 16:19:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id gO0Dv6zuHN69; Mon, 11 Aug 2025 16:16:38 +0000 (UTC)
+ id v5xV4gbFIP5w; Mon, 11 Aug 2025 16:19:58 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 598EE411CB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 097A0414B9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1754928998;
-	bh=dBTQ/TlTb6tmtqhEpFdAkTjWlfA/en264UPaQXZjsno=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=iqDFac1GD8ZkkzTKmdds/bajbVAS+CedqAGnDImUY5s/vPu3lP/ebEGrVVJtH5tkX
-	 Ppo9h8sSxmsb1Ayq6ZoVrYbZFvtYjIo7JSLLXcH/hkf3Z5AVGvqiKaVwcgya2CAAU5
-	 bXxHjxD/aNi2LJXZUX3gan+Fy5/dVQH4vv8kg7wYfnAOeBo4dUTN5pm5WNskbhJ5YY
-	 GrUW6MZElxmN9S39cMt9WqaQrKzojowr4CXnnVIPZCcqOhIUzlID9/BWGlppqyTApt
-	 HlMv+CtRraiWs5rGiZjPC26vH5igB/JYaUZubKeqx+n3+7DmKtfJCil+onIDWfBvpX
-	 GSP8tk0+xQ4Kg==
+	s=default; t=1754929198;
+	bh=wVKMhgbh7ir8154LuTLQHqQ2Wl5nJUbeKfKaVJxjoew=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=uY1cRjMercyoijAA7n+ZgWAtwskcdWegpYf14DhyqCc8BWvd9EoInapIamzsWH6FR
+	 zcGYDGZo8fbNEEzQCPYWcslYkMd9mN8RwSnu3AqUdoBF+P3D+MN71/qSiRUHqNViJ2
+	 2x08jAwJuWL4wSVcboRoKL1Id1P1I7FIdMZba5/VtZB3CReLnIGXcaB9WEvnrQfW5U
+	 2/YiNrdlGYnnLPBmAxhAc9W2k5DmHF+JHGhmhGfqdfv1EvEPPIDZ899/1QAuTq/kk/
+	 4wJ35XZ6ixGZSLQbQe9xHXGCRRYMNF8gQaoy+k0CkPhBR54XNkO1Xnh1F7ftRx46Ox
+	 CYQC8YtH3zT8g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 598EE411CB;
-	Mon, 11 Aug 2025 16:16:38 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 097A0414B9;
+	Mon, 11 Aug 2025 16:19:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id A89369E6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Aug 2025 16:16:36 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id DD8B2154
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Aug 2025 16:19:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 99D096143E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Aug 2025 16:16:36 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id CF83A61068
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Aug 2025 16:19:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dEVWEzJjuFyM for <intel-wired-lan@lists.osuosl.org>;
- Mon, 11 Aug 2025 16:16:36 +0000 (UTC)
-X-Greylist: delayed 475 seconds by postgrey-1.37 at util1.osuosl.org;
- Mon, 11 Aug 2025 16:16:35 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B3CDD60EB8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B3CDD60EB8
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=91.218.175.189;
- helo=out-189.mta0.migadu.com; envelope-from=vadim.fedorenko@linux.dev;
+ id YVI13zoNFD1z for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 11 Aug 2025 16:19:54 +0000 (UTC)
+X-Greylist: delayed 429 seconds by postgrey-1.37 at util1.osuosl.org;
+ Mon, 11 Aug 2025 16:19:54 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A24C16143E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A24C16143E
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
+ helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
  receiver=<UNKNOWN> 
-Received: from out-189.mta0.migadu.com (out-189.mta0.migadu.com
- [91.218.175.189])
- by smtp3.osuosl.org (Postfix) with ESMTPS id B3CDD60EB8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Aug 2025 16:16:35 +0000 (UTC)
-Message-ID: <34da824b-1922-418f-953f-99287443b088@linux.dev>
-Date: Mon, 11 Aug 2025 17:08:34 +0100
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A24C16143E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Aug 2025 16:19:54 +0000 (UTC)
+X-CSE-ConnectionGUID: iPA1c+dmRASnb7aBUckkzQ==
+X-CSE-MsgGUID: lW8GO5pzTreciA9TAj9RQA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11518"; a="56899508"
+X-IronPort-AV: E=Sophos;i="6.17,278,1747724400"; d="scan'208";a="56899508"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+ by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Aug 2025 09:12:45 -0700
+X-CSE-ConnectionGUID: XE7CloaAShiWJb3WPSBtpQ==
+X-CSE-MsgGUID: YMmMJaHLQeWMyUsSuwofFA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.17,278,1747724400"; d="scan'208";a="165163136"
+Received: from newjersey.igk.intel.com ([10.102.20.203])
+ by orviesa006.jf.intel.com with ESMTP; 11 Aug 2025 09:12:41 -0700
+From: Alexander Lobakin <aleksander.lobakin@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Michal Kubiak <michal.kubiak@intel.com>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, Simon Horman <horms@kernel.org>,
+ nxne.cnse.osdt.itp.upstreaming@intel.com, bpf@vger.kernel.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Date: Mon, 11 Aug 2025 18:10:31 +0200
+Message-ID: <20250811161044.32329-1-aleksander.lobakin@intel.com>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Andrew Lunn <andrew@lunn.ch>, Michael Chan <michael.chan@broadcom.com>,
- Pavan Chebbi <pavan.chebbi@broadcom.com>, Tariq Toukan <tariqt@nvidia.com>,
- Gal Pressman <gal@nvidia.com>, intel-wired-lan@lists.osuosl.org,
- Donald Hunter <donald.hunter@gmail.com>, Carolina Jubran
- <cjubran@nvidia.com>, Paolo Abeni <pabeni@redhat.com>,
- Simon Horman <horms@kernel.org>, netdev@vger.kernel.org
-References: <20250807155924.2272507-1-vadfed@meta.com>
- <20250808131522.0dc26de4@kernel.org>
- <ec9e7da6-30f0-40aa-8cb7-bfa0ff814126@linux.dev>
- <20250811084142.459a9a75@kernel.org>
-Content-Language: en-US
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
- include these headers.
-From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-In-Reply-To: <20250811084142.459a9a75@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Migadu-Flow: FLOW_OUT
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linux.dev; s=key1; t=1754928517;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=dBTQ/TlTb6tmtqhEpFdAkTjWlfA/en264UPaQXZjsno=;
- b=M6T5Xvji5GkxwoqdFCtbl5IA5oblvaWz9wJ4eM7PN/ADfC2dQs6ANZyoGUeFUuxINIggVb
- nE0zsblmu+1Zgb02MIZ1fIGWHPu39Fg3dgiYFC8bNwGxGo42MIG3w8m6cbsZJWw7leLV9H
- T1uGmrOqtOh98ghB33C22sXf7I6HRx4=
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1754929195; x=1786465195;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=1kBF0SkAlWYVhyXZxR5AAJSOsBPSHIY90lP+qNoJXIQ=;
+ b=bFdVeQJ8OQ5ya8mtXyR6Dp8SepviRjO3pfbamURIafLDi3c7fEqvXkFq
+ 8ag3rVCcWBlKVe+5VgK2kMS5OWUI3lMZaIAQDbhY7yR5LRROz2FRHRjKu
+ OAQJraU/c5rEg7VzSckAG0zjZzrhIgajiv372lQbKw9NeOPzEpVWWLRPv
+ 6Y9gX71OSClKf0jtUV58YsHGEtO+2a+LPqP0Gwi7YMvd9g+mDb77zXYhV
+ OEhEqybpX+8/s7w3TdpyP2skA3zs1zYyUe3ATklxGI6GeFibLLo1dQUu+
+ /MLlORewZJVGdCkHBqahFD2VKp5Ub3pidb8sieEIU69kWORm1KINroNa/
+ g==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=linux.dev
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256
- header.s=key1 header.b=M6T5Xvji
-Subject: Re: [Intel-wired-lan] [RFC PATCH v4] ethtool: add FEC bins
- histogramm report
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=bFdVeQJ8
+Subject: [Intel-wired-lan] [PATCH iwl-next v4 00/13] idpf: add XDP support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -108,22 +118,101 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 11/08/2025 16:41, Jakub Kicinski wrote:
-> On Sun, 10 Aug 2025 11:52:55 +0100 Vadim Fedorenko wrote:
->>> TBH I'm a bit unsure if this is really worth breaking out into
->>> individual nla_puts(). We generally recommend that, but here it's
->>> an array of simple ints.. maybe we're better of with a binary / C
->>> array of u64. Like the existing FEC stats but without also folding
->>> the total value into index 0.
->>
->> Well, the current implementation is straight forward. Do you propose to
->> have drivers fill in the amount of lanes they have histogram for, or
->> should we always put array of ETHTOOL_MAX_LANES values and let
->> user-space to figure out what to show?
-> 
-> Similar logic to what you have, you can move the put outside of the
-> loop, let the loop break or exit, and then @j will tell you how many
-> entries to fill..
+Add XDP support (w/o XSk for now) to the idpf driver using the libeth_xdp
+sublib. All possible verdicts, .ndo_xdp_xmit(), multi-buffer etc. are here.
+In general, nothing outstanding comparing to ice, except performance --
+let's say, up to 2x for .ndo_xdp_xmit() on certain platforms and
+scenarios.
+idpf doesn't support VLAN Rx offload, so only the hash hint is
+available for now.
 
-I see. Fair, I can do it. After this change there will be no need to
-change the code in the reply size calculation, right?
+Patches 1-7 are prereqs, without which XDP would either not work at all or
+work slower/worse/...
+
+Alexander Lobakin (9):
+  xdp, libeth: make the xdp_init_buff() micro-optimization generic
+  idpf: fix Rx descriptor ready check barrier in splitq
+  idpf: use a saner limit for default number of queues to allocate
+  idpf: link NAPIs to queues
+  idpf: add support for nointerrupt queues
+  idpf: use generic functions to build xdp_buff and skb
+  idpf: add support for XDP on Rx
+  idpf: add support for .ndo_xdp_xmit()
+  idpf: add XDP RSS hash hint
+
+Michal Kubiak (4):
+  idpf: add 4-byte completion descriptor definition
+  idpf: remove SW marker handling from NAPI
+  idpf: prepare structures to support XDP
+  idpf: implement XDP_SETUP_PROG in ndo_bpf for splitq
+
+ drivers/net/ethernet/intel/idpf/Kconfig       |   2 +-
+ drivers/net/ethernet/intel/idpf/Makefile      |   2 +
+ drivers/net/ethernet/intel/idpf/idpf.h        |  31 +-
+ .../net/ethernet/intel/idpf/idpf_lan_txrx.h   |   6 +-
+ drivers/net/ethernet/intel/idpf/idpf_txrx.h   | 140 ++++--
+ .../net/ethernet/intel/idpf/idpf_virtchnl.h   |   1 -
+ drivers/net/ethernet/intel/idpf/xdp.h         | 172 +++++++
+ include/net/libeth/xdp.h                      |  11 +-
+ include/net/xdp.h                             |  28 +-
+ drivers/net/ethernet/intel/idpf/idpf_dev.c    |  11 +-
+ drivers/net/ethernet/intel/idpf/idpf_lib.c    |  67 ++-
+ drivers/net/ethernet/intel/idpf/idpf_main.c   |   1 +
+ .../ethernet/intel/idpf/idpf_singleq_txrx.c   | 110 ++---
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c   | 422 ++++++++--------
+ drivers/net/ethernet/intel/idpf/idpf_vf_dev.c |  11 +-
+ .../net/ethernet/intel/idpf/idpf_virtchnl.c   | 173 ++++---
+ drivers/net/ethernet/intel/idpf/xdp.c         | 452 ++++++++++++++++++
+ 17 files changed, 1214 insertions(+), 426 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/idpf/xdp.h
+ create mode 100644 drivers/net/ethernet/intel/idpf/xdp.c
+
+---
+From v3[0]:
+* 01/13: make the xdp_init_buff() micro-opt generic, include some
+         bloat-o-meter and perf diffs (Simon, Kees);
+* 08/13: don't include XDPSQs in Ethtool's 'other_count' (Ethtool
+         channels are interrupts!) (Jakub);
+* 11/13:
+  * finalize XDPSQs a bit earlier on Rx;
+  * show some bloat-o-meter and performance diffs for
+    __LIBETH_WORD_ACCESS (Jakub).
+
+From v2[1]:
+* rebase on top of [2] to resolve conflicts in Tony's tree;
+* 02:
+  * harmonize maximum number of queues to not create more Tx queues than
+    completion queues or more Rx queues than buffer queues / 2;
+  * fix VC timeouts on certain steppings as there processing a lot of queues
+    can take more time than the minimum timeout of 2 seconds;
+* 03: fix RTNL assertion fail on PCI reset.
+
+From v1[3]:
+* drop the libeth_xdp part (submitted separately and accepted);
+* fix some typos and kdocs (Jakub, Maciej);
+* pick a couple RBs (Maciej);
+* 03: create a convenience helper (Maciej), fix rtnl assertion fail;
+* 04: since XDP uses its own queue cleaning routines, don't add 4-byte
+      completion support to the skb code;
+* 05: don't use old weird logic with negative descriptor index (Maciej);
+* 06: fix invalid interrupt vector counting in certain cases;
+* 07: fix cleanup timer is fired after the queue buffers are already freed;
+* 08: fix XDP program removal in corner cases such as PCI reset or
+      remove request when there's no active prog (from netdev_unregister());
+* 10: fix rare queue stuck -- HW requires to always have at least one free Tx
+      descriptor on the queue, otherwise it thinks the queue is empty and
+      there's nothing to send (true Intel HW veteran bug).
+
+Testing hints: basic Rx and Tx (TCP, UDP, VLAN, HW GRO on/off, trafficgen
+stress tests, performance comparison); xdp-tools with all possible actions
+(xdp-bench for PASS, DROP, TX, REDIRECT to cpumap, devmap (inc self-redirect);
+xdp-trafficgen to double-check XDP xmit). Would be nice to see a perf
+comparison against ice (in percent) (idpf must be plugged into a PCIe 4+).
+
+[0] https://lore.kernel.org/intel-wired-lan/20250730160717.28976-1-aleksander.lobakin@intel.com
+[1] https://lore.kernel.org/intel-wired-lan/20250624164515.2663137-1-aleksander.lobakin@intel.com
+[2] https://lore.kernel.org/intel-wired-lan/20250725184223.4084821-1-joshua.a.hay@intel.com
+[3] https://lore.kernel.org/intel-wired-lan/20250305162132.1106080-1-aleksander.lobakin@intel.com
+-- 
+2.50.1
+
