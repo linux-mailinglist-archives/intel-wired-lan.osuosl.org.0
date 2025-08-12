@@ -2,99 +2,116 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4B83BB21C6A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Aug 2025 06:54:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 137EBB21FF3
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Aug 2025 09:55:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0F80341E12;
-	Tue, 12 Aug 2025 04:54:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B733641F66;
+	Tue, 12 Aug 2025 07:55:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HopHjAfSNeTl; Tue, 12 Aug 2025 04:54:34 +0000 (UTC)
+ id rugpb_iQLR9e; Tue, 12 Aug 2025 07:55:15 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 96D0C41E11
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8F19841F6C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1754974472;
-	bh=zKtipRhifIxIN/ER2EzVrGWq6CPza/0E8VJc8DNhqk8=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=Jq3CnV21epDeDN+yvMNiqqNQlwX4WejJHRdtZ5aUpGtydVOphA/8Ok++PadUtM8MF
-	 kV/Gw7QT3ECOGvvR8hqQNEy7Gr7AXxIWyfwVE+QIqe93xbnbAbIUu8jAFjiy4hWx1a
-	 Xaja2LAMeCKNZqd13+1bhic85tRcJu2zAkBVVIF/FLc3JZQu3m/CmPEcS2N11ANo0M
-	 nX2OuA1eUJqLeMqtRL3B252Ar2AMgmz2EHNa9SaOnoMuFIGexN2IQwboHfKN9zLfrC
-	 HlZ4LdXHTsAyZHX/dML4VPf1+yVnmYHajJHw6XxavI/4e1DNekGMVHL0s9pSWJ+oTX
-	 n9J4H93p9f7aQ==
+	s=default; t=1754985314;
+	bh=EstXPrrERUXhncRMs7vfL9VNUeOreUPoK6OsUT3vWZ0=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=7lXUtV6lZZqxrTp722B7YyUFjKiiS4wjCgZl1AmlMVK2edw0Gei1rlbauwkw1nzzd
+	 4jcES9UW4G8c0UFl2+hS5ZSb0Rt81x1yOb54wIz6pVPhaJgt03El2rY4C72mBn5+8D
+	 fi9YWzQVaosSmohQ4JzKjejKi3lwppz7QW+o30TbyRlp18a/WdsSt8mpUQ6MQ+wFZN
+	 0FZ4ehyMejPzUXdcn6vmQAEBBowtUG4AOFN3VU4e0Pjdhfpr6Xz/lD8S9IBLdwIRKU
+	 zI0Q/RiHlqj30GnEBDuEn5bpmc/+C9E3ydj4VYKKMih100YHUhV3k+Wp3znQTJKKcD
+	 bS0Z/f5MAnoPA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 96D0C41E11;
-	Tue, 12 Aug 2025 04:54:32 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8F19841F6C;
+	Tue, 12 Aug 2025 07:55:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id C45E8158
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 04:54:30 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 85FE2158
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 07:55:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B618C6134E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 04:54:30 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7824041EE5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 07:55:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TyeuarZWJwen for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Aug 2025 04:54:30 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
- helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 0C064612A5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0C064612A5
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 0C064612A5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 04:54:30 +0000 (UTC)
-X-CSE-ConnectionGUID: ZWMOq3vqSbiGrmkswPmo+w==
-X-CSE-MsgGUID: e3ijzD/NRli6a2h5Yi1KxQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11518"; a="68612782"
-X-IronPort-AV: E=Sophos;i="6.17,284,1747724400"; d="scan'208";a="68612782"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
- by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Aug 2025 21:47:24 -0700
-X-CSE-ConnectionGUID: 3IaZT2wAQuiPcZvURm0hYQ==
-X-CSE-MsgGUID: y4vnV1xBTu6IpNi5dsowkA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.17,284,1747724400"; d="scan'208";a="165327928"
-Received: from unknown (HELO os-delivery.igk.intel.com) ([10.102.21.165])
- by orviesa010.jf.intel.com with ESMTP; 11 Aug 2025 21:47:22 -0700
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, przemyslaw.kitszel@intel.com,
- dawid.osuchowski@linux.intel.com, horms@kernel.org,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Date: Tue, 12 Aug 2025 06:23:36 +0200
-Message-ID: <20250812042337.1356907-16-michal.swiatkowski@linux.intel.com>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250812042337.1356907-1-michal.swiatkowski@linux.intel.com>
-References: <20250812042337.1356907-1-michal.swiatkowski@linux.intel.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id oMQh-5ui9LnO for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Aug 2025 07:55:11 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::634; helo=mail-pl1-x634.google.com;
+ envelope-from=kerneljasonxing@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 9227A40F08
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9227A40F08
+Received: from mail-pl1-x634.google.com (mail-pl1-x634.google.com
+ [IPv6:2607:f8b0:4864:20::634])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9227A40F08
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 07:55:11 +0000 (UTC)
+Received: by mail-pl1-x634.google.com with SMTP id
+ d9443c01a7336-242ff06b130so3655225ad.0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 00:55:11 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1754985311; x=1755590111;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=EstXPrrERUXhncRMs7vfL9VNUeOreUPoK6OsUT3vWZ0=;
+ b=ML+zzCYfpbRbP6S+omu4W+Ux3W5tqAXR8hbRR9xau+z0qsdip48P1LcrwEbqx2mmqW
+ ZqVnZvmXnoFmF8STDwu4xAn0m44L3TF8lm1iT/xMh9FRIt967YKE/+BMlKbo9NJGdkuk
+ dSTlT8b+zKP26ePrexOwfYjwOzJXUPAgiilOCbBnDdQT16Prley/RNJSmgWpFwgapxhX
+ W0kxS32RSVSnlQ1QUt7A3ObREWLExDk4bIH4QoqIBabE6SnAPt1yChdqYXZzOhWVleHU
+ CFsAab/jh8ClQXFwcEkpkYbqPOJrRfGKyGS3a+yDAMlpUVn1EkFBeiOESRMWBkTBKpMV
+ gh+Q==
+X-Gm-Message-State: AOJu0Yx9HamzDHer44vPe9U3vodmxvo89lMYq84F8GekbTj+XXbhO0f5
+ /p+mSJnEQTktv+0ZJXegQI23riSNUseO9oD6+ZBdGW4IppcHosCAZhi7
+X-Gm-Gg: ASbGncs8YoVeko7vCroxA/dLZr2qghTCcRgh2n+g0kpsZCjFC8dhqjB1Oj5F76nBnLV
+ FXjsqJmjNvX0lXl/G/FiX8QYTXgZJfJ7GgPu1X+Ixy0hUGn87nSM5rtjI2AfSeJ5EW0E4lUcQd+
+ /uTpaR1EF46M5Bhyr8FjdcWLpZrMd/kxHA6zA7S1vWPt4P+OXmxzW+457WK9BbaVk9TLaBgeSCy
+ S05uZGIDCI7cZR6eTHvZIoHncftHooTM31xm8SPrn/+Ian9L0bZxeEDYrwHv1NWqWoC8NRzJAab
+ 4c68MN1HwIpfpvf5Uu5a372aFO8bTe8IAK4F9shfiHqhM660m0GXY1yGAChmIvLebJ6FXDJeips
+ jsApaONORYFvtZTpDQdiBaQX1sUaqS8+gWmrUdplbUKZ1F6xftR6zdtYXbOaZ2eA5joAzsg==
+X-Google-Smtp-Source: AGHT+IEEvxfIOwJmDYTr2qxi+cu180YYS+zstj+NKAdeIK2ciZcGCc+lfoTc6bhGzHHgzTk1QUBsyg==
+X-Received: by 2002:a17:903:3583:b0:240:3e73:6df with SMTP id
+ d9443c01a7336-242c203d426mr184129105ad.14.1754985310849; 
+ Tue, 12 Aug 2025 00:55:10 -0700 (PDT)
+Received: from KERNELXING-MB0.tencent.com ([43.132.141.21])
+ by smtp.gmail.com with ESMTPSA id
+ 41be03b00d2f7-b422bac12d4sm24651320a12.32.2025.08.12.00.55.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 12 Aug 2025 00:55:10 -0700 (PDT)
+From: Jason Xing <kerneljasonxing@gmail.com>
+To: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, horms@kernel.org, andrew+netdev@lunn.ch,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com, sdf@fomichev.me,
+ larysa.zaremba@intel.com, maciej.fijalkowski@intel.com
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ Jason Xing <kernelxing@tencent.com>
+Date: Tue, 12 Aug 2025 15:55:01 +0800
+Message-Id: <20250812075504.60498-1-kerneljasonxing@gmail.com>
+X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1754974470; x=1786510470;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=mJSKxGHSwDt5WJCN/LBGNsdRuzVdGiF82AnwzqfK8jE=;
- b=lKvbNWUO7ebsgZId9OTe42cPR0FN35PLySEXfpkHZX5gYaFyrkvh8J3T
- 42KqRBr8QzU5x422G2BioejNnd/nnWT7bhs0seG5Omn53+4VStpu1pzES
- BBxyK9h2teoCXLmGp1BnzlHZFwUp+EjGR0xCgO6mnQ6+YEIjInSrdF59T
- 1N1Wgh0NRJ/MO32p6JIWh233U9x6e8isnZ3Nms6jxrxHPZpJvM9HbD6WP
- u2+cS1EMZJx7ngQi+B89VmRWYEoE7oJ2ryjpCkt1R6eYSi5Vh4JFDYHw3
- SkIs2PvTKnv+1TqisucE7uAELdTHNygKpsIkFim4FpnJ5hoGtfeUZxGUd
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=lKvbNWUO
-Subject: [Intel-wired-lan] [PATCH iwl-next v2 15/15] ixgbe: fwlog support
- for e610
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1754985311; x=1755590111; darn=lists.osuosl.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=EstXPrrERUXhncRMs7vfL9VNUeOreUPoK6OsUT3vWZ0=;
+ b=jQO+E+KJHa0aYGhuY6LRULmA7FYd7c165u5RP7+cMlZ+7yO/SaUcfhMgULoBZh6q6d
+ xUA+pREiYph2IE4zwBGDETQvf43UskVTNcaprE5p7CdOvPz95ZO11mqoGPmt76sXN232
+ hRH/ivtxbGXFBEdZA2X7/daeSZM2Q0tibvVp/pm1Vg9aswVMuvFkBqW63oqC/nS63SgU
+ YvXzF9dC9k8h7d6N1rErhr8r7YnAWFTxj6L16xEnRHCrxc9LZY8Wgg3LlRi5j9ZN+ycB
+ O1RLD4KW0nodIAqloecbn0rGAnfOL9vKVnrgeJ+luykm3ZTwZdZvzI/H+Afm7pQhU8e9
+ 7vgQ==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20230601 header.b=jQO+E+KJ
+Subject: [Intel-wired-lan] [PATCH iwl-net v2 0/3] ixgbe: xsk: a couple of
+ changes for zerocopy
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -110,151 +127,26 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The device support firmware logging feature. Use libie code to
-initialize it and allow reading the logs using debugfs.
+From: Jason Xing <kernelxing@tencent.com>
 
-The commands are the same as in ice driver. Look at the description in
-commit 96a9a9341cda ("ice: configure FW logging") for more info.
+The series mostly follows the development of i40e/ice to improve the
+performance for zerocopy mode in the tx path.
 
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 ---
- drivers/net/ethernet/intel/Kconfig            |  1 +
- drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 32 +++++++++++++++++++
- drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h |  2 ++
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 10 ++++++
- drivers/net/ethernet/intel/ixgbe/ixgbe_type.h |  2 ++
- 5 files changed, 47 insertions(+)
+V2
+Link: https://lore.kernel.org/intel-wired-lan/20250720091123.474-1-kerneljasonxing@gmail.com/
+1. remove previous 2nd and last patch.
 
-diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
-index 09f0af386af1..a563a94e2780 100644
---- a/drivers/net/ethernet/intel/Kconfig
-+++ b/drivers/net/ethernet/intel/Kconfig
-@@ -146,6 +146,7 @@ config IXGBE
- 	tristate "Intel(R) 10GbE PCI Express adapters support"
- 	depends on PCI
- 	depends on PTP_1588_CLOCK_OPTIONAL
-+	select LIBIE_FWLOG
- 	select MDIO
- 	select NET_DEVLINK
- 	select PLDMFW
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-index b202639b92c7..6dd530a64bd6 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-@@ -3900,6 +3900,38 @@ static int ixgbe_read_pba_string_e610(struct ixgbe_hw *hw, u8 *pba_num,
- 	return err;
- }
- 
-+static int __fwlog_send_cmd(void *priv, struct libie_aq_desc *desc, void *buf,
-+			    u16 size)
-+{
-+	struct ixgbe_hw *hw = priv;
-+
-+	return ixgbe_aci_send_cmd(hw, desc, buf, size);
-+}
-+
-+int ixgbe_fwlog_init(struct ixgbe_hw *hw)
-+{
-+	struct ixgbe_adapter *adapter = hw->back;
-+	struct libie_fwlog_api api = {
-+		.pdev = adapter->pdev,
-+		.send_cmd = __fwlog_send_cmd,
-+		.debugfs_root = adapter->ixgbe_dbg_adapter,
-+		.priv = hw,
-+	};
-+
-+	if (hw->mac.type != ixgbe_mac_e610)
-+		return -EOPNOTSUPP;
-+
-+	return libie_fwlog_init(&hw->fwlog, &api);
-+}
-+
-+void ixgbe_fwlog_deinit(struct ixgbe_hw *hw)
-+{
-+	if (hw->mac.type != ixgbe_mac_e610)
-+		return;
-+
-+	libie_fwlog_deinit(&hw->fwlog);
-+}
-+
- static const struct ixgbe_mac_operations mac_ops_e610 = {
- 	.init_hw			= ixgbe_init_hw_generic,
- 	.start_hw			= ixgbe_start_hw_e610,
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
-index 782c489b0fa7..11916b979d28 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
-@@ -96,5 +96,7 @@ int ixgbe_aci_update_nvm(struct ixgbe_hw *hw, u16 module_typeid,
- 			 bool last_command, u8 command_flags);
- int ixgbe_nvm_write_activate(struct ixgbe_hw *hw, u16 cmd_flags,
- 			     u8 *response_flags);
-+int ixgbe_fwlog_init(struct ixgbe_hw *hw);
-+void ixgbe_fwlog_deinit(struct ixgbe_hw *hw);
- 
- #endif /* _IXGBE_E610_H_ */
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 692b095b5c16..11d0f6f97b02 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -172,6 +172,7 @@ static int debug = -1;
- module_param(debug, int, 0);
- MODULE_PARM_DESC(debug, "Debug level (0=none,...,16=all)");
- 
-+MODULE_IMPORT_NS("LIBIE_FWLOG");
- MODULE_DESCRIPTION("Intel(R) 10 Gigabit PCI Express Network Driver");
- MODULE_LICENSE("GPL v2");
- 
-@@ -3361,6 +3362,10 @@ static void ixgbe_handle_fw_event(struct ixgbe_adapter *adapter)
- 			e_crit(drv, "%s\n", ixgbe_overheat_msg);
- 			ixgbe_down(adapter);
- 			break;
-+		case libie_aqc_opc_fw_logs_event:
-+			libie_get_fwlog_data(&hw->fwlog, event.msg_buf,
-+					     le16_to_cpu(event.desc.datalen));
-+			break;
- 		default:
- 			e_warn(hw, "unknown FW async event captured\n");
- 			break;
-@@ -12011,6 +12016,10 @@ static int ixgbe_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	ixgbe_devlink_init_regions(adapter);
- 	devl_register(adapter->devlink);
- 	devl_unlock(adapter->devlink);
-+
-+	if (ixgbe_fwlog_init(hw))
-+		e_dev_info("Firmware logging not supported\n");
-+
- 	return 0;
- 
- err_netdev:
-@@ -12068,6 +12077,7 @@ static void ixgbe_remove(struct pci_dev *pdev)
- 	devl_lock(adapter->devlink);
- 	devl_unregister(adapter->devlink);
- 	ixgbe_devlink_destroy_regions(adapter);
-+	ixgbe_fwlog_deinit(&adapter->hw);
- 	ixgbe_dbg_adapter_exit(adapter);
- 
- 	set_bit(__IXGBE_REMOVING, &adapter->state);
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-index 36577091cd9e..b1bfeb21537a 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-@@ -7,6 +7,7 @@
- #include <linux/types.h>
- #include <linux/mdio.h>
- #include <linux/netdevice.h>
-+#include <linux/net/intel/libie/fwlog.h>
- #include "ixgbe_type_e610.h"
- 
- /* Device IDs */
-@@ -3752,6 +3753,7 @@ struct ixgbe_hw {
- 	struct ixgbe_flash_info		flash;
- 	struct ixgbe_hw_dev_caps	dev_caps;
- 	struct ixgbe_hw_func_caps	func_caps;
-+	struct libie_fwlog		fwlog;
- };
- 
- struct ixgbe_info {
+Jason Xing (3):
+  ixgbe: xsk: remove budget from ixgbe_clean_xdp_tx_irq
+  ixgbe: xsk: use ixgbe_desc_unused as the budget in ixgbe_xmit_zc
+  ixgbe: xsk: support batched xsk Tx interfaces to increase performance
+
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |   2 +-
+ .../ethernet/intel/ixgbe/ixgbe_txrx_common.h  |   2 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c  | 113 ++++++++++++------
+ 3 files changed, 76 insertions(+), 41 deletions(-)
+
 -- 
-2.49.0
+2.41.3
 
