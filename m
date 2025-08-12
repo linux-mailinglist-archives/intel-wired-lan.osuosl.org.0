@@ -2,120 +2,101 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 08979B227E8
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Aug 2025 15:11:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E9046B228FD
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Aug 2025 15:46:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0BDDB41127;
-	Tue, 12 Aug 2025 13:11:09 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9DB3341D0B;
+	Tue, 12 Aug 2025 13:46:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id bGAZQ3vGyEBA; Tue, 12 Aug 2025 13:11:08 +0000 (UTC)
+ id tnF-9vcmzOfR; Tue, 12 Aug 2025 13:46:14 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 61CF1411B1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 70ECC415D3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1755004268;
-	bh=UxIla1HyYnxUj2HsSHmkDkdZP2KuTjodsMUdmS63XNQ=;
+	s=default; t=1755006374;
+	bh=lwhzrYtvQwE/T2R0PdvRI2nNufS5v3oYaxAwGcBNE+4=;
 	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=dWhM6H2DMtr1nBRT7xkISMuaBO2AHcjpqclR5FhfUDotuhKA8R/zEAAImLzdM96D1
-	 ZVFqODVfm3wdCS44tRfnWl6479g+uoyRm4a+AqVVF2oSeN9tof4vwjtJNu/rIIZJYl
-	 eze6uZ5dc0zm/BfGBUTMdU5EkhwYgG2Dovkk365QKtVJv3xtq0i2bDEHnI4o0GMpY9
-	 Z2KEYvpCE/OOr2yj3ytvvfXUNINjLRq5mJvs6hfbelUYbQZvuYSzba4dXz5OdRSkD1
-	 L8mFINwzELHdqOUaJDqK/Vs7GG8awZS7QN/LZ1TTUcleQ9zsUUpey95lcnbNu8JLLL
-	 BLbp9zt2XSjig==
+	b=qIhkymnQQZlLi7wHDNv9f9MTUgcgsr0Ykhao2ZL7u3jFiKYvA7iw5j9cvpNaQvpmx
+	 r6twacTCCmCk0EIc7WhcGsF1dV4hZBpNKlw/0O+8lvTPpGi1re8+nOBca8+m8uaFPU
+	 VHW0oOdBojTCNU2ebT/SxHgxJ59QVHSLLggRVQryoeTGeO42kfm8oASxMqkfqmKJ34
+	 MrIOOBHAxjBvy6HkkumbMs/SdH8PIKOjT12EkQ4+dGfTrzZFAMnfK2dMmdhL6YgsQ9
+	 jLkCrfouz0RgNCVZBlfZGEoXnVZ7SSv4DDs8H1Ctn0AbmKJLAiwqsd0/1hWBknnwXB
+	 QmCTs6CYdWU+g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 61CF1411B1;
-	Tue, 12 Aug 2025 13:11:08 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 70ECC415D3;
+	Tue, 12 Aug 2025 13:46:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id A8BBFB8B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 13:11:06 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3528F183
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 13:46:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9B06840F1A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 13:11:06 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 37A5441309
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 13:46:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id wYs4CNM9tzlT for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Aug 2025 13:11:06 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::1030; helo=mail-pj1-x1030.google.com;
- envelope-from=xtydtc@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 0475440F35
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0475440F35
-Received: from mail-pj1-x1030.google.com (mail-pj1-x1030.google.com
- [IPv6:2607:f8b0:4864:20::1030])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 0475440F35
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 13:11:05 +0000 (UTC)
-Received: by mail-pj1-x1030.google.com with SMTP id
- 98e67ed59e1d1-31ee880f7d2so6212862a91.0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 06:11:05 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755004265; x=1755609065;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=UxIla1HyYnxUj2HsSHmkDkdZP2KuTjodsMUdmS63XNQ=;
- b=Q/qNgYCA0IjYoUVwHGltaXgDPVuEnYTypTIf6tjm6Wx6QFD6q4OiS2Ifi+STCr4BjM
- hsPWuJUrGLemii3LNf504WxIMrbBattWzwvO0rvYC4nn4l+GW0AshLt4D1m//D4P+4r9
- 82LUq50u1akUrG52zCCxSnf22BzRDqky4yjHerUz9ufYUyKP5RgAE9LvDRfLU0jd7F3q
- slS9+Q7r9hwdgOEXaXKwbgHDKvmCEK5mtgUXpDTiietLSeflmkFyRdZw80OmKmz3WTzY
- Niele7FuZad8gxiHyWLRfgvH1u1pYkuvvkoKeBbtd6HEAJLbP03YHl+oi9DTVg2NqBR3
- rGmA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXdWjYThcpH6rpenvjrs4hik135x1/ZIXUTXG2YFlihLnhzOo/xIBsS/Vwut0I02j4qfVrIrDUcp9dky1Vu5Go=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YyEQRqIX/tlzdvtgIYWYWq5VCAxzan6JSIJseYGhLFKp6yCC88C
- HlYiZT80aBP+vic2IpjXBngkvpCJyuxUpzRN5uBlAPEfw3akldcMOwIE
-X-Gm-Gg: ASbGncvfPrVjhdDOpFQGcgvsN05v7nBKoggVDYy3rawkDoUPkBDF5CYO7sW4fz7/O27
- tvBELkkhWDHMqG9rvRR5gTwR6Urt+JAHTWIWuoCBdTJKnFoh85huulbNQygYlhjXK4i/n1MafSn
- 8ZVgk5V3ZtfsDs2jOYFn9si2okTEs/gawShXotGefk+CcMhSKVsHVVJsrY1yLNsMz5b6bK4hh8E
- TKr59kax3ytR2wNMpM1EbOovtD85+rw8SUowcl42sW0Dq+dzw5Bo1bk2G7K5RuFNcaq/mTSlZ00
- qmC9iGeZmT4igSooGK/xRXrUEmN5LVJN9vWxgC3CvK0bCb86Z89fLCKwEZBA8vxwqG7PfhDy88O
- 8mD/ectg2qtiPPbsrywHiFd/X4gD5JMQZYFR4m9gxN/KPV3JD8qqfFgw=
-X-Google-Smtp-Source: AGHT+IGZho0iQ/1nCW0ztaSgx/gJSrFI5h/wMr3ThsyqUo5BdfFFaDonVE6u2aePsc3KlxqPpcFzPw==
-X-Received: by 2002:a17:90a:e294:b0:321:2407:3cef with SMTP id
- 98e67ed59e1d1-321c0b60856mr3040069a91.32.1755004265102; 
- Tue, 12 Aug 2025 06:11:05 -0700 (PDT)
-Received: from TIANYXU-M-J00K.cisco.com
- ([2001:420:588c:1300:513:ebe8:5ec0:cab3])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-b4285a15c26sm13545797a12.16.2025.08.12.06.11.01
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 12 Aug 2025 06:11:04 -0700 (PDT)
-From: Tianyu Xu <xtydtc@gmail.com>
-X-Google-Original-From: Tianyu Xu <tianyxu@cisco.com>
-To: anthony.l.nguyen@intel.com
-Cc: przemyslaw.kitszel@intel.com, kuba@kernel.org,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, Tianyu Xu <tianyxu@cisco.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Joe Damato <joe@dama.to>
-Date: Tue, 12 Aug 2025 21:10:56 +0800
-Message-Id: <20250812131056.93963-1-tianyxu@cisco.com>
-X-Mailer: git-send-email 2.39.5 (Apple Git-154)
+ id 9x1gc7l220ix for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Aug 2025 13:46:10 +0000 (UTC)
+X-Greylist: delayed 427 seconds by postgrey-1.37 at util1.osuosl.org;
+ Tue, 12 Aug 2025 13:46:10 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 111484123E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 111484123E
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
+ helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
+ receiver=<UNKNOWN> 
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 111484123E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 13:46:09 +0000 (UTC)
+X-CSE-ConnectionGUID: qjcld+rOT0+gnJI7s6jjjQ==
+X-CSE-MsgGUID: MLVvXS9/R76ezno4nPrpog==
+X-IronPort-AV: E=McAfee;i="6800,10657,11520"; a="56994313"
+X-IronPort-AV: E=Sophos;i="6.17,284,1747724400"; d="scan'208";a="56994313"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+ by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Aug 2025 06:39:03 -0700
+X-CSE-ConnectionGUID: 5fStNXzpTm6NL+iPSuqkyA==
+X-CSE-MsgGUID: lDrHrFE0ThWRL9eSYz9dvQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.17,284,1747724400"; d="scan'208";a="170416049"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by fmviesa005.fm.intel.com with ESMTP; 12 Aug 2025 06:39:00 -0700
+Received: from vecna.igk.intel.com (vecna.igk.intel.com [10.123.220.17])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id D688C32CA9;
+ Tue, 12 Aug 2025 14:38:59 +0100 (IST)
+From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+To: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>
+Cc: netdev@vger.kernel.org, Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Kuniyuki Iwashima <kuniyu@google.com>
+Date: Tue, 12 Aug 2025 15:28:58 +0200
+Message-Id: <20250812132910.99626-1-przemyslaw.kitszel@intel.com>
+X-Mailer: git-send-email 2.39.3
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1755004265; x=1755609065; darn=lists.osuosl.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=UxIla1HyYnxUj2HsSHmkDkdZP2KuTjodsMUdmS63XNQ=;
- b=QD4obW+0XzrQZcmSDUeu9sxFYqRCB3MhS11e1IIY6VePq8UvCq3m7mJ43uqhrw++jp
- 67HozyXC5kf6wIw3QlDb51sV6sZo7qmbV2w9mAhQ4w33VLdFPltB7/HkeUJqt4RW56f8
- Y4YiY+7yvPwB31kmKJqQqbmLojLH/mO6uynKlCGD8WdHACK9/ctodPXEPKDEottX+5Ia
- Nl1BralP8fooeIjiYeV2DWhL+gyjKoGsP/qL87lL1SJHPjtVd8LP0GVHxy5mnttoIa7h
- fsYMYE8BahwYSUREzTeYDe1x6UG+od0ZKIQbR8UxV00+7q2N0M0KxdxMrQCvKTh/SjtU
- C6HA==
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1755006371; x=1786542371;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=MhQnbbRJKJFo03WUy91c4aznF4eJWFz5905kdrgeldo=;
+ b=Vs28g9ESpNcnoH5oJlXD1E5oWIsfW15m1hjmiGy9EH+XiSmU2RTm5paJ
+ G6S2x8vtdPjahUv+Zo+R139+X0jNQolbFGa9k/h/wg8lKGilDofegT+V+
+ L8epajF44oYL1lTcha1fmqhdlBptti335Nxx2YxEy3D5YPfMAPnNgBLZu
+ eGOMJNDWJ3GqYt0fXa+OJTbYjm0jPulyw79drZZVqP7J+50lg4Rs+Rgqa
+ FxRz7qQcShiy4C2Kb6+cs6jm4bxZRBXSsSNtxHtt8Zrzunfej+kyYxsaQ
+ JAvI/a3HH/OGZWSFyi+NMiquSdfDjPqGaytjtW2vtmxSkyGH34GMpD7zy
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=QD4obW+0
-Subject: [Intel-wired-lan] [PATCH v2] igb: Fix NULL pointer dereference in
- ethtool loopback test
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Vs28g9ES
+Subject: [Intel-wired-lan] [PATCH 00/12] ice: split ice_virtchnl.c git-blame
+ friendly way
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -131,40 +112,60 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The igb driver currently causes a NULL pointer dereference when executing
-the ethtool loopback test. This occurs because there is no associated
-q_vector for the test ring when it is set up, as interrupts are typically
-not added to the test rings.
+Summary:
+Split ice_virtchnl.c into two more files (+headers), in a way
+that git-blame works better.
+Then move virtchnl files into a new subdir.
+No logic changes.
 
-Since commit 5ef44b3cb43b removed the napi_id assignment in
-__xdp_rxq_info_reg(), there is no longer a need to pass a napi_id to it.
-Therefore, simply use 0 as the last parameter.
+I have developed (or discovered ;)) how to split a file in a way that
+both old and new are nice in terms of git-blame
+There were no much disscussion on [RFC], so I would like to propose
+to go forward with this approach.
 
-Fixes: 2c6196013f84 ("igb: Add AF_XDP zero-copy Rx support")
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Reviewed-by: Joe Damato <joe@dama.to>
-Signed-off-by: Tianyu Xu <tianyxu@cisco.com>
----
-Thanks to Aleksandr and Joe for your feedback. I have added the Fixes tag
-and formatted the lines to 75 characters based on your comments.
+There is more commits needed to have it nice, so it forms a git-log vs
+git-blame tradeoff, but (after the brief moment that this is on the top)
+we spend orders of magnitude more time looking at the blame output (and
+commit messages linked from that) - so I find it much better to see
+actual logic changes instead of "move xx to yy" stuff (typical for
+"squashed/single-commit splits").
 
- drivers/net/ethernet/intel/igb/igb_main.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+Cherry-picks/rebases work the same with this method as with simple
+"squashed/single-commit" approach (literally all commits squashed into
+one (to have better git-log, but shitty git-blame output).
 
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index a9a7a94ae..453deb6d1 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -4453,8 +4453,7 @@ int igb_setup_rx_resources(struct igb_ring *rx_ring)
- 	if (xdp_rxq_info_is_reg(&rx_ring->xdp_rxq))
- 		xdp_rxq_info_unreg(&rx_ring->xdp_rxq);
- 	res = xdp_rxq_info_reg(&rx_ring->xdp_rxq, rx_ring->netdev,
--			       rx_ring->queue_index,
--			       rx_ring->q_vector->napi.napi_id);
-+			       rx_ring->queue_index, 0);
- 	if (res < 0) {
- 		dev_err(dev, "Failed to register xdp_rxq index %u\n",
- 			rx_ring->queue_index);
+Rationale for the split itself is, as usual, "file is big and we want to
+extend it".
+
+This series is available on my github (just rebased from any
+earlier mentions):
+https://github.com/pkitszel/linux/tree/virtchnl-split-Aug12
+(the simple git-email view flattens this series, removing two
+merges from the view).
+
+
+[RFC]:
+https://lore.kernel.org/netdev/5b94d14e-a0e7-47bd-82fc-c85171cbf26e@intel.com/T/#u
+
+(I would really look at my fork via your preferred git interaction tool
+instead of looking at the patches below).
+
+Przemek Kitszel (12):
+  ice: split queue stuff out of ice_virtchnl.c - p1
+  ice: split queue stuff out of ice_virtchnl.c - p2
+  ice: extract ice_virtchnl_queues.c: cleanup - p1
+  ice: extract ice_virtchnl_queues.c: cleanup - p2
+  ice: split RSS stuff out of ice_virtchnl.c - p1
+  ice: extract ice_virtchnl_queues.c: cleanup - p3
+  ice: split RSS stuff out of ice_virtchnl.c - p2
+  ice: finish ice_virtchnl.c split into ice_virtchnl_queues.c
+  ice: extract ice_virtchnl_rss.c: cleanup - p1
+  ice: extract ice_virtchnl_rss.c: cleanup - p2
+  ice: finish ice_virtchnl.c split into ice_virtchnl_rss.c
+  ice: add virt/ and move ice_virtchnl* files there
+
+CC: Kuniyuki Iwashima <kuniyu@google.com>
+
 -- 
-2.39.5 (Apple Git-154)
+2.39.3
 
