@@ -1,87 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4E48CB21FF7
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Aug 2025 09:55:24 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 638CCB21FF8
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Aug 2025 09:55:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0FD9E42018;
-	Tue, 12 Aug 2025 07:55:23 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 10D6C61422;
+	Tue, 12 Aug 2025 07:55:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xDkvllQd3kUc; Tue, 12 Aug 2025 07:55:22 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id F6F8SLoI7Qrn; Tue, 12 Aug 2025 07:55:26 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CFEEF41EDF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A924461424
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1754985321;
-	bh=nleqg4wIqtXmBZB8Yo+HYH0XMGVxYzqd4mlNWFMzMgY=;
+	s=default; t=1754985325;
+	bh=nua+Saoq3cgdpcV2SyDKodrQAeZWBLQm1joHhSepEdg=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=5NskbAT9G4CPXuMTggdMZr6r+onqbZbJ28Yehh4x7DQM3BUAsWaRXwJS6QsGg96Qp
-	 o4ZA8gqkhWVLWjwokaVuoc661vYTvMPnZ2nnCwmklp0t9cgYnBQpG/FwS2v4cuWshY
-	 IT/5wdYzUXjOU0A5fPd1lZNYa1eRMJM+OBgJeRFm22Xy5i8Mpyk17mKKA1dqaF6e7F
-	 dPhbJasXIEz3ZhK7G3zMxYXSMwYgMmjMmQLPk+1fa4NKDuQDnTLWHsQv5geOIDW2Gk
-	 bskdZHnoMMZI3SFTFm5Sgw4fUzlRvQs2jKuL6OVZPzVOrSxcPrQQWZFT7hOsqVmztN
-	 phbMcnT5HEuNg==
+	b=W9KRqBE7txoUZ56sluL6UBzS5sFciBdqQO5K9S2Dc3Ft2UvDpItDuTPe+ExHtuH6l
+	 CKxStn3pxCMneLw3vQQQDV0GpDmxzbpIhYn2i+QNDL6NNQToP9yWgVgguo/nWXm6EU
+	 vstKBQmjQD29GnBzRU9r1pYK27nv7eyckSXmXjE1NcKnL3Xkr0Tj23omhqh3HaQKTc
+	 FWzj8oJtRLWF7D8SaoMvF/S5kxPxmHpxvBDnaBtzZy8KpCJCy4AHKZWAykQMJZEH1Q
+	 IRAwOCoCUeO86xfN0SOSWdSokB0XIA5JY2vYXt8WrjDAMqePONrwS7JUDFLM2EE65c
+	 X3TpdBd+xpHHg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CFEEF41EDF;
-	Tue, 12 Aug 2025 07:55:21 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A924461424;
+	Tue, 12 Aug 2025 07:55:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 3EAEB158
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 07:55:20 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id E27DDB8B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 07:55:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 256A641E51
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 07:55:20 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id C906061417
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 07:55:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RWPJoK-oHh4Q for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Aug 2025 07:55:19 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id rRM5z_kCfy0Q for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Aug 2025 07:55:23 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::430; helo=mail-pf1-x430.google.com;
+ client-ip=2607:f8b0:4864:20::630; helo=mail-pl1-x630.google.com;
  envelope-from=kerneljasonxing@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 2FDC341F32
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2FDC341F32
-Received: from mail-pf1-x430.google.com (mail-pf1-x430.google.com
- [IPv6:2607:f8b0:4864:20::430])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 2FDC341F32
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 07:55:19 +0000 (UTC)
-Received: by mail-pf1-x430.google.com with SMTP id
- d2e1a72fcca58-76b36e6b9ddso4380624b3a.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 00:55:19 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org E115C61422
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E115C61422
+Received: from mail-pl1-x630.google.com (mail-pl1-x630.google.com
+ [IPv6:2607:f8b0:4864:20::630])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id E115C61422
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 07:55:22 +0000 (UTC)
+Received: by mail-pl1-x630.google.com with SMTP id
+ d9443c01a7336-2406fe901c4so32132035ad.1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 00:55:22 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754985318; x=1755590118;
+ d=1e100.net; s=20230601; t=1754985322; x=1755590122;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=nleqg4wIqtXmBZB8Yo+HYH0XMGVxYzqd4mlNWFMzMgY=;
- b=StNQd1RgD5zHOHP/CaOlrjUZKbeBI5zXJhcmdafzBbgMxWxPvKMZkTsE5PhXZDY2rw
- 05j4N8XtGRFCj0Dwb0Dmg4xvY6SHIWJCRJwhtApAZHGxVbZe8bpzUE95l/qsBTOPkcdI
- O5nZLUjsmQFYTOhL+yl+sTgIO8t6xwKQ9XRo72MMCeb1J9aKMPKc8A1qy7qETUYX3pfp
- KycLWlc3hEE3hnf58FTljjg3crYh9QdvB3Hs9feVpzpuoRvU6C30SYKPspd/EuHHe/la
- WwmWdYmcrlQbEEISJRCuzr3qTSXPxl13WMJR+nKdgPtlEG/zoqJeZrtt9ZxBw3EGQcvi
- wUFg==
-X-Gm-Message-State: AOJu0Ywr9TkdRp9jKkFjaMzShtdvPXUA3Px37AbnwnNQgs2ouqa38Hd5
- GHa2k1JTplS0wfswr/2lpn44Qcreom1Qt7ZB18FzaHyop1NwAgR7Zjkn0HJNZcL5quU=
-X-Gm-Gg: ASbGncuuS4LDz01QmiWAmLvyNyMl0il6lEkyUXnNIc1MJR1GVm1MK8yvkt+JJHVS223
- CeEaqKhL0uFMQPrxXrEn7GRN2E1RHkeQZQBxUDGWHEnacj2T84u4nvBXxihufbUKHeMoP2tJuFY
- ptZhj1KL+tA+2sYaO+8F0mUE/MDf7zNbd3ulsmv3P4oZb2GhSC2206Pilf8l5xDza9TJloKYRFK
- GfuL/38lYuZgSe+TmZe5CLhLIXmXvD2+oar2bTg2vt1lZxe0zMdzDeqzrSHRiCHs6eoeyGiOFE3
- baGinDk9LcSCvGBOxIAq/FS9soZ8bX3cnuEE35gbyYYbX3BCvAnH+pVIFv3T50w6tYShAYVfS+i
- MJWVIGrZuLN2A3hUbZ0W3v1r0K9/qqYXi2/97zuYAqOfdfRIltDbAvg6ERSim8DQu+qPHKA==
-X-Google-Smtp-Source: AGHT+IG1yyYLPVdu9foVfbMCgoIRld9kjxqBO6uHQeaB5B9/mt7khlx+nrKnTwkjDrs05ntBXzMYeA==
-X-Received: by 2002:a05:6a20:7d9d:b0:240:2473:57b7 with SMTP id
- adf61e73a8af0-2409a890d57mr4215339637.8.1754985318376; 
- Tue, 12 Aug 2025 00:55:18 -0700 (PDT)
+ bh=nua+Saoq3cgdpcV2SyDKodrQAeZWBLQm1joHhSepEdg=;
+ b=qZ3CFcziyMhAMPNqO4w7G1nf2usOucu0Dronr+91+wEWww9ePug3TVKvxOSTS7nHgN
+ Ib2SLguTuRtBupT9xDM0bf12NFz2DPVn2c2+5DXvoJxLZZlSA06BC69KTaL6MvatSAds
+ sgEwvAaSUsim8agDAFzBd/fQWT8v1kFCnC0h7SAmYcXBnWPuyDnp+J6TaHbUt/XA3pun
+ ZUHTB/BC9eAjY6UsDdG5aLpviXU7EqR6nl6XIjrAxti1dDSHl2/SmgyTa+UoWA9OGgwN
+ JVqj16cBbVYYfrnK0Ppw82IhjHauGfrMagl7eey9Us1bVbTHVRgrTaHI+HEOcpDyDJYV
+ nkPA==
+X-Gm-Message-State: AOJu0YwkIltXt59t/foiV+9Z2oMXqfFmvzArWksSl+mvMic3r2lOePDv
+ BRIv8UaPWirh6CeuaQQL19ZgbMDAF2/izKi1hK6o5QJMweDQ70NQBux2v0JxwRtqdUs=
+X-Gm-Gg: ASbGnctIscBETNmtg46YrP2PCtxTGqZBWSbmnfc3sZEUGUBfQG2g0tYDd7jpkLjdAWs
+ jG7n0N75dj5hNqj14XXTQaPf7ke7XKiS8DFrPPzBybWV/B9VaDB8mivyXLyikMWCFX3a52o/hTq
+ 0NnKcsXlr9tjbzo3Mr4gEXKiF2XpQb95HSglpgWWo72O/ovSPbPqGLSxvEDZb5Z6zznIDKITYQ5
+ Opqvp1hpCmE0EKTY+posItbrF/ZoPf4kDldySInbhG7xyxX+tRoqfp+kGC5ncZYK5ojkygFULQu
+ +Doa0prQZxgRb9cjjYKZ6JpZyhC55j14UKCpUFuNL5CLEolxHyXYgl0cN9NsQpHdkH1o02uUOaT
+ am9jF0A/yr5N4POG39yBGrOuwa6Vr7oYftT+3E24WWIsZEUdmJh5a5OEWhgdZffIDdLfe3xBFOt
+ ikE23p
+X-Google-Smtp-Source: AGHT+IF56R6elMTGuSLc1ld1mjtxGYvTuPLn+GhWA2a1eQT6shTy4jObTSd5VfzNjYgDUxkBjIuwYg==
+X-Received: by 2002:a17:903:2307:b0:240:a559:be6a with SMTP id
+ d9443c01a7336-242fc33d8b2mr36827355ad.34.1754985322047; 
+ Tue, 12 Aug 2025 00:55:22 -0700 (PDT)
 Received: from KERNELXING-MB0.tencent.com ([43.132.141.21])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-b422bac12d4sm24651320a12.32.2025.08.12.00.55.15
+ 41be03b00d2f7-b422bac12d4sm24651320a12.32.2025.08.12.00.55.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Aug 2025 00:55:17 -0700 (PDT)
+ Tue, 12 Aug 2025 00:55:21 -0700 (PDT)
 From: Jason Xing <kerneljasonxing@gmail.com>
 To: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
  pabeni@redhat.com, horms@kernel.org, andrew+netdev@lunn.ch,
@@ -89,33 +90,34 @@ To: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
  larysa.zaremba@intel.com, maciej.fijalkowski@intel.com
 Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
  Jason Xing <kernelxing@tencent.com>
-Date: Tue, 12 Aug 2025 15:55:03 +0800
-Message-Id: <20250812075504.60498-3-kerneljasonxing@gmail.com>
+Date: Tue, 12 Aug 2025 15:55:04 +0800
+Message-Id: <20250812075504.60498-4-kerneljasonxing@gmail.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20250812075504.60498-1-kerneljasonxing@gmail.com>
 References: <20250812075504.60498-1-kerneljasonxing@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1754985318; x=1755590118; darn=lists.osuosl.org;
+ d=gmail.com; s=20230601; t=1754985322; x=1755590122; darn=lists.osuosl.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=nleqg4wIqtXmBZB8Yo+HYH0XMGVxYzqd4mlNWFMzMgY=;
- b=UJY/lFzqMQN7N+P1/kko5Y/bIlliE43bnI1OeCknhq74z7ukBBldKmGAp8HHxk/RK8
- biHR1VizWNNZsH9isXfQHdO3J4IMkTsc4K7o4fDLrpzRDLVni5aJCQzSRxvQSGWE8IQU
- Z8K4Px72A6QD31DYl1ZWJUvToV7967UXFk+PDX+ZWqzhUUtPH35KBn8hPjes+PLe8ZaO
- HbG4kvZwpyCvowTZW0COi8bXYV4JWQR7lnZkrt/ET3VGd6u5I3JSPRDDn1tTPlh8aXUa
- fm+De/hXikh4BuEieW/SsII/t/CfnAATjePS24SSdFDN5Ms3vDbym/LDhUjoZSaS7Ni3
- SGsg==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=nua+Saoq3cgdpcV2SyDKodrQAeZWBLQm1joHhSepEdg=;
+ b=DKaVaofoAjJk/wA7HuCx/HqQImpWMrlt3w0g2ynexW7RvLGHbrQDL9uNSVeCQX2xEr
+ kuZKSswjXtEZ2kqpk7PNwl6eJrJw7y8+NP88MNNuvZvjK+Es5CTLJGmw6uv7ZKkxvXrz
+ 0LhdkL0YHVpLVKsQ4NMcTaZtgPGlS21CL5fwe9CR+sPr3knIwIh+yBnQfqGQeSWGkhds
+ CEJ+VQsS5k1XHqKAXhiB+uxKrq812wJ3p4PGqfHQR6Gvw+4GBUdQa076IN3M67HAXMZ9
+ WxTiZhrXejpGhJEoe2QWOv1yUI9oQ0l8H+F+9IcmagYyiAV4xvaGLABk3/644zAhHt5F
+ QR/g==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=UJY/lFzq
-Subject: [Intel-wired-lan] [PATCH iwl-net v2 2/3] ixgbe: xsk: use
- ixgbe_desc_unused as the budget in ixgbe_xmit_zc
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20230601 header.b=DKaVaofo
+Subject: [Intel-wired-lan] [PATCH iwl-net v2 3/3] ixgbe: xsk: support
+ batched xsk Tx interfaces to increase performance
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -133,75 +135,167 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Jason Xing <kernelxing@tencent.com>
 
-- Adjust ixgbe_desc_unused as the budget value.
-- Avoid checking desc_unused over and over again in the loop.
-
-The patch makes ixgbe follow i40e driver that was done in commit
-1fd972ebe523 ("i40e: move check of full Tx ring to outside of send loop").
-[ Note that the above i40e patch has problem when ixgbe_desc_unused(tx_ring)
-returns zero. The zero value as the budget value means we don't have any
-possible descs to be sent, so it should return true instead to tell the
-napi poll not to launch another poll to handle tx packets. Even though
-that patch behaves correctly by returning true in this case, it happens
-because of the unexpected underflow of the budget. Taking the current
-version of i40e_xmit_zc() as an example, it returns true as expected. ]
-Hence, this patch adds a standalone if statement of zero budget in front
-of ixgbe_xmit_zc() as explained before.
-
-Use ixgbe_desc_unused to replace the original fixed budget with the number
-of available slots in the Tx ring. It can gain some performance.
+Like what i40e driver initially did in commit 3106c580fb7cf
+("i40e: Use batched xsk Tx interfaces to increase performance"), use
+the batched xsk feature to transmit packets.
 
 Signed-off-by: Jason Xing <kernelxing@tencent.com>
 ---
-In this version, I keep it as is (please see the following link)
-https://lore.kernel.org/intel-wired-lan/CAL+tcoAUW_J62aw3aGBru+0GmaTjoom1qu8Y=aiSc9EGU09Nww@mail.gmail.com/
+In this version, I still choose use the current implementation. Last
+time at the first glance, I agreed 'i' is useless but it is not.
+https://lore.kernel.org/intel-wired-lan/CAL+tcoADu-ZZewsZzGDaL7NugxFTWO_Q+7WsLHs3Mx-XHjJnyg@mail.gmail.com/
 ---
- drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 13 +++++--------
- 1 file changed, 5 insertions(+), 8 deletions(-)
+ drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 106 +++++++++++++------
+ 1 file changed, 72 insertions(+), 34 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-index a463c5ac9c7c..f3d3f5c1cdc7 100644
+index f3d3f5c1cdc7..9fe2c4bf8bc5 100644
 --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
 +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-@@ -393,17 +393,14 @@ static bool ixgbe_xmit_zc(struct ixgbe_ring *xdp_ring, unsigned int budget)
+@@ -2,12 +2,15 @@
+ /* Copyright(c) 2018 Intel Corporation. */
+ 
+ #include <linux/bpf_trace.h>
++#include <linux/unroll.h>
+ #include <net/xdp_sock_drv.h>
+ #include <net/xdp.h>
+ 
+ #include "ixgbe.h"
+ #include "ixgbe_txrx_common.h"
+ 
++#define PKTS_PER_BATCH 4
++
+ struct xsk_buff_pool *ixgbe_xsk_pool(struct ixgbe_adapter *adapter,
+ 				     struct ixgbe_ring *ring)
+ {
+@@ -388,58 +391,93 @@ void ixgbe_xsk_clean_rx_ring(struct ixgbe_ring *rx_ring)
+ 	}
+ }
+ 
+-static bool ixgbe_xmit_zc(struct ixgbe_ring *xdp_ring, unsigned int budget)
++static void ixgbe_set_rs_bit(struct ixgbe_ring *xdp_ring)
++{
++	u16 ntu = xdp_ring->next_to_use ? xdp_ring->next_to_use - 1 : xdp_ring->count - 1;
++	union ixgbe_adv_tx_desc *tx_desc;
++
++	tx_desc = IXGBE_TX_DESC(xdp_ring, ntu);
++	tx_desc->read.cmd_type_len |= cpu_to_le32(IXGBE_TXD_CMD_RS);
++}
++
++static void ixgbe_xmit_pkt(struct ixgbe_ring *xdp_ring, struct xdp_desc *desc,
++			   int i)
++
+ {
  	struct xsk_buff_pool *pool = xdp_ring->xsk_pool;
  	union ixgbe_adv_tx_desc *tx_desc = NULL;
  	struct ixgbe_tx_buffer *tx_bi;
--	bool work_done = true;
- 	struct xdp_desc desc;
+-	struct xdp_desc desc;
  	dma_addr_t dma;
  	u32 cmd_type;
  
+-	if (!budget)
+-		return true;
++	dma = xsk_buff_raw_get_dma(pool, desc[i].addr);
++	xsk_buff_raw_dma_sync_for_device(pool, dma, desc[i].len);
+ 
 -	while (likely(budget)) {
--		if (unlikely(!ixgbe_desc_unused(xdp_ring))) {
--			work_done = false;
+-		if (!netif_carrier_ok(xdp_ring->netdev))
 -			break;
--		}
-+	if (!budget)
++	tx_bi = &xdp_ring->tx_buffer_info[xdp_ring->next_to_use];
++	tx_bi->bytecount = desc[i].len;
++	tx_bi->xdpf = NULL;
++	tx_bi->gso_segs = 1;
+ 
+-		if (!xsk_tx_peek_desc(pool, &desc))
+-			break;
++	tx_desc = IXGBE_TX_DESC(xdp_ring, xdp_ring->next_to_use);
++	tx_desc->read.buffer_addr = cpu_to_le64(dma);
+ 
+-		dma = xsk_buff_raw_get_dma(pool, desc.addr);
+-		xsk_buff_raw_dma_sync_for_device(pool, dma, desc.len);
++	cmd_type = IXGBE_ADVTXD_DTYP_DATA |
++		   IXGBE_ADVTXD_DCMD_DEXT |
++		   IXGBE_ADVTXD_DCMD_IFCS;
++	cmd_type |= desc[i].len | IXGBE_TXD_CMD_EOP;
++	tx_desc->read.cmd_type_len = cpu_to_le32(cmd_type);
++	tx_desc->read.olinfo_status =
++		cpu_to_le32(desc[i].len << IXGBE_ADVTXD_PAYLEN_SHIFT);
+ 
+-		tx_bi = &xdp_ring->tx_buffer_info[xdp_ring->next_to_use];
+-		tx_bi->bytecount = desc.len;
+-		tx_bi->xdpf = NULL;
+-		tx_bi->gso_segs = 1;
++	xdp_ring->next_to_use++;
++}
+ 
+-		tx_desc = IXGBE_TX_DESC(xdp_ring, xdp_ring->next_to_use);
+-		tx_desc->read.buffer_addr = cpu_to_le64(dma);
++static void ixgbe_xmit_pkt_batch(struct ixgbe_ring *xdp_ring, struct xdp_desc *desc)
++{
++	u32 i;
+ 
+-		/* put descriptor type bits */
+-		cmd_type = IXGBE_ADVTXD_DTYP_DATA |
+-			   IXGBE_ADVTXD_DCMD_DEXT |
+-			   IXGBE_ADVTXD_DCMD_IFCS;
+-		cmd_type |= desc.len | IXGBE_TXD_CMD;
+-		tx_desc->read.cmd_type_len = cpu_to_le32(cmd_type);
+-		tx_desc->read.olinfo_status =
+-			cpu_to_le32(desc.len << IXGBE_ADVTXD_PAYLEN_SHIFT);
++	unrolled_count(PKTS_PER_BATCH)
++	for (i = 0; i < PKTS_PER_BATCH; i++)
++		ixgbe_xmit_pkt(xdp_ring, desc, i);
++}
+ 
+-		xdp_ring->next_to_use++;
+-		if (xdp_ring->next_to_use == xdp_ring->count)
+-			xdp_ring->next_to_use = 0;
++static void ixgbe_fill_tx_hw_ring(struct ixgbe_ring *xdp_ring,
++				  struct xdp_desc *descs, u32 nb_pkts)
++{
++	u32 batched, leftover, i;
++
++	batched = nb_pkts & ~(PKTS_PER_BATCH - 1);
++	leftover = nb_pkts & (PKTS_PER_BATCH - 1);
++	for (i = 0; i < batched; i += PKTS_PER_BATCH)
++		ixgbe_xmit_pkt_batch(xdp_ring, &descs[i]);
++	for (i = batched; i < batched + leftover; i++)
++		ixgbe_xmit_pkt(xdp_ring, &descs[i], 0);
++}
+ 
+-		budget--;
+-	}
++static bool ixgbe_xmit_zc(struct ixgbe_ring *xdp_ring, unsigned int budget)
++{
++	struct xdp_desc *descs = xdp_ring->xsk_pool->tx_descs;
++	u32 nb_pkts, nb_processed = 0;
+ 
+-	if (tx_desc) {
+-		ixgbe_xdp_ring_update_tail(xdp_ring);
+-		xsk_tx_release(pool);
++	if (!netif_carrier_ok(xdp_ring->netdev))
 +		return true;
- 
-+	while (likely(budget)) {
- 		if (!netif_carrier_ok(xdp_ring->netdev))
- 			break;
- 
-@@ -442,7 +439,7 @@ static bool ixgbe_xmit_zc(struct ixgbe_ring *xdp_ring, unsigned int budget)
- 		xsk_tx_release(pool);
++
++	nb_pkts = xsk_tx_peek_release_desc_batch(xdp_ring->xsk_pool, budget);
++	if (!nb_pkts)
++		return true;
++
++	if (xdp_ring->next_to_use + nb_pkts >= xdp_ring->count) {
++		nb_processed = xdp_ring->count - xdp_ring->next_to_use;
++		ixgbe_fill_tx_hw_ring(xdp_ring, descs, nb_processed);
++		xdp_ring->next_to_use = 0;
  	}
  
--	return !!budget && work_done;
-+	return !!budget;
+-	return !!budget;
++	ixgbe_fill_tx_hw_ring(xdp_ring, &descs[nb_processed], nb_pkts - nb_processed);
++
++	ixgbe_set_rs_bit(xdp_ring);
++	ixgbe_xdp_ring_update_tail(xdp_ring);
++
++	return nb_pkts < budget;
  }
  
  static void ixgbe_clean_xdp_tx_buffer(struct ixgbe_ring *tx_ring,
-@@ -505,7 +502,7 @@ bool ixgbe_clean_xdp_tx_irq(struct ixgbe_q_vector *q_vector,
- 	if (xsk_uses_need_wakeup(pool))
- 		xsk_set_tx_need_wakeup(pool);
- 
--	return ixgbe_xmit_zc(tx_ring, q_vector->tx.work_limit);
-+	return ixgbe_xmit_zc(tx_ring, ixgbe_desc_unused(tx_ring));
- }
- 
- int ixgbe_xsk_wakeup(struct net_device *dev, u32 qid, u32 flags)
 -- 
 2.41.3
 
