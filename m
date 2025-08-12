@@ -1,74 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 646BAB21C5E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Aug 2025 06:54:10 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7FC51B21C5F
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Aug 2025 06:54:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 727D641E00;
-	Tue, 12 Aug 2025 04:54:06 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4AF2541E01;
+	Tue, 12 Aug 2025 04:54:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id wzPyvM7iV0js; Tue, 12 Aug 2025 04:54:05 +0000 (UTC)
+ id PLHntSR_1DVB; Tue, 12 Aug 2025 04:54:07 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B7B7541DEF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 98BCA41DFF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1754974445;
-	bh=HhhJ9FIj2a5/G19wUikeIER5tD8/arMovxBbCOmYvzw=;
+	s=default; t=1754974447;
+	bh=Ev+QNoBfHGvSwoev4uJSujZCHX9UrsWVvnlDtkz167o=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=HeVTUXF6Z7uSaJLCPvV3Jh1dI6s4AX18Xg05l49lymRJ5spqmcxbPQuC8XvJWrRJH
-	 PGMHKZlzUlZN1r03L3iIZB17YKLyiE/p4b9QfRkQHWKv8BwbfNxy8JWTAuOjehll8x
-	 4HrWKBzPdK2bO1CpDn/dWNEocCX+8pEd7Vnaw0vxuaFZscCLgsviFmDXYRnbXS4oK+
-	 uPv5w0IfDAJIXfx8yjj8nU1xo0zg3h+uFJKlP94Fvh1XIUfZXQQ1D4zco2t3dVI+fD
-	 dtm6GKjbbPvULl58qEBCynoIGxdmYkZYwunVin+rsh7k4it3V3ZVoK6mjCv71g3422
-	 RVrilqx8XAybg==
+	b=WK7ATUFXxRN+vXaXkjQ3zOHBlOS9EN/+jyH6SaAtDyP7cJlPRmGjop3/2civPms62
+	 vYoFwteqQoCohuOvuy15QOq+OepoWiFyyj/b6XsOkKsnbNQf6Of/VW+VJ6ZQK6issm
+	 rO13wytHoNYQ8N2hii3/5qF0zYgrKgzH3hZkU5PyLji7mbqqDNMqr9TkmbPmqHj6wj
+	 2WQEt3SniEZREOdMnr+lTcVMsJvJPSXuD0KlU6g6H1aIUjIWfRec5fFn5ERvDCq59M
+	 o1pZ8IawlJ4j/nLlpl2O6uGxBGs5hAj2RV/WRP8XwfIJ+mDSrYBL/2ztFB17+6Tan9
+	 3iC1usjqp9xpA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B7B7541DEF;
-	Tue, 12 Aug 2025 04:54:05 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 98BCA41DFF;
+	Tue, 12 Aug 2025 04:54:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 87F90183
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 04:54:03 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 8001B158
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 04:54:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 6BF3461356
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 04:54:02 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6EA83612A5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 04:54:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id MsCaLhljE6vF for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Aug 2025 04:54:01 +0000 (UTC)
+ id i61NTdKS22nH for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Aug 2025 04:54:04 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
  helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C33BE61271
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C33BE61271
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C363A61271
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C363A61271
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C33BE61271
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 04:54:01 +0000 (UTC)
-X-CSE-ConnectionGUID: JO0FYx/MRYOUcMK112ZUeQ==
-X-CSE-MsgGUID: RUeS5Nk1S4KYkeODtGIc/g==
-X-IronPort-AV: E=McAfee;i="6800,10657,11518"; a="68612728"
-X-IronPort-AV: E=Sophos;i="6.17,284,1747724400"; d="scan'208";a="68612728"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C363A61271
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 04:54:04 +0000 (UTC)
+X-CSE-ConnectionGUID: vZxOkA7HTaeRGpbLYXkGlw==
+X-CSE-MsgGUID: Ynl4yFfrRUKedE7dfTKujg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11518"; a="68612732"
+X-IronPort-AV: E=Sophos;i="6.17,284,1747724400"; d="scan'208";a="68612732"
 Received: from orviesa010.jf.intel.com ([10.64.159.150])
  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Aug 2025 21:46:56 -0700
-X-CSE-ConnectionGUID: 3gOTvJLnSWq9CI1yGvx/rQ==
-X-CSE-MsgGUID: Dgm6G1zMTtK12tub5NeEIw==
+ 11 Aug 2025 21:46:58 -0700
+X-CSE-ConnectionGUID: wav7H8lBRZi4r02d4qYlHg==
+X-CSE-MsgGUID: fKr5GQw8SW6k70Hc+gFkCw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.17,284,1747724400"; d="scan'208";a="165327872"
+X-IronPort-AV: E=Sophos;i="6.17,284,1747724400"; d="scan'208";a="165327876"
 Received: from unknown (HELO os-delivery.igk.intel.com) ([10.102.21.165])
- by orviesa010.jf.intel.com with ESMTP; 11 Aug 2025 21:46:55 -0700
+ by orviesa010.jf.intel.com with ESMTP; 11 Aug 2025 21:46:57 -0700
 From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: netdev@vger.kernel.org, przemyslaw.kitszel@intel.com,
  dawid.osuchowski@linux.intel.com, horms@kernel.org,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Date: Tue, 12 Aug 2025 06:23:23 +0200
-Message-ID: <20250812042337.1356907-3-michal.swiatkowski@linux.intel.com>
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ Larysa Zaremba <larysa.zaremba@intel.com>
+Date: Tue, 12 Aug 2025 06:23:24 +0200
+Message-ID: <20250812042337.1356907-4-michal.swiatkowski@linux.intel.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20250812042337.1356907-1-michal.swiatkowski@linux.intel.com>
 References: <20250812042337.1356907-1-michal.swiatkowski@linux.intel.com>
@@ -76,25 +77,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1754974442; x=1786510442;
+ t=1754974445; x=1786510445;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=vB/Do1r7J0DoSOADdBcH7Ab5053tPiIwINFxr5Ka8j8=;
- b=dbOzXcDp2Fmz0UdSJ4Ci0w1nvatt4+rnD6vAcsgHalTve4Aid1Brgtl4
- N3qcmugjhA08KviR0lGY+7aNCT6920bA+2FIIyelIMa9GX9j/qPHhgpM3
- U55IHyR5HxOTKnApyQ7tRi/58mJFJHioJ5lor3sutYHVKHvOfCJHksRfg
- y8cPK5zcsVTkAocNCwynXS8DztmhqP7BY4qoVKqi+onZ3YnNdfJVkNlxS
- 2Z3XafjT+pfeOPz20zWIh6oiLbczGvj/S9OxXH6e1HhobHMxZCIgwUCcv
- uOhr7h+4J9msUqL/vZp83did5g6YI7dFeapbG6KEDO6718F3zERqazX54
+ bh=PaZZF0HWeOxzeShIIUkYktbU75Xpo9jQY2Rd+3NRG2A=;
+ b=Ol/EF5NAK/mFoFaClNTaQYEzM5Z9CAWQKxfi2XzVuyh0qd80vjzNCSFE
+ NEgh2w0o/G2qfpTnwzrJ85B5ievTYfEfiErDNxUz+RfHOFZW/D4WbkwWm
+ ODcdJBQ73Su+LLt4JHQHs/D7DfWtqPGYbd420dBIomqxZ18MBONLlRBm7
+ IlBB+XnHrS+urAF0189p/gX7W08D1buR3NSDa3id4DMij53RDNfjA+HZZ
+ w5Smx+mC88MQLaJqdtIGwNEEU5XU/hyzIqhadY+Atoxre6SGL+6wcLETL
+ L2yUMazlB7ghvw461TcwNJSlU05mthmOKHMNOrHp6TTWwlWzPoOMHT3pG
  A==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=dbOzXcDp
-Subject: [Intel-wired-lan] [PATCH iwl-next v2 02/15] ice: move
- get_fwlog_data() to fwlog file
+ header.a=rsa-sha256 header.s=Intel header.b=Ol/EF5NA
+Subject: [Intel-wired-lan] [PATCH iwl-next v2 03/15] ice: drop
+ ice_pf_fwlog_update_module()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -110,128 +111,88 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Change the function prototype to receive hw structure instead of pf to
-simplify the call. Instead of passing whole event pass only msg_buf
-pointer and length.
+Any other access to fwlog_cfg isn't done through a function. Follow
+scheme that is used to access other fwlog_cfg elements from debugfs and
+write to the log_level directly.
 
-Make ice_fwlog_ring_full() static as it isn't  called from any other
-context.
+ice_pf_fwlog_update_module() is called only twice (from one function).
+Remove it.
 
 Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Reviewed-by: Larysa Zaremba <larysa.zaremba@intel.com>
 Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_fwlog.c | 27 +++++++++++++++++++-
- drivers/net/ethernet/intel/ice/ice_fwlog.h |  2 +-
- drivers/net/ethernet/intel/ice/ice_main.c  | 29 ++--------------------
- 3 files changed, 29 insertions(+), 29 deletions(-)
+ drivers/net/ethernet/intel/ice/ice.h         |  1 -
+ drivers/net/ethernet/intel/ice/ice_debugfs.c |  5 +++--
+ drivers/net/ethernet/intel/ice/ice_main.c    | 13 -------------
+ 3 files changed, 3 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_fwlog.c b/drivers/net/ethernet/intel/ice/ice_fwlog.c
-index e48856206648..ea5d6d2d3f30 100644
---- a/drivers/net/ethernet/intel/ice/ice_fwlog.c
-+++ b/drivers/net/ethernet/intel/ice/ice_fwlog.c
-@@ -6,7 +6,7 @@
- #include "ice_common.h"
- #include "ice_fwlog.h"
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index e952d67388bf..a6803b344540 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -912,7 +912,6 @@ void ice_debugfs_fwlog_init(struct ice_pf *pf);
+ void ice_debugfs_pf_deinit(struct ice_pf *pf);
+ void ice_debugfs_init(void);
+ void ice_debugfs_exit(void);
+-void ice_pf_fwlog_update_module(struct ice_pf *pf, int log_level, int module);
  
--bool ice_fwlog_ring_full(struct ice_fwlog_ring *rings)
-+static bool ice_fwlog_ring_full(struct ice_fwlog_ring *rings)
- {
- 	u16 head, tail;
+ bool netif_is_ice(const struct net_device *dev);
+ int ice_vsi_setup_tx_rings(struct ice_vsi *vsi);
+diff --git a/drivers/net/ethernet/intel/ice/ice_debugfs.c b/drivers/net/ethernet/intel/ice/ice_debugfs.c
+index cb71eca6a85b..170050548e74 100644
+--- a/drivers/net/ethernet/intel/ice/ice_debugfs.c
++++ b/drivers/net/ethernet/intel/ice/ice_debugfs.c
+@@ -164,6 +164,7 @@ ice_debugfs_module_write(struct file *filp, const char __user *buf,
+ 	struct ice_pf *pf = file_inode(filp)->i_private;
+ 	struct dentry *dentry = file_dentry(filp);
+ 	struct device *dev = ice_pf_to_dev(pf);
++	struct ice_hw *hw = &pf->hw;
+ 	char user_val[16], *cmd_buf;
+ 	int module, log_level, cnt;
  
-@@ -456,3 +456,28 @@ int ice_fwlog_unregister(struct ice_hw *hw)
+@@ -192,7 +193,7 @@ ice_debugfs_module_write(struct file *filp, const char __user *buf,
+ 	}
  
- 	return status;
- }
-+
-+/**
-+ * ice_get_fwlog_data - copy the FW log data from ARQ event
-+ * @hw: HW that the FW log event is associated with
-+ * @buf: event buffer pointer
-+ * @len: len of event descriptor
-+ */
-+void ice_get_fwlog_data(struct ice_hw *hw, u8 *buf, u16 len)
-+{
-+	struct ice_fwlog_data *fwlog;
-+
-+	fwlog = &hw->fwlog_ring.rings[hw->fwlog_ring.tail];
-+
-+	memset(fwlog->data, 0, PAGE_SIZE);
-+	fwlog->data_size = len;
-+
-+	memcpy(fwlog->data, buf, fwlog->data_size);
-+	ice_fwlog_ring_increment(&hw->fwlog_ring.tail, hw->fwlog_ring.size);
-+
-+	if (ice_fwlog_ring_full(&hw->fwlog_ring)) {
-+		/* the rings are full so bump the head to create room */
-+		ice_fwlog_ring_increment(&hw->fwlog_ring.head,
-+					 hw->fwlog_ring.size);
-+	}
-+}
-diff --git a/drivers/net/ethernet/intel/ice/ice_fwlog.h b/drivers/net/ethernet/intel/ice/ice_fwlog.h
-index 7d95d11b6ef9..5b9244f4f0f1 100644
---- a/drivers/net/ethernet/intel/ice/ice_fwlog.h
-+++ b/drivers/net/ethernet/intel/ice/ice_fwlog.h
-@@ -64,7 +64,6 @@ struct ice_fwlog_ring {
- #define ICE_FWLOG_RING_SIZE_DFLT 256
- #define ICE_FWLOG_RING_SIZE_MAX 512
+ 	if (module != ICE_AQC_FW_LOG_ID_MAX) {
+-		ice_pf_fwlog_update_module(pf, log_level, module);
++		hw->fwlog_cfg.module_entries[module].log_level = log_level;
+ 	} else {
+ 		/* the module 'all' is a shortcut so that we can set
+ 		 * all of the modules to the same level quickly
+@@ -200,7 +201,7 @@ ice_debugfs_module_write(struct file *filp, const char __user *buf,
+ 		int i;
  
--bool ice_fwlog_ring_full(struct ice_fwlog_ring *rings);
- bool ice_fwlog_ring_empty(struct ice_fwlog_ring *rings);
- void ice_fwlog_ring_increment(u16 *item, u16 size);
- int ice_fwlog_init(struct ice_hw *hw);
-@@ -73,4 +72,5 @@ int ice_fwlog_set(struct ice_hw *hw, struct ice_fwlog_cfg *cfg);
- int ice_fwlog_register(struct ice_hw *hw);
- int ice_fwlog_unregister(struct ice_hw *hw);
- void ice_fwlog_realloc_rings(struct ice_hw *hw, int index);
-+void ice_get_fwlog_data(struct ice_hw *hw, u8 *buf, u16 len);
- #endif /* _ICE_FWLOG_H_ */
+ 		for (i = 0; i < ICE_AQC_FW_LOG_ID_MAX; i++)
+-			ice_pf_fwlog_update_module(pf, log_level, i);
++			hw->fwlog_cfg.module_entries[i].log_level = log_level;
+ 	}
+ 
+ 	return count;
 diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index a1528edeae24..6b8eedc86b69 100644
+index 6b8eedc86b69..156e47927a5a 100644
 --- a/drivers/net/ethernet/intel/ice/ice_main.c
 +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -1250,32 +1250,6 @@ ice_handle_link_event(struct ice_pf *pf, struct ice_rq_event_info *event)
- 	return status;
+@@ -4624,19 +4624,6 @@ static void ice_print_wake_reason(struct ice_pf *pf)
+ 	dev_info(ice_pf_to_dev(pf), "Wake reason: %s", wake_str);
  }
  
 -/**
-- * ice_get_fwlog_data - copy the FW log data from ARQ event
-- * @pf: PF that the FW log event is associated with
-- * @event: event structure containing FW log data
+- * ice_pf_fwlog_update_module - update 1 module
+- * @pf: pointer to the PF struct
+- * @log_level: log_level to use for the @module
+- * @module: module to update
 - */
--static void
--ice_get_fwlog_data(struct ice_pf *pf, struct ice_rq_event_info *event)
+-void ice_pf_fwlog_update_module(struct ice_pf *pf, int log_level, int module)
 -{
--	struct ice_fwlog_data *fwlog;
 -	struct ice_hw *hw = &pf->hw;
 -
--	fwlog = &hw->fwlog_ring.rings[hw->fwlog_ring.tail];
--
--	memset(fwlog->data, 0, PAGE_SIZE);
--	fwlog->data_size = le16_to_cpu(event->desc.datalen);
--
--	memcpy(fwlog->data, event->msg_buf, fwlog->data_size);
--	ice_fwlog_ring_increment(&hw->fwlog_ring.tail, hw->fwlog_ring.size);
--
--	if (ice_fwlog_ring_full(&hw->fwlog_ring)) {
--		/* the rings are full so bump the head to create room */
--		ice_fwlog_ring_increment(&hw->fwlog_ring.head,
--					 hw->fwlog_ring.size);
--	}
+-	hw->fwlog_cfg.module_entries[module].log_level = log_level;
 -}
 -
  /**
-  * ice_aq_prep_for_event - Prepare to wait for an AdminQ event from firmware
-  * @pf: pointer to the PF private structure
-@@ -1566,7 +1540,8 @@ static int __ice_clean_ctrlq(struct ice_pf *pf, enum ice_ctl_q q_type)
- 			}
- 			break;
- 		case ice_aqc_opc_fw_logs_event:
--			ice_get_fwlog_data(pf, &event);
-+			ice_get_fwlog_data(hw, event.msg_buf,
-+					   le16_to_cpu(event.desc.datalen));
- 			break;
- 		case ice_aqc_opc_lldp_set_mib_change:
- 			ice_dcb_process_lldp_set_mib_change(pf, &event);
+  * ice_register_netdev - register netdev
+  * @vsi: pointer to the VSI struct
 -- 
 2.49.0
 
