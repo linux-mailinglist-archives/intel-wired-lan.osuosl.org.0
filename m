@@ -1,91 +1,105 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AEDA3B2276E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Aug 2025 14:52:52 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4566DB227CA
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Aug 2025 15:09:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 65E9E614A2;
-	Tue, 12 Aug 2025 12:52:51 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C847F61502;
+	Tue, 12 Aug 2025 13:09:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5js9O4FPhHFX; Tue, 12 Aug 2025 12:52:50 +0000 (UTC)
+ id 3M-0WCV_nalb; Tue, 12 Aug 2025 13:09:16 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A2C16614AE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 54C96614C9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1755003170;
-	bh=OADf1V7pXBJRW3RatMG6VLc4sAh6ZF5rnQ5uc0wW3Sw=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=nLs+5BB+x3O9Lw1ivEipDnI19dfm8Yk6udxTm5L6Fzo8KGWBpFJUXeV7Sh8JCiGJR
-	 HlONHeb1wH+JlScxkkFdABs6hXFK7ZGD45ABX1pCvScvzhPFdU1nFHxtzqPjvgZUHe
-	 5vAUvyh8LXubj7qEwestrTYV3LrGKsdDgqmvlXvNuHzVDHpoibXBG7FVlr5jp2Ib2F
-	 pf+shPAdYNguGfnAweClq8G79GqcqAFCwmQ/NgNsBRcOwNgx7+awZRcHx2kQ719JgE
-	 HPXYtg2z3qho6YHU88TLNdO2frd6PaQ0MkVluPQfDJETGNheUUq0s6WjhJgilKsImN
-	 cjwUyhsJwPLAw==
+	s=default; t=1755004156;
+	bh=5JT5AFjf2Qyw6v0wOy+lD78/a1dmmQ/TGhVSpZ93oZg=;
+	h=From:Date:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=5IOUqxAu9xKbheJKGRUYsnLhUrOuBO7C/iRy0EuShvGDNVWUbauYfpvTED4wOdIhn
+	 dn1XSFVp/pPJ6w05yA37JihLNkRw8fl5DYkuow/VSm7BQGG9CjEpP7lFkUBz5iFnPi
+	 /RL6m0VJYFSdyUaK9/ANO6MSqIn+n9VmjOYXsTaU9ITBVz9YSfI/MA2ba8dwkkZ+9t
+	 4G6msSuV3+9cZxzmKBhj6a0nIJmRM6cevz3m1JdzJ1IShhBkqCfL1aeYjhIDMr6cMb
+	 E1H+dMpBFjVhUZoknWgaDadG2t0yGRSkgNRCxjxezfj55o3QBu8AnJTVQve6DbcxE8
+	 GK6l3MnQujg4w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A2C16614AE;
-	Tue, 12 Aug 2025 12:52:50 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 54C96614C9;
+	Tue, 12 Aug 2025 13:09:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id E4D7D183
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 12:52:48 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 25D30B8B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 13:09:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D648D4010F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 12:52:48 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0C4A6427BF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 13:09:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id htBfge_leDA5 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Aug 2025 12:52:48 +0000 (UTC)
-X-Greylist: delayed 74643 seconds by postgrey-1.37 at util1.osuosl.org;
- Tue, 12 Aug 2025 12:52:47 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C3E1C400F1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C3E1C400F1
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id qxTwGhNOd1dp for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Aug 2025 13:09:13 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2001:41d0:1004:224b::b4; helo=out-180.mta0.migadu.com;
- envelope-from=vadim.fedorenko@linux.dev; receiver=<UNKNOWN> 
-Received: from out-180.mta0.migadu.com (out-180.mta0.migadu.com
- [IPv6:2001:41d0:1004:224b::b4])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C3E1C400F1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 12:52:47 +0000 (UTC)
-Message-ID: <f7633d68-ca3c-4320-ba2a-88156ea541cd@linux.dev>
-Date: Tue, 12 Aug 2025 13:52:40 +0100
+ client-ip=2607:f8b0:4864:20::630; helo=mail-pl1-x630.google.com;
+ envelope-from=leafy7382@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 2696141677
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2696141677
+Received: from mail-pl1-x630.google.com (mail-pl1-x630.google.com
+ [IPv6:2607:f8b0:4864:20::630])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2696141677
+ for <Intel-wired-lan@osuosl.org>; Tue, 12 Aug 2025 13:09:13 +0000 (UTC)
+Received: by mail-pl1-x630.google.com with SMTP id
+ d9443c01a7336-23fe2be6061so34507175ad.0
+ for <Intel-wired-lan@osuosl.org>; Tue, 12 Aug 2025 06:09:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1755004152; x=1755608952;
+ h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=5JT5AFjf2Qyw6v0wOy+lD78/a1dmmQ/TGhVSpZ93oZg=;
+ b=oKHmLIEpM5qBfrmfby/WwJB1hO9HoKnlEEx+4tjas2hDpp+7SOHkNuHuJlpI4/hEBA
+ cN+RL2tH2AeT0nZBxYCnmiVVveqR/+kJOQebxRsJFqsRfwbwQFeFEAKt3XUVjBfT0fdG
+ pvxH6Lx1ugYnOPNQAL+syxIVKUeSsxRBnDpnCXpCpNDhnGaLCoNQXKPj6GlUeBxl2fcQ
+ OTVDMTbuqNtgKbPnxeDxAZ7IKLWbu8p/Iq7KEhb0Zwjk4cUQH8PvHzB3y5V2VAT8QyN0
+ Nku7ET1kSwfiQO1l+YtkMe1cTp3UlFrJJdG7LGo6BCWbmGQVuK+fU8HG+D3ePIGuTuCR
+ cPcA==
+X-Gm-Message-State: AOJu0YwZ+YJxk3MhZ5il3znjpwKPOtjuvRRyAJdj51+kobhEMLzZuSk9
+ cHxFxzVOmvZ7vbd5XuSl8dyD3Zqx+fQ7hyTllbM+AL616pJHii+JJXa+j5MrDyJNWJXjn44Z4uw
+ GSl326VgbHSRI+I0FgqvY/nWkN80Hy80bXEyDy/Q=
+X-Gm-Gg: ASbGncu/vCKH0S4A6qBPd137uV6p+t/0eiB9JUYmkuTjutb5RaqVuozZtlSbbhRzu37
+ nak/GaLJFxuVZ8Ydednij5/3jU+fACqG7758VxmddOYro47YA4zy5n5dqNBj6QCT46JXNlWVZ1Y
+ kEWnZPJ6aXtyJ1cHHqvB6zQpaGCGaYhcl/23VdVZubOH0FYzrDPd1J6v8NvENZvii4pA5YSX762
+ w7SZ7s=
+X-Google-Smtp-Source: AGHT+IEzOF9BriGgh/J9gHi5TV4B83SKO7wGCtmHfG6QYFBL75EoFAa8jc51QM3WXInsM6YOUcFzC+diUSMtaSvW/GM=
+X-Received: by 2002:a17:902:d490:b0:234:24a8:bee9 with SMTP id
+ d9443c01a7336-242fc2a5c5dmr43427045ad.4.1755004151566; Tue, 12 Aug 2025
+ 06:09:11 -0700 (PDT)
 MIME-Version: 1.0
-To: Joshua Hay <joshua.a.hay@intel.com>, intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, larysa.zaremba@intel.com,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-References: <20250812001921.4076454-1-joshua.a.hay@intel.com>
-Content-Language: en-US
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
- include these headers.
-From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-In-Reply-To: <20250812001921.4076454-1-joshua.a.hay@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Migadu-Flow: FLOW_OUT
+From: Chia-Wei Yeh <leafy7382@gmail.com>
+Date: Tue, 12 Aug 2025 21:08:35 +0800
+X-Gm-Features: Ac12FXwFf2q8ZlOUs69w9COiQ9RgYaGT_exB3aAAf-oUDaQf0M_7yI_nHWwovoA
+Message-ID: <CAEFt+UyRJrp5JyXV2atvqf_r87C4b09_8sTgh1JzP0nKHXwznw@mail.gmail.com>
+To: Intel-wired-lan@osuosl.org
+Content-Type: multipart/alternative; boundary="00000000000008952e063c2abf45"
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linux.dev; s=key1; t=1755003163;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=OADf1V7pXBJRW3RatMG6VLc4sAh6ZF5rnQ5uc0wW3Sw=;
- b=TzJal2wnVUXPxRjdszXMzZQwENHSZhGb/ost45bM2hgetbPy+CSkLnQyh5mmbHcpggkmjB
- /GTTawYSrS5HUDSxHfpxWn/mSsGU/1nFlbDDmiQw3xxA9vfB28Q6dS0gPDRcy0M0WxJwEW
- QPBI1ZaeirIWzo3UzbSeV0GPKj4FUSg=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ d=gmail.com; s=20230601; t=1755004152; x=1755608952; darn=osuosl.org;
+ h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=5JT5AFjf2Qyw6v0wOy+lD78/a1dmmQ/TGhVSpZ93oZg=;
+ b=LxnThXH6yi8gCCbvMT7MlYXAriyzt4ab1H5nOIywHw2qyxUG1sgdFv5ua0Usjn8ABx
+ HGs7Y/enNmlrav/g6zLxdYhHE5AW64xz3Z4A9tVL0nJMEQLGnEb695zBv4DPt3R+7pAg
+ 8Pdx+ThZQg8lr8w+MezHbhvemOcfzIQFczgyGQvwl7LPk8LoiZbk44+RRu5f4Mx0ZzPV
+ 3oLdMkO1OECdjpK5noJKQzZFAX8YCSRiz+g+wp1ocyBizcw75x/2rsEBPYp+aL+X0EKY
+ Rj47GdD2mAyWen2ahJjRTLo80o64Yrblv40YM4ACZdssgQbTEK4npC8r+tKUoXxbUxSc
+ hGmg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=linux.dev
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256
- header.s=key1 header.b=TzJal2wn
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] idpf: fix UAF in RDMA core
- aux dev deinitialization
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20230601 header.b=LxnThXH6
+Subject: [Intel-wired-lan] igb: I226-V (rev 04) frequent connection drop
+ with Linux 6.12.37+
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -101,73 +115,117 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 12/08/2025 01:19, Joshua Hay wrote:
-> Free the adev->id before auxiliary_device_uninit. The call to uninit
-> triggers the release callback, which frees the iadev memory containing the
-> adev. The previous flow results in a UAF during rmmod due to the adev->id
-> access.
-> 
-> [264939.604077] ==================================================================
-> [264939.604093] BUG: KASAN: slab-use-after-free in idpf_idc_deinit_core_aux_device+0xe4/0x100 [idpf]
-> [264939.604134] Read of size 4 at addr ff1100109eb6eaf8 by task rmmod/17842
-> 
-> ...
-> 
-> [264939.604635] Allocated by task 17597:
-> [264939.604643]  kasan_save_stack+0x20/0x40
-> [264939.604654]  kasan_save_track+0x14/0x30
-> [264939.604663]  __kasan_kmalloc+0x8f/0xa0
-> [264939.604672]  idpf_idc_init_aux_core_dev+0x4bd/0xb60 [idpf]
-> [264939.604700]  idpf_idc_init+0x55/0xd0 [idpf]
-> [264939.604726]  process_one_work+0x658/0xfe0
-> [264939.604742]  worker_thread+0x6e1/0xf10
-> [264939.604750]  kthread+0x382/0x740
-> [264939.604762]  ret_from_fork+0x23a/0x310
-> [264939.604772]  ret_from_fork_asm+0x1a/0x30
-> 
-> [264939.604785] Freed by task 17842:
-> [264939.604790]  kasan_save_stack+0x20/0x40
-> [264939.604799]  kasan_save_track+0x14/0x30
-> [264939.604808]  kasan_save_free_info+0x3b/0x60
-> [264939.604820]  __kasan_slab_free+0x37/0x50
-> [264939.604830]  kfree+0xf1/0x420
-> [264939.604840]  device_release+0x9c/0x210
-> [264939.604850]  kobject_put+0x17c/0x4b0
-> [264939.604860]  idpf_idc_deinit_core_aux_device+0x4f/0x100 [idpf]
-> [264939.604886]  idpf_vc_core_deinit+0xba/0x3a0 [idpf]
-> [264939.604915]  idpf_remove+0xb0/0x7c0 [idpf]
-> [264939.604944]  pci_device_remove+0xab/0x1e0
-> [264939.604955]  device_release_driver_internal+0x371/0x530
-> [264939.604969]  driver_detach+0xbf/0x180
-> [264939.604981]  bus_remove_driver+0x11b/0x2a0
-> [264939.604991]  pci_unregister_driver+0x2a/0x250
-> [264939.605005]  __do_sys_delete_module.constprop.0+0x2eb/0x540
-> [264939.605014]  do_syscall_64+0x64/0x2c0
-> [264939.605024]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
-> 
-> Fixes: f4312e6bfa2a ("idpf: implement core RDMA auxiliary dev create, init, and destroy")
-> Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
-> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> ---
->   drivers/net/ethernet/intel/idpf/idpf_idc.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf_idc.c b/drivers/net/ethernet/intel/idpf/idpf_idc.c
-> index 4d2905103215..7e20a07e98e5 100644
-> --- a/drivers/net/ethernet/intel/idpf/idpf_idc.c
-> +++ b/drivers/net/ethernet/intel/idpf/idpf_idc.c
-> @@ -247,10 +247,10 @@ static void idpf_unplug_aux_dev(struct auxiliary_device *adev)
->   	if (!adev)
->   		return;
->   
-> +	ida_free(&idpf_idc_ida, adev->id);
-> +
->   	auxiliary_device_delete(adev);
->   	auxiliary_device_uninit(adev);
-> -
-> -	ida_free(&idpf_idc_ida, adev->id);
->   }
->   
->   /**
+--00000000000008952e063c2abf45
+Content-Type: text/plain; charset="UTF-8"
 
-Reviewed-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
+Hi Intel team,
+
+I run a home lab server on CWWK CW-AD4L-N V1 and recently updated my kernel
+to 6.12.38 with an upgrade from Debian Bookworm to Trixie.
+
+I've observed that using the new kernel, the network connection drops every
+couple of hours, and in the worst case scenario, the connections would
+completely disappear and the machine would have to be rebooted.
+Going back to 6.12.31 fixes the issue. From
+https://launchpad.net/debian/+source/linux/+changelog it seems that only
+this change was between .37+ and .31
+
+    - igc: disable L1.2 PCI-E link substate to avoid performance issue
+
+
+This led me to this thread
+https://lore.kernel.org/intel-wired-lan/cb7776c8-868f-4191-8b77-8ebbdf674aaf@valdikss.org.ru/
+and
+it seems that the fix is for i226V with speed cap. But in my case, it
+wasn't capped to start with.
+I can easily saturate my internet pipe using the 6.12.31 kernel without the
+fix.
+
+Idle Latency:     1.15 ms   (jitter: 0.12ms, low: 1.04ms, high: 1.38ms)
+    Download:   519.37 Mbps (data used: 397.8 MB)
+                  7.27 ms   (jitter: 0.55ms, low: 1.28ms, high: 11.43ms)
+      Upload:   522.60 Mbps (data used: 235.1 MB)
+                  4.96 ms   (jitter: 0.37ms, low: 2.77ms, high: 5.75ms)
+ Packet Loss: Not available.
+ Result URL:
+https://www.speedtest.net/result/c/bcacca17-8666-4bcf-8300-10c6920ab420
+
+Output of 'lspci -vv -s <x>' w.r.t L1SubCtl1 is:
+
+ Capabilities: [1e0 v1] L1 PM Substates
+L1SubCap: PCI-PM_L1.2+ PCI-PM_L1.1+ ASPM_L1.2+ ASPM_L1.1+ L1_PM_Substates+
+ PortCommonModeRestoreTime=55us PortTPowerOnTime=70us
+L1SubCtl1: PCI-PM_L1.2- PCI-PM_L1.1- ASPM_L1.2- ASPM_L1.1-
+  T_CommonMode=0us LTR1.2_Threshold=138240ns
+L1SubCtl2: T_PwrOn=70us
+Kernel driver in use: igc
+
+Can we hide this behind a module option so that systems that aren't speed
+capped won't be affected by the patch?
+
+Happy to run any test or debug if needed.
+
+Thank you,
+Chia-Wei Yeh
+
+
+-- 
+"If it looks like a duck, walks like a duck, and quacks like a duck, then
+to the end user it's a duck, and end users have made it pretty clear they
+want a duck; whether the duck drinks hot chocolate or coffee is irrelevant."
+
+--00000000000008952e063c2abf45
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div><div>Hi Intel team,</div><div><br></div><div>I run a =
+home lab server on CWWK CW-AD4L-N V1 and recently updated my kernel to 6.12=
+.38 with an upgrade from Debian Bookworm to Trixie.=C2=A0</div><div><br></d=
+iv><div>I&#39;ve observed that using the new kernel, the network connection=
+ drops every couple of hours, and in the worst=C2=A0case scenario, the conn=
+ections would completely disappear and the=C2=A0machine would have to be re=
+booted.</div><div>Going back to 6.12.31 fixes the issue. From=C2=A0<a href=
+=3D"https://launchpad.net/debian/+source/linux/+changelog" target=3D"_blank=
+">https://launchpad.net/debian/+source/linux/+changelog</a>=C2=A0it seems t=
+hat only this change was between .37+ and .31</div><div><br></div><div><pre=
+ id=3D"m_6997039210896884039gmail-linux_6.12.37-1" style=3D"margin:0px 0px =
+0.3em;padding:0px;font-family:&quot;Ubuntu Mono variable&quot;,&quot;Ubuntu=
+ Mono&quot;,Consolas,Monaco,Courier,monospace;color:rgb(0,0,0);font-size:12=
+.8px">    - igc: disable L1.2 PCI-E link substate to avoid performance issu=
+e
+</pre><br></div><div>This led me to this thread=C2=A0<a href=3D"https://lor=
+e.kernel.org/intel-wired-lan/cb7776c8-868f-4191-8b77-8ebbdf674aaf@valdikss.=
+org.ru/" target=3D"_blank">https://lore.kernel.org/intel-wired-lan/cb7776c8=
+-868f-4191-8b77-8ebbdf674aaf@valdikss.org.ru/</a>=C2=A0and it seems that th=
+e fix is for i226V with speed cap. But in my case, it wasn&#39;t capped to =
+start with.</div><div>I can easily saturate my internet pipe using the 6.12=
+.31 kernel without=C2=A0the fix.</div><div><br></div><div><font face=3D"mon=
+ospace">Idle Latency: =C2=A0 =C2=A0 1.15 ms =C2=A0 (jitter: 0.12ms, low: 1.=
+04ms, high: 1.38ms)<br>=C2=A0 =C2=A0 Download: =C2=A0 519.37 Mbps (data use=
+d: 397.8 MB)<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 7.27 ms =C2=A0 (jitter: 0.55ms, low: 1.28ms, high: 11.43ms)<br>=C2=A0 =
+=C2=A0 =C2=A0 Upload: =C2=A0 522.60 Mbps (data used: 235.1 MB)<br>=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 4.96 ms =C2=A0 (jit=
+ter: 0.37ms, low: 2.77ms, high: 5.75ms)<br>=C2=A0Packet Loss: Not available=
+.<br>=C2=A0Result URL:=C2=A0<a href=3D"https://www.speedtest.net/result/c/b=
+cacca17-8666-4bcf-8300-10c6920ab420" target=3D"_blank">https://www.speedtes=
+t.net/result/c/bcacca17-8666-4bcf-8300-10c6920ab420</a></font></div><div><b=
+r></div><div>Output of &#39;lspci -vv -s &lt;x&gt;&#39; w.r.t L1SubCtl1 is:=
+</div><div><br></div><div><font face=3D"monospace">=C2=A0Capabilities: [1e0=
+ v1] L1 PM Substates<br>		L1SubCap: PCI-PM_L1.2+ PCI-PM_L1.1+ ASPM_L1.2+ AS=
+PM_L1.1+ L1_PM_Substates+<br>			 =C2=A0PortCommonModeRestoreTime=3D55us Por=
+tTPowerOnTime=3D70us<br>		L1SubCtl1: PCI-PM_L1.2- PCI-PM_L1.1- ASPM_L1.2- A=
+SPM_L1.1-<br>			 =C2=A0 T_CommonMode=3D0us LTR1.2_Threshold=3D138240ns<br>	=
+	L1SubCtl2: T_PwrOn=3D70us<br>	Kernel driver in use: igc</font></div><div><=
+br></div><div>Can we hide this behind a module option so that systems that =
+aren&#39;t speed capped won&#39;t be affected by the patch?</div><div><br><=
+/div><div>Happy to run any test or debug if needed.</div><div><br></div><di=
+v>Thank you,</div><div>Chia-Wei Yeh</div><font color=3D"#888888"><div><br><=
+/div></font></div><div><br></div><span class=3D"gmail_signature_prefix">-- =
+</span><br><div dir=3D"ltr" class=3D"gmail_signature" data-smartmail=3D"gma=
+il_signature">&quot;If it looks like a duck, walks like a duck, and quacks =
+like a duck, then to the end user it&#39;s a duck, and end users have made =
+it pretty clear they want a duck; whether the duck drinks hot chocolate or =
+coffee is irrelevant.&quot;</div></div>
+
+--00000000000008952e063c2abf45--
