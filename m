@@ -2,122 +2,90 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 638CCB21FF8
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Aug 2025 09:55:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AEDA3B2276E
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Aug 2025 14:52:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 10D6C61422;
-	Tue, 12 Aug 2025 07:55:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 65E9E614A2;
+	Tue, 12 Aug 2025 12:52:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id F6F8SLoI7Qrn; Tue, 12 Aug 2025 07:55:26 +0000 (UTC)
+ id 5js9O4FPhHFX; Tue, 12 Aug 2025 12:52:50 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A924461424
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A2C16614AE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1754985325;
-	bh=nua+Saoq3cgdpcV2SyDKodrQAeZWBLQm1joHhSepEdg=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1755003170;
+	bh=OADf1V7pXBJRW3RatMG6VLc4sAh6ZF5rnQ5uc0wW3Sw=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=W9KRqBE7txoUZ56sluL6UBzS5sFciBdqQO5K9S2Dc3Ft2UvDpItDuTPe+ExHtuH6l
-	 CKxStn3pxCMneLw3vQQQDV0GpDmxzbpIhYn2i+QNDL6NNQToP9yWgVgguo/nWXm6EU
-	 vstKBQmjQD29GnBzRU9r1pYK27nv7eyckSXmXjE1NcKnL3Xkr0Tj23omhqh3HaQKTc
-	 FWzj8oJtRLWF7D8SaoMvF/S5kxPxmHpxvBDnaBtzZy8KpCJCy4AHKZWAykQMJZEH1Q
-	 IRAwOCoCUeO86xfN0SOSWdSokB0XIA5JY2vYXt8WrjDAMqePONrwS7JUDFLM2EE65c
-	 X3TpdBd+xpHHg==
+	b=nLs+5BB+x3O9Lw1ivEipDnI19dfm8Yk6udxTm5L6Fzo8KGWBpFJUXeV7Sh8JCiGJR
+	 HlONHeb1wH+JlScxkkFdABs6hXFK7ZGD45ABX1pCvScvzhPFdU1nFHxtzqPjvgZUHe
+	 5vAUvyh8LXubj7qEwestrTYV3LrGKsdDgqmvlXvNuHzVDHpoibXBG7FVlr5jp2Ib2F
+	 pf+shPAdYNguGfnAweClq8G79GqcqAFCwmQ/NgNsBRcOwNgx7+awZRcHx2kQ719JgE
+	 HPXYtg2z3qho6YHU88TLNdO2frd6PaQ0MkVluPQfDJETGNheUUq0s6WjhJgilKsImN
+	 cjwUyhsJwPLAw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A924461424;
-	Tue, 12 Aug 2025 07:55:25 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A2C16614AE;
+	Tue, 12 Aug 2025 12:52:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id E27DDB8B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 07:55:23 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id E4D7D183
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 12:52:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C906061417
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 07:55:23 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id D648D4010F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 12:52:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id rRM5z_kCfy0Q for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Aug 2025 07:55:23 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id htBfge_leDA5 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Aug 2025 12:52:48 +0000 (UTC)
+X-Greylist: delayed 74643 seconds by postgrey-1.37 at util1.osuosl.org;
+ Tue, 12 Aug 2025 12:52:47 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C3E1C400F1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C3E1C400F1
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::630; helo=mail-pl1-x630.google.com;
- envelope-from=kerneljasonxing@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org E115C61422
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E115C61422
-Received: from mail-pl1-x630.google.com (mail-pl1-x630.google.com
- [IPv6:2607:f8b0:4864:20::630])
- by smtp3.osuosl.org (Postfix) with ESMTPS id E115C61422
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 07:55:22 +0000 (UTC)
-Received: by mail-pl1-x630.google.com with SMTP id
- d9443c01a7336-2406fe901c4so32132035ad.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 00:55:22 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754985322; x=1755590122;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=nua+Saoq3cgdpcV2SyDKodrQAeZWBLQm1joHhSepEdg=;
- b=qZ3CFcziyMhAMPNqO4w7G1nf2usOucu0Dronr+91+wEWww9ePug3TVKvxOSTS7nHgN
- Ib2SLguTuRtBupT9xDM0bf12NFz2DPVn2c2+5DXvoJxLZZlSA06BC69KTaL6MvatSAds
- sgEwvAaSUsim8agDAFzBd/fQWT8v1kFCnC0h7SAmYcXBnWPuyDnp+J6TaHbUt/XA3pun
- ZUHTB/BC9eAjY6UsDdG5aLpviXU7EqR6nl6XIjrAxti1dDSHl2/SmgyTa+UoWA9OGgwN
- JVqj16cBbVYYfrnK0Ppw82IhjHauGfrMagl7eey9Us1bVbTHVRgrTaHI+HEOcpDyDJYV
- nkPA==
-X-Gm-Message-State: AOJu0YwkIltXt59t/foiV+9Z2oMXqfFmvzArWksSl+mvMic3r2lOePDv
- BRIv8UaPWirh6CeuaQQL19ZgbMDAF2/izKi1hK6o5QJMweDQ70NQBux2v0JxwRtqdUs=
-X-Gm-Gg: ASbGnctIscBETNmtg46YrP2PCtxTGqZBWSbmnfc3sZEUGUBfQG2g0tYDd7jpkLjdAWs
- jG7n0N75dj5hNqj14XXTQaPf7ke7XKiS8DFrPPzBybWV/B9VaDB8mivyXLyikMWCFX3a52o/hTq
- 0NnKcsXlr9tjbzo3Mr4gEXKiF2XpQb95HSglpgWWo72O/ovSPbPqGLSxvEDZb5Z6zznIDKITYQ5
- Opqvp1hpCmE0EKTY+posItbrF/ZoPf4kDldySInbhG7xyxX+tRoqfp+kGC5ncZYK5ojkygFULQu
- +Doa0prQZxgRb9cjjYKZ6JpZyhC55j14UKCpUFuNL5CLEolxHyXYgl0cN9NsQpHdkH1o02uUOaT
- am9jF0A/yr5N4POG39yBGrOuwa6Vr7oYftT+3E24WWIsZEUdmJh5a5OEWhgdZffIDdLfe3xBFOt
- ikE23p
-X-Google-Smtp-Source: AGHT+IF56R6elMTGuSLc1ld1mjtxGYvTuPLn+GhWA2a1eQT6shTy4jObTSd5VfzNjYgDUxkBjIuwYg==
-X-Received: by 2002:a17:903:2307:b0:240:a559:be6a with SMTP id
- d9443c01a7336-242fc33d8b2mr36827355ad.34.1754985322047; 
- Tue, 12 Aug 2025 00:55:22 -0700 (PDT)
-Received: from KERNELXING-MB0.tencent.com ([43.132.141.21])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-b422bac12d4sm24651320a12.32.2025.08.12.00.55.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Aug 2025 00:55:21 -0700 (PDT)
-From: Jason Xing <kerneljasonxing@gmail.com>
-To: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, horms@kernel.org, andrew+netdev@lunn.ch,
- anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com, sdf@fomichev.me,
- larysa.zaremba@intel.com, maciej.fijalkowski@intel.com
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- Jason Xing <kernelxing@tencent.com>
-Date: Tue, 12 Aug 2025 15:55:04 +0800
-Message-Id: <20250812075504.60498-4-kerneljasonxing@gmail.com>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20250812075504.60498-1-kerneljasonxing@gmail.com>
-References: <20250812075504.60498-1-kerneljasonxing@gmail.com>
+ client-ip=2001:41d0:1004:224b::b4; helo=out-180.mta0.migadu.com;
+ envelope-from=vadim.fedorenko@linux.dev; receiver=<UNKNOWN> 
+Received: from out-180.mta0.migadu.com (out-180.mta0.migadu.com
+ [IPv6:2001:41d0:1004:224b::b4])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C3E1C400F1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Aug 2025 12:52:47 +0000 (UTC)
+Message-ID: <f7633d68-ca3c-4320-ba2a-88156ea541cd@linux.dev>
+Date: Tue, 12 Aug 2025 13:52:40 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+To: Joshua Hay <joshua.a.hay@intel.com>, intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, larysa.zaremba@intel.com,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+References: <20250812001921.4076454-1-joshua.a.hay@intel.com>
+Content-Language: en-US
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
+ include these headers.
+From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
+In-Reply-To: <20250812001921.4076454-1-joshua.a.hay@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Migadu-Flow: FLOW_OUT
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1754985322; x=1755590122; darn=lists.osuosl.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=nua+Saoq3cgdpcV2SyDKodrQAeZWBLQm1joHhSepEdg=;
- b=DKaVaofoAjJk/wA7HuCx/HqQImpWMrlt3w0g2ynexW7RvLGHbrQDL9uNSVeCQX2xEr
- kuZKSswjXtEZ2kqpk7PNwl6eJrJw7y8+NP88MNNuvZvjK+Es5CTLJGmw6uv7ZKkxvXrz
- 0LhdkL0YHVpLVKsQ4NMcTaZtgPGlS21CL5fwe9CR+sPr3knIwIh+yBnQfqGQeSWGkhds
- CEJ+VQsS5k1XHqKAXhiB+uxKrq812wJ3p4PGqfHQR6Gvw+4GBUdQa076IN3M67HAXMZ9
- WxTiZhrXejpGhJEoe2QWOv1yUI9oQ0l8H+F+9IcmagYyiAV4xvaGLABk3/644zAhHt5F
- QR/g==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ d=linux.dev; s=key1; t=1755003163;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=OADf1V7pXBJRW3RatMG6VLc4sAh6ZF5rnQ5uc0wW3Sw=;
+ b=TzJal2wnVUXPxRjdszXMzZQwENHSZhGb/ost45bM2hgetbPy+CSkLnQyh5mmbHcpggkmjB
+ /GTTawYSrS5HUDSxHfpxWn/mSsGU/1nFlbDDmiQw3xxA9vfB28Q6dS0gPDRcy0M0WxJwEW
+ QPBI1ZaeirIWzo3UzbSeV0GPKj4FUSg=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=DKaVaofo
-Subject: [Intel-wired-lan] [PATCH iwl-net v2 3/3] ixgbe: xsk: support
- batched xsk Tx interfaces to increase performance
+ header.from=linux.dev
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256
+ header.s=key1 header.b=TzJal2wn
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] idpf: fix UAF in RDMA core
+ aux dev deinitialization
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -133,169 +101,73 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jason Xing <kernelxing@tencent.com>
+On 12/08/2025 01:19, Joshua Hay wrote:
+> Free the adev->id before auxiliary_device_uninit. The call to uninit
+> triggers the release callback, which frees the iadev memory containing the
+> adev. The previous flow results in a UAF during rmmod due to the adev->id
+> access.
+> 
+> [264939.604077] ==================================================================
+> [264939.604093] BUG: KASAN: slab-use-after-free in idpf_idc_deinit_core_aux_device+0xe4/0x100 [idpf]
+> [264939.604134] Read of size 4 at addr ff1100109eb6eaf8 by task rmmod/17842
+> 
+> ...
+> 
+> [264939.604635] Allocated by task 17597:
+> [264939.604643]  kasan_save_stack+0x20/0x40
+> [264939.604654]  kasan_save_track+0x14/0x30
+> [264939.604663]  __kasan_kmalloc+0x8f/0xa0
+> [264939.604672]  idpf_idc_init_aux_core_dev+0x4bd/0xb60 [idpf]
+> [264939.604700]  idpf_idc_init+0x55/0xd0 [idpf]
+> [264939.604726]  process_one_work+0x658/0xfe0
+> [264939.604742]  worker_thread+0x6e1/0xf10
+> [264939.604750]  kthread+0x382/0x740
+> [264939.604762]  ret_from_fork+0x23a/0x310
+> [264939.604772]  ret_from_fork_asm+0x1a/0x30
+> 
+> [264939.604785] Freed by task 17842:
+> [264939.604790]  kasan_save_stack+0x20/0x40
+> [264939.604799]  kasan_save_track+0x14/0x30
+> [264939.604808]  kasan_save_free_info+0x3b/0x60
+> [264939.604820]  __kasan_slab_free+0x37/0x50
+> [264939.604830]  kfree+0xf1/0x420
+> [264939.604840]  device_release+0x9c/0x210
+> [264939.604850]  kobject_put+0x17c/0x4b0
+> [264939.604860]  idpf_idc_deinit_core_aux_device+0x4f/0x100 [idpf]
+> [264939.604886]  idpf_vc_core_deinit+0xba/0x3a0 [idpf]
+> [264939.604915]  idpf_remove+0xb0/0x7c0 [idpf]
+> [264939.604944]  pci_device_remove+0xab/0x1e0
+> [264939.604955]  device_release_driver_internal+0x371/0x530
+> [264939.604969]  driver_detach+0xbf/0x180
+> [264939.604981]  bus_remove_driver+0x11b/0x2a0
+> [264939.604991]  pci_unregister_driver+0x2a/0x250
+> [264939.605005]  __do_sys_delete_module.constprop.0+0x2eb/0x540
+> [264939.605014]  do_syscall_64+0x64/0x2c0
+> [264939.605024]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+> 
+> Fixes: f4312e6bfa2a ("idpf: implement core RDMA auxiliary dev create, init, and destroy")
+> Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
+> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> ---
+>   drivers/net/ethernet/intel/idpf/idpf_idc.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_idc.c b/drivers/net/ethernet/intel/idpf/idpf_idc.c
+> index 4d2905103215..7e20a07e98e5 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_idc.c
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_idc.c
+> @@ -247,10 +247,10 @@ static void idpf_unplug_aux_dev(struct auxiliary_device *adev)
+>   	if (!adev)
+>   		return;
+>   
+> +	ida_free(&idpf_idc_ida, adev->id);
+> +
+>   	auxiliary_device_delete(adev);
+>   	auxiliary_device_uninit(adev);
+> -
+> -	ida_free(&idpf_idc_ida, adev->id);
+>   }
+>   
+>   /**
 
-Like what i40e driver initially did in commit 3106c580fb7cf
-("i40e: Use batched xsk Tx interfaces to increase performance"), use
-the batched xsk feature to transmit packets.
-
-Signed-off-by: Jason Xing <kernelxing@tencent.com>
----
-In this version, I still choose use the current implementation. Last
-time at the first glance, I agreed 'i' is useless but it is not.
-https://lore.kernel.org/intel-wired-lan/CAL+tcoADu-ZZewsZzGDaL7NugxFTWO_Q+7WsLHs3Mx-XHjJnyg@mail.gmail.com/
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 106 +++++++++++++------
- 1 file changed, 72 insertions(+), 34 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-index f3d3f5c1cdc7..9fe2c4bf8bc5 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-@@ -2,12 +2,15 @@
- /* Copyright(c) 2018 Intel Corporation. */
- 
- #include <linux/bpf_trace.h>
-+#include <linux/unroll.h>
- #include <net/xdp_sock_drv.h>
- #include <net/xdp.h>
- 
- #include "ixgbe.h"
- #include "ixgbe_txrx_common.h"
- 
-+#define PKTS_PER_BATCH 4
-+
- struct xsk_buff_pool *ixgbe_xsk_pool(struct ixgbe_adapter *adapter,
- 				     struct ixgbe_ring *ring)
- {
-@@ -388,58 +391,93 @@ void ixgbe_xsk_clean_rx_ring(struct ixgbe_ring *rx_ring)
- 	}
- }
- 
--static bool ixgbe_xmit_zc(struct ixgbe_ring *xdp_ring, unsigned int budget)
-+static void ixgbe_set_rs_bit(struct ixgbe_ring *xdp_ring)
-+{
-+	u16 ntu = xdp_ring->next_to_use ? xdp_ring->next_to_use - 1 : xdp_ring->count - 1;
-+	union ixgbe_adv_tx_desc *tx_desc;
-+
-+	tx_desc = IXGBE_TX_DESC(xdp_ring, ntu);
-+	tx_desc->read.cmd_type_len |= cpu_to_le32(IXGBE_TXD_CMD_RS);
-+}
-+
-+static void ixgbe_xmit_pkt(struct ixgbe_ring *xdp_ring, struct xdp_desc *desc,
-+			   int i)
-+
- {
- 	struct xsk_buff_pool *pool = xdp_ring->xsk_pool;
- 	union ixgbe_adv_tx_desc *tx_desc = NULL;
- 	struct ixgbe_tx_buffer *tx_bi;
--	struct xdp_desc desc;
- 	dma_addr_t dma;
- 	u32 cmd_type;
- 
--	if (!budget)
--		return true;
-+	dma = xsk_buff_raw_get_dma(pool, desc[i].addr);
-+	xsk_buff_raw_dma_sync_for_device(pool, dma, desc[i].len);
- 
--	while (likely(budget)) {
--		if (!netif_carrier_ok(xdp_ring->netdev))
--			break;
-+	tx_bi = &xdp_ring->tx_buffer_info[xdp_ring->next_to_use];
-+	tx_bi->bytecount = desc[i].len;
-+	tx_bi->xdpf = NULL;
-+	tx_bi->gso_segs = 1;
- 
--		if (!xsk_tx_peek_desc(pool, &desc))
--			break;
-+	tx_desc = IXGBE_TX_DESC(xdp_ring, xdp_ring->next_to_use);
-+	tx_desc->read.buffer_addr = cpu_to_le64(dma);
- 
--		dma = xsk_buff_raw_get_dma(pool, desc.addr);
--		xsk_buff_raw_dma_sync_for_device(pool, dma, desc.len);
-+	cmd_type = IXGBE_ADVTXD_DTYP_DATA |
-+		   IXGBE_ADVTXD_DCMD_DEXT |
-+		   IXGBE_ADVTXD_DCMD_IFCS;
-+	cmd_type |= desc[i].len | IXGBE_TXD_CMD_EOP;
-+	tx_desc->read.cmd_type_len = cpu_to_le32(cmd_type);
-+	tx_desc->read.olinfo_status =
-+		cpu_to_le32(desc[i].len << IXGBE_ADVTXD_PAYLEN_SHIFT);
- 
--		tx_bi = &xdp_ring->tx_buffer_info[xdp_ring->next_to_use];
--		tx_bi->bytecount = desc.len;
--		tx_bi->xdpf = NULL;
--		tx_bi->gso_segs = 1;
-+	xdp_ring->next_to_use++;
-+}
- 
--		tx_desc = IXGBE_TX_DESC(xdp_ring, xdp_ring->next_to_use);
--		tx_desc->read.buffer_addr = cpu_to_le64(dma);
-+static void ixgbe_xmit_pkt_batch(struct ixgbe_ring *xdp_ring, struct xdp_desc *desc)
-+{
-+	u32 i;
- 
--		/* put descriptor type bits */
--		cmd_type = IXGBE_ADVTXD_DTYP_DATA |
--			   IXGBE_ADVTXD_DCMD_DEXT |
--			   IXGBE_ADVTXD_DCMD_IFCS;
--		cmd_type |= desc.len | IXGBE_TXD_CMD;
--		tx_desc->read.cmd_type_len = cpu_to_le32(cmd_type);
--		tx_desc->read.olinfo_status =
--			cpu_to_le32(desc.len << IXGBE_ADVTXD_PAYLEN_SHIFT);
-+	unrolled_count(PKTS_PER_BATCH)
-+	for (i = 0; i < PKTS_PER_BATCH; i++)
-+		ixgbe_xmit_pkt(xdp_ring, desc, i);
-+}
- 
--		xdp_ring->next_to_use++;
--		if (xdp_ring->next_to_use == xdp_ring->count)
--			xdp_ring->next_to_use = 0;
-+static void ixgbe_fill_tx_hw_ring(struct ixgbe_ring *xdp_ring,
-+				  struct xdp_desc *descs, u32 nb_pkts)
-+{
-+	u32 batched, leftover, i;
-+
-+	batched = nb_pkts & ~(PKTS_PER_BATCH - 1);
-+	leftover = nb_pkts & (PKTS_PER_BATCH - 1);
-+	for (i = 0; i < batched; i += PKTS_PER_BATCH)
-+		ixgbe_xmit_pkt_batch(xdp_ring, &descs[i]);
-+	for (i = batched; i < batched + leftover; i++)
-+		ixgbe_xmit_pkt(xdp_ring, &descs[i], 0);
-+}
- 
--		budget--;
--	}
-+static bool ixgbe_xmit_zc(struct ixgbe_ring *xdp_ring, unsigned int budget)
-+{
-+	struct xdp_desc *descs = xdp_ring->xsk_pool->tx_descs;
-+	u32 nb_pkts, nb_processed = 0;
- 
--	if (tx_desc) {
--		ixgbe_xdp_ring_update_tail(xdp_ring);
--		xsk_tx_release(pool);
-+	if (!netif_carrier_ok(xdp_ring->netdev))
-+		return true;
-+
-+	nb_pkts = xsk_tx_peek_release_desc_batch(xdp_ring->xsk_pool, budget);
-+	if (!nb_pkts)
-+		return true;
-+
-+	if (xdp_ring->next_to_use + nb_pkts >= xdp_ring->count) {
-+		nb_processed = xdp_ring->count - xdp_ring->next_to_use;
-+		ixgbe_fill_tx_hw_ring(xdp_ring, descs, nb_processed);
-+		xdp_ring->next_to_use = 0;
- 	}
- 
--	return !!budget;
-+	ixgbe_fill_tx_hw_ring(xdp_ring, &descs[nb_processed], nb_pkts - nb_processed);
-+
-+	ixgbe_set_rs_bit(xdp_ring);
-+	ixgbe_xdp_ring_update_tail(xdp_ring);
-+
-+	return nb_pkts < budget;
- }
- 
- static void ixgbe_clean_xdp_tx_buffer(struct ixgbe_ring *tx_ring,
--- 
-2.41.3
-
+Reviewed-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
