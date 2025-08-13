@@ -1,83 +1,92 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F003B23FF3
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 13 Aug 2025 06:56:28 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 87671B24079
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 13 Aug 2025 07:43:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C2A65606F8;
-	Wed, 13 Aug 2025 04:56:26 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 26130827D8;
+	Wed, 13 Aug 2025 05:43:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xty6PybCn7GM; Wed, 13 Aug 2025 04:56:26 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id TXvaA5Mvg3Y5; Wed, 13 Aug 2025 05:43:33 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9DD86606E1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2F7A3827DD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1755060985;
-	bh=F2Bi3n78zArMTDJUKwX7/FOGAOb9uR/YCGDo+6JQKzc=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1755063813;
+	bh=lEg6sIKMesLubMLmMqbaJCBsDbb3RY8xW9sh+eHBSSM=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=sibc0ycox2lTE339kwSwDkEiZPFXzBoI8qk3BIvDLMkU4NU1V5dMKTjoE/tlsB52h
-	 ZL44b1PN9NJVeEU3feExuyBaPT5evHD9kBaEUBMfb/8S/Wo5MJ4avNCHML0EsgtWe5
-	 6wQ19cPx2ammZpjYFIfP3iOLcG9bqqVcskevkIhPViIohr3/hppZjc3j56k0zEBqdM
-	 mJgdaAvCxfpux69jkQG8xW1xh65HDU2rIcJM1a9hRwJbpFJriktHDEeJzBWXgyqQA+
-	 Lfa66Y0RANlUqmA9bO76pBHPA32dQ2iC9BJ2NTSkyukLKO4rbPsGETkqIKwnzYdqx2
-	 ZB7bNPdvOb8tg==
+	b=f6e97Pvwm3amYUaL0tEsX9GrSENF6ctBM2wWs+8Ml0wRsLCXKi690wQAfVu1sEN//
+	 /PtwkkKv515MddyJ5HliRdR/cYf2KsqkABAKDE4VahQOUvGgDmjTSga/OJjNqgnoYW
+	 j5INOwPAhH8vUw+msCG4c5lgnQ468iODPneiPWm/n3Zoo1icvKUXgGWNmNqcprr5AV
+	 RocGB09IaCVI1rmO1C8iiTQvwlE1NuGoXbDi54Ct4KsHj9gCtRYwkIhmZVW9lVNty6
+	 scwgnjM3ADl9CaJ1frtCEB4hqiOQQ9MBxGGi1ue8KcYLTgJ+cCweWLOA9+xgmjq8nQ
+	 S7MpkTfE8nYtQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9DD86606E1;
-	Wed, 13 Aug 2025 04:56:25 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2F7A3827DD;
+	Wed, 13 Aug 2025 05:43:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id E08EB1B5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Aug 2025 04:56:23 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 69B85938
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Aug 2025 05:43:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D2B06606DA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Aug 2025 04:56:23 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4A8B682716
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Aug 2025 05:43:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id BgvPg160QB6v for <intel-wired-lan@lists.osuosl.org>;
- Wed, 13 Aug 2025 04:56:22 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 0JS_1ds5_QOF for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 13 Aug 2025 05:43:30 +0000 (UTC)
+X-Greylist: delayed 509 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 13 Aug 2025 05:43:30 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4C7F68272D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4C7F68272D
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=gregkh@linuxfoundation.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A89FE606BB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A89FE606BB
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A89FE606BB
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Aug 2025 04:56:21 +0000 (UTC)
-Received: from [192.168.0.192] (ip5f5af7c8.dynamic.kabel-deutschland.de
- [95.90.247.200])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 4F62061E647BA;
- Wed, 13 Aug 2025 06:55:53 +0200 (CEST)
-Message-ID: <a154eb9b-809e-4b8c-8b77-89c80d6658e1@molgen.mpg.de>
-Date: Wed, 13 Aug 2025 06:55:52 +0200
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4C7F68272D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Aug 2025 05:43:30 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 4C3A05C69BE;
+ Wed, 13 Aug 2025 05:34:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7FF0CC4CEEB;
+ Wed, 13 Aug 2025 05:34:58 +0000 (UTC)
+Date: Wed, 13 Aug 2025 07:34:54 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Sasha Levin <sashal@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
+ Kuniyuki Iwashima <kuniyu@google.com>, stable@vger.kernel.org
+Message-ID: <2025081319-carried-liberty-dc3e@gregkh>
+References: <20250812132910.99626-1-przemyslaw.kitszel@intel.com>
+ <20250812135714.0e1a7ee0@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Emil Tantilov <emil.s.tantilov@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, willemb@google.com, decot@google.com,
- netdev@vger.kernel.org, joshua.a.hay@intel.com,
- Aleksandr.Loktionov@intel.com, andrew+netdev@lunn.ch, edumazet@google.com,
- jianliu@redhat.com, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, kuba@kernel.org, pabeni@redhat.com,
- davem@davemloft.net
-References: <20250813024202.10740-1-emil.s.tantilov@intel.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20250813024202.10740-1-emil.s.tantilov@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] idpf: set mac type when
- adding and removing MAC filters
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250812135714.0e1a7ee0@kernel.org>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=linuxfoundation.org; 
+ s=korg; t=1755063299;
+ bh=y2cn1F377n62GhXtZy13sRaL2HV14HmDYX5otP9AhZo=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=UVQNBEl4Mnahh/6yIBSJHL8GXVmvkVjvNEn6JoiqWownwKkR5H46Zh5/mlZsGh15Z
+ usdr427yGZpl577ep4e1H4VltQu32GO9fB2DhfhKGdMQkpBwugAbrMu8kElmHG/fBq
+ Ip6ZkOyTs21Iv8C4HbN+lg6jRK21Nd3bFgAhJ3eE=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=linuxfoundation.org
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=linuxfoundation.org header.i=@linuxfoundation.org
+ header.a=rsa-sha256 header.s=korg header.b=UVQNBEl4
+Subject: Re: [Intel-wired-lan] [PATCH 00/12] ice: split ice_virtchnl.c
+ git-blame friendly way
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -93,135 +102,55 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Emil,
-
-
-Thank you for the patch.
-
-Am 13.08.25 um 04:42 schrieb Emil Tantilov:
-> On control planes that allow changing the MAC address of the interface,
-> the driver must provide a MAC type to avoid errors such as:
+On Tue, Aug 12, 2025 at 01:57:14PM -0700, Jakub Kicinski wrote:
+> On Tue, 12 Aug 2025 15:28:58 +0200 Przemek Kitszel wrote:
+> > Summary:
+> > Split ice_virtchnl.c into two more files (+headers), in a way
+> > that git-blame works better.
+> > Then move virtchnl files into a new subdir.
+> > No logic changes.
+> > 
+> > I have developed (or discovered ;)) how to split a file in a way that
+> > both old and new are nice in terms of git-blame
+> > There were no much disscussion on [RFC], so I would like to propose
+> > to go forward with this approach.
+> > 
+> > There is more commits needed to have it nice, so it forms a git-log vs
+> > git-blame tradeoff, but (after the brief moment that this is on the top)
+> > we spend orders of magnitude more time looking at the blame output (and
+> > commit messages linked from that) - so I find it much better to see
+> > actual logic changes instead of "move xx to yy" stuff (typical for
+> > "squashed/single-commit splits").
+> > 
+> > Cherry-picks/rebases work the same with this method as with simple
+> > "squashed/single-commit" approach (literally all commits squashed into
+> > one (to have better git-log, but shitty git-blame output).
+> > 
+> > Rationale for the split itself is, as usual, "file is big and we want to
+> > extend it".
+> > 
+> > This series is available on my github (just rebased from any
+> > earlier mentions):
+> > https://github.com/pkitszel/linux/tree/virtchnl-split-Aug12
+> > (the simple git-email view flattens this series, removing two
+> > merges from the view).
+> > 
+> > 
+> > [RFC]:
+> > https://lore.kernel.org/netdev/5b94d14e-a0e7-47bd-82fc-c85171cbf26e@intel.com/T/#u
+> > 
+> > (I would really look at my fork via your preferred git interaction tool
+> > instead of looking at the patches below).
 > 
-> idpf 0000:0a:00.0: Transaction failed (op 535)
-> idpf 0000:0a:00.0: Received invalid MAC filter payload (op 535) (len 0)
-> idpf 0000:0a:00.0: Transaction failed (op 536)
+> UI tools aside I wish you didn't cut off the diffstat from the cover
+> letter :/ It'd make it much easier to understand what you're splitting.
 > 
-> These errors occur during driver load or when changing the MAC via:
-> ip link set <iface> address <mac>
-> 
-> Add logic to set the MAC type when sending ADD/DEL (opcodes 535/536) to
-> the control plane. Since only one primary MAC is supported per vport, the
-> driver only needs to send an ADD opcode when setting it. Remove the old
-> address by calling __idpf_del_mac_filter(), which skips the message and
-> just clears the entry from the internal list.
+> Greg, Sasha, I suspect stable will suffer the most from any file split /
+> movement. Do you have any recommendation on what should be allowed?
 
-Could this be split into two patches?
+We don't care, do whatever you need to for Linus's tree, and the
+backports can work themselves out as needed.
 
-1.  Set the type
-2.  Improve logic
+thanks,
 
-> Fixes: ce1b75d0635c ("idpf: add ptypes and MAC filter support")
-> Reported-by: Jian Liu <jianliu@redhat.com>
-> Signed-off-by: Emil Tantilov <emil.s.tantilov@intel.com>
-> ---
-> Changelog:
-> v2:
-> - Make sure to clear the primary MAC from the internal list, following
->    successful change.
-> - Update the description to include the error on 536 opcode and
->    mention the removal of the old address.
-> 
-> v1:
-> https://lore.kernel.org/intel-wired-lan/20250806192130.3197-1-emil.s.tantilov@intel.com/
-> ---
->   drivers/net/ethernet/intel/idpf/idpf_lib.c      |  9 ++++++---
->   drivers/net/ethernet/intel/idpf/idpf_virtchnl.c | 11 +++++++++++
->   2 files changed, 17 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-> index 2c2a3e85d693..26edd2cda70b 100644
-> --- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
-> +++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-> @@ -2345,6 +2345,7 @@ static int idpf_set_mac(struct net_device *netdev, void *p)
->   	struct idpf_vport_config *vport_config;
->   	struct sockaddr *addr = p;
->   	struct idpf_vport *vport;
-> +	u8 old_addr[ETH_ALEN];
-
-old_mac_addr?
-
->   	int err = 0;
->   
->   	idpf_vport_ctrl_lock(netdev);
-> @@ -2367,17 +2368,19 @@ static int idpf_set_mac(struct net_device *netdev, void *p)
->   	if (ether_addr_equal(netdev->dev_addr, addr->sa_data))
->   		goto unlock_mutex;
->   
-> +	ether_addr_copy(old_addr, vport->default_mac_addr);
-> +	ether_addr_copy(vport->default_mac_addr, addr->sa_data);
->   	vport_config = vport->adapter->vport_config[vport->idx];
->   	err = idpf_add_mac_filter(vport, np, addr->sa_data, false);
->   	if (err) {
->   		__idpf_del_mac_filter(vport_config, addr->sa_data);
-> +		ether_addr_copy(vport->default_mac_addr, netdev->dev_addr);
->   		goto unlock_mutex;
->   	}
->   
-> -	if (is_valid_ether_addr(vport->default_mac_addr))
-> -		idpf_del_mac_filter(vport, np, vport->default_mac_addr, false);
-> +	if (is_valid_ether_addr(old_addr))
-> +		__idpf_del_mac_filter(vport_config, old_addr);
->   
-> -	ether_addr_copy(vport->default_mac_addr, addr->sa_data);
->   	eth_hw_addr_set(netdev, addr->sa_data);
->   
->   unlock_mutex:
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-> index a028c69f7fdc..e60438633cc4 100644
-> --- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-> +++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-> @@ -3765,6 +3765,15 @@ u32 idpf_get_vport_id(struct idpf_vport *vport)
->   	return le32_to_cpu(vport_msg->vport_id);
->   }
->   
-> +static void idpf_set_mac_type(struct idpf_vport *vport,
-> +			      struct virtchnl2_mac_addr *mac_addr)
-> +{
-> +	if (ether_addr_equal(vport->default_mac_addr, mac_addr->addr))
-> +		mac_addr->type = VIRTCHNL2_MAC_ADDR_PRIMARY;
-> +	else
-> +		mac_addr->type = VIRTCHNL2_MAC_ADDR_EXTRA;
-
-I’d use the ternary operator. That way, it’s clear the same variable is 
-assigned a value in each branch.
-
-> +}
-> +
->   /**
->    * idpf_mac_filter_async_handler - Async callback for mac filters
->    * @adapter: private data struct
-> @@ -3894,6 +3903,7 @@ int idpf_add_del_mac_filters(struct idpf_vport *vport,
->   			    list) {
->   		if (add && f->add) {
->   			ether_addr_copy(mac_addr[i].addr, f->macaddr);
-> +			idpf_set_mac_type(vport, &mac_addr[i]);
->   			i++;
->   			f->add = false;
->   			if (i == total_filters)
-> @@ -3901,6 +3911,7 @@ int idpf_add_del_mac_filters(struct idpf_vport *vport,
->   		}
->   		if (!add && f->remove) {
->   			ether_addr_copy(mac_addr[i].addr, f->macaddr);
-> +			idpf_set_mac_type(vport, &mac_addr[i]);
->   			i++;
->   			f->remove = false;
->   			if (i == total_filters)
-
-The overall diff looks good. Feel free to add:
-
-Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
-
-
-Kind regards,
-
-Paul
+greg k-h
