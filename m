@@ -2,97 +2,97 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C9774B25372
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 13 Aug 2025 20:57:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8A265B25374
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 13 Aug 2025 20:57:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8972C429DD;
-	Wed, 13 Aug 2025 18:57:27 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3D75C429E1;
+	Wed, 13 Aug 2025 18:57:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Qk5EfNsYBv_6; Wed, 13 Aug 2025 18:57:26 +0000 (UTC)
+ id Z1yz9KNOp8J1; Wed, 13 Aug 2025 18:57:42 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B8784429DE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 98E66429DB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1755111446;
-	bh=5bx0nltJAqPDiw32nYF7myL0CiKz0propbjqOIW/bYQ=;
+	s=default; t=1755111462;
+	bh=Fz5e5AjMB1U0jGd82Z0MTseLOWsgSQPAfq4rg9nEafw=;
 	h=From:To:CC:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=WhZpMmz1sWMKqgesHZAzUsE7IfCrpPsb8HiCeGVdkuD127jlojJa7Jih/llN2KZU3
-	 WnfGtLjn7Rkubj33L7zin8D8EJiWTmn4+KGeXJVNZZh1ob+aSMG8Tk0/9f6/FNmnRc
-	 kD1XfTtXlKb+CDrfJFmM+vQ/TkMNLmEdyv3FH+M7TU6xD40IAw+7xqM4tBP8BjlvG5
-	 jBaqXeDPtinGu/bEYmVC/Kkd58Qs9neYECmrepypJlAZnsFAR5UH+b3GrwKSxUvN/X
-	 T3lKwnv/uRZHoJXXgp7LC/4FxJgZEoujnWHtsJi1/Bupw752+VMRvzdYnNew18S8xo
-	 aGOklu9wKPFhQ==
+	b=eAVSSYbtEksuYgnkWuavbke20FVHLC+OcAzDS8fFktcjJpccbF5/7hwD9q4UjYz0p
+	 13v1aHffOCklIFmouxc3uk5sIBigAABsy8/cFkEBR2e1cwP3mb+/8TdS1zuAI0/Je5
+	 vW/kICCSMo3Fy6k5bSbkBQTHcHzkqN/lPZfiVqxJELjapEyD0RcoWg17vXb/IW7qzy
+	 Vd7GGW4Msf4jGuGs4R5yQBC4gq6JrlIZ/6Df9Eb1NXN3mgdmdRTjwMkwJhdt5cjB+7
+	 /buKbSNA+gieqlLycV8yug0sS9gGJsEt33Sisj8M1HWDSHWvr6BuxPEuwpfHfrTamR
+	 2aydIMAdj5wwg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B8784429DE;
-	Wed, 13 Aug 2025 18:57:26 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 98E66429DB;
+	Wed, 13 Aug 2025 18:57:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id EDEF31B5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Aug 2025 18:57:24 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 54980939
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Aug 2025 18:57:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D477983C97
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Aug 2025 18:57:24 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 46B25429DB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Aug 2025 18:57:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id jAE4Dto1K16F for <intel-wired-lan@lists.osuosl.org>;
- Wed, 13 Aug 2025 18:57:24 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.223.62;
- helo=nam11-dm6-obe.outbound.protection.outlook.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id G3PAJHh24oIf for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 13 Aug 2025 18:57:40 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.244.64;
+ helo=nam12-mw2-obe.outbound.protection.outlook.com;
  envelope-from=tariqt@nvidia.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 00E7283C87
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 00E7283C87
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam11on2062.outbound.protection.outlook.com [40.107.223.62])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 00E7283C87
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Aug 2025 18:57:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 6BE90429DC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6BE90429DC
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com
+ (mail-mw2nam12on2064.outbound.protection.outlook.com [40.107.244.64])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6BE90429DC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Aug 2025 18:57:40 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=txqfqE66W1A4432qzMVC+P/8nqB3Tf+nbeSJ2Z9Nt68vFoYpw3/DzpbyNtEvSAVDh77BEIi5KYeLKaYTICPuLAT1/AjNKucYeGZF+oZWkr5dGovSon6HSnw+q8s+4ln/q7Vv9C+BL2cXAlhrhfC6Z1MSTcsNBh8IKeaauVbiCRI3LBiwezdcwKxe6HaLy+plT9ESNOHX+b+aUQV8fbegNAxe7zrul8kZjJKCV5KOXwx7lQ6rd2nx5nSve6Bj3RDAry0RfpYRTeogFtICK8oMwzGkfm5ZE08pEjPmxiJ1bnSRf/DMp0a2mtn2W5CQ/iM8Rq8hNkHzie6yiOvRf9mr9Q==
+ b=GviUxmdISR5kUgVxLrR6XYp1PBt6MQ423AnBncg5QHu/RKCNz52SgkCeyOJD4vo3iXhV7NxsxQI+j51ZZ0qfbXh9WZmqFKpTtW4PFihKnCMV+9AHhfRpn6WWVd9kUzXx6D2VBSWi1mGV/dVMWkNEv7KNTmESPQQrdJpvMdr41ODIQJbvcm2zomDObOOCYG2ovt8EKWqh/uOI57wcjAWP3rutE6rl/hUcJ7SyqiVi7XEcX3sxQJ5ba+5NuvvQCRfmi2me1/9anrv+84JaaU/ZMSSulBqxUS/iJ51uyREMuQ7sz7MSTROi5Sp/8nSi3DrasMh2gVyNTh0AbisbjF3kXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=5bx0nltJAqPDiw32nYF7myL0CiKz0propbjqOIW/bYQ=;
- b=HOzkmNnzoGY/NEBn+GyM306xMT4fbMaJO4oVm6sPd+RLQk+/NSi+k1Rm1XXfq1Kmb516EfmfIAaAGZdctJbx07WuqEw/rgNo0exl9luyGHjykbpcbzYu6tmFbR068PBVHPlUZXdHUJIz5eB3qziLRJzQPwygfHAWfrvuQmdaogD9BobLco0d8G09R37295lIW7ZL8QuwQam8rybYhsIr29bizbKMTMbJgOa1K6miS03oqm4PNVyjcM3kN38ddtI5a3a7YUzegHxTq362jAY12tC1bfEBuQIYmnEimTX3+526T1PIdW9+wo863qLau+wuVmVDkK1n07ruyCavCpJg1Q==
+ bh=Fz5e5AjMB1U0jGd82Z0MTseLOWsgSQPAfq4rg9nEafw=;
+ b=jv251CkVRK9s71dx2TmFM9t+eI/Ckkyzh2KlcZVWZq2Ur28noAGBilGrka0ds20mLGsOjrbP6efuOEB4feoAIvH3Qo4XsY3y5m7AryG+o0Xcmo3+JnzaHHtizUa5Nz3re/c+wCu4sytX4LextaotZa/e2nf4vCg5UAGGQsw9eOvgj0tu1tB5gtirIW+b9Hs/quoWiwhLvnQefuqEm4OmQS5NotRbWMtijlyVhXtWBj/VyEcKfu6FBObeS4kX0QHOwej0nnzCkYZL2oTVtKDMxVsQN+qUfOrI8CfyBZLESWZLhZoPOfcfO369s0pmUCkC/V5votdS6MI/WbOxZn30lQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=marvell.com smtp.mailfrom=nvidia.com;
+ 216.228.117.160) smtp.rcpttodomain=marvell.com smtp.mailfrom=nvidia.com;
  dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
  dkim=none (message not signed); arc=none (0)
-Received: from SJ0PR03CA0089.namprd03.prod.outlook.com (2603:10b6:a03:331::34)
- by PH0PR12MB8152.namprd12.prod.outlook.com (2603:10b6:510:292::14)
+Received: from SJ0PR03CA0172.namprd03.prod.outlook.com (2603:10b6:a03:338::27)
+ by IA0PR12MB8424.namprd12.prod.outlook.com (2603:10b6:208:40c::15)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9031.13; Wed, 13 Aug
- 2025 18:57:20 +0000
-Received: from SJ1PEPF00002325.namprd03.prod.outlook.com
- (2603:10b6:a03:331:cafe::1f) by SJ0PR03CA0089.outlook.office365.com
- (2603:10b6:a03:331::34) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9031.15 via Frontend Transport; Wed,
- 13 Aug 2025 18:57:20 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9009.21; Wed, 13 Aug
+ 2025 18:57:35 +0000
+Received: from SJ5PEPF000001F4.namprd05.prod.outlook.com
+ (2603:10b6:a03:338:cafe::7d) by SJ0PR03CA0172.outlook.office365.com
+ (2603:10b6:a03:338::27) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9009.22 via Frontend Transport; Wed,
+ 13 Aug 2025 18:57:34 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
  smtp.mailfrom=nvidia.com;
  dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=nvidia.com;
 Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- SJ1PEPF00002325.mail.protection.outlook.com (10.167.242.88) with Microsoft
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ SJ5PEPF000001F4.mail.protection.outlook.com (10.167.242.72) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9031.11 via Frontend Transport; Wed, 13 Aug 2025 18:57:20 +0000
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ 15.20.9031.11 via Frontend Transport; Wed, 13 Aug 2025 18:57:34 +0000
+Received: from rnnvmail202.nvidia.com (10.129.68.7) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Wed, 13 Aug
- 2025 11:57:06 -0700
-Received: from rnnvmail203.nvidia.com (10.129.68.9) by rnnvmail205.nvidia.com
- (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
+ 2025 11:57:15 -0700
+Received: from rnnvmail203.nvidia.com (10.129.68.9) by rnnvmail202.nvidia.com
+ (10.129.68.7) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Wed, 13 Aug
- 2025 11:57:06 -0700
+ 2025 11:57:14 -0700
 Received: from vdi.nvidia.com (10.127.8.10) by mail.nvidia.com (10.129.68.9)
  with Microsoft SMTP Server id 15.2.1544.14 via Frontend Transport; Wed, 13
- Aug 2025 11:56:57 -0700
+ Aug 2025 11:57:06 -0700
 From: Tariq Toukan <tariqt@nvidia.com>
 To: Jiri Pirko <jiri@nvidia.com>, Jiri Pirko <jiri@resnulli.us>, Eric Dumazet
  <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
@@ -114,86 +114,76 @@ CC: Donald Hunter <donald.hunter@gmail.com>, Jonathan Corbet <corbet@lwn.net>,
  <intel-wired-lan@lists.osuosl.org>, <linux-rdma@vger.kernel.org>, "Gal
  Pressman" <gal@nvidia.com>, Dragos Tatulea <dtatulea@nvidia.com>, "Shahar
  Shitrit" <shshitrit@nvidia.com>
-Date: Wed, 13 Aug 2025 21:55:48 +0300
-Message-ID: <1755111349-416632-5-git-send-email-tariqt@nvidia.com>
+Date: Wed, 13 Aug 2025 21:55:49 +0300
+Message-ID: <1755111349-416632-6-git-send-email-tariqt@nvidia.com>
 X-Mailer: git-send-email 2.8.0
 In-Reply-To: <1755111349-416632-1-git-send-email-tariqt@nvidia.com>
 References: <1755111349-416632-1-git-send-email-tariqt@nvidia.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-NV-OnPremToCloud: ExternallySecured
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ1PEPF00002325:EE_|PH0PR12MB8152:EE_
-X-MS-Office365-Filtering-Correlation-Id: c34441a1-e032-4200-d292-08ddda9b3b54
+X-MS-TrafficTypeDiagnostic: SJ5PEPF000001F4:EE_|IA0PR12MB8424:EE_
+X-MS-Office365-Filtering-Correlation-Id: 8791c638-c752-41fa-4f55-08ddda9b4398
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|82310400026|1800799024|7416014|36860700013|376014; 
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?WHNISTl4V090bmFGcWpkTEk2cTUwUmR0SFFKblBlaUNwTGxvWTEzL3NhSENa?=
- =?utf-8?B?QUxQNEZEdDZxeWhFTmt0YlQySEJzYlFUelRGbkV1VUVMQW1TY1hhUHE2NmU5?=
- =?utf-8?B?WElxemNXTUc4bzVpMm9BZWxRM1B0M1JPbWpPaG5wSHp4aEd3UHM3R1FKNEta?=
- =?utf-8?B?N2NJdmxaaVJCZHBWSzdvM3k1OTdIcDZ0a29rc1ljenpGN2xpbkdzU3d1b0sy?=
- =?utf-8?B?Wld5Y0dsZVllSWVZUndtenl0Z3VReUdFOHZlS3JiUmdlajU2cm1BZnNrNzZH?=
- =?utf-8?B?eFRTNy90Ym5SbzZpYjlyVTJBWmR0cGNSVlQ5R1FHWUtkdURPK2ZQY011VWtq?=
- =?utf-8?B?TUtVcU5YdG4wSjlHL2lmUmNEYVVoMW9qNGkyUjlVZVhxTUFnMk41S0h6MEZs?=
- =?utf-8?B?S0ZvbTVxVHZGbW01c0t4b2NkdDNWU0NNLzRVR3BJL2RXZmJIbG8xdDNvZWpj?=
- =?utf-8?B?dzMxWXAvTC9vTEZHYzhJVG5NcDJXKzF0Rk9UOXN4TFJITG9rUy9PNjVna3FZ?=
- =?utf-8?B?NmZxNEFvZHE5SlZzbkxWNzFVSlpVd0o2MDRVY0hzUmprR3RJRWt1NnArY01O?=
- =?utf-8?B?MGZOYUgrUXUvdjh6ZHk0ZUhPaUg1RWNodjdWS09kNTJmdVA5ZXR5WHRtNnpL?=
- =?utf-8?B?bWsxVFZRTUptSG5ULzc4ZmN1Q21TcVJNUlk3cnkxY0E5R3RwL0txQWNCWTlK?=
- =?utf-8?B?c0NZYUw0cE4vZ1IwQWpTNHhuWWVjOFFCS3AxblUvZ0NKcDZWQ2dxazFZRHZS?=
- =?utf-8?B?TkJFeEFsYXNzOVdud3pQSWhZS2x6ZzFubG9sYzdVcTJLYzIweW00aUYzcmVk?=
- =?utf-8?B?RjhtTjFyQUdNRHhuZ2dsWXhxNWhZRk5VRWJvQ3RNNVVHMXlHQTVlSWdPbVlt?=
- =?utf-8?B?KzFxaHRENkVEdGxud1Y3Nk5YZStPQlh4YnY0d0RYdHBVSEpuNDdQdzllMGw1?=
- =?utf-8?B?NnVrWVNvWEtueC8ybWQ1OEQxNzRoZTVDVDFEeXNaM3RaZkZpOW9tam9qc2N2?=
- =?utf-8?B?VEt1S0NwZlkzUzcrbnZIY2pobDBaYzFBNG9kWmN4dlk1T3Q2N3ZSaW5xRTIw?=
- =?utf-8?B?WTlQcFZ2TkM5MG9pbWVDNmd1YmtXbWlCdlBiOE1EL1M1MHhZbGJER3hQcVBa?=
- =?utf-8?B?Z2c5OWE1M1ZlY3N4dkxjU1l3cmJ0UDVWcE0xc1hyaUpsS3NzZHVXSWkySDQ3?=
- =?utf-8?B?dEtpcHdjTTRNQ0lCQTRRM2c5WTJKeTl2cXQrWkxyMTRPdTY3WS9aUnhQTmJL?=
- =?utf-8?B?U05LUWtBcHcvMzJSNjJNRkd5aDh3Ynd3aFZsQmRyY0h3ZkY0bWxtQXlvODIr?=
- =?utf-8?B?cU8yZWMyRkFreFFzTzJsQWx3WmczYm8rZkN5alZqb2tTL2dES21GZDVwakJF?=
- =?utf-8?B?SHdUaXNvb1laM0RkbU81N2FVNUxXZHpPQllWb2pHeGQ1WlJVaEN0NFF1c0Ey?=
- =?utf-8?B?MjZsekFmQ05saU9GMmZvR2NXYmwybjVRbWI3a3RRWVNndmhwSHIwV1NWOUU2?=
- =?utf-8?B?MFlHaVFzdTJweWdZWTZ3cG9uSkhFVkVIeWV6NHZhcytVd3h4cVJPdzVUcVU3?=
- =?utf-8?B?Zy9XYUtNWEUzSWo3dGx3OXFDWjRJdWdyQWhwSkw0U1hGRVJ3S25VY2ZUU084?=
- =?utf-8?B?eVpCaHQwb2FYOHA4RmZHMTQrMWMxSDJXR2k2YTZWaWdzY0NIOG1UZWx0TWxS?=
- =?utf-8?B?NmhoNkp2Q3E0S0JxaW11TCszSEpMVEIwRGpBaFVTOW1VV1dFclVnQ3FqK3FX?=
- =?utf-8?B?TGJNSHZTMEJQdmkyRTBRMjhLcUtrSnJCaWxtb0MvNjBMR0xHbG54ZXZtUjcy?=
- =?utf-8?B?VFp0ZWpSaHdmUzVNaFp6UTcvMnpKOVdmWVV1Y0hGS0FJbjU5akVOVFF1MXor?=
- =?utf-8?B?RHo1UWtkRjNNOVQzQ0M3QnM2N0tPNUtGSGtSaHlLWk03RGptUUVSVTBOd1A4?=
- =?utf-8?B?MzN2K0JtQ2lTOFFRa3FIM3JGUnJYNmJoR0RRQlZmY2ptTGlibEV2M0ZHMkNZ?=
- =?utf-8?B?aGlPNW13a0FZTVJYNlZMMlprT0FtMFZDSkhRSFV1RkYvMi8zL3V5T3dHUHIv?=
- =?utf-8?Q?41W7AA?=
-X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
- SFS:(13230040)(82310400026)(1800799024)(7416014)(36860700013)(376014); DIR:OUT;
+ ARA:13230040|82310400026|1800799024|376014|7416014|36860700013; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?Gi0CVJYp+2uR/fVtGKnkuXf3m2BMn4eCamG3HJN0iwiaGWQ8/HUZQpeC4fRY?=
+ =?us-ascii?Q?8cTlwVh9okhtxfWtNJScmEbtBFPhgL54WrZlMTJ8a3Aqg0vLln1hCToh789L?=
+ =?us-ascii?Q?i340f1HNgYiilxaYm7Y4bqH9GQgx3HDKL/3tFGPj9Du4D8R9LolfzLC2d5Vm?=
+ =?us-ascii?Q?sb9bOVCcLZC+WxEbsug6y7/lzYfJJTcA8v1H5apaacWygf+poqBE95yrMqUA?=
+ =?us-ascii?Q?oZkyEzeqTnqvadzL8Gxq5MaQo1cOu50HDTOFIz20uECCU+339ta9z5TtPIW4?=
+ =?us-ascii?Q?0DgRXGh76F4WHa1FCTEH99BpCgFhL/jg9AVcuNLw5EO+YZRQI/SbpWjys0qs?=
+ =?us-ascii?Q?hqQ4FR7Y3FHogdtMt6dES1YnV19oeFzbA2UtDxuWdwzBgMr4QqBdP6Gk7Z8D?=
+ =?us-ascii?Q?Jj6OPX/P8NUzzyxFp1oXjMYRMTpGLrYJloO31he8kn5fW/uq+a726/JmSPdg?=
+ =?us-ascii?Q?aGZduToMPuuVfIXiiz58BX/GJ8wXE3pNg3Wlc7VOyLdXZtuWNXfDFJfAi2jh?=
+ =?us-ascii?Q?lvgNZBQFf8tey+EFrc536NiRPepB41U6qAgNTC1CmWX1sLmyv1LkHfHzzCfS?=
+ =?us-ascii?Q?6JdMnRNnO8Q21OWiQ6N6nFnrAZp1bXr2AEuFIVy5s6aep2MPnP+3ofggcHQl?=
+ =?us-ascii?Q?SpE92BZ4BQtn6sCxTVUdAAsarjYgJ7Rde+ycvrEfHiNX4kQjR+JqT5YcdodV?=
+ =?us-ascii?Q?PPfzVJrHq+yvRcBHqibpFoOtJJs6Oi2JwVUW2BK7zQHLJL/ZbSz2Ke5Qb7hP?=
+ =?us-ascii?Q?o0YxKEJzv+tD1V5YHNkMLMSvTYsKB09+D+6YrbVxIVDt6fe2EoQ0pTlw9Isf?=
+ =?us-ascii?Q?ZNlu2muwakA4z8Aqgt69kbWofnb5il+vYjJIZ8bv5E2SHZ2zIZNQJkq/Xv88?=
+ =?us-ascii?Q?FLB4V/AYRHxsR+y/L2JKPcicO4dM8WcNdJr78ROS94XdG9MO5wwcFSRW70DW?=
+ =?us-ascii?Q?fVk0bgVhYGRJ5Hry+sP1dYNXg5508566s1SODFxrNWRJNcdOsAM8lDI2dX2f?=
+ =?us-ascii?Q?jJpWOqYA36+eYPQB23fe9UUfe1WzkPzDAKf+YKitioqmFFLQX0o6WLrYVm6b?=
+ =?us-ascii?Q?kpJJA9I7AwTOBLXv5uk5rgbf7yk7cmF+AAcI/oxvcQRHgUec0iRgD1Zi/JWS?=
+ =?us-ascii?Q?GlaY5orOG/b3Hj2YoCU5guHiQxjGYWic6ZhaObC4O/0gW010VhLvSmlqblHC?=
+ =?us-ascii?Q?tSZyCFiRXLi+/w1Lt+wV0g+e0UTCM7ounpRj8Cal9S6jC2AEHOPr9/3DuAV6?=
+ =?us-ascii?Q?QhkrCVcQBEy8HUQQf4caHSt86U1seTh9czQ0ZRf637q2MhzvpDheCW/qxLA3?=
+ =?us-ascii?Q?2rNdWXSysfDDdwNXVbSNPCAMkx5EtBapoUnxO430VtFp27Wvj4zs/YuzpFrU?=
+ =?us-ascii?Q?F4MMZXoYAeJrMHOaCn17K8AuPwe2Qdr7AlmRvO533CdcicgwVm8DiSgjv48L?=
+ =?us-ascii?Q?jKxzL3GwoEy8tTCx06yldO+LN3Al7lVhowxvgvThl/guAj1mpqrv2uXyDJUv?=
+ =?us-ascii?Q?GTPW8WG4CYb9AWaTSdKIVPe02k3nfmpRA3xs?=
+X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
+ SFS:(13230040)(82310400026)(1800799024)(376014)(7416014)(36860700013); DIR:OUT;
  SFP:1101; 
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Aug 2025 18:57:20.6146 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: c34441a1-e032-4200-d292-08ddda9b3b54
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Aug 2025 18:57:34.4962 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8791c638-c752-41fa-4f55-08ddda9b4398
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
  Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF00002325.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: SJ5PEPF000001F4.namprd05.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR12MB8152
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR12MB8424
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=Nvidia.com; s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5bx0nltJAqPDiw32nYF7myL0CiKz0propbjqOIW/bYQ=;
- b=FkTT7DVG8FHvneTX1yOd78oUI/27skV/nA+nm/G+7EpnKWQzWrhfGIeK2LFhOOEfvUA4dzXJRMwBC13O+Br91MTf6GMozK8pj08YWSgV9Td0zbvLKg0ViesvnaK864nAPlinA+76ozEWrtXUj28p7kVLyJSDAHe4fT86aPxreWNCc50/AszaVMDWZ/OSk1/gTJTEzGd8aASy/W1jqnzbbaUZ8EO6tL4H2dBsBdsZGyHULHD1ZylTX8Ow8cXaldBDn7UrjjH/bSRST/RGU7HguzN4W8IJausSV57dxzuEcquHOY9AJZylIcSEWpBoGyrygnaEx2WiwMhOburFfeRYoQ==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=Fz5e5AjMB1U0jGd82Z0MTseLOWsgSQPAfq4rg9nEafw=;
+ b=jI3q1XYmP+G2DuvJxL4Q9hy9ccqauCuw6fav5L7Amf/ugALJXFJs9V7u1oEY5mOAv9N87asb6awphhyNzIjshpmpo0VNk5hMQlhuMnege1e8UEDCIIUXts9Aimyej15U9Q2KfkwK/TWPOhe3z2ogw5bLYAIjseXL9OpSfJH9q8PzdtUZUbB9Mzn9rWkyYpY+sTsDg2Uzn/gsuVa8cQMByy0SnOfeIbbJRUg49JWFyYLxRlf+ivHlVkikfApKqe4A5bZbQJNolYMOTst/QyMR92CBJ8L97g5T0cvdz8iVvxR3yP6KsPpwPvr5bHIi+krrT+rz7kEk9BeuWxl/4dkRLg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=reject dis=none)
  header.from=nvidia.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=Nvidia.com header.i=@Nvidia.com header.a=rsa-sha256
- header.s=selector2 header.b=FkTT7DVG
-Subject: [Intel-wired-lan] [PATCH net-next V3 4/5] devlink: Make health
- reporter error burst period configurable
+ header.s=selector2 header.b=jI3q1XYm
+Subject: [Intel-wired-lan] [PATCH net-next V3 5/5] net/mlx5e: Set default
+ error burst period for TX and RX reporters
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -211,196 +201,80 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Shahar Shitrit <shshitrit@nvidia.com>
 
-Enable configuration of the error burst period — a time window
-starting from the first error recovery, during which the reporter
-allows recovery attempts for each reported error.
+System errors can sometimes cause multiple errors to be reported
+to the TX reporter at the same time. For instance, lost interrupts
+may cause several SQs to time out simultaneously. When dev_watchdog
+notifies the driver for that, it iterates over all SQs to trigger
+recovery for the timed-out ones, via TX health reporter.
+However, grace period allows only one recovery at a time, so only
+the first SQ recovers while others remain blocked. Since no further
+recoveries are allowed during the grace period, subsequent errors
+cause the reporter to enter an ERROR state, requiring manual
+intervention.
 
-This feature is helpful when a single underlying issue causes
-multiple errors, as it delays the start of the grace period
-to allow sufficient time for recovering all related errors.
-For example, if multiple TX queues time out simultaneously,
-a sufficient error burst period could allow all affected TX
-queues to be recovered within that window. Without this period,
-only the first TX queue that reports a timeout will undergo
-recovery, while the remaining TX queues will be blocked once
-the grace period begins.
+To address this, set the TX reporter's default error burst period
+to 0.5 second. This allows the reporter to detect and handle all
+timed-out SQs within this window before initiating the grace period.
 
-Configuration example:
-$ devlink health set pci/0000:00:09.0 reporter tx error_burst_period 500
+To account for the possibility of a similar issue in the RX reporter,
+its default error burst period is also configured.
 
-Configuration example with ynl:
-./tools/net/ynl/pyynl/cli.py \
- --spec Documentation/netlink/specs/devlink.yaml \
- --do health-reporter-set --json '{
-  "bus-name": "auxiliary",
-  "dev-name": "mlx5_core.eth.0",
-  "port-index": 65535,
-  "health-reporter-name": "tx",
-  "health-reporter-error-burst-period": 500
-}'
+Additionally, while here, align the TX definition prefix with the RX,
+as these are used only in EN driver.
 
 Signed-off-by: Shahar Shitrit <shshitrit@nvidia.com>
 Reviewed-by: Carolina Jubran <cjubran@nvidia.com>
 Reviewed-by: Jiri Pirko <jiri@nvidia.com>
 Signed-off-by: Tariq Toukan <tariqt@nvidia.com>
 ---
- Documentation/netlink/specs/devlink.yaml      |  6 ++++
- .../networking/devlink/devlink-health.rst     |  2 +-
- include/uapi/linux/devlink.h                  |  2 ++
- net/devlink/health.c                          | 30 +++++++++++++++++--
- net/devlink/netlink_gen.c                     |  5 ++--
- 5 files changed, 39 insertions(+), 6 deletions(-)
+ drivers/net/ethernet/mellanox/mlx5/core/en/reporter_rx.c | 2 ++
+ drivers/net/ethernet/mellanox/mlx5/core/en/reporter_tx.c | 7 +++++--
+ 2 files changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/netlink/specs/devlink.yaml b/Documentation/netlink/specs/devlink.yaml
-index bb87111d5e16..0e81640dd3b2 100644
---- a/Documentation/netlink/specs/devlink.yaml
-+++ b/Documentation/netlink/specs/devlink.yaml
-@@ -853,6 +853,9 @@ attribute-sets:
-         type: nest
-         multi-attr: true
-         nested-attributes: dl-rate-tc-bws
-+      -
-+        name: health-reporter-error-burst-period
-+        type: u64
-   -
-     name: dl-dev-stats
-     subset-of: devlink
-@@ -1216,6 +1219,8 @@ attribute-sets:
-         name: health-reporter-dump-ts-ns
-       -
-         name: health-reporter-auto-dump
-+      -
-+        name: health-reporter-error-burst-period
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/reporter_rx.c b/drivers/net/ethernet/mellanox/mlx5/core/en/reporter_rx.c
+index 1b9ea72abc5a..0e861ae362bc 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/en/reporter_rx.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/en/reporter_rx.c
+@@ -652,6 +652,7 @@ void mlx5e_reporter_icosq_resume_recovery(struct mlx5e_channel *c)
+ }
  
-   -
-     name: dl-attr-stats
-@@ -1961,6 +1966,7 @@ operations:
-             - health-reporter-graceful-period
-             - health-reporter-auto-recover
-             - health-reporter-auto-dump
-+            - health-reporter-error-burst-period
+ #define MLX5E_REPORTER_RX_GRACEFUL_PERIOD 500
++#define MLX5E_REPORTER_RX_ERROR_BURST_PERIOD 500
  
-     -
-       name: health-reporter-recover
-diff --git a/Documentation/networking/devlink/devlink-health.rst b/Documentation/networking/devlink/devlink-health.rst
-index e0b8cfed610a..2279a4370003 100644
---- a/Documentation/networking/devlink/devlink-health.rst
-+++ b/Documentation/networking/devlink/devlink-health.rst
-@@ -50,7 +50,7 @@ Once an error is reported, devlink health will perform the following actions:
-   * Auto recovery attempt is being done. Depends on:
- 
-     - Auto-recovery configuration
--    - Grace period vs. time passed since last recover
-+    - Grace period (and error burst period)  vs. time passed since last recover
- 
- Devlink formatted message
- =========================
-diff --git a/include/uapi/linux/devlink.h b/include/uapi/linux/devlink.h
-index 9fcb25a0f447..458915c22990 100644
---- a/include/uapi/linux/devlink.h
-+++ b/include/uapi/linux/devlink.h
-@@ -636,6 +636,8 @@ enum devlink_attr {
- 
- 	DEVLINK_ATTR_RATE_TC_BWS,		/* nested */
- 
-+	DEVLINK_ATTR_HEALTH_REPORTER_ERR_BURST_PERIOD,	/* u64 */
-+
- 	/* Add new attributes above here, update the spec in
- 	 * Documentation/netlink/specs/devlink.yaml and re-generate
- 	 * net/devlink/netlink_gen.c.
-diff --git a/net/devlink/health.c b/net/devlink/health.c
-index c4a028e37277..d01eb4eaf89c 100644
---- a/net/devlink/health.c
-+++ b/net/devlink/health.c
-@@ -113,7 +113,9 @@ __devlink_health_reporter_create(struct devlink *devlink,
- {
- 	struct devlink_health_reporter *reporter;
- 
--	if (WARN_ON(ops->default_graceful_period && !ops->recover))
-+	if (WARN_ON(ops->default_error_burst_period &&
-+		    !ops->default_graceful_period) ||
-+	    WARN_ON(ops->default_graceful_period && !ops->recover))
- 		return ERR_PTR(-EINVAL);
- 
- 	reporter = kzalloc(sizeof(*reporter), GFP_KERNEL);
-@@ -293,6 +295,11 @@ devlink_nl_health_reporter_fill(struct sk_buff *msg,
- 	    devlink_nl_put_u64(msg, DEVLINK_ATTR_HEALTH_REPORTER_GRACEFUL_PERIOD,
- 			       reporter->graceful_period))
- 		goto reporter_nest_cancel;
-+	if (reporter->ops->recover &&
-+	    devlink_nl_put_u64(msg,
-+			       DEVLINK_ATTR_HEALTH_REPORTER_ERR_BURST_PERIOD,
-+			       reporter->error_burst_period))
-+		goto reporter_nest_cancel;
- 	if (reporter->ops->recover &&
- 	    nla_put_u8(msg, DEVLINK_ATTR_HEALTH_REPORTER_AUTO_RECOVER,
- 		       reporter->auto_recover))
-@@ -458,16 +465,33 @@ int devlink_nl_health_reporter_set_doit(struct sk_buff *skb,
- 
- 	if (!reporter->ops->recover &&
- 	    (info->attrs[DEVLINK_ATTR_HEALTH_REPORTER_GRACEFUL_PERIOD] ||
--	     info->attrs[DEVLINK_ATTR_HEALTH_REPORTER_AUTO_RECOVER]))
-+	     info->attrs[DEVLINK_ATTR_HEALTH_REPORTER_AUTO_RECOVER] ||
-+	     info->attrs[DEVLINK_ATTR_HEALTH_REPORTER_ERR_BURST_PERIOD]))
- 		return -EOPNOTSUPP;
- 
- 	if (!reporter->ops->dump &&
- 	    info->attrs[DEVLINK_ATTR_HEALTH_REPORTER_AUTO_DUMP])
- 		return -EOPNOTSUPP;
- 
--	if (info->attrs[DEVLINK_ATTR_HEALTH_REPORTER_GRACEFUL_PERIOD])
-+	if (info->attrs[DEVLINK_ATTR_HEALTH_REPORTER_GRACEFUL_PERIOD]) {
- 		reporter->graceful_period =
- 			nla_get_u64(info->attrs[DEVLINK_ATTR_HEALTH_REPORTER_GRACEFUL_PERIOD]);
-+		if (!reporter->graceful_period)
-+			reporter->error_burst_period = 0;
-+	}
-+
-+	if (info->attrs[DEVLINK_ATTR_HEALTH_REPORTER_ERR_BURST_PERIOD]) {
-+		u64 burst_period =
-+			nla_get_u64(info->attrs[DEVLINK_ATTR_HEALTH_REPORTER_ERR_BURST_PERIOD]);
-+
-+		if (!reporter->graceful_period && burst_period) {
-+			NL_SET_ERR_MSG_MOD(info->extack,
-+					   "Cannot set error burst period without a grace period.");
-+			return -EINVAL;
-+		}
-+
-+		reporter->error_burst_period = burst_period;
-+	}
- 
- 	if (info->attrs[DEVLINK_ATTR_HEALTH_REPORTER_AUTO_RECOVER])
- 		reporter->auto_recover =
-diff --git a/net/devlink/netlink_gen.c b/net/devlink/netlink_gen.c
-index d97c326a9045..a02da5a0002f 100644
---- a/net/devlink/netlink_gen.c
-+++ b/net/devlink/netlink_gen.c
-@@ -389,7 +389,7 @@ static const struct nla_policy devlink_health_reporter_get_dump_nl_policy[DEVLIN
+ static const struct devlink_health_reporter_ops mlx5_rx_reporter_ops = {
+ 	.name = "rx",
+@@ -659,6 +660,7 @@ static const struct devlink_health_reporter_ops mlx5_rx_reporter_ops = {
+ 	.diagnose = mlx5e_rx_reporter_diagnose,
+ 	.dump = mlx5e_rx_reporter_dump,
+ 	.default_graceful_period = MLX5E_REPORTER_RX_GRACEFUL_PERIOD,
++	.default_error_burst_period = MLX5E_REPORTER_RX_ERROR_BURST_PERIOD,
  };
  
- /* DEVLINK_CMD_HEALTH_REPORTER_SET - do */
--static const struct nla_policy devlink_health_reporter_set_nl_policy[DEVLINK_ATTR_HEALTH_REPORTER_AUTO_DUMP + 1] = {
-+static const struct nla_policy devlink_health_reporter_set_nl_policy[DEVLINK_ATTR_HEALTH_REPORTER_ERR_BURST_PERIOD + 1] = {
- 	[DEVLINK_ATTR_BUS_NAME] = { .type = NLA_NUL_STRING, },
- 	[DEVLINK_ATTR_DEV_NAME] = { .type = NLA_NUL_STRING, },
- 	[DEVLINK_ATTR_PORT_INDEX] = { .type = NLA_U32, },
-@@ -397,6 +397,7 @@ static const struct nla_policy devlink_health_reporter_set_nl_policy[DEVLINK_ATT
- 	[DEVLINK_ATTR_HEALTH_REPORTER_GRACEFUL_PERIOD] = { .type = NLA_U64, },
- 	[DEVLINK_ATTR_HEALTH_REPORTER_AUTO_RECOVER] = { .type = NLA_U8, },
- 	[DEVLINK_ATTR_HEALTH_REPORTER_AUTO_DUMP] = { .type = NLA_U8, },
-+	[DEVLINK_ATTR_HEALTH_REPORTER_ERR_BURST_PERIOD] = { .type = NLA_U64, },
+ void mlx5e_reporter_rx_create(struct mlx5e_priv *priv)
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/reporter_tx.c b/drivers/net/ethernet/mellanox/mlx5/core/en/reporter_tx.c
+index 7a4a77f6fe6a..7813f18e7dfe 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/en/reporter_tx.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/en/reporter_tx.c
+@@ -539,14 +539,17 @@ void mlx5e_reporter_tx_ptpsq_unhealthy(struct mlx5e_ptpsq *ptpsq)
+ 	mlx5e_health_report(priv, priv->tx_reporter, err_str, &err_ctx);
+ }
+ 
+-#define MLX5_REPORTER_TX_GRACEFUL_PERIOD 500
++#define MLX5E_REPORTER_TX_GRACEFUL_PERIOD 500
++#define MLX5E_REPORTER_TX_ERROR_BURST_PERIOD 500
+ 
+ static const struct devlink_health_reporter_ops mlx5_tx_reporter_ops = {
+ 		.name = "tx",
+ 		.recover = mlx5e_tx_reporter_recover,
+ 		.diagnose = mlx5e_tx_reporter_diagnose,
+ 		.dump = mlx5e_tx_reporter_dump,
+-		.default_graceful_period = MLX5_REPORTER_TX_GRACEFUL_PERIOD,
++		.default_graceful_period = MLX5E_REPORTER_TX_GRACEFUL_PERIOD,
++		.default_error_burst_period =
++			MLX5E_REPORTER_TX_ERROR_BURST_PERIOD,
  };
  
- /* DEVLINK_CMD_HEALTH_REPORTER_RECOVER - do */
-@@ -1032,7 +1033,7 @@ const struct genl_split_ops devlink_nl_ops[74] = {
- 		.doit		= devlink_nl_health_reporter_set_doit,
- 		.post_doit	= devlink_nl_post_doit,
- 		.policy		= devlink_health_reporter_set_nl_policy,
--		.maxattr	= DEVLINK_ATTR_HEALTH_REPORTER_AUTO_DUMP,
-+		.maxattr	= DEVLINK_ATTR_HEALTH_REPORTER_ERR_BURST_PERIOD,
- 		.flags		= GENL_ADMIN_PERM | GENL_CMD_CAP_DO,
- 	},
- 	{
+ void mlx5e_reporter_tx_create(struct mlx5e_priv *priv)
 -- 
 2.31.1
 
