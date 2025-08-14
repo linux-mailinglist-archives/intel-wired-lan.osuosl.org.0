@@ -1,94 +1,122 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 466B3B25686
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Aug 2025 00:19:53 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DF275B25860
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Aug 2025 02:34:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 03F2461CB6;
-	Wed, 13 Aug 2025 22:19:52 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2C6A742BC1;
+	Thu, 14 Aug 2025 00:34:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1jLEfjx5ptwT; Wed, 13 Aug 2025 22:19:51 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id PhAN2IFHJ7G6; Thu, 14 Aug 2025 00:34:02 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 36ED161CB1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2B92242BC2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1755123591;
-	bh=Vf+6OD3rmBZRqPMEpLs7HGTdwTMQ/z7DFnij0AigbCM=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=4gH4tZ51X8z7HEBg/ooAI8ZDFyslJJDzKJ6XSXeOvfEzoRFg0pViBnSe3QoWZbEpB
-	 Om42MYozlIZ91ZB8BuKzHsTPU1SjBQes/9xIreutvVDU77nMQ6o9GX8tYmT5MX+Zff
-	 rP32mm9xIdAgnx5WWzZ49oH8L1dNCQBuEUjKsHbMbIbYJ3eKj89yeZREnJ4WZw9J6q
-	 Ys2CQ+xgBiA+sTHJKYTns1fcIpC7LodipI07TwXGT/SuKB+Fy+cKTigVqPmNAfgXUf
-	 BcB/yJymLsNT05M3KlnT72lNasMCLspAmYH+A0nmnOxz2XGf8PiQa/ghqm8erVIk1f
-	 uFusyvgGDbrBQ==
+	s=default; t=1755131642;
+	bh=YWRL0yvRLw+HWZc5+rldo2UC0zZtFic0t8vaTUjoURc=;
+	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=Rz/ZuybGRlmXUwuZZa1IjS3n16kestxfggrUwhYDUulAF4pz+FsNGPEOCDsX+4qJr
+	 2/Mu8hXuiyyPFszVoHso+nxULsieHTliRrmfL5m+fVtwxQNZwP0FRe8oO4BrjedNXl
+	 p9K2g9MVpox25/b7MxKXR1JJAZ2Eg5h2tpuGSa6s5PUqF7P/0D80EHklPRrIA/md52
+	 ngZ+ELV8cUoAvzR1K33omfrcACQDmFfSUqx8y8RiFwV6c1yhsVjvRtlvgPzmlGIzxj
+	 GmjdHsYyElM2JRDi0K2fz7TqfhstKzdiIcS1AeKTxSXMp2hMIEA7TgZktq4oEYVZt7
+	 KG71Qt4oYmKMQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 36ED161CB1;
-	Wed, 13 Aug 2025 22:19:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2B92242BC2;
+	Thu, 14 Aug 2025 00:34:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id BB877271
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Aug 2025 22:19:49 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 08F231B5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Aug 2025 00:34:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id AD1AC8146C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Aug 2025 22:19:49 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id EE7CD4011D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Aug 2025 00:33:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id IJ0JG7Phbcyz for <intel-wired-lan@lists.osuosl.org>;
- Wed, 13 Aug 2025 22:19:49 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org AA753813CC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AA753813CC
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
- by smtp1.osuosl.org (Postfix) with ESMTPS id AA753813CC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Aug 2025 22:19:48 +0000 (UTC)
-X-CSE-ConnectionGUID: 467dV0acStupcAUSre7iSA==
-X-CSE-MsgGUID: /IrzrgRqSNKEKhvk4KGexQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11520"; a="57501418"
-X-IronPort-AV: E=Sophos;i="6.17,287,1747724400"; d="scan'208";a="57501418"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
- by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Aug 2025 15:19:48 -0700
-X-CSE-ConnectionGUID: Y2NYQgoqQEqmknO0IXmdTg==
-X-CSE-MsgGUID: 23WPPo4eQM61y80sgZZFZA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.17,287,1747724400"; d="scan'208";a="166087076"
-Received: from lkp-server02.sh.intel.com (HELO 4ea60e6ab079) ([10.239.97.151])
- by fmviesa007.fm.intel.com with ESMTP; 13 Aug 2025 15:19:47 -0700
-Received: from kbuild by 4ea60e6ab079 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1umJov-000AMu-12
- for intel-wired-lan@lists.osuosl.org; Wed, 13 Aug 2025 22:19:45 +0000
-Date: Thu, 14 Aug 2025 06:19:00 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202508140648.1mCcw9oN-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1755123589; x=1786659589;
- h=date:from:to:subject:message-id;
- bh=DzoZ2u2FJGZLgoqmJk6AOieF6+uMEzKLkqA/2VFXgnQ=;
- b=RDzQeFbrLx8/0cMisbG0+f+RnREjCchYNKi5ETlZhZ6MOXEudRku6y7/
- BZonbOjteULeJaIQmEzLpGOequC/vMi3xPn8gtSzQbzEjqRnjDeGwr5Fw
- 88ToK5+USztLY8A1a7HPHhIwyU9WLUviLNq26h1q/ifL7pA8TA0G7Nx1A
- c0yvatKZuwTpq4RFniq/Rsup98h1u6Fqzxn9u719OiPgCBsGrRirwxpbL
- 9nS6Mux5D+ILdRxCRPhXDMQc16DkVN/zo8Zucy7i1vr5/k/J6OWKrHfRN
- ujA/pqV0tCgXrCiIqDkhwPYmO7cHPLzgqFvWCkm4PcxSWXJWECT70ieNT
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id bE7d1GUn_Cq3 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 14 Aug 2025 00:33:59 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::12f; helo=mail-il1-x12f.google.com;
+ envelope-from=kerneljasonxing@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C92A440B1A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C92A440B1A
+Received: from mail-il1-x12f.google.com (mail-il1-x12f.google.com
+ [IPv6:2607:f8b0:4864:20::12f])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C92A440B1A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Aug 2025 00:33:58 +0000 (UTC)
+Received: by mail-il1-x12f.google.com with SMTP id
+ e9e14a558f8ab-3e570045e05so3765945ab.2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Aug 2025 17:33:58 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1755131637; x=1755736437;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=YWRL0yvRLw+HWZc5+rldo2UC0zZtFic0t8vaTUjoURc=;
+ b=HjCilTKQI/0p1pHB5WTIp/BMalysTd+soDfkqq1G27qL/FkyuMzuaBfbc76RZB4Ysn
+ XSR6wseM/iP07qDJEeYh7GOxc+wOWYwOdNupRWWI5M6J4e6tAxt5cAjLrIeo/3Nyhq7V
+ 8Z86j4ZKjKjhj542+s4Tzz11sMW6rdUZ1+62yQBigMq0N7I5EdUcVejNi4xBiud3VR6m
+ E9f+frH84MvpARU6EiftAogEhueTJnGs/f7tn+cCGER8GygyJCsc2nvhIHKVEVzrxejj
+ arc4Oa/dA6EREj8UbMfLgsyVUOL72siUyM+rQfWHnpRn+UduHzPNkxCgTVfBd4DzKqik
+ OPZQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUfqbft45mHtGyYu28BXaF2DjOpfG7YM5JqXZ0TEus+FuEjkS+gbFUIfQqVXmgj8gBBAuJI2lVz+qMesuTd3EU=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YzFabhvljuS8fNalZKLIrvsUmhzdgLT2vN4iEhN2F0bw/zzZLbc
+ Yzt4f0L1dYTtqziiymlq3nmoGePm1l64LQVYXPg93LBaH36H5NIO4UsRL4uHymQ77BChiNmhWWt
+ 3LNQRZxhMlQRglYlYt790dyuJNms/AR4=
+X-Gm-Gg: ASbGncuidsg6DGGB6suT910R/QqBd6g4V111xHHhIkJwq1MHB9PKNhbJh2MzDz2E+Wh
+ jCqTZ+Y4XOvGhAjdnMdO42SqVzL4Kv8/dJo4DNLNdc2S9TsNYSCghqL0BA8axK4UIe9cYU1B6gG
+ irk117rdclaL9ZrGEWuRIYeuRTDyqaeJCY4v8t6sCf2D5Y3ySLRhZwsE0d52REIYbKOxVjV+RkR
+ tK1V3g=
+X-Google-Smtp-Source: AGHT+IEKnF67Wj3kFQRPW4QIMVtxk50Qleoibrw/iPkN3/yxV/MJhq6yiRlxORVlyLswpy8WUlKs9z/vkKsTt8Tzp/E=
+X-Received: by 2002:a05:6e02:184c:b0:3e5:4ca1:b4ba with SMTP id
+ e9e14a558f8ab-3e571e5c12amr16683015ab.21.1755131637072; Wed, 13 Aug 2025
+ 17:33:57 -0700 (PDT)
+MIME-Version: 1.0
+References: <20250812075504.60498-1-kerneljasonxing@gmail.com>
+ <20250812075504.60498-4-kerneljasonxing@gmail.com> <aJtg0gsR6paO22eQ@boxer>
+ <CAL+tcoAGq1DhjF42qYH_yVPf9PqmMknn79WF2SncXFJmP0fDhg@mail.gmail.com>
+ <aJzUqg5m3sKPWDe0@boxer>
+In-Reply-To: <aJzUqg5m3sKPWDe0@boxer>
+From: Jason Xing <kerneljasonxing@gmail.com>
+Date: Thu, 14 Aug 2025 08:33:20 +0800
+X-Gm-Features: Ac12FXwcv2p-1O0Bnl_6z-OTJunZGPvvbkLVbhfXRr0fI7LQtvzYqQsVi54a5s8
+Message-ID: <CAL+tcoCC8yVS9R9bky4XatgJmX4bzrV8Pio6+jwyMSmKo0UiSw@mail.gmail.com>
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org, 
+ pabeni@redhat.com, horms@kernel.org, andrew+netdev@lunn.ch, 
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com, sdf@fomichev.me, 
+ larysa.zaremba@intel.com, intel-wired-lan@lists.osuosl.org, 
+ netdev@vger.kernel.org, Jason Xing <kernelxing@tencent.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1755131637; x=1755736437; darn=lists.osuosl.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=YWRL0yvRLw+HWZc5+rldo2UC0zZtFic0t8vaTUjoURc=;
+ b=f8YBYT2L3/F8Ax+eIhkXlRkWpNPQb2YvyO5I5oXMBsjEQCIwobHuhHe/4RUYXsYTe4
+ i4B9vnhai7k0Wd3gUyJ4esAjDy484L3yNGrNGceEzjTpOKj0OE95sW0shYJ6WTYEdBxM
+ rI5q1e7u9VLn8ZTitGerfUpSn+Xr47mrIOY+BpZs/uYFp7RXMDeu0pFlIZiSfH8CDC7M
+ VRn6wXa+31DsRXQQoTH/v1DdGtTaor2PTvdL6Z9IuHazyqAi5DjyNPHy7ItL0OcBZLeu
+ N/tLXY2jObwUwfnw6K/dJRmoiQLBNZZturgkMRTPhYoeKkoAcB9fxOsvSa4F7gv4sdNS
+ glBw==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=RDzQeFbr
-Subject: [Intel-wired-lan] [tnguy-net-queue:10GbE] BUILD SUCCESS
- e67a0bc3ed4fd8ee1697cb6d937e2b294ec13b5e
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20230601 header.b=f8YBYT2L
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2 3/3] ixgbe: xsk: support
+ batched xsk Tx interfaces to increase performance
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,132 +132,205 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 10GbE
-branch HEAD: e67a0bc3ed4fd8ee1697cb6d937e2b294ec13b5e  ixgbe: prevent from unwanted interface name changes
+On Thu, Aug 14, 2025 at 2:09=E2=80=AFAM Maciej Fijalkowski
+<maciej.fijalkowski@intel.com> wrote:
+>
+> On Wed, Aug 13, 2025 at 08:34:52AM +0800, Jason Xing wrote:
+> > Hi Maciej,
+> >
+> > On Tue, Aug 12, 2025 at 11:42=E2=80=AFPM Maciej Fijalkowski
+> > <maciej.fijalkowski@intel.com> wrote:
+> > >
+> > > On Tue, Aug 12, 2025 at 03:55:04PM +0800, Jason Xing wrote:
+> > > > From: Jason Xing <kernelxing@tencent.com>
+> > > >
+> > >
+> > > Hi Jason,
+> > >
+> > > patches should be targetted at iwl-next as these are improvements, no=
+t
+> > > fixes.
+> >
+> > Oh, right.
+> >
+> > >
+> > > > Like what i40e driver initially did in commit 3106c580fb7cf
+> > > > ("i40e: Use batched xsk Tx interfaces to increase performance"), us=
+e
+> > > > the batched xsk feature to transmit packets.
+> > > >
+> > > > Signed-off-by: Jason Xing <kernelxing@tencent.com>
+> > > > ---
+> > > > In this version, I still choose use the current implementation. Las=
+t
+> > > > time at the first glance, I agreed 'i' is useless but it is not.
+> > > > https://lore.kernel.org/intel-wired-lan/CAL+tcoADu-ZZewsZzGDaL7Nugx=
+FTWO_Q+7WsLHs3Mx-XHjJnyg@mail.gmail.com/
+> > >
+> > > dare to share the performance improvement (if any, in the current for=
+m)?
+> >
+> > I tested the whole series, sorry, no actual improvement could be seen
+> > through xdpsock. Not even with the first series. :(
+>
+> So if i were you i would hesitate with posting it :P in the past batching
 
-elapsed time: 1459m
+(I'm definitely not an intel nic expert but still willing to write
+some codes on the driver side. I need to study more.)
 
-configs tested: 113
-configs skipped: 4
+> approaches always yielded performance gain.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+No, I still assume no better numbers can be seen with xdpsock even
+with further tweaks. Especially yesterday I saw the zerocopy mode
+already hit 70% of full speed, which means in all likelihood that is
+the bottleneck. That is also the answer to what you questioned in that
+patch[0]. Zerocopy mode for most advanced NICs must be much better for
+copy mode except for ixgbe, somehow standing for the maximum
+throughput of af_xdp.
 
-tested configs:
-alpha                             allnoconfig    gcc-15.1.0
-alpha                            allyesconfig    gcc-15.1.0
-arc                              allmodconfig    gcc-15.1.0
-arc                               allnoconfig    gcc-15.1.0
-arc                              allyesconfig    gcc-15.1.0
-arc                        nsimosci_defconfig    gcc-15.1.0
-arc                   randconfig-001-20250813    gcc-11.5.0
-arc                   randconfig-002-20250813    gcc-8.5.0
-arc                    vdk_hs38_smp_defconfig    gcc-15.1.0
-arm                              allmodconfig    gcc-15.1.0
-arm                               allnoconfig    clang-22
-arm                              allyesconfig    gcc-15.1.0
-arm                            mps2_defconfig    clang-22
-arm                   randconfig-001-20250813    clang-22
-arm                   randconfig-002-20250813    gcc-8.5.0
-arm                   randconfig-003-20250813    clang-22
-arm                   randconfig-004-20250813    gcc-8.5.0
-arm                           sunxi_defconfig    gcc-15.1.0
-arm                         vf610m4_defconfig    gcc-15.1.0
-arm64                            allmodconfig    clang-19
-arm64                             allnoconfig    gcc-15.1.0
-arm64                 randconfig-001-20250813    clang-22
-arm64                 randconfig-002-20250813    gcc-12.5.0
-arm64                 randconfig-003-20250813    clang-22
-arm64                 randconfig-004-20250813    clang-22
-csky                              allnoconfig    gcc-15.1.0
-csky                  randconfig-001-20250813    gcc-14.3.0
-csky                  randconfig-002-20250813    gcc-13.4.0
-hexagon                          allmodconfig    clang-17
-hexagon                           allnoconfig    clang-22
-hexagon                          allyesconfig    clang-22
-hexagon               randconfig-001-20250813    clang-22
-hexagon               randconfig-002-20250813    clang-22
-i386                             allmodconfig    gcc-12
-i386                              allnoconfig    gcc-12
-i386                             allyesconfig    gcc-12
-i386        buildonly-randconfig-001-20250813    gcc-11
-i386        buildonly-randconfig-002-20250813    clang-20
-i386        buildonly-randconfig-003-20250813    gcc-11
-i386        buildonly-randconfig-004-20250813    clang-20
-i386        buildonly-randconfig-005-20250813    gcc-12
-i386        buildonly-randconfig-006-20250813    gcc-12
-i386                                defconfig    clang-20
-loongarch                        allmodconfig    clang-19
-loongarch                         allnoconfig    clang-22
-loongarch             randconfig-001-20250813    clang-19
-loongarch             randconfig-002-20250813    gcc-15.1.0
-m68k                             allmodconfig    gcc-15.1.0
-m68k                              allnoconfig    gcc-15.1.0
-m68k                             allyesconfig    gcc-15.1.0
-microblaze                       allmodconfig    gcc-15.1.0
-microblaze                        allnoconfig    gcc-15.1.0
-microblaze                       allyesconfig    gcc-15.1.0
-microblaze                          defconfig    gcc-15.1.0
-mips                              allnoconfig    gcc-15.1.0
-nios2                             allnoconfig    gcc-11.5.0
-nios2                               defconfig    gcc-11.5.0
-nios2                 randconfig-001-20250813    gcc-11.5.0
-nios2                 randconfig-002-20250813    gcc-8.5.0
-openrisc                          allnoconfig    gcc-15.1.0
-openrisc                         allyesconfig    gcc-15.1.0
-parisc                            allnoconfig    gcc-15.1.0
-parisc                              defconfig    gcc-15.1.0
-parisc                randconfig-001-20250813    gcc-14.3.0
-parisc                randconfig-002-20250813    gcc-8.5.0
-parisc64                            defconfig    gcc-15.1.0
-powerpc                           allnoconfig    gcc-15.1.0
-powerpc               randconfig-001-20250813    clang-18
-powerpc               randconfig-002-20250813    clang-22
-powerpc               randconfig-003-20250813    clang-20
-powerpc                     stx_gp3_defconfig    gcc-15.1.0
-powerpc64             randconfig-001-20250813    clang-22
-powerpc64             randconfig-002-20250813    gcc-8.5.0
-powerpc64             randconfig-003-20250813    clang-17
-riscv                             allnoconfig    gcc-15.1.0
-riscv                 randconfig-001-20250813    clang-22
-riscv                 randconfig-002-20250813    gcc-14.3.0
-s390                             allmodconfig    clang-18
-s390                              allnoconfig    clang-22
-s390                             allyesconfig    gcc-15.1.0
-s390                  randconfig-001-20250813    clang-22
-s390                  randconfig-002-20250813    clang-18
-sh                               allmodconfig    gcc-15.1.0
-sh                                allnoconfig    gcc-15.1.0
-sh                               allyesconfig    gcc-15.1.0
-sh                    randconfig-001-20250813    gcc-9.5.0
-sh                    randconfig-002-20250813    gcc-9.5.0
-sparc                            allmodconfig    gcc-15.1.0
-sparc                             allnoconfig    gcc-15.1.0
-sparc                               defconfig    gcc-15.1.0
-sparc                 randconfig-001-20250813    gcc-8.5.0
-sparc                 randconfig-002-20250813    gcc-15.1.0
-sparc64               randconfig-001-20250813    gcc-8.5.0
-sparc64               randconfig-002-20250813    clang-20
-um                               allmodconfig    clang-19
-um                                allnoconfig    clang-22
-um                               allyesconfig    gcc-12
-um                    randconfig-001-20250813    gcc-12
-um                    randconfig-002-20250813    gcc-11
-x86_64                            allnoconfig    clang-20
-x86_64                           allyesconfig    clang-20
-x86_64      buildonly-randconfig-001-20250813    gcc-12
-x86_64      buildonly-randconfig-002-20250813    clang-20
-x86_64      buildonly-randconfig-003-20250813    gcc-12
-x86_64      buildonly-randconfig-004-20250813    clang-20
-x86_64      buildonly-randconfig-005-20250813    clang-20
-x86_64      buildonly-randconfig-006-20250813    gcc-12
-x86_64                              defconfig    gcc-11
-x86_64                          rhel-9.4-rust    clang-20
-xtensa                            allnoconfig    gcc-15.1.0
-xtensa                       common_defconfig    gcc-15.1.0
-xtensa                randconfig-001-20250813    gcc-10.5.0
-xtensa                randconfig-002-20250813    gcc-12.5.0
+[0]: https://lore.kernel.org/all/CAL+tcoAst1xs=3DxCLykUoj1=3DVj-0LtVyK-qrcD=
+yoy4mQrHgW1kg@mail.gmail.com/
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+>
+> >
+> > >
+> > > also you have not mentioned in v1->v2 that you dropped the setting of
+> > > xdp_zc_max_segs, which is a step in a correct path.
+
+In v1, you asked me to give up the multi buffer function[1] so I did
+it. Yesterday, I wrongly corrected myself and made me think
+xdp_zc_max_segs is related to the batch process.
+
+IIUC, you have these multi buffer patches locally or you decided to
+accomplish them?
+
+[1]: https://lore.kernel.org/intel-wired-lan/aINVrP8vrxIkxhZr@boxer/
+
+> >
+> > Oops, I blindly dropped the last patch without carefully checking it.
+> > Thanks for showing me.
+> >
+> > I set it as four for ixgbe. I'm not that sure if there is any theory
+> > behind setting this value?
+>
+> you're confusing two different things. xdp_zc_max_segs is related to
+> multi-buffer support in xsk zc whereas you're referring to loop unrolling
+> counter.
+
+No, actually I'm confusing the idea behind the value of xdp_zc_max_segs.
+
+>
+> >
+> > >
+> > > > ---
+> > > >  drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c | 106 +++++++++++++--=
+----
+> > > >  1 file changed, 72 insertions(+), 34 deletions(-)
+> > > >
+> > > > diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers=
+/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+> > > > index f3d3f5c1cdc7..9fe2c4bf8bc5 100644
+> > > > --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+> > > > +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+> > > > @@ -2,12 +2,15 @@
+> > > >  /* Copyright(c) 2018 Intel Corporation. */
+> > > >
+> > > >  #include <linux/bpf_trace.h>
+> > > > +#include <linux/unroll.h>
+> > > >  #include <net/xdp_sock_drv.h>
+> > > >  #include <net/xdp.h>
+> > > >
+> > > >  #include "ixgbe.h"
+> > > >  #include "ixgbe_txrx_common.h"
+> > > >
+> > > > +#define PKTS_PER_BATCH 4
+> > > > +
+> > > >  struct xsk_buff_pool *ixgbe_xsk_pool(struct ixgbe_adapter *adapter=
+,
+> > > >                                    struct ixgbe_ring *ring)
+> > > >  {
+> > > > @@ -388,58 +391,93 @@ void ixgbe_xsk_clean_rx_ring(struct ixgbe_rin=
+g *rx_ring)
+> > > >       }
+> > > >  }
+> > > >
+> > > > -static bool ixgbe_xmit_zc(struct ixgbe_ring *xdp_ring, unsigned in=
+t budget)
+> > > > +static void ixgbe_set_rs_bit(struct ixgbe_ring *xdp_ring)
+> > > > +{
+> > > > +     u16 ntu =3D xdp_ring->next_to_use ? xdp_ring->next_to_use - 1=
+ : xdp_ring->count - 1;
+> > > > +     union ixgbe_adv_tx_desc *tx_desc;
+> > > > +
+> > > > +     tx_desc =3D IXGBE_TX_DESC(xdp_ring, ntu);
+> > > > +     tx_desc->read.cmd_type_len |=3D cpu_to_le32(IXGBE_TXD_CMD_RS)=
+;
+> > >
+> > > you have not addressed the descriptor cleaning path which makes this
+> > > change rather pointless or even the driver behavior is broken.
+> >
+> > Are you referring to 'while (ntc !=3D ntu) {}' in
+> > ixgbe_clean_xdp_tx_irq()? But I see no difference between that part
+> > and the similar part 'for (i =3D 0; i < completed_frames; i++) {}' in
+> > i40e_clean_xdp_tx_irq()
+>
+>         if (likely(!tx_ring->xdp_tx_active)) {
+>                 xsk_frames =3D completed_frames;
+>                 goto skip;
+>         }
+
+Thanks for the instruction. I will append a patch similar to this[2]
+into the series. It's exactly the one that helps ramping up speed.
+
+[2]:
+commit 5574ff7b7b3d864556173bf822796593451a6b8c
+Author: Magnus Karlsson <magnus.karlsson@intel.com>
+Date:   Tue Jun 23 11:44:16 2020 +0200
+
+    i40e: optimize AF_XDP Tx completion path
+
+    Improve the performance of the AF_XDP zero-copy Tx completion
+    path. When there are no XDP buffers being sent using XDP_TX or
+    XDP_REDIRECT, we do not have go through the SW ring to clean up any
+    entries since the AF_XDP path does not use these. In these cases, just
+    fast forward the next-to-use counter and skip going through the SW
+    ring. The limit on the maximum number of entries to complete is also
+    removed since the algorithm is now O(1). To simplify the code path, the
+    maximum number of entries to complete for the XDP path is therefore
+    also increased from 256 to 512 (the default number of Tx HW
+    descriptors). This should be fine since the completion in the XDP path
+    is faster than in the SKB path that has 256 as the maximum number.
+
+> >
+> > >
+> > > point of such change is to limit the interrupts raised by HW once it =
+is
+> > > done with sending the descriptor. you still walk the descs one-by-one=
+ in
+> > > ixgbe_clean_xdp_tx_irq().
+> >
+> > Sorry, I must be missing something important. In my view only at the
+> > end of ixgbe_xmit_zc(), ixgbe always kicks the hardware through
+> > ixgbe_xdp_ring_update_tail() before/after this series.
+> >
+> > As to 'one-by-one', I see i40e also handles like that in 'for (i =3D 0;
+> > i < completed_frames; i++)' in i40e_clean_xdp_tx_irq(). Ice does this
+> > in ice_clean_xdp_irq_zc()?
+>
+> i40e does not look up DD bit from descriptor. plus this loop you refer to
+> is taken only when (see above) xdp_tx_active is not 0 (meaning that there
+> have been some XDP_TX action on queue and we have to clean the buffer in =
+a
+> different way).
+
+I think until now I know what to do next: implement xdp_tx_active function.
+
+>
+> in general i would advise to look at ice as i40e writes back the tx ring
+> head which is used in cleaning logic. ice does not have this feature,
+> neither does ixgbe.
+
+Thanks. I will also dig into those datasheets that are all I have.
+
+Thanks,
+Jason
