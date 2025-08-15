@@ -1,94 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B807EB27AC7
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Aug 2025 10:19:42 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 222E2B27FB6
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Aug 2025 14:08:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6D2F460DB0;
-	Fri, 15 Aug 2025 08:19:41 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D229681124;
+	Fri, 15 Aug 2025 12:08:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vgG6dT_vEOkM; Fri, 15 Aug 2025 08:19:40 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id QkQbpGFgBlSi; Fri, 15 Aug 2025 12:08:12 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6196960DAD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CDE8F81138
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1755245980;
-	bh=usTm5PKF76LCTACIKoVGST4o7jQ8fCg54V7CJ5ZotUs=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=FRrXVnWyBnZxsT8Nen25SIJdY4CpeBsYIqAO/3eHkwezWb7XsN+AfXCxklI13FrJN
-	 ZL746gCuLBQykrqL2ffh2I9rixqLc4xSVgwi3ZxZUiAJJNy89BJDTMigG1TaxfrMf0
-	 ASzP2YLarCbsqcEz6Cvy5TzpkoOkedga9U7Ofyefx3jXXPqZbY0ROgFfsyJ8nFbfbc
-	 rHw9XzrHmL1V+ImcoyqT5/xGPT3En5619o7hQYs50I1JFHqUITC7FpgCPqI/ddEar1
-	 21yEVm0ebT/BpEvMSfbgxZ6THv8HksT8EQ0xzDXMJaKMLZXBXebnnl1/fZ19uFyQCl
-	 k/HAb9Fwt2YpA==
+	s=default; t=1755259691;
+	bh=+5nkJyY99dWHCEhDdyk+GkSgElDnksRx5AeJwdkNlxY=;
+	h=Date:To:References:Cc:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=1EVFA5mCVoNakPTC8n7Sy72iMeJlJYiUNfRK28wFUr3hSYtUqTDZu7yev4R+qt/9e
+	 vNrZs3DgAzkBouztQFO5iWpLpCQRDYFCpcvuyyCHhMKieW9YNceG3VUqA2CbvQmkPl
+	 ek8dQYLrXknhhrOf4FdymuhTWcHpod08fUY3XNVo3H4+PqL+j29qGQWW/FwW64ttnY
+	 i8T3n1fCHekvTVLLZi+6X+IZMAPWM39gT+FsdjAPZg4bwhdA9kx1wFXrB/3UFGrJpe
+	 ZQ5Xr1qNlBL3nfJWY3YS28HaFpzHKIN7J241jbPkXv6R+2a36x80lfwMEoIocUlHVT
+	 NXfJdzwHumiRA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6196960DAD;
-	Fri, 15 Aug 2025 08:19:40 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CDE8F81138;
+	Fri, 15 Aug 2025 12:08:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 52622228
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Aug 2025 08:19:38 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 6B118196
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Aug 2025 12:08:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4425540AD1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Aug 2025 08:19:38 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 519F0810AF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Aug 2025 12:08:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id SGR3kcG682ru for <intel-wired-lan@lists.osuosl.org>;
- Fri, 15 Aug 2025 08:19:37 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5CDEC40AC8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5CDEC40AC8
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5CDEC40AC8
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Aug 2025 08:19:37 +0000 (UTC)
-X-CSE-ConnectionGUID: rTvBG8HST9+p+9lv7fEtFA==
-X-CSE-MsgGUID: SykHWsq2SMGdHS+CN07rQQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11522"; a="67839095"
-X-IronPort-AV: E=Sophos;i="6.17,290,1747724400"; d="scan'208";a="67839095"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
- by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Aug 2025 01:19:36 -0700
-X-CSE-ConnectionGUID: DRvkAmuqRqWzC9/+0sfdqg==
-X-CSE-MsgGUID: uKLrO5wHToG+Wn/b+oEg8g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.17,290,1747724400"; d="scan'208";a="204149740"
-Received: from lkp-server02.sh.intel.com (HELO 4ea60e6ab079) ([10.239.97.151])
- by orviesa001.jf.intel.com with ESMTP; 15 Aug 2025 01:19:36 -0700
-Received: from kbuild by 4ea60e6ab079 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1umpev-000Bjc-2i
- for intel-wired-lan@lists.osuosl.org; Fri, 15 Aug 2025 08:19:33 +0000
-Date: Fri, 15 Aug 2025 16:19:01 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202508151656.cRvDZqV5-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1755245977; x=1786781977;
- h=date:from:to:subject:message-id;
- bh=6JO9XFtNdT0cLJDaxmW3lSCUiSXLvZrd2m775cuDGsc=;
- b=CLy5aKShT2jVQEfpwkab7Rl+AlW1FmkJugg6iwHzRmuahsmO0kpbrRgm
- BNc6GngqpB86zTK7K0daFv6WQrxTyIsjYl8o+fYaZrBG10mUve4W0ixHB
- K5tEu9UVDFME2ZSn+XduVq8Q+e7COMyke2RRENm5rPoZmbZpBrNqZxxJs
- SW/P+GdIusZSg6yrtWQ7PPpoqWEWcMZgLA53oHJ2djhfL8YnxFGuAydOI
- o7WC1BKJUCxEhdRyN9UZMkiajvL9i1X3A3P9J1E8HNKsmhpV7AjrcUNMQ
- 1f0+LP6NQbDjqWB2DjS0wy2UF95z0aQ7Qf13I/W8OuesCvHmPj3mxoA/y
- w==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=CLy5aKSh
-Subject: [Intel-wired-lan] [tnguy-net-queue:200GbE] BUILD SUCCESS
- 4faff70959d51078f9ee8372f8cff0d7045e4114
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id naBdjrx6kRiN for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 15 Aug 2025 12:08:09 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 793FC810C1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 793FC810C1
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 793FC810C1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Aug 2025 12:08:07 +0000 (UTC)
+Received: from [192.168.0.184] (ip5f5af516.dynamic.kabel-deutschland.de
+ [95.90.245.22])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id A86E261E647AC;
+ Fri, 15 Aug 2025 14:07:52 +0200 (CEST)
+Message-ID: <f9ef51d9-9a55-40f0-8073-dad5eab741f9@molgen.mpg.de>
+Date: Fri, 15 Aug 2025 14:07:51 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+To: Jacob Keller <jacob.e.keller@intel.com>
+References: <20250814-jk-fix-i40e-ice-pxe-9k-mtu-v1-1-c3926287fb78@intel.com>
+Content-Language: en-US
+Cc: kheib@redhat.com, Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Anthony Nguyen <anthony.l.nguyen@intel.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20250814-jk-fix-i40e-ice-pxe-9k-mtu-v1-1-c3926287fb78@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] i40e: fix Jumbo Frame support
+ after iPXE boot
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,131 +90,165 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 200GbE
-branch HEAD: 4faff70959d51078f9ee8372f8cff0d7045e4114  net: usb: asix_devices: add phy_mask for ax88772 mdio bus
+Dear Jacob,
 
-elapsed time: 1321m
 
-configs tested: 112
-configs skipped: 3
+Thank you for your patch.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Am 14.08.25 um 23:21 schrieb Jacob Keller:
+> The i40e hardware has multiple hardware settings which define the maximum
+> frame size of the physical port. The firmware has an AdminQ command
+> (0x0603) to configure all of these settings, but the i40e Linux driver
+> never issues this command.
+> 
+> In most cases this is no problem, as the NVM default value is to set it to
+> its maximum value of 9728. Unfortunately, since recent versions the intelxl
+> driver maintained within the iPXE network boot stack now issues the 0x0603
+> command to set the maximum frame size to a low value. This appears to have
 
-tested configs:
-alpha                             allnoconfig    gcc-15.1.0
-alpha                            allyesconfig    gcc-15.1.0
-arc                              allmodconfig    gcc-15.1.0
-arc                               allnoconfig    gcc-15.1.0
-arc                              allyesconfig    gcc-15.1.0
-arc                   randconfig-001-20250815    gcc-8.5.0
-arc                   randconfig-002-20250815    gcc-9.5.0
-arm                              allmodconfig    gcc-15.1.0
-arm                               allnoconfig    clang-22
-arm                              allyesconfig    gcc-15.1.0
-arm                   randconfig-001-20250815    clang-16
-arm                   randconfig-002-20250815    clang-18
-arm                   randconfig-003-20250815    gcc-14.3.0
-arm                   randconfig-004-20250815    gcc-8.5.0
-arm64                            allmodconfig    clang-19
-arm64                             allnoconfig    gcc-15.1.0
-arm64                 randconfig-001-20250815    gcc-8.5.0
-arm64                 randconfig-002-20250815    gcc-8.5.0
-arm64                 randconfig-003-20250815    clang-22
-arm64                 randconfig-004-20250815    gcc-15.1.0
-csky                              allnoconfig    gcc-15.1.0
-csky                  randconfig-001-20250815    gcc-15.1.0
-csky                  randconfig-002-20250815    gcc-15.1.0
-hexagon                          allmodconfig    clang-17
-hexagon                           allnoconfig    clang-22
-hexagon                          allyesconfig    clang-22
-hexagon               randconfig-001-20250815    clang-22
-hexagon               randconfig-002-20250815    clang-22
-i386                             allmodconfig    gcc-12
-i386                              allnoconfig    gcc-12
-i386                             allyesconfig    gcc-12
-i386        buildonly-randconfig-001-20250815    gcc-12
-i386        buildonly-randconfig-002-20250815    clang-20
-i386        buildonly-randconfig-003-20250815    clang-20
-i386        buildonly-randconfig-004-20250815    clang-20
-i386        buildonly-randconfig-005-20250815    clang-20
-i386        buildonly-randconfig-006-20250815    gcc-12
-i386                                defconfig    clang-20
-loongarch                        allmodconfig    clang-19
-loongarch                         allnoconfig    clang-22
-loongarch             randconfig-001-20250815    clang-22
-loongarch             randconfig-002-20250815    clang-20
-m68k                             allmodconfig    gcc-15.1.0
-m68k                              allnoconfig    gcc-15.1.0
-m68k                             allyesconfig    gcc-15.1.0
-microblaze                       allmodconfig    gcc-15.1.0
-microblaze                        allnoconfig    gcc-15.1.0
-microblaze                       allyesconfig    gcc-15.1.0
-microblaze                          defconfig    gcc-15.1.0
-mips                              allnoconfig    gcc-15.1.0
-nios2                             allnoconfig    gcc-11.5.0
-nios2                               defconfig    gcc-11.5.0
-nios2                 randconfig-001-20250815    gcc-11.5.0
-nios2                 randconfig-002-20250815    gcc-11.5.0
-openrisc                          allnoconfig    gcc-15.1.0
-openrisc                         allyesconfig    gcc-15.1.0
-parisc                           allmodconfig    gcc-15.1.0
-parisc                            allnoconfig    gcc-15.1.0
-parisc                           allyesconfig    gcc-15.1.0
-parisc                              defconfig    gcc-15.1.0
-parisc                randconfig-001-20250815    gcc-8.5.0
-parisc                randconfig-002-20250815    gcc-14.3.0
-parisc64                            defconfig    gcc-15.1.0
-powerpc                          allmodconfig    gcc-15.1.0
-powerpc                           allnoconfig    gcc-15.1.0
-powerpc                          allyesconfig    clang-22
-powerpc               randconfig-001-20250815    gcc-11.5.0
-powerpc               randconfig-002-20250815    clang-19
-powerpc               randconfig-003-20250815    gcc-11.5.0
-powerpc64             randconfig-001-20250815    gcc-14.3.0
-powerpc64             randconfig-002-20250815    gcc-10.5.0
-powerpc64             randconfig-003-20250815    clang-22
-riscv                            allmodconfig    clang-22
-riscv                             allnoconfig    gcc-15.1.0
-riscv                            allyesconfig    clang-16
-riscv                 randconfig-001-20250815    gcc-12.5.0
-riscv                 randconfig-002-20250815    gcc-8.5.0
-s390                             allmodconfig    clang-18
-s390                              allnoconfig    clang-22
-s390                             allyesconfig    gcc-15.1.0
-s390                  randconfig-001-20250815    gcc-8.5.0
-s390                  randconfig-002-20250815    clang-22
-sh                               allmodconfig    gcc-15.1.0
-sh                                allnoconfig    gcc-15.1.0
-sh                               allyesconfig    gcc-15.1.0
-sh                    randconfig-001-20250815    gcc-11.5.0
-sh                    randconfig-002-20250815    gcc-12.5.0
-sparc                            allmodconfig    gcc-15.1.0
-sparc                             allnoconfig    gcc-15.1.0
-sparc                               defconfig    gcc-15.1.0
-sparc                 randconfig-001-20250815    gcc-11.5.0
-sparc                 randconfig-002-20250815    gcc-13.4.0
-sparc64               randconfig-001-20250815    clang-22
-sparc64               randconfig-002-20250815    gcc-15.1.0
-um                               allmodconfig    clang-19
-um                                allnoconfig    clang-22
-um                               allyesconfig    gcc-12
-um                    randconfig-001-20250815    gcc-12
-um                    randconfig-002-20250815    clang-19
-x86_64                            allnoconfig    clang-20
-x86_64                           allyesconfig    clang-20
-x86_64      buildonly-randconfig-001-20250815    clang-20
-x86_64      buildonly-randconfig-002-20250815    gcc-12
-x86_64      buildonly-randconfig-003-20250815    gcc-12
-x86_64      buildonly-randconfig-004-20250815    clang-20
-x86_64      buildonly-randconfig-005-20250815    clang-20
-x86_64      buildonly-randconfig-006-20250815    gcc-12
-x86_64                              defconfig    gcc-11
-x86_64                          rhel-9.4-rust    clang-20
-xtensa                            allnoconfig    gcc-15.1.0
-xtensa                randconfig-001-20250815    gcc-8.5.0
-xtensa                randconfig-002-20250815    gcc-15.1.0
+Maybe add (MFS) so the abbreviation is clear.
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+> occurred because the same intelxl driver is used for both the E700 and E800
+> series hardware, and both devices support the same 0x0603 AdminQ command.
+
+Do you have a link to the intelxl change?
+
+> The ice Linux PF driver already issues this command during probe.
+> 
+> Since commit 3a2c6ced90e1 ("i40e: Add a check to see if MFS is set"), the
+> driver does check the I40E_PRTGL_SAH register, but it only logs a warning.
+
+… if MFS is set lower than the default.
+
+> This register also only covers received packets and not transmitted
+> packets. Additionally, a warning does not help users, as the larger MTU is
+> still not supported.
+> 
+> Instead, have the i40e driver issue the Set MAC Config AdminQ command
+> during boot in a similar fashion to the ice driver. Additionally, instead
+> of just checking I40E_PRTGL_SAH, read and update its Max Frame Size field
+> to the expected 9K value as well.
+> 
+> This ensures the driver restores the maximum frame size to its expected
+> value at probe, rather than assuming that no other driver has adjusted the
+> MAC config.
+> 
+> This is a better user experience, as we now fix the issues with larger MTU
+> instead of merely warning. It also aligns with the way the ice E800 series
+> driver works.
+
+Is there a regression potential, that users won’t be able to access 
+their systems over the network, because there are faulty switches or such?
+
+To save people search for it, how can the MFS be read out from the 
+command line?
+
+> Fixes: 3a2c6ced90e1 ("i40e: Add a check to see if MFS is set")
+> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+> ---
+> Strictly speaking, the "Fixes" tag isn't entirely accurate. The failure is
+> really the result of changes in the iPXE driver to support both E700 and E800
+> within the same intelxl driver. However, I think the warning added by that
+> commit was an insufficient solution and we should be restoring the value to
+> its expected default rather than merely issuing a warning to the kernel
+> log. Thus, this "fixes" the driver to better handle this case.
+> ---
+>   drivers/net/ethernet/intel/i40e/i40e_prototype.h |  2 ++
+>   drivers/net/ethernet/intel/i40e/i40e_common.c    | 30 ++++++++++++++++++++++++
+>   drivers/net/ethernet/intel/i40e/i40e_main.c      | 17 +++++++++-----
+>   3 files changed, 43 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_prototype.h b/drivers/net/ethernet/intel/i40e/i40e_prototype.h
+> index aef5de53ce3b..26bb7bffe361 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_prototype.h
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_prototype.h
+> @@ -98,6 +98,8 @@ int i40e_aq_set_mac_loopback(struct i40e_hw *hw,
+>   			     struct i40e_asq_cmd_details *cmd_details);
+>   int i40e_aq_set_phy_int_mask(struct i40e_hw *hw, u16 mask,
+>   			     struct i40e_asq_cmd_details *cmd_details);
+> +int i40e_aq_set_mac_config(struct i40e_hw *hw, u16 max_frame_size,
+> +			   struct i40e_asq_cmd_details *cmd_details);
+>   int i40e_aq_clear_pxe_mode(struct i40e_hw *hw,
+>   			   struct i40e_asq_cmd_details *cmd_details);
+>   int i40e_aq_set_link_restart_an(struct i40e_hw *hw,
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c b/drivers/net/ethernet/intel/i40e/i40e_common.c
+> index 270e7e8cf9cf..f6b6a4925b27 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_common.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
+> @@ -1189,6 +1189,36 @@ int i40e_set_fc(struct i40e_hw *hw, u8 *aq_failures,
+>   	return status;
+>   }
+>   
+> +/**
+> + * i40e_aq_set_mac_config
+> + * @hw: pointer to the hw struct
+> + * @max_frame_size: Maximum Frame Size to be supported by the port
+
+Mention that it needs to be positive (or non-0)?
+
+> + * @cmd_details: pointer to command details structure or NULL
+> + *
+> + * Configure MAC settings for frame size (0x0603).
+> + *
+> + * Return: 0 on success, or a negative error code on failure.
+> + **/
+> +int i40e_aq_set_mac_config(struct i40e_hw *hw, u16 max_frame_size,
+> +			   struct i40e_asq_cmd_details *cmd_details)
+> +{
+> +	struct i40e_aq_set_mac_config *cmd;
+> +	struct libie_aq_desc desc;
+> +
+> +	if (max_frame_size == 0)
+> +		return -EINVAL;
+> +
+> +	i40e_fill_default_direct_cmd_desc(&desc, i40e_aqc_opc_set_mac_config);
+> +
+> +	cmd->max_frame_size = cpu_to_le16(max_frame_size);
+> +
+> +#define I40E_AQ_SET_MAC_CONFIG_FC_DEFAULT_THRESHOLD	0x7FFF
+> +	cmd->fc_refresh_threshold =
+> +		cpu_to_le16(I40E_AQ_SET_MAC_CONFIG_FC_DEFAULT_THRESHOLD);
+> +
+> +	return i40e_asq_send_command(hw, &desc, NULL, 0, cmd_details);
+> +}
+> +
+>   /**
+>    * i40e_aq_clear_pxe_mode
+>    * @hw: pointer to the hw struct
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> index b83f823e4917..4796fdd0b966 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> @@ -16045,13 +16045,18 @@ static int i40e_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+>   		dev_dbg(&pf->pdev->dev, "get supported phy types ret =  %pe last_status =  %s\n",
+>   			ERR_PTR(err), libie_aq_str(pf->hw.aq.asq_last_status));
+>   
+> -	/* make sure the MFS hasn't been set lower than the default */
+>   #define MAX_FRAME_SIZE_DEFAULT 0x2600
+> -	val = FIELD_GET(I40E_PRTGL_SAH_MFS_MASK,
+> -			rd32(&pf->hw, I40E_PRTGL_SAH));
+> -	if (val < MAX_FRAME_SIZE_DEFAULT)
+> -		dev_warn(&pdev->dev, "MFS for port %x (%d) has been set below the default (%d)\n",
+> -			 pf->hw.port, val, MAX_FRAME_SIZE_DEFAULT);
+> +
+> +	err = i40e_aq_set_mac_config(hw, MAX_FRAME_SIZE_DEFAULT, NULL);
+> +	if (err) {
+> +		dev_warn(&pdev->dev, "set mac config ret =  %pe last_status =  %s\n",
+> +			 ERR_PTR(err), libie_aq_str(pf->hw.aq.asq_last_status));
+> +	}
+> +
+> +	/* Make sure the MFS is set to the expected value */
+> +	val = rd32(hw, I40E_PRTGL_SAH);
+> +	FIELD_MODIFY(I40E_PRTGL_SAH_MFS_MASK, &val, MAX_FRAME_SIZE_DEFAULT);
+> +	wr32(hw, I40E_PRTGL_SAH, val);
+>   
+>   	/* Add a filter to drop all Flow control frames from any VSI from being
+>   	 * transmitted. By doing so we stop a malicious VF from sending out
+The diff looks good:
+
+Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+
+
+Kind regards,
+
+Paul
