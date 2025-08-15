@@ -1,61 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2DDAEB2863F
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Aug 2025 21:19:26 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0904CB28651
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Aug 2025 21:23:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D7B6761145;
-	Fri, 15 Aug 2025 19:19:24 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9DE7182243;
+	Fri, 15 Aug 2025 19:23:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id GNDJJlJmOnR0; Fri, 15 Aug 2025 19:19:24 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id j_QcRpjIkyUZ; Fri, 15 Aug 2025 19:23:43 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5BCD96112A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0CC6982244
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1755285564;
-	bh=KoHH6v+NGPdTtPmV0lpPihwH9pww9wdBkOHWgqla8Fk=;
+	s=default; t=1755285823;
+	bh=QJnIVxwqsmyXZiZ4k0FK/SBSbvmm32uQPQa7PwJSyB8=;
 	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=UdyrAssuNaDEQQHb7kP6r9e3o64DPZLvWKI5uyMZD/G4I2l02zq4wrc7NH5lqYmxv
-	 ufdMjF0QN05SLZG4CiyQ+apQDOJ/VYaWb2KZ4n6fAMvh5DGngMkl8kmdEiUh9kaOdM
-	 Tb7GzwPrqm6mkVg2+aButGFPv1BJSOtesHuvX7JCwUntC3pta8aIurY20BpjIsHRoH
-	 qG7f4CxJ0E7kFk2vlty2nEJGsJv2vWiJj0a0su7CQI29WV3rJJJRDkzuBHxPhy1hfU
-	 Yfc9AcehKv/OkbXL6DCheQTlXTxofjSw0gjtanGHtCkIY6bezFSnp2mt6gyf3Vo6K7
-	 T67c/iDmoF92w==
+	b=3ZWYiLyQc0GqWp4/+Ny0udJMCA1dyqtAPgeCFYvgEowYRUZ4Kzt8xwOvM7gfHD+H5
+	 aI/JsMqg68oxTdxTTQMsPVjWFuYWrGRHo53i2k6DqK3w/Y7/cXSh4IcLINv4o6IVXv
+	 vx+Q0gIcMuu5sgUgT21u1BuBa1uGJDO6pas63/hC/hGmWPQTP8rTDYK1zrB5WwYlqn
+	 WCkPOWkZ3I2jaV1/rq+vIw9EH9fSsgWdqdoY9UDZxDuI4ghIlm2//R7h9kEdO58gUB
+	 IoVB5VC/zwGidLLrFxL2N+I8Z37InMPBInXBSPJi0WduQUs1Iakdn9iDlChimyB5tr
+	 heWw6LwYukRTQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5BCD96112A;
-	Fri, 15 Aug 2025 19:19:24 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0CC6982244;
+	Fri, 15 Aug 2025 19:23:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 44584223
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Aug 2025 19:19:23 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id B6287223
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Aug 2025 19:23:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 416C760EAA
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Aug 2025 19:19:23 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id B2F9782240
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Aug 2025 19:23:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4zvMOFa_Wr0x for <intel-wired-lan@lists.osuosl.org>;
- Fri, 15 Aug 2025 19:19:22 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id JBow6cgPuy3X for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 15 Aug 2025 19:23:41 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
  envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A7AEA61123
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A7AEA61123
-Received: from sea.source.kernel.org (sea.source.kernel.org
- [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A7AEA61123
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Aug 2025 19:19:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 26AC48223E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 26AC48223E
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 26AC48223E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Aug 2025 19:23:41 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id A6F8145681;
- Fri, 15 Aug 2025 19:19:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6F364C4CEEB;
- Fri, 15 Aug 2025 19:19:20 +0000 (UTC)
-Date: Fri, 15 Aug 2025 12:19:19 -0700
+ by dfw.source.kernel.org (Postfix) with ESMTP id E298E5C68F1;
+ Fri, 15 Aug 2025 19:23:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79A54C4CEEB;
+ Fri, 15 Aug 2025 19:23:38 +0000 (UTC)
+Date: Fri, 15 Aug 2025 12:23:37 -0700
 From: Jakub Kicinski <kuba@kernel.org>
 To: Tariq Toukan <tariqt@nvidia.com>
 Cc: Jiri Pirko <jiri@nvidia.com>, Jiri Pirko <jiri@resnulli.us>, Eric
@@ -76,32 +76,32 @@ Cc: Jiri Pirko <jiri@nvidia.com>, Jiri Pirko <jiri@resnulli.us>, Eric
  <linux-doc@vger.kernel.org>, <intel-wired-lan@lists.osuosl.org>,
  <linux-rdma@vger.kernel.org>, "Gal Pressman" <gal@nvidia.com>, Dragos
  Tatulea <dtatulea@nvidia.com>, "Shahar Shitrit" <shshitrit@nvidia.com>
-Message-ID: <20250815121919.21d391ea@kernel.org>
-In-Reply-To: <1755111349-416632-2-git-send-email-tariqt@nvidia.com>
+Message-ID: <20250815122337.4aa50105@kernel.org>
+In-Reply-To: <1755111349-416632-4-git-send-email-tariqt@nvidia.com>
 References: <1755111349-416632-1-git-send-email-tariqt@nvidia.com>
- <1755111349-416632-2-git-send-email-tariqt@nvidia.com>
+ <1755111349-416632-4-git-send-email-tariqt@nvidia.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1755285561;
- bh=qfPT0VRlhVkZQTijCBa6A1kTR1vmk0XxmuYkvun4LjI=;
+ d=kernel.org; s=k20201202; t=1755285819;
+ bh=JtacZUTLhICvO5yuLBzEN+3vCLB7bp1fK7RdD5/lksY=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=PruoxHLgp+5J2J1cq8xZ/REoFYESEe3lNH80UYCQlTTfoJdiZmh01uBKmsl9f2olE
- Txbg1qGd1Y7HYAO7Y3jy6iWIYhXNYDGJX2mPfJ/qB+nDETW5QxapXx4Ofd7SHrPs6L
- u2mIn1TpOT4zKbKDsP8M5n4HT0TCj0ROe47nWPMB1gW0Lnv7kC2iMJREGcX7Izi1QM
- GtumUHuRqtaI/C2Uc2jA6PAN+uWItg38WAvbOs+YaqY2lsdk93IRu6/cIHYyv8z0uA
- x4+D8tc8FVvRoNrFbHBWCQPLpVw6giCtD8rOIs1NpkPGDV5Qp6pC7fE8TSDPARG6sw
- Lq8qw72jQlb9Q==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=aSDhjSm+hjhcyqFW5Zn3ElR2eNNM57vXdtPe4U9uZ9swYyEoVgIDsMcD9aic3XUuO
+ EEUqvo2T55OYe0w2a3QPWiZ05emD7U6s/w2WlRx/ipXbj7XDD1wTpCBmq3ldbLHv3z
+ ZtnCNvXdYX4QA2n2N69ma08fi+/WHPOX/UdM/bJhRFVNZfMycVQTQ9rm1g8ZEWTc/G
+ ZI8pYAFimYwzuFvi8MJi3SVYHQb8c1+2sad2ea3KkROM0AvExgNxTtaGNZZaYUctWH
+ 7B4lSeBVmUW3pNt3hHO5SbAPqj8If/L5yPPhlgTjz7+A+9TiTviteU+Qnh1X5Clpup
+ +xXtsvKhm85hg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=PruoxHLg
-Subject: Re: [Intel-wired-lan] [PATCH net-next V3 1/5] devlink: Move
- graceful period parameter to reporter ops
+ header.s=k20201202 header.b=aSDhjSm+
+Subject: Re: [Intel-wired-lan] [PATCH net-next V3 3/5] devlink: Introduce
+ error burst period for health reporter
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -117,10 +117,17 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 13 Aug 2025 21:55:45 +0300 Tariq Toukan wrote:
->   * @test: callback to trigger a test event
-> + * @default_graceful_period: default min time (in msec)
-> +			     between recovery attempts
->   */
+On Wed, 13 Aug 2025 21:55:47 +0300 Tariq Toukan wrote:
+> + * @default_error_burst_period: default time (in msec) for
+> + *				error recoveries before
+> + *				starting the grace period
 
-Missing * at the start of the line.
+FWIW you don't have to indent the continuation lines this much,
+one tab is enough to make it clear that it's a continuation.
+
+> +static bool
+> +devlink_health_reporter_burst_period_active(struct devlink_health_reporter *reporter)
+
+Not sure what it means for a period to be active.
+
+devlink_health_reporter_in_burst()
