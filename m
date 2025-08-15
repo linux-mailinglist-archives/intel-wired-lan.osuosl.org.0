@@ -1,108 +1,107 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 982E2B28403
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Aug 2025 18:42:06 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5B9E740D48;
-	Fri, 15 Aug 2025 16:42:05 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RmyqdoEe0al1; Fri, 15 Aug 2025 16:42:04 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B3A9D40D4B
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1755276124;
-	bh=SuO9hWRB2tZu87vohsl77fbUrl0oo/RQH6y79VVI59I=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=TlE3R7NyiUVgx6yJrH1BcYKIJ+SnRPEn4ZHaRCmxCbuHx1opOUPU1dnpR8ifCjf3j
-	 UJcUxrUF95jpNDXYM8ZaW4ZBPo+IzXTmNovHh+TN7byAMlNDGBwTKURB6pJ+MC3YBO
-	 mMDZcIvJT9pZ0TgBxOcMM7EnCTlKDuw1J/cHewwAQe9GZ4kZ6J7NHQLVVYmnn4nh+L
-	 4kKrE4xFX6OkeB4pDA34MMAGum1mdMnHIj8yW+Oz9V/uqt1U7ThVJ/f0/2E//eUCXD
-	 vBe/MPgp8DIdER6m871mnm5G/nCkZJipDcK9LebQ5a9OznI/BCf8Etjb/PtC7xIYxd
-	 j2HV0TwREMY+g==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B3A9D40D4B;
-	Fri, 15 Aug 2025 16:42:04 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 21058196
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Aug 2025 16:42:03 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2DDAEB2863F
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Aug 2025 21:19:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 07E0B60E41
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Aug 2025 16:42:03 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D7B6761145;
+	Fri, 15 Aug 2025 19:19:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id qx5gd3V4OzSe for <intel-wired-lan@lists.osuosl.org>;
- Fri, 15 Aug 2025 16:42:02 +0000 (UTC)
-X-Greylist: delayed 30704 seconds by postgrey-1.37 at util1.osuosl.org;
- Fri, 15 Aug 2025 16:42:02 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 4867D60E78
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4867D60E78
+ id GNDJJlJmOnR0; Fri, 15 Aug 2025 19:19:24 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5BCD96112A
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1755285564;
+	bh=KoHH6v+NGPdTtPmV0lpPihwH9pww9wdBkOHWgqla8Fk=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=UdyrAssuNaDEQQHb7kP6r9e3o64DPZLvWKI5uyMZD/G4I2l02zq4wrc7NH5lqYmxv
+	 ufdMjF0QN05SLZG4CiyQ+apQDOJ/VYaWb2KZ4n6fAMvh5DGngMkl8kmdEiUh9kaOdM
+	 Tb7GzwPrqm6mkVg2+aButGFPv1BJSOtesHuvX7JCwUntC3pta8aIurY20BpjIsHRoH
+	 qG7f4CxJ0E7kFk2vlty2nEJGsJv2vWiJj0a0su7CQI29WV3rJJJRDkzuBHxPhy1hfU
+	 Yfc9AcehKv/OkbXL6DCheQTlXTxofjSw0gjtanGHtCkIY6bezFSnp2mt6gyf3Vo6K7
+	 T67c/iDmoF92w==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5BCD96112A;
+	Fri, 15 Aug 2025 19:19:24 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 44584223
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Aug 2025 19:19:23 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 416C760EAA
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Aug 2025 19:19:23 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 4zvMOFa_Wr0x for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 15 Aug 2025 19:19:22 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
- envelope-from=bigeasy@linutronix.de; receiver=<UNKNOWN> 
-Received: from galois.linutronix.de (Galois.linutronix.de
- [IPv6:2a0a:51c0:0:12e:550::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4867D60E78
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Aug 2025 16:42:02 +0000 (UTC)
-Date: Fri, 15 Aug 2025 18:41:57 +0200
-From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-Cc: Kurt Kanzenbach <kurt@linutronix.de>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Richard Cochran <richardcochran@gmail.com>,
- Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-Message-ID: <20250815164157.jIKm3gdS@linutronix.de>
-References: <20250815-igb_irq_ts-v1-1-8c6fc0353422@linutronix.de>
- <a1e9e37e-63da-4f1c-8ac3-36e1fde2ec0a@molgen.mpg.de>
- <87y0rlm22a.fsf@jax.kurt.home>
- <ad66d19c-be7b-4df3-8e4c-d57a08782df4@molgen.mpg.de>
+ client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A7AEA61123
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A7AEA61123
+Received: from sea.source.kernel.org (sea.source.kernel.org
+ [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A7AEA61123
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Aug 2025 19:19:22 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sea.source.kernel.org (Postfix) with ESMTP id A6F8145681;
+ Fri, 15 Aug 2025 19:19:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6F364C4CEEB;
+ Fri, 15 Aug 2025 19:19:20 +0000 (UTC)
+Date: Fri, 15 Aug 2025 12:19:19 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Tariq Toukan <tariqt@nvidia.com>
+Cc: Jiri Pirko <jiri@nvidia.com>, Jiri Pirko <jiri@resnulli.us>, Eric
+ Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Andrew Lunn
+ <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Donald
+ Hunter <donald.hunter@gmail.com>, Jonathan Corbet <corbet@lwn.net>, Brett
+ Creeley <brett.creeley@amd.com>, Michael Chan <michael.chan@broadcom.com>,
+ Pavan Chebbi <pavan.chebbi@broadcom.com>, "Cai Huoqing"
+ <cai.huoqing@linux.dev>, Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek
+ Kitszel <przemyslaw.kitszel@intel.com>, Sunil Goutham
+ <sgoutham@marvell.com>, Linu Cherian <lcherian@marvell.com>, Geetha
+ sowjanya <gakula@marvell.com>, Jerin Jacob <jerinj@marvell.com>, hariprasad
+ <hkelam@marvell.com>, Subbaraya Sundeep <sbhatta@marvell.com>, Saeed
+ Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Mark Bloch
+ <mbloch@nvidia.com>, Ido Schimmel <idosch@nvidia.com>, Petr Machata
+ <petrm@nvidia.com>, Manish Chopra <manishc@marvell.com>,
+ <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-doc@vger.kernel.org>, <intel-wired-lan@lists.osuosl.org>,
+ <linux-rdma@vger.kernel.org>, "Gal Pressman" <gal@nvidia.com>, Dragos
+ Tatulea <dtatulea@nvidia.com>, "Shahar Shitrit" <shshitrit@nvidia.com>
+Message-ID: <20250815121919.21d391ea@kernel.org>
+In-Reply-To: <1755111349-416632-2-git-send-email-tariqt@nvidia.com>
+References: <1755111349-416632-1-git-send-email-tariqt@nvidia.com>
+ <1755111349-416632-2-git-send-email-tariqt@nvidia.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <ad66d19c-be7b-4df3-8e4c-d57a08782df4@molgen.mpg.de>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1755276118;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=SuO9hWRB2tZu87vohsl77fbUrl0oo/RQH6y79VVI59I=;
- b=jk8kTtoj0lR4im/1aitRimBk1HHrBhiokfmlw1OPnl/4eDcnsnBTFRZmlvh4fJwr6IRII7
- KbDzL1xoEaL3GT/qx5AX/4tsR522CyvqoHsoqYEVrdlxLW6f+1EzSlMddA4CEaJFg7/XMU
- HG/UiDx3R5gI9I0O1ZuHhrHLqXI+KBzlJBMB41DtGC6n7yanfbpo55f4CMkh26p+h/Z1in
- O433iMSjtJYlMdvrEXBxiSlYphug8d/yfFbiy/SfRPN6ni+ZU4pTN555RBX/GSntO6DaQw
- oHQOR/brruiWxpaALt9md0yOTCtSq1+7WCHTFJTRZY6WgTfp2QYrrEalvhZlhg==
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1755276118;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=SuO9hWRB2tZu87vohsl77fbUrl0oo/RQH6y79VVI59I=;
- b=agMEzjxMF9CFD7nDwflH12aIGhmn+a7w+1cz2P9BbvK8f5GiYKADO4oVIfCABvQc4aVw1r
- pfsv5CRPSY/tYpAQ==
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1755285561;
+ bh=qfPT0VRlhVkZQTijCBa6A1kTR1vmk0XxmuYkvun4LjI=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=PruoxHLgp+5J2J1cq8xZ/REoFYESEe3lNH80UYCQlTTfoJdiZmh01uBKmsl9f2olE
+ Txbg1qGd1Y7HYAO7Y3jy6iWIYhXNYDGJX2mPfJ/qB+nDETW5QxapXx4Ofd7SHrPs6L
+ u2mIn1TpOT4zKbKDsP8M5n4HT0TCj0ROe47nWPMB1gW0Lnv7kC2iMJREGcX7Izi1QM
+ GtumUHuRqtaI/C2Uc2jA6PAN+uWItg38WAvbOs+YaqY2lsdk93IRu6/cIHYyv8z0uA
+ x4+D8tc8FVvRoNrFbHBWCQPLpVw6giCtD8rOIs1NpkPGDV5Qp6pC7fE8TSDPARG6sw
+ Lq8qw72jQlb9Q==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=linutronix.de
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
- header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=jk8kTtoj; 
- dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=agMEzjxM
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] igb: Retrieve Tx timestamp
- directly from interrupt
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=PruoxHLg
+Subject: Re: [Intel-wired-lan] [PATCH net-next V3 1/5] devlink: Move
+ graceful period parameter to reporter ops
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -118,41 +117,10 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2025-08-15 14:54:16 [+0200], Paul Menzel wrote:
-> > > Do you have a reproducer for the issue, so others can test.
-> > 
-> > Yeah, I do have a reproducer:
-> > 
-> >   - Run ptp4l with 40ms tx timeout (--tx_timestamp_timeout)
-> >   - Run periodic RT tasks (e.g. with SCHED_FIFO 1) with run time of
-> >     50-100ms per CPU core
-> > 
-> > This leads to sporadic error messages from ptp4l such as "increasing
-> > tx_timestamp_timeout or increasing kworker priority may correct this
-> > issue, but a driver bug likely causes it"
-> > 
-> > However, increasing the kworker priority is not an option, simply
-> > because this kworker is doing non-related PTP work items as well.
-> > 
-> > As the time sync interrupt already signals that the Tx timestamp is
-> > available, there's no need to schedule a work item in this case. I might
-> > have missed something though. But my testing looked good. The warn_on
-> > never triggered.
-> 
-> Great. Maybe add that too, as, at least for me, realtime stuff is something
-> I do not do, so pointers would help me.
+On Wed, 13 Aug 2025 21:55:45 +0300 Tariq Toukan wrote:
+>   * @test: callback to trigger a test event
+> + * @default_graceful_period: default min time (in msec)
+> +			     between recovery attempts
+>   */
 
-If you ask for an explicit reproducer that you would have to have task
-that does
-	struct sched_param param = { .sched_priority = 1 };
-	sched_setscheduler(0, SCHED_FIFO, &param);
-
-and let it run for to exceed the ptp4l timeout. But in general it does
-not require a real time task to trigger the problem. A busy CPU with a
-lot of pending worker will do the trick, too. You just need "enough" CPU
-work so the scheduler puts other tasks on the CPU before the kworker,
-which retrieves the timestamp, is scheduled.
-
-> Paul
-
-Sebastian
+Missing * at the start of the line.
