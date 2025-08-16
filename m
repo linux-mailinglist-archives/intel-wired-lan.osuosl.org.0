@@ -1,105 +1,192 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D0111B28C2D
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 16 Aug 2025 11:07:01 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D8E7B28C2E
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 16 Aug 2025 11:07:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 292F783E92;
-	Sat, 16 Aug 2025 09:07:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5659883EC8;
+	Sat, 16 Aug 2025 09:07:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5Ineys_aB8ZU; Sat, 16 Aug 2025 09:06:59 +0000 (UTC)
+ id f4_hWgg0zmCU; Sat, 16 Aug 2025 09:07:39 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2EDC680C86
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7009683EC3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1755335219;
-	bh=kMHrh6mAPmSb1QDQuu4HaGSvTsFmDjKNWVPs+LpPVeE=;
-	h=From:To:Cc:In-Reply-To:References:Date:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=Hm9m6koHKfAcXDhdVsFTmiqDOfdgAzRt9Rvf+bjORBWm+t9dcnaeeJJdZ0kR0vFGC
-	 8k0X4bhgdpT8Lp2NQ1e+ln//ufVs7hDjnZ4Chwx6QpnCOTI+cTSHrQ1i4dJ6ML56ZS
-	 t4G7GoXjBIVrHTBCXmHxkGIWYuyOqp7CMJEOnx3w94LeOJk5O/+duV81398v1YMSmo
-	 kwT1yt6hmq4Ro/BmBsHQ05HsWAYSC2bmilQxmf1gjNkMSLzamNU3a5RpDDJU9c3c1I
-	 GusRUZWRFfbbqZDTFOmlugyfUHmqkESB7ARH0E7ph90Q/SNhC+eHpmB8gjwSqUaUWO
-	 xMia1gOLPPKDg==
+	s=default; t=1755335259;
+	bh=LvmLG1uszWqxssGtmXBcaLFZ2LG5+7gvDAaSZ59+H9A=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=BGU0PoVfJ22EKcGSMGJzbpCf5/R39YsM37GVzWeI/sDXMIi5Fz5dt0GfYhOKuQiAL
+	 c2IbDINnGlDz2IgQxrmFtIQ+DOJp8rtU9XPWQeh39YaOnd9fkO8IZXUfwiD1U64IGn
+	 3lWzttLJbCYmh4SARy9QyYStDsWeCP60q7dQFluxmRN3PbP3irlSnYSfrtSzRYvkFm
+	 MdL37yBDFuXUgLY0dsZVx8ElHNP3I6NwsGmiHSzqDG6OYfKM0gL6yNf2y+UqSGh9+N
+	 uiksTLd4wXXKIg7THQTWpL0Og6uwl3BJMoMYSZcUs3RuhLP2iYzj62LLqPS+1EeqmD
+	 89+tqF9lWzsEg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2EDC680C86;
-	Sat, 16 Aug 2025 09:06:59 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7009683EC3;
+	Sat, 16 Aug 2025 09:07:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 3702F223
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Aug 2025 09:06:57 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3589B223
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Aug 2025 09:07:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0D7AA83E79
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Aug 2025 09:06:57 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 326F040838
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Aug 2025 09:07:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7C901XXLBiKv for <intel-wired-lan@lists.osuosl.org>;
- Sat, 16 Aug 2025 09:06:56 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
- envelope-from=kurt@linutronix.de; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 09CAA83E72
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 09CAA83E72
-Received: from galois.linutronix.de (Galois.linutronix.de
- [IPv6:2a0a:51c0:0:12e:550::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 09CAA83E72
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Aug 2025 09:06:55 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-To: Vadim Fedorenko <vadim.fedorenko@linux.dev>, Paul Menzel
- <pmenzel@molgen.mpg.de>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel
- <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
- <pabeni@redhat.com>, Richard Cochran <richardcochran@gmail.com>, Vinicius
- Costa Gomes <vinicius.gomes@intel.com>, Sebastian Andrzej Siewior
- <bigeasy@linutronix.de>, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org
-In-Reply-To: <1f42eff0-b6a5-44cb-996e-655c325591be@linux.dev>
-References: <20250815-igb_irq_ts-v1-1-8c6fc0353422@linutronix.de>
- <a1e9e37e-63da-4f1c-8ac3-36e1fde2ec0a@molgen.mpg.de>
- <87y0rlm22a.fsf@jax.kurt.home>
- <1f42eff0-b6a5-44cb-996e-655c325591be@linux.dev>
-Date: Sat, 16 Aug 2025 11:06:49 +0200
-Message-ID: <87bjofoct2.fsf@jax.kurt.home>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id L_QXkd527fCO for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 16 Aug 2025 09:07:36 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.75.67;
+ helo=os8pr02cu002.outbound.protection.outlook.com;
+ envelope-from=rongqianfeng@vivo.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C85ED4048C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C85ED4048C
+Received: from OS8PR02CU002.outbound.protection.outlook.com
+ (mail-japanwestazon11012067.outbound.protection.outlook.com [40.107.75.67])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C85ED4048C
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Aug 2025 09:07:34 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Al+E2nLfgI/f6Y7IRPgMiEKoDCkAvSQUZXXOyzSbu4byYC/W1H0M/lusHoWaVZr+cQ/Qf1wyKMJe4y7PRATRVPc8ucwehvqt/pi/Vvm0PvOgWFeoiVsspM83PF9rV9u00jXTy6j2BvA9hGvWPi/DbedjDKu/J7Nj26wW8nuOMiHr134DURXOuVWUp6aVEKrYUSZd3ftiGSrLI/HlIk2SWE+eyxGVQbdoK7ooQ4SUP9ElUYxh1BG5A4aJx09U+SVVCFVv7dlhPtDzHwlSw8S/qpE8/nqZleegss3WAaMOyHYChmGtnBz2m86UXmgfFqFcSs1hR9YOW0Qi4Yp6+QuNoA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=LvmLG1uszWqxssGtmXBcaLFZ2LG5+7gvDAaSZ59+H9A=;
+ b=gVWDCk1j0U+8SUghoJUJuPFFrvX3QLphU6GwaIdYHxEaLEYPYYlSq9zuBV9HC7KVAF/7fbAGAlJV40yIchc+2LFA1bDfidF7H5joxMejfwzQaW50tIWn9qyu9g83tgtkTpwTTvtvAu2UkK4yrxkJ0iVpsqBLFfqVPuhNwO03x507IB68VHQO5ZoyDvit5zvI8eaJ7aMsttqJIAt75/wlA4w4Sd15KssaG66neTepJg3aCG1MmlD0cOSgqdEs0bv+j1L546gGrFiFnQ6lUdqWkulKGBPC45PyTTG0dKCZLuHNoLQkSzvfxejadi2izAbk41+xKf5/Mk4vjY2xtyaEZQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
+ dkim=pass header.d=vivo.com; arc=none
+Received: from SI2PR06MB5140.apcprd06.prod.outlook.com (2603:1096:4:1af::9) by
+ TYZPR06MB6305.apcprd06.prod.outlook.com (2603:1096:400:418::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9031.18; Sat, 16 Aug
+ 2025 09:07:30 +0000
+Received: from SI2PR06MB5140.apcprd06.prod.outlook.com
+ ([fe80::468a:88be:bec:666]) by SI2PR06MB5140.apcprd06.prod.outlook.com
+ ([fe80::468a:88be:bec:666%5]) with mapi id 15.20.9031.018; Sat, 16 Aug 2025
+ 09:07:30 +0000
+From: Qianfeng Rong <rongqianfeng@vivo.com>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Simon Horman <horms@kernel.org>,
+ Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Stanislav Fomichev <sdf@fomichev.me>,
+ Qianfeng Rong <rongqianfeng@vivo.com>,
+ intel-wired-lan@lists.osuosl.org (moderated list:INTEL ETHERNET DRIVERS),
+ netdev@vger.kernel.org (open list:NETWORKING DRIVERS),
+ linux-kernel@vger.kernel.org (open list),
+ oss-drivers@corigine.com (open list:NETRONOME ETHERNET DRIVERS),
+ bpf@vger.kernel.org (open list:XDP (eXpress Data
+ Path):Keyword:(?:\b|_)xdp(?:\b|_))
+Date: Sat, 16 Aug 2025 17:06:51 +0800
+Message-Id: <20250816090659.117699-1-rongqianfeng@vivo.com>
+X-Mailer: git-send-email 2.34.1
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: TYAPR01CA0106.jpnprd01.prod.outlook.com
+ (2603:1096:404:2a::22) To SI2PR06MB5140.apcprd06.prod.outlook.com
+ (2603:1096:4:1af::9)
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
- micalg=pgp-sha512; protocol="application/pgp-signature"
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SI2PR06MB5140:EE_|TYZPR06MB6305:EE_
+X-MS-Office365-Filtering-Correlation-Id: cfc53278-0a19-4a47-e551-08dddca45442
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|52116014|1800799024|7416014|376014|366016|38350700014|921020; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?fuwL8+4NJn8AzyXn3X/G4BEUPU5j9Wq6dbZUUE+dBdg6Q34wmfqry1vyvWoK?=
+ =?us-ascii?Q?FtSfYd14Az81d51RhuJty4P6GiSeOvcUuh232icT8NvBitOmR9sQuJK+Alnm?=
+ =?us-ascii?Q?wtA1X1AYf5P1fFYOJQn4pj6fUa+ppXFmBqz/fxHy8Hv+gV5BG3BaAcDg3O/4?=
+ =?us-ascii?Q?gWbIvf2lQomRMKKqQJPYWvlEtcQ1BqX65tsLjabMO+kVSCGM4zCVuiOOB1s4?=
+ =?us-ascii?Q?0d0KnnKSy9FfxkxqJOHK7AGq9mRs3NadijHlhGs5IddcvIl+EhiWx3cbQLA+?=
+ =?us-ascii?Q?DXdUcnOPBhNF24buTPVaPhsmIaTjzbH5qyTOvNiXtq6IWTsdSZiN9gWnmG2Q?=
+ =?us-ascii?Q?KygdckGsOPcXUSCgS1fqeGdVYFmxcTWXVQ5QD2b2H6C/f7J8biCRCp+cXhnS?=
+ =?us-ascii?Q?hOOfsr/no2ddx+/mx41Bj7p0VXcQIbuj9hML320VHBkZNfhWbsXXLva5B+bs?=
+ =?us-ascii?Q?6OHqDLEUqsqzEIbv8aReE6h0LHqV0vk8qATsBItx95lyL/wQeFy1Y75fNwd3?=
+ =?us-ascii?Q?i/4FrvyXxtQDTVLxN2N0p87/zMYsyCgE/aLX/p4CyXxx41wonLvqQ+vsF7aX?=
+ =?us-ascii?Q?QKn6eTK9cvlXMiXRIaAC8JgKqTnhTN4PQ4S2QGHJXjfenpyzL7qCur7+Yx0/?=
+ =?us-ascii?Q?JjOvOizQKWftg9TgXG7kxO0F0GCEpazjnAB+wv8A7yQoMsNTtinZnT4icP2h?=
+ =?us-ascii?Q?LF0nzZXDefkOwBx0MfWPEK6FwMJs59qkLj2ZDwX20biZoZjF8ND4lZ2c/dM8?=
+ =?us-ascii?Q?VFBo7CdrCo32j9Im9fi5gVG1CSE7qX8SOXbi0T0i3m/2Xf1F86PJpV9tN2Ta?=
+ =?us-ascii?Q?QDKl5nVU6t6SDgZgYy1nHNU6k1mGjbDEGX8teEOHuzoEfcpgD03q2buoQD51?=
+ =?us-ascii?Q?BKrzKa4V1a6IIZHUDWa/u+e+TCmZ+yq8FcFKlVLQ4hyPGCkWuMtWAoKxnbvk?=
+ =?us-ascii?Q?ncmtBD0i86n6N9meAh+rwYzKjsnuPXCtmy0ZdLSwhs266c6r7i2fPZsW5qWW?=
+ =?us-ascii?Q?qXIoVFoM6xyM2vK9E+pYPe0wP03SCpmQVBd+Rvn6a94fL+77Popyo1b/Wkyw?=
+ =?us-ascii?Q?tTIUS0f7czhX+XeeHE7aA08qEG/8EdXabCLA7ypNQZ1RJjtFMsT+qxh13PzG?=
+ =?us-ascii?Q?y7ixc8pKXGSWStgbhr62ohwNEKX4kRIpr0BXIe5ok0JxTkeyO1Jwd9IsWnG3?=
+ =?us-ascii?Q?X9Z5WG0WJvDE7Gu5j21D4t/cnDrbJweFmNkNb8Y/oiMYd4h3tlF967lRzkHk?=
+ =?us-ascii?Q?7vvkolbV5H9l7qD7l6tz5N6ejS+wY/ft+A8K3qdQc9Bu8VvGfbkitea/L/Bj?=
+ =?us-ascii?Q?AL5IJZEygvZr9gOg3FgM8NWvBOgEQxDC3m76Z6QEm81Yg0O/UQ1dopy9oc9K?=
+ =?us-ascii?Q?1bgFAcP3OUmoF2J3eK/XRx74VWsBoQRuzDBgYzd1tArJmg2Iv3TPuLB90PZN?=
+ =?us-ascii?Q?Po3TEWHS+oMlPzfAl6tvXHWHdLukFvywBbERWolXCo2DWjZ67hMhRGVPp0Sw?=
+ =?us-ascii?Q?umuT1r408SO9/7U6kWDVHnR4Vg3qEb62r98j?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SI2PR06MB5140.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(52116014)(1800799024)(7416014)(376014)(366016)(38350700014)(921020);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?wWXamHka9enul8X8GGDt9KItRBbav91f3Y9dx4KOBP6l5L7VbE9vHf1G6nmN?=
+ =?us-ascii?Q?GLeBvWKJM923GxTJAlsGRcSf1v60bq37lCIoIGCrHskM39drAHHcoey0hyqE?=
+ =?us-ascii?Q?zt5if6ZdeD0YPIvrWPpuFhRBlHnfFnb3r5fVxB80KG9y5l7qOQnRYpBeSvel?=
+ =?us-ascii?Q?dRESN/CKOpGjuc03llCNw+z9QNqkfNZCqyGAi86m2lbREVUeiIJb2eMddk9w?=
+ =?us-ascii?Q?ogcJhdzDNJ6rpIbvXajI6yV/OY8REI4hPjRKdruOUf8/T8r0BXfVMs6QW4vF?=
+ =?us-ascii?Q?tW5rdQ/oXdTfZ51J2vbSeqz/KaP5uhqpCgq5ZW8Tee6r9JJ7Iq7CRkm05kak?=
+ =?us-ascii?Q?o19dh8wNt6T5/ePeRNEVdSxktz4BNaOyhkVlh5A/kH0fVT4SZrDgBSBNclp6?=
+ =?us-ascii?Q?t64w9qdpads9kdknjmW4aarLytz0YP24U1Rxd1MnMusTZmizR1uGZq1GLguU?=
+ =?us-ascii?Q?Uafl2wt/rd8Vp+QeKK9h6WZv0cuSMauhywYhl1C8bH8IpReeAa2uCD5B3Kwn?=
+ =?us-ascii?Q?hLJfjwXhgrlT8v/naRzSZ243oixIxDlbY2qfdeuan8Xj3QEV8UNc1kasgCgX?=
+ =?us-ascii?Q?Ij8djW6tua+S6rzIXxJfqvZRNlhRgYHpmb1Nf3vbrPN21/dowNR2dBswRYiD?=
+ =?us-ascii?Q?/V8+rcU579kcI9gQdMxoIxmbgs9OE+IYM4kY2VcmOmoKW9hvHd+v40HrknOu?=
+ =?us-ascii?Q?39MW7As4668DjTpcR+aNUi6VEY8HpksWUOGf68yp1bN9NrftWrBbLwVeIQLe?=
+ =?us-ascii?Q?2V6yD1Elo1ARqJr6XMDLhYah0zo6CymIz59i6ouRzJHeyPF58i/OfHEpuM28?=
+ =?us-ascii?Q?m7DeVISz5rrjepY5uK2nbEj55/2QUhjSlE5c/U5LEuCNNiQr6Y+yBgvep3Sh?=
+ =?us-ascii?Q?d3S03I5PJjUrH97tFqOfaOi34zyyz8e6wR5xdo8afUijMDrVTY9iLfVLmXtx?=
+ =?us-ascii?Q?T72npPJrYOYaGoJCpjaY3s3UNjxIaSxcJD/89sPxAZfi9MaQeqVJJjrR6m5b?=
+ =?us-ascii?Q?+DNhA/4E219TStjglDo2T00xxP9lSWRwWnGxx0DdKaxcKTwQy6YEB/2VMBE8?=
+ =?us-ascii?Q?iD/ogyHSVsbDecBWziiE8RxkfJ9iEKsPZp/t5QABqGug/Cvko/BIzufUuuHR?=
+ =?us-ascii?Q?xR4ocXvynxnDzz56oWdDzAvt/Ed8a6P74mjD21Iy09KwW7IqXW6dxDuMuzl7?=
+ =?us-ascii?Q?kV2hFs25ToXFAdz450pfuso4s1kJwkbjZcdeQb4joWpHwFLzxZ6HjMrkTT9v?=
+ =?us-ascii?Q?46iBFjUGhwpfZCpabY7lMu0z/8sPZm/g6GN//HvuyD4LI7PPgpK5qpersOnX?=
+ =?us-ascii?Q?TNAylXOPBetOivUed25PdcHubdPZGiqifk9gyqFCe05XYTFOd9yqar6B08Jw?=
+ =?us-ascii?Q?rjGb+EnMo2DvXjGrc2MKuUaBNonOWv6xLCH4whGjGdiPK9fL+6Qn1D8gHaJX?=
+ =?us-ascii?Q?aJKzyl8imROLKYRddl40ACzbgeKs5RK9DNfw4g++0HEbD796IRE5cZzAz938?=
+ =?us-ascii?Q?QqZVOObenALePNmzOrX5+dd/j+kFTUEAwEI3QJ/anrcdiiyD/0UYCYCFkbm8?=
+ =?us-ascii?Q?Dlb0TRYYPgaehxDcycprv0J0uKgwoO/wntiL82r6?=
+X-OriginatorOrg: vivo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: cfc53278-0a19-4a47-e551-08dddca45442
+X-MS-Exchange-CrossTenant-AuthSource: SI2PR06MB5140.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Aug 2025 09:07:30.5089 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: woSPbfn/ORB6P33UDJmedcB4i2RAGoWdsve8hOvbbbgrI/UsM2bpNUrkdE7YIDvpcdtciO65JOfW43Ja0f44Yw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR06MB6305
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1755335211;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=kMHrh6mAPmSb1QDQuu4HaGSvTsFmDjKNWVPs+LpPVeE=;
- b=hcJ+AWgXVXrtPN3wy4nCta2qvgdQBnAgH9ffph98nZoYmFvjgnrzqta2d9OTse51djQy7Q
- adtwmnRpILXogilclHkwI3wUcuzHsnA9H4p322OAv2caDmcWVaLZ2YkyqdeJnemD9rLvTs
- D3QpcqT6ZhhPBDch5PjY+GIpjUI/IbPH8LS6l0ZWAJ/Hf539rngngcEtOhZCtpLpm7soep
- siQqO3vvOFBGQ1FmYweBm1+ZosGxUowv9EsHgP31uLFavOXbBvTgvIGlklxN3nMd9XgRQm
- UNXm6oAvri3inEkaR8QpND97CH+ZhE7nsocDPRCQjNRzvrNunxFQa4adP5Ty0w==
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1755335211;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=kMHrh6mAPmSb1QDQuu4HaGSvTsFmDjKNWVPs+LpPVeE=;
- b=G5pkbQQx0dWM3bVUVFgYTen9C36xDp2+1QtbR6NZkIGSR4N3HSWzk94Qq7gyHov1u4Vf+V
- CFCgnfviQ5Sv97Bg==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=linutronix.de
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
- header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=hcJ+AWgX; 
- dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=G5pkbQQx
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] igb: Retrieve Tx timestamp
- directly from interrupt
+ d=vivo.com; s=selector2; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=LvmLG1uszWqxssGtmXBcaLFZ2LG5+7gvDAaSZ59+H9A=;
+ b=B6iHOyIMt7wsYopkOuZXLLop1Xzwk7sjhbi81mDlYmRc8Pr2WcO7AN1ZaHuZBLBlqQjPV7wbqBcwHDQZ0mBrD3JHXlfpjhPkjUfiecGAVrSi4tEPRzZDeWAdWpZj8mDfVDyAu9hrleiXFbP27YHb0zKb+BIplIpNzPJCaYpeVuwTzNNGmlNoDC4sH6akCgvs3Bxl8KQWGIgDs7d6aTRwrk/umuxVOhdWaRz+mWvhHaSutmzEgFKVgDcS+uZg3O7bEWEHBDyefxWuWv6tIas75TNq2DRvy1kj0sQWv5ie7Sgvmmt7rHdhFsqAWIE56rEwPiy3uzMC1AR3XiAR53G+/Q==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=vivo.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=vivo.com header.i=@vivo.com header.a=rsa-sha256
+ header.s=selector2 header.b=B6iHOyIM
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=vivo.com;
+Subject: [Intel-wired-lan] [PATCH v3 0/3] net: use vmalloc_array() to
+ simplify code
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -115,181 +202,37 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+Remove array_size() calls and replace vmalloc() with vmalloc_array() to
+simplify the code and maintain consistency with existing kmalloc_array()
+usage.
 
-On Fri Aug 15 2025, Vadim Fedorenko wrote:
-> On 15/08/2025 09:17, Kurt Kanzenbach wrote:
->> Hi Paul,
->>=20
->> On Fri Aug 15 2025, Paul Menzel wrote:
->>> Dear Kurt,
->>>
->>>
->>> Thank you for your patch.
->>>
->>> Am 15.08.25 um 08:50 schrieb Kurt Kanzenbach:
->>>> Retrieve Tx timestamp directly from interrupt handler.
->>>>
->>>> The current implementation uses schedule_work() which is executed by t=
-he
->>>> system work queue to retrieve Tx timestamps. This increases latency an=
-d can
->>>> lead to timeouts in case of heavy system load.
->>>>
->>>> Therefore, fetch the timestamp directly from the interrupt handler.
->>>>
->>>> The work queue code stays for the Intel 82576. Tested on Intel i210.
->>>
->>> Excuse my ignorance, I do not understand the first sentence in the last
->>> line. Is it because the driver support different models? Why not change
->>> it for Intel 82576 too?
->>=20
->> Yes, the driver supports lots of different NIC(s). AFAICS Intel 82576 is
->> the only one which does not use time sync interrupts. Probably it does
->> not have this feature. Therefore, the 82576 needs to schedule a work
->> queue item.
->>=20
->>>
->>> Do you have a reproducer for the issue, so others can test.
->>=20
->> Yeah, I do have a reproducer:
->>=20
->>   - Run ptp4l with 40ms tx timeout (--tx_timestamp_timeout)
->>   - Run periodic RT tasks (e.g. with SCHED_FIFO 1) with run time of
->>     50-100ms per CPU core
->>=20
->> This leads to sporadic error messages from ptp4l such as "increasing
->> tx_timestamp_timeout or increasing kworker priority may correct this
->> issue, but a driver bug likely causes it"
->>=20
->> However, increasing the kworker priority is not an option, simply
->> because this kworker is doing non-related PTP work items as well.
->
-> Well, in this case, as it pointed out for other drivers, the best
-> practice would be to use a dedicated PTP worker which does only PTP
-> related tasks and can have higher priority.
->
-> The inline retrieving of timestamp, of course, the best option, but for
-> 82576 could you please consider using @do_aux_work in ptp_caps and do
-> proper ptp_schedule_worker()?
+vmalloc_array() is also optimized better, resulting in less instructions
+being used [1].
 
-Sure, using the PTP aux worker is always the better than using the
-system work queue. I ordered a 82576 for testing. But, that conversion
-will be another patch.
+[1]: https://lore.kernel.org/lkml/abc66ec5-85a4-47e1-9759-2f60ab111971@vivo.com/
 
->
->>=20
->> As the time sync interrupt already signals that the Tx timestamp is
->> available, there's no need to schedule a work item in this case. I might
->> have missed something though. But my testing looked good. The warn_on
->> never triggered.
->>=20
->>>
->>>> Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
->>>> ---
->>>>    drivers/net/ethernet/intel/igb/igb.h      |  1 +
->>>>    drivers/net/ethernet/intel/igb/igb_main.c |  2 +-
->>>>    drivers/net/ethernet/intel/igb/igb_ptp.c  | 22 ++++++++++++++++++++=
-++
->>>>    3 files changed, 24 insertions(+), 1 deletion(-)
->>>>
->>>> diff --git a/drivers/net/ethernet/intel/igb/igb.h b/drivers/net/ethern=
-et/intel/igb/igb.h
->>>> index c3f4f7cd264e9b2ff70f03b580f95b15b528028c..102ca32e8979fa3203fc2e=
-a36eac456f1943cfca 100644
->>>> --- a/drivers/net/ethernet/intel/igb/igb.h
->>>> +++ b/drivers/net/ethernet/intel/igb/igb.h
->>>> @@ -776,6 +776,7 @@ int igb_ptp_hwtstamp_get(struct net_device *netdev,
->>>>    int igb_ptp_hwtstamp_set(struct net_device *netdev,
->>>>    			 struct kernel_hwtstamp_config *config,
->>>>    			 struct netlink_ext_ack *extack);
->>>> +void igb_ptp_tx_tstamp_event(struct igb_adapter *adapter);
->>>>    void igb_set_flag_queue_pairs(struct igb_adapter *, const u32);
->>>>    unsigned int igb_get_max_rss_queues(struct igb_adapter *);
->>>>    #ifdef CONFIG_IGB_HWMON
->>>> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/e=
-thernet/intel/igb/igb_main.c
->>>> index a9a7a94ae61e93aa737b0103e00580e73601d62b..8ab6e52cb839bbb698007a=
-74462798faaaab0071 100644
->>>> --- a/drivers/net/ethernet/intel/igb/igb_main.c
->>>> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
->>>> @@ -7080,7 +7080,7 @@ static void igb_tsync_interrupt(struct igb_adapt=
-er *adapter)
->>>>=20=20=20=20
->>>>    	if (tsicr & E1000_TSICR_TXTS) {
->>>>    		/* retrieve hardware timestamp */
->>>> -		schedule_work(&adapter->ptp_tx_work);
->>>> +		igb_ptp_tx_tstamp_event(adapter);
->>>>    	}
->>>>=20=20=20=20
->>>>    	if (tsicr & TSINTR_TT0)
->>>> diff --git a/drivers/net/ethernet/intel/igb/igb_ptp.c b/drivers/net/et=
-hernet/intel/igb/igb_ptp.c
->>>> index a7876882aeaf2b2a7fb9ec6ff5c83d8a1b06008a..20ecafecc60557353f8cc5=
-ab505030246687c8e4 100644
->>>> --- a/drivers/net/ethernet/intel/igb/igb_ptp.c
->>>> +++ b/drivers/net/ethernet/intel/igb/igb_ptp.c
->>>> @@ -796,6 +796,28 @@ static int igb_ptp_verify_pin(struct ptp_clock_in=
-fo *ptp, unsigned int pin,
->>>>    	return 0;
->>>>    }
->>>>=20=20=20=20
->>>> +/**
->>>> + * igb_ptp_tx_tstamp_event
->>>> + * @adapter: pointer to igb adapter
->>>> + *
->>>> + * This function checks the TSYNCTXCTL valid bit and stores the Tx ha=
-rdware
->>>> + * timestamp at the current skb.
->>>> + **/
->>>> +void igb_ptp_tx_tstamp_event(struct igb_adapter *adapter)
->>>> +{
->>>> +	struct e1000_hw *hw =3D &adapter->hw;
->>>> +	u32 tsynctxctl;
->>>> +
->>>> +	if (!adapter->ptp_tx_skb)
->>>> +		return;
->>>> +
->>>> +	tsynctxctl =3D rd32(E1000_TSYNCTXCTL);
->>>> +	if (WARN_ON_ONCE(!(tsynctxctl & E1000_TSYNCTXCTL_VALID)))
->>>> +		return;
->>>> +
->>>> +	igb_ptp_tx_hwtstamp(adapter);
->>>> +}
->>>> +
->>>>    /**
->>>>     * igb_ptp_tx_work
->>>>     * @work: pointer to work struct
->>>
->>> The diff looks fine.
->>>
->>> Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
->
-> Reviewed-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
+Signed-off-by: Qianfeng Rong <rongqianfeng@vivo.com>
+---
+v2: Submit wireless patches separately and modified the commit message
+    and subject prefix.
+v3: Fix -Wcalloc-transposed-args warning in nfp_flower_metadata_init()
+    by correcting argument order in vmalloc_array() calls (swap count
+    and sizeof arguments).
+---
+Qianfeng Rong (3):
+  eth: intel: use vmalloc_array() to simplify code
+  nfp: flower: use vmalloc_array() to simplify code
+  ppp: use vmalloc_array() to simplify code
 
-Thanks!
-Kurt
+ drivers/net/ethernet/intel/fm10k/fm10k_ethtool.c     | 2 +-
+ drivers/net/ethernet/intel/igb/igb_ethtool.c         | 8 ++++----
+ drivers/net/ethernet/intel/igc/igc_ethtool.c         | 8 ++++----
+ drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c     | 2 +-
+ drivers/net/ethernet/intel/ixgbevf/ethtool.c         | 6 +++---
+ drivers/net/ethernet/netronome/nfp/flower/metadata.c | 4 ++--
+ drivers/net/ppp/bsd_comp.c                           | 4 ++--
+ 7 files changed, 17 insertions(+), 17 deletions(-)
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
+-- 
+2.34.1
 
------BEGIN PGP SIGNATURE-----
-
-iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmigSikTHGt1cnRAbGlu
-dXRyb25peC5kZQAKCRDBk9HyqkZzgtwqEACrkPVsqfeGqszsv4seaGMy8MnS3Rfj
-FWa1rws6GMNjRAh5c4q31ScZonmUO1aCrdR2LPIVaSOpi3Lazd8dB4vOiScCikK2
-3TwL172hDFWyKdGKujz5ekPiQRmD5odgb+q5RhKzfeYRKjLOJLtcxDh4LREGlpOb
-k5iSdXC7Ib5eJRQGrk1YOSK7ZHO0EkEQhxb17MMKWZCJ3kAhPIDx3SD7+T1cD8ne
-9X9OSMiIUVeE6rFCY3TdSvmDxnWmCLf5xI/sbAtUNQ29+zyrhmXgGS3JiDc4ybnF
-0qzHMBCmlNT9WLvFCfC1rLXZFwWjEnbmK+JM5SMAFkL3c+rbyjmG21phs5uz7rsj
-BFW++mxosAx7DUS7N5WzKg3ecqkbI2M6VmyIriwvSRPEZ23/iIW2HWiiUY+fpF+M
-9a/gFUa5FFII700xrQ5Wp6azMrJ3doR6AKOp6BYReUKtQLCaAre/GecXEQxyoeI+
-CntDN/3wCQJGRQSIl3C2y/5Ym7tE7A+JDMBm4buLbOpNiXh9xv1+p4f3f+ZazSK1
-W8yL/Odaq29AU7Nj+ikKDm7oxXJa1Xr41kTJfunL/Xoh0PmC+kCw+46QYpOJMQYI
-4dh+o+CsOMi4jWGk3JVEDMQRJSJLd2+bGwBjpoQM+NVWV1hbZ3HwTrTKFJCrLp4A
-3yJGuXAPPWaV/w==
-=3TtW
------END PGP SIGNATURE-----
---=-=-=--
