@@ -2,118 +2,104 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7BCAAB2AC7D
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Aug 2025 17:20:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E151B2ACE9
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Aug 2025 17:39:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 37751842C7;
-	Mon, 18 Aug 2025 15:20:17 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D92E6803F1;
+	Mon, 18 Aug 2025 15:39:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id wsqF2CQJ7oET; Mon, 18 Aug 2025 15:20:16 +0000 (UTC)
+ id 6ftj6juOY3Vu; Mon, 18 Aug 2025 15:39:33 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A09928428B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2F157803F3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1755530416;
-	bh=XMYejQHNqpjFbERCaP8aLdVx7eISvzwexSyDRnFQHOA=;
-	h=From:To:CC:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=GqL4Aetgja7GDoL2CZYraoDyZT0d9tiwdvL5Q4sS3B2Q5lBQug5gyrxEgrSrU2JFv
-	 udCbtRYuM1ltdnR4iXkJEX0thwEOkNTtSZlmS1dpzWIsjOeEgUy2QXFS53IMPko1tF
-	 loDppa4wvorSDEaNQioxTRIY++ao5qdYLBqdBjBZfQKaTXvOdwQYzVIadnrbY7BlG4
-	 gPYYtaSytZg61nsXW1EsPpChTNOFFuWSIuT0KCOjNyg8zQP8j9c1Y2yg4xsad5YaRx
-	 b61v8FTuGVuQ2QdpBfRZf0cpV5zXleSvG+DYkRKIo5fE4KVaYqovOESuvGq+6l4nox
-	 sHB8nP7Y+a4FQ==
+	s=default; t=1755531573;
+	bh=qXpvRoFv2Wa2W3v8CasK7ERjDyTSk2kwzM1QvDnLBZA=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=QtpGefFHLJsVaXMjx5GxltGHQqIZCqCN73bQ1bB0emEqpfmDf76a96ZK5PEamY/Mp
+	 HZ3auYyYywSkfEGcfJgNXTb+fxmB8DApywkQAFG7KaYoeKHmMRjDAfdqYBM9HXdZz2
+	 cXVcH5Utpd5zF8sppAIPOdqmhQvkhHs/YtHBGt5dkGd5hQ8/uwdiNkPVl5BHM5Alwn
+	 dLYeUIneKRtqG/NlqfUiZZ4AKmCqJVDguYgzeUOUAJ0cboZN92b3bud+63kIiJ7myi
+	 muCUKKT6My2WNZEj7YsnMOC/cXmckJGuYF5pDVZbCCfc36is8HbAIXqzy/6rhSqn4s
+	 1htUGpszkv90w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A09928428B;
-	Mon, 18 Aug 2025 15:20:16 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2F157803F3;
+	Mon, 18 Aug 2025 15:39:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 77B9D75
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Aug 2025 15:20:14 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 9E208E2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Aug 2025 15:39:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 69B5760E0C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Aug 2025 15:20:14 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 7D3EC40012
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Aug 2025 15:39:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id p3U7Lc1GrUIb for <intel-wired-lan@lists.osuosl.org>;
- Mon, 18 Aug 2025 15:20:14 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=44.245.243.92;
- helo=pdx-out-001.esa.us-west-2.outbound.mail-perimeter.amazon.com;
- envelope-from=prvs=318ef9ef4=enjuk@amazon.co.jp; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B8E3360A88
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B8E3360A88
-Received: from pdx-out-001.esa.us-west-2.outbound.mail-perimeter.amazon.com
- (pdx-out-001.esa.us-west-2.outbound.mail-perimeter.amazon.com
- [44.245.243.92])
- by smtp3.osuosl.org (Postfix) with ESMTPS id B8E3360A88
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Aug 2025 15:20:13 +0000 (UTC)
-X-CSE-ConnectionGUID: GvNU4AY7ScqpFe9ijYZcyA==
-X-CSE-MsgGUID: NOYTGUURQ1qeT1MfdGWN1Q==
-X-IronPort-AV: E=Sophos;i="6.17,293,1747699200"; 
-   d="scan'208";a="1310829"
-Received: from ip-10-5-0-115.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.0.115])
- by internal-pdx-out-001.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Aug 2025 15:20:11 +0000
-Received: from EX19MTAUWC002.ant.amazon.com [10.0.21.151:42477]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.52.244:2525]
- with esmtp (Farcaster)
- id 8a5d81ca-8000-47fd-9d85-193fbc95c6eb; Mon, 18 Aug 2025 15:20:11 +0000 (UTC)
-X-Farcaster-Flow-ID: 8a5d81ca-8000-47fd-9d85-193fbc95c6eb
-Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWC002.ant.amazon.com (10.250.64.143) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1544.14;
- Mon, 18 Aug 2025 15:20:11 +0000
-Received: from b0be8375a521.amazon.com (10.37.245.11) by
- EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.17;
- Mon, 18 Aug 2025 15:20:08 +0000
-From: Kohei Enju <enjuk@amazon.com>
-To: <intel-wired-lan@lists.osuosl.org>, <netdev@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>
-CC: Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel
- <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David
- S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "Jakub
- Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- <kohei.enju@gmail.com>, Kohei Enju <enjuk@amazon.com>, Paul Menzel
- <pmenzel@molgen.mpg.de>
-Date: Tue, 19 Aug 2025 00:18:27 +0900
-Message-ID: <20250818151902.64979-6-enjuk@amazon.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <20250818151902.64979-4-enjuk@amazon.com>
-References: <20250818151902.64979-4-enjuk@amazon.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 0BQjGCOW4O-P for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 18 Aug 2025 15:39:31 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=mschmidt@redhat.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org CDCF340010
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CDCF340010
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id CDCF340010
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Aug 2025 15:39:30 +0000 (UTC)
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-620-EryE0nfpMqir1Dz-bMW5Hw-1; Mon,
+ 18 Aug 2025 11:39:27 -0400
+X-MC-Unique: EryE0nfpMqir1Dz-bMW5Hw-1
+X-Mimecast-MFC-AGG-ID: EryE0nfpMqir1Dz-bMW5Hw_1755531566
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 96CD718002C3; Mon, 18 Aug 2025 15:39:25 +0000 (UTC)
+Received: from rhel-developer-toolbox.redhat.com (unknown [10.45.224.168])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 29844180028B; Mon, 18 Aug 2025 15:39:20 +0000 (UTC)
+From: Michal Schmidt <mschmidt@redhat.com>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Alexander Duyck <alexander.h.duyck@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Date: Mon, 18 Aug 2025 17:39:03 +0200
+Message-ID: <20250818153903.189079-1-mschmidt@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.37.245.11]
-X-ClientProxiedBy: EX19D038UWC001.ant.amazon.com (10.13.139.213) To
- EX19D001UWA001.ant.amazon.com (10.13.138.214)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1755530413; x=1787066413;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=XMYejQHNqpjFbERCaP8aLdVx7eISvzwexSyDRnFQHOA=;
- b=maSQ1Lw/+2Jb/jAjFAtLkGIPY3CXu+fWrxCGWQVUnpFXmfcN3K9wsYmL
- TCHSoKJ7UgEqVYOjnGIxzBkc6DV2IMWwVAIl5jtMU9dEZuJJIyOoNE9s8
- SU0wVJeBd6mIN57fMjWboj95yiHzi1jKqfVhpsOEJxL8I2NbZbg6CBXkT
- xPwzmZYx4GfgsV6LX3vVQEH6miY3be+99tlUzvtsZC3NHJCn0A+yHKK9k
- npmqMZISF/WSksglOCpyKCBAsXWCN5Fg7PT13fEc0YiUtPcoIo07oE6hO
- uNspByDJ0Js5aUMfCjmWbhoVuFp9d1mMhpzsGL2hMk4YpMwFLSJfh+u4g
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ d=redhat.com; 
+ s=mimecast20190719; t=1755531569;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=qXpvRoFv2Wa2W3v8CasK7ERjDyTSk2kwzM1QvDnLBZA=;
+ b=a5NFEUpv225/kyYpjopPZipPCGdfFmsG3YCKf9rosOVBXA6Qvg7WEVBIMR0cQoiKfjfW+O
+ 7SFHjNc7nxFZLWlbfhc8g3e/7h3jqf1xKb2bxp/Fx4/pkDJ/oXtDOcbb22MavBuCE4D42W
+ xL4LtJTgF/Qo05JUKnbxs6QshfrspDQ=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
- header.from=amazon.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=amazon.com header.i=@amazon.com header.a=rsa-sha256
- header.s=amazoncorp2 header.b=maSQ1Lw/
-Subject: [Intel-wired-lan] [PATCH v2 iwl-next 2/2] igbvf: remove redundant
- counter rx_long_byte_count from ethtool statistics
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=a5NFEUpv
+Subject: [Intel-wired-lan] [PATCH net] i40e: fix IRQ freeing in
+ i40e_vsi_request_irq_msix error path
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -129,33 +115,66 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-rx_long_byte_count shows the value of the GORC (Good Octets Received
-Count) register. However, the register value is already shown as
-rx_bytes and they always show the same value.
+If request_irq() in i40e_vsi_request_irq_msix() fails in an iteration
+later than the first, the error path wants to free the IRQs requested
+so far. However, it uses the wrong dev_id argument for free_irq(), so
+it does not free the IRQs correctly and instead triggers the warning:
 
-Remove rx_long_byte_count as the Intel ethernet driver e1000e did in
-commit 0a939912cf9c ("e1000e: cleanup redundant statistics counter").
+ Trying to free already-free IRQ 173
+ WARNING: CPU: 25 PID: 1091 at kernel/irq/manage.c:1829 __free_irq+0x192/0x2c0
+ Modules linked in: i40e(+) [...]
+ CPU: 25 UID: 0 PID: 1091 Comm: NetworkManager Not tainted 6.17.0-rc1+ #1 PREEMPT(lazy)
+ Hardware name: [...]
+ RIP: 0010:__free_irq+0x192/0x2c0
+ [...]
+ Call Trace:
+  <TASK>
+  free_irq+0x32/0x70
+  i40e_vsi_request_irq_msix.cold+0x63/0x8b [i40e]
+  i40e_vsi_request_irq+0x79/0x80 [i40e]
+  i40e_vsi_open+0x21f/0x2f0 [i40e]
+  i40e_open+0x63/0x130 [i40e]
+  __dev_open+0xfc/0x210
+  __dev_change_flags+0x1fc/0x240
+  netif_change_flags+0x27/0x70
+  do_setlink.isra.0+0x341/0xc70
+  rtnl_newlink+0x468/0x860
+  rtnetlink_rcv_msg+0x375/0x450
+  netlink_rcv_skb+0x5c/0x110
+  netlink_unicast+0x288/0x3c0
+  netlink_sendmsg+0x20d/0x430
+  ____sys_sendmsg+0x3a2/0x3d0
+  ___sys_sendmsg+0x99/0xe0
+  __sys_sendmsg+0x8a/0xf0
+  do_syscall_64+0x82/0x2c0
+  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+  [...]
+  </TASK>
+ ---[ end trace 0000000000000000 ]---
 
-Tested on Intel Corporation I350 Gigabit Network Connection.
+Use the same dev_id for free_irq() as for request_irq().
 
-Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
-Signed-off-by: Kohei Enju <enjuk@amazon.com>
+I tested this with inserting code to fail intentionally.
+
+Fixes: 493fb30011b3 ("i40e: Move q_vectors from pointer to array to array of pointers")
+Signed-off-by: Michal Schmidt <mschmidt@redhat.com>
 ---
- drivers/net/ethernet/intel/igbvf/ethtool.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/igbvf/ethtool.c b/drivers/net/ethernet/intel/igbvf/ethtool.c
-index c6defc495f13..9c08ebfad804 100644
---- a/drivers/net/ethernet/intel/igbvf/ethtool.c
-+++ b/drivers/net/ethernet/intel/igbvf/ethtool.c
-@@ -36,7 +36,6 @@ static const struct igbvf_stats igbvf_gstrings_stats[] = {
- 	{ "lbtx_bytes", IGBVF_STAT(stats.gotlbc, stats.base_gotlbc) },
- 	{ "tx_restart_queue", IGBVF_STAT(restart_queue, zero_base) },
- 	{ "tx_timeout_count", IGBVF_STAT(tx_timeout_count, zero_base) },
--	{ "rx_long_byte_count", IGBVF_STAT(stats.gorc, stats.base_gorc) },
- 	{ "rx_csum_offload_good", IGBVF_STAT(hw_csum_good, zero_base) },
- 	{ "rx_csum_offload_errors", IGBVF_STAT(hw_csum_err, zero_base) },
- 	{ "rx_header_split", IGBVF_STAT(rx_hdr_split, zero_base) },
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index b83f823e4917..dd21d93d39dd 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -4156,7 +4156,7 @@ static int i40e_vsi_request_irq_msix(struct i40e_vsi *vsi, char *basename)
+ 		irq_num = pf->msix_entries[base + vector].vector;
+ 		irq_set_affinity_notifier(irq_num, NULL);
+ 		irq_update_affinity_hint(irq_num, NULL);
+-		free_irq(irq_num, &vsi->q_vectors[vector]);
++		free_irq(irq_num, vsi->q_vectors[vector]);
+ 	}
+ 	return err;
+ }
 -- 
-2.48.1
+2.50.1
 
