@@ -1,123 +1,117 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1DCF6B2FC50
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 Aug 2025 16:23:48 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D822B2FD54
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 Aug 2025 16:51:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C2D5C842D6;
-	Thu, 21 Aug 2025 14:23:45 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DF06241559;
+	Thu, 21 Aug 2025 14:51:46 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 4g4-DVfGTtW4; Thu, 21 Aug 2025 14:51:46 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 52416415D8
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1755787906;
+	bh=rr9rUoIkr1nx8JPvQgy7YChPIsLZS2L4L5UXWNYbAxw=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=ls8RCEM4pX0DSKhJ0clQM5tkJJqG2pxoPvPf4pFBiIoWxGYHPSCuuW96x1pGWJesl
+	 jtE5nuLGSt68SmcprAJyM1M3JSvXvga3HliMYYFKTArCytljnlHeJoYxzRO9K4euyG
+	 m1+/xzuCcz4Fk8hpKoelvPE3DXr/eF4tR+ptPu/k4LMpEWh6maufhFGa55fIiXRhnx
+	 oZCG6VDnl72TZ5VuyE+3F/UU+3tO+xLWDt0fZfs+D8CIpjxPQcHf/hzvzyWQGDqDbf
+	 92sD/fRwPLI1PpAz5kpGf3T9OrC5sEsxaCXNy8hgyfb4HjyqvBSXVqk5Gr7G/3urY8
+	 lga3V4vab3ITA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 52416415D8;
+	Thu, 21 Aug 2025 14:51:46 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id CBC0B7AD
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Aug 2025 14:51:44 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id B2282843E7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Aug 2025 14:51:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id y_dOXzdeuAc1; Thu, 21 Aug 2025 14:23:45 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 20B91843B5
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1755786225;
-	bh=gltw2YB8idtK1To8X9NeA2NjVxqELvTwQkrDIQqvz6Q=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=oFox+SHud3KE6HjcBM+mcXRIcuxVazpzMMEP+Ciy4i2OzPTiY5o0VLWXIdYrXA41G
-	 RdMaijMSrcuVkXjPCL2b0LAxQ75mT/3YVxfnzg1dC62LjZu8VQG+vLzcAjq9D2J80s
-	 QeEYpJ58DqdJBqKwiVzCnTbvJhKmjPCfm0qJ4j4Bp67BqTz9gSLrfeqMPewBwd9qmF
-	 YVuy2xBbsrlgIsSUhQqPyrQS5FYF+DRG8U8fEGr7SPfqQyUbwd/fz/mkADeB43jnR2
-	 W6og0xNqRCF1UQdbP85LkR5lc99n3nijZl9BsAVw2N1TbsLS0HkZX35n9/S0m9bifW
-	 bVZo8NeVyFV5w==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 20B91843B5;
-	Thu, 21 Aug 2025 14:23:45 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id E2131E0A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Aug 2025 14:23:43 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C86AD61516
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Aug 2025 14:23:43 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uVdwt9VK1yVS for <intel-wired-lan@lists.osuosl.org>;
- Thu, 21 Aug 2025 14:23:43 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::42a; helo=mail-pf1-x42a.google.com;
- envelope-from=calvin@wbinvd.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 28F3161219
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 28F3161219
-Received: from mail-pf1-x42a.google.com (mail-pf1-x42a.google.com
- [IPv6:2607:f8b0:4864:20::42a])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 28F3161219
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Aug 2025 14:23:43 +0000 (UTC)
-Received: by mail-pf1-x42a.google.com with SMTP id
- d2e1a72fcca58-76e2e88c6a6so999558b3a.1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Aug 2025 07:23:42 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1755786222; x=1756391022;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=gltw2YB8idtK1To8X9NeA2NjVxqELvTwQkrDIQqvz6Q=;
- b=nX/PItls8pvhfPPQmk0FqW2aSGiCbR8OoZoVjFFmkyYQ1M9bpwd1d4coq6nnFKDVjP
- UFC9UmhZTdQ45U9c0b4s8cUQSf6pFGeeHPVMPLf+IZSZpQ+l77E2KcxrFJ9QRyVTxzXR
- dXzOItjGxKKe+WFt3KZgSdQLcjSPjCTBNY4Fl9WuxrF5bZHRPlFzoWgsRVWZrCxB4iiJ
- yEQC5vluGb8vq+3t+Mn510jRTef99Yj1HAoXz+zSN/VQrL2SBHnuPlzMNxF6KtmFTP9I
- fFKbTuRpVHMTJ/kCR6gKw8QWkRtZbcuJAI4p9iABrGEkxU3zItLI8ylHoUOQe6xctmUQ
- l39A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUty6xVSbAI1aOiBSN3/LCpMHdPreP7v2VHEQjBRHqhyvaCxNRmsokmzkNBtnRNIkc4WmCXtcieZRqv/HUgyNU=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YxwCgDBWH54RemoJvN/i+EAM8hkcARA2YPQDQ0iPSKBESwDAugS
- K+T+Z7I2ML2OekdIWBmnFNkqjCIDnIjfD8SFRVCrkyLX854kncv7PUaRtynMqO41sPw=
-X-Gm-Gg: ASbGncs7XvlOxKdLW9m4NEgEWXKJEIOf3T4cbLkxctB1gl7drvCj96yEhTUVNaJcD+d
- DFFWdmp/8DiDUY8A7P+iIlM35ukr4UChdtVHyXGTqrE5vnHnYbdzgDXM9q6NEH2LNuGt7GSZayO
- 7IjMtL0Lyj5NjXKTYEcQEi9K86gXRy/2tTW6b2523K/NL2HH1HPtRanLkzE6BGmhTxX636QKJO9
- Vhgq52jhjh5BI2uI7ndz8z+lj72RkL+zs/PcJuUraS5Tj/ygAEX1wQ9Tu9YOK3e3kZeE7S0Acov
- IVPeBkywvmsPgXpz/WzbSmXxrj+34aRC+Js1rp3Zn37Yh8vdnpP9PxVmnEBCQYspkpi8mY5DvOY
- nWUGuS3lPKbNHUxdHHKztvanD
-X-Google-Smtp-Source: AGHT+IHC9kZMbllRdoU5B4ZJo00K1PDPDVqdvazp9vl34+r/qKCj0BP9ePp+tekV3D9iBLHdu8oAsA==
-X-Received: by 2002:a05:6a21:998d:b0:240:27be:bb99 with SMTP id
- adf61e73a8af0-2433074e72bmr3189057637.9.1755786222380; 
- Thu, 21 Aug 2025 07:23:42 -0700 (PDT)
-Received: from mozart.vkv.me ([192.184.167.117])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-76e7d0d62f3sm8455613b3a.19.2025.08.21.07.23.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 Aug 2025 07:23:41 -0700 (PDT)
-Date: Thu, 21 Aug 2025 07:23:40 -0700
-From: Calvin Owens <calvin@wbinvd.org>
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Message-ID: <aKcr7FCOHZycDrsC@mozart.vkv.me>
-References: <94d7d5c0bb4fc171154ccff36e85261a9f186923.1755661118.git.calvin@wbinvd.org>
- <CADEbmW100menFu3KACm4p72yPSjbnQwnYumDCGRw+GxpgXeMJA@mail.gmail.com>
- <aKXqVqj_bUefe1Nj@mozart.vkv.me> <aKYI5wXcEqSjunfk@mozart.vkv.me>
- <e71fe3bf-ec97-431e-b60c-634c5263ad82@intel.com>
+ id jsPQnw6-tV0b for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 21 Aug 2025 14:51:44 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=mlichvar@redhat.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0A4D9843DF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0A4D9843DF
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 0A4D9843DF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Aug 2025 14:51:43 +0000 (UTC)
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-470-JBwv4IN1NdmZ4D-jFOQ2Bw-1; Thu,
+ 21 Aug 2025 10:51:37 -0400
+X-MC-Unique: JBwv4IN1NdmZ4D-jFOQ2Bw-1
+X-Mimecast-MFC-AGG-ID: JBwv4IN1NdmZ4D-jFOQ2Bw_1755787895
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C259D19541BD; Thu, 21 Aug 2025 14:51:34 +0000 (UTC)
+Received: from localhost (unknown [10.43.135.229])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B836F3001453; Thu, 21 Aug 2025 14:51:30 +0000 (UTC)
+Date: Thu, 21 Aug 2025 16:51:28 +0200
+From: Miroslav Lichvar <mlichvar@redhat.com>
+To: Kurt Kanzenbach <kurt@linutronix.de>
+Cc: Jacob Keller <jacob.e.keller@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Richard Cochran <richardcochran@gmail.com>,
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+Message-ID: <aKcycAXlKfSxxhZ3@localhost>
+References: <20250815-igb_irq_ts-v1-1-8c6fc0353422@linutronix.de>
+ <aKMbekefL4mJ23kW@localhost>
+ <c3250413-873f-4517-a55d-80c36d3602ee@intel.com>
+ <aKV_rEjYD_BDgG1A@localhost>
+ <81c1a391-3193-41c6-8ab7-c50c58684a22@intel.com>
+ <87ldncoqez.fsf@jax.kurt.home> <aKcYFbzbbfPXlrlN@localhost>
+ <87cy8ooji5.fsf@jax.kurt.home>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <e71fe3bf-ec97-431e-b60c-634c5263ad82@intel.com>
+In-Reply-To: <87cy8ooji5.fsf@jax.kurt.home>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=wbinvd.org; s=wbinvd; t=1755786222; x=1756391022; darn=lists.osuosl.org;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:from:to
- :cc:subject:date:message-id:reply-to;
- bh=gltw2YB8idtK1To8X9NeA2NjVxqELvTwQkrDIQqvz6Q=;
- b=iIdMwLiY0XpfRtgBqpWjqukUD6DEkdTqPDqKaTUf3oZWAe4/nwW2VurYpfRmdRWfIA
- XBArGMoEVfKKlGAYqbVhMfniXoXo5b1HiO0rOJSksdtOUq/Op819XE+RFCirqFHcgM8g
- kj1ZUmPoK0JQzomqDDK7jIzRDROjS4dx/jon8i6rxrWi4dTvNRWdDCK6aM5sma+0j4Tw
- XxgQZoIQgXCvYhF+WBhUo0y71mAOnFTcPc09NNIPYg9smbvW/PrXtpnXCHB9nASqW4UF
- Gko/YdTLvCUN+ELyn6r3qvLJJRLFwD8XgieRpjbFoZ85lp155yT6F5DvQKE8qoIVKIgT
- xqmA==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=wbinvd.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=wbinvd.org header.i=@wbinvd.org header.a=rsa-sha256
- header.s=wbinvd header.b=iIdMwLiY
-Subject: Re: [Intel-wired-lan] [PATCH net] i40e: Prevent unwanted interface
- name changes
+ d=redhat.com; 
+ s=mimecast20190719; t=1755787902;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=rr9rUoIkr1nx8JPvQgy7YChPIsLZS2L4L5UXWNYbAxw=;
+ b=UBNf941Ou0XR3KlPAcqtip0eiUzrCucHuCXCt0a5lvvfTkS/SyCBc3wnOdXTGycmQN6kEt
+ 7SRnSh2b3BlbvCNfGyjL2rHi7imOkqH4z16jROY8eeUXZ8ggShCZOX1cdeqkpafQ98wMhJ
+ jV/TJXRjOwdVIknZLmWjJAwyfQvHgsc=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=UBNf941O
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next] igb: Retrieve Tx timestamp
+ directly from interrupt
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -130,75 +124,49 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Ivan Vecera <ivecera@redhat.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thursday 08/21 at 10:00 +0200, Przemek Kitszel wrote:
-> On 8/20/25 19:41, Calvin Owens wrote:
-> > On Wednesday 08/20 at 08:31 -0700, Calvin Owens wrote:
-> > > On Wednesday 08/20 at 08:42 +0200, Michal Schmidt wrote:
-> > > > On Wed, Aug 20, 2025 at 6:30 AM Calvin Owens <calvin@wbinvd.org> wrote:
-> > > > > The same naming regression which was reported in ixgbe and fixed in
-> > > > > commit e67a0bc3ed4f ("ixgbe: prevent from unwanted interface name
-> > > > > changes") still exists in i40e.
-> > > > > 
-> > > > > Fix i40e by setting the same flag, added in commit c5ec7f49b480
-> > > > > ("devlink: let driver opt out of automatic phys_port_name generation").
-> > > > > 
-> > > > > Fixes: 9e479d64dc58 ("i40e: Add initial devlink support")
-> > > > 
-> > > > But this one's almost two years old. By now, there may be more users
-> > > > relying on the new name than on the old one.
-> > > > Michal
-> > > 
-> > > Well, I was relying on the new ixgbe names, and I had to revert them
-> > > all in a bunch of configs yesterday after e67a0bc3ed4f :)
+On Thu, Aug 21, 2025 at 04:08:02PM +0200, Kurt Kanzenbach wrote:
+> On Thu Aug 21 2025, Miroslav Lichvar wrote:
+> >> >> Without the patch:
+> >> >> NTP daemon TX timestamps   : 35835
+> >> >> NTP kernel TX timestamps   : 1410956
+> >> >> NTP hardware TX timestamps : 581575            
+> >> >> 
+> >> >> With the patch:
+> >> >> NTP daemon TX timestamps   : 476908
+> >> >> NTP kernel TX timestamps   : 646146
+> >> >> NTP hardware TX timestamps : 412095
+
+> > With the new patch at 200000 requests per second:
+> > NTP daemon TX timestamps   : 192404
+> > NTP kernel TX timestamps   : 1318971
+> > NTP hardware TX timestamps : 418805
+
+> Here's what I can see in the traces: In the current implementation, the
+> kworker runs directly after the IRQ on the *same* CPU. With the AUX
+> worker approach the kthread can be freely distributed to any other
+> CPU. This in turn involves remote wakeups etc.
 > 
-> we have fixed (changed to old naming scheme) ixgbe right after the
-> kernel was used by real users (modulo usual delay needed to invent
-> a good solution)
+> You could try to pin the PTP AUX worker (e.g. called ptp0) with taskset
+> to the same CPU where the TS IRQs are processed. That might help to get
+> the old behavior back. Adjusting the priority is not necessary, both the
+> kworker and AUX thread run with 120 (SCHED_OTHER, nice value 0) by
+> default.
 
-No, the "fix" actually broke me for a *second time*, because I'd
-already converted my infrastructure to use the *new* names, which match
-i40e and the rest of the world.
+Yes, that helps!
 
-We've seen *two* user ABI regressions in the last several months in
-ixgbe now, both of which completely broke networking on the system.
+The server timestamping stats now show:
+NTP daemon TX timestamps   : 32902
+NTP kernel TX timestamps   : 1479293
+NTP hardware TX timestamps : 520146
 
-I'm not here to whine about that: I just want to save as many people out
-there in the real world as I can the trouble of having to do the same
-work (which has absolutely no benefit) over the next five years in i40e.
+And the maximum response rate is only about 2-3% lower, so that looks
+good to me.
 
-If it's acceptable to break me for a second time to "fix" this, because
-I'm the minority of users (a viewpoint I am in agreement with), it
-should also be acceptable to break the minority of i40e users who are
-running newer kernels to "fix" it there too.
+Thanks,
 
-Why isn't it?
+-- 
+Miroslav Lichvar
 
-> > 
-> > And, even if it is e67a0bc3ed4f that introduced it, v6.7 was the first
-> > release with it. I strongly suspect most servers with i40e NICs running
-> > in the wild are running older kernels than that, and have not yet
-> > encountered the naming regression. But you probably have much better
-> > data about that than I do :)
-> 
-> RedHat patches their kernels with current code of the drivers that their
-> customers use (including i40e and ixgbe)
-> One could expect that changes made today to those will reach RHEL 10.3,
-> even if it would be named "kernel 6.12".
-> 
-> (*) the changes will likely be also in 10.2, but I don't want to make
-> any promises from Intel or Redhat here
-
-But how many i40e users are actually on the most recent version of RHEL?
-Not very many, is my guess. RHEL9 is 5.14, and has the old behavior.
-
-If you actually have data on that, obviously that's different. But it
-sounds like you're guessing just like I am.
