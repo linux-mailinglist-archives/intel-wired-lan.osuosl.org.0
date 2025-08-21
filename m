@@ -1,94 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DC08BB2E924
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 Aug 2025 02:04:23 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3332CB2E979
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 Aug 2025 02:35:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8EC1780715;
-	Thu, 21 Aug 2025 00:04:21 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CAE2E821EF;
+	Thu, 21 Aug 2025 00:34:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id JFesMVYjqLbF; Thu, 21 Aug 2025 00:04:20 +0000 (UTC)
+ id CiK-acHU4JDE; Thu, 21 Aug 2025 00:34:58 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4BFE883E08
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 64B1182208
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1755734660;
-	bh=JlSWl4rEJzN9IOQsYDiqsJ8LHzUA4Oj7uPnxgXap1Yw=;
+	s=default; t=1755736498;
+	bh=wvfoKWj4k/jg99Rx7gzqd0TIpAZite2h5yQayx+ysxA=;
 	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=qqlA63rbIcZRWwWWjMnbhpkL4xkInJixbYnW/2afFuS1IQHS6hgD5HDimbg1h0JrE
-	 +UULa3zQsP+9/pcLt5JhHj9o0BZtw8yIzt6imTVNlijU/mwjWL5DhcdCUf4XB7dbrT
-	 QjKWs3rDf+QBjEYyRpLKphT6DfsaA6YBlHP054EnOMVe42y0dAAmfrfa4dAl05vpKg
-	 9fKXLeq5HpH/z+FIi+2A5WRWt31xWrxdZRjusmXoTizUj8dKJTvN85E1HLcwNognwa
-	 UGVpNVEATq8diFdZgJpkZW7sFZ1iUNco2Iw5KHgfZfpJXqF/grEoGlmMpwoN0y2doE
-	 9XxJcvYTFVd2Q==
+	b=C74f0NYrfQCX1otBmwzPZ0x6NWvOp6G7YQDs+A32MAcW2cTpqbfDfV9IMiVg6xkIf
+	 Htr8cHTo1Mgz0z7/zmD7ufV7CauYbRpz0ziEVoC3uUoZxIXqU0jvB/uz3qblvxsEaP
+	 dCwa/z5iIN+qnA2/tzAisvd1UeqH1HPwRIlktvO1mB0l1/+LBJdONR/v5QeQ0c1t8z
+	 b/j5DoI7+Ph3Qsd2AVQrqCW3H7vO9zQv253komZwG2EDqtVCVBzlROMp2HpMZ/QY4N
+	 AdDlO5X87++Bb0wUzGIqkaMXlEeWRoN7KOSFP/RFn8mjgdku182XXmv2g/PUtCZFus
+	 l7Kds3EGLgDnQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4BFE883E08;
-	Thu, 21 Aug 2025 00:04:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 64B1182208;
+	Thu, 21 Aug 2025 00:34:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 4C5B27AD
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Aug 2025 00:04:19 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 06DFDD8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Aug 2025 00:34:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3228E83E06
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Aug 2025 00:04:19 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id E1C574110C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Aug 2025 00:34:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id LQjWeplgdoXz for <intel-wired-lan@lists.osuosl.org>;
- Thu, 21 Aug 2025 00:04:18 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id pRo9e7X4UXad for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 21 Aug 2025 00:34:56 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
  helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4C23C83E04
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4C23C83E04
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4C23C83E04
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Aug 2025 00:04:17 +0000 (UTC)
-X-CSE-ConnectionGUID: DlV5zcXbSyqBuwNkxIbmaQ==
-X-CSE-MsgGUID: GhqcI6I0SAGvI/4YTSQOzg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11527"; a="58161322"
-X-IronPort-AV: E=Sophos;i="6.17,306,1747724400"; d="scan'208";a="58161322"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
- by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Aug 2025 17:04:17 -0700
-X-CSE-ConnectionGUID: wjQTyqzhRBy3cteu19v+eQ==
-X-CSE-MsgGUID: nBdaelHTRuuWprdXY5PDsw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org EA53140AFC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EA53140AFC
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id EA53140AFC
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Aug 2025 00:34:55 +0000 (UTC)
+X-CSE-ConnectionGUID: y83O12aEQdOB516tyTCsIA==
+X-CSE-MsgGUID: 1VnZZq0eRjOy/qDqA1ZyNA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11527"; a="83435467"
+X-IronPort-AV: E=Sophos;i="6.17,306,1747724400"; d="scan'208";a="83435467"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Aug 2025 17:34:54 -0700
+X-CSE-ConnectionGUID: rk+mfex1Rxe7wuJb0WRDpA==
+X-CSE-MsgGUID: OFLRoCajQpmjbDP70cJHBQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.17,306,1747724400"; d="scan'208";a="173607226"
+X-IronPort-AV: E=Sophos;i="6.17,306,1747724400"; d="scan'208";a="172491579"
 Received: from lkp-server02.sh.intel.com (HELO 4ea60e6ab079) ([10.239.97.151])
- by orviesa005.jf.intel.com with ESMTP; 20 Aug 2025 17:04:17 -0700
+ by orviesa003.jf.intel.com with ESMTP; 20 Aug 2025 17:34:54 -0700
 Received: from kbuild by 4ea60e6ab079 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1uosmM-000Jkd-13
- for intel-wired-lan@lists.osuosl.org; Thu, 21 Aug 2025 00:04:00 +0000
-Date: Thu, 21 Aug 2025 08:03:06 +0800
+ (envelope-from <lkp@intel.com>) id 1uotGR-000Jld-22
+ for intel-wired-lan@lists.osuosl.org; Thu, 21 Aug 2025 00:34:48 +0000
+Date: Thu, 21 Aug 2025 08:34:30 +0800
 From: kernel test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202508210859.cWDQra7P-lkp@intel.com>
+Message-ID: <202508210823.85qBy3pw-lkp@intel.com>
 User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1755734658; x=1787270658;
+ t=1755736496; x=1787272496;
  h=date:from:to:subject:message-id;
- bh=J1+eFRO9gtfAKWlSM0b6sjDLn1hhAbtB04qCdPPHHw8=;
- b=Uhgg8qmveM2GwkNFdv7rFAdv2ZmTnZnqqBDHsNwAIKuQzAVHk6Fgcwf3
- GaKQM1vv920yjxfhHtI5qzXF6YKt+337W2uwVVgUozUG3fWuhwXSqRW2U
- oL7jzDbbi6PCyilGiju+zGv3dANcDxK60TbyulBUOjqbagNQASixYvw9a
- p8rUFV/bmbQDBjXsaNHTCSEkl+QU2y8k3kvgf0u29g8on+kPMGK5QrwwR
- qekkrzSbVDqEIhEQytpVos13Xnt04bO8ch1kZdnNQpyPUUYtZKL9V9nQ/
- a2Q7L8Fune2nWnaLwxG2w6c7LPj/NzyWuFIlfqQ7tBlK6pKPx7AksfxDa
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=M9U5p057iaDIk/2SXz9IpkXCeGnjO3hnUZV575Mc8WM=;
+ b=YhRQB71HWntpwK3J/yESMOkDqWT99sDPCEGDkFS6NWvjL1y3P41eDGpZ
+ /SephY7cgTzsHBAA1gKvdAh439djV+2e/Jz0KC/Hm+dQ9rbsxMaT3YAuz
+ lq8BhA0EpHSO7aP4y4+wdhfUhBgudx0tJcQFK6j51OvJAWn4AHyBm7rGh
+ Ud9mkYigGBekpa8NHT+Lo+QgsYgnAtmSlQ2SO1KvL5p5vTVxLj6w8p/Nu
+ vYULR+EvCc01XfTlmzf7zkKy3aAFGmfCO5jE7UGOoKQ0kcZZSbzFsBCfk
+ A/sUVp0xSENMpicxUH/pi2iw7IwzFocqcC+CqjbCb7Jm4I87C7BI7zIAV
+ g==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=Uhgg8qmv
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- e6149453952f912d8744b9a6965352006c02362c
+ header.s=Intel header.b=YhRQB71H
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD REGRESSION
+ e4c70369624f069154c2d91173f9862318b807f8
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,16 +104,29 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: e6149453952f912d8744b9a6965352006c02362c  i40e: Fix enable_cnt imbalance on PCIe error recovery
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: e4c70369624f069154c2d91173f9862318b807f8  i40e: Fix enable_cnt imbalance on PCIe error recovery
 
-elapsed time: 1429m
+Error/Warning (recently discovered and may have been fixed):
 
-configs tested: 112
+    https://lore.kernel.org/oe-kbuild-all/202508201414.zlbWHBW2-lkp@intel.com
+
+    ERROR: modpost: "libie_fwlog_deinit" [drivers/net/ethernet/intel/ixgbe/ixgbe.ko] undefined!
+    ERROR: modpost: "libie_fwlog_init" [drivers/net/ethernet/intel/ixgbe/ixgbe.ko] undefined!
+    ERROR: modpost: "libie_get_fwlog_data" [drivers/net/ethernet/intel/ixgbe/ixgbe.ko] undefined!
+
+Error/Warning ids grouped by kconfigs:
+
+recent_errors
+`-- um-randconfig-r051-20250820
+    |-- ERROR:libie_fwlog_deinit-drivers-net-ethernet-intel-ixgbe-ixgbe.ko-undefined
+    |-- ERROR:libie_fwlog_init-drivers-net-ethernet-intel-ixgbe-ixgbe.ko-undefined
+    `-- ERROR:libie_get_fwlog_data-drivers-net-ethernet-intel-ixgbe-ixgbe.ko-undefined
+
+elapsed time: 1461m
+
+configs tested: 108
 configs skipped: 3
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
 
 tested configs:
 alpha                             allnoconfig    gcc-15.1.0
@@ -179,18 +192,14 @@ parisc                              defconfig    gcc-15.1.0
 parisc                randconfig-001-20250820    gcc-8.5.0
 parisc                randconfig-002-20250820    gcc-13.4.0
 parisc64                            defconfig    gcc-15.1.0
-powerpc                          allmodconfig    gcc-15.1.0
 powerpc                           allnoconfig    gcc-15.1.0
-powerpc                          allyesconfig    clang-22
 powerpc               randconfig-001-20250820    gcc-12.5.0
 powerpc               randconfig-002-20250820    gcc-8.5.0
 powerpc               randconfig-003-20250820    gcc-13.4.0
 powerpc64             randconfig-001-20250820    clang-22
 powerpc64             randconfig-002-20250820    clang-22
 powerpc64             randconfig-003-20250820    gcc-15.1.0
-riscv                            allmodconfig    clang-22
 riscv                             allnoconfig    gcc-15.1.0
-riscv                            allyesconfig    clang-16
 riscv                 randconfig-001-20250820    clang-20
 riscv                 randconfig-002-20250820    clang-22
 s390                             allmodconfig    clang-18
