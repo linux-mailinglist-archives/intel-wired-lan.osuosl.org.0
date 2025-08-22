@@ -1,98 +1,113 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D4BCFB30F14
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Aug 2025 08:39:36 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4DBC0B31068
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Aug 2025 09:28:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8892B4091E;
-	Fri, 22 Aug 2025 06:39:35 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id F2EE760A5A;
+	Fri, 22 Aug 2025 07:28:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TV2TsOZJ63dV; Fri, 22 Aug 2025 06:39:34 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id gF_I6oTy6Kwg; Fri, 22 Aug 2025 07:28:25 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C80F940929
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1EA7560A43
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1755844774;
-	bh=zxYUh3VOB3WGHseX1WW9OgKty6sewIwn6wgY18fYs7Q=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=qLDG58CIBFc7WUiKG8FBa20EEt5Sk5kpfXLsQZVzGbsbr8ZVAR70cXxiWID23OWoi
-	 rYxinLhFlgsxSNzloHknp6t0ngDO0qoG5NUi4HsJ4N4So57GZfw2pIJ4GRwr/Cjyhk
-	 lcl0BJrk3qZZC8QYm4VFDhdAj5yJ/JJ/Va+X9iqy2QjndjLz8hGjsLsSp3NpP2SBGJ
-	 VpPp/je9QmQ7OW2RtTaIHRg0lPwg3MlXI2aWpevawYGLQLG1lByPi67pHCdiglA8Yn
-	 njnV3ZZin9NWDqktDttEESTjAgKad+8daQd1c9CWgj12HkE3QhfstyNHs+xHXRJm9w
-	 /U6dEr2uOETVQ==
+	s=default; t=1755847705;
+	bh=ViQke3k+foxS5LjDjTJunY4tscMHFSrelJAdKTY6b/c=;
+	h=From:Date:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=6sTy3ofimyf72O6WGq8pJenuK6QhacVzTiXvcRHemobTWDTDYSdyjHSXSLDkHofHH
+	 vRAik5SttW4LaqzbBdmYXCnP8uALRblPNp2nQrXVNiMnUO15QZSHJ09aLCqDmxBP14
+	 ZQsX+EnyKPNiEDveIyiKj6dP8YiUFS8uO5jAAF1lraPnTgsE7IcL7uqedJTbR8kyJs
+	 bIV/f8ro02MBErMDoMJqgw1jTgx9+K/fAa7RFPanVoBJDvh/IJVZmS1MGkWcnEps5e
+	 Vl3r3OxwsbAkYp9y1oQ4J/FmhsI/VYQkOSg3dYOD7HNDfjQZDLRCnrygmRZXtCfDMu
+	 6USueYP5badsQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C80F940929;
-	Fri, 22 Aug 2025 06:39:34 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1EA7560A43;
+	Fri, 22 Aug 2025 07:28:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 24AD11C7
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Aug 2025 06:39:33 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 15E9D1C7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Aug 2025 07:28:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0B24F406F5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Aug 2025 06:39:33 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id F00B2404DC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Aug 2025 07:28:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4uDX5za35ZaO for <intel-wired-lan@lists.osuosl.org>;
- Fri, 22 Aug 2025 06:39:32 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
- helo=mgamail.intel.com; envelope-from=pavan.kumar.linga@intel.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id gPHc6LvQTVBk for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 22 Aug 2025 07:28:23 +0000 (UTC)
+X-Greylist: delayed 62415 seconds by postgrey-1.37 at util1.osuosl.org;
+ Fri, 22 Aug 2025 07:28:22 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org D39D4404D9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D39D4404D9
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.142.43.55;
+ helo=galois.linutronix.de; envelope-from=kurt@linutronix.de;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4D8B240918
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4D8B240918
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4D8B240918
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Aug 2025 06:39:32 +0000 (UTC)
-X-CSE-ConnectionGUID: VgTyneP6Tf2S/iQFhED6ng==
-X-CSE-MsgGUID: FUw46fTPTria1yiD3FPCDA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11529"; a="75729053"
-X-IronPort-AV: E=Sophos;i="6.17,309,1747724400"; d="scan'208";a="75729053"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
- by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Aug 2025 23:32:25 -0700
-X-CSE-ConnectionGUID: qZXSoSYcR5O5jEBC9hbIXg==
-X-CSE-MsgGUID: xL4eDEpjRdCHHNR+GdikWg==
-X-ExtLoop1: 1
-Received: from unknown (HELO localhost.jf.intel.com) ([10.166.80.55])
- by fmviesa003.fm.intel.com with ESMTP; 21 Aug 2025 23:32:24 -0700
-From: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: madhu.chittim@intel.com, Pavan Kumar Linga <pavan.kumar.linga@intel.com>,
- Anton Nadezhdin <anton.nadezhdin@intel.com>
-Date: Thu, 21 Aug 2025 23:32:15 -0700
-Message-ID: <20250822063215.3911-10-pavan.kumar.linga@intel.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250822063215.3911-1-pavan.kumar.linga@intel.com>
-References: <20250822063215.3911-1-pavan.kumar.linga@intel.com>
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D39D4404D9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Aug 2025 07:28:22 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+Date: Fri, 22 Aug 2025 09:28:10 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1755844772; x=1787380772;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=rwTv7Ya0bdBgR9B9uCZg8xUNQz5Hc6+4isdF/5Yik+8=;
- b=TI0dFJ+qyM4u6Fhk2W3mRxFZXUSVyXfTXMgNMN3RuZLFLFR96ZAIanwt
- 9ISVYc6+/pJFMORJ4v07CZgtEk4YE26lfJwWB0ssH9PDpNDCM7QXa41U1
- RXGq6hC9+QxtxB9xUcOqKL79yeQ4HAGKtJBkbdeLwS/XBhd3F1R92wTr/
- Qa9ltimMV1fA6seQeS3QDgolj2eAVlosgycqtMI83qwXFfgmBRv9/ezh9
- l6p+iEmonhIpH0XKK5TwOw6p4ZaeGNpwzGbqBHhgBFFOYJHDBNkOhm1/v
- GY72+FkvcfLttcBWnl+975EOxRU7uWmx7lI9l57fNO/apnl4G93zV9ouq
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20250822-igb_irq_ts-v2-1-1ac37078a7a4@linutronix.de>
+X-B4-Tracking: v=1; b=H4sIAAocqGgC/02NQQqDMBBFryKz7pQkapWueo8ionHUAYltktoUy
+ d0bpIsuH4///g6OLJODa7aDpY0dryaBOmWg585MhDwkBiVUKWqZI099y/bZeoey66pK66ovdA9
+ p8LA0cjhid+D3goaChyaZmZ1f7ed42eThf8HyP7hJlFjry6hFXuaFUreFzcvb1XA4DwRNjPELD
+ llQuLIAAAA=
+X-Change-ID: 20250813-igb_irq_ts-1aa77cc7b4cb
+To: Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5960; i=kurt@linutronix.de;
+ h=from:subject:message-id; bh=f+QoYvXzougOyASJfl7wxuXlvN7/5QCRgMFfduB/M3M=;
+ b=owEBbQKS/ZANAwAKAcGT0fKqRnOCAcsmYgBoqBwTByI6aw64qJq0JqMWi++0xz244I2r+STq6
+ M0r7HG5T7SJAjMEAAEKAB0WIQS8ub+yyMN909/bWZLBk9HyqkZzggUCaKgcEwAKCRDBk9HyqkZz
+ gk6FD/9KtZIIVyphkxRq8fYirxxKzJMlY0MDXUSm5XDcaaLh1Pptn5Uq8OMspMqAkTYhnESt/GO
+ H4tSfsEh/gh7XtViuirgQR/7ECJh3b+8viBHejhJ12tR2zSfNCZUikHP3XCX1Vc4430YM1AOcWN
+ ThAe2q7P+0eM0Lip6O6r+WWizCuWP3Hz+LOyrQq5ZlxFHOY6Malf39M05dVygPRP1mgJEOAt6pO
+ NxAtBwLJEbc871H35de+Nz6Gd40ZxwJ6Q/pDSPWd49Rxa1qyxbAE+qHAuGEMBimShFHWfjJcstd
+ AgEuHW2WrENTpmT/BKy4EY3KgunGiZ53Fo45JqJnzZ118d4z5TTKoEV3VqL4bVBNKsrzexCiDto
+ snfviK6Fvli34lNdBU9KS2Z6aTbXUSUGl15emqq7ro91g4DWWr9KHDdngSqmXsUFnRwLl2c40rT
+ 5D4swU/Y/csSxN5oe6i840oPYPFMS70T0cZz3VAXoqyeJ2n/7wODoyDRDir2cPkSCKmRXblRmQg
+ jFlh0Y+lSa0E4NkApc7L9IO+TTmAcHpseqIWGaS+2k+QVGShyRCETLCvUks2WDznBxcYzChH+rZ
+ 0Wftca1P74E3M9yIMmKtZwDA23q0cS/qi1Kapfn2t0kdPPOePRG+69lhdOKE+dE9T1hXE0KvCff
+ GwS4m0u5Dlils7A==
+X-Developer-Key: i=kurt@linutronix.de; a=openpgp;
+ fpr=BCB9BFB2C8C37DD3DFDB5992C193D1F2AA467382
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020; t=1755847700;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=ViQke3k+foxS5LjDjTJunY4tscMHFSrelJAdKTY6b/c=;
+ b=qU9uC44zq7wVseaFACNBd/dv55V0eSyz/Crwmo3B8BnbBbf2FtR8pNMFusvHnbGfiykSAP
+ 5NCJUFZgNmtYp9qjqolngjl/3VWUcebvhvsQxYQ+4M7U+A9wiAkgcXJ44BcHJeTO/cQPha
+ aqlqe5iU+jpzJ7hqccgFOxZKdE3s9CSqQaMfuuUaQD3nQOQVaeMZ6BUJpSmTm99LENhXdY
+ vyjuBd1/yINc5uSkP8aM/SqPUYCXwIVG1YnF8VygrusfJRhoUxr53Z+5ee6vWswfLPNfg/
+ LlH/2I736cNKxC3oFExz2tjEfcbwuFjVipXcdChgEnWugVSvqporkvrMZJEGnQ==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1755847700;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=ViQke3k+foxS5LjDjTJunY4tscMHFSrelJAdKTY6b/c=;
+ b=Iw+fY5fAPmIlHTbtdpQTiSL2wG6ZHOLSMLrs0r5anHwIGryfI+4CKpOW7199c2ARfBZTkw
+ fvHKFIYCmoi1vjAQ==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=TI0dFJ+q
-Subject: [Intel-wired-lan] [PATCH net-next v7 9/9] idpf: generalize mailbox
- API
+ header.from=linutronix.de
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=qU9uC44z; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=Iw+fY5fA
+Subject: [Intel-wired-lan] [PATCH iwl-next v2] igb: Convert Tx timestamping
+ to PTP aux worker
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -105,189 +120,172 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
+ Vadim Fedorenko <vadim.fedorenko@linux.dev>,
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>, netdev@vger.kernel.org,
+ Richard Cochran <richardcochran@gmail.com>,
+ Kurt Kanzenbach <kurt@linutronix.de>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
+ Jacob Keller <jacob.e.keller@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add a control queue parameter to all mailbox APIs in order to make use
-of those APIs for non-default mailbox as well.
+The current implementation uses schedule_work() which is executed by the
+system work queue to retrieve Tx timestamps. This increases latency and can
+lead to timeouts in case of heavy system load.
 
-Signed-off-by: Anton Nadezhdin <anton.nadezhdin@intel.com>
-Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
-Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+Therefore, switch to the PTP aux worker which can be prioritized and pinned
+according to use case. Tested on Intel i210.
+
+Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
 ---
- drivers/net/ethernet/intel/idpf/idpf_lib.c    |  2 +-
- drivers/net/ethernet/intel/idpf/idpf_vf_dev.c |  3 +-
- .../net/ethernet/intel/idpf/idpf_virtchnl.c   | 33 ++++++++++---------
- .../net/ethernet/intel/idpf/idpf_virtchnl.h   |  6 ++--
- 4 files changed, 24 insertions(+), 20 deletions(-)
+Changes in v2:
+- Switch from IRQ to PTP aux worker due to NTP performance regression (Miroslav)
+- Link to v1: https://lore.kernel.org/r/20250815-igb_irq_ts-v1-1-8c6fc0353422@linutronix.de
+---
+ drivers/net/ethernet/intel/igb/igb.h      |  1 -
+ drivers/net/ethernet/intel/igb/igb_main.c |  6 +++---
+ drivers/net/ethernet/intel/igb/igb_ptp.c  | 28 +++++++++++++++-------------
+ 3 files changed, 18 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-index 49156560a021..9aced0ee6e93 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-@@ -1288,7 +1288,7 @@ void idpf_mbx_task(struct work_struct *work)
- 		queue_delayed_work(adapter->mbx_wq, &adapter->mbx_task,
- 				   msecs_to_jiffies(300));
- 
--	idpf_recv_mb_msg(adapter);
-+	idpf_recv_mb_msg(adapter, adapter->hw.arq);
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c b/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
-index 8c2008477621..7527b967e2e7 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
-@@ -158,7 +158,8 @@ static void idpf_vf_trigger_reset(struct idpf_adapter *adapter,
- 	/* Do not send VIRTCHNL2_OP_RESET_VF message on driver unload */
- 	if (trig_cause == IDPF_HR_FUNC_RESET &&
- 	    !test_bit(IDPF_REMOVE_IN_PROG, adapter->flags))
--		idpf_send_mb_msg(adapter, VIRTCHNL2_OP_RESET_VF, 0, NULL, 0);
-+		idpf_send_mb_msg(adapter, adapter->hw.asq,
-+				 VIRTCHNL2_OP_RESET_VF, 0, NULL, 0);
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-index b4fa00bbaa12..9e50173b80e9 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-@@ -117,13 +117,15 @@ static void idpf_recv_event_msg(struct idpf_adapter *adapter,
- 
- /**
-  * idpf_mb_clean - Reclaim the send mailbox queue entries
-- * @adapter: Driver specific private structure
-+ * @adapter: driver specific private structure
-+ * @asq: send control queue info
-  *
-  * Reclaim the send mailbox queue entries to be used to send further messages
-  *
-  * Returns 0 on success, negative on failure
-  */
--static int idpf_mb_clean(struct idpf_adapter *adapter)
-+static int idpf_mb_clean(struct idpf_adapter *adapter,
-+			 struct idpf_ctlq_info *asq)
- {
- 	u16 i, num_q_msg = IDPF_DFLT_MBX_Q_LEN;
- 	struct idpf_ctlq_msg **q_msg;
-@@ -134,7 +136,7 @@ static int idpf_mb_clean(struct idpf_adapter *adapter)
- 	if (!q_msg)
- 		return -ENOMEM;
- 
--	err = idpf_ctlq_clean_sq(adapter->hw.asq, &num_q_msg, q_msg);
-+	err = idpf_ctlq_clean_sq(asq, &num_q_msg, q_msg);
- 	if (err)
- 		goto err_kfree;
- 
-@@ -206,7 +208,8 @@ static void idpf_prepare_ptp_mb_msg(struct idpf_adapter *adapter, u32 op,
- 
- /**
-  * idpf_send_mb_msg - Send message over mailbox
-- * @adapter: Driver specific private structure
-+ * @adapter: driver specific private structure
-+ * @asq: control queue to send message to
-  * @op: virtchnl opcode
-  * @msg_size: size of the payload
-  * @msg: pointer to buffer holding the payload
-@@ -216,8 +219,8 @@ static void idpf_prepare_ptp_mb_msg(struct idpf_adapter *adapter, u32 op,
-  *
-  * Returns 0 on success, negative on failure
-  */
--int idpf_send_mb_msg(struct idpf_adapter *adapter, u32 op,
--		     u16 msg_size, u8 *msg, u16 cookie)
-+int idpf_send_mb_msg(struct idpf_adapter *adapter, struct idpf_ctlq_info *asq,
-+		     u32 op, u16 msg_size, u8 *msg, u16 cookie)
- {
- 	struct idpf_ctlq_msg *ctlq_msg;
- 	struct idpf_dma_mem *dma_mem;
-@@ -231,7 +234,7 @@ int idpf_send_mb_msg(struct idpf_adapter *adapter, u32 op,
- 	if (idpf_is_reset_detected(adapter))
- 		return 0;
- 
--	err = idpf_mb_clean(adapter);
-+	err = idpf_mb_clean(adapter, asq);
- 	if (err)
- 		return err;
- 
-@@ -267,7 +270,7 @@ int idpf_send_mb_msg(struct idpf_adapter *adapter, u32 op,
- 	ctlq_msg->ctx.indirect.payload = dma_mem;
- 	ctlq_msg->ctx.sw_cookie.data = cookie;
- 
--	err = idpf_ctlq_send(&adapter->hw, adapter->hw.asq, 1, ctlq_msg);
-+	err = idpf_ctlq_send(&adapter->hw, asq, 1, ctlq_msg);
- 	if (err)
- 		goto send_error;
- 
-@@ -463,7 +466,7 @@ ssize_t idpf_vc_xn_exec(struct idpf_adapter *adapter,
- 	cookie = FIELD_PREP(IDPF_VC_XN_SALT_M, xn->salt) |
- 		 FIELD_PREP(IDPF_VC_XN_IDX_M, xn->idx);
- 
--	retval = idpf_send_mb_msg(adapter, params->vc_op,
-+	retval = idpf_send_mb_msg(adapter, adapter->hw.asq, params->vc_op,
- 				  send_buf->iov_len, send_buf->iov_base,
- 				  cookie);
- 	if (retval) {
-@@ -662,12 +665,13 @@ idpf_vc_xn_forward_reply(struct idpf_adapter *adapter,
- 
- /**
-  * idpf_recv_mb_msg - Receive message over mailbox
-- * @adapter: Driver specific private structure
-+ * @adapter: driver specific private structure
-+ * @arq: control queue to receive message from
-  *
-  * Will receive control queue message and posts the receive buffer. Returns 0
-  * on success and negative on failure.
-  */
--int idpf_recv_mb_msg(struct idpf_adapter *adapter)
-+int idpf_recv_mb_msg(struct idpf_adapter *adapter, struct idpf_ctlq_info *arq)
- {
- 	struct idpf_ctlq_msg ctlq_msg;
- 	struct idpf_dma_mem *dma_mem;
-@@ -679,7 +683,7 @@ int idpf_recv_mb_msg(struct idpf_adapter *adapter)
- 		 * actually received on num_recv.
- 		 */
- 		num_recv = 1;
--		err = idpf_ctlq_recv(adapter->hw.arq, &num_recv, &ctlq_msg);
-+		err = idpf_ctlq_recv(arq, &num_recv, &ctlq_msg);
- 		if (err || !num_recv)
- 			break;
- 
-@@ -695,8 +699,7 @@ int idpf_recv_mb_msg(struct idpf_adapter *adapter)
- 		else
- 			err = idpf_vc_xn_forward_reply(adapter, &ctlq_msg);
- 
--		post_err = idpf_ctlq_post_rx_buffs(&adapter->hw,
--						   adapter->hw.arq,
-+		post_err = idpf_ctlq_post_rx_buffs(&adapter->hw, arq,
- 						   &num_recv, &dma_mem);
- 
- 		/* If post failed clear the only buffer we supplied */
-@@ -2965,7 +2968,7 @@ int idpf_init_dflt_mbx(struct idpf_adapter *adapter)
- void idpf_deinit_dflt_mbx(struct idpf_adapter *adapter)
- {
- 	if (adapter->hw.arq && adapter->hw.asq) {
--		idpf_mb_clean(adapter);
-+		idpf_mb_clean(adapter, adapter->hw.asq);
- 		idpf_ctlq_deinit(&adapter->hw);
+diff --git a/drivers/net/ethernet/intel/igb/igb.h b/drivers/net/ethernet/intel/igb/igb.h
+index c3f4f7cd264e9b2ff70f03b580f95b15b528028c..f285def61f7a778f66944d6c52bb31f11ff803cf 100644
+--- a/drivers/net/ethernet/intel/igb/igb.h
++++ b/drivers/net/ethernet/intel/igb/igb.h
+@@ -624,7 +624,6 @@ struct igb_adapter {
+ 	struct ptp_clock *ptp_clock;
+ 	struct ptp_clock_info ptp_caps;
+ 	struct delayed_work ptp_overflow_work;
+-	struct work_struct ptp_tx_work;
+ 	struct sk_buff *ptp_tx_skb;
+ 	struct kernel_hwtstamp_config tstamp_config;
+ 	unsigned long ptp_tx_start;
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index a9a7a94ae61e93aa737b0103e00580e73601d62b..76467f0e53305188fcbbff27e21e478e764ca552 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -6576,7 +6576,7 @@ netdev_tx_t igb_xmit_frame_ring(struct sk_buff *skb,
+ 			adapter->ptp_tx_skb = skb_get(skb);
+ 			adapter->ptp_tx_start = jiffies;
+ 			if (adapter->hw.mac.type == e1000_82576)
+-				schedule_work(&adapter->ptp_tx_work);
++				ptp_schedule_worker(adapter->ptp_clock, 0);
+ 		} else {
+ 			adapter->tx_hwtstamp_skipped++;
+ 		}
+@@ -6612,7 +6612,7 @@ netdev_tx_t igb_xmit_frame_ring(struct sk_buff *skb,
+ 		dev_kfree_skb_any(adapter->ptp_tx_skb);
+ 		adapter->ptp_tx_skb = NULL;
+ 		if (adapter->hw.mac.type == e1000_82576)
+-			cancel_work_sync(&adapter->ptp_tx_work);
++			ptp_cancel_worker_sync(adapter->ptp_clock);
+ 		clear_bit_unlock(__IGB_PTP_TX_IN_PROGRESS, &adapter->state);
  	}
- 	adapter->hw.arq = NULL;
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h
-index 98f1e9909ee2..2362b7bd5ac6 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h
-@@ -114,9 +114,9 @@ bool idpf_sideband_action_ena(struct idpf_vport *vport,
- 			      struct ethtool_rx_flow_spec *fsp);
- unsigned int idpf_fsteer_max_rules(struct idpf_vport *vport);
  
--int idpf_recv_mb_msg(struct idpf_adapter *adapter);
--int idpf_send_mb_msg(struct idpf_adapter *adapter, u32 op,
--		     u16 msg_size, u8 *msg, u16 cookie);
-+int idpf_recv_mb_msg(struct idpf_adapter *adapter, struct idpf_ctlq_info *arq);
-+int idpf_send_mb_msg(struct idpf_adapter *adapter, struct idpf_ctlq_info *asq,
-+		     u32 op, u16 msg_size, u8 *msg, u16 cookie);
+@@ -7080,7 +7080,7 @@ static void igb_tsync_interrupt(struct igb_adapter *adapter)
  
- int idpf_vport_init(struct idpf_vport *vport, struct idpf_vport_max_q *max_q);
- u32 idpf_get_vport_id(struct idpf_vport *vport);
+ 	if (tsicr & E1000_TSICR_TXTS) {
+ 		/* retrieve hardware timestamp */
+-		schedule_work(&adapter->ptp_tx_work);
++		ptp_schedule_worker(adapter->ptp_clock, 0);
+ 	}
+ 
+ 	if (tsicr & TSINTR_TT0)
+diff --git a/drivers/net/ethernet/intel/igb/igb_ptp.c b/drivers/net/ethernet/intel/igb/igb_ptp.c
+index a7876882aeaf2b2a7fb9ec6ff5c83d8a1b06008a..8dabde01d09dcacc13e19fa4ce7ad0327077190a 100644
+--- a/drivers/net/ethernet/intel/igb/igb_ptp.c
++++ b/drivers/net/ethernet/intel/igb/igb_ptp.c
+@@ -798,20 +798,20 @@ static int igb_ptp_verify_pin(struct ptp_clock_info *ptp, unsigned int pin,
+ 
+ /**
+  * igb_ptp_tx_work
+- * @work: pointer to work struct
++ * @ptp: pointer to ptp clock information
+  *
+  * This work function polls the TSYNCTXCTL valid bit to determine when a
+  * timestamp has been taken for the current stored skb.
+  **/
+-static void igb_ptp_tx_work(struct work_struct *work)
++static long igb_ptp_tx_work(struct ptp_clock_info *ptp)
+ {
+-	struct igb_adapter *adapter = container_of(work, struct igb_adapter,
+-						   ptp_tx_work);
++	struct igb_adapter *adapter = container_of(ptp, struct igb_adapter,
++						   ptp_caps);
+ 	struct e1000_hw *hw = &adapter->hw;
+ 	u32 tsynctxctl;
+ 
+ 	if (!adapter->ptp_tx_skb)
+-		return;
++		return -1;
+ 
+ 	if (time_is_before_jiffies(adapter->ptp_tx_start +
+ 				   IGB_PTP_TX_TIMEOUT)) {
+@@ -824,15 +824,17 @@ static void igb_ptp_tx_work(struct work_struct *work)
+ 		 */
+ 		rd32(E1000_TXSTMPH);
+ 		dev_warn(&adapter->pdev->dev, "clearing Tx timestamp hang\n");
+-		return;
++		return -1;
+ 	}
+ 
+ 	tsynctxctl = rd32(E1000_TSYNCTXCTL);
+-	if (tsynctxctl & E1000_TSYNCTXCTL_VALID)
++	if (tsynctxctl & E1000_TSYNCTXCTL_VALID) {
+ 		igb_ptp_tx_hwtstamp(adapter);
+-	else
+-		/* reschedule to check later */
+-		schedule_work(&adapter->ptp_tx_work);
++		return -1;
++	}
++
++	/* reschedule to check later */
++	return 1;
+ }
+ 
+ static void igb_ptp_overflow_check(struct work_struct *work)
+@@ -915,7 +917,7 @@ void igb_ptp_tx_hang(struct igb_adapter *adapter)
+ 	 * timestamp bit when this occurs.
+ 	 */
+ 	if (timeout) {
+-		cancel_work_sync(&adapter->ptp_tx_work);
++		ptp_cancel_worker_sync(adapter->ptp_clock);
+ 		dev_kfree_skb_any(adapter->ptp_tx_skb);
+ 		adapter->ptp_tx_skb = NULL;
+ 		clear_bit_unlock(__IGB_PTP_TX_IN_PROGRESS, &adapter->state);
+@@ -1381,6 +1383,7 @@ void igb_ptp_init(struct igb_adapter *adapter)
+ 		return;
+ 	}
+ 
++	adapter->ptp_caps.do_aux_work = igb_ptp_tx_work;
+ 	adapter->ptp_clock = ptp_clock_register(&adapter->ptp_caps,
+ 						&adapter->pdev->dev);
+ 	if (IS_ERR(adapter->ptp_clock)) {
+@@ -1392,7 +1395,6 @@ void igb_ptp_init(struct igb_adapter *adapter)
+ 		adapter->ptp_flags |= IGB_PTP_ENABLED;
+ 
+ 		spin_lock_init(&adapter->tmreg_lock);
+-		INIT_WORK(&adapter->ptp_tx_work, igb_ptp_tx_work);
+ 
+ 		if (adapter->ptp_flags & IGB_PTP_OVERFLOW_CHECK)
+ 			INIT_DELAYED_WORK(&adapter->ptp_overflow_work,
+@@ -1437,7 +1439,7 @@ void igb_ptp_suspend(struct igb_adapter *adapter)
+ 	if (adapter->ptp_flags & IGB_PTP_OVERFLOW_CHECK)
+ 		cancel_delayed_work_sync(&adapter->ptp_overflow_work);
+ 
+-	cancel_work_sync(&adapter->ptp_tx_work);
++	ptp_cancel_worker_sync(adapter->ptp_clock);
+ 	if (adapter->ptp_tx_skb) {
+ 		dev_kfree_skb_any(adapter->ptp_tx_skb);
+ 		adapter->ptp_tx_skb = NULL;
+
+---
+base-commit: a7bd72158063740212344fad5d99dcef45bc70d6
+change-id: 20250813-igb_irq_ts-1aa77cc7b4cb
+
+Best regards,
 -- 
-2.43.0
+Kurt Kanzenbach <kurt@linutronix.de>
 
