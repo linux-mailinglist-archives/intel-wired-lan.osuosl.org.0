@@ -1,85 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B1434B30EF7
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Aug 2025 08:32:21 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 72A74608DA;
-	Fri, 22 Aug 2025 06:32:20 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5pCpiaARjm5q; Fri, 22 Aug 2025 06:32:20 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E5DD4608D6
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1755844340;
-	bh=7lWcEyTByhJsDL5+94QALhg6nK3E+1aIxABC1mqqEqU=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=X8oJwNzdfdUPcF8MfJbQX5gejm0OEzmFvzXPwdLRLrVfMALJLnxc0C3ViLGIAUKwe
-	 8bOuQnNV4Yl3DIlfKdsCUW4pFiLA2AnkF+TiqhZLOrUoaxD0I0xdVVCJHGZKCEOKxr
-	 vMSCwc/jsGUV0NhmqTsXae+jHAqJptGSgGTTrEYfSZ/kobZNFToQEX1dJ3BiqLCXwd
-	 ZvlaVpSl6fUBfRzM2VRSQ+0v8Foyagh+sNlSENKWGfbaJT47MjzXJXOX3Qsq/jVQYe
-	 RyWr3E7q+D8yblqzNKvI41ly1xmPw+3dORGsXbKeJIdUyIp/eZd96depJSu9NXmNHZ
-	 ccgw7nBDpL48w==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E5DD4608D6;
-	Fri, 22 Aug 2025 06:32:19 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 74C5CD8
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Aug 2025 06:32:18 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 364FEB30F19
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Aug 2025 08:40:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 5AEC940910
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Aug 2025 06:32:18 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CDDB940929;
+	Fri, 22 Aug 2025 06:39:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id DE1_So9E4wZJ for <intel-wired-lan@lists.osuosl.org>;
- Fri, 22 Aug 2025 06:32:17 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+ id cNGSCt-_aRW6; Fri, 22 Aug 2025 06:39:33 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 56EA840920
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1755844773;
+	bh=wNTLayHdUpv6SF2pVZfsZ39pAhSViR2yV2xdsxBfZCo=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=erM+2ycirg3qtRGoNcpHWWzeHX4jJQne2x31Ih5t1KyfsbammTfYI2T8SdSNGr+8w
+	 g/VJzn/VIWQX4CZ2PLrrDwjY/WgI1aby0g7vxJqedgJlEcccbtaatL2vzzuHMlp0+w
+	 xv5qtkLA2XbEBnl1Mr+rS0oDRKJ+A2jJ+6jq9/gZ6touLTpHqWobpDYXMFLyOKxJTc
+	 NTCPfwlnC6EUrONv4yWtzTUopbReFdOYKPOfCXCmQaNfZe9tF812LwKw/DsiYb4DUI
+	 9s/yorzR/bRRsCDTbU8TWmAxeFtNG6Jp78w0lObbmqym/Tj4WVhOi7wilMehzIEall
+	 z269BOH4+Csjg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 56EA840920;
+	Fri, 22 Aug 2025 06:39:33 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 68903D8
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Aug 2025 06:39:31 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5A19580B16
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Aug 2025 06:39:31 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id I55YxRz88gOn for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 22 Aug 2025 06:39:30 +0000 (UTC)
+X-Greylist: delayed 427 seconds by postgrey-1.37 at util1.osuosl.org;
+ Fri, 22 Aug 2025 06:39:30 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A0B6280B03
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A0B6280B03
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
+ helo=mgamail.intel.com; envelope-from=pavan.kumar.linga@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 962C040473
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 962C040473
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 962C040473
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Aug 2025 06:32:16 +0000 (UTC)
-Received: from [192.168.0.192] (ip5f5af7b3.dynamic.kabel-deutschland.de
- [95.90.247.179])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 3298161E64841;
- Fri, 22 Aug 2025 08:31:53 +0200 (CEST)
-Message-ID: <0f19e779-ec78-419a-a261-c4550d778b45@molgen.mpg.de>
-Date: Fri, 22 Aug 2025 08:31:51 +0200
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id A0B6280B03
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Aug 2025 06:39:30 +0000 (UTC)
+X-CSE-ConnectionGUID: ItzNKChvQl6NWl42lYUklw==
+X-CSE-MsgGUID: M6XJVNvUTau4SYzNI9zzJg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11529"; a="75729040"
+X-IronPort-AV: E=Sophos;i="6.17,309,1747724400"; d="scan'208";a="75729040"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+ by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Aug 2025 23:32:23 -0700
+X-CSE-ConnectionGUID: adHkSpiRTgKjxqIiF35GTQ==
+X-CSE-MsgGUID: vX3hOmqwTiuXu+op+JfezQ==
+X-ExtLoop1: 1
+Received: from unknown (HELO localhost.jf.intel.com) ([10.166.80.55])
+ by fmviesa003.fm.intel.com with ESMTP; 21 Aug 2025 23:32:23 -0700
+From: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: madhu.chittim@intel.com,
+	Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+Date: Thu, 21 Aug 2025 23:32:06 -0700
+Message-ID: <20250822063215.3911-1-pavan.kumar.linga@intel.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Calvin Owens <calvin@wbinvd.org>
-Cc: netdev@vger.kernel.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
- Ivan Vecera <ivecera@redhat.com>, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org
-References: <94d7d5c0bb4fc171154ccff36e85261a9f186923.1755661118.git.calvin@wbinvd.org>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <94d7d5c0bb4fc171154ccff36e85261a9f186923.1755661118.git.calvin@wbinvd.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH net] i40e: Prevent unwanted interface
- name changes
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1755844771; x=1787380771;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=0Vd9rzPyPrIQFWR6FupRK+MOITWar1yAUtcXj730jWA=;
+ b=OUQ21EcSs6OSmlCktwLsQu8ovVPsA1mA5N5TqM0SgtvTNtCq9H0y/jXG
+ l123ECSSAm5yyQ/NGZRmb0fKNRHXoXaiH4JuKxnxF19/GSPosmDWQ2OXS
+ ziEYWvEsJjYVeDGIRyqfNonXfqfsc2oveld1iHU2Mhe28fI1GPqZVoKyc
+ l5HnT5V+4H0fCChMk52+BVlZPbPuXcBiQfrQfdifUCfFlBz+Z/yOFnXkt
+ inaO0PLLOO0bdf+N82UxIveQJSfVZyZMuATabEpUeSy7SjtCanY/1oTGA
+ qUVjGnfH8ODdNwbhIO95ZO/iSn9qKSfbt+6kaeIcvPpjcdLfjtBmq6CDr
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=OUQ21EcS
+Subject: [Intel-wired-lan] [PATCH iwl-next v7 0/9] refactor IDPF resource
+ access
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -95,41 +108,70 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Calvin,
+Queue and vector resources for a given vport, are stored in the
+idpf_vport structure. At the time of configuration, these resources are
+accessed using vport pointer. Meaning, all the config path functions
+are tied to the default queue and vector resources of the vport.
 
+There are use cases which can make use of config path functions to
+configure queue and vector resources that are not tied to any vport.
+One such use case is PTP secondary mailbox creation (it would be in a
+followup series). To configure queue and interrupt resources for such
+cases, we can make use of the existing config infrastructure by passing
+the necessary queue and vector resources info.
 
-Thank you for your patch..
+To achieve this, group the existing queue and vector resources into
+default resource group and refactor the code to pass the resource
+pointer to the config path functions.
 
-Am 20.08.25 um 06:29 schrieb Calvin Owens:
-> The same naming regression which was reported in ixgbe and fixed in
-> commit e67a0bc3ed4f ("ixgbe: prevent from unwanted interface name
-> changes") still exists in i40e.
-> 
-> Fix i40e by setting the same flag, added in commit c5ec7f49b480
-> ("devlink: let driver opt out of automatic phys_port_name generation").
-> 
-> Fixes: 9e479d64dc58 ("i40e: Add initial devlink support")
-> Signed-off-by: Calvin Owens <calvin@wbinvd.org>
-> ---
->   drivers/net/ethernet/intel/i40e/i40e_devlink.c | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_devlink.c b/drivers/net/ethernet/intel/i40e/i40e_devlink.c
-> index cc4e9e2addb7..40f81e798151 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_devlink.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_devlink.c
-> @@ -212,6 +212,7 @@ int i40e_devlink_create_port(struct i40e_pf *pf)
->   
->   	attrs.flavour = DEVLINK_PORT_FLAVOUR_PHYSICAL;
->   	attrs.phys.port_number = pf->hw.pf_id;
-> +	attrs.no_phys_port_name = 1;
->   	i40e_devlink_set_switch_id(pf, &attrs.switch_id);
->   	devlink_port_attrs_set(&pf->devlink_port, &attrs);
->   	err = devlink_port_register(devlink, &pf->devlink_port, pf->hw.pf_id);
+This series also includes patches which generalizes the send virtchnl
+message APIs and mailbox API that are necessary for the implementation
+of PTP secondary mailbox.
 
-Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+---
+v7:
+* rebase on top of XDP series (v4)
 
+v6:
+* rebase on top of XDP series
 
-Kind regards,
+v4:
+* avoid returning an error in idpf_vport_init if PTP timestamp caps are
+  not supported
+* re-flow the commit messages and cover letter to ~72chars per line
+  based on off-list feedback from Paul Menzel <pmenzel@molgen.mpg.de>
 
-Paul
+v3:
+* rebase on top of libeth XDP and other patches
+
+v2:
+* rebase on top of PTP patch series
+
+Pavan Kumar Linga (9):
+  idpf: introduce local idpf structure to store virtchnl queue chunks
+  idpf: use existing queue chunk info instead of preparing it
+  idpf: introduce idpf_q_vec_rsrc struct and move vector resources to it
+  idpf: move queue resources to idpf_q_vec_rsrc structure
+  idpf: reshuffle idpf_vport struct members to avoid holes
+  idpf: add rss_data field to RSS function parameters
+  idpf: generalize send virtchnl message API
+  idpf: avoid calling get_rx_ptypes for each vport
+  idpf: generalize mailbox API
+
+ drivers/net/ethernet/intel/idpf/idpf.h        |  175 ++-
+ drivers/net/ethernet/intel/idpf/idpf_dev.c    |   18 +-
+ .../net/ethernet/intel/idpf/idpf_ethtool.c    |   87 +-
+ drivers/net/ethernet/intel/idpf/idpf_lib.c    |  220 ++--
+ drivers/net/ethernet/intel/idpf/idpf_ptp.c    |   17 +-
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c   |  651 +++++-----
+ drivers/net/ethernet/intel/idpf/idpf_txrx.h   |   37 +-
+ drivers/net/ethernet/intel/idpf/idpf_vf_dev.c |   21 +-
+ .../net/ethernet/intel/idpf/idpf_virtchnl.c   | 1124 ++++++++---------
+ .../net/ethernet/intel/idpf/idpf_virtchnl.h   |   80 +-
+ drivers/net/ethernet/intel/idpf/xdp.c         |   33 +-
+ drivers/net/ethernet/intel/idpf/xdp.h         |    6 +-
+ 12 files changed, 1292 insertions(+), 1177 deletions(-)
+
+-- 
+2.43.0
+
