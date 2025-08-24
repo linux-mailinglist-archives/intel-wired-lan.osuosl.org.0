@@ -1,83 +1,125 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6EF25B331B1
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 24 Aug 2025 20:01:21 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CC8D2B3322D
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 24 Aug 2025 20:59:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 91B1460B36;
-	Sun, 24 Aug 2025 18:01:19 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7E37381E27;
+	Sun, 24 Aug 2025 18:59:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id iPf0-QbwsVQb; Sun, 24 Aug 2025 18:01:19 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 1dK0KKmd6VCp; Sun, 24 Aug 2025 18:59:35 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DF9EF60B38
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EF88681DF1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1756058478;
-	bh=FiEitSaZcZxQ/RrRee1DQ1uD7tO16ytWuBrqNnWPLQ4=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1756061975;
+	bh=WgUhXr4F5aTrg6STFBoaBNVOBpBCCAFD9jOjviiLi7U=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=sSHdmMmj0y4Nmq2ubwoUGX1mkJ0wXdhvW3u8h31enyD+s1UwHSMti6nPIgXDP5yNg
-	 wQ8euD/bwlJxYJKoN0ytWICqcx6CpLraWyp/+wX7c49Qsd/kljVhXe3+HWkPsKbYu6
-	 4A0MEu68BmOI860JLMcfVd54+c2b5l9H4vHmGgr/xz33/UsoKrA4JNTWZsgWxdNkkV
-	 vsNFgCKzR4f9I8dPg0zNp3zPc+fsyL2TxAcNzfNwoRUDyRzP56ZpkTStI6NG9edE7U
-	 9YJNNb7+ubi5yhJs0eK6/JSyg8TgRyLS5d8yMV7V6fSR65+m8fgyzxnAhkkCsvPe1T
-	 HrDayljnA/oMg==
+	 Cc:From;
+	b=6DaWeB1q1mEAZY1l6S8FqcqlYpm4y3Z/2erIQYLrFONuB2npue1S2Xu+xwSN2YKcn
+	 MLIdvGvr9d3wzkHcSx8/0rIro4tqqfO9qK65O5ckqOf6sdfpkGRpupab0vgl+wkLLY
+	 v4mswIS0iLU6MIQXnlP15+c5Cx09ljU3RD0Jysjt1swO4ptZjmk9fTvdAHsokgDrpp
+	 6yADiNecWRVDdtPEVKbvR1OtuVT2MsBAUcgPFOs5vue8dKo9DFLUv0YchikUDb+7Oe
+	 floPnLwa2tQr2z6loPY6NtOdBTfnm17C5Ugyva+TGKbJH0/NtkkDQuajmgWDp3TpC5
+	 8ImIFuLj5alyg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DF9EF60B38;
-	Sun, 24 Aug 2025 18:01:18 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id EF88681DF1;
+	Sun, 24 Aug 2025 18:59:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 313961D9
- for <intel-wired-lan@lists.osuosl.org>; Sun, 24 Aug 2025 18:01:18 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 48583CA
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 24 Aug 2025 18:59:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2304360B35
- for <intel-wired-lan@lists.osuosl.org>; Sun, 24 Aug 2025 18:01:18 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 7E1B240C8F
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 24 Aug 2025 18:59:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id jd6fFQKg83JX for <intel-wired-lan@lists.osuosl.org>;
- Sun, 24 Aug 2025 18:01:17 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D358D60B2B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D358D60B2B
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D358D60B2B
- for <intel-wired-lan@lists.osuosl.org>; Sun, 24 Aug 2025 18:01:15 +0000 (UTC)
-Received: from [10.0.49.230] (unknown [62.214.191.67])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 2E2C161E6484C;
- Sun, 24 Aug 2025 20:00:36 +0200 (CEST)
-Message-ID: <b83c21c4-f379-47ff-9dd2-9d2fc0779d8f@molgen.mpg.de>
-Date: Sun, 24 Aug 2025 20:00:32 +0200
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id kiE5JhNBHob9 for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 24 Aug 2025 18:59:32 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::102f; helo=mail-pj1-x102f.google.com;
+ envelope-from=calvin@wbinvd.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org D451240068
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D451240068
+Received: from mail-pj1-x102f.google.com (mail-pj1-x102f.google.com
+ [IPv6:2607:f8b0:4864:20::102f])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D451240068
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 24 Aug 2025 18:59:31 +0000 (UTC)
+Received: by mail-pj1-x102f.google.com with SMTP id
+ 98e67ed59e1d1-32326e09f58so4312763a91.2
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 24 Aug 2025 11:59:31 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1756061971; x=1756666771;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=WgUhXr4F5aTrg6STFBoaBNVOBpBCCAFD9jOjviiLi7U=;
+ b=oF7q08/NAM4TZLNaoZAf5siLOqPnz+p12KTTuUyBtA4d6raKHHZdUK/4e+Vyprp3By
+ dE8S1ZjWp7/cS2l4s/if0+dcvIBAmrmWsp67Iivatpw4U2gFfT3y96mAdFwokObo4PEI
+ hPv/i3gCHjvrM5/YWnObK9sQLsmsNH0XosMvDS/qPXMZxobGWRgtMOlGnrtiuhSmlTTn
+ SaWc/3Y+jSb0GQ69tAsN2vmBASE8Ua4yc9Vrq1Rx/2iJm/+sazABf+GBPx6Si9Tl0/7V
+ 44Rh5PyEJf9YTp6hp0RKk6+szsc0Hi28NRKEjacRsdpJnzdx2EQroDJIqRVx+UbhufpK
+ 45jQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVb4f+8Ol1Be7/Os1te0HiuPXtbDWBdP5pUQFPMSxaLye8Zj4HQ2v6qDEqzjWTpPUZXbaFnou0Cit4tH62lHFU=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyuCVQl5X9q5jOxmHuGFtc9saoTVSdlikEfmfhjUSemP7OgAVGN
+ 7Vgcv3sI7AY39EfSwFY4/0dOcK98qp/IzbkaqY3YeTKLKvwOSlN0imJQ4afR/rqICSA=
+X-Gm-Gg: ASbGncuddBBaA5V3xPmfgdVxDsCCaxW+RBHdTT6AHYpnMt9t6h/RgnYtT4dNj0u/KEV
+ M5JqRzED5LefaVRFpFdWzobJM72FtmMZtKshWUFCkEViW1dKrGUGats2Losro0MbjGZ4yrY9BMB
+ 9iMp/7mP5dvu2AgU7q2hPaHxXcreCEs6eFdKkmD5zp9IHu+x1bLuljNKVWzH7dXeCCP4cyGeH7j
+ hGi/ucYRetVsVz+WANqkWHeg9rO2xrkiP/9p8wznyWst3/xerZHUDPvBz/RpV6d8qqTN09NRVCk
+ IgREUe3Et3JM+dDWcbwmTakhQMqrZT9AnLomm5AbzccHC4EXlkzUgSVyFkasE+Hvvq8RDj9ZDA/
+ S9DR1JoNo3nb2DI/oBqJE8EeeWQOIjaPSI24=
+X-Google-Smtp-Source: AGHT+IEBnPJSYGQSDsTaSJ2fe+K+NSUWm5ONkS7xAAjriSULC2FqOnxhgD/A++McgxcezIJd+A99AA==
+X-Received: by 2002:a17:90b:1f91:b0:325:83:e1d6 with SMTP id
+ 98e67ed59e1d1-32515ee21bbmr11146129a91.2.1756061971113; 
+ Sun, 24 Aug 2025 11:59:31 -0700 (PDT)
+Received: from mozart.vkv.me ([192.184.167.117])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-3254aa503dasm5021039a91.15.2025.08.24.11.59.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 24 Aug 2025 11:59:30 -0700 (PDT)
+Date: Sun, 24 Aug 2025 11:59:27 -0700
+From: Calvin Owens <calvin@wbinvd.org>
+To: Jakub Kicinski <kuba@kernel.org>
+Message-ID: <aKthD02IN3-l-Rbj@mozart.vkv.me>
+References: <94d7d5c0bb4fc171154ccff36e85261a9f186923.1755661118.git.calvin@wbinvd.org>
+ <CADEbmW100menFu3KACm4p72yPSjbnQwnYumDCGRw+GxpgXeMJA@mail.gmail.com>
+ <aKXqVqj_bUefe1Nj@mozart.vkv.me> <aKYI5wXcEqSjunfk@mozart.vkv.me>
+ <e71fe3bf-ec97-431e-b60c-634c5263ad82@intel.com>
+ <aKcr7FCOHZycDrsC@mozart.vkv.me>
+ <8f077022-e98a-4e30-901b-7e014fe5d5b2@intel.com>
+ <aKfwuFXnvOzWx5De@mozart.vkv.me>
+ <20250822072326.725475ef@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Kohei Enju <enjuk@amazon.com>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- kohei.enju@gmail.com
-References: <20250824112037.32692-1-enjuk@amazon.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20250824112037.32692-1-enjuk@amazon.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20250822072326.725475ef@kernel.org>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=wbinvd.org; s=wbinvd; t=1756061971; x=1756666771; darn=lists.osuosl.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=WgUhXr4F5aTrg6STFBoaBNVOBpBCCAFD9jOjviiLi7U=;
+ b=W4nue+r4bcffugt8gOiZGeG4DGdxmNzTjdOGu2MXXFLzFbX0SS39zz793P2pWTizz3
+ bzv38In06JttX4IDWZtlh7mKPiODciMjYK0u2WK6OIyx+qVE/AXkfNmjw643vFdwQ4zJ
+ 4UgphVQSQ3EEOPLRP7IWd96s5O7jWhqFAyU4zii2D297OxrUvb0SluwBkxoxO1NtwdxK
+ R9+2NoE174vQ9CBs3DVc+fybrKxcQm3xBUb8u16VWEN4tAMT5QUC++zSSSSn3k17o8KP
+ Y7c4dPUjBmRPJQThOLL1K40hjbdEdUED36kJoe73a7wbHmX8nT77M9QuK9hBY6It7obM
+ 76iw==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1] ixgbe: preserve RSS
- indirection table across admin down/up
+ header.from=wbinvd.org
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=wbinvd.org header.i=@wbinvd.org header.a=rsa-sha256
+ header.s=wbinvd header.b=W4nue+r4
+Subject: Re: [Intel-wired-lan] [PATCH net] i40e: Prevent unwanted interface
+ name changes
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -90,137 +132,36 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Ivan Vecera <ivecera@redhat.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>, linux-kernel@vger.kernel.org,
+ Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Kohei,
+On Friday 08/22 at 07:23 -0700, Jakub Kicinski wrote:
+> On Thu, 21 Aug 2025 21:23:20 -0700 Calvin Owens wrote:
+> > > > If you actually have data on that, obviously that's different. But it
+> > > > sounds like you're guessing just like I am.  
+> > > 
+> > > I could only guess about other OS Vendors, one could check it also
+> > > for Ubuntu in their public git, but I don't think we need more data, as
+> > > ultimate judge here are Stable Maintainers  
+> > 
+> > Maybe I'm barking up the wrong tree, it's udev after all that decides to
+> > read the thing in /sys and name the interfaces differently because it's
+> > there...
+> 
+> Yeah, that's my feeling. Ideally there should be a systemd-networkd
+> setting that let's user opt out of adding the phys_port_name on
+> interfaces. 99% of users will not benefit from these, new drivers or
+> old. We're kinda making everyone suffer for the 1% :(
 
+Thanks Jakub.
 
-Thank you for your patch.
-
-Am 24.08.25 um 13:20 schrieb Kohei Enju:
-> Currently, the RSS indirection table configured by user via ethtool is
-> reinitialized to default values during interface resets (e.g., admin
-> down/up, MTU change). As for RSS hash key, commit 3dfbfc7ebb95 ("ixgbe:
-> Check for RSS key before setting value") made it persistent across
-> interface resets.
-> 
-> By adopting the same approach used in igc and igb drivers which
-> reinitializes the RSS indirection table only when the queue count
-> changes, let's make user configuration persistent as long as queue count
-> remains unchanged.
-> 
-> Tested on Intel Corporation 82599ES 10-Gigabit SFI/SFP+ Network
-> Connection.
-> 
-> Test:
-> Set custom indirection table and check the value after interface down/up
-> 
->    # ethtool --set-rxfh-indir ens5 equal 2
->    # ethtool --show-rxfh-indir ens5 | head -5
-> 
->    RX flow hash indirection table for ens5 with 12 RX ring(s):
->        0:      0     1     0     1     0     1     0     1
->        8:      0     1     0     1     0     1     0     1
->       16:      0     1     0     1     0     1     0     1
->    # ip link set dev ens5 down && ip link set dev ens5 up
-> 
-> Without patch:
->    # ethtool --show-rxfh-indir ens5 | head -5
-> 
->    RX flow hash indirection table for ens5 with 12 RX ring(s):
->        0:      0     1     2     3     4     5     6     7
->        8:      8     9    10    11     0     1     2     3
->       16:      4     5     6     7     8     9    10    11
-> 
-> With patch:
->    # ethtool --show-rxfh-indir ens5 | head -5
-> 
->    RX flow hash indirection table for ens5 with 12 RX ring(s):
->        0:      0     1     0     1     0     1     0     1
->        8:      0     1     0     1     0     1     0     1
->       16:      0     1     0     1     0     1     0     1
-> 
-> Signed-off-by: Kohei Enju <enjuk@amazon.com>
-> ---
->   drivers/net/ethernet/intel/ixgbe/ixgbe.h      |  1 +
->   drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 37 +++++++++++++------
->   2 files changed, 27 insertions(+), 11 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-> index 14d275270123..d8b088c90b05 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-> @@ -838,6 +838,7 @@ struct ixgbe_adapter {
->    */
->   #define IXGBE_MAX_RETA_ENTRIES 512
->   	u8 rss_indir_tbl[IXGBE_MAX_RETA_ENTRIES];
-> +	u16 last_rss_i;
->   
->   #define IXGBE_RSS_KEY_SIZE     40  /* size of RSS Hash Key in bytes */
->   	u32 *rss_key;
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> index 80e6a2ef1350..dc5a8373b0c3 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> @@ -4318,14 +4318,22 @@ static void ixgbe_setup_reta(struct ixgbe_adapter *adapter)
->   	/* Fill out hash function seeds */
->   	ixgbe_store_key(adapter);
->   
-> -	/* Fill out redirection table */
-> -	memset(adapter->rss_indir_tbl, 0, sizeof(adapter->rss_indir_tbl));
-> +	/* Update redirection table in memory on first init or queue count
-> +	 * change, otherwise preserve user configurations. Then always
-> +	 * write to hardware.
-> +	 */
-> +	if (adapter->last_rss_i != rss_i) {
-> +		memset(adapter->rss_indir_tbl, 0,
-> +		       sizeof(adapter->rss_indir_tbl));
-> +
-> +		for (i = 0, j = 0; i < reta_entries; i++, j++) {
-> +			if (j == rss_i)
-> +				j = 0;
->   
-> -	for (i = 0, j = 0; i < reta_entries; i++, j++) {
-> -		if (j == rss_i)
-> -			j = 0;
-> +			adapter->rss_indir_tbl[i] = j;
-> +		}
->   
-> -		adapter->rss_indir_tbl[i] = j;
-> +		adapter->last_rss_i = rss_i;
->   	}
->   
->   	ixgbe_store_reta(adapter);
-> @@ -4347,12 +4355,19 @@ static void ixgbe_setup_vfreta(struct ixgbe_adapter *adapter)
->   					*(adapter->rss_key + i));
->   	}
->   
-> -	/* Fill out the redirection table */
-> -	for (i = 0, j = 0; i < 64; i++, j++) {
-> -		if (j == rss_i)
-> -			j = 0;
-> +	/* Update redirection table in memory on first init or queue count
-> +	 * change, otherwise preserve user configurations. Then always
-> +	 * write to hardware.
-> +	 */
-> +	if (adapter->last_rss_i != rss_i) {
-> +		for (i = 0, j = 0; i < 64; i++, j++) {
-> +			if (j == rss_i)
-> +				j = 0;
-> +
-> +			adapter->rss_indir_tbl[i] = j;
-> +		}
->   
-> -		adapter->rss_indir_tbl[i] = j;
-> +		adapter->last_rss_i = rss_i;
->   	}
->   
->   	ixgbe_store_vfreta(adapter);
-
-Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
-
-
-Kind regards,
-
-Paul
+I let myself get too worked up about this, I apologize for being such a
+pig in this thread. My frustration is not directed at anybody here, I
+hope it hasn't come across that way.
