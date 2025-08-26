@@ -1,109 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5207FB3700A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Aug 2025 18:21:36 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D272FB3706B
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Aug 2025 18:33:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0AB0D80767;
-	Tue, 26 Aug 2025 16:21:35 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8C6A76068A;
+	Tue, 26 Aug 2025 16:33:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id w1QtnqMCE5dq; Tue, 26 Aug 2025 16:21:34 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id QyqhlVjSKsHE; Tue, 26 Aug 2025 16:33:24 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3015480768
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1775C60643
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1756225294;
-	bh=1Zh7tLbe/XbpdZlZYJ5vAfuRoD1Y6uupggD339XR664=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1756226004;
+	bh=9fOsLYCRQRscd5NddJCtAO5qNFjVd28uOTLJKfsIYc8=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=M+9wZ4N5Q9mbeqPKBf0k1gvy/ejzEtc6vIrdLBNZShLcApCNfIXgg7OPwYxF9et34
-	 XFEtt8pfQ/k1WggLQLoomKZFKNqvK2CHcaGkqL+F9V2RKSA8wo176p7S+l5bCP/RNo
-	 z0Oo80NJI1Jx1GDNJgD5L8TU4D/F35jaDmW/CXxfiA+DQ/9Mm8nYH9RdL4pUjP5Bsi
-	 +fj7+nqXJahPbTmAas3zp3iYFzd2wWiNgk1X1fnqnKg9tHVeucJQ0ho8odBlRYCsqs
-	 +hPeMNqSUiifCWfn51qppUwru6bgu5o/pj+Qjw8casfRxWqFU8Eu5YhqBf+iyWQbyh
-	 dtvclppLuFL3g==
+	b=2jtucABjjr4GZHswCWpLtref+qyu60QbnpwSnnLbdOtAh22AdSIu22h5UpV81O+XJ
+	 czU8MsFOf1bysVBgLpoy4hLJ9ORMqhLQ693jT8GJB5+rlbEh06vVSWTqXT8Rv0msno
+	 gaPClc/2BxvyranLV5yecpl5+1+4TKZ+r26Vb6QiySrgwSj5wcNKeCIKBtxXsFJDT7
+	 c/knhBkar4KlZ1vc0xyQqjvbbj+wD6DD9NsbOm0rQt/swFD1LO1mGJgZwjzN79GrQx
+	 JHYUTjRIjvCydNizW6RUrY0z4m2E7JwnpvE3bawwVsFs6rmXWY9OV+BHJ8HKoYzQEl
+	 N6jxYp41R6nQQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3015480768;
-	Tue, 26 Aug 2025 16:21:34 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1775C60643;
+	Tue, 26 Aug 2025 16:33:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 460FEB0B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Aug 2025 16:21:33 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id C0A4CB0B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Aug 2025 16:33:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3821540083
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Aug 2025 16:21:33 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id B2CC840080
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Aug 2025 16:33:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pvIekxxl1C82 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 Aug 2025 16:21:32 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
- helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 91C9E40080
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 91C9E40080
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 91C9E40080
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Aug 2025 16:21:32 +0000 (UTC)
-X-CSE-ConnectionGUID: bvjLzThVS9irKPu/rxEIGw==
-X-CSE-MsgGUID: sIROf5muQXOyOB/3AMhCng==
-X-IronPort-AV: E=McAfee;i="6800,10657,11534"; a="46045133"
-X-IronPort-AV: E=Sophos;i="6.18,214,1751266800"; d="scan'208";a="46045133"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
- by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Aug 2025 09:14:25 -0700
-X-CSE-ConnectionGUID: /XPE5bhdRJC8jFb8LkKBjQ==
-X-CSE-MsgGUID: lsP1l7wTSfucNU1ErUoNew==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,214,1751266800"; d="scan'208";a="200562710"
-Received: from newjersey.igk.intel.com ([10.102.20.203])
- by orviesa002.jf.intel.com with ESMTP; 26 Aug 2025 09:14:21 -0700
-From: Alexander Lobakin <aleksander.lobakin@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: Alexander Lobakin <aleksander.lobakin@intel.com>,
- Michal Kubiak <michal.kubiak@intel.com>,
- Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>, Simon Horman <horms@kernel.org>,
- nxne.cnse.osdt.itp.upstreaming@intel.com, bpf@vger.kernel.org,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org
-Date: Tue, 26 Aug 2025 17:55:07 +0200
-Message-ID: <20250826155507.2138401-14-aleksander.lobakin@intel.com>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20250826155507.2138401-1-aleksander.lobakin@intel.com>
-References: <20250826155507.2138401-1-aleksander.lobakin@intel.com>
+ id nBOu5oqR5GZm for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 26 Aug 2025 16:33:21 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 29C4740062
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 29C4740062
+Received: from sea.source.kernel.org (sea.source.kernel.org
+ [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 29C4740062
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Aug 2025 16:33:21 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sea.source.kernel.org (Postfix) with ESMTP id DBD8741A22;
+ Tue, 26 Aug 2025 16:33:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EB6A0C4CEF1;
+ Tue, 26 Aug 2025 16:33:18 +0000 (UTC)
+Date: Tue, 26 Aug 2025 17:33:16 +0100
+From: Simon Horman <horms@kernel.org>
+To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
+ Greg KH <gregkh@linuxfoundation.org>, jeremiah.kyle@intel.com,
+ leszek.pepiak@intel.com, Lukasz Czapnik <lukasz.czapnik@intel.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Message-ID: <20250826163316.GD5892@horms.kernel.org>
+References: <20250813104552.61027-1-przemyslaw.kitszel@intel.com>
+ <20250813104552.61027-6-przemyslaw.kitszel@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250813104552.61027-6-przemyslaw.kitszel@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1756225293; x=1787761293;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=nZtTZePcJLv/YRyNX7vGsbCe1aj4pTMRnNPvHJnXDj4=;
- b=l4LShbJliKpbwzSXGWLT9XNpL+OAvY/wPdoL9LmFS4wd9QcSA/tiCwPV
- iUd9KqXibBEKdd/HWg4ks4xKk8AQxHYHE+CRbv0ED/slSYv6sDYgWDWlr
- QQV8LlBUSbn5ud/7Fll5JnwFmBl5qWq5z5aT/I5ow5xfgfz+qVGrvCtNS
- k6UWZe8eIMAQlW7WXVpO1AdejeV4fK9yyn8dioassR2/upZriK39ouCWx
- lBAMWY+uF8rVzqlrCYuFXUyQF24boxojkAiDYGzmbhqrys/hs+1R+COIh
- Q40FztFeiUmEUa91475CyQ4QfstDq6FPSQBrL5OhBseHfud9d+NOw5IfS
- A==;
+ d=kernel.org; s=k20201202; t=1756226000;
+ bh=dCH9BJfNTHmofJpgfaBZCatTRuktCGZASw5OEhzVx0o=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=XLtREdGXKfQyf5MLxXbhJ8ZTQVzhZyRcM1k+iO/2FfIqX+yIzdZdO1789kRrvmZmx
+ LKt7Fn2EiHAZaHqyc+v9Iw09dzUbuZXKCHVhGon0RSWWdcvTulNxK+oUjeGZlr3QnG
+ ixuh8AVZTIOVdaTJquEMpxPYzvy3ZZgCxu0P1wJBPq3aGVilD0MnouFOhMI9Gi6rEg
+ 8gnKUeiJkm0v0YHxQ1dHjiOJV31JEn6qK+HswducYkhK1nza8fwq4ywt9NZqrhvpPE
+ WGmWNKFMbQc/+HyIzzxTYKUFIJBeXl6syZN8zxiXIiWyowR6UkJ5LeehvWZqCcjzIC
+ ixPr3bajF2ysQ==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=l4LShbJl
-Subject: [Intel-wired-lan] [PATCH iwl-next v5 13/13] idpf: add XDP RSS hash
- hint
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=XLtREdGX
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net 5/8] i40e: fix validation of
+ VF state in get resources
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -119,135 +104,28 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add &xdp_metadata_ops with a callback to get RSS hash hint from the
-descriptor. Declare the splitq 32-byte descriptor as 4 u64s to parse
-them more efficiently when possible.
+On Wed, Aug 13, 2025 at 12:45:15PM +0200, Przemek Kitszel wrote:
+> From: Lukasz Czapnik <lukasz.czapnik@intel.com>
+> 
+> VF state I40E_VF_STATE_ACTIVE is not the only state in which
+> VF is actually active so it should not be used to determine
+> if a VF is allowed to obtain resources.
+> 
+> Use I40E_VF_STATE_RESOURCES_LOADED that is set only in
+> i40e_vc_get_vf_resources_msg() and cleared during reset.
+> 
+> Fixes: 61125b8be85d ("i40e: Fix failed opcode appearing if handling messages from VF")
 
-Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
----
- drivers/net/ethernet/intel/idpf/xdp.h | 64 +++++++++++++++++++++++++++
- drivers/net/ethernet/intel/idpf/xdp.c | 28 +++++++++++-
- 2 files changed, 91 insertions(+), 1 deletion(-)
+I suspect this could be
 
-diff --git a/drivers/net/ethernet/intel/idpf/xdp.h b/drivers/net/ethernet/intel/idpf/xdp.h
-index db8ecc1843fe..66ad83a0e85e 100644
---- a/drivers/net/ethernet/intel/idpf/xdp.h
-+++ b/drivers/net/ethernet/intel/idpf/xdp.h
-@@ -99,6 +99,70 @@ static inline void idpf_xdp_tx_finalize(void *_xdpsq, bool sent, bool flush)
- 	libeth_xdpsq_unlock(&xdpsq->xdp_lock);
- }
- 
-+struct idpf_xdp_rx_desc {
-+	aligned_u64		qw0;
-+#define IDPF_XDP_RX_BUFQ	BIT_ULL(47)
-+#define IDPF_XDP_RX_GEN		BIT_ULL(46)
-+#define IDPF_XDP_RX_LEN		GENMASK_ULL(45, 32)
-+#define IDPF_XDP_RX_PT		GENMASK_ULL(25, 16)
-+
-+	aligned_u64		qw1;
-+#define IDPF_XDP_RX_BUF		GENMASK_ULL(47, 32)
-+#define IDPF_XDP_RX_EOP		BIT_ULL(1)
-+
-+	aligned_u64		qw2;
-+#define IDPF_XDP_RX_HASH	GENMASK_ULL(31, 0)
-+
-+	aligned_u64		qw3;
-+} __aligned(4 * sizeof(u64));
-+static_assert(sizeof(struct idpf_xdp_rx_desc) ==
-+	      sizeof(struct virtchnl2_rx_flex_desc_adv_nic_3));
-+
-+#define idpf_xdp_rx_bufq(desc)	!!((desc)->qw0 & IDPF_XDP_RX_BUFQ)
-+#define idpf_xdp_rx_gen(desc)	!!((desc)->qw0 & IDPF_XDP_RX_GEN)
-+#define idpf_xdp_rx_len(desc)	FIELD_GET(IDPF_XDP_RX_LEN, (desc)->qw0)
-+#define idpf_xdp_rx_pt(desc)	FIELD_GET(IDPF_XDP_RX_PT, (desc)->qw0)
-+#define idpf_xdp_rx_buf(desc)	FIELD_GET(IDPF_XDP_RX_BUF, (desc)->qw1)
-+#define idpf_xdp_rx_eop(desc)	!!((desc)->qw1 & IDPF_XDP_RX_EOP)
-+#define idpf_xdp_rx_hash(desc)	FIELD_GET(IDPF_XDP_RX_HASH, (desc)->qw2)
-+
-+static inline void
-+idpf_xdp_get_qw0(struct idpf_xdp_rx_desc *desc,
-+		 const struct virtchnl2_rx_flex_desc_adv_nic_3 *rxd)
-+{
-+#ifdef __LIBETH_WORD_ACCESS
-+	desc->qw0 = ((const typeof(desc))rxd)->qw0;
-+#else
-+	desc->qw0 = ((u64)le16_to_cpu(rxd->pktlen_gen_bufq_id) << 32) |
-+		    ((u64)le16_to_cpu(rxd->ptype_err_fflags0) << 16);
-+#endif
-+}
-+
-+static inline void
-+idpf_xdp_get_qw1(struct idpf_xdp_rx_desc *desc,
-+		 const struct virtchnl2_rx_flex_desc_adv_nic_3 *rxd)
-+{
-+#ifdef __LIBETH_WORD_ACCESS
-+	desc->qw1 = ((const typeof(desc))rxd)->qw1;
-+#else
-+	desc->qw1 = ((u64)le16_to_cpu(rxd->buf_id) << 32) |
-+		    rxd->status_err0_qw1;
-+#endif
-+}
-+
-+static inline void
-+idpf_xdp_get_qw2(struct idpf_xdp_rx_desc *desc,
-+		 const struct virtchnl2_rx_flex_desc_adv_nic_3 *rxd)
-+{
-+#ifdef __LIBETH_WORD_ACCESS
-+	desc->qw2 = ((const typeof(desc))rxd)->qw2;
-+#else
-+	desc->qw2 = ((u64)rxd->hash3 << 24) |
-+		    ((u64)rxd->ff2_mirrid_hash2.hash2 << 16) |
-+		    le16_to_cpu(rxd->hash1);
-+#endif
-+}
-+
- void idpf_xdp_set_features(const struct idpf_vport *vport);
- 
- int idpf_xdp(struct net_device *dev, struct netdev_bpf *xdp);
-diff --git a/drivers/net/ethernet/intel/idpf/xdp.c b/drivers/net/ethernet/intel/idpf/xdp.c
-index b6a8304d61f9..89d5735f42f2 100644
---- a/drivers/net/ethernet/intel/idpf/xdp.c
-+++ b/drivers/net/ethernet/intel/idpf/xdp.c
-@@ -342,12 +342,38 @@ int idpf_xdp_xmit(struct net_device *dev, int n, struct xdp_frame **frames,
- 				       idpf_xdp_tx_finalize);
- }
- 
-+static int idpf_xdpmo_rx_hash(const struct xdp_md *ctx, u32 *hash,
-+			      enum xdp_rss_hash_type *rss_type)
-+{
-+	const struct libeth_xdp_buff *xdp = (typeof(xdp))ctx;
-+	struct idpf_xdp_rx_desc desc __uninitialized;
-+	const struct idpf_rx_queue *rxq;
-+	struct libeth_rx_pt pt;
-+
-+	rxq = libeth_xdp_buff_to_rq(xdp, typeof(*rxq), xdp_rxq);
-+
-+	idpf_xdp_get_qw0(&desc, xdp->desc);
-+
-+	pt = rxq->rx_ptype_lkup[idpf_xdp_rx_pt(&desc)];
-+	if (!libeth_rx_pt_has_hash(rxq->xdp_rxq.dev, pt))
-+		return -ENODATA;
-+
-+	idpf_xdp_get_qw2(&desc, xdp->desc);
-+
-+	return libeth_xdpmo_rx_hash(hash, rss_type, idpf_xdp_rx_hash(&desc),
-+				    pt);
-+}
-+
-+static const struct xdp_metadata_ops idpf_xdpmo = {
-+	.xmo_rx_hash		= idpf_xdpmo_rx_hash,
-+};
-+
- void idpf_xdp_set_features(const struct idpf_vport *vport)
- {
- 	if (!idpf_is_queue_model_split(vport->rxq_model))
- 		return;
- 
--	libeth_xdp_set_features_noredir(vport->netdev);
-+	libeth_xdp_set_features_noredir(vport->netdev, &idpf_xdpmo);
- }
- 
- static int idpf_xdp_setup_prog(struct idpf_vport *vport,
--- 
-2.51.0
+Fixes: 5c3c48ac6bf5 ("i40e: implement virtual device interface")
+
+But I guess that either way is fine.
+
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Lukasz Czapnik <lukasz.czapnik@intel.com>
+> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+
+Reviewed-by: Simon Horman <horms@kernel.org>
 
