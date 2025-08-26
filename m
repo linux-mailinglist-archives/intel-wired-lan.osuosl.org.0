@@ -1,95 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D41B0B36050
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Aug 2025 14:59:23 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id ACF8CB3658D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Aug 2025 15:49:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2F1C96F8CC;
-	Tue, 26 Aug 2025 12:59:22 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 66EE36F90C;
+	Tue, 26 Aug 2025 13:49:01 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kSQrBCs7ulAB; Tue, 26 Aug 2025 12:59:21 +0000 (UTC)
+ id HG_PAnDNbyf0; Tue, 26 Aug 2025 13:49:00 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9D5C86F7D3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7A6076F907
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1756213161;
-	bh=MPc1xQ3MG9F8V4FvVInAEdZJbomL1gv6VNdFmefEsRA=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1756216140;
+	bh=tLw3YRDXSxieAEUkQih90MyR4d5TxwOlKQ0gYxIPleg=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=sxCrZS3vgEE8gV9ajRz4GEv++o4n5LVyBBHOCJYoNvIuFLyz9o0+VVY/cUjS0TSJD
-	 hInbFb7hJvj9wtblTzfLec1zU0aHGoVdvDBwQNrKVajskKl05ayY0PZMfRKNejUbUp
-	 /4opsWeHMauVRVNvft11UBg+Ff746rB37ULPAMqV68tPUdexy+y3wOHsxk/FN34atw
-	 eGVbbjNZHqT9l0h8xq906hmlIwLnpQ9WKiXEZa/y/GV/3fSP+G3ryr/h+gWwrjLq7F
-	 cTjubFeBkFfFe59T7X0LIP5c6CF9K7OH9cpfAxXmybSHONmWMxwnz5HbdTjBjxLP/p
-	 yFKPqOEFpZ5CA==
+	 From;
+	b=GUlnaIqwiVRZ8xoYE2Cee8TmJC11DlCksCsRInsf8VJVCXPUcMxlTIZGrCjS5tHXE
+	 R+xn3CNlBZaAxydSHvOlX4b6Ac/p4y/PN+vdrRkWGGb8Xisj5mtymYsHE5qmi7rdqw
+	 Af5k6yw77kxCMySLViL2xXrAdr3hmikEofzolgu1xHX5Caw6BHeOb6SbVuYWEFvV2y
+	 VdcWBcMRXv4UiOmpUJ2iCv9/GhAC6G9xOSppL5Yu+ZjqMcfobH9NOkzY9hPPVdisza
+	 uvOjLEUaVbHz/eJzHsB4upIqxXAWhjE+wpRdw+06OHo5R+8Dh9tsD9q9hFUA4WO3xU
+	 lMPZYskX4bXdA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9D5C86F7D3;
-	Tue, 26 Aug 2025 12:59:21 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7A6076F907;
+	Tue, 26 Aug 2025 13:49:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 67ED6CD
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Aug 2025 12:59:20 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id C45C3B0B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Aug 2025 13:48:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4E9FD41298
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Aug 2025 12:59:20 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id B49258529C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Aug 2025 13:48:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XZmcsctyhCvw for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 Aug 2025 12:59:19 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.142.43.55;
- helo=galois.linutronix.de; envelope-from=bigeasy@linutronix.de;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id HVb-d0JSViqC for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 26 Aug 2025 13:48:56 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
+ helo=tor.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 9B3C940CC2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9B3C940CC2
-Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9B3C940CC2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Aug 2025 12:59:19 +0000 (UTC)
-Date: Tue, 26 Aug 2025 14:59:12 +0200
-From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-To: Jacob Keller <jacob.e.keller@intel.com>
-Message-ID: <20250826125912.q0OhVCZJ@linutronix.de>
-References: <20250822-igb_irq_ts-v2-1-1ac37078a7a4@linutronix.de>
- <20250822075200.L8_GUnk_@linutronix.de>
- <87ldna7axr.fsf@jax.kurt.home>
- <02d40de4-5447-45bf-b839-f22a8f062388@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org C53328529A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C53328529A
+Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id C53328529A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Aug 2025 13:48:56 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id 4118C602B0;
+ Tue, 26 Aug 2025 13:48:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C97D0C4CEF1;
+ Tue, 26 Aug 2025 13:48:53 +0000 (UTC)
+Date: Tue, 26 Aug 2025 14:48:51 +0100
+From: Simon Horman <horms@kernel.org>
+To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ przemyslaw.kitszel@intel.com, dawid.osuchowski@linux.intel.com
+Message-ID: <20250826134851.GA5892@horms.kernel.org>
+References: <20250812042337.1356907-1-michal.swiatkowski@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <02d40de4-5447-45bf-b839-f22a8f062388@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1756213155;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=MPc1xQ3MG9F8V4FvVInAEdZJbomL1gv6VNdFmefEsRA=;
- b=M9vhwE/+EXdNr5po3h6bwj/jPS5CcELKATe9TkamzTdl8MoUWC+UX0eqKmHdU6LKb54utp
- cm1+d9wiQjIuHXbZSZhzL4P13j1M4be2Q+tVw5RPzsmkzgwAJKMcqVp1cFOsMq53HE4Ve6
- b6STfFBnGXSXJv6IQf+jbWYL1EfRfRth+sngAc2DvOVzm9hmKlLyldkmE4TG2eemCSOT6I
- 9ZXxc3N7bqHgrmJxbTyg1ihGIu+O33ZBV4vkrGYRZHL4DSd4YaHq50mzMiXpffk7yY+Gz1
- IWFZuhXvdlsM5eXazJlZRYjAOqYTzZABspEbQcop4Jw9FKTQ+Qaf1AsUPHzvSQ==
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1756213155;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=MPc1xQ3MG9F8V4FvVInAEdZJbomL1gv6VNdFmefEsRA=;
- b=1tuaFlXAmr7mfqnmj3swHVz+vSwSFM6qmSV+2tcjOkPGrxmZWGlh68qlM+DK+5DqB1rL0r
- mmw2pL7TCzlmScCw==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=linutronix.de
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
- header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=M9vhwE/+; 
- dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=1tuaFlXA
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] igb: Convert Tx
- timestamping to PTP aux worker
+In-Reply-To: <20250812042337.1356907-1-michal.swiatkowski@linux.intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1756216135;
+ bh=XGiRH+1trpEwpUcqcmaqq2E7b01zJv0ChUBF1gJeF4Q=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=mKEiW9a0GV2oQv268spDXPs54Scu4EjEUieeaLwcUXa6H4u/pp6g6xJ8SNH6r+pSs
+ PFpkXMn6B2/ruJD9zUclcwYoanrGe3ffPoHCUne8nETzJq4c6/Sy+dqgkENbxs/qiQ
+ fP8hNLuAZyTS9Y8O54WNEIyy5IG0evknX3lLI4lPhQpFZfa2s57/Opc3Zwf8D+i9LA
+ 2ycXxWZluVbQFj3DWAyYX6BKSgFS6l2TBXwjVSIKeakvvaHp5vyjwYu0uGhD5pnjAC
+ xrDEirpGwgiRYlJuVrPr7MRdxufkCgNfaYdy7tCZDwLGbAtUN2NE52PeTprpwZ/yTQ
+ s6ziis6N7lI7Q==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=mKEiW9a0
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 00/15] Fwlog support in
+ ixgbe
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -102,71 +96,49 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
- Vadim Fedorenko <vadim.fedorenko@linux.dev>,
- Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Richard Cochran <richardcochran@gmail.com>,
- Kurt Kanzenbach <kurt@linutronix.de>, Andrew Lunn <andrew+netdev@lunn.ch>,
- Eric Dumazet <edumazet@google.com>, netdev@vger.kernel.org,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2025-08-25 16:28:38 [-0700], Jacob Keller wrote:
-> Ya, I don't think we fully understand either. Miroslav said he tested on
-> I350 which is a different MAC from the I210, so it could be something
-> there. Theoretically we could handle just I210 directly in the interrupt
-> and leave the other variants to the kworker.. but I don't know how much
-> benefit we get from that. The data sheet for the I350 appears to have
-> more or less the same logic for Tx timestamps. It is significantly
-> different for Rx timestamps though.
-
-From logical point of view it makes sense to retrieve the HW timestamp
-immediately when it becomes available and feed it to the stack. I can't
-imagine how delaying it to yet another thread improves the situation.
-The benchmark is about > 1k packets/ second while in reality you have
-less than 20 packets a second. With multiple applications you usually
-need a "second timestamp register" or you may lose packets.
-
-Delaying it to the AUX worker makes sense for hardware which can't fire
-an interrupt and polling is the only option left. This is sane in this
-case but I don't like this solution as some kind compromise for
-everyone. Simply because it adds overhead and requires additional
-configuration.
-
-> > Also I couldn't really see a performance degradation with ntpperf. In my
-> > tests the IRQ variant reached an equal or higher rate. But sometimes I
-> > get 'Could not send requests at rate X'. No idea what that means.
-> > 
-> > Anyway, this patch is basically a compromise. It works for Miroslav and
-> > my use case.
-> > 
-> >> This is also what the igc does and the performance improved
-> >> 	afa141583d827 ("igc: Retrieve TX timestamp during interrupt handling")
-> >>
+On Tue, Aug 12, 2025 at 06:23:21AM +0200, Michal Swiatkowski wrote:
+> Hi,
 > 
-> igc supports several hardware variations which are all a lot similar to
-> i210 than i350 is to i210 in igb. I could see this working fine for i210
-> if it works fine in igb.. I honestly am at a loss currently why i350 is
-> much worse.
->
-> >> and here it causes the opposite?
-> > 
-> > As said above, I'm out of ideas here.
-> > 
+> Firmware logging is a feature that allow user to dump firmware log using
+> debugfs interface. It is supported on device that can handle specific
+> firmware ops. It is true for ice and ixgbe driver.
 > 
-> Same. It may be one of those things where the effort to dig up precisely
-> what has gone wrong is so large that it becomes not feasible relative to
-> the gain :(
+> Prepare code from ice driver to be moved to the library code and reuse
+> it in ixgbe driver.
+> 
+> v1 --> v2: [1]
+>  * fix building issue in patch 9
+> 
+> [1] https://lore.kernel.org/netdev/20250722104600.10141-1-michal.swiatkowski@linux.intel.com/
+> 
+> Michal Swiatkowski (15):
+>   ice: make fwlog functions static
+>   ice: move get_fwlog_data() to fwlog file
+>   ice: drop ice_pf_fwlog_update_module()
+>   ice: introduce ice_fwlog structure
+>   ice: add pdev into fwlog structure and use it for logging
+>   ice: allow calling custom send function in fwlog
+>   ice: move out debugfs init from fwlog
+>   ice: check for PF number outside the fwlog code
 
-Could we please use the direct retrieval/ submission for HW which
-supports it and fallback to the AUX worker (instead of the kworker) for
-HW which does not have an interrupt for it?
+nit: I think that patch 8/15 updates ice_fwlog_init()
+     such that it begins with a blank line. I would delete it.
 
-> > Thanks,
-> > Kurt
+>   ice: drop driver specific structure from fwlog code
+>   libie, ice: move fwlog admin queue to libie
+>   ice: move debugfs code to fwlog
+>   ice: prepare for moving file to libie
+>   ice: reregister fwlog after driver reinit
+>   ice, libie: move fwlog code to libie
+>   ixgbe: fwlog support for e610
 
-Sebastian
+...
+
+The nit above notwithstanding, this looks good to me.
+Please feel free to add:
+
+Reviewed-by: Simon Horman <horms@kernel.org>
+
