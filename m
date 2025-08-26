@@ -1,62 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35B1FB37084
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Aug 2025 18:35:40 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id DA08DB3708A
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Aug 2025 18:35:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E796F80A63;
-	Tue, 26 Aug 2025 16:35:38 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9C88460687;
+	Tue, 26 Aug 2025 16:35:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id csxOrDoqGOkQ; Tue, 26 Aug 2025 16:35:38 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id XmRvPmdETGVE; Tue, 26 Aug 2025 16:35:57 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 59F9280A64
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 11C046068C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1756226138;
-	bh=MBL1S/+zf1LOQdC8aiuCGSTsvORCLUYDue5oRKteMHk=;
+	s=default; t=1756226157;
+	bh=vCR/1vRllJ2gc8RoJVA+sCnC6S5vVJdc/lfgoXwz7WU=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=JfGxcH7VI8sS7C8LzSOPq8bATHQkvHaBfxx4sOxX16/4so5oNMY7Vqf0RnhAviQTY
-	 eua1q9z8rQQxUOWKJo5wbiGiwSUiq0/J+Zn2jRxZcnohXzYtnCRI6D3vyGGlPeBVTl
-	 lcaUziTtVoVTnxjIC9d/l3IDUlkzc7BOCqXIHw1Yp/bDXxE2xqK38Q8/dIBDDxucDo
-	 Lwd8PVi6MwnwJVGQHFsbwS0oVtUA3fcjUh82/+JUv3Uod58pB4bnt0SS9EUPGGUim8
-	 Kdb9fSzrh9yXMHwDIZ7CwVDo26gi33Ewh69aurHlCtTHX950aqcvqajEiXzosm7vPd
-	 qIWpTNNmd/rug==
+	b=5XRCxJtV5v/FfQqhjPZyz06UYyKr918ddTcdnd5oz6On3pJV21gsu1DNtbNKyOd3d
+	 LM1c2i6hurywGMk5WVAX0M/JmEN+q41XIXaaj+kEWHcU/AaC8p2Rn9nL8Te3XLGWLu
+	 A1cw9gtCHhpZQcFqykljsIHh6p/hz/TzoeqcEAD2oEi+l8zljG1p61GDcuKmABY6k8
+	 zg6HX721bSuGtpifEpPjymXza7olT6X2nN7pCMTNAAsFC2uDwvui4WiDgp4tcu/0CW
+	 t+pURjYf41rosKixNtPDBYbQMax0KG6/K7So+9jx6sz4ymQsoZpHJ6bpODhNPwdeMT
+	 M9OoDms72GAQQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 59F9280A64;
-	Tue, 26 Aug 2025 16:35:38 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 11C046068C;
+	Tue, 26 Aug 2025 16:35:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 9B3AEB0B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Aug 2025 16:35:37 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id B8EC0114
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Aug 2025 16:35:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8D5AB4008A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Aug 2025 16:35:37 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9FAF8404B7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Aug 2025 16:35:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id hkw9tKZSz232 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 Aug 2025 16:35:37 +0000 (UTC)
-X-Greylist: delayed 2635 seconds by postgrey-1.37 at util1.osuosl.org;
- Tue, 26 Aug 2025 16:35:36 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 0DC5740062
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0DC5740062
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id fXWrI4NU5QrF for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 26 Aug 2025 16:35:54 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
  helo=sea.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 23850404B5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 23850404B5
 Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0DC5740062
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Aug 2025 16:35:36 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 23850404B5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Aug 2025 16:35:54 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id BA16A44D9A;
- Tue, 26 Aug 2025 16:35:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AA81CC4CEF1;
- Tue, 26 Aug 2025 16:35:34 +0000 (UTC)
-Date: Tue, 26 Aug 2025 17:35:32 +0100
+ by sea.source.kernel.org (Postfix) with ESMTP id E23E643278;
+ Tue, 26 Aug 2025 16:35:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE65FC4CEF1;
+ Tue, 26 Aug 2025 16:35:51 +0000 (UTC)
+Date: Tue, 26 Aug 2025 17:35:49 +0100
 From: Simon Horman <horms@kernel.org>
 To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Cc: intel-wired-lan@lists.osuosl.org,
@@ -64,31 +62,31 @@ Cc: intel-wired-lan@lists.osuosl.org,
  Greg KH <gregkh@linuxfoundation.org>, jeremiah.kyle@intel.com,
  leszek.pepiak@intel.com, Lukasz Czapnik <lukasz.czapnik@intel.com>,
  Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Message-ID: <20250826163532.GH5892@horms.kernel.org>
+Message-ID: <20250826163549.GI5892@horms.kernel.org>
 References: <20250813104552.61027-1-przemyslaw.kitszel@intel.com>
- <20250813104552.61027-4-przemyslaw.kitszel@intel.com>
+ <20250813104552.61027-5-przemyslaw.kitszel@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250813104552.61027-4-przemyslaw.kitszel@intel.com>
+In-Reply-To: <20250813104552.61027-5-przemyslaw.kitszel@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1756226136;
- bh=MrQ8uwxf6gxIudqMpUeggOMfu3sqkRlub+VF2qkIMsQ=;
+ d=kernel.org; s=k20201202; t=1756226153;
+ bh=BZBDOJvV73+BhoP7SobMXwQs7BVx+ppjYMAdXcPOIws=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=eu11srEW/0ONU2gaCerZBClYW1xleAxOocZPyAUpPRvKHcJLvVUvCNa2siZ8MlGWq
- Dvhh4nliwf2dt3iUzrelE8+ITayX3TiPLWxEroZvzpRfIOTthcLiwUdDlAFEcK/XpN
- /9JHOqj/QGLAsjtly+0Nd3gThHgwhmw4HOlmnLrrpBgZ99LdSI+VU10jkPM3+zdy3D
- /JxTrgtSgYYj5rtOSqW8S9yW+dc7x20Km82lT4e8VNJ8JLd5epjk+Bm8dtcaax6ke+
- RiBBsl14/RFGorx4+l+CH6P0jGf/sXy4CZYaX4CUHblozWyNvyZUTliluQrNSVBAMh
- yHJ9pD/8XpuEA==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ b=i8/kVg+lK6tR95nPwCMXd0w7l6/njP6JOsiKcUPmJKtPwblqk9Xt23m/4Fcha1wUX
+ Xh/DuLe4rls49TlOekNQywk0fZPTDSalj6DRHGCzjdwfDTsmswpAxITv9LaCG4C781
+ uRxm6WOf/63+f61ZRGdXKWDltq8uW8R0tzDQX56zRNQxM2tbIk8MNHqScipMuO1HZJ
+ AX5UW3n5PUAxpwAnbQFidtY4WCwjKsArqHkVsyog/sZdRV1akNXw4HwJLY0xsuBwqe
+ +9zxML2BFcwKYyjtx4zH7RLosT4YAK0oTx08zVHCQXCT6cy1XPUy/DvuackfR8Eryy
+ xvUMS7+EaESig==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=eu11srEW
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net 3/8] i40e: fix idx validation
- in config queues msg
+ header.a=rsa-sha256 header.s=k20201202 header.b=i8/kVg+l
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net 4/8] i40e: fix input
+ validation logic for action_meta
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,13 +102,12 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Aug 13, 2025 at 12:45:13PM +0200, Przemek Kitszel wrote:
+On Wed, Aug 13, 2025 at 12:45:14PM +0200, Przemek Kitszel wrote:
 > From: Lukasz Czapnik <lukasz.czapnik@intel.com>
 > 
-> Ensure idx is within range of active/initialized TCs when iterating over
-> vf->ch[idx] in i40e_vc_config_queues_msg().
+> Fix condition to check 'greater or equal' to prevent OOB dereference.
 > 
-> Fixes: c27eac48160d ("i40e: Enable ADq and create queue channel/s on VF")
+> Fixes: e284fc280473 ("i40e: Add and delete cloud filter")
 > Cc: stable@vger.kernel.org
 > Signed-off-by: Lukasz Czapnik <lukasz.czapnik@intel.com>
 > Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
