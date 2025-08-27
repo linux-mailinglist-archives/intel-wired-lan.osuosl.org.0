@@ -2,110 +2,94 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 23EF6B3847C
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Aug 2025 16:10:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 68B64B384CA
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Aug 2025 16:19:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D280A60E13;
-	Wed, 27 Aug 2025 14:10:55 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 20D6960E3F;
+	Wed, 27 Aug 2025 14:19:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id BhCWv7h8Hq9w; Wed, 27 Aug 2025 14:10:55 +0000 (UTC)
+ id 2JRowuGnNBZR; Wed, 27 Aug 2025 14:19:55 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5ED6C60BDB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9473660DF7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1756303855;
-	bh=Y1/rB36gFRz4cGhzwVkpuf1gnit+WsPGgV7ZUSfXYlQ=;
+	s=default; t=1756304395;
+	bh=iwo2hpA9bNkrnPvBK/oYTlR5K7tDo4ELkCqdisIxHFE=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=P3QVhlu9jLqnZXkT73HiX9nwcdZzAV2gU9fBIVYu6ItH6G0Z+2NQn24LBoE9ZAUgm
-	 lAGATDXYtyZuSuIpvMcRIrsT4V9/+5NHsXN2WWPDATPeYUhbFjLaoZ7K2+K6I6lqzg
-	 U95kQp9R4JVMi1LZ2elSY3X0DQmg809vLbeWk3aN6Po042BWxc73aE51eOrkTy9Vo3
-	 D8+v6z5jkTLjkekgaVxCWm4F5gzW8OjwRK8iaz0nQCQAQgtjOFeDJCzd0+7rkxsgpi
-	 JdSuSJGHe69ndkvCx6J7OAZg2xXTydrxd+6aFlhSprqKkrG85cmTD0zdHsvjK50RUL
-	 7RB2ArhYpzf/A==
+	b=RmqUJsCw8z88WvXyelTrmOpSeZUJvf95eitQTBEG/ZRX+kxgecaLvONvyIGaqRBgq
+	 2w0SZSp4uneTzkuUddDsHNfimPzeZmT44TjoCMka64BMp5rLpjGfJQgBnOWm5SwOvi
+	 t7PDwAKus+Mk6EfLYOlD89YuloUBpDfV3OFoeSJA8uXp7LrwK7QjUgOQsV6DNYWXjw
+	 E1OGUz7tQz4IKdzmjcG55E5SygW0ETOhiNUVqVEDodSdXGderfQCLRoAFgKK4RDGvE
+	 Wz1Eb9DA6gjzELaOjFq1smvKk2JBZkNJ39l7UvOisawkXlI1qlJgbQt7VAeJudEtsv
+	 t0v6IuP7kRr6A==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5ED6C60BDB;
-	Wed, 27 Aug 2025 14:10:55 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9473660DF7;
+	Wed, 27 Aug 2025 14:19:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 41FF6B8C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Aug 2025 14:10:54 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 861CD17D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Aug 2025 14:19:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 27557811FA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Aug 2025 14:10:54 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 7660D80BAC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Aug 2025 14:19:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id clVL7zrT6YR2 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 27 Aug 2025 14:10:53 +0000 (UTC)
+ id S1nNFY8_srid for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 27 Aug 2025 14:19:53 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
- envelope-from=bigeasy@linutronix.de; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 65439811F9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 65439811F9
-Received: from galois.linutronix.de (Galois.linutronix.de
- [IPv6:2a0a:51c0:0:12e:550::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 65439811F9
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Aug 2025 14:10:53 +0000 (UTC)
-Date: Wed, 27 Aug 2025 16:10:47 +0200
-From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-To: Miroslav Lichvar <mlichvar@redhat.com>
-Cc: Jacob Keller <jacob.e.keller@intel.com>,
- Kurt Kanzenbach <kurt@linutronix.de>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Richard Cochran <richardcochran@gmail.com>,
- Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- Paul Menzel <pmenzel@molgen.mpg.de>,
- Vadim Fedorenko <vadim.fedorenko@linux.dev>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-Message-ID: <20250827141047.H_n5FMzY@linutronix.de>
-References: <20250822-igb_irq_ts-v2-1-1ac37078a7a4@linutronix.de>
- <20250822075200.L8_GUnk_@linutronix.de>
- <87ldna7axr.fsf@jax.kurt.home>
- <02d40de4-5447-45bf-b839-f22a8f062388@intel.com>
- <20250826125912.q0OhVCZJ@linutronix.de>
- <aK8OrXDsZclpSQzF@localhost>
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org EE69580BA9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EE69580BA9
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id EE69580BA9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Aug 2025 14:19:52 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id 1217C60266;
+ Wed, 27 Aug 2025 14:19:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CBDF5C4CEF0;
+ Wed, 27 Aug 2025 14:19:48 +0000 (UTC)
+Date: Wed, 27 Aug 2025 15:19:46 +0100
+From: Simon Horman <horms@kernel.org>
+To: Emil Tantilov <emil.s.tantilov@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ Aleksandr.Loktionov@intel.com, przemyslaw.kitszel@intel.com,
+ anthony.l.nguyen@intel.com, andrew+netdev@lunn.ch,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, decot@google.com, willemb@google.com,
+ joshua.a.hay@intel.com, madhu.chittim@intel.com
+Message-ID: <20250827141946.GC5652@horms.kernel.org>
+References: <20250822035248.22969-1-emil.s.tantilov@intel.com>
+ <20250822035248.22969-2-emil.s.tantilov@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <aK8OrXDsZclpSQzF@localhost>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1756303849;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Y1/rB36gFRz4cGhzwVkpuf1gnit+WsPGgV7ZUSfXYlQ=;
- b=jv2w2fcLRUeeqildzoVNn9P1lzXx9cze3i9Y45mv8LPoir3FsafXsViwFO6kGZQbGXPy2w
- ekYv7VCmE3yX4LyUCAPWyJ0hyH0kRKcN0JaeicnUeyFJvWyXrqvIB7aAr+/QpQgErc6sKD
- GpfbmOrQiQakQPq+YhZyBoMdEUathcp2q6614ASavFhygC9kbHJWwehE17dC/gCSqcANhH
- 1BsqsCmcP47dyT1rcbfCr4DzbTk2NSTQuN1M2wspiQ4llSJqOJDKTYkxgYIqQaZ41zLUTz
- 1Fr4KqFYL2KNIdjPkViaQvBOkShCXsVhEMu2umM67u/RNDQRvnWSR3WsrWX8yw==
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1756303850;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Y1/rB36gFRz4cGhzwVkpuf1gnit+WsPGgV7ZUSfXYlQ=;
- b=bPgclxatJ1QrCdAS+TVvNgo5bkUBCdpCjmgm/i8Ly/gBLuBHL5UupaQ3egaj+aqK6k9DYo
- 24OXid91KGppigBg==
+In-Reply-To: <20250822035248.22969-2-emil.s.tantilov@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1756304391;
+ bh=7Fjd3YmS5c4fVv5YW2uewpd700LeWpLhFBANrfL+JxM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=de/8ANp0nKe3x0iZQO1ror8mFuAYVHw7KCtG9bXkJnO4i/xRnCEHMH7j8y47SG4ks
+ AmpbmxfAERWrd3cwKrss7H7Sq2oQAYZj8+4yVfKeaJovuLlt5geMgfz4hlodeYd5r4
+ yEO0fhciCDcIXR6eD10+FQnq2qlH67N8iD0tsFWXrIgRUfWUwFF9IByQLEy/+AqnJS
+ cz8kLr3w7lvR69T3RgGaglpAyyIZHtrk7UQSH/lWlqs36U0yHkF/HLmQtv3d5wqydS
+ CZ0xgfM8Gerrf9IsLzrVWS59/ggC/9/OpA/bdHkBVv0deN4SgO+4z2VjOJYoBFun+f
+ daU8hxfHjtvlw==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=linutronix.de
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
- header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=jv2w2fcL; 
- dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=bPgclxat
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] igb: Convert Tx
- timestamping to PTP aux worker
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=de/8ANp0
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net 1/2] idpf: convert vport state
+ to bitmap
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -121,30 +105,18 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2025-08-27 15:57:01 [+0200], Miroslav Lichvar wrote:
-> On Tue, Aug 26, 2025 at 02:59:12PM +0200, Sebastian Andrzej Siewior wrote:
-> > The benchmark is about > 1k packets/ second while in reality you have
-> > less than 20 packets a second.
+On Thu, Aug 21, 2025 at 08:52:47PM -0700, Emil Tantilov wrote:
+> Convert vport state to a bitmap and remove the DOWN state which is
+> redundant in the existing logic. There are no functional changes aside
+> from the use of bitwise operations when setting and checking the states.
+> Removed the double underscore to be consistent with the naming of other
+> bitmaps in the header and renamed current_state to vport_is_up to match
+> the meaning of the new variable.
 > 
-> I don't want to argue about which use case is more important, but it's
-> normal for NTP servers to receive requests at much higher rates than
-> that. In some countries, public servers get hundreds of thousands of
-> packets per second. A server in a local network may have clients
-> polling 128 times per second each.
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> Reviewed-by: Chittim Madhu <madhu.chittim@intel.com>
+> Signed-off-by: Emil Tantilov <emil.s.tantilov@intel.com>
 
-There might be a misunderstanding here. You can't receive 1k packets a
-second and each one with a HW timestamp for PTP. This does not work.
-SW timestamps more likely.
+Reviewed-by: Simon Horman <horms@kernel.org>
 
-> Anyway, if anyone is still interested in finding out the cause of
-> the regression, there is a thing I forgot to mention for the
-> reproducer using ntpperf. chronyd needs to be configured with a larger
-> clientloglimit (e.g. clientloglimit 100000000), otherwise it won't be
-> able to respond to the large number of clients in interleaved mode
-> with a HW TX timestamp. The chronyc serverstats report would show
-> that. It should look like the outputs I posted here before.
-
-How does this work with HW timestamps vs SW? I can't believe that 1k
-packets are sent and all of them receive a HW timestamp.
-
-Sebastian
