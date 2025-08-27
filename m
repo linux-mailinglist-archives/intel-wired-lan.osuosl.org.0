@@ -2,102 +2,108 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F8A2B3846B
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Aug 2025 16:06:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 23EF6B3847C
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Aug 2025 16:10:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B140A60E35;
-	Wed, 27 Aug 2025 14:05:59 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D280A60E13;
+	Wed, 27 Aug 2025 14:10:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XNdBvQ9TDGhA; Wed, 27 Aug 2025 14:05:59 +0000 (UTC)
+ id BhCWv7h8Hq9w; Wed, 27 Aug 2025 14:10:55 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 32DBE60E13
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5ED6C60BDB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1756303559;
-	bh=e5BVtBpCtOJyC1Pkcou+8CrjG0HCXemPLs+PbZIHaVE=;
-	h=From:To:Cc:In-Reply-To:References:Date:Subject:List-Id:
+	s=default; t=1756303855;
+	bh=Y1/rB36gFRz4cGhzwVkpuf1gnit+WsPGgV7ZUSfXYlQ=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=WJiiLheqyvzxJCrbU7aeKsI9AS6VaMQo4kd17FwtEOJgOugGXFtXdlpiI05AH1S88
-	 cFwOAL+oD3XDmeP8gkkrzfO76cKvq4oLeO7BNThvRzfyAgwOWeDV2CDeRcEfDN2f+c
-	 96GJK5cR0YBxtJscDLsUBsmNUefwrTG5zrgi+Xejt6C4cpJ06DeJABXH/sn3qAdMwB
-	 BTyVacIFGmXBBcFYC4UoQ5WTL4k2pDpisaQ6EuwnFkOXauvFDqW0og5NXEGx/J2uNW
-	 7iNK39OJvXVUtpyThwnfhGhajzeDcfL2rsuUe5mhv0Xb21BFkiKcc+eY3eYmKEaX+n
-	 yjzDE0JIQve6A==
+	b=P3QVhlu9jLqnZXkT73HiX9nwcdZzAV2gU9fBIVYu6ItH6G0Z+2NQn24LBoE9ZAUgm
+	 lAGATDXYtyZuSuIpvMcRIrsT4V9/+5NHsXN2WWPDATPeYUhbFjLaoZ7K2+K6I6lqzg
+	 U95kQp9R4JVMi1LZ2elSY3X0DQmg809vLbeWk3aN6Po042BWxc73aE51eOrkTy9Vo3
+	 D8+v6z5jkTLjkekgaVxCWm4F5gzW8OjwRK8iaz0nQCQAQgtjOFeDJCzd0+7rkxsgpi
+	 JdSuSJGHe69ndkvCx6J7OAZg2xXTydrxd+6aFlhSprqKkrG85cmTD0zdHsvjK50RUL
+	 7RB2ArhYpzf/A==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 32DBE60E13;
-	Wed, 27 Aug 2025 14:05:59 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5ED6C60BDB;
+	Wed, 27 Aug 2025 14:10:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id EB54E114
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Aug 2025 14:05:57 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 41FF6B8C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Aug 2025 14:10:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id DDA0060C1C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Aug 2025 14:05:57 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 27557811FA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Aug 2025 14:10:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ve8Ym-3NjocK for <intel-wired-lan@lists.osuosl.org>;
- Wed, 27 Aug 2025 14:05:57 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.142.43.55;
- helo=galois.linutronix.de; envelope-from=kurt@linutronix.de;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 427E860BDB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 427E860BDB
-Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 427E860BDB
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Aug 2025 14:05:57 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-To: Miroslav Lichvar <mlichvar@redhat.com>, Sebastian Andrzej Siewior
- <bigeasy@linutronix.de>
-Cc: Jacob Keller <jacob.e.keller@intel.com>, Tony Nguyen
- <anthony.l.nguyen@intel.com>, Przemek Kitszel
- <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
- <pabeni@redhat.com>, Richard Cochran <richardcochran@gmail.com>, Vinicius
- Costa Gomes <vinicius.gomes@intel.com>, Paul Menzel
- <pmenzel@molgen.mpg.de>, Vadim Fedorenko <vadim.fedorenko@linux.dev>,
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id clVL7zrT6YR2 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 27 Aug 2025 14:10:53 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
+ envelope-from=bigeasy@linutronix.de; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 65439811F9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 65439811F9
+Received: from galois.linutronix.de (Galois.linutronix.de
+ [IPv6:2a0a:51c0:0:12e:550::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 65439811F9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Aug 2025 14:10:53 +0000 (UTC)
+Date: Wed, 27 Aug 2025 16:10:47 +0200
+From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+To: Miroslav Lichvar <mlichvar@redhat.com>
+Cc: Jacob Keller <jacob.e.keller@intel.com>,
+ Kurt Kanzenbach <kurt@linutronix.de>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Richard Cochran <richardcochran@gmail.com>,
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ Paul Menzel <pmenzel@molgen.mpg.de>,
+ Vadim Fedorenko <vadim.fedorenko@linux.dev>,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-In-Reply-To: <aK8OrXDsZclpSQzF@localhost>
+Message-ID: <20250827141047.H_n5FMzY@linutronix.de>
 References: <20250822-igb_irq_ts-v2-1-1ac37078a7a4@linutronix.de>
- <20250822075200.L8_GUnk_@linutronix.de> <87ldna7axr.fsf@jax.kurt.home>
+ <20250822075200.L8_GUnk_@linutronix.de>
+ <87ldna7axr.fsf@jax.kurt.home>
  <02d40de4-5447-45bf-b839-f22a8f062388@intel.com>
- <20250826125912.q0OhVCZJ@linutronix.de> <aK8OrXDsZclpSQzF@localhost>
-Date: Wed, 27 Aug 2025 16:05:53 +0200
-Message-ID: <878qj4q2pq.fsf@jax.kurt.home>
+ <20250826125912.q0OhVCZJ@linutronix.de>
+ <aK8OrXDsZclpSQzF@localhost>
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
- micalg=pgp-sha512; protocol="application/pgp-signature"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <aK8OrXDsZclpSQzF@localhost>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1756303554;
+ d=linutronix.de; s=2020; t=1756303849;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=e5BVtBpCtOJyC1Pkcou+8CrjG0HCXemPLs+PbZIHaVE=;
- b=3HJvKnkwWt5wuklmTFsJb/PzlNIcYTM4h7cjpMMqG5CQWR6XwrDxpFuYyDCdcvj/9VPvwj
- pXr0x5NRwx0ft2sJxyjSczgRlC/MHWS9YvBLIdH87DxuRAfR9f1tyPCQXj6+KyMstE+aJH
- P07PbJrfHlguQjqr55XZFcvSLudkNsHHwZwhMExEMLAv4v3742KNRU/2Lj6VCtZjKI6OL3
- ac1t/2Ch/A/1+f9JEHUgxM2B4amIKvo3Xalc4VvNVJqTwZYqbeRWR+EChd+AduTjG/lEG8
- 3LWyItZLxsBVb8x9v6qQvMqyhQ9va2r16D2arm/EXQ+L9hYN7EGw8ZYYHf2Wxg==
+ bh=Y1/rB36gFRz4cGhzwVkpuf1gnit+WsPGgV7ZUSfXYlQ=;
+ b=jv2w2fcLRUeeqildzoVNn9P1lzXx9cze3i9Y45mv8LPoir3FsafXsViwFO6kGZQbGXPy2w
+ ekYv7VCmE3yX4LyUCAPWyJ0hyH0kRKcN0JaeicnUeyFJvWyXrqvIB7aAr+/QpQgErc6sKD
+ GpfbmOrQiQakQPq+YhZyBoMdEUathcp2q6614ASavFhygC9kbHJWwehE17dC/gCSqcANhH
+ 1BsqsCmcP47dyT1rcbfCr4DzbTk2NSTQuN1M2wspiQ4llSJqOJDKTYkxgYIqQaZ41zLUTz
+ 1Fr4KqFYL2KNIdjPkViaQvBOkShCXsVhEMu2umM67u/RNDQRvnWSR3WsrWX8yw==
 X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1756303554;
+ d=linutronix.de; s=2020e; t=1756303850;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=e5BVtBpCtOJyC1Pkcou+8CrjG0HCXemPLs+PbZIHaVE=;
- b=o9vwByD2aTF8gtV+jrXX286j+J01pXzFjFqxqa0SjLlQjrFlq946R8Zxg1mauNIkOSR+Qb
- 7tKXucAwX6x5qNBA==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=Y1/rB36gFRz4cGhzwVkpuf1gnit+WsPGgV7ZUSfXYlQ=;
+ b=bPgclxatJ1QrCdAS+TVvNgo5bkUBCdpCjmgm/i8Ly/gBLuBHL5UupaQ3egaj+aqK6k9DYo
+ 24OXid91KGppigBg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=linutronix.de
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
- header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=3HJvKnkw; 
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=jv2w2fcL; 
  dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=o9vwByD2
+ header.a=ed25519-sha256 header.s=2020e header.b=bPgclxat
 Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] igb: Convert Tx
  timestamping to PTP aux worker
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -115,51 +121,30 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---=-=-=
-Content-Type: text/plain
-
-On Wed Aug 27 2025, Miroslav Lichvar wrote:
+On 2025-08-27 15:57:01 [+0200], Miroslav Lichvar wrote:
 > On Tue, Aug 26, 2025 at 02:59:12PM +0200, Sebastian Andrzej Siewior wrote:
->> The benchmark is about > 1k packets/ second while in reality you have
->> less than 20 packets a second.
->
+> > The benchmark is about > 1k packets/ second while in reality you have
+> > less than 20 packets a second.
+> 
 > I don't want to argue about which use case is more important, but it's
 > normal for NTP servers to receive requests at much higher rates than
 > that. In some countries, public servers get hundreds of thousands of
 > packets per second. A server in a local network may have clients
 > polling 128 times per second each.
->
+
+There might be a misunderstanding here. You can't receive 1k packets a
+second and each one with a HW timestamp for PTP. This does not work.
+SW timestamps more likely.
+
 > Anyway, if anyone is still interested in finding out the cause of
 > the regression, there is a thing I forgot to mention for the
 > reproducer using ntpperf. chronyd needs to be configured with a larger
 > clientloglimit (e.g. clientloglimit 100000000), otherwise it won't be
 > able to respond to the large number of clients in interleaved mode
-> with a HW TX timestamp.
+> with a HW TX timestamp. The chronyc serverstats report would show
+> that. It should look like the outputs I posted here before.
 
-Yeah, I realized that myself while testing :). The default
-clientloglimit is too low.
+How does this work with HW timestamps vs SW? I can't believe that 1k
+packets are sent and all of them receive a HW timestamp.
 
-Thanks,
-Kurt
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmivEMETHGt1cnRAbGlu
-dXRyb25peC5kZQAKCRDBk9HyqkZzgluMD/47MKWmL3M7Yq+ds4JgDuT8hQ0abUGI
-e3sT05iKddJemgYsc9tyMQ8C8DfHVOwRKZ82/ZiZ8J5cltb/5kWWYYGKjDLU8tsE
-pTGpDh/NEcEUZlC9Vz+joROWnZSsYIoMa5Nc758d+eNIXzlykesYjsnnMQ3uYb8F
-CWzY1K97uz6lwBbKyXN2S4clWL1PwAKfVrYzkunTsfvpljq5JwdvmfP1dZuYqHmN
-iEi+dlbMry8pMN3Nu5Gf0kin4TkjFDa2H4GFaMjdnFhh1srNK7cPzAGO3p6dIGJH
-lHvqeHJp0a2xP86XZyrT9l5Lk25VEG3rFidmO2D5ekbAT2hTBYzNtnkmM+qA1gbF
-jaH2VovcgJ1Okg4SxCqEtoXabcVP+/mJIlOmdpmUiGs4VeLq18DxjwBa5jJnBCzt
-xgUuIXiCp/7j4bBQTdbyN8CYyV8hF+jCs5npSUCTeWqGFpkcOSUNWfxW84htwh5g
-GyhKVAh8mUsqFBzjBjKIk3d5y7gStqWpAbZBnthrr8dFdxXCaGyWntkJcnuvldJl
-fMghrAAC7V+16tDxxD4rNHk8TfXy1gJFzqQ9CAm7nAp5ax7MIwdyJ4a1yc7ARk5k
-ndpLPY/Kz3f1i8WSZd9VGqJRFSuLNeONiTeTiHuwYoZICOwr7ljaX3AUoKMo5gsZ
-fMMhDbY79rh5Xg==
-=6dcc
------END PGP SIGNATURE-----
---=-=-=--
+Sebastian
