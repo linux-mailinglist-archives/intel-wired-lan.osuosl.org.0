@@ -1,94 +1,178 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8E166B38F9A
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 Aug 2025 02:08:45 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BFA1DB3A359
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 Aug 2025 17:03:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3B52761294;
-	Thu, 28 Aug 2025 00:08:44 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E29A240D9C;
+	Thu, 28 Aug 2025 15:03:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4vb1WwnHm_gY; Thu, 28 Aug 2025 00:08:43 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id IniRlgDaV-nS; Thu, 28 Aug 2025 15:03:17 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2481461275
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1CA8540D97
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1756339723;
-	bh=+Ekpvtbm0AyL3IXb7fFRV6q3NxbSTfy5lQNwRh4oxi8=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	s=default; t=1756393397;
+	bh=j9hKELv/XYxPko+wZ078jrUEDKc1V4UC+rZfezMfwGs=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=BabR2M8Nadxq8zOmjXzlOThx4Ap7LIsQhqhiBuaeadOrafUBc1Dzs2k5cjkEFuLOe
-	 oVPIcs7YRv/M8BMg4a++WcVlyLK5Uy2A67jI5v5yjqQFnjTmNND1K2KA59KYjtwiMo
-	 Ti0g00BwsK68/JEpYkNHr9o5HDXGBMwQTH+Ro5vjgbUa2OpyAZ3vNytXgx0lnU0Ccb
-	 KlRpBwRWvZR0ibcwc6sctZ5wm4VhtQxO3xgPfZhxtzVJwGE3nhTixTFzNWDT6SWSVN
-	 Gdx+U3A58py3MYMUimAgah3E6fAYF3qgyLquw40t+m7EPRCqGQJXemZO5wVFEgnI31
-	 jjDNhldutdJJg==
+	b=MltGUfPNxum7oQYSF90Sz3XQ+z59We82ip+VAgdvxyTJSC23WfI3sNNfPfNtjLNjE
+	 FlqFVZUieZ7sPPyTUWzogzHaJkf92rUJWCvSahadlsIXuLpsH3KKyhOxXppKWbsRIk
+	 IGEK46r/UzzR/35uekQNisiHAxJT5wPnbSWnq5GAxBNcx5NAMD7dcMV5W5r9HDGFum
+	 MmQesItjswkHUacYwUdHgZ3/Jfby9T4OnhEoEhlMuG6RuSEh5ICM9gwqURqBo2Qlg5
+	 3MKFi1rSkyrqZa6kbfsYFu+7NcQRdDzWXXhEBzeHSdqpPYMZCHt1DjQQ/B/mxTJSMA
+	 DL1t2HlYCQtDw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2481461275;
-	Thu, 28 Aug 2025 00:08:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1CA8540D97;
+	Thu, 28 Aug 2025 15:03:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id C947017D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Aug 2025 00:08:41 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 0BE9417D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Aug 2025 02:06:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A8AA8611A8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Aug 2025 00:08:41 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id DC92C40870
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Aug 2025 02:06:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pUyezMilKYLr for <intel-wired-lan@lists.osuosl.org>;
- Thu, 28 Aug 2025 00:08:40 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 5D7D26107C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5D7D26107C
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 5D7D26107C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Aug 2025 00:08:40 +0000 (UTC)
-X-CSE-ConnectionGUID: cx988N+US4OkmcRy9+rZag==
-X-CSE-MsgGUID: xHc2Mi9SRQS9IP2LxD31Wg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11531"; a="58665901"
-X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; d="scan'208";a="58665901"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
- by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Aug 2025 17:08:39 -0700
-X-CSE-ConnectionGUID: nCSpWnVjQ66crp9ofgSpCQ==
-X-CSE-MsgGUID: 2NUA1MRBRPG3LWb7PPFgcA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,217,1751266800"; d="scan'208";a="170358736"
-Received: from lkp-server02.sh.intel.com (HELO 4ea60e6ab079) ([10.239.97.151])
- by fmviesa008.fm.intel.com with ESMTP; 27 Aug 2025 17:08:38 -0700
-Received: from kbuild by 4ea60e6ab079 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1urQBw-000TID-1C
- for intel-wired-lan@lists.osuosl.org; Thu, 28 Aug 2025 00:08:36 +0000
-Date: Thu, 28 Aug 2025 08:07:43 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202508280833.1ZLNMQF6-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1756339720; x=1787875720;
- h=date:from:to:subject:message-id;
- bh=h3IUuzxu9aK8HWGdGw/Aet1YcRGfEhLelKxsMaxqhbM=;
- b=lbSt3WaTOszd5TY6RDPZh/KkCxRhEqiSMcxn5NtN6tBCCIUmZ7xN1cIo
- YFMpE2kawXSci/kqVqtJtftDHWtB7nB7fvQ1Wf/SH5JW8spTpoZ/FeSwn
- vT3fyxm2ZwxpSdIfhzA5+hVCQlhO93MaCmzyi9Vii+jmRDVgCVKoQav+l
- jS1j3VpZyGw81K1CB1Pldm8gro+f5fMgOojbdoyyaahXCQOKzKHVh75HW
- mXTEw2E6te0MLPnUXX1Kwu6FTPwnlfZM9RFXHBxSgnq2Ze9IyuH8LvR2k
- Q/40wcEr/cdb91lrThwDEoPa1PD3Vg/nIT1/u1m+2ZgYNIv2K3WbEQoQd
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id YyXkURvgjBmp for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 28 Aug 2025 02:06:06 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=52.101.125.57;
+ helo=tyvp286cu001.outbound.protection.outlook.com;
+ envelope-from=den@valinux.co.jp; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org CA40D406CF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CA40D406CF
+Received: from TYVP286CU001.outbound.protection.outlook.com
+ (mail-japaneastazon11011057.outbound.protection.outlook.com [52.101.125.57])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id CA40D406CF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Aug 2025 02:06:05 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=t51YXmFVnvf67GDdXdezNwRV0ugbRN7q4fNtcI+xtYJcL9AiX9y9FjspcgAEFE11cnHomHaYUxTxjvOB3x2sXvXBmUYtb8KUPfzB+NFSdQhTivDxUcdNoNd/UeGFj2P6B62Wmr9fVwR9ZU21pjm/Hg0uR32r/QN16t8jXUqqvpbVgniMKAIM08DhmDQYMuQJnkU/85aWKhF+sibnhns2FvuwlTV0ODy1hDVghuo62EhyHPQhrXP2c3i7fCXCm97topHjr9RQCf7NwdB7ocsW/2YMcxXyzYsRMZhwf1o7riA+yA2e/vKDE26Z4HmU+SkDtv3yyJ8WcbjyfPQTGTFkMg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=j9hKELv/XYxPko+wZ078jrUEDKc1V4UC+rZfezMfwGs=;
+ b=YDs1GO3QJCViX1Bj/QALs/CbF6+2aOFNOGjU9itbeOVPD3vYGAjQ3c+VbdDKPjE+3Gagky3eplcESNZJKJ+0cXlGygkcHw9RDwB6OBSFk/YchnASwhmJELeanyOAKjeVslhhcvMd2aFxq/ho6WFhrxGEM06EqLAYloIL0TL25RJovJvHSRXcsUNbnMv+COoRo0djXKUcxcZbfQZ8sHjfhNyj2orWMyncbcbqPFfPwwF5LM8Kl+Wv3YaRQVyXKyuy3qTVZZ9dYlLCMLpIk64ooE/EwBj8qcfRatB9vAY/k3aDMjlkE2Xb/KfVjkjaEdxjHEicA2JZW34nG8GVXvigJQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=valinux.co.jp; dmarc=pass action=none
+ header.from=valinux.co.jp; dkim=pass header.d=valinux.co.jp; arc=none
+Received: from OSZP286MB0982.JPNP286.PROD.OUTLOOK.COM (2603:1096:604:fe::6) by
+ TYRP286MB5848.JPNP286.PROD.OUTLOOK.COM (2603:1096:405:2e6::11) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9052.21; Thu, 28 Aug 2025 02:06:01 +0000
+Received: from OSZP286MB0982.JPNP286.PROD.OUTLOOK.COM
+ ([fe80::fb9b:13f3:8329:52e3]) by OSZP286MB0982.JPNP286.PROD.OUTLOOK.COM
+ ([fe80::fb9b:13f3:8329:52e3%5]) with mapi id 15.20.9052.019; Thu, 28 Aug 2025
+ 02:06:01 +0000
+From: Koichiro Den <den@valinux.co.jp>
+To: intel-wired-lan@lists.osuosl.org
+Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ andrew+netdev@lunn.ch, jedrzej.jagielski@intel.com,
+ mateusz.polchlopek@intel.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Date: Thu, 28 Aug 2025 11:05:58 +0900
+Message-ID: <20250828020558.1450422-1-den@valinux.co.jp>
+X-Mailer: git-send-email 2.48.1
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: TYCP286CA0215.JPNP286.PROD.OUTLOOK.COM
+ (2603:1096:400:3c5::6) To OSZP286MB0982.JPNP286.PROD.OUTLOOK.COM
+ (2603:1096:604:fe::6)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: OSZP286MB0982:EE_|TYRP286MB5848:EE_
+X-MS-Office365-Filtering-Correlation-Id: 119b3669-ed4f-414c-52d4-08dde5d76fcc
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0; ARA:13230040|10070799003|366016|376014|1800799024;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?30WTXwtqwu+GABU1HsRRZ2DNKSHWCvOu8TzFOCs5PmKYN5LNAdUz8QJyCzik?=
+ =?us-ascii?Q?aTKqvePXH41Bbz4IAnFtZFSGdOCDsz2TYXrwHFwXNnoyyVEMpS8/lYIxcxx8?=
+ =?us-ascii?Q?qfO3nwA5U9fOz2iXUSWim1+wl+zKito2SbuEUXoIPiv/e602CZbBrgolKGxD?=
+ =?us-ascii?Q?KbVsCw/409inyt9t961d59xx+5/G7j2cmbmHvtRbtcmkuLk+y2pXkhxFx2uf?=
+ =?us-ascii?Q?JYe390KpkfqgOstLjXCdLfcFEEex50l253nrhmspkUXveSDuYWx+a5VvP3Es?=
+ =?us-ascii?Q?onUA4aTHmPGGLn3Wm3ER7fcWK9u9G6ygk7Lksps8NpVhg292gjnrQUohtFLZ?=
+ =?us-ascii?Q?AYmt4I/AygM6bKYA0XgBLV4vp9RRMMr7mH96yCGcepTPj3TH/LOrLw46PmPy?=
+ =?us-ascii?Q?9GDaZzmCiGkNTuNnrMri41dXal5N376gQ1BHyH3zTXe8sCc63AhbPpzpo0Iz?=
+ =?us-ascii?Q?w/5P6z96L4r8WkALisAFmGyo9wU4PZMTw0CmP6SyLEU1De3jDVAstxi2PNOt?=
+ =?us-ascii?Q?xJOxD8FIkDCUwwJ8B4e7H1V6VjkwcNXwG3/khutOulvRGtCT1nwHOBi9PYg7?=
+ =?us-ascii?Q?rUSkZWFjn4UVH3GLFAm8AFCYT0vRG8ozxlmUQxYYmymC6KtdY+XbrtbpQLXV?=
+ =?us-ascii?Q?UxPWJc+s1fURWzad96IDygk/Mtwx36mLPm+XEdSKPbcHVTx1kuJoFLzZqXTW?=
+ =?us-ascii?Q?SH53TehR9lMT+VjtUPirGPt3t1oc3ApR0OqV1Am+z0JmGaWRlvTWUq9cXmzi?=
+ =?us-ascii?Q?oZaYA0UNcalXytdF4ZfsmpCJkWXEQhS0wCl8w1ae4JRM1/Dz+7X9d2CPGyd4?=
+ =?us-ascii?Q?5rFE8pwjUubN46eHWQDAlh6+FnXLeqbHtgNnCqszkbU8CWEknxBlsjpi4nyN?=
+ =?us-ascii?Q?QTMFiC1ICkuPzChuWBL2EBUYRj9UfUA6hjC7HNLIIE0hHrRMlcAAQPEhFhNZ?=
+ =?us-ascii?Q?Gp8otXHhpFFvat6ErDj9s5P9dFGeDMDvtHMzyRRtEw1cdfcI+EBd3UI+qyxD?=
+ =?us-ascii?Q?V7dukyLSKOp6i4tOPbmf5pTfrSkSt01wffU5mDSj3IcFHj5N2VVOZaM0NsXT?=
+ =?us-ascii?Q?bhMnH9VFSd8/PQjOX/4LnhngETW1tejG9n6QvN88ZqlbDTWX+cRPEUK6JtEM?=
+ =?us-ascii?Q?KORWmMUhIewh91EXIW5O6Pi5+rwjzygsyqahr7NwYUeGQVTVhW5kkFErO2MQ?=
+ =?us-ascii?Q?oOcRAZDrkFKaXJkzoebLcXS3DdQydcKbXENk9bGSHHA2nKjwQg3+ydm9pivF?=
+ =?us-ascii?Q?FbmgeeCNaSbm6uZ7YD3luJtMYD+fpa3k2ob7JjYooSAc7kwWCgFsit5iYoMu?=
+ =?us-ascii?Q?xfWacgE4YzKXLZyJ1Q4JGTu7opDvAAqnk6eqOEUWtkOppidCg4pMUR1TjvYX?=
+ =?us-ascii?Q?nujYFxHFYef+sjzzr/jzYBIg7IcoVmxGSUpPmZbeDpfK2WKJemEyGXoLxN5U?=
+ =?us-ascii?Q?0Ld78yVEtas=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:OSZP286MB0982.JPNP286.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
+ SFS:(13230040)(10070799003)(366016)(376014)(1800799024); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?HiNx8dnDHIwqCUEo3XAsFwut/7rwNHkrKhekBWjMESfn3In/F7eNrWFilINw?=
+ =?us-ascii?Q?Lfos/SmoOdhpC2gdVw2QqEhjTVoqNMmL7GaJwvn7HqUguUrT+2303fp2us/h?=
+ =?us-ascii?Q?3Wdl0eiZuk9TKTFDCRX+YsuDtZlWT2Mgp9F6LYYtrjUMFZ6rNfbgXTkoOiBP?=
+ =?us-ascii?Q?uS0LNaZs7OAZviOIJ/X4FEEuxHtcWjox5FwaUlgrGdP8+C9NXPWKvq9MPc1Z?=
+ =?us-ascii?Q?EUTkF71gf8cLO6DXskoO+LuDLLOz9Kuxkk+8/wHQERtaXWUXOBI/kDazSAWO?=
+ =?us-ascii?Q?LuuJtWOwmtmFqV21QddfQzEpDeTuILSc9d0HTlpj7cVoVJdeIzTkGjKRAdUi?=
+ =?us-ascii?Q?zROXqo1gUoKFXJRpr4THAc8DqqUERU/jDNKB3Wq91d59KrUYqPdLID0f3ElC?=
+ =?us-ascii?Q?OvFEEKB3SLXin6gtQ3b+FZvTdLV3j7igSF2AnQZAJAbGwDoWbAJnkpPL74Cr?=
+ =?us-ascii?Q?MNOzpbpkalcBkI1zVoToirR0Nx5jYP+loymOzNVK+UWHApfkZ1d6vNWhYerz?=
+ =?us-ascii?Q?PwVLTgfnGLlcDTKY4Yx2gVV6oZrjd2KMLLIzXfScOWG5BmI1Ib+cAq2aBlOD?=
+ =?us-ascii?Q?+nrAgOsr7zpPkcMDTjP95tHSgZZbegFCuIMYaKpwCKo5npXWOmVBKOMdgTkM?=
+ =?us-ascii?Q?evadn1FzVNzLQ1aaFP4afqSzWIUy4JISym7qpbWYvgs729aflhcY9jFhLewC?=
+ =?us-ascii?Q?oozxKGsJvL9HO4P22BhuwANJYoso/s4OXCljwCUNOQLW3bq8G1yp6LK5bzad?=
+ =?us-ascii?Q?lAeg/Q1oEi1bKwobuEmhKYrmB8p1fbfeolCvUlPcT+VW/IEuuEAvbwe2TGpr?=
+ =?us-ascii?Q?ySjkE16xo/AURo7PrN9fPd5EGFf6/0k1nV/QD6tcqi9DYrB/Dj4oGizf6AUj?=
+ =?us-ascii?Q?MxfZNYIjXwoQ5IBMZHJD9/uwRw3zFarg8jaCKjoP5KF6iXmsGF3w2B3v5atE?=
+ =?us-ascii?Q?yDXW0FBfr0CavU+KqGWLHzIEv1llt8f59Fb3ZmsA+9L6cTUNI9Of+DofJlJa?=
+ =?us-ascii?Q?/LBB8LTksLP3XsKmx3bcSHdyLsMZDHseA3XSZibQC00b/0e59tNGuHvgiPKJ?=
+ =?us-ascii?Q?Xj+rPSzs2q6dCIEY7LWjZDyTzuBBPrCY5k0XgxDog087mrqpRw6MlxVBrwng?=
+ =?us-ascii?Q?QiyeF8dx18dSJQPN0vp+Al1YeUjoLVv7Cwd+jYyOyJH6MLSyqPHuGOjibAQl?=
+ =?us-ascii?Q?VqNZrNLMPf/szjpoiS4hWiq29u7m8fg7CzFfVXKAaVF8vqkc3fO3qF/JasbJ?=
+ =?us-ascii?Q?ZpgrsGn1NpnnR9mQJf81h6jEI45rSqEGsXSR27sNgHxM/Bg9eccSV3n7tjku?=
+ =?us-ascii?Q?SY9FLrxCsWwBMNaiaVjj9pwsbqqrQrreo06vuszZZbBP1R379Tn9AGXm9jZO?=
+ =?us-ascii?Q?Jb6IyKVQr0tgTLPRabKbwoy8lnRMsoU4W4TqCw0v+1z31195ZGMAq8jNwGWT?=
+ =?us-ascii?Q?tbbPSNvltrlTZ4rkGmHXWjzHs05YLuQaBlVSzNy2HYdbquUQauNSQV6m4lTt?=
+ =?us-ascii?Q?9hRfN06+zZ5Wsg0oypyAor40M4OZYJbEdWj0GTmGbjUtlGD1XeF8X1nB1guH?=
+ =?us-ascii?Q?Q7tpK//O0cAxN7Tj7GVNyD1LBy8FiQYraGfEBFsNuNg1gdfLnjuA4/AiRyZI?=
+ =?us-ascii?Q?WSAaINaf7nSqyjYbE9nIRA0=3D?=
+X-OriginatorOrg: valinux.co.jp
+X-MS-Exchange-CrossTenant-Network-Message-Id: 119b3669-ed4f-414c-52d4-08dde5d76fcc
+X-MS-Exchange-CrossTenant-AuthSource: OSZP286MB0982.JPNP286.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Aug 2025 02:06:01.4387 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 7a57bee8-f73d-4c5f-a4f7-d72c91c8c111
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: qhfG9p8X0Xfc0/K7kccOHiOYT+ScZAJmEq6OOIGMk+I389ik/ceqWdYJEsmV0k6EqPWafGgtQm/mX/2D5LOI/A==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYRP286MB5848
+X-Mailman-Approved-At: Thu, 28 Aug 2025 15:03:16 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=valinux.co.jp; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=j9hKELv/XYxPko+wZ078jrUEDKc1V4UC+rZfezMfwGs=;
+ b=ubLWS4UzBsENWrrJvwQ5l2njL0M3shGNdbRTwXvCJkt2dJvbOgNub5gWDrcvTNHRvYtdzaZ3VWYmZSzC3t+EXetJKyCzqrUA8KVI58QFvxsfKgmKlxo5BfONLoX5EKJVJ7Vnl3nCceVmv0rT2QQpBi1gZ+LhspI5tkkzjQsMDP0=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=lbSt3WaT
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- d33ac41be2e7b769b05b8ef648a7ab51e934104d
+ header.from=valinux.co.jp
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=valinux.co.jp header.i=@valinux.co.jp
+ header.a=rsa-sha256 header.s=selector1 header.b=ubLWS4Uz
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=valinux.co.jp;
+Subject: [Intel-wired-lan] [iwl-net] ixgbe: fix too early devlink_free() in
+ ixgbe_remove()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,154 +188,76 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: d33ac41be2e7b769b05b8ef648a7ab51e934104d  ice: add recovery clock and clock 1588 control for E825c
+Since ixgbe_adapter is embedded in devlink, calling devlink_free()
+prematurely in the ixgbe_remove() path can sometimes lead to UAF.
 
-elapsed time: 1453m
+Move the devlink cleanup steps to the end. KASAN report:
 
-configs tested: 135
-configs skipped: 3
+ BUG: KASAN: use-after-free in ixgbe_reset_interrupt_capability+0x140/0x180 [ixgbe]
+ Read of size 8 at addr ffff0000adf813e0 by task bash/2095
+ CPU: 1 UID: 0 PID: 2095 Comm: bash Tainted: G S  6.17.0-rc2-tnguy.net-queue+ #1 PREEMPT(full)
+ [...]
+ Call trace:
+  show_stack+0x30/0x90 (C)
+  dump_stack_lvl+0x9c/0xd0
+  print_address_description.constprop.0+0x90/0x310
+  print_report+0x104/0x1f0
+  kasan_report+0x88/0x180
+  __asan_report_load8_noabort+0x20/0x30
+  ixgbe_reset_interrupt_capability+0x140/0x180 [ixgbe]
+  ixgbe_clear_interrupt_scheme+0xf8/0x130 [ixgbe]
+  ixgbe_remove+0x2d0/0x8c0 [ixgbe]
+  pci_device_remove+0xa0/0x220
+  device_remove+0xb8/0x170
+  device_release_driver_internal+0x318/0x490
+  device_driver_detach+0x40/0x68
+  unbind_store+0xec/0x118
+  drv_attr_store+0x64/0xb8
+  sysfs_kf_write+0xcc/0x138
+  kernfs_fop_write_iter+0x294/0x440
+  new_sync_write+0x1fc/0x588
+  vfs_write+0x480/0x6a0
+  ksys_write+0xf0/0x1e0
+  __arm64_sys_write+0x70/0xc0
+  invoke_syscall.constprop.0+0xcc/0x280
+  el0_svc_common.constprop.0+0xa8/0x248
+  do_el0_svc+0x44/0x68
+  el0_svc+0x54/0x160
+  el0t_64_sync_handler+0xa0/0xe8
+  el0t_64_sync+0x1b0/0x1b8
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Fixes: a0285236ab93 ("ixgbe: add initial devlink support")
+Signed-off-by: Koichiro Den <den@valinux.co.jp>
+---
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-tested configs:
-alpha                            alldefconfig    gcc-15.1.0
-alpha                             allnoconfig    gcc-15.1.0
-alpha                            allyesconfig    gcc-15.1.0
-alpha                               defconfig    gcc-15.1.0
-arc                              allmodconfig    gcc-15.1.0
-arc                               allnoconfig    gcc-15.1.0
-arc                              allyesconfig    gcc-15.1.0
-arc                      axs103_smp_defconfig    gcc-15.1.0
-arc                                 defconfig    gcc-15.1.0
-arc                   randconfig-001-20250827    gcc-12.5.0
-arc                   randconfig-002-20250827    gcc-8.5.0
-arc                        vdk_hs38_defconfig    gcc-15.1.0
-arm                              allmodconfig    gcc-15.1.0
-arm                               allnoconfig    clang-22
-arm                              allyesconfig    gcc-15.1.0
-arm                         axm55xx_defconfig    clang-22
-arm                                 defconfig    clang-22
-arm                          pxa168_defconfig    clang-19
-arm                   randconfig-001-20250827    clang-22
-arm                   randconfig-002-20250827    clang-22
-arm                   randconfig-003-20250827    clang-22
-arm                   randconfig-004-20250827    clang-22
-arm64                            allmodconfig    clang-19
-arm64                             allnoconfig    gcc-15.1.0
-arm64                               defconfig    gcc-15.1.0
-arm64                 randconfig-001-20250827    gcc-11.5.0
-arm64                 randconfig-002-20250827    gcc-8.5.0
-arm64                 randconfig-003-20250827    clang-22
-arm64                 randconfig-004-20250827    gcc-9.5.0
-csky                              allnoconfig    gcc-15.1.0
-csky                                defconfig    gcc-15.1.0
-csky                  randconfig-001-20250827    gcc-10.5.0
-csky                  randconfig-002-20250827    gcc-15.1.0
-hexagon                          allmodconfig    clang-17
-hexagon                           allnoconfig    clang-22
-hexagon                          allyesconfig    clang-22
-hexagon                             defconfig    clang-22
-hexagon               randconfig-001-20250827    clang-22
-hexagon               randconfig-002-20250827    clang-22
-i386                             allmodconfig    gcc-12
-i386                              allnoconfig    gcc-12
-i386                             allyesconfig    gcc-12
-i386        buildonly-randconfig-001-20250827    clang-20
-i386        buildonly-randconfig-002-20250827    clang-20
-i386        buildonly-randconfig-003-20250827    clang-20
-i386        buildonly-randconfig-004-20250827    clang-20
-i386        buildonly-randconfig-005-20250827    clang-20
-i386        buildonly-randconfig-006-20250827    gcc-12
-i386                                defconfig    clang-20
-loongarch                        allmodconfig    clang-19
-loongarch                         allnoconfig    clang-22
-loongarch                           defconfig    clang-19
-loongarch             randconfig-001-20250827    gcc-15.1.0
-loongarch             randconfig-002-20250827    clang-22
-m68k                             allmodconfig    gcc-15.1.0
-m68k                              allnoconfig    gcc-15.1.0
-m68k                             allyesconfig    gcc-15.1.0
-m68k                                defconfig    gcc-15.1.0
-microblaze                       allmodconfig    gcc-15.1.0
-microblaze                        allnoconfig    gcc-15.1.0
-microblaze                       allyesconfig    gcc-15.1.0
-microblaze                          defconfig    gcc-15.1.0
-mips                              allnoconfig    gcc-15.1.0
-mips                           ci20_defconfig    clang-22
-nios2                             allnoconfig    gcc-11.5.0
-nios2                               defconfig    gcc-11.5.0
-nios2                 randconfig-001-20250827    gcc-8.5.0
-nios2                 randconfig-002-20250827    gcc-11.5.0
-openrisc                          allnoconfig    gcc-15.1.0
-openrisc                         allyesconfig    gcc-15.1.0
-openrisc                            defconfig    gcc-15.1.0
-parisc                           allmodconfig    gcc-15.1.0
-parisc                            allnoconfig    gcc-15.1.0
-parisc                           allyesconfig    gcc-15.1.0
-parisc                              defconfig    gcc-15.1.0
-parisc                randconfig-001-20250827    gcc-12.5.0
-parisc                randconfig-002-20250827    gcc-8.5.0
-parisc64                            defconfig    gcc-15.1.0
-powerpc                          allmodconfig    gcc-15.1.0
-powerpc                           allnoconfig    gcc-15.1.0
-powerpc                          allyesconfig    clang-22
-powerpc                     mpc83xx_defconfig    clang-22
-powerpc               randconfig-001-20250827    clang-22
-powerpc               randconfig-002-20250827    clang-22
-powerpc               randconfig-003-20250827    clang-22
-powerpc64             randconfig-001-20250827    gcc-11.5.0
-powerpc64             randconfig-002-20250827    gcc-11.5.0
-powerpc64             randconfig-003-20250827    gcc-13.4.0
-riscv                             allnoconfig    gcc-15.1.0
-riscv                            allyesconfig    clang-16
-riscv                               defconfig    clang-22
-riscv                 randconfig-001-20250827    clang-19
-riscv                 randconfig-002-20250827    clang-22
-s390                             allmodconfig    clang-18
-s390                              allnoconfig    clang-22
-s390                             allyesconfig    gcc-15.1.0
-s390                                defconfig    clang-22
-s390                  randconfig-001-20250827    gcc-13.4.0
-s390                  randconfig-002-20250827    gcc-8.5.0
-sh                               allmodconfig    gcc-15.1.0
-sh                                allnoconfig    gcc-15.1.0
-sh                               allyesconfig    gcc-15.1.0
-sh                                  defconfig    gcc-15.1.0
-sh                    randconfig-001-20250827    gcc-15.1.0
-sh                    randconfig-002-20250827    gcc-9.5.0
-sh                             shx3_defconfig    gcc-15.1.0
-sparc                            allmodconfig    gcc-15.1.0
-sparc                             allnoconfig    gcc-15.1.0
-sparc                               defconfig    gcc-15.1.0
-sparc                 randconfig-001-20250827    gcc-15.1.0
-sparc                 randconfig-002-20250827    gcc-15.1.0
-sparc64                             defconfig    clang-20
-sparc64               randconfig-001-20250827    gcc-11.5.0
-sparc64               randconfig-002-20250827    gcc-8.5.0
-um                               allmodconfig    clang-19
-um                                allnoconfig    clang-22
-um                               allyesconfig    gcc-12
-um                                  defconfig    clang-22
-um                             i386_defconfig    gcc-12
-um                    randconfig-001-20250827    gcc-12
-um                    randconfig-002-20250827    clang-22
-um                           x86_64_defconfig    clang-22
-x86_64                            allnoconfig    clang-20
-x86_64                           allyesconfig    clang-20
-x86_64      buildonly-randconfig-001-20250827    clang-20
-x86_64      buildonly-randconfig-002-20250827    clang-20
-x86_64      buildonly-randconfig-003-20250827    gcc-12
-x86_64      buildonly-randconfig-004-20250827    gcc-12
-x86_64      buildonly-randconfig-005-20250827    clang-20
-x86_64      buildonly-randconfig-006-20250827    clang-20
-x86_64                              defconfig    gcc-11
-x86_64                          rhel-9.4-rust    clang-20
-xtensa                            allnoconfig    gcc-15.1.0
-xtensa                randconfig-001-20250827    gcc-10.5.0
-xtensa                randconfig-002-20250827    gcc-10.5.0
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index 80e6a2ef1350..2b1f3104164c 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -12090,10 +12090,6 @@ static void ixgbe_remove(struct pci_dev *pdev)
+ 	if (netdev->reg_state == NETREG_REGISTERED)
+ 		unregister_netdev(netdev);
+ 
+-	devl_port_unregister(&adapter->devlink_port);
+-	devl_unlock(adapter->devlink);
+-	devlink_free(adapter->devlink);
+-
+ 	ixgbe_stop_ipsec_offload(adapter);
+ 	ixgbe_clear_interrupt_scheme(adapter);
+ 
+@@ -12125,6 +12121,10 @@ static void ixgbe_remove(struct pci_dev *pdev)
+ 
+ 	if (disable_dev)
+ 		pci_disable_device(pdev);
++
++	devl_port_unregister(&adapter->devlink_port);
++	devl_unlock(adapter->devlink);
++	devlink_free(adapter->devlink);
+ }
+ 
+ /**
+-- 
+2.48.1
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
