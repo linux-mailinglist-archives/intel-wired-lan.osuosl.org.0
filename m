@@ -2,88 +2,116 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CFF81B39A69
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 Aug 2025 12:40:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9210AB3A358
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 Aug 2025 17:03:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7D02E60B21;
-	Thu, 28 Aug 2025 10:40:46 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5279260D70;
+	Thu, 28 Aug 2025 15:03:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Uf7sg3cYF9Eq; Thu, 28 Aug 2025 10:40:44 +0000 (UTC)
+ id bQRY65L0q-oR; Thu, 28 Aug 2025 15:03:18 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5230360BCD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7000960E44
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1756377644;
-	bh=/sqTPAhGuwTYFXfsuiKw4m1Tn0kTsx3MzexPL5jVVYY=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1756393398;
+	bh=TAUsH9qx5Xo7HZQWurliwAGX0byykFNGH5/xaDPAnAg=;
+	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=VQGsdgVn5fkys+ts0iUWrhEZQqfoxeeVKc8zGHATF6Ju9L1tY8JXQLnBcKny8vlGC
-	 3kgi6lfIcyyCJ5FH80ap8tU84l2pBlpH38OnqSkwNHwYMchIJPAYeX4wGw+hsqhG+t
-	 k4cg23AD+nj9U3BeYD/TdbL7qAGw3TtIOFA+qRiJ0Puf03RupL8WhdiR55iX8y5rto
-	 tky6X6Ywa30XetYwLK2EOBSamXjPHnCfdkYv/WZQw7476kyaKbUNbkgOlrNery5CPh
-	 sn4DiBeIGSdJ8tgAv+MDtDausnBqvGMDxD/8iG9sz1zC1BRCN9E+19o95pB2kST+hv
-	 JmlKYU+l+ptzQ==
+	b=YgPikk9MUssQETgt7v3LmH/I01LaOJ+SOkXC4Heod6ZxKnQq0PaBgiELo17DLfpI1
+	 LXlZr+5lVzChyUxHihzx8DFQMXHvfgxEWedKgFabjKXTTXRQ6ERKAGjtaS5DSB1zLG
+	 lFVzlaXs5BMp3JQV14TiUCGqtEtREXVTH6V8onF/h7xYVU9N8GwfGX6xUK7RCsybzs
+	 2wl+1ZKfeaQs1x6RN9n/F53Oazo/XNVWRkQ34R49A6f1/tA36MxZXgbQfG9dA2uNjX
+	 uoaEZeFqz/Fj6ERqbxAExnPC56/IWOKB9p9/uGduU5/+Tl6QPloLnlN0YDvTbYQE0r
+	 0973SxJMVCAUw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5230360BCD;
-	Thu, 28 Aug 2025 10:40:44 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7000960E44;
+	Thu, 28 Aug 2025 15:03:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 9D61517D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Aug 2025 10:40:42 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id A5354B8C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Aug 2025 11:05:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 81F9A813DC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Aug 2025 10:40:42 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8E21640C8B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Aug 2025 11:05:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id W_qO9YSPUS0s for <intel-wired-lan@lists.osuosl.org>;
- Thu, 28 Aug 2025 10:40:41 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Ch75vreWfIU1 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 28 Aug 2025 11:05:23 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 9F1F98142A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9F1F98142A
-Received: from tor.source.kernel.org (tor.source.kernel.org
- [IPv6:2600:3c04:e001:324:0:1991:8:25])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 9F1F98142A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Aug 2025 10:40:41 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 5054C601BB;
- Thu, 28 Aug 2025 10:40:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C80CAC4CEEB;
- Thu, 28 Aug 2025 10:40:38 +0000 (UTC)
-Date: Thu, 28 Aug 2025 11:40:36 +0100
-From: Simon Horman <horms@kernel.org>
-To: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, madhu.chittim@intel.com,
- netdev@vger.kernel.org, Sridhar Samudrala <sridhar.samudrala@intel.com>
-Message-ID: <20250828104036.GA10519@horms.kernel.org>
-References: <20250826172845.265142-1-pavan.kumar.linga@intel.com>
+ client-ip=2a00:1450:4864:20::231; helo=mail-lj1-x231.google.com;
+ envelope-from=dvyukov@google.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A0A6F40731
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A0A6F40731
+Received: from mail-lj1-x231.google.com (mail-lj1-x231.google.com
+ [IPv6:2a00:1450:4864:20::231])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A0A6F40731
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Aug 2025 11:05:23 +0000 (UTC)
+Received: by mail-lj1-x231.google.com with SMTP id
+ 38308e7fff4ca-3367f35d11aso6737151fa.0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Aug 2025 04:05:23 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1756379121; x=1756983921;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=TAUsH9qx5Xo7HZQWurliwAGX0byykFNGH5/xaDPAnAg=;
+ b=NCBhz2SdfulFUG8dOlVg6JMHpr4fawn8PHMCww3BkVzuuMf121dEOVQVEdPQQFQr1F
+ AoZxn5Z63mvT0kb0zoCKR+q4vpU3KA46sKlHbxBRih7PI1FIFSgH+PVv1IWxz8BirGZD
+ SIy/lwfnTUs6PssnJAp2EjTmevBQrg0QJWth59z/dkB2wr9UtmLNLivjv4XeVSVlK8af
+ jkAkJpK4SwKTWacoeCLUyaPgzUb5U9VB5In++iDsazfhh/oFy0mz+0STWmcOouYTTxwF
+ WZjIhhUOJQdErX8obN0jdluSdpmdBg/jP4tZMowqQGL73Fg9ITuLoLyp0gFiQqQjKHHA
+ tT+A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVZeuDigtv73J7QPHgmYVVK47afeGeSdH1UjoggnAPDmjzze6lSuXoBLjbraNMPZCxeddHjyuNzgxubcVVJlek=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yz83P/XmQrjBw1zc8ZwUzOusUU08m95GDG4dwTE/RGqYZFBQMON
+ DXlV+2+HT0v7Q/uqVawbyNd3aWn8zFcAaarGOHLsPVhoKG/ZadlywZhfgu5lVqdAhOwK9d7A7K3
+ oaxwX7FxZSuWVFmC0V6popVWBGQdWOP/WJzInAGRt
+X-Gm-Gg: ASbGnctfffrrylU/QS+dSARy12Gg8DaQQ3S/ktdkQ26FUrOe6dXlJ2xRWQCxLYJUwdQ
+ qK569TFf8ZCSLULbJL5RM7jZba0QZLvWWqdJR64B810MO0AqLoADH3AtdKni7WiSQGlQCAMeFJP
+ Hp/vVXDD8uOXh7jesbQdY47YahN6Zdn9r9OQW+MwsZuzuOZZP9Eu/ns808LUIZu//ISW1zea41R
+ 7UY4pCHLGZK3v/Dy4ErWUYj1DTh7ZYmx0LjAbk+0N+bNlFaRYd3lTw=
+X-Google-Smtp-Source: AGHT+IH2xqkT7Gm8Y8VPKOFZe2CwX6AJnHBKkNuQ1kWl9XzOyZn3Ty6HeFlWouXcagu0nm0WrDp9EEtaTGEu1op7fA0=
+X-Received: by 2002:a05:651c:2359:20b0:336:9adb:75f3 with SMTP id
+ 38308e7fff4ca-3369adb788amr8793491fa.38.1756379120964; Thu, 28 Aug 2025
+ 04:05:20 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250826172845.265142-1-pavan.kumar.linga@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1756377640;
- bh=NwR50ZpM6+Ymc6dkl0+mc9OsZhEF6EybCCscmIk+Dzo=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=b/MrN/V9C+XQmfWdIPZiTK9ah1S1Zvix6O9zkq3Qk26i/Wna/kqG9XOV+7+c7Wc9n
- JOaIkR3bmfJ0nePmMaaodHhqeCe+bzLayOWcV/yN7bzttvT2ekqaA8euLSU9xVRBpg
- ASE0RGmdG/2Lw7YAcyeunohVxv0bsNNnWqgIodTSFLiCWvgeNYOaT9lijWiI9wGljk
- JDP+cO/0LiLRW/NOm3mYHeUoRyxWxK7wEC8DINQU5qmiOMB4gXijI7bPNt6wLLx05d
- SzfiX/U+JRiEeHGtjhwB4asa3qE+5NnfTBuTbC8YkeTvtEc1sXzExl8u6cKszlWGmR
- 9fwoNM83X5gdw==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=b/MrN/V9
-Subject: Re: [Intel-wired-lan] [PATCH net-next v1] idpf: add support for
- IDPF PCI programming interface
+References: <CANypQFbECe10JE9MKzdU3X7kehVDoHr0kGnQpK1CVMJrg+qJwA@mail.gmail.com>
+In-Reply-To: <CANypQFbECe10JE9MKzdU3X7kehVDoHr0kGnQpK1CVMJrg+qJwA@mail.gmail.com>
+From: Dmitry Vyukov <dvyukov@google.com>
+Date: Thu, 28 Aug 2025 13:05:07 +0200
+X-Gm-Features: Ac12FXwwRNf_fseKBhowipW4TPj-BQ0S2f9JAeNpAbDYk4E0hs940usVGesVMUU
+Message-ID: <CACT4Y+YLTF0bG6yJABOXg7zZt+1nV6ajHLJxSWzazSk2sH=tfA@mail.gmail.com>
+To: Jiaming Zhang <r772577952@gmail.com>
+Cc: "anthony.l.nguyen@intel.com" <anthony.l.nguyen@intel.com>,
+ davem@davemloft.net, 
+ intel-wired-lan@lists.osuosl.org, jesse.brandeburg@intel.com, kuba@kernel.org, 
+ netdev@vger.kernel.org, security@kernel.org, linux-kernel@vger.kernel.org, 
+ syzkaller@googlegroups.com
+Content-Type: text/plain; charset="UTF-8"
+X-Mailman-Approved-At: Thu, 28 Aug 2025 15:03:16 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1756379121; x=1756983921; darn=lists.osuosl.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=TAUsH9qx5Xo7HZQWurliwAGX0byykFNGH5/xaDPAnAg=;
+ b=3xt8VC6uTsVT+gotWm2kv0a77C2e/L5oN+7CncTOUJ8Pc0+IUQkgOqibHdTLiJNufB
+ iq/g41S1wtFx88WnGMEl2xkHjG30ardG+I0Y70+tw95UurdUh78M4VFdAryjKYyrIVsX
+ nAvCylspUHewe/Y3kZ6OdOjThxSAchr6gKEQ0+JbVwIoApSBqgh7LXv0hhBXkoTfGDum
+ xmSPObDIfNRXv9kgrdZzurV07s9/S5OF2QHCQIlPZvINuK4cVlOhskgc/sOlyLqdaHYF
+ iXK+4asdKFJfGP1sOyY+d+LPC+BJTmtsoXvtdzts8QwTkWLxGJHxujttxM8598n4OaIH
+ Ovxg==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=google.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=google.com header.i=@google.com
+ header.a=rsa-sha256 header.s=20230601 header.b=3xt8VC6u
+Subject: Re: [Intel-wired-lan] [Linux Kernle Bug] INFO: rcu detected stall
+ in e1000_watchdog
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -99,96 +127,31 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Aug 26, 2025 at 10:28:45AM -0700, Pavan Kumar Linga wrote:
-> At present IDPF supports only 0x1452 and 0x145C as PF and VF device IDs
-> on our current generation hardware. Future hardware exposes a new set of
-> device IDs for each generation. To avoid adding a new device ID for each
-> generation and to make the driver forward and backward compatible,
-> make use of the IDPF PCI programming interface to load the driver.
-> 
-> Write and read the VF_ARQBAL mailbox register to find if the current
-> device is a PF or a VF.
-> 
-> PCI SIG allocated a new programming interface for the IDPF compliant
-> ethernet network controller devices. It can be found at:
-> https://members.pcisig.com/wg/PCI-SIG/document/20113
-> with the document titled as 'PCI Code and ID Assignment Revision 1.16'
-> or any latest revisions.
-> 
-> Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
-> Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
-> Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+On Thu, 28 Aug 2025 at 12:40, Jiaming Zhang <r772577952@gmail.com> wrote:
+>
+> Dear Linux kernel developers and maintainers:
+>
+> We are writing to report a kernel bug discovered with our modified
+> version of syzkaller.
+>
+> The bug was initially found in Linux kernel v5.15.189 (commit
+> c79648372d02944bf4a54d87e3901db05d0ac82e). We have attached the
+> .config file and symbolized crash report for your reference.
+>
+> Unfortunately, we do not have a reliable reproducer at this time. We
+> are actively analyzing the root cause and working to create a
+> consistent reproducer, which we will share as soon as it is available.
+>
+> Please let us know if you need any further information.
+>
+> Best regards,
+> Jiaming Zhang
 
-...
+Hi Jiaming,
 
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf_main.c b/drivers/net/ethernet/intel/idpf/idpf_main.c
-> index 8c46481d2e1f..b161715e1168 100644
-> --- a/drivers/net/ethernet/intel/idpf/idpf_main.c
-> +++ b/drivers/net/ethernet/intel/idpf/idpf_main.c
-> @@ -7,11 +7,57 @@
->  
->  #define DRV_SUMMARY	"Intel(R) Infrastructure Data Path Function Linux Driver"
->  
-> +#define IDPF_NETWORK_ETHERNET_PROGIF				0x01
-> +#define IDPF_CLASS_NETWORK_ETHERNET_PROGIF			\
-> +	(PCI_CLASS_NETWORK_ETHERNET << 8 | IDPF_NETWORK_ETHERNET_PROGIF)
-> +
->  MODULE_DESCRIPTION(DRV_SUMMARY);
->  MODULE_IMPORT_NS("LIBETH");
->  MODULE_IMPORT_NS("LIBETH_XDP");
->  MODULE_LICENSE("GPL");
->  
-> +/**
-> + * idpf_dev_init - Initialize device specific parameters
-> + * @adapter: adapter to initialize
-> + * @ent: entry in idpf_pci_tbl
-> + *
-> + * Return: %0 on success, -%errno on failure.
-> + */
-> +static int idpf_dev_init(struct idpf_adapter *adapter,
-> +			 const struct pci_device_id *ent)
-> +{
-> +	u8 is_vf = 0;
-> +	int err;
-> +
-> +	switch (ent->device) {
-> +	case IDPF_DEV_ID_PF:
-> +		goto dev_ops_init;
-> +	case IDPF_DEV_ID_VF:
-> +		is_vf = 1;
-> +		goto dev_ops_init;
-> +	default:
-> +		if (ent->class == IDPF_CLASS_NETWORK_ETHERNET_PROGIF)
-> +			goto check_vf;
-> +
-> +		return -ENODEV;
-> +	}
-> +
-> +check_vf:
-> +	err = idpf_is_vf_device(adapter->pdev, &is_vf);
-> +	if (err)
-> +		return err;
-> +
-> +dev_ops_init:
-> +	if (is_vf) {
-> +		idpf_vf_dev_ops_init(adapter);
-> +		adapter->crc_enable = true;
-> +	} else {
-> +		idpf_dev_ops_init(adapter);
-> +	}
-> +
-> +	return 0;
-> +}
+This is likely to be a false positive. We found the default kernel
+timeouts are not really suitable for fuzzing. Consider using the
+official syzkaller-recommended configs with proper tuning for fuzzing.
 
-Hi Pavan,
-
-I think that in Kernel Networking code the usual use cases
-of goto labels are: for error handling; and, optimisation,
-f.e. in the datapath.
-
-I don't think this code falls into either category.
-So I suggest implementing it without gotos.
-
-Thanks!
-
-...
+Additionally, v5.15 is extremely old. Check out:
+https://github.com/google/syzkaller/blob/master/docs/linux/reporting_kernel_bugs.md
