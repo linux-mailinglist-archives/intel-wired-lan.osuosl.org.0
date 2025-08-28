@@ -1,117 +1,124 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8E591B3A88B
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 Aug 2025 19:43:44 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D2DD5B3AADF
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 Aug 2025 21:26:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 38AA783BC5;
-	Thu, 28 Aug 2025 17:43:43 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 86CF1822C6;
+	Thu, 28 Aug 2025 19:26:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xnG1YqbcEBqN; Thu, 28 Aug 2025 17:43:42 +0000 (UTC)
+ id oEYKocusCUJf; Thu, 28 Aug 2025 19:26:06 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5892B83C6B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A0A7283DF7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1756403021;
-	bh=39UVD9jD47uFJ6TSgGQ5e07mnJTvscZvNgUxsvodOo8=;
-	h=From:To:CC:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1756409166;
+	bh=ZNKCiEXVNimfghYWuXUmKnsDjiRGghYXpeYN/YwzGig=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=HszR8yTQnJTM/QHO83aCUIx0/5y6CrQxVEOq1BYt/OXNQ+ltghjIrWwZ5uawiV4LL
-	 8YKlVI41FfMK6pMNBOOroI024lJPgxAXLjjP43n1YfX3cH2ZCY98+DuRyhKHQaKZzl
-	 cydoPNAHKOQZZnLgHenJycnYMJE7vjcJOz/lsdt1cki55+RJp1Fs0YR31d3+fIwToA
-	 vlOJ1UH1Y6yIcFwY6nUIhmbLEU6KJ5/jybHS5p2HUSVEdXys1i0All5/nJoIYOQljp
-	 l5RR4avFoPVu570nt9SQd3eWnDdW9bU+NTJRObd9b2I9oSPqMGMURgKziwn8/5rjfT
-	 n3A4/V5Rgj97Q==
+	b=8I2DUgxOG1egl5RtaPpRqfaiQeGbrz+dSsE4hY8t4mPD7jLEu8Z4/mk+1Wi5rN9hA
+	 OwzZlXQUwYYLc6QOUmzh42hYizT+5BME4iioGEhbSLNANdwh9zECBNM6EMoptwu4I4
+	 pA/6ldvUbuP0ma1VGEn+ZSiE2xuso+Ciu6qPXhZakdhSZAAyEX91Ruchdbq06oCbzB
+	 FriGaQPj4ufPlsYBLZ8pMOlWf2FiUuTiw8jasSoadBTuTQWOD9OZX+ZnvkKoj1ZV/c
+	 uXhzx8GwvxNnzJKA2Fj1vBd3WlkpN4sEIwwt/KYC3ujq4+IhVQil8Ewm3I3YTcHdCk
+	 Xyo+cFvl6aSYg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5892B83C6B;
-	Thu, 28 Aug 2025 17:43:41 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A0A7283DF7;
+	Thu, 28 Aug 2025 19:26:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id D0004928
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Aug 2025 17:43:39 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id D3AFF92D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Aug 2025 19:26:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C146041081
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Aug 2025 17:43:39 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id BA0D140F25
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Aug 2025 19:26:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8BCxQa6NJ0pw for <intel-wired-lan@lists.osuosl.org>;
- Thu, 28 Aug 2025 17:43:38 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=52.42.203.116;
- helo=pdx-out-008.esa.us-west-2.outbound.mail-perimeter.amazon.com;
- envelope-from=prvs=32827fd36=enjuk@amazon.co.jp; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org BAACE40AD3
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BAACE40AD3
-Received: from pdx-out-008.esa.us-west-2.outbound.mail-perimeter.amazon.com
- (pdx-out-008.esa.us-west-2.outbound.mail-perimeter.amazon.com
- [52.42.203.116])
- by smtp4.osuosl.org (Postfix) with ESMTPS id BAACE40AD3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Aug 2025 17:43:38 +0000 (UTC)
-X-CSE-ConnectionGUID: M4jzjxKrS2uOQt3jmPJ/aw==
-X-CSE-MsgGUID: LJnWMWTkQ7acSJG+LxWF/w==
-X-IronPort-AV: E=Sophos;i="6.18,220,1751241600"; 
-   d="scan'208";a="1979841"
-Received: from ip-10-5-12-219.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.12.219])
- by internal-pdx-out-008.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Aug 2025 17:43:36 +0000
-Received: from EX19MTAUWC001.ant.amazon.com [10.0.38.20:11071]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.41.88:2525]
- with esmtp (Farcaster)
- id 9236d93b-d03f-4bf6-b5b4-104817bfb858; Thu, 28 Aug 2025 17:43:36 +0000 (UTC)
-X-Farcaster-Flow-ID: 9236d93b-d03f-4bf6-b5b4-104817bfb858
-Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWC001.ant.amazon.com (10.250.64.174) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.17;
- Thu, 28 Aug 2025 17:43:35 +0000
-Received: from b0be8375a521.amazon.com (10.37.244.7) by
- EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.17;
- Thu, 28 Aug 2025 17:43:33 +0000
-From: Kohei Enju <enjuk@amazon.com>
-To: <aleksandr.loktionov@intel.com>
-CC: <andrew+netdev@lunn.ch>, <anthony.l.nguyen@intel.com>,
- <davem@davemloft.net>, <edumazet@google.com>, <enjuk@amazon.com>,
- <intel-wired-lan@lists.osuosl.org>, <kohei.enju@gmail.com>,
- <kuba@kernel.org>, <netdev@vger.kernel.org>, <pabeni@redhat.com>,
- <przemyslaw.kitszel@intel.com>
-Date: Fri, 29 Aug 2025 02:41:29 +0900
-Message-ID: <20250828174326.20978-1-enjuk@amazon.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <IA3PR11MB8986E8200AD587B4292B3F22E53BA@IA3PR11MB8986.namprd11.prod.outlook.com>
-References: <IA3PR11MB8986E8200AD587B4292B3F22E53BA@IA3PR11MB8986.namprd11.prod.outlook.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id DFdG4QfApycy for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 28 Aug 2025 19:26:05 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::42a; helo=mail-pf1-x42a.google.com;
+ envelope-from=vnranganath.20@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 3882040167
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3882040167
+Received: from mail-pf1-x42a.google.com (mail-pf1-x42a.google.com
+ [IPv6:2607:f8b0:4864:20::42a])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 3882040167
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Aug 2025 19:26:05 +0000 (UTC)
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-76e2ea21430so75208b3a.2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 Aug 2025 12:26:05 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1756409164; x=1757013964;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=ZNKCiEXVNimfghYWuXUmKnsDjiRGghYXpeYN/YwzGig=;
+ b=MVRoe+l2hnOE6m3ggY/dF7Lhim0/AX4GKq4CZS1zGb6xsHHo2DYzB/0pMQo97jVKk9
+ cRsIsk7jZ7Q7y3uUjx942c4eQn2I0HjJDI3LAlwS5LtxXnFd4AY4Llqsbt+99BGkURz3
+ UIOEWZoMt8ANGZ+3MNNfZYz4jjomb15h+hgduXWr42jGjhDbLdWr4cq8shgMpOcf/i7m
+ 3E+6tt8dzH5bymqZ498opVV1XP05hb1zymNxqFymOAiq9cDYMQvOIXzEclWtXmxwazzw
+ LbH9GqM29hRxVHbEG7WWAce5+cL+wqjz3QpHIC6Kyuf9CUNWR8GFfUqla29imW6OLO4P
+ mHOw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXLuijefBoe071l2PR1o0wiGyeE5KSjnIggny7aE4n/4RaQBJ+ucyJtHE5jm8nBoboHOywfBv//hV7b04y+ijU=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YznAxsL4JpQZJTCQ0Hkn+0IeCqlO6Xucaypm5pC5drzEvZ6xo1w
+ WuUJTVInaBrsQ9EAxPxfog/mGFHxt5LcZE1aLvYLtAyz0KYK10EFsdNo
+X-Gm-Gg: ASbGncsYwoky6kI1SDPVhddlccdoG2z7/EC39Hpjbm1jTqBA7N/erqARWavaBq0fp7+
+ FRU6A6cq2ixJ85uw792YPT/tIYkcOFgRBj4/aSe9kv8D/gjhfQkE8pwTzdJUUrqPqrCHOw3aedc
+ ltVn8IApMHseTqgs9WwOriQyk3s/ay3Fs2uFWJfE3O5ZK3Zmx6Mu0wUy4TiUgLAbtNtvcrGsf4s
+ UoK3MxQOh6ej3H98VlIDay6vfMIxSz14UOzKrbYyNK1700GvEuWXm3XT7lDudO3gsnPMmvnqqrp
+ jxvQ7fg7N8hjm35acQYWJDogMePevQFTStf/elkH6RGBr0h+GELe7gfzr4st9UV6uloA6PbXtwx
+ RTF1fttvOgNmzoztjXY1nOu7E8OS+Bw==
+X-Google-Smtp-Source: AGHT+IGcyabkfIuSoXCOILkTR8xN93+W1H/AO1TgmOhp+v3ddQPFBzXanNv611WeYtUQcZLAXv1+Hw==
+X-Received: by 2002:a05:6a20:729f:b0:23d:da6d:b050 with SMTP id
+ adf61e73a8af0-24340dc88e9mr18828886637.6.1756409164421; 
+ Thu, 28 Aug 2025 12:26:04 -0700 (PDT)
+Received: from ranganath.. ([2406:7400:98:c01d:44cd:e101:4619:945f])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-7722a2aafa2sm221784b3a.22.2025.08.28.12.26.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 28 Aug 2025 12:26:03 -0700 (PDT)
+From: Ranganath V N <vnranganath.20@gmail.com>
+To: vadim.fedorenko@linux.dev
+Cc: andrew+netdev@lunn.ch, anthony.l.nguyen@intel.com, davem@davemloft.net,
+ edumazet@google.com, intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
+ linux-kernel-mentees@lists.linuxfoundation.org,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org, pabeni@redhat.com,
+ przemyslaw.kitszel@intel.com, skhan@linuxfoundation.org,
+ vnranganath.20@gmail.com, aleksandr.loktionov@intel.com
+Date: Fri, 29 Aug 2025 00:55:51 +0530
+Message-ID: <20250828192551.13216-1-vnranganath.20@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <29cbde11-b7bc-4eba-a0ea-b20e4a9ecb79@linux.dev>
+References: <29cbde11-b7bc-4eba-a0ea-b20e4a9ecb79@linux.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.37.244.7]
-X-ClientProxiedBy: EX19D036UWB001.ant.amazon.com (10.13.139.133) To
- EX19D001UWA001.ant.amazon.com (10.13.138.214)
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1756403018; x=1787939018;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=39UVD9jD47uFJ6TSgGQ5e07mnJTvscZvNgUxsvodOo8=;
- b=fO0/uy+OA4P1eW4euoAg71B99UiA8jXf71kbaO/5fQ8Xm9X7W3T0H8HK
- Xh05JgxQ6e1Oo9Sv+rcsPideyAnSQQz9cHJ7i6SOoC+NJ0OlktGESufVL
- KJbQXMcakot/3NdVVzhw/NxAFugwsS4SK9y5Xb+6t24yhUUdQq7gMpQZE
- lzieudTfGNBSw0+IZDdyRODlxIy64mhwoQtBv1Wg/wHkZybR4ULJ0Crih
- RuqBkr4WSOo8GCcYpOyWD+jIWAKoEANcFhgYZNHz3oz1F/XT7wU7fXScC
- Y6CPqqexlI8hgFzrm0QU3hUBcjhtidfENrytjCNKPZS5x+kNZozr37G19
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=amazon.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=amazon.com header.i=@amazon.com header.a=rsa-sha256
- header.s=amazoncorp2 header.b=fO0/uy+O
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] ixgbe: preserve RSS
- indirection table across admin down/up
+ d=gmail.com; s=20230601; t=1756409164; x=1757013964; darn=lists.osuosl.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ZNKCiEXVNimfghYWuXUmKnsDjiRGghYXpeYN/YwzGig=;
+ b=UCK8ATvctOJBKlgOtN7Ci2TtOoU1GCOtCbCZ8fES9JJ6YbyHb+A5oOYXYPf6/MbuqJ
+ pIco9Wmi7D1ub603oRbvNmTbSBmhPGGh25GN6pejJ4+viCKmqVJ5k4o+lEKL1goXDyqA
+ Fbkd/qAsywrL+6gDbiYtpIJpt8PTUNCB3KnY1hZhI/9FSs7s9BbJCECXh26iiKSHFVYd
+ kh5N4oCW942NfyhwXVQeLM8VQjGam6FzFPkH4Bm41zNKRjnbjqaV2GLQ937kQxU0HMz8
+ Jrf6WD00b4FbVdlfPh3IDLoUYcN9GSsHHxHhGl7Ifj7c8SsuWVRu5bADYL+TM+bifsRW
+ Nf3w==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20230601 header.b=UCK8ATvc
+Subject: Re: [Intel-wired-lan] [PATCH] net: igb: expose rx_dropped via
+ ethtool -S
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -127,206 +134,44 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 28 Aug 2025 16:42:31 +0000, Loktionov, Aleksandr wrote:
+>> On 28/08/2025 12:42, Ranganath V N wrote:
+>> Currently the igb driver does not reports RX dropped
+>> packets in the ethtool -S statistics output, even though
+>> this information is already available in struct
+>> rtnl_link_stats64.
+>> 
+>> This patch adds rx_dropped, so users can monitor dropped
+>> packet counts directly with ethtool.
+>> 
+>> Signed-off-by: Ranganath V N <vnranganath.20@gmail.com>
+>> ---
+>>   drivers/net/ethernet/intel/igb/igb_ethtool.c | 1 +
+>>   1 file changed, 1 insertion(+)
+>> 
+>> diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+>> index 92ef33459aec..3c6289e80ba0 100644
+>> --- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
+>> +++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+>> @@ -81,6 +81,7 @@ static const struct igb_stats igb_gstrings_stats[] = {
+>>   }
+>>   static const struct igb_stats igb_gstrings_net_stats[] = {
+>>   	IGB_NETDEV_STAT(rx_errors),
+>> +	IGB_NETDEV_STAT(rx_dropped),
+>>   	IGB_NETDEV_STAT(tx_errors),
+>>   	IGB_NETDEV_STAT(tx_dropped),
+>>   	IGB_NETDEV_STAT(rx_length_errors),
 
-> 
-> 
-> > -----Original Message-----
-> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
-> > Of Kohei Enju
-> > Sent: Thursday, August 28, 2025 6:01 PM
-> > To: intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org
-> > Cc: Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Kitszel,
-> > Przemyslaw <przemyslaw.kitszel@intel.com>; Andrew Lunn
-> > <andrew+netdev@lunn.ch>; David S. Miller <davem@davemloft.net>; Eric
-> > Dumazet <edumazet@google.com>; Jakub Kicinski <kuba@kernel.org>;
-> > Paolo Abeni <pabeni@redhat.com>; kohei.enju@gmail.com; Kohei Enju
-> > <enjuk@amazon.com>
-> > Subject: [Intel-wired-lan] [PATCH iwl-next v2] ixgbe: preserve RSS
-> > indirection table across admin down/up
-> > 
-> > Currently, the RSS indirection table configured by user via ethtool
-> > is
-> > reinitialized to default values during interface resets (e.g., admin
-> > down/up, MTU change). As for RSS hash key, commit 3dfbfc7ebb95
-> > ("ixgbe:
-> > Check for RSS key before setting value") made it persistent across
-> > interface resets.
-> > 
-> > Adopt the same approach used in igc and igb drivers which
-> > reinitializes
-> > the RSS indirection table only when the queue count changes. Since
-> > the
-> > number of RETA entries can also change in ixgbe, let's make user
-> > configuration persistent as long as both queue count and the number
-> > of
-> > RETA entries remain unchanged.
-> > 
-> > Tested on Intel Corporation 82599ES 10-Gigabit SFI/SFP+ Network
-> > Connection.
-> > 
-> > Test:
-> > Set custom indirection table and check the value after interface
-> > down/up
-> > 
-> >   # ethtool --set-rxfh-indir ens5 equal 2
-> >   # ethtool --show-rxfh-indir ens5 | head -5
-> > 
-> >   RX flow hash indirection table for ens5 with 12 RX ring(s):
-> >       0:      0     1     0     1     0     1     0     1
-> >       8:      0     1     0     1     0     1     0     1
-> >      16:      0     1     0     1     0     1     0     1
-> >   # ip link set dev ens5 down && ip link set dev ens5 up
-> > 
-> > Without patch:
-> >   # ethtool --show-rxfh-indir ens5 | head -5
-> > 
-> >   RX flow hash indirection table for ens5 with 12 RX ring(s):
-> >       0:      0     1     2     3     4     5     6     7
-> >       8:      8     9    10    11     0     1     2     3
-> >      16:      4     5     6     7     8     9    10    11
-> > 
-> > With patch:
-> >   # ethtool --show-rxfh-indir ens5 | head -5
-> > 
-> >   RX flow hash indirection table for ens5 with 12 RX ring(s):
-> >       0:      0     1     0     1     0     1     0     1
-> >       8:      0     1     0     1     0     1     0     1
-> >      16:      0     1     0     1     0     1     0     1
-> > 
-> > Signed-off-by: Kohei Enju <enjuk@amazon.com>
-> > ---
-> > Changes:
-> >   v1->v2:
-> >     - add check for reta_entries in addition to rss_i
-> >     - update the commit message to reflect the additional check
-> >   v1: https://lore.kernel.org/intel-wired-lan/20250824112037.32692-
-> > 1-enjuk@amazon.com/
-> > ---
-> >  drivers/net/ethernet/intel/ixgbe/ixgbe.h      |  2 +
-> >  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 41 +++++++++++++---
-> > ---
-> >  2 files changed, 31 insertions(+), 12 deletions(-)
-> > 
-> > diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-> > b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-> > index 14d275270123..da3b23bdcce1 100644
-> > --- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-> > +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-> > @@ -838,6 +838,8 @@ struct ixgbe_adapter {
-> >   */
-> >  #define IXGBE_MAX_RETA_ENTRIES 512
-> >  	u8 rss_indir_tbl[IXGBE_MAX_RETA_ENTRIES];
-> > +	u32 last_reta_entries;
-> > +	u16 last_rss_i;
-> last_rss_i is cryptic; please, consider last_rss_indices (or similar)
+> This stat is never used in the igb driver, what's the benefit of
+> constant 0 value in the output?
 
-Sure, I'll rename it to last_rss_indices for clarity.
+Hi,
+I initially proposed exposing it, but after reviewing 
+the driver, I realized that stats.rx_dropped is never 
+updated in igb. Exposing it would always show 0.
 
-> 
-> > 
-> >  #define IXGBE_RSS_KEY_SIZE     40  /* size of RSS Hash Key in bytes
-> > */
-> >  	u32 *rss_key;
-> > diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> > b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> > index 27040076f068..05dfb06173d4 100644
-> > --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> > +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> > @@ -4323,14 +4323,21 @@ static void ixgbe_setup_reta(struct
-> > ixgbe_adapter *adapter)
-> >  	/* Fill out hash function seeds */
-> >  	ixgbe_store_key(adapter);
-> > 
-> > -	/* Fill out redirection table */
-> > -	memset(adapter->rss_indir_tbl, 0, sizeof(adapter-
-> > >rss_indir_tbl));
-> > +	/* Update redirection table in memory on first init, queue
-> > count change,
-> > +	 * or reta entries change, otherwise preserve user
-> > configurations. Then
-> > +	 * always write to hardware.
-> > +	 */
-> > +	if (adapter->last_rss_i != rss_i ||
-> > +	    adapter->last_reta_entries != reta_entries) {
-> > +		for (i = 0, j = 0; i < reta_entries; i++, j++) {
-> You can avoid the top-of-loop equality test by using modulo, which reads easier, like:
-> for (i = 0, j = 0; i < reta_entries; i++, j++)
->     adapter->rss_indir_tbl[i] = j % rss_i;
+Ixgbe behaves the same: the counter is present 
+but never incremented.But this patch wouldn't provide meaningful data.
 
-I got it. I'll use modulo and then j can be removed like:
-    for (i = 0; i < reta_entries; i++)
-           adapter->rss_indir_tbl[i] = i % rss_i;
+Thanks again for your guidance.
 
-> 
-> > +			if (j == rss_i)
-> > +				j = 0;
-> > 
-> > -	for (i = 0, j = 0; i < reta_entries; i++, j++) {
-> > -		if (j == rss_i)
-> > -			j = 0;
-> > +			adapter->rss_indir_tbl[i] = j;
-> > +		}
-> > 
-> > -		adapter->rss_indir_tbl[i] = j;
-> > +		adapter->last_rss_i = rss_i;
-> > +		adapter->last_reta_entries = reta_entries;
-> >  	}
-> > 
-> >  	ixgbe_store_reta(adapter);
-> > @@ -4338,8 +4345,9 @@ static void ixgbe_setup_reta(struct
-> > ixgbe_adapter *adapter)
-> > 
-> >  static void ixgbe_setup_vfreta(struct ixgbe_adapter *adapter)
-> >  {
-> > -	struct ixgbe_hw *hw = &adapter->hw;
-> >  	u16 rss_i = adapter->ring_feature[RING_F_RSS].indices;
-> > +	struct ixgbe_hw *hw = &adapter->hw;
-> > +	u32 reta_entries = 64;
-> Magic number. Can you #define IXGBE_VFRETA_ENTRIES 64 ?
-
-You're right about the magic number. 
-I see it was introduced in commit 0f9b232b176d ("ixgbe: add support for 
-X550 extended RSS support").
-
-I'm considering using ixgbe_rss_indir_tbl_entries() instead of #define to 
-avoid the magic number, since ixgbe_store_vfreta() already uses it.
-This would ensure consistency between the two functions. Would that be 
-acceptable, or would you prefer a #define?
-
-> 
-> >  	int i, j;
-> > 
-> >  	/* Fill out hash function seeds */
-> > @@ -4352,12 +4360,21 @@ static void ixgbe_setup_vfreta(struct
-> > ixgbe_adapter *adapter)
-> >  					*(adapter->rss_key + i));
-> >  	}
-> > 
-> > -	/* Fill out the redirection table */
-> > -	for (i = 0, j = 0; i < 64; i++, j++) {
-> > -		if (j == rss_i)
-> > -			j = 0;
-> > +	/* Update redirection table in memory on first init, queue
-> > count change,
-> > +	 * or reta entries change, otherwise preserve user
-> > configurations. Then
-> > +	 * always write to hardware.
-> > +	 */
-> > +	if (adapter->last_rss_i != rss_i ||
-> > +	    adapter->last_reta_entries != reta_entries) {
-> > +		for (i = 0, j = 0; i < reta_entries; i++, j++) {
-> > +			if (j == rss_i)
-> > +				j = 0;
-> > +
-> > +			adapter->rss_indir_tbl[i] = j;
-> > +		}
-> > 
-> > -		adapter->rss_indir_tbl[i] = j;
-> > +		adapter->last_rss_i = rss_i;
-> > +		adapter->last_reta_entries = reta_entries;
-> >  	}
-> > 
-> >  	ixgbe_store_vfreta(adapter);
-> > --
-> > 2.51.0
+Ranganath
