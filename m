@@ -1,79 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E1C37B3C4A5
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 30 Aug 2025 00:07:57 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C6DE0B3C4AE
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 30 Aug 2025 00:13:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 84B9A61AE4;
-	Fri, 29 Aug 2025 22:07:56 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 946ED61713;
+	Fri, 29 Aug 2025 22:13:18 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id wETS__oi52CP; Fri, 29 Aug 2025 22:07:55 +0000 (UTC)
+ id WNiVRgwFoPpB; Fri, 29 Aug 2025 22:13:17 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0D04461AE5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6FBCD61757
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1756505275;
-	bh=B1+jX2UtJdW9jYLWvE6pcxNpFFmPrUZvX5Itq52bGGQ=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=CROiOtN8pIV6sphQz+jWlAr7+XhYLzPlAtgijJe2RrXLZyuKlp9mT8Q2NE8FB8rnm
-	 EEZNW98JfwAXRGwAU8mi9RW1ardssXXEB5lCMx20+eGMPf7uAZEsgCJZrNmsrfChj1
-	 G64t35FiVlGGW/kSDRRgJtVl7TjgkGQunw73Z+sT2QhUAAyvKtV1bVlkKXkHp70AGs
-	 PFsMc71AsMxOp8o20zOYy5zY/5zuY2h87T6bvRcR+9jNNQkVY2jYlrPp58TMo+EmNY
-	 R5ffo9R1ho4krf6q76SDX26rNfe6e8RkiQsAj9uOSoxm82/SMnxHGzJ8zLx/yG52/0
-	 EAhquhWsTXjnQ==
+	s=default; t=1756505597;
+	bh=HHgYWdniud78SYO3VMcfa6JKrGO37KZ/js6fbE6HfIo=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=oCzIvwqg7fegIrd789MowICw97M8kdOaXRxStpkQx4ZHnd0/rSoEY6UQ/CTAFVag9
+	 sjZH74mhAefO7YrcOmQVxJ7ThkuLrlhSI80uTZijmOeBqviBUgo3bWB8dXlCsbCm9B
+	 qZkCiaowYqEzUrjKEEf2qYkO7eb0UP38yzX02G8CLXbYOopnlS6eHKVJgyQTNxdEQ2
+	 i4VP+YH0Geae5ezEtSa2baqF6d6oCLW8aO/Pc7XAP8T1GwlsyjsllJjtF1oOPQez06
+	 ag1WPVxWqadDDOyLXigKWdcC4KV7lO4skffPPmM+GNM7bmCqRyl66JQSGMw4B//VCl
+	 Dxpn9/SxyzwhQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0D04461AE5;
-	Fri, 29 Aug 2025 22:07:55 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6FBCD61757;
+	Fri, 29 Aug 2025 22:13:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 4BA68D2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 22:07:53 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id D5E93FA
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 22:13:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 287E341791
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 22:07:53 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id D338261333
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 22:13:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id rG2bHDVj54_9 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 29 Aug 2025 22:07:52 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C46FA404A0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C46FA404A0
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C46FA404A0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 22:07:50 +0000 (UTC)
-Received: from [192.168.0.192] (ip5f5af7a9.dynamic.kabel-deutschland.de
- [95.90.247.169])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id BC786602019A1;
- Sat, 30 Aug 2025 00:07:26 +0200 (CEST)
-Message-ID: <857bf36b-6bc7-44f8-bb5e-7c9460e4ef1c@molgen.mpg.de>
-Date: Sat, 30 Aug 2025 00:07:26 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Madhu Chittim <madhu.chittim@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- horms@kernel.org, linux-pci@vger.kernel.org
-References: <20250829172453.2059973-1-madhu.chittim@intel.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20250829172453.2059973-1-madhu.chittim@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH net-next v3] idpf: add support for
- IDPF PCI programming interface
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id gFePZG7MJb6Y for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 29 Aug 2025 22:13:15 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B344D61143
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B344D61143
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B344D61143
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 22:13:14 +0000 (UTC)
+X-CSE-ConnectionGUID: pfAv2xFvTXa43J1+wj7hxQ==
+X-CSE-MsgGUID: l3dTeNvRQtClU1zepLr1gQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11537"; a="69392747"
+X-IronPort-AV: E=Sophos;i="6.18,221,1751266800"; d="scan'208";a="69392747"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Aug 2025 15:13:14 -0700
+X-CSE-ConnectionGUID: 0PjJdTXnSQiaZh2+UZa+Xw==
+X-CSE-MsgGUID: Ncrz6QpQTIK7ZdRWh3rTWw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.18,221,1751266800"; d="scan'208";a="207633088"
+Received: from lkp-server02.sh.intel.com (HELO 4ea60e6ab079) ([10.239.97.151])
+ by orviesa001.jf.intel.com with ESMTP; 29 Aug 2025 15:13:12 -0700
+Received: from kbuild by 4ea60e6ab079 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1us7KT-000V0Y-13
+ for intel-wired-lan@lists.osuosl.org; Fri, 29 Aug 2025 22:12:18 +0000
+Date: Sat, 30 Aug 2025 06:09:48 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202508300639.D6d2Osk0-lkp@intel.com>
+User-Agent: s-nail v14.9.24
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1756505595; x=1788041595;
+ h=date:from:to:subject:message-id;
+ bh=1O5bNnXwT677t/CfNxWqrbWpJkOTAeA5TSxULCaJVlI=;
+ b=Coxr0m+PjlBriZbbrJXb+r9ThstNUc3Kh1SUtqvtZo0+pgTQD0URPY+H
+ v63zl/D61JU+e768QmoP1l+VDp2qc7bHHNDkk870Ee8ibLlqj6hugqN/3
+ 1710/ju8PqB0YSuchF3IZFArnVOo4l1zYNMIfD+aDatMTAJmVyv/Qbr1Y
+ X6HGIvmj0SBEJudMBAHZjeU1oeNx4L7fHsmN5a6viGVPznSuIEb4ZM7CK
+ g2b/KQ3whdqnQFFwbb9Bf+GEw3DRBMYIZFaro7slVKTkkcerHlLzoLwmT
+ u2/aLCRtGAv0HvOXy7+nAjHgiMaQwg7iF3Wv1aDpmFTIfp3I8V0Q9qSg2
+ w==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Coxr0m+P
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ 8d499394c4ccad6feb195c3b9e78a685c283ae8a
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -89,247 +104,143 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-[Cc: +linux-pci@vger.kernel.org]
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: 8d499394c4ccad6feb195c3b9e78a685c283ae8a  i40e: Fix potential invalid access when MAC list is empty
 
-Dear Madhu, dear Pavan,
+elapsed time: 1457m
 
+configs tested: 124
+configs skipped: 4
 
-Thank you for the patch.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
+tested configs:
+alpha                             allnoconfig    gcc-15.1.0
+alpha                            allyesconfig    gcc-15.1.0
+alpha                               defconfig    gcc-15.1.0
+arc                              allmodconfig    gcc-15.1.0
+arc                               allnoconfig    gcc-15.1.0
+arc                              allyesconfig    gcc-15.1.0
+arc                                 defconfig    gcc-15.1.0
+arc                     nsimosci_hs_defconfig    gcc-15.1.0
+arc                   randconfig-001-20250829    gcc-8.5.0
+arc                   randconfig-002-20250829    gcc-10.5.0
+arm                              allmodconfig    gcc-15.1.0
+arm                               allnoconfig    clang-22
+arm                              allyesconfig    gcc-15.1.0
+arm                   randconfig-001-20250829    gcc-10.5.0
+arm                   randconfig-002-20250829    clang-22
+arm                   randconfig-003-20250829    clang-22
+arm                   randconfig-004-20250829    clang-22
+arm                           u8500_defconfig    gcc-15.1.0
+arm64                            allmodconfig    clang-19
+arm64                             allnoconfig    gcc-15.1.0
+arm64                 randconfig-001-20250829    clang-22
+arm64                 randconfig-002-20250829    gcc-12.5.0
+arm64                 randconfig-003-20250829    clang-22
+arm64                 randconfig-004-20250829    gcc-9.5.0
+csky                              allnoconfig    gcc-15.1.0
+csky                                defconfig    gcc-15.1.0
+csky                  randconfig-001-20250829    gcc-9.5.0
+csky                  randconfig-002-20250829    gcc-10.5.0
+hexagon                          allmodconfig    clang-17
+hexagon                           allnoconfig    clang-22
+hexagon                          allyesconfig    clang-22
+hexagon               randconfig-001-20250829    clang-22
+hexagon               randconfig-002-20250829    clang-22
+i386                             allmodconfig    gcc-12
+i386                              allnoconfig    gcc-12
+i386                             allyesconfig    gcc-12
+i386        buildonly-randconfig-001-20250829    gcc-12
+i386        buildonly-randconfig-002-20250829    clang-20
+i386        buildonly-randconfig-003-20250829    clang-20
+i386        buildonly-randconfig-004-20250829    clang-20
+i386        buildonly-randconfig-005-20250829    gcc-12
+i386        buildonly-randconfig-006-20250829    clang-20
+i386                                defconfig    clang-20
+loongarch                        alldefconfig    clang-20
+loongarch                        allmodconfig    clang-19
+loongarch                         allnoconfig    clang-22
+loongarch             randconfig-001-20250829    clang-22
+loongarch             randconfig-002-20250829    clang-22
+m68k                             allmodconfig    gcc-15.1.0
+m68k                              allnoconfig    gcc-15.1.0
+m68k                             allyesconfig    gcc-15.1.0
+m68k                         apollo_defconfig    gcc-15.1.0
+microblaze                       allmodconfig    gcc-15.1.0
+microblaze                        allnoconfig    gcc-15.1.0
+microblaze                       allyesconfig    gcc-15.1.0
+microblaze                          defconfig    gcc-15.1.0
+mips                              allnoconfig    gcc-15.1.0
+nios2                             allnoconfig    gcc-11.5.0
+nios2                               defconfig    gcc-11.5.0
+nios2                 randconfig-001-20250829    gcc-11.5.0
+nios2                 randconfig-002-20250829    gcc-11.5.0
+openrisc                          allnoconfig    gcc-15.1.0
+openrisc                         allyesconfig    gcc-15.1.0
+openrisc                            defconfig    gcc-15.1.0
+parisc                            allnoconfig    gcc-15.1.0
+parisc                           allyesconfig    gcc-15.1.0
+parisc                              defconfig    gcc-15.1.0
+parisc                randconfig-001-20250829    gcc-14.3.0
+parisc                randconfig-002-20250829    gcc-8.5.0
+parisc64                            defconfig    gcc-15.1.0
+powerpc                          allmodconfig    gcc-15.1.0
+powerpc                           allnoconfig    gcc-15.1.0
+powerpc                          allyesconfig    clang-22
+powerpc                      bamboo_defconfig    clang-22
+powerpc               randconfig-001-20250829    gcc-13.4.0
+powerpc               randconfig-002-20250829    clang-22
+powerpc               randconfig-003-20250829    gcc-12.5.0
+powerpc                     taishan_defconfig    clang-17
+powerpc64             randconfig-001-20250829    clang-22
+powerpc64             randconfig-002-20250829    clang-22
+powerpc64             randconfig-003-20250829    gcc-8.5.0
+riscv                            allmodconfig    clang-22
+riscv                             allnoconfig    gcc-15.1.0
+riscv                            allyesconfig    clang-16
+riscv                               defconfig    clang-22
+riscv                 randconfig-001-20250830    gcc-8.5.0
+riscv                 randconfig-002-20250830    clang-22
+s390                             allmodconfig    clang-18
+s390                              allnoconfig    clang-22
+s390                             allyesconfig    gcc-15.1.0
+s390                  randconfig-001-20250830    clang-22
+s390                  randconfig-002-20250830    gcc-8.5.0
+sh                               allmodconfig    gcc-15.1.0
+sh                                allnoconfig    gcc-15.1.0
+sh                               allyesconfig    gcc-15.1.0
+sh                                  defconfig    gcc-15.1.0
+sh                    randconfig-001-20250830    gcc-11.5.0
+sh                    randconfig-002-20250830    gcc-15.1.0
+sparc                            allmodconfig    gcc-15.1.0
+sparc                             allnoconfig    gcc-15.1.0
+sparc                               defconfig    gcc-15.1.0
+sparc                 randconfig-001-20250830    gcc-13.4.0
+sparc                 randconfig-002-20250830    gcc-8.5.0
+sparc64                             defconfig    clang-20
+sparc64               randconfig-001-20250830    gcc-11.5.0
+sparc64               randconfig-002-20250830    clang-20
+um                               allmodconfig    clang-19
+um                                allnoconfig    clang-22
+um                               allyesconfig    gcc-12
+um                    randconfig-001-20250830    gcc-12
+um                    randconfig-002-20250830    gcc-12
+x86_64                            allnoconfig    clang-20
+x86_64                           allyesconfig    clang-20
+x86_64      buildonly-randconfig-001-20250829    gcc-11
+x86_64      buildonly-randconfig-002-20250829    gcc-11
+x86_64      buildonly-randconfig-003-20250829    gcc-12
+x86_64      buildonly-randconfig-004-20250829    clang-20
+x86_64      buildonly-randconfig-005-20250829    clang-20
+x86_64      buildonly-randconfig-006-20250829    clang-20
+x86_64                              defconfig    gcc-11
+x86_64                          rhel-9.4-rust    clang-20
+xtensa                            allnoconfig    gcc-15.1.0
+xtensa                randconfig-001-20250830    gcc-12.5.0
+xtensa                randconfig-002-20250830    gcc-15.1.0
 
-Am 29.08.25 um 19:24 schrieb Madhu Chittim:
-> From: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
-> 
-> At present IDPF supports only 0x1452 and 0x145C as PF and VF device IDs
-> on our current generation hardware. Future hardware exposes a new set of
-> device IDs for each generation. To avoid adding a new device ID for each
-> generation and to make the driver forward and backward compatible,
-> make use of the IDPF PCI programming interface to load the driver.
-> 
-> Write and read the VF_ARQBAL mailbox register to find if the current
-> device is a PF or a VF.
-> 
-> PCI SIG allocated a new programming interface for the IDPF compliant
-> ethernet network controller devices. It can be found at:
-> https://members.pcisig.com/wg/PCI-SIG/document/20113
-> with the document titled as 'PCI Code and ID Assignment Revision 1.16'
-> or any latest revisions.
-
-Could you please add some information, how you tested this?
-
-> Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
-> Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
-> Signed-off-by: Madhu Chittim <madhu.chittim@intel.com>
-> 
-> ---
-> v3:
-> - reworked logic to avoid gotos
-> 
-> v2:
-> - replace *u8 with *bool in idpf_is_vf_device function parameter
-> - use ~0 instead of 0xffffff in PCI_DEVICE_CLASS parameter
-> 
-> ---
-> 
-> Signed-off-by: Madhu Chittim <madhu.chittim@intel.com>
-
-This looks like a stray line, but will probably be ignored, when applied.
-
-> ---
->   drivers/net/ethernet/intel/idpf/idpf.h        |  1 +
->   drivers/net/ethernet/intel/idpf/idpf_main.c   | 73 ++++++++++++++-----
->   drivers/net/ethernet/intel/idpf/idpf_vf_dev.c | 37 ++++++++++
->   3 files changed, 94 insertions(+), 17 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf.h b/drivers/net/ethernet/intel/idpf/idpf.h
-> index c56abf8b4c92..4a16e481faf7 100644
-> --- a/drivers/net/ethernet/intel/idpf/idpf.h
-> +++ b/drivers/net/ethernet/intel/idpf/idpf.h
-> @@ -1041,6 +1041,7 @@ void idpf_mbx_task(struct work_struct *work);
->   void idpf_vc_event_task(struct work_struct *work);
->   void idpf_dev_ops_init(struct idpf_adapter *adapter);
->   void idpf_vf_dev_ops_init(struct idpf_adapter *adapter);
-> +int idpf_is_vf_device(struct pci_dev *pdev, bool *is_vf);
->   int idpf_intr_req(struct idpf_adapter *adapter);
->   void idpf_intr_rel(struct idpf_adapter *adapter);
->   u16 idpf_get_max_tx_hdr_size(struct idpf_adapter *adapter);
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf_main.c b/drivers/net/ethernet/intel/idpf/idpf_main.c
-> index 8c46481d2e1f..493604d50143 100644
-> --- a/drivers/net/ethernet/intel/idpf/idpf_main.c
-> +++ b/drivers/net/ethernet/intel/idpf/idpf_main.c
-> @@ -7,11 +7,57 @@
->   
->   #define DRV_SUMMARY	"Intel(R) Infrastructure Data Path Function Linux Driver"
->   
-> +#define IDPF_NETWORK_ETHERNET_PROGIF				0x01
-> +#define IDPF_CLASS_NETWORK_ETHERNET_PROGIF			\
-> +	(PCI_CLASS_NETWORK_ETHERNET << 8 | IDPF_NETWORK_ETHERNET_PROGIF)
-> +
->   MODULE_DESCRIPTION(DRV_SUMMARY);
->   MODULE_IMPORT_NS("LIBETH");
->   MODULE_IMPORT_NS("LIBETH_XDP");
->   MODULE_LICENSE("GPL");
->   
-> +/**
-> + * idpf_dev_init - Initialize device specific parameters
-> + * @adapter: adapter to initialize
-> + * @ent: entry in idpf_pci_tbl
-> + *
-> + * Return: %0 on success, -%errno on failure.
-> + */
-> +static int idpf_dev_init(struct idpf_adapter *adapter,
-> +			 const struct pci_device_id *ent)
-> +{
-> +	bool is_vf = false;
-> +	int err;
-> +
-> +	if (ent->class == IDPF_CLASS_NETWORK_ETHERNET_PROGIF) {
-> +		err = idpf_is_vf_device(adapter->pdev, &is_vf);
-> +		if (err)
-> +			return err;
-> +		if (is_vf) {
-> +			idpf_vf_dev_ops_init(adapter);
-> +			adapter->crc_enable = true;
-> +		} else {
-> +			idpf_dev_ops_init(adapter);
-> +		}
-> +
-> +		return 0;
-> +	}
-> +
-> +	switch (ent->device) {
-> +	case IDPF_DEV_ID_PF:
-> +		idpf_dev_ops_init(adapter);
-> +		break;
-> +	case IDPF_DEV_ID_VF:
-> +		idpf_vf_dev_ops_init(adapter);
-> +		adapter->crc_enable = true;
-> +		break;
-> +	default:
-> +		return -ENODEV;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
->   /**
->    * idpf_remove - Device removal routine
->    * @pdev: PCI device information struct
-> @@ -165,21 +211,6 @@ static int idpf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
->   	adapter->req_tx_splitq = true;
->   	adapter->req_rx_splitq = true;
->   
-> -	switch (ent->device) {
-> -	case IDPF_DEV_ID_PF:
-> -		idpf_dev_ops_init(adapter);
-> -		break;
-> -	case IDPF_DEV_ID_VF:
-> -		idpf_vf_dev_ops_init(adapter);
-> -		adapter->crc_enable = true;
-> -		break;
-> -	default:
-> -		err = -ENODEV;
-> -		dev_err(&pdev->dev, "Unexpected dev ID 0x%x in idpf probe\n",
-> -			ent->device);
-> -		goto err_free;
-> -	}
-> -
->   	adapter->pdev = pdev;
->   	err = pcim_enable_device(pdev);
->   	if (err)
-> @@ -259,11 +290,18 @@ static int idpf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
->   	/* setup msglvl */
->   	adapter->msg_enable = netif_msg_init(-1, IDPF_AVAIL_NETIF_M);
->   
-> +	err = idpf_dev_init(adapter, ent);
-> +	if (err) {
-> +		dev_err(&pdev->dev, "Unexpected dev ID 0x%x in idpf probe\n",
-> +			ent->device);
-> +		goto destroy_vc_event_wq;
-> +	}
-> +
->   	err = idpf_cfg_hw(adapter);
->   	if (err) {
->   		dev_err(dev, "Failed to configure HW structure for adapter: %d\n",
->   			err);
-> -		goto err_cfg_hw;
-> +		goto destroy_vc_event_wq;
->   	}
->   
->   	mutex_init(&adapter->vport_ctrl_lock);
-> @@ -284,7 +322,7 @@ static int idpf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
->   
->   	return 0;
->   
-> -err_cfg_hw:
-> +destroy_vc_event_wq:
->   	destroy_workqueue(adapter->vc_event_wq);
->   err_vc_event_wq_alloc:
->   	destroy_workqueue(adapter->stats_wq);
-> @@ -304,6 +342,7 @@ static int idpf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
->   static const struct pci_device_id idpf_pci_tbl[] = {
->   	{ PCI_VDEVICE(INTEL, IDPF_DEV_ID_PF)},
->   	{ PCI_VDEVICE(INTEL, IDPF_DEV_ID_VF)},
-> +	{ PCI_DEVICE_CLASS(IDPF_CLASS_NETWORK_ETHERNET_PROGIF, ~0)},
->   	{ /* Sentinel */ }
->   };
->   MODULE_DEVICE_TABLE(pci, idpf_pci_tbl);
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c b/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
-> index 7527b967e2e7..09cccdf45b50 100644
-> --- a/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
-> +++ b/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
-> @@ -7,6 +7,43 @@
->   
->   #define IDPF_VF_ITR_IDX_SPACING		0x40
->   
-> +#define IDPF_VF_TEST_VAL		0xFEED0000
-> +
-> +/**
-> + * idpf_is_vf_device - Helper to find if it is a VF device
-> + * @pdev: PCI device information struct
-> + * @is_vf: used to update VF device status
-> + *
-> + * Return: %0 on success, -%errno on failure.
-> + */
-> +int idpf_is_vf_device(struct pci_dev *pdev, bool *is_vf)
-> +{
-> +	struct resource mbx_region;
-> +	resource_size_t mbx_start;
-> +	void __iomem *mbx_addr;
-> +	long len;
-
-Use size_t?
-
-     include/linux/ioport.h:static inline resource_size_t 
-resource_size(const struct resource *res)
-
-
-> +
-> +	resource_set_range(&mbx_region,	VF_BASE, IDPF_VF_MBX_REGION_SZ);
-> +
-> +	mbx_start = pci_resource_start(pdev, 0) + mbx_region.start;
-> +	len = resource_size(&mbx_region);
-> +
-> +	mbx_addr = ioremap(mbx_start, len);
-> +	if (!mbx_addr)
-> +		return -EIO;
-
-Should some kind of error be printed with a hint, what the user could do?
-
-> +
-> +	writel(IDPF_VF_TEST_VAL, mbx_addr + VF_ARQBAL - VF_BASE);
-> +
-> +	/* Force memory write to complete before reading it back */
-> +	wmb();
-> +
-> +	*is_vf = readl(mbx_addr + VF_ARQBAL - VF_BASE) == IDPF_VF_TEST_VAL;
-> +
-> +	iounmap(mbx_addr);
-> +
-> +	return 0;
-> +}
-> +
->   /**
->    * idpf_vf_ctlq_reg_init - initialize default mailbox registers
->    * @adapter: adapter structure
-
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
