@@ -1,125 +1,217 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 71B73B3BCCF
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Aug 2025 15:50:39 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E41A7B3C1B0
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Aug 2025 19:23:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6F637615EE;
-	Fri, 29 Aug 2025 13:50:37 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8E246417FC;
+	Fri, 29 Aug 2025 17:23:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id SajBVlFVo9wY; Fri, 29 Aug 2025 13:50:36 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id SjbvYo1LYdDt; Fri, 29 Aug 2025 17:23:41 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0E0A7615F6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D9E1C41823
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1756475436;
-	bh=dV0VetiIkZg6OKtzkxyKWCKROkMG8CWw91TX1g10wz4=;
-	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
+	s=default; t=1756488220;
+	bh=mJ/fFz3jnJkohBQiw3PD1vninml4sDq8XP3P1YzZ+ao=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=gRgNim/3ibaXi0TyAhVDn7QLyQuF3zbPJCLwlcYO8ie/lDmjGzIsnthUEGuqn4+cj
-	 2jdoL116bkWIAlp+WyJ7hgUT1gnj8VcDrGUB4/gRYRoljBQKacOkArzqlGaK2lTIeD
-	 AYju1QvcSc2pgs3UTaoSBgfhholwek9+/p75wLvtCrZwJT3+OR+xsuIP76P0eWmngY
-	 HxWJdzVOQNd7seRz/IFv9XzLrJjmzRqvPmY+fKVKrrhKg5ybmTiSMBOVR9xpKdVk0J
-	 nxDKtN0TvsOM0vbpNbSWgUXSJDuNOhfFx3g32c1fv7rDyZwGY7Wo9aecCj3LRAKYTw
-	 y4Izowd/sbDaA==
+	b=tivLx+zg4nOxHLLL0uGn/nxQ2SSl1SwA3yauo57ev5B43r9Baq/B8b54ut43z1jWe
+	 kq2M1OGsWSKhKmHyTqcDOQl6IJoqyp2OTgVMU0iRS6CKEKUb0TQDXYLmfZRYUocKUV
+	 Dz5VgFl0LYZzNqBk2798INB9erOcfzvgecqyfMEVX4j0pBKFYc3fb+58AYuQS8IuYx
+	 GP4yjBGiHTtdmx5Rq443kOX8PHlmf6ytBik+a/qbJ0thDqJKfCDaJcbJWAtvXyaHfm
+	 +Y9EafRoO80oxgepKJsFPHOJm+dzh+dLQ05epNntlNF1QCw8D5rAVRSBYgl3RntPfC
+	 lYEs3ZaZogrbg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0E0A7615F6;
-	Fri, 29 Aug 2025 13:50:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D9E1C41823;
+	Fri, 29 Aug 2025 17:23:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 292B16C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 13:50:35 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3880ED2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 17:23:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1B1BF6151A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 13:50:35 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 1F8C7615BA
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 17:23:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id X268ppK8FEof for <intel-wired-lan@lists.osuosl.org>;
- Fri, 29 Aug 2025 13:50:34 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=mschmidt@redhat.com;
+ id JJgFLTaGatAd for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 29 Aug 2025 17:23:39 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
+ helo=mgamail.intel.com; envelope-from=samuel.salin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 0215E61517
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0215E61517
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 0215E61517
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 13:50:33 +0000 (UTC)
-Received: from mail-oa1-f69.google.com (mail-oa1-f69.google.com
- [209.85.160.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-601-t0siutRoPSOHipn0tscKtw-1; Fri, 29 Aug 2025 09:50:31 -0400
-X-MC-Unique: t0siutRoPSOHipn0tscKtw-1
-X-Mimecast-MFC-AGG-ID: t0siutRoPSOHipn0tscKtw_1756475430
-Received: by mail-oa1-f69.google.com with SMTP id
- 586e51a60fabf-30cce8cffa8so506603fac.1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 06:50:30 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756475430; x=1757080230;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=dV0VetiIkZg6OKtzkxyKWCKROkMG8CWw91TX1g10wz4=;
- b=KG1kDFJyEJEmgHXMH1YxSePy/4n6XYFQG5rFkRFH0cxf6WjB+xLKkG1t7DTOgr7rV4
- lp3I1AEXt3+P1j9xpeeQ/egWoPPyJ8/cZK+UX55T4nlXP6RDDIvcPFuc3v8ID3GwMI4l
- n/MAo+SvWtUInXVyC0EuwXZZAR7Ta+ztIlhJ86qmIqMtZUAjpugB7D+O5muUSvGw7PFS
- AgwPoPWuXJgXECiAkPk9qpbgujXiirJod8LPBcA740fIwCNWb2VvNnBtjS3KiMWULwAX
- EbHHagxnq0xdgOLZdPHltjNHrFMAmZREUymPKGFbZIH5WABlUEN0XjFMo+SCgQ8UxNSH
- VnzQ==
-X-Gm-Message-State: AOJu0YyP90AyjeaxasoxN+BqlxfSzbUog7RdJOK/fIvxEdzZUI6zR8Ec
- bzpmq8gnyQF8paUGjRAQsBUL+LKDspct7yHUovw2m5d8UYr59jnFbVbhGEHuqwl4hbH9zO0rzoe
- mwCg01DZZq6aNckqjCDtoY9mgaFEPv/uaBSbceh5JIafR0RKLUJepKMl2xhWv1y1x5m78CZi01K
- CW+A6sSvke9kBJeApwqml8gz63iQ/9VCfcNZ6HH/3eMiNerw==
-X-Gm-Gg: ASbGncs1+ROXGrLgyRf52T7OQH3TPwgSgM9UT0kn9Z38ojWQQgLu3f6c1iKwg6UXr05
- hzYcvQvZtpYKS+nkt9gepYyrJAFLWO2v4ZfdnNqNXi+D+inxRDAWgz1MWCCuG/m2em6PXNiVQ3f
- vO4BvpLZC+fHO9mTzZDIkn
-X-Received: by 2002:a05:6871:5005:b0:315:8e99:1ce6 with SMTP id
- 586e51a60fabf-315bfb1adb4mr325912fac.8.1756475429988; 
- Fri, 29 Aug 2025 06:50:29 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHBzOcyCosA1TMLZwj0/Z9Kqygb0T0L6g/fPksz6fCLVlX5p6IH1ebXqx0gMKGPOOe1s+6vva2fmraCZmI0IKg=
-X-Received: by 2002:a05:6871:5005:b0:315:8e99:1ce6 with SMTP id
- 586e51a60fabf-315bfb1adb4mr325901fac.8.1756475429502; Fri, 29 Aug 2025
- 06:50:29 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250827-jk-fix-i40e-ice-pxe-9k-mtu-v3-1-14341728e572@intel.com>
-In-Reply-To: <20250827-jk-fix-i40e-ice-pxe-9k-mtu-v3-1-14341728e572@intel.com>
-From: Michal Schmidt <mschmidt@redhat.com>
-Date: Fri, 29 Aug 2025 15:50:18 +0200
-X-Gm-Features: Ac12FXw6MbSN3H0zo4lHXjtWmj4bb6-ESWHDsvmVqvdLLGY_eJT2xAz1GWdnNWE
-Message-ID: <CADEbmW2eDnADv78cwWRAVMuq_JrgPACbfTf_Yc_oA-Xiuv+x_w@mail.gmail.com>
-To: Jacob Keller <jacob.e.keller@intel.com>
-Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>, 
- Anthony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: NULsJPsy3IKecpKyrWln2NUwnwQNjBv2sR-mcpqM4FI_1756475430
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 776DA61529
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 776DA61529
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 776DA61529
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 17:23:39 +0000 (UTC)
+X-CSE-ConnectionGUID: 3d5ZUtmcRTeMv0vh6zha+w==
+X-CSE-MsgGUID: cDNC00X/RLa1CAdGfiBlfQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11537"; a="57805254"
+X-IronPort-AV: E=Sophos;i="6.18,221,1751266800"; d="scan'208";a="57805254"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+ by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Aug 2025 10:23:39 -0700
+X-CSE-ConnectionGUID: GUmyk/HhSiWN5WUQDBI8Mw==
+X-CSE-MsgGUID: N/PI73biQjO4GMInyaMjuw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.18,221,1751266800"; d="scan'208";a="170329156"
+Received: from fmsmsx902.amr.corp.intel.com ([10.18.126.91])
+ by orviesa007.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Aug 2025 10:23:39 -0700
+Received: from FMSMSX903.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.17; Fri, 29 Aug 2025 10:23:37 -0700
+Received: from fmsedg902.ED.cps.intel.com (10.1.192.144) by
+ FMSMSX903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.17 via Frontend Transport; Fri, 29 Aug 2025 10:23:37 -0700
+Received: from NAM04-DM6-obe.outbound.protection.outlook.com (40.107.102.67)
+ by edgegateway.intel.com (192.55.55.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.17; Fri, 29 Aug 2025 10:23:37 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=c1TXQ4EBKJ/5Q7u4rYx5SnL3c5NPOpNFhrhvg7fVemmR1pbeUQ24HgIGsAGDjtSp6fzkX4+j+dmAwsGf8B2FzfcnkE/ZP7RzP3IcL7k1tocDV+UbUWu7zbj9yTRFmz2Fdhsj+ySFuBxlSxP/GdbwiagAE3pq5AQGFCzemOpGyDNPsk3/sPYHchu9Ex40E8j+JLNRjXiVzCIUR2Nyn+R2dO+LErRSpNnjafc9GafZCSU4qdvxnYNuTayQOM4L4ahp6AlbHtufXnN6bt/JNAs289xazwOpwTslCkFossskgYBp88KyvHtPeGm3Tg28rodYX17JxWDFicwDq4Pwtwndvg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=mJ/fFz3jnJkohBQiw3PD1vninml4sDq8XP3P1YzZ+ao=;
+ b=eqy++Uxzuqt9Dw+HcaSUlXUqjOq4VCE9IVkHsbLq66TlHH3LX7LSPVcTnOzhyQNcytaRDb4S7STzBy3EjHSfreQmKBn8uHb4HhCAgGS5i6by1sWgVjM24P18vdKas0XtWY3THmIskVseth8Z8qwXU7Zyqn7pWKKz4iPmkGrkNuwxm0R6UjcZgnU1/hjn7uHVEPI4qDU38yxvqcQQ6EEPqRvbGrbmb2FCN8FNwnM9Arb4AUW5v1aUL62Ysk/KU/Ao3TyG6QRRIRV3QzSOJsLuJDvK4nR1F3yxKvC/sZDhnfjfADRsaCrtYkxAid6R/DZLps3rP8zhMcjBGyyOoUvc6A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SJ1PR11MB6297.namprd11.prod.outlook.com (2603:10b6:a03:458::8)
+ by PH8PR11MB7118.namprd11.prod.outlook.com (2603:10b6:510:216::6)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9052.14; Fri, 29 Aug
+ 2025 17:23:28 +0000
+Received: from SJ1PR11MB6297.namprd11.prod.outlook.com
+ ([fe80::dc50:edbf:3882:abf7]) by SJ1PR11MB6297.namprd11.prod.outlook.com
+ ([fe80::dc50:edbf:3882:abf7%5]) with mapi id 15.20.9052.019; Fri, 29 Aug 2025
+ 17:23:27 +0000
+From: "Salin, Samuel" <samuel.salin@intel.com>
+To: "Hay, Joshua A" <joshua.a.hay@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+CC: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Zaremba, Larysa"
+ <larysa.zaremba@intel.com>, "Hay, Joshua A" <joshua.a.hay@intel.com>,
+ "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH iwl-net] idpf: fix UAF in RDMA core aux
+ dev deinitialization
+Thread-Index: AQHcCx66sVEbyqmQ4EijVAIkDKVMrrR5/BsQ
+Date: Fri, 29 Aug 2025 17:23:27 +0000
+Message-ID: <SJ1PR11MB6297415A2DAD536807C0EF609B3AA@SJ1PR11MB6297.namprd11.prod.outlook.com>
+References: <20250812001921.4076454-1-joshua.a.hay@intel.com>
+In-Reply-To: <20250812001921.4076454-1-joshua.a.hay@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ1PR11MB6297:EE_|PH8PR11MB7118:EE_
+x-ms-office365-filtering-correlation-id: bc5a8b12-f917-45ec-c383-08dde720c487
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|1800799024|366016|376014|38070700018|7053199007; 
+x-microsoft-antispam-message-info: =?us-ascii?Q?9e0PHhGBemIzA/1mmc04ZRdY3yJZP6Woa5FMGHXdfsaG8cWdOTKTkgHy83jn?=
+ =?us-ascii?Q?mI3ho/GXDryFKlUWZahRlaLmAMBBNrKMouIqprjJTjqdYxf71HN09hWvLTXi?=
+ =?us-ascii?Q?0q6sH+DixItnVvpGvfqb7hk7B9GhXsdqn47Oq48iYgL8+D1XTbwWVtC4ViaO?=
+ =?us-ascii?Q?D/9OUajQe+SqM7/9bR5a2Rn+0QfmHEgHNzaplpXU//g8ggMCJfYCv5A3prme?=
+ =?us-ascii?Q?bUBalSOvvjduel205Y8ODS2IiKuyKrGy6jmAUj9IBz4dEw+Uf2VNUupK8m/t?=
+ =?us-ascii?Q?VmKGEti3H/ijaAJNT4funjGfJquK+vrtCfg0L31Np+h+dajOtrbECisUwW4d?=
+ =?us-ascii?Q?yg8n8FgxcUNz9f+MSFd6JLYzROHQaVVmIfUCd51+xHyHUZBvGstgGw48SqKI?=
+ =?us-ascii?Q?lTsYgCQvF1PGpiBTjByYl/O+bKJbyHJjNzKMN6pTqvFaxVYxOZl3ehOgW3Mw?=
+ =?us-ascii?Q?CnRz2n+PbdGXSRa6Brcg9ur4I8p2SkIHPdJ7rqvfLmPqnTokFXlGFtaXYkyi?=
+ =?us-ascii?Q?O5EILSpUNCJqXj36ruhp5ST5N3ZYOBJ7lxjhHMA8ygvDVMLPbj6WArI+11WL?=
+ =?us-ascii?Q?r7Y1HVOKFgm/xlwDkOkJY9rjnilTkucFjHTJNvKtxakv81eg5Dsn8Kp1897q?=
+ =?us-ascii?Q?kj3SqibM8kpd3rLl2PeB1DKgz0nth6SOXMgRQiBxajPYhaNNoo54iREYxNR9?=
+ =?us-ascii?Q?K5bazexJsI7k/I9wBsR9fDYzVh7iAK18t1ys4eXlVqrZVvrmfFetZWFytdqx?=
+ =?us-ascii?Q?AsXSKan+0Dx7U3jdP9rV/EiZ3/61dbGw8du+4s8pBX4Qm7ByGTcyk3p/VWON?=
+ =?us-ascii?Q?fRqijC28KfiT9L3gL+Sk2MBHTTwy/ZaLG33S/IRnSk2Jb0V7C9+RKw5Xoy+9?=
+ =?us-ascii?Q?7SVzHFtJciDwyeUBjrhY5iXeMlzQNFi4jz3/DmmhAkcDiM2C7T8IwOGketqn?=
+ =?us-ascii?Q?w6sMe2/2Rm20DZEUPqAuz3ouh+w3yAzKyxSKLLY6Fza55bNxGcqQBUgkKjjM?=
+ =?us-ascii?Q?6c127LJFl8k5y+AkgZyiNUdsEUF2+E9sMfc61/JA+t49OTmVsk4lP7HY7fEf?=
+ =?us-ascii?Q?JSX9UTLtctJcRZpLL0RpKCIL8HOFAVStny+hRdMwVkZNCdOz+gZ3tfBFAaQS?=
+ =?us-ascii?Q?KMe8Xr1voDEl6b8KX3WD1G+oJB0LAEIj4P7mgiYyZH5WYKHvFbY4muchn/g+?=
+ =?us-ascii?Q?oTvCP4z1ILIB0Kqq2wyTY/aH9Fq9p/d6kNY36zltiBlXkVLIJsfR2g6gOlL7?=
+ =?us-ascii?Q?dApdGzYTQpjYlHE3TCRy8dy9xDdJZP+dUc/xD/ZCOxoS6YqIIO59UBTmXEqF?=
+ =?us-ascii?Q?Av9rle1EFLyq0FfQj0O+Z6lDJGtE3egtSFclC6h7I0HY9XAgidyFw12UKFiV?=
+ =?us-ascii?Q?gdImqvLCss3ryrBYlD2TxK+qDUHXkkOlT4sNEatL/G+9JfTmroi/mwIxNpuA?=
+ =?us-ascii?Q?nzpHZmAop3+liC302V8u41KZX1mAoSCQwXlqEYnTG4Apte37zybKRhL1jACM?=
+ =?us-ascii?Q?lKq+R5ywJQ81Or0=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ1PR11MB6297.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(376014)(38070700018)(7053199007); DIR:OUT;
+ SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?CWMRZZvAPYB0AU6HECY82+aAqXuDPggq9Sc9Pze2VURHq5QA2a0CxGxtwUiS?=
+ =?us-ascii?Q?nGC6VAnuZAAp6suXpbt3VOeZsFlvymmnDCUbbSElS8nJmJLpmUQRaNJeK4+a?=
+ =?us-ascii?Q?6BD9PYQFuBkKs6NjxydCNSYDdLlLb+2qYkwhI3hudXGPWdrG0zFPYChuc9dN?=
+ =?us-ascii?Q?/aR61Jno293DAOFXEiAUJM3rQgU1bBldigVY/AbNUtOYjIjilCUOdHcTCyi9?=
+ =?us-ascii?Q?L6rxiMO0GUHb7H/zvOK8xOcLWhDd6Xts2FgPY64YphzUNnoYSfS3wa4p3ED5?=
+ =?us-ascii?Q?Bd6AeuxUao07QY0VsCqM5JqH3/5Z90FrJxa6Vo3sBF/j10npFU6S8BgPX1w9?=
+ =?us-ascii?Q?iKh+63viRDDhwJ+HLLSu9S1KTWC86FUeI5VTldD45ZKF7Xw9Lv5cUPiX6YqV?=
+ =?us-ascii?Q?zw4p1ILTfxaqzG3v8htDko1usIexHpZ9QZYhbZHPFZqPZYOHuGKTxXachwNm?=
+ =?us-ascii?Q?EIBE+Em9rYIEawpHyAcGWjKv0n7EeY/Kca5cJai/6ODaPb4oSmsQgdySyuwV?=
+ =?us-ascii?Q?x18tQapDQlNXrohfz2AvFC3TWWGXZdSD2AmxKbiz8pxymZybyvAa+TbQLVs1?=
+ =?us-ascii?Q?UQsBi2EaZc/nkHAhuNV5RHG5zAvx5c0AzjstLmBb2j0SRpWYZGFm+PaoMwOF?=
+ =?us-ascii?Q?EYDtYQC2xWfcDLQoHRUcX2x+HfTQxPclP6OuAiTELtA7agN7TZWcRrdKisrk?=
+ =?us-ascii?Q?zylSQWz9i8ypNQrXckRtxLzt2NqD62VWocCG8rW9RS4sM/pBGe4lhdy2QnJq?=
+ =?us-ascii?Q?kOFKXjPw173pGHfz2wAjUJUnXGE+8rG6Cp02v9w+lNyh0Tq/Bvp8piuACFqE?=
+ =?us-ascii?Q?FoAoxTaLWzUpVoS7Ed5eowxT9tVY87ASVge1/eFamKhUvcVqAWBn54eL3vSk?=
+ =?us-ascii?Q?eyEJVerb7mZ9A958QnlfFaYNj76Aay3QQLGA9qEVee98G7rTqqo+c7pUP0N5?=
+ =?us-ascii?Q?1CXFje1SSetoG2Jx00mJ8lOO75r8wraHwLuuZ7FFDUepK4S5fIkfC5jbXnPo?=
+ =?us-ascii?Q?6A56qf0jB5cs3hiUmpYz8vNhSrvfuyaU/+duyw69+gKSNCYa6SdOWEtsb3Bg?=
+ =?us-ascii?Q?LvQ1Sfs35qL2DS+pQ4g6v5GsR5PikavfsKRHx5QLs/QDSAm1P5rgU+027kEm?=
+ =?us-ascii?Q?M/kv41xlMylQB+KlqGYENlQN+Rx/oUfe1/0smat9mT7n6zlZgJykE8vtyRpq?=
+ =?us-ascii?Q?MEGZo+1JUPNd8nSYJIT3f4jP09AXyg7XRjdcfUjudLVNnHwFeX9Ij+/ekL3D?=
+ =?us-ascii?Q?Ncq4IkL459IFnSj9pXF3wiZwI0xDgVjUKYXCTfImwZa7PzopfE8XgEkopdxI?=
+ =?us-ascii?Q?Zq0LMmFP0HrCOrH7jXr+FI4yU9+nVGrmE1AM0RQj/YJ+u2V61njjNPGTGLIj?=
+ =?us-ascii?Q?bUtBGFC8mQTriRm+IqyiaFDd5st6fTINEXLtgk8OUXFsI1Gt8laFrhE4S0dF?=
+ =?us-ascii?Q?9quBRuN30v3iCb0BoNnP3ItZ+eFqFmg4jJyQqDJGLnFYxOb1WeZgrAA49AWw?=
+ =?us-ascii?Q?ZVPXdee9dnqSJFxizlWh4ASs7ks8u06JuN+abyQM2OA2sEQWpMb9JqrUXI2w?=
+ =?us-ascii?Q?SLDLKaJSjoZnPtYb+wv+/4EdbiTYDtuhAI66eKJr?=
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1756475432;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=dV0VetiIkZg6OKtzkxyKWCKROkMG8CWw91TX1g10wz4=;
- b=JDVHuyTOFZ5tM8qVqyMsK48IHqcGGMnwuCCYcJNvQvDtSHbjn7AetSi4Vu5Uv6u1St2UtA
- kq4xqXF5CtXI4RJhqtTEI9OY9alQ9ATPpFlLVBYoG5b2IA+5kD/VttCK5OGkf+TfPN0U/0
- +5NvQQdQSlQx/n2E/ZEAcDp4LlVnIhM=
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ1PR11MB6297.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: bc5a8b12-f917-45ec-c383-08dde720c487
+X-MS-Exchange-CrossTenant-originalarrivaltime: 29 Aug 2025 17:23:27.8600 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 3WouKk+BokH+vAZ5U5PFclKTjgrtB5k+TR8WPd63fboTCqpnqB6TYKnkW9aoFCKWzqB7/0Vf4wywEIwHawsB7w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR11MB7118
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1756488219; x=1788024219;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=/wSBK7pwNkTWvBun+s1mEN7tfZuDkF+Rpq4P/BR+aT0=;
+ b=UlHbFzM3wMDXIkHZd/aZhf0Bh8igusYzvrqHb9PbN3NCDrz5pmDnf0ty
+ eibIKSpwJGq8gAyE5EKuRPciBT2vacbuUS1BDLF4rAbGvcbHuKfcMyloc
+ 7pgM1Ws5WggBOgLYYUase1tSOLw0MADnfBjf+auGgqcwLQFnvQBaFW0n9
+ 5f80GH9J9HpGwmh6W0rsK0/HtrbS+VwqGn8eyF6UkpzHuMFrbzCJap385
+ VOUijL/et0EOkf7i/l7bGYazgBrLbzPUeLrDAV7GQkivR006i4j8AHSH3
+ LWlPV7kLrTZIdd/+5RuOtSoQuFNkAI+NcWp6L7HpBg4mZohsNMtj3KuPq
+ g==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=redhat.com
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
- header.s=mimecast20190719 header.b=JDVHuyTO
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v3] i40e: fix Jumbo Frame
- support after iPXE boot
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=UlHbFzM3
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] idpf: fix UAF in RDMA core
+ aux dev deinitialization
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -135,227 +227,70 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Aug 27, 2025 at 11:18=E2=80=AFPM Jacob Keller <jacob.e.keller@intel=
-.com> wrote:
-> The i40e hardware has multiple hardware settings which define the Maximum
-> Frame Size (MFS) of the physical port. The firmware has an AdminQ command
-> (0x0603) to configure the MFS, but the i40e Linux driver never issues thi=
-s
-> command.
->
-> In most cases this is no problem, as the NVM default value has the device
-> configured for its maximum value of 9728. Unfortunately, recent versions =
-of
-> the iPXE intelxl driver now issue the 0x0603 Set Mac Config command,
-> modifying the MFS and reducing it from its default value of 9728.
->
-> This occurred as part of iPXE commit 6871a7de705b ("[intelxl] Use admin
-> queue to set port MAC address and maximum frame size"), a prerequisite
-> change for supporting the E800 series hardware in iPXE. Both the E700 and
-> E800 firmware support the AdminQ command, and the iPXE code shares much o=
-f
-> the logic between the two device drivers.
->
-> The ice E800 Linux driver already issues the 0x0603 Set Mac Config comman=
-d
-> early during probe, and is thus unaffected by the iPXE change.
->
-> Since commit 3a2c6ced90e1 ("i40e: Add a check to see if MFS is set"), the
-> i40e driver does check the I40E_PRTGL_SAH register, but it only logs a
-> warning message if its value is below the 9728 default. This register als=
-o
-> only covers received packets and not transmitted packets. A warning can
-> inform system administrators, but does not correct the issue. No
-> interactions from userspace cause the driver to write to PRTGL_SAH or iss=
-ue
-> the 0x0603 AdminQ command. Only a GLOBR reset will restore the value to i=
-ts
-> default value. There is no obvious method to trigger a GLOBR reset from
-> user space.
->
-> To fix this, introduce the i40e_aq_set_mac_config() function, similar to
-> the one from the ice driver. Call this during early probe to ensure that
-> the device configuration matches driver expectation. Unlike E800, the E70=
-0
-> firmware also has a bit to control whether the MAC should append CRC data=
-.
-> It is on by default, but setting a 0 to this bit would disable CRC. The
-> i40e implementation must set this bit to ensure CRC will be appended by t=
-he
-> MAC.
->
-> In addition to the AQ command, instead of just checking the I40E_PRTGL_SA=
-H
-> register, update its value to the 9728 default and write it back. This
-> ensures that the hardware is in the expected state, regardless of whether
-> the iPXE (or any other early boot driver) has modified this state.
->
-> This is a better user experience, as we now fix the issues with larger MT=
-U
-> instead of merely warning. It also aligns with the way the ice E800 serie=
-s
-> driver works.
->
-> A final note: The Fixes tag provided here is not strictly accurate. The
-> issue occurs as a result of an external entity (the iPXE intelxl driver),
-> and this is not a regression specifically caused by the mentioned change.
-> However, I believe the original change to just warn about PRTGL_SAH being
-> too low was an insufficient fix.
->
-> Fixes: 3a2c6ced90e1 ("i40e: Add a check to see if MFS is set")
-> Link: https://github.com/ipxe/ipxe/commit/6871a7de705b6f6a4046f0d19da9bcd=
-689c3bc8e
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+
+
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Joshua Hay
+> Sent: Monday, August 11, 2025 5:19 PM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: netdev@vger.kernel.org; Zaremba, Larysa <larysa.zaremba@intel.com>;
+> Hay, Joshua A <joshua.a.hay@intel.com>; Loktionov, Aleksandr
+> <aleksandr.loktionov@intel.com>
+> Subject: [Intel-wired-lan] [PATCH iwl-net] idpf: fix UAF in RDMA core aux=
+ dev
+> deinitialization
+>=20
+> Free the adev->id before auxiliary_device_uninit. The call to uninit trig=
+gers the
+> release callback, which frees the iadev memory containing the adev. The
+> previous flow results in a UAF during rmmod due to the adev->id access.
+>=20
+> [264939.604077]
+> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> [264939.604093] BUG: KASAN: slab-use-after-free in
+> idpf_idc_deinit_core_aux_device+0xe4/0x100 [idpf] [264939.604134] Read
+> of size 4 at addr ff1100109eb6eaf8 by task rmmod/17842
+>=20
+> ...
+>=20
+> [264939.604635] Allocated by task 17597:
+> [264939.604643]  kasan_save_stack+0x20/0x40 [264939.604654]
+> kasan_save_track+0x14/0x30 [264939.604663]  __kasan_kmalloc+0x8f/0xa0
+> [264939.604672]  idpf_idc_init_aux_core_dev+0x4bd/0xb60 [idpf]
+> [264939.604700]  idpf_idc_init+0x55/0xd0 [idpf] [264939.604726]
+> process_one_work+0x658/0xfe0 [264939.604742]
+> worker_thread+0x6e1/0xf10 [264939.604750]  kthread+0x382/0x740
+> [264939.604762]  ret_from_fork+0x23a/0x310 [264939.604772]
+> ret_from_fork_asm+0x1a/0x30
+>=20
+> [264939.604785] Freed by task 17842:
+> [264939.604790]  kasan_save_stack+0x20/0x40 [264939.604799]
+> kasan_save_track+0x14/0x30 [264939.604808]
+> kasan_save_free_info+0x3b/0x60 [264939.604820]
+> __kasan_slab_free+0x37/0x50 [264939.604830]  kfree+0xf1/0x420
+> [264939.604840]  device_release+0x9c/0x210 [264939.604850]
+> kobject_put+0x17c/0x4b0 [264939.604860]
+> idpf_idc_deinit_core_aux_device+0x4f/0x100 [idpf] [264939.604886]
+> idpf_vc_core_deinit+0xba/0x3a0 [idpf] [264939.604915]
+> idpf_remove+0xb0/0x7c0 [idpf] [264939.604944]
+> pci_device_remove+0xab/0x1e0 [264939.604955]
+> device_release_driver_internal+0x371/0x530
+> [264939.604969]  driver_detach+0xbf/0x180 [264939.604981]
+> bus_remove_driver+0x11b/0x2a0 [264939.604991]
+> pci_unregister_driver+0x2a/0x250 [264939.605005]
+> __do_sys_delete_module.constprop.0+0x2eb/0x540
+> [264939.605014]  do_syscall_64+0x64/0x2c0 [264939.605024]
+> entry_SYSCALL_64_after_hwframe+0x76/0x7e
+>=20
+> Fixes: f4312e6bfa2a ("idpf: implement core RDMA auxiliary dev create, ini=
+t,
+> and destroy")
+> Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
+> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 > ---
-> Changes in v3:
-> - Don't disable CRC. Otherwise, Tx traffic will not be accepted
->   appropriately.
-> - Link to v2: https://lore.kernel.org/r/20250815-jk-fix-i40e-ice-pxe-9k-m=
-tu-v2-1-ce857cdc6488@intel.com
->
-> Changes in v2:
-> - Rewrite commit message with feedback from Paul Menzel.
-> - Add missing initialization of cmd via libie_aq_raw().
-> - Fix the Kdoc comment for i40e_aq_set_mac_config().
-> - Move clarification of the Fixes tag to the commit message.
-> - Link to v1: https://lore.kernel.org/r/20250814-jk-fix-i40e-ice-pxe-9k-m=
-tu-v1-1-c3926287fb78@intel.com
-> ---
->  drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h |  1 +
->  drivers/net/ethernet/intel/i40e/i40e_prototype.h  |  2 ++
->  drivers/net/ethernet/intel/i40e/i40e_common.c     | 34 +++++++++++++++++=
-++++++
->  drivers/net/ethernet/intel/i40e/i40e_main.c       | 17 ++++++++----
->  4 files changed, 48 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h b/drivers/=
-net/ethernet/intel/i40e/i40e_adminq_cmd.h
-> index 76d872b91a38..cc02a85ad42b 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
-> @@ -1561,6 +1561,7 @@ I40E_CHECK_CMD_LENGTH(i40e_aq_set_phy_config);
->  struct i40e_aq_set_mac_config {
->         __le16  max_frame_size;
->         u8      params;
-> +#define I40E_AQ_SET_MAC_CONFIG_CRC_EN  BIT(2)
->         u8      tx_timer_priority; /* bitmap */
->         __le16  tx_timer_value;
->         __le16  fc_refresh_threshold;
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_prototype.h b/drivers/n=
-et/ethernet/intel/i40e/i40e_prototype.h
-> index aef5de53ce3b..26bb7bffe361 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_prototype.h
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_prototype.h
-> @@ -98,6 +98,8 @@ int i40e_aq_set_mac_loopback(struct i40e_hw *hw,
->                              struct i40e_asq_cmd_details *cmd_details);
->  int i40e_aq_set_phy_int_mask(struct i40e_hw *hw, u16 mask,
->                              struct i40e_asq_cmd_details *cmd_details);
-> +int i40e_aq_set_mac_config(struct i40e_hw *hw, u16 max_frame_size,
-> +                          struct i40e_asq_cmd_details *cmd_details);
->  int i40e_aq_clear_pxe_mode(struct i40e_hw *hw,
->                            struct i40e_asq_cmd_details *cmd_details);
->  int i40e_aq_set_link_restart_an(struct i40e_hw *hw,
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c b/drivers/net/=
-ethernet/intel/i40e/i40e_common.c
-> index 270e7e8cf9cf..59f5c1e810eb 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_common.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
-> @@ -1189,6 +1189,40 @@ int i40e_set_fc(struct i40e_hw *hw, u8 *aq_failure=
-s,
->         return status;
->  }
->
-> +/**
-> + * i40e_aq_set_mac_config - Configure MAC settings
-> + * @hw: pointer to the hw struct
-> + * @max_frame_size: Maximum Frame Size to be supported by the port
-> + * @cmd_details: pointer to command details structure or NULL
-> + *
-> + * Set MAC configuration (0x0603). Note that max_frame_size must be grea=
-ter
-> + * than zero.
-> + *
-> + * Return: 0 on success, or a negative error code on failure.
-> + */
-> +int i40e_aq_set_mac_config(struct i40e_hw *hw, u16 max_frame_size,
-> +                          struct i40e_asq_cmd_details *cmd_details)
-> +{
-> +       struct i40e_aq_set_mac_config *cmd;
-> +       struct libie_aq_desc desc;
-> +
-> +       cmd =3D libie_aq_raw(&desc);
-> +
-> +       if (max_frame_size =3D=3D 0)
-> +               return -EINVAL;
-> +
-> +       i40e_fill_default_direct_cmd_desc(&desc, i40e_aqc_opc_set_mac_con=
-fig);
-> +
-> +       cmd->max_frame_size =3D cpu_to_le16(max_frame_size);
-> +       cmd->params =3D I40E_AQ_SET_MAC_CONFIG_CRC_EN;
-> +
-> +#define I40E_AQ_SET_MAC_CONFIG_FC_DEFAULT_THRESHOLD    0x7FFF
-> +       cmd->fc_refresh_threshold =3D
-> +               cpu_to_le16(I40E_AQ_SET_MAC_CONFIG_FC_DEFAULT_THRESHOLD);
-> +
-> +       return i40e_asq_send_command(hw, &desc, NULL, 0, cmd_details);
-> +}
-> +
->  /**
->   * i40e_aq_clear_pxe_mode
->   * @hw: pointer to the hw struct
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/et=
-hernet/intel/i40e/i40e_main.c
-> index b83f823e4917..4796fdd0b966 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> @@ -16045,13 +16045,18 @@ static int i40e_probe(struct pci_dev *pdev, con=
-st struct pci_device_id *ent)
->                 dev_dbg(&pf->pdev->dev, "get supported phy types ret =3D =
- %pe last_status =3D  %s\n",
->                         ERR_PTR(err), libie_aq_str(pf->hw.aq.asq_last_sta=
-tus));
->
-> -       /* make sure the MFS hasn't been set lower than the default */
->  #define MAX_FRAME_SIZE_DEFAULT 0x2600
-> -       val =3D FIELD_GET(I40E_PRTGL_SAH_MFS_MASK,
-> -                       rd32(&pf->hw, I40E_PRTGL_SAH));
-> -       if (val < MAX_FRAME_SIZE_DEFAULT)
-> -               dev_warn(&pdev->dev, "MFS for port %x (%d) has been set b=
-elow the default (%d)\n",
-> -                        pf->hw.port, val, MAX_FRAME_SIZE_DEFAULT);
-> +
-> +       err =3D i40e_aq_set_mac_config(hw, MAX_FRAME_SIZE_DEFAULT, NULL);
-> +       if (err) {
-> +               dev_warn(&pdev->dev, "set mac config ret =3D  %pe last_st=
-atus =3D  %s\n",
+> 2.39.2
 
-Just a nit:
-There are double spaces here after the '=3D' signs for no good reason.
-It's not just in this message. There are a few more like that in this file.
-
-> +                        ERR_PTR(err), libie_aq_str(pf->hw.aq.asq_last_st=
-atus));
-> +       }
-> +
-> +       /* Make sure the MFS is set to the expected value */
-> +       val =3D rd32(hw, I40E_PRTGL_SAH);
-> +       FIELD_MODIFY(I40E_PRTGL_SAH_MFS_MASK, &val, MAX_FRAME_SIZE_DEFAUL=
-T);
-> +       wr32(hw, I40E_PRTGL_SAH, val);
->
->         /* Add a filter to drop all Flow control frames from any VSI from=
- being
->          * transmitted. By doing so we stop a malicious VF from sending o=
-ut
->
-> ---
-> base-commit: ceb9515524046252c522b16f38881e8837ec0d91
-> change-id: 20250813-jk-fix-i40e-ice-pxe-9k-mtu-2b6d03621cd9
->
-> Best regards,
-> --
-> Jacob Keller <jacob.e.keller@intel.com>
-
-Reviewed-by: Michal Schmidt <mschmidt@redhat.com>
-
+Tested-by: Samuel Salin <Samuel.salin@intel.com>
