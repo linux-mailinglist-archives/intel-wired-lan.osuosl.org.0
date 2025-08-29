@@ -1,96 +1,99 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA38CB3C1B4
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Aug 2025 19:25:02 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0AFD3B3C018
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Aug 2025 17:59:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 896F283D1D;
-	Fri, 29 Aug 2025 17:25:01 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8E6276167D;
+	Fri, 29 Aug 2025 15:59:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id GAHvFGcCcUKv; Fri, 29 Aug 2025 17:25:00 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 9LX51P-It3cG; Fri, 29 Aug 2025 15:59:24 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8ED6B8275A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 814CE6167E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1756488300;
-	bh=stPC3vuh8rBr9c+TA6y8ZGdAGPS/JsvMONeJjV3TWtU=;
+	s=default; t=1756483164;
+	bh=ogN/SxSXM+aZlMuQZjwtsaFgmP8xmbGYkEI3z8qhhDg=;
 	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=eYvvziWme94JOfbL1g4P/KAXkSe1oW7SKGIdlrWtYskhVqkwJvkKqaK/4/ZFao0/v
-	 QWShqe2i0TGZivOa6bYM+0HQ37S0QVoHmrjy+KXs1WtW9TqE2EyxOA7U+LplD/4CRN
-	 AEAj82otCsKOoqjcqX03UJ2syawu+oQAdPG60fKEFfsp77ugRpxABRbf7M05h3LRT+
-	 Mx2ELwfr4GqKjgq8RUwPvPa6uaVe6aoZUyI9sg8zo1QcQmHfaKeEB2R84uNT1Anj4i
-	 6fSk3Ek6M298gF8kxgJPS3mTSB32Ua3Sfaj6/R27bAZhHVcohVk65KRyEJrXTJNtvD
-	 zY2YnduJQAYMg==
+	b=puG44HSibOa/RTz+/23SlS8VXwSVAarLwAUA61qF0OkFH2y41jVBOER+A3+0KFDqE
+	 zsJEojcjO8zrjBJNkmiWbjeTFnQyeNL3bRBuZDpd9cXX8TZVWPrieDstp4ootg5d4d
+	 sNPmtpMIwRsBlgtdcWlMBOgCVVoA5Om48eIbEOH+26U6Xr2RkOUZBKct1OrS5xkk9T
+	 g59zdWkLU/CKZ38dI+tSDMpcY5wLrKLWWoNjDrRyyKqqiIsprXOvqfbaVdZ/Y/ieSy
+	 LvFBWRweDR3KQq5F684XqV070xAF3NzJ7Ao8/yVQzqzsT2rE5igXf6AlB6WAji5UvZ
+	 cDa3Y5oZB5DmQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8ED6B8275A;
-	Fri, 29 Aug 2025 17:25:00 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 814CE6167E;
+	Fri, 29 Aug 2025 15:59:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 03B9869
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 17:24:59 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 4BECBD2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 15:59:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DD7918275A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 17:24:58 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 318004196F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 15:59:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 750JkAeUn7Sq for <intel-wired-lan@lists.osuosl.org>;
- Fri, 29 Aug 2025 17:24:58 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
- helo=mgamail.intel.com; envelope-from=madhu.chittim@intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id V--dgqav_lYs for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 29 Aug 2025 15:59:22 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
+ helo=mgamail.intel.com; envelope-from=anton.nadezhdin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org D71D0825B1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D71D0825B1
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D71D0825B1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 17:24:57 +0000 (UTC)
-X-CSE-ConnectionGUID: OcZ4kuzvTvy+telCgix2Hg==
-X-CSE-MsgGUID: kGA2iVwGQyeG7L7tULvdMg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11537"; a="70213213"
-X-IronPort-AV: E=Sophos;i="6.18,221,1751266800"; d="scan'208";a="70213213"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Aug 2025 10:24:54 -0700
-X-CSE-ConnectionGUID: 7lWCkXKIR2atC4LJ8fPgDA==
-X-CSE-MsgGUID: sUV77jL1Rz2NCmQwi0oF+Q==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 6E5C94196D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6E5C94196D
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6E5C94196D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 15:59:22 +0000 (UTC)
+X-CSE-ConnectionGUID: 91Ti7G3qSoyADRPX3tSoHw==
+X-CSE-MsgGUID: AUh0V1iHS6+CyhWUrhRuIw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11537"; a="69480038"
+X-IronPort-AV: E=Sophos;i="6.18,221,1751266800"; d="scan'208";a="69480038"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+ by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Aug 2025 08:59:22 -0700
+X-CSE-ConnectionGUID: RhBOPIPfTl2dYYb6yUKFyw==
+X-CSE-MsgGUID: ibE3l8BnTiOhYcJX1xkpCA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,221,1751266800"; d="scan'208";a="170820043"
-Received: from unknown (HELO fedora.jf.intel.com) ([10.166.244.151])
- by fmviesa009.fm.intel.com with ESMTP; 29 Aug 2025 10:24:53 -0700
-From: Madhu Chittim <madhu.chittim@intel.com>
+X-IronPort-AV: E=Sophos;i="6.18,221,1751266800"; d="scan'208";a="174583492"
+Received: from host59.igk.intel.com ([10.123.220.59])
+ by orviesa003.jf.intel.com with ESMTP; 29 Aug 2025 08:59:19 -0700
+From: Anton Nadezhdin <anton.nadezhdin@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org,
-	horms@kernel.org
-Date: Fri, 29 Aug 2025 10:24:53 -0700
-Message-ID: <20250829172453.2059973-1-madhu.chittim@intel.com>
-X-Mailer: git-send-email 2.50.1
+Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
+ richardcochran@gmail.com, Milena Olech <milena.olech@intel.com>,
+ Anton Nadezhdin <anton.nadezhdin@intel.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Date: Fri, 29 Aug 2025 13:57:33 -0400
+Message-ID: <20250829175734.175963-1-anton.nadezhdin@intel.com>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1756488298; x=1788024298;
+ t=1756483163; x=1788019163;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=bzhq7FUc9ws0bO0BMXCXUFXLEARPMMSKFNKweW3RMKo=;
- b=V9Y7Mt4D2Vg2dJjE3AAI6HnnWIbCus9ZlsnHsiRLykaNf9M9tZ8NtbYZ
- KovwotS0gliGphZr05p8k9O0GEohV5bnX+zgEGf98c7sm1n8GdEOgbx4A
- tq+W/AwstdxPMf6nQYK3ZkGpnoPU/r/H+4eFHUXPLl1Y3zV7MMBMWH3Pd
- 6tQbwmxfF/jI0H0+lzpYB2dWcqIyaAXrzF52HqriHShKkDAUNeRTUDHd2
- TB6M40rICV2jVjEqtmmUJQGejUaxllIGdF68muNvlRIeUREF21XUFsfZ0
- Sy0mBlvDMgprfv+6J5c4zF6PYM3lo61eEEVnB8gl2L5lih3Th3fM2yJtt
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=uoQ2xAb52qfxyXqftTwYIMBhksOqI6yk9akjsG4e9Yo=;
+ b=Bq8V1gjXlTzhtEMhAMTob8sgNogtJx/ys6pKKqtT16GX+CzG3qgp3HZa
+ wf3kW1oUqLAGKHAVjUh/2MuTp34RB0oMzYzUwBpLjAnWjGLg7Rq2UWqrB
+ 0xl8FX+dUQkRcl139oRtnR/ZFj99tQLSxvpApcZuFtYvFpWd5p+YSwFys
+ lg4gIl0R0FMPRnP6/XaZF5tDl3djNu9S1lvtVRSyjDmptkBXldMOduGLq
+ 0UAE5ZuPlQ888yRDypAa6NlD4cA9zFOst6hZfwCqqd8Ga4tV1A/VAAQZW
+ h/fFO0Xp2GoUoyuqn2zz8pwRJPbqS0brf2rDAEcWUD80+Q3M0hty8jsDl
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=V9Y7Mt4D
-Subject: [Intel-wired-lan] [PATCH net-next v3] idpf: add support for IDPF
- PCI programming interface
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Bq8V1gjX
+Subject: [Intel-wired-lan] [PATCH iwl-next v3] idpf: add HW timestamping
+ statistics
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -106,225 +109,211 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+From: Milena Olech <milena.olech@intel.com>
 
-At present IDPF supports only 0x1452 and 0x145C as PF and VF device IDs
-on our current generation hardware. Future hardware exposes a new set of
-device IDs for each generation. To avoid adding a new device ID for each
-generation and to make the driver forward and backward compatible,
-make use of the IDPF PCI programming interface to load the driver.
+Add HW timestamping statistics support - through implementing get_ts_stats.
+Timestamp statistics include correctly timestamped packets, discarded,
+skipped and flushed during PTP release.
 
-Write and read the VF_ARQBAL mailbox register to find if the current
-device is a PF or a VF.
+Most of the stats are collected per vport, only requests skipped due to
+lack of free latch index are collected per Tx queue.
 
-PCI SIG allocated a new programming interface for the IDPF compliant
-ethernet network controller devices. It can be found at:
-https://members.pcisig.com/wg/PCI-SIG/document/20113
-with the document titled as 'PCI Code and ID Assignment Revision 1.16'
-or any latest revisions.
+Statistics can be obtained using kernel ethtool since version 6.10
+with:
+ethtool -I -T <interface>
 
-Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
-Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
-Signed-off-by: Madhu Chittim <madhu.chittim@intel.com>
+The output will include:
+Statistics:
+  tx_pkts: 15
+  tx_lost: 0
+  tx_err: 0
 
+Signed-off-by: Milena Olech <milena.olech@intel.com>
+Co-developed-by: Anton Nadezhdin <anton.nadezhdin@intel.com>
+Signed-off-by: Anton Nadezhdin <anton.nadezhdin@intel.com>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 ---
-v3:
-- reworked logic to avoid gotos
-
-v2:
-- replace *u8 with *bool in idpf_is_vf_device function parameter
-- use ~0 instead of 0xffffff in PCI_DEVICE_CLASS parameter
-
+Changelog:
+v2: Add testing information
+v3: Add check for port status to resolve driver crash during statistic
+  read when port is down
 ---
-
-Signed-off-by: Madhu Chittim <madhu.chittim@intel.com>
----
- drivers/net/ethernet/intel/idpf/idpf.h        |  1 +
- drivers/net/ethernet/intel/idpf/idpf_main.c   | 73 ++++++++++++++-----
- drivers/net/ethernet/intel/idpf/idpf_vf_dev.c | 37 ++++++++++
- 3 files changed, 94 insertions(+), 17 deletions(-)
+ drivers/net/ethernet/intel/idpf/idpf.h        | 17 ++++++
+ .../net/ethernet/intel/idpf/idpf_ethtool.c    | 56 +++++++++++++++++++
+ drivers/net/ethernet/intel/idpf/idpf_ptp.c    | 11 +++-
+ .../ethernet/intel/idpf/idpf_virtchnl_ptp.c   |  4 ++
+ 4 files changed, 87 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/net/ethernet/intel/idpf/idpf.h b/drivers/net/ethernet/intel/idpf/idpf.h
-index c56abf8b4c92..4a16e481faf7 100644
+index 6e79fa8556e9..6db6d6f0562a 100644
 --- a/drivers/net/ethernet/intel/idpf/idpf.h
 +++ b/drivers/net/ethernet/intel/idpf/idpf.h
-@@ -1041,6 +1041,7 @@ void idpf_mbx_task(struct work_struct *work);
- void idpf_vc_event_task(struct work_struct *work);
- void idpf_dev_ops_init(struct idpf_adapter *adapter);
- void idpf_vf_dev_ops_init(struct idpf_adapter *adapter);
-+int idpf_is_vf_device(struct pci_dev *pdev, bool *is_vf);
- int idpf_intr_req(struct idpf_adapter *adapter);
- void idpf_intr_rel(struct idpf_adapter *adapter);
- u16 idpf_get_max_tx_hdr_size(struct idpf_adapter *adapter);
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_main.c b/drivers/net/ethernet/intel/idpf/idpf_main.c
-index 8c46481d2e1f..493604d50143 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_main.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_main.c
-@@ -7,11 +7,57 @@
- 
- #define DRV_SUMMARY	"Intel(R) Infrastructure Data Path Function Linux Driver"
- 
-+#define IDPF_NETWORK_ETHERNET_PROGIF				0x01
-+#define IDPF_CLASS_NETWORK_ETHERNET_PROGIF			\
-+	(PCI_CLASS_NETWORK_ETHERNET << 8 | IDPF_NETWORK_ETHERNET_PROGIF)
-+
- MODULE_DESCRIPTION(DRV_SUMMARY);
- MODULE_IMPORT_NS("LIBETH");
- MODULE_IMPORT_NS("LIBETH_XDP");
- MODULE_LICENSE("GPL");
- 
-+/**
-+ * idpf_dev_init - Initialize device specific parameters
-+ * @adapter: adapter to initialize
-+ * @ent: entry in idpf_pci_tbl
-+ *
-+ * Return: %0 on success, -%errno on failure.
-+ */
-+static int idpf_dev_init(struct idpf_adapter *adapter,
-+			 const struct pci_device_id *ent)
-+{
-+	bool is_vf = false;
-+	int err;
-+
-+	if (ent->class == IDPF_CLASS_NETWORK_ETHERNET_PROGIF) {
-+		err = idpf_is_vf_device(adapter->pdev, &is_vf);
-+		if (err)
-+			return err;
-+		if (is_vf) {
-+			idpf_vf_dev_ops_init(adapter);
-+			adapter->crc_enable = true;
-+		} else {
-+			idpf_dev_ops_init(adapter);
-+		}
-+
-+		return 0;
-+	}
-+
-+	switch (ent->device) {
-+	case IDPF_DEV_ID_PF:
-+		idpf_dev_ops_init(adapter);
-+		break;
-+	case IDPF_DEV_ID_VF:
-+		idpf_vf_dev_ops_init(adapter);
-+		adapter->crc_enable = true;
-+		break;
-+	default:
-+		return -ENODEV;
-+	}
-+
-+	return 0;
-+}
-+
- /**
-  * idpf_remove - Device removal routine
-  * @pdev: PCI device information struct
-@@ -165,21 +211,6 @@ static int idpf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	adapter->req_tx_splitq = true;
- 	adapter->req_rx_splitq = true;
- 
--	switch (ent->device) {
--	case IDPF_DEV_ID_PF:
--		idpf_dev_ops_init(adapter);
--		break;
--	case IDPF_DEV_ID_VF:
--		idpf_vf_dev_ops_init(adapter);
--		adapter->crc_enable = true;
--		break;
--	default:
--		err = -ENODEV;
--		dev_err(&pdev->dev, "Unexpected dev ID 0x%x in idpf probe\n",
--			ent->device);
--		goto err_free;
--	}
--
- 	adapter->pdev = pdev;
- 	err = pcim_enable_device(pdev);
- 	if (err)
-@@ -259,11 +290,18 @@ static int idpf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	/* setup msglvl */
- 	adapter->msg_enable = netif_msg_init(-1, IDPF_AVAIL_NETIF_M);
- 
-+	err = idpf_dev_init(adapter, ent);
-+	if (err) {
-+		dev_err(&pdev->dev, "Unexpected dev ID 0x%x in idpf probe\n",
-+			ent->device);
-+		goto destroy_vc_event_wq;
-+	}
-+
- 	err = idpf_cfg_hw(adapter);
- 	if (err) {
- 		dev_err(dev, "Failed to configure HW structure for adapter: %d\n",
- 			err);
--		goto err_cfg_hw;
-+		goto destroy_vc_event_wq;
- 	}
- 
- 	mutex_init(&adapter->vport_ctrl_lock);
-@@ -284,7 +322,7 @@ static int idpf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 
- 	return 0;
- 
--err_cfg_hw:
-+destroy_vc_event_wq:
- 	destroy_workqueue(adapter->vc_event_wq);
- err_vc_event_wq_alloc:
- 	destroy_workqueue(adapter->stats_wq);
-@@ -304,6 +342,7 @@ static int idpf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- static const struct pci_device_id idpf_pci_tbl[] = {
- 	{ PCI_VDEVICE(INTEL, IDPF_DEV_ID_PF)},
- 	{ PCI_VDEVICE(INTEL, IDPF_DEV_ID_VF)},
-+	{ PCI_DEVICE_CLASS(IDPF_CLASS_NETWORK_ETHERNET_PROGIF, ~0)},
- 	{ /* Sentinel */ }
+@@ -256,6 +256,21 @@ enum idpf_vport_flags {
+ 	IDPF_VPORT_FLAGS_NBITS,
  };
- MODULE_DEVICE_TABLE(pci, idpf_pci_tbl);
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c b/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
-index 7527b967e2e7..09cccdf45b50 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
-@@ -7,6 +7,43 @@
  
- #define IDPF_VF_ITR_IDX_SPACING		0x40
- 
-+#define IDPF_VF_TEST_VAL		0xFEED0000
-+
 +/**
-+ * idpf_is_vf_device - Helper to find if it is a VF device
-+ * @pdev: PCI device information struct
-+ * @is_vf: used to update VF device status
-+ *
-+ * Return: %0 on success, -%errno on failure.
++ * struct idpf_tstamp_stats - Tx timestamp statistics
++ * @stats_sync: See struct u64_stats_sync
++ * @packets: Number of packets successfully timestamped by the hardware
++ * @discarded: Number of Tx skbs discarded due to cached PHC
++ *	       being too old to correctly extend timestamp
++ * @flushed: Number of Tx skbs flushed due to interface closed
 + */
-+int idpf_is_vf_device(struct pci_dev *pdev, bool *is_vf)
++struct idpf_tstamp_stats {
++	struct u64_stats_sync stats_sync;
++	u64_stats_t packets;
++	u64_stats_t discarded;
++	u64_stats_t flushed;
++};
++
+ struct idpf_port_stats {
+ 	struct u64_stats_sync stats_sync;
+ 	u64_stats_t rx_hw_csum_err;
+@@ -328,6 +343,7 @@ struct idpf_fsteer_fltr {
+  * @tx_tstamp_caps: Capabilities negotiated for Tx timestamping
+  * @tstamp_config: The Tx tstamp config
+  * @tstamp_task: Tx timestamping task
++ * @tstamp_stats: Tx timestamping statistics
+  */
+ struct idpf_vport {
+ 	u16 num_txq;
+@@ -386,6 +402,7 @@ struct idpf_vport {
+ 	struct idpf_ptp_vport_tx_tstamp_caps *tx_tstamp_caps;
+ 	struct kernel_hwtstamp_config tstamp_config;
+ 	struct work_struct tstamp_task;
++	struct idpf_tstamp_stats tstamp_stats;
+ };
+ 
+ /**
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
+index 0eb812ac19c2..786d0bacdd3c 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
+@@ -1685,6 +1685,61 @@ static int idpf_get_ts_info(struct net_device *netdev,
+ 	return err;
+ }
+ 
++/**
++ * idpf_get_ts_stats - Collect HW tstamping statistics
++ * @netdev: network interface device structure
++ * @ts_stats: HW timestamping stats structure
++ *
++ * Collect HW timestamping statistics including successfully timestamped
++ * packets, discarded due to illegal values, flushed during releasing PTP and
++ * skipped due to lack of the free index.
++ */
++static void idpf_get_ts_stats(struct net_device *netdev,
++			      struct ethtool_ts_stats *ts_stats)
 +{
-+	struct resource mbx_region;
-+	resource_size_t mbx_start;
-+	void __iomem *mbx_addr;
-+	long len;
++	struct idpf_netdev_priv *np = netdev_priv(netdev);
++	struct idpf_vport *vport;
++	unsigned int start;
 +
-+	resource_set_range(&mbx_region,	VF_BASE, IDPF_VF_MBX_REGION_SZ);
++	idpf_vport_ctrl_lock(netdev);
++	vport = idpf_netdev_to_vport(netdev);
++	do {
++		start = u64_stats_fetch_begin(&vport->tstamp_stats.stats_sync);
++		ts_stats->pkts = u64_stats_read(&vport->tstamp_stats.packets);
++		ts_stats->lost = u64_stats_read(&vport->tstamp_stats.flushed);
++		ts_stats->err = u64_stats_read(&vport->tstamp_stats.discarded);
++	} while (u64_stats_fetch_retry(&vport->tstamp_stats.stats_sync, start));
 +
-+	mbx_start = pci_resource_start(pdev, 0) + mbx_region.start;
-+	len = resource_size(&mbx_region);
++	if (np->state != __IDPF_VPORT_UP)
++		goto exit;
 +
-+	mbx_addr = ioremap(mbx_start, len);
-+	if (!mbx_addr)
-+		return -EIO;
++	for (u16 i = 0; i < vport->num_txq_grp; i++) {
++		struct idpf_txq_group *txq_grp = &vport->txq_grps[i];
 +
-+	writel(IDPF_VF_TEST_VAL, mbx_addr + VF_ARQBAL - VF_BASE);
++		for (u16 j = 0; j < txq_grp->num_txq; j++) {
++			struct idpf_tx_queue *txq = txq_grp->txqs[j];
++			struct idpf_tx_queue_stats *stats;
++			u64 ts;
 +
-+	/* Force memory write to complete before reading it back */
-+	wmb();
++			if (!txq)
++				continue;
 +
-+	*is_vf = readl(mbx_addr + VF_ARQBAL - VF_BASE) == IDPF_VF_TEST_VAL;
++			stats = &txq->q_stats;
++			do {
++				start = u64_stats_fetch_begin(&txq->stats_sync);
 +
-+	iounmap(mbx_addr);
++				ts = u64_stats_read(&stats->tstamp_skipped);
++			} while (u64_stats_fetch_retry(&txq->stats_sync,
++						       start));
 +
-+	return 0;
++			ts_stats->lost += ts;
++		}
++	}
++
++exit:
++	idpf_vport_ctrl_unlock(netdev);
 +}
 +
+ static const struct ethtool_ops idpf_ethtool_ops = {
+ 	.supported_coalesce_params = ETHTOOL_COALESCE_USECS |
+ 				     ETHTOOL_COALESCE_USE_ADAPTIVE,
+@@ -1711,6 +1766,7 @@ static const struct ethtool_ops idpf_ethtool_ops = {
+ 	.set_ringparam		= idpf_set_ringparam,
+ 	.get_link_ksettings	= idpf_get_link_ksettings,
+ 	.get_ts_info		= idpf_get_ts_info,
++	.get_ts_stats		= idpf_get_ts_stats,
+ };
+ 
  /**
-  * idpf_vf_ctlq_reg_init - initialize default mailbox registers
-  * @adapter: adapter structure
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_ptp.c b/drivers/net/ethernet/intel/idpf/idpf_ptp.c
+index 63a41e688733..3e1052d070cf 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_ptp.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_ptp.c
+@@ -618,8 +618,13 @@ u64 idpf_ptp_extend_ts(struct idpf_vport *vport, u64 in_tstamp)
+ 
+ 	discard_time = ptp->cached_phc_jiffies + 2 * HZ;
+ 
+-	if (time_is_before_jiffies(discard_time))
++	if (time_is_before_jiffies(discard_time)) {
++		u64_stats_update_begin(&vport->tstamp_stats.stats_sync);
++		u64_stats_inc(&vport->tstamp_stats.discarded);
++		u64_stats_update_end(&vport->tstamp_stats.stats_sync);
++
+ 		return 0;
++	}
+ 
+ 	return idpf_ptp_tstamp_extend_32b_to_64b(ptp->cached_phc_time,
+ 						 lower_32_bits(in_tstamp));
+@@ -853,13 +858,17 @@ static void idpf_ptp_release_vport_tstamp(struct idpf_vport *vport)
+ 
+ 	/* Remove list with latches in use */
+ 	head = &vport->tx_tstamp_caps->latches_in_use;
++	u64_stats_update_begin(&vport->tstamp_stats.stats_sync);
+ 	list_for_each_entry_safe(ptp_tx_tstamp, tmp, head, list_member) {
++		u64_stats_inc(&vport->tstamp_stats.flushed);
++
+ 		list_del(&ptp_tx_tstamp->list_member);
+ 		if (ptp_tx_tstamp->skb)
+ 			consume_skb(ptp_tx_tstamp->skb);
+ 
+ 		kfree(ptp_tx_tstamp);
+ 	}
++	u64_stats_update_end(&vport->tstamp_stats.stats_sync);
+ 
+ 	spin_unlock_bh(&vport->tx_tstamp_caps->latches_lock);
+ 
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl_ptp.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl_ptp.c
+index 688a6f4e0acc..61cedb6f2854 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl_ptp.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl_ptp.c
+@@ -522,6 +522,10 @@ idpf_ptp_get_tstamp_value(struct idpf_vport *vport,
+ 	list_add(&ptp_tx_tstamp->list_member,
+ 		 &tx_tstamp_caps->latches_free);
+ 
++	u64_stats_update_begin(&vport->tstamp_stats.stats_sync);
++	u64_stats_inc(&vport->tstamp_stats.packets);
++	u64_stats_update_end(&vport->tstamp_stats.stats_sync);
++
+ 	return 0;
+ }
+ 
+
+base-commit: e9d3c152a5c44376d901100fac80858278acc3eb
 -- 
-2.50.1
+2.42.0
 
