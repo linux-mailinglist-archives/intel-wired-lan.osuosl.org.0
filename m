@@ -1,98 +1,125 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 62871B3B887
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Aug 2025 12:18:30 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 71B73B3BCCF
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Aug 2025 15:50:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0F5B883D82;
-	Fri, 29 Aug 2025 10:18:29 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6F637615EE;
+	Fri, 29 Aug 2025 13:50:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id lp6b1V8Q-G1l; Fri, 29 Aug 2025 10:18:28 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id SajBVlFVo9wY; Fri, 29 Aug 2025 13:50:36 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C770A83D18
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0E0A7615F6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1756462707;
-	bh=lJv+ve5p3sLyIr/w3aOk/VtOnKnAVm5eNzfDFJ8Jmhk=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1756475436;
+	bh=dV0VetiIkZg6OKtzkxyKWCKROkMG8CWw91TX1g10wz4=;
+	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=L+HqvSS1dH+6gqJ+OUUqFCJKH7GNFdp7GT1j5xa9jq4OazDzUgLeNRSMQanW7pyKA
-	 phZ4lqBv27Q6N4I313rIwKpn06g7mTBJI3TCOXmvjqbomy6kesJEl/wL8zBnupPfSm
-	 XeB2tv+W3UOfSnPwDZyHC12q+DYwpmrtEpq+ZV2eTgJzjPj/e2ykaLwg+0kO1H8IKi
-	 dsKxqvsDUvu/7IyQZUffChCPtavdLq52GAQtzNgJIndvaUzhyofqMLEdHGoqmY/gzx
-	 WMMYQKvmSBO7O7lCmEKNnvJ2MUDLTbjXT16rQ+6HwBV9R7j8zby0py7f4foPtZwKca
-	 zcwBfDuU8PeXg==
+	 From;
+	b=gRgNim/3ibaXi0TyAhVDn7QLyQuF3zbPJCLwlcYO8ie/lDmjGzIsnthUEGuqn4+cj
+	 2jdoL116bkWIAlp+WyJ7hgUT1gnj8VcDrGUB4/gRYRoljBQKacOkArzqlGaK2lTIeD
+	 AYju1QvcSc2pgs3UTaoSBgfhholwek9+/p75wLvtCrZwJT3+OR+xsuIP76P0eWmngY
+	 HxWJdzVOQNd7seRz/IFv9XzLrJjmzRqvPmY+fKVKrrhKg5ybmTiSMBOVR9xpKdVk0J
+	 nxDKtN0TvsOM0vbpNbSWgUXSJDuNOhfFx3g32c1fv7rDyZwGY7Wo9aecCj3LRAKYTw
+	 y4Izowd/sbDaA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C770A83D18;
-	Fri, 29 Aug 2025 10:18:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0E0A7615F6;
+	Fri, 29 Aug 2025 13:50:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 5AD99D2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 10:18:26 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 292B16C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 13:50:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4CDE983D25
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 10:18:26 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 1B1BF6151A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 13:50:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HuOX4Rm0AcsD for <intel-wired-lan@lists.osuosl.org>;
- Fri, 29 Aug 2025 10:18:25 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
- helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id X268ppK8FEof for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 29 Aug 2025 13:50:34 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=mschmidt@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3A9D0816D4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3A9D0816D4
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3A9D0816D4
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 10:18:25 +0000 (UTC)
-X-CSE-ConnectionGUID: rjYeUm6rSxKKkv4J4wbf0g==
-X-CSE-MsgGUID: c9/JebaISd+Ss4LlStg2TA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11536"; a="76199497"
-X-IronPort-AV: E=Sophos;i="6.18,221,1751266800"; d="scan'208";a="76199497"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
- by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Aug 2025 03:18:25 -0700
-X-CSE-ConnectionGUID: qJFhipHAR1GojVdNzoFVVg==
-X-CSE-MsgGUID: cpeTa/kjTIi+3i8pd8q6nQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,221,1751266800"; d="scan'208";a="207489292"
-Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
- by orviesa001.jf.intel.com with ESMTP; 29 Aug 2025 03:18:23 -0700
-From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-To: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- aleksandr.loktionov@intel.com
-Date: Fri, 29 Aug 2025 10:18:08 +0000
-Message-ID: <20250829101809.1022945-6-aleksandr.loktionov@intel.com>
-X-Mailer: git-send-email 2.49.0
-In-Reply-To: <20250829101809.1022945-1-aleksandr.loktionov@intel.com>
-References: <20250829101809.1022945-1-aleksandr.loktionov@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 0215E61517
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0215E61517
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0215E61517
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 13:50:33 +0000 (UTC)
+Received: from mail-oa1-f69.google.com (mail-oa1-f69.google.com
+ [209.85.160.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-601-t0siutRoPSOHipn0tscKtw-1; Fri, 29 Aug 2025 09:50:31 -0400
+X-MC-Unique: t0siutRoPSOHipn0tscKtw-1
+X-Mimecast-MFC-AGG-ID: t0siutRoPSOHipn0tscKtw_1756475430
+Received: by mail-oa1-f69.google.com with SMTP id
+ 586e51a60fabf-30cce8cffa8so506603fac.1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Aug 2025 06:50:30 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1756475430; x=1757080230;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=dV0VetiIkZg6OKtzkxyKWCKROkMG8CWw91TX1g10wz4=;
+ b=KG1kDFJyEJEmgHXMH1YxSePy/4n6XYFQG5rFkRFH0cxf6WjB+xLKkG1t7DTOgr7rV4
+ lp3I1AEXt3+P1j9xpeeQ/egWoPPyJ8/cZK+UX55T4nlXP6RDDIvcPFuc3v8ID3GwMI4l
+ n/MAo+SvWtUInXVyC0EuwXZZAR7Ta+ztIlhJ86qmIqMtZUAjpugB7D+O5muUSvGw7PFS
+ AgwPoPWuXJgXECiAkPk9qpbgujXiirJod8LPBcA740fIwCNWb2VvNnBtjS3KiMWULwAX
+ EbHHagxnq0xdgOLZdPHltjNHrFMAmZREUymPKGFbZIH5WABlUEN0XjFMo+SCgQ8UxNSH
+ VnzQ==
+X-Gm-Message-State: AOJu0YyP90AyjeaxasoxN+BqlxfSzbUog7RdJOK/fIvxEdzZUI6zR8Ec
+ bzpmq8gnyQF8paUGjRAQsBUL+LKDspct7yHUovw2m5d8UYr59jnFbVbhGEHuqwl4hbH9zO0rzoe
+ mwCg01DZZq6aNckqjCDtoY9mgaFEPv/uaBSbceh5JIafR0RKLUJepKMl2xhWv1y1x5m78CZi01K
+ CW+A6sSvke9kBJeApwqml8gz63iQ/9VCfcNZ6HH/3eMiNerw==
+X-Gm-Gg: ASbGncs1+ROXGrLgyRf52T7OQH3TPwgSgM9UT0kn9Z38ojWQQgLu3f6c1iKwg6UXr05
+ hzYcvQvZtpYKS+nkt9gepYyrJAFLWO2v4ZfdnNqNXi+D+inxRDAWgz1MWCCuG/m2em6PXNiVQ3f
+ vO4BvpLZC+fHO9mTzZDIkn
+X-Received: by 2002:a05:6871:5005:b0:315:8e99:1ce6 with SMTP id
+ 586e51a60fabf-315bfb1adb4mr325912fac.8.1756475429988; 
+ Fri, 29 Aug 2025 06:50:29 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHBzOcyCosA1TMLZwj0/Z9Kqygb0T0L6g/fPksz6fCLVlX5p6IH1ebXqx0gMKGPOOe1s+6vva2fmraCZmI0IKg=
+X-Received: by 2002:a05:6871:5005:b0:315:8e99:1ce6 with SMTP id
+ 586e51a60fabf-315bfb1adb4mr325901fac.8.1756475429502; Fri, 29 Aug 2025
+ 06:50:29 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1756462705; x=1787998705;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=a+JIPtQeCj8xIBhlQAvvNuljo21v/zYAWQ1acXvxhAg=;
- b=PXbCSEIdvHsshBtluw30Dpjq9fDzJVmtjZwhFkLOUDnSNmutIaV31uqd
- ND+E3gZJuXq8RN6nAfT8uumY9G8vs1D2eCkvtt6MfPbPKlIVh0RTiENMM
- V2uhlfbVrMWfbnrOX8jOodd0eCsyLF2aguwrue8KN/y0oAOA+IxKZBWod
- n1cfj4S0gdsS3up/IhFTg7y8va53YbMTNGZLizbL+tdEREa87sFKFVQ72
- METLaGrKCeqKKSfdMHhXq0vjaDB9/FaskAB8NitEkwUUqdY7FwD6sLgPK
- xmYfQ8XTxQg5BcERHskkQGJ3XBCIdqFh9h8BjqwPsgUM7X1xlfVy9C6+m
- w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=PXbCSEId
-Subject: [Intel-wired-lan] [PATCH iwl-next v4 5/5] iavf: add RSS support for
- GTP protocol via ethtool
+References: <20250827-jk-fix-i40e-ice-pxe-9k-mtu-v3-1-14341728e572@intel.com>
+In-Reply-To: <20250827-jk-fix-i40e-ice-pxe-9k-mtu-v3-1-14341728e572@intel.com>
+From: Michal Schmidt <mschmidt@redhat.com>
+Date: Fri, 29 Aug 2025 15:50:18 +0200
+X-Gm-Features: Ac12FXw6MbSN3H0zo4lHXjtWmj4bb6-ESWHDsvmVqvdLLGY_eJT2xAz1GWdnNWE
+Message-ID: <CADEbmW2eDnADv78cwWRAVMuq_JrgPACbfTf_Yc_oA-Xiuv+x_w@mail.gmail.com>
+To: Jacob Keller <jacob.e.keller@intel.com>
+Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>, 
+ Anthony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: NULsJPsy3IKecpKyrWln2NUwnwQNjBv2sR-mcpqM4FI_1756475430
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1756475432;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=dV0VetiIkZg6OKtzkxyKWCKROkMG8CWw91TX1g10wz4=;
+ b=JDVHuyTOFZ5tM8qVqyMsK48IHqcGGMnwuCCYcJNvQvDtSHbjn7AetSi4Vu5Uv6u1St2UtA
+ kq4xqXF5CtXI4RJhqtTEI9OY9alQ9ATPpFlLVBYoG5b2IA+5kD/VttCK5OGkf+TfPN0U/0
+ +5NvQQdQSlQx/n2E/ZEAcDp4LlVnIhM=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
+ header.s=mimecast20190719 header.b=JDVHuyTO
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v3] i40e: fix Jumbo Frame
+ support after iPXE boot
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -105,387 +132,230 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Extend the iavf driver to support Receive Side Scaling (RSS)
-configuration for GTP (GPRS Tunneling Protocol) flows using ethtool.
+On Wed, Aug 27, 2025 at 11:18=E2=80=AFPM Jacob Keller <jacob.e.keller@intel=
+.com> wrote:
+> The i40e hardware has multiple hardware settings which define the Maximum
+> Frame Size (MFS) of the physical port. The firmware has an AdminQ command
+> (0x0603) to configure the MFS, but the i40e Linux driver never issues thi=
+s
+> command.
+>
+> In most cases this is no problem, as the NVM default value has the device
+> configured for its maximum value of 9728. Unfortunately, recent versions =
+of
+> the iPXE intelxl driver now issue the 0x0603 Set Mac Config command,
+> modifying the MFS and reducing it from its default value of 9728.
+>
+> This occurred as part of iPXE commit 6871a7de705b ("[intelxl] Use admin
+> queue to set port MAC address and maximum frame size"), a prerequisite
+> change for supporting the E800 series hardware in iPXE. Both the E700 and
+> E800 firmware support the AdminQ command, and the iPXE code shares much o=
+f
+> the logic between the two device drivers.
+>
+> The ice E800 Linux driver already issues the 0x0603 Set Mac Config comman=
+d
+> early during probe, and is thus unaffected by the iPXE change.
+>
+> Since commit 3a2c6ced90e1 ("i40e: Add a check to see if MFS is set"), the
+> i40e driver does check the I40E_PRTGL_SAH register, but it only logs a
+> warning message if its value is below the 9728 default. This register als=
+o
+> only covers received packets and not transmitted packets. A warning can
+> inform system administrators, but does not correct the issue. No
+> interactions from userspace cause the driver to write to PRTGL_SAH or iss=
+ue
+> the 0x0603 AdminQ command. Only a GLOBR reset will restore the value to i=
+ts
+> default value. There is no obvious method to trigger a GLOBR reset from
+> user space.
+>
+> To fix this, introduce the i40e_aq_set_mac_config() function, similar to
+> the one from the ice driver. Call this during early probe to ensure that
+> the device configuration matches driver expectation. Unlike E800, the E70=
+0
+> firmware also has a bit to control whether the MAC should append CRC data=
+.
+> It is on by default, but setting a 0 to this bit would disable CRC. The
+> i40e implementation must set this bit to ensure CRC will be appended by t=
+he
+> MAC.
+>
+> In addition to the AQ command, instead of just checking the I40E_PRTGL_SA=
+H
+> register, update its value to the 9728 default and write it back. This
+> ensures that the hardware is in the expected state, regardless of whether
+> the iPXE (or any other early boot driver) has modified this state.
+>
+> This is a better user experience, as we now fix the issues with larger MT=
+U
+> instead of merely warning. It also aligns with the way the ice E800 serie=
+s
+> driver works.
+>
+> A final note: The Fixes tag provided here is not strictly accurate. The
+> issue occurs as a result of an external entity (the iPXE intelxl driver),
+> and this is not a regression specifically caused by the mentioned change.
+> However, I believe the original change to just warn about PRTGL_SAH being
+> too low was an insufficient fix.
+>
+> Fixes: 3a2c6ced90e1 ("i40e: Add a check to see if MFS is set")
+> Link: https://github.com/ipxe/ipxe/commit/6871a7de705b6f6a4046f0d19da9bcd=
+689c3bc8e
+> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+> ---
+> Changes in v3:
+> - Don't disable CRC. Otherwise, Tx traffic will not be accepted
+>   appropriately.
+> - Link to v2: https://lore.kernel.org/r/20250815-jk-fix-i40e-ice-pxe-9k-m=
+tu-v2-1-ce857cdc6488@intel.com
+>
+> Changes in v2:
+> - Rewrite commit message with feedback from Paul Menzel.
+> - Add missing initialization of cmd via libie_aq_raw().
+> - Fix the Kdoc comment for i40e_aq_set_mac_config().
+> - Move clarification of the Fixes tag to the commit message.
+> - Link to v1: https://lore.kernel.org/r/20250814-jk-fix-i40e-ice-pxe-9k-m=
+tu-v1-1-c3926287fb78@intel.com
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h |  1 +
+>  drivers/net/ethernet/intel/i40e/i40e_prototype.h  |  2 ++
+>  drivers/net/ethernet/intel/i40e/i40e_common.c     | 34 +++++++++++++++++=
+++++++
+>  drivers/net/ethernet/intel/i40e/i40e_main.c       | 17 ++++++++----
+>  4 files changed, 48 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h b/drivers/=
+net/ethernet/intel/i40e/i40e_adminq_cmd.h
+> index 76d872b91a38..cc02a85ad42b 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
+> @@ -1561,6 +1561,7 @@ I40E_CHECK_CMD_LENGTH(i40e_aq_set_phy_config);
+>  struct i40e_aq_set_mac_config {
+>         __le16  max_frame_size;
+>         u8      params;
+> +#define I40E_AQ_SET_MAC_CONFIG_CRC_EN  BIT(2)
+>         u8      tx_timer_priority; /* bitmap */
+>         __le16  tx_timer_value;
+>         __le16  fc_refresh_threshold;
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_prototype.h b/drivers/n=
+et/ethernet/intel/i40e/i40e_prototype.h
+> index aef5de53ce3b..26bb7bffe361 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_prototype.h
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_prototype.h
+> @@ -98,6 +98,8 @@ int i40e_aq_set_mac_loopback(struct i40e_hw *hw,
+>                              struct i40e_asq_cmd_details *cmd_details);
+>  int i40e_aq_set_phy_int_mask(struct i40e_hw *hw, u16 mask,
+>                              struct i40e_asq_cmd_details *cmd_details);
+> +int i40e_aq_set_mac_config(struct i40e_hw *hw, u16 max_frame_size,
+> +                          struct i40e_asq_cmd_details *cmd_details);
+>  int i40e_aq_clear_pxe_mode(struct i40e_hw *hw,
+>                            struct i40e_asq_cmd_details *cmd_details);
+>  int i40e_aq_set_link_restart_an(struct i40e_hw *hw,
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c b/drivers/net/=
+ethernet/intel/i40e/i40e_common.c
+> index 270e7e8cf9cf..59f5c1e810eb 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_common.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
+> @@ -1189,6 +1189,40 @@ int i40e_set_fc(struct i40e_hw *hw, u8 *aq_failure=
+s,
+>         return status;
+>  }
+>
+> +/**
+> + * i40e_aq_set_mac_config - Configure MAC settings
+> + * @hw: pointer to the hw struct
+> + * @max_frame_size: Maximum Frame Size to be supported by the port
+> + * @cmd_details: pointer to command details structure or NULL
+> + *
+> + * Set MAC configuration (0x0603). Note that max_frame_size must be grea=
+ter
+> + * than zero.
+> + *
+> + * Return: 0 on success, or a negative error code on failure.
+> + */
+> +int i40e_aq_set_mac_config(struct i40e_hw *hw, u16 max_frame_size,
+> +                          struct i40e_asq_cmd_details *cmd_details)
+> +{
+> +       struct i40e_aq_set_mac_config *cmd;
+> +       struct libie_aq_desc desc;
+> +
+> +       cmd =3D libie_aq_raw(&desc);
+> +
+> +       if (max_frame_size =3D=3D 0)
+> +               return -EINVAL;
+> +
+> +       i40e_fill_default_direct_cmd_desc(&desc, i40e_aqc_opc_set_mac_con=
+fig);
+> +
+> +       cmd->max_frame_size =3D cpu_to_le16(max_frame_size);
+> +       cmd->params =3D I40E_AQ_SET_MAC_CONFIG_CRC_EN;
+> +
+> +#define I40E_AQ_SET_MAC_CONFIG_FC_DEFAULT_THRESHOLD    0x7FFF
+> +       cmd->fc_refresh_threshold =3D
+> +               cpu_to_le16(I40E_AQ_SET_MAC_CONFIG_FC_DEFAULT_THRESHOLD);
+> +
+> +       return i40e_asq_send_command(hw, &desc, NULL, 0, cmd_details);
+> +}
+> +
+>  /**
+>   * i40e_aq_clear_pxe_mode
+>   * @hw: pointer to the hw struct
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/et=
+hernet/intel/i40e/i40e_main.c
+> index b83f823e4917..4796fdd0b966 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> @@ -16045,13 +16045,18 @@ static int i40e_probe(struct pci_dev *pdev, con=
+st struct pci_device_id *ent)
+>                 dev_dbg(&pf->pdev->dev, "get supported phy types ret =3D =
+ %pe last_status =3D  %s\n",
+>                         ERR_PTR(err), libie_aq_str(pf->hw.aq.asq_last_sta=
+tus));
+>
+> -       /* make sure the MFS hasn't been set lower than the default */
+>  #define MAX_FRAME_SIZE_DEFAULT 0x2600
+> -       val =3D FIELD_GET(I40E_PRTGL_SAH_MFS_MASK,
+> -                       rd32(&pf->hw, I40E_PRTGL_SAH));
+> -       if (val < MAX_FRAME_SIZE_DEFAULT)
+> -               dev_warn(&pdev->dev, "MFS for port %x (%d) has been set b=
+elow the default (%d)\n",
+> -                        pf->hw.port, val, MAX_FRAME_SIZE_DEFAULT);
+> +
+> +       err =3D i40e_aq_set_mac_config(hw, MAX_FRAME_SIZE_DEFAULT, NULL);
+> +       if (err) {
+> +               dev_warn(&pdev->dev, "set mac config ret =3D  %pe last_st=
+atus =3D  %s\n",
 
-The implementation introduces new RSS flow segment headers and hash field
-definitions for various GTP encapsulations, including:
+Just a nit:
+There are double spaces here after the '=3D' signs for no good reason.
+It's not just in this message. There are a few more like that in this file.
 
-  - GTPC
-  - GTPU (IP, Extension Header, Uplink, Downlink)
-  - TEID-based hashing
+> +                        ERR_PTR(err), libie_aq_str(pf->hw.aq.asq_last_st=
+atus));
+> +       }
+> +
+> +       /* Make sure the MFS is set to the expected value */
+> +       val =3D rd32(hw, I40E_PRTGL_SAH);
+> +       FIELD_MODIFY(I40E_PRTGL_SAH_MFS_MASK, &val, MAX_FRAME_SIZE_DEFAUL=
+T);
+> +       wr32(hw, I40E_PRTGL_SAH, val);
+>
+>         /* Add a filter to drop all Flow control frames from any VSI from=
+ being
+>          * transmitted. By doing so we stop a malicious VF from sending o=
+ut
+>
+> ---
+> base-commit: ceb9515524046252c522b16f38881e8837ec0d91
+> change-id: 20250813-jk-fix-i40e-ice-pxe-9k-mtu-2b6d03621cd9
+>
+> Best regards,
+> --
+> Jacob Keller <jacob.e.keller@intel.com>
 
-The ethtool interface is updated to parse and apply these new flow types
-and hash fields, enabling fine-grained traffic distribution for GTP-based
-mobile workloads.
-
-This enhancement improves performance and scalability for virtualized
-network functions (VNFs) and user plane functions (UPFs) in 5G and LTE
-deployments.
-
-Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Reviewed-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
----
- .../net/ethernet/intel/iavf/iavf_adv_rss.c    | 119 ++++++++++++++----
- .../net/ethernet/intel/iavf/iavf_adv_rss.h    |  31 +++++
- .../net/ethernet/intel/iavf/iavf_ethtool.c    |  89 +++++++++++++
- 3 files changed, 216 insertions(+), 23 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_adv_rss.c b/drivers/net/ethernet/intel/iavf/iavf_adv_rss.c
-index a9e1da3..cd61abd 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_adv_rss.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_adv_rss.c
-@@ -90,6 +90,55 @@ iavf_fill_adv_rss_sctp_hdr(struct virtchnl_proto_hdr *hdr, u64 hash_flds)
- 		VIRTCHNL_ADD_PROTO_HDR_FIELD_BIT(hdr, SCTP, DST_PORT);
- }
- 
-+/**
-+ * iavf_fill_adv_rss_gtp_hdr - Fill GTP-related RSS protocol headers
-+ * @proto_hdrs: pointer to the virtchnl protocol headers structure to populate
-+ * @packet_hdrs: bitmask of packet header types to configure
-+ * @hash_flds: RSS hash field configuration
-+ *
-+ * This function populates the virtchnl protocol header structure with
-+ * appropriate GTP-related header types based on the specified packet_hdrs.
-+ * It supports GTPC, GTPU with extension headers, and uplink/downlink PDU
-+ * types. For certain GTPU types, it also appends an IPv4 header to enable
-+ * hashing on the destination IP address.
-+ *
-+ * Return: 0 on success or -EOPNOTSUPP if the packet_hdrs value is unsupported.
-+ */
-+static int
-+iavf_fill_adv_rss_gtp_hdr(struct virtchnl_proto_hdrs *proto_hdrs,
-+			  u32 packet_hdrs, u64 hash_flds)
-+{
-+	struct virtchnl_proto_hdr *hdr;
-+
-+	hdr = &proto_hdrs->proto_hdr[proto_hdrs->count - 1];
-+
-+	switch (packet_hdrs & IAVF_ADV_RSS_FLOW_SEG_HDR_GTP) {
-+	case IAVF_ADV_RSS_FLOW_SEG_HDR_GTPC_TEID:
-+	case IAVF_ADV_RSS_FLOW_SEG_HDR_GTPC:
-+		VIRTCHNL_SET_PROTO_HDR_TYPE(hdr, GTPC);
-+		break;
-+	case IAVF_ADV_RSS_FLOW_SEG_HDR_GTPU_EH:
-+		VIRTCHNL_SET_PROTO_HDR_TYPE(hdr, GTPU_EH);
-+		break;
-+	case IAVF_ADV_RSS_FLOW_SEG_HDR_GTPU_UP:
-+		VIRTCHNL_SET_PROTO_HDR_TYPE(hdr, GTPU_EH_PDU_UP);
-+		hdr = &proto_hdrs->proto_hdr[proto_hdrs->count++];
-+		iavf_fill_adv_rss_ip4_hdr(hdr, IAVF_ADV_RSS_HASH_FLD_IPV4_DA);
-+		break;
-+	case IAVF_ADV_RSS_FLOW_SEG_HDR_GTPU_DWN:
-+		VIRTCHNL_SET_PROTO_HDR_TYPE(hdr, GTPU_EH_PDU_DWN);
-+		fallthrough;
-+	case IAVF_ADV_RSS_FLOW_SEG_HDR_GTPU_IP:
-+		hdr = &proto_hdrs->proto_hdr[proto_hdrs->count++];
-+		iavf_fill_adv_rss_ip4_hdr(hdr, IAVF_ADV_RSS_HASH_FLD_IPV4_DA);
-+		break;
-+	default:
-+		return -EOPNOTSUPP;
-+	}
-+
-+	return 0;
-+}
-+
- /**
-  * iavf_fill_adv_rss_cfg_msg - fill the RSS configuration into virtchnl message
-  * @rss_cfg: the virtchnl message to be filled with RSS configuration setting
-@@ -103,6 +152,8 @@ int
- iavf_fill_adv_rss_cfg_msg(struct virtchnl_rss_cfg *rss_cfg,
- 			  u32 packet_hdrs, u64 hash_flds, bool symm)
- {
-+	const u32 packet_l3_hdrs = packet_hdrs & IAVF_ADV_RSS_FLOW_SEG_HDR_L3;
-+	const u32 packet_l4_hdrs = packet_hdrs & IAVF_ADV_RSS_FLOW_SEG_HDR_L4;
- 	struct virtchnl_proto_hdrs *proto_hdrs = &rss_cfg->proto_hdrs;
- 	struct virtchnl_proto_hdr *hdr;
- 
-@@ -113,31 +164,41 @@ iavf_fill_adv_rss_cfg_msg(struct virtchnl_rss_cfg *rss_cfg,
- 
- 	proto_hdrs->tunnel_level = 0;	/* always outer layer */
- 
--	hdr = &proto_hdrs->proto_hdr[proto_hdrs->count++];
--	switch (packet_hdrs & IAVF_ADV_RSS_FLOW_SEG_HDR_L3) {
--	case IAVF_ADV_RSS_FLOW_SEG_HDR_IPV4:
--		iavf_fill_adv_rss_ip4_hdr(hdr, hash_flds);
--		break;
--	case IAVF_ADV_RSS_FLOW_SEG_HDR_IPV6:
--		iavf_fill_adv_rss_ip6_hdr(hdr, hash_flds);
--		break;
--	default:
--		return -EINVAL;
-+	if (packet_l3_hdrs) {
-+		hdr = &proto_hdrs->proto_hdr[proto_hdrs->count++];
-+		switch (packet_l3_hdrs) {
-+		case IAVF_ADV_RSS_FLOW_SEG_HDR_IPV4:
-+			iavf_fill_adv_rss_ip4_hdr(hdr, hash_flds);
-+			break;
-+		case IAVF_ADV_RSS_FLOW_SEG_HDR_IPV6:
-+			iavf_fill_adv_rss_ip6_hdr(hdr, hash_flds);
-+			break;
-+		default:
-+			return -EINVAL;
-+		}
- 	}
- 
--	hdr = &proto_hdrs->proto_hdr[proto_hdrs->count++];
--	switch (packet_hdrs & IAVF_ADV_RSS_FLOW_SEG_HDR_L4) {
--	case IAVF_ADV_RSS_FLOW_SEG_HDR_TCP:
--		iavf_fill_adv_rss_tcp_hdr(hdr, hash_flds);
--		break;
--	case IAVF_ADV_RSS_FLOW_SEG_HDR_UDP:
--		iavf_fill_adv_rss_udp_hdr(hdr, hash_flds);
--		break;
--	case IAVF_ADV_RSS_FLOW_SEG_HDR_SCTP:
--		iavf_fill_adv_rss_sctp_hdr(hdr, hash_flds);
--		break;
--	default:
--		return -EINVAL;
-+	if (packet_l4_hdrs) {
-+		hdr = &proto_hdrs->proto_hdr[proto_hdrs->count++];
-+		switch (packet_l4_hdrs) {
-+		case IAVF_ADV_RSS_FLOW_SEG_HDR_TCP:
-+			iavf_fill_adv_rss_tcp_hdr(hdr, hash_flds);
-+			break;
-+		case IAVF_ADV_RSS_FLOW_SEG_HDR_UDP:
-+			iavf_fill_adv_rss_udp_hdr(hdr, hash_flds);
-+			break;
-+		case IAVF_ADV_RSS_FLOW_SEG_HDR_SCTP:
-+			iavf_fill_adv_rss_sctp_hdr(hdr, hash_flds);
-+			break;
-+		default:
-+			return -EINVAL;
-+		}
-+	}
-+
-+	if (packet_hdrs & IAVF_ADV_RSS_FLOW_SEG_HDR_GTP) {
-+		hdr = &proto_hdrs->proto_hdr[proto_hdrs->count++];
-+		if (iavf_fill_adv_rss_gtp_hdr(proto_hdrs, packet_hdrs, hash_flds))
-+			return -EINVAL;
- 	}
- 
- 	return 0;
-@@ -186,6 +247,8 @@ iavf_print_adv_rss_cfg(struct iavf_adapter *adapter, struct iavf_adv_rss *rss,
- 		proto = "UDP";
- 	else if (packet_hdrs & IAVF_ADV_RSS_FLOW_SEG_HDR_SCTP)
- 		proto = "SCTP";
-+	else if (packet_hdrs & IAVF_ADV_RSS_FLOW_SEG_HDR_GTP)
-+		proto = "GTP";
- 	else
- 		return;
- 
-@@ -211,6 +274,16 @@ iavf_print_adv_rss_cfg(struct iavf_adapter *adapter, struct iavf_adv_rss *rss,
- 			 IAVF_ADV_RSS_HASH_FLD_UDP_DST_PORT |
- 			 IAVF_ADV_RSS_HASH_FLD_SCTP_DST_PORT))
- 		strcat(hash_opt, "dst port,");
-+	if (hash_flds & IAVF_ADV_RSS_HASH_FLD_GTPC_TEID)
-+		strcat(hash_opt, "gtp-c,");
-+	if (hash_flds & IAVF_ADV_RSS_HASH_FLD_GTPU_IP_TEID)
-+		strcat(hash_opt, "gtp-u ip,");
-+	if (hash_flds & IAVF_ADV_RSS_HASH_FLD_GTPU_EH_TEID)
-+		strcat(hash_opt, "gtp-u ext,");
-+	if (hash_flds & IAVF_ADV_RSS_HASH_FLD_GTPU_UP_TEID)
-+		strcat(hash_opt, "gtp-u ul,");
-+	if (hash_flds & IAVF_ADV_RSS_HASH_FLD_GTPU_DWN_TEID)
-+		strcat(hash_opt, "gtp-u dl,");
- 
- 	if (!action)
- 		action = "";
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_adv_rss.h b/drivers/net/ethernet/intel/iavf/iavf_adv_rss.h
-index e31eb2a..74cc9e0 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_adv_rss.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf_adv_rss.h
-@@ -22,6 +22,12 @@ enum iavf_adv_rss_flow_seg_hdr {
- 	IAVF_ADV_RSS_FLOW_SEG_HDR_TCP	= 0x00000004,
- 	IAVF_ADV_RSS_FLOW_SEG_HDR_UDP	= 0x00000008,
- 	IAVF_ADV_RSS_FLOW_SEG_HDR_SCTP	= 0x00000010,
-+	IAVF_ADV_RSS_FLOW_SEG_HDR_GTPC		= 0x00000400,
-+	IAVF_ADV_RSS_FLOW_SEG_HDR_GTPC_TEID	= 0x00000800,
-+	IAVF_ADV_RSS_FLOW_SEG_HDR_GTPU_IP	= 0x00001000,
-+	IAVF_ADV_RSS_FLOW_SEG_HDR_GTPU_EH	= 0x00002000,
-+	IAVF_ADV_RSS_FLOW_SEG_HDR_GTPU_DWN	= 0x00004000,
-+	IAVF_ADV_RSS_FLOW_SEG_HDR_GTPU_UP	= 0x00008000,
- };
- 
- #define IAVF_ADV_RSS_FLOW_SEG_HDR_L3		\
-@@ -33,6 +39,14 @@ enum iavf_adv_rss_flow_seg_hdr {
- 	 IAVF_ADV_RSS_FLOW_SEG_HDR_UDP |	\
- 	 IAVF_ADV_RSS_FLOW_SEG_HDR_SCTP)
- 
-+#define IAVF_ADV_RSS_FLOW_SEG_HDR_GTP		\
-+	(IAVF_ADV_RSS_FLOW_SEG_HDR_GTPC |	\
-+	 IAVF_ADV_RSS_FLOW_SEG_HDR_GTPC_TEID |	\
-+	 IAVF_ADV_RSS_FLOW_SEG_HDR_GTPU_IP |	\
-+	 IAVF_ADV_RSS_FLOW_SEG_HDR_GTPU_EH |	\
-+	 IAVF_ADV_RSS_FLOW_SEG_HDR_GTPU_DWN |	\
-+	 IAVF_ADV_RSS_FLOW_SEG_HDR_GTPU_UP)
-+
- enum iavf_adv_rss_flow_field {
- 	/* L3 */
- 	IAVF_ADV_RSS_FLOW_FIELD_IDX_IPV4_SA,
-@@ -46,6 +60,17 @@ enum iavf_adv_rss_flow_field {
- 	IAVF_ADV_RSS_FLOW_FIELD_IDX_UDP_DST_PORT,
- 	IAVF_ADV_RSS_FLOW_FIELD_IDX_SCTP_SRC_PORT,
- 	IAVF_ADV_RSS_FLOW_FIELD_IDX_SCTP_DST_PORT,
-+	/* GTPC_TEID */
-+	IAVF_ADV_RSS_FLOW_FIELD_IDX_GTPC_TEID,
-+	/* GTPU_IP */
-+	IAVF_ADV_RSS_FLOW_FIELD_IDX_GTPU_IP_TEID,
-+	/* GTPU_EH */
-+	IAVF_ADV_RSS_FLOW_FIELD_IDX_GTPU_EH_TEID,
-+	IAVF_ADV_RSS_FLOW_FIELD_IDX_GTPU_EH_QFI,
-+	/* GTPU_UP */
-+	IAVF_ADV_RSS_FLOW_FIELD_IDX_GTPU_UP_TEID,
-+	/* GTPU_DWN */
-+	IAVF_ADV_RSS_FLOW_FIELD_IDX_GTPU_DWN_TEID,
- 
- 	/* The total number of enums must not exceed 64 */
- 	IAVF_ADV_RSS_FLOW_FIELD_IDX_MAX
-@@ -72,6 +97,12 @@ enum iavf_adv_rss_flow_field {
- 	BIT_ULL(IAVF_ADV_RSS_FLOW_FIELD_IDX_SCTP_SRC_PORT)
- #define IAVF_ADV_RSS_HASH_FLD_SCTP_DST_PORT	\
- 	BIT_ULL(IAVF_ADV_RSS_FLOW_FIELD_IDX_SCTP_DST_PORT)
-+#define IAVF_ADV_RSS_HASH_FLD_GTPC_TEID	BIT_ULL(IAVF_ADV_RSS_FLOW_FIELD_IDX_GTPC_TEID)
-+#define IAVF_ADV_RSS_HASH_FLD_GTPU_IP_TEID BIT_ULL(IAVF_ADV_RSS_FLOW_FIELD_IDX_GTPU_IP_TEID)
-+#define IAVF_ADV_RSS_HASH_FLD_GTPU_EH_TEID BIT_ULL(IAVF_ADV_RSS_FLOW_FIELD_IDX_GTPU_EH_TEID)
-+#define IAVF_ADV_RSS_HASH_FLD_GTPU_UP_TEID BIT_ULL(IAVF_ADV_RSS_FLOW_FIELD_IDX_GTPU_UP_TEID)
-+#define IAVF_ADV_RSS_HASH_FLD_GTPU_DWN_TEID \
-+	BIT_ULL(IAVF_ADV_RSS_FLOW_FIELD_IDX_GTPU_DWN_TEID)
- 
- /* bookkeeping of advanced RSS configuration */
- struct iavf_adv_rss {
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-index 05d72be..a3f8ced 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-@@ -1336,6 +1336,56 @@ static u32 iavf_adv_rss_parse_hdrs(const struct ethtool_rxfh_fields *cmd)
- 		hdrs |= IAVF_ADV_RSS_FLOW_SEG_HDR_SCTP |
- 			IAVF_ADV_RSS_FLOW_SEG_HDR_IPV6;
- 		break;
-+	case GTPU_V4_FLOW:
-+		hdrs |= IAVF_ADV_RSS_FLOW_SEG_HDR_GTPU_IP |
-+			IAVF_ADV_RSS_FLOW_SEG_HDR_IPV4;
-+		break;
-+	case GTPC_V4_FLOW:
-+		hdrs |= IAVF_ADV_RSS_FLOW_SEG_HDR_GTPC |
-+			IAVF_ADV_RSS_FLOW_SEG_HDR_UDP |
-+			IAVF_ADV_RSS_FLOW_SEG_HDR_IPV4;
-+		break;
-+	case GTPC_TEID_V4_FLOW:
-+		hdrs |= IAVF_ADV_RSS_FLOW_SEG_HDR_GTPC_TEID |
-+			IAVF_ADV_RSS_FLOW_SEG_HDR_UDP |
-+			IAVF_ADV_RSS_FLOW_SEG_HDR_IPV4;
-+		break;
-+	case GTPU_EH_V4_FLOW:
-+		hdrs |= IAVF_ADV_RSS_FLOW_SEG_HDR_GTPU_EH |
-+			IAVF_ADV_RSS_FLOW_SEG_HDR_IPV4;
-+		break;
-+	case GTPU_UL_V4_FLOW:
-+		hdrs |= IAVF_ADV_RSS_FLOW_SEG_HDR_GTPU_UP |
-+			IAVF_ADV_RSS_FLOW_SEG_HDR_IPV4;
-+		break;
-+	case GTPU_DL_V4_FLOW:
-+		hdrs |= IAVF_ADV_RSS_FLOW_SEG_HDR_GTPU_DWN |
-+			IAVF_ADV_RSS_FLOW_SEG_HDR_IPV4;
-+		break;
-+	case GTPU_V6_FLOW:
-+		hdrs |= IAVF_ADV_RSS_FLOW_SEG_HDR_GTPU_IP |
-+			IAVF_ADV_RSS_FLOW_SEG_HDR_IPV6;
-+		break;
-+	case GTPC_V6_FLOW:
-+		hdrs |= IAVF_ADV_RSS_FLOW_SEG_HDR_GTPC |
-+			IAVF_ADV_RSS_FLOW_SEG_HDR_IPV6;
-+		break;
-+	case GTPC_TEID_V6_FLOW:
-+		hdrs |= IAVF_ADV_RSS_FLOW_SEG_HDR_GTPC_TEID |
-+			IAVF_ADV_RSS_FLOW_SEG_HDR_IPV6;
-+		break;
-+	case GTPU_EH_V6_FLOW:
-+		hdrs |= IAVF_ADV_RSS_FLOW_SEG_HDR_GTPU_EH |
-+			IAVF_ADV_RSS_FLOW_SEG_HDR_IPV6;
-+		break;
-+	case GTPU_UL_V6_FLOW:
-+		hdrs |= IAVF_ADV_RSS_FLOW_SEG_HDR_GTPU_UP |
-+			IAVF_ADV_RSS_FLOW_SEG_HDR_IPV6;
-+		break;
-+	case GTPU_DL_V6_FLOW:
-+		hdrs |= IAVF_ADV_RSS_FLOW_SEG_HDR_GTPU_DWN |
-+			IAVF_ADV_RSS_FLOW_SEG_HDR_IPV6;
-+		break;
- 	default:
- 		break;
- 	}
-@@ -1353,6 +1403,12 @@ iavf_adv_rss_parse_hash_flds(const struct ethtool_rxfh_fields *cmd, bool symm)
- 		case TCP_V4_FLOW:
- 		case UDP_V4_FLOW:
- 		case SCTP_V4_FLOW:
-+		case GTPU_V4_FLOW:
-+		case GTPC_V4_FLOW:
-+		case GTPC_TEID_V4_FLOW:
-+		case GTPU_EH_V4_FLOW:
-+		case GTPU_UL_V4_FLOW:
-+		case GTPU_DL_V4_FLOW:
- 			if (cmd->data & RXH_IP_SRC)
- 				hfld |= IAVF_ADV_RSS_HASH_FLD_IPV4_SA;
- 			if (cmd->data & RXH_IP_DST)
-@@ -1361,6 +1417,12 @@ iavf_adv_rss_parse_hash_flds(const struct ethtool_rxfh_fields *cmd, bool symm)
- 		case TCP_V6_FLOW:
- 		case UDP_V6_FLOW:
- 		case SCTP_V6_FLOW:
-+		case GTPU_V6_FLOW:
-+		case GTPC_V6_FLOW:
-+		case GTPC_TEID_V6_FLOW:
-+		case GTPU_EH_V6_FLOW:
-+		case GTPU_UL_V6_FLOW:
-+		case GTPU_DL_V6_FLOW:
- 			if (cmd->data & RXH_IP_SRC)
- 				hfld |= IAVF_ADV_RSS_HASH_FLD_IPV6_SA;
- 			if (cmd->data & RXH_IP_DST)
-@@ -1382,6 +1444,7 @@ iavf_adv_rss_parse_hash_flds(const struct ethtool_rxfh_fields *cmd, bool symm)
- 			break;
- 		case UDP_V4_FLOW:
- 		case UDP_V6_FLOW:
-+		case GTPC_V4_FLOW:
- 			if (cmd->data & RXH_L4_B_0_1)
- 				hfld |= IAVF_ADV_RSS_HASH_FLD_UDP_SRC_PORT;
- 			if (cmd->data & RXH_L4_B_2_3)
-@@ -1398,6 +1461,32 @@ iavf_adv_rss_parse_hash_flds(const struct ethtool_rxfh_fields *cmd, bool symm)
- 			break;
- 		}
- 	}
-+	if (cmd->data & RXH_GTP_TEID) {
-+		switch (cmd->flow_type) {
-+		case GTPC_TEID_V4_FLOW:
-+		case GTPC_TEID_V6_FLOW:
-+			hfld |= IAVF_ADV_RSS_HASH_FLD_GTPC_TEID;
-+			break;
-+		case GTPU_V4_FLOW:
-+		case GTPU_V6_FLOW:
-+			hfld |= IAVF_ADV_RSS_HASH_FLD_GTPU_IP_TEID;
-+			break;
-+		case GTPU_EH_V4_FLOW:
-+		case GTPU_EH_V6_FLOW:
-+			hfld |= IAVF_ADV_RSS_HASH_FLD_GTPU_EH_TEID;
-+			break;
-+		case GTPU_UL_V4_FLOW:
-+		case GTPU_UL_V6_FLOW:
-+			hfld |= IAVF_ADV_RSS_HASH_FLD_GTPU_UP_TEID;
-+			break;
-+		case GTPU_DL_V4_FLOW:
-+		case GTPU_DL_V6_FLOW:
-+			hfld |= IAVF_ADV_RSS_HASH_FLD_GTPU_DWN_TEID;
-+			break;
-+		default:
-+			break;
-+		}
-+	}
- 
- 	return hfld;
- }
--- 
-2.47.1
+Reviewed-by: Michal Schmidt <mschmidt@redhat.com>
 
