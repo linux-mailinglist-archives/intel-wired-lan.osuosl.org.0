@@ -1,118 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 88DB1B3E211
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  1 Sep 2025 13:52:33 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id DE6FBB3E644
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  1 Sep 2025 15:56:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2566F405FA;
-	Mon,  1 Sep 2025 11:52:32 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7C66561363;
+	Mon,  1 Sep 2025 13:56:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Apprx_JNEvtk; Mon,  1 Sep 2025 11:52:31 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id YS1K5ZynzzL3; Mon,  1 Sep 2025 13:56:42 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9440B4043A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9D2A5613BD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1756727551;
-	bh=ufTT71gJOeWNRgonKEjNREjxphgaPsy5NyeCRAt0ZAY=;
+	s=default; t=1756735002;
+	bh=OgjHgfXFmrJuDSDEQwnED0AwPVrucC/NwIldpxyeuVg=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=MQPF0MM90MF2dVdvkhdzg2I8RvJOwlkl48PUubKXhHk5eKKHxzJzLDE5n/8rp9TWX
-	 YHjmoWLRZEuzRxpN6s01/7yk+WV8F+OworGHCRWhU/Cx7aPUrpCnuccfpSgW+wdEZ2
-	 BSU/Ph8qXiDZEro73WNtMXAHGqVsgWHtSGOe3raOqpw68PSmExjGfiLEkQrliaG4sR
-	 6i0st7fr3CTQpEhNXQFvI9Tcggd9Hp5E9aIzetU5ATuRG95RyMhmMNoT/4mkUmmJva
-	 mZktiB3LIqrZ6yR4JXLmQHX01l13itf3jd/pIBWUNZq3YSmfx2lfhG+ljIxxghXBx4
-	 6yw3k0Z+dD5Ww==
+	b=d7L6kft/cKMrjhWb98nyWWoi1RV7SlSM+ybrn3xQnIN6Nh5lfeq/ODvZ9MUMKSFv7
+	 UpYY+e+fYGmaVNnFvyghRlAprOuEGAunvvTBzGN208tPAQXVlJHylwzX7Vk626LelK
+	 0hbRSUyOTYX6zAHdBnsy35Rfg2YWOXKO1pTPV9y8CNRAMwz9Blgg8DbaQ8EEq0yW4T
+	 EeV/oSkLOp0e2dmBNkuKewBF1+4P7wOtKTfuGookNiM3xq2aprEfsHgxuRwuNsFJ3W
+	 lv5OF6lnobzleOq4KgpD95qCPWhqaLf6NjBnxWmtCRaGKdu6aGEd/KhdjZ9zK+Rucl
+	 9sCdXQ3Ww8Rbg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9440B4043A;
-	Mon,  1 Sep 2025 11:52:31 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9D2A5613BD;
+	Mon,  1 Sep 2025 13:56:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 3C27E10E
- for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Sep 2025 11:52:30 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 01BADD2
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Sep 2025 13:56:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 25EB840479
- for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Sep 2025 11:52:30 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id DB84E60BE4
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Sep 2025 13:56:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id gsxQNtwtShnc for <intel-wired-lan@lists.osuosl.org>;
- Mon,  1 Sep 2025 11:52:29 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::32c; helo=mail-wm1-x32c.google.com;
- envelope-from=dan.carpenter@linaro.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 00F8340430
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 00F8340430
-Received: from mail-wm1-x32c.google.com (mail-wm1-x32c.google.com
- [IPv6:2a00:1450:4864:20::32c])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 00F8340430
- for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Sep 2025 11:52:28 +0000 (UTC)
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-45b8e28b3c5so4466455e9.1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 01 Sep 2025 04:52:28 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756727547; x=1757332347;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ufTT71gJOeWNRgonKEjNREjxphgaPsy5NyeCRAt0ZAY=;
- b=DuAGwsTaAvLgmJXIEhupEHpYLTN7So5FzYS6VE/KjLcgc+a5DN7P9QiPtGKrdUoGGk
- bCaenNka3kld8WrhwYbTuJFqP5EzxyDFab58UlSjzFwv7IMtDPo9ZhvOX3XP4pnJ0AOI
- 6AMBWbps2Z0qXg6o+RCknEXDtLImmswlkvSfArRTZyLbqPKr+L5Dg2WAIqyfCtuIfEJS
- jIN3aG2iS7oo2Kz3QIE5e+ytilh5EHVRSbEfprI7mOtv8kcYLASHB7oFh+DspTk9VgLO
- bKJ3wRteijGfoL9J8NTKqr9uHnvRJxtpAl50XpMIkEYX40de7lDqdyUbb4LkHwfbuHUG
- 3IiQ==
-X-Gm-Message-State: AOJu0Ywbe4E6J8EwSpkS+LUH5KqJ+OC1o5awYIEsSBoNezKTz9TyUctP
- WhVOmLYssIEodkaoxiGAGjnR9u1IJpxDzd5faolh5M/zVvFxVMHD9LSRIUMrQqYv0G0=
-X-Gm-Gg: ASbGncs/MUyeF8lWOyLvIUCXf7j1ZisOEnQHWmMolc9ooDy8krBucVJOmhggRGgP0QA
- 5sN7ts3l446N1+a8HiRLi1I8CisYRffaJqvzGoNFNVP9BQtMNUdMyuh0n1pouRaunaWsJKrMQYS
- JlgA3yb4jMRmDE2CXTKXPhFkMzR0oIppsvWfnwICVg7pKaM9xSghL0/5glMeWg78EL02dq3mh1v
- WEouu5XOx8Yhewsw4jZ/HzTNnNWlGpRLKxcq1QHjZFZdufVvDSQ5kDMOxcjo5EpaLoVEwxzQh7M
- glDGtOdN9VbTpXbDuhJPqzzZm5HWjK6j06Fk1fEydi+Mk27fmCnMTNZqqRfpO2kyqE+OULi5DAw
- wzr4Zlth7gLPlX7GS+KVYA3y8p8A=
-X-Google-Smtp-Source: AGHT+IH5MWq4eyXxBf9LwDxPZyzCa+MMakEsWsgDm1jLlQ1rb6NsaGJ0si5fPpb7KVU8z3hAHDKUgQ==
-X-Received: by 2002:a05:600d:1c:b0:45b:8b95:7119 with SMTP id
- 5b1f17b1804b1-45b8b957228mr34734775e9.8.1756727546746; 
- Mon, 01 Sep 2025 04:52:26 -0700 (PDT)
-Received: from localhost ([196.207.164.177])
- by smtp.gmail.com with UTF8SMTPSA id
- 5b1f17b1804b1-45b87abc740sm87201005e9.7.2025.09.01.04.52.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 01 Sep 2025 04:52:26 -0700 (PDT)
-Date: Mon, 1 Sep 2025 14:52:22 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, Qi Zhang <qi.z.zhang@intel.com>
-Message-ID: <aLWI9lTXHdRkF3T3@stanley.mountain>
-References: <aLVix68cQNQr4CC8@stanley.mountain>
- <412ac86c-583f-4952-9723-d0c8b7fe2566@intel.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id UHYds6NVXUIn for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  1 Sep 2025 13:56:40 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
+ helo=tor.source.kernel.org; envelope-from=horms@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1CA4860D9F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1CA4860D9F
+Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1CA4860D9F
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Sep 2025 13:56:39 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id 9E2D0601D9;
+ Mon,  1 Sep 2025 13:56:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 89A7FC4CEF1;
+ Mon,  1 Sep 2025 13:56:37 +0000 (UTC)
+Date: Mon, 1 Sep 2025 14:56:35 +0100
+From: Simon Horman <horms@kernel.org>
+To: Madhu Chittim <madhu.chittim@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+Message-ID: <20250901135635.GD15473@horms.kernel.org>
+References: <20250829172453.2059973-1-madhu.chittim@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <412ac86c-583f-4952-9723-d0c8b7fe2566@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1756727547; x=1757332347; darn=lists.osuosl.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=ufTT71gJOeWNRgonKEjNREjxphgaPsy5NyeCRAt0ZAY=;
- b=hJw1o2wy7DOPFx/p2tIRNJJHXU5oa8bgBKtiXx4sghRCbNtrQ3/reRwP7HUWoCpSsP
- vwNiaX218yMY02WpX32MIYc//PHE0nbLNsvCD1DzO4rca6kjWKrEKOZ9zWOesbiRzHRi
- 9K2nmZ7YMtLqmtXSghr7QNEsHl82cL55A5oKt7kY0im66CKMIc5o/yfI3XOc6yQ6kqxq
- jUenUQtzCipJL47y4zJ19rN+ZGiHxS4kseLg9JLQQfqtuFRotPT4bd8xkrPO42J2UU7r
- C4x3dUwGjZ3s2ZUZ30KURdjdx5Na85gNBbCkE0J93Ov4bcZNsC19vsF/+ZJ2ks5la56U
- dGfA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=linaro.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+In-Reply-To: <20250829172453.2059973-1-madhu.chittim@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1756734998;
+ bh=asAQ1rU9wQg5Jw8z/zz8HqbStFkcokLIB+1C8gbNlTQ=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=jwx9lZUNn5ud6c3n50UvP8qILOvFaDF9ecgpIMT+IhtAE1GICx2ncUFL52zwD52QR
+ RNIkVrYh20XkvqT9qPl5Fb3DNbz2bF+xbEEcOPkcu4zaeVMUl/YQdIgURBelQIrctk
+ w9mm3LClKEAKppAfjjBuvZAZY4LsIC+jwdHONqtpbZZEP2CcgR0neVI1KCB81hxDeI
+ bVKW52nrJyFnN1yIXDeA+iAHkQEGt3bJtn3KpNFmP6A/TqYJFdOhJOnB+9Cg2ngn34
+ gl7GKWREc8ILb+LhZBgHdIyZvAF4eWwAWy06pDQXh4g5Hs8Kx6tF+TAnRiXtXdHHpr
+ 739dR6kWtkLCQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256
- header.s=google header.b=hJw1o2wy
-Subject: Re: [Intel-wired-lan] [bug report] ice: Enable FDIR Configure for
- AVF
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=jwx9lZUN
+Subject: Re: [Intel-wired-lan] [PATCH net-next v3] idpf: add support for
+ IDPF PCI programming interface
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -128,62 +98,37 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Sep 01, 2025 at 01:15:03PM +0200, Przemek Kitszel wrote:
-> On 9/1/25 11:09, Dan Carpenter wrote:
-> > Hello Qi Zhang,
-> > 
-> > Commit 1f7ea1cd6a37 ("ice: Enable FDIR Configure for AVF") from Mar
-> > 9, 2021 (linux-next), leads to the following Smatch static checker
-> > warning:
-> > 
-> > 	drivers/net/ethernet/intel/ice/virt/fdir.c:2339 ice_vc_del_fdir_fltr()
-> > 	warn: missing error code here? 'kzalloc_noprof()' failed
-> > 
-> > drivers/net/ethernet/intel/ice/virt/fdir.c
-> >      2311 int ice_vc_del_fdir_fltr(struct ice_vf *vf, u8 *msg)
-> >      2312 {
-> >      2313         struct virtchnl_fdir_del *fltr = (struct virtchnl_fdir_del *)msg;
-> >      2314         struct virtchnl_fdir_del *stat = NULL;
-> >      2315         struct virtchnl_fdir_fltr_conf *conf;
-> >      2316         struct ice_vf_fdir *fdir = &vf->fdir;
-> >      2317         enum virtchnl_status_code v_ret;
-> >      2318         struct ice_fdir_fltr *input;
-> >      2319         enum ice_fltr_ptype flow;
-> >      2320         struct device *dev;
-> >      2321         struct ice_pf *pf;
-> >      2322         int is_tun = 0;
-> >      2323         int len = 0;
-> >      2324         int ret;
-> >      2325
-> >      2326         pf = vf->pf;
-> >      2327         dev = ice_pf_to_dev(pf);
-> >      2328         ret = ice_vc_fdir_param_check(vf, fltr->vsi_id);
-> >      2329         if (ret) {
-> >      2330                 v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-> >      2331                 dev_dbg(dev, "Parameter check for VF %d failed\n", vf->vf_id);
-> >      2332                 goto err_exit;
-> >      2333         }
-> >      2334
-> >      2335         stat = kzalloc(sizeof(*stat), GFP_KERNEL);
-> >      2336         if (!stat) {
-> >      2337                 v_ret = VIRTCHNL_STATUS_ERR_NO_MEMORY;
-> > 
-> > It's not clear if this is deliberate or not.  Maybe we could add a comment?
-> > Here set v_ret.
+On Fri, Aug 29, 2025 at 10:24:53AM -0700, Madhu Chittim wrote:
+> From: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
 > 
-> thank you for the report,
-> ice_vc_del_fdir_fltr() is only called from general virtchnl processing
-> handler, which returns void, and only logs errors on info level, there
-> is nothing to do about the error anyway
-> in this case failure at kzalloc() call is on ice/kernel side, not on VF
-> side, so in principle worth mentioning/blaming; but, from return code
-> (we don't have much variety of those in VC, but for memory alloc failure
-> there is one) VF side is knowing that error had happened exactly here
-> in case of FDIR filter DEL operation, so not much value added
+> At present IDPF supports only 0x1452 and 0x145C as PF and VF device IDs
+> on our current generation hardware. Future hardware exposes a new set of
+> device IDs for each generation. To avoid adding a new device ID for each
+> generation and to make the driver forward and backward compatible,
+> make use of the IDPF PCI programming interface to load the driver.
 > 
+> Write and read the VF_ARQBAL mailbox register to find if the current
+> device is a PF or a VF.
+> 
+> PCI SIG allocated a new programming interface for the IDPF compliant
+> ethernet network controller devices. It can be found at:
+> https://members.pcisig.com/wg/PCI-SIG/document/20113
+> with the document titled as 'PCI Code and ID Assignment Revision 1.16'
+> or any latest revisions.
+> 
+> Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
+> Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+> Signed-off-by: Madhu Chittim <madhu.chittim@intel.com>
+> 
+> ---
+> v3:
+> - reworked logic to avoid gotos
 
-Thanks for the explanation!
+Thanks,
 
-regards,
-dan carpenter
+I see that Paul has provided some review, which I don't disagree with.
+But overall this looks good to me. Feel free to add.
 
+Reviewed-by: Simon Horman <horms@kernel.org>
+
+...
