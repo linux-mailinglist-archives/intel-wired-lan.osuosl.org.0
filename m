@@ -1,242 +1,140 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CDC26B419B9
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Sep 2025 11:15:43 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 05B90B41AEC
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Sep 2025 12:00:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 39CA684613;
-	Wed,  3 Sep 2025 09:15:42 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9E71461558;
+	Wed,  3 Sep 2025 10:00:53 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id UAv9b4jj98kT; Wed,  3 Sep 2025 10:00:52 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3CC5061547
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1756893652;
+	bh=UQePMhEqs57hDsrOuFDcA6yCeqwhGFlPIBQNDbid+qo=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=lS4pxUkw5Ot6x46krQlgbgz0pMjC568WLGfFELakNrfAfmCT84TFt2Jh+KYxhwiJU
+	 imgXlVlA9IyWK4rbGXZQtFXTTORwp4HQN0PKweogeGjA8i1OW0l6DA+PC6pi0x74a7
+	 yeDMU5VDH/H9kSQGujnkoZhrb+DKy5i1zE3mWQkwLISe/aHG0FVnGsrgq6o2on8Wck
+	 VerR5tbDEaJxYjoRdJTG9WOOuRxL0gGc0LXzsiLkRTevvmSayvaUAtMgj90u15aQSP
+	 YbLgwWQIp5Ld9RhCopL99h081LS5t6nCjdIRFwt5HNUr3BlwJMpqJV46R4qYHX8fV7
+	 /hc2wdy0E4oFA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3CC5061547;
+	Wed,  3 Sep 2025 10:00:52 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 36827439
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Sep 2025 10:00:51 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 27FEA83B66
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Sep 2025 10:00:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dZF6um8rYAUv; Wed,  3 Sep 2025 09:15:41 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 48AD38462E
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1756890941;
-	bh=vVt76Eji2EeQc5CIEWJTHkrntGPA06N75KYH4pOW65M=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=tS9cOLiPnPSRhtj5c72vdjku/rgOypmEP76lFzflPp8CCbPF61N8FPlM0O/HSn1+9
-	 fx5m8Ws4H+uRMdrIo9WKxtQQGp9m9aKR0Iw7Hd2voei+0ml95WoHhtho2dUhYcRwW6
-	 +KjDJjOoUbicjI1uphDSOO4PbmjbRV3ZkmnmY6PeJji8Ithn0DFh9NQRu5NlhO42DI
-	 3yOYNWOj2EEBl9KjGMv4+UdXW24ggVs8i6Sq/KB397Ns90h/ZaOHYwEilG4ijd0eem
-	 10OlPoOTM6RJpZixeff/u2JhUSY4FDvBCqBHAHC/zbJaAHp1YtThL2XAlWAPKwuUqk
-	 MuS35nsD4/ibw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 48AD38462E;
-	Wed,  3 Sep 2025 09:15:41 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 276682BA8
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Sep 2025 09:15:39 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0BC16414B6
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Sep 2025 09:15:39 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0CxIb3riG0L3 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  3 Sep 2025 09:15:38 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
- helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
+ id qGXTmLuyO-VP for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  3 Sep 2025 10:00:50 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=mheib@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 26B6D414B5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 26B6D414B5
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 26B6D414B5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Sep 2025 09:15:38 +0000 (UTC)
-X-CSE-ConnectionGUID: pO3kj4RjQ0awhvs+LASHJg==
-X-CSE-MsgGUID: lEnr+aZXRxatUSiZD3oMVQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11541"; a="61835617"
-X-IronPort-AV: E=Sophos;i="6.18,233,1751266800"; d="scan'208";a="61835617"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Sep 2025 02:15:37 -0700
-X-CSE-ConnectionGUID: jIEEy99wRAux3gSQ3b5vKA==
-X-CSE-MsgGUID: 06OYx2RKSm2De6o4ilT0Jg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,233,1751266800"; d="scan'208";a="170795519"
-Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
- by orviesa006.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Sep 2025 02:15:37 -0700
-Received: from ORSMSX902.amr.corp.intel.com (10.22.229.24) by
- ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.17; Wed, 3 Sep 2025 02:15:36 -0700
-Received: from ORSEDG901.ED.cps.intel.com (10.7.248.11) by
- ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.17 via Frontend Transport; Wed, 3 Sep 2025 02:15:36 -0700
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com (40.107.93.84) by
- edgegateway.intel.com (134.134.137.111) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.17; Wed, 3 Sep 2025 02:15:36 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=B0m1bpTHic7JecBWUgJsvWz2IwSgG+TrbrqSxcFIcrIbZpegvwUV5ZbYRzxei+NnANEBJvWD8AuCsXi205VEEqKA+BbXC8gyJ14A8SHz7pvgaA3q5oOqtCdsisp/0ehQtvhjkjZ7CnwXUfH7HRLRqHo5L6CF1YiuMiGVU9YXC9VE9uGhUCupg+YHSKs2/SlQUwLDkbjhH1et9+erIiBLWBe5o6aLFtCQbwyIdjiNMjXYMxilQwn3+DjkVGf5VqiKlMBTraVcn8f55tw6w4ZuH5yad73ALDEpuZyuShzaUkx2G9fg3EzojNZwOfYdP0qVdpM9a0APDhxmoAefCqfiOQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=vVt76Eji2EeQc5CIEWJTHkrntGPA06N75KYH4pOW65M=;
- b=jhbz+nmu6ktNsjGBhFh+0krphYz9MmNdx0BgRCH/I/IFUsozHI1uPKfaaZC0YZLX6vqU33hiWaeSKByrDQReDywuanL4u9xhCuPWxbB6dplWCS6GRuLGyIZkSfaBz1rKjAlTM3j2XLZMKXUZi6BdoNkIShPl5xIGfXA9LwQ7bQQ/UJPhIhd1ul3NbnofCMUVay8UbQamP+uJ8rTOCoBhtTRt2pcul8Ni6oQgNoRAqKQW5vLzyX1O8lzsWfaVDj625FUyjKumB4ELdTT49X5qfM1rzG7NdaLOpFN4ZACxlDYDMCDpK7Fr01TugmiU9NXUz5qLLWsCmvnE3162Rc7Lag==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from IA3PR11MB8986.namprd11.prod.outlook.com (2603:10b6:208:577::21)
- by SA0PR11MB4542.namprd11.prod.outlook.com (2603:10b6:806:9f::20)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9073.27; Wed, 3 Sep
- 2025 09:15:29 +0000
-Received: from IA3PR11MB8986.namprd11.prod.outlook.com
- ([fe80::395e:7a7f:e74c:5408]) by IA3PR11MB8986.namprd11.prod.outlook.com
- ([fe80::395e:7a7f:e74c:5408%4]) with mapi id 15.20.9094.015; Wed, 3 Sep 2025
- 09:15:29 +0000
-From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
-To: Brahmajit Das <listout@listout.xyz>
-CC: "vadim.fedorenko@linux.dev" <vadim.fedorenko@linux.dev>,
- "andrew+netdev@lunn.ch" <andrew+netdev@lunn.ch>, "Nguyen, Anthony L"
- <anthony.l.nguyen@intel.com>, "davem@davemloft.net" <davem@davemloft.net>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "kuba@kernel.org" <kuba@kernel.org>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>, "Kitszel, Przemyslaw"
- <przemyslaw.kitszel@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH v2] net: intel: fm10k: Fix parameter
- idx set but not used
-Thread-Index: AQHcHBq3FK4xPYtfpEWHVTltoaj/+7SA+a+AgAAziYCAAADhAA==
-Date: Wed, 3 Sep 2025 09:15:29 +0000
-Message-ID: <IA3PR11MB898620E835A7700451F0ADA1E501A@IA3PR11MB8986.namprd11.prod.outlook.com>
-References: <e13abc99-fb35-4bc4-b110-9ddfa8cdb442@linux.dev>
- <20250902072422.603237-1-listout@listout.xyz>
- <IA3PR11MB8986925DD6DBF282C160AADBE501A@IA3PR11MB8986.namprd11.prod.outlook.com>
- <dyfxrfwy3qulor3sgfuuzxpx7jc4mbot4b7ci5marqlyxdusp4@uvf5fknefnfb>
-In-Reply-To: <dyfxrfwy3qulor3sgfuuzxpx7jc4mbot4b7ci5marqlyxdusp4@uvf5fknefnfb>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: IA3PR11MB8986:EE_|SA0PR11MB4542:EE_
-x-ms-office365-filtering-correlation-id: d972e094-c6e4-4d7e-df53-08ddeaca6d43
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|1800799024|376014|7053199007|38070700018; 
-x-microsoft-antispam-message-info: =?utf-8?B?R3BZMTdmTTdLZzBqSzhkSExabjVOcWRuc0d6Vk1Hc0FmTVB2bVprTlJDVERs?=
- =?utf-8?B?VTY1UEZBZDZyMWliRXFHdnpGTy93QnNrcDQrZ1RDcmVLWDlPOTNvcDNZUWlJ?=
- =?utf-8?B?NnVWalJPRDVSaTZBWHB0OUJqMGphWldpVnBPV0lidDhwUHE0c21pZkZvcGlo?=
- =?utf-8?B?U1QvWHRNRFVXMnpNVUQyTGwwemZUWWlBN21wWWRxYThGbzJnR0dxckd0Nm1R?=
- =?utf-8?B?djJrWDlKMjhiYVR0U2p5OHRsM3FDZ1pJVzdNOHpuUUFLWG1jYXJsTm5EbnZj?=
- =?utf-8?B?SkM2TGZFYi9NbDkwNy8rMlFNRUlubERiL0htSFFnTjdWUFZ4emRmMzVLWEJ4?=
- =?utf-8?B?ZjVMMHI2bVhUTTYyS3pkekRqdk5TYUl4MytxeWRXdXlDRGFzTlFrRzBlOXU1?=
- =?utf-8?B?RGNNaGR6VmtUcTJnZW54YWphVTRDcUdKbHZlUHRsN1VWQ1dqUWZ6aC90WkFy?=
- =?utf-8?B?dmpYMHBLOXVXUlF3N1RjbElxVkpGYU50MjdrVCtadkNVT0Y2R3plMmpDMWkr?=
- =?utf-8?B?ZEV5a0dsY1BoOHZONi8yRStFNVZVODRIYUdYUEpEbnRYaDVVSm03d3dLc0FG?=
- =?utf-8?B?bEkva0dxSEw3QnVDeGhEL3JMSHJaa2hQTWhWYVVuQnhIVGVBQ0Zna24yd0M2?=
- =?utf-8?B?UkUxQk1sM09Qc1ljcXl0aEFPY1JBdkphZmhkNHBoOUNvNXVrSEFENm40eHd5?=
- =?utf-8?B?UmlOMVk0ajdmSURDQ0xFTGc0Y1h6Y3o0dHc3UzhVWHBtc1RMbzl5QzRHTlMz?=
- =?utf-8?B?S0JIV0YrOEFtT2E5M1JWYkh1ZXZmcGRqWWljRHpOYUlUcG1KaTZ3MTJzQjJN?=
- =?utf-8?B?Y1Y0UU9QUGx6SFRkaHJkdWRIcUNkR043ak54eGFRcGtRbzY4eTNqSER5TXpj?=
- =?utf-8?B?S3kyTHFyek5WQkEyQWJ1TEFoQmNOa0ZKTFRmMjh4a2pFRy9Jak0yUmdJYWNH?=
- =?utf-8?B?cTZsdWVVM0U0OEdXTjNiWmdjcmNWeXBVVDdBY2FoaUI3UTg1MWZ1cGJmWUNX?=
- =?utf-8?B?ejRKdDliK0xhelRjMVdVUWpnYnZHNFk1T2NOd0pLZUQ4K09NQm9mN245ZE9a?=
- =?utf-8?B?SWlpNFZGM3hMbGhGMzRVNkI0VmVoWFUvK3d5NEY0RDNTL0hsQXNtenZ5WVJh?=
- =?utf-8?B?QnM1VXlzdDV3Zk1WaGI2VXRJK1VkM1V0Tm9LdEZ3KzRnV1EvY1FPdVc5NXc1?=
- =?utf-8?B?SzZPcjREc29sZ2dWSUovTS9LRWh1VW45aVhIUGphSVRvbnBVN0RNUllhVUtH?=
- =?utf-8?B?U0swVmYxQVNuaWpzL0hGQVd6YjZoaFkwT1I4Y3luQlJhb2JLWi85anNlZlNX?=
- =?utf-8?B?bWE5cFAzWGplTTh3bkcrTU5MVTVkcmgwZ2wzRzR1Q3pBaGprdnd1RzVES3V6?=
- =?utf-8?B?ZHQ3ZEFlbFE3OWw1UXNXV29lU3RDcy9IRXM4d0tvT1BIOVZtRlRZdDJGZEU2?=
- =?utf-8?B?aFpNNy9qWk9DMTNJRnRpMzRpaUNpMHBmQi96dWtVTmEvbE90dENIVnZkVGhE?=
- =?utf-8?B?b3BERXlVcURzRVBUY2xPWTBpaEVWOXRuQmVvWGJlUGNLV09XSVNTM0FSVUdr?=
- =?utf-8?B?YkdHaGg2N3NhNDVjR3ExYUFWT1FENHQzWEJrRy9ocjVsWTZvcFRSK1lUVzRz?=
- =?utf-8?B?c3RvUnFQYVN3VWE3QXkzVWlHVXlEcGZzbk5LYXlQMGpmQmRPY28rNjlIT2dy?=
- =?utf-8?B?akQ1QkNmR3NlN0l5YXlaZ0p1OUZHL2tWMStYbWhXZW9MSGdRVlJPM3dYUGI5?=
- =?utf-8?B?U0RMVXR0dkEwL1lremFFWjJGNC9GbytKbStuUVo5bkszR1VIQjNiYis5SVNT?=
- =?utf-8?B?OU9nQXhSSE43NFRPVW9PSFlmRC9sRFJNanYzWGJlZlQxMGZIRU5TcUl6cGxX?=
- =?utf-8?B?UWZid3dLYTN3WEEwbXF1L2UrT2Fnb0NDeG9JdURxdDdPcEpKdC9uVFhmMCty?=
- =?utf-8?B?ZUNwcmp3bFZuS1U0MmRjcDhGeDhsZzZqUlBvbk1Mb3RLaHNHdm5ObENBUnhQ?=
- =?utf-8?B?L2tQc2VnUXVBPT0=?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:IA3PR11MB8986.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(1800799024)(376014)(7053199007)(38070700018); DIR:OUT;
- SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?WGJGVjFub1VCbVhSSzAyVVhqdVYvQVVuQ2dGK0s0bzM4cDdoVlZ4ODhETGNV?=
- =?utf-8?B?dm5NTG9Uc1UxOGx2RUpra2p4eElvaEtXV3VNdjFKa0wrWml6MEhqZkxZL0c5?=
- =?utf-8?B?R2FDYVVMNG0vN3VaeEQ3bVBuVHJNOGVJSDg3SHdiRUU3eU5WV0Fzd1lLcURZ?=
- =?utf-8?B?WmM5NTg5Zy80NXQyS3JYdWx0RlBHcGE5V2wxTW02eUpPNG8vRDJlakd1b1Mx?=
- =?utf-8?B?dVVucHEyOGhJYTdDNkpFRnhiZHFVeGZTamhvcGFqUEY1dFVKTHpPNExQcUxQ?=
- =?utf-8?B?VCtOQmg4Ync5WVphQ2JaZFJMQTBhSnlNbzgway94Z2t6dERGWHZDSWxSTnoy?=
- =?utf-8?B?UlgzcVlrTUNJMzBzNWFOa2Npd296dThVb0pvVnVLRzFSODZtL1V1bU1TRm1r?=
- =?utf-8?B?T1ZVS1JReGlWNFdDWTZGbHI0QnFNVlZPVHExb3luc3k2aUVTTHhsY2RmM1Rn?=
- =?utf-8?B?bnVRZlpEQ3hGWnJtTS9ZOXZYUkJhN2JaVlVrYlZPYUNnbDJvMWRmQWhCNkVL?=
- =?utf-8?B?WDBiVnJrZU03TkhkTW4wbGdIWkJuVVNTT3F0T2FZUEc3RlFYM2ZFWDVYQW5U?=
- =?utf-8?B?UHZoZGtFRFJDemp5OFg0NGhBUDE1b2lrT0M3SVRtSFBKK1Mvd0RNT0VLdDBY?=
- =?utf-8?B?VVNJcjY1VkNodGdRb3dNNWJ4ZHc4dVdnSUZxOG4xOUtIdng0SnpNTVc1cDBJ?=
- =?utf-8?B?SE5EM2hZb2h3Q0xZWS9uNG03QkpyMGJwVjdFMEhBUlNDK0RaY1pubWZtRnZU?=
- =?utf-8?B?SUVrQ1ZURzJaTTdPdzd1OFJFZmZCNStCa2ZyVGFOYTFIYUJ2NFFXVWJFWG1n?=
- =?utf-8?B?MTdobis3bmxVWTJFRjY0YTBvbnM1VG5ZVE1tSzRUcXEzWDl2dDZuWVdaV2Fp?=
- =?utf-8?B?dU56eEgxTHRrbFRPQlJDV0VwM1NvYXRNaDYvekVOSXFRMEx5ZVpJNloreDl2?=
- =?utf-8?B?T2J3QXV2ckpTU1A5M1E0bkRaYVpXcm50Y1JDRHJ2QnhkaHdtc2kwQ2dHalU2?=
- =?utf-8?B?Njh2RSt3UXRiN3dGMXJNZzJ5SVhHVG9OUGcwLzRwZGVLVi9QSHhkTnlxeldm?=
- =?utf-8?B?eStVZHFhNzRoVmZCeTJheFI1aG43NCtBWENUbmpNM2F2Tk5JRUMrQ2E3T2ZU?=
- =?utf-8?B?dEVSa0dIYzdnWk40cG1LbFJDNjcvS2QrZER5SlJZeFJuQWlnL0xkZlBaMUty?=
- =?utf-8?B?RmxvckRYK0NhNzVVdzlsc1MydVA2SURRRWdDbkZsbW5EaTRjTGk5UkloTThy?=
- =?utf-8?B?YlhYYlY5Zm81aDY1N0hTUkdMRzZHc2lNTEdKSEJQV045cENFNzZvSVY3bVdK?=
- =?utf-8?B?ZXdadG5FTWZMeHNKdm9IcGdiQ0ZIYkM5OUhYWllsTmN0SWcwOXNmbGsveWtn?=
- =?utf-8?B?NDdPdEc4R1ZHK2NkQi9wVU5MdHJwaFlsQU9qZElhK2oxOENKNC9kQzBZYnUw?=
- =?utf-8?B?ZHVXbnZTWHRWRW1XeTNEZ3pncWo3SWk1WnpacC9LdFFhTkprL2tLY0Y1bDdV?=
- =?utf-8?B?L3RNUTViY1JXbmJGeC9xczRTcmRpNGNPanplaEpFa0ZuODkyY3R1ekt2cVJz?=
- =?utf-8?B?bkxSQk9oYTNqcWJvTVh1cHRKZEpjSnJhYXNiN1RHZ214Y21EckpiTVpLREo5?=
- =?utf-8?B?eHFhaXZUTWcxdjdvOFdMSGgwUGxqcHp1ODA5ZWhlaTJneHg3SnVRMStmTkgw?=
- =?utf-8?B?TFRJMUVZU0ttK051ZmRDb0Q4dGxUZ2RkZkljdE5XL1RtVy92ZGFFeEYyTHlR?=
- =?utf-8?B?NFdRbHhVZjhSR2x0aEE3ZGhoeVJoUGpQQjFMN2ZlRmo0Z0V5cUdRaFJqOVQr?=
- =?utf-8?B?Nm1wd3I4QVRUK21jT1NhcSsrYlRpYnRvVzMyeThJQmJwOTVwWCtUOExhZlho?=
- =?utf-8?B?RkRyTGZkU0RLbG1NbldUSWRzVE1OU1BDaXJoMGxMWHpXYW9GSklRclZBb1Vp?=
- =?utf-8?B?ckgrZ2wzV3VsV28xWkljVDZWbjNVOVBQK3RrY1lZdFdQUTJlYkpFQllORGQv?=
- =?utf-8?B?ZVIvay9xempianBHVGJQdjlhSks4SWlWM3ZQbzZ1NENPNER6bm9odjZNdE1U?=
- =?utf-8?B?VmRhT0JNQTFaWFp6WjNoVVFwckpVVUE2REhhN2tPVUJrS0JEOHV1MW9RR3Ru?=
- =?utf-8?B?TGlZQWxsOUw1TVRsYXBIc1NDbnVZcURIeGlRWGNkbU95bzNteW1aalFqdlpu?=
- =?utf-8?B?ZUE9PQ==?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org D344083B81
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D344083B81
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D344083B81
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Sep 2025 10:00:48 +0000 (UTC)
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-626--alL4q21PaSoJY8Xw_jFQg-1; Wed, 03 Sep 2025 06:00:45 -0400
+X-MC-Unique: -alL4q21PaSoJY8Xw_jFQg-1
+X-Mimecast-MFC-AGG-ID: -alL4q21PaSoJY8Xw_jFQg_1756893644
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-3da4c617a95so1295691f8f.0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 03 Sep 2025 03:00:44 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1756893644; x=1757498444;
+ h=in-reply-to:from:content-language:references:cc:to:subject
+ :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=UQePMhEqs57hDsrOuFDcA6yCeqwhGFlPIBQNDbid+qo=;
+ b=qrkT1fgEIJk/J/sffIPhh5Eq/BnApbDESdcb6atFHQuW6w2YNmz/GhSdhUxAFGVX+F
+ m4ayUiPN0j90HqMYY0GX+hcLgJFnBTCSPB99NAjTAI8zjQZ+MUgFWsPBdvnDDCXv3VtG
+ wsAkYuYfDdpMwGYRXmhIJJAC6UENN+RTswQNixkrZEAJg2/MPv/iElb+vtL5hTh0UWtM
+ bVzVOCLV96Jzk2xhJhWWgK9m16IniGspiBVRokOHArSd8T6FUlt+FPsqHwxGPc5Bjqv/
+ W9yD+q6Ar7xFk7uUw4vO5PUBy9B4rhmZRHh6Uz4/+clNf11S7qIOwCThNQgFIz6o8/8x
+ xohw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVZh5kzcEMW+25EDeYxh6XBNA90f9shldInpyUz/kMZStQ15vNxwk7SMFQ++MYJHvTNblLIBrhh0TYNwxFWYAA=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YzblShxQVrzF6LspkaPKakX2ffw72mVC6ByOxgDmz2TnPaCieya
+ PHbPPC3S6mUIx2+4KgkTjN6AP3v+aUkF09htJYz9u/HMw7ywiz8f5RnOZlbJTcxodgHpSBlYeXz
+ oc8EuOFDK4rZRFA0HoH9qVaGJF2vkcPNoSPDCKv5b1EA233un+bTk/rAQInTbiGRJHnJPEZs=
+X-Gm-Gg: ASbGncs89RA24s03AWeFB8vLRQFQL4fUUjF52BFAB/kme9le4h4LiJciIGHqTK43em3
+ GrYskFe4sPiw19Ifqmrk47fKJj8WG42iBXnONWZ1DfH88rv4tMz15EHbfGnevbE219Frv4c18yb
+ 6iE+86DbB2neIRBVv9DxS/py3kNlImBQh649IOXl/DSCzhYYkbSpPfBkH18WFVwvpnbmsk0r0qn
+ kOZ10wN+pxub9n9i3TmhJW4ibk1GLm28kL8QEn1nBk0n6R3T3bje2lfFe2QiV0nlplU+P5v2dxb
+ F+5xJP/gz0PvxoE4GH5m2ruNIGRpe6cvnkuiN9y/1w4=
+X-Received: by 2002:a05:6000:26c4:b0:3d0:e908:a10b with SMTP id
+ ffacd0b85a97d-3d1e0a98afdmr11351897f8f.56.1756893643572; 
+ Wed, 03 Sep 2025 03:00:43 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF/+gZ1XyZP8U4FKcbZM2pXz/QXPH407SraomqagFugQuovb/UUw/QcNcfjEt58nV7MA/zo2Q==
+X-Received: by 2002:a05:6000:26c4:b0:3d0:e908:a10b with SMTP id
+ ffacd0b85a97d-3d1e0a98afdmr11351850f8f.56.1756893642841; 
+ Wed, 03 Sep 2025 03:00:42 -0700 (PDT)
+Received: from [192.168.68.125] ([147.235.216.242])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-45b940bbc0dsm78655065e9.2.2025.09.03.03.00.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 03 Sep 2025 03:00:42 -0700 (PDT)
+Message-ID: <3b950579-9ed9-4bcc-9809-441c2141615f@redhat.com>
+Date: Wed, 3 Sep 2025 13:00:39 +0300
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB8986.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d972e094-c6e4-4d7e-df53-08ddeaca6d43
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Sep 2025 09:15:29.3741 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: o5VvlfTGz87yY9d6z6QM9hLzUkgkljNaIHHsrvf/wigWfdPTgEkle4gbMD3GLSP5QWdUI7IOVBs+kOZl17xXxnMGqp2QOCcHCUg3rSi5sJI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR11MB4542
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1756890938; x=1788426938;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=vVt76Eji2EeQc5CIEWJTHkrntGPA06N75KYH4pOW65M=;
- b=m0rGC3F4uEgZpbuwYQU1H0hwiewCUiI54nb+BNLCDqP9hYH+xmKez6ds
- pcpvoiNM3uIJZHRfG+meI3Z9w5mjSgBULTOo7jfYsayw2Q5XZXoWJaaQB
- uLKem//QjTqkekwNeIYQP/uOuFZfxb1u/fXJs0oT01Noh9ORqNvJlPJOb
- hIqbLtGNSiTqFDf2u0nusU9Re5oetKMbJHsRKjFa4GE8B14BUgceBdzIw
- KMrzCcBa6F3JA0nMOZjc6Pz1LLTORubk2FNTwH+H6SJbEtW8aiPx7eh2v
- wPaPEFl7VEjLjy2C02LPrQwRkcTr0G5x8giEG5wkrhdi+v+7uoa1DJq+M
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=m0rGC3F4
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH v2] net: intel: fm10k: Fix parameter
- idx set but not used
+User-Agent: Mozilla Thunderbird
+To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Cc: "przemyslawx.patynowski@intel.com" <przemyslawx.patynowski@intel.com>,
+ "jiri@resnulli.us" <jiri@resnulli.us>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "horms@kernel.org" <horms@kernel.org>,
+ "Keller, Jacob E" <jacob.e.keller@intel.com>,
+ "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>
+References: <20250903075810.17149-1-mheib@redhat.com>
+ <20250903075810.17149-2-mheib@redhat.com>
+ <IA3PR11MB8986F453579349C3518B312CE501A@IA3PR11MB8986.namprd11.prod.outlook.com>
+From: mohammad heib <mheib@redhat.com>
+In-Reply-To: <IA3PR11MB8986F453579349C3518B312CE501A@IA3PR11MB8986.namprd11.prod.outlook.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: l7OW1RmaDcr5-KXi0abBpoBJGJPbNJWFbJ1hRp6W--I_1756893644
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/alternative;
+ boundary="------------3bi9Z1ArNsAemFu0Nhgv3G0g"
+Content-Language: en-US
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1756893647;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=UQePMhEqs57hDsrOuFDcA6yCeqwhGFlPIBQNDbid+qo=;
+ b=MU0bfPPsBPimC+9ZsVpSaWwB/dAjKPINbBG/vigVSPbKwKd/bTfmEWlKn5GEDnbTMJM8/v
+ 303T4B38EI+I9az/PJ216Zbkj+79iGwHU8vt6LvBkw+QA65NIIC0fvdFlRaVRVd8+HN4t2
+ U+R2fCAsy4ZIEZ7a9fNpjN7i7TA3s2Y=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=MU0bfPPs
+Subject: Re: [Intel-wired-lan] [PATCH net-next,
+ 2/2] i40e: support generic devlink param "max_mac_per_vf"
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -252,74 +150,262 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogQnJhaG1haml0IERhcyA8
-bGlzdG91dEBsaXN0b3V0Lnh5ej4NCj4gU2VudDogV2VkbmVzZGF5LCBTZXB0ZW1iZXIgMywgMjAy
-NSAxMToxMSBBTQ0KPiBUbzogTG9rdGlvbm92LCBBbGVrc2FuZHIgPGFsZWtzYW5kci5sb2t0aW9u
-b3ZAaW50ZWwuY29tPg0KPiBDYzogdmFkaW0uZmVkb3JlbmtvQGxpbnV4LmRldjsgYW5kcmV3K25l
-dGRldkBsdW5uLmNoOyBOZ3V5ZW4sIEFudGhvbnkNCj4gTCA8YW50aG9ueS5sLm5ndXllbkBpbnRl
-bC5jb20+OyBkYXZlbUBkYXZlbWxvZnQubmV0OyBpbnRlbC13aXJlZC0NCj4gbGFuQGxpc3RzLm9z
-dW9zbC5vcmc7IGt1YmFAa2VybmVsLm9yZzsgbmV0ZGV2QHZnZXIua2VybmVsLm9yZzsNCj4gS2l0
-c3plbCwgUHJ6ZW15c2xhdyA8cHJ6ZW15c2xhdy5raXRzemVsQGludGVsLmNvbT4NCj4gU3ViamVj
-dDogUmU6IFtJbnRlbC13aXJlZC1sYW5dIFtQQVRDSCB2Ml0gbmV0OiBpbnRlbDogZm0xMGs6IEZp
-eA0KPiBwYXJhbWV0ZXIgaWR4IHNldCBidXQgbm90IHVzZWQNCj4gDQo+IE9uIDAzLjA5LjIwMjUg
-MDY6MDgsIExva3Rpb25vdiwgQWxla3NhbmRyIHdyb3RlOg0KPiA+DQo+ID4NCj4gPiA+IC0tLS0t
-T3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+ID4gPiBGcm9tOiBJbnRlbC13aXJlZC1sYW4gPGludGVs
-LXdpcmVkLWxhbi1ib3VuY2VzQG9zdW9zbC5vcmc+IE9uDQo+IEJlaGFsZg0KPiA+ID4gT2YgQnJh
-aG1haml0IERhcw0KPiA+ID4gU2VudDogVHVlc2RheSwgU2VwdGVtYmVyIDIsIDIwMjUgOToyNCBB
-TQ0KPiA+ID4gVG86IHZhZGltLmZlZG9yZW5rb0BsaW51eC5kZXYNCj4gPiA+IENjOiBhbmRyZXcr
-bmV0ZGV2QGx1bm4uY2g7IE5ndXllbiwgQW50aG9ueSBMDQo+ID4gPiA8YW50aG9ueS5sLm5ndXll
-bkBpbnRlbC5jb20+OyBkYXZlbUBkYXZlbWxvZnQubmV0OyBpbnRlbC13aXJlZC0NCj4gPiA+IGxh
-bkBsaXN0cy5vc3Vvc2wub3JnOyBrdWJhQGtlcm5lbC5vcmc7IGxpc3RvdXRAbGlzdG91dC54eXo7
-DQo+ID4gPiBuZXRkZXZAdmdlci5rZXJuZWwub3JnOyBLaXRzemVsLCBQcnplbXlzbGF3DQo+ID4g
-PiA8cHJ6ZW15c2xhdy5raXRzemVsQGludGVsLmNvbT4NCj4gPiA+IFN1YmplY3Q6IFtJbnRlbC13
-aXJlZC1sYW5dIFtQQVRDSCB2Ml0gbmV0OiBpbnRlbDogZm0xMGs6IEZpeA0KPiA+ID4gcGFyYW1l
-dGVyIGlkeCBzZXQgYnV0IG5vdCB1c2VkDQo+ID4gPg0KPiA+ID4gVmFyaWFibGUgaWR4IGlzIHNl
-dCBpbiB0aGUgbG9vcCwgYnV0IGlzIG5ldmVyIHVzZWQgcmVzdWx0aW5nIGluDQo+IGRlYWQNCj4g
-PiA+IGNvZGUuIEJ1aWxkaW5nIHdpdGggR0NDIDE2LCB3aGljaCBlbmFibGVzDQo+ID4gPiAtV2Vy
-cm9yPXVudXNlZC1idXQtc2V0LXBhcmFtZXRlcj0gYnkgZGVmYXVsdCByZXN1bHRzIGluIGJ1aWxk
-DQo+IGVycm9yLg0KPiA+ID4gVGhpcyBwYXRjaCByZW1vdmVzIHRoZSBpZHggcGFyYW1ldGVyLCBz
-aW5jZSBhbGwgdGhlIGNhbGxlcnMgb2YgdGhlDQo+ID4gPiBmbTEwa191bmJpbmRfaHdfc3RhdHNf
-cSBhcyAwIGFzIGlkeCBhbnl3YXlzLg0KPiA+ID4NCj4gPiA+IFN1Z2dlc3RlZC1ieTogVmFkaW0g
-RmVkb3JlbmtvIDx2YWRpbS5mZWRvcmVua29AbGludXguZGV2Pg0KPiA+ID4gU2lnbmVkLW9mZi1i
-eTogQnJhaG1haml0IERhcyA8bGlzdG91dEBsaXN0b3V0Lnh5ej4NCj4gPiA+IC0tLQ0KPiA+ID4g
-Y2hhbmdlcyBpbiB2MjoNCj4gPiA+IAktIFJlbW92ZWQgdGhlIGlkeCBwYXJhbWV0ZXIsIHNpbmNl
-IGFsbCBjYWxsZXJzIG9mDQo+ID4gPiAJZm0xMGtfdW5iaW5kX2h3X3N0YXRzX3EgcGFzc2VzIGlk
-eCBhcyAwIGFueXdheXMuDQo+ID4gPiAtLS0NCj4gPiA+ICBkcml2ZXJzL25ldC9ldGhlcm5ldC9p
-bnRlbC9mbTEway9mbTEwa19jb21tb24uYyB8IDUgKystLS0NCj4gPiA+IGRyaXZlcnMvbmV0L2V0
-aGVybmV0L2ludGVsL2ZtMTBrL2ZtMTBrX2NvbW1vbi5oIHwgMiArLQ0KPiA+ID4gIGRyaXZlcnMv
-bmV0L2V0aGVybmV0L2ludGVsL2ZtMTBrL2ZtMTBrX3BmLmMgICAgIHwgMiArLQ0KPiA+ID4gIGRy
-aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ZtMTBrL2ZtMTBrX3ZmLmMgICAgIHwgMiArLQ0KPiA+
-ID4gIDQgZmlsZXMgY2hhbmdlZCwgNSBpbnNlcnRpb25zKCspLCA2IGRlbGV0aW9ucygtKQ0KPiA+
-ID4NCj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9mbTEway9m
-bTEwa19jb21tb24uYw0KPiA+ID4gYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9mbTEway9m
-bTEwa19jb21tb24uYw0KPiA+ID4gaW5kZXggZjUxYTYzZmNhNTEzLi4xZjkxOWE1MGM3NjUgMTAw
-NjQ0DQo+ID4gPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9mbTEway9mbTEwa19j
-b21tb24uYw0KPiA+ID4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZm0xMGsvZm0x
-MGtfY29tbW9uLmMNCj4gPiA+IEBAIC00NDcsMTcgKzQ0NywxNiBAQCB2b2lkIGZtMTBrX3VwZGF0
-ZV9od19zdGF0c19xKHN0cnVjdCBmbTEwa19odw0KPiA+ID4gKmh3LCBzdHJ1Y3QgZm0xMGtfaHdf
-c3RhdHNfcSAqcSwNCj4gPiA+ICAvKioNCj4gPiA+ICAgKiAgZm0xMGtfdW5iaW5kX2h3X3N0YXRz
-X3EgLSBVbmJpbmQgdGhlIHF1ZXVlIGNvdW50ZXJzIGZyb20NCj4gdGhlaXINCj4gPiA+IHF1ZXVl
-cw0KPiA+ID4gICAqICBAcTogcG9pbnRlciB0byB0aGUgcmluZyBvZiBoYXJkd2FyZSBzdGF0aXN0
-aWNzIHF1ZXVlDQo+ID4gPiAtICogIEBpZHg6IGluZGV4IHBvaW50aW5nIHRvIHRoZSBzdGFydCBv
-ZiB0aGUgcmluZyBpdGVyYXRpb24NCj4gPiA+ICAgKiAgQGNvdW50OiBudW1iZXIgb2YgcXVldWVz
-IHRvIGl0ZXJhdGUgb3Zlcg0KPiA+ID4gICAqDQo+ID4gPiAgICogIEZ1bmN0aW9uIGludmFsaWRh
-dGVzIHRoZSBpbmRleCB2YWx1ZXMgZm9yIHRoZSBxdWV1ZXMgc28gYW55DQo+ID4gPiB1cGRhdGVz
-IHRoYXQNCj4gPiA+ICAgKiAgbWF5IGhhdmUgaGFwcGVuZWQgYXJlIGlnbm9yZWQgYW5kIHRoZSBi
-YXNlIGZvciB0aGUgcXVldWUNCj4gc3RhdHMNCj4gPiA+IGlzIHJlc2V0Lg0KPiA+ID4gICAqKi8N
-Cj4gPiBUaGUga2VybmVsLWRvYyBjb21tZW50IHN0aWxsIG1lbnRpb25zIEBpZHguDQo+ID4gRXZl
-cnl0aGluZyBlbHNlIGlmIGZpbmUuDQo+ID4gUmV2aWV3ZWQtYnk6IEFsZWtzYW5kciBMb2t0aW9u
-b3YgPGFsZWtzYW5kci5sb2t0aW9ub3ZAaW50ZWwuY29tPg0KPiA+DQo+ID4NCj4gSGkgQWxla3Nh
-bmRyLCBjYW4geW91IHBsZWFzZSBwb2ludCBvdXQgaG93IEkgY2FuIHJlbW92ZSB0aGUga2VybmVs
-LWRvYw0KPiBjb21tZW50LiBJIHRob3VnaHQgcmVtb3ZpbmcgdGhlIGxpbmUNCj4gCUBpZHg6IGlu
-ZGV4IHBvaW50aW5nIHRvIHRoZSBzdGFydCBvZiB0aGUgcmluZyBpdGVyYXRpb24gZnJvbQ0KPiBm
-bTEwa19jb21tb24uYyB3b3VsZCBkbyB0aGF0Lg0KPiANClNvcnJ5LCBteSBtaXN0YWtlLCBJIG92
-ZXJsb29rZWQgJy0nICENClJldmlld2VkLWJ5OiBBbGVrc2FuZHIgTG9rdGlvbm92IDxhbGVrc2Fu
-ZHIubG9rdGlvbm92QGludGVsLmNvbT4NCg0KDQo+IEknbSBvcGVuIHRvIHNlbmRpbmcgaW4gYSB2
-MyB3aXRoIGFueSBjaGFuZ2VzIHJlcXVpcmVkLg0KPiA+ID4gLXZvaWQgZm0xMGtfdW5iaW5kX2h3
-X3N0YXRzX3Eoc3RydWN0IGZtMTBrX2h3X3N0YXRzX3EgKnEsIHUzMiBpZHgsDQo+ID4gPiB1MzIN
-Cj4gPiA+IGNvdW50KQ0KPiA+ID4gK3ZvaWQgZm0xMGtfdW5iaW5kX2h3X3N0YXRzX3Eoc3RydWN0
-IGZtMTBrX2h3X3N0YXRzX3EgKnEsIHUzMg0KPiBjb3VudCkNCj4gPiA+ICB7DQo+ID4gPiAgCXUz
-MiBpOw0KPiA+ID4NCj4gPiA+IC0JZm9yIChpID0gMDsgaSA8IGNvdW50OyBpKyssIGlkeCsrLCBx
-KyspIHsNCj4gPiA+ICsJZm9yIChpID0gMDsgaSA8IGNvdW50OyBpKyssIHErKykgew0KPiA+ID4g
-IAkJcS0+cnhfc3RhdHNfaWR4ID0gMDsNCj4gPiA+ICAJCXEtPnR4X3N0YXRzX2lkeCA9IDA7DQo+
-ID4gPiAgCX0NCj4gPg0KPiA+IC4uLg0KPiANCj4gLS0NCj4gUmVnYXJkcywNCj4gbGlzdG91dA0K
+This is a multi-part message in MIME format.
+--------------3bi9Z1ArNsAemFu0Nhgv3G0g
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+
+Hello Aleksandr,
+
+Thank you for your review.
+
+
+On 9/3/25 12:07 PM, Loktionov, Aleksandr wrote:
+>
+>> -----Original Message-----
+>> From:mheib@redhat.com <mheib@redhat.com>
+>> Sent: Wednesday, September 3, 2025 9:58 AM
+>> To:intel-wired-lan@lists.osuosl.org
+>> Cc:przemyslawx.patynowski@intel.com;jiri@resnulli.us;
+>> netdev@vger.kernel.org;horms@kernel.org; Keller, Jacob E
+>> <jacob.e.keller@intel.com>; Loktionov, Aleksandr
+>> <aleksandr.loktionov@intel.com>; Nguyen, Anthony L
+>> <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw
+>> <przemyslaw.kitszel@intel.com>; Mohammad Heib<mheib@redhat.com>
+>> Subject: [PATCH net-next,2/2] i40e: support generic devlink param
+>> "max_mac_per_vf"
+>>
+>> From: Mohammad Heib<mheib@redhat.com>
+>>
+>> Add support for the new generic devlink runtime parameter
+>> "max_mac_per_vf", which controls the maximum number of MAC addresses a
+>> trusted VF can use.
+>
+> Good day Mohammad,
+>
+> Thanks for working on this and for the clear explanation in the commit message.
+>
+> I have a couple of questions and thoughts:
+>
+> 1) Scope of the parameter
+>      The name max_mac_per_vf is a bit ambiguous. From the description,
+>      it seems to apply only to trusted VFs, but the name does not make that obvious.
+>      Would it make sense to either:
+> 	- Make the name reflect that (e.g., max_mac_per_trusted_vf), or
+> 	- Introduce two separate parameters for trusted and untrusted VFs if both cases need to be handled differently?
+I agree that the name could be a bit confusing. Since this is a generic 
+devlink parameter, different devices may handle trusted and untrusted 
+VFs differently.
+For i40e specifically, the device does treat trusted VFs differently 
+from untrusted ones, and this is documented in devlink/i40e.rst.
+However, I chose a more general name to avoid creating a separate 
+devlink parameter for untrusted VFs, which likely wouldn’t be used.
+On reflection, I should update the patch number 1 to remove the 
+**trusted VF** wording from the description to avoid implying that the 
+parameter only applies to trusted VFs.
+
+>
+> 2)Problem statement
+>      It would help to better understand the underlying problem this parameter is solving.
+>      Is the goal to enforce a global cap for all VFs, or to provide operators with a way
+>      to fine-tune per-VF limits? From my perspective, the most important part is
+>      clearly stating the problem and the use case.
+My main goal here is to enforce a global cap for all VFs.
+There was a long discussion [1] about this, and one of the ideas raised 
+was to create fine-tuned per-VF limits using devlink resources instead 
+of a parameter
+However, currently in i40e, we only create a devlink port per PF and no 
+devlink ports per VF.
+Implementing the resource-per-VF approach would therefore require some 
+extra work.
+so i decided to go with this global cap for now.
+[1] - 
+https://patchwork.kernel.org/project/netdevbpf/patch/20250805134042.2604897-2-dhill@redhat.com/
+
+> 3)Granularity
+>      If the intent is to give operators flexibility, a single global parameter might not be enough.
+>      For example, limiting the number of MAC filters per specific VF (or having different limits for trusted vs. untrusted)
+>      could be a real-world requirement. This patch doesn't seem to address that scenario.
+>
+> Could you share more details about the use case and whether per-VF granularity was considered?
+>
+> Thanks again for the work on this. Looking forward to your thoughts.
+
+please see - 
+https://patchwork.kernel.org/project/netdevbpf/patch/20250805134042.2604897-2-dhill@redhat.com/
+
+>
+> Best regards,
+> Aleksandr
+>
+>> By default (value 0), the driver enforces its internally calculated
+>> per-VF MAC filter limit. A non-zero value acts as a strict cap,
+>> overriding the internal calculation.
+>>
+>> Please note that the configured value is only a theoretical maximum
+>> and a hardware limits may still apply.
+>>
+>> - Previous discussion about this change:
+>>    https://lore.kernel.org/netdev/20250805134042.2604897-1-
+>> dhill@redhat.com
+>>    https://lore.kernel.org/netdev/20250823094952.182181-1-
+>> mheib@redhat.com
+>>
+>> Signed-off-by: Mohammad Heib<mheib@redhat.com>
+>> ---
+> ...
+>
+>> --
+>> 2.50.1
+Thank you,
+--------------3bi9Z1ArNsAemFu0Nhgv3G0g
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <p>Hello Aleksandr,</p>
+    <p><span style="white-space: pre-wrap">Thank you for your review.
+</span></p>
+    <br>
+    <div class="moz-cite-prefix">On 9/3/25 12:07 PM, Loktionov,
+      Aleksandr wrote:<br>
+    </div>
+    <blockquote type="cite"
+cite="mid:IA3PR11MB8986F453579349C3518B312CE501A@IA3PR11MB8986.namprd11.prod.outlook.com">
+      <pre wrap="" class="moz-quote-pre">
+
+</pre>
+      <blockquote type="cite">
+        <pre wrap="" class="moz-quote-pre">-----Original Message-----
+From: <a class="moz-txt-link-abbreviated" href="mailto:mheib@redhat.com">mheib@redhat.com</a> <a class="moz-txt-link-rfc2396E" href="mailto:mheib@redhat.com">&lt;mheib@redhat.com&gt;</a>
+Sent: Wednesday, September 3, 2025 9:58 AM
+To: <a class="moz-txt-link-abbreviated" href="mailto:intel-wired-lan@lists.osuosl.org">intel-wired-lan@lists.osuosl.org</a>
+Cc: <a class="moz-txt-link-abbreviated" href="mailto:przemyslawx.patynowski@intel.com">przemyslawx.patynowski@intel.com</a>; <a class="moz-txt-link-abbreviated" href="mailto:jiri@resnulli.us">jiri@resnulli.us</a>;
+<a class="moz-txt-link-abbreviated" href="mailto:netdev@vger.kernel.org">netdev@vger.kernel.org</a>; <a class="moz-txt-link-abbreviated" href="mailto:horms@kernel.org">horms@kernel.org</a>; Keller, Jacob E
+<a class="moz-txt-link-rfc2396E" href="mailto:jacob.e.keller@intel.com">&lt;jacob.e.keller@intel.com&gt;</a>; Loktionov, Aleksandr
+<a class="moz-txt-link-rfc2396E" href="mailto:aleksandr.loktionov@intel.com">&lt;aleksandr.loktionov@intel.com&gt;</a>; Nguyen, Anthony L
+<a class="moz-txt-link-rfc2396E" href="mailto:anthony.l.nguyen@intel.com">&lt;anthony.l.nguyen@intel.com&gt;</a>; Kitszel, Przemyslaw
+<a class="moz-txt-link-rfc2396E" href="mailto:przemyslaw.kitszel@intel.com">&lt;przemyslaw.kitszel@intel.com&gt;</a>; Mohammad Heib <a class="moz-txt-link-rfc2396E" href="mailto:mheib@redhat.com">&lt;mheib@redhat.com&gt;</a>
+Subject: [PATCH net-next,2/2] i40e: support generic devlink param
+"max_mac_per_vf"
+
+From: Mohammad Heib <a class="moz-txt-link-rfc2396E" href="mailto:mheib@redhat.com">&lt;mheib@redhat.com&gt;</a>
+
+Add support for the new generic devlink runtime parameter
+"max_mac_per_vf", which controls the maximum number of MAC addresses a
+trusted VF can use.
+</pre>
+      </blockquote>
+      <pre wrap="" class="moz-quote-pre">
+
+Good day Mohammad,
+
+Thanks for working on this and for the clear explanation in the commit message.
+
+I have a couple of questions and thoughts:
+
+1) Scope of the parameter
+    The name max_mac_per_vf is a bit ambiguous. From the description,
+    it seems to apply only to trusted VFs, but the name does not make that obvious.
+    Would it make sense to either:
+	- Make the name reflect that (e.g., max_mac_per_trusted_vf), or
+	- Introduce two separate parameters for trusted and untrusted VFs if both cases need to be handled differently?</pre>
+    </blockquote>
+    I agree that the name could be a bit confusing. Since this is a
+    generic devlink parameter, different devices may handle trusted and
+    untrusted VFs differently.<br>
+    For i40e specifically, the device does treat trusted VFs differently
+    from untrusted ones, and this is documented in devlink/i40e.rst. <br>
+    However, I chose a more general name to avoid creating a separate
+    devlink parameter for untrusted VFs, which likely wouldn’t be used.<br>
+    On reflection, I should update the patch number 1 to remove the
+    **trusted VF** wording from the description to avoid implying that
+    the parameter only applies to trusted VFs.
+    <p><span class="p_header"></span></p>
+    <blockquote type="cite"
+cite="mid:IA3PR11MB8986F453579349C3518B312CE501A@IA3PR11MB8986.namprd11.prod.outlook.com">
+      <pre wrap="" class="moz-quote-pre">
+
+2)Problem statement
+    It would help to better understand the underlying problem this parameter is solving.
+    Is the goal to enforce a global cap for all VFs, or to provide operators with a way
+    to fine-tune per-VF limits? From my perspective, the most important part is
+    clearly stating the problem and the use case.
+</pre>
+    </blockquote>
+    My main goal here is to enforce a global cap for all VFs. <br>
+    There was a long discussion [1] about this, and one of the ideas
+    raised was to create fine-tuned per-VF limits using devlink
+    resources instead of a parameter <br>
+    However, currently in i40e, we only create a devlink port per PF and
+    no devlink ports per VF.<br>
+    Implementing the resource-per-VF approach would therefore require
+    some extra work.<br>
+    so i decided to go with this global cap for now.<br>
+    [1] -
+<a class="moz-txt-link-freetext" href="https://patchwork.kernel.org/project/netdevbpf/patch/20250805134042.2604897-2-dhill@redhat.com/">https://patchwork.kernel.org/project/netdevbpf/patch/20250805134042.2604897-2-dhill@redhat.com/</a><br>
+    <p></p>
+    <blockquote type="cite"
+cite="mid:IA3PR11MB8986F453579349C3518B312CE501A@IA3PR11MB8986.namprd11.prod.outlook.com">
+      <pre wrap="" class="moz-quote-pre">
+3)Granularity
+    If the intent is to give operators flexibility, a single global parameter might not be enough.
+    For example, limiting the number of MAC filters per specific VF (or having different limits for trusted vs. untrusted)
+    could be a real-world requirement. This patch doesn't seem to address that scenario.
+
+Could you share more details about the use case and whether per-VF granularity was considered?
+
+Thanks again for the work on this. Looking forward to your thoughts.</pre>
+    </blockquote>
+    <p>please see -
+<a class="moz-txt-link-freetext" href="https://patchwork.kernel.org/project/netdevbpf/patch/20250805134042.2604897-2-dhill@redhat.com/">https://patchwork.kernel.org/project/netdevbpf/patch/20250805134042.2604897-2-dhill@redhat.com/</a></p>
+    <blockquote type="cite"
+cite="mid:IA3PR11MB8986F453579349C3518B312CE501A@IA3PR11MB8986.namprd11.prod.outlook.com">
+      <pre wrap="" class="moz-quote-pre">
+
+Best regards,
+Aleksandr
+
+</pre>
+      <blockquote type="cite">
+        <pre wrap="" class="moz-quote-pre">
+By default (value 0), the driver enforces its internally calculated
+per-VF MAC filter limit. A non-zero value acts as a strict cap,
+overriding the internal calculation.
+
+Please note that the configured value is only a theoretical maximum
+and a hardware limits may still apply.
+
+- Previous discussion about this change:
+  <a class="moz-txt-link-freetext" href="https://lore.kernel.org/netdev/20250805134042.2604897-1">https://lore.kernel.org/netdev/20250805134042.2604897-1</a>-
+<a class="moz-txt-link-abbreviated" href="mailto:dhill@redhat.com">dhill@redhat.com</a>
+  <a class="moz-txt-link-freetext" href="https://lore.kernel.org/netdev/20250823094952.182181-1">https://lore.kernel.org/netdev/20250823094952.182181-1</a>-
+<a class="moz-txt-link-abbreviated" href="mailto:mheib@redhat.com">mheib@redhat.com</a>
+
+Signed-off-by: Mohammad Heib <a class="moz-txt-link-rfc2396E" href="mailto:mheib@redhat.com">&lt;mheib@redhat.com&gt;</a>
+---
+</pre>
+      </blockquote>
+      <pre wrap="" class="moz-quote-pre">
+...
+
+</pre>
+      <blockquote type="cite">
+        <pre wrap="" class="moz-quote-pre">--
+2.50.1
+</pre>
+      </blockquote>
+      <pre wrap="" class="moz-quote-pre">
+</pre>
+    </blockquote>
+    Thank you,<br>
+  </body>
+</html>
+
+--------------3bi9Z1ArNsAemFu0Nhgv3G0g--
+
