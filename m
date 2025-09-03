@@ -1,133 +1,222 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3C12BB41779
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Sep 2025 09:59:02 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A58C7B41993
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Sep 2025 11:07:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DEE17848D2;
-	Wed,  3 Sep 2025 07:59:00 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9B6D561436;
+	Wed,  3 Sep 2025 09:07:45 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8OIIsR_3wmSB; Wed,  3 Sep 2025 07:59:00 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Y2NK8hFUrJ0g; Wed,  3 Sep 2025 09:07:44 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 96C21848D3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 64180614B0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1756886339;
-	bh=oNKb6p6pocOW/C+6sxZfv3rhI5CAgcckWlo3n+yWenA=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1756890464;
+	bh=Rc5br7W3apYblfua4d4//V90OALcrOhc3dKN6jgmA5w=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=04Hzu6KyxjecPh6NWdHlror+WViJDawbkEcxULvEBvSRLgWnwMBQGemmGnkDgLiZc
-	 8eM5beN5KBmBxFyTTv9x3UZAEg0mEt4JrOyxI2eTglJ0Le+ZzvxVQiX6MSoy2Dk0tI
-	 A+41E6rr6xn0uKgCKmJjjwedJveDw9pJdjjQpwUaR9WV+kMdYoFS9+DXXORLxoAIUT
-	 +id7PXnshnPaVUfEXGL4+p1+gnHErHvI2uf86LoLMBIswntue3/jCsyNAXeX8pg0qR
-	 k1be9GnrsT3GtUb2xxRPgGCvXGPFHDT3mcLTVsuvMb85m2lj9XMT8zUYVSapoYn/kB
-	 OAnF1d8Uni5pg==
+	b=Fcw7cA3M7NPvKAEFBYSKBL8Wk3kwu4bK6VcuGBT4tbxdHyC391ek5LGibXgdY7HgS
+	 /dmbE6g2cB6OhnkaInd1Y4VuT3zs6oR3PPb3aiZsWvfRNnLgJmYuG7h3sv1EjIDJa/
+	 mvXSw9Rakb243DXY8dD4azQLrce86vilPxRpl+ZDkklOntAxQw6FhHirpBzWvAvRUc
+	 caNS5oqMLhaA6warxoIBBQPG4+mBR+ezq8fZhSRTQAw9O3EcU9cG1xtp+AwCeDSt+o
+	 46nG6Liduq7spL/6eCJ2PIQMgvDYRQW67Ebx1ZfuGvf/s63BGPEV81y/v07be/6aeP
+	 w3oY6Xm3oX7Bw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 96C21848D3;
-	Wed,  3 Sep 2025 07:58:59 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 64180614B0;
+	Wed,  3 Sep 2025 09:07:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 29CF110E
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Sep 2025 07:58:58 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 24FC010E
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Sep 2025 09:07:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C0AB2848C5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Sep 2025 07:58:57 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 16C5241F1E
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Sep 2025 09:07:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dYaXnjtbEbxU for <intel-wired-lan@lists.osuosl.org>;
- Wed,  3 Sep 2025 07:58:56 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=mheib@redhat.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 2upWJjJaA5th for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  3 Sep 2025 09:07:42 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
+ helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 92DA9848D2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 92DA9848D2
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 92DA9848D2
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Sep 2025 07:58:56 +0000 (UTC)
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-255-R94Q2BiENGinoAYnX1QqwQ-1; Wed, 03 Sep 2025 03:58:53 -0400
-X-MC-Unique: R94Q2BiENGinoAYnX1QqwQ-1
-X-Mimecast-MFC-AGG-ID: R94Q2BiENGinoAYnX1QqwQ_1756886333
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-45b8f4c2f7fso21082015e9.1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 03 Sep 2025 00:58:53 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756886332; x=1757491132;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=oNKb6p6pocOW/C+6sxZfv3rhI5CAgcckWlo3n+yWenA=;
- b=X5cE2TcdptQBlSjx4+kk67Uy9eynjDEHXqgaO0sEsG+cHREoJ/zc7/wemadb5DHQX7
- 8J079ROW6SoXW7vnugfxiH99b15O98jkQ87bW1yQHYJl97cDu5yZVJ0ngEPq23laoMdc
- ufg20PBnnjGeQOjn87j0Nc8o5Du6IIpWQx9WmphwHPEuJc+UtqPyS4SvIlae2IsM1I0j
- 6MBKvZucDoJTrpvris2eVGK1QS9POIoIdWdVD6SOM2ziP+K033YDAQqTpWDTL/K1x1nm
- sOj5aYMD+hsQA/QKCjMqWhod3V6a27a8hAzhSYegAhaPlq3ZqjJ7rU26PPMG3zuF5sqd
- 8pCw==
-X-Gm-Message-State: AOJu0Yw3Z+VEth3mwmAis5ZWwQPevAp+msZHa+wCxSf9cTyex4lMcYOc
- CHKL1um6Q7CBZj/mv87p79kPeJy0gGLrfwElaJLf1Xep4ZGCFEMewf4VHvuW1TtBVdFKCsymh0L
- ZJ9IpzwUZF3Us0jrTqi3W2G77xaxWO37uzDl/TaIJZhCYqZFjOX8gGobeoHXSLkwfIDIcyy5egI
- pTHo+IEtHgnWMjcsxKewVjgeFGixmfOdjLXLJybL8AURvDjhqmU7GBNv8u
-X-Gm-Gg: ASbGncsgvezxXivZeAkre4v2n4YCxHvzWX/aUIsnf3mM65fmmAC8KkGLbUgdw0ez44S
- DwjqI3cirDJiultRtBz/34nOxwTXM3J3DZMYVh+lrBXJ93F0v6tzzDMFyUEdDj1yTAg+QYyQd7T
- myZ7Dt0KPlqYd+D1Pdf7dK/mgYfpHMc6WHmZdiyrpiOsiy05zhDQqQ5ctyaNzmjyQeExHm/u1pZ
- 3x0Xl7R+Vk/7G7lXPBZEUk0m3Dn/tRmmBN1dn05Us7VEPzIcJ5tFx0CKY513lMNKgTu4kruaqp6
- Q63HJ8WDIsluQt5Q6+vHeMK+8s5kC+IDveBK4jfh2jHa
-X-Received: by 2002:a05:600c:4204:b0:45c:b56c:4194 with SMTP id
- 5b1f17b1804b1-45cb56c430bmr6930115e9.2.1756886332305; 
- Wed, 03 Sep 2025 00:58:52 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEhF7d2mK3/iUK2rDy/VY/BcvmzRewCiZbFnuHo3JdB4WYHablU5vS5ClBtKdJRMfXhTEY9/Q==
-X-Received: by 2002:a05:600c:4204:b0:45c:b56c:4194 with SMTP id
- 5b1f17b1804b1-45cb56c430bmr6929865e9.2.1756886331743; 
- Wed, 03 Sep 2025 00:58:51 -0700 (PDT)
-Received: from fedora.redhat.com ([147.235.216.242])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3decf936324sm1002477f8f.9.2025.09.03.00.58.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 03 Sep 2025 00:58:51 -0700 (PDT)
-From: mheib@redhat.com
-To: intel-wired-lan@lists.osuosl.org
-Cc: przemyslawx.patynowski@intel.com, jiri@resnulli.us, netdev@vger.kernel.org,
- horms@kernel.org, jacob.e.keller@intel.com, aleksandr.loktionov@intel.com,
- anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- Mohammad Heib <mheib@redhat.com>
-Date: Wed,  3 Sep 2025 10:58:10 +0300
-Message-ID: <20250903075810.17149-2-mheib@redhat.com>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20250903075810.17149-1-mheib@redhat.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 26D8E411EB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 26D8E411EB
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 26D8E411EB
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Sep 2025 09:07:41 +0000 (UTC)
+X-CSE-ConnectionGUID: 8B3iZGucTNiCkOrquwismQ==
+X-CSE-MsgGUID: WnwO6C0RTPuga3Sk5cic3w==
+X-IronPort-AV: E=McAfee;i="6800,10657,11541"; a="69809696"
+X-IronPort-AV: E=Sophos;i="6.18,233,1751266800"; d="scan'208";a="69809696"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+ by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Sep 2025 02:07:41 -0700
+X-CSE-ConnectionGUID: dK9phIHFT9+lbUugnVUD1Q==
+X-CSE-MsgGUID: zZ93XO9jQvWw0Fr9c912ug==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.18,233,1751266800"; d="scan'208";a="170817199"
+Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
+ by orviesa010.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Sep 2025 02:07:40 -0700
+Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.17; Wed, 3 Sep 2025 02:07:40 -0700
+Received: from ORSEDG903.ED.cps.intel.com (10.7.248.13) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.17 via Frontend Transport; Wed, 3 Sep 2025 02:07:40 -0700
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (40.107.93.75) by
+ edgegateway.intel.com (134.134.137.113) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.17; Wed, 3 Sep 2025 02:07:39 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=US2s0Q3xNVJ+ZBZSjLFa+TGeZ1UxujhAvDUOCvInt+ZZj809jqr1GgpN1bLYH5Q1og/YkK6XDR+RSt9qYGFk0oCS2hS4rcVHcsyCIVvReYhAHfxgzotcX2qW5AB3oHAUCnTllscwxk9mOXSHFVvb482/383CaFcZjs2yfn0uElP8zYWprduOkd+jPPAzfa6z5oh9BlKW0NBYOav6yQzLYgV9Wr7NZhnkiCRu54L3TYhpk2bGiGrE0kk5+oC0leez0vrcK+8wc4K0aZoXQVFSMdrCiS8H5dRieFt3vGTAKZDkULapACmk89drxnjj0NhbFENjsmd2vynwNkF97YPL2A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Rc5br7W3apYblfua4d4//V90OALcrOhc3dKN6jgmA5w=;
+ b=dO7sm3pRLoQmogue3rqTTaD6rPwT2R/yyT2yONC4XZ3QjdiUQ40vkAheKrl/JvvzMWtFkhKyNL0nbxqoGPQp9wgOPE4vq09ZUybYVYFtCpFrNBAtGZMJ5uLt3q3FxX3bn4EdfVPxC0v6V+MFPrFNiJfDEU/vpPeYuFH3KM7U7yvthBiXq72mDpW4NK9OwHyhpVh3OH6GQ15WxrPwpOX5ITY27X6QTzU5hY4QbJjBpoRbg/K2AXumr/RDeu2w8Fn+pB3bj//2uU9dIsAOlY1MBB5vz7CBe9lcFdrO6qs+QCVwGS692xpmx2cR/nOumroU0NlJt7Ex7Gk+iFrl9lfnzw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from IA3PR11MB8986.namprd11.prod.outlook.com (2603:10b6:208:577::21)
+ by PH0PR11MB5192.namprd11.prod.outlook.com (2603:10b6:510:3b::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9073.27; Wed, 3 Sep
+ 2025 09:07:37 +0000
+Received: from IA3PR11MB8986.namprd11.prod.outlook.com
+ ([fe80::395e:7a7f:e74c:5408]) by IA3PR11MB8986.namprd11.prod.outlook.com
+ ([fe80::395e:7a7f:e74c:5408%4]) with mapi id 15.20.9094.015; Wed, 3 Sep 2025
+ 09:07:37 +0000
+From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
+To: "mheib@redhat.com" <mheib@redhat.com>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>
+CC: "przemyslawx.patynowski@intel.com" <przemyslawx.patynowski@intel.com>,
+ "jiri@resnulli.us" <jiri@resnulli.us>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>, "horms@kernel.org" <horms@kernel.org>, "Keller,
+ Jacob E" <jacob.e.keller@intel.com>, "Nguyen, Anthony L"
+ <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
+ <przemyslaw.kitszel@intel.com>
+Thread-Topic: [PATCH net-next,2/2] i40e: support generic devlink param
+ "max_mac_per_vf"
+Thread-Index: AQHcHKifPsqylKSysUmMvQJReHnaf7SBKEMw
+Date: Wed, 3 Sep 2025 09:07:37 +0000
+Message-ID: <IA3PR11MB8986F453579349C3518B312CE501A@IA3PR11MB8986.namprd11.prod.outlook.com>
 References: <20250903075810.17149-1-mheib@redhat.com>
+ <20250903075810.17149-2-mheib@redhat.com>
+In-Reply-To: <20250903075810.17149-2-mheib@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: IA3PR11MB8986:EE_|PH0PR11MB5192:EE_
+x-ms-office365-filtering-correlation-id: 61d70c90-7410-4e68-a36d-08ddeac953fd
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|1800799024|376014|366016|38070700018|7053199007; 
+x-microsoft-antispam-message-info: =?us-ascii?Q?1fTbuicoR6zpwg2cu7BTKr8ZFCFtjnjav+e4Iy2NlEwBiw/mVunv4tEuLuSX?=
+ =?us-ascii?Q?V3knWyj27xtu/de+LY1WpToNRyYDcxoNPTBE2N2oqgIKXpnW3irHcOHaNBAg?=
+ =?us-ascii?Q?W7BAhVqZ9XmtDW0eiqCnarKt8a9FMDKaCSIVWc+iXN1rjz8/EuauCfFnq1ln?=
+ =?us-ascii?Q?D2CXnfFP2ku9SFkJyMYDSrMzUrcHAfOfO3NaqQROY+vsixbm7BJFiinCQ72G?=
+ =?us-ascii?Q?dTvcZHAaIs7S4qBBiQ8X0kwYUMTqAk85toWaG9qtYU1oB1XsZmHbp/iIxB0e?=
+ =?us-ascii?Q?hNtJ4NT2EaWhZ3m/MYVQ5SerSXo0Y9lGn6nYuvaXiyBL7fTM1BrMXZD7uf02?=
+ =?us-ascii?Q?EAhX1rniGyMdJeEFz7n5hsAfYhJq2CEF3ZyW0iBcJFGIlVL0zRYfwevo2bAa?=
+ =?us-ascii?Q?CrH1iYsDc6MJXTDYnar8DRdg7p9yhfPmgcQW7oifWdRJfS0M8IHee/oeZlf/?=
+ =?us-ascii?Q?pVbYsrMu/gxbE7bpRWukzEN9tBZ1R9SeL2pUOBt7gNlYLcHRuopn3FL9Y2Ay?=
+ =?us-ascii?Q?Ybk8eByDtOu5cuKjfMwD6SR160rVlB9nuWkcLXQQ45OGLW1iMnB2af8sRw9O?=
+ =?us-ascii?Q?jIiIu5K9334ntixN8GrMe5pN6okCqYAJOBcEhRExV86XxPQ02NRZPE1rRK5p?=
+ =?us-ascii?Q?QH8HOV1WtNsxxFIQqY++JP5emprGGr5/PnalUUyX4YOAaqHWIADca1Hfyf/K?=
+ =?us-ascii?Q?PIGEEDbNn+pZ+f7nt407VoTG3CBRJG0JoU7uFWicONLp8z+3hcZHBTvZIotv?=
+ =?us-ascii?Q?Hwmw/bIo3sHtXaPfwZG/acbRW9ptWqwtYYVrJGIIHF4S9BTbXRlqbbQC3/OO?=
+ =?us-ascii?Q?eqFFoxG7aDqpG35T3Vxibn6EAYy07ymC78GXKcIsoE6MhxT20hGbuA1AM/WQ?=
+ =?us-ascii?Q?b9Tc4Q8hRhlv9wOa4e6sAKprPYOuE6s0qXhwJqvcyB7ruTD2KcsquoojB4Yy?=
+ =?us-ascii?Q?L/HbecWyxjEjb2N4nRFKFTyBLue2qyeuW/ndz6F/y0HDAAyX8BtK4FLYRbgc?=
+ =?us-ascii?Q?sQLAb7XsCqfQF9QawoDEAz4SuYTbDKCP/6p0rPCu8f1Zez7zP+7Ssj2thHE/?=
+ =?us-ascii?Q?dIYq5oscd00WMJ/DtyoD9Hj/+6GYkKumBeyn+E1tkevwJGbZhsDYXuo61lqC?=
+ =?us-ascii?Q?UcmnCz9eaK/GrmEzeDQCCEWl12DL84MPDOBZQ4dOihl6mKBe9JmpK0RQC1IA?=
+ =?us-ascii?Q?g7Qx22F6no8TjrrN8KuT2aqiTwPqmD5x2O9m7kqLnfPg4+mOJ9DubhHFajn7?=
+ =?us-ascii?Q?bUq6ymQshYulkeagYAeLIgI5DNkmIA/eyuzPDzFSRL15ATFUAT/iezKYgQ/q?=
+ =?us-ascii?Q?hHt1Z1Xo633nLbhSv04VSNs9ogJWjiO1COME88fMaK6gD1LQwVIgk9+wib6j?=
+ =?us-ascii?Q?nZ3D/ME2ZyQ4OMd8d8JBOBW0sA6jpR0kdJLzRlzNe2jE9Nn9YnLJLfiFYke8?=
+ =?us-ascii?Q?X7skAprOhPvHC+yeWZcJxztiODgVv5huALW5pGGQyfTJXZp4jIdxCcgUrGFr?=
+ =?us-ascii?Q?4evXZoUUJ5zQuFo=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:IA3PR11MB8986.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(366016)(38070700018)(7053199007); DIR:OUT;
+ SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?Wke2s+nPOWBHinsPRj4yYbFL7CtLbSCgDI6SB8FEU81Ff1PvoxaJFTPlhyhY?=
+ =?us-ascii?Q?N0iRbU8PjcFYMELeI+lukTklUAwQ7G0RKal4/KhqPCr+UXEMyMyNguGtdHGt?=
+ =?us-ascii?Q?WL2Tlc9ehhsiCMRd+NhPRO1w5HRvUz3Ja8/XXpgaYpD5oeVdSya18bOge35K?=
+ =?us-ascii?Q?aSXwFLFH5G8XCOTlLWlm1spZBTcZJtC6B8vkqOSwARJSxf4VJGCbi/ay9G1q?=
+ =?us-ascii?Q?3bnyFUWC368/SoG8AWfYI2pWprwsfgAPlY736vmHvXbf8PE9brQU379l/27O?=
+ =?us-ascii?Q?pKe0jHUeSS3Y0NJNDm1tmG3GufrPq1x/XgGpD+NV64PvggrdLI4nJePBsx4r?=
+ =?us-ascii?Q?L5nx/776E2+3EpBl53Uiow38p4ndJTOJHB1cDoupJ/pWSD6GTh76oBx7NJaI?=
+ =?us-ascii?Q?WaVj4K+P0H0xxOKW46EzosMMQKs1l2+4IX5g01t5Lx4zO6QYAhnETMTqUwzb?=
+ =?us-ascii?Q?0gM8Khkix95rMyaOYvP0txnLyCfpqlcWAxXNxiPwFp5kfSfy+K8eHyQdSMiS?=
+ =?us-ascii?Q?npu4vl5lOqeBBs4Wegga5DCDjy2IaHfRa4Rjaq8xJ8Sb0bc6OyQadbK+10t5?=
+ =?us-ascii?Q?Fn4yKH4wveepvTLoGiv3QMAZ+vXgws0SIpHyvtsX8yydEDaSlsrazRMZSZfZ?=
+ =?us-ascii?Q?LITr42r2pXnsF6iO3dEgpNZyD6RC3HBve1esL2Gqe9XEfxqyWEG+VqYKbC7F?=
+ =?us-ascii?Q?9AoC60xDTT/Ac0W04n6Z5nwd98gjf4Gd0tumRsnWpjX8vozE3FWv+HoS+NKx?=
+ =?us-ascii?Q?8bStOL/mPBxL8vwY5WmTG52A6kZNXQ4dd+Q3RK+K7F0poXGD7l9AqU8T4Okh?=
+ =?us-ascii?Q?z5BrU0epQa+kGuiw5atuhINalHK1Qt+LAYfHQYrwp507rXfqanqvXIkUuWUQ?=
+ =?us-ascii?Q?abnhMWmIwB09cYjjanKlTPdthfgO2IKMkckPxTMpzvWcBB+MLMHjd4I293Cl?=
+ =?us-ascii?Q?YI32xGrRnnhWvu6x9idFhifVqbOECJXpaf3OtEPv0Vqg6uwqqUWGi0nyFrbS?=
+ =?us-ascii?Q?vh3hu+ohBbuzEClBdegRIvfBpW7w6r71PqGIBk8uTME1kZEc6//cF/Korhxd?=
+ =?us-ascii?Q?WJ7DqBYxPR9t2ze9sQB9+Lg/5x1S66vMo6DYv0NG0g30uYS3uWKTd7LWEQSi?=
+ =?us-ascii?Q?tbmuJIkL5G8wW3L1/syAtE2stsjuRDfj5FqKFcVygeYFLS3N6+8LsSPvft+X?=
+ =?us-ascii?Q?gB56fN30NjQDe8Yab5r6DTZlFD4zsLkpqRc2fbvTwmKoIPK4snzbfT2xUZoY?=
+ =?us-ascii?Q?ILFn7UfssaQgfHCD7FBH0v3z2M1Nhef6gBbujS1ofcq0+Z3KQJK6I8boGkM9?=
+ =?us-ascii?Q?OXLu87vosOfknWvmHely+hiVCQzSmktPBqtYzwo4386Yh7sGWQZyDwCa4+Yf?=
+ =?us-ascii?Q?ulM0jeUnSOxhNwy9TASpNFv3tgqOxbvmSM5DMcAo9eNcdyytG5LRwzjsyAou?=
+ =?us-ascii?Q?VkgkD7px7tFIZJSRmI3EEQtTyS97MfEo8UuTHo6HOFZ0NV57oH8vtySqEAO3?=
+ =?us-ascii?Q?nhCPFiXYDDjDp6XoOM/MzuwYCRWzt+Ha+e7x6h4ycXDirn+Hd3fMZGzecnGZ?=
+ =?us-ascii?Q?ZQL4oo4w4juRadG+REcU7jJx0Gwwy2cSaTjSoK5XQAzvucI44IiIWIrgoupE?=
+ =?us-ascii?Q?6w=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Tf7KNREM1peFheBNBspVIhu3Jm7RzVtFuc0fgB4nFkk_1756886333
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1756886335;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=oNKb6p6pocOW/C+6sxZfv3rhI5CAgcckWlo3n+yWenA=;
- b=hURLargnJv0vc+psxNH5jsB2pMV3RzEsUbx56rGO9ekTTOeFEfHeR3nJuO72Q6wVSXzaub
- a475h+t9NuRaID6br6AHEUT+QtV+wfPzZt1NhglMBdle4W8QSKxbHXnYJXoWXJFBPs/31n
- HVL8V1B0PnxbgEJ3K3j957eNy+zLqas=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
- header.s=mimecast20190719 header.b=hURLargn
-Subject: [Intel-wired-lan] [PATCH net-next,
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB8986.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 61d70c90-7410-4e68-a36d-08ddeac953fd
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Sep 2025 09:07:37.4395 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: RbAoKxOue4E6acWbU7lI1vOnXOEDQjS0YtKhbMbQCe9jV6y8KE2dFk6K5ISZkoUdiMWV3aJRWBwyu/bbE+LVv1qbe6yBbcJFWZBPCjNa+IQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5192
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1756890462; x=1788426462;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=r40QFgbTSkr3sgXTws0By5c+aDwFzqdX6/YPvaVFcdk=;
+ b=YM+VniBnDjvLB+AWKb45SidIoCm6y9jA1QC4mk/h7DfrYK2zmkq1mz4n
+ S8YOlEilOWZZywvAgIVagkahs4WSu4UghMplpDsqNtaQJjwRtI6Gy/dBy
+ Bg7F4831zgPUw0rlb47uokxRlYmC2sVj8CQv91/tyyaGXLKiEtjyDMyHz
+ ThrM33dUwzh1IEKIxIP885NGtw0HxY6qPGHqWRn/bad34R7jYdqj6whpo
+ CHzJ6JPX3OKyXBcsqv08Y7yaHfe1454r2myRz8nuFy4AVuN+7Zw2WW2M1
+ q2ChCiEj0S6ymlZQDEQ8rM1fu8txcO3sQyD5QjxPXZNh8MYZ+5N489C9p
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=YM+VniBn
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net-next,
  2/2] i40e: support generic devlink param "max_mac_per_vf"
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -144,215 +233,88 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Mohammad Heib <mheib@redhat.com>
 
-Add support for the new generic devlink runtime parameter
-"max_mac_per_vf", which controls the maximum number of MAC addresses
-a trusted VF can use.
 
-By default (value 0), the driver enforces its internally calculated
-per-VF MAC filter limit. A non-zero value acts as a strict cap,
-overriding the internal calculation.
+> -----Original Message-----
+> From: mheib@redhat.com <mheib@redhat.com>
+> Sent: Wednesday, September 3, 2025 9:58 AM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: przemyslawx.patynowski@intel.com; jiri@resnulli.us;
+> netdev@vger.kernel.org; horms@kernel.org; Keller, Jacob E
+> <jacob.e.keller@intel.com>; Loktionov, Aleksandr
+> <aleksandr.loktionov@intel.com>; Nguyen, Anthony L
+> <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw
+> <przemyslaw.kitszel@intel.com>; Mohammad Heib <mheib@redhat.com>
+> Subject: [PATCH net-next,2/2] i40e: support generic devlink param
+> "max_mac_per_vf"
+>=20
+> From: Mohammad Heib <mheib@redhat.com>
+>=20
+> Add support for the new generic devlink runtime parameter
+> "max_mac_per_vf", which controls the maximum number of MAC addresses a
+> trusted VF can use.
 
-Please note that the configured value is only a theoretical maximum
-and a hardware limits may still apply.
 
-- Previous discussion about this change:
-  https://lore.kernel.org/netdev/20250805134042.2604897-1-dhill@redhat.com
-  https://lore.kernel.org/netdev/20250823094952.182181-1-mheib@redhat.com
+Good day Mohammad,
 
-Signed-off-by: Mohammad Heib <mheib@redhat.com>
----
- Documentation/networking/devlink/i40e.rst     | 35 ++++++++++++++
- drivers/net/ethernet/intel/i40e/i40e.h        |  4 ++
- .../net/ethernet/intel/i40e/i40e_devlink.c    | 48 ++++++++++++++++++-
- .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 28 +++++++----
- 4 files changed, 103 insertions(+), 12 deletions(-)
+Thanks for working on this and for the clear explanation in the commit mess=
+age.
 
-diff --git a/Documentation/networking/devlink/i40e.rst b/Documentation/networking/devlink/i40e.rst
-index d3cb5bb5197e..3052f638fdd5 100644
---- a/Documentation/networking/devlink/i40e.rst
-+++ b/Documentation/networking/devlink/i40e.rst
-@@ -7,6 +7,41 @@ i40e devlink support
- This document describes the devlink features implemented by the ``i40e``
- device driver.
- 
-+Parameters
-+==========
-+
-+.. list-table:: Generic parameters implemented
-+    :widths: 5 5 90
-+
-+    * - Name
-+      - Mode
-+      - Notes
-+    * - ``max_mac_per_vf``
-+      - runtime
-+      - Controls the maximum number of MAC addresses a **trusted VF** can use
-+        on i40e devices.
-+
-+        By default (``0``), the driver enforces its internally calculated per-VF
-+        MAC filter limit, which is based on the number of allocated VFS.
-+
-+        If set to a non-zero value, this parameter acts as a strict cap:
-+        the driver will use the user-provided value instead of its internal
-+        calculation.
-+
-+        **Important notes:**
-+        - MAC filters are a **shared hardware resource** across all VFs.
-+          Setting a high value may cause other VFs to be starved of filters.
-+
-+        - This value is a **theoretical maximum**. The hardware may return
-+          errors when its absolute limit is reached, regardless of the value
-+          set here.
-+
-+        - Only **trusted VFs** are affected; untrusted VFs use a fixed small
-+          limit.
-+
-+        The default value is ``0`` (internal calculation is used).
-+
-+
- Info versions
- =============
- 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
-index 801a57a925da..d2d03db2acec 100644
---- a/drivers/net/ethernet/intel/i40e/i40e.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e.h
-@@ -574,6 +574,10 @@ struct i40e_pf {
- 	struct i40e_vf *vf;
- 	int num_alloc_vfs;	/* actual number of VFs allocated */
- 	u32 vf_aq_requests;
-+	/* If set to non-zero, the device uses this value
-+	 * as maximum number of MAC filters per VF.
-+	 */
-+	u32 max_mac_per_vf;
- 	u32 arq_overflows;	/* Not fatal, possibly indicative of problems */
- 	struct ratelimit_state mdd_message_rate_limit;
- 	/* DCBx/DCBNL capability for PF that indicates
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_devlink.c b/drivers/net/ethernet/intel/i40e/i40e_devlink.c
-index cc4e9e2addb7..cd01e35da94e 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_devlink.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_devlink.c
-@@ -5,6 +5,35 @@
- #include "i40e.h"
- #include "i40e_devlink.h"
- 
-+static int i40e_max_mac_per_vf_set(struct devlink *devlink,
-+				   u32 id,
-+				   struct devlink_param_gset_ctx *ctx,
-+				   struct netlink_ext_ack *extack)
-+{
-+	struct i40e_pf *pf = devlink_priv(devlink);
-+
-+	pf->max_mac_per_vf = ctx->val.vu32;
-+	return 0;
-+}
-+
-+static int i40e_max_mac_per_vf_get(struct devlink *devlink,
-+				   u32 id,
-+				   struct devlink_param_gset_ctx *ctx)
-+{
-+	struct i40e_pf *pf = devlink_priv(devlink);
-+
-+	ctx->val.vu32 = pf->max_mac_per_vf;
-+	return 0;
-+}
-+
-+static const struct devlink_param i40e_dl_params[] = {
-+	DEVLINK_PARAM_GENERIC(MAX_MAC_PER_VF,
-+			      BIT(DEVLINK_PARAM_CMODE_RUNTIME),
-+			      i40e_max_mac_per_vf_get,
-+			      i40e_max_mac_per_vf_set,
-+			      NULL),
-+};
-+
- static void i40e_info_get_dsn(struct i40e_pf *pf, char *buf, size_t len)
- {
- 	u8 dsn[8];
-@@ -165,7 +194,18 @@ void i40e_free_pf(struct i40e_pf *pf)
-  **/
- void i40e_devlink_register(struct i40e_pf *pf)
- {
--	devlink_register(priv_to_devlink(pf));
-+	struct devlink *dl = priv_to_devlink(pf);
-+	struct device *dev = &pf->pdev->dev;
-+	int err;
-+
-+	err = devlink_params_register(dl, i40e_dl_params,
-+				      ARRAY_SIZE(i40e_dl_params));
-+	if (err)
-+		dev_err(dev,
-+			"devlink params register failed with error %d", err);
-+
-+	devlink_register(dl);
-+
- }
- 
- /**
-@@ -176,7 +216,11 @@ void i40e_devlink_register(struct i40e_pf *pf)
-  **/
- void i40e_devlink_unregister(struct i40e_pf *pf)
- {
--	devlink_unregister(priv_to_devlink(pf));
-+	struct devlink *dl = priv_to_devlink(pf);
-+
-+	devlink_unregister(dl);
-+	devlink_params_unregister(dl, i40e_dl_params,
-+				  ARRAY_SIZE(i40e_dl_params));
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-index 081a4526a2f0..e6d90d51221b 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-@@ -2935,19 +2935,26 @@ static inline int i40e_check_vf_permission(struct i40e_vf *vf,
- 		if (!f)
- 			++mac_add_cnt;
- 	}
--
--	/* If this VF is not privileged, then we can't add more than a limited
--	 * number of addresses.
-+	/* Determine the maximum number of MAC addresses this VF may use.
-+	 *
-+	 * - For untrusted VFs: use a fixed small limit.
-+	 *
-+	 * - For trusted VFs: limit is calculated by dividing total MAC
-+	 *  filter pool across all VFs/ports.
- 	 *
--	 * If this VF is trusted, it can use more resources than untrusted.
--	 * However to ensure that every trusted VF has appropriate number of
--	 * resources, divide whole pool of resources per port and then across
--	 * all VFs.
-+	 * - User can override this by devlink param "max_mac_per_vf".
-+	 *   If set its value is used as a strict cap.
-+	 *   Note:
-+	 *    even when overridden, this is a theoretical maximum; hardware
-+	 *    may reject additional MACs if the absolute HW limit is reached.
- 	 */
--	if (!vf_trusted)
-+	if (!vf_trusted) {
- 		mac_add_max = I40E_VC_MAX_MAC_ADDR_PER_VF;
--	else
-+	} else {
- 		mac_add_max = I40E_VC_MAX_MACVLAN_PER_TRUSTED_VF(pf->num_alloc_vfs, hw->num_ports);
-+		if (pf->max_mac_per_vf > 0)
-+			mac_add_max = pf->max_mac_per_vf;
-+	}
- 
- 	/* VF can replace all its filters in one step, in this case mac_add_max
- 	 * will be added as active and another mac_add_max will be in
-@@ -2961,7 +2968,8 @@ static inline int i40e_check_vf_permission(struct i40e_vf *vf,
- 			return -EPERM;
- 		} else {
- 			dev_err(&pf->pdev->dev,
--				"Cannot add more MAC addresses, trusted VF exhausted it's resources\n");
-+				"Cannot add more MAC addresses: trusted VF reached its maximum allowed limit (%d)\n",
-+				mac_add_max);
- 			return -EPERM;
- 		}
- 	}
--- 
-2.50.1
+I have a couple of questions and thoughts:
+
+1) Scope of the parameter
+    The name max_mac_per_vf is a bit ambiguous. From the description,
+    it seems to apply only to trusted VFs, but the name does not make that =
+obvious.
+    Would it make sense to either:
+	- Make the name reflect that (e.g., max_mac_per_trusted_vf), or
+	- Introduce two separate parameters for trusted and untrusted VFs if both =
+cases need to be handled differently?
+
+2)Problem statement
+    It would help to better understand the underlying problem this paramete=
+r is solving.
+    Is the goal to enforce a global cap for all VFs, or to provide operator=
+s with a way
+    to fine-tune per-VF limits? From my perspective, the most important par=
+t is
+    clearly stating the problem and the use case.
+
+3)Granularity
+    If the intent is to give operators flexibility, a single global paramet=
+er might not be enough.
+    For example, limiting the number of MAC filters per specific VF (or hav=
+ing different limits for trusted vs. untrusted)
+    could be a real-world requirement. This patch doesn't seem to address t=
+hat scenario.
+
+Could you share more details about the use case and whether per-VF granular=
+ity was considered?
+
+Thanks again for the work on this. Looking forward to your thoughts.
+
+Best regards,
+Aleksandr
+
+>=20
+> By default (value 0), the driver enforces its internally calculated
+> per-VF MAC filter limit. A non-zero value acts as a strict cap,
+> overriding the internal calculation.
+>=20
+> Please note that the configured value is only a theoretical maximum
+> and a hardware limits may still apply.
+>=20
+> - Previous discussion about this change:
+>   https://lore.kernel.org/netdev/20250805134042.2604897-1-
+> dhill@redhat.com
+>   https://lore.kernel.org/netdev/20250823094952.182181-1-
+> mheib@redhat.com
+>=20
+> Signed-off-by: Mohammad Heib <mheib@redhat.com>
+> ---
+
+...
+
+> --
+> 2.50.1
 
