@@ -1,129 +1,133 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 00629B42961
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Sep 2025 21:02:52 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CBE74B42962
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Sep 2025 21:02:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1BE3961605;
-	Wed,  3 Sep 2025 19:02:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8B1BD4117E;
+	Wed,  3 Sep 2025 19:02:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id upFMtwr5S1tx; Wed,  3 Sep 2025 19:02:49 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id UlKp87-MV5i7; Wed,  3 Sep 2025 19:02:52 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 603D561629
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 053FF41180
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1756926169;
-	bh=YRc9qQhtPu4aJgrWe6QIrpHXB4Ut/KhAlfEhBqE7V54=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=BlAHCbUehVvX/+Z8oDlVsZMKgMy72/73KxUTWENViR9R5U+xFz8AKWU5p4Ke1yeAm
-	 L0YFBDAf4UEHkTQXRvAGNxT2a9/KZyyKdenLMM2V8BDdTXjooCd2CDn2ayno6aGzlB
-	 bOcpFFZ81L7wPw9+AZQP/Ay41m0lWMSus/HYi4ASVErHKhDxwKbvjmWavgSCkeEiJd
-	 CRqU+L7elOlVA207nDqjMD+ZXDeBRK4zvkI6eZ+g7uambP6EsKKmVbhURMk/mBbKgs
-	 lwmLqqJbF2Bx8MQfzN+ZTmRe4y0J/MFvfHlQZbC5NoVQXpjp+vaSPrX8pzWHGzWLNX
-	 dlur7jkdkQLkg==
+	s=default; t=1756926172;
+	bh=vuj6/ynYvZNCMQC+NtWMjW82+TVK2toqfMK12UBW0wg=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=V8b5RlCd4xLRTsUSWU5pQ12vDGEzlfoMhRW6D1hWpecT6iQmyQHU6MIyBl5CxeMeX
+	 LjGDG3uDaGsfLswPlZfM+LfDELZ28oYPIFuooKVvqsN8Ox6bFF8+s896e67omdgmPz
+	 zV1RznLTeGUwQ05pe9etURcMzFmLvZ7WAw2/YYNCxomnFM+ip7d7fYUgehOhmzAtj7
+	 Z6NwYgDSCl3ntm/H8HJB+xbg1InuKEMr+n4vQxEeqwo4/trGxi6DQ2iQTetx5DPWdo
+	 LzdvBVUWKWe0J9AOIs3fzIyclywLDyNlcimMR2x+zZMqYHtTHmqHHUwe1hyQkSEPTb
+	 gQwVSq9uPsd3Q==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 603D561629;
-	Wed,  3 Sep 2025 19:02:49 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 053FF41180;
+	Wed,  3 Sep 2025 19:02:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id C461C111
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Sep 2025 19:02:47 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 77B1E111
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Sep 2025 19:02:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id AAA8B845C6
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Sep 2025 19:02:47 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 69429845C6
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Sep 2025 19:02:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id DA_8XVyUNVrc for <intel-wired-lan@lists.osuosl.org>;
- Wed,  3 Sep 2025 19:02:47 +0000 (UTC)
+ id fWpDaGW5h1SU for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  3 Sep 2025 19:02:49 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
  helo=us-smtp-delivery-124.mimecast.com; envelope-from=mheib@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org D3CE084577
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D3CE084577
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 48E6084577
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 48E6084577
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D3CE084577
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Sep 2025 19:02:46 +0000 (UTC)
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 48E6084577
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Sep 2025 19:02:49 +0000 (UTC)
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-644-pXxd_0JNNhSvDQ7JlaJ4JA-1; Wed, 03 Sep 2025 15:02:44 -0400
-X-MC-Unique: pXxd_0JNNhSvDQ7JlaJ4JA-1
-X-Mimecast-MFC-AGG-ID: pXxd_0JNNhSvDQ7JlaJ4JA_1756926163
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-45b8af0b8deso1154005e9.0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 03 Sep 2025 12:02:44 -0700 (PDT)
+ us-mta-612-lWo_t4efN_S1XDRKlhv8nw-1; Wed, 03 Sep 2025 15:02:46 -0400
+X-MC-Unique: lWo_t4efN_S1XDRKlhv8nw-1
+X-Mimecast-MFC-AGG-ID: lWo_t4efN_S1XDRKlhv8nw_1756926165
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-45b467f5173so1986585e9.3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 03 Sep 2025 12:02:46 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756926163; x=1757530963;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=YRc9qQhtPu4aJgrWe6QIrpHXB4Ut/KhAlfEhBqE7V54=;
- b=tb9RVXvEtk3Q3YfJ2WLQyZSfD2mPAwZJ5MxG3wmJl4XJT48jAjJ3qOOG4jL30aGGb1
- smztI6uoZx6ZDLfNMf7OMgNDAa9rYu7k3dvZb2TTaQXouUufrB6RoqWODgAQJpkjgyfC
- 92uCFF8Ga0AlTtMOWT0+17QFdk1uXtAWirlKqBPF1SjNF80FiRTVO22WKcERb/VKTOyA
- pDabyDGPiOqHWkbXvveJI6hrwtyV24O+/nCCiStqKDZAPdD/suGKBPgKw2SA+rFNsJ0q
- Ss+HG/k20jgSqdXRPZ5n0Uy/8vxNyMCmYk8Cfd+nHFo52WuSR8vFsoDX0wzh5TEB3fPk
- bH2A==
-X-Gm-Message-State: AOJu0Yx5rxVndFqYF3uqo1o5pnzdcFbry6RJKJm6BefGdQ5x8c8rTPft
- KGEKihEwvyJw77409S/VLp6P3NSIPcL97lxBM3wY3xarfzN3H+oExIOC8hvBpvZS6FAK86lbAdl
- FFYS3AdDzzSW3/AflhWMo1YSPyxD4E4YCkP0YCjAH6U2txoq4gPR2RLa4MlQEkdTv/debbK+jKc
- tdmBsk/MEhfBSCQK6xyI1pxo1pK5n7KB6MAWZakE8BKEdFRRFbZbhjXBy8
-X-Gm-Gg: ASbGnctxH+FqCd5VvsirEfXxJTqlR0VKe9nJuVO7VOxSSpYFK8ZX5uajPyu604zoLNu
- Ze3IAO77Dy4l2q6gKycXh81hkoox/qhgInL4TlmOmelPyrxGC8GuBa3IUNTqLcCa5gz3pmubUSc
- OPGOo0jdk86RZa9EV8d2mQ4N8ZuUDNu9T2sFynUZfmM7UXbQW5B8Goptj4Pjzct6TmBhfgnfBkH
- ZajJbROd43btrlc2jsRM07q7P6MAfQEAuTDYhDk/P2hH8ZGvB2zn6ximCIR52brmdbDMuLL5P5K
- o6+QfWMXJG17Cw2kJOyjkUpbELMUo2RM7xbUSv1x3sYRI+Y=
-X-Received: by 2002:a05:600c:3b14:b0:45b:9c93:d237 with SMTP id
- 5b1f17b1804b1-45cfc8a9d32mr15316675e9.14.1756926163012; 
- Wed, 03 Sep 2025 12:02:43 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHlZeBDIpo6ChshSjx9wt03zDRLgVFsNe6iBStfpel8EqkMRCiAdP47I2pV+o8YyqRg2cs+qw==
-X-Received: by 2002:a05:600c:3b14:b0:45b:9c93:d237 with SMTP id
- 5b1f17b1804b1-45cfc8a9d32mr15316305e9.14.1756926162511; 
- Wed, 03 Sep 2025 12:02:42 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1756926165; x=1757530965;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=vuj6/ynYvZNCMQC+NtWMjW82+TVK2toqfMK12UBW0wg=;
+ b=O38GrG3N/gTOWqG9lto3tz4hf1rpUo0cdO3WjRVNBDfbRwzBI/9DdXndV6yX5UOITg
+ V6t1onqsINtw+4WSM0K4n82vYm8QyOIiR6qAX8Lw/KQlDdKiMX/uacjcDNLb2iNfGMh7
+ BKo722LEZdrqb2BsJNDUY53PdkGR6Nu5R1uiD7hQbhSgrJvgBIxrxp1NRHpcmK8SbPzk
+ MXRShox2xG8afODI0Gc8Rc4pCpf8EtgmzkyfkQeDxIux0cIC4xe3N5C9KBTzZRZ1oqiq
+ bTxgLRuQkxOpBXHpOR0f5KkoidketXKXi6ShdgBAoN9fjg865oh4/6w35vLhm407+L6d
+ uWqg==
+X-Gm-Message-State: AOJu0YxCNEpx0gnsvnPHxRBKrS5Vj/9gVDyR9Lp/n4BrOPa6i0TIcRTz
+ Z94QFJSvhIlcGn+oOul9sfWyeKTZo6Om+RAT3MF3AsBDurSp6VopgQPZwoqc80iWdGsqW/tF4fJ
+ 0kSiELNgV7Dq66hIMv9jUrYI8RlTptoXQZPgP0lTQKi/ZgPwKJUwYLaCP4O/GW23Iy0CDJuySQg
+ zH/cnBNboezmXte+byUWPFo8IzaqpaDFFuylNz1090NOCPfp4I7uJo0wo1
+X-Gm-Gg: ASbGnctJO6U50nQn35LPtXHu/cCD+fENG2FtG0fY8TRKBBqQp3UVPi3mCOiOf6ZQo+S
+ 9gmdBpLGKtgwJ2cLHyDW3+8Atu5aQEO7k0XWXqjm7pI/Y45DlKnR7Vy3kjad1b8zC6K7faE2VwQ
+ bAUCAdeAVmhPaI7xzn5POdh8kNw05p39A9h+bbClU0Uapg+y2IOVfDExhrWbB2o1B7vVHIgxJJ6
+ pIOkx3umgNikBqPjWaBoObxWgH3o+h/UnA7VAsU1OT/R6zh0c+yv5B51rQe6WU8wI4yPed+pXwr
+ +KjwzO/lrSUTK1BYgr90bpggJz3odh65kv6Wa+HnkH0HbTQ=
+X-Received: by 2002:a05:600c:4ed3:b0:45c:b549:2241 with SMTP id
+ 5b1f17b1804b1-45cb54923d6mr26593425e9.27.1756926164961; 
+ Wed, 03 Sep 2025 12:02:44 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHLGfe6sRBehSXUl814xMt0UzzbnzlGvmUMrebVIF41OwNzF4h3DaViA7EblSEd/J7Ia4fNPg==
+X-Received: by 2002:a05:600c:4ed3:b0:45c:b549:2241 with SMTP id
+ 5b1f17b1804b1-45cb54923d6mr26593155e9.27.1756926164395; 
+ Wed, 03 Sep 2025 12:02:44 -0700 (PDT)
 Received: from fedora.redhat.com ([2001:4df4:5814:7700:7fb2:f956:4fb9:7689])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-45b6f0c6b99sm331978655e9.4.2025.09.03.12.02.40
+ 5b1f17b1804b1-45b6f0c6b99sm331978655e9.4.2025.09.03.12.02.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 03 Sep 2025 12:02:42 -0700 (PDT)
+ Wed, 03 Sep 2025 12:02:44 -0700 (PDT)
 From: mheib@redhat.com
 To: intel-wired-lan@lists.osuosl.org
 Cc: przemyslawx.patynowski@intel.com, jiri@resnulli.us, netdev@vger.kernel.org,
  horms@kernel.org, jacob.e.keller@intel.com, aleksandr.loktionov@intel.com,
  anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
  Mohammad Heib <mheib@redhat.com>
-Date: Wed,  3 Sep 2025 22:02:28 +0300
-Message-ID: <20250903190229.49193-1-mheib@redhat.com>
+Date: Wed,  3 Sep 2025 22:02:29 +0300
+Message-ID: <20250903190229.49193-2-mheib@redhat.com>
 X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20250903190229.49193-1-mheib@redhat.com>
+References: <20250903190229.49193-1-mheib@redhat.com>
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Aux_mEbbxXU0pL1B4pXwNf4zjqDQtZ85dduf_HDthkg_1756926163
+X-Mimecast-MFC-PROC-ID: yQV_gf2lZQ_lNcNTlr5xPYKTeL0Uc7zS7QmK0R5Ogbw_1756926165
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1756926165;
+ s=mimecast20190719; t=1756926168;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=YRc9qQhtPu4aJgrWe6QIrpHXB4Ut/KhAlfEhBqE7V54=;
- b=JLkzoqY6/40teHygpcjHQHWPok2PbIXgHuvPtqg4ALDMv6p4UxHaYqk/t476BKxOMZH4PL
- y5FoUlXCXNvNUyjzy64GsngM9xVsYVtCnrD7nBpY/+d3IQ0HiPg8unFwC9JHRe7chc2dS0
- rDjMF6kEb3u91aWUYIcmosz9tnN52ps=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=vuj6/ynYvZNCMQC+NtWMjW82+TVK2toqfMK12UBW0wg=;
+ b=SrA2sTv8My4mLx4goI+FmWJQhP7cIGGEk+o5ihPR8arXh/hGb0HLO1Ply0bt6Gjf69tgjH
+ gZ+EGaJqJsiX4iC4yGs3yNpxDAaHpgpAuvqoRrdB9qpqmhLBJjyxmNTTdRAoLwn1JhpbmW
+ +IMAeiaLRbAky+Yh8vPbEOeYcXpIBHY=
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=redhat.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=JLkzoqY6
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=SrA2sTv8
 Subject: [Intel-wired-lan] [PATCH net-next, v2,
- 1/2] devlink: Add new "max_mac_per_vf" generic device param
+ 2/2] i40e: support generic devlink param "max_mac_per_vf"
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -141,81 +145,232 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Mohammad Heib <mheib@redhat.com>
 
-Add a new device generic parameter to controls the maximum
-number of MAC filters allowed per VF.
+Currently the i40e driver enforces its own internally calculated per-VF MAC
+filter limit, derived from the number of allocated VFs and available
+hardware resources. This limit is not configurable by the administrator,
+which makes it difficult to control how many MAC addresses each VF may
+use.
 
-While this parameter is named `max_mac_per_vf`, the exact enforcement
-policy may vary between drivers. For example, i40e applies this limit
-only to trusted VFs, whereas other drivers may choose to apply it
-uniformly across all VFs. The goal is to provide a consistent devlink
-interface, while allowing flexibility for driver-specific behavior.
+This patch adds support for the new generic devlink runtime parameter
+"max_mac_per_vf". On i40e, the parameter affects only trusted VFs. It
+provides administrators with a way to cap the number of MAC addresses a
+VF can use:
 
-For example, to limit a VF to 3 MAC addresses:
- $ devlink dev param set pci/0000:3b:00.0 name max_mac_per_vf \
-        value 3 \
-        cmode runtime
+- When the parameter is set to 0 (default), the driver continues to use
+  its internally calculated limit.
+
+- When set to a non-zero value, the driver applies this value as a strict
+  cap for trusted VFs, overriding the internal calculation.
+
+Important notes:
+
+- The configured value is a theoretical maximum. Hardware limits may
+  still prevent additional MAC addresses from being added, even if the
+  parameter allows it.
+
+- Since MAC filters are a shared hardware resource across all VFs,
+  setting a high value may cause resource contention and starve other
+  VFs.
+
+- This change gives administrators predictable and flexible control over
+  VF resource allocation, while still respecting hardware limitations.
+
+- Previous discussion about this change:
+  https://lore.kernel.org/netdev/20250805134042.2604897-2-dhill@redhat.com
+  https://lore.kernel.org/netdev/20250823094952.182181-1-mheib@redhat.com
 
 Signed-off-by: Mohammad Heib <mheib@redhat.com>
 ---
- Documentation/networking/devlink/devlink-params.rst | 8 ++++++++
- include/net/devlink.h                               | 4 ++++
- net/devlink/param.c                                 | 5 +++++
- 3 files changed, 17 insertions(+)
+ Documentation/networking/devlink/i40e.rst     | 35 ++++++++++++++
+ drivers/net/ethernet/intel/i40e/i40e.h        |  4 ++
+ .../net/ethernet/intel/i40e/i40e_devlink.c    | 48 ++++++++++++++++++-
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 28 +++++++----
+ 4 files changed, 103 insertions(+), 12 deletions(-)
 
-diff --git a/Documentation/networking/devlink/devlink-params.rst b/Documentation/networking/devlink/devlink-params.rst
-index 211b58177e12..2bc9995fd849 100644
---- a/Documentation/networking/devlink/devlink-params.rst
-+++ b/Documentation/networking/devlink/devlink-params.rst
-@@ -143,3 +143,11 @@ own name.
-    * - ``clock_id``
-      - u64
-      - Clock ID used by the device for registering DPLL devices and pins.
-+   * - ``max_mac_per_vf``
-+     - u32
-+     - Controls the maximum number of MAC address filters that can be assigned
-+       to a Virtual Function (VF).
-+       The exact enforcement may depend on driver capabilities. For example,
-+       some drivers may apply this limit only to *trusted* VFs, while others may
-+       apply it to all VFs uniformly. This allows a consistent parameter across
-+       devices while leaving flexibility for driver-specific behavior.
-diff --git a/include/net/devlink.h b/include/net/devlink.h
-index b32c9ceeb81d..dde5dcbca625 100644
---- a/include/net/devlink.h
-+++ b/include/net/devlink.h
-@@ -530,6 +530,7 @@ enum devlink_param_generic_id {
- 	DEVLINK_PARAM_GENERIC_ID_EVENT_EQ_SIZE,
- 	DEVLINK_PARAM_GENERIC_ID_ENABLE_PHC,
- 	DEVLINK_PARAM_GENERIC_ID_CLOCK_ID,
-+	DEVLINK_PARAM_GENERIC_ID_MAX_MAC_PER_VF,
+diff --git a/Documentation/networking/devlink/i40e.rst b/Documentation/networking/devlink/i40e.rst
+index d3cb5bb5197e..3052f638fdd5 100644
+--- a/Documentation/networking/devlink/i40e.rst
++++ b/Documentation/networking/devlink/i40e.rst
+@@ -7,6 +7,41 @@ i40e devlink support
+ This document describes the devlink features implemented by the ``i40e``
+ device driver.
  
- 	/* add new param generic ids above here*/
- 	__DEVLINK_PARAM_GENERIC_ID_MAX,
-@@ -594,6 +595,9 @@ enum devlink_param_generic_id {
- #define DEVLINK_PARAM_GENERIC_CLOCK_ID_NAME "clock_id"
- #define DEVLINK_PARAM_GENERIC_CLOCK_ID_TYPE DEVLINK_PARAM_TYPE_U64
- 
-+#define DEVLINK_PARAM_GENERIC_MAX_MAC_PER_VF_NAME "max_mac_per_vf"
-+#define DEVLINK_PARAM_GENERIC_MAX_MAC_PER_VF_TYPE DEVLINK_PARAM_TYPE_U32
++Parameters
++==========
 +
- #define DEVLINK_PARAM_GENERIC(_id, _cmodes, _get, _set, _validate)	\
- {									\
- 	.id = DEVLINK_PARAM_GENERIC_ID_##_id,				\
-diff --git a/net/devlink/param.c b/net/devlink/param.c
-index 41dcc86cfd94..62fd789ae01c 100644
---- a/net/devlink/param.c
-+++ b/net/devlink/param.c
-@@ -102,6 +102,11 @@ static const struct devlink_param devlink_param_generic[] = {
- 		.name = DEVLINK_PARAM_GENERIC_CLOCK_ID_NAME,
- 		.type = DEVLINK_PARAM_GENERIC_CLOCK_ID_TYPE,
- 	},
-+	{
-+		.id = DEVLINK_PARAM_GENERIC_ID_MAX_MAC_PER_VF,
-+		.name = DEVLINK_PARAM_GENERIC_MAX_MAC_PER_VF_NAME,
-+		.type = DEVLINK_PARAM_GENERIC_MAX_MAC_PER_VF_TYPE,
-+	},
- };
++.. list-table:: Generic parameters implemented
++    :widths: 5 5 90
++
++    * - Name
++      - Mode
++      - Notes
++    * - ``max_mac_per_vf``
++      - runtime
++      - Controls the maximum number of MAC addresses a **trusted VF** can use
++        on i40e devices.
++
++        By default (``0``), the driver enforces its internally calculated per-VF
++        MAC filter limit, which is based on the number of allocated VFS.
++
++        If set to a non-zero value, this parameter acts as a strict cap:
++        the driver will use the user-provided value instead of its internal
++        calculation.
++
++        **Important notes:**
++        - MAC filters are a **shared hardware resource** across all VFs.
++          Setting a high value may cause other VFs to be starved of filters.
++
++        - This value is a **theoretical maximum**. The hardware may return
++          errors when its absolute limit is reached, regardless of the value
++          set here.
++
++        - Only **trusted VFs** are affected; untrusted VFs use a fixed small
++          limit.
++
++        The default value is ``0`` (internal calculation is used).
++
++
+ Info versions
+ =============
  
- static int devlink_param_generic_verify(const struct devlink_param *param)
+diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
+index 801a57a925da..d2d03db2acec 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e.h
++++ b/drivers/net/ethernet/intel/i40e/i40e.h
+@@ -574,6 +574,10 @@ struct i40e_pf {
+ 	struct i40e_vf *vf;
+ 	int num_alloc_vfs;	/* actual number of VFs allocated */
+ 	u32 vf_aq_requests;
++	/* If set to non-zero, the device uses this value
++	 * as maximum number of MAC filters per VF.
++	 */
++	u32 max_mac_per_vf;
+ 	u32 arq_overflows;	/* Not fatal, possibly indicative of problems */
+ 	struct ratelimit_state mdd_message_rate_limit;
+ 	/* DCBx/DCBNL capability for PF that indicates
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_devlink.c b/drivers/net/ethernet/intel/i40e/i40e_devlink.c
+index cc4e9e2addb7..cd01e35da94e 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_devlink.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_devlink.c
+@@ -5,6 +5,35 @@
+ #include "i40e.h"
+ #include "i40e_devlink.h"
+ 
++static int i40e_max_mac_per_vf_set(struct devlink *devlink,
++				   u32 id,
++				   struct devlink_param_gset_ctx *ctx,
++				   struct netlink_ext_ack *extack)
++{
++	struct i40e_pf *pf = devlink_priv(devlink);
++
++	pf->max_mac_per_vf = ctx->val.vu32;
++	return 0;
++}
++
++static int i40e_max_mac_per_vf_get(struct devlink *devlink,
++				   u32 id,
++				   struct devlink_param_gset_ctx *ctx)
++{
++	struct i40e_pf *pf = devlink_priv(devlink);
++
++	ctx->val.vu32 = pf->max_mac_per_vf;
++	return 0;
++}
++
++static const struct devlink_param i40e_dl_params[] = {
++	DEVLINK_PARAM_GENERIC(MAX_MAC_PER_VF,
++			      BIT(DEVLINK_PARAM_CMODE_RUNTIME),
++			      i40e_max_mac_per_vf_get,
++			      i40e_max_mac_per_vf_set,
++			      NULL),
++};
++
+ static void i40e_info_get_dsn(struct i40e_pf *pf, char *buf, size_t len)
+ {
+ 	u8 dsn[8];
+@@ -165,7 +194,18 @@ void i40e_free_pf(struct i40e_pf *pf)
+  **/
+ void i40e_devlink_register(struct i40e_pf *pf)
+ {
+-	devlink_register(priv_to_devlink(pf));
++	struct devlink *dl = priv_to_devlink(pf);
++	struct device *dev = &pf->pdev->dev;
++	int err;
++
++	err = devlink_params_register(dl, i40e_dl_params,
++				      ARRAY_SIZE(i40e_dl_params));
++	if (err)
++		dev_err(dev,
++			"devlink params register failed with error %d", err);
++
++	devlink_register(dl);
++
+ }
+ 
+ /**
+@@ -176,7 +216,11 @@ void i40e_devlink_register(struct i40e_pf *pf)
+  **/
+ void i40e_devlink_unregister(struct i40e_pf *pf)
+ {
+-	devlink_unregister(priv_to_devlink(pf));
++	struct devlink *dl = priv_to_devlink(pf);
++
++	devlink_unregister(dl);
++	devlink_params_unregister(dl, i40e_dl_params,
++				  ARRAY_SIZE(i40e_dl_params));
+ }
+ 
+ /**
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index 081a4526a2f0..e6d90d51221b 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -2935,19 +2935,26 @@ static inline int i40e_check_vf_permission(struct i40e_vf *vf,
+ 		if (!f)
+ 			++mac_add_cnt;
+ 	}
+-
+-	/* If this VF is not privileged, then we can't add more than a limited
+-	 * number of addresses.
++	/* Determine the maximum number of MAC addresses this VF may use.
++	 *
++	 * - For untrusted VFs: use a fixed small limit.
++	 *
++	 * - For trusted VFs: limit is calculated by dividing total MAC
++	 *  filter pool across all VFs/ports.
+ 	 *
+-	 * If this VF is trusted, it can use more resources than untrusted.
+-	 * However to ensure that every trusted VF has appropriate number of
+-	 * resources, divide whole pool of resources per port and then across
+-	 * all VFs.
++	 * - User can override this by devlink param "max_mac_per_vf".
++	 *   If set its value is used as a strict cap.
++	 *   Note:
++	 *    even when overridden, this is a theoretical maximum; hardware
++	 *    may reject additional MACs if the absolute HW limit is reached.
+ 	 */
+-	if (!vf_trusted)
++	if (!vf_trusted) {
+ 		mac_add_max = I40E_VC_MAX_MAC_ADDR_PER_VF;
+-	else
++	} else {
+ 		mac_add_max = I40E_VC_MAX_MACVLAN_PER_TRUSTED_VF(pf->num_alloc_vfs, hw->num_ports);
++		if (pf->max_mac_per_vf > 0)
++			mac_add_max = pf->max_mac_per_vf;
++	}
+ 
+ 	/* VF can replace all its filters in one step, in this case mac_add_max
+ 	 * will be added as active and another mac_add_max will be in
+@@ -2961,7 +2968,8 @@ static inline int i40e_check_vf_permission(struct i40e_vf *vf,
+ 			return -EPERM;
+ 		} else {
+ 			dev_err(&pf->pdev->dev,
+-				"Cannot add more MAC addresses, trusted VF exhausted it's resources\n");
++				"Cannot add more MAC addresses: trusted VF reached its maximum allowed limit (%d)\n",
++				mac_add_max);
+ 			return -EPERM;
+ 		}
+ 	}
 -- 
 2.50.1
 
