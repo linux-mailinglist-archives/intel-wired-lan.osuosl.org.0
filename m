@@ -1,100 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 08E6DB446CD
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Sep 2025 21:58:39 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2269BB44901
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Sep 2025 00:03:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 69AEC406A2;
-	Thu,  4 Sep 2025 19:58:37 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3239D6076A;
+	Thu,  4 Sep 2025 22:03:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id czn2frvOVwRH; Thu,  4 Sep 2025 19:58:36 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 3KG__85XbQWJ; Thu,  4 Sep 2025 22:03:13 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8F24B4069B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DAB986076B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1757015916;
-	bh=79OP3u9fN58ndnO4R9HaP1+Iko8Kfjyfw+IWBj4Z47I=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=m76avN3F3EngYiMacbmLqVmCPv1Mfr2TNLEpmCcusRQ69TQG9Dowpyl09P61FTA2I
-	 WBZ8S9JbZV5rM/gylqhuOmlqSqNlLYtwJO7oOmHLozKJGDq9lDc0TUbVNaIbLExEae
-	 eamJSG/VQTBxmZAXCseRbQXt8XNJvXKG263g0R8Xiil8en+8FbgzAhUWGBQQRy/6Mx
-	 HRvQfMUmAdKmoHRz0lUM9pHatNsuASX5OImHhFhBjMODAZC990o+9oW5BaE4feACLZ
-	 GzGieOW9cnAYEUNcrCvKqIr1YCoap0U8xy/v/15YhMuFJiYCwcaIipZOcQrlmz+ZR9
-	 118K9JAGbbs3w==
+	s=default; t=1757023392;
+	bh=nEy2d+PhbUBm/SHe6lQul2zzKCvx92BIATYkB0I/En4=;
+	h=Date:To:From:Cc:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=cjAZ9ew498SvM7MlTUjBpfWZw8gUL8NVvG1w07R13XGdgFY/QiwrVcqn4ofGnKtau
+	 Dkgv0ffGR2K6Ha9CVmJNhC/F54Kz1+yV4F8bPx9Fpq4+oIjChJSoan9xiZk32UvISI
+	 nyDf/zm4IE+k4PfplFo5SN1j9suBZn+5Vmf62pk25Gbfd1Hd4J2i4dy5zJGdtkO1R5
+	 cyqiP6865XOOpd3+2QUG5KpViwfc+sgs+5yiePX5CUaiPs0zEva6fEoF2UKENaoUCi
+	 IMSnH/PNza3g5at8hOR9Kp4Ql2eAdDD6WzqGBX6tf6x9xdUS5LS0gIi1eBi6hAStEU
+	 /NM402abbObUQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8F24B4069B;
-	Thu,  4 Sep 2025 19:58:36 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DAB986076B;
+	Thu,  4 Sep 2025 22:03:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 273C81E04
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Sep 2025 19:58:34 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 1006DB69
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Sep 2025 22:03:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1852940697
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Sep 2025 19:58:34 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 024B660718
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Sep 2025 22:03:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 6mzBuJaTZFPg for <intel-wired-lan@lists.osuosl.org>;
- Thu,  4 Sep 2025 19:58:33 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
- helo=mgamail.intel.com; envelope-from=tatyana.e.nikolova@intel.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id KTWKgPOgvfWj for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  4 Sep 2025 22:03:11 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=79.135.106.97;
+ helo=mail-10697.protonmail.ch; envelope-from=preindl@protonmail.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 3339640696
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3339640696
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 3339640696
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Sep 2025 19:58:32 +0000 (UTC)
-X-CSE-ConnectionGUID: eoxZMTC2StKJayn/dF/Zww==
-X-CSE-MsgGUID: davGfAIaSgCGkKMazRmG/g==
-X-IronPort-AV: E=McAfee;i="6800,10657,11543"; a="70745158"
-X-IronPort-AV: E=Sophos;i="6.18,239,1751266800"; d="scan'208";a="70745158"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
- by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Sep 2025 12:58:32 -0700
-X-CSE-ConnectionGUID: BSuZao85S0KnGRvPaIOlfw==
-X-CSE-MsgGUID: R0onZi9jT1q0mHcMMXt+ow==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,239,1751266800"; d="scan'208";a="176102768"
-Received: from pthorat-mobl.amr.corp.intel.com (HELO
- soc-PF51RAGT.clients.intel.com) ([10.246.116.180])
- by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Sep 2025 12:58:31 -0700
-From: Tatyana Nikolova <tatyana.e.nikolova@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: przemyslaw.kitszel@intel.com, linux-rdma@vger.kernel.org,
- netdev@vger.kernel.org, jiri@resnulli.us, anthony.l.nguyen@intel.com,
- Tatyana Nikolova <tatyana.e.nikolova@intel.com>
-Date: Thu,  4 Sep 2025 14:57:19 -0500
-Message-ID: <20250904195719.371-1-tatyana.e.nikolova@intel.com>
-X-Mailer: git-send-email 2.45.1
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org BDBA86070B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BDBA86070B
+Received: from mail-10697.protonmail.ch (mail-10697.protonmail.ch
+ [79.135.106.97])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id BDBA86070B
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Sep 2025 22:03:10 +0000 (UTC)
+Date: Thu, 04 Sep 2025 22:03:00 +0000
+To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+From: Preindl <preindl@protonmail.com>
+Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Message-ID: <8zW6rn6ENKd_scHL34Qx4e0KGlekfpSuHxVId5nBR-S9-BYI0v-ozzGBv7LcR3KGlwTzDTEDhhhbkmwmM5GhmvVgEC3zf6YYoraQruWmfNU=@protonmail.com>
+In-Reply-To: <re7_7zYnqyVPXjEEGmJepF9vbNV8u8ul2Cspq1ZrUmrc3gXuEgwm9Wi8Jk6kY63HpRYK3hJzyt0N0f-430xyADYxkeyaR3vAb-YVhsE0u6k=@protonmail.com>
+References: <re7_7zYnqyVPXjEEGmJepF9vbNV8u8ul2Cspq1ZrUmrc3gXuEgwm9Wi8Jk6kY63HpRYK3hJzyt0N0f-430xyADYxkeyaR3vAb-YVhsE0u6k=@protonmail.com>
+Feedback-ID: 18974102:user:proton
+X-Pm-Message-ID: e8fd820a1fd838b131cbc56d46f4c8c4c749f1ca
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1757015913; x=1788551913;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=PixqzQGGIrRfX7IIdPxeApKscwbKNdTHmf7PTPgFrow=;
- b=SWwshMza7JWTMOdrWzZuRcX0gqisFChHmhtYHSyaKSa7ZSKYx15w7/dR
- JaikbTFef+xti7T9Qe5AXvLuMGEnY2dMQZkl3VWzp5gjTFR6Yea+KIjXW
- vjn7I09YjbIoX6QcPcnfa68Avjd5V4dxKzcfW6Pv1M1Po84j9p0ZIvv2h
- z7Zpp8aoC4Lr4QXR1LvQ0apXumZKMzO1sfqQaRwF/VSwfrJaEC5gOFkPK
- pKYgfsikDfUkCuqWHTDSs6yf53ixTwB/q/YgDpniJbjWbCRUmfB8sdja/
- KNpwNQyg+5TJSjZ9VPx0WXUcfLTslY29Rglc+1XsPV0ZmuY5gtcZqeD6a
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+Content-Type: multipart/alternative;
+ boundary="b1=_lr1DPyOJVyKjpZR7bI9s7kOEc9ge4iesK3EQt1cqg"
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=protonmail.com; 
+ s=protonmail3; t=1757023385; x=1757282585;
+ bh=nEy2d+PhbUBm/SHe6lQul2zzKCvx92BIATYkB0I/En4=;
+ h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+ Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+ Message-ID:BIMI-Selector;
+ b=PYq/3aL7oGAoKV5JYytr7A4e+PdCQqICuunL6t1bqF/fGN/DT7H1IonNQVbr4Mj/8
+ TTYHyXFZb01e2dQriz+I/Hlxix+Aor7tF+gqNdrcwQmZt7QQ/YcCAAvLSs9rcqBw4B
+ QiiO53mnbFfRDEP1FEv+Mz4yPhKsDRPDxtX556MQha+w0Rnt3rXtLke5+TAO3juDSL
+ crQuQaaBCzCVLxZgMov4NrJvGekAVJhdiCFjfxBgH9ioBT8V78i/DJ4Cg0hxFdMdRT
+ 1xZ9a2DSrOSY9MREG2cTZkMSBZo+zJ4y0x67wEtXKcwT1dKBaBzSGUv4fGitJ1+vvi
+ 4RoFU2uzrgPxA==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=protonmail.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=SWwshMza
-Subject: [Intel-wired-lan] [iwl-next] ice,
- irdma: Add rdma_qp_limits_sel devlink parameter for irdma
+ unprotected) header.d=protonmail.com header.i=@protonmail.com
+ header.a=rsa-sha256 header.s=protonmail3 header.b=PYq/3aL7
+Subject: Re: [Intel-wired-lan] [BUG] igc: ASPM causes I226-V NIC to drop
+ after idle
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -110,289 +99,136 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add a devlink parameter to switch between different QP resource profiles
-(max number of QPs) supported by irdma for Intel Ethernet 800 devices. The
-rdma_qp_limits_sel is translated into an index in the rsrc_limits_table to
-select a power of two number between 1 and 256 for max supported QPs (1K-256K).
-To reduce the irdma memory footprint, set the rdma_qp_limits_sel default value
-to 1 (max 1K QPs).
+--b1=_lr1DPyOJVyKjpZR7bI9s7kOEc9ge4iesK3EQt1cqg
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: base64
 
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Signed-off-by: Tatyana Nikolova <tatyana.e.nikolova@intel.com>
----
-Since the changes to irdma are minor, this is targeted to iwl-next/net-next.
+SGVsbG8sCgpJJ2QgbGlrZSB0byBhZGQgdGhlIGZvbGxvd2luZyBpbmZvcm1hdGlvbi9jb3JyZWN0
+aW9uLgoKVGhlIGlzc3VlIGNhbiBiZSB0cmFjZWQgdG8gdGhlIGZvbGxvd2luZyBlcnJvciB0aGF0
+IGFwcGVhcnMgdHlwaWNhbGx5IGFmdGVyIGEgcGVyaW9kIG9mIGluYWN0aXZpdHkKaWdjOiBGYWls
+ZWQgdG8gcmVhZCByZWcgMHhjMDMwIQoKVGhlIGtlcm5lbCBwYXJhbWV0ZXIgcGNpZV9hc3BtPW9m
+ZiBkb2VzIG5vdCBzb2x2ZSB0aGUgaXNzdWUuCkkgYW0gdGVzdGluZyBub3cgdGhlIHBhcmFtZXRl
+cnMgcGNpZV9wb3J0X3BtPW9mZiBhbmQgcGNpZV9hc3BtLnBvbGljeT1wZXJmb3JtYW5jZSB0aGF0
+IGFyZSBvZnRlbiByZXBvcnRlZCB0byBtaXRpZ2F0ZSB0aGUgYWJvdmUgZXJyb3IuCgpUaGlzIGlz
+c3VlIHNlZW1zIHRvIGJlIG1vcmUgY29tbW9uIHdpdGggQXN1cyBtb3RoZXJib2FyZHMgYW5kIG1h
+eSBiZSByZXByb2R1Y2libGUgd2l0aCBJbnRlbCBJMjI1LVYgTklDcywgc2VlIGFsc28KaHR0cHM6
+Ly9iYnMuYXJjaGxpbnV4Lm9yZy92aWV3dG9waWMucGhwP2lkPTI4ODM3MQpodHRwczovL2ZvcnVt
+LnByb3htb3guY29tL3RocmVhZHMvbmV0d29yay1jYXJkLWRyb3AtaWdjLTAwMDAtMDktMDAtMC1l
+bm8xLXBjaWUtbGluay1sb3N0LjEyMTI5NS9odHRwczovL3d3dy5yZWRkaXQuY29tL3IvYnVpbGRh
+cGMvY29tbWVudHMveHlwbjFtL25ldHdvcmtfY2FyZF9pbnRlbF9ldGhlcm5ldF9jb250cm9sbGVy
+X2kyMjV2X2lnYy8KCk9uIE1vbmRheSwgU2VwdGVtYmVyIDFzdCwgMjAyNSBhdCA0OjQ1IFBNLCBQ
+cmVpbmRsIDxwcmVpbmRsQHByb3Rvbm1haWwuY29tPiB3cm90ZToKCj4gSGVsbG8sCj4KPiBJIGFt
+IHNlZWluZyBhbiBpc3N1ZSB3aXRoIHRoZSBJbnRlbCBJMjI2LVYgRXRoZXJuZXQgY29udHJvbGxl
+ciBvbiBhbiBBU1VTIFByb0FydCBYODcwRSBtb3RoZXJib2FyZC4gV2hlbiBQQ0llIEFjdGl2ZSBT
+dGF0ZSBQb3dlciBNYW5hZ2VtZW50IChBU1BNKSBpcyBlbmFibGVkLCB0aGUgTklDIGJlY29tZXMg
+dW5hdmFpbGFibGUgYWZ0ZXIgYSBwZXJpb2Qgb2YgaW5hY3Rpdml0eS4gRGlzYWJsaW5nIEFTUE0g
+YXZvaWRzIHRoZSBwcm9ibGVtLgo+Cj4gVGhpcyBsb29rcyBsaWtlIGEgaGFyZHdhcmUvZmlybXdh
+cmUgaXNzdWUsIGJ1dCBzaW5jZSBpdCBpcyBlYXNpbHkgcmVwcm9kdWNpYmxlICh0aGVyZSBhcmUg
+c2V2ZXJhbCBmb3J1bSBkaXNjdXNzaW9ucyksIGl0IG1heSB3YXJyYW50IGEga2VybmVsIHF1aXJr
+IGluIHRoZSBpZ2MgZHJpdmVyIHRvIGRpc2FibGUgQVNQTSBmb3IgdGhpcyBmaXJtd2FyZSAob3Ig
+ZGV2aWNlPykuCj4KPiAtLS0KPgo+IEhhcmR3YXJlOgo+IC0gTW90aGVyYm9hcmQ6IEFTVVMgUHJv
+QXJ0IFg4NzBFCj4gLSBOSUM6IEludGVsIEkyMjYtViBbODA4NjoxMjVjXSAocmV2IDA2KQo+IC0g
+U3Vic3lzdGVtOiBbMTA0Mzo4ODY3XQo+IC0gRmlybXdhcmUgdmVyc2lvbiAoZnJvbSBldGh0b29s
+IC1pKTogMjAyMzo4ODlkCj4KPiBTb2Z0d2FyZToKPiAtIE9TOiBEZWJpYW4gR05VL0xpbnV4IDEz
+ICh0cml4aWUpCj4gLSBLZXJuZWw6IExpbnV4IDYuMTIuNDErZGViMTMtYW1kNjQKPiAtIERyaXZl
+cjogaWdjCj4KPiAtLS0KPgo+IFN0ZXBzIHRvIHJlcHJvZHVjZSAobG9ncyBhdHRhY2hlZCkKPiAx
+LiBCb290IHN5c3RlbSB3aXRoIGRlZmF1bHQgUENJZSBBU1BNIGVuYWJsZWQuCj4gMi4gTGVhdmUg
+dGhlIGJveC9OSUMgaWRsZSBmb3Igc29tZSB0aW1lLgo+IDMuIE5JQyBkaXNhcHBlYXJzIChyZWFw
+cGVhcnMgYWZ0ZXIgcmVib290KQo+Cj4gV29ya2Fyb3VuZDoKPiAtIEJvb3Rpbmcgd2l0aCBwY2ll
+X2FzcG09b2ZmIChvciBkaXNhYmxpbmcgQVNQTSBpbiBCSU9TKSBrZWVwcyB0aGUgTklDIHN0YWJs
+ZS4KPgo+IEV4cGVjdGVkOgo+IC0gTklDIHNob3VsZCByZW1haW4gZnVuY3Rpb25hbCB3aXRoIEFT
+UE0gZW5hYmxlZC4KPgo+IEFjdHVhbDoKPiAtIE5JQyBjcmFzaGVzIGF0L2FmdGVyIGlkbGUgd2hl
+biBBU1BNIGlzIGVuYWJsZWQuCj4KPiAtLS0KPgo+IFBsZWFzZSBsZXQgbWUga25vdyBpZiBhZGRp
+dGlvbmFsIGluZm9ybWF0aW9uIG9yIHRlc3Rpbmcgd291bGQgaGVscC4=
 
- Documentation/networking/devlink/ice.rst      |  29 +++++
- drivers/infiniband/hw/irdma/hw.c              |  15 ++-
- drivers/infiniband/hw/irdma/main.c            |   2 +-
- .../net/ethernet/intel/ice/devlink/devlink.c  | 110 ++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_idc.c      |   4 +
- include/linux/net/intel/iidc_rdma_ice.h       |   1 +
- 6 files changed, 154 insertions(+), 7 deletions(-)
+--b1=_lr1DPyOJVyKjpZR7bI9s7kOEc9ge4iesK3EQt1cqg
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: base64
 
-diff --git a/Documentation/networking/devlink/ice.rst b/Documentation/networking/devlink/ice.rst
-index 792e9f8c846a..0514815fcf9c 100644
---- a/Documentation/networking/devlink/ice.rst
-+++ b/Documentation/networking/devlink/ice.rst
-@@ -104,6 +104,35 @@ Parameters
-         one port capacity at cost of the another. User needs to disable
-         local forwarding on one of the ports in order have increased capacity
-         on the ``prioritized`` port.
-+    * - ``rdma_qp_limits_sel``
-+      - runtime
-+      - The RDMA QP limits selector controls the max Queue Pairs (QPs) resources
-+        which could be allocated per device. Depending on the available memory in
-+        the system the actual allocated QP number could be smaller. QPs are evenly
-+        distributed across active ports, so more ports mean fewer QPs per port.
-+        Supported values for the QP limits selector are powers of 2, less or equal
-+        to 256 and each value denotes a number of thousands QPs.
-+
-+        ``1`` - 1K QPs
-+
-+        ``2`` - 2K QPs
-+
-+        ``4`` - 4K QPs
-+
-+        ``8`` - 8K QPs
-+
-+        ``16`` - 16K QPs
-+
-+        ``32`` - 32K QPs
-+
-+        ``64`` - 64K QPs
-+
-+        ``128`` - 128K QPs
-+
-+        ``256`` - 256K QPs
-+
-+        Default value of ``rdma_qp_limits_sel`` parameter is ``1`` allowing 1K QPs to
-+        maintain a low memory footprint.
- 
- Info versions
- =============
-diff --git a/drivers/infiniband/hw/irdma/hw.c b/drivers/infiniband/hw/irdma/hw.c
-index 69ce1862eabe..de83a281aaab 100644
---- a/drivers/infiniband/hw/irdma/hw.c
-+++ b/drivers/infiniband/hw/irdma/hw.c
-@@ -4,27 +4,30 @@
- 
- static struct irdma_rsrc_limits rsrc_limits_table[] = {
- 	[0] = {
--		.qplimit = SZ_128,
-+		.qplimit = SZ_1K,
- 	},
- 	[1] = {
--		.qplimit = SZ_1K,
-+		.qplimit = SZ_2K,
- 	},
- 	[2] = {
--		.qplimit = SZ_2K,
-+		.qplimit = SZ_4K,
- 	},
- 	[3] = {
--		.qplimit = SZ_4K,
-+		.qplimit = SZ_8K,
- 	},
- 	[4] = {
- 		.qplimit = SZ_16K,
- 	},
- 	[5] = {
--		.qplimit = SZ_64K,
-+		.qplimit = SZ_32K,
- 	},
- 	[6] = {
--		.qplimit = SZ_128K,
-+		.qplimit = SZ_64K,
- 	},
- 	[7] = {
-+		.qplimit = SZ_128K,
-+	},
-+	[8] = {
- 		.qplimit = SZ_256K,
- 	},
- };
-diff --git a/drivers/infiniband/hw/irdma/main.c b/drivers/infiniband/hw/irdma/main.c
-index 1e840bbd619d..9d8e6e940667 100644
---- a/drivers/infiniband/hw/irdma/main.c
-+++ b/drivers/infiniband/hw/irdma/main.c
-@@ -285,7 +285,7 @@ static void irdma_fill_device_info(struct irdma_device *iwdev,
- 	rf->rsrc_profile = IRDMA_HMC_PROFILE_DEFAULT;
- 	rf->rst_to = IRDMA_RST_TIMEOUT_HZ;
- 	rf->gen_ops.request_reset = irdma_request_reset;
--	rf->limits_sel = 7;
-+	rf->limits_sel = iidc_priv->rdma_qp_limits_sel;
- 	rf->iwdev = iwdev;
- 
- 	mutex_init(&iwdev->ah_tbl_lock);
-diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink.c b/drivers/net/ethernet/intel/ice/devlink/devlink.c
-index fb2de521731a..19f7f2d77812 100644
---- a/drivers/net/ethernet/intel/ice/devlink/devlink.c
-+++ b/drivers/net/ethernet/intel/ice/devlink/devlink.c
-@@ -1461,6 +1461,108 @@ ice_devlink_enable_iw_validate(struct devlink *devlink, u32 id,
- 	return 0;
- }
- 
-+/**
-+ * ice_devlink_rdma_qp_limits_get - Get RDMA QP limits select parameter
-+ * @devlink: pointer to the devlink instance
-+ * @__unused: the parameter ID
-+ * @ctx: context to store the parameter value
-+ *
-+ * Return: zero on success and a negative value on failure.
-+ */
-+static int ice_devlink_rdma_qp_limits_get(struct devlink *devlink, u32 __unused,
-+					   struct devlink_param_gset_ctx *ctx)
-+{
-+	struct ice_pf *pf = devlink_priv(devlink);
-+	struct iidc_rdma_priv_dev_info *privd;
-+	struct iidc_rdma_core_dev_info *cdev;
-+
-+	cdev = pf->cdev_info;
-+	if (!cdev)
-+		return -ENODEV;
-+
-+	privd = cdev->iidc_priv;
-+	ctx->val.vu32 = 1 << privd->rdma_qp_limits_sel;
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_devlink_rdma_qp_limits_set - Set RDMA QP limits select parameter
-+ * @devlink: pointer to the devlink instance
-+ * @__unused: the parameter ID
-+ * @ctx: context to get the parameter value
-+ * @extack: netlink extended ACK structure
-+ *
-+ * Return: zero on success and a negative value on failure.
-+ */
-+static int ice_devlink_rdma_qp_limits_set(struct devlink *devlink, u32 __unused,
-+					   struct devlink_param_gset_ctx *ctx,
-+					   struct netlink_ext_ack *extack)
-+{
-+	struct ice_pf *pf = devlink_priv(devlink);
-+	struct iidc_rdma_priv_dev_info *privd;
-+	struct iidc_rdma_core_dev_info *cdev;
-+	u32 qp_limits, prev_qp_limits;
-+	int ret;
-+
-+	cdev = pf->cdev_info;
-+	if (!cdev)
-+		return -ENODEV;
-+
-+	privd = cdev->iidc_priv;
-+	prev_qp_limits = privd->rdma_qp_limits_sel;
-+	qp_limits = ilog2(ctx->val.vu32);
-+
-+	if (qp_limits == prev_qp_limits)
-+		return 0;
-+
-+	ice_unplug_aux_dev(pf);
-+	privd->rdma_qp_limits_sel = qp_limits;
-+	ret = ice_plug_aux_dev(pf);
-+	if (ret) {
-+		int err;
-+
-+		privd->rdma_qp_limits_sel = prev_qp_limits;
-+		NL_SET_ERR_MSG_MOD(extack, "Unable to change rdma_qp_limits_sel value");
-+		err = ice_plug_aux_dev(pf);
-+		if (err)
-+			NL_SET_ERR_MSG_MOD(extack,
-+					   "Unable to restore RDMA capabilities for this function");
-+	}
-+
-+	return ret;
-+}
-+
-+/**
-+ * ice_devlink_rdma_limits_sel_validate - Validate RDMA QP limits select parameter
-+ * @devlink: pointer to devlink instance
-+ * @__unused: the parameter ID
-+ * @val: value to validate
-+ * @extack: netlink extended ACK structure
-+ *
-+ * Supported values are <= 256 and power of 2
-+ *
-+ * Return: zero when passed parameter value is supported or a negative value on
-+ * error.
-+ */
-+static int ice_devlink_rdma_qp_limits_validate(struct devlink *devlink, u32 __unused,
-+						union devlink_param_value val,
-+						struct netlink_ext_ack *extack)
-+{
-+	struct ice_pf *pf = devlink_priv(devlink);
-+
-+        if (!test_bit(ICE_FLAG_RDMA_ENA, pf->flags))
-+		return -EOPNOTSUPP;
-+
-+	if (!is_power_of_2(val.vu32) || val.vu32 > 256) {
-+		NL_SET_ERR_MSG_MOD(extack,
-+				   "RDMA QP Limits Select value should be a power of 2 and <= 256");
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
- #define DEVLINK_LOCAL_FWD_DISABLED_STR "disabled"
- #define DEVLINK_LOCAL_FWD_ENABLED_STR "enabled"
- #define DEVLINK_LOCAL_FWD_PRIORITIZED_STR "prioritized"
-@@ -1621,6 +1723,7 @@ enum ice_param_id {
- 	ICE_DEVLINK_PARAM_ID_BASE = DEVLINK_PARAM_GENERIC_ID_MAX,
- 	ICE_DEVLINK_PARAM_ID_TX_SCHED_LAYERS,
- 	ICE_DEVLINK_PARAM_ID_LOCAL_FWD,
-+	ICE_DEVLINK_PARAM_ID_RDMA_QP_LIMITS_SEL,
- };
- 
- static const struct devlink_param ice_dvl_rdma_params[] = {
-@@ -1634,6 +1737,13 @@ static const struct devlink_param ice_dvl_rdma_params[] = {
- 			      ice_devlink_enable_iw_validate),
- 	DEVLINK_PARAM_GENERIC(ENABLE_RDMA, BIT(DEVLINK_PARAM_CMODE_DRIVERINIT),
- 			      NULL, NULL, ice_devlink_enable_rdma_validate),
-+	DEVLINK_PARAM_DRIVER(ICE_DEVLINK_PARAM_ID_RDMA_QP_LIMITS_SEL,
-+			     "rdma_qp_limits_sel",
-+			     DEVLINK_PARAM_TYPE_U32,
-+			     BIT(DEVLINK_PARAM_CMODE_RUNTIME),
-+			     ice_devlink_rdma_qp_limits_get,
-+			     ice_devlink_rdma_qp_limits_set,
-+			     ice_devlink_rdma_qp_limits_validate),
- };
- 
- static const struct devlink_param ice_dvl_msix_params[] = {
-diff --git a/drivers/net/ethernet/intel/ice/ice_idc.c b/drivers/net/ethernet/intel/ice/ice_idc.c
-index 6ab53e430f91..6a4e1ac1804b 100644
---- a/drivers/net/ethernet/intel/ice/ice_idc.c
-+++ b/drivers/net/ethernet/intel/ice/ice_idc.c
-@@ -358,6 +358,8 @@ void ice_unplug_aux_dev(struct ice_pf *pf)
- 	}
- }
- 
-+#define ICE_RDMA_QP_LIMITS_SELECT_DFLT  0
-+
- /**
-  * ice_init_rdma - initializes PF for RDMA use
-  * @pf: ptr to ice_pf
-@@ -403,6 +405,8 @@ int ice_init_rdma(struct ice_pf *pf)
- 	privd->vport_id = pf->vsi[0]->vsi_num;
- 
- 	pf->cdev_info->rdma_protocol |= IIDC_RDMA_PROTOCOL_ROCEV2;
-+	privd->rdma_qp_limits_sel = ICE_RDMA_QP_LIMITS_SELECT_DFLT;
-+
- 	ice_setup_dcb_qos_info(pf, &privd->qos_info);
- 	ret = ice_plug_aux_dev(pf);
- 	if (ret)
-diff --git a/include/linux/net/intel/iidc_rdma_ice.h b/include/linux/net/intel/iidc_rdma_ice.h
-index b40eed0e13fe..cb60797427c4 100644
---- a/include/linux/net/intel/iidc_rdma_ice.h
-+++ b/include/linux/net/intel/iidc_rdma_ice.h
-@@ -52,6 +52,7 @@ struct iidc_rdma_priv_dev_info {
- 	struct net_device *netdev;
- 	struct iidc_rdma_qos_params qos_info;
- 	u8 __iomem *hw_addr;
-+	u8 rdma_qp_limits_sel;
- };
- 
- int ice_add_rdma_qset(struct iidc_rdma_core_dev_info *cdev,
--- 
-2.37.3
+PGRpdiBzdHlsZT0iZm9udC1mYW1pbHk6IEFyaWFsLCBzYW5zLXNlcmlmOyBmb250LXNpemU6IDE0
+cHg7Ij5IZWxsbyw8L2Rpdj48ZGl2IHN0eWxlPSJmb250LWZhbWlseTogQXJpYWwsIHNhbnMtc2Vy
+aWY7IGZvbnQtc2l6ZTogMTRweDsiPjxicj48L2Rpdj48ZGl2IHN0eWxlPSJmb250LWZhbWlseTog
+QXJpYWwsIHNhbnMtc2VyaWY7IGZvbnQtc2l6ZTogMTRweDsiPkknZCBsaWtlIHRvIGFkZCB0aGUg
+Zm9sbG93aW5nIGluZm9ybWF0aW9uL2NvcnJlY3Rpb24uPC9kaXY+PGRpdiBzdHlsZT0iZm9udC1m
+YW1pbHk6IEFyaWFsLCBzYW5zLXNlcmlmOyBmb250LXNpemU6IDE0cHg7Ij48YnI+PC9kaXY+PGRp
+diBzdHlsZT0iZm9udC1mYW1pbHk6IEFyaWFsLCBzYW5zLXNlcmlmOyBmb250LXNpemU6IDE0cHg7
+Ij5UaGUgaXNzdWUgYzxzcGFuPmFuIGJlIHRyYWNlZCB0byB0aGUgZm9sbG93aW5nIGVycm9yIDxz
+cGFuPnRoYXQgYXBwZWFycyB0eXBpY2FsbHkgYWZ0ZXIgYSBwZXJpb2Qgb2YgaW5hY3Rpdml0eTwv
+c3Bhbj48L3NwYW4+PGJyPjxzcGFuPmlnYzogRmFpbGVkIHRvIHJlYWQgcmVnIDB4YzAzMCE8L3Nw
+YW4+PC9kaXY+PGRpdiBzdHlsZT0iZm9udC1mYW1pbHk6IEFyaWFsLCBzYW5zLXNlcmlmOyBmb250
+LXNpemU6IDE0cHg7Ij48c3Bhbj48YnI+PC9zcGFuPjwvZGl2PjxkaXYgc3R5bGU9ImZvbnQtZmFt
+aWx5OiBBcmlhbCwgc2Fucy1zZXJpZjsgZm9udC1zaXplOiAxNHB4OyI+PHNwYW4+VGhlIGtlcm5l
+bCBwYXJhbWV0ZXImbmJzcDtwY2llX2FzcG09b2ZmIGRvZXMgbm90IHNvbHZlIHRoZSBpc3N1ZS48
+L3NwYW4+PC9kaXY+PGRpdiBzdHlsZT0iZm9udC1mYW1pbHk6IEFyaWFsLCBzYW5zLXNlcmlmOyBm
+b250LXNpemU6IDE0cHg7Ij48c3Bhbj5JIGFtIHRlc3Rpbmcgbm93IHRoZSBwYXJhbWV0ZXJzJm5i
+c3A7PHNwYW4+cGNpZV9wb3J0X3BtPW9mZiBhbmQgcGNpZV9hc3BtLnBvbGljeT1wZXJmb3JtYW5j
+ZSB0aGF0IGFyZSBvZnRlbiByZXBvcnRlZCB0byBtaXRpZ2F0ZSB0aGUgYWJvdmUgZXJyb3IuPC9z
+cGFuPjwvc3Bhbj48L2Rpdj48ZGl2IHN0eWxlPSJmb250LWZhbWlseTogQXJpYWwsIHNhbnMtc2Vy
+aWY7IGZvbnQtc2l6ZTogMTRweDsiPjxicj48L2Rpdj48ZGl2IHN0eWxlPSJmb250LWZhbWlseTog
+QXJpYWwsIHNhbnMtc2VyaWY7IGZvbnQtc2l6ZTogMTRweDsiPlRoaXMgaXNzdWUgc2VlbXMgdG8g
+YmUgbW9yZSBjb21tb24gd2l0aCBBc3VzIG1vdGhlcmJvYXJkcyBhbmQgbWF5IGJlIHJlcHJvZHVj
+aWJsZSB3aXRoIEludGVsIEkyMjUtViBOSUNzLCBzZWUgYWxzbzwvZGl2PjxkaXYgc3R5bGU9ImZv
+bnQtZmFtaWx5OiBBcmlhbCwgc2Fucy1zZXJpZjsgZm9udC1zaXplOiAxNHB4OyI+PHNwYW4+PGEg
+aHJlZj0iaHR0cHM6Ly9iYnMuYXJjaGxpbnV4Lm9yZy92aWV3dG9waWMucGhwP2lkPTI4ODM3MSIg
+dGFyZ2V0PSJfYmxhbmsiIGRhdGEtc2FmZXJlZGlyZWN0dXJsPSJodHRwczovL3d3dy5nb29nbGUu
+Y29tL3VybD9xPWh0dHBzOi8vYmJzLmFyY2hsaW51eC5vcmcvdmlld3RvcGljLnBocD9pZCUzRDI4
+ODM3MSZhbXA7c291cmNlPWdtYWlsJmFtcDt1c3Q9MTc1NzEwODMwNjE5NDAwMCZhbXA7dXNnPUFP
+dlZhdzNPdXlKUE5OUVRBQWVpQ0p5dW5aNk8iPmh0dHBzOi8vYmJzLmFyY2hsaW51eC5vcmcvPHdi
+cj52aWV3dG9waWMucGhwP2lkPTI4ODM3MTwvYT48L3NwYW4+PGRpdj48YSBocmVmPSJodHRwczov
+L2ZvcnVtLnByb3htb3guY29tL3RocmVhZHMvbmV0d29yay1jYXJkLWRyb3AtaWdjLTAwMDAtMDkt
+MDAtMC1lbm8xLXBjaWUtbGluay1sb3N0LjEyMTI5NS8iIHRhcmdldD0iX2JsYW5rIiBkYXRhLXNh
+ZmVyZWRpcmVjdHVybD0iaHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS91cmw/cT1odHRwczovL2ZvcnVt
+LnByb3htb3guY29tL3RocmVhZHMvbmV0d29yay1jYXJkLWRyb3AtaWdjLTAwMDAtMDktMDAtMC1l
+bm8xLXBjaWUtbGluay1sb3N0LjEyMTI5NS8mYW1wO3NvdXJjZT1nbWFpbCZhbXA7dXN0PTE3NTcx
+MDgzMDYxOTQwMDAmYW1wO3VzZz1BT3ZWYXcyZG05WVBDYkdoZUFsaU5rQkNYT09GIj5odHRwczov
+L2ZvcnVtLnByb3htb3guY29tLzx3YnI+dGhyZWFkcy9uZXR3b3JrLWNhcmQtZHJvcC1pZ2MtPHdi
+cj4wMDAwLTA5LTAwLTAtZW5vMS1wY2llLWxpbmstPHdicj5sb3N0LjEyMTI5NS88L2E+PC9kaXY+
+PHNwYW4+PGEgaHJlZj0iaHR0cHM6Ly93d3cucmVkZGl0LmNvbS9yL2J1aWxkYXBjL2NvbW1lbnRz
+L3h5cG4xbS9uZXR3b3JrX2NhcmRfaW50ZWxfZXRoZXJuZXRfY29udHJvbGxlcl9pMjI1dl9pZ2Mv
+IiB0YXJnZXQ9Il9ibGFuayIgZGF0YS1zYWZlcmVkaXJlY3R1cmw9Imh0dHBzOi8vd3d3Lmdvb2ds
+ZS5jb20vdXJsP3E9aHR0cHM6Ly93d3cucmVkZGl0LmNvbS9yL2J1aWxkYXBjL2NvbW1lbnRzL3h5
+cG4xbS9uZXR3b3JrX2NhcmRfaW50ZWxfZXRoZXJuZXRfY29udHJvbGxlcl9pMjI1dl9pZ2MvJmFt
+cDtzb3VyY2U9Z21haWwmYW1wO3VzdD0xNzU3MTA4MzA2MTk0MDAwJmFtcDt1c2c9QU92VmF3MDVf
+YVNrNUJmUDlCZDY2SUNLNE5yNCI+aHR0cHM6Ly93d3cucmVkZGl0LmNvbS9yLzx3YnI+YnVpbGRh
+cGMvY29tbWVudHMveHlwbjFtLzx3YnI+bmV0d29ya19jYXJkX2ludGVsX2V0aGVybmV0Xzx3YnI+
+Y29udHJvbGxlcl9pMjI1dl9pZ2MvPC9hPjwvc3Bhbj48YnI+PC9kaXY+PGRpdj48YnI+PC9kaXY+
+PGRpdiBzdHlsZT0iZm9udC1mYW1pbHk6IEFyaWFsLCBzYW5zLXNlcmlmOyBmb250LXNpemU6IDE0
+cHg7IGNvbG9yOiByZ2IoMCwgMCwgMCk7IGJhY2tncm91bmQtY29sb3I6IHJnYigyNTUsIDI1NSwg
+MjU1KTsiPjxicj48L2Rpdj48ZGl2IHN0eWxlPSJmb250LWZhbWlseTogQXJpYWwsIHNhbnMtc2Vy
+aWY7IGZvbnQtc2l6ZTogMTRweDsgY29sb3I6IHJnYigwLCAwLCAwKTsgYmFja2dyb3VuZC1jb2xv
+cjogcmdiKDI1NSwgMjU1LCAyNTUpOyI+PGJyPjxkaXYgY2xhc3M9InByb3Rvbm1haWxfcXVvdGUi
+Pg0KICAgICAgICBPbiBNb25kYXksIFNlcHRlbWJlciAxc3QsIDIwMjUgYXQgNDo0NSBQTSwgUHJl
+aW5kbCAmbHQ7cHJlaW5kbEBwcm90b25tYWlsLmNvbSZndDsgd3JvdGU6PGJyPg0KICAgICAgICA8
+YmxvY2txdW90ZSBjbGFzcz0icHJvdG9ubWFpbF9xdW90ZSIgdHlwZT0iY2l0ZSI+DQogICAgICAg
+ICAgICA8ZGl2IHN0eWxlPSJmb250LWZhbWlseTogQXJpYWwsIHNhbnMtc2VyaWY7IGZvbnQtc2l6
+ZTogMTRweDsiIGNsYXNzPSJwcm90b25tYWlsX3NpZ25hdHVyZV9ibG9jayI+PGRpdiBjbGFzcz0i
+cHJvdG9ubWFpbF9zaWduYXR1cmVfYmxvY2stcHJvdG9uIj48ZGl2PkhlbGxvLDxicj48YnI+SSBh
+bSBzZWVpbmcgYW4gaXNzdWUgd2l0aCB0aGUgSW50ZWwgSTIyNi1WIEV0aGVybmV0DQpjb250cm9s
+bGVyIG9uIGFuIEFTVVMgUHJvQXJ0IFg4NzBFIG1vdGhlcmJvYXJkLiBXaGVuIFBDSWUgQWN0aXZl
+IFN0YXRlDQpQb3dlciBNYW5hZ2VtZW50IChBU1BNKSBpcyBlbmFibGVkLCB0aGUgTklDIGJlY29t
+ZXMgdW5hdmFpbGFibGUgYWZ0ZXIgYQ0KcGVyaW9kIG9mIGluYWN0aXZpdHkuIERpc2FibGluZyBB
+U1BNIGF2b2lkcyB0aGUgcHJvYmxlbS48YnI+PGJyPlRoaXMNCmxvb2tzIGxpa2UgYSBoYXJkd2Fy
+ZS9maXJtd2FyZSBpc3N1ZSwgYnV0IHNpbmNlIGl0IGlzIGVhc2lseQ0KcmVwcm9kdWNpYmxlICh0
+aGVyZSBhcmUgc2V2ZXJhbCBmb3J1bSBkaXNjdXNzaW9ucyksIGl0IG1heSB3YXJyYW50IGENCmtl
+cm5lbCBxdWlyayBpbiB0aGUgaWdjIGRyaXZlciB0byBkaXNhYmxlIEFTUE0gZm9yIHRoaXMgZmly
+bXdhcmUgKG9yDQpkZXZpY2U/KS48YnI+PGJyPi0tLTxicj48YnI+SGFyZHdhcmU6PGJyPi0gTW90
+aGVyYm9hcmQ6IEFTVVMgUHJvQXJ0IFg4NzBFPGJyPi0gTklDOiBJbnRlbCBJMjI2LVYgWzgwODY6
+MTI1Y10gKHJldiAwNik8YnI+LSBTdWJzeXN0ZW06IFsxMDQzOjg4NjddPGJyPi0gRmlybXdhcmUg
+dmVyc2lvbiAoZnJvbSBldGh0b29sIC1pKTogMjAyMzo4ODlkPGJyPjxicj5Tb2Z0d2FyZTo8YnI+
+LSBPUzogPHNwYW4+RGViaWFuIEdOVS9MaW51eCAxMyAodHJpeGllKTwvc3Bhbj48YnI+LSBLZXJu
+ZWw6IExpbnV4IDYuMTIuNDErZGViMTMtYW1kNjQ8YnI+LSBEcml2ZXI6IGlnYzxicj48YnI+LS0t
+PGJyPjxicj5TdGVwcyB0byByZXByb2R1Y2UgKGxvZ3MgYXR0YWNoZWQpPGJyPjEuIEJvb3Qgc3lz
+dGVtIHdpdGggZGVmYXVsdCBQQ0llIEFTUE0gZW5hYmxlZC48YnI+Mi4gTGVhdmUgdGhlIGJveC9O
+SUMgaWRsZSBmb3Igc29tZSB0aW1lLjxicj4zLiBOSUMgZGlzYXBwZWFycyAocmVhcHBlYXJzIGFm
+dGVyIHJlYm9vdCk8L2Rpdj48YnI+PGRpdj5Xb3JrYXJvdW5kOjxicj4tIEJvb3Rpbmcgd2l0aCBw
+Y2llX2FzcG09b2ZmIChvciBkaXNhYmxpbmcgQVNQTSBpbiBCSU9TKSBrZWVwcyB0aGUgTklDIHN0
+YWJsZS48L2Rpdj48ZGl2Pjxicj48L2Rpdj48ZGl2PkV4cGVjdGVkOjxicj4tIE5JQyBzaG91bGQg
+cmVtYWluIGZ1bmN0aW9uYWwgd2l0aCBBU1BNIGVuYWJsZWQuPGJyPjxicj5BY3R1YWw6PGJyPi0g
+TklDIGNyYXNoZXMgYXQvYWZ0ZXIgaWRsZSB3aGVuIEFTUE0gaXMgZW5hYmxlZC48L2Rpdj48ZGl2
+Pjxicj4tLS08YnI+PGJyPlBsZWFzZSBsZXQgbWUga25vdyBpZiBhZGRpdGlvbmFsIGluZm9ybWF0
+aW9uIG9yIHRlc3Rpbmcgd291bGQgaGVscC48YnI+PGJyPjwvZGl2PjwvZGl2Pg0KPC9kaXY+DQoN
+CiAgICAgICAgPC9ibG9ja3F1b3RlPjxicj4NCiAgICA8L2Rpdj48L2Rpdj4=
+
+
+--b1=_lr1DPyOJVyKjpZR7bI9s7kOEc9ge4iesK3EQt1cqg--
 
