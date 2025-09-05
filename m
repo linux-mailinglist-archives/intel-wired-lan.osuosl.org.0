@@ -1,216 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3277AB449BD
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Sep 2025 00:36:42 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C7017B44B95
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Sep 2025 04:21:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D4A1560812;
-	Thu,  4 Sep 2025 22:36:40 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6405E4035B;
+	Fri,  5 Sep 2025 02:21:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HcxGQIOotezi; Thu,  4 Sep 2025 22:36:40 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id FKZxvW_aQr_g; Fri,  5 Sep 2025 02:21:07 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EFA066080F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 85AE640259
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1757025400;
-	bh=LhbDSDREnxsTXpxsymn8TfDwoQkUNvkUERklMoUzfoc=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1757038864;
+	bh=dNlvqJpLT0tt4Xb3yht/THJRTNEhTx28a/97adw00xc=;
+	h=Date:To:From:Cc:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=vHL5WHb5hNogKA+vZ6bK7Kgfd26nRwLw2OP9IHOABfP2kSPoMKUq4rcGuJtYW0IGY
-	 r4hxL2lcIGwiKj4P6VrhaoZLa3YIbDsKpoq2hwid18mPQYGgHBgXrt9IyFDS7R+8E8
-	 J4/fMxf5GfZiwkNo3v7oGRpjA6hKHMrIsgGtVph8GUff2vwfJDjV6Rhwb22nZsYJph
-	 uCBQzE6UevxKcJp9/KwK5EcYAXnujuNUz9/RBIqEEWRKYh2Rbn+2Ty5cRlLLZtfwcy
-	 e2sU6lKGxlx44UqTyYE2bz5GnJ5dggMBA5wP/nMUFnk7gZtFkztULIEIgX38Ha7EQY
-	 4HqTNLNVzs/mA==
+	b=2TBlfUZrLuSkF/BJs5RkuLM8gBl1lY6gp2brGq2RQzAp4D2SF2Iv+cmtraUr+Xa/I
+	 uQOzs/ocnAgMKj4uYehaPmULIH6gRQzmsUs/VT34FiFtFPMAuEX4KLy4y8OTpCTwpO
+	 B/nf2uXTCqiUtYS1TyVcVFEE/f5HiAwgduY6A/keYkZZv+J8OS8V+5l9v78iuh0Qrp
+	 7qfn/Ccv6dniQO3C33YfZ9M7E9uXjFInNpriwfjBoGT38/hdGlOr70PWFUqBWwHlrp
+	 E3C/ozNHnmhzuMrtbOM+8+l6u2KZACqsEul0l2LPp2uGOVfDUZ4UXbMkyRLiz/j/1q
+	 d1jlvcCEKcPlw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EFA066080F;
-	Thu,  4 Sep 2025 22:36:39 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 85AE640259;
+	Fri,  5 Sep 2025 02:21:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 5A7E9B69
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Sep 2025 22:36:38 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 4660AB69
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Sep 2025 02:21:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3FF7180EE1
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Sep 2025 22:36:38 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3868640396
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Sep 2025 02:21:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id hLl85MUEi23Y for <intel-wired-lan@lists.osuosl.org>;
- Thu,  4 Sep 2025 22:36:37 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
- helo=mgamail.intel.com; envelope-from=samuel.salin@intel.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id GgC0W8OspBOJ for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  5 Sep 2025 02:21:01 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=79.135.106.102;
+ helo=mail-106102.protonmail.ch; envelope-from=preindl@protonmail.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 321AB80561
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 321AB80561
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 321AB80561
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Sep 2025 22:36:36 +0000 (UTC)
-X-CSE-ConnectionGUID: Uim6QkQ2SvWT9R1CD+kEXA==
-X-CSE-MsgGUID: ceQ8Wm4ARQiboRkoG6KmkA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11531"; a="63211199"
-X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; d="scan'208";a="63211199"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Sep 2025 15:36:35 -0700
-X-CSE-ConnectionGUID: iLphe5n8TDuizRdHg93J9g==
-X-CSE-MsgGUID: 914Tb4fLQIKYOSNvFkBUbw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,239,1751266800"; d="scan'208";a="171241351"
-Received: from fmsmsx902.amr.corp.intel.com ([10.18.126.91])
- by orviesa006.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Sep 2025 15:36:37 -0700
-Received: from FMSMSX902.amr.corp.intel.com (10.18.126.91) by
- fmsmsx902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.17; Thu, 4 Sep 2025 15:36:35 -0700
-Received: from fmsedg902.ED.cps.intel.com (10.1.192.144) by
- FMSMSX902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.17 via Frontend Transport; Thu, 4 Sep 2025 15:36:35 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (40.107.223.54)
- by edgegateway.intel.com (192.55.55.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.17; Thu, 4 Sep 2025 15:36:34 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=G0DJ40jiz8ar4JoSNjwRUCaYWGbHkmyiZLgm14lPpjq7u6QpYF/6UsziuCazMj7twOYq0x6KqD/UsQcTxGGdTcBXGdc+iwfWjOTpJ4g2RllztYBMCbTLyysm0ugVGRfXNTP8WDEN3NRNKBFcpKOKTQ5hLsQCSoba1yOpDIaEk5p3SAXDh/f+rGqUtF2Ra54t4ga2+8Hn4rkXnOYfw5dFP7g/GAaTWK21Yt4QBXslmwIGLS0BlDMfoccyObXk/wCm/7z91pTqgnCh1s5y/29OTiUJkOLUECHetBuhvWi+OEAHHDmEwJtewrhO4OOKf3LOB1z/vXNQLBKPX3FrZrKj+Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=LhbDSDREnxsTXpxsymn8TfDwoQkUNvkUERklMoUzfoc=;
- b=kXZgCJOcE0sBsgZ01QcDW0jTwj68xeK0nn0DvOU0Kl2LCVQ3VlXN5tfExrmjMTZfgRyiJsuJvx+8Bizb/E6UHWUrOmo/w5DzZCNbtuCcmDEg6DlOl1hTLD5vmorxd2xNwLrJUDQsCn0MQIbkibpNl3ZeONfN4DCUq6yITzjsp+ihAib/8drzXIibKcMKrF49E6JTlsmNpAD+K0+oEXpMOHLmvironeO/MlaDQIHDPQIASeI2kjBYx6r4LG3Bkbyl07LwRLWpXunE2AqzVdazZ+K4rgD2P47EBxoioIAp8Faet5A3QS1lgxsFzFbHtWQoUb8FqxwdCe30+FnjUxQTXg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from SJ1PR11MB6297.namprd11.prod.outlook.com (2603:10b6:a03:458::8)
- by CH3PR11MB8382.namprd11.prod.outlook.com (2603:10b6:610:173::14)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9094.16; Thu, 4 Sep
- 2025 22:36:31 +0000
-Received: from SJ1PR11MB6297.namprd11.prod.outlook.com
- ([fe80::dc50:edbf:3882:abf7]) by SJ1PR11MB6297.namprd11.prod.outlook.com
- ([fe80::dc50:edbf:3882:abf7%5]) with mapi id 15.20.9073.026; Thu, 4 Sep 2025
- 22:36:31 +0000
-From: "Salin, Samuel" <samuel.salin@intel.com>
-To: "Linga, Pavan Kumar" <pavan.kumar.linga@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-CC: "Chittim, Madhu" <madhu.chittim@intel.com>, "Linga, Pavan Kumar"
- <pavan.kumar.linga@intel.com>, "Nadezhdin, Anton" <anton.nadezhdin@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH net-next v7 9/9] idpf: generalize
- mailbox API
-Thread-Index: AQHcEy+Tj3oR25Q1hEKQvu4nbf7jFbSDskcg
-Date: Thu, 4 Sep 2025 22:36:31 +0000
-Message-ID: <SJ1PR11MB629746A4453C37CF8A9337859B00A@SJ1PR11MB6297.namprd11.prod.outlook.com>
-References: <20250822063215.3911-1-pavan.kumar.linga@intel.com>
- <20250822063215.3911-10-pavan.kumar.linga@intel.com>
-In-Reply-To: <20250822063215.3911-10-pavan.kumar.linga@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SJ1PR11MB6297:EE_|CH3PR11MB8382:EE_
-x-ms-office365-filtering-correlation-id: 63ba3627-38f1-4a4c-51eb-08ddec037ea5
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|376014|366016|38070700018|7053199007; 
-x-microsoft-antispam-message-info: =?us-ascii?Q?blT/H1Pv7lQW23wbArkZYrv2yTkRmLtodVoIKmJCZGjhfSmiuvEkO9yBnTm4?=
- =?us-ascii?Q?0U8ov/el1zClF8s3fVfb2NHdGkYBOoIN4wYInVhXNC/bUbL9JQT8nO2n/A+j?=
- =?us-ascii?Q?sepMBojH8XrMLW5j8TTndDMsTFsvhFM7bHDaplwQnv1+UkZDRX7BFmp2feCR?=
- =?us-ascii?Q?+NEG00Z1nMCcHGljvh/CAvWWfNICWPPkJgSkBrNW/ZwxoXz7BlYh8hxb0QdN?=
- =?us-ascii?Q?zl9pfny97sp9+yAsB2vJmFNdtb2BnnNJlVinb+8KwCraA65TZwfgUjdUW1XT?=
- =?us-ascii?Q?xGM3/i1sWdNxWB66iWg0Xt5FrWDjCCseyZXbKlsVxAcYtEhldmWo9jebzZq6?=
- =?us-ascii?Q?kDy93EL5S/Wy9PxBoNjpP4IC6l1FS/JZCmnMikBl2ZTiUFdNvKlDC4pJjF9+?=
- =?us-ascii?Q?CQJ+rvSInTNOKd58bRDR6MQ8Kk/+Ss2Sq1jX4yi5kS8M0dTgTTuwH+TKnukY?=
- =?us-ascii?Q?xIGlHP4sCdcoOBJ1E6moYcqYyNF8eP+lcxDiv7Ln0GPXeEVVc8SNzYIqp17M?=
- =?us-ascii?Q?rsEcgiaUuWfJKAFGZxHFnwz9FFwIABN5ZSwDEtRhBGhojs51lQJocApVwEnB?=
- =?us-ascii?Q?rMnEgTGjeMNNmwEZeG2NPe64VY32P6RNSz5o+e/h12mkzs06e7y+BMFc2uzd?=
- =?us-ascii?Q?pY3ZZfNl9xFno3hmZPtGDcaOeLMoi4WnA3eL+Zm4Nyt7/ncgIwTY7kKACkkw?=
- =?us-ascii?Q?z9WTP3PDjDYMZDsCvtokBESi516cJ6uQC1LKm/zfsPj5QJ1uZdFxzjxybGWC?=
- =?us-ascii?Q?vuJVvfjJBsx0e12CWgsyMSMdxX42yPIP21xAqm8JSwlSH49SuOoPqgqaazGm?=
- =?us-ascii?Q?4Ifl27zZp2XdUq8pLAZSO53k9pXcNNgve55D0AwyHzLxqhoygzZp6aMRpVP7?=
- =?us-ascii?Q?Go1y8+4jf81UL481D+PkDQ1Oc9L78mdck6vo4i96h9noFkOV7QuyTEexKE0R?=
- =?us-ascii?Q?DmS/QhIE22cpfgjJvesNtlVDP/kFAj6rHwShwbuyLUbDoiSoPB9/bqtBsRYz?=
- =?us-ascii?Q?apFRtiJCHRVaDklc0mG8kM7z3zNfDT7wQ/kJDkwcuK0cY/s2oyAa0cORA4HK?=
- =?us-ascii?Q?zy2JCLYoTXQxEbphQt/dmqgDdSDxGYYhePeZ5w/d/4sCyJXDyy8W1CbFnCGZ?=
- =?us-ascii?Q?HNp5j29ylEoLAyLtRtbmcP9N8A/nOvtFZ+ZWUlkLoW7aEg4N75jyY+3w8bW/?=
- =?us-ascii?Q?MEgagwgEvOL0kfeAX9aE1rNSY9eoaC/ALJ18lR4F/buNs/bHexE7Onbnye5J?=
- =?us-ascii?Q?QsxsKSADS5j5EvXje/V8bbwmIw2DYxkdr8fSo8YbH/bN5mvt9iIH1lRpxh/6?=
- =?us-ascii?Q?njEhOLS7Lbx0O8jy70tAYm+M4Rmx5coiksqhJEt6C44x4LR+V1nzIMQ/oIaA?=
- =?us-ascii?Q?Eke84aJo2wWPFvDIr5P4yelQYUL8efhvnwK5ccBeTE8hf9OJxIeDV0ddM53w?=
- =?us-ascii?Q?3tRim8GT2xNjwnAg6RAn9KvAAPR05QyQ+0i570magFzeksXdXBN8lw=3D=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ1PR11MB6297.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(376014)(366016)(38070700018)(7053199007); DIR:OUT;
- SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?+JDUqnOmfL/h0eRI4qa1KYGD1HSsJg5+EkEiQLhS2wp8Ifu+RCtta4G2PEM1?=
- =?us-ascii?Q?n5Ya9LrUiXH4ugbLQa0Wr1rH0xu8RYskc8o3AIMUJN3BOdjgqhb248uuwcYQ?=
- =?us-ascii?Q?L1RhTBpk5dK7KGe68MHGNn2k4uA65yK1g8a9cHnwF+RiqZ0UkSGjIIvDCgRV?=
- =?us-ascii?Q?stm0R8kU1T+uHs1Qy7sE5YMiSPQ2JLoERVePXrQD+Yv0oEYPOmg89gH2gEZx?=
- =?us-ascii?Q?XMPt33toAlEh7QUviq2jyNb1cbaCOfGU9sfyzyh4PGzXVQ63igVkR3rrS8aA?=
- =?us-ascii?Q?ddn06kUSU4vo4B9PpInBpBNdVJ2vkfYeQ92jbdqqL09a+x3atXXoXJ/I9fnw?=
- =?us-ascii?Q?slxvdzJoAsfBmzy9S3q8dXtOFkxhIdF4bB6y1+NmJAzQRVZ7UTDvU84rrHaJ?=
- =?us-ascii?Q?gNuiNp8YVXAfkvS6ebqPfIpeChhCWTcHQaCkk+u6+DmogTAhJVtMKTofqJlO?=
- =?us-ascii?Q?mRorqQ+eaMgG7i57+zYYeUbZ1AVmvZPMXoX5Qr11G502gqcuakAk2vjKsIr7?=
- =?us-ascii?Q?YiXcmQ66otTMshJK+fK0DF2xWsc7oq3CQhDcFKLDSxMWBRRm/mXCueQV2SvT?=
- =?us-ascii?Q?GA68DgjL/g8+PItBOmjII5+zacqCAIdQlHyE2DFVohk/1+sgO4v6+XEhEBUK?=
- =?us-ascii?Q?DTk0kkkiIuS/9xhLI9pMdWe6yubB5N8Ox41q7L4cSdiK2GDxd9p0Zkj1NcOb?=
- =?us-ascii?Q?fDYQ708toTRpz1m8BEa39toPSNFwuiyX8aZCtcBQKRibAQnL06fwDsXfDZvl?=
- =?us-ascii?Q?lImAqd5yBd8x4eSHeZ1ZyGXWhkB5DcKoSa6CIDEPq4zFKG3uFmIEQfrSl2ZK?=
- =?us-ascii?Q?mNdQHj+3xhpJS40+PqVTxlbF2A1PlVtHZd8FFO5z/qH/vx5EPA+wbyF+AZea?=
- =?us-ascii?Q?Eh5/s9X7Gga7TBV3jxBZOabAscA/T9SoSFeDDwnP5FhVLBlpDFWpPLE1x6zH?=
- =?us-ascii?Q?XXLI/JvH0aShE7nbcpl2iNrHcvDgCgdVBjJia9K/8UR5fWODS9Fx42izQN7Z?=
- =?us-ascii?Q?Vy6IVkq2NN7jYWxKzFDfjI7vyum/ues3I/2gr5Fq1dJBE3OpZkZZ/ahGqpxX?=
- =?us-ascii?Q?zhxceeV8gC96DSxn3NpWh9eZII/SqxmO18coiGuMVRN3WGfz/KdCZCFNJ3UU?=
- =?us-ascii?Q?8pwmwPbOX+pe+zS62oS3uGQeTeF8AodtzpxyQ6cmHOnW7HVhg0J73ThTUEVE?=
- =?us-ascii?Q?xzdV9MPnHcKx5tMS5ZzFlOrFxH0H3qRs33Cyq1SvZaBDPJz7Y8s47vKPOWxv?=
- =?us-ascii?Q?5PKNNSgwjgszZHUgQSBLXki3E5fIyyeMWJGTzhbfqAAsNLE5VIBBrqCv0sHB?=
- =?us-ascii?Q?ZTxLDOS2q5qbFyfX0dyzjyLg4SPjn8IymFqWotvxQViY2PRlGTfBQurbqKS3?=
- =?us-ascii?Q?RjWPg8draQ9mJFplzwYHjObwLwQ/DsdlQ+9oiOsT+RfcidQLmCTDo3D4L/UO?=
- =?us-ascii?Q?nsCCo1oyES2Zb9GY0DMQ1DziLZLmKhqw50HlOhpu1I3XAumzH+52X/qjpACR?=
- =?us-ascii?Q?wIAaptlD7u+dYuTR0BTBrhc78Qv0UC7taclCMiUl+8An59jK0xxCgR48qjUv?=
- =?us-ascii?Q?6+GzNtuUcGak5t7nXIOu4Q4caVqsVGcbZoemJZAk?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 488DA40392
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 488DA40392
+Received: from mail-106102.protonmail.ch (mail-106102.protonmail.ch
+ [79.135.106.102])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 488DA40392
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Sep 2025 02:21:00 +0000 (UTC)
+Date: Fri, 05 Sep 2025 02:20:52 +0000
+To: "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+From: Preindl <preindl@protonmail.com>
+Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Message-ID: <odmZKRDZji6TR3elLw5LCOtSjE9Rz3-lHt0d3MZyoGurOniENhlrc7s08W9HN3VgOJG4lSPyAYAnwc4rt5NyZyS0PHO9kCrCjk2GlYxGHDo=@protonmail.com>
+In-Reply-To: <re7_7zYnqyVPXjEEGmJepF9vbNV8u8ul2Cspq1ZrUmrc3gXuEgwm9Wi8Jk6kY63HpRYK3hJzyt0N0f-430xyADYxkeyaR3vAb-YVhsE0u6k=@protonmail.com>
+References: <re7_7zYnqyVPXjEEGmJepF9vbNV8u8ul2Cspq1ZrUmrc3gXuEgwm9Wi8Jk6kY63HpRYK3hJzyt0N0f-430xyADYxkeyaR3vAb-YVhsE0u6k=@protonmail.com>
+Feedback-ID: 18974102:user:proton
+X-Pm-Message-ID: c9347241893b4efe84c0169ef4587e7a2f310ea6
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SJ1PR11MB6297.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 63ba3627-38f1-4a4c-51eb-08ddec037ea5
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Sep 2025 22:36:31.0263 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: NJL9wNno/Lmyp7+/3rJRLOIndb+vV+q8mWUVF2CocaJSS06hXrj8eSV/0ZBXs+3bj4W8FdAH0YQKPuLu+yO92Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR11MB8382
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1757025395; x=1788561395;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=LhbDSDREnxsTXpxsymn8TfDwoQkUNvkUERklMoUzfoc=;
- b=Bjpqtf3ZFLK55QZOe8PJJ/zFeBtoL08JOInwuHgKCvHBfa4q8C82RkwR
- RFG47Ny/Tcbt7NWYsU6/7Pkz0YLY/+FKECCDpL/TKrIGh7/fDr8Q4uaiJ
- Uhy75KbaWYuipIDfsMkmIZzI42GF+oA0czVUoJ0u3OltPSHnsf2YDygBJ
- 7/yohvH4IoP0pFiY2DqdR6Cf9k2xtj6UImBt7oXHbAHqn15XbuYpCsUj+
- cbQrifoAM3KhNiQoNCk/x7z3ou1lLpHEkFtrMlZoce8cyPPcYGEqt9B9W
- 8zU3M6nwyUXtGWvL+T2uffTdwyeuUCYpVt5AS+Lb48sbRLUy61y5W5ikh
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Bjpqtf3Z
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next v7 9/9] idpf: generalize
- mailbox API
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=protonmail.com; 
+ s=protonmail3; t=1757038856; x=1757298056;
+ bh=dNlvqJpLT0tt4Xb3yht/THJRTNEhTx28a/97adw00xc=;
+ h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+ Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+ Message-ID:BIMI-Selector;
+ b=irt9XxFF4OT4GwUlKTB3NlL77QvLX6JZvhkGQoJbcmwzA7c1TsCIcTeuO43NrgObz
+ KUglmfl2DzY0J7v263OhCnryI57sfngOIQhhMCv2b6ITycxVtYkCPP5DSRZPn9TOp2
+ fARJTv4fvb64dVBsiu5Ieia375lWa2D2/f+6WqpxWwuvcqMMcImt+wwt3PG9Czr1DC
+ zRuTeLDBJw4xWPUQZnsfbFE0g3vK+zRnvf3meNDiQqvuM6oZDz+NBh6iOH2pwMsMzA
+ 2ZGOvWMGamNH7zUBAy2/CduTqPA9Um82jtuXYHP+anpsXgU4rAnGA30LtqMV2M6AJV
+ oUhZ8/+Tml4Cw==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=protonmail.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=protonmail.com header.i=@protonmail.com
+ header.a=rsa-sha256 header.s=protonmail3 header.b=irt9XxFF
+Subject: Re: [Intel-wired-lan] [BUG] igc: ASPM causes I226-V NIC to drop
+ after idle
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -226,26 +99,71 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Hello,
+I'd like to add the following information/correction.
+
+The issue can be traced to the following error that appears typically after=
+ a period of inactivity
+igc: Failed to read reg 0xc030!
 
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Pavan Kumar Linga
-> Sent: Thursday, August 21, 2025 11:32 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: Chittim, Madhu <madhu.chittim@intel.com>; Linga, Pavan Kumar
-> <pavan.kumar.linga@intel.com>; Nadezhdin, Anton
-> <anton.nadezhdin@intel.com>
-> Subject: [Intel-wired-lan] [PATCH net-next v7 9/9] idpf: generalize mailb=
-ox API
+The kernel parameter=C2=A0pcie_aspm=3Doff does not solve the issue.
+I am now testing the parameters=C2=A0pcie_port_pm=3Doff and pcie_aspm.polic=
+y=3Dperformance that mitigates the above error for some users.
+
+This issue seems to be more common with Asus motherboards and may be reprod=
+ucible with Intel I225-V NICs, see also
+https://bbs.archlinux.org/viewtopic.php?id=3D288371https://forum.proxmox.co=
+m/threads/network-card-drop-igc-0000-09-00-0-eno1-pcie-link-lost.121295/
+https://www.reddit.com/r/buildapc/comments/xypn1m/network_card_intel_ethern=
+et_controller_i225v_igc/
+On Monday, September 1st, 2025 at 4:45 PM, Preindl <preindl@protonmail.com>=
+ wrote:
+
+
+> Hello,
 >=20
-> Add a control queue parameter to all mailbox APIs in order to make use of
-> those APIs for non-default mailbox as well.
+> I am seeing an issue with the Intel I226-V Ethernet controller on an ASUS=
+ ProArt X870E motherboard. When PCIe Active State Power Management (ASPM) i=
+s enabled, the NIC becomes unavailable after a period of inactivity. Disabl=
+ing ASPM avoids the problem.
 >=20
-> Signed-off-by: Anton Nadezhdin <anton.nadezhdin@intel.com>
-> Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
-> Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+> This looks like a hardware/firmware issue, but since it is easily reprodu=
+cible (there are several forum discussions), it may warrant a kernel quirk =
+in the igc driver to disable ASPM for this firmware (or device?).
+>=20
 > ---
-> 2.43.0
+>=20
+> Hardware:
+> - Motherboard: ASUS ProArt X870E
+> - NIC: Intel I226-V [8086:125c] (rev 06)
+> - Subsystem: [1043:8867]
+> - Firmware version (from ethtool -i): 2023:889d
+>=20
+> Software:
+> - OS: Debian GNU/Linux 13 (trixie)
+> - Kernel: Linux 6.12.41+deb13-amd64
+> - Driver: igc
+>=20
+> ---
+>=20
+> Steps to reproduce (logs attached)
+> 1. Boot system with default PCIe ASPM enabled.
+> 2. Leave the box/NIC idle for some time.
+> 3. NIC disappears (reappears after reboot)
+>=20
+> Workaround:
+> - Booting with pcie_aspm=3Doff (or disabling ASPM in BIOS) keeps the NIC =
+stable.
+>=20
+> Expected:
+> - NIC should remain functional with ASPM enabled.
+>=20
+> Actual:
+> - NIC crashes at/after idle when ASPM is enabled.
+>=20
+> ---
+>=20
+> Please let me know if additional information or testing would help.
 
-Tested-by: Samuel Salin <Samuel.salin@intel.com>
+
