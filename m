@@ -1,100 +1,100 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D16B9B529D5
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Sep 2025 09:27:10 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9E52BB52BE5
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Sep 2025 10:37:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2B93F41F55;
-	Thu, 11 Sep 2025 07:27:09 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2D53941F54;
+	Thu, 11 Sep 2025 08:37:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pHDgBSl4kD8Y; Thu, 11 Sep 2025 07:27:08 +0000 (UTC)
+ id xOoyQykRuiFJ; Thu, 11 Sep 2025 08:37:26 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 90D8441F4F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 805FB41F49
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1757575628;
-	bh=JxoRqRXqoKpRnVayyesoDxNe1k2DbyGFUFDxp1DbRBM=;
-	h=From:To:Cc:In-Reply-To:References:Date:Subject:List-Id:
+	s=default; t=1757579846;
+	bh=WFHPiCMPnjnoNbmUJ5kb6pIaH97MNd9OYVzBnbbZ4k8=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=n/KaB6szR0A9RYVH7iU6xUyqR7gWjwRgDxL3nci16LWF9YPmWV15gfyEFwYz0mMYx
-	 fLF31S0LedpZ1wJjlEHmZIcDwvNaVPwPQCsZu8AUFT56pYdB5cYBzH+G3sUqEN+MtQ
-	 OgEL6FOZshouae4vaa7cOL+inZyYxflC/q5+RGghDiEcf0K2AT6ffou+O6Dvbhah0t
-	 GvRT8WSlf7tsoyO2TdcY+8ZlLS6IOrAovBQ4OMP82YJt8NkMrCnSwjUNUwbhu6ln6E
-	 HfN1KDx7+7JARPSVnknBh/EYL8pAQ3NyJsikP79DXsuGxPHwDdfgGQRuDiNziTBV0E
-	 xuTe5dVN1S2Dg==
+	b=Gig4m+F9uBIPz6+S+4sibpdnuAEvLtjNnY+nKtnhtnwn5FIT4Yn9DqGUt8Mo22lhE
+	 m76bPDd+Kz+kRJc6U594buztOOYUzOu/G8SJVTzluGwXBD8NbExrn7Mooi8lznfh86
+	 iHjPYQbAR39jHM5WLRKcZfTtT6yVZCI9N8EaDjHt7Knjj6LjihDt4aOaYmmjN1Rx0p
+	 xjJ7ER3ujrHy4piufq/1viSY3PfqAbQQJ3Ds7X7UFGQ9DZjdf1mmL0OOpByakjy3od
+	 NcQrmjaMRe4BEMpCIiCsJcMYEl/9rwXp0lzgYU9GqqHibf3ICRLwxivZXCsyTF019N
+	 9bw65MsMSQ5Og==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 90D8441F4F;
-	Thu, 11 Sep 2025 07:27:08 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 805FB41F49;
+	Thu, 11 Sep 2025 08:37:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 36D0BE20
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Sep 2025 07:27:06 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 5F21F234
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Sep 2025 08:37:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 28A2A40911
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Sep 2025 07:27:06 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 50DB1416C1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Sep 2025 08:37:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ojzY_HooaLa3 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 11 Sep 2025 07:27:05 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.142.43.55;
- helo=galois.linutronix.de; envelope-from=kurt@linutronix.de;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 33287408C6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 33287408C6
-Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 33287408C6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Sep 2025 07:27:05 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-To: Kohei Enju <enjuk@amazon.com>, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel
- <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David
- S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
- Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Aleksandr
- Loktionov <aleksandr.loktionov@intel.com>, Vitaly Lifshits
- <vitaly.lifshits@intel.com>, kohei.enju@gmail.com, Kohei
- Enju <enjuk@amazon.com>
-In-Reply-To: <20250910134745.17124-1-enjuk@amazon.com>
-References: <20250910134745.17124-1-enjuk@amazon.com>
-Date: Thu, 11 Sep 2025 09:27:00 +0200
-Message-ID: <87plbxwit7.fsf@jax.kurt.home>
+ id 2Bq_spfR8jah for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 11 Sep 2025 08:37:24 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
+ envelope-from=gregkh@linuxfoundation.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 5008041670
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5008041670
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5008041670
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Sep 2025 08:37:24 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id C495260141;
+ Thu, 11 Sep 2025 08:37:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 10E4BC4CEF1;
+ Thu, 11 Sep 2025 08:37:21 +0000 (UTC)
+Date: Thu, 11 Sep 2025 10:37:19 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: "Farber, Eliav" <farbere@amazon.com>
+Cc: "jesse.brandeburg@intel.com" <jesse.brandeburg@intel.com>,
+ "anthony.l.nguyen@intel.com" <anthony.l.nguyen@intel.com>,
+ "davem@davemloft.net" <davem@davemloft.net>,
+ "kuba@kernel.org" <kuba@kernel.org>,
+ "vitaly.lifshits@intel.com" <vitaly.lifshits@intel.com>,
+ "post@mikaelkw.online" <post@mikaelkw.online>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "Chocron, Jonathan" <jonnyc@amazon.com>,
+ "stable@vger.kernel.org" <stable@vger.kernel.org>
+Message-ID: <2025091122-obsolete-earthen-8c9b@gregkh>
+References: <20250910173138.8307-1-farbere@amazon.com>
+ <2025091131-tractor-almost-6987@gregkh>
+ <f524c24888924a999c3bb90de0099b78@amazon.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
- micalg=pgp-sha512; protocol="application/pgp-signature"
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1757575622;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=JxoRqRXqoKpRnVayyesoDxNe1k2DbyGFUFDxp1DbRBM=;
- b=jsg6ldPSaiKsLnKcDrcgjlywTlU2NYekzlsTrHyf/5Pw+lEJaljciZhFr4ZEaAueO6+cgP
- 0RfsKg/3hbdcV9q0lNuAOG3WrLPo2ECX5jjyQkJyxuZA3vFi3NFKr3T0JQ4Db+FJM2+7jc
- oQxbV7uLo4YTom/8U+idSaV32P/CPFZqdug6PiqEJcWnfBytpyqDwMu7OUzHeRZlvCNrXg
- 5e7GvfixSK9LxCAB4F+HS9bS0RY7kyvhuTrxGmQ646+DoRtpROYZEoDzKkvz18MyKPh0NX
- FlDjzkIyNJvV45VtH5G+OqSA26rnpBgYe7hhgDA/X57wcyYf8fEk7VOwCmdqxQ==
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1757575622;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=JxoRqRXqoKpRnVayyesoDxNe1k2DbyGFUFDxp1DbRBM=;
- b=dFniVzrwYeAGOWQifnwv6OJwg7fxqwqgCcK0t1SvvWpS8TJRTl1mg5baRgWfRFG12/gY+M
- qxGY4IgsQ+1jy9Cg==
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <f524c24888924a999c3bb90de0099b78@amazon.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=linuxfoundation.org; 
+ s=korg; t=1757579842;
+ bh=XslGsUoupOrtKg0lfUcpg0DWyp4IyzJwG6qK2UD+EvA=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=onzkfL6g4ORhBQHe5opjlNM4i/9UWLfnOlBcbo6tco7YIiVmFxoBXNzNlvZouFfhM
+ cElFlnyK2WOHyP/Tf/ViME1lb6m2jIPpF/8y22493TMwBHxZgTFlKq13ZFrf/U3bjr
+ gnlCTs9l2sHTZEsaoiT4R7IZ2Tdp9+IXckb1vcuY=
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=linutronix.de
+ header.from=linuxfoundation.org
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
- header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=jsg6ldPS; 
- dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=dFniVzrw
-Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-net] igc: don't fail
- igc_probe() on LED setup error
+ dkim=pass (1024-bit key,
+ unprotected) header.d=linuxfoundation.org header.i=@linuxfoundation.org
+ header.a=rsa-sha256 header.s=korg header.b=onzkfL6g
+Subject: Re: [Intel-wired-lan] [PATCH 5.10.y] e1000e: fix EEPROM length
+ types for overflow checks
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -110,73 +110,71 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---=-=-=
-Content-Type: text/plain
+On Thu, Sep 11, 2025 at 06:13:33AM +0000, Farber, Eliav wrote:
+> > On Wed, Sep 10, 2025 at 05:31:38PM +0000, Eliav Farber wrote:
+> >> Fix a compilation failure when warnings are treated as errors:
+> >>
+> >> drivers/net/ethernet/intel/e1000e/ethtool.c: In function ‘e1000_set_eeprom’:
+> >> ./include/linux/overflow.h:71:15: error: comparison of distinct pointer types lacks a cast [-Werror]
+> >>    71 |  (void) (&__a == __d);   \
+> >>       |               ^~
+> >> drivers/net/ethernet/intel/e1000e/ethtool.c:582:6: note: in expansion of macro ‘check_add_overflow’
+> >>   582 |  if (check_add_overflow(eeprom->offset, eeprom->len, &total_len) ||
+> >>       |      ^~~~~~~~~~~~~~~~~~
+> >>
+> >> To fix this, change total_len and max_len from size_t to u32 in 
+> >> e1000_set_eeprom().
+> >> The check_add_overflow() helper requires that the first two operands 
+> >> and the pointer to the result (third operand) all have the same type.
+> >> On 64-bit builds, using size_t caused a mismatch with the u32 fields
+> >> eeprom->offset and eeprom->len, leading to type check failures.
+> >>
+> >> Fixes: ce8829d3d44b ("e1000e: fix heap overflow in e1000_set_eeprom")
+> >> Signed-off-by: Eliav Farber <farbere@amazon.com>
+> >> ---
+> >>  drivers/net/ethernet/intel/e1000e/ethtool.c | 2 +-
+> >>  1 file changed, 1 insertion(+), 1 deletion(-)
+> >>
+> >> diff --git a/drivers/net/ethernet/intel/e1000e/ethtool.c 
+> >> b/drivers/net/ethernet/intel/e1000e/ethtool.c
+> >> index 4aca854783e2..584378291f3f 100644
+> >> --- a/drivers/net/ethernet/intel/e1000e/ethtool.c
+> >> +++ b/drivers/net/ethernet/intel/e1000e/ethtool.c
+> >> @@ -559,7 +559,7 @@ static int e1000_set_eeprom(struct net_device 
+> >> *netdev,  {
+> >>       struct e1000_adapter *adapter = netdev_priv(netdev);
+> >>       struct e1000_hw *hw = &adapter->hw;
+> >> -     size_t total_len, max_len;
+> >> +     u32 total_len, max_len;
+> >>       u16 *eeprom_buff;
+> >>       int ret_val = 0;
+> >>       int first_word;
+> >> --
+> >> 2.47.3
+> >>
+> >
+> > Why is this not needed in Linus's tree?
+> Kernel 5.10.243 enforces the same type, but this enforcement is
+> absent from 5.15.192 and later:
+> /*
+>  * For simplicity and code hygiene, the fallback code below insists on
+>  * a, b and *d having the same type (similar to the min() and max()
+>  * macros), whereas gcc's type-generic overflow checkers accept
+>  * different types. Hence we don't just make check_add_overflow an
+>  * alias for __builtin_add_overflow, but add type checks similar to
+>  * below.
+>  */
+> #define check_add_overflow(a, b, d) __must_check_overflow(({	\
 
-On Wed Sep 10 2025, Kohei Enju wrote:
-> When igc_led_setup() fails, igc_probe() fails and triggers kernel panic
-> in free_netdev() since unregister_netdev() is not called. [1]
-> This behavior can be tested using fault-injection framework, especially
-> the failslab feature. [2]
->
-> Since LED support is not mandatory, treat LED setup failures as
-> non-fatal and continue probe with a warning message, consequently
-> avoiding the kernel panic.
->
-> [1]
->  kernel BUG at net/core/dev.c:12047!
->  Oops: invalid opcode: 0000 [#1] SMP NOPTI
->  CPU: 0 UID: 0 PID: 937 Comm: repro-igc-led-e Not tainted 6.17.0-rc4-enjuk-tnguy-00865-gc4940196ab02 #64 PREEMPT(voluntary)
->  Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
->  RIP: 0010:free_netdev+0x278/0x2b0
->  [...]
->  Call Trace:
->   <TASK>
->   igc_probe+0x370/0x910
->   local_pci_probe+0x3a/0x80
->   pci_device_probe+0xd1/0x200
->  [...]
->
-> [2]
->  #!/bin/bash -ex
->
->  FAILSLAB_PATH=/sys/kernel/debug/failslab/
->  DEVICE=0000:00:05.0
->  START_ADDR=$(grep " igc_led_setup" /proc/kallsyms \
->          | awk '{printf("0x%s", $1)}')
->  END_ADDR=$(printf "0x%x" $((START_ADDR + 0x100)))
->
->  echo $START_ADDR > $FAILSLAB_PATH/require-start
->  echo $END_ADDR > $FAILSLAB_PATH/require-end
->  echo 1 > $FAILSLAB_PATH/times
->  echo 100 > $FAILSLAB_PATH/probability
->  echo N > $FAILSLAB_PATH/ignore-gfp-wait
->
->  echo $DEVICE > /sys/bus/pci/drivers/igc/bind
->
-> Fixes: ea578703b03d ("igc: Add support for LEDs on i225/i226")
-> Signed-off-by: Kohei Enju <enjuk@amazon.com>
+Yeah, the min() build warning mess is slowly propagating back to older
+kernels over time as we take these types of fixes backwards.  I count 3
+such new warnings in the new 5.10 release, not just this single one.
 
-Reviewed-by: Kurt Kanzenbach <kurt@linutronix.de>
+Overall, how about fixing this up so it doesn't happen anymore by
+backporting the min() logic instead?  That should solve this build
+warning, and keep it from happening again in the future?  I did that for
+newer kernel branches, but never got around to it for these.
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
+thanks,
 
------BEGIN PGP SIGNATURE-----
-
-iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmjCecQTHGt1cnRAbGlu
-dXRyb25peC5kZQAKCRDBk9HyqkZzgouOD/9wg6uDEBn9/vhNheAKhC/ywBUqkkiO
-RSRwdgqdL14Opwj/K1d24X9SN5Hrk/2qVaBAHJciRFuuUNCBDjoAS4m1q2QEi6oJ
-u64KakTLwxlNk1wrTJ9k05bGzILT0yN1bBjwzb8xKhpAoZE7oTTYAPWk9E7+J4tt
-IrxnITZhDDvfnzxyBOQdRy0FIytz/+zgGUfvYnIYNuSXm7NyD3CTFqI4nnU49BzY
-jvfizwKoqmZGBv5yKI+jgX74BnG78NsjCMFs41VxJPez2zJ+4cseNUeNuBSGbgZl
-4BO6TfuswIM70esYMay8CzhtZhbWfqVyKWBFvqv/8xkXihVIDn+YHsx2qaNmfGab
-Vdy8XKpnDynmkvvuLWQM2g7TmJCqbXiV0lYgQ2MyWmP0k7o0bYoSlMACm1oJBhba
-joUI6g1Iqkr9K/ec/D9UJhRm87S0PLxAbEbRxIXfMrbqtxvfMQUcda/miIYyUvg4
-8mOHRLTcGAJKdWbkgNSnJNJLzbJOAYaVnX0yxpQDJmt+SE3V6FqaBprV2b5b4nFP
-5Myz1cAtb0+anT1MIt74ksUQHP8VeynSSreR4sMzTt+Zqc4vi0yQFzHUEVlZUv8N
-eW3tGHns1g3xNx1RGF3SSEa9yCdYr6F8/nSclePq/W+ZZFz3wOZxyTUpAf5gKNt/
-T1MKdw/Ll3/vbw==
-=zhJS
------END PGP SIGNATURE-----
---=-=-=--
+greg k-h
