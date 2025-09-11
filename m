@@ -1,139 +1,93 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E8634B52BFB
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Sep 2025 10:40:08 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B904CB53289
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Sep 2025 14:39:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7E88E41F4A;
-	Thu, 11 Sep 2025 08:39:49 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6A20B411CF;
+	Thu, 11 Sep 2025 12:39:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id OcgkxCqTl3Td; Thu, 11 Sep 2025 08:39:48 +0000 (UTC)
+ id C6GHqh9BHPx0; Thu, 11 Sep 2025 12:39:39 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C838B41F5F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A877B412A4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1757579988;
-	bh=Ltet1DEkl+6/W/mA/mh0wSx+0fdNt6OLAsr0v/vtsws=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=syDiuhOh2m1pKxIj1AxmOd5MZ/Mu+oul5ydu5KuqZ8QJ57SFZ+E5DjRjl5y97QLhP
-	 Bks4kgifDx+QnoQmERO7mvNRjWFA5Xwg4l0VlXaUqng9c4hLuAt8DZS7U2OZXsL9oJ
-	 0A6jrX3LSg2W3e87GXAQkqBVFVScoW8b07mLZPVRprwJUw3l9UyVYVnAOVZxIktjbJ
-	 D53aES0DiGrxcWsUm8Fct+D3rW2fE3tJ9A4zFPMNBYHsQiYTZgY4FQvMoGuCwGwOvH
-	 XI8BkDrJOZhRKyqEfo2sGFnh5uqwupMehpXfUZLbe9uh1ylES4IpD7l3nbTFAJhb2X
-	 rqZcj7y/e0aJA==
+	s=default; t=1757594379;
+	bh=qoEGQgITTow0ts8FT/4skPOvh2xN0t/hy6qCm4IWZ5Q=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=ycMcm6USKADjzUfr2Adj/9smSPIcnKquavzuDWD8WKIivQYD+z0zunRyBz9vD6y6Y
+	 J8JsSBMn5XxeaDGoOVKx32vnOsP+BXdI31DllueCcDFu0p2W1f7yagVloiYvCpXmRu
+	 5FXKa33uM3mRY5lxBfc8mWlu4XJdlm2SB/OCN4Xu4DnLMp1io061bucB1TmUIr8AWL
+	 NdLvF/46gueCX0fjK5GZPfkLYYnLD65hB7oEg1okLoiBDKSd7Hl6XvOuTxJtUEA9xf
+	 dtq5jyJTj5jvk9jUYrK9Ymu1KBvTbSSiJy0813hnrZNWGNHOvGLsbPySK9Oa/xrOrV
+	 oufB87SswIPJQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C838B41F5F;
-	Thu, 11 Sep 2025 08:39:48 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A877B412A4;
+	Thu, 11 Sep 2025 12:39:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 443C9234
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Sep 2025 08:39:47 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 337C0443
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Sep 2025 12:39:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 29C344166D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Sep 2025 08:39:47 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 257E761B7B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Sep 2025 12:39:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1ySMF7npvmZR for <intel-wired-lan@lists.osuosl.org>;
- Thu, 11 Sep 2025 08:39:46 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=pabeni@redhat.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 1D60C41669
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1D60C41669
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1D60C41669
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Sep 2025 08:39:45 +0000 (UTC)
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-231-SucRDI_APHSrcCVU_OxvKQ-1; Thu, 11 Sep 2025 04:39:41 -0400
-X-MC-Unique: SucRDI_APHSrcCVU_OxvKQ-1
-X-Mimecast-MFC-AGG-ID: SucRDI_APHSrcCVU_OxvKQ_1757579980
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-3df3e935ec8so247458f8f.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Sep 2025 01:39:41 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1757579980; x=1758184780;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Ltet1DEkl+6/W/mA/mh0wSx+0fdNt6OLAsr0v/vtsws=;
- b=wNW5HbjfsllQuyhUcdfOHqJ6z6+hUG2DlGu5b/wkcvI77NVgWjbHnvBwi7th1GpJuN
- UFZ8pGYNIisQuOijJOR1/wBjaotWkaGqnbyt/iZTC/7keweKb1529jcEGsqIDHKkYxsO
- AITQgcKhK+UC0HBVVIKLDVXIEgpYuRI2zrgW0cVYNWwlpia3PyeOJLSzT4T6hhF5hZcf
- VcELb+KyLIeVmGlRGMMmkQyun/gZ8u3Q3X36ZF13UPmK6+6reWpDDh2RzCl9OEvSvdf0
- xNMjK80jJ53WVdkAIq1YbG5Qmgoh8JXs/53YavH7le3yeE1PYr2axJpNMvxixbC+4kuN
- qOwA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW1tjTzmqKHM+yn3DIURqPEwUsZSXd+GxLBsD0sMp2leZ6gXZXBBnRJQqywxfTt9Cq8ePIO1/njf3pqTKBQM3M=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yw96YQbpGJZMfYrmKZC2BMNrAUq4p/SuP6ucsZqCuhJ7084LAKo
- VxWVtawRvk57pG9SG/+B0tIY2bBeX7TS4FnyORx8Q+v/YM/2gdErI63AMntOSv0oPZ+/HILy8QC
- hj0SnigaVdL/7RX/l8l/zDUAZoSh55JqfUlM6YJj/yFgnBHiLgpy/MAXYrcFeM3xlnmR0row=
-X-Gm-Gg: ASbGnctlSbBc+JfavhYt1gYk1U6AEPXOCepu34/iLbRxvKy1vOYx3Lhgk1UCPRWsg7t
- 9XazQcg9M9wi0/9zlS+k7VP18bniNzLh1Fy0vSza18s7UwTV1pFkIyRIZfI23CvldxoF441JtNG
- QhQWtsLo3r7nV3zy1UGQAVMlXE584uHrZTjYApyVPDCDVTfC0x6rrz6d++sbUCx4aZP6/TNL+fd
- cK8eKgFEMDOd4RpSfU8qFDhI5QMlv+4SQC9r95cteZAtWSdQ9xAGJFaF2b2/iGrvYyvhkxSsGQh
- d1nTb3FpsPRS29C+Gh/Y6Wc3mgAssevJtvWoVHTyjPk=
-X-Received: by 2002:a05:6000:1ace:b0:3e7:610b:85f6 with SMTP id
- ffacd0b85a97d-3e7610b8754mr1087221f8f.39.1757579980047; 
- Thu, 11 Sep 2025 01:39:40 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEKiL19RoayeKzPbOlZN/BIKP343mirP4w1v2R1K9mBR+ow5apdnT52wvVT2ZVXAZtbgB7Mhw==
-X-Received: by 2002:a05:6000:1ace:b0:3e7:610b:85f6 with SMTP id
- ffacd0b85a97d-3e7610b8754mr1087200f8f.39.1757579979640; 
- Thu, 11 Sep 2025 01:39:39 -0700 (PDT)
-Received: from [192.168.0.115] ([216.128.11.130])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3e760776badsm1589169f8f.5.2025.09.11.01.39.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 11 Sep 2025 01:39:38 -0700 (PDT)
-Message-ID: <8f52c5b8-bd8a-44b8-812c-4f30d50f63ff@redhat.com>
-Date: Thu, 11 Sep 2025 10:39:37 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Vadim Fedorenko <vadim.fedorenko@linux.dev>,
- Jakub Kicinski <kuba@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
- Michael Chan <michael.chan@broadcom.com>,
- Pavan Chebbi <pavan.chebbi@broadcom.com>, Tariq Toukan <tariqt@nvidia.com>,
- Gal Pressman <gal@nvidia.com>, intel-wired-lan@lists.osuosl.org,
- Donald Hunter <donald.hunter@gmail.com>, Carolina Jubran <cjubran@nvidia.com>
-Cc: Simon Horman <horms@kernel.org>, netdev@vger.kernel.org
-References: <20250910221111.1527502-1-vadim.fedorenko@linux.dev>
- <20250910221111.1527502-2-vadim.fedorenko@linux.dev>
-From: Paolo Abeni <pabeni@redhat.com>
-In-Reply-To: <20250910221111.1527502-2-vadim.fedorenko@linux.dev>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: xEH48IbazCen-CCP9q_nk7AyjqeMtltUndcsdwGA7oc_1757579980
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1757579984;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Ltet1DEkl+6/W/mA/mh0wSx+0fdNt6OLAsr0v/vtsws=;
- b=Bwj1x0yhbVnBwRSBW+cBTW6UjQYZVudCL0G88dvkKev7LVgzzVL3n60rcrjImwiiXFNsk9
- 60hh1G8d+S5WuKrE2AjsGLh38M7kjrV1+yPt0kl1AmtouIcZRUxGzRs3p2cPF5GTRFSJsV
- JZo4MHcnHnPZqEC9Vp8/oN6BnIuaacs=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
- header.s=mimecast20190719 header.b=Bwj1x0yh
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 1/4] ethtool: add FEC bins
- histogramm report
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id eWNzSTr6CZbg for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 11 Sep 2025 12:39:37 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 28F24615D1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 28F24615D1
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 28F24615D1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Sep 2025 12:39:35 +0000 (UTC)
+X-CSE-ConnectionGUID: rYoQbm8qQ5Kp1DrSDhBudQ==
+X-CSE-MsgGUID: ILD1Rv6fQluvZUiCuHXqdQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11531"; a="59845134"
+X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; d="scan'208";a="59845134"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+ by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Sep 2025 05:39:35 -0700
+X-CSE-ConnectionGUID: mWI0ivNKTCi3doL+7pRvUw==
+X-CSE-MsgGUID: FG1PVv73QS+qMsV364jtlg==
+X-ExtLoop1: 1
+Received: from lkp-server02.sh.intel.com (HELO eb5fdfb2a9b7) ([10.239.97.151])
+ by fmviesa003.fm.intel.com with ESMTP; 11 Sep 2025 05:39:34 -0700
+Received: from kbuild by eb5fdfb2a9b7 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1uwgaK-0000KE-0V
+ for intel-wired-lan@lists.osuosl.org; Thu, 11 Sep 2025 12:39:32 +0000
+Date: Thu, 11 Sep 2025 20:38:36 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202509112026.YkqiHxj9-lkp@intel.com>
+User-Agent: s-nail v14.9.24
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1757594377; x=1789130377;
+ h=date:from:to:subject:message-id;
+ bh=xSrtEgxDjJ64xcICXOfArXoUpKB9UW3RPlitUJNN6Ew=;
+ b=XUILCpIZYhyubcmQD9K/odktNVagArX5/6URylG8tZQc0o/M6WZgH+1K
+ MIQXDx9oWkZQoqPSaSNxR34mu2TSn+HzaxO3EJzGEziDbJ1oCV3PR9uyU
+ 0CvYbGemFQrmM5aqwdp7k/c3+zjqRSaapAJnn6e93aWW6Pki8+nSti/pF
+ UV3btk6STyr1rbYY1ozu05jq1kV649HDBCRvq3ajpV7nKm79lMBHv/qGD
+ G+j5PmZGABSRH8z52416BXI0SC5Ij3Tb2cr6kEO55AIRwZFgIIdE+raGM
+ KXc32KtobrijkMhKrc+LqXcNF0koMvAMwt9OkOZn2B1JhNE8FlK1GHjhK
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=XUILCpIZ
+Subject: [Intel-wired-lan] [tnguy-next-queue:main] BUILD SUCCESS
+ deb105f49879dd50d595f7f55207d6e74dec34e6
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -149,20 +103,131 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 9/11/25 12:11 AM, Vadim Fedorenko wrote:
-> IEEE 802.3ck-2022 defines counters for FEC bins and 802.3df-2024
-> clarifies it a bit further. Implement reporting interface through as
-> addition to FEC stats available in ethtool.
-> 
-> Signed-off-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git main
+branch HEAD: deb105f49879dd50d595f7f55207d6e74dec34e6  net: phy: marvell: Fix 88e1510 downshift counter errata
 
-Not really a review, but this is apparently causing self tests failures:
+elapsed time: 2010m
 
-https://netdev-3.bots.linux.dev/vmksft-net-drv-dbg/results/292661/5-stats-py/stdout
+configs tested: 112
+configs skipped: 3
 
-and ynl build errors:
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-https://netdev.bots.linux.dev/static/nipa/1001130/ynl/stderr
+tested configs:
+alpha                             allnoconfig    gcc-15.1.0
+alpha                            allyesconfig    gcc-15.1.0
+arc                              allmodconfig    gcc-15.1.0
+arc                               allnoconfig    gcc-15.1.0
+arc                              allyesconfig    gcc-15.1.0
+arc                   randconfig-001-20250911    gcc-8.5.0
+arc                   randconfig-002-20250911    gcc-12.5.0
+arm                              allmodconfig    gcc-15.1.0
+arm                               allnoconfig    clang-22
+arm                              allyesconfig    gcc-15.1.0
+arm                   randconfig-001-20250911    clang-22
+arm                   randconfig-002-20250911    gcc-14.3.0
+arm                   randconfig-003-20250911    clang-22
+arm                   randconfig-004-20250911    clang-16
+arm64                            allmodconfig    clang-19
+arm64                             allnoconfig    gcc-15.1.0
+arm64                 randconfig-001-20250911    gcc-13.4.0
+arm64                 randconfig-002-20250911    gcc-8.5.0
+arm64                 randconfig-003-20250911    gcc-8.5.0
+arm64                 randconfig-004-20250911    clang-22
+csky                              allnoconfig    gcc-15.1.0
+csky                  randconfig-001-20250911    gcc-15.1.0
+csky                  randconfig-002-20250911    gcc-13.4.0
+hexagon                          allmodconfig    clang-17
+hexagon                           allnoconfig    clang-22
+hexagon                          allyesconfig    clang-22
+hexagon               randconfig-001-20250911    clang-20
+hexagon               randconfig-002-20250911    clang-22
+i386                             allmodconfig    gcc-14
+i386                              allnoconfig    gcc-14
+i386                             allyesconfig    gcc-14
+i386        buildonly-randconfig-001-20250911    clang-20
+i386        buildonly-randconfig-002-20250911    clang-20
+i386        buildonly-randconfig-003-20250911    clang-20
+i386        buildonly-randconfig-004-20250911    clang-20
+i386        buildonly-randconfig-005-20250911    clang-20
+i386        buildonly-randconfig-006-20250911    clang-20
+i386                                defconfig    clang-20
+loongarch                        allmodconfig    clang-19
+loongarch                         allnoconfig    clang-22
+loongarch             randconfig-001-20250911    gcc-15.1.0
+loongarch             randconfig-002-20250911    gcc-15.1.0
+m68k                             allmodconfig    gcc-15.1.0
+m68k                              allnoconfig    gcc-15.1.0
+m68k                             allyesconfig    gcc-15.1.0
+microblaze                       allmodconfig    gcc-15.1.0
+microblaze                        allnoconfig    gcc-15.1.0
+microblaze                       allyesconfig    gcc-15.1.0
+microblaze                          defconfig    gcc-15.1.0
+mips                              allnoconfig    gcc-15.1.0
+nios2                             allnoconfig    gcc-11.5.0
+nios2                               defconfig    gcc-11.5.0
+nios2                 randconfig-001-20250911    gcc-11.5.0
+nios2                 randconfig-002-20250911    gcc-8.5.0
+openrisc                          allnoconfig    gcc-15.1.0
+openrisc                         allyesconfig    gcc-15.1.0
+parisc                           allmodconfig    gcc-15.1.0
+parisc                            allnoconfig    gcc-15.1.0
+parisc                           allyesconfig    gcc-15.1.0
+parisc                              defconfig    gcc-15.1.0
+parisc                randconfig-001-20250911    gcc-8.5.0
+parisc                randconfig-002-20250911    gcc-8.5.0
+parisc64                            defconfig    gcc-15.1.0
+powerpc                          allmodconfig    gcc-15.1.0
+powerpc                           allnoconfig    gcc-15.1.0
+powerpc                          allyesconfig    clang-22
+powerpc               randconfig-001-20250911    gcc-8.5.0
+powerpc               randconfig-002-20250911    gcc-15.1.0
+powerpc               randconfig-003-20250911    gcc-8.5.0
+powerpc64             randconfig-001-20250911    clang-22
+powerpc64             randconfig-002-20250911    gcc-11.5.0
+powerpc64             randconfig-003-20250911    gcc-8.5.0
+riscv                            allmodconfig    clang-22
+riscv                             allnoconfig    gcc-15.1.0
+riscv                            allyesconfig    clang-16
+riscv                 randconfig-001-20250911    clang-20
+riscv                 randconfig-002-20250911    clang-22
+s390                             allmodconfig    clang-18
+s390                              allnoconfig    clang-22
+s390                             allyesconfig    gcc-15.1.0
+s390                  randconfig-001-20250911    gcc-11.5.0
+s390                  randconfig-002-20250911    clang-16
+sh                               allmodconfig    gcc-15.1.0
+sh                                allnoconfig    gcc-15.1.0
+sh                               allyesconfig    gcc-15.1.0
+sh                    randconfig-001-20250911    gcc-9.5.0
+sh                    randconfig-002-20250911    gcc-15.1.0
+sparc                            allmodconfig    gcc-15.1.0
+sparc                             allnoconfig    gcc-15.1.0
+sparc                               defconfig    gcc-15.1.0
+sparc                 randconfig-001-20250911    gcc-15.1.0
+sparc                 randconfig-002-20250911    gcc-15.1.0
+sparc64               randconfig-001-20250911    gcc-8.5.0
+sparc64               randconfig-002-20250911    clang-20
+um                               allmodconfig    clang-19
+um                                allnoconfig    clang-22
+um                               allyesconfig    gcc-14
+um                    randconfig-001-20250911    clang-22
+um                    randconfig-002-20250911    gcc-14
+x86_64                            allnoconfig    clang-20
+x86_64                           allyesconfig    clang-20
+x86_64      buildonly-randconfig-001-20250911    gcc-14
+x86_64      buildonly-randconfig-002-20250911    gcc-14
+x86_64      buildonly-randconfig-003-20250911    clang-20
+x86_64      buildonly-randconfig-004-20250911    clang-20
+x86_64      buildonly-randconfig-005-20250911    clang-20
+x86_64      buildonly-randconfig-006-20250911    gcc-14
+x86_64                              defconfig    gcc-14
+x86_64                          rhel-9.4-rust    clang-20
+xtensa                            allnoconfig    gcc-15.1.0
+xtensa                randconfig-001-20250911    gcc-12.5.0
+xtensa                randconfig-002-20250911    gcc-8.5.0
 
-/P
-
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
