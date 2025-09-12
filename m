@@ -1,74 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 606A6B54F22
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 Sep 2025 15:17:28 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 727C0B54F1C
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 Sep 2025 15:17:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C8460824DF;
-	Fri, 12 Sep 2025 13:17:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id F32D660DF8;
+	Fri, 12 Sep 2025 13:17:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9VszuAVrZlsY; Fri, 12 Sep 2025 13:17:20 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id nhS701STVDpJ; Fri, 12 Sep 2025 13:17:21 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2E37E824D4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4D4736111E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1757683040;
-	bh=xc4ZkU6vjLa67UjzVHyomD+FdIm/OKdszPgdkIpSP4A=;
+	s=default; t=1757683041;
+	bh=8IQhIO8zJJxXn/TOhM5vjB3g1F/L9il3WI2vS8Ew/pk=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=p9/h4Q4vPcR5r6bM2+z06brs99CkZ3Cp7E4594Xuk7eo5plbIVAu2R1GtGmWXJ07J
-	 g1h6UdR8tv23ffPlzjS29Bn4GHJolt+TVlZCoECJ5wRtmHbq0rrUE0OWFY1+Pz9Vwr
-	 7BMyC4OwQfCRWYqpci/zGIBoUU/7NeS5r5Y14SgHoGpeAC1+iaxZNRZf6pzlstdgmv
-	 s+TemGWUk6+kI6GLMxowCsxsdfoRLRjKRO0j2KfhCUHeJdnAKZ/KZuSGNnNhwXNivU
-	 +6ikrr66+xGguETJ0oFn1No0yiru2CcoMj4xJAtFq3A2B6MpAow0Y6jVV1/7DmaQY5
-	 HNtHu5bOPxHEg==
+	b=z7vhfso2igFuOcKmWBhkJDnItluxsvSWT99PQ62Vmwl5pcQB3r2ENu1kcRsjyfsAQ
+	 3y/qQYXKTtQ3V/7XLHydkgBJHc6q/49jC131DxJFeMf8Fnv2Z1K8lpgZhBbd+FN5FB
+	 bVKgQJk7qOtHxMG4xdp7sAC0HzPHQEhYmRIJnGOVufATY854042/5SQCGAVBDWrOAz
+	 thmlSdEop8GZywiTLtb+g9tbk6JeQVvXeFEl/L8mCyRWEcc1TyAmrv4v5dYF8Z/Gf1
+	 DfrIN68wP398EMgZ8v7ajlrzrt0vxIpqKy9dJvX1cRn41ArHkxpTlFzWzpUwTUynWX
+	 gZ0z1r9eXW/cw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2E37E824D4;
-	Fri, 12 Sep 2025 13:17:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4D4736111E;
+	Fri, 12 Sep 2025 13:17:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 4F3F525B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Sep 2025 13:17:17 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 0DB0D25B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Sep 2025 13:17:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8372D8230C
+ by smtp1.osuosl.org (Postfix) with ESMTP id EEE948230D
  for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Sep 2025 13:17:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5v4u72hI3OkI for <intel-wired-lan@lists.osuosl.org>;
+ id TYeMb5RW-wa0 for <intel-wired-lan@lists.osuosl.org>;
  Fri, 12 Sep 2025 13:17:16 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
  helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org D4E8B8230D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D4E8B8230D
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4B0048230A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4B0048230A
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D4E8B8230D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Sep 2025 13:17:15 +0000 (UTC)
-X-CSE-ConnectionGUID: a2zRgdb7TpC0JMypHr9riw==
-X-CSE-MsgGUID: 9c0MglZZQvOcGWqJmQWnoQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11551"; a="85461425"
-X-IronPort-AV: E=Sophos;i="6.18,259,1751266800"; d="scan'208";a="85461425"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4B0048230A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Sep 2025 13:17:16 +0000 (UTC)
+X-CSE-ConnectionGUID: eK7x8USpQkmuA5rQUHrgmQ==
+X-CSE-MsgGUID: OPLZCNeERlG4f9ewQms7UQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11551"; a="85461432"
+X-IronPort-AV: E=Sophos;i="6.18,259,1751266800"; d="scan'208";a="85461432"
 Received: from orviesa006.jf.intel.com ([10.64.159.146])
  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Sep 2025 06:17:15 -0700
-X-CSE-ConnectionGUID: Ouq+kAEFTm+s7oFBhulCEA==
-X-CSE-MsgGUID: 1ZjoFv0yTripHCbjuczb7w==
+ 12 Sep 2025 06:17:16 -0700
+X-CSE-ConnectionGUID: mUtTehwKRDysC7bduifkPA==
+X-CSE-MsgGUID: blrpboMxSh+zN6dpGlBBVg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,259,1751266800"; d="scan'208";a="173131229"
+X-IronPort-AV: E=Sophos;i="6.18,259,1751266800"; d="scan'208";a="173131232"
 Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by orviesa006.jf.intel.com with ESMTP; 12 Sep 2025 06:17:13 -0700
+ by orviesa006.jf.intel.com with ESMTP; 12 Sep 2025 06:17:14 -0700
 Received: from vecna.igk.intel.com (vecna.igk.intel.com [10.123.220.17])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id EB5482FC74;
- Fri, 12 Sep 2025 14:17:11 +0100 (IST)
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 9ECB02FC6E;
+ Fri, 12 Sep 2025 14:17:12 +0100 (IST)
 From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 To: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>
-Date: Fri, 12 Sep 2025 15:06:23 +0200
-Message-Id: <20250912130627.5015-6-przemyslaw.kitszel@intel.com>
+Date: Fri, 12 Sep 2025 15:06:24 +0200
+Message-Id: <20250912130627.5015-7-przemyslaw.kitszel@intel.com>
 X-Mailer: git-send-email 2.39.3
 In-Reply-To: <20250912130627.5015-1-przemyslaw.kitszel@intel.com>
 References: <20250912130627.5015-1-przemyslaw.kitszel@intel.com>
@@ -79,22 +79,22 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1757683036; x=1789219036;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=WimtE2+lSFCJa+aikLsi54UGM4k6ywZR+VyG85KhLU4=;
- b=YxEkGYagmrgWtOLwlENGmGLao+H1TfGllOUqLPwp5ZTk6EGo9wr0w8Vk
- /xAkzag/7vRHvcm2pJkKL1GNx9nMy/Z48Ws5G5i3mpo8ukNFKPDjKXdzc
- jOt857hKQhbxjrTDDogKHdj86gpKvEGCHCS6/EasQ0NkrByY6OuONv1ux
- YcW3yVBpkocf75B0DenDuX6gNJZbkcgDg1kf+OGeYIbij2SWcYlB3gFRK
- ONAgFr9vhNf7AU8kB1U92k966l6KPOxr8EsxOkRDNIZvF4ofIbtEwL0Hb
- dqP639wR8C5Yh2W9vxaORSowBZ+ZlQGChrqGSAcl2VtklS8hk6ethzJ+n
- A==;
+ bh=oKCUiNYNWYYf2KHg5yOtaekk1S2bAh14IFPmuzYk2xI=;
+ b=MZTVoD8TEg+3B7qgHE9VxwKYHcxW1ygdZgcyvbWE4ox97WvvbC3DQZhW
+ hUXrBaqwYSTqKmLakzYA7giZfX/DEJlmhYoVq5k3DS82w5831qONzTWd2
+ lNDL6LdqqONcA9m6a0evlSUzvd3so8632HtCYIgXwmlZM6iLBfegc4nON
+ rr0Kl3hmF9mWfShouxj6NFYbN+jjBe4pGzQSExJKfpb/nGv5myQ4f8V4h
+ rNbxgqXSs3Okg9+gmk5i2yIbs5et9Oo7gS2z5iKtUUpqZ038luLfBm2fH
+ E7hCtXxRURhCrPO/q4gfP43ekq7gt6p5N+Wud+LHKQfqYthKIoFQ7U2zc
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=YxEkGYag
-Subject: [Intel-wired-lan] [PATCH iwl-next 5/9] ice: move udp_tunnel_nic and
- misc IRQ setup into ice_init_pf()
+ header.a=rsa-sha256 header.s=Intel header.b=MZTVoD8T
+Subject: [Intel-wired-lan] [PATCH iwl-next 6/9] ice: move ice_init_pf() out
+ of ice_init_dev()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -113,122 +113,185 @@ Cc: netdev@vger.kernel.org, Simon Horman <horms@kernel.org>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Move udp_tunnel_nic setup and ice_req_irq_msix_misc() call into
-ice_init_pf(), remove some redundancy in the former while moving.
-
-Move ice_free_irq_msix_misc() call into ice_deinit_pf(), to mimic
-the above in terms of needed cleanup. Guard it via emptiness check,
-to keep the allowance of half-initialized pf being cleaned up.
+Move ice_init_pf() out of ice_init_dev().
+Do the same for deinit counterpart.
 
 Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_main.c | 58 +++++++++++------------
- 1 file changed, 28 insertions(+), 30 deletions(-)
+ drivers/net/ethernet/intel/ice/ice.h          |  2 ++
+ .../net/ethernet/intel/ice/devlink/devlink.c  | 16 ++++++++--
+ drivers/net/ethernet/intel/ice/ice_main.c     | 32 +++++++++----------
+ 3 files changed, 31 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index f81603a754f9..ae8339f7d2ff 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -3997,6 +3997,9 @@ static void ice_deinit_pf(struct ice_pf *pf)
- 	if (pf->ptp.clock)
- 		ptp_clock_unregister(pf->ptp.clock);
- 
-+	if (!xa_empty(&pf->irq_tracker.entries))
-+		ice_free_irq_msix_misc(pf);
-+
- 	xa_destroy(&pf->dyn_ports);
- 	xa_destroy(&pf->sf_nums);
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index 184aab6221c2..38e34246c803 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -1008,6 +1008,8 @@ void ice_unload(struct ice_pf *pf);
+ void ice_adv_lnk_speed_maps_init(void);
+ int ice_init_dev(struct ice_pf *pf);
+ void ice_deinit_dev(struct ice_pf *pf);
++int ice_init_pf(struct ice_pf *pf);
++void ice_deinit_pf(struct ice_pf *pf);
+ int ice_change_mtu(struct net_device *netdev, int new_mtu);
+ void ice_tx_timeout(struct net_device *netdev, unsigned int txqueue);
+ int ice_xdp(struct net_device *dev, struct netdev_bpf *xdp);
+diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink.c b/drivers/net/ethernet/intel/ice/devlink/devlink.c
+index fb2de521731a..c354a03c950c 100644
+--- a/drivers/net/ethernet/intel/ice/devlink/devlink.c
++++ b/drivers/net/ethernet/intel/ice/devlink/devlink.c
+@@ -459,6 +459,7 @@ static void ice_devlink_reinit_down(struct ice_pf *pf)
+ 	rtnl_lock();
+ 	ice_vsi_decfg(ice_get_main_vsi(pf));
+ 	rtnl_unlock();
++	ice_deinit_pf(pf);
+ 	ice_deinit_dev(pf);
  }
-@@ -4064,6 +4067,11 @@ void ice_start_service_task(struct ice_pf *pf)
-  */
- static int ice_init_pf(struct ice_pf *pf)
+ 
+@@ -1231,11 +1232,12 @@ static void ice_set_min_max_msix(struct ice_pf *pf)
+ static int ice_devlink_reinit_up(struct ice_pf *pf)
  {
-+	struct udp_tunnel_nic_info *udp_tunnel_nic = &pf->hw.udp_tunnel_nic;
+ 	struct ice_vsi *vsi = ice_get_main_vsi(pf);
 +	struct device *dev = ice_pf_to_dev(pf);
-+	struct ice_hw *hw = &pf->hw;
-+	int err = -ENOMEM;
-+
- 	mutex_init(&pf->sw_mutex);
- 	mutex_init(&pf->tc_mutex);
- 	mutex_init(&pf->adev_mutex);
-@@ -4093,11 +4101,30 @@ static int ice_init_pf(struct ice_pf *pf)
- 	if (!pf->avail_txqs || !pf->avail_rxqs)
- 		goto undo_init;
+ 	int err;
  
-+	udp_tunnel_nic->set_port = ice_udp_tunnel_set_port;
-+	udp_tunnel_nic->unset_port = ice_udp_tunnel_unset_port;
-+	udp_tunnel_nic->shared = &hw->udp_tunnel_shared;
-+	udp_tunnel_nic->tables[0].n_entries = hw->tnl.valid_count[TNL_VXLAN];
-+	udp_tunnel_nic->tables[0].tunnel_types = UDP_TUNNEL_TYPE_VXLAN;
-+	udp_tunnel_nic->tables[1].n_entries = hw->tnl.valid_count[TNL_GENEVE];
-+	udp_tunnel_nic->tables[1].tunnel_types = UDP_TUNNEL_TYPE_GENEVE;
-+
-+	/* In case of MSIX we are going to setup the misc vector right here
-+	 * to handle admin queue events etc. In case of legacy and MSI
-+	 * the misc functionality and queue processing is combined in
-+	 * the same vector and that gets setup at open.
-+	 */
-+	err = ice_req_irq_msix_misc(pf);
-+	if (err) {
-+		dev_err(dev, "setup of misc vector failed: %d\n", err);
-+		goto undo_init;
-+	}
-+
- 	return 0;
- undo_init:
- 	/* deinit handles half-initialized pf just fine */
- 	ice_deinit_pf(pf);
--	return -ENOMEM;
-+	return err;
- }
- 
- /**
-@@ -4782,45 +4809,16 @@ int ice_init_dev(struct ice_pf *pf)
- 		goto unroll_irq_scheme_init;
+ 	err = ice_init_hw(&pf->hw);
+ 	if (err) {
+-		dev_err(ice_pf_to_dev(pf), "ice_init_hw failed: %d\n", err);
++		dev_err(dev, "ice_init_hw failed: %d\n", err);
+ 		return err;
  	}
  
--	pf->hw.udp_tunnel_nic.set_port = ice_udp_tunnel_set_port;
--	pf->hw.udp_tunnel_nic.unset_port = ice_udp_tunnel_unset_port;
--	pf->hw.udp_tunnel_nic.shared = &pf->hw.udp_tunnel_shared;
--	if (pf->hw.tnl.valid_count[TNL_VXLAN]) {
--		pf->hw.udp_tunnel_nic.tables[0].n_entries =
--			pf->hw.tnl.valid_count[TNL_VXLAN];
--		pf->hw.udp_tunnel_nic.tables[0].tunnel_types =
--			UDP_TUNNEL_TYPE_VXLAN;
--	}
--	if (pf->hw.tnl.valid_count[TNL_GENEVE]) {
--		pf->hw.udp_tunnel_nic.tables[1].n_entries =
--			pf->hw.tnl.valid_count[TNL_GENEVE];
--		pf->hw.udp_tunnel_nic.tables[1].tunnel_types =
--			UDP_TUNNEL_TYPE_GENEVE;
--	}
--	/* In case of MSIX we are going to setup the misc vector right here
--	 * to handle admin queue events etc. In case of legacy and MSI
--	 * the misc functionality and queue processing is combined in
--	 * the same vector and that gets setup at open.
--	 */
--	err = ice_req_irq_msix_misc(pf);
--	if (err) {
--		dev_err(dev, "setup of misc vector failed: %d\n", err);
--		goto unroll_pf_init;
--	}
--
- 	return 0;
+@@ -1246,13 +1248,19 @@ static int ice_devlink_reinit_up(struct ice_pf *pf)
+ 	if (err)
+ 		goto unroll_hw_init;
  
--unroll_pf_init:
--	ice_deinit_pf(pf);
- unroll_irq_scheme_init:
- 	ice_service_task_stop(pf);
- 	ice_clear_interrupt_scheme(pf);
- 	return err;
++	err = ice_init_pf(pf);
++	if (err) {
++		dev_err(dev, "ice_init_pf failed: %d\n", err);
++		goto unroll_dev_init;
++	}
++
+ 	vsi->flags = ICE_VSI_FLAG_INIT;
+ 
+ 	rtnl_lock();
+ 	err = ice_vsi_cfg(vsi);
+ 	rtnl_unlock();
+ 	if (err)
+-		goto err_vsi_cfg;
++		goto unroll_pf_init;
+ 
+ 	/* No need to take devl_lock, it's already taken by devlink API */
+ 	err = ice_load(pf);
+@@ -1265,7 +1273,9 @@ static int ice_devlink_reinit_up(struct ice_pf *pf)
+ 	rtnl_lock();
+ 	ice_vsi_decfg(vsi);
+ 	rtnl_unlock();
+-err_vsi_cfg:
++unroll_pf_init:
++	ice_deinit_pf(pf);
++unroll_dev_init:
+ 	ice_deinit_dev(pf);
+ unroll_hw_init:
+ 	ice_deinit_hw(&pf->hw);
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index ae8339f7d2ff..6d9de6e24804 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -3973,7 +3973,7 @@ u16 ice_get_avail_rxq_count(struct ice_pf *pf)
+  * ice_deinit_pf - Unrolls initialziations done by ice_init_pf
+  * @pf: board private structure to initialize
+  */
+-static void ice_deinit_pf(struct ice_pf *pf)
++void ice_deinit_pf(struct ice_pf *pf)
+ {
+ 	/* note that we unroll also on ice_init_pf() failure here */
+ 
+@@ -4064,8 +4064,9 @@ void ice_start_service_task(struct ice_pf *pf)
+ /**
+  * ice_init_pf - Initialize general software structures (struct ice_pf)
+  * @pf: board private structure to initialize
++ * Return: 0 on success, negative errno otherwise.
+  */
+-static int ice_init_pf(struct ice_pf *pf)
++int ice_init_pf(struct ice_pf *pf)
+ {
+ 	struct udp_tunnel_nic_info *udp_tunnel_nic = &pf->hw.udp_tunnel_nic;
+ 	struct device *dev = ice_pf_to_dev(pf);
+@@ -4803,23 +4804,12 @@ int ice_init_dev(struct ice_pf *pf)
+ 	}
+ 
+ 	ice_start_service_task(pf);
+-	err = ice_init_pf(pf);
+-	if (err) {
+-		dev_err(dev, "ice_init_pf failed: %d\n", err);
+-		goto unroll_irq_scheme_init;
+-	}
+ 
+ 	return 0;
+-
+-unroll_irq_scheme_init:
+-	ice_service_task_stop(pf);
+-	ice_clear_interrupt_scheme(pf);
+-	return err;
  }
  
  void ice_deinit_dev(struct ice_pf *pf)
  {
--	ice_free_irq_msix_misc(pf);
- 	ice_deinit_pf(pf);
+-	ice_deinit_pf(pf);
  	ice_deinit_hw(&pf->hw);
  	ice_service_task_stop(pf);
+ 
+@@ -5061,21 +5051,28 @@ static void ice_deinit_devlink(struct ice_pf *pf)
+ 
+ static int ice_init(struct ice_pf *pf)
+ {
++	struct device *dev = ice_pf_to_dev(pf);
+ 	int err;
+ 
+ 	err = ice_init_dev(pf);
+ 	if (err)
+ 		return err;
+ 
++	err = ice_init_pf(pf);
++	if (err) {
++		dev_err(dev, "ice_init_pf failed: %d\n", err);
++		goto unroll_dev_init;
++	}
++
+ 	if (pf->hw.mac_type == ICE_MAC_E830) {
+ 		err = pci_enable_ptm(pf->pdev, NULL);
+ 		if (err)
+-			dev_dbg(ice_pf_to_dev(pf), "PCIe PTM not supported by PCIe bus/controller\n");
++			dev_dbg(dev, "PCIe PTM not supported by PCIe bus/controller\n");
+ 	}
+ 
+ 	err = ice_alloc_vsis(pf);
+ 	if (err)
+-		goto err_alloc_vsis;
++		goto unroll_pf_init;
+ 
+ 	err = ice_init_pf_sw(pf);
+ 	if (err)
+@@ -5112,7 +5109,9 @@ static int ice_init(struct ice_pf *pf)
+ 	ice_deinit_pf_sw(pf);
+ err_init_pf_sw:
+ 	ice_dealloc_vsis(pf);
+-err_alloc_vsis:
++unroll_pf_init:
++	ice_deinit_pf(pf);
++unroll_dev_init:
+ 	ice_deinit_dev(pf);
+ 	return err;
+ }
+@@ -5124,6 +5123,7 @@ static void ice_deinit(struct ice_pf *pf)
+ 
+ 	ice_deinit_pf_sw(pf);
+ 	ice_dealloc_vsis(pf);
++	ice_deinit_pf(pf);
+ 	ice_deinit_dev(pf);
+ }
+ 
 -- 
 2.39.3
 
