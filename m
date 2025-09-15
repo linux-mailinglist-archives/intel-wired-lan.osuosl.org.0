@@ -1,81 +1,103 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9AD4EB575BB
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Sep 2025 12:12:23 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3CAA3B5809B
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Sep 2025 17:29:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 358DF6F8F1;
-	Mon, 15 Sep 2025 10:12:22 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A859340483;
+	Mon, 15 Sep 2025 15:29:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZH00HlNNTELz; Mon, 15 Sep 2025 10:12:21 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id OzBah6xa-eO5; Mon, 15 Sep 2025 15:29:02 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org ADF126F8E4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E84EA4048D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1757931141;
-	bh=S1AtjpxdHDknlPBOsm9qAIYwzSA+5lc3fAGRaoo5YJs=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1757950142;
+	bh=CAygs02+g0MbJDsAinwMyJxPXjZQb+F5N8Jalspkf7k=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=0F6d+FXvRedByt6y+YVspM2CJYIdcUpd6mJDqyerxy19W9hTRZ1fnnmANCPM1wCx3
-	 JDT6iDvYcoCkeJw77V0E9cd26KjFFyYcoz1H9si5+szgy8jNDtujTmQly9fURurmWe
-	 dgqg8im3X59duUSXvjvNK54y5/Gep8+5aBVlKw0Zy8ouRHXaBT9WphcxGt/K8mUD0Y
-	 5EUwqUwNhCukkgEXSZYlpaTM6O+gXB3qQAYpPZzxxzDjv7Eh4ph3QY5seYpFlzkiO0
-	 cW30VsrUrokPt+1+Y6OlxUG0hjyEkDFiHSFhaYmksp92DxMMqMgu1kfFWTMmUO+uOG
-	 poBWSjeY6iGGw==
+	b=U6qN7fSlNzCSFznBYszGSBSe4x/vQ1ZfJTN+vKReeHh7T3wEXP7r0OBJWf1tHexWv
+	 0F8sMIstmdoy/FVnVwWJjyOFRKIIiCF2rjaMYi1uKrXbHDZudqpmU5o57Wxb22bMBj
+	 lNLvtzr/g+ZO3HqWqyrVVCaVtPmrMNbMv1XuGKazKcm5suusSNxe9+9I9fVNUQZWMK
+	 vhOWRNv5KI6gPAJPuH9N7uaLufgvszsELkFPl7nYfrKcPf+A9j2D7ibRR4OM2PiE5w
+	 +mXUS+DL5SneKleGtBhmj/TjY4eJjFRUR56EHrXEoK8glVjXwcGn9J0BdScca4CNLD
+	 R/g/YnntJNr/g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id ADF126F8E4;
-	Mon, 15 Sep 2025 10:12:21 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E84EA4048D;
+	Mon, 15 Sep 2025 15:29:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 0394612D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Sep 2025 10:12:20 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 75AD712D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Sep 2025 10:14:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E975284A48
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Sep 2025 10:12:19 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6735740DC2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Sep 2025 10:14:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id LDhhhBI1VrSA for <intel-wired-lan@lists.osuosl.org>;
- Mon, 15 Sep 2025 10:12:18 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id hlezFJEcycIs for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 15 Sep 2025 10:14:27 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=209.85.208.48;
+ helo=mail-ed1-f48.google.com; envelope-from=breno.debian@gmail.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org AD09983EE8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AD09983EE8
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id AD09983EE8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Sep 2025 10:12:17 +0000 (UTC)
-Received: from [141.14.220.42] (g42.guest.molgen.mpg.de [141.14.220.42])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 9E4CB6028F364;
- Mon, 15 Sep 2025 12:12:03 +0200 (CEST)
-Message-ID: <015b02e3-a9b7-4f4f-99da-fdf9bd1f8202@molgen.mpg.de>
-Date: Mon, 15 Sep 2025 12:12:03 +0200
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 4C23C40057
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4C23C40057
+Received: from mail-ed1-f48.google.com (mail-ed1-f48.google.com
+ [209.85.208.48])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4C23C40057
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Sep 2025 10:14:27 +0000 (UTC)
+Received: by mail-ed1-f48.google.com with SMTP id
+ 4fb4d7f45d1cf-62ef469bb2cso4478339a12.2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Sep 2025 03:14:27 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1757931265; x=1758536065;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=CAygs02+g0MbJDsAinwMyJxPXjZQb+F5N8Jalspkf7k=;
+ b=PRJ91BHqSn3cNhA23zJe210WZha1bMvbfto+aZsVj61a+pVKGngF9hlBU8LGxByyYi
+ i+G85pnj3+EI3/n10tCIpnuUnEQ69ArzBV/c1ZCV81oXKky7fz2M7zl5r/9Cl8q3Ewid
+ 7qMeD1o3rxErgknhsNNJv8Yl7hK39d04IC5f7UYDOv037s4Mjbyq985QSkC+rktu2Emw
+ Akf1SlfaHLZWeqdxV2Ls5i52LVc/R3XavbpnKSGHaf43LM4L/THsVM618E4OhCo8giku
+ uGu2Eqz5LuS347V1xbkI4r4Lk5JxpeSWCpx/dlGUd+BvYwdoYCKstgQbX7GTZ0ZfIFSe
+ mVeg==
+X-Gm-Message-State: AOJu0YyyKK+ADIsRv0SIIfq0P4SRt7UrIC99hzFb3wWonI7yTb5ahDVZ
+ jsWC2iG1DlwQGfvhcyyWlZvsPlWBe8FH9YBnHlL0T/mvXv5PwBhYD+HC
+X-Gm-Gg: ASbGncvwur+nOilkrGba2lGpaRQ805bVq1cqW2tN6Nl1pVxEIGV718XIOlW4ggaGuul
+ oihm35pNLTDDiXaD/NHvWksCLZ/rxWCFTxFmi3Xg8YYnVVFHa1MlPQIS0VY4LXe48iy4vSsEWY3
+ IdYgTttuHn5bzH9kDYLPEd6oGJ204VkreaKvqh09U0DMDpo4mWc9u2GRA5IcWtHn33ao4lCdntD
+ UAZQvO/0lpBM7ZLAw3ZARusSOJHnC5lGS6vqmhzf3jYE3N/9M9+/bWnFjo/lpA5OcE7fbYlHsh9
+ 20t7Mm4r3HuLiGTPN/Y6tHrLumMk0tjWtFJvOGTAMHR8l/VC5AIPL1lTivwREK4wMyfac5l0Tro
+ w4LQ0k+92tfHXVdtkMlcUdQ8c
+X-Google-Smtp-Source: AGHT+IEoBsVRHvl1p4Zrqcs2rmBL9VAocz0nQOrX2z7rXzNaRyuk3E8aAvo7oAfIKkCJMF0C0LG8DQ==
+X-Received: by 2002:a05:6402:454e:b0:62a:a4f0:7e5f with SMTP id
+ 4fb4d7f45d1cf-62ed840792cmr10145278a12.34.1757931265011; 
+ Mon, 15 Sep 2025 03:14:25 -0700 (PDT)
+Received: from gmail.com ([2a03:2880:30ff:72::])
+ by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-62f31fa406esm2498318a12.11.2025.09.15.03.14.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 15 Sep 2025 03:14:24 -0700 (PDT)
+Date: Mon, 15 Sep 2025 03:14:22 -0700
+From: Breno Leitao <leitao@debian.org>
+To: kernel test robot <lkp@intel.com>, anthony.l.nguyen@intel.com
+Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>, netdev@vger.kernel.org
+Message-ID: <mpxxgmukbabs7hkasdph24vg2pt3myjojab3vocpgerm77so4m@n3dwy7mypowe>
+References: <202509140606.j8z3rE73-lkp@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- netdev@vger.kernel.org
-References: <20250912080208.1048019-1-aleksandr.loktionov@intel.com>
- <8c3d7bc5-7269-4c8c-922d-7d6013ac51cb@molgen.mpg.de>
- <679b3ad8-91fd-4570-9e63-c6c5e22a8820@intel.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <679b3ad8-91fd-4570-9e63-c6c5e22a8820@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <202509140606.j8z3rE73-lkp@intel.com>
+X-Mailman-Approved-At: Mon, 15 Sep 2025 15:29:00 +0000
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1] iavf: fix proper type for
- error code in iavf_resume()
+ header.from=debian.org
+Subject: Re: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD REGRESSION
+ a6c7254e995a80be8c3239fb631d9d65c9e75248
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -91,72 +113,19 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Przemek,
-
-
-Thank you for your quick reply.
-
-Am 15.09.25 um 11:58 schrieb Przemek Kitszel:
-> On 9/15/25 11:12, Paul Menzel wrote:
-
->> Am 12.09.25 um 10:02 schrieb Aleksandr Loktionov:
->>> The variable 'err' in iavf_resume() is used to store the return value
->>> of different functions, which return an int. Currently, 'err' is
->>> declared as u32, which is semantically incorrect and misleading.
->>>
->>> In the Linux kernel, u32 is typically reserved for fixed-width data
->>> used in hardware interfaces or protocol structures. Using it for a
->>> generic error code may confuse reviewers or developers into thinking
->>> the value is hardware-related or size-constrained.
->>>
->>> Replace u32 with int to reflect the actual usage and improve code
->>> clarity and semantic correctness.
->>
->> Why not use `unsigned int`?
+On Sun, Sep 14, 2025 at 06:05:17AM +0800, kernel test robot wrote:
+> tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+> branch HEAD: a6c7254e995a80be8c3239fb631d9d65c9e75248  idpf: enable XSk features and ndo_xsk_wakeup
 > 
-> I don't think we need to provide rationale for "kernel has adopted
-> a long standing practice of encoding errors as negative integer codes"
-> each time we change a type, IOW it's too basic thing to mention.
-
-Well, if it was unsigned before, than apparently no negative values were 
-ever returned.
-
->>> No functional change.
->>>
->>> Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
->>> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
->>> ---
->>>   drivers/net/ethernet/intel/iavf/iavf_main.c | 2 +-
->>>   1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/ 
->>> net/ethernet/intel/iavf/iavf_main.c
->>> index 69054af..c2fbe44 100644
->>> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
->>> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
->>> @@ -5491,7 +5491,7 @@ static int iavf_resume(struct device *dev_d)
->>>   {
->>>       struct pci_dev *pdev = to_pci_dev(dev_d);
->>>       struct iavf_adapter *adapter;
->>> -    u32 err;
->>> +    int err;
->>>       adapter = iavf_pdev_to_adapter(pdev);
->>
->> Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+> Error/Warning ids grouped by kconfigs:
 > 
-> Thank you
+> recent_errors
+> `-- loongarch-loongson3_defconfig
+>     |-- ld.lld:error:undefined-symbol:libie_fwlog_deinit
+>     |-- ld.lld:error:undefined-symbol:libie_fwlog_init
+>     `-- ld.lld:error:undefined-symbol:libie_get_fwlog_data
 
-Actually looking at the involved functions
+I am having a similar issue on net-next, where the kernel is failing to
+compile due to the undefined symbols above.
 
-     err = iavf_set_interrupt_capability(adapter);
-     […]
-     err = iavf_request_misc_irq(adapter);
-
-they return (signed) integer, so in my opinion, this is the actual 
-motivation for the change, and it’d be great, if the commit message 
-could be amended accordingly.
-
-
-Kind regards,
-
-Paul
+This happens when CONFIG_ICE is set.
