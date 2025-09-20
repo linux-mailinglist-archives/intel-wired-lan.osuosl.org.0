@@ -1,69 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49944B8C7C2
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 20 Sep 2025 14:21:22 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C95C3B8C7C8
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 20 Sep 2025 14:21:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EF5D141287;
-	Sat, 20 Sep 2025 12:21:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4A910615A6;
+	Sat, 20 Sep 2025 12:21:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XVjR4ruBsFQr; Sat, 20 Sep 2025 12:21:20 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id e01qfoRFmMaG; Sat, 20 Sep 2025 12:21:21 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2528C41296
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C6AA8615A7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1758370880;
-	bh=F3q3muQtU3LMfAdOD8lJ7FMiyUOMff0UicsNYL/WmI0=;
-	h=From:Date:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=p7s8CzVhFykoDfE8Xv0fSFzgNtmD/4NHeIFJacGebzKYWJwRaUwWbExEfHJ6TrAls
-	 Ie/Y9InGs4ZXrXRIeg4asti/X/yq9BT+B/mRQXCgeoDHPxSLe+zD+2jMEZgZHJ9VDZ
-	 5+gd92wWIXUGROZa26Ga87am2PiJeKHMgTkDo+bd3UU6aAE2sKG/OSDD1+/mMhGDgr
-	 ok7AAgAgkMR8jHUEP4G6jnmFvMVLCwrR//XswNuDR60CmUP7PFuLHL0+vNkKvwHXUe
-	 wQFhDMboAgNUd22u3IeFG9Q3PStj2Sqcol14yYnSJ8psH/UahxC9xh/H7dvjpnlmMT
-	 LI1g5kg2i8Duw==
+	s=default; t=1758370881;
+	bh=nSzPM9DofWYvGoUXErHohJWv59e//A6QklafV5Ais8I=;
+	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=TvN90Md2YLeA+qM6U3QVmLv609ItskVhwlCiqn+rjKKfg9EWgEePUouMZ1HZN9Bnm
+	 2GgYORtfchkc0nJoK7cSFypoaXD68A8tElpIXEBjGNw/Thp9fjvkqyckG90C+2NVg5
+	 HXvC8rAK6TutqaJDvoh3kcxg5piYeklfZd872KdHlYWHJ/3iOZSX6BrtbD+ilXmral
+	 sPRT4jK4nTjsJCwMBPbu8qKxp9btf+DQ/2CW6+JB46nSc9NvFZTriFAc6N/X+8ZHE5
+	 o09oXkaAMl4KSX4twGJmvurlXppiz2S+w9QiksaPQlSkGsr74rX5+mZu3MxTdxt4Gd
+	 sLVOLzAAyHjXw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2528C41296;
-	Sat, 20 Sep 2025 12:21:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C6AA8615A7;
+	Sat, 20 Sep 2025 12:21:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 4200A219
- for <intel-wired-lan@lists.osuosl.org>; Sat, 20 Sep 2025 12:21:18 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 9D6AC219
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 20 Sep 2025 12:21:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 33F9941247
- for <intel-wired-lan@lists.osuosl.org>; Sat, 20 Sep 2025 12:21:18 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8F1E583E12
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 20 Sep 2025 12:21:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id y2dCmcToZHT4 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 20 Sep 2025 12:21:17 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id W7hgboMsmSeQ for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 20 Sep 2025 12:21:19 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
  client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
  envelope-from=lorenzo@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 7E6804121B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7E6804121B
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org B01CA838FB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B01CA838FB
 Received: from sea.source.kernel.org (sea.source.kernel.org
  [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 7E6804121B
- for <intel-wired-lan@lists.osuosl.org>; Sat, 20 Sep 2025 12:21:17 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B01CA838FB
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 20 Sep 2025 12:21:19 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 6CFE243DE3;
- Sat, 20 Sep 2025 12:21:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BB0FFC4CEEB;
- Sat, 20 Sep 2025 12:21:15 +0000 (UTC)
+ by sea.source.kernel.org (Postfix) with ESMTP id 0C9D14464C;
+ Sat, 20 Sep 2025 12:21:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 617DAC4CEF7;
+ Sat, 20 Sep 2025 12:21:18 +0000 (UTC)
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sat, 20 Sep 2025 14:20:26 +0200
-Message-Id: <20250920-xdp-meta-rxcksum-v1-0-35e76a8a84e7@kernel.org>
+Date: Sat, 20 Sep 2025 14:20:27 +0200
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAqczmgC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDI1MDS0NT3YqUAt3c1JJE3aKK5Ozi0lxdSzPj5CTjRHNL41RzJaC2gqLUtMw
- KsJHRSkFuzgpJBWm6eakVJUqxtbUAj3v4u3AAAAA=
-X-Change-ID: 20250915-xdp-meta-rxcksum-963cb3a793e7
+Message-Id: <20250920-xdp-meta-rxcksum-v1-1-35e76a8a84e7@kernel.org>
+References: <20250920-xdp-meta-rxcksum-v1-0-35e76a8a84e7@kernel.org>
+In-Reply-To: <20250920-xdp-meta-rxcksum-v1-0-35e76a8a84e7@kernel.org>
 To: Donald Hunter <donald.hunter@gmail.com>, 
  Jakub Kicinski <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>, 
  Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, 
@@ -86,23 +85,24 @@ Cc: netdev@vger.kernel.org, bpf@vger.kernel.org,
  Lorenzo Bianconi <lorenzo@kernel.org>
 X-Mailer: b4 0.14.2
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1758370876;
- bh=NVkdqho2RdfTtEnWss8fjPZFDr1k2Eqt+Ul7r1LYIuk=;
- h=From:Subject:Date:To:Cc:From;
- b=q/JB0FbBMl4rB04+QGbeN8J4+rpknWk6BuHkq9rFseP8jSMo/5S1Od2sjkKni4dL4
- KUopOuyc7VpDlvBZkBUeJZREtGeMzsYCIxUQ8a0IaLiiLhw1g64PQV5/vDHlvZBetJ
- VC0fi0HFghH3uzqVmZwnreqeNdElcvH4+kseI1zBNnUwBpjb24NIo2hY98Pq9YQJ7f
- uKsj4eRAWfd5iQmcV+DqMcKqvB5tBrQnfuXYQiDznLyL50q5QlJPsTU664c1dEiB7n
- yqQe/lK01oiNl+c0+l88NAyMKK+adcDfaxpqhwKuYP3vUiMy529F5Zp7S1oO3o0fZV
- dfAfalQxKCstQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=kernel.org; s=k20201202; t=1758370878;
+ bh=qmhQ5jk5ZWkgG/yTVBSLdGX0usuVMNTWO7fxuZpsTFs=;
+ h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+ b=GEVeZNi2JksDR00LDpwzC2h5oVY0lpNPAaGhEBrRJrHZDZsUcJIy1VgPOgvrMftcO
+ aWWICBF83QhqmZb2P40ZyLwkXc6tZFnWf99v+2yp0oTwbRq06IK2xaG036qVuxNuHB
+ 9Fn1LhuTgvhahiEvS5rEEL28WTQ/nxSqIxmy4v39kdcbOX8Lhnk/kO17jhoDOOdkqx
+ o3Im4e8gNBJ2FXYOwk/l/6nNpY2IgI/gO9P0v1yKq78TlQaeAjkJA+RO+8tkFKEBl7
+ /f6ocoMuNj+amQ8ykVIM40rUIHz7NzVNREdw3h3d9IUSjXcJtS3Nmv3l5WsWkBYwnq
+ eTlJnLSL6SfOQ==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=q/JB0FbB
-Subject: [Intel-wired-lan] [PATCH RFC bpf-next 0/6] Add the the capability
- to load HW RX checsum in eBPF programs
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=GEVeZNi2
+Subject: [Intel-wired-lan] [PATCH RFC bpf-next 1/6] netlink: specs: Add XDP
+ RX checksum capability to XDP metadata specs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -118,37 +118,32 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Introduce bpf_xdp_metadata_rx_checksum() kfunc in order to load the HW
-RX cheksum results in the eBPF program binded to the NIC.
-Implement xmo_rx_checksum callback for veth and ice drivers.
+Introduce XDP RX checksum capability to XDP metadata specs. XDP RX
+checksum will be use by devices capable of exposing receive checksum
+result via bpf_xdp_metadata_rx_checksum().
 
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
-Lorenzo Bianconi (6):
-      netlink: specs: Add XDP RX checksum capability to XDP metadata specs
-      net: xdp: Add xmo_rx_checksum callback
-      veth: Add xmo_rx_checksum callback to veth driver
-      net: ice: Add xmo_rx_checksum callback
-      selftests/bpf: Add selftest support for bpf_xdp_metadata_rx_checksum
-      selftests/bpf: Add bpf_xdp_metadata_rx_checksum support to xdp_hw_metadat prog
+ Documentation/netlink/specs/netdev.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
- Documentation/netlink/specs/netdev.yaml            |  5 ++
- drivers/net/ethernet/intel/ice/ice_base.c          |  1 +
- drivers/net/ethernet/intel/ice/ice_txrx.h          |  1 +
- drivers/net/ethernet/intel/ice/ice_txrx_lib.c      | 82 ++++++++++++++++++++++
- drivers/net/veth.c                                 | 19 +++++
- include/net/xdp.h                                  |  6 ++
- net/core/xdp.c                                     | 29 ++++++++
- .../selftests/bpf/prog_tests/xdp_metadata.c        |  7 ++
- .../testing/selftests/bpf/progs/xdp_hw_metadata.c  |  7 ++
- tools/testing/selftests/bpf/progs/xdp_metadata.c   |  1 +
- tools/testing/selftests/bpf/xdp_hw_metadata.c      | 27 +++++++
- tools/testing/selftests/bpf/xdp_metadata.h         | 13 ++++
- 12 files changed, 198 insertions(+)
----
-base-commit: 315f423be0d1ebe720d8fd4fa6bed68586b13d34
-change-id: 20250915-xdp-meta-rxcksum-963cb3a793e7
+diff --git a/Documentation/netlink/specs/netdev.yaml b/Documentation/netlink/specs/netdev.yaml
+index e00d3fa1c152d7165e9485d6d383a2cc9cef7cfd..00699bf4a7fdb67c6b9ee3548098b0c933fd39a4 100644
+--- a/Documentation/netlink/specs/netdev.yaml
++++ b/Documentation/netlink/specs/netdev.yaml
+@@ -61,6 +61,11 @@ definitions:
+         doc: |
+           Device is capable of exposing receive packet VLAN tag via
+           bpf_xdp_metadata_rx_vlan_tag().
++      -
++        name: checksum
++        doc: |
++          Device is capable of exposing receive checksum result via
++          bpf_xdp_metadata_rx_checksum().
+   -
+     type: flags
+     name: xsk-flags
 
-Best regards,
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.51.0
 
