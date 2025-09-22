@@ -1,92 +1,92 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 31301B91FDD
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Sep 2025 17:39:09 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id AEC7DB92058
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Sep 2025 17:43:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BC6B441FCC;
-	Mon, 22 Sep 2025 15:39:07 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6CEE461606;
+	Mon, 22 Sep 2025 15:43:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dYULiD-gSAun; Mon, 22 Sep 2025 15:39:07 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id h3aGMoH-eDuH; Mon, 22 Sep 2025 15:43:35 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4903B41E13
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D8CF5616AB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1758555547;
-	bh=/+2ag/iV4mxazDtCnvPykVJFi1jwwbRDl7dA4X3Ytkc=;
+	s=default; t=1758555815;
+	bh=v3V9jfcj4c/C9kF8Vt1ZcO3ulHKzrInrkcLPZRC1Na4=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=JZ8dHeggOh3W46sL62jn/RGMFqp8OW9fyrCG7cG5fLDsXx1B7eYa6Yn7mjeliv063
-	 5ROq2CmEZHtKXB+iqmatAYBsouM88JrrioSFOSbjz22KyWoblw7HsPlHWz4C1uPqh5
-	 3Lx8qRVYwt9UVeFjTeMXOXnI1xIz8BKM7YwbFWDPa/Li4oUPTr0P863sWOgN9ict1g
-	 eHOUpUUFFo+IRe0oC1CyKy76Wsz+dg/bhECAH2vRMiz42sCKiOlMfguwFEncGjpoRG
-	 VDcl4hOuowh+iBVKVRbCp5u3gJ5p6iEQrL7rkLSQk87xATlW5r7FoguV9yiJRgH0ha
-	 TRCclkbhXopbQ==
+	b=TIAcdBmDXUizHVkqQURYg+WFj6c2Eqczwnpv267oiKhVJseuZ9eHaIRKEOghQCqbA
+	 GnNryFGpHIlETkxqN5aTkBCV3L+wbn6L1oA4lpJcB0kRw96Hc9u1HW7JxeLwcaWqhN
+	 p/3w6Q8Bv9vtYiyzdfOCOzPXztvqM5KRvRoC6vD9IE1AueomfGI7QiEiK9UhlF9Xz7
+	 zxbq3jnERsiHcO5KtFtwA9okAS6PtCWBORxLHB8McAiblAtyly1s/eeU8RH9luEgW8
+	 V5+lC42gIbjw5aSv7lYldK6gmoK9WAbURgZ+N0TZhCrrzP7av8XLerTgInC1myskfn
+	 J3JZB8J9BQq3Q==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4903B41E13;
-	Mon, 22 Sep 2025 15:39:07 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D8CF5616AB;
+	Mon, 22 Sep 2025 15:43:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 493E61C0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Sep 2025 15:39:05 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 97294116C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Sep 2025 15:43:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3AE99405D9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Sep 2025 15:39:05 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 944AC614F0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Sep 2025 15:43:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id LJ3Q18lOp6PE for <intel-wired-lan@lists.osuosl.org>;
- Mon, 22 Sep 2025 15:39:04 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 6UkJCez17bp5 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 22 Sep 2025 15:43:34 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::42c; helo=mail-pf1-x42c.google.com;
+ client-ip=2607:f8b0:4864:20::429; helo=mail-pf1-x429.google.com;
  envelope-from=stfomichev@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 85CBC40597
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 85CBC40597
-Received: from mail-pf1-x42c.google.com (mail-pf1-x42c.google.com
- [IPv6:2607:f8b0:4864:20::42c])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 85CBC40597
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Sep 2025 15:39:04 +0000 (UTC)
-Received: by mail-pf1-x42c.google.com with SMTP id
- d2e1a72fcca58-77f1f8a114bso1431682b3a.0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Sep 2025 08:39:04 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org EE86361099
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EE86361099
+Received: from mail-pf1-x429.google.com (mail-pf1-x429.google.com
+ [IPv6:2607:f8b0:4864:20::429])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id EE86361099
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Sep 2025 15:43:33 +0000 (UTC)
+Received: by mail-pf1-x429.google.com with SMTP id
+ d2e1a72fcca58-77d94c6562fso4461160b3a.2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Sep 2025 08:43:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758555544; x=1759160344;
+ d=1e100.net; s=20230601; t=1758555813; x=1759160613;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=/+2ag/iV4mxazDtCnvPykVJFi1jwwbRDl7dA4X3Ytkc=;
- b=I/j8SCl6NI/UMyScH4hhCQJk4WhGMlEIZxyTp7mJ3jsOfdPlEmyfO7vU5eCosLDR9P
- ZOXF9te6fGzOfBsjtQeB7ySeU9vMfa3n+8hRZjdGlDEJjxZCnED0WB00GAthqvPi6YZI
- qAvrSwCa6KsbY3TG11Ey6X7EyZz7q+4becCoShM0p1qCZ7JvxpDn7esJqYj1c/jEkQaL
- SovL1u3MStQX3h8Z9aQHv1XH7cXV0hR/FvxkrzAsM7rarW4hDsaLNevNcsutkYDrS7P5
- b4qqUVwozzdGIjzbu65r3ytPj3X5GfIVGx+fbf3ZzHzlxdeJW5QLRtrlXklf64T9nshK
- KNuA==
+ bh=v3V9jfcj4c/C9kF8Vt1ZcO3ulHKzrInrkcLPZRC1Na4=;
+ b=i3AAZdZgjdYuXvCwyWifXNaon2/F5xIYE8U0klI2otuvZkIwSNly6ESya5PcXSVTCd
+ ayY5+l7xjXUN7mflvoXJjyj+owOMLbmGzmx8Fp3/2FW6zSNqMJW9LKzDmlfICKQt26wp
+ r7UyZpD4C/cJHcyk1QbCu9EHcn79CEPebR9elkCDrboS84rMaW0USu6ZeXEJMHGtdFYD
+ 5LS/fXvrQHGepxFvrQ0BIh7NQ0CyBghl54OIoIg31xjkAo/BRB1fc+cftDWkozd/dknO
+ tlSLQlBYNXJdLpNEpve7fqW3QzF9G/prleNuFCja+FpM4JAgBK0NySd4Z8b6PqStcQoH
+ Prjw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUE4DKaIqj1qCIqGOLOrBHY1o7Io1nfIGGUtcl9kwPz+R3a4cMIjEK9yExHq482kWb3t5rPG+6VwZofTM+RKCE=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yx5X/RhSA+lqNqI6OTRF8j8/KHt6M6QFg+jGciz0DEMIY0Fo9id
- ZzhMc0iPYcf1v/8/+C+QdR52szb3sac6yPOCnTzAHgUjddNwgGTCUvA=
-X-Gm-Gg: ASbGncuPRwISDqztMktLJiwdaHTq6R6KlZ+s64y3FjtMfFiNxKNygI+ReV+73tA79vf
- 5bYRYHGdmTmMumZ28DpCQ1JZsRiB1qr9/19ZAGdCIYEBy+BF0RZcgy8aDPgF3oqrjRh4EjeuGwx
- 3EtApkQrPJ5Jyy4LtC0iCJrVOK7sKfmCD6P5mfn1wX4D4h4jI124Nx136lTPv8ypOCpivmtYUM5
- ZG2DfkwYApf1rirLovb7dta7iN57iNVDuYvJXquh62SRtawi3V2VMmhgU6ZitjcnacDaPtLjPi0
- umUr0SR8y40M7JP5Y/QZWBgnHqMYvcnswyQlKx55juScRYhtLUNiWGGwuhAotQmPiXes8OVZ/mC
- q16KPGZWXs2KUdaeer2ukhvTtGZVW6iH53qe7BoPpHJtkZ2IWh9/QiWH+rkKhCgt/4t2WBwuwe+
- kJLJ1+2JGZXjxGtzq1eEMFHOwSLBg4GBXfZBGqouT0hcP+/CeUMIq+ptHITT4w9tBlCLV+q5oWV
- KTs
-X-Google-Smtp-Source: AGHT+IE3TS2ZT2iVwXx8IVuVRd65DCwplvU4zTMTt2k1/M2gr1xCgjuzcB7lSRGACmTncGG25EZblA==
-X-Received: by 2002:a05:6a20:4327:b0:245:ffe1:5619 with SMTP id
- adf61e73a8af0-292189dd44emr15040347637.23.1758555543694; 
- Mon, 22 Sep 2025 08:39:03 -0700 (PDT)
+ AJvYcCV8xmYQwwTGfQGuWyFm7BALxryPg2J+GrXTnupTaPvp4BBC5yzrCsWXpDssqMGeUcbLD2UtuYWFAjHxPTu07CA=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yxk3N/Z7TahI3qFsJ++XKF7KxOA+BGrIXzYKCsKKAeR+BstgtHk
+ 6xC73td6TziR6gUVvMhJsV3yL9AQV5M+1cEBZOBzrk6Lm1PGXPC0GEE=
+X-Gm-Gg: ASbGnctQQGwe77Z/idK/wrte10YL9C5UA5+2O6TOFOxVdAAPUQ93k6FSpQLJtwH2ipX
+ QCZ9p3Q3ocr2QXXrV44xwDDdQG13UTJiRGnGcc+GjyrcyOWNbRDIb/N/wVOcJUXFGSPdsfnTHyE
+ gz1/z/6iznzrMl8FyAL8gCrGei7ZwOVfVQw2CuLvoIa7WUImh4Kzljn3BJa7TfGyiYfC36PZJo9
+ KImom04ntcmk5Aqv5xgx8u/DS4zpf9rrrLiJ3eD1q85ZF6oggH6TkMBtKULoKvrimARuGbRShgy
+ x4vr+ks5eDqQDUmYea6VqV/UdmfDPJs6hwydnLRt1Prgo8z7wtMI8YHuGB4CmWyWTNJbbO6ZDVS
+ c/jAZ0JDNdUuESdFmYPrjMJilNDGmHndmx7AuOM5K0C+U/KlsEH54lew+LiIutq1HXIV5PMGcFY
+ uH4QCyJLu71u7IajeQN2KE9RvWExElL11NBveS0BM7X31FD2JE+nEoGU9aM/yW8xo80g2B5rVBJ
+ bsn
+X-Google-Smtp-Source: AGHT+IETBbukUvkAuvQVb1Skx6MlL0Qne0xJdc/u3lmyMRgaNlL6QuTtewx92TllrETSMx2zMBvRAA==
+X-Received: by 2002:a05:6a20:7d8a:b0:251:c33d:2783 with SMTP id
+ adf61e73a8af0-2925bace118mr16480567637.23.1758555813010; 
+ Mon, 22 Sep 2025 08:43:33 -0700 (PDT)
 Received: from localhost (c-73-158-218-242.hsd1.ca.comcast.net.
  [73.158.218.242]) by smtp.gmail.com with UTF8SMTPSA id
- 41be03b00d2f7-b55149526cfsm10207767a12.36.2025.09.22.08.39.02
+ 98e67ed59e1d1-330607eac4esm13558095a91.21.2025.09.22.08.43.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Sep 2025 08:39:03 -0700 (PDT)
-Date: Mon, 22 Sep 2025 08:39:02 -0700
+ Mon, 22 Sep 2025 08:43:32 -0700 (PDT)
+Date: Mon, 22 Sep 2025 08:43:32 -0700
 From: Stanislav Fomichev <stfomichev@gmail.com>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: Donald Hunter <donald.hunter@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
@@ -108,33 +108,33 @@ Cc: Donald Hunter <donald.hunter@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
  Jiri Olsa <jolsa@kernel.org>, Shuah Khan <shuah@kernel.org>,
  netdev@vger.kernel.org, bpf@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, linux-kselftest@vger.kernel.org
-Message-ID: <aNFtljcYeLK3uVo3@mini-arch>
+Message-ID: <aNFupGy1QxlhRSUE@mini-arch>
 References: <20250920-xdp-meta-rxcksum-v1-0-35e76a8a84e7@kernel.org>
- <20250920-xdp-meta-rxcksum-v1-1-35e76a8a84e7@kernel.org>
+ <20250920-xdp-meta-rxcksum-v1-2-35e76a8a84e7@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20250920-xdp-meta-rxcksum-v1-1-35e76a8a84e7@kernel.org>
+In-Reply-To: <20250920-xdp-meta-rxcksum-v1-2-35e76a8a84e7@kernel.org>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1758555544; x=1759160344; darn=lists.osuosl.org;
+ d=gmail.com; s=20230601; t=1758555813; x=1759160613; darn=lists.osuosl.org;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=/+2ag/iV4mxazDtCnvPykVJFi1jwwbRDl7dA4X3Ytkc=;
- b=WyN3/srjgvRVr0iMroMVMq/AEenKKS7egQwcSqC3OCW8xFrYuGGres0Bz2LS4Q3Ar7
- ZzQwaSFs+mgX0gvuVDLThcvXaxGi/T2Do56s8jnMRiY5Fc+e4W8fS3ncN7PjY6XRhCy6
- 4dIVVuHviYN9Rxson7O1N1KiJmF0oieB7In/4NUtMQhO+xG8Jc3LuYRwk+Wyz2JMyXLz
- EYXR6qMfjeIoezBnUOJFM0bC/kHxGE06x4x16wOQTJLK2g8XJHbyk8RIisB9TaWVbC4/
- 6Ga54yImFecjkYhwPWsk/Gq4E/dFPy/r68Ynpo/8BmN9o8icseUtjIMB3Jbq+0TsiHhh
- 3baQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=v3V9jfcj4c/C9kF8Vt1ZcO3ulHKzrInrkcLPZRC1Na4=;
+ b=i5Rkk8GuSaHj6ybZtKY93GZk259tuPm3YDmJvrxxPk3hixJNg0E6NITVBLIEN5MrgR
+ 6+ZGZeHPxfYAAbGQrSDCDDgz1AvP1jG/zUwSfg8RFCGZ7VmHXXAKokfP/pLGGa6eq0LP
+ pQXWyEak3jaRCWHl2bbtMxEivXDuUFrizwY33D1vDujKW37M5ecgDP6tNEB5G8goMiKl
+ Wc06GUjeOBOjmxUHTNhHxE+/x64hq+A/NBUKOAwUqNpIBdCAEAMa0zfIgcyyhO5wdcsR
+ 8RLSdJJfAS90TeHLlIiacz53AdY2Y2SJGBlcTrLjou2Xpsl8iWr9Fz3GVp1OeycGHLiA
+ 0BIw==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=WyN3/srj
-Subject: Re: [Intel-wired-lan] [PATCH RFC bpf-next 1/6] netlink: specs: Add
- XDP RX checksum capability to XDP metadata specs
+ header.s=20230601 header.b=i5Rkk8Gu
+Subject: Re: [Intel-wired-lan] [PATCH RFC bpf-next 2/6] net: xdp: Add
+ xmo_rx_checksum callback
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -151,31 +151,62 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 On 09/20, Lorenzo Bianconi wrote:
-> Introduce XDP RX checksum capability to XDP metadata specs. XDP RX
-> checksum will be use by devices capable of exposing receive checksum
-> result via bpf_xdp_metadata_rx_checksum().
+> Introduce xmo_rx_checksum netdev callback in order allow the eBPF
+> program bounded to the device to retrieve the RX checksum result computed
+> by the hw NIC.
 > 
 > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > ---
->  Documentation/netlink/specs/netdev.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
+>  include/net/xdp.h |  6 ++++++
+>  net/core/xdp.c    | 29 +++++++++++++++++++++++++++++
+>  2 files changed, 35 insertions(+)
 > 
-> diff --git a/Documentation/netlink/specs/netdev.yaml b/Documentation/netlink/specs/netdev.yaml
-> index e00d3fa1c152d7165e9485d6d383a2cc9cef7cfd..00699bf4a7fdb67c6b9ee3548098b0c933fd39a4 100644
-> --- a/Documentation/netlink/specs/netdev.yaml
-> +++ b/Documentation/netlink/specs/netdev.yaml
-> @@ -61,6 +61,11 @@ definitions:
->          doc: |
->            Device is capable of exposing receive packet VLAN tag via
->            bpf_xdp_metadata_rx_vlan_tag().
-> +      -
-> +        name: checksum
-> +        doc: |
-> +          Device is capable of exposing receive checksum result via
-> +          bpf_xdp_metadata_rx_checksum().
->    -
->      type: flags
->      name: xsk-flags
+> diff --git a/include/net/xdp.h b/include/net/xdp.h
+> index 6fd294fa6841d59c3d7dc4475e09e731996566b0..481b39976ac8c8d4db2de39055c72ba8d0d511c3 100644
+> --- a/include/net/xdp.h
+> +++ b/include/net/xdp.h
+> @@ -581,6 +581,10 @@ void xdp_attachment_setup(struct xdp_attachment_info *info,
+>  			   NETDEV_XDP_RX_METADATA_VLAN_TAG, \
+>  			   bpf_xdp_metadata_rx_vlan_tag, \
+>  			   xmo_rx_vlan_tag) \
+> +	XDP_METADATA_KFUNC(XDP_METADATA_KFUNC_RX_CHECKSUM, \
+> +			   NETDEV_XDP_RX_METADATA_CHECKSUM, \
+> +			   bpf_xdp_metadata_rx_checksum, \
+> +			   xmo_rx_checksum)
+>  
+>  enum xdp_rx_metadata {
+>  #define XDP_METADATA_KFUNC(name, _, __, ___) name,
+> @@ -644,6 +648,8 @@ struct xdp_metadata_ops {
+>  			       enum xdp_rss_hash_type *rss_type);
+>  	int	(*xmo_rx_vlan_tag)(const struct xdp_md *ctx, __be16 *vlan_proto,
+>  				   u16 *vlan_tci);
+> +	int	(*xmo_rx_checksum)(const struct xdp_md *ctx, u8 *ip_summed,
+> +				   u32 *cksum_meta);
+>  };
+>  
+>  #ifdef CONFIG_NET
+> diff --git a/net/core/xdp.c b/net/core/xdp.c
+> index 9100e160113a9a1e2cb88e7602e85c5f36a9f3b9..3edab2d5e5c7c2013b1ef98c949a83655eb94349 100644
+> --- a/net/core/xdp.c
+> +++ b/net/core/xdp.c
+> @@ -961,6 +961,35 @@ __bpf_kfunc int bpf_xdp_metadata_rx_vlan_tag(const struct xdp_md *ctx,
+>  	return -EOPNOTSUPP;
+>  }
+>  
+> +/**
+> + * bpf_xdp_metadata_rx_checksum - Read XDP frame RX checksum.
+> + * @ctx: XDP context pointer.
+> + * @ip_summed: Return value pointer indicating checksum result.
+> + * @cksum_meta: Return value pointer indicating checksum result metadata.
+> + *
+> + * In case of success, ``ip_summed`` is set to the RX checksum result. Possible
+> + * values are:
+> + * ``CHECKSUM_NONE``
+> + * ``CHECKSUM_UNNECESSARY``
+> + * ``CHECKSUM_COMPLETE``
+> + * ``CHECKSUM_PARTIAL``
 
-nit: let's fold it into patch 2? Will be easier to git blame the
-feature..
+What do you think about adding new UAPI enum here? Similar to
+xdp_rss_hash_type for the hash. The values can match the internal
+CHECKSUM_XXX ones with (BUILD_BUG_ONs to enforce the relationship).
+Will be a bit nicer api-wise to have an enum than an opaque u8.
