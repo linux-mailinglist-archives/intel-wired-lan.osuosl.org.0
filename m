@@ -2,121 +2,136 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 54C5ABA0256
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Sep 2025 17:11:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5DC36BA0259
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Sep 2025 17:11:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 87E3C84213;
-	Thu, 25 Sep 2025 15:11:19 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3554984214;
+	Thu, 25 Sep 2025 15:11:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id b82BB3mmbARw; Thu, 25 Sep 2025 15:11:18 +0000 (UTC)
+ id Sn1wOPFL-Lu8; Thu, 25 Sep 2025 15:11:19 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 835F08421A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1EFAF8420D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1758813078;
-	bh=GrzEpmFKJ08dCvz23e91yU1k/k8cQAq/gU1NwyJoAlE=;
+	s=default; t=1758813079;
+	bh=qoutmRJfBiooSSHCtQV7QJz0oS7nanw5QS3919xibtc=;
 	h=From:To:Cc:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=Cy874mPLbH115cQBCMDDdHF85sz80Ofz3oAWOAi2c7pqBJgSCqI6sUPms+1TwJ7/k
-	 mVWswaa7Ux07l99ucRoNtFXvo3ejRZUC17YDQv6/Scbddqtyjhis6Azr6AekqUApbX
-	 9O5jOmBmb1fhL1UQtpvKOnJpJomokiKknCnJbaRTQSpv+GYORLzQSlYUh6UCoZNZ4m
-	 bWRtGOkA6K/JZpB0cdnoiiDUakJg13/sCwnzr+KZI75EWTIZXLmVd+S4oXW7EzD3qj
-	 Z5PFLfntHdNDqEMS8FHTbZLzcA43akSmbLHpG2kQ0BGNWNqkSAHlXGo1L8eYuzfgX2
-	 dWwqQON5uUF1w==
+	b=O2qr8tbxlG/MPgBGmh3Fgy9v8dVups15jZAMHQ+PTdhtryDnj4U/ZM1Bp/V3jFIyg
+	 qDojrB1nD6fdtX0DjFuYmw7nAK/8K77UxDrn+rfVfHZbvL46iAqpaE3OpK+5unc1+Z
+	 MgIusBPJYDFGqu3NYDuUUBLRtjp2Xqy0A9UoY7e3NC7bbTWayBpmgVLREiIfPdq8j1
+	 bLCnvKTtHeDLdcxXNLwyuOEeyG0FY1tm+HZvwAkONEGWVwpvrW26rbvSdPKQ8k+9nq
+	 oQkF11F4O8E3LnKc/YQeeJR7bsu/IqHAmlNWo91EdaMz7IJ+ZsoTdCaGpSOLrd1CH2
+	 Ss6DOPee06f4Q==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 835F08421A;
-	Thu, 25 Sep 2025 15:11:18 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1EFAF8420D;
+	Thu, 25 Sep 2025 15:11:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 986B612D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Sep 2025 09:56:36 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 8A806199
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Sep 2025 10:58:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 95A6582057
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Sep 2025 09:56:36 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 7C0CD4096D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Sep 2025 10:58:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4-4Pr4LkDzTq for <intel-wired-lan@lists.osuosl.org>;
- Thu, 25 Sep 2025 09:56:36 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id s3yeVOXYDeSj for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 25 Sep 2025 10:58:19 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::62b; helo=mail-ej1-x62b.google.com;
+ client-ip=2a00:1450:4864:20::635; helo=mail-ej1-x635.google.com;
  envelope-from=jakub@cloudflare.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A258F81E9B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A258F81E9B
-Received: from mail-ej1-x62b.google.com (mail-ej1-x62b.google.com
- [IPv6:2a00:1450:4864:20::62b])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A258F81E9B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Sep 2025 09:56:35 +0000 (UTC)
-Received: by mail-ej1-x62b.google.com with SMTP id
- a640c23a62f3a-b35f6f43351so68408166b.1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Sep 2025 02:56:35 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 94F2340527
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 94F2340527
+Received: from mail-ej1-x635.google.com (mail-ej1-x635.google.com
+ [IPv6:2a00:1450:4864:20::635])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 94F2340527
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Sep 2025 10:58:18 +0000 (UTC)
+Received: by mail-ej1-x635.google.com with SMTP id
+ a640c23a62f3a-b0787fdb137so137860266b.0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Sep 2025 03:58:18 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758794193; x=1759398993;
+ d=1e100.net; s=20230601; t=1758797896; x=1759402696;
  h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
  :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=GrzEpmFKJ08dCvz23e91yU1k/k8cQAq/gU1NwyJoAlE=;
- b=EUvcaunnXwiZDuM5fIVrFIAVqH4RdNCX8CAFeA0nilppX6QwpVRuQLd6uNv7/WfT2l
- inr3z5Qtr+dfuUMysHBdi4CMzhPnf4Fe4N8ImneK0vhmWVoYmIIX29nNT3emDepc7Gfu
- wK65VNnr80HCGjVwE9XNS0Lt5o4sDXVsZBM1Re59wME2QjsjJ+6JSfcwWRJPKfsbel9z
- Zj12EbC9CPdgd4ldr9LDV00nwdX7JchTT2pthKxvCefi2rNgXpu5K+bZaUOXf393lnR6
- QzlnRGCyu5eZnYpSl/o7c0SeFwTk+PCtrvJdiT7QcPzEZtqmcx5wGbGmF6iRu5F4POw0
- VTOw==
-X-Gm-Message-State: AOJu0Yzeq+HSA8XAvakKL1bVpSoODaOJhXKO3SscokqytfSuqY+4g4Hs
- 2N5CnN09BPvOecn1XQCz26AGBQbZzW49rl67nx+f8bvJyxKzSawuwsBfW/K9bmZAMRQ=
-X-Gm-Gg: ASbGncum7VN5R3KgA2einnL9sxlcUN8itsUzDHDEdHaED9je13njv0Rz5zYwYWB16p/
- ST+ca3p9GXn9nDR0AwQhOcXaa71xbcFxrAbtVkmb5PDtE0IircbDZ7dA3Ubrnbt0HsLYmrh39Xs
- hdFs9EeDKRGTZpc6zxs7ImDXpnH23iT+p1/AERL0yTMU7FTtwNTDE8CIjn3XMqzhInJb97lv2LF
- eqY2cBnFEvyaGF2mmT8PUtWIhpKoa7/aGJ93yzVm8HhfNT7zD3TacG4Odhp0SlFzfYMjC/KmRio
- ks8vDO5QRwurkTeaOLWlxchdBZhS8JUkB/Ho0f3z08Jviz/Ug7Xhecr2eEuqtkbLMbNzA/E1t3u
- 3wVi9J0BZlriIqTM=
-X-Google-Smtp-Source: AGHT+IGKjMEcIpRr3EEKuOD0rD2TCapZ8lHREep6jZzrzi+iYypOPWa4NYN3C7vTMs0QmrtjLXw5IA==
-X-Received: by 2002:a17:907:9719:b0:b04:6973:1ee9 with SMTP id
- a640c23a62f3a-b34b7105a20mr277447566b.16.1758794193333; 
- Thu, 25 Sep 2025 02:56:33 -0700 (PDT)
+ bh=qoutmRJfBiooSSHCtQV7QJz0oS7nanw5QS3919xibtc=;
+ b=BLruFcIqjliWlLWt8TEaGYujzBGRwoay8zryQDdsi3XJslbR0KtXwmawS5tcSxQh7b
+ Cnbi7ztyYT6Z89i/PRq/TqkN+4oVHdRqrDCaaorVYRRfuWXDXbT+xDtsDmczbAoZpQT9
+ I7e9pZJX2+inZcOHM/Eu6PigtsVQ7ZJ3WPLI/Ih02ljGJIMrk8RsYMnyn7//CuGVYnIf
+ 0j5MMSahq+G3k7kVkgoW5mjYk74yZ/TB6mphzBVpHgYvmZeNah1UkQMlrvJx+nVU48LL
+ jA0+sUE4mhC6NqvWIupvb39LBlANzMf+NT9miO2/N27B0d/Xoi5OaY0XswQiR8WIAEMP
+ HqWQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVKh4L2YMguyA+l4LHQadHnYaaTnBUeUHsGgVZF68pCze4HpfO1/8BmmIKJsHpR6zSABAp+WG9Dasw1fJkljK4=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YzG9K/PNGuJ2MJ6CGnjw5B6AOkytl+lnsNFbOmnU/f8NlHt2lxL
+ cTfAw6PwpXeFXPy8yJjqSmJ3Kqefq4Vv6k4pcVJ2YuRauOMnjavCG2A9ysfkVDwlqRk=
+X-Gm-Gg: ASbGncsNrvMEnzsybJlVuRz7jZDWP4Q0aizaUA20fLwTJ8GeFNFN+2RJckcyDNQhxk9
+ s49cNo1lMBzzAMuxplsKgzxWfytyNbPiQjsgx7qOVEIWBIkuWlfC3CiEziLk/9XS3hxzw9D/5Gl
+ DYB/K5hl/EvRq+TIpYo9y6MUefpjfAS8IPqfeqXKVkQV/kU+EicPAx79yayWLovfjBJ0ju2QnQd
+ CgdG+kCNPja14zkhylZkDn/TEbl7lOsDeJ6bdTXqYki7rpZTptQTew8r4ALPVsyw/I1g4EL7/AC
+ Lc2XCNeEW8ZSCUicc/atP0TALV//ekpsDhSDkbl5z9s5N8H93s1p8ZvjJtZ/A2qe4qjCGBqxiAr
+ gsnuo8WOVc0hE4bM=
+X-Google-Smtp-Source: AGHT+IEinH3OcipauCDmRqja5aQEPZ/J+HFOTVgp17H/W3ZS2eXjpFNwJ5ilU5Q4ue35F4Z7ahPnlw==
+X-Received: by 2002:a17:907:3d90:b0:b10:3eb2:2074 with SMTP id
+ a640c23a62f3a-b34baa34934mr375500866b.18.1758797896306; 
+ Thu, 25 Sep 2025 03:58:16 -0700 (PDT)
 Received: from cloudflare.com ([2a09:bac6:d677:295f::41f:5e])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b3544fd0a54sm135005666b.86.2025.09.25.02.56.32
+ a640c23a62f3a-b353efa4c35sm143452466b.26.2025.09.25.03.58.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Sep 2025 02:56:32 -0700 (PDT)
+ Thu, 25 Sep 2025 03:58:15 -0700 (PDT)
 From: Jakub Sitnicki <jakub@cloudflare.com>
-To: Michal Kubiak <michal.kubiak@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org,  maciej.fijalkowski@intel.com,
- aleksander.lobakin@intel.com,  jacob.e.keller@intel.com,
- larysa.zaremba@intel.com,  netdev@vger.kernel.org,
- przemyslaw.kitszel@intel.com,  pmenzel@molgen.mpg.de,
- anthony.l.nguyen@intel.com
-In-Reply-To: <20250925092253.1306476-1-michal.kubiak@intel.com> (Michal
- Kubiak's message of "Thu, 25 Sep 2025 11:22:50 +0200")
-References: <20250925092253.1306476-1-michal.kubiak@intel.com>
-Date: Thu, 25 Sep 2025 11:56:31 +0200
-Message-ID: <877bxm4zzk.fsf@cloudflare.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Donald Hunter <donald.hunter@gmail.com>,  Jakub Kicinski
+ <kuba@kernel.org>,  "David S. Miller" <davem@davemloft.net>,  Eric Dumazet
+ <edumazet@google.com>,  Paolo Abeni <pabeni@redhat.com>,  Simon Horman
+ <horms@kernel.org>,  Alexei Starovoitov <ast@kernel.org>,  Daniel Borkmann
+ <daniel@iogearbox.net>,  Jesper Dangaard Brouer <hawk@kernel.org>,  John
+ Fastabend <john.fastabend@gmail.com>,  Stanislav Fomichev
+ <sdf@fomichev.me>,  Andrew Lunn <andrew+netdev@lunn.ch>,  Tony Nguyen
+ <anthony.l.nguyen@intel.com>,  Przemek Kitszel
+ <przemyslaw.kitszel@intel.com>,  Alexander Lobakin
+ <aleksander.lobakin@intel.com>,  Andrii Nakryiko <andrii@kernel.org>,
+ Martin KaFai Lau <martin.lau@linux.dev>,  Eduard Zingerman
+ <eddyz87@gmail.com>,  Song Liu <song@kernel.org>,  Yonghong Song
+ <yonghong.song@linux.dev>,  KP Singh <kpsingh@kernel.org>,  Hao Luo
+ <haoluo@google.com>,  Jiri Olsa <jolsa@kernel.org>,  Shuah Khan
+ <shuah@kernel.org>,  Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ netdev@vger.kernel.org,  bpf@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org,  linux-kselftest@vger.kernel.org
+In-Reply-To: <aNUb2rB8QAJj-aUX@lore-desk> (Lorenzo Bianconi's message of "Thu, 
+ 25 Sep 2025 12:39:22 +0200")
+References: <20250925-bpf-xdp-meta-rxcksum-v2-0-6b3fe987ce91@kernel.org>
+ <87bjmy508n.fsf@cloudflare.com> <aNUb2rB8QAJj-aUX@lore-desk>
+Date: Thu, 25 Sep 2025 12:58:14 +0200
+Message-ID: <87tt0q3ik9.fsf@cloudflare.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Mailman-Approved-At: Thu, 25 Sep 2025 15:11:15 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=cloudflare.com; s=google09082023; t=1758794193; x=1759398993;
+ d=cloudflare.com; s=google09082023; t=1758797896; x=1759402696;
  darn=lists.osuosl.org; 
  h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
  :from:from:to:cc:subject:date:message-id:reply-to;
- bh=GrzEpmFKJ08dCvz23e91yU1k/k8cQAq/gU1NwyJoAlE=;
- b=e1rAzhCN96O3+Ti+z6HVSi2kjKMtBSJH44SkNhbHcdd5kXk5bKahPyhpQB7wrPFT9w
- BT2wM3Q+nNDe+obEmvfZhv0F/3riNMkVgxeMokTuP6TOAKF19rIYZBI3+Rp51iahuiW1
- ZtDB5rZBNXZ4vcjBkq2uJrGprX4z0EB1x0RLJAttupOF3E5uUsILMWjBSagpCFS0y1nD
- VujDxVeFEZcrEl1Sya7nl1jI6mDKAA3wXn5wcgCvA96FzcARE/AdTBBf7fZimBiiIRxF
- 9Pv6foTevOdsxRYWRNi/jdDhPBQFkVlZL68JxQj7dbf/MEb6dgwv/44V979j3DbCl+N/
- djOw==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=qoutmRJfBiooSSHCtQV7QJz0oS7nanw5QS3919xibtc=;
+ b=eTxDK+VYlO64p7/TaSKJUywH6Ti7iAIpGJxXlVkae7I2T9lGRNj7CQJbflZ3x8NREo
+ oyTXkG68h7nFzcfvOJJwyyFeIdamwkO5W98LUbDX+LNWEZdCHx7vq4l7XxfxRY18Kk5w
+ n/DGHjO7WmvjO4itThIYWlqt+/zCCFSM4Fi7enipt48aiUg9FQVUmaE0J0DqnlBpC4NK
+ bgocrP8eSXfrPD3KnGhZ23xUqGMbz1f7jEOTfoJ0SqHUFOcJpe66mGXC9Ar007Q135BU
+ oBfVNL+4QcB4HLX0SlmtWzjS8ADmXu/2ISmEzSVYfVYvreeeYqdnAxgVxHTIfD2xCEl0
+ JYNQ==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=reject dis=none)
  header.from=cloudflare.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=cloudflare.com header.i=@cloudflare.com
- header.a=rsa-sha256 header.s=google09082023 header.b=e1rAzhCN
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3 0/3] ice: convert Rx path
- to Page Pool
+ header.a=rsa-sha256 header.s=google09082023 header.b=eTxDK+VY
+Subject: Re: [Intel-wired-lan] [PATCH RFC bpf-next v2 0/5] Add the the
+ capability to load HW RX checsum in eBPF programs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -132,43 +147,30 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Sep 25, 2025 at 11:22 AM +02, Michal Kubiak wrote:
-> This series modernizes the Rx path in the ice driver by removing legacy
-> code and switching to the Page Pool API. The changes follow the same
-> direction as previously done for the iavf driver, and aim to simplify
-> buffer management, improve maintainability, and prepare for future
-> infrastructure reuse.
+On Thu, Sep 25, 2025 at 12:39 PM +02, Lorenzo Bianconi wrote:
+>> On Thu, Sep 25, 2025 at 11:30 AM +02, Lorenzo Bianconi wrote:
+>> > Introduce bpf_xdp_metadata_rx_checksum() kfunc in order to load the HW
+>> > RX cheksum results in the eBPF program binded to the NIC.
+>> > Implement xmo_rx_checksum callback for veth and ice drivers.
+>> 
+>> What are going to do with HW RX checksum once XDP prog can access it?
 >
-> An important motivation for this work was addressing reports of poor
-> performance in XDP_TX mode when IOMMU is enabled. The legacy Rx model
-> incurred significant overhead due to per-frame DMA mapping, which
-> limited throughput in virtualized environments. This series eliminates
-> those bottlenecks by adopting Page Pool and bi-directional DMA mapping.
->
-> The first patch removes the legacy Rx path, which relied on manual skb
-> allocation and header copying. This path has become obsolete due to the
-> availability of build_skb() and the increasing complexity of supporting
-> features like XDP and multi-buffer.
->
-> The second patch drops the page splitting and recycling logic. While
-> once used to optimize memory usage, this logic introduced significant
-> complexity and hotpath overhead. Removing it simplifies the Rx flow and
-> sets the stage for Page Pool adoption.
->
-> The final patch switches the driver to use the Page Pool and libeth
-> APIs. It also updates the XDP implementation to use libeth_xdp helpers
-> and optimizes XDP_TX by avoiding per-frame DMA mapping. This results in
-> a significant performance improvement in virtualized environments with
-> IOMMU enabled (over 5x gain in XDP_TX throughput). In other scenarios,
-> performance remains on par with the previous implementation.
->
-> This conversion also aligns with the broader effort to modularize and
-> unify XDP support across Intel Ethernet drivers.
->
-> Tested on various workloads including netperf and XDP modes (PASS, DROP,
-> TX) with and without IOMMU. No regressions observed.
+> I guess there are multiple use-cases for bpf_xdp_metadata_rx_checksum()
+> kfunc. The first the I have in mind is when packets are received by an af_xdp
+> application. In this case I think we currently do not have any way to check if
+> the packet checksum is correct, right?
+> I think Jesper has other use-cases in mind, I will let him comment
+> here.
 
-Will we be able to have 256 B of XDP headroom after this conversion?
+Can you share more details on what the AF_XDP application would that
+info?
 
-Thanks,
--jkbs
+Regarding the use cases that Jesper is trying to unlock, as things stand
+we don't have a way, or an agreement on how to inject/propagate even the
+already existing NIC hints back into the network stack.
+
+Hence my question - why do we want to expose another NIC hint to XDP
+that we can't consume in any useful way yet?
+
+Shouldn't we first figure out how we're planning to re-inject that info
+into the stack?
