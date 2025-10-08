@@ -1,94 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 192FCBC4529
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 08 Oct 2025 12:31:29 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 22254BC4AA4
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 08 Oct 2025 14:00:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C2A7240800;
-	Wed,  8 Oct 2025 10:31:27 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CABF040B27;
+	Wed,  8 Oct 2025 12:00:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id E36QQj37tp4P; Wed,  8 Oct 2025 10:31:27 +0000 (UTC)
+ id 8QlG94JrNvpg; Wed,  8 Oct 2025 12:00:13 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 392E540854
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C6B8D40A4D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1759919487;
-	bh=qWOQGyZF6H3FLjMi6BaaiNR3SCcvMoxy1k0sXPOxtEc=;
+	s=default; t=1759924812;
+	bh=s2NLFNQHc96RvCqZX4156s9TdA0sHIeKEPfacnxoJGg=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=DO7j8ZRXxx9RUjCzY2bN+m51lyPB8+RhHPC1FEpUceTq5ZslNKRSCVEbWwMaqQXUW
-	 H/w+uwY+jnYL99XYFEaQaWVbtBXGA2Jgitb1puh9RXvh4g2JNzLSmfwj21rqcXwa9h
-	 PbKvKMPdzXq+V31csJ6Jx+2j8zVKErzGMIeghmLrSeMc3dZ2emJXxSrtfcbFAAx3qN
-	 vbLSr0poreSkaAxKOx1FjtBVRlBNH1CbXEm6sFjokXxmda5aY8srUMCfCyLsAA/dFf
-	 OZA3iZ0YG6k2aooLfo3QposmibvzeZ3JVP3vxIabzzNZY5tH1j7+4kOvm2Mw3Dwq22
-	 2OCVLokAV6NVA==
+	b=lL9fBj+3Ce/0CIYcMOlfeUr18aRNtJLkeHon82Nc4zqfW/8wnFxoqiZ5SCQZR7+vM
+	 h4kGu1Zi/MVA/xl4vlrC0rH1bQXJTkHEOs13jDQXxUzth2fIZT5dPfgTH1epsGIrPq
+	 UXqttD92EC4NGlJHi0IfQw5XneiOwr8vpqwerGFX2V5Y5vzJJb8Bf4PO2gfG7aFleK
+	 M050yWuipp7GN/S1JUPDQhY3OrMGcJVo6xyoZn8fWa4vclqyMA4yXDzg0PQyiY6GKk
+	 BDmmdK/IJLy/WfcrTQHxGFWkyk1EgBc9iVc6J5yYyf38Fk3W26W+Tubs9yAgLDrsly
+	 a8yMnqzn3cejQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 392E540854;
-	Wed,  8 Oct 2025 10:31:27 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C6B8D40A4D;
+	Wed,  8 Oct 2025 12:00:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id B777D119
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Oct 2025 10:31:25 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 7D65D226
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Oct 2025 12:00:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A93888132A
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Oct 2025 10:31:25 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6FCF3408F0
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Oct 2025 12:00:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id lEN3dlH7w45R for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 Oct 2025 10:31:25 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.18;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id tLtV41b9sRxn for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 Oct 2025 12:00:06 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
  helo=mgamail.intel.com; envelope-from=grzegorz.nitka@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0B75381320
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0B75381320
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.18])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0B75381320
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Oct 2025 10:31:24 +0000 (UTC)
-X-CSE-ConnectionGUID: hc/0V/EMQQCVwY2tsfmYfA==
-X-CSE-MsgGUID: 0A3kVYgyROWo30NmJM5gzA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11575"; a="61314899"
-X-IronPort-AV: E=Sophos;i="6.18,323,1751266800"; d="scan'208";a="61314899"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
- by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Oct 2025 03:30:57 -0700
-X-CSE-ConnectionGUID: r3EuW9CJS5OKctu8XH4RLQ==
-X-CSE-MsgGUID: tYTE/BKiTB2+U5f4lQCSNQ==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org BE6EE408DD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BE6EE408DD
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id BE6EE408DD
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Oct 2025 12:00:06 +0000 (UTC)
+X-CSE-ConnectionGUID: yxsLKizCQFy3Cku+ZDdiIA==
+X-CSE-MsgGUID: va22iQjSRUG5OPxf0UUZPg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11575"; a="73541157"
+X-IronPort-AV: E=Sophos;i="6.19,323,1754982000"; d="scan'208";a="73541157"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+ by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Oct 2025 05:00:06 -0700
+X-CSE-ConnectionGUID: qlmCwMTjQZKyzrMO7KmdDQ==
+X-CSE-MsgGUID: BZJmvj+ZRPKr6FtJHShHNQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.18,323,1751266800"; d="scan'208";a="180231287"
+X-IronPort-AV: E=Sophos;i="6.19,323,1754982000"; d="scan'208";a="180090586"
 Received: from gklab-003-001.igk.intel.com ([10.91.173.48])
- by orviesa007.jf.intel.com with ESMTP; 08 Oct 2025 03:30:51 -0700
+ by fmviesa007.fm.intel.com with ESMTP; 08 Oct 2025 05:00:04 -0700
 From: Grzegorz Nitka <grzegorz.nitka@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  8 Oct 2025 12:28:53 +0200
-Message-Id: <20251008102853.1058695-1-grzegorz.nitka@intel.com>
+Date: Wed,  8 Oct 2025 13:58:11 +0200
+Message-Id: <20251008115811.1578695-1-grzegorz.nitka@intel.com>
 X-Mailer: git-send-email 2.39.3
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1759919485; x=1791455485;
+ t=1759924806; x=1791460806;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=L8s98Pp+Npa8RTT/IAdqGHuMIi9QoaXe5bkMmNP7FE0=;
- b=FOb9FaBNAKAHfllRW4LsGgj7Vv70pKIsfsrPAuHJlI7G/LNY83i+Xe2p
- Bx6zVx+7pe5axrookgG8G/u/KM9V2zXrX5pMLpOd5nqcw3Yf865xobPay
- unX58VvXJpTcqSzfToxlgfQ0gSUPzNpxycoAG4d4vWrSlhq7Jbv2XYsMO
- Hse7dLPsCHOFxqiidFBPJWURdW6IwFPmr4fsmYTmlq/ww2I5LdTDD73MY
- fb2AUtHVo16tBW4EPmpCvjwiHoGmhwYp+ILL2z/pLrx75KZ4f2Z29jG6a
- g3FBrWQxokUbWPAV5Wnpf79Vo7m6zpJSwigzZ7rQGMdovXf6GE5oz6kfs
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=XGOe8jWd4nVrbi8ZdLlMxwTp5ZPj5CcYqRnLiotT1vI=;
+ b=QKqUWKsJRQBj723rAPxobfQAlz0jaQtJc0FO0k0TjGU0evryElhUGfX8
+ cISxxcA1hTaOdMfcAsjb5UZXtmeiQRtz6CshP0DcsaD55fP3jx49VooaA
+ yCy/DjGdux4XJ5SZzT7tA8T/fVj2MaMFnZx9ZaH5M/tr+/Q6jjOxdHbkt
+ wocNBIPwr7nABcfe7ZCiePXVVJFG1q2XobgQ2UwYA5Yn1elfXJ20X1RB0
+ eNPgJGYquli2HbpqnK8W8bT/d4HLgUHZOMt7bC2Ty9piBGN9Vvg2b+HVG
+ e5GzgBZD7qIqatyYh0uddbT2ds68F/T0jBPwZBBSjjDC48I+RLE+M8bfg
+ A==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=FOb9FaBN
-Subject: [Intel-wired-lan] [PATCH iwl-net] ice: fix usage of logical PF id
+ header.s=Intel header.b=QKqUWKsJ
+Subject: [Intel-wired-lan] [PATCH iwl-net] ice: fix PTP cleanup on driver
+ removal in error path
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -102,81 +103,78 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>, netdev@vger.kernel.org,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Dan Nowlin <dan.nowlin@intel.com>
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-In some devices, the function numbers used are non-contiguous. For
-example, here is such configuration for E825 device:
+Improve PTP feature cleanup in error path by adding explicit call to
+ice_ptp_cleanup_pf in the case in which PTP feature is not fully
+operational at the time of driver removal (which is indicated by
+ptp->state flag).
+At the driver probe, if PTP feature is supported, each PF adds its own
+port to the list of ports controlled by ice_adapter object.
+Analogously, at the driver remove, it's expected each PF is
+responsible for removing previously added port from the list.
+If for some reason (like errors in reset handling, NVM update etc.), PTP
+feature has not rebuilt successfully, the driver is still responsible for
+proper clearing ice_adapter port list. It's done by calling
+ice_ptp_cleanup_pf function.
+Otherwise, the following call trace is observed when ice_adapter object
+is freed (port list is not empty, as it is expected at this stage):
 
-root@/home/root# lspci -v | grep Eth
-0a:00.0 Ethernet controller: Intel Corporation Ethernet Connection
-E825-C for backplane (rev 04)
-0a:00.1 Ethernet controller: Intel Corporation Ethernet Connection
-E825-C for backplane (rev 04)
-0a:00.4 Ethernet controller: Intel Corporation Ethernet Connection
-E825-C 10GbE (rev 04)
-0a:00.5 Ethernet controller: Intel Corporation Ethernet Connection
-E825-C 10GbE (rev 04)
+[  T93022] ------------[ cut here ]------------
+[  T93022] WARNING: CPU: 10 PID: 93022 at
+ice/ice_adapter.c:67 ice_adapter_put+0xef/0x100 [ice]
+...
+[  T93022] RIP: 0010:ice_adapter_put+0xef/0x100 [ice]
+...
+[  T93022] Call Trace:
+[  T93022]  <TASK>
+[  T93022]  ? ice_adapter_put+0xef/0x100 [ice
+33d2647ad4f6d866d41eefff1806df37c68aef0c]
+[  T93022]  ? __warn.cold+0xb0/0x10e
+[  T93022]  ? ice_adapter_put+0xef/0x100 [ice
+33d2647ad4f6d866d41eefff1806df37c68aef0c]
+[  T93022]  ? report_bug+0xd8/0x150
+[  T93022]  ? handle_bug+0xe9/0x110
+[  T93022]  ? exc_invalid_op+0x17/0x70
+[  T93022]  ? asm_exc_invalid_op+0x1a/0x20
+[  T93022]  ? ice_adapter_put+0xef/0x100 [ice
+33d2647ad4f6d866d41eefff1806df37c68aef0c]
+[  T93022]  pci_device_remove+0x42/0xb0
+[  T93022]  device_release_driver_internal+0x19f/0x200
+[  T93022]  driver_detach+0x48/0x90
+[  T93022]  bus_remove_driver+0x70/0xf0
+[  T93022]  pci_unregister_driver+0x42/0xb0
+[  T93022]  ice_module_exit+0x10/0xdb0 [ice
+33d2647ad4f6d866d41eefff1806df37c68aef0c]
+...
+[  T93022] ---[ end trace 0000000000000000 ]---
+[  T93022] ice: module unloaded
 
-When distributing RSS and FDIR masks, which are global resources across
-the active devices, it is required to have a contiguous PF id, which can
-be described as a logical PF id. In the case above, function 0 would
-have a logical PF id of 0, function 1 would have a logical PF id
-of 1, and functions 4 and 5 would have a logical PF ids 2 and 3
-respectively.
-Using logical PF id can properly describe which slice of resources can
-be used by a particular PF.
-
-The 'function id' to 'logical id' mapping has been introduced with the
-commit 015307754a19 ("ice: Support VF queue rate limit and quanta size
-configuration"). However, the usage of 'logical_pf_id' field was
-unintentionally skipped for profile mask configuration.
-Fix it by using 'logical_pf_id' instead of 'pf_id' value when configuring
-masks.
-
-Without that patch, wrong indexes, i.e. out of range for given PF, can
-be used while configuring resources masks, which might lead to memory
-corruption and undefined driver behavior.
-The call trace below is one of the examples of such error:
-
-[  +0.000008] WARNING: CPU: 39 PID: 3830 at drivers/base/devres.c:1095
-devm_kfree+0x70/0xa0
-[  +0.000002] RIP: 0010:devm_kfree+0x70/0xa0
-[  +0.000001] Call Trace:
-[  +0.000002]  <TASK>
-[  +0.000002]  ice_free_hw_tbls+0x183/0x710 [ice]
-[  +0.000106]  ice_deinit_hw+0x67/0x90 [ice]
-[  +0.000091]  ice_deinit+0x20d/0x2f0 [ice]
-[  +0.000076]  ice_remove+0x1fa/0x6a0 [ice]
-[  +0.000075]  pci_device_remove+0xa7/0x1d0
-[  +0.000010]  device_release_driver_internal+0x365/0x530
-[  +0.000006]  driver_detach+0xbb/0x170
-[  +0.000003]  bus_remove_driver+0x117/0x290
-[  +0.000007]  pci_unregister_driver+0x26/0x250
-
-Fixes: 015307754a19 ("ice: Support VF queue rate limit and quanta size configuration")
-Suggested-by: Dan Nowlin <dan.nowlin@intel.com>
+Fixes: e800654e85b5 ("ice: Use ice_adapter for PTP shared data instead of auxdev")
 Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
 Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_flex_pipe.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/intel/ice/ice_ptp.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
-index 363ae79a3620..013c93b6605e 100644
---- a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
-+++ b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
-@@ -1479,7 +1479,7 @@ static void ice_init_prof_masks(struct ice_hw *hw, enum ice_block blk)
- 	per_pf = ICE_PROF_MASK_COUNT / hw->dev_caps.num_funcs;
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+index fb0f6365a6d6..c43a7973d70f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+@@ -3282,8 +3282,10 @@ void ice_ptp_init(struct ice_pf *pf)
+  */
+ void ice_ptp_release(struct ice_pf *pf)
+ {
+-	if (pf->ptp.state != ICE_PTP_READY)
++	if (pf->ptp.state != ICE_PTP_READY) {
++		ice_ptp_cleanup_pf(pf);
+ 		return;
++	}
  
- 	hw->blk[blk].masks.count = per_pf;
--	hw->blk[blk].masks.first = hw->pf_id * per_pf;
-+	hw->blk[blk].masks.first = hw->logical_pf_id * per_pf;
- 
- 	memset(hw->blk[blk].masks.masks, 0, sizeof(hw->blk[blk].masks.masks));
+ 	pf->ptp.state = ICE_PTP_UNINIT;
  
 
 base-commit: 8b223715f39c8a944abff2831c47d5509fdb6e57
