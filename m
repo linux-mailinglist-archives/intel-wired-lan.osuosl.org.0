@@ -1,99 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 56A64BD4120
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 Oct 2025 17:22:33 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id DE8D7BD5656
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 Oct 2025 19:12:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0DD54828AA;
-	Mon, 13 Oct 2025 15:22:31 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C7BBE60E37;
+	Mon, 13 Oct 2025 17:12:04 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NHTPPTk7q2lT; Mon, 13 Oct 2025 15:22:30 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id UAbMvCqVPoK6; Mon, 13 Oct 2025 17:12:04 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7A48E8223F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 48EA460E3B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1760368950;
-	bh=zoOVxqSLzBu0n7MI6GsZkHy+FoSIZuUAxG9wS7o+f78=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=bOlNTMYxpKfUXEwjiz91sxEgSRO26RoMVbahhvrSCWmNshZRRVBD6AqjoGMbjlKw3
-	 sE01+f7rpdehpRqr8OQUfWTfCz+WyRosaVnAlWVymNKKLGLJINFqkY4YJH00x+Z4Op
-	 bqfW/g31QeGKWk12A2Z6lCFwvwwKJSFCRV5LBdcjZsbJAJxTfZh0qkPVvBNBn5/tZE
-	 FKZUtPnED6pNC3+g7bsHNW2fq3X1T2OTEEFpYiP1TBgk2+cmOZnq/qCKrjLXDAN413
-	 SkanWqaxawNY9UGzcCP0+SqZoYiewcf6MQ9gpuRF1noHXiriPwWfpnBlIqyJJkHgdH
-	 SzbT3q6pmNz4Q==
+	s=default; t=1760375524;
+	bh=sZscqZKkrNU08pkD7g5GNPeeLKmgl6YVw6Z3iAshFp0=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=d0zyh3XQnfxKetKhbuYCIzPMWlfoKKInq+VqqbhglZ3jLSg3XDSOvXdkm1gHcN8TD
+	 ry6Q8SGzIMr2ldKnPRkIn76KYtd44hYfPZeSEzBVwk4p82wCPINkfJyllN+KcVKyry
+	 EZBXGIIa58ZYVeisJI2eJaDfo1qpbUNFhkfB7RJfbBm9YiP6L0h5kbrHXBM/XKeCim
+	 yVdpbaQAac9ecSPN6okRPUtoJdV8UNiIyU6aeBlqYs1F/WSXV1Nqd/2NbOyuI1BliL
+	 uLTZbUewoXk++AhIMBLmxHg8FL57dEb58WTmVqjj4suYTdzc3kgHrP7kZVAx0zwpAn
+	 iWk9s5NPNHqgA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7A48E8223F;
-	Mon, 13 Oct 2025 15:22:30 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 48EA460E3B;
+	Mon, 13 Oct 2025 17:12:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id A317812B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Oct 2025 15:22:29 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 4EE0A12B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Oct 2025 17:12:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 9501F401C8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Oct 2025 15:22:29 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 407B160E2C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Oct 2025 17:12:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id OMwbsRbY5ASY for <intel-wired-lan@lists.osuosl.org>;
- Mon, 13 Oct 2025 15:22:29 +0000 (UTC)
-X-Greylist: delayed 428 seconds by postgrey-1.37 at util1.osuosl.org;
- Mon, 13 Oct 2025 15:22:28 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 9F0B440059
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9F0B440059
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
- helo=mgamail.intel.com; envelope-from=emil.s.tantilov@intel.com;
- receiver=<UNKNOWN> 
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9F0B440059
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Oct 2025 15:22:28 +0000 (UTC)
-X-CSE-ConnectionGUID: rIXVKPRSRb22iABkkq80XA==
-X-CSE-MsgGUID: 7m02YUqcQ76+Bqil4Z/QTg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11531"; a="62443347"
-X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; d="scan'208";a="62443347"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
- by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Oct 2025 08:15:20 -0700
-X-CSE-ConnectionGUID: KUykYF+DS+m5apxPfOqdrw==
-X-CSE-MsgGUID: 6PMpYbLYRMaGGMZ/nd3AAw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,225,1754982000"; d="scan'208";a="181632216"
-Received: from estantil-desk.jf.intel.com ([10.166.241.24])
- by orviesa008.jf.intel.com with ESMTP; 13 Oct 2025 08:15:20 -0700
-From: Emil Tantilov <emil.s.tantilov@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, przemyslaw.kitszel@intel.com,
- anthony.l.nguyen@intel.com, andrew+netdev@lunn.ch, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, decot@google.com,
- willemb@google.com, joshua.a.hay@intel.com, madhu.chittim@intel.com,
- horms@kernel.org
-Date: Mon, 13 Oct 2025 08:08:24 -0700
-Message-Id: <20251013150824.28705-1-emil.s.tantilov@intel.com>
-X-Mailer: git-send-email 2.17.2
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1760368949; x=1791904949;
- h=from:to:cc:subject:date:message-id;
- bh=c4rS93Rby4lVufqazjHfnme806G3DSAkw+yIkKx5apk=;
- b=PUKS63U/ip+PlgsT6LdCc0qqUGul788D/C9cgusoD7swpy/vXzrS+wMS
- ewtgrH9ldWrWwjZlOPsI0Ufs6gfAlO6UKuogQoIoA8WOdk5uI3FNCZjZP
- RZOLuFalOF5H0qPtiwM4qcDEagRUA79SnaLKd03z8lppgyTl3maUrRPff
- Awg9P7kLcVvGBCq75PXZsqzEOxjLT65TCCgJklUBfMy5/zNrQQ96Pfibq
- kNpJZwlYtqO1UgFwWp+T/amlbP/lUlrV8T7KqwXUMJKUIJvVuEVzEgw7K
- HlylHkww+1J9wVvvX8BG5UQNUeuuVtsqWK3b4vKi3AtcwGB+2UtPiP3Y+
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id B59PcfArEdOI for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 13 Oct 2025 17:12:01 +0000 (UTC)
+X-Greylist: delayed 2388 seconds by postgrey-1.37 at util1.osuosl.org;
+ Mon, 13 Oct 2025 17:12:00 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 156DD60E1B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 156DD60E1B
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
+ helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
+Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 156DD60E1B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Oct 2025 17:12:00 +0000 (UTC)
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+ (envelope-from <andrew@lunn.ch>)
+ id 1v8LSo-00AoSk-Pc; Mon, 13 Oct 2025 18:31:58 +0200
+Date: Mon, 13 Oct 2025 18:31:58 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Birger Koblitz <mail@birger-koblitz.de>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Message-ID: <b5dd3a3e-2420-4c7c-b690-3799fac14623@lunn.ch>
+References: <20251013-10gbx-v1-1-ab9896af3d58@birger-koblitz.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251013-10gbx-v1-1-ab9896af3d58@birger-koblitz.de>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; d=lunn.ch; 
+ s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+ Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+ bh=sZscqZKkrNU08pkD7g5GNPeeLKmgl6YVw6Z3iAshFp0=; b=pA2g89KPSLdEPDFcmMTLhja5qj
+ npwWUWySPoFAPBw5jdlzu5ouH/bNi5WljygVD0FlY9joqRK77CpqTut6tvbuhtwsdJ7FGXcV3tLx6
+ TqQVLWwXXbBP0Q1GVHDceWW4NMO5Kd+7T8XUMB5ZD8nYtPTIIJNLc1GbnRaH3vL0uVkQ=;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=PUKS63U/
-Subject: [Intel-wired-lan] [PATCH iwl-net] idpf: fix possible vport_config
- NULL pointer deref in remove
+ header.from=lunn.ch
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key) header.d=lunn.ch header.i=@lunn.ch
+ header.a=rsa-sha256 header.s=20171124 header.b=pA2g89KP
+Subject: Re: [Intel-wired-lan] [PATCH net-next] ixgbe: Add 10G-BX support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -109,49 +101,23 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Attempting to remove the driver will cause a crash in cases where
-the vport failed to initialize. Following trace is from an instance where
-the driver failed during an attempt to create a VF:
-[ 1661.543624] idpf 0000:84:00.7: Device HW Reset initiated
-[ 1722.923726] idpf 0000:84:00.7: Transaction timed-out (op:1 cookie:2900 vc_op:1 salt:29 timeout:60000ms)
-[ 1723.353263] BUG: kernel NULL pointer dereference, address: 0000000000000028
-...
-[ 1723.358472] RIP: 0010:idpf_remove+0x11c/0x200 [idpf]
-...
-[ 1723.364973] Call Trace:
-[ 1723.365475]  <TASK>
-[ 1723.365972]  pci_device_remove+0x42/0xb0
-[ 1723.366481]  device_release_driver_internal+0x1a9/0x210
-[ 1723.366987]  pci_stop_bus_device+0x6d/0x90
-[ 1723.367488]  pci_stop_and_remove_bus_device+0x12/0x20
-[ 1723.367971]  pci_iov_remove_virtfn+0xbd/0x120
-[ 1723.368309]  sriov_disable+0x34/0xe0
-[ 1723.368643]  idpf_sriov_configure+0x58/0x140 [idpf]
-[ 1723.368982]  sriov_numvfs_store+0xda/0x1c0
+> @@ -1678,6 +1679,26 @@ int ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
+>  			else
+>  				hw->phy.sfp_type =
+>  					ixgbe_sfp_type_1g_bx_core1;
+> +		/* Support Ethernet 10G-BX, checking the Bit Rate
+> +		 * Nominal Value as per SFF-8472 to be 12.5 Gb/s (67h) and
+> +		 * Single Mode fibre with at least 1km link length
+> +		 */
+> +		} else if ((!comp_codes_10g) && (bitrate_nominal == 0x67) &&
+> +			   (!(cable_tech & IXGBE_SFF_DA_PASSIVE_CABLE)) &&
+> +			   (!(cable_tech & IXGBE_SFF_DA_ACTIVE_CABLE))) {
+> +			status = hw->phy.ops.read_i2c_eeprom(hw,
+> +					    IXGBE_SFF_SM_LENGTH,
+> +					    &sm_length);
 
-Avoid the NULL pointer dereference by adding NULL pointer check for
-vport_config[i], before freeing user_config.q_coalesce.
+It seems like byte 15, Length (SMF), "Link length supported for single
+mode fiber, units of 100 m" should be checked here. A 255 * 100m would
+be more than 1Km, the condition you say in the comment.
 
-Fixes: e1e3fec3e34b ("idpf: preserve coalescing settings across resets")
-Signed-off-by: Emil Tantilov <emil.s.tantilov@intel.com>
-Reviewed-by: Chittim Madhu <madhu.chittim@intel.com>
----
- drivers/net/ethernet/intel/idpf/idpf_main.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_main.c b/drivers/net/ethernet/intel/idpf/idpf_main.c
-index 8c46481d2e1f..8cf4ff697572 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_main.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_main.c
-@@ -63,6 +63,8 @@ static void idpf_remove(struct pci_dev *pdev)
- 	destroy_workqueue(adapter->vc_event_wq);
- 
- 	for (i = 0; i < adapter->max_vports; i++) {
-+		if (!adapter->vport_config[i])
-+			continue;
- 		kfree(adapter->vport_config[i]->user_config.q_coalesce);
- 		kfree(adapter->vport_config[i]);
- 		adapter->vport_config[i] = NULL;
--- 
-2.37.3
-
+	Andrew
