@@ -1,83 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C54EBD98FE
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Oct 2025 15:08:30 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B28A6BDA180
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Oct 2025 16:42:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B4625415EA;
-	Tue, 14 Oct 2025 13:08:28 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id eIjVPBuovMvT; Tue, 14 Oct 2025 13:08:28 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 041CA415E4
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1760447308;
-	bh=r70sde9HuyzT4AUFiliJ43BoLZK1kWkjxnutCyn9Zpo=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=0ftjIcGDYpNhwToijJFXBjzDnBVR4C8SYyK0nF1XiLVKhspZK1TMk7S0hmTjr12Hj
-	 /Q21l/qXzHMmYp0ytiyCmwHpeFp0ADE8LbQTB29EdkeFjab0aW4/JTzJ/pzUxcdNwL
-	 FDL2UKa3rYS/7Pgouwn+qDOlrWZwX+rkgWXD10cL55CCuBwNnzLhEAsyrmoHI5khRe
-	 G6uQapu9AFiefB1z4FOauMmDTMpQ3fWNpe/xdN4jZ26wUxLSS1yfyQH2bg0cPJP0Cc
-	 y3dsKxpnPZOOIVPYtU4xqEG9eJ7Uq179vEnvSUn5OoYjhqfa2wQdb2Mgn8wXmWYTfx
-	 XcrrTvkpD7P2w==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 041CA415E4;
-	Tue, 14 Oct 2025 13:08:28 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id A488E294
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Oct 2025 13:08:26 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8063E61122
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Oct 2025 13:08:26 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 604946118F;
+	Tue, 14 Oct 2025 14:42:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 39n8DlHjkt5D for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Oct 2025 13:08:25 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+ id wHRcEvbsgQL8; Tue, 14 Oct 2025 14:42:35 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B1739611E2
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1760452955;
+	bh=D6bAafERG+fepJnWRYOaG67SYNdbU+VQzyW1LFu9SJM=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=a9CtOLA4pcsP+qYBHVn7IVqo7fBs5GBw+7HRAmVuuDtHRUMW/4s12QsY8vPVFnNFn
+	 3JZc1hgn4rLAWIckbLRt10/rZevSCCHMFlpbdh8n7Vw0N3igxPR0Xp7r1/8DU1NXwq
+	 7mzRD+ofNV+sFSwyJ1zERUGlX6B40GY2x09LpGaRu1inKiCA/Y2pX/Je+nZ9yNKCwY
+	 ZCXI75bGm9GrE2tRJOEGX0sg0A0Cork4oxZiwpuIU4jYNPPPR5u7sFCs8/lvMjmeZn
+	 4WEZJBbXlkOy0pGtuTik2nxvaK/n6sYCprAVGym00CLwYVIWLWdgPwM2TNc8JcIvkw
+	 qMEEAhA/9gaLw==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id B1739611E2;
+	Tue, 14 Oct 2025 14:42:35 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 4F05A294
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Oct 2025 14:42:34 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 37DE741601
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Oct 2025 14:42:34 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 0_eqJ9FfyOGc for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Oct 2025 14:42:33 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 9897461186
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9897461186
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9897461186
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Oct 2025 13:08:22 +0000 (UTC)
-Received: from [141.14.220.42] (g42.guest.molgen.mpg.de [141.14.220.42])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id AA7B96028F36C;
- Tue, 14 Oct 2025 15:07:53 +0200 (CEST)
-Message-ID: <77cfe8ef-57d4-4dee-b89d-3f5504653413@molgen.mpg.de>
-Date: Tue, 14 Oct 2025 15:07:52 +0200
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 0DD17415EC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0DD17415EC
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0DD17415EC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Oct 2025 14:42:32 +0000 (UTC)
+X-CSE-ConnectionGUID: CNF/fAhxTM+PyQacXZQG6Q==
+X-CSE-MsgGUID: /Vtgc5y4QYWiqaOoQzl1Pg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11582"; a="73955278"
+X-IronPort-AV: E=Sophos;i="6.19,228,1754982000"; d="scan'208";a="73955278"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Oct 2025 07:42:32 -0700
+X-CSE-ConnectionGUID: wWn2mO3GSOijVT8WbioiBg==
+X-CSE-MsgGUID: cOXsQb0VQJG4x/V+mZo4TA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.19,228,1754982000"; d="scan'208";a="212519417"
+Received: from os-delivery.igk.intel.com ([10.102.21.165])
+ by orviesa002.jf.intel.com with ESMTP; 14 Oct 2025 07:42:30 -0700
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ Guenter Roeck <linux@roeck-us.net>
+Date: Tue, 14 Oct 2025 16:11:10 +0200
+Message-ID: <20251014141110.751104-1-michal.swiatkowski@linux.intel.com>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Andrew Lunn <andrew@lunn.ch>, Birger Koblitz <mail@birger-koblitz.de>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org
-References: <20251014-10gbx-v2-1-980c524111e7@birger-koblitz.de>
- <0c753725-fd6f-4f85-9371-f7342f86acff@lunn.ch>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <0c753725-fd6f-4f85-9371-f7342f86acff@lunn.ch>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1760452953; x=1791988953;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=c6+EocnD4w4+0yuKJRBmHOTb815TgNmuf/l/5ZifKkU=;
+ b=cxy93TA/AP4ErWW/LljIoqu08tH8YuRXGmIEdh5EbKZvCiJW6q3X8iGa
+ USdg9LVQi2yehEegt/EiU9C41Fk1kL0GGKJ4lFEZV+6lSGpsSXZMVGYSs
+ 0IFg0IRmR0OalSCHJfX6TueUKNAIcpXPQEipNsZCpHxFxPFJOzTkq5ZHR
+ KeXN2tX2i0VyfiZJ8f8WFkg7r9/3mVn+HYx48XKYQLJWBvNsL9I3ufhBv
+ NRUYI3xmwE0s/Z2cOJ4B/tOfVAm48vFh0LgONWV2Vp7pnm1Do0OnzT5aT
+ bIkTp1zEQYLSIJD/Ks/IyeKBSuycSh7+gRTfQ9AY/Fwf464UIO27igCvF
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2] ixgbe: Add 10G-BX support
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=cxy93TA/
+Subject: [Intel-wired-lan] [PATCH iwl-net v1] ixgbe: guard fwlog code by
+ CONFIG_DEBUG_FS
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -93,59 +108,58 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Birger, dear Andrew,
+Building the ixgbe without CONFIG_DEBUG_FS leads to a build error. Fix
+that by guarding fwlog code.
 
+Fixes: 641585bc978e ("ixgbe: fwlog support for e610")
+Reported-by: Guenter Roeck <linux@roeck-us.net>
+Closes: https://lore.kernel.org/lkml/f594c621-f9e1-49f2-af31-23fbcb176058@roeck-us.net/
+Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+---
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 2 ++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h | 8 ++++++++
+ 2 files changed, 10 insertions(+)
 
-Am 14.10.25 um 14:27 schrieb Andrew Lunn:
-> On Tue, Oct 14, 2025 at 06:18:27AM +0200, Birger Koblitz wrote:
-> 61;8003;1c> Adds support for 10G-BX modules, i.e. 10GBit Ethernet over a single strand
->> Single-Mode fiber
->> The initialization of a 10G-BX SFP+ is the same as for a 10G SX/LX module,
->> and is identified according to SFF-8472 table 5-3, footnote 3 by the
->> 10G Ethernet Compliance Codes field being empty, the Nominal Bit
->> Rate being compatible with 12.5GBit, and the module being a fiber module
->> with a Single Mode fiber link length.
->>
->> This was tested using a Lightron WSPXG-HS3LC-IEA 1270/1330nm 10km
->> transceiver:
->> $ sudo ethtool -m enp1s0f1
->>     Identifier                          : 0x03 (SFP)
->>     Extended identifier                 : 0x04 (GBIC/SFP defined by 2-wire interface ID)
->>     Connector                           : 0x07 (LC)
->>     Transceiver codes                   : 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
->>     Encoding                            : 0x01 (8B/10B)
->>     BR Nominal                          : 10300MBd
->>     Rate identifier                     : 0x00 (unspecified)
->>     Length (SMF)                        : 10km
->>     Length (OM2)                        : 0m
->>     Length (OM1)                        : 0m
->>     Length (Copper or Active cable)     : 0m
->>     Length (OM3)                        : 0m
->>     Laser wavelength                    : 1330nm
->>     Vendor name                         : Lightron Inc.
->>     Vendor OUI                          : 00:13:c5
->>     Vendor PN                           : WSPXG-HS3LC-IEA
->>     Vendor rev                          : 0000
->>     Option values                       : 0x00 0x1a
->>     Option                              : TX_DISABLE implemented
->>     BR margin max                       : 0%
->>     BR margin min                       : 0%
->>     Vendor SN                           : S142228617
->>     Date code                           : 140611
->>     Optical diagnostics support         : Yes
->>
->> Signed-off-by: Birger Koblitz <mail@birger-koblitz.de>
-> 
-> Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+index c2f8189a0738..c5d76222df18 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+@@ -3921,6 +3921,7 @@ static int ixgbe_read_pba_string_e610(struct ixgbe_hw *hw, u8 *pba_num,
+ 	return err;
+ }
+ 
++#ifdef CONFIG_DEBUG_FS
+ static int __fwlog_send_cmd(void *priv, struct libie_aq_desc *desc, void *buf,
+ 			    u16 size)
+ {
+@@ -3952,6 +3953,7 @@ void ixgbe_fwlog_deinit(struct ixgbe_hw *hw)
+ 
+ 	libie_fwlog_deinit(&hw->fwlog);
+ }
++#endif /* CONFIG_DEBUG_FS */
+ 
+ static const struct ixgbe_mac_operations mac_ops_e610 = {
+ 	.init_hw			= ixgbe_init_hw_generic,
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
+index 11916b979d28..5317798b3263 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
+@@ -96,7 +96,15 @@ int ixgbe_aci_update_nvm(struct ixgbe_hw *hw, u16 module_typeid,
+ 			 bool last_command, u8 command_flags);
+ int ixgbe_nvm_write_activate(struct ixgbe_hw *hw, u16 cmd_flags,
+ 			     u8 *response_flags);
++#ifdef CONFIG_DEBUG_FS
+ int ixgbe_fwlog_init(struct ixgbe_hw *hw);
+ void ixgbe_fwlog_deinit(struct ixgbe_hw *hw);
++#else
++static inline int ixgbe_fwlog_init(struct ixgbe_hw *hw)
++{
++	return -EOPNOTSUPP;
++}
++static inline void ixgbe_fwlog_deinit(struct ixgbe_hw *hw) {}
++#endif /* CONFIG_DEBUG_FS */
+ 
+ #endif /* _IXGBE_E610_H_ */
+-- 
+2.49.0
 
-Unfortunately I do not see the original patch on the mailing list 
-*intel-wired-lan*, and lore.kernel.org also does not have it [1].
-
-
-Kind regards,
-
-Paul
-
-
-[1]: 
-https://lore.kernel.org/intel-wired-lan/0c753725-fd6f-4f85-9371-f7342f86acff@lunn.ch/T/#u
