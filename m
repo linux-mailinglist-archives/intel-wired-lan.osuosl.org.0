@@ -1,95 +1,93 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AB817BD8445
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Oct 2025 10:48:29 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BEDB0BD86CD
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Oct 2025 11:25:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C292B83CF2;
-	Tue, 14 Oct 2025 08:48:17 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2C809416EE;
+	Tue, 14 Oct 2025 09:25:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id czQzwxBGdzxg; Tue, 14 Oct 2025 08:48:17 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id xZGqblV_YVmH; Tue, 14 Oct 2025 09:25:39 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 17B7383CF0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 99E73416EB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1760431697;
-	bh=J0UkbGphl872Co/0zFMJAroO/4Pmsac3D2C4KaLx+KQ=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=kWXW/dDlBAaOiJAyLrymnhloOwFvVneeOOklNqf6LH5VMza+2qod/8d6tjM7QfuGx
-	 TXp6SABN+HXQ8Du/oK7KFQH0du/N1Au8sTRh6JCEWkq+JiNbj/k+xwwo7EENLY9PZZ
-	 KC86n+ShEyS0/qu5tHIQV3bd7zl05R8+Dpqg2XaT8/+PCn2WWUhV/ns9o8qC1kCUsB
-	 PfC7zHL02+p5revHGrE0MsMs0l+fxcqzXVg001sYC23ArUg3uM/b3pYSTMGrrDe2QY
-	 khnD/UHlnPU9caKA3oOZKJ5Fj+b1hwRBS2ah2+iCiwg9NzjwvRuZnby6Us0/21WHkV
-	 nK4q3O6mbYO2Q==
+	s=default; t=1760433939;
+	bh=GD8FylA4D9oRZZvjSt8kDx0a2u/g49OpkySYU39ZlB0=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=sWJnKcuIvE3OqSm7GFey0kCUuz56eJ+sn438jsgGn3sMQQqOmnkeJVTHXJrvtZCXh
+	 ktiBDMm/+NOLmWV28+2IsFeEIgX8hMXFJ0SNjKoCFAFmJJl97d2vP1WPwjqAL6COio
+	 PgERflnHtZL7kx+OPwM0TTfTnzcXJWEgyUzOa0QbEb77Bew1M88/CIfjOGuAWj4Op5
+	 dYV/H0koD38afeQyp6kiWQ1sSzTzEuAS1IY0WMXY8y0WdjoyfK7Jd1LavyrNZ525Vs
+	 zZGyC8mfbguuRI0Yjmxj/tfDcU4y+ZjmBFE5HGtnZuKOPIr98i8D8F309xAseOF2id
+	 HL8+LhMJ9qUkg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 17B7383CF0;
-	Tue, 14 Oct 2025 08:48:17 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 99E73416EB;
+	Tue, 14 Oct 2025 09:25:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 4819E294
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Oct 2025 08:48:16 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 70ED8294
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Oct 2025 09:25:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3983F83CE8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Oct 2025 08:48:16 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 65D61413C1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Oct 2025 09:25:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ySKFlRaoLJ20 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Oct 2025 08:48:15 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.15;
- helo=mgamail.intel.com; envelope-from=grzegorz.nitka@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 5EE8983CE6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5EE8983CE6
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.15])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5EE8983CE6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Oct 2025 08:48:14 +0000 (UTC)
-X-CSE-ConnectionGUID: k7cR87kJTNeXano4OPXTSw==
-X-CSE-MsgGUID: v5COPUzdSoCfuhddonVWvw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11581"; a="62682566"
-X-IronPort-AV: E=Sophos;i="6.19,227,1754982000"; d="scan'208";a="62682566"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
- by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Oct 2025 01:48:13 -0700
-X-CSE-ConnectionGUID: h3SI6kNBR3qBEhemCW+23Q==
-X-CSE-MsgGUID: l9dD1XpRTaCfKlJNa9aVvg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,227,1754982000"; d="scan'208";a="182278908"
-Received: from gklab-003-001.igk.intel.com ([10.91.173.48])
- by fmviesa008.fm.intel.com with ESMTP; 14 Oct 2025 01:48:12 -0700
-From: Grzegorz Nitka <grzegorz.nitka@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 14 Oct 2025 10:46:18 +0200
-Message-Id: <20251014084618.2746755-1-grzegorz.nitka@intel.com>
-X-Mailer: git-send-email 2.39.3
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 6_-uoDaU7Pl2 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Oct 2025 09:25:36 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org BFD5240F6A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BFD5240F6A
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id BFD5240F6A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Oct 2025 09:25:36 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id DFD3B62246;
+ Tue, 14 Oct 2025 09:25:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DAD8FC4CEE7;
+ Tue, 14 Oct 2025 09:25:31 +0000 (UTC)
+Date: Tue, 14 Oct 2025 10:25:29 +0100
+From: Simon Horman <horms@kernel.org>
+To: Emil Tantilov <emil.s.tantilov@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ przemyslaw.kitszel@intel.com, anthony.l.nguyen@intel.com,
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, decot@google.com,
+ willemb@google.com, joshua.a.hay@intel.com, madhu.chittim@intel.com
+Message-ID: <aO4XCSu0jZ57k-1Z@horms.kernel.org>
+References: <20251013150824.28705-1-emil.s.tantilov@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251013150824.28705-1-emil.s.tantilov@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1760431695; x=1791967695;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=OcJ2y8QL8cVOhDe3Y9UlXJ+LflkYfHbKKdnGQSd4CDM=;
- b=eG+5RxXRRKHumyn+f4QBxDn7rtB6DKAEJ73lQY8iOguMaSvt5fqlLX7E
- dqc8wseTyxoH6T/EmQz9Hor+hw1jpX/pwQWvmZ8Lz7pBTsD9NDn3ZdvmW
- hqWk6DnKeifSqCsoUyNWKLSkecQ09TdOK0pYKpTYi9E6Vgw47Q4pYx2aj
- ap4GpHwcG6cCGQy84guNZknHB7QPb+gp/Ka/YvuA5tz/73RoCnbKhWT4K
- 4kFDg6m9d4ZRyKbNDC93jJsfAHwDSERyrIOKsFrq+1XbmHflQwF6cxDbJ
- jOb720J/KpEK8c2Jv25rmZZ6r1d2J+f8nGtVGFgJz71eLSkhBtb22ha7p
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ d=kernel.org; s=k20201202; t=1760433934;
+ bh=8Mpb15od7JA5MjgB34GiY42X9T1Dma3DJCUBcLWR5Uo=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=K2VIJnvjeULkqo+jYu3MvXTdSpkss5eKcDIMzGYsUp3pWCeEXwq+shs9TcZ4PxS/V
+ GpMekWpp7laGilxhFxm4nwbvwhNL1qw32IaJfSvItJxyh4CmM/RtUl93JR9ex1ohCY
+ znUyPA0CmOYaYXnWOxPeJULE+yQIeoYJLcoqiEY5hhB7tK01obDPy101yM7pK4xDjj
+ UMCVcJtT0yvKXp1ITzvmMhH9yWZI5OpzZ4zKH/guopeGKH8LpeKEtZQeGIX9akt//R
+ 0566OisOS/MhbuLghBymw8ZOkxOc1+1sRewCBbMawDo/6Ii+vE04JTPBYSjcAIqN2Q
+ FmIU3KgDSK3GQ==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=eG+5RxXR
-Subject: [Intel-wired-lan] [PATCH iwl-next] ice: unify PHY FW loading status
- handler for E800 devices
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=K2VIJnvj
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] idpf: fix possible
+ vport_config NULL pointer deref in remove
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -102,142 +100,46 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>, netdev@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Unify handling of PHY firmware load delays across all E800 family
-devices. There is an existing mechanism to poll GL_MNG_FWSM_FW_LOADING_M
-bit of GL_MNG_FWSM register in order to verify whether PHY FW loading
-completed or not. Previously, this logic was limited to E827 variants
-only.
+On Mon, Oct 13, 2025 at 08:08:24AM -0700, Emil Tantilov wrote:
+> Attempting to remove the driver will cause a crash in cases where
+> the vport failed to initialize. Following trace is from an instance where
+> the driver failed during an attempt to create a VF:
+> [ 1661.543624] idpf 0000:84:00.7: Device HW Reset initiated
+> [ 1722.923726] idpf 0000:84:00.7: Transaction timed-out (op:1 cookie:2900 vc_op:1 salt:29 timeout:60000ms)
+> [ 1723.353263] BUG: kernel NULL pointer dereference, address: 0000000000000028
+> ...
+> [ 1723.358472] RIP: 0010:idpf_remove+0x11c/0x200 [idpf]
+> ...
+> [ 1723.364973] Call Trace:
+> [ 1723.365475]  <TASK>
+> [ 1723.365972]  pci_device_remove+0x42/0xb0
+> [ 1723.366481]  device_release_driver_internal+0x1a9/0x210
+> [ 1723.366987]  pci_stop_bus_device+0x6d/0x90
+> [ 1723.367488]  pci_stop_and_remove_bus_device+0x12/0x20
+> [ 1723.367971]  pci_iov_remove_virtfn+0xbd/0x120
+> [ 1723.368309]  sriov_disable+0x34/0xe0
+> [ 1723.368643]  idpf_sriov_configure+0x58/0x140 [idpf]
+> [ 1723.368982]  sriov_numvfs_store+0xda/0x1c0
+> 
+> Avoid the NULL pointer dereference by adding NULL pointer check for
+> vport_config[i], before freeing user_config.q_coalesce.
+> 
+> Fixes: e1e3fec3e34b ("idpf: preserve coalescing settings across resets")
+> Signed-off-by: Emil Tantilov <emil.s.tantilov@intel.com>
+> Reviewed-by: Chittim Madhu <madhu.chittim@intel.com>
 
-Also, inform a user of possible delay in initialization process, by
-dumping informational message in dmesg log.
+Thanks,
 
-Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_common.c | 81 ++++++---------------
- 1 file changed, 24 insertions(+), 57 deletions(-)
+I agree that prior to the cited commit adapter->vport_config[i] being
+NULL was harmless. But afterwards a NULL pointer dereference would occur.
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 8e56354332ad..d05d371a9944 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -203,42 +203,6 @@ bool ice_is_generic_mac(struct ice_hw *hw)
- 		hw->mac_type == ICE_MAC_GENERIC_3K_E825);
- }
- 
--/**
-- * ice_is_pf_c827 - check if pf contains c827 phy
-- * @hw: pointer to the hw struct
-- *
-- * Return: true if the device has c827 phy.
-- */
--static bool ice_is_pf_c827(struct ice_hw *hw)
--{
--	struct ice_aqc_get_link_topo cmd = {};
--	u8 node_part_number;
--	u16 node_handle;
--	int status;
--
--	if (hw->mac_type != ICE_MAC_E810)
--		return false;
--
--	if (hw->device_id != ICE_DEV_ID_E810C_QSFP)
--		return true;
--
--	cmd.addr.topo_params.node_type_ctx =
--		FIELD_PREP(ICE_AQC_LINK_TOPO_NODE_TYPE_M, ICE_AQC_LINK_TOPO_NODE_TYPE_PHY) |
--		FIELD_PREP(ICE_AQC_LINK_TOPO_NODE_CTX_M, ICE_AQC_LINK_TOPO_NODE_CTX_PORT);
--	cmd.addr.topo_params.index = 0;
--
--	status = ice_aq_get_netlist_node(hw, &cmd, &node_part_number,
--					 &node_handle);
--
--	if (status || node_part_number != ICE_AQC_GET_LINK_TOPO_NODE_NR_C827)
--		return false;
--
--	if (node_handle == E810C_QSFP_C827_0_HANDLE || node_handle == E810C_QSFP_C827_1_HANDLE)
--		return true;
--
--	return false;
--}
--
- /**
-  * ice_clear_pf_cfg - Clear PF configuration
-  * @hw: pointer to the hardware structure
-@@ -958,30 +922,35 @@ static void ice_get_itr_intrl_gran(struct ice_hw *hw)
- }
- 
- /**
-- * ice_wait_for_fw - wait for full FW readiness
-+ * ice_wait_fw_load - wait for PHY firmware loading to complete
-  * @hw: pointer to the hardware structure
-  * @timeout: milliseconds that can elapse before timing out
-  *
-- * Return: 0 on success, -ETIMEDOUT on timeout.
-+ * On some cards, FW can load longer than usual,
-+ * and could still not be ready before link is turned on.
-+ * In these cases, we should wait until all's loaded.
-+ *
-+ * Return:
-+ * * 0 on success (FW load is completed)
-+ * * negative - on timeout
-  */
--static int ice_wait_for_fw(struct ice_hw *hw, u32 timeout)
-+static int ice_wait_fw_load(struct ice_hw *hw, u32 timeout)
- {
--	int fw_loading;
--	u32 elapsed = 0;
-+	int fw_loading_reg;
- 
--	while (elapsed <= timeout) {
--		fw_loading = rd32(hw, GL_MNG_FWSM) & GL_MNG_FWSM_FW_LOADING_M;
-+	if (!timeout)
-+		return 0;
- 
--		/* firmware was not yet loaded, we have to wait more */
--		if (fw_loading) {
--			elapsed += 100;
--			msleep(100);
--			continue;
--		}
-+	fw_loading_reg = rd32(hw, GL_MNG_FWSM) & GL_MNG_FWSM_FW_LOADING_M;
-+	/* notify the user only once if PHY FW is still loading */
-+	if (fw_loading_reg)
-+		dev_info(ice_hw_to_dev(hw), "Link initialization is blocked by PHY FW initialization. Link initialization will continue after PHY FW initialization completes.\n");
-+	else
- 		return 0;
--	}
- 
--	return -ETIMEDOUT;
-+	return rd32_poll_timeout(hw, GL_MNG_FWSM, fw_loading_reg,
-+				 !(fw_loading_reg & GL_MNG_FWSM_FW_LOADING_M),
-+				 10000, timeout * 1000);
- }
- 
- static int __fwlog_send_cmd(void *priv, struct libie_aq_desc *desc, void *buf,
-@@ -1171,12 +1140,10 @@ int ice_init_hw(struct ice_hw *hw)
- 	 * due to necessity of loading FW from an external source.
- 	 * This can take even half a minute.
- 	 */
--	if (ice_is_pf_c827(hw)) {
--		status = ice_wait_for_fw(hw, 30000);
--		if (status) {
--			dev_err(ice_hw_to_dev(hw), "ice_wait_for_fw timed out");
--			goto err_unroll_fltr_mgmt_struct;
--		}
-+	status = ice_wait_fw_load(hw, 30000);
-+	if (status) {
-+		dev_err(ice_hw_to_dev(hw), "ice_wait_fw_load timed out");
-+		goto err_unroll_fltr_mgmt_struct;
- 	}
- 
- 	hw->lane_num = ice_get_phy_lane_number(hw);
+It also seems to me that the possibility of adapter->vport_config[i]
+being null, via an error in idpf_vport_alloc() has existed since
+vport configuration was added by commit 0fe45467a104 ("idpf: add create
+vport and netdev configuration"). (Which predates the cited commit.)
 
-base-commit: cbbc9ad6caed63e32e8a4b10001b041f7294ffa6
--- 
-2.39.3
+Reviewed-by: Simon Horman <horms@kernel.org>
 
