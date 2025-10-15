@@ -1,82 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AB4C9BDD449
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Oct 2025 10:00:32 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 61D47BDD79F
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Oct 2025 10:44:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 61B3D615C1;
-	Wed, 15 Oct 2025 08:00:31 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1680D6152A;
+	Wed, 15 Oct 2025 08:44:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ACFyk1ixf1vB; Wed, 15 Oct 2025 08:00:30 +0000 (UTC)
+ id DInMy2i7_mxK; Wed, 15 Oct 2025 08:44:45 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 635BE6151D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9A8A0614D5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1760515230;
-	bh=BbxLdHjNHfV4SDe+bN0x0WD7UEZ/4DBT4MVLP1CSVB0=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1760517885;
+	bh=K0ZfJjPLqAKWXA78dB/9UOG4Z4rYHCunVjVmPyKiXK0=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=JQ+djUCfQCtHlQz6sfOZIp7+ObhTemUh8Ae7E9hojhbxYluQhQUQbKtC+elEumFSb
-	 aauzQwBiqyA7HucYGPqnDtXdxbdGSIX3lUcWRf9etNtKhjV0u3HTofyMDXNgfjoJKC
-	 KHjqffpfnndhia5qUAvfkm41azu/hO198iBCgbb7Do8R8fJDhLvVqIGmPnDUEvI+xu
-	 qmSRYjsMD3iRiBk5BF4wUGC89yCgVpDCilHIBq1UiJklUV4gUcGXGjw1VbQiOV4RSm
-	 cpssrTR4ZBkvXk9s5D23Q9L/aREBl+NJzujwSc192phfD3vC/bhN0dSbvkSyPSWpTC
-	 /loM0peKjtFpQ==
+	b=HkObATo5DBjKkZDCztQ3IKAen+Swlg/NyXh8GtB4o0IWvJyK4MAuEcLJaKRFWQYNk
+	 BHSE6O8U+SZEpd1a/02KvHGZACjpFx+PqaK5J8kUY576JBYDyCbz30iTdTFSRP0jYE
+	 5OH9NkpVD6GKoqWFxdtbLE+hDo4444S713zcYWEQPpH2PzPmtLA8ljdgsg7oOrpVMF
+	 VDo2eUVUkkIqo0JJlUPt5BPCi1htRc7vF/Dz7zJBtcQtfHl05c1otU8Tk+KxH2+1Yl
+	 iiHLIIfd4CVD4gCvkEQr8BV8rscPw9IBztOEYzoV9ztzlpymgvNXh3gOfzv504C9u7
+	 sVriwmlbBPKeA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 635BE6151D;
-	Wed, 15 Oct 2025 08:00:30 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9A8A0614D5;
+	Wed, 15 Oct 2025 08:44:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 092ED1BA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Oct 2025 08:00:29 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id AEEA01C9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Oct 2025 08:44:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0663D4143D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Oct 2025 08:00:29 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 95A3C4051B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Oct 2025 08:44:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id npjZKtfEyd2l for <intel-wired-lan@lists.osuosl.org>;
- Wed, 15 Oct 2025 08:00:27 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+ id yJqTpM1MDYZn for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 15 Oct 2025 08:44:43 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
+ helo=sea.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 00AF1404C3
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 00AF1404C3
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 00AF1404C3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Oct 2025 08:00:25 +0000 (UTC)
-Received: from [192.168.2.212] (p57bd968e.dip0.t-ipconnect.de [87.189.150.142])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 83C0A6028F366;
- Wed, 15 Oct 2025 09:59:58 +0200 (CEST)
-Message-ID: <21a53fe4-7cad-4717-87db-2f433659e174@molgen.mpg.de>
-Date: Wed, 15 Oct 2025 09:59:57 +0200
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 0401B403B9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0401B403B9
+Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 0401B403B9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Oct 2025 08:44:42 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sea.source.kernel.org (Postfix) with ESMTP id 222D5401C6;
+ Wed, 15 Oct 2025 08:44:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 071C2C4CEF8;
+ Wed, 15 Oct 2025 08:44:40 +0000 (UTC)
+Date: Wed, 15 Oct 2025 09:44:38 +0100
+From: Simon Horman <horms@kernel.org>
+To: Grzegorz Nitka <grzegorz.nitka@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Message-ID: <aO9e9ix2jHA30pY0@horms.kernel.org>
+References: <20251014084618.2746755-1-grzegorz.nitka@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Birger Koblitz <mail@birger-koblitz.de>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org
-References: <20251014-10gbx-v2-1-980c524111e7@birger-koblitz.de>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20251014-10gbx-v2-1-980c524111e7@birger-koblitz.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251014084618.2746755-1-grzegorz.nitka@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1760517882;
+ bh=9gCgcNDZMLI33rXS3SXu4duzcgmjeLbz/3YFKtX+M/w=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Hk/WMTDMmauQaQohmserq9/6qPb3Le7RvdVMWS7XTtYxTK2mGntDP+p8Oxkbilx+U
+ XpVOQJqQRLaU3JPAIkH5Lm17pUdjxHcbwX/qJs772fzjIQPcUQiiymN3LuqtPZ9qyg
+ VCVJAC3RdbK82ZHi0CMf1jvERY54iVmIXrCPT8qJu7J6PxuO2T4vUNXkk8baCR2Ixz
+ 0Zb34u3DeFsr+aBx/k++AD3UFVGEEMJX0RPNjaiP9DgvOfeQcxgWGf8wwlxKqSIWKp
+ LkkjxdbqYZ2LYFV+aLtrd1zHIi7oIAPo+CizXtwy1dYRGR0JtXEo3744ooqJd1I3vr
+ 9rbUY8neS46fA==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2] ixgbe: Add 10G-BX support
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=Hk/WMTDM
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: unify PHY FW loading
+ status handler for E800 devices
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -92,226 +99,18 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Birger,
-
-
-Thank you for your patch.
-
-Am 14.10.25 um 06:18 schrieb Birger Koblitz:
-> Adds support for 10G-BX modules, i.e. 10GBit Ethernet over a single strand
-> Single-Mode fiber
-
-I’d use imperative mood, and add a dot/period at the end.
-
-> The initialization of a 10G-BX SFP+ is the same as for a 10G SX/LX module,
-> and is identified according to SFF-8472 table 5-3, footnote 3 by the
-> 10G Ethernet Compliance Codes field being empty, the Nominal Bit
-> Rate being compatible with 12.5GBit, and the module being a fiber module
-> with a Single Mode fiber link length.
+On Tue, Oct 14, 2025 at 10:46:18AM +0200, Grzegorz Nitka wrote:
+> Unify handling of PHY firmware load delays across all E800 family
+> devices. There is an existing mechanism to poll GL_MNG_FWSM_FW_LOADING_M
+> bit of GL_MNG_FWSM register in order to verify whether PHY FW loading
+> completed or not. Previously, this logic was limited to E827 variants
+> only.
 > 
-> This was tested using a Lightron WSPXG-HS3LC-IEA 1270/1330nm 10km
-> transceiver:
-> $ sudo ethtool -m enp1s0f1
->     Identifier                          : 0x03 (SFP)
->     Extended identifier                 : 0x04 (GBIC/SFP defined by 2-wire interface ID)
->     Connector                           : 0x07 (LC)
->     Transceiver codes                   : 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
->     Encoding                            : 0x01 (8B/10B)
->     BR Nominal                          : 10300MBd
->     Rate identifier                     : 0x00 (unspecified)
->     Length (SMF)                        : 10km
->     Length (OM2)                        : 0m
->     Length (OM1)                        : 0m
->     Length (Copper or Active cable)     : 0m
->     Length (OM3)                        : 0m
->     Laser wavelength                    : 1330nm
->     Vendor name                         : Lightron Inc.
->     Vendor OUI                          : 00:13:c5
->     Vendor PN                           : WSPXG-HS3LC-IEA
->     Vendor rev                          : 0000
->     Option values                       : 0x00 0x1a
->     Option                              : TX_DISABLE implemented
->     BR margin max                       : 0%
->     BR margin min                       : 0%
->     Vendor SN                           : S142228617
->     Date code                           : 140611
->     Optical diagnostics support         : Yes
+> Also, inform a user of possible delay in initialization process, by
+> dumping informational message in dmesg log.
 > 
-> Signed-off-by: Birger Koblitz <mail@birger-koblitz.de>
-> ---
-> Changes in v2:
->    Allow also modules with only Byte 15 (100m SM link length) set to
->    be identified as BX
-> ---
->   drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c   |  7 ++++
->   drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c |  2 ++
->   drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c     | 43 +++++++++++++++++++++---
->   drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h     |  2 ++
->   drivers/net/ethernet/intel/ixgbe/ixgbe_type.h    |  2 ++
->   5 files changed, 51 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
-> index d5b1b974b4a33e7dd51b7cfe5ea211ff038a36f0..892a73a4bc6b0bb1c976ca95bf874059b987054f 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
-> @@ -342,6 +342,13 @@ static int ixgbe_get_link_capabilities_82599(struct ixgbe_hw *hw,
->   		return 0;
->   	}
->   
-> +	if (hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core0 ||
-> +	    hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core1) {
-> +		*speed = IXGBE_LINK_SPEED_10GB_FULL;
-> +		*autoneg = false;
-> +		return 0;
-> +	}
-> +
->   	/*
->   	 * Determine link capabilities based on the stored value of AUTOC,
->   	 * which represents EEPROM defaults.  If AUTOC value has not been
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-> index 2d660e9edb80af8fc834e097703dfd6a82b8c45b..76edf02bc47e5dd24bb0936f730f036181f6dc2a 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-> @@ -351,6 +351,8 @@ static int ixgbe_get_link_ksettings(struct net_device *netdev,
->   		case ixgbe_sfp_type_1g_lx_core1:
->   		case ixgbe_sfp_type_1g_bx_core0:
->   		case ixgbe_sfp_type_1g_bx_core1:
-> +		case ixgbe_sfp_type_10g_bx_core0:
-> +		case ixgbe_sfp_type_10g_bx_core1:
->   			ethtool_link_ksettings_add_link_mode(cmd, supported,
->   							     FIBRE);
->   			ethtool_link_ksettings_add_link_mode(cmd, advertising,
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
-> index 2449e4cf2679ddf3277f4ada7619303eb618d393..ad6a1eae6042bb16e329fb817bcfcb87e9008ce8 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
-> @@ -1541,6 +1541,8 @@ int ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
->   	u8 identifier = 0;
->   	u8 cable_tech = 0;
->   	u8 cable_spec = 0;
-> +	u8 sm_length_km = 0;
-> +	u8 sm_length_100m = 0;
->   	int status;
->   
->   	if (hw->mac.ops.get_media_type(hw) != ixgbe_media_type_fiber) {
-> @@ -1678,6 +1680,31 @@ int ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
->   			else
->   				hw->phy.sfp_type =
->   					ixgbe_sfp_type_1g_bx_core1;
-> +		/* Support Ethernet 10G-BX, checking the Bit Rate
-> +		 * Nominal Value as per SFF-8472 to be 12.5 Gb/s (67h) and
-> +		 * Single Mode fibre with at least 1km link length
-> +		 */
-> +		} else if ((!comp_codes_10g) && (bitrate_nominal == 0x67) &&
-> +			   (!(cable_tech & IXGBE_SFF_DA_PASSIVE_CABLE)) &&
-> +			   (!(cable_tech & IXGBE_SFF_DA_ACTIVE_CABLE))) {
-> +			status = hw->phy.ops.read_i2c_eeprom(hw,
-> +					    IXGBE_SFF_SM_LENGTH_KM,
-> +					    &sm_length_km);
-> +			if (status != 0)
-> +				goto err_read_i2c_eeprom;
+> Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
+> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 
-Should an error be logged?
+Reviewed-by: Simon Horman <horms@kernel.org>
 
-> +			status = hw->phy.ops.read_i2c_eeprom(hw,
-> +					    IXGBE_SFF_SM_LENGTH_100M,
-> +					    &sm_length_100m);
-> +			if (status != 0)
-> +				goto err_read_i2c_eeprom;
-
-Should an error be logged?
-
-> +			if (sm_length_km > 0 || sm_length_100m >= 10) {
-> +				if (hw->bus.lan_id == 0)
-> +					hw->phy.sfp_type =
-> +						ixgbe_sfp_type_10g_bx_core0;
-> +				else
-> +					hw->phy.sfp_type =
-> +						ixgbe_sfp_type_10g_bx_core1;
-
-I’d prefer the ternary operator, if only the same variable is assigned 
-in both branches.
-
-> +			}
->   		} else {
->   			hw->phy.sfp_type = ixgbe_sfp_type_unknown;
->   		}
-> @@ -1768,7 +1795,9 @@ int ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
->   	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core0 ||
->   	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core1 ||
->   	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core0 ||
-> -	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core1)) {
-> +	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core1 ||
-> +	      hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core0 ||
-> +	      hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core1)) {
->   		hw->phy.type = ixgbe_phy_sfp_unsupported;
->   		return -EOPNOTSUPP;
->   	}
-> @@ -1786,7 +1815,9 @@ int ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
->   	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core0 ||
->   	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core1 ||
->   	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core0 ||
-> -	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core1)) {
-> +	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core1 ||
-> +	      hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core0 ||
-> +	      hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core1)) {
->   		/* Make sure we're a supported PHY type */
->   		if (hw->phy.type == ixgbe_phy_sfp_intel)
->   			return 0;
-> @@ -2016,20 +2047,22 @@ int ixgbe_get_sfp_init_sequence_offsets(struct ixgbe_hw *hw,
->   		return -EOPNOTSUPP;
->   
->   	/*
-> -	 * Limiting active cables and 1G Phys must be initialized as
-> +	 * Limiting active cables, 10G BX and 1G Phys must be initialized as
->   	 * SR modules
->   	 */
->   	if (sfp_type == ixgbe_sfp_type_da_act_lmt_core0 ||
->   	    sfp_type == ixgbe_sfp_type_1g_lx_core0 ||
->   	    sfp_type == ixgbe_sfp_type_1g_cu_core0 ||
->   	    sfp_type == ixgbe_sfp_type_1g_sx_core0 ||
-> -	    sfp_type == ixgbe_sfp_type_1g_bx_core0)
-> +	    sfp_type == ixgbe_sfp_type_1g_bx_core0 ||
-> +	    sfp_type == ixgbe_sfp_type_10g_bx_core0)
->   		sfp_type = ixgbe_sfp_type_srlr_core0;
->   	else if (sfp_type == ixgbe_sfp_type_da_act_lmt_core1 ||
->   		 sfp_type == ixgbe_sfp_type_1g_lx_core1 ||
->   		 sfp_type == ixgbe_sfp_type_1g_cu_core1 ||
->   		 sfp_type == ixgbe_sfp_type_1g_sx_core1 ||
-> -		 sfp_type == ixgbe_sfp_type_1g_bx_core1)
-> +		 sfp_type == ixgbe_sfp_type_1g_bx_core1 ||
-> +		 sfp_type == ixgbe_sfp_type_10g_bx_core1)
->   		sfp_type = ixgbe_sfp_type_srlr_core1;
->   
->   	/* Read offset to PHY init contents */
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h
-> index 81179c60af4e0199a8b9d0fcdf34654b02eedfac..039ba4b6c120f3e824c93cb00fdd9483e7cf9cba 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h
-> @@ -32,6 +32,8 @@
->   #define IXGBE_SFF_QSFP_1GBE_COMP	0x86
->   #define IXGBE_SFF_QSFP_CABLE_LENGTH	0x92
->   #define IXGBE_SFF_QSFP_DEVICE_TECH	0x93
-> +#define IXGBE_SFF_SM_LENGTH_KM		0xE
-> +#define IXGBE_SFF_SM_LENGTH_100M	0xF
->   
->   /* Bitmasks */
->   #define IXGBE_SFF_DA_PASSIVE_CABLE		0x4
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-> index b1bfeb21537acc44c31aedcb0584374e8f6ecd45..61f2ef67defddeab9ff4aa83c8f017819594996b 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-> @@ -3286,6 +3286,8 @@ enum ixgbe_sfp_type {
->   	ixgbe_sfp_type_1g_lx_core1 = 14,
->   	ixgbe_sfp_type_1g_bx_core0 = 15,
->   	ixgbe_sfp_type_1g_bx_core1 = 16,
-> +	ixgbe_sfp_type_10g_bx_core0 = 17,
-> +	ixgbe_sfp_type_10g_bx_core1 = 18,
->   
->   	ixgbe_sfp_type_not_present = 0xFFFE,
->   	ixgbe_sfp_type_unknown = 0xFFFF
-
-
-Kind regards,
-
-Paul
