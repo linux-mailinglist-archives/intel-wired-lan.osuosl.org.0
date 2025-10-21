@@ -2,132 +2,130 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9DB52BF81DF
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Oct 2025 20:41:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E51FEBF834B
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Oct 2025 21:12:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C617A81D67;
-	Tue, 21 Oct 2025 18:41:23 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 33B2B822B7;
+	Tue, 21 Oct 2025 19:12:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pnnezCH8xy3e; Tue, 21 Oct 2025 18:41:23 +0000 (UTC)
+ id k62MvrwYi5Iz; Tue, 21 Oct 2025 19:12:31 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4C25E81AC1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A0710822B8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1761072083;
-	bh=+pRwSy6ulWeC1IqnsQS8bnPvtmx0Q9D9xGrMDNT1qOw=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=ZyXs4fWl4EYEri51bQ+2A56BRiUD2hsWpflnsDKvwX5A3fCFB4a1EuqM3fFb/Ohmt
-	 uRmxtvgbYXQtYFgB12bX27b1EboW7smFQypbrh4aMKoipEaGqoBtRnK5tBD302u1TT
-	 5KHoEdeC84rY/2D0flITreUnzzUMJMMbfPbrNfi4RZcs2Rj6oN1uixd1mtUcxCCDaZ
-	 /XwWxxVH2CNh4eigVT/+GQnKxTznD2s3/vwhn4w1QaqOPauPzQebz2XcmuiTuVLW8p
-	 kLeS6kA82kTFPOXCEpO9Ee0OBeuKV1oladKyH+GCpKkdc9sfqKszy05ONunRT8YYeQ
-	 rAQNFRJ2fYFzA==
+	s=default; t=1761073951;
+	bh=CWVpQClt/35C+ZDB/T0t2XcdIS5xnM9NZTrNT4EG2aw=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=oqFvSIil5HvvCX3K5qZAI03Y72SbD4yPIKsoN7DpWimDi+7NCGnvHjnafhdRp3tbG
+	 hXc3C00S7dHj8s+d/Fa3DmaYITKAomqTfkGW4PlukuoKXyULtDbPAs0/zfiLcKsPX5
+	 BATjPCabGKcvM4IuOckW5v9mLwE5peUtdNB3B1dJZYthKsvAdZGY/XuZkQYoDB4jgn
+	 yL5deKM9BTUdjAa3ZqhQKlGuTmrPj2hxuj5SBKQmqtrcfJpIxwji/llXJ3hhf/NJM5
+	 eOJbQ+aTGLFo1pNfw+weBNRd7jljyugYwYMhHMKIjdFoI7HRZJIu2yEqby/0545Nfu
+	 uICRcOF4iF4Tg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4C25E81AC1;
-	Tue, 21 Oct 2025 18:41:23 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A0710822B8;
+	Tue, 21 Oct 2025 19:12:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id CC834277
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Oct 2025 18:41:20 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id F198E277
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Oct 2025 19:12:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id BEBBC4065D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Oct 2025 18:41:20 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id E2D19822B6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Oct 2025 19:12:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id eVEuB_YoGc5Q for <intel-wired-lan@lists.osuosl.org>;
- Tue, 21 Oct 2025 18:41:20 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 0rSEeG-Es-Ei for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 21 Oct 2025 19:12:29 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=205.220.165.32;
  helo=mx0a-00069f02.pphosted.com; envelope-from=alok.a.tiwari@oracle.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 372D5405DE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 372D5405DE
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0029D822B3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0029D822B3
 Received: from mx0a-00069f02.pphosted.com (mx0a-00069f02.pphosted.com
  [205.220.165.32])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 372D5405DE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Oct 2025 18:41:20 +0000 (UTC)
-Received: from pps.filterd (m0333521.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 59LHcc5S001979;
- Tue, 21 Oct 2025 18:41:14 GMT
-Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com
- (phxpaimrmta01.appoci.oracle.com [138.1.114.2])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 49v31d6cvj-1
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 0029D822B3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Oct 2025 19:12:28 +0000 (UTC)
+Received: from pps.filterd (m0246629.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 59LH4GkU013637;
+ Tue, 21 Oct 2025 19:12:22 GMT
+Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta02.appoci.oracle.com [147.154.18.20])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 49v3076b64-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 21 Oct 2025 18:41:13 +0000 (GMT)
+ Tue, 21 Oct 2025 19:12:21 +0000 (GMT)
 Received: from pps.filterd
- (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
- by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2)
- with ESMTP id 59LGnBoF025371; Tue, 21 Oct 2025 18:41:13 GMT
+ (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2)
+ with ESMTP id 59LIv3sC032304; Tue, 21 Oct 2025 19:12:20 GMT
 Received: from pps.reinject (localhost [127.0.0.1])
- by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id
- 49v1bc7et1-1
+ by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
+ 49v1bd8tkp-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 21 Oct 2025 18:41:13 +0000
-Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com
- (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 59LIfBlf014153;
- Tue, 21 Oct 2025 18:41:12 GMT
+ Tue, 21 Oct 2025 19:12:20 +0000
+Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 59LJCKr6032644;
+ Tue, 21 Oct 2025 19:12:20 GMT
 Received: from ca-dev112.us.oracle.com (ca-dev112.us.oracle.com
  [10.129.136.47])
- by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id
- 49v1bc7es9-2; Tue, 21 Oct 2025 18:41:12 +0000
+ by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id
+ 49v1bd8tjg-1; Tue, 21 Oct 2025 19:12:20 +0000
 From: Alok Tiwari <alok.a.tiwari@oracle.com>
 To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
  andrew+netdev@lunn.ch, kuba@kernel.org, davem@davemloft.net,
  edumazet@google.com, pabeni@redhat.com, horms@kernel.org,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
 Cc: alok.a.tiwarilinux@gmail.com, alok.a.tiwari@oracle.com
-Date: Tue, 21 Oct 2025 11:40:55 -0700
-Message-ID: <20251021184108.2390121-2-alok.a.tiwari@oracle.com>
+Date: Tue, 21 Oct 2025 12:12:14 -0700
+Message-ID: <20251021191216.2392501-1-alok.a.tiwari@oracle.com>
 X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20251021184108.2390121-1-alok.a.tiwari@oracle.com>
-References: <20251021184108.2390121-1-alok.a.tiwari@oracle.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.80.40
  definitions=2025-10-21_02,2025-10-13_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- mlxscore=0 spamscore=0
- adultscore=0 suspectscore=0 malwarescore=0 mlxlogscore=999 phishscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2510020000
- definitions=main-2510210149
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDE4MDAyMyBTYWx0ZWRfXzSmZe1HKZQY2
- 0PFDQBcxG1HkbXJq+4AFpht137BxiCy4J+rSPlLNwKam42uPlIl1BpLpkMXW/KFoPv21tv7HibK
- iKoKqQQp1leelbmkypRTGyGu2EUHv/uVCKOKCsSWH9cTlH/+IqkclQcnLUNCSHcnn2O1W6jzfuS
- C+ECrTABWshyxDZRW/DgtmMbMuRz8HQN5tVe01O0mNj7RV5jvqboKGuxlg3bGYZeE6AhjwbTzzd
- OAFgrSTBkjfo6eqlgV4Oe+gGNEL7ATbABgHUJx2+APfmKFCKEmYt67ic3KQffDac13UXLbXe18A
- aOoaBrM+ndRhk5ZpOHDSlVnBMELNRN12mHBZ1rKKetb/YwQNhZGY2J9DYeCGiU53z0UHn79WO0S
- RM/Ck04gQQBWM36jPHJNC3iF2XBWog==
-X-Proofpoint-GUID: YKTMMUfSzjDXF9dY4y-eCiM_8mQkoPiA
-X-Authority-Analysis: v=2.4 cv=KoZAGGWN c=1 sm=1 tr=0 ts=68f7d3c9 cx=c_pps
- a=XiAAW1AwiKB2Y8Wsi+sD2Q==:117 a=XiAAW1AwiKB2Y8Wsi+sD2Q==:17
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ mlxlogscore=999
+ phishscore=0 bulkscore=0 mlxscore=0 adultscore=0 malwarescore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2510020000 definitions=main-2510210153
+X-Proofpoint-ORIG-GUID: JXr5RMB1Z_cyo6nyLBQgqdDdDYaj_fuf
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDE4MDAyMyBTYWx0ZWRfXx+6YbWqJyi2j
+ NMjPJuBJ0gRXU3vOkjMNaQbkjjH7HbVPO5HJrtjv4yeIg7lhXqt6I6BtUZSkfvWdZ7/QgyYRYtj
+ Rb8hr8rCB2SSu9o4dKqsXLMhKVqAezHlUe18QC5D9Kns+vl4SaP2uLewGWsZZkkLRLVRqz8dIEM
+ +VZSjbXPc1ciIsfCd09Hdq3yDI4s4vutxVHdsOoNjVkxu9IaEfe4JWmwE+It1568a0fqATx+FMC
+ bnWORaZzXyL/ZyTCRpuK7t5EafgSF5z4m2Hhk6XR0/XaiD+CYYdrv9rAilY8uX+QocK4Wju+Rmb
+ 8WLSqgVQaGR65LQNDohizPT/rUmbveH6RGFXY3D1qPb40OjrqBzRIL/8OsMtNG9vwMQlvmMBMlv
+ A/qV8VVm0stMxASC1R5VxYAkcgmkKAs2cUT5o9u/6LPxJ34ST8g=
+X-Proofpoint-GUID: JXr5RMB1Z_cyo6nyLBQgqdDdDYaj_fuf
+X-Authority-Analysis: v=2.4 cv=csaWUl4i c=1 sm=1 tr=0 ts=68f7db16 b=1 cx=c_pps
+ a=e1sVV491RgrpLwSTMOnk8w==:117
+ a=e1sVV491RgrpLwSTMOnk8w==:17
  a=x6icFKpwvdMA:10 a=VkNPw1HP01LnGYTKEx00:22 a=yPCof4ZbAAAA:8
- a=U-lh4RRolC2rDeatFzEA:9 a=cPQSjfK2_nFv0Q5t_7PE:22
-X-Proofpoint-ORIG-GUID: YKTMMUfSzjDXF9dY4y-eCiM_8mQkoPiA
+ a=O4Don3bGMySjCclUSRcA:9 cc=ntf awl=host:13624
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=oracle.com; h=cc
- :content-transfer-encoding:date:from:in-reply-to:message-id
- :mime-version:references:subject:to; s=corp-2025-04-25; bh=+pRwS
- y6ulWeC1IqnsQS8bnPvtmx0Q9D9xGrMDNT1qOw=; b=e459gABJxTYUWuRPNP17y
- A8CWsRT/VG4cr/++cIlJLZLtp10SONuCyRC2/HjMoz0kdPlw7irioi/2Jl/dKeKa
- ZEotoc4NGtIONpN7q/BGm2Kz03Igpv56NKHhzRr3BHgusUlKlTLCmXznKM4hLrWz
- wJGVoFLAoE82swWb0qzGwAHFBr7VzxXLxmNLtH3/sAUIZa6kGG+USXAuSYgWOcVJ
- bmc7rdczbw755Pz5a0qTUEddXD6uw8rpjfpCeHVGO5gLW+YSre8vWU96VVr9tEHt
- /zmDtKnIY05Z5YeJEJH/LCqj/v2VjiXUxzoGbhCMymjFesdTu6g4I8exh3A5ceu2
- w==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ :content-transfer-encoding:date:from:message-id:mime-version
+ :subject:to; s=corp-2025-04-25; bh=CWVpQClt/35C+ZDB/T0t2XcdIS5xn
+ M9NZTrNT4EG2aw=; b=jc/van9EwRhHJv7KFkbPDNLCZgfXRUgWeY4UQURpnBNBr
+ FPb/fDkz95Zw05v+Ln2T3MvrMNvZTkhVYoG3PJWjwHYnvZ+cl0rfp0bBaVaT8GfJ
+ RkuQT0ETL51y/M1iL6ZaLT2CnbvTbbBfV0LXpTy9rnKA2QMVQeFoPKUSIDm3RuW/
+ Rk58dqLxW0VKQOs8nm/y72tv3b8f1dpXifc4y1SBnPezm4xAHcRHVoKhGuoGTdr4
+ 5QbaT7XjK3x9bLSjvt7avvHfSMJN/XeIEtas48O8IU+RIGrmwV5q1PbbhvtBdeeM
+ ojojPmyMI2xZuaNHtqocTSdrmIffgo7N0WmNXN8+A==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=reject dis=none)
  header.from=oracle.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com
- header.a=rsa-sha256 header.s=corp-2025-04-25 header.b=e459gABJ
-Subject: [Intel-wired-lan] [PATCH net-next 2/2] idpf: fix typos and correct
- doc comments in idpf driver
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=oracle.com header.i=@oracle.com header.a=rsa-sha256
+ header.s=corp-2025-04-25 header.b=jc/van9E
+Subject: [Intel-wired-lan] [PATCH net-next] ixgbe: fix typos in ixgbe driver
+ comments
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -143,43 +141,62 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-- Corrected a typo: "controq" -> "control"
-- Updated return value description to accurately reflect behaviour:
-  changed "Returns true if there's any budget left" ->
-  "Returns number of packets cleaned from this queue"
+Corrected function reference:
+ - "proc_autoc_read_82599" -> "prot_autoc_read_82599"
+Fixed spelling of:
+ - "big-enian" -> "big-endian"
+ - "Virtualiztion" -> "Virtualization"
 
 Signed-off-by: Alok Tiwari <alok.a.tiwari@oracle.com>
 ---
- drivers/net/ethernet/intel/idpf/idpf_controlq.c     | 2 +-
- drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c | 4 ++--
+ drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c   | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_controlq.c b/drivers/net/ethernet/intel/idpf/idpf_controlq.c
-index 67894eda2d29..59558e2f45cf 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_controlq.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_controlq.c
-@@ -92,7 +92,7 @@ static void idpf_ctlq_init_rxq_bufs(struct idpf_ctlq_info *cq)
-  * @hw: pointer to hw struct
-  * @cq: pointer to the specific Control queue
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
+index d5b1b974b4a3..3069b583fd81 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
+@@ -198,7 +198,7 @@ static int prot_autoc_read_82599(struct ixgbe_hw *hw, bool *locked,
+  * @hw: pointer to hardware structure
+  * @autoc: value to write to AUTOC
+  * @locked: bool to indicate whether the SW/FW lock was already taken by
+- *	     previous proc_autoc_read_82599.
++ *	     previous prot_autoc_read_82599.
   *
-- * The main shutdown routine for any controq queue
-+ * The main shutdown routine for any control queue
-  */
- static void idpf_ctlq_shutdown(struct idpf_hw *hw, struct idpf_ctlq_info *cq)
- {
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
-index 61e613066140..ffc24a825129 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
-@@ -1029,7 +1029,7 @@ static void idpf_xdp_run_pass(struct libeth_xdp_buff *xdp,
-  * @rx_q: rx queue to clean
-  * @budget: Total limit on number of packets to process
+  * This part (82599) may need to hold a the SW/FW lock around all writes to
+  * AUTOC. Likewise after a write we need to do a pipeline reset.
+@@ -1622,7 +1622,7 @@ int ixgbe_fdir_set_input_mask_82599(struct ixgbe_hw *hw,
+ 		break;
+ 	}
+ 
+-	/* store source and destination IP masks (big-enian) */
++	/* store source and destination IP masks (big-endian) */
+ 	IXGBE_WRITE_REG_BE32(hw, IXGBE_FDIRSIP4M,
+ 			     ~input_mask->formatted.src_ip[0]);
+ 	IXGBE_WRITE_REG_BE32(hw, IXGBE_FDIRDIP4M,
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c
+index 170a29d162c6..a1d04914fbbc 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c
+@@ -318,7 +318,7 @@ static int ixgbe_xdp_queues(struct ixgbe_adapter *adapter)
+  * ixgbe_set_dcb_sriov_queues: Allocate queues for SR-IOV devices w/ DCB
+  * @adapter: board private structure to initialize
   *
-- * Returns true if there's any budget left (e.g. the clean is finished)
-+ * Returns number of packets cleaned from this queue
-  */
- static int idpf_rx_singleq_clean(struct idpf_rx_queue *rx_q, int budget)
- {
+- * When SR-IOV (Single Root IO Virtualiztion) is enabled, allocate queues
++ * When SR-IOV (Single Root IO Virtualization) is enabled, allocate queues
+  * and VM pools where appropriate.  Also assign queues based on DCB
+  * priorities and map accordingly..
+  *
+@@ -492,7 +492,7 @@ static bool ixgbe_set_dcb_queues(struct ixgbe_adapter *adapter)
+  * ixgbe_set_sriov_queues - Allocate queues for SR-IOV devices
+  * @adapter: board private structure to initialize
+  *
+- * When SR-IOV (Single Root IO Virtualiztion) is enabled, allocate queues
++ * When SR-IOV (Single Root IO Virtualization) is enabled, allocate queues
+  * and VM pools where appropriate.  If RSS is available, then also try and
+  * enable RSS and map accordingly.
+  *
 -- 
 2.50.1
 
