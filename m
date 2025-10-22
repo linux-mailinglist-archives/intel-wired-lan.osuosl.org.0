@@ -1,90 +1,96 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9601BBFBD5F
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Oct 2025 14:25:45 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DF947BFC0AD
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Oct 2025 15:12:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D0FE760EA2;
-	Wed, 22 Oct 2025 12:25:43 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3KP4n1mNs6il; Wed, 22 Oct 2025 12:25:43 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 380AA60F7E
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1761135943;
-	bh=ehkVHxFhZUW7YsWUJhtB/mozUqKplRy67Lv0Ol9Qe8w=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=HwcxQgbOkD8n9XNE+p0ozpJLSkrPSEl8/tv03ybytwV5l/3W0v8aKFpBVdhHD0lCp
-	 RCftCvr4si0ZelEW7kOs/gjqT+77K7INuKSiQ9TzvuEWTHZ320ZVrVRku37ZQQvbPc
-	 DzELuyKInGn23JcwvZNQhA6qQ6RzuJPSSPFIn/kg4F1iY3NakVilB0giZBBea+zARo
-	 cYCY1LZ8scNodl6GUmTyIGVnjQKc2YXbaIo+9qIwEKJRHbDkfkOtiHWWeOGt2dVjss
-	 73BpWtlJVE2Z3DdNfCVlEIcvHSCi3aS8IjE2LzB6wLn0sg+PZDfB3kyivHpETiiFOl
-	 D+Yj/VyyC4Uug==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 380AA60F7E;
-	Wed, 22 Oct 2025 12:25:43 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 8F56843F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 12:25:41 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 75D1440AEC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 12:25:41 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5EE524054D;
+	Wed, 22 Oct 2025 13:12:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CmLMn8Co3Bc0 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 22 Oct 2025 12:25:39 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+ id ye3Bv9zw3pkC; Wed, 22 Oct 2025 13:12:31 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6C05340568
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1761138751;
+	bh=7twteSwwbmcyJwHz7pi0qoPUGqh8Sw55ynd7F7vsgLk=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=wnmd3+P9jvI/QWjKHb3iquEAbz42xPFt+ahb7Aq2UqnI10KVb7uUsRTcealf1K6iW
+	 8kJIWegM+gkgklyOQfdtHpEGV0F8hifqT32ywyVpcLrip9lRbddYc1W8983M3FLAxf
+	 yO/NzaeBUjSedPaKyojhh+AMGFvUwg0aHwErsSZcvjaFxzQEtcKLd5zVXDGMZj6hdK
+	 UKtJKy99axAJ2hQPN5a7Mhe29ldQ2s7pzanJsv8YE/a0n79WInzYv7h2Dctya6h6W8
+	 EgIFGv9me4825PK0zs05WRey/Bh/xWEIlfZ+eGtIhRNsst1mhAw3M7bMxCr1FCwPBh
+	 leDD1vvuGoGdQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6C05340568;
+	Wed, 22 Oct 2025 13:12:31 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 4F10670A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 13:12:30 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4096A404F5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 13:12:30 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id S9UsKZFrmiOr for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 22 Oct 2025 13:12:29 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
+ helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 0E63A40AE7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0E63A40AE7
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 0E63A40AE7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 12:25:38 +0000 (UTC)
-Received: from [134.104.50.123] (unknown [134.104.50.123])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id CCD6E6028F34B;
- Wed, 22 Oct 2025 14:25:06 +0200 (CEST)
-Message-ID: <5578e792-2dd6-42db-8ad6-b12cd05c2617@molgen.mpg.de>
-Date: Wed, 22 Oct 2025 14:24:29 +0200
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org DFBAD40485
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DFBAD40485
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id DFBAD40485
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 13:12:28 +0000 (UTC)
+X-CSE-ConnectionGUID: z4RHgYZlQVSRhI520etCZQ==
+X-CSE-MsgGUID: jrSvhFKgQLmCd0IjhuXSCQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11531"; a="63206647"
+X-IronPort-AV: E=Sophos;i="6.17,312,1747724400"; d="scan'208";a="63206647"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+ by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Oct 2025 06:12:28 -0700
+X-CSE-ConnectionGUID: GtX/fwj/SnmSpVj/mmz8Uw==
+X-CSE-MsgGUID: LWbIrnDLQ5ukQxtGTr2oVA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.19,247,1754982000"; d="scan'208";a="183915352"
+Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
+ by orviesa008.jf.intel.com with ESMTP; 22 Oct 2025 06:12:27 -0700
+From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+To: intel-wired-lan@lists.osuosl.org, jacob.e.keller@intel.com,
+ kuba@kernel.org, anthony.l.nguyen@intel.com, aleksandr.loktionov@intel.com
+Date: Wed, 22 Oct 2025 15:12:19 +0200
+Message-ID: <20251022131225.2304087-1-aleksandr.loktionov@intel.com>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Robert Malz <robert.malz@canonical.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- Jamie Bainbridge <jamie.bainbridge@gmail.com>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- Dennis Chen <dechen@redhat.com>,
- Przemyslaw Kitszel <przemyslaw.kitszel@intel.com>,
- Lukasz Czapnik <lukasz.czapnik@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>,
- Anthony L Nguyen <anthony.l.nguyen@intel.com>,
- Simon Horman <horms@kernel.org>, "Keller, Jacob E"
- <jacob.e.keller@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S . Miller" <davem@davemloft.net>
-References: <20251021154439.180838-1-robert.malz@canonical.com>
- <0c62b505-abe7-474e-9859-a301f4104eeb@molgen.mpg.de>
- <IA3PR11MB89860CA0245498E6FF720E48E5F3A@IA3PR11MB8986.namprd11.prod.outlook.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <IA3PR11MB89860CA0245498E6FF720E48E5F3A@IA3PR11MB8986.namprd11.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1761138749; x=1792674749;
+ h=from:to:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=NayDG57DHKbtEEN9lWXtRLKkpPdAmMadK3E2aAF9nus=;
+ b=Oi5WXLNfeL22qaau6+RCFH0p0ePQyl6qNkthfQOlRKg+HdxO4rLs9cPe
+ KLExTYTzbopkGGKJ7kyb1vCzVT52BSSlV7PDypueQXqeI9IR/SHN7H6Ev
+ C432bNqa4RIRf8MUq8eDi1sbOBkZMTMlLyvtz7kUJoSoT0zH4iYNbCEBC
+ iRGgIZW7MWE6OKqnCVlbZclmXC23eW9nVCAyNLP/lSwFZGE2a8uwaTkHp
+ b3g6dt51U5yH89cNg9zyWw7gFbOzzljEbJ8L6LxsBeONDOe/h7cij2/AV
+ y4P8p8X0Wc1vAYHSYq6ZNjBiLtvbhIblzbXU0qM304tWlmpQ1AXtU0rbW
+ A==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH] i40e: avoid redundant VF link state
- updates
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Oi5WXLNf
+Subject: [Intel-wired-lan] [PATCH iwl-next v6 0/6] iavf and ice: GTP RSS
+ support and flow enhancements
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -100,100 +106,62 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Alex,
+This patch series introduces support for Receive Side Scaling (RSS)
+configuration of GTP (GPRS Tunneling Protocol) flows via the ethtool
+interface on virtual function (VF) interfaces in the iavf driver.
+
+The implementation enables fine-grained traffic distribution for
+GTP-based mobile workloads, including GTPC and GTPU encapsulations, by
+extending the advanced RSS infrastructure. This is particularly beneficial
+for virtualized network functions (VNFs) and user plane functions (UPFs)
+in 5G and LTE deployments.
+
+Key features:
+ - Adds new RSS flow segment headers and hash field definitions for GTP
+   protocols.
+ - Enhances ethtool parsing logic to support GTP-specific flow types.
+ - Updates the virtchnl interface to propagate GTP RSS configuration to PF.
+ - Extends the ICE driver to support GTP RSS configuration for VFs.
+
+changelog:
+v5:
+   - split patch 2/6 int static data and define changes + minor fixes
+v5:
+   -fix NULL ptr dereference and minor improvements in 1/5 & 2/5
+v4:
+   -remove redundant bitmask in iavf_adv_rss.c for dmesg
+v3:
+   -fix kdoc-s in ice_virtchnl_rss.c
+v2:
+   - reduce much repetition with ice_hash_{remove,moveout}() calls
+     (Przemek, leftover from internal review)
+   - now applies on Tony's tree
+
+v1/RFC: https://lore.kernel.org/intel-wired-lan/20250811111213.2964512-1-aleksandr.loktionov@intel.com
+
+Aleksandr Loktionov (4):
+  ice: add flow parsing for GTP and new protocol field support
+  ice: add virtchnl and VF context support for GTP RSS
+  ice: improve TCAM priority handling for RSS profiles
+  iavf: add RSS support for GTP protocol via ethtool
+
+Przemek Kitszel (1):
+  ice: extend PTYPE bitmap coverage for GTP encapsulated flows
+
+ .../net/ethernet/intel/iavf/iavf_adv_rss.c    |  119 +-
+ .../net/ethernet/intel/iavf/iavf_adv_rss.h    |   31 +
+ .../net/ethernet/intel/iavf/iavf_ethtool.c    |   89 ++
+ .../net/ethernet/intel/ice/ice_flex_pipe.c    |   91 +-
+ .../net/ethernet/intel/ice/ice_flex_type.h    |    1 +
+ drivers/net/ethernet/intel/ice/ice_flow.c     |  251 ++-
+ drivers/net/ethernet/intel/ice/ice_flow.h     |   94 +-
+ .../ethernet/intel/ice/ice_protocol_type.h    |   20 +
+ drivers/net/ethernet/intel/ice/ice_vf_lib.h   |   48 +
+ .../net/ethernet/intel/ice/ice_virtchnl_rss.c | 1404 ++++++++++++++++-
+ include/linux/avf/virtchnl.h                  |   50 +
+ 11 files changed, 2070 insertions(+), 128 deletions(-)
+
+--
+2.47.1
 
 
-Thank you for your input.
-
-Am 22.10.25 um 14:06 schrieb Loktionov, Aleksandr:
-
->> -----Original Message-----
->> From: Paul Menzel <pmenzel@molgen.mpg.de>
->> Sent: Wednesday, October 22, 2025 1:49 PM
-
->> Am 21.10.25 um 17:44 schrieb Robert Malz:
->>> From: Jay Vosburgh <jay.vosburgh@canonical.com>
->>>
->>> Multiple sources can request VF link state changes with identical
->>> parameters. For example, Neutron may request to set the VF link state
->>> to
->>
->> What is Neutron?
->>
->>> IFLA_VF_LINK_STATE_AUTO during every initialization or user can issue:
->>> `ip link set <ifname> vf 0 state auto` multiple times. Currently, the
->>> i40e driver processes each of these requests, even if the requested
->>> state is the same as the current one. This leads to unnecessary VF
->>> resets and can cause performance degradation or instability in the VF
->>> driver - particularly in DPDK environment.
->>
->> What is DPDK?
->>
-> I think Robert needs:
-> - to expand acronyms in the commit message (Neutron → OpenStack Neutron, DPDK → Data Plane Development Kit).
-> - to fix the comment style as per coding guidelines.
-> - add a short note in the commit message about how to reproduce the issue.
-> @Paul Menzel right?
-
-Correct.
-
-Maybe also mention how to force it, as there seems to be such an option 
-judging from the diff.
-
->>> With this patch i40e will skip VF link state change requests when the
->>> desired link state matches the current configuration. This prevents
->>> unnecessary VF resets and reduces PF-VF communication overhead.
->>
->> Add a test (with `ip link …`) case to show, that it works now.
->>
->>> Co-developed-by: Robert Malz <robert.malz@canonical.com>
->>> Signed-off-by: Robert Malz <robert.malz@canonical.com>
->>> Signed-off-by: Jay Vosburgh <jay.vosburgh@canonical.com>
->>> ---
->>>    drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c | 12 ++++++++++++
->>>    1 file changed, 12 insertions(+)
->>>
->>> diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
->>> b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
->>> index 081a4526a2f0..0fe0d52c796b 100644
->>> --- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
->>> +++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
->>> @@ -4788,6 +4788,7 @@ int i40e_ndo_set_vf_link_state(struct net_device *netdev, int vf_id, int link)
->>>    	unsigned long q_map;
->>>    	struct i40e_vf *vf;
->>>    	int abs_vf_id;
->>> +	int old_link;
->>>    	int ret = 0;
->>>    	int tmp;
->>>
->>> @@ -4806,6 +4807,17 @@ int i40e_ndo_set_vf_link_state(struct net_device *netdev, int vf_id, int link)
->>>    	vf = &pf->vf[vf_id];
->>>    	abs_vf_id = vf->vf_id + hw->func_caps.vf_base_id;
->>>
->>> +	/* skip VF link state change if requested state is already set */
->>> +	if (!vf->link_forced)
->>> +		old_link = IFLA_VF_LINK_STATE_AUTO;
->>> +	else if (vf->link_up)
->>> +		old_link = IFLA_VF_LINK_STATE_ENABLE;
->>> +	else
->>> +		old_link = IFLA_VF_LINK_STATE_DISABLE;
->>> +
->>> +	if (link == old_link)
->>> +		goto error_out;
->>
->> Should a debug message be added?
-> 
-> I think adding one would be redundant since skipping identical state
-> changes is expected behavior.
-
-My thinking was, if something does not work as expected for a user, like 
-issuing the command to force a reset, that it might be useful to see 
-something in the logs.
-
->>> +
->>>    	pfe.event = VIRTCHNL_EVENT_LINK_CHANGE;
->>>    	pfe.severity = PF_EVENT_SEVERITY_INFO;
-
-Kind regards,
-
-Paul
