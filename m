@@ -1,133 +1,135 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1D8BABFD1A0
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Oct 2025 18:18:12 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0ED75BFD317
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Oct 2025 18:28:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 904DB6118B;
-	Wed, 22 Oct 2025 16:18:10 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id AB8IM5RQ6qXE; Wed, 22 Oct 2025 16:18:10 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EA93261196
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1761149890;
-	bh=RLP+bpkdPGjagGTgRPPp7+rOmgDtjlSKoZhywvA67RM=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=3+D4zF2IxFA0UAcFrhGT4IjsQ6yLjI3I9qQ61zV0b0R8pyrOR3GASOhpZp8KLLz7M
-	 rSvugn3peWakERClIBjUytzX8+yQcjrQHLV+pIJ3I4ZvnM/4gmYxxNyaHCFDOHKuJW
-	 OR1dN/4HxTiUbld3lBXRzebDln2lhIT+2/65CW2JpogxkUKeuUST1nmayA2lDNjMVz
-	 P1p8OKiz8jqvlhj+Ugd8BbilD76dMK9EcQxCC2ggaVOiSKDUXIzhEA5EvQeJfUQc6X
-	 /TxEM4tNuTVrZJIENxPznAzqwjvd4gU5aL95OCAqv2nDSY/ESND5JuQPXRaCodcOXA
-	 1emSdSUtlkh/g==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EA93261196;
-	Wed, 22 Oct 2025 16:18:09 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id E82E4DE
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 16:18:08 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DE4BA40613
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 16:18:08 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7932C408A0;
+	Wed, 22 Oct 2025 16:28:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KqsTOtVUTiAe for <intel-wired-lan@lists.osuosl.org>;
- Wed, 22 Oct 2025 16:18:08 +0000 (UTC)
+ id nDq6rxZP27it; Wed, 22 Oct 2025 16:28:37 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C72CF407F9
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1761150517;
+	bh=9vWDPEez/Pn/tuHveZVqlQ/l+YWt3ZfTtD2FdR44qSs=;
+	h=From:Date:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=InPPlUjfihuHr+mUl+3u1OgOKTykTvuRTpfvFLwtMlHcTN/0DiYqWxn4Ir92EJtZv
+	 Byx/fiELQc2d7XGigMbpXW4yNIwgYWeu6FgrBXG14RrcnvKL4fPBef02H9qBqd8B9H
+	 TdMKtUlg8XmEryo6ZXS2/n3kre+QtOb1mXig2ALbGd2mr02rtXmtWAlw2Q/Qg92hoG
+	 JjCtmvmqXZmqHS24L3yhjAeFNVjEE3qQz8xPZDwVqB3sJORjxe5VUqGaEApZj18fmM
+	 lRcnV3ZtRTGD3pKXnBNWi3xhJVcvw53C6wlaUCd8au4tXOPslRNI5YhWDBrZZpEOG/
+	 r9qsElG487dtA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id C72CF407F9;
+	Wed, 22 Oct 2025 16:28:37 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 90DE9DE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 16:28:36 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 82C5283CFB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 16:28:36 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id r6U4H7oECwK5 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 22 Oct 2025 16:28:35 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::636; helo=mail-pl1-x636.google.com;
+ client-ip=2607:f8b0:4864:20::1033; helo=mail-pj1-x1033.google.com;
  envelope-from=alessandro.d@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 228AD405C1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 228AD405C1
-Received: from mail-pl1-x636.google.com (mail-pl1-x636.google.com
- [IPv6:2607:f8b0:4864:20::636])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 228AD405C1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 16:18:07 +0000 (UTC)
-Received: by mail-pl1-x636.google.com with SMTP id
- d9443c01a7336-28a5b8b12a1so71576435ad.0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 09:18:07 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org BC03383C7C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BC03383C7C
+Received: from mail-pj1-x1033.google.com (mail-pj1-x1033.google.com
+ [IPv6:2607:f8b0:4864:20::1033])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id BC03383C7C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 16:28:35 +0000 (UTC)
+Received: by mail-pj1-x1033.google.com with SMTP id
+ 98e67ed59e1d1-33be037cf73so5694255a91.2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 09:28:35 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761149887; x=1761754687;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=RLP+bpkdPGjagGTgRPPp7+rOmgDtjlSKoZhywvA67RM=;
- b=j5UbqCoRX9uu0X99VNUrH4DNfvjShRrqSIZ8TSTh/pjag2gCeG+nFytJm+tqO9UZmE
- yuTQ6xMZOfVX6cLIzXWqstRsV6Z6js8HNlF3ceNAcwqWQYsN5mxfj0pEl0S2n2w+4uCp
- XrnL5c/XpPANafJmG6ySbNOxVdf3mg7AJVrM3NQ/XV/m7KS5tSoZ1FUo3wSeEVhJf5V+
- LB9hSwuQhik6mV1duB7cVi99tP9XZzUpJ0YL1HI0DsRZrWNs8qp8+EXC9sE9ggNbg4ak
- QqSH3VhJa3E4gtSM7zlU/rZyVGsZNDRI86O96x5B5qtGj/clx/R9corPmg9gKJmSHW1D
- n4zA==
+ d=1e100.net; s=20230601; t=1761150515; x=1761755315;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:date:from:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=9vWDPEez/Pn/tuHveZVqlQ/l+YWt3ZfTtD2FdR44qSs=;
+ b=i4WTJDe1KOlnWADaz0UG+uCIC6xzjEXZRfzE0P4vWxnhr14KnQ/VHTmw3HEGggfCZE
+ EcYFb6zBsUQTl0mN/TIl+AzJGRnHf/ttQNEgnb+Q6XeqnhLVy78PL6IBcfYRIvlu3kHT
+ 7RvfVcYTvFg82BeiYIvDzBv6MvawhJh0PUjqN1UrZiXAGM9MFNc1F3ASmvQSYd/5isy7
+ 0sVqE0VC4u5JGJCjP3KO+XseWSlTrdvufY2wkFUw9eycncb/KsImr1ggqvPNkOUI13Vq
+ wxTmXM6Fd0ZYvmw6TTeKG4XQI1s0y1WztNMFD7hXojAsM34+R40a8kyY6E3q/Ex/RYaH
+ TXlg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUfuunmeJCZiuZn3SxFXaeNzd8OVwCTy05pDUTsEqkEMLHqGB2ve/b8EWc/5spEyn3CpHOTYRx30fmIzS4Z6HE=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YxEq+1FqrW0XOoYPOybtcm9YrjlvHwmzFAiKKWevf0JiCGHtrrz
- BzFZPwAPlSeECZOEDQKuBQBMX9TEZ9E65zjPp8solVu+yJP+OFYWyNX3
-X-Gm-Gg: ASbGncv5fsbQu3wGG0Xu4Ng0tOyp0oFXdZ7Sx1PrfTniM9XwGYMWADzCakFNf8QCIMt
- tiEA+vxBpjzuCIC2asTRDFMn9BpUa5WqmgxqzktisFZXHnXJCOfOMAgAZXbz2IesNX8rqaP8B7c
- MdjxsSLGp4vPnUIbomuo+5kjS0C8k78xNWb/ifkXuXQipuVxO95pleoanBw+Z/OHS22qvYb2ZBv
- H3xr+bWMjOyOnsmpaw0zIxgPV7kOWeMscQNcrQf8QWzgYSrxeWnBjgkweK34JF4aXXMiK4Q/8zR
- V/VsrXVjBOo2rF7WEqamLzP3EmIJBAtjXuloagCdXAylxrbGEhrQ20/CBEZPzpnf0fBxvWCpblX
- M2tgLpw96uHQWD2pV0Slbx2UXf4+y6ns3Z/djlwOnhYjSH6Xz4WiwOf1MRBo5OkU/MW93dcUcQG
- O7GQBe
-X-Google-Smtp-Source: AGHT+IHfAOCNJGgUXhdj6sgYkuAO4xsbyh4B6nGpWidzyORSpqM0a8O04rj58jJ6k/uvjC5jyroU0w==
-X-Received: by 2002:a17:903:19f0:b0:264:5c06:4d7b with SMTP id
- d9443c01a7336-290cba4f065mr257718945ad.32.1761149887296; 
- Wed, 22 Oct 2025 09:18:07 -0700 (PDT)
+ AJvYcCWiBByQimxjzZzH11r1Sbg3v7anDQi2Ay+2P/GVSj1LuKCrlV6wiGDIXqHyQpQNkIZ3QC3GU6tgRBw/zoJKuQM=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YxryOsj4cBg5oDdZUKXw8hpKoYuHRMt3lbD+5KF5Ejw8m9yJ9YP
+ pATcPdndTeNd/M5N/uQC4NIIFUC1FmniVGfsWfmuY+iqG+D1M/5Bm18H
+X-Gm-Gg: ASbGncuk6F3eqR+RwotkItMxTKZJcv+402GupwIjS8IKOsDEYbktvLF+ciJAo2ESUzZ
+ 97NIPCv/h3z6JRVIKnguZnN2Xhiyfvs4jS24Jc+xGlyqhrNWwmkDOWV1PcUKMYxFiHZAV7+fjOC
+ 0DCItvoXDD87mwvCbR2rqU2kvnFzQCwpihsTGLH/7CJhvVUH7KIdmkaezB6drgYSHrvdmIAdutE
+ 9AUhWos+nXzaPedFvAMJxjy3PxZu1fwFGuVn/zC7zxMC5EQk7ohCt0KoGgdtDlqe/wpti2do7/k
+ Hznop+kxt8esGlyNz2Hsmjj31QvblOJH+PLlJU5q3EbBhvYJWrFr3MfPxCLvi7Q9GksB/vS0fXZ
+ WZqra55IZ+QW7NwXdfXIxIkX3IaGUao6qSW5j072mZIULvPT0Iq0gEhEGgSTUMGiALqcmHOO1wa
+ zXNRo=
+X-Google-Smtp-Source: AGHT+IHusUArV++0TfBaUizLya7hy6xUc0z7VcX1xC32O50I38HzPymcYuHT2IKLOX0EfF4dDywsEQ==
+X-Received: by 2002:a17:90b:4c92:b0:32e:32f8:bf9f with SMTP id
+ 98e67ed59e1d1-33bcf8f9960mr25809884a91.30.1761150515038; 
+ Wed, 22 Oct 2025 09:28:35 -0700 (PDT)
 Received: from lima-default ([104.28.246.147])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-292472193a1sm142156625ad.106.2025.10.22.09.18.01
+ 98e67ed59e1d1-33e223d1265sm3041328a91.3.2025.10.22.09.28.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Oct 2025 09:18:06 -0700 (PDT)
-Date: Thu, 23 Oct 2025 03:17:58 +1100
-From: Alessandro Decina <alessandro.d@gmail.com>
-To: Jason Xing <kerneljasonxing@gmail.com>
-Cc: Alessandro Decina <alessandro.d@gmail.com>, netdev@vger.kernel.org,
- Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Wed, 22 Oct 2025 09:28:34 -0700 (PDT)
+From: Your Name <alessandro.d@gmail.com>
+X-Google-Original-From: Your Name <you@gmail.com>
+Date: Thu, 23 Oct 2025 03:28:26 +1100
+To: "Sarkar, Tirthendu" <tirthendu.sarkar@intel.com>
+Cc: Jason Xing <kerneljasonxing@gmail.com>,
+ Alessandro Decina <alessandro.d@gmail.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>,
  "David S. Miller" <davem@davemloft.net>,
  Alexei Starovoitov <ast@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
  Daniel Borkmann <daniel@iogearbox.net>, Eric Dumazet <edumazet@google.com>,
  Jakub Kicinski <kuba@kernel.org>, Jesper Dangaard Brouer <hawk@kernel.org>,
  John Fastabend <john.fastabend@gmail.com>, Paolo Abeni <pabeni@redhat.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
  Stanislav Fomichev <sdf@fomichev.me>,
- Tirthendu Sarkar <tirthendu.sarkar@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, bpf@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
-Message-ID: <aPkDtuVgbS4J-Og_@lima-default>
+ "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Message-ID: <aPkGKqZjauLHYfka@lima-default>
 References: <20251021173200.7908-1-alessandro.d@gmail.com>
  <20251021173200.7908-2-alessandro.d@gmail.com>
  <CAL+tcoCwGQyNSv9BZ_jfsia6YFoyT790iknqxG7bB7wVi3C_vQ@mail.gmail.com>
+ <SA1SPRMB0026CD60501E3684B5EC67F290F3A@SA1SPRMB0026.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAL+tcoCwGQyNSv9BZ_jfsia6YFoyT790iknqxG7bB7wVi3C_vQ@mail.gmail.com>
+In-Reply-To: <SA1SPRMB0026CD60501E3684B5EC67F290F3A@SA1SPRMB0026.namprd11.prod.outlook.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1761149887; x=1761754687; darn=lists.osuosl.org;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:from:to
- :cc:subject:date:message-id:reply-to;
- bh=RLP+bpkdPGjagGTgRPPp7+rOmgDtjlSKoZhywvA67RM=;
- b=h+reYNjZ+F3eknMGi97UAi+VqwK6LjRwup9jmfkBveE5TK/j9ZrR4Zb9ztD2ZfEhkg
- v54sURh1gIdMYOm4cxSoasGnELxmARi4Ht15jzA5qk38fG9EKbzVmVfxyF3JssesjLr0
- I+Jou2WHA+3IRtkabo5akLcz+m2TLqY+afXKTYny3Thtvm0fzUGhVIR+8Z5C3uxHpNoX
- 9Qzmtqk07M8X37oHAlEW+bsli19IPXUkROc+5BPQ3kQERu8G4fsBD+i38RMoNL5qjYdc
- iigW7A2RMuDwb3t0QWM0QQblwyjTCZ1vokNqZYmiR3YlGQ3Cg52r7KA8NkMLtv36LWai
- ZtgQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=gmail.com; s=20230601; t=1761150515; x=1761755315; darn=lists.osuosl.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:date:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=9vWDPEez/Pn/tuHveZVqlQ/l+YWt3ZfTtD2FdR44qSs=;
+ b=C8TLR2awssD0ADYUUc0M4wrNkuO2e/FHjcxaCQtNHBYhd6hwZXNrqjWSQvkcCy3p/1
+ 509LWLqntTj18K0owmjWb/TgUoADi/WWMoPZtcrr8Z0lQhqgBKWdbJCkRLYXOLCGeWe7
+ A91+ztEednhHrd1UsaEZzWqgjrJ0TylFAjY/N4yY80MeQIw3kqU7yz5LFlF9bx50XtiI
+ LEWHt9M3UApGvFm1ROi3iGv8P91p3DXyLSWG4OuXo4Ch5SNOkIlnuXf0d8e6q58HpkDg
+ rVovJ6//fzQoEEyW54e5o2OL3C3KXzw+L0g3FSPKlyOv7thck3kkH7luQJAJqDkfZojb
+ YIug==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=h+reYNjZ
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20230601 header.b=C8TLR2aw
 Subject: Re: [Intel-wired-lan] [PATCH net v2 1/1] i40e: xsk: advance
  next_to_clean on status descriptors
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -145,111 +147,34 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Oct 22, 2025 at 11:11:01AM +0800, Jason Xing wrote:
-> On Wed, Oct 22, 2025 at 1:33 AM Alessandro Decina
-> <alessandro.d@gmail.com> wrote:
-> > diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-> > index 9f47388eaba5..dbc19083bbb7 100644
-> > --- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-> > +++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-> > @@ -441,13 +441,18 @@ int i40e_clean_rx_irq_zc(struct i40e_ring *rx_ring, int budget)
-> >                 dma_rmb();
-> >
-> >                 if (i40e_rx_is_programming_status(qword)) {
-> > +                       u16 ntp;
-> > +
-> >                         i40e_clean_programming_status(rx_ring,
-> >                                                       rx_desc->raw.qword[0],
-> >                                                       qword);
-> >                         bi = *i40e_rx_bi(rx_ring, next_to_process);
-> >                         xsk_buff_free(bi);
-> > -                       if (++next_to_process == count)
-> > +                       ntp = next_to_process++;
-> > +                       if (next_to_process == count)
-> >                                 next_to_process = 0;
-> > +                       if (next_to_clean == ntp)
-> > +                               next_to_clean = next_to_process;
-> >                         continue;
-> >                 }
-> >
-> > --
-> > 2.43.0
-> >
-> >
+On Wed, Oct 22, 2025 at 05:41:06AM +0000, Sarkar, Tirthendu wrote:
+> > From: Jason Xing <kerneljasonxing@gmail.com>
 > 
-> I'm copying your reply from v1 as shown below so that we can continue
-> with the discussion :)
-> 
-> > It really depends on whether a status descriptor can be received in the
-> > middle of multi-buffer packet. Based on the existing code, I assumed it
-> > can. Therefore, consider this case:
-> >
-> > [valid_1st_packet][status_descriptor][valid_2nd_packet]
-> >
-> > In this case you want to skip status_descriptor but keep the existing
-> > logic that leads to:
-> >
-> >     first = next_to_clean = valid_1st_packet
-> >
-> > so then you can go and add valid_2nd_packet as a fragment to the first.
-> 
-> Sorry, honestly, I still don't follow you.
-> 
-> Looking at the case you provided, I think @first always pointing to
-> valid_1st_packet is valid which does not bring any trouble. You mean
-> the case is what you're trying to handle?
+> I believe the issue is not that status_descriptor is getting into
+> multi-buffer packet but not updating next_to_clean results in
+> I40E_DESC_UNUSED() to return incorrect values.
 
-Yes, I mean this case needs to keep working, so we can't move
-next_to_clean unconditionally, we can only move it when
-next_to_clean == ntp, which is equivalent to checking that
-first == NULL. See below.
- 
-> You patch updates next_to_clean that is only used at the very
-> beginning, so it will not affect @first. Imaging the following case:
-> 
->      [status_descriptor][valid_1st_packet][valid_2nd_packet]
-> 
-> Even if the next_to_clean is updated, the @first still points to
-> [status_descriptor] that is invalid and that will later cause the
-> panic when constructing the skb.
+I don't think this is true? next_to_clean can be < next_to_process by
+design, see
 
-Exactly - the key is to make sure we never get into this state :)
+	if (next_to_process != next_to_clean)
+		first = *i40e_rx_bi(rx_ring, next_to_clean);
 
-At the beginning of the function - outside the loop - first is only
-assigned if (next_to_process != next_to_clean). This condition means: if
-we previously exited the function in the middle of a multi-buffer
-packet, we must resume from the start of that packet (next_to_clean) and
-process the next fragment in it (next_to_process).
+at the start of i40e_clean_rx_irq_zc. This condition is normal and means
+when we exited the function - for example because we ran out of budget - 
+we were in the middle of a multi-buffer packet and now we must continue.
 
-Consider the case you just gave:
+If I understand the code, I think that in that case we just set
+entries_to_alloc to a lower number and return fewer buffers to the
+hardware. 
 
-> [status_descriptor][valid_1st_mb_packet][valid_2nd_mb_packet]
 
-Assume we enter the function and next_to_process == next_to_clean, we
-don't assign first, so first = NULL.
+> A similar issue was
+> reported and fixed on the non-ZC path:
+> https://lore.kernel.org/netdev/20231004083454.20143-1-tirthendu.sarkar@intel.com/
 
-We find the status descriptor: without this patch, we increment
-next_to_process, don't increment next_to_clean, say we run out of budget
-and break the loop, the next time the function is entered we set first =
-status_descriptor because next_to_process != next_to_clean. This is
-exactly what we want to avoid.
-
-With this patch upon processing the status descriptor, we see
-next_to_clean == ntp, we increment next_to_clean, the next time the
-function is entered next_to_process == next_to_clean, first is correctly
-set to NULL and the next packet starts from valid_1st_mb_packet.
-
-So I've covered both the scenarios:
-
-a) [status][mb_packet1][mb_packet2]
-b) [mb_packet1][status][mb_packet2]
-
-The last case
-
-c) [packet1][packet2][status] is actually just a), because at packet2
-we'd find the EOP marker and close off the previous multi-buffer packet.
-
-I hope I was more clear and please check my logic :)
+This is indeed exactly the same issue, but I'm not yet sold on the
+diagnosis :D 
 
 Ciao,
 Alessandro
