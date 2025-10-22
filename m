@@ -1,98 +1,127 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F0E63BF933F
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Oct 2025 01:20:21 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7E9AA40A01;
-	Tue, 21 Oct 2025 23:20:20 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id w1QiObPJkFd3; Tue, 21 Oct 2025 23:20:19 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BA92C40A09
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1761088819;
-	bh=x2EaSabAopYMShjRrs6fdB39G1NKzuR7WGu/sEmFMRA=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=IOZq5UP21BYrDhB6btcE7Fh+cmMlL+EKFT26zkhgdInde2TCcO2uPaVAd/qAuGbBX
-	 dzQau57uDRvvDwFhUEpqOLXoNQivBj5JceLU0TmxQYBK+TiAUuaj1+HcwlCZsZsIyw
-	 FtNGb7bBfXx/hK8IyI0QQQwwjWaxLyLv5g1+I+knPuLiJFsk2X4gfSkDwp80xA2DLR
-	 lofzW23UgwHG6XS57doNQd4MdxLwWEzvmNn9XJpZ5kHt5xWs2+HbCqcQrSs2Jk+ezR
-	 wr2FSn3fHT7WBihCBsdSndYT25Cn+yGOyJS55a1qBqFmqci+YfPV8yEGDfJO4umivC
-	 hFTcuTEcU/I5w==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BA92C40A09;
-	Tue, 21 Oct 2025 23:20:19 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 735AB277
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Oct 2025 23:20:16 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id E277BBF9CB7
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Oct 2025 05:11:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 49BAD60909
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Oct 2025 23:20:14 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1BDD660ED4;
+	Wed, 22 Oct 2025 03:11:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pt4I51IiplB5 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 21 Oct 2025 23:20:13 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
- helo=mgamail.intel.com; envelope-from=joshua.a.hay@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 8299E60DE3
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8299E60DE3
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 8299E60DE3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Oct 2025 23:20:13 +0000 (UTC)
-X-CSE-ConnectionGUID: d6r5hrp4SQaFiWwtaiSb5A==
-X-CSE-MsgGUID: egCVfkOPTHOftPIE+IFBKQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11586"; a="74665334"
-X-IronPort-AV: E=Sophos;i="6.19,246,1754982000"; d="scan'208";a="74665334"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
- by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Oct 2025 16:20:12 -0700
-X-CSE-ConnectionGUID: CC+akCXzRB+ywIsWI4BfaA==
-X-CSE-MsgGUID: eRhWywkuTZa2ZiA+l2YN1Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,246,1754982000"; d="scan'208";a="214352312"
-Received: from dcskidmo-m40.jf.intel.com ([10.166.241.14])
- by orviesa002.jf.intel.com with ESMTP; 21 Oct 2025 16:20:12 -0700
-From: Joshua Hay <joshua.a.hay@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org
-Date: Tue, 21 Oct 2025 16:30:56 -0700
-Message-Id: <20251021233056.1320108-11-joshua.a.hay@intel.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20251021233056.1320108-1-joshua.a.hay@intel.com>
-References: <20251021233056.1320108-1-joshua.a.hay@intel.com>
+ id 5l-CRyCzHbWX; Wed, 22 Oct 2025 03:11:42 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6F5F560EB4
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1761102702;
+	bh=1w81N5UwqCcLk9lzNRuUpjETqoES8d1bFB+ZdpugPTA=;
+	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=l8CCo6rot+9Zz/SLXknK4YTVPZXVQeY/QZqGtkp2zzcU9fV1FGfzo5L7m6dklbiuD
+	 /Jl3UK2m+AIf4hYcyYHwp4rOxGuJECQ4Lyla3FRs/tEpnbTfjTWGkJDuZyNL43gYW2
+	 H/Cx+CELeS7RgSfdCNyd3On2BDJJTB/LZSleGjoYqM4krxQV/uJ6MU37nVZq1I8w1q
+	 FVArzGS4oDWLIO9rpE+tNLv2I0rqSoJhv41EwdYQzMoLGw8oKcV4CXyWM3GB077qAk
+	 +7/bdwqpzDfIPiQx+SmayH+eso77n3KmDFRmQVStVBXg5zG+ozeqeGnFEVgyCd2fBJ
+	 rlRkkFaKiboHg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6F5F560EB4;
+	Wed, 22 Oct 2025 03:11:42 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3899043F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 03:11:40 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 145C080D6A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 03:11:40 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id qDaUEw188hif for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 22 Oct 2025 03:11:39 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::12e; helo=mail-il1-x12e.google.com;
+ envelope-from=kerneljasonxing@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 2B03F80C26
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2B03F80C26
+Received: from mail-il1-x12e.google.com (mail-il1-x12e.google.com
+ [IPv6:2607:f8b0:4864:20::12e])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2B03F80C26
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 03:11:39 +0000 (UTC)
+Received: by mail-il1-x12e.google.com with SMTP id
+ e9e14a558f8ab-430aeaffeaeso28492365ab.3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Oct 2025 20:11:39 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1761102698; x=1761707498;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=1w81N5UwqCcLk9lzNRuUpjETqoES8d1bFB+ZdpugPTA=;
+ b=O5FoGWvsL3+hF8yKruXZgZCtCHQg3Y0wKyVTpSisLBquCs9cpfu6YFOs9PaBvtiP++
+ SaEqKbr71s0F9WMFwoJqxGW2PfO96TJYSH3OaZqCLq8kLXxz+kwDA+F8iduuHqQzd6KP
+ RSA+BaSnYM2ILovkhltH3JtimoD3AKPWOzKnlPxW+qILBApujyusEoEi5yzbntGFUezy
+ wPS1/tlGbkFLfaiTNTPjdHq7wZUfmvteBJS1iRDiZ1DZEK8jQDJHB62mENsGZ696JumH
+ DiiDBvsb5KU+j0ckJpNbrvqz1ccaFDwcO35cqERg49VXECavcKFih5JJakZ0NglkknyB
+ MgHA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWy22DLa016YhnZ62J3vk0onfFRpOYqLyZjk1DL3SXqt1a3pwNA1BkHaWZoiUWspS/zN69qs46il5bYmPRPkhI=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YwOV74q267K5+sQ8MpziQcuR4WlfmDF/rJvet7LV+sq/XOqbhE1
+ gBS6rY+fSAcBBGEVIxRYMgSnEk8/Caowhs00FfIAVh0Ff3VqS1+RcLd8HMXwqDacgVBpqFkbLby
+ l/TIWRXZThjhLPU7HjNgnImk7p/Nbr+w=
+X-Gm-Gg: ASbGncvOWgMqzFfCVox+m/wk5/pHJCW8ui/eQBzidC7qkgTMNQ4s8yIkl4aHLnh+zej
+ Ya+0P3WFT0gsstr85gX58JglJcjh0t6uZmqUdlklJv8TpjF3fC/nts3zwbzzRlne6k1sjbnC4ih
+ 0ZXvCi+No8Px2KudRGbchrd0SsTJnJuSDenNFz/xxyPFllAcfoMXWPskopeRxFjHttZCbOtSXgB
+ WdDMhjsUJEXH7QVQsAnEWPTVFuhYcMG0RbkUb1CGsWqxpCUdf7WlZJC5ElMcjirpLaRX2k=
+X-Google-Smtp-Source: AGHT+IHsc5L8H41oQ6pWuGlwc/6nz3oXWi8+Bcroke4DapuC5C0EkQMaKnI90LLtcbQ2XDw0xbZs5GobUsx8JgiIzoU=
+X-Received: by 2002:a05:6e02:1689:b0:42d:876e:61bd with SMTP id
+ e9e14a558f8ab-430c527fb41mr284123945ab.28.1761102697970; Tue, 21 Oct 2025
+ 20:11:37 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1761088814; x=1792624814;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=i5CaFxESVUajSzzaSX/NULdBNRjUpzIip4EUkT4cfSE=;
- b=BdhOg3hvdK1BpwcGPS8Fo9Xe/+8IKqVMVkLhUOvGjpoPn5xjitUVTqvp
- NQygUgDA3qbXoD9PXqYFD/faUMNHGqPpVMx0rsJDjpFPZ7EUElXl4JPpM
- FSwnIb4hsfoKlNyeXkXbCgMbsmj47vwFVcEGZwfJ2iW3fjZs7Kg3qf+KL
- YfcWuC8/+/NuFAfUOIcLAXpGtsgo6LoCQkWqvUHMNIR9w9hXyH9hSslg1
- qZ+dwnORqix36K9wejYB98Ly1ZaqbxiO9po3d8hATSZLkkKuLuWV0Al2J
- Gg0NonjeiPMH59Jl9P9ZJioSlYundwM/aj9K1/LuiNIkQLnPsouv3+kUh
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+References: <20251021173200.7908-1-alessandro.d@gmail.com>
+ <20251021173200.7908-2-alessandro.d@gmail.com>
+In-Reply-To: <20251021173200.7908-2-alessandro.d@gmail.com>
+From: Jason Xing <kerneljasonxing@gmail.com>
+Date: Wed, 22 Oct 2025 11:11:01 +0800
+X-Gm-Features: AS18NWBBSoMIxcuhS-7Wwy3NqCqJITQFYqxcB1a6KZpfmjK1-38rwvJFwSyOIzY
+Message-ID: <CAL+tcoCwGQyNSv9BZ_jfsia6YFoyT790iknqxG7bB7wVi3C_vQ@mail.gmail.com>
+To: Alessandro Decina <alessandro.d@gmail.com>
+Cc: netdev@vger.kernel.org, Maciej Fijalkowski <maciej.fijalkowski@intel.com>, 
+ "David S. Miller" <davem@davemloft.net>,
+ Alexei Starovoitov <ast@kernel.org>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, Daniel Borkmann <daniel@iogearbox.net>, 
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, 
+ Paolo Abeni <pabeni@redhat.com>, Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Stanislav Fomichev <sdf@fomichev.me>,
+ Tirthendu Sarkar <tirthendu.sarkar@intel.com>, 
+ Tony Nguyen <anthony.l.nguyen@intel.com>, bpf@vger.kernel.org, 
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1761102698; x=1761707498; darn=lists.osuosl.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=1w81N5UwqCcLk9lzNRuUpjETqoES8d1bFB+ZdpugPTA=;
+ b=S3Rd/hVO1BHN7J6ASaGdbVoZA83zh5XYsR+KS9MJ+dfW0OsM04Gu6s3e6i+WuQ5yco
+ AiD/rAO5+QVHXr1EwCY4FaDzKFJ7dIOKXOAFlOqQs26elv5K33C0DKjOQwuPV2IwPq37
+ WsOIoMDGgysrqzTq8wNpiad87GKDeeh1iknkJKdT0su5dMeNGflBrtF5vGKJrZRq8bQW
+ bpbr1ttf445+gj3o098OxW1FncVrf6hmQjSGVuKTGmSOcZhWmdKEmrtVOo8dnAk8dKfy
+ VtfNactR6vPbYw/f/s3u0St3UULI0G2X1lpSdJN6MT5CJrf9i3v3loFu68sU6V+tHMlb
+ XGNw==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=BdhOg3hv
-Subject: [Intel-wired-lan] [PATCH iwl-next v9 10/10] idpf: generalize
- mailbox API
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20230601 header.b=S3Rd/hVO
+Subject: Re: [Intel-wired-lan] [PATCH net v2 1/1] i40e: xsk: advance
+ next_to_clean on status descriptors
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -108,191 +137,142 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+On Wed, Oct 22, 2025 at 1:33=E2=80=AFAM Alessandro Decina
+<alessandro.d@gmail.com> wrote:
+>
+> Whenever a status descriptor is received, i40e processes and skips over
+> it, correctly updating next_to_process but forgetting to update
+> next_to_clean. In the next iteration this accidentally causes the
+> creation of an invalid multi-buffer xdp_buff where the first fragment
+> is the status descriptor.
+>
+> If then a skb is constructed from such an invalid buffer - because the
+> eBPF program returns XDP_PASS - a panic occurs:
+>
+> [ 5866.367317] BUG: unable to handle page fault for address: ffd31c37eab1=
+c980
+> [ 5866.375050] #PF: supervisor read access in kernel mode
+> [ 5866.380825] #PF: error_code(0x0000) - not-present page
+> [ 5866.386602] PGD 0
+> [ 5866.388867] Oops: Oops: 0000 [#1] SMP NOPTI
+> [ 5866.393575] CPU: 34 UID: 0 PID: 0 Comm: swapper/34 Not tainted 6.17.0-=
+custom #1 PREEMPT(voluntary)
+> [ 5866.403740] Hardware name: Supermicro AS -2115GT-HNTR/H13SST-G, BIOS 3=
+.2 03/20/2025
+> [ 5866.412339] RIP: 0010:memcpy+0x8/0x10
+> [ 5866.416454] Code: cc cc 90 cc cc cc cc cc cc cc cc cc cc cc cc cc cc c=
+c 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 66 90 48 89 f8 48 89 d1 <=
+f3> a4 e9 fc 26 c0 fe 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90
+> [ 5866.437538] RSP: 0018:ff428d9ec0bb0ca8 EFLAGS: 00010286
+> [ 5866.443415] RAX: ff2dd26dbd8f0000 RBX: ff2dd265ad161400 RCX: 000000000=
+00004e1
+> [ 5866.451435] RDX: 00000000000004e1 RSI: ffd31c37eab1c980 RDI: ff2dd26db=
+d8f0000
+> [ 5866.459454] RBP: ff428d9ec0bb0d40 R08: 0000000000000000 R09: 000000000=
+0000000
+> [ 5866.467470] R10: 0000000000000000 R11: 0000000000000000 R12: ff428d9ee=
+c726ef8
+> [ 5866.475490] R13: ff2dd26dbd8f0000 R14: ff2dd265ca2f9fc0 R15: ff2dd2654=
+8548b80
+> [ 5866.483509] FS:  0000000000000000(0000) GS:ff2dd2c363592000(0000) knlG=
+S:0000000000000000
+> [ 5866.492600] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+> [ 5866.499060] CR2: ffd31c37eab1c980 CR3: 0000000178d7b040 CR4: 000000000=
+0f71ef0
+> [ 5866.507079] PKRU: 55555554
+> [ 5866.510125] Call Trace:
+> [ 5866.512867]  <IRQ>
+> [ 5866.515132]  ? i40e_clean_rx_irq_zc+0xc50/0xe60 [i40e]
+> [ 5866.520921]  i40e_napi_poll+0x2d8/0x1890 [i40e]
+> [ 5866.526022]  ? srso_alias_return_thunk+0x5/0xfbef5
+> [ 5866.531408]  ? raise_softirq+0x24/0x70
+> [ 5866.535623]  ? srso_alias_return_thunk+0x5/0xfbef5
+> [ 5866.541011]  ? srso_alias_return_thunk+0x5/0xfbef5
+> [ 5866.546397]  ? rcu_sched_clock_irq+0x225/0x1800
+> [ 5866.551493]  __napi_poll+0x30/0x230
+> [ 5866.555423]  net_rx_action+0x20b/0x3f0
+> [ 5866.559643]  handle_softirqs+0xe4/0x340
+> [ 5866.563962]  __irq_exit_rcu+0x10e/0x130
+> [ 5866.568283]  irq_exit_rcu+0xe/0x20
+> [ 5866.572110]  common_interrupt+0xb6/0xe0
+> [ 5866.576425]  </IRQ>
+> [ 5866.578791]  <TASK>
+>
+> Advance next_to_clean to ensure invalid xdp_buff(s) aren't created.
+>
+> Fixes: 1c9ba9c14658 ("i40e: xsk: add RX multi-buffer support")
+> Signed-off-by: Alessandro Decina <alessandro.d@gmail.com>
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e_xsk.c | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/eth=
+ernet/intel/i40e/i40e_xsk.c
+> index 9f47388eaba5..dbc19083bbb7 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+> @@ -441,13 +441,18 @@ int i40e_clean_rx_irq_zc(struct i40e_ring *rx_ring,=
+ int budget)
+>                 dma_rmb();
+>
+>                 if (i40e_rx_is_programming_status(qword)) {
+> +                       u16 ntp;
+> +
+>                         i40e_clean_programming_status(rx_ring,
+>                                                       rx_desc->raw.qword[=
+0],
+>                                                       qword);
+>                         bi =3D *i40e_rx_bi(rx_ring, next_to_process);
+>                         xsk_buff_free(bi);
+> -                       if (++next_to_process =3D=3D count)
+> +                       ntp =3D next_to_process++;
+> +                       if (next_to_process =3D=3D count)
+>                                 next_to_process =3D 0;
+> +                       if (next_to_clean =3D=3D ntp)
+> +                               next_to_clean =3D next_to_process;
+>                         continue;
+>                 }
+>
+> --
+> 2.43.0
+>
+>
 
-Add a control queue parameter to all mailbox APIs in order to make use
-of those APIs for non-default mailbox as well.
+I'm copying your reply from v1 as shown below so that we can continue
+with the discussion :)
 
-Signed-off-by: Anton Nadezhdin <anton.nadezhdin@intel.com>
-Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
-Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
-Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
----
-v8: rebase on AF_XDP series
----
- drivers/net/ethernet/intel/idpf/idpf_lib.c    |  2 +-
- drivers/net/ethernet/intel/idpf/idpf_vf_dev.c |  3 +-
- .../net/ethernet/intel/idpf/idpf_virtchnl.c   | 33 ++++++++++---------
- .../net/ethernet/intel/idpf/idpf_virtchnl.h   |  6 ++--
- 4 files changed, 24 insertions(+), 20 deletions(-)
+> It really depends on whether a status descriptor can be received in the
+> middle of multi-buffer packet. Based on the existing code, I assumed it
+> can. Therefore, consider this case:
+>
+> [valid_1st_packet][status_descriptor][valid_2nd_packet]
+>
+> In this case you want to skip status_descriptor but keep the existing
+> logic that leads to:
+>
+>     first =3D next_to_clean =3D valid_1st_packet
+>
+> so then you can go and add valid_2nd_packet as a fragment to the first.
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-index d9086be69af0..7c86e4084006 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-@@ -1315,7 +1315,7 @@ void idpf_mbx_task(struct work_struct *work)
- 		queue_delayed_work(adapter->mbx_wq, &adapter->mbx_task,
- 				   msecs_to_jiffies(300));
- 
--	idpf_recv_mb_msg(adapter);
-+	idpf_recv_mb_msg(adapter, adapter->hw.arq);
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c b/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
-index 8c2008477621..7527b967e2e7 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
-@@ -158,7 +158,8 @@ static void idpf_vf_trigger_reset(struct idpf_adapter *adapter,
- 	/* Do not send VIRTCHNL2_OP_RESET_VF message on driver unload */
- 	if (trig_cause == IDPF_HR_FUNC_RESET &&
- 	    !test_bit(IDPF_REMOVE_IN_PROG, adapter->flags))
--		idpf_send_mb_msg(adapter, VIRTCHNL2_OP_RESET_VF, 0, NULL, 0);
-+		idpf_send_mb_msg(adapter, adapter->hw.asq,
-+				 VIRTCHNL2_OP_RESET_VF, 0, NULL, 0);
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-index 4f9e9a0ebe53..f5fa7874a9f0 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-@@ -117,13 +117,15 @@ static void idpf_recv_event_msg(struct idpf_adapter *adapter,
- 
- /**
-  * idpf_mb_clean - Reclaim the send mailbox queue entries
-- * @adapter: Driver specific private structure
-+ * @adapter: driver specific private structure
-+ * @asq: send control queue info
-  *
-  * Reclaim the send mailbox queue entries to be used to send further messages
-  *
-  * Returns 0 on success, negative on failure
-  */
--static int idpf_mb_clean(struct idpf_adapter *adapter)
-+static int idpf_mb_clean(struct idpf_adapter *adapter,
-+			 struct idpf_ctlq_info *asq)
- {
- 	u16 i, num_q_msg = IDPF_DFLT_MBX_Q_LEN;
- 	struct idpf_ctlq_msg **q_msg;
-@@ -134,7 +136,7 @@ static int idpf_mb_clean(struct idpf_adapter *adapter)
- 	if (!q_msg)
- 		return -ENOMEM;
- 
--	err = idpf_ctlq_clean_sq(adapter->hw.asq, &num_q_msg, q_msg);
-+	err = idpf_ctlq_clean_sq(asq, &num_q_msg, q_msg);
- 	if (err)
- 		goto err_kfree;
- 
-@@ -206,7 +208,8 @@ static void idpf_prepare_ptp_mb_msg(struct idpf_adapter *adapter, u32 op,
- 
- /**
-  * idpf_send_mb_msg - Send message over mailbox
-- * @adapter: Driver specific private structure
-+ * @adapter: driver specific private structure
-+ * @asq: control queue to send message to
-  * @op: virtchnl opcode
-  * @msg_size: size of the payload
-  * @msg: pointer to buffer holding the payload
-@@ -216,8 +219,8 @@ static void idpf_prepare_ptp_mb_msg(struct idpf_adapter *adapter, u32 op,
-  *
-  * Returns 0 on success, negative on failure
-  */
--int idpf_send_mb_msg(struct idpf_adapter *adapter, u32 op,
--		     u16 msg_size, u8 *msg, u16 cookie)
-+int idpf_send_mb_msg(struct idpf_adapter *adapter, struct idpf_ctlq_info *asq,
-+		     u32 op, u16 msg_size, u8 *msg, u16 cookie)
- {
- 	struct idpf_ctlq_msg *ctlq_msg;
- 	struct idpf_dma_mem *dma_mem;
-@@ -231,7 +234,7 @@ int idpf_send_mb_msg(struct idpf_adapter *adapter, u32 op,
- 	if (idpf_is_reset_detected(adapter))
- 		return 0;
- 
--	err = idpf_mb_clean(adapter);
-+	err = idpf_mb_clean(adapter, asq);
- 	if (err)
- 		return err;
- 
-@@ -267,7 +270,7 @@ int idpf_send_mb_msg(struct idpf_adapter *adapter, u32 op,
- 	ctlq_msg->ctx.indirect.payload = dma_mem;
- 	ctlq_msg->ctx.sw_cookie.data = cookie;
- 
--	err = idpf_ctlq_send(&adapter->hw, adapter->hw.asq, 1, ctlq_msg);
-+	err = idpf_ctlq_send(&adapter->hw, asq, 1, ctlq_msg);
- 	if (err)
- 		goto send_error;
- 
-@@ -463,7 +466,7 @@ ssize_t idpf_vc_xn_exec(struct idpf_adapter *adapter,
- 	cookie = FIELD_PREP(IDPF_VC_XN_SALT_M, xn->salt) |
- 		 FIELD_PREP(IDPF_VC_XN_IDX_M, xn->idx);
- 
--	retval = idpf_send_mb_msg(adapter, params->vc_op,
-+	retval = idpf_send_mb_msg(adapter, adapter->hw.asq, params->vc_op,
- 				  send_buf->iov_len, send_buf->iov_base,
- 				  cookie);
- 	if (retval) {
-@@ -662,12 +665,13 @@ idpf_vc_xn_forward_reply(struct idpf_adapter *adapter,
- 
- /**
-  * idpf_recv_mb_msg - Receive message over mailbox
-- * @adapter: Driver specific private structure
-+ * @adapter: driver specific private structure
-+ * @arq: control queue to receive message from
-  *
-  * Will receive control queue message and posts the receive buffer. Returns 0
-  * on success and negative on failure.
-  */
--int idpf_recv_mb_msg(struct idpf_adapter *adapter)
-+int idpf_recv_mb_msg(struct idpf_adapter *adapter, struct idpf_ctlq_info *arq)
- {
- 	struct idpf_ctlq_msg ctlq_msg;
- 	struct idpf_dma_mem *dma_mem;
-@@ -679,7 +683,7 @@ int idpf_recv_mb_msg(struct idpf_adapter *adapter)
- 		 * actually received on num_recv.
- 		 */
- 		num_recv = 1;
--		err = idpf_ctlq_recv(adapter->hw.arq, &num_recv, &ctlq_msg);
-+		err = idpf_ctlq_recv(arq, &num_recv, &ctlq_msg);
- 		if (err || !num_recv)
- 			break;
- 
-@@ -695,8 +699,7 @@ int idpf_recv_mb_msg(struct idpf_adapter *adapter)
- 		else
- 			err = idpf_vc_xn_forward_reply(adapter, &ctlq_msg);
- 
--		post_err = idpf_ctlq_post_rx_buffs(&adapter->hw,
--						   adapter->hw.arq,
-+		post_err = idpf_ctlq_post_rx_buffs(&adapter->hw, arq,
- 						   &num_recv, &dma_mem);
- 
- 		/* If post failed clear the only buffer we supplied */
-@@ -3381,7 +3384,7 @@ int idpf_init_dflt_mbx(struct idpf_adapter *adapter)
- void idpf_deinit_dflt_mbx(struct idpf_adapter *adapter)
- {
- 	if (adapter->hw.arq && adapter->hw.asq) {
--		idpf_mb_clean(adapter);
-+		idpf_mb_clean(adapter, adapter->hw.asq);
- 		idpf_ctlq_deinit(&adapter->hw);
- 	}
- 	adapter->hw.arq = NULL;
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h
-index b269986bcc64..dff34ded1c40 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h
-@@ -116,9 +116,9 @@ bool idpf_sideband_action_ena(struct idpf_vport *vport,
- 			      struct ethtool_rx_flow_spec *fsp);
- unsigned int idpf_fsteer_max_rules(struct idpf_vport *vport);
- 
--int idpf_recv_mb_msg(struct idpf_adapter *adapter);
--int idpf_send_mb_msg(struct idpf_adapter *adapter, u32 op,
--		     u16 msg_size, u8 *msg, u16 cookie);
-+int idpf_recv_mb_msg(struct idpf_adapter *adapter, struct idpf_ctlq_info *arq);
-+int idpf_send_mb_msg(struct idpf_adapter *adapter, struct idpf_ctlq_info *asq,
-+		     u32 op, u16 msg_size, u8 *msg, u16 cookie);
- 
- struct idpf_queue_ptr {
- 	enum virtchnl2_queue_type	type;
--- 
-2.39.2
+Sorry, honestly, I still don't follow you.
 
+Looking at the case you provided, I think @first always pointing to
+valid_1st_packet is valid which does not bring any trouble. You mean
+the case is what you're trying to handle?
+
+You patch updates next_to_clean that is only used at the very
+beginning, so it will not affect @first. Imaging the following case:
+
+     [status_descriptor][valid_1st_packet][valid_2nd_packet]
+
+Even if the next_to_clean is updated, the @first still points to
+[status_descriptor] that is invalid and that will later cause the
+panic when constructing the skb.
+
+I'm afraid that we're not on the same page. Let me confirm that it is
+@first that points to the status descriptor that causes the panic,
+right? Could you share with us the exact case just like you did as
+above. Thank you.
+
+Thanks,
+Jason
