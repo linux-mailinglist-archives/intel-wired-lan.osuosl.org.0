@@ -1,143 +1,135 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D45F4BFD0FA
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Oct 2025 18:12:11 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D8BABFD1A0
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Oct 2025 18:18:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D7E4040A9B;
-	Wed, 22 Oct 2025 16:12:09 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 904DB6118B;
+	Wed, 22 Oct 2025 16:18:10 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id AB8IM5RQ6qXE; Wed, 22 Oct 2025 16:18:10 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EA93261196
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1761149890;
+	bh=RLP+bpkdPGjagGTgRPPp7+rOmgDtjlSKoZhywvA67RM=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=3+D4zF2IxFA0UAcFrhGT4IjsQ6yLjI3I9qQ61zV0b0R8pyrOR3GASOhpZp8KLLz7M
+	 rSvugn3peWakERClIBjUytzX8+yQcjrQHLV+pIJ3I4ZvnM/4gmYxxNyaHCFDOHKuJW
+	 OR1dN/4HxTiUbld3lBXRzebDln2lhIT+2/65CW2JpogxkUKeuUST1nmayA2lDNjMVz
+	 P1p8OKiz8jqvlhj+Ugd8BbilD76dMK9EcQxCC2ggaVOiSKDUXIzhEA5EvQeJfUQc6X
+	 /TxEM4tNuTVrZJIENxPznAzqwjvd4gU5aL95OCAqv2nDSY/ESND5JuQPXRaCodcOXA
+	 1emSdSUtlkh/g==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id EA93261196;
+	Wed, 22 Oct 2025 16:18:09 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id E82E4DE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 16:18:08 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id DE4BA40613
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 16:18:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kb7GquMUEwzn; Wed, 22 Oct 2025 16:12:09 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3281940A88
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1761149529;
-	bh=hXJoSIXKAZqZaV1/Vtgd9fT53zuB/ef3PvkedjBFaZE=;
-	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=BCkkyQukAP3SRBIaaQemFa6Cfu92CYPulxQ83DYrTn0r8NE25ObqKUR2/kEvlS06b
-	 xlzQJJAViDtydL8B5tRBDLZriMUyuMih3KIjUVmi3yQeXw1fuLH9p6iJF/6dyCqL7h
-	 fXEU8Lya8DuxFEDmx59/awts5W9Gb7lQMzgM0jXOeROBUYpEepnAQqWVjVzAQGTvAE
-	 WUwV6Sifj21OVFXKEWJGl8jsVoT7KA0qP3GFECGmrJxQGzkFjHt+NL1/vJsNLtAHoN
-	 nXtMnaNiZ85So3pMOaohA/e/4gYVlGuKyxNPsxtylXVodewp/9zIC/8v5mKhx5ZBs6
-	 HjRdMNFx8zr2w==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3281940A88;
-	Wed, 22 Oct 2025 16:12:09 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id CD4B2DE
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 16:12:06 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id BF58D83C5C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 16:12:06 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3Zo46LPqSuZZ for <intel-wired-lan@lists.osuosl.org>;
- Wed, 22 Oct 2025 16:12:06 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=185.125.188.122;
- helo=smtp-relay-internal-0.canonical.com;
- envelope-from=robert.malz@canonical.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 915F483C41
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 915F483C41
-Received: from smtp-relay-internal-0.canonical.com
- (smtp-relay-internal-0.canonical.com [185.125.188.122])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 915F483C41
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 16:12:05 +0000 (UTC)
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id B830C3FCE7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 16:12:02 +0000 (UTC)
-Received: by mail-ed1-f72.google.com with SMTP id
- 4fb4d7f45d1cf-63beab00b85so9486292a12.1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 09:12:02 -0700 (PDT)
+ id KqsTOtVUTiAe for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 22 Oct 2025 16:18:08 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::636; helo=mail-pl1-x636.google.com;
+ envelope-from=alessandro.d@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 228AD405C1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 228AD405C1
+Received: from mail-pl1-x636.google.com (mail-pl1-x636.google.com
+ [IPv6:2607:f8b0:4864:20::636])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 228AD405C1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 16:18:07 +0000 (UTC)
+Received: by mail-pl1-x636.google.com with SMTP id
+ d9443c01a7336-28a5b8b12a1so71576435ad.0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Oct 2025 09:18:07 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761149519; x=1761754319;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=hXJoSIXKAZqZaV1/Vtgd9fT53zuB/ef3PvkedjBFaZE=;
- b=Sca6Doo2uiKglYdndN9s9c7p5sz2kG6g7NS8StyIQidC587YyG6x943kKqSTot1Wgb
- WtlrYnXltW2JKm5eqMdsBjT1p6qKxnjw8ExlpX9aOnKT3LD0zVLMiBoIaTtCgWuodyoM
- 9KAERmlo1CRdTT3tGXLgc3kSge8X7VXurUMghkWUgpylEOhRsobK428cSJh7BRaF11p2
- qmhSTxJHspmTpQVIs5OT9Ie7Rt1qQXsQaEphNTfz4r5aaQ2Q9FEEVW9t6m3+X5EU+i50
- sahVy7bAyfAlsPNTK0fDF6LjoynclOJ26EsUM2oRoMR0HSCZueKDBj4To+U7l1TobvDJ
- F70A==
+ d=1e100.net; s=20230601; t=1761149887; x=1761754687;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=RLP+bpkdPGjagGTgRPPp7+rOmgDtjlSKoZhywvA67RM=;
+ b=j5UbqCoRX9uu0X99VNUrH4DNfvjShRrqSIZ8TSTh/pjag2gCeG+nFytJm+tqO9UZmE
+ yuTQ6xMZOfVX6cLIzXWqstRsV6Z6js8HNlF3ceNAcwqWQYsN5mxfj0pEl0S2n2w+4uCp
+ XrnL5c/XpPANafJmG6ySbNOxVdf3mg7AJVrM3NQ/XV/m7KS5tSoZ1FUo3wSeEVhJf5V+
+ LB9hSwuQhik6mV1duB7cVi99tP9XZzUpJ0YL1HI0DsRZrWNs8qp8+EXC9sE9ggNbg4ak
+ QqSH3VhJa3E4gtSM7zlU/rZyVGsZNDRI86O96x5B5qtGj/clx/R9corPmg9gKJmSHW1D
+ n4zA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXLqCoZvxjUFAS1ODM38kvkqfDF2wIFSTWI4m3QWFxINVBHplrTNVyhvu3MdtzdTB6YB92A1PnBxrmcZO2vdFc=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YxHLFTMSu5LgnERSkn73rbPxrCoTC/4Ner6p4T0xvWJ3aL/T/sE
- XuEitsUaIr3YlrXj3asM8rrJbgY7BfzGvOsUo3kTSrK/QBVe4oB8Jx+EcRql1QzPBEzbHV/a29o
- ZpUB6cX1Gw3w4A7reI0SgRVaPA4KKQLTzaOFWU/M4kZmVkeWs3t5zBzuzRZ9xDHR6UQLO15r0yd
- fpxtm78QphNz6GUC0P7JVNe4L3/uLjYYdo/Ng0vFqgvJiNGcyhDdXuzwmiVktl6g==
-X-Gm-Gg: ASbGncumT+yFpi2wGGaZC0F2hctuRWDFB+rPaXizif6lKDN+j//u2t5pkG5+4QZM1Tk
- WmNrAPa3AMi6rVDqcAKGNGmFqUWfGBRCfmZOavZEHL4dZRvqlCnLGmk7zlr0a1v77Th+hJKeAkD
- NB2Rk2aovo9tiyjn3YQJ4pyS2e1WebZPM8EL8td2i+jSpnfP3ZDbS0L/UDLcmmHwTd2s292ToZp
- gNzw1g2PScx0w==
-X-Received: by 2002:a05:6402:3585:b0:636:240f:9ece with SMTP id
- 4fb4d7f45d1cf-63c1f6d90d0mr21265293a12.34.1761149519166; 
- Wed, 22 Oct 2025 09:11:59 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGo+EUlFBfQHcw0UwsmPphdFUhsNMc7g4lASSpo/GqY9R6yD4UV9MMURzb4IVRJTknj/6hFy7Q+FY5jHEndIVo=
-X-Received: by 2002:a05:6402:3585:b0:636:240f:9ece with SMTP id
- 4fb4d7f45d1cf-63c1f6d90d0mr21265253a12.34.1761149518706; Wed, 22 Oct 2025
- 09:11:58 -0700 (PDT)
+ AJvYcCUfuunmeJCZiuZn3SxFXaeNzd8OVwCTy05pDUTsEqkEMLHqGB2ve/b8EWc/5spEyn3CpHOTYRx30fmIzS4Z6HE=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YxEq+1FqrW0XOoYPOybtcm9YrjlvHwmzFAiKKWevf0JiCGHtrrz
+ BzFZPwAPlSeECZOEDQKuBQBMX9TEZ9E65zjPp8solVu+yJP+OFYWyNX3
+X-Gm-Gg: ASbGncv5fsbQu3wGG0Xu4Ng0tOyp0oFXdZ7Sx1PrfTniM9XwGYMWADzCakFNf8QCIMt
+ tiEA+vxBpjzuCIC2asTRDFMn9BpUa5WqmgxqzktisFZXHnXJCOfOMAgAZXbz2IesNX8rqaP8B7c
+ MdjxsSLGp4vPnUIbomuo+5kjS0C8k78xNWb/ifkXuXQipuVxO95pleoanBw+Z/OHS22qvYb2ZBv
+ H3xr+bWMjOyOnsmpaw0zIxgPV7kOWeMscQNcrQf8QWzgYSrxeWnBjgkweK34JF4aXXMiK4Q/8zR
+ V/VsrXVjBOo2rF7WEqamLzP3EmIJBAtjXuloagCdXAylxrbGEhrQ20/CBEZPzpnf0fBxvWCpblX
+ M2tgLpw96uHQWD2pV0Slbx2UXf4+y6ns3Z/djlwOnhYjSH6Xz4WiwOf1MRBo5OkU/MW93dcUcQG
+ O7GQBe
+X-Google-Smtp-Source: AGHT+IHfAOCNJGgUXhdj6sgYkuAO4xsbyh4B6nGpWidzyORSpqM0a8O04rj58jJ6k/uvjC5jyroU0w==
+X-Received: by 2002:a17:903:19f0:b0:264:5c06:4d7b with SMTP id
+ d9443c01a7336-290cba4f065mr257718945ad.32.1761149887296; 
+ Wed, 22 Oct 2025 09:18:07 -0700 (PDT)
+Received: from lima-default ([104.28.246.147])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-292472193a1sm142156625ad.106.2025.10.22.09.18.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 22 Oct 2025 09:18:06 -0700 (PDT)
+Date: Thu, 23 Oct 2025 03:17:58 +1100
+From: Alessandro Decina <alessandro.d@gmail.com>
+To: Jason Xing <kerneljasonxing@gmail.com>
+Cc: Alessandro Decina <alessandro.d@gmail.com>, netdev@vger.kernel.org,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Alexei Starovoitov <ast@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ Daniel Borkmann <daniel@iogearbox.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, Paolo Abeni <pabeni@redhat.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Stanislav Fomichev <sdf@fomichev.me>,
+ Tirthendu Sarkar <tirthendu.sarkar@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, bpf@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
+Message-ID: <aPkDtuVgbS4J-Og_@lima-default>
+References: <20251021173200.7908-1-alessandro.d@gmail.com>
+ <20251021173200.7908-2-alessandro.d@gmail.com>
+ <CAL+tcoCwGQyNSv9BZ_jfsia6YFoyT790iknqxG7bB7wVi3C_vQ@mail.gmail.com>
 MIME-Version: 1.0
-References: <20251021154439.180838-1-robert.malz@canonical.com>
- <0c62b505-abe7-474e-9859-a301f4104eeb@molgen.mpg.de>
- <IA3PR11MB89860CA0245498E6FF720E48E5F3A@IA3PR11MB8986.namprd11.prod.outlook.com>
- <5578e792-2dd6-42db-8ad6-b12cd05c2617@molgen.mpg.de>
-In-Reply-To: <5578e792-2dd6-42db-8ad6-b12cd05c2617@molgen.mpg.de>
-From: Robert Malz <robert.malz@canonical.com>
-Date: Wed, 22 Oct 2025 18:11:47 +0200
-X-Gm-Features: AS18NWC0K4JlNBwhxK-j9aBt205Uc7UwVg8g7j0m6_4GsNSQueSsgnqvetVnQuU
-Message-ID: <CADcc-bxT13tqWKQFfXX6a5R125dRT21VT+5_ozzV-pmpX708gA@mail.gmail.com>
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- intel-wired-lan@lists.osuosl.org, 
- netdev@vger.kernel.org, Jamie Bainbridge <jamie.bainbridge@gmail.com>, 
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- Dennis Chen <dechen@redhat.com>, 
- Przemyslaw Kitszel <przemyslaw.kitszel@intel.com>,
- Lukasz Czapnik <lukasz.czapnik@intel.com>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, 
- Anthony L Nguyen <anthony.l.nguyen@intel.com>, Simon Horman <horms@kernel.org>,
- "Keller, Jacob E" <jacob.e.keller@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S . Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAL+tcoCwGQyNSv9BZ_jfsia6YFoyT790iknqxG7bB7wVi3C_vQ@mail.gmail.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=canonical.com; s=20251003; t=1761149522;
- bh=hXJoSIXKAZqZaV1/Vtgd9fT53zuB/ef3PvkedjBFaZE=;
- h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
- To:Cc:Content-Type;
- b=K8kRQeJ5D9plcFPESOcMLPlEW4gxxOKFvjXlbkxRKZlEDtdVC1/uwgnYJUVAXXilw
- t865cX5XEHddOzpkXWy9AsUzNzlyQuV5oJLuLVRWYCdIYWy4oI8D7w7fm4g/QSWg7l
- RRg6J8n9w2cMAE4C6uEC6Faw45m37pqvkT+QdTb7TjUpQDqPTkMah81Eh7YiaZlnVh
- Hy6jvpTJNViN461yKFORoVg4+z6Cxxmri6m1EG+QEJ9QueVa+HWrKT0Y1Swe21QyOI
- 4WtDim6IGrkfjitbJQGm7PD7PKCy3pOj5lwUidDImuEAB8Dn6Urtjbj+RUDmdFX7qD
- xLIUVz4d2SrFGHiZLInm8EMkjes4W3HvrUe++SfDVJ7wXV8jjlaQY/FJRlJHREUkFl
- 5fhUZVJApH+lJ1MlQNIfv+6B8+EGOGCp9H3bZcsq/sPTuQZkMSlk5uXq3yllL91+H+
- KgIBpxVeNtATmBv9gxtC+wW68ozYE26TCPaN1taq0Dd86NkYEqFAvK+mIU322zzNCV
- /+wkbUS9YOdAM3sB8KGo9Dbe2UEV6xJkhQv/ESIfn8JenRyRjGrFhjdwJN/JKht/79
- nWZ1hXNOkC1jvnwSoKJVBxvHhpHGTe9pyMaBW+TwaM5JxClh+TQAJWXeo8q7DDeCZW
- O6lZ/E6rxrQIpkpmkCNz6FWc=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ d=gmail.com; s=20230601; t=1761149887; x=1761754687; darn=lists.osuosl.org;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=RLP+bpkdPGjagGTgRPPp7+rOmgDtjlSKoZhywvA67RM=;
+ b=h+reYNjZ+F3eknMGi97UAi+VqwK6LjRwup9jmfkBveE5TK/j9ZrR4Zb9ztD2ZfEhkg
+ v54sURh1gIdMYOm4cxSoasGnELxmARi4Ht15jzA5qk38fG9EKbzVmVfxyF3JssesjLr0
+ I+Jou2WHA+3IRtkabo5akLcz+m2TLqY+afXKTYny3Thtvm0fzUGhVIR+8Z5C3uxHpNoX
+ 9Qzmtqk07M8X37oHAlEW+bsli19IPXUkROc+5BPQ3kQERu8G4fsBD+i38RMoNL5qjYdc
+ iigW7A2RMuDwb3t0QWM0QQblwyjTCZ1vokNqZYmiR3YlGQ3Cg52r7KA8NkMLtv36LWai
+ ZtgQ==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=canonical.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (4096-bit key,
- unprotected) header.d=canonical.com header.i=@canonical.com
- header.a=rsa-sha256 header.s=20251003 header.b=K8kRQeJ5
-Subject: Re: [Intel-wired-lan] [PATCH] i40e: avoid redundant VF link state
- updates
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20230601 header.b=h+reYNjZ
+Subject: Re: [Intel-wired-lan] [PATCH net v2 1/1] i40e: xsk: advance
+ next_to_clean on status descriptors
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -153,130 +145,111 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hey Paul, Aleksandr
-Thanks for the feedback.
-I have updated the commit message in [PATCH v2], some notes inline.
-
-On Wed, Oct 22, 2025 at 2:25=E2=80=AFPM Paul Menzel <pmenzel@molgen.mpg.de>=
- wrote:
->
-> Dear Alex,
->
->
-> Thank you for your input.
->
-> Am 22.10.25 um 14:06 schrieb Loktionov, Aleksandr:
->
-> >> -----Original Message-----
-> >> From: Paul Menzel <pmenzel@molgen.mpg.de>
-> >> Sent: Wednesday, October 22, 2025 1:49 PM
->
-> >> Am 21.10.25 um 17:44 schrieb Robert Malz:
-> >>> From: Jay Vosburgh <jay.vosburgh@canonical.com>
-> >>>
-> >>> Multiple sources can request VF link state changes with identical
-> >>> parameters. For example, Neutron may request to set the VF link state
-> >>> to
-> >>
-> >> What is Neutron?
-> >>
-> >>> IFLA_VF_LINK_STATE_AUTO during every initialization or user can issue=
-:
-> >>> `ip link set <ifname> vf 0 state auto` multiple times. Currently, the
-> >>> i40e driver processes each of these requests, even if the requested
-> >>> state is the same as the current one. This leads to unnecessary VF
-> >>> resets and can cause performance degradation or instability in the VF
-> >>> driver - particularly in DPDK environment.
-> >>
-> >> What is DPDK?
-> >>
-> > I think Robert needs:
-> > - to expand acronyms in the commit message (Neutron =E2=86=92 OpenStack=
- Neutron, DPDK =E2=86=92 Data Plane Development Kit).
-> > - to fix the comment style as per coding guidelines.
-> > - add a short note in the commit message about how to reproduce the iss=
-ue.
-> > @Paul Menzel right?
->
-
-@Aleksandr Loktionov you mentioned that comment style does not follow
-coding guidelines, from my perspective it looks good.
-Could you elaborate on that point?
-
-> Correct.
->
-> Maybe also mention how to force it, as there seems to be such an option
-> judging from the diff.
->
-> >>> With this patch i40e will skip VF link state change requests when the
-> >>> desired link state matches the current configuration. This prevents
-> >>> unnecessary VF resets and reduces PF-VF communication overhead.
-> >>
-> >> Add a test (with `ip link =E2=80=A6`) case to show, that it works now.
-> >>
-> >>> Co-developed-by: Robert Malz <robert.malz@canonical.com>
-> >>> Signed-off-by: Robert Malz <robert.malz@canonical.com>
-> >>> Signed-off-by: Jay Vosburgh <jay.vosburgh@canonical.com>
-> >>> ---
-> >>>    drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c | 12 ++++++++++=
-++
-> >>>    1 file changed, 12 insertions(+)
-> >>>
-> >>> diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-> >>> b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-> >>> index 081a4526a2f0..0fe0d52c796b 100644
-> >>> --- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-> >>> +++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-> >>> @@ -4788,6 +4788,7 @@ int i40e_ndo_set_vf_link_state(struct net_devic=
-e *netdev, int vf_id, int link)
-> >>>     unsigned long q_map;
-> >>>     struct i40e_vf *vf;
-> >>>     int abs_vf_id;
-> >>> +   int old_link;
-> >>>     int ret =3D 0;
-> >>>     int tmp;
-> >>>
-> >>> @@ -4806,6 +4807,17 @@ int i40e_ndo_set_vf_link_state(struct net_devi=
-ce *netdev, int vf_id, int link)
-> >>>     vf =3D &pf->vf[vf_id];
-> >>>     abs_vf_id =3D vf->vf_id + hw->func_caps.vf_base_id;
-> >>>
-> >>> +   /* skip VF link state change if requested state is already set */
-> >>> +   if (!vf->link_forced)
-> >>> +           old_link =3D IFLA_VF_LINK_STATE_AUTO;
-> >>> +   else if (vf->link_up)
-> >>> +           old_link =3D IFLA_VF_LINK_STATE_ENABLE;
-> >>> +   else
-> >>> +           old_link =3D IFLA_VF_LINK_STATE_DISABLE;
-> >>> +
-> >>> +   if (link =3D=3D old_link)
-> >>> +           goto error_out;
-> >>
-> >> Should a debug message be added?
+On Wed, Oct 22, 2025 at 11:11:01AM +0800, Jason Xing wrote:
+> On Wed, Oct 22, 2025 at 1:33 AM Alessandro Decina
+> <alessandro.d@gmail.com> wrote:
+> > diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+> > index 9f47388eaba5..dbc19083bbb7 100644
+> > --- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+> > +++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+> > @@ -441,13 +441,18 @@ int i40e_clean_rx_irq_zc(struct i40e_ring *rx_ring, int budget)
+> >                 dma_rmb();
 > >
-> > I think adding one would be redundant since skipping identical state
-> > changes is expected behavior.
->
-> My thinking was, if something does not work as expected for a user, like
-> issuing the command to force a reset, that it might be useful to see
-> something in the logs.
+> >                 if (i40e_rx_is_programming_status(qword)) {
+> > +                       u16 ntp;
+> > +
+> >                         i40e_clean_programming_status(rx_ring,
+> >                                                       rx_desc->raw.qword[0],
+> >                                                       qword);
+> >                         bi = *i40e_rx_bi(rx_ring, next_to_process);
+> >                         xsk_buff_free(bi);
+> > -                       if (++next_to_process == count)
+> > +                       ntp = next_to_process++;
+> > +                       if (next_to_process == count)
+> >                                 next_to_process = 0;
+> > +                       if (next_to_clean == ntp)
+> > +                               next_to_clean = next_to_process;
+> >                         continue;
+> >                 }
+> >
+> > --
+> > 2.43.0
+> >
+> >
+> 
+> I'm copying your reply from v1 as shown below so that we can continue
+> with the discussion :)
+> 
+> > It really depends on whether a status descriptor can be received in the
+> > middle of multi-buffer packet. Based on the existing code, I assumed it
+> > can. Therefore, consider this case:
+> >
+> > [valid_1st_packet][status_descriptor][valid_2nd_packet]
+> >
+> > In this case you want to skip status_descriptor but keep the existing
+> > logic that leads to:
+> >
+> >     first = next_to_clean = valid_1st_packet
+> >
+> > so then you can go and add valid_2nd_packet as a fragment to the first.
+> 
+> Sorry, honestly, I still don't follow you.
+> 
+> Looking at the case you provided, I think @first always pointing to
+> valid_1st_packet is valid which does not bring any trouble. You mean
+> the case is what you're trying to handle?
 
-I treat VF reset in this scenario as a side effect which helps VF
-bring up the queues.
-User should not expect to see VF reset each time these commands are
-run and there are
-specific commands, like triggering VFLR through pci reset, which are
-available for that
-purpose.
-Like Aleksandr, I found the logs in this area to be redundant.
->
-> >>> +
-> >>>     pfe.event =3D VIRTCHNL_EVENT_LINK_CHANGE;
-> >>>     pfe.severity =3D PF_EVENT_SEVERITY_INFO;
->
-> Kind regards,
->
-> Paul
+Yes, I mean this case needs to keep working, so we can't move
+next_to_clean unconditionally, we can only move it when
+next_to_clean == ntp, which is equivalent to checking that
+first == NULL. See below.
+ 
+> You patch updates next_to_clean that is only used at the very
+> beginning, so it will not affect @first. Imaging the following case:
+> 
+>      [status_descriptor][valid_1st_packet][valid_2nd_packet]
+> 
+> Even if the next_to_clean is updated, the @first still points to
+> [status_descriptor] that is invalid and that will later cause the
+> panic when constructing the skb.
 
-Thanks,
-Robert
+Exactly - the key is to make sure we never get into this state :)
+
+At the beginning of the function - outside the loop - first is only
+assigned if (next_to_process != next_to_clean). This condition means: if
+we previously exited the function in the middle of a multi-buffer
+packet, we must resume from the start of that packet (next_to_clean) and
+process the next fragment in it (next_to_process).
+
+Consider the case you just gave:
+
+> [status_descriptor][valid_1st_mb_packet][valid_2nd_mb_packet]
+
+Assume we enter the function and next_to_process == next_to_clean, we
+don't assign first, so first = NULL.
+
+We find the status descriptor: without this patch, we increment
+next_to_process, don't increment next_to_clean, say we run out of budget
+and break the loop, the next time the function is entered we set first =
+status_descriptor because next_to_process != next_to_clean. This is
+exactly what we want to avoid.
+
+With this patch upon processing the status descriptor, we see
+next_to_clean == ntp, we increment next_to_clean, the next time the
+function is entered next_to_process == next_to_clean, first is correctly
+set to NULL and the next packet starts from valid_1st_mb_packet.
+
+So I've covered both the scenarios:
+
+a) [status][mb_packet1][mb_packet2]
+b) [mb_packet1][status][mb_packet2]
+
+The last case
+
+c) [packet1][packet2][status] is actually just a), because at packet2
+we'd find the EOP marker and close off the previous multi-buffer packet.
+
+I hope I was more clear and please check my logic :)
+
+Ciao,
+Alessandro
