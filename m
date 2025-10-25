@@ -1,98 +1,115 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A498DC095F3
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Oct 2025 18:23:03 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1991540434;
-	Sat, 25 Oct 2025 16:23:02 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ktq6eXf0CXYJ; Sat, 25 Oct 2025 16:23:01 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4D82040415
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1761409381;
-	bh=u44cTLnCtEDP6HO96aF+y03rmmFaAFVXXlPkrAuOFcI=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=BiIguoA5HFSO7id2O0vGjXNNFiOWwlAitosgxwokunukYHGc6Va9OwzCsqcEZgQeN
-	 eCVF1lykQkhz1Fa3+I1ZTiqG6NPsBz4O2T/XIQlPL2xI5wqUezxg60F4lCQWk+FUvi
-	 5pv3EM6obRQQlrfzTEcNQYcI6TtDH4dbv06X/zobVKxl8GgO7Q00eEpblNKaRVZBIo
-	 IUUj7ViR8V3W91Yt+y7JZ80PRriPbshfIm2DFo/1k7HBePQSEfM7YMGMJNEocKv4O8
-	 13DhVkIzg97ULJic44YnHIiFTGiLpL5X04w1TMUdKGMYfC+fk3jKcdjJPNxBv5OotJ
-	 /BYty/+OHLMVw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4D82040415;
-	Sat, 25 Oct 2025 16:23:01 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 18725D7
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Oct 2025 16:23:00 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 65372C09CD4
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Oct 2025 18:59:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id EF7D481107
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Oct 2025 16:22:59 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B6B8880A06;
+	Sat, 25 Oct 2025 16:59:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1byLAS-__L4d for <intel-wired-lan@lists.osuosl.org>;
- Sat, 25 Oct 2025 16:22:59 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
- envelope-from=sashal@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0E917810F6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0E917810F6
-Received: from tor.source.kernel.org (tor.source.kernel.org
- [IPv6:2600:3c04:e001:324:0:1991:8:25])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0E917810F6
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Oct 2025 16:22:58 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 36A6F602AD;
- Sat, 25 Oct 2025 16:22:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 92102C4CEFF;
- Sat, 25 Oct 2025 16:22:55 +0000 (UTC)
-From: Sasha Levin <sashal@kernel.org>
-To: patches@lists.linux.dev,
-	stable@vger.kernel.org
-Cc: Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Jacob Keller <jacob.e.keller@intel.com>, Simon Horman <horms@kernel.org>,
- Paul Menzel <pmenzel@molgen.mpg.de>, Rinitha S <sx.rinitha@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Sasha Levin <sashal@kernel.org>,
- przemyslaw.kitszel@intel.com, intel-wired-lan@lists.osuosl.org
-Date: Sat, 25 Oct 2025 11:58:47 -0400
-Message-ID: <20251025160905.3857885-296-sashal@kernel.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251025160905.3857885-1-sashal@kernel.org>
-References: <20251025160905.3857885-1-sashal@kernel.org>
+ id lCwIgGKMUpnR; Sat, 25 Oct 2025 16:59:19 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 294208097B
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1761411559;
+	bh=V5UsvXKw8wVOUzGMnnRnvmj8EMKArLdi449MgunOyZ4=;
+	h=From:To:CC:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=d44xB7G/Uu94Kqg/V2yXklWPR4TvS0N/IVOLYAbt8SYxeKnQjLall1h+wHC6wwGZi
+	 Uf4BAauftfQUPkeXLRve0KsTfd7d3D1ktVfVNgGQuM8s8zj9RQv1d7vDJ2UwZaBzk4
+	 UelBhklf5zah+Au95X0nmMlEL8Vpqhrqn25j/n4WDWAYxS2DZwCbVoATaUDt8tk+EI
+	 lR/p41kZQezQ8DeiXYijZEeSB5L4q9tfvR9OLx8Q/UmUL2w3bEMSDgQhTzTbx6mEID
+	 y5ItQr+qH6/kO3f/BLGHcBPfFStWscFDr2PxXSHMvzootJW0ZXh43lUlk+UscuDtHC
+	 ylmL9QKvIv6bw==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 294208097B;
+	Sat, 25 Oct 2025 16:59:19 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 5BE2DD7
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Oct 2025 16:59:17 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 4D6C0402EA
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Oct 2025 16:59:17 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id hndQbVVTaaC4 for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 25 Oct 2025 16:59:16 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=35.83.148.184;
+ helo=pdx-out-014.esa.us-west-2.outbound.mail-perimeter.amazon.com;
+ envelope-from=prvs=3869390cb=enjuk@amazon.co.jp; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 1268F40296
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1268F40296
+Received: from pdx-out-014.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ (pdx-out-014.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ [35.83.148.184])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1268F40296
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Oct 2025 16:59:15 +0000 (UTC)
+X-CSE-ConnectionGUID: eZFInZ5zTjyBRyWiJWEZhA==
+X-CSE-MsgGUID: jAUVIkh2SL+2hX/TGUgopA==
+X-IronPort-AV: E=Sophos;i="6.19,255,1754956800"; 
+   d="scan'208";a="5508846"
+Received: from ip-10-5-12-219.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.12.219])
+ by internal-pdx-out-014.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Oct 2025 16:59:14 +0000
+Received: from EX19MTAUWB001.ant.amazon.com [205.251.233.51:19462]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.18.50:2525]
+ with esmtp (Farcaster)
+ id d9296589-5fdb-4156-af46-1d48d63edab8; Sat, 25 Oct 2025 16:59:14 +0000 (UTC)
+X-Farcaster-Flow-ID: d9296589-5fdb-4156-af46-1d48d63edab8
+Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
+ EX19MTAUWB001.ant.amazon.com (10.250.64.248) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.20;
+ Sat, 25 Oct 2025 16:59:14 +0000
+Received: from b0be8375a521.amazon.com (10.37.245.8) by
+ EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.29;
+ Sat, 25 Oct 2025 16:59:12 +0000
+From: Kohei Enju <enjuk@amazon.com>
+To: <intel-wired-lan@lists.osuosl.org>, <netdev@vger.kernel.org>
+CC: Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel
+ <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David
+ S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "Jakub
+ Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Mitch Williams
+ <mitch.a.williams@intel.com>, <kohei.enju@gmail.com>, Kohei Enju
+ <enjuk@amazon.com>
+Date: Sun, 26 Oct 2025 01:58:50 +0900
+Message-ID: <20251025165902.80411-1-enjuk@amazon.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.17.5
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1761409376;
- bh=7Xua/PkJ2ZUgdoURScr9y/6c6x0YYmZ+qOXuNljxnFU=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=pkBfI/2tqHQtv05VQUbrwMLgGTMQkLh9k1jNhKOjmnbZJ+SnkWQIsTF7JvkYT3YFB
- 9+rQ5t6jlpG/lIKDu15zg1c0rCfsnDKm/zumXx0MKYRVGDLJ2ghd7AKvpRJ3Fv9HA1
- m3e5EbOasYQQHoLw3EwINMYEpKGymVooOgJ+uSoA8FoHP5BQUn52dXJASIoe8Zg9DV
- 3Hd27+lvA++D3acSoo6I5+m+04M/yZb6z1ROkTbWiNEAee60F/a6DaXPtqS/doc17t
- QjIGqZ0A9r1ynxCiWm0h4faiiEZ4NVxFrn2VR9+UftFWFXWbpEWY9E3/IRG+y2cid6
- 7/Ris+dLlyqYA==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+Content-Type: text/plain
+X-Originating-IP: [10.37.245.8]
+X-ClientProxiedBy: EX19D042UWA002.ant.amazon.com (10.13.139.17) To
+ EX19D001UWA001.ant.amazon.com (10.13.138.214)
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
+ t=1761411556; x=1792947556;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=V5UsvXKw8wVOUzGMnnRnvmj8EMKArLdi449MgunOyZ4=;
+ b=YS898EQWFy1ZrQOXTicleJlpE0OaocFUf9ZZ2vUAlqlRC2e+2K3QA+Xr
+ /GvMpS1aWx9aJXhR534WaKmTXCb7aMb59ojxgT5gZ0Pnwad7c3YrnBLm9
+ xP6pKtEAY8zVr/Gd0zvK58o+Ig5xv6Wnaw7gnvNqaxNEF0sPY05QUDlw5
+ CPHjCMVS+4jHElqRgKiOO11L3ld0v0Fr8N7lQbSq1LodRO7QyT0QkVG5M
+ MIW0Qmg61ZN7WNiW0sIlbk+LrjyYJHFgZztvdB4zL+jUoyYqJrDPjrqII
+ ryCftt5SJcOssQCBKD4AQz1SRWS8p8LOcS82aiJhGSe3ptwDZQdme8WNt
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=pkBfI/2t
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.17] ixgbe: reduce number of
- reads when getting OROM data
+ header.from=amazon.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=amazon.com header.i=@amazon.com header.a=rsa-sha256
+ header.s=amazoncorp2 header.b=YS898EQW
+Subject: [Intel-wired-lan] [PATCH iwl-net v1] iavf: fix off-by-one issues in
+ iavf_config_rss_reg()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -108,225 +125,102 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+There are off-by-one bugs when configuring RSS hash key and lookup
+table, causing out-of-bounds reads to memory [1] and out-of-bounds
+writes to device registers.
 
-[ Upstream commit 08a1af326a80b88324acd73877db81ae927b1219 ]
+Before commit 43a3d9ba34c9 ("i40evf: Allow PF driver to configure RSS"),
+the loop upper bounds were:
+    i <= I40E_VFQF_{HKEY,HLUT}_MAX_INDEX
+which is safe since the value is the last valid index.
 
-Currently, during locating the CIVD section, the ixgbe driver loops
-over the OROM area and at each iteration reads only OROM-datastruct-size
-amount of data. This results in many small reads and is inefficient.
+That commit changed the bounds to:
+    i <= adapter->rss_{key,lut}_size / 4
+where `rss_{key,lut}_size / 4` is the number of dwords, so the last
+valid index is `(rss_{key,lut}_size / 4) - 1`. Therefore, using `<=`
+accesses one element past the end.
 
-Optimize this by reading the entire OROM bank into memory once before
-entering the loop. This significantly reduces the probing time.
+Fix the issues by using `<` instead of `<=`, ensuring we do not exceed
+the bounds.
 
-Without this patch probing time may exceed over 25s, whereas with this
-patch applied average time of probe is not greater than 5s.
+[1] KASAN splat about rss_key_size off-by-one
+  BUG: KASAN: slab-out-of-bounds in iavf_config_rss+0x619/0x800
+  Read of size 4 at addr ffff888102c50134 by task kworker/u8:6/63
 
-without the patch:
-[14:12:22] ixgbe: Copyright (c) 1999-2016 Intel Corporation.
-[14:12:25] ixgbe 0000:21:00.0: Multiqueue Enabled: Rx Queue count = 63, Tx Queue count = 63 XDP Queue count = 0
-[14:12:25] ixgbe 0000:21:00.0: 63.012 Gb/s available PCIe bandwidth (16.0 GT/s PCIe x4 link)
-[14:12:26] ixgbe 0000:21:00.0: MAC: 7, PHY: 27, PBA No: N55484-001
-[14:12:26] ixgbe 0000:21:00.0: 20:3a:43:09:3a:12
-[14:12:26] ixgbe 0000:21:00.0: Intel(R) 10 Gigabit Network Connection
-[14:12:50] ixgbe 0000:21:00.0 ens2f0np0: renamed from eth0
+  CPU: 0 UID: 0 PID: 63 Comm: kworker/u8:6 Not tainted 6.18.0-rc2-enjuk-tnguy-00378-g3005f5b77652-dirty #156 PREEMPT(voluntary)
+  Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+  Workqueue: iavf iavf_watchdog_task
+  Call Trace:
+   <TASK>
+   dump_stack_lvl+0x6f/0xb0
+   print_report+0x170/0x4f3
+   kasan_report+0xe1/0x1a0
+   iavf_config_rss+0x619/0x800
+   iavf_watchdog_task+0x2be7/0x3230
+   process_one_work+0x7fd/0x1420
+   worker_thread+0x4d1/0xd40
+   kthread+0x344/0x660
+   ret_from_fork+0x249/0x320
+   ret_from_fork_asm+0x1a/0x30
+   </TASK>
 
-with the patch:
-[14:18:18] ixgbe: Copyright (c) 1999-2016 Intel Corporation.
-[14:18:19] ixgbe 0000:21:00.0: Multiqueue Enabled: Rx Queue count = 63, Tx Queue count = 63 XDP Queue count = 0
-[14:18:19] ixgbe 0000:21:00.0: 63.012 Gb/s available PCIe bandwidth (16.0 GT/s PCIe x4 link)
-[14:18:19] ixgbe 0000:21:00.0: MAC: 7, PHY: 27, PBA No: N55484-001
-[14:18:19] ixgbe 0000:21:00.0: 20:3a:43:09:3a:12
-[14:18:19] ixgbe 0000:21:00.0: Intel(R) 10 Gigabit Network Connection
-[14:18:22] ixgbe 0000:21:00.0 ens2f0np0: renamed from eth0
+  Allocated by task 63:
+   kasan_save_stack+0x30/0x50
+   kasan_save_track+0x14/0x30
+   __kasan_kmalloc+0x7f/0x90
+   __kmalloc_noprof+0x246/0x6f0
+   iavf_watchdog_task+0x28fc/0x3230
+   process_one_work+0x7fd/0x1420
+   worker_thread+0x4d1/0xd40
+   kthread+0x344/0x660
+   ret_from_fork+0x249/0x320
+   ret_from_fork_asm+0x1a/0x30
 
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
-Reviewed-by: Simon Horman <horms@kernel.org>
-Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
-Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-Tested-by: Rinitha S <sx.rinitha@intel.com> (A Contingent worker at Intel)
-Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+  The buggy address belongs to the object at ffff888102c50100
+   which belongs to the cache kmalloc-64 of size 64
+  The buggy address is located 0 bytes to the right of
+   allocated 52-byte region [ffff888102c50100, ffff888102c50134)
+
+  The buggy address belongs to the physical page:
+  page: refcount:0 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x102c50
+  flags: 0x200000000000000(node=0|zone=2)
+  page_type: f5(slab)
+  raw: 0200000000000000 ffff8881000418c0 dead000000000122 0000000000000000
+  raw: 0000000000000000 0000000080200020 00000000f5000000 0000000000000000
+  page dumped because: kasan: bad access detected
+
+  Memory state around the buggy address:
+   ffff888102c50000: 00 00 00 00 00 00 00 fc fc fc fc fc fc fc fc fc
+   ffff888102c50080: 00 00 00 00 00 00 00 fc fc fc fc fc fc fc fc fc
+  >ffff888102c50100: 00 00 00 00 00 00 04 fc fc fc fc fc fc fc fc fc
+                                       ^
+   ffff888102c50180: 00 00 00 00 00 00 00 00 fc fc fc fc fc fc fc fc
+   ffff888102c50200: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+
+Fixes: 43a3d9ba34c9 ("i40evf: Allow PF driver to configure RSS")
+Signed-off-by: Kohei Enju <enjuk@amazon.com>
 ---
+ drivers/net/ethernet/intel/iavf/iavf_main.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-LLM Generated explanations, may be completely bogus:
-
-YES
-
-Reasoning and impact
-- User-visible bug: The old implementation read only a small struct per
-  512-byte step across the whole OROM, causing thousands of NVM
-  transactions during probe. The commit reduces probe time dramatically
-  (25s → ~5s), which is a real user-facing issue (long boot delays,
-  timeouts). This is a performance bug fix, not a feature.
-- Scope: The change is contained to the E610 flash/OROM probing path and
-  limited to a single function in one file. No ABI, IO paths, or
-  critical runtime datapaths are modified.
-
-What changed in code
-- Batch read OROM once:
-  - Allocates a buffer of the OROM bank size (`orom_size =
-    hw->flash.banks.orom_size`) and reads it in a single flat-NVM pass,
-    then scans in memory instead of doing many small reads:
-    drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:3010,
-    drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:3015,
-    drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:3020.
-  - The read goes through `ixgbe_read_flash_module()` which holds the
-    NVM resource once and uses `ixgbe_read_flat_nvm()` that already
-    chunks reads to 4KB sectors, so this is supported and efficient:
-    drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:2788,
-    drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:3533.
-- Search logic preserved, just done in-memory:
-  - Scans 512-byte aligned offsets looking for “$CIV”, verifies a simple
-    modulo-256 checksum over the CIVD struct, then copies the struct
-    out: drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:3032,
-    drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:3039,
-    drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:3042.
-  - The struct layout and size are defined here and verified with a
-    `BUILD_BUG_ON` against 512 bytes:
-    drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h:929,
-    drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:3036.
-- Error semantics clarified and unchanged in behavior for callers:
-  - Now explicitly returns -ENOMEM (allocation), -EIO (flash read),
-    -EDOM (checksum), -ENODATA (not found), 0 on success; matching the
-    documented behavior and typical expectations of
-    `ixgbe_get_orom_ver_info()` which simply returns on error:
-    drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:2992,
-    drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:3134.
-- The OROM size and offsets are sourced from Shadow RAM in 4KB units,
-  already discovered via `ixgbe_determine_active_flash_banks()`:
-  drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:2687,
-  drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:2602.
-
-Risk assessment
-- Memory allocation: `kzalloc(orom_size, GFP_KERNEL)` allocates the OROM
-  bank (typically small/hundreds of KB). It’s probe-time, immediately
-  freed, and far less likely to fail under fragmentation. Even if
-  -ENOMEM happens, failure behavior mirrors other probe-time allocations
-  and cleanly propagates (and the previous code would then spend tens of
-  seconds doing many I/Os).
-- Locking/IO semantics: `ixgbe_read_flat_nvm()` already chunks to 4KB
-  and is designed for larger flat reads. Holding the NVM resource once
-  is safer and faster than many acquire/release cycles.
-- Callers: The function feeds OROM version parsing
-  (`ixgbe_get_orom_ver_info`) used during `ixgbe_get_flash_data` at
-  probe; reducing time here improves user-visible driver bring-up time
-  without changing logic:
-  drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:3345,
-  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c:11666.
-
-Why it fits stable
-- Fixes a significant user-impacting performance issue (probe delay
-  ~25s).
-- Minimal, localized code change without architectural impact.
-- Maintains existing behavior and error handling expectations for
-  callers.
-- Limited to E610 hardware path; low regression surface.
-
-Conclusion
-- This is a well-scoped, low-risk performance bug fix that materially
-  improves user experience during probe. It should be backported to
-  stable.
-
- drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 59 +++++++++++++------
- 1 file changed, 40 insertions(+), 19 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-index bfeef5b0b99d8..e5f0399657097 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-@@ -3008,50 +3008,71 @@ static int ixgbe_get_nvm_srev(struct ixgbe_hw *hw,
-  * Searches through the Option ROM flash contents to locate the CIVD data for
-  * the image.
-  *
-- * Return: the exit code of the operation.
-+ * Return: -ENOMEM when cannot allocate memory, -EDOM for checksum violation,
-+ *	   -ENODATA when cannot find proper data, -EIO for faulty read or
-+ *	   0 on success.
-+ *
-+ *	   On success @civd stores collected data.
-  */
- static int
- ixgbe_get_orom_civd_data(struct ixgbe_hw *hw, enum ixgbe_bank_select bank,
- 			 struct ixgbe_orom_civd_info *civd)
- {
--	struct ixgbe_orom_civd_info tmp;
-+	u32 orom_size = hw->flash.banks.orom_size;
-+	u8 *orom_data;
- 	u32 offset;
- 	int err;
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+index c2fbe443ef85..4b0fc8f354bc 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_main.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+@@ -1726,11 +1726,11 @@ static int iavf_config_rss_reg(struct iavf_adapter *adapter)
+ 	u16 i;
  
-+	orom_data = kzalloc(orom_size, GFP_KERNEL);
-+	if (!orom_data)
-+		return -ENOMEM;
-+
-+	err = ixgbe_read_flash_module(hw, bank,
-+				      IXGBE_E610_SR_1ST_OROM_BANK_PTR, 0,
-+				      orom_data, orom_size);
-+	if (err) {
-+		err = -EIO;
-+		goto cleanup;
-+	}
-+
- 	/* The CIVD section is located in the Option ROM aligned to 512 bytes.
- 	 * The first 4 bytes must contain the ASCII characters "$CIV".
- 	 * A simple modulo 256 sum of all of the bytes of the structure must
- 	 * equal 0.
- 	 */
--	for (offset = 0; (offset + SZ_512) <= hw->flash.banks.orom_size;
--	     offset += SZ_512) {
-+	for (offset = 0; offset + SZ_512 <= orom_size; offset += SZ_512) {
-+		struct ixgbe_orom_civd_info *tmp;
- 		u8 sum = 0;
- 		u32 i;
+ 	dw = (u32 *)adapter->rss_key;
+-	for (i = 0; i <= adapter->rss_key_size / 4; i++)
++	for (i = 0; i < adapter->rss_key_size / 4; i++)
+ 		wr32(hw, IAVF_VFQF_HKEY(i), dw[i]);
  
--		err = ixgbe_read_flash_module(hw, bank,
--					      IXGBE_E610_SR_1ST_OROM_BANK_PTR,
--					      offset,
--					      (u8 *)&tmp, sizeof(tmp));
--		if (err)
--			return err;
-+		BUILD_BUG_ON(sizeof(*tmp) > SZ_512);
-+
-+		tmp = (struct ixgbe_orom_civd_info *)&orom_data[offset];
+ 	dw = (u32 *)adapter->rss_lut;
+-	for (i = 0; i <= adapter->rss_lut_size / 4; i++)
++	for (i = 0; i < adapter->rss_lut_size / 4; i++)
+ 		wr32(hw, IAVF_VFQF_HLUT(i), dw[i]);
  
- 		/* Skip forward until we find a matching signature */
--		if (memcmp(IXGBE_OROM_CIV_SIGNATURE, tmp.signature,
--			   sizeof(tmp.signature)))
-+		if (memcmp(IXGBE_OROM_CIV_SIGNATURE, tmp->signature,
-+			   sizeof(tmp->signature)))
- 			continue;
- 
- 		/* Verify that the simple checksum is zero */
--		for (i = 0; i < sizeof(tmp); i++)
--			sum += ((u8 *)&tmp)[i];
-+		for (i = 0; i < sizeof(*tmp); i++)
-+			sum += ((u8 *)tmp)[i];
-+
-+		if (sum) {
-+			err = -EDOM;
-+			goto cleanup;
-+		}
- 
--		if (sum)
--			return -EDOM;
-+		*civd = *tmp;
-+		err = 0;
- 
--		*civd = tmp;
--		return 0;
-+		goto cleanup;
- 	}
- 
--	return -ENODATA;
-+	err = -ENODATA;
-+cleanup:
-+	kfree(orom_data);
-+	return err;
- }
- 
- /**
+ 	iavf_flush(hw);
 -- 
 2.51.0
 
