@@ -1,65 +1,66 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 96FC4C0EEB1
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Oct 2025 16:22:04 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 36888C0EEAB
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Oct 2025 16:22:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 00D9283D95;
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1959A610E9;
 	Mon, 27 Oct 2025 15:22:01 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2OLEsS6rvJ0F; Mon, 27 Oct 2025 15:22:00 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C3CB3822F5
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1761578519;
-	bh=IKZzFH9baPhuiDV4/UyjYPxffM2N3XsDNJhdMtNChJA=;
-	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=D1g7LiMRR51EDbaNwaEeauaH74SN2Y6tAO5s9/E9Tz4Z+3COrQeW1tGSpgVbmsXA5
-	 phO7JtsWZqJo1pVfWpPgoVS+Q46HEADSOFe9aUCepsWFJ4hEWK31Qllhil91a1LIGF
-	 k3nN5wMQW8ZBj8I5Wcnbu3SX1ls8eXVtcViSniWzdCr9gx0aeAlaYdW76ypaTXB+G8
-	 B2DIZvDzRp4bYCJ2YFgon9Znr9cJv85LKQ/9vTFpaR8bJdsZ1ONrCcZzjCqLX77KId
-	 DNYiectEiX+s7FkvzoqvHqqg3yzygJQyeDwFvjCFFZ0e2J7vS+EKCSPftiXZudM8MY
-	 0ZhXn0YY/HogQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C3CB3822F5;
-	Mon, 27 Oct 2025 15:21:59 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 1D91A976
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Oct 2025 20:53:43 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0382C60663
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Oct 2025 20:53:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id tIxP5ryVoKM3 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 25 Oct 2025 20:53:42 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
- helo=sea.source.kernel.org; envelope-from=nathan@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 3A5846060C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3A5846060C
-Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3A5846060C
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Oct 2025 20:53:42 +0000 (UTC)
+ id EoUH9bWudwn1; Mon, 27 Oct 2025 15:22:00 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5EE44610B6
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1761578520;
+	bh=BwAdxCHRgEQ+91R3lmIAM0trfHzgVfiaQ7nM5FiQFM8=;
+	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=0RixpmnyUIF0gEsUeKbPoqJZ4KjvW7wtePYdEbDBohes3LoQfbr+F0EkwtsdGvjhd
+	 G1ddSn38QOppgvaQWpxoGFxsrl+b9LNSwoTsUgpLb4JvuVOfT/GHCoAbFrDPbrsW6L
+	 Jcw9br/HK0vRNT/oxAuzRrJGGEqah4qgOFv79S+wQpNx1Mao433CrgZ0/D1wdmTiHV
+	 xmfVVVW+coVoKJGlgfV+0o23RMshsT7J7V7XlFQVDCBxdfuqFNjfmKJMRA+8pCaaRF
+	 03Hyibh4BTabKzPuWb4irBmbx+o7U0tfPMaQWeUiYbJ9PAIt04wL4phNwKpWDLGiGo
+	 2pn6yTWLe1jRw==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5EE44610B6;
+	Mon, 27 Oct 2025 15:22:00 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 8B8A9976
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Oct 2025 20:53:48 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7C6C040825
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Oct 2025 20:53:48 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 7FtuxLBYNm2w for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 25 Oct 2025 20:53:47 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
+ envelope-from=nathan@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 80A1D40819
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 80A1D40819
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 80A1D40819
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Oct 2025 20:53:47 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 8BE2C43DE7;
+ by tor.source.kernel.org (Postfix) with ESMTP id 469FA602E6;
+ Sat, 25 Oct 2025 20:53:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E0286C4CEFF;
  Sat, 25 Oct 2025 20:53:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 677E7C113D0;
- Sat, 25 Oct 2025 20:53:37 +0000 (UTC)
 From: Nathan Chancellor <nathan@kernel.org>
-Date: Sat, 25 Oct 2025 21:53:18 +0100
+Date: Sat, 25 Oct 2025 21:53:19 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251025-idpf-fix-arm-kcfi-build-error-v1-1-ec57221153ae@kernel.org>
+Message-Id: <20251025-idpf-fix-arm-kcfi-build-error-v1-2-ec57221153ae@kernel.org>
 References: <20251025-idpf-fix-arm-kcfi-build-error-v1-0-ec57221153ae@kernel.org>
 In-Reply-To: <20251025-idpf-fix-arm-kcfi-build-error-v1-0-ec57221153ae@kernel.org>
 To: Kees Cook <kees@kernel.org>, 
@@ -76,33 +77,34 @@ Cc: Simon Horman <horms@kernel.org>, Nathan Chancellor <nathan@kernel.org>,
  llvm@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
  netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
 X-Mailer: b4 0.15-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2120; i=nathan@kernel.org;
- h=from:subject:message-id; bh=k3f56oOKXrHPQQfnFbh//sCNF5j+f6kxvvopfboCJxQ=;
- b=owGbwMvMwCUmm602sfCA1DTG02pJDBl/Lc5InyyKcb3JcHTHf8mWDxptnkqzlkza4fp4wuf3C
- y70+sbs7ShlYRDjYpAVU2Spfqx63NBwzlnGG6cmwcxhZQIZwsDFKQATEYxgZLhgKXhcWan09CFZ
- rfM/z319Pnl1bPAMkYg83hl63neLNTIZ/lmsZ9aZkmEVs8JC9pVNn9NCf3O+vncMWzprc9f/3ea
- 0iwsA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1058; i=nathan@kernel.org;
+ h=from:subject:message-id; bh=iG5SfyTk4AKapcKPPrgaFC/L53w+793p/xw4lohb8j4=;
+ b=owGbwMvMwCUmm602sfCA1DTG02pJDBl/Lc7cXRGgEvFzhe+9sFOGP38axfW9tZlhLmOZX/NkW
+ wwnw6SbHaUsDGJcDLJiiizVj1WPGxrOOct449QkmDmsTCBDGLg4BWAiySwM/wxDz1zd/XRjSMYZ
+ vym50b0nP25112lec31i1Ha1lzW5idmMDF3XTz96kqbppmE8gT+FIdqm4Ne2c1cVVkeGynAsFN3
+ FxQ4A
 X-Developer-Key: i=nathan@kernel.org; a=openpgp;
  fpr=2437CB76E544CB6AB3D9DFD399739260CB6CB716
 X-Mailman-Approved-At: Mon, 27 Oct 2025 15:21:57 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1761425621;
- bh=k3f56oOKXrHPQQfnFbh//sCNF5j+f6kxvvopfboCJxQ=;
+ d=kernel.org; s=k20201202; t=1761425625;
+ bh=iG5SfyTk4AKapcKPPrgaFC/L53w+793p/xw4lohb8j4=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=gyBS+m3+QuJhhVlVHOUu0JiISZ/k5A2IXJFsl4NJpggJCKVvIjEa5DDaYcuanepEl
- ZX8qFwgLj5h05w3VNQIwz095yPKdIr0J5hR9EYXxYcccTZgWrEYO5mBRVxL5xjP1SO
- e1vM74f58O9uKTNpKGok29peiZRWauNITxgfFEv4bGO5LjmYkZjTGFSsRpyvTVywkm
- o8XZXwwutNJLzUUdXK8JQMrWlxwFwbJAgv7rVCE7Bd97fyfmilTCi84cM/+WbrgSaD
- NJiBenCNc79SH8VjATqKJUrXw9UEcHG5CxPFvfdcSjyz6Mpkkqd3DNIoEe58TCEw0a
- IWJ/jpi1hdY8Q==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=tIOI0fBX3xZrYkIIJKOTTujgZFS5HWbD5Fq0jy1bprFv8lhHtqpaHaNXYfigNsuvV
+ IPJSVSUUb/H19XVseECrJfWHff5FzANCf/bFsgYXSmZ/XitcJLQDCQGQ202ZyXySnC
+ djE0aeNgokJhBAFjxVoNpURGUPu2DzKnoiu2vgAb900a+kKkBB0z2R6qGyQHX9QfRF
+ 1U4yvR2tstfL8mdlQBpehKXVDp/ifN51kZf6nVyfEZIRrNPsGSDhaEalZBTe+tnZ9h
+ A+qqxJAg6ovg04sN7aHZT34rLlamKBuPYTeqC6s31CrnnGAbsnTjvE6oV5d2oD76aQ
+ ctQrpfhR7nA/w==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=gyBS+m3+
-Subject: [Intel-wired-lan] [PATCH 1/3] compiler_types: Introduce
- __nocfi_generic
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=tIOI0fBX
+Subject: [Intel-wired-lan] [PATCH 2/3] ARM: Select
+ ARCH_USES_CFI_GENERIC_LLVM_PASS
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -118,61 +120,30 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-There are two different ways that LLVM can expand kCFI operand bundles
-in LLVM IR: generically in the middle end or using an architecture
-specific sequence when lowering LLVM IR to machine code in the backend.
-The generic pass allows any architecture to take advantage of kCFI but
-the expansion of these bundles in the middle end can mess with
-optimizations that may turn indirect calls into direct calls when the
-call target is known at compile time, such as after inlining.
+Prior to clang 22.0.0 [1], ARM did not have an architecture specific
+kCFI bundle lowering in the backend, which may cause issues. Select
+CONFIG_ARCH_USES_CFI_GENERIC_LLVM_PASS to enable use of __nocfi_generic.
 
-Add __nocfi_generic, dependent on an architecture selecting
-CONFIG_ARCH_USES_CFI_GENERIC_LLVM_PASS, to disable kCFI bundle
-generation in functions where only the generic kCFI pass may cause
-problems.
-
+Link: https://github.com/llvm/llvm-project/commit/d130f402642fba3d065aacb506cb061c899558de [1]
 Link: https://github.com/ClangBuiltLinux/linux/issues/2124
 Signed-off-by: Nathan Chancellor <nathan@kernel.org>
 ---
- arch/Kconfig                   | 7 +++++++
- include/linux/compiler_types.h | 6 ++++++
- 2 files changed, 13 insertions(+)
+ arch/arm/Kconfig | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/arch/Kconfig b/arch/Kconfig
-index 74ff01133532..61130b88964b 100644
---- a/arch/Kconfig
-+++ b/arch/Kconfig
-@@ -917,6 +917,13 @@ config ARCH_USES_CFI_TRAPS
- 	  An architecture should select this option if it requires the
- 	  .kcfi_traps section for KCFI trap handling.
- 
-+config ARCH_USES_CFI_GENERIC_LLVM_PASS
-+	bool
-+	help
-+	  An architecture should select this option if it uses the generic
-+	  KCFIPass in LLVM to expand kCFI bundles instead of architecture-specific
-+	  lowering.
-+
- config CFI
- 	bool "Use Kernel Control Flow Integrity (kCFI)"
- 	default CFI_CLANG
-diff --git a/include/linux/compiler_types.h b/include/linux/compiler_types.h
-index 59288a2c1ad2..1414be493738 100644
---- a/include/linux/compiler_types.h
-+++ b/include/linux/compiler_types.h
-@@ -461,6 +461,12 @@ struct ftrace_likely_data {
- # define __nocfi
- #endif
- 
-+#if defined(CONFIG_ARCH_USES_CFI_GENERIC_LLVM_PASS)
-+# define __nocfi_generic	__nocfi
-+#else
-+# define __nocfi_generic
-+#endif
-+
- /*
-  * Any place that could be marked with the "alloc_size" attribute is also
-  * a place to be marked with the "malloc" attribute, except those that may
+diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
+index 2e3f93b690f4..4fb985b76e97 100644
+--- a/arch/arm/Kconfig
++++ b/arch/arm/Kconfig
+@@ -44,6 +44,8 @@ config ARM
+ 	select ARCH_USE_BUILTIN_BSWAP
+ 	select ARCH_USE_CMPXCHG_LOCKREF
+ 	select ARCH_USE_MEMTEST
++	# https://github.com/llvm/llvm-project/commit/d130f402642fba3d065aacb506cb061c899558de
++	select ARCH_USES_CFI_GENERIC_LLVM_PASS if CLANG_VERSION < 220000
+ 	select ARCH_WANT_DEFAULT_TOPDOWN_MMAP_LAYOUT if MMU
+ 	select ARCH_WANT_GENERAL_HUGETLB
+ 	select ARCH_WANT_IPC_PARSE_VERSION
 
 -- 
 2.51.1
