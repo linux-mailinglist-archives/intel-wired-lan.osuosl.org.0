@@ -1,69 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 53FC4C0950B
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Oct 2025 18:20:00 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A498DC095F3
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Oct 2025 18:23:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AB90D80FC6;
-	Sat, 25 Oct 2025 16:19:58 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7vqd7aaa-PKI; Sat, 25 Oct 2025 16:19:57 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C34F980FDD
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1761409197;
-	bh=Vv3mXrHTbD+DYs6fluiD+e9wXE9fGmNV+Hj70yYZk4o=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=Q0I1ttNJAd6arcJZYBQ41NmufGzIhg1ig55uotP6PQ1jVXueWwiEevqrfCcgune9K
-	 L541YU583SPWikV5IXbPIopEWLKq3TmrPA1lgYj4d08fo4mjvTKbZhp7UOELQqx/jq
-	 w9WBV60aNMcFdojdKDLZmWVBozzOg3Bu2wesDwQIDkeY6HRBj+UHIah8CFD+iJZ+1g
-	 VevvRdiLflPqBpTgQHDF4wyxXVV7kSXuj1Rh1dFDKkWA3yLdv6NmN+WYEvRKQuwo7H
-	 C+KcKuuPE0lmUz/9OMyL/dyX37CrpTY2aKrGFM2nAVuwvSW2VQuqsCcPfEuloagqFE
-	 nPkk1wRNIIFVg==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C34F980FDD;
-	Sat, 25 Oct 2025 16:19:57 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id F3C9E976
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Oct 2025 16:19:55 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E5578405F7
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Oct 2025 16:19:55 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1991540434;
+	Sat, 25 Oct 2025 16:23:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id MOu3Sl4wRJpS for <intel-wired-lan@lists.osuosl.org>;
- Sat, 25 Oct 2025 16:19:55 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
- helo=sea.source.kernel.org; envelope-from=sashal@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 10EAB405F2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 10EAB405F2
-Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 10EAB405F2
- for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Oct 2025 16:19:54 +0000 (UTC)
+ id Ktq6eXf0CXYJ; Sat, 25 Oct 2025 16:23:01 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4D82040415
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1761409381;
+	bh=u44cTLnCtEDP6HO96aF+y03rmmFaAFVXXlPkrAuOFcI=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=BiIguoA5HFSO7id2O0vGjXNNFiOWwlAitosgxwokunukYHGc6Va9OwzCsqcEZgQeN
+	 eCVF1lykQkhz1Fa3+I1ZTiqG6NPsBz4O2T/XIQlPL2xI5wqUezxg60F4lCQWk+FUvi
+	 5pv3EM6obRQQlrfzTEcNQYcI6TtDH4dbv06X/zobVKxl8GgO7Q00eEpblNKaRVZBIo
+	 IUUj7ViR8V3W91Yt+y7JZ80PRriPbshfIm2DFo/1k7HBePQSEfM7YMGMJNEocKv4O8
+	 13DhVkIzg97ULJic44YnHIiFTGiLpL5X04w1TMUdKGMYfC+fk3jKcdjJPNxBv5OotJ
+	 /BYty/+OHLMVw==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4D82040415;
+	Sat, 25 Oct 2025 16:23:01 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 18725D7
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Oct 2025 16:23:00 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id EF7D481107
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Oct 2025 16:22:59 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 1byLAS-__L4d for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 25 Oct 2025 16:22:59 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
+ envelope-from=sashal@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0E917810F6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0E917810F6
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 0E917810F6
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Oct 2025 16:22:58 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 8D9CD450E8;
- Sat, 25 Oct 2025 16:19:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E69FC4CEFB;
- Sat, 25 Oct 2025 16:19:53 +0000 (UTC)
+ by tor.source.kernel.org (Postfix) with ESMTP id 36A6F602AD;
+ Sat, 25 Oct 2025 16:22:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 92102C4CEFF;
+ Sat, 25 Oct 2025 16:22:55 +0000 (UTC)
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Alexander Lobakin <aleksander.lobakin@intel.com>,
- Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Ramu R <ramu.r@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Sasha Levin <sashal@kernel.org>, przemyslaw.kitszel@intel.com,
- intel-wired-lan@lists.osuosl.org
-Date: Sat, 25 Oct 2025 11:57:49 -0400
-Message-ID: <20251025160905.3857885-238-sashal@kernel.org>
+Cc: Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Jacob Keller <jacob.e.keller@intel.com>, Simon Horman <horms@kernel.org>,
+ Paul Menzel <pmenzel@molgen.mpg.de>, Rinitha S <sx.rinitha@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Sasha Levin <sashal@kernel.org>,
+ przemyslaw.kitszel@intel.com, intel-wired-lan@lists.osuosl.org
+Date: Sat, 25 Oct 2025 11:58:47 -0400
+Message-ID: <20251025160905.3857885-296-sashal@kernel.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251025160905.3857885-1-sashal@kernel.org>
 References: <20251025160905.3857885-1-sashal@kernel.org>
@@ -74,22 +76,23 @@ X-stable-base: Linux 6.17.5
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1761409194;
- bh=s3GKYIJHrlJpj1mV4IUVk/qjjyOc0d/+RjSIR7hOTmQ=;
+ d=kernel.org; s=k20201202; t=1761409376;
+ bh=7Xua/PkJ2ZUgdoURScr9y/6c6x0YYmZ+qOXuNljxnFU=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=X/GAyk1MfsIuQrbTJDhATYRlmn9GuD0diKaQE/RtgmUqGb0F6N9RigkGzy+8fsvIQ
- 05yX5/sM4SbsGMXeZ6CJby3GU+fofBTgqRdIHVBh5fhsZ4vfV/8NYe7Xf7s30e4G3J
- a3mG8SBYHtQIdyw0OUZR/COdWaP64EELaPuShEyrQ16iEyiy7tVg91PaIDk9EDHY+Y
- dUFxn5IULZ+960iNMFckzFGfQ1I91zGk1mqcZ7ecapgCnR2CmIhhUYrZf8zpn7speg
- dRsPyOQ1eI8d80bqqBvFE0OsA03EiNqrDMzNL0i9IKDHwf3/rfzGECtXAYPrbyAU8t
- 2X/misGQtw2AA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=pkBfI/2tqHQtv05VQUbrwMLgGTMQkLh9k1jNhKOjmnbZJ+SnkWQIsTF7JvkYT3YFB
+ 9+rQ5t6jlpG/lIKDu15zg1c0rCfsnDKm/zumXx0MKYRVGDLJ2ghd7AKvpRJ3Fv9HA1
+ m3e5EbOasYQQHoLw3EwINMYEpKGymVooOgJ+uSoA8FoHP5BQUn52dXJASIoe8Zg9DV
+ 3Hd27+lvA++D3acSoo6I5+m+04M/yZb6z1ROkTbWiNEAee60F/a6DaXPtqS/doc17t
+ QjIGqZ0A9r1ynxCiWm0h4faiiEZ4NVxFrn2VR9+UftFWFXWbpEWY9E3/IRG+y2cid6
+ 7/Ris+dLlyqYA==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=X/GAyk1M
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.17] idpf: link NAPIs to queues
+ header.a=rsa-sha256 header.s=k20201202 header.b=pkBfI/2t
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.17] ixgbe: reduce number of
+ reads when getting OROM data
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -105,30 +108,44 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Alexander Lobakin <aleksander.lobakin@intel.com>
+From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 
-[ Upstream commit bd74a86bc75d35adefbebcec7c3a743d02c06230 ]
+[ Upstream commit 08a1af326a80b88324acd73877db81ae927b1219 ]
 
-Add the missing linking of NAPIs to netdev queues when enabling
-interrupt vectors in order to support NAPI configuration and
-interfaces requiring get_rx_queue()->napi to be set (like XSk
-busy polling).
+Currently, during locating the CIVD section, the ixgbe driver loops
+over the OROM area and at each iteration reads only OROM-datastruct-size
+amount of data. This results in many small reads and is inefficient.
 
-As currently, idpf_vport_{start,stop}() is called from several flows
-with inconsistent RTNL locking, we need to synchronize them to avoid
-runtime assertions. Notably:
+Optimize this by reading the entire OROM bank into memory once before
+entering the loop. This significantly reduces the probing time.
 
-* idpf_{open,stop}() -- regular NDOs, RTNL is always taken;
-* idpf_initiate_soft_reset() -- usually called under RTNL;
-* idpf_init_task -- called from the init work, needs RTNL;
-* idpf_vport_dealloc -- called without RTNL taken, needs it.
+Without this patch probing time may exceed over 25s, whereas with this
+patch applied average time of probe is not greater than 5s.
 
-Expand common idpf_vport_{start,stop}() to take an additional bool
-telling whether we need to manually take the RTNL lock.
+without the patch:
+[14:12:22] ixgbe: Copyright (c) 1999-2016 Intel Corporation.
+[14:12:25] ixgbe 0000:21:00.0: Multiqueue Enabled: Rx Queue count = 63, Tx Queue count = 63 XDP Queue count = 0
+[14:12:25] ixgbe 0000:21:00.0: 63.012 Gb/s available PCIe bandwidth (16.0 GT/s PCIe x4 link)
+[14:12:26] ixgbe 0000:21:00.0: MAC: 7, PHY: 27, PBA No: N55484-001
+[14:12:26] ixgbe 0000:21:00.0: 20:3a:43:09:3a:12
+[14:12:26] ixgbe 0000:21:00.0: Intel(R) 10 Gigabit Network Connection
+[14:12:50] ixgbe 0000:21:00.0 ens2f0np0: renamed from eth0
 
-Suggested-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com> # helper
-Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
-Tested-by: Ramu R <ramu.r@intel.com>
+with the patch:
+[14:18:18] ixgbe: Copyright (c) 1999-2016 Intel Corporation.
+[14:18:19] ixgbe 0000:21:00.0: Multiqueue Enabled: Rx Queue count = 63, Tx Queue count = 63 XDP Queue count = 0
+[14:18:19] ixgbe 0000:21:00.0: 63.012 Gb/s available PCIe bandwidth (16.0 GT/s PCIe x4 link)
+[14:18:19] ixgbe 0000:21:00.0: MAC: 7, PHY: 27, PBA No: N55484-001
+[14:18:19] ixgbe 0000:21:00.0: 20:3a:43:09:3a:12
+[14:18:19] ixgbe 0000:21:00.0: Intel(R) 10 Gigabit Network Connection
+[14:18:22] ixgbe 0000:21:00.0 ens2f0np0: renamed from eth0
+
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
+Reviewed-by: Simon Horman <horms@kernel.org>
+Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Tested-by: Rinitha S <sx.rinitha@intel.com> (A Contingent worker at Intel)
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
@@ -137,280 +154,179 @@ LLM Generated explanations, may be completely bogus:
 
 YES
 
-Why this is a bug-fix
-- The driver was missing the association between netdev queues and their
-  NAPI instances. This breaks NAPI-aware configuration and features that
-  require queue->napi to be set, e.g., AF_XDP busy polling. The patch
-  adds the missing linkage and corresponding unlinkage, which is clearly
-  a functional fix rather than a feature.
+Reasoning and impact
+- User-visible bug: The old implementation read only a small struct per
+  512-byte step across the whole OROM, causing thousands of NVM
+  transactions during probe. The commit reduces probe time dramatically
+  (25s → ~5s), which is a real user-facing issue (long boot delays,
+  timeouts). This is a performance bug fix, not a feature.
+- Scope: The change is contained to the E610 flash/OROM probing path and
+  limited to a single function in one file. No ABI, IO paths, or
+  critical runtime datapaths are modified.
 
-What changed
-- Link/unlink netdev queues to the NAPI of each q_vector:
-  - Adds `idpf_q_vector_set_napi()` and uses it to associate both RX and
-    TX queues with the q_vector’s `napi`:
-    - Link on IRQ request:
-      drivers/net/ethernet/intel/idpf/idpf_txrx.c:4043
-    - Unlink on IRQ free:
-      drivers/net/ethernet/intel/idpf/idpf_txrx.c:3852
-  - Helper implementation:
-    drivers/net/ethernet/intel/idpf/idpf_txrx.c:3818
+What changed in code
+- Batch read OROM once:
+  - Allocates a buffer of the OROM bank size (`orom_size =
+    hw->flash.banks.orom_size`) and reads it in a single flat-NVM pass,
+    then scans in memory instead of doing many small reads:
+    drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:3010,
+    drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:3015,
+    drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:3020.
+  - The read goes through `ixgbe_read_flash_module()` which holds the
+    NVM resource once and uses `ixgbe_read_flat_nvm()` that already
+    chunks reads to 4KB sectors, so this is supported and efficient:
+    drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:2788,
+    drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:3533.
+- Search logic preserved, just done in-memory:
+  - Scans 512-byte aligned offsets looking for “$CIV”, verifies a simple
+    modulo-256 checksum over the CIVD struct, then copies the struct
+    out: drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:3032,
+    drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:3039,
+    drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:3042.
+  - The struct layout and size are defined here and verified with a
+    `BUILD_BUG_ON` against 512 bytes:
+    drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h:929,
+    drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:3036.
+- Error semantics clarified and unchanged in behavior for callers:
+  - Now explicitly returns -ENOMEM (allocation), -EIO (flash read),
+    -EDOM (checksum), -ENODATA (not found), 0 on success; matching the
+    documented behavior and typical expectations of
+    `ixgbe_get_orom_ver_info()` which simply returns on error:
+    drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:2992,
+    drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:3134.
+- The OROM size and offsets are sourced from Shadow RAM in 4KB units,
+  already discovered via `ixgbe_determine_active_flash_banks()`:
+  drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:2687,
+  drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:2602.
 
-- Ensure correct locking for netif_queue_set_napi:
-  - `netif_queue_set_napi()` asserts RTNL or invisibility
-    (net/core/dev.c:7167), so the patch adds an `rtnl` parameter to the
-    vport bring-up/tear-down paths and acquires RTNL where it previously
-    wasn’t guaranteed:
-    - `idpf_vport_open(struct idpf_vport *vport, bool rtnl)` acquires
-      RTNL when `rtnl=true`
-      (drivers/net/ethernet/intel/idpf/idpf_lib.c:1397–1400), and
-      releases on both success and error paths (1528–1531).
-    - `idpf_vport_stop(struct idpf_vport *vport, bool rtnl)` does the
-      same for teardown (900–927).
-  - Callers updated according to their RTNL context, avoiding double-
-    lock or missing-lock situations:
-    - NDO stop: passes `false` (called under RTNL):
-      drivers/net/ethernet/intel/idpf/idpf_lib.c:951
-    - NDO open: passes `false` (called under RTNL):
-      drivers/net/ethernet/intel/idpf/idpf_lib.c:2275
-    - init work (not under RTNL): `idpf_init_task()` passes `true`:
-      drivers/net/ethernet/intel/idpf/idpf_lib.c:1607
-    - vport dealloc (not under RTNL): passes `true`:
-      drivers/net/ethernet/intel/idpf/idpf_lib.c:1044
-    - soft reset (usually under RTNL via ndo contexts): passes `false`:
-      drivers/net/ethernet/intel/idpf/idpf_lib.c:1997 and reopen at
-      2027, 2037
+Risk assessment
+- Memory allocation: `kzalloc(orom_size, GFP_KERNEL)` allocates the OROM
+  bank (typically small/hundreds of KB). It’s probe-time, immediately
+  freed, and far less likely to fail under fragmentation. Even if
+  -ENOMEM happens, failure behavior mirrors other probe-time allocations
+  and cleanly propagates (and the previous code would then spend tens of
+  seconds doing many I/Os).
+- Locking/IO semantics: `ixgbe_read_flat_nvm()` already chunks to 4KB
+  and is designed for larger flat reads. Holding the NVM resource once
+  is safer and faster than many acquire/release cycles.
+- Callers: The function feeds OROM version parsing
+  (`ixgbe_get_orom_ver_info`) used during `ixgbe_get_flash_data` at
+  probe; reducing time here improves user-visible driver bring-up time
+  without changing logic:
+  drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c:3345,
+  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c:11666.
 
-- Order of operations remains sane:
-  - Add NAPI and map vectors, then request IRQs, then link queues to
-    NAPI, then enable NAPI/IRQs
-    (drivers/net/ethernet/intel/idpf/idpf_txrx.c:4598–4607, 4043,
-    4619–4621).
-  - On teardown disable interrupts/NAPI, delete NAPI, unlink queues,
-    free IRQs (drivers/net/ethernet/intel/idpf/idpf_txrx.c:4119–4125,
-    3852).
-
-Impact and risk
-- User-visible bug fixed: AF_XDP busy-polling and other NAPI-aware paths
-  can now retrieve the correct NAPI via get_rx_queue()->napi.
-- Change is tightly scoped to the idpf driver; no UAPI or architectural
-  changes.
-- Locking adjustments are minimal and consistent with net core
-  expectations for `netif_queue_set_napi()`.
-- Similar pattern exists in other drivers (e.g., ice, igb, igc) that use
-  `netif_queue_set_napi`, which supports the approach’s correctness.
-- Note: In the rare request_irq failure unwind, the code frees any
-  requested IRQs but doesn’t explicitly clear queue->napi for
-  previously-linked vectors; however, `napi_del()` runs and the
-  q_vector/napi storage remains valid, and normal teardown does clear
-  associations. This is a minor edge and does not outweigh the benefit
-  of the fix.
-
-Stable backport suitability
-- Meets stable criteria: fixes a real functional bug, small and self-
-  contained, limited to a single driver, low regression risk, and
-  conforms to net core locking rules.
-- Dependency: requires `netif_queue_set_napi()` (present in this branch,
-  net/core/dev.c:7159). For older stable series lacking this API, a
-  backport would need equivalent infrastructure or adaptation.
+Why it fits stable
+- Fixes a significant user-impacting performance issue (probe delay
+  ~25s).
+- Minimal, localized code change without architectural impact.
+- Maintains existing behavior and error handling expectations for
+  callers.
+- Limited to E610 hardware path; low regression surface.
 
 Conclusion
-- This is a clear, necessary bug fix enabling expected NAPI-aware
-  behavior in idpf. It is safe and appropriate to backport.
+- This is a well-scoped, low-risk performance bug fix that materially
+  improves user experience during probe. It should be backported to
+  stable.
 
- drivers/net/ethernet/intel/idpf/idpf_lib.c  | 38 +++++++++++++++------
- drivers/net/ethernet/intel/idpf/idpf_txrx.c | 17 +++++++++
- 2 files changed, 45 insertions(+), 10 deletions(-)
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 59 +++++++++++++------
+ 1 file changed, 40 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-index e327950c93d8e..f4b89d222610f 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-@@ -884,14 +884,18 @@ static void idpf_remove_features(struct idpf_vport *vport)
- /**
-  * idpf_vport_stop - Disable a vport
-  * @vport: vport to disable
-+ * @rtnl: whether to take RTNL lock
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+index bfeef5b0b99d8..e5f0399657097 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+@@ -3008,50 +3008,71 @@ static int ixgbe_get_nvm_srev(struct ixgbe_hw *hw,
+  * Searches through the Option ROM flash contents to locate the CIVD data for
+  * the image.
+  *
+- * Return: the exit code of the operation.
++ * Return: -ENOMEM when cannot allocate memory, -EDOM for checksum violation,
++ *	   -ENODATA when cannot find proper data, -EIO for faulty read or
++ *	   0 on success.
++ *
++ *	   On success @civd stores collected data.
   */
--static void idpf_vport_stop(struct idpf_vport *vport)
-+static void idpf_vport_stop(struct idpf_vport *vport, bool rtnl)
+ static int
+ ixgbe_get_orom_civd_data(struct ixgbe_hw *hw, enum ixgbe_bank_select bank,
+ 			 struct ixgbe_orom_civd_info *civd)
  {
- 	struct idpf_netdev_priv *np = netdev_priv(vport->netdev);
+-	struct ixgbe_orom_civd_info tmp;
++	u32 orom_size = hw->flash.banks.orom_size;
++	u8 *orom_data;
+ 	u32 offset;
+ 	int err;
  
- 	if (np->state <= __IDPF_VPORT_DOWN)
- 		return;
- 
-+	if (rtnl)
-+		rtnl_lock();
++	orom_data = kzalloc(orom_size, GFP_KERNEL);
++	if (!orom_data)
++		return -ENOMEM;
 +
- 	netif_carrier_off(vport->netdev);
- 	netif_tx_disable(vport->netdev);
- 
-@@ -913,6 +917,9 @@ static void idpf_vport_stop(struct idpf_vport *vport)
- 	idpf_vport_queues_rel(vport);
- 	idpf_vport_intr_rel(vport);
- 	np->state = __IDPF_VPORT_DOWN;
++	err = ixgbe_read_flash_module(hw, bank,
++				      IXGBE_E610_SR_1ST_OROM_BANK_PTR, 0,
++				      orom_data, orom_size);
++	if (err) {
++		err = -EIO;
++		goto cleanup;
++	}
 +
-+	if (rtnl)
-+		rtnl_unlock();
+ 	/* The CIVD section is located in the Option ROM aligned to 512 bytes.
+ 	 * The first 4 bytes must contain the ASCII characters "$CIV".
+ 	 * A simple modulo 256 sum of all of the bytes of the structure must
+ 	 * equal 0.
+ 	 */
+-	for (offset = 0; (offset + SZ_512) <= hw->flash.banks.orom_size;
+-	     offset += SZ_512) {
++	for (offset = 0; offset + SZ_512 <= orom_size; offset += SZ_512) {
++		struct ixgbe_orom_civd_info *tmp;
+ 		u8 sum = 0;
+ 		u32 i;
+ 
+-		err = ixgbe_read_flash_module(hw, bank,
+-					      IXGBE_E610_SR_1ST_OROM_BANK_PTR,
+-					      offset,
+-					      (u8 *)&tmp, sizeof(tmp));
+-		if (err)
+-			return err;
++		BUILD_BUG_ON(sizeof(*tmp) > SZ_512);
++
++		tmp = (struct ixgbe_orom_civd_info *)&orom_data[offset];
+ 
+ 		/* Skip forward until we find a matching signature */
+-		if (memcmp(IXGBE_OROM_CIV_SIGNATURE, tmp.signature,
+-			   sizeof(tmp.signature)))
++		if (memcmp(IXGBE_OROM_CIV_SIGNATURE, tmp->signature,
++			   sizeof(tmp->signature)))
+ 			continue;
+ 
+ 		/* Verify that the simple checksum is zero */
+-		for (i = 0; i < sizeof(tmp); i++)
+-			sum += ((u8 *)&tmp)[i];
++		for (i = 0; i < sizeof(*tmp); i++)
++			sum += ((u8 *)tmp)[i];
++
++		if (sum) {
++			err = -EDOM;
++			goto cleanup;
++		}
+ 
+-		if (sum)
+-			return -EDOM;
++		*civd = *tmp;
++		err = 0;
+ 
+-		*civd = tmp;
+-		return 0;
++		goto cleanup;
+ 	}
+ 
+-	return -ENODATA;
++	err = -ENODATA;
++cleanup:
++	kfree(orom_data);
++	return err;
  }
  
  /**
-@@ -936,7 +943,7 @@ static int idpf_stop(struct net_device *netdev)
- 	idpf_vport_ctrl_lock(netdev);
- 	vport = idpf_netdev_to_vport(netdev);
- 
--	idpf_vport_stop(vport);
-+	idpf_vport_stop(vport, false);
- 
- 	idpf_vport_ctrl_unlock(netdev);
- 
-@@ -1029,7 +1036,7 @@ static void idpf_vport_dealloc(struct idpf_vport *vport)
- 	idpf_idc_deinit_vport_aux_device(vport->vdev_info);
- 
- 	idpf_deinit_mac_addr(vport);
--	idpf_vport_stop(vport);
-+	idpf_vport_stop(vport, true);
- 
- 	if (!test_bit(IDPF_HR_RESET_IN_PROG, adapter->flags))
- 		idpf_decfg_netdev(vport);
-@@ -1370,8 +1377,9 @@ static void idpf_rx_init_buf_tail(struct idpf_vport *vport)
- /**
-  * idpf_vport_open - Bring up a vport
-  * @vport: vport to bring up
-+ * @rtnl: whether to take RTNL lock
-  */
--static int idpf_vport_open(struct idpf_vport *vport)
-+static int idpf_vport_open(struct idpf_vport *vport, bool rtnl)
- {
- 	struct idpf_netdev_priv *np = netdev_priv(vport->netdev);
- 	struct idpf_adapter *adapter = vport->adapter;
-@@ -1381,6 +1389,9 @@ static int idpf_vport_open(struct idpf_vport *vport)
- 	if (np->state != __IDPF_VPORT_DOWN)
- 		return -EBUSY;
- 
-+	if (rtnl)
-+		rtnl_lock();
-+
- 	/* we do not allow interface up just yet */
- 	netif_carrier_off(vport->netdev);
- 
-@@ -1388,7 +1399,7 @@ static int idpf_vport_open(struct idpf_vport *vport)
- 	if (err) {
- 		dev_err(&adapter->pdev->dev, "Failed to allocate interrupts for vport %u: %d\n",
- 			vport->vport_id, err);
--		return err;
-+		goto err_rtnl_unlock;
- 	}
- 
- 	err = idpf_vport_queues_alloc(vport);
-@@ -1475,6 +1486,9 @@ static int idpf_vport_open(struct idpf_vport *vport)
- 		goto deinit_rss;
- 	}
- 
-+	if (rtnl)
-+		rtnl_unlock();
-+
- 	return 0;
- 
- deinit_rss:
-@@ -1492,6 +1506,10 @@ static int idpf_vport_open(struct idpf_vport *vport)
- intr_rel:
- 	idpf_vport_intr_rel(vport);
- 
-+err_rtnl_unlock:
-+	if (rtnl)
-+		rtnl_unlock();
-+
- 	return err;
- }
- 
-@@ -1572,7 +1590,7 @@ void idpf_init_task(struct work_struct *work)
- 	np = netdev_priv(vport->netdev);
- 	np->state = __IDPF_VPORT_DOWN;
- 	if (test_and_clear_bit(IDPF_VPORT_UP_REQUESTED, vport_config->flags))
--		idpf_vport_open(vport);
-+		idpf_vport_open(vport, true);
- 
- 	/* Spawn and return 'idpf_init_task' work queue until all the
- 	 * default vports are created
-@@ -1962,7 +1980,7 @@ int idpf_initiate_soft_reset(struct idpf_vport *vport,
- 		idpf_send_delete_queues_msg(vport);
- 	} else {
- 		set_bit(IDPF_VPORT_DEL_QUEUES, vport->flags);
--		idpf_vport_stop(vport);
-+		idpf_vport_stop(vport, false);
- 	}
- 
- 	idpf_deinit_rss(vport);
-@@ -1992,7 +2010,7 @@ int idpf_initiate_soft_reset(struct idpf_vport *vport,
- 		goto err_open;
- 
- 	if (current_state == __IDPF_VPORT_UP)
--		err = idpf_vport_open(vport);
-+		err = idpf_vport_open(vport, false);
- 
- 	goto free_vport;
- 
-@@ -2002,7 +2020,7 @@ int idpf_initiate_soft_reset(struct idpf_vport *vport,
- 
- err_open:
- 	if (current_state == __IDPF_VPORT_UP)
--		idpf_vport_open(vport);
-+		idpf_vport_open(vport, false);
- 
- free_vport:
- 	kfree(new_vport);
-@@ -2240,7 +2258,7 @@ static int idpf_open(struct net_device *netdev)
- 	if (err)
- 		goto unlock;
- 
--	err = idpf_vport_open(vport);
-+	err = idpf_vport_open(vport, false);
- 
- unlock:
- 	idpf_vport_ctrl_unlock(netdev);
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-index e75a94d7ac2ac..92634c4bb369a 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-@@ -3430,6 +3430,20 @@ void idpf_vport_intr_rel(struct idpf_vport *vport)
- 	vport->q_vectors = NULL;
- }
- 
-+static void idpf_q_vector_set_napi(struct idpf_q_vector *q_vector, bool link)
-+{
-+	struct napi_struct *napi = link ? &q_vector->napi : NULL;
-+	struct net_device *dev = q_vector->vport->netdev;
-+
-+	for (u32 i = 0; i < q_vector->num_rxq; i++)
-+		netif_queue_set_napi(dev, q_vector->rx[i]->idx,
-+				     NETDEV_QUEUE_TYPE_RX, napi);
-+
-+	for (u32 i = 0; i < q_vector->num_txq; i++)
-+		netif_queue_set_napi(dev, q_vector->tx[i]->idx,
-+				     NETDEV_QUEUE_TYPE_TX, napi);
-+}
-+
- /**
-  * idpf_vport_intr_rel_irq - Free the IRQ association with the OS
-  * @vport: main vport structure
-@@ -3450,6 +3464,7 @@ static void idpf_vport_intr_rel_irq(struct idpf_vport *vport)
- 		vidx = vport->q_vector_idxs[vector];
- 		irq_num = adapter->msix_entries[vidx].vector;
- 
-+		idpf_q_vector_set_napi(q_vector, false);
- 		kfree(free_irq(irq_num, q_vector));
- 	}
- }
-@@ -3637,6 +3652,8 @@ static int idpf_vport_intr_req_irq(struct idpf_vport *vport)
- 				   "Request_irq failed, error: %d\n", err);
- 			goto free_q_irqs;
- 		}
-+
-+		idpf_q_vector_set_napi(q_vector, true);
- 	}
- 
- 	return 0;
 -- 
 2.51.0
 
