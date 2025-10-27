@@ -1,97 +1,130 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3ECDDC0F3D7
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Oct 2025 17:23:39 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C92AAC0FD15
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Oct 2025 19:00:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AEB55610B5;
-	Mon, 27 Oct 2025 16:23:37 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 59FB1612DB;
+	Mon, 27 Oct 2025 18:00:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id hnIaXVskTIHi; Mon, 27 Oct 2025 16:23:37 +0000 (UTC)
+ id ndikYtZIStrx; Mon, 27 Oct 2025 18:00:28 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1E936610F4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B1628612F5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1761582217;
-	bh=X90TYSBE7AGRsWY+m1U/phu+RA92bszzd6/whTypGMM=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1761588028;
+	bh=TOV2usxAVtrzpjNrsCDY6+oTbSzm7HQ0OagyrYKBhwU=;
+	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=qCFKF2azBZClcg7MWilLl/R3nupb32bnETkkEFwXzOtfw3wz8GiKx+82MmILZ0101
-	 8GNpvSqkC/nlk172c2vDP10r3tvOi/FeFlphxJu1Q5qAQSlcFmRtCW39fb5k5MwrAh
-	 k3b3Gvox1Yw5rgWQR7yR+wAPBS1ve62qeAEB3xzrn0TbYZ3jSZBy2MxfyCE54DpSlG
-	 K6Cw+fuWqTw/G/OyCAhDL9F+zlhQE9Q35yR7/ujLqvyqJz1pltEX8/ClWG6aWsajM2
-	 zIt2WBK1nvNHBLpemZtjkzJPck8cHB6M3pKP80iNNv5WdPjueDrGB17d729PfZPpuR
-	 ffN4Yeuvt429A==
+	b=e/j16a1O4RjZqymUU6gyZ0jLD0m1+sZ7nSLRBCdnySxlMxHabUAAVc1JmXLQ7DFxu
+	 Y3E6oDdpPdRMe//l2t6i2dfk/uDVfyXwRKeqiI9yUBpqNrRx1b2P9eD+Z9JpyOuI9i
+	 E4La2d6jSqBN4M/j7/Op8UXlcZhiP3aIID7FS0KuhQ1fll7LC6ia/pgI3i3a5MOj6i
+	 prjfN3GOTq0D6QCfiYb4PA3esakMCnHNlyse6giteBDaat+nOrU2MQy97c6Affl/IT
+	 YFuK1DDozDNU/i45ZxzHTnP96uWQIvykC+xXfP1oJPELx9NNQz4VNWj+RSRjOcD1A3
+	 HIwgfb1XAJiFw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1E936610F4;
-	Mon, 27 Oct 2025 16:23:37 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B1628612F5;
+	Mon, 27 Oct 2025 18:00:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 8694F939
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Oct 2025 16:23:35 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id CFC71939
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Oct 2025 15:54:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6CD5283E47
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Oct 2025 16:23:35 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id C1AA4610E9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Oct 2025 15:54:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id iUJtstGfTLPx for <intel-wired-lan@lists.osuosl.org>;
- Mon, 27 Oct 2025 16:23:34 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id x3JpDV17KFN6 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 Oct 2025 15:54:28 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 9FFBC83D4F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9FFBC83D4F
-Received: from tor.source.kernel.org (tor.source.kernel.org
- [IPv6:2600:3c04:e001:324:0:1991:8:25])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 9FFBC83D4F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Oct 2025 16:23:34 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 00405604DD;
- Mon, 27 Oct 2025 16:23:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4BF85C4CEF1;
- Mon, 27 Oct 2025 16:23:30 +0000 (UTC)
-Date: Mon, 27 Oct 2025 16:23:28 +0000
-From: Simon Horman <horms@kernel.org>
-To: Alexander Lobakin <aleksander.lobakin@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- nxne.cnse.osdt.itp.upstreaming@intel.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Message-ID: <aP-cgMiJ-y_PX7Xa@horms.kernel.org>
-References: <20251006162053.3550824-1-aleksander.lobakin@intel.com>
+ client-ip=2607:f8b0:4864:20::629; helo=mail-pl1-x629.google.com;
+ envelope-from=samitolvanen@google.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1A5C0610C3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1A5C0610C3
+Received: from mail-pl1-x629.google.com (mail-pl1-x629.google.com
+ [IPv6:2607:f8b0:4864:20::629])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1A5C0610C3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Oct 2025 15:54:27 +0000 (UTC)
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-27eeafd4882so427855ad.0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Oct 2025 08:54:27 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1761580467; x=1762185267;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=TOV2usxAVtrzpjNrsCDY6+oTbSzm7HQ0OagyrYKBhwU=;
+ b=BOnXKOE5OrOw6HsRNnK+PF9mVth6ox5xQflcNzpuVLwYSw/aVVIZXUg4x9SJ8xgqLA
+ fqrHWZdkjGorPmkknpW1oVKRqCMONTVnW6Sfr5gZAQaDCemDwUio5biFY9U/0v6o993T
+ Sf9LLIeNR2KqbTAOk1qORL6u/0veH2aWZMaKNH0qk6g+GOSahX8n7pvFJIjaFez7oE3b
+ MbDtoPNmktxg8GXFXc7ahhe7AQ5uc+Y5TXnMJCdDs45pyZojwZUcCGOvGBVpW1nvUY7V
+ iHAiCBVATTpgVOSnOXOTdoSzIqizIrKi0izNCL4ml3XxbxdZMZgvwlD27kQevU1lrP58
+ FRXQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWICHY7QaIUS+IpkwVGCof6GBlq7U23Qr8HIq5GqG2CNZNEMxgsec+bMXlcOBwkdHZjBTmZOxhO/r7lOe1JrBk=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yx0T/qFhIYhLtphIAveWNsQ61Eenv+g8l+kvhOepvpvc+nAEF0f
+ 1W0GBxXyGwJAl14oWOyCSvNcvVBevtSsq0zodMvgib44F41rNpPfmuisBc6/hzPGGEUYgdrzZeN
+ NIUEmHgHMFEccjzxMVoWU/t9zV/rZvuWRnYYBMz/V
+X-Gm-Gg: ASbGnctLQ2ApcbqRpgbyYbQAg9Nk+0CMCJn6v6lUBUIZjZScrmLhAia0a7cdIGM9SgC
+ 5lU0lHCePLtOb4t9eCTyoHJhH4RwP5w3NJtuQn8KZY0wCt9n/SGAc5Ky+arhRVJ/RetDukpKsn7
+ evOYq9GIDmqnesTE/RGiL+8e4EzgSyGjPm2vCGlkQLH8sCr4XXdSaJ6uonbNKp/sfCIkTkf4G65
+ t9nohsc+Lrvds+QrY5EOUYqV4w82MzxgHBynWyqsrbzhpRVmYoJDDVgg/1wI7o4R6pj
+X-Google-Smtp-Source: AGHT+IGd2VC+1ri7Tm8Icu43HfhHP31Eha9krNlCyWKJpXSqm52Nv3U4r4IDiw+4iGHBWYRgukstDdR1FrBi6TFHiUE=
+X-Received: by 2002:a17:902:c40c:b0:25b:d970:fe45 with SMTP id
+ d9443c01a7336-294ca876b46mr835215ad.1.1761580466893; Mon, 27 Oct 2025
+ 08:54:26 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20251006162053.3550824-1-aleksander.lobakin@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1761582212;
- bh=QFbmOufzCSKxHmY0QccnxuCe5JH8xj8PfL6ljCe973Y=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Bg/wY72mo8btLtpDPdTklIw4ZjgyWtIXqEVuIdpNTnxM+wEilrk3HthuXJkQiCKF8
- KgT+GWJ6/wxGh1ouPSxTJY9s17bKffYSux/OM7mQu0s1AiXLHwy2DtZiD2a4j1djak
- 1YnIVHgGQB+AP+nyOC2wqdviBd4ZWRZJfCWQPZqwgqS48YaC6xbWl8ilFwUB7kpQni
- qmn+TlmrIaF7umK2/K3H0FBe6C+5a11TpQdDCYQwgpfY2QgbBTqOaluTcNkYYW/Ey5
- m8f4/egrxbUo0/Ta/msccPRkev/U/3FoJYLZB0cQHRxrf4xN4/xmWYyI6CDetLSPg6
- oR+IzG5minzyQ==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+References: <20251025-idpf-fix-arm-kcfi-build-error-v1-0-ec57221153ae@kernel.org>
+ <20251025-idpf-fix-arm-kcfi-build-error-v1-2-ec57221153ae@kernel.org>
+In-Reply-To: <20251025-idpf-fix-arm-kcfi-build-error-v1-2-ec57221153ae@kernel.org>
+From: Sami Tolvanen <samitolvanen@google.com>
+Date: Mon, 27 Oct 2025 08:53:49 -0700
+X-Gm-Features: AWmQ_bkZ-boZ1PO-DZE1ghKe_XcmKdU5EzkIpPpXzyaf8mX9qkr6Gzs7ALPdxQ0
+Message-ID: <CABCJKuesdSH2xhm_NZOjxHWpt5M866EL_RUBdQNZ54ov7ObH-Q@mail.gmail.com>
+To: Nathan Chancellor <nathan@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>
+Cc: Kees Cook <kees@kernel.org>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Simon Horman <horms@kernel.org>, 
+ Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
+ Bill Wendling <morbo@google.com>, 
+ Justin Stitt <justinstitt@google.com>, Russell King <linux@armlinux.org.uk>, 
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Michal Kubiak <michal.kubiak@intel.com>, 
+ linux-kernel@vger.kernel.org, llvm@lists.linux.dev, 
+ linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org, 
+ intel-wired-lan@lists.osuosl.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Mailman-Approved-At: Mon, 27 Oct 2025 18:00:26 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1761580467; x=1762185267; darn=lists.osuosl.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=TOV2usxAVtrzpjNrsCDY6+oTbSzm7HQ0OagyrYKBhwU=;
+ b=XcQMvhsCCl6Zq8ySQivxv0UwgVYLXpjb4sfvribkYoHpB/MHmmKev+NIjXVFvqOK+L
+ UYXbjK3JzXN7ZpH9B0r5W4lthg+HGWsylnWpd0SBrHvcMn/gdua6QEOlT3zHBE2HFnAk
+ +v2dG+am6uD5xl98e7P8anT5WFfGYn2vj/I2VyWjj7bgnQUNl5w5/0vy+BIzOLAf5VLS
+ MWJwY9J3iLnpg+Xwrz9syVvEFx1DcSz/wZHiJipdRSgXUZ09IEIWg4PCeSlKfTeVUpfu
+ E8jZwPF/48n/SifjRXp4ZypMvdP5/sq6PTX9x7qBspI/SrsHyUU3PaKx/64d6zhcKW8p
+ V24Q==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=google.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=Bg/wY72m
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: implement configurable
- header split for regular Rx
+ unprotected) header.d=google.com header.i=@google.com header.a=rsa-sha256
+ header.s=20230601 header.b=XcQMvhsC
+Subject: Re: [Intel-wired-lan] [PATCH 2/3] ARM: Select
+ ARCH_USES_CFI_GENERIC_LLVM_PASS
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -107,120 +140,37 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Oct 06, 2025 at 06:20:53PM +0200, Alexander Lobakin wrote:
-> Add second page_pool for header buffers to each Rx queue and ability
-> to toggle the header split on/off using Ethtool (default to off to
-> match the current behaviour).
-> Unlike idpf, all HW backed up by ice doesn't require any W/As and
-> correctly splits all types of packets as configured: after L4 headers
-> for TCP/UDP/SCTP, after L3 headers for other IPv4/IPv6 frames, after
-> the Ethernet header otherwise (in case of tunneling, same as above,
-> but after innermost headers).
-> This doesn't affect the XSk path as there are no benefits of having
-> it there.
-> 
-> Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+Hi Nathan,
+
+On Sat, Oct 25, 2025 at 1:53=E2=80=AFPM Nathan Chancellor <nathan@kernel.or=
+g> wrote:
+>
+> Prior to clang 22.0.0 [1], ARM did not have an architecture specific
+> kCFI bundle lowering in the backend, which may cause issues. Select
+> CONFIG_ARCH_USES_CFI_GENERIC_LLVM_PASS to enable use of __nocfi_generic.
+>
+> Link: https://github.com/llvm/llvm-project/commit/d130f402642fba3d065aacb=
+506cb061c899558de [1]
+> Link: https://github.com/ClangBuiltLinux/linux/issues/2124
+> Signed-off-by: Nathan Chancellor <nathan@kernel.org>
 > ---
-> Applies on top of Tony's next-queue, depends on Michał's Page Pool
-> conversion series.
-> 
-> Sending for review and validation purposes.
-> 
-> Testing hints: traffic testing with and without header split enabled.
-> The header split can be turned on/off using Ethtool:
-> 
-> sudo ethtool -G <iface> tcp-data-split on (or off)
+>  arch/arm/Kconfig | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
+> index 2e3f93b690f4..4fb985b76e97 100644
+> --- a/arch/arm/Kconfig
+> +++ b/arch/arm/Kconfig
+> @@ -44,6 +44,8 @@ config ARM
+>         select ARCH_USE_BUILTIN_BSWAP
+>         select ARCH_USE_CMPXCHG_LOCKREF
+>         select ARCH_USE_MEMTEST
+> +       # https://github.com/llvm/llvm-project/commit/d130f402642fba3d065=
+aacb506cb061c899558de
+> +       select ARCH_USES_CFI_GENERIC_LLVM_PASS if CLANG_VERSION < 220000
 
-Nice, I'm very pleased to see this feature in the pipeline for the ice driver.
+Instead of working around issues with the generic pass, would it make
+more sense to just disable arm32 CFI with older Clang versions
+entirely? Linus, any thoughts?
 
-...
-
-> diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-
-...
-
-> @@ -836,6 +858,20 @@ bool ice_alloc_rx_bufs(struct ice_rx_ring *rx_ring, unsigned int cleaned_count)
->  		 */
->  		rx_desc->read.pkt_addr = cpu_to_le64(addr);
->  
-> +		if (!hdr_fq.pp)
-> +			goto next;
-> +
-> +		addr = libeth_rx_alloc(&hdr_fq, ntu);
-> +		if (addr == DMA_MAPPING_ERROR) {
-> +			rx_ring->ring_stats->rx_stats.alloc_page_failed++;
-> +
-> +			libeth_rx_recycle_slow(fq.fqes[ntu].netmem);
-> +			break;
-> +		}
-> +
-> +		rx_desc->read.hdr_addr = cpu_to_le64(addr);
-> +
-> +next:
-
-Is performance the reason that a goto is used here, rather than, say, putting
-the conditional code in an if condition? Likewise in ice_clean_rx_irq?
-
->  		rx_desc++;
->  		ntu++;
->  		if (unlikely(ntu == rx_ring->count)) {
-> @@ -933,14 +969,16 @@ static int ice_clean_rx_irq(struct ice_rx_ring *rx_ring, int budget)
->  		unsigned int size;
->  		u16 stat_err_bits;
->  		u16 vlan_tci;
-> +		bool rxe;
->  
->  		/* get the Rx desc from Rx ring based on 'next_to_clean' */
->  		rx_desc = ICE_RX_DESC(rx_ring, ntc);
->  
-> -		/* status_error_len will always be zero for unused descriptors
-> -		 * because it's cleared in cleanup, and overlaps with hdr_addr
-> -		 * which is always zero because packet split isn't used, if the
-> -		 * hardware wrote DD then it will be non-zero
-> +		/*
-> +		 * The DD bit will always be zero for unused descriptors
-> +		 * because it's cleared in cleanup or when setting the DMA
-> +		 * address of the header buffer, which never uses the DD bit.
-> +		 * If the hardware wrote the descriptor, it will be non-zero.
->  		 */
-
-The update to this comment feels like it could be a separate patch.
-(I know, I often say something like that...)
-
->  		stat_err_bits = BIT(ICE_RX_FLEX_DESC_STATUS0_DD_S);
->  		if (!ice_test_staterr(rx_desc->wb.status_error0, stat_err_bits))
-> @@ -954,12 +992,27 @@ static int ice_clean_rx_irq(struct ice_rx_ring *rx_ring, int budget)
->  
->  		ice_trace(clean_rx_irq, rx_ring, rx_desc);
->  
-> +		stat_err_bits = BIT(ICE_RX_FLEX_DESC_STATUS0_HBO_S) |
-> +				BIT(ICE_RX_FLEX_DESC_STATUS0_RXE_S);
-> +		rxe = ice_test_staterr(rx_desc->wb.status_error0,
-> +				       stat_err_bits);
-> +
-> +		if (!rx_ring->hdr_pp)
-> +			goto payload;
-> +
-> +		size = le16_get_bits(rx_desc->wb.hdr_len_sph_flex_flags1,
-> +				     ICE_RX_FLEX_DESC_HDR_LEN_M);
-> +		if (unlikely(rxe))
-> +			size = 0;
-> +
-> +		rx_buf = &rx_ring->hdr_fqes[ntc];
-> +		libeth_xdp_process_buff(xdp, rx_buf, size);
-> +		rx_buf->netmem = 0;
-> +
-> +payload:
->  		size = le16_to_cpu(rx_desc->wb.pkt_len) &
->  			ICE_RX_FLX_DESC_PKT_LEN_M;
-> -
-> -		stat_err_bits = BIT(ICE_RX_FLEX_DESC_STATUS0_RXE_S);
-> -		if (unlikely(ice_test_staterr(rx_desc->wb.status_error0,
-> -					      stat_err_bits)))
-> +		if (unlikely(rxe))
->  			size = 0;
->  
->  		/* retrieve a buffer from the ring */
-> -- 
-> 2.51.0
-> 
+Sami
