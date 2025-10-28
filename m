@@ -1,106 +1,93 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E79B1C13B89
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Oct 2025 10:10:38 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 837EDC146F9
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Oct 2025 12:46:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 96434847EE;
-	Tue, 28 Oct 2025 09:10:35 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3F109410A2;
+	Tue, 28 Oct 2025 11:46:01 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id G1teQAIiulwc; Tue, 28 Oct 2025 09:10:35 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 8X_knSZ6lcwR; Tue, 28 Oct 2025 11:46:00 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E81DD847F2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B77FE410FB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1761642635;
-	bh=2i2GDMMp5w3F/8OE8xkIu7XoIlFIq/3Y/XKhw/+jiBg=;
+	s=default; t=1761651960;
+	bh=ffz+xBa46D+c5SWp6Lx1HnJOWzhbEkEh9tNkycnKGpk=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=jFqgnZkrT83Lo7gUuzGmZ8keEUgk6OdIhS6d1TQGYEc7hPApTBz8wNd9QhGDlmcAF
-	 To3CVrCCCcrAzoc2AcvQvgtaxyGJxl9fhWASOD8wBAs6wrX+wsG3Tyms5d5hAxRYDg
-	 5RbprYX9PPPF0jc9/iyq3Mz69qa3O0zvh3Mxz9iUgIIZ/A6iJ5Y2C9ejQwWMu+X1PL
-	 xtyFAVw5e27WSH0T+bVC3zrq68SzVEyY+nYfcWAAbWEOQspEvyC2mU9xno+BwXI592
-	 iEnNw/QZ/15O4Q/Hj6F6eU9pG+PwATnrudXxdgHg/wn+MxyMM8/5JnfjDD8oef7kBY
-	 h4ivLifyQLivg==
+	b=GlgFQyHQ/JGwIfywsMVohyO7y0zsdEZ3akvpXQQWRAFKGaKh4I81fgqoEFNV4j9Ol
+	 Oy44fFlAXr6kXrvRglQk8dmDJhwmWS94gVNAqb4KwEcIDZVd2oU5F07Ngg0aJfW/I5
+	 TBFgWK3SDRKi7M+JCzWXSX+Ntmb11sfIqotiBzH69ggG4OenmW6/KnW1Q1xwZoLMaT
+	 jJPQUJrxYFgrjjyeKHMvvGyKvdRdtGHweTqPPV447G6pc0UODrWhtTKlR32b9hD52z
+	 tI5364zk19l+OrQc5LUkyOJKYurKKx+O2TQRFQJzG82txP9OGAhdp1KPcM+72yyDvY
+	 476nsY9c82tSw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E81DD847F2;
-	Tue, 28 Oct 2025 09:10:34 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B77FE410FB;
+	Tue, 28 Oct 2025 11:46:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id C4ABA43F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 09:10:33 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3CFF443F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 11:45:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B662C847ED
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 09:10:33 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 1BAF46159F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 11:45:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id R_VzFDHHlk5f for <intel-wired-lan@lists.osuosl.org>;
- Tue, 28 Oct 2025 09:10:33 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
- helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org C0482847EB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C0482847EB
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C0482847EB
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 09:10:32 +0000 (UTC)
-X-CSE-ConnectionGUID: K1f/0PPaQI6QK+vKCWW+GA==
-X-CSE-MsgGUID: a5kgkEllQ7uvCt5v7vyxrQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11586"; a="63886574"
-X-IronPort-AV: E=Sophos;i="6.19,261,1754982000"; d="scan'208";a="63886574"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
- by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Oct 2025 02:10:32 -0700
-X-CSE-ConnectionGUID: VZj/1pnaQaCTQUFRJRnfTg==
-X-CSE-MsgGUID: 2VYCyRV4TLCpymx491eKJQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,261,1754982000"; d="scan'208";a="184525905"
-Received: from mev-dev.igk.intel.com ([10.237.112.144])
- by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Oct 2025 02:10:30 -0700
-Date: Tue, 28 Oct 2025 10:08:24 +0100
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
-Cc: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "pmenzel@molgen.mpg.de" <pmenzel@molgen.mpg.de>,
- "Lobakin, Aleksander" <aleksander.lobakin@intel.com>,
- "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
- "Keller, Jacob E" <jacob.e.keller@intel.com>
-Message-ID: <aQCICC7S4JCaImJa@mev-dev.igk.intel.com>
-References: <20251028070634.2124215-1-michal.swiatkowski@linux.intel.com>
- <IA3PR11MB898627B7BCB9ACEEE31A377BE5FDA@IA3PR11MB8986.namprd11.prod.outlook.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Rmcuj5kOZHZf for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 28 Oct 2025 11:45:58 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 663E361593
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 663E361593
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 663E361593
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 11:45:58 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id 94B3D61E2D;
+ Tue, 28 Oct 2025 11:45:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0063C4CEE7;
+ Tue, 28 Oct 2025 11:45:54 +0000 (UTC)
+Date: Tue, 28 Oct 2025 11:45:52 +0000
+From: Simon Horman <horms@kernel.org>
+To: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ anthony.l.nguyen@intel.com, Dan Nowlin <dan.nowlin@intel.com>,
+ Qi Zhang <qi.z.zhang@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Message-ID: <aQCs8CAj5Xz0blT_@horms.kernel.org>
+References: <20251027093736.3582567-1-aleksandr.loktionov@intel.com>
+ <20251027093736.3582567-3-aleksandr.loktionov@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <IA3PR11MB898627B7BCB9ACEEE31A377BE5FDA@IA3PR11MB8986.namprd11.prod.outlook.com>
+In-Reply-To: <20251027093736.3582567-3-aleksandr.loktionov@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1761642633; x=1793178633;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=lbcYMNWtSmGXCpuFko3OMESYsLMpkByTHzCvLQRpQIM=;
- b=FS81puktEboQKHmfN/7clpVNh1gFIKjmXVN9fIiGpYtBNXOXZI0/WG4r
- pvHkzrMVQdeceH2b8vOGSf3ZbHMtTdYE9oLaAf3mSEfI/X+kofcmeInSh
- 9guv2ePasImbYi9fLG6v2AK1eMZQ4cS2Ou//r/S7KJBsQoZ/81G1O8YJm
- V6kIcAvCWS2TpfsEeVPTkDRHtUmwL+WfagZcT/4TLJxecEzrPe5iIsEVN
- dRGI2iwjWuKC75H2MW5NkAQ4l2pvrGISMGraJ5SpuCTUTcc5E7tYjCOkh
- Gi+xZ/ZlABpgkGR2nD/MlQaGnNkQwDljoR+HtPZGB3JnyfeqJWgxVbnwZ
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=FS81pukt
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] ice: use
- netif_get_num_default_rss_queues()
+ d=kernel.org; s=k20201202; t=1761651956;
+ bh=f3X3nfeTiWH/Xuq9DwxayFrAf/Iofm6E+bfZi4+Yh84=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=kHF7eotVV9kG1byr4kGyR1WcoAmd6AAPWejWcaWcg+NM5sjKvp5nMk9Hz6mtAPBtY
+ yJW7H9lMoY6XkSRzNs8XQ4s4RWwBE2d6XZtOdNEq/xhML4LbjIKdUwgx9vCYaB+lW9
+ i+1R5+O8LUH5YBcR7ojjA9GAXL2SwxqPF6AUFmCEQxaHF7+r3UfvcE0z7ilJputdko
+ r6wOBvGJK9r+RU1l36+pbEznp3KZxhHUdQEBHhjG+psvvO4x6q8Vx2E52C1+ozLKma
+ 5Lm5PeeN/toHF95kmigaW4w4irAWn5O1qyjl2Dq8xqIyM7lq/Gy7a1ZKlACwe6y0Zt
+ JiiVTkuW+cFqQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=kHF7eotV
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v7 2/6] ice: add virtchnl
+ definitions and static data for GTP RSS
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -116,115 +103,56 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Oct 28, 2025 at 07:48:11AM +0000, Loktionov, Aleksandr wrote:
+On Mon, Oct 27, 2025 at 10:37:32AM +0100, Aleksandr Loktionov wrote:
+> Add virtchnl protocol header and field definitions for advanced RSS
+> configuration including GTPC, GTPU, L2TPv2, ECPRI, PPP, GRE, and IP
+> fragment headers.
 > 
+> - Define new virtchnl protocol header types
+> - Add RSS field selectors for tunnel protocols
+> - Extend static mapping arrays for protocol field matching
+> - Add L2TPv2 session ID and length+session ID field support
 > 
-> > -----Original Message-----
-> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
-> > Of Michal Swiatkowski
-> > Sent: Tuesday, October 28, 2025 8:07 AM
-> > To: intel-wired-lan@lists.osuosl.org
-> > Cc: netdev@vger.kernel.org; pmenzel@molgen.mpg.de; Lobakin, Aleksander
-> > <aleksander.lobakin@intel.com>; Kitszel, Przemyslaw
-> > <przemyslaw.kitszel@intel.com>; Keller, Jacob E
-> > <jacob.e.keller@intel.com>; Michal Swiatkowski
-> > <michal.swiatkowski@linux.intel.com>
-> > Subject: [Intel-wired-lan] [PATCH iwl-next v2] ice: use
-> > netif_get_num_default_rss_queues()
-> > 
-> > On some high-core systems (like AMD EPYC Bergamo, Intel Clearwater
-> > Forest) loading ice driver with default values can lead to queue/irq
-> > exhaustion. It will result in no additional resources for SR-IOV.
-> > 
-> > In most cases there is no performance reason for more than half
-> > num_cpus(). Limit the default value to it using generic
-> > netif_get_num_default_rss_queues().
-> > 
-> > Still, using ethtool the number of queues can be changed up to
-> > num_online_cpus(). It can be done by calling:
-> > $ethtool -L ethX combined max_cpu
-> > 
-> It could be nice to use $(nproc)?
->  $ ethtool -L ethX combined $(nproc)
+> This provides the foundational definitions needed for VF RSS
+> configuration of tunnel protocols.
+> 
+> Co-developed-by: Dan Nowlin <dan.nowlin@intel.com>
+> Signed-off-by: Dan Nowlin <dan.nowlin@intel.com>
+> Co-developed-by: Jie Wang <jie1x.wang@intel.com>
+> Signed-off-by: Jie Wang <jie1x.wang@intel.com>
+> Co-developed-by: Junfeng Guo <junfeng.guo@intel.com>
+> Signed-off-by: Junfeng Guo <junfeng.guo@intel.com>
+> Co-developed-by: Qi Zhang <qi.z.zhang@intel.com>
+> Signed-off-by: Qi Zhang <qi.z.zhang@intel.com>
+> Co-developed-by: Ting Xu <ting.xu@intel.com>
+> Signed-off-by: Ting Xu <ting.xu@intel.com>
+> Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> ---
+>  drivers/net/ethernet/intel/ice/virt/rss.c | 91 +++++++++++++++++++++++
+>  include/linux/avf/virtchnl.h              | 48 ++++++++++++
+>  2 files changed, 139 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/virt/rss.c b/drivers/net/ethernet/intel/ice/virt/rss.c
+> index cbdbb32..71d7db6 100644
+> --- a/drivers/net/ethernet/intel/ice/virt/rss.c
+> +++ b/drivers/net/ethernet/intel/ice/virt/rss.c
+> @@ -36,6 +36,13 @@ static const struct ice_vc_hdr_match_type ice_vc_hdr_list[] = {
+>  	{VIRTCHNL_PROTO_HDR_ESP,	ICE_FLOW_SEG_HDR_ESP},
+>  	{VIRTCHNL_PROTO_HDR_AH,		ICE_FLOW_SEG_HDR_AH},
+>  	{VIRTCHNL_PROTO_HDR_PFCP,	ICE_FLOW_SEG_HDR_PFCP_SESSION},
+> +	{VIRTCHNL_PROTO_HDR_GTPC,	ICE_FLOW_SEG_HDR_GTPC},
+> +	{VIRTCHNL_PROTO_HDR_L2TPV2,	ICE_FLOW_SEG_HDR_L2TPV2},
+> +	{VIRTCHNL_PROTO_HDR_PPP,	ICE_FLOW_SEG_HDR_PPP},
 
-Will change
+This patch does not compile because, amongst other things,
+ICE_FLOW_SEG_HDR_PPP is not declared (here).
 
-> 
-> > This change affects only the default queue amount.
-> > 
-> > Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> > ---
-> > v1 --> v2:
-> >  * Follow Olek's comment and switch from custom limiting to the
-> > generic
-> >    netif_...() function.
-> >  * Add more info in commit message (Paul)
-> >  * Dropping RB tags, as it is different patch now
-> > ---
-> >  drivers/net/ethernet/intel/ice/ice_irq.c |  5 +++--
-> >  drivers/net/ethernet/intel/ice/ice_lib.c | 12 ++++++++----
-> >  2 files changed, 11 insertions(+), 6 deletions(-)
-> > 
-> > diff --git a/drivers/net/ethernet/intel/ice/ice_irq.c
-> > b/drivers/net/ethernet/intel/ice/ice_irq.c
-> > index 30801fd375f0..1d9b2d646474 100644
-> > --- a/drivers/net/ethernet/intel/ice/ice_irq.c
-> > +++ b/drivers/net/ethernet/intel/ice/ice_irq.c
-> > @@ -106,9 +106,10 @@ static struct ice_irq_entry
-> > *ice_get_irq_res(struct ice_pf *pf,
-> >  #define ICE_RDMA_AEQ_MSIX 1
-> >  static int ice_get_default_msix_amount(struct ice_pf *pf)
-> >  {
-> > -	return ICE_MIN_LAN_OICR_MSIX + num_online_cpus() +
-> > +	return ICE_MIN_LAN_OICR_MSIX +
-> > netif_get_num_default_rss_queues() +
-> >  	       (test_bit(ICE_FLAG_FD_ENA, pf->flags) ? ICE_FDIR_MSIX :
-> > 0) +
-> > -	       (ice_is_rdma_ena(pf) ? num_online_cpus() +
-> > ICE_RDMA_AEQ_MSIX : 0);
-> > +	       (ice_is_rdma_ena(pf) ?
-> > netif_get_num_default_rss_queues() +
-> > +				      ICE_RDMA_AEQ_MSIX : 0);
-> >  }
-> > 
-> >  /**
-> > diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c
-> > b/drivers/net/ethernet/intel/ice/ice_lib.c
-> > index bac481e8140d..e366d089bef9 100644
-> > --- a/drivers/net/ethernet/intel/ice/ice_lib.c
-> > +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-> > @@ -159,12 +159,14 @@ static void ice_vsi_set_num_desc(struct ice_vsi
-> > *vsi)
-> > 
-> >  static u16 ice_get_rxq_count(struct ice_pf *pf)
-> >  {
-> > -	return min(ice_get_avail_rxq_count(pf), num_online_cpus());
-> > +	return min(ice_get_avail_rxq_count(pf),
-> > +		   netif_get_num_default_rss_queues());
-> >  }
-> min(a, b) resolves to the type of the expression, which here will be int due to netif_get_num_default_rss_queues() returning int. 
-> That implicitly truncates to u16 on return.
-> What do you think about to make this explicit with min_t() to avoid type surprises?
+> +	{VIRTCHNL_PROTO_HDR_ECPRI,	ICE_FLOW_SEG_HDR_ECPRI_TP0},
+> +	{VIRTCHNL_PROTO_HDR_IPV4_FRAG,	ICE_FLOW_SEG_HDR_IPV_FRAG},
+> +	{VIRTCHNL_PROTO_HDR_IPV6_EH_FRAG,	ICE_FLOW_SEG_HDR_IPV_FRAG},
+> +	{VIRTCHNL_PROTO_HDR_GRE,        ICE_FLOW_SEG_HDR_GRE},
+>  };
+>
 
-We will just hide the truncing in the min_t() call. Probably if we
-assuming that cpu / 2 can be higher than U16_MAX we should check that
-here. Is it needed? (Previous situation is the same, num_online_cpus() is
-returning int).
-
-> 
-> > 
-> >  static u16 ice_get_txq_count(struct ice_pf *pf)
-> >  {
-> > -	return min(ice_get_avail_txq_count(pf), num_online_cpus());
-> > +	return min(ice_get_avail_txq_count(pf),
-> > +		   netif_get_num_default_rss_queues());
-> >  }
-> 
-> Same min_t() ?
-> 
-> Otherwise, fine for me.
-
-Thanks
-
-> 
-> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+...
