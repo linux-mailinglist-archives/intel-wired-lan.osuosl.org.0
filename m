@@ -1,104 +1,96 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8E3A5C16511
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Oct 2025 18:53:10 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id DD7CDC16664
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Oct 2025 19:12:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A2436606F7;
-	Tue, 28 Oct 2025 17:52:53 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 03BE7607A7;
+	Tue, 28 Oct 2025 18:12:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id We_0vtqMK588; Tue, 28 Oct 2025 17:52:53 +0000 (UTC)
+ id 0GEDAqOUrhWf; Tue, 28 Oct 2025 18:12:19 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2E16260703
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 859766078E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1761673973;
-	bh=kGqgCqSj4+eDurNR5uOg2tNpRaSUEQfF3D2HFe5YavY=;
+	s=default; t=1761675139;
+	bh=dKtOMMirsoHjv5KCBgwqEYTJOlM1srn/i4B7Y2JGSa4=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=6Zfpe34ygWXgdupMWmwT21smmkSVan1+fu8c/w/zSV+lvmoK09ycKWexSla9A22KS
-	 nB0OUxh/pqEXio4RB+CKLjmHBRGy9TwbYzO/duujDjtSlpmVPBUfHRNxHBD93Mkte7
-	 6tg5k0AY9a4SgHl4xagTUAvMg5zuRYz0z8QUoD82ulzA/TXc+GsJSucOhuPTRNKsaa
-	 /+mHSAwLAUl9xOHEHI6/l7BArwzyVepSk0+JtA0fluWyJLHX0D+xyP9xQzubNIPXXu
-	 0s/LQhe4dNf/9bP3NqraZM1oLs3cLM5f/2FfuBaBaNZ37tL4hqq1XKzRssPMdT4rTC
-	 mHBeyc5Wqe7Ew==
+	b=zco2oXr/SGgCB+ptvCoaxDQG6ctH/nH6n94PrxYhjZWZFqBDjEs8L6P+0hjZkTj5a
+	 MBsNX4+eMsTsDkV3ht3ePe7rDAVHHYhoMWwcGKaSSvE8ILZ0yI/C1WP6HwW9OBZFwW
+	 YIngFTjYdRF7iWOpVxXT7iWgyP3xL4/BcHAmpBIBCmriFOZeoDeUY5VYRLtcEL+xft
+	 /AlNUrq3/KCLd6ThhA5OKASNI7ALFJiYAY25gQj9tfr1sL9ssz7RDq4f7aE2McmdWb
+	 HkZqpmhliKF+6mH6iJoZe/j7TpDcavJzehRIP0RLohVh0HwiMXNDyCbYD4dxXgCLdH
+	 ZoRtLDIVteRCw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2E16260703;
-	Tue, 28 Oct 2025 17:52:53 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 859766078E;
+	Tue, 28 Oct 2025 18:12:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 5F79C22F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 17:52:51 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 69374707
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 18:12:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 50C1B80E0E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 17:52:51 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5AE7C60780
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 18:12:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NWuFBG9Xu1kQ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 28 Oct 2025 17:52:50 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id LGIm9JTXSgtW for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 28 Oct 2025 18:12:16 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
- helo=sea.source.kernel.org; envelope-from=nathan@kernel.org;
+ helo=sea.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 6C2F580E0B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6C2F580E0B
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B36CB6076B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B36CB6076B
 Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6C2F580E0B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 17:52:50 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B36CB6076B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 18:12:16 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 1DAFB449B8;
- Tue, 28 Oct 2025 17:52:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1F24AC4CEE7;
- Tue, 28 Oct 2025 17:52:45 +0000 (UTC)
-Date: Tue, 28 Oct 2025 10:52:43 -0700
-From: Nathan Chancellor <nathan@kernel.org>
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Sami Tolvanen <samitolvanen@google.com>, Kees Cook <kees@kernel.org>,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
+ by sea.source.kernel.org (Postfix) with ESMTP id 68F7543A90;
+ Tue, 28 Oct 2025 18:12:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AF95EC4CEE7;
+ Tue, 28 Oct 2025 18:12:13 +0000 (UTC)
+Date: Tue, 28 Oct 2025 18:12:10 +0000
+From: Simon Horman <horms@kernel.org>
+To: Kohei Enju <enjuk@amazon.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
  "David S. Miller" <davem@davemloft.net>,
  Eric Dumazet <edumazet@google.com>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Simon Horman <horms@kernel.org>,
- Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
- Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>,
- Russell King <linux@armlinux.org.uk>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Michal Kubiak <michal.kubiak@intel.com>,
- linux-kernel@vger.kernel.org, llvm@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org
-Message-ID: <20251028175243.GB1548965@ax162>
-References: <20251025-idpf-fix-arm-kcfi-build-error-v1-0-ec57221153ae@kernel.org>
- <20251025-idpf-fix-arm-kcfi-build-error-v1-2-ec57221153ae@kernel.org>
- <CABCJKuesdSH2xhm_NZOjxHWpt5M866EL_RUBdQNZ54ov7ObH-Q@mail.gmail.com>
- <CACRpkdaeOYEcK9w1oy59WBqjNrK7q5zT2rzg8pHgDdZdKWVKZg@mail.gmail.com>
+ kohei.enju@gmail.com
+Message-ID: <aQEHes7y5QQw_gOt@horms.kernel.org>
+References: <20251025150136.47618-1-enjuk@amazon.com>
+ <20251025150136.47618-2-enjuk@amazon.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CACRpkdaeOYEcK9w1oy59WBqjNrK7q5zT2rzg8pHgDdZdKWVKZg@mail.gmail.com>
+In-Reply-To: <20251025150136.47618-2-enjuk@amazon.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1761673970;
- bh=Moq064DwQdSS6qTOYeb42y6SY5Kr7+VDV6iVv9m8xBQ=;
+ d=kernel.org; s=k20201202; t=1761675136;
+ bh=xh400PhYtETk32cIznIvZAhI5hxKU8P8vAL++bW9D4c=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=jcqim24vkU/lNUAwQO+ySvG//0jPahaWXHXgAox1AfcfBdPxJPT3NTHoljAfIQYGt
- MaBdO4/AgJqqdZ1woP/x1NfOVWC8yunhevd9di6JM/iv1H0gJ6eqPQxFXzoUHGJ04D
- scy+VnPKywP5ILoZhGpWVOIRAO5XcBMvpBvKhPZDzpq2NhBpAuqqbUUowFnp8a96KC
- 4rlVUHFdp71lSRoL2i/I5XpYnhYsLp/3LnWR1D0bbTjC0rcdQNHh9Sjo+1WtXiSX0P
- yVN+0IeIxy/79PMPodDKBtZBZNCwUeLSgW2NbN9RZOlwk167bZu+8Er41Ugle2BBsI
- Z3n/fBO32uYAA==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ b=jpIDEIw+U1p/Ixt0SMv5V6hpEqLgs5ExG5QHsMhawSwaRiQYLp0SkVaCZ3PlSXypw
+ TQtydZl09NaBaEuIKUpqN6kJ6zh6S9StfIn0Sqqm+NqZiITxG/bmOEhCz9L1zv8fgn
+ n68iR4BHEcRSxmvTpM1FH6725LSBKkS25kHZW3Z8CX+XZkGIbAtZ0aEN686PNLQKzg
+ H3zbQXfjWN+99WpMDGEqloRhKwRpFyin3D0Ie0/Ws87zId1FCZJ9slwRCe6HQiqm5u
+ 4qmN5QDUIxEwq6TXI622yRjdDeW+9ggLmLh5IA8Rj+uJUURH42ZknLkrqjZtXY0pjR
+ Wd3qd8dcUM6pA==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=jcqim24v
-Subject: Re: [Intel-wired-lan] [PATCH 2/3] ARM: Select
- ARCH_USES_CFI_GENERIC_LLVM_PASS
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=jpIDEIw+
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 1/3] igc: prepare for RSS
+ key get/set support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -114,22 +106,16 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Oct 27, 2025 at 11:56:21PM +0100, Linus Walleij wrote:
-> On Mon, Oct 27, 2025 at 4:54 PM Sami Tolvanen <samitolvanen@google.com> wrote:
-> > Instead of working around issues with the generic pass, would it make
-> > more sense to just disable arm32 CFI with older Clang versions
-> > entirely? Linus, any thoughts?
+On Sun, Oct 26, 2025 at 12:01:30AM +0900, Kohei Enju wrote:
+> Store the RSS key inside struct igc_adapter and introduce the
+> igc_write_rss_key() helper function. This allows the driver to program
+> the RSSRK registers using a persistent RSS key, instead of using a
+> stack-local buffer in igc_setup_mrqc().
 > 
-> We have people using this with the default compilers that come with
-> Debiand and Fedora. I would say as soon as the latest release of
-> the major distributions supports this, we can drop support for older
-> compilers.
+> This is a preparation patch for adding RSS key get/set support in
+> subsequent changes, and no functional change is intended in this patch.
+> 
+> Signed-off-by: Kohei Enju <enjuk@amazon.com>
 
-Okay, I think that is reasonable enough. This is not a very large
-workaround and I do not expect these type of workarounds to be necessary
-frequently so I think it is worth keeping this working if people are
-actually using it. That means we could mandate the backend version of
-kCFI for ARM with Debian Forky in 2027.
+Reviewed-by: Simon Horman <horms@kernel.org>
 
-Cheers,
-Nathan
