@@ -1,60 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3ED6EC16670
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Oct 2025 19:12:38 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 409F1C16676
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Oct 2025 19:12:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D833560784;
-	Tue, 28 Oct 2025 18:12:36 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id AB9DD605AD;
+	Tue, 28 Oct 2025 18:12:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id I9HSIj981Jgw; Tue, 28 Oct 2025 18:12:36 +0000 (UTC)
+ id s5IyI8PvUJh8; Tue, 28 Oct 2025 18:12:52 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6D9CE6076B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A46826078B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1761675156;
-	bh=xAQbiDl8M+olikuZJEWXJVy0dCQj0SAGkJb8MD5kQtY=;
+	s=default; t=1761675172;
+	bh=m+WqripWiV3QrVH0AFLabTjijwV991IR7ROON6LA7Jo=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=CuqVa6WZGwocV2WzMmnmVdRbpSkFnRvf16RdifCw9mX3i1ldwF8VFrxOVsKlIZHAP
-	 NnvXtu4AAluUZVrSdDnLTBT+TfSwDK13VnjquU69wVU4sTjJ8JrU92ZPyrbUZSZi85
-	 Tb2iIvthHQ90byLmsVjuIVrcGGuhiE/3NvWW0o3fNC7H5q+aOHI1HSPkKfJByRilsi
-	 naXLE12R9jKzMUFVFzYU1rfjVvtbWm7wJ5Uh9JMigLFC0yTkp/LK9mrxMhr923Kovy
-	 S6Ft+hmY2JBxVB5qCtCAP73npMOTtWBJPTCUWJECkajE80CXKpZWeJVIbpvjZo0+uw
-	 JDH3rp8LZZV+g==
+	b=eE/IT2mS/yJFtIFAtT9x89ZLiP7Xa9KpDGTVl+xO51O2nDR2m/IUi643n5c1X67a8
+	 nqv34OGNb5U56y/QHEQz35OJXyEbCfyR6T5pu1UBwH3/ESmAcmb+xjS7+6FpnQhw3/
+	 yJ5K7RloQrKggaZh53HvlmX2iOsSZvcFEEFS7uRFLXfh9y/zP0lXm0ktcW3s/XpGkC
+	 WOY9KFrFKb0gEaZAYj/PYc0ryDZ0ow2D7c51mJN9IW6FfaYQPneuZL3CyhWTey2tIf
+	 FIaZOJPMZ/Bnwvf9saSayBCkUqcERDFqx6UkSzc1aU2tMgqP+CYFMv3rZfOrKQ/igm
+	 7DhGdluAKA3XQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6D9CE6076B;
-	Tue, 28 Oct 2025 18:12:36 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A46826078B;
+	Tue, 28 Oct 2025 18:12:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 2ED7322F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 18:12:35 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 562A0707
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 18:12:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 2B87440416
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 18:12:35 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3C4E140328
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 18:12:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id boEDRT5Gok3h for <intel-wired-lan@lists.osuosl.org>;
- Tue, 28 Oct 2025 18:12:34 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
- helo=sea.source.kernel.org; envelope-from=horms@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 2C01540333
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2C01540333
-Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2C01540333
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 18:12:33 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 1odyH89Un5rB for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 28 Oct 2025 18:12:49 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org A062340318
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A062340318
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id A062340318
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 18:12:49 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id AE85D450D3;
- Tue, 28 Oct 2025 18:12:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1B77DC4CEFF;
- Tue, 28 Oct 2025 18:12:30 +0000 (UTC)
-Date: Tue, 28 Oct 2025 18:12:28 +0000
+ by tor.source.kernel.org (Postfix) with ESMTP id 254D46144A;
+ Tue, 28 Oct 2025 18:12:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 51ABAC4CEE7;
+ Tue, 28 Oct 2025 18:12:45 +0000 (UTC)
+Date: Tue, 28 Oct 2025 18:12:42 +0000
 From: Simon Horman <horms@kernel.org>
 To: Kohei Enju <enjuk@amazon.com>
 Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
@@ -65,32 +66,31 @@ Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
  Eric Dumazet <edumazet@google.com>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
  kohei.enju@gmail.com
-Message-ID: <aQEHjPudkOSpk248@horms.kernel.org>
+Message-ID: <aQEHmm4YmzBHTIUb@horms.kernel.org>
 References: <20251025150136.47618-1-enjuk@amazon.com>
- <20251025150136.47618-3-enjuk@amazon.com>
+ <20251025150136.47618-4-enjuk@amazon.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20251025150136.47618-3-enjuk@amazon.com>
+In-Reply-To: <20251025150136.47618-4-enjuk@amazon.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1761675153;
- bh=FdgKUel8Rdr8U3hgYEJeelUVjbNqlBCIt46+j3nPvzY=;
+ d=kernel.org; s=k20201202; t=1761675167;
+ bh=rMFZ5kQBLZhjQxuEnEYZtqELf662NSTEeOQnwo23CPM=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=RtAT6LVfZItjKcfIY/5taKbAHk080g5kjCLFKYxv2hW/Jt3afLpLS0iwRvUC4V1QO
- WM/yAZSa7nbD8Er0jKGskLm/hsMtqei/zgoRwQ5kyJpQu49/vWzPoL0VuwiG2b8NQD
- 7aYjYKfhGX8vbhv60JCNcPc0xUCjyr6KfzYjP25vHslFdjRz7I/1e0K6ElkgfJAbz4
- l64g/5aevgb6CBtZ05w+w3OjMPN/MId3bW7rdh6fCdp6HR/kiV8NlrPYgaRr1bfsWh
- Czn+b7R/tml6nUurqmYx8/fhTqqKO09fzOGd/aSTIXIlXUv0/HsbsRBmEPqyVessLJ
- 0aw+gs4Uebibg==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ b=HBDUB+pCEnZzSnEulSKLJd5xLkpkam7tch3J864WTz3dc3AiW+jO8bM/LRk4TVF2d
+ d6Zj/3wg5hJRFgOooPvWHcEzDIe/MmxyBuqAOdJud5piZuGI7SLqXBXhMnmayddjoS
+ ooJgNPN5RewCOM0n0eYeEFb4kKTktbiIhG745BeHhFFrW/fJkUjxkm28lZTnUteTPs
+ pibwu/zJuI+a8x9CBcuDKfXCwfF6njKN+7wFbFbiar3cYwbC9kSffMozakhmUtm723
+ mlPz1kaZuGy40T+J5tJuNshycy6DIz0zfNQzpjE34EhJmdymoDJmgas0ErwDoVqtte
+ +JxzPJs3zW32w==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=RtAT6LVf
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 2/3] igc: expose RSS key
- via ethtool get_rxfh
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=HBDUB+pC
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 3/3] igc: allow
+ configuring RSS key via ethtool set_rxfh
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -106,11 +106,12 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sun, Oct 26, 2025 at 12:01:31AM +0900, Kohei Enju wrote:
-> Implement igc_ethtool_get_rxfh_key_size() and extend
-> igc_ethtool_get_rxfh() to return the RSS key to userspace.
+On Sun, Oct 26, 2025 at 12:01:32AM +0900, Kohei Enju wrote:
+> Change igc_ethtool_set_rxfh() to accept and save a userspace-provided
+> RSS key. When a key is provided, store it in the adapter and write the
+> RSSRK registers accordingly.
 > 
-> This can be tested using `ethtool -x <dev>`.
+> This can be tested using `ethtool -X <dev> hkey <key>`.
 > 
 > Signed-off-by: Kohei Enju <enjuk@amazon.com>
 
