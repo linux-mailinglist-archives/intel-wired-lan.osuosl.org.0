@@ -1,94 +1,93 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E2E0C15FA5
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Oct 2025 17:56:06 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7AF8BC164B1
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Oct 2025 18:50:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 22F0B807AA;
-	Tue, 28 Oct 2025 16:56:05 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B55DC40522;
+	Tue, 28 Oct 2025 17:50:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TLABG3Ngcdst; Tue, 28 Oct 2025 16:56:04 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id j9ce_DaMSH6A; Tue, 28 Oct 2025 17:50:11 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 51C4C807A4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 071F540523
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1761670564;
-	bh=w9GS8Pjn7F/qXs/1xfx6UW5ZIMm0yCbPW1pI93k0Kxo=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=KI6Yz86JuMTOZzY5uE7xcwxOlVqds7enFjXLz0cnpYp2GMuxzUE1A4eu87Lsg12No
-	 Ov0hBLgyahekbT0RT8uRz2DYcOPa/2qW66toMffkZUk6Y3oGcpKVuWgd5eMPIJZwb4
-	 RyfXIKyRxVcqrWz2PGPlDFs/b5d0/h9JvaqySHlYOsSHFZ9+TQlNiITQ9K5JKVds03
-	 ntLl3wNrHD5UbtY1JGu/4SZe5mmKPIJu6rAs/k+ZPqVl+bcd/zvGEjO0J8P260woIS
-	 PJKELINLYntSf+JYPynkIL66CEmm0W2wGzG3CGnIbIpYHwHyctBjWzKgRtzyJCx1dm
-	 /LKVS3JojyyYg==
+	s=default; t=1761673811;
+	bh=77R0pZbR4YsPUdqF40yC9G7JbOYfQ2ABjLHuCoX/FAE=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=n7iQB9lqJlWLVfPTIQPtDBBWeuB99rQo6+e3w69JZCrDkfuh2oga1xd8LtQB0QwO4
+	 F7kefDwSUN3sKf0ky/Y7SNUgEnzSl01T26JPvnPr68+6GzKSqlmqxRZZYwElo0VUKJ
+	 xPd+AodeNi4CzRGf6sk65OOacc0I5CL1Mqhu59R8RnF6eJ/nnvNg0vlT7XDt9gM3By
+	 uyBQ8XoWe/YeZgIyNjth3eiXSB6lXmxJgAxhg1z4ia5BPsmuv4u0uaErcnwufHAxk5
+	 02ZLNtgKvcnHcVzTbaTYMYV2h+NpGHmeCLXai6OGc8nihS5iLnKF2K4VqncTITWLhS
+	 SaAKRfQ9dJbzg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 51C4C807A4;
-	Tue, 28 Oct 2025 16:56:04 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 071F540523;
+	Tue, 28 Oct 2025 17:50:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 8698A70B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 16:56:02 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 77A5A22F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 17:50:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6C6928079E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 16:56:02 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 67C1080E08
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 17:50:09 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vhgdBwNGUlku for <intel-wired-lan@lists.osuosl.org>;
- Tue, 28 Oct 2025 16:56:01 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 75D818079C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 75D818079C
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 75D818079C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 16:56:01 +0000 (UTC)
-X-CSE-ConnectionGUID: fzZ3JTORRH+K+qzFt40eAw==
-X-CSE-MsgGUID: /qxwnywuSHG6rU6Qire2Rg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11586"; a="74066613"
-X-IronPort-AV: E=Sophos;i="6.19,261,1754982000"; d="scan'208";a="74066613"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Oct 2025 09:56:01 -0700
-X-CSE-ConnectionGUID: FPFqj7MgS2O4bLV1gsVqOQ==
-X-CSE-MsgGUID: +QS7AMplR1KaQ3Ev6+uR5Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,261,1754982000"; d="scan'208";a="186158520"
-Received: from lkp-server02.sh.intel.com (HELO 66d7546c76b2) ([10.239.97.151])
- by fmviesa010.fm.intel.com with ESMTP; 28 Oct 2025 09:55:59 -0700
-Received: from kbuild by 66d7546c76b2 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1vDmzF-000JTq-0X
- for intel-wired-lan@lists.osuosl.org; Tue, 28 Oct 2025 16:55:57 +0000
-Date: Wed, 29 Oct 2025 00:55:03 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202510290058.qUixll1l-lkp@intel.com>
-User-Agent: s-nail v14.9.25
+ id bNMizmqH1pjJ for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 28 Oct 2025 17:50:08 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
+ helo=sea.source.kernel.org; envelope-from=sashal@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A31D880E09
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A31D880E09
+Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id A31D880E09
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Oct 2025 17:50:08 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sea.source.kernel.org (Postfix) with ESMTP id 1796D43486;
+ Tue, 28 Oct 2025 17:50:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BA299C116B1;
+ Tue, 28 Oct 2025 17:50:07 +0000 (UTC)
+Date: Tue, 28 Oct 2025 13:50:06 -0400
+From: Sasha Levin <sashal@kernel.org>
+To: Alexander Lobakin <aleksander.lobakin@intel.com>
+Cc: patches@lists.linux.dev, stable@vger.kernel.org,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Ramu R <ramu.r@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ przemyslaw.kitszel@intel.com, intel-wired-lan@lists.osuosl.org
+Message-ID: <aQECTnYEi8q7wycn@laps>
+References: <20251025160905.3857885-1-sashal@kernel.org>
+ <20251025160905.3857885-238-sashal@kernel.org>
+ <e81c5f0c-eaf5-457e-8257-eaf0e7116164@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <e81c5f0c-eaf5-457e-8257-eaf0e7116164@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1761670562; x=1793206562;
- h=date:from:to:subject:message-id;
- bh=jvklgl3BywcdwWA7lo7JhUZCfvtuGU5fDBwqxsxTP/w=;
- b=FK0bI14aRVxP1+p4VID9WVL6CG+vvDgIXV6axKzUIo+Qv3vzN4abRC0X
- T8oZXYi5f6bx1mceTTDbVJspKP5SXDcIL4Oq80VYDdpg3PiI8bzUMGkUK
- XZSQak+n3kLwYavbTyFfTAcPq4fT6cwrGkc68wHpUcWNhFYXbxu6j9rvR
- CBA0kGcgg5p9bC80pVffY8w7LlIQdqEntixDsyqcz0ysWdT6WQusDeKRC
- nRGb9RChJDwpyhfVQSRrDjkfcYevfzPWVhYlG++X2cxJsVONZqyjkXJTz
- wznU/+H/KmpRpo03rJ/1Bj1u4lY/pUhhf0fDYn7qht/P3LO1bDsES120V
- A==;
+ d=kernel.org; s=k20201202; t=1761673807;
+ bh=0q+GiUYteQ/lQcoyJq1MnhmPR0PcR/6dgD1yyVtppHg=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=oLltaceA7lEcpAxzatPfQ96dAELBrsU5GeltW3VUGVClDFzmi2dOJJp5mNCBEzKOo
+ 0s783wSUuq7FE19ndIRuIR+G1GMsGdkGi77BYLvtEfrZon5xbwP5jMWGWCxWBE9qnT
+ 27gQmEtdYvLZ7JcvgedbReXxGrR7ptlMuapUVECV8+P8V+dJe0aE+rU6rhwmPf2Wsd
+ /R9yPZ/hWtSr13a/xiMxA3g3DHYu+pGIUmSW4EJwKQ2pb/Gr7X34/MPE38r4y1Ltqg
+ 0Pr97i9tthwKGf/2Xp02CjHX9G3IzeJ6qEKEHFCCNWEWXMjhdxcuJJM+3gDqYfRYHM
+ 0l5/+TMCZhQ1A==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=FK0bI14a
-Subject: [Intel-wired-lan] [tnguy-next-queue:100GbE_Live_Migration] BUILD
- SUCCESS 7a6f2d733ee1cef7df1fe155889f619cc9d191a4
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=oLltaceA
+Subject: Re: [Intel-wired-lan] [PATCH AUTOSEL 6.17] idpf: link NAPIs to
+ queues
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,156 +103,128 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 100GbE_Live_Migration
-branch HEAD: 7a6f2d733ee1cef7df1fe155889f619cc9d191a4  ice-vfio-pci: implement PCI .reset_done handling
+On Mon, Oct 27, 2025 at 04:19:24PM +0100, Alexander Lobakin wrote:
+>From: Sasha Levin <sashal@kernel.org>
+>Date: Sat, 25 Oct 2025 11:57:49 -0400
+>
+>> From: Alexander Lobakin <aleksander.lobakin@intel.com>
+>>
+>> [ Upstream commit bd74a86bc75d35adefbebcec7c3a743d02c06230 ]
+>>
+>> Add the missing linking of NAPIs to netdev queues when enabling
+>> interrupt vectors in order to support NAPI configuration and
+>> interfaces requiring get_rx_queue()->napi to be set (like XSk
+>> busy polling).
+>>
+>> As currently, idpf_vport_{start,stop}() is called from several flows
+>> with inconsistent RTNL locking, we need to synchronize them to avoid
+>> runtime assertions. Notably:
+>>
+>> * idpf_{open,stop}() -- regular NDOs, RTNL is always taken;
+>> * idpf_initiate_soft_reset() -- usually called under RTNL;
+>> * idpf_init_task -- called from the init work, needs RTNL;
+>> * idpf_vport_dealloc -- called without RTNL taken, needs it.
+>>
+>> Expand common idpf_vport_{start,stop}() to take an additional bool
+>> telling whether we need to manually take the RTNL lock.
+>>
+>> Suggested-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com> # helper
+>> Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+>> Tested-by: Ramu R <ramu.r@intel.com>
+>> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+>> Signed-off-by: Sasha Levin <sashal@kernel.org>
+>> ---
+>>
+>> LLM Generated explanations, may be completely bogus:
+>>
+>> YES
+>>
+>> Why this is a bug-fix
+>> - The driver was missing the association between netdev queues and their
+>>   NAPI instances. This breaks NAPI-aware configuration and features that
+>>   require queue->napi to be set, e.g., AF_XDP busy polling. The patch
+>>   adds the missing linkage and corresponding unlinkage, which is clearly
+>>   a functional fix rather than a feature.
+>>
+>> What changed
+>> - Link/unlink netdev queues to the NAPI of each q_vector:
+>>   - Adds `idpf_q_vector_set_napi()` and uses it to associate both RX and
+>>     TX queues with the q_vector’s `napi`:
+>>     - Link on IRQ request:
+>>       drivers/net/ethernet/intel/idpf/idpf_txrx.c:4043
+>>     - Unlink on IRQ free:
+>>       drivers/net/ethernet/intel/idpf/idpf_txrx.c:3852
+>>   - Helper implementation:
+>>     drivers/net/ethernet/intel/idpf/idpf_txrx.c:3818
+>>
+>> - Ensure correct locking for netif_queue_set_napi:
+>>   - `netif_queue_set_napi()` asserts RTNL or invisibility
+>>     (net/core/dev.c:7167), so the patch adds an `rtnl` parameter to the
+>>     vport bring-up/tear-down paths and acquires RTNL where it previously
+>>     wasn’t guaranteed:
+>>     - `idpf_vport_open(struct idpf_vport *vport, bool rtnl)` acquires
+>>       RTNL when `rtnl=true`
+>>       (drivers/net/ethernet/intel/idpf/idpf_lib.c:1397–1400), and
+>>       releases on both success and error paths (1528–1531).
+>>     - `idpf_vport_stop(struct idpf_vport *vport, bool rtnl)` does the
+>>       same for teardown (900–927).
+>>   - Callers updated according to their RTNL context, avoiding double-
+>>     lock or missing-lock situations:
+>>     - NDO stop: passes `false` (called under RTNL):
+>>       drivers/net/ethernet/intel/idpf/idpf_lib.c:951
+>>     - NDO open: passes `false` (called under RTNL):
+>>       drivers/net/ethernet/intel/idpf/idpf_lib.c:2275
+>>     - init work (not under RTNL): `idpf_init_task()` passes `true`:
+>>       drivers/net/ethernet/intel/idpf/idpf_lib.c:1607
+>>     - vport dealloc (not under RTNL): passes `true`:
+>>       drivers/net/ethernet/intel/idpf/idpf_lib.c:1044
+>>     - soft reset (usually under RTNL via ndo contexts): passes `false`:
+>>       drivers/net/ethernet/intel/idpf/idpf_lib.c:1997 and reopen at
+>>       2027, 2037
+>>
+>> - Order of operations remains sane:
+>>   - Add NAPI and map vectors, then request IRQs, then link queues to
+>>     NAPI, then enable NAPI/IRQs
+>>     (drivers/net/ethernet/intel/idpf/idpf_txrx.c:4598–4607, 4043,
+>>     4619–4621).
+>>   - On teardown disable interrupts/NAPI, delete NAPI, unlink queues,
+>>     free IRQs (drivers/net/ethernet/intel/idpf/idpf_txrx.c:4119–4125,
+>>     3852).
+>>
+>> Impact and risk
+>> - User-visible bug fixed: AF_XDP busy-polling and other NAPI-aware paths
+>>   can now retrieve the correct NAPI via get_rx_queue()->napi.
+>> - Change is tightly scoped to the idpf driver; no UAPI or architectural
+>>   changes.
+>> - Locking adjustments are minimal and consistent with net core
+>>   expectations for `netif_queue_set_napi()`.
+>> - Similar pattern exists in other drivers (e.g., ice, igb, igc) that use
+>>   `netif_queue_set_napi`, which supports the approach’s correctness.
+>> - Note: In the rare request_irq failure unwind, the code frees any
+>>   requested IRQs but doesn’t explicitly clear queue->napi for
+>>   previously-linked vectors; however, `napi_del()` runs and the
+>>   q_vector/napi storage remains valid, and normal teardown does clear
+>>   associations. This is a minor edge and does not outweigh the benefit
+>>   of the fix.
+>>
+>> Stable backport suitability
+>> - Meets stable criteria: fixes a real functional bug, small and self-
+>>   contained, limited to a single driver, low regression risk, and
+>>   conforms to net core locking rules.
+>> - Dependency: requires `netif_queue_set_napi()` (present in this branch,
+>>   net/core/dev.c:7159). For older stable series lacking this API, a
+>>   backport would need equivalent infrastructure or adaptation.
+>>
+>> Conclusion
+>> - This is a clear, necessary bug fix enabling expected NAPI-aware
+>>   behavior in idpf. It is safe and appropriate to backport.
+>
+>While it's more of a feature and a prereq for XDP support in idpf, this
+>generated explanation is actually good and precise. I'm perfectly fine
+>with backporting this.
 
-elapsed time: 1452m
+Thanks for the review and feedback!
 
-configs tested: 137
-configs skipped: 3
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-tested configs:
-alpha                             allnoconfig    gcc-15.1.0
-alpha                            allyesconfig    gcc-15.1.0
-arc                              allmodconfig    gcc-15.1.0
-arc                               allnoconfig    gcc-15.1.0
-arc                              allyesconfig    gcc-15.1.0
-arc                        nsimosci_defconfig    clang-22
-arc                   randconfig-001-20251028    gcc-8.5.0
-arc                   randconfig-002-20251028    gcc-13.4.0
-arc                           tb10x_defconfig    gcc-15.1.0
-arm                               allnoconfig    clang-22
-arm                               allnoconfig    gcc-15.1.0
-arm                       aspeed_g5_defconfig    gcc-15.1.0
-arm                           omap1_defconfig    gcc-15.1.0
-arm                   randconfig-001-20251028    clang-22
-arm                   randconfig-002-20251028    clang-22
-arm                   randconfig-003-20251028    clang-22
-arm                   randconfig-004-20251028    gcc-8.5.0
-arm64                             allnoconfig    gcc-15.1.0
-arm64                            allyesconfig    clang-22
-arm64                 randconfig-001-20251028    clang-22
-arm64                 randconfig-002-20251028    clang-22
-arm64                 randconfig-003-20251028    gcc-11.5.0
-arm64                 randconfig-004-20251028    gcc-8.5.0
-csky                             allmodconfig    gcc-15.1.0
-csky                              allnoconfig    gcc-15.1.0
-csky                             allyesconfig    gcc-15.1.0
-csky                  randconfig-001-20251028    gcc-15.1.0
-csky                  randconfig-002-20251028    gcc-15.1.0
-hexagon                          alldefconfig    clang-22
-hexagon                          allmodconfig    clang-17
-hexagon                           allnoconfig    clang-22
-hexagon                           allnoconfig    gcc-15.1.0
-hexagon                          allyesconfig    clang-22
-hexagon               randconfig-001-20251028    clang-22
-hexagon               randconfig-002-20251028    clang-17
-i386                              allnoconfig    gcc-14
-i386                              allnoconfig    gcc-15.1.0
-i386        buildonly-randconfig-001-20251028    gcc-14
-i386        buildonly-randconfig-002-20251028    gcc-14
-i386        buildonly-randconfig-003-20251028    gcc-14
-i386        buildonly-randconfig-004-20251028    gcc-14
-i386        buildonly-randconfig-005-20251028    gcc-14
-i386        buildonly-randconfig-006-20251028    gcc-14
-loongarch                        allmodconfig    clang-19
-loongarch                         allnoconfig    clang-22
-loongarch                        allyesconfig    clang-22
-loongarch             randconfig-001-20251028    gcc-12.5.0
-loongarch             randconfig-002-20251028    clang-22
-m68k                             allmodconfig    gcc-15.1.0
-m68k                              allnoconfig    gcc-15.1.0
-m68k                             allyesconfig    gcc-15.1.0
-m68k                          multi_defconfig    gcc-15.1.0
-m68k                           sun3_defconfig    clang-22
-microblaze                       allmodconfig    gcc-15.1.0
-microblaze                        allnoconfig    gcc-15.1.0
-microblaze                       allyesconfig    gcc-15.1.0
-mips                             allmodconfig    gcc-15.1.0
-mips                              allnoconfig    gcc-15.1.0
-mips                             allyesconfig    gcc-15.1.0
-mips                      maltaaprp_defconfig    clang-22
-mips                        omega2p_defconfig    clang-22
-nios2                             allnoconfig    gcc-11.5.0
-nios2                 randconfig-001-20251028    gcc-8.5.0
-nios2                 randconfig-002-20251028    gcc-9.5.0
-openrisc                          allnoconfig    clang-22
-openrisc                          allnoconfig    gcc-15.1.0
-openrisc                         allyesconfig    gcc-15.1.0
-openrisc                            defconfig    gcc-15.1.0
-parisc                           allmodconfig    gcc-15.1.0
-parisc                            allnoconfig    clang-22
-parisc                            allnoconfig    gcc-15.1.0
-parisc                           allyesconfig    gcc-15.1.0
-parisc                              defconfig    gcc-15.1.0
-parisc                randconfig-001-20251028    gcc-9.5.0
-parisc                randconfig-002-20251028    gcc-8.5.0
-powerpc                           allnoconfig    clang-22
-powerpc                           allnoconfig    gcc-15.1.0
-powerpc                 mpc8313_rdb_defconfig    clang-22
-powerpc               randconfig-001-20251028    gcc-15.1.0
-powerpc               randconfig-002-20251028    gcc-11.5.0
-powerpc               randconfig-003-20251028    gcc-8.5.0
-powerpc                    socrates_defconfig    clang-22
-powerpc                     tqm8541_defconfig    clang-22
-powerpc64             randconfig-001-20251028    clang-22
-powerpc64             randconfig-002-20251028    clang-22
-powerpc64             randconfig-003-20251028    gcc-13.4.0
-riscv                             allnoconfig    clang-22
-riscv                             allnoconfig    gcc-15.1.0
-riscv                               defconfig    clang-22
-riscv                               defconfig    gcc-15.1.0
-s390                             allmodconfig    clang-18
-s390                              allnoconfig    clang-22
-s390                             allyesconfig    gcc-15.1.0
-s390                                defconfig    clang-22
-s390                                defconfig    gcc-15.1.0
-sh                               allmodconfig    gcc-15.1.0
-sh                                allnoconfig    gcc-15.1.0
-sh                               allyesconfig    gcc-15.1.0
-sh                                  defconfig    gcc-14
-sh                                  defconfig    gcc-15.1.0
-sh                          r7785rp_defconfig    clang-22
-sh                      rts7751r2d1_defconfig    gcc-15.1.0
-sparc                            alldefconfig    clang-22
-sparc                            allmodconfig    gcc-15.1.0
-sparc                             allnoconfig    gcc-15.1.0
-sparc                               defconfig    gcc-15.1.0
-sparc64                             defconfig    clang-20
-sparc64                             defconfig    gcc-14
-um                               allmodconfig    clang-19
-um                                allnoconfig    clang-22
-um                               allyesconfig    gcc-14
-um                                  defconfig    gcc-14
-um                             i386_defconfig    gcc-14
-um                           x86_64_defconfig    gcc-14
-x86_64                            allnoconfig    clang-20
-x86_64                            allnoconfig    clang-22
-x86_64      buildonly-randconfig-001-20251028    clang-20
-x86_64      buildonly-randconfig-001-20251028    gcc-14
-x86_64      buildonly-randconfig-002-20251028    clang-20
-x86_64      buildonly-randconfig-002-20251028    gcc-14
-x86_64      buildonly-randconfig-003-20251028    clang-20
-x86_64      buildonly-randconfig-004-20251028    clang-20
-x86_64      buildonly-randconfig-005-20251028    clang-20
-x86_64      buildonly-randconfig-006-20251028    clang-20
-x86_64                              defconfig    gcc-14
-x86_64                                  kexec    clang-20
-x86_64                               rhel-9.4    clang-20
-x86_64                               rhel-9.4    gcc-14
-x86_64                           rhel-9.4-bpf    gcc-14
-x86_64                          rhel-9.4-func    clang-20
-x86_64                          rhel-9.4-func    gcc-14
-x86_64                    rhel-9.4-kselftests    clang-20
-x86_64                    rhel-9.4-kselftests    gcc-14
-x86_64                         rhel-9.4-kunit    gcc-14
-x86_64                           rhel-9.4-ltp    gcc-14
-xtensa                            allnoconfig    clang-22
-xtensa                            allnoconfig    gcc-15.1.0
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+-- 
+Thanks,
+Sasha
