@@ -1,89 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 34F6FC2347E
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 Oct 2025 06:06:08 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id AFC48C23481
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 Oct 2025 06:06:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 479258470A;
-	Fri, 31 Oct 2025 05:06:06 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E1E3C416AC;
+	Fri, 31 Oct 2025 05:06:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 70j8SfEfa_nl; Fri, 31 Oct 2025 05:06:05 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id zPPt4XkSlef8; Fri, 31 Oct 2025 05:06:20 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4D21D8470C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F0F39416AA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1761887165;
-	bh=DxZGE8KQ7p11uiJ4Zvu3AD7APbHmpkm17aF7Ewky52g=;
+	s=default; t=1761887180;
+	bh=tTt5E09oJALRO7o9tSAs3mDl7suf3brvY7sn/we29uk=;
 	h=From:To:CC:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=uIIilMbcBo3jLjIdwETpoEGVLt1FU3Fxmno/E7FQS+v5pOA1kwhS5JQTJWXxD0JTa
-	 yuB9y+DSZRmQiLQ8BkMX8xEt1+cvRsj0PhlHpRICHSjSiAWKZ3ZvIcUClH1H7qe2aO
-	 PMQvTFR53RpvFh+1iuAf3SGsCs5nY07Z0NNY3RhRLQCM32+bwBytG/n8Z+sc7b+YMR
-	 zI5eb1Bp5ob/DkdS4qyaQUYRABpoqZZe75hDLF/1e43DtMfLEc/56RQGZ+BNfO4Fs4
-	 gBudPzJTC6wY59iyiOk+JZEU2tgqHlbHr0++yBjlHHGCGKMWjlR84Y42qwlviTB4Ms
-	 QaR+JyHlK/IkA==
+	b=HVbQAFRevqEQqfyDlgu3Z7dnkwUHfHuK6ik764Ic1XcD3oyoByWTKS+s0zFVcaZ6u
+	 fi4gkV6vCu9whMP3TC+wjc5Bp/XL4Zm9GDUBn6Lc2b6zOatCWAa/AF0FpjZ1aIqyE1
+	 d5efiiG4EYYF2jNQ39KcbG2rmvlOP+Sm6FXoFsCfUAO2NEacCDl5FPH3qMFIJQf+oI
+	 t/2GuSaK4q+bmBCCwHs5nFRa5Pb3GflV+Jw/rVp4dhmrUgLMPnP6r7t+Dt+sb3TBHv
+	 0jlWfUw05nZXMpYuILmsaBcjE7+Dj9k+X4AQyOYiOIvUOhLMB69vZMrOLLIjowM2cE
+	 WdsTnnLV/oTRw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4D21D8470C;
-	Fri, 31 Oct 2025 05:06:05 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id F0F39416AA;
+	Fri, 31 Oct 2025 05:06:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 4B2CDCD
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Oct 2025 05:06:03 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 236A9160
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Oct 2025 05:06:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3D38540211
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Oct 2025 05:06:03 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1506940ABE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Oct 2025 05:06:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id G5qQ8s8WeVEX for <intel-wired-lan@lists.osuosl.org>;
- Fri, 31 Oct 2025 05:06:02 +0000 (UTC)
-X-Greylist: delayed 427 seconds by postgrey-1.37 at util1.osuosl.org;
- Fri, 31 Oct 2025 05:06:02 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 479EB40ABE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 479EB40ABE
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
+ id GvZVCS2VLYXs for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 31 Oct 2025 05:06:18 +0000 (UTC)
+X-Greylist: delayed 426 seconds by postgrey-1.37 at util1.osuosl.org;
+ Fri, 31 Oct 2025 05:06:17 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org D857540211
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D857540211
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.9;
  helo=mgamail.intel.com; envelope-from=sarithax.sanigani@intel.com;
  receiver=<UNKNOWN> 
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 479EB40ABE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Oct 2025 05:06:02 +0000 (UTC)
-X-CSE-ConnectionGUID: zBdte4YRQkOg2CWtJ8PD6w==
-X-CSE-MsgGUID: uEq/cVfySjm3E5BOmNF5OQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11598"; a="63061593"
-X-IronPort-AV: E=Sophos;i="6.19,268,1754982000"; d="scan'208,217";a="63061593"
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D857540211
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 Oct 2025 05:06:17 +0000 (UTC)
+X-CSE-ConnectionGUID: rLWdDeatS3quEEh7mSasig==
+X-CSE-MsgGUID: wp6xy4b2TuiHSZSJOH5F4w==
+X-IronPort-AV: E=McAfee;i="6800,10657,11598"; a="86665350"
+X-IronPort-AV: E=Sophos;i="6.19,268,1754982000"; d="scan'208,217";a="86665350"
 Received: from orviesa007.jf.intel.com ([10.64.159.147])
- by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Oct 2025 21:58:55 -0700
-X-CSE-ConnectionGUID: gczx2Yn1QLKpJyDqep3JdA==
-X-CSE-MsgGUID: Z1EG69bpSfS5o8kk9zycdQ==
+ by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Oct 2025 21:59:10 -0700
+X-CSE-ConnectionGUID: LTwI8KSxQs+1V7Nuq1W/Dw==
+X-CSE-MsgGUID: /feT9fjfQVCwV5STrM+mHA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.19,268,1754982000"; 
- d="scan'208,217";a="186077237"
+ d="scan'208,217";a="186077273"
 Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
  by orviesa007.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Oct 2025 21:58:55 -0700
-Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
+ 30 Oct 2025 21:59:11 -0700
+Received: from ORSMSX902.amr.corp.intel.com (10.22.229.24) by
  ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.27; Thu, 30 Oct 2025 21:58:54 -0700
-Received: from ORSEDG902.ED.cps.intel.com (10.7.248.12) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ 15.2.2562.27; Thu, 30 Oct 2025 21:59:10 -0700
+Received: from ORSEDG903.ED.cps.intel.com (10.7.248.13) by
+ ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.27 via Frontend Transport; Thu, 30 Oct 2025 21:58:54 -0700
-Received: from SJ2PR03CU001.outbound.protection.outlook.com (52.101.43.53) by
- edgegateway.intel.com (134.134.137.112) with Microsoft SMTP Server
+ 15.2.2562.27 via Frontend Transport; Thu, 30 Oct 2025 21:59:10 -0700
+Received: from BYAPR05CU005.outbound.protection.outlook.com (52.101.85.50) by
+ edgegateway.intel.com (134.134.137.113) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.27; Thu, 30 Oct 2025 21:58:54 -0700
+ 15.2.2562.27; Thu, 30 Oct 2025 21:59:10 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=lpXRryuqQuGndvkS2AvL15kz+VtQxZwejWP9XNN+iKStMgIR2JG77WQEYa3YvncC3Majqi/9a40oJQppowlvA+jXeGfWnOWIPnCrl61JDtDI18mYL6WBG+axOpK6FU6hIWiUFs5zRyVyqQJbFJd2kSikKi2aZfR+U26GrUiEsyFVJaSO9UH7Hhmd2dLyDWB+OJ9WuJzaXRrkkw3UH/4aqEFZU5tYiv595USPYzZXKXJZUPV7aoqnC96/B8mXxS5CXIdDJGnx0ZbyGS4qdYv1Of6jZMrcA1w7SwbHvWljz9Dqgc23+8x2/e3RQRK5Vli3JuIP870guBOFB3ZQL1Zorg==
+ b=DHoGdqjIhJ+V/Kv/mrOL81zObnOvrKusyprdRuue108H/sf+M3KKsap0l7SVfgmbOfrmBidI6JkA72LZuJzND+CTLBUBoqBeT959g+RRe4Db0ZkF21XbEqFkO1NNL08YgOFzNcnsEqBNiDnHMOsIKIYI9sUmgr/LPLJCjy26GCyCtaaY3de4+L1+ZAlduJa+sPRJhXoqQ/+qOSgt8TZPe6e0Fr/+21P7736RYeriAEEsAnf5wvoCCd8B9N0jzJulAZH2EQT7fCBupQ51S5YYvBbQktcxPWcpMMsMYiIaugFEDmcnRcnJC5T19fC3THwySpP1wRU0r9g8b5UPvOhqow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=DxZGE8KQ7p11uiJ4Zvu3AD7APbHmpkm17aF7Ewky52g=;
- b=S5xWixcR4xnT93dTWfNW3qMi76Z6fVV3HhONlWRhmAT2jfUTAI2ru/hux7zeZoo4bTZShR7PNHm6TsSqRic3GfNk38NmBtBu0Ol0+m+I8SiR4kfewB+i8G0v0XZMaLzp6UiD09lVO0FJjXyjk/bvEfqqYdgcvwcIbj7tsCJ9HsSLRafVNCORJeDm3T2hqS0CH33oQ1kgtPJccRBG/AAqPVO97st9UmjCSDITRGapukouyn/GBpn2MJuMnOJ5JEVJnMc89OqG5iQvFDyLlmZIZvyA3mvifwBsluuc/YaqEOxL7HeI0IK+Aqp2ExSKKTuSOMnLe6CdlK+CeddDbsEnwg==
+ bh=tTt5E09oJALRO7o9tSAs3mDl7suf3brvY7sn/we29uk=;
+ b=DBAeAldmsKPR11rbH/HO7qVD7L8BFqQ0z4IY0/+ANX0bLxx2N5kClJFd5pkW5hKRHTkvrXxMkYJAPsIMxIc03nh6egI7rSOarjpadM6XCHrGrtCKIRAQ+OLzgsoFtT+LkqIq0BwntktWnhHgGX1bexC1wMIeulCB5OejpMVzKR0Qzw/Ff4dtzc5+7p5J6fOEj5bvfj6Nl5xDQf2u3Av23vdMJIvYXvW0LRcxUwrBzqHlvdEXo2MzlISDEntg4jihyyof8dvk1TLVfLswCpC2BlboaNkXGLsTWQiwjOwZV/p28yb4j3IrhGXbOFpT3Gh1rmFrGADoCegqiI3ZnHejDA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
@@ -91,11 +91,11 @@ Received: from PH8PR11MB6976.namprd11.prod.outlook.com (2603:10b6:510:223::5)
  by SJ2PR11MB8321.namprd11.prod.outlook.com (2603:10b6:a03:546::10)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9275.14; Fri, 31 Oct
- 2025 04:58:52 +0000
+ 2025 04:59:08 +0000
 Received: from PH8PR11MB6976.namprd11.prod.outlook.com
  ([fe80::61e2:ff5c:490d:9152]) by PH8PR11MB6976.namprd11.prod.outlook.com
  ([fe80::61e2:ff5c:490d:9152%4]) with mapi id 15.20.9253.013; Fri, 31 Oct 2025
- 04:58:52 +0000
+ 04:59:08 +0000
 From: "Sanigani, SarithaX" <sarithax.sanigani@intel.com>
 To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
 CC: "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>, "Lobakin,
@@ -103,116 +103,116 @@ CC: "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>, "Lobakin,
  <jacob.e.keller@intel.com>, "Zaremba, Larysa" <larysa.zaremba@intel.com>,
  "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>, "Nguyen, Anthony L"
  <anthony.l.nguyen@intel.com>, "Kubiak, Michal" <michal.kubiak@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH iwl-next v3 1/3] ice: remove legacy Rx
- and construct SKB
-Thread-Index: AdxKIr+BeYcuqEnfRz2PbIym4mAWeg==
-Date: Fri, 31 Oct 2025 04:58:52 +0000
-Message-ID: <PH8PR11MB69764650A4A2EB8CCAFD5461F9F8A@PH8PR11MB6976.namprd11.prod.outlook.com>
+Thread-Topic: [Intel-wired-lan] [PATCH iwl-next v3 2/3] ice: drop page
+ splitting and recycling
+Thread-Index: AdxKIuFz1E1Jn0VhSMat/xm2aobTRg==
+Date: Fri, 31 Oct 2025 04:59:08 +0000
+Message-ID: <PH8PR11MB6976E31413A8D0031FA99651F9F8A@PH8PR11MB6976.namprd11.prod.outlook.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-ms-publictraffictype: Email
 x-ms-traffictypediagnostic: PH8PR11MB6976:EE_|SJ2PR11MB8321:EE_
-x-ms-office365-filtering-correlation-id: 33eb404e-2dd8-40e1-cd42-08de183a2fea
+x-ms-office365-filtering-correlation-id: 9b42ae7f-00d4-4aa8-cdac-08de183a3952
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
  ARA:13230040|1800799024|366016|376014|7053199007|38070700021|8096899003; 
-x-microsoft-antispam-message-info: =?us-ascii?Q?KeheJldDXq0+p4Iv53p83XUv077XUrXMMCXovgVdvfboTAy2NEH9G6Tn+zsL?=
- =?us-ascii?Q?ZnKzUw9o3cIe7G2z74KTMGzRPVPECnAO55/Ayba3izxJKvCCFwXcDvS5NSYd?=
- =?us-ascii?Q?+bIgF88iANPMV7yD1dMS47uGygii9ElGHE7McIoaSFQPwT6PD4jD4XRWNLdy?=
- =?us-ascii?Q?rDjXa+S6b086dmV9udv23yf4d/Q+Al2WrFUPwm9k5mFG+Bw4XXOvC2CWCVrE?=
- =?us-ascii?Q?0thdcEA6MeW/Hd044epQREenyIcjjndfJjEliXa9dS5w3jjnz63zvdXs3yIy?=
- =?us-ascii?Q?CkC1lBnJZEzzd4U28qI0FTJMZL4vptPbx4ojMnAjSGOk+pcC4ciZfelilmIx?=
- =?us-ascii?Q?+xJWOdch1ZL9MSnakL0N6SVngNR5dh+olKCqW3TAMgLURm6nOMyuPN+pXLR3?=
- =?us-ascii?Q?FuCaYmB5kc9bGu1F29ggeDMt0LIsKaaAFpJHG4OcapjipkmMYDlitckuAkXF?=
- =?us-ascii?Q?ht1KqwpgaXcW0tMbcMp8oT/2WYS3habTvs9cUa0goq+086CIixpq76KWjvSA?=
- =?us-ascii?Q?LKcj/fUKKf54RwA0gu5QV+MQHknbaaSPhHtw+vCMbXY1y8Xqk6RFtv4F0Gus?=
- =?us-ascii?Q?TCTb78sgO0sM96izufQbgdtkbRjngaC9VKFUfl5nps5WDRmhFYgF0WbfiVTs?=
- =?us-ascii?Q?towCtelrcfdyukm76TzN96bACE7uITF9Tq/NNuGVsA8TyaN+uXj17LGNpYyQ?=
- =?us-ascii?Q?v9nseWdhJtFuU5mpr/vM9wuxXeMOLCgGYnYBhfbuGMr6JueuKMIMJviAGmL1?=
- =?us-ascii?Q?kRXZnAPaf5isG1O3zUXdfVFF1gQPen3Alb1tT4gmFi8lU5rTQ+HfeAD+9lhD?=
- =?us-ascii?Q?wChl3WYNpsbA/LSI8uruWfJU8dyMVklnRvjUu5xkhiyyCDxLiRKbXQgkZQNt?=
- =?us-ascii?Q?v8/ghNW1YbsXt16Pc5Qsn+VitOm0lrROYY8pmUGwUb32gP2gYyDpAF16BqrQ?=
- =?us-ascii?Q?LXyJIasam2p2IVgYmTTskBUTBuIeTSOoxkYl5wjNAgnW7DMp0MyItEZvOHtN?=
- =?us-ascii?Q?f+eR7+CKzKMtiaGqgPc9R4oK9UGbKZLM9jcEg4xmWKr//iCgPqXrxvt7ERe0?=
- =?us-ascii?Q?Sebbl0AL6WIg3kUO0johdbByP1dJmOkOXgmbZDpCqEPhDlNDBzlVFMrG5bNY?=
- =?us-ascii?Q?BsYQH3i/D1bZLUAzhrfYIFkCTY4ORLbsn/qaDKqwngYGzY/Ypks/DwtHZrX7?=
- =?us-ascii?Q?/QtEzVcQWt9zImnbsL6tYRocntwHqs7OIrLkDBhP9r9e7x/yxL8YdWJXuYDB?=
- =?us-ascii?Q?srVRbfAMmSSpw7jRm45ejPwgfZBduXRRL8KaVd1x4QfQacG3v+5PYGSXCMHH?=
- =?us-ascii?Q?yL0Er4lBXbWzh/dfNFw4S77p4bF6aqx56GHkix3Nqthx/Pz1+5mMz7EwK0U5?=
- =?us-ascii?Q?2Hnc0onBJwTO1TSgSXoRiqdGlZpOcH+I/FzW7x++eC/Usky1T932fbEKRw0N?=
- =?us-ascii?Q?JcE1VYh/63zR1BXuKynv+1sf4ipU32Qry4qPDGPc9rLGjAVkjPXOJXzdN/fK?=
- =?us-ascii?Q?/8PhqqRbB4cKxkiFgI7x8etSNn8NSOEsfSZI?=
+x-microsoft-antispam-message-info: =?us-ascii?Q?q/CVt2v9Ve5QoiqUcmH9gI/yllFyZDAu7CJ+pjbJV4KFDhSiL3TXx3XrQdXq?=
+ =?us-ascii?Q?UFphC+QnbrgwAnCRz1414kHnMzj6Ddhzk5gpihCFXIJZprU6Y7wvXva35DmT?=
+ =?us-ascii?Q?GJiW2OLjytfEu292fhpnKY7Ts0ktqDLYMMKoRWC2oOPQcQwdU5Nkb1FyvKLW?=
+ =?us-ascii?Q?ryxL8ZIMgjQz0FPN/fDm6DIRdWrf/l8EO13lddHMLImomXDvJhSXwT0NUsFo?=
+ =?us-ascii?Q?me7adZitjep1vYy7cIQ6cK4Jc1fxN1Q+nhKSsIg/5wJndVnSELHDi/QgaZob?=
+ =?us-ascii?Q?53/o4Yq96Paglu7hlzBXIJLNgQCAlyUfuXRDF7p/VcC1tvmi2D7yKBt3GWqp?=
+ =?us-ascii?Q?eZgSznhDM2mjXuIVYQtUAnzOGyvPWUJXOl+NDVzQhXhYJnhsYU75xJSsWwL9?=
+ =?us-ascii?Q?iestZ/7GAWdFqSCGjwHImI2W3mkr/F9332jKqpUca7kJYSMANqEUrO7owE4e?=
+ =?us-ascii?Q?DVeWPlxGNM2GCwjIBKWQOZFRnobP3h1sbLNatAuPrKMmO+OC3Ia+Pgnm4BjG?=
+ =?us-ascii?Q?9r81V2eUzxcqtJpcTjF6O0PM3Kzz3/rXrMXgO607n+0rDkS+USOLSP0AQzwd?=
+ =?us-ascii?Q?mL1B1AeyUrrJzjEfoT0iQh5npjQMqxIeUwnSxPlHZdw6PnLX1LmdqYgTo5xR?=
+ =?us-ascii?Q?w2ujiLMmmzY4hF46urmKItx7Z4Cebf0Qps36oDGjQR0T3uF2ra/xHfY9FDAU?=
+ =?us-ascii?Q?f3ptF6rKQ9Eu3kzF3mlA0DfX1dJ+3TI86r2zPiUswaxvjElHfFmEKFJg2R/j?=
+ =?us-ascii?Q?YUedw9xHMsTx7whNWjgkvANjJ7FnUcxv8d60fDJkfNQX3LTID+SdMRKjKNZ3?=
+ =?us-ascii?Q?YefH64AsNIOIZs+7aLcGg6NkwjjFTaSsBLfXwgSdZbax4Ce9OmE2TB7zmjpi?=
+ =?us-ascii?Q?U+vqHkhIdIHOuuosjn5FRMoAb0sMSwglr6tHEB2Zc7IsOPKkSFUl6Nk+AjWm?=
+ =?us-ascii?Q?Zh3pvgVdMkUjUqFcjKLiSxNA9ocZxFmfGkbIEd+diyK+WfQies5ASmeN/Fpd?=
+ =?us-ascii?Q?aP54CZ7TNxgEFWAL9SYTVqq37C6/0dFMDxf7Xm4BRDhA2zG4RAWh7p3ap9VL?=
+ =?us-ascii?Q?9msyCSgMsD+oJrTpT8Kn6LeYLYhRI8g74YrhQXjcobBqaaXHkgMUsP8OcAGK?=
+ =?us-ascii?Q?ToBoxcRKdVs/lLqZvCxDLBpaZLZTMAMrZxVNW2TN7XiNHBOnHi4qG0V5/p5k?=
+ =?us-ascii?Q?7VzlMbPUaBgX+ohPGR57VYaXqir5HaNSnncJIZlFlBB2sd7hylqIQSDAqDAK?=
+ =?us-ascii?Q?ukMankbOVZdxmpddQBFNirJR8yPF2FNz+ZsHJp2vgSax/4HrJOQjpmd3TQb+?=
+ =?us-ascii?Q?KT89m52p7d7cizYN6zU6R79UPyyDUyEIHdgiwBllt86s/VTsB2+dAbHxe4Mu?=
+ =?us-ascii?Q?Od1zUSfjD7fmkAx4Fj9l9YeAQiwzsDY6ICijXuMGU1uEZ33wznN4K0+OsIIr?=
+ =?us-ascii?Q?TCUea3zO0FB4gwjWmZUwQEayEPMazmrOL2P9kpOu6PgLsN5JGsyl24S8dogW?=
+ =?us-ascii?Q?3VLyOsPi5Vc2N8HIkAh1+rb8f8KL+9UuG+oN?=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:PH8PR11MB6976.namprd11.prod.outlook.com; PTR:; CAT:NONE;
  SFS:(13230040)(1800799024)(366016)(376014)(7053199007)(38070700021)(8096899003);
  DIR:OUT; SFP:1101; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?y8l7iuGXgqXxTwl3H6U5K8BzfsR/fF+iU3BiXVIoV8wc8zYXYrIUN/dfJUsG?=
- =?us-ascii?Q?Y8roiDJK0aMvlbXaApRJdPw0Z3Z5/hk6McNetdY20wUNS1e5bcgOIzN0fK6i?=
- =?us-ascii?Q?1Ml4doDc03d8x6xUERc2Mo2QABXZnVi7CIvUqMswKKUoOBFKz/2tp7eK6vmc?=
- =?us-ascii?Q?0oEqen05ks4YeX+aM9Wv96wLlXh9pGf06nxD4PGpuyGqFKYf2+TeRIcCX9g1?=
- =?us-ascii?Q?98b8SaY87V2eSq7tnPf9OaTzZ/0CE3wus1Y6QQTFlPMIjbRyhhjfd+myXCBi?=
- =?us-ascii?Q?Qg3PMm/zLDIVPqof6sEAbnvgJwfZHwM4vCycfethJuu3P8vOguXkURNH4jJQ?=
- =?us-ascii?Q?Rh/z65NQMT9X9Y/4Rk4nCTC9ULAQdeZxgGDfEynuU2kjvjV+t4b+FfqR8HF1?=
- =?us-ascii?Q?qSrAa9+kdxF1Cv3Wed53+iWA/vFxE3WG9febC/+BWvviy71xIbex+ykfLI5z?=
- =?us-ascii?Q?o/aKB5jQggoKmDfkba1pLB/5OG31vYHqELoC4RpZJJ52Tb1/7lft6iPR6Yue?=
- =?us-ascii?Q?2s4pk5Ww3WlSnpm89CssFtNtAn241nS24IV1KmxZQ1ecR4RkKkaVu5YT6pNq?=
- =?us-ascii?Q?Cj6zFEHZ4q383Gw3lyjSKXOWp4ejfM/8UNz8pPpkEQqJIMm8hCj9Z/hEYRkN?=
- =?us-ascii?Q?GqlmhHbjRjuntvpJGbnkC8g7voetWn+TL4BuM8aNPsjDky2ppaqqP3U5xQxi?=
- =?us-ascii?Q?6ACFMurFgbmI2X2ZNJzmgNyykGyx5iCY3cpdiJSwYnwYWXght7ZRN+FuUe/8?=
- =?us-ascii?Q?27N0CHkKVb318zLLDlFpyhmQVRYKScoBp7TBn803qqtzGXH7lkf3ZRF0chTu?=
- =?us-ascii?Q?4k6/LSruygvCajDHvawcXp3Q3OcTjG9fKsgbrJn9mDs6KFXxpx9f02QOgriD?=
- =?us-ascii?Q?MQcb7Gb/4F/qxi68mxpg5vULcsGHjUxtfHkSGGjIIsUp5WStu/Aw2X12v91K?=
- =?us-ascii?Q?8evo59p+D/A05KJDhrsDBL3Z3Gn+63LROkfxhm27/EcWm+uaQ8hnJIj6uG0x?=
- =?us-ascii?Q?ELJ2GLXKx/uGv86spKhNVLIV0kwvHcnRSRmmcvnHGnkPjNCrQnvI5UV5Wprz?=
- =?us-ascii?Q?f8SRnhPYWS9MLBZ0AK5CaKYMmX7uzUVFwgjCxJE1r5WLb4Gzd5A/iNIvgc7j?=
- =?us-ascii?Q?1gwzEFQfp3AMDq5nSOzB693sGBnt/yMyakFVa/MnksYba95xa6pgjhVmdnnW?=
- =?us-ascii?Q?X+xZXlVweuEVuWykJlFmgwlQPzDK04oXuvqdxjarvdhyhoyDSfdXkW8TAw2a?=
- =?us-ascii?Q?Lrkwh4tzUrFvSowLxSWbVe1v1OaP+xxsDWU0t8y1yAf1xNhVAL1kYdpBxEUU?=
- =?us-ascii?Q?TrKcEReeRUELvn1b40EDFWyfvuiFCb7BQ2I0/0yzfXrbV+wPOLv56n/RNzql?=
- =?us-ascii?Q?r5QXLUyp2iW3xSZNmHTd4lCrrpTnj+oLCyRrWVhzeeTSTn3fxf7zHDuMsPq+?=
- =?us-ascii?Q?aI8OJMexthDtyBCd9VzhwgWTgL0DuN6NH6XoX3aZyqFAtQ8MqIEvogLHFJ4m?=
- =?us-ascii?Q?Eb36xIpBiGKO0PtopBF6NzTCJSGE5U7MQBxmjbbCSxcP6LBQziWUgR+KakG1?=
- =?us-ascii?Q?cA2E+rVMMENTtHbndTSWAipZY052yR9+lG05YmQ0A/B7DrwJAG97DaVVE0k7?=
- =?us-ascii?Q?ng=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?TFHpfQQwiux28DVbLWeO0PZRChF95wtxacI5nHAVja0dGkME5udEekkDFiLw?=
+ =?us-ascii?Q?fctqzoTlzNmFMqQwBCrnmJLVWU7PgmOsAppfY5zzZK6xc+VoveAntDieCnuA?=
+ =?us-ascii?Q?MjQDjGMleTCxDhgedIOg/kfguuXJ0hq2h2iGUg3hYeB3NHnMmH/a5nZTqyJQ?=
+ =?us-ascii?Q?gi1OK0z5eqUm9xo3wGcOHov4FglcESP8irj0Oqt8JSqTtqYhb5bycOQP4tMZ?=
+ =?us-ascii?Q?/da185YagJ9lvh6WkJmD5WzlTpj1vgxSb4Tz7iOug7JmzgknbfJeetp9rXFV?=
+ =?us-ascii?Q?feVrCRtTLWO4jjomATT2GoUWXXdx8GWEqPOEZgRFPPPeenNIEGSSecUxVwX4?=
+ =?us-ascii?Q?ac9OzheN1w9rA+h0B6gAHGCh/IBoz+I7RQEElIlLbB6hh03Dp1ZEmKVD4N6d?=
+ =?us-ascii?Q?4xdkjVQb+QMJZfmdRRHu2Ej6PNcGbw8u728lGtX+MHhEjmex/TQZZwLr53w+?=
+ =?us-ascii?Q?lJn4QYddOHeVsp4zWBQYxkCaU2yWmSdLroi4apZc/WQa/ZgX30mRNuZ3ewa1?=
+ =?us-ascii?Q?0WdDZ6NkXYHiFfU3Sa9lzzUAQt5yFUABH22TIQGN6a3UHSJi9HcMru4n8y2b?=
+ =?us-ascii?Q?a7Glp41mD8CMnJAfGS6iViGOwodtZT+j10H+33525+J0Eg+a90ziKrwhkey4?=
+ =?us-ascii?Q?Us+l9H4thfOcG0IpUMRYfzhD+XLypRmLbheLTHl6/SRlHAfrL/+SbKwdCt1N?=
+ =?us-ascii?Q?9o/JPB3YeCCG9A01jb1Qrtd39eEVBdlI8HwXuJ5A6ZOgF6R6FMbx5avWxjUG?=
+ =?us-ascii?Q?QPJBXy3GJli7rM8fAHIfI0gJtZi+a87olKgxbFDj/ek6C7TOzWwRt1QlDydC?=
+ =?us-ascii?Q?R78mZDjnWu2xHRDW+4GA95yEMFog5DQRCj6cMwR09ZSSEuEjBxQWPzY6VSH5?=
+ =?us-ascii?Q?p3XVAFFiXp5vNamMfGu03mmDyYX+udWnKxJLNaaF+zqJCkLkY0kU7h4/B0Ia?=
+ =?us-ascii?Q?527VodD0OM1hqzStfiIcf/kx8Zj2UqENcqLkkdGDqbQvc2GETsKeExP2HBeC?=
+ =?us-ascii?Q?rdsVGsuABA3/1yf/n764wGR1b+ufL6qnS+Rexsr5cUqnbtEG9+gHXE76sdyv?=
+ =?us-ascii?Q?9txj9Kd/QNKWQh6MW4qYamTw6hghqV5HrajetTHT3lMxSLGPj6hX/sxV0it8?=
+ =?us-ascii?Q?p7KHdcobkLCxY4As1Gxust18wclME91PcsYrkV5swm7sGQVOYaf9USpL4Xja?=
+ =?us-ascii?Q?dApx1hvhTVwMIsVgrH39YuXuZlR2mTxpI36LK7nnKtrhIzqx1N6gpQuFMz4y?=
+ =?us-ascii?Q?LUXrNqD2UxmpQZA8Ak2YWWbUQQy1J7vczi1u5Rrc1ZQJxo5P/yzqLMNbgnj6?=
+ =?us-ascii?Q?b3vPmCdJu7QBnQkylgmpd6svja6+ojJKpAPURkEwSQZzgju1NcnA1box8X7l?=
+ =?us-ascii?Q?irX+0ON+MY5jAAl8Zkg+gG8dRHzZkDrY+GP5GRWNN7tgW4QOF6f3tdvCwRAl?=
+ =?us-ascii?Q?5ZOfCQht4XdikUQjXKVTzUPEeniCq1Kcxn0GPR6COKAtEk6IkU0UNzwk5ksI?=
+ =?us-ascii?Q?4u5fO8brr+z2uOJXWVd+x/j4jijN90CrOTFN8IMwbKpok8ua6IoOjKoMaDa2?=
+ =?us-ascii?Q?IE0dxw5iHajjW17V8LCdwyULOnO5YuFxmH5FqHFji47zko93GFEh03BtU7eG?=
+ =?us-ascii?Q?2A=3D=3D?=
 Content-Type: multipart/alternative;
- boundary="_000_PH8PR11MB69764650A4A2EB8CCAFD5461F9F8APH8PR11MB6976namp_"
+ boundary="_000_PH8PR11MB6976E31413A8D0031FA99651F9F8APH8PR11MB6976namp_"
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: PH8PR11MB6976.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 33eb404e-2dd8-40e1-cd42-08de183a2fea
-X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Oct 2025 04:58:52.3653 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9b42ae7f-00d4-4aa8-cdac-08de183a3952
+X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Oct 2025 04:59:08.2048 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: X8wVE96G9DxksJ7dE4AidLVpR5ojpJso//ImAm8c/F1D3m0njip8Gyy87PqFsV8HZ1ndliqdv4gyZYPqoy+iC0P+MTHkjUXf40g9wDfkUoQ=
+X-MS-Exchange-CrossTenant-userprincipalname: rvbl5vcwGCcI7wffsq9qBvbQO8k4IM+s7JsWGdOWCzjw7a0Xkp31k5tCaB6ErVgcpEVqXXYzJxvtrMJEc6hq6sLFniCxMiaJPkiREfOf074=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR11MB8321
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1761887162; x=1793423162;
+ t=1761887178; x=1793423178;
  h=from:to:cc:subject:date:message-id:mime-version;
- bh=RBVZHlyTNDyOMlinliwyqDVUrH/26t8HUFcp4KF/vG0=;
- b=OfgVUikCM9BbtXivhzxfd9m2+ve/U+12ek4UKt3IVpseFEo8E2JccnTN
- 2WuOwiETFi1xMBzmHKR1GcHHPi8d2MWjPdE7SvQaVf6gFD7lGm8CZaHcK
- oW0BP00+xEw7Hf/35CWyXoN5xXVGK4iIvSwmEFzcmbTGUrRnjLIXVgiSG
- lFGbV28bpQ2pZHXrubvVNLXzEbC1692ZNog+S2xAptizgLlS5bHLnmBKg
- M5EyWbF4kNnJu00KlYDuGgOLV76zLE3XuOv2w8SmoIG/E7o+Q9Hhk/nHh
- +bg1uj751VkYX0SSQC11OfiWfy/JNU7lzwmOVD94TpeZS94KoagVyxAI7
- Q==;
+ bh=ivjnPu5SGpjIPh2YGXAGSHlakCDc+0v4ftwpJZErqds=;
+ b=Yg55w5ieHguwGrMAL7bgy8+Y1MHtCs2YMK56GhSv8oh59KqiV6Kt95EJ
+ 4vbuthSIACCG9dmghdVbzmvIrtkyJ5ecBpPhPGVhmuED9MxEHVG6vcSBC
+ 9Mmxd+NxLipLpW139ZU3RLgegCIv3D2H8CsXhoIqd/4G2AGnfvV4Lv3lQ
+ fbEH6xMS08MCW8RMX/55pyieD/5d+EDdW1MJQfqoKPW4Tntl2a7S1ERoV
+ 4OjNrSxFsgmYVIYiOcvTAMTE+JlqeRjeEVs8nBbC3Nhax16vHK+zpKQhh
+ MigcTsv/bnAvbB12f1HLeHhWLgjeVcYxcnK09ZQWKXC5er2xkUTecqnWu
+ w==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=OfgVUikC
+ header.a=rsa-sha256 header.s=Intel header.b=Yg55w5ie
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: [Intel-wired-lan] [PATCH iwl-next v3 1/3] ice: remove legacy Rx and
- construct SKB
+Subject: [Intel-wired-lan] [PATCH iwl-next v3 2/3] ice: drop page splitting
+ and recycling
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -228,7 +228,7 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---_000_PH8PR11MB69764650A4A2EB8CCAFD5461F9F8APH8PR11MB6976namp_
+--_000_PH8PR11MB6976E31413A8D0031FA99651F9F8APH8PR11MB6976namp_
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 
@@ -244,69 +244,58 @@ org>
 
 > Cc: Fijalkowski, Maciej <maciej.fijalkowski@intel.com<mailto:maciej.fijal=
 kowski@intel.com>>; Lobakin, Aleksander <aleksander.lobakin@intel.com<mailt=
-o:aleksander.lobakin@intel.com>>; Keller, Jacob E <jacob.e.keller@intel.com=
-<mailto:jacob.e.keller@intel.com>>;
+o:aleksander.lobakin@intel.com>>;
 
-> Zaremba, Larysa <larysa.zaremba@intel.com<mailto:larysa.zaremba@intel.com=
->>; netdev@vger.kernel.org<mailto:netdev@vger.kernel.org>; Kitszel, Przemys=
-law <przemyslaw.kitszel@intel.com<mailto:przemyslaw.kitszel@intel.com>>; pm=
-enzel@molgen.mpg.de<mailto:pmenzel@molgen.mpg.de>;
+> Keller, Jacob E <jacob.e.keller@intel.com<mailto:jacob.e.keller@intel.com=
+>>; Zaremba, Larysa <larysa.zaremba@intel.com<mailto:larysa.zaremba@intel.c=
+om>>; netdev@vger.kernel.org<mailto:netdev@vger.kernel.org>;
 
-> Nguyen, Anthony L <anthony.l.nguyen@intel.com<mailto:anthony.l.nguyen@int=
-el.com>>; Kubiak, Michal <michal.kubiak@intel.com<mailto:michal.kubiak@inte=
-l.com>>
+> Kitszel, Przemyslaw <przemyslaw.kitszel@intel.com<mailto:przemyslaw.kitsz=
+el@intel.com>>; pmenzel@molgen.mpg.de<mailto:pmenzel@molgen.mpg.de>; Nguyen=
+, Anthony L <anthony.l.nguyen@intel.com<mailto:anthony.l.nguyen@intel.com>>=
+; Kubiak, Michal <michal.kubiak@intel.com<mailto:michal.kubiak@intel.com>>
 
-> Subject: [Intel-wired-lan] [PATCH iwl-next v3 1/3] ice: remove legacy Rx =
-and construct SKB
-
->
-
-> The commit 53844673d555 ("iavf: kill 'legacy-rx' for good") removed the l=
-egacy Rx path in the iavf driver. This change applies the same rationale to=
- the ice driver.
+> Subject: [Intel-wired-lan] [PATCH iwl-next v3 2/3] ice: drop page splitti=
+ng and recycling
 
 >
 
-> The legacy Rx path relied on manual skb allocation and header copying, wh=
-ich has become increasingly inefficient and difficult to maintain.
+> As part of the transition toward Page Pool integration, remove the legacy=
+ page splitting and recycling logic from the ice driver.
 
-> With the stabilization of build_skb() and the growing adoption of feature=
-s like XDP, page_pool, and multi-buffer support, the legacy approach is no =
-longer viable.
-
->
-
-> Key drawbacks of the legacy path included:
-
-> - Higher memory pressure due to direct page allocations and splitting;
-
-> - Redundant memcpy() operations for packet headers;
-
-> - CPU overhead from eth_get_headlen() and Flow Dissector usage;
-
-> - Compatibility issues with XDP, which imposes strict headroom and
-
-> tailroom requirements.
+> This mirrors the approach taken in commit 920d86f3c552 ("iavf: drop page =
+splitting and recycling").
 
 >
 
-> The ice driver, like iavf, does not benefit from the minimal headroom sav=
-ings that legacy Rx once offered, as it already splits pages into fixed hal=
-ves. Removing this path simplifies the Rx logic, eliminates unnecessary bra=
-nches in the hotpath, and prepares the driver for upcoming enhancements.
+> The previous model attempted to reuse partially consumed pages by splitti=
+ng them and tracking their usage across descriptors.
+
+> While this was once a memory optimization, it introduced significant >com=
+plexity and overhead in the Rx path, including:
+
+> - Manual refcount management and page reuse heuristics;
+
+> - Per-descriptor buffer shuffling, which could involve moving dozens
+
+> of `ice_rx_buf` structures per NAPI cycle;
+
+> - Increased branching and cache pressure in the hotpath.
 
 >
 
-> In addition to removing the legacy Rx path, this change also eliminates t=
-he custom construct_skb() functions from both the standard and zero-copy (Z=
-C) Rx paths. These are replaced with the build_skb() > and standardized xdp=
-_build_skb_from_zc() helpers, aligning the driver with the modern XDP infra=
-structure and reducing code duplication.
+> This change simplifies the Rx logic by always allocating fresh pages and =
+letting the networking stack handle their lifecycle.
+
+> Although this may temporarily reduce performance(up to ~98% in some XDP c=
+ases), it greatly improves maintainability and paves the way for Page Pool,
+
+> which will restore and exceed previous performance levels.
 
 >
 
-> This cleanup also reduces code complexity and improves maintainability as=
- we move toward a more unified and modern Rx model across drivers.
+> The `ice_rx_buf` array is retained for now to minimize diffstat and ease =
+future replacement with a shared buffer abstraction.
 
 >
 
@@ -327,24 +316,18 @@ k@intel.com>>
 
 > ---
 
-> drivers/net/ethernet/intel/ice/ice.h         |  1 -
+> drivers/net/ethernet/intel/ice/ice.h         |   2 +
 
-> drivers/net/ethernet/intel/ice/ice_base.c    | 23 +-----
+> drivers/net/ethernet/intel/ice/ice_base.c    |  29 ++--
 
-> drivers/net/ethernet/intel/ice/ice_ethtool.c |  5 --
+> drivers/net/ethernet/intel/ice/ice_txrx.c    | 139 ++-----------------
 
-> drivers/net/ethernet/intel/ice/ice_main.c    | 11 +--
+> drivers/net/ethernet/intel/ice/ice_txrx.h    |  72 ----------
 
-> drivers/net/ethernet/intel/ice/ice_txrx.c    | 86 +-------------------
+> drivers/net/ethernet/intel/ice/virt/queues.c |   5 +-
 
-> drivers/net/ethernet/intel/ice/ice_txrx.h    | 16 ----
-
-> drivers/net/ethernet/intel/ice/ice_xsk.c     | 72 +---------------
-
-> 7 files changed, 6 insertions(+), 208 deletions(-)
-
+> 5 files changed, 24 insertions(+), 223 deletions(-)
 >
-
 
 
 Tested-by: Saritha Sanigani <sarithax.sanigani@intel.com<mailto:sarithax.sa=
@@ -354,8 +337,7 @@ nigani@intel.com>> (A Contingent Worker at Intel)
 
 
 
-
---_000_PH8PR11MB69764650A4A2EB8CCAFD5461F9F8APH8PR11MB6976namp_
+--_000_PH8PR11MB6976E31413A8D0031FA99651F9F8APH8PR11MB6976namp_
 Content-Type: text/html; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 
@@ -368,6 +350,9 @@ fice/2004/12/omml" xmlns=3D"http://www.w3.org/TR/REC-html40">
 <meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
 <style><!--
 /* Font Definitions */
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
 @font-face
 	{font-family:"Cambria Math";
 	panose-1:2 4 5 3 5 4 6 3 2 4;}
@@ -412,6 +397,721 @@ span.PlainTextChar
 	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
 div.WordSection1
 	{page:WordSection1;}
+/* List Definitions */
+@list l0
+	{mso-list-id:432671176;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1683483016 -1667074472 1074331651 1074331653 107433=
+1649 1074331651 1074331653 1074331649 1074331651 1074331653;}
+@list l0:level1
+	{mso-level-start-at:5;
+	mso-level-number-format:bullet;
+	mso-level-text:\F0D8;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+@list l0:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l0:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l0:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l0:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l0:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l0:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l0:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l0:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l1
+	{mso-list-id:437601636;
+	mso-list-type:hybrid;
+	mso-list-template-ids:603768172 1808297650 1074331651 1074331653 107433164=
+9 1074331651 1074331653 1074331649 1074331651 1074331653;}
+@list l1:level1
+	{mso-level-start-at:5;
+	mso-level-number-format:bullet;
+	mso-level-text:\F0D8;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+@list l1:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l1:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l1:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l1:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l1:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l1:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l1:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l1:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l2
+	{mso-list-id:821652690;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1892322160 -1944911926 1074331651 1074331653 1074331=
+649 1074331651 1074331653 1074331649 1074331651 1074331653;}
+@list l2:level1
+	{mso-level-start-at:5;
+	mso-level-number-format:bullet;
+	mso-level-text:\F0D8;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+@list l2:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l2:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l2:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l2:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l2:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l2:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l2:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l2:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l3
+	{mso-list-id:1054818828;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-821104680 1115865806 1074331651 1074331653 10743316=
+49 1074331651 1074331653 1074331649 1074331651 1074331653;}
+@list l3:level1
+	{mso-level-start-at:5;
+	mso-level-number-format:bullet;
+	mso-level-text:\F0D8;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+@list l3:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l3:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l3:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l3:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l3:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l3:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l3:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l3:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l4
+	{mso-list-id:1091201179;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1549898646 -15068500 1074331651 1074331653 10743316=
+49 1074331651 1074331653 1074331649 1074331651 1074331653;}
+@list l4:level1
+	{mso-level-start-at:5;
+	mso-level-number-format:bullet;
+	mso-level-text:\F0D8;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+@list l4:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l4:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l4:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l4:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l4:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l4:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l4:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l4:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l5
+	{mso-list-id:1106999256;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1092139474 1018984096 1074331651 1074331653 10743316=
+49 1074331651 1074331653 1074331649 1074331651 1074331653;}
+@list l5:level1
+	{mso-level-start-at:5;
+	mso-level-number-format:bullet;
+	mso-level-text:\F0D8;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+@list l5:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l5:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l5:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l5:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l5:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l5:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l5:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l5:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l6
+	{mso-list-id:1142885685;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-179561482 1120187866 1074331651 1074331653 10743316=
+49 1074331651 1074331653 1074331649 1074331651 1074331653;}
+@list l6:level1
+	{mso-level-start-at:5;
+	mso-level-number-format:bullet;
+	mso-level-text:\F0D8;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+@list l6:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l6:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l6:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l6:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l6:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l6:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l6:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l6:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l7
+	{mso-list-id:1210923370;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-396034770 -1282786006 1074331651 1074331653 1074331=
+649 1074331651 1074331653 1074331649 1074331651 1074331653;}
+@list l7:level1
+	{mso-level-start-at:5;
+	mso-level-number-format:bullet;
+	mso-level-text:\F0D8;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+@list l7:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l7:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l7:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l7:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l7:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l7:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l7:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l7:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l8
+	{mso-list-id:1599866831;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-113445182 -421638148 1074331651 1074331653 10743316=
+49 1074331651 1074331653 1074331649 1074331651 1074331653;}
+@list l8:level1
+	{mso-level-start-at:5;
+	mso-level-number-format:bullet;
+	mso-level-text:\F0D8;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+@list l8:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l8:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l8:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l8:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l8:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l8:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l8:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l8:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l9
+	{mso-list-id:1667708953;
+	mso-list-type:hybrid;
+	mso-list-template-ids:462178376 -53983596 1074331651 1074331653 1074331649=
+ 1074331651 1074331653 1074331649 1074331651 1074331653;}
+@list l9:level1
+	{mso-level-start-at:5;
+	mso-level-number-format:bullet;
+	mso-level-text:\F0D8;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+@list l9:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l9:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l9:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l9:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l9:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l9:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l9:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l9:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
 --></style>
 </head>
 <body lang=3D"EN-IN" link=3D"#467886" vlink=3D"#96607D" style=3D"word-wrap:=
@@ -428,64 +1128,62 @@ osuosl.org">intel-wired-lan@lists.osuosl.org</a><o:p></o:p></p>
 <p class=3D"MsoPlainText">&gt; Cc: Fijalkowski, Maciej &lt;<a href=3D"mailt=
 o:maciej.fijalkowski@intel.com">maciej.fijalkowski@intel.com</a>&gt;; Lobak=
 in, Aleksander &lt;<a href=3D"mailto:aleksander.lobakin@intel.com">aleksand=
-er.lobakin@intel.com</a>&gt;; Keller, Jacob E &lt;<a href=3D"mailto:jacob.e=
-.keller@intel.com">jacob.e.keller@intel.com</a>&gt;;
+er.lobakin@intel.com</a>&gt;;
 <o:p></o:p></p>
-<p class=3D"MsoPlainText">&gt; Zaremba, Larysa &lt;<a href=3D"mailto:larysa=
-.zaremba@intel.com">larysa.zaremba@intel.com</a>&gt;;
-<a href=3D"mailto:netdev@vger.kernel.org">netdev@vger.kernel.org</a>; Kitsz=
-el, Przemyslaw &lt;<a href=3D"mailto:przemyslaw.kitszel@intel.com">przemysl=
-aw.kitszel@intel.com</a>&gt;;
-<a href=3D"mailto:pmenzel@molgen.mpg.de">pmenzel@molgen.mpg.de</a>; <o:p></=
-o:p></p>
-<p class=3D"MsoPlainText">&gt; Nguyen, Anthony L &lt;<a href=3D"mailto:anth=
-ony.l.nguyen@intel.com">anthony.l.nguyen@intel.com</a>&gt;; Kubiak, Michal =
-&lt;<a href=3D"mailto:michal.kubiak@intel.com">michal.kubiak@intel.com</a>&=
-gt;<o:p></o:p></p>
+<p class=3D"MsoPlainText">&gt; Keller, Jacob E &lt;<a href=3D"mailto:jacob.=
+e.keller@intel.com">jacob.e.keller@intel.com</a>&gt;; Zaremba, Larysa &lt;<=
+a href=3D"mailto:larysa.zaremba@intel.com">larysa.zaremba@intel.com</a>&gt;=
+;
+<a href=3D"mailto:netdev@vger.kernel.org">netdev@vger.kernel.org</a>; <o:p>=
+</o:p></p>
+<p class=3D"MsoPlainText">&gt; Kitszel, Przemyslaw &lt;<a href=3D"mailto:pr=
+zemyslaw.kitszel@intel.com">przemyslaw.kitszel@intel.com</a>&gt;;
+<a href=3D"mailto:pmenzel@molgen.mpg.de">pmenzel@molgen.mpg.de</a>; Nguyen,=
+ Anthony L &lt;<a href=3D"mailto:anthony.l.nguyen@intel.com">anthony.l.nguy=
+en@intel.com</a>&gt;; Kubiak, Michal &lt;<a href=3D"mailto:michal.kubiak@in=
+tel.com">michal.kubiak@intel.com</a>&gt;<o:p></o:p></p>
 <p class=3D"MsoPlainText">&gt; Subject: [Intel-wired-lan] [PATCH iwl-next v=
-3 1/3] ice: remove legacy Rx and construct SKB<o:p></o:p></p>
+3 2/3] ice: drop page splitting and recycling<o:p></o:p></p>
+<p class=3D"MsoPlainText">&gt;<o:p>&nbsp;</o:p></p>
+<p class=3D"MsoPlainText">&gt; As part of the transition toward Page Pool i=
+ntegration, remove the legacy page splitting and recycling logic from the i=
+ce driver.
+<o:p></o:p></p>
+<p class=3D"MsoPlainText">&gt; This mirrors the approach taken in commit 92=
+0d86f3c552 (&quot;iavf: drop page splitting and recycling&quot;).<o:p></o:p=
+></p>
 <p class=3D"MsoPlainText">&gt; <o:p></o:p></p>
-<p class=3D"MsoPlainText">&gt; The commit 53844673d555 (&quot;iavf: kill 'l=
-egacy-rx' for good&quot;) removed the legacy Rx path in the iavf driver. Th=
-is change applies the same rationale to the ice driver.<o:p></o:p></p>
-<p class=3D"MsoPlainText">&gt;<o:p>&nbsp;</o:p></p>
-<p class=3D"MsoPlainText">&gt; The legacy Rx path relied on manual skb allo=
-cation and header copying, which has become increasingly inefficient and di=
-fficult to maintain.<o:p></o:p></p>
-<p class=3D"MsoPlainText">&gt; With the stabilization of build_skb() and th=
-e growing adoption of features like XDP, page_pool, and multi-buffer suppor=
-t, the legacy approach is no longer viable.<o:p></o:p></p>
-<p class=3D"MsoPlainText">&gt;<o:p>&nbsp;</o:p></p>
-<p class=3D"MsoPlainText">&gt; Key drawbacks of the legacy path included:<o=
+<p class=3D"MsoPlainText">&gt; The previous model attempted to reuse partia=
+lly consumed pages by splitting them and tracking their usage across descri=
+ptors.
+<o:p></o:p></p>
+<p class=3D"MsoPlainText">&gt; While this was once a memory optimization, i=
+t introduced significant &gt;complexity and overhead in the Rx path, includ=
+ing:<o:p></o:p></p>
+<p class=3D"MsoPlainText">&gt; - Manual refcount management and page reuse =
+heuristics;<o:p></o:p></p>
+<p class=3D"MsoPlainText">&gt; - Per-descriptor buffer shuffling, which cou=
+ld involve moving dozens<o:p></o:p></p>
+<p class=3D"MsoPlainText">&gt; of `ice_rx_buf` structures per NAPI cycle;<o=
 :p></o:p></p>
-<p class=3D"MsoPlainText">&gt; - Higher memory pressure due to direct page =
-allocations and splitting;<o:p></o:p></p>
-<p class=3D"MsoPlainText">&gt; - Redundant memcpy() operations for packet h=
-eaders;<o:p></o:p></p>
-<p class=3D"MsoPlainText">&gt; - CPU overhead from eth_get_headlen() and Fl=
-ow Dissector usage;<o:p></o:p></p>
-<p class=3D"MsoPlainText">&gt; - Compatibility issues with XDP, which impos=
-es strict headroom and<o:p></o:p></p>
-<p class=3D"MsoPlainText">&gt; tailroom requirements.<o:p></o:p></p>
+<p class=3D"MsoPlainText">&gt; - Increased branching and cache pressure in =
+the hotpath.<o:p></o:p></p>
+<p class=3D"MsoPlainText">&gt; <o:p></o:p></p>
+<p class=3D"MsoPlainText">&gt; This change simplifies the Rx logic by alway=
+s allocating fresh pages and letting the networking stack handle their life=
+cycle.
+<o:p></o:p></p>
+<p class=3D"MsoPlainText">&gt; Although this may temporarily reduce perform=
+ance(up to ~98% in some XDP cases), it greatly improves maintainability and=
+ paves the way for Page Pool,
+<o:p></o:p></p>
+<p class=3D"MsoPlainText">&gt; which will restore and exceed previous perfo=
+rmance levels.<o:p></o:p></p>
 <p class=3D"MsoPlainText">&gt;<o:p>&nbsp;</o:p></p>
-<p class=3D"MsoPlainText">&gt; The ice driver, like iavf, does not benefit =
-from the minimal headroom savings that legacy Rx once offered, as it alread=
-y splits pages into fixed halves. Removing this path simplifies the Rx logi=
-c, eliminates unnecessary branches in
- the hotpath, and prepares the driver for upcoming enhancements.<o:p></o:p>=
-</p>
-<p class=3D"MsoPlainText">&gt;<o:p>&nbsp;</o:p></p>
-<p class=3D"MsoPlainText">&gt; In addition to removing the legacy Rx path, =
-this change also eliminates the custom construct_skb() functions from both =
-the standard and zero-copy (ZC) Rx paths. These are replaced with the build=
-_skb() &gt; and standardized xdp_build_skb_from_zc()
- helpers, aligning the driver with the modern XDP infrastructure and reduci=
-ng code duplication.<o:p></o:p></p>
-<p class=3D"MsoPlainText">&gt;<o:p>&nbsp;</o:p></p>
-<p class=3D"MsoPlainText">&gt; This cleanup also reduces code complexity an=
-d improves maintainability as we move toward a more unified and modern Rx m=
-odel across drivers.<o:p></o:p></p>
-<p class=3D"MsoPlainText">&gt;<o:p>&nbsp;</o:p></p>
+<p class=3D"MsoPlainText">&gt; The `ice_rx_buf` array is retained for now t=
+o minimize diffstat and ease future replacement with a shared buffer abstra=
+ction.<o:p></o:p></p>
+<p class=3D"MsoPlainText">&gt; <o:p></o:p></p>
 <p class=3D"MsoPlainText">&gt; Co-developed-by: Alexander Lobakin &lt;<a hr=
 ef=3D"mailto:aleksander.lobakin@intel.com">aleksander.lobakin@intel.com</a>=
 &gt;<o:p></o:p></p>
@@ -503,27 +1201,23 @@ mailto:michal.kubiak@intel.com">michal.kubiak@intel.com</a>&gt;<o:p></o:p><=
 /p>
 <p class=3D"MsoPlainText">&gt; ---<o:p></o:p></p>
 <p class=3D"MsoPlainText">&gt; drivers/net/ethernet/intel/ice/ice.h&nbsp;&n=
-bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp; 1 -<o:p></o:p></p>
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp; 2 +<o:p></o:p></p>
 <p class=3D"MsoPlainText">&gt; drivers/net/ethernet/intel/ice/ice_base.c&nb=
-sp;&nbsp;&nbsp; | 23 +-----<o:p></o:p></p>
-<p class=3D"MsoPlainText">&gt; drivers/net/ethernet/intel/ice/ice_ethtool.c=
- |&nbsp; 5 --<o:p></o:p></p>
-<p class=3D"MsoPlainText">&gt; drivers/net/ethernet/intel/ice/ice_main.c&nb=
-sp;&nbsp;&nbsp; | 11 +--<o:p></o:p></p>
+sp;&nbsp;&nbsp; |&nbsp; 29 ++--<o:p></o:p></p>
 <p class=3D"MsoPlainText">&gt; drivers/net/ethernet/intel/ice/ice_txrx.c&nb=
-sp;&nbsp;&nbsp; | 86 +-------------------<o:p></o:p></p>
+sp;&nbsp;&nbsp; | 139 ++-----------------<o:p></o:p></p>
 <p class=3D"MsoPlainText">&gt; drivers/net/ethernet/intel/ice/ice_txrx.h&nb=
-sp;&nbsp;&nbsp; | 16 ----<o:p></o:p></p>
-<p class=3D"MsoPlainText">&gt; drivers/net/ethernet/intel/ice/ice_xsk.c&nbs=
-p;&nbsp;&nbsp;&nbsp; | 72 +---------------<o:p></o:p></p>
-<p class=3D"MsoPlainText">&gt; 7 files changed, 6 insertions(+), 208 deleti=
-ons(-)<o:p></o:p></p>
-<p class=3D"MsoPlainText">&gt;<o:p>&nbsp;</o:p></p>
-<p class=3D"MsoPlainText"><o:p>&nbsp;</o:p></p>
+sp;&nbsp;&nbsp; |&nbsp; 72 ----------<o:p></o:p></p>
+<p class=3D"MsoPlainText">&gt; drivers/net/ethernet/intel/ice/virt/queues.c=
+ |&nbsp;&nbsp; 5 +-<o:p></o:p></p>
+<p class=3D"MsoPlainText">&gt; 5 files changed, 24 insertions(+), 223 delet=
+ions(-)<o:p></o:p></p>
+<p class=3D"MsoNormal">&gt;<o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
 <p class=3D"MsoPlainText">Tested-by: Saritha Sanigani &lt;<a href=3D"mailto=
 :sarithax.sanigani@intel.com">sarithax.sanigani@intel.com</a>&gt; (A Contin=
 gent Worker at Intel)<o:p></o:p></p>
-<p class=3D"MsoPlainText"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
 <p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
 <p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
 <p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
@@ -531,4 +1225,4 @@ gent Worker at Intel)<o:p></o:p></p>
 </body>
 </html>
 
---_000_PH8PR11MB69764650A4A2EB8CCAFD5461F9F8APH8PR11MB6976namp_--
+--_000_PH8PR11MB6976E31413A8D0031FA99651F9F8APH8PR11MB6976namp_--
