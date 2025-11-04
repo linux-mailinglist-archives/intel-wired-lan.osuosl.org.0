@@ -1,115 +1,237 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A510BC2EB12
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 04 Nov 2025 02:07:28 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4EE89C2F950
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 04 Nov 2025 08:22:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 17DA881414;
-	Tue,  4 Nov 2025 01:07:27 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id bIXy15l9itCU; Tue,  4 Nov 2025 01:07:26 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 25B8A81447
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1762218446;
-	bh=SSjyQLZh/SawTn78WLI3OYgBzQqF6vNf4o3ea0wCDKg=;
-	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=5pPCSEvNVSshm0fPiCE7Kvt/LbsPhPfbW5n2vz/UFE2s+h11s2GJD/YajCL777mWt
-	 Mjo+7jmJzpqpv3YuSCPRW7NdSlEWYEKgWYwtGI7CxT8szZRa7FNfPA1kS/9E8oVReS
-	 ylWix75Jq7FlB+Yud50uQuGq/i/6JDFP4x/BZBk4tDAjiYlxLpBLmsHyOGuViuqG4J
-	 0lzJ3ebWMjnh/n6cTeU/IBKHlUg16CKur6VjsC+7FLn8364yQEMAL3SHWiz2xul1EP
-	 ErQm2EPfStD8svNEtsWmK4CwZW972/Rfs8FiVWcH+AXhScyki3VHudH6bYYeW6ZatJ
-	 q4X+tdAskWFqQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 25B8A81447;
-	Tue,  4 Nov 2025 01:07:26 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id E135B222
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Nov 2025 01:07:22 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id DB63C60BA2
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Nov 2025 01:07:22 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9857460EE8;
+	Tue,  4 Nov 2025 07:22:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id oFp46Ndfvyin for <intel-wired-lan@lists.osuosl.org>;
- Tue,  4 Nov 2025 01:07:22 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
- helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
+ id n3Yk3tpPlix4; Tue,  4 Nov 2025 07:22:28 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0EB9B60EE4
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1762240948;
+	bh=EeObBUqsbbC8LS9YUtixXy1apbwbKDM2JsQIWgOQpJA=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=hqU6mqtnsdeYTgf8sWlcGWJU7PeUSxityfhHAWGyI8MpSjyigqknKMP98PRiZSh1Z
+	 oOjIseZWROseDGzDXW6tNVqJBMWHUosAW0pZpKMSaRP3BQHTymCzzpZQji0ItHW3fu
+	 NOM1Zq9MiWgJFuyHq1S4sRppx9r/Sw94iFkUMq0rX9of5bUL2+Mvz1od63nrr7yXXP
+	 D4RhbJK0OnaYXzyLUUDMiYhmrRfp3COgbjcO7Wt1q757Jx6U2Sqz0baJ24y20Yzd7Z
+	 XCXlYJL8LP/qAJW7yxvZDmpzSff8bMr/dx9N63vi9Wi3fcStGzqo3mHh7t+XAk183b
+	 NQyyUhktAOGOQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0EB9B60EE4;
+	Tue,  4 Nov 2025 07:22:28 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id C6FB1222
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Nov 2025 07:22:25 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id AC5B240BDB
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Nov 2025 07:22:25 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id VDvUrueCV-VX for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  4 Nov 2025 07:22:25 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
+ helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D7E2A605A1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D7E2A605A1
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D7E2A605A1
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Nov 2025 01:07:21 +0000 (UTC)
-X-CSE-ConnectionGUID: EhGMkUGGT325U/IgzMs0yg==
-X-CSE-MsgGUID: igubshhLRdCAYd9pa5bIHg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11602"; a="64190643"
-X-IronPort-AV: E=Sophos;i="6.19,277,1754982000"; d="scan'208";a="64190643"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
- by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Nov 2025 17:07:19 -0800
-X-CSE-ConnectionGUID: EJ4KPjvHTV2hzm1ZAkfR2w==
-X-CSE-MsgGUID: cakNxA1TR0uGnXuuiGVMoA==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 0C53640BD8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0C53640BD8
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0C53640BD8
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Nov 2025 07:22:24 +0000 (UTC)
+X-CSE-ConnectionGUID: RgqA/QoORiG3y3OTZ09jCg==
+X-CSE-MsgGUID: k3v2c6yuTq2fcYNEAT2OCA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11602"; a="64360014"
+X-IronPort-AV: E=Sophos;i="6.19,278,1754982000"; d="scan'208";a="64360014"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Nov 2025 23:22:25 -0800
+X-CSE-ConnectionGUID: vue4hzZ1Tz6Zj2Sl14SEjw==
+X-CSE-MsgGUID: UJ+3RKeeSHeos/sJmjHmog==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,277,1754982000"; d="scan'208";a="217828778"
-Received: from orcnseosdtjek.jf.intel.com (HELO [10.166.28.90])
- ([10.166.28.90])
- by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Nov 2025 17:07:17 -0800
-From: Jacob Keller <jacob.e.keller@intel.com>
-Date: Mon, 03 Nov 2025 17:06:54 -0800
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20251103-jk-refactor-queue-stats-v1-9-164d2ed859b6@intel.com>
+X-IronPort-AV: E=Sophos;i="6.19,278,1754982000"; d="scan'208";a="186772658"
+Received: from fmsmsx901.amr.corp.intel.com ([10.18.126.90])
+ by orviesa009.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Nov 2025 23:22:24 -0800
+Received: from FMSMSX903.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx901.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.27; Mon, 3 Nov 2025 23:22:23 -0800
+Received: from fmsedg901.ED.cps.intel.com (10.1.192.143) by
+ FMSMSX903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.27 via Frontend Transport; Mon, 3 Nov 2025 23:22:23 -0800
+Received: from CY3PR05CU001.outbound.protection.outlook.com (40.93.201.48) by
+ edgegateway.intel.com (192.55.55.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.27; Mon, 3 Nov 2025 23:22:23 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=s2H1XSZSTrz8uFOrV7zV1ZEknqlAyY88v/L0NwwYjavhgjL/Hc87MnERHWpnBdnm5TT1dJG/AOXXI+AiKlnxHAvBRzC8SkiMt6xGy+TmM7RN/ivxQXCxQ4W9JE7N9I7WjRM+/I6UMeelM6kB28PGa47E894CKlx0zWnD+8fKoRyZ+ymRwXs5eeZ7RCYRzDqsR+0UatL2d2/dmes30hnVnZE4Jk5QjJrPJ19C3XigH0HkHx7wwsb9On2W2yCaia1wvue6DETWmgNQy6b5TgzoQiQixVG7aOUXeH3R3Q7+b72fh7l0KJVqqZmuV7d1tjIREnQ1TS0aeVSiYFEv9GyDUA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=EeObBUqsbbC8LS9YUtixXy1apbwbKDM2JsQIWgOQpJA=;
+ b=zMAgwPs9PUtSKUEOgFFTJAlg0X7T/xZwCqY9MqIviAQ0T0eriCWpLEjzarZ8LoUhuW9S6p1OFhPyoENKWanp7IqE76WFSk0q/gLj6jPRoi7QMLUwaytnp3IgW5C4bj0Htbf5GYtRatYjiUx1XDpYqh1FelreSLiuzittEUDELY1wODuP95Ah5otEUVYde/cllPAIEv5ZejmEG7Tx9W6ZEkMxKjHGftfk2FdGVIX0nmt8uIcacPIVEIh800vVQ3X93HZ0m0xVflaXIrzgrjafYVGIpAr/BSWSHqmnHm5q+NMSD7bHFhMQxhO+eaAOdv+vXbejrnagBTT7WFOoTo+Fkg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from IA3PR11MB8986.namprd11.prod.outlook.com (2603:10b6:208:577::21)
+ by PH0PR11MB5160.namprd11.prod.outlook.com (2603:10b6:510:3e::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9275.16; Tue, 4 Nov
+ 2025 07:22:21 +0000
+Received: from IA3PR11MB8986.namprd11.prod.outlook.com
+ ([fe80::395e:7a7f:e74c:5408]) by IA3PR11MB8986.namprd11.prod.outlook.com
+ ([fe80::395e:7a7f:e74c:5408%3]) with mapi id 15.20.9275.015; Tue, 4 Nov 2025
+ 07:22:21 +0000
+From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
+To: "Keller, Jacob E" <jacob.e.keller@intel.com>, "Lobakin, Aleksander"
+ <aleksander.lobakin@intel.com>, "Nguyen, Anthony L"
+ <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
+ <przemyslaw.kitszel@intel.com>
+CC: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+Thread-Topic: [PATCH iwl-next 1/9] ice: initialize ring_stats->syncp
+Thread-Index: AQHcTSdnuN2JDt5L5E61PzhjOPmuGrTiHR0A
+Date: Tue, 4 Nov 2025 07:22:21 +0000
+Message-ID: <IA3PR11MB898681EE5525D6B02D8FAD15E5C4A@IA3PR11MB8986.namprd11.prod.outlook.com>
 References: <20251103-jk-refactor-queue-stats-v1-0-164d2ed859b6@intel.com>
-In-Reply-To: <20251103-jk-refactor-queue-stats-v1-0-164d2ed859b6@intel.com>
-To: Aleksandr Loktionov <aleksandr.loktionov@intel.com>, 
- Alexander Lobakin <aleksander.lobakin@intel.com>, 
- Tony Nguyen <anthony.l.nguyen@intel.com>, 
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
- Jacob Keller <jacob.e.keller@intel.com>
-X-Mailer: b4 0.15-dev-f4b34
-X-Developer-Signature: v=1; a=openpgp-sha256; l=14209;
- i=jacob.e.keller@intel.com; h=from:subject:message-id;
- bh=DSXdSny7C99f3B5/z1HeF9RzRj2+55jigKHoIyjQeb0=;
- b=owGbwMvMwCWWNS3WLp9f4wXjabUkhkzOwEPf3KpueDO/8l8//5Pl5Kn5fyeZyxbmbZhg+H3RI
- ib5RUVdHaUsDGJcDLJiiiwKDiErrxtPCNN64ywHM4eVCWQIAxenAEwk6QzDbzZxQ4MrbyoqHpgb
- FnWYeX70deS0+rHrQetfuy0sD/0+b2D4X71Z4G5m3axTjqZvH51y1dqZFqLLflxXftW1R1PeGxq
- HcwMA
-X-Developer-Key: i=jacob.e.keller@intel.com; a=openpgp;
- fpr=204054A9D73390562AEC431E6A965D3E6F0F28E8
+ <20251103-jk-refactor-queue-stats-v1-1-164d2ed859b6@intel.com>
+In-Reply-To: <20251103-jk-refactor-queue-stats-v1-1-164d2ed859b6@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: IA3PR11MB8986:EE_|PH0PR11MB5160:EE_
+x-ms-office365-filtering-correlation-id: 1f5959b1-3abd-49eb-e5ef-08de1b72e4fc
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|366016|1800799024|7053199007|38070700021; 
+x-microsoft-antispam-message-info: =?utf-8?B?Wm5tbnFzaTlod2tPSGVBL3FUdy93QjNKcytqZWFCMitPbGVsQUIvTDNrSExa?=
+ =?utf-8?B?d0VCTjNZLzhKWDhySUVoa2tNNEJiVWJPcUdSWGxubGFOOC93aFpHMlpvZ3FJ?=
+ =?utf-8?B?VG9zWUNYd0h0aGhMdTZmWTdrMXBwQWlleG9oWW1wY2N5eUpJQlZGNkVwVVlE?=
+ =?utf-8?B?TXhxRkVEWkcyUkFRNHkvUnIrakUxMFRLYUpveEZXR1J3bUFHMG1NSnZndEhx?=
+ =?utf-8?B?T0ttMTgrVUs1Q1MxNnIvbTFnQ21CbWFmUlp5QlpwODhqNlFtbUJPOXFYbG5R?=
+ =?utf-8?B?T25vN0xDYUJGcENRRDhWZm5NN3ZycFJzMDBkQklKL0phc2RsQlQyOU8rb3Mw?=
+ =?utf-8?B?d0xtUWsvYzd3RkNsVG9QbVV3TmI4dEszcnNxWkl6Vllmc1JKUFlvdnVXOEY4?=
+ =?utf-8?B?SEE4TUxtaWFEK3llMVVld3VkdTZaYmNBTkYrbkdPdkJoTzI0NU9sR2xDdUZz?=
+ =?utf-8?B?Q3pwRlNnYkNCMnBsVDhST2lEU2xQZS9xZEJtSkMwMzZDTmN3cTlkWVJYY3pD?=
+ =?utf-8?B?b2gyL0I5RG91TGViM21oVllvQVpVb1hKbmlZTmR2dnpETktlRktpS2VnUlli?=
+ =?utf-8?B?M3NUTkFyZEtselRYOVZzUmhROVJzUGVtUHNHelo3M3V4U2NpWWw1RTB2VWln?=
+ =?utf-8?B?dzhWeDBKcGpYNFAzSS9uQVlmQ252SGdMWWVOWmFxWFpnSlZIdFFKdVJQZGZX?=
+ =?utf-8?B?bitGcFNLTUtxbzVRbUhUaGpZbHc4RldqU1dxZFV1K3pLRzFHTzRiYk9OU0Z2?=
+ =?utf-8?B?K3JrdThLa2lhdEc0M2R6NXpxUUh2azBySWpOcDlJVm9mNFJrNEl4NkhvWllF?=
+ =?utf-8?B?eHZTNjU5cWZYMk5LTFlLTFhycFNCR2J0SDk3elROdXhtN2g5OGo5ekE0UlZK?=
+ =?utf-8?B?WmlBbDJHRDhIeTR0NTNscWdKdjRNcUhDY3Zhd2lnUXI4NE9vdXdkejJvSWE1?=
+ =?utf-8?B?TWxNOWN5NFVMWVNHNDBScVBtempoZVE0OW84NW1pWWZrSWRWM1RGdEtVVVYz?=
+ =?utf-8?B?dzRjR3lLNnNNWEJzUEhSZ05iTGsva3FVd2xzclJiYjM1MjhUNUIxOWE2VG5z?=
+ =?utf-8?B?VGRTajM4eUh0QXJxWGpMaEFmOE01UnkvdTY3WFRNczY3cXZDcFFDRllHNlpU?=
+ =?utf-8?B?Zkw3QWtTSUhNc1dPSHJZN0VNME90SG5rRnZGUGxnNW53bTZZR3BiOC90YWFV?=
+ =?utf-8?B?UjNiNzA4Ni81b0tYaDFZa2dMbnZraW91SVpBZkMzVVB2V0JicU9nZW1aVncv?=
+ =?utf-8?B?eUQvTSt6Szg1NW5oUzJXdGd4UzR2MDhCbEg5NmxhVjRISXYrbXlxb3hFL1pi?=
+ =?utf-8?B?WmttaFVuak9BcEp2TnpFYWVVQkZCdEhORmErd1FWNzNIUHVvY1NkOVBsMUhW?=
+ =?utf-8?B?bk9VQVQzcFdVRGI0UFQrTjdob2tNNWxMK0orcTY3UW5HK2xpMmtuWkY5N0ZQ?=
+ =?utf-8?B?UXpWUEZ5aS8wOXFPMGs1diswUzRWYnUyNGdTWGV2TTgvN3N5NDU3UUd5T0t2?=
+ =?utf-8?B?bi83a25xVzF5eXRtUFBnaVpYb2FMTUdoRDVtbi9nRm5Zbi8zUEJ1QVI5dFJE?=
+ =?utf-8?B?MVBWdGpPSTZBM09YZEJxVnRMRVdwS0FJNVBzdDVVRUZkS1A2aEM0cHJ2aGE2?=
+ =?utf-8?B?WjlEYzE1VzkvdlA2RzVzeiswZDAvQTI3M3lWd0lQYWg2UDVaZTFxRDc1WmVa?=
+ =?utf-8?B?U2xqVi9yMStCOXdnWGQ0QnpNSEt1VFB6d2l1UDZQWHdFYmJaN1JNUjVKcWJD?=
+ =?utf-8?B?Y3crajZpMjZUeThhYU1wUE41RWQvcnBvS3VYWTJhbXpaN3d1YmJ0WUVuUVpw?=
+ =?utf-8?B?VElnd0NGTGZCSGdHL3g0ZzJYSGExN2lNR0gxa2tGaEMybTlURzRpSzBxUVE1?=
+ =?utf-8?B?ZkM0a0FvVGNhalNQaDMrcEc5TjY0QjBtNm5DRTYvaGpCajFmVGR4eDBrM2hS?=
+ =?utf-8?B?ZHFFYXFJaDNDTGtFeUQ1UTNMaHREMElNU28xYWxzT2pIZWNKd3J3T1lhOGtN?=
+ =?utf-8?B?eTV2REhmTVAzSXN0VE5RZXdDYXNUOWNWVjk1L3dpRVhnTFg3c1FmYnhPdWdM?=
+ =?utf-8?Q?fCuh2T?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:IA3PR11MB8986.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(366016)(1800799024)(7053199007)(38070700021); DIR:OUT;
+ SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?ZHRRcEZCQlZxdUJkRWJNU0RJQ0VDcFR4QmVJWE9KQlZzSElCdWhyRkxJcnp1?=
+ =?utf-8?B?NjFsWVJlc3FMeEF4dTQ4RDdhSzdlb054WExsU0lyVzlEWnF6L2p0dWc3UHhX?=
+ =?utf-8?B?VW01QVh4V0FuZ3ZWLzFiR1IxMlN1QWlYUWV1ZUViRVRUelVxaTFQc0cybldm?=
+ =?utf-8?B?Wk5qcHlCZGo2L1g5VTNXQlR1ZDZDSm5lNDNmYmJraVhvVkNWb2pHN2FCQU4r?=
+ =?utf-8?B?ei9wOTRuZXpaR25RMWJHTHRpVU9SZ0ZSTStYQmpodDRLdS9Ccm9lQWZ4cThO?=
+ =?utf-8?B?ajR3WHhTQUd6d1R0VmZYYWVrMzZxOWVPdkVRbllvWUYxeVQvRWlhR0pDdjhl?=
+ =?utf-8?B?K0l1NE5SQWR1RmdTUk5RemU4OGMwSzBYNGRBS3M2ck85TStYWFVGQ1RkcUNK?=
+ =?utf-8?B?S2c0eVdwWmU0K1VhQ2JGdVEwdHI5Y1VWdmJ3YTJFdEtWNlAyZk1NYjgzd3Jo?=
+ =?utf-8?B?bS80RVJWQWN1R1pnU2JtQ2k0anhMelo3bktMUGwxWUN2c0dyb0lxWUNzYXBl?=
+ =?utf-8?B?bHY3VjV1RXR1dzk2MXphOXZnWE83TFQ3dlBVWmY1c3R4TWszd2tQd3pxcWFV?=
+ =?utf-8?B?NkVUemRCcWsydm5rYkt5YklXRzFOY0NIT1ozM1B0LzN2UEIxbG8xaFpZL1Yw?=
+ =?utf-8?B?WDAyNHNqUW81Rnp4M3RUTHJYcjBWSlYyMmdhM0VhU2lrMHRiUkJjUzhzYytK?=
+ =?utf-8?B?QmNGelptSG5ONTM0WFlUQnlURk5nV2xyOEt5QkdlZ0xNN0pWbWN3b2lac090?=
+ =?utf-8?B?M2hLVlBmWmROVVBzeXR6bUI2aEs4NkxrU2NISWVGZ3JoUzJtRTVraGdRcHhF?=
+ =?utf-8?B?cEFPSkZhWmVMV1crRytRbTRiUEJFZEU5dWNWdTdiell3Ti9NVFFkd21meWw1?=
+ =?utf-8?B?MDlUTGFSR3oxWUd5aXc2US8zN3FFQnFCR3hQOU05cmIvTkVXa1l1T2lPTW1v?=
+ =?utf-8?B?UURQTEJoa3pBWk1jTTZWeStpRVRJcWlud2VtbkNrbXlCOVJybSt3amdKK1hQ?=
+ =?utf-8?B?bjBxY0RadXZkQng4Z1FtYXJHbXg5MWFqYU1wVVR2amRzL1MwcDBIaTVtaDRL?=
+ =?utf-8?B?MU5XSWVJSmN4ak1EVkgxcGFJSzZvb1R5SE9iYmVYNGZ6a2lSK05PZUJoRXkw?=
+ =?utf-8?B?U1BmS2RYVVpTOGdwZXF3ZmdFL1V6d3M2VzY2QmNaVk8zR3FiMThBaFkrZW41?=
+ =?utf-8?B?Q2NsWGRaTmZXWVduemFsWnczMFpVdDFPQ0dWWFdGQ1ZTRjNXM1A2SjhFU0VR?=
+ =?utf-8?B?WDJMUzQ4N2IxU09vR0p1dFpyUHVJZFhDVEZrMmVzc0NJZ29ZSnY3SHRyOUpB?=
+ =?utf-8?B?MUlrN3pMVEY1VmV4U3g4S0ZXdVlDWlNQRnhjeVp1UHJBVmdYMXdjSmRXR1hp?=
+ =?utf-8?B?UWpiRkNaKzYxZ1lDL2VXcnd1eVZ2WVMyOXgwZ2Rvb3IvZzlBaGVHSXh2eE9r?=
+ =?utf-8?B?c0J3TXl0aHpqRUt3L3krZ2pwdnlycS9qTDFUejNITWZJQWw1VEFSdWdybVAz?=
+ =?utf-8?B?TTlJWFRPa2JLZTk0QlUxUXVYV1RlZlJGcm5HeTVhUjBtemhNUjlMT0NUbUJr?=
+ =?utf-8?B?Y2J2YkJnaGdtMitmMlQ0YmJCbTJhQ0hmTmMxYkh0a2hkRzRzSkRYVnlmSUw0?=
+ =?utf-8?B?aHpMS2ozUE9DazZlRVUwWHU2cWtvVWFWMHZZYVBXb2tTY1pESW1hUmt2K084?=
+ =?utf-8?B?NUZuMkt5TzhLNjdEZ0xFYklhOTB5SHFGcmVhMFl2NkxrMklKZC9RWXhHSUMz?=
+ =?utf-8?B?Z2laYVc1Z21rSnpmTkpFRmVheTNZTXJtaXZHQjJGUGFWM2lLYXJmUkQzVUt1?=
+ =?utf-8?B?Q2p6Z3VUUytUa0s1UFRZSnhTNXNETC9GS1JsOXBkOVM1QjAvYlRsS1ZtN0c3?=
+ =?utf-8?B?Y0lJcWgwaW93V3ZIYjV2a25ROW01eWsxVURMMXNVVE9sci9menUyN2FUWHVx?=
+ =?utf-8?B?WWpvOWxtL3pqV1d0MXRwZHczK0NZVkZ4S1NleGYxWDNwNTJlODhvM2tkRktm?=
+ =?utf-8?B?K3pid0tNRm5LUU8zZlZKN3VBckhBRXpEcnRDWTJNbHhHRnlGOWN4bWlGeERw?=
+ =?utf-8?B?S2pTa0cvR3NlbEJiWVFoUXZMNkJHdWtFQmdJcHJiZWZHL2NWM3AyVE5TRFNW?=
+ =?utf-8?B?c3B3NCtVeGhtbkJmYndqM1BmNjliT3VHOWhPbjJuMDBKWFB1YUswQmxFQjR0?=
+ =?utf-8?B?RHc9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB8986.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1f5959b1-3abd-49eb-e5ef-08de1b72e4fc
+X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Nov 2025 07:22:21.5052 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: jYfhaGwJZKZBEY9K0kDDkLjLQhUzo9MnKMKB2AsopI12GM7eGa5ww3nWiCoT4oLhAbtQeAImrcSHiQsNISoplqOAnbFDvFCehP5HQ0xxSqk=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5160
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1762218442; x=1793754442;
- h=from:date:subject:mime-version:content-transfer-encoding:
- message-id:references:in-reply-to:to:cc;
- bh=DSXdSny7C99f3B5/z1HeF9RzRj2+55jigKHoIyjQeb0=;
- b=iihZ9o1BMwwuxgqMMtcY2ILc9z19mJPs97oS0l9sG3+0F/JIaYUwC6JU
- WF0laNGWOhU00gbBEop1kwydLKAAePHGgSCqqJHm5qmlLqvTnyX7u2gJu
- gaHOyeWYFn2bJ3lu/v+Hojk67t2n9rATJIO35in1KMwyMJDSThFeXbTr3
- 6aCwESG3uKzMudAMUq559dAvLp91rCs9jfepraBJhnFYHAb0XVc+YmUCm
- nw27g17MAthF+5p7ByjerBySDYFZQ3oBf94/f1/xsxH6SfbiqmptkKjqm
- vyH2cKdAxziJCclYzn1JgHmpBHjXSP5Cj9jhhjd7o+gCZW/73zcHbrixx
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1762240946; x=1793776946;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=EeObBUqsbbC8LS9YUtixXy1apbwbKDM2JsQIWgOQpJA=;
+ b=UnJdEi707thtul0V8n7HAU6sA8d8L1BGhTvoi46j/R2bhV3vFpxY9Ll3
+ AQoSbJxrnS8xhUMcvqxza/HmcBF42av1IQGYM/pUf+tmbtxiIxIy+4sL5
+ Ci9/nuKr6xYQmGXOs2EewNl6d+FzSpVbns6dYEBnV4fi+xxvEmUJ117Pp
+ c94USuvGMIkxIkN6qVnu+SA8Wy08Xh/20whGstc0/nP70TwY/3e2J0A+G
+ 6vnJ1JFYEJQLApmDRpOGx0KPwwOMpspzEj/RrothB662lXXibrHcrUW5S
+ uF7lN7eTUbHeKzqPI0GubT4YTDf6WhzTtep60TwFRS3WIuYDvGyaH3QKI
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=iihZ9o1B
-Subject: [Intel-wired-lan] [PATCH iwl-next 9/9] ice: convert all ring stats
- to u64_stats_t
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=UnJdEi70
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 1/9] ice: initialize
+ ring_stats->syncp
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -125,413 +247,38 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-After several cleanups, the ice driver is now finally ready to convert all
-Tx and Rx ring stats to the u64_stats_t and proper use of the u64 stats
-APIs.
-
-The final remaining part to cleanup is the VSI stats accumulation logic in
-ice_update_vsi_ring_stats().
-
-Refactor the function and its helpers so that all stat values (and not
-just pkts and bytes) use the u64_stats APIs. The
-ice_fetch_u64_(tx|rx)_stats functions read the stat values using
-u64_stats_read and then copy them into local ice_vsi_(tx|rx)_stats
-structures. This does require making a new struct with the stat fields as
-u64.
-
-The ice_update_vsi_(tx|rx)_ring_stats functions call the fetch functions
-per ring and accumulate the result into one copy of the struct. This
-accumulated total is then used to update the relevant VSI fields.
-
-Since these are relatively small, the contents are all stored on the stack
-rather than allocating and freeing memory.
-
-Once the accumulator side is updated, the helper ice_stats_read and
-ice_stats_inc and other related helper functions all easily translate to
-use of u64_stats_read and u64_stats_inc. This completes the refactor and
-ensures that all stats accesses now make proper use of the API.
-
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_txrx.h |  28 +++--
- drivers/net/ethernet/intel/ice/ice_lib.c  |  29 ++---
- drivers/net/ethernet/intel/ice/ice_main.c | 180 ++++++++++++++++++++----------
- 3 files changed, 147 insertions(+), 90 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.h b/drivers/net/ethernet/intel/ice/ice_txrx.h
-index cf3656dc560c..39a83390f31e 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.h
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.h
-@@ -133,18 +133,18 @@ struct ice_ring_stats {
- 	struct rcu_head rcu;	/* to avoid race on free */
- 	struct u64_stats_sync syncp;
- 	struct_group(stats,
--		u64 pkts;
--		u64 bytes;
-+		u64_stats_t pkts;
-+		u64_stats_t bytes;
- 		union {
- 			struct_group(tx,
--				u64 tx_restart_q;
--				u64 tx_busy;
--				u64 tx_linearize;
-+				u64_stats_t tx_restart_q;
-+				u64_stats_t tx_busy;
-+				u64_stats_t tx_linearize;
- 			);
- 			struct_group(rx,
--				u64 rx_non_eop_descs;
--				u64 rx_page_failed;
--				u64 rx_buf_failed;
-+				u64_stats_t rx_non_eop_descs;
-+				u64_stats_t rx_page_failed;
-+				u64_stats_t rx_buf_failed;
- 			);
- 		};
- 	);
-@@ -162,7 +162,13 @@ struct ice_ring_stats {
-  */
- #define ice_stats_read(stats, member) ({				\
- 	struct ice_ring_stats *__stats = (stats);			\
--	__stats->member;						\
-+	unsigned int start;						\
-+	u64 val;							\
-+	do {								\
-+		start = u64_stats_fetch_begin(&__stats->syncp);		\
-+		val = u64_stats_read(&__stats->member);			\
-+	} while (u64_stats_fetch_retry(&__stats->syncp, start));	\
-+	val;								\
- })
- 
- /**
-@@ -175,7 +181,9 @@ struct ice_ring_stats {
-  */
- #define ice_stats_inc(stats, member) do {				\
- 	struct ice_ring_stats *__stats = (stats);			\
--	__stats->member++;						\
-+	u64_stats_update_begin(&__stats->syncp);			\
-+	u64_stats_inc(&__stats->member);				\
-+	u64_stats_update_end(&__stats->syncp);				\
- } while (0)
- 
- enum ice_ring_state_t {
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 1c8b6129835d..5edf3788cf56 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -3429,21 +3429,6 @@ int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc)
- 	return ret;
- }
- 
--/**
-- * ice_update_ring_stats - Update ring statistics
-- * @stats: stats to be updated
-- * @pkts: number of processed packets
-- * @bytes: number of processed bytes
-- *
-- * This function assumes that caller has acquired a u64_stats_sync lock.
-- */
--static void ice_update_ring_stats(struct ice_ring_stats *stats,
--				  u64 pkts, u64 bytes)
--{
--	stats->bytes += bytes;
--	stats->pkts += pkts;
--}
--
- /**
-  * ice_update_tx_ring_stats - Update Tx ring specific counters
-  * @tx_ring: ring to update
-@@ -3453,7 +3438,8 @@ static void ice_update_ring_stats(struct ice_ring_stats *stats,
- void ice_update_tx_ring_stats(struct ice_tx_ring *tx_ring, u64 pkts, u64 bytes)
- {
- 	u64_stats_update_begin(&tx_ring->ring_stats->syncp);
--	ice_update_ring_stats(tx_ring->ring_stats, pkts, bytes);
-+	u64_stats_add(&tx_ring->ring_stats->pkts, pkts);
-+	u64_stats_add(&tx_ring->ring_stats->bytes, bytes);
- 	u64_stats_update_end(&tx_ring->ring_stats->syncp);
- }
- 
-@@ -3466,7 +3452,8 @@ void ice_update_tx_ring_stats(struct ice_tx_ring *tx_ring, u64 pkts, u64 bytes)
- void ice_update_rx_ring_stats(struct ice_rx_ring *rx_ring, u64 pkts, u64 bytes)
- {
- 	u64_stats_update_begin(&rx_ring->ring_stats->syncp);
--	ice_update_ring_stats(rx_ring->ring_stats, pkts, bytes);
-+	u64_stats_add(&rx_ring->ring_stats->pkts, pkts);
-+	u64_stats_add(&rx_ring->ring_stats->bytes, bytes);
- 	u64_stats_update_end(&rx_ring->ring_stats->syncp);
- }
- 
-@@ -3483,8 +3470,8 @@ void ice_fetch_tx_ring_stats(const struct ice_tx_ring *ring,
- 
- 	do  {
- 		start = u64_stats_fetch_begin(&ring->ring_stats->syncp);
--		*pkts = ring->ring_stats->pkts;
--		*bytes = ring->ring_stats->bytes;
-+		*pkts = u64_stats_read(&ring->ring_stats->pkts);
-+		*bytes = u64_stats_read(&ring->ring_stats->bytes);
- 	} while (u64_stats_fetch_retry(&ring->ring_stats->syncp, start));
- }
- 
-@@ -3501,8 +3488,8 @@ void ice_fetch_rx_ring_stats(const struct ice_rx_ring *ring,
- 
- 	do  {
- 		start = u64_stats_fetch_begin(&ring->ring_stats->syncp);
--		*pkts = ring->ring_stats->pkts;
--		*bytes = ring->ring_stats->bytes;
-+		*pkts = u64_stats_read(&ring->ring_stats->pkts);
-+		*bytes = u64_stats_read(&ring->ring_stats->bytes);
- 	} while (u64_stats_fetch_retry(&ring->ring_stats->syncp, start));
- }
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 885e85f478d8..5f63799de75e 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -6824,54 +6824,132 @@ int ice_up(struct ice_vsi *vsi)
- 	return err;
- }
- 
-+struct ice_vsi_tx_stats {
-+	u64 pkts;
-+	u64 bytes;
-+	u64 tx_restart_q;
-+	u64 tx_busy;
-+	u64 tx_linearize;
-+};
-+
-+struct ice_vsi_rx_stats {
-+	u64 pkts;
-+	u64 bytes;
-+	u64 rx_non_eop_descs;
-+	u64 rx_page_failed;
-+	u64 rx_buf_failed;
-+};
-+
- /**
-- * ice_fetch_u64_stats_per_ring - get packets and bytes stats per ring
-- * @stats: pointer to ring stats structure
-- * @pkts: packets stats counter
-- * @bytes: bytes stats counter
-+ * ice_fetch_u64_tx_stats - get Tx stats from a ring
-+ * @ring: the Tx ring to copy stats from
-+ * @copy: temporary storage for the ring statistics
-  *
-- * This function fetches stats from the ring considering the atomic operations
-- * that needs to be performed to read u64 values in 32 bit machine.
-+ * Fetch the u64 stats from the ring using u64_stats_fetch. This ensures each
-+ * stat value is self-consistent, though not necessarily consistent w.r.t
-+ * other stats.
-  */
--static void ice_fetch_u64_stats_per_ring(struct ice_ring_stats *stats,
--					 u64 *pkts, u64 *bytes)
-+static void ice_fetch_u64_tx_stats(struct ice_tx_ring *ring,
-+				   struct ice_vsi_tx_stats *copy)
- {
-+	struct ice_ring_stats *stats = ring->ring_stats;
- 	unsigned int start;
- 
- 	do {
- 		start = u64_stats_fetch_begin(&stats->syncp);
--		*pkts = stats->stats.pkts;
--		*bytes = stats->stats.bytes;
-+		copy->pkts = u64_stats_read(&stats->pkts);
-+		copy->bytes = u64_stats_read(&stats->bytes);
-+		copy->tx_restart_q = u64_stats_read(&stats->tx_restart_q);
-+		copy->tx_busy = u64_stats_read(&stats->tx_busy);
-+		copy->tx_linearize = u64_stats_read(&stats->tx_linearize);
-+	} while (u64_stats_fetch_retry(&stats->syncp, start));
-+}
-+
-+/**
-+ * ice_fetch_u64_rx_stats - get Rx stats from a ring
-+ * @ring: the Rx ring to copy stats from
-+ * @copy: temporary storage for the ring statistics
-+ *
-+ * Fetch the u64 stats from the ring using u64_stats_fetch. This ensures each
-+ * stat value is self-consistent, though not necessarily consistent w.r.t
-+ * other stats.
-+ */
-+static void ice_fetch_u64_rx_stats(struct ice_rx_ring *ring,
-+				   struct ice_vsi_rx_stats *copy)
-+{
-+	struct ice_ring_stats *stats = ring->ring_stats;
-+	unsigned int start;
-+
-+	do {
-+		start = u64_stats_fetch_begin(&stats->syncp);
-+		copy->pkts = u64_stats_read(&stats->pkts);
-+		copy->bytes = u64_stats_read(&stats->bytes);
-+		copy->rx_non_eop_descs =
-+			u64_stats_read(&stats->rx_non_eop_descs);
-+		copy->rx_page_failed = u64_stats_read(&stats->rx_page_failed);
-+		copy->rx_buf_failed = u64_stats_read(&stats->rx_buf_failed);
- 	} while (u64_stats_fetch_retry(&stats->syncp, start));
- }
- 
- /**
-  * ice_update_vsi_tx_ring_stats - Update VSI Tx ring stats counters
-  * @vsi: the VSI to be updated
-- * @vsi_stats: the stats struct to be updated
-+ * @vsi_stats: accumulated stats for this VSI
-  * @rings: rings to work on
-  * @count: number of rings
-  */
--static void
--ice_update_vsi_tx_ring_stats(struct ice_vsi *vsi,
--			     struct rtnl_link_stats64 *vsi_stats,
--			     struct ice_tx_ring **rings, u16 count)
-+static void ice_update_vsi_tx_ring_stats(struct ice_vsi *vsi,
-+					 struct ice_vsi_tx_stats *vsi_stats,
-+					 struct ice_tx_ring **rings, u16 count)
- {
-+	struct ice_vsi_tx_stats copy = {};
- 	u16 i;
- 
- 	for (i = 0; i < count; i++) {
- 		struct ice_tx_ring *ring;
--		u64 pkts = 0, bytes = 0;
- 
- 		ring = READ_ONCE(rings[i]);
- 		if (!ring || !ring->ring_stats)
- 			continue;
--		ice_fetch_u64_stats_per_ring(ring->ring_stats, &pkts, &bytes);
--		vsi_stats->tx_packets += pkts;
--		vsi_stats->tx_bytes += bytes;
--		vsi->tx_restart += ring->ring_stats->tx_restart_q;
--		vsi->tx_busy += ring->ring_stats->tx_busy;
--		vsi->tx_linearize += ring->ring_stats->tx_linearize;
-+
-+		ice_fetch_u64_tx_stats(ring, &copy);
-+
-+		vsi_stats->pkts += copy.pkts;
-+		vsi_stats->bytes += copy.bytes;
-+		vsi_stats->tx_restart_q += copy.tx_restart_q;
-+		vsi_stats->tx_busy += copy.tx_busy;
-+		vsi_stats->tx_linearize += copy.tx_linearize;
-+	}
-+}
-+
-+/**
-+ * ice_update_vsi_rx_ring_stats - Update VSI Rx ring stats counters
-+ * @vsi: the VSI to be updated
-+ * @vsi_stats: accumulated stats for this VSI
-+ * @rings: rings to work on
-+ * @count: number of rings
-+ */
-+static void ice_update_vsi_rx_ring_stats(struct ice_vsi *vsi,
-+					 struct ice_vsi_rx_stats *vsi_stats,
-+					 struct ice_rx_ring **rings, u16 count)
-+{
-+	struct ice_vsi_rx_stats copy = {};
-+	u16 i;
-+
-+	for (i = 0; i < count; i++) {
-+		struct ice_rx_ring *ring;
-+
-+		ring = READ_ONCE(rings[i]);
-+		if (!ring || !ring->ring_stats)
-+			continue;
-+
-+		ice_fetch_u64_rx_stats(ring, &copy);
-+
-+		vsi_stats->pkts += copy.pkts;
-+		vsi_stats->bytes += copy.bytes;
-+		vsi_stats->rx_non_eop_descs += copy.rx_non_eop_descs;
-+		vsi_stats->rx_page_failed += copy.rx_page_failed;
-+		vsi_stats->rx_buf_failed += copy.rx_buf_failed;
- 	}
- }
- 
-@@ -6882,48 +6960,34 @@ ice_update_vsi_tx_ring_stats(struct ice_vsi *vsi,
- static void ice_update_vsi_ring_stats(struct ice_vsi *vsi)
- {
- 	struct rtnl_link_stats64 *net_stats, *stats_prev;
--	struct rtnl_link_stats64 *vsi_stats;
-+	struct ice_vsi_tx_stats tx_stats = {};
-+	struct ice_vsi_rx_stats rx_stats = {};
- 	struct ice_pf *pf = vsi->back;
--	u64 pkts, bytes;
--	int i;
--
--	vsi_stats = kzalloc(sizeof(*vsi_stats), GFP_ATOMIC);
--	if (!vsi_stats)
--		return;
--
--	/* reset non-netdev (extended) stats */
--	vsi->tx_restart = 0;
--	vsi->tx_busy = 0;
--	vsi->tx_linearize = 0;
--	vsi->rx_buf_failed = 0;
--	vsi->rx_page_failed = 0;
- 
- 	rcu_read_lock();
- 
- 	/* update Tx rings counters */
--	ice_update_vsi_tx_ring_stats(vsi, vsi_stats, vsi->tx_rings,
-+	ice_update_vsi_tx_ring_stats(vsi, &tx_stats, vsi->tx_rings,
- 				     vsi->num_txq);
- 
- 	/* update Rx rings counters */
--	ice_for_each_rxq(vsi, i) {
--		struct ice_rx_ring *ring = READ_ONCE(vsi->rx_rings[i]);
--		struct ice_ring_stats *ring_stats;
--
--		ring_stats = ring->ring_stats;
--		ice_fetch_u64_stats_per_ring(ring_stats, &pkts, &bytes);
--		vsi_stats->rx_packets += pkts;
--		vsi_stats->rx_bytes += bytes;
--		vsi->rx_buf_failed += ring_stats->rx_buf_failed;
--		vsi->rx_page_failed += ring_stats->rx_page_failed;
--	}
-+	ice_update_vsi_rx_ring_stats(vsi, &rx_stats, vsi->rx_rings,
-+				     vsi->num_rxq);
- 
- 	/* update XDP Tx rings counters */
- 	if (ice_is_xdp_ena_vsi(vsi))
--		ice_update_vsi_tx_ring_stats(vsi, vsi_stats, vsi->xdp_rings,
-+		ice_update_vsi_tx_ring_stats(vsi, &tx_stats, vsi->xdp_rings,
- 					     vsi->num_xdp_txq);
- 
- 	rcu_read_unlock();
- 
-+	/* Save non-netdev (extended) stats */
-+	vsi->tx_restart = tx_stats.tx_restart_q;
-+	vsi->tx_busy = tx_stats.tx_busy;
-+	vsi->tx_linearize = tx_stats.tx_linearize;
-+	vsi->rx_buf_failed = rx_stats.rx_buf_failed;
-+	vsi->rx_page_failed = rx_stats.rx_page_failed;
-+
- 	net_stats = &vsi->net_stats;
- 	stats_prev = &vsi->net_stats_prev;
- 
-@@ -6933,18 +6997,16 @@ static void ice_update_vsi_ring_stats(struct ice_vsi *vsi)
- 	 * let's skip this round.
- 	 */
- 	if (likely(pf->stat_prev_loaded)) {
--		net_stats->tx_packets += vsi_stats->tx_packets - stats_prev->tx_packets;
--		net_stats->tx_bytes += vsi_stats->tx_bytes - stats_prev->tx_bytes;
--		net_stats->rx_packets += vsi_stats->rx_packets - stats_prev->rx_packets;
--		net_stats->rx_bytes += vsi_stats->rx_bytes - stats_prev->rx_bytes;
-+		net_stats->tx_packets += tx_stats.pkts - stats_prev->tx_packets;
-+		net_stats->tx_bytes += tx_stats.bytes - stats_prev->tx_bytes;
-+		net_stats->rx_packets += rx_stats.pkts - stats_prev->rx_packets;
-+		net_stats->rx_bytes += rx_stats.bytes - stats_prev->rx_bytes;
- 	}
- 
--	stats_prev->tx_packets = vsi_stats->tx_packets;
--	stats_prev->tx_bytes = vsi_stats->tx_bytes;
--	stats_prev->rx_packets = vsi_stats->rx_packets;
--	stats_prev->rx_bytes = vsi_stats->rx_bytes;
--
--	kfree(vsi_stats);
-+	stats_prev->tx_packets = tx_stats.pkts;
-+	stats_prev->tx_bytes = tx_stats.bytes;
-+	stats_prev->rx_packets = rx_stats.pkts;
-+	stats_prev->rx_bytes = rx_stats.bytes;
- }
- 
- /**
-
--- 
-2.51.0.rc1.197.g6d975e95c9d7
-
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogS2VsbGVyLCBKYWNvYiBF
+IDxqYWNvYi5lLmtlbGxlckBpbnRlbC5jb20+DQo+IFNlbnQ6IFR1ZXNkYXksIE5vdmVtYmVyIDQs
+IDIwMjUgMjowNyBBTQ0KPiBUbzogTG9rdGlvbm92LCBBbGVrc2FuZHIgPGFsZWtzYW5kci5sb2t0
+aW9ub3ZAaW50ZWwuY29tPjsgTG9iYWtpbiwNCj4gQWxla3NhbmRlciA8YWxla3NhbmRlci5sb2Jh
+a2luQGludGVsLmNvbT47IE5ndXllbiwgQW50aG9ueSBMDQo+IDxhbnRob255Lmwubmd1eWVuQGlu
+dGVsLmNvbT47IEtpdHN6ZWwsIFByemVteXNsYXcNCj4gPHByemVteXNsYXcua2l0c3plbEBpbnRl
+bC5jb20+DQo+IENjOiBpbnRlbC13aXJlZC1sYW5AbGlzdHMub3N1b3NsLm9yZzsgbmV0ZGV2QHZn
+ZXIua2VybmVsLm9yZzsgS2VsbGVyLA0KPiBKYWNvYiBFIDxqYWNvYi5lLmtlbGxlckBpbnRlbC5j
+b20+DQo+IFN1YmplY3Q6IFtQQVRDSCBpd2wtbmV4dCAxLzldIGljZTogaW5pdGlhbGl6ZSByaW5n
+X3N0YXRzLT5zeW5jcA0KPiANCj4gVGhlIHU2NF9zdGF0c19zeW5jIHN0cnVjdHVyZSBpcyBlbXB0
+eSBvbiA2NC1iaXQgc3lzdGVtcy4gSG93ZXZlciwgb24NCj4gMzItYml0IHN5c3RlbXMgaXQgY29u
+dGFpbnMgYSBzZXFjb3VudF90IHdoaWNoIG5lZWRzIHRvIGJlIGluaXRpYWxpemVkLg0KPiBXaGls
+ZSB0aGUgbWVtb3J5IGlzIHplcm8taW5pdGlhbGl6ZWQsIGEgbGFjayBvZiB1NjRfc3RhdHNfaW5p
+dCBtZWFucw0KPiB0aGF0IGxvY2tkZXAgd29uJ3QgZ2V0IGluaXRpYWxpemVkIHByb3Blcmx5LiBG
+aXggdGhpcyBieSBhZGRpbmcNCj4gdTY0X3N0YXRzX2luaXQoKSBjYWxscyB0byB0aGUgcmluZ3Mg
+anVzdCBhZnRlciBhbGxvY2F0aW9uLg0KPiANCj4gRml4ZXM6IDJiMjQ1Y2IyOTQyMSAoImljZTog
+SW1wbGVtZW50IHRyYW5zbWl0IGFuZCBOQVBJIHN1cHBvcnQiKQ0KPiBTaWduZWQtb2ZmLWJ5OiBK
+YWNvYiBLZWxsZXIgPGphY29iLmUua2VsbGVyQGludGVsLmNvbT4NCj4gLS0tDQo+ICBkcml2ZXJz
+L25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2xpYi5jIHwgNSArKysrKw0KPiAgMSBmaWxlIGNo
+YW5nZWQsIDUgaW5zZXJ0aW9ucygrKQ0KPiANCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0
+aGVybmV0L2ludGVsL2ljZS9pY2VfbGliLmMNCj4gYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
+bC9pY2UvaWNlX2xpYi5jDQo+IGluZGV4IGJhYzQ4MWU4MTQwZC4uZTcyNjVlODc3NzAzIDEwMDY0
+NA0KPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX2xpYi5jDQo+ICsr
+KyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfbGliLmMNCj4gQEAgLTM5OCw3
+ICszOTgsMTAgQEAgc3RhdGljIGludCBpY2VfdnNpX2FsbG9jX3Jpbmdfc3RhdHMoc3RydWN0DQo+
+IGljZV92c2kgKnZzaSkNCj4gIAkJCWlmICghcmluZ19zdGF0cykNCj4gIAkJCQlnb3RvIGVycl9v
+dXQ7DQo+IA0KPiArCQkJdTY0X3N0YXRzX2luaXQoJnJpbmdfc3RhdHMtPnN5bmNwKTsNCj4gKw0K
+PiAgCQkJV1JJVEVfT05DRSh0eF9yaW5nX3N0YXRzW2ldLCByaW5nX3N0YXRzKTsNCj4gKw0KPiAg
+CQl9DQo+IA0KPiAgCQlyaW5nLT5yaW5nX3N0YXRzID0gcmluZ19zdGF0czsNCj4gQEAgLTQxNyw2
+ICs0MjAsOCBAQCBzdGF0aWMgaW50IGljZV92c2lfYWxsb2NfcmluZ19zdGF0cyhzdHJ1Y3QgaWNl
+X3ZzaQ0KPiAqdnNpKQ0KPiAgCQkJaWYgKCFyaW5nX3N0YXRzKQ0KPiAgCQkJCWdvdG8gZXJyX291
+dDsNCj4gDQo+ICsJCQl1NjRfc3RhdHNfaW5pdCgmcmluZ19zdGF0cy0+c3luY3ApOw0KPiArDQo+
+ICAJCQlXUklURV9PTkNFKHJ4X3Jpbmdfc3RhdHNbaV0sIHJpbmdfc3RhdHMpOw0KPiAgCQl9DQo+
+IA0KPiANCj4gLS0NCj4gMi41MS4wLnJjMS4xOTcuZzZkOTc1ZTk1YzlkNw0KDQpSZXZpZXdlZC1i
+eTogQWxla3NhbmRyIExva3Rpb25vdiA8YWxla3NhbmRyLmxva3Rpb25vdkBpbnRlbC5jb20+DQo=
