@@ -1,162 +1,123 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id F341CC319B4
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 04 Nov 2025 15:48:29 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id ADAB6C32011
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 04 Nov 2025 17:18:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2C5EC8222B;
-	Tue,  4 Nov 2025 14:48:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1A6AA40C86;
+	Tue,  4 Nov 2025 16:18:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pb3s-XL-_PlR; Tue,  4 Nov 2025 14:48:27 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 8inq_058pWx8; Tue,  4 Nov 2025 16:18:19 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9158382226
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 675FC40C8C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1762267707;
-	bh=TYbk9wPxk/JA4+MxrrdLZ/GfKAsrpCoWC70+eUl4rp4=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=I0I6bHxcYCE4QNxW3Gmk09x5HJ0U74/267KfHwzbKNCV/oav/HcojSY1IJFSFJVZS
-	 6aPWjJX7YxEjLfVW4797Cbv/EteW4w3vCw3/QlOdBWbY66I8LRoroXGgD2N8+b7O0/
-	 3IGYUpYnEFe+1jc1XwpUy/snkqqIOcmE9H04afu/JD7VRhieR0WzkRSemahGs6Rm11
-	 ZSDiPv+qZr4AFvKQssfK4FC8L/YLzVvvM0FrYEys/PVbHYoUvH1EsUWrx4pgPNLzSG
-	 ZaGyEYlfuM/MYytlKL076quzTyV+yWL7XH5XS8mGJgWqCRTnUqELuA9OQFKt0iI6Bo
-	 6G877s2Uij3YA==
+	s=default; t=1762273099;
+	bh=qFICcE+Vtbf0TwZWSrWoxdS8zOuWh2Ntsa14GnmIyDk=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=xnRPPPru02zaka7Op/u7OfK+pVlkVGSDv+gQ1MDp5fkgWvJTvhA62LwVhQ8k3fqlQ
+	 hxSeLBKcXPea77P3FCIM8FMNYusCerSh3mUysMnpJjYENBPaDPn2MxibkJDbP8ebnn
+	 vUs4x9/z5OKtFVK126l0YStrJcjlyTk3XXPDHB66rSRQ2kw9gEGpY8WsZvP6DoVepw
+	 1ncd28TJeW9Pk1cEwANAJJq4RWBPFyUQ46AKuS9gnhlYa0Fx1AFfN7SH7B+WSAwdho
+	 wHFofdmuN0Op+2nogdPVlXy6tooCMAm9ql3DqSpU6yXh0KdfkumZTuRmHWX0LbU9GT
+	 7Q0d2mprlwC8w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9158382226;
-	Tue,  4 Nov 2025 14:48:27 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 675FC40C8C;
+	Tue,  4 Nov 2025 16:18:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 3C339222
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Nov 2025 14:48:26 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 81CE1278
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Nov 2025 08:28:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1AFA24010B
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Nov 2025 14:48:26 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6836D40C7E
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Nov 2025 08:28:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7nULy8eIRTWL for <intel-wired-lan@lists.osuosl.org>;
- Tue,  4 Nov 2025 14:48:25 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id cLBnui78np2a for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  4 Nov 2025 08:28:11 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::729; helo=mail-qk1-x729.google.com;
- envelope-from=daniel.zahka@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 507DB400E7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 507DB400E7
-Received: from mail-qk1-x729.google.com (mail-qk1-x729.google.com
- [IPv6:2607:f8b0:4864:20::729])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 507DB400E7
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Nov 2025 14:48:25 +0000 (UTC)
-Received: by mail-qk1-x729.google.com with SMTP id
- af79cd13be357-891208f6185so520793085a.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 04 Nov 2025 06:48:25 -0800 (PST)
+ client-ip=2607:f8b0:4864:20::1036; helo=mail-pj1-x1036.google.com;
+ envelope-from=lgs201920130244@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org AD02F40C7C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AD02F40C7C
+Received: from mail-pj1-x1036.google.com (mail-pj1-x1036.google.com
+ [IPv6:2607:f8b0:4864:20::1036])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id AD02F40C7C
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Nov 2025 08:28:11 +0000 (UTC)
+Received: by mail-pj1-x1036.google.com with SMTP id
+ 98e67ed59e1d1-33db8fde85cso5129786a91.0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 04 Nov 2025 00:28:11 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762267704; x=1762872504;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=TYbk9wPxk/JA4+MxrrdLZ/GfKAsrpCoWC70+eUl4rp4=;
- b=nywNOFFGbn5r+SYRHxnFN9ImpxYPLXb+kZOhmp7s39UMtPDbtW2IkqKEzlvFIc0F3K
- 4k2ZkAFF5F2bzW6K3QSP5pMH+0gnvDbmGCy14v75R+BZ2s32s0EQ2l/fzYkyiVou+orc
- fUQ8JjKBbOPY9dah9HFbAla5HtNM83nMBsgVgdnok5A/wZ7mLganqSWfZJXu3AHF4lv/
- B/aSYmajxTAsoHtSRNf7+AZJGNMkKHaMnksbvLh1W8hNo/ATDjj9w309KLrTW8SkXNGE
- +m7Rkd43jmNcmwERZdKnh+JvKJkI0VxvIqTU6RzLGWehEqwBnjvZxCvtB0BLcyFL0EKN
- ftgQ==
+ d=1e100.net; s=20230601; t=1762244891; x=1762849691;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=qFICcE+Vtbf0TwZWSrWoxdS8zOuWh2Ntsa14GnmIyDk=;
+ b=iivPyRYJO6kseBFEuRip10NHXy9+oTrS0QxXAKzzm7OVv8RttC87TV/wNrlLDbBw29
+ xLirEawNzVnrlqWT0ybviDnUAob8T7CPt2TtikFw53VIzSMuKftKNaxHBd1xEuX81mvM
+ UQRFYP7FEVGb3dBYA591rd6szan2EOngYyYpFLC0uQDL3bH2JExFvYHyhQnT4FNYb3e5
+ C0qV7hdybPbIDRozr9d99D9QYGZmNmxCK8Y9kzuxAytjEAMEB9czMgGMNMqkzmGAFqgL
+ PjoniklrEfg5aGTfRQKNd4xeaNV2fJ3k3Ws+YFSEzOHEa2fFdjTVuqod5ljX4npBq+dG
+ aBIg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXq1cuLuL+jdG8jolQhm3uD7yGP4e9/Mn0g+AoVWTq4YuTx2t/Dw5cU33FIv/jEiEKVOz0XUNpf9u62ly3H5UU=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YwUTWHhqbMcm6zWHK+4PcYVqFCfk279PAYifG3WacJdaR1uSzFL
- xessN/5JFgsaqAilUT0kGjbO1qd4NpPDX9Mt4KfPm0n8qfhWG7pfsCc8
-X-Gm-Gg: ASbGncu3MvhJAUj9yR+K2PQ01SD26Vu1/7tn4YL6oI/IIl+IwS+neTKOkcaIJAX69iS
- U6HKt+pivZOH/P53A9NreT1AgayRybJtQhcyHpzH1lIWd4v8yxGgvuShzmh1YzlgpmN4Cekin2z
- 3UKeh1CkryBBwmLOKzFSb/u9oeYqoLkmoM7zeUvexo5LvjH7EyBGnzjKRbGozuBUw20KmxrTUZM
- VY7rCIbUG6V6dBIzE08S2jj1zQMWDGpL1BFyyXJTxTdImGXohcO8Kgpphf8FLfyBG+gzHM1UqeG
- yAKusJ7qVVrl94WYM6nHhWyVuiqrre/bayQ6V73kJdaf37/oLxRZpUDZTxyJYu0je2IcO4MJxgQ
- p2p8kcBZsrtMNTJrrYFoXWVD2Jbs46hJKnJRRW7YWlX6DQo+tkwxK9eIKBhn2w+E79cKYO7FHS2
- 5VOpomh+mjmes7iCq1rEh81CtgVZs4vwrAdOVgXBrSy1BdLloycLRB+os1N2tjOMrGQg==
-X-Google-Smtp-Source: AGHT+IGmraHbZP2E2iRwXxMxNgGXM9zhZedCgpJV66vhLBH8PzAO8Dn4btILshzP2e0cEKgwNzEvBA==
-X-Received: by 2002:a05:620a:1a27:b0:886:173f:1b4c with SMTP id
- af79cd13be357-8ab9ba6fd3emr1982205785a.80.1762267703489; 
- Tue, 04 Nov 2025 06:48:23 -0800 (PST)
-Received: from ?IPV6:2600:4040:93b8:5f00:52dd:c164:4581:b7eb?
- ([2600:4040:93b8:5f00:52dd:c164:4581:b7eb])
- by smtp.gmail.com with ESMTPSA id
- af79cd13be357-8b0f543d90csm198693785a.17.2025.11.04.06.48.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 04 Nov 2025 06:48:23 -0800 (PST)
-Message-ID: <78db1fab-e482-4ebc-82ce-ba84b3f561e2@gmail.com>
-Date: Tue, 4 Nov 2025 09:48:21 -0500
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Jiri Pirko <jiri@resnulli.us>
-Cc: "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Simon Horman <horms@kernel.org>,
- Jonathan Corbet <corbet@lwn.net>, Srujana Challa <schalla@marvell.com>,
- Bharat Bhushan <bbhushan2@marvell.com>,
- Herbert Xu <herbert@gondor.apana.org.au>,
- Brett Creeley <brett.creeley@amd.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
- Michael Chan <michael.chan@broadcom.com>,
- Pavan Chebbi <pavan.chebbi@broadcom.com>,
+ AJvYcCU4I7AVpbOMVfe7/qfP4ah/zflZFwni+NrWfwQL6dNtsvBdM64qmeRYTm0DJH119tKvZbSrkLjOwqkrDTnlSA8=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyHUx6YHMe5oFaesg265MO4+KPhyO8+yMdCYo6YWWXQHk4nSyym
+ /US8OTaDNhPuMtbNpH5CBq0afRyT4EMlXioc0E7fzDvVM8bBsP/e4erK
+X-Gm-Gg: ASbGnctp6iKtW3G/4wlEOiRaHf/yqBs3dtsvkXSulkj43SLVKCgXrYSkySrYW0pg5cA
+ +PR8Qr9I7MFgTmrUWrRZQQCgSM2LC0/TrvPwr1di8EKYVaJ514XOLdzSDE5nj/SQ2GRTP/38H99
+ Mf8ctb41XhRc2e6f1ejdDRsHcpoM1p2jkaE9YMiR1iHsIlwBaNf8CTW4e5FbCkZWW++X5EffLXM
+ vTWvaty3+4glYcsy7cXJr257xUuiT9rUdeYbFGttOK9dIjVRL6KfgdsuUc/kq+bV1i56QJxE0mv
+ NvPjoMtoF3KUN/0zZhxuIcySAtt7ypchRqlhAMIB3Djvd32e3FjyzpOO1qO/Tdv2bf3FNAs20Oc
+ Y6iSgj1aoSzhXif+qVw3dcEmu7aDqs/94OhPQWGuPoIZ7wHMky2O1YwUGnjj4wF/Pd5Jb
+X-Google-Smtp-Source: AGHT+IGVUulaM8PgxdpqWXbaXLvoTSxC4FBTiFBtCJmYm4R/u5Kqq0KGBrKf+VchkH7vBPb6AjB/0w==
+X-Received: by 2002:a17:90b:1a8b:b0:339:cece:a99 with SMTP id
+ 98e67ed59e1d1-34082fc2ca5mr19922869a91.13.1762244890765; 
+ Tue, 04 Nov 2025 00:28:10 -0800 (PST)
+Received: from lgs.. ([172.81.120.170]) by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-3415c8b78f8sm3661514a91.20.2025.11.04.00.28.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 04 Nov 2025 00:28:10 -0800 (PST)
+From: Guangshuo Li <lgs201920130244@gmail.com>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Sunil Goutham <sgoutham@marvell.com>, Linu Cherian <lcherian@marvell.com>,
- Geetha sowjanya <gakula@marvell.com>, Jerin Jacob <jerinj@marvell.com>,
- hariprasad <hkelam@marvell.com>, Subbaraya Sundeep <sbhatta@marvell.com>,
- Tariq Toukan <tariqt@nvidia.com>, Saeed Mahameed <saeedm@nvidia.com>,
- Leon Romanovsky <leon@kernel.org>, Mark Bloch <mbloch@nvidia.com>,
- Ido Schimmel <idosch@nvidia.com>, Petr Machata <petrm@nvidia.com>,
- Manish Chopra <manishc@marvell.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Siddharth Vadapalli <s-vadapalli@ti.com>, Roger Quadros <rogerq@kernel.org>,
- Loic Poulain <loic.poulain@oss.qualcomm.com>,
- Sergey Ryazanov <ryazanov.s.a@gmail.com>,
- Johannes Berg <johannes@sipsolutions.net>,
- Vladimir Oltean <olteanv@gmail.com>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Dave Ertman <david.m.ertman@intel.com>,
- Vlad Dumitrescu <vdumitrescu@nvidia.com>,
- "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
- Alexander Sverdlin <alexander.sverdlin@gmail.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, netdev@vger.kernel.org,
- linux-doc@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-rdma@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org
-References: <20251103194554.3203178-1-daniel.zahka@gmail.com>
- <20251103194554.3203178-3-daniel.zahka@gmail.com>
- <mhm4hkz52gmqok56iuiukdcz2kaowvppbqrfi3zxuq67p3otit@5fhpgu2axab2>
- <db5c46b4-cc66-48bb-aafb-40d83dd3620c@gmail.com>
- <6aa2f011-3ba5-4614-950d-d8f0ec62222b@gmail.com>
- <p3pj3mu4mabgninwowqikegeotxgzhc4yptf7qrfhns37bnkoz@ugkbgvlkxqxb>
-Content-Language: en-US
-From: Daniel Zahka <daniel.zahka@gmail.com>
-In-Reply-To: <p3pj3mu4mabgninwowqikegeotxgzhc4yptf7qrfhns37bnkoz@ugkbgvlkxqxb>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
+ Florian Westphal <fw@strlen.de>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: Guangshuo Li <lgs201920130244@gmail.com>,
+	stable@vger.kernel.org
+Date: Tue,  4 Nov 2025 16:28:01 +0800
+Message-ID: <20251104082801.994195-1-lgs201920130244@gmail.com>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+X-Mailman-Approved-At: Tue, 04 Nov 2025 16:18:17 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1762267704; x=1762872504; darn=lists.osuosl.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=TYbk9wPxk/JA4+MxrrdLZ/GfKAsrpCoWC70+eUl4rp4=;
- b=DBg/Gbixdc4aYaT4G6jlM3aN4V5MZzx2d7J14s/qQWH2xMItuAjwlSEK/WhRRUCVDd
- v3duGC7MaLOcMjcZx1ABovO5f9iizHpw6X1EmW4UApJRFQQrA+7DpDpNta3BMCOI0lX8
- 8ou5TSaCyRzd12XyZALiIqW6gROonvrtibcFfFymKYyPt1lasbjPc9xJuHKjXDoYaXdW
- nN3Yaw4nbFxnRomMdosLOGuLiQtv/92IuRpyjPi9+FX35FRiBv66ZLrpoaJ1XC6OanB2
- 5h8giBYRdxv0XAqIRao+qcFR+JRWTGgnunASi/h/nO6NMo84HDx8iT2klU0kGYUxd86N
- oF3A==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ d=gmail.com; s=20230601; t=1762244891; x=1762849691; darn=lists.osuosl.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=qFICcE+Vtbf0TwZWSrWoxdS8zOuWh2Ntsa14GnmIyDk=;
+ b=ergodSVl841rXp8ocqIk2m66R8nUYBBD6oLbKRjea3uq0c+jPbNpxdQl23v2SmGrHv
+ F26+xxQ8qUbTJ+3vRT9XloiT0C9oRPrbCSBu31fu9BFQth9tfUwglnnE7adn8uim1MP1
+ ktPj0OyaBdPwhEiXAqTQyqWHZCSuj7oWD9YmOh9IY+dToAGdFnm6W9sMuJif9Al7rteW
+ iTOVgqPbLiwf5bsnFKyeFmLP1QWj+mqE3k7xnhFaEMXuwwbcN0aLrWmYFKt/yv0SiazH
+ bh5SY7KiUC00JiKLrq3trZDxKL+Ruzgp/maPPdUMzY/B/dVGVZaVsyj9HqNwrIw/pdBo
+ xyLw==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=DBg/Gbix
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 2/2] net/mlx5: implement
- swp_l4_csum_mode via devlink params
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20230601 header.b=ergodSVl
+Subject: [Intel-wired-lan] [PATCH] e1000: fix OOB in
+ e1000_tbi_should_accept()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -172,56 +133,114 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+In e1000_tbi_should_accept() we read the last byte of the frame via
+'data[length - 1]' to evaluate the TBI workaround. If the descriptor-
+reported length is zero or larger than the actual RX buffer size, this
+read goes out of bounds and can hit unrelated slab objects. The issue
+is observed from the NAPI receive path (e1000_clean_rx_irq):
 
+==================================================================
+BUG: KASAN: slab-out-of-bounds in e1000_tbi_should_accept+0x610/0x790
+Read of size 1 at addr ffff888014114e54 by task sshd/363
 
-On 11/4/25 9:39 AM, Jiri Pirko wrote:
-> Tue, Nov 04, 2025 at 01:51:16PM +0100, daniel.zahka@gmail.com wrote:
->>
->> On 11/4/25 6:38 AM, Daniel Zahka wrote:
->>>
->>> On 11/4/25 5:14 AM, Jiri Pirko wrote:
->>>> I did some research. 0/DEVICE_DEFAULT should not be ever reported back
->>>> from FW. It's purpose is for user to reset to default FW configuration.
->>>> What's the usecase for that? I think you could just avoid
->>>> 0/DEVICE_DEFAULT entirely, for both get and set.
->>> I find that 0/DEVICE_DEFAULT is reported back on my device. I have
->>> observed this same behavior when using the mstconfig tool for setting the
->>> parameter too.
->> e.g.
->> $ dmesg | grep -i mlx | grep -i firmware
->> [   10.165767] mlx5_core 0000:01:00.0: firmware version: 28.46.1006
->>
->> $ ./mstconfig -d 01:00.0 -b ./mlxconfig_host.db query SWP_L4_CHECKSUM_MODE
->>
->> Device #1:
->> ----------
->>
->> Device type:        ConnectX7
->> Name:               CX71143DMC-CDAE_FB_Ax
->> Description:        ConnectX-7 Ethernet adapter card; 100 GbE OCP3.0;
->> Single-port QSFP; Multi Host; 2 Host; PCIe 4.0 x16; Crypto and Secure Boot
->> Device:             01:00.0
->>
->> Configurations:                                          Next Boot
->>          SWP_L4_CHECKSUM_MODE DEVICE_DEFAULT(0)
-> This is next-boot value. You should query current (--enable_verbosity)
-> to show in param get.
+CPU: 0 PID: 363 Comm: sshd Not tainted 5.18.0-rc1 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS rel-1.12.0-59-gc9ba5276e321-prebuilt.qemu.org 04/01/2014
+Call Trace:
+ <IRQ>
+ dump_stack_lvl+0x5a/0x74
+ print_address_description+0x7b/0x440
+ print_report+0x101/0x200
+ kasan_report+0xc1/0xf0
+ e1000_tbi_should_accept+0x610/0x790
+ e1000_clean_rx_irq+0xa8c/0x1110
+ e1000_clean+0xde2/0x3c10
+ __napi_poll+0x98/0x380
+ net_rx_action+0x491/0xa20
+ __do_softirq+0x2c9/0x61d
+ do_softirq+0xd1/0x120
+ </IRQ>
+ <TASK>
+ __local_bh_enable_ip+0xfe/0x130
+ ip_finish_output2+0x7d5/0xb00
+ __ip_queue_xmit+0xe24/0x1ab0
+ __tcp_transmit_skb+0x1bcb/0x3340
+ tcp_write_xmit+0x175d/0x6bd0
+ __tcp_push_pending_frames+0x7b/0x280
+ tcp_sendmsg_locked+0x2e4f/0x32d0
+ tcp_sendmsg+0x24/0x40
+ sock_write_iter+0x322/0x430
+ vfs_write+0x56c/0xa60
+ ksys_write+0xd1/0x190
+ do_syscall_64+0x43/0x90
+ entry_SYSCALL_64_after_hwframe+0x44/0xae
+RIP: 0033:0x7f511b476b10
+Code: 73 01 c3 48 8b 0d 88 d3 2b 00 f7 d8 64 89 01 48 83 c8 ff c3 66 0f 1f 44 00 00 83 3d f9 2b 2c 00 00 75 10 b8 01 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 31 c3 48 83 ec 08 e8 8e 9b 01 00 48 89 04 24
+RSP: 002b:00007ffc9211d4e8 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 0000000000004024 RCX: 00007f511b476b10
+RDX: 0000000000004024 RSI: 0000559a9385962c RDI: 0000000000000003
+RBP: 0000559a9383a400 R08: fffffffffffffff0 R09: 0000000000004f00
+R10: 0000000000000070 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007ffc9211d57f R14: 0000559a9347bde7 R15: 0000000000000003
+ </TASK>
+Allocated by task 1:
+ __kasan_krealloc+0x131/0x1c0
+ krealloc+0x90/0xc0
+ add_sysfs_param+0xcb/0x8a0
+ kernel_add_sysfs_param+0x81/0xd4
+ param_sysfs_builtin+0x138/0x1a6
+ param_sysfs_init+0x57/0x5b
+ do_one_initcall+0x104/0x250
+ do_initcall_level+0x102/0x132
+ do_initcalls+0x46/0x74
+ kernel_init_freeable+0x28f/0x393
+ kernel_init+0x14/0x1a0
+ ret_from_fork+0x22/0x30
+The buggy address belongs to the object at ffff888014114000
+ which belongs to the cache kmalloc-2k of size 2048
+The buggy address is located 1620 bytes to the right of
+ 2048-byte region [ffff888014114000, ffff888014114800]
+The buggy address belongs to the physical page:
+page:ffffea0000504400 refcount:1 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x14110
+head:ffffea0000504400 order:3 compound_mapcount:0 compound_pincount:0
+flags: 0x100000000010200(slab|head|node=0|zone=1)
+raw: 0100000000010200 0000000000000000 dead000000000001 ffff888013442000
+raw: 0000000000000000 0000000000080008 00000001ffffffff 0000000000000000
+page dumped because: kasan: bad access detected
+==================================================================
 
-I am still seeing that DEVICE_DEFAULT(0) is read back:
+This happens because the TBI check unconditionally dereferences the last
+byte without validating the reported length first:
 
-$ ./mstconfig --enable_verbosity -d 01:00.0 -b ./mlxconfig_host.db query 
-SWP_L4_CHECKSUM_MODE
+	u8 last_byte = *(data + length - 1);
 
-Device #1:
-----------
+Fix by rejecting the frame early if the length is zero, or if it exceeds
+adapter->rx_buffer_len. This preserves the TBI workaround semantics for
+valid frames and prevents touching memory beyond the RX buffer.
 
-Device type:        ConnectX7
-Name:               CX71143DMC-CDAE_FB_Ax
-Description:        ConnectX-7 Ethernet adapter card; 100 GbE OCP3.0; 
-Single-port QSFP; Multi Host; 2 Host; PCIe 4.0 x16; Crypto and Secure Boot
-Device:             01:00.0
+Fixes: 2037110c96d5 ("e1000: move tbi workaround code into helper function")
+Cc: stable@vger.kernel.org
+Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
+---
+ drivers/net/ethernet/intel/e1000/e1000_main.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-Configurations:                  Default             Current       Next Boot
-         SWP_L4_CHECKSUM_MODE DEVICE_DEFAULT(0) DEVICE_DEFAULT(0)    
-DEVICE_DEFAULT(0)
+diff --git a/drivers/net/ethernet/intel/e1000/e1000_main.c b/drivers/net/ethernet/intel/e1000/e1000_main.c
+index 3f5feb55cfba..2d2ed5e2c3c8 100644
+--- a/drivers/net/ethernet/intel/e1000/e1000_main.c
++++ b/drivers/net/ethernet/intel/e1000/e1000_main.c
+@@ -4090,6 +4090,12 @@ static bool e1000_tbi_should_accept(struct e1000_adapter *adapter,
+ 				    u8 status, u8 errors,
+ 				    u32 length, const u8 *data)
+ {
++	/* Guard against OOB on data[length - 1] */
++	if (unlikely(!length))
++		return false;
++	/* Upper bound: length must not exceed rx_buffer_len */
++	if (unlikely(length > adapter->rx_buffer_len))
++		return false;
+ 	struct e1000_hw *hw = &adapter->hw;
+ 	u8 last_byte = *(data + length - 1);
+ 
+-- 
+2.43.0
 
