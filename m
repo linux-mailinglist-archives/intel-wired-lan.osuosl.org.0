@@ -1,75 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 577F8C37DC2
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 05 Nov 2025 22:07:30 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B9FAC37DC8
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 05 Nov 2025 22:07:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5C18084597;
-	Wed,  5 Nov 2025 21:07:21 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id EB5AE845AA;
+	Wed,  5 Nov 2025 21:07:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4CnqWIpEJq8R; Wed,  5 Nov 2025 21:07:20 +0000 (UTC)
+ id LcgxeJbg6pFa; Wed,  5 Nov 2025 21:07:24 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 603228458E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C6F0F8458E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1762376840;
-	bh=2HtV9j8gGG3eiYXUNtws2azXoQJUMOg0/S4typSr5lk=;
+	s=default; t=1762376843;
+	bh=x6dJj+AeeqZNyGeBACVTBvrU/NJgjpW/Ii8O9qeJxzk=;
 	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=EckXpAUOuWutnKdVyALhcGhhgCSTt2RGDuGn6600bSZbI7bVeLps6ABBkH+WkrCdV
-	 +0xkq5la4HLrrZu+lz2rp/4ueHKHZpRPMfjjy1eGActD7hu8vOKA+nGJxS9A1XspB7
-	 DYJWHybCI4B83CNJGdpdDbhnTsgG9HE4xtpc6vKNcKctBZpaoyS/yV6c3UhHZmRPim
-	 7yY8FIfCuRoFYJ3iYWTPaF7fFrKUh0Ya3O4H3z8VS4i6JBMdD1ODss75TG8HhWMitN
-	 OI9cKs7TJBptKS7IB34EahBgYiKjcWybYpBISl/DoaXAOaz7DwWvi0wvNdHxb8qUoJ
-	 EkpVLTmwYnK9A==
+	b=Z0/Q7JkNRoZ9XWxKCVz6oDQrGfNWCXm6uZ7dYjmPntSQ6sXMFLFNHdGn4qF94vCd1
+	 5vL10kUKPjrpvn+MWlWWbrdl1dhXdLR9MZlz/Kav3B5zzKHMYIovHaraAI8EwuhXbu
+	 SIUNCRQJHqLGtuMCg96dFwly7Tcb2jdrogH/9wUBDnEF3xutxpLvA03mDli9Ftk871
+	 nFtNy9ERRP5G0F34XIe1/B4SYfbJKg11qTypxYDwe7/fmoOSbGbbC3E52SKC5CYq3B
+	 rt64Iv2nT7dIMNO+ESoUN/xHrsYxu/BLzrZNA8dACn12IPlO1p4Xdp2u1XlGuvrvRL
+	 fO20RWeeYLC9A==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 603228458E;
-	Wed,  5 Nov 2025 21:07:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C6F0F8458E;
+	Wed,  5 Nov 2025 21:07:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 45E934C6
- for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Nov 2025 21:07:17 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 399324C6
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Nov 2025 21:07:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 1AC9384591
+ by smtp4.osuosl.org (Postfix) with ESMTP id 151DB41235
  for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Nov 2025 21:07:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id OOVmzWW7LiuY for <intel-wired-lan@lists.osuosl.org>;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 3Cm21LFA3oCa for <intel-wired-lan@lists.osuosl.org>;
  Wed,  5 Nov 2025 21:07:15 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
  helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 327C384576
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 327C384576
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 325F34108F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 325F34108F
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 327C384576
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 325F34108F
  for <intel-wired-lan@lists.osuosl.org>; Wed,  5 Nov 2025 21:07:15 +0000 (UTC)
-X-CSE-ConnectionGUID: mPMrjFHpS9ODaIWXgwMsOQ==
-X-CSE-MsgGUID: hDV+GqbLS++xxEMPFj/ksA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11604"; a="75114379"
-X-IronPort-AV: E=Sophos;i="6.19,282,1754982000"; d="scan'208";a="75114379"
+X-CSE-ConnectionGUID: EjI9NLvyROO0fPlDe3Q8XA==
+X-CSE-MsgGUID: gVVVYXDfSqiC2UYMntSoWw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11604"; a="75114380"
+X-IronPort-AV: E=Sophos;i="6.19,282,1754982000"; d="scan'208";a="75114380"
 Received: from orviesa007.jf.intel.com ([10.64.159.147])
  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  05 Nov 2025 13:07:14 -0800
-X-CSE-ConnectionGUID: uklvz4laSbaUVYPMesTphg==
-X-CSE-MsgGUID: ZkiKQ8CMTWesIsDEfal6Ag==
+X-CSE-ConnectionGUID: A6okHHciQ9iJsLzbsMDJ3w==
+X-CSE-MsgGUID: bLtztdg2TDyJkU5goMMWgw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,282,1754982000"; d="scan'208";a="187513303"
+X-IronPort-AV: E=Sophos;i="6.19,282,1754982000"; d="scan'208";a="187513305"
 Received: from orcnseosdtjek.jf.intel.com (HELO [10.166.28.90])
  ([10.166.28.90])
  by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  05 Nov 2025 13:07:13 -0800
 From: Jacob Keller <jacob.e.keller@intel.com>
-Date: Wed, 05 Nov 2025 13:06:40 -0800
+Date: Wed, 05 Nov 2025 13:06:41 -0800
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251105-jk-refactor-queue-stats-v2-8-8652557f9572@intel.com>
+Message-Id: <20251105-jk-refactor-queue-stats-v2-9-8652557f9572@intel.com>
 References: <20251105-jk-refactor-queue-stats-v2-0-8652557f9572@intel.com>
 In-Reply-To: <20251105-jk-refactor-queue-stats-v2-0-8652557f9572@intel.com>
 To: Aleksandr Loktionov <aleksandr.loktionov@intel.com>, 
@@ -77,15 +77,16 @@ To: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>, 
  Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
- Jacob Keller <jacob.e.keller@intel.com>
+ Jacob Keller <jacob.e.keller@intel.com>, 
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 X-Mailer: b4 0.15-dev-f4b34
-X-Developer-Signature: v=1; a=openpgp-sha256; l=9636;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=14275;
  i=jacob.e.keller@intel.com; h=from:subject:message-id;
- bh=NqXfXdBMJFGnxkAjYGuSDljw3GFtWybNRhnUmOWeiHw=;
- b=owGbwMvMwCWWNS3WLp9f4wXjabUkhkzuPQ3/Dgp9fcRya3GHzTSxme8OdulddJ5zI9VWMuRV7
- XHudounHaUsDGJcDLJiiiwKDiErrxtPCNN64ywHM4eVCWQIAxenAEwkzpfhf6HXgp1mC65kxZy/
- 37/ocuV+lgfFF+3OFHeLiovWJrJeEmT4K/TumP5jtcmFRZlTOPQfp3pyLbs58XrZaxH9fUL217e
- HMwEA
+ bh=4ZwqCMRtR3k48qmQLQWXXhmf+iyveUP5m5+T0udgH7Q=;
+ b=owGbwMvMwCWWNS3WLp9f4wXjabUkhkzuPQ1vmLOXnRKbtqXjdvmlMxmrnu67Hhr6dKH57ARXr
+ s+TmbbkdpSyMIhxMciKKbIoOISsvG48IUzrjbMczBxWJpAhDFycAjCRwz8Z/ko1Ce71K5om+P13
+ fvKs6iXGR8p3LrZxP/3he/rrLXtl6s0Y/jvPP/ko6NbTJb/3LXuldaisL9/1lPhR752P+3sm56Z
+ +9OADAA==
 X-Developer-Key: i=jacob.e.keller@intel.com; a=openpgp;
  fpr=204054A9D73390562AEC431E6A965D3E6F0F28E8
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
@@ -93,22 +94,22 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1762376835; x=1793912835;
  h=from:date:subject:mime-version:content-transfer-encoding:
  message-id:references:in-reply-to:to:cc;
- bh=NqXfXdBMJFGnxkAjYGuSDljw3GFtWybNRhnUmOWeiHw=;
- b=DXVW6cWqCKyLcHznCtm4J4d/b7BbxNskWLorEuGGaZi5qEiFLIuZ8IBr
- OMfFDxkb6nTK5ISt/WxDPTm8oRfX75u4yGVIsRIbDpEzkaIBXGosQflVE
- wOyDiCnWFhn0UcRbRNymjzCYQ2qb3enfh/bbYRzGIWRKC8fe0m7NC57Oq
- 4d8viWuUU/g2ssrk2Ztg8Tz8KpHSBonXmP7mGrh8PJSzusUV8d4T3vF5K
- T32Foluq77zRc9NT2JuzlCBSdX8zW2+NUo99XQ4TYyZifPFoD6wKFAD+U
- HhFJTEVB2eUuOoGld7mbcIeKD455g7x/co03CC4Os2kZ5tQiFNftUgopp
- w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=4ZwqCMRtR3k48qmQLQWXXhmf+iyveUP5m5+T0udgH7Q=;
+ b=RoioPeJFrwDAxQ3C9wjMRrePJFTBa+y9lGyiVStCGPvorf/xVvJ+2th3
+ cGCtbO4OFJa9pen/8Vn8qFl+jUveEDGh9yl6dJc9C9n6ykgNsENcL0yyD
+ iBlXXgkRsuZ7jw9cSpziDW9b6/b860SqMuCW3svQSVpYeW1eWCL+03m1N
+ PfSitdnxY2NcaoQ3x00QWfkQV95DdoH1JlwHDb/X2r4SmlbbDaSrRr609
+ E4iJwiEouaMJVcfO2F0Eet3QNdjZtw24InGAGvc/EL7wHfyO+wkMgtZV1
+ RUi+jEZp+T67lG/seGcbK1t1CGFmsnwOii/ab07q30hzr1J9VoxKLhSX5
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=DXVW6cWq
-Subject: [Intel-wired-lan] [PATCH iwl-next v2 8/9] ice: shorten ring stat
- names and add accessors
+ header.a=rsa-sha256 header.s=Intel header.b=RoioPeJF
+Subject: [Intel-wired-lan] [PATCH iwl-next v2 9/9] ice: convert all ring
+ stats to u64_stats_t
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -124,261 +125,413 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The ice Tx/Rx hotpath has a few statistics counters for tracking unexpected
-events. These values are stored as u64 but are not accumulated using the
-u64_stats API. This could result in load/tear stores on some architectures.
-Even some 64-bit architectures could have issues since the fields are not
-read or written using ACCESS_ONCE or READ_ONCE.
+After several cleanups, the ice driver is now finally ready to convert all
+Tx and Rx ring stats to the u64_stats_t and proper use of the u64 stats
+APIs.
 
-A following change is going to refactor the stats accumulator code to use
-the u64_stats API for all of these stats, and to use u64_stats_read and
-u64_stats_inc properly to prevent load/store tears on all architectures.
+The final remaining part to cleanup is the VSI stats accumulation logic in
+ice_update_vsi_ring_stats().
 
-Using u64_stats_inc and the syncp pointer is slightly verbose and would be
-duplicated in a number of places in the Tx and Rx hot path. Add accessor
-macros for the cases where only a single stat value is touched at once. To
-keep lines short, also shorten the stats names and convert ice_txq_stats
-and ice_rxq_stats to struct_group.
+Refactor the function and its helpers so that all stat values (and not
+just pkts and bytes) use the u64_stats APIs. The
+ice_fetch_u64_(tx|rx)_stats functions read the stat values using
+u64_stats_read and then copy them into local ice_vsi_(tx|rx)_stats
+structures. This does require making a new struct with the stat fields as
+u64.
 
-This will ease the transition to properly using the u64_stats API in the
-following change.
+The ice_update_vsi_(tx|rx)_ring_stats functions call the fetch functions
+per ring and accumulate the result into one copy of the struct. This
+accumulated total is then used to update the relevant VSI fields.
 
+Since these are relatively small, the contents are all stored on the stack
+rather than allocating and freeing memory.
+
+Once the accumulator side is updated, the helper ice_stats_read and
+ice_stats_inc and other related helper functions all easily translate to
+use of u64_stats_read and u64_stats_inc. This completes the refactor and
+ensures that all stats accesses now make proper use of the API.
+
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_txrx.h     | 52 +++++++++++++++++++--------
- drivers/net/ethernet/intel/ice/ice_txrx_lib.h |  2 +-
- drivers/net/ethernet/intel/ice/ice_main.c     | 12 +++----
- drivers/net/ethernet/intel/ice/ice_txrx.c     | 14 ++++----
- drivers/net/ethernet/intel/ice/ice_txrx_lib.c |  2 +-
- drivers/net/ethernet/intel/ice/ice_xsk.c      |  4 +--
- 6 files changed, 55 insertions(+), 31 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_txrx.h |  28 +++--
+ drivers/net/ethernet/intel/ice/ice_lib.c  |  29 ++---
+ drivers/net/ethernet/intel/ice/ice_main.c | 180 ++++++++++++++++++++----------
+ 3 files changed, 147 insertions(+), 90 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.h b/drivers/net/ethernet/intel/ice/ice_txrx.h
-index 8586d5bebac7..85f35fb0898f 100644
+index 85f35fb0898f..6dc418b794ae 100644
 --- a/drivers/net/ethernet/intel/ice/ice_txrx.h
 +++ b/drivers/net/ethernet/intel/ice/ice_txrx.h
-@@ -129,18 +129,6 @@ struct ice_tx_offload_params {
- 	u8 header_len;
- };
- 
--struct ice_txq_stats {
--	u64 restart_q;
--	u64 tx_busy;
--	u64 tx_linearize;
--};
--
--struct ice_rxq_stats {
--	u64 non_eop_descs;
--	u64 alloc_page_failed;
--	u64 alloc_buf_failed;
--};
--
- struct ice_ring_stats {
+@@ -133,18 +133,18 @@ struct ice_ring_stats {
  	struct rcu_head rcu;	/* to avoid race on free */
  	struct u64_stats_sync syncp;
-@@ -148,12 +136,48 @@ struct ice_ring_stats {
- 		u64 pkts;
- 		u64 bytes;
+ 	struct_group(stats,
+-		u64 pkts;
+-		u64 bytes;
++		u64_stats_t pkts;
++		u64_stats_t bytes;
  		union {
--			struct ice_txq_stats tx_stats;
--			struct ice_rxq_stats rx_stats;
-+			struct_group(tx,
-+				u64 tx_restart_q;
-+				u64 tx_busy;
-+				u64 tx_linearize;
-+			);
-+			struct_group(rx,
-+				u64 rx_non_eop_descs;
-+				u64 rx_page_failed;
-+				u64 rx_buf_failed;
-+			);
+ 			struct_group(tx,
+-				u64 tx_restart_q;
+-				u64 tx_busy;
+-				u64 tx_linearize;
++				u64_stats_t tx_restart_q;
++				u64_stats_t tx_busy;
++				u64_stats_t tx_linearize;
+ 			);
+ 			struct_group(rx,
+-				u64 rx_non_eop_descs;
+-				u64 rx_page_failed;
+-				u64 rx_buf_failed;
++				u64_stats_t rx_non_eop_descs;
++				u64_stats_t rx_page_failed;
++				u64_stats_t rx_buf_failed;
+ 			);
  		};
  	);
- };
+@@ -162,7 +162,13 @@ struct ice_ring_stats {
+  */
+ #define ice_stats_read(stats, member) ({				\
+ 	struct ice_ring_stats *__stats = (stats);			\
+-	__stats->member;						\
++	unsigned int start;						\
++	u64 val;							\
++	do {								\
++		start = u64_stats_fetch_begin(&__stats->syncp);		\
++		val = u64_stats_read(&__stats->member);			\
++	} while (u64_stats_fetch_retry(&__stats->syncp, start));	\
++	val;								\
+ })
  
-+/**
-+ * ice_stats_read - Read a single ring stat value
-+ * @stats: pointer to ring_stats structure for a queue
-+ * @member: the ice_ring_stats member to read
-+ *
-+ * Shorthand for reading a single 64-bit stat value from struct
-+ * ice_ring_stats.
-+ *
-+ * Return: the value of the requested stat.
-+ */
-+#define ice_stats_read(stats, member) ({				\
-+	struct ice_ring_stats *__stats = (stats);			\
-+	__stats->member;						\
-+})
-+
-+/**
-+ * ice_stats_inc - Increment a single ring stat value
-+ * @stats: pointer to the ring_stats structure for a queue
-+ * @member: the ice_ring_stats member to increment
-+ *
-+ * Shorthand for incrementing a single 64-bit stat value in struct
-+ * ice_ring_stats.
-+ */
-+#define ice_stats_inc(stats, member) do {				\
-+	struct ice_ring_stats *__stats = (stats);			\
-+	__stats->member++;						\
-+} while (0)
-+
+ /**
+@@ -175,7 +181,9 @@ struct ice_ring_stats {
+  */
+ #define ice_stats_inc(stats, member) do {				\
+ 	struct ice_ring_stats *__stats = (stats);			\
+-	__stats->member++;						\
++	u64_stats_update_begin(&__stats->syncp);			\
++	u64_stats_inc(&__stats->member);				\
++	u64_stats_update_end(&__stats->syncp);				\
+ } while (0)
+ 
  enum ice_ring_state_t {
- 	ICE_TX_XPS_INIT_DONE,
- 	ICE_TX_NBITS,
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx_lib.h b/drivers/net/ethernet/intel/ice/ice_txrx_lib.h
-index 6a3f10f7a53f..f17990b68b62 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx_lib.h
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx_lib.h
-@@ -38,7 +38,7 @@ ice_is_non_eop(const struct ice_rx_ring *rx_ring,
- 	if (likely(ice_test_staterr(rx_desc->wb.status_error0, ICE_RXD_EOF)))
- 		return false;
- 
--	rx_ring->ring_stats->rx_stats.non_eop_descs++;
-+	ice_stats_inc(rx_ring->ring_stats, rx_non_eop_descs);
- 
- 	return true;
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 897df9362638..6923fafdbcbf 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -3433,21 +3433,6 @@ int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc)
+ 	return ret;
  }
+ 
+-/**
+- * ice_update_ring_stats - Update ring statistics
+- * @stats: stats to be updated
+- * @pkts: number of processed packets
+- * @bytes: number of processed bytes
+- *
+- * This function assumes that caller has acquired a u64_stats_sync lock.
+- */
+-static void ice_update_ring_stats(struct ice_ring_stats *stats,
+-				  u64 pkts, u64 bytes)
+-{
+-	stats->bytes += bytes;
+-	stats->pkts += pkts;
+-}
+-
+ /**
+  * ice_update_tx_ring_stats - Update Tx ring specific counters
+  * @tx_ring: ring to update
+@@ -3457,7 +3442,8 @@ static void ice_update_ring_stats(struct ice_ring_stats *stats,
+ void ice_update_tx_ring_stats(struct ice_tx_ring *tx_ring, u64 pkts, u64 bytes)
+ {
+ 	u64_stats_update_begin(&tx_ring->ring_stats->syncp);
+-	ice_update_ring_stats(tx_ring->ring_stats, pkts, bytes);
++	u64_stats_add(&tx_ring->ring_stats->pkts, pkts);
++	u64_stats_add(&tx_ring->ring_stats->bytes, bytes);
+ 	u64_stats_update_end(&tx_ring->ring_stats->syncp);
+ }
+ 
+@@ -3470,7 +3456,8 @@ void ice_update_tx_ring_stats(struct ice_tx_ring *tx_ring, u64 pkts, u64 bytes)
+ void ice_update_rx_ring_stats(struct ice_rx_ring *rx_ring, u64 pkts, u64 bytes)
+ {
+ 	u64_stats_update_begin(&rx_ring->ring_stats->syncp);
+-	ice_update_ring_stats(rx_ring->ring_stats, pkts, bytes);
++	u64_stats_add(&rx_ring->ring_stats->pkts, pkts);
++	u64_stats_add(&rx_ring->ring_stats->bytes, bytes);
+ 	u64_stats_update_end(&rx_ring->ring_stats->syncp);
+ }
+ 
+@@ -3487,8 +3474,8 @@ void ice_fetch_tx_ring_stats(const struct ice_tx_ring *ring,
+ 
+ 	do  {
+ 		start = u64_stats_fetch_begin(&ring->ring_stats->syncp);
+-		*pkts = ring->ring_stats->pkts;
+-		*bytes = ring->ring_stats->bytes;
++		*pkts = u64_stats_read(&ring->ring_stats->pkts);
++		*bytes = u64_stats_read(&ring->ring_stats->bytes);
+ 	} while (u64_stats_fetch_retry(&ring->ring_stats->syncp, start));
+ }
+ 
+@@ -3505,8 +3492,8 @@ void ice_fetch_rx_ring_stats(const struct ice_rx_ring *ring,
+ 
+ 	do  {
+ 		start = u64_stats_fetch_begin(&ring->ring_stats->syncp);
+-		*pkts = ring->ring_stats->pkts;
+-		*bytes = ring->ring_stats->bytes;
++		*pkts = u64_stats_read(&ring->ring_stats->pkts);
++		*bytes = u64_stats_read(&ring->ring_stats->bytes);
+ 	} while (u64_stats_fetch_retry(&ring->ring_stats->syncp, start));
+ }
+ 
 diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 5a3bcbb5f63c..885e85f478d8 100644
+index 885e85f478d8..5f63799de75e 100644
 --- a/drivers/net/ethernet/intel/ice/ice_main.c
 +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -159,7 +159,7 @@ static void ice_check_for_hang_subtask(struct ice_pf *pf)
- 			 * prev_pkt would be negative if there was no
- 			 * pending work.
- 			 */
--			packets = ring_stats->stats.pkts & INT_MAX;
-+			packets = ice_stats_read(ring_stats, pkts) & INT_MAX;
- 			if (tx_ring->prev_pkt == packets) {
- 				/* Trigger sw interrupt to revive the queue */
- 				ice_trigger_sw_intr(hw, tx_ring->q_vector);
-@@ -6869,9 +6869,9 @@ ice_update_vsi_tx_ring_stats(struct ice_vsi *vsi,
- 		ice_fetch_u64_stats_per_ring(ring->ring_stats, &pkts, &bytes);
- 		vsi_stats->tx_packets += pkts;
- 		vsi_stats->tx_bytes += bytes;
--		vsi->tx_restart += ring->ring_stats->tx_stats.restart_q;
--		vsi->tx_busy += ring->ring_stats->tx_stats.tx_busy;
--		vsi->tx_linearize += ring->ring_stats->tx_stats.tx_linearize;
-+		vsi->tx_restart += ring->ring_stats->tx_restart_q;
-+		vsi->tx_busy += ring->ring_stats->tx_busy;
-+		vsi->tx_linearize += ring->ring_stats->tx_linearize;
+@@ -6824,54 +6824,132 @@ int ice_up(struct ice_vsi *vsi)
+ 	return err;
+ }
+ 
++struct ice_vsi_tx_stats {
++	u64 pkts;
++	u64 bytes;
++	u64 tx_restart_q;
++	u64 tx_busy;
++	u64 tx_linearize;
++};
++
++struct ice_vsi_rx_stats {
++	u64 pkts;
++	u64 bytes;
++	u64 rx_non_eop_descs;
++	u64 rx_page_failed;
++	u64 rx_buf_failed;
++};
++
+ /**
+- * ice_fetch_u64_stats_per_ring - get packets and bytes stats per ring
+- * @stats: pointer to ring stats structure
+- * @pkts: packets stats counter
+- * @bytes: bytes stats counter
++ * ice_fetch_u64_tx_stats - get Tx stats from a ring
++ * @ring: the Tx ring to copy stats from
++ * @copy: temporary storage for the ring statistics
+  *
+- * This function fetches stats from the ring considering the atomic operations
+- * that needs to be performed to read u64 values in 32 bit machine.
++ * Fetch the u64 stats from the ring using u64_stats_fetch. This ensures each
++ * stat value is self-consistent, though not necessarily consistent w.r.t
++ * other stats.
+  */
+-static void ice_fetch_u64_stats_per_ring(struct ice_ring_stats *stats,
+-					 u64 *pkts, u64 *bytes)
++static void ice_fetch_u64_tx_stats(struct ice_tx_ring *ring,
++				   struct ice_vsi_tx_stats *copy)
+ {
++	struct ice_ring_stats *stats = ring->ring_stats;
+ 	unsigned int start;
+ 
+ 	do {
+ 		start = u64_stats_fetch_begin(&stats->syncp);
+-		*pkts = stats->stats.pkts;
+-		*bytes = stats->stats.bytes;
++		copy->pkts = u64_stats_read(&stats->pkts);
++		copy->bytes = u64_stats_read(&stats->bytes);
++		copy->tx_restart_q = u64_stats_read(&stats->tx_restart_q);
++		copy->tx_busy = u64_stats_read(&stats->tx_busy);
++		copy->tx_linearize = u64_stats_read(&stats->tx_linearize);
++	} while (u64_stats_fetch_retry(&stats->syncp, start));
++}
++
++/**
++ * ice_fetch_u64_rx_stats - get Rx stats from a ring
++ * @ring: the Rx ring to copy stats from
++ * @copy: temporary storage for the ring statistics
++ *
++ * Fetch the u64 stats from the ring using u64_stats_fetch. This ensures each
++ * stat value is self-consistent, though not necessarily consistent w.r.t
++ * other stats.
++ */
++static void ice_fetch_u64_rx_stats(struct ice_rx_ring *ring,
++				   struct ice_vsi_rx_stats *copy)
++{
++	struct ice_ring_stats *stats = ring->ring_stats;
++	unsigned int start;
++
++	do {
++		start = u64_stats_fetch_begin(&stats->syncp);
++		copy->pkts = u64_stats_read(&stats->pkts);
++		copy->bytes = u64_stats_read(&stats->bytes);
++		copy->rx_non_eop_descs =
++			u64_stats_read(&stats->rx_non_eop_descs);
++		copy->rx_page_failed = u64_stats_read(&stats->rx_page_failed);
++		copy->rx_buf_failed = u64_stats_read(&stats->rx_buf_failed);
+ 	} while (u64_stats_fetch_retry(&stats->syncp, start));
+ }
+ 
+ /**
+  * ice_update_vsi_tx_ring_stats - Update VSI Tx ring stats counters
+  * @vsi: the VSI to be updated
+- * @vsi_stats: the stats struct to be updated
++ * @vsi_stats: accumulated stats for this VSI
+  * @rings: rings to work on
+  * @count: number of rings
+  */
+-static void
+-ice_update_vsi_tx_ring_stats(struct ice_vsi *vsi,
+-			     struct rtnl_link_stats64 *vsi_stats,
+-			     struct ice_tx_ring **rings, u16 count)
++static void ice_update_vsi_tx_ring_stats(struct ice_vsi *vsi,
++					 struct ice_vsi_tx_stats *vsi_stats,
++					 struct ice_tx_ring **rings, u16 count)
+ {
++	struct ice_vsi_tx_stats copy = {};
+ 	u16 i;
+ 
+ 	for (i = 0; i < count; i++) {
+ 		struct ice_tx_ring *ring;
+-		u64 pkts = 0, bytes = 0;
+ 
+ 		ring = READ_ONCE(rings[i]);
+ 		if (!ring || !ring->ring_stats)
+ 			continue;
+-		ice_fetch_u64_stats_per_ring(ring->ring_stats, &pkts, &bytes);
+-		vsi_stats->tx_packets += pkts;
+-		vsi_stats->tx_bytes += bytes;
+-		vsi->tx_restart += ring->ring_stats->tx_restart_q;
+-		vsi->tx_busy += ring->ring_stats->tx_busy;
+-		vsi->tx_linearize += ring->ring_stats->tx_linearize;
++
++		ice_fetch_u64_tx_stats(ring, &copy);
++
++		vsi_stats->pkts += copy.pkts;
++		vsi_stats->bytes += copy.bytes;
++		vsi_stats->tx_restart_q += copy.tx_restart_q;
++		vsi_stats->tx_busy += copy.tx_busy;
++		vsi_stats->tx_linearize += copy.tx_linearize;
++	}
++}
++
++/**
++ * ice_update_vsi_rx_ring_stats - Update VSI Rx ring stats counters
++ * @vsi: the VSI to be updated
++ * @vsi_stats: accumulated stats for this VSI
++ * @rings: rings to work on
++ * @count: number of rings
++ */
++static void ice_update_vsi_rx_ring_stats(struct ice_vsi *vsi,
++					 struct ice_vsi_rx_stats *vsi_stats,
++					 struct ice_rx_ring **rings, u16 count)
++{
++	struct ice_vsi_rx_stats copy = {};
++	u16 i;
++
++	for (i = 0; i < count; i++) {
++		struct ice_rx_ring *ring;
++
++		ring = READ_ONCE(rings[i]);
++		if (!ring || !ring->ring_stats)
++			continue;
++
++		ice_fetch_u64_rx_stats(ring, &copy);
++
++		vsi_stats->pkts += copy.pkts;
++		vsi_stats->bytes += copy.bytes;
++		vsi_stats->rx_non_eop_descs += copy.rx_non_eop_descs;
++		vsi_stats->rx_page_failed += copy.rx_page_failed;
++		vsi_stats->rx_buf_failed += copy.rx_buf_failed;
  	}
  }
  
-@@ -6913,8 +6913,8 @@ static void ice_update_vsi_ring_stats(struct ice_vsi *vsi)
- 		ice_fetch_u64_stats_per_ring(ring_stats, &pkts, &bytes);
- 		vsi_stats->rx_packets += pkts;
- 		vsi_stats->rx_bytes += bytes;
--		vsi->rx_buf_failed += ring_stats->rx_stats.alloc_buf_failed;
--		vsi->rx_page_failed += ring_stats->rx_stats.alloc_page_failed;
-+		vsi->rx_buf_failed += ring_stats->rx_buf_failed;
-+		vsi->rx_page_failed += ring_stats->rx_page_failed;
- 	}
+@@ -6882,48 +6960,34 @@ ice_update_vsi_tx_ring_stats(struct ice_vsi *vsi,
+ static void ice_update_vsi_ring_stats(struct ice_vsi *vsi)
+ {
+ 	struct rtnl_link_stats64 *net_stats, *stats_prev;
+-	struct rtnl_link_stats64 *vsi_stats;
++	struct ice_vsi_tx_stats tx_stats = {};
++	struct ice_vsi_rx_stats rx_stats = {};
+ 	struct ice_pf *pf = vsi->back;
+-	u64 pkts, bytes;
+-	int i;
+-
+-	vsi_stats = kzalloc(sizeof(*vsi_stats), GFP_ATOMIC);
+-	if (!vsi_stats)
+-		return;
+-
+-	/* reset non-netdev (extended) stats */
+-	vsi->tx_restart = 0;
+-	vsi->tx_busy = 0;
+-	vsi->tx_linearize = 0;
+-	vsi->rx_buf_failed = 0;
+-	vsi->rx_page_failed = 0;
+ 
+ 	rcu_read_lock();
+ 
+ 	/* update Tx rings counters */
+-	ice_update_vsi_tx_ring_stats(vsi, vsi_stats, vsi->tx_rings,
++	ice_update_vsi_tx_ring_stats(vsi, &tx_stats, vsi->tx_rings,
+ 				     vsi->num_txq);
+ 
+ 	/* update Rx rings counters */
+-	ice_for_each_rxq(vsi, i) {
+-		struct ice_rx_ring *ring = READ_ONCE(vsi->rx_rings[i]);
+-		struct ice_ring_stats *ring_stats;
+-
+-		ring_stats = ring->ring_stats;
+-		ice_fetch_u64_stats_per_ring(ring_stats, &pkts, &bytes);
+-		vsi_stats->rx_packets += pkts;
+-		vsi_stats->rx_bytes += bytes;
+-		vsi->rx_buf_failed += ring_stats->rx_buf_failed;
+-		vsi->rx_page_failed += ring_stats->rx_page_failed;
+-	}
++	ice_update_vsi_rx_ring_stats(vsi, &rx_stats, vsi->rx_rings,
++				     vsi->num_rxq);
  
  	/* update XDP Tx rings counters */
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index f0f5133c389f..ddd40c87772a 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -379,7 +379,7 @@ static bool ice_clean_tx_irq(struct ice_tx_ring *tx_ring, int napi_budget)
- 		if (netif_tx_queue_stopped(txring_txq(tx_ring)) &&
- 		    !test_bit(ICE_VSI_DOWN, vsi->state)) {
- 			netif_tx_wake_queue(txring_txq(tx_ring));
--			++tx_ring->ring_stats->tx_stats.restart_q;
-+			ice_stats_inc(tx_ring->ring_stats, tx_restart_q);
- 		}
- 	}
+ 	if (ice_is_xdp_ena_vsi(vsi))
+-		ice_update_vsi_tx_ring_stats(vsi, vsi_stats, vsi->xdp_rings,
++		ice_update_vsi_tx_ring_stats(vsi, &tx_stats, vsi->xdp_rings,
+ 					     vsi->num_xdp_txq);
  
-@@ -849,7 +849,7 @@ bool ice_alloc_rx_bufs(struct ice_rx_ring *rx_ring, unsigned int cleaned_count)
+ 	rcu_read_unlock();
  
- 		addr = libeth_rx_alloc(&fq, ntu);
- 		if (addr == DMA_MAPPING_ERROR) {
--			rx_ring->ring_stats->rx_stats.alloc_page_failed++;
-+			ice_stats_inc(rx_ring->ring_stats, rx_page_failed);
- 			break;
- 		}
++	/* Save non-netdev (extended) stats */
++	vsi->tx_restart = tx_stats.tx_restart_q;
++	vsi->tx_busy = tx_stats.tx_busy;
++	vsi->tx_linearize = tx_stats.tx_linearize;
++	vsi->rx_buf_failed = rx_stats.rx_buf_failed;
++	vsi->rx_page_failed = rx_stats.rx_page_failed;
++
+ 	net_stats = &vsi->net_stats;
+ 	stats_prev = &vsi->net_stats_prev;
  
-@@ -863,7 +863,7 @@ bool ice_alloc_rx_bufs(struct ice_rx_ring *rx_ring, unsigned int cleaned_count)
- 
- 		addr = libeth_rx_alloc(&hdr_fq, ntu);
- 		if (addr == DMA_MAPPING_ERROR) {
--			rx_ring->ring_stats->rx_stats.alloc_page_failed++;
-+			ice_stats_inc(rx_ring->ring_stats, rx_page_failed);
- 
- 			libeth_rx_recycle_slow(fq.fqes[ntu].netmem);
- 			break;
-@@ -1045,7 +1045,7 @@ static int ice_clean_rx_irq(struct ice_rx_ring *rx_ring, int budget)
- 		/* exit if we failed to retrieve a buffer */
- 		if (!skb) {
- 			libeth_xdp_return_buff_slow(xdp);
--			rx_ring->ring_stats->rx_stats.alloc_buf_failed++;
-+			ice_stats_inc(rx_ring->ring_stats, rx_buf_failed);
- 			continue;
- 		}
- 
-@@ -1363,7 +1363,7 @@ static int __ice_maybe_stop_tx(struct ice_tx_ring *tx_ring, unsigned int size)
- 
- 	/* A reprieve! - use start_queue because it doesn't call schedule */
- 	netif_tx_start_queue(txring_txq(tx_ring));
--	++tx_ring->ring_stats->tx_stats.restart_q;
-+	ice_stats_inc(tx_ring->ring_stats, tx_restart_q);
- 	return 0;
- }
- 
-@@ -2165,7 +2165,7 @@ ice_xmit_frame_ring(struct sk_buff *skb, struct ice_tx_ring *tx_ring)
- 		if (__skb_linearize(skb))
- 			goto out_drop;
- 		count = ice_txd_use_count(skb->len);
--		tx_ring->ring_stats->tx_stats.tx_linearize++;
-+		ice_stats_inc(tx_ring->ring_stats, tx_linearize);
- 	}
- 
- 	/* need: 1 descriptor per page * PAGE_SIZE/ICE_MAX_DATA_PER_TXD,
-@@ -2176,7 +2176,7 @@ ice_xmit_frame_ring(struct sk_buff *skb, struct ice_tx_ring *tx_ring)
+@@ -6933,18 +6997,16 @@ static void ice_update_vsi_ring_stats(struct ice_vsi *vsi)
+ 	 * let's skip this round.
  	 */
- 	if (ice_maybe_stop_tx(tx_ring, count + ICE_DESCS_PER_CACHE_LINE +
- 			      ICE_DESCS_FOR_CTX_DESC)) {
--		tx_ring->ring_stats->tx_stats.tx_busy++;
-+		ice_stats_inc(tx_ring->ring_stats, tx_busy);
- 		return NETDEV_TX_BUSY;
+ 	if (likely(pf->stat_prev_loaded)) {
+-		net_stats->tx_packets += vsi_stats->tx_packets - stats_prev->tx_packets;
+-		net_stats->tx_bytes += vsi_stats->tx_bytes - stats_prev->tx_bytes;
+-		net_stats->rx_packets += vsi_stats->rx_packets - stats_prev->rx_packets;
+-		net_stats->rx_bytes += vsi_stats->rx_bytes - stats_prev->rx_bytes;
++		net_stats->tx_packets += tx_stats.pkts - stats_prev->tx_packets;
++		net_stats->tx_bytes += tx_stats.bytes - stats_prev->tx_bytes;
++		net_stats->rx_packets += rx_stats.pkts - stats_prev->rx_packets;
++		net_stats->rx_bytes += rx_stats.bytes - stats_prev->rx_bytes;
  	}
  
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-index 956da38d63b0..e68f3e5d35b4 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-@@ -480,7 +480,7 @@ int __ice_xmit_xdp_ring(struct xdp_buff *xdp, struct ice_tx_ring *xdp_ring,
- 	return ICE_XDP_CONSUMED;
- 
- busy:
--	xdp_ring->ring_stats->tx_stats.tx_busy++;
-+	ice_stats_inc(xdp_ring->ring_stats, tx_busy);
- 
- 	return ICE_XDP_CONSUMED;
+-	stats_prev->tx_packets = vsi_stats->tx_packets;
+-	stats_prev->tx_bytes = vsi_stats->tx_bytes;
+-	stats_prev->rx_packets = vsi_stats->rx_packets;
+-	stats_prev->rx_bytes = vsi_stats->rx_bytes;
+-
+-	kfree(vsi_stats);
++	stats_prev->tx_packets = tx_stats.pkts;
++	stats_prev->tx_bytes = tx_stats.bytes;
++	stats_prev->rx_packets = rx_stats.pkts;
++	stats_prev->rx_bytes = rx_stats.bytes;
  }
-diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
-index 989ff1fd9110..953e68ed0f9a 100644
---- a/drivers/net/ethernet/intel/ice/ice_xsk.c
-+++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
-@@ -497,7 +497,7 @@ static int ice_xmit_xdp_tx_zc(struct xdp_buff *xdp,
- 	return ICE_XDP_TX;
  
- busy:
--	xdp_ring->ring_stats->tx_stats.tx_busy++;
-+	ice_stats_inc(xdp_ring->ring_stats, tx_busy);
- 
- 	return ICE_XDP_CONSUMED;
- }
-@@ -659,7 +659,7 @@ int ice_clean_rx_irq_zc(struct ice_rx_ring *rx_ring,
- 			xsk_buff_free(first);
- 			first = NULL;
- 
--			rx_ring->ring_stats->rx_stats.alloc_buf_failed++;
-+			ice_stats_inc(rx_ring->ring_stats, rx_buf_failed);
- 			continue;
- 		}
- 
+ /**
 
 -- 
 2.51.0.rc1.197.g6d975e95c9d7
