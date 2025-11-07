@@ -1,120 +1,131 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3C721C40281
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 07 Nov 2025 14:40:17 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B58BC405E7
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 07 Nov 2025 15:31:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 11F3F4152E;
-	Fri,  7 Nov 2025 13:40:15 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 89CBF40173;
+	Fri,  7 Nov 2025 14:31:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uctzsMCzsQ42; Fri,  7 Nov 2025 13:40:14 +0000 (UTC)
+ id doAWOZQQgH2s; Fri,  7 Nov 2025 14:31:07 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 777C54152F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E49B641589
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1762522814;
-	bh=5fO9mmsxHq9O1ddXqChORt2eOtAnsTaAOoJHS0IxQ8Q=;
-	h=From:Date:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
+	s=default; t=1762525866;
+	bh=HuyCyNIxSTtU1XKMsaRkv99RE6i6L6TQ42UPOrrYmNE=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=f7sCLvLObO3ZEGRV/za7VD25C8t2i07VhvosG1v07pm2+v9KblkDZNVnFGypKe6tp
-	 mMXQK99z8Em5VVnXv2FGW2d27Cs11CawdJASbN7lUUdweEtZ+HXd+aJ97Ke3BUdrVj
-	 iK7uk6sc8hMW0QDvlRIWdk1pbBtR1JHddi6f+JTO9LnGZGq3DF9Oev5xgXXNLO0nFI
-	 fvRqndDS5KNzolhUYfKIcsY9mW18i4S30rzupEDRDLzH9bWZocLESg0MafGtneex2F
-	 IQr+BpW5dUy6SOX+Q8AiivIu7oTBlKYKCWspXRUUENNoWTzwNUW7v99DbAoA851Mun
-	 9Q+bAI2J2mJvA==
+	b=Pzj9yBFuVdJNGPwMMGlRNQqyMkx/GutJZWuUe0GHUeGwVHk8NQin2n712dbTpf4Hk
+	 +SjIbuip9ihSJAMIWlxU0WuO7TaPT/XyTn0hhX6c6tnQNX6QC0SOENPGEPMNFseJgg
+	 MjqRQXy6KINxitNsIz2KaJmxwtMz1Ym4A5eEswtWbGuZ2gYKJg7fNjjBEH/NKoyiME
+	 /Go3qZWx1SYbOY0IiMoh5lBE+5qd9Vioqkl5yoNo72r03cvx3HFfpNpYx/7kVGja7Y
+	 Z0Oc48vhzjBws1TUr+eSIwQGVxLUoxSnOV31gI0lkzPcjKxJmwpSmwOwB3+5QKlxLM
+	 YVrqNa1mjxMbw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 777C54152F;
-	Fri,  7 Nov 2025 13:40:14 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E49B641589;
+	Fri,  7 Nov 2025 14:31:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 27648961
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Nov 2025 13:40:12 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 0519B1CD
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Nov 2025 14:31:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1210B405D7
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Nov 2025 13:40:12 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id EB8AD41584
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Nov 2025 14:31:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id fC5DGqgk5uaK for <intel-wired-lan@lists.osuosl.org>;
- Fri,  7 Nov 2025 13:40:11 +0000 (UTC)
-X-Greylist: delayed 497 seconds by postgrey-1.37 at util1.osuosl.org;
- Fri, 07 Nov 2025 13:40:11 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 35FBB404E8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 35FBB404E8
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
- envelope-from=kurt@linutronix.de; receiver=<UNKNOWN> 
-Received: from galois.linutronix.de (Galois.linutronix.de
- [IPv6:2a0a:51c0:0:12e:550::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 35FBB404E8
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Nov 2025 13:40:11 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-Date: Fri, 07 Nov 2025 14:31:36 +0100
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id PTdi15Hb1InG for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  7 Nov 2025 14:31:05 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=205.220.177.32;
+ helo=mx0b-00069f02.pphosted.com; envelope-from=alok.a.tiwari@oracle.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org E11A741580
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E11A741580
+Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com
+ [205.220.177.32])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E11A741580
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Nov 2025 14:31:04 +0000 (UTC)
+Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5A7E58Ve032330;
+ Fri, 7 Nov 2025 14:30:56 GMT
+Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4a9j77r1x4-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 07 Nov 2025 14:30:55 +0000 (GMT)
+Received: from pps.filterd
+ (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2)
+ with ESMTP id 5A7DlDrC023016; Fri, 7 Nov 2025 14:30:55 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
+ 4a58nhcsyy-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 07 Nov 2025 14:30:55 +0000
+Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 5A7EUsPT020742;
+ Fri, 7 Nov 2025 14:30:54 GMT
+Received: from ca-dev112.us.oracle.com (ca-dev112.us.oracle.com
+ [10.129.136.47])
+ by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id
+ 4a58nhcsxj-1; Fri, 07 Nov 2025 14:30:54 +0000
+From: Alok Tiwari <alok.a.tiwari@oracle.com>
+To: przemyslaw.kitszel@intel.com, aleksander.lobakin@intel.com,
+ anthony.l.nguyen@intel.com, andrew+netdev@lunn.ch, kuba@kernel.org,
+ davem@davemloft.net, edumazet@google.com, pabeni@redhat.com,
+ horms@kernel.org, intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+Cc: alok.a.tiwarilinux@gmail.com, alok.a.tiwari@oracle.com
+Date: Fri,  7 Nov 2025 06:30:26 -0800
+Message-ID: <20251107143051.2610996-1-alok.a.tiwari@oracle.com>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20251107-igc_mqprio_channels-v1-1-42415562d0f8@linutronix.de>
-X-B4-Tracking: v=1; b=H4sIALf0DWkC/x2MWwqAIBAArxL7nZBGz6tESI+tFspKowTx7lmfA
- zPjwKAmNFBHDjTeZGhXAXgcwbB0akZGY2AQicg4TwpG8yC389C0y09QuBomUlHxPMeyKnsI5aF
- xIvtfG6BnZQrtBa33L6c6pYtvAAAA
-X-Change-ID: 20251107-igc_mqprio_channels-2329166e898b
-To: Tony Nguyen <anthony.l.nguyen@intel.com>, 
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>, 
- Vinicius Costa Gomes <vinicius.gomes@intel.com>, 
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
- Kurt Kanzenbach <kurt@linutronix.de>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1866; i=kurt@linutronix.de;
- h=from:subject:message-id; bh=foAcTjM6CYHB5ODdYaGawtcLYzlZonOMK1Rd88vPyJ8=;
- b=owEBbQKS/ZANAwAKAcGT0fKqRnOCAcsmYgBpDfTGEFAhlkg4C741nCPBhUf/BgN+qRbiwHHhg
- iBA69oF05GJAjMEAAEKAB0WIQS8ub+yyMN909/bWZLBk9HyqkZzggUCaQ30xgAKCRDBk9HyqkZz
- gvk+D/9fiRza8YBdwGxKRdGGsINkb/CM0irnSIH1Ddw3z+eLhA10BnFuoVjI8LSFsXprxsxW9p3
- RuEWmRz+BG+GLRTqVsPLOk6O6b5C/UTW9MvYT5kCCYeABPdbS8ql1TXlwS3IvvcNlr9ot7FUiXl
- IbKaL4wObZsHPYvMn1aw6p8+8pXju4k0xdgsTsHt5wFcMvHXNN7r1iZs+6h9nockGVTHK+6wpoZ
- dBVBjpy6dckCBZLXim/xPZcmL+itS717RVHh1yuHPvhTHSiS1NoBaenpWl2sO+JA+a+7YXpDFrT
- 16bap9M8XhQLfgcEvvmv+rf+Zsk8JvZGsiL9dzE5M4W8lNWRAEZKrhHMi4yGSIxB8GUQKbMbDxf
- enHrcNVWfNR5fctb7+wEUQ221qBKAzAw7siZEznC/C67zlCvSBoHOimJJX6NpfyCSrDYwATbxHC
- aEB1t064Dkk8VRdOQ0g3ZJJxrqvk0BT09d2b+jNYLwb16hh38Vz583BGTGrkZa2YTXQCgRaRAmr
- 9RzWSqTUGuQjUlAfwnGNY0Gpr2oiSgM4HmXsNzAMh8Rc7orSohdUGLQ+/Yoc2OpzQOkJ3qSt74l
- vu9mdh14GIH7kWfmPMGaACbO5ux5wfaBqGhAikPtNwlzElNuWMItpSgusy6Ea12WhKRxEbBoYw+
- crJFix69Egz6pGg==
-X-Developer-Key: i=kurt@linutronix.de; a=openpgp;
- fpr=BCB9BFB2C8C37DD3DFDB5992C193D1F2AA467382
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-07_03,2025-11-06_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ malwarescore=0
+ mlxlogscore=999 mlxscore=0 adultscore=0 spamscore=0 bulkscore=0
+ suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2510240000 definitions=main-2511070119
+X-Proofpoint-GUID: 9nZ0CKNCiYJFQoYQiAPGwwJDiigxscM0
+X-Proofpoint-ORIG-GUID: 9nZ0CKNCiYJFQoYQiAPGwwJDiigxscM0
+X-Authority-Analysis: v=2.4 cv=aNv9aL9m c=1 sm=1 tr=0 ts=690e029f b=1 cx=c_pps
+ a=zPCbziy225d3KhSqZt3L1A==:117
+ a=zPCbziy225d3KhSqZt3L1A==:17
+ a=6UeiqGixMTsA:10 a=VkNPw1HP01LnGYTKEx00:22 a=QyXUC8HyAAAA:8 a=yPCof4ZbAAAA:8
+ a=qHh1Kq1xxaR9noxbE6oA:9 cc=ntf awl=host:12100
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTA3MDExNSBTYWx0ZWRfXwYRSEeDg6fsv
+ XN5eSVPzaO1UdXzpRqAhbkJjuuGdNSZvulQunOvrbf7yjzAxboakcJ8Z7kncNubZcA6PLYaoHiK
+ zi8eAcWHUCY2afWvll1sBiBgl42zEYlIeEx9VXyVMlP4Zo3PZ+qqd2ME9Ok2RNB8H0ms/1tjs9O
+ ZZPpJbZcEF4dXumng2dJiLtpkH0u9fk2Zkct4rEg0oeJCIS1q/9C961N9kgtzDDcz8LwEqzZNdW
+ 54z05zuLgyUEzDF5fxB0kUxZNw/dmHcXSlAzEdgZaBvxdLgmyOw0rPBBgqpfz47Ki5fgvPZkqpV
+ nEXShVvnBN30/oomMRIH5aI2Bp7CCDY6wC9hZB2xpvbkhnPu/2GeTDMDAqIoHW9QEW0aigvMliY
+ fpQc7dQh+hmGGSV2Nll1yOKRe4DY3DrSoWUNS5+0LychSVMomSg=
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1762522311;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=5fO9mmsxHq9O1ddXqChORt2eOtAnsTaAOoJHS0IxQ8Q=;
- b=kJ/Heg/RdoCUieJJ+67f3jn2pAZzKuTXyfEAbEWyu+nGJhO44b5xEHbSzqgzguguMx/cqx
- TVkvGnIacVTLBwnnnUX2HdK/8qNV0X7D7BvMpMj9TYIUqi6AsZYZFarO79ZWeuKQ1Ffe7t
- F9WYvwrUCZOpv2KdKd/yGQ5UYZkdIdcjZyiOz/HRyalrtbArgKSC4qHmkVLr1uxIPcMVNB
- EWR4s4Ay7OgpRKSh01tHG6p9k1SW57xkBgL1QS1SSJCSprpZmJtWDjSzfZPJG2lSKqIzb+
- p9cyjjX1j/B8Zxszr2Frzv1ZHKGDcBzrfMgShEbSSHyO+jMTlQtikS62HATHIQ==
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1762522311;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=5fO9mmsxHq9O1ddXqChORt2eOtAnsTaAOoJHS0IxQ8Q=;
- b=nR5POVWEuLP/R5GRY7lD1V+LZdStW/XCGlEFUK6f7wYlWSamZx0AvUZHH3B404QmXju0lA
- ESAncrzPutXTJOAQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=linutronix.de
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
- header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=kJ/Heg/R; 
- dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=nR5POVWE
-Subject: [Intel-wired-lan] [PATCH iwl-next] igc: Restore default Qbv
- schedule when changing channels
+ d=oracle.com; h=cc
+ :content-transfer-encoding:date:from:message-id:mime-version
+ :subject:to; s=corp-2025-04-25; bh=HuyCyNIxSTtU1XKMsaRkv99RE6i6L
+ 6TQ42UPOrrYmNE=; b=lM6KaFrIIWwHXLb7B02L+owzJ+4qFlBpnJj+LVkddwlLO
+ C3bRed/etj9KXGsMQlrPV9IPcfuCv9oWMiM5ylVuToyV9wcxxo3P5Fw09XVfZO69
+ OjGKiuOm475jgMX/ICP+nK6rV5pPE25Obp9JDZaWJs2M3Fm7d3e23BUBHtEJtW0i
+ thqtObtZQaCWIKCKtL8mCUusHmXs2zWA1H5zIzIsXraXwSNxOoKoSAkNi7tzP+6o
+ 6lFrX/33WSC3rZEt+BCZ0RZQf7dv6WZk/4tUb+d4PdS6aMsoKD4tJ+EleCNaejuB
+ 5RiugqQfPKxlHQOzclrs/D9RXYWiIiHswhq6VfsMA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=oracle.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=oracle.com header.i=@oracle.com header.a=rsa-sha256
+ header.s=corp-2025-04-25 header.b=lM6KaFrI
+Subject: [Intel-wired-lan] [PATCH net-next v3] iavf: clarify VLAN add/delete
+ log messages and lower log level
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -130,58 +141,72 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The MQPRIO (and ETF) offload utilizes the TSN Tx mode. This mode is always
-coupled to Qbv. Therefore, the driver sets a default Qbv schedule of all gates
-opened and a cycle time of 1s. This schedule is set during probe.
+The current dev_warn messages for too many VLAN changes are confusing
+and one place incorrectly references "add" instead of "delete" VLANs
+due to copy-paste errors.
 
-However, the following sequence of events lead to Tx issues:
+- Use dev_info instead of dev_warn to lower the log level.
+- Rephrase the message to: "virtchnl: Too many VLAN [add|delete]
+  ([v1|v2]) requests; splitting into multiple messages to PF\n".
 
- - Boot a dual core system
-   probe():
-     igc_tsn_clear_schedule():
-       -> Default Schedule is set
-       Note: At this point the driver has allocated two Tx/Rx queues, because
-       there are only two CPU(s).
-
- - ethtool -L enp3s0 combined 4
-   igc_ethtool_set_channels():
-     igc_reinit_queues()
-       -> Default schedule is gone, per Tx ring start and end time are zero
-
-  - tc qdisc replace dev enp3s0 handle 100 parent root mqprio \
-      num_tc 4 map 3 3 2 2 0 1 1 1 3 3 3 3 3 3 3 3 \
-      queues 1@0 1@1 1@2 1@3 hw 1
-    igc_tsn_offload_apply():
-      igc_tsn_enable_offload():
-        -> Writes zeros to IGC_STQT(i) and IGC_ENDQT(i) -> Boom
-
-Therefore, restore the default Qbv schedule after changing the amount of
-channels.
-
-Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
+Suggested-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Signed-off-by: Alok Tiwari <alok.a.tiwari@oracle.com>
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_main.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 728d7ca5338bf27c3ce50a2a497b238c38cfa338..e4200fcb2682ccd5b57abb0d2b8e4eb30df117df 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -7761,6 +7761,8 @@ int igc_reinit_queues(struct igc_adapter *adapter)
- 	if (netif_running(netdev))
- 		err = igc_open(netdev);
- 
-+	igc_tsn_clear_schedule(adapter);
-+
- 	return err;
- }
- 
-
+v1 -> v2
+remove "\n" b/w message 
+added vvfl and vvfl_v2 prefix
+v2 -> v3
+removed vvfl/vvfl_v2 prefix and using virtchnl:
+prefix and (v1/v2) in the sentence suggested by Alex.
 ---
-base-commit: 6fc33710cd6c55397e606eeb544bdf56ee87aae5
-change-id: 20251107-igc_mqprio_channels-2329166e898b
+ drivers/net/ethernet/intel/iavf/iavf_virtchnl.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
-Best regards,
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+index 34a422a4a29c..88156082a41d 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+@@ -793,7 +793,8 @@ void iavf_add_vlans(struct iavf_adapter *adapter)
+ 
+ 		len = virtchnl_struct_size(vvfl, vlan_id, count);
+ 		if (len > IAVF_MAX_AQ_BUF_SIZE) {
+-			dev_warn(&adapter->pdev->dev, "Too many add VLAN changes in one request\n");
++			dev_info(&adapter->pdev->dev,
++				 "virtchnl: Too many VLAN add (v1) requests; splitting into multiple messages to PF\n");
+ 			while (len > IAVF_MAX_AQ_BUF_SIZE)
+ 				len = virtchnl_struct_size(vvfl, vlan_id,
+ 							   --count);
+@@ -838,7 +839,8 @@ void iavf_add_vlans(struct iavf_adapter *adapter)
+ 
+ 		len = virtchnl_struct_size(vvfl_v2, filters, count);
+ 		if (len > IAVF_MAX_AQ_BUF_SIZE) {
+-			dev_warn(&adapter->pdev->dev, "Too many add VLAN changes in one request\n");
++			dev_info(&adapter->pdev->dev,
++				 "virtchnl: Too many VLAN add (v2) requests; splitting into multiple messages to PF\n");
+ 			while (len > IAVF_MAX_AQ_BUF_SIZE)
+ 				len = virtchnl_struct_size(vvfl_v2, filters,
+ 							   --count);
+@@ -941,7 +943,8 @@ void iavf_del_vlans(struct iavf_adapter *adapter)
+ 
+ 		len = virtchnl_struct_size(vvfl, vlan_id, count);
+ 		if (len > IAVF_MAX_AQ_BUF_SIZE) {
+-			dev_warn(&adapter->pdev->dev, "Too many delete VLAN changes in one request\n");
++			dev_info(&adapter->pdev->dev,
++				 "virtchnl: Too many VLAN delete (v1) requests; splitting into multiple messages to PF\n");
+ 			while (len > IAVF_MAX_AQ_BUF_SIZE)
+ 				len = virtchnl_struct_size(vvfl, vlan_id,
+ 							   --count);
+@@ -987,7 +990,8 @@ void iavf_del_vlans(struct iavf_adapter *adapter)
+ 
+ 		len = virtchnl_struct_size(vvfl_v2, filters, count);
+ 		if (len > IAVF_MAX_AQ_BUF_SIZE) {
+-			dev_warn(&adapter->pdev->dev, "Too many add VLAN changes in one request\n");
++			dev_info(&adapter->pdev->dev,
++				 "virtchnl: Too many VLAN delete (v2) requests; splitting into multiple messages to PF\n");
+ 			while (len > IAVF_MAX_AQ_BUF_SIZE)
+ 				len = virtchnl_struct_size(vvfl_v2, filters,
+ 							   --count);
 -- 
-Kurt Kanzenbach <kurt@linutronix.de>
+2.50.1
 
