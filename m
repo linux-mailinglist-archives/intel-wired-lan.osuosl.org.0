@@ -2,100 +2,166 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 96970C48828
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Nov 2025 19:16:35 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id F2E8EC48A15
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Nov 2025 19:47:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id F3663816DA;
-	Mon, 10 Nov 2025 18:15:28 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id ADCC781753;
+	Mon, 10 Nov 2025 18:47:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id nVNV0gNHD9sy; Mon, 10 Nov 2025 18:15:28 +0000 (UTC)
+ id 1PHXkO0tjDVe; Mon, 10 Nov 2025 18:47:43 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6F6E480D94
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BDB8A8175C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1762798528;
-	bh=YxQB6pSNYnVyKsNbzTc5maXDK292/qTdUT4ZjuUCYAA=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=0FOuQMpbwXSUVnqarWuRylpG4oYLmiUU61N6oyanPMHdSZe9hfIXl5QMi01zAmxts
-	 +Cp7N+WfSulvmV2gkbwZ6OXNNmcXUb+aFaOECJRlLBzR1OM1OsIyIloM0WaHXfYBR9
-	 x9ocescwhCXzl9awLPN1aqfoDh0viNUMo4MPy670WtVtzwTKrHBzN5eDgX6mhc9zog
-	 yjaiqvzWZlIWMRgNrzVfGXghghMlXTbz0hFBSGAjfAxbXw0AEXCfpNNccHWsHG11y9
-	 bjyLHoMPJlVyYUUGmrKCJZ3W8lGY9jtWxS8ipQLooXsdiPex+hG2fjcLTPj5+b/iFc
-	 D5j0VYpw3W6Qw==
+	s=default; t=1762800462;
+	bh=/naadKCUe4yaidtYKQvPeXWJSfOHtqHEGdKWqPsWyXU=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=8RJdYRRL8GHkOtOFpvZiS+oO5BxV73Cgzff/A3oCwGVzE7h4VSesZZTWW+AhI6PlG
+	 Y9hAoFuaKoQHDLho6xTSgnmtGr0s4sBLNTP+J/vbStrHWPsXxF9sh+Wi1srvO0aac4
+	 CGAYRCkdTZeCD6eCkgX2pFps42qnGkMbEBDmWataQwNs/mxTOHG8haareRVJnqgS9v
+	 Bf8BsUyn/iNFWrzfRb/Fo220CG0PCudUjs6htp1OLHCcOj1yICIKbxPQ1+J75PtUkg
+	 3FBQLlWJkq1U70bRbfwrPsQefhmWVON5saimmqNGN+U5Kfs1fsLt4g0DiBahuJagfe
+	 6h4k4idvNWetw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6F6E480D94;
-	Mon, 10 Nov 2025 18:15:28 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BDB8A8175C;
+	Mon, 10 Nov 2025 18:47:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 9298A1CC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Nov 2025 18:15:26 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id DB84BFA
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Nov 2025 18:47:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id EEF334066D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Nov 2025 18:15:23 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id CE1C981754
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Nov 2025 18:47:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id voyxtPfilJyV for <intel-wired-lan@lists.osuosl.org>;
- Mon, 10 Nov 2025 18:15:22 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.15;
- helo=mgamail.intel.com; envelope-from=emil.s.tantilov@intel.com;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id QxXzfBNnOiLv for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 10 Nov 2025 18:47:40 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
+ helo=mgamail.intel.com; envelope-from=andriy.shevchenko@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 1B077400B7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1B077400B7
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1B077400B7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Nov 2025 18:15:22 +0000 (UTC)
-X-CSE-ConnectionGUID: cyzNgu6PTxiBAm1BXx5XqQ==
-X-CSE-MsgGUID: 2ef39Q+CRfCJLPwS4QlRLA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11609"; a="68497111"
-X-IronPort-AV: E=Sophos;i="6.19,294,1754982000"; d="scan'208";a="68497111"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
- by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Nov 2025 10:15:22 -0800
-X-CSE-ConnectionGUID: yYps9khsRfiJx6ucmP3LYA==
-X-CSE-MsgGUID: GPqX35rWQVitbrLOI3Rx1A==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org AAE928174D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AAE928174D
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id AAE928174D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Nov 2025 18:47:38 +0000 (UTC)
+X-CSE-ConnectionGUID: z8x6wZqhTTiqu6gDAquSUQ==
+X-CSE-MsgGUID: Mvp68NWtR6CF9xj5BPuEmQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11609"; a="75543276"
+X-IronPort-AV: E=Sophos;i="6.19,294,1754982000"; d="scan'208";a="75543276"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+ by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Nov 2025 10:47:38 -0800
+X-CSE-ConnectionGUID: i9YCGhVJRUGQcVlTpVIfpg==
+X-CSE-MsgGUID: Z0/CCH/BSBOYpkaQrxg0zg==
 X-ExtLoop1: 1
-Received: from estantil-desk.jf.intel.com ([10.166.241.24])
- by fmviesa003.fm.intel.com with ESMTP; 10 Nov 2025 10:15:21 -0800
-From: Emil Tantilov <emil.s.tantilov@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, Aleksandr.Loktionov@intel.com,
- przemyslaw.kitszel@intel.com, anthony.l.nguyen@intel.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, decot@google.com, willemb@google.com,
- joshua.a.hay@intel.com, madhu.chittim@intel.com,
- aleksander.lobakin@intel.com, larysa.zaremba@intel.com,
- iamvivekkumar@google.com
-Date: Mon, 10 Nov 2025 10:08:23 -0800
-Message-Id: <20251110180823.18008-5-emil.s.tantilov@intel.com>
-X-Mailer: git-send-email 2.17.2
-In-Reply-To: <20251110180823.18008-1-emil.s.tantilov@intel.com>
-References: <20251110180823.18008-1-emil.s.tantilov@intel.com>
+X-IronPort-AV: E=Sophos;i="6.19,294,1754982000"; d="scan'208";a="193749558"
+Received: from black.igk.intel.com ([10.91.253.5])
+ by fmviesa004.fm.intel.com with ESMTP; 10 Nov 2025 10:47:29 -0800
+Received: by black.igk.intel.com (Postfix, from userid 1003)
+ id E8E2195; Mon, 10 Nov 2025 19:47:28 +0100 (CET)
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Corey Minyard <corey@minyard.net>,
+ =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
+ "Dr. David Alan Gilbert" <linux@treblig.org>,
+ Alex Deucher <alexander.deucher@amd.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Rob Clark <robin.clark@oss.qualcomm.com>,
+ Matthew Brost <matthew.brost@intel.com>,
+ Hans Verkuil <hverkuil@kernel.org>,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Vitaly Lifshits <vitaly.lifshits@intel.com>,
+ Manivannan Sadhasivam <mani@kernel.org>, Niklas Cassel <cassel@kernel.org>,
+ Calvin Owens <calvin@wbinvd.org>, Sagi Maimon <maimon.sagi@gmail.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Karan Tilak Kumar <kartilak@cisco.com>,
+ Casey Schaufler <casey@schaufler-ca.com>,
+ Steven Rostedt <rostedt@goodmis.org>, Petr Mladek <pmladek@suse.com>,
+ Max Kellermann <max.kellermann@ionos.com>, Takashi Iwai <tiwai@suse.de>,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ openipmi-developer@lists.sourceforge.net, linux-media@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
+ amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ freedreno@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
+ linux-mmc@vger.kernel.org, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-pci@vger.kernel.org,
+ linux-s390@vger.kernel.org, linux-scsi@vger.kernel.org,
+ linux-staging@lists.linux.dev, ceph-devel@vger.kernel.org,
+ linux-trace-kernel@vger.kernel.org, linux-sound@vger.kernel.org
+Cc: Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+ Sergey Senozhatsky <senozhatsky@chromium.org>,
+ Jonathan Corbet <corbet@lwn.net>, Sumit Semwal <sumit.semwal@linaro.org>,
+ Gustavo Padovan <gustavo@padovan.org>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Dmitry Baryshkov <lumag@kernel.org>,
+ Abhinav Kumar <abhinav.kumar@linux.dev>,
+ Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>,
+ Marijn Suijten <marijn.suijten@somainline.org>,
+ Konrad Dybcio <konradybcio@kernel.org>,
+ Lucas De Marchi <lucas.demarchi@intel.com>,
+ =?UTF-8?q?Thomas=20Hellstr=C3=B6m?= <thomas.hellstrom@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Vladimir Oltean <olteanv@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>,
+ Rodolfo Giometti <giometti@enneenne.com>,
+ Jonathan Lemon <jonathan.lemon@gmail.com>,
+ Vadim Fedorenko <vadim.fedorenko@linux.dev>,
+ Richard Cochran <richardcochran@gmail.com>,
+ Stefan Haberland <sth@linux.ibm.com>,
+ Jan Hoeppner <hoeppner@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Sven Schnelle <svens@linux.ibm.com>, Satish Kharat <satishkh@cisco.com>,
+ Sesidhar Baddela <sebaddel@cisco.com>,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Xiubo Li <xiubli@redhat.com>, Ilya Dryomov <idryomov@gmail.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>,
+ Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>
+Date: Mon, 10 Nov 2025 19:40:19 +0100
+Message-ID: <20251110184727.666591-1-andriy.shevchenko@linux.intel.com>
+X-Mailer: git-send-email 2.50.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1762798522; x=1794334522;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references;
- bh=Sh6c7b6Hi90RoX/bOeWbivnnXi5ySOfBIpzuddrreJs=;
- b=XtxeRvSIUxze9VjqvdfFzo/FOkv5qG3sIigfw8OE6kq5+QXQ8hJ1YDBW
- 3KYAB/AIeU3X3PDnWuYtj+I5E93o9MBst9xqnEPv7BrkJ92czwJSFUYJ5
- /QAsAszS/ESm45Hob5w+9ZhOGiAFQXMHY7SqVXGp0V+Dx9NtTXLsw9P2O
- BmTFFqmLX0cI/Ha6qdnNFciQfhmABMYvEs1bMRRCzQiHnfNB37gA7qFnx
- MZ/i5En1Bt/gCpoGQfBDcXUDh6Rw5wh31fUkVcSG0ZezRGc4vAsgj+0ti
- lHbj2VJ1ARwvgdvv60SyCKcMC7Mxn4yYbEdvBfNv3c2mcLyctHNRhSj/4
- A==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=XtxeRvSI
-Subject: [Intel-wired-lan] [PATCH iwl-net 4/4] idpf: fix memory leak in
- idpf_vc_core_deinit()
+ t=1762800460; x=1794336460;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=wAsccoU8w3B4eRMZuq2gxUaDz+Dt38AFte0j5k5tPOM=;
+ b=KNWpVbDMoUwf2UKiZC6x8sl+1NM7ZFE3axDW/I5Q2qDduS1nUTFSR9My
+ ZCHVVyjGK4J0p2bvs14PVTpBpe6PDL4GU2gw5+FC7o8X1elgw6HDa2T/F
+ 5zAyg7+nR3VVYt9J00+ExVPTdGzmNc09s8U+tk+jP65cm5iRpwEkSOW3R
+ 9Xs5xv0uvG9sFAZHeTWbQosN+lEPOmEC5mXWpE2oXK95UUb6HdsaDSETm
+ h3xThRR6sLUm4Of9N36gtmYkPK8jhPEcLp5rHwfyjh0+PT31ymvjG/OK4
+ 3D1tJKsUakvBkihcd1qism1Lck5VzJqSbGMLscDD/azR2EmMt+n/Db0/H
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=KNWpVbDM
+Subject: [Intel-wired-lan] [PATCH v1 00/23] treewide: Introduce %ptS for
+ struct timespec64 and convert users
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -111,53 +177,79 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Make sure to free hw->lan_regs. Reported by kmemleak during reset:
 
-unreferenced object 0xff1b913d02a936c0 (size 96):
-  comm "kworker/u258:14", pid 2174, jiffies 4294958305
-  hex dump (first 32 bytes):
-    00 00 00 c0 a8 ba 2d ff 00 00 00 00 00 00 00 00  ......-.........
-    00 00 40 08 00 00 00 00 00 00 25 b3 a8 ba 2d ff  ..@.......%...-.
-  backtrace (crc 36063c4f):
-    __kmalloc_noprof+0x48f/0x890
-    idpf_vc_core_init+0x6ce/0x9b0 [idpf]
-    idpf_vc_event_task+0x1fb/0x350 [idpf]
-    process_one_work+0x226/0x6d0
-    worker_thread+0x19e/0x340
-    kthread+0x10f/0x250
-    ret_from_fork+0x251/0x2b0
-    ret_from_fork_asm+0x1a/0x30
+Here is the third part of unification time printing in the kernel.
+This time for struct timespec64. The first patch brings support
+into printf() implementation (test cases and documentation update
+included) followed by the treewide conversion of the current users.
 
-Fixes: 6aa53e861c1a ("idpf: implement get LAN MMIO memory regions")
-Signed-off-by: Emil Tantilov <emil.s.tantilov@intel.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Reviewed-by: Joshua Hay <joshua.a.hay@intel.com>
----
- drivers/net/ethernet/intel/idpf/idpf_virtchnl.c | 4 ++++
- 1 file changed, 4 insertions(+)
+The idea is to have one or a few biggest users included, the rest
+can be taken next release cycle on the subsystem basis, but I won't
+object if the respective maintainers already give their tags. Depending
+on the tags received it may go via dedicated subsystem or via PRINTK
+tree.
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-index fc03d55bc9b9..ca302df9ff40 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-@@ -3570,6 +3570,7 @@ int idpf_vc_core_init(struct idpf_adapter *adapter)
-  */
- void idpf_vc_core_deinit(struct idpf_adapter *adapter)
- {
-+	struct idpf_hw *hw = &adapter->hw;
- 	bool remove_in_prog;
- 
- 	if (!test_bit(IDPF_VC_CORE_INIT, adapter->flags))
-@@ -3593,6 +3594,9 @@ void idpf_vc_core_deinit(struct idpf_adapter *adapter)
- 
- 	idpf_vport_params_buf_rel(adapter);
- 
-+	kfree(hw->lan_regs);
-+	hw->lan_regs = NULL;
-+
- 	kfree(adapter->vports);
- 	adapter->vports = NULL;
- 
+Note, not everything was compile-tested. Kunit test has been passed, though.
+
+Andy Shevchenko (23):
+  lib/vsprintf: Add specifier for printing struct timespec64
+  ALSA: seq: Switch to use %ptSp
+  ceph: Switch to use %ptSp
+  libceph: Switch to use %ptSp
+  dma-buf: Switch to use %ptSp
+  drm/amdgpu: Switch to use %ptSp
+  drm/msm: Switch to use %ptSp
+  drm/vblank: Switch to use %ptSp
+  drm/xe: Switch to use %ptSp
+  e1000e: Switch to use %ptSp
+  igb: Switch to use %ptSp
+  ipmi: Switch to use %ptSp
+  media: av7110: Switch to use %ptSp
+  media: v4l2-ioctl: Switch to use %ptSp
+  mmc: mmc_test: Switch to use %ptSp
+  net: dsa: sja1105: Switch to use %ptSp
+  PCI: epf-test: Switch to use %ptSp
+  pps: Switch to use %ptSp
+  ptp: ocp: Switch to use %ptSp
+  s390/dasd: Switch to use %ptSp
+  scsi: fnic: Switch to use %ptS
+  scsi: snic: Switch to use %ptSp
+  tracing: Switch to use %ptSp
+
+ Documentation/core-api/printk-formats.rst     | 11 ++++-
+ drivers/char/ipmi/ipmi_si_intf.c              |  3 +-
+ drivers/char/ipmi/ipmi_ssif.c                 |  6 +--
+ drivers/dma-buf/sync_debug.c                  |  2 +-
+ .../gpu/drm/amd/amdgpu/amdgpu_dev_coredump.c  |  3 +-
+ drivers/gpu/drm/drm_vblank.c                  |  6 +--
+ .../gpu/drm/msm/disp/msm_disp_snapshot_util.c |  3 +-
+ drivers/gpu/drm/msm/msm_gpu.c                 |  3 +-
+ drivers/gpu/drm/xe/xe_devcoredump.c           |  4 +-
+ drivers/media/v4l2-core/v4l2-ioctl.c          |  5 +-
+ drivers/mmc/core/mmc_test.c                   | 18 +++----
+ drivers/net/dsa/sja1105/sja1105_tas.c         |  8 ++--
+ drivers/net/ethernet/intel/e1000e/ptp.c       |  7 +--
+ drivers/net/ethernet/intel/igb/igb_ptp.c      |  7 +--
+ drivers/pci/endpoint/functions/pci-epf-test.c |  5 +-
+ drivers/pps/generators/pps_gen_parport.c      |  3 +-
+ drivers/pps/kapi.c                            |  3 +-
+ drivers/ptp/ptp_ocp.c                         | 15 +++---
+ drivers/s390/block/dasd.c                     |  3 +-
+ drivers/scsi/fnic/fnic_trace.c                | 46 ++++++++----------
+ drivers/scsi/snic/snic_debugfs.c              | 10 ++--
+ drivers/scsi/snic/snic_trc.c                  |  5 +-
+ drivers/staging/media/av7110/av7110.c         |  2 +-
+ fs/ceph/dir.c                                 |  5 +-
+ fs/ceph/inode.c                               | 47 ++++++-------------
+ fs/ceph/xattr.c                               |  6 +--
+ kernel/trace/trace_output.c                   |  6 +--
+ lib/tests/printf_kunit.c                      |  4 ++
+ lib/vsprintf.c                                | 25 ++++++++++
+ net/ceph/messenger_v2.c                       |  6 +--
+ sound/core/seq/seq_queue.c                    |  2 +-
+ sound/core/seq/seq_timer.c                    |  6 +--
+ 32 files changed, 131 insertions(+), 154 deletions(-)
+
 -- 
-2.37.3
+2.50.1
 
