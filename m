@@ -1,135 +1,103 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B3BFCC45237
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Nov 2025 07:56:38 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CA14FC453DE
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Nov 2025 08:43:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B2ED780CFE;
-	Mon, 10 Nov 2025 06:56:36 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 96A4E813F3;
+	Mon, 10 Nov 2025 07:43:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id i_Iefc4WUr0u; Mon, 10 Nov 2025 06:56:36 +0000 (UTC)
+ id BX2rIJMxVeG0; Mon, 10 Nov 2025 07:43:33 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1161D80D2A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0D265813EE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1762757796;
-	bh=1WY1CcuShlRk2we91Kyt0bCpaTxBq3s2lFYDIeGQFjc=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1762760613;
+	bh=dxRjKw1L3Vo4BvxG6c7a664xp8x6jBrMENa5cYkCAPg=;
+	h=From:To:Cc:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=PV12IpyPW1ipNkEQYWkB0ivvkMii24vfHC3+wPbz8OBLgIpLoSiQiJQ5izOMKA9Gf
-	 Et9ryKEuuCBBTqDXKi2/Evv34JAZItnEK4WESW7Ay3hpyPSPIERFKPRA+lOW1C8BaK
-	 o+DxB070s9YTSqAJ2l+ptPJimsBbdRqUKm6ch4bRs9km54d4EqdaYm96LC49OXtxHN
-	 sNt/KqFws3AkJ+oxobzrZfDQkrltGzyIsG2zd4RK3K5iLdNUGj4NTILQBcgEL3yteE
-	 SqMggWneN/t01DeR3LkT60krPETkT9LH+WOkKQgPfghaJVsBY+Hv67rdRJmCW9GuXS
-	 rLO2/Hr1n+BFg==
+	b=haff4Wscg2C3YY0ifpCaeVbxt0CN2aUxqaI+7TW810M6Gs+TpWe9NTcX+XynlMvRu
+	 gttK8ukxwZTRAMfnq13vfhbHFIj7k+BPoFqfgnyPyN+P7vE0k6ovcv5SD8AqIRqA+b
+	 8n4pHq4w95EakygYKFo0obDSrEzWAhG2EKqyz59FDGh3jm4T4cmGv2H/RfqiOUrfm0
+	 63G2MQUofqUR2WwcXbtwN2gqN/c2x6YDgISn+qDFTuhSp5vHyVr8PjoWhC67c+PaYb
+	 cwwCN5cTWn7G352KybQe2LzMteiM33nVBY8oAa3O5uDXfn1y2Ob6Zasonccxh+qVpu
+	 9VFweUYT3dhgA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1161D80D2A;
-	Mon, 10 Nov 2025 06:56:36 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0D265813EE;
+	Mon, 10 Nov 2025 07:43:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 35B801CD
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Nov 2025 06:56:35 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 868911CD
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Nov 2025 07:43:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 27387608D8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Nov 2025 06:56:35 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6C9FE608DA
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Nov 2025 07:43:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id INcr-pp7H68h for <intel-wired-lan@lists.osuosl.org>;
- Mon, 10 Nov 2025 06:56:34 +0000 (UTC)
+ id NC_RNFUG4Cbn for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 10 Nov 2025 07:43:30 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::102e; helo=mail-pj1-x102e.google.com;
- envelope-from=allyheev@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 7C2B8608D7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7C2B8608D7
-Received: from mail-pj1-x102e.google.com (mail-pj1-x102e.google.com
- [IPv6:2607:f8b0:4864:20::102e])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7C2B8608D7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Nov 2025 06:56:34 +0000 (UTC)
-Received: by mail-pj1-x102e.google.com with SMTP id
- 98e67ed59e1d1-343514c7854so2373599a91.1
- for <intel-wired-lan@lists.osuosl.org>; Sun, 09 Nov 2025 22:56:34 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762757794; x=1763362594;
- h=mime-version:user-agent:content-transfer-encoding:references
- :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=1WY1CcuShlRk2we91Kyt0bCpaTxBq3s2lFYDIeGQFjc=;
- b=vsaLTzGvxZI2iwMm9A6Zbv3aV+NZTX9/CZtxzRbnNplDasgvFQ+g5oLnQvOLqgIJap
- qt1nrROgAtC91ybRe89jbxcUCDBdxjgbzXqLldGXx2/yw3mCspU+ibb+lS6St64knIVG
- +sCYSD3N+5q9PGqW4rduyU2ixfD67RzN2VLQVKeW65teayDvt3+HKFs5OmNX/PeAezSp
- hkK2k1wdqJYcoOlGn0SyMj3Sk6Ogv8qJ/yLfFjG/J8UpGf7640pNu899XT5mVUq8+PIV
- u8gcryUEr5gmipOBfl/4d0+2LdephBVkp+ahtPA3y3x3Sn7F7mvNmjfqQOVDF+shypG+
- q1uQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUFAL0/fJOtm3bfrQ6GWkNKh6AQbrJRt1ZMVZg3WDexAF/NvyYy/VsIlNEan5AfhVhdl8NnEQG0lHX+gcE7mi4=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzcQpD/HVUCe+WuEvVtP5XAYUxkJbdhIJLAGXLoUilFAurPJgd9
- H5zA+CSthU3j4m8U5XBuVO2ByBJ6s/ZqcGTLAt79YELqBwP3AAG/aYEs
-X-Gm-Gg: ASbGncsa7Zs+MqLJt1/KJjOziq+nopXXaVHtfxVcSeKxGeQtGtjn7UjDRDNbazP1OC2
- 04p1oyeMqBGNqH/xWFfZvPQiWQ06J1Rveq2XDUGI5/3n7iO1g7unmTvQQ9lnLtGZ/RHfbK13VqE
- P7sMmBEj2nGMZNqx9oThCsaZNF2PGtOL1nTJORo8jvMgaIE8yx7BTYJWABcqccfzkIIFke3zRBH
- Ve25KWW13vT95cHBHqlUKs4YH/JQH+mc93+VRLQxWlw+sHC2Iqu+/LqYg6sontch09mO5P9Sq6s
- zABFAGXolc+bxjinn4r4WLl0Mh5dwilx2mb5+9EvSRRDRZysPg4hJeuGr/Mznv2IUNa107dQqAr
- 1bDkN8mrmno///ONJf3Q7+PpV4UubAipvIubxbCfDH1nHVsyG0CzgKhDImS5kZZoWpbQALx1FY2
- NFhPctpAiIteKjCFdrEnIkhW56HrhN/eDyUH38AY0tMTKfsAA2nWDlTR3oZw==
-X-Google-Smtp-Source: AGHT+IHO/HHwLn1ypxfIScvlrVfWexbtPhQMjjTTwSmPh9HSJNcv+2vgzbGH5WKsvvttQQePqFv3dw==
-X-Received: by 2002:a17:90b:1d90:b0:340:9d78:59 with SMTP id
- 98e67ed59e1d1-343535f6b33mr12883342a91.3.1762757793661; 
- Sun, 09 Nov 2025 22:56:33 -0800 (PST)
-Received: from ?IPv6:2401:4900:92ea:6c8b:9820:381d:1e5e:1579?
- ([2401:4900:92ea:6c8b:9820:381d:1e5e:1579])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-ba8f9ce9645sm11854081a12.10.2025.11.09.22.56.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 09 Nov 2025 22:56:33 -0800 (PST)
-Message-ID: <726395fa54b40f117edc0a72285d28a70c156912.camel@gmail.com>
-From: ally heev <allyheev@gmail.com>
-To: Simon Horman <horms@kernel.org>, Alexander Lobakin
- <aleksander.lobakin@intel.com>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel	
- <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David
- S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
- Kicinski <kuba@kernel.org>,  Paolo Abeni <pabeni@redhat.com>, "K. Y.
- Srinivasan" <kys@microsoft.com>, Haiyang Zhang	 <haiyangz@microsoft.com>,
- Wei Liu <wei.liu@kernel.org>, Dexuan Cui	 <decui@microsoft.com>, Aleksandr
- Loktionov <aleksandr.loktionov@intel.com>, 
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-hyperv@vger.kernel.org, Dan Carpenter	
- <dan.carpenter@linaro.org>
-Date: Mon, 10 Nov 2025 12:26:24 +0530
-In-Reply-To: <aQ9xp9pchMwml30P@horms.kernel.org>
-References: <20251106-aheev-uninitialized-free-attr-net-ethernet-v3-1-ef2220f4f476@gmail.com>
- <575bfdb1-8fc4-4147-8af7-33c40e619b66@intel.com>
- <aQ9xp9pchMwml30P@horms.kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.1-1+deb13u1 
+ client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
+ envelope-from=kurt@linutronix.de; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 86819608D9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 86819608D9
+Received: from galois.linutronix.de (Galois.linutronix.de
+ [IPv6:2a0a:51c0:0:12e:550::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 86819608D9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Nov 2025 07:43:30 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>, "Nguyen, Anthony
+ L" <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
+ <przemyslaw.kitszel@intel.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
+ <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Sebastian Andrzej
+ Siewior <bigeasy@linutronix.de>, "Gomes, Vinicius"
+ <vinicius.gomes@intel.com>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>
+In-Reply-To: <IA3PR11MB898676AC586AC4FF179A408EE5C3A@IA3PR11MB8986.namprd11.prod.outlook.com>
+References: <20251107-igc_mqprio_channels-v1-1-42415562d0f8@linutronix.de>
+ <IA3PR11MB898676AC586AC4FF179A408EE5C3A@IA3PR11MB8986.namprd11.prod.outlook.com>
+Date: Mon, 10 Nov 2025 08:43:22 +0100
+Message-ID: <874ir272p1.fsf@jax.kurt.home>
 MIME-Version: 1.0
+Content-Type: multipart/signed; boundary="=-=-=";
+ micalg=pgp-sha512; protocol="application/pgp-signature"
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1762757794; x=1763362594; darn=lists.osuosl.org;
- h=mime-version:user-agent:content-transfer-encoding:references
- :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
- :date:message-id:reply-to;
- bh=1WY1CcuShlRk2we91Kyt0bCpaTxBq3s2lFYDIeGQFjc=;
- b=mejCjlJT7jbhVcTh5HlgruZqY7tRCwMQx4bJnxnwoAb3JxDSNPQfOvxJnhnIEOi/yC
- lXnwSHxoZxgayivbpsk4BuGRxfWCPFGFBC9URJpXSR3rkdFgr2y4042iumlokibDJs9U
- qYku8UJSywVAGiP84Q2Kw6inchWA6uvA2BP3nYZ52XJJQgQCHPcfpR4Xb8PX7y0iGsej
- dojb5tkglLz8J8XOXM9ERs+jexRzFgDWF9IOiroJJjMhZcHhePMmBx73J+PXL8pFvg6z
- eoWM0aYrAxSttiutG8O8BYPy4Yp+hRRnf3vcyge6NjXdzl6DtH21L0LgHDTNXLMwszBM
- iBxA==
+ d=linutronix.de; s=2020; t=1762760604;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=dxRjKw1L3Vo4BvxG6c7a664xp8x6jBrMENa5cYkCAPg=;
+ b=srKgYrTI0WLWHg7muM/rvb2ilR0lKwIMa3Qt/uRJAfU5x9NbqS8uhIAlLxrDhB5TwWCLdK
+ YTaKns825WFKAFIdR6pitlOvqFdgBY1bfQvC6Md5GWrwNrDWxlqW90TO7a98+t4p+zJRaY
+ LbDLzPqkf6ZVMeUHsvbABteJi0BjmOmSuTg71+yTgcpnwx+4PJktDmKkrMWEsSNeNQ6fL2
+ ICjBl9eyW6QzPofyL+dGt3vnKGtyzh9SviNFNM3Rh0fryYYuLCnQ0m4xwmEMxnUUQqqtVg
+ y0JxAOWiJXbxxM3MOIfULs/pq2mJR7TDoaroX9RUsyRYRvp/K/LhL8D+noSdOA==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1762760604;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=dxRjKw1L3Vo4BvxG6c7a664xp8x6jBrMENa5cYkCAPg=;
+ b=VkocBaG7rxb6oK4jdhPIfWEEsH/M6KQml/HczRbLUIAoD9ArEtyFJoPEbeiPWBOOnehQ1G
+ ZuJ7TzIfQpitpOBQ==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
+ header.from=linutronix.de
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=mejCjlJT
-Subject: Re: [Intel-wired-lan] [PATCH v3] net: ethernet: fix uninitialized
- pointers with free attribute
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=srKgYrTI; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=VkocBaG7
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next] igc: Restore default Qbv
+ schedule when changing channels
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -145,37 +113,118 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sat, 2025-11-08 at 16:36 +0000, Simon Horman wrote:
-[..]
-> > Please don't do it that way. It's not C++ with RAII and
-> > declare-where-you-use.
-> > Just leave the variable declarations where they are, but initialize the=
-m
-> > with `=3D NULL`.
-> >=20
-> > Variable declarations must be in one block and sorted from the longest
-> > to the shortest.
-> >=20
-> > But most important, I'm not even sure how you could trigger an
-> > "undefined behaviour" here. Both here and below the variable tagged wit=
-h
-> > `__free` is initialized right after the declaration block, before any
-> > return. So how to trigger an UB here?
->=20
-> FWIIW, I'd prefer if we sidestepped this discussion entirely
-> by not using __free [1] in this driver.
->=20
-> It seems to me that for both functions updated by this
-> patch that can easily be achieved using an idiomatic
-> goto label to free on error.
->=20
-> [1] https://docs.kernel.org/process/maintainer-netdev.html#using-device-m=
-anaged-and-cleanup-h-constructs
->=20
-> ...
+--=-=-=
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-Understood. I will come-up with a new patch series for removing these
-two instances
+On Fri Nov 07 2025, Loktionov, Aleksandr wrote:
+>> -----Original Message-----
+>> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
+>> Of Kurt Kanzenbach
+>> Sent: Friday, November 7, 2025 2:32 PM
+>> To: Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Kitszel,
+>> Przemyslaw <przemyslaw.kitszel@intel.com>
+>> Cc: Andrew Lunn <andrew+netdev@lunn.ch>; David S. Miller
+>> <davem@davemloft.net>; Eric Dumazet <edumazet@google.com>; Jakub
+>> Kicinski <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>; Sebastian
+>> Andrzej Siewior <bigeasy@linutronix.de>; Gomes, Vinicius
+>> <vinicius.gomes@intel.com>; intel-wired-lan@lists.osuosl.org;
+>> netdev@vger.kernel.org; Kurt Kanzenbach <kurt@linutronix.de>
+>> Subject: [Intel-wired-lan] [PATCH iwl-next] igc: Restore default Qbv
+>> schedule when changing channels
+>>=20
+>> The MQPRIO (and ETF) offload utilizes the TSN Tx mode. This mode is
+>> always coupled to Qbv. Therefore, the driver sets a default Qbv
+>> schedule of all gates opened and a cycle time of 1s. This schedule is
+>> set during probe.
+>>=20
+> I'd recommend to explain abbreviations in the commit message:
+>   =E2=80=9CMulti=E2=80=91Queue Priority (MQPRIO)=E2=80=9D
+>   =E2=80=9CEarliest TxTime First (ETF)=E2=80=9D
+>   =E2=80=9CTime=E2=80=91Sensitive Networking (TSN)=E2=80=9D
+>   =E2=80=9CQbv=E2=80=9D =E2=86=92 =E2=80=9CIEEE 802.1Qbv time=E2=80=91awa=
+re shaper (Qbv)=E2=80=9D
+>
+>> However, the following sequence of events lead to Tx issues:
+>>=20
+>>  - Boot a dual core system
+>>    probe():
+>>      igc_tsn_clear_schedule():
+>>        -> Default Schedule is set
+>>        Note: At this point the driver has allocated two Tx/Rx queues,
+>> because
+>>        there are only two CPU(s).
+>>=20
+>>  - ethtool -L enp3s0 combined 4
+>>    igc_ethtool_set_channels():
+>>      igc_reinit_queues()
+>>        -> Default schedule is gone, per Tx ring start and end time are
+>> zero
+>>=20
+>>   - tc qdisc replace dev enp3s0 handle 100 parent root mqprio \
+>>       num_tc 4 map 3 3 2 2 0 1 1 1 3 3 3 3 3 3 3 3 \
+>>       queues 1@0 1@1 1@2 1@3 hw 1
+>>     igc_tsn_offload_apply():
+>>       igc_tsn_enable_offload():
+>>         -> Writes zeros to IGC_STQT(i) and IGC_ENDQT(i) -> Boom
+>>=20
+>> Therefore, restore the default Qbv schedule after changing the amount
+>> of channels.
+>>=20
+>> Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
+>> ---
+>>  drivers/net/ethernet/intel/igc/igc_main.c | 2 ++
+>>  1 file changed, 2 insertions(+)
+>>=20
+>> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c
+>> b/drivers/net/ethernet/intel/igc/igc_main.c
+>> index
+>> 728d7ca5338bf27c3ce50a2a497b238c38cfa338..e4200fcb2682ccd5b57abb0d2b8e
+>> 4eb30df117df 100644
+>> --- a/drivers/net/ethernet/intel/igc/igc_main.c
+>> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+>> @@ -7761,6 +7761,8 @@ int igc_reinit_queues(struct igc_adapter
+>> *adapter)
+>>  	if (netif_running(netdev))
+>>  		err =3D igc_open(netdev);
+>>=20
+>> +	igc_tsn_clear_schedule(adapter);
+>> +
+> I'm afraid you need to guard the helper call on success (or when open was=
+n=E2=80=99t attempted)
+> Because call made even when igc_open() fails.
+> As written, igc_tsn_clear_schedule(adapter); executes unconditionally, ev=
+en if igc_open()
+> returned an error (e.g., rings not fully set up, device not ready).
+> That could program TSN/Qbv registers while the device is in a failed/part=
+ially initialized state.
+> Isn't it?
 
-Regards,
-Ally
+igc_tsn_clear_schedule() does not write any registers. It just sets the
+default parameters. The actual programming is done later by
+igc_tsn_enable_offload().
+
+Thanks,
+Kurt
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmkRl5oTHGt1cnRAbGlu
+dXRyb25peC5kZQAKCRDBk9HyqkZzgtMLD/sH6Q+jF7eSEIA/7hyXfiM/nzniOtDq
+ipfG0zzRT8RPjBiuAU1hxA32MDRdFBEU0RwdotySPFidC1SuA2OrHXr88VV48GtB
+/eOYatnFv1MorYxfNRLVP8HLlER+mhuM+KEMpojGQ2KL8yUF2U4hEO70idL1zF+z
+K4AkmyZejYqB0GA5RWFwNYhrXKk7B2Oxyu65X+RHP81Y+JLpqbPXJVyqXwRk58j1
+WQ2t28ibql1AgG3x2wQV6IGyon/9e/IG2twERfZUOkV4xLjcpYZVjC5K0WS6favQ
+Unu8DYbf6Txr113bFzxgqdy9IgVig8Ilq/rJ6BW877KY0kqvWSTIRv3g5LPV300k
+o5WBSeYiF1ak1JbxjPjJx/7q/yNZJmJDJD/eFRkISAixGmJp8oJ4//JZcILm8s69
+i+tcWRsTdJGZvmzuLN6uWhXbM9M8fu/VBmRLg7hie1TDJq2Qfm4kQcGyxLB/2FVW
+sleIvFZ+sef7HPG4hFUNi/XZcEKCmu1xq2kqJT5UWjpRCDsAruCl++SFUoiWQ+Bm
+fmZfZG3JcG/x9E+2XHxlGB3GJapZTyzPEKQBoRcDeCF0IGFhxWZAgK0AkXMIXH3/
+9omPXzVBCvPiYF9BhKzXlDHUmP5KTG2eW/wUiuCJcjYCxTZnxsH/hk/0r6qdKTV8
+6uH+6B1nBoIwiA==
+=zShc
+-----END PGP SIGNATURE-----
+--=-=-=--
