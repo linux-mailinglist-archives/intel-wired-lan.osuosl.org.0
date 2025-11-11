@@ -1,181 +1,253 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B6008C536E1
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Nov 2025 17:35:41 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D2F8C536CD
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Nov 2025 17:35:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5EE6560E8B;
+	by smtp1.osuosl.org (Postfix) with ESMTP id 85A8A813C6;
 	Wed, 12 Nov 2025 16:35:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3NI2TtTlFt71; Wed, 12 Nov 2025 16:35:20 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id oRivaZktdWzD; Wed, 12 Nov 2025 16:35:21 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D7D4060E35
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B0BBC81585
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1762965320;
-	bh=y1/P4cjnJRMKeJXb4QuiXEQkEuLjYJ7u3PWbuQSeBbc=;
-	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
+	s=default; t=1762965321;
+	bh=GkwU1mVH+FzBYHWZ3X6mk/Izupa+NNZcIjjrI7JLXfo=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=Pc6VEVY1zEYS/Surf6gf+3fvx4zhw1tdMIZnUAkv+55Ym69ZFqDQrsbiRYzbsvNsr
-	 peXPyeYAXxxceR4OqbnbUFioomaGh3hSPQD5b2hkRGhp6LSEKn9JSkWX7xymH5G+B9
-	 TX293ErRnv/FPeWTS2xPzi+KDU+vERxU8Hh5QzvipNCln2t6+Ve6RmJ6j1HcW/j78q
-	 WBbLKZHrCdhwgvkzWSSWj79qKXoKDfymJkMWI5Wh/4FwUp4LXQ8UTKZjuH7IiyFwIC
-	 Yu48NyfYfU4LGr/Y55iNpvwQvNUdREeKQbM6uejVtCTSkOKTSZ+1Fai/HoTbwXYDwf
-	 NT+2gQAB9q3Rg==
+	b=ZqsHCka20YtApE1AVW5wBc5bIOvEq9eIKNCj2Yhjxn9g1xRiEVHbUlbq+QPJxGBF4
+	 0Jgu4ng+5XQlMc8lHAEbD/5T2fWiZpOBuRT7jsLfKjYoYkB8+qRkXN+qge7XWTEPPP
+	 tCOlJwO8gRi2+2fwZnwPMP4eTK6C3RS33fvP6fzKvBZ0V2/x/YpXuVIVl3ckz9qk9T
+	 wPyQUKW8UuibG3G/iq8ohxTr5ay2gtLFBUePtdQwPzShYHvS6BpIjYkr5zXOKrxVCe
+	 K783z/ja7d/MGzYYTnCRuu6n28YBL1Xy89/TZ4rzQVkAJhOJFUCvddZK9E/BANS2ce
+	 lrjnzF0VWKaog==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D7D4060E35;
-	Wed, 12 Nov 2025 16:35:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B0BBC81585;
+	Wed, 12 Nov 2025 16:35:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id D1A0131C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Nov 2025 14:44:14 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 96B9F25D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Nov 2025 14:50:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B7BC24094C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Nov 2025 14:44:14 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7CE574084C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Nov 2025 14:50:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id IggyrIA6_Zrj for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 Nov 2025 14:44:14 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::530; helo=mail-ed1-x530.google.com;
- envelope-from=sumit.semwal@linaro.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org C993740588
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C993740588
-Received: from mail-ed1-x530.google.com (mail-ed1-x530.google.com
- [IPv6:2a00:1450:4864:20::530])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C993740588
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Nov 2025 14:44:13 +0000 (UTC)
-Received: by mail-ed1-x530.google.com with SMTP id
- 4fb4d7f45d1cf-640b4a52950so6319166a12.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Nov 2025 06:44:13 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762872251; x=1763477051;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=y1/P4cjnJRMKeJXb4QuiXEQkEuLjYJ7u3PWbuQSeBbc=;
- b=HGOzmbN8qGFE7qtMO4R9EB0tXX5pDOv4N5dJ87qdafiwseiC9BUaXU+JJ20uvewqH+
- qtK3N3FVSvyl94R4TuBLoEFpVHYjO1a70rqCsKm/4OmlbeYCR/6pzJxviCvbj8pRuq8T
- H6OQKP3jQvxxv9HuT78VHqEDoY8+YQ68H1kV/7ZTfhx/Sg/zobLzZJV4dnntyBLROTQr
- aIDiwTAInAIgzvbt8ki3woA7D7uXCn4Ty8jgm4PhgWUlJvUPofs6RNfKqkzLs8r1QXjN
- itPPEUQd9ZR5RMOD69x3+/E9acn5IJXfPzqwhA4lShjKv5aDyFjglUuq3VC/bgKht5j+
- 1RSg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWr8AgtZ9Oyz+bzx0ji9Ao9OKZSR8kkWuLWAD8uluqRh3wZvQJO7ORfoxQ3tdbiaIX/ydl0gqJbhTAkFuh4/ZA=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzIsgvDuEz5Yf6yCjHEGVdKBi+txbGC+xNuiBsOJ5MTESKQh2Du
- la1Kt7XeSU2gh+fDeo3nGwvQfg3g9DPgcOr/2wODKX0M4L9+3ke2bpTl893QYHljT227b/kieiW
- sIm6GlXEJNS6P9FCjHWkpIMZqdPyXUe3HtOxvm5CQ/g==
-X-Gm-Gg: ASbGncvW1VbAl4kdwefQTw2t2ZmeJEcj/Vg/Uezep0AMq/PpynJXXgNWs2tNB3KCrHn
- 1mHsYiawarQNHHCIbVgyyMPLvWOKtVUE7bUPWlwjTmi9EkPbml9OgQ8Yc0NRPyeBdPKCfp1MhKs
- DzR3PJaHMTEOdyoMesLND6/QjxMBKmdBs+kCDe9GcgRAZEmLfE2eOSGTn5Y49FLT1JW8eazTb2f
- kLSBiDeOeu1kvtrQcW92//jRJu/l83CrzbmDPbelKnod7rF3qwlmT4wJXe7JFXykyQH9KG1LbiD
- fseEZuMlgLSEIJ+ovqrbC7nXh2c=
-X-Google-Smtp-Source: AGHT+IHMY6SoKSk0VgpDlYvVT6P+glN4Yq9XXIqVKd9jfwRPr/K5XWhLNKItsuRhohz/IcTpClBme4+jDstH4cTCaYk=
-X-Received: by 2002:a17:907:7ea4:b0:b70:b5ce:e66e with SMTP id
- a640c23a62f3a-b72e02db993mr1289989566b.21.1762872251327; Tue, 11 Nov 2025
- 06:44:11 -0800 (PST)
-MIME-Version: 1.0
-References: <20251111122735.880607-1-andriy.shevchenko@linux.intel.com>
- <20251111122735.880607-5-andriy.shevchenko@linux.intel.com>
-In-Reply-To: <20251111122735.880607-5-andriy.shevchenko@linux.intel.com>
-From: Sumit Semwal <sumit.semwal@linaro.org>
-Date: Tue, 11 Nov 2025 20:13:59 +0530
-X-Gm-Features: AWmQ_bnAE43qdt9uTp5GKOPhntYFEAk4L2mYcClIlF1B_9-TbeBvnkuEckfJGvA
-Message-ID: <CAO_48GE5LK7hD-KJHHoD-XCRjTPcZWApE2MVvs4OgVdr1=u+rg@mail.gmail.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Corey Minyard <corey@minyard.net>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
- "Dr. David Alan Gilbert" <linux@treblig.org>,
- Alex Deucher <alexander.deucher@amd.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
- Rob Clark <robin.clark@oss.qualcomm.com>,
- Matthew Brost <matthew.brost@intel.com>, 
- Ulf Hansson <ulf.hansson@linaro.org>,
- Vitaly Lifshits <vitaly.lifshits@intel.com>, 
- Manivannan Sadhasivam <mani@kernel.org>, Niklas Cassel <cassel@kernel.org>,
- Calvin Owens <calvin@wbinvd.org>, 
- Vadim Fedorenko <vadim.fedorenko@linux.dev>,
- Sagi Maimon <maimon.sagi@gmail.com>, 
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Karan Tilak Kumar <kartilak@cisco.com>, 
- Hans Verkuil <hverkuil+cisco@kernel.org>,
- Casey Schaufler <casey@schaufler-ca.com>, 
- Steven Rostedt <rostedt@goodmis.org>, Petr Mladek <pmladek@suse.com>, 
- Viacheslav Dubeyko <Slava.Dubeyko@ibm.com>,
- Max Kellermann <max.kellermann@ionos.com>, 
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
- openipmi-developer@lists.sourceforge.net, linux-media@vger.kernel.org, 
- dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org, 
- amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org, 
- freedreno@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
- linux-mmc@vger.kernel.org, netdev@vger.kernel.org, 
- intel-wired-lan@lists.osuosl.org, linux-pci@vger.kernel.org, 
- linux-s390@vger.kernel.org, linux-scsi@vger.kernel.org, 
- linux-staging@lists.linux.dev, ceph-devel@vger.kernel.org, 
- linux-trace-kernel@vger.kernel.org, 
- Rasmus Villemoes <linux@rasmusvillemoes.dk>,
- Sergey Senozhatsky <senozhatsky@chromium.org>, 
- Jonathan Corbet <corbet@lwn.net>, Gustavo Padovan <gustavo@padovan.org>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Dmitry Baryshkov <lumag@kernel.org>, 
- Abhinav Kumar <abhinav.kumar@linux.dev>, Jessica Zhang <jesszhan0024@gmail.com>,
- Sean Paul <sean@poorly.run>, Marijn Suijten <marijn.suijten@somainline.org>, 
- Konrad Dybcio <konradybcio@kernel.org>,
- Lucas De Marchi <lucas.demarchi@intel.com>, 
- =?UTF-8?Q?Thomas_Hellstr=C3=B6m?= <thomas.hellstrom@linux.intel.com>, 
+ id CU7OaBT5n1ra for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 11 Nov 2025 14:49:59 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.200.21;
+ helo=ch5pr02cu005.outbound.protection.outlook.com;
+ envelope-from=alexander.deucher@amd.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 604334084B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 604334084B
+Received: from CH5PR02CU005.outbound.protection.outlook.com
+ (mail-northcentralusazon11012021.outbound.protection.outlook.com
+ [40.107.200.21])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 604334084B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Nov 2025 14:49:59 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=tLr6zKieMSVVefIlFTh7nsIlEvZpHlmLKfgr8BaEY0Y8L5rqp0Fj3BxStwAIBbT5BGQq1k67Uh00lg6IOUu6z7+68JNOe+6BJ5sywANpENpahOCVgN5sNEIekfhYBCZ1Tm1xDGNIV4O/gQo51keDFUfhN7oCVMUGYxtBukaXZxi8SqO+vubeD25jv5He1IaKDAuqqsdrxf7CzTQUGJebnOxx+K1TCGWwYnizVSg5SorW/8xTR1m0LUTBq9AOozQCVgvgXYJEHg8Wio1BNC91aH4ojUOJ02KjaRRsxjcyZ9uqD4ayxZdOyGFjAe79f/K6soKZr8KE1omYk9ex0pbOyg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=GkwU1mVH+FzBYHWZ3X6mk/Izupa+NNZcIjjrI7JLXfo=;
+ b=AOudp2oYNzb9houkyo++FnpeGyGX0J5MHiIWdJfdMNZJTqw/1zUbCC0+2M+o+gFF52D32J9Y9LWAANI1keCnJPbVVLgchVmwtmtB2N+rVJUXBmTstK5lSCA7jWzn1ZL/mJTHMdV+MYWOjztNGMHtEJHoYKC5u+oDxBsIrbaTiRja7keZYFQhqd4svBu7KtgHzKK9nfQswo4RnzP+qOG5ZDP5jsW1Qo2SrZS30TGTvJTYmpFamBxSka3CseZTOFwp1iJMrlDZP7jPrVtIDWq/CPGLPhgsh+J53ZR0wFAH6HVhVL/tebQ3ZHA4rUuaxckh9C53KjO4WkW01owOr5iNvw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+Received: from BL1PR12MB5144.namprd12.prod.outlook.com (2603:10b6:208:316::6)
+ by CH3PR12MB9147.namprd12.prod.outlook.com (2603:10b6:610:19a::9)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9298.16; Tue, 11 Nov
+ 2025 14:49:53 +0000
+Received: from BL1PR12MB5144.namprd12.prod.outlook.com
+ ([fe80::491a:cce3:e531:3c42]) by BL1PR12MB5144.namprd12.prod.outlook.com
+ ([fe80::491a:cce3:e531:3c42%4]) with mapi id 15.20.9320.013; Tue, 11 Nov 2025
+ 14:49:53 +0000
+From: "Deucher, Alexander" <Alexander.Deucher@amd.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Corey Minyard
+ <corey@minyard.net>, "Koenig, Christian" <Christian.Koenig@amd.com>, "Dr.
+ David Alan Gilbert" <linux@treblig.org>, Thomas Zimmermann
+ <tzimmermann@suse.de>, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Rob Clark <robin.clark@oss.qualcomm.com>, Matthew Brost
+ <matthew.brost@intel.com>, Ulf Hansson <ulf.hansson@linaro.org>, Vitaly
+ Lifshits <vitaly.lifshits@intel.com>, Manivannan Sadhasivam
+ <mani@kernel.org>, Niklas Cassel <cassel@kernel.org>, Calvin Owens
+ <calvin@wbinvd.org>, Vadim Fedorenko <vadim.fedorenko@linux.dev>, Sagi Maimon
+ <maimon.sagi@gmail.com>, "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Karan Tilak Kumar <kartilak@cisco.com>, Hans Verkuil
+ <hverkuil+cisco@kernel.org>, Casey Schaufler <casey@schaufler-ca.com>, Steven
+ Rostedt <rostedt@goodmis.org>, Petr Mladek <pmladek@suse.com>, Viacheslav
+ Dubeyko <Slava.Dubeyko@ibm.com>, Max Kellermann <max.kellermann@ionos.com>,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "openipmi-developer@lists.sourceforge.net"
+ <openipmi-developer@lists.sourceforge.net>, "linux-media@vger.kernel.org"
+ <linux-media@vger.kernel.org>, "dri-devel@lists.freedesktop.org"
+ <dri-devel@lists.freedesktop.org>, "linaro-mm-sig@lists.linaro.org"
+ <linaro-mm-sig@lists.linaro.org>, "amd-gfx@lists.freedesktop.org"
+ <amd-gfx@lists.freedesktop.org>, "linux-arm-msm@vger.kernel.org"
+ <linux-arm-msm@vger.kernel.org>, "freedreno@lists.freedesktop.org"
+ <freedreno@lists.freedesktop.org>, "intel-xe@lists.freedesktop.org"
+ <intel-xe@lists.freedesktop.org>, "linux-mmc@vger.kernel.org"
+ <linux-mmc@vger.kernel.org>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>, "linux-pci@vger.kernel.org"
+ <linux-pci@vger.kernel.org>, "linux-s390@vger.kernel.org"
+ <linux-s390@vger.kernel.org>, "linux-scsi@vger.kernel.org"
+ <linux-scsi@vger.kernel.org>, "linux-staging@lists.linux.dev"
+ <linux-staging@lists.linux.dev>, "ceph-devel@vger.kernel.org"
+ <ceph-devel@vger.kernel.org>, "linux-trace-kernel@vger.kernel.org"
+ <linux-trace-kernel@vger.kernel.org>
+CC: Rasmus Villemoes <linux@rasmusvillemoes.dk>, Sergey Senozhatsky
+ <senozhatsky@chromium.org>, Jonathan Corbet <corbet@lwn.net>, Sumit Semwal
+ <sumit.semwal@linaro.org>, Gustavo Padovan <gustavo@padovan.org>, David
+ Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Maarten
+ Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+ <mripard@kernel.org>, Dmitry Baryshkov <lumag@kernel.org>, Abhinav Kumar
+ <abhinav.kumar@linux.dev>, Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul
+ <sean@poorly.run>, Marijn Suijten <marijn.suijten@somainline.org>, Konrad
+ Dybcio <konradybcio@kernel.org>, Lucas De Marchi <lucas.demarchi@intel.com>,
+ =?iso-8859-2?Q?Thomas_Hellstr=F6m?= <thomas.hellstrom@linux.intel.com>,
  Rodrigo Vivi <rodrigo.vivi@intel.com>, Vladimir Oltean <olteanv@gmail.com>,
- Andrew Lunn <andrew@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Rodolfo Giometti <giometti@enneenne.com>,
- Richard Cochran <richardcochran@gmail.com>, 
- Jonathan Lemon <jonathan.lemon@gmail.com>, Stefan Haberland <sth@linux.ibm.com>,
- Jan Hoeppner <hoeppner@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>, 
- Vasily Gorbik <gor@linux.ibm.com>, Alexander Gordeev <agordeev@linux.ibm.com>, 
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Sven Schnelle <svens@linux.ibm.com>, 
- Satish Kharat <satishkh@cisco.com>, Sesidhar Baddela <sebaddel@cisco.com>, 
- "James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Xiubo Li <xiubli@redhat.com>, Ilya Dryomov <idryomov@gmail.com>, 
- Masami Hiramatsu <mhiramat@kernel.org>,
- Mathieu Desnoyers <mathieu.desnoyers@efficios.com>, 
- Andrew Morton <akpm@linux-foundation.org>
-Content-Type: text/plain; charset="UTF-8"
+ Andrew Lunn <andrew@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+ <pabeni@redhat.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek
+ Kitszel <przemyslaw.kitszel@intel.com>,
+ =?iso-8859-2?Q?Krzysztof_Wilczy=F1ski?= <kwilczynski@kernel.org>, Kishon
+ Vijay Abraham I <kishon@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ Rodolfo Giometti <giometti@enneenne.com>, Richard Cochran
+ <richardcochran@gmail.com>, Jonathan Lemon <jonathan.lemon@gmail.com>, Stefan
+ Haberland <sth@linux.ibm.com>, Jan Hoeppner <hoeppner@linux.ibm.com>, Heiko
+ Carstens <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>, Alexander
+ Gordeev <agordeev@linux.ibm.com>, Christian Borntraeger
+ <borntraeger@linux.ibm.com>, Sven Schnelle <svens@linux.ibm.com>, Satish
+ Kharat <satishkh@cisco.com>, Sesidhar Baddela <sebaddel@cisco.com>, "James
+ E.J. Bottomley" <James.Bottomley@HansenPartnership.com>, Mauro Carvalho
+ Chehab <mchehab@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Xiubo Li <xiubli@redhat.com>, Ilya Dryomov <idryomov@gmail.com>, Masami
+ Hiramatsu <mhiramat@kernel.org>, Mathieu Desnoyers
+ <mathieu.desnoyers@efficios.com>, Andrew Morton <akpm@linux-foundation.org>
+Thread-Topic: [PATCH v2 05/21] drm/amdgpu: Switch to use %ptSp
+Thread-Index: AQHcUwahm1/91wHoNkKlQRJwdZtlULTtjo6Q
+Date: Tue, 11 Nov 2025 14:49:53 +0000
+Message-ID: <BL1PR12MB5144DAA1CB83640FBE834FFFF7CFA@BL1PR12MB5144.namprd12.prod.outlook.com>
+References: <20251111122735.880607-1-andriy.shevchenko@linux.intel.com>
+ <20251111122735.880607-6-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20251111122735.880607-6-andriy.shevchenko@linux.intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: MSIP_Label_f265efc6-e181-49d6-80f4-fae95cf838a0_Enabled=True;
+ MSIP_Label_f265efc6-e181-49d6-80f4-fae95cf838a0_SiteId=3dd8961f-e488-4e60-8e11-a82d994e183d;
+ MSIP_Label_f265efc6-e181-49d6-80f4-fae95cf838a0_SetDate=2025-11-11T14:49:03.0000000Z;
+ MSIP_Label_f265efc6-e181-49d6-80f4-fae95cf838a0_Name=Open
+ Source; MSIP_Label_f265efc6-e181-49d6-80f4-fae95cf838a0_ContentBits=3;
+ MSIP_Label_f265efc6-e181-49d6-80f4-fae95cf838a0_Method=Privileged
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BL1PR12MB5144:EE_|CH3PR12MB9147:EE_
+x-ms-office365-filtering-correlation-id: d4b40aa3-753f-488e-1215-08de213192e4
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|7416014|376014|1800799024|366016|921020|38070700021; 
+x-microsoft-antispam-message-info: =?iso-8859-2?Q?OrgQba1o8VRkBRZy5KjWGPJFxxdvb9PI2OytFVyn9ss6KeRgUuNKhjHq35?=
+ =?iso-8859-2?Q?TostFJ91nWS81XunmUZXFcM2dNwFIbkVmwmviAN+9MjVoCn72yk+qV9/5A?=
+ =?iso-8859-2?Q?21+5lZS4OSEk52i+HU2wOlVTAPVHrqsJeulWOiRwU3/W7rwng+pLW2yAp+?=
+ =?iso-8859-2?Q?As3Ne6InDCuJtLmdM8uov6bkArZCyP2vOHy+lt3GAWT01g6K5BgDCr2uC9?=
+ =?iso-8859-2?Q?gf4ACKmQUAIB7dloGnx7EDamcoMLI7LN7KDxEM/GgryhlxofaJUn54ONUo?=
+ =?iso-8859-2?Q?87XOuy1pofi8FmPIPCfM2TnaXnPHxJAV0CBZqO6++8OdKlBUDhpCMtlIZm?=
+ =?iso-8859-2?Q?aunWC2gJWf6w0vRU3d9r7qYJTuKlUZZM9YLSTWYgwHzAOiTEoGuYVN2SEn?=
+ =?iso-8859-2?Q?hbbGJ09XHFDsWtThS7skygDzK0JLlRoixUeCBowVxhRxdT9qCGUaESEHZz?=
+ =?iso-8859-2?Q?inQGnPOVbW1Ym7bDVbXMAiH6oG6Pk3QVQwVoAEe1FroEFxhmFkNfjOliQI?=
+ =?iso-8859-2?Q?TSBwpejmYUIomMkjHXkMn/TZ+A2CBlihIjFM0LN+Ttl3qet+43xn0ORJny?=
+ =?iso-8859-2?Q?c6k6BReErVvD5d/rPI2DEJd+wLjA3QGsBhggqq+j+SIyRx69buZvU5zOGB?=
+ =?iso-8859-2?Q?Iovxhmb5Hev18SvFA3KGQHd+9cC8H/FFHvoO0zAQ++a5eoduMTa6BIYJCM?=
+ =?iso-8859-2?Q?KM8Hm28rtQBlYR37ydHv8Ix1gpMobT6UHT9m4rYv1FeeV1S6CH9gzPviZd?=
+ =?iso-8859-2?Q?iRBR/QrNWdDIOs53ce6k8U6BVctuRZP/B8fEW0rS/sR4g0GqBBvS0K2Lcs?=
+ =?iso-8859-2?Q?ooXVutaSDB5BgNCt2OFKXSqZmozfl3Wi17iZHZlEnq4Uxwndzyh0xV035m?=
+ =?iso-8859-2?Q?Zd/y26S9fGY8r4WKahf9kzkOtVXM50z+Znb5Igz94CrhVMvB6G3CqIJ31z?=
+ =?iso-8859-2?Q?C0aWEQ4nSVIzW7LrUPygs19CkKZLZ0+k+SlA5pbFEoB/0GXk09e+tbaDGZ?=
+ =?iso-8859-2?Q?tQwmpzNwF7Lkphf9pszGwyl7CsRPAV5/OnmXvYIGCiCuVqfckFKDFkTUr3?=
+ =?iso-8859-2?Q?Q2VRcX9xwHIQS2QKu2Zsi3AotquwCdxWm4a46szrCjX9xPSQs027Rm7Cl9?=
+ =?iso-8859-2?Q?4b085D4VFJV0eboQCARbXD2zkQ76uWewrb+xqoHw3onhtBEPlWOezuxiSH?=
+ =?iso-8859-2?Q?PtvjCkcR3kZ7x6cjCVOdh6Bcnigv6mXjZWYm7kMNFh8XlAt0M135Y/vzuP?=
+ =?iso-8859-2?Q?4kHzyErkKxpFPVf+wj7UWcwfYNKqkP+XTkHACDpnvNjyFieGfOYm/IEr/6?=
+ =?iso-8859-2?Q?h93VPcZULXAj4o9XCHEh/f5CxjM0h/55TO4i0pS8C704uFEmSCreSXZzkq?=
+ =?iso-8859-2?Q?DFkORbsr9XMN+B+8bpblyDG6BB5Mu7wP/b4jm2Bn3qzPx2XRhHwduUFLyc?=
+ =?iso-8859-2?Q?ngfIa6ZBGzNEAUio7tLJqTIpPwAYf0BhC/gvyivI6UEpHF6YrCTeGYG+tp?=
+ =?iso-8859-2?Q?/HKhtRnFwD7iRSeeaIy94LpY7oQi1insn6B8R/kOoYspHnlG8YuppUjqHs?=
+ =?iso-8859-2?Q?0glvuqnkbygBFDPvLiba3YNSWWURlRA8Vo9XEbKseLDk9A/bFw=3D=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL1PR12MB5144.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(7416014)(376014)(1800799024)(366016)(921020)(38070700021);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-2?Q?YdFRE1eWrPnF1GjQxYY0iivBiOqCLGtbo/c8RewREhlsgtC52oCM8zemPI?=
+ =?iso-8859-2?Q?0qvXvKbT+ZMeYZQXNbhSEV8Sg8tSlMGI5V2NO0+p6pxP99hKRk1COI4llZ?=
+ =?iso-8859-2?Q?ST/JV80w6gw+skR6ltDbLAnwO2u/lLPr2sO21LQh1+CXnIRMinHpG8MZx1?=
+ =?iso-8859-2?Q?nEW0grvYDrKv97xxD7p69ayMEcyrpAYL1KwPs6f5M7syyFwQB7/xxtcCNT?=
+ =?iso-8859-2?Q?/bsNITszdE5LmV4JeNJOTz4Q0PEfx36uLSXyMyFtjPFNGBkZlz8p3TdPCw?=
+ =?iso-8859-2?Q?NApYU7IU7DQCUNCWwTq1UKY0MDBCcvYjDJ7UgtoMKQoco2TX8sgzA5FjR7?=
+ =?iso-8859-2?Q?SgrOJQfMoipCUnG5+xURExhi8TNpm9Z+S69rbDNORhsb9Hr6+i8UutL1JA?=
+ =?iso-8859-2?Q?Pss1pw2Ox+ih9kSrok60aWWMn4ak12yytPJ2u9svnFi1WELcZr1n0R01l9?=
+ =?iso-8859-2?Q?XnnD2imFQ9ZKk3NRZ7QfWKZKYFvSaY3kSTYYzA1hWUX8UIlxDjos+zkgXd?=
+ =?iso-8859-2?Q?Z721P/FFL4iJeooBRjT9HtUIfIpi/w61N4W5e0IT+jxcmFR9qngdP2vG3N?=
+ =?iso-8859-2?Q?yDxarCQayMQDH7FcttW7LnPNiszlNR72jUyLAL94FTnEv7T8009qnZPJyX?=
+ =?iso-8859-2?Q?SU0FdWiZJ3sBv6u9NglxMcudswyLdufcX+a0tlHma2PxWJvNnMf0SvClXe?=
+ =?iso-8859-2?Q?oLPfLaCtYfMPQdHbviakBEL65iMf3lbmRfLDC/MBLawgmYbDOD0oK51Cht?=
+ =?iso-8859-2?Q?js+b1cG4f+9yWC28tIq3s/m6PeCO9CRY9WjaEbJUktLtwUhNZWUYgWkb2U?=
+ =?iso-8859-2?Q?+vNbELTISQ/KeHKGITtUmsnGpUXStXWSvaFx/PEGqrhyBVXmP9hJE6IdJs?=
+ =?iso-8859-2?Q?KWk7i+gfjPJh7oGin0qoJ5q63Di5I0x9zHNNPsbnTu8nHTZOw+WzfjR2Ig?=
+ =?iso-8859-2?Q?IevCIZDu7N6V1fR6+pOn9bUD7grI8lKghyP/ziUA7dM5XzzXJXl8DtW3zc?=
+ =?iso-8859-2?Q?qkJr7ItoFSSv2+kNOA+03nTw0GecoT/x4ETpC+1f8JXgaH5TDc6i+Ouh2O?=
+ =?iso-8859-2?Q?kBCS9BWRtGq0kS3EJlqHYGFkTc/RDazOYHLReoXS0KW9NUw76g5IzbBu5M?=
+ =?iso-8859-2?Q?JL87YPJ5Nn4py0aP4oqbPLjuTfUqatXTGdgy2FgDG+kyfGJZlrTZfKJuw5?=
+ =?iso-8859-2?Q?GFm4WH+0OSWqq4qL8knsiKECPX4NWNXdQ1etGJGCHFqew9wb6pPckPMqV9?=
+ =?iso-8859-2?Q?14QR8ZZS9fvH2tWGG/wOFfCeEu7jKHouX1heuvxBE0pnSzEBGxRrKL/+Ik?=
+ =?iso-8859-2?Q?pq0s5ZoSz6537o1pgzuSprTrALvxluza4vmbWJg2D0vX2jMYP3D39/kesj?=
+ =?iso-8859-2?Q?+LguNMz2DQ2xnIJaGDQufP1KUJSDuUcoqEDnXzZJuzkcfNspQ6PNZI24Rx?=
+ =?iso-8859-2?Q?1C2BpsS4iEpMa7Ab5yKzLyWDDMtUqEqSnFNzFhbMLfzDSUhVU2gogmr8oz?=
+ =?iso-8859-2?Q?A+1/S7/hrAujQl07+mHY4SZsGs4CQzDLN6sd5mU1H1R6kUIJKQ68YbM16N?=
+ =?iso-8859-2?Q?DlCyqmqXDoEEqS6n04RPnZIKOJYWo3OfQWqTTxfCJ/4ywkBhfIdsI0yBK1?=
+ =?iso-8859-2?Q?GE0em/cq9Hlrc=3D?=
+Content-Type: text/plain; charset="iso-8859-2"
 Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BL1PR12MB5144.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d4b40aa3-753f-488e-1215-08de213192e4
+X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Nov 2025 14:49:53.4262 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: +UWf/dYI0w3WKb4fcGJtSH5FXiPAuJpcMfWbfhyLN3SsBFmhHj6n4u4N2adU0+K4dmMYqSb6UrCDOkmV4OPSLA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB9147
 X-Mailman-Approved-At: Wed, 12 Nov 2025 16:35:13 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1762872251; x=1763477051; darn=lists.osuosl.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=y1/P4cjnJRMKeJXb4QuiXEQkEuLjYJ7u3PWbuQSeBbc=;
- b=cOV46MKWdDj1zX1V6w5kPLbEsbjDdCNDmJHbumPbKkz4f/Gb8Io8dbfPjy7FSacC0J
- PicE4xF0F7CWFcQFrQYKuHzY3Mieogz4HqbIMx1KF1AGqb/WNhAFsKTurgdRYoAl0y9f
- xdFjMuH+2v9NKKg2w0ybNMNoRXA4sPp9rTz9DalfM63CEG1q2xHBEXMaIPegPBGkRJcA
- my7az5jMKj7WmDiaNfW2GoUiSaZEr2KKkk9evSLLbOc0+/DFF1WlfX1AsXU9FXkm8H1B
- ULD4ZdRoYENGoX3nLH/1yUl2GLtG/NNRfNPCx9n2uV1I3Htizp9FroOD75qyRdhU11qt
- WYFQ==
+ d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=GkwU1mVH+FzBYHWZ3X6mk/Izupa+NNZcIjjrI7JLXfo=;
+ b=4P9MiOXgvEP+e7EzPGB5BGeeuBZHm2J677y9FNU1WMGmPWwaOhSXPDvMxl0uv8xTfoPZeDJVTGqK3e/GeBu6cxClu0JYS1+9LWRsH6W2WWGiZB2ZrD0fq6nI90UOCmvHGVzrVUKwbB87qtvUOkzbqVy34JSJs3ATrrVFM1qdcIo=
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=linaro.org
+ dmarc=pass (p=quarantine dis=none)
+ header.from=amd.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256
- header.s=google header.b=cOV46MKW
-Subject: Re: [Intel-wired-lan] [PATCH v2 04/21] dma-buf: Switch to use %ptSp
+ dkim=pass (1024-bit key,
+ unprotected) header.d=amd.com header.i=@amd.com header.a=rsa-sha256
+ header.s=selector1 header.b=4P9MiOXg
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+Subject: Re: [Intel-wired-lan] [PATCH v2 05/21] drm/amdgpu: Switch to use
+ %ptSp
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -191,42 +263,102 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello Andy,
+[Public]
 
-
-On Tue, 11 Nov 2025 at 17:57, Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
+> -----Original Message-----
+> From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> Sent: Tuesday, November 11, 2025 7:20 AM
+> To: Corey Minyard <corey@minyard.net>; Koenig, Christian
+> <Christian.Koenig@amd.com>; Dr. David Alan Gilbert <linux@treblig.org>;
+> Deucher, Alexander <Alexander.Deucher@amd.com>; Thomas Zimmermann
+> <tzimmermann@suse.de>; Dmitry Baryshkov
+> <dmitry.baryshkov@oss.qualcomm.com>; Rob Clark
+> <robin.clark@oss.qualcomm.com>; Matthew Brost
+> <matthew.brost@intel.com>; Ulf Hansson <ulf.hansson@linaro.org>; Andy
+> Shevchenko <andriy.shevchenko@linux.intel.com>; Vitaly Lifshits
+> <vitaly.lifshits@intel.com>; Manivannan Sadhasivam <mani@kernel.org>;
+> Niklas Cassel <cassel@kernel.org>; Calvin Owens <calvin@wbinvd.org>; Vadi=
+m
+> Fedorenko <vadim.fedorenko@linux.dev>; Sagi Maimon
+> <maimon.sagi@gmail.com>; Martin K. Petersen
+> <martin.petersen@oracle.com>; Karan Tilak Kumar <kartilak@cisco.com>;
+> Hans Verkuil <hverkuil+cisco@kernel.org>; Casey Schaufler <casey@schaufle=
+r-
+> ca.com>; Steven Rostedt <rostedt@goodmis.org>; Petr Mladek
+> <pmladek@suse.com>; Viacheslav Dubeyko <Slava.Dubeyko@ibm.com>; Max
+> Kellermann <max.kellermann@ionos.com>; linux-doc@vger.kernel.org; linux-
+> kernel@vger.kernel.org; openipmi-developer@lists.sourceforge.net; linux-
+> media@vger.kernel.org; dri-devel@lists.freedesktop.org; linaro-mm-
+> sig@lists.linaro.org; amd-gfx@lists.freedesktop.org; linux-arm-
+> msm@vger.kernel.org; freedreno@lists.freedesktop.org; intel-
+> xe@lists.freedesktop.org; linux-mmc@vger.kernel.org;
+> netdev@vger.kernel.org; intel-wired-lan@lists.osuosl.org; linux-
+> pci@vger.kernel.org; linux-s390@vger.kernel.org; linux-scsi@vger.kernel.o=
+rg;
+> linux-staging@lists.linux.dev; ceph-devel@vger.kernel.org; linux-trace-
+> kernel@vger.kernel.org
+> Cc: Rasmus Villemoes <linux@rasmusvillemoes.dk>; Sergey Senozhatsky
+> <senozhatsky@chromium.org>; Jonathan Corbet <corbet@lwn.net>; Sumit
+> Semwal <sumit.semwal@linaro.org>; Gustavo Padovan
+> <gustavo@padovan.org>; David Airlie <airlied@gmail.com>; Simona Vetter
+> <simona@ffwll.ch>; Maarten Lankhorst
+> <maarten.lankhorst@linux.intel.com>; Maxime Ripard <mripard@kernel.org>;
+> Dmitry Baryshkov <lumag@kernel.org>; Abhinav Kumar
+> <abhinav.kumar@linux.dev>; Jessica Zhang <jesszhan0024@gmail.com>; Sean
+> Paul <sean@poorly.run>; Marijn Suijten <marijn.suijten@somainline.org>;
+> Konrad Dybcio <konradybcio@kernel.org>; Lucas De Marchi
+> <lucas.demarchi@intel.com>; Thomas Hellstr=F6m
+> <thomas.hellstrom@linux.intel.com>; Rodrigo Vivi <rodrigo.vivi@intel.com>=
+;
+> Vladimir Oltean <olteanv@gmail.com>; Andrew Lunn <andrew@lunn.ch>;
+> David S. Miller <davem@davemloft.net>; Eric Dumazet
+> <edumazet@google.com>; Jakub Kicinski <kuba@kernel.org>; Paolo Abeni
+> <pabeni@redhat.com>; Tony Nguyen <anthony.l.nguyen@intel.com>;
+> Przemek Kitszel <przemyslaw.kitszel@intel.com>; Krzysztof Wilczy=F1ski
+> <kwilczynski@kernel.org>; Kishon Vijay Abraham I <kishon@kernel.org>;
+> Bjorn Helgaas <bhelgaas@google.com>; Rodolfo Giometti
+> <giometti@enneenne.com>; Richard Cochran <richardcochran@gmail.com>;
+> Jonathan Lemon <jonathan.lemon@gmail.com>; Stefan Haberland
+> <sth@linux.ibm.com>; Jan Hoeppner <hoeppner@linux.ibm.com>; Heiko
+> Carstens <hca@linux.ibm.com>; Vasily Gorbik <gor@linux.ibm.com>;
+> Alexander Gordeev <agordeev@linux.ibm.com>; Christian Borntraeger
+> <borntraeger@linux.ibm.com>; Sven Schnelle <svens@linux.ibm.com>; Satish
+> Kharat <satishkh@cisco.com>; Sesidhar Baddela <sebaddel@cisco.com>;
+> James E.J. Bottomley <James.Bottomley@HansenPartnership.com>; Mauro
+> Carvalho Chehab <mchehab@kernel.org>; Greg Kroah-Hartman
+> <gregkh@linuxfoundation.org>; Xiubo Li <xiubli@redhat.com>; Ilya Dryomov
+> <idryomov@gmail.com>; Masami Hiramatsu <mhiramat@kernel.org>;
+> Mathieu Desnoyers <mathieu.desnoyers@efficios.com>; Andrew Morton
+> <akpm@linux-foundation.org>
+> Subject: [PATCH v2 05/21] drm/amdgpu: Switch to use %ptSp
 >
-> Use %ptSp instead of open coded variants to print content of
-> struct timespec64 in human readable format.
+> Use %ptSp instead of open coded variants to print content of struct
+> timespec64 in human readable format.
 >
-> Reviewed-by: Christian K=C3=B6nig <christian.koenig@amd.com>
 > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Thanks for the patch.
 
-FWIW, please feel free to add
-Acked-by: Sumit Semwal <sumit.semwal@linaro.org>
+Acked-by: Alex Deucher <alexander.deucher@amd.com>
 
-Best,
-Sumit.
 > ---
->  drivers/dma-buf/sync_debug.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/gpu/drm/amd/amdgpu/amdgpu_dev_coredump.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 >
-> diff --git a/drivers/dma-buf/sync_debug.c b/drivers/dma-buf/sync_debug.c
-> index 67cd69551e42..9e5d662cd4e8 100644
-> --- a/drivers/dma-buf/sync_debug.c
-> +++ b/drivers/dma-buf/sync_debug.c
-> @@ -59,7 +59,7 @@ static void sync_print_fence(struct seq_file *s,
->                 struct timespec64 ts64 =3D
->                         ktime_to_timespec64(fence->timestamp);
+> diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_dev_coredump.c
+> b/drivers/gpu/drm/amd/amdgpu/amdgpu_dev_coredump.c
+> index 8a026bc9ea44..4e2fe6674db8 100644
+> --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_dev_coredump.c
+> +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_dev_coredump.c
+> @@ -217,8 +217,7 @@ amdgpu_devcoredump_read(char *buffer, loff_t
+> offset, size_t count,
+>       drm_printf(&p, "version: " AMDGPU_COREDUMP_VERSION "\n");
+>       drm_printf(&p, "kernel: " UTS_RELEASE "\n");
+>       drm_printf(&p, "module: " KBUILD_MODNAME "\n");
+> -     drm_printf(&p, "time: %lld.%09ld\n", coredump->reset_time.tv_sec,
+> -                coredump->reset_time.tv_nsec);
+> +     drm_printf(&p, "time: %ptSp\n", &coredump->reset_time);
 >
-> -               seq_printf(s, "@%lld.%09ld", (s64)ts64.tv_sec, ts64.tv_ns=
-ec);
-> +               seq_printf(s, "@%ptSp", &ts64);
->         }
->
->         seq_printf(s, ": %lld", fence->seqno);
+>       if (coredump->reset_task_info.task.pid)
+>               drm_printf(&p, "process_name: %s PID: %d\n",
 > --
 > 2.50.1
->
+
