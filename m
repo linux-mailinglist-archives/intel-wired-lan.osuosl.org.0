@@ -1,69 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49546C4DB3C
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Nov 2025 13:28:19 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4E650C4DB28
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Nov 2025 13:28:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3389B820AD;
-	Tue, 11 Nov 2025 12:28:16 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E5E96820E2;
+	Tue, 11 Nov 2025 12:28:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id eldUdxL80V-o; Tue, 11 Nov 2025 12:28:15 +0000 (UTC)
+ id CjzUGzZAVKIO; Tue, 11 Nov 2025 12:28:14 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9DFA782107
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 631638207D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1762864095;
-	bh=4XGhu8br/Oil9fWFgVWQR8/zLmG9FMR2somhxQuUaag=;
+	s=default; t=1762864094;
+	bh=t68BDsiEQtTArdaXToXrVl/YWKANcd0lrB3ne8lj/Wo=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=h7uQslWIuU7tf7qtlSSTPFpXhQifkFfgatfaPO8cjS/Yn+VT1T59rnHlipn8ekOp/
-	 uWP3Fsqh67TTOo8RbiiSYhfVB4HAT5Q+oIiwtP6TjmPa0is0UjGZwbbQk5vDbL0+dB
-	 gg+5NIeQ1Y5PEgze8BqjVtURa6+Xx/ky1EH+bF/1w4x3VwQqz5grvLk0fzEjLY+JHJ
-	 a/1gbKpGW1S/yw0V9UMHhoeVZXiD8plx89kq91DW3a4VsfMC7nJRU4bm28gpSYViCN
-	 k5bbJjBWvB/rP5onifZvWOTNxT6RFPYaNh5MWGvFhMYqMSzdaazdvG8eWYRpGmMEse
-	 YX2XKnup+Ipdg==
+	b=cbp42cRpcD7uNirbWBlgxRSHKB82mRQkzHmj5SqqXCRZPBnb7Oa8+mAGyWXwGSrGy
+	 33BZigH0Cg8RgGbwFzv+yOpBnEZ2+MFe+TfJDQbqTkzRDapnpqWpUhA1tBv2DMoPHJ
+	 SkyTo62Ude1yLNXNJ23IvX4SdA8ep/GvI6B+9+LO9OgrxzqlvpIFZqT9KDbksQ0JD+
+	 LcGLlxHEc0YLz9Rs03zxNM+JxjrwXPUuGNfO/o0QUKian2dRoekAID2P6nsw9KkO35
+	 fNO49IlZ7ZPa66MoRCwGWOYZR5KdRSSwECstgIGLbygXRocsqUk5qeTZW5WPlsa6mn
+	 zZcaTjTCeZV8w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9DFA782107;
-	Tue, 11 Nov 2025 12:28:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 631638207D;
+	Tue, 11 Nov 2025 12:28:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id A7E5A25D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Nov 2025 12:28:13 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id CCC47FA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Nov 2025 12:28:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 715E3406F9
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2C796407CC
  for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Nov 2025 12:28:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Z_p0_elW-R4W for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 Nov 2025 12:28:06 +0000 (UTC)
+ id xEZv4Y8U1Hoz for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 11 Nov 2025 12:28:05 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
  helo=mgamail.intel.com; envelope-from=andriy.shevchenko@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 639F7407C6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 639F7407C6
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A50F1406F9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A50F1406F9
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 639F7407C6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Nov 2025 12:28:06 +0000 (UTC)
-X-CSE-ConnectionGUID: PXTvR5EzQ6mmnr2+6BX1xw==
-X-CSE-MsgGUID: mqxoxxvmReCfBHks8dxsxg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11609"; a="82553108"
-X-IronPort-AV: E=Sophos;i="6.19,296,1754982000"; d="scan'208";a="82553108"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A50F1406F9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Nov 2025 12:28:05 +0000 (UTC)
+X-CSE-ConnectionGUID: UjOCj1VAQhSqKfpkCpsX4Q==
+X-CSE-MsgGUID: 8Eg9p9viQKSoF4Ply7okVw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11609"; a="82553069"
+X-IronPort-AV: E=Sophos;i="6.19,296,1754982000"; d="scan'208";a="82553069"
 Received: from fmviesa002.fm.intel.com ([10.60.135.142])
  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Nov 2025 04:28:05 -0800
-X-CSE-ConnectionGUID: 9gvBk5WhSTGKhHQCwMxqkA==
-X-CSE-MsgGUID: nvPEZ1C+TAWEHPUT+McG9Q==
+ 11 Nov 2025 04:28:04 -0800
+X-CSE-ConnectionGUID: YCUNN0rBQSKms4DPvG3Osw==
+X-CSE-MsgGUID: OOBpz+NVSHuE8x7EZz4beA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,296,1754982000"; d="scan'208";a="212343318"
+X-IronPort-AV: E=Sophos;i="6.19,296,1754982000"; d="scan'208";a="212343319"
 Received: from black.igk.intel.com ([10.91.253.5])
  by fmviesa002.fm.intel.com with ESMTP; 11 Nov 2025 04:27:57 -0800
 Received: by black.igk.intel.com (Postfix, from userid 1003)
- id 1DEA8A1; Tue, 11 Nov 2025 13:27:38 +0100 (CET)
+ id 242CFA2; Tue, 11 Nov 2025 13:27:38 +0100 (CET)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Corey Minyard <corey@minyard.net>,
  =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
@@ -133,10 +133,9 @@ Cc: Rasmus Villemoes <linux@rasmusvillemoes.dk>,
  Xiubo Li <xiubli@redhat.com>, Ilya Dryomov <idryomov@gmail.com>,
  Masami Hiramatsu <mhiramat@kernel.org>,
  Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Corey Minyard <cminyard@mvista.com>
-Date: Tue, 11 Nov 2025 13:20:11 +0100
-Message-ID: <20251111122735.880607-12-andriy.shevchenko@linux.intel.com>
+ Andrew Morton <akpm@linux-foundation.org>
+Date: Tue, 11 Nov 2025 13:20:12 +0100
+Message-ID: <20251111122735.880607-13-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20251111122735.880607-1-andriy.shevchenko@linux.intel.com>
 References: <20251111122735.880607-1-andriy.shevchenko@linux.intel.com>
@@ -144,24 +143,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1762864086; x=1794400086;
+ t=1762864085; x=1794400085;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=tDxqR7dAcbJglLrfzlBGLBNHFzQ2/Otni5OnaahsuNI=;
- b=TyrLtMTz2S+b3uofleigNSX+wWVQzZv3JExkk3Nf4rRWlrt8WpMYioeh
- 2ZI73o8H/xq0dEqpUTzYYcfbDRdzQn58iVnZeJgHk0Arzn3pFb6+eR9Hb
- ciTGDxidpBxWnmOWSDysDt/HwG2LCUGHTyBoRrK/LVmtqPUjt9WFHVRhu
- vXlGNJpqTW+bpmAQ76tPVmp4SaZpuI3uRvjXBG54CHZquF+nnoCgm2Ec4
- bjiKKL1JE8GvwVr/hEAXrUOLPhVBwgSePN9zk2gqT9ns3cqtxtMHo/nXI
- nZOosAHb5ZllnghoctU2O5SUcV/SeAeWri5/kOQIBHVZuVN2ILuxojjyA
+ bh=+wzhaFxSnGOIgXfPGWXmMsmYdpSBfK5IjZcpII7NT9c=;
+ b=EwN5B3MhLnSyBvRHdh+S8nracGYz7IjJQEIpECOoSFyxRYDlMa7phHsv
+ D/Mlqjy5A3CtXNiFy10lYvaPZO8eRFhBljeLnQalKUEV1AxJLOKWrjzFZ
+ oI932+rgSsfLVfKYcxAV2pNgl6BdigN/TBs/coj+2cvWQzzF0mwkD7LWt
+ fgR7sNyec0bGs2px0cU1sOa5ZwarTqvCQCNNQfYibDKKxNBbe8TtkteQ8
+ g1F5tDvy6tge21zcKBxUu91H9ILLbDHGUrMZzTPan955ZWwU0RAN7uZod
+ 2ActzPRG2YXuHm1lc2kzOGUKYFsZlHaxfCWq/L1j/xU+O6UJZGe5UKxaW
  g==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=TyrLtMTz
-Subject: [Intel-wired-lan] [PATCH v2 11/21] ipmi: Switch to use %ptSp
+ header.a=rsa-sha256 header.s=Intel header.b=EwN5B3Mh
+Subject: [Intel-wired-lan] [PATCH v2 12/21] media: av7110: Switch to use
+ %ptSp
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -180,44 +180,25 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 Use %ptSp instead of open coded variants to print content of
 struct timespec64 in human readable format.
 
-Acked-by: Corey Minyard <cminyard@mvista.com>
+Acked-by: Hans Verkuil <hverkuil+cisco@kernel.org>
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/char/ipmi/ipmi_si_intf.c | 3 +--
- drivers/char/ipmi/ipmi_ssif.c    | 6 ++----
- 2 files changed, 3 insertions(+), 6 deletions(-)
+ drivers/staging/media/av7110/av7110.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/char/ipmi/ipmi_si_intf.c b/drivers/char/ipmi/ipmi_si_intf.c
-index 70e55f5ff85e..5459ffdde8dc 100644
---- a/drivers/char/ipmi/ipmi_si_intf.c
-+++ b/drivers/char/ipmi/ipmi_si_intf.c
-@@ -275,8 +275,7 @@ void debug_timestamp(struct smi_info *smi_info, char *msg)
- 	struct timespec64 t;
+diff --git a/drivers/staging/media/av7110/av7110.c b/drivers/staging/media/av7110/av7110.c
+index bc9a2a40afcb..602342d1174f 100644
+--- a/drivers/staging/media/av7110/av7110.c
++++ b/drivers/staging/media/av7110/av7110.c
+@@ -321,7 +321,7 @@ static inline void print_time(char *s)
+ 	struct timespec64 ts;
  
- 	ktime_get_ts64(&t);
--	dev_dbg(smi_info->io.dev, "**%s: %lld.%9.9ld\n",
--		msg, t.tv_sec, t.tv_nsec);
-+	dev_dbg(smi_info->io.dev, "**%s: %ptSp\n", msg, &t);
+ 	ktime_get_real_ts64(&ts);
+-	pr_info("%s(): %lld.%09ld\n", s, (s64)ts.tv_sec, ts.tv_nsec);
++	pr_info("%s(): %ptSp\n", s, &ts);
+ #endif
  }
- #else
- #define debug_timestamp(smi_info, x)
-diff --git a/drivers/char/ipmi/ipmi_ssif.c b/drivers/char/ipmi/ipmi_ssif.c
-index 1b63f7d2fcda..ef1582a029f4 100644
---- a/drivers/char/ipmi/ipmi_ssif.c
-+++ b/drivers/char/ipmi/ipmi_ssif.c
-@@ -1083,10 +1083,8 @@ static int sender(void *send_info, struct ipmi_smi_msg *msg)
- 		struct timespec64 t;
  
- 		ktime_get_real_ts64(&t);
--		dev_dbg(&ssif_info->client->dev,
--			"**Enqueue %02x %02x: %lld.%6.6ld\n",
--			msg->data[0], msg->data[1],
--			(long long)t.tv_sec, (long)t.tv_nsec / NSEC_PER_USEC);
-+		dev_dbg(&ssif_info->client->dev, "**Enqueue %02x %02x: %ptSp\n",
-+			msg->data[0], msg->data[1], &t);
- 	}
- 	return IPMI_CC_NO_ERROR;
- }
 -- 
 2.50.1
 
