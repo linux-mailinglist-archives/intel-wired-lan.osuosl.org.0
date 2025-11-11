@@ -1,157 +1,157 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42607C4E871
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Nov 2025 15:40:27 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A5AA8C4EC04
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Nov 2025 16:20:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8443340942;
-	Tue, 11 Nov 2025 14:40:25 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3CB3580BB8;
+	Tue, 11 Nov 2025 15:19:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8Jf6ZflQ9bZH; Tue, 11 Nov 2025 14:40:25 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 7a7EuQ_sPfJj; Tue, 11 Nov 2025 15:19:58 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 044A740946
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9E68680B84
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1762872025;
-	bh=qp5l9CleBH+90IDb02IwKlf8FOy6cwp5KCYKsO335Ps=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1762874398;
+	bh=A5SVOaFDlCV2uNNJy3v3HZSAyck/afp0AOlD6vgrWKk=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=epWPx/IJ6d/+CVPFHD55RyRWFi7lAPqQTLMGx6OY8E3OM6IhmuelrcukEeReRTT65
-	 Gt81XeW0MUM0AQzPtnNcO/Ndzf7gQiD8BSbCZEkxvRYTFrk6vDgm1tyL25b8qzvvsr
-	 znWVvOYGGFG/FiaiODfTfA1b+VouU6IGIf9C8DJaWY6Q4243sLWKwlflwV1KeJPF7o
-	 OLpWYmsnJiWk+Q18NEnCkzcKpDF0NR0oVk4KJMB0M6ySmLjNPso19isFVBHbXF820M
-	 o5wljg34P/vz0RbdQ7LezWyGAbzm1fJpcNj86I33A6qU/6iYxHPlE/sFtZuAfW8UOF
-	 xob/W9jzMIXeQ==
+	b=mtY+a6xvqR/YfIdQa7uB6XHpbCinxZmsjXaB5Ly0WKoxqNeg4DNosbCkfB7/Z77QT
+	 cWee53Cod8AUP7DL7EDulSs4g2ED/59aXyopc7Gi1rSgYRcdXn5oKyXBER+08wV9Nc
+	 m5bqR3sJcRoqrSckNvngbCWLrsE3RiIf8qZuAK85Le1LlCuxyY88nO5H/AI9XFxgk6
+	 XVCmiK0P4+8pwXm2JlHE+2r1+RzNADx11P56sD+8iQ/6/IvCLnfyZ+n1JbZsVvrw5d
+	 iah/OB7IxPCffs9Fz6UuFAIMnz+b7lz2aS4Uy+H+XyAG4Av6Rxc+ze/BhTI9/xJs09
+	 Kldz7Xfmhq/uQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 044A740946;
-	Tue, 11 Nov 2025 14:40:25 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9E68680B84;
+	Tue, 11 Nov 2025 15:19:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 7586831C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Nov 2025 14:40:23 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 382E431C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Nov 2025 15:19:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 6766260BBE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Nov 2025 14:40:23 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2A994407FD
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Nov 2025 15:19:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id P7LCZPDkWXDh for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 Nov 2025 14:40:22 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::32d; helo=mail-wm1-x32d.google.com;
- envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org E7F7560BB7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E7F7560BB7
-Received: from mail-wm1-x32d.google.com (mail-wm1-x32d.google.com
- [IPv6:2a00:1450:4864:20::32d])
- by smtp3.osuosl.org (Postfix) with ESMTPS id E7F7560BB7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Nov 2025 14:40:21 +0000 (UTC)
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-47112edf9f7so20512905e9.0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Nov 2025 06:40:21 -0800 (PST)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id lMFe8pz9LU5u for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 11 Nov 2025 15:19:56 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::f2e; helo=mail-qv1-xf2e.google.com;
+ envelope-from=daniel.zahka@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 52236401AD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 52236401AD
+Received: from mail-qv1-xf2e.google.com (mail-qv1-xf2e.google.com
+ [IPv6:2607:f8b0:4864:20::f2e])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 52236401AD
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Nov 2025 15:19:56 +0000 (UTC)
+Received: by mail-qv1-xf2e.google.com with SMTP id
+ 6a1803df08f44-8823dfa84c5so34953646d6.3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Nov 2025 07:19:56 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762872020; x=1763476820;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=qp5l9CleBH+90IDb02IwKlf8FOy6cwp5KCYKsO335Ps=;
- b=b4fUzcGXpxAUTYeCBVMwGCl9blpICaCryzEUszQk3zCrJhEzUMKpS4fS1NLmMlL16M
- TGk6Xkd5RF3CwTcHkNSgDbXQ8nrTuDf6u1dhf8j6Xuw62K+wHXaDUI2DjoPIQ3yZxjaK
- iSyM7vohTmMFjjZLa8rvirXVkumjjM4ZtiFDBwA6G5lkgm5CGdWul/IkBRk4Kkt0kVM7
- XYGiScdeHMezt69Fod5Q3b0+j4Z2NBJThZmTaRGPpqpSyTmsc6NmcRd/UK5b9eh60ltK
- vlr9REmsYfN12rqAYSki05F+YcYbm6hjDK2bNFUQrcDumn6VZ311JNYRd1DO/HMGVX80
- 2O6A==
+ d=1e100.net; s=20230601; t=1762874395; x=1763479195;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=A5SVOaFDlCV2uNNJy3v3HZSAyck/afp0AOlD6vgrWKk=;
+ b=Fa3reHVJFdHN2bWJYn3xBmB31q/ogXaA1xJ9S3eYyoPHjDVojd91MJsuaaTegp3Dvk
+ qPDYDjbHp8alWcLUfhvkTAF8Yaj0AgyuwZCorDwnRVtB/le9ZcDtqO8NQxWZrwYP9jWd
+ BDFAds/P9Ax35XQ+AelTQyyNK2paoGK2L3mi2BZZImMIrUF0BMeEDIohcvyPHrKZ0Je3
+ cSKU/FM3SygubMrF4nUhLoFOYHk/9SuB6PLfVtJCq+qoY4gr/xt6IMczANTbSXYEoQHW
+ KNLhsSMLv+QatzTs+CwTwWnZJbrsYPOo54UbSOY788vBzI+Agljh2Fj+wGnJZ5CznfCI
+ 0CDw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVQ94kLu7eJmS2jZJeExY3w9u1A+9XkoBSS/h99TUScUEJuwO4Mi/IrfPOHe5dijhAIqcnp3+NwSbaCHBXlkx4=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzqtAI6k9rzN4jcnb7MOaA2hAz5RcMvyT9hhan56Nl/vf5Tlzd7
- Th1feZUaCKxeIeAApDs/aC288LpWFFYKtJgvU/UnGYBGKZOIWmN3MxSql305e3QthoQ=
-X-Gm-Gg: ASbGncvwM52V2loIKhIyWwxAEsL4gM0+X6y3vekHTDdzvZuLh1TXJB2Cx0EVieAl4bP
- vkX03DTvCK8CUO1/NttOcRzBMAsfeOXWWxoDt4cwa25WAmx1HaMT7bczsQlyovaE6m/zOe+FZ8g
- BaDLs+1k9g+qpCBxRpgc/UDmF0JaJqVrwKH7c9pdyWEORY4Zqnl3uthy7c35IFtR+ZxlbBmpQdO
- CIbdT0IHHIfo4hu13TwQjke6z0iRQ20q5P3tbnWT1mDKQNf636lHKOzgNUz7aGtt531bmeQLcgc
- kppSRM3FkEIqbDLLLNCzOw1NUfs4g3N0IXywMP3T8IZsByl7EAeHZC50eawdZyuddsdRyxUfPGw
- CkWI42zX/wM9NAWDejDgaeDqYLipJpqwZhFj0Jp4BJv6C/iPGw/epio3mQa3cbAOyt5fRVydHZs
- Hkc7JA5zwh63p5Rkwhl1A=
-X-Google-Smtp-Source: AGHT+IHiizBIJOZcrq74AaefcmPGJqcFfS/u1VH/cPNz5auadvSnqgCV70GeJMtA2paFsPgExMwhBQ==
-X-Received: by 2002:a05:600c:4508:b0:477:7bd2:693f with SMTP id
- 5b1f17b1804b1-4777bd28628mr69798945e9.6.1762872019298; 
- Tue, 11 Nov 2025 06:40:19 -0800 (PST)
-Received: from jiri-mlt ([140.209.217.211]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4775ce211d8sm392840305e9.11.2025.11.11.06.40.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Nov 2025 06:40:18 -0800 (PST)
-Date: Tue, 11 Nov 2025 15:40:15 +0100
-From: Jiri Pirko <jiri@resnulli.us>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Daniel Zahka <daniel.zahka@gmail.com>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Paolo Abeni <pabeni@redhat.com>, Simon Horman <horms@kernel.org>, 
- Jonathan Corbet <corbet@lwn.net>, Srujana Challa <schalla@marvell.com>, 
- Bharat Bhushan <bbhushan2@marvell.com>,
- Herbert Xu <herbert@gondor.apana.org.au>, 
- Brett Creeley <brett.creeley@amd.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
- Michael Chan <michael.chan@broadcom.com>,
- Pavan Chebbi <pavan.chebbi@broadcom.com>, 
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
- Sunil Goutham <sgoutham@marvell.com>, Linu Cherian <lcherian@marvell.com>, 
- Geetha sowjanya <gakula@marvell.com>, Jerin Jacob <jerinj@marvell.com>, 
- hariprasad <hkelam@marvell.com>, Subbaraya Sundeep <sbhatta@marvell.com>, 
- Tariq Toukan <tariqt@nvidia.com>, Saeed Mahameed <saeedm@nvidia.com>, 
- Leon Romanovsky <leon@kernel.org>, Mark Bloch <mbloch@nvidia.com>,
- Ido Schimmel <idosch@nvidia.com>, 
- Petr Machata <petrm@nvidia.com>, Manish Chopra <manishc@marvell.com>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Siddharth Vadapalli <s-vadapalli@ti.com>, Roger Quadros <rogerq@kernel.org>, 
- Loic Poulain <loic.poulain@oss.qualcomm.com>,
- Sergey Ryazanov <ryazanov.s.a@gmail.com>, 
- Johannes Berg <johannes@sipsolutions.net>, Vladimir Oltean <olteanv@gmail.com>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>, 
- Dave Ertman <david.m.ertman@intel.com>,
- Vlad Dumitrescu <vdumitrescu@nvidia.com>, 
- "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
- Alexander Sverdlin <alexander.sverdlin@gmail.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>, netdev@vger.kernel.org,
- linux-doc@vger.kernel.org, 
- intel-wired-lan@lists.osuosl.org, linux-rdma@vger.kernel.org, 
- linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org,
- linux-omap@vger.kernel.org
-Message-ID: <xmqe3svfethqm3sqnu2ay27k65gx4njptvs7firsfqn57cwjat@ho3cox3ip2fq>
-References: <20251107204347.4060542-1-daniel.zahka@gmail.com>
- <20251107204347.4060542-3-daniel.zahka@gmail.com>
- <mfuluoi4nebyc4avj52gkfs4nqikn6uwhqnkf4o6xfswtpceuq@zhpokcx6bb6l>
- <25ebaf18-f009-45de-a3e4-fe440c42ef19@gmail.com>
- <20251110145831.15872b86@kernel.org>
+ AJvYcCWPND6puLg1EoY2P9sMceB0aZBLyBoT6D3bvZ1TGrCGNUNij4VdEEDJ3WNtnRn9fhKnC1c7K+WiOo2Xl1nZJmc=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YzRgtNfQcIrDUCYsnMaE9LKOFjystLKIxAKNcfdyvmDoLgcFobL
+ m5vPANi/rRUNjB/LEgWE5WDmGM+eV9DP25g81t4t8VG34lxT+T+JGaKo
+X-Gm-Gg: ASbGnctTpxb7gowsMh6FKHtz1C68hJKntmCzwccgJM/+VWN3+Qei9GrMWiLZ1atcv5n
+ W8oKxlBLm2FMq8dsvl7wHZDaidLPOrG6jHzwFJCfjDtsulOJ9GltwRDsPQOgDRRZvQo4P2Ily6h
+ sRpF18Snl4O9UDf/n2ofMD8yDCf7jeFfVJQwHNCdaAQL2TX8yloYRds4rxcnTrz7PfD3TPvZf2/
+ FE9a3CFn/dTkCDVG50M1QTxeK1lt8F7UL4tkKW9SNuRdTXSKGthOqEd81om0+IIHHebY+gEtmQV
+ P/OrurRIYCvFHMb0Qy886cOfoj7JBYRWqAZHlkrY0gRKul63YHOYa5JTV+Jl5RH/BSXvj1/UGHL
+ c1TzGttaeOx5cb/VV+QRB4YBdFe6sVMGEpjNGFO3DGzCNm24C3BqUNHDRJo8MVfaClNBMZ899X3
+ gTCyOO9waTxpGYiCXAmzvTj3hp
+X-Google-Smtp-Source: AGHT+IFAbbyQhephY+AI/cqoiVmNsBG/fPVAb6kdOEXVVnWOQfxDiV/20VWcE/IFvlGD21yeGrFzgA==
+X-Received: by 2002:a05:6214:21c4:b0:880:5636:6241 with SMTP id
+ 6a1803df08f44-88238769402mr175766236d6.65.1762874394765; 
+ Tue, 11 Nov 2025 07:19:54 -0800 (PST)
+Received: from ?IPV6:2620:10d:c0a8:11d1::1065? ([2620:10d:c091:400::5:ddc])
+ by smtp.gmail.com with ESMTPSA id
+ 6a1803df08f44-88238b4c3c0sm72793516d6.33.2025.11.11.07.19.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 11 Nov 2025 07:19:54 -0800 (PST)
+Message-ID: <9fed6ab9-e748-4a78-b45b-5e6b3cc58006@gmail.com>
+Date: Tue, 11 Nov 2025 10:19:51 -0500
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251110145831.15872b86@kernel.org>
+User-Agent: Mozilla Thunderbird
+To: Saeed Mahameed <saeed@kernel.org>, Jakub Kicinski <kuba@kernel.org>
+Cc: Jiri Pirko <jiri@resnulli.us>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+ Simon Horman <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
+ Srujana Challa <schalla@marvell.com>, Bharat Bhushan
+ <bbhushan2@marvell.com>, Herbert Xu <herbert@gondor.apana.org.au>,
+ Brett Creeley <brett.creeley@amd.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ Michael Chan <michael.chan@broadcom.com>,
+ Pavan Chebbi <pavan.chebbi@broadcom.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Sunil Goutham <sgoutham@marvell.com>, Linu Cherian <lcherian@marvell.com>,
+ Geetha sowjanya <gakula@marvell.com>, Jerin Jacob <jerinj@marvell.com>,
+ hariprasad <hkelam@marvell.com>, Subbaraya Sundeep <sbhatta@marvell.com>,
+ Tariq Toukan <tariqt@nvidia.com>, Saeed Mahameed <saeedm@nvidia.com>,
+ Leon Romanovsky <leon@kernel.org>, Mark Bloch <mbloch@nvidia.com>,
+ Ido Schimmel <idosch@nvidia.com>, Petr Machata <petrm@nvidia.com>,
+ Manish Chopra <manishc@marvell.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Siddharth Vadapalli <s-vadapalli@ti.com>, Roger Quadros <rogerq@kernel.org>,
+ Loic Poulain <loic.poulain@oss.qualcomm.com>,
+ Sergey Ryazanov <ryazanov.s.a@gmail.com>,
+ Johannes Berg <johannes@sipsolutions.net>,
+ Vladimir Oltean <olteanv@gmail.com>,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Dave Ertman <david.m.ertman@intel.com>,
+ Vlad Dumitrescu <vdumitrescu@nvidia.com>,
+ "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
+ Alexander Sverdlin <alexander.sverdlin@gmail.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, netdev@vger.kernel.org,
+ linux-doc@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ linux-rdma@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, linux-omap@vger.kernel.org
+References: <20251107204347.4060542-1-daniel.zahka@gmail.com>
+ <20251107204347.4060542-3-daniel.zahka@gmail.com> <aQ7f1T1ZFUKRLQRh@x130>
+ <jhmdihtp63rblcjiy2pibhnz2sikvbm6bhnkclq3l2ndxgbqbb@e3t23x2x2r46>
+ <20251110154643.66d15800@kernel.org> <aRKs6jXqSvC3G_R0@x130>
+Content-Language: en-US
+From: Daniel Zahka <daniel.zahka@gmail.com>
+In-Reply-To: <aRKs6jXqSvC3G_R0@x130>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1762872020; x=1763476820;
- darn=lists.osuosl.org; 
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=qp5l9CleBH+90IDb02IwKlf8FOy6cwp5KCYKsO335Ps=;
- b=uL5LG8F9FFoog8NJBIXtnHVRZ4RtSv3GxmTGQ+b1DXoPpKiBvfqidjmFrXAg15wM1l
- Q9A/Hw+PN9GMKS7TGDSfUHvTDG/a7XsdA7DHMI1PiQbV+nAIapWnwiDKrI0PTLxuH6ff
- QG7DiOvPPHWZbjJYer/T9Tm9eHZX6qtw4QLJDPhn0YMyc7cwc2lCb+F6LDyxfybcd7Ri
- uacqtvmd6cD5Ah7K+4akMOVX3xKWNhzRcGpiqwmOcnmhbnFojCdA0l1TRYHZyEiJ3PBA
- hgB/wOcMXrJv3WVuIGWW2Qd99kBV4DNiO7do9m+cZwdLmLIGL2MtsUTfAFce1+j4HHA/
- aSWw==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=resnulli.us
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=resnulli-us.20230601.gappssmtp.com
- header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=uL5LG8F9
+ d=gmail.com; s=20230601; t=1762874395; x=1763479195; darn=lists.osuosl.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=A5SVOaFDlCV2uNNJy3v3HZSAyck/afp0AOlD6vgrWKk=;
+ b=QT1akEIDhW6eodh+XYI3sF5ezZ4I3536Mkzw+MpApBaj5R+7r68KVLPaJ6rYcApmJ5
+ iV4J+rkn5OgrAkcpVnAEr8JuCC3KYbUuUwYTV8eeSpGSEol2yAIgAa+2GD6PG+puyDky
+ K+1jKQMXPTO1Y3CzMuugrnfLXDNimGtyIAlbhpDFZ23HA61f52o9RLChpLOn+RlGXxl8
+ N8VegtzD0adKbZVqaonLjgq/jiSAdDF5PxseuwD0V0NJyZf35BG6OyNYTXc9LcB4d77E
+ vaR8dZRTGfO8zvD+e0rRqY+cps82BD0CpjmYxCLO09aDv/deR509dJXmbTUG3Py60Oll
+ mIWg==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20230601 header.b=QT1akEID
 Subject: Re: [Intel-wired-lan] [PATCH net-next v3 2/2] net/mlx5: implement
  swp_l4_csum_mode via devlink params
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -169,30 +169,70 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Mon, Nov 10, 2025 at 11:58:31PM +0100, kuba@kernel.org wrote:
->On Mon, 10 Nov 2025 08:05:57 -0500 Daniel Zahka wrote:
->> On 11/9/25 5:39 AM, Jiri Pirko wrote:
->> > Daniel, I asked twice if this could be a non-driver param. Jakub asked
->> > for clearer definition of this know in that context.
->> >
->> > Not sure why you are ignoring this :/
->> >  
->> 
->> My apologies. I think there was a miscommunication. I assumed Jakub's 
->> question was directed towards you. I have no objection to making it a 
->> generic param; I will do so in v4. It sounded to me like Jakub was 
->> wanting more information on what exactly this setting does beyond what I 
->> was able to provide in the commit message and mlx5 devlink 
->> documentation. My understanding is that this setting pertains to tx 
->> csums and how the device expects the driver to prepare partial csums 
->> when doing tx cso. I don't really know more than that. Especially not 
->> something like what the FW's role in implementing this is.
->
->Right, per To: field of my email I as asking Jiri for clarifications.
->
->Since we struggle to understand the semantics nack on making this
->generic. Chances are whoever reuses the "generic" param will have a
->different interpretation of its meaning, so what's the point of making
->it generic.
 
-Okay, I don't mind that much.
+
+On 11/10/25 10:26 PM, Saeed Mahameed wrote:
+> On 10 Nov 15:46, Jakub Kicinski wrote:
+>> On Sun, 9 Nov 2025 11:46:37 +0100 Jiri Pirko wrote:
+>>> >So, I checked a couple of flows internally, and it seems this allows
+>>> >some flexibility in the FW to decide later on which mode to pick,
+>>> >based on other parameters, which practically means
+>>> >"user has no preference on this param". Driver can only find out
+>>> >after boot, when it reads the runtime capabilities, but still
+>>> >this is a bug, by the time the driver reads this (in devlink), the
+>>> >default value should've already been determined by FW, so FW must
+>>> >return the actual runtime value. Which can only be one of the 
+>>> following
+>>>
+>>> I don't think it is correct to expose the "default" as a value.
+>>>
+>>> On read, user should see the configured value, either "full_csum" or
+>>> "l4_only". Reporting "default" to the user does not make any sense.
+>>> On write, user should pass either "full_csum" or "l4_only". Why we 
+>>> would
+>>> ever want to pass "default"?
+>>
+>> FWIW I agree that this feels a bit odd. Should the default be a flag
+>> attr? On get flag being present means the value is the FW default (no
+>> override present). On set passing the flag means user wants to reset
+>> to FW default (remove override)?
+>>
+>>> Regardless this patch, since this is param to be reflected on fw reboot
+>>> (permanent cmode), I think it would be nice to expose indication if
+>>> param value passed to user currently affects the fw, or if it is going
+>>> to be applied after fw reboot. Perhaps a simple bool attr would do?
+>>
+>> IIUC we're basically talking about user having no information that
+>> the update is pending? Could this be done by the core? Core can do
+>> a ->get prior to calling ->set and if the ->set succeeds and
+>> cmode != runtime record that the update is pending?
+>>
+>
+> Could work if on GET driver reads 'current' value from FW, then it should
+> be simpler if GET != SET then 'pending', one problem though is if SET was
+> done by external tool or value wasn't applied after reboot, then we loose
+> that information, but do we care? I think we shouldn't.
+>
+>> That feels very separate from the series tho, there are 3 permanent
+>> params in mlx5, already. Is there something that makes this one special?
+>
+> In mlx5 they all have the same behavior, devlink sets 'next' value, 
+> devlink reads 'next' value. The only special thing about the new param
+> is that it has a 'device_default' value and when you read that from 
+> 'next' it will always show 'device_default' as the actual value is only
+> known at run time ,e.g. 'next boot'.
+>
+> I think the only valid solution for permanent and drv_init params is to
+> have 'next' and 'current' values reported by driver on read. Or maybe 
+> go just with  'set' != 'get' then 'pending' as discussed above ?
+>
+
+The driver reporting 'current' and 'next' makes the most sense to me. 
+'pending' would just be implied then. The 'set' != 'get' then 'pending' 
+approach would not work on my multi host CX7 system, where rebooting the 
+hosts individually does not trigger a fw reset.
+
+To be clear, are we willing to go forward with treating swp_l4_csum_mode 
+like other permanent params in nv_param.c in this series, and then defer 
+the 'pending' solution to another series?
+
