@@ -1,115 +1,218 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3791AC50B85
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Nov 2025 07:34:51 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 935498082D;
-	Wed, 12 Nov 2025 06:34:49 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id gCi2jrGwcBi8; Wed, 12 Nov 2025 06:34:46 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 306ED807D7
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1762929286;
-	bh=2wFG5TUZroqV9guEWcsY6CANrTKmDzDH7O5mg6iCcQI=;
-	h=From:Date:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=A/CeV/xbZnEyK387HzAdr15SkZKsQl8MgLQZJUZtm+whLDyhJ83Z3S+2VGDApZitj
-	 +jNSKOufR9ErF/g6hhOV23AqtHD3tGk8q2bnb693SnUow0cVw+MhcRvD9762dvFu6a
-	 /o+KisXnpKwQ+K60DuHDL05ZlLA/2pZk4lg0wdTCMQp4TRg3OuQZsG14mLJjjBhV46
-	 1pNTLug/Zxrq6j+FI4+f5/GxZmtAmAczHAVk7WzkMUWgNme1FZ/PjUv7F/yV9ZBYvF
-	 K6/qe2JcZJviy69nyiQu7VqAzZTOOhJoQtH4mtDpkwJcSFLOtLhsUu6sUxxYbNDEL/
-	 gR22ynUn+bX/w==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 306ED807D7;
-	Wed, 12 Nov 2025 06:34:46 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id C787F230
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Nov 2025 06:34:44 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B23FDC50EF1
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 12 Nov 2025 08:29:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C3F6260A3B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Nov 2025 06:34:44 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 37CA060D89;
+	Wed, 12 Nov 2025 07:29:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 34tJ6Hqcj4jZ for <intel-wired-lan@lists.osuosl.org>;
- Wed, 12 Nov 2025 06:34:43 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a01:4f8:1c1b:7813::1; helo=bkemail.birger-koblitz.de;
- envelope-from=mail@birger-koblitz.de; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1BAE060809
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1BAE060809
-Received: from bkemail.birger-koblitz.de (bkemail.birger-koblitz.de
- [IPv6:2a01:4f8:1c1b:7813::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1BAE060809
- for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Nov 2025 06:34:42 +0000 (UTC)
-Received: by bkemail.birger-koblitz.de (Postfix, from userid 109)
- id DFB89493CD; Wed, 12 Nov 2025 06:34:38 +0000 (UTC)
-Received: from AMDDesktop.lan (unknown
- [IPv6:2a00:6020:47a3:e800:94d3:d213:724a:4e07])
- by bkemail.birger-koblitz.de (Postfix) with ESMTPSA id 83F5F493BF;
- Wed, 12 Nov 2025 06:34:37 +0000 (UTC)
-From: Birger Koblitz <mail@birger-koblitz.de>
-Date: Wed, 12 Nov 2025 07:34:34 +0100
+ id 6NNLtMlle5zx; Wed, 12 Nov 2025 07:29:28 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A0E5260D84
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1762932568;
+	bh=xSXJ1J1/sLG7OehqF7q5KjjN3+okBQO7lgZ669+GB54=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=avvOe4UJEBzky45SA4hCXgtbSibScTLpMSegFl+Flv62nJETmwEURMe8CgvVe5i6k
+	 WS+ZzEqaEAkkcMxeK4WJVUnV2u/gtpHJjrbzBAUuajmYUTDPe5u1Xig6ZM6rjCTTMr
+	 AW9WY0UWEiaWOlua5dMsSE83mVugTgla/dl7J4JruWWoB1s/7XckvGjMJi+xQMT57g
+	 VT7KDdK+R7G3bX+c96jCd9GgREtGEHUJ0WL8Dxl2JOALYkC2AhcajL9g9fmaaERMwg
+	 GeKkhw+Tx8pfyvWmtVqfykyWLXl+72QV/JTJeZUxYFQoGenTniTJvRYEb1zSmIBImv
+	 nD0+Py974y84A==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id A0E5260D84;
+	Wed, 12 Nov 2025 07:29:28 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id B1DBA230
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Nov 2025 07:29:26 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id A771A80656
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Nov 2025 07:29:26 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 61pfRo6Itt6J for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 12 Nov 2025 07:29:26 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
+ helo=mgamail.intel.com; envelope-from=sx.rinitha@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8148780322
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8148780322
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8148780322
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 12 Nov 2025 07:29:25 +0000 (UTC)
+X-CSE-ConnectionGUID: EqJknpVtSIGAU/r9zGeNuQ==
+X-CSE-MsgGUID: k++OljYISp+Fw+5xPvoyJA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11610"; a="63996621"
+X-IronPort-AV: E=Sophos;i="6.19,298,1754982000"; d="scan'208";a="63996621"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+ by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Nov 2025 23:29:24 -0800
+X-CSE-ConnectionGUID: lVjQGjzORvmmmC+PKMljNw==
+X-CSE-MsgGUID: IjJfRqLvSzenFcTjePsmuw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.19,298,1754982000"; d="scan'208";a="193261035"
+Received: from fmsmsx903.amr.corp.intel.com ([10.18.126.92])
+ by orviesa003.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Nov 2025 23:29:25 -0800
+Received: from FMSMSX903.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.27; Tue, 11 Nov 2025 23:29:23 -0800
+Received: from fmsedg903.ED.cps.intel.com (10.1.192.145) by
+ FMSMSX903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.27 via Frontend Transport; Tue, 11 Nov 2025 23:29:23 -0800
+Received: from CH4PR04CU002.outbound.protection.outlook.com (40.107.201.60) by
+ edgegateway.intel.com (192.55.55.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.27; Tue, 11 Nov 2025 23:29:23 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=WIwG7cRx2dw40xiW5q3812xe3i4nYaPBKvT06HDt9xUDuLjdsP1TVt0FGTH7MXO2f2bYtushpH2ZGH1tlipo4YgTBtOrPJ7Vi2e4k2Bk/zCR0EHKUYqaXXYRHuebDOkMu2N70sMPjQE5hvmsaT6mvXYzXr/f9V5vtIReDDwsrBXIdQ6F0uQ5eymjPw/bfjcNwaNLNktEL/bcP+uQ8uDCeQTkhRZvlz4VHUdR3aU9r8amA3IZ1VeAo7QcmRk9NA5qBnou/Db3wDvTqyQBUKFs+LGnyF1SdhH913XUgESpWs3li/G0HM6T9dq1SAY/s8QFcjUiPyEJGT/F4VXDOZjXYA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=xSXJ1J1/sLG7OehqF7q5KjjN3+okBQO7lgZ669+GB54=;
+ b=h+CU5qW8VQipCzscRVXBH8kdRVjlEFu/JPor+W2ED3TjX60JRbjIL+GJlkcvw4zsZkrBNk1X6fevKxakbtHz+izsMb6T2ELwD+BdMRz8q1508JQz7C0k/l5sEYNMmI4tv2hnZ8gEiH9PWh9tJC6s1P/ykYs5qtigiUYQe9T9G1k2D+MwE+fC+P+/m/hF0LkW8vqzTPwFfWZ3sC3EEKNCWZ1xbVmnl3itmJ4CBzhnzU9A+jhqo0ug2Gxz/XTyrBmK1lzny2Z9Iwo3XBlCX8xQ0tEk59M2bqgpJQOZwFeZe+LcZjTb3mUEOjpDmxroMo2XQiujeBirQ/G6Xwyt7FsONA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from IA1PR11MB6241.namprd11.prod.outlook.com (2603:10b6:208:3e9::5)
+ by CH3PR11MB8096.namprd11.prod.outlook.com (2603:10b6:610:155::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9320.16; Wed, 12 Nov
+ 2025 07:29:15 +0000
+Received: from IA1PR11MB6241.namprd11.prod.outlook.com
+ ([fe80::7ac8:884c:5d56:9919]) by IA1PR11MB6241.namprd11.prod.outlook.com
+ ([fe80::7ac8:884c:5d56:9919%4]) with mapi id 15.20.9320.013; Wed, 12 Nov 2025
+ 07:29:15 +0000
+From: "Rinitha, SX" <sx.rinitha@intel.com>
+To: "Nitka, Grzegorz" <grzegorz.nitka@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+CC: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, Simon Horman
+ <horms@kernel.org>, Paul Menzel <pmenzel@molgen.mpg.de>
+Thread-Topic: [Intel-wired-lan] [PATCH v2 iwl-next] ice: unify PHY FW loading
+ status handler for E800 devices
+Thread-Index: AQHcP0JKLWbT1M1bE0ehSDR2wysoWLTuzQow
+Date: Wed, 12 Nov 2025 07:29:15 +0000
+Message-ID: <IA1PR11MB62410706491A19216C8823BC8BCCA@IA1PR11MB6241.namprd11.prod.outlook.com>
+References: <20251017084228.4140603-1-grzegorz.nitka@intel.com>
+In-Reply-To: <20251017084228.4140603-1-grzegorz.nitka@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: IA1PR11MB6241:EE_|CH3PR11MB8096:EE_
+x-ms-office365-filtering-correlation-id: cb8fe2e4-3fe8-4eb2-71bd-08de21bd2f0a
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|366016|1800799024|376014|38070700021|7053199007; 
+x-microsoft-antispam-message-info: =?us-ascii?Q?Y1TMqSSn3JiIOxJv2I0/UubbaZQS2++kGdcJcCw9ZO9HFbYUobyf+G2oyKTn?=
+ =?us-ascii?Q?f1SxamrNh2CZaJbqQk4Cz9JW+ZJhg6PYN65/nCJUHD3FfoIHEGfCKDdwCNYX?=
+ =?us-ascii?Q?iDAor/lVmnKXGkNQ6muPPsnq9zesH6bT0Y5S3Hsnslw9/WaY3A34Dr983znc?=
+ =?us-ascii?Q?xTwxTWbG7GSa19dOlj5IPEYCfC9XCvN+LSDzBILnKYbiIbMkQcQz6ieh8DXT?=
+ =?us-ascii?Q?UjgfxmiCTfCgtsvFI6AGF5v87fSSLoVJs7s/M80hQ0g6Ydsqth07RWnDCUaU?=
+ =?us-ascii?Q?9mhAbhPCD31vFwltRvbG1cDlC6qHFl1Q84emWzVaSkC0Cbnq/f+hIOSp31sV?=
+ =?us-ascii?Q?lRV4fxtD7jjbI8f90VbSGemb4GVzjcg0etmIPxfGKMjTO0JlHJjkjNSQD2jO?=
+ =?us-ascii?Q?OARApGoyF5l5+67f1xpdnmCGCSNHsOyNnNoeAH+Ul8C0yIVHPkpiJR0LYJJI?=
+ =?us-ascii?Q?lGeGsp6dYaNLOKkqvk92S2rxiv589MREqrxG8NXtGG/VVpX9gbax2C4MlsHd?=
+ =?us-ascii?Q?84xySwCTcTheVw/vydGmwPg/ucrhaDC2XDw3rF8gD1t1CWCUKoowE0sZK6I+?=
+ =?us-ascii?Q?4NHqWxSR8SdWKFcxN14q1+NBuBs819b5oyIqwdZVGRsaqoTvO/er02NXQlBs?=
+ =?us-ascii?Q?WHazGpEV31AEC+FqZx/yeVZ7e5HHOPfqb3W2+O8+wXs4Mws21qfT3LxmzFpm?=
+ =?us-ascii?Q?cCzzSHssOtiPurNXHzrZTK1m3Mdn2EmaD+gA/331vPRxSBr5CjUH7obMyNIz?=
+ =?us-ascii?Q?SLRd89xhRRxwu5ZOo3dh8xF1wHvmkVVkhCH8iyIApLS81WY/geHuqEWDkXiG?=
+ =?us-ascii?Q?3i8Kz5C2ZbTLfy0VsNoOBWGMI0JCdLYGv2HfiJFnZd/9v6gFib+HlmHmyyhG?=
+ =?us-ascii?Q?XC2SjEPqzobAxa7L6Hr4p8MxHBd8pKZIfYiAnWMCYd9QSaZ0/P1iImU6Ter4?=
+ =?us-ascii?Q?0JLbuYrSzhmSTMCpEfLDtwz63R0j/sKAzHJGWDA0YCRFSeREBoPgxWXqwCqW?=
+ =?us-ascii?Q?KnfYbbHKPz+jo/hTSpdtEHKl6U+uBxDYGxXkUAg+FUNPrfiDgT09VaQKOy9v?=
+ =?us-ascii?Q?1qtL85Ed/hSw/DgQYBoxsoZ+cTc69YF6aQQPq60prnI2u7K1MqiU+4HzpCjk?=
+ =?us-ascii?Q?x73oXyWaMpX03kbjOgZGI9y6chb4pofQoLlP/4XXkHUHhxLkYCrrqAXXVhy2?=
+ =?us-ascii?Q?oM2ADWA/sv6Gi3u2pSmVYTEe8aFJQhjH6XNq0jLu1Gz5OQ4lmppyBlNU6E+M?=
+ =?us-ascii?Q?UFI23vHG4hLh9b3tamLPBwXwId5Z04l8ZX0ZRlaNawtQlvuxJeaIiNlKNo2C?=
+ =?us-ascii?Q?1Iiv1b1B6/Brm3OJkRKj8RWlDbHyE4UIm8WL9DZFurPHiHM3QeiE24bZbP09?=
+ =?us-ascii?Q?2aWr5tYekaDHhp6r0f1yRgBuP/yNkETm73KyMQy0pNqEfI9lS4wOgCIYzZds?=
+ =?us-ascii?Q?0kOLczuKfWeslltpa6/3712IW99VIxa9jkpMu5soyPPjvNPBVuLqh5VKFiJh?=
+ =?us-ascii?Q?EcHgdPcOwHNfV5QXoUHArdsBlKdCZYbUbS+L?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:IA1PR11MB6241.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(1800799024)(376014)(38070700021)(7053199007); DIR:OUT;
+ SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?ABu+d/z66pYM7vm38tTbMbxeihY9o0TaDEOPYUfJTen+lre/h25/ro8SSORv?=
+ =?us-ascii?Q?tk8Lp7ktmqoweRPtlwN2QhcaGDVtGdvK5EqF/GM68gdMz9G58lUcJOljCtAe?=
+ =?us-ascii?Q?AWhi+DP6aEe8NsdJ33v793V2GxuNppEY7FAr4vJd2nXEqNERANtB1Hc3AcFL?=
+ =?us-ascii?Q?v++1YhSCIbpIlvMpJ/D9eteq30Ws3Td5KKG2ILjMtYDXa2XLAOnjEo/JZAYn?=
+ =?us-ascii?Q?KZ35M1Q3xQr5mLLdyYevRHR6rHAvGQr+0hqfBYAxVJaDXvQQFp6iMrlN3JEG?=
+ =?us-ascii?Q?+/Wklq8+PZIpNEQ2OGrTgEDsk59kQ/2U8zKHSteOKyuFAbsxObD7aH1jIFac?=
+ =?us-ascii?Q?4IRUzgSiwTjkoqFvaXfzkmo3maxKA8zKFOiecmc7TVmCce8+ynQFp6viH94f?=
+ =?us-ascii?Q?0SzbNtlchj8PtwtUeioeS9ORu3EKNEBnLUHY7JJTUfFTq8xgVLOvYv2eH6Yl?=
+ =?us-ascii?Q?53ZMG/AAFUSp4GF6l9oami/jgXwIstFjnJWjPNTKQWK32yzzmK8ySH/H7qUs?=
+ =?us-ascii?Q?SgTAmMgQc/nb2RAq2mUgUOpbLmX7Hup8YjiNZfHPdLg+11Cx7OImc7s/STme?=
+ =?us-ascii?Q?eBkVRVL9YDBMdTlbFJKH6TLWyQm+iCroYK8cq/r6C8idu0yA8J83NH22vF6a?=
+ =?us-ascii?Q?86ZbGXY+Qm6h18/JiA75yeCnkURhweq/CcC8Uj3OGWLDzkfNPn8f6yJQdsbc?=
+ =?us-ascii?Q?Hwe1qcW1rhnjihL5E86SPKU+JQI67OFkkS5pHQddGxSFNX9gaxAgVbEvmhAx?=
+ =?us-ascii?Q?OFq1QqFacPkmMZHLK7sskSjrl3VrXEYMljAyQ1Tu5BIg0f20mKBOymLoX3YI?=
+ =?us-ascii?Q?02i16URoghNeV8K2/+zvcgClEGD7NLrbWsm/thS43iC5aP23zkITm56oMFMw?=
+ =?us-ascii?Q?51ohcZ7b+BJiF9NjLCPROHDtem3sctupkgmHj7HowXmQrf83laRaM5CVQjrK?=
+ =?us-ascii?Q?/L+Cz5hrq99LvHCLMKdBjSkmPImCHTd4YyX2+V8wCiq5bcEcbffB1CfDqeTV?=
+ =?us-ascii?Q?c2eg+MHH4a6+kM3wO1yACqGVPBe1f7d7EYiNzUzcaU4IBVFnUlOAw028YGn1?=
+ =?us-ascii?Q?r2j/bZjEapCld4bd+VgfdmFLSuBiHqR60cWw0dar5ZXZ0YdRA1V+Kd7whOUy?=
+ =?us-ascii?Q?2zgJBGx23H1hD3AzJJjF8L19Z+BeTnueD55XoI5qjtQu/XsDEWNHrhFZNzJg?=
+ =?us-ascii?Q?6ee91BJJUezHC8QL9WT8KqzeGoQbet0j6TTxjbgJC1JLnUEHgTS8WGzb1Gyk?=
+ =?us-ascii?Q?mO3OWs6iJ8BAE7nypDbtfxNWZG33eW+1/dQW43utKBs8D4x6vE3v9660zlk1?=
+ =?us-ascii?Q?+mc8r5XyKQTS8kS8nRxof/wLMBy3IJXXTFPCJ0WcTvVUTrxgdw0VWYJQiBOV?=
+ =?us-ascii?Q?OyNAwW8hxS87y8TtOWuc4phYAtxz3ZEWF8sAQ5e4tmX9CUp+smfuRjUKnp91?=
+ =?us-ascii?Q?mC6sMORAGo2N5CXOHkr0qEFJbeuxORfLz2r6QBbDogUKODZeRJHd74K7rl1u?=
+ =?us-ascii?Q?u40OhmJDQr1WQkldtzH33mlQGjdCNtKR68KpHRrw+5bA9VUKboOAzM8les0E?=
+ =?us-ascii?Q?LNBRk6C0EfduASKHpsHNbQWSrdAVF0r3gPC9tXcY?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20251112-10gbx-v5-1-12cab4060bc8@birger-koblitz.de>
-X-B4-Tracking: v=1; b=H4sIAHkqFGkC/3WOyw6CMBBFf8V0bU2ntFhc+R/GRR8DNhoxhRCU8
- O8ORBIWuLw3c87cgTWYIjbstBtYwi42sX5S0Psd8zf7rJDHQJlJITUIkBxE5XpunTLSa4SgFaP
- bV8Iy9rPncqV8i01bp/es7WBqF0P2M3TAgTSFKXJbZkGbs4upwsTvtXvE9nMIyCZTJ9e0Wmgaw
- gsjvJYKAPD4j842aRrBtfDBmlweofj7W63pfKFJw4X1VLtS59Zv0eM4fgHdSVtvXAEAAA==
-X-Change-ID: 20251012-10gbx-ab482c5e1d54
-To: Tony Nguyen <anthony.l.nguyen@intel.com>, 
- Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, Birger Koblitz <mail@birger-koblitz.de>, 
- Andrew Lunn <andrew@lunn.ch>, Paul Menzel <pmenzel@molgen.mpg.de>, 
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>, 
- Rinitha S <sx.rinitha@intel.com>
-X-Mailer: b4 0.14.2
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: IA1PR11MB6241.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: cb8fe2e4-3fe8-4eb2-71bd-08de21bd2f0a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Nov 2025 07:29:15.4017 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: jJl/QPubwnP5M7Jxkdkz93IfppMjXW2C2Egl4NwAMm3eQAF2dJ2K2lP5rDhs9kf4X3Ud59BWeTiBN/PVJNzHlQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR11MB8096
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=birger-koblitz.de; 
- s=default; t=1762929278;
- bh=MR+W2xs0MEU9a8GMC7b+h4/FrmDMwMIKo6V4o6PhWUY=;
- h=From:Date:Subject:To:Cc:From;
- b=ZMDQjiR2XSRbV5/PlAeZDiciJY1F+it4PYNEyGaREPecxvhBPNTKyKUuSWWB0iis6
- y61R50DHMx0T79DcyS9g5G0x3R47R4EFKqX0UGJAX4kji5NOkYSsibz3h0mdig5/eG
- FijAMdZvwClHvNPrssHG3x3XpSQIbqryedu8g42fvpGHqrVHD11qMzkgC5LxgGKzHp
- AEozKHd5c2yX8Ovh4h7RrzIrFGV7KHu1/ntCHl4gyHrVvBZUQxntZwT3tt2VjxTymH
- o45uHpEEOXD4qd1o0bLsGtzLb1AdnPe669SfuV/jyfNgNQHUqauf9gbNXdJ1mFy6wU
- PHAHmZ7EXYLWA==
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=birger-koblitz.de; 
- s=default; t=1762929277;
- bh=MR+W2xs0MEU9a8GMC7b+h4/FrmDMwMIKo6V4o6PhWUY=;
- h=From:Date:Subject:To:Cc:From;
- b=xgSAa4FEPceRmV8qXMKWM7zRt7yCtxkCwLu3KO7JEZTlfFjfnN17pZIAoAhLKFsCR
- pMOUxLfl8ZQ/rFf+BvIW9A0TR4/06+SCcIhXnBKK+s1MUnPmJ0Jp8KAfM8x22VK/PZ
- UEHT7qN/whD5LyXH4Pu+11Ent3oFaaW5hdsrcm66TE3Ih7da0DJWH7cw648lfCbnrB
- B9u8X0xOqpM5NJVAEfYnP9SVMcopI+11OYci1kiZjRoHddisGBj5DdtVKTUScPRANw
- yUVTI+isFYeofC4QNa72fUcgwxvSHlDS4cop8Sr86QWM9olOZGupvSsIcLb0+3/kDL
- YwGrw5/OhcoIQ==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=birger-koblitz.de
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key, unprotected) header.d=birger-koblitz.de
- header.i=@birger-koblitz.de header.a=rsa-sha256 header.s=default
- header.b=ZMDQjiR2; 
- dkim=pass (2048-bit key) header.d=birger-koblitz.de
- header.i=@birger-koblitz.de header.a=rsa-sha256 header.s=default
- header.b=xgSAa4FE
-Subject: [Intel-wired-lan] [PATCH net-next v5] ixgbe: Add 10G-BX support
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1762932565; x=1794468565;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=xSXJ1J1/sLG7OehqF7q5KjjN3+okBQO7lgZ669+GB54=;
+ b=E3UxKJ84i8cWvkJgFY5eMNMLVmtgmvNPSB5JDLnmTJh3S4EeJO6JBvJq
+ vucfSQFmiKEA/uUA8f55FQXl7ZUXi8UHOzbGgPxsfEstgqqckXtC24jr4
+ ZO4XDKq2JMzxStDEe2NUkjmUrUPtSrLXHKF6aUyJ2q5g5pp3PC7w3M1/5
+ wkejdegyeiMgNOTx8wz0/qJYAoU38Pb6uDPXHz905g9nRE8/KLK1bzrTU
+ Qlwepi+7dEFZtyUGMAcZkNuqwhG2qodvk/RQ3MYudKZCBCO+X8/+skLdr
+ 4sDENBwSUdVBJLIzxKnVXXaTNOVndAqruoqMwMT61VAQ+NiSVE0uoc28x
+ g==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=E3UxKJ84
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-next] ice: unify PHY FW loading
+ status handler for E800 devices
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -125,229 +228,38 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add support for 10G-BX modules, i.e. 10GBit Ethernet over a single strand
-Single-Mode fiber.
-The initialization of a 10G-BX SFP+ is the same as for a 10G SX/LX module,
-and is identified according to SFF-8472 table 5-3, footnote 3 by the
-10G Ethernet Compliance Codes field being empty, the Nominal Bit
-Rate being compatible with 12.5GBit, and the module being a fiber module
-with a Single Mode fiber link length.
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of G=
+rzegorz Nitka
+> Sent: 17 October 2025 14:12
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>; netdev@vger.ker=
+nel.org; Simon Horman <horms@kernel.org>; Paul Menzel <pmenzel@molgen.mpg.d=
+e>
+> Subject: [Intel-wired-lan] [PATCH v2 iwl-next] ice: unify PHY FW loading =
+status handler for E800 devices
+>
+> Unify handling of PHY firmware load delays across all E800 family devices=
+. There is an existing mechanism to poll GL_MNG_FWSM_FW_LOADING_M bit of GL=
+_MNG_FWSM register in order to verify whether PHY FW loading completed or n=
+ot. Previously, this logic was limited to E827 variants only.
+>
+> Also, inform a user of possible delay in initialization process, by dumpi=
+ng informational message in dmesg log ("Link initialization is blocked by P=
+HY FW initialization. Link initialization will continue after PHY FW initia=
+lization completes.").
+>
+> Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
+> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> Reviewed-by: Simon Horman <horms@kernel.org>
+> Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+> ---
+> v1->v2:
+> - rebased
+> - pasted dmesg message into the commit message
+> ---
+> drivers/net/ethernet/intel/ice/ice_common.c | 81 ++++++---------------
+> 1 file changed, 24 insertions(+), 57 deletions(-)
+>
 
-This was tested using a Lightron WSPXG-HS3LC-IEA 1270/1330nm 10km
-transceiver:
-$ sudo ethtool -m enp1s0f1
-   Identifier                          : 0x03 (SFP)
-   Extended identifier                 : 0x04 (GBIC/SFP defined by 2-wire interface ID)
-   Connector                           : 0x07 (LC)
-   Transceiver codes                   : 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-   Encoding                            : 0x01 (8B/10B)
-   BR Nominal                          : 10300MBd
-   Rate identifier                     : 0x00 (unspecified)
-   Length (SMF)                        : 10km
-   Length (OM2)                        : 0m
-   Length (OM1)                        : 0m
-   Length (Copper or Active cable)     : 0m
-   Length (OM3)                        : 0m
-   Laser wavelength                    : 1330nm
-   Vendor name                         : Lightron Inc.
-   Vendor OUI                          : 00:13:c5
-   Vendor PN                           : WSPXG-HS3LC-IEA
-   Vendor rev                          : 0000
-   Option values                       : 0x00 0x1a
-   Option                              : TX_DISABLE implemented
-   BR margin max                       : 0%
-   BR margin min                       : 0%
-   Vendor SN                           : S142228617
-   Date code                           : 140611
-   Optical diagnostics support         : Yes
-
-Signed-off-by: Birger Koblitz <mail@birger-koblitz.de>
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
-Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Tested-by: Rinitha S <sx.rinitha@intel.com>
----
-Changes in v5:
-  Added "Tested-by" 
-- Link to v4: https://lore.kernel.org/r/20251016-10gbx-v4-1-0ac202bf56ac@birger-koblitz.de
-
-Changes in v4:
-  Added "Reviewed-bys".
-  Slight rewording of commit message.
-- Link to v3: https://lore.kernel.org/r/20251014-10gbx-v3-1-50cda8627198@birger-koblitz.de
-
-Changes in v3:
-  Added "Reviewed-by". There also was a possible mailserver DKIM misconfiguration
-  that may have prevented recipients to recieve the previous mails 
-- Link to v2: https://lore.kernel.org/r/20251014-10gbx-v2-1-980c524111e7@birger-koblitz.de
-
-Changes in v2:
-  Allow also modules with only Byte 15 (100m SM link length) set to
-  be identified as BX
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c   |  7 ++++
- drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c |  2 ++
- drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c     | 43 +++++++++++++++++++++---
- drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h     |  2 ++
- drivers/net/ethernet/intel/ixgbe/ixgbe_type.h    |  2 ++
- 5 files changed, 51 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
-index d5b1b974b4a33e7dd51b7cfe5ea211ff038a36f0..892a73a4bc6b0bb1c976ca95bf874059b987054f 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
-@@ -342,6 +342,13 @@ static int ixgbe_get_link_capabilities_82599(struct ixgbe_hw *hw,
- 		return 0;
- 	}
- 
-+	if (hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core0 ||
-+	    hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core1) {
-+		*speed = IXGBE_LINK_SPEED_10GB_FULL;
-+		*autoneg = false;
-+		return 0;
-+	}
-+
- 	/*
- 	 * Determine link capabilities based on the stored value of AUTOC,
- 	 * which represents EEPROM defaults.  If AUTOC value has not been
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-index 2d660e9edb80af8fc834e097703dfd6a82b8c45b..76edf02bc47e5dd24bb0936f730f036181f6dc2a 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-@@ -351,6 +351,8 @@ static int ixgbe_get_link_ksettings(struct net_device *netdev,
- 		case ixgbe_sfp_type_1g_lx_core1:
- 		case ixgbe_sfp_type_1g_bx_core0:
- 		case ixgbe_sfp_type_1g_bx_core1:
-+		case ixgbe_sfp_type_10g_bx_core0:
-+		case ixgbe_sfp_type_10g_bx_core1:
- 			ethtool_link_ksettings_add_link_mode(cmd, supported,
- 							     FIBRE);
- 			ethtool_link_ksettings_add_link_mode(cmd, advertising,
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
-index 2449e4cf2679ddf3277f4ada7619303eb618d393..ad6a1eae6042bb16e329fb817bcfcb87e9008ce8 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
-@@ -1541,6 +1541,8 @@ int ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
- 	u8 identifier = 0;
- 	u8 cable_tech = 0;
- 	u8 cable_spec = 0;
-+	u8 sm_length_km = 0;
-+	u8 sm_length_100m = 0;
- 	int status;
- 
- 	if (hw->mac.ops.get_media_type(hw) != ixgbe_media_type_fiber) {
-@@ -1678,6 +1680,31 @@ int ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
- 			else
- 				hw->phy.sfp_type =
- 					ixgbe_sfp_type_1g_bx_core1;
-+		/* Support Ethernet 10G-BX, checking the Bit Rate
-+		 * Nominal Value as per SFF-8472 to be 12.5 Gb/s (67h) and
-+		 * Single Mode fibre with at least 1km link length
-+		 */
-+		} else if ((!comp_codes_10g) && (bitrate_nominal == 0x67) &&
-+			   (!(cable_tech & IXGBE_SFF_DA_PASSIVE_CABLE)) &&
-+			   (!(cable_tech & IXGBE_SFF_DA_ACTIVE_CABLE))) {
-+			status = hw->phy.ops.read_i2c_eeprom(hw,
-+					    IXGBE_SFF_SM_LENGTH_KM,
-+					    &sm_length_km);
-+			if (status != 0)
-+				goto err_read_i2c_eeprom;
-+			status = hw->phy.ops.read_i2c_eeprom(hw,
-+					    IXGBE_SFF_SM_LENGTH_100M,
-+					    &sm_length_100m);
-+			if (status != 0)
-+				goto err_read_i2c_eeprom;
-+			if (sm_length_km > 0 || sm_length_100m >= 10) {
-+				if (hw->bus.lan_id == 0)
-+					hw->phy.sfp_type =
-+						ixgbe_sfp_type_10g_bx_core0;
-+				else
-+					hw->phy.sfp_type =
-+						ixgbe_sfp_type_10g_bx_core1;
-+			}
- 		} else {
- 			hw->phy.sfp_type = ixgbe_sfp_type_unknown;
- 		}
-@@ -1768,7 +1795,9 @@ int ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
- 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core0 ||
- 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core1 ||
- 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core0 ||
--	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core1)) {
-+	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core1 ||
-+	      hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core0 ||
-+	      hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core1)) {
- 		hw->phy.type = ixgbe_phy_sfp_unsupported;
- 		return -EOPNOTSUPP;
- 	}
-@@ -1786,7 +1815,9 @@ int ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
- 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core0 ||
- 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core1 ||
- 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core0 ||
--	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core1)) {
-+	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core1 ||
-+	      hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core0 ||
-+	      hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core1)) {
- 		/* Make sure we're a supported PHY type */
- 		if (hw->phy.type == ixgbe_phy_sfp_intel)
- 			return 0;
-@@ -2016,20 +2047,22 @@ int ixgbe_get_sfp_init_sequence_offsets(struct ixgbe_hw *hw,
- 		return -EOPNOTSUPP;
- 
- 	/*
--	 * Limiting active cables and 1G Phys must be initialized as
-+	 * Limiting active cables, 10G BX and 1G Phys must be initialized as
- 	 * SR modules
- 	 */
- 	if (sfp_type == ixgbe_sfp_type_da_act_lmt_core0 ||
- 	    sfp_type == ixgbe_sfp_type_1g_lx_core0 ||
- 	    sfp_type == ixgbe_sfp_type_1g_cu_core0 ||
- 	    sfp_type == ixgbe_sfp_type_1g_sx_core0 ||
--	    sfp_type == ixgbe_sfp_type_1g_bx_core0)
-+	    sfp_type == ixgbe_sfp_type_1g_bx_core0 ||
-+	    sfp_type == ixgbe_sfp_type_10g_bx_core0)
- 		sfp_type = ixgbe_sfp_type_srlr_core0;
- 	else if (sfp_type == ixgbe_sfp_type_da_act_lmt_core1 ||
- 		 sfp_type == ixgbe_sfp_type_1g_lx_core1 ||
- 		 sfp_type == ixgbe_sfp_type_1g_cu_core1 ||
- 		 sfp_type == ixgbe_sfp_type_1g_sx_core1 ||
--		 sfp_type == ixgbe_sfp_type_1g_bx_core1)
-+		 sfp_type == ixgbe_sfp_type_1g_bx_core1 ||
-+		 sfp_type == ixgbe_sfp_type_10g_bx_core1)
- 		sfp_type = ixgbe_sfp_type_srlr_core1;
- 
- 	/* Read offset to PHY init contents */
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h
-index 81179c60af4e0199a8b9d0fcdf34654b02eedfac..039ba4b6c120f3e824c93cb00fdd9483e7cf9cba 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h
-@@ -32,6 +32,8 @@
- #define IXGBE_SFF_QSFP_1GBE_COMP	0x86
- #define IXGBE_SFF_QSFP_CABLE_LENGTH	0x92
- #define IXGBE_SFF_QSFP_DEVICE_TECH	0x93
-+#define IXGBE_SFF_SM_LENGTH_KM		0xE
-+#define IXGBE_SFF_SM_LENGTH_100M	0xF
- 
- /* Bitmasks */
- #define IXGBE_SFF_DA_PASSIVE_CABLE		0x4
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-index b1bfeb21537acc44c31aedcb0584374e8f6ecd45..61f2ef67defddeab9ff4aa83c8f017819594996b 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-@@ -3286,6 +3286,8 @@ enum ixgbe_sfp_type {
- 	ixgbe_sfp_type_1g_lx_core1 = 14,
- 	ixgbe_sfp_type_1g_bx_core0 = 15,
- 	ixgbe_sfp_type_1g_bx_core1 = 16,
-+	ixgbe_sfp_type_10g_bx_core0 = 17,
-+	ixgbe_sfp_type_10g_bx_core1 = 18,
- 
- 	ixgbe_sfp_type_not_present = 0xFFFE,
- 	ixgbe_sfp_type_unknown = 0xFFFF
-
----
-base-commit: 67029a49db6c1f21106a1b5fcdd0ea234a6e0711
-change-id: 20251012-10gbx-ab482c5e1d54
-
-Best regards,
--- 
-Birger Koblitz <mail@birger-koblitz.de>
-
+Tested-by: Rinitha S <sx.rinitha@intel.com> (A Contingent worker at Intel)
