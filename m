@@ -1,109 +1,316 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 591F5C59289
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Nov 2025 18:30:14 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 72A35C5E35A
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Nov 2025 17:25:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2B8E880CBA;
-	Thu, 13 Nov 2025 17:29:57 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 66141611C4;
+	Fri, 14 Nov 2025 16:25:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sl3eT6k3otaT; Thu, 13 Nov 2025 17:29:56 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 3ycwhd_mglFl; Fri, 14 Nov 2025 16:25:05 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6007E80D9E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B073A611B2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1763054996;
-	bh=G6ghmzBsadObuHy7+LZDSPseOx1RIm+BPgmmTSIeQnc=;
-	h=From:To:Cc:In-Reply-To:References:Date:Subject:List-Id:
+	s=default; t=1763137505;
+	bh=8JVJ68Ci8hH+vA9bF8YiFlkwB1Lv6uIdcNwtst+8pPM=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=Dnhz/2124pUUEDAFhPMgkTVtdyiMxlVMIzH8H3PsYW9Wc1zLn+W3EhLhFHEn0xWJk
-	 8LtxpdpqYOcJec26sWsMTHh2qZOxVQV+hxVlzBmifCGIMnU0hK7fbjyhHlgbxZdAvm
-	 vw+jOHH7stE1npeN+prAtNAY0GxutThLesU1s+UYvJa0nekey1I8FzBNO9vx8X3xzI
-	 RvGlyF3p/hHIGCK9ETlE+m7t3eYo5BTvJPfAUN954YK4XgqKF9AAWQwveZQzdTtKrq
-	 qquWx+K4bwcEVi4taYB1zHV2jGZ2JCfZYsDOuuMGZaZ/tdPiQvTA7JT3wZUDT0YTIT
-	 8oIZxTY5EP9uw==
+	b=sXUlmzZgtcmFzZfr/ecLjjnWm8wPaV+/SZDOiswmUWMgU0dPzX3b/uA/DgwPKc/Gk
+	 UuhuWHv6G28N1nwKI/eEigkQageS+ouhz4ESYOcIA/tS+ExI8XfQB9YRnTYDVGHUIY
+	 QunJo/ACV7PU+U3G6OKwKGgaQkz8hl+1Lu48KTMMRoWZYQD6DzeV7ViETmBMx/eLVT
+	 aZ33cAOd/YrRc7UnDGMo8PUecZ9hbhWKXoTXLhXy7V4u02OpnZbuRIOqfDbixdYU2c
+	 /sJsNhmru2i+bTI1DYmhq5lEMLrF1F0fRLwHKcsYCve9+P9s9cbocR6V591i1xwYdG
+	 BsACWlQ8JwV7g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6007E80D9E;
-	Thu, 13 Nov 2025 17:29:56 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B073A611B2;
+	Fri, 14 Nov 2025 16:25:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id E815D158
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Nov 2025 17:29:54 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id A937B230
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Nov 2025 22:41:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id C6A5F4002B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Nov 2025 17:29:54 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9B10C40D93
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Nov 2025 22:41:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 59iFFMNWb5uz for <intel-wired-lan@lists.osuosl.org>;
- Thu, 13 Nov 2025 17:29:54 +0000 (UTC)
-X-Greylist: delayed 427 seconds by postgrey-1.37 at util1.osuosl.org;
- Thu, 13 Nov 2025 17:29:53 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A67C640012
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A67C640012
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
- helo=mgamail.intel.com; envelope-from=vinicius.gomes@intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id YI89IEtjKH2r for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 13 Nov 2025 22:41:53 +0000 (UTC)
+X-Greylist: delayed 426 seconds by postgrey-1.37 at util1.osuosl.org;
+ Thu, 13 Nov 2025 22:41:53 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 52B0840D75
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 52B0840D75
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=173.37.142.94;
+ helo=alln-iport-7.cisco.com; envelope-from=kartilak@cisco.com;
  receiver=<UNKNOWN> 
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A67C640012
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Nov 2025 17:29:53 +0000 (UTC)
-X-CSE-ConnectionGUID: lxHNJxKTSEOtsNsaZadMFA==
-X-CSE-MsgGUID: A2XmzYYOQx+sN5/AIkry4w==
-X-IronPort-AV: E=McAfee;i="6800,10657,11612"; a="90621017"
-X-IronPort-AV: E=Sophos;i="6.19,302,1754982000"; d="scan'208";a="90621017"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Nov 2025 09:22:46 -0800
-X-CSE-ConnectionGUID: KGfI05O1Qk6pC7jk7wmDHA==
-X-CSE-MsgGUID: bOpJib/jReq0+a1qsf5Clw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,302,1754982000"; d="scan'208";a="212957758"
-Received: from vverma7-desk1.amr.corp.intel.com (HELO vcostago-mobl3)
- ([10.125.108.134])
- by fmviesa002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Nov 2025 09:22:45 -0800
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: Kurt Kanzenbach <kurt@linutronix.de>, Tony Nguyen
- <anthony.l.nguyen@intel.com>, Przemek Kitszel
- <przemyslaw.kitszel@intel.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
- <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Sebastian Andrzej
- Siewior <bigeasy@linutronix.de>, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org
-In-Reply-To: <87bjl6l3j5.fsf@jax.kurt.home>
-References: <20251107-igc_mqprio_channels-v1-1-42415562d0f8@linutronix.de>
- <87ldkblyhd.fsf@intel.com> <87bjl6l3j5.fsf@jax.kurt.home>
-Date: Thu, 13 Nov 2025 09:22:44 -0800
-Message-ID: <871pm126fv.fsf@intel.com>
+Received: from alln-iport-7.cisco.com (alln-iport-7.cisco.com [173.37.142.94])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 52B0840D75
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Nov 2025 22:41:53 +0000 (UTC)
+X-CSE-ConnectionGUID: +KYH9HqzRwezqF5JcIHr5g==
+X-CSE-MsgGUID: OpkTaIJqRTCVGLKx4l4Vag==
+X-IPAS-Result: =?us-ascii?q?A0BAAACBWxZp/5UQJK1aHAEBAQEBAQcBARIBAQQEAQFAJ?=
+ =?us-ascii?q?YEYBgEBCwGBbVIHghtJiCADhSyGWIIhA54aFIFrDwEBAQ0CUQQBAYUHAoxaA?=
+ =?us-ascii?q?iY1CA4BAgQBAQEBAwIDAQEBAQEBAQEBAQELAQEFAQEBAgEHBYEOE4ZchloBA?=
+ =?us-ascii?q?QEBAxIVUhACAQgOCi4xJQIEAQ0FCBqFVAMBAqRbAYFAAooreIEBM4EB4CaBS?=
+ =?us-ascii?q?gGIUgGFbjuEPScbgg2BV3mBbz6EKhuEE4IvBIIigQ6GJ3mLYIZjUngcA1ksA?=
+ =?us-ascii?q?VUTFwsHBYEgEDMDIAo0LQIUDRASDwQWBS0dcAwoEhAfGBFgVECDSRAMBmgPB?=
+ =?us-ascii?q?oESGUkCAgIFAisVOoFoBQEcBhwSAgMBAgI6VQ2BdwICBIIZfoFvGw+JSIEaA?=
+ =?us-ascii?q?wttPTcGDhsFBIE1BZQUghNpAT1RgTEMUwQsY5JsCIMjAbAfCoQcog0XhASNE?=
+ =?us-ascii?q?4cCklKZBiKodAIEAgQFAhABAQaBaQE6gVlwFYMiUhkPji0WkxsBtUN4AjoCB?=
+ =?us-ascii?q?wsBAQMJk2cBAQ?=
+IronPort-PHdr: A9a23:DVnYGBVr9w0sdidY9dsUypTUKRDV8K3PAWYlg6HPw5pHdqClupP6M
+ 1OavrNmjUTCWsPQ7PcXw+bVsqW1QWUb+t7Bq3ENdpVQSgUIwdsbhQ0uAcOJSAX7IffmYjZ8H
+ ZFqX15+9Hb9Ok9QcPs=
+IronPort-Data: A9a23:+VK8rq/LzUqCJs/k7Vi1DrUD0H+TJUtcMsCJ2f8bNWPcYEJGY0x3y
+ 2BLXWjUOa2DYzT2c9x0bo7i8E9UvJ7VyoBiQFY6+ShEQiMRo6IpJzg2wmQcns+2BpeeJK6yx
+ 5xGMrEsFOhtEDmE4EzrauS9xZVF/fngbqLmD+LZMTxGSwZhSSMw4TpugOdRbrRA2bBVOCvT/
+ 4qjyyHjEAX9gWMtaztPs/nrRC5H5ZwehhtJ5jTSWtgT1LPuvyF9JI4SI6i3M0z5TuF8dsamR
+ /zOxa2O5WjQ+REgELuNyt4XpWVTH9Y+lSDX4pZnc/DKbipq/0Te4Y5nXBYoUnq7vh3S9zxHJ
+ HqhgrTrIeshFvWkdO3wyHC0GQkmVUFN0OevzXRSLaV/wmWeG0YAzcmCA2l1Hrw4q8ZuE1tR+
+ O4BBm0vZTGjnb+5lefTpulE3qzPLeHiOIcZ/3UlxjbDALN/G9bIQr7B4plT2zJYasJmRKmFI
+ ZFHL2MxKk2cMnWjOX9PYH46tOShnGX+dzRbgFmUvqEwpWPUyWSd1ZCzaYGOIoDXGJQ9ckCwg
+ XrFw23YIAggCPeh5h6m4i6o2tHGknauMG4VPPjinhJwu3WSwHAeDFgJVEG2rby9g0iWX9NEN
+ 1dS/TEzqrM2skuxQbHAswaQqXqAuFsYHtFXCeB/sVvLwavP6AHfDW8BJtJcVOEbWAYNbWVC/
+ neCnsjiAnpkt7j9dJ5X3u38Qe+aUcTNEVI/WA==
+IronPort-HdrOrdr: A9a23:Z2i37a8u2glH8YL4Wkxuk+GXdr1zdoMgy1knxilNoENuA6+lfp
+ GV/MjziyWUtN9IYgBfpTnhAsW9qXO1z+8S3WBjB8bSYOCAghrmEGgC1/qv/9SOIVyFygcw79
+ YFT0E6MqyOMbEYt7e13ODbKadc/DDvysnB7omurQYJcegpUdAd0+4TMHfjLqQCfng8OXNPLu
+ vl2iMonUvGRV0nKu6AKj0uWe/Fq9fXlJTgTyInKnccgjWmvHeD0pK/NwKX8Cs/flp0rIvK91
+ KrryXJooGY992rwB7V0GHeq75MnsH699dFDMuQzuAINzTFkG+TFcRccozHmApwjPCk6V4snt
+ WJiQwnJd5P53TYeXzwiQfx2jPnzC0l5xbZuBylaDrY0I7ErQABeo58bLFiA1zkAo0bzZdBOZ
+ dwriekXlxsfEr9dWrGloD1vlpR5zqJSDIZ4J0uZjpkIMojgHs7l/1EwKuTe61wRx7S+cQpFv
+ JjA9rb4+sTeVSGb2rBtm0q29C0WG8vdy32CXTql/blmgS+pkoJh3cw1YgahDMN5Zg9Q55L66
+ DNNblpjqhHSosTYbhmDOkMTMOrAiiVKCi8fV66MBDiDuUKKnjNo5n47PE84/yrYoUByN83lI
+ 7aWF1VuGYucwblCNGI3pdM7hfRKV/NFwjF24Vb/dx0q7f8TL3kPWmKT00vidKpp7EFDsjSS5
+ +ISeRr6j/YXBzT8KpyrnnDssNpWAsjueUuy6MGZ24=
+X-Talos-CUID: 9a23:EKDOqm7HcPnhaG1orNsst20lOpEFa2/n03rCOmHlK21IaKfIRgrF
+X-Talos-MUID: 9a23:lVcgGQmGMMnwC32nyCHldnpFLMRU6oWMEXoxuqspn+qUaSgsBT6S2WE=
+X-IronPort-Anti-Spam-Filtered: true
+Received: from alln-l-core-12.cisco.com ([173.36.16.149])
+ by alln-iport-7.cisco.com with ESMTP/TLS/TLS_AES_256_GCM_SHA384;
+ 13 Nov 2025 22:34:45 +0000
+Received: from alln-opgw-3.cisco.com (alln-opgw-3.cisco.com [173.37.147.251])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by alln-l-core-12.cisco.com (Postfix) with ESMTPS id 9226918000206
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Nov 2025 22:34:45 +0000 (GMT)
+X-CSE-ConnectionGUID: GCrkPvmrQQyYT0zT2MC+fg==
+X-CSE-MsgGUID: XijHqBfrRMaTSrqVw0ziAg==
+X-IronPort-AV: E=Sophos;i="6.19,303,1754956800"; d="scan'208";a="36153306"
+Received: from mail-ch4pr07cu00101.outbound.protection.outlook.com (HELO
+ CH4PR07CU001.outbound.protection.outlook.com) ([40.93.20.97])
+ by alln-opgw-3.cisco.com with ESMTP/TLS/TLS_AES_256_GCM_SHA384;
+ 13 Nov 2025 22:34:40 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=gzxoebjS9ToWZ6hkFn/yQS0iiplaQq1B4uUQr0RFXuTMtZe72qWKPaG3zeMn26vWbIUlrcW0xe1x5Z6AE/AQ0C3bRseVPhIvBh3olnvhwkAvI1F8xuvYDAqZY+ca8QP9WQOpcwDN0FIJjZm7eFuCIJCHeOFchgTOrzE5tGxI318PpwHZH/atRcXt0450+vS7OqWhGblRJM6hGqVaLVHf+Gn0pfH59UDzAzTCqwBFYuynnIPrV8z/D0SF780/FcP5TPFqLGc4Jz7vVUu5owU/wPyl+CqljKGnPurboag5vnjAWCn0pDFc7X1cRjSr929YyrQV+gyZrAx+Dk/ie/Bu7g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8JVJ68Ci8hH+vA9bF8YiFlkwB1Lv6uIdcNwtst+8pPM=;
+ b=wQak6JIoINwHL1xP/fq5L8vTabF8f9R4aD+z5MVNdyLO+dN/g9+GwFS4wtQ4KpOUrOV/kRnaI+ktN3ACIpuQul8qUUSJt04bppepZcDS8kp98Ps9pCxaNLxJkNI7pJXih62kvQ2gfhiToK69kKhcJA49IIEDsk4YkNzmRnS7EqBTimK6tiMMDQnRpHB2J7BO0RHFdWfEiwT++GtOp40H2PsMvirkCTQ6e25HPa76rYFIrzzc+kbkUO5v43lrHyZ47I8j8uICIS3yyPyUrko2G3AXGl4YRv5pOeXPVjDK9CtK2HT3DJjv3kY5fNw+MwypfUD15ctnAIHmdjTbfUdP8w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=cisco.com; dmarc=pass action=none header.from=cisco.com;
+ dkim=pass header.d=cisco.com; arc=none
+Received: from SJ0PR11MB5896.namprd11.prod.outlook.com (2603:10b6:a03:42c::19)
+ by IA1PR11MB7755.namprd11.prod.outlook.com (2603:10b6:208:420::18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9320.15; Thu, 13 Nov
+ 2025 22:34:36 +0000
+Received: from SJ0PR11MB5896.namprd11.prod.outlook.com
+ ([fe80::2081:bcd4:cb3e:e2dd]) by SJ0PR11MB5896.namprd11.prod.outlook.com
+ ([fe80::2081:bcd4:cb3e:e2dd%4]) with mapi id 15.20.9320.013; Thu, 13 Nov 2025
+ 22:34:36 +0000
+From: "Karan Tilak Kumar (kartilak)" <kartilak@cisco.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Corey Minyard
+ <corey@minyard.net>, =?iso-8859-2?Q?Christian_K=F6nig?=
+ <christian.koenig@amd.com>, "Dr. David Alan Gilbert" <linux@treblig.org>,
+ Alex Deucher <alexander.deucher@amd.com>, Thomas Zimmermann
+ <tzimmermann@suse.de>, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Rob Clark <robin.clark@oss.qualcomm.com>, Matthew Brost
+ <matthew.brost@intel.com>, Ulf Hansson <ulf.hansson@linaro.org>, Aleksandr
+ Loktionov <aleksandr.loktionov@intel.com>, Vitaly Lifshits
+ <vitaly.lifshits@intel.com>, Manivannan Sadhasivam <mani@kernel.org>, Niklas
+ Cassel <cassel@kernel.org>, Calvin Owens <calvin@wbinvd.org>, Vadim Fedorenko
+ <vadim.fedorenko@linux.dev>, Sagi Maimon <maimon.sagi@gmail.com>, "Martin K.
+ Petersen" <martin.petersen@oracle.com>, Hans Verkuil
+ <hverkuil+cisco@kernel.org>, Casey Schaufler <casey@schaufler-ca.com>, Steven
+ Rostedt <rostedt@goodmis.org>, Petr Mladek <pmladek@suse.com>, Viacheslav
+ Dubeyko <Slava.Dubeyko@ibm.com>, Max Kellermann <max.kellermann@ionos.com>,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "openipmi-developer@lists.sourceforge.net"
+ <openipmi-developer@lists.sourceforge.net>, "linux-media@vger.kernel.org"
+ <linux-media@vger.kernel.org>, "dri-devel@lists.freedesktop.org"
+ <dri-devel@lists.freedesktop.org>, "linaro-mm-sig@lists.linaro.org"
+ <linaro-mm-sig@lists.linaro.org>, "amd-gfx@lists.freedesktop.org"
+ <amd-gfx@lists.freedesktop.org>, "linux-arm-msm@vger.kernel.org"
+ <linux-arm-msm@vger.kernel.org>, "freedreno@lists.freedesktop.org"
+ <freedreno@lists.freedesktop.org>, "intel-xe@lists.freedesktop.org"
+ <intel-xe@lists.freedesktop.org>, "linux-mmc@vger.kernel.org"
+ <linux-mmc@vger.kernel.org>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>, "linux-pci@vger.kernel.org"
+ <linux-pci@vger.kernel.org>, "linux-s390@vger.kernel.org"
+ <linux-s390@vger.kernel.org>, "linux-scsi@vger.kernel.org"
+ <linux-scsi@vger.kernel.org>, "linux-staging@lists.linux.dev"
+ <linux-staging@lists.linux.dev>, "ceph-devel@vger.kernel.org"
+ <ceph-devel@vger.kernel.org>, "linux-trace-kernel@vger.kernel.org"
+ <linux-trace-kernel@vger.kernel.org>
+CC: Rasmus Villemoes <linux@rasmusvillemoes.dk>, Sergey Senozhatsky
+ <senozhatsky@chromium.org>, Jonathan Corbet <corbet@lwn.net>, Sumit Semwal
+ <sumit.semwal@linaro.org>, Gustavo Padovan <gustavo@padovan.org>, David
+ Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Maarten
+ Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+ <mripard@kernel.org>, Dmitry Baryshkov <lumag@kernel.org>, Abhinav Kumar
+ <abhinav.kumar@linux.dev>, Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul
+ <sean@poorly.run>, Marijn Suijten <marijn.suijten@somainline.org>, Konrad
+ Dybcio <konradybcio@kernel.org>, Lucas De Marchi <lucas.demarchi@intel.com>,
+ =?iso-8859-2?Q?Thomas_Hellstr=F6m?= <thomas.hellstrom@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, Vladimir Oltean <olteanv@gmail.com>,
+ Andrew Lunn <andrew@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+ <pabeni@redhat.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek
+ Kitszel <przemyslaw.kitszel@intel.com>,
+ =?iso-8859-2?Q?Krzysztof_Wilczy=F1ski?= <kwilczynski@kernel.org>, Kishon
+ Vijay Abraham I <kishon@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ Rodolfo Giometti <giometti@enneenne.com>, Jonathan Lemon
+ <jonathan.lemon@gmail.com>, Richard Cochran <richardcochran@gmail.com>,
+ Stefan Haberland <sth@linux.ibm.com>, Jan Hoeppner <hoeppner@linux.ibm.com>,
+ Heiko Carstens <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>, Christian Borntraeger
+ <borntraeger@linux.ibm.com>, Sven Schnelle <svens@linux.ibm.com>, "Satish
+ Kharat (satishkh)" <satishkh@cisco.com>, "Sesidhar Baddela (sebaddel)"
+ <sebaddel@cisco.com>, "James E.J. Bottomley"
+ <James.Bottomley@HansenPartnership.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Xiubo
+ Li <xiubli@redhat.com>, Ilya Dryomov <idryomov@gmail.com>, Masami Hiramatsu
+ <mhiramat@kernel.org>, Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
+ Andrew Morton <akpm@linux-foundation.org>
+Thread-Topic: [PATCH v3 19/21] scsi: fnic: Switch to use %ptSp
+Thread-Index: AQHcVK6ozanKNwbcFU2LSi/oClNkW7TxMIPg
+Date: Thu, 13 Nov 2025 22:34:36 +0000
+Message-ID: <SJ0PR11MB5896D2F9DAC35FF8ADB29087C3CDA@SJ0PR11MB5896.namprd11.prod.outlook.com>
+References: <20251113150217.3030010-1-andriy.shevchenko@linux.intel.com>
+ <20251113150217.3030010-20-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20251113150217.3030010-20-andriy.shevchenko@linux.intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ0PR11MB5896:EE_|IA1PR11MB7755:EE_
+x-ms-office365-filtering-correlation-id: 3cf75da7-1b8e-4777-1265-08de2304d313
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|1800799024|366016|376014|7416014|38070700021|921020; 
+x-microsoft-antispam-message-info: =?iso-8859-2?Q?EV+qDQ4opgT6YErEt+UTHCFYqvHTNJI5xuKV0TWvVDABI0Ef8+VDdGTavR?=
+ =?iso-8859-2?Q?SNJR5b3R0U9xD3zMHb8nX29wKP3IboINDE5Vu3YwhbTGwLiATuVYXvnS/z?=
+ =?iso-8859-2?Q?IuCxsetISmon5JlHrjND3OG8FJcZK0TctHcd7wsSq0vX5gTK4Mly8e2tXB?=
+ =?iso-8859-2?Q?8niGQPhFBtcfIvxSP02U+OsRVhVAlAZU9FNl3umrxpWNh2Ou/gAUtKMMja?=
+ =?iso-8859-2?Q?vuk/ZOK8y62KRUh4+Yqy1hLRgoy4MzxIQm9ENoDUDKejiY6VAmxaHBtFMv?=
+ =?iso-8859-2?Q?khC+LYVKosq8tq4fM65y1+JzsHqZPyWKtv2KiMvx/00QoNn4AxpcNxgov/?=
+ =?iso-8859-2?Q?f7J3E9cKAtg2zReMnMxzzrtN3tDrlmZvQPQGDFohM7peloBOxRkKX2glgv?=
+ =?iso-8859-2?Q?6p593bO9o3W6G9PSesKeQ9Qk4a9MIRTejqyErN++fwt7BiOL2Oda2guwYK?=
+ =?iso-8859-2?Q?DzzccPSUzCrJOelr77JA9iEVIu8KJnD2fd66UlCv7gk3Fh/B5QZXLJaGtu?=
+ =?iso-8859-2?Q?5LG5k8+7w3IoPhyFfMFqo25jCT+TxxiBwFSXTUJEPDjp9yLPR/o545NFJ7?=
+ =?iso-8859-2?Q?dqplbeu5arprxhwRAyU085ei3Qb9ABYMk0kBR5G3nrwItNBjoNKE7rLfZ2?=
+ =?iso-8859-2?Q?WL5jfsO+dsZjt6gxuOMRbyO47AgSAm5bCq5TMLEEoXRz3bwvr6uK1rr3Ns?=
+ =?iso-8859-2?Q?yRSBerbmJD/ZZ+ObnNDbOOH2iCkHUJuVJxvO43eV7MHOp354KyauFmaAnx?=
+ =?iso-8859-2?Q?ve3W8QuXW9HC8E002cKp+JmxPMtAaet0UYmffOQ/QtH9pwqs4RWURUqq10?=
+ =?iso-8859-2?Q?AjWtBDSOgaBz07nb/wVUnhjGu3IlwbuOc05yLo7NAt+ogtQuPheZLWdkse?=
+ =?iso-8859-2?Q?sVJEQXE+iIsU6NtdDfGyvgqpPx+wEai/fzTe1OsBTT3g4ISw8I0lqUo7PN?=
+ =?iso-8859-2?Q?Ui58IOsGbxGXrkTbfHasebGXowPe7ji1AbBtVYVvz/fA7riU7f6beYLRg1?=
+ =?iso-8859-2?Q?s8CRYhMj5gncWcknGIRth3Ni/LpRDlE3jvW0TIByQodKFwcoTNRcZqS9VZ?=
+ =?iso-8859-2?Q?u3BmU+kB3fay6joTlS1WDA4diI9X9Pduq+SPZuk3EqHOLxb3YEP2NNMM+V?=
+ =?iso-8859-2?Q?F9ehoScC422VY4fWpfpEaSZpNiOMQNq0233ZGVagJMez1oEpHJolJ4IYDF?=
+ =?iso-8859-2?Q?rr95lC/zxpoLNZwcwqL5nHwh+kfByty09Vl9v6IhYVaw416rCIM5swf9cr?=
+ =?iso-8859-2?Q?cPUHa7lW/29d0PAAhUgphYMjq79TEGuuu+U9e5RQGvksOA26HWqQdVvcN0?=
+ =?iso-8859-2?Q?+WW1bi3sCAWfoKq6H5qjbVJe21oBV3lx6AnX6rS+XSG4QMSETxmaFEKKVb?=
+ =?iso-8859-2?Q?7y5luHp8/I+Y8wqeUtKPqJ5rH2x/El887tArDaXVwW1B6ayD3B+SPdK+E5?=
+ =?iso-8859-2?Q?ju2AWJVNKsxRVZOx/Fi/WE971MHiHUvsR/yupHVmPZC/6Ewd+LlaC1Q8uA?=
+ =?iso-8859-2?Q?iV1i/kX1mV6VgVa4nc14YAcu9qryk57wAI+Wd+gH+oypoZd76+5cQufEzy?=
+ =?iso-8859-2?Q?1EOlIiZCP+WpsYf5xLKPUCNLz49r?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR11MB5896.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(376014)(7416014)(38070700021)(921020);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-2?Q?JAcZu+XLiUOU8CJSSgwLGu7Y/XMu8k1WUI7Ah4cqVJUMBWde4kmxiTEO9K?=
+ =?iso-8859-2?Q?dpJ5rZhOLpU5T9t2I/XlB3US7ufDrG0lM/DZfTCqdaK946hnz5F77s3wKJ?=
+ =?iso-8859-2?Q?qgMA0wh2jdBFePzNXbR77En+zJXbyV1ndr+UumsF8SMXKQJ+OOdSR8UrSN?=
+ =?iso-8859-2?Q?RklHn/G95gf/JEC5Pdn9PYix/KgqLWjYnGNlXVniFqQzmiQWxxn4ht70VM?=
+ =?iso-8859-2?Q?KVEpzpUuas1b+v/EjYw8umW4FzWillX9WIeKnPt/6oQBFIJI/oLhWHdQP1?=
+ =?iso-8859-2?Q?wnDX4bYaOllhPkyzIUDdEAo0NLx6N78O8eMe8ZJmYBnW2JmZXA2nqFIXpP?=
+ =?iso-8859-2?Q?IuZUYiIFNz+bkdMYmPth6KYoNyyeT22qA89rVpsfDxgYbRNhk+PEGwIJTg?=
+ =?iso-8859-2?Q?EUmtoXbbYR/FobrnsouXDWjP1UYOdDAcAqbXlCqucsdi+lqasmhosWEH6D?=
+ =?iso-8859-2?Q?yNcXgt2c/bB/umXc8F0Faueqx5RwVzzx1kJs3F9ENKkf1aAs988BbpP98s?=
+ =?iso-8859-2?Q?Hs9lqXCsJKbR2SjsIP71J7dJzshIi1m/+MaiOcNcZZwmFLH6OA0oLN1v/R?=
+ =?iso-8859-2?Q?gFzW/ELHRS0DbgWKB7GYozXa+3UMEldiHkSWT8gJ8bswch5/+t8VcYpSM2?=
+ =?iso-8859-2?Q?7SxAuxLOsE4QePikmND7AeXMC6ojUIO228eQUOPqV8Q/DBI8skTva0pEq8?=
+ =?iso-8859-2?Q?zvS9imhV+clIJAH2JfiiDhLUVs2sscc4qUGi7J2MtsE/vr2xHwA4aYNEAH?=
+ =?iso-8859-2?Q?6yrdru3DI77uvaD6At6OwOqH8Cmm7+UoYAq8DCO9E8LN6OJrIuO2BtQ4pM?=
+ =?iso-8859-2?Q?zCcBbB7unQO+pQnEjPMFLwaweL6TuXmQ6cYEaSaS2pEssJFr1F8vb617QA?=
+ =?iso-8859-2?Q?uT/5s+cP16uCXXJFqfF3HTg9YOlpH/R/l6hTu4a/BhcvDzGOiSOjsgsPIi?=
+ =?iso-8859-2?Q?n9HTEQdHTjI25vY7N5PqZRdEsd8G4jP3CZT8lPbyLaEWO+vCshV22lTRxr?=
+ =?iso-8859-2?Q?L1R9JCkMR7q2rtXScfGH7K7h/L8Y4ssMradPA8ycNfEVRJ9hs7vFneUsaZ?=
+ =?iso-8859-2?Q?NjLQJ46yxpyfzQipPYwIHLDKqzhQa/+bo1lTBGm4YOEMP318iH+ibcrv5q?=
+ =?iso-8859-2?Q?R1IVAFTppmRUMzxJLuJTqV57wDRNmFlU7iqH65Jni/Bvxaf6pbLIE7shYi?=
+ =?iso-8859-2?Q?/2BGpuUbA4hZwANp5E2Ih0hTWre1X0SeJHcQSXLAbEfTlpiVg7+yPt6E8N?=
+ =?iso-8859-2?Q?JRr22MREJHr68n99H9VNcbUoTQWVXswgoHEiBGZHzfX7HKaT4Yc7Lfh/ek?=
+ =?iso-8859-2?Q?75nIHJeeC9hhA4SXFNcxHI4uVyIrmRngkUolr2urenyu5zezfaxO8JmDX4?=
+ =?iso-8859-2?Q?euhetnR8XyZRSStChswMTaP4l+NvTgcbWtuVl/Qe+7Q+bANcHMFtChFlcX?=
+ =?iso-8859-2?Q?rNZDbbAepHlFEvJYUvQOhkjbDJ5+ve7TfD5nwyLfqN6vDPi+FVRCaB0GDX?=
+ =?iso-8859-2?Q?K2I1JeGZQuGp30dM9ISX8xW5V+CTM78+bCoYjXzG4dt2onHVAGTQagC4Xu?=
+ =?iso-8859-2?Q?0sHGJ1xqsQUIK7WWDvUVIyf7n4jVA4sIYkNo5AI1i7GyLjrvEd2IlwNxsF?=
+ =?iso-8859-2?Q?Q9PMXYfRADkiwN7AmZyMvDbaLqpemSwu9Y?=
+Content-Type: text/plain; charset="iso-8859-2"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1763054994; x=1794590994;
- h=from:to:cc:subject:in-reply-to:references:date:
- message-id:mime-version;
- bh=MdYfZqAAfI9UhZo7IuK3PHUM5hvs8ciQVUC6Vr0MK90=;
- b=JzEb6oHPXFF6ChiMUa/1cvkLjxRlWJiiao0lj3Mt6fD0D3mR/IJtjuk/
- RjWdqE23aBe2PwQhFS17UJNjEWJkPV1NOmj1NF6gkQIDnitnOMNt3IRmI
- Fpn91iI99IKFirpqDdCkz7+WWKoTpl0w6jFcpvvAZlnHPKwyLDVeHW+7K
- yXucmx48nFq3YADe9nIHGAKtzVZVLkefD+NfyEKYXOFAgJKXuc//b0QoJ
- znaMtT9fOS/+OXoQT1uoQkgZTy055ECWe/vFyaG0/ghOLFF1pHFskaA9x
- QMtxtSB103hY/I6EfabBgbIy6axper05QBfsF2EAKCejfxbGnkXcy48iG
- Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-OriginatorOrg: cisco.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB5896.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3cf75da7-1b8e-4777-1265-08de2304d313
+X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Nov 2025 22:34:36.0943 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 5ae1af62-9505-4097-a69a-c1553ef7840e
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: qzy1shonmI5zJGs1dmaG8CrCP6foCu3hlDlOh8wFz+DyMGfoDNvNl+htR9RXXM+Thcff9uKfnLugIX4fvwAgxQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR11MB7755
+X-Outbound-SMTP-Client: 173.37.147.251, alln-opgw-3.cisco.com
+X-Outbound-Node: alln-l-core-12.cisco.com
+X-Mailman-Approved-At: Fri, 14 Nov 2025 16:25:04 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=cisco.com; i=@cisco.com; l=5367; q=dns/txt;
+ s=iport01; t=1763073713; x=1764283313;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=8JVJ68Ci8hH+vA9bF8YiFlkwB1Lv6uIdcNwtst+8pPM=;
+ b=Hw3rzExt+vutaeeWETnQvnXDfXN66yng/TRYYaKOKHZWsZ6mswYL0mkX
+ FOKqCIgDmeit4/mKA74o4OJ9KQ3qm5ugWT2o3hV7ibSf+0T6lWtTzo3Y9
+ 5vaJxp58QJAoY5PxOzkqEXzMmxCZ8UbaSztmFw0yzGDJrRk48hFaAH9tE
+ RNmLjeWCLss9N6HUOzjKQS7Xw8aRzD20Cn5zgeDDYtpCDZMcdL8blPH7u
+ iM0bmyQusNGWB842DBWdTNLsAENerlFPppo4rAZsnJ0D6Ttu5gDknawod
+ XLeNa+nmfOWwjWMBssIkH3JKh7h3PiTDC4WXeRzAC7U5cgg3UzyfX4TFJ
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=cisco.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=JzEb6oHP
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] igc: Restore default Qbv
- schedule when changing channels
+ unprotected) header.d=cisco.com header.i=@cisco.com header.a=rsa-sha256
+ header.s=iport01 header.b=Hw3rzExt
+X-Mailman-Original-Authentication-Results: alln-opgw-3.cisco.com;
+ dkim=pass (signature verified)
+ header.i=@cisco.com
+Subject: Re: [Intel-wired-lan] [PATCH v3 19/21] scsi: fnic: Switch to use
+ %ptSp
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -119,74 +326,152 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Kurt Kanzenbach <kurt@linutronix.de> writes:
-
-> On Wed Nov 12 2025, Vinicius Costa Gomes wrote:
->> Hi,
->>
->> Kurt Kanzenbach <kurt@linutronix.de> writes:
->>
->>> The MQPRIO (and ETF) offload utilizes the TSN Tx mode. This mode is always
->>> coupled to Qbv. Therefore, the driver sets a default Qbv schedule of all gates
->>> opened and a cycle time of 1s. This schedule is set during probe.
->>>
->>> However, the following sequence of events lead to Tx issues:
->>>
->>>  - Boot a dual core system
->>>    probe():
->>>      igc_tsn_clear_schedule():
->>>        -> Default Schedule is set
->>>        Note: At this point the driver has allocated two Tx/Rx queues, because
->>>        there are only two CPU(s).
->>>
->>>  - ethtool -L enp3s0 combined 4
->>>    igc_ethtool_set_channels():
->>>      igc_reinit_queues()
->>>        -> Default schedule is gone, per Tx ring start and end time are zero
->>>
->>>   - tc qdisc replace dev enp3s0 handle 100 parent root mqprio \
->>>       num_tc 4 map 3 3 2 2 0 1 1 1 3 3 3 3 3 3 3 3 \
->>>       queues 1@0 1@1 1@2 1@3 hw 1
->>>     igc_tsn_offload_apply():
->>>       igc_tsn_enable_offload():
->>>         -> Writes zeros to IGC_STQT(i) and IGC_ENDQT(i) -> Boom
->>>
->>> Therefore, restore the default Qbv schedule after changing the amount of
->>> channels.
->>>
->>
->> Couple of questions:
->>  - Would it make sense to mark this patch as a fix?
+On Thursday, November 13, 2025 6:33 AM, Andy Shevchenko <andriy.shevchenko@=
+linux.intel.com> wrote:
 >
-> This only happens if a user uses ETF or MQPRIO and a dual/single core
-> system. So I didn't see the need to mark it as a fix.
+> Use %ptSp instead of open coded variants to print content of
+> struct timespec64 in human readable format.
+>
+> Reviewed-by: Martin K. Petersen <martin.petersen@oracle.com>
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> ---
+> drivers/scsi/fnic/fnic_trace.c | 52 ++++++++++++++--------------------
+> 1 file changed, 22 insertions(+), 30 deletions(-)
+>
+> diff --git a/drivers/scsi/fnic/fnic_trace.c b/drivers/scsi/fnic/fnic_trac=
+e.c
+> index cdc6b12b1ec2..0a849a195a8e 100644
+> --- a/drivers/scsi/fnic/fnic_trace.c
+> +++ b/drivers/scsi/fnic/fnic_trace.c
+> @@ -138,9 +138,8 @@ int fnic_get_trace_data(fnic_dbgfs_t *fnic_dbgfs_prt)
+> */
+> len +=3D scnprintf(fnic_dbgfs_prt->buffer + len,
+> (trace_max_pages * PAGE_SIZE * 3) - len,
+> -                               "%16llu.%09lu %-50s %8x %8x %16llx %16llx=
+ "
+> -                               "%16llx %16llx %16llx\n", (u64)val.tv_sec=
+,
+> -                               val.tv_nsec, str, tbp->host_no, tbp->tag,
+> +                               "%ptSp %-50s %8x %8x %16llx %16llx %16llx=
+ %16llx %16llx\n",
+> +                               &val, str, tbp->host_no, tbp->tag,
+> tbp->data[0], tbp->data[1], tbp->data[2],
+> tbp->data[3], tbp->data[4]);
+> rd_idx++;
+> @@ -180,9 +179,8 @@ int fnic_get_trace_data(fnic_dbgfs_t *fnic_dbgfs_prt)
+> */
+> len +=3D scnprintf(fnic_dbgfs_prt->buffer + len,
+> (trace_max_pages * PAGE_SIZE * 3) - len,
+> -                               "%16llu.%09lu %-50s %8x %8x %16llx %16llx=
+ "
+> -                               "%16llx %16llx %16llx\n", (u64)val.tv_sec=
+,
+> -                               val.tv_nsec, str, tbp->host_no, tbp->tag,
+> +                               "%ptSp %-50s %8x %8x %16llx %16llx %16llx=
+ %16llx %16llx\n",
+> +                               &val, str, tbp->host_no, tbp->tag,
+> tbp->data[0], tbp->data[1], tbp->data[2],
+> tbp->data[3], tbp->data[4]);
+> rd_idx++;
+> @@ -215,30 +213,26 @@ int fnic_get_stats_data(struct stats_debug_info *de=
+bug,
+> {
+> int len =3D 0;
+> int buf_size =3D debug->buf_size;
+> -     struct timespec64 val1, val2;
+> +     struct timespec64 val, val1, val2;
+> int i =3D 0;
+>
+> -     ktime_get_real_ts64(&val1);
+> +     ktime_get_real_ts64(&val);
+> len =3D scnprintf(debug->debug_buffer + len, buf_size - len,
+> "------------------------------------------\n"
+> "\t\tTime\n"
+> "------------------------------------------\n");
+>
+> +     val1 =3D timespec64_sub(val, stats->stats_timestamps.last_reset_tim=
+e);
+> +     val2 =3D timespec64_sub(val, stats->stats_timestamps.last_read_time=
+);
+> len +=3D scnprintf(debug->debug_buffer + len, buf_size - len,
+> -             "Current time :          [%lld:%ld]\n"
+> -             "Last stats reset time:  [%lld:%09ld]\n"
+> -             "Last stats read time:   [%lld:%ld]\n"
+> -             "delta since last reset: [%lld:%ld]\n"
+> -             "delta since last read:  [%lld:%ld]\n",
+> -     (s64)val1.tv_sec, val1.tv_nsec,
+> -     (s64)stats->stats_timestamps.last_reset_time.tv_sec,
+> -     stats->stats_timestamps.last_reset_time.tv_nsec,
+> -     (s64)stats->stats_timestamps.last_read_time.tv_sec,
+> -     stats->stats_timestamps.last_read_time.tv_nsec,
+> -     (s64)timespec64_sub(val1, stats->stats_timestamps.last_reset_time).=
+tv_sec,
+> -     timespec64_sub(val1, stats->stats_timestamps.last_reset_time).tv_ns=
+ec,
+> -     (s64)timespec64_sub(val1, stats->stats_timestamps.last_read_time).t=
+v_sec,
+> -     timespec64_sub(val1, stats->stats_timestamps.last_read_time).tv_nse=
+c);
+> +                      "Current time :          [%ptSp]\n"
+> +                      "Last stats reset time:  [%ptSp]\n"
+> +                      "Last stats read time:   [%ptSp]\n"
+> +                      "delta since last reset: [%ptSp]\n"
+> +                      "delta since last read:  [%ptSp]\n",
+> +                      &val,
+> +                      &stats->stats_timestamps.last_reset_time, &val1,
+> +                      &stats->stats_timestamps.last_read_time, &val2);
+>
+> stats->stats_timestamps.last_read_time =3D val1;
+>
+> @@ -416,8 +410,8 @@ int fnic_get_stats_data(struct stats_debug_info *debu=
+g,
+> jiffies_to_timespec64(stats->misc_stats.last_ack_time, &val2);
+>
+> len +=3D scnprintf(debug->debug_buffer + len, buf_size - len,
+> -               "Last ISR time: %llu (%8llu.%09lu)\n"
+> -               "Last ACK time: %llu (%8llu.%09lu)\n"
+> +               "Last ISR time: %llu (%ptSp)\n"
+> +               "Last ACK time: %llu (%ptSp)\n"
+> "Max ISR jiffies: %llu\n"
+> "Max ISR time (ms) (0 denotes < 1 ms): %llu\n"
+> "Corr. work done: %llu\n"
+> @@ -437,10 +431,8 @@ int fnic_get_stats_data(struct stats_debug_info *deb=
+ug,
+> "Number of rport not ready: %lld\n"
+> "Number of receive frame errors: %lld\n"
+> "Port speed (in Mbps): %lld\n",
+> -               (u64)stats->misc_stats.last_isr_time,
+> -               (s64)val1.tv_sec, val1.tv_nsec,
+> -               (u64)stats->misc_stats.last_ack_time,
+> -               (s64)val2.tv_sec, val2.tv_nsec,
+> +               (u64)stats->misc_stats.last_isr_time, &val1,
+> +               (u64)stats->misc_stats.last_ack_time, &val2,
+> (u64)atomic64_read(&stats->misc_stats.max_isr_jiffies),
+> (u64)atomic64_read(&stats->misc_stats.max_isr_time_ms),
+> (u64)atomic64_read(&stats->misc_stats.corr_work_done),
+> @@ -857,8 +849,8 @@ void copy_and_format_trace_data(struct fc_trace_hdr *=
+tdata,
+> len =3D *orig_len;
+>
+> len +=3D scnprintf(fnic_dbgfs_prt->buffer + len, max_size - len,
+> -                      "%ptTs.%09lu ns%8x       %c%8x\t",
+> -                      &tdata->time_stamp.tv_sec, tdata->time_stamp.tv_ns=
+ec,
+> +                      "%ptSs ns%8x       %c%8x\t",
+> +                      &tdata->time_stamp,
+> tdata->host_no, tdata->frame_type, tdata->frame_len);
+>
+> fc_trace =3D (char *)FC_TRACE_ADDRESS(tdata);
+> --
+> 2.50.1
+>
 >
 
-I still think this is fix material. People can always run stuff in VMs,
-and it makes it easier to have single/dual core systems.
+Acked-by: Karan Tilak Kumar <kartilak@cisco.com>
 
->>
->>  - What would happen if the user added a Qbv schedule (not the default
->>    one) and then changed the number of queues? My concern is that 'tc
->>    qdisc' would show the custom user schedule and the hardware would be
->>    "running" the default schedule, this inconsistency is not ideal. In
->>    any case, it would be a separate patch.
->
-> Excellent point. Honestly I'm not sure what to expect when changing the
-> number of queues after a user Qbv schedule is added. For MQPRIO we added
-> a restriction [1] especially for that case. I'm leaning towards the same
-> solution here. What do you think?
+Thanks for the change, Andy.
 
-Sounds great. Avoiding getting into inconsistent states is better than
-trying to fix it later.
+Can you please advise how I can compile test this change?
 
->
-> Thanks,
-> Kurt
->
-> [1] - https://elixir.bootlin.com/linux/v6.18-rc5/source/drivers/net/ethernet/intel/igc/igc_ethtool.c#L1564
-
-
-Cheers,
--- 
-Vinicius
+Regards,
+Karan
