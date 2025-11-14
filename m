@@ -2,102 +2,191 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6D8B0C5C2C8
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Nov 2025 10:10:46 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 77144C5D329
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Nov 2025 13:59:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1882783B84;
-	Fri, 14 Nov 2025 09:10:44 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D4AEA811F2;
+	Fri, 14 Nov 2025 12:59:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2zfiNpH0UP2K; Fri, 14 Nov 2025 09:10:43 +0000 (UTC)
+ id J46SULqhNvgZ; Fri, 14 Nov 2025 12:59:49 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 822D683B67
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 439E48120F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1763111443;
-	bh=b6BFu9iGbc3F1Rs9o+4VZeJk+hymSJJUpPT9WBy4yNk=;
-	h=From:To:Cc:In-Reply-To:References:Date:Subject:List-Id:
+	s=default; t=1763125189;
+	bh=lIa30kEZfIOzXn6c2Ch+jzSexECrPYWXzGffwwy3r9Q=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=ppt0LvX1qxELafSoI/CAiIGOm3FpjYsUTtEuqgVLETqR6zS1URv859FYyfUBOOfTX
-	 sslHI/eF/DcMT4Eao/jou767thDUjaXb3ThkeHw3f28DCTbYKnhQW95dbwJYMBreMx
-	 kXLxIXDM76x7Cgy/CMayF6nooIKSGHB0+BFEX3OF3qBLeqBcq3pKMNVUeT58lG0gP7
-	 xzfLyCA2HCUcO7t6xi+GyEaMMwwRy9rI1LYzRczWzj739/DgrxMMfsoLrUHe28IYE6
-	 LRJ86AalCAlLalSRsLooMVZCAjSq5LUJH9AUF9rIaYxm30EpEcKPoYnvJBbpPPZIVC
-	 ZopDbQsbF5mMg==
+	b=Gy3bLbUBUNkYGuvvPd+OA4+Dah0/ep61q7IJvxPzarhsk1RgbB0ReqIvvYv3MFFv0
+	 MY2MtliTOa0pAFbx05GnFZPK++aeK9JRRgQXNvF7kEEYTvT34D28RvVCO1YOsV2ltE
+	 2lTXMeTjKdXJ5DOxy7k+MkF//qoMwKBpm/XbnYS+n3jCrq+rtUZcO1QejXD68e5Bs4
+	 z95KRaCnuGIpDaZ7jy/Nf5C2lyyM8qnO5A0lhch2ecsUgGachjwVc4jITqY3Qa7ToF
+	 sPNEEEk2t84JV4I/QdoKKRHYyri1NwNOcs3MP+aYOyfiEkFQ+mjIoAbeINbYdUxek+
+	 R/emLZXg8JA0Q==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 822D683B67;
-	Fri, 14 Nov 2025 09:10:43 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 439E48120F;
+	Fri, 14 Nov 2025 12:59:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 12A43D5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Nov 2025 09:10:42 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id E9FB7230
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Nov 2025 12:59:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id EDA5383B54
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Nov 2025 09:10:41 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id D32EA60759
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Nov 2025 12:59:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id djLXub_fpfdu for <intel-wired-lan@lists.osuosl.org>;
- Fri, 14 Nov 2025 09:10:41 +0000 (UTC)
-X-Greylist: delayed 570 seconds by postgrey-1.37 at util1.osuosl.org;
- Fri, 14 Nov 2025 09:10:40 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org BF6A383AE9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BF6A383AE9
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.142.43.55;
- helo=galois.linutronix.de; envelope-from=kurt@linutronix.de;
- receiver=<UNKNOWN> 
-Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by smtp1.osuosl.org (Postfix) with ESMTPS id BF6A383AE9
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Nov 2025 09:10:40 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-To: Vinicius Costa Gomes <vinicius.gomes@intel.com>, Tony Nguyen
- <anthony.l.nguyen@intel.com>, Przemek Kitszel
- <przemyslaw.kitszel@intel.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
- <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Sebastian Andrzej
- Siewior <bigeasy@linutronix.de>, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org
-In-Reply-To: <871pm126fv.fsf@intel.com>
-References: <20251107-igc_mqprio_channels-v1-1-42415562d0f8@linutronix.de>
- <87ldkblyhd.fsf@intel.com> <87bjl6l3j5.fsf@jax.kurt.home>
- <871pm126fv.fsf@intel.com>
-Date: Fri, 14 Nov 2025 10:01:04 +0100
-Message-ID: <874iqxng33.fsf@jax.kurt.home>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id kwrjSE6AdzFv for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 14 Nov 2025 12:59:46 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::632; helo=mail-ej1-x632.google.com;
+ envelope-from=pmladek@suse.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D718D6068A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D718D6068A
+Received: from mail-ej1-x632.google.com (mail-ej1-x632.google.com
+ [IPv6:2a00:1450:4864:20::632])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D718D6068A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Nov 2025 12:59:45 +0000 (UTC)
+Received: by mail-ej1-x632.google.com with SMTP id
+ a640c23a62f3a-b713c7096f9so245560966b.3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Nov 2025 04:59:45 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1763125183; x=1763729983;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=lIa30kEZfIOzXn6c2Ch+jzSexECrPYWXzGffwwy3r9Q=;
+ b=li7srHzcgnzkTpyNAO5UtnToo3zbhRGlFGknPLVcDLhlNPLSma2ADcWMwWtEOMQhru
+ 7W5LwV/DaiUY8HoA/KHvct5Et2cPLu1Io/ozR3zW8vICzKHFE4ZIodXgwBnKDZCqiRyx
+ cRZKQfpqSPHx6Z1hTjQ0tSwwPIB6gQy4cgG7OqxGUjxMjnqslRot6EZ+/fjnEXp+y6OE
+ HiIhiojwPTpKuuc9NGlWAtxEU0GQesxmvmz1QwZ8k2w4YRu8s9ebYoJSrX7nLtmePQ2u
+ Teo1w3hNAw8R8ymcijgm/QjIurD8408Fqisaj/89BAPI4ezcO0xs4kjWg7IO1uosc/W2
+ K13A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXE1FgN9JgWbGfnjrInjbrJUo0Xc5/hj1GI8qLvOKjml26Okh675Y7cRooNZSAjDX/rnTOMyDhHOVcd1+xGvxI=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyI0rp5B/aD2J1lAqHs5QI+Au/hsOwYUacNMmqFLpg0oamOUZft
+ Va+/fTByqOOYqJ/bFZpHCnAuniTAYhRQjkkHdcfdg22vbY8YcPsG/E6+uPzY9M9QHjc=
+X-Gm-Gg: ASbGncsJXMkqVnWgd6RUJuBpUIsH08t7mHFVN657Y4GYTl+hn48u9fF25+Ax2CQrQSF
+ 6BgdWaE7yZQ/y2kyQrjpOHQ2ZkbPqkpL3dk7ZMLA/2h3ObSavCvX8Fje/68eukr9j3h8wxfxu9A
+ sTMVkoLsAH2OmmMg0x0xQk8/3Q9nW5mDKrPQP+y62k0+Lv9F/vu8fBKI+vbGb2Gg6wkbzCWimXs
+ 5/eNIewto7r1cdnDP+aJKHwxAg0PGWdC0j3/yVEZ5cbk6CNWKh65dSJK1yTpAn3SRyK36aAdjGl
+ 6P3P/hCHbL3WOwobLy5TIMQJYvYyRh/Ext/pgV71CVNVgTpu+5eoHE5hEKNcMqWFvDeKnd0JOhZ
+ bmr8p2ygz8X6WOiLCzbewQpS8bDUZXXEs3ckqQ1Cuk3w1GTMBq5UefLtdk6W1G0SX7E78aRaKFO
+ w1HZM=
+X-Google-Smtp-Source: AGHT+IH6H5eoyoDiGCawX8hcyfAIsFqjcgfKx5GqQ3M5ZUeRqB23EXgoQaPPEhXoJ1r2rQPfP0tLQA==
+X-Received: by 2002:a17:906:f105:b0:b73:7652:ef9e with SMTP id
+ a640c23a62f3a-b737652f76bmr38125366b.55.1763125183501; 
+ Fri, 14 Nov 2025 04:59:43 -0800 (PST)
+Received: from pathway.suse.cz ([176.114.240.130])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b734fd80a3asm382714666b.37.2025.11.14.04.59.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 14 Nov 2025 04:59:42 -0800 (PST)
+Date: Fri, 14 Nov 2025 13:59:38 +0100
+From: Petr Mladek <pmladek@suse.com>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Corey Minyard <corey@minyard.net>,
+ Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
+ "Dr. David Alan Gilbert" <linux@treblig.org>,
+ Alex Deucher <alexander.deucher@amd.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Rob Clark <robin.clark@oss.qualcomm.com>,
+ Matthew Brost <matthew.brost@intel.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Vitaly Lifshits <vitaly.lifshits@intel.com>,
+ Manivannan Sadhasivam <mani@kernel.org>,
+ Niklas Cassel <cassel@kernel.org>, Calvin Owens <calvin@wbinvd.org>,
+ Vadim Fedorenko <vadim.fedorenko@linux.dev>,
+ Sagi Maimon <maimon.sagi@gmail.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Karan Tilak Kumar <kartilak@cisco.com>,
+ Hans Verkuil <hverkuil+cisco@kernel.org>,
+ Casey Schaufler <casey@schaufler-ca.com>,
+ Steven Rostedt <rostedt@goodmis.org>,
+ Viacheslav Dubeyko <Slava.Dubeyko@ibm.com>,
+ Max Kellermann <max.kellermann@ionos.com>,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ openipmi-developer@lists.sourceforge.net,
+ linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linaro-mm-sig@lists.linaro.org, amd-gfx@lists.freedesktop.org,
+ linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
+ intel-xe@lists.freedesktop.org, linux-mmc@vger.kernel.org,
+ netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ linux-pci@vger.kernel.org, linux-s390@vger.kernel.org,
+ linux-scsi@vger.kernel.org, linux-staging@lists.linux.dev,
+ ceph-devel@vger.kernel.org, linux-trace-kernel@vger.kernel.org,
+ Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+ Sergey Senozhatsky <senozhatsky@chromium.org>,
+ Jonathan Corbet <corbet@lwn.net>, Sumit Semwal <sumit.semwal@linaro.org>,
+ Gustavo Padovan <gustavo@padovan.org>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Dmitry Baryshkov <lumag@kernel.org>,
+ Abhinav Kumar <abhinav.kumar@linux.dev>,
+ Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>,
+ Marijn Suijten <marijn.suijten@somainline.org>,
+ Konrad Dybcio <konradybcio@kernel.org>,
+ Lucas De Marchi <lucas.demarchi@intel.com>,
+ Thomas =?iso-8859-1?Q?Hellstr=F6m?= <thomas.hellstrom@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Vladimir Oltean <olteanv@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>,
+ Rodolfo Giometti <giometti@enneenne.com>,
+ Jonathan Lemon <jonathan.lemon@gmail.com>,
+ Richard Cochran <richardcochran@gmail.com>,
+ Stefan Haberland <sth@linux.ibm.com>,
+ Jan Hoeppner <hoeppner@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Sven Schnelle <svens@linux.ibm.com>, Satish Kharat <satishkh@cisco.com>,
+ Sesidhar Baddela <sebaddel@cisco.com>,
+ "James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Xiubo Li <xiubli@redhat.com>, Ilya Dryomov <idryomov@gmail.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>,
+ Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
+ Andrew Morton <akpm@linux-foundation.org>
+Message-ID: <aRcnug35DOZ3IGNi@pathway.suse.cz>
+References: <20251113150217.3030010-1-andriy.shevchenko@linux.intel.com>
+ <20251113150217.3030010-2-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
- micalg=pgp-sha512; protocol="application/pgp-signature"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251113150217.3030010-2-andriy.shevchenko@linux.intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1763110867;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=b6BFu9iGbc3F1Rs9o+4VZeJk+hymSJJUpPT9WBy4yNk=;
- b=Q0ki1xu8ZKMdjHH1mFDVyg1p743usdI53LC54c69vslC4DNgFjpk8aioLqFX0z5USApqJU
- cgFmWWxGPjeq3rMTBolwjhSOlXEB1S+XcQBmEOT0h+9lemY2dzlHH4nUwpOPSduQWVzxmC
- BS/ujnPeVWcjHDR4jrhtqtExc4GqHm3iAw4JyLvfTLKGG7W8bniOPlq1nqDeYOhS0tBbKS
- kHR59i8DC27BGDrSrfePLTwAKwtGghcc1kHxW68hqj6dwFuXjygy9/n0hmyPoIBmgjURiY
- 9le8JecTCMXlJ2iB0i2nOErcG17qQXyIiLXd41IgZSLI4g0jGP/6Gsii2BDxZg==
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1763110867;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=b6BFu9iGbc3F1Rs9o+4VZeJk+hymSJJUpPT9WBy4yNk=;
- b=TRLV+IzMfi5V+ejNFKmj1Ca1ICX2VAnz/oZAjQAWPNVekJbvSnLxleCo0drb9cMrNUKGxy
- c/pgacw5k5dkmQCw==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=linutronix.de
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
- header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=Q0ki1xu8; 
- dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=TRLV+IzM
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] igc: Restore default Qbv
- schedule when changing channels
+ d=suse.com; s=google; t=1763125183; x=1763729983; darn=lists.osuosl.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=lIa30kEZfIOzXn6c2Ch+jzSexECrPYWXzGffwwy3r9Q=;
+ b=Odf74czQyUtj0Sdriq8zaOSFuwE+hhRQEGZbIke6HXy+8TCHy4NolAwXCEOC8Nv0f6
+ h77W16bJGeIQoDi57NR6i4VZMWrz1UZuEskPofrCG86w7wg6fByOEZufUEa21V7ep96y
+ kFqp6BM4D5r+YYAo3hlmzoduWwtvyWYtuIHmkWog5yTl+gc0Ahs52dR37gpdsVi7db+c
+ 9hy2REDOkH7ThaG5Xa5wqS9LhfQ0Nno3tcGiqfWYsfvbtgCRQFbF5JAA/2Rz2UVFe8AJ
+ HbehG7xPbvRKbV/sOwaXoE/nzBDBrGgjfYC4MHFYIE2/y4eXuJUrZDJyE0fDkLO2Rik+
+ xqaw==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=suse.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=suse.com header.i=@suse.com header.a=rsa-sha256
+ header.s=google header.b=Odf74czQ
+Subject: Re: [Intel-wired-lan] [PATCH v3 01/21] lib/vsprintf: Add specifier
+ for printing struct timespec64
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -113,98 +202,24 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---=-=-=
-Content-Type: text/plain
+On Thu 2025-11-13 15:32:15, Andy Shevchenko wrote:
+> A handful drivers want to print a content of the struct timespec64
+> in a format of %lld:%09ld. In order to make their lives easier, add
+> the respecting specifier directly to the printf() implementation.
+> 
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 
-On Thu Nov 13 2025, Vinicius Costa Gomes wrote:
-> Kurt Kanzenbach <kurt@linutronix.de> writes:
->
->> On Wed Nov 12 2025, Vinicius Costa Gomes wrote:
->>> Hi,
->>>
->>> Kurt Kanzenbach <kurt@linutronix.de> writes:
->>>
->>>> The MQPRIO (and ETF) offload utilizes the TSN Tx mode. This mode is always
->>>> coupled to Qbv. Therefore, the driver sets a default Qbv schedule of all gates
->>>> opened and a cycle time of 1s. This schedule is set during probe.
->>>>
->>>> However, the following sequence of events lead to Tx issues:
->>>>
->>>>  - Boot a dual core system
->>>>    probe():
->>>>      igc_tsn_clear_schedule():
->>>>        -> Default Schedule is set
->>>>        Note: At this point the driver has allocated two Tx/Rx queues, because
->>>>        there are only two CPU(s).
->>>>
->>>>  - ethtool -L enp3s0 combined 4
->>>>    igc_ethtool_set_channels():
->>>>      igc_reinit_queues()
->>>>        -> Default schedule is gone, per Tx ring start and end time are zero
->>>>
->>>>   - tc qdisc replace dev enp3s0 handle 100 parent root mqprio \
->>>>       num_tc 4 map 3 3 2 2 0 1 1 1 3 3 3 3 3 3 3 3 \
->>>>       queues 1@0 1@1 1@2 1@3 hw 1
->>>>     igc_tsn_offload_apply():
->>>>       igc_tsn_enable_offload():
->>>>         -> Writes zeros to IGC_STQT(i) and IGC_ENDQT(i) -> Boom
->>>>
->>>> Therefore, restore the default Qbv schedule after changing the amount of
->>>> channels.
->>>>
->>>
->>> Couple of questions:
->>>  - Would it make sense to mark this patch as a fix?
->>
->> This only happens if a user uses ETF or MQPRIO and a dual/single core
->> system. So I didn't see the need to mark it as a fix.
->>
->
-> I still think this is fix material. People can always run stuff in VMs,
-> and it makes it easier to have single/dual core systems.
+Looks goor to me:
 
-Fair enough.
+Reviewed-by: Petr Mladek <pmladek@suse.com>
+Tested-by: Petr Mladek <pmladek@suse.com>
 
->
->>>
->>>  - What would happen if the user added a Qbv schedule (not the default
->>>    one) and then changed the number of queues? My concern is that 'tc
->>>    qdisc' would show the custom user schedule and the hardware would be
->>>    "running" the default schedule, this inconsistency is not ideal. In
->>>    any case, it would be a separate patch.
->>
->> Excellent point. Honestly I'm not sure what to expect when changing the
->> number of queues after a user Qbv schedule is added. For MQPRIO we added
->> a restriction [1] especially for that case. I'm leaning towards the same
->> solution here. What do you think?
->
-> Sounds great. Avoiding getting into inconsistent states is better than
-> trying to fix it later.
+I wonder how to move forward. I could take the whole patchset via
+printk tree. There is no conflict with linux-next at the moment.
 
-Jup. I'll wait a bit for further comments and then send a v2 with your
-and Aleksandr's suggestions addressed.
+It seems that only 3 patches haven't got any ack yet. I am going
+to wait for more feedback and push it later the following week
+(Wednesday or so) unless anyone complains.
 
-Thanks,
-Kurt
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmkW79ATHGt1cnRAbGlu
-dXRyb25peC5kZQAKCRDBk9HyqkZzggciD/9ay/U71+nZu7e8ppiVKWfShE9SiLXZ
-p8gYFYumDgZFus8HUBXdIo64Ai6dR12utE3X6EDgMZMh8AWfrieyHCipZKYw0Pqu
-ZTq0vo0/shVGT1CUPxH8dv6KMAUcwpdkyI1/IvC+A4aP8TkcKHurwmGg2NRmX0TY
-PHRU+stgF6UEw9vvTudxS3ITPctNGuk76EZk1HdnJFgk5SAzkQThlqoW0SjZnHkE
-xIPiP2KNEy2cFUIlZpJkLUXfmfqT+Fm2vKl1pZo+lXe9FILFWTLeBgufG6vzMGsQ
-ZUQTfoD3FyC0/WrtgohLZxqwkqWOmu9loWNaIHwby1yle+GFi0Z+76OgmnXgsSI+
-sT6WKX82V9ytqSBzJzxEFKZYS6Nis0elxX6dY0mPFWq4PaiL/8T9mlG/SjDecNUx
-dUlA6TQSLE7u4VpVfU25A1/7XcJlXp/UemUVjpRFCLQgfO3t6xHwyyd/T/4sQsyD
-cO4+oyHf9C2ctUumx5W4FjRlgvr5Dd1WJKDaGq0hoHN6LXCLMgiIEKKapKl9ViW3
-lhgKV+IXH5vmlFg8o5KyIp64Z+1ClB+ATDgBLTN9oiA+nQtQFVR0YzYUAyJBiGUs
-aSRo3Ol2YRWiSnfmGff38fA5TOiYc955AwvKIsuGQsGh+qhMBLLim0/nLzCcngyX
-eEC/CCpEuVgJQw==
-=wmrl
------END PGP SIGNATURE-----
---=-=-=--
+Best Regards,
+Petr
