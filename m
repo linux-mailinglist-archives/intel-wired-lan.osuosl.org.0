@@ -1,101 +1,132 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 467F8C67418
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Nov 2025 05:30:20 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A9A83C67BF4
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Nov 2025 07:37:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EA9FB60ED5;
-	Tue, 18 Nov 2025 04:30:18 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D2215821E1;
+	Tue, 18 Nov 2025 06:37:28 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id O53XChk0292m; Tue, 18 Nov 2025 06:37:28 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 51AE282239
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1763447848;
+	bh=rKXeu+SiVQVquAoWhSPWf0RcZCWL+HzPZuMMI7btDH4=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=qLOKcYLEneoupvMy3ZrlEQdYQuILCu3Dx0prLAucf64c5sGipJPSw3a+z1399t0cr
+	 gNQQttrxgdmHOmVpNSduNfh3SWt+Wr6HDcHOvm3rLvRgIjxPrLLcqaPyaMP8TZmnKy
+	 btnm+lO1DaJHglaonqqNOpm42T86x6aNVN3/6Yf9jqBX4yM+OFh45/o+C1OyNpV0Ly
+	 8jamvm8d0/zUW/NkyQzyLYwkKvZGSYakbi8/nwLxJsz2518l1kBJGiTA6/sQ0qVgDN
+	 U/fm8dfQraFsLvoEBc2g1Bwcf7MEcnEARz1lkcrORdtBh/Ef3Sj1xeV/T5FqbuUcqT
+	 y2eh9INdSGk1g==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 51AE282239;
+	Tue, 18 Nov 2025 06:37:28 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 0AC1CD5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Nov 2025 06:37:27 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id E744F606DF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Nov 2025 06:37:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VHbMiQTzi4Td; Tue, 18 Nov 2025 04:30:18 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 584D360EF6
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1763440218;
-	bh=lvmNjqPhkkRsEEdnO2QEjZTo2wH1g2XD7DuUr8NmaS0=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=3ny59IpvMw3gEhQRhxWFsBPrfbyBMh8u1p7TLsv3i+b5uJJMGlkVlx6mNv9xzvTRJ
-	 uZSoqAHDkbxXK6+NLO4LWXfkI8LIzkJYHsxOn9nOAMoDUjXiz5hFQeZmdwjajhRI6F
-	 7MiL/oEjqtdXTwvJSdDeNEdYSPHF5GhumkwZNFWJp3UrDYrwqGiaH1uI2bjBogzQJT
-	 jN6vX0kXlxyQNazB5EjuTM3LwQ1R8bnuQqqegjivryW//gl1+KUW6iLo+pDq7dBkkA
-	 IC/YuAV8a/E8OhS5ehoo4iPWPftfQTSl4IHgXOwJ4JuHjZJpFh8IX3oEQVxleHqzIa
-	 5UqU05IITILUQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 584D360EF6;
-	Tue, 18 Nov 2025 04:30:18 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 1835BD5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Nov 2025 04:30:17 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0A93B401F6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Nov 2025 04:30:17 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 05rEphvZg3od for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Nov 2025 04:30:16 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
- helo=mgamail.intel.com; envelope-from=sreedevi.joshi@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 0495440025
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0495440025
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0495440025
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Nov 2025 04:30:15 +0000 (UTC)
-X-CSE-ConnectionGUID: kWIJ9qKWSxyqHORg6dw0fQ==
-X-CSE-MsgGUID: p3SeIfbfTRihTB34BH3Lfg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11616"; a="82843608"
-X-IronPort-AV: E=Sophos;i="6.19,313,1754982000"; d="scan'208";a="82843608"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Nov 2025 20:23:10 -0800
-X-CSE-ConnectionGUID: 4OULdYgHRZ+mqaJyWvqtmA==
-X-CSE-MsgGUID: 4MZ+bLfKRGGNMeU2TYok5Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,313,1754982000"; d="scan'208";a="191086607"
-Received: from aus-labsrv3.an.intel.com ([10.123.116.23])
- by fmviesa009.fm.intel.com with ESMTP; 17 Nov 2025 20:23:08 -0800
-From: Sreedevi Joshi <sreedevi.joshi@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, Sreedevi Joshi <sreedevi.joshi@intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Sridhar Samudrala <sridhar.samudrala@intel.com>,
- Emil Tantilov <emil.s.tantilov@intel.com>
-Date: Mon, 17 Nov 2025 22:22:28 -0600
-Message-Id: <20251118042228.381667-4-sreedevi.joshi@intel.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20251118042228.381667-1-sreedevi.joshi@intel.com>
-References: <20251118042228.381667-1-sreedevi.joshi@intel.com>
+ id nqja2qxYrQx5 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Nov 2025 06:37:26 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::42a; helo=mail-pf1-x42a.google.com;
+ envelope-from=alessandro.d@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 265286065C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 265286065C
+Received: from mail-pf1-x42a.google.com (mail-pf1-x42a.google.com
+ [IPv6:2607:f8b0:4864:20::42a])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 265286065C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Nov 2025 06:37:25 +0000 (UTC)
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-7b852bb31d9so5756885b3a.0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 17 Nov 2025 22:37:25 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1763447845; x=1764052645;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=rKXeu+SiVQVquAoWhSPWf0RcZCWL+HzPZuMMI7btDH4=;
+ b=PEuZwF0FOYryrHTbevI6F7B8abtIvOJ6E3VlkgWvrF6G5/S0ksYVeMh3Lj2iEE4prz
+ HsU+n8kf938JPrShGy1dzxUuE3EAi22PSZyT9mPidUmbkgqp2GJWlVS8t7rzTsqWM0VK
+ fMjE7TsS7EsfUF4GLmWjp4SDCpaaA8cM311eFHBg3t5sXmoAfikk0nNilG7dPUUIXHFC
+ 5of36lPciqmf7GRiL/JZchhMLSJYLsOIbLKeHoFXsNQhwiqZxj7LvtohQu/tW3pQXyVV
+ VVDZG5H41D5Oqv0P5imD+v2ASCZdm2L+3AGBqc0WpAb/K9VvHCwFkZCsAPzHkP38JhgN
+ 0Khg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXBbgoNMQb7daifPqs/816+cUyDHl9RDLzW3t2aUsfrfBx1bDy7HhEWTGDoUcUTNqjEyvFR7OSWMA46gFtJAqQ=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YybwayugPq80yPeEsZVwICFwUUJfe/MfBme6uG/ZGfcA3JCHS3d
+ umFCcoFpq8E2eMnjpNCrdIuaTEWrLBnUwkb7BZtudtpuOfE4lloxi1o+
+X-Gm-Gg: ASbGncs/RHfmFkXO/JoUiKgk48tv65TW511yPWQfEOOVmermHnA24scf7S/8QJO9q+I
+ UrpjkkDSAqYTrC6HTbZSnXRqxoYbCbX/WkB8x/g09aOcG7YKDHsrzXC+SHrJed3YQXN1Ku5/wIV
+ KSPAO93tM6PtOD446E7Jb68q8WEPdp5+p075lTqtWnwaf24XcUSBXLDrlUBaUELqhCvszEjRTXE
+ zYTwInj77YSyW4A/B0hCjFtxX54pRmEJINZuG9w8geLwyQSs9Sv+enQJPMb+WDH+RF5rV2I3Skd
+ QV670TUM3lgLpvdJczz7YUp02KAuxNx0WypcOU988l3W8DN0yRBj/hHaxgnyKhgXtbDXc+boTzH
+ e1lLBndjj7hQxqFpmGM9EFKVR1girJyIFhGdfpfClwdAxoiX1ARMxTHX7BU0Anldnb1CPmCdjWp
+ Lwjv3HAP4leFQgsYez1citoH8BPbRWgWYFkaWNUv2nsNBsOX9K
+X-Google-Smtp-Source: AGHT+IHXALiriWwJLx7SmcMxCfVQY5rBvQyEVgIoRqwO0R8z37/xvVCwrwjnmjxza5ZezAx2KyQwnw==
+X-Received: by 2002:a05:6a00:2405:b0:7a2:8d06:fa0e with SMTP id
+ d2e1a72fcca58-7ba3bb8ed5bmr18001534b3a.26.1763447845354; 
+ Mon, 17 Nov 2025 22:37:25 -0800 (PST)
+Received: from lima-default ([103.246.102.164])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-7b9251c99aasm15364262b3a.28.2025.11.17.22.37.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 17 Nov 2025 22:37:24 -0800 (PST)
+Date: Tue, 18 Nov 2025 17:37:14 +1100
+From: Alessandro Decina <alessandro.d@gmail.com>
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Cc: netdev@vger.kernel.org, "David S. Miller" <davem@davemloft.net>,
+ Alexei Starovoitov <ast@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ Daniel Borkmann <daniel@iogearbox.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, Paolo Abeni <pabeni@redhat.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Stanislav Fomichev <sdf@fomichev.me>,
+ Tirthendu Sarkar <tirthendu.sarkar@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, bpf@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
+Message-ID: <aRwUGnyFBxrkjGl7@lima-default>
+References: <20251113082438.54154-1-alessandro.d@gmail.com>
+ <20251113082438.54154-2-alessandro.d@gmail.com>
+ <aRcoGvqbT9V/HtoD@boxer> <aRgysZAaRwNSsMY3@lima-default>
+ <aRtPXS8haLNHu8H1@boxer>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1763440216; x=1794976216;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=3h8C7ms2lT0gGRut8mfr73o9Zzge0iofG1ntEd0Mzfk=;
- b=WBNKRy8Zo827KNwGJzN8AJSkeEwCimjeIuRQRA4xJnmf1GbUHCTY0J81
- n/1BQ6qD98XOKV4ZOZ3AkmQjYdoRlfeIZLeqJSIt4L7wYO94yBESYrkwq
- AHJfKcQXoCpPAdPucxAea92vOrKfLTTr9THg/aPkIx2MrHV7CmWyihNAV
- F3ZyqQ8TNqpt17mdk7A1OlHt8Hp7cwMHao+Yfd4BVVxiBnfGBMmOi01RB
- jVED6TPPQkFFG7j2jJHLcuRKGHsufxLfKd9WDz6kkRkGHdYOgq+2fCZqn
- GGPjtlT1qhDT1U1xmO9KkjrWXodcBR2GlQznlvzQq+9xIeX0xNGk47Klx
- Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <aRtPXS8haLNHu8H1@boxer>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1763447845; x=1764052645; darn=lists.osuosl.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=rKXeu+SiVQVquAoWhSPWf0RcZCWL+HzPZuMMI7btDH4=;
+ b=Jz5QuwyetCN1HnsWkXsMfvY7WBUmYj7OPz/dIBUTu1nBNQ5rOdrVpyPDmq24ier2SN
+ jPrGF2WDCOWjoX8vRQTqkoGyZWVc4RKD2a4HrLVB25f3297dUNAUt9Zi2fOPJDN5f5sk
+ FQaVdAY6ZdHke2NwUm9b5XNCEn+0NLHm3aghKLQPYlbtr5UuMVTrEWGG0jOIXeqagFSJ
+ dXdwDjIJC5KZYU/hqpIT55L79BmU7WKbu1L08M0SkoSVear4A1MJ88XhbIQH0ZqxX/Xq
+ Zm0ZFVSSF0qfPzLQxccDb0dHkmubLZJhKcwpJGiHkAV1E8x/chxCvWdUUyR9V7t74oXp
+ t4YQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=WBNKRy8Z
-Subject: [Intel-wired-lan] [PATCH iwl-net 3/3] idpf: Fix RSS LUT NULL ptr
- issue after soft reset
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20230601 header.b=Jz5Quwye
+Subject: Re: [Intel-wired-lan] [PATCH net v3 1/1] i40e: xsk: advance
+ next_to_clean on status descriptors
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -111,113 +142,14 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-During soft reset, the RSS LUT is freed and not restored unless the
-interface is up. If an ethtool command that accesses the rss lut is
-attempted immediately after reset, it will result in NULL ptr
-dereference. Also, there is no need to reset the rss lut if the soft reset
-does not involve queue count change.
+On Mon, Nov 17, 2025 at 05:37:49PM +0100, Maciej Fijalkowski wrote:
+> This revision is much more clear to me. Only thing that might be bothering
+> someone is doubled i40e_rx_bi() call in i40e_get_rx_buffer(). Not sure if
+> we can do about it though as we need to use ntp from before potential
+> increment.
+> 
+> ...maybe pass rx_buffer to i40e_get_rx_buffer() ?
 
-After soft reset, set the RSS LUT to default values based on the updated
-queue count only if the reset was a result of a queue count change. For
-all other reset causes, don't touch the LUT.
-
-Steps to reproduce:
-
-** Bring the interface down (if up)
-ifconfig eth1 down
-
-** update the queue count (eg., 27->20)
-ethtool -L eth1 combined 20
-
-** display the RSS LUT
-ethtool -x eth1
-
-[82375.558338] BUG: kernel NULL pointer dereference, address: 0000000000000000
-[82375.558373] #PF: supervisor read access in kernel mode
-[82375.558391] #PF: error_code(0x0000) - not-present page
-[82375.558408] PGD 0 P4D 0
-[82375.558421] Oops: Oops: 0000 [#1] SMP NOPTI
-<snip>
-[82375.558516] RIP: 0010:idpf_get_rxfh+0x108/0x150 [idpf]
-[82375.558786] Call Trace:
-[82375.558793]  <TASK>
-[82375.558804]  rss_prepare.isra.0+0x187/0x2a0
-[82375.558827]  rss_prepare_data+0x3a/0x50
-[82375.558845]  ethnl_default_doit+0x13d/0x3e0
-[82375.558863]  genl_family_rcv_msg_doit+0x11f/0x180
-[82375.558886]  genl_rcv_msg+0x1ad/0x2b0
-[82375.558902]  ? __pfx_ethnl_default_doit+0x10/0x10
-[82375.558920]  ? __pfx_genl_rcv_msg+0x10/0x10
-[82375.558937]  netlink_rcv_skb+0x58/0x100
-[82375.558957]  genl_rcv+0x2c/0x50
-[82375.558971]  netlink_unicast+0x289/0x3e0
-[82375.558988]  netlink_sendmsg+0x215/0x440
-[82375.559005]  __sys_sendto+0x234/0x240
-[82375.559555]  __x64_sys_sendto+0x28/0x30
-[82375.560068]  x64_sys_call+0x1909/0x1da0
-[82375.560576]  do_syscall_64+0x7a/0xfa0
-[82375.561076]  ? clear_bhb_loop+0x60/0xb0
-[82375.561567]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
-<snip>
-
-Fixes: 02cbfba1add5 ("idpf: add ethtool callbacks")
-Signed-off-by: Sreedevi Joshi <sreedevi.joshi@intel.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
-Reviewed-by: Emil Tantilov <emil.s.tantilov@intel.com>
----
- drivers/net/ethernet/intel/idpf/idpf_lib.c  | 4 +++-
- drivers/net/ethernet/intel/idpf/idpf_txrx.c | 2 +-
- drivers/net/ethernet/intel/idpf/idpf_txrx.h | 1 +
- 3 files changed, 5 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-index 7359677d8a3d..51e1fccfb6d1 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-@@ -2061,7 +2061,6 @@ int idpf_initiate_soft_reset(struct idpf_vport *vport,
- 		idpf_vport_stop(vport, false);
- 	}
- 
--	idpf_deinit_rss_lut(vport);
- 	/* We're passing in vport here because we need its wait_queue
- 	 * to send a message and it should be getting all the vport
- 	 * config data out of the adapter but we need to be careful not
-@@ -2087,6 +2086,9 @@ int idpf_initiate_soft_reset(struct idpf_vport *vport,
- 	if (err)
- 		goto err_open;
- 
-+	if (reset_cause == IDPF_SR_Q_CHANGE)
-+		idpf_fill_dflt_rss_lut(vport);
-+
- 	if (current_state == __IDPF_VPORT_UP)
- 		err = idpf_vport_open(vport, false);
- 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-index 11f711997db8..214e7c93b106 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-@@ -4643,7 +4643,7 @@ int idpf_config_rss(struct idpf_vport *vport)
-  * idpf_fill_dflt_rss_lut - Fill the indirection table with the default values
-  * @vport: virtual port structure
-  */
--static void idpf_fill_dflt_rss_lut(struct idpf_vport *vport)
-+void idpf_fill_dflt_rss_lut(struct idpf_vport *vport)
- {
- 	struct idpf_adapter *adapter = vport->adapter;
- 	u16 num_active_rxq = vport->num_rxq;
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-index 2bfb87b82a9b..423cc9486dce 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-@@ -1086,6 +1086,7 @@ void idpf_vport_intr_update_itr_ena_irq(struct idpf_q_vector *q_vector);
- void idpf_vport_intr_deinit(struct idpf_vport *vport);
- int idpf_vport_intr_init(struct idpf_vport *vport);
- void idpf_vport_intr_ena(struct idpf_vport *vport);
-+void idpf_fill_dflt_rss_lut(struct idpf_vport *vport);
- int idpf_config_rss(struct idpf_vport *vport);
- int idpf_init_rss_lut(struct idpf_vport *vport);
- void idpf_deinit_rss_lut(struct idpf_vport *vport);
--- 
-2.43.0
-
+Surely the compiler isn't going to actually reload here, but yeah not
+great code wise. How about I pass it the buffer and rename to
+i40e_prepare_rx_buffer to better match what's happening now?
