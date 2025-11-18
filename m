@@ -1,208 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D08B4C6A93E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Nov 2025 17:20:59 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0BC98C6B0F3
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Nov 2025 18:56:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4CF0B402AE;
-	Tue, 18 Nov 2025 16:20:58 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id p9mDkMcuhW1v; Tue, 18 Nov 2025 16:20:57 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C28A44080D
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1763482857;
-	bh=b8qR1fNCOUcGmFlXBqf2Jmbglcn0cz6vrnKg5k3I8HY=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=yAKqAA8f4SsAozwpzOTfxu74o0eAG5G4Do/CGKR2nvCUkLtm8Sgeo6jwO8alWp/Yf
-	 qGVv6L1VcnEL5v+z42N+E03GcYeVXyGdmYNxqEA3ftEdPpRvHIRwuX7YQImqMYi3rc
-	 92cVR1xjvxGk/NVQhc37sQMlSLviBafhryPtxNNZU8QjrYkkXkKfPj3ouAe/yDy/yH
-	 HW82tOWCji5boUQMZZQNc7vH6qixwErQjjro609GOKeTcJ25G02OcixZDQKNUr4BPb
-	 qs3n5BfmGIMdnAqs2t2Pv+0U49K9o9NUw4b+kitAMpEzVZ9hVxeZLVTMjtHy1oh21w
-	 n9Ays8UjUv6vQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C28A44080D;
-	Tue, 18 Nov 2025 16:20:57 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id E6C09D5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Nov 2025 15:24:40 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D8FDC80BBB
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Nov 2025 15:24:40 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7C5A08228C;
+	Tue, 18 Nov 2025 17:56:04 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id l3lquujlgkuL for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Nov 2025 15:24:40 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=148.163.158.5;
- helo=mx0b-001b2d01.pphosted.com; envelope-from=sth@linux.ibm.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org C2E5280BAC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C2E5280BAC
-Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
- [148.163.158.5])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C2E5280BAC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Nov 2025 15:24:39 +0000 (UTC)
-Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5AI1tqs7028393;
- Tue, 18 Nov 2025 15:23:17 GMT
-Received: from ppma13.dal12v.mail.ibm.com
- (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4aejmsk7vk-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 18 Nov 2025 15:23:16 +0000 (GMT)
-Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
- by ppma13.dal12v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 5AICQoFw006967;
- Tue, 18 Nov 2025 15:23:15 GMT
-Received: from smtprelay05.fra02v.mail.ibm.com ([9.218.2.225])
- by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 4af62jbj06-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 18 Nov 2025 15:23:15 +0000
-Received: from smtpav02.fra02v.mail.ibm.com (smtpav02.fra02v.mail.ibm.com
- [10.20.54.101])
- by smtprelay05.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 5AIFNBfr40042972
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 18 Nov 2025 15:23:12 GMT
-Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id C34CE20040;
- Tue, 18 Nov 2025 15:23:11 +0000 (GMT)
-Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 9A79420043;
- Tue, 18 Nov 2025 15:23:10 +0000 (GMT)
-Received: from [9.152.212.246] (unknown [9.152.212.246])
- by smtpav02.fra02v.mail.ibm.com (Postfix) with ESMTP;
- Tue, 18 Nov 2025 15:23:10 +0000 (GMT)
-Message-ID: <55871dc5-2467-4558-be5b-0296d478a6d1@linux.ibm.com>
-Date: Tue, 18 Nov 2025 16:23:09 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Corey Minyard <corey@minyard.net>, =?UTF-8?Q?Christian_K=C3=B6nig?=
- <christian.koenig@amd.com>, "Dr. David Alan Gilbert" <linux@treblig.org>,
- Alex Deucher <alexander.deucher@amd.com>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Rob Clark <robin.clark@oss.qualcomm.com>,
- Matthew Brost <matthew.brost@intel.com>, Ulf Hansson
- <ulf.hansson@linaro.org>, Aleksandr Loktionov
- <aleksandr.loktionov@intel.com>, Vitaly Lifshits
- <vitaly.lifshits@intel.com>, Manivannan Sadhasivam <mani@kernel.org>,
- Niklas Cassel <cassel@kernel.org>, Calvin Owens <calvin@wbinvd.org>,
- Vadim Fedorenko <vadim.fedorenko@linux.dev>,
- Sagi Maimon <maimon.sagi@gmail.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Karan Tilak Kumar <kartilak@cisco.com>,
- Hans Verkuil <hverkuil+cisco@kernel.org>,
- Casey Schaufler <casey@schaufler-ca.com>,
- Steven Rostedt <rostedt@goodmis.org>, Petr Mladek <pmladek@suse.com>,
- Viacheslav Dubeyko <Slava.Dubeyko@ibm.com>,
- Max Kellermann <max.kellermann@ionos.com>, linux-doc@vger.kernel.org,
- linux-kernel@vger.kernel.org, openipmi-developer@lists.sourceforge.net,
- linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linaro-mm-sig@lists.linaro.org, amd-gfx@lists.freedesktop.org,
- linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
- intel-xe@lists.freedesktop.org, linux-mmc@vger.kernel.org,
- netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-pci@vger.kernel.org, linux-s390@vger.kernel.org,
- linux-scsi@vger.kernel.org, linux-staging@lists.linux.dev,
- ceph-devel@vger.kernel.org, linux-trace-kernel@vger.kernel.org
-Cc: Rasmus Villemoes <linux@rasmusvillemoes.dk>,
- Sergey Senozhatsky <senozhatsky@chromium.org>,
- Jonathan Corbet <corbet@lwn.net>, Sumit Semwal <sumit.semwal@linaro.org>,
- Gustavo Padovan <gustavo@padovan.org>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Dmitry Baryshkov <lumag@kernel.org>,
- Abhinav Kumar <abhinav.kumar@linux.dev>,
- Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>,
- Marijn Suijten <marijn.suijten@somainline.org>,
- Konrad Dybcio <konradybcio@kernel.org>,
- Lucas De Marchi <lucas.demarchi@intel.com>,
- =?UTF-8?Q?Thomas_Hellstr=C3=B6m?= <thomas.hellstrom@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Vladimir Oltean <olteanv@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>,
- Bjorn Helgaas <bhelgaas@google.com>, Rodolfo Giometti
- <giometti@enneenne.com>, Jonathan Lemon <jonathan.lemon@gmail.com>,
- Richard Cochran <richardcochran@gmail.com>,
- Jan Hoeppner <hoeppner@linux.ibm.com>,
- Heiko Carstens <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Sven Schnelle <svens@linux.ibm.com>, Satish Kharat <satishkh@cisco.com>,
- Sesidhar Baddela <sebaddel@cisco.com>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Xiubo Li
- <xiubli@redhat.com>, Ilya Dryomov <idryomov@gmail.com>,
- Masami Hiramatsu <mhiramat@kernel.org>,
- Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
- Andrew Morton <akpm@linux-foundation.org>
-References: <20251113150217.3030010-1-andriy.shevchenko@linux.intel.com>
- <20251113150217.3030010-19-andriy.shevchenko@linux.intel.com>
-Content-Language: en-US
-From: Stefan Haberland <sth@linux.ibm.com>
-In-Reply-To: <20251113150217.3030010-19-andriy.shevchenko@linux.intel.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: z5vCIuXQoxQhVWpfGoNnS3CQXWBOkQvm
-X-Authority-Analysis: v=2.4 cv=Rv3I7SmK c=1 sm=1 tr=0 ts=691c8f65 cx=c_pps
- a=AfN7/Ok6k8XGzOShvHwTGQ==:117 a=AfN7/Ok6k8XGzOShvHwTGQ==:17
- a=IkcTkHD0fZMA:10 a=6UeiqGixMTsA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=QyXUC8HyAAAA:8 a=VnNF1IyMAAAA:8 a=JNz3O4sEs4oywJvo4n4A:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=UhEZJTgQB8St2RibIkdl:22 a=Z5ABNNGmrOfJ6cZ5bIyy:22
- a=QOGEsqRv6VhmHaoFNykA:22
-X-Proofpoint-GUID: z5vCIuXQoxQhVWpfGoNnS3CQXWBOkQvm
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTE1MDAzMiBTYWx0ZWRfX7xgDi9VMkHy1
- xY1Kr5CN6JO103EZyDLYmJUVyCiuwKR/4uc3+Lmy/gvg5ECzM4sd6vU0zWqCHklppK8uLUvWjGX
- HwwwwH+Ce8Jw0NQCUNjE3exfborRXuQ4RjSB1HZACxh4RkWbE7BpIzojfb5TKd4SBA0XBh10Euo
- CsCaHasXAGt43yERBXoTQ5hFXFxjF+AK1zNBNgHfBYOInKsNmRYBkGYznwzarJkxLc/UdbEghnq
- kmXAnC8NgaNRASHp2cZtXrz3YttsT408eVXN4mQFU8o8MSMzbwi3Kptdqy/18crsQhyL56cLX4n
- RnZa0fHWW+S36zf2ZHPlGEIVPwtibWxtWTZqXsygWW1T/83Ban6/JWLGXi3iADfuOgd8HUjrRri
- jkkd9Ckpow854pIeK6bG7rGX3zWg/g==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
- definitions=2025-11-18_01,2025-11-18_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 suspectscore=0 clxscore=1011 phishscore=0 priorityscore=1501
- spamscore=0 lowpriorityscore=0 impostorscore=0 adultscore=0 bulkscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.19.0-2510240000 definitions=main-2511150032
-X-Mailman-Approved-At: Tue, 18 Nov 2025 16:20:56 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ibm.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=pp1; bh=b8qR1f
- NCOUcGmFlXBqf2Jmbglcn0cz6vrnKg5k3I8HY=; b=mEE4eUYjgklKf8ckwZAhDy
- SemFjclSHph4OIcNgGIRB33yKEvmDkUgpvf4MsjpE3xo0akxzvjylX58YARmSJ5h
- c2Ooip5l5xKCeB+ZszFhhCXGu1T0RI/6rBGNycK4VKLDmLOQLbQF8xC71MwsdRpI
- 0oQIclRsJ2BH/z3isyuBtV/G5oGzzxcyO/U8jZGhW63jDjC0GT2rEygs7Nywqf0o
- LKYkHjV4YQgao5GRKh0XTFLZa5uyctdwxj2IR2IjesWo4ulffbUPV3WfYorlMzp9
- 3UQws93x7ragECUHS6LnyzjaTYBragG1GGke7RSE/IYNqSxXY5az/LqI4/4Qzsew
- ==
+ id XOObSs8Z6y_d; Tue, 18 Nov 2025 17:56:02 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 82A148441F
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1763488562;
+	bh=ZQzrVgkp8n/Tx8dH4yrrKkZn981CmX8AMGskB43ch2M=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=1hd52Y9orKa0DoYvp5ws98PZsGKRmUhW8i/7GWKuS2gCjijiPF2GpSwK/wzlkM01U
+	 LJMrsYQ88YV69X4/CL2XyWNQPinXy72ToVKK6kRHrtUSqKB8rIT82dsZMgp9y9oBXa
+	 eOZyN366oWzKwYocms7tJOj++jQVkN7Nlmh/J+ZdYImZO6HU3Udjlqt6akosyzpc4b
+	 FDOgDttGgEONa6i2zVORF7y7IHkTDCbui8zB3XmGDUROegQzLvwvXLnyf4YKrsxr62
+	 cCRblYF9PnfB5j12bc9YelYFAUSq90hBBDtWTHEVlWe6l8mB7e4tn7qNk4EecWpulV
+	 JmZYUu3TTvWdQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 82A148441F;
+	Tue, 18 Nov 2025 17:56:02 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 9B6E6D5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Nov 2025 17:56:00 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8DEEF82792
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Nov 2025 17:56:00 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id AF579bMHf6wh for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Nov 2025 17:55:59 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8CDF48232D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8CDF48232D
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8CDF48232D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Nov 2025 17:55:59 +0000 (UTC)
+X-CSE-ConnectionGUID: o2SzdpSUQFqVovdqZv2kvw==
+X-CSE-MsgGUID: gUa7COvlSSmDh5UIHe+nxA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11617"; a="65551960"
+X-IronPort-AV: E=Sophos;i="6.19,314,1754982000"; d="scan'208";a="65551960"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+ by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Nov 2025 09:55:59 -0800
+X-CSE-ConnectionGUID: cnsm3nbuQQeMHjJDmWSo0Q==
+X-CSE-MsgGUID: hA3AKhVLTeGwUZ+IoSZBcA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.19,314,1754982000"; d="scan'208";a="195956173"
+Received: from lkp-server01.sh.intel.com (HELO adf6d29aa8d9) ([10.239.97.150])
+ by orviesa005.jf.intel.com with ESMTP; 18 Nov 2025 09:55:58 -0800
+Received: from kbuild by adf6d29aa8d9 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1vLPvn-000220-2y
+ for intel-wired-lan@lists.osuosl.org; Tue, 18 Nov 2025 17:55:55 +0000
+Date: Wed, 19 Nov 2025 01:55:19 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202511190114.7zCjxsRM-lkp@intel.com>
+User-Agent: s-nail v14.9.25
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1763488560; x=1795024560;
+ h=date:from:to:subject:message-id;
+ bh=DkzkPVnmICIaQ3MHWArNReHaQO3oyGqlWjDcsV9h6pg=;
+ b=nBAW7zGfO26Ee2R47tuV4Aq1019HQBdyfHC4NLJSxNzydqmi1RyI33oS
+ +nTPvLm7hYn0m8QSnSQXihq3lTJiGkMilAN6ch9t+fGhLikmpXPB9cjX9
+ D667p+kht8MGPPedlYXyYKglw7VS1/odP/noSrt2MenJf8469vvYYJYAe
+ g5IAU6fPrv+mOhoMfmclzXSyu044NvNie+4Yb4O2vjJsifyUfiWArGgJs
+ BU1oaFTmCNLjlozbpW+rEdwaTLwskF/m4a5TO+GZXtI10MQ1l3jnmhhIY
+ 5ImiDv6hUlKocTMvQwAuWS4OlKdb5RDi0CraIqgn0PwoY5Ub7rySXGxBz
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.ibm.com
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=ibm.com header.i=@ibm.com header.a=rsa-sha256
- header.s=pp1 header.b=mEE4eUYj
-Subject: Re: [Intel-wired-lan] [PATCH v3 18/21] s390/dasd: Switch to use
- %ptSp
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=nBAW7zGf
+Subject: [Intel-wired-lan] [tnguy-net-queue:200GbE] BUILD SUCCESS
+ 5442a9da69789741bfda39f34ee7f69552bf0c56
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -218,16 +104,97 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Am 13.11.25 um 15:32 schrieb Andy Shevchenko:
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 200GbE
+branch HEAD: 5442a9da69789741bfda39f34ee7f69552bf0c56  veth: more robust handing of race to avoid txq getting stuck
 
-> Use %ptSp instead of open coded variants to print content of
-> struct timespec64 in human readable format.
->
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> ---
+elapsed time: 5223m
 
-Thanks, looks good to me.
+configs tested: 78
+configs skipped: 2
 
-Acked-by: Stefan Haberland <sth@linux.ibm.com> 
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
+tested configs:
+alpha                    allnoconfig    gcc-15.1.0
+arc                      allnoconfig    gcc-15.1.0
+arc          randconfig-001-20251118    gcc-14.3.0
+arc          randconfig-002-20251118    gcc-15.1.0
+arm                      allnoconfig    clang-22
+arm          randconfig-001-20251118    gcc-8.5.0
+arm          randconfig-002-20251118    gcc-10.5.0
+arm          randconfig-003-20251118    clang-22
+arm          randconfig-004-20251118    clang-22
+arm              versatile_defconfig    gcc-15.1.0
+arm64                    allnoconfig    gcc-15.1.0
+arm64        randconfig-001-20251118    clang-20
+arm64        randconfig-002-20251118    clang-22
+arm64        randconfig-003-20251118    clang-19
+arm64        randconfig-004-20251118    clang-17
+csky                     allnoconfig    gcc-15.1.0
+csky         randconfig-001-20251118    gcc-10.5.0
+csky         randconfig-002-20251118    gcc-15.1.0
+hexagon                  allnoconfig    clang-22
+i386                     allnoconfig    gcc-14
+i386         randconfig-001-20251119    clang-20
+i386         randconfig-002-20251119    clang-20
+i386         randconfig-003-20251119    clang-20
+i386         randconfig-004-20251119    clang-20
+i386         randconfig-005-20251119    clang-20
+i386         randconfig-006-20251119    gcc-14
+i386         randconfig-007-20251119    gcc-14
+loongarch                allnoconfig    clang-22
+m68k                     allnoconfig    gcc-15.1.0
+microblaze               allnoconfig    gcc-15.1.0
+mips                     allnoconfig    gcc-15.1.0
+mips               bcm47xx_defconfig    clang-18
+mips                  gcw0_defconfig    clang-22
+nios2                    allnoconfig    gcc-11.5.0
+openrisc                 allnoconfig    gcc-15.1.0
+openrisc                   defconfig    gcc-15.1.0
+parisc                   allnoconfig    gcc-15.1.0
+parisc                     defconfig    gcc-15.1.0
+parisc       randconfig-001-20251118    gcc-14.3.0
+parisc       randconfig-002-20251118    gcc-12.5.0
+powerpc                  allnoconfig    gcc-15.1.0
+powerpc      randconfig-001-20251118    clang-22
+powerpc      randconfig-002-20251118    clang-22
+powerpc                wii_defconfig    gcc-15.1.0
+powerpc64    randconfig-001-20251118    gcc-13.4.0
+powerpc64    randconfig-002-20251118    gcc-8.5.0
+riscv                    allnoconfig    gcc-15.1.0
+riscv                      defconfig    clang-22
+s390                     allnoconfig    clang-22
+s390                       defconfig    clang-22
+sh                       allnoconfig    gcc-15.1.0
+sh                         defconfig    gcc-15.1.0
+sh          rts7751r2dplus_defconfig    gcc-15.1.0
+sh                  se7750_defconfig    gcc-15.1.0
+sh            sh7710voipgw_defconfig    gcc-15.1.0
+sparc                    allnoconfig    gcc-15.1.0
+sparc                      defconfig    gcc-15.1.0
+sparc64                    defconfig    clang-20
+um                       allnoconfig    clang-22
+um                         defconfig    clang-22
+um                    i386_defconfig    gcc-14
+um                  x86_64_defconfig    clang-22
+x86_64                   allnoconfig    clang-20
+x86_64                     defconfig    gcc-14
+x86_64                         kexec    clang-20
+x86_64       randconfig-071-20251119    gcc-14
+x86_64       randconfig-072-20251119    clang-20
+x86_64       randconfig-073-20251119    gcc-12
+x86_64       randconfig-074-20251119    clang-20
+x86_64       randconfig-075-20251119    clang-20
+x86_64       randconfig-076-20251119    gcc-14
+x86_64                      rhel-9.4    clang-20
+x86_64                  rhel-9.4-bpf    gcc-14
+x86_64                 rhel-9.4-func    clang-20
+x86_64           rhel-9.4-kselftests    clang-20
+x86_64                rhel-9.4-kunit    gcc-14
+x86_64                  rhel-9.4-ltp    gcc-14
+xtensa                   allnoconfig    gcc-15.1.0
 
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
