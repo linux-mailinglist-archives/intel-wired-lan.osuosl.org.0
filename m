@@ -1,102 +1,130 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 11397C68B01
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Nov 2025 11:02:13 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 427FFC68F1C
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Nov 2025 12:00:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 92EB240C1D;
-	Tue, 18 Nov 2025 10:02:10 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D3BBA60F68;
+	Tue, 18 Nov 2025 11:00:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id BMncnPJIPKRu; Tue, 18 Nov 2025 10:02:09 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id bf2zYsLtrA9G; Tue, 18 Nov 2025 11:00:14 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E505940C15
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5F68C60F8F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1763460128;
-	bh=32evEixE8jldN95sVYGYo8rs8oipO2Lpfb6zAqOyAqA=;
-	h=From:To:Cc:In-Reply-To:References:Date:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=fuXOjoWEXyOnrEhRl3RPovwM6GZGAtTVd96bf4NLa7WMr+6wz5HwB2ITHwfJIJy/3
-	 O3+OddmE21LXQaN82Mtxj38w5eKQpTuH3Zm44f8n377XxLm+g+IDvJsNRRa0yL7bqu
-	 ZQNApJWlW70MBh8XD3CpiE49EB+x8bGP6ittD4YWczAZJBbkNJY1q4x0txLLCYsXgA
-	 rXADcnA59qCYWzJSzvpEOt7i/ga/P8+OlCZj4NFtvWCVnR06mrp6/7PswgpDG6bsNb
-	 ca/ZvYNwPGhObgShg8oGK6Kt96tbdrnSflni9aeESd58nA2uMbKHSMPZBp3OyEH+VE
-	 42nDqZ2XAToaw==
+	s=default; t=1763463614;
+	bh=vtzw7cutTccMEE7WY+vb8GRnS9OkTCSwzPJit9gHtrI=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=5tgLl3aY2zfLlehvXueH/UkqtHedG8XxERWVWks3saXMd6xhPLn9yv3I0kj0EuRWI
+	 gAqDXoS7WgRA+6wYs08Cp0ftqEgSs80npo8BAphxWMA8YJZU8lHnQliHnlMLQ0aRTr
+	 CD8FmdFE7ZzglvS3FQeHB1GJ/5zAiNzf0iKVRv3NoICDLb9NNXPAq0Qgqeg/ynxEwI
+	 jGvmK7OwlGdZRZUcJfGhk4ir2ZvU/tMpaohk6WK2NVGCYeNZpRRbt6ViAWCn29u9cr
+	 tDsT7GxEyvuXOi1grEfqsrk4B1dJazN45biZJLawQaDVuBwJ3jv0cxqqUgiyXdW/mG
+	 rdijspgKc0S0A==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E505940C15;
-	Tue, 18 Nov 2025 10:02:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5F68C60F8F;
+	Tue, 18 Nov 2025 11:00:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 1F6F8158
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Nov 2025 10:02:07 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 64FDA1BA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Nov 2025 11:00:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 062DA40245
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Nov 2025 10:02:07 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 4B5D940253
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Nov 2025 11:00:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id gTgjoKmObpBl for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Nov 2025 10:02:06 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.142.43.55;
- helo=galois.linutronix.de; envelope-from=kurt@linutronix.de;
+ id 66iw08pMAdkf for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Nov 2025 11:00:11 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=205.220.165.32;
+ helo=mx0a-00069f02.pphosted.com; envelope-from=alok.a.tiwari@oracle.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org D875B40078
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D875B40078
-Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D875B40078
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Nov 2025 10:02:05 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>, "Nguyen, Anthony
- L" <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
- <przemyslaw.kitszel@intel.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
- <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Sebastian Andrzej
- Siewior <bigeasy@linutronix.de>, "Gomes, Vinicius"
- <vinicius.gomes@intel.com>, "intel-wired-lan@lists.osuosl.org"
- <intel-wired-lan@lists.osuosl.org>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>
-In-Reply-To: <IA3PR11MB89867DF16F7438B2DFF1D1C1E5D6A@IA3PR11MB8986.namprd11.prod.outlook.com>
-References: <20251118-igc_mqprio_channels-v2-1-c32563dede2f@linutronix.de>
- <IA3PR11MB89867DF16F7438B2DFF1D1C1E5D6A@IA3PR11MB8986.namprd11.prod.outlook.com>
-Date: Tue, 18 Nov 2025 11:02:00 +0100
-Message-ID: <87ldk37j6v.fsf@jax.kurt.home>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 12D0F40199
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 12D0F40199
+Received: from mx0a-00069f02.pphosted.com (mx0a-00069f02.pphosted.com
+ [205.220.165.32])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 12D0F40199
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Nov 2025 11:00:10 +0000 (UTC)
+Received: from pps.filterd (m0246627.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5AI9CdSR024855;
+ Tue, 18 Nov 2025 10:59:53 GMT
+Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com
+ (phxpaimrmta01.appoci.oracle.com [138.1.114.2])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4aejbpvmav-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 18 Nov 2025 10:59:52 +0000 (GMT)
+Received: from pps.filterd
+ (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+ by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2)
+ with ESMTP id 5AI8UToc004250; Tue, 18 Nov 2025 10:59:46 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id
+ 4aefy8qw90-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 18 Nov 2025 10:59:46 +0000
+Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com
+ (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 5AIAt1It020499;
+ Tue, 18 Nov 2025 10:59:46 GMT
+Received: from ca-dev112.us.oracle.com (ca-dev112.us.oracle.com
+ [10.129.136.47])
+ by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id
+ 4aefy8qw8a-1; Tue, 18 Nov 2025 10:59:46 +0000
+From: Alok Tiwari <alok.a.tiwari@oracle.com>
+To: przemyslaw.kitszel@intel.com, aleksander.lobakin@intel.com,
+ anthony.l.nguyen@intel.com, andrew+netdev@lunn.ch, kuba@kernel.org,
+ davem@davemloft.net, edumazet@google.com, pabeni@redhat.com,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+Cc: alok.a.tiwarilinux@gmail.com, alok.a.tiwari@oracle.com
+Date: Tue, 18 Nov 2025 02:55:21 -0800
+Message-ID: <20251118105942.3163598-1-alok.a.tiwari@oracle.com>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
- micalg=pgp-sha512; protocol="application/pgp-signature"
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-17_04,2025-11-13_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ mlxlogscore=999
+ suspectscore=0 malwarescore=0 mlxscore=0 bulkscore=0 phishscore=0
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2510240000 definitions=main-2511180087
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTE1MDAzMSBTYWx0ZWRfX4p2J4CPo7ZbA
+ DksgnPE0eDIHJ6RCw8yK8dNpvRYgFRk/sGJKOz/uDH6QOioLitxcx0gKwtmanCAhVqoVck/gSoz
+ wiFUbqU0lbUy32EIh79V6BI3I8CrewJtmFqu1AyHMPp3u8YEeLBtBqofetPwIMq66aZVE3XA2BI
+ O3onSsSmyZa71q+upoDBovP8cJylLeu6fDBha4WxGpCjwcHLE+vR/rnYrjWO9wnaTbzOkCxAlVe
+ 7xwlRbht3CcjnSVkkQvIR9CiCsj15wbMdzUfr1QwCeujCe0bSeBMAxYBc+pFtL2VhMzvAGRCi7d
+ snL+X3xBsGTSnC4slbHKbaAHEbNEmKr9NOwV729pDrQIYp1Iy5MpWvqw9fI/CtkCsxXqmvhIiG/
+ Ttf52IA4ZCzwAgw5PP4sp9tHo4396g==
+X-Proofpoint-ORIG-GUID: P2G8VG4CIHh-YEj45eT3-iXoMDBz0Fs5
+X-Proofpoint-GUID: P2G8VG4CIHh-YEj45eT3-iXoMDBz0Fs5
+X-Authority-Analysis: v=2.4 cv=a+o9NESF c=1 sm=1 tr=0 ts=691c51a8 cx=c_pps
+ a=XiAAW1AwiKB2Y8Wsi+sD2Q==:117 a=XiAAW1AwiKB2Y8Wsi+sD2Q==:17
+ a=6UeiqGixMTsA:10 a=VkNPw1HP01LnGYTKEx00:22 a=yPCof4ZbAAAA:8
+ a=MPXrcZT4uZQNy45QjfwA:9 a=cPQSjfK2_nFv0Q5t_7PE:22
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1763460122;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=32evEixE8jldN95sVYGYo8rs8oipO2Lpfb6zAqOyAqA=;
- b=WY/acea349j+UYMCzJhVM/VkCKg1ml0W0VCZtWPhTdubvcF1ynT6GmW7rk0anAo2UyJPrR
- CxcseSVlb6wltjpYkap43YeDKYFURIDBhH8GOMTvN26Uwq+lBcwFG4fehCDfxtnhQ1PH8i
- oWc+fqrxlDyxy1ht0fVrOIi5faWCWlVdA+rkWiqcf1q4BA05Q8BqtgQ77Kq3JcCRg55288
- gOG+I9gEFVRAVwS79CZ088qezlfF+zNCJsseDE0G8zmKOg04QLFQTD6Cqi17pg+b/71p8b
- S2n+cpSxsHCTnWh8MpeTAv3O4n0mqausb+gGbYGpDUagPyXIb0knqwYNQpJtHQ==
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1763460122;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=32evEixE8jldN95sVYGYo8rs8oipO2Lpfb6zAqOyAqA=;
- b=OojMpCjwQHphBM489deTOSAj6ml+vWBFskR25HhWxWHaCX/HnU+q7wBt/4laH28Tw/3Ld2
- ZnW+CntMqWWxLIBA==
+ d=oracle.com; h=cc
+ :content-transfer-encoding:date:from:message-id:mime-version
+ :subject:to; s=corp-2025-04-25; bh=vtzw7cutTccMEE7WY+vb8GRnS9OkT
+ CSwzPJit9gHtrI=; b=LY7VainYnp/sR2aAI/KBNWsVdJe82zP//qHu44d0qnzFp
+ CENHDPFapXm7wwOczSkdKaqWEIRO238SpQgXzQ5GSks06xh2p0lpvIf/mI1b4tIS
+ iZCpr79PDUZw7isB9TB5YXVI4UG4tNq15G/EdNLmk+RbU+RMzg5dqN2+zB6kmD+L
+ lxRzBmxT9eOOd9lEGUTk40uHm4Z5DofU2UgZAUk+K4P0xKhMovYF4OYvSV9EffW2
+ yKpa6S/t8A11CJ2R1KzC+JUtCNRvSbWbCeUBNO8Oi7v+EhKO4NkkAGWxwZKzCWj/
+ QtjT0H1tNnLjEuo1rzk2RlTUYOerI8HuH++enyAJQ==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=linutronix.de
+ dmarc=pass (p=reject dis=none)
+ header.from=oracle.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
- header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=WY/acea3; 
- dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=OojMpCjw
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] igc: Restore default Qbv
- schedule when changing channels
+ dkim=pass (2048-bit key,
+ unprotected) header.d=oracle.com header.i=@oracle.com header.a=rsa-sha256
+ header.s=corp-2025-04-25 header.b=LY7VainY
+Subject: [Intel-wired-lan] [PATCH v2 net-next] idpf: use desc_ring when
+ checking completion queue DMA allocation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -112,135 +140,36 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---=-=-=
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+idpf_compl_queue uses a union for comp, comp_4b, and desc_ring. The
+release path should check complq->desc_ring to determine whether the DMA
+descriptor ring is allocated. The current check against comp is not
+incorrect, but it appears to be leftover code from a previous commit.
 
-On Tue Nov 18 2025, Loktionov, Aleksandr wrote:
->> -----Original Message-----
->> From: Kurt Kanzenbach <kurt@linutronix.de>
->> Sent: Tuesday, November 18, 2025 8:29 AM
->> To: Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Kitszel,
->> Przemyslaw <przemyslaw.kitszel@intel.com>
->> Cc: Andrew Lunn <andrew+netdev@lunn.ch>; David S. Miller
->> <davem@davemloft.net>; Eric Dumazet <edumazet@google.com>; Jakub
->> Kicinski <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>; Sebastian
->> Andrzej Siewior <bigeasy@linutronix.de>; Gomes, Vinicius
->> <vinicius.gomes@intel.com>; Loktionov, Aleksandr
->> <aleksandr.loktionov@intel.com>; intel-wired-lan@lists.osuosl.org;
->> netdev@vger.kernel.org; Kurt Kanzenbach <kurt@linutronix.de>
->> Subject: [PATCH iwl-net v2] igc: Restore default Qbv schedule when
->> changing channels
->>=20
->> The Multi Queue Priority (MQPRIO) and Earliest TxTime First (ETF)
->> offload utilizes the Time Sensitive Networking (TSN) Tx mode. This
-> With two items (=E2=80=9CMQPRIO and ETF=E2=80=9D), the noun phrase is plu=
-ral; verb must be utilize.
-> BTW kernel docs and code commonly use =E2=80=9CMulti=E2=80=91queue=E2=80=
-=9D  with hyphen: "The Multi-queue Priority (MQPRIO) ..."
->
-> s/Multi Queue/Multi-queue/
-> s/offload/offloads/
-> s/utilizes/utilize/
->
->> mode is always coupled to IEEE 802.1Qbv time aware shaper (Qbv).
->> Therefore, the driver sets a default Qbv schedule of all gates opened
->> and a cycle time of 1s. This schedule is set during probe.
->>=20
->> However, the following sequence of events lead to Tx issues:
->>=20
->>  - Boot a dual core system
->>    igc_probe():
->>      igc_tsn_clear_schedule():
->>        -> Default Schedule is set
->>        Note: At this point the driver has allocated two Tx/Rx queues,
->> because
->>        there are only two CPU(s).
-> Use standard plural: 'CPUs'
->
->>=20
->>  - ethtool -L enp3s0 combined 4
->>    igc_ethtool_set_channels():
->>      igc_reinit_queues()
->>        -> Default schedule is gone, per Tx ring start and end time are
->> zero
->>=20
->>   - tc qdisc replace dev enp3s0 handle 100 parent root mqprio \
->>       num_tc 4 map 3 3 2 2 0 1 1 1 3 3 3 3 3 3 3 3 \
->>       queues 1@0 1@1 1@2 1@3 hw 1
->>     igc_tsn_offload_apply():
->>       igc_tsn_enable_offload():
->>         -> Writes zeros to IGC_STQT(i) and IGC_ENDQT(i) -> Boom
-> Please avoid colloquialism in commit logs. Suggest:
-> "... IGC_STQT(i) and IGC_ENDQT(i), causing TX to stall/fail."
->
->
->>=20
->> Therefore, restore the default Qbv schedule after changing the number
->> of channels.
->>=20
->> Furthermore, add a restriction to not allow queue reconfiguration when
->> TSN/Qbv is enabled, because it may lead to inconsistent states.
->>=20
->> Fixes: c814a2d2d48f ("igc: Use default cycle 'start' and 'end' values
->> for queues")
->> Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
->> ---
->> Changes in v2:
->> - Explain abbreviations (Aleksandr)
->> - Only clear schedule if no error happened (Aleksandr)
->> - Add restriction to avoid inconsistent states (Vinicius)
->> - Target net tree (Vinicius)
->> - Link to v1: https://lore.kernel.org/r/20251107-igc_mqprio_channels-
->> v1-1-42415562d0f8@linutronix.de
->> ---
->>  drivers/net/ethernet/intel/igc/igc_ethtool.c | 4 ++--
->>  drivers/net/ethernet/intel/igc/igc_main.c    | 5 +++++
->>  2 files changed, 7 insertions(+), 2 deletions(-)
->>=20
->> diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c
->> b/drivers/net/ethernet/intel/igc/igc_ethtool.c
->> index
->> bb783042d1af9c86f18fc033fa4c3e75abb0efe8..43aea9e53e1e79b304c2a7e41fa7
->> d52dc956bffc 100644
->> --- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
->> +++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
->> @@ -1561,8 +1561,8 @@ static int igc_ethtool_set_channels(struct
->> net_device *netdev,
->>  	if (ch->other_count !=3D NON_Q_VECTORS)
->>  		return -EINVAL;
->>=20
->> -	/* Do not allow channel reconfiguration when mqprio is enabled
->> */
->> -	if (adapter->strict_priority_enable)
->> +	/* Do not allow channel reconfiguration when any TSN Qdisc is
->> enabled */
-> Kernel consistently spells the queuing discipline as =E2=80=9Cqdisc=E2=80=
-=9D (lowercase) in comments, Kconfig, and docs.
+Switching the check to desc_ring improves readability and more directly
+reflects the intended meaning, since desc_ring is the field representing
+the allocated DMA-backed descriptor ring.
 
-Sure, will update the changelog and comment in next version.
+Signed-off-by: Alok Tiwari <alok.a.tiwari@oracle.com>
+---
+v1 -> v2
+modify commit message and target to net-next
+---
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks,
-Kurt
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+index 828f7c444d30..1e7ae6f969ac 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+@@ -134,7 +134,7 @@ static void idpf_compl_desc_rel(struct idpf_compl_queue *complq)
+ {
+ 	idpf_xsk_clear_queue(complq, VIRTCHNL2_QUEUE_TYPE_TX_COMPLETION);
+ 
+-	if (!complq->comp)
++	if (!complq->desc_ring)
+ 		return;
+ 
+ 	dma_free_coherent(complq->netdev->dev.parent, complq->size,
+-- 
+2.50.1
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmkcRBgTHGt1cnRAbGlu
-dXRyb25peC5kZQAKCRDBk9HyqkZzgsdHD/4+FgWkT4wB2rTRPd3geW/8NOTvjBy+
-GBiTFyeUXmRwfYZrqGtdcjGRk/LYJLxbpGfjBTCjv3Dr7EMShne+pJgdQIi0Nbq+
-S3M47BXXJNa0q0pXZKmcIoV5T1eFsHhyiZ0Werpz1BAeAJfkJvl0fEV9n4wHB6ZW
-jdtPtGy0ihq8gKGWgwOdkXAtIEKW+3lJk7hPzOyEGUGP91E/UZic9EmSfU1BtIbH
-DRGnpjuiNcXEZjeSgRQrLZ89iGX1FHUPsTkmYKCsGOVFJ+RZnxXm9f+rZ0eZ5R9P
-8FYxSur8AYN57oRsiYW/xboSeoYmABwyMt2l6+HYncGyEtlM6rGnCj2sg3W7AgAU
-3mJa2rHR75+ENkq9lUdRsX0xvScxQKcQxOq6Xt387quJG7CZFkhPfZATuW/cNJ3H
-6cxJqur6Jui5AygpS42rd0DDL6svzt2Fs51wLOFW72/LnRv/FdumWEH8O/klNRyL
-p1iOUwYd668cgnJnaGCWLgMsRMAw2zlZtErbXMSVYSChlPtUS0p3qXn8PlLA0CbD
-/dEbV020K5yM0RmuUiB3zkF8JOH7aLE886W8+LI9awFm1qoue76rG6hTjqSPyw9W
-VThqFsK9UNxYVMdjfRh9vT2p2J8ARYGyZ5e7uqvUPCd8Ql9iVyUYO/vc621dAI1v
-/J9Y2nRflmMcqQ==
-=Dtrf
------END PGP SIGNATURE-----
---=-=-=--
