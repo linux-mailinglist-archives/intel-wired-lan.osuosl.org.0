@@ -2,157 +2,93 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B7369C7008C
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Nov 2025 17:21:56 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6ACA8C6FFD9
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Nov 2025 17:15:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5C50F83D37;
-	Wed, 19 Nov 2025 16:21:55 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id EAC9483BB0;
+	Wed, 19 Nov 2025 16:15:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id lyoy21N87Se0; Wed, 19 Nov 2025 16:21:54 +0000 (UTC)
+ id CJNfUltG80E2; Wed, 19 Nov 2025 16:15:30 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C18CC83D38
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 44C7283BB1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1763569314;
-	bh=7O2g4846tq8kls7gP/YINxKDtYAFAKXKCZMK3zQST6I=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=zlRkAR+kMBjD8fyE5vN7NX5U2Z8D774xzsMJit158txH3bEpfLi5EnKtYnddHkMrP
-	 4ZIhtS6l9+oiyhpNiPb79SekYinuEdL9dd8F9NpsgvVwHQj8V4J6MBaxmaPjPn0zpH
-	 cOi0s9VVnCSvmnlDFtXLgvI37yEfoCw9oojl1B7jgzqXbffEX61kZj81v3RCPsSb63
-	 LTHWRk2+i0yIH4+zbGW428hni1Qz8gRFnDuMTfQ/1YzQez/lqUD7PVFndc2oaLAMPv
-	 JI1BSlItCrURvUeE3qKDHCrx9Z2odGyo4Scv7lO8sayyDlrix/061wvxMftxNrHdyy
-	 p0Lrq/ISY96rQ==
+	s=default; t=1763568930;
+	bh=rbSW6vnxuVDqUi99U/o5I+DR5J+85XLFyBEFuKkDhDo=;
+	h=Date:From:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=Imff2lCr5WZsExYS0u5PmnMAboE6vDBu8uMLTQTRvogj8VkPHqNoXxyoTwWvDTUjk
+	 8Xri9TiH5ZEzyabPyeZcGJEQ99FKC6g4tvBIYZIp/p/uYQmygCgYjNa+IuRwfnOUFN
+	 2QUfpCkWsz1uwYery0knca6FxfGmKJbv+Sw/sxb3tVGbSennyemra5vsXyp45YMblN
+	 H2xGMxsQx6YuRW8Png20SD4QZn03pDl/nkN39KosJhPxxekA9HYTysqnwdsJkiT+1Z
+	 RORcV7YGD6DNc9gjqa9imM11UDShHlIlc54S7YVsXOlEfzZvG9pIakLSpmDpyMqLff
+	 I4S14oZJ5oZwg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C18CC83D38;
-	Wed, 19 Nov 2025 16:21:54 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 44C7283BB1;
+	Wed, 19 Nov 2025 16:15:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 49CB237F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Nov 2025 15:50:09 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 45AFC2A9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Nov 2025 16:15:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3011D80EBB
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Nov 2025 15:50:09 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2C0C460DAA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Nov 2025 16:15:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ALg6bnUEicXx for <intel-wired-lan@lists.osuosl.org>;
- Wed, 19 Nov 2025 15:50:08 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
- envelope-from=mani@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8E10A80EA6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8E10A80EA6
-Received: from sea.source.kernel.org (sea.source.kernel.org
- [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8E10A80EA6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Nov 2025 15:50:08 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id C5CD641848;
- Wed, 19 Nov 2025 15:50:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F3A51C2BCB0;
- Wed, 19 Nov 2025 15:49:32 +0000 (UTC)
-Date: Wed, 19 Nov 2025 21:19:25 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Corey Minyard <corey@minyard.net>, 
- Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>,
- "Dr. David Alan Gilbert" <linux@treblig.org>, 
- Alex Deucher <alexander.deucher@amd.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Rob Clark <robin.clark@oss.qualcomm.com>, 
- Matthew Brost <matthew.brost@intel.com>, Ulf Hansson <ulf.hansson@linaro.org>, 
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Vitaly Lifshits <vitaly.lifshits@intel.com>, 
- Niklas Cassel <cassel@kernel.org>, Calvin Owens <calvin@wbinvd.org>, 
- Vadim Fedorenko <vadim.fedorenko@linux.dev>,
- Sagi Maimon <maimon.sagi@gmail.com>, 
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Karan Tilak Kumar <kartilak@cisco.com>, 
- Hans Verkuil <hverkuil+cisco@kernel.org>,
- Casey Schaufler <casey@schaufler-ca.com>, 
- Steven Rostedt <rostedt@goodmis.org>, Petr Mladek <pmladek@suse.com>, 
- Viacheslav Dubeyko <Slava.Dubeyko@ibm.com>,
- Max Kellermann <max.kellermann@ionos.com>, 
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
- openipmi-developer@lists.sourceforge.net, linux-media@vger.kernel.org,
- dri-devel@lists.freedesktop.org, 
- linaro-mm-sig@lists.linaro.org, amd-gfx@lists.freedesktop.org,
- linux-arm-msm@vger.kernel.org, 
- freedreno@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
- linux-mmc@vger.kernel.org, 
- netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-pci@vger.kernel.org, 
- linux-s390@vger.kernel.org, linux-scsi@vger.kernel.org,
- linux-staging@lists.linux.dev, 
- ceph-devel@vger.kernel.org, linux-trace-kernel@vger.kernel.org, 
- Rasmus Villemoes <linux@rasmusvillemoes.dk>,
- Sergey Senozhatsky <senozhatsky@chromium.org>, 
- Jonathan Corbet <corbet@lwn.net>, Sumit Semwal <sumit.semwal@linaro.org>, 
- Gustavo Padovan <gustavo@padovan.org>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Dmitry Baryshkov <lumag@kernel.org>, 
- Abhinav Kumar <abhinav.kumar@linux.dev>, Jessica Zhang <jesszhan0024@gmail.com>,
- Sean Paul <sean@poorly.run>, Marijn Suijten <marijn.suijten@somainline.org>, 
- Konrad Dybcio <konradybcio@kernel.org>,
- Lucas De Marchi <lucas.demarchi@intel.com>, 
- Thomas =?utf-8?Q?Hellstr=C3=B6m?= <thomas.hellstrom@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, 
- Vladimir Oltean <olteanv@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id x8CZ-VOaah_g for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 19 Nov 2025 16:15:27 +0000 (UTC)
+X-Greylist: delayed 332 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 19 Nov 2025 16:15:26 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 9FCE360844
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9FCE360844
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=151.80.40.192;
+ helo=smtp.blochl.de; envelope-from=markus@blochl.de; receiver=<UNKNOWN> 
+Received: from smtp.blochl.de (mail.blochl.de [151.80.40.192])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 9FCE360844
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Nov 2025 16:15:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.blochl.de 101F94641E88
+Received: from WorkKnecht (ppp-93-104-13-154.dynamic.mnet-online.de
+ [93.104.13.154])
+ by smtp.blochl.de (Postfix) with ESMTPSA id 101F94641E88;
+ Wed, 19 Nov 2025 16:09:49 +0000 (UTC)
+X-Virus-Status: Clean
+X-Virus-Scanned: clamav-milter 1.4.3 at 449b6f9d6baf
+Date: Wed, 19 Nov 2025 17:09:43 +0100
+From: Markus =?utf-8?Q?Bl=C3=B6chl?= <markus@blochl.de>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
- Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>, 
- Bjorn Helgaas <bhelgaas@google.com>, Rodolfo Giometti <giometti@enneenne.com>, 
- Jonathan Lemon <jonathan.lemon@gmail.com>,
- Richard Cochran <richardcochran@gmail.com>, 
- Stefan Haberland <sth@linux.ibm.com>, Jan Hoeppner <hoeppner@linux.ibm.com>, 
- Heiko Carstens <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>, 
- Alexander Gordeev <agordeev@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>, 
- Sven Schnelle <svens@linux.ibm.com>, Satish Kharat <satishkh@cisco.com>, 
- Sesidhar Baddela <sebaddel@cisco.com>,
- "James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Xiubo Li <xiubli@redhat.com>, Ilya Dryomov <idryomov@gmail.com>, 
- Masami Hiramatsu <mhiramat@kernel.org>,
- Mathieu Desnoyers <mathieu.desnoyers@efficios.com>, 
- Andrew Morton <akpm@linux-foundation.org>
-Message-ID: <wuyn4v625xw4n2jm4eiullfrprmjiw4aiwo4zudcp4ppd2yeva@s7vzfoinnavt>
-References: <20251113150217.3030010-1-andriy.shevchenko@linux.intel.com>
- <20251113150217.3030010-16-andriy.shevchenko@linux.intel.com>
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: Richard Cochran <richardcochran@gmail.com>, 
+ Markus =?utf-8?Q?Bl=C3=B6chl?= <markus.bloechl@ipetronik.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org
+Message-ID: <20251119-i40e_ptp_link_down-v1-1-b351fed254b3@blochl.de>
+X-B4-Tracking: v=1; b=H4sIAJjpHWkC/x3MQQqAIBBA0avErBOaUsKuEiGRUw2FiUYF4d2Tl
+ m/x/wuRAlOErngh0MWRD5eBZQHTOrqFBNtsqKtaIaIWLCsy/vRmZ7cZe9xOyFY3ctaESlnIoQ8
+ 08/NP+yGlD7UPWh5kAAAA
+X-Change-ID: 20251119-i40e_ptp_link_down-47934f9e155d
+X-Mailer: b4 0.14.3
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20251113150217.3030010-16-andriy.shevchenko@linux.intel.com>
-X-Mailman-Approved-At: Wed, 19 Nov 2025 16:21:53 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1763567407;
- bh=mtl+IHM/JXtrCO8ISnitiGZcya/g9fsTYHXlgtCEzjQ=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Laj4zYxhFW+Cyz8oEoGr4IEUQkfwUMdLv7HRG6pEmMXhq+vvRB62wNZAYyCBhwMgW
- ydZ26okaryoinvEE8tIJbLlJoY1/cMOVAl5gZWnUjbENpW2a9mfRw+vAlvoqjU3euP
- pbkZQ00ScKclvx/Fc7+VWCtde1BoO4ZllGxuhaaQ6oHWiJx30xfmdUGu2l8xqahHsp
- T+hG+IPeCO3xnQsYkJ7VatBdtqrEHMzKKg55/4DdSBYnYup2E2b5/XfowD8zPoAvGV
- SUjpmYocHoRKpWNGz1Ow4h6dPUUWYAJv0jrXiCMFF0CA6h8rz5TtzNJHhRm6MSXZFU
- PqBSfmBBhtEiA==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=Laj4zYxh
-Subject: Re: [Intel-wired-lan] [PATCH v3 15/21] PCI: epf-test: Switch to use
- %ptSp
+X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.6.4
+ (smtp.blochl.de [0.0.0.0]); Wed, 19 Nov 2025 16:09:49 +0000 (UTC)
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=blochl.de
+X-Mailman-Original-Authentication-Results: mail.blochl.de;
+ dmarc=none (p=none dis=none)
+ header.from=blochl.de
+X-Mailman-Original-Authentication-Results: mail.blochl.de;
+ spf=fail smtp.mailfrom=blochl.de
+Subject: [Intel-wired-lan] [PATCH] i40e: fix ptp time increment while link
+ is down
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -168,40 +104,193 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Nov 13, 2025 at 03:32:29PM +0100, Andy Shevchenko wrote:
-> Use %ptSp instead of open coded variants to print content of
-> struct timespec64 in human readable format.
-> 
-> Acked-by: Bjorn Helgaas <bhelgaas@google.com>
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+When an X710 ethernet port with an active ptp daemon (like the ptp4l and phc2sys combo)
+suddenly loses its link and regains it after a while, the ptp daemon has a hard time
+to recover synchronization and sometimes entirely fails to do so.
 
-Acked-by: Manivannan Sadhasivam <mani@kernel.org>
+The issue seems to be related to a wrongly configured increment while the link is down.
+This could not be observed with the Intel reference driver. We identified the fix to appear in
+Intels official ethernet-linux-i40e release version 2.17.4.
 
-- Mani
+Include the relevant changes in the kernel version of this driver.
 
-> ---
->  drivers/pci/endpoint/functions/pci-epf-test.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/pci/endpoint/functions/pci-epf-test.c b/drivers/pci/endpoint/functions/pci-epf-test.c
-> index b05e8db575c3..debd235253c5 100644
-> --- a/drivers/pci/endpoint/functions/pci-epf-test.c
-> +++ b/drivers/pci/endpoint/functions/pci-epf-test.c
-> @@ -331,9 +331,8 @@ static void pci_epf_test_print_rate(struct pci_epf_test *epf_test,
->  		rate = div64_u64(size * NSEC_PER_SEC, ns * 1000);
->  
->  	dev_info(&epf_test->epf->dev,
-> -		 "%s => Size: %llu B, DMA: %s, Time: %llu.%09u s, Rate: %llu KB/s\n",
-> -		 op, size, dma ? "YES" : "NO",
-> -		 (u64)ts.tv_sec, (u32)ts.tv_nsec, rate);
-> +		 "%s => Size: %llu B, DMA: %s, Time: %ptSp s, Rate: %llu KB/s\n",
-> +		 op, size, dma ? "YES" : "NO", &ts, rate);
->  }
->  
->  static void pci_epf_test_copy(struct pci_epf_test *epf_test,
-> -- 
-> 2.50.1
-> 
+Fixes: beb0dff1251d ("i40e: enable PTP")
+Cc: stable@vger.kernel.org
+Signed-off-by: Markus Blöchl <markus@blochl.de>
+---
+Tested with an X710 at 10G link speed and kernel version 6.12.42.
+---
+ drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h |  9 +++
+ drivers/net/ethernet/intel/i40e/i40e_ptp.c        | 68 +++++++++++++++++++++--
+ drivers/net/ethernet/intel/i40e/i40e_register.h   |  9 +++
+ drivers/net/ethernet/intel/i40e/i40e_type.h       |  8 +++
+ 4 files changed, 89 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h b/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
+index cc02a85ad42b..ec176e9569ad 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
+@@ -1488,6 +1488,15 @@ enum i40e_aq_link_speed {
+ 	I40E_LINK_SPEED_25GB	= BIT(I40E_LINK_SPEED_25GB_SHIFT),
+ };
+ 
++enum i40e_prt_mac_pcs_link_speed {
++	I40E_PRT_MAC_PCS_LINK_SPEED_UNKNOWN = 0,
++	I40E_PRT_MAC_PCS_LINK_SPEED_100MB,
++	I40E_PRT_MAC_PCS_LINK_SPEED_1GB,
++	I40E_PRT_MAC_PCS_LINK_SPEED_10GB,
++	I40E_PRT_MAC_PCS_LINK_SPEED_40GB,
++	I40E_PRT_MAC_PCS_LINK_SPEED_20GB
++};
++
+ struct i40e_aqc_module_desc {
+ 	u8 oui[3];
+ 	u8 reserved1;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_ptp.c b/drivers/net/ethernet/intel/i40e/i40e_ptp.c
+index 33535418178b..ee6927e2c6f8 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_ptp.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_ptp.c
+@@ -847,6 +847,65 @@ void i40e_ptp_rx_hwtstamp(struct i40e_pf *pf, struct sk_buff *skb, u8 index)
+ 	i40e_ptp_convert_to_hwtstamp(skb_hwtstamps(skb), ns);
+ }
+ 
++/**
++ * i40e_ptp_get_link_speed_hw - get the link speed
++ * @pf: Board private structure
++ *
++ * Calculate link speed depending on the link status.
++ * Return the link speed.
++ **/
++static enum i40e_aq_link_speed i40e_ptp_get_link_speed_hw(struct i40e_pf *pf)
++{
++	bool link_up = pf->hw.phy.link_info.link_info & I40E_AQ_LINK_UP;
++	enum i40e_aq_link_speed link_speed = I40E_LINK_SPEED_UNKNOWN;
++	struct i40e_hw *hw = &pf->hw;
++
++	if (link_up) {
++		struct i40e_link_status *hw_link_info = &hw->phy.link_info;
++
++		i40e_aq_get_link_info(hw, true, NULL, NULL);
++		link_speed = hw_link_info->link_speed;
++	} else {
++		enum i40e_prt_mac_link_speed prtmac_linksta;
++		u64 prtmac_pcs_linksta;
++
++		prtmac_linksta = (rd32(hw, I40E_PRTMAC_LINKSTA(0))
++			& I40E_PRTMAC_LINKSTA_MAC_LINK_SPEED_MASK)
++			>> I40E_PRTMAC_LINKSTA_MAC_LINK_SPEED_SHIFT;
++		if (prtmac_linksta == I40E_PRT_MAC_LINK_SPEED_40GB) {
++			link_speed = I40E_LINK_SPEED_40GB;
++		} else {
++			i40e_aq_debug_read_register(hw,
++						    I40E_PRTMAC_PCS_LINK_STATUS1(0),
++						    &prtmac_pcs_linksta,
++						    NULL);
++
++			prtmac_pcs_linksta = (prtmac_pcs_linksta
++			& I40E_PRTMAC_PCS_LINK_STATUS1_LINK_SPEED_MASK)
++			>> I40E_PRTMAC_PCS_LINK_STATUS1_LINK_SPEED_SHIFT;
++
++			switch (prtmac_pcs_linksta) {
++			case I40E_PRT_MAC_PCS_LINK_SPEED_100MB:
++				link_speed = I40E_LINK_SPEED_100MB;
++				break;
++			case I40E_PRT_MAC_PCS_LINK_SPEED_1GB:
++				link_speed = I40E_LINK_SPEED_1GB;
++				break;
++			case I40E_PRT_MAC_PCS_LINK_SPEED_10GB:
++				link_speed = I40E_LINK_SPEED_10GB;
++				break;
++			case I40E_PRT_MAC_PCS_LINK_SPEED_20GB:
++				link_speed = I40E_LINK_SPEED_20GB;
++				break;
++			default:
++				link_speed = I40E_LINK_SPEED_UNKNOWN;
++			}
++		}
++	}
++
++	return link_speed;
++}
++
+ /**
+  * i40e_ptp_set_increment - Utility function to update clock increment rate
+  * @pf: Board private structure
+@@ -857,16 +916,14 @@ void i40e_ptp_rx_hwtstamp(struct i40e_pf *pf, struct sk_buff *skb, u8 index)
+  **/
+ void i40e_ptp_set_increment(struct i40e_pf *pf)
+ {
+-	struct i40e_link_status *hw_link_info;
++	enum i40e_aq_link_speed link_speed;
+ 	struct i40e_hw *hw = &pf->hw;
+ 	u64 incval;
+ 	u32 mult;
+ 
+-	hw_link_info = &hw->phy.link_info;
++	link_speed = i40e_ptp_get_link_speed_hw(pf);
+ 
+-	i40e_aq_get_link_info(&pf->hw, true, NULL, NULL);
+-
+-	switch (hw_link_info->link_speed) {
++	switch (link_speed) {
+ 	case I40E_LINK_SPEED_10GB:
+ 		mult = I40E_PTP_10GB_INCVAL_MULT;
+ 		break;
+@@ -909,6 +966,7 @@ void i40e_ptp_set_increment(struct i40e_pf *pf)
+ 	/* Update the base adjustement value. */
+ 	WRITE_ONCE(pf->ptp_adj_mult, mult);
+ 	smp_mb(); /* Force the above update. */
++	i40e_ptp_set_1pps_signal_hw(pf);
+ }
+ 
+ /**
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_register.h b/drivers/net/ethernet/intel/i40e/i40e_register.h
+index 432afbb64201..c4051dbcc297 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_register.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_register.h
+@@ -530,6 +530,15 @@
+ #define I40E_PRTMAC_HSEC_CTL_TX_PAUSE_REFRESH_TIMER_SHIFT 0
+ #define I40E_PRTMAC_HSEC_CTL_TX_PAUSE_REFRESH_TIMER_MASK I40E_MASK(0xFFFF, \
+ 	I40E_PRTMAC_HSEC_CTL_TX_PAUSE_REFRESH_TIMER_SHIFT)
++/* _i=0...3 */ /* Reset: GLOBR */
++#define I40E_PRTMAC_PCS_LINK_STATUS1(_i) (0x0008C200 + ((_i) * 4))
++#define I40E_PRTMAC_PCS_LINK_STATUS1_LINK_SPEED_SHIFT 24
++#define I40E_PRTMAC_PCS_LINK_STATUS1_LINK_SPEED_MASK I40E_MASK(0x7, I40E_PRTMAC_PCS_LINK_STATUS1_LINK_SPEED_SHIFT)
++#define I40E_PRTMAC_PCS_LINK_STATUS2 0x0008C220
++/* _i=0...3 */ /* Reset: GLOBR */
++#define I40E_PRTMAC_LINKSTA(_i) (0x001E2420 + ((_i) * 4))
++#define I40E_PRTMAC_LINKSTA_MAC_LINK_SPEED_SHIFT 27
++#define I40E_PRTMAC_LINKSTA_MAC_LINK_SPEED_MASK I40E_MASK(0x7, I40E_PRTMAC_LINKSTA_MAC_LINK_SPEED_SHIFT)
+ #define I40E_GLNVM_FLA 0x000B6108 /* Reset: POR */
+ #define I40E_GLNVM_FLA_LOCKED_SHIFT 6
+ #define I40E_GLNVM_FLA_LOCKED_MASK I40E_MASK(0x1, I40E_GLNVM_FLA_LOCKED_SHIFT)
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_type.h b/drivers/net/ethernet/intel/i40e/i40e_type.h
+index ed8bbdb586da..98c8c5709e5f 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_type.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_type.h
+@@ -115,6 +115,14 @@ enum i40e_queue_type {
+ 	I40E_QUEUE_TYPE_UNKNOWN
+ };
+ 
++enum i40e_prt_mac_link_speed {
++	I40E_PRT_MAC_LINK_SPEED_100MB = 0,
++	I40E_PRT_MAC_LINK_SPEED_1GB,
++	I40E_PRT_MAC_LINK_SPEED_10GB,
++	I40E_PRT_MAC_LINK_SPEED_40GB,
++	I40E_PRT_MAC_LINK_SPEED_20GB
++};
++
+ struct i40e_link_status {
+ 	enum i40e_aq_phy_type phy_type;
+ 	enum i40e_aq_link_speed link_speed;
+
+---
+base-commit: 8b690556d8fe074b4f9835075050fba3fb180e93
+change-id: 20251119-i40e_ptp_link_down-47934f9e155d
+
+Best regards,
+-- 
+Markus Blöchl <markus@blochl.de>
+
 
 -- 
-மணிவண்ணன் சதாசிவம்
