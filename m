@@ -2,114 +2,114 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 68301C7EE7A
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 Nov 2025 04:40:25 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E74EBC7EE8F
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 24 Nov 2025 04:45:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4262E40947;
-	Mon, 24 Nov 2025 03:40:23 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A49E7409A9;
+	Mon, 24 Nov 2025 03:45:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kDSG7dmee8Il; Mon, 24 Nov 2025 03:40:22 +0000 (UTC)
+ id 0fG4oBwj1xMi; Mon, 24 Nov 2025 03:45:43 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 99C3C40944
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 00E5C409AE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1763955622;
-	bh=GaELAJ/S95BpyxzoA3783XWN/9Se1kE70pL3UqC0Vos=;
+	s=default; t=1763955943;
+	bh=NwBJJ+S7I60kL5Cyql6W9czYrkNv7wfefVSgmWrdXjM=;
 	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=kOKTUQwQGnaRZcR0d7NBVp4p8D6FcAivfVNSI8hOQaa+7U9HJ2IAQ/2goryuqLR8H
-	 PqJoGlVBewKgYNEHSYVJoAxFEDe6QAZpITQHLsJoNAlbSaGjAvPnaTD9MlKs1Sryeq
-	 1sCKUZnukV55tyL8jMpQ9Yhf0VT7xqKsUhyIdNmWrKWPYWSMCxmtyzcyF5NRvD4rJE
-	 txeJyGe0RbeL28/atk3Q6Q5mMK7XmCEl5G7nNCOpK/z8WbORjWsaKLy8U2VsdsZgNJ
-	 8RAr/h4rFMGwXDzpTJBDobKVZ5BBLA9dQVwFE8Z8KY1NbDY9UE6uBErBFpt7/eSA5v
-	 fUMZakSsktyyA==
+	b=cJTi8/I4GFqn1zq8Dt7/OIV1kWuQO66Ji826nfdR3l3sE/t9mXAi1xeP7RW90iuUy
+	 HG7eV/bGvPDYOqVikIQMSj5TqZ/4DbHNo4djXsfgRfxELtuzx7/YtpniCv8EIubKE+
+	 YH48VCxeXcTQwFbb3oStH3X0IPfEIqLccV0DqlThkzV7ncmmcO/Vb6d7Wxy9cpIeHV
+	 xnZb3IPjakVMXYnDwO3ZPvtKmf8Kw3BUPpZrvQY26vfl8mizogwT1RGBD+nPg4IPlN
+	 D3DCKkIjyHJmxxxDtffmrB2GSZVwiNSnPPx5qki4Bi+wZJd24pnUx0Keq2vd1aRN0i
+	 ZM+8tc0/kD3wQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 99C3C40944;
-	Mon, 24 Nov 2025 03:40:22 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 00E5C409AE;
+	Mon, 24 Nov 2025 03:45:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 6BBCC158
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Nov 2025 03:40:20 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 38800158
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Nov 2025 03:45:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4F2AE40939
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Nov 2025 03:40:20 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 1B98960715
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Nov 2025 03:45:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id fNcCwL8ltmu2 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 24 Nov 2025 03:40:19 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id tHWyQQ7D4o52 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 24 Nov 2025 03:45:40 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
  client-ip=2607:f8b0:4864:20::1136; helo=mail-yw1-x1136.google.com;
  envelope-from=lgs201920130244@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org F2BDA40935
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F2BDA40935
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 529C660714
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 529C660714
 Received: from mail-yw1-x1136.google.com (mail-yw1-x1136.google.com
  [IPv6:2607:f8b0:4864:20::1136])
- by smtp4.osuosl.org (Postfix) with ESMTPS id F2BDA40935
- for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Nov 2025 03:40:18 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 529C660714
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 24 Nov 2025 03:45:40 +0000 (UTC)
 Received: by mail-yw1-x1136.google.com with SMTP id
- 00721157ae682-786a822e73aso37296807b3.3
- for <intel-wired-lan@lists.osuosl.org>; Sun, 23 Nov 2025 19:40:18 -0800 (PST)
+ 00721157ae682-78a712cfbc0so34987427b3.1
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 23 Nov 2025 19:45:40 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763955617; x=1764560417;
+ d=1e100.net; s=20230601; t=1763955939; x=1764560739;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=GaELAJ/S95BpyxzoA3783XWN/9Se1kE70pL3UqC0Vos=;
- b=VqCDulesj9o5Ou8eZ8DG7X/IEsoUE1zJJovxQ++FDQUNCZ9XXC1Hc0HgHZ15YOFJkv
- Af2Nr0QEdDqvJQ8kgQMOt8VuFyVFLTpTQG3sEvMTI1flehs4yFnRs1ZkSF/gUelb7/Wi
- HV6/YQpaZwXf0bKlEMIOjxdvHRSDCFKIR+mRzNQf6P2D+Gp9p4z1p8eAwZvaphDdhAkU
- Q7FhtbY62451ohXv5CffoxOPgF90hPQg6nEdrEpSkeuyUfAvKlwIwwFs9htuLqb/SkO3
- lxyt8ThDtdb7lwvJVfk/gj8cUqWPljP67Qw5e6Te2qwtniF3f3SrNJaXgK8ONTzIJxGQ
- v4TQ==
+ bh=NwBJJ+S7I60kL5Cyql6W9czYrkNv7wfefVSgmWrdXjM=;
+ b=umF/poGHMwpVKUsJ9jOw3qkbng3H5UHE/W/T2WezlZsEFCpJ4s0fyunCwf+fFFmDF8
+ NW4qhQHfs92gjnlJjHB1nd1jCCXYEdKn4ODYq6LCyOtoHhBjCd+daJO6wCJNehxjLErK
+ sxhE1B1eo/YSIUHUC1pGwW+t8KHz98D+5DgdFPklkekafTPQxRmU6RwTWTkPLmTh/jG+
+ 5i4bVQA0yGaKkRXei2nlneKKzeIkrFUE+Rdgq0IUYdrtab7bexjw+eHK9bh5CNrrr0oy
+ IY4uqpX9ckrM0UX6d1uB9a1vKKbSlHVvFLK1EfO4uQ2xL6pdGTWdRdUmzYtmRHq52Nu5
+ 9uXw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXXzR9H1tzZ3uXtuPrE9Ft1TS2ODHDzDTTNWY4RaLCmCGCs6LreKVieUmGnPznEiBgDMTj5Hh0Ttb5UoCvJS8g=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yx4II7X8IUHlxljralvgAVaCHRiormjKYfZQPrh2ibgDFXu36kD
- 7jCBBbOGdkgIogAIM2VHlX1K15bYtz22767ogvW2x4WWlKZS3ieDR+SPPN6aMqDOUGcbVYAVsVE
- 4ZAgyx8P25JSp4rBZkBJzwU5xaVOi+BI=
-X-Gm-Gg: ASbGncsNym/9IdLBbR6oe/qBQeKYc3vBCr470gLiCZ1afGWIxBpvfKd8EhqLbAYDd7d
- hlnHGMYjF9BTkA4nDgkZj3cy/EOfD8pyRfmiEOQ/CKcwJwZQPU8alBBIenaA9dpRKOVswEOKl5Y
- u9x/02SMp/kNNQIA3Wr1VuWT/VoIyUzVIVCBLlHTfs9DqJ7sKk1a+BumF7MgRWTX1arouWj0ZcF
- 2WwZ/g0yFgBL78DLZ+TVxQRojbwPtXN5fCvg3QfgjRQ11mpVCSVnH67mPjYKKL9IcDJBXdlD9ig
- q7GpwCo=
-X-Google-Smtp-Source: AGHT+IGGTIYoG2668L+glKKotqLZbZ/uLif2PktryBGM2rYomVpBEO1fohxwqwaUM1hw7vu69GDTZ0EXjx5kYvRgcOU=
-X-Received: by 2002:a05:690c:61c3:b0:78a:8251:8476 with SMTP id
- 00721157ae682-78a8b4953f2mr91495707b3.24.1763955617556; Sun, 23 Nov 2025
- 19:40:17 -0800 (PST)
+ AJvYcCWu2q3WLqzv+2Z7Nl4gWG0DpTTPgSc/+H+PpQ75TpaUmXJhqqXGmOXL9Idl2g7FcrUQGA9uGBHMtPyTww3UfrU=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YzrHdWJwrNm+GVZPtQgLpCLYnmbkRsMTk8ma2A1Lg4plw63+zOH
+ SM2U5+eNud5ABxyfNIb6jfkt2coA9f4+5+GtxevWwiOedOmTITKAo5+DLr2VfjhbVrkpPcELN1f
+ 0/Slp4Je+xdolXTFiHh5Cx4S9F/KG5ME=
+X-Gm-Gg: ASbGncuFS4gseFE2GuSmlMhkD9itC9bO1M0rfXO1cfZ6fnXOTFR5w6kD167wQJl1HrE
+ r0pqYucy7A1Dm6RZ78eD+f2Q0oe1XIx01jMl6g8dBISTxySWKvssH0v+85eKqmfqCotDNuMkFc1
+ aKEmYzens+B15iO8FNoQQEXHuzhpR1abefiil+siIh/AQ3dKrHwt4YyYIVGETMAolgFha7C/Q0c
+ wHcUFT7IIfI+VFKzMv8RQXkhptYt7brfMGXpp9HI/3hkS3YuEUb0wMdEa7LAX58YT6pBkmr
+X-Google-Smtp-Source: AGHT+IGgcTA1ndZTaThZTKoqRCLXlg+x3MwefWN2FQbDHAumLPxbLA4SUX+WrLRdIOpP43YNDnHiJ9Vqj8pHvONZIJI=
+X-Received: by 2002:a53:c05b:0:20b0:63f:a103:5d57 with SMTP id
+ 956f58d0204a3-64302a2ddefmr6071626d50.5.1763955939050; Sun, 23 Nov 2025
+ 19:45:39 -0800 (PST)
 MIME-Version: 1.0
 References: <20251104082801.994195-1-lgs201920130244@gmail.com>
  <b53c3a7e-6833-4e87-ae24-c344f2c3c5a1@intel.com>
 In-Reply-To: <b53c3a7e-6833-4e87-ae24-c344f2c3c5a1@intel.com>
 From: Guangshuo Li <lgs201920130244@gmail.com>
-Date: Mon, 24 Nov 2025 11:40:06 +0800
-X-Gm-Features: AWmQ_bkzg2Rwdfp32OFVs5az4TyKn1bXnojyPQ0v20LSIqQ594TlWvcYoDlVxo4
-Message-ID: <CANUHTR-6tzTELjM0wkfV3DX7Sm1Lgc_iTB_c+OtGd65FH7iY8Q@mail.gmail.com>
+Date: Mon, 24 Nov 2025 11:45:28 +0800
+X-Gm-Features: AWmQ_bnEevVdFKwpdcG3xlZdPhh-YQc34CNqirskw1qMJLSeF_jQ4mnXjyFnJko
+Message-ID: <CANUHTR8QDRPZE1b8msLC2WXkdjSjn_+6co0RzsLy7BPENUxjYQ@mail.gmail.com>
 To: Tony Nguyen <anthony.l.nguyen@intel.com>
 Cc: "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, 
  Paolo Abeni <pabeni@redhat.com>, Florian Westphal <fw@strlen.de>,
  intel-wired-lan@lists.osuosl.org, 
  netdev@vger.kernel.org, linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Content-Type: multipart/alternative; boundary="000000000000fbeb5306444eebec"
+Content-Type: multipart/alternative; boundary="00000000000025886506444effeb"
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1763955617; x=1764560417; darn=lists.osuosl.org;
+ d=gmail.com; s=20230601; t=1763955939; x=1764560739; darn=lists.osuosl.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=GaELAJ/S95BpyxzoA3783XWN/9Se1kE70pL3UqC0Vos=;
- b=JhopTRoLBU/ivttW6whzOAlUimt672rbpYmQYgxPQO/9nDFJL8984Bs0a1ulKIwJrl
- nOH36vTxAU4wzsO/MihD3UdR+JTM8AxzNyIeMNRpLAb5BwA1SfzneMifpegJGl03dTHq
- gydkGezRZ4oGKTdF+ddIbpcVPjwLWhAOrkUcXaqJidIpj1Dc1eWB5aQcC0CIDynjqxfW
- lew0hLkbUVn1mvE2lrJTjQEDdmV6yoe7kZMd3MVEm6ygz96mwEJADvYPwvf6GCbyWJCP
- hvm+hdtbyTDzWhVoMOet9CJa4R4a+l2WckjWVHwP5ieFbCylu9fbewbwJqfjZvz258gg
- Likw==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=NwBJJ+S7I60kL5Cyql6W9czYrkNv7wfefVSgmWrdXjM=;
+ b=kcMBcpyLQ73zDXMIwQug/4eStPO9afjVA9i2oj6egKXGbvvn7Ns5zutX8bOGZy27v9
+ V20XSYEQ694iDokb2DLypYLdiSy7WswDKfILns1SrLxqYUmdwCJCIHSAI2GN8HtXeucz
+ zGahqIg4mOV609JVX64hRoB9O0PSbJ3J9fpRz8mmHeYFpj6adRGSlB8pLfCzY170GARq
+ dyRjHYnymcmTlbT9oSESCfyolYqGl8zfe1iTd6YbnCuI1KcjUWu1Mum3aUNN78eIEOpc
+ TqjbLOXs6moixhxTSoqzx2h6PoGjIjmsQNR0GBaNM+sXCGRWrIIayHKRodbpAqigyYZH
+ alqg==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=JhopTRoL
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20230601 header.b=kcMBcpyL
 Subject: Re: [Intel-wired-lan] [PATCH] e1000: fix OOB in
  e1000_tbi_should_accept()
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -127,9 +127,42 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---000000000000fbeb5306444eebec
+--00000000000025886506444effeb
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+
+Hi Tony, all,
+
+Thanks for the review. As suggested by Tony, I=E2=80=99ll keep the declarat=
+ions at
+the top and place the bounds checks before assigning last_byte. I=E2=80=99l=
+l send a
+v2 with the following change:
+
+static bool e1000_tbi_should_accept(struct e1000_adapter *adapter,
+                                    u8 status, u8 errors,
+                                    u32 length, const u8 *data)
+{
+    struct e1000_hw *hw =3D &adapter->hw;
+    u8 last_byte;
+
+    /* Guard against OOB on data[length - 1] */
+    if (unlikely(!length))
+        return false;
+
+    /* Upper bound: length must not exceed rx_buffer_len */
+    if (unlikely(length > adapter->rx_buffer_len))
+        return false;
+
+    last_byte =3D data[length - 1];
+
+    /* existing logic follows ... */
+}
+Please let me know if further adjustments are preferred.
+
+Best regards,
+Guangshuo Li
+
 
 Tony Nguyen <anthony.l.nguyen@intel.com> =E4=BA=8E2025=E5=B9=B411=E6=9C=881=
 8=E6=97=A5=E5=91=A8=E4=BA=8C 07:24=E5=86=99=E9=81=93=EF=BC=9A
@@ -172,52 +205,34 @@ Tony Nguyen <anthony.l.nguyen@intel.com> =E4=BA=8E2025=E5=B9=B411=E6=9C=881=
 > Tony
 >
 
-Hi Tony, all,
->
-Thanks for the review. As suggested by Tony, I=E2=80=99ll keep the declarat=
-ions at
-> the top and place the bounds checks before assigning last_byte. I=E2=80=
-=99ll send
-> a v2 with the following change:
-> static bool e1000_tbi_should_accept(struct e1000_adapter *adapter,
->                                     u8 status, u8 errors,
->                                     u32 length, const u8 *data)
-> {
->     struct e1000_hw *hw =3D &adapter->hw;
->     u8 last_byte;
->
->     /* Guard against OOB on data[length - 1] */
->     if (unlikely(!length))
->         return false;
->
->     /* Upper bound: length must not exceed rx_buffer_len */
->     if (unlikely(length > adapter->rx_buffer_len))
->         return false;
->
->     last_byte =3D data[length - 1];
->
->     /* existing logic follows ... */
-> }
-
-Please let me know if further adjustments are preferred.
-
-
-
-> Best regards,
-
-Guangshuo Li
-
---000000000000fbeb5306444eebec
+--00000000000025886506444effeb
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
-mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">Tony Nguyen &lt=
-;<a href=3D"mailto:anthony.l.nguyen@intel.com">anthony.l.nguyen@intel.com</=
-a>&gt; =E4=BA=8E2025=E5=B9=B411=E6=9C=8818=E6=97=A5=E5=91=A8=E4=BA=8C 07:24=
-=E5=86=99=E9=81=93=EF=BC=9A<br></div><blockquote class=3D"gmail_quote" styl=
-e=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddin=
-g-left:1ex"><br>
+<div dir=3D"ltr"><div dir=3D"ltr">Hi Tony, all, <br><br>Thanks for the revi=
+ew. As suggested by Tony, I=E2=80=99ll keep the declarations at the top and=
+ place the bounds checks before assigning last_byte. I=E2=80=99ll send a v2=
+ with the following change:<br><br>static bool e1000_tbi_should_accept(stru=
+ct e1000_adapter *adapter,<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 u8 status, u8 errors,<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 u32 length, const u8 *data)<br>{<br>=C2=A0 =C2=A0 struct e1000_h=
+w *hw =3D &amp;adapter-&gt;hw;<br>=C2=A0 =C2=A0 u8 last_byte;<br><br>=C2=A0=
+ =C2=A0 /* Guard against OOB on data[length - 1] */<br>=C2=A0 =C2=A0 if (un=
+likely(!length))<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 return false;<br><br>=C2=A0=
+ =C2=A0 /* Upper bound: length must not exceed rx_buffer_len */<br>=C2=A0 =
+=C2=A0 if (unlikely(length &gt; adapter-&gt;rx_buffer_len))<br>=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 return false;<br><br>=C2=A0 =C2=A0 last_byte =3D data[len=
+gth - 1];<br><br>=C2=A0 =C2=A0 /* existing logic follows ... */<br>} =C2=A0=
+<br>Please let me know if further adjustments are preferred.<br>=C2=A0<br>B=
+est regards,<br>Guangshuo Li <br>=C2=A0</div><br><div class=3D"gmail_quote =
+gmail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">Tony Nguyen &l=
+t;<a href=3D"mailto:anthony.l.nguyen@intel.com">anthony.l.nguyen@intel.com<=
+/a>&gt; =E4=BA=8E2025=E5=B9=B411=E6=9C=8818=E6=97=A5=E5=91=A8=E4=BA=8C 07:2=
+4=E5=86=99=E9=81=93=EF=BC=9A<br></div><blockquote class=3D"gmail_quote" sty=
+le=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddi=
+ng-left:1ex"><br>
 <br>
 On 11/4/2025 12:28 AM, Guangshuo Li wrote:<br>
 &gt; In e1000_tbi_should_accept() we read the last byte of the frame via<br=
@@ -264,33 +279,6 @@ Also, since last_byte uses length, this should be broken up and the <br>
 assignment moved after the added checks.<br>
 <br>
 Thanks,<br>
-Tony<br></blockquote><div><br></div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex"><p>Hi Tony, all,=C2=A0</p></blockquote><blockquote class=3D"gmai=
-l_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,20=
-4,204);padding-left:1ex"><p>Thanks for the review. As suggested by Tony, I=
-=E2=80=99ll keep the declarations at the top and place the bounds checks be=
-fore assigning=C2=A0<code>last_byte</code>. I=E2=80=99ll send a v2 with the=
- following change:</p>static bool e1000_tbi_should_accept(struct e1000_adap=
-ter *adapter,<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 u8 st=
-atus, u8 errors,<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 u32 =
-length, const u8 *data)<br>{<br>=C2=A0 =C2=A0 struct e1000_hw *hw =3D &amp;=
-adapter-&gt;hw;<br>=C2=A0 =C2=A0 u8 last_byte;<br><br>=C2=A0 =C2=A0 /* Guar=
-d against OOB on data[length - 1] */<br>=C2=A0 =C2=A0 if (unlikely(!length)=
-)<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 return false;<br><br>=C2=A0 =C2=A0 /* Uppe=
-r bound: length must not exceed rx_buffer_len */<br>=C2=A0 =C2=A0 if (unlik=
-ely(length &gt; adapter-&gt;rx_buffer_len))<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-return false;<br><br>=C2=A0 =C2=A0 last_byte =3D data[length - 1];<br><br>=
-=C2=A0 =C2=A0 /* existing logic follows ... */<br>}=C2=A0=C2=A0</blockquote=
-><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border=
--left:1px solid rgb(204,204,204);padding-left:1ex">Please let me know if fu=
-rther adjustments are preferred.</blockquote><div>=C2=A0</div><blockquote c=
-lass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px soli=
-d rgb(204,204,204);padding-left:1ex">Best regards,</blockquote><blockquote =
-class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px sol=
-id rgb(204,204,204);padding-left:1ex">Guangshuo Li=C2=A0</blockquote><div>=
-=C2=A0</div><div>=C2=A0=C2=A0</div></div></div>
+Tony<br></blockquote><div>=C2=A0</div></div></div>
 
---000000000000fbeb5306444eebec--
+--00000000000025886506444effeb--
