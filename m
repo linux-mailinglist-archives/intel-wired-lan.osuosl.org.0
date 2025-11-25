@@ -1,98 +1,103 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7222EC8432A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Nov 2025 10:22:13 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D7B3C84333
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Nov 2025 10:22:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 076F540EA1;
-	Tue, 25 Nov 2025 09:22:12 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BA33B60F9D;
+	Tue, 25 Nov 2025 09:22:39 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id PFfEJyThTRbi; Tue, 25 Nov 2025 09:22:10 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id HiCLZl8onGmt; Tue, 25 Nov 2025 09:22:39 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C059E40E94
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7866E60FCB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1764062530;
-	bh=2soozzHloM/2VQ/EZFmFRTlOlMJYt9spKgkbfCydm/U=;
+	s=default; t=1764062558;
+	bh=Q7H8tjTTGIlQYy6DhRbnU03Mn/CHXGlMY016rFAkQ5A=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=lLozq6ME/d07mKTG2gbQObP3oYjx6LiTy6exYOpDNfAOjkdofLgUe8MarmIxB/N/k
-	 xzV9XDSwzpKPR8cnBxmdmSWZLXA9qJe4OG+Rz8mW/x9BnrKSNfG25wIGO7H1MkiftT
-	 bOkC2Z/3Lmo1C7+7estz9CaUFvjSojv5TLXWNs9kHhMUUi2xsDo4XbUbf27hNoOZlK
-	 /kJY8sOaBc67izwWII0MnOzMBqQTPicV+zZRcfuI0COzPYIwvC1As59wVRd4Jj/jld
-	 yOx5yCv+5xeSIfQn62WzTQPSQD0cvwF+uacU0DwGP3SxwBaiq1ZJYVOnXHUvZmoccC
-	 +vPy8IJZpP4tQ==
+	b=4G1Ct0J29Yybb2FjFRRXnTkdznyNsoHRNN0w950jH6vJZCL5gc/srli5Gpcg1JdQ7
+	 ArJlptIX4RmzkMtq9cgyUWkODVbLVnWeWDbYg4TKmPbMRxVbqs6sIL8IA94M3C4vfv
+	 BfAIIlE+1P6pqXBGBzN6GIpg0xhKamyk8WAxc5655jK3XBtMLBbcPxRVDnF3R9mUQG
+	 yy+iNBAIesJAH4Mg8TABKYNT4v3in35rffAhMScutgUjbvsoE46FUQWuaFvqTg5Gdd
+	 MxQtFcnfQHvgTV+iYgKSb1hG6/SRhMjcBYgflL4BMPHaUYnKgwJEFbm4eZ4riP1TpP
+	 EELGL3wtlUFvQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C059E40E94;
-	Tue, 25 Nov 2025 09:22:10 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7866E60FCB;
+	Tue, 25 Nov 2025 09:22:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 39C23E4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Nov 2025 09:22:09 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id A2AC535C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Nov 2025 09:22:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 344CD4046D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Nov 2025 09:22:09 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 94CA640E74
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Nov 2025 09:22:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id wIBDx6BaZW9b for <intel-wired-lan@lists.osuosl.org>;
- Tue, 25 Nov 2025 09:22:08 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 6LtoOZWEBucY for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 25 Nov 2025 09:22:35 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom;
  client-ip=2001:41b8:202:deb::311:108; helo=stravinsky.debian.org;
  envelope-from=leitao@debian.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 3DBFA40461
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3DBFA40461
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 65F0840DAC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 65F0840DAC
 Received: from stravinsky.debian.org (stravinsky.debian.org
  [IPv6:2001:41b8:202:deb::311:108])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3DBFA40461
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Nov 2025 09:22:07 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 65F0840DAC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Nov 2025 09:22:35 +0000 (UTC)
 Received: from authenticated user by stravinsky.debian.org with esmtpsa
  (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
  (Exim 4.94.2) (envelope-from <leitao@debian.org>)
- id 1vNpF1-003I0D-TI; Tue, 25 Nov 2025 09:21:44 +0000
-Date: Tue, 25 Nov 2025 01:21:38 -0800
+ id 1vNpFf-003I1X-In; Tue, 25 Nov 2025 09:22:23 +0000
+Date: Tue, 25 Nov 2025 01:22:18 -0800
 From: Breno Leitao <leitao@debian.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: aleksander.lobakin@intel.com, Tony Nguyen <anthony.l.nguyen@intel.com>, 
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Paolo Abeni <pabeni@redhat.com>, michal.swiatkowski@linux.intel.com,
- michal.kubiak@intel.com, 
- maciej.fijalkowski@intel.com, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org, kernel-team@meta.com
-Message-ID: <nmwkbxjlrgr5daekzutw7juzgdvfop7zbvmsp7wkqr3qfqiys5@li537s2e43zi>
+To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
+Cc: "Lobakin, Aleksander" <aleksander.lobakin@intel.com>, 
+ "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, "Kitszel,
+ Przemyslaw" <przemyslaw.kitszel@intel.com>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
+ Paolo Abeni <pabeni@redhat.com>, 
+ "michal.swiatkowski@linux.intel.com" <michal.swiatkowski@linux.intel.com>,
+ "michal.kubiak@intel.com" <michal.kubiak@intel.com>, 
+ "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>, 
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, 
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "kernel-team@meta.com" <kernel-team@meta.com>
+Message-ID: <2ewdkayyhcjbf45v7laudrqjw3z443amelwwmnz5bzzcz7ogo4@qs6gwysc2kvk>
 References: <20251124-gxring_intel-v1-0-89be18d2a744@debian.org>
- <20251124-gxring_intel-v1-1-89be18d2a744@debian.org>
- <20251124194823.79d393ab@kernel.org>
+ <20251124-gxring_intel-v1-4-89be18d2a744@debian.org>
+ <IA3PR11MB8986B2AF393FF9E3609C9DB0E5D1A@IA3PR11MB8986.namprd11.prod.outlook.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20251124194823.79d393ab@kernel.org>
+In-Reply-To: <IA3PR11MB8986B2AF393FF9E3609C9DB0E5D1A@IA3PR11MB8986.namprd11.prod.outlook.com>
 X-Debian-User: leitao
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
  c=relaxed/relaxed; d=debian.org; 
  s=smtpauto.stravinsky; h=X-Debian-User:In-Reply-To:Content-Type:MIME-Version:
  References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=2soozzHloM/2VQ/EZFmFRTlOlMJYt9spKgkbfCydm/U=; b=gqVy8eVtWsiaoaIrVDaZkniqMG
- zvT1QkUs6fIrS6Ak6gUIb0llJy5z5fgRP1SsMovvhPNU65UG+89ewX9vIrhm+xcDVE3/HgktW5T/g
- RqJ94KmosL7SGMNdxlzuwHledUE8VTyoWoxn0BfYXOxNqKp4DheVts6TVBcRixIhN80v8zYmmIvRC
- E2dqqEoAZRGgPn/vIi24dLhDyTuLDNiOOV1wcvlRxCti5Oc/Km8wTnoEmi6iQNfwkG1/MZEDb4vXr
- z8ZSeti1flTE5gZfeBHMhBoBTaq99qPLOk/r1XdKZgUMI7BfJaYi+hkLsTR8qi8J1PdhikiYReTWc
- peJrtz0A==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=Q7H8tjTTGIlQYy6DhRbnU03Mn/CHXGlMY016rFAkQ5A=; b=C+oiZatpl9yGNxOCzw33bIBnGr
+ UYgzm1d0p3reNz0/zF08nXVWdFT4/x1wxmBjPzznipxIt+bQ7zfJHjfLdUWRgXV1m/bq6vqGxHzMD
+ LCFNOiwZqr05sQgDG7bzkh7uumoUyMm1MKPPNOp5YLPeV6j6yxwpZPvJH6eVn+Whs6/ujXtQJkf9g
+ w6z8FpGethal/Y0S2U5PciJFzJ5GX3aj8ArzU3gQLroio4rnKKDqsqQ7/+Cb/snNmbxmtk1xPzfJB
+ tHwt8f1VvhQ128DSJGAuj7e5g761bOvIVXOjeR3S4iSFM6V/ss4OUgOE3NCneH0Ki19LRvfoD9ryI
+ aRVWMa2A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=debian.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=debian.org header.i=@debian.org header.a=rsa-sha256
- header.s=smtpauto.stravinsky header.b=gqVy8eVt
-Subject: Re: [Intel-wired-lan] [PATCH net-next 1/8] i40e: extract GRXRINGS
+ header.s=smtpauto.stravinsky header.b=C+oiZatp
+Subject: Re: [Intel-wired-lan] [PATCH net-next 4/8] idpf: extract GRXRINGS
  from .get_rxnfc
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -109,25 +114,44 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello Jakub,
+Hello Alex,
 
-On Mon, Nov 24, 2025 at 07:48:23PM -0800, Jakub Kicinski wrote:
-> On Mon, 24 Nov 2025 10:19:05 -0800 Breno Leitao wrote:
-> > + * Returns the number of RX rings.
+On Tue, Nov 25, 2025 at 06:48:08AM +0000, Loktionov, Aleksandr wrote:
 > 
-> I suspect you used this format because the rest of the driver does,
-
-Correct. I have jsut followed the other kdoc format in the code.
-
-
-> but let's avoid adding new kdoc warnings. I think Andy is trying
-> to clean up the "Returns" vs "Return:" in Intel drivers..
 > 
->  drivers/net/ethernet/intel/i40e/i40e_ethtool.c:3530 No description found for return value of 'i40e_get_rx_ring_count'
+> > -----Original Message-----
+> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
+> > Of Breno Leitao
+> > Sent: Monday, November 24, 2025 7:19 PM
+> > To: Lobakin, Aleksander <aleksander.lobakin@intel.com>; Nguyen,
+> > Anthony L <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw
+> > <przemyslaw.kitszel@intel.com>; Andrew Lunn <andrew+netdev@lunn.ch>;
+> > David S. Miller <davem@davemloft.net>; Eric Dumazet
+> > <edumazet@google.com>; Jakub Kicinski <kuba@kernel.org>; Paolo Abeni
+> > <pabeni@redhat.com>
+> > Cc: michal.swiatkowski@linux.intel.com; michal.kubiak@intel.com;
+> > Fijalkowski, Maciej <maciej.fijalkowski@intel.com>; intel-wired-
+> > lan@lists.osuosl.org; netdev@vger.kernel.org; linux-
+> > kernel@vger.kernel.org; kernel-team@meta.com; Breno Leitao
+> > <leitao@debian.org>
+> > Subject: [Intel-wired-lan] [PATCH net-next 4/8] idpf: extract GRXRINGS
+> > from .get_rxnfc
+> > 
+> > Commit 84eaf4359c36 ("net: ethtool: add get_rx_ring_count callback to
+> > optimize RX ring queries") added specific support for GRXRINGS
+> > callback, simplifying .get_rxnfc.
+> > 
+> > Remove the handling of GRXRINGS in .get_rxnfc() by moving it to the
+> > new .get_rx_ring_count().
+> > 
+> > This simplifies the RX ring count retrieval and aligns idpf with the
+> > new ethtool API for querying RX ring parameters.
+> > 
+> > I was not totatly convinced I needed to have the lock, but, I decided
 > 
-> (similar warnings to first 4 patches of the series)
+> totatly -> totally
 
-Ack! I will get them fixed.
+Good catch, I will update and respin with your "Signed-off-by".
 
 Thanks for the review,
 --breno
