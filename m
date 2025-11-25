@@ -2,93 +2,93 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49EFAC846D8
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Nov 2025 11:20:05 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 62E9BC846DB
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Nov 2025 11:20:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C5EF961164;
+	by smtp3.osuosl.org (Postfix) with ESMTP id ED6AB6117A;
 	Tue, 25 Nov 2025 10:20:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id II3ImkNGyM9h; Tue, 25 Nov 2025 10:20:02 +0000 (UTC)
+ id ElkpXGwtbtTU; Tue, 25 Nov 2025 10:20:03 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7EFD961018
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2EADB6072F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1764066002;
-	bh=3ul0k1GgM/c5rCraOnK8Dvxg0D7FDaM0Ol4h54SDXmY=;
+	s=default; t=1764066003;
+	bh=F3UJKFUGkVvLB3wHG4oGvnme23SWc+gY7YZkrVaP7Sw=;
 	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=Cw9RQvGsnyGdsD2wHU/leqqvnHRK3n1zre5pNwVJMNOUy8nz8MfuP9GXRB7FfladM
-	 weqEBKvjUpa4ZG1baj4Eyl4l2CZBVr3HNvLn/HOwjVXsLmwJZFZKjZzkNvym8pS+C8
-	 MbFtqexSQY8lNGLZTO0DXtwoYM3ehlliQ5ORvdMq5jcVLIYcf6cvX1GAdWD2qVGodL
-	 4ICJbJ9482ZLTILljTGf5PCg+faTI2q80BvD+Z/Wayw1S7kckxQBIOOSZVRwKeXT5b
-	 UQxT7tZ6TT4Xaktb9RmdYxGnfiGTCsmVL1w99orBMFrou9lk/CCA/cftzak24/jOAB
-	 s6dwarH2KNNuQ==
+	b=I2iGP7W1iw5gygd2SPV4n89XFymx5Pps4XyY9H+mrTXByl9EuaysuArTEQJCeLrFC
+	 T5FaMrJ6zrLOpOfXYm7E6yeRL8AS82g+b/fBKalbfHmmzNxixyflHA8EXx/q8PvrQT
+	 jMXFCrEkkbq/bP6MMwceqlrMazqFgRdZHOb/YPK5cFNOTwEdmfnkcOk4ZHaxtt0Glm
+	 N9OEIjSkJWWFoK7gpGgw13mUR2uDdszjbS9q9dKMcBB9qFXtHLKxyK1WZL8vv/C2vE
+	 fPhTiSre+MtjpwSELlH/yOIuOQ+oAcYL/xwo6lZV11eXfcxIr1/fDLYu0IO2FM9YpK
+	 9ntwy9Sj2IxzA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7EFD961018;
-	Tue, 25 Nov 2025 10:20:02 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2EADB6072F;
+	Tue, 25 Nov 2025 10:20:03 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 11512E4
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id DEA9BE4
  for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Nov 2025 10:20:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id ECAC3810C8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Nov 2025 10:19:59 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id D0FD06112F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Nov 2025 10:20:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TNnCe4XpUS_N for <intel-wired-lan@lists.osuosl.org>;
- Tue, 25 Nov 2025 10:19:59 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=209.85.160.51;
- helo=mail-oa1-f51.google.com; envelope-from=breno.debian@gmail.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ZYEJUAViPGgC for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 25 Nov 2025 10:20:00 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=209.85.210.46;
+ helo=mail-ot1-f46.google.com; envelope-from=breno.debian@gmail.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org C927F81090
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C927F81090
-Received: from mail-oa1-f51.google.com (mail-oa1-f51.google.com
- [209.85.160.51])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C927F81090
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Nov 2025 10:19:58 +0000 (UTC)
-Received: by mail-oa1-f51.google.com with SMTP id
- 586e51a60fabf-3ec3cdcda4eso3494702fac.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Nov 2025 02:19:58 -0800 (PST)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C89AD6113D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C89AD6113D
+Received: from mail-ot1-f46.google.com (mail-ot1-f46.google.com
+ [209.85.210.46])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C89AD6113D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Nov 2025 10:19:59 +0000 (UTC)
+Received: by mail-ot1-f46.google.com with SMTP id
+ 46e09a7af769-7c6ce4f65f7so3800037a34.0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Nov 2025 02:19:59 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764065998; x=1764670798;
+ d=1e100.net; s=20230601; t=1764065999; x=1764670799;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=3ul0k1GgM/c5rCraOnK8Dvxg0D7FDaM0Ol4h54SDXmY=;
- b=STA8UKsOamQJt6dV1WVNPdXVikRz8B9iuVSCIpsLUx6NEh4WSQiV1NnsfO4K6pqQTR
- c8zvnqfe3e07DNz71mR9JmKrqi8MrDLT8JDAMJ8KYIBlfcin44eKZCdBOpquiWxBJ8d2
- 0PJAeacD4HKc/V7ByrLj6tzeztPHk5aK1YI3t/DzzCyEWHCzhUadvdp5dI8LTbxUMjEw
- NgBSm80yBL54cbIDbUQD0zuzIkyHrShTH+oTAwKPIegC4Oe7dC0KhhvHMWNt7hSqNObU
- 09A8IE+rR0b5iA3Dn0se6XCBW37rItiUYeroKnnBOWgApvImFvIQ/wwvP0tC8WPdW1Rs
- BEdg==
-X-Gm-Message-State: AOJu0YzuUfKp7O/zYU8xygUnu/DG0xuLe+vUooR7YsfRxkOYz3Y5DoSu
- zR8gdISVoN7Sntjs9n5WyMj7UhowK7Nxy+bEOwkv16EO9fmzQb17Zfu0
-X-Gm-Gg: ASbGncszeo9YpZmr6eTiabbMgtLKjGn16mXNTcreKT6Ot4M0VjT+tkR6IWjf1DrXweQ
- 3Kusx8AxuZmQC5VFiJBzfj6Le8ENKCc1Sqy8Ga79AsI7Lm4uQYxDhCFkQPC4CvJ9tkDDvuIbsY7
- hOq3z+9JN8jhZWnzpE82PvzMIjx1zDr4XngWX99jyDNm2DR8JQsKzX+fpAhv9xzJjug/cgtM071
- SHyfNDbMBfq+pMSENt2beIWzF30dHQOp3CvGQ5Kik84tg65S6GD/Ls9/q6J1kV6ikYM9OwEMA33
- OKWKXf1y9O5BV3qEd4LjSDcowS+FlYNsPYCwJx5GIBmZAFVp5NvfW9DvGy0zEbOGFAXsQFA20Rb
- kTRjy+fQE/QEDQib8WTegUKI7YZXF3K54RXqpyymqAPR2N1tc3CpBSt4uOgdEjSavHVcMRDzdDP
- 3bBt1GXOmPLegYvxlaK6WU5B4=
-X-Google-Smtp-Source: AGHT+IFtyiOuX8iw1pCACYNN8QG3Yfj2mFNz7FsdX3NPuCOLpPFhjIhc24EJOKd6na0bNrNHM798PA==
-X-Received: by 2002:a05:6870:70a4:b0:3e8:973e:e011 with SMTP id
- 586e51a60fabf-3ed1ffd81b2mr1082088fac.47.1764065997707; 
- Tue, 25 Nov 2025 02:19:57 -0800 (PST)
-Received: from localhost ([2a03:2880:10ff:6::])
+ bh=F3UJKFUGkVvLB3wHG4oGvnme23SWc+gY7YZkrVaP7Sw=;
+ b=CmvLgC65N2MqEn5BpCb7NvzfmFgdZrZoUu9JHsgw3HEarq1L8gdcVtzI+8+WENCnCo
+ lt9aC31K3DXmBtTpi3li5WzvDoKjKp6dZQ9DioUm/yKu/43KRo+vh0GVmd5hXA3HJO1T
+ 64GBknpo+bEv/sXjEh61JLkFSmp/tLBVaAOEnHp5ZZhMf1xzEazoUwYOfFINg+IZx5fM
+ g0+g/YHGAcRCZPf6HTEEdKdEFGJ6Mm1nPN7EQgkIzHq8WBSun8NUHJj7Ur6u4QT9HU3u
+ E5oA8dlOJIObcUDGLJkGN9spBG658BlvLNqkolT6FeiceKegGLDJINnw5frza1TwGNjs
+ DoIQ==
+X-Gm-Message-State: AOJu0Yw2UmMq6XdAMoOC++15wGxgq723k3p084twZ7XxKVoQ9e/qA36u
+ TfN7/OmNSMi3eOkwtWuYWytcYyWPcvKz11DpjLhUY3kJUyD3JAVsd3Qy
+X-Gm-Gg: ASbGncunBDjXqeCVsq3Rsje0SscKHTEBzYNw51tGMcZLr+HGMipOsWpMaG7lZcfUGjD
+ Aw3UwojOG09l2SDCx+rYx376h5/Twabb8iQU8BwGIwTv0OBuM9m7FUtcxGxeRr7hrveTy3F1HDW
+ EC7fzuom6ob3to2zxw2GbDpwoShaDH1ULEkniWj+dbLuxrnOnnLsdCsLat+u4kWF9vJZRVPg8B8
+ F/ESnGkGixoGtYDGvZxm1giD+v5MQoWpKWaYjtzx1oM4gpJdBa2QoKiqoLRwUggl3ilgrnzj0qu
+ CX8staf3fKjshE7vYpwL84vu1jko+bAcZdp30zaCm+Ai4uOwaZl/bTNRFWrIOXZ8Zcu0XXqx7cM
+ IP0BiLL5VlAaLvCVHPZMC0TVduwZWAJSNg1x5TT3QBbYQRkxDl3GpUBbREITXku1XfW/chE7imb
+ PN71ixnG9kIkbkyQ==
+X-Google-Smtp-Source: AGHT+IGuLIuKJ9TdTjmy0inbvUt0VBwN2voCUtXNkx0exipVNDA/fm8mJbXcCwAq/N0Z7Pyhn9HWTg==
+X-Received: by 2002:a05:6830:2b09:b0:7c7:4bb:dc06 with SMTP id
+ 46e09a7af769-7c7c3c66650mr1144804a34.0.1764065998716; 
+ Tue, 25 Nov 2025 02:19:58 -0800 (PST)
+Received: from localhost ([2a03:2880:10ff:43::])
  by smtp.gmail.com with ESMTPSA id
- 586e51a60fabf-3ec9dc8e103sm7393177fac.19.2025.11.25.02.19.56
+ 46e09a7af769-7c78d346d84sm6126885a34.13.2025.11.25.02.19.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 Nov 2025 02:19:57 -0800 (PST)
+ Tue, 25 Nov 2025 02:19:58 -0800 (PST)
 From: Breno Leitao <leitao@debian.org>
-Date: Tue, 25 Nov 2025 02:19:46 -0800
+Date: Tue, 25 Nov 2025 02:19:47 -0800
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251125-gxring_intel-v2-3-f55cd022d28b@debian.org>
+Message-Id: <20251125-gxring_intel-v2-4-f55cd022d28b@debian.org>
 References: <20251125-gxring_intel-v2-0-f55cd022d28b@debian.org>
 In-Reply-To: <20251125-gxring_intel-v2-0-f55cd022d28b@debian.org>
 To: aleksander.lobakin@intel.com, Tony Nguyen <anthony.l.nguyen@intel.com>, 
@@ -101,26 +101,26 @@ Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
  Breno Leitao <leitao@debian.org>, 
  Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 X-Mailer: b4 0.15-dev-a6db3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2161; i=leitao@debian.org;
- h=from:subject:message-id; bh=xnhB3QD/pUGnQrTJXaBFG/oDYpB/BeGm+/VZM80nzu4=;
- b=owEBbQKS/ZANAwAIATWjk5/8eHdtAcsmYgBpJYLIarQOjd6mqF5tJPKnLM4/NSSLPVvrfC+mv
- DN4vMU/f9GJAjMEAAEIAB0WIQSshTmm6PRnAspKQ5s1o5Of/Hh3bQUCaSWCyAAKCRA1o5Of/Hh3
- bV1TD/oDDTNgkychPS/hc0OyTMeB+NP0a4nHhkbxqBQkDc9MC7hz8QGJNE8ZGTmo8wAZFarpJjK
- XGSGxwl6f7QnLSx9FbyvhDanDz8boT5Hqptb0ONXknk5cFIl4lSJ3T8oGNdya40mc5oD8fPWkzh
- aGrSBZFkl1FyBnJkDflgBYfYwzuoC0kiGZ1rfQqLhVAW1V82npC4c7OS2RCDcJ7gvyb5FDBKKyv
- 582a6QflL/QwzFjOBgqfFrGzXrkm4tTn0qL2jfkc7/BQX1I7ryUjbbczdk8M1tOCU7Sp7+cbCvg
- HsK4nIp2SVtC91B34qC0eCFF0Pqcp6TYpRAxAVqS58/nzpmka5xWIyrsfzM5t3Xh/nNzOXlyOP+
- Z0ybXcOGTW6fANvuzAO2SkRYgWRzUr7BQI8bbza63e5tiUXJByTp/U7bjOyEtXUk4jSs82c0e2M
- Nktj/eY7KlYtAERe6988DtUeSk+uK+qE+FocpeDTfuwWt8OR6qdCjUXCN0K+wtEa86E/922Pq0O
- iXVqN5XfxyRdAiKKgr8BT2SL99pN6Li1cCa9r+u/ML25RhrNmCtchsE7uul07C+Dt+VDl44VHy1
- zDJVOc5jEROWD2MglOOYxLjY453J0yIQjB/cZ5BHUQdqpdimYaQZ4aZIK9WhCYJxFhHl2c1zvCr
- eUFn/QhPrDrhX3w==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2441; i=leitao@debian.org;
+ h=from:subject:message-id; bh=+mKqoVITB42hGcYSGhqJCuohMHY7kF/4b4nnE5SxPMY=;
+ b=owEBbQKS/ZANAwAIATWjk5/8eHdtAcsmYgBpJYLIa66miHkyrbzAg+8nGLilethXxs3tVSlYv
+ eK4pwAyJOCJAjMEAAEIAB0WIQSshTmm6PRnAspKQ5s1o5Of/Hh3bQUCaSWCyAAKCRA1o5Of/Hh3
+ bS8ZD/kBb4tdz4tRd09xMak7gTq+zCpME4Wj5VOfKeVLSiV6t4bWaxIqHC3/L0ojLy5UUR6gwMq
+ r4kXBHYP+uLQS1zUpwCiJ8jkulST7Ti8qkIJAm4OgiGEBf8DY9Fef3VaguLTY8987d1a9G+0qla
+ EBar+X+C0cFsNcxFndfmEnN7qAZ1wbVxTTEHltsPvqkxGglHUYkRyFDeFjYyTAqGOCkwEzzPqLC
+ 0E9x4NAbFLUGunFF3l5fxHm3mDo0VLxrCuZecOkXes9WVuzN8xa4h6/omKU4pTMvXHX1s4PUhcE
+ y/foMyfQvUa/t78CnujY4J/G70DTrqrd1hWKgvwfYWWolY4GZumZIu0n3QnNp3Pqe+x149xm5W0
+ qpLPRD7++g5a/sPUBqXvNiD43ZGCob5mhEOmFA9ap4soGFMJfZrOTrzpQPc/Jf3w2u5JcjlZGKS
+ HzRx/geY7KmiDKl4n4Tnck6eDSsmHxb1fatr0kKtVWdW4LkVd/L9j3pl5hcIuV9Na7rHc3tuYrc
+ qDTRECaw9NsdH5Pia8lKFj2J5hqbx2P98OHaA4BIFMjbfiC5IOuk92Dz+uhn7qkMNGeQUrWmh0L
+ O+zZdvhez49HSxnvPCebgOHOFac+lSzKgladEOswJAIF4KZpr/T/sMwAt3SJbRSJF6ZCdgZEpX3
+ XEQCfGXkiX8vYJg==
 X-Developer-Key: i=leitao@debian.org; a=openpgp;
  fpr=AC8539A6E8F46702CA4A439B35A3939FFC78776D
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=debian.org
-Subject: [Intel-wired-lan] [PATCH net-next v2 3/8] ice: extract GRXRINGS
+Subject: [Intel-wired-lan] [PATCH net-next v2 4/8] idpf: extract GRXRINGS
  from .get_rxnfc
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -144,59 +144,66 @@ simplifying .get_rxnfc.
 Remove the handling of GRXRINGS in .get_rxnfc() by moving it to the new
 .get_rx_ring_count().
 
-This simplifies the RX ring count retrieval and aligns ice with the new
+This simplifies the RX ring count retrieval and aligns idpf with the new
 ethtool API for querying RX ring parameters.
+
+I was not totally convinced I needed to have the lock, but, I decided to
+be on the safe side and get the exact same behaviour it was before.
 
 Signed-off-by: Breno Leitao <leitao@debian.org>
 Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 19 +++++++++++++++----
- 1 file changed, 15 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/intel/idpf/idpf_ethtool.c | 23 ++++++++++++++++++++---
+ 1 file changed, 20 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index a1d9abee97e5..969d4f8f9c02 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -3083,6 +3083,20 @@ static int ice_set_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd)
- 	return -EOPNOTSUPP;
- }
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
+index a5a1eec9ade8..5dd82b1349c5 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
+@@ -5,6 +5,25 @@
+ #include "idpf_ptp.h"
+ #include "idpf_virtchnl.h"
  
 +/**
-+ * ice_get_rx_ring_count - get RX ring count
++ * idpf_get_rx_ring_count - get RX ring count
 + * @netdev: network interface device structure
 + *
 + * Return: number of RX rings.
 + */
-+static u32 ice_get_rx_ring_count(struct net_device *netdev)
++static u32 idpf_get_rx_ring_count(struct net_device *netdev)
 +{
-+	struct ice_netdev_priv *np = netdev_priv(netdev);
-+	struct ice_vsi *vsi = np->vsi;
++	struct idpf_vport *vport;
++	u32 num_rxq;
 +
-+	return vsi->rss_size;
++	idpf_vport_ctrl_lock(netdev);
++	vport = idpf_netdev_to_vport(netdev);
++	num_rxq = vport->num_rxq;
++	idpf_vport_ctrl_unlock(netdev);
++
++	return num_rxq;
 +}
 +
  /**
-  * ice_get_rxnfc - command to get Rx flow classification rules
+  * idpf_get_rxnfc - command to get RX flow classification rules
   * @netdev: network interface device structure
-@@ -3103,10 +3117,6 @@ ice_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd,
- 	hw = &vsi->back->hw;
+@@ -28,9 +47,6 @@ static int idpf_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd,
+ 	user_config = &np->adapter->vport_config[np->vport_idx]->user_config;
  
  	switch (cmd->cmd) {
 -	case ETHTOOL_GRXRINGS:
--		cmd->data = vsi->rss_size;
--		ret = 0;
+-		cmd->data = vport->num_rxq;
 -		break;
  	case ETHTOOL_GRXCLSRLCNT:
- 		cmd->rule_cnt = hw->fdir_active_fltr;
- 		/* report total rule count */
-@@ -4853,6 +4863,7 @@ static const struct ethtool_ops ice_ethtool_ops = {
- 	.get_sset_count		= ice_get_sset_count,
- 	.get_rxnfc		= ice_get_rxnfc,
- 	.set_rxnfc		= ice_set_rxnfc,
-+	.get_rx_ring_count	= ice_get_rx_ring_count,
- 	.get_ringparam		= ice_get_ringparam,
- 	.set_ringparam		= ice_set_ringparam,
- 	.nway_reset		= ice_nway_reset,
+ 		cmd->rule_cnt = user_config->num_fsteer_fltrs;
+ 		cmd->data = idpf_fsteer_max_rules(vport);
+@@ -1757,6 +1773,7 @@ static const struct ethtool_ops idpf_ethtool_ops = {
+ 	.get_channels		= idpf_get_channels,
+ 	.get_rxnfc		= idpf_get_rxnfc,
+ 	.set_rxnfc		= idpf_set_rxnfc,
++	.get_rx_ring_count	= idpf_get_rx_ring_count,
+ 	.get_rxfh_key_size	= idpf_get_rxfh_key_size,
+ 	.get_rxfh_indir_size	= idpf_get_rxfh_indir_size,
+ 	.get_rxfh		= idpf_get_rxfh,
 
 -- 
 2.47.3
