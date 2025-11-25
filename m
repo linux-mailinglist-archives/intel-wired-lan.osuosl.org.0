@@ -1,61 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D229BC8469B
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Nov 2025 11:16:39 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7D677C846A5
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 25 Nov 2025 11:17:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8491F6081E;
-	Tue, 25 Nov 2025 10:16:38 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 18D016110B;
+	Tue, 25 Nov 2025 10:17:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id IjmkBjCnYVg3; Tue, 25 Nov 2025 10:16:38 +0000 (UTC)
+ id R4qGc1vvwnTn; Tue, 25 Nov 2025 10:17:28 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0134060FC0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 88BCC61154
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1764065798;
-	bh=TetX4l+WgxRtvj8B+Ro8HemF14SDJ4C0ROoIyMI5/Iw=;
+	s=default; t=1764065848;
+	bh=fCLGTH8HhX1VIAT5wTyeXJiD3yzXbtbgJL7TaePmn+c=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=btaMrq+bA9opuso+DfIuk3amTNC7JriS5db9kQqnYidM+ttTny6KiV6BvU/A0HzKp
-	 QH9o3+p8icYpzyjhyvEACd4So+Vmp8uyjPwBjgLMn3WQhN+UcBRnkqC956IRNGlzhi
-	 UDzFmwX3xtqEdvDDp3wTMuSJ1L2ZZIp1DuPInuL3Vdm9ahRKoQRilHWdDZ2z051uMI
-	 sRy2OKlK4yPGJoCxGLIiVL1vSvVNdlUMm10qZIodwAPdjHaTkCMPndu865kngWR5s1
-	 oueH/EEW8L70YaM8/HXLH7v6mN0PqaefQUhWOFDYYGqN82XaYYEXtPFxvuUXhQRsqm
-	 wQBWEsfGT5OgA==
+	b=cPhnzT3rfOktRKEzAqCkXIt64jpK04cmcAXiw1kVrUXEPfcR2WBynbW/j4H1cOcpT
+	 jYCN1hKJD7+mAlpeH1OSDGGFJ6LxkvApQFMPfhk+mBJXNYHjxvZJaHwTxvItNNnGKY
+	 IxeNz9rRjPHaKmNNSZqdhgLtoyF8TOUEnBnK8nxjd3KAGLP2/SBAqbZJOj+d+6a8/F
+	 Gpzs+Wo69EJ5JJbIESmsaFkaWPHGH6j4tMa+SAN3FCItUa+9wtAuCT6ZK9HOxLeJvR
+	 IR+GlRj5/KWOqgE8dObxToX7AMRz0N44j7HyOapdysDC8p5GJIHs+fs/alU7I9CUmK
+	 s9/MJDloPp/fA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0134060FC0;
-	Tue, 25 Nov 2025 10:16:38 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 88BCC61154;
+	Tue, 25 Nov 2025 10:17:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 45A18359
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Nov 2025 10:16:36 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3A915359
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Nov 2025 10:17:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 376AE60F9D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Nov 2025 10:16:36 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2C226403CC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Nov 2025 10:17:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id IYmM2mfVOQHk for <intel-wired-lan@lists.osuosl.org>;
- Tue, 25 Nov 2025 10:16:35 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 493EE6072D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 493EE6072D
-Received: from sea.source.kernel.org (sea.source.kernel.org
- [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 493EE6072D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Nov 2025 10:16:35 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id V83OnwzcK3N5 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 25 Nov 2025 10:17:26 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
+ helo=sea.source.kernel.org; envelope-from=horms@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 8DACF4020C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8DACF4020C
+Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 8DACF4020C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 25 Nov 2025 10:17:26 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 0F0D440B81;
- Tue, 25 Nov 2025 10:16:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74DA6C4CEF1;
- Tue, 25 Nov 2025 10:16:33 +0000 (UTC)
-Date: Tue, 25 Nov 2025 10:16:31 +0000
+ by sea.source.kernel.org (Postfix) with ESMTP id 341ED40331;
+ Tue, 25 Nov 2025 10:17:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 99D0EC4CEF1;
+ Tue, 25 Nov 2025 10:17:24 +0000 (UTC)
+Date: Tue, 25 Nov 2025 10:17:22 +0000
 From: Simon Horman <horms@kernel.org>
 To: Jacob Keller <jacob.e.keller@intel.com>
 Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
@@ -63,31 +62,31 @@ Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-Message-ID: <aSWB_yLwW-DKvuc_@horms.kernel.org>
+Message-ID: <aSWCMsWk7eZoSR9e@horms.kernel.org>
 References: <20251120-jk-refactor-queue-stats-v4-0-6e8b0cea75cc@intel.com>
- <20251120-jk-refactor-queue-stats-v4-3-6e8b0cea75cc@intel.com>
+ <20251120-jk-refactor-queue-stats-v4-4-6e8b0cea75cc@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20251120-jk-refactor-queue-stats-v4-3-6e8b0cea75cc@intel.com>
+In-Reply-To: <20251120-jk-refactor-queue-stats-v4-4-6e8b0cea75cc@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1764065794;
- bh=7E9Z3qVoq+7y8LsemeRstJN9txhp8hp5rPn+YXZEZ7o=;
+ d=kernel.org; s=k20201202; t=1764065846;
+ bh=+pMFBzeBiSSkVtD9D9tPh0ECAQKi6pgNAWor2JG1b7Q=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=jHUsFJK0FOB2Rk0SKdN7vFe+USWSskei3ELRJ0LnIo6BxrL3WGUw4ALkDQthb7ePT
- L3ge5lhLDsOJdQ3vehsxLMqh+hhwAQEBV45+suPUVIA9EwkidBuSSUFZvpgampmO76
- RjvmUGcbMjaM4OpwDoklT6xKbBD6D2vwi60pjJQ5pxjoCntRnrC85/+IWGP9HR8f9T
- OjJ+0665pc9yb4spxBoQi0pOfm6q8d9WyuJhUN94w3b+wmeWK37bak1zg7NJMeACkz
- htzWkTymrHR79fifxPe5KihV8Peg3iqaeO0nf9UwpGgvXktJ+Ar8kY4Xvbxe2UkPld
- 1lVpMdH9fU+bg==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=MMaI0LsP8VYVwqG05WNDlXiOvlOCiBdZNATIR58JnkLibQeySZIoncLEaaCZlhTZo
+ z7LcmSGUdaHN1GsESvJPZkSB28jdK4rbfSFTBEIWh4dc1N0FbNUp73O+c/B6GcAiJ2
+ IbnSDbBJgfmAr6z4qghKHnsOxQ/RPv1b6Cg+bOyFFWXUGIQ0WmtyaEe3bzmk97b0wk
+ d+8Mo57oSJHOV1j/w+moFJtv7G3nC/XlJ0Gb0JzxtBgZ3iTv9KfGMAw5WYMO9Mw2fc
+ mN6gz8xKuncKq7yhzm1L8IeY9V2uDyx/GrBQPNhICzCz02UdV5m/7UEIU+QsnQk260
+ pPQ65X8v5xY9g==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=jHUsFJK0
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 3/6] ice: remove
- ice_q_stats struct and use struct_group
+ header.a=rsa-sha256 header.s=k20201202 header.b=MMaI0LsP
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 4/6] ice: use u64_stats
+ API to access pkts/bytes in dim sample
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -103,33 +102,22 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Nov 20, 2025 at 12:20:43PM -0800, Jacob Keller wrote:
-> The ice_qp_reset_stats function resets the stats for all rings on a VSI. It
-> currently behaves differently for Tx and Rx rings. For Rx rings, it only
-> clears the rx_stats which do not include the pkt and byte counts. For Tx
-> rings and XDP rings, it clears only the pkt and byte counts.
+On Thu, Nov 20, 2025 at 12:20:44PM -0800, Jacob Keller wrote:
+> The __ice_update_sample and __ice_get_ethtool_stats functions directly
+> accesses the pkts and bytes counters from the ring stats. A following
+> change is going to update the fields to be u64_stats_t type, and will need
+> to be accessed appropriately. This will ensure that the accesses do not
+> cause load/store tearing.
 > 
-> We could add extra memset calls to cover both the stats and relevant
-> tx/rx stats fields. Instead, lets convert stats into a struct_group which
-> contains both the pkts and bytes fields as well as the Tx or Rx stats, and
-> remove the ice_q_stats structure entirely.
-> 
-> The only remaining user of ice_q_stats is the ice_q_stats_len function in
-> ice_ethtool.c, which just counts the number of fields. Replace this with a
-> simple multiplication by 2. I find this to be simpler to reason about than
-> relying on knowing the layout of the ice_q_stats structure.
-> 
-> Now that the stats field of the ice_ring_stats covers all of the statistic
-> values, the ice_qp_reset_stats function will properly zero out all of the
-> fields.
+> Add helper functions similar to the ones used for updating the stats
+> values, and use them. This ensures use of the syncp pointer on 32-bit
+> architectures. Once the fields are updated to u64_stats_t, it will then
+> properly avoid tears on all architectures.
 > 
 > Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 > Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 
-I agree this is both more consistent and cleaner.
-
-I do feel there might be a yet cleaner way to handle things
-in place of multiplication by 2. But I can't think of such
-a way at this time.
+This seems like a nice clean up to me.  And I think it makes sense in the
+context of where this patch set is going.
 
 Reviewed-by: Simon Horman <horms@kernel.org>
