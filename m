@@ -2,91 +2,108 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C89CC8E15E
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Nov 2025 12:45:26 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 028E5C8CE82
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Nov 2025 07:16:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BE29940F36;
-	Thu, 27 Nov 2025 11:45:24 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 52D894094F;
+	Thu, 27 Nov 2025 06:16:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uUOHjDWuuv0a; Thu, 27 Nov 2025 11:45:24 +0000 (UTC)
+ id LcQn2UYeXaav; Thu, 27 Nov 2025 06:16:27 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 37F6040FCF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 47DB44097A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1764243924;
-	bh=Ljq+9KxCMvW56uHHOvKZNm8CvtHZyhMEFaXb+ARbVEw=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=Tev+L5J6cK65iJbc5CjaCbNFaI/RBc7BCikJLObYT4Tuw+tqU5UKUPmot0nz3UJUe
-	 tMUGoeuozBu1lgtztSMChCMlhjhNzAw9BDR2HOsTfJB9lhDEVdz9whuh2qh8bjvsUl
-	 KanDrQBw+Um9C7QSyEoijcnUZNqPcZXyLujWbnLBCgxXDQOIn86hS3iYtlcEgJo2uR
-	 08JhlsofFokUz/Esb2eOujuVhvH6c5kpj2wddaSvsMvJNE8zN6gkKXVrFtH+usBNro
-	 OUuh/qAC1/D1qlvhEhbglVLzmdBmUk6CDWSyFQud3a0nh6EmOu1d3cZ5bxk2EGRtnS
-	 /eVr0uLLNLFhw==
+	s=default; t=1764224187;
+	bh=0nJxzo8eX9HUYh2nxCXAAnMnReFQtPkunXrI7pOfvJ0=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=WuNI5jyi9+7LzIydk/uB1WCFguGNu2C5MfoSqy4yQ+iI5AKuWVYkT1ui/Mu5OLVoy
+	 TeubEV7mct1reD8ZQcPKQqmAvM135ajSO2B2siUwPRj87Za5LXVKqv+iHoBxAMXvoy
+	 VzyJX1Q8I3c3JT0K/8I34dgc8SlAMY1xA0T3uZ4QVpYxujxdm5vnN406AexDIsSU/3
+	 /FIF3DLUdkFMv7Yn2AsskX3mMAeY3yoWLVtKw9l43RYtwH/mop72V9gJJmAHZHCA1H
+	 /6dgNvXYWdsdWZ8fuvkou9XblHuBOLRstnGK+dSCKlg9miiU/RTAUpeFvzwGIvcpBc
+	 dCZ/szgAJhRBw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 37F6040FCF;
-	Thu, 27 Nov 2025 11:45:24 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 47DB44097A;
+	Thu, 27 Nov 2025 06:16:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id A0BFEDE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Nov 2025 11:45:22 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 8B3C1DE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Nov 2025 06:16:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 92EF760AE5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Nov 2025 11:45:22 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 70C0360B53
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Nov 2025 06:16:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 046YUTK5Fky4 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 27 Nov 2025 11:45:21 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
- helo=sea.source.kernel.org; envelope-from=horms@kernel.org;
+ id ZXdmMrHDb1lv for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 27 Nov 2025 06:16:24 +0000 (UTC)
+X-Greylist: delayed 426 seconds by postgrey-1.37 at util1.osuosl.org;
+ Thu, 27 Nov 2025 06:16:23 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A7B6A60B52
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A7B6A60B52
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
+ helo=mgamail.intel.com; envelope-from=chwee.lin.choong@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A5D9460AD3
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A5D9460AD3
-Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A5D9460AD3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Nov 2025 11:45:21 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 6C498401AE;
- Thu, 27 Nov 2025 11:45:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 03090C4CEF8;
- Thu, 27 Nov 2025 11:45:19 +0000 (UTC)
-Date: Thu, 27 Nov 2025 11:45:17 +0000
-From: Simon Horman <horms@kernel.org>
-To: Sreedevi Joshi <sreedevi.joshi@intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A7B6A60B52
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Nov 2025 06:16:23 +0000 (UTC)
+X-CSE-ConnectionGUID: WKAOyOJQSt+Bou6jIDAALQ==
+X-CSE-MsgGUID: CULrsMCQRl2+E6zrndpYAg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11625"; a="66152501"
+X-IronPort-AV: E=Sophos;i="6.20,230,1758610800"; d="scan'208";a="66152501"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+ by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Nov 2025 22:09:15 -0800
+X-CSE-ConnectionGUID: EVF9C2O+SjiFGmSG7wL5Cw==
+X-CSE-MsgGUID: vE3Dx5+ZRZOttXv2lq5bAw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.20,230,1758610800"; d="scan'208";a="193956120"
+Received: from p2dy149cchoong.png.intel.com ([10.107.243.50])
+ by fmviesa010.fm.intel.com with ESMTP; 26 Nov 2025 22:09:12 -0800
+From: Chwee-Lin Choong <chwee.lin.choong@intel.com>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Richard Cochran <richardcochran@gmail.com>,
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>
 Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Sridhar Samudrala <sridhar.samudrala@intel.com>,
- Emil Tantilov <emil.s.tantilov@intel.com>
-Message-ID: <aSg5zR-6ZYXBuIVd@horms.kernel.org>
-References: <20251124184750.3625097-1-sreedevi.joshi@intel.com>
- <20251124184750.3625097-4-sreedevi.joshi@intel.com>
+ linux-kernel@vger.kernel.org, Avi Shalev <avi.shalev@intel.com>,
+ Song Yoong Siang <yoong.siang.song@intel.com>,
+ Chwee-Lin Choong <chwee.lin.choong@intel.com>
+Date: Thu, 27 Nov 2025 21:49:27 +0800
+Message-ID: <20251127134927.2133-1-chwee.lin.choong@intel.com>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251124184750.3625097-4-sreedevi.joshi@intel.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1764243921;
- bh=4N8aVeG3r57xJFID0/PYHsDmVbIx5RzBSTf7W1TTCIg=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=bOPbEcREP3YuG7SxiKodW5WZlTPecxukASxDGGJ0NiJyIn8zD943JUJ3g23XPF+WA
- EOzRZIlz2/MXGZytK3x9a3T/Zc4t5M2lEsiy7U5+gzJ/Fp+emW3Gq/Fu58h6pYeKgH
- PKiNDw9xtZArenxemSOniO4HFFrDNeOr6CBOcvEXjfyeXsEmgblsxXBPfieOcUXWJ4
- IedvA9QpqRRpq3gYDYh5iV8NPDywHsdtgWclupnxN+FekY6/4UD8RMjJQu1Kf6VW++
- TcR4reF7yjQi2BAXeSk6JtK4zlLwpL2FQQ+PTG5G6Pl5WHM178uDXGEHe8hyHZLFvS
- z3yhXYt19VHMA==
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1764224182; x=1795760182;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=aHUC8nU4inAMF0lcxnfBXRfDJnB0i8imv9buU6Z9arU=;
+ b=g/m7Pdwcq/OGOIZMya1AWNLI2XEQX+Fxr2feHoDjC/Jxaddd8jGPeEiN
+ ONQhqcpsr/3BOlIj+1IxUTp71V8o7UsGOvfVBFHKQ4enTAmi6ZZz6f+Q4
+ ONEHftUQNbk+QUOxSnXAIPtiDAHYHtQ6yELOqmhGBt3gz4IRGTcPFuEkC
+ /E+WgdAJ0nYJSLdHBameXkBhJxxpGYjHECc5vJCHyUwXoz3OSKKa8Yr05
+ J75aFxk2/PgBfQW8HtTsE0uqydFmrQvLDC7DMRv2PQ8UM0ak//EpTKK1f
+ s/Agee4fMrOt7ngNTvccR+kmYzllAdVjAVvhM7nSHleS91mmglVSmTSKM
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=bOPbEcRE
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2 3/3] idpf: Fix RSS LUT NULL
- ptr issue after soft reset
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=g/m7Pdwc
+Subject: [Intel-wired-lan] [PATCH iwl-net v2] igc: fix race condition in TX
+ timestamp read for register 0
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -102,62 +119,122 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Nov 24, 2025 at 12:47:50PM -0600, Sreedevi Joshi wrote:
-> During soft reset, the RSS LUT is freed and not restored unless the
-> interface is up. If an ethtool command that accesses the rss lut is
-> attempted immediately after reset, it will result in NULL ptr
-> dereference. Also, there is no need to reset the rss lut if the soft reset
-> does not involve queue count change.
-> 
-> After soft reset, set the RSS LUT to default values based on the updated
-> queue count only if the reset was a result of a queue count change and
-> the LUT was not configured by the user. In all other cases, don't touch
-> the LUT.
-> 
-> Steps to reproduce:
-> 
-> ** Bring the interface down (if up)
-> ifconfig eth1 down
-> 
-> ** update the queue count (eg., 27->20)
-> ethtool -L eth1 combined 20
-> 
-> ** display the RSS LUT
-> ethtool -x eth1
-> 
-> [82375.558338] BUG: kernel NULL pointer dereference, address: 0000000000000000
-> [82375.558373] #PF: supervisor read access in kernel mode
-> [82375.558391] #PF: error_code(0x0000) - not-present page
-> [82375.558408] PGD 0 P4D 0
-> [82375.558421] Oops: Oops: 0000 [#1] SMP NOPTI
-> <snip>
-> [82375.558516] RIP: 0010:idpf_get_rxfh+0x108/0x150 [idpf]
-> [82375.558786] Call Trace:
-> [82375.558793]  <TASK>
-> [82375.558804]  rss_prepare.isra.0+0x187/0x2a0
-> [82375.558827]  rss_prepare_data+0x3a/0x50
-> [82375.558845]  ethnl_default_doit+0x13d/0x3e0
-> [82375.558863]  genl_family_rcv_msg_doit+0x11f/0x180
-> [82375.558886]  genl_rcv_msg+0x1ad/0x2b0
-> [82375.558902]  ? __pfx_ethnl_default_doit+0x10/0x10
-> [82375.558920]  ? __pfx_genl_rcv_msg+0x10/0x10
-> [82375.558937]  netlink_rcv_skb+0x58/0x100
-> [82375.558957]  genl_rcv+0x2c/0x50
-> [82375.558971]  netlink_unicast+0x289/0x3e0
-> [82375.558988]  netlink_sendmsg+0x215/0x440
-> [82375.559005]  __sys_sendto+0x234/0x240
-> [82375.559555]  __x64_sys_sendto+0x28/0x30
-> [82375.560068]  x64_sys_call+0x1909/0x1da0
-> [82375.560576]  do_syscall_64+0x7a/0xfa0
-> [82375.561076]  ? clear_bhb_loop+0x60/0xb0
-> [82375.561567]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
-> <snip>
-> 
-> Fixes: 02cbfba1add5 ("idpf: add ethtool callbacks")
-> Signed-off-by: Sreedevi Joshi <sreedevi.joshi@intel.com>
-> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
-> Reviewed-by: Emil Tantilov <emil.s.tantilov@intel.com>
+The current HW bug workaround checks the TXTT_0 ready bit first,
+then reads TXSTMPL_0 twice (before and after reading TXSTMPH_0)
+to detect whether a new timestamp was captured by timestamp
+register 0 during the workaround.
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+This sequence has a race: if a new timestamp is captured after
+checking the TXTT_0 bit but before the first TXSTMPL_0 read, the
+detection fails because both the “old” and “new” values come from
+the same timestamp.
+
+Fix by reading TXSTMPL_0 first to establish a baseline, then
+checking the TXTT_0 bit. This ensures any timestamp captured
+during the race window will be detected.
+
+Old sequence:
+  1. Check TXTT_0 ready bit
+  2. Read TXSTMPL_0 (baseline)
+  3. Read TXSTMPH_0 (interrupt workaround)
+  4. Read TXSTMPL_0 (detect changes vs baseline)
+
+New sequence:
+  1. Read TXSTMPL_0 (baseline)
+  2. Check TXTT_0 ready bit
+  3. Read TXSTMPH_0 (interrupt workaround)
+  4. Read TXSTMPL_0 (detect changes vs baseline)
+
+Fixes: c789ad7cbebc ("igc: Work around HW bug causing missing timestamps")
+Suggested-by: Avi Shalev <avi.shalev@intel.com>
+Signed-off-by: Song Yoong Siang <yoong.siang.song@intel.com>
+Signed-off-by: Chwee-Lin Choong <chwee.lin.choong@intel.com>
+---
+v2: Added detailed comments explaining the hardware bug workaround and race
+    detection mechanism
+---
+ drivers/net/ethernet/intel/igc/igc_ptp.c | 43 ++++++++++++++----------
+ export                                   |  0
+ 2 files changed, 25 insertions(+), 18 deletions(-)
+ create mode 100644 export
+
+diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
+index b7b46d863bee..7aae83c108fd 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ptp.c
++++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
+@@ -774,36 +774,43 @@ static void igc_ptp_tx_reg_to_stamp(struct igc_adapter *adapter,
+ static void igc_ptp_tx_hwtstamp(struct igc_adapter *adapter)
+ {
+ 	struct igc_hw *hw = &adapter->hw;
++	u32 txstmpl_old;
+ 	u64 regval;
+ 	u32 mask;
+ 	int i;
+ 
++	/* Establish baseline of TXSTMPL_0 before checking TXTT_0.
++	 * This baseline is used to detect if a new timestamp arrives in
++	 * register 0 during the hardware bug workaround below.
++	 */
++	txstmpl_old = rd32(IGC_TXSTMPL);
++
+ 	mask = rd32(IGC_TSYNCTXCTL) & IGC_TSYNCTXCTL_TXTT_ANY;
+ 	if (mask & IGC_TSYNCTXCTL_TXTT_0) {
+ 		regval = rd32(IGC_TXSTMPL);
+ 		regval |= (u64)rd32(IGC_TXSTMPH) << 32;
+ 	} else {
+-		/* There's a bug in the hardware that could cause
+-		 * missing interrupts for TX timestamping. The issue
+-		 * is that for new interrupts to be triggered, the
+-		 * IGC_TXSTMPH_0 register must be read.
++		/* TXTT_0 not set - register 0 has no new timestamp initially.
++		 *
++		 * Hardware bug: Future timestamp interrupts won't fire unless
++		 * TXSTMPH_0 is read, even if the timestamp was captured in
++		 * registers 1-3.
+ 		 *
+-		 * To avoid discarding a valid timestamp that just
+-		 * happened at the "wrong" time, we need to confirm
+-		 * that there was no timestamp captured, we do that by
+-		 * assuming that no two timestamps in sequence have
+-		 * the same nanosecond value.
++		 * Workaround: Read TXSTMPH_0 here to enable future interrupts.
++		 * However, this read clears TXTT_0. If a timestamp arrives in
++		 * register 0 after checking TXTT_0 but before this read, it
++		 * would be lost.
+ 		 *
+-		 * So, we read the "low" register, read the "high"
+-		 * register (to latch a new timestamp) and read the
+-		 * "low" register again, if "old" and "new" versions
+-		 * of the "low" register are different, a valid
+-		 * timestamp was captured, we can read the "high"
+-		 * register again.
++		 * To detect this race: We saved a baseline read of TXSTMPL_0
++		 * before TXTT_0 check. After performing the workaround read of
++		 * TXSTMPH_0, we read TXSTMPL_0 again. Since consecutive
++		 * timestamps never share the same nanosecond value, a change
++		 * between the baseline and new TXSTMPL_0 indicates a timestamp
++		 * arrived during the race window. If so, read the complete
++		 * timestamp.
+ 		 */
+-		u32 txstmpl_old, txstmpl_new;
++		u32 txstmpl_new;
+ 
+-		txstmpl_old = rd32(IGC_TXSTMPL);
+ 		rd32(IGC_TXSTMPH);
+ 		txstmpl_new = rd32(IGC_TXSTMPL);
+ 
+@@ -818,7 +825,7 @@ static void igc_ptp_tx_hwtstamp(struct igc_adapter *adapter)
+ 
+ done:
+ 	/* Now that the problematic first register was handled, we can
+-	 * use retrieve the timestamps from the other registers
++	 * retrieve the timestamps from the other registers
+ 	 * (starting from '1') with less complications.
+ 	 */
+ 	for (i = 1; i < IGC_MAX_TX_TSTAMP_REGS; i++) {
+diff --git a/export b/export
+new file mode 100644
+index 000000000000..e69de29bb2d1
+-- 
+2.43.0
 
