@@ -1,68 +1,66 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 028E5C8CE82
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Nov 2025 07:16:29 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 53F47C8D1A8
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Nov 2025 08:31:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 52D894094F;
-	Thu, 27 Nov 2025 06:16:28 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id LcQn2UYeXaav; Thu, 27 Nov 2025 06:16:27 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 47DB44097A
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1764224187;
-	bh=0nJxzo8eX9HUYh2nxCXAAnMnReFQtPkunXrI7pOfvJ0=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=WuNI5jyi9+7LzIydk/uB1WCFguGNu2C5MfoSqy4yQ+iI5AKuWVYkT1ui/Mu5OLVoy
-	 TeubEV7mct1reD8ZQcPKQqmAvM135ajSO2B2siUwPRj87Za5LXVKqv+iHoBxAMXvoy
-	 VzyJX1Q8I3c3JT0K/8I34dgc8SlAMY1xA0T3uZ4QVpYxujxdm5vnN406AexDIsSU/3
-	 /FIF3DLUdkFMv7Yn2AsskX3mMAeY3yoWLVtKw9l43RYtwH/mop72V9gJJmAHZHCA1H
-	 /6dgNvXYWdsdWZ8fuvkou9XblHuBOLRstnGK+dSCKlg9miiU/RTAUpeFvzwGIvcpBc
-	 dCZ/szgAJhRBw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 47DB44097A;
-	Thu, 27 Nov 2025 06:16:27 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 8B3C1DE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Nov 2025 06:16:25 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 70C0360B53
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Nov 2025 06:16:25 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BA22460B4E;
+	Thu, 27 Nov 2025 07:31:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZXdmMrHDb1lv for <intel-wired-lan@lists.osuosl.org>;
- Thu, 27 Nov 2025 06:16:24 +0000 (UTC)
-X-Greylist: delayed 426 seconds by postgrey-1.37 at util1.osuosl.org;
- Thu, 27 Nov 2025 06:16:23 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A7B6A60B52
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A7B6A60B52
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
+ id 0JOVV1ypP8CG; Thu, 27 Nov 2025 07:31:36 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BDA6960B33
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1764228695;
+	bh=RpZmbBbV4+WX6j/6UGWRyRIibQb/1sSDTXf0KZhOSqo=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=fNo7DyDQfnKLzrSt0LtYc6RfuIEYC402pnY0hi3aUzuffE/lTvXJdZOZVx9tjmDbz
+	 BG1u5KhaRREFWprZy+X2UWFtNuFerugrvUuSUE3GmnmNBLdxb1nECVFwe3cYhtLQSZ
+	 AL1wmuNPf8HOPjz/Xt9ya4RMqke2SaV912iRSdSfST0rZj/ScOWDRlbaQCAXTcPerb
+	 B3pNi2Xzd+lAV7NdW/BcnqRkv/GR0tMLbTMptP9S82EGVOWh1Op4G71D/WnlKNiX1o
+	 /4OdETNIqHKznH/dMxkXNe7aZlLpKUyNXG4nSy7mXogXvZhNPY0iVGJbgTUEEFjZN0
+	 fJA2S74UJMQHw==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id BDA6960B33;
+	Thu, 27 Nov 2025 07:31:35 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 1D8F6DE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Nov 2025 07:31:34 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 047CD40210
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Nov 2025 07:31:34 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id E1tsqdE8QBZs for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 27 Nov 2025 07:31:33 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
  helo=mgamail.intel.com; envelope-from=chwee.lin.choong@intel.com;
  receiver=<UNKNOWN> 
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A7B6A60B52
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Nov 2025 06:16:23 +0000 (UTC)
-X-CSE-ConnectionGUID: WKAOyOJQSt+Bou6jIDAALQ==
-X-CSE-MsgGUID: CULrsMCQRl2+E6zrndpYAg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11625"; a="66152501"
-X-IronPort-AV: E=Sophos;i="6.20,230,1758610800"; d="scan'208";a="66152501"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Nov 2025 22:09:15 -0800
-X-CSE-ConnectionGUID: EVF9C2O+SjiFGmSG7wL5Cw==
-X-CSE-MsgGUID: vE3Dx5+ZRZOttXv2lq5bAw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 843FD40065
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 843FD40065
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 843FD40065
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Nov 2025 07:31:31 +0000 (UTC)
+X-CSE-ConnectionGUID: 63gMNx9ASEO7w0iViJfX8g==
+X-CSE-MsgGUID: aBWaWrRJSyWv68xSoUdKow==
+X-IronPort-AV: E=McAfee;i="6800,10657,11625"; a="70133706"
+X-IronPort-AV: E=Sophos;i="6.20,230,1758610800"; d="scan'208";a="70133706"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+ by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Nov 2025 23:31:31 -0800
+X-CSE-ConnectionGUID: H9TNPFCSSpiXQUhEiAlhAQ==
+X-CSE-MsgGUID: dLEH+f6zSG26Rkgtl16qQg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.20,230,1758610800"; d="scan'208";a="193956120"
+X-IronPort-AV: E=Sophos;i="6.20,230,1758610800"; d="scan'208";a="197487869"
 Received: from p2dy149cchoong.png.intel.com ([10.107.243.50])
- by fmviesa010.fm.intel.com with ESMTP; 26 Nov 2025 22:09:12 -0800
+ by fmviesa005.fm.intel.com with ESMTP; 26 Nov 2025 23:31:23 -0800
 From: Chwee-Lin Choong <chwee.lin.choong@intel.com>
 To: Tony Nguyen <anthony.l.nguyen@intel.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
@@ -73,36 +71,37 @@ To: Tony Nguyen <anthony.l.nguyen@intel.com>,
  Richard Cochran <richardcochran@gmail.com>,
  Vinicius Costa Gomes <vinicius.gomes@intel.com>
 Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, Avi Shalev <avi.shalev@intel.com>,
- Song Yoong Siang <yoong.siang.song@intel.com>,
- Chwee-Lin Choong <chwee.lin.choong@intel.com>
-Date: Thu, 27 Nov 2025 21:49:27 +0800
-Message-ID: <20251127134927.2133-1-chwee.lin.choong@intel.com>
+ linux-kernel@vger.kernel.org,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Avi Shalev <avi.shalev@intel.com>,
+ Song Yoong Siang <yoong.siang.song@intel.com>
+Date: Thu, 27 Nov 2025 23:11:37 +0800
+Message-ID: <20251127151137.2883-1-chwee.lin.choong@intel.com>
 X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1764224182; x=1795760182;
+ t=1764228692; x=1795764692;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=aHUC8nU4inAMF0lcxnfBXRfDJnB0i8imv9buU6Z9arU=;
- b=g/m7Pdwcq/OGOIZMya1AWNLI2XEQX+Fxr2feHoDjC/Jxaddd8jGPeEiN
- ONQhqcpsr/3BOlIj+1IxUTp71V8o7UsGOvfVBFHKQ4enTAmi6ZZz6f+Q4
- ONEHftUQNbk+QUOxSnXAIPtiDAHYHtQ6yELOqmhGBt3gz4IRGTcPFuEkC
- /E+WgdAJ0nYJSLdHBameXkBhJxxpGYjHECc5vJCHyUwXoz3OSKKa8Yr05
- J75aFxk2/PgBfQW8HtTsE0uqydFmrQvLDC7DMRv2PQ8UM0ak//EpTKK1f
- s/Agee4fMrOt7ngNTvccR+kmYzllAdVjAVvhM7nSHleS91mmglVSmTSKM
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=djXtYfwiJE1XkDQF2b0MRN7mvLoJ5ybRSLF+cotldH8=;
+ b=i6nWvBUFDzV60IveVG6na4ntcY8JdD1zIvN/oi4MFAjdWFnzXpD5rdse
+ /Z/a+axOwilMMqPCVTgov8FfPaAyH5UhfAi1RZ63UO2CynLuBCs0eB/Dm
+ /cVkokHpq5zzPoV/vYmM5xA82I/TeStgZlixhxMHsZ87cCOTaYKG6vsRe
+ x0VPgkpOPTNIXVrz8uma9a9VFAjaZ36Kx7egOisSsiEPY4jAkN1cMgKPd
+ QKZZsCtTUSkUWnGpH7M1TL02XUtg8DEBzV+6x9gQRmSxiES+oDU9YjNeJ
+ LMouTOFePUUxcXE/cnggn0YzN76Wyg+aKdyZ8MEh+4rIwnDj9/NN0N4dE
+ g==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=g/m7Pdwc
-Subject: [Intel-wired-lan] [PATCH iwl-net v2] igc: fix race condition in TX
+ header.s=Intel header.b=i6nWvBUF
+Subject: [Intel-wired-lan] [PATCH iwl-net v3] igc: fix race condition in TX
  timestamp read for register 0
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -147,16 +146,22 @@ New sequence:
 
 Fixes: c789ad7cbebc ("igc: Work around HW bug causing missing timestamps")
 Suggested-by: Avi Shalev <avi.shalev@intel.com>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Signed-off-by: Song Yoong Siang <yoong.siang.song@intel.com>
 Signed-off-by: Chwee-Lin Choong <chwee.lin.choong@intel.com>
 ---
-v2: Added detailed comments explaining the hardware bug workaround and race
+v1: https://patchwork.ozlabs.org/project/intel-wired-lan/patch/20250918183811.31270-1-chwee.lin.choong@intel.com/
+v2: https://patchwork.ozlabs.org/project/intel-wired-lan/patch/20251127134927.2133-1-chwee.lin.choong@intel.com/
+
+changelog:
+v1 -> v2 
+- Added detailed comments explaining the hardware bug workaround and race
     detection mechanism
+v2 -> v3
+- Removed extra export file added by mistake	
 ---
  drivers/net/ethernet/intel/igc/igc_ptp.c | 43 ++++++++++++++----------
- export                                   |  0
- 2 files changed, 25 insertions(+), 18 deletions(-)
- create mode 100644 export
+ 1 file changed, 25 insertions(+), 18 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
 index b7b46d863bee..7aae83c108fd 100644
@@ -232,9 +237,6 @@ index b7b46d863bee..7aae83c108fd 100644
  	 * (starting from '1') with less complications.
  	 */
  	for (i = 1; i < IGC_MAX_TX_TSTAMP_REGS; i++) {
-diff --git a/export b/export
-new file mode 100644
-index 000000000000..e69de29bb2d1
 -- 
 2.43.0
 
