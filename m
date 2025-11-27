@@ -1,83 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 261DFC8D2FE
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Nov 2025 08:48:58 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E872C8D911
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Nov 2025 10:32:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D4A2760B77;
-	Thu, 27 Nov 2025 07:48:56 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BDDBC83FF0;
+	Thu, 27 Nov 2025 09:32:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YI3KYJg-bkpi; Thu, 27 Nov 2025 07:48:55 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id W_u4OB5cTFNe; Thu, 27 Nov 2025 09:32:55 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D09F160B90
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3D76283FBA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1764229735;
-	bh=HEG7Vaq3TaJNxq6GRGwz8I626m+/53VmLOdEQuT1nU0=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=kkReRdvBhUtN7Yvr3wpbeYt6yU43r20di3givfaEzW+zBaIXkrfZQpTdrxS9ZA78V
-	 2GNmvbzEw8mcMquEuVdco/uYfQCDB/Fbpd7WBF/e45uQOI2sXVeMc8bwYkUaQeiKrC
-	 n9bssZYFmRVcVIslvMKpvplF9MYhFFt6K+GzN69L+6w7goYVdgI3lMclSKME2xeYGf
-	 NkGqTVBDboeOuN0KPx/m23bmCG1bROkuqPk5uyEDtyAM6mOpeIRS7pkmoXAGKl2JkI
-	 UE5uJl1v6CyhVAvrC8lsZdI6zvRkbtOvSHit8QCF0FKTTcwn6QYosyFvAuscKg3E3b
-	 +6V1JO949XM6Q==
+	s=default; t=1764235975;
+	bh=XkxSjuLuOR5b8DKMDNyOXn1n9z3v+AMWdD0UdukV5gc=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=CX8QQ9WNAtijknNId6ugMNw7GDoE1jky2sZ5TcKAvLBJarXzmz8mrVO8RWIB7NYU4
+	 55VrgCIytgwkZegYBEslmRp8CC5m3EVOgC2V01/gAc60QKSiy9nfi+npI3dw278zJK
+	 hSU7HBNNggC6hsAL66p2u2gfMrqL5sBjBnKbXUQnk0P13lQ4bJwpbBF2Ofdvp2lr9m
+	 uSytOJtSJ0CLZfAUrdQJzwDnWEk8ALQvEduYXt18BRpyThqgmkGLHLGYOY3Eueq9M7
+	 ENpDgEYcDpRslvvfzEWBVsaR8et0Q+6EGU2+70SvKZIsmvCKXQInrhFrmZlqiVT/Ng
+	 vRcIsPOP66HRQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D09F160B90;
-	Thu, 27 Nov 2025 07:48:55 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3D76283FBA;
+	Thu, 27 Nov 2025 09:32:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id B713B708
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Nov 2025 07:48:53 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id E72CEDE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Nov 2025 09:32:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 9E0E7402D0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Nov 2025 07:48:53 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id D67484087D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Nov 2025 09:32:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 04593CQeTMVp for <intel-wired-lan@lists.osuosl.org>;
- Thu, 27 Nov 2025 07:48:52 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id clyxOmSfaMoX for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 27 Nov 2025 09:32:53 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
+ helo=mgamail.intel.com; envelope-from=grzegorz.nitka@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 541E340065
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 541E340065
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 541E340065
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Nov 2025 07:48:51 +0000 (UTC)
-Received: from [192.168.2.216] (p5dc559e2.dip0.t-ipconnect.de [93.197.89.226])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 2BB3161B48447;
- Thu, 27 Nov 2025 08:48:04 +0100 (CET)
-Message-ID: <0655232d-cb7e-4059-9a12-5d5df0425e8c@molgen.mpg.de>
-Date: Thu, 27 Nov 2025 08:48:02 +0100
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 484B540836
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 484B540836
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 484B540836
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Nov 2025 09:32:52 +0000 (UTC)
+X-CSE-ConnectionGUID: WD6ae6eqQyueKSMXp8dsyw==
+X-CSE-MsgGUID: rlb84wwoSX+tVI0R103EQg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11625"; a="91761058"
+X-IronPort-AV: E=Sophos;i="6.20,230,1758610800"; d="scan'208";a="91761058"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Nov 2025 01:32:51 -0800
+X-CSE-ConnectionGUID: CrWZo14MTBqvOxJoaSnh8g==
+X-CSE-MsgGUID: dmQlN1HuSM2+68I7x5daDg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.20,230,1758610800"; d="scan'208";a="193210142"
+Received: from gklab-003-001.igk.intel.com ([10.91.173.48])
+ by orviesa007.jf.intel.com with ESMTP; 27 Nov 2025 01:32:50 -0800
+From: Grzegorz Nitka <grzegorz.nitka@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu, 27 Nov 2025 10:25:58 +0100
+Message-Id: <20251127092558.914981-1-grzegorz.nitka@intel.com>
+X-Mailer: git-send-email 2.39.3
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, Przemek Kitszel
- <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-References: <20251127074516.2385922-1-andriy.shevchenko@linux.intel.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20251127074516.2385922-1-andriy.shevchenko@linux.intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 1/1] idpf: Fix kernel-doc
- descriptions to avoid warnings
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1764235973; x=1795771973;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=Lz5tiYqO9lVIx/L5agfQKSQCh9f11c5AqKOu4sPTUWY=;
+ b=WQ4UPacjqKFGXAoNRTDb7hJ6ujh978boUNO+20vd6T1ttVkerH2Q0X5c
+ eAHjQ81WYK4RgEYCL1OKoyOyQsFIg2C6ZbURCF4uHDCLUWZDNj06ERiot
+ DETowQ/qYsjRZ7Gqids26oRoI2HiApiKPbFKesAvIrVi0kbmBdcDWgtAd
+ OufNtPHOi4FvXC4L1mO8KeTmOgPMETBZ0jTBXRyU0VBkU5+2Q2wVhmHci
+ toHbqvG6D3/2Hbfkkz4OV/pQrmrL564UVhL6kDpI2sEKN+EMVgh9iIps8
+ Rcz9cgUOo461bTMPi5M9bTOXNpucICZ6m3TKAXaCr0XJcJgwkPdZfTMAl
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=WQ4UPacj
+Subject: [Intel-wired-lan] [PATCH iwl-net] ice: fix missing TX timestamps
+ interrupts on E825 devices
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -90,36 +101,72 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>, netdev@vger.kernel.org,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Andy,
+Modify PTP (Precision Time Protocol) configuration on link down flow.
+Previously, PHY_REG_TX_OFFSET_READY register was cleared in such case.
+This register is used to determine if the timestamp is valid or not on
+the hardware side.
+However, there is a possibility that there is still the packet in the
+HW queue which originally was supposed to be timestamped but the link
+is already down and given register is cleared.
+This potentially might lead to the situation in which that 'delayed'
+packet's timestamp is treated as invalid one when the link is up
+again.
+This in turn leads to the situation in which the driver is not able to
+effectively clean timestamp memory and interrupt configuration.
+From the hardware perspective, that 'old' interrupt was not handled
+properly and even if new timestamp packets are processed, no new
+interrupts is generated. As a result, providing timestamps to the user
+applications (like ptp4l) is not possible.
+The solution for this problem is implemented at the driver level rather
+than the firmware, and maintains the tx_ready bit high, even during
+link down events. This avoids entering a potential inconsistent state
+between the driver and the timestamp hardware.
 
+Testing hints:
+- run PTP traffic at higher rate (like 16 PTP messages per second)
+- observe ptp4l behaviour at the client side in the following
+  conditions:
+	a) trigger link toggle events. It needs to be physiscal
+           link down/up events
+	b) link speed change
+In all above cases, PTP processing at ptp4l application should resume
+always. In failure case, the following permanent error message in ptp4l
+log was observed:
+controller-0 ptp4l: err [6175.116] ptp4l-legacy timed out while polling
+	for tx timestamp
 
-Thank you for your patch.
+Fixes: 7cab44f1c35f ("ice: Introduce ETH56G PHY model for E825C products")
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_ptp.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-Am 27.11.25 um 08:44 schrieb Andy Shevchenko:
-> In many functions the Return section is missing. Fix kernel-doc
-> descriptions to address that and other warnings.
-> 
-> Before the change:
-> 
-> $ scripts/kernel-doc -none -Wreturn drivers/net/ethernet/intel/idpf/idpf_txrx.c 2>&1 | wc -l
-> 85
-> 
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> ---
-> v2: collected tags
->   drivers/net/ethernet/intel/idpf/idpf_txrx.c | 96 +++++++++++++--------
->   1 file changed, 59 insertions(+), 37 deletions(-)
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+index 8ec0f7d0fceb..4aa88bac759f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+@@ -1338,9 +1338,12 @@ void ice_ptp_link_change(struct ice_pf *pf, bool linkup)
+ 		/* Do not reconfigure E810 or E830 PHY */
+ 		return;
+ 	case ICE_MAC_GENERIC:
+-	case ICE_MAC_GENERIC_3K_E825:
+ 		ice_ptp_port_phy_restart(ptp_port);
+ 		return;
++	case ICE_MAC_GENERIC_3K_E825:
++		if (linkup)
++			ice_ptp_port_phy_restart(ptp_port);
++		return;
+ 	default:
+ 		dev_warn(ice_pf_to_dev(pf), "%s: Unknown PHY type\n", __func__);
+ 	}
 
-[…]
+base-commit: e2cedb8386f079af01cd659c22bb43f1acf4d1b1
+-- 
+2.39.3
 
-Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
-
-
-Kind regards,
-
-Paul
