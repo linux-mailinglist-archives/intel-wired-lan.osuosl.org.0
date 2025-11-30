@@ -2,88 +2,89 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 99100C93CBA
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 29 Nov 2025 11:55:00 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 884BAC95033
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 30 Nov 2025 15:28:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 07AB940D95;
-	Sat, 29 Nov 2025 10:54:58 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7D62140A5F;
+	Sun, 30 Nov 2025 14:28:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id At9w53BO0b-t; Sat, 29 Nov 2025 10:54:57 +0000 (UTC)
+ id sK3S8oK30tLC; Sun, 30 Nov 2025 14:28:49 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 87BA540A35
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E34D440A5C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1764413697;
-	bh=bKEm4MwfshVBMRsDAFeHt4Orqal2ymfieCRTS4xN6+s=;
+	s=default; t=1764512929;
+	bh=Pb9hJcO3+UO620FwgR6RJfcKsklrQKwS99UwBZ32lXY=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=x+fvsRTRvUCxpn+jtF7BqihX3NMSjGsx6azhtv9+kBsw+I/wDiKKJbtlkXzg7DGF+
-	 V9hR9xhubkM9QdPtDMY6dp0p8Iz5IgEsezps3ouQkb+enAE7F6xYWN0p7Xx7G5Wo/H
-	 sy9Ya+/G+v/i6iSQwvEE7/PjGmNoHlJIdrQJKcvh+vmMU8vOJp5iR6E0UBVNYzBkaz
-	 /koClFFKJvBRpvuen0SlvlV8tIQAgKyI2k4Rg/+7ZqitU3VXjbCVIfxNsLDo98Dd55
-	 VpmWX8NpYxIjmtfHlwWro0DHmBhZOPaVFsJD1v9LeeWiAmRXS3W5BxZ/N4tT0lpwlY
-	 l+JESqhz1srSQ==
+	b=LSRbWA+ZI2ePHXLysuWDQWHSl/ESciAN7z2eVo+PBFt1g7Jiya1NSVdlpOXzYPVOh
+	 SJqpnVPQIiV/+qEWJi27M80qFnlUg0lb3RS+UiWy8Z7misKUVoPY4A0GcEsLLh00+Z
+	 18hBUfS7gN9Jy4sMARC/8Rdp9vLf4VYwaZk+I/8Pzwgjyt+PuyJBgGpR+q3lOyRvap
+	 //P+GpROAk+CsRrZdJljfyO1TufTY9tdo0PETf+XKnGZCCdFkC4hJRNxiB1RybPrHU
+	 SkcNFKMK9tC1EffCT6SOofnzhoItRIdvxop3nRq92OJkr84+aixKga+YguYzFdbe5Q
+	 1z9QcioSU+sjw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 87BA540A35;
-	Sat, 29 Nov 2025 10:54:57 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E34D440A5C;
+	Sun, 30 Nov 2025 14:28:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 79C44708
- for <intel-wired-lan@lists.osuosl.org>; Sat, 29 Nov 2025 10:54:56 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 456A51A9
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 30 Nov 2025 14:28:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5FB2760754
- for <intel-wired-lan@lists.osuosl.org>; Sat, 29 Nov 2025 10:54:56 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2DFEB40394
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 30 Nov 2025 14:28:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9y-bz5ep35gf for <intel-wired-lan@lists.osuosl.org>;
- Sat, 29 Nov 2025 10:54:55 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
- helo=sea.source.kernel.org; envelope-from=horms@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6A7FF6074E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6A7FF6074E
-Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6A7FF6074E
- for <intel-wired-lan@lists.osuosl.org>; Sat, 29 Nov 2025 10:54:55 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id D1C84437C2;
- Sat, 29 Nov 2025 10:54:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A659FC4CEF7;
- Sat, 29 Nov 2025 10:54:53 +0000 (UTC)
-Date: Sat, 29 Nov 2025 10:54:51 +0000
-From: Simon Horman <horms@kernel.org>
-To: Sreedevi Joshi <sreedevi.joshi@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Message-ID: <aSrQ-2nLnQabIO34@horms.kernel.org>
-References: <20251126170216.267289-1-sreedevi.joshi@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id BPwmt89s7ZHu for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 30 Nov 2025 14:28:46 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=151.80.40.192;
+ helo=smtp.blochl.de; envelope-from=markus@blochl.de; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 83ABD4037E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 83ABD4037E
+Received: from smtp.blochl.de (mail.blochl.de [151.80.40.192])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 83ABD4037E
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 30 Nov 2025 14:28:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.blochl.de 446E14641E8A
+Received: from WorkKnecht (ppp-93-104-7-227.dynamic.mnet-online.de
+ [93.104.7.227])
+ by smtp.blochl.de (Postfix) with ESMTPSA id 446E14641E8A;
+ Sun, 30 Nov 2025 14:28:39 +0000 (UTC)
+X-Virus-Status: Clean
+X-Virus-Scanned: clamav-milter 1.4.3 at 449b6f9d6baf
+Date: Sun, 30 Nov 2025 15:28:35 +0100
+From: Markus =?utf-8?Q?Bl=C3=B6chl?= <markus@blochl.de>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>
+Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
+ Paolo Abeni <pabeni@redhat.com>, Richard Cochran <richardcochran@gmail.com>, 
+ Markus =?utf-8?Q?Bl=C3=B6chl?= <markus.bloechl@ipetronik.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org
+Message-ID: <zmw3whfzcipegeyxpydgctio62q3vlpktddhidu4lskffgr3uk@irzoprznarmd>
+References: <20251119-i40e_ptp_link_down-v1-1-b351fed254b3@blochl.de>
+ <5b824df7-205e-4356-a33b-9937a1367517@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20251126170216.267289-1-sreedevi.joshi@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1764413694;
- bh=KNVUGzbjxkkJ9TPlKItSaotNjp2ctuWkFyPczALT4jc=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=E9VEpF8zQDQUtR1tN1CIBLikWMOX3ZqU/3lgyYAmTjddsAQP5nvHPOKiIMLAt/wxX
- /sm17y5VrmneN9mck7S2dRWegdZqj6vGBkP/3OV/l+QAR6rTm0mgxopDkRx32DR92Q
- 7pLfMS+S0SiOnlMf0Uuk+Jt6BDasAJeMR3z3LykhNgH8vwcYCQGcEwbri+CFCOW94G
- 6sqNUCFwHD8XWnlCJV6oLviVJ4tCZMzTy2j5rChVlwj85ghWbak+33OKLtumIuVHD4
- 2sHI6k+MPiacU06s3icQ1FL36qLBVIr+cAkNTl/7VXBGnk+xO62wkn9ah0p8QoS3wK
- eRx6L3MswiOGA==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=E9VEpF8z
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] idpf: update
- idpf_up_complete() return type to void
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <5b824df7-205e-4356-a33b-9937a1367517@intel.com>
+X-Greylist: Sender succeeded SMTP AUTH, not delayed by milter-greylist-4.6.4
+ (smtp.blochl.de [0.0.0.0]); Sun, 30 Nov 2025 14:28:39 +0000 (UTC)
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=blochl.de
+X-Mailman-Original-Authentication-Results: mail.blochl.de;
+ dmarc=none (p=none dis=none)
+ header.from=blochl.de
+X-Mailman-Original-Authentication-Results: mail.blochl.de;
+ spf=fail smtp.mailfrom=blochl.de
+Subject: Re: [Intel-wired-lan] [PATCH] i40e: fix ptp time increment while
+ link is down
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -99,14 +100,85 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Nov 26, 2025 at 11:02:16AM -0600, Sreedevi Joshi wrote:
-> idpf_up_complete() function always returns 0 and no callers use this return
-> value. Although idpf_vport_open() checks the return value, it only handles
-> error cases which never occur. Change the return type to void to simplify
-> the code.
+On Tue, Nov 25, 2025 at 02:48:20PM -0800, Tony Nguyen wrote:
 > 
-> Signed-off-by: Sreedevi Joshi <sreedevi.joshi@intel.com>
-> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> 
+> On 11/19/2025 8:09 AM, Markus Blöchl wrote:
+> > When an X710 ethernet port with an active ptp daemon (like the ptp4l and phc2sys combo)
+> > suddenly loses its link and regains it after a while, the ptp daemon has a hard time
+> > to recover synchronization and sometimes entirely fails to do so.
+> > 
+> > The issue seems to be related to a wrongly configured increment while the link is down.
+> > This could not be observed with the Intel reference driver. We identified the fix to appear in
+> > Intels official ethernet-linux-i40e release version 2.17.4.
+> > 
+> > Include the relevant changes in the kernel version of this driver.
+> > 
+> > Fixes: beb0dff1251d ("i40e: enable PTP")
+> > Cc: stable@vger.kernel.org
+> > Signed-off-by: Markus Blöchl <markus@blochl.de>
+> > ---
+> 
+> ...
+> 
+> > --- a/drivers/net/ethernet/intel/i40e/i40e_ptp.c
+> > +++ b/drivers/net/ethernet/intel/i40e/i40e_ptp.c
+> > @@ -847,6 +847,65 @@ void i40e_ptp_rx_hwtstamp(struct i40e_pf *pf, struct sk_buff *skb, u8 index)
+> >   	i40e_ptp_convert_to_hwtstamp(skb_hwtstamps(skb), ns);
+> >   }
+> > +/**
+> > + * i40e_ptp_get_link_speed_hw - get the link speed
+> > + * @pf: Board private structure
+> > + *
+> > + * Calculate link speed depending on the link status.
+> > + * Return the link speed.
+> 
+> Can you make this 'Return:' to conform with kdoc expectations?
+> 
+> > + **/
+> > +static enum i40e_aq_link_speed i40e_ptp_get_link_speed_hw(struct i40e_pf *pf)
+> > +{
+> > +	bool link_up = pf->hw.phy.link_info.link_info & I40E_AQ_LINK_UP;
+> > +	enum i40e_aq_link_speed link_speed = I40E_LINK_SPEED_UNKNOWN;
+> > +	struct i40e_hw *hw = &pf->hw;
+> > +
+> > +	if (link_up) {
+> > +		struct i40e_link_status *hw_link_info = &hw->phy.link_info;
+> > +
+> > +		i40e_aq_get_link_info(hw, true, NULL, NULL);
+> > +		link_speed = hw_link_info->link_speed;
+> > +	} else {
+> > +		enum i40e_prt_mac_link_speed prtmac_linksta;
+> > +		u64 prtmac_pcs_linksta;
+> > +
+> > +		prtmac_linksta = (rd32(hw, I40E_PRTMAC_LINKSTA(0))
+> > +			& I40E_PRTMAC_LINKSTA_MAC_LINK_SPEED_MASK)
+> > +			>> I40E_PRTMAC_LINKSTA_MAC_LINK_SPEED_SHIFT;
+> 
+> I believe operators are supposed to end the line rather than start a new
+> one.
+> 
+> > +		if (prtmac_linksta == I40E_PRT_MAC_LINK_SPEED_40GB) {
+> > +			link_speed = I40E_LINK_SPEED_40GB;
+> > +		} else {
+> > +			i40e_aq_debug_read_register(hw,
+> > +						    I40E_PRTMAC_PCS_LINK_STATUS1(0),
+> > +						    &prtmac_pcs_linksta,
+> > +						    NULL);
+> > +
+> > +			prtmac_pcs_linksta = (prtmac_pcs_linksta
+> > +			& I40E_PRTMAC_PCS_LINK_STATUS1_LINK_SPEED_MASK)
+> > +			>> I40E_PRTMAC_PCS_LINK_STATUS1_LINK_SPEED_SHIFT;
+> 
+> Same operator comment. Also, indentation looks off here.
+> 
+> Thanks,
+> Tony
+> 
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+Thanks for the close look, Tony.
+Will be fixed in v2.
+I needed a reason to reroll anyway, since I forgot to base this on
+net...
 
+-- 
