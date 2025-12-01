@@ -1,131 +1,123 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E195AC957E5
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 01 Dec 2025 02:27:48 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B4855C95A80
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 01 Dec 2025 04:41:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C1CA2819BE;
-	Mon,  1 Dec 2025 01:27:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2B06181223;
+	Mon,  1 Dec 2025 03:41:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id lu9i_pcr0NRW; Mon,  1 Dec 2025 01:27:46 +0000 (UTC)
+ id 4MJ8CKylr75S; Mon,  1 Dec 2025 03:41:21 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2D68F819D2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8DFBC8120C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1764552466;
-	bh=ehYGc97IwrLDHQvpTuRv7v/3RImO4vhIDaHvlIMcxcE=;
-	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=12B9cdQ+kfpRRYqScm2nijWSDj0gR0dfHDPuyO6AUfGLPevCwMQb0Pwhd5SHt1iMi
-	 ZKlNebvZrAXWpCENeTvikAxizqJDwAn1eaOiu1sHesXQS7i6qLM4DA7J/A6GKbKWsf
-	 PwF9nzlQkX5TMZGNeBjfDGr8AmhcPi/qGYd1POTETsmus7629dow/b6ePXmJviC79h
-	 8ZbyGGtxPvk7S3+Sz9tgaXH7BQ0qW7P+M6sCZqx5CU0enDJe7KAQLWDvBG75zct9QV
-	 wQsVOCsoe0JtbGs0Hr4wowxWs52uAcBAxrq89rgqWsMYFapbaICk5EB9mw6oq00bG+
-	 7nr+0jP4D4yOg==
+	s=default; t=1764560481;
+	bh=TlbI/qoSd0f2lsToeVKQSag9wuEwJhaMlP4r36cW0BM=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=d83Q/CL9PoIDjo23c1p/6v7TxhKAM+VaMgN8RK4KEo4R4F4DOkO5P+Ky+hHj3Sfni
+	 70CUKMDPcw1/5lCSg47ad6VvwfGoa+vSCmy6/OkIXK/Am1ULYZgqZboWsrmpNgSqgb
+	 sY43Wf1QtHjwS5q0Czkhmv0ukcAowkLlBNY9kXGdc/jy2YAM1gF0y8R/Sv/dECUwaA
+	 P2tbUQRAtBC9gWn9N+va7o++ZECR4h4z3W6eMs2SMCBazA2smVPJioHn+LkIxnUNHv
+	 eYtI80GQ2V74nLqCiOHVE2SJUnh/xy7Sue50KLeE0YTtJrbiW31WQ574zqp3Ner8PM
+	 iAwzsrRnr1pdg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2D68F819D2;
-	Mon,  1 Dec 2025 01:27:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8DFBC8120C;
+	Mon,  1 Dec 2025 03:41:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 0CE43D3
- for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Dec 2025 01:27:44 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 095631BD
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Dec 2025 03:41:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E777A404B1
- for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Dec 2025 01:27:43 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id D825A60737
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Dec 2025 03:41:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id LidVyk_RvTnm for <intel-wired-lan@lists.osuosl.org>;
- Mon,  1 Dec 2025 01:27:43 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Wu4S5KRBrsP6 for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  1 Dec 2025 03:41:19 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::131; helo=mail-lf1-x131.google.com;
- envelope-from=almasrymina@google.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C4FBF40116
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C4FBF40116
-Received: from mail-lf1-x131.google.com (mail-lf1-x131.google.com
- [IPv6:2a00:1450:4864:20::131])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C4FBF40116
- for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Dec 2025 01:27:42 +0000 (UTC)
-Received: by mail-lf1-x131.google.com with SMTP id
- 2adb3069b0e04-59434b28624so22301e87.1
- for <intel-wired-lan@lists.osuosl.org>; Sun, 30 Nov 2025 17:27:42 -0800 (PST)
+ client-ip=2607:f8b0:4864:20::1036; helo=mail-pj1-x1036.google.com;
+ envelope-from=lgs201920130244@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 21951606A2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 21951606A2
+Received: from mail-pj1-x1036.google.com (mail-pj1-x1036.google.com
+ [IPv6:2607:f8b0:4864:20::1036])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 21951606A2
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Dec 2025 03:41:18 +0000 (UTC)
+Received: by mail-pj1-x1036.google.com with SMTP id
+ 98e67ed59e1d1-341988c720aso3153017a91.3
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 30 Nov 2025 19:41:18 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764552460; x=1765157260;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=ehYGc97IwrLDHQvpTuRv7v/3RImO4vhIDaHvlIMcxcE=;
- b=u0k54U8FIvQbC/UZ52Q0mU87F14MjKBt+fgkmlf397TqLCGkbUNx77O9HBa5QbYrg0
- svHv2fDIkfii7z7eAqJKmmJd/O1dqL9ulTH7jEApW8FdYNvEdk7vFV+U2x5vmJM/KUAF
- 099EdIP8HFEu612c0m5kaGwItuVv9VetoNPUEV95FHdnKMX3PNxpeVa+/T/sgJdrbeS5
- g4/2AMtPFCM821cYN8idZtWoslBso7Xo4iOXnlHWzRozhOJ+HoyHNSTWH7UDhdUzHuVh
- AgbcoiyUJBmo5D7Gz+vp3+vCAhrWMbK4Wmg0dRQCpofBbNsR+Admd4zKOlHSX7ybMNYu
- zM1w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUyCmOdiFgklRQoX1z/YlXwza5bf/FLCPWAz01dGUrQRmLKYi9KKXWEGTqJjc1/c7cb7riBdBcWjaGKFoget6s=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YyygY4APbk3txxGdSnIoTo/JJhYNBUFlCrkrZ3RtgPfXjXIik2D
- 16615EShTIrHbhZS+F2OXb4gcCMSyKU/J3vAP1iFl7QevDD6XbztxTWTHM/vVJcEK1ugsDAu5ec
- rWTy7LRCgASrP+7t+RCteCmsdF9oa5uopgfZZOAzv
-X-Gm-Gg: ASbGncuPAYYz9l3AvS0sOEzghoGULtV0QGoiKMDsz2h61oCZNj4yjLbDpCBKt2O/vLZ
- PL1+QFfH4n5FK+Iuok2PqXHR+yIBapK6sj9ap9OKjKZ5qCQTsEq+P7t0F8ox91BHuYsd065ZP8k
- o+V3pMJxnN3EMYcOn4QT3BcDQg23LYHLxxixtMcmI6qng4omC9pRfPphdgru0cTpt+mmECSe6tS
- d9nOeT3/jsgAOPVQHBdakFahMSxsu4e3amv85OWT7ecZm0pu29ycRSOqHNKkVDm802iWvY=
-X-Google-Smtp-Source: AGHT+IGUtxtVROoFL9XWjzu7VOF6oLjMb/cN+4biEc3EnHVPC3Y1fSDYFJip1ZsrUhL2CHurERDtTpPY0GeOtj8Rxik=
-X-Received: by 2002:a05:6512:1343:b0:596:9b1c:95da with SMTP id
- 2adb3069b0e04-596bdce2767mr186845e87.17.1764552460026; Sun, 30 Nov 2025
- 17:27:40 -0800 (PST)
-MIME-Version: 1.0
-References: <20251122140839.3922015-1-almasrymina@google.com>
- <DS4PPF7551E6552ECCF95AE9C177DEF07F8E5D0A@DS4PPF7551E6552.namprd11.prod.outlook.com>
-In-Reply-To: <DS4PPF7551E6552ECCF95AE9C177DEF07F8E5D0A@DS4PPF7551E6552.namprd11.prod.outlook.com>
-From: Mina Almasry <almasrymina@google.com>
-Date: Sun, 30 Nov 2025 19:27:26 -0600
-X-Gm-Features: AWmQ_bntuE3GnpzJMZaG9Cr3R1vpsBmf3PJosTlld9e_VcSuzfSnUowwDbN3jGY
-Message-ID: <CAHS8izOjZxEgBmYEhZanp57ukCYU5i5FdWfx5HO5+Ua2V3Owsg@mail.gmail.com>
-To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "bpf@vger.kernel.org" <bpf@vger.kernel.org>, 
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- YiFei Zhu <zhuyifei@google.com>, 
- Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, 
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, 
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>, 
- Stanislav Fomichev <sdf@fomichev.me>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>, 
- "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, 
- "Lobakin, Aleksander" <aleksander.lobakin@intel.com>,
- Richard Cochran <richardcochran@gmail.com>, 
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1764552460; x=1765157260; darn=lists.osuosl.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
+ d=1e100.net; s=20230601; t=1764560478; x=1765165278;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ehYGc97IwrLDHQvpTuRv7v/3RImO4vhIDaHvlIMcxcE=;
- b=sKsj2wRGbEo5xqLDumiRli4u3ZZHLn9tbeFeQxXncRcFQtwqKDEt+0G4+o5ILwRr+m
- t3MsSnubB7G2dFXIPfJaOZZ2IkPcQ74DvG6wCPJtVzxOhYn5IQbl0Q7dSs/DjjjZ//VZ
- RWkA8teOyMuekV9zYVd8esCCFBaWRPfwf2fpiaMTm1+tcWGpttEZ5TDN40unY0YVgWZ9
- K5qKHZmyPWvUkIuk1IKSJeAsKYDpwDEhG+H6dbGuQivSdNkOZ5grWLjV5bc6nnBeVdHE
- rkNItET/SxACDsgNdhnS5JTSxRh3DAJesWJH16iP+CNFI8GdOduufXs42TXUDnLHdYF/
- mV3w==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=google.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=TlbI/qoSd0f2lsToeVKQSag9wuEwJhaMlP4r36cW0BM=;
+ b=SOH+qwWLr22A+I6sqEg1WHWtClxTsknosUntbm72JmPTUSWPYQNqW16iUxieV11YSr
+ IlJvFYlQd3sMn/x2G+hyWSd6+aNYpr0yhpkK4lylCEYKdpjVekkpcdTCQj4X/iodk+sI
+ dwbybCXmAWezE3jWMs/ahoy7btohHLK2Zvz+dckeookGvya0vDVSpqCn7mXz2iEv/yLZ
+ HV4qzKS6s5z3WDyNrtmQnaZOSwXAzyvMVsUTEyF+0W0KTblHUw5YDQNGdW0kUW7wNBIk
+ j9m8SxWT5bbjPK38IUzyUnyDX8cwYfuWUrpa3Wd0nn1jRJH8sGMEHvi4GDner6vuVIgF
+ MllA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX4rkgA2Tml711FJum8lWnd/BFmMLHttMixbnk4LNn16Nt4OT7Aa/FeGzlLsFMFFs6AL4hT1pRZAHZObjgjSmA=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyR/pmSHDvPwCrPyoXkuV4qc3QJOJ7xzDmj5mV8mnsPXvrrUpsu
+ 2eQN07K8dIwsk5uRUKFmkOyhz9TuDXa6Za/zhumrzh93HPhDKN32931y
+X-Gm-Gg: ASbGncsVrhXlRisIBgK1tOB+GSsGN5WbaMR1waLhEa1WwWtrvAKfQBZRRDlDfXsDOka
+ yuOtoaL6GUC+2OaQn9zdgahSHC3QDdITHDrlwYhKQ2AmPFwSJYIEz2KdpfpmieFhjA+SBZiwQvT
+ fjlfuV2NEcb/Qu+6fsgUkvkX5q4g9FjPpVQx9JoLtpcqurFYSZ+ieHf25IJbzcYG2JzpQUWLS0w
+ KB1o+Fm1fktwjvbKlL6sd7LdcksM782o6llOocF5yvHWwxZy3Wi52Dj6TVYkk7RseKT+ZXWu1rr
+ 8VTAGx2CtmlG+/6IKhZyCwdRF2mpuaUBUAvNGOjAKiGgsLNX9v4W8dk0UHoZBsGgNKZvtEq3QCc
+ jN76xeivwOXNOA1uz+qEQvoV/TB9dxVN3FotmcUTCQUYKb1q4H/c/CBvxtJacADmVJVTisDFGBY
+ auqUDh+MZi6w==
+X-Google-Smtp-Source: AGHT+IGjCSLiARwPj8LvgAmdlmw2aNw3T8jAZxFgCchMsS69HaOtffJUKXMOBrtZkx6OdtgHTwqqnw==
+X-Received: by 2002:a17:90b:1f88:b0:343:5f43:9359 with SMTP id
+ 98e67ed59e1d1-34733f4d280mr36959812a91.31.1764560478201; 
+ Sun, 30 Nov 2025 19:41:18 -0800 (PST)
+Received: from lgs.. ([101.76.246.176]) by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-3476a55ed00sm15065740a91.5.2025.11.30.19.41.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 30 Nov 2025 19:41:17 -0800 (PST)
+From: Guangshuo Li <lgs201920130244@gmail.com>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Florian Westphal <fw@strlen.de>,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Cc: Guangshuo Li <lgs201920130244@gmail.com>, stable@vger.kernel.org,
+ Tony Nguyen <tony.nguyen@intel.com>
+Date: Mon,  1 Dec 2025 11:40:58 +0800
+Message-ID: <20251201034058.263839-1-lgs201920130244@gmail.com>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1764560478; x=1765165278; darn=lists.osuosl.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=TlbI/qoSd0f2lsToeVKQSag9wuEwJhaMlP4r36cW0BM=;
+ b=eebfByiblscnNAsA2Yl+3tlFnyxzkogRdzfC/R4dsgKBgBEu7Dgivd/zjSpV6R9nyO
+ CVMZYifm3roAT0ZRG3sDZApNuK2Rv9H62F+d6cpaRazG6b8FGDU6QLVzyem63GZ7yvIY
+ 2boKxvzykCm1/8gD/bo64n9C/xsulRgJ9tTShGmwmcFFiUpCwAvALXAXvhgsgxu4UcRv
+ dGss1MtVQNdnQgrl4UAL2HsACvBLr14XqfbZxblgvv/kjWpougvRuJg7WnkySh7t2qxb
+ V9wVrwVWuC3BA2M728qNOuwUB6GbGBsMeZH30S611609zgWxwuXheyDKmDtbrkG/Akmo
+ iLQQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=google.com header.i=@google.com header.a=rsa-sha256
- header.s=20230601 header.b=sKsj2wRG
-Subject: Re: [Intel-wired-lan] [PATCH net-next v1] idpf: export RX hardware
- timestamping information to XDP
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20230601 header.b=eebfByib
+Subject: [Intel-wired-lan] [PATCH v2] e1000: fix OOB in
+ e1000_tbi_should_accept()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -141,113 +133,123 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Nov 24, 2025 at 2:33=E2=80=AFAM Loktionov, Aleksandr
-<aleksandr.loktionov@intel.com> wrote:
->
->
->
-> > -----Original Message-----
-> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
-> > Of Mina Almasry
-> > Sent: Saturday, November 22, 2025 3:09 PM
-> > To: netdev@vger.kernel.org; bpf@vger.kernel.org; linux-
-> > kernel@vger.kernel.org
-> > Cc: YiFei Zhu <zhuyifei@google.com>; Alexei Starovoitov
-> > <ast@kernel.org>; Daniel Borkmann <daniel@iogearbox.net>; David S.
-> > Miller <davem@davemloft.net>; Jakub Kicinski <kuba@kernel.org>; Jesper
-> > Dangaard Brouer <hawk@kernel.org>; John Fastabend
-> > <john.fastabend@gmail.com>; Stanislav Fomichev <sdf@fomichev.me>;
-> > Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw
-> > <przemyslaw.kitszel@intel.com>; Andrew Lunn <andrew+netdev@lunn.ch>;
-> > Eric Dumazet <edumazet@google.com>; Paolo Abeni <pabeni@redhat.com>;
-> > Lobakin, Aleksander <aleksander.lobakin@intel.com>; Richard Cochran
-> > <richardcochran@gmail.com>; intel-wired-lan@lists.osuosl.org; Mina
-> > Almasry <almasrymina@google.com>
-> > Subject: [Intel-wired-lan] [PATCH net-next v1] idpf: export RX
-> > hardware timestamping information to XDP
-> >
-> > From: YiFei Zhu <zhuyifei@google.com>
-> >
-> > The logic is similar to idpf_rx_hwtstamp, but the data is exported as
-> > a BPF kfunc instead of appended to an skb.
-> >
-> > A idpf_queue_has(PTP, rxq) condition is added to check the queue
-> > supports PTP similar to idpf_rx_process_skb_fields.
-> >
-> > Cc: intel-wired-lan@lists.osuosl.org
-> >
-> > Signed-off-by: YiFei Zhu <zhuyifei@google.com>
-> > Signed-off-by: Mina Almasry <almasrymina@google.com>
-> > ---
-> >  drivers/net/ethernet/intel/idpf/xdp.c | 27
-> > +++++++++++++++++++++++++++
-> >  1 file changed, 27 insertions(+)
-> >
-> > diff --git a/drivers/net/ethernet/intel/idpf/xdp.c
-> > b/drivers/net/ethernet/intel/idpf/xdp.c
-> > index 21ce25b0567f..850389ca66b6 100644
-> > --- a/drivers/net/ethernet/intel/idpf/xdp.c
-> > +++ b/drivers/net/ethernet/intel/idpf/xdp.c
-> > @@ -2,6 +2,7 @@
-> >  /* Copyright (C) 2025 Intel Corporation */
-> >
-> >  #include "idpf.h"
-> > +#include "idpf_ptp.h"
-> >  #include "idpf_virtchnl.h"
-> >  #include "xdp.h"
-> >  #include "xsk.h"
-> > @@ -369,6 +370,31 @@ int idpf_xdp_xmit(struct net_device *dev, int n,
-> > struct xdp_frame **frames,
-> >                                      idpf_xdp_tx_finalize);
-> >  }
-> >
-> > +static int idpf_xdpmo_rx_timestamp(const struct xdp_md *ctx, u64
-> > +*timestamp) {
-> > +     const struct virtchnl2_rx_flex_desc_adv_nic_3 *rx_desc;
-> > +     const struct libeth_xdp_buff *xdp =3D (typeof(xdp))ctx;
-> > +     const struct idpf_rx_queue *rxq;
-> > +     u64 cached_time, ts_ns;
-> > +     u32 ts_high;
-> > +
-> > +     rx_desc =3D xdp->desc;
-> > +     rxq =3D libeth_xdp_buff_to_rq(xdp, typeof(*rxq), xdp_rxq);
-> > +
-> > +     if (!idpf_queue_has(PTP, rxq))
-> > +             return -ENODATA;
-> > +     if (!(rx_desc->ts_low & VIRTCHNL2_RX_FLEX_TSTAMP_VALID))
-> > +             return -ENODATA;
-> RX flex desc fields are little=E2=80=91endian.
-> You already convert ts_high with le32_to_cpu(), but test ts_low directly =
-against the mask.
-> On big=E2=80=91endian this can misdetect the bit and spuriously return -E=
-NODATA.
-> Please convert ts_low to host order before the bit test.
-> See existing IDPF/ICE patterns where descriptor words are leXX_to_cpu()=
-=E2=80=91converted prior to FIELD_GET() / bit checks.
-> Also, per the XDP RX metadata kfunc docs, -ENODATA must reflect true abse=
-nce of per=E2=80=91packet metadata; endianness=E2=80=91correct testing is r=
-equired to uphold the semantic.
->
+In e1000_tbi_should_accept() we read the last byte of the frame via
+'data[length - 1]' to evaluate the TBI workaround. If the descriptor-
+reported length is zero or larger than the actual RX buffer size, this
+read goes out of bounds and can hit unrelated slab objects. The issue
+is observed from the NAPI receive path (e1000_clean_rx_irq):
 
-Hey, sorry for the late reply. Initially when I read the reply, I
-thought: "why not, lets add a leXX_to_cpu".
+==================================================================
+BUG: KASAN: slab-out-of-bounds in e1000_tbi_should_accept+0x610/0x790
+Read of size 1 at addr ffff888014114e54 by task sshd/363
 
-But now that I look closer to implement the change and submit v2, it
-looks correct as written. ts_low is defined as a u8:
+CPU: 0 PID: 363 Comm: sshd Not tainted 5.18.0-rc1 #1
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS rel-1.12.0-59-gc9ba5276e321-prebuilt.qemu.org 04/01/2014
+Call Trace:
+ <IRQ>
+ dump_stack_lvl+0x5a/0x74
+ print_address_description+0x7b/0x440
+ print_report+0x101/0x200
+ kasan_report+0xc1/0xf0
+ e1000_tbi_should_accept+0x610/0x790
+ e1000_clean_rx_irq+0xa8c/0x1110
+ e1000_clean+0xde2/0x3c10
+ __napi_poll+0x98/0x380
+ net_rx_action+0x491/0xa20
+ __do_softirq+0x2c9/0x61d
+ do_softirq+0xd1/0x120
+ </IRQ>
+ <TASK>
+ __local_bh_enable_ip+0xfe/0x130
+ ip_finish_output2+0x7d5/0xb00
+ __ip_queue_xmit+0xe24/0x1ab0
+ __tcp_transmit_skb+0x1bcb/0x3340
+ tcp_write_xmit+0x175d/0x6bd0
+ __tcp_push_pending_frames+0x7b/0x280
+ tcp_sendmsg_locked+0x2e4f/0x32d0
+ tcp_sendmsg+0x24/0x40
+ sock_write_iter+0x322/0x430
+ vfs_write+0x56c/0xa60
+ ksys_write+0xd1/0x190
+ do_syscall_64+0x43/0x90
+ entry_SYSCALL_64_after_hwframe+0x44/0xae
+RIP: 0033:0x7f511b476b10
+Code: 73 01 c3 48 8b 0d 88 d3 2b 00 f7 d8 64 89 01 48 83 c8 ff c3 66 0f 1f 44 00 00 83 3d f9 2b 2c 00 00 75 10 b8 01 00 00 00 0f 05 <48> 3d 01 f0 ff ff 73 31 c3 48 83 ec 08 e8 8e 9b 01 00 48 89 04 24
+RSP: 002b:00007ffc9211d4e8 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 0000000000004024 RCX: 00007f511b476b10
+RDX: 0000000000004024 RSI: 0000559a9385962c RDI: 0000000000000003
+RBP: 0000559a9383a400 R08: fffffffffffffff0 R09: 0000000000004f00
+R10: 0000000000000070 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007ffc9211d57f R14: 0000559a9347bde7 R15: 0000000000000003
+ </TASK>
+Allocated by task 1:
+ __kasan_krealloc+0x131/0x1c0
+ krealloc+0x90/0xc0
+ add_sysfs_param+0xcb/0x8a0
+ kernel_add_sysfs_param+0x81/0xd4
+ param_sysfs_builtin+0x138/0x1a6
+ param_sysfs_init+0x57/0x5b
+ do_one_initcall+0x104/0x250
+ do_initcall_level+0x102/0x132
+ do_initcalls+0x46/0x74
+ kernel_init_freeable+0x28f/0x393
+ kernel_init+0x14/0x1a0
+ ret_from_fork+0x22/0x30
+The buggy address belongs to the object at ffff888014114000
+ which belongs to the cache kmalloc-2k of size 2048
+The buggy address is located 1620 bytes to the right of
+ 2048-byte region [ffff888014114000, ffff888014114800]
+The buggy address belongs to the physical page:
+page:ffffea0000504400 refcount:1 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x14110
+head:ffffea0000504400 order:3 compound_mapcount:0 compound_pincount:0
+flags: 0x100000000010200(slab|head|node=0|zone=1)
+raw: 0100000000010200 0000000000000000 dead000000000001 ffff888013442000
+raw: 0000000000000000 0000000000080008 00000001ffffffff 0000000000000000
+page dumped because: kasan: bad access detected
+==================================================================
 
-```
-struct virtchnl2_rx_flex_desc_adv_nic_3 {
-...
-u8 ts_low;
-```
+This happens because the TBI check unconditionally dereferences the last
+byte without validating the reported length first:
 
-So it should not be fed into any leXX_to_cpu() functions, no?
+	u8 last_byte = *(data + length - 1);
 
-I also looked at other u8 members in this struct like `u8
-status_err0_qw0` and `u8 status_err0_qw1`, and both are used in
-existing code without a conversion. So it seems correct as written.
-Can you reconsdirer?
+Fix by rejecting the frame early if the length is zero, or if it exceeds
+adapter->rx_buffer_len. This preserves the TBI workaround semantics for
+valid frames and prevents touching memory beyond the RX buffer.
 
-If you insist some change is required, can you elaborate more on what
-needs to be changed? There is no le8_to_cpu, unless a trivial one that
-does nothing (one byte struct cannot be little or big endian).
+Fixes: 2037110c96d5 ("e1000: move tbi workaround code into helper function")
+Cc: stable@vger.kernel.org
+Suggested-by: Tony Nguyen <tony.nguyen@intel.com>
+Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
+---
+changelog:
+v2:
+- Keep declarations at the beginning of e1000_tbi_should_accept().
+- Move the last_byte assignment after the length bounds checks (suggested by Tony Nguyen)
+---
+ drivers/net/ethernet/intel/e1000/e1000_main.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/e1000/e1000_main.c b/drivers/net/ethernet/intel/e1000/e1000_main.c
+index 3f5feb55cfba..cb49ec49f836 100644
+--- a/drivers/net/ethernet/intel/e1000/e1000_main.c
++++ b/drivers/net/ethernet/intel/e1000/e1000_main.c
+@@ -4091,7 +4091,14 @@ static bool e1000_tbi_should_accept(struct e1000_adapter *adapter,
+ 				    u32 length, const u8 *data)
+ {
+ 	struct e1000_hw *hw = &adapter->hw;
+-	u8 last_byte = *(data + length - 1);
++	u8 last_byte;
++	/* Guard against OOB on data[length - 1] */
++	if (unlikely(!length))
++		return false;
++	/* Upper bound: length must not exceed rx_buffer_len */
++	if (unlikely(length > adapter->rx_buffer_len))
++		return false;
++	last_byte = *(data + length - 1);
+ 
+ 	if (TBI_ACCEPT(hw, status, errors, length, last_byte)) {
+ 		unsigned long irq_flags;
+-- 
+2.43.0
+
