@@ -2,84 +2,130 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 68296C953E3
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 30 Nov 2025 20:28:23 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E195AC957E5
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 01 Dec 2025 02:27:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 93D5281B8A;
-	Sun, 30 Nov 2025 19:28:21 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C1CA2819BE;
+	Mon,  1 Dec 2025 01:27:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3t8cfpbOZvpQ; Sun, 30 Nov 2025 19:28:20 +0000 (UTC)
+ id lu9i_pcr0NRW; Mon,  1 Dec 2025 01:27:46 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B314581BA8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2D68F819D2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1764530900;
-	bh=Eu5xdGyyd8TuxFHUbjpgLzCKL0XdCl71rBA91DMMIJU=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1764552466;
+	bh=ehYGc97IwrLDHQvpTuRv7v/3RImO4vhIDaHvlIMcxcE=;
+	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=2ZrT0Ghok+dVBo+QWlzenQQP0faeAEb2c5NcL66DlLiKerdhahe6mvf2Sc7Woe11v
-	 HW0DAJUX7Wqn1XEeTrWmSeP5TWn8Q+PeM+r2WpQLbnz8kDqM6lV2Yhow12wx6VwF4W
-	 Ibsm42ObaWebvKAJna04ea7/NY3+/wakgjSeTHBA5ezn4uIayrCiCeAwcBKTbAlXNz
-	 MFQzizqrUZBi2575ytOX1K42XWvEsu7RtEj75d+B8b8tkorTrnyrxO6CmemeqxUtj9
-	 +29LvKqYb4VhJKoWWj9mN1+RHTQxu6QitTaUWKLEEY59P2YAj31d1H2LpAodEffEj8
-	 pBKTM1gIUFiYw==
+	b=12B9cdQ+kfpRRYqScm2nijWSDj0gR0dfHDPuyO6AUfGLPevCwMQb0Pwhd5SHt1iMi
+	 ZKlNebvZrAXWpCENeTvikAxizqJDwAn1eaOiu1sHesXQS7i6qLM4DA7J/A6GKbKWsf
+	 PwF9nzlQkX5TMZGNeBjfDGr8AmhcPi/qGYd1POTETsmus7629dow/b6ePXmJviC79h
+	 8ZbyGGtxPvk7S3+Sz9tgaXH7BQ0qW7P+M6sCZqx5CU0enDJe7KAQLWDvBG75zct9QV
+	 wQsVOCsoe0JtbGs0Hr4wowxWs52uAcBAxrq89rgqWsMYFapbaICk5EB9mw6oq00bG+
+	 7nr+0jP4D4yOg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B314581BA8;
-	Sun, 30 Nov 2025 19:28:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2D68F819D2;
+	Mon,  1 Dec 2025 01:27:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 224E11A9
- for <intel-wired-lan@lists.osuosl.org>; Sun, 30 Nov 2025 19:28:19 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 0CE43D3
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Dec 2025 01:27:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0829040921
- for <intel-wired-lan@lists.osuosl.org>; Sun, 30 Nov 2025 19:28:19 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id E777A404B1
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Dec 2025 01:27:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 53SSXHW_R7Ww for <intel-wired-lan@lists.osuosl.org>;
- Sun, 30 Nov 2025 19:28:17 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org DC60A4091B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DC60A4091B
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id DC60A4091B
- for <intel-wired-lan@lists.osuosl.org>; Sun, 30 Nov 2025 19:28:16 +0000 (UTC)
-Received: from [10.0.57.174] (unknown [62.214.191.67])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id E3DE261CC3FDB;
- Sun, 30 Nov 2025 20:27:25 +0100 (CET)
-Message-ID: <e765a7ca-c3dc-49cc-a8a5-de6c0fa58f2f@molgen.mpg.de>
-Date: Sun, 30 Nov 2025 20:27:21 +0100
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id LidVyk_RvTnm for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  1 Dec 2025 01:27:43 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::131; helo=mail-lf1-x131.google.com;
+ envelope-from=almasrymina@google.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C4FBF40116
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C4FBF40116
+Received: from mail-lf1-x131.google.com (mail-lf1-x131.google.com
+ [IPv6:2a00:1450:4864:20::131])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C4FBF40116
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Dec 2025 01:27:42 +0000 (UTC)
+Received: by mail-lf1-x131.google.com with SMTP id
+ 2adb3069b0e04-59434b28624so22301e87.1
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 30 Nov 2025 17:27:42 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1764552460; x=1765157260;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=ehYGc97IwrLDHQvpTuRv7v/3RImO4vhIDaHvlIMcxcE=;
+ b=u0k54U8FIvQbC/UZ52Q0mU87F14MjKBt+fgkmlf397TqLCGkbUNx77O9HBa5QbYrg0
+ svHv2fDIkfii7z7eAqJKmmJd/O1dqL9ulTH7jEApW8FdYNvEdk7vFV+U2x5vmJM/KUAF
+ 099EdIP8HFEu612c0m5kaGwItuVv9VetoNPUEV95FHdnKMX3PNxpeVa+/T/sgJdrbeS5
+ g4/2AMtPFCM821cYN8idZtWoslBso7Xo4iOXnlHWzRozhOJ+HoyHNSTWH7UDhdUzHuVh
+ AgbcoiyUJBmo5D7Gz+vp3+vCAhrWMbK4Wmg0dRQCpofBbNsR+Admd4zKOlHSX7ybMNYu
+ zM1w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUyCmOdiFgklRQoX1z/YlXwza5bf/FLCPWAz01dGUrQRmLKYi9KKXWEGTqJjc1/c7cb7riBdBcWjaGKFoget6s=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyygY4APbk3txxGdSnIoTo/JJhYNBUFlCrkrZ3RtgPfXjXIik2D
+ 16615EShTIrHbhZS+F2OXb4gcCMSyKU/J3vAP1iFl7QevDD6XbztxTWTHM/vVJcEK1ugsDAu5ec
+ rWTy7LRCgASrP+7t+RCteCmsdF9oa5uopgfZZOAzv
+X-Gm-Gg: ASbGncuPAYYz9l3AvS0sOEzghoGULtV0QGoiKMDsz2h61oCZNj4yjLbDpCBKt2O/vLZ
+ PL1+QFfH4n5FK+Iuok2PqXHR+yIBapK6sj9ap9OKjKZ5qCQTsEq+P7t0F8ox91BHuYsd065ZP8k
+ o+V3pMJxnN3EMYcOn4QT3BcDQg23LYHLxxixtMcmI6qng4omC9pRfPphdgru0cTpt+mmECSe6tS
+ d9nOeT3/jsgAOPVQHBdakFahMSxsu4e3amv85OWT7ecZm0pu29ycRSOqHNKkVDm802iWvY=
+X-Google-Smtp-Source: AGHT+IGUtxtVROoFL9XWjzu7VOF6oLjMb/cN+4biEc3EnHVPC3Y1fSDYFJip1ZsrUhL2CHurERDtTpPY0GeOtj8Rxik=
+X-Received: by 2002:a05:6512:1343:b0:596:9b1c:95da with SMTP id
+ 2adb3069b0e04-596bdce2767mr186845e87.17.1764552460026; Sun, 30 Nov 2025
+ 17:27:40 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: =?UTF-8?Q?Markus_Bl=C3=B6chl?= <markus@blochl.de>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Jacob Keller <jacob.e.keller@intel.com>, Andrew Lunn
- <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Richard Cochran <richardcochran@gmail.com>,
- =?UTF-8?Q?Markus_Bl=C3=B6chl?= <markus.bloechl@ipetronik.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org
-References: <20251130-i40e_ptp_link_down-v2-1-8d6dfc10a661@blochl.de>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20251130-i40e_ptp_link_down-v2-1-8d6dfc10a661@blochl.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH net v2] i40e: fix ptp time increment
- while link is down
+References: <20251122140839.3922015-1-almasrymina@google.com>
+ <DS4PPF7551E6552ECCF95AE9C177DEF07F8E5D0A@DS4PPF7551E6552.namprd11.prod.outlook.com>
+In-Reply-To: <DS4PPF7551E6552ECCF95AE9C177DEF07F8E5D0A@DS4PPF7551E6552.namprd11.prod.outlook.com>
+From: Mina Almasry <almasrymina@google.com>
+Date: Sun, 30 Nov 2025 19:27:26 -0600
+X-Gm-Features: AWmQ_bntuE3GnpzJMZaG9Cr3R1vpsBmf3PJosTlld9e_VcSuzfSnUowwDbN3jGY
+Message-ID: <CAHS8izOjZxEgBmYEhZanp57ukCYU5i5FdWfx5HO5+Ua2V3Owsg@mail.gmail.com>
+To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "bpf@vger.kernel.org" <bpf@vger.kernel.org>, 
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ YiFei Zhu <zhuyifei@google.com>, 
+ Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, 
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, 
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, 
+ Stanislav Fomichev <sdf@fomichev.me>, "Nguyen,
+ Anthony L" <anthony.l.nguyen@intel.com>, 
+ "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, 
+ "Lobakin, Aleksander" <aleksander.lobakin@intel.com>,
+ Richard Cochran <richardcochran@gmail.com>, 
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1764552460; x=1765157260; darn=lists.osuosl.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ehYGc97IwrLDHQvpTuRv7v/3RImO4vhIDaHvlIMcxcE=;
+ b=sKsj2wRGbEo5xqLDumiRli4u3ZZHLn9tbeFeQxXncRcFQtwqKDEt+0G4+o5ILwRr+m
+ t3MsSnubB7G2dFXIPfJaOZZ2IkPcQ74DvG6wCPJtVzxOhYn5IQbl0Q7dSs/DjjjZ//VZ
+ RWkA8teOyMuekV9zYVd8esCCFBaWRPfwf2fpiaMTm1+tcWGpttEZ5TDN40unY0YVgWZ9
+ K5qKHZmyPWvUkIuk1IKSJeAsKYDpwDEhG+H6dbGuQivSdNkOZ5grWLjV5bc6nnBeVdHE
+ rkNItET/SxACDsgNdhnS5JTSxRh3DAJesWJH16iP+CNFI8GdOduufXs42TXUDnLHdYF/
+ mV3w==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=google.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=google.com header.i=@google.com header.a=rsa-sha256
+ header.s=20230601 header.b=sKsj2wRG
+Subject: Re: [Intel-wired-lan] [PATCH net-next v1] idpf: export RX hardware
+ timestamping information to XDP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -95,216 +141,113 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Markus,
+On Mon, Nov 24, 2025 at 2:33=E2=80=AFAM Loktionov, Aleksandr
+<aleksandr.loktionov@intel.com> wrote:
+>
+>
+>
+> > -----Original Message-----
+> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
+> > Of Mina Almasry
+> > Sent: Saturday, November 22, 2025 3:09 PM
+> > To: netdev@vger.kernel.org; bpf@vger.kernel.org; linux-
+> > kernel@vger.kernel.org
+> > Cc: YiFei Zhu <zhuyifei@google.com>; Alexei Starovoitov
+> > <ast@kernel.org>; Daniel Borkmann <daniel@iogearbox.net>; David S.
+> > Miller <davem@davemloft.net>; Jakub Kicinski <kuba@kernel.org>; Jesper
+> > Dangaard Brouer <hawk@kernel.org>; John Fastabend
+> > <john.fastabend@gmail.com>; Stanislav Fomichev <sdf@fomichev.me>;
+> > Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw
+> > <przemyslaw.kitszel@intel.com>; Andrew Lunn <andrew+netdev@lunn.ch>;
+> > Eric Dumazet <edumazet@google.com>; Paolo Abeni <pabeni@redhat.com>;
+> > Lobakin, Aleksander <aleksander.lobakin@intel.com>; Richard Cochran
+> > <richardcochran@gmail.com>; intel-wired-lan@lists.osuosl.org; Mina
+> > Almasry <almasrymina@google.com>
+> > Subject: [Intel-wired-lan] [PATCH net-next v1] idpf: export RX
+> > hardware timestamping information to XDP
+> >
+> > From: YiFei Zhu <zhuyifei@google.com>
+> >
+> > The logic is similar to idpf_rx_hwtstamp, but the data is exported as
+> > a BPF kfunc instead of appended to an skb.
+> >
+> > A idpf_queue_has(PTP, rxq) condition is added to check the queue
+> > supports PTP similar to idpf_rx_process_skb_fields.
+> >
+> > Cc: intel-wired-lan@lists.osuosl.org
+> >
+> > Signed-off-by: YiFei Zhu <zhuyifei@google.com>
+> > Signed-off-by: Mina Almasry <almasrymina@google.com>
+> > ---
+> >  drivers/net/ethernet/intel/idpf/xdp.c | 27
+> > +++++++++++++++++++++++++++
+> >  1 file changed, 27 insertions(+)
+> >
+> > diff --git a/drivers/net/ethernet/intel/idpf/xdp.c
+> > b/drivers/net/ethernet/intel/idpf/xdp.c
+> > index 21ce25b0567f..850389ca66b6 100644
+> > --- a/drivers/net/ethernet/intel/idpf/xdp.c
+> > +++ b/drivers/net/ethernet/intel/idpf/xdp.c
+> > @@ -2,6 +2,7 @@
+> >  /* Copyright (C) 2025 Intel Corporation */
+> >
+> >  #include "idpf.h"
+> > +#include "idpf_ptp.h"
+> >  #include "idpf_virtchnl.h"
+> >  #include "xdp.h"
+> >  #include "xsk.h"
+> > @@ -369,6 +370,31 @@ int idpf_xdp_xmit(struct net_device *dev, int n,
+> > struct xdp_frame **frames,
+> >                                      idpf_xdp_tx_finalize);
+> >  }
+> >
+> > +static int idpf_xdpmo_rx_timestamp(const struct xdp_md *ctx, u64
+> > +*timestamp) {
+> > +     const struct virtchnl2_rx_flex_desc_adv_nic_3 *rx_desc;
+> > +     const struct libeth_xdp_buff *xdp =3D (typeof(xdp))ctx;
+> > +     const struct idpf_rx_queue *rxq;
+> > +     u64 cached_time, ts_ns;
+> > +     u32 ts_high;
+> > +
+> > +     rx_desc =3D xdp->desc;
+> > +     rxq =3D libeth_xdp_buff_to_rq(xdp, typeof(*rxq), xdp_rxq);
+> > +
+> > +     if (!idpf_queue_has(PTP, rxq))
+> > +             return -ENODATA;
+> > +     if (!(rx_desc->ts_low & VIRTCHNL2_RX_FLEX_TSTAMP_VALID))
+> > +             return -ENODATA;
+> RX flex desc fields are little=E2=80=91endian.
+> You already convert ts_high with le32_to_cpu(), but test ts_low directly =
+against the mask.
+> On big=E2=80=91endian this can misdetect the bit and spuriously return -E=
+NODATA.
+> Please convert ts_low to host order before the bit test.
+> See existing IDPF/ICE patterns where descriptor words are leXX_to_cpu()=
+=E2=80=91converted prior to FIELD_GET() / bit checks.
+> Also, per the XDP RX metadata kfunc docs, -ENODATA must reflect true abse=
+nce of per=E2=80=91packet metadata; endianness=E2=80=91correct testing is r=
+equired to uphold the semantic.
+>
 
+Hey, sorry for the late reply. Initially when I read the reply, I
+thought: "why not, lets add a leXX_to_cpu".
 
-Thank you for the patch.
+But now that I look closer to implement the change and submit v2, it
+looks correct as written. ts_low is defined as a u8:
 
-Am 30.11.25 um 16:23 schrieb Markus Blöchl:
-> When an X710 ethernet port with an active ptp daemon (like the ptp4l and
-> phc2sys combo) suddenly loses its link and regains it after a while, the
-> ptp daemon has a hard time to recover synchronization and sometimes
-> entirely fails to do so.
-> 
-> The issue seems to be related to a wrongly configured increment while the
-> link is down. This could not be observed with the Intel reference driver.
-> We identified the fix to appear in Intels official ethernet-linux-i40e
+```
+struct virtchnl2_rx_flex_desc_adv_nic_3 {
+...
+u8 ts_low;
+```
 
-Intel’s
+So it should not be fed into any leXX_to_cpu() functions, no?
 
-> release version 2.17.4.
-> 
-> Include the relevant changes in the kernel version of this driver.
-> 
-> Fixes: beb0dff1251d ("i40e: enable PTP")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Markus Blöchl <markus@blochl.de>
-> ---
-> Tested with an X710 at 10G link speed and kernel version 6.12.42.
+I also looked at other u8 members in this struct like `u8
+status_err0_qw0` and `u8 status_err0_qw1`, and both are used in
+existing code without a conversion. So it seems correct as written.
+Can you reconsdirer?
 
-I’d really appreciate it, if you put the in the commit message above, 
-and if you provided exact steps for reproducing this in the commit message.
-
-> ---
-> Changes in v2:
-> - Fix kdoc and code formatting
-> - Rebase onto net tree
-> - Link to v1: https://lore.kernel.org/r/20251119-i40e_ptp_link_down-v1-1-b351fed254b3@blochl.de
-> ---
->   drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h |  9 +++
->   drivers/net/ethernet/intel/i40e/i40e_ptp.c        | 69 +++++++++++++++++++++--
->   drivers/net/ethernet/intel/i40e/i40e_register.h   |  9 +++
->   drivers/net/ethernet/intel/i40e/i40e_type.h       |  8 +++
->   4 files changed, 90 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h b/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
-> index cc02a85ad42b..ec176e9569ad 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
-> @@ -1488,6 +1488,15 @@ enum i40e_aq_link_speed {
->   	I40E_LINK_SPEED_25GB	= BIT(I40E_LINK_SPEED_25GB_SHIFT),
->   };
->   
-> +enum i40e_prt_mac_pcs_link_speed {
-> +	I40E_PRT_MAC_PCS_LINK_SPEED_UNKNOWN = 0,
-> +	I40E_PRT_MAC_PCS_LINK_SPEED_100MB,
-> +	I40E_PRT_MAC_PCS_LINK_SPEED_1GB,
-> +	I40E_PRT_MAC_PCS_LINK_SPEED_10GB,
-> +	I40E_PRT_MAC_PCS_LINK_SPEED_40GB,
-> +	I40E_PRT_MAC_PCS_LINK_SPEED_20GB
-> +};
-> +
->   struct i40e_aqc_module_desc {
->   	u8 oui[3];
->   	u8 reserved1;
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_ptp.c b/drivers/net/ethernet/intel/i40e/i40e_ptp.c
-> index 33535418178b..89abe2f22216 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_ptp.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_ptp.c
-> @@ -847,6 +847,66 @@ void i40e_ptp_rx_hwtstamp(struct i40e_pf *pf, struct sk_buff *skb, u8 index)
->   	i40e_ptp_convert_to_hwtstamp(skb_hwtstamps(skb), ns);
->   }
->   
-> +/**
-> + * i40e_ptp_get_link_speed_hw - get the link speed
-> + * @pf: Board private structure
-> + *
-> + * Calculate link speed depending on the link status.
-> + *
-> + * Return: current link speed.
-> + **/
-> +static enum i40e_aq_link_speed i40e_ptp_get_link_speed_hw(struct i40e_pf *pf)
-> +{
-> +	bool link_up = pf->hw.phy.link_info.link_info & I40E_AQ_LINK_UP;
-> +	enum i40e_aq_link_speed link_speed = I40E_LINK_SPEED_UNKNOWN;
-> +	struct i40e_hw *hw = &pf->hw;
-> +
-> +	if (link_up) {
-> +		struct i40e_link_status *hw_link_info = &hw->phy.link_info;
-> +
-> +		i40e_aq_get_link_info(hw, true, NULL, NULL);
-> +		link_speed = hw_link_info->link_speed;
-> +	} else {
-> +		enum i40e_prt_mac_link_speed prtmac_linksta;
-> +		u64 prtmac_pcs_linksta;
-> +
-> +		prtmac_linksta = (rd32(hw, I40E_PRTMAC_LINKSTA(0)) &
-> +				  I40E_PRTMAC_LINKSTA_MAC_LINK_SPEED_MASK) >>
-> +				  I40E_PRTMAC_LINKSTA_MAC_LINK_SPEED_SHIFT;
-> +		if (prtmac_linksta == I40E_PRT_MAC_LINK_SPEED_40GB) {
-> +			link_speed = I40E_LINK_SPEED_40GB;
-> +		} else {
-> +			i40e_aq_debug_read_register(hw,
-> +						    I40E_PRTMAC_PCS_LINK_STATUS1(0),
-> +						    &prtmac_pcs_linksta,
-> +						    NULL);
-> +
-> +			prtmac_pcs_linksta = (prtmac_pcs_linksta &
-> +					      I40E_PRTMAC_PCS_LINK_STATUS1_LINK_SPEED_MASK) >>
-> +					      I40E_PRTMAC_PCS_LINK_STATUS1_LINK_SPEED_SHIFT;
-> +
-> +			switch (prtmac_pcs_linksta) {
-> +			case I40E_PRT_MAC_PCS_LINK_SPEED_100MB:
-> +				link_speed = I40E_LINK_SPEED_100MB;
-> +				break;
-> +			case I40E_PRT_MAC_PCS_LINK_SPEED_1GB:
-> +				link_speed = I40E_LINK_SPEED_1GB;
-> +				break;
-> +			case I40E_PRT_MAC_PCS_LINK_SPEED_10GB:
-> +				link_speed = I40E_LINK_SPEED_10GB;
-> +				break;
-> +			case I40E_PRT_MAC_PCS_LINK_SPEED_20GB:
-> +				link_speed = I40E_LINK_SPEED_20GB;
-> +				break;
-> +			default:
-> +				link_speed = I40E_LINK_SPEED_UNKNOWN;
-> +			}
-> +		}
-> +	}
-> +
-> +	return link_speed;
-> +}
-> +
->   /**
->    * i40e_ptp_set_increment - Utility function to update clock increment rate
->    * @pf: Board private structure
-> @@ -857,16 +917,14 @@ void i40e_ptp_rx_hwtstamp(struct i40e_pf *pf, struct sk_buff *skb, u8 index)
->    **/
->   void i40e_ptp_set_increment(struct i40e_pf *pf)
->   {
-> -	struct i40e_link_status *hw_link_info;
-> +	enum i40e_aq_link_speed link_speed;
->   	struct i40e_hw *hw = &pf->hw;
->   	u64 incval;
->   	u32 mult;
->   
-> -	hw_link_info = &hw->phy.link_info;
-> +	link_speed = i40e_ptp_get_link_speed_hw(pf);
->   
-> -	i40e_aq_get_link_info(&pf->hw, true, NULL, NULL);
-> -
-> -	switch (hw_link_info->link_speed) {
-> +	switch (link_speed) {
-
-Excuse my ignorance, but could you or the Intel authors explain in the 
-commit message, why `hw_link_info->link_speed` is incorrect?
-
->   	case I40E_LINK_SPEED_10GB:
->   		mult = I40E_PTP_10GB_INCVAL_MULT;
->   		break;
-> @@ -909,6 +967,7 @@ void i40e_ptp_set_increment(struct i40e_pf *pf)
->   	/* Update the base adjustement value. */
->   	WRITE_ONCE(pf->ptp_adj_mult, mult);
->   	smp_mb(); /* Force the above update. */
-> +	i40e_ptp_set_1pps_signal_hw(pf);
-
- From the commit message, I would have thought, only this line would be 
-needed.
-
->   }
->   
->   /**
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_register.h b/drivers/net/ethernet/intel/i40e/i40e_register.h
-> index 432afbb64201..c4051dbcc297 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_register.h
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_register.h
-> @@ -530,6 +530,15 @@
->   #define I40E_PRTMAC_HSEC_CTL_TX_PAUSE_REFRESH_TIMER_SHIFT 0
->   #define I40E_PRTMAC_HSEC_CTL_TX_PAUSE_REFRESH_TIMER_MASK I40E_MASK(0xFFFF, \
->   	I40E_PRTMAC_HSEC_CTL_TX_PAUSE_REFRESH_TIMER_SHIFT)
-> +/* _i=0...3 */ /* Reset: GLOBR */
-> +#define I40E_PRTMAC_PCS_LINK_STATUS1(_i) (0x0008C200 + ((_i) * 4))
-> +#define I40E_PRTMAC_PCS_LINK_STATUS1_LINK_SPEED_SHIFT 24
-> +#define I40E_PRTMAC_PCS_LINK_STATUS1_LINK_SPEED_MASK I40E_MASK(0x7, I40E_PRTMAC_PCS_LINK_STATUS1_LINK_SPEED_SHIFT)
-> +#define I40E_PRTMAC_PCS_LINK_STATUS2 0x0008C220
-> +/* _i=0...3 */ /* Reset: GLOBR */
-> +#define I40E_PRTMAC_LINKSTA(_i) (0x001E2420 + ((_i) * 4))
-> +#define I40E_PRTMAC_LINKSTA_MAC_LINK_SPEED_SHIFT 27
-> +#define I40E_PRTMAC_LINKSTA_MAC_LINK_SPEED_MASK I40E_MASK(0x7, I40E_PRTMAC_LINKSTA_MAC_LINK_SPEED_SHIFT)
->   #define I40E_GLNVM_FLA 0x000B6108 /* Reset: POR */
->   #define I40E_GLNVM_FLA_LOCKED_SHIFT 6
->   #define I40E_GLNVM_FLA_LOCKED_MASK I40E_MASK(0x1, I40E_GLNVM_FLA_LOCKED_SHIFT)
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_type.h b/drivers/net/ethernet/intel/i40e/i40e_type.h
-> index ed8bbdb586da..98c8c5709e5f 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_type.h
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_type.h
-> @@ -115,6 +115,14 @@ enum i40e_queue_type {
->   	I40E_QUEUE_TYPE_UNKNOWN
->   };
->   
-> +enum i40e_prt_mac_link_speed {
-> +	I40E_PRT_MAC_LINK_SPEED_100MB = 0,
-> +	I40E_PRT_MAC_LINK_SPEED_1GB,
-> +	I40E_PRT_MAC_LINK_SPEED_10GB,
-> +	I40E_PRT_MAC_LINK_SPEED_40GB,
-> +	I40E_PRT_MAC_LINK_SPEED_20GB
-> +};
-> +
->   struct i40e_link_status {
->   	enum i40e_aq_phy_type phy_type;
->   	enum i40e_aq_link_speed link_speed;
-
-
-Kind regards,
-
-Pul
+If you insist some change is required, can you elaborate more on what
+needs to be changed? There is no le8_to_cpu, unless a trivial one that
+does nothing (one byte struct cannot be little or big endian).
