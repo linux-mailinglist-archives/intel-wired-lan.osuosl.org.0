@@ -1,112 +1,116 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 283DFC99D54
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 02 Dec 2025 03:11:32 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 107FEC9A272
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 02 Dec 2025 06:58:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A48A5407B1;
-	Tue,  2 Dec 2025 02:11:30 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3B07B83CA4;
+	Tue,  2 Dec 2025 05:58:01 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ywLvtCxgSu0j; Tue,  2 Dec 2025 02:11:29 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id E7VvY5xkwDhS; Tue,  2 Dec 2025 05:58:00 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D4B7A408AA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 502CB83CA7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1764641489;
-	bh=rDi6VTYnV7nasmRARrfZLdbKfoS2HxlgyRIi+ndWGwI=;
-	h=From:To:Cc:In-Reply-To:References:Date:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=eNgXNWc46aUo+5/PDpZGSW4xjluHG6cMEPGi+AQDm2Bue3mMTnVMlXBSEMv29NJOz
-	 h1X43FW+0LiSzLTxgiBwzqX6rOXwCNdmG75CZ7T89qXrxU2Ot6ezb242tN3ER6fVg4
-	 u1Bd8XgL9Fhenh2NWJHKzF0ABkMaOA5qVKVOvJUuJS8qoEGLOduq02zUUmmsN1qltq
-	 w73PxWBRoBYRVqoZooNCgh6CzjGjglrbuYTT/83a5mQJkFFXlRJaQ1V30VWlfzjcld
-	 2y+WjMMmEdkRj2ExM2EDulO6xuC1CbO2O0Iz3UW95qffTgUWY1VTL5iciXjAAG/Slx
-	 ELVojXdkrQBbQ==
+	s=default; t=1764655080;
+	bh=8nnHjtdzj8GMaqaoQ2VrQksq1Cj/xb7wAjKfHFCr3E8=;
+	h=From:Date:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=VwusnhCbNhTkDK2gzm1lH3b/w0gWkjHjfJAFFeUQojn+dy6fow7ncueiKnN12xv0x
+	 63nUmAeJZGtePFKz/t6uZ7xnL9l+pq0PYY1Eg315GOW0q4U3f3j2b1Og9zGmpbxqq4
+	 XlJY7/9l9A+3eZYlTZ30sPtfSWUFIB1n10zFBs9kRkCF4OgrNNF8712G3lkIN4Z/Gv
+	 xMVQ6dzuHW6bNKdZIMS9WjGm1CjQ6EaKi9gmHidXP4asaYqfeq2v7rCwqEUYR81IBE
+	 wgkLI5ysxt8u4d0d2pQ5GnsBvDcAPz6n3eG1KfgyqSV0tTYl7r+lTf5/7ejwoKCQpU
+	 VLu6P7Qu7x4zQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D4B7A408AA;
-	Tue,  2 Dec 2025 02:11:29 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 502CB83CA7;
+	Tue,  2 Dec 2025 05:58:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 8939A1BD
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Dec 2025 02:11:27 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 4475DE4
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Dec 2025 05:57:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 7B0CF407B1
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Dec 2025 02:11:27 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 351C660E36
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Dec 2025 05:57:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 6IqhPsOb83jE for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Dec 2025 02:11:26 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
- helo=mgamail.intel.com; envelope-from=vinicius.gomes@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 0FBC840744
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0FBC840744
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 0FBC840744
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Dec 2025 02:11:25 +0000 (UTC)
-X-CSE-ConnectionGUID: skz6BYMSQ2aOn2YxH4k6ZA==
-X-CSE-MsgGUID: akeBil0eTaykWzUr31Daig==
-X-IronPort-AV: E=McAfee;i="6800,10657,11630"; a="77283621"
-X-IronPort-AV: E=Sophos;i="6.20,241,1758610800"; d="scan'208";a="77283621"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
- by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Dec 2025 18:11:25 -0800
-X-CSE-ConnectionGUID: jqqmvzb8S2SjR0RGPY2ohQ==
-X-CSE-MsgGUID: ldENihELRGm7y21uAcFcNg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.20,241,1758610800"; d="scan'208";a="194226978"
-Received: from vcostago-desk1.jf.intel.com (HELO vcostago-desk1)
- ([10.88.27.140])
- by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Dec 2025 18:11:25 -0800
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: Chwee-Lin Choong <chwee.lin.choong@intel.com>, Tony Nguyen
- <anthony.l.nguyen@intel.com>, Przemek Kitszel
- <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S
- . Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
- Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Richard
- Cochran <richardcochran@gmail.com>
-Cc: yipeng.chai@amd.com, alexander.deucher@amd.com,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, Aleksandr Loktionov
- <aleksandr.loktionov@intel.com>, Avi Shalev <avi.shalev@intel.com>, Song
- Yoong Siang <yoong.siang.song@intel.com>, Chwee-Lin Choong
- <chwee.lin.choong@intel.com>
-In-Reply-To: <20251128105304.8147-1-chwee.lin.choong@intel.com>
-References: <20251128105304.8147-1-chwee.lin.choong@intel.com>
-Date: Mon, 01 Dec 2025 18:11:21 -0800
-Message-ID: <87zf81fx9y.fsf@intel.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id FAW48ACnNLV9 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Dec 2025 05:57:57 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a01:4f8:1c1b:7813::1; helo=bkemail.birger-koblitz.de;
+ envelope-from=mail@birger-koblitz.de; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A184D60B76
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A184D60B76
+Received: from bkemail.birger-koblitz.de (bkemail.birger-koblitz.de
+ [IPv6:2a01:4f8:1c1b:7813::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A184D60B76
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Dec 2025 05:57:56 +0000 (UTC)
+Received: by bkemail.birger-koblitz.de (Postfix, from userid 109)
+ id 6D4F13EC70; Tue,  2 Dec 2025 05:57:52 +0000 (UTC)
+Received: from AMDDesktop.lan (unknown
+ [IPv6:2a00:6020:47a3:e800:94d3:d213:724a:4e07])
+ by bkemail.birger-koblitz.de (Postfix) with ESMTPSA id 2DA163EC67;
+ Tue,  2 Dec 2025 05:57:51 +0000 (UTC)
+From: Birger Koblitz <mail@birger-koblitz.de>
+Date: Tue, 02 Dec 2025 06:57:48 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20251202-10gbx-v6-1-e7acbd3dff69@birger-koblitz.de>
+X-B4-Tracking: v=1; b=H4sIANx/LmkC/3WQy27CMBBFfwV5XSOP4zEOK/6jYuHHJFitCHKQR
+ UH59w6ooSzI8o7mnBndmxipZBrFdnUThWoe83DkYD9WIh78sSeZE2ehlUZQoCWoPlykD8bpiAQ
+ JjeDdU6EuXx6ezz3nQx7PQ/l5aCvcp7Oh+TNUkMCa1rXWd01Ctwu59FTk1xC+8/m6TiTupqpfa
+ TPT/IhsnYqoDQDQZolu3tL8hEQVk3dWb6BdvG1eaTvTrJHKRx6HDq2PSzT+0/BsriLToCM3qKw
+ K8e3taZp+AV28hTiaAQAA
+X-Change-ID: 20251012-10gbx-ab482c5e1d54
+To: Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, Birger Koblitz <mail@birger-koblitz.de>, 
+ Andrew Lunn <andrew@lunn.ch>, Paul Menzel <pmenzel@molgen.mpg.de>, 
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>, 
+ Rinitha S <sx.rinitha@intel.com>
+X-Mailer: b4 0.14.2
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1764641486; x=1796177486;
- h=from:to:cc:subject:in-reply-to:references:date:
- message-id:mime-version:content-transfer-encoding;
- bh=fX1BXIg//i6pZxmO37/8m6XfZRKYZjau7eRh7qCM160=;
- b=NgGu3p5/XxnSVyyo3uqVwMwRVUAJUFvzl037oByBoFoEP8lkrEaHlJIp
- n7q5xKa9+id87EGzTdqtVVM72bl2/Sj63jbSoHRrtYLWLw0hJ6pX6aGU5
- fy/AdERGAXsvquFVJS7Xi71eizloK2f0n7+H4VSxv6b19XuFFXE9zv8Mx
- eec2tWM2Xy8Qun+ZfFuHjYm3DEikDf7tqWAZRbeZ2EqBX9joEHO2H7i4R
- 4i7S2vEDdCqom5SW8AQUa2QoPjn5XSHOs3cgnfYB+i17akwBS9vbaNmwz
- A+SEowFBXPIsm4YEzwix+6CcCrN3xo6YUYa/jqXwl7XodCvko4wNCDGef
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=NgGu3p5/
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v4] igc: fix race condition in
- TX timestamp read for register 0
+ d=birger-koblitz.de; 
+ s=default; t=1764655072;
+ bh=PHaz/sOzh9D5lWWBtb0WGJsCAi0opo4umag/aUgkwbM=;
+ h=From:Date:Subject:To:Cc:From;
+ b=CF9//1vfEVNcl7XxKUpM21xKbmLIOkJrwXfPoP0vWUxQgqGAVgnecgVHkB2ywxvWr
+ TfyRZeiP3zETwyp1IPDYud2sS7T8ZwwSSHiFTm8tMp25lkOr3O76xmyY4vVHbM5++/
+ AMPyhvc9tbauqqu0D+9H4MQGGkRX5WOsCHIiEd9seqiTxir1rcCu4v6D3HnthkfuA+
+ U7naTUvXPRgM1qPPyhr/4fT9qC6mXj/S0/qf2aHa7JByIYLUlQzV0ugxXibDvIpmPP
+ TM38oM6chgmqjtBbWWDMo87XilcGb3l5xowG1/HQUGMgdmakNSORi+xJbOH0/QYTaR
+ RjhKDY8jTrtYQ==
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=birger-koblitz.de; 
+ s=default; t=1764655071;
+ bh=PHaz/sOzh9D5lWWBtb0WGJsCAi0opo4umag/aUgkwbM=;
+ h=From:Date:Subject:To:Cc:From;
+ b=QWYtH+zRjCfffl6p1FBDois9MAM1pfGJSONXUwkO7MwHx+ZGngbvO23zM8T0NH7T7
+ jBdA63EX1LeHWlHXJ6VHJwreGU6bhG4ZKssjMNUTcv6nuM3bNAPDCtVJeACOgSwnBC
+ O01Zgw+U3Ix8BOZuJn9Sil+hf8aTBNomU989CZgbt0Qdx7eMWTS4iw8d2kTMPqxAxc
+ jyLbrqaC3kSfIWjYHEjVekzwT6n3CW8OYAgld6c9Y4Mb0MaUf2ffGHryW8Opx6toPf
+ ThB3cvX7rY6KZAWIfYT8ulSq97bGI+ly/ID27STyYLLTgmwr+zeB7rjRj6pPr3lD58
+ Du4LkX+j99lFg==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=birger-koblitz.de
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key, unprotected) header.d=birger-koblitz.de
+ header.i=@birger-koblitz.de header.a=rsa-sha256 header.s=default
+ header.b=CF9//1vf; 
+ dkim=pass (2048-bit key) header.d=birger-koblitz.de
+ header.i=@birger-koblitz.de header.a=rsa-sha256 header.s=default
+ header.b=QWYtH+zR
+Subject: [Intel-wired-lan] [PATCH net-next v6] ixgbe: Add 10G-BX support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -122,153 +126,235 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi,
+Add support for 10G-BX modules, i.e. 10GBit Ethernet over a single strand
+Single-Mode fiber.
+The initialization of a 10G-BX SFP+ is the same as for a 10G SX/LX module,
+and is identified according to SFF-8472 table 5-3, footnote 3 by the
+10G Ethernet Compliance Codes field being empty, the Nominal Bit
+Rate being compatible with 12.5GBit, and the module being a fiber module
+with a Single Mode fiber link length.
 
-Chwee-Lin Choong <chwee.lin.choong@intel.com> writes:
+This was tested using a Lightron WSPXG-HS3LC-IEA 1270/1330nm 10km
+transceiver:
+$ sudo ethtool -m enp1s0f1
+   Identifier                          : 0x03 (SFP)
+   Extended identifier                 : 0x04 (GBIC/SFP defined by 2-wire interface ID)
+   Connector                           : 0x07 (LC)
+   Transceiver codes                   : 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+   Encoding                            : 0x01 (8B/10B)
+   BR Nominal                          : 10300MBd
+   Rate identifier                     : 0x00 (unspecified)
+   Length (SMF)                        : 10km
+   Length (OM2)                        : 0m
+   Length (OM1)                        : 0m
+   Length (Copper or Active cable)     : 0m
+   Length (OM3)                        : 0m
+   Laser wavelength                    : 1330nm
+   Vendor name                         : Lightron Inc.
+   Vendor OUI                          : 00:13:c5
+   Vendor PN                           : WSPXG-HS3LC-IEA
+   Vendor rev                          : 0000
+   Option values                       : 0x00 0x1a
+   Option                              : TX_DISABLE implemented
+   BR margin max                       : 0%
+   BR margin min                       : 0%
+   Vendor SN                           : S142228617
+   Date code                           : 140611
+   Optical diagnostics support         : Yes
 
-> The current HW bug workaround checks the TXTT_0 ready bit first,
-> then reads TXSTMPL_0 twice (before and after reading TXSTMPH_0)
-> to detect whether a new timestamp was captured by timestamp
-> register 0 during the workaround.
->
-> This sequence has a race: if a new timestamp is captured after
-> checking the TXTT_0 bit but before the first TXSTMPL_0 read, the
-> detection fails because both the =E2=80=9Cold=E2=80=9D and =E2=80=9Cnew=
-=E2=80=9D values come from
-> the same timestamp.
->
-> Fix by reading TXSTMPL_0 first to establish a baseline, then
-> checking the TXTT_0 bit. This ensures any timestamp captured
-> during the race window will be detected.
->
-> Old sequence:
->   1. Check TXTT_0 ready bit
->   2. Read TXSTMPL_0 (baseline)
->   3. Read TXSTMPH_0 (interrupt workaround)
->   4. Read TXSTMPL_0 (detect changes vs baseline)
->
-> New sequence:
->   1. Read TXSTMPL_0 (baseline)
->   2. Check TXTT_0 ready bit
->   3. Read TXSTMPH_0 (interrupt workaround)
->   4. Read TXSTMPL_0 (detect changes vs baseline)
->
-> Fixes: c789ad7cbebc ("igc: Work around HW bug causing missing timestamps")
-> Suggested-by: Avi Shalev <avi.shalev@intel.com>
-> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> Co-developed-by: Song Yoong Siang <yoong.siang.song@intel.com>
-> Signed-off-by: Song Yoong Siang <yoong.siang.song@intel.com>
-> Signed-off-by: Chwee-Lin Choong <chwee.lin.choong@intel.com>
+Signed-off-by: Birger Koblitz <mail@birger-koblitz.de>
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Tested-by: Rinitha S <sx.rinitha@intel.com>
+---
+Changes in v6:
+  Added else statement to explicitly set sfp_type to unknown if the length-check fails 
+- Link to v5: https://lore.kernel.org/r/20251112-10gbx-v5-1-12cab4060bc8@birger-koblitz.de
 
-Patch looks good, my only concern is this report:
+Changes in v5:
+  Added "Tested-by" 
+- Link to v4: https://lore.kernel.org/r/20251016-10gbx-v4-1-0ac202bf56ac@birger-koblitz.de
 
-https://lore.kernel.org/intel-wired-lan/AS1PR10MB5675DBFE7CE5F2A9336ABFA4EB=
-EAA@AS1PR10MB5675.EURPRD10.PROD.OUTLOOK.COM/
+Changes in v4:
+  Added "Reviewed-bys".
+  Slight rewording of commit message.
+- Link to v3: https://lore.kernel.org/r/20251014-10gbx-v3-1-50cda8627198@birger-koblitz.de
 
-It's not clear to me how/why the different buffer utilization is
-affecting this, but at least seems worth some investigation and
-reporting back in that thread.
+Changes in v3:
+  Added "Reviewed-by". There also was a possible mailserver DKIM misconfiguration
+  that may have prevented recipients to recieve the previous mails 
+- Link to v2: https://lore.kernel.org/r/20251014-10gbx-v2-1-980c524111e7@birger-koblitz.de
 
-> ---
-> v1: https://patchwork.ozlabs.org/project/intel-wired-lan/patch/2025091818=
-3811.31270-1-chwee.lin.choong@intel.com/
-> v2: https://patchwork.ozlabs.org/project/intel-wired-lan/patch/2025112713=
-4927.2133-1-chwee.lin.choong@intel.com/
-> v3: https://patchwork.ozlabs.org/project/intel-wired-lan/patch/2025112715=
-1137.2883-1-chwee.lin.choong@intel.com/
->
-> changelog:
-> v1 -> v2=20
-> - Added detailed comments explaining the hardware bug workaround and race
->     detection mechanism
-> v2 -> v3
-> - Removed extra export file added by mistake=09
-> v3 -> v4
-> - Added co-developer
-> ---
->  drivers/net/ethernet/intel/igc/igc_ptp.c | 43 ++++++++++++++----------
->  1 file changed, 25 insertions(+), 18 deletions(-)
->
-> diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ether=
-net/intel/igc/igc_ptp.c
-> index b7b46d863bee..7aae83c108fd 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_ptp.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
-> @@ -774,36 +774,43 @@ static void igc_ptp_tx_reg_to_stamp(struct igc_adap=
-ter *adapter,
->  static void igc_ptp_tx_hwtstamp(struct igc_adapter *adapter)
->  {
->  	struct igc_hw *hw =3D &adapter->hw;
-> +	u32 txstmpl_old;
->  	u64 regval;
->  	u32 mask;
->  	int i;
->=20=20
-> +	/* Establish baseline of TXSTMPL_0 before checking TXTT_0.
-> +	 * This baseline is used to detect if a new timestamp arrives in
-> +	 * register 0 during the hardware bug workaround below.
-> +	 */
-> +	txstmpl_old =3D rd32(IGC_TXSTMPL);
-> +
->  	mask =3D rd32(IGC_TSYNCTXCTL) & IGC_TSYNCTXCTL_TXTT_ANY;
->  	if (mask & IGC_TSYNCTXCTL_TXTT_0) {
->  		regval =3D rd32(IGC_TXSTMPL);
->  		regval |=3D (u64)rd32(IGC_TXSTMPH) << 32;
->  	} else {
-> -		/* There's a bug in the hardware that could cause
-> -		 * missing interrupts for TX timestamping. The issue
-> -		 * is that for new interrupts to be triggered, the
-> -		 * IGC_TXSTMPH_0 register must be read.
-> +		/* TXTT_0 not set - register 0 has no new timestamp initially.
-> +		 *
-> +		 * Hardware bug: Future timestamp interrupts won't fire unless
-> +		 * TXSTMPH_0 is read, even if the timestamp was captured in
-> +		 * registers 1-3.
->  		 *
-> -		 * To avoid discarding a valid timestamp that just
-> -		 * happened at the "wrong" time, we need to confirm
-> -		 * that there was no timestamp captured, we do that by
-> -		 * assuming that no two timestamps in sequence have
-> -		 * the same nanosecond value.
-> +		 * Workaround: Read TXSTMPH_0 here to enable future interrupts.
-> +		 * However, this read clears TXTT_0. If a timestamp arrives in
-> +		 * register 0 after checking TXTT_0 but before this read, it
-> +		 * would be lost.
->  		 *
-> -		 * So, we read the "low" register, read the "high"
-> -		 * register (to latch a new timestamp) and read the
-> -		 * "low" register again, if "old" and "new" versions
-> -		 * of the "low" register are different, a valid
-> -		 * timestamp was captured, we can read the "high"
-> -		 * register again.
-> +		 * To detect this race: We saved a baseline read of TXSTMPL_0
-> +		 * before TXTT_0 check. After performing the workaround read of
-> +		 * TXSTMPH_0, we read TXSTMPL_0 again. Since consecutive
-> +		 * timestamps never share the same nanosecond value, a change
-> +		 * between the baseline and new TXSTMPL_0 indicates a timestamp
-> +		 * arrived during the race window. If so, read the complete
-> +		 * timestamp.
->  		 */
-> -		u32 txstmpl_old, txstmpl_new;
-> +		u32 txstmpl_new;
->=20=20
-> -		txstmpl_old =3D rd32(IGC_TXSTMPL);
->  		rd32(IGC_TXSTMPH);
->  		txstmpl_new =3D rd32(IGC_TXSTMPL);
->=20=20
-> @@ -818,7 +825,7 @@ static void igc_ptp_tx_hwtstamp(struct igc_adapter *a=
-dapter)
->=20=20
->  done:
->  	/* Now that the problematic first register was handled, we can
-> -	 * use retrieve the timestamps from the other registers
-> +	 * retrieve the timestamps from the other registers
->  	 * (starting from '1') with less complications.
->  	 */
->  	for (i =3D 1; i < IGC_MAX_TX_TSTAMP_REGS; i++) {
-> --=20
-> 2.43.0
->
+Changes in v2:
+  Allow also modules with only Byte 15 (100m SM link length) set to
+  be identified as BX
+---
+ drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c   |  7 ++++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c |  2 ++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c     | 45 +++++++++++++++++++++---
+ drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h     |  2 ++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_type.h    |  2 ++
+ 5 files changed, 53 insertions(+), 5 deletions(-)
 
---=20
-Vinicius
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
+index d5b1b974b4a33e7dd51b7cfe5ea211ff038a36f0..892a73a4bc6b0bb1c976ca95bf874059b987054f 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
+@@ -342,6 +342,13 @@ static int ixgbe_get_link_capabilities_82599(struct ixgbe_hw *hw,
+ 		return 0;
+ 	}
+ 
++	if (hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core0 ||
++	    hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core1) {
++		*speed = IXGBE_LINK_SPEED_10GB_FULL;
++		*autoneg = false;
++		return 0;
++	}
++
+ 	/*
+ 	 * Determine link capabilities based on the stored value of AUTOC,
+ 	 * which represents EEPROM defaults.  If AUTOC value has not been
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+index 2d660e9edb80af8fc834e097703dfd6a82b8c45b..76edf02bc47e5dd24bb0936f730f036181f6dc2a 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+@@ -351,6 +351,8 @@ static int ixgbe_get_link_ksettings(struct net_device *netdev,
+ 		case ixgbe_sfp_type_1g_lx_core1:
+ 		case ixgbe_sfp_type_1g_bx_core0:
+ 		case ixgbe_sfp_type_1g_bx_core1:
++		case ixgbe_sfp_type_10g_bx_core0:
++		case ixgbe_sfp_type_10g_bx_core1:
+ 			ethtool_link_ksettings_add_link_mode(cmd, supported,
+ 							     FIBRE);
+ 			ethtool_link_ksettings_add_link_mode(cmd, advertising,
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
+index 2449e4cf2679ddf3277f4ada7619303eb618d393..5cdf2503610d26d66ce5b0f28901fcad14803662 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
+@@ -1541,6 +1541,8 @@ int ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
+ 	u8 identifier = 0;
+ 	u8 cable_tech = 0;
+ 	u8 cable_spec = 0;
++	u8 sm_length_km = 0;
++	u8 sm_length_100m = 0;
+ 	int status;
+ 
+ 	if (hw->mac.ops.get_media_type(hw) != ixgbe_media_type_fiber) {
+@@ -1678,6 +1680,33 @@ int ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
+ 			else
+ 				hw->phy.sfp_type =
+ 					ixgbe_sfp_type_1g_bx_core1;
++		/* Support Ethernet 10G-BX, checking the Bit Rate
++		 * Nominal Value as per SFF-8472 to be 12.5 Gb/s (67h) and
++		 * Single Mode fibre with at least 1km link length
++		 */
++		} else if ((!comp_codes_10g) && (bitrate_nominal == 0x67) &&
++			   (!(cable_tech & IXGBE_SFF_DA_PASSIVE_CABLE)) &&
++			   (!(cable_tech & IXGBE_SFF_DA_ACTIVE_CABLE))) {
++			status = hw->phy.ops.read_i2c_eeprom(hw,
++					    IXGBE_SFF_SM_LENGTH_KM,
++					    &sm_length_km);
++			if (status != 0)
++				goto err_read_i2c_eeprom;
++			status = hw->phy.ops.read_i2c_eeprom(hw,
++					    IXGBE_SFF_SM_LENGTH_100M,
++					    &sm_length_100m);
++			if (status != 0)
++				goto err_read_i2c_eeprom;
++			if (sm_length_km > 0 || sm_length_100m >= 10) {
++				if (hw->bus.lan_id == 0)
++					hw->phy.sfp_type =
++						ixgbe_sfp_type_10g_bx_core0;
++				else
++					hw->phy.sfp_type =
++						ixgbe_sfp_type_10g_bx_core1;
++			} else {
++				hw->phy.sfp_type = ixgbe_sfp_type_unknown;
++			}
+ 		} else {
+ 			hw->phy.sfp_type = ixgbe_sfp_type_unknown;
+ 		}
+@@ -1768,7 +1797,9 @@ int ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
+ 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core0 ||
+ 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core1 ||
+ 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core0 ||
+-	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core1)) {
++	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core1 ||
++	      hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core0 ||
++	      hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core1)) {
+ 		hw->phy.type = ixgbe_phy_sfp_unsupported;
+ 		return -EOPNOTSUPP;
+ 	}
+@@ -1786,7 +1817,9 @@ int ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
+ 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core0 ||
+ 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core1 ||
+ 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core0 ||
+-	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core1)) {
++	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core1 ||
++	      hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core0 ||
++	      hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core1)) {
+ 		/* Make sure we're a supported PHY type */
+ 		if (hw->phy.type == ixgbe_phy_sfp_intel)
+ 			return 0;
+@@ -2016,20 +2049,22 @@ int ixgbe_get_sfp_init_sequence_offsets(struct ixgbe_hw *hw,
+ 		return -EOPNOTSUPP;
+ 
+ 	/*
+-	 * Limiting active cables and 1G Phys must be initialized as
++	 * Limiting active cables, 10G BX and 1G Phys must be initialized as
+ 	 * SR modules
+ 	 */
+ 	if (sfp_type == ixgbe_sfp_type_da_act_lmt_core0 ||
+ 	    sfp_type == ixgbe_sfp_type_1g_lx_core0 ||
+ 	    sfp_type == ixgbe_sfp_type_1g_cu_core0 ||
+ 	    sfp_type == ixgbe_sfp_type_1g_sx_core0 ||
+-	    sfp_type == ixgbe_sfp_type_1g_bx_core0)
++	    sfp_type == ixgbe_sfp_type_1g_bx_core0 ||
++	    sfp_type == ixgbe_sfp_type_10g_bx_core0)
+ 		sfp_type = ixgbe_sfp_type_srlr_core0;
+ 	else if (sfp_type == ixgbe_sfp_type_da_act_lmt_core1 ||
+ 		 sfp_type == ixgbe_sfp_type_1g_lx_core1 ||
+ 		 sfp_type == ixgbe_sfp_type_1g_cu_core1 ||
+ 		 sfp_type == ixgbe_sfp_type_1g_sx_core1 ||
+-		 sfp_type == ixgbe_sfp_type_1g_bx_core1)
++		 sfp_type == ixgbe_sfp_type_1g_bx_core1 ||
++		 sfp_type == ixgbe_sfp_type_10g_bx_core1)
+ 		sfp_type = ixgbe_sfp_type_srlr_core1;
+ 
+ 	/* Read offset to PHY init contents */
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h
+index 81179c60af4e0199a8b9d0fcdf34654b02eedfac..039ba4b6c120f3e824c93cb00fdd9483e7cf9cba 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h
+@@ -32,6 +32,8 @@
+ #define IXGBE_SFF_QSFP_1GBE_COMP	0x86
+ #define IXGBE_SFF_QSFP_CABLE_LENGTH	0x92
+ #define IXGBE_SFF_QSFP_DEVICE_TECH	0x93
++#define IXGBE_SFF_SM_LENGTH_KM		0xE
++#define IXGBE_SFF_SM_LENGTH_100M	0xF
+ 
+ /* Bitmasks */
+ #define IXGBE_SFF_DA_PASSIVE_CABLE		0x4
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
+index b1bfeb21537acc44c31aedcb0584374e8f6ecd45..61f2ef67defddeab9ff4aa83c8f017819594996b 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
+@@ -3286,6 +3286,8 @@ enum ixgbe_sfp_type {
+ 	ixgbe_sfp_type_1g_lx_core1 = 14,
+ 	ixgbe_sfp_type_1g_bx_core0 = 15,
+ 	ixgbe_sfp_type_1g_bx_core1 = 16,
++	ixgbe_sfp_type_10g_bx_core0 = 17,
++	ixgbe_sfp_type_10g_bx_core1 = 18,
+ 
+ 	ixgbe_sfp_type_not_present = 0xFFFE,
+ 	ixgbe_sfp_type_unknown = 0xFFFF
+
+---
+base-commit: 67029a49db6c1f21106a1b5fcdd0ea234a6e0711
+change-id: 20251012-10gbx-ab482c5e1d54
+
+Best regards,
+-- 
+Birger Koblitz <mail@birger-koblitz.de>
+
