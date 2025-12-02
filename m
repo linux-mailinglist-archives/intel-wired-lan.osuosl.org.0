@@ -1,95 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 82210C9C464
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 02 Dec 2025 17:45:17 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E5265C9C688
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 02 Dec 2025 18:35:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EC41A41170;
-	Tue,  2 Dec 2025 16:45:15 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 68C83610E1;
+	Tue,  2 Dec 2025 17:35:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id LezC2KN2bsRs; Tue,  2 Dec 2025 16:45:15 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id igpZ_LSrHmYs; Tue,  2 Dec 2025 17:35:02 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4A6B241172
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 90670610EE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1764693915;
-	bh=PnViqV0YkQtl+YppXfhsJp3ZKSyJVgjyqqazIQgGydk=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1764696902;
+	bh=HPAQF4gRur/yUze2q9ydJuZa+4eIzXfGTzMg9ZwHP4I=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=8h6OFetvFOHV44jzmyAMLJJUd5ysfgujEjvwEf4cA+/tZEKi+o284lvxDYUx/qiiQ
-	 kgV3jcfpATG+1shRnaeg4Z7SYDeLsy9Z7Oy4NZ/7V35+ZEr42zVjmgguxCqlhWrx0P
-	 nBSd6b6GpIN+NqyCjr/9iW0+FGsdix8376Pe+wsqgm1PML6cDMgxfk36VwuhyIv7HP
-	 hRLCzwxIF5HBYxhB7C7jZceZZQjuDszR612cREfrGzObE17z/E+p34rnCByEpTnXyc
-	 vA07mbr7VP1X9IqIJFBRhiBR+b54+xdfuUrGjHJcGYaiKDogXuwxmybLAZI+WVGRwR
-	 axUu3ognRcryQ==
+	b=nRBzcIgZ/Ehe5HLB2z0NellqjFUcOf/3xws3us2gLyjmrP12RmcRJKBjS9lAAHY6R
+	 LaGMZEXaLhLzNFbCXCAGbD0Xj74tyx9i7CZtZ/gqO31Yv58SrO60uRxChwnybydhmh
+	 gabOTlOUfZWfMTAq8BwP32zfWzxXeVXUcm/3bzocy+b6nvsdUKcG9WPVgvNFYQqLdB
+	 lgKO8J7Se2xgo6ElE/BE14/NhHzgWno+O1x2c7A1KgrcSgalGPoZRhcgK+wigpOCvf
+	 Mx5ozG9pfSIkG0hgOBdpxfFZ2VIy8N5rIjZSacxgRqR2vYXVLAvZrkjVjPFdV+tKYZ
+	 phW40aXa/KYlA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4A6B241172;
-	Tue,  2 Dec 2025 16:45:15 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 90670610EE;
+	Tue,  2 Dec 2025 17:35:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id C963ED3
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Dec 2025 16:45:13 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 483A41BD
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Dec 2025 17:35:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id AEEAF41170
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Dec 2025 16:45:13 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2F1B640BEE
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Dec 2025 17:35:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id hHdzYd8bBf-Z for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Dec 2025 16:45:12 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
- helo=sea.source.kernel.org; envelope-from=horms@kernel.org;
+ id H1hV5yR0rWt3 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Dec 2025 17:34:59 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org BF22341169
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BF22341169
-Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp4.osuosl.org (Postfix) with ESMTPS id BF22341169
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Dec 2025 16:45:12 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 29449433CD;
- Tue,  2 Dec 2025 16:45:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 55239C4CEF1;
- Tue,  2 Dec 2025 16:45:09 +0000 (UTC)
-Date: Tue, 2 Dec 2025 16:45:07 +0000
-From: Simon Horman <horms@kernel.org>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 20E9F40C49
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 20E9F40C49
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 20E9F40C49
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Dec 2025 17:34:57 +0000 (UTC)
+Received: from [141.14.220.42] (g42.guest.molgen.mpg.de [141.14.220.42])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id AFCF961CC3FF3;
+ Tue, 02 Dec 2025 18:34:17 +0100 (CET)
+Message-ID: <a5c2ee3c-6643-4e67-acba-44384706e971@molgen.mpg.de>
+Date: Tue, 2 Dec 2025 18:34:17 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 To: Chwee-Lin Choong <chwee.lin.choong@intel.com>
 Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S . Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, Bouska@web.codeaurora.org,
- Zdenek <zdenek.bouska@siemens.com>,
+ linux-kernel@vger.kernel.org, Zdenek Bouska <zdenek.bouska@siemens.com>,
  Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
-Message-ID: <aS8Xk-CeuEG2ptmf@horms.kernel.org>
 References: <20251202122351.11915-1-chwee.lin.choong@intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
 In-Reply-To: <20251202122351.11915-1-chwee.lin.choong@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1764693912;
- bh=q4Xwekv7pUq2JA7Xkd2P4hK4oUcLcByTrqcodh8MAi8=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=JdrlpD4aoy+Fk/wTyRtFCtNUrQ8Ba6ZOnI+jYUb4N7ikhpivknHJWuxgOs6hPk4KD
- G0IEnklxiHd3gdUUtMzwqdjLfyuNsNQZVUgZXYAQiLbVLjFLyPCaTi2SPsljf4/QsP
- IoRjTKmicI5Mbh9QxCoS31eV/IWJw3juXx33k6LbO6SmhfSlWlOERkbMu2zC4b1xYI
- 2Gd+edo4QalwFJYSdLegL2DVigrObimzCQqZlpP8AH5XgBkUT8CMDKRPRDj6/mLKik
- sgR40xN1TdQuxu9c9QHO2QAMQG5M9hWOrTG8RbuJXay+2XE7NswuDK05XCuUA1iqDI
- 0EOi0ukeGlMiQ==
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=JdrlpD4a
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
 Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1] igc: Use 5KB TX packet
  buffer per queue for TSN mode
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -107,15 +94,63 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Dec 02, 2025 at 08:23:51PM +0800, Chwee-Lin Choong wrote:
+Dear Chwee-Lin,
+
+
+Thank you for your patch.
+
+(Just a heads-up, that Zdenek’s email address was not properly quoted in 
+the Cc: list.)
+
+In the summary you could be more specific to say, that you *decrease* 
+the size.
+
+Am 02.12.25 um 13:23 schrieb Chwee-Lin Choong:
 > Update IGC_TXPBSIZE_TSN to allocate 5KB per TX queue (TXQ0-TXQ3)
 > as recommended in I225/I226 SW User Manual Section 7.5.4 for TSN
 > operation.
-> 
+
+Please elaborate on the problem (mention the 7 KB size and hangs), and 
+maybe Faizal remembers why they chose 7 KB.
+
+Also, are there any performance drawbacks. (I know that avoiding hangs 
+tops that, but it would be good to know.)
+
 > Fixes: 0d58cdc902da ("igc: optimize TX packet buffer utilization for TSN mode")
-> Reported-by: Bouska, Zdenek <zdenek.bouska@siemens.com>
+> Reported-by: Zdenek Bouska <zdenek.bouska@siemens.com>
 > Closes: https://lore.kernel.org/netdev/AS1PR10MB5675DBFE7CE5F2A9336ABFA4EBEAA@AS1PR10MB5675.EURPRD10.PROD.OUTLOOK.COM/
 > Signed-off-by: Chwee-Lin Choong <chwee.lin.choong@intel.com>
+> ---
+>   drivers/net/ethernet/intel/igc/igc_defines.h | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+> index 498ba1522ca4..9482ab11f050 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_defines.h
+> +++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+> @@ -443,9 +443,10 @@
+>   #define IGC_TXPBSIZE_DEFAULT ( \
+>   	IGC_TXPB0SIZE(20) | IGC_TXPB1SIZE(0) | IGC_TXPB2SIZE(0) | \
+>   	IGC_TXPB3SIZE(0) | IGC_OS2BMCPBSIZE(4))
+> +/* TSN value following I225/I226 SW User Manual Section 7.5.4 */
+>   #define IGC_TXPBSIZE_TSN ( \
+> -	IGC_TXPB0SIZE(7) | IGC_TXPB1SIZE(7) | IGC_TXPB2SIZE(7) | \
+> -	IGC_TXPB3SIZE(7) | IGC_OS2BMCPBSIZE(4))
+> +	IGC_TXPB0SIZE(5) | IGC_TXPB1SIZE(5) | IGC_TXPB2SIZE(5) | \
+> +	IGC_TXPB3SIZE(5) | IGC_OS2BMCPBSIZE(4))
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+Reading the commit message of commit 0d58cdc902da ("igc: optimize TX 
+packet buffer utilization for TSN mode"), it says, that the goal is to 
+split up 32 KB. What is happening to the 8 KB that are freed up now?
 
+>   #define IGC_DTXMXPKTSZ_TSN	0x19 /* 1600 bytes of max TX DMA packet size */
+>   #define IGC_DTXMXPKTSZ_DEFAULT	0x98 /* 9728-byte Jumbo frames */
+
+With a more elaborate commit message, feel free to add:
+
+Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+
+
+Kind regards,
+
+Paul
