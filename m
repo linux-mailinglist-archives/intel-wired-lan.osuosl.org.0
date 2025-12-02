@@ -1,116 +1,122 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 107FEC9A272
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 02 Dec 2025 06:58:03 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 095A2C9D18E
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 02 Dec 2025 22:33:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3B07B83CA4;
-	Tue,  2 Dec 2025 05:58:01 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A659641102;
+	Tue,  2 Dec 2025 21:33:45 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id E7VvY5xkwDhS; Tue,  2 Dec 2025 05:58:00 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id toV7YzYQroxX; Tue,  2 Dec 2025 21:33:42 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 502CB83CA7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E8FB141104
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1764655080;
-	bh=8nnHjtdzj8GMaqaoQ2VrQksq1Cj/xb7wAjKfHFCr3E8=;
-	h=From:Date:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=VwusnhCbNhTkDK2gzm1lH3b/w0gWkjHjfJAFFeUQojn+dy6fow7ncueiKnN12xv0x
-	 63nUmAeJZGtePFKz/t6uZ7xnL9l+pq0PYY1Eg315GOW0q4U3f3j2b1Og9zGmpbxqq4
-	 XlJY7/9l9A+3eZYlTZ30sPtfSWUFIB1n10zFBs9kRkCF4OgrNNF8712G3lkIN4Z/Gv
-	 xMVQ6dzuHW6bNKdZIMS9WjGm1CjQ6EaKi9gmHidXP4asaYqfeq2v7rCwqEUYR81IBE
-	 wgkLI5ysxt8u4d0d2pQ5GnsBvDcAPz6n3eG1KfgyqSV0tTYl7r+lTf5/7ejwoKCQpU
-	 VLu6P7Qu7x4zQ==
+	s=default; t=1764711222;
+	bh=Y3+futqwy0P9lysohyPttmTG8tR2WiwZ2cNmRm0CzdU=;
+	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=heRsTHZHyDVSoBfJ4YWN3rJk495Zci0a2PD3ICu3wM8XLJSNP/9c8sBSrshlYm2Sw
+	 f9+N6+sLG2pEGMyU9iD0P8/I3hLybq4j7VXVJVkcX/LP2QFnxEbhRf+6MXeNIL4Jkf
+	 RsX6WgxTPZ/7yZcFCSACvoJMWulukt5raoEJBpP2zCj5YHT6C5UIcNWWw4t1fCNAj/
+	 O0IwZ3ZKMV2Riu1h3o7AuL9VOCCOMvywAmhQZawCxyA5GFLH8rONx5MxEoUUoJbMO2
+	 l117aqA6KtbEFDXsXkWKYGqZ6xurmkD1JIUYGYRTXf18mrQYvIUQnMVgyJVHP78QyE
+	 X/E2MKXORFSRQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 502CB83CA7;
-	Tue,  2 Dec 2025 05:58:00 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E8FB141104;
+	Tue,  2 Dec 2025 21:33:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 4475DE4
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Dec 2025 05:57:58 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 4471F1BD
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Dec 2025 06:47:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 351C660E36
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Dec 2025 05:57:58 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3563D402E6
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Dec 2025 06:47:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id FAW48ACnNLV9 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Dec 2025 05:57:57 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id GN87hXWuWQSM for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Dec 2025 06:47:37 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a01:4f8:1c1b:7813::1; helo=bkemail.birger-koblitz.de;
- envelope-from=mail@birger-koblitz.de; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A184D60B76
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A184D60B76
-Received: from bkemail.birger-koblitz.de (bkemail.birger-koblitz.de
- [IPv6:2a01:4f8:1c1b:7813::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A184D60B76
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Dec 2025 05:57:56 +0000 (UTC)
-Received: by bkemail.birger-koblitz.de (Postfix, from userid 109)
- id 6D4F13EC70; Tue,  2 Dec 2025 05:57:52 +0000 (UTC)
-Received: from AMDDesktop.lan (unknown
- [IPv6:2a00:6020:47a3:e800:94d3:d213:724a:4e07])
- by bkemail.birger-koblitz.de (Postfix) with ESMTPSA id 2DA163EC67;
- Tue,  2 Dec 2025 05:57:51 +0000 (UTC)
-From: Birger Koblitz <mail@birger-koblitz.de>
-Date: Tue, 02 Dec 2025 06:57:48 +0100
+ client-ip=2607:f8b0:4864:20::b129; helo=mail-yx1-xb129.google.com;
+ envelope-from=lgs201920130244@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 2157D40212
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2157D40212
+Received: from mail-yx1-xb129.google.com (mail-yx1-xb129.google.com
+ [IPv6:2607:f8b0:4864:20::b129])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2157D40212
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Dec 2025 06:47:37 +0000 (UTC)
+Received: by mail-yx1-xb129.google.com with SMTP id
+ 956f58d0204a3-6420c08f886so6434074d50.3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 01 Dec 2025 22:47:36 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1764658056; x=1765262856;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Y3+futqwy0P9lysohyPttmTG8tR2WiwZ2cNmRm0CzdU=;
+ b=nMFiajMS6NdcfEmOeT5HIrSYotNPfDgIr55+uo8dNEQCkUsiszMdGV8ymG0G1GGkWu
+ 9sV0QGwutKNT23fvFXPrEHxiOmqVsxZUH3mLSL+NBEydykOU3YfLUPPhHoiM0itQjgCX
+ GbJh0+dD1nXnZXLnm8GWQwZvzI6C3ft4+g5dRMKuNgtOmzL50Od9IvaaNdKu0c63Y2j2
+ sh79c3dbW5+7Xhq3VK2ImcCwQ3xz6i8vahEDg5a5ZhbKo3arB281a9Si8UD3DjTDsZvU
+ dvtyB+y9ejCLiZC+9Y6Pk09cZMzOpCbffMXTSpT4impJvGFe+IjOu62rhQLtPjxG11J6
+ AtSw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXRyQKe15U9HxtpuXCTFMO6Dy4a/L964urgX9rCCELA1LcpqU6pY16h545FDzGdTYzwr3N/l6VfABi+3IoscEM=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyL9ucaySWLKH+eBC8EyW0c2o9HG74oPtNy9aIj2AVrGeDaGz5j
+ e2E9IQ+QH47PJoKwA39Nb7+tytoNZsVlN9d2WwgQwKvo1+NZ/IZXIEEk/s0X3UPQHNivZaPIxYf
+ lQxHkoqNKvUTvs8PFax77ZeYSg6YY0No=
+X-Gm-Gg: ASbGncsYBO0jsp/pe8TWIFXb7TLldFF94s3cEapIOYi0iojfbYjzvb9GWaBKMwUL3z4
+ EHJwQHhTkWlk6ZTjNM9e4Q1mlTHyd3CvWoBm1QVBs7V8Fvl8yLLBnG+JmCLfjGoIyh9tkZLiG49
+ FGLnqOurPyu9s+wD22WTGS7HBcCGXmw07jDAjSaxX8z8Gx/IbUVZv7OwpqyxSX2IlCUsWxJawvw
+ xMAuFy1izH2yWUQiMwsZs5CU9qPo0bP3UXjAFjIZHtE/u3Wq9ykvzdL4bkyt4Jqfv2yPAWE
+X-Google-Smtp-Source: AGHT+IExi6G5dbYgnG2KFs4BVzkxSrhNC0/s2+r05zJrIUbN5fis1NUj8l9NHHRPozUCEyktyjQ434wr8YY89oq9UqQ=
+X-Received: by 2002:a05:690e:1488:b0:63f:add1:e6ab with SMTP id
+ 956f58d0204a3-64302a5dd23mr28989382d50.29.1764658055609; Mon, 01 Dec 2025
+ 22:47:35 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20251202-10gbx-v6-1-e7acbd3dff69@birger-koblitz.de>
-X-B4-Tracking: v=1; b=H4sIANx/LmkC/3WQy27CMBBFfwV5XSOP4zEOK/6jYuHHJFitCHKQR
- UH59w6ooSzI8o7mnBndmxipZBrFdnUThWoe83DkYD9WIh78sSeZE2ehlUZQoCWoPlykD8bpiAQ
- JjeDdU6EuXx6ezz3nQx7PQ/l5aCvcp7Oh+TNUkMCa1rXWd01Ctwu59FTk1xC+8/m6TiTupqpfa
- TPT/IhsnYqoDQDQZolu3tL8hEQVk3dWb6BdvG1eaTvTrJHKRx6HDq2PSzT+0/BsriLToCM3qKw
- K8e3taZp+AV28hTiaAQAA
-X-Change-ID: 20251012-10gbx-ab482c5e1d54
-To: Tony Nguyen <anthony.l.nguyen@intel.com>, 
- Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, Birger Koblitz <mail@birger-koblitz.de>, 
- Andrew Lunn <andrew@lunn.ch>, Paul Menzel <pmenzel@molgen.mpg.de>, 
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>, 
- Rinitha S <sx.rinitha@intel.com>
-X-Mailer: b4 0.14.2
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=birger-koblitz.de; 
- s=default; t=1764655072;
- bh=PHaz/sOzh9D5lWWBtb0WGJsCAi0opo4umag/aUgkwbM=;
- h=From:Date:Subject:To:Cc:From;
- b=CF9//1vfEVNcl7XxKUpM21xKbmLIOkJrwXfPoP0vWUxQgqGAVgnecgVHkB2ywxvWr
- TfyRZeiP3zETwyp1IPDYud2sS7T8ZwwSSHiFTm8tMp25lkOr3O76xmyY4vVHbM5++/
- AMPyhvc9tbauqqu0D+9H4MQGGkRX5WOsCHIiEd9seqiTxir1rcCu4v6D3HnthkfuA+
- U7naTUvXPRgM1qPPyhr/4fT9qC6mXj/S0/qf2aHa7JByIYLUlQzV0ugxXibDvIpmPP
- TM38oM6chgmqjtBbWWDMo87XilcGb3l5xowG1/HQUGMgdmakNSORi+xJbOH0/QYTaR
- RjhKDY8jTrtYQ==
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=birger-koblitz.de; 
- s=default; t=1764655071;
- bh=PHaz/sOzh9D5lWWBtb0WGJsCAi0opo4umag/aUgkwbM=;
- h=From:Date:Subject:To:Cc:From;
- b=QWYtH+zRjCfffl6p1FBDois9MAM1pfGJSONXUwkO7MwHx+ZGngbvO23zM8T0NH7T7
- jBdA63EX1LeHWlHXJ6VHJwreGU6bhG4ZKssjMNUTcv6nuM3bNAPDCtVJeACOgSwnBC
- O01Zgw+U3Ix8BOZuJn9Sil+hf8aTBNomU989CZgbt0Qdx7eMWTS4iw8d2kTMPqxAxc
- jyLbrqaC3kSfIWjYHEjVekzwT6n3CW8OYAgld6c9Y4Mb0MaUf2ffGHryW8Opx6toPf
- ThB3cvX7rY6KZAWIfYT8ulSq97bGI+ly/ID27STyYLLTgmwr+zeB7rjRj6pPr3lD58
- Du4LkX+j99lFg==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=birger-koblitz.de
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key, unprotected) header.d=birger-koblitz.de
- header.i=@birger-koblitz.de header.a=rsa-sha256 header.s=default
- header.b=CF9//1vf; 
- dkim=pass (2048-bit key) header.d=birger-koblitz.de
- header.i=@birger-koblitz.de header.a=rsa-sha256 header.s=default
- header.b=QWYtH+zR
-Subject: [Intel-wired-lan] [PATCH net-next v6] ixgbe: Add 10G-BX support
+References: <20251201034058.263839-1-lgs201920130244@gmail.com>
+ <7917b0db-82b7-4a75-91cd-d3b6b0364728@molgen.mpg.de>
+ <fd3c66f1-4b16-4da9-8a9d-615332fd0c8e@molgen.mpg.de>
+In-Reply-To: <fd3c66f1-4b16-4da9-8a9d-615332fd0c8e@molgen.mpg.de>
+From: Guangshuo Li <lgs201920130244@gmail.com>
+Date: Tue, 2 Dec 2025 14:47:26 +0800
+X-Gm-Features: AWmQ_bm-sLIk1BLw5UXrh0QI7Z7QAgTGxMJgrnvznVCWzvomHqlVDgY6jyQvobA
+Message-ID: <CANUHTR_Q9Yqk2qwkRKduP=S5NPvuup-83A2Vaknb7vLk_XLoEQ@mail.gmail.com>
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+Cc: Jesse Brandeburg <jbrandeburg@cloudflare.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, 
+ Florian Westphal <fw@strlen.de>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, stable@vger.kernel.org, 
+ Tony Nguyen <tony.nguyen@intel.com>
+Content-Type: multipart/alternative; boundary="0000000000008e01ab0644f27812"
+X-Mailman-Approved-At: Tue, 02 Dec 2025 21:33:41 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1764658056; x=1765262856; darn=lists.osuosl.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=Y3+futqwy0P9lysohyPttmTG8tR2WiwZ2cNmRm0CzdU=;
+ b=Nds+FLJNdf8uqr9DtK3PKBSXmMhsaGypjVeYJ+Ux6lMOj/fGBXV2uRGEH8JzDCwabW
+ 10OMvx3ZFCqxPJKajag2jL9gB/JmGwoJZTczKK5Ig9B0JfGHYGZDf/pcJRBkL7fLf2GK
+ fuyo3BKYemkhbq3QueYNBedSc91GRvYZuYsmJO34On0T66RKjVVktBlOuUHtcT/bYFRE
+ IGdDd5u4VPIfkbYWnZYGR6x2CEy4kfrGSGEflGKDocK3hLq6rU9dee3SPtmmw/UXe8ah
+ YBbpIhMPZ757TK8KKcn5h+VIqN4aDPLfPufsUOy33wSyxfPtwl8PGARNpNs22aQmBE9I
+ /5hQ==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20230601 header.b=Nds+FLJN
+Subject: Re: [Intel-wired-lan] [PATCH v2] e1000: fix OOB in
+ e1000_tbi_should_accept()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -126,235 +132,1876 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add support for 10G-BX modules, i.e. 10GBit Ethernet over a single strand
-Single-Mode fiber.
-The initialization of a 10G-BX SFP+ is the same as for a 10G SX/LX module,
-and is identified according to SFF-8472 table 5-3, footnote 3 by the
-10G Ethernet Compliance Codes field being empty, the Nominal Bit
-Rate being compatible with 12.5GBit, and the module being a fiber module
-with a Single Mode fiber link length.
+--0000000000008e01ab0644f27812
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-This was tested using a Lightron WSPXG-HS3LC-IEA 1270/1330nm 10km
-transceiver:
-$ sudo ethtool -m enp1s0f1
-   Identifier                          : 0x03 (SFP)
-   Extended identifier                 : 0x04 (GBIC/SFP defined by 2-wire interface ID)
-   Connector                           : 0x07 (LC)
-   Transceiver codes                   : 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
-   Encoding                            : 0x01 (8B/10B)
-   BR Nominal                          : 10300MBd
-   Rate identifier                     : 0x00 (unspecified)
-   Length (SMF)                        : 10km
-   Length (OM2)                        : 0m
-   Length (OM1)                        : 0m
-   Length (Copper or Active cable)     : 0m
-   Length (OM3)                        : 0m
-   Laser wavelength                    : 1330nm
-   Vendor name                         : Lightron Inc.
-   Vendor OUI                          : 00:13:c5
-   Vendor PN                           : WSPXG-HS3LC-IEA
-   Vendor rev                          : 0000
-   Option values                       : 0x00 0x1a
-   Option                              : TX_DISABLE implemented
-   BR margin max                       : 0%
-   BR margin min                       : 0%
-   Vendor SN                           : S142228617
-   Date code                           : 140611
-   Optical diagnostics support         : Yes
+Hi Paul,
 
-Signed-off-by: Birger Koblitz <mail@birger-koblitz.de>
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
-Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Tested-by: Rinitha S <sx.rinitha@intel.com>
----
-Changes in v6:
-  Added else statement to explicitly set sfp_type to unknown if the length-check fails 
-- Link to v5: https://lore.kernel.org/r/20251112-10gbx-v5-1-12cab4060bc8@birger-koblitz.de
+thanks for your comments.
 
-Changes in v5:
-  Added "Tested-by" 
-- Link to v4: https://lore.kernel.org/r/20251016-10gbx-v4-1-0ac202bf56ac@birger-koblitz.de
+> Do you have reproducer to forth an invalid length?
 
-Changes in v4:
-  Added "Reviewed-bys".
-  Slight rewording of commit message.
-- Link to v3: https://lore.kernel.org/r/20251014-10gbx-v3-1-50cda8627198@birger-koblitz.de
+Yes. The issue is reproducible with a concrete system call sequence.
 
-Changes in v3:
-  Added "Reviewed-by". There also was a possible mailserver DKIM misconfiguration
-  that may have prevented recipients to recieve the previous mails 
-- Link to v2: https://lore.kernel.org/r/20251014-10gbx-v2-1-980c524111e7@birger-koblitz.de
+I am running on top of a fuzzer called PrIntFuzz, which is built on
+syzkaller. PrIntFuzz adds a custom syscall `syz_prepare_data()` that is
+used to simulate device input. In other words, the device side traffic is
+not coming from a real hardware device, but is deliberately constructed by
+the fuzzer through `syz_prepare_data()`.
 
-Changes in v2:
-  Allow also modules with only Byte 15 (100m SM link length) set to
-  be identified as BX
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c   |  7 ++++
- drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c |  2 ++
- drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c     | 45 +++++++++++++++++++++---
- drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h     |  2 ++
- drivers/net/ethernet/intel/ixgbe/ixgbe_type.h    |  2 ++
- 5 files changed, 53 insertions(+), 5 deletions(-)
+The exact reproducer is the following syzkaller program (system call
+sequence) generated by PrIntFuzz, which consistently triggers the invalid
+length and the crash on my setup:
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
-index d5b1b974b4a33e7dd51b7cfe5ea211ff038a36f0..892a73a4bc6b0bb1c976ca95bf874059b987054f 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
-@@ -342,6 +342,13 @@ static int ixgbe_get_link_capabilities_82599(struct ixgbe_hw *hw,
- 		return 0;
- 	}
- 
-+	if (hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core0 ||
-+	    hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core1) {
-+		*speed = IXGBE_LINK_SPEED_10GB_FULL;
-+		*autoneg = false;
-+		return 0;
-+	}
-+
- 	/*
- 	 * Determine link capabilities based on the stored value of AUTOC,
- 	 * which represents EEPROM defaults.  If AUTOC value has not been
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-index 2d660e9edb80af8fc834e097703dfd6a82b8c45b..76edf02bc47e5dd24bb0936f730f036181f6dc2a 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-@@ -351,6 +351,8 @@ static int ixgbe_get_link_ksettings(struct net_device *netdev,
- 		case ixgbe_sfp_type_1g_lx_core1:
- 		case ixgbe_sfp_type_1g_bx_core0:
- 		case ixgbe_sfp_type_1g_bx_core1:
-+		case ixgbe_sfp_type_10g_bx_core0:
-+		case ixgbe_sfp_type_10g_bx_core1:
- 			ethtool_link_ksettings_add_link_mode(cmd, supported,
- 							     FIBRE);
- 			ethtool_link_ksettings_add_link_mode(cmd, advertising,
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
-index 2449e4cf2679ddf3277f4ada7619303eb618d393..5cdf2503610d26d66ce5b0f28901fcad14803662 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
-@@ -1541,6 +1541,8 @@ int ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
- 	u8 identifier = 0;
- 	u8 cable_tech = 0;
- 	u8 cable_spec = 0;
-+	u8 sm_length_km = 0;
-+	u8 sm_length_100m = 0;
- 	int status;
- 
- 	if (hw->mac.ops.get_media_type(hw) != ixgbe_media_type_fiber) {
-@@ -1678,6 +1680,33 @@ int ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
- 			else
- 				hw->phy.sfp_type =
- 					ixgbe_sfp_type_1g_bx_core1;
-+		/* Support Ethernet 10G-BX, checking the Bit Rate
-+		 * Nominal Value as per SFF-8472 to be 12.5 Gb/s (67h) and
-+		 * Single Mode fibre with at least 1km link length
-+		 */
-+		} else if ((!comp_codes_10g) && (bitrate_nominal == 0x67) &&
-+			   (!(cable_tech & IXGBE_SFF_DA_PASSIVE_CABLE)) &&
-+			   (!(cable_tech & IXGBE_SFF_DA_ACTIVE_CABLE))) {
-+			status = hw->phy.ops.read_i2c_eeprom(hw,
-+					    IXGBE_SFF_SM_LENGTH_KM,
-+					    &sm_length_km);
-+			if (status != 0)
-+				goto err_read_i2c_eeprom;
-+			status = hw->phy.ops.read_i2c_eeprom(hw,
-+					    IXGBE_SFF_SM_LENGTH_100M,
-+					    &sm_length_100m);
-+			if (status != 0)
-+				goto err_read_i2c_eeprom;
-+			if (sm_length_km > 0 || sm_length_100m >= 10) {
-+				if (hw->bus.lan_id == 0)
-+					hw->phy.sfp_type =
-+						ixgbe_sfp_type_10g_bx_core0;
-+				else
-+					hw->phy.sfp_type =
-+						ixgbe_sfp_type_10g_bx_core1;
-+			} else {
-+				hw->phy.sfp_type = ixgbe_sfp_type_unknown;
-+			}
- 		} else {
- 			hw->phy.sfp_type = ixgbe_sfp_type_unknown;
- 		}
-@@ -1768,7 +1797,9 @@ int ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
- 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core0 ||
- 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core1 ||
- 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core0 ||
--	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core1)) {
-+	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core1 ||
-+	      hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core0 ||
-+	      hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core1)) {
- 		hw->phy.type = ixgbe_phy_sfp_unsupported;
- 		return -EOPNOTSUPP;
- 	}
-@@ -1786,7 +1817,9 @@ int ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
- 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core0 ||
- 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core1 ||
- 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core0 ||
--	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core1)) {
-+	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core1 ||
-+	      hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core0 ||
-+	      hw->phy.sfp_type == ixgbe_sfp_type_10g_bx_core1)) {
- 		/* Make sure we're a supported PHY type */
- 		if (hw->phy.type == ixgbe_phy_sfp_intel)
- 			return 0;
-@@ -2016,20 +2049,22 @@ int ixgbe_get_sfp_init_sequence_offsets(struct ixgbe_hw *hw,
- 		return -EOPNOTSUPP;
- 
- 	/*
--	 * Limiting active cables and 1G Phys must be initialized as
-+	 * Limiting active cables, 10G BX and 1G Phys must be initialized as
- 	 * SR modules
- 	 */
- 	if (sfp_type == ixgbe_sfp_type_da_act_lmt_core0 ||
- 	    sfp_type == ixgbe_sfp_type_1g_lx_core0 ||
- 	    sfp_type == ixgbe_sfp_type_1g_cu_core0 ||
- 	    sfp_type == ixgbe_sfp_type_1g_sx_core0 ||
--	    sfp_type == ixgbe_sfp_type_1g_bx_core0)
-+	    sfp_type == ixgbe_sfp_type_1g_bx_core0 ||
-+	    sfp_type == ixgbe_sfp_type_10g_bx_core0)
- 		sfp_type = ixgbe_sfp_type_srlr_core0;
- 	else if (sfp_type == ixgbe_sfp_type_da_act_lmt_core1 ||
- 		 sfp_type == ixgbe_sfp_type_1g_lx_core1 ||
- 		 sfp_type == ixgbe_sfp_type_1g_cu_core1 ||
- 		 sfp_type == ixgbe_sfp_type_1g_sx_core1 ||
--		 sfp_type == ixgbe_sfp_type_1g_bx_core1)
-+		 sfp_type == ixgbe_sfp_type_1g_bx_core1 ||
-+		 sfp_type == ixgbe_sfp_type_10g_bx_core1)
- 		sfp_type = ixgbe_sfp_type_srlr_core1;
- 
- 	/* Read offset to PHY init contents */
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h
-index 81179c60af4e0199a8b9d0fcdf34654b02eedfac..039ba4b6c120f3e824c93cb00fdd9483e7cf9cba 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h
-@@ -32,6 +32,8 @@
- #define IXGBE_SFF_QSFP_1GBE_COMP	0x86
- #define IXGBE_SFF_QSFP_CABLE_LENGTH	0x92
- #define IXGBE_SFF_QSFP_DEVICE_TECH	0x93
-+#define IXGBE_SFF_SM_LENGTH_KM		0xE
-+#define IXGBE_SFF_SM_LENGTH_100M	0xF
- 
- /* Bitmasks */
- #define IXGBE_SFF_DA_PASSIVE_CABLE		0x4
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-index b1bfeb21537acc44c31aedcb0584374e8f6ecd45..61f2ef67defddeab9ff4aa83c8f017819594996b 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-@@ -3286,6 +3286,8 @@ enum ixgbe_sfp_type {
- 	ixgbe_sfp_type_1g_lx_core1 = 14,
- 	ixgbe_sfp_type_1g_bx_core0 = 15,
- 	ixgbe_sfp_type_1g_bx_core1 = 16,
-+	ixgbe_sfp_type_10g_bx_core0 = 17,
-+	ixgbe_sfp_type_10g_bx_core1 = 18,
- 
- 	ixgbe_sfp_type_not_present = 0xFFFE,
- 	ixgbe_sfp_type_unknown = 0xFFFF
+syz_prepare_data(&(0x7f0000001600)=3D{"8397f6487c655967660f57714299c4322a73=
+0bb9f1062396e7d1e1d5e135079353551d27e225de8fc44d9466ff0079ae95c17d4b5d4603c=
+280e741132e5006990fbce7e3df4aaf2a7f677a906cbd82f8845b8dfbc1145422a769a7d7a1=
+5718e16c6ec788ae1715ce47bb7627ddd6d6e0ae53ffb1aa37c0891f12d96d2539d7fff25bf=
+36fab3e522c9f6170084b6f0d8253583320497712437e3fb26b8590fe053dea469ff3dc41b6=
+2dd859ac542e247d337d616089fba613c35a9f08feb433cfb2a121a13930b03dbd81f72c4a6=
+ea8c76c050af7a7d74979716c479e4869dcf1cc9a7dde3a8c14ebf3e185539b049acf17e05f=
+899484a0e2788819b9b287f76492030af3496c287d2b62178180164e3b9bf28c4dd7e501fd8=
+3fdcc9b761b32c0c0b68873117f9da36a8f6250774bada358e409f7418584770f6c9be1de7b=
+d906eb96737047ac8e53b02c216f611359d00d7d5cb4584c9caf14f37add6ff59998939ded4=
+256b6ba8cbb9764cefc1cfb01572b9feb0cf75c32b18aa5f091b73f7f0ff985a9eb752df776=
+f09c53152cc677d06a77a40ad56c623a760c05e5c96ddc2080f24985d898411aaec049b89b0=
+18a3bcab22c8577d38d65c2d033e2cb6d1f993ecb4652b2309849f099e730ddcce9e462c93d=
+00f7680315edf6b8561751a52eab9b17369a6ed7403e2c2cceaa859e586137615c021df00b6=
+1db2cb05db5b0d57c2886b98a03b506b184b9674841507f88ebac9d47e591a372db6dbe2539=
+7fdb83a1c1260c3e6ce2ecd49d4c487dfb8651bd5146666379488baf32e80872c59f33d4123=
+ba80988cc787fa89cb605b6e785e36ef550879853725b77ec1c11dc6704c6d819b1b402bf6b=
+64bc763327c40b9f57df497a4da15d9c6d460303af4e5674528111eb87218045f1a4f10a65d=
+4418d45e2f0ef37addfb704cba31bc6d533b74e56efb9ffeccab50779c367c2f238ae7cb35d=
+d9fa40abc18561a0d07d6ef9025260439a451a49dceaad0ab9ab1c7399ef757d123c4faa225=
+ebf2107dcbe45d8d2747b5324086486f64228649aa5fe62cbe58e48dded17f3a9b2bdccb0c2=
+889f012a3e9eb94ac8640d305ad5dbe82e37dcb1825f9ec60fa6b9826e9a17f3f2a02924dd4=
+d85a2139a9e26dc66eda684e67b48997086afd92a8b1c07293949960330f8dd5a52575bcddf=
+4b3783d88aa5febc6897db8b8211e531312f931a97baf1792ddb1ecdb2fa6af3dc8e3b57acc=
+ff4519dbd1baf37008b06dbd8a9f4e77a9412685ee71eb730bfede491b0a70833606b940695=
+62968d1b26cf20ca11506bb4fd8d8e7f42e7d9002765dffdecd4538f6ba6a38b6913df44927=
+66f5cff558f26f0d26a1765b5d80f8f827d9cd2d49998ee5f58a0cdf6a4eecc7b644939bb15=
+f842dbeaaa0ab240477673ebe77eac29bc7cdc49e8b65f7f718bdb0c9541bb",
+"51bd278af79bd73c614dbe57eb8d3acb86a1122b1f0d9898f0fbc8f57426f97d2e64b2f8e7=
+b7a98eea5f3a84fb56bbdd2a1c45509a900952f53d2d0c1b5120fdb1e20847c7ee055759c78=
+cc792aacd658cfbfb4a5db836f98fa9ed33ae07ce8575f39a909233959f987971e49920a59e=
+1774c0af7025d5d8b102c7ba332f70b578aafc889224d428532355a47a3937e558cfc260664=
+2e0f2d5ed0476473b0772a73d101d2e0e0dc4c2852581f8d64f22f2de1517955a35781481f0=
+da54d819688558578d287f440108a996200bf4e6063a4db7b8c352455693862deb2949ec19f=
+f4ae0c24d3b9692be85c91e7a485adb33ca2158e96a44131a8fb2bdb26477126b9549d48114=
+86eb4f43ce887969a1a4082ab86735b92138dd32ca2d50eee09b0f20e72c74fbf746a3a9a7e=
+4690d166efb41a002a20a1568aff13cf9c9d32830597e404eb520864c7a5ad8d30a7e1d058c=
+f9c0f55eba97b71426774e5032abf8a42ab44512c2c567546584d562e5e37f07d59161a038e=
+d170d339165d6394aca7b65fa63c20bc3fbb518ef6e3f19abb84fe830ab61bcaff1307d5d9e=
+3b7d6a2fc3b2221abb33212c2958c58f1b45f7700a82c8922e143f3ff356a0bd3cea507dfe1=
+0abc811004d11064fd99ca9482ab726a0078f8eb4861fdab19e7e9a9f064f64216b6fe9823f=
+2ae7442e351e89b4812094ac7650696265b289971a892e45e769b30d0931ea91aaf2177c861=
+141d01eb5f6ff5db4c6a6fd5aab432318a05a740f20906e3f4549a4b579059fc6e8dc3ff4af=
+eeddd162c872aaece262fa6250f159a64b5242ea8189549770e9238650047a41349fcd26ac6=
+258109b93f9fb2a6ec3b383b79136f6f905d37e63dc8bfd329ab656d452ab5ab6621c5bf9fc=
+5c6212e3b9cd791949c7d77747b88cbb921774e6c1b694f3cc5db939e3240bbf60165c9b573=
+0f799671309b8bc45f04908e2f72abefd80d3f22db1d5168c7496e9cb6d63a5135ac6c3b3d8=
+b8643b39dde18967f2bec01cede7d9ff14ce0a0ccc1afea261222899b362dcda432f5618b8d=
+2855f1f2781d1b2ca751518ebba757126fc5cbf30b2db855d2d24ebd70b8ff1d95138c57fca=
+a3646662a52be3f1d05f2aaa55760d8427dcf8c8aea7f1cb4e18ffa694c1c7d853c0859bdd2=
+ae2642ee8b302dc89d4713b1867f587f8740b5daa543d84bc7bfe35bd87fd9b190655224d9b=
+98bb9ac316b5b35412fba5269915fd9a9f33997b1bb971b26ed42cd000ce51bc270d5381e3c=
+acf4af2fd5f0a01c40613ca5d5384bb70842fb277c9b3418160e3c270f227106bb57a19d813=
+11b62e89dd65a3565b4c8fb2311f2730300b9522f5018621df0410429959811759ecef597a6=
+9d242f407b393b4dbc00c49c9117227ac04cdec228228b1e28f17033c492677d24d8a92ce8a=
+5663540d57a0ce9195220248"})
+ioctl$I2C_RDWR(0xffffffffffffffff, 0x707,
+&(0x7f00000015c0)=3D{&(0x7f0000001500)=3D[{0x3a3, 0x8000, 0xc0,
+&(0x7f0000000000)=3D"41b9093788ef424a4c3561d43d079803e986c2b7d20511715d89c0=
+d29bba5afd25f68da59fbb5e7c239a456eb98272bd7cc281bd9c92e262ad87c8dc0eaaa0ea8=
+05401183a65ded5e8ed1f979fd99f36e9745714a70d66a7f248e9178d26eba1bb382e182491=
+2d9e70bebdaa10733308d597380023163088067fd513639955b8b897094daf52117b97080a1=
+cebb28fe1512cf126bcb9dbd925ba4751eb6655713eea27dc77c4bb83a0fd065d78894e6112=
+b1688b28d03dbca9f57e13f329424a"},
+{0xaf8, 0x1, 0xf1,
+&(0x7f00000000c0)=3D"31586b027be71f6e4bc9c80573b2a4319edc178c121f3f74f5fbf8=
+19bf3210901d1c3ec01c4676cfc1aa14ab36ded380f69943a56e140e033c62a7516004f3509=
+8413d0f5dcd69ddd8b5eb16d7d4330498a0534f7a40525abab4747b4f7750059fb84e62547d=
+b9d08298981d43c5e2b7230d5b38312b8e758eb5ad6832d3c436968ebc3e28b8aa8939f84d8=
+c22824a85a28a16fe1fb9b4457da98e15f17d62e05b3d52dd904d01d7f1dd37b36adeeae083=
+c374605890aedb6a3a409bbd98c844566efc780037b19e766ef9ee90a8c8be93e17c0c5412e=
+f3587ce9b3232b89f82556c74d5c6d60f97d158f10b54626b55bf"},
+{0x7f, 0xa000, 0xf6,
+&(0x7f00000001c0)=3D"096faab79d216200b0321ad4ac96b7c54cb3d98adc8e36c6567a23=
+cc26bc8efb375c80479fc5282ebf9f8a35faa8695988a43744b6107a95fa1bfce7cea2cc838=
+b21186b8cb19e5c788e0c783f65cb178382c64694cdecdba80fe2ee183745f128da01ca2b65=
+00e982d46cf7939e55f1127b244c13a348cf9ddc10dfdc0316305aafa95ed3d621c1eedcea9=
+406efa0c5452d6b03f6bf9bcc8a93ba85340c6441e903312a11cf3e7c2acf4c7b87d7e8e3f2=
+99efca2472374bf035dd9c66a3058010f33af35b6233174f465e824998578737dddf0d998b9=
+50698c830deb233eaf5231abbb9e17d70e529591e595bbb84859967f3747f56"},
+{0x7f, 0xa000, 0x1d,
+&(0x7f00000002c0)=3D"e7bcff5b56f10f90a65b81254ea62b7eeb63c2fb25d888de82068e=
+b3af"},
+{0x101, 0x800, 0x3, &(0x7f0000000300)=3D"e89dcb"}, {0x800, 0xc000, 0x88,
+&(0x7f0000000340)=3D"245d46d584e3ef9f7ca2336fe30207cb941ffdaa98d1ce926ba234=
+915e95f14f5bb4148cf54ed204481a75bf265d19a8b5e4fc15b0dc150e59f2f40dbeb7f4057=
+caf90d67546bb9e6ebdac9b367d7322f2d03b2c472db023129749dbababb2a45fc7be1ed45f=
+b4bb29568be4c643b9cba21f521a40264a376f53bf4cbd0a548fb61794bf74fe3db1"},
+{0x7ff, 0x4000, 0xb0,
+&(0x7f0000000400)=3D"ef88684792d821281b12b5803c4ae815ddcf01368b0c86d7a6bbff=
+b5980d6115e768cb665d8d416de06968ed046158dfbaedcd60bd30eddb808443b1c5ed8791d=
+e0c1f9bbd9f1a0f932c808f0755953394f5c33a7d3108ba695d52eb7785b931490aafd5408e=
+d6da09b443abcfb23ab7eed5526ff730b0372bc2b64d177bed5f4a333f54d2e3b339e668cb9=
+4625e1e816bf57ec3c724ec6c7327dad11bf1852e8490b93ae8551cb833eadfa57e0964b9"}=
+,
+{0x1, 0x6000, 0x1000,
+&(0x7f00000004c0)=3D"012e6b0fa0f75fb133ea592c16c78753c1864ddff664c6888ebcf3=
+81f0e5b0c58d3799b3f06f3138c65cbc6763958ca831a096f498d5a459ec5b9a5586a4d2fe7=
+834b71084ba9d9ac31bf37f27e25f62b4e3a046c1e57d33ec4608e0d075073755232243d79d=
+7bfffb05b18c3d9da97e764a7cd00bf285714b1aad493093d47f343903cddc094c256570eba=
+6aa31c338e24072deb47afc79b0ee4ed741ab625b61d9c3b80d6ffc1e2024be8a0564439055=
+6273f530a256db7aa9e45841c115176c368618a85ca82148e06f82e68051ce16fbe28ea41d4=
+0e0240f1fa415994fd6a93b0832eab586648146887856066efc65a720328bb6738abd9c398a=
+549315dbd66e4838031692994f7fea492c60415f8b202c15a772c6f11cd51eea8aabb9d6ae7=
+59bdad54536cad0a832b3a74efe597a7234ae63cc854091b851ca251a899224e0316c69df91=
+42c8a907358b0417f4f0486fe358b16bc1ad5b64ce2bd39403c17ba2bf1b2099395c42d2eda=
+7132ed3d975753d83fde8b36f4fc5fe4948f139348ede3c44092f37adcdca305a402f1ea23e=
+cd1da5319ffc15edd932398252ec53f5f5f31aff6212567fef85624d3139021cd878511ad11=
+20688ef24e893a6b071bfca61fa91fb36966876441571aef097f17a37de95e439ff55ff0b3f=
+859a6162427c7195f9b2737519d3592247a20a3f068df3aa6f6eb8ae8cf55db9e5dc490519e=
+acb013ef12a7892eea88285444c07982595507e04f2e382bf3f1c10137a46f3ecc178069047=
+5d1154e2b2ae98254ad6506cf5c6ca654e60626d9cfc6bb78d6552d92d6c313e852e6056527=
+8cc9a94885f641063b26ff9a2f3666f1ffb18235c5810dbb7629eab06877a96b226568a0f5b=
+9823e1a927f650c4c2d257d9bc0a732965adb536ae0f2bb72894d6f022d9ca827712e8621c9=
+2472251d42d3ea752594f52d742cc6218086d011598e506d0f43cb7d898324f585e60bffa69=
+85875d2460af16cc19cc18b8152dc192111dfaee8fd6547f03465044b1a7d8eaf0e22a9bbe5=
+6402abb4aa9ebfbaa3d03be7ca1d42031eb92726362c3f0150484a203e303bf9b62a78e8fdd=
+6c16fac2fd7632ac790f1b6e581a6bd35dea2f69979cb1838db1cdf2f89f4cd25304a5bf6dd=
+e2a76288290deb8e6b4577cb66a7b0184416153093b217c2b4cabd6d9b8730bf8d05ead97de=
+90a1f6eedbbeb9b5ea6754a208ddc0627aa2fc01efe4ec1fc6b17e86394f720082a1a97e74c=
+af011265089d5cc26e931dd5aab7ad028046c11d0b0542e3f228c3232f5c86661f5dc431d69=
+15030a37ec56a42b2ac59a7dae55eb212ff0c13da803430379be7cd798d4a99ca78272b457d=
+871d18f922a4b07d3283c5ffdd261e3adfe7f881cddb75f76b3cc46abd92ad3df83b7b0131b=
+740be707089321f8b86388df27d138831e342c8ff0127296c73b304ea4c9e25249536336bea=
+420bc7c10b533b99517cd91ff8e68ade7f277da09ad698eb0d44aa200a1188834a2fdc58f63=
+d7319fa1d25e442b59ce406cf29a178a912c5cce2bd5d8b11d0bc448ef46b3aa9034d9d8a03=
+4939e5054feea4978991c81cb6f81c9673b3a2eb45c3b2d7311e07e95df83ae23082fda2bc5=
+7a2510ea0613e90690c9aca3c0be75d3ab1c92dff8a8bff9db3296a0687c883db9811850f96=
+3717bf7c7b848550fb8fd9d626e474f081325cdb800edcd5104448c48d1185f65e1ae7f45f7=
+6d4afa0027b6de0bd7388199c8e056ed1d5eade447d326380e99e3ad8fb4d3064b3667d5a51=
+12d503dbc429f49f8366c483926af5aec704a8fa654423fdaa58433cd1296c006ae4da0d463=
+9efd27421243bce8bd1bc8806c92dccf00d24d2dfa5391a085a8d6814d2f89b0b0dff485f27=
+bea92fab2cf615406ba1e21db8b9d7c9c47ead66f158d2386aafdf48e20be40da5d5321efc8=
+078aa95a391f1146ef9bf69014820178f964e7f136ed9fcd6bf9d0d3d7df38e9ecfa650a80c=
+b67328854e3750e04a2edfcb5eea2edc84082463328a44500d727b457b45c23f46ad0b4eb09=
+ab614de7ea505fa8f1f0524c39b07da2afaab2c0db5ec5e9ea4c09020ab9d8c79e4cd73d94f=
+e4854b908e4567870571dbdd4d0cc4da00fe931e3fb69f0e4c2feee0f011387f6b36a418eac=
+14f0aab049699f7cd9b0481aa6e1e86c65e475e4c2345a569f1c29184dd3aace00bbb13d58d=
+d69b91932ba052511a6f23027724ae56cf948bbee2a6419915c581daf058c70065de6308201=
+552cb24160c4fa6991d982f2251cab87c5dde5e1f0595ea9d2a92b38fc4805ddc854d54ec6d=
+7e06911a4111bf842ab44173fdd14ce37ded7ee295f3efc7578530311517fe7c1ea706b9ae8=
+5c0c8136ae7c5e3d3b1f6d3a91cc803c434f719488144080cf49966c581fe446b00949c66d6=
+8024490fdcd0a054889590060373063ea7b2abd5fd315a1ecb8d06406eded4e6fa5687f2b8c=
+b12dc208a2c9115262a4e84f67a20f751f251317dc33a87be9df800791f0ddd69b86852b7b7=
+64dba949f46acceb20aa3dba9f20658219d1a3b1f906aaff50d391ee562b213389fe2e8ed42=
+78b3b4584d46b31f8853dd9070f73d923ea7aa6ed3861490a99351411be12639fdfd3feb0cf=
+1b550c2d8dc03f75ed23e116e528a58fa66b2ca00314c128df5176b322821caffe3dc9fbbc2=
+f803f6537d9cb7734ced19f2acce8dcf37c0c317d7f40fdee61c64d92b80c9e4e7d2f6c5828=
+cc2015edc47dceb552ce30edce28ab4367c5f17aa0ab62d146a13b364feb80ebf3d745d6955=
+ac337c38679fd2505117c23c64a243bca6fcd99edc01d830954adbb2175c2d3f0e71c090af9=
+cf0dae8b4792534e75e1406103716a76cff4f18938b3c2fe391bc524db85cdc0bcf304093dc=
+2b865bae8b8690318dc95d370bf448379c20fe4454594ba2b00ae1787801097ab6b8f817f3f=
+6ac00ffeb7533e13142fc81980bd1be9dd1dc5c23aadd110627c421a2145eb749137eb89464=
+c81195907a8ca953dcb6a2feb96154b5b440787920f9dbb86fcedf29e62556d1683ba643eb1=
+50029dd7b3c3bba0875db2abdfc798f42aaa3736064d819c8d58a25eb2831695167fc9621f1=
+4a31deb01569d34bf235ce22c65945d9b66d4852ffb964a8689a186db97653dc60594c665cb=
+941c60de30e034b3ed36751449830aa4b176890f5d70a9b811babd05b189b51792b34a69b5b=
+9ad9479daba95a1c9c31d39e5646f1b545a121f0e1864d7b651801876358135a86c64feadb3=
+693686626d23d9843d86d285466b4d310ea32ed008e9bf57072f4fcf414e541111b06b7f8cf=
+c6e8a672f9e245aa45b5ff4fca113dd8d8c980aa9f900d2af7d2b4ad10059f93bd910eb9b4f=
+f78afe53d748ff5064ff96857425f2c964c2f85a9a857dbfe6ff1d4d0e328150715d6543092=
+3c1fc539b9567e1ef69f6e4d70909ac48f9898e5d268503a203ab17d2a88f00d6b6a09f06c4=
+b24262fa83c74ed4c72b3220de2a8733c125d6187587bc1c0f7a4b69f94648daf7c139ac33a=
+37b859307b1c1b4469530cbf63c4575af165307f36de14cff16e63ef5da0d4bd27005b462c9=
+940ff6e483fadc0689dba7621238901d53d2b78145e538dc350cdf0acd81ef5f0612fca16ba=
+96229588b8f01bfc1e576efb08387623555b7f3c106b100cb0adafc733c53123e6d1238a512=
+a34235601a2caa3a7d2b87a62cca6e1415ab056ed16f636108cf06b55bdda8222c97c448a11=
+8a1bd4d0d4516e393f0fae0435766e0158523e5aeeb08fde7f2bdba188d14b5862bd76e8f2d=
+d4b99e10e1f08cc0031912795f91aea997aa08faa400c0d617721b34276f7d98f145cc24e10=
+34749b6fc6ffced20201dc9fb2d8fb192b904a2c1577c396e8ecb532573c3fc749a1e9deca0=
+d70fda033f267299aed17b3f495eb8491f66f274f854ea66efacd51c90998feb39ef4dc9694=
+58ae07d05349f2a5780a4a5569429431e28e8b6413bbfbdaf749283de5ddbcc6eea63009434=
+48838774257bde80bddc77a3199d3f6c3834d63ef9fa55350dfb34a3289d89186bcdc0bc54a=
+18adf165ca822cbd6498c8dfccb11e3efc764629fe6c18124802313c37a3697c0e3798f0487=
+faf43a0d20da5b3d8f377b0ee1168172adb61937662d84660a1ef59e1d9505e2384db743fc0=
+e29aec510f5a8c3dd19950457b27b864becc50fba2646dd1e46a4319319dd537dec20e88265=
+3d63488e748c95c3bfdf572e92a64cc4ec83a5a433bcb49252b9fd438a20714e6b46bb9d0de=
+485e51161b7a3325fe8f4729531e52e90798e85da74eb925831d77c9d87789a68957eb25554=
+2d7750208a40b4001bcc300eb7bbea0bba5c886edf2c9a554f1926ae70726d3b3a09196de8c=
+ca9459cf61b2e068c19d7504549387c111f5ca418bd18b8a392742b92b77be9014b63f3d541=
+fefb1d9eccde9764cc4b861ed9e26321fe63386bc51e1a2ef4ab710d499b7c2bce602f4da4f=
+322805984625f12f13de076733bcce2bfc21d3fcb0271167c49666eccda4821385f527d4b48=
+b04bf2181aed505a86217e43cb7f5b62d45b73366f726bc8268baace24632b3f15d3d39281d=
+9b5367517c69d399a4fa23aa86f72188d90a40336ce1eb83b70aa9b6ebe922bbf625c6b3701=
+f9104c58bcfa7490469c0567d5ae31cabc44d93896214ed98f278b2d8f56b09c5dad8c6946e=
+a2688ce668d768209af1b19d75d1daa60d1ca06f9cfc05a64eeae7bb3f4983dbb65b8748cfa=
+aaf50c7bd926b9f07db2cfe87c0f9fb9ff71bb6336089e589f6e8607a19e8facc58dc0330db=
+b7df16b36caa4b97ec5bef43facb9245f4c0a12efaf51e81b5be84faef8197482bca2d2f94c=
+c9b885ef3c62a467d13c7747fc3815203b9a94477db5df63f1c8eecc179500107c5b1f6203f=
+7d54615e1f4a3f4082a6f1ce414e3f136ecd882fc8037bb36cfd5744244c783f28eebea05e1=
+55e556a4ce1a5bce86bbe6d600c04545d4b49920c8cc2b0d3831c4f6d1879cd82dadc98e4f9=
+150e6dfe2f36e5a94e5d71a15f52c8a0419949e5e70ee218af6da767b1005a467f30b123158=
+710d32d184e012b9cc9f78ab15542a4d55d92831c156ac49a150050576bb9c127a57a878def=
+cf26feee94863ad0a720c0cbcafae391fbe6312f4a5070c791e4fc9f697058e3a65c52ce60e=
+a21a240e6f2ae1fdaa5debf8321f36e670f98d7d7aee3b6705acbe1b36ad44fe7b1ec9dc5aa=
+cea32228de0956f8c4ee9cfc3a3e5b88c7bb81675afb40d4761c44447bcf02148539f84806a=
+b518d07404419d1e6d1186a214ad56b0ff8a16f441701613572992a1f6ad1b74d33c440960e=
+06e0327b34033ef0c864aea47b5c7bf484c4509f7a3c8c09262859fc71a374505817bf50c0d=
+1809d6ff4578f689ca31b97bd4304d899fc8e8b1467588d9780d4a7906fa269779cc491b3d9=
+1aa35e987fa74e4d777cd88c3d01b1f2fc4f474feeac392e4de409ca746e9fcd756d5100e97=
+31262de88db169a1891b45af5a63798f0fa26257ba3e876bf30248449451ce243e97969da68=
+a92f4a31aa3acbf536ecd18a7aa8068ca0d1781bb09a292e100ed6ab95dd7dfdce9e2c9a156=
+58e212fd73080964d16718b368dc7e6e583f64bae95f8d936763efb1b0a4de4f12934f1362d=
+3f4728df17b515af271c5fbe3852d73074c12acce3fd673e960c3ef3978ec6cdbfe52f611bc=
+167959ce47dc890db1f6df9a65dc1b1160664482730f67e152438fb9fae95ba591af5e7a2a9=
+fd7868264679563da522309fe8ae35d935596b"},
+{0x4, 0x4401, 0x20,
+&(0x7f00000014c0)=3D"d097902717fbdaef09446684045568130cbad789dde19a4dfb8508=
+db0900c12f"}],
+0x9})
+syz_prepare_data(&(0x7f0000001e00)=3D{"efc59c207b8b94477a42564f487147dba4b1=
+7869f5057f9b1889e2d0f67e9c12db6317a260456f66ee1f4e0bb62c37c2d500af832159188=
+3b79d352371364bc1a47acda7108f8f948bf03ca637c9842f1f4e31f0b2958d66641eb94eb1=
+9920ca7c59516ca7e94ab1b5580faf5329e95bffbb57244e316fc7b72efb1cbc415fb42d98b=
+c9dea426dfb26570423039fd7fe5b05b8060e399d6507b0e83cb127c7dd9262dc71e9aea5af=
+29b44c2956d913dec5a82a24faae93e72120279c3c78b356bc9d4fbc9e7252e94bbb8c4d8c1=
+06d20fd5b8b5208c4d685a4899c93c68381154f856a1c723b0ffca93cd36ea5ba8a68f1696d=
+0dc99c91179a77192d060fc1142f3286cbb6fa5211bf86d5faacf2e38aa5a29d5585b6c4722=
+903a9480e088e35c27eb08c38ff114cb5172b43f31f174f75b83d5ad2b65d2839737e6e3237=
+fee98c4b15c76edcce89a9b3f9f4542311d01fd29fb87f1b1f806edc280225016ce89682f35=
+dd3a465ed910e74305b36c1fdc24408f85d733763b05bedd1772c7caae09b988107b25f587a=
+ba0a85f02e7d771c231fb511f59f185064dbc09e01d4948658a0d20d645ceb00a06b8300c8d=
+d7a32a45e829882c3a24ac9e7e5a571938590347d57f5fa7de5a3482d7a1d1f4383a1ae9bae=
+c69f3759fc1519e0d14880f250afd255064945366966fa8fbad6ef3690685e7e2d286999da0=
+fdf29c9f24a3c9910919d3dd431b30d9bfe3b0c0a2004ae88b49d25a3eaab8b285918efb3a5=
+763e8062a99f4fc83799d5087734308bb6e6a50dc790744937c38864b6d6c1a96eb3c9c594f=
+ba047f24a3bbc90af747403bd82ea83a5e9b289f240bad77c17050195bbf31b4414629ac2c4=
+2c71746ddd109a0febe863533f7e7673de6baef7489c60dae6683ecdd92682ff67a3fdaeee5=
+2aa8f1ebadb1f3616f5b0dd7bbb3bf022f2e9ca3044a18a2a088c0a13892331f3e2b8485367=
+9acac009baee1d1c209259d48411056be33479fa59783a0f8ecc9240e858cb8865c134139f6=
+4eabc7cd4701c5d4b86f1349b5eb001391c7fa847dbf709b5e18fa3af4de751a3abb681b481=
+996cda482cd2d8934d26393603ddd00fe5c4358b4cd1bc53d335383bb3c061dca2fd4552107=
+88c35671876e6285dd4a3d2cad36b6e75d46cc13568cefab546db3c51c27f039f71f37497f6=
+0971602a9bd720d68f308cb8e26a6368c2a07188a436434ea07ef7fb7110c83b66c95fa2aaa=
+3331178d109868c9d6c0d3a7a03a2a08e4b9c23e8759ff595a2b7d18ac647bd549d35b81e9b=
+f5129a016d99dbfc977a9dc0578d96a9a8e0caeea4319fcd0c10f492a24a4c6322f907318f3=
+014f60cc875d6161cf8cd885cce7eeb4953dd1d559ddc7c6e79a346e4d5e82aef668b39ad2d=
+d86a5f7ee7bd3cef1d24551839f4f0943c125d7c904cebc28cc2d81e543dcd",
+"c345eb8eb0ee52d5a37494fce626f8ef72cbf075225c340cdea896626143621b2a86cab760=
+9c00af555bf644028b3dac0cf247d1894b80f8472ea94f2452a420dab5b4ac3ed2bbc423a5e=
+9ecd6439bcfefa86d384b0354c1c0fcbb9dc4ab68be14646240c57e699f75cdc176362deae1=
+734368a2869a6ae02a1a6fd6e12b06ddb0c899402061a6e3426b05ba89469b132c9831ad627=
+dfa598e933434fa861a313159668e404e56921d0d4fff55fd8843fd7648339a2185c62149a4=
+cea1cce7ade65eaffee4be33a2049df207a7d761bf796f374cfed0ace99a419c7a7e2f8444b=
+b3c53cac9e43c8b289d55dee43d4b93457fb4feb2eccc98e091095be7da5e6c57fe06bb5478=
+cc9f4bfc504820857deb425e10ac986bdc70f1c406eed06a37fe5a55ff6a707cd46f1b6d752=
+9a2499c2da38f48ffcaff01ea6cd22f676060d6c49d408da5828b859d78f07685462d0885af=
+7d6401938f75677ba5596b86431ee4fcc2800086723c8bc49dcccb8288e0f40ae520b613fbb=
+6a452362f9d1834723cf1ecd09d0a9f10500987ee13a8abff714b269d050256ca75def8b2e1=
+f7db081b16cc0a2522fa7404caefbdcf0c1a5da962bd1148f9a4b619338f96f336984b29c2f=
+472ba44625cec9081ec4f72d5dd607fefe53b9b51cb6e1c07409295f27385a8ee0e2de1a187=
+7e73608859cf1b653d6256326564ca52d5662535d07ca494d829ee2794c9a091fe38ad9d194=
+f7a7ca9b9bb20ffc28607fdb4420918bdf69c99e310e66c7a165626c4cfe25c8cade7a677fd=
+9be43f58a7c4d5a6a622567bb3fbab8b4c85eee8235603a5c720fb9c7333402d8c78680f4d5=
+dbccc2d43b9df08cbcb9b0c14f0e66419db10a23f917e3290afed38a25cba7e1b335bff2d0e=
+e4a40b7bd49d805214ab0c00497a312856e07e2f39be5ae88a98587fb2d613654dccd926ffd=
+3dbd8be1bee1ac8e4882592aaf8c38305552876bb3400868c817a74d8710dc4fed7c762432c=
+e6f405cd202079bf6d2a97f955ae4386060057cd7a78b28e281830069d42350ed922c1c9d93=
+105a01ed99b71aadcfa1612a79582e0e94d9696c9e572b4bb5d6fe3b6258acd04e7914f7222=
+c2b54e67b248dc7c3fe53627630868b905bdf6280b9aa649b0f01fb615081b5ce43c27fff16=
+76049608b10f1a2e3cac764c97be4d0622a848a5fa20ef87a5f89fe72bb8103e80d00aefa5a=
+09ca3246e8e1f035ae995a0c144dc937ca4b29db47a47fcc5756dde2fe72aac97d8de5af57a=
+81f31299988a884a277aa12489ac3d3678053ff17de2fb1db92ff1a7dbebcde40e56d271048=
+f5381d406ed27b568a01676b4e26969374336bcc4377a7bb43848bc7650280d2cc510e0a5b6=
+9e3572d7a11d27d07966215911d01935d6bab3dc7a19866ff4d0ef513007979eafdb4c61e33=
+5c67b814068b03b8a4e14c1c"})
+ioctl$I2C_TIMEOUT(0xffffffffffffffff, 0x702, 0x1)
+syz_prepare_data(&(0x7f0000002600)=3D{"12de166bd490ff79aa5b23192da986c12d66=
+25113af734342bef14c397a653eea4555789644512db39dfa364a55e0417483e86c4a67351f=
+0ba187bf14d54f915302c2f1b514bf597fa002ef47a38e7a2f4529f03b9b9b1852650287704=
+c3865246aa67f83263db6325d24465d0ae5b0f47c2bbd6f21b26bf3e8b1f9170f48b8194960=
+1c6f6ff3f2fcbdb1d2aa6bed4e749c24fa3aa03bca550ad7806335aaa4a35475033cbe4dd76=
+39f2fc493a9d17639ff14dd06702a736b3c5e9ffd32694f3e6e046458035dbd1fa60f3af66e=
+4b8f4aecd267d8907dfdd47ba73e1118ca46998b02c30be7f00e508794d455310fd88a1f6f1=
+7755d2dcea14294b4fda0fa0727e27342653e04b9151f11676afa074527fd9415a97bb84044=
+7cb7b9dd89ad41eba8214699840f88b01a667c751c0bf83f441988d973e68d4a41210a904c3=
+38a088f31a80dab81ae7739b02c987e41dde88e4e78c8b35021a22c8051686caaa0965aaa10=
+7b601952ec50c8750db0c2b3f5804a19003cd09251415f2fb7bd9cab8f484eabac75a7b6f1f=
+ca9b113453bf53e65d12e696582ac4b92a7d2b23211e5de6bb7dd0a79210bd544b0882d165a=
+0932c267cfecc26f0f2c40329c79563795f081fbda42644e4a6a85e8f668cb9d6ec9c051270=
+df08de6074720b06f801a88c5b2e202695683791b8daba8e5fcf4983aa7e1e5441077538034=
+9e820c1aa9bfeef0d44170de9460f55e16cc2f6955224fe468c37a626ad9da05c4d7f5906cd=
+ef64525649f0fad11622495ed80883d89cc053e914b6a7360b8c7a2051c50686ddb650a850a=
+19dca6b8d49f45cc572ec375ef312fa45df88918810d99478dc8c2fbd9e4fbc1d8aaeac7545=
+e133c00d8cd76f8abbdbffea36c11dd9cf1ef72efacf95b08d06d516a84304b77997597ff11=
+3f67b48902d194a36889bbce9652d68ef7f157864318cf025c5e81ff8630ac312b085bf378a=
+5918370d7dc20c4557b8e73e931eae61a88915c50868fa76f173c021c3f6b0c04d032331c8e=
+fff5b173a6a839ecc086f1e37a93c919cb2c4cce8f14eabd2cb2a510e883e31e0ede8091a7e=
+cafab1ea381f7eae2a009322bdd80d3aef3dddab19b51ffad53fe03fe98b893905448c0c6c8=
+2f7a8fe930cb36411fb7cbc8bd0e051d0d719d1962a6f65adec714dec83a893b68c3e85d9c0=
+7362c28e28d4a8c7fe227d88df94d899ce6c66e56a5f931a66db9170da839f868834ed2e0c0=
+8fef9e777a18ff678f1e2b9cd952b465a84f3541cf776376885a121deb6b1ee112d3d25443d=
+eb4d5614607e5b911f790710fb23494800bdd18a6444cd820bf0d467a2039933a612edcaffa=
+5c30e1328bc518d76381f87dd4494cd9d18709711ebdf23227b6bcd9e2ab804e3d341a96845=
+0b7dbd0b3bbc22eecdda24521a6a21c7958463619ae3f1d3babdc0d3e22ace",
+"7a5d3a0e62d346b3b152899d46a446f97d10281242b153c728853637155aade204f0fe5bc8=
+5964a66cf9bf77253e17b56b154ae36c1a099904b50c9d56abddb16549896190f38b248a3fa=
+f3197ef6b40c5b008ee90876df9811dfdc07e3519c0d5e8698ddec0019b8f64bf8ae3b1ebca=
+c18c892f1137d11fe08f02dc935e5f47e9e148b8b23fd6c9ea3da631eb994498aafc520302b=
+288d666276594683eba7ddfc20fa978974b7126f047c97d6d1a0a4102d2da89ceaa1fdc205a=
+b1c88f2423bf8e48e01c58cefec0b24fe683b3782d8c616ee1a4b714b2c4cc13402cc179e5f=
+93824afd155a44f5d63c4549fe38d9cabd7567245bdaab63f51bb0aea3740f9b6ef51bfa9da=
+f2b321ca96f4da546c0206d376721be09652f8080b70dbdac3f55b269a3ed74b1a4d3e19f9f=
+759d8505ea251f3218c9148630284332afac40b1f248a4cf41ffdb7bc5dd09dfeec027da9db=
+b75711a0c2d4780d945a2dfb91a05578e42eb718901b8fb75a2b38b0bc13c4d98a0864631ea=
+041841bedf88f283df8364384312da4438583f18a7f991e2f3f99bab96289486a462f982a17=
+7ed81dec2c60899188dc73fc3928b58d681006b8a05c4bee3e51301add8cd5b228118880e6d=
+373ac5e29543353c94f66bac7880b9a611d3e580d3a88cb55dd964007a7cd4983d8a6492958=
+35917b7d02515afe9e2a37247105e5b622abef823e5cafdfb1e6f4d81343d021ee84c15dabd=
+e51d94493ea9664ac73da98762fdebfb12ce1e33b265a53b6b0ad346b69a01c5cbafee570c6=
+f338688f4ffe217fc2623c65560e69de0e160f596b6db61cef55f190486e80be6d3ec7daba7=
+78f3ffa6cabb77ff80716c5bae5e67585cb9631a0d2428a1e66a1f670696c584315ee924092=
+5e9e17b5d8e5d1bdc7c40d3a44931337a7dda90d8127f04c373e483a908fe12a77cf9588221=
+b4a55156df486dec9c107ea19e29d344f1919f6d6f41a36e934c381d1dba109ea29ae3fedc0=
+7e9d17b96314db490d6f0284e42f4834c256a6e2c5190f72ede31acf7d2fd725c67287c9308=
+5a051c99c87db59d200be5cf60fe6410cd7dd6139e19d085057dc12f2b800ac76ba21b3b8cf=
+62e1eeeffe0edf73263b027599d2dbcab2bd7b729b4ac6156273295a6d44aa08ff0acb62720=
+07faaccddd59ff71d9476c48d0ddfac61e6d46145ca0201e5bf5054d4ba10aabe7126da8c32=
+8afe5ed27e1619ba8ddc422634d5c018ba86cb7d89e19a7c396e8ed6060c7a9537e54400dfc=
+ebc83ba965d0ee6eb19e3bc4169a8fa7162062bc6926e6e8dd742c602345a7547ee03f39c19=
+d78f7be4a820ab4ce034bc0d2a8e7a88e00cc552a74091c7cbeb67a934868e4f456f99f0d64=
+6ab66a96e4d474f8171db6b95a7e2a10c128d91a12f2928b4cc264dd54000f559a82da745a4=
+18e77506bdf08a05a24e72cc"})
+ioctl$I2C_RETRIES(0xffffffffffffffff, 0x701, 0x931d)
+syz_prepare_data(&(0x7f0000002e00)=3D{"386a3569e8a4e11134f7a0f427652d8b3621=
+43c85d452dedc40e10fbef1923c0f7043df0285d56691af6a3f11c5152296200f4ee7e81fc2=
+7dc74c92f42067baa432f8a9ce4253111257ce8f6bed39424f5a8956c1c1d052c66761de8f4=
+372a8af353040b21e6e502a1fcf6ac26d0409148b0a5d72ef363c7797aa8ac3838485e0b82d=
+b161f7023516ff2262077be0acbce73e2e381c3601e1fb047c1a1993d21a87b82dc13433b33=
+63a027c1129a19a282af5910ba80de07ddc6a633be3c54d402779b7ce18602f88eedfb834b7=
+a2b150c5cbbb56e7ecd4ec04b1a94b582ed666770ee5db52e00b7d08ae2cb49f29bb986dcfc=
+e587b291f0bb300f01016c46068ec1e870d04646fac823668125d5d65fdcf8e9d280a208f5e=
+d7e040ff6ac495dd36be4996f400b46fd37fbf415bf9752971dcab078f28ddc096bc04078f7=
+aa2429215ceafd64c208febad50310df0ecc0220427d55e5d1a7cb462fa0c520b58313f4b77=
+4df425808a10048f9b3a7f4a6fc8e9dcb2183590f5c0f40a0b525da0bf4bbb12481fbd03966=
+71983d22fdc6553eb8e3c1ea81b6ee5371d8e671cb92c4db7832540a5c4f92a81e0f193fb8b=
+2f8af84bea910e90454ede96ca54af43595dcf03e3017c6fb743fc20ba6138cf8d88e98d4aa=
+63cda0e6b5d056a47dbddd3241d3ee2a24fc560f15c27f7509fc70f15a0489c6ec3012a8d87=
+bd6c2ff05ffc5470065dcf14c0439304df8dbed69157a8c1c102ee06a361d40738910f0731d=
+25e04dd454682884aa02ff0c96b026d57211a091316faf40009fa664a339bad77fc89edbbb3=
+a7d94db4ed61d126d89af76f263086e6e765c0acd76f4822a30ce473737892a2236f7069e6b=
+3a5706f2abeba456bd15ba0c301d16b1fb3813d667ecaa3a7fc62878ed730500015df1074e3=
+d0be9a930a57d23adad30a0da439ea70a85c855c8e61b92db6a3b6896ba05ef886c71e54e71=
+0f88b508c60703516a43a64cb490e08ff6eca550e39692758a867d4681c86d237b8d75efe76=
+e43df5beb045a69aef41b861e10d8dbf0ce628888aba523b670ed841a75c05c84210e471e19=
+6ddde09d0a28637549003ce95d19a88175a1111f5dd053e100d680b617423d17f22899f2b4e=
+362c50a3cf6d48b1b892a829c0343d3367745f51c93c1189e8d3de200fd47606f66108a8271=
+ad95d5735d5bc483626dcc6e4f0c5dd71f7eb4903e37dbd4d9b5b570242d33f81a580190aa4=
+0200a0acd2a2ce485a37b310350507f5789f02c55c5532d5412a511f7aa29ff0975ebf7b8b6=
+54f7dfc64079559c2b785e67d3a795688621678234b0b9526aaa2ac746aaadb8c35e2199dc2=
+db66f88037d24e5c591ca1729b651bfbbab45114034e980b263e80548b591844bb750957b39=
+f8a54a69f4b4f4e687259040a5b129bc3e2b9975d2747181b0c2619af54c64",
+"c1cc3d16c394cf76c4dac040ce9e2b86f0870e7c515fb5a587dd92af8472b3d129e5594592=
+a40b7d9343101acbb0c7d2fdbf55c9189561e07492684ecafd71c6283f29468c0775919dbe8=
+88fe7416cc7ea7772183f8b614471b2949bba5ec0a075ae72059e9c0438c488942f1d5b480a=
+b443ebd2b198b643e88d752671f71575733252d52ee391392c57d8c2611fe8bb5fdb96c5f3d=
+3b8b5dfcbce29f19de43026754c91a2cdfdd8ae0305121edb67d6421df17253985b055ee187=
+9aa2e1b3f268e1a5be62c95cf1e220625b2d5a3a39a0d2c1e72ddbb189d2921231bc7bb3b0a=
+82a505c0a48b6ee7653068ea164e2284bc78ca161258662682ee8af36f2110612b508addead=
+e9467d67897eb9d50a27e9d054f31f899bd3c82f1e668c822e0b15e673b4cc35f6481b12631=
+0f6053b20f5a473ce347a134f5cef2e1475355fbbee83de65a1f3852f43fc1b14f4eeb4e1b4=
+ac5a9f06e98c969fe4dca1fcc4220ad113dbe8613fc84aa28a5a16105c70dffd46015406741=
+dbb5006c5ac2145f43abf97a6b1dded8f8bcf0416a0a80dfb5849a9a997cb4a775252cae416=
+a5621d2f1bce42a64f7545654ab53f2c85b521469ef2e39c9d00a41c576293434afab0408bf=
+88d16a08690765d5f7132dac3ecbebf930d894405458df43270e1b2b74a668e6525ef3b4081=
+c3807dbb123b3167ab685e7f473bd0893044137e7eed08388abdb34ead08e459371cbb9993d=
+9fd38bcb4ca7966cf788a17fdedef8dfbddbbcfb8b4e87ea97049577e0d405e9b7603e06ffe=
+ebbb695eba41ff6ba8de4aeeab8589e95968b4bb9fa39001a158d1b361f931c0f850e751b6e=
+7c939497f39cc6675aef1c31e34d66050706025aa3f284b1291e08f2d4817e45028343ade89=
+c42e99c5578b94f811f1b1fe6020915de918f2fa1461be463ece031e3852e19d1ad4239873e=
+f369e40dc1411da5acc58122908a78de78132b1bab618df50fa8a455696f410f88139a23968=
+a4ec91b09e9204648477ca3eae57ca7803d286e22aef395ff011683c6dd53f71e5cdf5d1019=
+b72a942242a19c3f4f5618f4fa6acaf20628d20b5f0211539a9373349259d5a54df7aa7af25=
+a14664e9b818a3553b758defa09d5a89db302c6a6c375f481de735165ba17a9b165a5bfa1be=
+9913ffcda4f26ac0bc05af6041f4c309506f949432c17f64d168bba8d3b1d08d279b1d74ae3=
+ba73ae3a6ed7fdd198334e53b7025543f3504603e5e2a7cfaa28808ec7b22d6e3461f904945=
+c623e5fff638c4530e4c4e5233e3925bf0f0b614ea12d7596c7bca50675d87902b2cc6e1200=
+394c46cf52fb88d0f213f61f2bd77bf9ed7c57917a1cfb1b837649c1fbfc5c4172f66156fa2=
+554dcf664fef6575e896e6a99b3f593cdc3fc2a28a82c3de29a7d1a732ff0254882089aa833=
+86e428913ccae49a341fcb8d"})
+ioctl$I2C_SLAVE_FORCE(0xffffffffffffffff, 0x706, 0x1b9)
+syz_prepare_data(&(0x7f0000003600)=3D{"c68d70980a946a7235c5c528d6da46188ad6=
+30ff614baf33abe3cde175ba5e9fa741fbd5319ca5c1c669d756dc1e7b98a4a37b2e41fa8f0=
+a8a0896c78d5091431384e6527bb7d4a99bc3949fe77239c36c0c8bd5829f6f3e28a03d5088=
+e895213ee0b3df1112ac042f828e53f1262836c0ed6328304fa45fe5c0feba1c805f6b0b6a8=
+f1f90496f0d97a1da7aaeaff1504286464929b5d6c76e28605469b3374b49b9861335c8aa7a=
+931047cd7f7c48dc1e98bc80dc8daddbabb0be60a64c24917b5180258494ebab678b5d10e80=
+85dea8ffcf69c0e85c7d85de96fe6fa4101d2cffb1049c449e0f6f8d0477463f8396c96963c=
+ac5e27721b6006fe2b49bf712067c80571b9675b1179858b315b22faed2b762c029c6f18e13=
+d73731cf34fde199f6c002038c03cc09ce751a320e79f2c9579439747dbdecaebdf2dcb4c3e=
+aeca3f51539b91cf1b45fbac1dcf71c583da69b1df3b31f65e84cf3c09f988a08bdd19a8811=
+8c5233dc9c803d16abaf41ff56a5bc8e9f66db426a045ddea4d0c10ba75bdc8b24fdc5b64ba=
+dcc51e074d15656555aebc3686978599522f1598b7826b011ad02a049c641135452631ec9d0=
+28b034c0fc907860fad6075b81777a7fcd6a3d1c62bb43d87b2700713fcc0a6afb0d7ac3645=
+0aa8d224d1279a697136a98a5f25c3b24115fb9f51609b3c550d423a1f16ca63454d19d309e=
+ef0724bdef227e8ed28b6c85a42f591a9c7f927a601e417c81f00970d445275777ce38fe491=
+6486de6cbfcf606c4309e6a0b1ff8dccf88cce5c2568bbc9d668d06e35ccb1236a102fae626=
+2d4546295666e36258c557c456bb42302914f1f978aced724735f4a68d949eacf9b69934995=
+64e0d3cfb815b34aa7e2647456e8ad96e447241994c7366530f9859c2e7a90779cb908c9a5b=
+45df1eb0aaddee7e56c50a4526e989129ea4ca829730b3032492df11687d17aee778cef53c9=
+73db8cb27396ae1981be406cb72c20dcb38a3e2feec9a93ea0ddbcc406f9f77b589c6d726ec=
+2307c1f11bb1b67ccc68f79b56ac5aba149186386ec10a66fec6818dc69c8b1b404ef8c598b=
+f4a52a002cefc8ace451bb6fef93bb11bfa56d04437635eea650096d464c377d3597eda4948=
+2b9acddd38864ebecce20607d7b7b459738ca2c78cc9bf3015f9cf39d18216f49b1c1a7b044=
+d12e061dba014cdc0c89d5efb4699392b8f697acbc454bdd6d8b5da2c8a523bb29f91f608ac=
+194dce659e87da607bdb2582fb2e85882b36ae0a3a035f3d0fe3a052ec445294079fd78d563=
+661a5abd43e8f7b793e506b08c7cd9c923e3928a1f1618f173fbdaca87d91fd28fff6f52267=
+9b713af9497f9a5b576063da39083dd50a33977289b34a0228d90d92a840cd817b64e5a537a=
+8db948d3d6bd5749378dca7d92857611c923024c26fe4fbcf5c039009bce88",
+"7389cc2911afeee3a0a2f2185cd7036e31863b9d28229c683217eb6a5fe285d12241cb28a6=
+f6b94cc913f5fc0f296bdcf84c66a78ad3773cfa9b95772e46242fbc9040368a2ac8b421a83=
+53b7eb2be015d6e891cbbb0972290b0202d06a72903a566ccca815d308dba5ef77bc385654b=
+757bcfaf184022064a0e8a83e7692d54ac46c62c868ca86fb1e5fcaa7526dfd9d39b6d779dc=
+33f3306b7522e5659eedc5f4d29c6fc80c9f469754c33d951bad48e0e28e9bb6d6061448977=
+3bdbd524b457758865d995d333fa49702863de3edc0929cdefea3a75cb026a3800ad8ecc2e2=
+5bfbc0b69a220c6e1e05c02b84465976727bbbc2aa7ee8afb630fbb6fc3b9f3970e7c58477c=
+ad0c470b7a8a4614f63499e76459dc85459dfd226032841404244be41179cc17eb46a6d2f4a=
+82f66db7c4c7bde389b15b8e9c9e925b11876f5316b7202d16d3575c0555e218188d4b61198=
+d56caafe3cdfcda4ae01c13023dcbf2d4d3735000c6c0711246b32ecac152d471b9cba71d16=
+69ed3069574b15b7309dff7347c8debc986f236ddabe465e4a899437f9058ff594362b24498=
+9e123f00491d4d2f1f4e0810620cd50c2fa235fb65343dde30901281ea00210979252f275fe=
+bb1f18fdf288a5a64e901fc6fb20a0d40f22f6d96472b63ad31c8aa17491e7faa5fc0c0e874=
+7af9c6af6141278b45048925d66627e609be9874410869d0e270304a9f4eb4c704a3edd60b9=
+6394a9212699e7cc79aa327c35bbb0f213fbaabaaa02408e95f639641369988ceb9b426b2dc=
+be3bfed9f003fdf42d4822bc1f245022383582d3a283675c6e9cc2e199f87e9170518d62f5a=
+ec0f02ca98869a4299a65ff7e5aed1f7f6f96c75e9933920e4668ea5f589d749e1efd8eca14=
+727d376f124443b02b1e30b2c903a49e1d376b55469ebe4f0527c32288ae0bf20994a039da7=
+a09ba21b47beb98eec34b5d139c6fd23909dfb67098c18339dbb459a6db6132ffbe3b611dcc=
+dfe17ce58ede70a4a22f9bc932b1e57399e5e8d16a2ac45e51d46c79bc1505f9115f57a7ee8=
+af01cbaed22fd83ff1c7a314cf406bb3003ea922d502156301b4f7e0acc4d93c33d5ef09919=
+060caf150c8d1a28b2e0baeea1089bcf77119bce9e7133831eed5f1bc4d577900e435f2b650=
+1793747169ae8dae66ee728dd1ea0d2e359f7e58c8853864b0cde62dd705e9ee67717dd5f7b=
+d53006fbeab8cd3b6e3dba3b7a73be7e9d3e11ffbedb03a08b1ca2cfc94b729d57def257e2b=
+77644e41b7113a5be31f0efc9b34e4ae0586915e819d77a1b1a944fa3dd57180bf4c4c57c21=
+430a36dfa81a2d76a58579469aee592aed591ee7281c41e9a6083a154bbe82bc2db52688c98=
+6edf7fdec7190a2fff1d375562d4101e7509cd6ab29b5fb38d8aa7791cc364ed35da2d164c5=
+78165968ac55f8f6b92e8a39"})
+ioctl$I2C_PEC(0xffffffffffffffff, 0x708, 0x8)
+syz_prepare_data(&(0x7f0000003e00)=3D{"1fcf0b80b169b20650a0144672c2ea9d4aa1=
+8ba8e535397070771c252292c5fce1facb3c0d58c7314ba2fb2e35367e9b6f343750f7b7d92=
+42bb1db786fa2dfec640b444e4fc3285e6b579b004e5d6ac4b796ab2d16a474018bbc82ad17=
+a90ee799a477b15371633299764b9bb3782948de3508a83b6636cc533c58970527c40abab09=
+2e1906747e20f9f5bc77a501440eceb83ccb3fbec7c4487733dfdb48ccd354ea8a56eea7386=
+6d4eed929f84d2b4927523df6765195df0f14cf252793662a9d30560d88aeadc804bf8ca990=
+501f6ff3b409d9caed2b2bad61af44a796d3d973b95fb2edcbf5a60588283d5cbef0c381cdb=
+1fe62d9245009a194453cdcaf90c7310fcf8bb25d102c0e30c7d4ecc8c9b1e8d47e2cf3691e=
+7cc86a324e3668dcde66bbd59cba8d35558498650e6f116d04e7387521351d890a24aeab826=
+5339889131bb4f13320b7120b796a8728d721ab42d9b7e6b13a66937a52ec38cbc5b5ed09cb=
+8dc2cb0011bb46e6268064b1683691c894d210fd4651c9438fbcf3dffbf6e444b0766cc3845=
+8b836f32ed01aa78a2d870ff31392b3b0784e850ced7604ccb4d613d1199d2f35b65d3b9d2e=
+593c81f0776e1dd282ec2e7c1ac103dc2e3b45150277ff282bc2db93dbe90aa5729ba8c8a7c=
+a5bda65cef250a29ba88cfb4444a1b9906b196ec8935f23588991c4b94af4789c0f459e19d6=
+a8e622bf0f965b2bd9621b9d486bc325ab9006c700fb4a014ae2648b63ee2feb7e76bd6043c=
+c48a888f1de9e1c009073dfac7a40c340364790f20b992a3524ae72480d5244393e73413ec9=
+eab7bfd2e8999041843608d40a5d37c476092b812ca455f88d4dcac412635df04307263467d=
+7e18f0ad2907fde97982ed169c207937da91f52d022d104ea629e214525a77614bca6f7a6aa=
+c33f7bf3c02e18bf8e92103f31112da65b6bdf02834288fa483d607d345ba938ef6f8f86405=
+b112248f76097d7dc7ba7f3840d15ae8440fc1a40d8375253a85a119bcf98c8eb6bed6f8855=
+043e654b412d94c6d1be4ed9fb5fc4bed8479cfc8bca0c817cf95f32ddb73fd73f0e9156751=
+993d55b574337ac62f8bfd2ee7fda48bdbd69cfd87d33277ae7e4c0c79a3d3b887a67587b13=
+393be2df6818071d8fb3bffcb262cccbc947be0223244401249cb3ef9743dfd79ec04abcd6a=
+fa4cc5317cb0c253fa1930f07c9847cdedd2e33d6c0151a1cb386d319479f6d6c3ae556078c=
+bcf6d17ae3ac25930cc20a2fb573bf7ed68a7d34d96e9f278c2be2a77e643d27c84d6f83d34=
+ede3fdc14c04f0c3b3f33d64b30f5034edfc18a0b7ac669e84f41ae3586f9447cef9dc2905c=
+b5f0115f15f92b0d590b6b32ed8fed87183c9de3ee855ca1e7bf71975de39467e4462394510=
+5e0801f25aee04617cf48230e7fe2db4b2bd6d4d1d19dbbd80333d53512f15",
+"54e02ec62136d9d12cc3cfa93071a0b436929c623daef1370d6ba9e159dc2cfd1cef0a8f5f=
+30eb3dddb6d1cc8d4512231a44579082e437203c09418c3f861b652cdd63a81db1d257bbde5=
+d5dde7b85833431575a8a6f3a2f96ea452be33946e30dcea0ec23d652483a5de197dd80af78=
+e982774f304c6061adc7ea19eb005bec57f96f44c9972a94c5af305a9f70fd896165f1e934d=
+99d42944fbb792b078f7074a4b9321b6d97c564475150f49911e1fb6fe2ed00c65e00408142=
+4bc51b4fc25d9f06ab15775a41f679890813dbd9159eeb2dd62c66b28fcd9e85f6ef8c8e7ea=
+c33ce5290d62903b6f9ae0e6c3dcf9a0be27d52d725656f06940b4cb4eaa4dbf195dcc29cb1=
+c55478f8e7e0250d81522f06f353559840564ef37d4ee27142fb9c7ba15d064b31665d48f14=
+bfb15d6b88bd2aee088e5812e23316ae4a6dab32e0707e40d8cced2bc9a0bd2fd2c089debfa=
+200b3e1c1b24c341d045aff71cd03af768ac1d8a156c6816948fd106bad6436be001179ba22=
+35ec1dd309a1f83f536291d15367c27cee1d385c22618b62687b9138deb24ebca6fd5d7f9fb=
+9899e53a87da51f6940144988e59813729ee5a898aa49535cb633a84974885bd51463adc196=
+8a07767f69d21ae95e1ba1694886771986160dce198fd3d4db480f67c83ad6235d5204fee24=
+dd06b4e25873736387bce120b25051222ef479ada24cd1f0deeb40cf7a6b77dd12d6a519ff6=
+69843136f3964d69ec6b790b37a0ed940b8be56e3e5b9222c5371b1da17d1bc36373b617794=
+94163b4092b0abbf81365b591ed7aae6c0b24204da045f0b3097985997217b2521bfca0d010=
+f10eb3be7861a32f2cc29e62d75f5ec5086107a762098d007cc94caeacc7c4d7ad4c075e9ad=
+32b7f233756f604886e0001593a9bddf32a6107b80ad981ab4470aea141202ac341c53641cb=
+cab9cf743854d3235d8771e1c1a6cde34dc66cf30da83d38565706fd268582a91b90c1dab74=
+e178df623e01be245f91b7d1c3c8574ae999aecdbb7181e061e0dc2bf806765dad6da853f1f=
+305e413531e09faed31b92dc12d0e5f02e3d72c75133c1fe717877645caa13b5db2ec4dcd2e=
+d040c9771d9318f0de1ab65aa0b376e5794df908ad093d8221b419cd5d4211bce688dfe33e5=
+0600ec048c5b6e89446e624ed654349a959ceee732bf429ba283898d8a874e0996b57e5823d=
+3489b658e7bd718f617a08f7cb61f5076d62f8bf7c3bc5b54c3b44045e5ce763936c826ef1d=
+135fde3aac2c50b70fe84eb43c4e156f845c9b50331807850979361ad185f8d3966ec71e116=
+bc123e0b4a2016746f5ad8c7c1ba845593e12cf44758148319fcbff1d237476e13a48b1f46b=
+23d4859412c5b2f7c6d511212ffe63437e84274c734f892a92ad0acbfc784e2f83af3efcc01=
+17c2764b35a66941ecd72e8d"})
+ioctl$I2C_TENBIT(0xffffffffffffffff, 0x704, 0x0)
+syz_prepare_data(&(0x7f0000004680)=3D{"c9b5f83676109338c356fc1abf640adf698a=
+a2a310b5bb4a85b26abe7dc551a4c21b2e8684281f15f416d10c19b45d5047b2e2a98f36672=
+65216c0959422c50b0117852d11c8ae8e6a44fc67ca1d5c9529859498fc1fcd150e621710a9=
+2fb4dcd3391e584668fc82cd51a498593e3dec3f5a9dcfceb4114195d00902c4c44f25a84d0=
+3c83b3f4d0b08e4fc52bed638e6b2b8ba89b33b2f9101fbcff2318c45b369ef0de2e9409c94=
+3fe2ae6cfca0365d57af9a68f95b47c47d6b7ee05f09f19b6bf341b0823b190993981369c6c=
+e22e5980e7bb7fc4bce4d28af5d411ea79b995e0cbf085d1e29d3bf61428f78f4837fac1541=
+cec8d143a4b3a311af6ca31bda84b1202cfa0567eaab20411784188379e8dcf2181e8e98097=
+e8df83877725058ad975ae36c88d34e6376908575d865051aa8947c808cd5285377378526e7=
+129f6104986a887275b88661d6095b4a0b5951e73c7292551158e838326f92be4616be611d6=
+c417100668066479a4eddb86a35baf78fe8a8e2047a99b299a0c6a036acbc9662851bef5645=
+f42df0665831d2949a1f39c61fea10d11354fbd7a91afdc708b00053693f6111794c6785923=
+a5d12f72974ce5a21b3515121bab71cb6aacdb188622ab4e09d575f977328b81d74b468b233=
+83ba83871d382332b0790b6a3fda3ad7e778b9205f3baf4376568fdd0e2541b89a0748f97f7=
+f28c671702f776e781759903e1c794b1de5fd879b30da3fce652b6b80c57a99a4773ed21186=
+003b93bb9272893d680481aae1aeb23fa546f22d20c157ae86c4367c042993a49e1af069ef6=
+177d2d0e611f0d5bded17a5b793106d18465c68eb3fe20bb5a7bdd50f4a1eb383268dd4aee4=
+53f2d49c9eafa060052e22fcbc8618eb25c45f9f817b8564417bb807bed61b4ba5cc4dfd16e=
+7e88e652598ec41426c068ac1132b6332e919c7300174ad5554cd7b1f18333f43825ba1ad20=
+217f4ec3298af596396f0d97304f70dccbdcee05f5ea7af8f408f6046a8156163bf5756d616=
+25c3778dec6c2b831ee73d0c68b6b198ae209e95fbe23fa64ee121709ba1c2f2de0d0bb09f8=
+cc1b072af8379c88dc2eeb2466a7ce862709e110b4d7029ae4c9fe440778369ccd817ee8668=
+4895812ad0e3d0cf4f61e0eb64bb7de40d7661762c3c8884a4b9db206fb8b3eea2b6ee707c5=
+f4f9ad1250b45cbf31c1a51b8674f7c15d78d8c89c56d8bf0b727f3107882d5766233920a6b=
+101623c411b2f0b62a71dcb6525f44b47fb4372b6f64b1ffca9719a9dc5a49b231ae0c1088d=
+30114e53d0cbb45f9d78ec80f9ee980ea5c8a34310e50c1f85b51a268c5a8513cc968d873d0=
+dde5e49fda5a0c8e31e208800b50bc3d8d24fa4a4c88ec03718bed05787b88f8a41982ab4b2=
+9acc077106913b699a52c9b5694a7260e1f1f70e5de1979fc015618c24e627",
+"b75852781b346897b3730b181beff690d6841aebeedafde9a3401d519b38af6b0bc4947459=
+fa7c3c27fd25edea0480b401a2e90ca79036dfbfb7185f36f8498e322f976136a1c7a5391e1=
+8275ac3f3be969287e4abed0fcd3765282581c9cbb54f6fde1e66a359f548f8a9b3076abc03=
+2a8b38f9caac006b2977a93a5c3a6d94d4c67f83348d0c89cc7da4ca3b3e741b05ca657c0f5=
+679ad9b2e4163bf8c8c0a4238da5e17223e288eb9cc05550bfded1234f4769008854ec58cca=
+f494ff38d90f8013e77b7be17911aa7c0eea5eabceebdfdba7a1ebdad0227854ca2a08090a7=
+83fd695eba22d84dd885880124217c065f3b348fd42f35c66f4199b348c2711f36cbbb33564=
+1adf2d95cb68698269801bd8d7a03c44be5d2eede318af4c3f666ca26109f0e3c478e197481=
+35606ba068247ba09e2bb5dd9749fdbebafa3356f27d2687477c01b18e9a817d682305c38a1=
+4a39527e65cfa876f42811f476ca1db7cd2f10c0dad93434df33af4c8aabdb692772780330a=
+29efcc12e458088e9a46aaf15900c77ba3e781d6ec84813852472159de69b9650d51216c842=
+7d4139ff5aeff5d364161c6da6494192181b4bbecbe75460d20ee49ba16781685b2dcb08609=
+165fcffbe5fec71ffad70a69661751a2aaf1e492398acde369fc855e5a21d84e12afaa34a5d=
+756de81df0ed44e9cb120670e7e33e73f9393d26d06c933c055973997ceb4152d8688579ceb=
+55a19819707395241bda228bd8cdec90d0a4b4c9f3c61d755480897307d9187e13e0d777e2b=
+72b990a8734eba7ac2fdc5f1d3c17888d9f5737c0d268edde94d4b90952d7d85b3001338d57=
+da50e8f3e9d562b1490f3c35487e6fc831b810d4301eb06a0a2d1b91deabec37c745230cfe8=
+fcf6b6a0fe9ccc737f6dc99b21ae194a013dea4753bbbc21425779f5907da5c192a1b8540a7=
+7d487623c8af42a3e22057000cf92e2d3a1c173e453d3cf6ec25be3d09b2ea905ba042c032c=
+944a1a89d31830f693988b2fa8ff2a88641b390aaa132a363c9aaee3ac56ad64298301da06c=
+a01a7e7e95e3a511df8f8a4ae4cdc7c7a4e2b03ed64870a226701b205427bdc69804e3a4dea=
+2985708f186532790eceee332902aaeeb5cd2236b3d23a9ac928b9d8362b7ae302c330182a0=
+f8547bc90eb4885b755c05e5bbe2d50d712fad53fddb138b52cd0d73767d9731aa7791dda73=
+a288993938e9652e1803127076f8c106d646ed6794ff9946442a70fe9abd904051724204daa=
+901ae37a514bd6687d5a20378fe5a087e87d058e168760c5dbc7f7064bdb0c8327d3c5b4122=
+0c67ffd51eca42028d5df539570ab27f1c3c3398cf8eb89dc1f2947b9aa81932067fbb4d06b=
+f3ac3a02208eba6ca00edc2909a12bcbd9aa5a82897a7623da2a6d3e3821d30389d4bda8049=
+7afc2cbf7bf1c57e1c40c95c"})
+ioctl$I2C_SMBUS(0xffffffffffffffff, 0x720, &(0x7f0000004640)=3D{0x1, 0x5,
+0x8, &(0x7f0000004600)=3D{0xa,
+"0673a31ecb3815d6c15be5f745fbbdbe799d37c7309317310cd4adbde9f333b881"}})
+syz_prepare_data(&(0x7f0000004e80)=3D{"0868336d9ea8a871e1df9f4ae9e8e45d0117=
+13a220a530644e53b1c938d866ce14ea7102f0aecad65d185675874c20a586132c7535017ab=
+65b8c273da49dceb7668efde366697ce30bac4ea9bb188a4041f994762f77f3f53a8fd28b79=
+a60756d58ff13a84030c5276824e3fea48a1dd75a802867bfc9db8d09eb5bd6b5275fdf11fd=
+6bb2b78a8647c00d7507bfb95f6e7bf52c458ee51acede971b0dc6b53b9004fb14b04560132=
+5a36c5e2e5db36da25348d603d1e9e70308957dfdc523e171d6c63d667b843bd5f39606c958=
+8586f65219cdcda9c4fa704ee606549dafedc33332378a514bfe88ca8c2ae08abb68620e9ba=
+14caef1d0f5b3f6a7e7e3635c15d6fb0a79c48c96466c3181251649a1b525382bc41b6d99e0=
+5796bcff2e8126dc11c511d4d33d066a1e80295758f85cbf797eb4c09bab071be477690c6a4=
+451949355f09f2af4fa5ba48f1af48c604cf696cd178c0d0e9ca1d5896782e2ca7a2a67473a=
+3451eab1cf7e47e87599bddbb29102aba623ddb437ef16650021a61ccecfaefbe176744236f=
+255e13182980c6d40419acfa092ae119a8d0ae88e3d408118f396f9fcc90da4626215b150a8=
+356cb71c5aa0c0b2c4820c2cac57b2b20614b24cf4af07e7011b3346400e18b8ae32bdbd2ea=
+ab0abbbbbbb941def366e13ad8dc2ef9985a0cb364b4b793e2863540fe409a234ec3de02eb1=
+a06b7e85fb569063d25eead9a7dd5ad1d32fff919de4ff464ee6cf5a307042807e521fdf82e=
+9a0915e41dcffd747343aea203765526b5139400d33b7d6c6eb27b694b1072bb4446e95d6a6=
+949840d089b0539e1342fe55b2f76c302bbe86ab81296284636840d389dda6f216842cbaabc=
+a37f601289a9bab91793487582f970a9aeb760bf69f2a59a121b692c13395bd467ed9d22c0e=
+7df197025bf911da0af966203b0e7e1e754d1e8801577ec358e68518cc712231602a60668e7=
+92c2ca6a19b29a011d6159e6bcab4aad185ea3ca6f01b40e1d0895094dab4a468e3640af68f=
+2d05356897c020296fd63546e37bb930abdda885dc8fa2aa187e7ea07f99dd66493fe353f35=
+8faf8b9f794ff63938b1fdeb931f3adb9e939d630c4c0aad5f04fc0e523830fbbb573a55243=
+861663d88737ba9566794bca5f1beb91ea47862a313ecdd753159e8360ca6e7fa66f916752a=
+71f6c6f9dc2e01fd275a8659df4c7319836f17f58d540cd7120bcb204e2dd025e88ce052d76=
+0ba5a1b26fa074744158c9568737f4ac60bd764c719db24e2723f2446e68a608a91e71cd619=
+9ed180d2652e92e33c0a1c3e2363d40f37d7e8a046abc9b5b74a53254aa950ff41098e24e17=
+fb86eb4c98b754a4b8692afb9afe9a00b36dfd88a6911770e87895bdd9531bf04cf6fe9f590=
+f90bc3b28bb2a5650e7c0bfad41c5d811cae91068d3688e08c4192a0af916f",
+"405378c54d20be317a9e818c0ba6555a97aba69716fc03777916b38085006ddd8de17d5ebd=
+e2c405de9adc1c5cd68d42e65fe0f31d207e6667e18a904071eb9e8a19c5d1092c1937f5721=
+2b5309a825a5a69c6fc51131c2c12d1ac30ff1954efabc2d75b07fc7e72139d4e67e9f14278=
+ccb612cf485613f123e0bb7b5bec44d729189a6e4af5e61903ea8f2893dec6de13e133878e9=
+f4bbd4f97022bd14ae7fc50655a26a66d850b4762c2c897399202251fbc79efe97fc98ce14e=
+c2efe82e956b1293caebc631a4419242186e83a20993c0098c1f635ea001ca9fd17e257c2de=
+03b9bc2b7b2fc1f5d278f56c80e011ecb55cf2c613cc8112df2dbbb712f699cc408f2c2c4f1=
+311909a4c4c694155d9b82d315432f66d2593397ffdb73c8529f07b0094a6285feb785961e4=
+98ad2abb8241c18bd0d26d594593423581f5e6c8ba53bce18afb02b3c41f03e528a6a127286=
+7520bf6edf91ad352bb24845df2521d3aa5f0035031107c0310b87ce92b6b7fcf7cd85bb0bf=
+98dc44cce4a23412c979c0417790dd0c98f9b7948503701dd039147bd13d0ee08d2f6791ce9=
+11c9eb6dc60e482c9d03c9bdb41590de5ad2470f56d6bf3a731a87097b5f584f1ca410a50df=
+03f0ba7c00f67566d342623a94249bb6519da0f0152c70db5118cde7a5b06d0ac9c2d6e92a2=
+82e7e754005b0f0c9803fad96d438a172ab140639972073164f3db8ca715028373dbe2a9260=
+f967a13edc349fc50e9d2b1d177598e510960a8221582cff21807de8f12708a44843f612791=
+0ce7df94450286f48013da84de6f6ab0cebe221ca2e08e2d5181d93c0dfd92327256f83bf2b=
+dddf181adaabe0553c6ff3a6ee02d110c4bb7b7bdef9b3abdcc7a4276fc387a8a1d74b29087=
+3b70449979558b687f11d727a1692a20b08313f77cf7349a8c373170250a88c1229f681d571=
+9c73fe925fe45092f4c83932446d68d0b9940ba30dc8e604690f8aec2f3d12d32c637f18c9b=
+a7c9c642415e1cdd5b20c08761bbb2324712e88f1267816b6256d364d0f61a55b19cdea46ba=
+5586ee804332acdba50f11ae913264a420b5dfe5e2180dac9965f8d7408fbd305095683af55=
+7c9094cc10552aa5980e3d2ce525808e35c2828d1443148fc812f313f3692ca1a23251b909a=
+82fe4eeafc0b2209cc253c399dbb3a329164a4922dba2aac439dc30fbeb2ecfd26ae9c2b043=
+d8d20685f536482a54fb62a2b716c3085a8726db4269d5b38744a44b922a86423b426dd6c4a=
+4fcfaf0ff213cbe3d6333f39561b13663b13d146a0c4bfa89898d3c294fc594a7e4c5c87821=
+af7895f3d49526dd3e1688a7d1975b29f751742ca9b5f8f0368d409c51c2f00d99e81523ae6=
+6beeb9eb2eed2317f51e77513ea836ef6b8e1729acd582b4a4dab90622090f06b12b32069a4=
+52d9c911cfce85ef6e57121f"})
+ioctl$MEDIA_REQUEST_IOC_QUEUE(0xffffffffffffffff, 0x7c80, 0x0)
+syz_prepare_data(&(0x7f0000005680)=3D{"07abc86df892526234bd98949a61d211bee6=
+c3259fe4aa1747c3bafc3ca0fb237d8950c8415087e74b3e5a9d3714499bc955a06e426dfae=
+49f055a0f35d4d4a0f1fd2f3ffebc59b61a752f974eb00665e48cafbd505340958550e0f133=
+7e5f09b27b90f8592a56c5954f81461f1adb2673bb30081f23b17c9ca9ab3582dd91165714d=
+5d7afc5a362d379bda33842fd77f3a15098c141a25e462f6f5980541da3985dccd4c5978bce=
+5cc11c8de3d783a569a35d2353f8275b2517acf7b5b8dee212e1b441106766827232ac8a791=
+6dcdf65c02a705094f3ff38402a1b6ee309a7f351a0349a0781ed35d9a735598f5cba73b618=
+23423058886acce7a98e78d80e1afe1b0983939de8ac87ca718c5d7305654d3bc01bba85248=
+f6784cf8627fc7ada85280483bbc10538074a1cb7eed2433565196330c3bcea3e1fa22b9351=
+6afb38a8f90c139bdce3e8d33027c985c6ee8a04237a820a1958143bf50a60e41093d9ed888=
+2c25aaac445dacc7186008eb43457149f3685107b45248543c8ad2e1f3b038342fb33161aa9=
+3e4cdd863ce63a463b03859861e63f25273d567fece5268d3deb727463eb669722606a45ae2=
+4ef0d811f7d189e69915451f864b738d2e54721b9202bad804e37688182aa3cfd822ea50b3b=
+834ba9d45836d7a9856916fe1c23fd8da3442a54b16fa4db58824e15f2eddb2ac2d730d1b3c=
+9818cfb22087e6aec4b0cf7d85736c680558e7b25d301056c7348b2398b8d1f3ac867c34e4e=
+809e4e635f6f827970c2425556000578e4efee6fac737974a378d3d5a247023b7dd49885aa5=
+49bd6700aa7c3f5055c6339c9bd98686325ba591319a45ebe418acd9953711c0cd56c4d15ad=
+d08f6b32f5cf7a9c1228666c72f18700d7081182230b3e852056f0bd6c5bbaa0c1bc581249f=
+874db71c6b0f617b620034e81b25adcd738757b0141f11700b554be8b078551c9b33dfb3bc5=
+b4f971b7781493e9a4b8d66b9e7a78a86e64ffe1d597177f935e45a07829d944dd2a1df7e29=
+d045f3b535497047cbb0027ae7c4d16da10eb82e009a06cbcbece46a2708321c824307526e7=
+72bfc2a0c14da68c92d05664637ec87221c70f9f041f337c4d73780a475908e6e2baae83af1=
+9bbfdc0ccc4417ea02eb341c8beb4f46381b2b1ed5ec43a09ac6c3690220ab4f467a97d2009=
+2e32a4bcaf34edbbc8dbac23403df150526ddd6a7d38e5c71cfb010d67e0de8b31bc3146ef1=
+bd5148dd792f9fcb49a7d56b768acd054a2a195e32872abf9d21c8ef7e3c6597158e95019ad=
+a7aa7a5dcc550ec30d81a06de884618cd9ff89512b1806794967dc5beffe0b5a4a2c3baa5e1=
+e6f18192ab63bc0bd9670793e4b84e99a937859ec2e7f3db0fdb8eaa923661960c5adb29948=
+24bb240c5af8d35b44c02440467699909a89141ce766d3a38b6d59fdd1a96e",
+"3022baad3a93e38c0ed254653468923dda3f2bdffade8a350e9c35631093dbe83b4c856d6b=
+e5cff5224744db368ceef531ce58ed143498754aaa949f4ad73e5662f81eb7322156c8b6478=
+91f9f5911bae4e1e5c61b72feac04503a22279b7ff9b3a132e3eac19280cc7741de70eaab2d=
+7a55868f2da1a9454f7f0ab2e53e7e34830f5002bc3f0af07e5b2f4c9cbec44f140f57cbeb7=
+fce75639033619af1f7023decf01db2523e52d1b271fdd73f39d64ca91ce6ed192eafea5990=
+46e2ba4d78fcd378a85fd90b3aca5165e793c7c963272a0962013e238dfb1db78498724ed52=
+d6e6a14a54ae52372720ea52675baeb6c1b231118d7a9c5737e1c1eae0f0b9bcb0634e71b27=
+611674df4e9a5cac42c7a4e51b2c64b2a77775b38b2ad1d2e30be549a32ac1cf76a2b4a1fa7=
+b0388bcb42c1977a2654e82d3555e9b99723b08a9f6597cd43b2a0ea961cc8b9e3fb693fc25=
+a99b8e3b53ea7af82c6d70925e1cb17c32887258ebc962108218ac43eeab1efed2d5af305d3=
+99dc7258027c12a982edc9411844ff965eac3f0adbef3adfc3228e69003b4a99dce2b87089c=
+832de0cf03097700490b88fda8074de29587adc0ddea0f305aa4a390bfae1def35bc0655d14=
+db783c7cba55f6b1c9f8062b8ceda4f8ecc745dfa5662f132fd353b36695e474f9cb45bd45a=
+b284dee311f5f05b9fefda16158f02173b31357f9046945e3e4cf8f4239a6a03c1cbecc884f=
+a0afe09a726506123c68680868cf87951986c005e145f5a78e99c420bed0c7859511093099e=
+334d4e28e9d768615494c42844e1c187114bfda90fa6139cd435290dc51dc6ddbf5078c6986=
+7a63275fae5ca95c41edf56d6211fdff84d4d92a1d9259cf6f1a7128250e321d8fe46e5293f=
+1ed6e76b833f4094ff535ce50c01b6b3b020cafd348125b8e86eaf95588ff79631035e2b479=
+ec3240a725415b4a7a7f594e7c5b1e8cf927347b88c4ee229747e1580606110cdfaf2ed246f=
+08018d8dd9e0e981aa58dce4247010f4de76cf84bee1ec52eaa09188b467ebd5bd217f9af30=
+0857e6e9f1b88332a49be43b7407d02ecf2988bdff8c867ce54e8eda23257cf7f6baae869de=
+e13dc919ee1a5c33aa3e4882fbdc20ceb03a2e0150d1eb748c411afc932a677660989b76975=
+fc271a5eaa8263e0273b3d997344b5b4977077a0a7e13b0fce4982922a66e822530ba824435=
+a89023fbc4db77dadd0c46f5cdd2a6289239a93a0cbb88c99655abd8786374bc30823f94d2d=
+352c785d579f9c1e9b1fcd30200e225a58f17d3a8ba80a573f2bc5916237a09bd50c692cf7c=
+21f6ceae2a2e2808c7d5d9170e856a8083253906114664f7395b287e3da9c80f678f6d63293=
+37e3236bffe572c8aec9488284eb8720fc615bcdc2cdd8a5bd4e58c35c232bb1415397ba345=
+315136165cc6bd02c7d4cf89"})
+r0 =3D syz_open_dev$I2C(&(0x7f0000005e80), 0x3, 0xc040)
+syz_prepare_data(&(0x7f0000005ec0)=3D{"a6ace229850abadd96630d23d189a8952caa=
+9190f283cf20b0c2aa7944e3c71cd234f34dfa7542d4679545471519198942dbaf6f7c90c90=
+74d0f69bd60a9f008339326683a6fedb4b58d433e50b6745ce7a2fe5a63993f6e1e6a1229f0=
+4e089484a4240ba143b850d1b48550392173e121fc3b9eed37ce8e8611f6dd9489112d234f9=
+ebde6458fb6ce80b7d920f4e3ca8284e82e3801f21cdc9943ee4d085e9df7f8f707d2b81224=
+fe5ea308370c0abbac0b9f15a80ff490cf8c39119e02727653fdaa8870f8963fdcffd83d0cf=
+a96e294144c3af02d7483ccf4361a3f5cd73fc750a3a54bcb046eb397af998072577814ac4c=
+4975d4f00517eb85100ee050950240917a671524986b49fd577f95d3851216bdd707fcd93e9=
+c774f600d721a31499495664e14036913b04728e8e3fe4f4ffc7eb290b1b6c0d65488ded2f5=
+11e1f11130975d1fc321d6cc7a13a6c988d145fcad158297a298f3fe0f3e1b7085249716a34=
+f2c4f0dcbb03967a65357c4692d201abb6b64b45d3b79dbc352add44c79554796e8653f4999=
+0525a6d979223b50c9be21e3170012fa032947fd1bb8bf425c61f5752ecfc4c2052c7d97871=
+51a26c08f4db3ab307699bb8f2547cbdfde0d7391758fa1d0de42cb603c11812818066ad153=
+43f19d0a319858ef61860454335ba61cb712234332f6235f220732b156d6d50e26cef03d74c=
+5dd1491b9cd7ff651551558dc645e69411e044344a04eed2ecb7d0fef3e7351dd58c36c3b71=
+ff639c7192bc93329c71578b659988165f629bcaacc315d20631e880d0b0ce8463e40c23707=
+9214b8cc5860159616d05644efc6f442e68b02c34aca1b70b46b62e7e2725331f3d7538fb01=
+21e1c7c406b1cf28a796d2fb6fbd8d5ab3ab891b73979d216d1531ae381cf381c0f1dd6b361=
+72728c5c427b26c8c5802c3854fca8155cf7632f890d1ccb59f3d427afe7177a06240b7c58f=
+b49ced2fd52e1ccba01c99be4acc30906bfc012a1e0cc846baad00da48117fac5d3057f038a=
+9f4c623ae4b67a428b799d2a76c8ae87278e3455186d81c8adf1eaa2e00dc75e4706881a42a=
+a94edda8c639f3ef9c17cd14209b75798b9667fe244d6d33eaa352bd06b5bbf44c97b73b76a=
+52f1a722a1b64be031e0614afd761bf3117fe91a772cbc271c7deaf05411677c883859de181=
+01420846980f30559945692762774a970f39b10308a5e077d75a53011b753203204cdeccc84=
+43bff2d2ff97b11b04b612f53e1f54f45648ff6abd665836ed5839b8f886bc3931cd4fec6e7=
+6e0f707b5f93e6ee4d282857c023e3ead34259d315694fd79cc7517d8bb590336abfb3ae7c5=
+deb83950eb7058fe3159d804c27977b8174900949b9d906389545c9377b06e25f761a062656=
+22defae4eba6c95c15de826ee85ffe1525c50ccf99e5a16fb4306f949c0493",
+"ff0ded6ff00509f27cf87d9bcbea389b9153f6af8daa2b3d15e0ff7982ec1c0bf69ff52baf=
+ff4bdf643f2ecec15f1debfa2c14af61b3cb197cebc2575162bbcb8f74e37449f4b40694d2f=
+5221eb4841467e56706f84b7bf513ba10883de96546ad76a9c890a4964fda53dafff036705e=
+86c798c753f9cdf66f5cbdde2f65b5cebcc16196ec693bb1fbb8694157eb1010530b7ddc976=
+beea6346913eb4fcfb68d4d1f1273339671d5c101ec539c24989cef8c931607effa8a20b005=
+061aef76b0abf2056c66c0d5904322f13565375e9c62de855b0da7da42059de827a76b27ee3=
+8e6ce61bcb83cf7bfcbad322e4e1be606ac5078ffcb209a2e4df03d2e75471e55de9b4e84df=
+b22f2ee10b3c66d49900a1b4aada9ec63325bd1c15175a16b7692cfc4ff8daacb6f483cf8d0=
+054cbfe9bb754cf4d1ce7a83fa688ed7a356587d584cdd3803a492644fdc13c482f6dec9ae9=
+39a2e351bfd9256e15771fcc6d922ddaa0d956a210188f16ae2f8913d350636afae3ddb333f=
+75455900fce4b88eeabd42cf6b3397d1532b4727ac4f3df3d178dedd8602794db06746c7f47=
+f15d2c26881b8f037a78edefe93cb0abfb802550d2b74674eb7e2d800e7204f4f97c9b6ff74=
+28daf8c3af21bd6ff7cce4a56eea4e0a56e161cb22204e32517417bc9c65547384308c9e32a=
+75d28e08abbac33f25b51f54ddd13818cfdeae18d55a850f3fcaf07f93d2d2e089ea05e9b78=
+fab00fcae89485b02335b101ab27619f46c637d153e34f7023642b49a4d265fd0331ceffe71=
+c68773e08e156b9ed5b35676a9f980a3fa99aa31c52bae8ee7eb8f5b2b94a41eb274f0ef7a9=
+6d899c6d02b6a7feca8d6a893e85ab1551decb0420a05092380d1506601ce4d2d701628b276=
+30de4703602692dcfe135b93845ed02d6974e8d8e8dc57670497911d77c9cc26aeaacc8b716=
+12255dc9a6fd9698f9efc7671940bef21874ef56e00aaf9c4ed9461c6d3c67c7fd61981cd07=
+d4e872f52b69db22368f09e1a95930617894deab340024aa65423c5a8058631dbc4d676f2c8=
+bda1a61c414da74b8895edfe57a577b71508c44c7938874430dd9d1ca02b5faf222fecb5e07=
+8782cd5d0139ef0b03a6065cacefb3f5af1cd7c39f320ce7dc515308c65b9a9a429edc79485=
+28275cecaf82255d6cdd2833fafd84ee018d00302715dafa5d01cfa64caccf3789ecc1660d6=
+798072406c3754a21ea877e3d62da4c56a20a052b147591b7f6f7232030a58c16f3520d0c92=
+a13b8c2d0fdfd167d7d75cc969bd3ad4279843eb9e380fe9336b43ef8b6ab6917a18d499453=
+5ac0f939124994062e54b2e12e01098550885c0b8fa34c35e446c497668485afda83d7c1e5c=
+431cda959320a10d52397e3b7be7d1915af4f2d43435ebf8ce4d4f259d18a7218b2973da264=
+ef5b5fd8893c9558cd59b162"})
+ioctl$I2C_TENBIT(r0, 0x704, 0x0)
 
----
-base-commit: 67029a49db6c1f21106a1b5fcdd0ea234a6e0711
-change-id: 20251012-10gbx-ab482c5e1d54
+(above is exactly the sequence I am running to reproduce the problem.)
+
+> Should an error be logged, or is it a common scenario, that such traffic
+exists?
+
+In normal deployments, I don=E2=80=99t expect such traffic from a well-beha=
+ved I2C
+device. In my case, the malformed length only appears because PrIntFuzz is
+intentionally crafting invalid inputs and feeding them to the driver via
+`syz_prepare_data()`. So this is not a =E2=80=9Ccommon=E2=80=9D or expected=
+ scenario in
+real-world use, but it is a realistic attacker/fuzzer scenario, since the
+length field can be controlled by an external peer/device.
+
+Given that, I think the driver should treat an invalid length as an error
+and fail the request instead of trusting it and risking memory corruption.
+
+Regarding logging, I=E2=80=99m fully open to your preference. From my point=
+ of
+view, logging this as an error seems reasonable, because it indicates
+malformed or buggy input from the device side. However, if you expect this
+condition might occur more frequently in practice and would prefer to
+reduce noise, I can switch it to `dev_dbg()` or even drop the log entirely.
+
+Please let me know which logging level you would prefer, and I will update
+the patch accordingly.
 
 Best regards,
--- 
-Birger Koblitz <mail@birger-koblitz.de>
+Guangshuo Li
 
+Paul Menzel <pmenzel@molgen.mpg.de> =E4=BA=8E2025=E5=B9=B412=E6=9C=881=E6=
+=97=A5=E5=91=A8=E4=B8=80 21:22=E5=86=99=E9=81=93=EF=BC=9A
+
+> [Cc: Remove bouncing address of Jeffrey and update Jesse=E2=80=99s]
+>
+> Am 01.12.25 um 14:18 schrieb Paul Menzel:
+> > Dear Guangshuo,
+> >
+> >
+> > Thank you for your patch.
+> >
+> > Am 01.12.25 um 04:40 schrieb Guangshuo Li:
+> >> In e1000_tbi_should_accept() we read the last byte of the frame via
+> >> 'data[length - 1]' to evaluate the TBI workaround. If the descriptor-
+> >> reported length is zero or larger than the actual RX buffer size, this
+> >> read goes out of bounds and can hit unrelated slab objects. The issue
+> >> is observed from the NAPI receive path (e1000_clean_rx_irq):
+> >>
+> >> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> >> BUG: KASAN: slab-out-of-bounds in e1000_tbi_should_accept+0x610/0x790
+> >> Read of size 1 at addr ffff888014114e54 by task sshd/363
+> >>
+> >> CPU: 0 PID: 363 Comm: sshd Not tainted 5.18.0-rc1 #1
+> >> Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS
+> >> rel-1.12.0-59-gc9ba5276e321-prebuilt.qemu.org 04/01/2014
+> >> Call Trace:
+> >>   <IRQ>
+> >>   dump_stack_lvl+0x5a/0x74
+> >>   print_address_description+0x7b/0x440
+> >>   print_report+0x101/0x200
+> >>   kasan_report+0xc1/0xf0
+> >>   e1000_tbi_should_accept+0x610/0x790
+> >>   e1000_clean_rx_irq+0xa8c/0x1110
+> >>   e1000_clean+0xde2/0x3c10
+> >>   __napi_poll+0x98/0x380
+> >>   net_rx_action+0x491/0xa20
+> >>   __do_softirq+0x2c9/0x61d
+> >>   do_softirq+0xd1/0x120
+> >>   </IRQ>
+> >>   <TASK>
+> >>   __local_bh_enable_ip+0xfe/0x130
+> >>   ip_finish_output2+0x7d5/0xb00
+> >>   __ip_queue_xmit+0xe24/0x1ab0
+> >>   __tcp_transmit_skb+0x1bcb/0x3340
+> >>   tcp_write_xmit+0x175d/0x6bd0
+> >>   __tcp_push_pending_frames+0x7b/0x280
+> >>   tcp_sendmsg_locked+0x2e4f/0x32d0
+> >>   tcp_sendmsg+0x24/0x40
+> >>   sock_write_iter+0x322/0x430
+> >>   vfs_write+0x56c/0xa60
+> >>   ksys_write+0xd1/0x190
+> >>   do_syscall_64+0x43/0x90
+> >>   entry_SYSCALL_64_after_hwframe+0x44/0xae
+> >> RIP: 0033:0x7f511b476b10
+> >> Code: 73 01 c3 48 8b 0d 88 d3 2b 00 f7 d8 64 89 01 48 83 c8 ff c3 66 0=
+f
+> 1f 44 00 00 83 3d f9 2b 2c 00 00 75 10 b8 01 00 00 00 0f 05 <48> 3d 01 f0
+> ff ff 73 31 c3 48 83 ec 08 e8 8e 9b 01 00 48 89 04 24
+> >> RSP: 002b:00007ffc9211d4e8 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+> >> RAX: ffffffffffffffda RBX: 0000000000004024 RCX: 00007f511b476b10
+> >> RDX: 0000000000004024 RSI: 0000559a9385962c RDI: 0000000000000003
+> >> RBP: 0000559a9383a400 R08: fffffffffffffff0 R09: 0000000000004f00
+> >> R10: 0000000000000070 R11: 0000000000000246 R12: 0000000000000000
+> >> R13: 00007ffc9211d57f R14: 0000559a9347bde7 R15: 0000000000000003
+> >>   </TASK>
+> >> Allocated by task 1:
+> >>   __kasan_krealloc+0x131/0x1c0
+> >>   krealloc+0x90/0xc0
+> >>   add_sysfs_param+0xcb/0x8a0
+> >>   kernel_add_sysfs_param+0x81/0xd4
+> >>   param_sysfs_builtin+0x138/0x1a6
+> >>   param_sysfs_init+0x57/0x5b
+> >>   do_one_initcall+0x104/0x250
+> >>   do_initcall_level+0x102/0x132
+> >>   do_initcalls+0x46/0x74
+> >>   kernel_init_freeable+0x28f/0x393
+> >>   kernel_init+0x14/0x1a0
+> >>   ret_from_fork+0x22/0x30
+> >> The buggy address belongs to the object at ffff888014114000
+> >>   which belongs to the cache kmalloc-2k of size 2048
+> >> The buggy address is located 1620 bytes to the right of
+> >>   2048-byte region [ffff888014114000, ffff888014114800]
+> >> The buggy address belongs to the physical page:
+> >> page:ffffea0000504400 refcount:1 mapcount:0 mapping:0000000000000000
+> index:0x0 pfn:0x14110
+> >> head:ffffea0000504400 order:3 compound_mapcount:0 compound_pincount:0
+> >> flags: 0x100000000010200(slab|head|node=3D0|zone=3D1)
+> >> raw: 0100000000010200 0000000000000000 dead000000000001 ffff8880134420=
+00
+> >> raw: 0000000000000000 0000000000080008 00000001ffffffff 00000000000000=
+00
+> >> page dumped because: kasan: bad access detected
+> >> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> >>
+> >> This happens because the TBI check unconditionally dereferences the la=
+st
+> >> byte without validating the reported length first:
+> >>
+> >>     u8 last_byte =3D *(data + length - 1);
+> >>
+> >> Fix by rejecting the frame early if the length is zero, or if it excee=
+ds
+> >> adapter->rx_buffer_len. This preserves the TBI workaround semantics fo=
+r
+> >> valid frames and prevents touching memory beyond the RX buffer.
+> >
+> > Do you have reproducer to forth an invalid length?
+> >
+> >> Fixes: 2037110c96d5 ("e1000: move tbi workaround code into helper
+> function")
+> >> Cc: stable@vger.kernel.org
+> >> Suggested-by: Tony Nguyen <tony.nguyen@intel.com>
+> >> Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
+> >> ---
+> >> changelog:
+> >> v2:
+> >> - Keep declarations at the beginning of e1000_tbi_should_accept().
+> >> - Move the last_byte assignment after the length bounds checks
+> >> (suggested by Tony Nguyen)
+> >> ---
+> >>   drivers/net/ethernet/intel/e1000/e1000_main.c | 9 ++++++++-
+> >>   1 file changed, 8 insertions(+), 1 deletion(-)
+> >>
+> >> diff --git a/drivers/net/ethernet/intel/e1000/e1000_main.c
+> b/drivers/net/ethernet/intel/e1000/e1000_main.c
+> >> index 3f5feb55cfba..cb49ec49f836 100644
+> >> --- a/drivers/net/ethernet/intel/e1000/e1000_main.c
+> >> +++ b/drivers/net/ethernet/intel/e1000/e1000_main.c
+> >> @@ -4091,7 +4091,14 @@ static bool e1000_tbi_should_accept(struct
+> >> e1000_adapter *adapter,
+> >>                       u32 length, const u8 *data)
+> >>   {
+> >>       struct e1000_hw *hw =3D &adapter->hw;
+> >> -    u8 last_byte =3D *(data + length - 1);
+> >> +    u8 last_byte;
+> >> +    /* Guard against OOB on data[length - 1] */
+> >> +    if (unlikely(!length))
+> >> +        return false;
+> >> +    /* Upper bound: length must not exceed rx_buffer_len */
+> >> +    if (unlikely(length > adapter->rx_buffer_len))
+> >
+> > Should an error be logged, or is it a common scenario, that such traffi=
+c
+> > exists?
+> >
+> >> +        return false;
+> >> +    last_byte =3D *(data + length - 1);
+> >>       if (TBI_ACCEPT(hw, status, errors, length, last_byte)) {
+> >>           unsigned long irq_flags;
+> >
+> >
+> > Kind regards,
+> >
+> > Paul
+>
+
+--0000000000008e01ab0644f27812
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">Hi Paul,<br><br>thanks for your comments.=
+<br><br>&gt; Do you have reproducer to forth an invalid length?<br><br>Yes.=
+ The issue is reproducible with a concrete system call sequence.<br><br>I a=
+m running on top of a fuzzer called PrIntFuzz, which is built on syzkaller.=
+ PrIntFuzz adds a custom syscall `syz_prepare_data()` that is used to simul=
+ate device input. In other words, the device side traffic is not coming fro=
+m a real hardware device, but is deliberately constructed by the fuzzer thr=
+ough `syz_prepare_data()`.<br><br>The exact reproducer is the following syz=
+kaller program (system call sequence) generated by PrIntFuzz, which consist=
+ently triggers the invalid length and the crash on my setup:<br><br>syz_pre=
+pare_data(&amp;(0x7f0000001600)=3D{&quot;8397f6487c655967660f57714299c4322a=
+730bb9f1062396e7d1e1d5e135079353551d27e225de8fc44d9466ff0079ae95c17d4b5d460=
+3c280e741132e5006990fbce7e3df4aaf2a7f677a906cbd82f8845b8dfbc1145422a769a7d7=
+a15718e16c6ec788ae1715ce47bb7627ddd6d6e0ae53ffb1aa37c0891f12d96d2539d7fff25=
+bf36fab3e522c9f6170084b6f0d8253583320497712437e3fb26b8590fe053dea469ff3dc41=
+b62dd859ac542e247d337d616089fba613c35a9f08feb433cfb2a121a13930b03dbd81f72c4=
+a6ea8c76c050af7a7d74979716c479e4869dcf1cc9a7dde3a8c14ebf3e185539b049acf17e0=
+5f899484a0e2788819b9b287f76492030af3496c287d2b62178180164e3b9bf28c4dd7e501f=
+d83fdcc9b761b32c0c0b68873117f9da36a8f6250774bada358e409f7418584770f6c9be1de=
+7bd906eb96737047ac8e53b02c216f611359d00d7d5cb4584c9caf14f37add6ff59998939de=
+d4256b6ba8cbb9764cefc1cfb01572b9feb0cf75c32b18aa5f091b73f7f0ff985a9eb752df7=
+76f09c53152cc677d06a77a40ad56c623a760c05e5c96ddc2080f24985d898411aaec049b89=
+b018a3bcab22c8577d38d65c2d033e2cb6d1f993ecb4652b2309849f099e730ddcce9e462c9=
+3d00f7680315edf6b8561751a52eab9b17369a6ed7403e2c2cceaa859e586137615c021df00=
+b61db2cb05db5b0d57c2886b98a03b506b184b9674841507f88ebac9d47e591a372db6dbe25=
+397fdb83a1c1260c3e6ce2ecd49d4c487dfb8651bd5146666379488baf32e80872c59f33d41=
+23ba80988cc787fa89cb605b6e785e36ef550879853725b77ec1c11dc6704c6d819b1b402bf=
+6b64bc763327c40b9f57df497a4da15d9c6d460303af4e5674528111eb87218045f1a4f10a6=
+5d4418d45e2f0ef37addfb704cba31bc6d533b74e56efb9ffeccab50779c367c2f238ae7cb3=
+5dd9fa40abc18561a0d07d6ef9025260439a451a49dceaad0ab9ab1c7399ef757d123c4faa2=
+25ebf2107dcbe45d8d2747b5324086486f64228649aa5fe62cbe58e48dded17f3a9b2bdccb0=
+c2889f012a3e9eb94ac8640d305ad5dbe82e37dcb1825f9ec60fa6b9826e9a17f3f2a02924d=
+d4d85a2139a9e26dc66eda684e67b48997086afd92a8b1c07293949960330f8dd5a52575bcd=
+df4b3783d88aa5febc6897db8b8211e531312f931a97baf1792ddb1ecdb2fa6af3dc8e3b57a=
+ccff4519dbd1baf37008b06dbd8a9f4e77a9412685ee71eb730bfede491b0a70833606b9406=
+9562968d1b26cf20ca11506bb4fd8d8e7f42e7d9002765dffdecd4538f6ba6a38b6913df449=
+2766f5cff558f26f0d26a1765b5d80f8f827d9cd2d49998ee5f58a0cdf6a4eecc7b644939bb=
+15f842dbeaaa0ab240477673ebe77eac29bc7cdc49e8b65f7f718bdb0c9541bb&quot;, &qu=
+ot;51bd278af79bd73c614dbe57eb8d3acb86a1122b1f0d9898f0fbc8f57426f97d2e64b2f8=
+e7b7a98eea5f3a84fb56bbdd2a1c45509a900952f53d2d0c1b5120fdb1e20847c7ee055759c=
+78cc792aacd658cfbfb4a5db836f98fa9ed33ae07ce8575f39a909233959f987971e49920a5=
+9e1774c0af7025d5d8b102c7ba332f70b578aafc889224d428532355a47a3937e558cfc2606=
+642e0f2d5ed0476473b0772a73d101d2e0e0dc4c2852581f8d64f22f2de1517955a35781481=
+f0da54d819688558578d287f440108a996200bf4e6063a4db7b8c352455693862deb2949ec1=
+9ff4ae0c24d3b9692be85c91e7a485adb33ca2158e96a44131a8fb2bdb26477126b9549d481=
+1486eb4f43ce887969a1a4082ab86735b92138dd32ca2d50eee09b0f20e72c74fbf746a3a9a=
+7e4690d166efb41a002a20a1568aff13cf9c9d32830597e404eb520864c7a5ad8d30a7e1d05=
+8cf9c0f55eba97b71426774e5032abf8a42ab44512c2c567546584d562e5e37f07d59161a03=
+8ed170d339165d6394aca7b65fa63c20bc3fbb518ef6e3f19abb84fe830ab61bcaff1307d5d=
+9e3b7d6a2fc3b2221abb33212c2958c58f1b45f7700a82c8922e143f3ff356a0bd3cea507df=
+e10abc811004d11064fd99ca9482ab726a0078f8eb4861fdab19e7e9a9f064f64216b6fe982=
+3f2ae7442e351e89b4812094ac7650696265b289971a892e45e769b30d0931ea91aaf2177c8=
+61141d01eb5f6ff5db4c6a6fd5aab432318a05a740f20906e3f4549a4b579059fc6e8dc3ff4=
+afeeddd162c872aaece262fa6250f159a64b5242ea8189549770e9238650047a41349fcd26a=
+c6258109b93f9fb2a6ec3b383b79136f6f905d37e63dc8bfd329ab656d452ab5ab6621c5bf9=
+fc5c6212e3b9cd791949c7d77747b88cbb921774e6c1b694f3cc5db939e3240bbf60165c9b5=
+730f799671309b8bc45f04908e2f72abefd80d3f22db1d5168c7496e9cb6d63a5135ac6c3b3=
+d8b8643b39dde18967f2bec01cede7d9ff14ce0a0ccc1afea261222899b362dcda432f5618b=
+8d2855f1f2781d1b2ca751518ebba757126fc5cbf30b2db855d2d24ebd70b8ff1d95138c57f=
+caa3646662a52be3f1d05f2aaa55760d8427dcf8c8aea7f1cb4e18ffa694c1c7d853c0859bd=
+d2ae2642ee8b302dc89d4713b1867f587f8740b5daa543d84bc7bfe35bd87fd9b190655224d=
+9b98bb9ac316b5b35412fba5269915fd9a9f33997b1bb971b26ed42cd000ce51bc270d5381e=
+3cacf4af2fd5f0a01c40613ca5d5384bb70842fb277c9b3418160e3c270f227106bb57a19d8=
+1311b62e89dd65a3565b4c8fb2311f2730300b9522f5018621df0410429959811759ecef597=
+a69d242f407b393b4dbc00c49c9117227ac04cdec228228b1e28f17033c492677d24d8a92ce=
+8a5663540d57a0ce9195220248&quot;})<br>ioctl$I2C_RDWR(0xffffffffffffffff, 0x=
+707, &amp;(0x7f00000015c0)=3D{&amp;(0x7f0000001500)=3D[{0x3a3, 0x8000, 0xc0=
+, &amp;(0x7f0000000000)=3D&quot;41b9093788ef424a4c3561d43d079803e986c2b7d20=
+511715d89c0d29bba5afd25f68da59fbb5e7c239a456eb98272bd7cc281bd9c92e262ad87c8=
+dc0eaaa0ea805401183a65ded5e8ed1f979fd99f36e9745714a70d66a7f248e9178d26eba1b=
+b382e1824912d9e70bebdaa10733308d597380023163088067fd513639955b8b897094daf52=
+117b97080a1cebb28fe1512cf126bcb9dbd925ba4751eb6655713eea27dc77c4bb83a0fd065=
+d78894e6112b1688b28d03dbca9f57e13f329424a&quot;}, {0xaf8, 0x1, 0xf1, &amp;(=
+0x7f00000000c0)=3D&quot;31586b027be71f6e4bc9c80573b2a4319edc178c121f3f74f5f=
+bf819bf3210901d1c3ec01c4676cfc1aa14ab36ded380f69943a56e140e033c62a7516004f3=
+5098413d0f5dcd69ddd8b5eb16d7d4330498a0534f7a40525abab4747b4f7750059fb84e625=
+47db9d08298981d43c5e2b7230d5b38312b8e758eb5ad6832d3c436968ebc3e28b8aa8939f8=
+4d8c22824a85a28a16fe1fb9b4457da98e15f17d62e05b3d52dd904d01d7f1dd37b36adeeae=
+083c374605890aedb6a3a409bbd98c844566efc780037b19e766ef9ee90a8c8be93e17c0c54=
+12ef3587ce9b3232b89f82556c74d5c6d60f97d158f10b54626b55bf&quot;}, {0x7f, 0xa=
+000, 0xf6, &amp;(0x7f00000001c0)=3D&quot;096faab79d216200b0321ad4ac96b7c54c=
+b3d98adc8e36c6567a23cc26bc8efb375c80479fc5282ebf9f8a35faa8695988a43744b6107=
+a95fa1bfce7cea2cc838b21186b8cb19e5c788e0c783f65cb178382c64694cdecdba80fe2ee=
+183745f128da01ca2b6500e982d46cf7939e55f1127b244c13a348cf9ddc10dfdc0316305aa=
+fa95ed3d621c1eedcea9406efa0c5452d6b03f6bf9bcc8a93ba85340c6441e903312a11cf3e=
+7c2acf4c7b87d7e8e3f299efca2472374bf035dd9c66a3058010f33af35b6233174f465e824=
+998578737dddf0d998b950698c830deb233eaf5231abbb9e17d70e529591e595bbb84859967=
+f3747f56&quot;}, {0x7f, 0xa000, 0x1d, &amp;(0x7f00000002c0)=3D&quot;e7bcff5=
+b56f10f90a65b81254ea62b7eeb63c2fb25d888de82068eb3af&quot;}, {0x101, 0x800, =
+0x3, &amp;(0x7f0000000300)=3D&quot;e89dcb&quot;}, {0x800, 0xc000, 0x88, &am=
+p;(0x7f0000000340)=3D&quot;245d46d584e3ef9f7ca2336fe30207cb941ffdaa98d1ce92=
+6ba234915e95f14f5bb4148cf54ed204481a75bf265d19a8b5e4fc15b0dc150e59f2f40dbeb=
+7f4057caf90d67546bb9e6ebdac9b367d7322f2d03b2c472db023129749dbababb2a45fc7be=
+1ed45fb4bb29568be4c643b9cba21f521a40264a376f53bf4cbd0a548fb61794bf74fe3db1&=
+quot;}, {0x7ff, 0x4000, 0xb0, &amp;(0x7f0000000400)=3D&quot;ef88684792d8212=
+81b12b5803c4ae815ddcf01368b0c86d7a6bbffb5980d6115e768cb665d8d416de06968ed04=
+6158dfbaedcd60bd30eddb808443b1c5ed8791de0c1f9bbd9f1a0f932c808f0755953394f5c=
+33a7d3108ba695d52eb7785b931490aafd5408ed6da09b443abcfb23ab7eed5526ff730b037=
+2bc2b64d177bed5f4a333f54d2e3b339e668cb94625e1e816bf57ec3c724ec6c7327dad11bf=
+1852e8490b93ae8551cb833eadfa57e0964b9&quot;}, {0x1, 0x6000, 0x1000, &amp;(0=
+x7f00000004c0)=3D&quot;012e6b0fa0f75fb133ea592c16c78753c1864ddff664c6888ebc=
+f381f0e5b0c58d3799b3f06f3138c65cbc6763958ca831a096f498d5a459ec5b9a5586a4d2f=
+e7834b71084ba9d9ac31bf37f27e25f62b4e3a046c1e57d33ec4608e0d075073755232243d7=
+9d7bfffb05b18c3d9da97e764a7cd00bf285714b1aad493093d47f343903cddc094c256570e=
+ba6aa31c338e24072deb47afc79b0ee4ed741ab625b61d9c3b80d6ffc1e2024be8a05644390=
+556273f530a256db7aa9e45841c115176c368618a85ca82148e06f82e68051ce16fbe28ea41=
+d40e0240f1fa415994fd6a93b0832eab586648146887856066efc65a720328bb6738abd9c39=
+8a549315dbd66e4838031692994f7fea492c60415f8b202c15a772c6f11cd51eea8aabb9d6a=
+e759bdad54536cad0a832b3a74efe597a7234ae63cc854091b851ca251a899224e0316c69df=
+9142c8a907358b0417f4f0486fe358b16bc1ad5b64ce2bd39403c17ba2bf1b2099395c42d2e=
+da7132ed3d975753d83fde8b36f4fc5fe4948f139348ede3c44092f37adcdca305a402f1ea2=
+3ecd1da5319ffc15edd932398252ec53f5f5f31aff6212567fef85624d3139021cd878511ad=
+1120688ef24e893a6b071bfca61fa91fb36966876441571aef097f17a37de95e439ff55ff0b=
+3f859a6162427c7195f9b2737519d3592247a20a3f068df3aa6f6eb8ae8cf55db9e5dc49051=
+9eacb013ef12a7892eea88285444c07982595507e04f2e382bf3f1c10137a46f3ecc1780690=
+475d1154e2b2ae98254ad6506cf5c6ca654e60626d9cfc6bb78d6552d92d6c313e852e60565=
+278cc9a94885f641063b26ff9a2f3666f1ffb18235c5810dbb7629eab06877a96b226568a0f=
+5b9823e1a927f650c4c2d257d9bc0a732965adb536ae0f2bb72894d6f022d9ca827712e8621=
+c92472251d42d3ea752594f52d742cc6218086d011598e506d0f43cb7d898324f585e60bffa=
+6985875d2460af16cc19cc18b8152dc192111dfaee8fd6547f03465044b1a7d8eaf0e22a9bb=
+e56402abb4aa9ebfbaa3d03be7ca1d42031eb92726362c3f0150484a203e303bf9b62a78e8f=
+dd6c16fac2fd7632ac790f1b6e581a6bd35dea2f69979cb1838db1cdf2f89f4cd25304a5bf6=
+dde2a76288290deb8e6b4577cb66a7b0184416153093b217c2b4cabd6d9b8730bf8d05ead97=
+de90a1f6eedbbeb9b5ea6754a208ddc0627aa2fc01efe4ec1fc6b17e86394f720082a1a97e7=
+4caf011265089d5cc26e931dd5aab7ad028046c11d0b0542e3f228c3232f5c86661f5dc431d=
+6915030a37ec56a42b2ac59a7dae55eb212ff0c13da803430379be7cd798d4a99ca78272b45=
+7d871d18f922a4b07d3283c5ffdd261e3adfe7f881cddb75f76b3cc46abd92ad3df83b7b013=
+1b740be707089321f8b86388df27d138831e342c8ff0127296c73b304ea4c9e25249536336b=
+ea420bc7c10b533b99517cd91ff8e68ade7f277da09ad698eb0d44aa200a1188834a2fdc58f=
+63d7319fa1d25e442b59ce406cf29a178a912c5cce2bd5d8b11d0bc448ef46b3aa9034d9d8a=
+034939e5054feea4978991c81cb6f81c9673b3a2eb45c3b2d7311e07e95df83ae23082fda2b=
+c57a2510ea0613e90690c9aca3c0be75d3ab1c92dff8a8bff9db3296a0687c883db9811850f=
+963717bf7c7b848550fb8fd9d626e474f081325cdb800edcd5104448c48d1185f65e1ae7f45=
+f76d4afa0027b6de0bd7388199c8e056ed1d5eade447d326380e99e3ad8fb4d3064b3667d5a=
+5112d503dbc429f49f8366c483926af5aec704a8fa654423fdaa58433cd1296c006ae4da0d4=
+639efd27421243bce8bd1bc8806c92dccf00d24d2dfa5391a085a8d6814d2f89b0b0dff485f=
+27bea92fab2cf615406ba1e21db8b9d7c9c47ead66f158d2386aafdf48e20be40da5d5321ef=
+c8078aa95a391f1146ef9bf69014820178f964e7f136ed9fcd6bf9d0d3d7df38e9ecfa650a8=
+0cb67328854e3750e04a2edfcb5eea2edc84082463328a44500d727b457b45c23f46ad0b4eb=
+09ab614de7ea505fa8f1f0524c39b07da2afaab2c0db5ec5e9ea4c09020ab9d8c79e4cd73d9=
+4fe4854b908e4567870571dbdd4d0cc4da00fe931e3fb69f0e4c2feee0f011387f6b36a418e=
+ac14f0aab049699f7cd9b0481aa6e1e86c65e475e4c2345a569f1c29184dd3aace00bbb13d5=
+8dd69b91932ba052511a6f23027724ae56cf948bbee2a6419915c581daf058c70065de63082=
+01552cb24160c4fa6991d982f2251cab87c5dde5e1f0595ea9d2a92b38fc4805ddc854d54ec=
+6d7e06911a4111bf842ab44173fdd14ce37ded7ee295f3efc7578530311517fe7c1ea706b9a=
+e85c0c8136ae7c5e3d3b1f6d3a91cc803c434f719488144080cf49966c581fe446b00949c66=
+d68024490fdcd0a054889590060373063ea7b2abd5fd315a1ecb8d06406eded4e6fa5687f2b=
+8cb12dc208a2c9115262a4e84f67a20f751f251317dc33a87be9df800791f0ddd69b86852b7=
+b764dba949f46acceb20aa3dba9f20658219d1a3b1f906aaff50d391ee562b213389fe2e8ed=
+4278b3b4584d46b31f8853dd9070f73d923ea7aa6ed3861490a99351411be12639fdfd3feb0=
+cf1b550c2d8dc03f75ed23e116e528a58fa66b2ca00314c128df5176b322821caffe3dc9fbb=
+c2f803f6537d9cb7734ced19f2acce8dcf37c0c317d7f40fdee61c64d92b80c9e4e7d2f6c58=
+28cc2015edc47dceb552ce30edce28ab4367c5f17aa0ab62d146a13b364feb80ebf3d745d69=
+55ac337c38679fd2505117c23c64a243bca6fcd99edc01d830954adbb2175c2d3f0e71c090a=
+f9cf0dae8b4792534e75e1406103716a76cff4f18938b3c2fe391bc524db85cdc0bcf304093=
+dc2b865bae8b8690318dc95d370bf448379c20fe4454594ba2b00ae1787801097ab6b8f817f=
+3f6ac00ffeb7533e13142fc81980bd1be9dd1dc5c23aadd110627c421a2145eb749137eb894=
+64c81195907a8ca953dcb6a2feb96154b5b440787920f9dbb86fcedf29e62556d1683ba643e=
+b150029dd7b3c3bba0875db2abdfc798f42aaa3736064d819c8d58a25eb2831695167fc9621=
+f14a31deb01569d34bf235ce22c65945d9b66d4852ffb964a8689a186db97653dc60594c665=
+cb941c60de30e034b3ed36751449830aa4b176890f5d70a9b811babd05b189b51792b34a69b=
+5b9ad9479daba95a1c9c31d39e5646f1b545a121f0e1864d7b651801876358135a86c64fead=
+b3693686626d23d9843d86d285466b4d310ea32ed008e9bf57072f4fcf414e541111b06b7f8=
+cfc6e8a672f9e245aa45b5ff4fca113dd8d8c980aa9f900d2af7d2b4ad10059f93bd910eb9b=
+4ff78afe53d748ff5064ff96857425f2c964c2f85a9a857dbfe6ff1d4d0e328150715d65430=
+923c1fc539b9567e1ef69f6e4d70909ac48f9898e5d268503a203ab17d2a88f00d6b6a09f06=
+c4b24262fa83c74ed4c72b3220de2a8733c125d6187587bc1c0f7a4b69f94648daf7c139ac3=
+3a37b859307b1c1b4469530cbf63c4575af165307f36de14cff16e63ef5da0d4bd27005b462=
+c9940ff6e483fadc0689dba7621238901d53d2b78145e538dc350cdf0acd81ef5f0612fca16=
+ba96229588b8f01bfc1e576efb08387623555b7f3c106b100cb0adafc733c53123e6d1238a5=
+12a34235601a2caa3a7d2b87a62cca6e1415ab056ed16f636108cf06b55bdda8222c97c448a=
+118a1bd4d0d4516e393f0fae0435766e0158523e5aeeb08fde7f2bdba188d14b5862bd76e8f=
+2dd4b99e10e1f08cc0031912795f91aea997aa08faa400c0d617721b34276f7d98f145cc24e=
+1034749b6fc6ffced20201dc9fb2d8fb192b904a2c1577c396e8ecb532573c3fc749a1e9dec=
+a0d70fda033f267299aed17b3f495eb8491f66f274f854ea66efacd51c90998feb39ef4dc96=
+9458ae07d05349f2a5780a4a5569429431e28e8b6413bbfbdaf749283de5ddbcc6eea630094=
+3448838774257bde80bddc77a3199d3f6c3834d63ef9fa55350dfb34a3289d89186bcdc0bc5=
+4a18adf165ca822cbd6498c8dfccb11e3efc764629fe6c18124802313c37a3697c0e3798f04=
+87faf43a0d20da5b3d8f377b0ee1168172adb61937662d84660a1ef59e1d9505e2384db743f=
+c0e29aec510f5a8c3dd19950457b27b864becc50fba2646dd1e46a4319319dd537dec20e882=
+653d63488e748c95c3bfdf572e92a64cc4ec83a5a433bcb49252b9fd438a20714e6b46bb9d0=
+de485e51161b7a3325fe8f4729531e52e90798e85da74eb925831d77c9d87789a68957eb255=
+542d7750208a40b4001bcc300eb7bbea0bba5c886edf2c9a554f1926ae70726d3b3a09196de=
+8cca9459cf61b2e068c19d7504549387c111f5ca418bd18b8a392742b92b77be9014b63f3d5=
+41fefb1d9eccde9764cc4b861ed9e26321fe63386bc51e1a2ef4ab710d499b7c2bce602f4da=
+4f322805984625f12f13de076733bcce2bfc21d3fcb0271167c49666eccda4821385f527d4b=
+48b04bf2181aed505a86217e43cb7f5b62d45b73366f726bc8268baace24632b3f15d3d3928=
+1d9b5367517c69d399a4fa23aa86f72188d90a40336ce1eb83b70aa9b6ebe922bbf625c6b37=
+01f9104c58bcfa7490469c0567d5ae31cabc44d93896214ed98f278b2d8f56b09c5dad8c694=
+6ea2688ce668d768209af1b19d75d1daa60d1ca06f9cfc05a64eeae7bb3f4983dbb65b8748c=
+faaaf50c7bd926b9f07db2cfe87c0f9fb9ff71bb6336089e589f6e8607a19e8facc58dc0330=
+dbb7df16b36caa4b97ec5bef43facb9245f4c0a12efaf51e81b5be84faef8197482bca2d2f9=
+4cc9b885ef3c62a467d13c7747fc3815203b9a94477db5df63f1c8eecc179500107c5b1f620=
+3f7d54615e1f4a3f4082a6f1ce414e3f136ecd882fc8037bb36cfd5744244c783f28eebea05=
+e155e556a4ce1a5bce86bbe6d600c04545d4b49920c8cc2b0d3831c4f6d1879cd82dadc98e4=
+f9150e6dfe2f36e5a94e5d71a15f52c8a0419949e5e70ee218af6da767b1005a467f30b1231=
+58710d32d184e012b9cc9f78ab15542a4d55d92831c156ac49a150050576bb9c127a57a878d=
+efcf26feee94863ad0a720c0cbcafae391fbe6312f4a5070c791e4fc9f697058e3a65c52ce6=
+0ea21a240e6f2ae1fdaa5debf8321f36e670f98d7d7aee3b6705acbe1b36ad44fe7b1ec9dc5=
+aacea32228de0956f8c4ee9cfc3a3e5b88c7bb81675afb40d4761c44447bcf02148539f8480=
+6ab518d07404419d1e6d1186a214ad56b0ff8a16f441701613572992a1f6ad1b74d33c44096=
+0e06e0327b34033ef0c864aea47b5c7bf484c4509f7a3c8c09262859fc71a374505817bf50c=
+0d1809d6ff4578f689ca31b97bd4304d899fc8e8b1467588d9780d4a7906fa269779cc491b3=
+d91aa35e987fa74e4d777cd88c3d01b1f2fc4f474feeac392e4de409ca746e9fcd756d5100e=
+9731262de88db169a1891b45af5a63798f0fa26257ba3e876bf30248449451ce243e97969da=
+68a92f4a31aa3acbf536ecd18a7aa8068ca0d1781bb09a292e100ed6ab95dd7dfdce9e2c9a1=
+5658e212fd73080964d16718b368dc7e6e583f64bae95f8d936763efb1b0a4de4f12934f136=
+2d3f4728df17b515af271c5fbe3852d73074c12acce3fd673e960c3ef3978ec6cdbfe52f611=
+bc167959ce47dc890db1f6df9a65dc1b1160664482730f67e152438fb9fae95ba591af5e7a2=
+a9fd7868264679563da522309fe8ae35d935596b&quot;}, {0x4, 0x4401, 0x20, &amp;(=
+0x7f00000014c0)=3D&quot;d097902717fbdaef09446684045568130cbad789dde19a4dfb8=
+508db0900c12f&quot;}], 0x9})<br>syz_prepare_data(&amp;(0x7f0000001e00)=3D{&=
+quot;efc59c207b8b94477a42564f487147dba4b17869f5057f9b1889e2d0f67e9c12db6317=
+a260456f66ee1f4e0bb62c37c2d500af8321591883b79d352371364bc1a47acda7108f8f948=
+bf03ca637c9842f1f4e31f0b2958d66641eb94eb19920ca7c59516ca7e94ab1b5580faf5329=
+e95bffbb57244e316fc7b72efb1cbc415fb42d98bc9dea426dfb26570423039fd7fe5b05b80=
+60e399d6507b0e83cb127c7dd9262dc71e9aea5af29b44c2956d913dec5a82a24faae93e721=
+20279c3c78b356bc9d4fbc9e7252e94bbb8c4d8c106d20fd5b8b5208c4d685a4899c93c6838=
+1154f856a1c723b0ffca93cd36ea5ba8a68f1696d0dc99c91179a77192d060fc1142f3286cb=
+b6fa5211bf86d5faacf2e38aa5a29d5585b6c4722903a9480e088e35c27eb08c38ff114cb51=
+72b43f31f174f75b83d5ad2b65d2839737e6e3237fee98c4b15c76edcce89a9b3f9f4542311=
+d01fd29fb87f1b1f806edc280225016ce89682f35dd3a465ed910e74305b36c1fdc24408f85=
+d733763b05bedd1772c7caae09b988107b25f587aba0a85f02e7d771c231fb511f59f185064=
+dbc09e01d4948658a0d20d645ceb00a06b8300c8dd7a32a45e829882c3a24ac9e7e5a571938=
+590347d57f5fa7de5a3482d7a1d1f4383a1ae9baec69f3759fc1519e0d14880f250afd25506=
+4945366966fa8fbad6ef3690685e7e2d286999da0fdf29c9f24a3c9910919d3dd431b30d9bf=
+e3b0c0a2004ae88b49d25a3eaab8b285918efb3a5763e8062a99f4fc83799d5087734308bb6=
+e6a50dc790744937c38864b6d6c1a96eb3c9c594fba047f24a3bbc90af747403bd82ea83a5e=
+9b289f240bad77c17050195bbf31b4414629ac2c42c71746ddd109a0febe863533f7e7673de=
+6baef7489c60dae6683ecdd92682ff67a3fdaeee52aa8f1ebadb1f3616f5b0dd7bbb3bf022f=
+2e9ca3044a18a2a088c0a13892331f3e2b84853679acac009baee1d1c209259d48411056be3=
+3479fa59783a0f8ecc9240e858cb8865c134139f64eabc7cd4701c5d4b86f1349b5eb001391=
+c7fa847dbf709b5e18fa3af4de751a3abb681b481996cda482cd2d8934d26393603ddd00fe5=
+c4358b4cd1bc53d335383bb3c061dca2fd455210788c35671876e6285dd4a3d2cad36b6e75d=
+46cc13568cefab546db3c51c27f039f71f37497f60971602a9bd720d68f308cb8e26a6368c2=
+a07188a436434ea07ef7fb7110c83b66c95fa2aaa3331178d109868c9d6c0d3a7a03a2a08e4=
+b9c23e8759ff595a2b7d18ac647bd549d35b81e9bf5129a016d99dbfc977a9dc0578d96a9a8=
+e0caeea4319fcd0c10f492a24a4c6322f907318f3014f60cc875d6161cf8cd885cce7eeb495=
+3dd1d559ddc7c6e79a346e4d5e82aef668b39ad2dd86a5f7ee7bd3cef1d24551839f4f0943c=
+125d7c904cebc28cc2d81e543dcd&quot;, &quot;c345eb8eb0ee52d5a37494fce626f8ef7=
+2cbf075225c340cdea896626143621b2a86cab7609c00af555bf644028b3dac0cf247d1894b=
+80f8472ea94f2452a420dab5b4ac3ed2bbc423a5e9ecd6439bcfefa86d384b0354c1c0fcbb9=
+dc4ab68be14646240c57e699f75cdc176362deae1734368a2869a6ae02a1a6fd6e12b06ddb0=
+c899402061a6e3426b05ba89469b132c9831ad627dfa598e933434fa861a313159668e404e5=
+6921d0d4fff55fd8843fd7648339a2185c62149a4cea1cce7ade65eaffee4be33a2049df207=
+a7d761bf796f374cfed0ace99a419c7a7e2f8444bb3c53cac9e43c8b289d55dee43d4b93457=
+fb4feb2eccc98e091095be7da5e6c57fe06bb5478cc9f4bfc504820857deb425e10ac986bdc=
+70f1c406eed06a37fe5a55ff6a707cd46f1b6d7529a2499c2da38f48ffcaff01ea6cd22f676=
+060d6c49d408da5828b859d78f07685462d0885af7d6401938f75677ba5596b86431ee4fcc2=
+800086723c8bc49dcccb8288e0f40ae520b613fbb6a452362f9d1834723cf1ecd09d0a9f105=
+00987ee13a8abff714b269d050256ca75def8b2e1f7db081b16cc0a2522fa7404caefbdcf0c=
+1a5da962bd1148f9a4b619338f96f336984b29c2f472ba44625cec9081ec4f72d5dd607fefe=
+53b9b51cb6e1c07409295f27385a8ee0e2de1a1877e73608859cf1b653d6256326564ca52d5=
+662535d07ca494d829ee2794c9a091fe38ad9d194f7a7ca9b9bb20ffc28607fdb4420918bdf=
+69c99e310e66c7a165626c4cfe25c8cade7a677fd9be43f58a7c4d5a6a622567bb3fbab8b4c=
+85eee8235603a5c720fb9c7333402d8c78680f4d5dbccc2d43b9df08cbcb9b0c14f0e66419d=
+b10a23f917e3290afed38a25cba7e1b335bff2d0ee4a40b7bd49d805214ab0c00497a312856=
+e07e2f39be5ae88a98587fb2d613654dccd926ffd3dbd8be1bee1ac8e4882592aaf8c383055=
+52876bb3400868c817a74d8710dc4fed7c762432ce6f405cd202079bf6d2a97f955ae438606=
+0057cd7a78b28e281830069d42350ed922c1c9d93105a01ed99b71aadcfa1612a79582e0e94=
+d9696c9e572b4bb5d6fe3b6258acd04e7914f7222c2b54e67b248dc7c3fe53627630868b905=
+bdf6280b9aa649b0f01fb615081b5ce43c27fff1676049608b10f1a2e3cac764c97be4d0622=
+a848a5fa20ef87a5f89fe72bb8103e80d00aefa5a09ca3246e8e1f035ae995a0c144dc937ca=
+4b29db47a47fcc5756dde2fe72aac97d8de5af57a81f31299988a884a277aa12489ac3d3678=
+053ff17de2fb1db92ff1a7dbebcde40e56d271048f5381d406ed27b568a01676b4e26969374=
+336bcc4377a7bb43848bc7650280d2cc510e0a5b69e3572d7a11d27d07966215911d01935d6=
+bab3dc7a19866ff4d0ef513007979eafdb4c61e335c67b814068b03b8a4e14c1c&quot;})<b=
+r>ioctl$I2C_TIMEOUT(0xffffffffffffffff, 0x702, 0x1)<br>syz_prepare_data(&am=
+p;(0x7f0000002600)=3D{&quot;12de166bd490ff79aa5b23192da986c12d6625113af7343=
+42bef14c397a653eea4555789644512db39dfa364a55e0417483e86c4a67351f0ba187bf14d=
+54f915302c2f1b514bf597fa002ef47a38e7a2f4529f03b9b9b1852650287704c3865246aa6=
+7f83263db6325d24465d0ae5b0f47c2bbd6f21b26bf3e8b1f9170f48b81949601c6f6ff3f2f=
+cbdb1d2aa6bed4e749c24fa3aa03bca550ad7806335aaa4a35475033cbe4dd7639f2fc493a9=
+d17639ff14dd06702a736b3c5e9ffd32694f3e6e046458035dbd1fa60f3af66e4b8f4aecd26=
+7d8907dfdd47ba73e1118ca46998b02c30be7f00e508794d455310fd88a1f6f17755d2dcea1=
+4294b4fda0fa0727e27342653e04b9151f11676afa074527fd9415a97bb840447cb7b9dd89a=
+d41eba8214699840f88b01a667c751c0bf83f441988d973e68d4a41210a904c338a088f31a8=
+0dab81ae7739b02c987e41dde88e4e78c8b35021a22c8051686caaa0965aaa107b601952ec5=
+0c8750db0c2b3f5804a19003cd09251415f2fb7bd9cab8f484eabac75a7b6f1fca9b113453b=
+f53e65d12e696582ac4b92a7d2b23211e5de6bb7dd0a79210bd544b0882d165a0932c267cfe=
+cc26f0f2c40329c79563795f081fbda42644e4a6a85e8f668cb9d6ec9c051270df08de60747=
+20b06f801a88c5b2e202695683791b8daba8e5fcf4983aa7e1e54410775380349e820c1aa9b=
+feef0d44170de9460f55e16cc2f6955224fe468c37a626ad9da05c4d7f5906cdef64525649f=
+0fad11622495ed80883d89cc053e914b6a7360b8c7a2051c50686ddb650a850a19dca6b8d49=
+f45cc572ec375ef312fa45df88918810d99478dc8c2fbd9e4fbc1d8aaeac7545e133c00d8cd=
+76f8abbdbffea36c11dd9cf1ef72efacf95b08d06d516a84304b77997597ff113f67b48902d=
+194a36889bbce9652d68ef7f157864318cf025c5e81ff8630ac312b085bf378a5918370d7dc=
+20c4557b8e73e931eae61a88915c50868fa76f173c021c3f6b0c04d032331c8efff5b173a6a=
+839ecc086f1e37a93c919cb2c4cce8f14eabd2cb2a510e883e31e0ede8091a7ecafab1ea381=
+f7eae2a009322bdd80d3aef3dddab19b51ffad53fe03fe98b893905448c0c6c82f7a8fe930c=
+b36411fb7cbc8bd0e051d0d719d1962a6f65adec714dec83a893b68c3e85d9c07362c28e28d=
+4a8c7fe227d88df94d899ce6c66e56a5f931a66db9170da839f868834ed2e0c08fef9e777a1=
+8ff678f1e2b9cd952b465a84f3541cf776376885a121deb6b1ee112d3d25443deb4d5614607=
+e5b911f790710fb23494800bdd18a6444cd820bf0d467a2039933a612edcaffa5c30e1328bc=
+518d76381f87dd4494cd9d18709711ebdf23227b6bcd9e2ab804e3d341a968450b7dbd0b3bb=
+c22eecdda24521a6a21c7958463619ae3f1d3babdc0d3e22ace&quot;, &quot;7a5d3a0e62=
+d346b3b152899d46a446f97d10281242b153c728853637155aade204f0fe5bc85964a66cf9b=
+f77253e17b56b154ae36c1a099904b50c9d56abddb16549896190f38b248a3faf3197ef6b40=
+c5b008ee90876df9811dfdc07e3519c0d5e8698ddec0019b8f64bf8ae3b1ebcac18c892f113=
+7d11fe08f02dc935e5f47e9e148b8b23fd6c9ea3da631eb994498aafc520302b288d6662765=
+94683eba7ddfc20fa978974b7126f047c97d6d1a0a4102d2da89ceaa1fdc205ab1c88f2423b=
+f8e48e01c58cefec0b24fe683b3782d8c616ee1a4b714b2c4cc13402cc179e5f93824afd155=
+a44f5d63c4549fe38d9cabd7567245bdaab63f51bb0aea3740f9b6ef51bfa9daf2b321ca96f=
+4da546c0206d376721be09652f8080b70dbdac3f55b269a3ed74b1a4d3e19f9f759d8505ea2=
+51f3218c9148630284332afac40b1f248a4cf41ffdb7bc5dd09dfeec027da9dbb75711a0c2d=
+4780d945a2dfb91a05578e42eb718901b8fb75a2b38b0bc13c4d98a0864631ea041841bedf8=
+8f283df8364384312da4438583f18a7f991e2f3f99bab96289486a462f982a177ed81dec2c6=
+0899188dc73fc3928b58d681006b8a05c4bee3e51301add8cd5b228118880e6d373ac5e2954=
+3353c94f66bac7880b9a611d3e580d3a88cb55dd964007a7cd4983d8a649295835917b7d025=
+15afe9e2a37247105e5b622abef823e5cafdfb1e6f4d81343d021ee84c15dabde51d94493ea=
+9664ac73da98762fdebfb12ce1e33b265a53b6b0ad346b69a01c5cbafee570c6f338688f4ff=
+e217fc2623c65560e69de0e160f596b6db61cef55f190486e80be6d3ec7daba778f3ffa6cab=
+b77ff80716c5bae5e67585cb9631a0d2428a1e66a1f670696c584315ee9240925e9e17b5d8e=
+5d1bdc7c40d3a44931337a7dda90d8127f04c373e483a908fe12a77cf9588221b4a55156df4=
+86dec9c107ea19e29d344f1919f6d6f41a36e934c381d1dba109ea29ae3fedc07e9d17b9631=
+4db490d6f0284e42f4834c256a6e2c5190f72ede31acf7d2fd725c67287c93085a051c99c87=
+db59d200be5cf60fe6410cd7dd6139e19d085057dc12f2b800ac76ba21b3b8cf62e1eeeffe0=
+edf73263b027599d2dbcab2bd7b729b4ac6156273295a6d44aa08ff0acb6272007faaccddd5=
+9ff71d9476c48d0ddfac61e6d46145ca0201e5bf5054d4ba10aabe7126da8c328afe5ed27e1=
+619ba8ddc422634d5c018ba86cb7d89e19a7c396e8ed6060c7a9537e54400dfcebc83ba965d=
+0ee6eb19e3bc4169a8fa7162062bc6926e6e8dd742c602345a7547ee03f39c19d78f7be4a82=
+0ab4ce034bc0d2a8e7a88e00cc552a74091c7cbeb67a934868e4f456f99f0d646ab66a96e4d=
+474f8171db6b95a7e2a10c128d91a12f2928b4cc264dd54000f559a82da745a418e77506bdf=
+08a05a24e72cc&quot;})<br>ioctl$I2C_RETRIES(0xffffffffffffffff, 0x701, 0x931=
+d)<br>syz_prepare_data(&amp;(0x7f0000002e00)=3D{&quot;386a3569e8a4e11134f7a=
+0f427652d8b362143c85d452dedc40e10fbef1923c0f7043df0285d56691af6a3f11c515229=
+6200f4ee7e81fc27dc74c92f42067baa432f8a9ce4253111257ce8f6bed39424f5a8956c1c1=
+d052c66761de8f4372a8af353040b21e6e502a1fcf6ac26d0409148b0a5d72ef363c7797aa8=
+ac3838485e0b82db161f7023516ff2262077be0acbce73e2e381c3601e1fb047c1a1993d21a=
+87b82dc13433b3363a027c1129a19a282af5910ba80de07ddc6a633be3c54d402779b7ce186=
+02f88eedfb834b7a2b150c5cbbb56e7ecd4ec04b1a94b582ed666770ee5db52e00b7d08ae2c=
+b49f29bb986dcfce587b291f0bb300f01016c46068ec1e870d04646fac823668125d5d65fdc=
+f8e9d280a208f5ed7e040ff6ac495dd36be4996f400b46fd37fbf415bf9752971dcab078f28=
+ddc096bc04078f7aa2429215ceafd64c208febad50310df0ecc0220427d55e5d1a7cb462fa0=
+c520b58313f4b774df425808a10048f9b3a7f4a6fc8e9dcb2183590f5c0f40a0b525da0bf4b=
+bb12481fbd0396671983d22fdc6553eb8e3c1ea81b6ee5371d8e671cb92c4db7832540a5c4f=
+92a81e0f193fb8b2f8af84bea910e90454ede96ca54af43595dcf03e3017c6fb743fc20ba61=
+38cf8d88e98d4aa63cda0e6b5d056a47dbddd3241d3ee2a24fc560f15c27f7509fc70f15a04=
+89c6ec3012a8d87bd6c2ff05ffc5470065dcf14c0439304df8dbed69157a8c1c102ee06a361=
+d40738910f0731d25e04dd454682884aa02ff0c96b026d57211a091316faf40009fa664a339=
+bad77fc89edbbb3a7d94db4ed61d126d89af76f263086e6e765c0acd76f4822a30ce4737378=
+92a2236f7069e6b3a5706f2abeba456bd15ba0c301d16b1fb3813d667ecaa3a7fc62878ed73=
+0500015df1074e3d0be9a930a57d23adad30a0da439ea70a85c855c8e61b92db6a3b6896ba0=
+5ef886c71e54e710f88b508c60703516a43a64cb490e08ff6eca550e39692758a867d4681c8=
+6d237b8d75efe76e43df5beb045a69aef41b861e10d8dbf0ce628888aba523b670ed841a75c=
+05c84210e471e196ddde09d0a28637549003ce95d19a88175a1111f5dd053e100d680b61742=
+3d17f22899f2b4e362c50a3cf6d48b1b892a829c0343d3367745f51c93c1189e8d3de200fd4=
+7606f66108a8271ad95d5735d5bc483626dcc6e4f0c5dd71f7eb4903e37dbd4d9b5b570242d=
+33f81a580190aa40200a0acd2a2ce485a37b310350507f5789f02c55c5532d5412a511f7aa2=
+9ff0975ebf7b8b654f7dfc64079559c2b785e67d3a795688621678234b0b9526aaa2ac746aa=
+adb8c35e2199dc2db66f88037d24e5c591ca1729b651bfbbab45114034e980b263e80548b59=
+1844bb750957b39f8a54a69f4b4f4e687259040a5b129bc3e2b9975d2747181b0c2619af54c=
+64&quot;, &quot;c1cc3d16c394cf76c4dac040ce9e2b86f0870e7c515fb5a587dd92af847=
+2b3d129e5594592a40b7d9343101acbb0c7d2fdbf55c9189561e07492684ecafd71c6283f29=
+468c0775919dbe888fe7416cc7ea7772183f8b614471b2949bba5ec0a075ae72059e9c0438c=
+488942f1d5b480ab443ebd2b198b643e88d752671f71575733252d52ee391392c57d8c2611f=
+e8bb5fdb96c5f3d3b8b5dfcbce29f19de43026754c91a2cdfdd8ae0305121edb67d6421df17=
+253985b055ee1879aa2e1b3f268e1a5be62c95cf1e220625b2d5a3a39a0d2c1e72ddbb189d2=
+921231bc7bb3b0a82a505c0a48b6ee7653068ea164e2284bc78ca161258662682ee8af36f21=
+10612b508addeade9467d67897eb9d50a27e9d054f31f899bd3c82f1e668c822e0b15e673b4=
+cc35f6481b126310f6053b20f5a473ce347a134f5cef2e1475355fbbee83de65a1f3852f43f=
+c1b14f4eeb4e1b4ac5a9f06e98c969fe4dca1fcc4220ad113dbe8613fc84aa28a5a16105c70=
+dffd46015406741dbb5006c5ac2145f43abf97a6b1dded8f8bcf0416a0a80dfb5849a9a997c=
+b4a775252cae416a5621d2f1bce42a64f7545654ab53f2c85b521469ef2e39c9d00a41c5762=
+93434afab0408bf88d16a08690765d5f7132dac3ecbebf930d894405458df43270e1b2b74a6=
+68e6525ef3b4081c3807dbb123b3167ab685e7f473bd0893044137e7eed08388abdb34ead08=
+e459371cbb9993d9fd38bcb4ca7966cf788a17fdedef8dfbddbbcfb8b4e87ea97049577e0d4=
+05e9b7603e06ffeebbb695eba41ff6ba8de4aeeab8589e95968b4bb9fa39001a158d1b361f9=
+31c0f850e751b6e7c939497f39cc6675aef1c31e34d66050706025aa3f284b1291e08f2d481=
+7e45028343ade89c42e99c5578b94f811f1b1fe6020915de918f2fa1461be463ece031e3852=
+e19d1ad4239873ef369e40dc1411da5acc58122908a78de78132b1bab618df50fa8a455696f=
+410f88139a23968a4ec91b09e9204648477ca3eae57ca7803d286e22aef395ff011683c6dd5=
+3f71e5cdf5d1019b72a942242a19c3f4f5618f4fa6acaf20628d20b5f0211539a9373349259=
+d5a54df7aa7af25a14664e9b818a3553b758defa09d5a89db302c6a6c375f481de735165ba1=
+7a9b165a5bfa1be9913ffcda4f26ac0bc05af6041f4c309506f949432c17f64d168bba8d3b1=
+d08d279b1d74ae3ba73ae3a6ed7fdd198334e53b7025543f3504603e5e2a7cfaa28808ec7b2=
+2d6e3461f904945c623e5fff638c4530e4c4e5233e3925bf0f0b614ea12d7596c7bca50675d=
+87902b2cc6e1200394c46cf52fb88d0f213f61f2bd77bf9ed7c57917a1cfb1b837649c1fbfc=
+5c4172f66156fa2554dcf664fef6575e896e6a99b3f593cdc3fc2a28a82c3de29a7d1a732ff=
+0254882089aa83386e428913ccae49a341fcb8d&quot;})<br>ioctl$I2C_SLAVE_FORCE(0x=
+ffffffffffffffff, 0x706, 0x1b9)<br>syz_prepare_data(&amp;(0x7f0000003600)=
+=3D{&quot;c68d70980a946a7235c5c528d6da46188ad630ff614baf33abe3cde175ba5e9fa=
+741fbd5319ca5c1c669d756dc1e7b98a4a37b2e41fa8f0a8a0896c78d5091431384e6527bb7=
+d4a99bc3949fe77239c36c0c8bd5829f6f3e28a03d5088e895213ee0b3df1112ac042f828e5=
+3f1262836c0ed6328304fa45fe5c0feba1c805f6b0b6a8f1f90496f0d97a1da7aaeaff15042=
+86464929b5d6c76e28605469b3374b49b9861335c8aa7a931047cd7f7c48dc1e98bc80dc8da=
+ddbabb0be60a64c24917b5180258494ebab678b5d10e8085dea8ffcf69c0e85c7d85de96fe6=
+fa4101d2cffb1049c449e0f6f8d0477463f8396c96963cac5e27721b6006fe2b49bf712067c=
+80571b9675b1179858b315b22faed2b762c029c6f18e13d73731cf34fde199f6c002038c03c=
+c09ce751a320e79f2c9579439747dbdecaebdf2dcb4c3eaeca3f51539b91cf1b45fbac1dcf7=
+1c583da69b1df3b31f65e84cf3c09f988a08bdd19a88118c5233dc9c803d16abaf41ff56a5b=
+c8e9f66db426a045ddea4d0c10ba75bdc8b24fdc5b64badcc51e074d15656555aebc3686978=
+599522f1598b7826b011ad02a049c641135452631ec9d028b034c0fc907860fad6075b81777=
+a7fcd6a3d1c62bb43d87b2700713fcc0a6afb0d7ac36450aa8d224d1279a697136a98a5f25c=
+3b24115fb9f51609b3c550d423a1f16ca63454d19d309eef0724bdef227e8ed28b6c85a42f5=
+91a9c7f927a601e417c81f00970d445275777ce38fe4916486de6cbfcf606c4309e6a0b1ff8=
+dccf88cce5c2568bbc9d668d06e35ccb1236a102fae6262d4546295666e36258c557c456bb4=
+2302914f1f978aced724735f4a68d949eacf9b6993499564e0d3cfb815b34aa7e2647456e8a=
+d96e447241994c7366530f9859c2e7a90779cb908c9a5b45df1eb0aaddee7e56c50a4526e98=
+9129ea4ca829730b3032492df11687d17aee778cef53c973db8cb27396ae1981be406cb72c2=
+0dcb38a3e2feec9a93ea0ddbcc406f9f77b589c6d726ec2307c1f11bb1b67ccc68f79b56ac5=
+aba149186386ec10a66fec6818dc69c8b1b404ef8c598bf4a52a002cefc8ace451bb6fef93b=
+b11bfa56d04437635eea650096d464c377d3597eda49482b9acddd38864ebecce20607d7b7b=
+459738ca2c78cc9bf3015f9cf39d18216f49b1c1a7b044d12e061dba014cdc0c89d5efb4699=
+392b8f697acbc454bdd6d8b5da2c8a523bb29f91f608ac194dce659e87da607bdb2582fb2e8=
+5882b36ae0a3a035f3d0fe3a052ec445294079fd78d563661a5abd43e8f7b793e506b08c7cd=
+9c923e3928a1f1618f173fbdaca87d91fd28fff6f522679b713af9497f9a5b576063da39083=
+dd50a33977289b34a0228d90d92a840cd817b64e5a537a8db948d3d6bd5749378dca7d92857=
+611c923024c26fe4fbcf5c039009bce88&quot;, &quot;7389cc2911afeee3a0a2f2185cd7=
+036e31863b9d28229c683217eb6a5fe285d12241cb28a6f6b94cc913f5fc0f296bdcf84c66a=
+78ad3773cfa9b95772e46242fbc9040368a2ac8b421a8353b7eb2be015d6e891cbbb0972290=
+b0202d06a72903a566ccca815d308dba5ef77bc385654b757bcfaf184022064a0e8a83e7692=
+d54ac46c62c868ca86fb1e5fcaa7526dfd9d39b6d779dc33f3306b7522e5659eedc5f4d29c6=
+fc80c9f469754c33d951bad48e0e28e9bb6d60614489773bdbd524b457758865d995d333fa4=
+9702863de3edc0929cdefea3a75cb026a3800ad8ecc2e25bfbc0b69a220c6e1e05c02b84465=
+976727bbbc2aa7ee8afb630fbb6fc3b9f3970e7c58477cad0c470b7a8a4614f63499e76459d=
+c85459dfd226032841404244be41179cc17eb46a6d2f4a82f66db7c4c7bde389b15b8e9c9e9=
+25b11876f5316b7202d16d3575c0555e218188d4b61198d56caafe3cdfcda4ae01c13023dcb=
+f2d4d3735000c6c0711246b32ecac152d471b9cba71d1669ed3069574b15b7309dff7347c8d=
+ebc986f236ddabe465e4a899437f9058ff594362b244989e123f00491d4d2f1f4e0810620cd=
+50c2fa235fb65343dde30901281ea00210979252f275febb1f18fdf288a5a64e901fc6fb20a=
+0d40f22f6d96472b63ad31c8aa17491e7faa5fc0c0e8747af9c6af6141278b45048925d6662=
+7e609be9874410869d0e270304a9f4eb4c704a3edd60b96394a9212699e7cc79aa327c35bbb=
+0f213fbaabaaa02408e95f639641369988ceb9b426b2dcbe3bfed9f003fdf42d4822bc1f245=
+022383582d3a283675c6e9cc2e199f87e9170518d62f5aec0f02ca98869a4299a65ff7e5aed=
+1f7f6f96c75e9933920e4668ea5f589d749e1efd8eca14727d376f124443b02b1e30b2c903a=
+49e1d376b55469ebe4f0527c32288ae0bf20994a039da7a09ba21b47beb98eec34b5d139c6f=
+d23909dfb67098c18339dbb459a6db6132ffbe3b611dccdfe17ce58ede70a4a22f9bc932b1e=
+57399e5e8d16a2ac45e51d46c79bc1505f9115f57a7ee8af01cbaed22fd83ff1c7a314cf406=
+bb3003ea922d502156301b4f7e0acc4d93c33d5ef09919060caf150c8d1a28b2e0baeea1089=
+bcf77119bce9e7133831eed5f1bc4d577900e435f2b6501793747169ae8dae66ee728dd1ea0=
+d2e359f7e58c8853864b0cde62dd705e9ee67717dd5f7bd53006fbeab8cd3b6e3dba3b7a73b=
+e7e9d3e11ffbedb03a08b1ca2cfc94b729d57def257e2b77644e41b7113a5be31f0efc9b34e=
+4ae0586915e819d77a1b1a944fa3dd57180bf4c4c57c21430a36dfa81a2d76a58579469aee5=
+92aed591ee7281c41e9a6083a154bbe82bc2db52688c986edf7fdec7190a2fff1d375562d41=
+01e7509cd6ab29b5fb38d8aa7791cc364ed35da2d164c578165968ac55f8f6b92e8a39&quot=
+;})<br>ioctl$I2C_PEC(0xffffffffffffffff, 0x708, 0x8)<br>syz_prepare_data(&a=
+mp;(0x7f0000003e00)=3D{&quot;1fcf0b80b169b20650a0144672c2ea9d4aa18ba8e53539=
+7070771c252292c5fce1facb3c0d58c7314ba2fb2e35367e9b6f343750f7b7d9242bb1db786=
+fa2dfec640b444e4fc3285e6b579b004e5d6ac4b796ab2d16a474018bbc82ad17a90ee799a4=
+77b15371633299764b9bb3782948de3508a83b6636cc533c58970527c40abab092e1906747e=
+20f9f5bc77a501440eceb83ccb3fbec7c4487733dfdb48ccd354ea8a56eea73866d4eed929f=
+84d2b4927523df6765195df0f14cf252793662a9d30560d88aeadc804bf8ca990501f6ff3b4=
+09d9caed2b2bad61af44a796d3d973b95fb2edcbf5a60588283d5cbef0c381cdb1fe62d9245=
+009a194453cdcaf90c7310fcf8bb25d102c0e30c7d4ecc8c9b1e8d47e2cf3691e7cc86a324e=
+3668dcde66bbd59cba8d35558498650e6f116d04e7387521351d890a24aeab8265339889131=
+bb4f13320b7120b796a8728d721ab42d9b7e6b13a66937a52ec38cbc5b5ed09cb8dc2cb0011=
+bb46e6268064b1683691c894d210fd4651c9438fbcf3dffbf6e444b0766cc38458b836f32ed=
+01aa78a2d870ff31392b3b0784e850ced7604ccb4d613d1199d2f35b65d3b9d2e593c81f077=
+6e1dd282ec2e7c1ac103dc2e3b45150277ff282bc2db93dbe90aa5729ba8c8a7ca5bda65cef=
+250a29ba88cfb4444a1b9906b196ec8935f23588991c4b94af4789c0f459e19d6a8e622bf0f=
+965b2bd9621b9d486bc325ab9006c700fb4a014ae2648b63ee2feb7e76bd6043cc48a888f1d=
+e9e1c009073dfac7a40c340364790f20b992a3524ae72480d5244393e73413ec9eab7bfd2e8=
+999041843608d40a5d37c476092b812ca455f88d4dcac412635df04307263467d7e18f0ad29=
+07fde97982ed169c207937da91f52d022d104ea629e214525a77614bca6f7a6aac33f7bf3c0=
+2e18bf8e92103f31112da65b6bdf02834288fa483d607d345ba938ef6f8f86405b112248f76=
+097d7dc7ba7f3840d15ae8440fc1a40d8375253a85a119bcf98c8eb6bed6f8855043e654b41=
+2d94c6d1be4ed9fb5fc4bed8479cfc8bca0c817cf95f32ddb73fd73f0e9156751993d55b574=
+337ac62f8bfd2ee7fda48bdbd69cfd87d33277ae7e4c0c79a3d3b887a67587b13393be2df68=
+18071d8fb3bffcb262cccbc947be0223244401249cb3ef9743dfd79ec04abcd6afa4cc5317c=
+b0c253fa1930f07c9847cdedd2e33d6c0151a1cb386d319479f6d6c3ae556078cbcf6d17ae3=
+ac25930cc20a2fb573bf7ed68a7d34d96e9f278c2be2a77e643d27c84d6f83d34ede3fdc14c=
+04f0c3b3f33d64b30f5034edfc18a0b7ac669e84f41ae3586f9447cef9dc2905cb5f0115f15=
+f92b0d590b6b32ed8fed87183c9de3ee855ca1e7bf71975de39467e44623945105e0801f25a=
+ee04617cf48230e7fe2db4b2bd6d4d1d19dbbd80333d53512f15&quot;, &quot;54e02ec62=
+136d9d12cc3cfa93071a0b436929c623daef1370d6ba9e159dc2cfd1cef0a8f5f30eb3dddb6=
+d1cc8d4512231a44579082e437203c09418c3f861b652cdd63a81db1d257bbde5d5dde7b858=
+33431575a8a6f3a2f96ea452be33946e30dcea0ec23d652483a5de197dd80af78e982774f30=
+4c6061adc7ea19eb005bec57f96f44c9972a94c5af305a9f70fd896165f1e934d99d42944fb=
+b792b078f7074a4b9321b6d97c564475150f49911e1fb6fe2ed00c65e004081424bc51b4fc2=
+5d9f06ab15775a41f679890813dbd9159eeb2dd62c66b28fcd9e85f6ef8c8e7eac33ce5290d=
+62903b6f9ae0e6c3dcf9a0be27d52d725656f06940b4cb4eaa4dbf195dcc29cb1c55478f8e7=
+e0250d81522f06f353559840564ef37d4ee27142fb9c7ba15d064b31665d48f14bfb15d6b88=
+bd2aee088e5812e23316ae4a6dab32e0707e40d8cced2bc9a0bd2fd2c089debfa200b3e1c1b=
+24c341d045aff71cd03af768ac1d8a156c6816948fd106bad6436be001179ba2235ec1dd309=
+a1f83f536291d15367c27cee1d385c22618b62687b9138deb24ebca6fd5d7f9fb9899e53a87=
+da51f6940144988e59813729ee5a898aa49535cb633a84974885bd51463adc1968a07767f69=
+d21ae95e1ba1694886771986160dce198fd3d4db480f67c83ad6235d5204fee24dd06b4e258=
+73736387bce120b25051222ef479ada24cd1f0deeb40cf7a6b77dd12d6a519ff669843136f3=
+964d69ec6b790b37a0ed940b8be56e3e5b9222c5371b1da17d1bc36373b61779494163b4092=
+b0abbf81365b591ed7aae6c0b24204da045f0b3097985997217b2521bfca0d010f10eb3be78=
+61a32f2cc29e62d75f5ec5086107a762098d007cc94caeacc7c4d7ad4c075e9ad32b7f23375=
+6f604886e0001593a9bddf32a6107b80ad981ab4470aea141202ac341c53641cbcab9cf7438=
+54d3235d8771e1c1a6cde34dc66cf30da83d38565706fd268582a91b90c1dab74e178df623e=
+01be245f91b7d1c3c8574ae999aecdbb7181e061e0dc2bf806765dad6da853f1f305e413531=
+e09faed31b92dc12d0e5f02e3d72c75133c1fe717877645caa13b5db2ec4dcd2ed040c9771d=
+9318f0de1ab65aa0b376e5794df908ad093d8221b419cd5d4211bce688dfe33e50600ec048c=
+5b6e89446e624ed654349a959ceee732bf429ba283898d8a874e0996b57e5823d3489b658e7=
+bd718f617a08f7cb61f5076d62f8bf7c3bc5b54c3b44045e5ce763936c826ef1d135fde3aac=
+2c50b70fe84eb43c4e156f845c9b50331807850979361ad185f8d3966ec71e116bc123e0b4a=
+2016746f5ad8c7c1ba845593e12cf44758148319fcbff1d237476e13a48b1f46b23d4859412=
+c5b2f7c6d511212ffe63437e84274c734f892a92ad0acbfc784e2f83af3efcc0117c2764b35=
+a66941ecd72e8d&quot;})<br>ioctl$I2C_TENBIT(0xffffffffffffffff, 0x704, 0x0)<=
+br>syz_prepare_data(&amp;(0x7f0000004680)=3D{&quot;c9b5f83676109338c356fc1a=
+bf640adf698aa2a310b5bb4a85b26abe7dc551a4c21b2e8684281f15f416d10c19b45d5047b=
+2e2a98f3667265216c0959422c50b0117852d11c8ae8e6a44fc67ca1d5c9529859498fc1fcd=
+150e621710a92fb4dcd3391e584668fc82cd51a498593e3dec3f5a9dcfceb4114195d00902c=
+4c44f25a84d03c83b3f4d0b08e4fc52bed638e6b2b8ba89b33b2f9101fbcff2318c45b369ef=
+0de2e9409c943fe2ae6cfca0365d57af9a68f95b47c47d6b7ee05f09f19b6bf341b0823b190=
+993981369c6ce22e5980e7bb7fc4bce4d28af5d411ea79b995e0cbf085d1e29d3bf61428f78=
+f4837fac1541cec8d143a4b3a311af6ca31bda84b1202cfa0567eaab20411784188379e8dcf=
+2181e8e98097e8df83877725058ad975ae36c88d34e6376908575d865051aa8947c808cd528=
+5377378526e7129f6104986a887275b88661d6095b4a0b5951e73c7292551158e838326f92b=
+e4616be611d6c417100668066479a4eddb86a35baf78fe8a8e2047a99b299a0c6a036acbc96=
+62851bef5645f42df0665831d2949a1f39c61fea10d11354fbd7a91afdc708b00053693f611=
+1794c6785923a5d12f72974ce5a21b3515121bab71cb6aacdb188622ab4e09d575f977328b8=
+1d74b468b23383ba83871d382332b0790b6a3fda3ad7e778b9205f3baf4376568fdd0e2541b=
+89a0748f97f7f28c671702f776e781759903e1c794b1de5fd879b30da3fce652b6b80c57a99=
+a4773ed21186003b93bb9272893d680481aae1aeb23fa546f22d20c157ae86c4367c042993a=
+49e1af069ef6177d2d0e611f0d5bded17a5b793106d18465c68eb3fe20bb5a7bdd50f4a1eb3=
+83268dd4aee453f2d49c9eafa060052e22fcbc8618eb25c45f9f817b8564417bb807bed61b4=
+ba5cc4dfd16e7e88e652598ec41426c068ac1132b6332e919c7300174ad5554cd7b1f18333f=
+43825ba1ad20217f4ec3298af596396f0d97304f70dccbdcee05f5ea7af8f408f6046a81561=
+63bf5756d61625c3778dec6c2b831ee73d0c68b6b198ae209e95fbe23fa64ee121709ba1c2f=
+2de0d0bb09f8cc1b072af8379c88dc2eeb2466a7ce862709e110b4d7029ae4c9fe440778369=
+ccd817ee86684895812ad0e3d0cf4f61e0eb64bb7de40d7661762c3c8884a4b9db206fb8b3e=
+ea2b6ee707c5f4f9ad1250b45cbf31c1a51b8674f7c15d78d8c89c56d8bf0b727f3107882d5=
+766233920a6b101623c411b2f0b62a71dcb6525f44b47fb4372b6f64b1ffca9719a9dc5a49b=
+231ae0c1088d30114e53d0cbb45f9d78ec80f9ee980ea5c8a34310e50c1f85b51a268c5a851=
+3cc968d873d0dde5e49fda5a0c8e31e208800b50bc3d8d24fa4a4c88ec03718bed05787b88f=
+8a41982ab4b29acc077106913b699a52c9b5694a7260e1f1f70e5de1979fc015618c24e627&=
+quot;, &quot;b75852781b346897b3730b181beff690d6841aebeedafde9a3401d519b38af=
+6b0bc4947459fa7c3c27fd25edea0480b401a2e90ca79036dfbfb7185f36f8498e322f97613=
+6a1c7a5391e18275ac3f3be969287e4abed0fcd3765282581c9cbb54f6fde1e66a359f548f8=
+a9b3076abc032a8b38f9caac006b2977a93a5c3a6d94d4c67f83348d0c89cc7da4ca3b3e741=
+b05ca657c0f5679ad9b2e4163bf8c8c0a4238da5e17223e288eb9cc05550bfded1234f47690=
+08854ec58ccaf494ff38d90f8013e77b7be17911aa7c0eea5eabceebdfdba7a1ebdad022785=
+4ca2a08090a783fd695eba22d84dd885880124217c065f3b348fd42f35c66f4199b348c2711=
+f36cbbb335641adf2d95cb68698269801bd8d7a03c44be5d2eede318af4c3f666ca26109f0e=
+3c478e19748135606ba068247ba09e2bb5dd9749fdbebafa3356f27d2687477c01b18e9a817=
+d682305c38a14a39527e65cfa876f42811f476ca1db7cd2f10c0dad93434df33af4c8aabdb6=
+92772780330a29efcc12e458088e9a46aaf15900c77ba3e781d6ec84813852472159de69b96=
+50d51216c8427d4139ff5aeff5d364161c6da6494192181b4bbecbe75460d20ee49ba167816=
+85b2dcb08609165fcffbe5fec71ffad70a69661751a2aaf1e492398acde369fc855e5a21d84=
+e12afaa34a5d756de81df0ed44e9cb120670e7e33e73f9393d26d06c933c055973997ceb415=
+2d8688579ceb55a19819707395241bda228bd8cdec90d0a4b4c9f3c61d755480897307d9187=
+e13e0d777e2b72b990a8734eba7ac2fdc5f1d3c17888d9f5737c0d268edde94d4b90952d7d8=
+5b3001338d57da50e8f3e9d562b1490f3c35487e6fc831b810d4301eb06a0a2d1b91deabec3=
+7c745230cfe8fcf6b6a0fe9ccc737f6dc99b21ae194a013dea4753bbbc21425779f5907da5c=
+192a1b8540a77d487623c8af42a3e22057000cf92e2d3a1c173e453d3cf6ec25be3d09b2ea9=
+05ba042c032c944a1a89d31830f693988b2fa8ff2a88641b390aaa132a363c9aaee3ac56ad6=
+4298301da06ca01a7e7e95e3a511df8f8a4ae4cdc7c7a4e2b03ed64870a226701b205427bdc=
+69804e3a4dea2985708f186532790eceee332902aaeeb5cd2236b3d23a9ac928b9d8362b7ae=
+302c330182a0f8547bc90eb4885b755c05e5bbe2d50d712fad53fddb138b52cd0d73767d973=
+1aa7791dda73a288993938e9652e1803127076f8c106d646ed6794ff9946442a70fe9abd904=
+051724204daa901ae37a514bd6687d5a20378fe5a087e87d058e168760c5dbc7f7064bdb0c8=
+327d3c5b41220c67ffd51eca42028d5df539570ab27f1c3c3398cf8eb89dc1f2947b9aa8193=
+2067fbb4d06bf3ac3a02208eba6ca00edc2909a12bcbd9aa5a82897a7623da2a6d3e3821d30=
+389d4bda80497afc2cbf7bf1c57e1c40c95c&quot;})<br>ioctl$I2C_SMBUS(0xfffffffff=
+fffffff, 0x720, &amp;(0x7f0000004640)=3D{0x1, 0x5, 0x8, &amp;(0x7f000000460=
+0)=3D{0xa, &quot;0673a31ecb3815d6c15be5f745fbbdbe799d37c7309317310cd4adbde9=
+f333b881&quot;}})<br>syz_prepare_data(&amp;(0x7f0000004e80)=3D{&quot;086833=
+6d9ea8a871e1df9f4ae9e8e45d011713a220a530644e53b1c938d866ce14ea7102f0aecad65=
+d185675874c20a586132c7535017ab65b8c273da49dceb7668efde366697ce30bac4ea9bb18=
+8a4041f994762f77f3f53a8fd28b79a60756d58ff13a84030c5276824e3fea48a1dd75a8028=
+67bfc9db8d09eb5bd6b5275fdf11fd6bb2b78a8647c00d7507bfb95f6e7bf52c458ee51aced=
+e971b0dc6b53b9004fb14b045601325a36c5e2e5db36da25348d603d1e9e70308957dfdc523=
+e171d6c63d667b843bd5f39606c9588586f65219cdcda9c4fa704ee606549dafedc33332378=
+a514bfe88ca8c2ae08abb68620e9ba14caef1d0f5b3f6a7e7e3635c15d6fb0a79c48c96466c=
+3181251649a1b525382bc41b6d99e05796bcff2e8126dc11c511d4d33d066a1e80295758f85=
+cbf797eb4c09bab071be477690c6a4451949355f09f2af4fa5ba48f1af48c604cf696cd178c=
+0d0e9ca1d5896782e2ca7a2a67473a3451eab1cf7e47e87599bddbb29102aba623ddb437ef1=
+6650021a61ccecfaefbe176744236f255e13182980c6d40419acfa092ae119a8d0ae88e3d40=
+8118f396f9fcc90da4626215b150a8356cb71c5aa0c0b2c4820c2cac57b2b20614b24cf4af0=
+7e7011b3346400e18b8ae32bdbd2eaab0abbbbbbb941def366e13ad8dc2ef9985a0cb364b4b=
+793e2863540fe409a234ec3de02eb1a06b7e85fb569063d25eead9a7dd5ad1d32fff919de4f=
+f464ee6cf5a307042807e521fdf82e9a0915e41dcffd747343aea203765526b5139400d33b7=
+d6c6eb27b694b1072bb4446e95d6a6949840d089b0539e1342fe55b2f76c302bbe86ab81296=
+284636840d389dda6f216842cbaabca37f601289a9bab91793487582f970a9aeb760bf69f2a=
+59a121b692c13395bd467ed9d22c0e7df197025bf911da0af966203b0e7e1e754d1e8801577=
+ec358e68518cc712231602a60668e792c2ca6a19b29a011d6159e6bcab4aad185ea3ca6f01b=
+40e1d0895094dab4a468e3640af68f2d05356897c020296fd63546e37bb930abdda885dc8fa=
+2aa187e7ea07f99dd66493fe353f358faf8b9f794ff63938b1fdeb931f3adb9e939d630c4c0=
+aad5f04fc0e523830fbbb573a55243861663d88737ba9566794bca5f1beb91ea47862a313ec=
+dd753159e8360ca6e7fa66f916752a71f6c6f9dc2e01fd275a8659df4c7319836f17f58d540=
+cd7120bcb204e2dd025e88ce052d760ba5a1b26fa074744158c9568737f4ac60bd764c719db=
+24e2723f2446e68a608a91e71cd6199ed180d2652e92e33c0a1c3e2363d40f37d7e8a046abc=
+9b5b74a53254aa950ff41098e24e17fb86eb4c98b754a4b8692afb9afe9a00b36dfd88a6911=
+770e87895bdd9531bf04cf6fe9f590f90bc3b28bb2a5650e7c0bfad41c5d811cae91068d368=
+8e08c4192a0af916f&quot;, &quot;405378c54d20be317a9e818c0ba6555a97aba69716fc=
+03777916b38085006ddd8de17d5ebde2c405de9adc1c5cd68d42e65fe0f31d207e6667e18a9=
+04071eb9e8a19c5d1092c1937f57212b5309a825a5a69c6fc51131c2c12d1ac30ff1954efab=
+c2d75b07fc7e72139d4e67e9f14278ccb612cf485613f123e0bb7b5bec44d729189a6e4af5e=
+61903ea8f2893dec6de13e133878e9f4bbd4f97022bd14ae7fc50655a26a66d850b4762c2c8=
+97399202251fbc79efe97fc98ce14ec2efe82e956b1293caebc631a4419242186e83a20993c=
+0098c1f635ea001ca9fd17e257c2de03b9bc2b7b2fc1f5d278f56c80e011ecb55cf2c613cc8=
+112df2dbbb712f699cc408f2c2c4f1311909a4c4c694155d9b82d315432f66d2593397ffdb7=
+3c8529f07b0094a6285feb785961e498ad2abb8241c18bd0d26d594593423581f5e6c8ba53b=
+ce18afb02b3c41f03e528a6a1272867520bf6edf91ad352bb24845df2521d3aa5f003503110=
+7c0310b87ce92b6b7fcf7cd85bb0bf98dc44cce4a23412c979c0417790dd0c98f9b79485037=
+01dd039147bd13d0ee08d2f6791ce911c9eb6dc60e482c9d03c9bdb41590de5ad2470f56d6b=
+f3a731a87097b5f584f1ca410a50df03f0ba7c00f67566d342623a94249bb6519da0f0152c7=
+0db5118cde7a5b06d0ac9c2d6e92a282e7e754005b0f0c9803fad96d438a172ab1406399720=
+73164f3db8ca715028373dbe2a9260f967a13edc349fc50e9d2b1d177598e510960a8221582=
+cff21807de8f12708a44843f6127910ce7df94450286f48013da84de6f6ab0cebe221ca2e08=
+e2d5181d93c0dfd92327256f83bf2bdddf181adaabe0553c6ff3a6ee02d110c4bb7b7bdef9b=
+3abdcc7a4276fc387a8a1d74b290873b70449979558b687f11d727a1692a20b08313f77cf73=
+49a8c373170250a88c1229f681d5719c73fe925fe45092f4c83932446d68d0b9940ba30dc8e=
+604690f8aec2f3d12d32c637f18c9ba7c9c642415e1cdd5b20c08761bbb2324712e88f12678=
+16b6256d364d0f61a55b19cdea46ba5586ee804332acdba50f11ae913264a420b5dfe5e2180=
+dac9965f8d7408fbd305095683af557c9094cc10552aa5980e3d2ce525808e35c2828d14431=
+48fc812f313f3692ca1a23251b909a82fe4eeafc0b2209cc253c399dbb3a329164a4922dba2=
+aac439dc30fbeb2ecfd26ae9c2b043d8d20685f536482a54fb62a2b716c3085a8726db4269d=
+5b38744a44b922a86423b426dd6c4a4fcfaf0ff213cbe3d6333f39561b13663b13d146a0c4b=
+fa89898d3c294fc594a7e4c5c87821af7895f3d49526dd3e1688a7d1975b29f751742ca9b5f=
+8f0368d409c51c2f00d99e81523ae66beeb9eb2eed2317f51e77513ea836ef6b8e1729acd58=
+2b4a4dab90622090f06b12b32069a452d9c911cfce85ef6e57121f&quot;})<br>ioctl$MED=
+IA_REQUEST_IOC_QUEUE(0xffffffffffffffff, 0x7c80, 0x0)<br>syz_prepare_data(&=
+amp;(0x7f0000005680)=3D{&quot;07abc86df892526234bd98949a61d211bee6c3259fe4a=
+a1747c3bafc3ca0fb237d8950c8415087e74b3e5a9d3714499bc955a06e426dfae49f055a0f=
+35d4d4a0f1fd2f3ffebc59b61a752f974eb00665e48cafbd505340958550e0f1337e5f09b27=
+b90f8592a56c5954f81461f1adb2673bb30081f23b17c9ca9ab3582dd91165714d5d7afc5a3=
+62d379bda33842fd77f3a15098c141a25e462f6f5980541da3985dccd4c5978bce5cc11c8de=
+3d783a569a35d2353f8275b2517acf7b5b8dee212e1b441106766827232ac8a7916dcdf65c0=
+2a705094f3ff38402a1b6ee309a7f351a0349a0781ed35d9a735598f5cba73b618234230588=
+86acce7a98e78d80e1afe1b0983939de8ac87ca718c5d7305654d3bc01bba85248f6784cf86=
+27fc7ada85280483bbc10538074a1cb7eed2433565196330c3bcea3e1fa22b93516afb38a8f=
+90c139bdce3e8d33027c985c6ee8a04237a820a1958143bf50a60e41093d9ed8882c25aaac4=
+45dacc7186008eb43457149f3685107b45248543c8ad2e1f3b038342fb33161aa93e4cdd863=
+ce63a463b03859861e63f25273d567fece5268d3deb727463eb669722606a45ae24ef0d811f=
+7d189e69915451f864b738d2e54721b9202bad804e37688182aa3cfd822ea50b3b834ba9d45=
+836d7a9856916fe1c23fd8da3442a54b16fa4db58824e15f2eddb2ac2d730d1b3c9818cfb22=
+087e6aec4b0cf7d85736c680558e7b25d301056c7348b2398b8d1f3ac867c34e4e809e4e635=
+f6f827970c2425556000578e4efee6fac737974a378d3d5a247023b7dd49885aa549bd6700a=
+a7c3f5055c6339c9bd98686325ba591319a45ebe418acd9953711c0cd56c4d15add08f6b32f=
+5cf7a9c1228666c72f18700d7081182230b3e852056f0bd6c5bbaa0c1bc581249f874db71c6=
+b0f617b620034e81b25adcd738757b0141f11700b554be8b078551c9b33dfb3bc5b4f971b77=
+81493e9a4b8d66b9e7a78a86e64ffe1d597177f935e45a07829d944dd2a1df7e29d045f3b53=
+5497047cbb0027ae7c4d16da10eb82e009a06cbcbece46a2708321c824307526e772bfc2a0c=
+14da68c92d05664637ec87221c70f9f041f337c4d73780a475908e6e2baae83af19bbfdc0cc=
+c4417ea02eb341c8beb4f46381b2b1ed5ec43a09ac6c3690220ab4f467a97d20092e32a4bca=
+f34edbbc8dbac23403df150526ddd6a7d38e5c71cfb010d67e0de8b31bc3146ef1bd5148dd7=
+92f9fcb49a7d56b768acd054a2a195e32872abf9d21c8ef7e3c6597158e95019ada7aa7a5dc=
+c550ec30d81a06de884618cd9ff89512b1806794967dc5beffe0b5a4a2c3baa5e1e6f18192a=
+b63bc0bd9670793e4b84e99a937859ec2e7f3db0fdb8eaa923661960c5adb2994824bb240c5=
+af8d35b44c02440467699909a89141ce766d3a38b6d59fdd1a96e&quot;, &quot;3022baad=
+3a93e38c0ed254653468923dda3f2bdffade8a350e9c35631093dbe83b4c856d6be5cff5224=
+744db368ceef531ce58ed143498754aaa949f4ad73e5662f81eb7322156c8b647891f9f5911=
+bae4e1e5c61b72feac04503a22279b7ff9b3a132e3eac19280cc7741de70eaab2d7a55868f2=
+da1a9454f7f0ab2e53e7e34830f5002bc3f0af07e5b2f4c9cbec44f140f57cbeb7fce756390=
+33619af1f7023decf01db2523e52d1b271fdd73f39d64ca91ce6ed192eafea599046e2ba4d7=
+8fcd378a85fd90b3aca5165e793c7c963272a0962013e238dfb1db78498724ed52d6e6a14a5=
+4ae52372720ea52675baeb6c1b231118d7a9c5737e1c1eae0f0b9bcb0634e71b27611674df4=
+e9a5cac42c7a4e51b2c64b2a77775b38b2ad1d2e30be549a32ac1cf76a2b4a1fa7b0388bcb4=
+2c1977a2654e82d3555e9b99723b08a9f6597cd43b2a0ea961cc8b9e3fb693fc25a99b8e3b5=
+3ea7af82c6d70925e1cb17c32887258ebc962108218ac43eeab1efed2d5af305d399dc72580=
+27c12a982edc9411844ff965eac3f0adbef3adfc3228e69003b4a99dce2b87089c832de0cf0=
+3097700490b88fda8074de29587adc0ddea0f305aa4a390bfae1def35bc0655d14db783c7cb=
+a55f6b1c9f8062b8ceda4f8ecc745dfa5662f132fd353b36695e474f9cb45bd45ab284dee31=
+1f5f05b9fefda16158f02173b31357f9046945e3e4cf8f4239a6a03c1cbecc884fa0afe09a7=
+26506123c68680868cf87951986c005e145f5a78e99c420bed0c7859511093099e334d4e28e=
+9d768615494c42844e1c187114bfda90fa6139cd435290dc51dc6ddbf5078c69867a63275fa=
+e5ca95c41edf56d6211fdff84d4d92a1d9259cf6f1a7128250e321d8fe46e5293f1ed6e76b8=
+33f4094ff535ce50c01b6b3b020cafd348125b8e86eaf95588ff79631035e2b479ec3240a72=
+5415b4a7a7f594e7c5b1e8cf927347b88c4ee229747e1580606110cdfaf2ed246f08018d8dd=
+9e0e981aa58dce4247010f4de76cf84bee1ec52eaa09188b467ebd5bd217f9af300857e6e9f=
+1b88332a49be43b7407d02ecf2988bdff8c867ce54e8eda23257cf7f6baae869dee13dc919e=
+e1a5c33aa3e4882fbdc20ceb03a2e0150d1eb748c411afc932a677660989b76975fc271a5ea=
+a8263e0273b3d997344b5b4977077a0a7e13b0fce4982922a66e822530ba824435a89023fbc=
+4db77dadd0c46f5cdd2a6289239a93a0cbb88c99655abd8786374bc30823f94d2d352c785d5=
+79f9c1e9b1fcd30200e225a58f17d3a8ba80a573f2bc5916237a09bd50c692cf7c21f6ceae2=
+a2e2808c7d5d9170e856a8083253906114664f7395b287e3da9c80f678f6d6329337e3236bf=
+fe572c8aec9488284eb8720fc615bcdc2cdd8a5bd4e58c35c232bb1415397ba345315136165=
+cc6bd02c7d4cf89&quot;})<br>r0 =3D syz_open_dev$I2C(&amp;(0x7f0000005e80), 0=
+x3, 0xc040)<br>syz_prepare_data(&amp;(0x7f0000005ec0)=3D{&quot;a6ace229850a=
+badd96630d23d189a8952caa9190f283cf20b0c2aa7944e3c71cd234f34dfa7542d46795454=
+71519198942dbaf6f7c90c9074d0f69bd60a9f008339326683a6fedb4b58d433e50b6745ce7=
+a2fe5a63993f6e1e6a1229f04e089484a4240ba143b850d1b48550392173e121fc3b9eed37c=
+e8e8611f6dd9489112d234f9ebde6458fb6ce80b7d920f4e3ca8284e82e3801f21cdc9943ee=
+4d085e9df7f8f707d2b81224fe5ea308370c0abbac0b9f15a80ff490cf8c39119e02727653f=
+daa8870f8963fdcffd83d0cfa96e294144c3af02d7483ccf4361a3f5cd73fc750a3a54bcb04=
+6eb397af998072577814ac4c4975d4f00517eb85100ee050950240917a671524986b49fd577=
+f95d3851216bdd707fcd93e9c774f600d721a31499495664e14036913b04728e8e3fe4f4ffc=
+7eb290b1b6c0d65488ded2f511e1f11130975d1fc321d6cc7a13a6c988d145fcad158297a29=
+8f3fe0f3e1b7085249716a34f2c4f0dcbb03967a65357c4692d201abb6b64b45d3b79dbc352=
+add44c79554796e8653f49990525a6d979223b50c9be21e3170012fa032947fd1bb8bf425c6=
+1f5752ecfc4c2052c7d9787151a26c08f4db3ab307699bb8f2547cbdfde0d7391758fa1d0de=
+42cb603c11812818066ad15343f19d0a319858ef61860454335ba61cb712234332f6235f220=
+732b156d6d50e26cef03d74c5dd1491b9cd7ff651551558dc645e69411e044344a04eed2ecb=
+7d0fef3e7351dd58c36c3b71ff639c7192bc93329c71578b659988165f629bcaacc315d2063=
+1e880d0b0ce8463e40c237079214b8cc5860159616d05644efc6f442e68b02c34aca1b70b46=
+b62e7e2725331f3d7538fb0121e1c7c406b1cf28a796d2fb6fbd8d5ab3ab891b73979d216d1=
+531ae381cf381c0f1dd6b36172728c5c427b26c8c5802c3854fca8155cf7632f890d1ccb59f=
+3d427afe7177a06240b7c58fb49ced2fd52e1ccba01c99be4acc30906bfc012a1e0cc846baa=
+d00da48117fac5d3057f038a9f4c623ae4b67a428b799d2a76c8ae87278e3455186d81c8adf=
+1eaa2e00dc75e4706881a42aa94edda8c639f3ef9c17cd14209b75798b9667fe244d6d33eaa=
+352bd06b5bbf44c97b73b76a52f1a722a1b64be031e0614afd761bf3117fe91a772cbc271c7=
+deaf05411677c883859de18101420846980f30559945692762774a970f39b10308a5e077d75=
+a53011b753203204cdeccc8443bff2d2ff97b11b04b612f53e1f54f45648ff6abd665836ed5=
+839b8f886bc3931cd4fec6e76e0f707b5f93e6ee4d282857c023e3ead34259d315694fd79cc=
+7517d8bb590336abfb3ae7c5deb83950eb7058fe3159d804c27977b8174900949b9d9063895=
+45c9377b06e25f761a06265622defae4eba6c95c15de826ee85ffe1525c50ccf99e5a16fb43=
+06f949c0493&quot;, &quot;ff0ded6ff00509f27cf87d9bcbea389b9153f6af8daa2b3d15=
+e0ff7982ec1c0bf69ff52bafff4bdf643f2ecec15f1debfa2c14af61b3cb197cebc2575162b=
+bcb8f74e37449f4b40694d2f5221eb4841467e56706f84b7bf513ba10883de96546ad76a9c8=
+90a4964fda53dafff036705e86c798c753f9cdf66f5cbdde2f65b5cebcc16196ec693bb1fbb=
+8694157eb1010530b7ddc976beea6346913eb4fcfb68d4d1f1273339671d5c101ec539c2498=
+9cef8c931607effa8a20b005061aef76b0abf2056c66c0d5904322f13565375e9c62de855b0=
+da7da42059de827a76b27ee38e6ce61bcb83cf7bfcbad322e4e1be606ac5078ffcb209a2e4d=
+f03d2e75471e55de9b4e84dfb22f2ee10b3c66d49900a1b4aada9ec63325bd1c15175a16b76=
+92cfc4ff8daacb6f483cf8d0054cbfe9bb754cf4d1ce7a83fa688ed7a356587d584cdd3803a=
+492644fdc13c482f6dec9ae939a2e351bfd9256e15771fcc6d922ddaa0d956a210188f16ae2=
+f8913d350636afae3ddb333f75455900fce4b88eeabd42cf6b3397d1532b4727ac4f3df3d17=
+8dedd8602794db06746c7f47f15d2c26881b8f037a78edefe93cb0abfb802550d2b74674eb7=
+e2d800e7204f4f97c9b6ff7428daf8c3af21bd6ff7cce4a56eea4e0a56e161cb22204e32517=
+417bc9c65547384308c9e32a75d28e08abbac33f25b51f54ddd13818cfdeae18d55a850f3fc=
+af07f93d2d2e089ea05e9b78fab00fcae89485b02335b101ab27619f46c637d153e34f70236=
+42b49a4d265fd0331ceffe71c68773e08e156b9ed5b35676a9f980a3fa99aa31c52bae8ee7e=
+b8f5b2b94a41eb274f0ef7a96d899c6d02b6a7feca8d6a893e85ab1551decb0420a05092380=
+d1506601ce4d2d701628b27630de4703602692dcfe135b93845ed02d6974e8d8e8dc5767049=
+7911d77c9cc26aeaacc8b71612255dc9a6fd9698f9efc7671940bef21874ef56e00aaf9c4ed=
+9461c6d3c67c7fd61981cd07d4e872f52b69db22368f09e1a95930617894deab340024aa654=
+23c5a8058631dbc4d676f2c8bda1a61c414da74b8895edfe57a577b71508c44c7938874430d=
+d9d1ca02b5faf222fecb5e078782cd5d0139ef0b03a6065cacefb3f5af1cd7c39f320ce7dc5=
+15308c65b9a9a429edc7948528275cecaf82255d6cdd2833fafd84ee018d00302715dafa5d0=
+1cfa64caccf3789ecc1660d6798072406c3754a21ea877e3d62da4c56a20a052b147591b7f6=
+f7232030a58c16f3520d0c92a13b8c2d0fdfd167d7d75cc969bd3ad4279843eb9e380fe9336=
+b43ef8b6ab6917a18d4994535ac0f939124994062e54b2e12e01098550885c0b8fa34c35e44=
+6c497668485afda83d7c1e5c431cda959320a10d52397e3b7be7d1915af4f2d43435ebf8ce4=
+d4f259d18a7218b2973da264ef5b5fd8893c9558cd59b162&quot;})<br>ioctl$I2C_TENBI=
+T(r0, 0x704, 0x0)<br><br>(above is exactly the sequence I am running to rep=
+roduce the problem.)<br><br>&gt; Should an error be logged, or is it a comm=
+on scenario, that such traffic exists?<br><br>In normal deployments, I don=
+=E2=80=99t expect such traffic from a well-behaved I2C device. In my case, =
+the malformed length only appears because PrIntFuzz is intentionally crafti=
+ng invalid inputs and feeding them to the driver via `syz_prepare_data()`. =
+So this is not a =E2=80=9Ccommon=E2=80=9D or expected scenario in real-worl=
+d use, but it is a realistic attacker/fuzzer scenario, since the length fie=
+ld can be controlled by an external peer/device.<br><br>Given that, I think=
+ the driver should treat an invalid length as an error and fail the request=
+ instead of trusting it and risking memory corruption.<br><br>Regarding log=
+ging, I=E2=80=99m fully open to your preference. From my point of view, log=
+ging this as an error seems reasonable, because it indicates malformed or b=
+uggy input from the device side. However, if you expect this condition migh=
+t occur more frequently in practice and would prefer to reduce noise, I can=
+ switch it to `dev_dbg()` or even drop the log entirely.<br><br>Please let =
+me know which logging level you would prefer, and I will update the patch a=
+ccordingly.<br><br>Best regards,<br>Guangshuo Li<br></div><br><div class=3D=
+"gmail_quote gmail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">P=
+aul Menzel &lt;<a href=3D"mailto:pmenzel@molgen.mpg.de">pmenzel@molgen.mpg.=
+de</a>&gt; =E4=BA=8E2025=E5=B9=B412=E6=9C=881=E6=97=A5=E5=91=A8=E4=B8=80 21=
+:22=E5=86=99=E9=81=93=EF=BC=9A<br></div><blockquote class=3D"gmail_quote" s=
+tyle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pad=
+ding-left:1ex">[Cc: Remove bouncing address of Jeffrey and update Jesse=E2=
+=80=99s]<br>
+<br>
+Am 01.12.25 um 14:18 schrieb Paul Menzel:<br>
+&gt; Dear Guangshuo,<br>
+&gt; <br>
+&gt; <br>
+&gt; Thank you for your patch.<br>
+&gt; <br>
+&gt; Am 01.12.25 um 04:40 schrieb Guangshuo Li:<br>
+&gt;&gt; In e1000_tbi_should_accept() we read the last byte of the frame vi=
+a<br>
+&gt;&gt; &#39;data[length - 1]&#39; to evaluate the TBI workaround. If the =
+descriptor-<br>
+&gt;&gt; reported length is zero or larger than the actual RX buffer size, =
+this<br>
+&gt;&gt; read goes out of bounds and can hit unrelated slab objects. The is=
+sue<br>
+&gt;&gt; is observed from the NAPI receive path (e1000_clean_rx_irq):<br>
+&gt;&gt;<br>
+&gt;&gt; =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D<br>
+&gt;&gt; BUG: KASAN: slab-out-of-bounds in e1000_tbi_should_accept+0x610/0x=
+790<br>
+&gt;&gt; Read of size 1 at addr ffff888014114e54 by task sshd/363<br>
+&gt;&gt;<br>
+&gt;&gt; CPU: 0 PID: 363 Comm: sshd Not tainted 5.18.0-rc1 #1<br>
+&gt;&gt; Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS <br>
+&gt;&gt; <a href=3D"http://rel-1.12.0-59-gc9ba5276e321-prebuilt.qemu.org" r=
+el=3D"noreferrer" target=3D"_blank">rel-1.12.0-59-gc9ba5276e321-prebuilt.qe=
+mu.org</a> 04/01/2014<br>
+&gt;&gt; Call Trace:<br>
+&gt;&gt; =C2=A0 &lt;IRQ&gt;<br>
+&gt;&gt; =C2=A0 dump_stack_lvl+0x5a/0x74<br>
+&gt;&gt; =C2=A0 print_address_description+0x7b/0x440<br>
+&gt;&gt; =C2=A0 print_report+0x101/0x200<br>
+&gt;&gt; =C2=A0 kasan_report+0xc1/0xf0<br>
+&gt;&gt; =C2=A0 e1000_tbi_should_accept+0x610/0x790<br>
+&gt;&gt; =C2=A0 e1000_clean_rx_irq+0xa8c/0x1110<br>
+&gt;&gt; =C2=A0 e1000_clean+0xde2/0x3c10<br>
+&gt;&gt; =C2=A0 __napi_poll+0x98/0x380<br>
+&gt;&gt; =C2=A0 net_rx_action+0x491/0xa20<br>
+&gt;&gt; =C2=A0 __do_softirq+0x2c9/0x61d<br>
+&gt;&gt; =C2=A0 do_softirq+0xd1/0x120<br>
+&gt;&gt; =C2=A0 &lt;/IRQ&gt;<br>
+&gt;&gt; =C2=A0 &lt;TASK&gt;<br>
+&gt;&gt; =C2=A0 __local_bh_enable_ip+0xfe/0x130<br>
+&gt;&gt; =C2=A0 ip_finish_output2+0x7d5/0xb00<br>
+&gt;&gt; =C2=A0 __ip_queue_xmit+0xe24/0x1ab0<br>
+&gt;&gt; =C2=A0 __tcp_transmit_skb+0x1bcb/0x3340<br>
+&gt;&gt; =C2=A0 tcp_write_xmit+0x175d/0x6bd0<br>
+&gt;&gt; =C2=A0 __tcp_push_pending_frames+0x7b/0x280<br>
+&gt;&gt; =C2=A0 tcp_sendmsg_locked+0x2e4f/0x32d0<br>
+&gt;&gt; =C2=A0 tcp_sendmsg+0x24/0x40<br>
+&gt;&gt; =C2=A0 sock_write_iter+0x322/0x430<br>
+&gt;&gt; =C2=A0 vfs_write+0x56c/0xa60<br>
+&gt;&gt; =C2=A0 ksys_write+0xd1/0x190<br>
+&gt;&gt; =C2=A0 do_syscall_64+0x43/0x90<br>
+&gt;&gt; =C2=A0 entry_SYSCALL_64_after_hwframe+0x44/0xae<br>
+&gt;&gt; RIP: 0033:0x7f511b476b10<br>
+&gt;&gt; Code: 73 01 c3 48 8b 0d 88 d3 2b 00 f7 d8 64 89 01 48 83 c8 ff c3 =
+66 0f 1f 44 00 00 83 3d f9 2b 2c 00 00 75 10 b8 01 00 00 00 0f 05 &lt;48&gt=
+; 3d 01 f0 ff ff 73 31 c3 48 83 ec 08 e8 8e 9b 01 00 48 89 04 24<br>
+&gt;&gt; RSP: 002b:00007ffc9211d4e8 EFLAGS: 00000246 ORIG_RAX: 000000000000=
+0001<br>
+&gt;&gt; RAX: ffffffffffffffda RBX: 0000000000004024 RCX: 00007f511b476b10<=
+br>
+&gt;&gt; RDX: 0000000000004024 RSI: 0000559a9385962c RDI: 0000000000000003<=
+br>
+&gt;&gt; RBP: 0000559a9383a400 R08: fffffffffffffff0 R09: 0000000000004f00<=
+br>
+&gt;&gt; R10: 0000000000000070 R11: 0000000000000246 R12: 0000000000000000<=
+br>
+&gt;&gt; R13: 00007ffc9211d57f R14: 0000559a9347bde7 R15: 0000000000000003<=
+br>
+&gt;&gt; =C2=A0 &lt;/TASK&gt;<br>
+&gt;&gt; Allocated by task 1:<br>
+&gt;&gt; =C2=A0 __kasan_krealloc+0x131/0x1c0<br>
+&gt;&gt; =C2=A0 krealloc+0x90/0xc0<br>
+&gt;&gt; =C2=A0 add_sysfs_param+0xcb/0x8a0<br>
+&gt;&gt; =C2=A0 kernel_add_sysfs_param+0x81/0xd4<br>
+&gt;&gt; =C2=A0 param_sysfs_builtin+0x138/0x1a6<br>
+&gt;&gt; =C2=A0 param_sysfs_init+0x57/0x5b<br>
+&gt;&gt; =C2=A0 do_one_initcall+0x104/0x250<br>
+&gt;&gt; =C2=A0 do_initcall_level+0x102/0x132<br>
+&gt;&gt; =C2=A0 do_initcalls+0x46/0x74<br>
+&gt;&gt; =C2=A0 kernel_init_freeable+0x28f/0x393<br>
+&gt;&gt; =C2=A0 kernel_init+0x14/0x1a0<br>
+&gt;&gt; =C2=A0 ret_from_fork+0x22/0x30<br>
+&gt;&gt; The buggy address belongs to the object at ffff888014114000<br>
+&gt;&gt; =C2=A0 which belongs to the cache kmalloc-2k of size 2048<br>
+&gt;&gt; The buggy address is located 1620 bytes to the right of<br>
+&gt;&gt; =C2=A0 2048-byte region [ffff888014114000, ffff888014114800]<br>
+&gt;&gt; The buggy address belongs to the physical page:<br>
+&gt;&gt; page:ffffea0000504400 refcount:1 mapcount:0 mapping:00000000000000=
+00 index:0x0 pfn:0x14110<br>
+&gt;&gt; head:ffffea0000504400 order:3 compound_mapcount:0 compound_pincoun=
+t:0<br>
+&gt;&gt; flags: 0x100000000010200(slab|head|node=3D0|zone=3D1)<br>
+&gt;&gt; raw: 0100000000010200 0000000000000000 dead000000000001 ffff888013=
+442000<br>
+&gt;&gt; raw: 0000000000000000 0000000000080008 00000001ffffffff 0000000000=
+000000<br>
+&gt;&gt; page dumped because: kasan: bad access detected<br>
+&gt;&gt; =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D<br>
+&gt;&gt;<br>
+&gt;&gt; This happens because the TBI check unconditionally dereferences th=
+e last<br>
+&gt;&gt; byte without validating the reported length first:<br>
+&gt;&gt;<br>
+&gt;&gt; =C2=A0=C2=A0=C2=A0=C2=A0u8 last_byte =3D *(data + length - 1);<br>
+&gt;&gt;<br>
+&gt;&gt; Fix by rejecting the frame early if the length is zero, or if it e=
+xceeds<br>
+&gt;&gt; adapter-&gt;rx_buffer_len. This preserves the TBI workaround seman=
+tics for<br>
+&gt;&gt; valid frames and prevents touching memory beyond the RX buffer.<br=
+>
+&gt; <br>
+&gt; Do you have reproducer to forth an invalid length?<br>
+&gt; <br>
+&gt;&gt; Fixes: 2037110c96d5 (&quot;e1000: move tbi workaround code into he=
+lper function&quot;)<br>
+&gt;&gt; Cc: <a href=3D"mailto:stable@vger.kernel.org" target=3D"_blank">st=
+able@vger.kernel.org</a><br>
+&gt;&gt; Suggested-by: Tony Nguyen &lt;<a href=3D"mailto:tony.nguyen@intel.=
+com" target=3D"_blank">tony.nguyen@intel.com</a>&gt;<br>
+&gt;&gt; Signed-off-by: Guangshuo Li &lt;<a href=3D"mailto:lgs201920130244@=
+gmail.com" target=3D"_blank">lgs201920130244@gmail.com</a>&gt;<br>
+&gt;&gt; ---<br>
+&gt;&gt; changelog:<br>
+&gt;&gt; v2:<br>
+&gt;&gt; - Keep declarations at the beginning of e1000_tbi_should_accept().=
+<br>
+&gt;&gt; - Move the last_byte assignment after the length bounds checks <br=
+>
+&gt;&gt; (suggested by Tony Nguyen)<br>
+&gt;&gt; ---<br>
+&gt;&gt; =C2=A0 drivers/net/ethernet/intel/e1000/e1000_main.c | 9 ++++++++-=
+<br>
+&gt;&gt; =C2=A0 1 file changed, 8 insertions(+), 1 deletion(-)<br>
+&gt;&gt;<br>
+&gt;&gt; diff --git a/drivers/net/ethernet/intel/e1000/e1000_main.c b/drive=
+rs/net/ethernet/intel/e1000/e1000_main.c<br>
+&gt;&gt; index 3f5feb55cfba..cb49ec49f836 100644<br>
+&gt;&gt; --- a/drivers/net/ethernet/intel/e1000/e1000_main.c<br>
+&gt;&gt; +++ b/drivers/net/ethernet/intel/e1000/e1000_main.c<br>
+&gt;&gt; @@ -4091,7 +4091,14 @@ static bool e1000_tbi_should_accept(struct =
+<br>
+&gt;&gt; e1000_adapter *adapter,<br>
+&gt;&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 u32 length, co=
+nst u8 *data)<br>
+&gt;&gt; =C2=A0 {<br>
+&gt;&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct e1000_hw *hw =3D &amp;adapte=
+r-&gt;hw;<br>
+&gt;&gt; -=C2=A0=C2=A0=C2=A0 u8 last_byte =3D *(data + length - 1);<br>
+&gt;&gt; +=C2=A0=C2=A0=C2=A0 u8 last_byte;<br>
+&gt;&gt; +=C2=A0=C2=A0=C2=A0 /* Guard against OOB on data[length - 1] */<br=
+>
+&gt;&gt; +=C2=A0=C2=A0=C2=A0 if (unlikely(!length))<br>
+&gt;&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return false;<br>
+&gt;&gt; +=C2=A0=C2=A0=C2=A0 /* Upper bound: length must not exceed rx_buff=
+er_len */<br>
+&gt;&gt; +=C2=A0=C2=A0=C2=A0 if (unlikely(length &gt; adapter-&gt;rx_buffer=
+_len))<br>
+&gt; <br>
+&gt; Should an error be logged, or is it a common scenario, that such traff=
+ic <br>
+&gt; exists?<br>
+&gt; <br>
+&gt;&gt; +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return false;<br>
+&gt;&gt; +=C2=A0=C2=A0=C2=A0 last_byte =3D *(data + length - 1);<br>
+&gt;&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (TBI_ACCEPT(hw, status, errors, =
+length, last_byte)) {<br>
+&gt;&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 unsigned lo=
+ng irq_flags;<br>
+&gt; <br>
+&gt; <br>
+&gt; Kind regards,<br>
+&gt; <br>
+&gt; Paul<br>
+</blockquote></div></div>
+
+--0000000000008e01ab0644f27812--
