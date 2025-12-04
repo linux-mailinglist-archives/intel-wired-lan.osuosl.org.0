@@ -1,81 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E674CA354E
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 04 Dec 2025 11:57:47 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 06152CA3918
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 04 Dec 2025 13:13:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C91DC6089E;
-	Thu,  4 Dec 2025 10:57:45 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id ECD3C407A6;
+	Thu,  4 Dec 2025 12:13:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8klvTN-RKO7g; Thu,  4 Dec 2025 10:57:45 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id hM-il8IcpDo7; Thu,  4 Dec 2025 12:13:20 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5224560A5A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 64ECD407A3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1764845865;
-	bh=rjdSQtSDPlx7Ana7tuUDB/tettrDrFCo55kgTpFYdnk=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1764850400;
+	bh=8PhKmUb0KY2Az7phOGasKG2VAdTvG3/Edj7Im9P6Y6s=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=Ty3QRxMO197NrUDOeR+xh+0nwqB1dIAyfMGjqnYHVUgZR+Uy3YHEyzL1YsY0zSCwk
-	 wgbKicGzPn32rah3x68BpN+aKWpVy6jUmoP3qukP/UOXJOEfDq3TfFLOsouw8qEmuw
-	 6+uXaUjOCnmcHFAbg+go2coxbxL0oJKAOhIpY1bJJi7yJXHW3UiWLK/+N0Eqt08LKA
-	 AO8USpDL8NHZIvNE9w6ld9q5VpyDhSddcQnzy8oey9zZnMZ3VzxMMa9nWmf7YU8CZD
-	 jnjEcCxVMT7ZgFVeNNQ8EPGpg8dwpASXbbv6tA3+hbLOTG+qpwzZXQPvNQ6t52Vt4M
-	 73mzqzsMg5wLw==
+	b=yPKr1J/wiImzVorGIRPH7cunP5eBPf3Me7/Gsq/riaIhRon2CG9+whXD471xwU4+F
+	 Y6WOUm8Q7HC4mh/3wVE4UPDOrkWMYJZHD1VlBnWz03+FcQc2YqLKp9Yd6JBzPkk2e7
+	 lEw0btvBo1Hf6ntF28VyqXENe0BRbwkKKu02gKjkoglinkWNSH8rP82XL+mZeOX0HL
+	 Kw83WLas0rZtaHa4UPO16c6Q2xYoEXbaLNnGmXiKoKp6uRFfJewvIU0c0i0HMEnJtX
+	 4wmpXYC8sfmq6M0Te7CEZVR8N+HkO20hty69VJgKN+ATUe2cGA+YVd8koRhs92dGhy
+	 UF9W7DVm5ysHw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5224560A5A;
-	Thu,  4 Dec 2025 10:57:45 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 64ECD407A3;
+	Thu,  4 Dec 2025 12:13:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 3B204E7
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Dec 2025 10:57:44 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 4296AE7
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Dec 2025 12:13:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 25BF140701
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Dec 2025 10:57:44 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 33D4784663
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Dec 2025 12:13:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RZrRWpJub5XF for <intel-wired-lan@lists.osuosl.org>;
- Thu,  4 Dec 2025 10:57:43 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 913354066A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 913354066A
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 913354066A
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Dec 2025 10:57:42 +0000 (UTC)
-Received: from [192.168.0.192] (ip5f5af11d.dynamic.kabel-deutschland.de
- [95.90.241.29])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 206AC61E647AB;
- Thu, 04 Dec 2025 11:57:27 +0100 (CET)
-Message-ID: <3dda7b74-b90e-42b6-ace5-9b0f1d976353@molgen.mpg.de>
-Date: Thu, 4 Dec 2025 11:57:26 +0100
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id PHornVsImDL1 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  4 Dec 2025 12:13:18 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 9415284662
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9415284662
+Received: from sea.source.kernel.org (sea.source.kernel.org
+ [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 9415284662
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Dec 2025 12:13:18 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sea.source.kernel.org (Postfix) with ESMTP id AB20C4346D;
+ Thu,  4 Dec 2025 12:13:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1DF39C4CEFB;
+ Thu,  4 Dec 2025 12:13:15 +0000 (UTC)
+Date: Thu, 4 Dec 2025 12:13:13 +0000
+From: Simon Horman <horms@kernel.org>
+To: Jacob Keller <jacob.e.keller@intel.com>
+Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+Message-ID: <aTF62QTI8CsfxF8g@horms.kernel.org>
+References: <20251120-jk-refactor-queue-stats-v4-0-6e8b0cea75cc@intel.com>
+ <20251120-jk-refactor-queue-stats-v4-1-6e8b0cea75cc@intel.com>
+ <aSWB3gsh4KpDZae9@horms.kernel.org>
+ <16579efc-97b0-4a0a-b70c-7362904ddfee@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- netdev@vger.kernel.org, stable@vger.kernel.org,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Piotr Kwapulinski <piotr.kwapulinski@intel.com>
-References: <20251204095323.149902-1-jedrzej.jagielski@intel.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20251204095323.149902-1-jedrzej.jagielski@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1] ixgbevf: fix link setup
- issue
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <16579efc-97b0-4a0a-b70c-7362904ddfee@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1764850397;
+ bh=8PhKmUb0KY2Az7phOGasKG2VAdTvG3/Edj7Im9P6Y6s=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=fertJK3v8tyXoqlw8K8f0wFchzmzGwwzXG817NbPk4e/CKrvv35bPaPX/G4Rb7+zn
+ Cpjam6tPIp+E417rAA9LkZ+K/AdJkKE5VCAXovOyo/GXz4LZgBXV8g7bc11tPzRjep
+ 12V2r4GKzVumJ79Ais4HSmvJhrdbbr3c1lmJuKviA6I/QQzBy3RRhz6T1wKzDAa920
+ kENWcf8w2pK2Fw8wgSQHJ98/LZZ0TR8u1La/VvKDAp2xFkMqw3rypYbW4kD0et1FhN
+ 78AlcQeXCWafCnSUS24U4iFX/ehmtB8bRzXmXmucz0Xw/c6M73I1+9R1wJJMb7Uf25
+ oFmegPEleSqHw==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=fertJK3v
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 1/6] ice: initialize
+ ring_stats->syncp
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -91,60 +105,16 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Jedrzej,
+On Wed, Dec 03, 2025 at 02:23:06PM -0800, Jacob Keller wrote:
+
+...
+
+> Tony is going to help work with me to separate this lone patch from the
+> series and prepare it for submission through net separate from the rest
+> of the series. Unless there's other review that requires it, I likely
+> won't post a v5 to Intel Wired LAN, but wanted to confirm that we'll
+> submit this fix through net.
+
+Ack. No objections from my side.
 
 
-Thank you for your patch.
-
-Am 04.12.25 um 10:53 schrieb Jedrzej Jagielski:
-> It may happen that VF spawned for E610 adapter has problem with setting
-> link up. This happens when ixgbevf supporting mailbox API 1.6 coopearates
-
-cooperates
-
-> with PF driver which doesn't support this version of API, and hence
-> doesn't support new approach for getting PF link data.
-
-Which commit introduced the support for this API version?
-
-> In that case VF asks PF to provide link data but as PF doesn't support
-> it, returns -EOPNOTSUPP what leads to early bail from link configuration
-> sequence.
-> 
-> Avoid such situation by using legacy VFLINKS approach whenever negotiated
-> API version is less than 1.6.
-
-It’d be great, if you added how to exactly reproduce the issue.
-
-> Fixes: 53f0eb62b4d2 ("ixgbevf: fix getting link speed data for E610 devices")
-> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> Reviewed-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-> ---
->   drivers/net/ethernet/intel/ixgbevf/vf.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ixgbevf/vf.c b/drivers/net/ethernet/intel/ixgbevf/vf.c
-> index 29c5ce967938..8af88f615776 100644
-> --- a/drivers/net/ethernet/intel/ixgbevf/vf.c
-> +++ b/drivers/net/ethernet/intel/ixgbevf/vf.c
-> @@ -846,7 +846,8 @@ static s32 ixgbevf_check_mac_link_vf(struct ixgbe_hw *hw,
->   	if (!mac->get_link_status)
->   		goto out;
->   
-> -	if (hw->mac.type == ixgbe_mac_e610_vf) {
-> +	if (hw->mac.type == ixgbe_mac_e610_vf &&
-> +	    hw->api_version >= ixgbe_mbox_api_16) {
->   		ret_val = ixgbevf_get_pf_link_state(hw, speed, link_up);
->   		if (ret_val)
->   			goto out;
-
-The diff looks good. With the improved commit message, feel free to add:
-
-Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
-
-
-Kind regards,
-
-Paul
