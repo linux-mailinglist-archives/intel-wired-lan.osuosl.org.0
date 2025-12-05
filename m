@@ -1,89 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EDE2BCA958A
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 05 Dec 2025 22:05:51 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3FAFBCA95B1
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 05 Dec 2025 22:09:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9F518607E5;
-	Fri,  5 Dec 2025 21:05:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CD4FE84C47;
+	Fri,  5 Dec 2025 21:09:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CNBtn-8cXf7K; Fri,  5 Dec 2025 21:05:49 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id eSzmqPzrTyPo; Fri,  5 Dec 2025 21:09:17 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D92066EAA1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1D35884C48
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1764968748;
-	bh=EJqeBmwANOUKhGK9hc3d1olf++A4KRreu3+hRceXyxM=;
+	s=default; t=1764968957;
+	bh=YQdRoJBuoXaaecginQWpOlmyGCZSEnNOaAdRODgNcDY=;
 	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=vw1EKbXUlyNEl+A5rz+EfiD2wA6Nhc5ct0zvt7hoxINvj+5r5NqUUCo+d+eYXMZUx
-	 uK0aP4MHu6BaaEREah2W/TvSje1SWuya0wiclSU4uAEpNe/wWKD+efouqlsnKmvTei
-	 ua/JVIajMWDuw/WsrNKVB0VzOJHqYgtg3iJcZlymu1EHYqweWuNvMqExlK461KRqLv
-	 9psQecNLB6jzL8zvC/qPElf/ZCahedhsqRKSAyE0bjbnFGaRc3MhFOLY5Jc3uoBPty
-	 m+hnpnkjPx72sF5wcStVVU+bURd+KkuKPnga2W0Lv1VXaji5PYRUQyg0zfOa8VSsrk
-	 Yu+r3QXiL9P2Q==
+	b=XDrErrCp6G036unWOmFMNSxUE08MzFknS2HVzyf7CiYFrNrY012CTQQtDc1qnMW83
+	 RnCxyXpw9M4MlZOSUR5W9vOXG6mgDXHuHSTo2GGcOc/Lp0WzgOi3jYY8AZ5K3UthWy
+	 VqWIEILaOYh+Yl0slk2ipEFLmqMJdUVxkdwFQ/OVc/HJC8VaXPu2ElhjGdvnpmuWJA
+	 jQwfG8Z6N8BMWWpipPYRhYK7FHrmxr2bunuLg1E9adewFDM1VCr21ifMRtbhc7nCdl
+	 FtabbX4+BOPPDA9q+I90wMeBOlH2JIFYa1gp+GB7zPJ8oP1ITWdSOGLMxxf2uwjifS
+	 ucpvcF/CDjgXw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D92066EAA1;
-	Fri,  5 Dec 2025 21:05:48 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1D35884C48;
+	Fri,  5 Dec 2025 21:09:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 6E842E7
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Dec 2025 21:05:47 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 5066E1A9
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Dec 2025 21:09:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 54BB94002A
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Dec 2025 21:05:47 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3F0B6607E5
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Dec 2025 21:09:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id UA6zU5DTPyw8 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  5 Dec 2025 21:05:46 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id rz5Fg9QGMp6R for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  5 Dec 2025 21:09:14 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
  helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 2608B40010
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2608B40010
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2608B40010
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Dec 2025 21:05:45 +0000 (UTC)
-X-CSE-ConnectionGUID: l9J+9WctS72nMgK5FLTgQA==
-X-CSE-MsgGUID: gIV7xQMfQNefkV4EpmYAEA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11633"; a="84413370"
-X-IronPort-AV: E=Sophos;i="6.20,252,1758610800"; 
- d="scan'208,217,223";a="84413370"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Dec 2025 13:05:44 -0800
-X-CSE-ConnectionGUID: IdK3octRQD2rFgNb6kIQpg==
-X-CSE-MsgGUID: +JzXmawhSrWpq8fyU03lNw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6302B606EF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6302B606EF
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6302B606EF
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Dec 2025 21:09:13 +0000 (UTC)
+X-CSE-ConnectionGUID: ceFb2egpSeSBkGOWQIwOnA==
+X-CSE-MsgGUID: PxTB/LnHQVO9gLsFG6v2GQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11633"; a="54552905"
+X-IronPort-AV: E=Sophos;i="6.20,252,1758610800"; d="scan'208";a="54552905"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Dec 2025 13:09:13 -0800
+X-CSE-ConnectionGUID: 0fix7HPzS0Otg/fGczX9iA==
+X-CSE-MsgGUID: b8xHWUzBRViqCgMatwqEhQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.20,252,1758610800"; 
- d="scan'208,217,223";a="199821972"
-Received: from fmsmsx902.amr.corp.intel.com ([10.18.126.91])
- by fmviesa005.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Dec 2025 13:05:44 -0800
-Received: from FMSMSX903.amr.corp.intel.com (10.18.126.92) by
- fmsmsx902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="6.20,252,1758610800"; d="scan'208";a="226396535"
+Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
+ by fmviesa001.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Dec 2025 13:09:13 -0800
+Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 5 Dec 2025 13:05:43 -0800
-Received: from fmsedg902.ED.cps.intel.com (10.1.192.144) by
- FMSMSX903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ 15.2.2562.29; Fri, 5 Dec 2025 13:09:12 -0800
+Received: from ORSEDG901.ED.cps.intel.com (10.7.248.11) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29 via Frontend Transport; Fri, 5 Dec 2025 13:05:43 -0800
-Received: from MW6PR02CU001.outbound.protection.outlook.com (52.101.48.48) by
- edgegateway.intel.com (192.55.55.82) with Microsoft SMTP Server
+ 15.2.2562.29 via Frontend Transport; Fri, 5 Dec 2025 13:09:12 -0800
+Received: from MW6PR02CU001.outbound.protection.outlook.com (52.101.48.33) by
+ edgegateway.intel.com (134.134.137.111) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 5 Dec 2025 13:05:43 -0800
+ 15.2.2562.29; Fri, 5 Dec 2025 13:09:11 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=IR3yemw+TKI7pq6Kzr08Bwa/edqSZty1QtOVYjjAy0yYoDoTViiya5wf6FdcKtTVE8ySm3KFO+opi78jvmPk6j6sciWWhsGqgtdSK7aLg4h3/DikvjPKzOYI1RsoghE9s/9xiTmn9T/oWMl2bkXsBjo4vfpD5FANHC5Rchl03en3HVAPSyiwS6HCywpm9/z5aWiPLbOs75vcrOLNXeXcoghR3e09/yiORnGNQ7HI+dmDxPcfLukaTNuPnBm7gYQI4Vj1hOTQ8nKuxAa7dBOyxOMtHRm1OmhVANkiknvDYBrqj5O0YvTYEtLnnPB1jv8fmkcU9FtfscvFZheea2Peqg==
+ b=zE+dHoqJkAqOnvaFUGQLBzwwf+J66K7WOSS80aG9H9qkEM4/08V85N5s48LtRyUGmEsRxzqblu5uIrzC9yGKPwV/R1iaUXEVfMsIpIZ4XezB6Hvn41/Y+D9nObFu0Dz4wLIMHfWl5jcsfaH2WN1vcBBdmZXQTqYbUlWPerpNxq9ojJZkNnEEYAq1W0NfbNelP9/h0lc/dOziybUGirUH3xNks/Z6Zi8iDQHFc77/EnP8pzTBjaaIBnjEATbPx/9aMaZCY1IsBUDu4NuGF80A/GyQYkzu2aXrfzx67tpN/2yOj9KO9K4XluZdOeOP/pAZpglxVF6t/2KwLzz//zvcRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=EJqeBmwANOUKhGK9hc3d1olf++A4KRreu3+hRceXyxM=;
- b=bV9GWX1M7F2PfVdibJqTdptvVVzdxu/WgMlhqXevajq2KwiEIMw6tIc97hcx7R8th3ZcbkSvktdSPete92R/8T1puX6071lo0P8dkWMPHs6JB7ZUHj9+jykxSkXUNW+6eyXYAKXJD4w8e1VqV5tR7VYbnmxXxaKeN1hfR/00aBRMu7d4tSgU2lP/qeURNGWKX7zh/iUCrRi2NIaLPrgQF3vxwLbIZXnngMD/rTMGu74zWX7hDT9DY2x7iF4INzGcdQ9pKEyVKtmanmFcxLzus8zFxPEg74Khk8H8F7fiFBUqwwdEcq+RAF7/AkZ+l6CSG/fd8/8h4BgHK+/3TqujOw==
+ bh=YQdRoJBuoXaaecginQWpOlmyGCZSEnNOaAdRODgNcDY=;
+ b=yNvF9njmGYsC9hxSgynAydrYllVKzvx2LNZUHlbMH8QiqrXydzGrpXZEaA0tLslcGK0j0C5hLp4HyNFL5xRCoernVfJU/6KsEFXLU/9rJQd4H3AkLoHnj4lV79pQAgcxTdp9xnKorLMNgajUrfB1pXLazgwO/YW7klKndjALOkRsLjLVyPQezLMYLuUzPzMH+ONw+Kbbdg/LFkdo7nH4JoVnMmWnFimscApPgoyTZQX0CFh8aTPbCFS9mbxHcBN3BtSXIWO6hH5kauDdl9++zNmoeBLwgiaBPc5HND6afx4jqahe32BOcoO7dvLtKUbpvKUC4WYAYhd82nhLOpoVsw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
@@ -91,144 +89,139 @@ Received: from IA3PR11MB8986.namprd11.prod.outlook.com (2603:10b6:208:577::21)
  by SN7PR11MB7668.namprd11.prod.outlook.com (2603:10b6:806:341::21)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9388.12; Fri, 5 Dec
- 2025 21:05:39 +0000
+ 2025 21:09:09 +0000
 Received: from IA3PR11MB8986.namprd11.prod.outlook.com
  ([fe80::395e:7a7f:e74c:5408]) by IA3PR11MB8986.namprd11.prod.outlook.com
  ([fe80::395e:7a7f:e74c:5408%3]) with mapi id 15.20.9388.011; Fri, 5 Dec 2025
- 21:05:38 +0000
+ 21:09:09 +0000
 From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
-To: "Behera, Vivek" <vivek.behera@siemens.com>, "Nguyen, Anthony L"
+To: "Ding, Hui" <dinghui@sangfor.com.cn>, "Nguyen, Anthony L"
  <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
- <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "\"David
- S. Miller\"" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
- Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-CC: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Behera,
- Vivek" <vivek.behera@siemens.com>
-Thread-Topic: [PATCH] igc: Fix trigger of incorrect irq in igc_xsk_wakeup
- function
-Thread-Index: Adxl4xN/bKAnSLoOQiOSWfX7JfGLpgAR2dow
-Date: Fri, 5 Dec 2025 21:05:38 +0000
-Message-ID: <IA3PR11MB8986860C6B817F4130A4E0DBE5A7A@IA3PR11MB8986.namprd11.prod.outlook.com>
-References: <AS1PR10MB5392B7268416DB8A1624FDB88FA7A@AS1PR10MB5392.EURPRD10.PROD.OUTLOOK.COM>
-In-Reply-To: <AS1PR10MB5392B7268416DB8A1624FDB88FA7A@AS1PR10MB5392.EURPRD10.PROD.OUTLOOK.COM>
+ <przemyslaw.kitszel@intel.com>, "andrew+netdev@lunn.ch"
+ <andrew+netdev@lunn.ch>, "davem@davemloft.net" <davem@davemloft.net>,
+ "edumazet@google.com" <edumazet@google.com>, "kuba@kernel.org"
+ <kuba@kernel.org>, "pabeni@redhat.com" <pabeni@redhat.com>, "Keller, Jacob E"
+ <jacob.e.keller@intel.com>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>
+CC: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Ding, Hui"
+ <dinghui@sangfor.com.cn>
+Thread-Topic: [Intel-wired-lan] [PATCH net-next] ice: Fix incorrect timeout in
+ ice_release_res()
+Thread-Index: AQHcZcBGQSqr2T6ag0m+UehD4sQQsrUTiu/A
+Date: Fri, 5 Dec 2025 21:09:09 +0000
+Message-ID: <IA3PR11MB898665810DD47854F80941A7E5A7A@IA3PR11MB8986.namprd11.prod.outlook.com>
+References: <20251205081609.23091-1-dinghui@sangfor.com.cn>
+In-Reply-To: <20251205081609.23091-1-dinghui@sangfor.com.cn>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-msip_labels: MSIP_Label_9d258917-277f-42cd-a3cd-14c4e9ee58bc_ActionId=feb46790-5d5e-41b9-916e-56dde80d5ae3;
- MSIP_Label_9d258917-277f-42cd-a3cd-14c4e9ee58bc_ContentBits=0;
- MSIP_Label_9d258917-277f-42cd-a3cd-14c4e9ee58bc_Enabled=true;
- MSIP_Label_9d258917-277f-42cd-a3cd-14c4e9ee58bc_Method=Standard;
- MSIP_Label_9d258917-277f-42cd-a3cd-14c4e9ee58bc_Name=restricted;
- MSIP_Label_9d258917-277f-42cd-a3cd-14c4e9ee58bc_SetDate=2025-12-05T12:16:38Z; 
- MSIP_Label_9d258917-277f-42cd-a3cd-14c4e9ee58bc_SiteId=38ae3bcd-9579-4fd4-adda-b42e1495d55a;
- MSIP_Label_9d258917-277f-42cd-a3cd-14c4e9ee58bc_Tag=10, 3, 0, 1;
 x-ms-publictraffictype: Email
 x-ms-traffictypediagnostic: IA3PR11MB8986:EE_|SN7PR11MB7668:EE_
-x-ms-office365-filtering-correlation-id: 9fcaa07b-3302-48e5-29bc-08de34420ae9
+x-ms-office365-filtering-correlation-id: 6361bebc-ee0a-437b-4af9-08de34428862
 x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|1800799024|366016|921020|8096899003|7053199007|38070700021;
-x-microsoft-antispam-message-info: =?us-ascii?Q?jiUxXAQ5EZxc/eGgXDzDjuoI7A0tBxpiEABJqMzx4Kow7zSQ3jFA4GPQbL6Y?=
- =?us-ascii?Q?u0kUzhr0t+21AYrRbt/uR340TRHoVRR0ZtvbueirBqeDPyGsZ7DrXuvkBwWa?=
- =?us-ascii?Q?SChnMUyigj64KrljOrrQ7UTQmXzsFuH5OJGryfSg2R232JGaAQdEW40njVwb?=
- =?us-ascii?Q?rVRby0G9mvDane1gVQVPAEg5qrwLPtKjl2nABbmebwuXP4HQdPneFASEFaHX?=
- =?us-ascii?Q?w/tOG1QF0lexZgpuvFW/b6jVX0VsMUGOka9Dh4Ye4gTB4SEUZa2P2CUjgvqY?=
- =?us-ascii?Q?zdcIpjhqyK+qq+D8pWvmJXXqBSQ/nM4QoukpdwH5mqwWzk2PRkdxsslhWBQ1?=
- =?us-ascii?Q?Y4mpaa9su8zOj/mHcvM39cgqC637qAsQ+PPXJePbMGRwZHVt82YvtIR2s3o6?=
- =?us-ascii?Q?agLvlw0ugQ5RzxRq9Fh6es0++C10eFL1WKbrvJ9s2COy8BvuhDkzSmrMXJ5k?=
- =?us-ascii?Q?+Vqw2CfwDKyMiJ9y3qE0r4kuhIi6o8dNK+a2d8rOzn0S3RTWL1TXaasd552t?=
- =?us-ascii?Q?jfZHEPkj99BKkJzLWZ0cy38Ivqc1pRCjxjMm9g8rBQJZg+eMXCpfDTLkVC2V?=
- =?us-ascii?Q?OoCOZCzUM6h+UzmgS4uGNov3xpR4bGsaZTpbv2SYKoL+UI5ssU07rErcjkTt?=
- =?us-ascii?Q?k+1KSgc5Iqwc/bgpH7XjM+JLGDmRujSIpUzFuWHoUwRIGC+TUAHaYXQ4CrRQ?=
- =?us-ascii?Q?z0Dg0v8KS06A0Xx2vBe5dkI3SRqWU3uVCE9BcpuJ8f0ZFFGfoMuF6O7LO87O?=
- =?us-ascii?Q?NUCUck555NujcTkkON+LJ8qcWzOf1RicQ1re3QusHkpRjUyjzFjAPuYGh0A0?=
- =?us-ascii?Q?O53LOiTsPv0L/OJWy+fAe8M6s3KEc6pzc1tmzwoPQQbR9mBpLfP76+Ch9d+H?=
- =?us-ascii?Q?0OHcgzoBdCcRi7Jf59oH67vwoFNQv7lcxaJ9tJz+k9Gt/6aZepBqVFD9EaFg?=
- =?us-ascii?Q?tLfMMpZoXbZzFXD12spug4IDsS6NCk5Lj1PjkwfR7lDaHYkLw1syqgK1qgw9?=
- =?us-ascii?Q?5vS1x9AuOKEapeZiqq15bvc+XsHEIOmeUEZDasTuj9+j+hYKDCUHVGJiNB2x?=
- =?us-ascii?Q?igzuGglNNoZMgpZGtbobNHFK/RxlMy8Dre21SR1QSbCRGleK9ngojPYFTD9K?=
- =?us-ascii?Q?WmMOpmtWU/yrC6e9llYyIP1IOPjYu1tehgmqmZF2qO3MGkvWNtFZd/D+eeOZ?=
- =?us-ascii?Q?TzTyCsO66xczAqjcKsycdpDFN6x6vtg86izFJdwyhXH503+J/Yy0l9Cqz04L?=
- =?us-ascii?Q?XwAnYwjwNywS9ngEuZJXEWlnM9a+7h5NjuCchJoibBODcHPdigYyu++1T9Ff?=
- =?us-ascii?Q?XiXL2aQj6zVhpzKKswsA5kR1SNtlyfLQzWOr7UlU1lpR1ARrW+SOY/zbqgjX?=
- =?us-ascii?Q?zDzseR+rVIUNx4YpHfKMofyr2CMQT1HjzWMkLocZEF35SgJVZGZ310QuVMs5?=
- =?us-ascii?Q?InvPVoha/VVt7aDayEF2AJFnZ5O/0Qo2jOc8DCBvKRb9P/iC36rtvqPi9hac?=
- =?us-ascii?Q?k8htqlCATJr5YpGWlydva7o2x/2oskqarFNowMerI2VxC8r9yfQDY9+tDA?=
+ ARA:13230040|376014|1800799024|366016|921020|38070700021; 
+x-microsoft-antispam-message-info: =?us-ascii?Q?ASJWC6EnylbBFu3lMqa5H7PwQ41vBfvVj0p1HyG4eViHA4knJqrOMbBzkIVW?=
+ =?us-ascii?Q?LascyntU5bA14Rxd0RXP/aMI5d2Id17veE26zk6NXhex/ZN7mYjOWpcULQE9?=
+ =?us-ascii?Q?eTlvQoX6+aO3l1SHg43Liv7eOnuC+P14myy1LgfE7AFVQIDh9Ybkctsbwc2g?=
+ =?us-ascii?Q?V5w8BrdBMW4qVA6PJHwnhNY1HQQEBBeze7o7fuh2Df67GRIOAYII/AcUr3vf?=
+ =?us-ascii?Q?0yBnMard04pJ7VKDLibDlIZ0xKYoqeblgOKqTYnV+4MKiCi76/ITMNAzrM+1?=
+ =?us-ascii?Q?4rt7qgl8XvuCviDQf6nyR6JBPZoP04yRUJlGU55WSXItXuiKLtJOu3ydQ8+M?=
+ =?us-ascii?Q?xGWapmMbFXVBDJu0xiLlOHVI85tynfRMwGayN7uC6pFdmAH0WTDtBLakvu71?=
+ =?us-ascii?Q?HfmS+nihC1dP/tGB2jpBNQz7S2UPEwtRkaBUDIySiL7TuX0uoz8QEObV1FrX?=
+ =?us-ascii?Q?v1FyUX585yTtxPUIyXDMBDpFtg60gKL6jciKRdldbHJvZOkJfHJlMtT1B2MY?=
+ =?us-ascii?Q?nahMd2z+aYBL7rLpr4EiidEslcrFVgCJCsR3tnGVSEs9vPyzcDiGb1LiuRVd?=
+ =?us-ascii?Q?EomoVveQbWYGGBXi/IZztO3tNxGHejpQ3BGMiSLfaHP4/RmKybdo+MGyGVtv?=
+ =?us-ascii?Q?9yqi/BLyBLr4Tz/8GDuyud34OXlUyzPHDKPHANVbrGkkYJlr3OjT70KibNr5?=
+ =?us-ascii?Q?ipSsXmn3CwjndYPgtDS8HVqcL8j7hnofijtst2cCeE3XybhHrDe02jvdUmmz?=
+ =?us-ascii?Q?RNITdA0u1UZlJsb9KjYQtMWydzIm61gtV6DJtNRMgYmD+FDtZZqriIebp+MU?=
+ =?us-ascii?Q?ElZjVMkLs4Wqu91wb4CErIkY0kxWKZ/46zWLL/jm8Ys6Bz6S9WF8PhkSHQ5h?=
+ =?us-ascii?Q?hJtS5BgG51hAoV6Ek7jrP8LtfH07cBdfm99o1+KgezSZtqVovoRliy37WGa1?=
+ =?us-ascii?Q?8pEtlhjfRYJAAeZYm29q8L7sghMoaUVhL1qKJOdDHsHB1m7AvmwBUFhQPWfq?=
+ =?us-ascii?Q?wK1A6y0OTpJmeLbK46L87xONfxMT1LpLCRqc9LNV5NL4msFRme12VrFaj6eE?=
+ =?us-ascii?Q?KarYya0G5KJLtKEUEqVUtrK6R+LRiWiZoMpeIWE7vWKQnOI2m1pRShwS0Cu3?=
+ =?us-ascii?Q?/i0J4TFUe869uyPGY4FMhLi6E4Z2RHQpBLSAM40b57Ng6+Jf1iZw4sY3C36V?=
+ =?us-ascii?Q?7vewZU0cHvz7UucdhnI6HCC/5/4nQSGVs3NDwfBuTc+p0ySZyr+oNoazSx8q?=
+ =?us-ascii?Q?66Ts7GTLMY6EJiftoyNm1DBqrnTVzhq+f8KZj3DmWwVps4jOR3n5a2Ov2WY/?=
+ =?us-ascii?Q?5sDFPJruNrXHjaxelv5rTN7conUKhxzyUkVKOD+xn3WSd21k/vTQdzJLsaHV?=
+ =?us-ascii?Q?7snVXkopfF/NllAyyxPC/7Vhy/Ve/8jwsTlIN9uEVd+d3F4Oy0GNELP3ugyy?=
+ =?us-ascii?Q?/dLnXMmqv5/TQGtV0Os6IadkY21h5SyYlEmw2gfXRRRhck4ZWcgiaCfKiUiS?=
+ =?us-ascii?Q?WChVNwNtDbEu7w7b3c/qZXOTl1u8Rz13+34htMVGLos9mWVq5cnpn8CC8g?=
  =?us-ascii?Q?=3D=3D?=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:IA3PR11MB8986.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(1800799024)(366016)(921020)(8096899003)(7053199007)(38070700021);
- DIR:OUT; SFP:1101; 
+ SFS:(13230040)(376014)(1800799024)(366016)(921020)(38070700021); DIR:OUT;
+ SFP:1101; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?DTNHDxw5DkQdfUdURssdB3S7DcQ2czNKRDKN+8nEVB1+lgfxv35/CkZZB9i3?=
- =?us-ascii?Q?J6iUELpBQTYP8yKrWtXA/o+2dIuDLCqg/4yERrXos6/ORACC6n/m+vcWp+do?=
- =?us-ascii?Q?RlfoWC1Glwh76+FPFqH441b4+GrfTRO43m9+K8k5K5hLybdCRRPyIZjCJ9cG?=
- =?us-ascii?Q?pDCIwT4ZxXgVbgsOrzFysz4bi9Khh3JDyYoUmBcSsTLpKzfAwn9oa5PvdA+y?=
- =?us-ascii?Q?Ry0IcIn/072EVbpPIIOprRnxWDLcIVPY0+Qdfej8hD83qMCjjJmXWrUAoRYU?=
- =?us-ascii?Q?lK08QIs77rxaQkpSbB4iB1mLTEb8VazMGG5bGkGqUbwrvA0UyfXtUKRMkXCc?=
- =?us-ascii?Q?Wjkicd/b7QM2Xn/7y74PV2bUVdquzBpVM9858Gey1I8OLRhPuCp5LafaNtEt?=
- =?us-ascii?Q?vqiA80QAo/N1kb1Hn0+uNjBDaMHJwSwhh3nf22Gcep3AOB+5979+SJdp+9qf?=
- =?us-ascii?Q?P/h0AGSmwg2tuVzM4TemvjhDSdJenkzBhqqZ96ZUMWU8GcupZ0WlI4SKz5ej?=
- =?us-ascii?Q?o9iUaZ5fo7v7Xt6vFuFECIacZTJR8g5HdToKvIjVAValmhFkSfRYUHDtZCHE?=
- =?us-ascii?Q?1KvEBo2gKRIVHRxD+qaiWKqjT0MrtLCuw2aN3TZcDaVt1rAl3fUY6ZPOKYSD?=
- =?us-ascii?Q?J/d/3fgS4QAzRpEobtWCOwGdHUTAB3hS5qayDxpHLPvvaPMIn9vVHw0iXLHn?=
- =?us-ascii?Q?blCa4BZ9sxPIXEsFGdpfSMNvE+etvQ3h5/492DDTaiCVb/K9cQ5yI2gUGjXD?=
- =?us-ascii?Q?7wDtjzHLXhHPLqwOS9WGxOEAUWh7V+2G5wbm2VtXBakFf+y5Y3wwdzt1bQLS?=
- =?us-ascii?Q?SfKbuisxawhDS0KP61OlS9BFvtQoy8vUCZzzPsU9ZN9gdcLEN1DD4wwIv8Yt?=
- =?us-ascii?Q?XJmSreiudkoFyJrzGfta12shauDIF8+Jyapvirr7qkvasjDDibh68Ty9obdJ?=
- =?us-ascii?Q?Qtm9NqnhR8lAmT0QF7NJ6TAW6ArVLz5wDdh8AN86lVkm4H5ff9xYIURthoqL?=
- =?us-ascii?Q?cVrlK5UWT2u5JsKgbuCgg9ee1NTsRQiod9M9gq2tX4cn5uK0yOuzwPETZfms?=
- =?us-ascii?Q?L+SV1kFhDonp4ghzbCQU4DNdBq5x+8tRym75k5dNeAdORPOqRwDrHeZ68K21?=
- =?us-ascii?Q?eN8L+7RoStfZ1CsYEm4kXfFAFzh+vGTBZTS0R8+uzrf4bWZl50zEU5ZHWf6h?=
- =?us-ascii?Q?1FgTegqukyY5e3rEGyEsx40kELkIQ6tQxR92lbbIHapZ6dkzt1TRekXKIUmn?=
- =?us-ascii?Q?sIXtT/OZughWEDHXv+FPIpsimrk7smH3r28F2NfP1ZoPEULfavmnqjSZVAVD?=
- =?us-ascii?Q?G8FL6Q9mIn+gyTh263LIjR1J6Zg/TzRtCnDtX0hj9ABYv370tjxe/CDuD5xf?=
- =?us-ascii?Q?Xgxhkz96I+r2NQ0AhXa6wdX0vtiddW+R7yNcrY0S3obty+pxEzVAV2Ldasim?=
- =?us-ascii?Q?Rhq3kPC96s1kXrSD3KgXpA4LIatccwxc3BO/fWwR5PKySADPA9Mvlw+/5k8P?=
- =?us-ascii?Q?/AQc7s0FdLI1BTReENOCq9XDnXG0JKAHLr9Z0IpPFyWzfcksJPhbr3EbQZ9H?=
- =?us-ascii?Q?ADwY9HYyQYNTr/j9KhHJx26lRAWEhWgWuhgmxaP+m3/Z6zO4MZXodbh6lo4p?=
- =?us-ascii?Q?0w=3D=3D?=
-Content-Type: multipart/alternative;
- boundary="_000_IA3PR11MB8986860C6B817F4130A4E0DBE5A7AIA3PR11MB8986namp_"
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?eNhJ/T/boPsDG0y3513BObRUL7BDay5j55raCrdq2eWZSJ/gQtuNm0ITO70d?=
+ =?us-ascii?Q?4X822ps2sPBHJzdFqZ1mHwSxv80716EJjJ2qgjqswI2QFitGhBqpuCNyHGpa?=
+ =?us-ascii?Q?7aavw/HmuUq1dYnCI4P+rghhqRlPh5WgNaO5WhQCSgRHco5pA4aJHz7FvD03?=
+ =?us-ascii?Q?SBZRsymFujT3svu2bdkBlX51FTcgOCHHiDAYt5mfJHpE3rSUKXjpjFdzeq9i?=
+ =?us-ascii?Q?L4oPTXhQciq2dxzfYDnRguVZZGq8O0xolg0KCT2ZE+CwBtlWQldFwf+JalVD?=
+ =?us-ascii?Q?qbqsADOxN6M4IMBnGyfl0FKx5ll4iU7sW1gAwYzuQ0NST955mplFIx6baiLX?=
+ =?us-ascii?Q?cI0SCFkTqbqP4Hy/U0hrlIfkdUL/Ps56kxji1SJ2jMTyxLlDAaq1vSBPtvkC?=
+ =?us-ascii?Q?QlIZoWUE+iOC618tEYJiHKKWo8g89olDPquKskgZ8FmqvH77werzHispWJ4F?=
+ =?us-ascii?Q?0Z14ZevN7QyzMB1+A19Ag9e5jiO3VS+CXDZ/bTqSHJiavv+HTkmVuAxV2DJz?=
+ =?us-ascii?Q?dWVG1D2NGjaP+v7c3N53VlzZtzuMKu7hFrExrOyuR4kbWdBnv22Lwe3twfEn?=
+ =?us-ascii?Q?sL2MvvR3hymmv6HW7Pp5RP7QnaOvIcWGhmMp4eX1+Lj7QdL4r/953o2Wzfhs?=
+ =?us-ascii?Q?4bRRFEtN8BGPlUmnKvtuGCFZMmP6ZEviHY5otkssEof3IKqCB+SZRirRQTbX?=
+ =?us-ascii?Q?kkuj+u1Zqt5QCyPEaF+Lu3hMp9Xpp4aasuZnGzD/L8KkdBCIrdhU2vGQy5EF?=
+ =?us-ascii?Q?EeEoKTbzxHnmwd6+cTetzRhhrQ+M4y912VDRdlGkAbV9rhbcs/DBX6iN8xGd?=
+ =?us-ascii?Q?Nw4fqsqr49GUc5l5VTHe62M0ZIqXSLuXm64qfKfn1yfS5M22zj8syQuywHLC?=
+ =?us-ascii?Q?oLdygT86udT92khoq8G34wqdFVXAU76ZbZITfQcthJgSk98b+ToXl+9DP8Nc?=
+ =?us-ascii?Q?YsLX7LdvxIUW92FMSKZN1ysFHt4olKJo9f2qwjjKhxNKao8oVsoTBjurdZG2?=
+ =?us-ascii?Q?USQCe8YVxC/LOmDjezeOScwCDczK727Grdas4Ztl9294qciBMNkpSzMIjXtL?=
+ =?us-ascii?Q?3rOsVfRoziJ8GneOGardtgCPPMGixXVVZB4swGo27uUPPnjsIfisjK5mc96V?=
+ =?us-ascii?Q?bJObGUasXyyDywOYxwaGzTBSxNMS72cUQgbkpw0zqglqlut7EXmAib5vQw+7?=
+ =?us-ascii?Q?PRnSgo28sy5eLnrM6ZB4b28OluVS4qJhaj7jwqEFEaaKL4diw63IDFriYnTm?=
+ =?us-ascii?Q?oAk58es/X70t5PaDEymBr+bsPCuyrqahINJfLoQ6fAy+zpFpoE/WmCEG1eZ4?=
+ =?us-ascii?Q?lgtuN/oT4IfAMiGP/Iyx9thYREzbFnkomm9znkmjwDYYAk1GMmTf/jjmHYVJ?=
+ =?us-ascii?Q?m7jaiMWM5N3xm2U1AU/PgbYsuEDa/dndnP8/mSi03PgNPkyaXS+jlJc9F+k4?=
+ =?us-ascii?Q?BgbhrWoJ9oOl1Irabb+b+//5wrZ/nd+6tGKDRw0N4d607Wt89CwsozJ86VwK?=
+ =?us-ascii?Q?lGbCYjqSJlHZtTmHo2RZ3WD/KhaRwuklJ9SADQk97zjWMYrY5pPfgF0AcGLc?=
+ =?us-ascii?Q?hNNizM2v592rLrpyXTqvmfE0Fp/89pAnH0fW4aOZQMJKHT9/b908MgVF/C0H?=
+ =?us-ascii?Q?Fw=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB8986.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9fcaa07b-3302-48e5-29bc-08de34420ae9
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Dec 2025 21:05:38.8546 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6361bebc-ee0a-437b-4af9-08de34428862
+X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Dec 2025 21:09:09.3758 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: aDSZhFhDj88TYtmrCqlRjUqBN/zUlBTBrNff2wHLQ8Tcg7OtiVrVmUli3cW3bWNS09NDFjgYZ1oNW0896MroSAbTzqJ6vQaIL1iKXILkd28=
+X-MS-Exchange-CrossTenant-userprincipalname: qAOzLUqrYe8GS2F8oIIw4ADR2iWKon9d1ETUo/0zpLbC7VRVdTQXDIFNYg0Uw03XI6VCZEjxcCfoqSydtMU2x/0K+oiK76I6hlTt76fhuKQ=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR11MB7668
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1764968746; x=1796504746;
+ t=1764968955; x=1796504955;
  h=from:to:cc:subject:date:message-id:references:
- in-reply-to:mime-version;
- bh=YsHvUuMwBVwltwcvujRxiBIa3RJTjlkorWKlF9qmxYI=;
- b=lERXbhhcS6BZn3LAG5yYqh++fmdhQaCBL3QDzwH7shS1wMu1tsooHxIR
- s4n+Y1XvhZhS7EU5H0BtVB7bPw/3V8i9ckurbInE2DqM3+Ok651AsaVgu
- Dcf5mrBOmwui+Qm9VgKFp+R8kv2PYUXVXDI64CqTkp+tBPBuip+hswi8S
- pa4OvqSzFbBhbK9GDMb0hIQZ12y/UKJoGTuH6h0wdwsb0dW1PyiUysB5T
- Xw2epZurQP5JpGXs6mihV03wvhGNyeICge7OsXMt+eOzDApyg2Kxd6uvW
- AGkMFkXmrYrS0Orb7NAns2SplHCIoQIN35dnVa82k677PGcuma0rz7nJX
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=qhopTCDEyMvZb9Xifu0HJLxd+Hf2XAwM2KzPtUAW9fI=;
+ b=gEyL5EToy5eikWNqibnf3vbwy9PPLAdwa77h8k+RbZtqTyTO4fd3WNrI
+ 2NqujT7zY+ZnO3DeeeQyuSQwqpylc7l4gU/o4j8z0b3Q8edI848cgyOHf
+ /shh1kk57C4CwrxhPVB5XI8LZ1u43p80c/DTNx3cllRLLhNddb3Eio6rK
+ pFHb4IJU5v+/UVNPIWhhtAZUfhknex75XPylp0F8FCNkr2x1d0Ud/A207
+ qpsvzUdpO7WjG35h56lm2GrzQK6BhwIvvwIJM/bDO8+S8DVfmIS87ZDtb
+ /TIb8AZ5TSZ4BqG3qKgGfBLjX0SzwaaUWLYrpwPscrK1QRUjtBKyKcr0h
+ w==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=lERXbhhc
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=gEyL5ETo
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH] igc: Fix trigger of incorrect irq in
- igc_xsk_wakeup function
+Subject: Re: [Intel-wired-lan] [PATCH net-next] ice: Fix incorrect timeout
+ in ice_release_res()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -244,385 +237,64 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---_000_IA3PR11MB8986860C6B817F4130A4E0DBE5A7AIA3PR11MB8986namp_
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
 
 
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
+> Of Ding Hui
+> Sent: Friday, December 5, 2025 9:16 AM
+> To: Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Kitszel,
+> Przemyslaw <przemyslaw.kitszel@intel.com>; andrew+netdev@lunn.ch;
+> davem@davemloft.net; edumazet@google.com; kuba@kernel.org;
+> pabeni@redhat.com; Keller, Jacob E <jacob.e.keller@intel.com>; intel-
+> wired-lan@lists.osuosl.org
+> Cc: netdev@vger.kernel.org; linux-kernel@vger.kernel.org; Ding, Hui
+> <dinghui@sangfor.com.cn>
+> Subject: [Intel-wired-lan] [PATCH net-next] ice: Fix incorrect timeout
+> in ice_release_res()
+>=20
+> The commit 5f6df173f92e ("ice: implement and use rd32_poll_timeout for
+> ice_sq_done timeout") converted ICE_CTL_Q_SQ_CMD_TIMEOUT from jiffies
+> to microseconds.
+>=20
+> But the ice_release_res() function was missed, and its logic still
+> treats ICE_CTL_Q_SQ_CMD_TIMEOUT as a jiffies value.
+>=20
+> So correct the issue by usecs_to_jiffies().
+>=20
 
-From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Beh=
-era, VIVEK
-Sent: Friday, December 5, 2025 1:40 PM
-To: Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw <pr=
-zemyslaw.kitszel@intel.com>; Andrew Lunn <andrew+netdev@lunn.ch>; "David S.=
- Miller" <davem@davemloft.net>; Eric Dumazet <edumazet@google.com>; Jakub K=
-icinski <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>
-Cc: intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org; linux-kernel@=
-vger.kernel.org; Behera, Vivek <vivek.behera@siemens.com>
-Subject: [Intel-wired-lan] [PATCH] igc: Fix trigger of incorrect irq in igc=
-_xsk_wakeup function
+Please add a brief "how verified" paragraph (platform + steps).
+This is a unit-conversion fix in a timeout path; a short test description h=
+elps reviewers and stable backports validate the change.
 
-From 4e3ebdc0af6baa83ccfc17c61c1eb61408095ffd Mon Sep 17 00:00:00 2001
-From: Vivek Behera <vivek.behera@siemens.com<mailto:vivek.behera@siemens.co=
-m>>
-Date: Fri, 5 Dec 2025 10:26:05 +0100
-Subject: [PATCH] igc: Fix trigger of incorrect irq in igc_xsk_wakeup functi=
-on
-
-When the i226 is configured to use only 2 combined queues using ethtool
-or in an environment with only 2 active CPU cores the 4 irq lines
-are used in a split configuration with one irq
-assigned to each of the two rx and tx queues
-(see console output below)
-
-
-...
-
-Signed-off-by: Vivek Behera <vivek.behera@siemens.com<mailto:vivek.behera@s=
-iemens.com>>
----
-drivers/net/ethernet/intel/igc/igc_main.c | 31 +++++++++++++++++++----
-1 file changed, 26 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethern=
-et/intel/igc/igc_main.c
-index 7aafa60ba0c8..0cfcd20a2536 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -6930,21 +6930,42 @@ int igc_xsk_wakeup(struct net_device *dev, u32 queu=
-e_id, u32 flags)
-           if (!igc_xdp_is_enabled(adapter))
-                       return -ENXIO;
-
--           if (queue_id >=3D adapter->num_rx_queues)
-+          if ((flags & XDP_WAKEUP_RX) && (flags & XDP_WAKEUP_TX)) {
-+                      /* If both TX and RX need to be woken up queue pair =
-per IRQ is needed */
-+                      if (!(adapter->flags & IGC_FLAG_QUEUE_PAIRS))
-+                                  return -EINVAL; /* igc queue pairs are n=
-ot activated.
-+                                                          * Can't trigger =
-irq
-+                                                          */
-It looks like not a malformed input, but as unsupported operation for the c=
-urrent device/IRQ configuration. In net drivers, -EOPNOTSUPP is the expecte=
-d errno for "the device cannot perform this requested operation in this con=
-figuration," while -EINVAL signals a bad argument.
-Am I right?
+And you can add my:
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 
 
-+                      /* Just get the ring params from Rx */
-+                      if (queue_id >=3D adapter->num_rx_queues)
-+                                  return -EINVAL;
-+                      ring =3D adapter->rx_ring[queue_id];
-+          } else if (flags & XDP_WAKEUP_TX) {
-+                      if (queue_id >=3D adapter->num_tx_queues)
-+                                  return -EINVAL;
-+                      /* Get the ring params from Tx */
-+                      ring =3D adapter->tx_ring[queue_id];
-+          } else if (flags & XDP_WAKEUP_RX) {
-+                      if (queue_id >=3D adapter->num_rx_queues)
-+                                  return -EINVAL;
-+                      /* Get the ring params from Rx */
-+                      ring =3D adapter->rx_ring[queue_id];
-+          } else {
-+                      /* Invalid Flags */
-                       return -EINVAL;
+> Fixes: 5f6df173f92e ("ice: implement and use rd32_poll_timeout for
+> ice_sq_done timeout")
+> Signed-off-by: Ding Hui <dinghui@sangfor.com.cn>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_common.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/net/ethernet/intel/ice/ice_common.c
+> b/drivers/net/ethernet/intel/ice/ice_common.c
+> index 6fb0c1e8ae7c..5005c299deb1 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_common.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_common.c
+> @@ -1885,7 +1885,7 @@ void ice_release_res(struct ice_hw *hw, enum
+> ice_aq_res_ids res)
+>  	/* there are some rare cases when trying to release the
+> resource
+>  	 * results in an admin queue timeout, so handle them correctly
+>  	 */
+> -	timeout =3D jiffies + 10 * ICE_CTL_Q_SQ_CMD_TIMEOUT;
+> +	timeout =3D jiffies + 10 *
+> usecs_to_jiffies(ICE_CTL_Q_SQ_CMD_TIMEOUT);
+>  	do {
+>  		status =3D ice_aq_release_res(hw, res, 0, NULL);
+>  		if (status !=3D -EIO)
+> --
+> 2.17.1
 
-
-...
-
---
-2.34.1
-
---_000_IA3PR11MB8986860C6B817F4130A4E0DBE5A7AIA3PR11MB8986namp_
-Content-Type: text/html; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-
-<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
-osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
-xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
-//www.w3.org/TR/REC-html40">
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
->
-<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
-<style><!--
-/* Font Definitions */
-@font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
-@font-face
-	{font-family:Aptos;}
-@font-face
-	{font-family:"Terminus \(TTF\)";
-	panose-1:2 0 6 9 0 0 0 0 0 0;}
-/* Style Definitions */
-p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin:0in;
-	font-size:12.0pt;
-	font-family:"Aptos",sans-serif;
-	mso-ligatures:standardcontextual;}
-a:link, span.MsoHyperlink
-	{mso-style-priority:99;
-	color:#467886;
-	text-decoration:underline;}
-span.EmailStyle19
-	{mso-style-type:personal-reply;
-	font-family:"Terminus \(TTF\)";
-	color:windowtext;}
-.MsoChpDefault
-	{mso-style-type:export-only;
-	font-size:10.0pt;
-	mso-ligatures:none;}
-@page WordSection1
-	{size:8.5in 11.0in;
-	margin:1.0in 1.0in 1.0in 1.0in;}
-div.WordSection1
-	{page:WordSection1;}
---></style>
-</head>
-<body lang=3D"EN-US" link=3D"#467886" vlink=3D"#96607D" style=3D"word-wrap:=
-break-word">
-<div class=3D"WordSection1">
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Te=
-rminus \(TTF\)&quot;"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Te=
-rminus \(TTF\)&quot;"><o:p>&nbsp;</o:p></span></p>
-<div style=3D"border:none;border-left:solid blue 1.5pt;padding:0in 0in 0in =
-4.0pt">
-<div>
-<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
-0in 0in">
-<p class=3D"MsoNormal"><b><span style=3D"font-size:11.0pt;font-family:&quot=
-;Calibri&quot;,sans-serif;mso-ligatures:none">From:</span></b><span style=
-=3D"font-size:11.0pt;font-family:&quot;Calibri&quot;,sans-serif;mso-ligatur=
-es:none"> Intel-wired-lan &lt;intel-wired-lan-bounces@osuosl.org&gt;
-<b>On Behalf Of </b>Behera, VIVEK<br>
-<b>Sent:</b> Friday, December 5, 2025 1:40 PM<br>
-<b>To:</b> Nguyen, Anthony L &lt;anthony.l.nguyen@intel.com&gt;; Kitszel, P=
-rzemyslaw &lt;przemyslaw.kitszel@intel.com&gt;; Andrew Lunn &lt;andrew+netd=
-ev@lunn.ch&gt;; &quot;David S. Miller&quot; &lt;davem@davemloft.net&gt;; Er=
-ic Dumazet &lt;edumazet@google.com&gt;; Jakub Kicinski &lt;kuba@kernel.org&=
-gt;;
- Paolo Abeni &lt;pabeni@redhat.com&gt;<br>
-<b>Cc:</b> intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org; linux-=
-kernel@vger.kernel.org; Behera, Vivek &lt;vivek.behera@siemens.com&gt;<br>
-<b>Subject:</b> [Intel-wired-lan] [PATCH] igc: Fix trigger of incorrect irq=
- in igc_xsk_wakeup function<o:p></o:p></span></p>
-</div>
-</div>
-<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">From 4e3ebdc0af6baa83ccfc17c61c1eb61408095ffd Mon Sep=
- 17 00:00:00 2001<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">From: Vivek Behera &lt;<a href=3D"mailto:vivek.behera=
-@siemens.com">vivek.behera@siemens.com</a>&gt;<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">Date: Fri, 5 Dec 2025 10:26:05 +0100<o:p></o:p></span=
-></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">Subject: [PATCH] igc: Fix trigger of incorrect irq in=
- igc_xsk_wakeup function<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">When the i226 is configured to use only 2 combined qu=
-eues using ethtool<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">or in an environment with only 2 active CPU cores the=
- 4 irq lines<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">are used in a split configuration with one irq<o:p></=
-o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">assigned to each of the two rx and tx queues<o:p></o:=
-p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">(see console output below)<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Te=
-rminus \(TTF\)&quot;">&#8230;<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Te=
-rminus \(TTF\)&quot;"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">Signed-off-by: Vivek Behera &lt;<a href=3D"mailto:viv=
-ek.behera@siemens.com">vivek.behera@siemens.com</a>&gt;<o:p></o:p></span></=
-p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">---<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">drivers/net/ethernet/intel/igc/igc_main.c | 31 ++++++=
-+++++++++++++----<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">1 file changed, 26 insertions(+), 5 deletions(-)<o:p>=
-</o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">diff --git a/drivers/net/ethernet/intel/igc/igc_main.=
-c b/drivers/net/ethernet/intel/igc/igc_main.c<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">index 7aafa60ba0c8..0cfcd20a2536 100644<o:p></o:p></s=
-pan></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">--- a/drivers/net/ethernet/intel/igc/igc_main.c<o:p><=
-/o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+++ b/drivers/net/ethernet/intel/igc/igc_main.c<o:p><=
-/o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">@@ -6930,21 +6930,42 @@ int igc_xsk_wakeup(struct net=
-_device *dev, u32 queue_id, u32 flags)<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
-;&nbsp; if (!igc_xdp_is_enabled(adapter))<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
-;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp; return -ENXIO;<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp; if (queue_id &gt;=3D adapter-&gt;num_rx_queues)<o:p></o:p></span><=
-/p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p; if ((flags &amp; XDP_WAKEUP_RX) &amp;&amp; (flags &amp; XDP_WAKEUP_TX)) =
-{<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
-/* If both TX and RX need to be woken up queue pair per IRQ is needed */<o:=
-p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
-if (!(adapter-&gt;flags &amp; IGC_FLAG_QUEUE_PAIRS))<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ret=
-urn -EINVAL; /* igc queue pairs are not activated.<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * Can't t=
-rigger irq<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */<o:p></=
-o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Te=
-rminus \(TTF\)&quot;">It looks like
-<b>not a malformed input</b>, but as <b>unsupported operation</b> for the c=
-urrent device/IRQ configuration. In net drivers,
-<b>-EOPNOTSUPP</b> is the expected errno for &#8220;the device cannot perfo=
-rm this requested operation in this configuration,&#8221; while
-<b>-EINVAL</b> signals a bad argument.<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Te=
-rminus \(TTF\)&quot;">Am I right?<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Te=
-rminus \(TTF\)&quot;"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Te=
-rminus \(TTF\)&quot;"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
-/* Just get the ring params from Rx */<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
-if (queue_id &gt;=3D adapter-&gt;num_rx_queues)<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ret=
-urn -EINVAL;<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
-ring =3D adapter-&gt;rx_ring[queue_id];<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p; } else if (flags &amp; XDP_WAKEUP_TX) {<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
-if (queue_id &gt;=3D adapter-&gt;num_tx_queues)<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ret=
-urn -EINVAL;<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
-/* Get the ring params from Tx */<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
-ring =3D adapter-&gt;tx_ring[queue_id];<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p; } else if (flags &amp; XDP_WAKEUP_RX) {<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
-if (queue_id &gt;=3D adapter-&gt;num_rx_queues)<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
-nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ret=
-urn -EINVAL;<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
-/* Get the ring params from Rx */<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
-ring =3D adapter-&gt;rx_ring[queue_id];<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p; } else {<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
-/* Invalid Flags */<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
-;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp; return -EINVAL;<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Te=
-rminus \(TTF\)&quot;"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Te=
-rminus \(TTF\)&quot;"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">&#8230;<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Te=
-rminus \(TTF\)&quot;"><o:p>&nbsp;</o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">--
-<o:p></o:p></span></p>
-<p class=3D"MsoNormal"><span style=3D"font-size:10.0pt;font-family:&quot;Ar=
-ial&quot;,sans-serif">2.34.1<o:p></o:p></span></p>
-</div>
-</div>
-</body>
-</html>
-
---_000_IA3PR11MB8986860C6B817F4130A4E0DBE5A7AIA3PR11MB8986namp_--
