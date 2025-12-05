@@ -2,79 +2,113 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 14B57CA6B01
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 05 Dec 2025 09:22:02 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 40F89CA8713
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 05 Dec 2025 17:56:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B4A18607E4;
-	Fri,  5 Dec 2025 08:22:00 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E37746F1F1;
+	Fri,  5 Dec 2025 16:56:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id PePMF6WDbG2N; Fri,  5 Dec 2025 08:22:00 +0000 (UTC)
+ id hfG93MLY9zld; Fri,  5 Dec 2025 16:56:04 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4052A6090C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4C7656EB4D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1764922920;
-	bh=DxSXnubB7oX1x4a7jVrJc7TZzt/TlgqzogE3YwdcIpY=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	s=default; t=1764953764;
+	bh=XqPo7JqIZstKgaZBPJXpgD+PM4FvGVfp1OcbLWfUjhc=;
+	h=From:To:CC:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=Vfr4KAV4Ol+JUlv1FQ9MsXOT87FYJBkeaEaPZGqy0DgBjPC2l3bSUFFVlmWWA/l9/
-	 XZDIe7gjgsuXHGobk+D0G+V+JleLStBvyZSz6uN8dHEYPOGB6F+aYRmHNP+UvMWF9G
-	 LRzxWjcI9GuGo7iIo4IRd9j/Aq+730RpUYd/SR1firmjhc3jyOUxAF5a7W+4k7ccpK
-	 uXhVxeJffO4bgqF8jEOpaNGR3JN95YEPFtH+ky2UJDAO1VsveYyjPLhilJHdTmVzmi
-	 vN+w7wo/l9VxkUJPaNitnF6DZgqwdP/XxdYFjVU05venVyN/2Qepb3g1w9PSflIMJO
-	 p6a8CBrHHdS9Q==
+	b=tGhGevmy2UocG2YmCdP49w8lFeSjfo68jWLkZzEGRT+WpxYAlMi5F9+934snWzQHj
+	 6ZNaF6VisFy5qrphP5lfrFFfUGAzClAaplHi9kb4D6kTxSwCufbIaPfxYK3N3DPLWC
+	 ZrgCtuMgOZM/qnsY5FVdjVTHoHjMOZawn+Nx9el/Czc1iA0aga3TJEUV9sAHHO3o7L
+	 omeCxeAj49EKvlDJxmM02ueCSyPefgSNo6Lhmdq8QJsUBaVw4Ic7XLj9Pi3rmggy+S
+	 BRd/razD6oK4wDA4n3uXeUZR9k7HF30G2FtRl9v7yihc9kl960k7LGGRGOsCgF/b28
+	 DQbqLMN9D6IGQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4052A6090C;
-	Fri,  5 Dec 2025 08:22:00 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4C7656EB4D;
+	Fri,  5 Dec 2025 16:56:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 209E9E7
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Dec 2025 08:21:58 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 4BC41E7
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Dec 2025 08:21:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 069528496B
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Dec 2025 08:21:58 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3231884965
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Dec 2025 08:21:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id BT64KpRw_ujO for <intel-wired-lan@lists.osuosl.org>;
- Fri,  5 Dec 2025 08:21:57 +0000 (UTC)
-X-Greylist: delayed 307 seconds by postgrey-1.37 at util1.osuosl.org;
- Fri, 05 Dec 2025 08:21:56 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 61A0884969
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 61A0884969
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=220.197.31.80;
- helo=mail-m1973180.qiye.163.com; envelope-from=dinghui@sangfor.com.cn;
- receiver=<UNKNOWN> 
-Received: from mail-m1973180.qiye.163.com (mail-m1973180.qiye.163.com
- [220.197.31.80])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 61A0884969
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Dec 2025 08:21:55 +0000 (UTC)
-Received: from localhost.localdomain (unknown [113.92.158.29])
- by smtp.qiye.163.com (Hmail) with ESMTP id 2c1de1557;
- Fri, 5 Dec 2025 16:16:43 +0800 (GMT+08:00)
-From: Ding Hui <dinghui@sangfor.com.cn>
-To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, jacob.e.keller@intel.com,
- intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- Ding Hui <dinghui@sangfor.com.cn>
-Date: Fri,  5 Dec 2025 16:16:08 +0800
-Message-Id: <20251205081609.23091-1-dinghui@sangfor.com.cn>
-X-Mailer: git-send-email 2.17.1
-X-HM-Tid: 0a9aed95b78a09d9kunm4a185e11f1eeb1
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
- tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZSkJCVklLH0kfQxkZSklKQlYVFAkWGhdVEwETFh
- oSFyQUDg9ZV1kYEgtZQVlKSkhVQklVSk5DVUlCWVdZFhoPEhUdFFlBWU9LSFVKS0lPT09IVUpLS1
- VKQktLWQY+
+ id 05mm1lHT9Aiw for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  5 Dec 2025 08:21:43 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=35.162.73.231;
+ helo=pdx-out-012.esa.us-west-2.outbound.mail-perimeter.amazon.com;
+ envelope-from=prvs=427ee495b=takkozu@amazon.co.jp; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3BF1F84964
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3BF1F84964
+Received: from pdx-out-012.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ (pdx-out-012.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ [35.162.73.231])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3BF1F84964
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Dec 2025 08:21:42 +0000 (UTC)
+X-CSE-ConnectionGUID: h2cvQgZdTWafkj+4Keik8A==
+X-CSE-MsgGUID: qCruteymSn227fEsSi1OsQ==
+X-IronPort-AV: E=Sophos;i="6.20,251,1758585600"; 
+   d="scan'208";a="8296611"
+Received: from ip-10-5-0-115.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.0.115])
+ by internal-pdx-out-012.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Dec 2025 08:21:39 +0000
+Received: from EX19MTAUWB002.ant.amazon.com [205.251.233.111:5620]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.51.201:2525]
+ with esmtp (Farcaster)
+ id c5622195-c63c-435f-bacf-adb027ae4b96; Fri, 5 Dec 2025 08:21:39 +0000 (UTC)
+X-Farcaster-Flow-ID: c5622195-c63c-435f-bacf-adb027ae4b96
+Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
+ EX19MTAUWB002.ant.amazon.com (10.250.64.231) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.29;
+ Fri, 5 Dec 2025 08:21:39 +0000
+Received: from 603e5f7bc1fe.amazon.com (10.37.244.13) by
+ EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.29;
+ Fri, 5 Dec 2025 08:21:37 +0000
+From: Takashi Kozu <takkozu@amazon.com>
+To: <anthony.l.nguyen@intel.com>
+CC: <przemyslaw.kitszel@intel.com>, <andrew+netdev@lunn.ch>,
+ <davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>,
+ <pabeni@redhat.com>, <intel-wired-lan@lists.osuosl.org>,
+ <netdev@vger.kernel.org>, Takashi Kozu <takkozu@amazon.com>
+Date: Fri, 5 Dec 2025 17:21:04 +0900
+Message-ID: <20251205082106.4028-5-takkozu@amazon.com>
+X-Mailer: git-send-email 2.47.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.37.244.13]
+X-ClientProxiedBy: EX19D039UWB001.ant.amazon.com (10.13.138.119) To
+ EX19D001UWA001.ant.amazon.com (10.13.138.214)
+X-Mailman-Approved-At: Fri, 05 Dec 2025 16:56:02 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
+ t=1764922903; x=1796458903;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=XqPo7JqIZstKgaZBPJXpgD+PM4FvGVfp1OcbLWfUjhc=;
+ b=EqgkzmlNmLP6mXnLBInQroOxdUuGOjecK277xXaZukB7NU85EuvEZz4V
+ g3p7eQfvNvrrzDDnhG/dbx1WwaHvbDffitThsXtSaebdq0211GsXWzEw0
+ uAN3ztn/d2CfTlxgQthqj03eMGvYnruoovYmZnQWb5nJ60ue4QiA+aR2F
+ n9tbXXHtqi11p+qNqWQvshHFiNUeJtAGz6+uuYQ0WbaeHG1YF7/vYRHH6
+ uAz0r5FeZQ9wWJqarzGoLsSLACJmlCxzdEWiyErfysv4oq9vilxBI0qjS
+ JcJQ3KDWf8pkuKIcNp6oB+D0S+wFnv9mn4jw3CuK+X8VDoLEmh99SrSSv
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=sangfor.com.cn
-Subject: [Intel-wired-lan] [PATCH net-next] ice: Fix incorrect timeout in
- ice_release_res()
+ dmarc=pass (p=quarantine dis=none)
+ header.from=amazon.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=amazon.com header.i=@amazon.com header.a=rsa-sha256
+ header.s=amazoncorp2 header.b=EqgkzmlN
+Subject: [Intel-wired-lan] [PATCH iwl-next v1 0/3] igb: add RSS key get/set
+ support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -90,34 +124,42 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The commit 5f6df173f92e ("ice: implement and use rd32_poll_timeout for
-ice_sq_done timeout") converted ICE_CTL_Q_SQ_CMD_TIMEOUT from jiffies
-to microseconds.
+This series adds ethtool get/set support for the RSS hash key in the igb
+driver.
+- `ethtool -x <dev>` to display the RSS key
+- `ethtool -X <dev> hkey <key>` to configure the RSS key
 
-But the ice_release_res() function was missed, and its logic still
-treats ICE_CTL_Q_SQ_CMD_TIMEOUT as a jiffies value.
+Without patch:
 
-So correct the issue by usecs_to_jiffies().
+# ethtool -x $DEV | grep key -A1
+RSS hash key:
+Operation not supported
+# ethtool -X $DEV hkey 00:00:00:00:00:00:00:00:00:00:00:00:000
+Cannot set RX flow hash configuration:
+  Hash key setting not supported
 
-Fixes: 5f6df173f92e ("ice: implement and use rd32_poll_timeout for ice_sq_done timeout")
-Signed-off-by: Ding Hui <dinghui@sangfor.com.cn>
----
- drivers/net/ethernet/intel/ice/ice_common.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 6fb0c1e8ae7c..5005c299deb1 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -1885,7 +1885,7 @@ void ice_release_res(struct ice_hw *hw, enum ice_aq_res_ids res)
- 	/* there are some rare cases when trying to release the resource
- 	 * results in an admin queue timeout, so handle them correctly
- 	 */
--	timeout = jiffies + 10 * ICE_CTL_Q_SQ_CMD_TIMEOUT;
-+	timeout = jiffies + 10 * usecs_to_jiffies(ICE_CTL_Q_SQ_CMD_TIMEOUT);
- 	do {
- 		status = ice_aq_release_res(hw, res, 0, NULL);
- 		if (status != -EIO)
+With patch:
+
+# ethtool -x $DEV | grep key -A1
+RSS hash key:
+86:5d:11:56:bd:6f:20:38:3b:f8:bb:df:00:3a:b0:24:95:9f:f9:f4:25:a3:01:3e:4a:15:d6:7c:4d:af:39:7e:4a:95:f2:fd:f6:b6:26:f7
+
+# ethtool -X $DEV hkey 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00
+# ethtool -x $DEV | grep key -A1
+RSS hash key:
+00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00
+
+Takashi Kozu (3):
+  Store the RSS key inside struct igb_adapter and introduce the
+  igb: expose RSS key via ethtool get_rxfh
+  igb: allow configuring RSS key via ethtool set_rxfh
+
+ drivers/net/ethernet/intel/igb/igb.h         |  4 +
+ drivers/net/ethernet/intel/igb/igb_ethtool.c | 77 +++++++++++++-------
+ drivers/net/ethernet/intel/igb/igb_main.c    |  7 +-
+ 3 files changed, 58 insertions(+), 30 deletions(-)
+
 -- 
-2.17.1
+2.51.1
 
