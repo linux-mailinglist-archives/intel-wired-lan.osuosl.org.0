@@ -1,81 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1D024CAA13E
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 06 Dec 2025 06:19:59 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6AA8CCA9F21
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 06 Dec 2025 03:47:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C08F580DAC;
-	Sat,  6 Dec 2025 05:19:37 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0AC9740912;
+	Sat,  6 Dec 2025 02:47:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 22_ugk0Kg9IT; Sat,  6 Dec 2025 05:19:37 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id JSByqmmRRJJR; Sat,  6 Dec 2025 02:47:49 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 43A2780D4F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 80B94408D2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1764998377;
-	bh=Zll0xfj0KNgMho+IFh5jqUaWQ8uH1ENocj6/zj6X/gQ=;
+	s=default; t=1764989269;
+	bh=1qGGGlWpd43sGzols7uTQQTQZ9Voc2IeWyTd+hhDAi4=;
 	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=pBkVg49UGr3SKKVG2V143WgJBGNf41+OAf4zWOcAAEEzNa6kbB2o7RO0/v7kXCeQL
-	 oKNxu+bhTHzFs4NiDmz3TXq3Gc1WYjfd0ewevZtalACb3RYLTqsfCls0YFvCTCwO5s
-	 u8RLzhRPHHGGQrYKAYTHlJOBJK1IIqbWXoHvaXy3LocCBM7Xgy9oam+g26CG48LrJW
-	 hE817AbFO8bbyybpebXmvLyFvIOOhv9tY8Z+wqwgTCRl3zyUaGqLECYbOu4/SSvVof
-	 meXtUmgjTRDjRwRtqJVr9z70NSQTAiGmZkhAg/KugdtI7dcr5xWnKK4wv1A3l0x/NJ
-	 5mDMwu02gu59Q==
+	b=lXc1SFFuhRL0gU6337scmUiHwJd34PWRniEFlW8nobZaBd4R7ECYwphXpb/hepyEB
+	 V/clxe+7llqmxdjzvgKT3T71Cia1NhdsOD8KxNtxM0/3V2u/cQ4Me7V5yOW9S0r+ep
+	 cT8kGV4TSZuH04d1P5PlGZjBpZ5okRMAuBG0VJODy5dCIqXIdEJ59gJB5kXP7QQLJN
+	 29X18eFkLArCzC2BbzTF1e43SGYayjtjIB0UTcQ7ds1reZEyU7w1sV3kLSiBeS2T5K
+	 7PNp9jSy/FVuBRsHzEpRjdHTtfczCDCTtS7nQn6k4qhY+YwEgsCIn8nk2g+/pONGNO
+	 SqLY+jGUZLhxQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 43A2780D4F;
-	Sat,  6 Dec 2025 05:19:37 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 80B94408D2;
+	Sat,  6 Dec 2025 02:47:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 36459151
- for <intel-wired-lan@lists.osuosl.org>; Sat,  6 Dec 2025 05:19:35 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 19BECE7
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  6 Dec 2025 02:47:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 27F0740152
- for <intel-wired-lan@lists.osuosl.org>; Sat,  6 Dec 2025 05:19:35 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id F3FF840166
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  6 Dec 2025 02:47:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id N6BIY9lqRMVE for <intel-wired-lan@lists.osuosl.org>;
- Sat,  6 Dec 2025 05:19:34 +0000 (UTC)
-X-Greylist: delayed 4008 seconds by postgrey-1.37 at util1.osuosl.org;
- Sat, 06 Dec 2025 05:19:31 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 7B09240010
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7B09240010
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=101.71.155.116;
- helo=mail-m155116.qiye.163.com; envelope-from=dinghui@sangfor.com.cn;
+ id y-MyxXVdVfAa for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  6 Dec 2025 02:47:47 +0000 (UTC)
+X-Greylist: delayed 305 seconds by postgrey-1.37 at util1.osuosl.org;
+ Sat, 06 Dec 2025 02:47:46 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 342A940122
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 342A940122
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.224.82.23;
+ helo=mail-m8223.xmail.ntesmail.com; envelope-from=dinghui@sangfor.com.cn;
  receiver=<UNKNOWN> 
-Received: from mail-m155116.qiye.163.com (mail-m155116.qiye.163.com
- [101.71.155.116])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 7B09240010
- for <intel-wired-lan@lists.osuosl.org>; Sat,  6 Dec 2025 05:19:31 +0000 (UTC)
+Received: from mail-m8223.xmail.ntesmail.com (mail-m8223.xmail.ntesmail.com
+ [156.224.82.23])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 342A940122
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  6 Dec 2025 02:47:45 +0000 (UTC)
 Received: from [172.23.68.66] (unknown [43.247.70.80])
- by smtp.qiye.163.com (Hmail) with ESMTP id 2c31e3f3a;
- Sat, 6 Dec 2025 09:50:25 +0800 (GMT+08:00)
-Message-ID: <528656fe-7a85-46ec-9e73-7e05c144026f@sangfor.com.cn>
-Date: Sat, 6 Dec 2025 09:50:24 +0800
+ by smtp.qiye.163.com (Hmail) with ESMTP id 2c32c9789;
+ Sat, 6 Dec 2025 10:42:37 +0800 (GMT+08:00)
+Message-ID: <1188a9d2-a895-478b-9474-0fb84b4e2636@sangfor.com.cn>
+Date: Sat, 6 Dec 2025 10:42:36 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-To: Simon Horman <horms@kernel.org>
-Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, jacob.e.keller@intel.com,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org
+To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
+ "andrew+netdev@lunn.ch" <andrew+netdev@lunn.ch>,
+ "davem@davemloft.net" <davem@davemloft.net>,
+ "edumazet@google.com" <edumazet@google.com>,
+ "Keller, Jacob E" <jacob.e.keller@intel.com>,
+ "pabeni@redhat.com" <pabeni@redhat.com>, "kuba@kernel.org"
+ <kuba@kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
 References: <20251205081609.23091-1-dinghui@sangfor.com.cn>
- <aTMFRkYZGtk3a_EP@horms.kernel.org>
+ <IA3PR11MB898665810DD47854F80941A7E5A7A@IA3PR11MB8986.namprd11.prod.outlook.com>
 Content-Language: en-US
 From: Ding Hui <dinghui@sangfor.com.cn>
-In-Reply-To: <aTMFRkYZGtk3a_EP@horms.kernel.org>
+In-Reply-To: <IA3PR11MB898665810DD47854F80941A7E5A7A@IA3PR11MB8986.namprd11.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-HM-Tid: 0a9af15a672e09d9kunm9d8187fe140c881
+X-HM-Tid: 0a9af18a337109d9kunm66339721144a441
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
- tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZHh0fVh9OTxgZGBkZTBlNTFYVFAkWGhdVEwETFh
+ tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaTxofVkxDTBkdHRhLHR5DH1YVFAkWGhdVEwETFh
  oSFyQUDg9ZV1kYEgtZQVlPSFVJT0xVTEtVQ0tZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0hVSktLVU
  pCS0tZBg++
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
@@ -98,8 +104,23 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2025/12/6 0:16, Simon Horman wrote:
-> On Fri, Dec 05, 2025 at 04:16:08PM +0800, Ding Hui wrote:
+On 2025/12/6 5:09, Loktionov, Aleksandr wrote:
+> 
+> 
+>> -----Original Message-----
+>> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
+>> Of Ding Hui
+>> Sent: Friday, December 5, 2025 9:16 AM
+>> To: Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Kitszel,
+>> Przemyslaw <przemyslaw.kitszel@intel.com>; andrew+netdev@lunn.ch;
+>> davem@davemloft.net; edumazet@google.com; kuba@kernel.org;
+>> pabeni@redhat.com; Keller, Jacob E <jacob.e.keller@intel.com>; intel-
+>> wired-lan@lists.osuosl.org
+>> Cc: netdev@vger.kernel.org; linux-kernel@vger.kernel.org; Ding, Hui
+>> <dinghui@sangfor.com.cn>
+>> Subject: [Intel-wired-lan] [PATCH net-next] ice: Fix incorrect timeout
+>> in ice_release_res()
+>>
 >> The commit 5f6df173f92e ("ice: implement and use rd32_poll_timeout for
 >> ice_sq_done timeout") converted ICE_CTL_Q_SQ_CMD_TIMEOUT from jiffies
 >> to microseconds.
@@ -109,55 +130,54 @@ On 2025/12/6 0:16, Simon Horman wrote:
 >>
 >> So correct the issue by usecs_to_jiffies().
 >>
->> Fixes: 5f6df173f92e ("ice: implement and use rd32_poll_timeout for ice_sq_done timeout")
->> Signed-off-by: Ding Hui<dinghui@sangfor.com.cn>
-> Thanks,
 > 
-> I agree with the analysis above and that the problem was introduced
-> by the cited commit.
+> Please add a brief "how verified" paragraph (platform + steps).
+> This is a unit-conversion fix in a timeout path; a short test description helps reviewers and stable backports validate the change.
 > 
-> As a fix for code present in net this should probably be targeted
-> at net (or iwl-net?) rather than net-next. But perhaps there is
-> no need to repost just to address that.
-> 
+Sorry for not being able to provide the verification information, as
+I haven't actually encountered this issue.
 
-Sorry, I mixed up the purposes of the net and net-next branches, thank
-you for pointing that out, it should be net.
-I'll keep that in mind in the future.
+The ice_release_res() is almost always invoked during downloading DDP
+when modprobe ice.
 
+IMO, it seems like that only when the NIC hardware or firmware enters
+a bad state causing single command to fail or timeout (1 second), and
+then here do the retry logic (10 senconds).
+
+So it's hard to validate on healthy NIC, maybe inject faults in low level
+function, such as ice_sq_send_cmd().
+
+> And you can add my:
+> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> 
+> 
+>> Fixes: 5f6df173f92e ("ice: implement and use rd32_poll_timeout for
+>> ice_sq_done timeout")
+>> Signed-off-by: Ding Hui <dinghui@sangfor.com.cn>
 >> ---
 >>   drivers/net/ethernet/intel/ice/ice_common.c | 2 +-
 >>   1 file changed, 1 insertion(+), 1 deletion(-)
 >>
->> diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+>> diff --git a/drivers/net/ethernet/intel/ice/ice_common.c
+>> b/drivers/net/ethernet/intel/ice/ice_common.c
 >> index 6fb0c1e8ae7c..5005c299deb1 100644
 >> --- a/drivers/net/ethernet/intel/ice/ice_common.c
 >> +++ b/drivers/net/ethernet/intel/ice/ice_common.c
->> @@ -1885,7 +1885,7 @@ void ice_release_res(struct ice_hw *hw, enum ice_aq_res_ids res)
->>   	/* there are some rare cases when trying to release the resource
+>> @@ -1885,7 +1885,7 @@ void ice_release_res(struct ice_hw *hw, enum
+>> ice_aq_res_ids res)
+>>   	/* there are some rare cases when trying to release the
+>> resource
 >>   	 * results in an admin queue timeout, so handle them correctly
 >>   	 */
 >> -	timeout = jiffies + 10 * ICE_CTL_Q_SQ_CMD_TIMEOUT;
->> +	timeout = jiffies + 10 * usecs_to_jiffies(ICE_CTL_Q_SQ_CMD_TIMEOUT);
+>> +	timeout = jiffies + 10 *
+>> usecs_to_jiffies(ICE_CTL_Q_SQ_CMD_TIMEOUT);
 >>   	do {
 >>   		status = ice_aq_release_res(hw, res, 0, NULL);
 >>   		if (status != -EIO)
-> I agree this minimal change is appropriate as a bug fix.
+>> --
+>> 2.17.1
 > 
-> But I think that it would be good to provide a follow-up
-> that reworks this code a bit to to use read_poll_timeout().
-> As per the aim of the cited commit.
-> 
-
-Actually, the ice_aq_release_res() called by ice_release_res() already
-implements the underlying logic via read_poll_timeout() by that commit,
-and here is primarily responsible for retrying the important release
-command.
-
-> This should be targeted at net-next (or iwl-next?).
-> Once this bug fix propagates to in net-next.
-> 
-> Reviewed-by: Simon Horman<horms@kernel.org>
 > 
 > 
 
