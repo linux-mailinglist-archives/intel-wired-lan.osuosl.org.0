@@ -1,72 +1,72 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 683ECCB70DB
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Dec 2025 20:50:10 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E4857CB70E4
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Dec 2025 20:50:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9234E80F46;
-	Thu, 11 Dec 2025 19:49:58 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 32232410E7;
+	Thu, 11 Dec 2025 19:50:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id B-xEMgmKLTCW; Thu, 11 Dec 2025 19:49:58 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id OzCfThbhF1Bl; Thu, 11 Dec 2025 19:50:05 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0CA1580F5F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9A27F4093C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1765482598;
-	bh=fah0o1saEIMQjfZpfoKtYlGObP0pU1mI7LNrmNRmw/Q=;
+	s=default; t=1765482605;
+	bh=Qxf+F7jVKT4v7iHZok399EWHR4sQcjFXObuf5lXOoY0=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=n1Yb4LsfsPPBS8F3Nf7hK+sHGGFglImKtKyISi60aIFNbhW0RWAYLEWPb5JMdil3g
-	 78dQ87xp+i1F+2GVqGT1fpk8WVxG/fwhGg44RiZsWJNmEJ+bHiZvnzRmLyOmChlgQr
-	 /j9IefvsAD01PNjTFrIoxK97MBJ1cAkPSGv32D3usK91XMplIil7XjP0naGJQ579ix
-	 36vTw80WlpfVf6t7VDxZl4u2N9ZbIMiZuORInMqmO7u0Gwu1/xFVA/Uz33UgsVlSEH
-	 7djI46yEZsLRXTYyL9HF+Izhdiz9CS/dCe2VJKp1TS6zri1GUkECPJSWr30MOW5iGY
-	 v+27lO2TtxBlQ==
+	b=KCS7y1YVGvv4jbBsW/ixzzB1JnlOxUnRzcS+DDmQcRLyOLATilP0pSrwnaNdTGyj3
+	 bxGl8inJpnAKYqThqG745M8ASPmzqGgqTBR9vMsvhBdrZDw9bW4yryS/J84w0Qb7uJ
+	 q+9I/tONMjzfg2cQv9Ss/6JjOQIPPjFSoNwgakz9MCTXiSCivZjF8qqC8Dqic6aMFm
+	 jtDpPlWNQiBcaZT82gl23VG/VMw8wyOpX4b8klLeVT3uawuTLwQ+cfpYKsDpE8WWHE
+	 5aad7nsXuHc7N0V98it7UxKDw5Db8s5ZsC1DTikBJRLQ37nranZKdb0zFl7FHggtYl
+	 ZzMiAcFMjQiDA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0CA1580F5F;
-	Thu, 11 Dec 2025 19:49:58 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9A27F4093C;
+	Thu, 11 Dec 2025 19:50:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id F20E72C1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Dec 2025 19:49:56 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 314BE2C1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Dec 2025 19:50:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id E35F36062C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Dec 2025 19:49:56 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2E83580F6E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Dec 2025 19:50:04 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZqSpBAFukR1w for <intel-wired-lan@lists.osuosl.org>;
- Thu, 11 Dec 2025 19:49:56 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id M8NBA59qTTyF for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 11 Dec 2025 19:50:03 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
  helo=us-smtp-delivery-124.mimecast.com; envelope-from=ivecera@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org BCD8760624
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BCD8760624
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 1F52480F52
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1F52480F52
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BCD8760624
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Dec 2025 19:49:55 +0000 (UTC)
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1F52480F52
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Dec 2025 19:50:02 +0000 (UTC)
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-459-d-hcQ2H8Ph2yWT_sTbhMxw-1; Thu,
- 11 Dec 2025 14:49:49 -0500
-X-MC-Unique: d-hcQ2H8Ph2yWT_sTbhMxw-1
-X-Mimecast-MFC-AGG-ID: d-hcQ2H8Ph2yWT_sTbhMxw_1765482585
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-541-tc7NhJYeNDOMH-ZN5fYyxA-1; Thu,
+ 11 Dec 2025 14:49:57 -0500
+X-MC-Unique: tc7NhJYeNDOMH-ZN5fYyxA-1
+X-Mimecast-MFC-AGG-ID: tc7NhJYeNDOMH-ZN5fYyxA_1765482594
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6D5071956089; Thu, 11 Dec 2025 19:49:45 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0D533195605F; Thu, 11 Dec 2025 19:49:54 +0000 (UTC)
 Received: from p16v.luc.cera.cz (unknown [10.45.224.252])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 029E51956056; Thu, 11 Dec 2025 19:49:36 +0000 (UTC)
+ id DA91A1956056; Thu, 11 Dec 2025 19:49:45 +0000 (UTC)
 From: Ivan Vecera <ivecera@redhat.com>
 To: netdev@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>,
  "David S. Miller" <davem@davemloft.net>,
@@ -89,8 +89,8 @@ To: netdev@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>,
  Willem de Bruijn <willemb@google.com>, Stefan Wahren <wahrenst@gmx.net>,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, linux-rdma@vger.kernel.org
-Date: Thu, 11 Dec 2025 20:47:54 +0100
-Message-ID: <20251211194756.234043-12-ivecera@redhat.com>
+Date: Thu, 11 Dec 2025 20:47:55 +0100
+Message-ID: <20251211194756.234043-13-ivecera@redhat.com>
 In-Reply-To: <20251211194756.234043-1-ivecera@redhat.com>
 References: <20251211194756.234043-1-ivecera@redhat.com>
 MIME-Version: 1.0
@@ -98,22 +98,22 @@ Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1765482594;
+ s=mimecast20190719; t=1765482602;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=fah0o1saEIMQjfZpfoKtYlGObP0pU1mI7LNrmNRmw/Q=;
- b=PuGpAlt6Vv3xeQksWAqxLKoG+A/sVnG3Q9t1GdX4eLkRZDMtnWszdpm0blmAtJQiYLn7Fw
- 4nOnoO2dGv0FZFdT5xfR2w8b7eq5mQ06IcpF5WF00yGlEvvGWGqSa8Ty3LeJNgQM1+h99o
- oYt3sn00gsg24w23BVFCn42jMpVwHHY=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=Qxf+F7jVKT4v7iHZok399EWHR4sQcjFXObuf5lXOoY0=;
+ b=c7Y6MKC9h6dX6mkqSABC7hiqEh6841zdYMQ/kKVOf9lmKKtMwqvLJUJRzbkGEiIc45hnjh
+ 1imsCnzBTu2T1roGvQefwNRQkWQ2jfEly6VaH9qgIcuGyDeq6o+daJcAk+2nD38VeYBO/x
+ BttQGxHisqnifzGQbv0CxdwC+D1R63U=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=PuGpAlt6
-Subject: [Intel-wired-lan] [PATCH RFC net-next 11/13] dpll: zl3073x: Enable
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=c7Y6MKC9
+Subject: [Intel-wired-lan] [PATCH RFC net-next 12/13] ice: dpll: Enable
  reference count tracking
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -130,102 +130,130 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Update the zl3073x driver to utilize the DPLL reference count tracking
+Update the Intel ICE driver to utilize the DPLL reference count tracking
 infrastructure.
 
-Add dpll_tracker fields to the driver's internal device and pin
-structures. Pass pointers to these trackers when calling
-dpll_device_get/put() and dpll_pin_get/put().
+Add .dpll_tracker fields to the internal struct ice_dpll and struct
+ice_dpll_pin structures.
 
-This allows a developer to inspect the specific references held by this
-driver via debugfs when CONFIG_DPLL_REFCNT_TRACKER is enabled, aiding
-in the debugging of resource leaks.
+Pass pointers to these trackers to the dpll_device_get/put() and
+dpll_pin_get/put() functions, replacing the temporary NULL values.
+
+This enables developers to trace reference ownership for the ICE driver's
+DPLL resources via the ref_tracker debugfs interface when
+CONFIG_DPLL_REFCNT_TRACKER is enabled.
 
 Signed-off-by: Ivan Vecera <ivecera@redhat.com>
 ---
- drivers/dpll/zl3073x/dpll.c | 14 ++++++++------
- drivers/dpll/zl3073x/dpll.h |  1 +
- 2 files changed, 9 insertions(+), 6 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_dpll.c | 16 +++++++++-------
+ drivers/net/ethernet/intel/ice/ice_dpll.h |  4 ++++
+ 2 files changed, 13 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/dpll/zl3073x/dpll.c b/drivers/dpll/zl3073x/dpll.c
-index 4135c621ec1aa..a14ac90ecbd66 100644
---- a/drivers/dpll/zl3073x/dpll.c
-+++ b/drivers/dpll/zl3073x/dpll.c
-@@ -45,6 +45,7 @@ struct zl3073x_dpll_pin {
- 	struct list_head	list;
- 	struct zl3073x_dpll	*dpll;
- 	struct dpll_pin		*dpll_pin;
-+	dpll_tracker		tracker;
- 	char			label[8];
- 	enum dpll_pin_direction	dir;
- 	u8			id;
-@@ -1369,7 +1370,8 @@ zl3073x_dpll_pin_register(struct zl3073x_dpll_pin *pin, u32 index)
+diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.c b/drivers/net/ethernet/intel/ice/ice_dpll.c
+index 39cf26987b35c..ff1b597051e8f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dpll.c
++++ b/drivers/net/ethernet/intel/ice/ice_dpll.c
+@@ -2814,7 +2814,7 @@ static void ice_dpll_release_pins(struct ice_dpll_pin *pins, int count)
+ 	int i;
  
- 	/* Create or get existing DPLL pin */
- 	pin->dpll_pin = dpll_pin_get(zldpll->dev->clock_id, index, THIS_MODULE,
--				     &props->dpll_props, props->fwnode, NULL);
-+				     &props->dpll_props, props->fwnode,
-+				     &pin->tracker);
- 	if (IS_ERR(pin->dpll_pin)) {
- 		rc = PTR_ERR(pin->dpll_pin);
- 		goto err_pin_get;
-@@ -1391,7 +1393,7 @@ zl3073x_dpll_pin_register(struct zl3073x_dpll_pin *pin, u32 index)
- 	return 0;
- 
- err_register:
--	dpll_pin_put(pin->dpll_pin, NULL);
-+	dpll_pin_put(pin->dpll_pin, &pin->tracker);
- err_prio_get:
- 	pin->dpll_pin = NULL;
- err_pin_get:
-@@ -1422,7 +1424,7 @@ zl3073x_dpll_pin_unregister(struct zl3073x_dpll_pin *pin)
- 	/* Unregister the pin */
- 	dpll_pin_unregister(zldpll->dpll_dev, pin->dpll_pin, ops, pin);
- 
--	dpll_pin_put(pin->dpll_pin, NULL);
-+	dpll_pin_put(pin->dpll_pin, &pin->tracker);
- 	pin->dpll_pin = NULL;
+ 	for (i = 0; i < count; i++)
+-		dpll_pin_put(pins[i].pin, NULL);
++		dpll_pin_put(pins[i].pin, &pins[i].tracker);
  }
  
-@@ -1596,7 +1598,7 @@ zl3073x_dpll_device_register(struct zl3073x_dpll *zldpll)
- 				       dpll_mode_refsel);
+ /**
+@@ -2840,7 +2840,8 @@ ice_dpll_get_pins(struct ice_pf *pf, struct ice_dpll_pin *pins,
  
- 	zldpll->dpll_dev = dpll_device_get(zldev->clock_id, zldpll->id,
--					   THIS_MODULE, NULL);
-+					   THIS_MODULE, &zldpll->tracker);
- 	if (IS_ERR(zldpll->dpll_dev)) {
- 		rc = PTR_ERR(zldpll->dpll_dev);
- 		zldpll->dpll_dev = NULL;
-@@ -1608,7 +1610,7 @@ zl3073x_dpll_device_register(struct zl3073x_dpll *zldpll)
- 				  zl3073x_prop_dpll_type_get(zldev, zldpll->id),
- 				  &zl3073x_dpll_device_ops, zldpll);
- 	if (rc) {
--		dpll_device_put(zldpll->dpll_dev, NULL);
-+		dpll_device_put(zldpll->dpll_dev, &zldpll->tracker);
- 		zldpll->dpll_dev = NULL;
- 	}
+ 	for (i = 0; i < count; i++) {
+ 		pins[i].pin = dpll_pin_get(clock_id, i + start_idx, THIS_MODULE,
+-					   &pins[i].prop, NULL, NULL);
++					   &pins[i].prop, NULL,
++					   &pins[i].tracker);
+ 		if (IS_ERR(pins[i].pin)) {
+ 			ret = PTR_ERR(pins[i].pin);
+ 			goto release_pins;
+@@ -2851,7 +2852,7 @@ ice_dpll_get_pins(struct ice_pf *pf, struct ice_dpll_pin *pins,
  
-@@ -1631,7 +1633,7 @@ zl3073x_dpll_device_unregister(struct zl3073x_dpll *zldpll)
- 
- 	dpll_device_unregister(zldpll->dpll_dev, &zl3073x_dpll_device_ops,
- 			       zldpll);
--	dpll_device_put(zldpll->dpll_dev, NULL);
-+	dpll_device_put(zldpll->dpll_dev, &zldpll->tracker);
- 	zldpll->dpll_dev = NULL;
+ release_pins:
+ 	while (--i >= 0)
+-		dpll_pin_put(pins[i].pin, NULL);
++		dpll_pin_put(pins[i].pin, &pins[i].tracker);
+ 	return ret;
  }
  
-diff --git a/drivers/dpll/zl3073x/dpll.h b/drivers/dpll/zl3073x/dpll.h
-index e8c39b44b356c..9b2183ca07e47 100644
---- a/drivers/dpll/zl3073x/dpll.h
-+++ b/drivers/dpll/zl3073x/dpll.h
-@@ -31,6 +31,7 @@ struct zl3073x_dpll {
- 	u8				check_count;
- 	bool				phase_monitor;
- 	struct dpll_device		*dpll_dev;
-+	dpll_tracker			tracker;
- 	enum dpll_lock_status		lock_status;
- 	struct list_head		pins;
- 	struct work_struct		change_work;
+@@ -3037,7 +3038,7 @@ static void ice_dpll_deinit_rclk_pin(struct ice_pf *pf)
+ 	if (WARN_ON_ONCE(!vsi || !vsi->netdev))
+ 		return;
+ 	dpll_netdev_pin_clear(vsi->netdev);
+-	dpll_pin_put(rclk->pin, NULL);
++	dpll_pin_put(rclk->pin, &rclk->tracker);
+ }
+ 
+ /**
+@@ -3247,7 +3248,7 @@ ice_dpll_deinit_dpll(struct ice_pf *pf, struct ice_dpll *d, bool cgu)
+ {
+ 	if (cgu)
+ 		dpll_device_unregister(d->dpll, d->ops, d);
+-	dpll_device_put(d->dpll, NULL);
++	dpll_device_put(d->dpll, &d->tracker);
+ }
+ 
+ /**
+@@ -3271,7 +3272,8 @@ ice_dpll_init_dpll(struct ice_pf *pf, struct ice_dpll *d, bool cgu,
+ 	u64 clock_id = pf->dplls.clock_id;
+ 	int ret;
+ 
+-	d->dpll = dpll_device_get(clock_id, d->dpll_idx, THIS_MODULE, NULL);
++	d->dpll = dpll_device_get(clock_id, d->dpll_idx, THIS_MODULE,
++				  &d->tracker);
+ 	if (IS_ERR(d->dpll)) {
+ 		ret = PTR_ERR(d->dpll);
+ 		dev_err(ice_pf_to_dev(pf),
+@@ -3287,7 +3289,7 @@ ice_dpll_init_dpll(struct ice_pf *pf, struct ice_dpll *d, bool cgu,
+ 		ice_dpll_update_state(pf, d, true);
+ 		ret = dpll_device_register(d->dpll, type, ops, d);
+ 		if (ret) {
+-			dpll_device_put(d->dpll, NULL);
++			dpll_device_put(d->dpll, &d->tracker);
+ 			return ret;
+ 		}
+ 		d->ops = ops;
+diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.h b/drivers/net/ethernet/intel/ice/ice_dpll.h
+index c0da03384ce91..63fac6510df6e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dpll.h
++++ b/drivers/net/ethernet/intel/ice/ice_dpll.h
+@@ -23,6 +23,7 @@ enum ice_dpll_pin_sw {
+ /** ice_dpll_pin - store info about pins
+  * @pin: dpll pin structure
+  * @pf: pointer to pf, which has registered the dpll_pin
++ * @tracker: reference count tracker
+  * @idx: ice pin private idx
+  * @num_parents: hols number of parent pins
+  * @parent_idx: hold indexes of parent pins
+@@ -37,6 +38,7 @@ enum ice_dpll_pin_sw {
+ struct ice_dpll_pin {
+ 	struct dpll_pin *pin;
+ 	struct ice_pf *pf;
++	dpll_tracker tracker;
+ 	u8 idx;
+ 	u8 num_parents;
+ 	u8 parent_idx[ICE_DPLL_RCLK_NUM_MAX];
+@@ -58,6 +60,7 @@ struct ice_dpll_pin {
+ /** ice_dpll - store info required for DPLL control
+  * @dpll: pointer to dpll dev
+  * @pf: pointer to pf, which has registered the dpll_device
++ * @tracker: reference count tracker
+  * @dpll_idx: index of dpll on the NIC
+  * @input_idx: currently selected input index
+  * @prev_input_idx: previously selected input index
+@@ -76,6 +79,7 @@ struct ice_dpll_pin {
+ struct ice_dpll {
+ 	struct dpll_device *dpll;
+ 	struct ice_pf *pf;
++	dpll_tracker tracker;
+ 	u8 dpll_idx;
+ 	u8 input_idx;
+ 	u8 prev_input_idx;
 -- 
 2.51.2
 
