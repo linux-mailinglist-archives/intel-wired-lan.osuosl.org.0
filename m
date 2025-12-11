@@ -1,91 +1,133 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4DC08CB6C79
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Dec 2025 18:44:49 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B58BCB6D6C
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Dec 2025 19:01:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 61E1161B43;
-	Thu, 11 Dec 2025 17:44:47 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 64AD061B43;
+	Thu, 11 Dec 2025 18:00:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id BDnmwzqcoDIQ; Thu, 11 Dec 2025 17:44:45 +0000 (UTC)
+ id Hj45QNuMGrlz; Thu, 11 Dec 2025 18:00:57 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 62C25610E4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BF0EE61BE6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1765475085;
-	bh=/CpPg671O1d5S8YD8OnLyw3RgICyay/CLRAwJTo5oak=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=7ohSe+g7vS6/iSxZUgFY646GGh4tIbZoYpSEeZIOHr+sp4N9fL86Oa0dJJm55wCcm
-	 cIbl2X1szVuYKjRWETlVGIun9FHiziy/vgMyOk0q9zeqVRcZ/TQiFEClEy7DHHpnY3
-	 Fy3ZdtC8fh2VUBlTHXHg7agu4klxqof3QnZfQGoXrUglMJrljNxWm5wRgMnb8rwMky
-	 T66o6fysmbUHTP3M5pYKzWzH3VqnYJYiUUKU6ZaZA48OZnoVGJzdVJ7aZTMOeqb0i9
-	 XR6w26dS+mBe9PZRfSFjr0wXSDOIMxxQttdTtEusN12JibhWqwOTKBcotHM5YPjRVk
-	 /gcpKJXxUrUIA==
+	s=default; t=1765476057;
+	bh=c+dgqSvhQeeO1j/UkLRWX9q6sWJ+WDctCHZh4LtFH0I=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=pI8tkzUHUcGY6vQx1uxJjlaRxTcPYDWp2Lo3RL2LigLzDkic56pIxKPaHqrbbrmS/
+	 nb53hugTfcQ7I4YGiReHjd4593gMpzUlkQHhDsw7iFcJkaOu02LGutdVI592qtd8Xu
+	 wl0AA+MdkBCUB2V1qKABVznD774LJBnI8qRZnnoxpN7LW3sSSspinkZFxm3azJfiaq
+	 oPQ0VoJsGjmBgi6laC5afZuFrwFcoB5wm8GrJe11eKWf7w/tDVZiZ4xJpMMghjeIMM
+	 HeC71veM5LfsavMgh4xUMLo5SJK8epeRj6vbKAIMZImXHptOAlapfbKoK9s96fvfKm
+	 ceXoedhIRX/XQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 62C25610E4;
-	Thu, 11 Dec 2025 17:44:45 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BF0EE61BE6;
+	Thu, 11 Dec 2025 18:00:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id E5A462C6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Dec 2025 17:44:43 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 267832C1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Dec 2025 18:00:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D7C9880D08
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Dec 2025 17:44:43 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1894B83CF9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Dec 2025 18:00:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pl4zpLtOuha9 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 11 Dec 2025 17:44:43 +0000 (UTC)
-X-Greylist: delayed 303 seconds by postgrey-1.37 at util1.osuosl.org;
- Thu, 11 Dec 2025 17:44:41 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 23A0C80CC6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 23A0C80CC6
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=185.136.64.227;
- helo=mta-64-227.siemens.flowmailer.net;
- envelope-from=fm-1333436-20251211173934dff024c9b3000207ae-rlpn15@rts-flowmailer.siemens.com;
- receiver=<UNKNOWN> 
-Received: from mta-64-227.siemens.flowmailer.net
- (mta-64-227.siemens.flowmailer.net [185.136.64.227])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 23A0C80CC6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Dec 2025 17:44:41 +0000 (UTC)
-Received: by mta-64-227.siemens.flowmailer.net with ESMTPSA id
- 20251211173934dff024c9b3000207ae
- for <intel-wired-lan@lists.osuosl.org>;
- Thu, 11 Dec 2025 18:39:34 +0100
-From: Vivek Behera <vivek.behera@siemens.com>
-To: aleksandr.loktionov@intel.com, jacob.e.keller@intel.com,
- anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com
-Cc: intel-wired-lan@lists.osuosl.org,
-	horms@kernel.org
-Date: Thu, 11 Dec 2025 18:39:16 +0100
-Message-Id: <20251211173916.23951-1-vivek.behera@siemens.com>
+ id u7ySANc8S39H for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 11 Dec 2025 18:00:55 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=85.10.215.232;
+ helo=dediextern.your-server.de;
+ envelope-from=marcus.wichelmann@hetzner-cloud.de; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 9210F83CB6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9210F83CB6
+Received: from dediextern.your-server.de (dediextern.your-server.de
+ [85.10.215.232])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 9210F83CB6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Dec 2025 18:00:53 +0000 (UTC)
+Received: from sslproxy04.your-server.de ([78.46.152.42])
+ by dediextern.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
+ (Exim 4.96.2) (envelope-from <marcus.wichelmann@hetzner-cloud.de>)
+ id 1vTky6-0004AI-1J; Thu, 11 Dec 2025 19:00:46 +0100
+Received: from localhost ([127.0.0.1])
+ by sslproxy04.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
+ (Exim 4.96) (envelope-from <marcus.wichelmann@hetzner-cloud.de>)
+ id 1vTky5-000EXZ-2E; Thu, 11 Dec 2025 19:00:46 +0100
+Message-ID: <2aca9aff-1d96-43fd-8125-290e7600915e@hetzner-cloud.de>
+Date: Thu, 11 Dec 2025 19:00:44 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Flowmailer-Platform: Siemens
-Feedback-ID: 519:519-1333436:519-21489:flowmailer
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; s=fm2; 
- d=siemens.com; i=vivek.behera@siemens.com;
- h=Date:From:Subject:To:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding:Cc;
- bh=/CpPg671O1d5S8YD8OnLyw3RgICyay/CLRAwJTo5oak=;
- b=gw9wU0JeHmawgvoHZ4knZ94j6Q8+fb9XNY9HvQoLJYwOjYKY7p0gHh4QdENJ6tq0F2rCW5
- 7V7lXOVL4Of+tzk7H8Tl05GNYCw3ZmkfgrS+JyQERDy6TMxkPA9ApxtSrHmark4R5lGDPXhg
- ovZ5ionSj+IvmTp0Z46Pu7TLQhGypCiPGYUiaKknlkJvorLhvxhP3a1Xg3Z5mZSRhgf/U9bZ
- ffApf/bkKWjkco6WQW7I0YKM4Kp0zixEGemFQ8fsTgkZ5GKQ/T2NgUQ19C+PbqrcdMUKJW1k
- W8yyp6FRRio9qiqkRKbp4mqvbXLtrKP5TMnTqzIr1JM8YLud4a+Dcwlg==;
+User-Agent: Mozilla Thunderbird
+To: Jacob Keller <jacob.e.keller@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ intel-wired-lan@lists.osuosl.org, Netdev <netdev@vger.kernel.org>,
+ linux-kernel@vger.kernel.org
+Cc: sdn@hetzner-cloud.de
+References: <672ab222-db78-4cad-821b-19256a7a4078@hetzner-cloud.de>
+ <67a5ef2a-83bc-4b35-9eac-5b9297dfeb2d@intel.com>
+Content-Language: en-US
+From: Marcus Wichelmann <marcus.wichelmann@hetzner-cloud.de>
+Autocrypt: addr=marcus.wichelmann@hetzner-cloud.de; keydata=
+ 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
+ wySmewx3h/yfMh0aFxHhvLPxrO2IEQ==
+In-Reply-To: <67a5ef2a-83bc-4b35-9eac-5b9297dfeb2d@intel.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Virus-Scanned: Clear (ClamAV 1.0.9/27847/Thu Dec 11 10:25:06 2025)
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=siemens.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=siemens.com header.i=vivek.behera@siemens.com
- header.a=rsa-sha256 header.s=fm2 header.b=gw9wU0Je
-Subject: [Intel-wired-lan] [PATCH v6 iwl-net] igc: Fix trigger of incorrect
- irq in igc_xsk_wakeup function
+ dmarc=none (p=none dis=none)
+ header.from=hetzner-cloud.de
+Subject: Re: [Intel-wired-lan] [BUG] ice: Temporary packet processing
+ overload causes permanent RX drops
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -101,176 +143,88 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This patch addresses the issue where the igc_xsk_wakeup function
-was triggering an incorrect IRQ for tx-0 when the i226 is configured
-with only 2 combined queues or in an environment with 2 active CPU cores.
-This prevented XDP Zero-copy send functionality in such split IRQ
-configurations.
+Am 09.12.25 um 01:05 schrieb Jacob Keller:
+> On 12/5/2025 6:01 AM, Marcus Wichelmann wrote:
+>> Hi there, I broke some network cards again. This time I noticed continuous RX packet drops with an Intel E810-XXV.
+>>>> We have reproduced this with:
+>>   Linux 6.8.0-88-generic (Ubuntu 24.04)
+>>   Linux 6.14.0-36-generic (Ubuntu 24.04 HWE)
+>>   Linux 6.18.0-061800-generic (Ubuntu Mainline PPA)
+> 
+> I think we recently merged a bunch of work on the Rx path as part of our
+> conversion to page pool. It would be interesting to see if those changes
+> impact this. Clearly the issue goes back some time since v6.8 at least..
+Hi Jacob,
 
-The fix implements the correct logic for extracting q_vectors saved
-during rx and tx ring allocation and utilizes flags provided by the
-ndo_xsk_wakeup API to trigger the appropriate IRQ.
+I guess you mean 93f53db9f9dc ("ice: switch to Page Pool")?
 
-Fixes: fc9df2a0b520 ("igc: Enable RX via AF_XDP zero-copy")
-Fixes: 15fd021bc427 ("igc: Add Tx hardware timestamp request for AF_XDP zero-copy packet")
-Signed-off-by: Vivek Behera <vivek.behera@siemens.com>
-Reviewed-by: Jacob Keller <jacob.keller@intel.com>
-Reviewed-by: Aleksandr loktinov <aleksandr.loktionov@intel.com>
-Reviewed-by: Przemyslaw Kitszel <przemyslaw.kitszel@intel.com>
-Reviewed-by: Tony Nguyen <anthony.l.nguyen@intel.com>
----
-v1: https://eur01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flore.kernel.org%2Fintel-wired-lan%2FAS1PR10MB5392B7268416DB8A1624FDB88FA7A%40AS1PR10MB5392.EURPRD10.PROD.OUTLOOK.COM%2F&data=05%7C02%7Cvivek.behera%40siemens.com%7Cb609a859d19b47e8f47808de38d77627%7C38ae3bcd95794fd4addab42e1495d55a%7C1%7C0%7C639010695226787962%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=S1060xzCOGrJo0cO2enNhDmCIJUcCLZd%2F%2BmKLByazm8%3D&reserved=0
-v2: https://eur01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flore.kernel.org%2Fintel-wired-lan%2FAS1PR10MB539280B1427DA0ABE9D65E628FA5A%40AS1PR10MB5392.EURPRD10.PROD.OUTLOOK.COM%2F&data=05%7C02%7Cvivek.behera%40siemens.com%7Cb609a859d19b47e8f47808de38d77627%7C38ae3bcd95794fd4addab42e1495d55a%7C1%7C0%7C639010695226846016%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=ksDVfndVlbafyexZ2%2B3j9GccO9hupybvtl1twZs5OSk%3D&reserved=0
-v3: https://eur01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flore.kernel.org%2Fintel-wired-lan%2FIA3PR11MB8986E4ACB7F264CF2DD1D750E5A0A%40IA3PR11MB8986.namprd11.prod.outlook.com%2F&data=05%7C02%7Cvivek.behera%40siemens.com%7Cb609a859d19b47e8f47808de38d77627%7C38ae3bcd95794fd4addab42e1495d55a%7C1%7C0%7C639010695226890990%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=zEWhj7N2%2BmwsShmoy1ACAjb3vi7yJgbA077fISIOZiM%3D&reserved=0
-v4: https://eur01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flore.kernel.org%2Fintel-wired-lan%2FAS1PR10MB53926CB955FBD4F9F4A018818FA0A%40AS1PR10MB5392.EURPRD10.PROD.OUTLOOK.COM%2F&data=05%7C02%7Cvivek.behera%40siemens.com%7Cb609a859d19b47e8f47808de38d77627%7C38ae3bcd95794fd4addab42e1495d55a%7C1%7C0%7C639010695226933538%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=23aTM4TNsnyzoS%2FpSM1GcluaWzLPNbrPKEo%2BOrm9hZQ%3D&reserved=0
-v5: https://eur01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flore.kernel.org%2Fintel-wired-lan%2FAS1PR10MB5392FCA415A38B9DD7BB5F218FA0A%40AS1PR10MB5392.EURPRD10.PROD.OUTLOOK.COM%2F&data=05%7C02%7Cvivek.behera%40siemens.com%7Cb609a859d19b47e8f47808de38d77627%7C38ae3bcd95794fd4addab42e1495d55a%7C1%7C0%7C639010695227205026%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=JdY3aHzIcIWtir9fAV%2BMELNWtiyLJYRU7IMxLZ0mPqQ%3D&reserved=0
+I have now repeated all tests with a kernel built from latest net-next
+branch and can still reproduce it, even though I needed way higher packet
+rates (15 instead of 4 Mpps when using 256 channels). Something about the
+packet processing on our test system seems to have gotten way more
+efficient with this kernel update.
 
-changelog:
-v1
-- Inital description of the Bug and steps to reproduce with RTC Testbench
-- Test results after applying the patch
-v1 -> v2
-- Handling of RX and TX Wakeup in igc_xsk_wakeup for a split IRQ configuration
-- Removal of igc_trigger_rxtxq_interrupt (now redundant)
-- Added flag to igc_xsk_wakeup function call in igc_ptp_free_tx_buffer
-v2 -> v3
-- Added 'Fixes:' tags for the relevant commits.
-- Added reviewer
-v3 -> v4
-- Added reviewer
-v4 -> v5
-- Updated comment style from multi-star to standard linux convention
-v5 -> v6
-- Resolve formatting issues highlighted by reviewers
-- Try to include version histroy as defined in netdev guidelines
-- Included review suggestions from Przemyslaw
-- Added reviewers
----
- drivers/net/ethernet/intel/igc/igc_main.c | 81 ++++++++++++++++++-----
- drivers/net/ethernet/intel/igc/igc_ptp.c  |  2 +-
- 2 files changed, 64 insertions(+), 19 deletions(-)
+The symptoms are the same. The following IO_PAGE_FAULTs appear in the
+kernel log and after that, there is a permanent packet loss of 1-10%
+even at very low packet rates.
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 7aafa60ba0c8..c7bf5a4b89e9 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -6908,21 +6908,13 @@ static int igc_xdp_xmit(struct net_device *dev, int num_frames,
- 	return nxmit;
- }
- 
--static void igc_trigger_rxtxq_interrupt(struct igc_adapter *adapter,
--					struct igc_q_vector *q_vector)
--{
--	struct igc_hw *hw = &adapter->hw;
--	u32 eics = 0;
--
--	eics |= q_vector->eims_value;
--	wr32(IGC_EICS, eics);
--}
--
- int igc_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags)
- {
- 	struct igc_adapter *adapter = netdev_priv(dev);
-+	struct igc_hw *hw = &adapter->hw;
- 	struct igc_q_vector *q_vector;
- 	struct igc_ring *ring;
-+	u32 eics = 0;
- 
- 	if (test_bit(__IGC_DOWN, &adapter->state))
- 		return -ENETDOWN;
-@@ -6930,18 +6922,71 @@ int igc_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags)
- 	if (!igc_xdp_is_enabled(adapter))
- 		return -ENXIO;
- 
--	if (queue_id >= adapter->num_rx_queues)
--		return -EINVAL;
-+	if ((flags & XDP_WAKEUP_RX) && (flags & XDP_WAKEUP_TX)) {
-+		/* If both TX and RX need to be woken up */
-+		/* check if queue pairs are active. */
-+		if ((adapter->flags & IGC_FLAG_QUEUE_PAIRS)) {
-+			/* Just get the ring params from Rx */
-+			if (queue_id >= adapter->num_rx_queues)
-+				return -EINVAL;
-+			ring = adapter->rx_ring[queue_id];
-+		} else {
-+			/* Two irqs for Rx AND Tx need to be triggered */
-+			if (queue_id >= adapter->num_rx_queues)
-+				return -EINVAL; /*queue_id is invalid*/
- 
--	ring = adapter->rx_ring[queue_id];
-+			if (queue_id >= adapter->num_tx_queues)
-+				return -EINVAL; /* queue_id invalid */
- 
--	if (!ring->xsk_pool)
--		return -ENXIO;
-+			/* IRQ trigger preparation for Rx */
-+			ring = adapter->rx_ring[queue_id];
-+			if (!ring->xsk_pool)
-+				return -ENXIO;
- 
--	q_vector = adapter->q_vector[queue_id];
--	if (!napi_if_scheduled_mark_missed(&q_vector->napi))
--		igc_trigger_rxtxq_interrupt(adapter, q_vector);
-+			/* Retrieve the q_vector saved in the ring */
-+			q_vector = ring->q_vector;
-+			if (!napi_if_scheduled_mark_missed(&q_vector->napi))
-+				eics |= q_vector->eims_value;
-+			/* IRQ trigger preparation for Tx */
-+			ring = adapter->tx_ring[queue_id];
- 
-+			if (!ring->xsk_pool)
-+				return -ENXIO;
-+
-+			/* Retrieve the q_vector saved in the ring */
-+			q_vector = ring->q_vector;
-+			if (!napi_if_scheduled_mark_missed(&q_vector->napi))
-+				eics |= q_vector->eims_value; /* Extend the BIT mask for eics */
-+
-+			/* Now we trigger the split irqs for Rx and Tx over eics */
-+			if (eics != 0)
-+				wr32(IGC_EICS, eics);
-+
-+			return 0;
-+		}
-+	} else if (flags & XDP_WAKEUP_TX) {
-+		if (queue_id >= adapter->num_tx_queues)
-+			return -EINVAL;
-+		/* Get the ring params from Tx */
-+		ring = adapter->tx_ring[queue_id];
-+	} else if (flags & XDP_WAKEUP_RX) {
-+		if (queue_id >= adapter->num_rx_queues)
-+			return -EINVAL;
-+		/* Get the ring params from Rx */
-+		ring = adapter->rx_ring[queue_id];
-+	} else {
-+		/* Invalid Flags */
-+		return -EINVAL;
-+	}
-+	/* Prepare to trigger single irq */
-+	if (!ring->xsk_pool)
-+		return -ENXIO;
-+	/* Retrieve the q_vector saved in the ring */
-+	q_vector = ring->q_vector;
-+	if (!napi_if_scheduled_mark_missed(&q_vector->napi)) {
-+		eics |= q_vector->eims_value;
-+		wr32(IGC_EICS, eics);
-+	}
- 	return 0;
- }
- 
-diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
-index b7b46d863bee..6d8c2d639cd7 100644
---- a/drivers/net/ethernet/intel/igc/igc_ptp.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
-@@ -550,7 +550,7 @@ static void igc_ptp_free_tx_buffer(struct igc_adapter *adapter,
- 		tstamp->buffer_type = 0;
- 
- 		/* Trigger txrx interrupt for transmit completion */
--		igc_xsk_wakeup(adapter->netdev, tstamp->xsk_queue_index, 0);
-+		igc_xsk_wakeup(adapter->netdev, tstamp->xsk_queue_index, XDP_WAKEUP_TX);
- 
- 		return;
- 	}
--- 
-2.34.1
+  kernel: ice 0000:c7:00.0: AMD-Vi: Event logged [IO_PAGE_FAULT domain=0x002b address=0x4000180000 flags=0x0020]
+  kernel: ice 0000:c7:00.0: AMD-Vi: Event logged [IO_PAGE_FAULT domain=0x002b address=0x4000180000 flags=0x0020]
+  kernel: workqueue: drm_fb_helper_damage_work hogged CPU for >10000us 4 times, consider switching to WQ_UNBOUND
+  kernel: ice 0000:c7:00.0: AMD-Vi: Event logged [IO_PAGE_FAULT domain=0x002b address=0x4000180000 flags=0x0020]
+  kernel: workqueue: drm_fb_helper_damage_work hogged CPU for >10000us 5 times, consider switching to WQ_UNBOUND
+  kernel: ice 0000:c7:00.1: AMD-Vi: Event logged [IO_PAGE_FAULT domain=0x002c address=0x4000180000 flags=0x0020]
+  [...]
+  kernel: ice 0000:c7:00.1: AMD-Vi: Event logged [IO_PAGE_FAULT domain=0x002c address=0x4000180000 flags=0x0020]
+  kernel: amd_iommu_report_page_fault: 10 callbacks suppressed
+  [...]
 
+I experimented with a few different channel counts and noticed that
+the issue only occurs with a combined channel count >128. So on
+systems with less many CPU cores, this bug probably never occurs.
+
+  256: reproduced.
+  254: reproduced.
+  200: reproduced.
+  129: reproduced.
+  128: stable.
+   64: stable.
+
+Tested using "ethtool -L eth{0,1} combined XXX".
+
+With <=128 channels, only the "... hogged CPU ..." warnings appear
+but no IO_PAGE_FAULTs. There is also no permanent packet loss after
+stopping the traffic generator.
+
+>> [...]
+>>
+>> 3. Stop the traffic generator and re-run it with a way lower packet rate, e.g. 10.000 pps. Now it can be seen that
+>> a good part of these packets is being dropped, even though the kernel could easily keep up with this small packet rate.
+> 
+> I assume the rx_dropped counter still incrementing here?
+
+Yes. After the NIC is in this broken state, a few percent of all
+packets is being dropped and the rx_dropped counter increases
+with each of them.
+
+>> [...]
+
+I also looked into why the packet processing load on this system
+is so high and `perf top` shows that it almost completely
+originates from native_queued_spin_lock_slowpath.
+
+When digging deeper using `perf lock contention -Y spinlock`:
+
+ contended   total wait     max wait     avg wait         type   caller
+   1724043      4.36 m     198.66 us    151.66 us     spinlock   __netif_receive_skb_core.constprop.0+0x832
+     35960      2.51 s     112.57 ms     69.51 us     spinlock   __netif_receive_skb_core.constprop.0+0x832
+       620    103.79 ms    189.87 us    167.40 us     spinlock   do_sys_poll+0x26f
+
+I'm not yet sure what is causing this.
+I don't think it's related to this issue, but maybe that's part of
+what brings this bug to daylight, so probably still worth a mention.
+
+I hope you can make some sense of all that.
+
+Thanks,
+Marcus
