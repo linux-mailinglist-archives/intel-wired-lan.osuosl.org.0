@@ -1,118 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E2E7CB64D1
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Dec 2025 16:21:26 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4DC08CB6C79
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Dec 2025 18:44:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 39B7E84F73;
-	Thu, 11 Dec 2025 15:21:25 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 61E1161B43;
+	Thu, 11 Dec 2025 17:44:47 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id BDnmwzqcoDIQ; Thu, 11 Dec 2025 17:44:45 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 62C25610E4
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1765475085;
+	bh=/CpPg671O1d5S8YD8OnLyw3RgICyay/CLRAwJTo5oak=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=7ohSe+g7vS6/iSxZUgFY646GGh4tIbZoYpSEeZIOHr+sp4N9fL86Oa0dJJm55wCcm
+	 cIbl2X1szVuYKjRWETlVGIun9FHiziy/vgMyOk0q9zeqVRcZ/TQiFEClEy7DHHpnY3
+	 Fy3ZdtC8fh2VUBlTHXHg7agu4klxqof3QnZfQGoXrUglMJrljNxWm5wRgMnb8rwMky
+	 T66o6fysmbUHTP3M5pYKzWzH3VqnYJYiUUKU6ZaZA48OZnoVGJzdVJ7aZTMOeqb0i9
+	 XR6w26dS+mBe9PZRfSFjr0wXSDOIMxxQttdTtEusN12JibhWqwOTKBcotHM5YPjRVk
+	 /gcpKJXxUrUIA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 62C25610E4;
+	Thu, 11 Dec 2025 17:44:45 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id E5A462C6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Dec 2025 17:44:43 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id D7C9880D08
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Dec 2025 17:44:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RULc3MCsgZ1C; Thu, 11 Dec 2025 15:21:24 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8626384F6F
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1765466484;
-	bh=hA5ghf2zjiyqiApmgYxJPXwqkr78qqO+4ybETELdnUE=;
-	h=From:To:CC:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=GfBspQ46Knu4RteIoqoBvcXuSBFGP0eOSq0kyMo2KS9SQgazVkzWD8boX0XJ+kk43
-	 BncwGMh5Dis5dnDyoIz4NHeQbb2adb/WPTiseDEkzjhsjepDdiM8/KYBLIS3rtIco+
-	 ejz+kQqVOlwGSHgSwj/eSt1KEC0zxK5QLzfj1M7SqbxLYzrasH1pISshmKcVX+KkJi
-	 NqErz6qD9NSdruy1jTBcH3mWygI90XQe9Uvj0dfw9924LWIYqhfUsDR3bDXCc9FR1K
-	 9/WaBVYZiuIHJr2FVCljAkQ6a493YeQdpB/hbE0YPHVkKyDZc4RyD3QDu+1c940AB7
-	 UGeupKwGOelOw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8626384F6F;
-	Thu, 11 Dec 2025 15:21:24 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 781882C1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Dec 2025 15:21:22 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 69FE64034D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Dec 2025 15:21:22 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0z_3f483RO_8 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 11 Dec 2025 15:21:21 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=52.13.214.179;
- helo=pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com;
- envelope-from=prvs=43358fca2=enjuk@amazon.co.jp; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 612F04033A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 612F04033A
-Received: from pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com
- (pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com
- [52.13.214.179])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 612F04033A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Dec 2025 15:21:21 +0000 (UTC)
-X-CSE-ConnectionGUID: mt8a03klQcKYYlHAJX1y8w==
-X-CSE-MsgGUID: mbAKw7JSQtyWTXGchV76Sg==
-X-IronPort-AV: E=Sophos;i="6.21,141,1763424000"; 
-   d="scan'208";a="8896287"
-Received: from ip-10-5-12-219.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.12.219])
- by internal-pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Dec 2025 15:21:16 +0000
-Received: from EX19MTAUWC002.ant.amazon.com [205.251.233.51:3976]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.13.57:2525]
- with esmtp (Farcaster)
- id d2410b6d-c80b-4f7a-9f36-ab9e35d30e25; Thu, 11 Dec 2025 15:21:16 +0000 (UTC)
-X-Farcaster-Flow-ID: d2410b6d-c80b-4f7a-9f36-ab9e35d30e25
-Received: from EX19D001UWA001.ant.amazon.com (10.13.138.214) by
- EX19MTAUWC002.ant.amazon.com (10.250.64.143) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.29;
- Thu, 11 Dec 2025 15:21:16 +0000
-Received: from b0be8375a521.amazon.com (10.37.244.7) by
- EX19D001UWA001.ant.amazon.com (10.13.138.214) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.29;
- Thu, 11 Dec 2025 15:21:13 +0000
-From: Kohei Enju <enjuk@amazon.com>
-To: <aleksandr.loktionov@intel.com>
-CC: <andrew+netdev@lunn.ch>, <anthony.l.nguyen@intel.com>,
- <davem@davemloft.net>, <edumazet@google.com>, <enjuk@amazon.com>,
- <horms@kernel.org>, <intel-wired-lan@lists.osuosl.org>,
- <jacob.e.keller@intel.com>, <jedrzej.jagielski@intel.com>, <kohei@enjuk.org>, 
- <kuba@kernel.org>, <netdev@vger.kernel.org>, <pabeni@redhat.com>,
- <przemyslaw.kitszel@intel.com>, <stefan.wegrzyn@intel.com>
-Date: Fri, 12 Dec 2025 00:20:58 +0900
-Message-ID: <20251211152105.96440-1-enjuk@amazon.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <IA3PR11MB89864C5819FCA7B7E8A06DEFE5A1A@IA3PR11MB8986.namprd11.prod.outlook.com>
-References: <IA3PR11MB89864C5819FCA7B7E8A06DEFE5A1A@IA3PR11MB8986.namprd11.prod.outlook.com>
+ id pl4zpLtOuha9 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 11 Dec 2025 17:44:43 +0000 (UTC)
+X-Greylist: delayed 303 seconds by postgrey-1.37 at util1.osuosl.org;
+ Thu, 11 Dec 2025 17:44:41 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 23A0C80CC6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 23A0C80CC6
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=185.136.64.227;
+ helo=mta-64-227.siemens.flowmailer.net;
+ envelope-from=fm-1333436-20251211173934dff024c9b3000207ae-rlpn15@rts-flowmailer.siemens.com;
+ receiver=<UNKNOWN> 
+Received: from mta-64-227.siemens.flowmailer.net
+ (mta-64-227.siemens.flowmailer.net [185.136.64.227])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 23A0C80CC6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Dec 2025 17:44:41 +0000 (UTC)
+Received: by mta-64-227.siemens.flowmailer.net with ESMTPSA id
+ 20251211173934dff024c9b3000207ae
+ for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 11 Dec 2025 18:39:34 +0100
+From: Vivek Behera <vivek.behera@siemens.com>
+To: aleksandr.loktionov@intel.com, jacob.e.keller@intel.com,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com
+Cc: intel-wired-lan@lists.osuosl.org,
+	horms@kernel.org
+Date: Thu, 11 Dec 2025 18:39:16 +0100
+Message-Id: <20251211173916.23951-1-vivek.behera@siemens.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.37.244.7]
-X-ClientProxiedBy: EX19D043UWA002.ant.amazon.com (10.13.139.53) To
- EX19D001UWA001.ant.amazon.com (10.13.138.214)
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1765466481; x=1797002481;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=hA5ghf2zjiyqiApmgYxJPXwqkr78qqO+4ybETELdnUE=;
- b=aPr7wzkjAFsXDL5r3BtmFYKTWfvjn3ug6qDc99gFDIqZ+Jz+IR/gW2Up
- d0Di5t6XfkAjaWepPAXl9pH8RG5u1pc1qzk4dJK/7HeRhhS0O5Kc6UKQu
- U8z85ELxfnpkLpv0DYt4clkV7zGVc3aai4TYDcZdsdte6PfGPES5Pd0rS
- xgulVLw4RU2i5xM8v2AtgjVjOkdz82w5EPu45ESZ4h5rJPCLohqFpTppp
- 60/rusDRiHP6lXqLJSo1VwXKdP28Fy+0jt2U+lsahL50UdUImCnwnrMQx
- WgkhaYsQbtONkn3mwR9bHlUD5dVU4nGSfsGwbOf7ZfSxvbLeKZfXDQdLN
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=amazon.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Flowmailer-Platform: Siemens
+Feedback-ID: 519:519-1333436:519-21489:flowmailer
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; s=fm2; 
+ d=siemens.com; i=vivek.behera@siemens.com;
+ h=Date:From:Subject:To:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding:Cc;
+ bh=/CpPg671O1d5S8YD8OnLyw3RgICyay/CLRAwJTo5oak=;
+ b=gw9wU0JeHmawgvoHZ4knZ94j6Q8+fb9XNY9HvQoLJYwOjYKY7p0gHh4QdENJ6tq0F2rCW5
+ 7V7lXOVL4Of+tzk7H8Tl05GNYCw3ZmkfgrS+JyQERDy6TMxkPA9ApxtSrHmark4R5lGDPXhg
+ ovZ5ionSj+IvmTp0Z46Pu7TLQhGypCiPGYUiaKknlkJvorLhvxhP3a1Xg3Z5mZSRhgf/U9bZ
+ ffApf/bkKWjkco6WQW7I0YKM4Kp0zixEGemFQ8fsTgkZ5GKQ/T2NgUQ19C+PbqrcdMUKJW1k
+ W8yyp6FRRio9qiqkRKbp4mqvbXLtrKP5TMnTqzIr1JM8YLud4a+Dcwlg==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=siemens.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=amazon.com header.i=@amazon.com header.a=rsa-sha256
- header.s=amazoncorp2 header.b=aPr7wzkj
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2 2/2] ixgbe: don't
- initialize aci lock in ixgbe_recovery_probe()
+ unprotected) header.d=siemens.com header.i=vivek.behera@siemens.com
+ header.a=rsa-sha256 header.s=fm2 header.b=gw9wU0Je
+Subject: [Intel-wired-lan] [PATCH v6 iwl-net] igc: Fix trigger of incorrect
+ irq in igc_xsk_wakeup function
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -128,34 +101,176 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 11 Dec 2025 10:12:19 +0000, Loktionov, Aleksandr wrote:
+This patch addresses the issue where the igc_xsk_wakeup function
+was triggering an incorrect IRQ for tx-0 when the i226 is configured
+with only 2 combined queues or in an environment with 2 active CPU cores.
+This prevented XDP Zero-copy send functionality in such split IRQ
+configurations.
 
->> Subject: [Intel-wired-lan] [PATCH iwl-net v2 2/2] ixgbe: don't
->> initialize aci lock in ixgbe_recovery_probe()
->> 
->> hw->aci.lock is already initialized in ixgbe_sw_init(), so
->> ixgbe_recovery_probe() doesn't need to initialize the lock. This
->You claim that ixgbe_sw_init() initializes hw->aci.lock but don't provide evidence(s).
->Can you?
+The fix implements the correct logic for extracting q_vectors saved
+during rx and tx ring allocation and utilizes flags provided by the
+ndo_xsk_wakeup API to trigger the appropriate IRQ.
 
-Hi Alex, thank you for reviewing!
+Fixes: fc9df2a0b520 ("igc: Enable RX via AF_XDP zero-copy")
+Fixes: 15fd021bc427 ("igc: Add Tx hardware timestamp request for AF_XDP zero-copy packet")
+Signed-off-by: Vivek Behera <vivek.behera@siemens.com>
+Reviewed-by: Jacob Keller <jacob.keller@intel.com>
+Reviewed-by: Aleksandr loktinov <aleksandr.loktionov@intel.com>
+Reviewed-by: Przemyslaw Kitszel <przemyslaw.kitszel@intel.com>
+Reviewed-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+---
+v1: https://eur01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flore.kernel.org%2Fintel-wired-lan%2FAS1PR10MB5392B7268416DB8A1624FDB88FA7A%40AS1PR10MB5392.EURPRD10.PROD.OUTLOOK.COM%2F&data=05%7C02%7Cvivek.behera%40siemens.com%7Cb609a859d19b47e8f47808de38d77627%7C38ae3bcd95794fd4addab42e1495d55a%7C1%7C0%7C639010695226787962%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=S1060xzCOGrJo0cO2enNhDmCIJUcCLZd%2F%2BmKLByazm8%3D&reserved=0
+v2: https://eur01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flore.kernel.org%2Fintel-wired-lan%2FAS1PR10MB539280B1427DA0ABE9D65E628FA5A%40AS1PR10MB5392.EURPRD10.PROD.OUTLOOK.COM%2F&data=05%7C02%7Cvivek.behera%40siemens.com%7Cb609a859d19b47e8f47808de38d77627%7C38ae3bcd95794fd4addab42e1495d55a%7C1%7C0%7C639010695226846016%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=ksDVfndVlbafyexZ2%2B3j9GccO9hupybvtl1twZs5OSk%3D&reserved=0
+v3: https://eur01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flore.kernel.org%2Fintel-wired-lan%2FIA3PR11MB8986E4ACB7F264CF2DD1D750E5A0A%40IA3PR11MB8986.namprd11.prod.outlook.com%2F&data=05%7C02%7Cvivek.behera%40siemens.com%7Cb609a859d19b47e8f47808de38d77627%7C38ae3bcd95794fd4addab42e1495d55a%7C1%7C0%7C639010695226890990%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=zEWhj7N2%2BmwsShmoy1ACAjb3vi7yJgbA077fISIOZiM%3D&reserved=0
+v4: https://eur01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flore.kernel.org%2Fintel-wired-lan%2FAS1PR10MB53926CB955FBD4F9F4A018818FA0A%40AS1PR10MB5392.EURPRD10.PROD.OUTLOOK.COM%2F&data=05%7C02%7Cvivek.behera%40siemens.com%7Cb609a859d19b47e8f47808de38d77627%7C38ae3bcd95794fd4addab42e1495d55a%7C1%7C0%7C639010695226933538%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=23aTM4TNsnyzoS%2FpSM1GcluaWzLPNbrPKEo%2BOrm9hZQ%3D&reserved=0
+v5: https://eur01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flore.kernel.org%2Fintel-wired-lan%2FAS1PR10MB5392FCA415A38B9DD7BB5F218FA0A%40AS1PR10MB5392.EURPRD10.PROD.OUTLOOK.COM%2F&data=05%7C02%7Cvivek.behera%40siemens.com%7Cb609a859d19b47e8f47808de38d77627%7C38ae3bcd95794fd4addab42e1495d55a%7C1%7C0%7C639010695227205026%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=JdY3aHzIcIWtir9fAV%2BMELNWtiyLJYRU7IMxLZ0mPqQ%3D&reserved=0
 
-Yeah, I claim that because currently ixgbe_recovery_probe() is only
-called from ixgbe_probe(), and this is called after ixgbe_sw_init().
-Also I don't expect ixgbe_recovery_probe() would be called from other
-contexts in the future.
+changelog:
+v1
+- Inital description of the Bug and steps to reproduce with RTC Testbench
+- Test results after applying the patch
+v1 -> v2
+- Handling of RX and TX Wakeup in igc_xsk_wakeup for a split IRQ configuration
+- Removal of igc_trigger_rxtxq_interrupt (now redundant)
+- Added flag to igc_xsk_wakeup function call in igc_ptp_free_tx_buffer
+v2 -> v3
+- Added 'Fixes:' tags for the relevant commits.
+- Added reviewer
+v3 -> v4
+- Added reviewer
+v4 -> v5
+- Updated comment style from multi-star to standard linux convention
+v5 -> v6
+- Resolve formatting issues highlighted by reviewers
+- Try to include version histroy as defined in netdev guidelines
+- Included review suggestions from Przemyslaw
+- Added reviewers
+---
+ drivers/net/ethernet/intel/igc/igc_main.c | 81 ++++++++++++++++++-----
+ drivers/net/ethernet/intel/igc/igc_ptp.c  |  2 +-
+ 2 files changed, 64 insertions(+), 19 deletions(-)
 
-We confirmed the that double initialization would occur in the
-context[1], but are there any recommended solutions we can adopt?
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 7aafa60ba0c8..c7bf5a4b89e9 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -6908,21 +6908,13 @@ static int igc_xdp_xmit(struct net_device *dev, int num_frames,
+ 	return nxmit;
+ }
+ 
+-static void igc_trigger_rxtxq_interrupt(struct igc_adapter *adapter,
+-					struct igc_q_vector *q_vector)
+-{
+-	struct igc_hw *hw = &adapter->hw;
+-	u32 eics = 0;
+-
+-	eics |= q_vector->eims_value;
+-	wr32(IGC_EICS, eics);
+-}
+-
+ int igc_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags)
+ {
+ 	struct igc_adapter *adapter = netdev_priv(dev);
++	struct igc_hw *hw = &adapter->hw;
+ 	struct igc_q_vector *q_vector;
+ 	struct igc_ring *ring;
++	u32 eics = 0;
+ 
+ 	if (test_bit(__IGC_DOWN, &adapter->state))
+ 		return -ENETDOWN;
+@@ -6930,18 +6922,71 @@ int igc_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags)
+ 	if (!igc_xdp_is_enabled(adapter))
+ 		return -ENXIO;
+ 
+-	if (queue_id >= adapter->num_rx_queues)
+-		return -EINVAL;
++	if ((flags & XDP_WAKEUP_RX) && (flags & XDP_WAKEUP_TX)) {
++		/* If both TX and RX need to be woken up */
++		/* check if queue pairs are active. */
++		if ((adapter->flags & IGC_FLAG_QUEUE_PAIRS)) {
++			/* Just get the ring params from Rx */
++			if (queue_id >= adapter->num_rx_queues)
++				return -EINVAL;
++			ring = adapter->rx_ring[queue_id];
++		} else {
++			/* Two irqs for Rx AND Tx need to be triggered */
++			if (queue_id >= adapter->num_rx_queues)
++				return -EINVAL; /*queue_id is invalid*/
+ 
+-	ring = adapter->rx_ring[queue_id];
++			if (queue_id >= adapter->num_tx_queues)
++				return -EINVAL; /* queue_id invalid */
+ 
+-	if (!ring->xsk_pool)
+-		return -ENXIO;
++			/* IRQ trigger preparation for Rx */
++			ring = adapter->rx_ring[queue_id];
++			if (!ring->xsk_pool)
++				return -ENXIO;
+ 
+-	q_vector = adapter->q_vector[queue_id];
+-	if (!napi_if_scheduled_mark_missed(&q_vector->napi))
+-		igc_trigger_rxtxq_interrupt(adapter, q_vector);
++			/* Retrieve the q_vector saved in the ring */
++			q_vector = ring->q_vector;
++			if (!napi_if_scheduled_mark_missed(&q_vector->napi))
++				eics |= q_vector->eims_value;
++			/* IRQ trigger preparation for Tx */
++			ring = adapter->tx_ring[queue_id];
+ 
++			if (!ring->xsk_pool)
++				return -ENXIO;
++
++			/* Retrieve the q_vector saved in the ring */
++			q_vector = ring->q_vector;
++			if (!napi_if_scheduled_mark_missed(&q_vector->napi))
++				eics |= q_vector->eims_value; /* Extend the BIT mask for eics */
++
++			/* Now we trigger the split irqs for Rx and Tx over eics */
++			if (eics != 0)
++				wr32(IGC_EICS, eics);
++
++			return 0;
++		}
++	} else if (flags & XDP_WAKEUP_TX) {
++		if (queue_id >= adapter->num_tx_queues)
++			return -EINVAL;
++		/* Get the ring params from Tx */
++		ring = adapter->tx_ring[queue_id];
++	} else if (flags & XDP_WAKEUP_RX) {
++		if (queue_id >= adapter->num_rx_queues)
++			return -EINVAL;
++		/* Get the ring params from Rx */
++		ring = adapter->rx_ring[queue_id];
++	} else {
++		/* Invalid Flags */
++		return -EINVAL;
++	}
++	/* Prepare to trigger single irq */
++	if (!ring->xsk_pool)
++		return -ENXIO;
++	/* Retrieve the q_vector saved in the ring */
++	q_vector = ring->q_vector;
++	if (!napi_if_scheduled_mark_missed(&q_vector->napi)) {
++		eics |= q_vector->eims_value;
++		wr32(IGC_EICS, eics);
++	}
+ 	return 0;
+ }
+ 
+diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
+index b7b46d863bee..6d8c2d639cd7 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ptp.c
++++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
+@@ -550,7 +550,7 @@ static void igc_ptp_free_tx_buffer(struct igc_adapter *adapter,
+ 		tstamp->buffer_type = 0;
+ 
+ 		/* Trigger txrx interrupt for transmit completion */
+-		igc_xsk_wakeup(adapter->netdev, tstamp->xsk_queue_index, 0);
++		igc_xsk_wakeup(adapter->netdev, tstamp->xsk_queue_index, XDP_WAKEUP_TX);
+ 
+ 		return;
+ 	}
+-- 
+2.34.1
 
-I understand that double initialization doesn't always introduce
-realistic issue because it would be problematic only when reinialization
-is done while the lock is held, but it's a fact that actually
-unnecessary initialization is done in ixgbe_recovery_probe().
-
-I believe this change would be right, but maybe we should ask Jedrzej
-for the intention of mutex_init() in ixgbe_recovery_probe(), and
-possibility that ixgbe_recovery_probe() would be called from any other
-contexts.
-
-[1] https://lore.kernel.org/all/b5787c94-2ad0-4519-9cdb-5e82acfebe05@intel.com/
