@@ -2,86 +2,86 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EC7F3CB94B0
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 Dec 2025 17:42:11 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 81713CB94B3
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 Dec 2025 17:42:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8004A411C8;
-	Fri, 12 Dec 2025 16:42:10 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 226CF411CF;
+	Fri, 12 Dec 2025 16:42:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id buBO2KGxZxPB; Fri, 12 Dec 2025 16:42:10 +0000 (UTC)
+ id UYkwX6R27eW6; Fri, 12 Dec 2025 16:42:12 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DED164118A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 82571411CD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1765557729;
-	bh=n+43tymVLSGdRAk/GngRrv0VJVKFYIv06wU4NKzD4/E=;
+	s=default; t=1765557732;
+	bh=HxL82MCcgC7wL2Msz0toVqnGfkX2VFLC8BYJb8P6rMU=;
 	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=jsi2JufG76pqchlkIU1t3JPZDvQqUhuGjzBd78bedSrY3qot2HZBrBT2gYNPevE/L
-	 EBhvqF0ER8H3VcgWd4hWg/aAbhm/7NjMO0vd4YggX7lLiNFGU1fiwwYsYMFZvEIHCi
-	 gjAKpPw5X0taZ1Gf/39Y6/3xjBHLirvDEtJNt58i+Zzch4TEA25l5m605mR4RA+1D/
-	 kvhaSyWIdGY5yP5LWStITgdfVL3l5V1okSuSxW4U4mt4DLyv5ghkxE3fUhxWQSzaRp
-	 FzAmIYziJW05xHZtiauPGKKwI5kTLe6rm9qpMjfUMP087xK1l9ieIlTwSthfFhHEaV
-	 gpIePmzuUbmRA==
+	b=5rrk+5F34+KVJAO4Zri2Mw0XxKDdOaKboT/IzRkz63YrkCoKOnTBPsNS61mq2IAKD
+	 vdmGtcRVEN+NYBKkU6GMFIc3oIAlzwokMiyj+jzr/m91jgZBGzCwKS3/paeLFYKLWD
+	 gAMzv+PEkBcvPlf0Z/0sNcvYl7kwZQLjdeVcYeUdPUGuLSi/4wP5sWINwPGn9yP8+y
+	 ZLelJmYkbRmUkvKzuD9kThfzRmL6Bpv67q5f67y32MllAM4pvVFZHhQrG5Ig7KCTLj
+	 LXgdrUtHroPhoNcFoIIswVGszPKG3+pOfqbNl1kF7IzlUkTqNEU3F5LLqBB3ps94Ns
+	 Rt7cG+rPWeYCw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DED164118A;
-	Fri, 12 Dec 2025 16:42:09 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 82571411CD;
+	Fri, 12 Dec 2025 16:42:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 4F1DC2C6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Dec 2025 16:42:08 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 8819E2C6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Dec 2025 16:42:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4BB2A83CAB
+ by smtp1.osuosl.org (Postfix) with ESMTP id 78BA483C99
  for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Dec 2025 16:42:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RBb4wiC8MLuh for <intel-wired-lan@lists.osuosl.org>;
- Fri, 12 Dec 2025 16:42:07 +0000 (UTC)
+ id 7khel9cKDz-n for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 12 Dec 2025 16:42:08 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.15;
  helo=mgamail.intel.com; envelope-from=samuel.salin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 5F21983C99
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5F21983C99
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org C9C3683CA7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C9C3683CA7
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5F21983C99
+ by smtp1.osuosl.org (Postfix) with ESMTPS id C9C3683CA7
  for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Dec 2025 16:42:07 +0000 (UTC)
-X-CSE-ConnectionGUID: W03TWZGOQm6BZo3den7DmQ==
-X-CSE-MsgGUID: 0nJVNSgDT6aFmGaG2YEbnw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11640"; a="71189973"
-X-IronPort-AV: E=Sophos;i="6.21,144,1763452800"; d="scan'208";a="71189973"
+X-CSE-ConnectionGUID: rCttnNECSeGRMUdcVgDWPA==
+X-CSE-MsgGUID: 0xCL88SVSi68fRfuUN88tg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11640"; a="71189978"
+X-IronPort-AV: E=Sophos;i="6.21,144,1763452800"; d="scan'208";a="71189978"
 Received: from fmviesa006.fm.intel.com ([10.60.135.146])
  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  12 Dec 2025 08:42:07 -0800
-X-CSE-ConnectionGUID: erfIqJjkSqq7X8rxa94LwQ==
-X-CSE-MsgGUID: 7Kf9/XxBQpi0lZ0ED2QVWQ==
+X-CSE-ConnectionGUID: dVaZeYPqQ0W14ZW60JMj3g==
+X-CSE-MsgGUID: NPjOhFvLQva6btvFzEAqCg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,144,1763452800"; d="scan'208";a="197029478"
+X-IronPort-AV: E=Sophos;i="6.21,144,1763452800"; d="scan'208";a="197029482"
 Received: from fmsmsx902.amr.corp.intel.com ([10.18.126.91])
  by fmviesa006.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Dec 2025 08:42:06 -0800
-Received: from FMSMSX903.amr.corp.intel.com (10.18.126.92) by
+ 12 Dec 2025 08:42:07 -0800
+Received: from FMSMSX901.amr.corp.intel.com (10.18.126.90) by
  fmsmsx902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.2562.29; Fri, 12 Dec 2025 08:42:06 -0800
 Received: from fmsedg902.ED.cps.intel.com (10.1.192.144) by
- FMSMSX903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ FMSMSX901.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.2562.29 via Frontend Transport; Fri, 12 Dec 2025 08:42:06 -0800
 Received: from CH5PR02CU005.outbound.protection.outlook.com (40.107.200.56) by
  edgegateway.intel.com (192.55.55.82) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 12 Dec 2025 08:42:05 -0800
+ 15.2.2562.29; Fri, 12 Dec 2025 08:42:06 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=DFWlv2P1vRqI5F0Ev9p07HnFD9/0bKNKjns/2BLYGcwSljkVDeQnc+RtM9qeE0fMVp4NJr4jE8tocQytX8itjCKnXBkz9QIl1gswFk0Qjjvm+xMNFHNlL8JFi+3U4uah/aMP9J4g70jpTeSAM6zVvdKpIVyIiHZKS00P2BJaROvYt25frKyC8B6MP7OhiThFrkEEEh5Z1sKyuO8DZI9QQ8NR0iFsDeA7Y67ei33hE5VOGUe8+Ap7g1+vkBEYDrno2w0eTS9pK5/CvDRAcbDhNQ+Gn4DJh50uvgpleKU9jbVLpVI9NYyk4KeL2oaJ9KCQdUD/VA4LvbCT7T2FQElyoA==
+ b=jv8rko6ahY08vVmJXdEZWyjI7rAEe0vhB3cueaMOd2+lnNtZc3zJsz7gp2t5oioqeeDd0jnSUN+vMyJnwLSuPtlhVGO+qNlgJE/vXM5XuRrMPMoYtC9/Gv19AD2OnrdCXvcVSZdbzlDVL0dFwYqn/CQOJGoHS/u7sUdeGC9G3ri9WsQ1bpSEczq4snBqfwehOP4sHZ59vE0PBNUlnLaKUcHqA6JLXm2jlJEj+CGXsr5Cce9fTQFQ/Fwvd1GJcI5C2RLTxkZUjtU7NFNEC2E525uEntDpFEIrpRpPzRfo32bQFpVimSpY29ChsTvoGv8DS+o4DTO0+ynbnnCkhN/ZYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=n+43tymVLSGdRAk/GngRrv0VJVKFYIv06wU4NKzD4/E=;
- b=V8jOetPGF79FambtN5t731OGo+QNAV3cK2afovyLdcao7qjXTjX7fbQNEVsKI4nMc6u36cT8oF6qjOssWYLqZ1tCmHk8iIsx+5SZhJdZLLvpgKwrIdKqpOZM5K0nxgq8PvgpV7TrGMcYOeI6SQE+b2hb/psHS4ZF7oAmrIZbtRdDeD/IR7FwcmL8qemQQ8gMa8gdHpQElr3T+NhbceqkpMhJc3x+0wmZgrLDXr0W3bValqd5QklzlGxIuM5OKJfZe5ShDwudfbyAyZpuEgqhb14+jNLlckAFxqUE+C7Y5J9xHkRhn5by7GmrfYmKnCavMY/WwYgut2PsJoXF2xql9A==
+ bh=HxL82MCcgC7wL2Msz0toVqnGfkX2VFLC8BYJb8P6rMU=;
+ b=eu6acZohw+eKHg677Trn+0DhX3UW4+htu+lUvY41U8nZU5l0aKzxa6++PSB8Qgp5kDJEVUDPuEFXhfhThmtnOsRaJ29gzc1+/mW24sOS1u+VJA/B8aAdqMQPZxaG+NCADn5M6lIf7KqnR3o82BeosSN1K1Gctt5pHrRnMEc4GcotAyp6U2JdRWPxGLDXnFPqpPYuvB5TWl66qZdYofMEnMmbgyVG7/TU2kwjDFtSUsNUM2pUGSoCTQ9lWdZRffuZHYqJik+3IDlm+kN+dnkpXOJTpyV3ycnz1OZTy6isXCICcLotp3vufGST/fT59dRRX1PUtD3YzAruYMzS2tvC2Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
@@ -89,106 +89,106 @@ Received: from SJ1PR11MB6297.namprd11.prod.outlook.com (2603:10b6:a03:458::8)
  by PH7PR11MB8480.namprd11.prod.outlook.com (2603:10b6:510:2fe::5)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9412.12; Fri, 12 Dec
- 2025 16:42:02 +0000
+ 2025 16:42:04 +0000
 Received: from SJ1PR11MB6297.namprd11.prod.outlook.com
  ([fe80::dc50:edbf:3882:abf7]) by SJ1PR11MB6297.namprd11.prod.outlook.com
  ([fe80::dc50:edbf:3882:abf7%5]) with mapi id 15.20.9412.005; Fri, 12 Dec 2025
- 16:42:02 +0000
+ 16:42:03 +0000
 From: "Salin, Samuel" <samuel.salin@intel.com>
-To: Simon Horman <horms@kernel.org>, "Joshi, Sreedevi"
- <sreedevi.joshi@intel.com>
+To: "Joshi, Sreedevi" <sreedevi.joshi@intel.com>, Simon Horman
+ <horms@kernel.org>
 CC: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Samudrala, Sridhar"
- <sridhar.samudrala@intel.com>, "Tantilov, Emil S"
- <emil.s.tantilov@intel.com>, "Loktionov, Aleksandr"
- <aleksandr.loktionov@intel.com>, Paul Menzel <pmenzel@molgen.mpg.de>
-Thread-Topic: [Intel-wired-lan] [PATCH iwl-net v2 1/3] idpf: Fix RSS LUT NULL
- pointer crash on early ethtool operations
-Thread-Index: AQHcXXL4Fjopyy0XR0Cf9ymmpUxqg7UGa50AgBflgEA=
-Date: Fri, 12 Dec 2025 16:42:01 +0000
-Message-ID: <SJ1PR11MB6297A743B97D8E8C4B07B1899BAEA@SJ1PR11MB6297.namprd11.prod.outlook.com>
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Loktionov, Aleksandr"
+ <aleksandr.loktionov@intel.com>, "Samudrala, Sridhar"
+ <sridhar.samudrala@intel.com>, "Tantilov, Emil S" <emil.s.tantilov@intel.com>
+Thread-Topic: [PATCH iwl-net v2 2/3] idpf: Fix RSS LUT configuration on down
+ interfaces
+Thread-Index: AQHcYL8b6m5CZlR3+EK9emFcsAjHZLUeSppw
+Date: Fri, 12 Dec 2025 16:42:03 +0000
+Message-ID: <SJ1PR11MB629770A2025B5F8C0ED32B8C9BAEA@SJ1PR11MB6297.namprd11.prod.outlook.com>
 References: <20251124184750.3625097-1-sreedevi.joshi@intel.com>
- <20251124184750.3625097-2-sreedevi.joshi@intel.com>
- <aSg5uiOiAyRds6gM@horms.kernel.org>
-In-Reply-To: <aSg5uiOiAyRds6gM@horms.kernel.org>
+ <20251124184750.3625097-3-sreedevi.joshi@intel.com>
+ <aSg5pg9aLwmiVR6G@horms.kernel.org>
+ <IA1PR11MB62896483A29729204B33F12989DCA@IA1PR11MB6289.namprd11.prod.outlook.com>
+In-Reply-To: <IA1PR11MB62896483A29729204B33F12989DCA@IA1PR11MB6289.namprd11.prod.outlook.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-ms-publictraffictype: Email
 x-ms-traffictypediagnostic: SJ1PR11MB6297:EE_|PH7PR11MB8480:EE_
-x-ms-office365-filtering-correlation-id: 29de5406-7326-4a97-9e45-08de399d6035
+x-ms-office365-filtering-correlation-id: 8cefb85e-6602-4eed-c2f0-08de399d615f
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0; ARA:13230040|1800799024|376014|366016|38070700021;
-x-microsoft-antispam-message-info: =?us-ascii?Q?nLgt8yMvivbftJprIuHmvhzjSjFreAXpf+x8MvEp/LNzAq2GlPXufVaJsDrA?=
- =?us-ascii?Q?o6880POSfG0mJaqo0MBnJIfM3IShxkYS+D1KZy7czw46wnZyFAJspG+EoFl/?=
- =?us-ascii?Q?+tDeIqPGVgbInU6g8HYXaefe6SEOZNBasWY6cC0dUzjLbtbkrs3yVPNW8F0D?=
- =?us-ascii?Q?haQzmWYnUXV8lNYiycY0Lgl9fx/kWbp/906Du7vlrre2QgB0+C70m6qxABsF?=
- =?us-ascii?Q?It3iJe7hC3Iy/uwyRxlys8mUEejYkk6wFN15yBvwDiVUdrdse0n0InAadqgc?=
- =?us-ascii?Q?NI6uoYKKmkUiXAxOzfYo8J9K2DSTg5WKeUhXdBvghe74+odzvTC9OXU/cili?=
- =?us-ascii?Q?ATQabRaf/Y6/5trZ4avcPY5kraTrSppvq+e+ktfWyQfGZhD13hUpfp/2y33a?=
- =?us-ascii?Q?6GZaPNFed/YxlIyYPilW4bM3NqCTB4wrFqJCitf1IC7cF6dK+cZyL92Sa6Gs?=
- =?us-ascii?Q?nnHaLBB6vZP0MG8ytYLbYSzyhVaGyWVAH1Q1b/n3hyskIy8cyIPE82PooxCY?=
- =?us-ascii?Q?reWNcG4z9BoJNfW+9uXOKw3nCPTlWCRdaPWHhUor7L9EDU+zI8CHge+RcGiD?=
- =?us-ascii?Q?jotkaTTi7hCpjl+H1SOBk5kCy+28rioNc62aFYHFI/1hUb50B9nkaLaoqsTA?=
- =?us-ascii?Q?UocTKnpMIzGA5m3xDD+20Q3G/4VlNNm3K+S49dueyX6LNcB3wuTGaDuyVSUd?=
- =?us-ascii?Q?mLw/082t9YHAuyOBcQH2/7+n43tsrm84OX9ho91MoczROH0mFtetzPjkEKdK?=
- =?us-ascii?Q?GJFWG3ZQGeBpr9fKMaTPIOC0S87ratt3iWOZKygZ8yHMKs+X/K+KjZbi9Vmc?=
- =?us-ascii?Q?B162afKPPInWWR/4ksgYLBgImWHLkFe6vspcFVjrrTDscPoMYA8JXkMyKsnK?=
- =?us-ascii?Q?WHxYYFYfz/qZhw2yyWj5r68STKU0Rj2tqcuIVFy1IdKcv3/DtDasdsWiEvqx?=
- =?us-ascii?Q?Fobf2Pe8di76gZL4Ao6rk6yyEXUVnn7O+Tz4uvFQpIhPm/wGy+II5IOmgc0l?=
- =?us-ascii?Q?7Ryfnkr+fXAn75imHCncj46uE0dA9vXb2NDEOtmU65KjatIwTN0XQm/29rXJ?=
- =?us-ascii?Q?Ko7wUr+HU7me8O37wiKbJJ/Lx7V0PQdn6AX25mgT6F3BctZyIqjSyCksLGK2?=
- =?us-ascii?Q?C6ubamu+gNk2xYGowUdD2JVJOCVPo5q1ioVI6Q0ruqksNbQXsyTFcYCsAlfT?=
- =?us-ascii?Q?6coYHvTZm1aHngnW3uuKBmPF9y77ofDYX4f+Gpr1GMGHbanP19dtvx7s4opY?=
- =?us-ascii?Q?s+VWHAtAEfdTeDxu7izBXnTHrZrFb7vYWyNYUuxdIz/TGQcqWGtlC/NaAjDr?=
- =?us-ascii?Q?Z3YWVKZVv8H8VqHJvhJQnTfOgS4VbVDT95FyOJt3IWNHlAiNfCTto2M8ptul?=
- =?us-ascii?Q?R4a+NNAo7iekw7qB//wtvJQYSsvca7Kcz0xyolnz8DiQSd2gAtooUDi/PEwS?=
- =?us-ascii?Q?ns5vCEiEw5PM02Xb6X2pPWENLokSOkUL3BDc6JWGYgwm+FMojuxjRxqKgZs9?=
- =?us-ascii?Q?3DILZyNkaBv37KAwsjnButlTu/scn3oQxpjD?=
+x-microsoft-antispam-message-info: =?us-ascii?Q?HfhmxsZG8zk9GXCpz9mmHsMxNHkj9BQh2tn07piG9Keex8wOgSwp9Xo7tyVV?=
+ =?us-ascii?Q?6dCuPgCU35KtD8YPGzU6YyxWjdQAtqMBexDoUZYXU32CogwaY53zCgEMXEB+?=
+ =?us-ascii?Q?dFxtgVhUWgq4QdjoSsvc2qll9f91eKJNPAenPZVXzOyxcRizI//5QQTXAGwc?=
+ =?us-ascii?Q?HlBIf4DqVL0MsD+WZ1wCTd5pmJvTqdpeOB80DSuo97+m4XWc7CblA/41fLIf?=
+ =?us-ascii?Q?uZYQ9AUhXZDJlVD3P2n/QUpl4+mRlGnyc+G2pXxGoCUsuIJoTB+oTkQ2KsjH?=
+ =?us-ascii?Q?+kIJu5YoM8JV+Fl25uP0lZhDosr8Ov+tEvi6mkniGRXNx0JcPo31JHc7sM4t?=
+ =?us-ascii?Q?zE7GAxymwgNvAPJzHnh7d9mEGikhX9L+dUuusSkSbFrmWXXyCeYtN+JGg3HY?=
+ =?us-ascii?Q?NhNJrt1vVTlsM+Sd+OcNLgATMse74uAZ73CHQIcroernQjjcdIZHJg8U8RRD?=
+ =?us-ascii?Q?G4T5b9nz2XYo3ZpgVvqkxE8FyxdFokI6BciDFZsKl0jjLcTPMK6Qw4mHlPwV?=
+ =?us-ascii?Q?43ex/keh6VtB2yyXzpySn2RhUAyTZIEDC4aTe6AUWDDaNj8x3EKZo8kF4YR9?=
+ =?us-ascii?Q?aUfZ1xP64U3fMzTodTQr4akrnu9r2TGZd20ruSHMzGidj528ovVSi3t0N2XX?=
+ =?us-ascii?Q?pzoQHZcVWGISPX/8hfyxjfhdTEIe64OrZveKKuwcKgeusDhqiXlKA2cLmmSc?=
+ =?us-ascii?Q?EC/7sGF2SEQ0ZKo7RUI2+FzCF9kynHxLMKzYLrZOgz5HJnljvRpOP1kAZIol?=
+ =?us-ascii?Q?X2+MZj0nezrC4TytHIVdIdgJG5DuEq0USDJqZF4KUXL8lGNMQeuml0kk/OrS?=
+ =?us-ascii?Q?u2CjqdrNOspfr9d5Zhvn3JjsGC1TmRmxVwAPdKcBuaf5t/kIXMSLZM43u+yZ?=
+ =?us-ascii?Q?6WsSAr1iJA+XuFfkdpDFCIoGOrgReS5D5gosxPIXZ37EH0HSq+h1yf35k/EE?=
+ =?us-ascii?Q?vg9HpjUjIS+1lnFkMaW8VoaCuIkt4OrfwqDGGkjiivzsryfALyb7d2S1L8fC?=
+ =?us-ascii?Q?woWvR4rpLR6wfIGB6sGsWMMvQZOut1JkI+AZnIhgEhBx/yHdYaCVWABr6m0d?=
+ =?us-ascii?Q?LKUU26le2M9f0H/TNd6jxFMNF3DKHVLHPbqwhA2ivohvdNkL+lyR0u9Lq0im?=
+ =?us-ascii?Q?AjambVi3YUS2aq/Ka9RTKGsHhPwp8hTJMC0W6O+GQ675h69TJ+b/Fk1W/pyA?=
+ =?us-ascii?Q?kKlI1frc4oyU82BJN3BdPxAT3z/oRZ1dAPJsbYHuaR61iYQg9eUGLMkBk5L0?=
+ =?us-ascii?Q?wvt5pFTfNUQICE+ROi3tXcE5Es/J6rHojhM1xtRVVAk7MkEAnF9NVpxD4jdh?=
+ =?us-ascii?Q?vBq/8Cw01aRg8TDSfLWLUzBdyOuhXXTS/v8KTlyKhnM/R/NIFuBwYwyx9dTi?=
+ =?us-ascii?Q?ixJqct0VJKJ8ESzIb/kpaR/CGs8n8mpWvthVpegjvAam+CRWvlaR9OFk2BAo?=
+ =?us-ascii?Q?v3FMn0zaNT4a7xGY03l1gYCV9rXVT2wGoJruUbpD89dBcY/MrPb7iI8bl1rh?=
+ =?us-ascii?Q?iUZIOtquKdkQwzlV6Lc2Qb4uN62vW5t9Hyk/?=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:SJ1PR11MB6297.namprd11.prod.outlook.com; PTR:; CAT:NONE;
  SFS:(13230040)(1800799024)(376014)(366016)(38070700021); DIR:OUT; SFP:1101; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?0eT8oEEb4IUSOEEA0BNoKLmKVN3+zACDvTG3BAy20qdCMVso/CGspTmqLO+y?=
- =?us-ascii?Q?dGSjyeg0N3r+CdRRLwkYKurKNU+AwO+DONyDboUOObMQiGQm2Y5oj2aIlyI1?=
- =?us-ascii?Q?mjCzC8Nc9/dBs8Ctlvp4xZB+9gr2MqR0mEzf08O3/7Zq6euSOBR5tpqCLIFQ?=
- =?us-ascii?Q?eH87zeHvN+WXr3yQv6DvzDSyamGLmywzyuQSKNqcz3RDxd0W2y5riJB6v0d4?=
- =?us-ascii?Q?KSB1NLQ7AAu5LTnXQJoxJRlf74SL1nIqXTe3SLfgvFFdcBvTaoQ0JWtwrMvS?=
- =?us-ascii?Q?Hwi4rb7JPC2kcvJJMuuv4jNXnSsdALtDiXELbaKuHem4JoLNM+WR72a0WRV5?=
- =?us-ascii?Q?shSDCl8q4uwepymOAolQBcyG0sHoBKAXco4lFnIg8EVwUxq+VeZaZtUVvxUw?=
- =?us-ascii?Q?OEgJIshOZyBTl55JotgRLUDQjfHo1IEaro8HyWY5prjuZ/kZhh56gY3HEKFY?=
- =?us-ascii?Q?hcM2QgFPgmRoQ+8KJgAU6qw4/zPdk0Wd94ClvrBWrSbk9bLtjVqCI/ZaPOd8?=
- =?us-ascii?Q?2ImdVx75oZITq4XbwBBkOpu5FKqKwcEfVHfcu4xKa5LuonkFyC23+T0Jdwnt?=
- =?us-ascii?Q?ypQxEoC0tyA3Co9d1LqkEI0WVmZCJzo7JPpPn5OZ+QVPqEmQa11pGMJy0cx6?=
- =?us-ascii?Q?A/KGQS32FTL7oG+or0JiO9TBcSRJe5Auh7ctwjgpaMkzptsqudluydokooma?=
- =?us-ascii?Q?AhMr1kR9k0y8DCbT/T7d4ubDmy4qSveTYHjzP2VjGdI0T1TrAmDeNKm1HVdv?=
- =?us-ascii?Q?7gzAIGNvw2ha1wTMtUNhYTfJWYmQMF1M8N9ri6Qjd6Qr/jIVUL8k9Lfng+/W?=
- =?us-ascii?Q?m+D35Vm2gZSzuyapsH77UT5DZXG7qNqbarMKmbOGLyLuZKhNNsFGb/j2PhrF?=
- =?us-ascii?Q?KZ/RcQeXLFibatgwWReHG2mJzyObp2tp/uLfcDY/eewuOEQhJTZKZqryEzzA?=
- =?us-ascii?Q?LjvfNcSj5xWsy8O+iEiuX2Bh2MgfhJZBu5g6JHeRw303GQI+b/kb3rhQVskN?=
- =?us-ascii?Q?9cEKjKecLEGoc5QTeoRjBNcy2nG6iymENs3kccOusFJuN2Xp8gGI3FRI/E82?=
- =?us-ascii?Q?u1vdjiZmQXA6pW/Y4Ccnt0GLq1X/Pbky07Ow7XfibH0wVU2c67ZP9b2UIhI4?=
- =?us-ascii?Q?B/dhEtDCI4p1sDw0Py1RxjIqc4peCDSTaxp3RWnTbY8BFMkkR6ihDatm4OQM?=
- =?us-ascii?Q?TZ2nGa1pipvK/le9LTa9Eq3LBIIW2b53Rb4wxr+Jx42ukE7iaQpQ/9F+i/ZM?=
- =?us-ascii?Q?1sDRx53fe+CahftRc3td9XVXz9IC40n7Q3SmgmUooKYPpJaIO+RQj4XSuF1E?=
- =?us-ascii?Q?axyG5pZA5rE29eSm8UBbVHKQPnlh5Yz4TH97TRRcGaE76nI+wc4XGF8CyQkE?=
- =?us-ascii?Q?kGwQE7Zy4CBm4itT6HJD4kpSImg1DNIZoMD0c7kXSGxu6fWgQur1YnIoyDaz?=
- =?us-ascii?Q?3dbetShZO2v3wjAWbGK/vX1btQHBd+FGUYgV43ngKcjbKVhnVYbKqeugqCCv?=
- =?us-ascii?Q?lVgMu0yurOVV3DpNag6+hU+WoiOjJXNjBWRI4nNeYxpxdZ3RjjFHKIjYj1PG?=
- =?us-ascii?Q?FAlggzUoHn+2LPTmi/5e13il5AmePvGc2kFnAleo?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?79OIhcl2XgAoQdYFo+B3ntbVozneeUQ+8KyjhAlz65SIibciaOLGPyHirHC0?=
+ =?us-ascii?Q?SCjjIoZoH1qNLZs/HS6ExbvK7nqVlcxQnYCyOcLduZTaMe4yr2Xq0habc2l5?=
+ =?us-ascii?Q?2dQKK04HR1tKpZWIT8siZcnAbXfUro2ES0i35+YI/Yn3Vx+ub7UBTwr5DfjV?=
+ =?us-ascii?Q?IKo3hqYtQaopp/Z47mh3PMKnqJnaHEXtlc6DozysNBUJAyNZxY9OHAPayxNo?=
+ =?us-ascii?Q?ippky4Y32x36cZLMG9TS9kj8g9NtEuh8N0kBEbAsndJifAnYEsko3bSxtT5o?=
+ =?us-ascii?Q?EkYMhbRnKgnweVRF72IqoqnqSCBF7ncT3KFrBAF/7RilH9Z1f3Nl10IkEKpn?=
+ =?us-ascii?Q?YDx6feVATOSGGbqSFBD4Cs49mXQA6PlTPLRo78daZmDw8tDtyge9gGx/Gy36?=
+ =?us-ascii?Q?/dHfWIO5MU1f+SB7RbMdYWax4Wn6qZAZAMyI8GJ4HL/6ISZBgINXiw29nYoz?=
+ =?us-ascii?Q?GXH8ewDAogAzuR9dFUw0pGvn+x4Ka7nZoWuYQGRyofPYFADfRflfruYz3ZO/?=
+ =?us-ascii?Q?DNhyTBjKs+WK0Rs1CxZarkIUqH517HPzI20AmRNbB61NhR8k5fAM51CgIKe6?=
+ =?us-ascii?Q?FQycV6FNpQweHI/+IqdYne97zbrUdELCrwoz2MXoWb5rf2Zpu6wg3njTM0Ax?=
+ =?us-ascii?Q?6rBI0n1fK/meukQeSOQteiGG+73vIRfcsBMGaOPdr3BX97+kLHzzoA2yEV3C?=
+ =?us-ascii?Q?hZqoLGFSHYwpJ2qu7nuAhUh6T8SkS6E7WOpPDS6ai5YhwbzlZvqepXI5FUGp?=
+ =?us-ascii?Q?DJ95VN67djcmZCZ+EtsukIm+YVgX1v/H/rF7XAFtEPJ+SiISk7ZkKNkVXwUY?=
+ =?us-ascii?Q?OD+ynalsdjFtQXu8Us93OK33uhgw2yQB898oUOqxbSPZLbpCRARPfz+6j5xE?=
+ =?us-ascii?Q?QtV+FS/jFmaaLk+KL/cPVZqgOb4uHHtFxI+/z1kYGE4DeHxwvGGGQgfLpHIT?=
+ =?us-ascii?Q?CX2v3xUFwriLb9mrxH11Eo/fxvZ8H/iWntHe9wQTkfF4CNFJjROUskrMkd9i?=
+ =?us-ascii?Q?XpykiQhyLazaLbtpSOCanhTBa7gYdsxKtR95nYImvHXahKtLBmRsvGQBA3Cn?=
+ =?us-ascii?Q?1Bhpr2KYtfbBjhAmXnBcgzGKH7PrivqslYRd0KiMKN0fkR+Dqqv9Gz8GDUoO?=
+ =?us-ascii?Q?KG+9jnJ28g3WZSi58kxP1HjyHmlkvtBYPMCw4MQmwGOI+orSIR2ng4nXbPuw?=
+ =?us-ascii?Q?BzidCxmDanTs0W0pfF/jfkpC9FTQnVElNxCTLjrNL6Qjqu8V9OAL0zsHymgd?=
+ =?us-ascii?Q?DH+8lEWNaoLRC3yPwWid09yhZk2zyCnqhZozcLDahVZizqZMbOky2iJbOOae?=
+ =?us-ascii?Q?kq7X47Rq+pGj9flUBS4NsY6UT9LELQuX7U8Qs1Q0fwKK0WZ4Pw3DodhJ9y/M?=
+ =?us-ascii?Q?JqVVPOdMGlJ/dHFAeK+o5OmOvIfvtPwz0A/HxqdZBDNow6ow1/xcW4cVgg4R?=
+ =?us-ascii?Q?/R6kNRvYpGDPzPRJECdmdVNYscooGafZFAquemwqY1XMyVyOtPCbd7CKk79e?=
+ =?us-ascii?Q?lbUdTxBF/pg2WFrHD4VGTlLDtlEQPIcplj7EnfARH+h7gAMcEz9TucoBKJoE?=
+ =?us-ascii?Q?fSu9HjLVVQuhB31TCrd7Aa4hwDUPavNH9diyfgvF?=
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: SJ1PR11MB6297.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 29de5406-7326-4a97-9e45-08de399d6035
-X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Dec 2025 16:42:01.9367 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8cefb85e-6602-4eed-c2f0-08de399d615f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Dec 2025 16:42:03.9172 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: TsOqRgE65gcPjfhBb+jh7umuI5W4t/S/4Axgr0xwbJn9SE0FbKiaxFFjVRc4eRqggeQMb1G/56JGeAFiudZjVw==
+X-MS-Exchange-CrossTenant-userprincipalname: HjM7lrtIPjg9FXbKMoLj1ycWyaH+HGs9xdBfPqe86OU/tTpVzJh4EePrc4/qiCftPZA2KvWebLvRE5CLtPi8Yg==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB8480
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
@@ -196,25 +196,24 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1765557728; x=1797093728;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=00AhfjyMpclClJIbbInx78u81BzKvthlLTZFoJMt5XE=;
- b=CHB//hY93piBvwWYHywGSQDvkRX2UPTEOKYDht/+o7d8e5260zQBsoKA
- f90R+93pPSMYs3N0y8RtqmjU31A8FDluuQMtZLPZ/mSCESAnFdshW1vRo
- jtUk5p5E5syonaZ5X53nkpG+LqxtV+1Km+hrj8bHZKHAFPr/HqQDeoMb9
- 8Bd/SicUkQnvV8ZQGFQWTO8lXnsQlPXAZp62jcaw86wT/BTOZxoXnBnDt
- 6WSCI0a6MF+7OGOSjGBXgeeZ5dn2ip5+PRbigucN3Cn3WhGkYSVeNWo/t
- U2Yv7y8k9scY+iihzsEbYgg9mhoOkLJR0V8UP50DcjUqjIdQunpmHrOhp
- g==;
+ bh=MY7/pLObBzpzoY/vfxZLA0sKAYVZyku62mikp0ZKQEk=;
+ b=L+z7F5WZLjnxW65n/fsc25AnZCiUJDziA1CUpoocRF/nFuPsDjcsNpve
+ /nVvxy7qNYqvY++Uef5rkHuxvX44uYwLJZelFIB5A9SOcm3PQg9o59+Aa
+ k1g6NW2eBgHat4n5ccfbE6P/h9SQtwhR21+U1ZQ4HoclRQ+xCPNw8mv2V
+ /Cl707Tv8XsT6u6ya6txCaI+ZWLO9X/70YsJGb8TwuxGjEDmvDrpk/gZQ
+ ff2S5L+nq2zjV6RDiRWArIQxvLUw1ws/1ZsqejEF2s+SByqeZCscFbmgl
+ f2bi0BkVJnclbPGsBcL8lQN85GC724CZ4HHD+N2EVrTLKoZ8qYBFvblNz
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=CHB//hY9
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=L+z7F5WZ
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2 1/3] idpf: Fix RSS LUT NULL
- pointer crash on early ethtool operations
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2 2/3] idpf: Fix RSS LUT
+ configuration on down interfaces
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -234,70 +233,84 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 > -----Original Message-----
 > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Simon Horman
-> Sent: Thursday, November 27, 2025 3:45 AM
-> To: Joshi, Sreedevi <sreedevi.joshi@intel.com>
-> Cc: intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org; Samudrala,
-> Sridhar <sridhar.samudrala@intel.com>; Tantilov, Emil S
-> <emil.s.tantilov@intel.com>; Loktionov, Aleksandr
-> <aleksandr.loktionov@intel.com>; Paul Menzel <pmenzel@molgen.mpg.de>
-> Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2 1/3] idpf: Fix RSS LUT N=
-ULL
-> pointer crash on early ethtool operations
+> Joshi, Sreedevi
+> Sent: Friday, November 28, 2025 3:31 PM
+> To: Simon Horman <horms@kernel.org>
+> Cc: intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org; Loktionov,
+> Aleksandr <aleksandr.loktionov@intel.com>; Samudrala, Sridhar
+> <sridhar.samudrala@intel.com>; Tantilov, Emil S <emil.s.tantilov@intel.co=
+m>
+> Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2 2/3] idpf: Fix RSS LUT
+> configuration on down interfaces
 >=20
-> On Mon, Nov 24, 2025 at 12:47:48PM -0600, Sreedevi Joshi wrote:
-> > The RSS LUT is not initialized until the interface comes up, causing
-> > the following NULL pointer crash when ethtool operations like rxhash
-> > on/off are performed before the interface is brought up for the first t=
-ime.
+> > -----Original Message-----
+> > From: Simon Horman <horms@kernel.org>
+> > Sent: Thursday, November 27, 2025 6:45 AM
+> > To: Joshi, Sreedevi <sreedevi.joshi@intel.com>
+> > Cc: intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org;
+> > Loktionov, Aleksandr <aleksandr.loktionov@intel.com>; Samudrala,
+> > Sridhar <sridhar.samudrala@intel.com>; Tantilov, Emil S
+> > <emil.s.tantilov@intel.com>
+> > Subject: Re: [PATCH iwl-net v2 2/3] idpf: Fix RSS LUT configuration on
+> > down interfaces
 > >
-> > Move RSS LUT initialization from ndo_open to vport creation to ensure
-> > LUT is always available. This enables RSS configuration via ethtool
-> > before bringing the interface up. Simplify LUT management by
-> > maintaining all changes in the driver's soft copy and programming
-> > zeros to the indirection table when rxhash is disabled. Defer HW
-> > programming until the interface comes up if it is down during rxhash an=
-d LUT
-> configuration changes.
+> > On Mon, Nov 24, 2025 at 12:47:49PM -0600, Sreedevi Joshi wrote:
+> > > RSS LUT provisioning and queries on a down interface currently
+> > > return silently without effect. Users should be able to configure
+> > > RSS settings even when the interface is down.
+> > >
+> > > Fix by maintaining RSS configuration changes in the driver's soft
+> > > copy and deferring HW programming until the interface comes up.
+> > >
+> > > Fixes: 02cbfba1add5 ("idpf: add ethtool callbacks")
+> > > Signed-off-by: Sreedevi Joshi <sreedevi.joshi@intel.com>
+> > > Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> > > Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
+> > > Reviewed-by: Emil Tantilov <emil.s.tantilov@intel.com>
+> > > ---
+> > >  drivers/net/ethernet/intel/idpf/idpf_ethtool.c | 17
+> > > +++++++++++------
+> > >  1 file changed, 11 insertions(+), 6 deletions(-)
+> > >
+> > > diff --git a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
+> > > b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
 > >
-> > Steps to reproduce:
-> > ** Load idpf driver; interfaces will be created
-> > 	modprobe idpf
-> > ** Before bringing the interfaces up, turn rxhash off
-> > 	ethtool -K eth2 rxhash off
+> > ...
 > >
-> > [89408.371875] BUG: kernel NULL pointer dereference, address:
-> > 0000000000000000 [89408.371908] #PF: supervisor read access in kernel
-> > mode [89408.371924] #PF: error_code(0x0000) - not-present page
-> > [89408.371940] PGD 0 P4D 0 [89408.371953] Oops: Oops: 0000 [#1] SMP
-> > NOPTI <snip> [89408.372052] RIP: 0010:memcpy_orig+0x16/0x130
-> > [89408.372310] Call Trace:
-> > [89408.372317]  <TASK>
-> > [89408.372326]  ? idpf_set_features+0xfc/0x180 [idpf] [89408.372363]
-> > __netdev_update_features+0x295/0xde0
-> > [89408.372384]  ethnl_set_features+0x15e/0x460 [89408.372406]
-> > genl_family_rcv_msg_doit+0x11f/0x180
-> > [89408.372429]  genl_rcv_msg+0x1ad/0x2b0 [89408.372446]  ?
-> > __pfx_ethnl_set_features+0x10/0x10
-> > [89408.372465]  ? __pfx_genl_rcv_msg+0x10/0x10 [89408.372482]
-> > netlink_rcv_skb+0x58/0x100 [89408.372502]  genl_rcv+0x2c/0x50
-> > [89408.372516]  netlink_unicast+0x289/0x3e0 [89408.372533]
-> > netlink_sendmsg+0x215/0x440 [89408.372551]
-> __sys_sendto+0x234/0x240
-> > [89408.372571]  __x64_sys_sendto+0x28/0x30 [89408.372585]
-> > x64_sys_call+0x1909/0x1da0 [89408.372604]  do_syscall_64+0x7a/0xfa0
-> > [89408.373140]  ? clear_bhb_loop+0x60/0xb0 [89408.373647]
-> > entry_SYSCALL_64_after_hwframe+0x76/0x7e
-> > [89408.378887]  </TASK>
-> > <snip>
+> > > @@ -424,7 +429,7 @@ static int idpf_get_rxfh(struct net_device
+> > > *netdev,
+> > >
+> > >  	if (rxfh->indir) {
+> > >  		for (i =3D 0; i < rss_data->rss_lut_size; i++)
+> > > -			rxfh->indir[i] =3D rss_data->rss_lut[i];
+> > > +			rxfh->indir[i] =3D rxhash_ena ? rss_data->rss_lut[i] : 0;
 > >
-> > Fixes: a251eee62133 ("idpf: add SRIOV support and other ndo_ops")
-> > Signed-off-by: Sreedevi Joshi <sreedevi.joshi@intel.com>
-> > Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
-> > Reviewed-by: Emil Tantilov <emil.s.tantilov@intel.com>
-> > Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> > Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
->=20
-> Reviewed-by: Simon Horman <horms@kernel.org>
+> > Hi,
+> >
+> > I feel that I am missing something here.
+> > But I would have expected rxfh->indir to be populated by
+> > rss_data->rss_lut regardless of the port is up or down. IOW, I'm
+> > unclear on why
+> > 0 is reported for the indirection table if the interface is down.
+> >
+> Interface being up/down does not affect filling out the rxfh->indir[]. Us=
+er will
+> be able to setup the indirection table even when interface is down and qu=
+ery
+> the table as well (changes are cached in driver's copy and setup in HW wh=
+en
+> interface is brought up).  However, when the rxhash is disabled on the
+> interface, the indirection table has no effect, and it is programmed with=
+ zeros
+> in the HW and returning all zeros in rxfh->indir[] here reflects that sta=
+te.
+> Thanks for your review, Simon!
+> Regards,
+> Sreedevi
+> > >  	}
+> > >
+> > >  unlock_mutex:
+> >
+> > ...
 
 Tested-by: Samuel Salin <Samuel.salin@intel.com>
