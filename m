@@ -1,121 +1,93 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F9F2CB8B4F
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 Dec 2025 12:25:23 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5376ECB8E2A
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 Dec 2025 14:20:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B495C60AA6;
-	Fri, 12 Dec 2025 11:25:21 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ys0pnJEEJTlD; Fri, 12 Dec 2025 11:25:21 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 36A9060AA0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1765538721;
-	bh=gEnn545SHxpJYbhpEqJ4kau8ivvtfD9Ghf76lIvPG6E=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=U/qOxfqqgqzDLKYSRysDc5FpUugp8n1hL0xqxUp/cfSxhX/NBBG4hQzHDS2CWFghq
-	 do47OpSZ0PP6AZuyDeQuHOFERT8lIMJ++5bl+60MWYQCy2LHegHa0w2HlyuuCv3RsF
-	 oS1GYFRN5d8BolMKNR4GqAhb3aBaFFDAFd/zjv9nhSstffe6P9CNGGneJkRHZ4Zt9I
-	 TBSsNowtb0lv6ZfZ6heLYn3xcj2rIf+0B7BR9afxnSc75QaBgIDJV0QFXMtT0RLzV8
-	 VTIlMpXIkVmmNycASeJeiTFZ76QGi7NweXJVDGJOy6MG7eAAzNmXjxijPp6keOL9Jd
-	 vKi2djdiLGC/A==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 36A9060AA0;
-	Fri, 12 Dec 2025 11:25:21 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 75F322C6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Dec 2025 11:25:19 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 64B9180EFD
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Dec 2025 11:25:19 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6282881281;
+	Fri, 12 Dec 2025 13:20:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sd7LAnVYywNE for <intel-wired-lan@lists.osuosl.org>;
- Fri, 12 Dec 2025 11:25:18 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::42e; helo=mail-wr1-x42e.google.com;
- envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3FFA680ED1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3FFA680ED1
-Received: from mail-wr1-x42e.google.com (mail-wr1-x42e.google.com
- [IPv6:2a00:1450:4864:20::42e])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3FFA680ED1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Dec 2025 11:25:17 +0000 (UTC)
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-42b3b0d76fcso616405f8f.3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Dec 2025 03:25:17 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765538716; x=1766143516;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=gEnn545SHxpJYbhpEqJ4kau8ivvtfD9Ghf76lIvPG6E=;
- b=DSEBWyV+55hs/ZV1G7c1ETaFptJts9kwpY/ZlCOW+Y5xEasyZveKobOopBWmXBF1g3
- lZlINv2s0TffxwT7v35So8/tftkAmKmAP7rm1pgCqmnSGyNkC2UuBZGcCiX0SjHbb8H1
- tAamnL8q1Z3PZ65LTp/OEVz6aoEY/wCNkg9dDFwoXyXtxSbjCHA+KtNPUKFKSyOFWLsY
- ScLqgD5r7xZgZVZuvXw2XEFDgfN5MBBjKTtOGsW98XvgruT5qkPTZRlSQ5uP9EZap07v
- GH+hOpXZX84sdFEA/1bc9KMXxY5lZ+D3df/ccWZwkV4R1srE//GXNwHS+GFC+uNzlTuW
- cOEg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUMcc5sq0vbWfpHwPL2ZozI/Q27aVjXsF+JEcAR87CzZWu4PWKjEo7S0HdAeI0Vfd1Rj6kEeTxdsKaXPAfjP3o=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YyHjEYH3gsRk62D4h5CsQItSTahgrFjv3skebfgMi7viA2lRFVr
- nZ+VPTV2oxY+XbCx0Gpzd3PRHIpHyS0OgLxODf9nuZlqeSl/HHqb2GHPkJk67EpP+Hk=
-X-Gm-Gg: AY/fxX69B2rXTLDhwLpgyoD2L+Dl2SiaRV7WWnZWNRcvdw5Tk4jmiAN2vfOGyt1fn0s
- /2K+b4MR5gBBqPJuS/jdGBFgCcVMVNcmUnoljKq+1FvggrH0repazqbaiSWOE5pQMrzW/LXryiU
- kfJAGNy5aLwVY3BOGp02n9hQskrTq3J4gcw6w4Ghh0QV/U/27k9NhV5W35EYtbniUaimgBzhSOD
- yYmRYAPv1sUVMrO9eJxoiWiIqmoUADxe0HeyTo6DgtPezaC5PyYIqjs9rSdEYTAXi8W+8/arF1i
- bj08ngWrri96hiVDMHlUIjsBWJXQKE3pkn8ibfrAMCSZvleKiVNmwAJ7vI/wtS8sTvcDAZl85K7
- MF0doawyAwpHUO53PQuETpB1d6UuI2jf/Y94tJvg9DNLr14bjDtdgRKblN35y/Nw04tWzN7rKrA
- jhM9xDKJU/G2NZM4JH/DnqVcY=
-X-Google-Smtp-Source: AGHT+IHkaay9CDV5kfE74IqgXxI+GzQAfyiag1hnUiI3Kv6EDGuWkv0C2Lwzh9GBMI+h6MNTm6fuig==
-X-Received: by 2002:a05:6000:2c09:b0:42b:5406:f289 with SMTP id
- ffacd0b85a97d-42fb44a24f0mr1717666f8f.3.1765538715596; 
- Fri, 12 Dec 2025 03:25:15 -0800 (PST)
-Received: from FV6GYCPJ69 ([140.209.217.211]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42fa8a66761sm11462241f8f.3.2025.12.12.03.25.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 12 Dec 2025 03:25:15 -0800 (PST)
-Date: Fri, 12 Dec 2025 12:25:12 +0100
-From: Jiri Pirko <jiri@resnulli.us>
-To: Ivan Vecera <ivecera@redhat.com>
-Message-ID: <ahyyksqki6bas5rqngd735k4fmoeaj7l2a7lazm43ky3lj6ero@567g2ijcpekp>
-References: <20251211194756.234043-1-ivecera@redhat.com>
- <20251211194756.234043-3-ivecera@redhat.com>
+ id m9NWKLivri1e; Fri, 12 Dec 2025 13:20:29 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BA96081D65
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1765545629;
+	bh=v0xQvkIAFlqQLz0UR8ErnUu+CWFI8ZUJjHLqIX+rg9Y=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=0rdHIePRffcsv9WsHab4C3kNJUGjxp25mw5C+Vh0B6/xXEGzndVoyxfAV231K7mmL
+	 NbpqXwhtCatQGmy20nhj7XVfkwAedmSqk/UVyRnIq/E54dN7YZsFuTPOT5W2HMvYUZ
+	 Zn5lwmXPZhX8JJdaWVr5uFv1RgDqiJHkswCE/PeSa63qLDdB8VWBU4ETZuVj8/3XZc
+	 9kVRbMErnfTHWKvlKGGRFBIrvci5P7KfMWilr2AnwcqdYPVjpackliCpkxMpvJu2TD
+	 6OuDl7UgE8xqBdcsmnMS/xumJv6zKgG3PKoe+ziNipywRRdT0Ph8JEkNpIuDZ8pDzY
+	 rmsuR5DC5wcqA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id BA96081D65;
+	Fri, 12 Dec 2025 13:20:29 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id BABED2C6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Dec 2025 13:20:27 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id A0F324118E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Dec 2025 13:20:27 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id kYEzP-mSH0uh for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 12 Dec 2025 13:20:26 +0000 (UTC)
+X-Greylist: delayed 304 seconds by postgrey-1.37 at util1.osuosl.org;
+ Fri, 12 Dec 2025 13:20:25 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org F1A5B4118D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F1A5B4118D
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=185.136.64.227;
+ helo=mta-64-227.siemens.flowmailer.net;
+ envelope-from=fm-1333436-20251212131517bd657071bc00020748-9kokon@rts-flowmailer.siemens.com;
+ receiver=<UNKNOWN> 
+Received: from mta-64-227.siemens.flowmailer.net
+ (mta-64-227.siemens.flowmailer.net [185.136.64.227])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id F1A5B4118D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Dec 2025 13:20:24 +0000 (UTC)
+Received: by mta-64-227.siemens.flowmailer.net with ESMTPSA id
+ 20251212131517bd657071bc00020748
+ for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 12 Dec 2025 14:15:17 +0100
+From: Vivek Behera <vivek.behera@siemens.com>
+To: aleksandr.loktionov@intel.com, jacob.e.keller@intel.com,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ maciej.fijalkowski@intel.com, sriram.yagnaraman@ericsson.com,
+ kurt@linutronix.de
+Cc: intel-wired-lan@lists.osuosl.org,
+	vivek.behera@siemens.com
+Date: Fri, 12 Dec 2025 14:14:54 +0100
+Message-Id: <20251212131454.124116-1-vivek.behera@siemens.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251211194756.234043-3-ivecera@redhat.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1765538716; x=1766143516;
- darn=lists.osuosl.org; 
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=gEnn545SHxpJYbhpEqJ4kau8ivvtfD9Ghf76lIvPG6E=;
- b=vC+uora68L/Q7cs34Za4PQr8DIbaLArWyGc+PChlwv2KNhUodlLmMDmuOwrVDYZUSl
- MX8JfZSd3Oy904+htSq7i8XDs6I1b39XaDwHcD1JMn5QUWd8g2Vki5M2yByf2Y4lMpXo
- EWN57i6pcvJwmNICu0kBlY4ucdTdUIiTJdeK7o/dpMl6DV3MUUaNGtWGzGr7rqg6fp8V
- D7MXbbXQaAzs/ZgAgWJzodPU56Wj3M290HjpHG88eVHz5xtQXG8Gb55l22c2jxamVIrW
- OyW//r4H52VeWnCkx/BSHuRTCt/Yj/Uoj9wxdwDPKT0iQ+f7A0a71uHsMzAyDn4rHtL8
- 9CSg==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=resnulli.us
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+Content-Transfer-Encoding: 8bit
+X-Flowmailer-Platform: Siemens
+Feedback-ID: 519:519-1333436:519-21489:flowmailer
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; s=fm2; 
+ d=siemens.com; i=vivek.behera@siemens.com;
+ h=Date:From:Subject:To:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding:Cc;
+ bh=v0xQvkIAFlqQLz0UR8ErnUu+CWFI8ZUJjHLqIX+rg9Y=;
+ b=fGWExih0w7h0QaeVEp6PfrDt96Y1KtT4TsFREJk/AC5RsXzkFM2Imsxc9i0eUP/CH8Us5p
+ qdnWYF5LPmC+KjE65BqBvPTH1Dxh6OkjKHgmOYsCcU7v5hk8XCBDurU9c+SV3ZtTYP0Q5sJl
+ rPGsPM2AMHeJLkZljk9DYWjaytGnG0ReoKVPZYbom+dtjzrYfXfXa6JYeRJSNgwtrbukFPzb
+ z8a6tm99V9mINo45cirC83mCCS3oLDpQn7g+gbuawzALw6TZ0C/9bJUAyLzAGi2yojiNecwn
+ FfQpXJ6Brl+o8U2UsKxQVSqtjHmL56BPu1qJkeTTWTCeRFFYlh8l/Bmw==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=siemens.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=resnulli-us.20230601.gappssmtp.com
- header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=vC+uora6
-Subject: Re: [Intel-wired-lan] [PATCH RFC net-next 02/13] dpll: Allow
- registering pin with firmware node
+ unprotected) header.d=siemens.com header.i=vivek.behera@siemens.com
+ header.a=rsa-sha256 header.s=fm2 header.b=fGWExih0
+Subject: [Intel-wired-lan] [PATCH iwl-net v1] igb: Fix trigger of incorrect
+ irq in igb_xsk_wakeup
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -128,57 +100,129 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Eric Dumazet <edumazet@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Rob Herring <robh@kernel.org>,
- Leon Romanovsky <leon@kernel.org>,
- Alexander Lobakin <aleksander.lobakin@intel.com>, linux-rdma@vger.kernel.org,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, devicetree@vger.kernel.org,
- Conor Dooley <conor+dt@kernel.org>, Richard Cochran <richardcochran@gmail.com>,
- Prathosh Satish <Prathosh.Satish@microchip.com>,
- Willem de Bruijn <willemb@google.com>,
- Vadim Fedorenko <vadim.fedorenko@linux.dev>, netdev@vger.kernel.org,
- Mark Bloch <mbloch@nvidia.com>, linux-kernel@vger.kernel.org,
- Tariq Toukan <tariqt@nvidia.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
- Stefan Wahren <wahrenst@gmx.net>, Simon Horman <horms@kernel.org>,
- Jonathan Lemon <jonathan.lemon@gmail.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Saeed Mahameed <saeedm@nvidia.com>,
- "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Thu, Dec 11, 2025 at 08:47:45PM +0100, ivecera@redhat.com wrote:
+The current implementation in the igb_xsk_wakeup expects the Rx and Tx queues
+to share the same irq. This would lead to triggering of incorrect irq
+in split irq configuration.
+This patch addresses this issue which could impact environments
+with 2 active cpu cores
+or when the number of queues is reduced to 2 or less
 
-[..]
+cat /proc/interrupts | grep eno2
+ 167:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0    0-edge      eno2
+ 168:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0    1-edge      eno2-rx-0
+ 169:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0    2-edge      eno2-rx-1
+ 170:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0    3-edge      eno2-tx-0
+ 171:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0    4-edge      eno2-tx-1
 
->@@ -559,7 +563,8 @@ EXPORT_SYMBOL(dpll_netdev_pin_clear);
->  */
-> struct dpll_pin *
-> dpll_pin_get(u64 clock_id, u32 pin_idx, struct module *module,
->-	     const struct dpll_pin_properties *prop)
->+	     const struct dpll_pin_properties *prop,
->+	     struct fwnode_handle *fwnode)
-> {
-> 	struct dpll_pin *pos, *ret = NULL;
-> 	unsigned long i;
->@@ -568,14 +573,15 @@ dpll_pin_get(u64 clock_id, u32 pin_idx, struct module *module,
-> 	xa_for_each(&dpll_pin_xa, i, pos) {
-> 		if (pos->clock_id == clock_id &&
-> 		    pos->pin_idx == pin_idx &&
->-		    pos->module == module) {
->+		    pos->module == module &&
->+		    pos->fwnode == fwnode) {
+Furthermore it uses the flags input argument to trigger either rx, tx or
+both rx and tx irqs as specified in the ndo_xsk_wakeup api documentation
 
-Is fwnode part of the key? Doesn't look to me like that. Then you can
-have a simple helper to set fwnode on struct dpll_pin *, and leave
-dpll_pin_get() out of this, no?
+Fixes: 80f6ccf9f116 ("igb: Introduce XSK data structures and helpers")
+Signed-off-by: Vivek Behera <vivek.behera@siemens.com>
+---
+ drivers/net/ethernet/intel/igb/igb_xsk.c | 77 ++++++++++++++++++++++--
+ 1 file changed, 71 insertions(+), 6 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/igb/igb_xsk.c b/drivers/net/ethernet/intel/igb/igb_xsk.c
+index 30ce5fbb5b77..9f23e6740640 100644
+--- a/drivers/net/ethernet/intel/igb/igb_xsk.c
++++ b/drivers/net/ethernet/intel/igb/igb_xsk.c
+@@ -529,7 +529,9 @@ int igb_xsk_wakeup(struct net_device *dev, u32 qid, u32 flags)
+ 	struct igb_adapter *adapter = netdev_priv(dev);
+ 	struct e1000_hw *hw = &adapter->hw;
+ 	struct igb_ring *ring;
++	struct igb_q_vector *q_vector;
+ 	u32 eics = 0;
++	bool trigger_irq_no_msix = false;
+ 
+ 	if (test_bit(__IGB_DOWN, &adapter->state))
+ 		return -ENETDOWN;
+@@ -537,13 +539,76 @@ int igb_xsk_wakeup(struct net_device *dev, u32 qid, u32 flags)
+ 	if (!igb_xdp_is_enabled(adapter))
+ 		return -EINVAL;
+ 
+-	if (qid >= adapter->num_tx_queues)
+-		return -EINVAL;
+-
+-	ring = adapter->tx_ring[qid];
++	if ((flags & XDP_WAKEUP_RX) && (flags & XDP_WAKEUP_TX)) {
++		/* If both TX and RX need to be woken up */
++		/* check if queue pairs are active. */
++		if ((adapter->flags & IGB_FLAG_QUEUE_PAIRS)) {
++			/* Extract ring params from Rx. */
++			if (qid >= adapter->num_rx_queues)
++				return -EINVAL;
++			ring = adapter->rx_ring[qid];
++		} else {
++			/* Two irqs for Rx AND Tx need to be triggered */
++			if (qid >= adapter->num_rx_queues)
++				return -EINVAL;
++
++			if (qid >= adapter->num_tx_queues)
++				return -EINVAL;
++
++			/* IRQ trigger preparation for Rx */
++			ring = adapter->rx_ring[qid];
++			if (!ring->xsk_pool)
++				return -ENXIO;
++
++			q_vector = ring->q_vector;
++			if (!napi_if_scheduled_mark_missed(&q_vector->napi)) {
++				/* Extend the BIT mask for eics */
++				if (adapter->flags & IGB_FLAG_HAS_MSIX)
++					eics |= ring->q_vector->eims_value;
++				else
++					trigger_irq_no_msix = true;
++			}
++			/* IRQ trigger preparation for Tx */
++			ring = adapter->tx_ring[qid];
++			if (test_bit(IGB_RING_FLAG_TX_DISABLED, &ring->flags))
++				return -ENETDOWN;
++
++			if (!ring->xsk_pool)
++				return -ENXIO;
++
++			/* Retrieve the q_vector saved in the ring */
++			q_vector = ring->q_vector;
++			if (!napi_if_scheduled_mark_missed(&q_vector->napi)) {
++				/* Extend the BIT mask for eics */
++				if (adapter->flags & IGB_FLAG_HAS_MSIX)
++					eics |= ring->q_vector->eims_value;
++				else
++					trigger_irq_no_msix = true;
++			}
++			/* Now we trigger the split irqs for Rx and Tx over eics */
++			if (eics)
++				wr32(E1000_EICS, eics);
++			else if (trigger_irq_no_msix)
++				wr32(E1000_ICS, E1000_ICS_RXDMT0);
+ 
+-	if (test_bit(IGB_RING_FLAG_TX_DISABLED, &ring->flags))
+-		return -ENETDOWN;
++			return 0;
++		}
++	} else if (flags & XDP_WAKEUP_TX) {
++		if (qid >= adapter->num_tx_queues)
++			return -EINVAL;
++		/* Get the ring params from Tx */
++		ring = adapter->tx_ring[qid];
++		if (test_bit(IGB_RING_FLAG_TX_DISABLED, &ring->flags))
++			return -ENETDOWN;
++	} else if (flags & XDP_WAKEUP_RX) {
++		if (qid >= adapter->num_rx_queues)
++			return -EINVAL;
++		/* Get the ring params from Rx */
++		ring = adapter->rx_ring[qid];
++	} else {
++		/* Invalid Flags */
++		return -EINVAL;
++	}
+ 
+ 	if (!READ_ONCE(ring->xsk_pool))
+ 		return -EINVAL;
+-- 
+2.34.1
 
-> 			ret = pos;
-> 			refcount_inc(&ret->refcount);
-> 			break;
-> 		}
-
-[..]
