@@ -2,120 +2,120 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF93CCB8AD7
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 Dec 2025 12:11:53 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F9F2CB8B4F
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 Dec 2025 12:25:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0A71C60A52;
-	Fri, 12 Dec 2025 11:11:51 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B495C60AA6;
+	Fri, 12 Dec 2025 11:25:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RoqvsAu7vtwv; Fri, 12 Dec 2025 11:11:50 +0000 (UTC)
+ id Ys0pnJEEJTlD; Fri, 12 Dec 2025 11:25:21 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7E7D060A95
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 36A9060AA0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1765537910;
-	bh=Qi0kf4DHgZSF0itXehy4M1IigW5Ye60xVK7z3FqTfn4=;
+	s=default; t=1765538721;
+	bh=gEnn545SHxpJYbhpEqJ4kau8ivvtfD9Ghf76lIvPG6E=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=noDBGRAR1rnz7lLHaR6zcmr6et4gncgbnwlCTTcD0v2gYYqkPMulBMY6kFvESHqFa
-	 a94TkBm6RLT0ObH6dVGKOFKmuUxdfX7k/ntyWNKyBJBkkR5Ge31Hz9baydZHvSwT++
-	 iw8HOPT/eFuQgb/MP9Kfo02see7lBNols0Lo/QwQhYvPMV8R25bCWYQP/UIKzjQX17
-	 p72eaErEHd+KR0cp8sbkMNxtcT+xZAHwp/WisttGRktWOGal+5qgO5/2yHnIitxDSN
-	 vusYhEe3D3h1+Jk6LmFwe6rrOzg7caivqJEo8GmbWb7y25z8tt6CXRDQvUAGbMmxYx
-	 x19UXT5K+EmSQ==
+	b=U/qOxfqqgqzDLKYSRysDc5FpUugp8n1hL0xqxUp/cfSxhX/NBBG4hQzHDS2CWFghq
+	 do47OpSZ0PP6AZuyDeQuHOFERT8lIMJ++5bl+60MWYQCy2LHegHa0w2HlyuuCv3RsF
+	 oS1GYFRN5d8BolMKNR4GqAhb3aBaFFDAFd/zjv9nhSstffe6P9CNGGneJkRHZ4Zt9I
+	 TBSsNowtb0lv6ZfZ6heLYn3xcj2rIf+0B7BR9afxnSc75QaBgIDJV0QFXMtT0RLzV8
+	 VTIlMpXIkVmmNycASeJeiTFZ76QGi7NweXJVDGJOy6MG7eAAzNmXjxijPp6keOL9Jd
+	 vKi2djdiLGC/A==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7E7D060A95;
-	Fri, 12 Dec 2025 11:11:50 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 36A9060AA0;
+	Fri, 12 Dec 2025 11:25:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id BFFCF2C1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Dec 2025 11:11:48 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 75F322C6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Dec 2025 11:25:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id BD6C840320
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Dec 2025 11:11:48 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 64B9180EFD
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Dec 2025 11:25:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Pk19asWDEd8O for <intel-wired-lan@lists.osuosl.org>;
- Fri, 12 Dec 2025 11:11:47 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id sd7LAnVYywNE for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 12 Dec 2025 11:25:18 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::635; helo=mail-ej1-x635.google.com;
+ client-ip=2a00:1450:4864:20::42e; helo=mail-wr1-x42e.google.com;
  envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A1124401C9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A1124401C9
-Received: from mail-ej1-x635.google.com (mail-ej1-x635.google.com
- [IPv6:2a00:1450:4864:20::635])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A1124401C9
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Dec 2025 11:11:44 +0000 (UTC)
-Received: by mail-ej1-x635.google.com with SMTP id
- a640c23a62f3a-b7697e8b01aso219598566b.2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Dec 2025 03:11:44 -0800 (PST)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3FFA680ED1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3FFA680ED1
+Received: from mail-wr1-x42e.google.com (mail-wr1-x42e.google.com
+ [IPv6:2a00:1450:4864:20::42e])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3FFA680ED1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Dec 2025 11:25:17 +0000 (UTC)
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-42b3b0d76fcso616405f8f.3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Dec 2025 03:25:17 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765537902; x=1766142702;
+ d=1e100.net; s=20230601; t=1765538716; x=1766143516;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Qi0kf4DHgZSF0itXehy4M1IigW5Ye60xVK7z3FqTfn4=;
- b=Ionro2GggeV+hM60mgJFUYfdULuc8vKLfp7I2fGwAcdAVoHS65H/jHFIcCTFaM14tO
- ij0E2Xp7KWGlMBlWP8ioZfr3+VwiXFn9jcawHcMn9MhNQtkYEplZw5PGwBAA99CsGp5/
- DEUSWArMy/9J3F3hi/1bvoXNiNhqQl2SmpMr1dTpfzX5SuoCLTubeqDpV0i8NsVeRNey
- WG6ftRwycUneR+3hX85LW+ZrktrUetJqPUDXq/MIIsmrvrpZF96RNCyv7u76EmWbUaJE
- U2mM/H0N9D4Dmr1ZjLUSaKDdxjAWcTMOcGLZDbBL8BhXAexT1bP294FhOxPSFCpLhQ/q
- 9nLg==
+ bh=gEnn545SHxpJYbhpEqJ4kau8ivvtfD9Ghf76lIvPG6E=;
+ b=DSEBWyV+55hs/ZV1G7c1ETaFptJts9kwpY/ZlCOW+Y5xEasyZveKobOopBWmXBF1g3
+ lZlINv2s0TffxwT7v35So8/tftkAmKmAP7rm1pgCqmnSGyNkC2UuBZGcCiX0SjHbb8H1
+ tAamnL8q1Z3PZ65LTp/OEVz6aoEY/wCNkg9dDFwoXyXtxSbjCHA+KtNPUKFKSyOFWLsY
+ ScLqgD5r7xZgZVZuvXw2XEFDgfN5MBBjKTtOGsW98XvgruT5qkPTZRlSQ5uP9EZap07v
+ GH+hOpXZX84sdFEA/1bc9KMXxY5lZ+D3df/ccWZwkV4R1srE//GXNwHS+GFC+uNzlTuW
+ cOEg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVmjpOQj20eK0rhqAYMJFb41sZfsSnfO3/6b95GyxBpqvNbgEwgJQOnvpmlxfMv8laEWaaBMdVsSC0AoaeS1AA=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzfLd7kZe9akxcpmpXx6AKRKCvkHtnDHUop9EG9qr1O4wKIj67h
- NfwNrVjpgWEgVfbfyEd4UGSuDbEvBGfvugBBCiz9r8qex7a/nhfpjdxFYvbe6vQXGK4=
-X-Gm-Gg: AY/fxX48zGIo+vCG7FVZhx+HbzQc14DP+c7tciXUO5UJWZ/O+njjt6a/h9/Z0vNvS2F
- 0OAlw8pXvjmVLuCjauJ1bUGN4b8v5/fQSsohLZ/aAWFTEFYi55fiEkwykRXJa9/OruRFz8pp2m9
- cUNIfs+bJZxOeWRdFKmFkK20RH6MBKFErAdSE7Z9y9BYLXCNSo46tQXXT8sl26UBtBzZtzS2vzD
- iF+UvVGGxNrKkj4jejjbKAtMsLhCART99+PhSmpwGCWA7/9SliL7+u+W3JU1Ma9rFim4HhvDTZd
- MDJdIZ2FN1iBMUQ9xAImBH+4yU6EaXwKUp2crYdyZy23n+bFJ1yQJFbPSo4axlHjCB1XwNABJYK
- 8dd3U5e47F0gGa+bUQD4lcWFggZpaXeB8KIvP7UZhNyThX0paGdpPkSBrQcBDaYLV41Ays4Z9Mv
- 12i9L1n+WDvL7ojYkVdeQ=
-X-Google-Smtp-Source: AGHT+IFmv5COMcmA4FT2YaOWuFJZ5E1bCiuQtdXozfcy670hljn+VWTpNS9TuLAE+vRQXNnfHH9yBw==
-X-Received: by 2002:a17:907:960d:b0:b72:ddfd:bca7 with SMTP id
- a640c23a62f3a-b7d23c1b1a9mr146070066b.35.1765537902376; 
- Fri, 12 Dec 2025 03:11:42 -0800 (PST)
-Received: from FV6GYCPJ69 ([85.163.81.98]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b7cfa570174sm530693266b.55.2025.12.12.03.11.40
+ AJvYcCUMcc5sq0vbWfpHwPL2ZozI/Q27aVjXsF+JEcAR87CzZWu4PWKjEo7S0HdAeI0Vfd1Rj6kEeTxdsKaXPAfjP3o=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyHjEYH3gsRk62D4h5CsQItSTahgrFjv3skebfgMi7viA2lRFVr
+ nZ+VPTV2oxY+XbCx0Gpzd3PRHIpHyS0OgLxODf9nuZlqeSl/HHqb2GHPkJk67EpP+Hk=
+X-Gm-Gg: AY/fxX69B2rXTLDhwLpgyoD2L+Dl2SiaRV7WWnZWNRcvdw5Tk4jmiAN2vfOGyt1fn0s
+ /2K+b4MR5gBBqPJuS/jdGBFgCcVMVNcmUnoljKq+1FvggrH0repazqbaiSWOE5pQMrzW/LXryiU
+ kfJAGNy5aLwVY3BOGp02n9hQskrTq3J4gcw6w4Ghh0QV/U/27k9NhV5W35EYtbniUaimgBzhSOD
+ yYmRYAPv1sUVMrO9eJxoiWiIqmoUADxe0HeyTo6DgtPezaC5PyYIqjs9rSdEYTAXi8W+8/arF1i
+ bj08ngWrri96hiVDMHlUIjsBWJXQKE3pkn8ibfrAMCSZvleKiVNmwAJ7vI/wtS8sTvcDAZl85K7
+ MF0doawyAwpHUO53PQuETpB1d6UuI2jf/Y94tJvg9DNLr14bjDtdgRKblN35y/Nw04tWzN7rKrA
+ jhM9xDKJU/G2NZM4JH/DnqVcY=
+X-Google-Smtp-Source: AGHT+IHkaay9CDV5kfE74IqgXxI+GzQAfyiag1hnUiI3Kv6EDGuWkv0C2Lwzh9GBMI+h6MNTm6fuig==
+X-Received: by 2002:a05:6000:2c09:b0:42b:5406:f289 with SMTP id
+ ffacd0b85a97d-42fb44a24f0mr1717666f8f.3.1765538715596; 
+ Fri, 12 Dec 2025 03:25:15 -0800 (PST)
+Received: from FV6GYCPJ69 ([140.209.217.211]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-42fa8a66761sm11462241f8f.3.2025.12.12.03.25.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 12 Dec 2025 03:11:41 -0800 (PST)
-Date: Fri, 12 Dec 2025 12:11:38 +0100
+ Fri, 12 Dec 2025 03:25:15 -0800 (PST)
+Date: Fri, 12 Dec 2025 12:25:12 +0100
 From: Jiri Pirko <jiri@resnulli.us>
 To: Ivan Vecera <ivecera@redhat.com>
-Message-ID: <utlzkss7sj6xgur4aysi3wpt2v4ssxmh5rxsrk7hiqitjlx2qi@btkzluwtapsb>
+Message-ID: <ahyyksqki6bas5rqngd735k4fmoeaj7l2a7lazm43ky3lj6ero@567g2ijcpekp>
 References: <20251211194756.234043-1-ivecera@redhat.com>
- <20251211194756.234043-12-ivecera@redhat.com>
+ <20251211194756.234043-3-ivecera@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20251211194756.234043-12-ivecera@redhat.com>
+In-Reply-To: <20251211194756.234043-3-ivecera@redhat.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1765537902; x=1766142702;
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1765538716; x=1766143516;
  darn=lists.osuosl.org; 
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=Qi0kf4DHgZSF0itXehy4M1IigW5Ye60xVK7z3FqTfn4=;
- b=oyVgF5AS3BcPecjNrof1IUDemk0/0hiU7G4DkuMt65i8ecQwvI/GH00sRSvYPNDpPn
- f070uT7iZEVAYoohyYJsRRwe1Kq4PDuZtamBsa3NHc4JLP9xmuiTDmPwqZ7EcA9iIL2w
- L+Dbq2l5id1KYwma/T/KsXJghsqd1XTc3tq8kZVHycGjxx53B2Y7TsKggHuuKbrgCHUU
- 0x0a10fuynyxau2+AiTxDY54uh1X32uuzyUme6OubYWMttX2yk8Bc0lACu2r7w4HAgSn
- doT/KKgXJRiB9iKBrpTZXpGhuunWZ7qBr5U7fB5iIot48XMmD3apl7h1+tpY8K3kPYDb
- n9Bg==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=gEnn545SHxpJYbhpEqJ4kau8ivvtfD9Ghf76lIvPG6E=;
+ b=vC+uora68L/Q7cs34Za4PQr8DIbaLArWyGc+PChlwv2KNhUodlLmMDmuOwrVDYZUSl
+ MX8JfZSd3Oy904+htSq7i8XDs6I1b39XaDwHcD1JMn5QUWd8g2Vki5M2yByf2Y4lMpXo
+ EWN57i6pcvJwmNICu0kBlY4ucdTdUIiTJdeK7o/dpMl6DV3MUUaNGtWGzGr7rqg6fp8V
+ D7MXbbXQaAzs/ZgAgWJzodPU56Wj3M290HjpHG88eVHz5xtQXG8Gb55l22c2jxamVIrW
+ OyW//r4H52VeWnCkx/BSHuRTCt/Yj/Uoj9wxdwDPKT0iQ+f7A0a71uHsMzAyDn4rHtL8
+ 9CSg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=resnulli.us
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=resnulli-us.20230601.gappssmtp.com
  header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=oyVgF5AS
-Subject: Re: [Intel-wired-lan] [PATCH RFC net-next 11/13] dpll: zl3073x:
- Enable reference count tracking
+ header.s=20230601 header.b=vC+uora6
+Subject: Re: [Intel-wired-lan] [PATCH RFC net-next 02/13] dpll: Allow
+ registering pin with firmware node
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -149,18 +149,36 @@ Cc: Eric Dumazet <edumazet@google.com>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Thu, Dec 11, 2025 at 08:47:54PM +0100, ivecera@redhat.com wrote:
->Update the zl3073x driver to utilize the DPLL reference count tracking
->infrastructure.
->
->Add dpll_tracker fields to the driver's internal device and pin
->structures. Pass pointers to these trackers when calling
->dpll_device_get/put() and dpll_pin_get/put().
->
->This allows a developer to inspect the specific references held by this
->driver via debugfs when CONFIG_DPLL_REFCNT_TRACKER is enabled, aiding
->in the debugging of resource leaks.
->
->Signed-off-by: Ivan Vecera <ivecera@redhat.com>
+Thu, Dec 11, 2025 at 08:47:45PM +0100, ivecera@redhat.com wrote:
 
-Care to do this for the rest of the users? Not so many of them...
+[..]
+
+>@@ -559,7 +563,8 @@ EXPORT_SYMBOL(dpll_netdev_pin_clear);
+>  */
+> struct dpll_pin *
+> dpll_pin_get(u64 clock_id, u32 pin_idx, struct module *module,
+>-	     const struct dpll_pin_properties *prop)
+>+	     const struct dpll_pin_properties *prop,
+>+	     struct fwnode_handle *fwnode)
+> {
+> 	struct dpll_pin *pos, *ret = NULL;
+> 	unsigned long i;
+>@@ -568,14 +573,15 @@ dpll_pin_get(u64 clock_id, u32 pin_idx, struct module *module,
+> 	xa_for_each(&dpll_pin_xa, i, pos) {
+> 		if (pos->clock_id == clock_id &&
+> 		    pos->pin_idx == pin_idx &&
+>-		    pos->module == module) {
+>+		    pos->module == module &&
+>+		    pos->fwnode == fwnode) {
+
+Is fwnode part of the key? Doesn't look to me like that. Then you can
+have a simple helper to set fwnode on struct dpll_pin *, and leave
+dpll_pin_get() out of this, no?
+
+
+> 			ret = pos;
+> 			refcount_inc(&ret->refcount);
+> 			break;
+> 		}
+
+[..]
