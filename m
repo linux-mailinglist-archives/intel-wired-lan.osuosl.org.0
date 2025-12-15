@@ -1,116 +1,96 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A9623CBF542
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Dec 2025 18:59:52 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D0F6BCBFC09
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Dec 2025 21:31:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5CD8880F59;
-	Mon, 15 Dec 2025 17:59:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id EB7CD40273;
+	Mon, 15 Dec 2025 20:31:06 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id VQk3YrtCmqNe; Mon, 15 Dec 2025 20:31:03 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0213D4011B
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1765830663;
+	bh=kFKP1wRB7MG8FdwSMPJtMRcQY82d/F+Hn/PXu/Kymsk=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=BIxvBEcgN3rbGyHQoDmk0MLZQLh+CTdST0nQACFnWu0e0ofo45PSA4WpN4juZFJsg
+	 FVzWvJsjgc/b4Yfr8BhJbVgptWol56iCAtOKIVwkAK7hNfnGvdkUNf+Di8fhvbD6Dw
+	 pUcy/4sv5Uw0zwXQGF4myu4kr4a5irgQpypeCNKCSwwMbOHVACO4Pg2vplQIo5Ba4P
+	 6FtEMnMYN2lDKwAUJ9XoZ9fnka/BxgoEWvKkmf3ykHsWG6NGaPTRWgvzSINAnU+2ff
+	 0tsUf8ROIz/zm+2Zsgw2qlTRSrqiH8CCecQ4gK3dp7smNHNBjmwxXmcpgMhoL/iGSk
+	 ZmPlqcEQqxRFQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0213D4011B;
+	Mon, 15 Dec 2025 20:31:03 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id AB4AE151
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Dec 2025 20:31:01 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id A8BD581E1E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Dec 2025 20:31:01 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id c2GO3xDBibmB; Mon, 15 Dec 2025 17:59:50 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4D15C80AFF
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1765821590;
-	bh=I94Aq9J9oeQ3d4zMJRDc3HsLz0QlySonGNftj9fAHw8=;
-	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=BnUY8TJBhCurCsgSGglPo6+Ysz1+0yEALAvkJBsJzBOM9hf4F2xVQaPahlaP8epHF
-	 ZBMepZQg00Fdo805Ju7iTYyavL0BSxtgmoCyRUgY3lJf4IioyJsUhgcRTO1NnHBZQv
-	 nahoLZzzzMgfatTKlMZ2f5mTaQk8Y18B32hn6vVJ1pTvKCvcM/NvrXEeX24RxfixcN
-	 d77X5FF8+Y9cVcm8IESEyScm5GJFN1Fode3jA+4iH3rhwFPgfgpWlkawnxWYh0sdQg
-	 dkUqT4B1zuCOrFaG1/vXOOhTq1W6T6a+l7e+dK3YAkggZfnK7Sbf5Imxe6M7hvcTwL
-	 PSX2S8X0ldWNA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4D15C80AFF;
-	Mon, 15 Dec 2025 17:59:50 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 7795672
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Dec 2025 17:59:48 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 693A560861
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Dec 2025 17:59:48 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3acBXsTcDpX4 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 15 Dec 2025 17:59:47 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::1133; helo=mail-yw1-x1133.google.com;
- envelope-from=chaas@riotgames.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 7C32060E85
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7C32060E85
-Received: from mail-yw1-x1133.google.com (mail-yw1-x1133.google.com
- [IPv6:2607:f8b0:4864:20::1133])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7C32060E85
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Dec 2025 17:59:47 +0000 (UTC)
-Received: by mail-yw1-x1133.google.com with SMTP id
- 00721157ae682-78e6dc6d6d7so32194447b3.3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Dec 2025 09:59:47 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765821586; x=1766426386;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=I94Aq9J9oeQ3d4zMJRDc3HsLz0QlySonGNftj9fAHw8=;
- b=bHw37FBoXZNrkxVl69sfOPG0UaXgQFC2UU9BzmuaBVOh5dBU8GcbtHwWaesxQmXOXG
- pbbdcqvyffUJHAMcogkKfBX21lzqRpHUc2/RCEGI0odXb3p6V15F1xLnTYQbAA2bnAzQ
- bRwhaOKH9KlY5iCYJXVnxE0uacqoWbhFaWHo42d1MWlEVe4n7wlTLgjBKZcJLEi+ehrh
- DK0tqzrs2gC5yQ8e4RxI3FCvROqOrrlIy0itpYNlhzLM0IjRHmcZuTYY718Wg+1imdSG
- bcEcAWVPHqwrwzSMxJ8mOGFsAJI/kNrCsiPPOZPPv1nXO0y6r5iR6BJLxISw9wNNl6gG
- cJpQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVWP7XHvzkVJsBCHMXFyj/Bc0Xh5bqu9pn1Sh+WUjvmuABWAv1q3WhIwzEMRNLvJTFN+whzRxF1R6w7wwYDc+A=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YxzmrqaX2X1+UvfTYgUhzx4UhTl909MuwVswKF9bHfOy1voSFja
- ToyxFhptiXLJmgj+fvmcuvtTEYz7anXuf2jGF+b3jj3XwU8IZL4+4taIH5dJBQXjOl+IvKWTYIs
- 3ePlf1wty1U1ZkA8Z8ZzKfG7B3YnvCYsoYgLy3MXEcQ==
-X-Gm-Gg: AY/fxX4W4e0jh8ZO2F63tHLVF9bHJO97agQN2wSfn19SHQcb0SMBdJM6A35RfR0sBcq
- HvGVAwbGsaTdciv2j7x7fSyQ5SaipZUGzod5pIxzJ6GVOmJq1dLqVih+3Y2BdBBG4td6Q8INo8S
- FYKEMegohAVYlq4qDHFJYn2wmB7oH0imR7wIwaPFGJMwFhSS/4svolgx6Qi2852LNJ91fJHXRUw
- G6pbSvtHyff65epB6dtPpYKVLmVKhw2sS3dCj93jSRNmREeCo8DM+D9DGOsUkEEPXgc4c501w==
-X-Google-Smtp-Source: AGHT+IHP0C56FV3OMQJ3oSJZujQ11oK/ho+SXlxjeQngz5OiRFIplS0yEVUIcjW0Jg2645GGhETkV1LfJ8NAWoXWa2M=
-X-Received: by 2002:a05:690e:191a:b0:644:7182:daab with SMTP id
- 956f58d0204a3-6455567beddmr8840168d50.89.1765821586156; Mon, 15 Dec 2025
- 09:59:46 -0800 (PST)
+ id hyLZLCXkgkMr for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 15 Dec 2025 20:31:00 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=ivecera@redhat.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A2A1B81E1B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A2A1B81E1B
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id A2A1B81E1B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Dec 2025 20:30:59 +0000 (UTC)
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-295-fV4hTD3GOUeULQgWq9f_sw-1; Mon,
+ 15 Dec 2025 15:30:53 -0500
+X-MC-Unique: fV4hTD3GOUeULQgWq9f_sw-1
+X-Mimecast-MFC-AGG-ID: fV4hTD3GOUeULQgWq9f_sw_1765830649
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 30D6218002ED; Mon, 15 Dec 2025 20:30:49 +0000 (UTC)
+Received: from p16v.redhat.com (unknown [10.45.224.214])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id C414630001A8; Mon, 15 Dec 2025 20:30:38 +0000 (UTC)
+From: Ivan Vecera <ivecera@redhat.com>
+To: netdev@vger.kernel.org
+Date: Mon, 15 Dec 2025 21:30:25 +0100
+Message-ID: <20251215203037.1324945-1-ivecera@redhat.com>
 MIME-Version: 1.0
-References: <20251213002226.556611-1-chaas@riotgames.com>
- <20251213002226.556611-2-chaas@riotgames.com>
- <007b4664-acce-4e14-b284-a36dd3a88e8a@intel.com>
-In-Reply-To: <007b4664-acce-4e14-b284-a36dd3a88e8a@intel.com>
-From: Cody Haas <chaas@riotgames.com>
-Date: Mon, 15 Dec 2025 09:59:35 -0800
-X-Gm-Features: AQt7F2rRTafpK9F-Uy7yCKfrtdJmlMVHKRNlpyjlNgoCcp_0FDWeJ21XSrz53MQ
-Message-ID: <CAH7f-UKErFLc2MMQSgVeGLxHcfF4ZsAC4-QfLSSzf_3y+-uaEQ@mail.gmail.com>
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Cc: anthony.l.nguyen@intel.com, andrew+netdev@lunn.ch, davem@davemloft.net, 
- kuba@kernel.org, pabeni@redhat.com, netdev@vger.kernel.org, 
- intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=riotgames.com; s=riotgames; t=1765821586; x=1766426386; darn=lists.osuosl.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=I94Aq9J9oeQ3d4zMJRDc3HsLz0QlySonGNftj9fAHw8=;
- b=f9+SYU5nDWcQee0m8aHTGcPBbTcAhAwVkcEF4ZIvhjNQrc2ad0P4YMhQkfHgUfM4/e
- D1GAYE2HC0bZmBXneRD2g9cDrmoaCw7E61h8SQZ5GL/bmUNV0RcLI9mK9MrU9hbMpyLt
- 0QjAtnritCKQUcP6pRCP5G0ph/Yf7jGxTYgMs=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ d=redhat.com; 
+ s=mimecast20190719; t=1765830658;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=kFKP1wRB7MG8FdwSMPJtMRcQY82d/F+Hn/PXu/Kymsk=;
+ b=Ea4xeOY4y5Z5ScH/RUvX8z6Eivr+rB4vm9TgVlT8njj+S8HS8r9vNUct7a3uhNX6pm3llW
+ 3JCUCYEA3UYRo1ioxv0LS9lXCQZwiknSnTxNaizc+41VJvzuRFZe5WTng25MtjCdNnRPvP
+ i0HiEztmjXXouETlav/dEW2XCTM82CU=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
- header.from=riotgames.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=riotgames.com header.i=@riotgames.com
- header.a=rsa-sha256 header.s=riotgames header.b=f9+SYU5n
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2 0/1] ice: Fix persistent
- failure in ice_get_rxfh
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=Ea4xeOY4
+Subject: [Intel-wired-lan] [PATCH RFC net-next v2 00/13] dpll: Core
+ improvements and ice E825-C SyncE support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -123,19 +103,128 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Rob Herring <robh@kernel.org>,
+ Leon Romanovsky <leon@kernel.org>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>, linux-rdma@vger.kernel.org,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
+ intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, devicetree@vger.kernel.org,
+ Conor Dooley <conor+dt@kernel.org>, Jiri Pirko <jiri@resnulli.us>,
+ Richard Cochran <richardcochran@gmail.com>,
+ Prathosh Satish <Prathosh.Satish@microchip.com>,
+ Willem de Bruijn <willemb@google.com>,
+ Vadim Fedorenko <vadim.fedorenko@linux.dev>, Mark Bloch <mbloch@nvidia.com>,
+ linux-kernel@vger.kernel.org, Tariq Toukan <tariqt@nvidia.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, Stefan Wahren <wahrenst@gmx.net>,
+ Simon Horman <horms@kernel.org>, Jonathan Lemon <jonathan.lemon@gmail.com>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Saeed Mahameed <saeedm@nvidia.com>,
+ "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Dec 15, 2025 at 5:18=E2=80=AFAM Przemek Kitszel
-<przemyslaw.kitszel@intel.com> wrote:
-> thank you for the fix,
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+This series introduces Synchronous Ethernet (SyncE) support for
+the Intel E825-C Ethernet controller. Unlike previous generations where
+DPLL connections were implicitly assumed, the E825-C architecture relies
+on the platform firmware to describe the physical connections between
+the network controller and external DPLLs (such as the ZL3073x).
 
-Thank you for the review!
+To accommodate this, the series extends the DPLL subsystem to support
+firmware node (fwnode) associations, asynchronous discovery via notifiers,
+and dynamic pin management. Additionally, a significant refactor of
+the DPLL reference counting logic is included to ensure robustness and
+debuggability.
 
-> next time please do link to the previous revision and add a changelog
+DPLL Core Extensions:
+* Firmware Node Support: Pins can now be registered with an associated
+  struct fwnode_handle. This allows consumer drivers to lookup pins based
+  on device properties (dpll-pins).
+* Asynchronous Notifiers: A raw notifier chain is added to the DPLL core.
+  This allows the network driver (ice driver in this series) to subscribe
+  to events and react when the platform DPLL driver registers the parent
+  pins, resolving probe ordering dependencies.
+* Dynamic Indexing: Drivers can now request DPLL_PIN_IDX_UNSPEC to have
+  the core automatically allocate a unique pin index, simplifying driver
+  implementation for virtual or non-indexed pins.
 
-I'll take note and make sure to add it next time! Thank you for the feedbac=
-k
+Reference Counting & Debugging:
+* Refactor: The reference counting logic in the core is consolidated.
+  Internal list management helpers now automatically handle hold/put
+  operations, removing fragile open-coded logic in the registration paths.
+* Duplicate Checks: The core now strictly rejects duplicate registration
+  attempts for the same pin/device context.
+* Reference Tracking: A new Kconfig option DPLL_REFCNT_TRACKER is added
+  (using the kernel's REF_TRACKER infrastructure). This allows developers
+  to instrument and debug reference leaks by recording stack traces for
+  every get/put operation.
 
-Cody
+Driver Updates:
+* zl3073x: Updated to register pins with their firmware nodes and support
+  the 'mux' pin type.
+* ice: Implements the E825-C specific hardware configuration for SyncE
+  (CGU registers). It utilizes the new notifier and fwnode APIs to
+  dynamically discover and attach to the platform DPLLs.
+
+Patch Summary:
+* Patch 1-3:
+  DT bindings and helper functions for finding DPLL pins via fwnode.
+* Patch 4:
+  Updates zl3073x to register pins with fwnode.
+* Patch 5-6:
+  Adds notifiers and dynamic pin index allocation to DPLL core.
+* Patch 7:
+  Adds 'mux' pin type support to zl3073x.
+* Patch 8-9:
+  Refactors DPLL core refcounting and adds duplicate registration checks.
+* Patch 10-11:
+  Adds REF_TRACKER infrastructure and updates existing drivers to support it.
+* Patch 12:
+  Implements the E825-C SyncE logic in the ice driver using the new
+  infrastructure.
+
+Arkadiusz Kubalewski (1):
+  ice: dpll: Support E825-C SyncE and dynamic pin discovery
+
+Ivan Vecera (10):
+  dt-bindings: net: ethernet-controller: Add DPLL pin properties
+  dpll: Allow associating dpll pin with a firmware node
+  net: eth: Add helpers to find DPLL pin firmware node
+  dpll: zl3073x: Associate pin with fwnode handle
+  dpll: Support dynamic pin index allocation
+  dpll: zl3073x: Add support for mux pin type
+  dpll: Enhance and consolidate reference counting logic
+  dpll: Prevent duplicate registrations
+  dpll: Add reference count tracking support
+  drivers: Add support for DPLL reference count tracking
+
+Petr Oros (1):
+  dpll: Add notifier chain for dpll events
+
+ .../bindings/net/ethernet-controller.yaml     |  13 +
+ drivers/dpll/Kconfig                          |  15 +
+ drivers/dpll/dpll_core.c                      | 296 +++++-
+ drivers/dpll/dpll_core.h                      |  11 +
+ drivers/dpll/dpll_netlink.c                   |   6 +
+ drivers/dpll/zl3073x/dpll.c                   |  14 +-
+ drivers/dpll/zl3073x/dpll.h                   |   1 +
+ drivers/dpll/zl3073x/prop.c                   |   2 +
+ drivers/net/ethernet/intel/ice/ice_dpll.c     | 977 ++++++++++++++++--
+ drivers/net/ethernet/intel/ice/ice_dpll.h     |  33 +
+ drivers/net/ethernet/intel/ice/ice_lib.c      |   3 +
+ drivers/net/ethernet/intel/ice/ice_ptp.c      |  29 +
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c   |   9 +-
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |   1 +
+ drivers/net/ethernet/intel/ice/ice_tspll.c    | 223 ++++
+ drivers/net/ethernet/intel/ice/ice_tspll.h    |  14 +-
+ drivers/net/ethernet/intel/ice/ice_type.h     |   6 +
+ .../net/ethernet/mellanox/mlx5/core/dpll.c    |  16 +-
+ drivers/ptp/ptp_ocp.c                         |  18 +-
+ include/linux/dpll.h                          |  59 +-
+ include/linux/etherdevice.h                   |   4 +
+ net/ethernet/eth.c                            |  20 +
+ 22 files changed, 1614 insertions(+), 156 deletions(-)
+
+-- 
+2.51.2
+
