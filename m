@@ -1,136 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 736D4CCBBF1
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Dec 2025 13:13:54 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CAC05CCBD27
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Dec 2025 13:43:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 94C6F81702;
-	Thu, 18 Dec 2025 12:13:52 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6965141014;
+	Thu, 18 Dec 2025 12:43:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8cKj-dg36ud4; Thu, 18 Dec 2025 12:13:52 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id XaH_SSKdjNue; Thu, 18 Dec 2025 12:43:30 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 13128816DB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D9C864101C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1766060032;
-	bh=KcC8708HWzanGRdv3W76eR6gK5ZwOXyZ4c+NmrctZH4=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1766061810;
+	bh=Lyx++eGBup0qbmoMHfzzVDNccl+ieZlMvxqythDjrpw=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=4FtT7zMGnnXXJslZgoejoJVd3Q3N5A0TMHxZNOELAqNuMFx4wuuXQGQzfMS2AMza8
-	 kyCEPLah55gBWXwYDT9FhiRbhSnF2z8AIARgkwdtp74ofkBqf6mY3bZRPycmIkZKm2
-	 NHLBvOMSB2VWZR1+jUA8VNWzTQSDxUDb5oBtvXfoLHIhkiWKgYans/jLsk8RtQxOng
-	 eOtDfISpfJiuyymYV2X6O7tZS0gthPJkdNjbz4AWf6Z6GO2s4xYDSM5zbSLd64e/1/
-	 VyDMxyfcQVu5e+YCzCEi/HXEX/jjSp7aGflML3fqCHR1FZa7fC3fHsgAn1cY7ZpThy
-	 e8BB8EhJND/PA==
+	b=u76vWcAVIx8xPvWeas07Xel8RD0WeSW4HBDbocTZY1IBawkLSRe2uKEtO5yAEsz0v
+	 DJHo15LS4EnixA2It/QMaNtAPCSKMSp+aeXpqwb9tdk/vjcF0+4Pi1IGtSRRxkGhSE
+	 Ab3aVLj//BAwFki/GKDYviGLGHiBh1lHgtMwjklA9tEHLuxzWjytRX88GfdKBEhN9x
+	 rol2PvSGDgirei4vRYee/7wce9Smu+oDuKKOoyHF6xq6P4Tr4+uLOdFaHX+0QmDURd
+	 NH305KzEmkSEwyYnvS9oZfoWw/JdiL2isR7CcJLVZ0cJYPWJZjyq6taNXlpDYBz/pv
+	 WxeNU+jupQ8sw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 13128816DB;
-	Thu, 18 Dec 2025 12:13:52 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D9C864101C;
+	Thu, 18 Dec 2025 12:43:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 524AE2A2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Dec 2025 12:13:50 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 02FCE361
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Dec 2025 12:43:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 43E1E60C0F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Dec 2025 12:13:50 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id E5D084100F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Dec 2025 12:43:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1Mojm9P78GgN for <intel-wired-lan@lists.osuosl.org>;
- Thu, 18 Dec 2025 12:13:49 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=mheib@redhat.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id kG8CaNSVZLqS for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 18 Dec 2025 12:43:28 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 289F360BD2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 289F360BD2
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 289F360BD2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Dec 2025 12:13:48 +0000 (UTC)
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-43-qkpcn0eqO7ewrLhLvo3Y4g-1; Thu, 18 Dec 2025 07:13:45 -0500
-X-MC-Unique: qkpcn0eqO7ewrLhLvo3Y4g-1
-X-Mimecast-MFC-AGG-ID: qkpcn0eqO7ewrLhLvo3Y4g_1766060025
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-4776079ada3so4427195e9.1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Dec 2025 04:13:45 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766060024; x=1766664824;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=KcC8708HWzanGRdv3W76eR6gK5ZwOXyZ4c+NmrctZH4=;
- b=n82+P29mWEWr3EsnBrzRXjimBJlHExjbmAaOYVRy3GLUTlGQS0eadoQmOvg0s8tWNb
- EdfUn9lm5Bp6Prl4KdHESoICvurcNj4y5bD9u5Yff6naL6X+9Icyq2hsnQ3EMUm3N0Gx
- L3vbCBM3MV5suvIqf7fN5Ph/RDWF/GkS3UeNe4NHpWu1Nb+jAkbglfMDJJUTT8npq2wF
- MmGhEgT7gIKQQg/Ijzn6XEQ/PnHABJ1rKHSYPOtwuQz7jwXR1xNtZ1Pb+eMt8n3r1k22
- 1/cFUUV/EAuuIkd3dBtZvfyL0Er9h0eBIAeREVNexjUgbkWs4tps4AE0uwzxZRHY/eIn
- UcRA==
-X-Gm-Message-State: AOJu0YzjgOX/ET9mhaXs/LypFvbVJ50aChmI0MfnDYcLyQZl4MO5k01I
- ARPpKt3hFwQGcsxyQ9DFNFveHjfByMVo9SLz0juQVrdDXZQgePRLgbwpNkghzD3UBGwuvzh2O1t
- R7n0T6QNeCCtObxfT0jYWK3olRNMwHm8yQ+C82rZaibzZQbf/PzFgTHPiR2TSfMJUatiE4gFiEm
- iLR8webI9O3GxiqTD3h7MCAourwc4FxT0LOw74BptEURbw4hEuShM=
-X-Gm-Gg: AY/fxX4T3veMrW2Tss2312hCbI9fBBehym4F5iUvUogBIxyPlA41YSH5KW0BzE8VoyG
- NmzvmuH5WjIUCRtmBt0t4W8N6Q6KECFvvHbDZc2MdQuijjgdWoXx2vK4/bJFjBEHBnuw9J9k3Hq
- ICEsEJ4/kJzLiB11BSDK7uwWAfK7xsmc5qVkD10b/R6ueDtAPHwTFxsT3FDbSSovyf7qiXFlc2S
- 6AtWacDANtF3sUbB440THpj49o9c6VXJzAUmRGscNWd/9d37pL5CZZACfRkmPATimd9Ev9JWRp9
- EbAzFAPyTHmVyaK+LKVCbYO5wASxIGmu3NeK/yha8V0Wh2oUUOL2XNcXDIQ9BH+41px1cGdUlXa
- 8Lu/sTXE7ElgszFQTn9IzGA==
-X-Received: by 2002:a05:600c:4f09:b0:477:fad:acd9 with SMTP id
- 5b1f17b1804b1-47a8f916685mr192993945e9.34.1766060024509; 
- Thu, 18 Dec 2025 04:13:44 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGSjzigBljqVHxrq2NFftERN7thLI7BKGOWw3WfBzVAkcGIWXhr7Dc5D9WQa5nOHuam1MNyEA==
-X-Received: by 2002:a05:600c:4f09:b0:477:fad:acd9 with SMTP id
- 5b1f17b1804b1-47a8f916685mr192993515e9.34.1766060024012; 
- Thu, 18 Dec 2025 04:13:44 -0800 (PST)
-Received: from fedora.redhat.com ([216.128.14.80])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43244949ba6sm4736776f8f.19.2025.12.18.04.13.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 Dec 2025 04:13:42 -0800 (PST)
-From: mheib@redhat.com
-To: intel-wired-lan@lists.osuosl.org
-Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- davem@davemloft.net, aduyck@mirantis.com, kuba@kernel.org,
- netdev@vger.kernel.org, jacob.e.keller@intel.com,
- Mohammad Heib <mheib@redhat.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Date: Thu, 18 Dec 2025 14:13:22 +0200
-Message-ID: <20251218121322.154014-2-mheib@redhat.com>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20251218121322.154014-1-mheib@redhat.com>
-References: <20251218121322.154014-1-mheib@redhat.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 3ECE241006
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3ECE241006
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 3ECE241006
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Dec 2025 12:43:26 +0000 (UTC)
+Received: from [141.14.220.42] (g42.guest.molgen.mpg.de [141.14.220.42])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 5669D61E64852;
+ Thu, 18 Dec 2025 13:42:55 +0100 (CET)
+Message-ID: <981a3660-a853-4133-bf83-400ce513c3a6@molgen.mpg.de>
+Date: Thu, 18 Dec 2025 13:42:51 +0100
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: UtuMLP6Zr3EClf29Lc2i3_1wH2BLGyZgv-DgyOI7Wg4_1766060025
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1766060027;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=KcC8708HWzanGRdv3W76eR6gK5ZwOXyZ4c+NmrctZH4=;
- b=SqQ6De3RI8SN/JiSC8z0ze5naz4BA6EK6wNQvMuizdEbVrLP+C2kaBRlWwgmRXJu6ysWso
- KgpYqiFeniSU5IhfoVHGyFxr3+aKFuk06oPPNvCVkRZSc6jq9IT00QYkvQcd7tgBFVWJPG
- toVhS0PnCo5pZS3UEL6Cr3Qkq3Tv7fo=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
- header.s=mimecast20190719 header.b=SqQ6De3R
-Subject: [Intel-wired-lan] [PATCH net v2 2/2] ice: drop
- udp_tunnel_get_rx_info() call from ndo_open()
+User-Agent: Mozilla Thunderbird
+To: mheib@redhat.com
+Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
+ przemyslaw.kitszel@intel.com, davem@davemloft.net, aduyck@mirantis.com,
+ kuba@kernel.org, netdev@vger.kernel.org, jacob.e.keller@intel.com,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+References: <20251218121322.154014-1-mheib@redhat.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20251218121322.154014-1-mheib@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
+Subject: Re: [Intel-wired-lan] [PATCH net v2 1/2] i40e: drop
+ udp_tunnel_get_rx_info() call from i40e_open()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -146,56 +90,64 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Mohammad Heib <mheib@redhat.com>
+Dear Mohammad,
 
-The ice driver calls udp_tunnel_get_rx_info() during ice_open_internal().
-This is redundant because UDP tunnel RX offload state is preserved
-across device down/up cycles. The udp_tunnel core handles
-synchronization automatically when required.
 
-Furthermore, recent changes in the udp_tunnel infrastructure require
-querying RX info while holding the udp_tunnel lock. Calling it
-directly from the ndo_open path violates this requirement,
-triggering the following lockdep warning:
+Thank you for your patch.
 
-Call Trace:
-  <TASK>
-  ice_open_internal+0x253/0x350 [ice]
-  __udp_tunnel_nic_assert_locked+0x86/0xb0 [udp_tunnel]
-  __dev_open+0x2f5/0x880
-  __dev_change_flags+0x44c/0x660
-  netif_change_flags+0x80/0x160
-  devinet_ioctl+0xd21/0x15f0
-  inet_ioctl+0x311/0x350
-  sock_ioctl+0x114/0x220
-  __x64_sys_ioctl+0x131/0x1a0
-  ...
-  </TASK>
+Am 18.12.25 um 13:13 schrieb mheib@redhat.com:
+> From: Mohammad Heib <mheib@redhat.com>
+> 
+> The i40e driver calls udp_tunnel_get_rx_info() during i40e_open().
+> This is redundant because UDP tunnel RX offload state is preserved
+> across device down/up cycles. The udp_tunnel core handles
+> synchronization automatically when required.
+> 
+> Furthermore, recent changes in the udp_tunnel infrastructure require
+> querying RX info while holding the udp_tunnel lock. Calling it
+> directly from the ndo_open path violates this requirement,
+> triggering the following lockdep warning:
+> 
+>    Call Trace:
+>     <TASK>
+>     ? __udp_tunnel_nic_assert_locked+0x39/0x40 [udp_tunnel]
+>     i40e_open+0x135/0x14f [i40e]
+>     __dev_open+0x121/0x2e0
+>     __dev_change_flags+0x227/0x270
+>     dev_change_flags+0x3d/0xb0
+>     devinet_ioctl+0x56f/0x860
+>     sock_do_ioctl+0x7b/0x130
+>     __x64_sys_ioctl+0x91/0xd0
+>     do_syscall_64+0x90/0x170
+>     ...
+>     </TASK>
+> 
+> Remove the redundant and unsafe call to udp_tunnel_get_rx_info() from
+> i40e_open() resolve the locking violation.
+> 
+> Fixes: 06a5f7f167c5 ("i40e: Move all UDP port notifiers to single function")
+> Signed-off-by: Mohammad Heib <mheib@redhat.com>
+> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> ---
+>   drivers/net/ethernet/intel/i40e/i40e_main.c | 1 -
+>   1 file changed, 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> index 50be0a60ae13..72358a34438b 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> @@ -9029,7 +9029,6 @@ int i40e_open(struct net_device *netdev)
+>   						       TCP_FLAG_FIN |
+>   						       TCP_FLAG_CWR) >> 16);
+>   	wr32(&pf->hw, I40E_GLLAN_TSOMSK_L, be32_to_cpu(TCP_FLAG_CWR) >> 16);
+> -	udp_tunnel_get_rx_info(netdev);
+>   
+>   	return 0;
+>   }
 
-Remove the redundant and unsafe call to udp_tunnel_get_rx_info() from
-ice_open_internal() to resolve the locking violation
+Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
 
-Fixes: a4e82a81f573 ("ice: Add support for tunnel offloads")
-Signed-off-by: Mohammad Heib <mheib@redhat.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_main.c | 3 ---
- 1 file changed, 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 2533876f1a2f..1f94bdcbbba9 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -9633,9 +9633,6 @@ int ice_open_internal(struct net_device *netdev)
- 		netdev_err(netdev, "Failed to open VSI 0x%04X on switch 0x%04X\n",
- 			   vsi->vsi_num, vsi->vsw->sw_id);
- 
--	/* Update existing tunnels information */
--	udp_tunnel_get_rx_info(netdev);
--
- 	return err;
- }
- 
--- 
-2.52.0
+Kind regards,
 
+Paul
