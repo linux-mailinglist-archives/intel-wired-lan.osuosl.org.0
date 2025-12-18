@@ -1,117 +1,141 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B424ACC9E9B
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Dec 2025 01:40:47 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A9997CC9ED7
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Dec 2025 01:52:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AD0BA40285;
-	Thu, 18 Dec 2025 00:40:45 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5156583CD7;
+	Thu, 18 Dec 2025 00:52:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id jJODUHYNSVXA; Thu, 18 Dec 2025 00:40:44 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id M5taBtiu9beR; Thu, 18 Dec 2025 00:52:37 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C984140288
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B97DD83C93
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1766018444;
-	bh=fXCWxr8wk31uRekoiYKfH0Bs95qomfGEKJoZ1t3+v4c=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1766019157;
+	bh=du0kCtfi5QhpLe9dk7Ff2CQwdsFdE0qZL7AISkx1KXk=;
+	h=References:In-Reply-To:Date:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=d7gZmcuQ1jy6ZQ7c0EnSQDA6mnlA3YVMkNtCBIxcM9IRKxvvI6SQYzItvxgdH+vtH
-	 arwUgRIfpsDjNL00ZE7i7HwC11slJ+wKuJoZpNPK5HwgPzF2LlGLfWJgx5VVUF6XSV
-	 FPRdrRjVAmz5H8gDnF/q+fg32u9X6YwGDINggVBrjvC/YDEZ/2Smtw4wk9pTqON3MV
-	 VokM8MwbTUo1vDbXgshwTvyQdC6tUeozUVcyMIJS4wqjwI9D7tT6hEVjtmohrbsREj
-	 nc9an9Fq3xORvJZLxUGhuu+TvLKsHuBKIaiLEnZYl0OJ+Y79/tpf5WhCbGIs1iFxCW
-	 5S7y+vfskDzoA==
+	 From:Reply-To:From;
+	b=fjjZvCMd/3HTmSyTui89gKZ6906QRISNKALRbHCmx0uipgIt94Dw0pwL30OgQyNRJ
+	 o7DqGDPMOIG5McD8eFPQIKMNdUe+COsue+mlxxBXk4OT0e/EFg0ioaI8Y8dbt3LCb+
+	 VnCLcOEVnPiR8e2kviU7ySNDwtuhBq5DR4gr/hMxLOF2vGHqWxu6mjkuHVztXyFBIY
+	 sGPp8xTVgT9fPFvdqwslCKyWaLW3tg57tmgyoL7NIChX67NE6zpJ4GdZaZx9lIFkSm
+	 6uSUrrWuBEPjjt4f+nsnbPpvpl88yYWRpfxqQO6BvcEKRpRJxl//9XTz6NyHkxm9hg
+	 27oczIHWKkoYg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C984140288;
-	Thu, 18 Dec 2025 00:40:44 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B97DD83C93;
+	Thu, 18 Dec 2025 00:52:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id DDB97361
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Dec 2025 00:40:43 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id A2AA9361
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Dec 2025 00:52:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C4A4340269
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Dec 2025 00:40:43 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 921E940A90
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Dec 2025 00:52:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id WU6z-93WN_8t for <intel-wired-lan@lists.osuosl.org>;
- Thu, 18 Dec 2025 00:40:43 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=166.125.252.92;
- helo=invmail4.hynix.com; envelope-from=byungchul@sk.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 422BC403FF
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 422BC403FF
-Received: from invmail4.hynix.com (exvmail4.hynix.com [166.125.252.92])
- by smtp4.osuosl.org (Postfix) with ESMTP id 422BC403FF
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Dec 2025 00:40:40 +0000 (UTC)
-X-AuditID: a67dfc5b-c45ff70000001609-bb-69434d867f31
-Date: Thu, 18 Dec 2025 09:40:33 +0900
-From: Byungchul Park <byungchul@sk.com>
-To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
-Cc: Pavel Begunkov <asml.silence@gmail.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "kuba@kernel.org" <kuba@kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "kernel_team@skhynix.com" <kernel_team@skhynix.com>,
- "harry.yoo@oracle.com" <harry.yoo@oracle.com>,
- "david@redhat.com" <david@redhat.com>,
- "willy@infradead.org" <willy@infradead.org>,
- "toke@redhat.com" <toke@redhat.com>,
- "almasrymina@google.com" <almasrymina@google.com>,
- "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
- "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
- "andrew+netdev@lunn.ch" <andrew+netdev@lunn.ch>,
- "davem@davemloft.net" <davem@davemloft.net>,
- "edumazet@google.com" <edumazet@google.com>,
- "pabeni@redhat.com" <pabeni@redhat.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Message-ID: <20251218004033.GB15390@system.software.com>
-References: <20251216040723.10545-1-byungchul@sk.com>
- <IA3PR11MB898618246F68FA71AF695B3DE5ABA@IA3PR11MB8986.namprd11.prod.outlook.com>
- <39e285e0-81b7-47b2-b36f-50de7e51f95b@gmail.com>
- <IA3PR11MB898609A6FA1E75B5C87C27C2E5ABA@IA3PR11MB8986.namprd11.prod.outlook.com>
+ id O8waWh7wCx10 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 18 Dec 2025 00:52:36 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::131; helo=mail-lf1-x131.google.com;
+ envelope-from=almasrymina@google.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 8046240A66
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8046240A66
+Received: from mail-lf1-x131.google.com (mail-lf1-x131.google.com
+ [IPv6:2a00:1450:4864:20::131])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8046240A66
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Dec 2025 00:52:35 +0000 (UTC)
+Received: by mail-lf1-x131.google.com with SMTP id
+ 2adb3069b0e04-5942f46ad87so2888e87.0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Dec 2025 16:52:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1766019153; cv=none;
+ d=google.com; s=arc-20240605;
+ b=FSeEQyv0k49EgddnYJKPV0I53E5musAx+wRxrUORqEjR0hc2goIqvHlf4sI/UtIgUi
+ T6G1l1eWoDaW78yGZHgGduNAEJ3iCtgF38p5ugo18IG9iIbfu0E8Oq8m88AQPXiVy+ki
+ /l9sCGN3N0cxQCuALh0jOCRbggxiwWNofBqad5FXiHT/tH24Gicx0WOkoTMKgvP36gC8
+ Zcm43PPMAaKIxb5HfHTFix8s7yqQYjdN8d8VaDA3t6kXQAjejPBzSxi7Uo8A/nsJ57hW
+ MyNC3dl00EiXmC/PgAxAH2VC7xlcjZ18DWheMugiKE1n19Z/P/ZkuF7PeL/ul+j2FLbf
+ yiew==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=du0kCtfi5QhpLe9dk7Ff2CQwdsFdE0qZL7AISkx1KXk=;
+ fh=eiERpIZq4NTkjsr9oRXALpGIVCsOSJGNSUuSN24iMUY=;
+ b=OdzC7x4hba4M68+hpa02lvYU9PyaZo+uJToDInOJXjRHdHHs1ndaEoKyKJvV57vwy8
+ VfyBITY5VKorRmhzNygo/2nGDgUCii+wuQ9/mB98cHfm5lPJeH63YPiCGXCIM2JSBNcc
+ vBuKmWlRsItK/7iK9mICZ19hTghHC58Ro2tSZ+rS6uEswfRiRI5/ORe/svH5tR+TMpp4
+ VahwYYZf0kfuW/UORfKIVJiy9+nxW4XqN0zhlTVQ9QQYwINRG/E4ycCmGlaaX+62xhh6
+ H9cVtwYS92EY5/ToKDrQ8G7p66/2JLxvKKazRChy+lvt2p3GGRiDdCDyr87LiqAInxYb
+ 410Q==; darn=lists.osuosl.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1766019153; x=1766623953;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=du0kCtfi5QhpLe9dk7Ff2CQwdsFdE0qZL7AISkx1KXk=;
+ b=SkfpoTFBB/oUsv6oER62ymV6k22GCR5scAC9K709q9iHwgUQDr96m/Mz1/sxerSJAP
+ G4fAmCyJixDPGw3avdVIigHN2xopcg0/VqV0Uf7GfQdLg8AHl6RLnOYE4MTYvasaF/ec
+ 6ylRcm3ygF2a8ogedNkZU5OuNffCFYD9jpi96riIFXynSdvOBfHPGRNq6TLITWS/GVfP
+ HCyxjXKF26UYtc97zUtNn/PsrMNBqBZz8rAsWcYZSh+GJ/sIGS+Irg3UMxZ4IJlb8QGu
+ +vHEstRjmfA0P5+eHFwGYJ8ceF/7qSrBHvobL2+y3Nqkpbnznka7nZzKUMOqj4qgVg+U
+ 20bA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXmtrg4OCynwwWBNlUOYgzrasdyZ1/BgY8/0hySHrTs/LuIfScfrxCDkZMTUyOVHERVkL0Z/r0mudPV0R9zOIE=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yz3cqh1yyfCylLJzDrBblB8ulPjzkmVS7SyfbHgVJiA2LeV/7yQ
+ /ma6MgglPCtwCarfce/rAhzylZORIR3ssWfUtWBFJN9FKlsz11DScGW/kfi62C/Of1pRWxvxpQG
+ AJHng/wKgOzFqGFZiikw/kBSGuPI6ctr/EjEFmQ1S
+X-Gm-Gg: AY/fxX40VhcswwoyAuiWf2LIsjMaQs7zWydvcXYvj8grf8VlCZJl7o0H7qqwbf43RDy
+ SvP4mXdb+icSQ2QUS10R/9Rd0PmVjcrAOOawbs6UKxKAV8DA3DuesG1gHiRgTKTt0SWoNXsxE1W
+ bvtxmDf5wmEzBEC8TZ20panSo5w8x9QcSG5mC6jaatk3CP7VMB2DWQfMe6Ikj4XNwctCg+JpNU3
+ hC6YbvKlTpCf/SiKD1hA1vdsgk3AVe2oG8gnB/qf2/KXOQakV6mAqG/lGUcXaP+kl6QzFiwzhB/
+ I0lfeQ==
+X-Google-Smtp-Source: AGHT+IGhRe6cacnalU4Sbbx0+P+c9GB+XE3RKJaZT80HPKy2K0IZ0T6hUEygSC8LmCwKJ+ato7ctj90QisAGmb29DwQ=
+X-Received: by 2002:a05:6512:6797:b0:594:2644:95c6 with SMTP id
+ 2adb3069b0e04-59a143f2106mr6242e87.7.1766019152768; Wed, 17 Dec 2025 16:52:32
+ -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <IA3PR11MB898609A6FA1E75B5C87C27C2E5ABA@IA3PR11MB8986.namprd11.prod.outlook.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFtrFIsWRmVeSWpSXmKPExsXC9ZZnkW6br3OmwZ9TKhaHj2xitlj9o8Ji
- +YMdrBa7L/xgspizahujxZzzLSwWX9f/YrZ4euwRu8X9Zc9YLP7f+s1qcWFbH6vF5V1z2CyO
- LRCz+Hb6DaPF7aVXmSwuHX7EYvH7xxw2B0GPLStvMnnsnHWX3WPBplKPzSu0PBbvecnksWlV
- J5vHyeZSj507PjN5fHx6i8Xj/b6rbB6fN8kFcEdx2aSk5mSWpRbp2yVwZfw+eYaloEe3YtnW
- VsYGxmkqXYycHBICJhL7TsxggbGPnH/IBGKzCKhKLP3yjxHEZhNQl7hx4ycziC0iYCUx8eMm
- oBouDmaBq2wSkw+fA0pwcAgLpEqcXuYIUsMrYCExb/8dZpAaIYE+JomtG/oYIRKCEidnPgFb
- xgw09M+8S2C9zALSEsv/cUCE5SWat84G28UpECtx/MEvsFZRAWWJA9uOg+2VEFjHLvFoyg9W
- iKMlJQ6uuMEygVFwFpIVs5CsmIWwYhaSFQsYWVYxCmXmleUmZuaY6GVU5mVW6CXn525iBMbo
- sto/0TsYP10IPsQowMGoxMPrMNspU4g1say4MvcQowQHs5IIr8FZoBBvSmJlVWpRfnxRaU5q
- 8SFGaQ4WJXFeo2/lKUIC6YklqdmpqQWpRTBZJg5OqQbGkDeB+3UOWbjluG5Lmla/6Pc17b2t
- lcUcq62PuejlB0su3cHlbbNp4l23z7HLeRJfeem9llRmtDj5Ipw1+9GJXL7DVgef/nqzaKHW
- UyP9So4ni3d5nz1zOzDIo8DtfthDi5zG8hvs70q086c19nz/9eJtpdNawz3Ltz7uZv60RVVR
- btWTm2+dlViKMxINtZiLihMBWT20qc0CAAA=
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrIIsWRmVeSWpSXmKPExsXC5WfdrNvm65xpcKhD1OLwkU3MFqt/VFgs
- f7CD1WL3hR9MFnNWbWO0mHO+hcXi6/pfzBZPjz1it7i/7BmLxf9bv1ktDs89yWpxYVsfq8Xl
- XXPYLI4tELP4dvoNo8XtpVeZLC4dfsRi8fvHHDYHIY8tK28yeeycdZfdY8GmUo/NK7Q8Fu95
- yeSxaVUnm8fJ5lKPnTs+M3l8fHqLxeP9vqtsHotffGDy+LxJLoAnissmJTUnsyy1SN8ugSvj
- 98kzLAU9uhXLtrYyNjBOU+li5OSQEDCROHL+IROIzSKgKrH0yz9GEJtNQF3ixo2fzCC2iICV
- xMSPm4BquDiYBa6ySUw+fA4owcEhLJAqcXqZI0gNr4CFxLz9d5hBaoQE+pgktm7oY4RICEqc
- nPmEBcRmBhr6Z94lsF5mAWmJ5f84IMLyEs1bZ4Pt4hSIlTj+4BdYq6iAssSBbceZJjDyzUIy
- aRaSSbMQJs1CMmkBI8sqRpHMvLLcxMwcU73i7IzKvMwKveT83E2MwIhbVvtn4g7GL5fdDzEK
- cDAq8fB6LHLKFGJNLCuuzD3EKMHBrCTCa3AWKMSbklhZlVqUH19UmpNafIhRmoNFSZzXKzw1
- QUggPbEkNTs1tSC1CCbLxMEp1cDIOGFl0ozc5w/+S8j6fUl4q/jHZdeklE+CNS/vvPjWsj3u
- R7b9j138Cu9d9jlpzJ8j/unEe/3y2XpVSyoP/2v7LBwm3dFtGMoTlfac8aTvhObDy4PnbpPo
- 89Dn3rx+q3GmJvsF4SgDhhVWDCcqJ6uy5Qd+jv9WselKWO/SbWYVtQbK687P/tSqxFKckWio
- xVxUnAgARdDyybQCAAA=
-X-CFilter-Loop: Reflected
+References: <20250930212352.2263907-1-sreedevi.joshi@intel.com>
+ <20250930212352.2263907-3-sreedevi.joshi@intel.com>
+ <aN1MSIO27C24q-gL@horms.kernel.org>
+In-Reply-To: <aN1MSIO27C24q-gL@horms.kernel.org>
+Date: Wed, 17 Dec 2025 16:52:20 -0800
+X-Gm-Features: AQt7F2rjkM-TcPM4FYbg46wjt_nAwd51pZtMcJTG3c8bX0EM5tdjUpRcCMo7RqQ
+Message-ID: <CAHS8izM9dFNtkbdR+_rCrEmb0L6r9vga0gDr8GXeHX5N_4=32g@mail.gmail.com>
+To: Simon Horman <horms@kernel.org>
+Cc: Sreedevi Joshi <sreedevi.joshi@intel.com>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, Erik Gabriel Carrillo <erik.g.carrillo@intel.com>, 
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1766019153; x=1766623953; darn=lists.osuosl.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=du0kCtfi5QhpLe9dk7Ff2CQwdsFdE0qZL7AISkx1KXk=;
+ b=bdNxjyBR50U+A03+VaC5BwejpGJ4C+BkjrEC3KtKSIV6rEYoDTWoxTmcucnUxvW+s8
+ xVVSscZtwf+dvWpMgzJ1y3vyejnHXqSrHt/NinAu2/1tJT5QTkGh8VSYKeoBIpllYzKU
+ AhoEM+Kw54BnRSMtXaPjxK+UYN2ix5+uCFRwfGG8x7uriEJQKv1QIlrawO5S7B6rd8yR
+ ZAmrRTDHF6+oVix+sPimU6JI8NYpJ105PYwj/L40mKPFp/E7zKN+8XyHFx56TlFRQUIK
+ FQN1flxg4yCGPHFxlvzls1gVOcy1cz2GaJXuGNfzKDvt5RqX9DjR5WshTWIq/x2qDJbC
+ d5pQ==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=sk.com
-Subject: Re: [Intel-wired-lan] [PATCH net-next] ice: access @pp through
- netmem_desc instead of page
+ dmarc=pass (p=reject dis=none)
+ header.from=google.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=google.com header.i=@google.com header.a=rsa-sha256
+ header.s=20230601 header.b=bdNxjyBR
+Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-net 2/2] idpf: fix issue with
+ ethtool -n command display
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -124,139 +148,86 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+From: Mina Almasry via Intel-wired-lan <intel-wired-lan@osuosl.org>
+Reply-To: Mina Almasry <almasrymina@google.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Dec 17, 2025 at 02:34:14PM +0000, Loktionov, Aleksandr wrote:
-> > -----Original Message-----
-> > From: Pavel Begunkov <asml.silence@gmail.com>
-> > Sent: Wednesday, December 17, 2025 2:16 PM
-> > To: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>; Byungchul
-> > Park <byungchul@sk.com>; netdev@vger.kernel.org; kuba@kernel.org
-> > Cc: linux-kernel@vger.kernel.org; kernel_team@skhynix.com;
-> > harry.yoo@oracle.com; david@redhat.com; willy@infradead.org;
-> > toke@redhat.com; almasrymina@google.com; Nguyen, Anthony L
-> > <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw
-> > <przemyslaw.kitszel@intel.com>; andrew+netdev@lunn.ch;
-> > davem@davemloft.net; edumazet@google.com; pabeni@redhat.com; intel-
-> > wired-lan@lists.osuosl.org
-> > Subject: Re: [Intel-wired-lan] [PATCH net-next] ice: access @pp
-> > through netmem_desc instead of page
+On Wed, Oct 1, 2025 at 8:45=E2=80=AFAM Simon Horman <horms@kernel.org> wrot=
+e:
+>
+> On Tue, Sep 30, 2025 at 04:23:52PM -0500, Sreedevi Joshi wrote:
+> > From: Erik Gabriel Carrillo <erik.g.carrillo@intel.com>
 > >
-> > On 12/17/25 11:46, Loktionov, Aleksandr wrote:
-> > >
-> > >
-> > >> -----Original Message-----
-> > >> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On
-> > Behalf
-> > >> Of Byungchul Park
-> > >> Sent: Tuesday, December 16, 2025 5:07 AM
-> > >> To: netdev@vger.kernel.org; kuba@kernel.org
-> > >> Cc: linux-kernel@vger.kernel.org; kernel_team@skhynix.com;
-> > >> harry.yoo@oracle.com; david@redhat.com; willy@infradead.org;
-> > >> toke@redhat.com; asml.silence@gmail.com; almasrymina@google.com;
-> > >> Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw
-> > >> <przemyslaw.kitszel@intel.com>; andrew+netdev@lunn.ch;
-> > >> davem@davemloft.net; edumazet@google.com; pabeni@redhat.com; intel-
-> > >> wired-lan@lists.osuosl.org
-> > >> Subject: [Intel-wired-lan] [PATCH net-next] ice: access @pp through
-> > >> netmem_desc instead of page
-> > >>
-> > >> To eliminate the use of struct page in page pool, the page pool
-> > users
-> > >> should use netmem descriptor and APIs instead.
-> > >>
-> > >> Make ice driver access @pp through netmem_desc instead of page.
-> > >>
-> > > Please add test info: HW/ASIC + PF/VF/SR-IOV, kernel version/branch,
-> > exact repro steps, before/after results (expected vs. observed).
-> > >
-> > >> Signed-off-by: Byungchul Park <byungchul@sk.com>
-> > >> ---
-> > >>   drivers/net/ethernet/intel/ice/ice_ethtool.c | 2 +-
-> > >>   1 file changed, 1 insertion(+), 1 deletion(-)
-> > >>
-> > >> diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-> > >> b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-> > >> index 969d4f8f9c02..ae8a4e35cb10 100644
-> > >> --- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-> > >> +++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-> > >> @@ -1251,7 +1251,7 @@ static int ice_lbtest_receive_frames(struct
-> > >> ice_rx_ring *rx_ring)
-> > >>            rx_buf = &rx_ring->rx_fqes[i];
-> > >>            page = __netmem_to_page(rx_buf->netmem);
-> > >>            received_buf = page_address(page) + rx_buf->offset +
-> > >> -                         page->pp->p.offset;
-> > >> +                         pp_page_to_nmdesc(page)->pp->p.offset;
-> > > If rx_buf->netmem is not backed by a page pool (e.g., fallback
-> > allocation), pp will be NULL and this dereferences NULL.
-> > > I think the loopback test runs in a controlled environment, but the
-> > code must verify pp is valid before dereferencing.
-> > > Isn't it?
+> > When ethtool -n is executed on an interface to display the flow steerin=
+g
+> > rules, "rxclass: Unknown flow type" error is generated.
 > >
-> > Considering "page->pp->p.offset" poking into the pool, if that can
-> > happen it's a pre-existing problem, which should be fixed first.
+> > The flow steering list maintained in the driver currently stores only t=
+he
+> > location and q_index but other fields of the ethtool_rx_flow_spec are n=
+ot
+> > stored. This may be enough for the virtchnl command to delete the entry=
+.
+> > However, when the ethtool -n command is used to query the flow steering
+> > rules, the ethtool_rx_flow_spec returned is not complete causing the
+> > error below.
 > >
-> > --
-> > Pavel Begunkov
-> 
-> 
-> Good day, Hi Byungchul, Pavel,
+> > Resolve this by storing the flow spec (fsp) when rules are added and
+> > returning the complete flow spec when rules are queried.
+> >
+> > Also, change the return value from EINVAL to ENOENT when flow steering
+> > entry is not found during query by location or when deleting an entry.
+> >
+> > Add logic to detect and reject duplicate filter entries at the same
+> > location and change logic to perform upfront validation of all error
+> > conditions before adding flow rules through virtchnl. This avoids the
+> > need for additional virtchnl delete messages when subsequent operations
+> > fail, which was missing in the original upstream code.
+> >
+> > Example:
+> > Before the fix:
+> > ethtool -n eth1
+> > 2 RX rings available
+> > Total 2 rules
+> >
+> > rxclass: Unknown flow type
+> > rxclass: Unknown flow type
+> >
+> > After the fix:
+> > ethtool -n eth1
+> > 2 RX rings available
+> > Total 2 rules
+> >
+> > Filter: 0
+> >         Rule Type: TCP over IPv4
+> >         Src IP addr: 10.0.0.1 mask: 0.0.0.0
+> >         Dest IP addr: 0.0.0.0 mask: 255.255.255.255
+> >         TOS: 0x0 mask: 0xff
+> >         Src port: 0 mask: 0xffff
+> >         Dest port: 0 mask: 0xffff
+> >         Action: Direct to queue 0
+> >
+> > Filter: 1
+> >         Rule Type: UDP over IPv4
+> >         Src IP addr: 10.0.0.1 mask: 0.0.0.0
+> >         Dest IP addr: 0.0.0.0 mask: 255.255.255.255
+> >         TOS: 0x0 mask: 0xff
+> >         Src port: 0 mask: 0xffff
+> >         Dest port: 0 mask: 0xffff
+> >         Action: Direct to queue 0
+> >
+> > Fixes: ada3e24b84a0 ("idpf: add flow steering support")
+> > Signed-off-by: Erik Gabriel Carrillo <erik.g.carrillo@intel.com>
+> > Co-developed-by: Sreedevi Joshi <sreedevi.joshi@intel.com>
+> > Signed-off-by: Sreedevi Joshi <sreedevi.joshi@intel.com>
+> > Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> > Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+>
 
-Hi,
+Tested-by: Mina Almasry <almasrymina@google.com>
 
-> Thanks for pushing the driver toward netmem — I fully support removing direct struct page accesses from the networking stack.
-> 
-> Regarding this change in ice_lbtest_receive_frames():
-> 
->         received_buf = page_address(page) + rx_buf->offset +
->                 pp_page_to_nmdesc(page)->pp->p.offset;
-> 
-> Pavel, you're right that if page->pp could be NULL, it's a pre-existing bug that should be fixed.
-> However, looking at the loopback test path, I'm concerned this code doesn't handle non-page-pool allocations safely.
-> 
-> The netmem model explicitly allows for buffers that aren't page-pool backed.
-> While the loopback test likely runs in a controlled environment, the code should verify pp is valid before dereferencing,
-> or use the netmem helpers that handle this gracefully:
 
-If it's true, yeah, it definitely should be fixed but in a separate
-patch since it's a different issue.  Let's try with a follow-up patch on
-top after :-)
-
->         struct netmem_desc *ndesc = __netmem_to_nmdesc(rx_buf->netmem);
->         void *addr = netmem_address(rx_buf->netmem);
->         struct page_pool *pp;
-> 
->         if (!addr)
->                 continue; /* unreadable netmem */
-> 
->         pp = __netmem_get_pp(ndesc);
->         received_buf = addr + rx_buf->offset + (pp ? pp->p.offset : 0);
-> 
-> Alternatively, guard the existing code with page_pool_page_is_pp(page) before calling pp_page_to_nmdesc().
-> 
-> This would complete the netmem conversion while fixing the unsafe dereference,
-> aligning with Matthew's earlier suggestion to use descriptor/address accessors.
-
-Pavel's opinion is that the current way is more appropriate.  Which one
-should it go for?
-
-> Also, please add test details to the commit message:
-
-This patch is more like a cleaning patch rather than a performance one.
-Please tell me in more detail if you have any test to ask me to perform
-for some reasons.
-
-> HW/ASIC (e.g., E810/E823)
-> PF vs VF, SR-IOV configuration
-> Kernel tree/commit (net-next @ <sha>)
-> Repro steps: ethtool -t $dev offline
-> Before/after behavior
-> Happy to review v2 with these changes.
-
-Thanks for the review comment!
-
-	Byungchul
-
-> Best regards,
-> Alex
+--=20
+Thanks,
+Mina
