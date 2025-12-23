@@ -1,90 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7267ECD9EDD
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Dec 2025 17:23:14 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B251CD9EE4
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Dec 2025 17:23:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DF50C405F2;
-	Tue, 23 Dec 2025 16:23:12 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B077F60D5C;
+	Tue, 23 Dec 2025 16:23:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5tma2_w8nPFM; Tue, 23 Dec 2025 16:23:12 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 0pklkFJb6pwL; Tue, 23 Dec 2025 16:23:13 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 625F8405E6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E9C5860D6A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1766506992;
-	bh=QxTdv+ra6WTSrvAACCD5473883LzKfjRBEu683WsRJ4=;
+	s=default; t=1766506993;
+	bh=NiVv4VG/swHKILAsJIpUoUQtmn8TsYBKMx+CuhseMNs=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=wwuvZJgd3wY/wDe41gQvdEfZpPdBZxrEe4fmuOgANanb683BrqZDbsFBIykfS8TWy
-	 +ORaMcrVDkV+ewJcZjIYpY9fZ2wuKY7vnnu0RLJzp5fnrLfCDAy4CFCaoRFkwONWAP
-	 j+z2ZSRvPx3g5IuEhvKOb69NhME8kM4+GmgRHf00Ikir95OeYze39+xw7iEkpKokhg
-	 RDyRgW5ullnA+ssTzI1/scvIsk/Q/11UXNAuLyDJ2A6OALxKS04/soWitkwhms8nTA
-	 PT1PQyf+2lQLvMtcBwItx+l7EcdT05q5NMyI7TYadZOUIZYCsflK4fKDzzgiZ1YByC
-	 W2tW2Cm5s48Ug==
+	b=dHrpyXvUj/8qbim3saE3kuKvarl5S8mCIZwBqNCXMXPHJDvj3sF5dD9cvGq4cIhSk
+	 OswgZjnai/bBmj5d6D0CkkeUJ8FJPSp5FgoXOU+Va5DJtcd9byBjwfEs1Fzwz4A75c
+	 dd01Q/xoz94WmhoX1t3EGkNMvzJ/G2LRaUzfFIBN9ODv3txVDv1xPNAjiGhibkYtLE
+	 gyVYmEd2pKGgDRTrwYau3Smz4uT0PbY9EfvJFDQeUHqAZgR2YFLnKdUvH4PNcJXMZQ
+	 Eevl2wEEWP6q5CMGMzYabo7CEQHgJBBvjcNq78Eyk4o+4lNu40DarmehDDwrLvJ75o
+	 Z5MrP4iDMnTFA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 625F8405E6;
+	by smtp3.osuosl.org (Postfix) with ESMTP id E9C5860D6A;
 	Tue, 23 Dec 2025 16:23:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 6EAE6119
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Dec 2025 16:23:09 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 620D4255
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Dec 2025 16:23:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 66050405E0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Dec 2025 16:23:09 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 48F6140103
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Dec 2025 16:23:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id SI5pxxguhpEY for <intel-wired-lan@lists.osuosl.org>;
- Tue, 23 Dec 2025 16:23:08 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ei4UQHaGhhj2 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 23 Dec 2025 16:23:09 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::112d; helo=mail-yw1-x112d.google.com;
+ client-ip=2607:f8b0:4864:20::b12c; helo=mail-yx1-xb12c.google.com;
  envelope-from=yury.norov@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org B0E10405DA
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B0E10405DA
-Received: from mail-yw1-x112d.google.com (mail-yw1-x112d.google.com
- [IPv6:2607:f8b0:4864:20::112d])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B0E10405DA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Dec 2025 16:23:08 +0000 (UTC)
-Received: by mail-yw1-x112d.google.com with SMTP id
- 00721157ae682-78fc7893c93so25259347b3.2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Dec 2025 08:23:08 -0800 (PST)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 9A8DB40018
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9A8DB40018
+Received: from mail-yx1-xb12c.google.com (mail-yx1-xb12c.google.com
+ [IPv6:2607:f8b0:4864:20::b12c])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9A8DB40018
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Dec 2025 16:23:09 +0000 (UTC)
+Received: by mail-yx1-xb12c.google.com with SMTP id
+ 956f58d0204a3-641e9422473so4189532d50.2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Dec 2025 08:23:09 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766506987; x=1767111787;
+ d=1e100.net; s=20230601; t=1766506988; x=1767111788;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=QxTdv+ra6WTSrvAACCD5473883LzKfjRBEu683WsRJ4=;
- b=EUt+UOIa7W7DGwAMW2fg/GRRsRw768kTKE9tOME0EDgjCxZFQ1UApAhocB2bwAJ28c
- hRk3iZk3GVpZvYd9sJzU4D48xAxpM042h8zfqXLfLA9mZBG5yvrEp5FtlQrPRds/fJgP
- SMpDHU01l/xavdAHROXXjJY0Lo6Ux40Kd+s2zf3tOwyNK8TjBjSBrSOWG4dAYrruWv1t
- Z3cnr9KXWl7e4dnP/CsYgImuD9eOkyIClLzhLNDazMnoNWv+risw1SO1BLE2akiw4ME9
- Yfr1aykbvJVwUIavUesF8oHKGRQKdWbxNqoqyWm8mxDBmHJC/EK2c3FLFMdWMMtMjQvN
- nbWg==
+ bh=NiVv4VG/swHKILAsJIpUoUQtmn8TsYBKMx+CuhseMNs=;
+ b=TUBv65+hsU4Y6T6hrlvQtqbpfs4KlGMj1oHVZRNTNrILZEr1dR+Xus7yMOClDITEb1
+ FJqRsjEZFt3WDmtT7CQa/OdHqRY2A0cQfAZaWx68ppnnrxPL9gAyIDOYSUA5s3EXO7yW
+ 0m4oIyK1tZ7fgko5n2CJz1MgFFboAFzEJ/07zxk3BVVFt421m/KYzi6AFI/XZevxxRhv
+ L7Ol8w0JGfAflZ8EYoh/0vGghOwAz2Zzb3KdxdO/6K/7V7kRcLoZmTVeYp/du97fuljV
+ /rSWDYVNZXnovBncCiQJH/RGpgGzcbdhoMOeE+oPtDZ0co2ao3Db/wqLbSSUE/bzQhOP
+ HhRg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV3gpEH0Gfs0OkwvxdOlATdUC/rgKX6uLqJamPYfmObpO8/jRUmsgAnZOxu9RGY7HzzGo835juqD41oVs8MCZs=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YxotLfnVjae4gJHsJvgmJxiEW8hUTQlwCVnkUce2F2iOuemrfN1
- cm6HelQ4mjeRpBfObl3cDhwNdE41qk0t97Oot4VbYYoFYGC5W7Ezgd1H
-X-Gm-Gg: AY/fxX4SUiduAANjcoCQ+bsKWBxR8vTeMUEdi39r9VMlVEj+8hOtsgXwxM0EAQ8WPda
- 4M90hGLpu1/zdMnw6opbe7lcd84PW+wsUVRLYAPGdKu5r+9bAVP6OOEorYRytH6q+KXwFGqmX3T
- +/SvOnrUWJTivHUg38XsK7KKbSCWd2HfWEWIatROmiMmM1DSAHEJI0EZEhTC8ntEJjcjnvc2Ysy
- W5qjwzCP2d8mbT4xErMVE1SOPqIGpo9yOFIu8aWvuRln00iHgCbixC/JIeKTrCgN16OnhgQrhAB
- XMFvjUIrLdHyFCFCvA/QgZsVe4+KY2GL4q2jifutD5iNeuAuuclUAk+m7AqsIBUQRiUhSS5dxAB
- 0GI1U1KtMqlcTm98PyagiJdHShqD5H1XdOLRb2W2CPGiqiieiKa/GQX/GYd0O1afxqkja5LEkSJ
- +XmCmZ4ko=
-X-Google-Smtp-Source: AGHT+IEGEhV4TsQdUzp8xMXw7tvphhY7j9O64Fl0+gPJd1P63myvvp3KKR6dH1soGRGdQRJHWMAQUA==
-X-Received: by 2002:a05:690c:c83:b0:784:abe3:4454 with SMTP id
- 00721157ae682-78fb4067fc8mr122715137b3.47.1766506987336; 
- Tue, 23 Dec 2025 08:23:07 -0800 (PST)
+ AJvYcCX+hb7lmgLcIYAZVvx/92UkLQajrFjYymk7ItisD9J3i9BRhqNqoNN3HkDQ1drKwt2O6nVlbsbgNVbMlcYyHk0=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YwuMWZbLzQ5cBgk5lg7yCXVCFHkCSF8YCiSTbs2VXdpJajdTkBD
+ a0dRIjjUNSbO4kF4/OPfBMzL6q3XdRs5h6utKE1HfKb4RuEYe6BeDpE2
+X-Gm-Gg: AY/fxX5JOw/e2fQaan5yCuqHTBMX/99pwdK8gu5TwqbVya/b1LISiRQLgh1DWmkbqGY
+ HpuLkg5+c6RZ8SHbPqTuxTzt0LoR2Th75WkL+OnAo4LquNIq4RiiICrhkgaDaSHBZSnapS3tEZI
+ Y2gIm0dcg00uBcVwsBypGYsik5/AcTnNkZT2ygFdihMZf9Apr4/qptf4JVGDhuUFpX+pjJihj7w
+ mAlfjONme5SQlLfTq2rvl7V34k2tfxK4SQws30hvBvrsnXtCfzNsJn3LUdLheSDnagbAoS6t6qq
+ mOVmFMdjg9fRbGyXRgcoXHWfNi9rs/KSI1HM9I1RH0pJmBn/3Leyx4rda1+7mKUa29Hoy+LteAU
+ 4jj/fqGI0X+SMcA96sv5IJrxrlODfaRK1I1RQbTr5SHUgZIBuQOrJef4QA+tNfm301fJNiJml0Z
+ BzdBBzY3o=
+X-Google-Smtp-Source: AGHT+IEIDS9zMM50ZlFA5Hl9bR03FFoth14fmX1kch5FUlZ2LFbCe/5eRU4YNWQQOULng7e4U3/pdw==
+X-Received: by 2002:a05:690c:4912:b0:78d:7307:769f with SMTP id
+ 00721157ae682-78fb3f03ff1mr254742257b3.3.1766506988228; 
+ Tue, 23 Dec 2025 08:23:08 -0800 (PST)
 Received: from localhost ([2601:346:0:79bd:4913:14a4:1114:ff0d])
  by smtp.gmail.com with ESMTPSA id
- 00721157ae682-78fb4377c99sm56081067b3.3.2025.12.23.08.23.06
+ 00721157ae682-78fb43cfae9sm55561267b3.23.2025.12.23.08.23.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Dec 2025 08:23:07 -0800 (PST)
+ Tue, 23 Dec 2025 08:23:08 -0800 (PST)
 From: "Yury Norov (NVIDIA)" <yury.norov@gmail.com>
 To: Tony Nguyen <anthony.l.nguyen@intel.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
@@ -96,34 +96,34 @@ To: Tony Nguyen <anthony.l.nguyen@intel.com>,
  Andrew Morton <akpm@linux-foundation.org>,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
  linux-kernel@vger.kernel.org
-Date: Tue, 23 Dec 2025 11:23:01 -0500
-Message-ID: <20251223162303.434659-3-yury.norov@gmail.com>
+Date: Tue, 23 Dec 2025 11:23:02 -0500
+Message-ID: <20251223162303.434659-4-yury.norov@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251223162303.434659-1-yury.norov@gmail.com>
 References: <20251223162303.434659-1-yury.norov@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1766506987; x=1767111787; darn=lists.osuosl.org;
+ d=gmail.com; s=20230601; t=1766506988; x=1767111788; darn=lists.osuosl.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
  :reply-to;
- bh=QxTdv+ra6WTSrvAACCD5473883LzKfjRBEu683WsRJ4=;
- b=ehVx5xoDGu5yflsakNZO45ZhyBmf0bTwRr8B3ty1zPk/TsChyjP7AQVvDGJDAS/ED0
- OQkskOO/iiHD6oGiaDVtaKmcvPxMf/bbaX3CQFdPbkpoUvKzcLbMwm/JXIFKIG5373B0
- 2bqyBnR9lfG8Ch/9D+OCZNlVFRQy30rVlhOtoEd1Lm3WlSyp7orsE9neCouBmiQtSMNb
- qrp8D0MU0m2oph21VVkdHeZuJ+DKOQ6soFk2uDSn5eu9/+b+FjJobTClmoRqMxIkomdk
- nWYNo3CQMox+dKqVCyPfOM1cmqSU2CYBxCYgP3Vw/183Yga2fHV0Jvaf2uC+B5DKQWvb
- KrQg==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=NiVv4VG/swHKILAsJIpUoUQtmn8TsYBKMx+CuhseMNs=;
+ b=Spsq9kbmcqlM2WFoRoDXFmVEmT4iYEN1+PqICVyfPt+ByRluSivQFamKpLYPM8nsxa
+ hPxCQWdMjOhX55riGryQ+gA/sFBSLADbZO1TNHMN+MZJ3EmLgJsEtTISizCnfJBHB4D+
+ OeZcccMJwQ4DnvjUEfW5YLc7LOf0tVx8xRCvOZ4e8JgwNAUAhDXu88IuRVIMyNqW1fA7
+ odh4a2j9b2bYIaHieWCDIxh832sNgPjHtiwlgmTi3iVFivjxuQ69SwV3+hWI0K7WMp94
+ NWrLtjYbnN/PkXjZ6cHanQfrT6rV9OHVukXZJBDGqvd1rsonbwVtdMCAQi2YI/ELgrdd
+ yYxA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=ehVx5xoD
-Subject: [Intel-wired-lan] [PATCH 2/3] ice: use bitmap_weighted_xor() in
- ice_find_free_recp_res_idx()
+ header.s=20230601 header.b=Spsq9kbm
+Subject: [Intel-wired-lan] [PATCH 3/3] ice: use bitmap_empty() in
+ ice_vf_has_no_qs_ena
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -139,26 +139,26 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Use the right helper and save one bitmaps traverse. 
+bitmap_empty() is more verbose and efficient, as it stops traversing
+{r,t}xq_ena as soon as the 1st set bit found.
 
 Signed-off-by: Yury Norov (NVIDIA) <yury.norov@gmail.com>
 ---
- drivers/net/ethernet/intel/ice/ice_switch.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_vf_lib.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
-index 84848f0123e7..903417477929 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.c
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.c
-@@ -4984,10 +4984,8 @@ ice_find_free_recp_res_idx(struct ice_hw *hw, const unsigned long *profiles,
- 			  hw->switch_info->recp_list[bit].res_idxs,
- 			  ICE_MAX_FV_WORDS);
- 
--	bitmap_xor(free_idx, used_idx, possible_idx, ICE_MAX_FV_WORDS);
--
- 	/* return number of free indexes */
--	return (u16)bitmap_weight(free_idx, ICE_MAX_FV_WORDS);
-+	return (u16)bitmap_weighted_xor(free_idx, used_idx, possible_idx, ICE_MAX_FV_WORDS);
+diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.c b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+index de9e81ccee66..2b359752a158 100644
+--- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+@@ -1210,8 +1210,8 @@ bool ice_is_vf_trusted(struct ice_vf *vf)
+  */
+ bool ice_vf_has_no_qs_ena(struct ice_vf *vf)
+ {
+-	return (!bitmap_weight(vf->rxq_ena, ICE_MAX_RSS_QS_PER_VF) &&
+-		!bitmap_weight(vf->txq_ena, ICE_MAX_RSS_QS_PER_VF));
++	return bitmap_empty(vf->rxq_ena, ICE_MAX_RSS_QS_PER_VF) &&
++		bitmap_empty(vf->txq_ena, ICE_MAX_RSS_QS_PER_VF);
  }
  
  /**
