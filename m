@@ -1,129 +1,118 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 33A64CDA4FF
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Dec 2025 20:08:59 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 61A6160E63;
-	Tue, 23 Dec 2025 19:08:57 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mGJscpna1-yc; Tue, 23 Dec 2025 19:08:56 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CFFFA60E61
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1766516936;
-	bh=f94AB6cb3HG/eWMYQqlXm4FzeTrvvTstknIkIvvEzDE=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=EMDX8Vr5TFIb+jN3sqOCKRJbP3F7lh0uiMjS0rgbggKR5qdCp1RyBjY/wCZSyFOWa
-	 8oriceFgT0jmulOu6U57MbSMGZEu7+UEukpO1BgK7rrQekEEA2KrSWTOs1R9/wBS7B
-	 WcdBGKjlGlhJa/No6lApnsDKAFHX6g+Z2DBf/Vwa7+8TFppt2ZjBRffTZSypeXrUv2
-	 ltgfcrrgpwWhoJqaWLMCLI5MGUt972otmBS7r8fNlXHdnKk6K+2vfavCwQz3ZMSxbY
-	 hIL9C+Tj87GbquzN3EvFxx63xtibul/H+Oli+FLGRPE1X9k/WpXf7Z3h7V21/EHU1u
-	 RVOz9dMDWThNg==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CFFFA60E61;
-	Tue, 23 Dec 2025 19:08:56 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id B3ECCB9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Dec 2025 19:08:55 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id D6426CDA664
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Dec 2025 20:46:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9A54F409C0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Dec 2025 19:08:55 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 881B4409F5;
+	Tue, 23 Dec 2025 19:46:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Uh2--vwA1kGx for <intel-wired-lan@lists.osuosl.org>;
- Tue, 23 Dec 2025 19:08:54 +0000 (UTC)
+ id Ta2gWRQMqgwH; Tue, 23 Dec 2025 19:46:57 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9A73E409EB
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1766519217;
+	bh=hbB5fUieYbbC54wlKkzCPogs80Zc6SurLe7o2Jqsn5A=;
+	h=Date:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From:Reply-To:From;
+	b=Gt4BCDOhRV17yb7/98CEnRvzTXssIZAp+jKsxDqDS1s6pm3Tc1W6Iz/8OdiQnM9KQ
+	 fkXSWdw97iUhdxgfZqTgBx5TMQpgw5zSxHiJ3RMkVL6BMrWQy2MgVLfQj0ZT/3rw/F
+	 Z/Sdnu0ybDLMUEhSPBkU9JjGVgVtmVfPDjR7X+HWULwS4iOtDYzNPcuDOQcmUo/ytB
+	 vWfLX3e9gFXCSwFdao+irUmp27fhG+OfuaO1qaCvKQOvwrlugQHxq8vCw4iT/j5Qw0
+	 tvxKm/H9YA7o/0RN9p8KKf7kEJVNd9UY4vtVa5x9bM4L+g8awrj0ChV80AL0jWJHQA
+	 dMjfqkupOZYSg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9A73E409EB;
+	Tue, 23 Dec 2025 19:46:57 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id C8435119
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Dec 2025 19:46:55 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id AE4FD817A9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Dec 2025 19:46:55 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id x-ABHtw7r-yk for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 23 Dec 2025 19:46:55 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::329; helo=mail-wm1-x329.google.com;
- envelope-from=david.laight.linux@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 44A33409BD
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 44A33409BD
-Received: from mail-wm1-x329.google.com (mail-wm1-x329.google.com
- [IPv6:2a00:1450:4864:20::329])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 44A33409BD
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Dec 2025 19:08:54 +0000 (UTC)
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-47bdbc90dcaso35001185e9.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Dec 2025 11:08:53 -0800 (PST)
+ client-ip=2607:f8b0:4864:20::549; helo=mail-pg1-x549.google.com;
+ envelope-from=3rffkaqskaa4oz0o65c0w1ou22uzs.q20@flex--almasrymina.bounces.google.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org C3C7A81587
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C3C7A81587
+Received: from mail-pg1-x549.google.com (mail-pg1-x549.google.com
+ [IPv6:2607:f8b0:4864:20::549])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id C3C7A81587
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Dec 2025 19:46:54 +0000 (UTC)
+Received: by mail-pg1-x549.google.com with SMTP id
+ 41be03b00d2f7-c2bfb70bd53so243594a12.2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Dec 2025 11:46:54 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766516932; x=1767121732;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=f94AB6cb3HG/eWMYQqlXm4FzeTrvvTstknIkIvvEzDE=;
- b=LW6baknlChNVj+0H3GyVzw3iv9RJmkRYNL8fSEscW/JLZ73GY1rxAyiwoyiYFSY5iQ
- GbYdsPaPu3ZJkDxQD66Dr3sG6VqGGhqu/+hMlfMEMEJoHwM4iD3QBRxzz4Jk8SpYDhxS
- CpidNGl5WQX48Bga8ZVbqgUGjjzfCoSDgHwyxTSDucND8qHLOD9K/9HTgPHOgk+LR6jS
- AXKJNJzK+yxoBfFZWAyr4vM/Ci3n7+2d871IwauTxY5MhAX815a8t8HFgg/dDoKeOhQT
- 2kNOWcpZojEX/m8pDIGNhJY2KLoERifSpP4RwSkGNErA7QZbTAUYiH3zkds++rxMNWCt
- f74A==
+ d=1e100.net; s=20230601; t=1766519214; x=1767124014;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=hbB5fUieYbbC54wlKkzCPogs80Zc6SurLe7o2Jqsn5A=;
+ b=OGFVkbuzakZ/voT8Xa/qg34GukRh0N04gCYPAtOBqw+kNtMXvmS7Ogh8rFLGXTOviC
+ JgaVska9jCt4CwgUCSG0PLGhfWQxleZyzq8gjl7dD3G+7bpsRuIZqAtaFtqjGT285n5N
+ CJm7a8DECv4l6CokA+Lgsbx0ewWWM1D/U3YomXp5+mqBV/kJUvs0qXlrWDkzT+sCgMOb
+ ldVlhzX5jQPvTukL2+KjWN+by5jyyl7CXwgOpZkRPOQXLAeiYT/4VYCGDABHB8sBHCBB
+ zNTVz/14PjIOldx4l/4BaCrWPhWi5WxlQPlVtczu+7bnz4RpYIyqeDvO4d+xFO3Qnbsm
+ dyyg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU+CS7SDzarMUSOYD1KrHY+VYSXLJwlPWZwDfH7d/emgUsZQkADdBKcKYE6YsMp9BE2hcSrvET6BjzyH7JJPHY=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzfpGNb7R7IXH3WJxIp/IyC8STpriNlaGfgTBD15PxoDtFCrNSZ
- hQPLv8mqog3ewQt2Nq0gwlVxLHW3Wt0r3wQCu6x7qSSRMdpLrU3TsHXH
-X-Gm-Gg: AY/fxX60/yCsIYE5VuotgPx2DBEHck17gEtbdGcovZ6q6KQDM0SlDrQ8om7ZiZ0U7UL
- KT+v6MDEmZwmsR3xNMUKzKqjUaw02y61a6Wf046JTDmekxXx9YE3vicr3hwxRVyJ4hPpPyOc8BN
- P11/k9uCT4echR3F5heF+EqJ/0ltY5tAhY2w8v7ShatNhrvOuSYZSn/0ATQLZkZOTyCOJtxyPRj
- wSDW5lp3l6Yat0AQ0NyEsWHHb9/+2i+xz8Kb+xS1i6xYL3CpNpOo79BwxbktoM6uf1MJa4HZAj5
- XfHutk8SyXOWXZpDeneKA8FnS2Al8hv7jt8Yab8dr5W55go8vgOEOMAd1mHM0CVQHVmhdy5aHCU
- mBixFb23fsS4O0oEdcsvDt4jW2qtN3V2pa/LUgBywhYtCR+rnraupr1CZzWKLIlfixIFigJd3Od
- PggrVSYV/nBZHu6k8yz4cGPYfpHrG132V0WEV5MeQszHOPLT6hG0o=
-X-Google-Smtp-Source: AGHT+IH3Q0hPHKJKChpo35Wgcum55tE85eoWpfZOgkdjlvObESRWfsHXpeJunSU5cP6/XSJwW1Ja9A==
-X-Received: by 2002:a05:600c:45cf:b0:477:75eb:a643 with SMTP id
- 5b1f17b1804b1-47d19533403mr139222325e9.4.1766516931787; 
- Tue, 23 Dec 2025 11:08:51 -0800 (PST)
-Received: from pumpkin (host-2-103-239-165.as13285.net. [2.103.239.165])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4324ea227casm29610174f8f.15.2025.12.23.11.08.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Dec 2025 11:08:51 -0800 (PST)
-Date: Tue, 23 Dec 2025 19:08:46 +0000
-From: David Laight <david.laight.linux@gmail.com>
-To: "Yury Norov (NVIDIA)" <yury.norov@gmail.com>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel
- <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David
- S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
- Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rasmus
- Villemoes <linux@rasmusvillemoes.dk>, Andrew Morton
- <akpm@linux-foundation.org>, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org
-Message-ID: <20251223190846.76ff4dc0@pumpkin>
-In-Reply-To: <20251223162303.434659-3-yury.norov@gmail.com>
-References: <20251223162303.434659-1-yury.norov@gmail.com>
- <20251223162303.434659-3-yury.norov@gmail.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; arm-unknown-linux-gnueabihf)
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+ AJvYcCXS4BpUUe8AwvZdfx+94P/NWO8tYEbKhRJT6DJ/nclFMxe8nq0DjXU5UdZ0gOLwfWAy/ioNFLTU9dz9GN6do2Y=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YwvHxUIZZo+LWdm6ZHm7T2+szZrH8mQtrVUueuTZpp+qnvYE+A6
+ Bq0VJgKqMHzq5im0zgKoRh2yVK4BK6bWoTTveTPZcGXEaCktkE3pXbF3O+RfKTjzBimzXKcLyjF
+ DWZp0iF8/wb/6tDrHyREPhcpFFQ==
+X-Google-Smtp-Source: AGHT+IEh1TfXoem2rb5nypJkE6ogSfqwPsTdfFfptU3SHsuL6LuN7SgwxjclA75NJmfB/kBCOkuzh1nebLdLVZ71NQ==
+X-Received: from dycuf3.prod.google.com ([2002:a05:7300:103:b0:2a4:7587:4d39])
+ (user=almasrymina job=prod-delivery.src-stubby-dispatcher) by
+ 2002:a05:7300:c393:b0:2a4:6bb6:c84a with SMTP id
+ 5a478bee46e88-2b05ebdd512mr14772248eec.6.1766519213635; 
+ Tue, 23 Dec 2025 11:46:53 -0800 (PST)
+Date: Tue, 23 Dec 2025 19:46:46 +0000
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.52.0.351.gbe84eed79e-goog
+Message-ID: <20251223194649.3050648-1-almasrymina@google.com>
+To: netdev@vger.kernel.org, bpf@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: YiFei Zhu <zhuyifei@google.com>, Alexei Starovoitov <ast@kernel.org>, 
+ Daniel Borkmann <daniel@iogearbox.net>, "David S. Miller" <davem@davemloft.net>,
+ Jakub Kicinski <kuba@kernel.org>, Jesper Dangaard Brouer <hawk@kernel.org>, 
+ John Fastabend <john.fastabend@gmail.com>, Stanislav Fomichev <sdf@fomichev.me>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, 
+ Paolo Abeni <pabeni@redhat.com>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>, 
+ Richard Cochran <richardcochran@gmail.com>, intel-wired-lan@lists.osuosl.org, 
+ Mina Almasry <almasrymina@google.com>, 
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Content-Type: text/plain; charset="UTF-8"
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1766516932; x=1767121732; darn=lists.osuosl.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=f94AB6cb3HG/eWMYQqlXm4FzeTrvvTstknIkIvvEzDE=;
- b=FwcrNbusBNpiOopXKHVKt+sCy1ni0WGMHkNEBtwd9DGY1ZatBM8C5VJEj7i+Td4d93
- DnO61Az93rU3U8EOmfbAG0C2B3GHSMB69WnHdaHIGLDW1VkH40s7LLUe+VV9J1KszBj6
- kdLsKD3KfDyDVDFChYZg+XVZvi5cfWt31PdMcisLkwWnC0Sv2xzMT9fAIdcVjU96zqvx
- zeTYVQcVwEuBGHF4jDDOzKwV28C/l8j4nEOvsGbHWrL9iTl4bDrr9Uh8G6jlYivKBFn3
- zSZ+RnkOfTXOHbmPndoi2J6gnzv7E6Cr2QFWtnGWctthGG0ooFu/Ok2+hWi1lDws8vZY
- r0Aw==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=google.com; s=20230601; t=1766519214; x=1767124014; darn=lists.osuosl.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=hbB5fUieYbbC54wlKkzCPogs80Zc6SurLe7o2Jqsn5A=;
+ b=R/ZhBaMzBZYcYtXf1Nbsccyeje9Oyv9zIgSJtNtSgyKnZa04FM/zLQ9+iUAegp2l65
+ rL3QdDsKfDAV+/3gqk1QLp4rV2wCTrxOYNRe2Rxo9/RbKrg+sBZ67Ev449G5Q6yoZsxT
+ dPka4bT5il0zeapzx3rv6cMB8ltPoYy5BPaewVJjo93ot4+VyE1dT0gyfUYkiE9p8Nr/
+ dtJZg8Cx3wKrRShqtRlxy5WmwJka83KZl75AOIthbXcxgrru3x89nq3jyPSG4Euqa9uG
+ lc6OD0nMFqKCLybstCTPWpmMuExn2HgqiH6CfRGOHa8Sf+JKN5IpzP8e4QvQtl8sGrgr
+ M+qA==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=google.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=FwcrNbus
-Subject: Re: [Intel-wired-lan] [PATCH 2/3] ice: use bitmap_weighted_xor() in
- ice_find_free_recp_res_idx()
+ unprotected) header.d=google.com header.i=@google.com header.a=rsa-sha256
+ header.s=20230601 header.b=R/ZhBaMz
+Subject: [Intel-wired-lan] [PATCH iwl-next v4] idpf: export RX hardware
+ timestamping information to XDP
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -136,50 +125,161 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+From: Mina Almasry via Intel-wired-lan <intel-wired-lan@osuosl.org>
+Reply-To: Mina Almasry <almasrymina@google.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, 23 Dec 2025 11:23:01 -0500
-"Yury Norov (NVIDIA)" <yury.norov@gmail.com> wrote:
+From: YiFei Zhu <zhuyifei@google.com>
 
-> Use the right helper and save one bitmaps traverse. 
+The logic is similar to idpf_rx_hwtstamp, but the data is exported
+as a BPF kfunc instead of appended to an skb to support grabbing
+timestamps in xsk packets.
 
-It makes no difference here.
-The bitmap has 48 entries and is just a single 'long' on 64bit.
-It is also already in a very slow path that has iterated all the
-'set' bit of two bitmaps.
+A idpf_queue_has(PTP, rxq) condition is added to check the queue
+supports PTP similar to idpf_rx_process_skb_fields.
 
-The code is also pretty convoluted and confusing already.
-One of the other bitmaps has 64 entries, recoding using u64 would
-make it a bit more readable.
+Tested using an xsk connection and checking xdp timestamps are
+retreivable in received packets.
 
-Doing the 'weight' here is also just optimising for failure.
+Cc: intel-wired-lan@lists.osuosl.org
+Signed-off-by: YiFei Zhu <zhuyifei@google.com>
+Signed-off-by: Mina Almasry <almasrymina@google.com>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 
-Oh, and using u8 and u16 for function parameters, return values and
-maths requires extra instructions and is usually a bad idea.
+---
 
-	Dvaid
+v4: https://lore.kernel.org/netdev/20251219202957.2309698-1-almasrymina@google.com/
+- Fix indentation (lobakin)
+- I kept the (u64) casts for all bit shifted bits in idpf_xdp_get_qw3
+  and friends as I see all idpf_xdp_get_qw* functions do the cast in all
+  bit-shifted variables.
 
-> 
-> Signed-off-by: Yury Norov (NVIDIA) <yury.norov@gmail.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_switch.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
-> index 84848f0123e7..903417477929 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_switch.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_switch.c
-> @@ -4984,10 +4984,8 @@ ice_find_free_recp_res_idx(struct ice_hw *hw, const unsigned long *profiles,
->  			  hw->switch_info->recp_list[bit].res_idxs,
->  			  ICE_MAX_FV_WORDS);
->  
-> -	bitmap_xor(free_idx, used_idx, possible_idx, ICE_MAX_FV_WORDS);
-> -
->  	/* return number of free indexes */
-> -	return (u16)bitmap_weight(free_idx, ICE_MAX_FV_WORDS);
-> +	return (u16)bitmap_weighted_xor(free_idx, used_idx, possible_idx, ICE_MAX_FV_WORDS);
->  }
->  
->  /**
+v3: https://lore.kernel.org/netdev/20251218022948.3288897-1-almasrymina@google.com/
+- Do the idpf_queue_has(PTP) check before we read qw1 (lobakin)
+- Fix _qw1 not copying over ts_low on on !__LIBETH_WORD_ACCESS systems
+  (AI)
+
+v2: https://lore.kernel.org/netdev/20251122140839.3922015-1-almasrymina@google.com/
+- Fixed alphabetical ordering
+- Use the xdp desc type instead of virtchnl one (required some added
+  helpers)
+
+---
+ drivers/net/ethernet/intel/idpf/xdp.c | 31 +++++++++++++++++++++++++++
+ drivers/net/ethernet/intel/idpf/xdp.h | 20 +++++++++++++++++
+ 2 files changed, 51 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/idpf/xdp.c b/drivers/net/ethernet/intel/idpf/xdp.c
+index 958d16f87424..0916d201bf98 100644
+--- a/drivers/net/ethernet/intel/idpf/xdp.c
++++ b/drivers/net/ethernet/intel/idpf/xdp.c
+@@ -2,6 +2,7 @@
+ /* Copyright (C) 2025 Intel Corporation */
+ 
+ #include "idpf.h"
++#include "idpf_ptp.h"
+ #include "idpf_virtchnl.h"
+ #include "xdp.h"
+ #include "xsk.h"
+@@ -391,8 +392,38 @@ static int idpf_xdpmo_rx_hash(const struct xdp_md *ctx, u32 *hash,
+ 				    pt);
+ }
+ 
++static int idpf_xdpmo_rx_timestamp(const struct xdp_md *ctx, u64 *timestamp)
++{
++	const struct libeth_xdp_buff *xdp = (typeof(xdp))ctx;
++	struct idpf_xdp_rx_desc desc __uninitialized;
++	const struct idpf_rx_queue *rxq;
++	u64 cached_time, ts_ns;
++	u32 ts_high;
++
++	rxq = libeth_xdp_buff_to_rq(xdp, typeof(*rxq), xdp_rxq);
++
++	if (!idpf_queue_has(PTP, rxq))
++		return -ENODATA;
++
++	idpf_xdp_get_qw1(&desc, xdp->desc);
++
++	if (!(idpf_xdp_rx_ts_low(&desc) & VIRTCHNL2_RX_FLEX_TSTAMP_VALID))
++		return -ENODATA;
++
++	cached_time = READ_ONCE(rxq->cached_phc_time);
++
++	idpf_xdp_get_qw3(&desc, xdp->desc);
++
++	ts_high = idpf_xdp_rx_ts_high(&desc);
++	ts_ns = idpf_ptp_tstamp_extend_32b_to_64b(cached_time, ts_high);
++
++	*timestamp = ts_ns;
++	return 0;
++}
++
+ static const struct xdp_metadata_ops idpf_xdpmo = {
+ 	.xmo_rx_hash		= idpf_xdpmo_rx_hash,
++	.xmo_rx_timestamp	= idpf_xdpmo_rx_timestamp,
+ };
+ 
+ void idpf_xdp_set_features(const struct idpf_vport *vport)
+diff --git a/drivers/net/ethernet/intel/idpf/xdp.h b/drivers/net/ethernet/intel/idpf/xdp.h
+index 479f5ef3c604..1748a0d73547 100644
+--- a/drivers/net/ethernet/intel/idpf/xdp.h
++++ b/drivers/net/ethernet/intel/idpf/xdp.h
+@@ -112,11 +112,13 @@ struct idpf_xdp_rx_desc {
+ 	aligned_u64		qw1;
+ #define IDPF_XDP_RX_BUF		GENMASK_ULL(47, 32)
+ #define IDPF_XDP_RX_EOP		BIT_ULL(1)
++#define IDPF_XDP_RX_TS_LOW	GENMASK_ULL(31, 24)
+ 
+ 	aligned_u64		qw2;
+ #define IDPF_XDP_RX_HASH	GENMASK_ULL(31, 0)
+ 
+ 	aligned_u64		qw3;
++#define IDPF_XDP_RX_TS_HIGH	GENMASK_ULL(63, 32)
+ } __aligned(4 * sizeof(u64));
+ static_assert(sizeof(struct idpf_xdp_rx_desc) ==
+ 	      sizeof(struct virtchnl2_rx_flex_desc_adv_nic_3));
+@@ -128,6 +130,8 @@ static_assert(sizeof(struct idpf_xdp_rx_desc) ==
+ #define idpf_xdp_rx_buf(desc)	FIELD_GET(IDPF_XDP_RX_BUF, (desc)->qw1)
+ #define idpf_xdp_rx_eop(desc)	!!((desc)->qw1 & IDPF_XDP_RX_EOP)
+ #define idpf_xdp_rx_hash(desc)	FIELD_GET(IDPF_XDP_RX_HASH, (desc)->qw2)
++#define idpf_xdp_rx_ts_low(desc)	FIELD_GET(IDPF_XDP_RX_TS_LOW, (desc)->qw1)
++#define idpf_xdp_rx_ts_high(desc)	FIELD_GET(IDPF_XDP_RX_TS_HIGH, (desc)->qw3)
+ 
+ static inline void
+ idpf_xdp_get_qw0(struct idpf_xdp_rx_desc *desc,
+@@ -149,6 +153,9 @@ idpf_xdp_get_qw1(struct idpf_xdp_rx_desc *desc,
+ 	desc->qw1 = ((const typeof(desc))rxd)->qw1;
+ #else
+ 	desc->qw1 = ((u64)le16_to_cpu(rxd->buf_id) << 32) |
++		    ((u64)rxd->ts_low << 24) |
++		    ((u64)rxd->fflags1 << 16) |
++		    ((u64)rxd->status_err1 << 8) |
+ 		    rxd->status_err0_qw1;
+ #endif
+ }
+@@ -166,6 +173,19 @@ idpf_xdp_get_qw2(struct idpf_xdp_rx_desc *desc,
+ #endif
+ }
+ 
++static inline void
++idpf_xdp_get_qw3(struct idpf_xdp_rx_desc *desc,
++		 const struct virtchnl2_rx_flex_desc_adv_nic_3 *rxd)
++{
++#ifdef __LIBETH_WORD_ACCESS
++	desc->qw3 = ((const typeof(desc))rxd)->qw3;
++#else
++	desc->qw3 = ((u64)le32_to_cpu(rxd->ts_high) << 32) |
++		    ((u64)le16_to_cpu(rxd->fmd6) << 16) |
++		    le16_to_cpu(rxd->l2tag1);
++#endif
++}
++
+ void idpf_xdp_set_features(const struct idpf_vport *vport);
+ 
+ int idpf_xdp(struct net_device *dev, struct netdev_bpf *xdp);
+
+base-commit: 7b8e9264f55a9c320f398e337d215e68cca50131
+-- 
+2.52.0.351.gbe84eed79e-goog
 
