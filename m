@@ -1,97 +1,99 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C971CCDCA7E
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Dec 2025 16:17:32 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id BB8FACDCA81
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Dec 2025 16:17:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E625781260;
-	Wed, 24 Dec 2025 15:17:30 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YE5P-biz4UYr; Wed, 24 Dec 2025 15:17:30 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6DE488121C
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1766589450;
-	bh=gGWuTJdyvySiWfAASA251NRmq/c7xS9B99//sMiHEYM=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=hVBorc/eEx8x6QjUtivQIa23zL8pmAYLKOTrj1cDyH45Rf0Ac5bC6tF70GILIm9g+
-	 3+DiIQqm4XC8hMlSPQrcAKDJTOoS1m4H9FoYlUYDTIakLcOppASTIRrpsXQuG67Rju
-	 Dv9EGwr+1x60y34IQiXos1AkOoM0e3+FsL0Y0NAP6aAE08yXpnANIL9nWByKBb6B2U
-	 SDVg+HyPDtqwksRyu9qmhjqYqD5aBS5FgxtG0QVV1fCBl4CtoC+eSjFHIC34GPbK1h
-	 m5RI1yRV93kKkEhU3iw336GEmDNQ76jp+0pUjQYElE1qF0hwYe0WSFcdW8adEIik8c
-	 2Ww4YU4lehzlQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6DE488121C;
-	Wed, 24 Dec 2025 15:17:30 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 3E869BE
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Dec 2025 15:17:28 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 242E360697
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Dec 2025 15:17:28 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EE041608A5;
+	Wed, 24 Dec 2025 15:17:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xRUwsjGo2g21 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 24 Dec 2025 15:17:27 +0000 (UTC)
+ id ZK91fV50QHjn; Wed, 24 Dec 2025 15:17:32 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3E8D1608A7
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1766589452;
+	bh=oFfUBqFcFVGvw75PpaOALsS8bWfm8yUpxJk/la9fyog=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=nME82oA4LG+7w11MD+ZzSuv2hybhfvIZDTWTEVfbfJNXXxHGfqTGvOEPXyp+rQB7O
+	 7gQgGTTl59FBbnoWWDXtXCDQ3+2PrQ2sqo6KpC+s7iJB2qmu1LeBC32TWaXGVLNg11
+	 ROmSFgnoWvhwou/osUQYDQUVuEViEiDrPI1Rt1FNEiUyDIRVwSOrPo1qmYV/b20WOy
+	 dBgphfiir441Qk4bK0BiTlD/8S0WfCeprMnU1Jjx1nCrR3+K9J96c9y4nzXX1WIww0
+	 1vmfN75QD7uE3MolT/PqhHJavKQuTPbbRRPqFqweEtS1gSSAaBcIyNN9fPwZ2fQubF
+	 bxQc9h6HW7K0A==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3E8D1608A7;
+	Wed, 24 Dec 2025 15:17:32 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id C4E2CBE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Dec 2025 15:17:30 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id AB46A60697
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Dec 2025 15:17:30 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id QpuywL8lZ6s5 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 24 Dec 2025 15:17:29 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
  helo=mgamail.intel.com; envelope-from=vitaly.lifshits@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6ACF560652
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6ACF560652
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A860860652
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A860860652
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6ACF560652
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Dec 2025 15:17:27 +0000 (UTC)
-X-CSE-ConnectionGUID: 770UzxGJRGa0L6QtM4gWvw==
-X-CSE-MsgGUID: hHIHwScAQOKbHEYgUoCPQw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11652"; a="68583278"
-X-IronPort-AV: E=Sophos;i="6.21,174,1763452800"; d="scan'208";a="68583278"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A860860652
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Dec 2025 15:17:29 +0000 (UTC)
+X-CSE-ConnectionGUID: XIa+OtdHTLOLIxp5yUsbBg==
+X-CSE-MsgGUID: l/oYRPfHSHSUS0Xz2zestQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11652"; a="68583283"
+X-IronPort-AV: E=Sophos;i="6.21,174,1763452800"; d="scan'208";a="68583283"
 Received: from orviesa004.jf.intel.com ([10.64.159.144])
  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Dec 2025 07:17:27 -0800
-X-CSE-ConnectionGUID: 85ZYxzLBSDCSCdI+tQUB9g==
-X-CSE-MsgGUID: Cp99QbOsS06SMIhDbQ25aA==
+ 24 Dec 2025 07:17:30 -0800
+X-CSE-ConnectionGUID: 0r6k3T/ESwmXhRMeAzDTLA==
+X-CSE-MsgGUID: NVaM+F+OQpOFOEhtaePZ7g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,174,1763452800"; d="scan'208";a="204574546"
+X-IronPort-AV: E=Sophos;i="6.21,174,1763452800"; d="scan'208";a="204574563"
 Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.70])
  by orviesa004.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Dec 2025 07:17:26 -0800
+ 24 Dec 2025 07:17:29 -0800
 From: Vitaly Lifshits <vitaly.lifshits@intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: Vitaly Lifshits <vitaly.lifshits@intel.com>
-Date: Wed, 24 Dec 2025 17:17:18 +0200
-Message-Id: <20251224151720.1427716-1-vitaly.lifshits@intel.com>
+Date: Wed, 24 Dec 2025 17:17:19 +0200
+Message-Id: <20251224151720.1427716-2-vitaly.lifshits@intel.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20251224151720.1427716-1-vitaly.lifshits@intel.com>
+References: <20251224151720.1427716-1-vitaly.lifshits@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1766589448; x=1798125448;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=o28uHV2+xigY0GAg4sLI0GCP954q6b0cxe4Iw86eVWg=;
- b=Y1qFfx+E/wjJOE2TgKbkGoZ2MbaxdpqzcX2AWpRbam5wyRkKyIuhoRQS
- 6hdF+zkmkAwRJgILF11Cnb4nhvF646xWjuiUIaPu/B5heDZOk19l34xZu
- VU9v/Sk9mkviBC5CY7oMpyAcG6nCeUvozmle/BP6Mich04H1JgjydDA1f
- IXIcZJvDwGZRXgOPY/b2hURWquJ6vMDLZAdWybIzkyP8LxQtw+hiqTkhJ
- h41654SiLU10Nf18CJ/q7RO/bLM8H+SQmDqGMaVUNzcCT8Y2VdxfAMeSk
- AyuNgzvxII+uDqUsxqr7tWZu2sUGTz6nih8bfGf9LIw2Aek4Q6+Xhwg5G
- A==;
+ t=1766589450; x=1798125450;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=pI0WyQZOmo6Ew8SAOdCNxEaOvTTdD58TZe8ANGbKMbQ=;
+ b=fb4uEnc++ykanl0Qe0amvKzn+zMACtMuFfVTUt5WJthtECOWllQP82cz
+ w1HvyJmafkbYOuvW1bHIGppbNhm4g0Xndfewhj4jGynF24K3NKALQbVjY
+ EDvQVpEhMgl1WdbxXerPAkCLcCCaFb5VCgdDQFy9XdSz0yOWlIVY4Hw1j
+ TJrYr6cBISc6KFGZJZFo5l6VVVGgWSgkpVcpJGkfb2N9D0ZX5M3QtlUqS
+ FYM4xBoqLfcuutUGuZZMYtY847CMPcCgUfJazp0SLWYVj6ykKnv2M6aGX
+ ZlvfygSORzgmBlSIyaY0/FzWkz8U1Gj9JiPj6Ls+pyqOsxhH1ANjhzW05
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=Y1qFfx+E
-Subject: [Intel-wired-lan] [PATCH iwl-net v2 0/2] e1000e: avoid unexpected
- autonomous power-gating on Panther Lake devices
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=fb4uEnc+
+Subject: [Intel-wired-lan] [PATCH iwl-net v2 1/2] e1000e: introduce new
+ board type for Panther Lake PCH
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -107,27 +109,119 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Add new board type for Panther Lake devices for separating device-specific
+features and flows.
+Additionally, remove the deprecated device IDs 0x57B5 and 0x57B6, which
+are not used by any existing devices.
 
-Panther Lake systems introduced an autonomous power gating feature for the
-integrated Gigabit Ethernet in shutdown (S5) state. As part of it, the
-reset value of DPG_EN bit was changed to 1. Clear this bit after
-performing hardware reset, to avoid errors such as Tx/Rx hangs, or packet
-loss/corruption.
-
-This patch requires introducing a new board type for separating Panther
-Lake and later devices from earlier ones.
-
-Vitaly Lifshits (2):
-  e1000e: introduce new board type for Panther Lake PCH
-  e1000e: clear DPG_EN after reset to avoid autonomous power-gating
-
- drivers/net/ethernet/intel/e1000e/defines.h |  1 +
- drivers/net/ethernet/intel/e1000e/e1000.h   |  4 ++-
+Fixes: 0c9183ce61bc ("e1000e: Add support for the next LOM generation")
+Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
+---
+v2: edit commit message to clarify the changes
+v1: initial version
+---
+ drivers/net/ethernet/intel/e1000e/e1000.h   |  4 +++-
  drivers/net/ethernet/intel/e1000e/hw.h      |  2 --
- drivers/net/ethernet/intel/e1000e/ich8lan.c | 29 +++++++++++++++++++++
- drivers/net/ethernet/intel/e1000e/netdev.c  | 15 +++++------
- 5 files changed, 40 insertions(+), 11 deletions(-)
+ drivers/net/ethernet/intel/e1000e/ich8lan.c | 20 ++++++++++++++++++++
+ drivers/net/ethernet/intel/e1000e/netdev.c  | 15 +++++++--------
+ 4 files changed, 30 insertions(+), 11 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/e1000e/e1000.h b/drivers/net/ethernet/intel/e1000e/e1000.h
+index aa08f397988e..63ebe00376f5 100644
+--- a/drivers/net/ethernet/intel/e1000e/e1000.h
++++ b/drivers/net/ethernet/intel/e1000e/e1000.h
+@@ -117,7 +117,8 @@ enum e1000_boards {
+ 	board_pch_cnp,
+ 	board_pch_tgp,
+ 	board_pch_adp,
+-	board_pch_mtp
++	board_pch_mtp,
++	board_pch_ptp
+ };
+ 
+ struct e1000_ps_page {
+@@ -527,6 +528,7 @@ extern const struct e1000_info e1000_pch_cnp_info;
+ extern const struct e1000_info e1000_pch_tgp_info;
+ extern const struct e1000_info e1000_pch_adp_info;
+ extern const struct e1000_info e1000_pch_mtp_info;
++extern const struct e1000_info e1000_pch_ptp_info;
+ extern const struct e1000_info e1000_es2_info;
+ 
+ void e1000e_ptp_init(struct e1000_adapter *adapter);
+diff --git a/drivers/net/ethernet/intel/e1000e/hw.h b/drivers/net/ethernet/intel/e1000e/hw.h
+index fc8ed38aa095..c7ac599e5a7a 100644
+--- a/drivers/net/ethernet/intel/e1000e/hw.h
++++ b/drivers/net/ethernet/intel/e1000e/hw.h
+@@ -118,8 +118,6 @@ struct e1000_hw;
+ #define E1000_DEV_ID_PCH_ARL_I219_V24		0x57A1
+ #define E1000_DEV_ID_PCH_PTP_I219_LM25		0x57B3
+ #define E1000_DEV_ID_PCH_PTP_I219_V25		0x57B4
+-#define E1000_DEV_ID_PCH_PTP_I219_LM26		0x57B5
+-#define E1000_DEV_ID_PCH_PTP_I219_V26		0x57B6
+ #define E1000_DEV_ID_PCH_PTP_I219_LM27		0x57B7
+ #define E1000_DEV_ID_PCH_PTP_I219_V27		0x57B8
+ #define E1000_DEV_ID_PCH_NVL_I219_LM29		0x57B9
+diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+index 0ff8688ac3b8..eead80bba6f4 100644
+--- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
++++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+@@ -6208,3 +6208,23 @@ const struct e1000_info e1000_pch_mtp_info = {
+ 	.phy_ops		= &ich8_phy_ops,
+ 	.nvm_ops		= &spt_nvm_ops,
+ };
++
++const struct e1000_info e1000_pch_ptp_info = {
++	.mac			= e1000_pch_ptp,
++	.flags			= FLAG_IS_ICH
++				  | FLAG_HAS_WOL
++				  | FLAG_HAS_HW_TIMESTAMP
++				  | FLAG_HAS_CTRLEXT_ON_LOAD
++				  | FLAG_HAS_AMT
++				  | FLAG_HAS_FLASH
++				  | FLAG_HAS_JUMBO_FRAMES
++				  | FLAG_APME_IN_WUC,
++	.flags2			= FLAG2_HAS_PHY_STATS
++				  | FLAG2_HAS_EEE,
++	.pba			= 26,
++	.max_hw_frame_size	= 9022,
++	.get_variants		= e1000_get_variants_ich8lan,
++	.mac_ops		= &ich8_mac_ops,
++	.phy_ops		= &ich8_phy_ops,
++	.nvm_ops		= &spt_nvm_ops,
++};
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 116f3c92b5bc..c066d820f53b 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -55,6 +55,7 @@ static const struct e1000_info *e1000_info_tbl[] = {
+ 	[board_pch_tgp]		= &e1000_pch_tgp_info,
+ 	[board_pch_adp]		= &e1000_pch_adp_info,
+ 	[board_pch_mtp]		= &e1000_pch_mtp_info,
++	[board_pch_ptp]		= &e1000_pch_ptp_info,
+ };
+ 
+ struct e1000_reg_info {
+@@ -7926,14 +7927,12 @@ static const struct pci_device_id e1000_pci_tbl[] = {
+ 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_LNP_I219_V21), board_pch_mtp },
+ 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ARL_I219_LM24), board_pch_mtp },
+ 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ARL_I219_V24), board_pch_mtp },
+-	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_PTP_I219_LM25), board_pch_mtp },
+-	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_PTP_I219_V25), board_pch_mtp },
+-	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_PTP_I219_LM26), board_pch_mtp },
+-	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_PTP_I219_V26), board_pch_mtp },
+-	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_PTP_I219_LM27), board_pch_mtp },
+-	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_PTP_I219_V27), board_pch_mtp },
+-	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_NVL_I219_LM29), board_pch_mtp },
+-	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_NVL_I219_V29), board_pch_mtp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_PTP_I219_LM25), board_pch_ptp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_PTP_I219_V25), board_pch_ptp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_PTP_I219_LM27), board_pch_ptp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_PTP_I219_V27), board_pch_ptp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_NVL_I219_LM29), board_pch_ptp },
++	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_NVL_I219_V29), board_pch_ptp },
+ 
+ 	{ 0, 0, 0, 0, 0, 0, 0 }	/* terminate list */
+ };
 -- 
 2.34.1
 
