@@ -1,80 +1,102 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 40A80CDD946
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Dec 2025 10:27:24 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6FEABCDEB70
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Dec 2025 14:03:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AEBB18126C;
-	Thu, 25 Dec 2025 09:27:22 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 805374090C;
+	Fri, 26 Dec 2025 13:03:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id j2fGpUbsgUad; Thu, 25 Dec 2025 09:27:22 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id M4VPG_7bz_59; Fri, 26 Dec 2025 13:03:34 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1454981277
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9435B40949
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1766654842;
-	bh=z1s5C7iEYy9u+XBXfT5X/k/pOFRT4TN7MTpomVX9Uwg=;
-	h=Date:To:References:Cc:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1766754214;
+	bh=8TMeKs8rXyk1S3KfeHxrD7TaK2WwkDTQ9X9XVl1cfP8=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=Ejnch+PV4aVr5ggEa5CXLy32KFOTDqh7Ya3L+pHsMjx8j4I5Fyz+g5+PrMDXlE8c3
-	 0R+somAIDBv2jrNMZ7sFKgtJsIyz2JsvyBFqch05/Y6etJDS8BKToBQNaJeaE3GWNu
-	 jPdgldy/yj9j4ASbe8nwb0G2MpAyB4k1Y10PdvQNib485bbk7EIIOZJlrR53rgdLYj
-	 0LrZIHb10H7yPK3JlfbxvjhN9tXFO0nbxHimiKms5RcmMstIxzIgZ8CeRnHOQla0+b
-	 Lh+fRf7RWlT5UNrm2ouwEe6DOTaaW2M3cqVuCFrWmxj07D5KgLh2/CggSFnA0+aIhH
-	 Kdc5DHXgxaTaw==
+	b=wDQ4lXZ7zCe12+n8L0eXW693VOnutAvUX/q1bzwxlvCFCXLl3alWcWM1r1Ju+L3xF
+	 tTtTJcoEjmHPxw+UWWZL2WSihvPp06u/hwP52O41S7D3qEH/e47OLvLSOHGDok6kmu
+	 EmQiWtlaxCWhHhYnS630P+h7dTTVDsv7Ye2Yp4vNKqM73M88wRhLQUgTDOrx8v4Pop
+	 U/iZlN/ElHYPHGlnd8O9VKCSmAO1Miwd8rjJ5RcqDCQAK9eNC2GQlG4CnrvcJs2dR2
+	 inp98kHlsjECDdCqBclk5fVMADE8laJk3N2XGAqGJsbUxmW/ix/EqKzMmSJRuqQH9+
+	 Yk7oFOMjbVihg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1454981277;
-	Thu, 25 Dec 2025 09:27:22 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9435B40949;
+	Fri, 26 Dec 2025 13:03:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 291F7EC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Dec 2025 09:27:20 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 69027EC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Dec 2025 13:03:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1695860628
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Dec 2025 09:27:20 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 51FE44025E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Dec 2025 13:03:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id iUB9fmYIB9gg for <intel-wired-lan@lists.osuosl.org>;
- Thu, 25 Dec 2025 09:27:19 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 05E8660826
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 05E8660826
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 05E8660826
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Dec 2025 09:27:17 +0000 (UTC)
-Received: from [10.128.41.173] (unknown [103.50.105.82])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id C799C61CC3FCE;
- Thu, 25 Dec 2025 10:26:34 +0100 (CET)
-Message-ID: <14a86654-7bcd-48ba-bda6-0205b07877f9@molgen.mpg.de>
-Date: Thu, 25 Dec 2025 14:26:14 +0500
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id U6gWb1FXWFDg for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 26 Dec 2025 13:03:31 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 43877400AE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 43877400AE
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 43877400AE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Dec 2025 13:03:30 +0000 (UTC)
+X-CSE-ConnectionGUID: q5yVxbYvSjiqxn4E7KCqEw==
+X-CSE-MsgGUID: uMmS6Rj/ThCa/7IJ7pEAug==
+X-IronPort-AV: E=McAfee;i="6800,10657,11635"; a="68443776"
+X-IronPort-AV: E=Sophos;i="6.20,256,1758610800"; d="scan'208";a="68443776"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+ by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Dec 2025 05:03:30 -0800
+X-CSE-ConnectionGUID: BTqgoosyTNuUQHMcdAoE1g==
+X-CSE-MsgGUID: vd7TULrOTCezpPb2WnQAHw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,177,1763452800"; d="scan'208";a="200685821"
+Received: from lkp-server02.sh.intel.com (HELO dd3453e2b682) ([10.239.97.151])
+ by fmviesa008.fm.intel.com with ESMTP; 26 Dec 2025 05:03:28 -0800
+Received: from kbuild by dd3453e2b682 with local (Exim 4.98.2)
+ (envelope-from <lkp@intel.com>) id 1vZ7Ta-0000000052f-1Jdp;
+ Fri, 26 Dec 2025 13:03:26 +0000
+Date: Fri, 26 Dec 2025 21:02:30 +0800
+From: kernel test robot <lkp@intel.com>
+To: Vitaly Lifshits <vitaly.lifshits@intel.com>,
+ intel-wired-lan@lists.osuosl.org
+Cc: oe-kbuild-all@lists.linux.dev, Vitaly Lifshits <vitaly.lifshits@intel.com>
+Message-ID: <202512262022.ZrpAYewG-lkp@intel.com>
+References: <20251223095032.1379862-3-vitaly.lifshits@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Aaron Ma <aaron.ma@canonical.com>
-References: <20251225062122.736308-1-aaron.ma@canonical.com>
-Content-Language: en-US
-Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20251225062122.736308-1-aaron.ma@canonical.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH v3 1/2] ice: Fix NULL pointer
- dereference in ice_vsi_set_napi_queues
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251223095032.1379862-3-vitaly.lifshits@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1766754212; x=1798290212;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=9YdZzEAbofxVaxglfWO2jF1QRssb6tkG6W1T+FnBIGg=;
+ b=LdxhlQgCrqelx97TlDM5/kcunFzIYMEtvifZ52b47eJxVVNbDV1g31nu
+ YwDKWYZtwFnhwoDETcLefEZIBs2t+ZljOQFmNElTdvwgku2R+sFGUNWPf
+ l/HJ54DRHguWXPppFRytPh9MCFZn5G0I+zyU5XrT2kZ5hS+LvQTwPozLL
+ VpvM9UxtInk7C4EBB4tCC7IFOTBJl3lwF22+lpOHAVFygawV++Ks8mFtf
+ JVH5sLUjeRPgmkAvHIZxBK+GApuZtbHg5B4c/p1XiGyFuc/tsJCpr05u9
+ 7J3URB6/b77WEAJynMKj7XG6niXDKQORdNWT3EZE9O/j4ncVZtzM6d0jb
+ A==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=LdxhlQgC
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1 2/2] e1000e: clear DPG_EN
+ after reset to avoid autonomous power-gating
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -90,97 +112,154 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Aaron,
+Hi Vitaly,
 
+kernel test robot noticed the following build warnings:
 
-Thank you for the patch.
+[auto build test WARNING on tnguy-net-queue/dev-queue]
 
-Am 25.12.25 um 11:21 schrieb Aaron Ma via Intel-wired-lan:
-> Add NULL pointer checks in ice_vsi_set_napi_queues() to prevent crashes
-> during resume from suspend when rings[q_idx]->q_vector is NULL.
-> 
-> Tested adaptor:
-> 60:00.0 Ethernet controller [0200]: Intel Corporation Ethernet Controller E810-XXV for SFP [8086:159b] (rev 02)
->          Subsystem: Intel Corporation Ethernet Network Adapter E810-XXV-2 [8086:4003]
-> 
-> SR-IOV state: both disabled and enabled can reproduce this issue.
-> 
-> kernel version: v6.18
-> 
-> Reproduce steps:
-> Bootup and execute suspend like systemctl suspend or rtcwake.
-> 
-> Log:
-> <1>[  231.443607] BUG: kernel NULL pointer dereference, address: 0000000000000040
-> <1>[  231.444052] #PF: supervisor read access in kernel mode
-> <1>[  231.444484] #PF: error_code(0x0000) - not-present page
-> <6>[  231.444913] PGD 0 P4D 0
-> <4>[  231.445342] Oops: Oops: 0000 [#1] SMP NOPTI
-> <4>[  231.446635] RIP: 0010:netif_queue_set_napi+0xa/0x170
-> <4>[  231.447067] Code: 31 f6 31 ff c3 cc cc cc cc 0f 1f 80 00 00 00 00 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 0f 1f 44 00 00 48 85 c9 74 0b <48> 83 79 30 00 0f 84 39 01 00 00 55 41 89 d1 49 89 f8 89 f2 48 89
-> <4>[  231.447513] RSP: 0018:ffffcc780fc078c0 EFLAGS: 00010202
-> <4>[  231.447961] RAX: ffff8b848ca30400 RBX: ffff8b848caf2028 RCX: 0000000000000010
-> <4>[  231.448443] RDX: 0000000000000000 RSI: 0000000000000000 RDI: ffff8b848dbd4000
-> <4>[  231.448896] RBP: ffffcc780fc078e8 R08: 0000000000000000 R09: 0000000000000000
-> <4>[  231.449345] R10: 0000000000000000 R11: 0000000000000000 R12: 0000000000000001
-> <4>[  231.449817] R13: ffff8b848dbd4000 R14: ffff8b84833390c8 R15: 0000000000000000
-> <4>[  231.450265] FS:  00007c7b29e9d740(0000) GS:ffff8b8c068e2000(0000) knlGS:0000000000000000
-> <4>[  231.450715] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> <4>[  231.451179] CR2: 0000000000000040 CR3: 000000030626f004 CR4: 0000000000f72ef0
-> <4>[  231.451629] PKRU: 55555554
-> <4>[  231.452076] Call Trace:
-> <4>[  231.452549]  <TASK>
-> <4>[  231.452996]  ? ice_vsi_set_napi_queues+0x4d/0x110 [ice]
-> <4>[  231.453482]  ice_resume+0xfd/0x220 [ice]
-> <4>[  231.453977]  ? __pfx_pci_pm_resume+0x10/0x10
-> <4>[  231.454425]  pci_pm_resume+0x8c/0x140
-> <4>[  231.454872]  ? __pfx_pci_pm_resume+0x10/0x10
-> <4>[  231.455347]  dpm_run_callback+0x5f/0x160
-> <4>[  231.455796]  ? dpm_wait_for_superior+0x107/0x170
-> <4>[  231.456244]  device_resume+0x177/0x270
-> <4>[  231.456708]  dpm_resume+0x209/0x2f0
-> <4>[  231.457151]  dpm_resume_end+0x15/0x30
-> <4>[  231.457596]  suspend_devices_and_enter+0x1da/0x2b0
-> <4>[  231.458054]  enter_state+0x10e/0x570
-> 
-> Add defensive checks for both the ring pointer and its q_vector
-> before dereferencing, allowing the system to resume successfully even when
-> q_vectors are unmapped.
-> 
-> Fixes: 2a5dc090b92cf ("ice: move netif_queue_set_napi to rtnl-protected sections")
-> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> Signed-off-by: Aaron Ma <aaron.ma@canonical.com>
-> ---
-> V1 -> V2: add test device info.
-> V2 -> V3: no changes.
-> 
->   drivers/net/ethernet/intel/ice/ice_lib.c | 6 ++++--
->   1 file changed, 4 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-> index 15621707fbf81..9d1178bde4495 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_lib.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-> @@ -2779,11 +2779,13 @@ void ice_vsi_set_napi_queues(struct ice_vsi *vsi)
->   
->   	ASSERT_RTNL();
->   	ice_for_each_rxq(vsi, q_idx)
-> -		netif_queue_set_napi(netdev, q_idx, NETDEV_QUEUE_TYPE_RX,
-> +		if (vsi->rx_rings[q_idx] && vsi->rx_rings[q_idx]->q_vector)
-> +			netif_queue_set_napi(netdev, q_idx, NETDEV_QUEUE_TYPE_RX,
->   				     &vsi->rx_rings[q_idx]->q_vector->napi);
->   
->   	ice_for_each_txq(vsi, q_idx)
-> -		netif_queue_set_napi(netdev, q_idx, NETDEV_QUEUE_TYPE_TX,
-> +		if (vsi->tx_rings[q_idx] && vsi->tx_rings[q_idx]->q_vector)
-> +			netif_queue_set_napi(netdev, q_idx, NETDEV_QUEUE_TYPE_TX,
->   				     &vsi->tx_rings[q_idx]->q_vector->napi);
->   	/* Also set the interrupt number for the NAPI */
->   	ice_for_each_q_vector(vsi, v_idx) {
+url:    https://github.com/intel-lab-lkp/linux/commits/Vitaly-Lifshits/e1000e-introduce-new-MAC-type-for-Panther-Lake-PCH/20251223-175226
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+patch link:    https://lore.kernel.org/r/20251223095032.1379862-3-vitaly.lifshits%40intel.com
+patch subject: [Intel-wired-lan] [PATCH iwl-net v1 2/2] e1000e: clear DPG_EN after reset to avoid autonomous power-gating
+config: i386-randconfig-141-20251224 (https://download.01.org/0day-ci/archive/20251226/202512262022.ZrpAYewG-lkp@intel.com/config)
+compiler: gcc-14 (Debian 14.2.0-19) 14.2.0
 
-Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202512262022.ZrpAYewG-lkp@intel.com/
 
+smatch warnings:
+drivers/net/ethernet/intel/e1000e/ich8lan.c:4938 e1000_reset_hw_ich8lan() warn: inconsistent indenting
 
-Kind regards,
+vim +4938 drivers/net/ethernet/intel/e1000e/ich8lan.c
 
-Pa
+  4823	
+  4824	/**
+  4825	 *  e1000_reset_hw_ich8lan - Reset the hardware
+  4826	 *  @hw: pointer to the HW structure
+  4827	 *
+  4828	 *  Does a full reset of the hardware which includes a reset of the PHY and
+  4829	 *  MAC.
+  4830	 **/
+  4831	static s32 e1000_reset_hw_ich8lan(struct e1000_hw *hw)
+  4832	{
+  4833		struct e1000_dev_spec_ich8lan *dev_spec = &hw->dev_spec.ich8lan;
+  4834		u16 kum_cfg;
+  4835		u32 ctrl, reg;
+  4836		s32 ret_val;
+  4837	
+  4838		/* Prevent the PCI-E bus from sticking if there is no TLP connection
+  4839		 * on the last TLP read/write transaction when MAC is reset.
+  4840		 */
+  4841		ret_val = e1000e_disable_pcie_master(hw);
+  4842		if (ret_val)
+  4843			e_dbg("PCI-E Master disable polling has failed.\n");
+  4844	
+  4845		e_dbg("Masking off all interrupts\n");
+  4846		ew32(IMC, 0xffffffff);
+  4847	
+  4848		/* Disable the Transmit and Receive units.  Then delay to allow
+  4849		 * any pending transactions to complete before we hit the MAC
+  4850		 * with the global reset.
+  4851		 */
+  4852		ew32(RCTL, 0);
+  4853		ew32(TCTL, E1000_TCTL_PSP);
+  4854		e1e_flush();
+  4855	
+  4856		usleep_range(10000, 11000);
+  4857	
+  4858		/* Workaround for ICH8 bit corruption issue in FIFO memory */
+  4859		if (hw->mac.type == e1000_ich8lan) {
+  4860			/* Set Tx and Rx buffer allocation to 8k apiece. */
+  4861			ew32(PBA, E1000_PBA_8K);
+  4862			/* Set Packet Buffer Size to 16k. */
+  4863			ew32(PBS, E1000_PBS_16K);
+  4864		}
+  4865	
+  4866		if (hw->mac.type == e1000_pchlan) {
+  4867			/* Save the NVM K1 bit setting */
+  4868			ret_val = e1000_read_nvm(hw, E1000_NVM_K1_CONFIG, 1, &kum_cfg);
+  4869			if (ret_val)
+  4870				return ret_val;
+  4871	
+  4872			if (kum_cfg & E1000_NVM_K1_ENABLE)
+  4873				dev_spec->nvm_k1_enabled = true;
+  4874			else
+  4875				dev_spec->nvm_k1_enabled = false;
+  4876		}
+  4877	
+  4878		ctrl = er32(CTRL);
+  4879	
+  4880		if (!hw->phy.ops.check_reset_block(hw)) {
+  4881			/* Full-chip reset requires MAC and PHY reset at the same
+  4882			 * time to make sure the interface between MAC and the
+  4883			 * external PHY is reset.
+  4884			 */
+  4885			ctrl |= E1000_CTRL_PHY_RST;
+  4886	
+  4887			/* Gate automatic PHY configuration by hardware on
+  4888			 * non-managed 82579
+  4889			 */
+  4890			if ((hw->mac.type == e1000_pch2lan) &&
+  4891			    !(er32(FWSM) & E1000_ICH_FWSM_FW_VALID))
+  4892				e1000_gate_hw_phy_config_ich8lan(hw, true);
+  4893		}
+  4894		ret_val = e1000_acquire_swflag_ich8lan(hw);
+  4895		e_dbg("Issuing a global reset to ich8lan\n");
+  4896		ew32(CTRL, (ctrl | E1000_CTRL_RST));
+  4897		/* cannot issue a flush here because it hangs the hardware */
+  4898		msleep(20);
+  4899	
+  4900		/* Set Phy Config Counter to 50msec */
+  4901		if (hw->mac.type == e1000_pch2lan) {
+  4902			reg = er32(FEXTNVM3);
+  4903			reg &= ~E1000_FEXTNVM3_PHY_CFG_COUNTER_MASK;
+  4904			reg |= E1000_FEXTNVM3_PHY_CFG_COUNTER_50MSEC;
+  4905			ew32(FEXTNVM3, reg);
+  4906		}
+  4907	
+  4908		if (!ret_val)
+  4909			clear_bit(__E1000_ACCESS_SHARED_RESOURCE, &hw->adapter->state);
+  4910	
+  4911		if (ctrl & E1000_CTRL_PHY_RST) {
+  4912			ret_val = hw->phy.ops.get_cfg_done(hw);
+  4913			if (ret_val)
+  4914				return ret_val;
+  4915	
+  4916			ret_val = e1000_post_phy_reset_ich8lan(hw);
+  4917			if (ret_val)
+  4918				return ret_val;
+  4919		}
+  4920	
+  4921		/* For PCH, this write will make sure that any noise
+  4922		 * will be detected as a CRC error and be dropped rather than show up
+  4923		 * as a bad packet to the DMA engine.
+  4924		 */
+  4925		if (hw->mac.type == e1000_pchlan)
+  4926			ew32(CRC_OFFSET, 0x65656565);
+  4927	
+  4928		ew32(IMC, 0xffffffff);
+  4929		er32(ICR);
+  4930	
+  4931		reg = er32(KABGTXD);
+  4932		reg |= E1000_KABGTXD_BGSQLBIAS;
+  4933		ew32(KABGTXD, reg);
+  4934	
+  4935	       /* The reset value of DPG_EN bit was changed to 1
+  4936		* clear it to avoid unexpected autonomous power-gating
+  4937		*/
+> 4938	       if (hw->mac.type >= e1000_pch_ptp) {
+  4939			reg = er32(CTRL_EXT);
+  4940			reg &= ~E1000_CTRL_EXT;
+  4941			ew32(CTRL_EXT, reg);
+  4942		}
+  4943	
+  4944		return 0;
+  4945	}
+  4946	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
