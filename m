@@ -2,127 +2,98 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9489CCF242B
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 05 Jan 2026 08:48:55 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 61CC4CF24E2
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 05 Jan 2026 09:04:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4BB78405BE;
-	Mon,  5 Jan 2026 07:48:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id F296A405BE;
+	Mon,  5 Jan 2026 08:04:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id T_q3uoARVnFw; Mon,  5 Jan 2026 07:48:53 +0000 (UTC)
+ id WV20eSsARa1g; Mon,  5 Jan 2026 08:04:55 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AC576405F3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6F0CA4059B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1767599333;
-	bh=n/bmKUL8qRgfsee/YSRKomJGCW1Xn7Kw0x3qvqzn2es=;
-	h=References:In-Reply-To:Date:To:Cc:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From:Reply-To:From;
-	b=Yk/2N6VAiNhnAhdjxbofVjvNWUP9OZ/pUjGjHK+iVRjiqWQvwRp/dhiMCbPAFQWlm
-	 Xx7HSwkYpGVhP/5aX3DDAQBlBbC/NLJJpaTlHmq//TOMXB7ApGIIRWf+g/1ZzboDt2
-	 452PaSYz1ELjBC2CUpOfYqt+FaleQVHCyLzGDHHOhQYGoTl9wptKFkE/xtpmE5BQTs
-	 +JzIeYZHMDKttPhilpDJQYgl+4HmnUKh8wX1YVOh4PWEh66I9sBonwJvRrhgWdGx96
-	 BA6p7zH9Zyxtgw0SYEZ5M1+W3DSIUOUIwW+DlPbLD+rXb+IIazbJvYQFM1TVu4T66h
-	 hXNnemZVIfALA==
+	s=default; t=1767600295;
+	bh=GbuV+WlJIGnBDSgiGfWkwobLQKSrcJmQy/CjWqIHOEI=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=XgDRaYeYBYNHFxjrgMcoNVHuyoaqJkTCoPVax5a+MUg0dKiDae7gl+q6alGkVzLq+
+	 kjO+PevQ+L3zjX19DHJ5ERiOL0Vrr9U8khdyM4fAQQ+oepYjSMQwF40IhuzLtmKNgm
+	 whhqZYG6VP1uDD5GyOGrcPrkc87ZvkBSzIfrvI2Cv0fGMOj2O7TMCF5KhIyeB+homj
+	 M9xhHULtYg0lOMFk6HSvm9YMPcmhUxcaa/jGtZHPKIBvJMxQ27lTQuFz0J6ls0PDMg
+	 JAJNbDkv5oEUBFhPOkGixqduAFRI0M36z6X6+pAchbt+LiZaOdGoDvcd0a5kcG4fqJ
+	 kwKbDtQ1NEHPQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AC576405F3;
-	Mon,  5 Jan 2026 07:48:53 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6F0CA4059B;
+	Mon,  5 Jan 2026 08:04:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 4ACE3E7
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jan 2026 07:48:51 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id DDA3CE7
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jan 2026 08:04:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 2E393403B1
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jan 2026 07:48:51 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id C3B6780D1F
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jan 2026 08:04:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id d-DcEjkwXaaG for <intel-wired-lan@lists.osuosl.org>;
- Mon,  5 Jan 2026 07:48:50 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::b131; helo=mail-yx1-xb131.google.com;
- envelope-from=boolli@google.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 574B24028D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 574B24028D
-Received: from mail-yx1-xb131.google.com (mail-yx1-xb131.google.com
- [IPv6:2607:f8b0:4864:20::b131])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 574B24028D
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jan 2026 07:48:50 +0000 (UTC)
-Received: by mail-yx1-xb131.google.com with SMTP id
- 956f58d0204a3-641e9422473so11341885d50.2
- for <intel-wired-lan@lists.osuosl.org>; Sun, 04 Jan 2026 23:48:50 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767599329; x=1768204129;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=n/bmKUL8qRgfsee/YSRKomJGCW1Xn7Kw0x3qvqzn2es=;
- b=NDNwEZT04Sq0mroHyIqiIpSj5+MMX+WZFT9Xpw93RLdMtSZQ4e6dv/B2ExTCoM4mOg
- mWZJSzJDQI7nMSrNMHKVzX20cJP6ZoLQJmrDfKB3WAG6U/eYIGriOkz4BxO6ZK2wDs7k
- bdOh+XwlVHS+mJi3U43OuFcBmQwPtLrxt4dlIcvCIbCmNhTf57lRFMlA1ZsZQ2JehN8N
- wtEVIcB6q6HzTQ5aAxQYQbXUU50f5LtRAr/bppr0w8B3s6VJte4GRZaG3nVOOuyWevw3
- nSHqHdSIKjHqD3669B7D3X4wUNQe0G/ylX3Z6IfA6uJyh6/+WN8/Snvg75VB1iqRkjkL
- 1jOw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVeBez1Xyb6g5gbgIPVuuT3Th/AT4bjoWJN3GxBIa26iDKH/vLYfuot++S17H4+Kdq9QW8B4MIGWF8/lRQ6Lvw=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YxpIWAUHLSgqW2nMCTz30hInj6FXE2r6MFkUef/crVn02Gt0Cmr
- exKsGn4jOQZk97YjyX0swoC4lktHUWigkEnWiwyhBTvNXtr4u7kCFUUreaNDjWgh4PzuLpROzIT
- SyESWAFRhc4dssunKOi7hD0mR1/n/m5N0Gut/gy/3
-X-Gm-Gg: AY/fxX7D/J+pz5UO6hTo0rNfbzUvfcZF6/ks0OAjgywwG0TSgdiZxpRmSbCRX1wpBvP
- 2schbWXc3M6Sqw2PW0it4a6ovJmnLaSekdhZQ8thvcLj5flltfuzelxANZBeYnOhvgfbWZCseQp
- 3Y/jEqyRbMUtfspl//3MfjrDgY1S3sdx9RtCJ6tZKsKDBdSw7X9EXYjW1iSoTnGNG+sAVE/UZ7X
- 5C7AKowRFqHx25RnXODT5xgvFkJsquzIImB6LNwP7JCV3DZPGcVQJpcVgfs236rWqFa9O+p
-X-Google-Smtp-Source: AGHT+IFXwD6cyHsmNMVFhNyUFnv73nXM9DtxTI03TbOYxZoqM7wZ1DoxUWMcaV3/f+02LJFjruPLwy6ZlwuYEsuX4xs=
-X-Received: by 2002:a05:690c:6903:b0:786:4459:cb84 with SMTP id
- 00721157ae682-78fb3f709d9mr827618377b3.29.1767599328726; Sun, 04 Jan 2026
- 23:48:48 -0800 (PST)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id H_3pbm_KDUn3 for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  5 Jan 2026 08:04:52 +0000 (UTC)
+X-Greylist: delayed 427 seconds by postgrey-1.37 at util1.osuosl.org;
+ Mon, 05 Jan 2026 08:04:51 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 09BA380D0F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 09BA380D0F
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
+ helo=mgamail.intel.com; envelope-from=vitaly.lifshits@intel.com;
+ receiver=<UNKNOWN> 
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 09BA380D0F
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jan 2026 08:04:51 +0000 (UTC)
+X-CSE-ConnectionGUID: 5sRWj6iZQ5madR88nOjwkg==
+X-CSE-MsgGUID: JVwWVtt4QHKTl3VEPRqBWQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11661"; a="69014478"
+X-IronPort-AV: E=Sophos;i="6.21,203,1763452800"; d="scan'208";a="69014478"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+ by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Jan 2026 23:57:44 -0800
+X-CSE-ConnectionGUID: d0W2AagzQre2iuNhyg5c7w==
+X-CSE-MsgGUID: BvkTCkjiSbur3W1IsNMStg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,203,1763452800"; d="scan'208";a="203304361"
+Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.70])
+ by fmviesa010.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Jan 2026 23:57:42 -0800
+From: Vitaly Lifshits <vitaly.lifshits@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: Vitaly Lifshits <vitaly.lifshits@intel.com>
+Date: Mon,  5 Jan 2026 09:57:38 +0200
+Message-Id: <20260105075738.1514341-1-vitaly.lifshits@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20260105064729.800308-1-boolli@google.com>
- <IA3PR11MB898683A1383A409E8C4B02F6E586A@IA3PR11MB8986.namprd11.prod.outlook.com>
- <CAODvEq5MxAYzDiqNSnxJKNCFR9=LZYt5BD3SMXnNRXJehkYfBg@mail.gmail.com>
- <IA3PR11MB898663460FABC5C8AE6EC85FE586A@IA3PR11MB8986.namprd11.prod.outlook.com>
-In-Reply-To: <IA3PR11MB898663460FABC5C8AE6EC85FE586A@IA3PR11MB8986.namprd11.prod.outlook.com>
-Date: Sun, 4 Jan 2026 23:48:36 -0800
-X-Gm-Features: AQt7F2olVWHj-Q5KbjHeu6UGJFmCgKQmT73Y8neJNidXLmBWOQDX17KdtGjTzxM
-Message-ID: <CAODvEq4Fma_N+oRMuuW2X-BbnkSNUxbHiwh6dDA_3Q0YKR_mdw@mail.gmail.com>
-To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
-Cc: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, 
- "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
- "David S. Miller" <davem@davemloft.net>, 
- Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>, 
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, 
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, 
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- David Decotigny <decot@google.com>, 
- "Singhai, Anjali" <anjali.singhai@intel.com>, 
- "Samudrala, Sridhar" <sridhar.samudrala@intel.com>,
- Brian Vazquez <brianvv@google.com>, 
- "Tantilov, Emil S" <emil.s.tantilov@intel.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1767599329; x=1768204129; darn=lists.osuosl.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=n/bmKUL8qRgfsee/YSRKomJGCW1Xn7Kw0x3qvqzn2es=;
- b=vwVHURFFKySy06SyAoHp7lreWIQbfwQ265SXlMvuRGz9f/Sc/d9FMLhTgvjH2Be5r4
- fwQPz548J6adJjM1koCLeLR4r3K7gcgE6dvjVq6VbLAIs1Y8fAJQC9XZZDe/xL7eBaC3
- FTwnktKoExTyPERZxkqcYv9WOlht0uCXTg3Ju0PMY/DjQz8OZhV+V+c3BRKGLpjBLGab
- zRo8QZhIIOG99xUJmd1z1jBh/oF95G0khdLFKWjOAkqbufsbq1mpdcYcfslsf6Uq66sa
- oMTd7pXP3cUr05cIS6gN+YEd9U12uUeFVbyj4C2taChD4arRnTdtVI8rqgXkTTBwtKuZ
- 3rgw==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=google.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1767600292; x=1799136292;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=5t/xX3hhNpG31mlv1kEbheuAq78a/fOdjgc1tctfJCw=;
+ b=gMZHE3MwHQstMSiHzWlidel3r+49kI8UwvBcioeKqWMTHs9y2mZl5AJ3
+ El5245y8WIhyXJyPWprRANSbGnaMOoG6HlNV0P2MTtnutO89JRrtjKqso
+ FVQ47rSXpFG+fpBHz4WWVe1rlTSka7kInzpqnmu2dZX1oS+UgqGNW3dH+
+ IAKzv4M3bj2M9Gi5I+8taqN+ZNXJ9vL6tPfaBdw2oLzW3btzFG72/u9fR
+ pzbUAqVZ/bwrrrZfOfalbHw20YJUqu5wIMsuAuwif6TDsOZEZLKeuWVmK
+ H9XnBTfT3+Qn9z8Pyn+y7t0F6ORqAEcb5YMy2grxShg50ffBxEGJydHcg
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=google.com header.i=@google.com header.a=rsa-sha256
- header.s=20230601 header.b=vwVHURFF
-Subject: Re: [Intel-wired-lan] [PATCH v2] idpf: increment completion queue
- next_to_clean in sw marker wait routine
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=gMZHE3Mw
+Subject: [Intel-wired-lan] [PATCH iwl-next v1 1/1] e1000e: correct TIMINCA
+ on ADP/TGP systems with wrong XTAL frequency
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -135,195 +106,130 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-From: Li Li via Intel-wired-lan <intel-wired-lan@osuosl.org>
-Reply-To: Li Li <boolli@google.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sun, Jan 4, 2026 at 11:43=E2=80=AFPM Loktionov, Aleksandr
-<aleksandr.loktionov@intel.com> wrote:
->
->
->
->
->
-> From: Li Li <boolli@google.com>
-> Sent: Monday, January 5, 2026 8:39 AM
-> To: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>
-> Cc: Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw <=
-przemyslaw.kitszel@intel.com>; David S. Miller <davem@davemloft.net>; Jakub=
- Kicinski <kuba@kernel.org>; Eric Dumazet <edumazet@google.com>; intel-wire=
-d-lan@lists.osuosl.org; netdev@vger.kernel.org; linux-kernel@vger.kernel.or=
-g; David Decotigny <decot@google.com>; Singhai, Anjali <anjali.singhai@inte=
-l.com>; Samudrala, Sridhar <sridhar.samudrala@intel.com>; Brian Vazquez <br=
-ianvv@google.com>; Tantilov, Emil S <emil.s.tantilov@intel.com>
-> Subject: Re: [Intel-wired-lan] [PATCH v2] idpf: increment completion queu=
-e next_to_clean in sw marker wait routine
->
->
->
->
->
->
->
-> On Sun, Jan 4, 2026 at 11:19=E2=80=AFPM Loktionov, Aleksandr <aleksandr.l=
-oktionov@intel.com> wrote:
->
->
->
-> > -----Original Message-----
-> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
-> > Of Li Li via Intel-wired-lan
-> > Sent: Monday, January 5, 2026 7:47 AM
-> > To: Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Kitszel,
-> > Przemyslaw <przemyslaw.kitszel@intel.com>; David S. Miller
-> > <davem@davemloft.net>; Jakub Kicinski <kuba@kernel.org>; Eric Dumazet
-> > <edumazet@google.com>; intel-wired-lan@lists.osuosl.org
-> > Cc: netdev@vger.kernel.org; linux-kernel@vger.kernel.org; David
-> > Decotigny <decot@google.com>; Singhai, Anjali
-> > <anjali.singhai@intel.com>; Samudrala, Sridhar
-> > <sridhar.samudrala@intel.com>; Brian Vazquez <brianvv@google.com>;
-> > Tantilov, Emil S <emil.s.tantilov@intel.com>; Li Li
-> > <boolli@google.com>
-> > Subject: [Intel-wired-lan] [PATCH v2] idpf: increment completion queue
-> > next_to_clean in sw marker wait routine
-> >
-> > Currently, in idpf_wait_for_sw_marker_completion(), when an
-> > IDPF_TXD_COMPLT_SW_MARKER packet is found, the routine breaks out of
-> > the for loop and does not increment the next_to_clean counter. This
-> > causes the subsequent NAPI polls to run into the same
-> > IDPF_TXD_COMPLT_SW_MARKER packet again and print out the following:
-> >
-> >     [   23.261341] idpf 0000:05:00.0 eth1: Unknown TX completion type:
-> > 5
-> >
-> > Instead, we should increment next_to_clean regardless when an
-> > IDPF_TXD_COMPLT_SW_MARKER packet is found.
-> >
-> > Tested: with the patch applied, we do not see the errors above from
-> > NAPI polls anymore.
-> >
-> > Signed-off-by: Li Li <boolli@google.com>
-> > ---
-> > Changes in v2:
-> >  - Initialize idpf_tx_queue *target to NULL to suppress the "'target'
-> >    uninitialized when 'if' statement is true warning".
-> >
-> >  drivers/net/ethernet/intel/idpf/idpf_txrx.c | 6 +++---
-> >  1 file changed, 3 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-> > b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-> > index 69bab7187e541..452d0a9e83a4f 100644
-> > --- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-> > +++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-> > @@ -2326,7 +2326,7 @@ void idpf_wait_for_sw_marker_completion(const
-> > struct idpf_tx_queue *txq)
-> >
-> >       do {
-> >               struct idpf_splitq_4b_tx_compl_desc *tx_desc;
-> > -             struct idpf_tx_queue *target;
-> > +             struct idpf_tx_queue *target =3D NULL;
-> Linux kernel is against premature initialization just to silence a compil=
-er.
-> The target variable is dereferenced at idpf_queue_clear(SW_MARKER, target=
-))
-> but can remain uninitialized if execution jumps to the next: label via a =
-goto
-> before target is assigned.
-> Isn't it?
->
-> That is correct. When the following if statement (line 2341-2343) evaluat=
-es to true:
->
->
->
->   if (FIELD_GET(IDPF_TXD_COMPLQ_COMPL_TYPE_M, ctype_gen) !=3D
->    IDPF_TXD_COMPLT_SW_MARKER)
->     goto next;
->
->
->
-> Then the initialization at line 2346:
->
->
->
->   target =3D complq->txq_grp->txqs[id];
->
->
->
-> would be skipped, making "target" uninitialized.
->
->
->
-> Therefore, in this patch, I need to initialize "target" to NULL.
->
->
->
-> The =E2=80=98NULL=E2=80=99 target variable can be dereferenced at idpf_qu=
-eue_clear(SW_MARKER, target)), isn=E2=80=99t it?
+On some Tiger Lake (TGP) and Alder Lake (ADP) platforms, the hardware
+XTAL clock is incorrectly configured to 24 MHz instead of the expected
+38.4 MHz. This causes the PHC to run significantly faster than system
+time, breaking PTP synchronization.
 
-That would not be possible, because right before
-"idpf_queue_clear(SW_MARKER, target))", "target"
-is initialized to "complq->txq_grp->txqs[id]":
+To mitigate this at runtime, measure PHC vs system time over ~1 ms using
+cross-timestamps. If the PHC increment differs from system time beyond
+the expected tolerance (currently >100 uSecs), reprogram TIMINCA for the
+38.4 MHz profile and reinitialize the timecounter.
 
-  if (FIELD_GET(IDPF_TXD_COMPLQ_COMPL_TYPE_M, ctype_gen) !=3D
-    IDPF_TXD_COMPLT_SW_MARKER)
-    goto next;
+Tested on an affected system using phc_ctl:
+Without fix:
+sudo phc_ctl enp0s31f6 set 0.0 wait 10 get
+clock time: 16.000541250 (expected ~10s)
 
-  id =3D FIELD_GET(IDPF_TXD_COMPLQ_QID_M, ctype_gen);
-  target =3D complq->txq_grp->txqs[id];
+With fix:
+sudo phc_ctl enp0s31f6 set 0.0 wait 10 get
+clock time: 9.984407212 (expected ~10s)
 
-  idpf_queue_clear(SW_MARKER, target);
+Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
+---
+ drivers/net/ethernet/intel/e1000e/netdev.c | 79 ++++++++++++++++++++++
+ 1 file changed, 79 insertions(+)
 
-"target" only remains uninitialized if the if statement above
-evaluates to true and skips the initialization.
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 116f3c92b5bc..4ab6897577e5 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -3904,6 +3904,82 @@ static void e1000_flush_desc_rings(struct e1000_adapter *adapter)
+ 		e1000_flush_rx_ring(adapter);
+ }
+ 
++/**
++ * e1000e_xtal_tgp_workaround - Adjust XTAL clock based on PHC and system
++ * clock delta.
++ *
++ * Measures the time difference between the PHC (Precision Hardware Clock)
++ * and the system clock over a 1 millisecond interval. If the delta
++ * exceeds 100 microseconds, reconfigure the XTAL clock to 38.4 MHz.
++ *
++ * @adapter: Pointer to the private adapter structure
++ **/
++static void e1000e_xtal_tgp_workaround(struct e1000_adapter *adapter)
++{
++	s64 phc_delta, sys_delta, sys_start_ns, sys_end_ns, delta;
++	struct ptp_system_timestamp sys_start = {}, sys_end = {};
++	struct ptp_clock_info *info = &adapter->ptp_clock_info;
++	struct timespec64 phc_start, phc_end;
++	struct e1000_hw *hw = &adapter->hw;
++	struct netlink_ext_ack extack = {};
++	unsigned long flags;
++	u32 timinca;
++	s32 ret_val;
++
++	/* Capture start */
++	if (info->gettimex64(info, &phc_start, &sys_start)) {
++		e_dbg("PHC gettimex(start) failed\n");
++		return;
++	}
++
++	/* Small interval to measure increment */
++	usleep_range(1000, 1100);
++
++	/* Capture end */
++	if (info->gettimex64(info, &phc_end, &sys_end)) {
++		e_dbg("PHC gettimex(end) failed\n");
++		return;
++	}
++
++	/* Compute deltas */
++	phc_delta = timespec64_to_ns(&phc_end) -
++		    timespec64_to_ns(&phc_start);
++
++	sys_start_ns = (timespec64_to_ns(&sys_start.pre_ts) +
++			timespec64_to_ns(&sys_start.post_ts)) >> 1;
++
++	sys_end_ns = (timespec64_to_ns(&sys_end.pre_ts) +
++		      timespec64_to_ns(&sys_end.post_ts)) >> 1;
++
++	sys_delta = sys_end_ns - sys_start_ns;
++
++	delta = phc_delta - sys_delta;
++	if (delta > 100000) {
++		e_dbg("Corrected PHC frequency: TIMINCA set for 38.4 MHz\n");
++		/* Program TIMINCA for 38.4 MHz */
++		timinca = (INCPERIOD_38400KHZ <<
++			   E1000_TIMINCA_INCPERIOD_SHIFT) |
++			  (((INCVALUE_38400KHZ <<
++			     adapter->cc.shift) &
++			   E1000_TIMINCA_INCVALUE_MASK));
++		ew32(TIMINCA, timinca);
++	}
++
++	/* reset the systim ns time counter */
++	spin_lock_irqsave(&adapter->systim_lock, flags);
++	timecounter_init(&adapter->tc, &adapter->cc,
++			 ktime_to_ns(ktime_get_real()));
++	spin_unlock_irqrestore(&adapter->systim_lock, flags);
++
++	/* restore the previous hwtstamp configuration settings */
++	ret_val = e1000e_config_hwtstamp(adapter, &adapter->hwtstamp_config,
++					 &extack);
++	if (ret_val) {
++		if (extack._msg)
++			e_err("%s\n", extack._msg);
++	}
++}
++
+ /**
+  * e1000e_systim_reset - reset the timesync registers after a hardware reset
+  * @adapter: board private structure
+@@ -3955,6 +4031,9 @@ static void e1000e_systim_reset(struct e1000_adapter *adapter)
+ 		if (extack._msg)
+ 			e_err("%s\n", extack._msg);
+ 	}
++
++	if (hw->mac.type == e1000_pch_adp || hw->mac.type == e1000_pch_tgp)
++		return e1000e_xtal_tgp_workaround(adapter);
+ }
+ 
+ /**
+-- 
+2.34.1
 
->
->
->
->
->
->
-> >               u32 ctype_gen, id;
-> >
-> >               tx_desc =3D flow ? &complq->comp[ntc].common :
-> > @@ -2346,14 +2346,14 @@ void idpf_wait_for_sw_marker_completion(const
-> > struct idpf_tx_queue *txq)
-> >               target =3D complq->txq_grp->txqs[id];
-> >
-> >               idpf_queue_clear(SW_MARKER, target);
-> > -             if (target =3D=3D txq)
-> > -                     break;
-> >
-> >  next:
-> >               if (unlikely(++ntc =3D=3D complq->desc_count)) {
-> >                       ntc =3D 0;
-> >                       gen_flag =3D !gen_flag;
-> >               }
-> > +             if (target =3D=3D txq)
-> Are tou sure that incremented ntc value is ever written back to complq->n=
-ext_to_clean?
->
->
->
-> Yes, the value of "ntc" is written back to "complq->next_to_clean" at the=
- end of the function
->
->  (at line 2360):
->
->
->
->   complq->next_to_clean =3D ntc;
->
-> Thank you, I don=E2=80=99t see it from the patch.
->
->
->
->
-> > +                     break;
-> >       } while (time_before(jiffies, timeout));
-> >
-> >       idpf_queue_assign(GEN_CHK, complq, gen_flag);
-> > --
-> > 2.52.0.351.gbe84eed79e-goog
