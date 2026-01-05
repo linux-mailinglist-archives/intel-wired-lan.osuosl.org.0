@@ -2,106 +2,91 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A73D0CF4A69
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 05 Jan 2026 17:24:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8E0B8CF4B71
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 05 Jan 2026 17:34:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id ECCC4406DB;
-	Mon,  5 Jan 2026 16:24:10 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 42797407B9;
+	Mon,  5 Jan 2026 16:34:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id BjTfLOqbwyps; Mon,  5 Jan 2026 16:24:10 +0000 (UTC)
+ id lHI8GUHOhZOv; Mon,  5 Jan 2026 16:34:47 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3748B406F0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8CFE0407EE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1767630250;
-	bh=46dE8wQn1HVL0x3WTf36oZBc8LAD4VTY8ItMtpTUnY8=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1767630887;
+	bh=1LOamlSLXohnT9t6PRUZKsqwrXKDNPBpUB+0BgTJm2c=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=robn5jAE15MRhnUXB24yzQoieZpiJ9Xux60jrzW/iKZawlVvPAYaAaO/veQ1oMpBg
-	 0/n1uBgwyDJxagwsTxSOKLO/XeBvLjHJXu3iMV252VlUNAQefHL5JsLdfZGiLlj758
-	 2zMAU6q7qFJEA7QYdRUrM2Pf8NaBUqHrOW3q1vQUwrSvBWCrsVrrY4NOi3FJsJk2tQ
-	 sgvXbZPc4yiPf0QwnSwL2PF8tJDk12efrT1Ep4sm8Hm4G3agIUAEleJDXtpVwPv1Tc
-	 9FpixyTJHmpCApYQPCEPdS8qwIzQVV76Qoy4qXR4qG2TfOPL4oIlepbQ+uOhn17czQ
-	 5OdMsPHrgjtHA==
+	 From;
+	b=nXafCLGp4ojggLDcWh+CjmcURrGw7tJTxHbu4ZSyYj+3XUkDIXlNHO/ju/OK6kW0r
+	 8bKR7ucwERmrsGofOU7wucQaxIcwnAfggR7lOCWDJ2/Kx0eE4zWBxfF4lCW62/c9Hr
+	 wR9SOKdzck8yZX6/l7EmQQ5A4nmmgwBgG44Whx8S801bqKY+XQpfsltdxMZN1ursVo
+	 k8rbTqo6rpAxX7NOUxVSeFa3GVp6XKEki/3hZIEoxeX/wmAwJw7wkfvBiHBQ0PaamO
+	 78AbkoWjw3ZniQrnN560FLc4zCKdCnDuDN+Mf3mphXgnOjVenuIBqE1vRQMDfFIYdq
+	 djVkqgdca5Njw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3748B406F0;
-	Mon,  5 Jan 2026 16:24:10 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8CFE0407EE;
+	Mon,  5 Jan 2026 16:34:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id AEB512DF
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jan 2026 16:24:08 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 64087249
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jan 2026 16:34:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 9173F60AC7
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jan 2026 16:24:08 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5696F81344
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jan 2026 16:34:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id R_GUj749nDWs for <intel-wired-lan@lists.osuosl.org>;
- Mon,  5 Jan 2026 16:24:07 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=ivecera@redhat.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 7076960A9D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7076960A9D
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7076960A9D
- for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jan 2026 16:24:06 +0000 (UTC)
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-612-qAfVWpaVPVmwinV2Ig6kOw-1; Mon,
- 05 Jan 2026 11:24:00 -0500
-X-MC-Unique: qAfVWpaVPVmwinV2Ig6kOw-1
-X-Mimecast-MFC-AGG-ID: qAfVWpaVPVmwinV2Ig6kOw_1767630236
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C443F1956050; Mon,  5 Jan 2026 16:23:55 +0000 (UTC)
-Received: from [10.44.32.50] (unknown [10.44.32.50])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 982321956048; Mon,  5 Jan 2026 16:23:44 +0000 (UTC)
-Message-ID: <5db81f5b-4f35-46e4-8fec-4298f1ac0c4e@redhat.com>
-Date: Mon, 5 Jan 2026 17:23:42 +0100
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id nbHr4hMFbWcb for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  5 Jan 2026 16:34:45 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 971B4812D1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 971B4812D1
+Received: from sea.source.kernel.org (sea.source.kernel.org
+ [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 971B4812D1
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jan 2026 16:34:45 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sea.source.kernel.org (Postfix) with ESMTP id DA6624365D;
+ Mon,  5 Jan 2026 16:34:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6EB84C19424;
+ Mon,  5 Jan 2026 16:34:43 +0000 (UTC)
+Date: Mon, 5 Jan 2026 16:34:41 +0000
+From: Simon Horman <horms@kernel.org>
+To: Grzegorz Nitka <grzegorz.nitka@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Message-ID: <aVvoIZYBivorDJkC@horms.kernel.org>
+References: <20251218094428.1762860-1-grzegorz.nitka@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Rob Herring <robh@kernel.org>, Andrew Lunn <andrew@lunn.ch>
-References: <20251211194756.234043-1-ivecera@redhat.com>
- <20251211194756.234043-2-ivecera@redhat.com>
- <2de556f0-d7db-47f1-a59e-197f92f93d46@lunn.ch>
- <20251217004946.GA3445804-robh@kernel.org>
-Content-Language: en-US
-From: Ivan Vecera <ivecera@redhat.com>
-In-Reply-To: <20251217004946.GA3445804-robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1767630245;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=46dE8wQn1HVL0x3WTf36oZBc8LAD4VTY8ItMtpTUnY8=;
- b=Mfrlad7tbe4J0qLdqN7oubqgss9UKy/WMdvFp+zdFF6AuzVsi7MDwKfMY94MnD5IaZ/Jke
- aFdRDw1+AQnk/lzCS3pbPrCCZO4AZAZFMiS8yMFWm/rfIDsMAoME6ddSnnFtbogUjAGH2W
- si6W14DBfbQoE+tyrNO1Bb4E0kfiCiM=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20251218094428.1762860-1-grzegorz.nitka@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1767630884;
+ bh=3deJ5qLA3IJhBAb1j74dPS91w2GSpuoSfqjZtqKZIMs=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=meb/gSBfx0ENAZ3vrXvgpfRJG68hjNCcXTVVDGsTBC9t4HI7hf6F1rxbr7ECSGJBd
+ rPOU5fORuoCdomuf6+kfvIFU0ck9pvJ3+OCP9Pm6mP+bXfxSf95jdPcb2txjgDB4MQ
+ qaY6vxHcUyTVr8ZzQChjAeP5Ih2JUEYbRoLhDdEn46QUPq/7jvdedAPHpEnLc6Dm6y
+ Xk7wM1ZpZ6Hy3xq4WCj9Sd8rKVHO5zONwmQlGSPrCj/MUpNXXmqcsfzlbTmpZivFJF
+ OhaBH9BzIidEO7pTAIGZtynUfxvM4M4xUHH/moouUAbJDtR3GFrxlslhNV13Ie9Iml
+ gDIjQGaJ6jrNw==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
- header.s=mimecast20190719 header.b=Mfrlad7t
-Subject: Re: [Intel-wired-lan] [PATCH RFC net-next 01/13] dt-bindings: net:
- ethernet-controller: Add DPLL pin properties
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=meb/gSBf
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] ice: fix 'adjust' timer
+ programming for E830 devices
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -114,74 +99,33 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Eric Dumazet <edumazet@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Horatiu Vultur <Horatiu.Vultur@microchip.com>,
- Leon Romanovsky <leon@kernel.org>,
- Alexander Lobakin <aleksander.lobakin@intel.com>, linux-rdma@vger.kernel.org,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, devicetree@vger.kernel.org,
- Conor Dooley <conor+dt@kernel.org>, Jiri Pirko <jiri@resnulli.us>,
- Richard Cochran <richardcochran@gmail.com>,
- Prathosh Satish <Prathosh.Satish@microchip.com>,
- Willem de Bruijn <willemb@google.com>,
- Vadim Fedorenko <vadim.fedorenko@linux.dev>, netdev@vger.kernel.org,
- Mark Bloch <mbloch@nvidia.com>, linux-kernel@vger.kernel.org,
- Tariq Toukan <tariqt@nvidia.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
- Stefan Wahren <wahrenst@gmx.net>, Simon Horman <horms@kernel.org>,
- Jonathan Lemon <jonathan.lemon@gmail.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Saeed Mahameed <saeedm@nvidia.com>,
- "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 12/17/25 1:49 AM, Rob Herring wrote:
-> On Thu, Dec 11, 2025 at 08:56:52PM +0100, Andrew Lunn wrote:
->> On Thu, Dec 11, 2025 at 08:47:44PM +0100, Ivan Vecera wrote:
->>> Ethernet controllers may be connected to DPLL (Digital Phase Locked Loop)
->>> pins for frequency synchronization purposes, such as in Synchronous
->>> Ethernet (SyncE) configurations.
->>>
->>> Add 'dpll-pins' and 'dpll-pin-names' properties to the generic
->>> ethernet-controller schema. This allows describing the physical
->>> connections between the Ethernet controller and the DPLL subsystem pins
->>> in the Device Tree, enabling drivers to request and manage these
->>> resources.
->>
->> Please include a .dts patch in the series which actually makes use of
->> these new properties.
+On Thu, Dec 18, 2025 at 10:44:28AM +0100, Grzegorz Nitka wrote:
+> Fix incorrect 'adjust the timer' programming sequence for E830 devices
+> series. Only shadow registers GLTSYN_SHADJ were programmed in the
+> current implementation. According to the specification [1], write to
+> command GLTSYN_CMD register is also required with CMD field set to
+> "Adjust the Time" value, for the timer adjustment to take the effect.
 > 
-> Actually, first you need a device (i.e. a specific ethernet
-> controller bindings) using this and defining the number of dpll-pins
-> entries and the names.
+> The flow was broken for the adjustment less than S32_MAX/MIN range
+> (around +/- 2 seconds). For bigger adjustment, non-atomic programming
+> flow is used, involving set timer programming. Non-atomic flow is
+> implemented correctly.
+> 
+> Testing hints:
+> Run command:
+> 	phc_ctl /dev/ptpX get adj 2 get
+> Expected result:
+> 	Returned timstamps differ at least by 2 seconds
+> 
+> [1] Intel® Ethernet Controller E830 Datasheet rev 1.3, chapter 9.7.5.4
+> https://cdrdv2.intel.com/v1/dl/getContent/787353?explicitVersion=true
+> 
+> Fixes: f00307522786 ("ice: Implement PTP support for E830 devices")
+> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
 
-The goal of this patch is to define properties that allow referencing
-dpll pins from other devices. I included it in this series to allow
-implementing helpers that use the property names defined in the schema.
-
-This series implements the dpll pin consumer in the ice driver. This is
-usually present on ACPI platforms, so the properties are stored in _DSD
-ACPI nodes. Although I don't have a DT user right now, isn't it better
-to define the schema now?
-
-Thinking about this further, consumers could be either an Ethernet
-controller (where the PHY is not exposed and is driven directly by the
-NIC driver) or an Ethernet PHY.
-
-For the latter case (Ethernet PHY), I have been preparing a similar
-implementation for the Micrel phy driver (lan8814) on the Microchip EDS2
-board (pcb8385). Unfortunately, the DTS is not upstreamed yet [1], so I
-cannot include the necessary bindings here.
-
-Since there can be multiple consumer types (Ethernet controller or PHY),
-would it be better to define a dpll-pin-consumer.yaml schema instead
-(similar to mux-consumer)?
-
-Thanks for the advice,
-Ivan
-
-[1] 
-https://patchwork.kernel.org/project/linux-arm-kernel/list/?series=1031294&state=*
+Reviewed-by: Simon Horman <horms@kernel.org>
 
