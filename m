@@ -1,114 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 10A4ECF4A00
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 05 Jan 2026 17:18:20 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C6A6CCF474F
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 05 Jan 2026 16:41:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BC02860B0C;
-	Mon,  5 Jan 2026 16:18:18 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8109840390;
+	Mon,  5 Jan 2026 15:41:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VFTHwmemwXYJ; Mon,  5 Jan 2026 16:18:17 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ziG_4nc09Syc; Mon,  5 Jan 2026 15:41:42 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7CEA560B00
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D17824035F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1767629897;
-	bh=0z+YZ2YNsMdoMFE7LSlh6yUmpOlG2Vk2g7LqMYQuv6I=;
-	h=Date:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From:Reply-To:From;
-	b=yASs7tLF2zmXP+Gm4oN5W+YvgEaD+79wdW+9VIlJHkPmwyI/Ws28COKaUmkm9sF7l
-	 1ef7HCyUIfjql9wUDFpmB9E327em0cs4KD1vhBjFDudJD8/PU7f1umwCd4Rj6y08/j
-	 gG6TETspycN0SMOGEJmCbdm4TqJwktNgNaBCDrEtoN4ZrmvU+HqrC4IkejkT3+pcWm
-	 f6M1+uYjpwyqxPFpU1v31bVZonackMQLy7SeXCDtP2Ly/j6uBN7MfZYD1233/jlEqw
-	 d6hpyRqYar+eoRWneyphEugO+rY19yD1d7QhkAAJJKD2QaQk4nzzP9B7DwTaAcvwbI
-	 uy20OT0uomtjQ==
+	s=default; t=1767627702;
+	bh=RcHdMaw8AhptdGcp4utbVvvwhK7VRqXu2uDwmQI2V0c=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=zaDig/LnJHOUPFKwcIHje+8h9KLKeYARKLSen2rSWWJMP0Uha1PqEEMddk62orCE7
+	 m13iIYE+8WlBYRSuV/cIhstTgNUsbuLdkJDAI4OZCFmNL0qFk9aK+r5ss0V8p3TcgC
+	 1T//Tb75fMZMD7tfWH1nv3tV7MuynrqFIs5/lZwQbZ7n59Mc/zUni530cA7rgFhxFD
+	 Q0t1eIT3UyCz8Lm7DqA4kuMpNZMwfs6CQWauX+bLQtNWugFIZYHi2JhruyWc7ncxL0
+	 0/ImHk+SvOBIJnCGMmcQ1iWUKNIoI2B00IwwW1QzzCYXPczw6YShu/zsq16i85q3+0
+	 kwcpHpWrS535w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7CEA560B00;
-	Mon,  5 Jan 2026 16:18:17 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D17824035F;
+	Mon,  5 Jan 2026 15:41:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 484A8277
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Dec 2025 23:57:08 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 9AD9A2DF
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jan 2026 15:41:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3A98E40645
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Dec 2025 23:57:08 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 817D0402E0
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jan 2026 15:41:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3ksrnR6GlTZg for <intel-wired-lan@lists.osuosl.org>;
- Tue, 30 Dec 2025 23:57:07 +0000 (UTC)
+ id 6_fgpFossUwa for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  5 Jan 2026 15:41:40 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::1349; helo=mail-dy1-x1349.google.com;
- envelope-from=30gzuaqykd0eerrooljrrjoh.frplqwho-zluhg-odqolvwv.rvxrvo.ruj@flex--boolli.bounces.google.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org B07074062A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B07074062A
-Received: from mail-dy1-x1349.google.com (mail-dy1-x1349.google.com
- [IPv6:2607:f8b0:4864:20::1349])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B07074062A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Dec 2025 23:57:05 +0000 (UTC)
-Received: by mail-dy1-x1349.google.com with SMTP id
- 5a478bee46e88-2ac34c4b41fso10782601eec.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Dec 2025 15:57:05 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767139024; x=1767743824;
- h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=0z+YZ2YNsMdoMFE7LSlh6yUmpOlG2Vk2g7LqMYQuv6I=;
- b=N23ZNnpfikfzHt48C60M+IzYUobWrxsm+xXm2MYWm4bBK5QezdPnjANAg22YCHKydH
- S+UAy3s/sspA0jBCkzA+7Q5Iuk8AmbelEynUhm5WqBVqcvmi0hFCAY2z8AHGnhm9ms6k
- /atpj1PyV2nPGCedVHdddtzyUVMvIrRauSzLOSWNyq9+g0n/XvfOSnxzx/Ceh/oVF7mb
- j3e2qy3x6dBZOk7csuFnUrBsIQ0tregChIBcnq8j3OkQRsr3nkusn9ov+ZRmiR+0I+D5
- ur1vJ686ZA8TBbEMmw54xH+A0KqGwmCACqUOPWnugSnyCBLhYEs5zvicH26J+QVKE9aE
- NeCA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWQoD11QJ8I1ffPYRsuz7zn/62q0XMnYZfQsgsgJf8xHMie7pYRo9HIpjJQi9O6WPwBZ0nggRN5sEBLJPjdIUk=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YyaskUbSvJWeaFPO+rsdKXLZ6Ubfw2UJHZZwgiKZTdiK4RTMH3K
- PCneaKvSEfOEQfl2CQweiGj7sraDcbwKCypeAYPrc3wwZMpE5KsC5yi7VjM0Mm8TirX2n5w1bZi
- Z33guIw==
-X-Google-Smtp-Source: AGHT+IHuKsYSd2kwNPtEc4XiZmk+kOE4LhPvJ+nztAMwJKOGMzdDI0Og5UaGs2DvBeC0wc83yh3yJySPuis=
-X-Received: from dlbrx13.prod.google.com ([2002:a05:7022:170d:b0:11f:3fcf:58c])
- (user=boolli job=prod-delivery.src-stubby-dispatcher) by
- 2002:a05:7022:e01:b0:11b:f271:835a
- with SMTP id a92af1059eb24-120619277e0mr35739751c88.3.1767139024417; Tue, 30
- Dec 2025 15:57:04 -0800 (PST)
-Date: Tue, 30 Dec 2025 23:56:57 +0000
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.52.0.351.gbe84eed79e-goog
-Message-ID: <20251230235657.2497593-1-boolli@google.com>
-To: Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A7CF340116
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A7CF340116
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A7CF340116
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  5 Jan 2026 15:41:40 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id DDAEC6013B;
+ Mon,  5 Jan 2026 15:41:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F806C116D0;
+ Mon,  5 Jan 2026 15:41:36 +0000 (UTC)
+Date: Mon, 5 Jan 2026 15:41:33 +0000
+From: Simon Horman <horms@kernel.org>
+To: "Yury Norov (NVIDIA)" <yury.norov@gmail.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- "David S. Miller" <davem@davemloft.net>, 
- Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>,
- intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
- David Decotigny <decot@google.com>, Anjali Singhai <anjali.singhai@intel.com>, 
- Sridhar Samudrala <sridhar.samudrala@intel.com>, emil.s.tantilov@intel.com, 
- Brian Vazquez <brianvv@google.com>, Li Li <boolli@google.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Mailman-Approved-At: Mon, 05 Jan 2026 16:18:15 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1767139024; x=1767743824; darn=lists.osuosl.org;
- h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=0z+YZ2YNsMdoMFE7LSlh6yUmpOlG2Vk2g7LqMYQuv6I=;
- b=Lp8MvUtvEzlneCyx1l1Y+hUvBF6TMJiy+ZZwmeURzfgvv4pIRXgEsuxShBVPNecXIW
- xSbk1YxkrguTM2GjtdiEml8r+BPGKT6CwvXBOLGol6HtGxonENTgnpfq+JA/a9Nu3i8h
- 0AxAp0+Bxo3i8MjeV5Mktwoq8WFhgKluNDOsjcX/aZB3pebNRd1Je24jl/OClphTAXFk
- tpE7T3uTmMQGzIaolxKppPxmrcXmBpSrY0f21tJJSBhRr97ZOuruMKPHGD4lXq8vvlzF
- apfrspde5Bctq41ZHgXrE1mysgdQvEBgN+wPMo5xT/yNp44VQtd6msC+tq+8DhrUfYzW
- cUog==
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org,
+ "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
+Message-ID: <aVvbrXplVVKWQL3F@horms.kernel.org>
+References: <20251218015758.682498-1-yury.norov@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251218015758.682498-1-yury.norov@gmail.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1767627698;
+ bh=1Ijh46HRsW1cKwv45Sx0QnTqscqwwIKQh4+5jy8NEkk=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=uzZiw38UuwmMhLxZZ53n8lbsIco8flDvmO4L5OqtSGq70TPDPSxntzwOMoDp5m0vS
+ uXDuIcGPep9BGyG35OK83IWn94qrnjcPkNTHi4BhoRxkDUEoebQ0Ch9aP/n/pf0rNl
+ H1DN1JD/b60T91cwwptfaRYXUNOgajdaG9ceokmwKzKby7c22x7d9UOXCvdkNCpuId
+ 2/Y9FN2JOPU2oDNwIU0vIIKxsrswodcq6nKQeeXzKv07RTjzFFffCCWUWvKnCcvJYj
+ flI6iW+RryGiqaPdIcLkKjvModZDmJC4NkaFgOzcEU7VJQfWyisilu7dbQHqcCWOZ5
+ XY9jCQ6kxicfQ==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=google.com
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=google.com header.i=@google.com
- header.a=rsa-sha256 header.s=20230601 header.b=Lp8MvUtv
-Subject: [Intel-wired-lan] [PATCH] idpf: increment completion queue
- next_to_clean in sw marker wait routine
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=uzZiw38U
+Subject: Re: [Intel-wired-lan] [PATCH v2] i40e: drop useless bitmap_weight()
+ call in i40e_set_rxfh_fields()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -121,51 +104,17 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-From: Li Li via Intel-wired-lan <intel-wired-lan@osuosl.org>
-Reply-To: Li Li <boolli@google.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Currently, in idpf_wait_for_sw_marker_completion(), when an
-IDPF_TXD_COMPLT_SW_MARKER packet is found, the routine breaks out of
-the for loop and does not increment the next_to_clean counter. This
-causes the subsequent NAPI polls to run into the same
-IDPF_TXD_COMPLT_SW_MARKER packet again and print out the following:
+On Wed, Dec 17, 2025 at 08:57:57PM -0500, Yury Norov (NVIDIA) wrote:
+> bitmap_weight() is O(N) and useless here, because the following
+> for_each_set_bit() returns immediately in case of empty flow_pctypes.
+> 
+> Signed-off-by: Yury Norov (NVIDIA) <yury.norov@gmail.com>
+> ---
+> v1: https://lore.kernel.org/all/20251216002852.334561-1-yury.norov@gmail.com/
+> v2: don't drop flow_id (Aleksandr).
 
-    [   23.261341] idpf 0000:05:00.0 eth1: Unknown TX completion type: 5
-
-Instead, we should increment next_to_clean regardless when an
-IDPF_TXD_COMPLT_SW_MARKER packet is found.
-
-Tested: with the patch applied, we do not see the errors above from NAPI
-polls anymore.
-
-Signed-off-by: Li Li <boolli@google.com>
----
- drivers/net/ethernet/intel/idpf/idpf_txrx.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-index 69bab7187e541..4435dba27a24a 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-@@ -2346,14 +2346,14 @@ void idpf_wait_for_sw_marker_completion(const struct idpf_tx_queue *txq)
- 		target = complq->txq_grp->txqs[id];
- 
- 		idpf_queue_clear(SW_MARKER, target);
--		if (target == txq)
--			break;
- 
- next:
- 		if (unlikely(++ntc == complq->desc_count)) {
- 			ntc = 0;
- 			gen_flag = !gen_flag;
- 		}
-+		if (target == txq)
-+			break;
- 	} while (time_before(jiffies, timeout));
- 
- 	idpf_queue_assign(GEN_CHK, complq, gen_flag);
--- 
-2.52.0.351.gbe84eed79e-goog
+Reviewed-by: Simon Horman <horms@kernel.org>
 
