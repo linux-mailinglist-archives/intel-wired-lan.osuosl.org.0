@@ -1,99 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CBABDCF7C28
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 06 Jan 2026 11:22:06 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0FC0CCF7CB7
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 06 Jan 2026 11:30:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 80A4E81153;
-	Tue,  6 Jan 2026 10:22:05 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8684981323;
+	Tue,  6 Jan 2026 10:30:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Hc8li6TSK3eg; Tue,  6 Jan 2026 10:22:05 +0000 (UTC)
+ id n5BWEYWP3QQq; Tue,  6 Jan 2026 10:30:18 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0D78281317
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D424C81325
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1767694925;
-	bh=RcfwQVRAgdW7tI5OXgjpT69o7pvSVpaOV1mGAQ3KoIA=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1767695418;
+	bh=FtdofA1qS3jDKFAsq9HZgWON36KeW2g3jn71BEeUpFY=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=M5ilydcffE5yMpO+dC6bMU51Y2OadrYuAiFh1ZeEoH8N1SgfiwGjVBgLljrlr8dba
-	 hFNnKwRo461IVILSfWb0dFZSmAazu0exUzkuU9eUyltJUEZh73BQEIoCu413y6m0O6
-	 hArYBkNnfj4W6FxAKFo0923a7GpBMlQCRpUouUhvocVDEZW+nsrL5mrjvLgp+HPHsR
-	 sxM0CCtaqFBizNE8XHoc3UtUrYZeFLnmTUDpwhi9gDptEpWmQWWqQZpZ8nYJCaizkA
-	 bmhBtwVP60I08PklBj2si4hEGkWxwRATOP6Puzn2x9vlw/dV88IDJocn+J/WcdUEvr
-	 qtlnPuc6nhlyA==
+	b=gXaeNSKPRN+2UqAsKyfJg0ZLunOtH/Jcy4HwOFjwGB3pzhDluz656BO+ufzMcLsxs
+	 9tb+a783aqcXPtib/qg57I+BqJ2KBX0S4lrso/7J7SCj2MyMyKf0FCMiKU2qed9i0T
+	 TGKNrtUVJqlRnpFF5z7Ud/Nef17MOUUP/EU8h857PVhrlYPWb4IdELZbuiiyC3TcUf
+	 S89A/0d5YY3vS4OHfaxA2J/LVfjWf3bNunPbvk4Oym7vhkMhyxdejvjjihfw5jxxzt
+	 J4pdwpNyCOOsov9RguzWpIl+YnOdQILrQswRfgqaiBYbJd6jGLyJi2r6+5irKKc85k
+	 ZFPEBuMwzm/XQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0D78281317;
-	Tue,  6 Jan 2026 10:22:05 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D424C81325;
+	Tue,  6 Jan 2026 10:30:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id B7B81E7
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jan 2026 10:22:03 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 96F7FE7
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jan 2026 10:30:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id AA0E160A52
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jan 2026 10:22:03 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8910D4008C
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jan 2026 10:30:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2pi8gb5fkqcy for <intel-wired-lan@lists.osuosl.org>;
- Tue,  6 Jan 2026 10:22:02 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
- helo=mgamail.intel.com; envelope-from=vitaly.lifshits@intel.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id wngQ8huuAdkT for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  6 Jan 2026 10:30:16 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B108560782
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B108560782
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
- by smtp3.osuosl.org (Postfix) with ESMTPS id B108560782
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jan 2026 10:22:02 +0000 (UTC)
-X-CSE-ConnectionGUID: XxIjOE8/RkexDapcFIlx1g==
-X-CSE-MsgGUID: c9LqENPJQQOH4YSMgFWWVw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11662"; a="68966584"
-X-IronPort-AV: E=Sophos;i="6.21,204,1763452800"; d="scan'208";a="68966584"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
- by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Jan 2026 02:22:02 -0800
-X-CSE-ConnectionGUID: UrmAA2WNSnWul1Hh9/z0ZQ==
-X-CSE-MsgGUID: OYMnTDqNQd6mZi+OzoU1OQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,204,1763452800"; d="scan'208";a="207175245"
-Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.70])
- by orviesa004.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Jan 2026 02:22:02 -0800
-From: Vitaly Lifshits <vitaly.lifshits@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: Vitaly Lifshits <vitaly.lifshits@intel.com>
-Date: Tue,  6 Jan 2026 12:21:53 +0200
-Message-Id: <20260106102153.1577396-3-vitaly.lifshits@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260106102153.1577396-1-vitaly.lifshits@intel.com>
-References: <20260106102153.1577396-1-vitaly.lifshits@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 9A72A4007F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9A72A4007F
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9A72A4007F
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Jan 2026 10:30:14 +0000 (UTC)
+Received: from [141.14.13.172] (g427.RadioFreeInternet.molgen.mpg.de
+ [141.14.13.172])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 44E3960288498;
+ Tue, 06 Jan 2026 11:29:58 +0100 (CET)
+Message-ID: <08f452b5-1755-498f-9a8c-789d19da7240@molgen.mpg.de>
+Date: Tue, 6 Jan 2026 11:29:57 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+To: Vitaly Lifshits <vitaly.lifshits@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org
+References: <20260105075738.1514341-1-vitaly.lifshits@intel.com>
+ <e6c6cd4a-4a8b-45ae-8d4c-9642d7358025@molgen.mpg.de>
+ <28213024-9c96-4337-ab37-add9a803516a@intel.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <28213024-9c96-4337-ab37-add9a803516a@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1767694922; x=1799230922;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=egYdx9v0IHYUsQryfEIS34QQOYbZb2uivY8ypP1ig/4=;
- b=c5ithYXQmqmpmtkBhmcCPYJTrZr5hSvB9FMb42YGslQmK/ZFOTJH/1ct
- Ygo2+EMwVRKFwgvQZ0vKSWeU5K0MbhR+FxpRBuJ0pJeEyusw/IxfD9Mh+
- H3iNZ7Y2MuhgwyODGhBqWI80lIynRClXpLo04MZM8fOWw26djRsUoqD2Y
- ge6JJuAUQRuZrlV6TfJL3RDNdf7n0HjeZrVEzSemm0KMB0+rulxPVrPnf
- 3nvMmdkxwfLKtWbW1mPbE0/e0cgwggpiuIUL7uMYziVib8OWTbYyCUbBU
- oEaMvvFI94rODTZIFPCd9XPfw4V4Rh12rKtTaj/zRgnE4XJv94qzqpTfK
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=c5ithYXQ
-Subject: [Intel-wired-lan] [PATCH iwl-net v3 2/2] e1000e: clear DPG_EN after
- reset to avoid autonomous power-gating
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 1/1] e1000e: correct
+ TIMINCA on ADP/TGP systems with wrong XTAL frequency
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -109,43 +90,205 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Panther-lake systems introduced autonmous power gating feature for
-supporting low power state in shutdown state. As part of it, the
-reset value of DPG_EN bit was changed to 1. Therefore to avoid
-errors such as Tx/Rx hangs, packet loss and packet corruption
-clear this bit after performing hardware reset.
+Dear Vitaly,
 
-Fixes: 0c9183ce61bc ("e1000e: Add support for the next LOM generation")
-Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
----
-v3: rephrase a comment in the code
-v2: fix a typo in a macro
-v1: initial version
----
- drivers/net/ethernet/intel/e1000e/ich8lan.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-index eead80bba6f4..9509157cadd6 100644
---- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
-+++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-@@ -4932,6 +4932,16 @@ static s32 e1000_reset_hw_ich8lan(struct e1000_hw *hw)
- 	reg |= E1000_KABGTXD_BGSQLBIAS;
- 	ew32(KABGTXD, reg);
- 
-+	/*
-+	 * The hardware reset value of the DPG_EN bit is 1.
-+	 * Clear DPG_EN to prevent unexpected autonomous power gating.
-+	 */
-+	if (hw->mac.type >= e1000_pch_ptp) {
-+		reg = er32(CTRL_EXT);
-+		reg &= ~E1000_CTRL_EXT;
-+		ew32(CTRL_EXT, reg);
-+	}
-+
- 	return 0;
- }
- 
--- 
-2.34.1
+Thank you for your reply.
 
+Am 06.01.26 um 10:59 schrieb Lifshits, Vitaly:
+
+> On 1/5/2026 7:33 PM, Paul Menzel wrote:
+
+>> Am 05.01.26 um 10:57 schrieb Vitaly Lifshits:
+>>> On some Tiger Lake (TGP) and Alder Lake (ADP) platforms, the hardware
+>>> XTAL clock is incorrectly configured to 24 MHz instead of the expected
+>>> 38.4 MHz. This causes the PHC to run significantly faster than system
+>>> time, breaking PTP synchronization.
+>>
+>> Is that fused into hardware or a firmware issue? Has an errata been 
+>> published?
+> 
+> It is a BIOS configuration issue that a wrong clock value is set.
+> There is no errata for it.
+
+Interesting. Please add that to the commit message.
+
+>>> To mitigate this at runtime, measure PHC vs system time over ~1 ms using
+>>> cross-timestamps. If the PHC increment differs from system time beyond
+>>> the expected tolerance (currently >100 uSecs), reprogram TIMINCA for the
+>>> 38.4 MHz profile and reinitialize the timecounter.
+>>
+>> Why not unconditionally configure it for 38.4 MHz?
+> 
+> Because some of the systems have the 24 MHz clock while others have the 
+> 38.4 MHz. It is impossible to determine the clock by a device ID. 
+> Anyway, I'll rephrase it in the commit message to make it clearer.
+
+Thank you.
+
+>>> Tested on an affected system using phc_ctl:
+>>> Without fix:
+>>> sudo phc_ctl enp0s31f6 set 0.0 wait 10 get
+>>> clock time: 16.000541250 (expected ~10s)
+>>>
+>>> With fix:
+>>> sudo phc_ctl enp0s31f6 set 0.0 wait 10 get
+>>> clock time: 9.984407212 (expected ~10s)
+>>
+>> Please document at least one affected hardware.
+> 
+> I don't have this data as we can't know for sure which BIOS the 
+> different vendors use and which of them are configured incorrectly.
+
+Please document the system you test this on.
+
+>> Also, please add the new log message.
+>>
+>>      +        e_dbg("Corrected PHC frequency: TIMINCA set for 38.4 MHz\n");
+>>
+>> I’d make it an info though, and log that it’s a hardware (firmware?) 
+>> issue.
+> 
+> I prefer leaving it as a debug print because otherwise we will get 
+> complains from end-users about spamming the dmesg log as this print will 
+> be visible during every boot.
+
+It’s a misconfiguration on the system. Users should know about it, and 
+otherwise also hardware vendors won’t notice, and can’t fix it.
+
+>>> Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
+>>> ---
+>>>   drivers/net/ethernet/intel/e1000e/netdev.c | 79 ++++++++++++++++++++++
+>>>   1 file changed, 79 insertions(+)
+>>>
+>>> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/ 
+>>> net/ ethernet/intel/e1000e/netdev.c
+>>> index 116f3c92b5bc..4ab6897577e5 100644
+>>> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
+>>> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+>>> @@ -3904,6 +3904,82 @@ static void e1000_flush_desc_rings(struct 
+>>> e1000_adapter *adapter)
+>>>           e1000_flush_rx_ring(adapter);
+>>>   }
+>>> +/**
+>>> + * e1000e_xtal_tgp_workaround - Adjust XTAL clock based on PHC and system
+>>> + * clock delta.
+>>> + *
+>>> + * Measures the time difference between the PHC (Precision Hardware Clock)
+>>> + * and the system clock over a 1 millisecond interval. If the delta
+>>> + * exceeds 100 microseconds, reconfigure the XTAL clock to 38.4 MHz.
+>>> + *
+>>> + * @adapter: Pointer to the private adapter structure
+>>> + **/
+>>> +static void e1000e_xtal_tgp_workaround(struct e1000_adapter *adapter)
+>>> +{
+>>> +    s64 phc_delta, sys_delta, sys_start_ns, sys_end_ns, delta;
+>>> +    struct ptp_system_timestamp sys_start = {}, sys_end = {};
+>>> +    struct ptp_clock_info *info = &adapter->ptp_clock_info;
+>>> +    struct timespec64 phc_start, phc_end;
+>>> +    struct e1000_hw *hw = &adapter->hw;
+>>> +    struct netlink_ext_ack extack = {};
+>>> +    unsigned long flags;
+>>> +    u32 timinca;
+>>
+>> What does the variable name mean?
+> 
+> It is the register's name.
+
+Just use `reg` or `reg_timinca`?
+
+>>> +    s32 ret_val;
+>>> +
+>>> +    /* Capture start */
+>>> +    if (info->gettimex64(info, &phc_start, &sys_start)) {
+>>> +        e_dbg("PHC gettimex(start) failed\n");
+>>> +        return;
+>>> +    }
+>>> +
+>>> +    /* Small interval to measure increment */
+>>> +    usleep_range(1000, 1100);
+>>> +
+>>> +    /* Capture end */
+>>> +    if (info->gettimex64(info, &phc_end, &sys_end)) {
+>>> +        e_dbg("PHC gettimex(end) failed\n");
+>>> +        return;
+>>> +    }
+>>> +
+>>> +    /* Compute deltas */
+>>> +    phc_delta = timespec64_to_ns(&phc_end) -
+>>> +            timespec64_to_ns(&phc_start);
+>>> +
+>>> +    sys_start_ns = (timespec64_to_ns(&sys_start.pre_ts) +
+>>> +            timespec64_to_ns(&sys_start.post_ts)) >> 1;
+>>> +
+>>> +    sys_end_ns = (timespec64_to_ns(&sys_end.pre_ts) +
+>>> +              timespec64_to_ns(&sys_end.post_ts)) >> 1;
+>>> +
+>>> +    sys_delta = sys_end_ns - sys_start_ns;
+>>> +
+>>> +    delta = phc_delta - sys_delta;
+>>> +    if (delta > 100000) {
+>>> +        e_dbg("Corrected PHC frequency: TIMINCA set for 38.4 MHz\n");
+>>> +        /* Program TIMINCA for 38.4 MHz */
+>>> +        timinca = (INCPERIOD_38400KHZ <<
+>>> +               E1000_TIMINCA_INCPERIOD_SHIFT) |
+>>
+>> Why wrap the line?
+> 
+> Because it passes the 80 characters per line limit.
+
+Would the one below work?
+
+     timinca =
+     	(INCPERIOD_38400KHZ << E1000_TIMINCA_INCPERIOD_SHIFT) |
+
+>>> +              (((INCVALUE_38400KHZ <<
+>>> +                 adapter->cc.shift) &
+>>> +               E1000_TIMINCA_INCVALUE_MASK));
+>>> +        ew32(TIMINCA, timinca);
+>>> +    }
+>>> +
+>>> +    /* reset the systim ns time counter */
+>>> +    spin_lock_irqsave(&adapter->systim_lock, flags);
+>>> +    timecounter_init(&adapter->tc, &adapter->cc,
+>>> +             ktime_to_ns(ktime_get_real()));
+>>> +    spin_unlock_irqrestore(&adapter->systim_lock, flags);
+>>> +
+>>> +    /* restore the previous hwtstamp configuration settings */
+>>> +    ret_val = e1000e_config_hwtstamp(adapter, &adapter->hwtstamp_config,
+>>> +                     &extack);
+>>> +    if (ret_val) {
+>>> +        if (extack._msg)
+>>> +            e_err("%s\n", extack._msg);
+>>
+>> Is a user able to do anything with this log dump?
+> 
+> I used the same code we used in the original function for consistency.
+
+Understood.
+
+>>> +    }
+>>> +}
+>>> +
+>>>   /**
+>>>    * e1000e_systim_reset - reset the timesync registers after a hardware reset
+>>>    * @adapter: board private structure
+>>> @@ -3955,6 +4031,9 @@ static void e1000e_systim_reset(struct 
+>>> e1000_adapter *adapter)
+>>>           if (extack._msg)
+>>>               e_err("%s\n", extack._msg);
+>>>       }
+>>> +
+>>> +    if (hw->mac.type == e1000_pch_adp || hw->mac.type == e1000_pch_tgp)
+>>> +        return e1000e_xtal_tgp_workaround(adapter);
+>>>   }
+>>>   /**
+>>
+>> With the changes above addressed, feel free to add
+>>
+>> Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+
+
+Kind regards,
+
+Paul
