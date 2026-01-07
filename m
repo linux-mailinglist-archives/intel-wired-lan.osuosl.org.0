@@ -1,92 +1,92 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6CFE7CFF819
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 07 Jan 2026 19:40:19 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 67BD2CFF81F
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 07 Jan 2026 19:40:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0C78580738;
-	Wed,  7 Jan 2026 18:40:18 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DEA1580BC6;
+	Wed,  7 Jan 2026 18:40:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id zIi62IPkBObL; Wed,  7 Jan 2026 18:40:17 +0000 (UTC)
+ id j4gH4eP8_5wf; Wed,  7 Jan 2026 18:40:27 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1167580BC6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 19DAD80C52
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1767811217;
-	bh=CD2jIr/VDx15GPtkNoiN6D8LeRDZdb8Oijt8AkLHlJA=;
+	s=default; t=1767811227;
+	bh=DtsftQdWvc92MJo/GOY9PADpHyfnOF52TK2njaD2TIA=;
 	h=References:In-Reply-To:Date:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From:Reply-To:From;
-	b=H/YPJWa0Bsru4JO4y2wEIRq1/k9RNJLCmErVAtD7vj4L6Youod0aaLGaeweoTRj5x
-	 4OidpBV7Uwj8A+zm6t2NEAM0xmgR/8ZoDEjoNi6QFN8IETGz1PJG8WQO3G5Q5EMXgv
-	 lRjvRmeDSQHPfBeyUIOm6NGPbtN4J2oHMpxs7SgbKe1VQxyoZYtg6oxlc49n34lLHp
-	 GfHNu7YkLmcJllYNkL9zpqOvrEUF0rC9E91/G+zjEoW+XdloXrkYXUNp5W6kGw81mY
-	 UeMlfLlnD6ELsw/5/PNLfsx7ME/SfMTBZcDGWjVVFGoKrLbHJyy/aX56ckovmEgBZL
-	 RX5POf5dMBnVw==
+	b=flG9LXAO23kbZjNktR2zts7X/KSAgbLTG4u60krMhYb9MiVWzAmpC37mf0sFFIjUO
+	 9I5xd9P9gkHEUAb/tPmkjrjVW0PlsEoATQPHznlCRhGOhUHkt7cjku5SQfTcBKv78z
+	 +tqqv3qDXMs6nB5G5WYBxYtXA/H0LekW7WSliZ/++6zvnnnD8cEWbKg84z8yWahBro
+	 aPoI8QhmudGVA9DTaPBrkVjB3MbcT05OA/669jdxIlCqtZokh8Cx8mig2GtI+OpLOi
+	 07kGbFw6IAT4tk3kcW18M60cGjOxmDBWoCErSCTMSB/o3bAL/Rn8OKmMN+GIHKrASl
+	 0WHJ+Juvrr1FA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1167580BC6;
-	Wed,  7 Jan 2026 18:40:17 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 19DAD80C52;
+	Wed,  7 Jan 2026 18:40:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id C4CEA25B
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jan 2026 18:40:14 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 8D0FB436
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jan 2026 18:40:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id AB0AB40389
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jan 2026 18:40:14 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8A2C84035B
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jan 2026 18:40:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id jNjFaWWAE7ex for <intel-wired-lan@lists.osuosl.org>;
- Wed,  7 Jan 2026 18:40:13 +0000 (UTC)
+ id OzP2Mk66Nt24 for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  7 Jan 2026 18:40:24 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::1134; helo=mail-yw1-x1134.google.com;
+ client-ip=2607:f8b0:4864:20::b134; helo=mail-yx1-xb134.google.com;
  envelope-from=boolli@google.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 3C9954000B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3C9954000B
-Received: from mail-yw1-x1134.google.com (mail-yw1-x1134.google.com
- [IPv6:2607:f8b0:4864:20::1134])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3C9954000B
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jan 2026 18:40:13 +0000 (UTC)
-Received: by mail-yw1-x1134.google.com with SMTP id
- 00721157ae682-78fc520433aso26994577b3.1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 07 Jan 2026 10:40:13 -0800 (PST)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 8F23A4000B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8F23A4000B
+Received: from mail-yx1-xb134.google.com (mail-yx1-xb134.google.com
+ [IPv6:2607:f8b0:4864:20::b134])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 8F23A4000B
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jan 2026 18:40:24 +0000 (UTC)
+Received: by mail-yx1-xb134.google.com with SMTP id
+ 956f58d0204a3-6446c2bbfe3so2024559d50.1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 07 Jan 2026 10:40:24 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767811212; x=1768416012;
+ d=1e100.net; s=20230601; t=1767811223; x=1768416023;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=CD2jIr/VDx15GPtkNoiN6D8LeRDZdb8Oijt8AkLHlJA=;
- b=xCaB2Z8s4ElMMJwlPfISAhEJi3W5CzIbkc9jzPTvmXCdeBmdCjDtJYdIHfWZxdYX3Y
- HJnoXTSmzOKZXZCCGWEq1MyTELHZKJO6J7HfFRa5J9TuFpjLfcTj3//TbYSShXDeF1Sz
- MPx0YgKDRqCJdWQCcVtIGGvkKTvP6KWETeJM80Xr1IGur+u/qpAXQxw0TPJivBpPSvxI
- rdBeen0TQk/eLq7hjDNJFwuhDHoBPz9qsvOiz2gderDVKn/h0W+O+hASsYff9nCMh8jK
- lVKUTW/l1x+0VJHFQhVudbXnYn4dglej00C6TDArObtn9UjPMRIyqJalMShtslpst1+D
- nq0Q==
+ bh=DtsftQdWvc92MJo/GOY9PADpHyfnOF52TK2njaD2TIA=;
+ b=KjsP30YXXI+zAJcKuAK5wSDPSk0mQTl7fV5yZAYSSwiz0dXkZLYz8Ak8ImwBO/yNav
+ 58d/9pCTw81hm7TyYpfulD6qogMtOZFvB6Bj+gpCttB+uf4Hn8Z79QuCrW8jSx9HNeaE
+ PKJqvT7CDCLKtit+5U0mxQNSmPAFYsj49Kxef7MvLPHCri5lWMMN9duPV/Gm/eK0pkMB
+ VCJRQZ4I91GZZyzrvQl+dUsBb3I2LYLVvCFT1e9ioWtOi6+j2h3VEqMhliaNkwKUdRfk
+ 5LJgCrR2IEumfK4plviMinmbsJ+U+fg3wqllw5ycIOaVMnbEQdPfnETEfgeOl5TC6wiq
+ sp4w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVJaecOkHoeI39jtqyRwAyB62bAwf5s1YkW1mfg+3WMl3d9W9U9RzcAJ4oDpv9XbO9oHUcpHrSKllhmyh9YWZw=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yy11C9DxKWKHOeNTFFqxMwh0Omup0PkQpjqp1Urb1KxHUckAzs/
- trgn3VaVBlje0nAgFjd+T+j1Sekm+XySTxWFt1qAoQrNuPKBUJ7K560SF69jQqtIwImLB81Ed0G
- Yi3tZRuDsLL/mES3I7x3BuZTS7LJS2IQtBpKgTk3F
-X-Gm-Gg: AY/fxX4Jnf3DgFU8wrYJX8jMWD2bcKyKewv4ZMZoV2XBQzNiPJJNY5cr1lL24nqfFDm
- NVgU+qM+rG5nPNX7iRQjgL+MfM62jRVlryHtCX8vApUmtMXY/QBu8ZuP/kT/w9ykQ9kprYxS8FK
- ydRyInuqSUYUE1M5+5mZQJK5aE9F80vxAN/+z4YgwxMBNDU/D4JaqpiVlBu+uRVTh5QZXflxN0H
- uxwtOG3zgtDISKrRZm6doCuBom7+sxFm7uezBtXXMx/iTQE+3k2KaZ36IqRtHKwfskXcbK3p0c0
- w6eWZxmuXJWzChz2C3PIzOkayA==
-X-Google-Smtp-Source: AGHT+IGjMMhZ/IhC6X/EujIlmECly+CReLquvnDp8UqwOXWG3WXyMC1+2TiKNc9tQrJkyjjvyiDqN6tO5vOoIDN+Q6U=
-X-Received: by 2002:a05:690e:1301:b0:641:f5bc:68e1 with SMTP id
- 956f58d0204a3-64716c90566mr2944673d50.78.1767811211551; Wed, 07 Jan 2026
- 10:40:11 -0800 (PST)
+ AJvYcCXKCWp9MzYZmLzmCpCoYvAD/ysGJHep8ZHRGKw0TDue9muo4dwZiDjjLs6fS1fBkFAvJkK6iEyNExqKPdiUsTo=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YxRVvKbXrFNoKLrOXCRb7prmFk+NeST6vsUGz/SskvdBGm0keWU
+ Nn0GHbujEEJI4WLeincSEAGp/rqskYp7tiw2C+d3xgYFtlM4BfjD5Ws6wZVOsddM9Vr0NrNTfEH
+ 7TVrcdikr3rTbKqtKnZ6rnynRGOx4lKyOVdYtWoBC
+X-Gm-Gg: AY/fxX4Xh2wn22GMgkQbHNr9pm3Sggs+4ittveEhQ1MzFtI6OeKWa/jLwSz6icohx17
+ iWmCz1l0uotDXotMELfeKjcEoS6X1MNhzUsGDUFBtMfPqRYAxh7SWIwXQu1bBylyYLmu7JmUCoz
+ QHIhV5WiXN1Tx4s/g0J6bt8Z3h2unN6muOR0Uc8j62tH7ZOUAbR7kF+lZFsLtmN0GoG9sEG1FQa
+ EuEdOwNm/h0HMOJ/Wxr0R4MmC25DvKsstqqjbfcOs+uI/MzKhvGuvmbECD1Ck4R0mhMsNxBQvb7
+ BF9Aju+QrCOVPaSpFQghrpWHIA==
+X-Google-Smtp-Source: AGHT+IFjytPWCRjgBg2Wc9JejGPrceLN1OzIIgu8DsxNWG6LoiDOWn9N99G3/90yQ8AkNTL5f6o/QaFr3PxKunb2Fr8=
+X-Received: by 2002:a05:690e:14c9:b0:63e:3b29:f1e1 with SMTP id
+ 956f58d0204a3-64716c04ccfmr2869235d50.36.1767811222897; Wed, 07 Jan 2026
+ 10:40:22 -0800 (PST)
 MIME-Version: 1.0
 References: <20260107010503.2242163-1-boolli@google.com>
- <fba866fa-5ed7-4321-8776-e1585b4c417b@molgen.mpg.de>
-In-Reply-To: <fba866fa-5ed7-4321-8776-e1585b4c417b@molgen.mpg.de>
-Date: Wed, 7 Jan 2026 10:39:59 -0800
-X-Gm-Features: AQt7F2qnt5SlMz_K9bh9suJQOY5pRnMK_fv_zkb81D4dAfNCQuOVAomik0utphM
-Message-ID: <CAODvEq4HK0isNpT5G-O3zKAgThiLt39hz_h8eQS4-Vnf1NjJnw@mail.gmail.com>
-To: Paul Menzel <pmenzel@molgen.mpg.de>
+ <9cee39b6-edf5-4db2-8f0c-4550fa84b5b7@intel.com>
+In-Reply-To: <9cee39b6-edf5-4db2-8f0c-4550fa84b5b7@intel.com>
+Date: Wed, 7 Jan 2026 10:40:10 -0800
+X-Gm-Features: AQt7F2r6bV6dIcmijk5Dw_7PVdGEoCOZKZRo7usguyrZU391ci6mo2WlJyu5eYk
+Message-ID: <CAODvEq5L9dBHAfmhATtXmuUde7My1wCobMN1JRvACDKPwa3XRQ@mail.gmail.com>
+To: "Tantilov, Emil S" <emil.s.tantilov@intel.com>
 Cc: Tony Nguyen <anthony.l.nguyen@intel.com>, 
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
  "David S. Miller" <davem@davemloft.net>, 
@@ -95,28 +95,27 @@ Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
  netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
  David Decotigny <decot@google.com>, Anjali Singhai <anjali.singhai@intel.com>, 
  Sridhar Samudrala <sridhar.samudrala@intel.com>,
- Brian Vazquez <brianvv@google.com>, emil.s.tantilov@intel.com
+ Brian Vazquez <brianvv@google.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1767811212; x=1768416012; darn=lists.osuosl.org;
+ d=google.com; s=20230601; t=1767811223; x=1768416023; darn=lists.osuosl.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=CD2jIr/VDx15GPtkNoiN6D8LeRDZdb8Oijt8AkLHlJA=;
- b=V1RX4PTvpTHsvbntyyV5EBM/hSc08YBprWVGRL/2mYz5Wh/KdSAablkki/HC/zg1fG
- FTppxpDgrw02Q5aEnL9x7llfwKQMBMzq+Hh46Qb/ZXA/nyu5da+5yAM5SrSFmq+dYgV/
- HwnKgiId7C2Zjo8c8rt9kjWGOjzG7b7/9IA4WSn48cCuOYiIf/qxXR7G2II7PVXkqhwi
- 2WPRwWgnbihA7+NigSsHjcsmZscq9BG6PNTM4909lOnDUCfMuLGVfNJt4FKfw4iaY0EM
- 6FcNQ643wiy7sxY3/8fWO97/K0hDFVsLURKTUWJEc7kaDx0ugibvefHpqGAnyK6p0AW0
- cBAg==
+ bh=DtsftQdWvc92MJo/GOY9PADpHyfnOF52TK2njaD2TIA=;
+ b=4vHbR/LIKbDzxMRi3MlHRQ6tH64K1lo67p1+zVDJ4pytIjX1dXPKal3HcPi59ray7I
+ gKVzAHmIjeQH+mUHzayptPgYbMg7L0ISk26C+jigzMZEEL1vrgCKBajJcsTeARXHw+nf
+ douGA9ATn0Ag8hGU87FXgqO1czDOG29dAM2Jo/NsAdACKZ60z2MWVLY6U+g70998lfwg
+ ReZi1OXZvFkBAtdR3f1spTWNgvDa4vVsi1qT2YflNUORwN8lERW2nd4pxL8thEPVy/tG
+ hWvjSKnvS6r1l7UumNxsP57Q/sZW8Z1Bm1YNXdzGAx7FPHV+fsynj64BtAs9dvTvpqkp
+ Lt2A==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=reject dis=none)
  header.from=google.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=google.com header.i=@google.com header.a=rsa-sha256
- header.s=20230601 header.b=V1RX4PTv
+ dkim=pass (2048-bit key) header.d=google.com header.i=@google.com
+ header.a=rsa-sha256 header.s=20230601 header.b=4vHbR/LI
 Subject: Re: [Intel-wired-lan] [PATCH 1/5] idpf: skip getting/setting ring
  params if vport is NULL during HW reset
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -136,28 +135,22 @@ Reply-To: Li Li <boolli@google.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Jan 6, 2026 at 9:30=E2=80=AFPM Paul Menzel <pmenzel@molgen.mpg.de> =
-wrote:
+Please reject this patch series given the underlying issue is fixed in
+an earlier patch
+series already, thanks.
+
+On Wed, Jan 7, 2026 at 9:41=E2=80=AFAM Tantilov, Emil S
+<emil.s.tantilov@intel.com> wrote:
 >
-> Dear Li,
 >
 >
-> Thank you for your patch.
->
-> Am 07.01.26 um 02:04 schrieb Li Li via Intel-wired-lan:
+> On 1/6/2026 5:04 PM, Li Li via Intel-wired-lan wrote:
 > > When an idpf HW reset is triggered, it clears the vport but does
 > > not clear the netdev held by vport:
 > >
 > >      // In idpf_vport_dealloc() called by idpf_init_hard_reset(),
 > >      // idpf_init_hard_reset() sets IDPF_HR_RESET_IN_PROG, so
 > >      // idpf_decfg_netdev() doesn't get called.
->
-> No need to format this as code comments. At least it confused me a little=
-.
-
-Thanks for the pointer. Will drop the comment format in the future.
-
->
 > >      if (!test_bit(IDPF_HR_RESET_IN_PROG, adapter->flags))
 > >          idpf_decfg_netdev(vport);
 > >      // idpf_decfg_netdev() would clear netdev but it isn't called:
@@ -182,87 +175,27 @@ Thanks for the pointer. Will drop the comment format in the future.
 > > reset to fail and retry, while calling "ethtool -g/-G" on the netdev
 > > at the same time.
 >
-> If you shared the commands, how to do that, it would make reproducing
-> the issue easier.
+> I have posted series that resolves these issues in the reset path by
+> reshuffling the flow a bit and adding netif_device_detach/attach to
+> make sure the netdevs are better protected in the middle of a reset:
+> https://lore.kernel.org/intel-wired-lan/20251121001218.4565-1-emil.s.tant=
+ilov@intel.com/
+>
+> If you are still seeing issues with the above applied, let me know and I
+> can take a look.
 
-Here's what I did to introduce TX timeouts and virtchnl timeouts at run tim=
-e:
+Thanks Emil! Yes I performed the experiment at a commit past your
+patch series above, and it
+does look like the kernel panic does appear anymore. Now performing
+ethtool commands during
+HW resets would result in "netlink error: No such device", which is
+expected because we are detaching
+the netdev at the start of the HW reset.
 
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-@@ -15,6 +15,9 @@ struct idpf_tx_stash {
- #define idpf_tx_buf_compl_tag(buf)     (*(u32 *)&(buf)->priv)
- LIBETH_SQE_CHECK_PRIV(u32);
-
-+static bool SIMULATE_TX_TIMEOUT;
-+module_param(SIMULATE_TX_TIMEOUT, bool, 0644);
-+
- /**
-  * idpf_chk_linearize - Check if skb exceeds max descriptors per packet
-  * @skb: send buffer
-@@ -79,6 +82,8 @@ void idpf_tx_timeout(struct net_device *netdev,
-unsigned int txqueue)
-
-        adapter->tx_timeout_count++;
-
-+       SIMULATE_TX_TIMEOUT =3D false;
-+
-        netdev_err(netdev, "Detected Tx timeout: Count %d, Queue %d\n",
-                   adapter->tx_timeout_count, txqueue);
-        if (!idpf_is_reset_in_prog(adapter)) {
-@@ -2028,6 +2033,12 @@ static bool idpf_tx_clean_complq(struct
-idpf_compl_queue *complq, int budget,
-                }
-                tx_q =3D complq->txq_grp->txqs[rel_tx_qid];
-
-+               if (unlikely(SIMULATE_TX_TIMEOUT && (tx_q->idx =3D=3D 1))) =
-{
-+                       netdev_err(tx_q->netdev, "boolli test:
-triggering TX timeout for TX queue id %d\n", tx_q->idx);
-+                       goto fetch_next_desc;
-+               }
-+
-+
-                /* Determine completion type */
-                ctype =3D le16_get_bits(tx_desc->qid_comptype_gen,
-                                      IDPF_TXD_COMPLQ_COMPL_TYPE_M);
-
---- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-@@ -6,6 +6,9 @@
- #include "idpf.h"
- #include "idpf_virtchnl.h"
-
-+static bool SIMULATE_VC_TIMEOUT;
-+module_param(SIMULATE_VC_TIMEOUT, bool, 0644);
-+
- #define IDPF_VC_XN_MIN_TIMEOUT_MSEC    2000
- #define IDPF_VC_XN_DEFAULT_TIMEOUT_MSEC        (60 * 1000)
- #define IDPF_VC_XN_IDX_M               GENMASK(7, 0)
-@@ -800,6 +803,10 @@ static int idpf_send_ver_msg(struct idpf_adapter *adap=
-ter)
-        xn_params.timeout_ms =3D IDPF_VC_XN_DEFAULT_TIMEOUT_MSEC;
-
-        reply_sz =3D idpf_vc_xn_exec(adapter, &xn_params);
-+       if (SIMULATE_VC_TIMEOUT) {
-+               dev_err(&adapter->pdev->dev, "boolli test: simulating
-VC timeout by returning -ETIME in idpf_send_ver_msg");
-+               reply_sz =3D -ETIME;
-+       }
-        if (reply_sz < 0)
-                return reply_sz;
-        if (reply_sz < sizeof(vvi))
-
-Then after the kernel is booted, we can introduce the TX timeout that
-lasts forever by doing the following:
-
-echo 1 | tee /sys/module/idpf/parameters/SIMULATE_TX_TIMEOUT && echo 1
-| tee /sys/module/idpf/parameters/SIMULATE_VC_TIMEOUT
-
-All my experiments in this patch series were performed after the
-kernel was put in such a state.
+Please reject this patch series, thanks!
 
 >
+> >
 > > With this patch applied, we see the following error but no kernel
 > > panics anymore:
 > >
@@ -285,12 +218,18 @@ netdev,
 > >       idpf_vport_ctrl_lock(netdev);
 > >       vport =3D idpf_netdev_to_vport(netdev);
 > > +     if (!vport) {
+>
+> We used to have these all over the place, but the code was changed to
+> rely on idpf_vport_ctrl_lock() for the protection of the vport state.
+> Still some issues remain with the error paths (hence the series above),
+> but in general we don't want to resort to vport NULL checks and rather
+> fix the reset flows to rely on cleaner logic and locks.
+>
+> Thanks,
+> Emil
+>
 > > +             netdev_err(netdev, "failed to get ring params due to no v=
 port in netdev\n");
->
-> If vport =3D=3D NULL is expected, why log it as an error. What should the
-> user do? Wait until reset is done?
->
 > > +             goto unlock;
 > > +     }
 > >
@@ -320,22 +259,3 @@ rt in netdev\n");
 > >       idx =3D vport->idx;
 > >
 >
-> Is there another =E2=80=93 possible more involved =E2=80=93 solution poss=
-ible to wait
-> until the hardware reset finished?
-
-Please see Emil's patch series at
-https://lore.kernel.org/intel-wired-lan/20251121001218.4565-1-emil.s.tantil=
-ov@intel.com/,
-in which https://lore.kernel.org/intel-wired-lan/20251121001218.4565-3-emil=
-.s.tantilov@intel.com/
-detaches the netdev at the start of a HW reset, which I also think is
-a more elegant solution than mine.
-
-I'm going to drop this patch series in favor of Emil's solution above.
-
->
->
-> Kind regards,
->
-> Paul
