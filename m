@@ -1,87 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A92DCFB864
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 07 Jan 2026 02:05:24 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 69622CFB867
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 07 Jan 2026 02:05:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E138E4093D;
-	Wed,  7 Jan 2026 01:05:22 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7F7394090E;
+	Wed,  7 Jan 2026 01:05:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sj2Tcq10J90D; Wed,  7 Jan 2026 01:05:22 +0000 (UTC)
+ id LV70kz3fRGaE; Wed,  7 Jan 2026 01:05:25 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6778240944
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F1C134094D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1767747922;
-	bh=QgCM4PdeMwtaGAjDdJiUYbxQZ0vj4v9BcNHM8Ys9aos=;
+	s=default; t=1767747925;
+	bh=uYuKjIoFITh34belvsUGGdGwbr0H2yT+hfJIc/2t9is=;
 	h=Date:In-Reply-To:References:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From:Reply-To:From;
-	b=RTD7bwCj3fHwfKP3WbJQh02SjiIC8+IeyZr4SxtJxWQVNA5TiGNN3GP11fxVKia2D
-	 bXwvP2pOH17T6KOnMepPdnXNtNu7XGITVn0sindu7iTDCXK/dclcAQYPXE+Q7zeOKj
-	 7rrvjC/9EaRYtlxvF++IA1CKGW4Mb5EAFTvHjmEdppiZhMpQQt8RJ8hW6rAImpjisI
-	 duCXnGAu2uoxhcue679CcPuACdKcqqrqILwaS2jxAUY/4FMCloWO/oPfrsdb4OGdDI
-	 J03Az21zM6zTXp+kFR24H750+jdMonsoVAwwmJSotyhyZn1uDbewMP16+Te1kjUnTP
-	 bjNzvwRM7NaiA==
+	b=xNfArUccdmP5GPBfhqC+CN8BbOSDqNNZAmW2/n2icoBlVXno1zsPSEEVM+S8P3xwU
+	 iLkZGAg56M2x6hcvjvZu45ZqAnEYToZgXxFTowGAi9c02nMxF3uQXo5ey6OnHEWnT9
+	 5vI8+gIdSi71T4NIYBPAv5UIgeX8X7xwGaGZxAlht5xEeZ+UGzSsgal3LaaZkDNWxe
+	 3lEXYTNTH8G8U3JfsuDjNjJvfBpUHOSmtLHWw9YAlAOfL9bbe+5UszRYF/sHCWgnGl
+	 WLs4TWdb1UI/snRN4jbT2VkxsPEEwY810kDxqa88ZzlMSYPBJZQ0csGvNMRA8ZLz6u
+	 9CMA30JCHnmPg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6778240944;
-	Wed,  7 Jan 2026 01:05:22 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id F1C134094D;
+	Wed,  7 Jan 2026 01:05:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id BDC1570B
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jan 2026 01:05:20 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id A90AC249
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jan 2026 01:05:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id AFB484093D
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jan 2026 01:05:20 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9AB4F8176B
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jan 2026 01:05:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vhvvnCBL5YZ6 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  7 Jan 2026 01:05:20 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id S773yESauYSD for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  7 Jan 2026 01:05:22 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
  client-ip=2607:f8b0:4864:20::1349; helo=mail-dy1-x1349.google.com;
- envelope-from=3trfdaqykd3kylliifdlldib.zljfkqbi-tfoba-ixkifpqp.lprlpi.lod@flex--boolli.bounces.google.com;
+ envelope-from=3ubfdaqykd3wgttqqnlttlqj.htrnsyjq-1nwji-qfsqnxyx.txztxq.twl@flex--boolli.bounces.google.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 07CCB40911
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 07CCB40911
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A2F2281768
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A2F2281768
 Received: from mail-dy1-x1349.google.com (mail-dy1-x1349.google.com
  [IPv6:2607:f8b0:4864:20::1349])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 07CCB40911
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jan 2026 01:05:19 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id A2F2281768
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Jan 2026 01:05:22 +0000 (UTC)
 Received: by mail-dy1-x1349.google.com with SMTP id
- 5a478bee46e88-2ac3019faadso2481358eec.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 06 Jan 2026 17:05:19 -0800 (PST)
+ 5a478bee46e88-2b0751d8de7so1160143eec.1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 06 Jan 2026 17:05:22 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767747919; x=1768352719;
+ d=1e100.net; s=20230601; t=1767747921; x=1768352721;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=QgCM4PdeMwtaGAjDdJiUYbxQZ0vj4v9BcNHM8Ys9aos=;
- b=iPaRbsXYrvvrAeCL+wvn9xS0IIxsDr+atdWuqA3Y6dwMn60mxrJqrZ+AI5VHFWbUF5
- aV29B6KuovaxscDTYTOcHLJrjmwnmy7K54tpqOtuVzUtQ86QJ3UvsD/Q2Cb2rZ7A/G9Z
- TE0ZAnQ5PK3mVf21hI2u5dxGqk5CCA1pg75YE4mOXqrNt/dOngo0P5og9DwmS1N2M834
- mXRIphiESgu8mylYs+odCjYPAMZVbGXBHg7VYe/roKtaaGSqGF2BiVTm4zzcn57tSaIp
- ZlQH34mcaPEgjxBI/iqWZzmVNnZ+P8JbmuwlTIsaFXwoRGjSUyoTmjdTTVNbO/6DcOn5
- t6FA==
+ bh=uYuKjIoFITh34belvsUGGdGwbr0H2yT+hfJIc/2t9is=;
+ b=ievM3J+5F6z7lnRsz4c5UoJFHigYtME5lkh8sKZnMvyB66ubVjqFhoQ/vYRPz9KI3f
+ 8sM2Ph1w8dApNFBoDXZTcl7L9c5u2TV9EKB4F5pcLEGixbnPYDLaTNBhcZWnWJoc3sMj
+ xHFLfibQOm4mB5X3OiAOKR3rqVXhjamJ9gcOrhstQ4mDYRiBkRlMjEqYMwFIlsKvQuTH
+ 5p5FWy3V6V+Eggtp6T2IoBtW+gqtBEUlSJcb1+sAVXLxRz0NZD+A1z/p6A7znroD2B9J
+ s3/rqXLPPX/ZPaAEdKcVieCFP1yweM82XAQnsXmsaRVUeskKVQVrPKR4r+Ga7qIIdsJN
+ UPCg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWjHXWemerW4ASWKxozlzCa75jTdaYA9qwOVTgXMCvcZPcz+zGWsSH2cvfWv4JwEpQtoGpz//7bLOXCAHU9I/k=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YxhCqnsen2imz/IuoKeloQ8aMtXrGfMEJpeojyzxMQU/NmKon32
- 9x46RfiVAM/L4pixJXc4LZsWp3mwtXdeuQSOePkI+iiftBlq4HAJJRMF3z6fBkOQMKpoe+ZRyLp
- Uxl8Q5Q==
-X-Google-Smtp-Source: AGHT+IFj+b4aF+K3rOjN8KEbm91uYV5xlFvkogdLWnfIxNCoV4dVQ9b0ZLkt2gOYISLMhV6VHkw1LvhmW/8=
-X-Received: from dybcp4.prod.google.com ([2002:a05:7300:a144:b0:2a2:4eb1:3771])
+ AJvYcCW9X6lXrvmo8OZnaysRu3BMD9pEJxpXkgNncc/qffK7TADWyIYFXa/whnPo5W6P4uU/slQgCDF4rAfUT8iYQsI=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YwW4D4DDqQFRBV1UQVW7F0Yc0AvBfeWQhs4TUPIaqmgTjMbGxX/
+ 2TIap8zvW1aQnPz/GP0lUQ+F8iVdcLz8GdIK/041ji8A1JbVK2EIWyuWsvv/CYTLUKMrf4O5VHQ
+ TVHZPSQ==
+X-Google-Smtp-Source: AGHT+IERehY56UWpPh//i5oxfb0HeZGQNoZ+QgzVqNukRsBFB/92C9fjnGE+fl3jAJe6woD72AFL9kZCyck=
+X-Received: from dlkk2.prod.google.com ([2002:a05:7022:6082:b0:121:7c06:d4b5])
  (user=boolli job=prod-delivery.src-stubby-dispatcher) by
- 2002:a05:7300:e42b:b0:2ae:4fd7:ba56
- with SMTP id 5a478bee46e88-2b17d2951e1mr608048eec.23.1767747918938; Tue, 06
- Jan 2026 17:05:18 -0800 (PST)
-Date: Wed,  7 Jan 2026 01:05:01 +0000
+ 2002:a05:701b:2089:20b0:11b:2138:4758
+ with SMTP id a92af1059eb24-121f8b2bc09mr583152c88.21.1767747921545; Tue, 06
+ Jan 2026 17:05:21 -0800 (PST)
+Date: Wed,  7 Jan 2026 01:05:02 +0000
 In-Reply-To: <20260107010503.2242163-1-boolli@google.com>
 Mime-Version: 1.0
 References: <20260107010503.2242163-1-boolli@google.com>
 X-Mailer: git-send-email 2.52.0.351.gbe84eed79e-goog
-Message-ID: <20260107010503.2242163-3-boolli@google.com>
+Message-ID: <20260107010503.2242163-4-boolli@google.com>
 To: Tony Nguyen <anthony.l.nguyen@intel.com>, 
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
  "David S. Miller" <davem@davemloft.net>, 
@@ -94,25 +94,25 @@ Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  Li Li <boolli@google.com>, emil.s.tantilov@intel.com
 Content-Type: text/plain; charset="UTF-8"
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1767747919; x=1768352719; darn=lists.osuosl.org;
+ d=google.com; s=20230601; t=1767747921; x=1768352721; darn=lists.osuosl.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=QgCM4PdeMwtaGAjDdJiUYbxQZ0vj4v9BcNHM8Ys9aos=;
- b=NGolVRHOtwvkfvdcRm3LqZ6Wfnvi6ZU59oL33UGKzL8ce1nB/Tf5LZIS3zr7Hq574G
- Owo4xP5f03cXpf/tTnknowz70Hy1Ic3uyD8IBDTljIX2l3CwYLLz1gwMegwcY92DZ2hu
- i6x3C8tjCgDgn+emtZS6/uOlvtKM7R4Od/bhBmZhehjZbEJa+X22KpT+rOD919uvN7nE
- uiHEWULggsB+fE6kZxCcHnmkT1S3A1PbQGoS/ch+KyAI7ZDKohfN6pfqPb+n+CdVZto5
- VAQfNiB5NG4bEcSEg8kpDSt8K40oL99DnLK0el6zGCJ3xW9w5dTNQWORv8aRNrXn0OoR
- kSaQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=uYuKjIoFITh34belvsUGGdGwbr0H2yT+hfJIc/2t9is=;
+ b=174273Zc/lrmsE1vMBlAyyl/jdVZHGtkAh2DEkdfZy2IkIUJespXDVh6rhjBqRwcvU
+ mXY3b+oN3BjNygWTnH1171b+vyMgyNmFOSdI3KZtmTuA/ii9w8IPkjM0mXq4wjr7tTQO
+ fT7V1iFVAB5zNaHpPypbFW5VMANOdOmch5dbFnLN28xcXt0VBQLe2Dx2PpYgvsePqWtG
+ Tx2NCUZ+S5L/qrfdKTurVcXK/TUUvDItsoCF5zGd6aOmKHT0c7+tYgFDkiUrYLV+FsZf
+ fGwgzVV3Ompx18ZtZipc6RAKr5CqwE3hL3E33H5MD2YAQM+JVBvVMJIhd1KhxPWIzhW3
+ /6Og==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=reject dis=none)
  header.from=google.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=google.com header.i=@google.com header.a=rsa-sha256
- header.s=20230601 header.b=NGolVRHO
-Subject: [Intel-wired-lan] [PATCH 3/5] idpf: skip getting RX flow rules if
- vport is NULL during HW reset
+ header.s=20230601 header.b=174273Zc
+Subject: [Intel-wired-lan] [PATCH 4/5] idpf: skip setting channels if vport
+ is NULL during HW reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -146,55 +146,45 @@ not clear the netdev held by vport:
     kfree(adapter->vports);
     adapter->vports = NULL;
 
-During an idpf HW reset, when userspace gets RX flow classification
-rules of the netdev, the vport associated with the netdev is NULL,
-and so a kernel panic would happen:
+During an idpf HW reset, when userspace changes the netdev channels,
+the vport associated with the netdev is NULL, and so a kernel panic
+would happen:
 
-[ 1466.308592] BUG: kernel NULL pointer dereference, address: 0000000000000032
+[ 2245.795117] BUG: kernel NULL pointer dereference, address: 0000000000000088
 ...
-[ 1466.356222] RIP: 0010:idpf_get_rxnfc+0x3b/0x70
+[ 2245.842720] RIP: 0010:idpf_set_channels+0x40/0x120
 
 This can be reproduced reliably by injecting a TX timeout to cause
 an idpf HW reset, and injecting a virtchnl error to cause the HW
-reset to fail and retry, while running "ethtool -n" in userspace.
+reset to fail and retry, while running "ethtool -L" in userspace.
 
 With this patch applied, we see the following error but no kernel
 panics anymore:
 
-[  312.476576] idpf 0000:05:00.0 eth1: failed to get rules due to no vport in netdev
-Cannot get RX rings: Bad address
-rxclass: Cannot get RX class rule count: Bad address
-RX classification rule retrieval failed
+[ 1176.743096] idpf 0000:05:00.0 eth1: channels not changed due to no vport in netdev
+netlink error: Bad address
 
 Signed-off-by: Li Li <boolli@google.com>
 ---
- drivers/net/ethernet/intel/idpf/idpf_ethtool.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/net/ethernet/intel/idpf/idpf_ethtool.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
-index 6a4b630b786c2..c71af85408a29 100644
+index c71af85408a29..1b03528041af4 100644
 --- a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
 +++ b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
-@@ -45,6 +44,11 @@ static int idpf_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd,
+@@ -580,6 +579,11 @@ static int idpf_set_channels(struct net_device *netdev,
  
  	idpf_vport_ctrl_lock(netdev);
  	vport = idpf_netdev_to_vport(netdev);
 +	if (!vport) {
-+		netdev_err(netdev, "failed to get rules due to no vport in netdev\n");
++		netdev_err(netdev, "channels not changed due to no vport in netdev\n");
 +		err = -EFAULT;
-+		goto unlock;
++		goto unlock_mutex;
 +	}
- 	vport_config = np->adapter->vport_config[np->vport_idx];
- 	user_config = &vport_config->user_config;
  
-@@ -85,6 +90,7 @@ static int idpf_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd,
- 		break;
- 	}
- 
-+unlock:
- 	idpf_vport_ctrl_unlock(netdev);
- 
- 	return err;
+ 	idx = vport->idx;
+ 	vport_config = vport->adapter->vport_config[idx];
 -- 
 2.52.0.351.gbe84eed79e-goog
 
