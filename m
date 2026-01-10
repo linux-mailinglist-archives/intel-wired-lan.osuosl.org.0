@@ -1,95 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AF00AD0DD9D
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 10 Jan 2026 22:06:02 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 08736D0DD94
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 10 Jan 2026 22:05:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4B4B460831;
+	by smtp1.osuosl.org (Postfix) with ESMTP id C669D8135C;
 	Sat, 10 Jan 2026 21:05:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id cFRFld2HjArO; Sat, 10 Jan 2026 21:05:32 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 4seAl4R4tdDU; Sat, 10 Jan 2026 21:05:33 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BD56A60846
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4E68081372
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1768079132;
-	bh=qOm2Dco79W8CJqhRdT3ov73dnM6p4xH+R1QoW90QGkc=;
+	s=default; t=1768079133;
+	bh=0TnUC/TQ0eRLnTNM/gOpI3DULP5gf/J95rnk3NBvNrg=;
 	h=Date:References:In-Reply-To:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From:Reply-To:From;
-	b=Y8yoJw7IrjisDkfnZVwI/6+O0Y2hZXzU3bj5KJDNbgX0ODVHHTMSi0jsXcz0deI+8
-	 LZbVfEgD0XkOW+O78qWs/tY+uSpquBxoHS1uOsedk1h94PhPGKcIm1SLheec8jUZBE
-	 2OvtU1zzbwSx2QSnQImHsJhCSUYSPZvUrBbQ3LVd5bmu5KwPFxUS11FR+LlX/x+G27
-	 kyz6W7h8c4CzVrKRGYMfxNu73mLtTV10OvDMtE1qE/eDpQwvsPVejQ+RWlqi/jN5gT
-	 Rpe8VF3uuwvahywyuU7rLf9rKajOvgHOHP8a+uk0VcO5oDEsMhiWQXw+OQn91MefJq
-	 PQTj5O2Kgn5bw==
+	b=KSbH83jOvbn6J8HED8wNfhiuEY0K3Yl5Qd2ZgT4t2Q1qebHS6Ol2YovV8YvqidfC3
+	 bGX1TFgqi/f8rRlqwDSTcLGvSm5ljrM89fSojv7BH6hFNzCT8yVNaR+lTa6aAzLZWW
+	 kFxBuB0h+aI5pHiO/oa7W0q3KN2KF+oj8h0o070IckoLvn5uIPiNZgxUeuM8PR44re
+	 83ZrLad4XxQBzvPsNGn9MMs6xzH8CPkLy0W6gjIieeGAuWeH59rUpFYJnpy4ZNbiXu
+	 aksYb+qOhL/X7ZUailohAclHC4/cL/qThc/9agm0nR37sCVdqSZW7HN9wlSxb3xfz8
+	 wF3bEJhIP7TJA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BD56A60846;
-	Sat, 10 Jan 2026 21:05:32 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4E68081372;
+	Sat, 10 Jan 2026 21:05:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 0F4BA18D
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 21:05:30 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 08D76131
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 21:05:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 01AA960831
+ by smtp2.osuosl.org (Postfix) with ESMTP id EF01040090
  for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 21:05:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id IBfbRmHcanmT for <intel-wired-lan@lists.osuosl.org>;
- Sat, 10 Jan 2026 21:05:29 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 79EJ8bzBkWAH for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 10 Jan 2026 21:05:30 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::534; helo=mail-ed1-x534.google.com;
+ client-ip=2a00:1450:4864:20::629; helo=mail-ej1-x629.google.com;
  envelope-from=jakub@cloudflare.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1B0E9607E7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1B0E9607E7
-Received: from mail-ed1-x534.google.com (mail-ed1-x534.google.com
- [IPv6:2a00:1450:4864:20::534])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1B0E9607E7
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 21:05:28 +0000 (UTC)
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-64b9dfc146fso4207774a12.0
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 13:05:28 -0800 (PST)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 3F16940088
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3F16940088
+Received: from mail-ej1-x629.google.com (mail-ej1-x629.google.com
+ [IPv6:2a00:1450:4864:20::629])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 3F16940088
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 21:05:30 +0000 (UTC)
+Received: by mail-ej1-x629.google.com with SMTP id
+ a640c23a62f3a-b72b495aa81so1005385666b.2
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 13:05:30 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768079127; x=1768683927;
+ d=1e100.net; s=20230601; t=1768079128; x=1768683928;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=qOm2Dco79W8CJqhRdT3ov73dnM6p4xH+R1QoW90QGkc=;
- b=f1bUj+yWH+HKm4/vYE+hr1H5EEyqwPQ6lLqvKov7MHyVI4MOfZFLyD8MdgQs2erkeD
- 0r4DFODvgr12pEzZc59QmaUvsPnhLIyUPNrN1kMJTnj01lw9RF1lQmrMpOVcA9KaZR/i
- 508lHRuabPibnstPExba2uuz5Mo/gFRrI7o7SUZ2yHo/UEp+kOAIa+n4qGVHqfXTHu0q
- of5yYbv5pmnALkQVs5y+95dahKl6uXuPTktmMzz3YIF+6mJq5cIdpkA+bBIg8Syw/BJp
- 27RllKA7ERbZHaYACLgEMS4tPpFKKZL42poWcgklbKLnSkdJji5zSnpTUa7WEPNMS2FK
- o+Qw==
+ bh=0TnUC/TQ0eRLnTNM/gOpI3DULP5gf/J95rnk3NBvNrg=;
+ b=VRvvRiRkmxSOpVGt0MWtmvUTcE3BBKeD+4tZFz5jMYJYZ+z5WJcXr9xR0Tj7/MzxKQ
+ LLPGzdXuW4nMiiHKvFU9hWs2r/uZCnqKyfXjnPtymnb5vil3rA2k+rGynaJwi3DNCZLL
+ H1PcUOK16tG2r+wPkVuvz5yP4vLTZryF15ydYse4jBWOgBj3GSK/Lh2yvJL2F0hhEO/c
+ gGk6NLjuriNMjz75/TN+2Z61Mh+JAulOgR1RHBFio82fx4wtffi4YXRY8A3ijmt1d2pp
+ gP/rRH+pI6ZDiQFyb+UmeRa7JvCm77qja3IIAg5bML/GV+FYmG0qaFAWxdKliHn7rOty
+ PH/Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVzO/GDqtxLnn7SGWlnIhQm9dUitdiuzrsj7/f2zxszsXGezMH1cHFG5KdfRQ8R6E6aAje1zXKNzcNFsesrVO0=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yz85qzc5wMo3O/9MqEW/KvxGnxfYhJ5LOHlZzwM8awKg4uX3ENY
- 0Jttiy2lsJhVpwynvPb3j1ZmMuI+SedzuPOTspJdLufoRWUDw90IaeaXB3N96eDZ8DM=
-X-Gm-Gg: AY/fxX48GzQiyeawNcM9PdJhjr61HJ7XOOGSian4epaPcP5di0czYdg4aCNrx9rVUtY
- /K9vJ6QCBZ31VF0ghrSDfei/5rvNM+NUW34XWcj8IhrJa55HoCn4OSGEX5MSdBhIrTf2BN7gjh1
- 9FSgBxinO94OI6fM9tQvpRjq70Z2zdEUwHTCJ/XW5RhC+g+nbzMCfxHkBE5+gN8FnqMiw4S7V77
- CqOdKeeDw+s7X3oYXU+xtAyV4hLtwcC++h7NFkYxqiiXR+6XSqBz2o6ndalwW1Z1F9rJMPHL9ZR
- vrwwXmooBwTjTtbNwMU69TNb0toBK4P1WaGIyX4HIWOBrCfRcZhfFgLkX98vDu58++vn14sJl0u
- HiGnNFnzpGO4SGxIf7rwz6VDiAHVuIIZQqjuFkZXY0vHE4edKP9JrnXQfYT+J5JyTmyrMfq61xI
- b6/ebt+Xn41w4d1TYjOQElWHsYlCU/SI2KztcZv+NtNnAzvK1z4dxUTVD19nc=
-X-Google-Smtp-Source: AGHT+IEEoQmWnDDRGqBo6ow/YqTGmki9h0Hp/wugoaNy4VsuTpMCu3HOef9yqHlTJ1K/zJx1Hlhozw==
-X-Received: by 2002:aa7:c845:0:b0:64a:86db:526a with SMTP id
- 4fb4d7f45d1cf-6507bc3d721mr13850443a12.4.1768079126946; 
- Sat, 10 Jan 2026 13:05:26 -0800 (PST)
+ AJvYcCVQdyc+5thWnMCjBYi4G/aS9ICCZHYTOgvvbAyTQQ37/KnuPtMoytqsq/ymqqIldlIoNdwBn/QQJaGmW9L9R3U=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YwdEM+uXvgWAn19xePiFscvGvQF0ZRDdURlxmhZdCzQjH4o6e95
+ RnUWSqX2gkAdM58IfUXZGPa7wwZsM98/i58RXUCWV0D+ag2NrAnJIWWbGd9xqLtSQ9M=
+X-Gm-Gg: AY/fxX6nwbPlhqqxZG8tgzoy++qEQyZ6vzt9k7J4j5vqnWAmwvMchPOPxobRhPl2goz
+ Yf4uzf7RjjKV3eEaW67FRvJm6y7qkWkPUNQ4Os6q87vFpl58A6Rxx79b/FxhDModT2PlrN5bmus
+ y/jv2r6KBT08vxN7/fZtL7tgUBrK+J96Dud9/Cl7X+cY3/hHvoDpYLjnziFKNvxLMT7Fmp4MvQ9
+ 4O6UamE3LsYaIxHs4AV9ovDsYyM1o2vHoBem0xkC+3Ph5gxx55A6cxyNx8A0z+NYwMuXM2vTT48
+ /cBWdoYGH1rwwAZraQvIMeifd7bXK7t16Su1QIAThtBL+ElnINNGqXlKGOc3e27QqGaYTTKHUVf
+ 3iuS5mdIeJrlLgkI0d32mf6z5RQUbsIjPbCF29b742CMsVVknA4MHlaG4jzAoYhgyKyXqSOWtkj
+ Ah4aZ+ppic19O5g/ROd42FuWrzVKLzzZBOyPN6g5g1nNQGPtLUXUuEEBunkn4=
+X-Google-Smtp-Source: AGHT+IHFpJUTXLFWUnnv3h2YytegrKQCwISqD8mtMirbPzcSGIv/sObbMsW2/ceFAmzo69tIkpwihQ==
+X-Received: by 2002:a17:907:2da6:b0:b72:134a:48c8 with SMTP id
+ a640c23a62f3a-b8445232b14mr1313892266b.14.1768079128172; 
+ Sat, 10 Jan 2026 13:05:28 -0800 (PST)
 Received: from cloudflare.com (79.184.207.118.ipv4.supernova.orange.pl.
  [79.184.207.118]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-6507b8c4c15sm13415763a12.4.2026.01.10.13.05.26
+ a640c23a62f3a-b86f61d2774sm243607866b.41.2026.01.10.13.05.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 10 Jan 2026 13:05:26 -0800 (PST)
-Date: Sat, 10 Jan 2026 22:05:17 +0100
+ Sat, 10 Jan 2026 13:05:27 -0800 (PST)
+Date: Sat, 10 Jan 2026 22:05:18 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260110-skb-meta-fixup-skb_metadata_set-calls-v1-3-1047878ed1b0@cloudflare.com>
+Message-Id: <20260110-skb-meta-fixup-skb_metadata_set-calls-v1-4-1047878ed1b0@cloudflare.com>
 References: <20260110-skb-meta-fixup-skb_metadata_set-calls-v1-0-1047878ed1b0@cloudflare.com>
 In-Reply-To: <20260110-skb-meta-fixup-skb_metadata_set-calls-v1-0-1047878ed1b0@cloudflare.com>
 To: netdev@vger.kernel.org
@@ -110,26 +110,27 @@ Cc: "David S. Miller" <davem@davemloft.net>,
  bpf@vger.kernel.org, kernel-team@cloudflare.com
 X-Mailer: b4 0.15-dev-07fe9
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=cloudflare.com; s=google09082023; t=1768079127; x=1768683927;
+ d=cloudflare.com; s=google09082023; t=1768079128; x=1768683928;
  darn=lists.osuosl.org; 
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:from:to:cc:subject:date:message-id
  :reply-to;
- bh=qOm2Dco79W8CJqhRdT3ov73dnM6p4xH+R1QoW90QGkc=;
- b=XioL51LYdPoAkAKGho50M8lCB4ds/GmHQ6ci2mBAcOFB6pQoSLYsC6dtS10Q39ziPn
- 4060ZF0wRfWWMNjTK/ZrJJxZGbcgyLJbGQxHSN56id9uUD0YrfXkxdfFq4RrFElW3wNj
- 62V4HOqXRTbZ0kpgrXJW8qfUhpvdOovpGLQMLBLca0nnthgypSzwr4h21Fq2GeIANBFd
- mvAxHRJkClQMzfMAbwbuC06vBrdhY47yPWgM9hHuJa68FpQYtZSNtHpFVVBr+2Wefes1
- 9WWZi4vgLd2SC47Q9sPeWOH/G+0UznBqV5H39HHRdRIp8WKoYzsU0wzjVfHKzQLFa1wa
- nnBg==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=0TnUC/TQ0eRLnTNM/gOpI3DULP5gf/J95rnk3NBvNrg=;
+ b=SmmEAS4roYiLBfSP5HgqWJqsBas3M9Sk7q8jazo4fzWYRNutthkd5OCIPHm6mgPqIv
+ gx1ErMsSQvqhNuuVbkbTJfSR23yr6mrrZv2nSr6PpcV7NcxNJr5zpqxiiifbMsJqCuV2
+ 0wC7gPBOLG7Q+5aJWvUPh+KgzGg8/2uUIygkFhch9bNgBqL7b6+nhjnO65Xx9Tk9kDA9
+ mKOaw5P8avcoAI41ESe0VwZGGiP5OKAXfeIXNPPeUHrIVIr2SK4px1kfyAYapKGeh3wk
+ 1JbXaY+9oOHxEWjb9b9kaV2gcAsqJbodp4xJHkyP/H4zVilxzzWddlOAY6iNXAaT3WfO
+ LW2Q==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=reject dis=none)
  header.from=cloudflare.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=cloudflare.com header.i=@cloudflare.com
- header.a=rsa-sha256 header.s=google09082023 header.b=XioL51LY
-Subject: [Intel-wired-lan] [PATCH net-next 03/10] i40e: Call
- skb_metadata_set when skb->data points past metadata
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=cloudflare.com header.i=@cloudflare.com
+ header.a=rsa-sha256 header.s=google09082023 header.b=SmmEAS4r
+Subject: [Intel-wired-lan] [PATCH net-next 04/10] igb: Call skb_metadata_set
+ when skb->data points past metadata
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -153,14 +154,14 @@ Adjust the driver to pull from skb->data before calling skb_metadata_set.
 
 Signed-off-by: Jakub Sitnicki <jakub@cloudflare.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e_xsk.c | 2 +-
+ drivers/net/ethernet/intel/igb/igb_xsk.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-index 9f47388eaba5..11eff5bd840b 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-@@ -310,8 +310,8 @@ static struct sk_buff *i40e_construct_skb_zc(struct i40e_ring *rx_ring,
+diff --git a/drivers/net/ethernet/intel/igb/igb_xsk.c b/drivers/net/ethernet/intel/igb/igb_xsk.c
+index 30ce5fbb5b77..9202da66e32c 100644
+--- a/drivers/net/ethernet/intel/igb/igb_xsk.c
++++ b/drivers/net/ethernet/intel/igb/igb_xsk.c
+@@ -284,8 +284,8 @@ static struct sk_buff *igb_construct_skb_zc(struct igb_ring *rx_ring,
  	       ALIGN(totalsize, sizeof(long)));
  
  	if (metasize) {
@@ -169,7 +170,7 @@ index 9f47388eaba5..11eff5bd840b 100644
 +		skb_metadata_set(skb, metasize);
  	}
  
- 	if (likely(!xdp_buff_has_frags(xdp)))
+ 	return skb;
 
 -- 
 2.43.0
