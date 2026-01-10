@@ -1,98 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BA0A7D0DD88
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 10 Jan 2026 22:05:40 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E0E43D0DD8B
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 10 Jan 2026 22:05:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D8BCB607E5;
-	Sat, 10 Jan 2026 21:05:28 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 18D708134B;
+	Sat, 10 Jan 2026 21:05:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id wqPgnDpL94_y; Sat, 10 Jan 2026 21:05:28 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id MFI_8YgEHMNd; Sat, 10 Jan 2026 21:05:29 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 03110607E7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 87A2C81353
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1768079128;
-	bh=lC30p+B2g5PX/MfNZDYtTYpmlqLfqwjvQthF+EF4ADY=;
-	h=Date:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From:Reply-To:From;
-	b=v8429vZq9zeIQOTyX0ijM077KY1G8UifOiZdMR2VW3W2fPyhvEfREzs8kAdPFJ8DD
-	 QUjvnPDaq0Bal+stdG4Us+xyyM82a1yY+dGevdy0Ec5+WivnFqqbYrpRMU7Op89P0n
-	 3ZTjUv3nQGh/mDKD910IS1SwR31LtlCOYDxK26uO01pWthwNRdKL861zZP+EW/C6ki
-	 +OkvrbRtrHlFstm2FrkhCjMd9Lbv52fdsvYT4sod00RNFKFlRTyZlg1C5+EBLIvtVW
-	 caENzkSWfFQ5q1vPS82e4lLWnZ0Bx/IuBPSz4dTpbUgTTHREd7nM9/qcTf06S3r3lK
-	 M7+jeGhwQUNww==
+	s=default; t=1768079129;
+	bh=gFxPlhETqVxBcpvZwh1z12pLI/x9cH1wDoqM1WNT2G0=;
+	h=Date:References:In-Reply-To:To:Cc:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From:Reply-To:From;
+	b=HjRGLtDKwZ6p9irX1kvsi4ZGY1kzMn1+yR1LM+wghuCvpejreB2xNJP63dDzyZOQ3
+	 8S/Pg+tF+/JLJApMamVxxa1LuSzIBF0WcAzyhpknn5/pK3ijjnwdPfCY5F3EAOGNgL
+	 4GOHk1rJ3nngbfp5dLaYLtQod/1HXWndvUHha80X/YPJBoQVV/fWtcA4g+aRL1lYdh
+	 GAZCumXLpVKOFliemurTwOnqZ9nVyKs9T8TmomUqs+qdIFVce/Oe4Wkw4TnXo0eBxe
+	 znANKanvODPLNhUqJSFnGuQxUubzmABmsPMYH4CvKsdszSwAeUq013LE9LTn4hd/6t
+	 FFaFweUQF+i7A==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 03110607E7;
-	Sat, 10 Jan 2026 21:05:28 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 87A2C81353;
+	Sat, 10 Jan 2026 21:05:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 96F4718D
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 21:05:26 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 67722131
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 21:05:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 72EC360785
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 21:05:26 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 56B0F40645
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 21:05:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0bV5eUOXlfI4 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 10 Jan 2026 21:05:25 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ucpKmjQc-EEw for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 10 Jan 2026 21:05:26 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::62d; helo=mail-ej1-x62d.google.com;
+ client-ip=2a00:1450:4864:20::643; helo=mail-ej1-x643.google.com;
  envelope-from=jakub@cloudflare.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 61289606A9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 61289606A9
-Received: from mail-ej1-x62d.google.com (mail-ej1-x62d.google.com
- [IPv6:2a00:1450:4864:20::62d])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 61289606A9
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 21:05:25 +0000 (UTC)
-Received: by mail-ej1-x62d.google.com with SMTP id
- a640c23a62f3a-b8706ce18c0so31152366b.2
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 13:05:25 -0800 (PST)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 8C85E40644
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8C85E40644
+Received: from mail-ej1-x643.google.com (mail-ej1-x643.google.com
+ [IPv6:2a00:1450:4864:20::643])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8C85E40644
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 21:05:26 +0000 (UTC)
+Received: by mail-ej1-x643.google.com with SMTP id
+ a640c23a62f3a-b86ef1e864cso78784466b.1
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 13:05:26 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768079123; x=1768683923;
- h=cc:to:content-transfer-encoding:mime-version:message-id:date
- :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=lC30p+B2g5PX/MfNZDYtTYpmlqLfqwjvQthF+EF4ADY=;
- b=FZXP7ZdccxhPWAoIqv8BfoSxparTiuM9JG+/HXEX1bQFDiKYJmXBeax/NgMjRtWTpw
- tNPKXERL3SE5hWkd16gZtfhVDrIjoOG6csfHfN8lpNKspMgHQftmsEK5v5APEN6dgcta
- b2gRcKrt2zqPo+xYXUq2ItaYST5wCLQan/c12+LD38EnoP297IvnH0YF6tljjinYwQ/s
- 5k79d1Xc6xdmraBPKAECPpLeapqDyFZ5GMJreofVuSne984EbnjiJC/WXvd1/SjhEukh
- OJrwf0mGNX6jJOdse5fy0zSOOdpbHOLBfnIN9p3NdJo9M9Et8OAV7QEqNJ91dvZf4UBS
- 1bhg==
+ d=1e100.net; s=20230601; t=1768079124; x=1768683924;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=gFxPlhETqVxBcpvZwh1z12pLI/x9cH1wDoqM1WNT2G0=;
+ b=i3fb5x8YiliH5dOxc+Upk3eynwgoXj+nLUCsoEo1DSkiaACWKICweTw4/Io++6QCCt
+ 7CGA8WTvLnpz7sAck0m6/JMBPRwa519D5UEJfyhzQnDZ5t+RvGUwbwUDv14W4yE1Zkun
+ 7XjBDMOD0uBe0ZZGm8s3zcW77Q3Xd2+Z0LrqWVkXjAqZvp/4y8yDSD3yUtjd9XdFTsa4
+ KYy2KycJYE8XahLHRYubbdNWQ92JkBXT3FhSvkD5XP63jukGqJAZjoxVGfPNWHb6u1Rp
+ xWYF5kGo5FcjsFi6z3MamTDybpwp3tqD4P7nn2aAyhR0O0axZ4wOsCGZUK/TEiQXpc2t
+ AMyg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVEDQC8Eu8Mcp9UW7Aak+yme+JJ7kzCESMAgtdr4nxoQdqb3DgNcOeau0B3jJxiFY6Dcc8PrzkinJHHp8JOX+k=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YyX9WcWfg8541r4yGTbJxsPsndrKNnqtbglLdoWXqsJyrSCvaiS
- hrthhaiOu2mpTFSyHwa2sPAd4UO9KGWCBlfcUyz5yvCOJsxJR6gMSBOfvx2aYrCAW08=
-X-Gm-Gg: AY/fxX4qfrx/vUgG3x1wDBUdSMUZQWDVPSTEauIVdAgTMvukBkqgoFQERuWXrQ5bGXW
- keuTzZZf8Nz9ryD5M6Pu25DUI3LiG+jdlAta+l97gHmu38IoLJRPIEPysUX2EFNKxVw4WSjYGkA
- B5/jD19/QuCzt0oLIOsoHzF0MvAv05BLITeC76zLuPQQuBYVsVHLMnGsPW1K9FDzoilVTGXBCr+
- KDp+MKWKVWiBKoFonmHo/0bRFBwWW1E5/kfSzjf7a4OEZ1FUbACaitXNJlEraPL5gCIVcqFRV+f
- eduJJaGdgHlKRPBWayw+YaHoKNWjD3WI5UR8nL3u8sFanCfJo+S85vXxNX0V+qraMYXh0EHru9D
- VqcN8koHa93S3V4O2iajzqRnojQQNbiHd391NESu4y+I6jzPNd6kMDIBWV8zFdvuyNgr5WjElC3
- NephkXVAhm+32u7xUvTUXCFOwdy3+rnIexedB8lqV4h/Sv3E7mqQeLtUXt1Vk=
-X-Google-Smtp-Source: AGHT+IE4AcfstCcru9GHC8O+sbKkpLiZU/SVJ2RJZTUoj4FwyqUUl6TpJ4rXM8j6vltoVQ5e62sCOg==
-X-Received: by 2002:a17:907:9802:b0:b7c:e320:5232 with SMTP id
- a640c23a62f3a-b8444c4ce48mr1225722466b.5.1768079123136; 
- Sat, 10 Jan 2026 13:05:23 -0800 (PST)
+ AJvYcCWVsSlGMRF1EKYNL/st8WGG+mLOesu2DLdGzcqm/eUtA2t0f5nsspdDjAS1MhYEXhIJs300iO4WDRF6W99MG5Y=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YzjPLWEBc09QZmd/cW5dtOkT0latArFEuZdlGwZ2jfuA1LyDOft
+ ksG6OTI+R5vAAZlQarP3Ur2EhxZgtHNuOp0KX1LbNFSKIFcEHkxXa4edhJwZcbmvy0Q=
+X-Gm-Gg: AY/fxX7G4vUF2xnpKeGP0j8YXETnkjre/H5ui0qkRIivIQIapgnEF+r3eNnBukzTBEQ
+ CwNuXwNOj5w/uY5SxcAEXD5kgdCH6yqeAghiGmPWsBT7T7rCQK2pVxSpW14kc5AO3dH4pB/tBYN
+ nLLghUx2VT71P17sd+J9oomjuucfRVTdhRgI9uYyY1bICdsRLZtyjs//R9MyjHUabCV4zYMpLvm
+ 2b+q6VJ1RYOlpqL4xyRsruGh8iUnbQJbXRuOfJcFOQpaMfoBdzwCz8JdZvhb+VmIwqYbJ1R/SAD
+ ELaOgXbQ0LTQ6WXIay5Wj9UDK5R1n3uUDqwUNBe6mvJjlJRb+pi5DA+Yx3hpDz0RBjXkTqI/4zT
+ FPlbW+NHeJka0Oa+vqXN/wg7nBtb9dBOI5x2bfFtyxR4NKCg4qo/TOWJISxvwrbtUJ1OQBGkwVZ
+ TI/XHr8xD15daU/w7YbjRiRUItl6u3plA6RGoenDPk13C3a61QO8d+b2M43ec=
+X-Google-Smtp-Source: AGHT+IF5BxzWvfCoMccLbvoqPziS+aIevf0t2FWDvLU7znmlF7MWPVqlhN+PmXzLEX7ramlHVgZibw==
+X-Received: by 2002:a17:907:6d10:b0:b72:6728:5bb1 with SMTP id
+ a640c23a62f3a-b84454361f3mr1533060966b.56.1768079124355; 
+ Sat, 10 Jan 2026 13:05:24 -0800 (PST)
 Received: from cloudflare.com (79.184.207.118.ipv4.supernova.orange.pl.
  [79.184.207.118]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b870bcd342bsm15151666b.56.2026.01.10.13.05.22
+ a640c23a62f3a-b842a23432dsm1467459766b.11.2026.01.10.13.05.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 10 Jan 2026 13:05:22 -0800 (PST)
-Date: Sat, 10 Jan 2026 22:05:14 +0100
-Message-Id: <20260110-skb-meta-fixup-skb_metadata_set-calls-v1-0-1047878ed1b0@cloudflare.com>
+ Sat, 10 Jan 2026 13:05:24 -0800 (PST)
+Date: Sat, 10 Jan 2026 22:05:15 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAq/YmkC/x3N0QrCMAyF4VcZuTbQzDLFVxEZcY0anHU0VQZj7
- 27m5Qc/5yxgUlQMTs0CRb5q+s4O2jUwPDjfBTW5oQ1tF4gC2vOKL6mMN50/08Z+Y+LKvUnFgcf
- RMCY5HONeInUEvjUV8f7/c4bsWZa5wmVdf8VUy+aBAAAA
-X-Change-ID: 20260110-skb-meta-fixup-skb_metadata_set-calls-4de7843e4161
+Message-Id: <20260110-skb-meta-fixup-skb_metadata_set-calls-v1-1-1047878ed1b0@cloudflare.com>
+References: <20260110-skb-meta-fixup-skb_metadata_set-calls-v1-0-1047878ed1b0@cloudflare.com>
+In-Reply-To: <20260110-skb-meta-fixup-skb_metadata_set-calls-v1-0-1047878ed1b0@cloudflare.com>
 To: netdev@vger.kernel.org
 Cc: "David S. Miller" <davem@davemloft.net>, 
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
@@ -111,26 +110,27 @@ Cc: "David S. Miller" <davem@davemloft.net>,
  bpf@vger.kernel.org, kernel-team@cloudflare.com
 X-Mailer: b4 0.15-dev-07fe9
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=cloudflare.com; s=google09082023; t=1768079123; x=1768683923;
+ d=cloudflare.com; s=google09082023; t=1768079124; x=1768683924;
  darn=lists.osuosl.org; 
- h=cc:to:content-transfer-encoding:mime-version:message-id:date
- :subject:from:from:to:cc:subject:date:message-id:reply-to;
- bh=lC30p+B2g5PX/MfNZDYtTYpmlqLfqwjvQthF+EF4ADY=;
- b=Lso/3CALxXCqqQ90vhtXGWBufBOfv9TRaqVkkcViGTIfcGwmHnsGfhYHkfCe7IqacK
- lkV3kGdhrTVkcUwaZHR89SzvBF/ZeaVs7aviMOA8gb6tOR7DMUaEocYhhc6B4wPhzVvH
- vx47/9Irrhz57f+aD6lTKb7Avgsff9Z6tMp/VKlNP9heMEOh8njHfOzK935HBqOwghaf
- QBOEyZDE9Dwun1t2GOuGWPnNNaNvmXCakas1cuPaZX0+Oh5tSrBqAp3pXf2r1xFCkOz5
- HewmUlYyySDvL1aHfqOsmZYkco92znP8RZhhHqrqWC4RiIGJPZcO9IOEV+p0MbVw7XoY
- BY3Q==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=gFxPlhETqVxBcpvZwh1z12pLI/x9cH1wDoqM1WNT2G0=;
+ b=bRENfN2tqQH7jjpzsLHjNz2nVV9rtW2wM5APuUProy5vdiGauzSIIdZ+jMMj2Vz/ii
+ 7TkPFSVf7ctxYjnDKTS8v9kgkdaRo5HnT7bxWHQu8JqlGW1+bUHdqA//36e+ZJKEuEbO
+ rcLLjlRrxyL7H/NXVnxuSmSD84E61XLHH1euexXIawm8igE4WWG3broXaJht3Jl3rdUH
+ F6102B8B2SzmowSRuFPA0JqKwgc0mPXBjbjf8lQV8QOUlyd8xgV2XgN8AOr0mtfpNb1c
+ Cxwn4z9/LWhRoSDYbtUNxqnBPSbsIbttruczctugAJYgQfaHF8KyQ8DxjDMpfzKX6t1n
+ JK2g==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=reject dis=none)
  header.from=cloudflare.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=cloudflare.com header.i=@cloudflare.com
- header.a=rsa-sha256 header.s=google09082023 header.b=Lso/3CAL
-Subject: [Intel-wired-lan] [PATCH net-next 00/10] Call skb_metadata_set when
- skb->data points past metadata
+ header.a=rsa-sha256 header.s=google09082023 header.b=bRENfN2t
+Subject: [Intel-wired-lan] [PATCH net-next 01/10] net: Document
+ skb_metadata_set contract with the drivers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -148,40 +148,35 @@ Reply-To: Jakub Sitnicki <jakub@cloudflare.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This series is split out of [1] following discussion with Jakub.
-
-To copy XDP metadata into an skb extension when skb_metadata_set() is
-called, we need to locate the metadata contents.
-
-These patches establish a contract with the drivers: skb_metadata_set()
-must be called only after skb->data has been advanced past the metadata
-area.
-
-[1] https://lore.kernel.org/r/20260107-skb-meta-safeproof-netdevs-rx-only-v3-0-0d461c5e4764@cloudflare.com
+Prepare to copy XDP metadata into an skb extension chunk. To access the
+metadata contents, we need to know where it is located. Document the
+expectation - skb->data must point right past the metadata when
+skb_metadata_set gets called.
 
 Signed-off-by: Jakub Sitnicki <jakub@cloudflare.com>
 ---
-Jakub Sitnicki (10):
-      net: Document skb_metadata_set contract with the drivers
-      bnxt_en: Call skb_metadata_set when skb->data points past metadata
-      i40e: Call skb_metadata_set when skb->data points past metadata
-      igb: Call skb_metadata_set when skb->data points past metadata
-      igc: Call skb_metadata_set when skb->data points past metadata
-      ixgbe: Call skb_metadata_set when skb->data points past metadata
-      mlx5e: Call skb_metadata_set when skb->data points past metadata
-      veth: Call skb_metadata_set when skb->data points past metadata
-      xsk: Call skb_metadata_set when skb->data points past metadata
-      xdp: Call skb_metadata_set when skb->data points past metadata
+ include/linux/skbuff.h | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
- drivers/net/ethernet/broadcom/bnxt/bnxt.c           | 2 +-
- drivers/net/ethernet/intel/i40e/i40e_xsk.c          | 2 +-
- drivers/net/ethernet/intel/igb/igb_xsk.c            | 2 +-
- drivers/net/ethernet/intel/igc/igc_main.c           | 4 ++--
- drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c        | 2 +-
- drivers/net/ethernet/mellanox/mlx5/core/en/xsk/rx.c | 2 +-
- drivers/net/veth.c                                  | 4 ++--
- include/linux/skbuff.h                              | 7 +++++++
- net/core/dev.c                                      | 5 ++++-
- net/core/xdp.c                                      | 2 +-
- 10 files changed, 21 insertions(+), 11 deletions(-)
+diff --git a/include/linux/skbuff.h b/include/linux/skbuff.h
+index 86737076101d..df001283076f 100644
+--- a/include/linux/skbuff.h
++++ b/include/linux/skbuff.h
+@@ -4554,6 +4554,13 @@ static inline bool skb_metadata_differs(const struct sk_buff *skb_a,
+ 	       true : __skb_metadata_differs(skb_a, skb_b, len_a);
+ }
+ 
++/**
++ * skb_metadata_set - Record packet metadata length.
++ * @skb: packet carrying the metadata
++ * @meta_len: number of bytes of metadata preceding skb->data
++ *
++ * Must be called when skb->data already points past the metadata area.
++ */
+ static inline void skb_metadata_set(struct sk_buff *skb, u8 meta_len)
+ {
+ 	skb_shinfo(skb)->meta_len = meta_len;
+
+-- 
+2.43.0
 
