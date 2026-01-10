@@ -1,135 +1,137 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A9E4D0DDBB
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 10 Jan 2026 22:06:37 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 86339D0DE22
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 10 Jan 2026 22:29:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1F20760887;
-	Sat, 10 Jan 2026 21:05:41 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B0F3F607EE;
+	Sat, 10 Jan 2026 21:29:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8vWgoF3iw0lF; Sat, 10 Jan 2026 21:05:40 +0000 (UTC)
+ id tmveqVs-p8ig; Sat, 10 Jan 2026 21:29:36 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7F52360889
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DFEA960820
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1768079140;
-	bh=gJGe4F24ZVfayrOmF+dW97eXhP3gCrceZMdfXokyiw8=;
-	h=Date:References:In-Reply-To:To:Cc:Subject:List-Id:
+	s=default; t=1768080575;
+	bh=BkE+iVeStS9ap0ZdCuIewxyxpQ7WymUQDmHJWd1A0aI=;
+	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From:Reply-To:From;
-	b=flMKgf0ddzGarlh8cgG06uMVg812dMD6REBkEvsmf8/YZiEfQPx+l0QX4pcZYcRdm
-	 jfkdfuYHW/HcfEG5OSF10LX0ejJ4jXUvgn/J5HoMjGhaZOHXppSztInDQc32rIQkhf
-	 fyq8s+KGQCRdLGodAdjn2i/y8YD0qZCUv/s+hrDMTRc4wvf3IGrtVr8hRhqzQUHr7I
-	 Y5Ap5iKzTHba23jXv24e8rbWwd8lUDiUt/bKqKb1R75gNNz24Y32l/hFW17Ms2cH1C
-	 ArryT0gfuyRBYQjUukZIqU7q/6cbgUmbUIGvJW+XquhbzdL0hty5lORUTrUVFwAbVo
-	 XCsCgJjo0LVaQ==
+	 From;
+	b=tN5YIeElWG48mm8MwEKhIDeriGK4XuokSYPj/aU8fYU7BGw8ulS7eaGP6RlwwI/tw
+	 VYHjEsSY6Rv2Z/3r1NM0kpBYzEy7h/yV1h68rQelaSgQyJYx6tTxWxmA3UC8MFDD5C
+	 NaiTwJ7KB85b4x9ib2yiH+HAqfHIK2zOLpUirmwc9VBIsy1ugFyTUtp6ov3h5xDXqR
+	 bw0TfEKrQJvDfbeaLi2MXK758gUN+2QgACglQ9++sS8N5TY4mbkT5n0JL531EAnoJm
+	 oWyNL5S07gCrYM5T1PHt6K21CkTtbYAnRH+9t7JoriCxirKEnqSwkdOTzKSvRiPCX6
+	 ptdOUho3LK1rg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7F52360889;
-	Sat, 10 Jan 2026 21:05:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DFEA960820;
+	Sat, 10 Jan 2026 21:29:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id C8414131
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 21:05:38 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 2153C18D
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 21:29:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id C543940090
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 21:05:38 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id EDCEB81703
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 21:29:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Tnd47WDtS0nN for <intel-wired-lan@lists.osuosl.org>;
- Sat, 10 Jan 2026 21:05:38 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::532; helo=mail-ed1-x532.google.com;
- envelope-from=jakub@cloudflare.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 044C140088
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 044C140088
-Received: from mail-ed1-x532.google.com (mail-ed1-x532.google.com
- [IPv6:2a00:1450:4864:20::532])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 044C140088
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 21:05:37 +0000 (UTC)
-Received: by mail-ed1-x532.google.com with SMTP id
- 4fb4d7f45d1cf-64b9cb94ff5so7620070a12.2
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 13:05:37 -0800 (PST)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id wnFyVYQ48uZx for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 10 Jan 2026 21:29:33 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=vgrinber@redhat.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 04EE581700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 04EE581700
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 04EE581700
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 21:29:31 +0000 (UTC)
+Received: from mail-oo1-f71.google.com (mail-oo1-f71.google.com
+ [209.85.161.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-52-Wh8oyFXROvKhNuRvHrv3Nw-1; Sat, 10 Jan 2026 16:29:28 -0500
+X-MC-Unique: Wh8oyFXROvKhNuRvHrv3Nw-1
+X-Mimecast-MFC-AGG-ID: Wh8oyFXROvKhNuRvHrv3Nw_1768080567
+Received: by mail-oo1-f71.google.com with SMTP id
+ 006d021491bc7-656b2edce07so11143763eaf.0
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Jan 2026 13:29:28 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768079136; x=1768683936;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=gJGe4F24ZVfayrOmF+dW97eXhP3gCrceZMdfXokyiw8=;
- b=GOCH3yH7zk6wDzcd+tYUH2iSmL7cRCgmkDOxWCCBAXqZup+NeARbGnXsXuUgNMaZ3q
- zQeYCD1xRu8HrP3QIkFsifkCmsp5JdDVOmvrgj/mur/w2/ZcG2tYJWWuHC7RNn4LkPCT
- qCQI1igAfit+OX5h28oAGuKV1LVBQGnsO/kA6RdqkP5te6N3XCfuB3GHFSI9AJPSoi8X
- uSaJKSC7cE3gJLfai/t658cyw7JoBVbzJ/EK1JoLBkPJMJ9ORKlTeFNRXBJ/C100Jp07
- VnIoYdHuwWZRaTx+8fQz2dIHFg0e5+2jQCw5bsIecF4HURnUeAP1T+RkmGCqiejRj4Ym
- kZYg==
+ d=1e100.net; s=20230601; t=1768080567; x=1768685367;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=BkE+iVeStS9ap0ZdCuIewxyxpQ7WymUQDmHJWd1A0aI=;
+ b=r39zkVsjhCuBb+Bd+ja4yA+IXLNclrvsB+2qUhrfZMvbRJcdkZ7BRUe4+l1Tt48xJF
+ x+y0sAXzRZNEPPqvNyH9cikf2GXxePGqHjzVhZbK2X5eLKLhnOopU3qfDw1laiQ+I+Ql
+ Gf8QtTPXvI1X2hYJ9N5EJIjqDVNKRs+gWOJUi+Qb1Hjj3A+pf1sDJH42xOAo+EvEASD8
+ mDUbxrWIN/vhp/43k2JBgVtGBHNi5dNGl/mWzwebiB9Dh2PYdcm/h9wPIsTTKldH+ME0
+ Z6a25exe9zrxwj6uxHI1xMRj3Zu3T7k4bHHbb+gISuzCEYg8rMKu4GeCfSVji1X96eIJ
+ qSoQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVVI8v0DEFYGlZHgvZ8/VC2y2mKZlpznj/K0Zz+Yt06RLpcLI2UrjSC/pREwE8zk7l8f+fwQ5Avz9sw4chNbfU=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzD2qZ1ugFv8L6dKp2j2p+tKM6IhzHLctjctDha9o5DBa8wfBja
- N0Gt8jrg28BKmNubz+dFRZ89DVM4H//i3csnXFgWKIAWupiDJzNqnTCqvQ3EDUnW4Ow=
-X-Gm-Gg: AY/fxX4FK7YnwHYSbol75yASCehaIaT77DXFH413NQL5AEZuK5qitPZ5Xe2tmZRymQi
- c+CWcQyeY/g6GsUDQykn2sq5Upxwkrxha0sJKEZFpEQg2ZQ7z0eRxuM8beytl3WLkz8wkbRdl2j
- kXmyFaVCj7a8od607DX2NkQ+jAqcG0/LrLk/bvKAM6Pl23TKg9HOW9IriIx3JtdfYCmDuafGjkT
- 5ExGRBBYGd73gWq6VcpcNh4no1PhO2B8ZOyL4aLspM7JDiwyzl8J7fvNH9ST620HJ4IqQCdJ/SS
- CIPsaRwfqxuTNEXeV/1IzjSX4Spzwg0Tml8wzBMHj1CtXwG/Il0clZ/YLKO7alve9WJpn0kLvHc
- dvv/4JmLroLVqkeSSBVKfViiHEvJ6GUvREDxSXdyPXqLKC4UWdiCxk3JDfpOhd9UgNSEVOprKHh
- ZwxSyjhWVcPq0vj5QdBJ0WsIVKZMcfodiXThBRuYaUY++Dt7jssKUrtZiHXDPs/dNqH5Wf9Q==
-X-Google-Smtp-Source: AGHT+IG5ojyykHKJrNS2iqi01P/vtltLLnJRqU4cDTs8uiHP43TabkDLYPv8nJjlhqnzI9Nx6i13Jw==
-X-Received: by 2002:a17:907:97d0:b0:b84:22ab:a830 with SMTP id
- a640c23a62f3a-b8445233534mr1342410266b.18.1768079135871; 
- Sat, 10 Jan 2026 13:05:35 -0800 (PST)
-Received: from cloudflare.com (79.184.207.118.ipv4.supernova.orange.pl.
- [79.184.207.118]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b842a234000sm1495187766b.4.2026.01.10.13.05.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 10 Jan 2026 13:05:35 -0800 (PST)
-Date: Sat, 10 Jan 2026 22:05:24 +0100
+ AJvYcCVSQvHBmeT04MJCBbtNQ1MeP8W4OSBzAT3n3gryxrURc/EZWfGxsdXkFNoAs2oOFIQs57r9ixJ3yGLeEOfjCwI=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyawE2X47BYQinNdnBLzVpBJyNO/RuSbHXwCT9OdZyREZmQTd+B
+ ZFtRUVvbqRzQrA1qq5n+ReFhJZr9stBudLgIeldvFFyGXIz9luo93HFg76+lG5hTH/MU31TAMyH
+ Z/XVDs5Gwvbtoec4cdUqqKMdnSpg/MdhgSER1etrV9J1EuCEzusa292DriDazGyb7cf7iaQ6tvt
+ 43QpAakKkT+3K5eZSznxRzgvMFCqhjFrVTGSHrMOgGRgde2g==
+X-Gm-Gg: AY/fxX7Bb1HmeTkJsFeV9AKj2QacZWIeK+eyxhs9l+dq82JIjZnYBu2LeUzASA2svkD
+ y6PrEDXu2Sk0oop28iRpoFcb98HJYhwu/B+UOVSPluX1diyJ7CZ97TER5zjPBA7SrqDXIyFcGFn
+ EAAgmrH8m+HSlnwNzi+4NuDZZTakw/p0oP6jxKc3tZWkD4ic/434AZfQD/LtbBpoMv/X4=
+X-Received: by 2002:a05:6820:22a7:b0:65b:3bd8:a75b with SMTP id
+ 006d021491bc7-65f550bc142mr6987831eaf.72.1768080567499; 
+ Sat, 10 Jan 2026 13:29:27 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHpyjnhS5jcpniHuaklJ+T3KGnZiN96XIuwq9ire6t4KN0lmKgSW0u9SpewvA8rcsxnswYJlGQzjtE9HD0XJYM=
+X-Received: by 2002:a05:6820:22a7:b0:65b:3bd8:a75b with SMTP id
+ 006d021491bc7-65f550bc142mr6987818eaf.72.1768080567120; Sat, 10 Jan 2026
+ 13:29:27 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260110-skb-meta-fixup-skb_metadata_set-calls-v1-10-1047878ed1b0@cloudflare.com>
-References: <20260110-skb-meta-fixup-skb_metadata_set-calls-v1-0-1047878ed1b0@cloudflare.com>
-In-Reply-To: <20260110-skb-meta-fixup-skb_metadata_set-calls-v1-0-1047878ed1b0@cloudflare.com>
-To: netdev@vger.kernel.org
-Cc: "David S. Miller" <davem@davemloft.net>, 
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
- Paolo Abeni <pabeni@redhat.com>, Simon Horman <horms@kernel.org>, 
- Michael Chan <michael.chan@broadcom.com>, 
- Pavan Chebbi <pavan.chebbi@broadcom.com>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- Tony Nguyen <anthony.l.nguyen@intel.com>, 
- Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
- Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, 
- Tariq Toukan <tariqt@nvidia.com>, Mark Bloch <mbloch@nvidia.com>, 
- Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, 
- Jesper Dangaard Brouer <hawk@kernel.org>, 
- John Fastabend <john.fastabend@gmail.com>, 
- Stanislav Fomichev <sdf@fomichev.me>, intel-wired-lan@lists.osuosl.org, 
- bpf@vger.kernel.org, kernel-team@cloudflare.com
-X-Mailer: b4 0.15-dev-07fe9
+References: <20251120105208.2291441-1-grzegorz.nitka@intel.com>
+ <20251216144154.15172-1-vgrinber@redhat.com>
+ <IA1PR11MB621913F389165EE4D7CCFF2D9284A@IA1PR11MB6219.namprd11.prod.outlook.com>
+In-Reply-To: <IA1PR11MB621913F389165EE4D7CCFF2D9284A@IA1PR11MB6219.namprd11.prod.outlook.com>
+From: Vitaly Grinberg <vgrinber@redhat.com>
+Date: Sat, 10 Jan 2026 23:29:16 +0200
+X-Gm-Features: AZwV_QiG9tsTWyQKEuQ2eM2JGegyP9OgXPzgej6rvWd8OC-c8f-x0zTbTbP3QMk
+Message-ID: <CACLnSDikAToGRvfZAhTcT0NCtMj+N9z-GGzRQ5qmpHsvCr2QSA@mail.gmail.com>
+To: "Nitka, Grzegorz" <grzegorz.nitka@intel.com>
+Cc: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>, 
+ "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, 
+ "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>,
+ "horms@kernel.org" <horms@kernel.org>, 
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, 
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>, 
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "pmenzel@molgen.mpg.de" <pmenzel@molgen.mpg.de>, 
+ "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: N_mZxNQtQWvvA1SM5b1GrzXaRhF6004stpL9LJtDfmw_1768080567
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=cloudflare.com; s=google09082023; t=1768079136; x=1768683936;
- darn=lists.osuosl.org; 
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to;
- bh=gJGe4F24ZVfayrOmF+dW97eXhP3gCrceZMdfXokyiw8=;
- b=C/+++DDAtvJNKH+GRul8amPk/UUI42gB1JDHsBwWw60vr8hE3AxLxjQzIjtljBwa4L
- Ym5CBG2802jsUd8XP8Ez7rJEP6LhbIzwm3IxwDNMS2f2kG4tOTDuAZslDZZf4cre8ybz
- ogDAp4jP0b23jXKdX+Xl0iREoPSUJuMI/2Q29j7KQfDl5X6RG8nJMezRDnlOw4F8/6Kl
- +XKmr5IGwCjyQIfabXvAbzJaQsY1dHahACHaNOT6wYbID9OV/ob7Pi0avdxjD9NbZDLM
- alYxLI9tTVAAdZf3sP8Wj5dM+QJJiZEAZVpkXXgHAIgGWxTa/dspm8G30G5/HEzuK/7U
- 79nA==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=cloudflare.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=cloudflare.com header.i=@cloudflare.com
- header.a=rsa-sha256 header.s=google09082023 header.b=C/+++DDA
-Subject: [Intel-wired-lan] [PATCH net-next 10/10] xdp: Call skb_metadata_set
- when skb->data points past metadata
+ d=redhat.com; 
+ s=mimecast20190719; t=1768080569;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=BkE+iVeStS9ap0ZdCuIewxyxpQ7WymUQDmHJWd1A0aI=;
+ b=hI0epgdrDszfCDjlLs1qGluWl+V4JhfpabNWwONDPullRMeDz1IUBMWqYNkCcTnKjbBAlJ
+ 43yEW+1rfAvEXM3UQiOMi5p5FXIO0OGdGdyr/CFJpdzCNnC+LixEuCMOBC8xWwXVTb81r+
+ dVGMUSSU8Cyo/wzcs2mYi4YOjfioynE=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
+ header.s=mimecast20190719 header.b=hI0epgdr
+Subject: Re: [Intel-wired-lan] [PATCH v5 iwl-next] ice: add support for
+ unmanaged DPLL on E830 NIC
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -142,39 +144,145 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-From: Jakub Sitnicki via Intel-wired-lan <intel-wired-lan@osuosl.org>
-Reply-To: Jakub Sitnicki <jakub@cloudflare.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Prepare to copy the XDP metadata into an skb extension in skb_metadata_set.
+Hi Grzegors,
+Thanks very much for your reply! Added some clarifications inline.
 
-XDP generic mode runs after MAC header has been already pulled. Adjust
-skb->data before calling skb_metadata_set to adhere to new contract.
+On Wed, Jan 7, 2026 at 11:33=E2=80=AFPM Nitka, Grzegorz
+<grzegorz.nitka@intel.com> wrote:
+>
+> > -----Original Message-----
+> > From: Vitaly Grinberg <vgrinber@redhat.com>
+> > Sent: Tuesday, December 16, 2025 3:42 PM
+> > To: Nitka, Grzegorz <grzegorz.nitka@intel.com>
+> > Cc: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>; Nguyen,
+> > Anthony L <anthony.l.nguyen@intel.com>; Kubalewski, Arkadiusz
+> > <arkadiusz.kubalewski@intel.com>; horms@kernel.org; intel-wired-
+> > lan@lists.osuosl.org; linux-doc@vger.kernel.org; linux-
+> > kernel@vger.kernel.org; netdev@vger.kernel.org;
+> > pmenzel@molgen.mpg.de; Kitszel, Przemyslaw
+> > <przemyslaw.kitszel@intel.com>
+> > Subject: Re:[Intel-wired-lan] [PATCH v5 iwl-next] ice: add support for
+> > unmanaged DPLL on E830 NIC
+> >
+> > Will a notification be provided when the lock is re-acquired?
+> >
+>
+> Hi Vitaly, thanks for your comments.
+> We discussed it offline already, but I think I need more clarifications.
+>
+> Regarding above question ... yes, 'lock' recovery shall be reported in th=
+e same way.
+> Maybe the name of health status is a little bit misleading (ICE_AQC_HEALT=
+H_STATUS_INFO_LOSS_OF_LOCK),
+> However health_info struct contains the current lock status (either 'lock=
+ed' or 'unlocked').
 
-Signed-off-by: Jakub Sitnicki <jakub@cloudflare.com>
----
- net/core/dev.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+Great, thanks for clarifying this!
 
-diff --git a/net/core/dev.c b/net/core/dev.c
-index c711da335510..f8e5672e835f 100644
---- a/net/core/dev.c
-+++ b/net/core/dev.c
-@@ -5468,8 +5468,11 @@ u32 bpf_prog_run_generic_xdp(struct sk_buff *skb, struct xdp_buff *xdp,
- 		break;
- 	case XDP_PASS:
- 		metalen = xdp->data - xdp->data_meta;
--		if (metalen)
-+		if (metalen) {
-+			__skb_push(skb, mac_len);
- 			skb_metadata_set(skb, metalen);
-+			__skb_pull(skb, mac_len);
-+		}
- 		break;
- 	}
- 
+> > Another concern is the absence of periodical pin notifications. With th=
+e E810,
+> > users received the active pin notifications every 1 second. However, th=
+e
+> > unmanaged DPLL appears to lack this functionality. User implementations
+> > currently rely on these periodical notifications to derive the overall =
+clock
+> > state, metrics and events from the phase offset. It seems that unmanage=
+d
+> > DPLL users will be forced to support two distinct types of DPLLs: one t=
+hat
+> > sends periodical pin notifications and one that does not. Crucially, th=
+is
+> > difference does not appear to be reflected in the device capabilities,
+> > meaning users cannot know in advance whether to expect these
+> > notifications.
+>
+> After reading it one more time, I'm not sure if I get it right in the fir=
+st place.
+> With this patch implementation, there is dpll change notification applied=
+.
+> By dpll notification I mean calling dpll_device_change_ntf function.
+> Isn't it what you're looking for?
+> Notification is triggered only in case when lock status has changed.
+> It's unmanaged DPLL so the implementation is a little bit simplified, bas=
+ed on FW notification.
+> There is no need for polling thread like it's done for E810.
+> But even in case of E810, where polling is applied (2 samples per second)=
+, notification is triggered only in case of
+> dpll/pin status change, not every 1 second.
+> So please clarify, so either I don't understand the question (please note=
+, I'm only covering the main author)
+> or notification mechanism, at least about dpll lock state, is already imp=
+lemented.
+>
 
--- 
-2.43.0
+Yes, device lock status change notification is definitely what we are
+looking for, but there is more. Let me clarify the user perspective.
+The e810-based telco system relies on both device and pin
+notifications. Phase offset included in pin notifications is critical
+because the e810 DPLL "Locked" state is too coarse for Telco
+requirements.
+It is true that pin notifications are only sent on change; however,
+since the phase offset varies slightly with every measurement, the
+driver detects a change every second. This effectively turns the
+event-driven notification into a periodic one. The e810-based
+application strongly relies on the fact that phase offset
+notifications are unsolicited and the driver sends them from time to
+time.
+Now, with the unmanaged DPLL, no pin notification will be sent. Last
+time I checked, the device and pin information looked like this:
+Device:
+ {'clock-id': 1165870453030569040,
+  'id': 4,
+  'lock-status': 'locked',
+  'mode': 'automatic',
+  'mode-supported': ['automatic'],
+  'module-name': 'ice',
+  'type': 'eec'},
+
+Input pin:
+{
+  "id": 17,
+  "module-name": "ice",
+  "clock-id": 1165870453030569040,
+  "board-label": "1588-TIME_SYNC",
+  "type": "ext",
+  "capabilities": [],
+  "frequency": 10000000,
+  "phase-adjust-min": 0,
+  "phase-adjust-max": 0,
+  "parent-device": [
+    {
+      "parent-id": 4,
+      "state": "connected",
+      "direction": "input"
+    }
+  ]
+}
+
+I see a few challenges for the user here. The biggest one is that the
+application can't tell the difference between a device that will
+report phase offsets and this unmanaged device that never will.
+A possible way forward would be adding a capability flag to the DPLL
+API so users don't have to guess.
+However, the preferred solution would be to simply mirror the E810
+behavior (sending phase offset). This preserves the existing API
+contract and prevents users, who have already built applications for
+this interface, from needing to implement special handling for a new
+hardware variant that behaves differently.
+There are additional inconsistencies in the existing structure I
+wanted to bring to your attention.
+1. I'm not entirely sure how a 1588-TIME_SYNC pin can have a parent
+device of type "eec". EEC is all about frequency synchronization, and
+yet the pin named 1588-TIME_SYNC is clearly a phase pin. This also
+doesn't play well with existing implementations, where EEC circuits
+deal with frequency, PPS circuits deal with phase, and there is clear
+distinction between the two with regard to the meaning of "being
+locked".
+2. Since it is also an external embedded sync input pin, could it be
+possible to expose this information and include `esync-frequency` and
+`esync-pulse`? That could be useful for configuring the leading DPLL
+that drives the unmanaged one.
 
