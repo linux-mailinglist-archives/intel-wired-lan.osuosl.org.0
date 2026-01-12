@@ -1,100 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1D514D1311B
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Jan 2026 15:18:56 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DE770D1306C
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Jan 2026 15:12:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CA9D384EF6;
-	Mon, 12 Jan 2026 14:18:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9D949427D9;
+	Mon, 12 Jan 2026 14:12:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Wh3F8Aqc-wWa; Mon, 12 Jan 2026 14:18:50 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id vY0EhNwEw_i5; Mon, 12 Jan 2026 14:12:11 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B882284EDF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BBFAE427DA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1768227530;
-	bh=/CQXx16+lJyjTTRAT8mhTW2m/Fwgs4dxhSnbMIB19A4=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1768227131;
+	bh=diec4hfbDauZO2c9I1fCLrBUq3/BSszuyhfmcUdB7wM=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=vjyCHo2HlN72UTom0h2XxtTTFMdTqqx1932XZf9p3YGnhLFq8zGHvFktq9Spz4nub
-	 TCYQ+OiEaIVXvxDNiKdob9ItW9VLArHxSpiyv7VJvwtetP5pvmubKJmPuE5PyKvGLP
-	 mA+47w2FC04iA8sfQEGUmJmj8tv1EB/u9OkkbV1kvleZwATNVyLpQfgfs6ic5kOpta
-	 TFMCnLv4+rBNli0OlsDc3Sgd6UCz/Tgu8MenPMx4TO+WSeE3y5zk0sfv9wLE9w4CBs
-	 HNihlFbKMfztsBmzAWUoMOiaGeRbzWBHS5cP9fP+PTW0bjUlgNKr3ws2Zgs5ZHQtVw
-	 Jg8ADdZNWYrpg==
+	b=Z9NGj9Z0FtoyrJM66qf/uzcXhP9GK3pymq7ApfyvaWt1f43GUWo7w/wOyNRQGoN19
+	 NEVckj5b+hZG7+bjFVD+cUuP6g0rE160dgDfkUnJvYawDCL095yhyNPlomzqnIje8o
+	 efDAk9MlywP7/vm5RhPJj6KcGh/asLdyV+KO74WUII8jxKVosOfFFwgyStzqBxCUxm
+	 sHCKykhejG0+KIZ4l5SX0oesjpvWxvrtCjmc+9ChMlWFTxWPMnM6AHcsEJwdH4wdFx
+	 62Zl8PfregBvMKJvbNNzdVqt99iHtASvsATebmZ/U1UedTaVTdB6WF/nhaBSA3xqQZ
+	 G1GAnf6gbR7Qw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B882284EDF;
-	Mon, 12 Jan 2026 14:18:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BBFAE427DA;
+	Mon, 12 Jan 2026 14:12:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 75C0018D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 14:18:49 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 21ACB12E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 14:12:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5CD6F6F4FB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 14:18:49 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 1393B427D6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 14:12:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id eQbkD-trilYO for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 Jan 2026 14:18:48 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
- helo=mgamail.intel.com; envelope-from=jedrzej.jagielski@intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 4NXrxGfR3S5a for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 12 Jan 2026 14:12:08 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 4D5C16F4E5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4D5C16F4E5
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4D5C16F4E5
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 14:18:48 +0000 (UTC)
-X-CSE-ConnectionGUID: 1e+IEtAZTtiS63lOAi3wfw==
-X-CSE-MsgGUID: DyG3eGVARfWUvkVjZMLizg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11669"; a="73352298"
-X-IronPort-AV: E=Sophos;i="6.21,221,1763452800"; d="scan'208";a="73352298"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
- by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Jan 2026 06:18:48 -0800
-X-CSE-ConnectionGUID: edYdEAgZTiiUEzrd8CGXmA==
-X-CSE-MsgGUID: AaVhx20GR1yBKM8z1Z9gWw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,221,1763452800"; d="scan'208";a="227355654"
-Received: from os-delivery.igk.intel.com ([10.102.18.218])
- by fmviesa002.fm.intel.com with ESMTP; 12 Jan 2026 06:18:47 -0800
-From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: anthony.l.nguyen@intel.com, netdev@vger.kernel.org,
- Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Date: Mon, 12 Jan 2026 15:01:08 +0100
-Message-Id: <20260112140108.1173835-8-jedrzej.jagielski@intel.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20260112140108.1173835-1-jedrzej.jagielski@intel.com>
-References: <20260112140108.1173835-1-jedrzej.jagielski@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org E16FE427D7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E16FE427D7
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E16FE427D7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 14:12:06 +0000 (UTC)
+Received: from [192.168.2.217] (p5b13a106.dip0.t-ipconnect.de [91.19.161.6])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 918062394AFE9;
+ Mon, 12 Jan 2026 15:11:32 +0100 (CET)
+Message-ID: <156b1eb6-fde4-454b-9603-fbed1814204f@molgen.mpg.de>
+Date: Mon, 12 Jan 2026 15:11:31 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+To: Vivek Behera <vivek.behera@siemens.com>
+Cc: aleksandr.loktionov@intel.com, jacob.e.keller@intel.com,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ maciej.fijalkowski@intel.com, sriram.yagnaraman@ericsson.com,
+ kurt@linutronix.de, intel-wired-lan@lists.osuosl.org
+References: <20260112130349.1737901-1-vivek.behera@siemens.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20260112130349.1737901-1-vivek.behera@siemens.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1768227528; x=1799763528;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=YdURuEjmkEvSFcp1+L1+0KyYASXqK9qsGaH69y/PfR8=;
- b=B/NDKYAaYZ5OPn9sA3gocLT5gFWH5qy2rF0RZNxaasi4xBigKGXsFJGQ
- GQegTg4eQbgA3ss0wEOpgQlbW3w79kxzAuV0AcXPaF9bwn1DU96DR5NwP
- Owa1I2f+3BEa8cXYE4Hg99hCc7oKHyCfP4GkVfNnpKcKJ/PAtE86YRqsg
- zDgu8zhry3WHWwuCgtLbwjOjDFke6TrF+Fe7ZysWXR8vHbfxTPkVL4Ek+
- UaP7KUDP1KE/ot2nVtwKS8gwm19wLRQ0RDjxclPom/UIfdj/pY/QtQeWN
- qd5cd4eB7vrmezwqhqmh0Kx9E8xak3ZT4AxTwkz43bX8e7ALlV5sE1rFz
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=B/NDKYAa
-Subject: [Intel-wired-lan] [PATCH iwl-next v1 7/7] ixgbe: E610: add EEE
- support
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v5] igb: Fix trigger of
+ incorrect irq in igb_xsk_wakeup
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -110,394 +90,202 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add E610 specific implementation of .get_eee() and .set_eee() ethtool
-callbacks.
+Dear Vivek,
 
-Introduce ixgbe_setup_eee_e610() which is used to set EEE config
-on E610 device via ixgbe_aci_set_phy_cfg() (0x0601 ACI command).
-Assign it to dedicated mac operation.
 
-E610 devices support EEE feature specifically for 2.5, 5 and 10G link
-speeds. When user try to set EEE for unsupported speeds log it.
-This limitation also affects any runtime link configuration changes so when
-link speed changes and EEE is enabled, check whether the feature can remain
-enabled.
+Thank you for your patch. Some minor comments below.
 
-Setting timer and setting EEE advertised speeds are not yet supported.
+Am 12.01.26 um 14:03 schrieb Vivek Behera via Intel-wired-lan:
+> The current implementation in the igb_xsk_wakeup expects the Rx and Tx queues
 
-EEE shall be enabled by default for E610 devices.
+Please re-flow for 75 characters per line.
 
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
----
- drivers/net/ethernet/intel/ixgbe/ixgbe.h      |   2 +
- drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c |  44 +++++
- drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h |   1 +
- .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  | 154 +++++++++++++++++-
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  36 ++++
- drivers/net/ethernet/intel/ixgbe/ixgbe_type.h |   1 +
- 6 files changed, 235 insertions(+), 3 deletions(-)
+> to share the same irq. This would lead to triggering of incorrect irq
+> in split irq configuration.
+> This patch addresses this issue which could impact environments
+> with 2 active cpu cores
+> or when the number of queues is reduced to 2 or less
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-index 9f52da4ec711..8104f953aa0c 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-@@ -984,6 +984,8 @@ int ixgbe_init_interrupt_scheme(struct ixgbe_adapter *adapter);
- bool ixgbe_wol_supported(struct ixgbe_adapter *adapter, u16 device_id,
- 			 u16 subdevice_id);
- void ixgbe_set_fw_version_e610(struct ixgbe_adapter *adapter);
-+bool ixgbe_is_eee_link_speed_supported_e610(struct ixgbe_adapter *adapter,
-+					    bool print_msg);
- void ixgbe_refresh_fw_version(struct ixgbe_adapter *adapter);
- #ifdef CONFIG_PCI_IOV
- void ixgbe_full_sync_mac_table(struct ixgbe_adapter *adapter);
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-index 6818504a25f6..6a6aa2b8f4a7 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-@@ -2013,6 +2013,49 @@ int ixgbe_identify_phy_e610(struct ixgbe_hw *hw)
- 	return 0;
- }
- 
-+/**
-+ * ixgbe_setup_eee_e610 - Enable/disable EEE support
-+ * @hw: pointer to the HW structure
-+ * @enable_eee: boolean flag to enable EEE
-+ *
-+ * Enable/disable EEE based on @enable_eee.
-+ *
-+ * Return: the exit code of the operation.
-+ */
-+int ixgbe_setup_eee_e610(struct ixgbe_hw *hw, bool enable_eee)
-+{
-+	struct ixgbe_aci_cmd_get_phy_caps_data phy_caps = {};
-+	struct ixgbe_aci_cmd_set_phy_cfg_data phy_cfg = {};
-+	u16 eee_cap = 0;
-+	int err;
-+
-+	err = ixgbe_aci_get_phy_caps(hw, false,
-+		IXGBE_ACI_REPORT_ACTIVE_CFG, &phy_caps);
-+	if (err)
-+		return err;
-+
-+	ixgbe_copy_phy_caps_to_cfg(&phy_caps, &phy_cfg);
-+	phy_cfg.caps |= (IXGBE_ACI_PHY_ENA_LINK |
-+			IXGBE_ACI_PHY_ENA_AUTO_LINK_UPDT);
-+
-+	if (enable_eee) {
-+		if (hw->phy.eee_speeds_advertised & IXGBE_LINK_SPEED_100_FULL)
-+			eee_cap |= IXGBE_ACI_PHY_EEE_EN_100BASE_TX;
-+		if (hw->phy.eee_speeds_advertised & IXGBE_LINK_SPEED_1GB_FULL)
-+			eee_cap |= IXGBE_ACI_PHY_EEE_EN_1000BASE_T;
-+		if (hw->phy.eee_speeds_advertised & IXGBE_LINK_SPEED_2_5GB_FULL)
-+			eee_cap |= IXGBE_ACI_PHY_EEE_EN_2_5GBASE_T;
-+		if (hw->phy.eee_speeds_advertised & IXGBE_LINK_SPEED_5GB_FULL)
-+			eee_cap |= IXGBE_ACI_PHY_EEE_EN_5GBASE_T;
-+		if (hw->phy.eee_speeds_advertised & IXGBE_LINK_SPEED_10GB_FULL)
-+			eee_cap |= IXGBE_ACI_PHY_EEE_EN_10GBASE_T;
-+	}
-+
-+	phy_cfg.eee_cap = cpu_to_le16(eee_cap);
-+
-+	return ixgbe_aci_set_phy_cfg(hw, &phy_cfg);
-+}
-+
- /**
-  * ixgbe_identify_module_e610 - Identify SFP module type
-  * @hw: pointer to hardware structure
-@@ -3973,6 +4016,7 @@ static const struct ixgbe_mac_operations mac_ops_e610 = {
- 	.fw_rollback_mode		= ixgbe_fw_rollback_mode_e610,
- 	.get_nvm_ver			= ixgbe_get_active_nvm_ver,
- 	.get_link_capabilities		= ixgbe_get_link_capabilities_e610,
-+	.setup_eee			= ixgbe_setup_eee_e610,
- 	.get_bus_info			= ixgbe_get_bus_info_generic,
- 	.acquire_swfw_sync		= ixgbe_acquire_swfw_sync_X540,
- 	.release_swfw_sync		= ixgbe_release_swfw_sync_X540,
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
-index 782c489b0fa7..8a0b28becf02 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
-@@ -55,6 +55,7 @@ int ixgbe_init_phy_ops_e610(struct ixgbe_hw *hw);
- int ixgbe_identify_phy_e610(struct ixgbe_hw *hw);
- int ixgbe_identify_module_e610(struct ixgbe_hw *hw);
- int ixgbe_setup_phy_link_e610(struct ixgbe_hw *hw);
-+int ixgbe_setup_eee_e610(struct ixgbe_hw *hw, bool enable_eee);
- int ixgbe_set_phy_power_e610(struct ixgbe_hw *hw, bool on);
- int ixgbe_enter_lplu_e610(struct ixgbe_hw *hw);
- int ixgbe_init_eeprom_params_e610(struct ixgbe_hw *hw);
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-index 24781bbbcf46..57b994a85949 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-@@ -12,6 +12,7 @@
- #include <linux/ethtool.h>
- #include <linux/vmalloc.h>
- #include <linux/highmem.h>
-+#include <linux/string_choices.h>
- #include <linux/uaccess.h>
- 
- #include "ixgbe.h"
-@@ -3534,7 +3535,7 @@ static const struct {
- 	{ IXGBE_LINK_SPEED_10_FULL, ETHTOOL_LINK_MODE_10baseT_Full_BIT },
- 	{ IXGBE_LINK_SPEED_100_FULL, ETHTOOL_LINK_MODE_100baseT_Full_BIT },
- 	{ IXGBE_LINK_SPEED_1GB_FULL, ETHTOOL_LINK_MODE_1000baseT_Full_BIT },
--	{ IXGBE_LINK_SPEED_2_5GB_FULL, ETHTOOL_LINK_MODE_2500baseX_Full_BIT },
-+	{ IXGBE_LINK_SPEED_2_5GB_FULL, ETHTOOL_LINK_MODE_2500baseT_Full_BIT },
- 	{ IXGBE_LINK_SPEED_5GB_FULL, ETHTOOL_LINK_MODE_5000baseT_Full_BIT },
- 	{ IXGBE_LINK_SPEED_10GB_FULL, ETHTOOL_LINK_MODE_10000baseT_Full_BIT },
- };
-@@ -3551,6 +3552,17 @@ static const struct {
- 	{ FW_PHY_ACT_UD_2_10G_KR_EEE, ETHTOOL_LINK_MODE_10000baseKR_Full_BIT},
- };
- 
-+static const struct {
-+	u16 eee_cap_bit;
-+	u32 link_mode;
-+} ixgbe_eee_cap_map[] = {
-+	{ IXGBE_ACI_PHY_EEE_EN_100BASE_TX, ETHTOOL_LINK_MODE_100baseT_Full_BIT },
-+	{ IXGBE_ACI_PHY_EEE_EN_1000BASE_T, ETHTOOL_LINK_MODE_1000baseT_Full_BIT },
-+	{ IXGBE_ACI_PHY_EEE_EN_10GBASE_T, ETHTOOL_LINK_MODE_10000baseT_Full_BIT },
-+	{ IXGBE_ACI_PHY_EEE_EN_5GBASE_T, ETHTOOL_LINK_MODE_5000baseT_Full_BIT },
-+	{ IXGBE_ACI_PHY_EEE_EN_2_5GBASE_T, ETHTOOL_LINK_MODE_2500baseT_Full_BIT },
-+};
-+
- static int ixgbe_validate_keee(struct net_device *netdev,
- 			       struct ethtool_keee *keee_requested)
- {
-@@ -3589,6 +3601,142 @@ static int ixgbe_validate_keee(struct net_device *netdev,
- 	return 0;
- }
- 
-+/**
-+ * ixgbe_is_eee_link_speed_supported_e610 - Check if EEE can be enabled
-+ * @adapter: pointer to the adapter struct
-+ * @print_msg: indicate whether to print info msg when EEE cannot be supported
-+ *
-+ * Check whether current link configuration is capable of enabling EEE feature.
-+ *
-+ * E610 specific function - for other adapters supporting EEE there might be
-+ * no such limitation.
-+ *
-+ * Return: true if EEE can be enabled, false otherwise.
-+ */
-+bool ixgbe_is_eee_link_speed_supported_e610(struct ixgbe_adapter *adapter,
-+					    bool print_msg)
-+{
-+	switch (adapter->link_speed) {
-+	case IXGBE_LINK_SPEED_10GB_FULL:
-+	case IXGBE_LINK_SPEED_2_5GB_FULL:
-+	case IXGBE_LINK_SPEED_5GB_FULL:
-+		return true;
-+	case IXGBE_LINK_SPEED_10_FULL:
-+	case IXGBE_LINK_SPEED_100_FULL:
-+	case IXGBE_LINK_SPEED_1GB_FULL:
-+		if (print_msg)
-+			e_dev_info("Energy Efficient Ethernet (EEE) feature is not supported on link speeds equal to or below 1Gbps. EEE is supported on speeds above 1Gbps.\n");
-+		fallthrough;
-+	default:
-+		return false;
-+	}
-+}
-+
-+static int ixgbe_get_eee_e610(struct net_device *netdev,
-+			      struct ethtool_keee *kedata)
-+{
-+	struct ixgbe_adapter *adapter = ixgbe_from_netdev(netdev);
-+	struct ixgbe_aci_cmd_get_phy_caps_data pcaps;
-+	struct ixgbe_hw *hw = &adapter->hw;
-+	struct ixgbe_link_status link;
-+	u16 eee_cap;
-+	int err;
-+
-+	if (!(adapter->flags2 & IXGBE_FLAG2_EEE_CAPABLE)) {
-+		e_dev_info("Energy Efficient Ethernet (EEE) feature is currently not supported on this device, please update the device NVM to the latest and try again");
-+		return -EOPNOTSUPP;
-+	}
-+
-+	linkmode_zero(kedata->lp_advertised);
-+	linkmode_zero(kedata->supported);
-+	linkmode_zero(kedata->advertised);
-+
-+	err = ixgbe_aci_get_link_info(hw, true, &link);
-+	if (err)
-+		return err;
-+
-+	err = ixgbe_aci_get_phy_caps(hw, false, IXGBE_ACI_REPORT_ACTIVE_CFG,
-+				     &pcaps);
-+	if (err)
-+		return err;
-+
-+	kedata->eee_active =  link.eee_status & IXGBE_ACI_LINK_EEE_ACTIVE;
-+	kedata->eee_enabled = link.eee_status & IXGBE_ACI_LINK_EEE_ENABLED;
-+
-+	/* for E610 devices EEE enablement implies TX LPI enablement */
-+	kedata->tx_lpi_enabled = kedata->eee_enabled;
-+
-+	if (kedata->eee_enabled)
-+		kedata->tx_lpi_timer = le16_to_cpu(pcaps.eee_entry_delay);
-+
-+	eee_cap = le16_to_cpu(pcaps.eee_cap);
-+
-+	for (int i = 0; i < ARRAY_SIZE(ixgbe_eee_cap_map); i++) {
-+		if (eee_cap & ixgbe_eee_cap_map[i].eee_cap_bit)
-+			linkmode_set_bit(ixgbe_eee_cap_map[i].link_mode,
-+					 kedata->lp_advertised);
-+	}
-+
-+	for (int i = 0; i < ARRAY_SIZE(ixgbe_ls_map); i++) {
-+		if (hw->phy.eee_speeds_supported &
-+		    ixgbe_ls_map[i].mac_speed)
-+			linkmode_set_bit(ixgbe_ls_map[i].link_mode,
-+					 kedata->supported);
-+
-+		if (hw->phy.eee_speeds_advertised &
-+		    ixgbe_ls_map[i].mac_speed)
-+			linkmode_set_bit(ixgbe_ls_map[i].link_mode,
-+					 kedata->advertised);
-+	}
-+
-+	return 0;
-+}
-+
-+static int ixgbe_set_eee_e610(struct net_device *netdev,
-+			      struct ethtool_keee *kedata)
-+{
-+	struct ixgbe_adapter *adapter = ixgbe_from_netdev(netdev);
-+	struct ixgbe_hw *hw = &adapter->hw;
-+	int err;
-+
-+	if (!(adapter->flags2 & IXGBE_FLAG2_EEE_CAPABLE)) {
-+		e_dev_info("Energy Efficient Ethernet (EEE) feature is currently not supported on this device, please update the device NVM to the latest and try again");
-+		return -EOPNOTSUPP;
-+	}
-+
-+	err = ixgbe_validate_keee(netdev, kedata);
-+	if (err == -EALREADY)
-+		return 0;
-+	else if (err)
-+		return err;
-+
-+	if (!(ixgbe_is_eee_link_speed_supported_e610(adapter, true)) &&
-+	    kedata->eee_enabled)
-+		return -EOPNOTSUPP;
-+
-+	hw->phy.eee_speeds_advertised = kedata->eee_enabled ?
-+					hw->phy.eee_speeds_supported : 0;
-+
-+	err = hw->mac.ops.setup_eee(hw, kedata->eee_enabled);
-+	if (err) {
-+		e_dev_err("Setting EEE %s failed.\n",
-+			  str_on_off(kedata->eee_enabled));
-+		return err;
-+	}
-+
-+	if (kedata->eee_enabled)
-+		adapter->eee_state = IXGBE_EEE_ENABLED;
-+	else
-+		adapter->eee_state = IXGBE_EEE_DISABLED;
-+
-+	if (netif_running(netdev))
-+		ixgbe_reinit_locked(adapter);
-+	else
-+		ixgbe_reset(adapter);
-+
-+	return 0;
-+}
-+
- static int
- ixgbe_get_eee_fw(struct ixgbe_adapter *adapter, struct ethtool_keee *edata)
- {
-@@ -3813,8 +3961,8 @@ static const struct ethtool_ops ixgbe_ethtool_ops_e610 = {
- 	.set_rxfh		= ixgbe_set_rxfh,
- 	.get_rxfh_fields	= ixgbe_get_rxfh_fields,
- 	.set_rxfh_fields	= ixgbe_set_rxfh_fields,
--	.get_eee		= ixgbe_get_eee,
--	.set_eee		= ixgbe_set_eee,
-+	.get_eee		= ixgbe_get_eee_e610,
-+	.set_eee		= ixgbe_set_eee_e610,
- 	.get_channels		= ixgbe_get_channels,
- 	.set_channels		= ixgbe_set_channels,
- 	.get_priv_flags		= ixgbe_get_priv_flags,
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index b87d553413cd..ad7f0bdf5f54 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -6749,6 +6749,7 @@ void ixgbe_down(struct ixgbe_adapter *adapter)
- 
- /**
-  * ixgbe_set_eee_capable - helper function to determine EEE support on X550
-+ * and E610
-  * @adapter: board private structure
-  */
- static void ixgbe_set_eee_capable(struct ixgbe_adapter *adapter)
-@@ -6765,6 +6766,20 @@ static void ixgbe_set_eee_capable(struct ixgbe_adapter *adapter)
- 			break;
- 		adapter->eee_state = IXGBE_EEE_ENABLED;
- 		break;
-+	case IXGBE_DEV_ID_E610_BACKPLANE:
-+	case IXGBE_DEV_ID_E610_SFP:
-+	case IXGBE_DEV_ID_E610_10G_T:
-+	case IXGBE_DEV_ID_E610_2_5G_T:
-+		if (hw->dev_caps.common_cap.eee_support &&
-+		    hw->phy.eee_speeds_supported) {
-+			adapter->flags2 |= IXGBE_FLAG2_EEE_CAPABLE;
-+			/* For E610 adapters EEE should be enabled by default
-+			 * if the feature is supported by FW.
-+			 */
-+			adapter->eee_state = IXGBE_EEE_ENABLED;
-+			break;
-+		}
-+		fallthrough;
- 	default:
- 		adapter->flags2 &= ~IXGBE_FLAG2_EEE_CAPABLE;
- 		adapter->eee_state = IXGBE_EEE_DISABLED;
-@@ -8146,6 +8161,20 @@ static void ixgbe_watchdog_link_is_up(struct ixgbe_adapter *adapter)
- 	       (flow_rx ? "RX" :
- 	       (flow_tx ? "TX" : "None"))));
- 
-+	/* Check if link state change forces changing EEE state */
-+	if (hw->mac.type == ixgbe_mac_e610) {
-+		if (adapter->eee_state == IXGBE_EEE_ENABLED &&
-+		    !(ixgbe_is_eee_link_speed_supported_e610(adapter, true))) {
-+			hw->mac.ops.setup_eee(hw, false);
-+			adapter->eee_state = IXGBE_EEE_FORCED_DOWN;
-+		} else if (adapter->eee_state == IXGBE_EEE_FORCED_DOWN &&
-+			   (ixgbe_is_eee_link_speed_supported_e610(adapter,
-+			    false))) {
-+			hw->mac.ops.setup_eee(hw, true);
-+			adapter->eee_state = IXGBE_EEE_ENABLED;
-+		}
-+	}
-+
- 	netif_carrier_on(netdev);
- 	ixgbe_check_vf_rate_limit(adapter);
- 
-@@ -12008,6 +12037,13 @@ static int ixgbe_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	if (err)
- 		goto err_netdev;
- 
-+	if (hw->mac.type == ixgbe_mac_e610 &&
-+	    (adapter->flags2 & IXGBE_FLAG2_EEE_CAPABLE)) {
-+		bool eee_enable = adapter->eee_state == IXGBE_EEE_ENABLED;
-+
-+		hw->mac.ops.setup_eee(hw, eee_enable);
-+	}
-+
- 	ixgbe_devlink_init_regions(adapter);
- 	devl_register(adapter->devlink);
- 	devl_unlock(adapter->devlink);
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-index 36577091cd9e..d17db3b3737f 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-@@ -3521,6 +3521,7 @@ struct ixgbe_mac_operations {
- 	int (*get_link_capabilities)(struct ixgbe_hw *, ixgbe_link_speed *,
- 				     bool *);
- 	void (*set_rate_select_speed)(struct ixgbe_hw *, ixgbe_link_speed);
-+	int (*setup_eee)(struct ixgbe_hw *hw, bool enable_eee);
- 
- 	/* Packet Buffer Manipulation */
- 	void (*set_rxpba)(struct ixgbe_hw *, int, u32, int);
--- 
-2.31.1
+Why break the line in the middle of the sentence?
 
+> cat /proc/interrupts | grep eno2
+>   167:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0
+>   0-edge      eno2
+>   168:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0
+>   1-edge      eno2-rx-0
+>   169:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0
+>   2-edge      eno2-rx-1
+>   170:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0
+>   3-edge      eno2-tx-0
+>   171:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0
+>   4-edge      eno2-tx-1
+> 
+> Furthermore it uses the flags input argument to trigger either rx, tx or
+> both rx and tx irqs as specified in the ndo_xsk_wakeup api documentation
+
+Please add a dot/period at the end of sentences.
+
+> Fixes: 80f6ccf9f116 ("igb: Introduce XSK data structures and helpers")
+> Signed-off-by: Vivek Behera <vivek.behera@siemens.com>
+> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> ---
+> v1: https://lore.kernel.org/intel-wired-lan/20251212131454.124116-1-vivek.behera@siemens.com/
+> v2: https://lore.kernel.org/intel-wired-lan/20251215115416.410619-1-vivek.behera@siemens.com/
+> v3: https://lore.kernel.org/intel-wired-lan/20251220114936.140473-1-vivek.behera@siemens.com/
+> v4: https://lore.kernel.org/intel-wired-lan/20251222115747.230521-1-vivek.behera@siemens.com/
+> 
+> changelog:
+> v1
+> - Inital description of the Bug and fixes made in the patch
+
+Initial
+
+> 
+> v1 -> v2
+> - Handling of RX and TX Wakeup in igc_xsk_wakeup for a split IRQ configuration
+> - Review suggestions by Aleksander: Modified sequence to complete all
+>    error checks for rx and tx before updating napi states and triggering irqs
+> - Corrected trigger of TX and RX interrupts over E1000_ICS (non msix use case)
+> - Added define for Tx interrupt trigger bit mask for E1000_ICS
+> 
+> v2 -> v3
+> - Included applicable feedback and suggestions from igc patch
+> - Fixed logic in updating eics value when  both TX and RX need wakeup
+> 
+> v3 -> v4
+> - Added comments to explain trigerring of both TX and RX with active queue pairs
+> - Fixed check of xsk pools in if statement
+> 
+> v4 -> v5
+> - Introduced a simplified logic for sequential check for RX and TX
+> ---
+>   .../net/ethernet/intel/igb/e1000_defines.h    |  1 +
+>   drivers/net/ethernet/intel/igb/igb_xsk.c      | 75 +++++++++++++++----
+>   2 files changed, 61 insertions(+), 15 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/igb/e1000_defines.h b/drivers/net/ethernet/intel/igb/e1000_defines.h
+> index fa028928482f..9357564a2d58 100644
+> --- a/drivers/net/ethernet/intel/igb/e1000_defines.h
+> +++ b/drivers/net/ethernet/intel/igb/e1000_defines.h
+> @@ -443,6 +443,7 @@
+>   #define E1000_ICS_LSC       E1000_ICR_LSC       /* Link Status Change */
+>   #define E1000_ICS_RXDMT0    E1000_ICR_RXDMT0    /* rx desc min. threshold */
+>   #define E1000_ICS_DRSTA     E1000_ICR_DRSTA     /* Device Reset Aserted */
+> +#define E1000_ICS_TXDW      E1000_ICR_TXDW	/* Transmit desc written back */
+>   
+>   /* Extended Interrupt Cause Set */
+>   /* E1000_EITR_CNT_IGNR is only for 82576 and newer */
+> diff --git a/drivers/net/ethernet/intel/igb/igb_xsk.c b/drivers/net/ethernet/intel/igb/igb_xsk.c
+> index 30ce5fbb5b77..6e51b5b6f131 100644
+> --- a/drivers/net/ethernet/intel/igb/igb_xsk.c
+> +++ b/drivers/net/ethernet/intel/igb/igb_xsk.c
+> @@ -529,6 +529,13 @@ int igb_xsk_wakeup(struct net_device *dev, u32 qid, u32 flags)
+>   	struct igb_adapter *adapter = netdev_priv(dev);
+>   	struct e1000_hw *hw = &adapter->hw;
+>   	struct igb_ring *ring;
+> +	struct igb_q_vector *q_vector;
+> +	struct napi_struct *rx_napi;
+> +	struct napi_struct *tx_napi;
+> +	bool trigger_irq_tx = false;
+> +	bool trigger_irq_rx = false;
+> +	u32 eics_tx = 0;
+> +	u32 eics_rx = 0;
+>   	u32 eics = 0;
+>   
+>   	if (test_bit(__IGB_DOWN, &adapter->state))
+> @@ -536,27 +543,65 @@ int igb_xsk_wakeup(struct net_device *dev, u32 qid, u32 flags)
+>   
+>   	if (!igb_xdp_is_enabled(adapter))
+>   		return -EINVAL;
+> -
+
+Why remove the blank line.
+
+> -	if (qid >= adapter->num_tx_queues)
+> +	/* Check if queue_id is valid. Tx and Rx queue numbers are always same */
+> +	if (qid >= adapter->num_rx_queues)
+>   		return -EINVAL;
+> -
+> -	ring = adapter->tx_ring[qid];
+> -
+> -	if (test_bit(IGB_RING_FLAG_TX_DISABLED, &ring->flags))
+> -		return -ENETDOWN;
+> -
+> -	if (!READ_ONCE(ring->xsk_pool))
+> +	/* Check if flags are valid */
+> +	if (!(flags & XDP_WAKEUP_RX) && !(flags & XDP_WAKEUP_TX))
+>   		return -EINVAL;
+
+The comment seems redundant.
+
+> -
+> -	if (!napi_if_scheduled_mark_missed(&ring->q_vector->napi)) {
+> -		/* Cause software interrupt */
+> +	if (flags & XDP_WAKEUP_RX) {
+> +		/* IRQ trigger preparation for Rx */
+> +		ring = adapter->rx_ring[qid];
+> +		if (!READ_ONCE(ring->xsk_pool))
+> +			return -ENXIO;
+> +		q_vector = ring->q_vector;
+> +		rx_napi = &q_vector->napi;
+> +		/* Extend the BIT mask for eics */
+> +		eics_rx = ring->q_vector->eims_value;
+> +		trigger_irq_rx = true;
+> +	}
+> +	if (flags & XDP_WAKEUP_TX) {
+> +		if (adapter->flags & IGB_FLAG_QUEUE_PAIRS) {
+> +		/* In queue-pair mode, rx_ring and tx_ring share the same q_vector,
+> +		 * so a single IRQ trigger will wake both RX and TX processing
+> +		 */
+> +		} else {
+> +			/* IRQ trigger preparation for Tx */
+> +			ring = adapter->tx_ring[qid];
+> +			if (test_bit(IGB_RING_FLAG_TX_DISABLED, &ring->flags))
+> +				return -ENETDOWN;
+> +
+> +			if (!READ_ONCE(ring->xsk_pool))
+> +				return -ENXIO;
+> +			q_vector = ring->q_vector;
+> +			tx_napi = &q_vector->napi;
+> +			/* Extend the BIT mask for eics */
+> +			eics_tx = ring->q_vector->eims_value;
+> +			trigger_irq_tx = true;
+> +		}
+> +	}
+> +	/* All error checks are finished. Check and update napi states for rx and tx */
+> +	if (trigger_irq_rx) {
+> +		if (!napi_if_scheduled_mark_missed(rx_napi))
+> +			eics |= eics_rx;
+> +	}
+> +	if (trigger_irq_tx) {
+> +		if (!napi_if_scheduled_mark_missed(tx_napi))
+> +			eics |= eics_tx;
+> +	}
+> +	/* Now we trigger the required irqs for Rx and Tx */
+> +	if ((trigger_irq_rx) || (trigger_irq_tx)) {
+>   		if (adapter->flags & IGB_FLAG_HAS_MSIX) {
+> -			eics |= ring->q_vector->eims_value;
+>   			wr32(E1000_EICS, eics);
+>   		} else {
+> -			wr32(E1000_ICS, E1000_ICS_RXDMT0);
+> +			if ((trigger_irq_rx) && (trigger_irq_tx))
+> +				wr32(E1000_ICS,
+> +				     E1000_ICS_RXDMT0 | E1000_ICS_TXDW);
+> +			else if (trigger_irq_rx)
+> +				wr32(E1000_ICS, E1000_ICS_RXDMT0);
+> +			else
+> +				wr32(E1000_ICS, E1000_ICS_TXDW);
+>   		}
+>   	}
+> -
+
+The removal of the blank line is unrelated. It looks like you divert 
+from the coding style of this file. I’d suggest to avoid that.
+
+>   	return 0;
+>   }
+
+
+Kind regards,
+
+Paul
