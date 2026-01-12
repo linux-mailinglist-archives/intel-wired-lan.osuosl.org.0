@@ -2,91 +2,96 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 11959D12B01
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Jan 2026 14:09:14 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DAC57D13103
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Jan 2026 15:18:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AD07C84BA0;
-	Mon, 12 Jan 2026 13:09:12 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9695F84EBA;
+	Mon, 12 Jan 2026 14:18:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id eMpOOJQQL80I; Mon, 12 Jan 2026 13:09:11 +0000 (UTC)
+ id GbkFncLN4K1z; Mon, 12 Jan 2026 14:18:40 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D4BC284B9E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 19A4284ED3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1768223351;
-	bh=FLcdCP+My4DCueALID4i/Q8t+i6Vpfd3XrW+x8aSd1g=;
-	h=To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From:Reply-To:From;
-	b=Rsg4zspv3JwE1jjFT2+qEL6yCQ2YRxKmW46Mfs30CkWaGJXlk5dPhe9dIGb07/x0V
-	 R4CCQt6pX8vkwhvOS8pMpOw4IWbVv+lixOVee9Ihak1VwbqpBbaukv2jAkZD4WMHSN
-	 TazlCsnQdBs2C1Gdueh1la4DgQTQxQoaAccTAdJDWsyhCR2n+y1ds5C/qRzVsRrc+L
-	 kOl6kkkeTRwnoHyO2sKbVDGNzHHitFx8DdZkScMCheAev2yNLBHGl51QTlW2OqQeRW
-	 NyxdKlC9R3pEatml48p3ZB7TVahOL3zbvWkk6CjgB3o06zM8CdJDfR5n08aLDvN9sm
-	 jv0R6iwg3qZaw==
+	s=default; t=1768227520;
+	bh=Ls+7iv5ETZtuRzjeq8m/w891u3U8+gWOuWqfAV73G0o=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=uJvmgRrhC2lBABSZcfoJqix5EQkYAm7HEHMzO1lP77SSRVnhvujqt8UJoyDwuOJH6
+	 vIKVCqUKjbT6TqPJpZNjqaSrY78gHGahBvLuhlf+ttzLIp5tVTHGGuhL7qKnn1Kk9h
+	 8/h8g1f88dO3mTLN/gyFEOKyoLEg/6t1uEt7yJ6ZNu5H0m5rPxh/v2zfcA3h94QL0S
+	 0fSfJ/D+zVvV9zQfS7S1QId+D6wPsReQScS3BKkS10dISjxX60t0M1odofK5gHr+gs
+	 6mnAobbDeutClmCc/onWfjo2z46ezD/ZDTUGvo9IwEvRZ872RnRubR54ZEHppOq5nG
+	 mhUdtMdAP1xIw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D4BC284B9E;
-	Mon, 12 Jan 2026 13:09:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 19A4284ED3;
+	Mon, 12 Jan 2026 14:18:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 5DAC01CC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 13:09:09 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 2E36118D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 14:18:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 446C1407BA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 13:09:09 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 1414C6F4F3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 14:18:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id BeoKxd2XP6NJ for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 Jan 2026 13:09:07 +0000 (UTC)
-X-Greylist: delayed 303 seconds by postgrey-1.37 at util1.osuosl.org;
- Mon, 12 Jan 2026 13:09:06 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 31BE340418
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 31BE340418
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=185.136.65.226;
- helo=mta-65-226.siemens.flowmailer.net;
- envelope-from=fm-1333436-20260112130359f15b1cf53000020780-lxqhag@rts-flowmailer.siemens.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id f0xcXcX0JpPn for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 12 Jan 2026 14:18:37 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
+ helo=mgamail.intel.com; envelope-from=jedrzej.jagielski@intel.com;
  receiver=<UNKNOWN> 
-Received: from mta-65-226.siemens.flowmailer.net
- (mta-65-226.siemens.flowmailer.net [185.136.65.226])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 31BE340418
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 13:09:05 +0000 (UTC)
-Received: by mta-65-226.siemens.flowmailer.net with ESMTPSA id
- 20260112130359f15b1cf53000020780
- for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 Jan 2026 14:03:59 +0100
-To: aleksandr.loktionov@intel.com, jacob.e.keller@intel.com,
- anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- maciej.fijalkowski@intel.com, sriram.yagnaraman@ericsson.com,
- kurt@linutronix.de
-Cc: intel-wired-lan@lists.osuosl.org,
-	vivek.behera@siemens.com
-Date: Mon, 12 Jan 2026 14:03:49 +0100
-Message-Id: <20260112130349.1737901-1-vivek.behera@siemens.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 5777A6F4F2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5777A6F4F2
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 5777A6F4F2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 14:18:37 +0000 (UTC)
+X-CSE-ConnectionGUID: hBudZquKRkOojJRh4P+snw==
+X-CSE-MsgGUID: NcBf63IWS6irP92krjp0Rg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11669"; a="73352278"
+X-IronPort-AV: E=Sophos;i="6.21,221,1763452800"; d="scan'208";a="73352278"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Jan 2026 06:18:37 -0800
+X-CSE-ConnectionGUID: rVOT95v5QEeVCqlu981b5Q==
+X-CSE-MsgGUID: cMpwmWyVTiOvqeTm28QMgA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,221,1763452800"; d="scan'208";a="227355621"
+Received: from os-delivery.igk.intel.com ([10.102.18.218])
+ by fmviesa002.fm.intel.com with ESMTP; 12 Jan 2026 06:18:36 -0800
+From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: anthony.l.nguyen@intel.com, netdev@vger.kernel.org,
+ Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Date: Mon, 12 Jan 2026 15:01:01 +0100
+Message-Id: <20260112140108.1173835-1-jedrzej.jagielski@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Flowmailer-Platform: Siemens
-Feedback-ID: 519:519-1333436:519-21489:flowmailer
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; s=fm1; 
- d=siemens.com; i=vivek.behera@siemens.com;
- h=Date:From:Subject:To:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding:Cc;
- bh=FLcdCP+My4DCueALID4i/Q8t+i6Vpfd3XrW+x8aSd1g=;
- b=N3y54iVq1ehmWxlTh8uGwK+cxXxi4mv9AdpU0+GLnhGTxd5xUM+zX5vVpZZmC+JOCgQZ4c
- vBjRg0l6rHjXSkUioo8qQf9okEyUr1uT1vwjvG/lyCuvjyM/rMMFZC9/cZBoWAiQi9MNDu60
- qOkUix0noAI4PvFB8vpTXdl7fal/NloU7CC/462ai165NmWh8bin+EsJf4kQhCX5QU9ofqmG
- dl03homcR3Peb9oG8Yow1IBtjc1nQ7wLgX65vaxEWnVJSfAmv4599Bb97jdjrd+Iqv04dbMc
- 2rhjTwiuTW0qVJwwiAosy3nE9+FoeJcEYfKdm/C4TMbmV/ZYLFEsFvig==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=siemens.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1768227517; x=1799763517;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=vPeDa8uyWuQnIXSJZ4FwePDJ5JKSHDvAEnccORld0bc=;
+ b=Z6FNS0i9B2L3MUNcb3sn4S2UYKUr8MpuGFh1Vo/+9bxYWmVob01WItFT
+ In+QR+9oaJfN8TI74p25Db1jlAajK3WECaW8PPZs46DCBrZHQHkth5gPT
+ roUpyxheJaCrOLSgXzJaXtYyIhGwd9yqhDRYrGZxe1EYMO/tQTlUDUIPL
+ zJF3rKBJz1FqhLhkUnSx9/hlAOsdK34nhIaXYRCKANjEHZcP9UbCIMEYC
+ I2y0WwppIIDK3hmG2b2jcaQnIIclrjwBOy3RB79NibXyxvkbKDAVG5XwG
+ ZsXEAuO47bwLNMo6b2O0QWT8RaIsFBaqpibKYEEp87PeUF8hnKY9PIGY+
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=siemens.com header.i=vivek.behera@siemens.com
- header.a=rsa-sha256 header.s=fm1 header.b=N3y54iVq
-Subject: [Intel-wired-lan] [PATCH iwl-net v5] igb: Fix trigger of incorrect
- irq in igb_xsk_wakeup
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Z6FNS0i9
+Subject: [Intel-wired-lan] [PATCH iwl-next v1 0/7] ixgbe: enable EEE for
+ E610 devices
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -99,179 +104,38 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-From: Vivek Behera via Intel-wired-lan <intel-wired-lan@osuosl.org>
-Reply-To: Vivek Behera <vivek.behera@siemens.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The current implementation in the igb_xsk_wakeup expects the Rx and Tx queues
-to share the same irq. This would lead to triggering of incorrect irq
-in split irq configuration.
-This patch addresses this issue which could impact environments
-with 2 active cpu cores
-or when the number of queues is reduced to 2 or less
+Align SW structs with latest FW changes related to EEE enablement.
+Address compatibility issues caused by the buffer size changes.
+Implement ethtool callbacks which can be used to enable/disable EEE, but
+generally the feature itself is enabled by default. What's important it
+works only for link speeds > 1Gb/s, so even if enabled, it gets down
+anytime link conditions aren't met. Once met again the feature gets
+restored. Still cannot configure LPI timers and EEE advertised speeds.
 
-cat /proc/interrupts | grep eno2
- 167:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0
- 0-edge      eno2
- 168:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0
- 1-edge      eno2-rx-0
- 169:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0
- 2-edge      eno2-rx-1
- 170:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0
- 3-edge      eno2-tx-0
- 171:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0
- 4-edge      eno2-tx-1
+Jedrzej Jagielski (7):
+  ixgbe: E610: add discovering EEE capability
+  ixgbe: E610: use new version of 0x601 ACI command buffer
+  ixgbe: E610: update EEE supported speeds
+  ixgbe: E610: update ACI command structs with EEE fields
+  ixgbe: move EEE config validation out of ixgbe_set_eee()
+  ixgbe: replace EEE enable flag with state enum
+  ixgbe: E610: add EEE support
 
-Furthermore it uses the flags input argument to trigger either rx, tx or
-both rx and tx irqs as specified in the ndo_xsk_wakeup api documentation
+ drivers/net/ethernet/intel/ixgbe/ixgbe.h      |  13 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c |  77 +++++-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h |   1 +
+ .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  | 250 +++++++++++++++---
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  42 ++-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_type.h |   1 +
+ .../ethernet/intel/ixgbe/ixgbe_type_e610.h    |  38 ++-
+ include/linux/net/intel/libie/adminq.h        |   1 +
+ 8 files changed, 358 insertions(+), 65 deletions(-)
 
-Fixes: 80f6ccf9f116 ("igb: Introduce XSK data structures and helpers")
-Signed-off-by: Vivek Behera <vivek.behera@siemens.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
----
-v1: https://lore.kernel.org/intel-wired-lan/20251212131454.124116-1-vivek.behera@siemens.com/
-v2: https://lore.kernel.org/intel-wired-lan/20251215115416.410619-1-vivek.behera@siemens.com/
-v3: https://lore.kernel.org/intel-wired-lan/20251220114936.140473-1-vivek.behera@siemens.com/
-v4: https://lore.kernel.org/intel-wired-lan/20251222115747.230521-1-vivek.behera@siemens.com/
 
-changelog:
-v1
-- Inital description of the Bug and fixes made in the patch
-
-v1 -> v2
-- Handling of RX and TX Wakeup in igc_xsk_wakeup for a split IRQ configuration
-- Review suggestions by Aleksander: Modified sequence to complete all
-  error checks for rx and tx before updating napi states and triggering irqs
-- Corrected trigger of TX and RX interrupts over E1000_ICS (non msix use case)
-- Added define for Tx interrupt trigger bit mask for E1000_ICS
-
-v2 -> v3
-- Included applicable feedback and suggestions from igc patch
-- Fixed logic in updating eics value when  both TX and RX need wakeup
-
-v3 -> v4
-- Added comments to explain trigerring of both TX and RX with active queue pairs
-- Fixed check of xsk pools in if statement
-
-v4 -> v5
-- Introduced a simplified logic for sequential check for RX and TX
----
- .../net/ethernet/intel/igb/e1000_defines.h    |  1 +
- drivers/net/ethernet/intel/igb/igb_xsk.c      | 75 +++++++++++++++----
- 2 files changed, 61 insertions(+), 15 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igb/e1000_defines.h b/drivers/net/ethernet/intel/igb/e1000_defines.h
-index fa028928482f..9357564a2d58 100644
---- a/drivers/net/ethernet/intel/igb/e1000_defines.h
-+++ b/drivers/net/ethernet/intel/igb/e1000_defines.h
-@@ -443,6 +443,7 @@
- #define E1000_ICS_LSC       E1000_ICR_LSC       /* Link Status Change */
- #define E1000_ICS_RXDMT0    E1000_ICR_RXDMT0    /* rx desc min. threshold */
- #define E1000_ICS_DRSTA     E1000_ICR_DRSTA     /* Device Reset Aserted */
-+#define E1000_ICS_TXDW      E1000_ICR_TXDW	/* Transmit desc written back */
- 
- /* Extended Interrupt Cause Set */
- /* E1000_EITR_CNT_IGNR is only for 82576 and newer */
-diff --git a/drivers/net/ethernet/intel/igb/igb_xsk.c b/drivers/net/ethernet/intel/igb/igb_xsk.c
-index 30ce5fbb5b77..6e51b5b6f131 100644
---- a/drivers/net/ethernet/intel/igb/igb_xsk.c
-+++ b/drivers/net/ethernet/intel/igb/igb_xsk.c
-@@ -529,6 +529,13 @@ int igb_xsk_wakeup(struct net_device *dev, u32 qid, u32 flags)
- 	struct igb_adapter *adapter = netdev_priv(dev);
- 	struct e1000_hw *hw = &adapter->hw;
- 	struct igb_ring *ring;
-+	struct igb_q_vector *q_vector;
-+	struct napi_struct *rx_napi;
-+	struct napi_struct *tx_napi;
-+	bool trigger_irq_tx = false;
-+	bool trigger_irq_rx = false;
-+	u32 eics_tx = 0;
-+	u32 eics_rx = 0;
- 	u32 eics = 0;
- 
- 	if (test_bit(__IGB_DOWN, &adapter->state))
-@@ -536,27 +543,65 @@ int igb_xsk_wakeup(struct net_device *dev, u32 qid, u32 flags)
- 
- 	if (!igb_xdp_is_enabled(adapter))
- 		return -EINVAL;
--
--	if (qid >= adapter->num_tx_queues)
-+	/* Check if queue_id is valid. Tx and Rx queue numbers are always same */
-+	if (qid >= adapter->num_rx_queues)
- 		return -EINVAL;
--
--	ring = adapter->tx_ring[qid];
--
--	if (test_bit(IGB_RING_FLAG_TX_DISABLED, &ring->flags))
--		return -ENETDOWN;
--
--	if (!READ_ONCE(ring->xsk_pool))
-+	/* Check if flags are valid */
-+	if (!(flags & XDP_WAKEUP_RX) && !(flags & XDP_WAKEUP_TX))
- 		return -EINVAL;
--
--	if (!napi_if_scheduled_mark_missed(&ring->q_vector->napi)) {
--		/* Cause software interrupt */
-+	if (flags & XDP_WAKEUP_RX) {
-+		/* IRQ trigger preparation for Rx */
-+		ring = adapter->rx_ring[qid];
-+		if (!READ_ONCE(ring->xsk_pool))
-+			return -ENXIO;
-+		q_vector = ring->q_vector;
-+		rx_napi = &q_vector->napi;
-+		/* Extend the BIT mask for eics */
-+		eics_rx = ring->q_vector->eims_value;
-+		trigger_irq_rx = true;
-+	}
-+	if (flags & XDP_WAKEUP_TX) {
-+		if (adapter->flags & IGB_FLAG_QUEUE_PAIRS) {
-+		/* In queue-pair mode, rx_ring and tx_ring share the same q_vector,
-+		 * so a single IRQ trigger will wake both RX and TX processing
-+		 */
-+		} else {
-+			/* IRQ trigger preparation for Tx */
-+			ring = adapter->tx_ring[qid];
-+			if (test_bit(IGB_RING_FLAG_TX_DISABLED, &ring->flags))
-+				return -ENETDOWN;
-+
-+			if (!READ_ONCE(ring->xsk_pool))
-+				return -ENXIO;
-+			q_vector = ring->q_vector;
-+			tx_napi = &q_vector->napi;
-+			/* Extend the BIT mask for eics */
-+			eics_tx = ring->q_vector->eims_value;
-+			trigger_irq_tx = true;
-+		}
-+	}
-+	/* All error checks are finished. Check and update napi states for rx and tx */
-+	if (trigger_irq_rx) {
-+		if (!napi_if_scheduled_mark_missed(rx_napi))
-+			eics |= eics_rx;
-+	}
-+	if (trigger_irq_tx) {
-+		if (!napi_if_scheduled_mark_missed(tx_napi))
-+			eics |= eics_tx;
-+	}
-+	/* Now we trigger the required irqs for Rx and Tx */
-+	if ((trigger_irq_rx) || (trigger_irq_tx)) {
- 		if (adapter->flags & IGB_FLAG_HAS_MSIX) {
--			eics |= ring->q_vector->eims_value;
- 			wr32(E1000_EICS, eics);
- 		} else {
--			wr32(E1000_ICS, E1000_ICS_RXDMT0);
-+			if ((trigger_irq_rx) && (trigger_irq_tx))
-+				wr32(E1000_ICS,
-+				     E1000_ICS_RXDMT0 | E1000_ICS_TXDW);
-+			else if (trigger_irq_rx)
-+				wr32(E1000_ICS, E1000_ICS_RXDMT0);
-+			else
-+				wr32(E1000_ICS, E1000_ICS_TXDW);
- 		}
- 	}
--
- 	return 0;
- }
+base-commit: 8fccf912252d8d61064058caf4d6e1085c5ac309
 -- 
-2.34.1
+2.31.1
 
