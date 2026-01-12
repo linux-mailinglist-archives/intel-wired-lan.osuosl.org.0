@@ -1,67 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D36F8D13EDB
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Jan 2026 17:16:17 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A1760D13F29
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Jan 2026 17:20:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 84970809BC;
-	Mon, 12 Jan 2026 16:16:16 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 02ACE8075B;
+	Mon, 12 Jan 2026 16:20:52 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id WTUA-w38Cmg6; Mon, 12 Jan 2026 16:16:16 +0000 (UTC)
+ id YyNK2XngcolS; Mon, 12 Jan 2026 16:20:51 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 07BB880C54
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6AE1680714
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1768234576;
-	bh=TQfc9dG6e4Lo0hsoUsl0IL26e3AZpCF9ZrLRm11foes=;
+	s=default; t=1768234851;
+	bh=C6HxvZIinA046H7qw84vDXghzOBgJx1JtyvpZHc9cvM=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Bo2K158PNIuh3j3DgwMgARFmotN2glOuowYgvC2oOuZPybKYCsCXidL7tg/VNi+LT
-	 tPByTXDM8eXyO8sXKmd4Ko3xQ2Ixa1rqLlOZZAO7fhBgpeMmyME9MczzDLu3rz9HJx
-	 xQOjunM9y9kaflpZiUT/cP+55vOU6GXWCWOhyD8J1MP/8DEplmyLveH+pA1KtAnykq
-	 8wbhjD4uPK34UcJ7bBqInT8aRQ9+bkioo5r+wFCqDXTGMSfZYaMZNgCBo9zsfVxouL
-	 w8v7slS6OdHZqFOOpdyso/2s2Sx6D3Y1On9BHckrzv8RVCkfhkMiHiOZgihFmHnotZ
-	 z73xjo9HHGf3g==
+	b=0MBGy1xTbfzUEkRJyLKfiM65nC21TO3PjZogb83XpIayZWz5XyS+/BOZRQcAArgZj
+	 J2BRYbQOncBWZMHeRdeHGFxR5l1IpnF08aA2Iq5dFFtsaetdcPjc8DOcisDB5puaYw
+	 4V+cJ7qZb6aw/ckOkPGCsAC7hurxJAON1Ih35DbXCAvmKKnWAAXq0YVcMI0946uT8Z
+	 OPPIsIYzH3Hehi3crmpdYl03X/EeM1w3fIO6xckW28QsQ8OQA9U2rb4JgNrDnGE0JT
+	 Ck/kb749/WiChYQy+eWVXDqzvLhdg6bezMsHr5gtw2TipMhk7ksLpYervM2sVwKKIy
+	 veC1omkpMaGJw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 07BB880C54;
-	Mon, 12 Jan 2026 16:16:16 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6AE1680714;
+	Mon, 12 Jan 2026 16:20:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 1544D18D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 16:16:14 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3E42F12E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 16:20:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0726240338
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 16:16:14 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2A94840338
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 16:20:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id FEO_nQ3vmygt for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 Jan 2026 16:16:13 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
- helo=sea.source.kernel.org; envelope-from=krzk@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 53EA8402F1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 53EA8402F1
-Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 53EA8402F1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 16:16:13 +0000 (UTC)
+ id i3GQKifUOJVS for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 12 Jan 2026 16:20:48 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ envelope-from=krzk@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 858AD402F1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 858AD402F1
+Received: from sea.source.kernel.org (sea.source.kernel.org
+ [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 858AD402F1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 16:20:48 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id F132D4405C;
- Mon, 12 Jan 2026 16:16:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0CE19C19422;
- Mon, 12 Jan 2026 16:16:06 +0000 (UTC)
-Message-ID: <22bdda82-9ebf-4381-a7d4-edbf97408a5f@kernel.org>
-Date: Mon, 12 Jan 2026 17:16:05 +0100
+ by sea.source.kernel.org (Postfix) with ESMTP id 13ABB43D79;
+ Mon, 12 Jan 2026 16:20:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1E47BC116D0;
+ Mon, 12 Jan 2026 16:20:41 +0000 (UTC)
+Message-ID: <fcc35747-81f3-4a3a-8b5d-cf29e9c52bb2@kernel.org>
+Date: Mon, 12 Jan 2026 17:20:40 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 To: Ivan Vecera <ivecera@redhat.com>
 References: <20260108182318.20935-1-ivecera@redhat.com>
  <20260108182318.20935-4-ivecera@redhat.com>
  <20260109-cooperative-chinchilla-of-swiftness-aebbc8@quoll>
- <25f49485-2228-4aa5-9023-0b00cc10a4da@redhat.com>
+ <09ffc379-85e5-41ce-b781-66ba6bb9a6c7@redhat.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -107,26 +109,25 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <25f49485-2228-4aa5-9023-0b00cc10a4da@redhat.com>
+In-Reply-To: <09ffc379-85e5-41ce-b781-66ba6bb9a6c7@redhat.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1768234572;
- bh=VLv6+c253IeyK2kF+FrgrPyGN3TxjzmnUCtTvmlGwA0=;
+ d=kernel.org; s=k20201202; t=1768234847;
+ bh=/PdvU0M1gZ9pGznJXLnSLXthS7353A8aYAPJNcKB1vg=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=hJW8AmCCRmBGvt+S5sVmjCJin6/lR4tA6iBujti0d9E/ouu13Kjqx6jZO9aoo/L1A
- 0eStjvZUkrrZK/4PRCOt1G7gmoWsQnwpKGiKDkFguWk/QORGUcVoX/zuGp+weh26dl
- YwOafoGHeUkXWfXCnCYlqoydNZpda2zMbIGfKhYhOUcYZsrMU3WVw2HYhQ/g4okS1a
- qSMmwj9q7YraweCHeK3dkJaM9Zrtu0Dgq7qylJDT52QSnZNlUAEfWpxjlf7HkrlXdO
- ZToaYvKtRBj3OI1KSUINwuIGbFOXhHkvSx63PoPOKwnlauyjJcx11n1A4+pZKbH3oT
- Z/zOEyUdC34wg==
+ b=ArJe9oo7Hwl+ssrsthaaQAI7mi51T4urx1Tk/XaEeNYSOJINQVIYrGKQkUZKennKd
+ cNG74KbAlT9/tyZRdxJFrIJd6EXmnNv/RDQ9XF2QLFwm2FeScUoyeF+qs/SpYgErjU
+ JhiX4KZLQ8CRTPe6ptyrfJRCnK5zSZRUAxsIGNX/e7BeDt0o4KrJ6VDb70nsBmm9+t
+ dPgDsolJmGF8jpdrTud9i3Mpdw8tpMlFLuOh/LznVEtM52VMaAKB0Pb1Mm97N/VUq7
+ gcCAjHE9CTn7g75O90oXwGw9JUvuIKIwL/c+RthTtoLhQ1JyiR89xuoxgHjNFxWJfs
+ 1KflpLJ7HrJvg==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=hJW8AmCC
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=ArJe9oo7
 Subject: Re: [Intel-wired-lan] [PATCH net-next 03/12] dpll: Add helpers to
  find DPLL pin fwnode
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -161,7 +162,7 @@ Cc: Eric Dumazet <edumazet@google.com>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 09/01/2026 11:22, Ivan Vecera wrote:
+On 09/01/2026 15:19, Ivan Vecera wrote:
 > 
 > 
 > On 1/9/26 10:55 AM, Krzysztof Kozlowski wrote:
@@ -188,11 +189,24 @@ On 09/01/2026 11:22, Ivan Vecera wrote:
 >>>
 >>
 >> I don't see cells defined in your binding. Neither updated property.c.
->>
-> WDYM by property.c ?
+> 
+> And if the cells are not required? I mean that dpll-names only specifies
+> array of phandles without parameters...
+> 
+> e.g.
+> dpll-pin-names = "abc", "def";
+> dpll-pins = <&dpll_pin_abc>, <&dpll_pin_def>;
+> 
+> Should '#dpll-pin-cells' be defined as constantly equal to 0?
 
-Each standardized phandle reliationship is supposed to be reflected with
-device links (at least of now... maybe it already changed after this LPC?)
+I don't understand how can you guarantee for every possible future
+device to have always cells=0. If that's the case then indeed you do not
+need cells, but this needs explanation. You are designing now entire
+ABI, so you must design it fully, not just "works for me now".
+
+Lack of complete DTS - nothing here, nothing in the changelog - is IMO
+reason to NAK this patchset completely, also for reason me guessing the
+entire design instead of seeing the big picture.
 
 Best regards,
 Krzysztof
