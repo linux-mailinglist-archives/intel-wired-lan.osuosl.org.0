@@ -1,90 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 995EFD14B72
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Jan 2026 19:18:49 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 57267D14B7B
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Jan 2026 19:18:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 43A6840E4B;
+	by smtp3.osuosl.org (Postfix) with ESMTP id D8BA460D96;
 	Mon, 12 Jan 2026 18:18:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZxvDT0uhsmuG; Mon, 12 Jan 2026 18:18:47 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 1zzK5K7EnApk; Mon, 12 Jan 2026 18:18:48 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9486A40E4C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1ED7A60D9A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1768241927;
-	bh=iqJBVDW73KCgBwgVWk5qYLsHzLDdObx2o+GjzAsqssQ=;
+	s=default; t=1768241928;
+	bh=YsXS6L+T4eWxoCFRdBnUQMJP/+ral8MRAKD6IFiqy1I=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=TRg4LTowOtK7zCtMo2/c3kyZmmmHXU3dYBqwDd9212ZMqf5c3eQmBJXlxiI0jLFNq
-	 Bnps1uC42VPsCTTPasbma/BV5XflU9hFpvhmcjhrY/lXXPn/+GzqEqsV8HkYNfpAJE
-	 uyST2yLAl85wU+xL6tcBK6JsGDjBwXInVpMEEEtFNHNuiebMzbLSGouwLuloYLtDya
-	 ktHYf18TiyfJS3rj2hsyR+YMYDyjWGXOjv5rji0L+9d1BmInnTEDuaif7xPtiDjkYv
-	 hjNYxodxhdElNFLweVrj54AR2+T8XF61YScFcLKMbNLbLyQ7KicBYCPmNSOyraSIlA
-	 cQBrmkN0lfJ1w==
+	b=K6UQtg454N49xtf5rVSGeUpDu+0HMPHgujQxS+BM3Ij7YWn93rkwf3K66jpmnpYME
+	 unUUqyFDJPHyjtMhHE43sr0CywDFlX5dnIFvrDnNuj9rz0d0Y65HyPnSTCpmyec3FW
+	 oPTHpodyo/wdsbvd9d1OLmR2F+I0ST00AlhOM7Yg71/qcS1JR/ptZXqSqSv7Ma1slW
+	 FbI5p1gsczKjVMOKrFkBIKUx62rbYyxw7CMOOvl2KyuB818Bo4K/kc8dJYOpFRavSw
+	 UW/oABiAkZTu4tG6aKrEny98Wx8FPdzVqwkcA0HHNBvYKlO3pf43w6ExiwCxHuDHLT
+	 3P97evEM4PybA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9486A40E4C;
-	Mon, 12 Jan 2026 18:18:47 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1ED7A60D9A;
+	Mon, 12 Jan 2026 18:18:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id C173B231
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 18:17:17 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 8076018D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 18:17:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A7B1E4087B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 18:17:17 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 7230F60D78
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 18:17:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id p-LUQykpGHEq for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 Jan 2026 18:17:17 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id k97uYXeywYyq for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 12 Jan 2026 18:17:26 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::534; helo=mail-pg1-x534.google.com;
+ client-ip=2607:f8b0:4864:20::1030; helo=mail-pj1-x1030.google.com;
  envelope-from=viswanathiyyappan@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 002DF40E3F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 002DF40E3F
-Received: from mail-pg1-x534.google.com (mail-pg1-x534.google.com
- [IPv6:2607:f8b0:4864:20::534])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 002DF40E3F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 18:17:16 +0000 (UTC)
-Received: by mail-pg1-x534.google.com with SMTP id
- 41be03b00d2f7-c56188aef06so1188393a12.2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 10:17:16 -0800 (PST)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B95BA60B58
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B95BA60B58
+Received: from mail-pj1-x1030.google.com (mail-pj1-x1030.google.com
+ [IPv6:2607:f8b0:4864:20::1030])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B95BA60B58
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 18:17:26 +0000 (UTC)
+Received: by mail-pj1-x1030.google.com with SMTP id
+ 98e67ed59e1d1-34ccb7ad166so3709316a91.2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 10:17:26 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768241836; x=1768846636;
+ d=1e100.net; s=20230601; t=1768241846; x=1768846646;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=iqJBVDW73KCgBwgVWk5qYLsHzLDdObx2o+GjzAsqssQ=;
- b=PNOKSw99irAzzV7Ex5IiVQ8HIuJEk6fArQkMNwuvT8VHs17gTYO43Ttv+yHOCZuZ0x
- dJq39TLQVi/MHf9Jns7xjYP7+yGF58vTKAdtyYgdhMLxz6CJznAoI4AObHD2uL9vRXjy
- khtZtVvin3qivPTI2NbI/UIc1IlwiqxRBe0KcRlBmMW6hERns3yHb9Ppofp9aZazBn14
- tjdPDASZSwb4oSP21eZqrZgbDUhZwbMRHFlHfsfBz9zZx1T0o0a3vw4KkhLhHot5RJkB
- EEIFj2pqLUDMYE2/Yws7yI2zKb1Fp55vplin2nwbxT2ERj/jKhkxAvGVVJU3Vk44mWiR
- sN2A==
+ bh=YsXS6L+T4eWxoCFRdBnUQMJP/+ral8MRAKD6IFiqy1I=;
+ b=cLA48Ubp2gGgGfmnR2Yh8yCujxi+vMYbgd85ytZDo0AnU8KUv14l9KSimdTgd5VQRp
+ nJCltxEI/X7XfjfJ/lBCfoi8et8d/FmxgN5mSVLWalyDhG99k0UgsbijvjDyR/FxaI0a
+ 3B51bKnTbzjkB5EshUTsO041FmXs3uE2G6QpNjuT+KpJzSoDwpia4SR+RZGu2N8HlbuR
+ LxLQI3H5aFwCgP98reIrkzH9N5noy1zXaIY5w1d/qAMUXmnFDgwJjAhjJB5BppHWKdAy
+ 2Fi9QNMolOQI117Za408L3+/W9AY100c3ddQBGeX7Fei4xpDDklJaFOAnTASO/tFX3Az
+ u+5A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVAce7iQkdas4JPGNhK6hyvhgrsvm84gUPo51jovOGfVU3AQNt30yjl7S7cb45eH6QNObltVx7zxCJWLwEagoY=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yx/Fiyf2zmvFcm6/sAfTyRmjtqbH6rHiltlpj37iYTY0mtflmeB
- TZpYIrywXpFyQ7T15FXXsd1ReEjSWuGs1dV7EpJkAX3/+5Rodyww9qkK
-X-Gm-Gg: AY/fxX6G1JQcDkCeU7wWnQlkWMXccydebKRp+gm9RbE8FuSXIWUGYwXJsZfJuimYpSN
- udmlQfhR1TJSM00+0L+1l0P4X+63UlFMX+GURAIXvacGuQzXov+QKladNIs/Xe8IRP/Ri2Uevns
- g0kOIyHpg3XZkAa+qE/cEJUVXvlR3iWFa9GrRaAT4YirUcrGyIzjloIjFBI2xmDz2Z3hspbmRwt
- DhHMKNzG679tQ8ItDawyOn5E2YERsIEAlZrnWj3Tp31208F3wekKmmRle/QZeKMBs3Y/V7MOmQV
- P7i/JksekfXqDbaq0NOcT/VeA/L5eqq4XKswh7KhrLh+RWv78kdsFJF8bhrwkokEatiiqqGruTw
- hVRGG2FnJhq+RQZdM03n1C7cZsIeTtnycoXR02+QYsKgxaRFxb7zOosahIZqp9m64z/eMiB6mdV
- ygc1D1vyns4fNISDnct2MTg01pc5L0Ouk9oAotooabttz5qUcs+ZiBaCpJRUzsX8k5vQ==
-X-Google-Smtp-Source: AGHT+IFz60SshqGbcLnvzcM3MjSw6gKXYr6Y8WSw1HT0006/my+JtsdMnEbYpRT5lPUoqFpp4CsP0A==
-X-Received: by 2002:a17:90b:3c45:b0:339:eff5:ef26 with SMTP id
- 98e67ed59e1d1-34f68cb94f4mr16313803a91.30.1768241836105; 
- Mon, 12 Jan 2026 10:17:16 -0800 (PST)
+ AJvYcCVwK/XC5KHlq24HQOPyocmIVPVH0iJsNGjd9BDtOwqyaKgKvKN6QKRFWQWt64uO6igPtld4Ukc+nE3iWtpvJ4o=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YwtuKqj23F+Tm4qw0bsi4HnACvvvT5Fzo/R/zivAI+u5+2q2eBU
+ YQl+CNdi61Vp/bo/wT9NM6Zp4fwlvNirLBOS5/IvIKVGVq+IoJANxTr7
+X-Gm-Gg: AY/fxX7tPmJvnJ3vt8QX5GfSMd+jpSzE2V/V76+jmZOZJVSKQ6wjlQYMw4yXSe3NrQW
+ tZ73vCrc5okrz4SkkzLxv4LPagWOGkY+zuJFTBKiQzib1wpP0kczHcSvcvaBmXFZAQah0y0mSSF
+ alQ8WFUb1/0iTkHyn9psxxxfRdooo+3/CghHi4TvmSAJ+GQ2Q6gWmPUvN24Gtk9m4HF4j34tLew
+ eSRDQtqzTOuWPWpGajKrbksW1B69e2vstKJNR7OcY8bsuAHaZcVgSrVxJkcR9pJ/EzL2WztGwdb
+ 1vGYW6a93R6jhSeZVr2LjNUFt0MXGAHkNonmAo6Ajqy/HGAm/tElwyj/FsOkL4rgh0i1gAwYjuX
+ KRkVCYJ0FVzH/3CsJWJYIrA0CzDsz/FDU90zFhfsW4Kcw1FrscL0YJKTWeNy9Dmoxc9oCfHcnFd
+ HzWVCAdeq4P92UD2936conXQKy1TMg8gGwUawxPkxAjBeDPqqiCT6x3bcFS0i2zMrxUA==
+X-Google-Smtp-Source: AGHT+IGuIkRrAnjG6E/2zRE+ar/qUHm3eneYw8JDZqcsw4DJueiT7pf+BtL7KohCktRxTsjaNEWUXg==
+X-Received: by 2002:a17:90b:4c09:b0:335:2747:a9b3 with SMTP id
+ 98e67ed59e1d1-34f68c281a5mr14987512a91.32.1768241845853; 
+ Mon, 12 Jan 2026 10:17:25 -0800 (PST)
 Received: from localhost.localdomain ([122.183.54.120])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-34f5f7c4141sm18165365a91.6.2026.01.12.10.17.08
+ 98e67ed59e1d1-34f5f7c4141sm18165365a91.6.2026.01.12.10.17.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Jan 2026 10:17:15 -0800 (PST)
+ Mon, 12 Jan 2026 10:17:25 -0800 (PST)
 From: I Viswanath <viswanathiyyappan@gmail.com>
 To: edumazet@google.com, horms@kernel.org, sdf@fomichev.me, kuba@kernel.org,
  andrew+netdev@lunn.ch, pabeni@redhat.com, jasowang@redhat.com,
@@ -94,8 +94,8 @@ To: edumazet@google.com, horms@kernel.org, sdf@fomichev.me, kuba@kernel.org,
 Cc: bcm-kernel-feedback-list@broadcom.com, intel-wired-lan@lists.osuosl.org,
  virtualization@lists.linux.dev, netdev@vger.kernel.org,
  I Viswanath <viswanathiyyappan@gmail.com>
-Date: Mon, 12 Jan 2026 23:46:22 +0530
-Message-ID: <20260112181626.20117-3-viswanathiyyappan@gmail.com>
+Date: Mon, 12 Jan 2026 23:46:23 +0530
+Message-ID: <20260112181626.20117-4-viswanathiyyappan@gmail.com>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260112181626.20117-1-viswanathiyyappan@gmail.com>
 References: <20260112181626.20117-1-viswanathiyyappan@gmail.com>
@@ -103,25 +103,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Approved-At: Mon, 12 Jan 2026 18:18:44 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1768241836; x=1768846636; darn=lists.osuosl.org;
+ d=gmail.com; s=20230601; t=1768241846; x=1768846646; darn=lists.osuosl.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=iqJBVDW73KCgBwgVWk5qYLsHzLDdObx2o+GjzAsqssQ=;
- b=cPIB06PuYpYOzdWRsfNc8ukIt1nWTz2PHdBHxOjkaVgQSRjM+ocbZWe03RUyJxOInz
- WSvXimHSO0QJMhZ1CEFchZSzEjx33zRas8w99StbWBfKlclVnwNQtWVHdxIObWa5FuEc
- jodYSPbFWlPBBXGMXW5MFclLYSktlYAFky41V9nfKWJivWQbL9YKwJZKSZkAvvZLU77X
- rinYwuhMlFhkK6FEc2u9R4WZ7anIox9GADph/9jHePgtWtTaNpDGCH1CioY9OQePWENi
- IQv673miFDroQAUfjchVO+2gnNkhrvgLZhnCdGBRQIn+VInir2Ww2G4PeDCCS5lYCvLu
- 1XjA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=YsXS6L+T4eWxoCFRdBnUQMJP/+ral8MRAKD6IFiqy1I=;
+ b=MlRmUZVfKiIpuhxpCPxd8Wac0VOgmB5ytp13cFCreX81mKidX2+TnzINGQcPPPDtoH
+ /HfSuVa/Umq3Q2udQiwgWU2JZTITM8Jskssg6pR9QJOwnKxxyEIfVor0ghJsRZxQ4Cv2
+ TNLr9X7gPSI/0EuKvODjqpj4fQ2Gb44yglDg2l68LJWadb+bILuogk64uLks5FAoZgLl
+ dJLZRX5uLT0L4gi4M47bU0iPJCCO8iiNC2dr67sPU6iK0HaTXJZrHKVMxlTNKhFKnnZ/
+ ElK1NIKRutAVgwfX7TG+beee0dl6mskhpOHOJHZihEZFX8CRYSpMorzvE9rHzhUAHLI1
+ M9mQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=cPIB06Pu
-Subject: [Intel-wired-lan] [PATCH net-next v8 2/6] virtio-net: Implement
+ header.s=20230601 header.b=MlRmUZVf
+Subject: [Intel-wired-lan] [PATCH net-next v8 3/6] e1000: Implement
  ndo_write_rx_mode callback
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -143,178 +143,166 @@ deferred write model
 
 Signed-off-by: I Viswanath <viswanathiyyappan@gmail.com>
 ---
- drivers/net/virtio_net.c | 61 +++++++++++++++++-----------------------
- 1 file changed, 26 insertions(+), 35 deletions(-)
+ The suspend callback was calling the set_rx_mode ndo even when the netif was down.
+ Since that wouldn't make sense in the new model, Now, It does that only if netif 
+ is not down. Correct me if this is a mistake
+ 
+ drivers/net/ethernet/intel/e1000/e1000_main.c | 59 ++++++++++++-------
+ 1 file changed, 38 insertions(+), 21 deletions(-)
 
-diff --git a/drivers/net/virtio_net.c b/drivers/net/virtio_net.c
-index 22d894101c01..1d0e5f6ceb88 100644
---- a/drivers/net/virtio_net.c
-+++ b/drivers/net/virtio_net.c
-@@ -460,9 +460,6 @@ struct virtnet_info {
- 	/* Work struct for config space updates */
- 	struct work_struct config_work;
+diff --git a/drivers/net/ethernet/intel/e1000/e1000_main.c b/drivers/net/ethernet/intel/e1000/e1000_main.c
+index 7f078ec9c14c..3b0260d502d4 100644
+--- a/drivers/net/ethernet/intel/e1000/e1000_main.c
++++ b/drivers/net/ethernet/intel/e1000/e1000_main.c
+@@ -99,6 +99,7 @@ static void e1000_clean_tx_ring(struct e1000_adapter *adapter,
+ static void e1000_clean_rx_ring(struct e1000_adapter *adapter,
+ 				struct e1000_rx_ring *rx_ring);
+ static void e1000_set_rx_mode(struct net_device *netdev);
++static void e1000_write_rx_mode(struct net_device *netdev);
+ static void e1000_update_phy_info_task(struct work_struct *work);
+ static void e1000_watchdog(struct work_struct *work);
+ static void e1000_82547_tx_fifo_stall_task(struct work_struct *work);
+@@ -359,7 +360,7 @@ static void e1000_configure(struct e1000_adapter *adapter)
+ 	struct net_device *netdev = adapter->netdev;
+ 	int i;
  
--	/* Work struct for setting rx mode */
--	struct work_struct rx_mode_work;
--
- 	/* OK to queue work setting RX mode? */
- 	bool rx_mode_work_enabled;
+-	e1000_set_rx_mode(netdev);
++	netif_schedule_rx_mode_work(netdev);
  
-@@ -3866,33 +3863,30 @@ static int virtnet_close(struct net_device *dev)
+ 	e1000_restore_vlan(adapter);
+ 	e1000_init_manageability(adapter);
+@@ -823,6 +824,7 @@ static const struct net_device_ops e1000_netdev_ops = {
+ 	.ndo_stop		= e1000_close,
+ 	.ndo_start_xmit		= e1000_xmit_frame,
+ 	.ndo_set_rx_mode	= e1000_set_rx_mode,
++	.ndo_write_rx_mode	= e1000_write_rx_mode,
+ 	.ndo_set_mac_address	= e1000_set_mac,
+ 	.ndo_tx_timeout		= e1000_tx_timeout,
+ 	.ndo_change_mtu		= e1000_change_mtu,
+@@ -1827,7 +1829,7 @@ static void e1000_setup_rctl(struct e1000_adapter *adapter)
+ 	/* This is useful for sniffing bad packets. */
+ 	if (adapter->netdev->features & NETIF_F_RXALL) {
+ 		/* UPE and MPE will be handled by normal PROMISC logic
+-		 * in e1000e_set_rx_mode
++		 * in e1000_write_rx_mode
+ 		 */
+ 		rctl |= (E1000_RCTL_SBP | /* Receive bad packets */
+ 			 E1000_RCTL_BAM | /* RX All Bcast Pkts */
+@@ -2222,26 +2224,39 @@ static int e1000_set_mac(struct net_device *netdev, void *p)
  	return 0;
  }
  
--static void virtnet_rx_mode_work(struct work_struct *work)
-+static void virtnet_write_rx_mode(struct net_device *dev)
++static void e1000_set_rx_mode(struct net_device *netdev)
++{
++	struct e1000_adapter *adapter = netdev_priv(netdev);
++
++	bool allmulti = !!(netdev->flags & IFF_ALLMULTI);
++	bool promisc = !!(netdev->flags & IFF_PROMISC);
++	bool vlan = e1000_vlan_used(adapter);
++
++	netif_rx_mode_set_flag(netdev, NETIF_RX_MODE_UC_SKIP, promisc);
++
++	netif_rx_mode_set_cfg(netdev, NETIF_RX_MODE_CFG_ALLMULTI, allmulti);
++	netif_rx_mode_set_cfg(netdev, NETIF_RX_MODE_CFG_PROMISC, promisc);
++	netif_rx_mode_set_cfg(netdev, NETIF_RX_MODE_CFG_VLAN, vlan);
++}
++
+ /**
+- * e1000_set_rx_mode - Secondary Unicast, Multicast and Promiscuous mode set
++ * e1000_write_rx_mode - Secondary Unicast, Multicast and Promiscuous mode set
+  * @netdev: network interface device structure
+  *
+- * The set_rx_mode entry point is called whenever the unicast or multicast
+- * address lists or the network interface flags are updated. This routine is
+- * responsible for configuring the hardware for proper unicast, multicast,
+- * promiscuous mode, and all-multi behavior.
++ * This routine is responsible for configuring the hardware for proper unicast,
++ * multicast, promiscuous mode, and all-multi behavior.
+  **/
+-static void e1000_set_rx_mode(struct net_device *netdev)
++static void e1000_write_rx_mode(struct net_device *netdev)
  {
--	struct virtnet_info *vi =
--		container_of(work, struct virtnet_info, rx_mode_work);
-+	struct virtnet_info *vi = netdev_priv(dev);
- 	u8 *promisc_allmulti  __free(kfree) = NULL;
--	struct net_device *dev = vi->dev;
- 	struct scatterlist sg[2];
- 	struct virtio_net_ctrl_mac *mac_data;
+ 	struct e1000_adapter *adapter = netdev_priv(netdev);
+ 	struct e1000_hw *hw = &adapter->hw;
 -	struct netdev_hw_addr *ha;
+ 	bool use_uc = false;
+ 	u32 rctl;
+ 	u32 hash_value;
+-	int i, rar_entries = E1000_RAR_ENTRIES;
++	int i, rar_entries = E1000_RAR_ENTRIES, ni;
+ 	int mta_reg_count = E1000_NUM_MTA_REGISTERS;
+ 	u32 *mcarray = kcalloc(mta_reg_count, sizeof(u32), GFP_ATOMIC);
 +	char *ha_addr;
- 	int uc_count;
- 	int mc_count;
- 	void *buf;
--	int i;
-+	int i, ni;
  
- 	/* We can't dynamically set ndo_set_rx_mode, so return gracefully */
- 	if (!virtio_has_feature(vi->vdev, VIRTIO_NET_F_CTRL_RX))
+ 	if (!mcarray)
  		return;
+@@ -2250,22 +2265,22 @@ static void e1000_set_rx_mode(struct net_device *netdev)
  
--	promisc_allmulti = kzalloc(sizeof(*promisc_allmulti), GFP_KERNEL);
-+	promisc_allmulti = kzalloc(sizeof(*promisc_allmulti), GFP_ATOMIC);
- 	if (!promisc_allmulti) {
- 		dev_warn(&dev->dev, "Failed to set RX mode, no memory.\n");
- 		return;
+ 	rctl = er32(RCTL);
+ 
+-	if (netdev->flags & IFF_PROMISC) {
++	if (netif_rx_mode_get_cfg(netdev, NETIF_RX_MODE_CFG_PROMISC)) {
+ 		rctl |= (E1000_RCTL_UPE | E1000_RCTL_MPE);
+ 		rctl &= ~E1000_RCTL_VFE;
+ 	} else {
+-		if (netdev->flags & IFF_ALLMULTI)
++		if (netif_rx_mode_get_cfg(netdev, NETIF_RX_MODE_CFG_ALLMULTI))
+ 			rctl |= E1000_RCTL_MPE;
+ 		else
+ 			rctl &= ~E1000_RCTL_MPE;
+ 		/* Enable VLAN filter if there is a VLAN */
+-		if (e1000_vlan_used(adapter))
++		if (netif_rx_mode_get_cfg(netdev, NETIF_RX_MODE_CFG_VLAN))
+ 			rctl |= E1000_RCTL_VFE;
  	}
  
--	rtnl_lock();
--
--	*promisc_allmulti = !!(dev->flags & IFF_PROMISC);
-+	*promisc_allmulti = netif_rx_mode_get_cfg(dev,
-+						  NETIF_RX_MODE_CFG_PROMISC);
- 	sg_init_one(sg, promisc_allmulti, sizeof(*promisc_allmulti));
+-	if (netdev_uc_count(netdev) > rar_entries - 1) {
++	if (netif_rx_mode_uc_count(netdev) > rar_entries - 1) {
+ 		rctl |= E1000_RCTL_UPE;
+-	} else if (!(netdev->flags & IFF_PROMISC)) {
++	} else if (!netif_rx_mode_get_cfg(netdev, NETIF_RX_MODE_CFG_PROMISC)) {
+ 		rctl &= ~E1000_RCTL_UPE;
+ 		use_uc = true;
+ 	}
+@@ -2286,23 +2301,23 @@ static void e1000_set_rx_mode(struct net_device *netdev)
+ 	 */
+ 	i = 1;
+ 	if (use_uc)
+-		netdev_for_each_uc_addr(ha, netdev) {
++		netif_rx_mode_for_each_uc_addr(ha_addr, netdev, ni) {
+ 			if (i == rar_entries)
+ 				break;
+-			e1000_rar_set(hw, ha->addr, i++);
++			e1000_rar_set(hw, ha_addr, i++);
+ 		}
  
- 	if (!virtnet_send_command(vi, VIRTIO_NET_CTRL_RX,
-@@ -3900,7 +3894,8 @@ static void virtnet_rx_mode_work(struct work_struct *work)
- 		dev_warn(&dev->dev, "Failed to %sable promisc mode.\n",
- 			 *promisc_allmulti ? "en" : "dis");
+-	netdev_for_each_mc_addr(ha, netdev) {
++	netif_rx_mode_for_each_mc_addr(ha_addr, netdev, ni) {
+ 		if (i == rar_entries) {
+ 			/* load any remaining addresses into the hash table */
+ 			u32 hash_reg, hash_bit, mta;
+-			hash_value = e1000_hash_mc_addr(hw, ha->addr);
++			hash_value = e1000_hash_mc_addr(hw, ha_addr);
+ 			hash_reg = (hash_value >> 5) & 0x7F;
+ 			hash_bit = hash_value & 0x1F;
+ 			mta = (1 << hash_bit);
+ 			mcarray[hash_reg] |= mta;
+ 		} else {
+-			e1000_rar_set(hw, ha->addr, i++);
++			e1000_rar_set(hw, ha_addr, i++);
+ 		}
+ 	}
  
--	*promisc_allmulti = !!(dev->flags & IFF_ALLMULTI);
-+	*promisc_allmulti = netif_rx_mode_get_cfg(dev,
-+						  NETIF_RX_MODE_CFG_ALLMULTI);
- 	sg_init_one(sg, promisc_allmulti, sizeof(*promisc_allmulti));
+@@ -5094,7 +5109,9 @@ static int __e1000_shutdown(struct pci_dev *pdev, bool *enable_wake)
  
- 	if (!virtnet_send_command(vi, VIRTIO_NET_CTRL_RX,
-@@ -3908,27 +3903,22 @@ static void virtnet_rx_mode_work(struct work_struct *work)
- 		dev_warn(&dev->dev, "Failed to %sable allmulti mode.\n",
- 			 *promisc_allmulti ? "en" : "dis");
- 
--	netif_addr_lock_bh(dev);
--
--	uc_count = netdev_uc_count(dev);
--	mc_count = netdev_mc_count(dev);
-+	uc_count = netif_rx_mode_uc_count(dev);
-+	mc_count = netif_rx_mode_mc_count(dev);
- 	/* MAC filter - use one buffer for both lists */
- 	buf = kzalloc(((uc_count + mc_count) * ETH_ALEN) +
- 		      (2 * sizeof(mac_data->entries)), GFP_ATOMIC);
- 	mac_data = buf;
--	if (!buf) {
--		netif_addr_unlock_bh(dev);
--		rtnl_unlock();
-+	if (!buf)
- 		return;
--	}
- 
- 	sg_init_table(sg, 2);
- 
- 	/* Store the unicast list and count in the front of the buffer */
- 	mac_data->entries = cpu_to_virtio32(vi->vdev, uc_count);
- 	i = 0;
--	netdev_for_each_uc_addr(ha, dev)
--		memcpy(&mac_data->macs[i++][0], ha->addr, ETH_ALEN);
-+	netif_rx_mode_for_each_uc_addr(ha_addr, dev, ni)
-+		memcpy(&mac_data->macs[i++][0], ha_addr, ETH_ALEN);
- 
- 	sg_set_buf(&sg[0], mac_data,
- 		   sizeof(mac_data->entries) + (uc_count * ETH_ALEN));
-@@ -3938,10 +3928,8 @@ static void virtnet_rx_mode_work(struct work_struct *work)
- 
- 	mac_data->entries = cpu_to_virtio32(vi->vdev, mc_count);
- 	i = 0;
--	netdev_for_each_mc_addr(ha, dev)
--		memcpy(&mac_data->macs[i++][0], ha->addr, ETH_ALEN);
--
--	netif_addr_unlock_bh(dev);
-+	netif_rx_mode_for_each_mc_addr(ha_addr, dev, ni)
-+		memcpy(&mac_data->macs[i++][0], ha_addr, ETH_ALEN);
- 
- 	sg_set_buf(&sg[1], mac_data,
- 		   sizeof(mac_data->entries) + (mc_count * ETH_ALEN));
-@@ -3950,17 +3938,20 @@ static void virtnet_rx_mode_work(struct work_struct *work)
- 				  VIRTIO_NET_CTRL_MAC_TABLE_SET, sg))
- 		dev_warn(&dev->dev, "Failed to set MAC filter table.\n");
- 
--	rtnl_unlock();
--
- 	kfree(buf);
- }
- 
- static void virtnet_set_rx_mode(struct net_device *dev)
- {
- 	struct virtnet_info *vi = netdev_priv(dev);
-+	char cfg_disabled = !vi->rx_mode_work_enabled;
-+	bool allmulti = !!(dev->flags & IFF_ALLMULTI);
-+	bool promisc = !!(dev->flags & IFF_PROMISC);
+ 	if (wufc) {
+ 		e1000_setup_rctl(adapter);
+-		e1000_set_rx_mode(netdev);
 +
-+	netif_rx_mode_set_flag(dev, NETIF_RX_MODE_SET_SKIP, cfg_disabled);
++		if (netif_running(netdev))
++			netif_schedule_rx_mode_work(netdev);
  
--	if (vi->rx_mode_work_enabled)
--		schedule_work(&vi->rx_mode_work);
-+	netif_rx_mode_set_cfg(dev, NETIF_RX_MODE_CFG_ALLMULTI, allmulti);
-+	netif_rx_mode_set_cfg(dev, NETIF_RX_MODE_CFG_PROMISC, promisc);
- }
- 
- static int virtnet_vlan_rx_add_vid(struct net_device *dev,
-@@ -5776,7 +5767,7 @@ static void virtnet_freeze_down(struct virtio_device *vdev)
- 	/* Make sure no work handler is accessing the device */
- 	flush_work(&vi->config_work);
- 	disable_rx_mode_work(vi);
--	flush_work(&vi->rx_mode_work);
-+	netif_flush_rx_mode_work(vi->dev);
- 
- 	if (netif_running(vi->dev)) {
- 		rtnl_lock();
-@@ -6279,6 +6270,7 @@ static const struct net_device_ops virtnet_netdev = {
- 	.ndo_validate_addr   = eth_validate_addr,
- 	.ndo_set_mac_address = virtnet_set_mac_address,
- 	.ndo_set_rx_mode     = virtnet_set_rx_mode,
-+	.ndo_write_rx_mode   = virtnet_write_rx_mode,
- 	.ndo_get_stats64     = virtnet_stats,
- 	.ndo_vlan_rx_add_vid = virtnet_vlan_rx_add_vid,
- 	.ndo_vlan_rx_kill_vid = virtnet_vlan_rx_kill_vid,
-@@ -6900,7 +6892,6 @@ static int virtnet_probe(struct virtio_device *vdev)
- 	vdev->priv = vi;
- 
- 	INIT_WORK(&vi->config_work, virtnet_config_changed_work);
--	INIT_WORK(&vi->rx_mode_work, virtnet_rx_mode_work);
- 	spin_lock_init(&vi->refill_lock);
- 
- 	if (virtio_has_feature(vdev, VIRTIO_NET_F_MRG_RXBUF)) {
-@@ -7205,7 +7196,7 @@ static void virtnet_remove(struct virtio_device *vdev)
- 	/* Make sure no work handler is accessing the device. */
- 	flush_work(&vi->config_work);
- 	disable_rx_mode_work(vi);
--	flush_work(&vi->rx_mode_work);
-+	netif_flush_rx_mode_work(vi->dev);
- 
- 	virtnet_free_irq_moder(vi);
+ 		rctl = er32(RCTL);
  
 -- 
 2.47.3
