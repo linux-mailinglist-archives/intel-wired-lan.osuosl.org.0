@@ -1,117 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 17F79D13855
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Jan 2026 16:13:40 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D57F2D13B1B
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Jan 2026 16:33:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BE1E042A09;
-	Mon, 12 Jan 2026 15:13:38 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8952942A90;
+	Mon, 12 Jan 2026 15:33:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Go-fJg3GkAej; Mon, 12 Jan 2026 15:13:38 +0000 (UTC)
+ id N7-kYw-Jt5j1; Mon, 12 Jan 2026 15:33:31 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A2EDD42A08
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C3E1942A97
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1768230817;
-	bh=3yMyjK018i0vJ5nwLeiD/Bg0C+n5RivjCAwWmX3vKQQ=;
+	s=default; t=1768232011;
+	bh=+tS+VPw2eHksooP1q/eKYTDOe/N7Ous7Lw3PFa80c8o=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=7i3Ue5pNXdWnBT9kIkdx0RubiQmSdGFhOSfhiKmRJI1guLAKergOgUiIbUDLKH3iu
-	 tUu+k8RSZTxkFbvGTgCMwusTh1Gg51yLJsW5B0VJm878dikWxd3+pIrSPfDJX1GLws
-	 2AC3IVdurEuMnc2IolB8SCaFSxkc2h/6azBTmpbGoEfQcPL5vLFUlCmU/gje9nJG++
-	 Hqedo13iOJllpzou3rQ79dgv+6+NE+gU4BR7r8YaeSyugmMIEvUkZAJ4o0HKuf1Psr
-	 YUS4kf0ql6678JNtkN0/u/rctSCv2YKwjv2IQLaPHaGjEJCknNxsHrG6vSQ7HLQjO/
-	 oAl0Km7+YopKg==
+	b=zeP1i4J9IFH6pKbiuU9sWfzg7y8uvlQycka39pMFYwF6ZDzZXtpF6oSXvn88Aukvn
+	 u/+0yJiVjnsFsDF25EcdQQ9HuFJunQN0L/5D1yMBa+soSLWZZIFIl1H6f8XSeq1vU9
+	 qYSt9a+e2+F/fZJM0Nec1FygX3oaAiNw4DxBp4fnL7f4meQuimqo2QCnZWOtLClUur
+	 D9q/PuBwKByYDcM7qBna6SIbGfBcgG+dMkN02iBPRGSC/eStylswbSco8D8q7xPmuc
+	 UScv5S+/pIjZ2ov63LKl5upYh8OoW08VkNVeraSNsaWFmx3D6+8L4owuLCe/PNhX1u
+	 zoc3wZD498A6A==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A2EDD42A08;
-	Mon, 12 Jan 2026 15:13:37 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C3E1942A97;
+	Mon, 12 Jan 2026 15:33:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id A55761CC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 15:13:36 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id D514412E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 15:33:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 836486F63F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 15:13:36 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id BBB464007C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 15:33:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pxemJ1HLihNV for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 Jan 2026 15:13:35 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 923C66F634
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 923C66F634
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 923C66F634
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 15:13:35 +0000 (UTC)
-X-CSE-ConnectionGUID: V+HJUbgkQaOg6/GUsHnROQ==
-X-CSE-MsgGUID: 5FGRrjxKRV+dMxpiARvtxw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11669"; a="73349104"
-X-IronPort-AV: E=Sophos;i="6.21,221,1763452800"; d="scan'208";a="73349104"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
- by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Jan 2026 07:13:34 -0800
-X-CSE-ConnectionGUID: mwqoedS6SCmoCk5xw0p26g==
-X-CSE-MsgGUID: imcgvPMSRA2CwgvMwt4IgQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,221,1763452800"; d="scan'208";a="208632334"
-Received: from lkp-server01.sh.intel.com (HELO 765f4a05e27f) ([10.239.97.150])
- by orviesa004.jf.intel.com with ESMTP; 12 Jan 2026 07:13:29 -0800
-Received: from kbuild by 765f4a05e27f with local (Exim 4.98.2)
- (envelope-from <lkp@intel.com>) id 1vfJbi-00000000DUC-04q9;
- Mon, 12 Jan 2026 15:13:26 +0000
-Date: Mon, 12 Jan 2026 23:13:09 +0800
-From: kernel test robot <lkp@intel.com>
-To: Ivan Vecera <ivecera@redhat.com>, netdev@vger.kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, Eric Dumazet <edumazet@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Rob Herring <robh@kernel.org>, Leon Romanovsky <leon@kernel.org>,
- Andrew Lunn <andrew+netdev@lunn.ch>, linux-rdma@vger.kernel.org,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, devicetree@vger.kernel.org,
- Conor Dooley <conor+dt@kernel.org>, Jiri Pirko <jiri@resnulli.us>,
- Richard Cochran <richardcochran@gmail.com>,
- Prathosh Satish <Prathosh.Satish@microchip.com>,
- Vadim Fedorenko <vadim.fedorenko@linux.dev>,
- Mark Bloch <mbloch@nvidia.com>, linux-kernel@vger.kernel.org,
- Tariq Toukan <tariqt@nvidia.com>,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- Jonathan Lemon <jonathan.lemon@gmail.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Saeed Mahameed <saeedm@nvidia.com>
-Message-ID: <202601122216.BCarSN6K-lkp@intel.com>
-References: <20260108182318.20935-7-ivecera@redhat.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id IGzLvEXMdG-Y for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 12 Jan 2026 15:33:29 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
+ helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 947BE40184
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 947BE40184
+Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 947BE40184
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Jan 2026 15:33:28 +0000 (UTC)
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+ (envelope-from <andrew@lunn.ch>)
+ id 1vfJv2-002Uy5-Bd; Mon, 12 Jan 2026 16:33:24 +0100
+Date: Mon, 12 Jan 2026 16:33:24 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
+ netdev@vger.kernel.org, Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Message-ID: <29577cab-c96f-4799-99d7-c78cf61cfd61@lunn.ch>
+References: <20260112140108.1173835-1-jedrzej.jagielski@intel.com>
+ <20260112140108.1173835-6-jedrzej.jagielski@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260108182318.20935-7-ivecera@redhat.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1768230815; x=1799766815;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=FH5lvgGlxlgcsI/c3Wc4LZGoA4WSMGev1ZgnwDVgbkw=;
- b=lumYmJh3lREzppEyuWTo96UN5qHsU6SL4JQMeIdp+CNHsYruHmIcldGb
- c5iXHEWz1RaJ2Et9I1WXmOddUjWq0imkB1AZPJ6jwZHnj8uKz8U7fMnL8
- zggojf93pYbJjHJ3U0FT0TD8Muq65qWKbG6/AtAUYafaNJBI7mNeKlb9R
- cPQWGpdu8HK3F6NzqjyIBlGDu4npJssEhuh5x618zfzjKS3KBQ530aYzx
- ldO0snRQhq6UiZvQOn4aoQIKY20Nvix6C6M72OA9/uYajeDjal+tZWWRy
- mWxxKA/MtX9sQdRYQ6PrYeeB6PfyvljQbBntcRhsL3FXmXzcglmLHeOjv
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+In-Reply-To: <20260112140108.1173835-6-jedrzej.jagielski@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; d=lunn.ch; 
+ s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+ Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+ bh=+tS+VPw2eHksooP1q/eKYTDOe/N7Ous7Lw3PFa80c8o=; b=SHXh23RMSQbQZBvzoogHvuhzmb
+ rgfazA1/obO6kDzaB3dO8Bi6Z6scSSmcVNiJHRtdNTgCvwaFNIU1EwZE+pZDe+D4RSoJQ2Ho0rzoJ
+ AK498+YXIRKpZxfeiMyuL61blcDFDZC5sYu9AT6D59n50CRD3C0ohPZhuxqd+pOi+unY=;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=lumYmJh3
-Subject: Re: [Intel-wired-lan] [PATCH net-next 06/12] dpll: Support dynamic
- pin index allocation
+ header.from=lunn.ch
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256
+ header.s=20171124 header.b=SHXh23RM
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 5/7] ixgbe: move EEE
+ config validation out of ixgbe_set_eee()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -127,49 +96,11 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Ivan,
+> +	if (keee_stored.eee_enabled == keee_requested->eee_enabled)
+> +		return -EALREADY;
 
-kernel test robot noticed the following build warnings:
+I know this is just moving code around, but i don't know of any other
+implementation of EEE which returns -EALREADY when no change has been
+requested by the user. Maybe in a follow up patch you change this to 0?
 
-[auto build test WARNING on net-next/main]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Ivan-Vecera/dt-bindings-dpll-add-common-dpll-pin-consumer-schema/20260109-022618
-base:   net-next/main
-patch link:    https://lore.kernel.org/r/20260108182318.20935-7-ivecera%40redhat.com
-patch subject: [Intel-wired-lan] [PATCH net-next 06/12] dpll: Support dynamic pin index allocation
-config: m68k-allmodconfig (https://download.01.org/0day-ci/archive/20260112/202601122216.BCarSN6K-lkp@intel.com/config)
-compiler: m68k-linux-gcc (GCC) 15.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260112/202601122216.BCarSN6K-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202601122216.BCarSN6K-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/dpll/dpll_core.c: In function 'dpll_pin_idx_free':
->> drivers/dpll/dpll_core.c:499:28: warning: integer overflow in expression of type 'int' results in '-2147483648' [-Woverflow]
-     499 |         pin_idx -= INT_MAX + 1;
-         |                            ^
-
-
-vim +499 drivers/dpll/dpll_core.c
-
-   490	
-   491	static void dpll_pin_idx_free(u32 pin_idx)
-   492	{
-   493		if (pin_idx <= INT_MAX)
-   494			return; /* Not a dynamic pin index */
-   495	
-   496		/* Map the index value from dynamic pin index range to IDA range and
-   497		 * free it.
-   498		 */
- > 499		pin_idx -= INT_MAX + 1;
-   500		ida_free(&dpll_pin_idx_ida, pin_idx);
-   501	}
-   502	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+	  Andrew
