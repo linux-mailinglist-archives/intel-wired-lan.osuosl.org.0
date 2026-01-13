@@ -1,108 +1,137 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A1286D1B145
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Jan 2026 20:39:05 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5C38660C2D;
-	Tue, 13 Jan 2026 19:39:04 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id zaOOOAgwUg4w; Tue, 13 Jan 2026 19:39:03 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 88A5D60C31
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1768333143;
-	bh=8HY+/aUCdY5h2MmvPMMewf5KlTv59tJt1cHVbYr/JT8=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=vJs182dB1jnJZKQB2vqGGl0/ipcVmKeBWl6PZDL+mjW3x7KPa9JBtyOyknTCvDhTF
-	 nm1O1UQtBvuOCznniVL/Q2bb72tzfHq0yEpPvtjO6HtdBEy7uqKEFA8SzhwJYhUQQz
-	 WY8gZSBSghn7UUbr3w4dsg60pn3KBn6cRTYBi1YZ9VwwCqA69frVv7srZa4xQ7lgYe
-	 iCo22GHsN7mEgIUl2WXGrVS+BFTzJe5Pe2H2YPMGMoY/Xchao8nofMkAjZXt44IyDi
-	 ueu9FS7WSOT25ksyT73aLHc78Icvx92XFHDXS1sTlqN8CnQNtKF62aPbdoj2i52OWw
-	 6nKa061iv39jw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 88A5D60C31;
-	Tue, 13 Jan 2026 19:39:03 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id AAD891C3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jan 2026 19:39:01 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 198B8D1B303
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Jan 2026 21:23:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8F8E282C84
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jan 2026 19:39:01 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9AB8E83BF7;
+	Tue, 13 Jan 2026 20:23:01 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NlQoASlOCVgR for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Jan 2026 19:39:00 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
- helo=mgamail.intel.com; envelope-from=dawid.osuchowski@linux.intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 627BF82C7D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 627BF82C7D
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 627BF82C7D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jan 2026 19:39:00 +0000 (UTC)
-X-CSE-ConnectionGUID: 1cagiHH5TSWtaYBYanHneQ==
-X-CSE-MsgGUID: XTLBOuiXRqqxsvRGUFc4Mw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11670"; a="80993530"
-X-IronPort-AV: E=Sophos;i="6.21,222,1763452800"; d="scan'208";a="80993530"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
- by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Jan 2026 11:39:00 -0800
-X-CSE-ConnectionGUID: fuUb7S8FSd+1isAwjaWYGQ==
-X-CSE-MsgGUID: XmFmkVOGTBSszu2DWXYeFg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,222,1763452800"; d="scan'208";a="208629085"
-Received: from kasadzad-mobl.ger.corp.intel.com (HELO
- soc-5CG4396XFB.clients.intel.com) ([10.94.252.226])
- by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Jan 2026 11:38:58 -0800
-From: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org,
- Jakub Staniszewski <jakub.staniszewski@linux.intel.com>,
- stable@vger.kernel.org,
- Dawid Osuchowski <dawid.osuchowski@linux.intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Date: Tue, 13 Jan 2026 20:38:17 +0100
-Message-ID: <20260113193817.582-3-dawid.osuchowski@linux.intel.com>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20260113193817.582-1-dawid.osuchowski@linux.intel.com>
-References: <20260113193817.582-1-dawid.osuchowski@linux.intel.com>
+ id U4HQmwppaAgP; Tue, 13 Jan 2026 20:23:01 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 17EF983BA7
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1768335781;
+	bh=SEW+k25GxtoGpssMWcEBFy4Kv0XQW2KgqZU+s4uI3s0=;
+	h=To:Cc:In-Reply-To:References:Date:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From:Reply-To:From;
+	b=dTjNyOnlQPC/v9uSxt5GaGk/gNHgHTthxtgLVoQrg8U+C2JVNiYspe8CXTVx1p6B8
+	 NZxZCayYVOWHAPUgb+0ZVHgSbikgEjozfdDRc5GN2y/N2bcFPtajkSxSo7E+MWuDNc
+	 +Mr2IbCzP+4GeOJfCiiUZQkS4uf0RgMHo1IjMerSMCW+xtsdqMJqRBwNH3h4Hg+Bd6
+	 35P5c8ttkaaejL+bGuTPzuC7sGIYe11XKKt0MTsq01kjfaF9qNhgCVEXMEBK+y+E9B
+	 /QPK7Rj+qPI2JqQQ3liRTKZeOMhRqwmHRvqgdwG43n8lhwjuBNLwRWg11h8yhXd9Vy
+	 AziPJt4ZHXIAw==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 17EF983BA7;
+	Tue, 13 Jan 2026 20:23:01 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 146EE231
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jan 2026 20:23:00 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 059DD402E8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jan 2026 20:23:00 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id DY2ubMYtf71B for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Jan 2026 20:22:59 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::52c; helo=mail-ed1-x52c.google.com;
+ envelope-from=jakub@cloudflare.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 1979C4022B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1979C4022B
+Received: from mail-ed1-x52c.google.com (mail-ed1-x52c.google.com
+ [IPv6:2a00:1450:4864:20::52c])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 1979C4022B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jan 2026 20:22:58 +0000 (UTC)
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-64b5ed53d0aso11804389a12.3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jan 2026 12:22:58 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1768335777; x=1768940577;
+ h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+ :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=SEW+k25GxtoGpssMWcEBFy4Kv0XQW2KgqZU+s4uI3s0=;
+ b=vNP6krhPQu3j8m4gbik5KRO8myZEfRXkoUV0zu53k17PScAwXl3RtZkWYiVJwk88Yd
+ 37oeTjeFLUx7CT/ufgp8CSNduuiq335qJ4UbZj+AMpv63BjhAK7fzwVWWcc/ZBjU5uV3
+ AXQf5U1cHX2B6tYonRAC2VxywMg8x5+LdNjKpu3Dj6WcaaD5Mi+sybOY5/fP3IK14bRw
+ FcX8/BmEE24+geMnAvEaK8ILdOY+pCVv06mLkRJ8uofEoyBCPy+hEo5+ikeUZb0iS4CY
+ T/vVo1HYbp8u2JnXFyaHZOmEzp3GHo0lBy95YGwk3ToX7tDTsN1yWdntNPsuFhMBZ/47
+ uwKQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUAwaVoFDx3QS5tqi3sbiVLywA4U6HZePIGXZvf/KTTtwu5wmjM0xctz0djIBWaCwiDfR7f6nykjK8FgtsA6WQ=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YzpcYkhNp0dRyd9Z3aFx34bxkxz/ZfPVpVqFbCgX1TlqISRU2sP
+ V1oq2hV84ks9y6V1hSR9wOnc+IaY5H6h0Xgm4adzF5QK+Re7ms2cUJ0V/JTpu0eA/aA=
+X-Gm-Gg: AY/fxX7ZbGMS+tQFAKc3lFmmdRU7PT3Lk/5ww2l5MhNtQrX1dNeATpDX+jebQiu+VeZ
+ Ys3+sVBAXdfNdrk82oFSroZGVYQEqlYxYZuk/pTgKB5ds+rlJSlcWbtdjfgPrzegEHHqIk23pSG
+ Qt2oTwrVrVo1AOZ1KsRVbMK64YYlJA/z3Slyjt/rjfSFSqRqxj++qFK8sm80Q9o/SDdfxMl1NrI
+ ocAF3cuAX1+cuFQ85+nxoVdDbICJ8KDpRoaAZ65IfWNHzWrFac1wJo8E7A3J6LuraVyO928N8zP
+ ufJKryUhgxHQ+AH2WplZvFvWcQNmzQeSULoIdkFS4wqglxEsErNBernIK79Gm6vbRuIGDvA0wpg
+ CqIjS6qyLshz0IY2Se06hN2Wmo8i8GwwQpD19yyBXMA7GH4KNeI80CJ+MBusFaSYFwAF5luxnyO
+ 9IVBw=
+X-Received: by 2002:a05:6402:144b:b0:64b:7885:c971 with SMTP id
+ 4fb4d7f45d1cf-653ec44348emr170193a12.20.1768335776737; 
+ Tue, 13 Jan 2026 12:22:56 -0800 (PST)
+Received: from cloudflare.com ([2a09:bac5:5063:2969::420:33])
+ by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-6507bf661fesm22541348a12.25.2026.01.13.12.22.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 13 Jan 2026 12:22:56 -0800 (PST)
+To: Jesper Dangaard Brouer <hawk@kernel.org>, Alexei Starovoitov
+ <ast@kernel.org>, Jakub Kicinski <kuba@kernel.org>
+Cc: Paolo Abeni <pabeni@redhat.com>,  Jakub Kicinski <kuba@kernel.org>,
+ netdev@vger.kernel.org,  "David S. Miller" <davem@davemloft.net>,  Eric
+ Dumazet <edumazet@google.com>,  Simon Horman <horms@kernel.org>,  Michael
+ Chan <michael.chan@broadcom.com>,  Pavan Chebbi
+ <pavan.chebbi@broadcom.com>,  Andrew Lunn <andrew+netdev@lunn.ch>,  Tony
+ Nguyen <anthony.l.nguyen@intel.com>,  Przemek Kitszel
+ <przemyslaw.kitszel@intel.com>,  Saeed Mahameed <saeedm@nvidia.com>,  Leon
+ Romanovsky <leon@kernel.org>,  Tariq Toukan <tariqt@nvidia.com>,  Mark
+ Bloch <mbloch@nvidia.com>,  Alexei Starovoitov <ast@kernel.org>,  Daniel
+ Borkmann <daniel@iogearbox.net>,  John Fastabend
+ <john.fastabend@gmail.com>,  Stanislav Fomichev <sdf@fomichev.me>,
+ intel-wired-lan@lists.osuosl.org,  bpf@vger.kernel.org,
+ kernel-team@cloudflare.com,  Jesse Brandeburg
+ <jbrandeburg@cloudflare.com>,  Willem Ferguson <wferguson@cloudflare.com>,
+ Arthur Fabre <arthur@arthurfabre.com>
+In-Reply-To: <bd29d196-5854-4a0c-a78c-e4869a59b91f@kernel.org> (Jesper
+ Dangaard Brouer's message of "Tue, 13 Jan 2026 19:52:53 +0100")
+References: <20260110-skb-meta-fixup-skb_metadata_set-calls-v1-0-1047878ed1b0@cloudflare.com>
+ <20260112190856.3ff91f8d@kernel.org>
+ <36deb505-1c82-4339-bb44-f72f9eacb0ac@redhat.com>
+ <bd29d196-5854-4a0c-a78c-e4869a59b91f@kernel.org>
+Date: Tue, 13 Jan 2026 21:22:55 +0100
+Message-ID: <87wm1luusg.fsf@cloudflare.com>
 MIME-Version: 1.0
-Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
- 80-298 Gdansk - KRS 101882 - NIP 957-07-52-316
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1768333140; x=1799869140;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=cQBJ2VxWuFTxQUDOTo6qtyEYlivydYoNMrH+/6fqZRo=;
- b=J0Vy1xbO0Mw7OSJ9f7VU+PF3C4aBt/66TSUh+UIyb5hOTWh75IltLM46
- Euk9SLzr3VnlA0OyN0CKpK4bQ+zsHgJcKIirHYs23sCxrBEtuAG0g8lpW
- 2SmkAxn1dgBCkYI6uSBfzujRJ2BDjZ6lqbXB1jMKWVThHfxX7sgayc1v0
- NIAIepiIChLn4/GYHbNgLsZ6NrXM+4ac3m8RjTpAA5A13X+ZMHk7245aJ
- WHDO6qVmTquVFccBZ4UmLaTUxuYKW3pkxvGkcOQRRwe/TLMnFishlGVUs
- 7t3JQHhofxKTVAgzYq0aDCgis0U2aA4nKfd1OHBPbIrJTUXwmEAHDROwN
- w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+Content-Type: text/plain
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=cloudflare.com; s=google09082023; t=1768335777; x=1768940577;
+ darn=lists.osuosl.org; 
+ h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=SEW+k25GxtoGpssMWcEBFy4Kv0XQW2KgqZU+s4uI3s0=;
+ b=AkZtrZt1ogM70ecQrSO3f5oUhPuUBr/s1J6KO1MFKpJtu0dEc5C2bsyvj4Y6AEWCqa
+ LB19fu0yvGf/nWdr2K+a/Cuk87eUmzFZzu5IM3koV52RtXL95FuUOUZgDbHGi1mR+6Or
+ ISjIKYKM4WXHpj7OGpRPtKyoOo2i/Z/06cZuUuWO+NeYD98tAbRHpGLWlMd13z9YxYST
+ OEBt0aLu2SehEyA4H1YvTYo3+H9MJr+RhHI1XSKtJY7O+RQcBGzzDdYy9KvJkblUD51K
+ kaNzZ98DI0Blp5ZryxAm8fbtSQFWptWsCaaEpeTWCsKpZ+eCzRGl+osiUO2Kyn23ggNs
+ 1spg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=cloudflare.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=J0Vy1xbO
-Subject: [Intel-wired-lan] [PATCH iwl-net 2/2] ice: fix retry for AQ command
- 0x06EE
+ unprotected) header.d=cloudflare.com header.i=@cloudflare.com
+ header.a=rsa-sha256 header.s=google09082023 header.b=AkZtrZt1
+Subject: Re: [Intel-wired-lan] [PATCH net-next 00/10] Call skb_metadata_set
+ when skb->data points past metadata
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -115,105 +144,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+From: Jakub Sitnicki via Intel-wired-lan <intel-wired-lan@osuosl.org>
+Reply-To: Jakub Sitnicki <jakub@cloudflare.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jakub Staniszewski <jakub.staniszewski@linux.intel.com>
-
-Executing ethtool -m can fail reporting a netlink I/O error while firmware
-link management holds the i2c bus used to communicate with the module.
-
-According to Intel(R) Ethernet Controller E810 Datasheet Rev 2.8 [1]
-Section 3.3.10.4 Read/Write SFF EEPROM (0x06EE)
-request should to be retried upon receiving EBUSY from firmware.
-
-Commit e9c9692c8a81 ("ice: Reimplement module reads used by ethtool")
-implemented it only for part of ice_get_module_eeprom(), leaving all other
-calls to ice_aq_sff_eeprom() vulnerable to returning early on getting
-EBUSY without retrying.
-
-Remove the retry loop from ice_get_module_eeprom() and add Admin Queue
-(AQ) command with opcode 0x06EE to the list of commands that should be
-retried on receiving EBUSY from firmware.
-
-Cc: stable@vger.kernel.org
-Fixes: e9c9692c8a81 ("ice: Reimplement module reads used by ethtool")
-Signed-off-by: Jakub Staniszewski <jakub.staniszewski@linux.intel.com>
-Co-developed-by: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
-Signed-off-by: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Link: https://www.intel.com/content/www/us/en/content-details/613875/intel-ethernet-controller-e810-datasheet.html [1]
----
- drivers/net/ethernet/intel/ice/ice_common.c  |  1 +
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 35 ++++++++------------
- 2 files changed, 15 insertions(+), 21 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index aab00c44e9b2..26eb8e05498b 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -1854,6 +1854,7 @@ static bool ice_should_retry_sq_send_cmd(u16 opcode)
- 	case ice_aqc_opc_lldp_stop:
- 	case ice_aqc_opc_lldp_start:
- 	case ice_aqc_opc_lldp_filter_ctrl:
-+	case ice_aqc_opc_sff_eeprom:
- 		return true;
- 	}
+On Tue, Jan 13, 2026 at 07:52 PM +01, Jesper Dangaard Brouer wrote:
+> *BUT* this patchset isn't doing that. To me it looks like a cleanup
+> patchset that simply makes it consistent when skb_metadata_set() called.
+> Selling it as a pre-requirement for doing copy later seems fishy.
  
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 3565a5d96c6d..478876908db1 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -4496,7 +4496,7 @@ ice_get_module_eeprom(struct net_device *netdev,
- 	u8 addr = ICE_I2C_EEPROM_DEV_ADDR;
- 	struct ice_hw *hw = &pf->hw;
- 	bool is_sfp = false;
--	unsigned int i, j;
-+	unsigned int i;
- 	u16 offset = 0;
- 	u8 page = 0;
- 	int status;
-@@ -4538,26 +4538,19 @@ ice_get_module_eeprom(struct net_device *netdev,
- 		if (page == 0 || !(data[0x2] & 0x4)) {
- 			u32 copy_len;
- 
--			/* If i2c bus is busy due to slow page change or
--			 * link management access, call can fail. This is normal.
--			 * So we retry this a few times.
--			 */
--			for (j = 0; j < 4; j++) {
--				status = ice_aq_sff_eeprom(hw, 0, addr, offset, page,
--							   !is_sfp, value,
--							   SFF_READ_BLOCK_SIZE,
--							   0, NULL);
--				netdev_dbg(netdev, "SFF %02X %02X %02X %X = %02X%02X%02X%02X.%02X%02X%02X%02X (%X)\n",
--					   addr, offset, page, is_sfp,
--					   value[0], value[1], value[2], value[3],
--					   value[4], value[5], value[6], value[7],
--					   status);
--				if (status) {
--					usleep_range(1500, 2500);
--					memset(value, 0, SFF_READ_BLOCK_SIZE);
--					continue;
--				}
--				break;
-+			status = ice_aq_sff_eeprom(hw, 0, addr, offset, page,
-+						   !is_sfp, value,
-+						   SFF_READ_BLOCK_SIZE,
-+						   0, NULL);
-+			netdev_dbg(netdev, "SFF %02X %02X %02X %X = %02X%02X%02X%02X.%02X%02X%02X%02X (%pe)\n",
-+				   addr, offset, page, is_sfp,
-+				   value[0], value[1], value[2], value[3],
-+				   value[4], value[5], value[6], value[7],
-+				   ERR_PTR(status));
-+			if (status) {
-+				netdev_err(netdev, "%s: error reading module EEPROM: status %pe\n",
-+					   __func__, ERR_PTR(status));
-+				return status;
- 			}
- 
- 			/* Make sure we have enough room for the new block */
--- 
-2.51.0
+Fair point on the framing. The interface cleanup is useful on its own -
+I should have presented it that way rather than tying it to future work.
 
+> Instead of blindly copying XDP data_meta area into a single SKB
+> extension.  What if we make it the responsibility of the TC-ingress BPF-
+> hook to understand the data_meta format and via (kfunc) helpers
+> transfer/create the SKB extension that it deems relevant.
+> Would this be an acceptable approach that makes it easier to propagate
+> metadata deeper in netstack?
+
+I think you and Jakub are actually proposing the same thing.
+ 
+If we can access a buffer tied to an skb extension from BPF, this could
+act as skb-local storage and solves the problem (with some operational
+overhead to set up TC on ingress).
+ 
+I'd also like to get Alexei's take on this. We had a discussion before
+about not wanting to maintain two different storage areas for skb
+metadata.
+ 
+That was one of two reasons why we abandoned Arthur's patches and why I
+tried to make the existing headroom-backed metadata area work.
+ 
+But perhaps I misunderstood the earlier discussion. Alexei's point may
+have been that we don't want another *headroom-backed* metadata area
+accessible from XDP, because we already have that.
+ 
+Looks like we have two options on the table:
+ 
+Option A) Headroom-backed metadata
+  - Use existing skb metadata area
+  - Patch skb_push/pull call sites to preserve it
+ 
+Option B) Extension-backed metadata
+  - Store metadata in skb extension from BPF
+  - TC BPF copies/extracts what it needs from headroom-metadata
+ 
+Or is there an Option C I'm missing?
+
+Thanks,
+-jkbs
