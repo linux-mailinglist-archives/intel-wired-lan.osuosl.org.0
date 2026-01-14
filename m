@@ -1,77 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28C33D1B982
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Jan 2026 23:31:50 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 00A2AD1C1F1
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Jan 2026 03:24:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D722A4092A;
-	Tue, 13 Jan 2026 22:31:48 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7C6BD616CB;
+	Wed, 14 Jan 2026 02:24:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kQqVndfA3AYf; Tue, 13 Jan 2026 22:31:48 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 0pkhJjZhyYYa; Wed, 14 Jan 2026 02:24:07 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5E8C740975
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EB215616C0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1768343508;
-	bh=k1cXDfjEXLzetXvl3pbgDGuc+BR5lmdu5IAcy3Mz+60=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1768357447;
+	bh=wJh7ZUFqa4fl+Y1O82cpynXKL+hZQAjunDXmzid0HFk=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=El2/surEvFR4r9kSjg7B4JSMghhlK80c3qyLb4e/d38E6j5TKwPvo3jGpXcTxgOLn
-	 QC/Gsg10io98IZ154mGBI9XyFjWbAB8t9eVr0VNOP+7YmK3+hfyQia3uVQOVBWL7g7
-	 hepOq2rvR9Vzekw1iKHs5lTUif1EOhphUvELWydjMAGzi6YUpHdcb6UZkKK18mxKwr
-	 BLhmBJx0wsyBID+bMKuW7QPrVZIlrWHIwcn3O/0u0gUZl8MLiK13v7+ssQW46XMLEP
-	 zz3zS+tHg7QUSOZ06wKc41TvZKBfF9rWhsp1LEim1TXy/zRYO9OJMB0EizYUnCNhHk
-	 6doSDdAFirxjA==
+	 From;
+	b=SdaJdKysu9a6/Cmczop1ALIOiGkJO+yW6/flmOOvJg3GsQC/Gdm7EABJEEO4aO4q7
+	 xUF6BFjqYWzqNFdGX10poGNUBzub3Owc8KL9r5zk6eos8rEx7Cno7zTojdllptLW4U
+	 wnXVuATMg5FLik8Bo/RA2yz3oFpS+2UFFtqmCj1bYSNzbBmmaeu+GIubGjL1N1gyx9
+	 if7LGnx0hJlX+MkQf3WT70/gV5/bNSFfvP8jB8eoWRwULMlDA6py0EZuX6jEVlOi2H
+	 4+ZoRllUnzCN8TkAX3DOIzmbXRect0IiedRGvCs6Xj/AtUIAcJCtc3hrI2zvu8GNDg
+	 l9sXZNRiITDxw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5E8C740975;
-	Tue, 13 Jan 2026 22:31:48 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EB215616C0;
+	Wed, 14 Jan 2026 02:24:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 7ECBD231
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jan 2026 22:31:47 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id E8E771C3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jan 2026 02:24:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6F10A4029B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jan 2026 22:31:47 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id CDB19616CF
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jan 2026 02:24:04 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id rJyuCPJAUrpq for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Jan 2026 22:31:46 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org D3AB9400D1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D3AB9400D1
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D3AB9400D1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Jan 2026 22:31:44 +0000 (UTC)
-Received: from [10.0.56.51] (unknown [62.214.191.67])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id A1D142387DCFE;
- Tue, 13 Jan 2026 23:31:24 +0100 (CET)
-Message-ID: <f0fee9dd-7236-464d-9e06-6adbeece81a8@molgen.mpg.de>
-Date: Tue, 13 Jan 2026 23:31:20 +0100
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id oZ4GXXxrEK1K for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 14 Jan 2026 02:24:04 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
+ envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 2C98C616C4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2C98C616C4
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 2C98C616C4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jan 2026 02:24:03 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id 686F960052;
+ Wed, 14 Jan 2026 02:24:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C56E8C116C6;
+ Wed, 14 Jan 2026 02:24:01 +0000 (UTC)
+Date: Tue, 13 Jan 2026 18:24:00 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: "Wenger Jeremie (EDU)" <jeremie.wenger@edu.ge.ch>,
+ intel-wired-lan@lists.osuosl.org
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Przemek
+ Kitszel <przemyslaw.kitszel@intel.com>, Tony Nguyen
+ <anthony.l.nguyen@intel.com>
+Message-ID: <20260113182400.723e34a1@kernel.org>
+In-Reply-To: <01412a4684684995ac35b4d6dba75853@edu.ge.ch>
+References: <c8bd43a3053047dba7999102920d37c9@edu.ge.ch>
+ <01412a4684684995ac35b4d6dba75853@edu.ge.ch>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
-References: <20260113193817.582-1-dawid.osuchowski@linux.intel.com>
- <20260113193817.582-2-dawid.osuchowski@linux.intel.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20260113193817.582-2-dawid.osuchowski@linux.intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net 1/2] ice: reintroduce retry
- mechanism for indirect AQ
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1768357442;
+ bh=EInKEyER/0G089jyq3knL1VkRB5cwyxxObwgPXmL5No=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=TfSXZpoN99f/bDBTdixQ/EUyg8MQQ3TFU5ZifGXAVYFGHmmAPefoSSM6ijbQj3qE8
+ kOQpvycOcIp00mz69Bbut8ectlIM1eSPO1eft9HpKwCXQLtLXlh30yOWP+lSWy3TIN
+ SFVvmP0ci9407DYFJNzN92lBLev2cBbJqWQMcR/Od5cWuODmF6Du4Av7ZAP9KeVObg
+ Vtfhqk7YRpOBY5bqAHax0UFZLgCrE0yrA/r0/llljry8gv6JZxIXEwQTCil5+XD1Ts
+ kmxMqooVt4vDnvYk9SuStCqd2I+snqNPYjOhKPw3US80rxshvrv4FRbtvrNJSOQsQf
+ KXSoaX1Juae4A==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=TfSXZpoN
+Subject: Re: [Intel-wired-lan] [REGRESSION] e1000e: RX stops after link
+ down/up on Intel 8086:550a since v6.12.43 (fixed by suspend/resume)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -84,103 +101,65 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, stable@vger.kernel.org,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- intel-wired-lan@lists.osuosl.org,
- Jakub Staniszewski <jakub.staniszewski@linux.intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-[Cc: +Michal]
+Thanks for the report, I'm adding the relevant people to CC now.
+Please try to consult the MAINTAINERS file next time 'cause networking
+is a bit too big for the right people to always notice reports.
 
-Dear Dawid, dear Jakub,
+My best guess below..
 
+On Fri, 9 Jan 2026 09:40:34 +0000 Wenger Jeremie (EDU) wrote:
+> Hello,
+>=20
+> I would like to report a regression in the e1000e driver affecting an Int=
+el=C2=A0integrated Ethernet controller.
+>=20
+> Hardware:
+> Intel Ethernet controller  [8086:550a]
+> Driver: e1000e
+>=20
+> Summary:
+> - RX stops working after an Ethernet link down/up (unplug/replug cable).
+> - TX still works. A system suspend/resume reliably restores RX.
+>=20
+> Regression range:
+> - Working: v6.12.22
+> - Broken: v6.12.43 .. v6.18.3 (tested on Debian 12 backports, Debian 13,=
+=C2=A0Debian sid). v6.18.3 is the most recent kernel tested so far, so the=
+=C2=A0regression is likely still present in newer kernels.
 
-Am 13.01.26 um 20:38 schrieb Dawid Osuchowski:
-> From: Jakub Staniszewski <jakub.staniszewski@linux.intel.com>
-> 
-> Add retry mechanism for indirect Admin Queue (AQ) commands. To do so we
-> need to keep the command buffer.
-> 
-> This technically reverts commit 43a630e37e25
-> ("ice: remove unused buffer copy code in ice_sq_send_cmd_retry()"),
-> but combines it with a fix in the logic by using a kmemdup() call,
-> making it more robust and less likely to break in the future due to
-> programmer error.
-> 
-> Cc: Michal Schmidt <mschmidt@redhat.com>
-> Cc: stable@vger.kernel.org
-> Fixes: 3056df93f7a8 ("ice: Re-send some AQ commands, as result of EBUSY AQ error")
-> Signed-off-by: Jakub Staniszewski <jakub.staniszewski@linux.intel.com>
-> Co-developed-by: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
-> Signed-off-by: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
-> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> ---
-> Ccing Michal, given they are the author of the "reverted" commit.
+Judging by the range seems like it has to be efaaf344bc2917cb
+Would you be able to try building a kernel with that commit reverted?
 
-At least Michal was not in the (visible) Cc: list
-
->   drivers/net/ethernet/intel/ice/ice_common.c | 12 +++++++++---
->   1 file changed, 9 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-> index a400bf4f239a..aab00c44e9b2 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_common.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_common.c
-> @@ -1879,34 +1879,40 @@ ice_sq_send_cmd_retry(struct ice_hw *hw, struct ice_ctl_q_info *cq,
->   {
->   	struct libie_aq_desc desc_cpy;
->   	bool is_cmd_for_retry;
-> +	u8 *buf_cpy = NULL;
->   	u8 idx = 0;
->   	u16 opcode;
->   	int status;
->   
->   	opcode = le16_to_cpu(desc->opcode);
->   	is_cmd_for_retry = ice_should_retry_sq_send_cmd(opcode);
->   	memset(&desc_cpy, 0, sizeof(desc_cpy));
->   
->   	if (is_cmd_for_retry) {
-> -		/* All retryable cmds are direct, without buf. */
-> -		WARN_ON(buf);
-> +		if (buf) {
-> +			buf_cpy = kmemdup(buf, buf_size, GFP_KERNEL);
-> +			if (!buf_cpy)
-> +				return -ENOMEM;
-> +		}
->   
->   		memcpy(&desc_cpy, desc, sizeof(desc_cpy));
->   	}
->   
->   	do {
->   		status = ice_sq_send_cmd(hw, cq, desc, buf, buf_size, cd);
->   
->   		if (!is_cmd_for_retry || !status ||
->   		    hw->adminq.sq_last_status != LIBIE_AQ_RC_EBUSY)
->   			break;
->   
-> +		if (buf_cpy)
-> +			memcpy(buf, buf_cpy, buf_size);
->   		memcpy(desc, &desc_cpy, sizeof(desc_cpy));
-> -
-
-Unrelated change?
-
->   		msleep(ICE_SQ_SEND_DELAY_TIME_MS);
->   
->   	} while (++idx < ICE_SQ_SEND_MAX_EXECUTE);
->   
-> +	kfree(buf_cpy);
->   	return status;
->   }
-
-The diff looks good otherwise.
-
-Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
-
-
-Kind regards,
-
-Paul
+> Symptoms:
+> - Link is detected (1Gbps, full duplex).
+> - DHCP DISCOVER frames are transmitted (confirmed via external packet cap=
+ture).
+> - No packets are received (no DHCP OFFER, RX appears dead).
+> - Booting with the cable plugged works.
+> - The issue is triggered only after unplugging and replugging the cable.
+> - A suspend/resume cycle restores RX immediately.
+> - Using a USB Ethernet adapter (r8152) on the same network works correctl=
+y.
+> =20
+> Reproduction steps:
+> - Boot with Ethernet cable plugged.
+> - Verify network connectivity works.
+> - Unplug the Ethernet cable.
+> - Plug the Ethernet cable back in.
+> - Observe that RX no longer works (no DHCP OFFER).
+> - Suspend/resume the system =E2=86=92 RX works again.
+> =20
+> This suggests that the PHY or RX path is not correctly reinitialized on=
+=C2=A0link up after a link down event, while the resume path performs a mor=
+e=C2=A0complete reset.
+>=20
+> I can provide additional logs, ethtool statistics, or test patches if nee=
+ded.
+>=20
+>=20
+> Best regards,
+>=20
+> J=C3=A9r=C3=A9mie Wenger
