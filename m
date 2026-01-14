@@ -1,93 +1,106 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id F0745D1CCAA
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Jan 2026 08:19:23 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 44D48D1D0B2
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Jan 2026 09:16:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 52DC2808AC;
-	Wed, 14 Jan 2026 07:19:22 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A40716F7AA;
+	Wed, 14 Jan 2026 08:16:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XccGXrOQBlSM; Wed, 14 Jan 2026 07:19:21 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 6qz19NWfHqjl; Wed, 14 Jan 2026 08:16:10 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BDD32808CA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 278E36F7AF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1768375161;
-	bh=w2JQbYike37s8pXtIOzlkR0AUFRs7qVn2gHkmKt7qwQ=;
-	h=To:CC:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1768378570;
+	bh=zJaeQuTcmKPLmxHVeNMO+TMSB+Kiv6JhfAqfzK04nvc=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From:Reply-To:From;
-	b=GafB82tMMuDo69sozGu94tz+sqiQAYJajBUbPaz1IPZDTb0GnkdPS2cEgSKupgJ09
-	 UmyRnCxv1j4zmG3Zd2oCk2KFo447Q50eN/s1w78bZycpUuyHmRQIwQLX08qjcR3grE
-	 31PukNWirPq8n4twq4pDrOKzqYNZvdyjAcJyBmiOf7isnQMDhn0R+HbJehthyBohg5
-	 gZ8KGGPlzmy1TfDQTt59209LQ1qRBC17cTx5bpQZdxZgAhVWjKC0hYy6Vnc7ItJ1kk
-	 rWu6GtzfiyRSLkeyySsBFla4WpNSK2Vfm/Yovhao6iFUV3SvbBMK/UeUgImCiM7HlA
-	 iBLBTGbfceVdA==
+	 Cc:From;
+	b=qPgMlfj3eno3B5iWU9bE3CcBX9SUWled3Q25rMznH7XFx3IfkDBxQf/Ho7IySDRq4
+	 ATG3HB4DjvAVaLg8b+1jhMF8AM2f19fAW//gktLACFHWY6HHFkwJr5xReZ4xVwyM1K
+	 VAlGK6HdLlMP/OdFaOLcaxGSPg86eptSuuVitKE4NZ+vCSW/LN97n10MSMCGnt/Wfi
+	 qILCHA28uaYSZUGyWrEQnaw6KBwYa7sGkTzWWYdt6jM0eY1Y+wmiLCY3P/BzJDoovr
+	 3sLj/AR4bMrK7XRT2Q3P1Xx2GusgsJqH+aLn5iRZJbS83oF6Mw6O207UG+OqoUpG9I
+	 I1np8Q1yYBhsQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BDD32808CA;
-	Wed, 14 Jan 2026 07:19:21 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 278E36F7AF;
+	Wed, 14 Jan 2026 08:16:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 4A9381C3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jan 2026 07:19:19 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 5954A1C3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jan 2026 08:16:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3C1BF42D07
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jan 2026 07:19:19 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3F7D640225
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jan 2026 08:16:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 78UZCKCkN7aL for <intel-wired-lan@lists.osuosl.org>;
- Wed, 14 Jan 2026 07:19:18 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=160.53.250.24;
- helo=gwsmtp.ge.ch; envelope-from=jeremie.wenger@edu.ge.ch; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 11A1642D06
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 11A1642D06
-Received: from gwsmtp.ge.ch (smtpsw24.ge.ch [160.53.250.24])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 11A1642D06
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jan 2026 07:19:16 +0000 (UTC)
-To: Jakub Kicinski <kuba@kernel.org>, "intel-wired-lan@lists.osuosl.org"
- <intel-wired-lan@lists.osuosl.org>
-CC: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Przemek
- Kitszel" <przemyslaw.kitszel@intel.com>, Tony Nguyen
- <anthony.l.nguyen@intel.com>
-Thread-Index: AQHcgKY4vqPf4k7m6ECp9OMR6mOttLVJlHgAgAdTJwCAAGBwmA==
-Date: Wed, 14 Jan 2026 07:19:12 +0000
-Message-ID: <33854287fd02403093ff9f7dfa6412f1@edu.ge.ch>
-References: <c8bd43a3053047dba7999102920d37c9@edu.ge.ch>
- <01412a4684684995ac35b4d6dba75853@edu.ge.ch>,
- <20260113182400.723e34a1@kernel.org>
-In-Reply-To: <20260113182400.723e34a1@kernel.org>
-Accept-Language: fr-CH, en-US
-Content-Language: fr-CH
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id iWsz4FkkexHA for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 14 Jan 2026 08:16:05 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
+ helo=mgamail.intel.com; envelope-from=dawid.osuchowski@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 5C54340190
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5C54340190
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5C54340190
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Jan 2026 08:16:03 +0000 (UTC)
+X-CSE-ConnectionGUID: PLZ+/Ye4Tf+bRGORZvAOKw==
+X-CSE-MsgGUID: UjB2R149T2e8aX4ljYvLsA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11670"; a="57228007"
+X-IronPort-AV: E=Sophos;i="6.21,225,1763452800"; d="scan'208";a="57228007"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+ by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Jan 2026 00:16:04 -0800
+X-CSE-ConnectionGUID: HdljNTGlSnmU4yQpS8iDuw==
+X-CSE-MsgGUID: aQ92HTXqTE2w3EbiZCrUwA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,225,1763452800"; d="scan'208";a="204506952"
+Received: from soc-5cg4396xfb.clients.intel.com (HELO [172.28.180.91])
+ ([172.28.180.91])
+ by fmviesa006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Jan 2026 00:16:02 -0800
+Message-ID: <954dc352-2ad2-4950-9c8b-55ebafc5841c@linux.intel.com>
+Date: Wed, 14 Jan 2026 09:15:59 +0100
 MIME-Version: 1.0
-X-FEAS-BEC-Info: WlpIGw0aAQkEARIJHAEHBlJSCRoLAAEeDUhZUEhYSFhIWUhZXkguLUVaIy48WlpbWFhYWFldSFpcSAINGg0FAQ1GHw0GDw0aKA0MHUYPDUYLAEhZSFpaSAYNHAwNHigeDw0aRgMNGgYNBEYHGg9IWEhaSFlbSFlYRllcXUZQXkZZX1lIUEhYSFhIXEhYSFhIWEhaXkgJBhwABwYRRgRGBg8dEQ0GKAEGHA0ERgsHBUhYSFtaSAEGHA0ERR8BGg0MRQQJBigEARscG0YHGx0HGwRGBxoPSFhIWV1IAx0KCSgDDRoGDQRGBxoPSFhIWlBIBAEGHRBFAw0aBg0EKB4PDRpGAw0aBg0ERgcaD0hY
-X-SM-outgoing: yes
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; d=edu.ge.ch;
- s=GVA21; c=relaxed/relaxed; 
- h=from:to:cc:subject:date:message-id:references:content-type:mime-version;
- bh=w2JQbYike37s8pXtIOzlkR0AUFRs7qVn2gHkmKt7qwQ=;
- b=BSOkvRFZne7MtqSHfq5YpBfAyUZBw9Qd+E4GqSyhMykUN+IGqE4DDimvX6xz+0MLEo4VPOrPm4CW
- VZbNVeUbyvtmhRJ9KLSYLaACI/iiMfLFyprvpulp//u7PJE5+NCtZCys3T+Kiau5uvjo6pqYEpMS
- IC4Qtw0XXQxeebXmSBHO6uPlwZe2PQ0c3bPGpWgUDYmyirOVIxf+D0xCdJNkA8OhunWvHkHMQJiN
- lId/zbivqy35RWPWepd5PUw6aDMoavlxagvK7Ht1a+w6D4H1VI9Krw3DGRjDkzRvZ4DtjrnJiBbU
- AP3d7HpXEqAwvVYQQfweopTQaApfTPPGVCSUrA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=edu.ge.ch
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+User-Agent: Mozilla Thunderbird
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+References: <20260113193817.582-1-dawid.osuchowski@linux.intel.com>
+ <20260113193817.582-2-dawid.osuchowski@linux.intel.com>
+ <f0fee9dd-7236-464d-9e06-6adbeece81a8@molgen.mpg.de>
+Content-Language: pl, en-US
+From: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
+Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173, 80-298
+ Gdansk - KRS 101882 - NIP 957-07-52-316
+In-Reply-To: <f0fee9dd-7236-464d-9e06-6adbeece81a8@molgen.mpg.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1768378565; x=1799914565;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=Tk40Z3bVifct2EirVXFgyYO4QzE6BJo2N8YtpP43AC0=;
+ b=bttR2EdOUPgNzMt5TzH5g7PP+gQI6GHsSmSFfjKOwVKcc+h4lUHwK3gG
+ zh8I9tVwARCA5BWISG6OJwU/ybDX1VtY0r1NsL5zYJ25wrQV8l02kiq68
+ rWvCTTfTaVanUUTheqLSgOWPGUQY+TFs87FMKaMqC/M28evzRGWuiJXGV
+ bAy1cmpqUN2HUnrAsk4NPdBWiyX7TI36K5B1u6OA1lfNtAa6xcn/Ip022
+ nU1XTYJGRw4k6q9uHGnNwkqFv7QMmWftmFMNzuGNMBaELN4/MlMhfMGaS
+ rhLFcwHBdv9TMNdm6UWbj0QjO8i1+Ds0yd5ayfBQsOJTA9mSQhiTr2dst
+ A==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=edu.ge.ch header.i=@edu.ge.ch header.a=rsa-sha256
- header.s=GVA21 header.b=BSOkvRFZ
-Subject: Re: [Intel-wired-lan] [REGRESSION] e1000e: RX stops after link
- down/up on Intel 8086:550a since v6.12.43 (fixed by suspend/resume)
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=bttR2EdO
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net 1/2] ice: reintroduce retry
+ mechanism for indirect AQ
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -100,59 +113,70 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-From: "Wenger Jeremie \(EDU\) via Intel-wired-lan" <intel-wired-lan@osuosl.org>
-Reply-To: "Wenger Jeremie \(EDU\)" <jeremie.wenger@edu.ge.ch>
+Cc: netdev@vger.kernel.org, stable@vger.kernel.org,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ intel-wired-lan@lists.osuosl.org,
+ Jakub Staniszewski <jakub.staniszewski@linux.intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-VGhhbmtzIGZvciB0aGUgcmVwb3J0LCBJJ20gYWRkaW5nIHRoZSByZWxldmFudCBwZW9wbGUgdG8g
-Q0Mgbm93Lg0KUGxlYXNlIHRyeSB0byBjb25zdWx0IHRoZSBNQUlOVEFJTkVSUyBmaWxlIG5leHQg
-dGltZSAnY2F1c2UgbmV0d29ya2luZw0KaXMgYSBiaXQgdG9vIGJpZyBmb3IgdGhlIHJpZ2h0IHBl
-b3BsZSB0byBhbHdheXMgbm90aWNlIHJlcG9ydHMuDQoNCk15IGJlc3QgZ3Vlc3MgYmVsb3cuLg0K
-DQpPbiBGcmksIDkgSmFuIDIwMjYgMDk6NDA6MzQgKzAwMDAgV2VuZ2VyIEplcmVtaWUgKEVEVSkg
-d3JvdGU6DQo+IEhlbGxvLA0KPg0KPiBJIHdvdWxkIGxpa2UgdG8gcmVwb3J0IGEgcmVncmVzc2lv
-biBpbiB0aGUgZTEwMDBlIGRyaXZlciBhZmZlY3RpbmcgYW4gSW50ZWwgaW50ZWdyYXRlZCBFdGhl
-cm5ldCBjb250cm9sbGVyLg0KPg0KPiBIYXJkd2FyZToNCj4gSW50ZWwgRXRoZXJuZXQgY29udHJv
-bGxlcsKgIFs4MDg2OjU1MGFdDQo+IERyaXZlcjogZTEwMDBlDQo+DQo+IFN1bW1hcnk6DQo+IC0g
-Ulggc3RvcHMgd29ya2luZyBhZnRlciBhbiBFdGhlcm5ldCBsaW5rIGRvd24vdXAgKHVucGx1Zy9y
-ZXBsdWcgY2FibGUpLg0KPiAtIFRYIHN0aWxsIHdvcmtzLiBBIHN5c3RlbSBzdXNwZW5kL3Jlc3Vt
-ZSByZWxpYWJseSByZXN0b3JlcyBSWC4NCj4NCj4gUmVncmVzc2lvbiByYW5nZToNCj4gLSBXb3Jr
-aW5nOiB2Ni4xMi4yMg0KPiAtIEJyb2tlbjogdjYuMTIuNDMgLi4gdjYuMTguMyAodGVzdGVkIG9u
-IERlYmlhbiAxMiBiYWNrcG9ydHMsIERlYmlhbiAxMywgRGViaWFuIHNpZCkuIHY2LjE4LjMgaXMg
-dGhlIG1vc3QgcmVjZW50IGtlcm5lbCB0ZXN0ZWQgc28gZmFyLCBzbyB0aGUgcmVncmVzc2lvbiBp
-cyBsaWtlbHkgc3RpbGwgcHJlc2VudCBpbiBuZXdlciBrZXJuZWxzLg0KDQpKdWRnaW5nIGJ5IHRo
-ZSByYW5nZSBzZWVtcyBsaWtlIGl0IGhhcyB0byBiZSBlZmFhZjM0NGJjMjkxN2NiDQpXb3VsZCB5
-b3UgYmUgYWJsZSB0byB0cnkgYnVpbGRpbmcgYSBrZXJuZWwgd2l0aCB0aGF0IGNvbW1pdCByZXZl
-cnRlZD8NCg0KDQoNCkhpLA0KDQpUaGFua3MgZm9yIGxvb2tpbmcgaW50byB0aGlzLg0KDQpKdXN0
-IHRvIHByb3ZpZGUgc29tZSBhZGRpdGlvbmFsIGNvbnRleHQgYW5kIGhlbHAgYXZvaWQgZHVwbGlj
-YXRlZCB3b3JrOg0KdGhlIGlzc3VlIGhhcyBhbHNvIGJlZW4gZGlzY3Vzc2VkIG9uIG5ldGRldkB2
-Z2VyLmtlcm5lbC5vcmcsIGFuZCBJIHdhcyBwb2ludGVkIHRvIGEgZml4IHRoYXQgbGFuZGVkIGlu
-IG1haW5saW5lLg0KDQpJIHRlc3RlZCB0aGUgaXNzdWUgd2l0aCBMaW51eCA2LjE5ICg2LjE5fnJj
-NC0xfmV4cDEpLCBhbmQgdGhlIHByb2JsZW0gaXMgZnVsbHkgcmVzb2x2ZWQgdGhlcmU6IFJYIGNv
-cnJlY3RseSByZWNvdmVycyBhZnRlciBhIGxpbmsgZG93bi91cCB3aXRob3V0IHJlcXVpcmluZyBh
-IHN1c3BlbmQvcmVzdW1lIGN5Y2xlLg0KDQpUaGlzIGJlaGF2aW9yIGNoYW5nZSBhcHBlYXJzIHRv
-IGJlIGR1ZSB0byBjb21taXQ6DQozYzdiZjVhZjIxOTYwODdmMzk0ZjkwOTliNTNlMzc1Njk2MzZi
-MjU5DQoNCkdpdmVuIHRoYXQgY3VycmVudCBtYWlubGluZSB3b3JrcyBhcyBleHBlY3RlZCwgSSBk
-aWQgbm90IGF0dGVtcHQgcmV2ZXJ0aW5nIGVmYWFmMzQ0YmMyOTE3Y2IuIEkgYWxzbyBhc2tlZCBv
-biBuZXRkZXYgd2hldGhlciBhIGJhY2twb3J0IG9mIHRoZSBhYm92ZSBmaXggdG8gc3RhYmxlIGtl
-cm5lbHMgd291bGQgYmUgYXBwcm9wcmlhdGUuDQoNClBsZWFzZSBsZXQgbWUga25vdyBpZiB5b3Ug
-c3RpbGwgdGhpbmsgYSB0YXJnZXRlZCByZXZlcnQgdGVzdCB3b3VsZCBiZSB1c2VmdWwuDQoNCkJl
-c3QgcmVnYXJkcywNCkrDqXLDqW1pZQ0KDQoNCj4gU3ltcHRvbXM6DQo+IC0gTGluayBpcyBkZXRl
-Y3RlZCAoMUdicHMsIGZ1bGwgZHVwbGV4KS4NCj4gLSBESENQIERJU0NPVkVSIGZyYW1lcyBhcmUg
-dHJhbnNtaXR0ZWQgKGNvbmZpcm1lZCB2aWEgZXh0ZXJuYWwgcGFja2V0IGNhcHR1cmUpLg0KPiAt
-IE5vIHBhY2tldHMgYXJlIHJlY2VpdmVkIChubyBESENQIE9GRkVSLCBSWCBhcHBlYXJzIGRlYWQp
-Lg0KPiAtIEJvb3Rpbmcgd2l0aCB0aGUgY2FibGUgcGx1Z2dlZCB3b3Jrcy4NCj4gLSBUaGUgaXNz
-dWUgaXMgdHJpZ2dlcmVkIG9ubHkgYWZ0ZXIgdW5wbHVnZ2luZyBhbmQgcmVwbHVnZ2luZyB0aGUg
-Y2FibGUuDQo+IC0gQSBzdXNwZW5kL3Jlc3VtZSBjeWNsZSByZXN0b3JlcyBSWCBpbW1lZGlhdGVs
-eS4NCj4gLSBVc2luZyBhIFVTQiBFdGhlcm5ldCBhZGFwdGVyIChyODE1Mikgb24gdGhlIHNhbWUg
-bmV0d29yayB3b3JrcyBjb3JyZWN0bHkuDQo+DQo+IFJlcHJvZHVjdGlvbiBzdGVwczoNCj4gLSBC
-b290IHdpdGggRXRoZXJuZXQgY2FibGUgcGx1Z2dlZC4NCj4gLSBWZXJpZnkgbmV0d29yayBjb25u
-ZWN0aXZpdHkgd29ya3MuDQo+IC0gVW5wbHVnIHRoZSBFdGhlcm5ldCBjYWJsZS4NCj4gLSBQbHVn
-IHRoZSBFdGhlcm5ldCBjYWJsZSBiYWNrIGluLg0KPiAtIE9ic2VydmUgdGhhdCBSWCBubyBsb25n
-ZXIgd29ya3MgKG5vIERIQ1AgT0ZGRVIpLg0KPiAtIFN1c3BlbmQvcmVzdW1lIHRoZSBzeXN0ZW0g
-4oaSIFJYIHdvcmtzIGFnYWluLg0KPg0KPiBUaGlzIHN1Z2dlc3RzIHRoYXQgdGhlIFBIWSBvciBS
-WCBwYXRoIGlzIG5vdCBjb3JyZWN0bHkgcmVpbml0aWFsaXplZCBvbiBsaW5rIHVwIGFmdGVyIGEg
-bGluayBkb3duIGV2ZW50LCB3aGlsZSB0aGUgcmVzdW1lIHBhdGggcGVyZm9ybXMgYSBtb3JlIGNv
-bXBsZXRlIHJlc2V0Lg0KPg0KPiBJIGNhbiBwcm92aWRlIGFkZGl0aW9uYWwgbG9ncywgZXRodG9v
-bCBzdGF0aXN0aWNzLCBvciB0ZXN0IHBhdGNoZXMgaWYgbmVlZGVkLg0KPg0KPg0KPiBCZXN0IHJl
-Z2FyZHMsDQo+DQo+IErDqXLDqW1pZSBXZW5nZXINCiAgICA=
+Hey Paul,
+
+On 2026-01-13 11:31 PM, Paul Menzel wrote:
+> [Cc: +Michal]
+> 
+> Dear Dawid, dear Jakub,
+> 
+
+...
+
+> Am 13.01.26 um 20:38 schrieb Dawid Osuchowski:
+>> Ccing Michal, given they are the author of the "reverted" commit.
+> 
+> At least Michal was not in the (visible) Cc: list
+
+Interesting. I was using 'git send-email' without any suppression of Cc 
+or similar options. In the direct email sent from me Michal is in Cc, 
+seems the mailing list for some reason stripped him...
+
+>>   drivers/net/ethernet/intel/ice/ice_common.c | 12 +++++++++---
+>>   1 file changed, 9 insertions(+), 3 deletions(-)
+>>
+
+...
+
+>>       do {
+>>           status = ice_sq_send_cmd(hw, cq, desc, buf, buf_size, cd);
+>>           if (!is_cmd_for_retry || !status ||
+>>               hw->adminq.sq_last_status != LIBIE_AQ_RC_EBUSY)
+>>               break;
+>> +        if (buf_cpy)
+>> +            memcpy(buf, buf_cpy, buf_size);
+>>           memcpy(desc, &desc_cpy, sizeof(desc_cpy));
+>> -
+> 
+> Unrelated change?
+> 
+
+During internal review it was pointed out that this function contains a 
+lot of empty lines, this was my feeble attempt to at least partially 
+reduce their count.
+
+>>           msleep(ICE_SQ_SEND_DELAY_TIME_MS);
+>>       } while (++idx < ICE_SQ_SEND_MAX_EXECUTE);
+>> +    kfree(buf_cpy);
+>>       return status;
+>>   }
+> 
+> The diff looks good otherwise.
+> 
+> Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+> 
+> 
+> Kind regards,
+> 
+> Paul
+
+Thanks,
+Dawid
