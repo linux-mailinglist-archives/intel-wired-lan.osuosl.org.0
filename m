@@ -2,95 +2,99 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E01ECD38499
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Jan 2026 19:46:35 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 82BE5D3849B
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Jan 2026 19:46:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8F809610E3;
-	Fri, 16 Jan 2026 18:46:34 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3AE95610E9;
+	Fri, 16 Jan 2026 18:46:42 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RUrwOzqOhg12; Fri, 16 Jan 2026 18:46:34 +0000 (UTC)
+ id wNCxzU8vPTbm; Fri, 16 Jan 2026 18:46:41 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E46A4610E4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 70779610E7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1768589193;
-	bh=ZJVObctK3llj4uA0acCK4Yyzz9vQu+ksQA0NFHgNQGU=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=ejjPPFc5BkuEpHYTV2xr4CtuiH81EJukj+tMKZzkwB0UESzpiRV9T12QNZOGeWI64
-	 QHBhqhqwzhX8SqvsU3bWdSGyFkS5O/cDjnYUK/fXRQjBRwJz5Egqnat7JKGubDL3uQ
-	 rOQhACDEagf69fvKKrkNmvoxBTHcALZ9c5K4ZZaiX0wjWh3MUfm4ZprijWvkkfXEzX
-	 deyEaPzeAscCs2WXnILXbJddP3J+9qg5DXPq6+djTyWgPt1j6Bunn8pGfDaDlm6KdX
-	 Q1OXC+rIDWMie5W53o8LRf+Abl+cGuBi2itAcPTzULUd9o0LHSgacTY7jAaWUMR4TT
-	 lXi7jgqyjhAJw==
+	s=default; t=1768589201;
+	bh=1Vq0sGyRYXFQB0FSoR5ne1F5tGDgvK5fncUfpA16P7M=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=FptWqU7pd/JQQH9lqhHDMzBdZ0VRfIqqAcgJVZ2d/hZJ20GF3tCi1EszZ4tCW+NK0
+	 XesJ6z8mgn85MeUOh50cK1oqKi4/2/Tult2SbdkwBBiSNoN9HrYm9YbedjQEg8NaX4
+	 5Nqk8YBFsrKozlgUouf9GLp7psWkZO8xBWyxne+QAXEkw6JZgUGOMJstfeNq5sUKzZ
+	 dC68kW1HwdIWvvORZm5j7r+m9YenVy+N53ZaJ1HIOrOJRQ0ubD62kzZEY9/0B7pl2A
+	 0ywi0SnbZ4WPObCfUTcObbJOr9YMK4Wt5s4InSLK/QvlARBWcYG3buxaKh89NbRTN7
+	 4EwXddxR/L6pA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E46A4610E4;
-	Fri, 16 Jan 2026 18:46:33 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 70779610E7;
+	Fri, 16 Jan 2026 18:46:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 14ADA223
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jan 2026 18:46:32 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id E5427160
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jan 2026 18:46:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 00AF8610E2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jan 2026 18:46:32 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id D6BCD610E0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jan 2026 18:46:39 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id iTJjSSyW_ZHU for <intel-wired-lan@lists.osuosl.org>;
- Fri, 16 Jan 2026 18:46:31 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
+ id q5WfTlUXhI3q for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 16 Jan 2026 18:46:39 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
  helo=us-smtp-delivery-124.mimecast.com; envelope-from=ivecera@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org E627B610E0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E627B610E0
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org BFD08610E4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BFD08610E4
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id E627B610E0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jan 2026 18:46:30 +0000 (UTC)
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id BFD08610E4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jan 2026 18:46:38 +0000 (UTC)
 Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-185-4JBC-iLFNpum_AD3n3AJXA-1; Fri,
- 16 Jan 2026 13:46:24 -0500
-X-MC-Unique: 4JBC-iLFNpum_AD3n3AJXA-1
-X-Mimecast-MFC-AGG-ID: 4JBC-iLFNpum_AD3n3AJXA_1768589180
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-54-qvNhJT7OM9-wkkCk3iIH_A-1; Fri,
+ 16 Jan 2026 13:46:32 -0500
+X-MC-Unique: qvNhJT7OM9-wkkCk3iIH_A-1
+X-Mimecast-MFC-AGG-ID: qvNhJT7OM9-wkkCk3iIH_A_1768589189
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 55617180035D; Fri, 16 Jan 2026 18:46:20 +0000 (UTC)
+ id 92A4918002C7; Fri, 16 Jan 2026 18:46:28 +0000 (UTC)
 Received: from p16v.luc.cera.cz (unknown [10.44.34.71])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 0730119560A7; Fri, 16 Jan 2026 18:46:11 +0000 (UTC)
+ id BD55D19560A7; Fri, 16 Jan 2026 18:46:20 +0000 (UTC)
 From: Ivan Vecera <ivecera@redhat.com>
 To: netdev@vger.kernel.org
-Date: Fri, 16 Jan 2026 19:45:58 +0100
-Message-ID: <20260116184610.147591-1-ivecera@redhat.com>
+Date: Fri, 16 Jan 2026 19:45:59 +0100
+Message-ID: <20260116184610.147591-2-ivecera@redhat.com>
+In-Reply-To: <20260116184610.147591-1-ivecera@redhat.com>
+References: <20260116184610.147591-1-ivecera@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1768589189;
+ s=mimecast20190719; t=1768589197;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=ZJVObctK3llj4uA0acCK4Yyzz9vQu+ksQA0NFHgNQGU=;
- b=fB4IKvsvLffALEyOf627qMK4DnRZtWii7/UEwr0Mu+Hptgw80iLwz8yY8HK9VkG3MsDp8Y
- MZ35/P/WmoFyAzNQ3dh0lyGmZ1G12NqLe2BkcxOl2n2xQIjj85bvcL4tmt7L1y7jF3FGB1
- 4n82dwzPbqLuj8NcjaW8bcC+sMDisqM=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=1Vq0sGyRYXFQB0FSoR5ne1F5tGDgvK5fncUfpA16P7M=;
+ b=L6Fx/InRpk/Tpj6b4CIZDxlKTi3B/4KDIpD6JADZge/iBMdsF/DX4dfOKRRZGuhbBZLu2a
+ uGjlL2qy7e9gMkhT79UhkCmWlf2c4Cic+7ZTFNJfSmel8cp8e9NdW0Sj3v/+yJ2/kA1I8e
+ C76tHFbfILgaG2w/7MyUQ0fcW+HZCAU=
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=redhat.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=fB4IKvsv
-Subject: [Intel-wired-lan] [PATCH net-next v2 00/12] dpll: Core improvements
- and ice E825-C SyncE support
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=L6Fx/InR
+Subject: [Intel-wired-lan] [PATCH net-next v2 01/12] dt-bindings: dpll:
+ support acting as pin provider
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -123,121 +127,118 @@ Cc: Eric Dumazet <edumazet@google.com>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This series introduces Synchronous Ethernet (SyncE) support for
-the Intel E825-C Ethernet controller. Unlike previous generations where
-DPLL connections were implicitly assumed, the E825-C architecture relies
-on the platform firmware to describe the physical connections between
-the network controller and external DPLLs (such as the ZL3073x).
+Enable DPLL devices to act as pin providers for consumers (such as
+Ethernet controllers or PHYs).
 
-To accommodate this, the series extends the DPLL subsystem to support
-firmware node (fwnode) associations, asynchronous discovery via notifiers,
-and dynamic pin management. Additionally, a significant refactor of
-the DPLL reference counting logic is included to ensure robustness and
-debuggability.
+Add the '#dpll-pin-cells' property to the generic dpll-device.yaml
+schema and mark it as required. This allows DPLL nodes to define pin
+specifiers for their connected consumers.
 
-DT Bindings:
-* Provider Support: The dpll-device schema is updated to support
-  '#dpll-pin-cells', allowing providers to define pin specifiers
-  (index/direction).
-* Core Schema: The core schema definitions for pin consumers and
-  providers have been submitted to dt-schema (PR #183).
+Introduce a new header '<dt-bindings/dpll/dpll.h>' to define pin
+direction macros (`DPLL_PIN_INPUT` and `DPLL_PIN_OUTPUT`). These macros
+are intended to be used in the DT pin specifiers (inside 'dpll-pins'
+properties of consumers) to describe the direction of the signal.
 
-DPLL Core Extensions:
-* Firmware Node Support: Pins can now be registered with an associated
-  struct fwnode_handle. This allows consumer drivers to lookup pins based
-  on device properties (dpll-pins).
-* Asynchronous Notifiers: A raw notifier chain is added to the DPLL core.
-  This allows the network driver (ice driver in this series) to subscribe
-  to events and react when the platform DPLL driver registers the parent
-  pins, resolving probe ordering dependencies.
-* Dynamic Indexing: Drivers can now request DPLL_PIN_IDX_UNSPEC to have
-  the core automatically allocate a unique pin index, simplifying driver
-  implementation for virtual or non-indexed pins.
+Update the 'microchip,zl30731.yaml' examples to include the new
+'#dpll-pin-cells' property.
 
-Reference Counting & Debugging:
-* Refactor: The reference counting logic in the core is consolidated.
-  Internal list management helpers now automatically handle hold/put
-  operations, removing fragile open-coded logic in the registration paths.
-* Duplicate Checks: The core now strictly rejects duplicate registration
-  attempts for the same pin/device context.
-* Reference Tracking: A new Kconfig option DPLL_REFCNT_TRACKER is added
-  (using the kernel's REF_TRACKER infrastructure). This allows developers
-  to instrument and debug reference leaks by recording stack traces for
-  every get/put operation.
+The core schema definitions for these properties are being added to
+dt-schema in PR #183.
 
-Driver Updates:
-* zl3073x: Updated to register pins with their firmware nodes and support
-  the 'mux' pin type.
-* ice: Implements the E825-C specific hardware configuration for SyncE
-  (CGU registers). It utilizes the new notifier and fwnode APIs to
-  dynamically discover and attach to the platform DPLLs.
-
-Patch Summary:
-Patch 1: DT bindings (Provider support).
-Patch 2-3: DPLL Core (fwnode association and parsing helpers).
-Patch 4: Driver zl3073x (Set fwnode).
-Patch 5-6: DPLL Core (Notifiers and dynamic IDs).
-Patch 7: Driver zl3073x (Mux type).
-Patch 8-9: DPLL Core (Refcount refactor and duplicate checks).
-Patch 10-11: Refcount tracking infrastructure and driver updates.
-Patch 12: Driver ice (E825-C SyncE logic).
-
-Changes in v2:
-- Removed dpll-pin-consumer.yaml schema per request (submitted to dt-schema).
-- Added '#dpll-pin-cells' property into dpll-device.yaml and
-  microchip,zl30731.yaml.
-- Added include/dt-bindings/dpll/dpll.h
-- Added check for fwnode_property_match_string() return value.
-- Reworked searching for the pin using dpll device phandle and pin specifier
-  logic.
-- Added dpll-pins into OF core supplier_bindings.
-- Fixed integer overflow in dpll_pin_idx_free().
-- Fixed error path in ice_dpll_init_pins_e825().
-- Fixed misleading comment referring 'device tree'.
-
-Arkadiusz Kubalewski (1):
-  ice: dpll: Support E825-C SyncE and dynamic pin discovery
-
-Ivan Vecera (10):
-  dt-bindings: dpll: support acting as pin provider
-  dpll: Allow associating dpll pin with a firmware node
-  dpll: Add helpers to find DPLL pin fwnode
-  dpll: zl3073x: Associate pin with fwnode handle
-  dpll: Support dynamic pin index allocation
-  dpll: zl3073x: Add support for mux pin type
-  dpll: Enhance and consolidate reference counting logic
-  dpll: Prevent duplicate registrations
-  dpll: Add reference count tracking support
-  drivers: Add support for DPLL reference count tracking
-
-Petr Oros (1):
-  dpll: Add notifier chain for dpll events
-
- .../devicetree/bindings/dpll/dpll-device.yaml |  10 +
- .../bindings/dpll/microchip,zl30731.yaml      |   4 +
- drivers/dpll/Kconfig                          |  15 +
- drivers/dpll/dpll_core.c                      | 374 ++++++++-
- drivers/dpll/dpll_core.h                      |  11 +
- drivers/dpll/dpll_netlink.c                   |   6 +
- drivers/dpll/zl3073x/dpll.c                   |  15 +-
- drivers/dpll/zl3073x/dpll.h                   |   2 +
- drivers/dpll/zl3073x/prop.c                   |   2 +
- drivers/net/ethernet/intel/ice/ice_dpll.c     | 732 +++++++++++++++---
- drivers/net/ethernet/intel/ice/ice_dpll.h     |  29 +
- drivers/net/ethernet/intel/ice/ice_lib.c      |   3 +
- drivers/net/ethernet/intel/ice/ice_ptp.c      |  29 +
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c   |   9 +-
- drivers/net/ethernet/intel/ice/ice_tspll.c    | 217 ++++++
- drivers/net/ethernet/intel/ice/ice_tspll.h    |  13 +-
- drivers/net/ethernet/intel/ice/ice_type.h     |   6 +
- .../net/ethernet/mellanox/mlx5/core/dpll.c    |  16 +-
- drivers/of/property.c                         |   2 +
- drivers/ptp/ptp_ocp.c                         |  18 +-
- include/dt-bindings/dpll/dpll.h               |  13 +
- include/linux/dpll.h                          |  74 +-
- 22 files changed, 1442 insertions(+), 158 deletions(-)
+Link: https://github.com/devicetree-org/dt-schema/pull/183
+Signed-off-by: Ivan Vecera <ivecera@redhat.com>
+---
+v2:
+* removed dpll-pin-consumer.yaml schema per request
+* added '#dpll-pin-cells' property into dpll-device.yaml and
+  microchip,zl30731.yaml
+---
+ .../devicetree/bindings/dpll/dpll-device.yaml       | 10 ++++++++++
+ .../devicetree/bindings/dpll/microchip,zl30731.yaml |  4 ++++
+ MAINTAINERS                                         |  1 +
+ include/dt-bindings/dpll/dpll.h                     | 13 +++++++++++++
+ 4 files changed, 28 insertions(+)
  create mode 100644 include/dt-bindings/dpll/dpll.h
 
+diff --git a/Documentation/devicetree/bindings/dpll/dpll-device.yaml b/Documentation/devicetree/bindings/dpll/dpll-device.yaml
+index fb8d7a9a3693f..5022cbd77f308 100644
+--- a/Documentation/devicetree/bindings/dpll/dpll-device.yaml
++++ b/Documentation/devicetree/bindings/dpll/dpll-device.yaml
+@@ -27,6 +27,13 @@ properties:
+   "#size-cells":
+     const: 0
+ 
++  "#dpll-pin-cells":
++    const: 2
++    description: |
++      - Specified pin index
++      - Specified pin direction. The macros are defined in
++        dt-bindings/dpll/dpll.h
++
+   dpll-types:
+     description: List of DPLL channel types, one per DPLL instance.
+     $ref: /schemas/types.yaml#/definitions/non-unique-string-array
+@@ -73,4 +80,7 @@ properties:
+       - "#address-cells"
+       - "#size-cells"
+ 
++required:
++  - "#dpll-pin-cells"
++
+ additionalProperties: true
+diff --git a/Documentation/devicetree/bindings/dpll/microchip,zl30731.yaml b/Documentation/devicetree/bindings/dpll/microchip,zl30731.yaml
+index 17747f754b845..6693151af6ccb 100644
+--- a/Documentation/devicetree/bindings/dpll/microchip,zl30731.yaml
++++ b/Documentation/devicetree/bindings/dpll/microchip,zl30731.yaml
+@@ -44,6 +44,8 @@ examples:
+       #size-cells = <0>;
+ 
+       dpll@70 {
++        #dpll-pin-cells = <2>;
++
+         compatible = "microchip,zl30732";
+         reg = <0x70>;
+         dpll-types = "pps", "eec";
+@@ -80,6 +82,8 @@ examples:
+       #size-cells = <0>;
+ 
+       dpll@70 {
++        #dpll-pin-cells = <2>;
++
+         compatible = "microchip,zl30731";
+         reg = <0x70>;
+         spi-max-frequency = <12500000>;
+diff --git a/MAINTAINERS b/MAINTAINERS
+index afc71089ba09f..d359d42f64223 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -7655,6 +7655,7 @@ F:	Documentation/devicetree/bindings/dpll/dpll-device.yaml
+ F:	Documentation/devicetree/bindings/dpll/dpll-pin.yaml
+ F:	Documentation/driver-api/dpll.rst
+ F:	drivers/dpll/
++F:	include/dt-bindings/dpll/dpll.h
+ F:	include/linux/dpll.h
+ F:	include/uapi/linux/dpll.h
+ 
+diff --git a/include/dt-bindings/dpll/dpll.h b/include/dt-bindings/dpll/dpll.h
+new file mode 100644
+index 0000000000000..5fc9815800fc0
+--- /dev/null
++++ b/include/dt-bindings/dpll/dpll.h
+@@ -0,0 +1,13 @@
++/* SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause) */
++/*
++ * This header provides constants for DPLL bindings.
++ */
++
++#ifndef _DT_BINDINGS_DPLL_DPLL_H
++#define _DT_BINDINGS_DPLL_DPLL_H
++
++/* DPLL pin direction */
++#define DPLL_PIN_INPUT 0
++#define DPLL_PIN_OUTPUT 1
++
++#endif
 -- 
 2.52.0
 
