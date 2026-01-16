@@ -2,87 +2,76 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 526B5D337B5
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Jan 2026 17:26:54 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7042AD37A64
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Jan 2026 18:39:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 04A4882977;
-	Fri, 16 Jan 2026 16:26:53 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 42DCB81E3B;
+	Fri, 16 Jan 2026 17:39:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id my_5JaoMzP4I; Fri, 16 Jan 2026 16:26:52 +0000 (UTC)
+ id mn932-Z4TuE7; Fri, 16 Jan 2026 17:39:49 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2BCBA829A9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BC32F81407
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1768580812;
-	bh=uTNSUuysb6nDLRWNCzQf2cdw4c/lwIxBseFlOWDP2YE=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1768585189;
+	bh=MWpeyDkpC2q6m8UxOVlGAQzo6qnSAB9DbqJnRL9K12I=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=K0IJCRyUnQ7y0tjcXUIOYtZsK/RrlntJ00qdBkp7NsUJ+1JB7i+Oq3SLo3UYWvc9L
-	 lN1u6CyKULisMBwOqxPZ2EjvGPzuk5hEvvBlnvhrlRMljFzapJGdvFyuY4n6/Y+2Gv
-	 Xad3w6fVaCdg5qugYqadq+Ymtzg0ldJjZWiwj/8HDdCDc8msLhPx1B+0cBNh1/4tOS
-	 R+wO2ZHc16d/VSq+ja9Xoah0l9NpVrRzFDY0WdoKtzbZMxQl7C2i+tP2YVKi1I7K29
-	 LGKGnPEV3DPNAjW2NtN0bzsrTNAVf4vpSfC9Gym7IUEOZtL5BFXnPpsiT6CBwlHUs4
-	 K6qCbyXbGq1GA==
+	b=t1zyboXS93JG/TN5n4whhAmSaXhsWiu7Ivmf6QOTXPWk//an91eQUrzTpuEMtoCbn
+	 nNcHeGFo/7TILuG88JG35+zd8KLKyJ6k0LyBSFpdURu7tJfRmQBd6cVhPQHqTNNKC9
+	 EzEdHc9a/PUoRIc5Lenj8qRgvF73XKPVyE80xjVg1YL5/e4dI5SxXZ+mDLK+gN/wV/
+	 ElcXiUDTHpQVm7Vdwou3DlwHXl9Tqmv+AJG826Gj/go/UEZCGXHk4OkXg72dUfumFr
+	 4Z24afTJjk4RXVAsNyojcTWcvAkcy5WNaAlbnvUwrlOxVMZDQn+JcjNGJA1JdXlyIR
+	 SV3a5/vHlJGXw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2BCBA829A9;
-	Fri, 16 Jan 2026 16:26:52 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BC32F81407;
+	Fri, 16 Jan 2026 17:39:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id E90BF223
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jan 2026 16:26:49 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3E2831C3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jan 2026 17:39:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D92DD607FE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jan 2026 16:26:49 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2EFB860C01
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jan 2026 17:39:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id apT39nfyjS4M for <intel-wired-lan@lists.osuosl.org>;
- Fri, 16 Jan 2026 16:26:49 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 4D0B4607FD
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4D0B4607FD
-Received: from sea.source.kernel.org (sea.source.kernel.org
- [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4D0B4607FD
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jan 2026 16:26:49 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 62EA644215;
- Fri, 16 Jan 2026 16:26:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 380FCC116C6;
- Fri, 16 Jan 2026 16:26:47 +0000 (UTC)
-Date: Fri, 16 Jan 2026 16:26:44 +0000
-From: Simon Horman <horms@kernel.org>
+ id cjpojcUSiYyS for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 16 Jan 2026 17:39:45 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B985060C00
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B985060C00
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B985060C00
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jan 2026 17:39:43 +0000 (UTC)
+Received: from [10.0.54.236] (unknown [62.214.191.67])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 8CAA44C2887195;
+ Fri, 16 Jan 2026 18:39:27 +0100 (CET)
+Message-ID: <f7f38dbf-3c5e-428d-a4c3-19f3a9ce18ee@molgen.mpg.de>
+Date: Fri, 16 Jan 2026 18:39:24 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 To: Sreedevi Joshi <sreedevi.joshi@intel.com>
 Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Message-ID: <aWpmxMH5PxEpxKtC@horms.kernel.org>
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Ahmed Zaki <ahmed.zaki@intel.com>
 References: <20260113180113.2478622-1-sreedevi.joshi@intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
 In-Reply-To: <20260113180113.2478622-1-sreedevi.joshi@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1768580808;
- bh=H/MeD4ThwDgkLhQV8hx2BQbg6JkHZVSJTD8llU6KeIU=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=lRZai1hi5GnZ7o5B0YlQpG6n3Y2lVrXlZSP6eukJ8jhsgruXFoxluFAsb/E+lS3SG
- J3cYxlw2Xs5ZH8i29vqcZCDrEwo/quW000za2dDk1wIMG0CP/I5sWUNlP2hzOvR56J
- u8upsirQ6PfB+B9fxWgBbgKVIWZ/A/rrVEO/xWkwA8foNa3VXPCWoFFQrzih9WzdS7
- drcxze0RYqBI4po16pPM3/J7xhZZE4d6n+yI4pbVAL2q3rxJpPxu2E8xzzjjG/MA8f
- hxku5FYa7DLmzZ4hh8CXy3VKHJsXe/v00aql0VTPgC9L0ELQFk8gxTNwCO49UI3kjk
- b6YQuM5hzVFqg==
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=lRZai1hi
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
 Subject: Re: [Intel-wired-lan] [PATCH iwl-net] idpf: Fix flow rule delete
  failure due to invalid validation
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -100,7 +89,14 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Jan 13, 2026 at 12:01:13PM -0600, Sreedevi Joshi wrote:
+[Cc: +Ahmed Zaki]
+
+Dear Sreedevi,
+
+
+Thank you for your patch.
+
+Am 13.01.26 um 19:01 schrieb Sreedevi Joshi:
 > When deleting a flow rule using "ethtool -N <dev> delete <location>",
 > idpf_sideband_action_ena() incorrectly validates fsp->ring_cookie even
 > though ethtool doesn't populate this field for delete operations. The
@@ -113,10 +109,28 @@ On Tue, Jan 13, 2026 at 12:01:13PM -0600, Sreedevi Joshi wrote:
 > Fixes: ada3e24b84a0 ("idpf: add flow steering support")
 > Signed-off-by: Sreedevi Joshi <sreedevi.joshi@intel.com>
 > Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> ---
+>   drivers/net/ethernet/intel/idpf/idpf_ethtool.c | 3 ---
+>   1 file changed, 3 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
+> index 2efa3c08aba5..49cefb973f4d 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_ethtool.c
+> @@ -307,9 +307,6 @@ static int idpf_del_flow_steer(struct net_device *netdev,
+>   	vport_config = vport->adapter->vport_config[np->vport_idx];
+>   	user_config = &vport_config->user_config;
+>   
+> -	if (!idpf_sideband_action_ena(vport, fsp))
+> -		return -EOPNOTSUPP;
+> -
+>   	rule = kzalloc(struct_size(rule, rule_info, 1), GFP_KERNEL);
+>   	if (!rule)
+>   		return -ENOMEM;
 
-Thanks,
+Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
 
-I agree with your analysis.
-And that the problem was introduced by the cited commit.
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+Kind regards,
+
+Paul
