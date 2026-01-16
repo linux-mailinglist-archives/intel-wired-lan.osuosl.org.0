@@ -1,76 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3C177D3849C
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Jan 2026 19:46:51 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CC3BDD3849E
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Jan 2026 19:46:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C1025844A9;
-	Fri, 16 Jan 2026 18:46:49 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7AE6D610E9;
+	Fri, 16 Jan 2026 18:46:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id SdVvXXQGP72B; Fri, 16 Jan 2026 18:46:49 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id DsM8tpKN7gmo; Fri, 16 Jan 2026 18:46:57 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 20299844A2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D5BEA610E5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1768589209;
-	bh=dFoBUxZPqmKwAzqQa1WKexVehA1bFYybxMlTegeA/RI=;
+	s=default; t=1768589217;
+	bh=U0OhRLbKcl0fGc1eqpeFTWeu8BcihMm1H0wXcAahyII=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=r96rbqjbbohezJuot+YLaHjA8ERg4wgSNxzmLLvDA8vxV+g6OShUKCal3o5MTZ2KC
-	 fIwzPIig7XCv8310nzGG19BIyrSQ0wdKAZqLQZIWrn0veJhNCAQb1WrSlYpiyqtFzQ
-	 aB5YlDPMzDFjvcNN2NXowP/vZPf0mHH5PVGN6XWVdvQQHkHO7TTig+AJw3j6+v8sJX
-	 g+mpNekDrFatwN/81QpD+pS9cNCimMIfTpHkoM2B3onPY7D836nC+WbvSBwe2rCFOw
-	 TQTUmbAw0wsbhYCGT0XOXMTn8oCxwh6WbFW07Qx/LjhLWk8acg0vl9yvAr1Z13OGho
-	 UsQZP2AHuI9PA==
+	b=ty/5sXf5ZAxTXkdzfcqtFeIZ7DN2XJSu0528DB9kQbPJMMCUHH6r5RFy2FudpZU/m
+	 V0N6m67Cex7XsAfgGNpfOpj77NFQqMUx7ZvyO0234+2YtUgyPsp+RTOyd2QH5rlso5
+	 6ocHBgNm+txO7Bl9QTKKhxVBnMk6NIP42VTT5tANkm1uiP0kCLuA4QX37OVaTHkQ2Z
+	 a8B0o2bDHonkGGLnOg4CXTexMdp5tLMJ63g5KSCJPIWfK5vFEF3lGV35LDG3bAwaKI
+	 HCe5IFzI0jynAW3Py3+dcaFpX54WZCnbwk1Mx7sSZQB2nw7ysBKD/6a2ooEpVlV17H
+	 ySxh1fADo2Wew==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 20299844A2;
-	Fri, 16 Jan 2026 18:46:49 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D5BEA610E5;
+	Fri, 16 Jan 2026 18:46:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 47DF5160
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jan 2026 18:46:47 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 5AAEE160
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jan 2026 18:46:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3903940260
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jan 2026 18:46:47 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 4BBC540275
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jan 2026 18:46:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id gcsYlWDqlqXI for <intel-wired-lan@lists.osuosl.org>;
- Fri, 16 Jan 2026 18:46:46 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+ id eSp8qvGVXP6e for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 16 Jan 2026 18:46:55 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
  helo=us-smtp-delivery-124.mimecast.com; envelope-from=ivecera@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 2538440265
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2538440265
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 3DCF140265
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3DCF140265
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2538440265
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jan 2026 18:46:45 +0000 (UTC)
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 3DCF140265
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Jan 2026 18:46:55 +0000 (UTC)
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-672-I3CN6q6yNfKecCf4RRiPEA-1; Fri,
- 16 Jan 2026 13:46:41 -0500
-X-MC-Unique: I3CN6q6yNfKecCf4RRiPEA-1
-X-Mimecast-MFC-AGG-ID: I3CN6q6yNfKecCf4RRiPEA_1768589198
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-257-gqLFMPjxPKqAT8GckunHQQ-1; Fri,
+ 16 Jan 2026 13:46:49 -0500
+X-MC-Unique: gqLFMPjxPKqAT8GckunHQQ-1
+X-Mimecast-MFC-AGG-ID: gqLFMPjxPKqAT8GckunHQQ_1768589206
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9189A1800378; Fri, 16 Jan 2026 18:46:37 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E3D211956095; Fri, 16 Jan 2026 18:46:45 +0000 (UTC)
 Received: from p16v.luc.cera.cz (unknown [10.44.34.71])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 07E771955F67; Fri, 16 Jan 2026 18:46:28 +0000 (UTC)
+ id 040F819560A7; Fri, 16 Jan 2026 18:46:37 +0000 (UTC)
 From: Ivan Vecera <ivecera@redhat.com>
 To: netdev@vger.kernel.org
-Date: Fri, 16 Jan 2026 19:46:00 +0100
-Message-ID: <20260116184610.147591-3-ivecera@redhat.com>
+Date: Fri, 16 Jan 2026 19:46:01 +0100
+Message-ID: <20260116184610.147591-4-ivecera@redhat.com>
 In-Reply-To: <20260116184610.147591-1-ivecera@redhat.com>
 References: <20260116184610.147591-1-ivecera@redhat.com>
 MIME-Version: 1.0
@@ -78,23 +78,23 @@ Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1768589204;
+ s=mimecast20190719; t=1768589214;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=dFoBUxZPqmKwAzqQa1WKexVehA1bFYybxMlTegeA/RI=;
- b=hLRMj0rUlJAVV4ZyDFGPObpqMRrscNBZ9RJZoUVh5qqs+DrxRBHMkbAKhMWXV6nNB8s0we
- VEKP4K30zN8o94uJNWmIy3OWEXOpXFuS1xgZU1FWtg7h24umj0JeK8YLvFiuJLk/FDpf14
- ceyYcgaMaRUGrF8zD/8bXRkqWna91pk=
+ bh=U0OhRLbKcl0fGc1eqpeFTWeu8BcihMm1H0wXcAahyII=;
+ b=FROnHGFzAuTiR8GklJgsH+U2vBjhsrpzC6BUEEHoWgDY/WK/jyw2+YrsADfBJng5pyAodi
+ RfIouZZFq9R3lM94GXxwZ3I98f/HTWBrj/P8OWc9ntDvfyRA+6rxQX4QxNQq6WmEDQqwPZ
+ 5bJSkNG9GDpbGKHXpfSCgz25ZiRbgvQ=
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=redhat.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=hLRMj0rU
-Subject: [Intel-wired-lan] [PATCH net-next v2 02/12] dpll: Allow associating
- dpll pin with a firmware node
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=FROnHGFz
+Subject: [Intel-wired-lan] [PATCH net-next v2 03/12] dpll: Add helpers to
+ find DPLL pin fwnode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -127,161 +127,191 @@ Cc: Eric Dumazet <edumazet@google.com>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Extend the DPLL core to support associating a DPLL pin with a firmware
-node. This association is required to allow other subsystems (such as
-network drivers) to locate and request specific DPLL pins defined in
-the Device Tree or ACPI.
+dpll: core: add helpers to find DPLL pin fwnode
 
-* Add a .fwnode field to the struct dpll_pin
-* Introduce dpll_pin_fwnode_set() helper to allow the provider driver
-  to associate a pin with a fwnode after the pin has been allocated
-* Introduce fwnode_dpll_pin_find() helper to allow consumers to search
-  for a registered DPLL pin using its associated fwnode handle
-* Ensure the fwnode reference is properly released in dpll_pin_put()
+Add helper functions to the DPLL core to retrieve a DPLL pin's firmware
+node handle based on the 'dpll-pins' and 'dpll-pin-names' properties.
 
-Reviewed-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
+Unlike simple phandle arrays, 'dpll-pins' entries typically contain
+a pin specifier (index and direction) as defined by '#dpll-pin-cells'.
+The new helper fwnode_dpll_pin_node_get() parses these specifiers
+using fwnode_property_get_reference_args(). It resolves the target
+pin by:
+1. Identifying the DPLL device node from the phandle.
+2. Selecting the correct sub-node ('input-pins' or 'output-pins') based
+   on the direction argument.
+3. Matching the pin index argument against the 'reg' property of
+   the child nodes.
+
+Additionally, register 'dpll-pins' in drivers/of/property.c to enable
+proper parsing of the supplier bindings by the OF core.
+
 Signed-off-by: Ivan Vecera <ivecera@redhat.com>
 ---
- drivers/dpll/dpll_core.c | 49 ++++++++++++++++++++++++++++++++++++++++
- drivers/dpll/dpll_core.h |  2 ++
- include/linux/dpll.h     | 11 +++++++++
- 3 files changed, 62 insertions(+)
+v2:
+* added check for fwnode_property_match_string() return value
+* reworked searching for the pin using dpll device phandle and
+  pin specifier
+* added dpll-pins into OF core supplier_bindings
+---
+ drivers/dpll/dpll_core.c | 74 ++++++++++++++++++++++++++++++++++++++++
+ drivers/of/property.c    |  2 ++
+ include/linux/dpll.h     | 15 ++++++++
+ 3 files changed, 91 insertions(+)
 
 diff --git a/drivers/dpll/dpll_core.c b/drivers/dpll/dpll_core.c
-index a461095efd8ac..fb68b5e19b480 100644
+index fb68b5e19b480..b0083b5c10aa4 100644
 --- a/drivers/dpll/dpll_core.c
 +++ b/drivers/dpll/dpll_core.c
-@@ -10,6 +10,7 @@
- 
- #include <linux/device.h>
- #include <linux/err.h>
-+#include <linux/property.h>
+@@ -13,6 +13,7 @@
+ #include <linux/property.h>
  #include <linux/slab.h>
  #include <linux/string.h>
++#include <dt-bindings/dpll/dpll.h>
  
-@@ -599,12 +600,60 @@ void dpll_pin_put(struct dpll_pin *pin)
- 		xa_destroy(&pin->parent_refs);
- 		xa_destroy(&pin->ref_sync_pins);
- 		dpll_pin_prop_free(&pin->prop);
-+		fwnode_handle_put(pin->fwnode);
- 		kfree_rcu(pin, rcu);
- 	}
- 	mutex_unlock(&dpll_lock);
+ #include "dpll_core.h"
+ #include "dpll_netlink.h"
+@@ -654,6 +655,79 @@ struct dpll_pin *fwnode_dpll_pin_find(struct fwnode_handle *fwnode)
  }
- EXPORT_SYMBOL_GPL(dpll_pin_put);
+ EXPORT_SYMBOL_GPL(fwnode_dpll_pin_find);
  
 +/**
-+ * dpll_pin_fwnode_set - set dpll pin firmware node reference
-+ * @pin: pointer to a dpll pin
-+ * @fwnode: firmware node handle
++ * fwnode_dpll_pin_node_get - get dpll pin node from given fw node and pin name
++ * @fwnode: firmware node that uses the dpll pin
++ * @name: dpll pin name from dpll-pin-names property
 + *
-+ * Set firmware node handle for the given dpll pin.
++ * Return: ERR_PTR() on error or a valid firmware node handle on success.
 + */
-+void dpll_pin_fwnode_set(struct dpll_pin *pin, struct fwnode_handle *fwnode)
++struct fwnode_handle *fwnode_dpll_pin_node_get(struct fwnode_handle *fwnode,
++					       const char *name)
 +{
-+	mutex_lock(&dpll_lock);
-+	fwnode_handle_put(pin->fwnode); /* Drop fwnode previously set */
-+	pin->fwnode = fwnode_handle_get(fwnode);
-+	mutex_unlock(&dpll_lock);
-+}
-+EXPORT_SYMBOL_GPL(dpll_pin_fwnode_set);
++	struct fwnode_handle *parent_node, *pin_node;
++	struct fwnode_reference_args args;
++	const char *parent_name;
++	int ret, index = 0;
 +
-+/**
-+ * fwnode_dpll_pin_find - find dpll pin by firmware node reference
-+ * @fwnode: reference to firmware node
-+ *
-+ * Get existing object of a pin that is associated with given firmware node
-+ * reference.
-+ *
-+ * Context: Acquires a lock (dpll_lock)
-+ * Return:
-+ * * valid dpll_pin struct pointer if succeeded
-+ * * ERR_PTR(X) - error
-+ */
-+struct dpll_pin *fwnode_dpll_pin_find(struct fwnode_handle *fwnode)
-+{
-+	struct dpll_pin *pin, *ret = NULL;
-+	unsigned long index;
-+
-+	mutex_lock(&dpll_lock);
-+	xa_for_each(&dpll_pin_xa, index, pin) {
-+		if (pin->fwnode == fwnode) {
-+			ret = pin;
-+			refcount_inc(&ret->refcount);
-+			break;
-+		}
++	if (name) {
++		index = fwnode_property_match_string(fwnode, "dpll-pin-names",
++						     name);
++		if (index < 0)
++			return ERR_PTR(-ENOENT);
 +	}
-+	mutex_unlock(&dpll_lock);
 +
-+	return ret;
++	ret = fwnode_property_get_reference_args(fwnode, "dpll-pins",
++						 "#dpll-pin-cells", 2, index,
++						 &args);
++	if (ret)
++		return ERR_PTR(ret);
++
++	/* We support only 2 cell DPLL bindings in the kernel currently. */
++	if (args.nargs != 2) {
++		fwnode_handle_put(args.fwnode);
++		return ERR_PTR(-ENOENT);
++	}
++
++	/* Resolve parent node name according pin direction type */
++	switch (args.args[1]) {
++	case DPLL_PIN_INPUT:
++		parent_name = "input-pins";
++		break;
++	case DPLL_PIN_OUTPUT:
++		parent_name = "output-pins";
++		break;
++	default:
++		fwnode_handle_put(args.fwnode);
++		return ERR_PTR(-EINVAL);
++	}
++
++	/* Get pin's parent sub-node */
++	parent_node = fwnode_get_named_child_node(args.fwnode, parent_name);
++	if (!parent_node) {
++		fwnode_handle_put(args.fwnode);
++		return ERR_PTR(-ENOENT);
++	}
++
++	/* Enumerate child pin nodes and find the requested one */
++	fwnode_for_each_child_node(parent_node, pin_node) {
++		u32 reg;
++
++		if (fwnode_property_read_u32(pin_node, "reg", &reg))
++			continue;
++
++		if (reg == args.args[0])
++			break;
++	}
++
++	/* Release pin's parent and dpll device node */
++	fwnode_handle_put(parent_node);
++	fwnode_handle_put(args.fwnode);
++
++	return pin_node ? pin_node : ERR_PTR(-ENOENT);
 +}
-+EXPORT_SYMBOL_GPL(fwnode_dpll_pin_find);
++EXPORT_SYMBOL_GPL(fwnode_dpll_pin_node_get);
 +
  static int
  __dpll_pin_register(struct dpll_device *dpll, struct dpll_pin *pin,
  		    const struct dpll_pin_ops *ops, void *priv, void *cookie)
-diff --git a/drivers/dpll/dpll_core.h b/drivers/dpll/dpll_core.h
-index 8ce969bbeb64e..d3e17ff0ecef0 100644
---- a/drivers/dpll/dpll_core.h
-+++ b/drivers/dpll/dpll_core.h
-@@ -42,6 +42,7 @@ struct dpll_device {
-  * @pin_idx:		index of a pin given by dev driver
-  * @clock_id:		clock_id of creator
-  * @module:		module of creator
-+ * @fwnode:		optional reference to firmware node
-  * @dpll_refs:		hold referencees to dplls pin was registered with
-  * @parent_refs:	hold references to parent pins pin was registered with
-  * @ref_sync_pins:	hold references to pins for Reference SYNC feature
-@@ -54,6 +55,7 @@ struct dpll_pin {
- 	u32 pin_idx;
- 	u64 clock_id;
- 	struct module *module;
-+	struct fwnode_handle *fwnode;
- 	struct xarray dpll_refs;
- 	struct xarray parent_refs;
- 	struct xarray ref_sync_pins;
+diff --git a/drivers/of/property.c b/drivers/of/property.c
+index 4e3524227720a..8571c8bb71ade 100644
+--- a/drivers/of/property.c
++++ b/drivers/of/property.c
+@@ -1410,6 +1410,7 @@ DEFINE_SIMPLE_PROP(post_init_providers, "post-init-providers", NULL)
+ DEFINE_SIMPLE_PROP(access_controllers, "access-controllers", "#access-controller-cells")
+ DEFINE_SIMPLE_PROP(pses, "pses", "#pse-cells")
+ DEFINE_SIMPLE_PROP(power_supplies, "power-supplies", NULL)
++DEFINE_SIMPLE_PROP(dpll_pins, "dpll-pins", "#dpll-pin-cells")
+ DEFINE_SUFFIX_PROP(regulators, "-supply", NULL)
+ DEFINE_SUFFIX_PROP(gpio, "-gpio", "#gpio-cells")
+ 
+@@ -1568,6 +1569,7 @@ static const struct supplier_bindings of_supplier_bindings[] = {
+ 		.parse_prop = parse_post_init_providers,
+ 		.fwlink_flags = FWLINK_FLAG_IGNORE,
+ 	},
++	{ .parse_prop = parse_dpll_pins, },
+ 	{}
+ };
+ 
 diff --git a/include/linux/dpll.h b/include/linux/dpll.h
-index 562f520b23c27..f0c31a111c304 100644
+index f0c31a111c304..755c36d1ef45a 100644
 --- a/include/linux/dpll.h
 +++ b/include/linux/dpll.h
-@@ -16,6 +16,7 @@
- struct dpll_device;
- struct dpll_pin;
- struct dpll_pin_esync;
-+struct fwnode_handle;
+@@ -11,6 +11,7 @@
+ #include <linux/device.h>
+ #include <linux/netlink.h>
+ #include <linux/netdevice.h>
++#include <linux/property.h>
+ #include <linux/rtnetlink.h>
  
- struct dpll_device_ops {
- 	int (*mode_get)(const struct dpll_device *dpll, void *dpll_priv,
-@@ -173,6 +174,8 @@ void dpll_netdev_pin_clear(struct net_device *dev);
- size_t dpll_netdev_pin_handle_size(const struct net_device *dev);
- int dpll_netdev_add_pin_handle(struct sk_buff *msg,
+ struct dpll_device;
+@@ -176,6 +177,8 @@ int dpll_netdev_add_pin_handle(struct sk_buff *msg,
  			       const struct net_device *dev);
-+
-+struct dpll_pin *fwnode_dpll_pin_find(struct fwnode_handle *fwnode);
+ 
+ struct dpll_pin *fwnode_dpll_pin_find(struct fwnode_handle *fwnode);
++struct fwnode_handle *fwnode_dpll_pin_node_get(struct fwnode_handle *fwnode,
++					       const char *name);
  #else
  static inline void
  dpll_netdev_pin_set(struct net_device *dev, struct dpll_pin *dpll_pin) { }
-@@ -188,6 +191,12 @@ dpll_netdev_add_pin_handle(struct sk_buff *msg, const struct net_device *dev)
+@@ -197,8 +200,20 @@ fwnode_dpll_pin_find(struct fwnode_handle *fwnode)
  {
- 	return 0;
+ 	return NULL;
  }
 +
-+static inline struct dpll_pin *
-+fwnode_dpll_pin_find(struct fwnode_handle *fwnode)
++static inline struct fwnode_handle *
++fwnode_dpll_pin_node_get(struct fwnode_handle *fwnode, const char *name)
 +{
 +	return NULL;
 +}
  #endif
  
- struct dpll_device *
-@@ -213,6 +222,8 @@ void dpll_pin_unregister(struct dpll_device *dpll, struct dpll_pin *pin,
- 
- void dpll_pin_put(struct dpll_pin *pin);
- 
-+void dpll_pin_fwnode_set(struct dpll_pin *pin, struct fwnode_handle *fwnode);
++static inline struct fwnode_handle *
++device_dpll_pin_node_get(struct device *dev, const char *name)
++{
++	return fwnode_dpll_pin_node_get(dev_fwnode(dev), name);
++}
 +
- int dpll_pin_on_pin_register(struct dpll_pin *parent, struct dpll_pin *pin,
- 			     const struct dpll_pin_ops *ops, void *priv);
+ struct dpll_device *
+ dpll_device_get(u64 clock_id, u32 dev_driver_id, struct module *module);
  
 -- 
 2.52.0
