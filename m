@@ -1,92 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B8A63D38F31
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 17 Jan 2026 15:56:39 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 66438D38F2F
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 17 Jan 2026 15:54:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A8E9A61035;
-	Sat, 17 Jan 2026 14:56:37 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B7209840ED;
+	Sat, 17 Jan 2026 14:54:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Jg8wNetaMR1L; Sat, 17 Jan 2026 14:56:36 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 4sjFEF1xE4KT; Sat, 17 Jan 2026 14:54:05 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CA8DD61031
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BE300840D9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1768661796;
-	bh=aa54OENF9ABNcJv7sWUPIY+48jkbuXthOXRhJ6iiK6w=;
-	h=To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From:Reply-To:From;
-	b=uJ6z3IX+j1qTQhpxdv68nbUvhHu+AnjRaMj6vpIl4WnVV82Zknbu6v67v5COzrgHm
-	 GOFzNACJWC5PRAVp4fwemBbpT88hHovmsZUrsxabPjfnZEh9nEMpeK/gxj3o9wHFIF
-	 rN8amJ//B+8azFJqokvGB8Xpjva/RQIzKQbCEZInJw37h6tCc+YYq9NiolJg4jVIZu
-	 69Ad3m/iO3sHlvC4sDoxxSfWxDZ54thRUudirHw7XuhruYaHKT+6i0HOsuf1wAR2d2
-	 Rx85YlmfCe4cjSQdM1X2lVDVpH840xbuMPjlNGgjSYJkCmlzWcKOeIrojz0k9Af5Lf
-	 2eCKNfmZ110kQ==
+	s=default; t=1768661645;
+	bh=88KYRcAb3cDcxYbeQuR1D2/IDGWLEZRaQQ19ZXKtWRA=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=HUJAr2njnULhd5Da57GMc2BbTq1PyO5zXNI8jQBmT6i6zJpEDW1HVf+mC7BwtFgxR
+	 jV0dAe8/9zCkTegvPZZ0lcyCkrUAMNaFPd+pHBv0+c60ciJgfbt2EFZUcSCvPaoYD8
+	 4K6+D9n0g5m8+LaghbVxbrOuIC5FUWdkwfHZsjM7fSFc371zhYtFJobd3sZPsoV+IP
+	 1BhDrSE0TpC+k7T162m2YyjwI+WlSoOaTltKlkGWf2SQvvUpWzOeEYII9H0VCC6wRK
+	 RhU1GF6x/RVtYdwkUdPX8GYYK7YlO9wCUPDCKaiqcRtpf0Th5zpEw2CyVSAJZDYJZ5
+	 O/1X9qZlgOQAA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CA8DD61031;
-	Sat, 17 Jan 2026 14:56:36 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BE300840D9;
+	Sat, 17 Jan 2026 14:54:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 5408F347
- for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Jan 2026 14:56:35 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 941DB347
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Jan 2026 14:54:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 30BE960BBA
- for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Jan 2026 14:56:35 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6D6D1413CB
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Jan 2026 14:54:04 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id z5-WCGLW8P5U for <intel-wired-lan@lists.osuosl.org>;
- Sat, 17 Jan 2026 14:56:33 +0000 (UTC)
-X-Greylist: delayed 304 seconds by postgrey-1.37 at util1.osuosl.org;
- Sat, 17 Jan 2026 14:56:31 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6A52460B83
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6A52460B83
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=185.136.65.226;
- helo=mta-65-226.siemens.flowmailer.net;
- envelope-from=fm-1333436-20260117145124783eefdf6a0002076d-q1elmq@rts-flowmailer.siemens.com;
- receiver=<UNKNOWN> 
-Received: from mta-65-226.siemens.flowmailer.net
- (mta-65-226.siemens.flowmailer.net [185.136.65.226])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6A52460B83
- for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Jan 2026 14:56:31 +0000 (UTC)
-Received: by mta-65-226.siemens.flowmailer.net with ESMTPSA id
- 20260117145124783eefdf6a0002076d
- for <intel-wired-lan@lists.osuosl.org>;
- Sat, 17 Jan 2026 15:51:24 +0100
-To: aleksandr.loktionov@intel.com, jacob.e.keller@intel.com,
- anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- maciej.fijalkowski@intel.com, sriram.yagnaraman@ericsson.com,
- kurt@linutronix.de
-Cc: intel-wired-lan@lists.osuosl.org,
-	vivek.behera@siemens.com
-Date: Sat, 17 Jan 2026 15:51:12 +0100
-Message-Id: <20260117145112.2088217-1-vivek.behera@siemens.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Flowmailer-Platform: Siemens
-Feedback-ID: 519:519-1333436:519-21489:flowmailer
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; s=fm1; 
- d=siemens.com; i=vivek.behera@siemens.com;
- h=Date:From:Subject:To:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding:Cc;
- bh=aa54OENF9ABNcJv7sWUPIY+48jkbuXthOXRhJ6iiK6w=;
- b=U6uYONGn/HtrDH1A8XaCfQ55LML4+efQtG8u6uFh4XW2VH1TIvBM7c9zg9jB7sERhocM8M
- VqDZC6hAyi35E1kkV9VDtZ7hgXIly6ru720Wq4LUYCOjrESgTfTZ2mv4o/AFXIVQdXBC8O1I
- 8gIr0QUF29ZnB3Er5JkVtp/qZnTGsvsnePcVtDQhoeS2jW5IXdQQ7ewfP41tbJtwvaOy3yND
- hXiXY9Rj9z2ZFq+R9Rf00kIUei5q+B5cHPKctNC/t2bw9nO7oG3TtXedFmE7/cNPrP42QSCc
- oBjH8xGNW3V92TXRkx7JaHO/4mb1cx5qlerVlph2up4q8+HfRujpJn2w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=siemens.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 9IjfvbwTdbXe for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 17 Jan 2026 14:54:03 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 40984413C9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 40984413C9
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 40984413C9
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Jan 2026 14:54:02 +0000 (UTC)
+X-CSE-ConnectionGUID: cfqhudiiQNCgnYHvoE1bdg==
+X-CSE-MsgGUID: tsZYZ1IlQ+OT9YWeXmhzdQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11674"; a="72537409"
+X-IronPort-AV: E=Sophos;i="6.21,234,1763452800"; d="scan'208";a="72537409"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+ by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Jan 2026 06:54:02 -0800
+X-CSE-ConnectionGUID: kqIh3gUYT0SyG91xn8WJPg==
+X-CSE-MsgGUID: OGe7rvpSQPG5Wgj6Mp8ihA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,234,1763452800"; d="scan'208";a="205760113"
+Received: from lkp-server01.sh.intel.com (HELO 765f4a05e27f) ([10.239.97.150])
+ by fmviesa008.fm.intel.com with ESMTP; 17 Jan 2026 06:54:00 -0800
+Received: from kbuild by 765f4a05e27f with local (Exim 4.98.2)
+ (envelope-from <lkp@intel.com>) id 1vh7gc-00000000Lw8-2xEs;
+ Sat, 17 Jan 2026 14:53:58 +0000
+Date: Sat, 17 Jan 2026 22:53:05 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202601172200.WNvPaYPi-lkp@intel.com>
+User-Agent: s-nail v14.9.25
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1768661643; x=1800197643;
+ h=date:from:to:subject:message-id;
+ bh=/3h7TsToDufBrLCoA4H8izcyXtTrg4V1VUjRm79COKc=;
+ b=Qsut7kZusdlrNEvDJvcZ9Gl4CmdCzCqRevwaq3YswdKYBkVc7XhyXxkG
+ cf959bdO5fqkeI3cy4pQYp0X+FicIwAPb6zcnfOJq8jG/yzht15pCxyRb
+ KsQiMTUqAMayQseE/uq00cSz9Z1QNyXSD2ds1KNvuuvm+IpMJNHYScWqS
+ /Cgm83KteNxyUOWtYIRwqjqIQfGbCSH3V/9DMQ/AYtAbFraXdcHdZNMb8
+ lvE9Qti4lY98NxP34bagxGAuMUnvTuq3e3JAgAXP48fN5U5TarcP0kRNd
+ HU9abBKltExA3YiI8d1Gq6JXYSM1EnrFQXIwwy9C5ys7+7+AxEZjQB/27
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=siemens.com header.i=vivek.behera@siemens.com
- header.a=rsa-sha256 header.s=fm1 header.b=U6uYONGn
-Subject: [Intel-wired-lan] [PATCH iwl-net v6] igb: Fix trigger of incorrect
- irq in igb_xsk_wakeup
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Qsut7kZu
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ e046e2303f4abefe4e0cfa49942c61ef23f4c183
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -99,127 +101,224 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-From: Vivek Behera via Intel-wired-lan <intel-wired-lan@osuosl.org>
-Reply-To: Vivek Behera <vivek.behera@siemens.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The current implementation in the igb_xsk_wakeup expects
-the Rx and Tx queues to share the same irq. This would lead
-to triggering of incorrect irq in split irq configuration.
-This patch addresses this issue which could impact environments
-with 2 active cpu cores
-or when the number of queues is reduced to 2 or less
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: e046e2303f4abefe4e0cfa49942c61ef23f4c183  ice: fix retry for AQ command 0x06EE
 
-cat /proc/interrupts | grep eno2
- 167:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0
- 0-edge      eno2
- 168:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0
- 1-edge      eno2-rx-0
- 169:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0
- 2-edge      eno2-rx-1
- 170:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0
- 3-edge      eno2-tx-0
- 171:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0
- 4-edge      eno2-tx-1
+elapsed time: 988m
 
-Furthermore it uses the flags input argument to trigger either rx, tx or
-both rx and tx irqs as specified in the ndo_xsk_wakeup api documentation
+configs tested: 202
+configs skipped: 8
 
-Fixes: 80f6ccf9f116 ("igb: Introduce XSK data structures and helpers")
-Signed-off-by: Vivek Behera <vivek.behera@siemens.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Suggested-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
----
-v1: https://lore.kernel.org/intel-wired-lan/20251212131454.124116-1-vivek.behera@siemens.com/
-v2: https://lore.kernel.org/intel-wired-lan/20251215115416.410619-1-vivek.behera@siemens.com/
-v3: https://lore.kernel.org/intel-wired-lan/20251220114936.140473-1-vivek.behera@siemens.com/
-v4: https://lore.kernel.org/intel-wired-lan/20251222115747.230521-1-vivek.behera@siemens.com/
-v5: https://lore.kernel.org/intel-wired-lan/20260112130349.1737901-1-vivek.behera@siemens.com/
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-changelog:
-v1
-- Initial description of the Bug and fixes made in the patch
+tested configs:
+alpha                             allnoconfig    gcc-15.2.0
+alpha                            allyesconfig    gcc-15.2.0
+alpha                               defconfig    gcc-15.2.0
+arc                              allmodconfig    clang-16
+arc                               allnoconfig    gcc-15.2.0
+arc                              allyesconfig    clang-22
+arc                                 defconfig    gcc-15.2.0
+arc                         haps_hs_defconfig    clang-22
+arc                   randconfig-001-20260117    gcc-12.5.0
+arc                   randconfig-002-20260117    gcc-12.5.0
+arm                               allnoconfig    clang-22
+arm                               allnoconfig    gcc-15.2.0
+arm                              allyesconfig    clang-16
+arm                          collie_defconfig    gcc-15.2.0
+arm                                 defconfig    gcc-15.2.0
+arm                       multi_v4t_defconfig    gcc-15.2.0
+arm                          pxa3xx_defconfig    clang-22
+arm                   randconfig-001-20260117    gcc-12.5.0
+arm                   randconfig-002-20260117    gcc-12.5.0
+arm                   randconfig-003-20260117    gcc-12.5.0
+arm                   randconfig-004-20260117    gcc-12.5.0
+arm64                            allmodconfig    clang-22
+arm64                             allnoconfig    gcc-15.2.0
+arm64                               defconfig    gcc-15.2.0
+arm64                 randconfig-001-20260117    clang-22
+arm64                 randconfig-002-20260117    clang-22
+arm64                 randconfig-003-20260117    clang-22
+arm64                 randconfig-004-20260117    clang-22
+csky                             allmodconfig    gcc-15.2.0
+csky                              allnoconfig    gcc-15.2.0
+csky                                defconfig    gcc-15.2.0
+csky                  randconfig-001-20260117    clang-22
+csky                  randconfig-002-20260117    clang-22
+hexagon                          allmodconfig    gcc-15.2.0
+hexagon                           allnoconfig    clang-22
+hexagon                           allnoconfig    gcc-15.2.0
+hexagon                             defconfig    gcc-15.2.0
+hexagon               randconfig-001-20260117    clang-22
+hexagon               randconfig-002-20260117    clang-22
+i386                             allmodconfig    clang-20
+i386                             allmodconfig    gcc-14
+i386                              allnoconfig    gcc-14
+i386                              allnoconfig    gcc-15.2.0
+i386                             allyesconfig    clang-20
+i386                             allyesconfig    gcc-14
+i386        buildonly-randconfig-001-20260117    gcc-13
+i386        buildonly-randconfig-002-20260117    gcc-13
+i386        buildonly-randconfig-003-20260117    gcc-13
+i386        buildonly-randconfig-004-20260117    gcc-13
+i386        buildonly-randconfig-005-20260117    gcc-13
+i386        buildonly-randconfig-006-20260117    gcc-13
+i386                                defconfig    gcc-15.2.0
+i386                  randconfig-001-20260117    gcc-14
+i386                  randconfig-002-20260117    gcc-14
+i386                  randconfig-003-20260117    gcc-14
+i386                  randconfig-004-20260117    gcc-14
+i386                  randconfig-005-20260117    gcc-14
+i386                  randconfig-006-20260117    gcc-14
+i386                  randconfig-007-20260117    gcc-14
+i386                  randconfig-011-20260117    gcc-14
+i386                  randconfig-012-20260117    gcc-14
+i386                  randconfig-013-20260117    gcc-14
+i386                  randconfig-014-20260117    gcc-14
+i386                  randconfig-015-20260117    gcc-14
+i386                  randconfig-016-20260117    gcc-14
+i386                  randconfig-017-20260117    gcc-14
+loongarch                        allmodconfig    clang-22
+loongarch                         allnoconfig    clang-22
+loongarch                         allnoconfig    gcc-15.2.0
+loongarch                           defconfig    clang-19
+loongarch                loongson64_defconfig    gcc-15.2.0
+loongarch             randconfig-001-20260117    clang-22
+loongarch             randconfig-002-20260117    clang-22
+m68k                             allmodconfig    gcc-15.2.0
+m68k                              allnoconfig    gcc-15.2.0
+m68k                             allyesconfig    clang-16
+m68k                          atari_defconfig    gcc-15.2.0
+m68k                                defconfig    clang-19
+m68k                       m5249evb_defconfig    gcc-15.2.0
+m68k                        m5407c3_defconfig    gcc-15.2.0
+microblaze                        allnoconfig    gcc-15.2.0
+microblaze                       allyesconfig    gcc-15.2.0
+microblaze                          defconfig    clang-19
+mips                             allmodconfig    gcc-15.2.0
+mips                              allnoconfig    gcc-15.2.0
+mips                             allyesconfig    gcc-15.2.0
+mips                        bcm47xx_defconfig    clang-22
+mips                           ip30_defconfig    clang-22
+nios2                            allmodconfig    clang-22
+nios2                            allmodconfig    gcc-11.5.0
+nios2                             allnoconfig    clang-22
+nios2                             allnoconfig    gcc-11.5.0
+nios2                               defconfig    clang-19
+nios2                 randconfig-001-20260117    clang-22
+nios2                 randconfig-002-20260117    clang-22
+openrisc                         allmodconfig    clang-22
+openrisc                         allmodconfig    gcc-15.2.0
+openrisc                          allnoconfig    clang-22
+openrisc                          allnoconfig    gcc-15.2.0
+openrisc                            defconfig    gcc-15.2.0
+parisc                           allmodconfig    gcc-15.2.0
+parisc                            allnoconfig    clang-22
+parisc                            allnoconfig    gcc-15.2.0
+parisc                           allyesconfig    clang-19
+parisc                           allyesconfig    gcc-15.2.0
+parisc                              defconfig    gcc-15.2.0
+parisc                randconfig-001-20260117    clang-22
+parisc                randconfig-002-20260117    clang-22
+parisc64                            defconfig    clang-19
+powerpc                          allmodconfig    gcc-15.2.0
+powerpc                           allnoconfig    clang-22
+powerpc                           allnoconfig    gcc-15.2.0
+powerpc                   motionpro_defconfig    clang-22
+powerpc               randconfig-001-20260117    clang-22
+powerpc               randconfig-002-20260117    clang-22
+powerpc                     tqm8548_defconfig    clang-22
+powerpc64             randconfig-001-20260117    clang-22
+powerpc64             randconfig-002-20260117    clang-22
+riscv                            allmodconfig    clang-22
+riscv                             allnoconfig    clang-22
+riscv                             allnoconfig    gcc-15.2.0
+riscv                            allyesconfig    clang-16
+riscv                               defconfig    gcc-15.2.0
+riscv                 randconfig-001-20260117    gcc-10.5.0
+riscv                 randconfig-002-20260117    gcc-10.5.0
+s390                             allmodconfig    clang-18
+s390                             allmodconfig    clang-19
+s390                              allnoconfig    clang-22
+s390                             allyesconfig    gcc-15.2.0
+s390                                defconfig    gcc-15.2.0
+s390                  randconfig-001-20260117    gcc-10.5.0
+s390                  randconfig-002-20260117    gcc-10.5.0
+sh                               allmodconfig    gcc-15.2.0
+sh                                allnoconfig    clang-22
+sh                                allnoconfig    gcc-15.2.0
+sh                               allyesconfig    clang-19
+sh                               allyesconfig    gcc-15.2.0
+sh                                  defconfig    gcc-14
+sh                    randconfig-001-20260117    gcc-10.5.0
+sh                    randconfig-002-20260117    gcc-10.5.0
+sh                           se7751_defconfig    clang-22
+sparc                             allnoconfig    clang-22
+sparc                             allnoconfig    gcc-15.2.0
+sparc                               defconfig    gcc-15.2.0
+sparc                 randconfig-001-20260117    gcc-14.3.0
+sparc                 randconfig-002-20260117    gcc-14.3.0
+sparc64                          allmodconfig    clang-22
+sparc64                             defconfig    gcc-14
+sparc64               randconfig-001-20260117    gcc-14.3.0
+sparc64               randconfig-002-20260117    gcc-14.3.0
+um                               alldefconfig    gcc-15.2.0
+um                               allmodconfig    clang-19
+um                                allnoconfig    clang-22
+um                               allyesconfig    gcc-15.2.0
+um                                  defconfig    gcc-14
+um                             i386_defconfig    gcc-14
+um                    randconfig-001-20260117    gcc-14.3.0
+um                    randconfig-002-20260117    gcc-14.3.0
+um                           x86_64_defconfig    gcc-14
+x86_64                           allmodconfig    clang-20
+x86_64                            allnoconfig    clang-20
+x86_64                            allnoconfig    clang-22
+x86_64                           allyesconfig    clang-20
+x86_64      buildonly-randconfig-001-20260117    clang-20
+x86_64      buildonly-randconfig-002-20260117    clang-20
+x86_64      buildonly-randconfig-003-20260117    clang-20
+x86_64      buildonly-randconfig-004-20260117    clang-20
+x86_64      buildonly-randconfig-005-20260117    clang-20
+x86_64      buildonly-randconfig-006-20260117    clang-20
+x86_64                              defconfig    gcc-14
+x86_64                                  kexec    clang-20
+x86_64                randconfig-001-20260117    clang-20
+x86_64                randconfig-002-20260117    clang-20
+x86_64                randconfig-003-20260117    clang-20
+x86_64                randconfig-004-20260117    clang-20
+x86_64                randconfig-005-20260117    clang-20
+x86_64                randconfig-006-20260117    clang-20
+x86_64                randconfig-011-20260117    clang-20
+x86_64                randconfig-012-20260117    clang-20
+x86_64                randconfig-013-20260117    clang-20
+x86_64                randconfig-014-20260117    clang-20
+x86_64                randconfig-015-20260117    clang-20
+x86_64                randconfig-016-20260117    clang-20
+x86_64                randconfig-071-20260117    clang-20
+x86_64                randconfig-072-20260117    clang-20
+x86_64                randconfig-073-20260117    clang-20
+x86_64                randconfig-074-20260117    clang-20
+x86_64                randconfig-075-20260117    clang-20
+x86_64                randconfig-076-20260117    clang-20
+x86_64                               rhel-9.4    clang-20
+x86_64                           rhel-9.4-bpf    gcc-14
+x86_64                          rhel-9.4-func    clang-20
+x86_64                    rhel-9.4-kselftests    clang-20
+x86_64                         rhel-9.4-kunit    gcc-14
+x86_64                           rhel-9.4-ltp    gcc-14
+x86_64                          rhel-9.4-rust    clang-20
+xtensa                            allnoconfig    clang-22
+xtensa                            allnoconfig    gcc-15.2.0
+xtensa                           allyesconfig    clang-22
+xtensa                  nommu_kc705_defconfig    gcc-15.2.0
+xtensa                randconfig-001-20260117    gcc-14.3.0
+xtensa                randconfig-002-20260117    gcc-14.3.0
 
-v1 -> v2
-- Handling of RX and TX Wakeup in igc_xsk_wakeup for a split IRQ configuration
-- Review suggestions by Aleksander: Modified sequence to complete all
-  error checks for rx and tx before updating napi states and triggering irqs
-- Corrected trigger of TX and RX interrupts over E1000_ICS (non msix use case)
-- Added define for Tx interrupt trigger bit mask for E1000_ICS
-
-v2 -> v3
-- Included applicable feedback and suggestions from igc patch
-- Fixed logic in updating eics value when  both TX and RX need wakeup
-
-v3 -> v4
-- Added comments to explain trigerring of both TX and RX with active queue pairs
-- Fixed check of xsk pools in if statement
-
-v4 -> v5
-- Introduced a simplified logic for sequential check for RX and TX
-
-v5 -> v6
-- Further simplifications suggested by Maciej
-- Included review suggestions from reviewers
----
- drivers/net/ethernet/intel/igb/igb_xsk.c | 31 ++++++++++++++++++++----
- 1 file changed, 26 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igb/igb_xsk.c b/drivers/net/ethernet/intel/igb/igb_xsk.c
-index 30ce5fbb5b77..f8bddb7a2af8 100644
---- a/drivers/net/ethernet/intel/igb/igb_xsk.c
-+++ b/drivers/net/ethernet/intel/igb/igb_xsk.c
-@@ -524,6 +524,16 @@ bool igb_xmit_zc(struct igb_ring *tx_ring, struct xsk_buff_pool *xsk_pool)
- 	return nb_pkts < budget;
- }
- 
-+static u32 igb_sw_irq_prep(struct igb_q_vector *q_vector)
-+{
-+	u32 eics = 0;
-+
-+	if (!napi_if_scheduled_mark_missed(&q_vector->napi))
-+		eics = q_vector->eims_value;
-+
-+	return eics;
-+}
-+
- int igb_xsk_wakeup(struct net_device *dev, u32 qid, u32 flags)
- {
- 	struct igb_adapter *adapter = netdev_priv(dev);
-@@ -542,16 +552,27 @@ int igb_xsk_wakeup(struct net_device *dev, u32 qid, u32 flags)
- 
- 	ring = adapter->tx_ring[qid];
- 
--	if (test_bit(IGB_RING_FLAG_TX_DISABLED, &ring->flags))
--		return -ENETDOWN;
--
- 	if (!READ_ONCE(ring->xsk_pool))
- 		return -EINVAL;
- 
--	if (!napi_if_scheduled_mark_missed(&ring->q_vector->napi)) {
-+	if (flags & XDP_WAKEUP_TX) {
-+		if (test_bit(IGB_RING_FLAG_TX_DISABLED, &ring->flags))
-+			return -ENETDOWN;
-+
-+		eics |= igb_sw_irq_prep(ring->q_vector);
-+	}
-+
-+	if (flags & XDP_WAKEUP_RX) {
-+		/* for IGB_FLAG_QUEUE_PAIRS, this will be NOP as NAPI has
-+		 * been already marked with NAPIF_STATE_MISSED
-+		 */
-+		ring = adapter->rx_ring[qid];
-+		eics |= igb_sw_irq_prep(ring->q_vector);
-+	}
-+
-+	if (eics) {
- 		/* Cause software interrupt */
- 		if (adapter->flags & IGB_FLAG_HAS_MSIX) {
--			eics |= ring->q_vector->eims_value;
- 			wr32(E1000_EICS, eics);
- 		} else {
- 			wr32(E1000_ICS, E1000_ICS_RXDMT0);
--- 
-2.34.1
-
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
