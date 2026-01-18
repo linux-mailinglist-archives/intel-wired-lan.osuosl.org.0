@@ -2,108 +2,116 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A948D39057
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 17 Jan 2026 19:22:16 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DE5DDD39528
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 18 Jan 2026 13:56:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 09514611F4;
-	Sat, 17 Jan 2026 18:22:14 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 594D461780;
+	Sun, 18 Jan 2026 12:56:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id H7ghGEHbtC_R; Sat, 17 Jan 2026 18:22:13 +0000 (UTC)
+ id wTpdfzMmTz3V; Sun, 18 Jan 2026 12:56:55 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3CAE3611EA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CDF3261784
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1768674133;
-	bh=h1XwfyBOA2rxjy0dGHmw0NBN5mZlkaFY9bVx7FsHrVU=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1768741015;
+	bh=5vuppoT7xEbD8pTBXyzO8MGSdOfeAdBaep+fRisqsu8=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=Jz6WqbazLPf0W3aEbxK88637LGe+n5ltiIaKBGbMiopDG292ZGjebKmp1x6QU6jsG
-	 ZA3R2bHE/EDWygj8c2Vef6DqId5GojTnVgS+NQNRPde2JmpqZso5NBdJ61xZX17NWg
-	 Vkm4WnZcpRqHLhBZ6ynjhARFq7fHqCcsmfjb5V+i0GPDN2Ejkb4pbuygii/2FqNjEZ
-	 EzVnc7MaG6d6/YnwYV/yVYcCpW9z4Wyout6XvDoI5vMUJb1Q0G3U9m0KcY03Z+mUDb
-	 TSSH/fZMp+q8yp6uvjKXmVK5HJsZJdmoHvRAAnt6coM6wfnUbU+74LUSvU1quz/7bi
-	 PDvWvuREQjPMw==
+	 From;
+	b=vDUuHrGq/7xtthXQv1FqI6fhwxfbef/1cJrwsr6dLJTmCXTfyKPjZM7XsBC2P769v
+	 p1th/ixEInNmkBKA/PBlgLO8rKDrgPMBxnGeTaxnde/MEV/kJoTzLaKclOVU9o4wY1
+	 0oWNiZ5LmptTiYIN678nNs8wvA4V6gxdcCznbDpHoC7DQxmqVRA0+b6+hU/DJ2V219
+	 yu9lA7b/cvs/BJhPae/psm9Vmfv1ogdDJCgn4M1kUHB+Hhp9sOSXezNR7CO/mjMYLc
+	 LfqUiwE/Nrnq5q4paiXCG9KH2Y2BPiwZWPB5+dQQ+9c3+aueudUPcD2+Iye0sxusxl
+	 coDj9fsztc+Uw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3CAE3611EA;
-	Sat, 17 Jan 2026 18:22:13 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CDF3261784;
+	Sun, 18 Jan 2026 12:56:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id AF712347
- for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Jan 2026 18:22:11 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 1038A160
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Jan 2026 12:56:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9C1A983F59
- for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Jan 2026 18:22:11 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id F242B418B6
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Jan 2026 12:56:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id u9d9O74Jpr6U for <intel-wired-lan@lists.osuosl.org>;
- Sat, 17 Jan 2026 18:22:10 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=ivecera@redhat.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 7A1D483ED3
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7A1D483ED3
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7A1D483ED3
- for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Jan 2026 18:22:09 +0000 (UTC)
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-496-hgAFbccKNUaAQkdMGGmumA-1; Sat,
- 17 Jan 2026 13:22:02 -0500
-X-MC-Unique: hgAFbccKNUaAQkdMGGmumA-1
-X-Mimecast-MFC-AGG-ID: hgAFbccKNUaAQkdMGGmumA_1768674118
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 029F21956094; Sat, 17 Jan 2026 18:21:58 +0000 (UTC)
-Received: from [10.44.32.32] (unknown [10.44.32.32])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 48F9518001D5; Sat, 17 Jan 2026 18:21:50 +0000 (UTC)
-Message-ID: <45be7c3e-bd87-4448-aff1-d91794099391@redhat.com>
-Date: Sat, 17 Jan 2026 19:21:48 +0100
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 9N4_BlLZymPF for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 18 Jan 2026 12:56:53 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::429; helo=mail-wr1-x429.google.com;
+ envelope-from=dan.carpenter@linaro.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 038E5418AC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 038E5418AC
+Received: from mail-wr1-x429.google.com (mail-wr1-x429.google.com
+ [IPv6:2a00:1450:4864:20::429])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 038E5418AC
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Jan 2026 12:56:52 +0000 (UTC)
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-42fbc3056afso2048550f8f.2
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Jan 2026 04:56:52 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1768741011; x=1769345811;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=5vuppoT7xEbD8pTBXyzO8MGSdOfeAdBaep+fRisqsu8=;
+ b=vMRMoZQ+O4Osii+JXtrI4gG41fZpVM9yXihaRYWSRCHj4ykvUpdRyvj/dZ1R9xgE1Z
+ hsnVndRHaoUnuXraiE/KO3klat6qDswsV2YFWP9qNHFD5dCskmvbdZKygqNyUpKywfHU
+ VSkFIFf0A+SV4leXM5Hin1iRQarSBLv+PpKgzyF1zPSni7Ri04ZIy5FXyMUGSzeCK/Sn
+ MW+TaR+arw43Re5ngDrBU2VbQAU9qb5wMMElDpC0LFoZblfxWiL6XnoieyJfPOdFoSq3
+ DLBEWeoynojSOuI5h8dvJjH5RPllQCIQKl7xoZwXVcmKpHNvfBHZ/UwDnWYbGkUxTr4F
+ IEJg==
+X-Gm-Message-State: AOJu0YwvmCV7m/Q067XTxJSQZlI3zQAXOhZqeYG0oWoej3cjnnldj2lV
+ 2aBxQA+Yriw7MUJHDQ5ZqhuM8yvhmpmdOye7yUVAdwXtjd9ACjo0AHooL50o7JnS3jI=
+X-Gm-Gg: AY/fxX7Sz3iGLa+Vu7XYgO9kNNkZ/1D5yOgPBaMp74afwYjqx4FtwtGt6TyckgWzrgw
+ AEorX4JG20OV9XOeRwe0CSwc/vBDGtAKBR34jg1ZqCMV6P0nEyFrdsWhCQcxFbH9JisvbHl2TTA
+ Dhl89gIuir6F9W4UogwJ2SqpQcH8WG4BiYHTK5ut0SiPBIO0vjSd5ltXgsDG68VEldZmWIOlNXr
+ 9+V+McwW/iWb80D8vHLGsRe6PB5wZ+4cISGIAM95ue/WrdKieOqFSB7Nj/p/1B6VRpzxNIhq5go
+ cQYkUrdu9o3INrUXkFXNm5Gq4Bg2PXYNrVwPcl4Uxn9VTtUv/qVUwEPq38LuW6YLWRJ8AIgnQlA
+ o3n5JI2szr06MkUz5+2w26/6U4s4jXljphQTm4/5e8xdEdwRcYvzbX6wXLNb39KIv69jlLXMYf3
+ 8PUxqIKctXkgfLpe87FdDEKjGUZ18=
+X-Received: by 2002:a5d:588d:0:b0:430:ff81:2965 with SMTP id
+ ffacd0b85a97d-4356a060dc4mr9673825f8f.49.1768741010676; 
+ Sun, 18 Jan 2026 04:56:50 -0800 (PST)
+Received: from localhost ([196.207.164.177]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4356992201csm17368207f8f.2.2026.01.18.04.56.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 18 Jan 2026 04:56:50 -0800 (PST)
+Date: Sun, 18 Jan 2026 15:56:47 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, horms@kernel.org,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Message-ID: <aWzYj1cfVuhHpGCO@stanley.mountain>
+References: <20260116122353.78235-1-piotr.kwapulinski@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Rob Herring <robh@kernel.org>
-References: <20260108182318.20935-1-ivecera@redhat.com>
- <20260108182318.20935-2-ivecera@redhat.com>
- <92bfc390-d706-4988-b98d-841a50f10834@redhat.com>
- <CAL_Jsq+m7-wop-AU-7R-=2JsUqb+2LsVTXCbZw==1XuAAQ4Tkg@mail.gmail.com>
- <a5dad0f9-001c-468f-99bc-e24c23bc9b36@redhat.com>
- <CAL_JsqJhqp-cgj604eEgxD47gJci0d3CFYf1wC_t1c00OptTiQ@mail.gmail.com>
-Content-Language: en-US
-From: Ivan Vecera <ivecera@redhat.com>
-In-Reply-To: <CAL_JsqJhqp-cgj604eEgxD47gJci0d3CFYf1wC_t1c00OptTiQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260116122353.78235-1-piotr.kwapulinski@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1768674128;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=h1XwfyBOA2rxjy0dGHmw0NBN5mZlkaFY9bVx7FsHrVU=;
- b=b7XFIef6WP+B7gESRbMYyYoMci8qZtqJUFLjoNd2nrkzKEOPX7hN7LhIOYnobsIjLFsTWa
- l3CPBX1jaBpdr64qjZ3yKXpVQFxkbNptlG75sC2pORW3N1yJWtzO29RJU4rtr7y8EgQ3Of
- O/CxlZurxrXHcHDUN2gKFUDWnzmfe78=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
- header.s=mimecast20190719 header.b=b7XFIef6
-Subject: Re: [Intel-wired-lan] [PATCH net-next 01/12] dt-bindings: dpll: add
- common dpll-pin-consumer schema
+ d=linaro.org; s=google; t=1768741011; x=1769345811; darn=lists.osuosl.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=5vuppoT7xEbD8pTBXyzO8MGSdOfeAdBaep+fRisqsu8=;
+ b=n2tPGy21501tzBOJ6UG1kIRbCcVMWNy088vJ1v69RmIPZcRHXDR78R7Lbwaz36Ch+C
+ RadlRBSL2nYCLFg6BM31VEFZBkqR2Jb/J9Pn6ZHbOtI++3DO3hFhcke8IaWUuINf8NJt
+ cSES7bggBScRZQ2HyxgUuka1g4Orw2KDTjso2Y+Qjexx5/KPpSFstfXaw0TSsPzBQg5G
+ TX/UxJsosvIs83nshlNFiDwbhFDNKOhuUPvtNx6LFy0nouuevDKg5bBARdGOumkH8BF8
+ NIq6dXFnF9LqDEI6AIFC18zf/Sk2RvygieLADt8NgZ0Vspt90IB0FMLtrwk1Kt1DaJ95
+ iyqg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=linaro.org
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256
+ header.s=google header.b=n2tPGy21
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 1/2] ixgbe: e610: add missing
+ endianness conversion
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -116,161 +124,28 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Eric Dumazet <edumazet@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Leon Romanovsky <leon@kernel.org>,
- Andrew Lunn <andrew+netdev@lunn.ch>, linux-rdma@vger.kernel.org,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, devicetree@vger.kernel.org,
- Conor Dooley <conor+dt@kernel.org>, Jiri Pirko <jiri@resnulli.us>,
- Richard Cochran <richardcochran@gmail.com>,
- Prathosh Satish <Prathosh.Satish@microchip.com>,
- Vadim Fedorenko <vadim.fedorenko@linux.dev>, netdev@vger.kernel.org,
- Mark Bloch <mbloch@nvidia.com>, linux-kernel@vger.kernel.org,
- Tariq Toukan <tariqt@nvidia.com>,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- Jonathan Lemon <jonathan.lemon@gmail.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Saeed Mahameed <saeedm@nvidia.com>,
- "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 1/17/26 12:39 AM, Rob Herring wrote:
-> On Fri, Jan 16, 2026 at 1:00 PM Ivan Vecera <ivecera@redhat.com> wrote:
->>
->> On 1/16/26 4:23 PM, Rob Herring wrote:
->>> On Thu, Jan 15, 2026 at 6:02 AM Ivan Vecera <ivecera@redhat.com> wrote:
->>>>
->>>> On 1/8/26 7:23 PM, Ivan Vecera wrote:
->>>>> Introduce a common schema for DPLL pin consumers. Devices such as Ethernet
->>>>> controllers and PHYs may require connections to DPLL pins for Synchronous
->>>>> Ethernet (SyncE) or other frequency synchronization tasks.
->>>>>
->>>>> Defining these properties in a shared schema ensures consistency across
->>>>> different device types that consume DPLL resources.
->>>>>
->>>>> Signed-off-by: Ivan Vecera <ivecera@redhat.com>
->>>>> ---
->>>>>     .../bindings/dpll/dpll-pin-consumer.yaml      | 30 +++++++++++++++++++
->>>>>     MAINTAINERS                                   |  1 +
->>>>>     2 files changed, 31 insertions(+)
->>>>>     create mode 100644 Documentation/devicetree/bindings/dpll/dpll-pin-consumer.yaml
->>>>>
->>>>> diff --git a/Documentation/devicetree/bindings/dpll/dpll-pin-consumer.yaml b/Documentation/devicetree/bindings/dpll/dpll-pin-consumer.yaml
->>>>> new file mode 100644
->>>>> index 0000000000000..60c184c18318a
->>>>> --- /dev/null
->>>>> +++ b/Documentation/devicetree/bindings/dpll/dpll-pin-consumer.yaml
->>>>> @@ -0,0 +1,30 @@
->>>>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
->>>>> +%YAML 1.2
->>>>> +---
->>>>> +$id: http://devicetree.org/schemas/dpll/dpll-pin-consumer.yaml#
->>>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->>>>> +
->>>>> +title: DPLL Pin Consumer
->>>>> +
->>>>> +maintainers:
->>>>> +  - Ivan Vecera <ivecera@redhat.com>
->>>>> +
->>>>> +description: |
->>>>> +  Common properties for devices that require connection to DPLL (Digital Phase
->>>>> +  Locked Loop) pins for frequency synchronization (e.g. SyncE).
->>>>> +
->>>>> +properties:
->>>>> +  dpll-pins:
->>>>> +    $ref: /schemas/types.yaml#/definitions/phandle-array
->>>>> +    description:
->>>>> +      List of phandles to the DPLL pin nodes connected to this device.
->>>>> +
->>>>> +  dpll-pin-names:
->>>>> +    $ref: /schemas/types.yaml#/definitions/string-array
->>>>> +    description:
->>>>> +      Names for the DPLL pins defined in 'dpll-pins', in the same order.
->>>>> +
->>>>> +dependencies:
->>>>> +  dpll-pin-names: [ dpll-pins ]
->>>>> +
->>>>> +additionalProperties: true
->>>>> diff --git a/MAINTAINERS b/MAINTAINERS
->>>>> index 765ad2daa2183..f6f58dfb20931 100644
->>>>> --- a/MAINTAINERS
->>>>> +++ b/MAINTAINERS
->>>>> @@ -7648,6 +7648,7 @@ M:      Jiri Pirko <jiri@resnulli.us>
->>>>>     L:  netdev@vger.kernel.org
->>>>>     S:  Supported
->>>>>     F:  Documentation/devicetree/bindings/dpll/dpll-device.yaml
->>>>> +F:   Documentation/devicetree/bindings/dpll/dpll-pin-consumer.yaml
->>>>>     F:  Documentation/devicetree/bindings/dpll/dpll-pin.yaml
->>>>>     F:  Documentation/driver-api/dpll.rst
->>>>>     F:  drivers/dpll/
->>>>
->>>> Based on private discussion with Andrew Lunn (thanks a lot), this is
->>>> wrong approach. Referencing directly dpll-pin nodes and using their
->>>> phandles in consumers is at least unusual.
->>>>
->>>> The right approach should be referencing dpll-device and use cells
->>>> to specify the dpll pin that is used.
->>>
->>> You only need a cells property if you expect the number of cells to
->>> vary by provider.
->>>
->>> However, the DPLL device just appears to be a clock provider and
->>> consumer, so why not just use the clock binding here? Also, there is
->>> no rule that using foo binding means you have to use foo subsystem in
->>> the kernel.
->>
->> Hmm, do you mean something like this example?
->>
->> &dpll0 {
->>       ...
->>       #clock-cells = <2>; /* 1st pin index, 2nd pin type (input/output) */
->>
->>       input-pins {
->>           pin@2 {
->>               reg = <2>;
->>               ...
->>           };
->>           pin@4 {
->>               reg = <4>;
->>               ...
->>           };
->>       };
->>       output-pins {
->>           pin@3 {
->>               reg = <3>;
->>           };
->>       };
->> };
->> &phy0 {
->>       ...
->>       clock-names = "rclk0", "rclk1", "synce_ref";
->>       clocks = <&dpll0 2 DPLL_INPUT>,
->>                <&dpll0 4 DPLL_INPUT>,
->>                <&dpll0 3 DPLL_OUTPUT>;
->>       ...
->> };
+On Fri, Jan 16, 2026 at 01:23:53PM +0100, Piotr Kwapulinski wrote:
+> Fix a possible ACI issue on big-endian platforms.
 > 
-> No, clock providers are always the clock outputs, and clock consumers
-> are the clock inputs. So something like this:
-> 
-> &dpll0 {
->       ...
->       #clock-cells = <1>; /* 1st pin index */
-> 
->       // clocks index corresponds to input pins on dpll0 */
->       clocks = <&phy0 0>, <&phy0 1>, <&phy1 0>, <&phy1 1>
-> };
-> &phy0 {
->       ...
->       #clock-cells = <1>;
->       clocks = <&dpll0 3>;
->       ...
-> };
+> Fixes: 46761fd52a88 ("ixgbe: Add support for E610 FW Admin Command Interface")
+> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+> ---
 
-Fully understand now... will modify the patch-set accordingly.
-Thanks for the advises.
+Intel has a lot of code which assume that it will only run on little
+endian systems...  Which is probably a fair assumption, honestly.
+For example:
+drivers/platform/x86/intel/uncore-frequency/uncore-frequency-common.c:90 store_attr() warn: passing casted pointer '&input' to 'kstrtobool()' 32 vs 1.
+drivers/net/ethernet/intel/i40e/i40e_common.c:4345 i40e_led_get_reg() warn: passing casted pointer 'reg_val' to 'i40e_read_phy_register_clause45()' 32 vs 16.
+I seem them on occasion when I'm reviewing static checker warnings but
+I ignore them because Intel chips are little endian.
 
-Ivan
+I don't have a problem with fixing Sparse endianness warnings, but the
+commit message should really say that it doesn't affect real life.
+
+regards,
+dan carpenter
 
