@@ -2,99 +2,249 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 4KvoA0Wqb2lUEwAAu9opvQ
+	id 8KkPEBCib2kLCAAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Jan 2026 17:16:05 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Jan 2026 16:41:04 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 05B0F47372
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Jan 2026 17:16:03 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 883E0465E5
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Jan 2026 16:41:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DF65A40245;
-	Tue, 20 Jan 2026 13:11:19 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B46F44F06A;
+	Tue, 20 Jan 2026 13:14:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id hjlU1KNC332e; Tue, 20 Jan 2026 13:11:18 +0000 (UTC)
+ id 8dAEiNOX6YjE; Tue, 20 Jan 2026 13:14:54 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 138CF40358
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B696F4F067
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1768914678;
-	bh=63Kq2EZA/Jd/7Yqo2bmg+87AeVrG+sh41tdSypPauI4=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=4o6H5K2wYD8C4q5ShPoBC2Xxc34kgkc6d8oHTSXsmRsqzrKMfFF/7DWI2IEhEsvUI
-	 GW/P0iU6p5bDIT0ANYYjwa5HzDvKG8bu9JwXonz3DftvFhBanIDJ866BwKAf9WFldI
-	 vXjgXL8c9rlYXsNbGRlbK8O/sHvX0rTYHIaRImWNfbYBoBP4IiVakSNKM0mMa4SnWq
-	 5EZ4BKyZ2tuWtOznc/6hZoXF3HqjSmlkD1JBVm7xOTcgJxmz0FnzG5N3gOMC6bkhG0
-	 5+k6UQ1XroEKhPxpY1iUdCEJETwD9p1CB5HaXuB9G2LeV/7GfzNDJwrK9v6Yi2Z2mz
-	 szyNMotnTUXLQ==
+	s=default; t=1768914894;
+	bh=494/jfw7OwKaedtoC3fvmxi3jYavL70eC+ISNJxsUb0=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=sAvP7r6sz9BSrvWG1Rx3fIB7A1q5qoqZf21QUyB0JAlhx29pk3EHg7C7D11z1Od4W
+	 eKsuUOiMKr851GksUA9LoLMRNN4qUBKOzug6WnGuC3jBH+Kl7VtJF5niW1vnCYraT2
+	 qtzXg3MWIElYZssP96BJPex/iriCJCShWOliapRxByhmgnSlgexFYVDMIb+5WeyxV2
+	 dUjysLn7lsz7pOGR4ohJ3300iLAmpO6w12WYGnV2YsCibQbw80m1G1hR2NZRX6wDXe
+	 ihaX0HoervYlRmN0/Qex/K+BmfRXY72uGAiDSYb25AhEc6R0WMrNGxLMTq5A21dr2y
+	 MOpk8ZUpYP3aQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 138CF40358;
-	Tue, 20 Jan 2026 13:11:18 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B696F4F067;
+	Tue, 20 Jan 2026 13:14:54 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 264CE160
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jan 2026 13:11:16 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 5EB51160
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jan 2026 13:14:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0066F40245
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jan 2026 13:11:16 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 42A50403E7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jan 2026 13:14:52 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 23-n4kqCuB6M for <intel-wired-lan@lists.osuosl.org>;
- Tue, 20 Jan 2026 13:11:14 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Sf6geMRCtfxB for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 20 Jan 2026 13:14:51 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
  helo=mgamail.intel.com; envelope-from=arkadiusz.kubalewski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 0FCF04023F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0FCF04023F
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 0FCF04023F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jan 2026 13:11:13 +0000 (UTC)
-X-CSE-ConnectionGUID: cgVIifkbR6Ks17dA/cMNMg==
-X-CSE-MsgGUID: ZUiplvEvTa+7WzLzAgdY8w==
-X-IronPort-AV: E=McAfee;i="6800,10657,11676"; a="70020734"
-X-IronPort-AV: E=Sophos;i="6.21,240,1763452800"; d="scan'208";a="70020734"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
- by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Jan 2026 05:11:13 -0800
-X-CSE-ConnectionGUID: 5mK8+Rq/SBKgAJdQ0cR7JQ==
-X-CSE-MsgGUID: 6mwqnZQtRmGksA3uII3Qzw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 471EC4033D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 471EC4033D
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 471EC4033D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Jan 2026 13:14:51 +0000 (UTC)
+X-CSE-ConnectionGUID: QDt+Ghf/Sf65VE7RP8lV0Q==
+X-CSE-MsgGUID: f83iXHVGS0WtGN2GiE5wcQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11676"; a="80753614"
+X-IronPort-AV: E=Sophos;i="6.21,240,1763452800"; d="scan'208";a="80753614"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+ by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Jan 2026 05:14:51 -0800
+X-CSE-ConnectionGUID: 4xc2pqJpQgGbeBSbjE3vGg==
+X-CSE-MsgGUID: i1mkt439S5yEOIyf5png9A==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,240,1763452800"; d="scan'208";a="237383819"
-Received: from amlin-018-114.igk.intel.com ([10.102.18.114])
- by fmviesa001.fm.intel.com with ESMTP; 20 Jan 2026 05:11:10 -0800
-From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 20 Jan 2026 14:04:33 +0100
-Message-Id: <20260120130433.23511-1-arkadiusz.kubalewski@intel.com>
-X-Mailer: git-send-email 2.38.1
+X-IronPort-AV: E=Sophos;i="6.21,240,1763452800"; d="scan'208";a="206155786"
+Received: from orsmsx901.amr.corp.intel.com ([10.22.229.23])
+ by orviesa007.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Jan 2026 05:14:50 -0800
+Received: from ORSMSX903.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.35; Tue, 20 Jan 2026 05:14:49 -0800
+Received: from ORSEDG901.ED.cps.intel.com (10.7.248.11) by
+ ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.35 via Frontend Transport; Tue, 20 Jan 2026 05:14:49 -0800
+Received: from SA9PR02CU001.outbound.protection.outlook.com (40.93.196.9) by
+ edgegateway.intel.com (134.134.137.111) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.35; Tue, 20 Jan 2026 05:14:49 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=b5QvNZpWQYqBwMygRYRpRiP2T2xNSPLHAq4uzgegorfdqIx9vvI+wwnN+gHudxpgszwbRNoz1xOJIHQT7Nz6qrOgkiK1bRU5+ObChlunKU3tyx9363YyXmw4U/7QdqbAYX4loLUrImwP5bpQYAmLYYCR/8lGIXqW+ePSMKE5iIjKu0kT26Z+Jbap5MSD4hgJbAh7TnwtbjTs6wFE1olwYPBX1MGoJfdEzGZuSEqDjG1z0G0bTm3hoxWwyX4FU+TYAsUkcpgN9YhB538uV3SG4E6tj/ThQVwYBmbqqTR+HtuWZKfBKPle4ZD7qF/G7jhFqfsMm2vCKR4N09nkbXOqHQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=494/jfw7OwKaedtoC3fvmxi3jYavL70eC+ISNJxsUb0=;
+ b=jrzI3z7DtllIPwN/taXZrtqeC6RgEKzyw/WvORXGYG+R9y8h4mVqTbFFVrgKHYOgV5NIur7BObYngcEajXFMR3uNDOZrmlVH5+qZWw1/uQ/PXUkHcC1QPIjU2oBqa5WYya1y5ngoCHD449DiytGwPHsMr1hrqdoh4GDxV2kwUe4gV/4uLaVYbgcx22Syp6U8CJgdwzvslOt9VCvGmQmD2+qPbqVvBE3Td2T28eAMwNwmDRsZOJUSpz/K2gtH9Q48UHCmiUhEQFWJX+wPFwT+lcn7eQE9Kdz7VXNaM8nuxgMY8IKns2UBztkH7WLpsF4YmpnSUkk6a4dj3VUa/tDYCg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SA3PR11MB9485.namprd11.prod.outlook.com (2603:10b6:806:45e::16)
+ by DS4PPFCECA32305.namprd11.prod.outlook.com (2603:10b6:f:fc02::51)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9520.12; Tue, 20 Jan
+ 2026 13:14:46 +0000
+Received: from SA3PR11MB9485.namprd11.prod.outlook.com
+ ([fe80::cf2c:dcfc:b6d3:57ba]) by SA3PR11MB9485.namprd11.prod.outlook.com
+ ([fe80::cf2c:dcfc:b6d3:57ba%5]) with mapi id 15.20.9520.011; Tue, 20 Jan 2026
+ 13:14:46 +0000
+From: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>
+To: "Grinberg, Vitaly" <vgrinber@redhat.com>
+Thread-Topic: Re:[Intel-wired-lan] [PATCH v5 iwl-next] ice: add support for
+ unmanaged DPLL on E830 NIC
+Thread-Index: AQHcWgwUHqTXSPJapUuoKo9k9qimQ7UkgCYAgCMGLQCABLXsAIAFhyPAgAAdKQCAAAM7kIABYi6AgAA0S7CAAFmNAIAHlKoQ
+Date: Tue, 20 Jan 2026 13:14:45 +0000
+Message-ID: <SA3PR11MB948589504AC11F071B6AF2B59B89A@SA3PR11MB9485.namprd11.prod.outlook.com>
+References: <20251120105208.2291441-1-grzegorz.nitka@intel.com>
+ <20251216144154.15172-1-vgrinber@redhat.com>
+ <IA1PR11MB621913F389165EE4D7CCFF2D9284A@IA1PR11MB6219.namprd11.prod.outlook.com>
+ <CACLnSDikAToGRvfZAhTcT0NCtMj+N9z-GGzRQ5qmpHsvCr2QSA@mail.gmail.com>
+ <LV4PR11MB9491EB644FC83676522107669B8FA@LV4PR11MB9491.namprd11.prod.outlook.com>
+ <CACLnSDhEQVJ5piUKp6bddxvOff88qj5X6Y8zbqAH8Kf5a7a_Zg@mail.gmail.com>
+ <LV4PR11MB9491B0E591D66E4AEDE9B1329B8FA@LV4PR11MB9491.namprd11.prod.outlook.com>
+ <CACLnSDggQLQMFdT3VLxm+GNNad6xy43nh6D+UzbW-u9Wwg+WOw@mail.gmail.com>
+ <LV4PR11MB9491C8288A84379A1199DC409B8CA@LV4PR11MB9491.namprd11.prod.outlook.com>
+ <CACLnSDgy+mxqgy+fShC1kre05zF54tCfttqQTzzFkBt4f9UYog@mail.gmail.com>
+In-Reply-To: <CACLnSDgy+mxqgy+fShC1kre05zF54tCfttqQTzzFkBt4f9UYog@mail.gmail.com>
+Accept-Language: pl-PL, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SA3PR11MB9485:EE_|DS4PPFCECA32305:EE_
+x-ms-office365-filtering-correlation-id: 6c62438a-ce66-4c7e-18b3-08de5825e1eb
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|376014|366016|1800799024|38070700021;
+x-microsoft-antispam-message-info: =?utf-8?B?V3F3dVo2TlJlOHlKN3ROcmtlaXlaeU5ITHppY0dlbHRSZGx5T0JpMVpzZnNF?=
+ =?utf-8?B?VllpdTdsRk1oeXUxVnBVOFR6bFRlZjVHdWJhQUZYRFpIbmVMNkVhWkwxSWlY?=
+ =?utf-8?B?SE9BR3lRampISDhSeW1QMHlyTy9Hd0FtTVVENHE0NHorZVczLy9ieTdPSHBT?=
+ =?utf-8?B?bmc2SzdxTmZHaUNOdEZuVFFoV25SRWpXWGw5aFdLQkVQSmxWd1Jqa0F2UnN5?=
+ =?utf-8?B?K1ZyMWxTZ0JRSmpFdWlSakxBZUJpSVB2dGpCQ3JtUVBzWGVlNGFmVzZ3Y2Rx?=
+ =?utf-8?B?bTBJN09lQWZhNXJ3Ukt6RDhhd2VDQ3lBUkl3RzFWQkRjdkdGSDNuWFNveTZq?=
+ =?utf-8?B?YkFjNTV5VTA3R3hRRE9ZRkhYZ3M2d1FUQjBLMVJkQVI4MUdoYWlGaEZ6QTZ2?=
+ =?utf-8?B?T1EyY0I1WmRRUjJTN3VOQ0hNMW8zVzlqQ0JhY3k0ZTB0N2tLOE1rZEVUMHpv?=
+ =?utf-8?B?UEQwclVLSHE5VXpzN0hkMGFIWFBmcUdDclFZQ21pSUFhKyt1U3c3WFVyRytG?=
+ =?utf-8?B?eFJwU2REc0xaUXp2dDROWWZuU3ZRaG5TZm9icDNhRytvMTE0VDlyRnRTTEFL?=
+ =?utf-8?B?SmZFWlJvN2dYWTMxVDhNRUpGM2ViY2ZQUUpTNU5DMGpiaDNoczNaaGJFeEg1?=
+ =?utf-8?B?dVBHRHNTdHRPWXV2NVMxcXlpSlF1Y3hEWk1tWnRTbTZsNzFFVW1HSmVnSzNM?=
+ =?utf-8?B?cjh0YXVoQ0orY0JpRUhvejBMenhYMzFNTHV3dnREVHUxZWgxWE5mNW9aMmpK?=
+ =?utf-8?B?VTRXQnR2TTFSZHBqL01CU1ZlMy9lVW9lVHRCNmNla2N3MVBqQTNFcUpEeGk5?=
+ =?utf-8?B?Z2dHd3Z2QUZ0b01aVDNpcUppNXB3YTRJanZsbjE2K0pnVTZscVh6ZnVRdDhs?=
+ =?utf-8?B?c3cxQ1NjNTc2dGkvNU5NczRnbHU3VkxicWplMWtGalVVOXkyMy8rQW9zeHlu?=
+ =?utf-8?B?QkJLZ3l0ejNFVHE3TWgyUXkxc1JVdG5RSmJMbGFtTHVXVnBpMHJROXh4ZUIy?=
+ =?utf-8?B?T3JoaVVPSjZXQnBGdENLeTY0NjBsK2lMd3hhdGpab3VEdGJrY3dKR0RRckNS?=
+ =?utf-8?B?T1BieTYvcVljNzNxZm1Yd3Y1cHYvSXZhMlhoa1pZamIvc3JoV0VIVlJ6SEg2?=
+ =?utf-8?B?dC92bnE5aFN2d0dlK2pOckFkZHFrRmRtRjdqdFhsbTFDOVgvM3FPZVczSVpv?=
+ =?utf-8?B?UmliQUxHWlhzMitEUUdFRG83ajB0dDFUWlA4dUs5K0RrZ0F2ak81VmpRNUpF?=
+ =?utf-8?B?bk9tZTFMbVFBNFZ1U2V1c1A4d3VFT2hrOUcyNVZYUk1KeEJIKzExdzJySUtu?=
+ =?utf-8?B?OXZXSW9HTDl4ZGRpUHdnbTE0R1FYYm5hSnUrdmd6NTRQYTV4RWhhb25DaWpL?=
+ =?utf-8?B?bWU4WCt0bUJPUFV0RkJTZmZ6cUVqelpNckRCa08yN2t1L0tJR3Jib3lZUU9t?=
+ =?utf-8?B?c2k4QngvMVRhT3JUMlljSFhpZWlJR043WXpsei8rVWp1TmROK2Y5d0llRGdw?=
+ =?utf-8?B?WUErTEZRME9iUHFKRHdiU1NNR0YxM2kzNkZRZEdLZWhtVTFVb1Y0LzlPV2k0?=
+ =?utf-8?B?Uk83RSt2ekw0cnhwemF5WXZVVEN1VlNOanZIcDQ0VVpSRzVwVGRHTjhDcjNa?=
+ =?utf-8?B?V2FKZ0pOYllWaXpUenBOSVZTdWNVNE90UUd0M1JSb0I4Wkd2OU1nWlRuR2xH?=
+ =?utf-8?B?QTlhRG4rUDJWaU5vTkg5Tk02QkJhV3VZQmVsdFZZS08wbVo5NFc5d3lJSUI3?=
+ =?utf-8?B?cld5djlNQWordXp4REFucm9IdVJxTitVUFYzYjQvUDRWSjd3eENYa1Y2WGk5?=
+ =?utf-8?B?YzE2enZ4T2JMVnhvcVB2dDdZTDdESXhybUR4OTFnVklTRnpYZTlUS0M3TFF1?=
+ =?utf-8?B?T045c25hcHFJdUttOGlhcld3a0dmVDlKQVZnSEszdW5WS0p5eDdrbEY2Z3lh?=
+ =?utf-8?B?VUtIQjc2QnYwWWUzUGlsbHJUOTQyVS9rZWc5dVlQM3ZleEJPQnZ1dGRSbFpP?=
+ =?utf-8?B?WXJRTVAyQ3lpZzlkdWJBQ3N3TWtadEpsZFVrZG5HTGdPNXpySGUveVdqT1or?=
+ =?utf-8?B?ZE5ENys2encwT2VkL3dmamo5SUU2THBaNHdDT0pjVmtuOE5sajZRR2FBbVNT?=
+ =?utf-8?B?aG54UUNjc2xuSERvK1NUUk03Sk0xWkt0ZkFUbGtxL3NPSkJ1YzBEdjVaRVUx?=
+ =?utf-8?Q?YzbZL5GVu1CzloWVZoSXNtQ=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SA3PR11MB9485.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(366016)(1800799024)(38070700021); DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?Y2hFSkNTVmV3U0FwWlVCS3JNN2djN2ozT1VQamljMm1jZXRvUWZzWWRndHl0?=
+ =?utf-8?B?ZUtvVUlyWlBFeGU5OU15M0l1RXN6bjJYMG9HV2I1N2dRNk5NQkk4V3ZXbkpu?=
+ =?utf-8?B?cHZMZkI2bHBWZithYlhpWG9vVWUrd2pYQVpGdFNhVlBMMGJzR1B6YkFiTmdl?=
+ =?utf-8?B?MnRodkhia1l4cEMrd0ZnbTJMbkFQbWZDdnA1VFM4c2o4Vm9Da3M4cUxkT3BX?=
+ =?utf-8?B?MEhBOXRkWUc0WjRHNFVRaU1iazdLQnFsRmVqRVo4bFhraDBob2hsZXB5c0gr?=
+ =?utf-8?B?SGpBWUtYbVVub1pFSWVsRnRBVkFxemtGeUdJSU5HS1BOdkEwbW1TSG1EalN0?=
+ =?utf-8?B?N1VRUExEZDRwM3RscjZ5RXRCMUZtWVVVQ0g0RUdnNFFFbzgrRlhBb2FIcFRa?=
+ =?utf-8?B?TUdWN1VrdjhXK3ArQjdJRWJoWHhKTVU1TzJtSWxySlVzcC9pdGorUzVNcHNJ?=
+ =?utf-8?B?YjJ1OE9yaGVsUDRDU3FEcHUrb0tNa29KZExQeDhmZjJEM0NLalFZdHU3NnZY?=
+ =?utf-8?B?RmZpWklpVTdtcEVOMmQybFpLb2p5K1lVUUpCZC9seStTR3lOa1lFS1NQYmtT?=
+ =?utf-8?B?cTZTTTd2Mk4wVERFYkt2ZHNaS2U3RVZSYkNVUnZVdXJOT0FLZjc1bmtDUXV0?=
+ =?utf-8?B?YnJaSjdhanlTaElMVXVWaUVIakwwTE5QOUxheml6SEJhMWhwdVQ0MkVyWDNT?=
+ =?utf-8?B?azRJbHRsQjVJSXI0WTdhMEozUXNxQWt1aWNGSDdvZ3I0S3d2dVlyNzViWUJO?=
+ =?utf-8?B?SXNtVnQ1L3dyVDVsSTg3YzFPTGhHbW5pSUpERUt2TEtzMGxodWZFbWZmMlE4?=
+ =?utf-8?B?NFVJTTZqMGRZbDVGNmtXNEI3NFhLalBHQXhPMXZJUWl6SCtWT1d5RElmV3BW?=
+ =?utf-8?B?TllOSkFybS9Yc0xnNGpCdFNKRmhaWkg1aHZvMzlnZUFQYmg1bDNuZmJhSzdR?=
+ =?utf-8?B?ZE5KR3NuSTFKblVjcFJJc0tMQ0lvbVBKMWgrcWtRKzJHOTRUTlVrZXFGU3Fu?=
+ =?utf-8?B?NzhsWjdZVHY3VEYrb1l0Ujd4SXpJVUFwZkpXaUZOZW5QRUdmYk1xQ2dVcnhF?=
+ =?utf-8?B?NGtlWTZIeFJrRXdWZWtqZHJaSm4vczFMME5uMWFuUXlySS9KSUVZSGdZSVIw?=
+ =?utf-8?B?Y3ZyYnpxZFk3RWs3RmFVTlUyYzhIZjYzcFR5Wk9pdGl3dEtLYU1PRzBrNytG?=
+ =?utf-8?B?alcwTUZaekc5b1FNeU92VXFUb24rVUN2NThlZkx5Y09zSlEyemZQeVNTeElK?=
+ =?utf-8?B?VmpvaFk3UDdmc0NrREFGMk1KejFUcC9aMUlDTFlzWHdGZ0hQWFRXMzY4d084?=
+ =?utf-8?B?ZGpEWmVDRDRmMUdhcHpIdFZYc25wYUtUU2Q0aUtJc1dveG9LS3dBek5uRkNv?=
+ =?utf-8?B?TWd3RVJ4T0szYzlwd2FvVm5sdkRmL2duZWRZZy9HVXM2dDZGMURMLzZDQkU2?=
+ =?utf-8?B?cDd5cDJncHRmTEtlN2htL3VFLzhsY2ozTzZpcjBQb29ZWnh4THhuVHA4R2Jt?=
+ =?utf-8?B?OE54OWprNTBSMjVNSGIxeW5IVVM1M0c2NkVaZ2RkZ3BMSE1NNk9Dc1JIOFNy?=
+ =?utf-8?B?RHJIT0NESDRRR2lNR2FOLzNaYUJCMWtnc2ZBZ3lKQk4wN05ENk1oaXBka0J0?=
+ =?utf-8?B?UlpieUJVVUJQUTBLaDdoU3B3aERydENQZWJqOVVPZGVYWFk2RWtMYkRJZTN6?=
+ =?utf-8?B?Uit4RU5tcnQ1TWVyajNxQmdpNldKY01PdjJqKzM3VHF1V2tmbWhzUVZnOG9X?=
+ =?utf-8?B?UEJHYVZVVlgyWEJBTm9lUkZ1SU1KVEN4bVNDVktEWEg1NmlzNmFyUGVrZW1j?=
+ =?utf-8?B?aXpLY3hYZ3hIVFkxS29YZ3BoUW01Z2o1Z3puRTRRczlsNmJpeGR4QVE0UVdG?=
+ =?utf-8?B?eS9nS2FPM3NxcE1WTm1yZkxlWDNoV2k4NWNxV1VOUFMvVm5SSW9EalQ3cFVM?=
+ =?utf-8?B?MERBZVNZMXUwREppSzRnL2hoZlRtNE5WOWw2eVo4QkFPdkI2MGhVdDVGTWdJ?=
+ =?utf-8?B?amVwYjJrSHpCM0tOYXJMUmRNekFxckFSZFgvTmpyc1Z4THdkZTM5QkwwL2Fx?=
+ =?utf-8?B?VTRrYWRaYXJVMThrbVMrNlVwNW5Tc0sydU12bWlNbEJjcVpwQXJkazNtMTAw?=
+ =?utf-8?B?aWNjT0MzUzIzZ0VqeUtpampKSE5tVU9EUFkydFQyUlRtV0xmOFRjM3VwN0Jt?=
+ =?utf-8?B?QU1aQVlNdnd0UGRhYlB1YS9qbDU5eTBnclB4R1lQTkEzcWozRnFDUWRuTFFI?=
+ =?utf-8?B?SzF6dG9qSWFSakFGMDNBWEJLTytKaWxiUEFyOWo5aHYwRldjMDRSKyt5YWl3?=
+ =?utf-8?B?b1ZQc20vaW9RVy9kdHc5aXhBMnR1M2VKemhPajA2eWtiRGZzajFoK1Q2eWtH?=
+ =?utf-8?Q?q/6SAdDSNJuVUeJc=3D?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SA3PR11MB9485.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6c62438a-ce66-4c7e-18b3-08de5825e1eb
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Jan 2026 13:14:46.0192 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: UMWLh2xq2ClofHDMaGk0Yl7/P68S8+Uy/YODNvSVy9oDgQ8FRvE4x035qz1k/dVbk6Hzk+xlKI3TzF+oOpUtIh9Ay+qq6gAXOst2N+YoorM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS4PPFCECA32305
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1768914674; x=1800450674;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=bmcs6ShTDyByJ1J6UMmAwRxQjPVGKevkRiyy9H0EOMk=;
- b=d7W1HCCH17/AQ3Ex1JZVrT9B0jeH2RHrKaRm0KIqyyHkyZFH5RHveYUH
- zSm+U2scT2EUGK3+pRdeeNT1VuzB96nkdACpgBBAjoq5P1f8CfKkLW6dY
- su2Em51DFXSJ83rGTBxm8M3/GclZSifIN4G2l9F6guWoNZDoDFFUO9Doi
- 66rKJZKprqK4eJTz82w0OzT4pG9KdI9iiqENWRfP0EVueyxn+0zdHIfp8
- uwVuPvh+TjsOL5AeuIKJMkVJ7ph+1GR2k48PT0umbhTS9pCYKjCt/fqgA
- iYHRIjCUzJgA6Jqgs0CgLRvtk4mE1Qbiuepd/BAM1uxvapKjBiShqXIuf
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1768914891; x=1800450891;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=494/jfw7OwKaedtoC3fvmxi3jYavL70eC+ISNJxsUb0=;
+ b=gjYpTxwIVYT4qLNs5X/EMgirBj5x9Q+A+EDh+72ppmB7tOLqNNmTAH8S
+ rd0CS/wWTzoqEzE2uODws0cKZaRd/Lo5kznvRQeJX/zNGjMJ3RNqUXWp9
+ NG0++jWty5l1sNZ4kP4WJHpIKgYb3i/sOkKOei/nKL1Xl4+ngmRZHuTBK
+ RqKJJ+G2R+6HBYsJWyjcmnsrhuMKAMz/aNGM5ig3OcSalxgCDcKE2zzG3
+ SNfZMuIJ32oNJSmDrE0dpYt2vtkTIAaTRproXGUm4mwKM7vuYHCdcGSli
+ pM7RA033dm9dCaKCsXpbRvN4XpiuAqu4PMbf81Q3kvDj5GiiqPL8o8Lht
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=d7W1HCCH
-Subject: [Intel-wired-lan] [PATCH iwl-next v6] ice: add support for
+ header.s=Intel header.b=gjYpTxwI
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH v5 iwl-next] ice: add support for
  unmanaged DPLL on E830 NIC
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -108,1067 +258,173 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: pmenzel@molgen.mpg.de, linux-doc@vger.kernel.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
- aleksandr.loktionov@intel.com, anthony.l.nguyen@intel.com,
- zoltan.fodor@intel.com, horms@kernel.org, przemyslaw.kitszel@intel.com,
- vgrinber@redhat.com
+Cc: "pmenzel@molgen.mpg.de" <pmenzel@molgen.mpg.de>,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Loktionov,
+ Aleksandr" <aleksandr.loktionov@intel.com>, "Nguyen,
+ Anthony L" <anthony.l.nguyen@intel.com>, "Fodor,
+ Zoltan" <zoltan.fodor@intel.com>, "horms@kernel.org" <horms@kernel.org>,
+ "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [0.39 / 15.00];
-	MID_CONTAINS_FROM(1.00)[];
-	R_SPF_ALLOW(-0.20)[+mx];
+X-Spamd-Result: default: False [0.49 / 15.00];
+	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+mx];
 	MIME_GOOD(-0.10)[text/plain];
+	MIME_BASE64_TEXT(0.10)[];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	TO_DN_SOME(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	RCPT_COUNT_TWELVE(0.00)[12];
-	MIME_TRACE(0.00)[0:+];
-	ARC_NA(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
-	RCVD_COUNT_SEVEN(0.00)[9];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[arkadiusz.kubalewski@intel.com,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,intel.com:mid,smtp4.osuosl.org:rdns,smtp4.osuosl.org:helo];
+	FORGED_RECIPIENTS(0.00)[m:vgrinber@redhat.com,m:pmenzel@molgen.mpg.de,m:linux-doc@vger.kernel.org,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:aleksandr.loktionov@intel.com,m:anthony.l.nguyen@intel.com,m:zoltan.fodor@intel.com,m:horms@kernel.org,m:przemyslaw.kitszel@intel.com,s:lists@lfdr.de];
+	TO_DN_EQ_ADDR_SOME(0.00)[];
+	FORGED_SENDER(0.00)[arkadiusz.kubalewski@intel.com,intel-wired-lan-bounces@osuosl.org];
+	TO_DN_SOME(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+]
-X-Rspamd-Queue-Id: 05B0F47372
+	MIME_TRACE(0.00)[0:+];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	RCVD_COUNT_TWELVE(0.00)[14];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[arkadiusz.kubalewski@intel.com,intel-wired-lan-bounces@osuosl.org];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
+	RCPT_COUNT_SEVEN(0.00)[11];
+	MISSING_XM_UA(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,osuosl.org:dkim,smtp4.osuosl.org:rdns,smtp4.osuosl.org:helo,SA3PR11MB9485.namprd11.prod.outlook.com:mid]
+X-Rspamd-Queue-Id: 883E0465E5
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-Hardware variants of E830 may support an unmanaged DPLL where the
-configuration is hardcoded within the hardware and firmware, meaning
-users cannot modify settings. However, users are able to check the DPLL
-lock status and obtain configuration information through the Linux DPLL
-and devlink health subsystem.
-
-Availability of 'loss of lock' health status code determines if such
-support is available, if true, register single DPLL device with 1 input
-and 1 output and provide hardcoded/read only properties of a pin and
-DPLL device. User is only allowed to check DPLL device status and receive
-notifications on DPLL lock status change.
-
-When present, the DPLL device locks to an external signal provided
-through the PCIe/OCP pin. The expected input signal is 1PPS
-(1 Pulse Per Second) embedded on a 10MHz reference clock.
-The DPLL produces output:
-- for MAC (Media Access Control) & PHY (Physical Layer) clocks,
-- 1PPS for synchronization of onboard PHC (Precision Hardware Clock) timer.
-
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
-Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
-Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
----
-v6:
-- change dpll type EEC -> PPS, this dpll serves both functionalisites but PPS
-  is superset of EEC type
-- use DPLL_MODE_MANUAL instead of AUTOMATIC, which is correct for the input
-  pins that doesn't have capability to set the priority
-v5:
-- rebased (baseline does not include dependent e825C patches now)
-- added health status notification (thru devlink and DPLL subsystem)
-v4:
-- add correct strcuture for reading supported health status codes and
-  use it to parse the outcome of 0xFF21 AQ command.
----
- .../device_drivers/ethernet/intel/ice.rst     |  83 +++++
- .../net/ethernet/intel/ice/devlink/health.c   |   4 +
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  12 +
- drivers/net/ethernet/intel/ice/ice_common.c   | 135 ++++++++
- drivers/net/ethernet/intel/ice/ice_common.h   |   8 +
- drivers/net/ethernet/intel/ice/ice_dpll.c     | 310 ++++++++++++++++--
- drivers/net/ethernet/intel/ice/ice_dpll.h     |  11 +
- drivers/net/ethernet/intel/ice/ice_main.c     |  14 +-
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c   |  46 +++
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |   1 +
- 10 files changed, 602 insertions(+), 22 deletions(-)
-
-diff --git a/Documentation/networking/device_drivers/ethernet/intel/ice.rst b/Documentation/networking/device_drivers/ethernet/intel/ice.rst
-index 0bca293cf9cb..28052f54012f 100644
---- a/Documentation/networking/device_drivers/ethernet/intel/ice.rst
-+++ b/Documentation/networking/device_drivers/ethernet/intel/ice.rst
-@@ -941,6 +941,89 @@ To see input signal on those PTP pins, you need to configure DPLL properly.
- Output signal is only visible on DPLL and to send it to the board SMA/U.FL pins,
- DPLL output pins have to be manually configured.
- 
-+Unmanaged DPLL Support
-+----------------------
-+Hardware variants of E830 may support an unmanaged DPLL:
-+
-+- Intel® Ethernet Network Adapter E830-XXVDA8F for OCP 3.0,
-+
-+- Intel® Ethernet Network Adapter E830-XXVDA4F.
-+
-+In the case of the unmanaged DPLL, the configuration is hardcoded within the
-+hardware and firmware, meaning users cannot modify settings. However,
-+users can check the DPLL lock status and obtain configuration information
-+through the Linux DPLL subsystem.
-+
-+When present, the DPLL device locks to an external signal provided through the
-+PCIe/OCP pin. The expected input signal is 1PPS (1 Pulse Per Second) embedded
-+on a 10MHz reference clock.
-+The DPLL produces output:
-+
-+- for MAC (Media Access Control) & PHY (Physical Layer) clocks,
-+
-+- 1PPS for synchronization of onboard PHC (Precision Hardware Clock) timer.
-+
-+Requirements: The Linux kernel must have support for both the DPLL Subsystem
-+and the Embedded Sync patch series.
-+
-+Example output of querying the Linux DPLL subsystem can be found below.
-+
-+.. code-block:: console
-+  :caption: Dumping the DPLL pins
-+
-+  $ <ynl> --spec Documentation/netlink/specs/dpll.yaml --dump pin-get
-+  [{'board-label': '1588-TIME_SYNC',
-+    'capabilities': set(),
-+    'clock-id': 282574471561216,
-+    'esync-frequency': 1,
-+    'esync-frequency-supported': [{'frequency-max': 1, 'frequency-min': 1}],
-+    'esync-pulse': 25,
-+    'frequency': 10000000,
-+    'id': 13,
-+    'module-name': 'ice',
-+    'parent-device': [{'direction': 'input',
-+                       'parent-id': 6,
-+                       'state': 'connected'}],
-+    'phase-adjust-max': 0,
-+    'phase-adjust-min': 0,
-+    'type': 'ext'},
-+    {'board-label': 'MAC-PHY-CLK',
-+      'capabilities': set(),
-+    'clock-id': 282574471561216,
-+    'frequency': 156250000,
-+    'id': 14,
-+    'module-name': 'ice',
-+    'parent-device': [{'direction': 'output',
-+                       'parent-id': 6,
-+                       'state': 'connected'}],
-+    'phase-adjust-max': 0,
-+    'phase-adjust-min': 0,
-+    'type': 'synce-eth-port'},
-+  {'board-label': '1588-TIME_REF',
-+    'capabilities': set(),
-+    'clock-id': 282574471561216,
-+    'frequency': 1,
-+    'id': 15,
-+    'module-name': 'ice',
-+    'parent-device': [{'direction': 'output',
-+                       'parent-id': 6,
-+                       'state': 'connected'}],
-+    'phase-adjust-max': 0,
-+    'phase-adjust-min': 0,
-+    'type': 'int-oscillator'}]
-+
-+.. code-block:: console
-+  :caption: Dumping the DPLL devices
-+
-+  $ <ynl> --spec Documentation/netlink/specs/dpll.yaml --dump device-get
-+  [{'clock-id': 282574471561216,
-+    'id': 6,
-+    'lock-status': 'locked',
-+    'mode': 'manual',
-+    'mode-supported': ['manual'],
-+    'module-name': 'ice',
-+    'type': 'pps'}]
-+
- GNSS module
- -----------
- Requires kernel compiled with CONFIG_GNSS=y or CONFIG_GNSS=m.
-diff --git a/drivers/net/ethernet/intel/ice/devlink/health.c b/drivers/net/ethernet/intel/ice/devlink/health.c
-index 8e9a8a8178d4..31e6c5107c97 100644
---- a/drivers/net/ethernet/intel/ice/devlink/health.c
-+++ b/drivers/net/ethernet/intel/ice/devlink/health.c
-@@ -101,6 +101,8 @@ static const struct ice_health_status ice_health_status_lookup[] = {
- 		"Supplied MIB file is invalid. DCB reverted to default configuration.",
- 		"Disable FW-LLDP and check DCBx system configuration.",
- 		{ice_port_number_label, "MIB ID"}},
-+	{ICE_AQC_HEALTH_STATUS_INFO_LOSS_OF_LOCK, "Local DPLL lock status",
-+		NULL,},
- };
- 
- static int ice_health_status_lookup_compare(const void *a, const void *b)
-@@ -242,6 +244,8 @@ void ice_process_health_status_event(struct ice_pf *pf, struct ice_rq_event_info
- 				pf->health_reporters.fw_status = *health_info;
- 				devlink_health_report(pf->health_reporters.fw,
- 						      "FW syndrome reported", NULL);
-+				if (status_code == ICE_AQC_HEALTH_STATUS_INFO_LOSS_OF_LOCK)
-+					ice_dpll_lock_state_set_unmanaged(pf, health_info, true);
- 				break;
- 			case ICE_AQC_HEALTH_STATUS_PF:
- 			case ICE_AQC_HEALTH_STATUS_PORT:
-diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-index b2685ebd37d6..2064efcdea19 100644
---- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-@@ -1498,6 +1498,7 @@ struct ice_aqc_get_link_topo {
- #define ICE_AQC_GET_LINK_TOPO_NODE_NR_PCA9575		0x21
- #define ICE_AQC_GET_LINK_TOPO_NODE_NR_ZL30632_80032	0x24
- #define ICE_AQC_GET_LINK_TOPO_NODE_NR_SI5383_5384	0x25
-+#define ICE_AQC_GET_LINK_TOPO_NODE_NR_ZL80640		0x27
- #define ICE_AQC_GET_LINK_TOPO_NODE_NR_E822_PHY		0x30
- #define ICE_AQC_GET_LINK_TOPO_NODE_NR_C827		0x31
- #define ICE_AQC_GET_LINK_TOPO_NODE_NR_GEN_CLK_MUX	0x47
-@@ -2481,11 +2482,14 @@ enum ice_aqc_health_status {
- 	ICE_AQC_HEALTH_STATUS_ERR_BMC_RESET			= 0x50B,
- 	ICE_AQC_HEALTH_STATUS_ERR_LAST_MNG_FAIL			= 0x50C,
- 	ICE_AQC_HEALTH_STATUS_ERR_RESOURCE_ALLOC_FAIL		= 0x50D,
-+	ICE_AQC_HEALTH_STATUS_INFO_LOSS_OF_LOCK			= 0x601,
- 	ICE_AQC_HEALTH_STATUS_ERR_FW_LOOP			= 0x1000,
- 	ICE_AQC_HEALTH_STATUS_ERR_FW_PFR_FAIL			= 0x1001,
- 	ICE_AQC_HEALTH_STATUS_ERR_LAST_FAIL_AQ			= 0x1002,
- };
- 
-+#define ICE_AQC_HEALTH_STATUS_CODE_NUM				64
-+
- /* Get Health Status (indirect 0xFF22) */
- struct ice_aqc_get_health_status {
- 	__le16 health_status_count;
-@@ -2512,6 +2516,13 @@ struct ice_aqc_health_status_elem {
- 	__le32 internal_data2;
- };
- 
-+/* Get Health Status response buffer entry, (0xFF21)
-+ * repeated per reported health status
-+ */
-+struct ice_aqc_health_status_supp_elem {
-+	__le16 health_status_code;
-+};
-+
- /* Admin Queue command opcodes */
- enum ice_adminq_opc {
- 	/* AQ commands */
-@@ -2675,6 +2686,7 @@ enum ice_adminq_opc {
- 
- 	/* System Diagnostic commands */
- 	ice_aqc_opc_set_health_status_cfg		= 0xFF20,
-+	ice_aqc_opc_get_supported_health_status_codes	= 0xFF21,
- 	ice_aqc_opc_get_health_status			= 0xFF22,
- 
- 	/* FW Logging Commands */
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 0271822c1737..ccba64eccbe5 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -3044,6 +3044,29 @@ bool ice_is_cgu_in_netlist(struct ice_hw *hw)
- 	return false;
- }
- 
-+/**
-+ * ice_is_unmanaged_cgu_in_netlist - check for unmanaged CGU presence
-+ * @hw: pointer to the hw struct
-+ *
-+ * Check if the unmanaged Clock Generation Unit (CGU) device is present in the netlist.
-+ * Save the CGU part number in the hw structure for later use.
-+ * Return:
-+ * * true - unmanaged cgu is present
-+ * * false - unmanaged cgu is not present
-+ */
-+bool ice_is_unmanaged_cgu_in_netlist(struct ice_hw *hw)
-+{
-+	if (!ice_find_netlist_node(hw, ICE_AQC_LINK_TOPO_NODE_TYPE_CLK_CTRL,
-+				   ICE_AQC_LINK_TOPO_NODE_CTX_GLOBAL,
-+				   ICE_AQC_GET_LINK_TOPO_NODE_NR_ZL80640,
-+				   NULL)) {
-+		hw->cgu_part_number = ICE_AQC_GET_LINK_TOPO_NODE_NR_ZL80640;
-+		return true;
-+	}
-+
-+	return false;
-+}
-+
- /**
-  * ice_is_gps_in_netlist
-  * @hw: pointer to the hw struct
-@@ -6306,6 +6329,118 @@ bool ice_is_fw_health_report_supported(struct ice_hw *hw)
- 				     ICE_FW_API_HEALTH_REPORT_PATCH);
- }
- 
-+/**
-+ * ice_aq_get_health_status_supported - get supported health status codes
-+ * @hw: pointer to the HW struct
-+ * @buff: pointer to buffer where health status elements will be stored
-+ * @num: number of health status elements buffer can hold
-+ *
-+ * Return:
-+ * * 0 - success,
-+ * * negative - AQ error code.
-+ */
-+static int
-+ice_aq_get_health_status_supported(struct ice_hw *hw,
-+				   struct ice_aqc_health_status_supp_elem *buff,
-+				   int num)
-+{
-+	u16 code = ice_aqc_opc_get_supported_health_status_codes;
-+	struct libie_aq_desc desc;
-+
-+	ice_fill_dflt_direct_cmd_desc(&desc, code);
-+
-+	return ice_aq_send_cmd(hw, &desc, buff, num * sizeof(*buff), NULL);
-+}
-+
-+/**
-+ * ice_aq_get_health_status - get current health status array from the firmware
-+ * @hw: pointer to the HW struct
-+ * @buff: pointer to buffer where health status elements will be stored
-+ * @num: number of health status elements buffer can hold
-+ *
-+ * Return:
-+ * * 0 - success,
-+ * * negative - AQ error code.
-+ */
-+int ice_aq_get_health_status(struct ice_hw *hw,
-+			     struct ice_aqc_health_status_elem *buff, int num)
-+{
-+	struct libie_aq_desc desc;
-+
-+	ice_fill_dflt_direct_cmd_desc(&desc,
-+				      ice_aqc_opc_get_health_status);
-+
-+	return ice_aq_send_cmd(hw, &desc, buff, num * sizeof(*buff), NULL);
-+}
-+
-+/**
-+ * ice_is_health_status_code_supported - check if health status code is supported
-+ * @hw: pointer to the hardware structure
-+ * @code: health status code to check
-+ * @supported: pointer to boolean result
-+ *
-+ * Return: 0 on success, negative error code otherwise
-+ */
-+int ice_is_health_status_code_supported(struct ice_hw *hw, u16 code,
-+					bool *supported)
-+{
-+	const int BUFF_SIZE = ICE_AQC_HEALTH_STATUS_CODE_NUM;
-+	struct ice_aqc_health_status_supp_elem *buff;
-+	int ret;
-+
-+	buff = kcalloc(BUFF_SIZE, sizeof(*buff), GFP_KERNEL);
-+	if (!buff)
-+		return -ENOMEM;
-+	ret = ice_aq_get_health_status_supported(hw, buff, BUFF_SIZE);
-+	if (ret)
-+		goto free_buff;
-+	for (int i = 0; i < BUFF_SIZE && buff[i].health_status_code; i++)
-+		if (le16_to_cpu(buff[i].health_status_code) == code) {
-+			*supported = true;
-+			break;
-+		}
-+
-+free_buff:
-+	kfree(buff);
-+	return ret;
-+}
-+
-+/**
-+ * ice_get_last_health_status_code - get last health status for given code
-+ * @hw: pointer to the hardware structure
-+ * @out: pointer to the health status struct to be filled
-+ * @code: health status code to check
-+ *
-+ * Return: 0 on success, negative error code otherwise
-+ */
-+int ice_get_last_health_status_code(struct ice_hw *hw,
-+				    struct ice_aqc_health_status_elem *out,
-+				    u16 code)
-+{
-+	const int BUFF_SIZE = ICE_AQC_HEALTH_STATUS_CODE_NUM;
-+	struct ice_aqc_health_status_elem *buff;
-+	int ret, last_status = -1;
-+
-+	buff = kcalloc(BUFF_SIZE, sizeof(*buff), GFP_KERNEL);
-+	if (!buff)
-+		return -ENOMEM;
-+	ret = ice_aq_get_health_status(hw, buff, BUFF_SIZE);
-+	if (ret)
-+		goto free_buff;
-+	for (int i = 0; i < BUFF_SIZE && buff[i].health_status_code; i++)
-+		if (le16_to_cpu(buff[i].health_status_code) == code)
-+			last_status = i;
-+
-+	if (last_status >= 0)
-+		memcpy(out, &buff[last_status], sizeof(*out));
-+	else
-+		memset(out, 0, sizeof(*out));
-+
-+free_buff:
-+	kfree(buff);
-+	return ret;
-+}
-+
- /**
-  * ice_aq_set_health_status_cfg - Configure FW health events
-  * @hw: pointer to the HW struct
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
-index ff6393e9be0c..ebced9edd5e3 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.h
-+++ b/drivers/net/ethernet/intel/ice/ice_common.h
-@@ -162,6 +162,7 @@ ice_aq_get_phy_caps(struct ice_port_info *pi, bool qual_mods, u8 report_mode,
- bool ice_is_phy_rclk_in_netlist(struct ice_hw *hw);
- bool ice_is_clock_mux_in_netlist(struct ice_hw *hw);
- bool ice_is_cgu_in_netlist(struct ice_hw *hw);
-+bool ice_is_unmanaged_cgu_in_netlist(struct ice_hw *hw);
- bool ice_is_gps_in_netlist(struct ice_hw *hw);
- int
- ice_aq_get_netlist_node(struct ice_hw *hw, struct ice_aqc_get_link_topo *cmd,
-@@ -188,6 +189,13 @@ ice_get_link_default_override(struct ice_link_default_override_tlv *ldo,
- 			      struct ice_port_info *pi);
- bool ice_is_phy_caps_an_enabled(struct ice_aqc_get_phy_caps_data *caps);
- bool ice_is_fw_health_report_supported(struct ice_hw *hw);
-+int ice_aq_get_health_status(struct ice_hw *hw,
-+			     struct ice_aqc_health_status_elem *buff, int num);
-+int ice_is_health_status_code_supported(struct ice_hw *hw, u16 code,
-+					bool *supported);
-+int ice_get_last_health_status_code(struct ice_hw *hw,
-+				    struct ice_aqc_health_status_elem *out,
-+				    u16 code);
- int ice_aq_set_health_status_cfg(struct ice_hw *hw, u8 event_source);
- int ice_aq_get_phy_equalization(struct ice_hw *hw, u16 data_in, u16 op_code,
- 				u8 serdes_num, int *output);
-diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.c b/drivers/net/ethernet/intel/ice/ice_dpll.c
-index 53b54e395a2e..ede92554dab5 100644
---- a/drivers/net/ethernet/intel/ice/ice_dpll.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dpll.c
-@@ -17,6 +17,8 @@
- #define ICE_DPLL_SW_PIN_INPUT_BASE_SFP		4
- #define ICE_DPLL_SW_PIN_INPUT_BASE_QSFP		6
- #define ICE_DPLL_SW_PIN_OUTPUT_BASE		0
-+#define ICE_DPLL_HEALTH_STATUS_LOCKED		1
-+#define ICE_DPLL_HEALTH_STATUS_UNLOCKED		0
- 
- #define ICE_DPLL_PIN_SW_INPUT_ABS(in_idx) \
- 	(ICE_DPLL_SW_PIN_INPUT_BASE_SFP + (in_idx))
-@@ -79,6 +81,10 @@ static const struct dpll_pin_frequency ice_esync_range[] = {
- 	DPLL_PIN_FREQUENCY_RANGE(0, DPLL_PIN_FREQUENCY_1_HZ),
- };
- 
-+static const struct dpll_pin_frequency ice_esync_range_unmanaged[] = {
-+	DPLL_PIN_FREQUENCY_1PPS,
-+};
-+
- /**
-  * ice_dpll_is_sw_pin - check if given pin shall be controlled by SW
-  * @pf: private board structure
-@@ -1008,9 +1014,11 @@ ice_dpll_pin_state_get(const struct dpll_pin *pin, void *pin_priv,
- 		return -EBUSY;
- 
- 	mutex_lock(&pf->dplls.lock);
--	ret = ice_dpll_pin_state_update(pf, p, pin_type, extack);
--	if (ret)
--		goto unlock;
-+	if (!pf->dplls.unmanaged) {
-+		ret = ice_dpll_pin_state_update(pf, p, pin_type, extack);
-+		if (ret)
-+			goto unlock;
-+	}
- 	if (pin_type == ICE_DPLL_PIN_TYPE_INPUT ||
- 	    pin_type == ICE_DPLL_PIN_TYPE_OUTPUT)
- 		*state = p->state[d->dpll_idx];
-@@ -2036,9 +2044,12 @@ ice_dpll_input_esync_get(const struct dpll_pin *pin, void *pin_priv,
- 		mutex_unlock(&pf->dplls.lock);
- 		return -EOPNOTSUPP;
- 	}
--	esync->range = ice_esync_range;
-+	if (pf->dplls.unmanaged)
-+		esync->range = ice_esync_range_unmanaged;
-+	else
-+		esync->range = ice_esync_range;
- 	esync->range_num = ARRAY_SIZE(ice_esync_range);
--	if (p->flags[0] & ICE_AQC_GET_CGU_IN_CFG_FLG2_ESYNC_EN) {
-+	if (p->flags[0] & ICE_DPLL_IN_ESYNC_ENABLED) {
- 		esync->freq = DPLL_PIN_FREQUENCY_1_HZ;
- 		esync->pulse = ICE_DPLL_PIN_ESYNC_PULSE_HIGH_PERCENT;
- 	} else {
-@@ -2436,6 +2447,21 @@ static const struct dpll_pin_ops ice_dpll_output_ops = {
- 	.esync_get = ice_dpll_output_esync_get,
- };
- 
-+static const struct dpll_pin_ops ice_dpll_input_unmanaged_ops = {
-+	.frequency_get = ice_dpll_input_frequency_get,
-+	.direction_get = ice_dpll_input_direction,
-+	.state_on_dpll_get = ice_dpll_input_state_get,
-+#if defined(HAVE_DPLL_ESYNC)
-+	.esync_get = ice_dpll_input_esync_get,
-+#endif /* HAVE_DPLL_ESYNC */
-+};
-+
-+static const struct dpll_pin_ops ice_dpll_output_unmanaged_ops = {
-+	.frequency_get = ice_dpll_output_frequency_get,
-+	.direction_get = ice_dpll_output_direction,
-+	.state_on_dpll_get = ice_dpll_output_state_get,
-+};
-+
- static const struct dpll_device_ops ice_dpll_ops = {
- 	.lock_status_get = ice_dpll_lock_status_get,
- 	.mode_get = ice_dpll_mode_get,
-@@ -2997,10 +3023,12 @@ ice_dpll_init_direct_pins(struct ice_pf *pf, bool cgu,
- 	if (ret)
- 		return ret;
- 	if (cgu) {
--		ret = ice_dpll_register_pins(first, pins, ops, count);
-+		if (first)
-+			ret = ice_dpll_register_pins(first, pins, ops, count);
- 		if (ret)
- 			goto release_pins;
--		ret = ice_dpll_register_pins(second, pins, ops, count);
-+		if (second)
-+			ret = ice_dpll_register_pins(second, pins, ops, count);
- 		if (ret)
- 			goto unregister_first;
- 	}
-@@ -3112,6 +3140,18 @@ static void ice_dpll_deinit_pins(struct ice_pf *pf, bool cgu)
- 	struct ice_dpll *de = &d->eec;
- 	struct ice_dpll *dp = &d->pps;
- 
-+	if (d->unmanaged) {
-+		ice_dpll_unregister_pins(dp->dpll, inputs,
-+					 &ice_dpll_input_unmanaged_ops,
-+					 num_inputs);
-+		ice_dpll_unregister_pins(dp->dpll, outputs,
-+					 &ice_dpll_output_unmanaged_ops,
-+					 num_outputs);
-+		ice_dpll_release_pins(inputs, num_inputs);
-+		ice_dpll_release_pins(outputs, num_outputs);
-+		return;
-+	}
-+
- 	ice_dpll_deinit_rclk_pin(pf);
- 	if (cgu) {
- 		ice_dpll_unregister_pins(dp->dpll, inputs, &ice_dpll_input_ops,
-@@ -3155,24 +3195,35 @@ static void ice_dpll_deinit_pins(struct ice_pf *pf, bool cgu)
-  */
- static int ice_dpll_init_pins(struct ice_pf *pf, bool cgu)
- {
-+	const struct dpll_pin_ops *output_ops;
-+	const struct dpll_pin_ops *input_ops;
- 	int ret, count;
- 
-+	if (!pf->dplls.unmanaged) {
-+		input_ops = &ice_dpll_input_ops;
-+		output_ops = &ice_dpll_output_ops;
-+	} else {
-+		input_ops = &ice_dpll_input_unmanaged_ops;
-+		output_ops = &ice_dpll_output_unmanaged_ops;
-+	}
-+
- 	ret = ice_dpll_init_direct_pins(pf, cgu, pf->dplls.inputs, 0,
--					pf->dplls.num_inputs,
--					&ice_dpll_input_ops,
-+					pf->dplls.num_inputs, input_ops,
- 					pf->dplls.eec.dpll, pf->dplls.pps.dpll);
- 	if (ret)
- 		return ret;
- 	count = pf->dplls.num_inputs;
--	if (cgu) {
-+	if (cgu || pf->dplls.unmanaged) {
- 		ret = ice_dpll_init_direct_pins(pf, cgu, pf->dplls.outputs,
- 						count,
- 						pf->dplls.num_outputs,
--						&ice_dpll_output_ops,
-+						output_ops,
- 						pf->dplls.eec.dpll,
- 						pf->dplls.pps.dpll);
- 		if (ret)
- 			goto deinit_inputs;
-+		if (pf->dplls.unmanaged)
-+			return 0;
- 		count += pf->dplls.num_outputs;
- 		if (!pf->dplls.generic) {
- 			ret = ice_dpll_init_direct_pins(pf, cgu, pf->dplls.sma,
-@@ -3224,11 +3275,11 @@ static int ice_dpll_init_pins(struct ice_pf *pf, bool cgu)
- deinit_outputs:
- 	ice_dpll_deinit_direct_pins(cgu, pf->dplls.outputs,
- 				    pf->dplls.num_outputs,
--				    &ice_dpll_output_ops, pf->dplls.pps.dpll,
-+				    output_ops, pf->dplls.pps.dpll,
- 				    pf->dplls.eec.dpll);
- deinit_inputs:
- 	ice_dpll_deinit_direct_pins(cgu, pf->dplls.inputs, pf->dplls.num_inputs,
--				    &ice_dpll_input_ops, pf->dplls.pps.dpll,
-+				    input_ops, pf->dplls.pps.dpll,
- 				    pf->dplls.eec.dpll);
- 	return ret;
- }
-@@ -3284,7 +3335,8 @@ ice_dpll_init_dpll(struct ice_pf *pf, struct ice_dpll *d, bool cgu,
- 
- 		if (type == DPLL_TYPE_PPS && ice_dpll_is_pps_phase_monitor(pf))
- 			ops =  &ice_dpll_pom_ops;
--		ice_dpll_update_state(pf, d, true);
-+		if (!pf->dplls.unmanaged)
-+			ice_dpll_update_state(pf, d, true);
- 		ret = dpll_device_register(d->dpll, type, ops, d);
- 		if (ret) {
- 			dpll_device_put(d->dpll);
-@@ -3310,6 +3362,33 @@ static void ice_dpll_deinit_worker(struct ice_pf *pf)
- 	kthread_destroy_worker(d->kworker);
- }
- 
-+/**
-+ * ice_dpll_pin_freq_info - find pin frequency from supported ones
-+ * @hw: pointer to the hardware structure
-+ * @pin_idx: pin index
-+ * @input: if input pin
-+ *
-+ * This function searches through the array of supported frequencies for a
-+ * DPLL pin and returns single frequency pin is capable, if pin support only
-+ * one frequency. Shall be used only for dpll with driver hardcoded frequency.
-+ *
-+ * Return:
-+ * * 0 - failure, pin uses multiple frequencies,
-+ * * frequency - success.
-+ */
-+static u64 ice_dpll_pin_freq_info(struct ice_hw *hw, u8 pin_idx, bool input)
-+{
-+	struct dpll_pin_frequency *freqs;
-+	u8 freq_num;
-+
-+	/* Get supported frequencies for this pin */
-+	freqs = ice_cgu_get_pin_freq_supp(hw, pin_idx, input, &freq_num);
-+	if (!freqs || freq_num != 1 || freqs[0].min != freqs[0].max)
-+		return 0;
-+
-+	return freqs[0].min;
-+}
-+
- /**
-  * ice_dpll_init_worker - Initialize DPLLs periodic worker
-  * @pf: board private structure
-@@ -3469,6 +3548,15 @@ ice_dpll_init_info_direct_pins(struct ice_pf *pf,
- 		pins[i].prop.board_label = ice_cgu_get_pin_name(hw, i, input);
- 		pins[i].prop.type = ice_cgu_get_pin_type(hw, i, input);
- 		if (input) {
-+			if (pf->dplls.unmanaged) {
-+				pins[i].freq = ice_dpll_pin_freq_info(hw, i,
-+								      input);
-+				pins[i].state[0] = DPLL_PIN_STATE_CONNECTED;
-+				pins[i].status =
-+					ICE_AQC_GET_CGU_IN_CFG_STATUS_ESYNC_CAP;
-+				pins[i].flags[0] = ICE_DPLL_IN_ESYNC_ENABLED;
-+				continue;
-+			}
- 			ret = ice_aq_get_cgu_ref_prio(hw, de->dpll_idx, i,
- 						      &de->input_prio[i]);
- 			if (ret)
-@@ -3482,6 +3570,12 @@ ice_dpll_init_info_direct_pins(struct ice_pf *pf,
- 			if (ice_dpll_is_sw_pin(pf, i, true))
- 				pins[i].hidden = true;
- 		} else {
-+			if (pf->dplls.unmanaged) {
-+				pins[i].freq = ice_dpll_pin_freq_info(hw, i,
-+								      input);
-+				pins[i].state[0] = DPLL_PIN_STATE_CONNECTED;
-+				continue;
-+			}
- 			ret = ice_cgu_get_output_pin_state_caps(hw, i, &caps);
- 			if (ret)
- 				return ret;
-@@ -3499,10 +3593,13 @@ ice_dpll_init_info_direct_pins(struct ice_pf *pf,
- 		pins[i].prop.freq_supported_num = freq_supp_num;
- 		pins[i].pf = pf;
- 	}
--	if (input)
-+	if (input && !pf->dplls.unmanaged) {
- 		ret = ice_dpll_init_ref_sync_inputs(pf);
-+		if (ret)
-+			return ret;
-+	}
- 
--	return ret;
-+	return 0;
- }
- 
- /**
-@@ -3653,6 +3750,80 @@ static void ice_dpll_deinit_info(struct ice_pf *pf)
- 	kfree(pf->dplls.pps.input_prio);
- }
- 
-+/**
-+ * ice_dpll_lock_state_init_unmanaged - initialize lock state for unmanaged dpll
-+ * @pf: board private structure
-+ *
-+ * Initialize the lock state for unmanaged DPLL by checking health status.
-+ * For unmanaged DPLL, we rely on hardware autonomous operation.
-+ *
-+ * Return:
-+ * * 0 - success
-+ * * negative - init failure reason
-+ */
-+static int ice_dpll_lock_state_init_unmanaged(struct ice_pf *pf)
-+{
-+	u16 code = ICE_AQC_HEALTH_STATUS_INFO_LOSS_OF_LOCK;
-+	struct ice_aqc_health_status_elem buff;
-+	int ret;
-+
-+	ret = ice_get_last_health_status_code(&pf->hw, &buff, code);
-+	if (ret)
-+		return ret;
-+	ice_dpll_lock_state_set_unmanaged(pf, &buff, false);
-+
-+	return ret;
-+}
-+
-+/**
-+ * ice_dpll_init_info_unmanaged - init dpll information for unmanaged dpll
-+ * @pf: board private structure
-+ *
-+ * Acquire (from HW) and set basic dpll information (on pf->dplls struct).
-+ * For unmanaged dpll mode.
-+ *
-+ * Return:
-+ * * 0 - success
-+ * * negative - init failure reason
-+ */
-+static int ice_dpll_init_info_unmanaged(struct ice_pf *pf)
-+{
-+	struct ice_dplls *d = &pf->dplls;
-+	int ret = 0;
-+
-+	d->clock_id = ice_generate_clock_id(pf);
-+	d->num_inputs = ice_cgu_get_pin_num(&pf->hw, true);
-+	d->num_outputs = ice_cgu_get_pin_num(&pf->hw, false);
-+	ice_dpll_lock_state_init_unmanaged(pf);
-+	d->inputs = kcalloc(d->num_inputs, sizeof(*d->inputs), GFP_KERNEL);
-+	if (!d->inputs)
-+		return -ENOMEM;
-+
-+	ret = ice_dpll_init_pins_info(pf, ICE_DPLL_PIN_TYPE_INPUT);
-+	if (ret)
-+		goto deinit_info;
-+
-+	d->outputs = kcalloc(d->num_outputs, sizeof(*d->outputs), GFP_KERNEL);
-+	if (!d->outputs) {
-+		ret = -ENOMEM;
-+		goto deinit_info;
-+	}
-+
-+	ret = ice_dpll_init_pins_info(pf, ICE_DPLL_PIN_TYPE_OUTPUT);
-+	if (ret)
-+		goto deinit_info;
-+
-+	d->pps.mode = DPLL_MODE_MANUAL;
-+	dev_dbg(ice_pf_to_dev(pf), "%s - success, inputs:%u, outputs:%u\n",
-+		__func__, d->num_inputs, d->num_outputs);
-+	return 0;
-+deinit_info:
-+	dev_err(ice_pf_to_dev(pf), "%s - fail: d->inputs:%p, d->outputs:%p\n",
-+		__func__, d->inputs, d->outputs);
-+	ice_dpll_deinit_info(pf);
-+	return ret;
-+}
-+
- /**
-  * ice_dpll_init_info - prepare pf's dpll information structure
-  * @pf: board private structure
-@@ -3686,6 +3857,7 @@ static int ice_dpll_init_info(struct ice_pf *pf, bool cgu)
- 	dp->dpll_idx = abilities.pps_dpll_idx;
- 	d->num_inputs = abilities.num_inputs;
- 	d->num_outputs = abilities.num_outputs;
-+
- 	d->input_phase_adj_max = le32_to_cpu(abilities.max_in_phase_adj) &
- 		ICE_AQC_GET_CGU_MAX_PHASE_ADJ;
- 	d->output_phase_adj_max = le32_to_cpu(abilities.max_out_phase_adj) &
-@@ -3752,6 +3924,42 @@ static int ice_dpll_init_info(struct ice_pf *pf, bool cgu)
- 	return ret;
- }
- 
-+/**
-+ * ice_dpll_lock_state_set_unmanaged - determine lock state from health status
-+ * @pf: board private structure
-+ * @buff: health status buffer
-+ * @notify: if true, notify dpll device
-+ *
-+ * Set unmanaged dpll lock state based on health status code and internal data.
-+ * Context: Acquires and releases pf->dplls.lock (must release before notify
-+ * if called).
-+ */
-+void ice_dpll_lock_state_set_unmanaged(struct ice_pf *pf,
-+				       const struct ice_aqc_health_status_elem *buff,
-+				       bool notify)
-+{
-+	u32 internal_data = le32_to_cpu(buff->internal_data1);
-+	struct ice_dpll *d = &pf->dplls.pps;
-+
-+	if (!ice_pf_src_tmr_owned(pf))
-+		return;
-+
-+	mutex_lock(&pf->dplls.lock);
-+	if (buff->health_status_code == 0 ||
-+	    internal_data == ICE_DPLL_HEALTH_STATUS_LOCKED)
-+		d->dpll_state = DPLL_LOCK_STATUS_LOCKED;
-+	else
-+		d->dpll_state = DPLL_LOCK_STATUS_UNLOCKED;
-+
-+	if (d->prev_dpll_state == d->dpll_state)
-+		notify = false;
-+	else
-+		d->prev_dpll_state = d->dpll_state;
-+	mutex_unlock(&pf->dplls.lock);
-+	if (notify && d->dpll)
-+		dpll_device_change_ntf(d->dpll);
-+}
-+
- /**
-  * ice_dpll_deinit - Disable the driver/HW support for dpll subsystem
-  * the dpll device.
-@@ -3771,15 +3979,57 @@ void ice_dpll_deinit(struct ice_pf *pf)
- 	if (cgu)
- 		ice_dpll_deinit_worker(pf);
- 
--	ice_dpll_deinit_pins(pf, cgu);
--	ice_dpll_deinit_dpll(pf, &pf->dplls.pps, cgu);
--	ice_dpll_deinit_dpll(pf, &pf->dplls.eec, cgu);
-+	ice_dpll_deinit_pins(pf, cgu || pf->dplls.unmanaged);
-+	if (pf->dplls.pps.dpll)
-+		ice_dpll_deinit_dpll(pf, &pf->dplls.pps,
-+				     cgu || pf->dplls.unmanaged);
-+	if (pf->dplls.eec.dpll)
-+		ice_dpll_deinit_dpll(pf, &pf->dplls.eec, cgu);
- 	ice_dpll_deinit_info(pf);
- 	mutex_destroy(&pf->dplls.lock);
- }
- 
- /**
-- * ice_dpll_init - initialize support for dpll subsystem
-+ * ice_dpll_init_unmanaged - initialize support for unmanaged dpll subsystem
-+ * @pf: board private structure
-+ *
-+ * Set up the device dplls for unmanaged mode, register them and pins connected
-+ * within Linux dpll subsystem. Allow userspace to obtain state of DPLL.
-+ *
-+ * Context: Initializes pf->dplls.lock mutex.
-+ */
-+static void ice_dpll_init_unmanaged(struct ice_pf *pf)
-+{
-+	struct ice_dplls *d = &pf->dplls;
-+	int err;
-+
-+	if (!ice_pf_src_tmr_owned(pf))
-+		return;
-+	err = ice_dpll_init_info_unmanaged(pf);
-+	if (err)
-+		goto err_exit;
-+	mutex_init(&d->lock);
-+	err = ice_dpll_init_dpll(pf, &pf->dplls.pps, true, DPLL_TYPE_PPS);
-+	if (err)
-+		goto deinit_info;
-+	err = ice_dpll_init_pins(pf, true);
-+	if (err)
-+		goto deinit_pps;
-+	set_bit(ICE_FLAG_DPLL, pf->flags);
-+
-+	return;
-+
-+deinit_pps:
-+	ice_dpll_deinit_dpll(pf, &pf->dplls.pps, true);
-+deinit_info:
-+	ice_dpll_deinit_info(pf);
-+	mutex_destroy(&d->lock);
-+err_exit:
-+	dev_warn(ice_pf_to_dev(pf), "DPLLs init failure err:%d\n", err);
-+}
-+
-+/**
-+ * ice_dpll_init_managed - initialize support for managed dpll subsystem
-  * @pf: board private structure
-  *
-  * Set up the device dplls, register them and pins connected within Linux dpll
-@@ -3788,7 +4038,7 @@ void ice_dpll_deinit(struct ice_pf *pf)
-  *
-  * Context: Initializes pf->dplls.lock mutex.
-  */
--void ice_dpll_init(struct ice_pf *pf)
-+static void ice_dpll_init_managed(struct ice_pf *pf)
- {
- 	bool cgu = ice_is_feature_supported(pf, ICE_F_CGU);
- 	struct ice_dplls *d = &pf->dplls;
-@@ -3828,3 +4078,21 @@ void ice_dpll_init(struct ice_pf *pf)
- 	mutex_destroy(&d->lock);
- 	dev_warn(ice_pf_to_dev(pf), "DPLLs init failure err:%d\n", err);
- }
-+
-+/**
-+ * ice_dpll_init - initialize support for dpll subsystem
-+ * @pf: board private structure
-+ *
-+ * Set up the device dplls, register them and pins connected within Linux dpll
-+ * subsystem. Allow userspace to obtain state of DPLL and handling of DPLL
-+ * configuration requests.
-+ *
-+ * Context: Initializes pf->dplls.lock mutex.
-+ */
-+void ice_dpll_init(struct ice_pf *pf)
-+{
-+	if (!pf->dplls.unmanaged)
-+		ice_dpll_init_managed(pf);
-+	else
-+		ice_dpll_init_unmanaged(pf);
-+}
-diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.h b/drivers/net/ethernet/intel/ice/ice_dpll.h
-index c0da03384ce9..fa61b4178b3c 100644
---- a/drivers/net/ethernet/intel/ice/ice_dpll.h
-+++ b/drivers/net/ethernet/intel/ice/ice_dpll.h
-@@ -8,6 +8,9 @@
- 
- #define ICE_DPLL_RCLK_NUM_MAX	4
- 
-+#define ICE_DPLL_UNMANAGED_PIN_NUM	4
-+#define ICE_DPLL_IN_ESYNC_ENABLED	ICE_AQC_GET_CGU_IN_CFG_FLG2_ESYNC_EN
-+
- /**
-  * enum ice_dpll_pin_sw - enumerate ice software pin indices:
-  * @ICE_DPLL_PIN_SW_1_IDX: index of first SW pin
-@@ -132,14 +135,22 @@ struct ice_dplls {
- 	s32 output_phase_adj_max;
- 	u32 periodic_counter;
- 	bool generic;
-+	bool unmanaged;
- };
- 
- #if IS_ENABLED(CONFIG_PTP_1588_CLOCK)
- void ice_dpll_init(struct ice_pf *pf);
- void ice_dpll_deinit(struct ice_pf *pf);
-+void ice_dpll_lock_state_set_unmanaged(struct ice_pf *pf,
-+				       const struct ice_aqc_health_status_elem *buff,
-+				       bool notify);
- #else
- static inline void ice_dpll_init(struct ice_pf *pf) { }
- static inline void ice_dpll_deinit(struct ice_pf *pf) { }
-+static inline void
-+ice_dpll_lock_state_set_unmanaged(struct ice_pf *pf,
-+				  const struct ice_aqc_health_status_elem *buff,
-+				  bool notify) { }
- #endif
- 
- #endif
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index d4f75bc93074..52ad9ca915cd 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -4799,8 +4799,20 @@ static void ice_init_features(struct ice_pf *pf)
- 	if (ice_is_feature_supported(pf, ICE_F_GNSS))
- 		ice_gnss_init(pf);
- 
-+	/* Initialize unmanaged DPLL detection */
-+	{
-+		u16 code = ICE_AQC_HEALTH_STATUS_INFO_LOSS_OF_LOCK;
-+		int err;
-+
-+		err = ice_is_health_status_code_supported(&pf->hw, code,
-+							  &pf->dplls.unmanaged);
-+		if (err || !ice_is_unmanaged_cgu_in_netlist(&pf->hw))
-+			pf->dplls.unmanaged = false;
-+	}
-+
- 	if (ice_is_feature_supported(pf, ICE_F_CGU) ||
--	    ice_is_feature_supported(pf, ICE_F_PHY_RCLK))
-+	    ice_is_feature_supported(pf, ICE_F_PHY_RCLK) ||
-+	    pf->dplls.unmanaged)
- 		ice_dpll_init(pf);
- 
- 	/* Note: Flow director init failure is non-fatal to load */
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-index 35680dbe4a7f..4abbb9fd607d 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-@@ -20,6 +20,10 @@ static struct dpll_pin_frequency ice_cgu_pin_freq_10_mhz[] = {
- 	DPLL_PIN_FREQUENCY_10MHZ,
- };
- 
-+static struct dpll_pin_frequency ice_cgu_pin_freq_156_25mhz[] = {
-+	DPLL_PIN_FREQUENCY_RANGE(156250000, 156250000),
-+};
-+
- static const struct ice_cgu_pin_desc ice_e810t_sfp_cgu_inputs[] = {
- 	{ "CVL-SDP22",	  ZL_REF0P, DPLL_PIN_TYPE_INT_OSCILLATOR,
- 		ARRAY_SIZE(ice_cgu_pin_freq_common), ice_cgu_pin_freq_common },
-@@ -131,6 +135,18 @@ static const struct ice_cgu_pin_desc ice_e823_zl_cgu_outputs[] = {
- 	{ "NONE",	   ZL_OUT5, 0, 0 },
- };
- 
-+static const struct ice_cgu_pin_desc ice_e830_unmanaged_inputs[] = {
-+	{ "1588-TIME_SYNC", 0, DPLL_PIN_TYPE_EXT,
-+	  ARRAY_SIZE(ice_cgu_pin_freq_10_mhz), ice_cgu_pin_freq_10_mhz },
-+};
-+
-+static const struct ice_cgu_pin_desc ice_e830_unmanaged_outputs[] = {
-+	{ "MAC-PHY-CLK", 0, DPLL_PIN_TYPE_SYNCE_ETH_PORT,
-+	  ARRAY_SIZE(ice_cgu_pin_freq_156_25mhz), ice_cgu_pin_freq_156_25mhz },
-+	{ "1588-TIME_REF", 1, DPLL_PIN_TYPE_INT_OSCILLATOR,
-+	  ARRAY_SIZE(ice_cgu_pin_freq_1_hz), ice_cgu_pin_freq_1_hz},
-+};
-+
- /* Low level functions for interacting with and managing the device clock used
-  * for the Precision Time Protocol.
-  *
-@@ -5684,6 +5700,24 @@ ice_cgu_get_pin_desc(struct ice_hw *hw, bool input, int *size)
- 	case ICE_DEV_ID_E823C_SGMII:
- 		t = ice_cgu_get_pin_desc_e823(hw, input, size);
- 		break;
-+	case ICE_DEV_ID_E830CC_BACKPLANE:
-+	case ICE_DEV_ID_E830CC_QSFP56:
-+	case ICE_DEV_ID_E830CC_SFP:
-+	case ICE_DEV_ID_E830CC_SFP_DD:
-+	case ICE_DEV_ID_E830C_BACKPLANE:
-+	case ICE_DEV_ID_E830C_QSFP:
-+	case ICE_DEV_ID_E830C_SFP:
-+	case ICE_DEV_ID_E830_XXV_BACKPLANE:
-+	case ICE_DEV_ID_E830_XXV_QSFP:
-+	case ICE_DEV_ID_E830_XXV_SFP:
-+		if (input) {
-+			t = ice_e830_unmanaged_inputs;
-+			*size = ARRAY_SIZE(ice_e830_unmanaged_inputs);
-+		} else {
-+			t = ice_e830_unmanaged_outputs;
-+			*size = ARRAY_SIZE(ice_e830_unmanaged_outputs);
-+		}
-+		break;
- 	default:
- 		break;
- 	}
-@@ -5710,6 +5744,18 @@ int ice_cgu_get_num_pins(struct ice_hw *hw, bool input)
- 	return 0;
- }
- 
-+/**
-+ * ice_cgu_get_pin_num - get pin description array size
-+ * @hw: pointer to the hw struct
-+ * @input: if request is done against input or output pins
-+ *
-+ * Return: size of pin description array for given hw.
-+ */
-+int ice_cgu_get_pin_num(struct ice_hw *hw, bool input)
-+{
-+	return ice_cgu_get_num_pins(hw, input);
-+}
-+
- /**
-  * ice_cgu_get_pin_type - get pin's type
-  * @hw: pointer to the hw struct
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-index 5896b346e579..93901bccf1c4 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-@@ -356,6 +356,7 @@ int ice_read_sma_ctrl(struct ice_hw *hw, u8 *data);
- int ice_write_sma_ctrl(struct ice_hw *hw, u8 data);
- int ice_ptp_read_sdp_ac(struct ice_hw *hw, __le16 *entries, uint *num_entries);
- int ice_cgu_get_num_pins(struct ice_hw *hw, bool input);
-+int ice_cgu_get_pin_num(struct ice_hw *hw, bool input);
- enum dpll_pin_type ice_cgu_get_pin_type(struct ice_hw *hw, u8 pin, bool input);
- struct dpll_pin_frequency *
- ice_cgu_get_pin_freq_supp(struct ice_hw *hw, u8 pin, bool input, u8 *num);
-
-base-commit: 86213796ce37d06d466ba0c37484052d6708ee4e
--- 
-2.38.1
-
+PkZyb206IFZpdGFseSBHcmluYmVyZyA8dmdyaW5iZXJAcmVkaGF0LmNvbT4NCj5TZW50OiBUaHVy
+c2RheSwgSmFudWFyeSAxNSwgMjAyNiA2OjI2IFBNDQo+DQo+T24gVGh1LCBKYW4gMTUsIDIwMjYg
+YXQgNTozMOKAr1BNIEt1YmFsZXdza2ksIEFya2FkaXVzeg0KPjxhcmthZGl1c3oua3ViYWxld3Nr
+aUBpbnRlbC5jb20+IHdyb3RlOg0KPj4NCj4+ID5Gcm9tOiBWaXRhbHkgR3JpbmJlcmcgPHZncmlu
+YmVyQHJlZGhhdC5jb20+DQo+PiA+U2VudDogVGh1cnNkYXksIEphbnVhcnkgMTUsIDIwMjYgOTo1
+OCBBTQ0KPj4gPg0KPj4gPiwgdGhlIGVhDQo+PiA+DQo+PiA+T24gV2VkLCBKYW4gMTQsIDIwMjYg
+YXQgMzozMuKAr1BNIEt1YmFsZXdza2ksIEFya2FkaXVzeg0KPj4gPjxhcmthZGl1c3oua3ViYWxl
+d3NraUBpbnRlbC5jb20+IHdyb3RlOg0KPj4gPj4NCj4+ID4+ID5Gcm9tOiBWaXRhbHkgR3JpbmJl
+cmcgPHZncmluYmVyQHJlZGhhdC5jb20+DQo+PiA+PiA+U2VudDogV2VkbmVzZGF5LCBKYW51YXJ5
+IDE0LCAyMDI2IDEyOjM5IFBNDQo+PiA+PiA+DQo+PiA+Pg0KPj4gPj4gWy4uXQ0KPj4gPj4NCj4+
+ID4+ID4+ID4NCj4+ID4+ID4+ID5JIHNlZSBhIGZldyBjaGFsbGVuZ2VzIGZvciB0aGUgdXNlciBo
+ZXJlLiBUaGUgYmlnZ2VzdCBvbmUgaXMgdGhhdA0KPj4gPj4gPj4gPnRoZQ0KPj4gPj4gPj4gPmFw
+cGxpY2F0aW9uIGNhbid0IHRlbGwgdGhlIGRpZmZlcmVuY2UgYmV0d2VlbiBhIGRldmljZSB0aGF0
+IHdpbGwNCj4+ID4+ID4+ID5yZXBvcnQNCj4+ID4+ID4+ID5waGFzZSBvZmZzZXRzIGFuZCB0aGlz
+IHVubWFuYWdlZCBkZXZpY2UgdGhhdCBuZXZlciB3aWxsLg0KPj4gPj4gPj4gPkEgcG9zc2libGUg
+d2F5IGZvcndhcmQgd291bGQgYmUgYWRkaW5nIGEgY2FwYWJpbGl0eSBmbGFnIHRvIHRoZQ0KPj4g
+Pj4gPj4gPkRQTEwNCj4+ID4+ID4+ID5BUEkNCj4+ID4+ID4+ID5zbw0KPj4gPj4gPj4gPnVzZXJz
+IGRvbid0IGhhdmUgdG8gZ3Vlc3MuDQo+PiA+PiA+Pg0KPj4gPj4gPj4gVGhlcmUgaXMgbm8gcGhh
+c2Utb2Zmc2V0IGZpZWxkIGFzIHBvaW50ZWQgaW4gdGhlIGFib3ZlIGV4YW1wbGUuDQo+PiA+PiA+
+PiBObyAncGhhc2Utb2Zmc2V0JyBhdHRyaWJ1dGUgLT4gbm8gc3VjaCBjYXBhYmlsaXR5Lg0KPj4g
+Pj4gPj4gV2h5IGlzbuKAmXQgdGhhdCBlbm91Z2g/DQo+PiA+PiA+DQo+PiA+PiA+UGluIHJlcGx5
+IGRvZXMgbm90IGNvbnRhaW4gcGhhc2Ugb2Zmc2V0LCBzbyBubyBjaGFuZ2Ugbm90aWZpY2F0aW9u
+cw0KPj4gPj4gPmFyZSBleHBlY3RlZD8NCj4+ID4+ID5Db3VsZCB0aGVyZSBiZSBkZXZpY2VzIHRo
+YXQgZG9uJ3QgcmVwb3J0IHBoYXNlIG9mZnNldCwgYnV0IHJlcG9ydA0KPj4gPj4gPnN0YXRlDQo+
+PiA+PiA+Y2hhbmdlcz8NCj4+ID4+ID5JcyB0aGlzIHRoZSBpbnRlbmRlZCB1c2Ugb2YgdGhlIHBo
+YXNlIG9mZnNldCBBUEkgdG8gYmUgaW50ZXJwcmV0ZWQNCj4+ID4+ID5hcw0KPj4gPj4gPmEgZ2Vu
+ZXJhbCBwaW4NCj4+ID4+ID5ub3RpZmljYXRpb24gY2FwYWJpbGl0eSBmbGFnPw0KPj4gPj4gPg0K
+Pj4gPj4NCj4+ID4+IFNvcnJ5LCB0aGlzIGlzIG5vdCB3aGF0IEkgbWVhbnQuDQo+PiA+Pg0KPj4g
+Pj4gVGhlIEU4MTAgcHJvZHVjZXMgbm90aWZpY2F0aW9ucyBub3Qgb25seSBmb3IgdGhlIHBpbidz
+IHBoYXNlIG9mZnNldA0KPj4gPj4gYnV0DQo+PiA+PiBhbHNvIGZvciBvdGhlciBwaW4gYXR0cmli
+dXRlIGNoYW5nZXMuIFdoZW4gaXQgY29tZXMgdG8gdGhlIEU4MTAgcGlucywNCj4+ID4+IG5vdGlm
+aWNhdGlvbnMgZ2VuZXJhdGVkIGJ5IHBoYXNlIG9mZnNldCBjaGFuZ2VzIGFyZSBxdWl0ZSBmcmVx
+dWVudC4NCj4+ID4+IEhvd2V2ZXIsIGl0IHdhc24ndCBpbnRlbnRpb24gdG8gcHJvZHVjZSB0aGVt
+IGV2ZXJ5IHNlY29uZDsgdGhpcyBpcw0KPj4gPj4gc2ltcGx5DQo+PiA+PiB0aGUgcmVzdWx0IG9m
+IGZyZXF1ZW50IHBoYXNlIG9mZnNldCBjaGFuZ2VzLg0KPj4gPj4NCj4+ID4+IFR5cGljYWxseSwg
+dGhlIHBpbiBzdGF0ZSBjaGFuZ2VzIGZvciB0aGUgcGluLCBidXQgZm9yIEU4MzAsIHRoZQ0KPj4g
+Pj4gdW5tYW5hZ2VkDQo+PiA+PiBtb2RlIG1lYW5zIHRoYXQgdGhlIHN0YXRlIG9mIHRoZSBwaW4g
+bmV2ZXIgY2hhbmdlcywgcmVzdWx0aW5nIGluIG5vDQo+PiA+PiBwaW4NCj4+ID4+IG5vdGlmaWNh
+dGlvbnMgYmVpbmcgcHJvZHVjZWQgaW4gdGhlIGVuZC4NCj4+ID4+DQo+PiA+PiBIb3BlIHRoYXQg
+Y2xlYXJzIHRoaW5ncyB1cC4NCj4+ID4NCj4+ID5XaWxsIHRoZSByZXBvcnRlZCBwaW4gc3RhdGUg
+cmVtYWluICJjb25uZWN0ZWQiIGV2ZW4gaWYgSSBkaXNjb25uZWN0DQo+PiA+dGhlIGlucHV0IHNp
+Z25hbD8NCj4+ID5JcyB0aGVyZSBhbnkgaW5mb3JtYXRpb24gaW4gRFBMTCBvciBwaW4gcmVwbGll
+cyB0aGF0IGNhbiB0ZWxsIHRoZSB1c2VyDQo+PiA+InRoaXMgRFBMTCBpcyB1bm1hbmFnZWQgdHlw
+ZSwgaXQgYmVoYXZlcyBkaWZmZXJlbnRseSI/DQo+Pg0KPj4gWW91IHJlYWxseSBjYW5ub3QgZGlz
+Y29ubmVjdCBhbnl0aGluZyB0aGVyZSwgaXQgaXMgYWx3YXlzIGNvbm5lY3RlZCwNCj4+IGFuZCBu
+byBvbmUgY2FuIGNoYW5nZSBpdC4gSXQgb25seSBzaG93cyB0aGUgdXNlciBhY3R1YWwgcGh5c2lj
+YWwNCj4+IGNvbm5lY3Rpb25zIGhhcmR3aXJlZCBpbnRvIHRoZSBOSUMvZHBsbC4gVGhlcmUgaXMg
+bm8gU1cgaGFuZGxlZCBjb25maWcNCj4+IHBvc3NpYmxlIG9uIHRob3NlLiBBcyBwcm92aWRlZCBp
+biB0aGUgY29tbWl0IG1lc3NhZ2UsIHRoZSBwaW5zIGhhdmUNCj4+IGVtcHR5DQo+PiBjYXBhYmls
+aXRpZXMgc2V0OiAnY2FwYWJpbGl0aWVzJzogc2V0KCksIHRodXMgbm90IHBvc3NpYmxlIHRvIGNo
+YW5nZQ0KPj4gc3RhdGUNCj4+IGJ5IHRoZSB1c2VyLg0KPj4NCj4NCj5Hb3QgaXQsIHRoYW5rcyBm
+b3IgY2xhcmlmaWNhdGlvbiENCj4NCg0KSSBhbSBnbGFkIEkgY291bGQgaGVscC4NCg0KPj4gPg0K
+Pj4gPj4NCj4+ID4+ID4+DQo+PiA+PiA+PiA+SG93ZXZlciwgdGhlIHByZWZlcnJlZCBzb2x1dGlv
+biB3b3VsZCBiZSB0byBzaW1wbHkgbWlycm9yIHRoZQ0KPj4gPj4gPj4gPkU4MTANCj4+ID4+ID4+
+ID5iZWhhdmlvcg0KPj4gPj4gPj4gPihzZW5kaW5nIHBoYXNlIG9mZnNldCkuIFRoaXMgcHJlc2Vy
+dmVzIHRoZSBleGlzdGluZyBBUEkgY29udHJhY3QNCj4+ID4+ID4+ID5hbmQNCj4+ID4+ID4+ID5w
+cmV2ZW50cyB1c2Vycywgd2hvIGhhdmUgYWxyZWFkeSBidWlsdCBhcHBsaWNhdGlvbnMgZm9yIHRo
+aXMNCj4+ID4+ID4+ID5pbnRlcmZhY2UsDQo+PiA+PiA+PiA+ZnJvbSBuZWVkaW5nIHRvIGltcGxl
+bWVudCBzcGVjaWFsIGhhbmRsaW5nIGZvciBhIG5ldyBoYXJkd2FyZQ0KPj4gPj4gPj4gPnZhcmlh
+bnQNCj4+ID4+ID4+ID50aGF0DQo+PiA+PiA+PiA+YmVoYXZlcyBkaWZmZXJlbnRseS4NCj4+ID4+
+ID4+DQo+PiA+PiA+PiBUaGlzIGlzIG5vdCBjdXJyZW50bHkgcG9zc2libGUgZnJvbSBkcml2ZXIg
+cGVyc3BlY3RpdmUuDQo+PiA+PiA+PiBXZSBtaXNzIHRoZSBGVyBBUEkgZm9yIGl0Lg0KPj4gPj4g
+Pj4NCj4+ID4+ID4+ID5UaGVyZSBhcmUgYWRkaXRpb25hbCBpbmNvbnNpc3RlbmNpZXMgaW4gdGhl
+IGV4aXN0aW5nIHN0cnVjdHVyZSBJDQo+PiA+PiA+PiA+d2FudGVkDQo+PiA+PiA+PiA+dG8NCj4+
+ID4+ID4+ID5icmluZyB0byB5b3VyIGF0dGVudGlvbi4NCj4+ID4+ID4+ID4xLiBJJ20gbm90IGVu
+dGlyZWx5IHN1cmUgaG93IGEgMTU4OC1USU1FX1NZTkMgcGluIGNhbiBoYXZlIGENCj4+ID4+ID4+
+ID5wYXJlbnQNCj4+ID4+ID4+ID5kZXZpY2UNCj4+ID4+ID4+ID5vZiB0eXBlICJlZWMiLiBFRUMg
+aXMgYWxsIGFib3V0IGZyZXF1ZW5jeSBzeW5jaHJvbml6YXRpb24sIGFuZA0KPj4gPj4gPj4gPnll
+dA0KPj4gPj4gPj4gPnRoZQ0KPj4gPj4gPj4gPnBpbg0KPj4gPj4gPj4gPm5hbWVkIDE1ODgtVElN
+RV9TWU5DIGlzIGNsZWFybHkgYSBwaGFzZSBwaW4uIFRoaXMgYWxzbyBkb2Vzbid0DQo+PiA+PiA+
+PiA+cGxheQ0KPj4gPj4gPj4gPndlbGwNCj4+ID4+ID4+ID53aXRoIGV4aXN0aW5nIGltcGxlbWVu
+dGF0aW9ucywgd2hlcmUgRUVDIGNpcmN1aXRzIGRlYWwgd2l0aA0KPj4gPj4gPj4gPmZyZXF1ZW5j
+eSwNCj4+ID4+ID4+ID5QUFMNCj4+ID4+ID4+ID5jaXJjdWl0cyBkZWFsIHdpdGggcGhhc2UsIGFu
+ZCB0aGVyZSBpcyBjbGVhciBkaXN0aW5jdGlvbiBiZXR3ZWVuDQo+PiA+PiA+PiA+dGhlDQo+PiA+
+PiA+PiA+dHdvDQo+PiA+PiA+PiA+d2l0aCByZWdhcmQgdG8gdGhlIG1lYW5pbmcgb2YgImJlaW5n
+IGxvY2tlZCIuDQo+PiA+PiA+Pg0KPj4gPj4gPj4gVGhpcyBkcGxsIGRldmljZSB0eXBlIHdhcyBl
+c3RhYmxpc2hlZCBiYXNlZCBvbiB0aGUgbWFpbiBwdXJwb3NlIG9mDQo+PiA+PiA+PiA+ZHBsbA0K
+Pj4gPj4gPj4gZGV2aWNlIHdoaWNoIGlzIHRvIGRyaXZlIHRoZSBuZXR3b3JrIHBvcnRzIHBoeSBj
+bG9ja3Mgd2l0aCBpdC4NCj4+ID4+ID4NCj4+ID4+ID5XaGF0IGlzIHRoZSBwaHlzaWNhbCBtZWFu
+aW5nIG9mIHRoaXMgaW5kaWNhdGlvbiAobG9jay1zdGF0dXMnOg0KPj4gPj4gPidsb2NrZWQnKT8g
+TG9ja2VkIG9uIHdoYXQ/DQo+PiA+Pg0KPj4gPj4gTG9jayBzdGF0dXMgaXMgZHBsbCBkZXZpY2Ug
+cHJvcGVydHkuDQo+PiA+Pg0KPj4gPj4gQnV0IGZ1bGwgcGljdHVyZSBoYXMgdG8gYmUgZGV0ZXJt
+aW5lZCBmcm9tIHRoZSBsaXN0IG9mIHBpbnMsIGZvciB0aGlzDQo+PiA+PiBwYXJ0aWN1bGFyIGNh
+c2UsIG9uZSBpbnB1dCBwcm92aWRlZCBmcm9tIGhvc3QgdGhyb3VnaCBwY2ktZSBwaW4sDQo+PiA+
+PiAxME1Ieg0KPj4gPj4gYmFuZHdpZHRoIGZyZXF1ZW5jeSBhbmQgMSBQUFMgc3luYyBwdWxzZXMu
+DQo+PiA+Pg0KPj4gPj4gQXMgYWxyZWFkeSBwb2ludGVkIHRoZSB0eXBlIG9mIGRwbGwgc2hhbGwg
+bGV0IHVzZXIga25vdyB0aGUgcHVycG9zZQ0KPj4gPj4gb2YNCj4+ID4+IHRoZSBkcGxsIGV4aXN0
+ZW5jZSBpbnN0ZWFkIG9mIHBhcnRpY3VsYXIgaW5wdXQgcHJvcGVydGllcy4NCj4+ID4+IElucHV0
+IHByb3BlcnRpZXMgYXJlIGRldGVybWluZWQgd2l0aCB0aGUgcGluJ3MgYXR0cmlidXRlcy4NCj4+
+ID4+DQo+PiA+PiA+QXMgYSB1c2VyIG9mIHRoaXMgY2lyY3VpdCBJIHdhbnQgdG8ga25vdyB0aGF0
+IHRoZSBkZXZpY2UgaXMgbG9ja2VkDQo+PiA+PiA+b24NCj4+ID4+ID50aGUgcGhhc2Ugb2YgdGhl
+IGlucHV0IHNpZ25hbCB3aXRoIGEgY2VydGFpbiBwcmVjaXNpb24uDQo+PiA+PiA+SXMgdGhpcyB0
+aGUgbWVhbmluZyBvZiAibG9ja2VkIiBoZXJlPyBDYW4gYW4gRUVDIGRldmljZSBiZSBsb2NrZWQg
+b24NCj4+ID4+ID50aGUgUGhhc2Ugb2YgdGhlIGlucHV0IHNpZ25hbD8NCj4+ID4+DQo+PiA+PiBX
+ZWxsIEkgZG9uJ3QgaGF2ZSBhbnkgZGF0YSBvbiB0aGUgcHJlY2lzaW9uIG9mIHN1Y2gsIGJ1dCBB
+RkFJSyBpdA0KPj4gPj4gY2FuLg0KPj4gPj4gRUVDIGRwbGwgc2hhbGwgYmUgcHJvZHVjaW5nIHN0
+YWJsZSBzaWduYWwsIHRoZSBpbnB1dCBpdCB1c2VzIGlzIG9ubHkNCj4+ID4+IHBhcnQgb2YgdGhl
+IGZ1bGwgZHBsbCBkZXZpY2UgcGljdHVyZS4NCj4+ID4+DQo+PiA+PiA+VXNlcnMgb2Ygb3RoZXIg
+ZGV2aWNlcyAoZTgxMCwgemwzMDczeCkgbWF5IGhhdmUgaW1wbGVtZW50ZWQgbG9naWMgdG8NCj4+
+ID4+ID5kZXRlcm1pbmUgdGhlIHBoYXNlIGxvY2sgYnkNCj4+ID4+ID5lbmZvcmNpbmcgdGhlIHBp
+biBwYXJlbnQgZGV2aWNlIHR5cGUgYXMgUFBTLiBIb3cgc2hvdWxkIHRoZXkgY2hhbmdlDQo+PiA+
+PiA+aXQNCj4+ID4+ID50byBkZXRlcm1pbmUgcGhhc2UgbG9jayAoYW5kIHdoeSk/DQo+PiA+PiA+
+DQo+PiA+Pg0KPj4gPj4gSSBhbSBTb3JyeSwgSSBkb24ndCB1bmRlcnN0YW5kIHRoZSBleGFtcGxl
+IGFib3ZlLCBjb3VsZCB5b3UgcGxlYXNlDQo+PiA+PiBFbGFib3JhdGUgb24gZGV0YWlscyBvZiBz
+dWNoIHNldHVwPw0KPj4gPg0KPj4gPlllcCwgZ2xhZGx5IQ0KPj4gPlRlbGNvIGN1c3RvbWVycyBy
+ZWx5IG9uIHRoZSBQaGFzZSBiZWluZyBsb2NrZWQgb24gdGhlIHJlZmVyZW5jZSB3aXRoIGENCj4+
+ID5jZXJ0YWluIHByZWNpc2lvbi4gSW4gRTgxMCBhbmQgemwzMDczeCB0aGUgZXF1YXRpb24gaXMg
+c2ltcGxlOg0KPj4gPjEuICJlZWMgbG9ja2VkIiBtZWFucyBzeW5Ub25pemF0aW9uIGFjaGlldmVk
+IC0gZnJlcXVlbmN5IGxvY2tlZA0KPj4gPjIuICJwcHMgbG9ja2VkIiBtZWFucyBzeW5DaHJvbml6
+YXRpb24gYWNoaWV2ZWQgLSBwaGFzZSBsb2NrZWQNCj4+ID5UaGUgVC1CQyBhcHBsaWNhdGlvbiBj
+aGVja3MgdGhlIHJlcG9ydGVkIGRldmljZSB0eXBlLiBJZiB0aGUgZGV2aWNlDQo+PiA+dHlwZSBp
+cyAicHBzIiwgdGhlIHJlcG9ydCBpcyBwcm9jZXNzZWQgYnkgdGhlIHN5bmNocm9uaXphdGlvbiBz
+dGF0ZQ0KPj4gPmRlY2lzaW9uIGxvZ2ljLiBPdGhlcndpc2UsIHRoZSByZXBvcnQgZG9lc24ndCBo
+YXZlIGFueSBtZWFuaW5nIHdpdGhpbg0KPj4gPiJULUJDIHdpdGhvdXQgU3luY0UiIGNvbnRleHQg
+YW5kIGlzIGRpc2NhcmRlZC4NCj4+ID4NCj4+ID5TaW5jZSB0aGlzIHBhdGNoIGlzIGdvaW5nIHRv
+IGNyZWF0ZSBlZWMgcmVwb3J0cyBvbmx5LCB0aGV5IGFyZSBhbGwNCj4+ID5nb2luZyB0byBiZSBk
+aXNjYXJkZWQsIGFuZCB0aGlzIGlzIGEgY29tcGF0aWJpbGl0eSBpc3N1ZSBJJ20gdHJ5aW5nIHRv
+DQo+PiA+YWRkcmVzcy4NCj4+ID4NCj4+DQo+PiBJIHNlZS4gRnJvbSB0aGlzIGFuZ2xlIHRoZSBQ
+UFMgdHlwZSBsb29rcyBsaWtlIGEgc3VwZXJzZXQgb2YgRUVDLg0KPj4gSXQgbWFrZXMgc2Vuc2Ug
+dG8gbWUuIFdlIGhhZCBhbHNvIHNvbWUgZGlzY3Vzc2lvbiBhbmQgYWdyZWVkIHRvIHByb3Bvc2UN
+Cj4+IG5ldyBwYXRjaCB3aXRoIHRoZSBQUFMgdHlwZSwgYXMgd2UgZG9uJ3Qgd2FudCB0aGUgdW5k
+ZXJseWluZyBTVyB0byBiZQ0KPj4gdHJvdWJsZWQgd2l0aCBzdWNoIGlzc3VlLg0KPg0KPlRoYW5r
+cyB2ZXJ5IG11Y2ggZm9yIGNvbnNpZGVyaW5nIHRoaXMhDQoNClN1cmUsIHY2IGlzIHRoZXJlLCBw
+bGVhc2UgaGF2ZSBhIGxvb2suDQoNClRoYW5rIHlvdSENCkFya2FkaXVzeg0KDQpbLi5dDQo=
