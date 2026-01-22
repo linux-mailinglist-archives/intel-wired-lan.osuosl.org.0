@@ -2,96 +2,96 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id oGZZDrcqcmmadwAAu9opvQ
+	id gCj2JJwycmmadwAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Jan 2026 14:48:39 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Jan 2026 15:22:20 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 101B8677F3
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Jan 2026 14:48:38 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1481E67DD9
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Jan 2026 15:22:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1654F4695D;
-	Thu, 22 Jan 2026 13:48:36 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 728B36F782;
+	Thu, 22 Jan 2026 14:22:12 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id vrg_5diL_Q9v; Thu, 22 Jan 2026 14:22:11 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A9DB36F7BC
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1769091731;
+	bh=L+H10aKDI+Q0/rzhr7Jj3ZIgsjQD3nyzkvMzlbjESYo=;
+	h=To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From:Reply-To:From;
+	b=K2CbfIkiR1PM8BFU2aG9+g8COroFWqqiKYmsArT9K82Wk0LWJ8qE76NwXEKRo8fVL
+	 BNT8/UscEB6CIKP/DQXyx5kUspvbIVLunEokAltp2TN5EuhAzZOCDyR364+bonlmUG
+	 0XXSZbCYlUBPGArKb8ito5i2HclFcH8xw1FlxRGF9q0UtXgvOkLC3EMepgCnBACpR7
+	 ASu5Md9zY+cbt2GpBI6yanxT1vY3lxxrW2IyVeURK8hFavrewOLNqHkyyVUnKC6X8E
+	 kAeG3emjhKMMDryCxoS5LxdTVlgcvuJ3xbKlR6zfrIALZRddIfn8NXuu1r8ZhRv4KR
+	 s57Sah4zfI1lw==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id A9DB36F7BC;
+	Thu, 22 Jan 2026 14:22:11 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id CA378122
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Jan 2026 14:22:09 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id A4CBB42FD1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Jan 2026 14:22:09 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id qnuqY1WoczdM; Thu, 22 Jan 2026 13:48:35 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 477B046B64
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1769089715;
-	bh=PPx7lBvZdRocqs9Ic7hyxz4MceYROtyFu1Q8VoDJ5rc=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=JYxVrS/fvbWqC6MA4mjrMbcqPNUeADa06mtBaUjAq1ydI5L2uGj11W/6g+6qKRAbG
-	 AnLJ2RqxmnzeRiNISLVoXpe3G/W/eRKcMukfLwdX9WY9hD72VImizkbwjKcyPbTZiT
-	 1dhqc6BB4XVEKBufTTfafj5Dg4L5ReMX2m2nKRv+AIZirSFfmFEL+6wS4aZyiS2tWz
-	 swOu9887lfg2lrW9OSuL5I636xI+pCOJgsJ+H2cVJdFFzfqaP5JymfE626Iq3lxFOi
-	 FJSZN2X9j2hhRL4AsefKZRno+/67wG39uEhxP7QafOPKJI0GVriA6NOk00lnfuucWm
-	 3ar2Bh9TsZoeA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 477B046B64;
-	Thu, 22 Jan 2026 13:48:35 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 6839924D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Jan 2026 13:48:33 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 57B9240C64
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Jan 2026 13:48:33 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1hnXFemwmIVA for <intel-wired-lan@lists.osuosl.org>;
- Thu, 22 Jan 2026 13:48:32 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=49.212.198.91;
- helo=www2881.sakura.ne.jp; envelope-from=kohei@enjuk.jp; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 2A6A9424EA
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2A6A9424EA
-Received: from www2881.sakura.ne.jp (www2881.sakura.ne.jp [49.212.198.91])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2A6A9424EA
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Jan 2026 13:48:31 +0000 (UTC)
-Received: from ms-a2 (79.192.13.160.dy.iij4u.or.jp [160.13.192.79])
- (authenticated bits=0)
- by www2881.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 60MDmAkd061527
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Thu, 22 Jan 2026 22:48:11 +0900 (JST) (envelope-from kohei@enjuk.jp)
-From: Kohei Enju <kohei@enjuk.jp>
-To: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, kohei.enju@gmail.com,
- Kohei Enju <kohei@enjuk.jp>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Date: Thu, 22 Jan 2026 13:47:46 +0000
-Message-ID: <20260122134809.7765-1-kohei@enjuk.jp>
-X-Mailer: git-send-email 2.51.0
+ id Ldtwe1diZvHq for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 22 Jan 2026 14:22:08 +0000 (UTC)
+X-Greylist: delayed 304 seconds by postgrey-1.37 at util1.osuosl.org;
+ Thu, 22 Jan 2026 14:22:06 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 0F1644149B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0F1644149B
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=185.136.65.227;
+ helo=mta-65-227.siemens.flowmailer.net;
+ envelope-from=fm-1333436-2026012214165859c47e1a46000207ef-kupijv@rts-flowmailer.siemens.com;
+ receiver=<UNKNOWN> 
+Received: from mta-65-227.siemens.flowmailer.net
+ (mta-65-227.siemens.flowmailer.net [185.136.65.227])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0F1644149B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Jan 2026 14:22:05 +0000 (UTC)
+Received: by mta-65-227.siemens.flowmailer.net with ESMTPSA id
+ 2026012214165859c47e1a46000207ef
+ for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 22 Jan 2026 15:16:59 +0100
+To: aleksandr.loktionov@intel.com, jacob.e.keller@intel.com,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ maciej.fijalkowski@intel.com, sriram.yagnaraman@ericsson.com,
+ kurt@linutronix.de
+Cc: intel-wired-lan@lists.osuosl.org,
+	vivek.behera@siemens.com
+Date: Thu, 22 Jan 2026 15:16:52 +0100
+Message-Id: <20260122141652.2444012-1-vivek.behera@siemens.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: a=rsa-sha256;
- bh=PPx7lBvZdRocqs9Ic7hyxz4MceYROtyFu1Q8VoDJ5rc=; 
- c=relaxed/relaxed; d=enjuk.jp;
- h=From:To:Subject:Date:Message-ID;
- s=rs20251215; t=1769089692; v=1;
- b=Yoavn74erfL56Hc73SWC+KaIwCdQtTUPmXZdvsuA+4jlffmNcncKDT2wPpgnvwJt
- 5K7UieVXf1Bd9vnZt7t69lsAFiX6q17vsPRLYEqkjFVDVNs5m4IRnbyInGzY85K6
- p5mq38smUAhzkyQ7vHGjb8d8jUfhP0UZNr7cmwYrbkQ0RZF7A3mBe7Cs1Kxp0wP/
- k7wL60/KsW15YVoYL3GQAEzeUh04X6dbZ84dKrYAHE0tWDvg2PJFUzXhh9DlTRjn
- Kre8E0gz1mICF3Hhr2f22qgoU9rtXsJ4fQ4ZVj1T2ivLJlhklYiBrkw8en7nXSOv
- m8fwXhQuBy9Q3GuBV6vR1Q==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=enjuk.jp
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Flowmailer-Platform: Siemens
+Feedback-ID: 519:519-1333436:519-21489:flowmailer
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; s=fm1; 
+ d=siemens.com; i=vivek.behera@siemens.com;
+ h=Date:From:Subject:To:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding:Cc;
+ bh=L+H10aKDI+Q0/rzhr7Jj3ZIgsjQD3nyzkvMzlbjESYo=;
+ b=cm8OZC4MkT9M4eEgYG4COT3CW6ucv2BfhO6OX0o1fRbiKdcKRuzuObZljwploPsbNoYBgK
+ dtdZspYgSfhA+0Aby2pek/AgZ930utXXFQlMw/QDICcYSvTuPJSgunDQH5PA51w3Ugq7Aci/
+ U1hU511xMBGbbGqrwh4UNJaa0Kzo/GGfhrSEIc/oDqSO8sUyw0dhVXVOgz0SS4CV5mtxL0BE
+ jzNMI9gs/x8NZm0kI1sHJeOIX7lerr5cbZ9KTdssH2ML7k9bURRfJOBT6VSnHm3lmOXl/gAw
+ Yv9NY6Vu6/JlRKG52DnUAWdmDeV3u5cQXx8J7txs73UULNugEIGs5jeg==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=siemens.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=enjuk.jp header.i=@enjuk.jp header.a=rsa-sha256
- header.s=rs20251215 header.b=Yoavn74e
-Subject: [Intel-wired-lan] [PATCH v2 iwl-next] igb: set skb hash type from
- RSS_TYPE
+ unprotected) header.d=siemens.com header.i=vivek.behera@siemens.com
+ header.a=rsa-sha256 header.s=fm1 header.b=cm8OZC4M
+Subject: [Intel-wired-lan] [PATCH iwl-net v8] igb: Fix trigger of incorrect
+ irq in igb_xsk_wakeup
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,131 +104,181 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+From: Vivek Behera via Intel-wired-lan <intel-wired-lan@osuosl.org>
+Reply-To: Vivek Behera <vivek.behera@siemens.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [2.39 / 15.00];
-	SUSPICIOUS_RECIPS(1.50)[];
-	MID_CONTAINS_FROM(1.00)[];
+X-Spamd-Result: default: False [-0.71 / 15.00];
 	R_MISSING_CHARSET(0.50)[];
-	MAILLIST(-0.20)[mailman];
+	DMARC_POLICY_ALLOW(-0.50)[osuosl.org,none];
 	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[text/plain];
-	DMARC_POLICY_SOFTFAIL(0.10)[enjuk.jp : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCPT_COUNT_TWELVE(0.00)[12];
 	RCVD_TLS_LAST(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FREEMAIL_CC(0.00)[intel.com,lunn.ch,davemloft.net,google.com,kernel.org,redhat.com,gmail.com,enjuk.jp];
 	MIME_TRACE(0.00)[0:+];
-	ARC_NA(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	TO_DN_SOME(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[kohei@enjuk.jp,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
+	REPLYTO_DOM_NEQ_FROM_DOM(0.00)[];
+	ARC_NA(0.00)[];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:jacob.e.keller@intel.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:maciej.fijalkowski@intel.com,m:sriram.yagnaraman@ericsson.com,m:kurt@linutronix.de,m:vivek.behera@siemens.com,s:lists@lfdr.de];
+	FORGED_SENDER(0.00)[intel-wired-lan@osuosl.org,intel-wired-lan-bounces@osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
+	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
+	MISSING_XM_UA(0.00)[];
+	HAS_REPLYTO(0.00)[vivek.behera@siemens.com];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	TO_DN_NONE(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[intel-wired-lan@osuosl.org,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	RCPT_COUNT_SEVEN(0.00)[9];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
 	RCVD_COUNT_SEVEN(0.00)[8]
-X-Rspamd-Queue-Id: 101B8677F3
+X-Rspamd-Queue-Id: 1481E67DD9
 X-Rspamd-Action: no action
 
-igb always marks the RX hash as L3 regardless of RSS_TYPE in the
-advanced descriptor, which may indicate L4 (TCP/UDP) hash. This can
-trigger unnecessary SW hash recalculation and breaks toeplitz selftests.
+The current implementation in the igb_xsk_wakeup expects
+the Rx and Tx queues to share the same irq. This would lead
+to triggering of incorrect irq in split irq configuration.
+This patch addresses this issue which could impact environments
+with 2 active cpu cores
+or when the number of queues is reduced to 2 or less
 
-Use RSS_TYPE from pkt_info to set the correct PKT_HASH_TYPE_*
+cat /proc/interrupts | grep eno2
+ 167:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0
+ 0-edge      eno2
+ 168:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0
+ 1-edge      eno2-rx-0
+ 169:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0
+ 2-edge      eno2-rx-1
+ 170:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0
+ 3-edge      eno2-tx-0
+ 171:          0          0          0          0 IR-PCI-MSIX-0000:08:00.0
+ 4-edge      eno2-tx-1
 
-Tested by toeplitz.py with the igb RSS key get/set patches applied as
-they are required for toeplitz.py (see Link below).
- # ethtool -N $DEV rx-flow-hash udp4 sdfn
- # ethtool -N $DEV rx-flow-hash udp6 sdfn
- # python toeplitz.py | grep -E "^# Totals"
+Furthermore it uses the flags input argument to trigger either rx, tx or
+both rx and tx irqs as specified in the ndo_xsk_wakeup api documentation
 
-Without patch:
- # Totals: pass:0 fail:12 xfail:0 xpass:0 skip:0 error:0
-
-With patch:
- # Totals: pass:12 fail:0 xfail:0 xpass:0 skip:0 error:0
-
-Link: https://lore.kernel.org/intel-wired-lan/20260119084511.95287-5-takkozu@amazon.com/
-Signed-off-by: Kohei Enju <kohei@enjuk.jp>
+Fixes: 80f6ccf9f116 ("igb: Introduce XSK data structures and helpers")
+Signed-off-by: Vivek Behera <vivek.behera@siemens.com>
 Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Suggested-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Acked-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 ---
-Changelog:
-  v2:
-    - Fix max-line-length by removing unnecessary comment
-  v1: https://lore.kernel.org/intel-wired-lan/20260119175922.199950-1-kohei@enjuk.jp/
----
- drivers/net/ethernet/intel/igb/e1000_82575.h | 21 ++++++++++++++++++++
- drivers/net/ethernet/intel/igb/igb_main.c    | 18 +++++++++++++----
- 2 files changed, 35 insertions(+), 4 deletions(-)
+v1: https://lore.kernel.org/intel-wired-lan/20251212131454.124116-1-vivek.behera@siemens.com/
+v2: https://lore.kernel.org/intel-wired-lan/20251215115416.410619-1-vivek.behera@siemens.com/
+v3: https://lore.kernel.org/intel-wired-lan/20251220114936.140473-1-vivek.behera@siemens.com/
+v4: https://lore.kernel.org/intel-wired-lan/20251222115747.230521-1-vivek.behera@siemens.com/
+v5: https://lore.kernel.org/intel-wired-lan/20260112130349.1737901-1-vivek.behera@siemens.com/
+v6: https://lore.kernel.org/intel-wired-lan/20260117145112.2088217-1-vivek.behera@siemens.com/
+v7: https://lore.kernel.org/intel-wired-lan/20260120075053.2260190-1-vivek.behera@siemens.com/
 
-diff --git a/drivers/net/ethernet/intel/igb/e1000_82575.h b/drivers/net/ethernet/intel/igb/e1000_82575.h
-index 63ec253ac788..9e696d55e512 100644
---- a/drivers/net/ethernet/intel/igb/e1000_82575.h
-+++ b/drivers/net/ethernet/intel/igb/e1000_82575.h
-@@ -87,6 +87,27 @@ union e1000_adv_rx_desc {
- 	} wb;  /* writeback */
- };
- 
-+#define E1000_RSS_TYPE_NO_HASH		 0
-+#define E1000_RSS_TYPE_HASH_TCP_IPV4	 1
-+#define E1000_RSS_TYPE_HASH_IPV4	 2
-+#define E1000_RSS_TYPE_HASH_TCP_IPV6	 3
-+#define E1000_RSS_TYPE_HASH_IPV6_EX	 4
-+#define E1000_RSS_TYPE_HASH_IPV6	 5
-+#define E1000_RSS_TYPE_HASH_TCP_IPV6_EX	 6
-+#define E1000_RSS_TYPE_HASH_UDP_IPV4	 7
-+#define E1000_RSS_TYPE_HASH_UDP_IPV6	 8
-+#define E1000_RSS_TYPE_HASH_UDP_IPV6_EX	 9
-+
-+#define E1000_RSS_TYPE_MASK		GENMASK(3, 0)
-+
-+#define E1000_RSS_L4_TYPES_MASK	\
-+	(BIT(E1000_RSS_TYPE_HASH_TCP_IPV4)	| \
-+	 BIT(E1000_RSS_TYPE_HASH_TCP_IPV6)	| \
-+	 BIT(E1000_RSS_TYPE_HASH_TCP_IPV6_EX)	| \
-+	 BIT(E1000_RSS_TYPE_HASH_UDP_IPV4)	| \
-+	 BIT(E1000_RSS_TYPE_HASH_UDP_IPV6)	| \
-+	 BIT(E1000_RSS_TYPE_HASH_UDP_IPV6_EX))
-+
- #define E1000_RXDADV_HDRBUFLEN_MASK      0x7FE0
- #define E1000_RXDADV_HDRBUFLEN_SHIFT     5
- #define E1000_RXDADV_STAT_TS             0x10000 /* Pkt was time stamped */
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 8dab133296ca..ef0cbf532716 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -8824,10 +8824,20 @@ static inline void igb_rx_hash(struct igb_ring *ring,
- 			       union e1000_adv_rx_desc *rx_desc,
- 			       struct sk_buff *skb)
- {
--	if (ring->netdev->features & NETIF_F_RXHASH)
--		skb_set_hash(skb,
--			     le32_to_cpu(rx_desc->wb.lower.hi_dword.rss),
--			     PKT_HASH_TYPE_L3);
-+	u16 rss_type;
-+
-+	if (!(ring->netdev->features & NETIF_F_RXHASH))
-+		return;
-+
-+	rss_type = le16_to_cpu(rx_desc->wb.lower.lo_dword.pkt_info) &
-+		   E1000_RSS_TYPE_MASK;
-+
-+	if (!rss_type)
-+		return;
-+
-+	skb_set_hash(skb, le32_to_cpu(rx_desc->wb.lower.hi_dword.rss),
-+		     (E1000_RSS_L4_TYPES_MASK & BIT(rss_type)) ?
-+		     PKT_HASH_TYPE_L4 : PKT_HASH_TYPE_L3);
+changelog:
+v1
+- Initial description of the Bug and fixes made in the patch
+
+v1 -> v2
+- Handling of RX and TX Wakeup in igc_xsk_wakeup for a split IRQ configuration
+- Review suggestions by Aleksander: Modified sequence to complete all
+  error checks for rx and tx before updating napi states and triggering irqs
+- Corrected trigger of TX and RX interrupts over E1000_ICS (non msix use case)
+- Added define for Tx interrupt trigger bit mask for E1000_ICS
+
+v2 -> v3
+- Included applicable feedback and suggestions from igc patch
+- Fixed logic in updating eics value when  both TX and RX need wakeup
+
+v3 -> v4
+- Added comments to explain trigerring of both TX and RX with active queue pairs
+- Fixed check of xsk pools in if statement
+
+v4 -> v5
+- Introduced a simplified logic for sequential check for RX and TX
+
+v5 -> v6
+- Further simplifications suggested by Maciej
+- Included review suggestions from reviewers
+
+v6 -> v7
+- Removed redundant braces
+- Updated comment block to improve explanation of implemented logic
+
+v7 -> v8
+- Added acked-by tag
+---
+ drivers/net/ethernet/intel/igb/igb_xsk.c | 38 +++++++++++++++++++-----
+ 1 file changed, 30 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igb/igb_xsk.c b/drivers/net/ethernet/intel/igb/igb_xsk.c
+index 30ce5fbb5b77..ce4a7b58cad2 100644
+--- a/drivers/net/ethernet/intel/igb/igb_xsk.c
++++ b/drivers/net/ethernet/intel/igb/igb_xsk.c
+@@ -524,6 +524,16 @@ bool igb_xmit_zc(struct igb_ring *tx_ring, struct xsk_buff_pool *xsk_pool)
+ 	return nb_pkts < budget;
  }
  
- /**
++static u32 igb_sw_irq_prep(struct igb_q_vector *q_vector)
++{
++	u32 eics = 0;
++
++	if (!napi_if_scheduled_mark_missed(&q_vector->napi))
++		eics = q_vector->eims_value;
++
++	return eics;
++}
++
+ int igb_xsk_wakeup(struct net_device *dev, u32 qid, u32 flags)
+ {
+ 	struct igb_adapter *adapter = netdev_priv(dev);
+@@ -542,20 +552,32 @@ int igb_xsk_wakeup(struct net_device *dev, u32 qid, u32 flags)
+ 
+ 	ring = adapter->tx_ring[qid];
+ 
+-	if (test_bit(IGB_RING_FLAG_TX_DISABLED, &ring->flags))
+-		return -ENETDOWN;
+-
+ 	if (!READ_ONCE(ring->xsk_pool))
+ 		return -EINVAL;
+ 
+-	if (!napi_if_scheduled_mark_missed(&ring->q_vector->napi)) {
++	if (flags & XDP_WAKEUP_TX) {
++		if (test_bit(IGB_RING_FLAG_TX_DISABLED, &ring->flags))
++			return -ENETDOWN;
++
++		eics |= igb_sw_irq_prep(ring->q_vector);
++	}
++
++	if (flags & XDP_WAKEUP_RX) {
++		/* If IGB_FLAG_QUEUE_PAIRS is active, the q_vector
++		 * and NAPI is shared between RX and TX.
++		 * If NAPI is already running it would be marked as missed
++		 * from the TX path, making this RX call a NOP
++		 */
++		ring = adapter->rx_ring[qid];
++		eics |= igb_sw_irq_prep(ring->q_vector);
++	}
++
++	if (eics) {
+ 		/* Cause software interrupt */
+-		if (adapter->flags & IGB_FLAG_HAS_MSIX) {
+-			eics |= ring->q_vector->eims_value;
++		if (adapter->flags & IGB_FLAG_HAS_MSIX)
+ 			wr32(E1000_EICS, eics);
+-		} else {
++		else
+ 			wr32(E1000_ICS, E1000_ICS_RXDMT0);
+-		}
+ 	}
+ 
+ 	return 0;
 -- 
-2.51.0
+2.34.1
 
