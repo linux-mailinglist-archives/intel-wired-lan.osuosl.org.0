@@ -2,96 +2,97 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id CIGIKiUXdml1LgEAu9opvQ
+	id MBU3OL6Wd2n0iwEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 25 Jan 2026 14:14:13 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Jan 2026 17:30:54 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A4056809B1
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 25 Jan 2026 14:14:12 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C78308AAFA
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Jan 2026 17:30:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D1C4082275;
-	Sun, 25 Jan 2026 13:14:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7BE3B8154C;
+	Mon, 26 Jan 2026 16:30:52 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZmGl7RtaR159; Sun, 25 Jan 2026 13:14:09 +0000 (UTC)
+ id NEmutaxCb5qI; Mon, 26 Jan 2026 16:30:50 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2AB3D8224E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3D780815CA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1769346849;
-	bh=lTKJGbCrPaEbSFAuvPIh6CkaeFRE7NCkoh+SsrCk7jc=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=yA3O9fxCMX8Y6/r3FeKN7ZNwkNUQ0lfiVxaquHDN2jExWVKTy84emaVWzZOIilxzy
-	 XbSmWzndS1onltTbJMGuduakji/O8DFDJk06da+aLpdP5vjx+mKcNNQeBgcDVao55v
-	 bZGGhFHVt1oDMYKuz8cEuqHdqws4J1RuGIPmVPclJuP4jCS8yrlchQVVcAk3IxCOg9
-	 nkbwQfAkWpMcIi1UAVbncughczJP5qa0fOAzACBGjneuCcHTp54C0ZEM4RUCQHh+LC
-	 wvwroqv8svnj0+94n+Ke0lQ75yBEE5KD5VcVeXIPAyg5RoO8BuocdnCL1F/tSrbt2N
-	 AXpuhv7XjPhgw==
+	s=default; t=1769445050;
+	bh=2mzwKobDfzzxE/liad/TFT+Aq3Oz06NV4T1E9rF19FU=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=p42zoFmSi8sa62JOJrMsBhdGxWzDA/FqlR8jCQpGjj0OA1f+vByiqBYg132V4b4Sn
+	 3L4SbNdhgQcasY52KDvnNXr1JS9zgCZLpqFyQH+prF7w2BbDhianmL/eVYa65L5ubO
+	 qznIXgwakPj8EQxcgumIsGF99YBdUF3pknEnaBUgYhrdDve4OHKyZDEtIEE505MGkr
+	 nn2+6Bgv8MRyy9nZagNBh30hMJbz/lRvEqZQGQjo0sPgEmWHpKbyt7hpdyIy0IdQ5O
+	 r8rZzbLbp05xCYqNtI+bqGpBJEEX0+6RAm1asKOApy7KtYErmwQGj5kwwHg2tXEsg5
+	 debxDdk3pSKRQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2AB3D8224E;
-	Sun, 25 Jan 2026 13:14:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3D780815CA;
+	Mon, 26 Jan 2026 16:30:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id AA5F711B
- for <intel-wired-lan@lists.osuosl.org>; Sun, 25 Jan 2026 13:14:07 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id AE6191CE
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 25 Jan 2026 14:11:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8DD5982243
- for <intel-wired-lan@lists.osuosl.org>; Sun, 25 Jan 2026 13:14:07 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id A434E406C9
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 25 Jan 2026 14:11:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TkLZhD8lHHyD for <intel-wired-lan@lists.osuosl.org>;
- Sun, 25 Jan 2026 13:14:06 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=49.212.198.91;
- helo=www2881.sakura.ne.jp; envelope-from=kohei@enjuk.jp; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 748588223E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 748588223E
-Received: from www2881.sakura.ne.jp (www2881.sakura.ne.jp [49.212.198.91])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 748588223E
- for <intel-wired-lan@lists.osuosl.org>; Sun, 25 Jan 2026 13:14:05 +0000 (UTC)
-Received: from ms-a2 (188.53.30.125.dy.iij4u.or.jp [125.30.53.188])
- (authenticated bits=0)
- by www2881.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 60PDDRms093033
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Sun, 25 Jan 2026 22:13:28 +0900 (JST) (envelope-from kohei@enjuk.jp)
-From: Kohei Enju <kohei@enjuk.jp>
-To: takkozu@amazon.com
-Cc: aleksandr.loktionov@intel.com, andrew+netdev@lunn.ch,
- anthony.l.nguyen@intel.com, davem@davemloft.net, edumazet@google.com,
- enjuk@amazon.com, intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
- netdev@vger.kernel.org, pabeni@redhat.com, piotr.kwapulinski@intel.com,
- pmenzel@molgen.mpg.de, przemyslaw.kitszel@intel.com
-Date: Sun, 25 Jan 2026 13:12:37 +0000
-Message-ID: <20260125131327.4469-1-kohei@enjuk.jp>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20260120093441.70075-8-takkozu@amazon.com>
-References: <20260120093441.70075-8-takkozu@amazon.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id iVUEl9J962ga for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 25 Jan 2026 14:11:45 +0000 (UTC)
+X-Greylist: delayed 429 seconds by postgrey-1.37 at util1.osuosl.org;
+ Sun, 25 Jan 2026 14:11:43 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5DA73406C4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5DA73406C4
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=159.226.251.81;
+ helo=cstnet.cn; envelope-from=lihaoxiang@isrc.iscas.ac.cn; receiver=<UNKNOWN> 
+Received: from cstnet.cn (smtp81.cstnet.cn [159.226.251.81])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5DA73406C4
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 25 Jan 2026 14:11:43 +0000 (UTC)
+Received: from localhost.localdomain (unknown [36.112.3.223])
+ by APP-03 (Coremail) with SMTP id rQCowADH5t3oInZpYdesBg--.41622S2;
+ Sun, 25 Jan 2026 22:04:24 +0800 (CST)
+From: Haoxiang Li <lihaoxiang@isrc.iscas.ac.cn>
+To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ Haoxiang Li <lihaoxiang@isrc.iscas.ac.cn>
+Date: Sun, 25 Jan 2026 22:04:23 +0800
+Message-Id: <20260125140423.2077845-1-lihaoxiang@isrc.iscas.ac.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: a=rsa-sha256;
- bh=lTKJGbCrPaEbSFAuvPIh6CkaeFRE7NCkoh+SsrCk7jc=; 
- c=relaxed/relaxed; d=enjuk.jp;
- h=From:To:Subject:Date:Message-ID;
- s=rs20251215; t=1769346809; v=1;
- b=uB8lTu7ocXcmDtNk/A60xi+YGO/4iaX865u5/sa2MRHW8FHIYlmuDPxli9aaYiNj
- noFuNXbU2hhqfdGIlieuANVIltFmI4TAi7C/Xr5380DJbnzp+qkwHwMJ0UpUcsfN
- xLZG+CQnc+QR+HyDEgaJrs1RGaUncr5cwVzmCxOv0m959J/Kqqp0B0C8t+5NuodI
- ecHtHrD8gacWbNZx+O0my8pi2NagMPYyk0zxiBqo8Xj0AsCacx5gaHJlY4DDtXKm
- MvbtQPNy1wC1OekSZJaB+oiJQPIe6TFnU4J9o7QrPMzZq2uqblwgal/pFskEls9J
- FjKnAp5FPUjnnBnHsMtdHw==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=enjuk.jp
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=enjuk.jp header.i=@enjuk.jp header.a=rsa-sha256
- header.s=rs20251215 header.b=uB8lTu7o
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 3/3] igb: allow
- configuring RSS key via ethtool set_rxfh
+X-CM-TRANSID: rQCowADH5t3oInZpYdesBg--.41622S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7Wr1fKF1ftrWUGryUWF1DGFg_yoW8Jr43pr
+ 4Y9398Cr18XrW5Ww4kXF4jgF13Ja1ftry8KFW3G3Z5uwn0qa17JF4xtFWYgry8ZrWxJanx
+ JF4DAanxCF15J3DanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDU0xBIdaVrnRJUUU9014x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+ rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+ 1l84ACjcxK6xIIjxv20xvE14v26r1j6r1xM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
+ 6F4UM28EF7xvwVC2z280aVAFwI0_Jr0_Gr1l84ACjcxK6I8E87Iv6xkF7I0E14v26r4j6r
+ 4UJwAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
+ I7IYx2IY67AKxVWUGVWUXwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r
+ 4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628v
+ n2kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7x
+ kEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E
+ 67AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCw
+ CI42IY6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1x
+ MIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UYxBIda
+ VFxhVjvjDU0xZFpf9x0JUZYFZUUUUU=
+X-Originating-IP: [36.112.3.223]
+X-CM-SenderInfo: 5olkt0x0ld0ww6lv2u4olvutnvoduhdfq/1tbiCQ8SE2l1qZiRMAACsJ
+X-Mailman-Approved-At: Mon, 26 Jan 2026 16:30:48 +0000
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=isrc.iscas.ac.cn
+Subject: [Intel-wired-lan] [PATCH] i40e: add an error handling path in
+ i40e_xsk_pool_enable()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -107,166 +108,89 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [2.39 / 15.00];
+X-Spamd-Result: default: False [3.19 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
+	DATE_IN_PAST(1.00)[26];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
 	MAILLIST(-0.20)[mailman];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	R_SPF_ALLOW(-0.20)[+mx];
-	DMARC_POLICY_SOFTFAIL(0.10)[enjuk.jp : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCPT_COUNT_TWELVE(0.00)[14];
-	ARC_NA(0.00)[];
+	TO_DN_SOME(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
-	FORGED_SENDER(0.00)[kohei@enjuk.jp,intel-wired-lan-bounces@osuosl.org];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
 	MIME_TRACE(0.00)[0:+];
-	FORGED_RECIPIENTS(0.00)[m:takkozu@amazon.com,m:aleksandr.loktionov@intel.com,m:andrew+netdev@lunn.ch,m:anthony.l.nguyen@intel.com,m:davem@davemloft.net,m:edumazet@google.com,m:enjuk@amazon.com,m:kuba@kernel.org,m:netdev@vger.kernel.org,m:pabeni@redhat.com,m:piotr.kwapulinski@intel.com,m:pmenzel@molgen.mpg.de,m:przemyslaw.kitszel@intel.com,m:andrew@lunn.ch,s:lists@lfdr.de];
+	SUSPICIOUS_AUTH_ORIGIN(0.00)[];
+	FORGED_SENDER(0.00)[lihaoxiang@isrc.iscas.ac.cn,intel-wired-lan-bounces@osuosl.org];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:netdev@vger.kernel.org,m:lihaoxiang@isrc.iscas.ac.cn,m:andrew@lunn.ch,s:lists@lfdr.de];
+	DMARC_NA(0.00)[iscas.ac.cn];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	TO_DN_NONE(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[kohei@enjuk.jp,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
+	ARC_NA(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[iscas.ac.cn:email,isrc.iscas.ac.cn:mid];
+	FROM_NEQ_ENVFROM(0.00)[lihaoxiang@isrc.iscas.ac.cn,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	NEURAL_HAM(-0.00)[-1.000];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[enjuk.jp:mid,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	HAS_XOIP(0.00)[];
+	RCPT_COUNT_SEVEN(0.00)[10];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[8]
-X-Rspamd-Queue-Id: A4056809B1
+X-Rspamd-Queue-Id: C78308AAFA
 X-Rspamd-Action: no action
 
-On Tue, 20 Jan 2026 18:34:40 +0900, Takashi Kozu wrote:
+In i40e_xsk_pool_enable(), the memory allocated by
+xsk_pool_dma_map() should be released if some error
+occurs. Add an error handling path to do so.
 
-> Change igc_set_rxfh() to accept and save a userspace-provided
-> RSS key. When a key is provided, store it in the adapter and write the
-> E1000 registers accordingly.
-> 
-> This can be tested using `ethtool -X <dev> hkey <key>`.
-> 
-> Signed-off-by: Takashi Kozu <takkozu@amazon.com>
-> ---
->  drivers/net/ethernet/intel/igb/igb.h         |  1 +
->  drivers/net/ethernet/intel/igb/igb_ethtool.c | 49 +++++++++++---------
->  drivers/net/ethernet/intel/igb/igb_main.c    |  3 +-
->  3 files changed, 30 insertions(+), 23 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/igb/igb.h b/drivers/net/ethernet/intel/igb/igb.h
-> index 8c9b02058cec..2509ec30acf3 100644
-> --- a/drivers/net/ethernet/intel/igb/igb.h
-> +++ b/drivers/net/ethernet/intel/igb/igb.h
-> @@ -657,6 +657,7 @@ struct igb_adapter {
->  	u32 rss_indir_tbl_init;
->  	u8 rss_indir_tbl[IGB_RETA_SIZE];
->  	u8 rss_key[IGB_RSS_KEY_SIZE];
-> +	bool has_user_rss_key;
+Signed-off-by: Haoxiang Li <lihaoxiang@isrc.iscas.ac.cn>
+---
+ drivers/net/ethernet/intel/i40e/i40e_xsk.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
-Hi Kozu-san.
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+index 9f47388eaba5..92b853a75b28 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+@@ -108,23 +108,27 @@ static int i40e_xsk_pool_enable(struct i40e_vsi *vsi,
+ 	if (if_running) {
+ 		err = i40e_queue_pair_disable(vsi, qid);
+ 		if (err)
+-			return err;
++			goto unmap;
+ 
+ 		err = i40e_realloc_rx_xdp_bi(vsi->rx_rings[qid], true);
+ 		if (err)
+-			return err;
++			goto unmap;
+ 
+ 		err = i40e_queue_pair_enable(vsi, qid);
+ 		if (err)
+-			return err;
++			goto unmap;
+ 
+ 		/* Kick start the NAPI context so that receiving will start */
+ 		err = i40e_xsk_wakeup(vsi->netdev, qid, XDP_WAKEUP_RX);
+ 		if (err)
+-			return err;
++			goto unmap;
+ 	}
+ 
+ 	return 0;
++
++unmap:
++	xsk_pool_dma_unmap(pool, I40E_RX_DMA_ATTR);
++	return err;
+ }
+ 
+ /**
+-- 
+2.25.1
 
-While preparing for testing, I noticed that now 'has_user_rss_key' is
-not necessary.
-
-Since netdev_rss_key_fill() is called in igb_sw_init() and igb_sw_init()
-is called only once for the adapter's lifetime, adapter->rss_key
-wouldn't be changed except for user-intended change.
-
-I'd drop that flag and related code (see below)
-
->  
->  	unsigned long link_check_timeout;
->  	int copper_tries;
-> diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-> index b387121f0ea7..1db9c2447c91 100644
-> --- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-> +++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-> @@ -3357,35 +3357,40 @@ static int igb_set_rxfh(struct net_device *netdev,
->  	u32 num_queues;
->  
->  	/* We do not allow change in unsupported parameters */
-> -	if (rxfh->key ||
-> -	    (rxfh->hfunc != ETH_RSS_HASH_NO_CHANGE &&
-> -	     rxfh->hfunc != ETH_RSS_HASH_TOP))
-> +	if (rxfh->hfunc != ETH_RSS_HASH_NO_CHANGE &&
-> +	    rxfh->hfunc != ETH_RSS_HASH_TOP)
->  		return -EOPNOTSUPP;
-> -	if (!rxfh->indir)
-> -		return 0;
->  
-> -	num_queues = adapter->rss_queues;
-> +	if (rxfh->indir) {
-> +		num_queues = adapter->rss_queues;
->  
-> -	switch (hw->mac.type) {
-> -	case e1000_82576:
-> -		/* 82576 supports 2 RSS queues for SR-IOV */
-> -		if (adapter->vfs_allocated_count)
-> -			num_queues = 2;
-> -		break;
-> -	default:
-> -		break;
-> -	}
-> +		switch (hw->mac.type) {
-> +		case e1000_82576:
-> +			/* 82576 supports 2 RSS queues for SR-IOV */
-> +			if (adapter->vfs_allocated_count)
-> +				num_queues = 2;
-> +			break;
-> +		default:
-> +			break;
-> +		}
->  
-> -	/* Verify user input. */
-> -	for (i = 0; i < IGB_RETA_SIZE; i++)
-> -		if (rxfh->indir[i] >= num_queues)
-> -			return -EINVAL;
-> +		/* Verify user input. */
-> +		for (i = 0; i < IGB_RETA_SIZE; i++)
-> +			if (rxfh->indir[i] >= num_queues)
-> +				return -EINVAL;
->  
->  
-> -	for (i = 0; i < IGB_RETA_SIZE; i++)
-> -		adapter->rss_indir_tbl[i] = rxfh->indir[i];
-> +		for (i = 0; i < IGB_RETA_SIZE; i++)
-> +			adapter->rss_indir_tbl[i] = rxfh->indir[i];
-> +
-> +		igb_write_rss_indir_tbl(adapter);
-> +	}
->  
-> -	igb_write_rss_indir_tbl(adapter);
-> +	if (rxfh->key) {
-> +		adapter->has_user_rss_key = true;
-
-here
-
-> +		memcpy(adapter->rss_key, rxfh->key, sizeof(adapter->rss_key));
-> +		igb_write_rss_key(adapter);
-> +	}
->  
->  	return 0;
->  }
-> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-> index c703011b19ec..8dab133296ca 100644
-> --- a/drivers/net/ethernet/intel/igb/igb_main.c
-> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-> @@ -4051,7 +4051,8 @@ static int igb_sw_init(struct igb_adapter *adapter)
->  	pci_read_config_word(pdev, PCI_COMMAND, &hw->bus.pci_cmd_word);
->  
->  	/* init RSS key */
-> -	netdev_rss_key_fill(adapter->rss_key, sizeof(adapter->rss_key));
-> +	if (!adapter->has_user_rss_key)
-> +		netdev_rss_key_fill(adapter->rss_key, sizeof(adapter->rss_key));
-
-and this diff.
-
->  
->  	/* set default ring sizes */
->  	adapter->tx_ring_count = IGB_DEFAULT_TXD;
-> -- 
-> 2.52.0
