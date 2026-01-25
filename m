@@ -2,97 +2,82 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id MBU3OL6Wd2n0iwEAu9opvQ
+	id CErFEBMsdmkVMwEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Jan 2026 17:30:54 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 25 Jan 2026 15:43:31 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C78308AAFA
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Jan 2026 17:30:53 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9DD20810B4
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 25 Jan 2026 15:43:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7BE3B8154C;
-	Mon, 26 Jan 2026 16:30:52 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6BAF082333;
+	Sun, 25 Jan 2026 14:43:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NEmutaxCb5qI; Mon, 26 Jan 2026 16:30:50 +0000 (UTC)
+ id uANIE_shJkCs; Sun, 25 Jan 2026 14:43:24 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3D780815CA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C463982342
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1769445050;
-	bh=2mzwKobDfzzxE/liad/TFT+Aq3Oz06NV4T1E9rF19FU=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=p42zoFmSi8sa62JOJrMsBhdGxWzDA/FqlR8jCQpGjj0OA1f+vByiqBYg132V4b4Sn
-	 3L4SbNdhgQcasY52KDvnNXr1JS9zgCZLpqFyQH+prF7w2BbDhianmL/eVYa65L5ubO
-	 qznIXgwakPj8EQxcgumIsGF99YBdUF3pknEnaBUgYhrdDve4OHKyZDEtIEE505MGkr
-	 nn2+6Bgv8MRyy9nZagNBh30hMJbz/lRvEqZQGQjo0sPgEmWHpKbyt7hpdyIy0IdQ5O
-	 r8rZzbLbp05xCYqNtI+bqGpBJEEX0+6RAm1asKOApy7KtYErmwQGj5kwwHg2tXEsg5
-	 debxDdk3pSKRQ==
+	s=default; t=1769352204;
+	bh=C2WK0mkvZpCXDzBU2snOXa00Uvl+Vz80H4nPIHcgH/k=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=SAgYXx307cTkNuiYaW6WI8Vzq906Wcs1EuyCNOlHAIgq/T76iXIj4aLEBzXJIgQp4
+	 +uvs6UAjjjCFkfcFmIiq9DqV3VB5BR/rLyB2saVzMtVLmli57pfVDN6A/tZn6Lfuwv
+	 ffEhrxXqBvki3m8J3+IQU5eaHiiJUBDD9y8XtedqGFyIsGfZNr/HaDe4VIWEhsOyyX
+	 h2u4D4s7/Ekg2ya0hkOaytNyRobKnedJh3hbfLuyXiW00leqTtSXsa+KSf6PvCb3S0
+	 VgH4XlCm9U73VyPxvwxwRGm+QNl4EoDo3sfUf7HpICRROfhcfHSmPfD5E5PTE65uek
+	 YwByVTvrm91oA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3D780815CA;
-	Mon, 26 Jan 2026 16:30:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C463982342;
+	Sun, 25 Jan 2026 14:43:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id AE6191CE
- for <intel-wired-lan@lists.osuosl.org>; Sun, 25 Jan 2026 14:11:46 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id A35661CE
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 25 Jan 2026 14:43:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A434E406C9
- for <intel-wired-lan@lists.osuosl.org>; Sun, 25 Jan 2026 14:11:46 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 84FC140875
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 25 Jan 2026 14:43:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id iVUEl9J962ga for <intel-wired-lan@lists.osuosl.org>;
- Sun, 25 Jan 2026 14:11:45 +0000 (UTC)
-X-Greylist: delayed 429 seconds by postgrey-1.37 at util1.osuosl.org;
- Sun, 25 Jan 2026 14:11:43 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5DA73406C4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5DA73406C4
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=159.226.251.81;
- helo=cstnet.cn; envelope-from=lihaoxiang@isrc.iscas.ac.cn; receiver=<UNKNOWN> 
-Received: from cstnet.cn (smtp81.cstnet.cn [159.226.251.81])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5DA73406C4
- for <intel-wired-lan@lists.osuosl.org>; Sun, 25 Jan 2026 14:11:43 +0000 (UTC)
-Received: from localhost.localdomain (unknown [36.112.3.223])
- by APP-03 (Coremail) with SMTP id rQCowADH5t3oInZpYdesBg--.41622S2;
- Sun, 25 Jan 2026 22:04:24 +0800 (CST)
-From: Haoxiang Li <lihaoxiang@isrc.iscas.ac.cn>
-To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- Haoxiang Li <lihaoxiang@isrc.iscas.ac.cn>
-Date: Sun, 25 Jan 2026 22:04:23 +0800
-Message-Id: <20260125140423.2077845-1-lihaoxiang@isrc.iscas.ac.cn>
-X-Mailer: git-send-email 2.25.1
+ id 4mA3gOmo_XaF for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 25 Jan 2026 14:43:21 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org BFEBF40874
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BFEBF40874
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id BFEBF40874
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 25 Jan 2026 14:43:19 +0000 (UTC)
+Received: from [10.0.48.90] (unknown [62.214.191.67])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id E70474C442FB37;
+ Sun, 25 Jan 2026 15:42:48 +0100 (CET)
+Message-ID: <5d5c9a52-e280-453f-8c30-17489e04546b@molgen.mpg.de>
+Date: Sun, 25 Jan 2026 15:42:43 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: rQCowADH5t3oInZpYdesBg--.41622S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7Wr1fKF1ftrWUGryUWF1DGFg_yoW8Jr43pr
- 4Y9398Cr18XrW5Ww4kXF4jgF13Ja1ftry8KFW3G3Z5uwn0qa17JF4xtFWYgry8ZrWxJanx
- JF4DAanxCF15J3DanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDU0xBIdaVrnRJUUU9014x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
- rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
- 1l84ACjcxK6xIIjxv20xvE14v26r1j6r1xM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
- 6F4UM28EF7xvwVC2z280aVAFwI0_Jr0_Gr1l84ACjcxK6I8E87Iv6xkF7I0E14v26r4j6r
- 4UJwAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
- I7IYx2IY67AKxVWUGVWUXwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r
- 4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628v
- n2kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7x
- kEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E
- 67AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCw
- CI42IY6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1x
- MIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UYxBIda
- VFxhVjvjDU0xZFpf9x0JUZYFZUUUUU=
-X-Originating-IP: [36.112.3.223]
-X-CM-SenderInfo: 5olkt0x0ld0ww6lv2u4olvutnvoduhdfq/1tbiCQ8SE2l1qZiRMAACsJ
-X-Mailman-Approved-At: Mon, 26 Jan 2026 16:30:48 +0000
+User-Agent: Mozilla Thunderbird
+To: Vitaly Lifshits <vitaly.lifshits@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, marmarek@invisiblethingslab.com,
+ timo.teras@iki.fi, jeremie.wenger@edu.ge.ch
+References: <20260125103613.1843742-1-vitaly.lifshits@intel.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20260125103613.1843742-1-vitaly.lifshits@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=isrc.iscas.ac.cn
-Subject: [Intel-wired-lan] [PATCH] i40e: add an error handling path in
- i40e_xsk_pool_enable()
+ header.from=molgen.mpg.de
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1 1/1] e1000e: reconfigure
+ PLL clock gate value and re-enable K1 on Meteor Lake
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -108,89 +93,102 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [3.19 / 15.00];
-	SUSPICIOUS_RECIPS(1.50)[];
-	DATE_IN_PAST(1.00)[26];
-	MID_CONTAINS_FROM(1.00)[];
-	R_MISSING_CHARSET(0.50)[];
+X-Spamd-Result: default: False [-0.71 / 15.00];
 	MAILLIST(-0.20)[mailman];
 	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	TO_DN_SOME(0.00)[];
-	RCVD_TLS_LAST(0.00)[];
-	MIME_TRACE(0.00)[0:+];
-	SUSPICIOUS_AUTH_ORIGIN(0.00)[];
-	FORGED_SENDER(0.00)[lihaoxiang@isrc.iscas.ac.cn,intel-wired-lan-bounces@osuosl.org];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:netdev@vger.kernel.org,m:lihaoxiang@isrc.iscas.ac.cn,m:andrew@lunn.ch,s:lists@lfdr.de];
-	DMARC_NA(0.00)[iscas.ac.cn];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	DMARC_NA(0.00)[mpg.de];
+	FORGED_SENDER(0.00)[pmenzel@molgen.mpg.de,intel-wired-lan-bounces@osuosl.org];
+	FORGED_RECIPIENTS(0.00)[m:vitaly.lifshits@intel.com,m:marmarek@invisiblethingslab.com,m:timo.teras@iki.fi,m:jeremie.wenger@edu.ge.ch,s:lists@lfdr.de];
 	ARC_NA(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[iscas.ac.cn:email,isrc.iscas.ac.cn:mid];
-	FROM_NEQ_ENVFROM(0.00)[lihaoxiang@isrc.iscas.ac.cn,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[mpg.de:email,osuosl.org:dkim];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_SENDER_MAILLIST(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	TO_DN_SOME(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	RCVD_TLS_LAST(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	RCPT_COUNT_FIVE(0.00)[5];
+	FORGED_SENDER_FORWARDING(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[pmenzel@molgen.mpg.de,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	NEURAL_HAM(-0.00)[-1.000];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	HAS_XOIP(0.00)[];
-	RCPT_COUNT_SEVEN(0.00)[10];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
 	RCVD_COUNT_SEVEN(0.00)[8]
-X-Rspamd-Queue-Id: C78308AAFA
+X-Rspamd-Queue-Id: 9DD20810B4
 X-Rspamd-Action: no action
 
-In i40e_xsk_pool_enable(), the memory allocated by
-xsk_pool_dma_map() should be released if some error
-occurs. Add an error handling path to do so.
+Dear Vitaly,
 
-Signed-off-by: Haoxiang Li <lihaoxiang@isrc.iscas.ac.cn>
----
- drivers/net/ethernet/intel/i40e/i40e_xsk.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-index 9f47388eaba5..92b853a75b28 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
-@@ -108,23 +108,27 @@ static int i40e_xsk_pool_enable(struct i40e_vsi *vsi,
- 	if (if_running) {
- 		err = i40e_queue_pair_disable(vsi, qid);
- 		if (err)
--			return err;
-+			goto unmap;
- 
- 		err = i40e_realloc_rx_xdp_bi(vsi->rx_rings[qid], true);
- 		if (err)
--			return err;
-+			goto unmap;
- 
- 		err = i40e_queue_pair_enable(vsi, qid);
- 		if (err)
--			return err;
-+			goto unmap;
- 
- 		/* Kick start the NAPI context so that receiving will start */
- 		err = i40e_xsk_wakeup(vsi->netdev, qid, XDP_WAKEUP_RX);
- 		if (err)
--			return err;
-+			goto unmap;
- 	}
- 
- 	return 0;
-+
-+unmap:
-+	xsk_pool_dma_unmap(pool, I40E_RX_DMA_ATTR);
-+	return err;
- }
- 
- /**
--- 
-2.25.1
+Am 25.01.26 um 11:36 schrieb Vitaly Lifshits:
+> Commit 3c7bf5af21960 ("e1000e: Introduce private flag to disable K1")
+> disabled K1 by default on Meteor Lake and newer systems due to packet
+> loss observed on various platforms. However, disabling K1 caused an
+> increase in power consumption.
+> 
+> To mitigate this, reconfigure the PLL clock gate value so that K1 can
+> remain enabled without incurring the additional power consumption.
 
+Please add how to measure the power consumption, and add the value 
+before and after your change.
+
+Also, please add how to check that K1 is enabled.
+
+> Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
+> Fixes: 3c7bf5af21960 ("e1000e: Introduce private flag to disable K1")
+
+The tags could be swapped.
+
+> ---
+>   drivers/net/ethernet/intel/e1000e/ich8lan.c | 3 +++
+>   drivers/net/ethernet/intel/e1000e/netdev.c  | 3 ---
+>   2 files changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+> index 13841daba399..4b42b28354d0 100644
+> --- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
+> +++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+> @@ -1594,6 +1594,9 @@ static s32 e1000_check_for_copper_link_ich8lan(struct e1000_hw *hw)
+>   			phy_reg &= ~I217_PLL_CLOCK_GATE_MASK;
+>   			if (speed == SPEED_100 || speed == SPEED_10)
+>   				phy_reg |= 0x3E8;
+> +			else if (hw->mac.type == e1000_pch_mtp ||
+> +				 hw->mac.type == e1000_pch_ptp)
+> +				phy_reg |= 0x1D5;
+
+Please add a comment, what this magical value does. (Yes, it should have 
+been added for the other lines too in the other places.)
+
+>   			else
+>   				phy_reg |= 0xFA;
+>   			e1e_wphy_locked(hw, I217_PLL_CLOCK_GATE_REG, phy_reg);
+> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+> index 82d1d5fe51d5..8f0eb822610b 100644
+> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
+> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+> @@ -7755,9 +7755,6 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+>   	/* init PTP hardware clock */
+>   	e1000e_ptp_init(adapter);
+>   
+> -	if (hw->mac.type >= e1000_pch_mtp)
+> -		adapter->flags2 |= FLAG2_DISABLE_K1;
+> -
+>   	/* reset the hardware with the new settings */
+>   	e1000e_reset(adapter);
+>   
+
+Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+
+
+Kind regards,
+
+Paul
