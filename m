@@ -2,129 +2,102 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id uPVPFj8md2kUcwEAu9opvQ
+	id yKBiOZMpd2lzcwEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Jan 2026 09:30:55 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Jan 2026 09:45:07 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 10EBB8578E
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Jan 2026 09:30:54 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id DEDC485970
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Jan 2026 09:45:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5EF7640644;
-	Mon, 26 Jan 2026 08:30:52 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 73FC7608F5;
+	Mon, 26 Jan 2026 08:45:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id MgfoV36gDOWp; Mon, 26 Jan 2026 08:30:49 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id CfW9c8z1cJ1D; Mon, 26 Jan 2026 08:45:02 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8347E40662
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4BA1260B6C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1769416249;
-	bh=QoXcx9RJW2MGk9gdqPpQfFLPfh4v79V4Bss6akGxX8U=;
-	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=HVsRryTM6qGqarJXPrBgYsPr8YdmgrP59WNO7MK8ETSpOBurExxqkxN9ESX+mQL5w
-	 1fZWpSiBlbZVkE+Vqt9Ug2nYeCOl+g2g4IN0odD3uAZA2d602O+lLIAm6KhW2TXfAW
-	 H/ZGeNthG+MeS6hqhWGr9oA1XOkwV/d24OOJp/hrVGTNnXaLZXXe+S0xlb/VQV6SEc
-	 89Q0q0kyyqxgQcC2+N39+x7v6r3I5lKSCBneSF6H+C221TUhiKVaMrLQCw6eDpXFEi
-	 89WluSUXy9SNCEh30oLYnHqEtrilkFxX0tlVzIQQLnK7cHW/0Hq5obzeaCDnga+JAZ
-	 jLgaq0G84U+TQ==
+	s=default; t=1769417102;
+	bh=meml/OpcoF/dNoVwT/YVg28fW0iSJvpifwUEL5eFBZI=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=Y02JPrlIDQH2lv4tJG+NjgP5ZGmD3Wg4BsFIXewOPkKzD9FIurQw+l2JLAIsFh7Ei
+	 qcFOf/E+VpNCMfNNGfPODGHTfquBWleYSSJGUpvO4KzlmaPp1c9zOheKrZ25OSYBgM
+	 VN+FTBMX08hWlw/cEG6unL5T/B9RAKda740tx8oK8YrWbK9tYF9OVCeUV4lk04lJi0
+	 ijfXD0YXYXOGYO4Cvz1IZKR/ROJgjw1MPZZhac4ieXjp7JcNu2ziqPPxSF3nZ4voGm
+	 xMyKgZHFr62h6qoROMrRjnAmwN98lKgjE/ief2q/Vx8lfwHXm4ayaPLEXplNq2l/A7
+	 DiM7cUddX3KXA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8347E40662;
-	Mon, 26 Jan 2026 08:30:49 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4BA1260B6C;
+	Mon, 26 Jan 2026 08:45:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 5D4E8355
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Jan 2026 08:30:47 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 4750D11B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Jan 2026 08:45:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 415908175A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Jan 2026 08:30:47 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3644180F4D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Jan 2026 08:45:01 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id IxQGxM8k_Tdc for <intel-wired-lan@lists.osuosl.org>;
- Mon, 26 Jan 2026 08:30:46 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=mschmidt@redhat.com;
+ id XTMgfgiGU0Me for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 26 Jan 2026 08:45:00 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.15;
+ helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 52BB581758
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 52BB581758
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 52BB581758
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Jan 2026 08:30:45 +0000 (UTC)
-Received: from mail-ot1-f70.google.com (mail-ot1-f70.google.com
- [209.85.210.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-151-9bPMOPEFMoOtO71qDxsE5w-1; Mon, 26 Jan 2026 03:30:42 -0500
-X-MC-Unique: 9bPMOPEFMoOtO71qDxsE5w-1
-X-Mimecast-MFC-AGG-ID: 9bPMOPEFMoOtO71qDxsE5w_1769416242
-Received: by mail-ot1-f70.google.com with SMTP id
- 46e09a7af769-7cfda364023so1485285a34.0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Jan 2026 00:30:42 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769416241; x=1770021041;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=QoXcx9RJW2MGk9gdqPpQfFLPfh4v79V4Bss6akGxX8U=;
- b=udDF3bF4uoztjCV5bNLY6XRIUTGnv7bPCrdwsA8m4Xi3nOH+mLvVOQqJgyw50FJM6X
- FuNbZ9mH9aiVjk2OGWBHFBCj9SN5Cggyp0v+yQwEzxTDYQ4xh+jZjmCX85CiokIrrae9
- KDF0Jo0sFtVuOxSa/exDlcGP/KMkGjPi1YwzXSpk2RAL/3uWDayzHSPCw52PWeJsGYJ2
- dzii2wtrd3Jv2ZzgJYN4WXropct9Ghb5VE3kkPTvIi5gRw8xoSkos/ftUsT0P6B7g2GW
- MObOH5cwn8BONBLvmWNaf/jVLh4bfHjZGZDVfec4Lbh4+CmESwqNddhOcJLfV5OswMmq
- TNlw==
-X-Gm-Message-State: AOJu0YympV4t9XGCltzpaaeSDur/NySKpryMgThFXw/NE1U64il640O+
- RAaC8zY0Aok2IS5uB6SUS7V2Qyaw8aCbh37nm2b199ip+98fMQ6fwoEq+vajqbD3rTaadHY8mJt
- XP9JJ8TfWXVsPmjFxFnDLxeJTfUh43sH641mM4YmVyQU40AWds30hGhZp1HFBFY9kqzIW5F24mZ
- 4kD++8O9zfjAoVtGaUMA7eL1+rzpFvomrYLBFzE/pbnRVXI4LuIQ6/xhzd
-X-Gm-Gg: AZuq6aJiKQP/ACRCyfbDSvZHHmMGYNddnCS/hYtj9WKIKxxs1B5vbgKsQP5j61zmMGs
- V04IUu3knEoVLNFSs81qJbq1M+wV3SoICiGCHGPKO36s3d/BFVoIo/Z+NO/N5ZzFGbrO23ZXz6Z
- 9Y30VFw60n1nb2033iHcLfwwmdjGerwcsPgebFl8LszTRgwx+a0MZYEDorZIKbNSEfdg==
-X-Received: by 2002:a05:6830:4124:b0:7d1:4980:252a with SMTP id
- 46e09a7af769-7d17025a852mr1636280a34.3.1769416241349; 
- Mon, 26 Jan 2026 00:30:41 -0800 (PST)
-X-Received: by 2002:a05:6830:4124:b0:7d1:4980:252a with SMTP id
- 46e09a7af769-7d17025a852mr1636278a34.3.1769416240934; Mon, 26 Jan 2026
- 00:30:40 -0800 (PST)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4AE3E80B56
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4AE3E80B56
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4AE3E80B56
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Jan 2026 08:44:59 +0000 (UTC)
+X-CSE-ConnectionGUID: vmnI7hISSvyYXOHM7GWYPg==
+X-CSE-MsgGUID: VqXg54qXRdenW7EKmL4L/g==
+X-IronPort-AV: E=McAfee;i="6800,10657,11682"; a="74222379"
+X-IronPort-AV: E=Sophos;i="6.21,254,1763452800"; d="scan'208";a="74222379"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+ by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Jan 2026 00:44:45 -0800
+X-CSE-ConnectionGUID: xJXQvBklQhipYG7K9HT1NA==
+X-CSE-MsgGUID: eHL38Au7TDehrMUD7a4NtQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,254,1763452800"; d="scan'208";a="207874728"
+Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
+ by fmviesa008.fm.intel.com with ESMTP; 26 Jan 2026 00:44:43 -0800
+From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+To: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
+ aleksandr.loktionov@intel.com
+Cc: netdev@vger.kernel.org,
+	Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Date: Mon, 26 Jan 2026 09:44:42 +0100
+Message-ID: <20260126084442.413230-1-aleksandr.loktionov@intel.com>
+X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
-References: <20260121-jk-e825c-fix-missing-timetamps-v1-1-f090eabfc823@intel.com>
-In-Reply-To: <20260121-jk-e825c-fix-missing-timetamps-v1-1-f090eabfc823@intel.com>
-From: Michal Schmidt <mschmidt@redhat.com>
-Date: Mon, 26 Jan 2026 09:30:29 +0100
-X-Gm-Features: AZwV_QjPh_HuYHfu57c4WL9426spChrLIXNrv5MUk5FZfKy-L9r3KFgo-dRant4
-Message-ID: <CADEbmW0roa=NKwB2kE7DJ0n_W5=Rqk1LJu3kri4u1Rkc8h-KvA@mail.gmail.com>
-To: Jacob Keller <jacob.e.keller@intel.com>
-Cc: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>, 
- Przemyslaw Korba <przemyslaw.korba@intel.com>, netdev@vger.kernel.org, 
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Anthony Nguyen <anthony.l.nguyen@intel.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Zb0fdIl_9qmbEF3OfnAqMLLE7VgHg9FbDxshLiMn9Mw_1769416242
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1769416244;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=QoXcx9RJW2MGk9gdqPpQfFLPfh4v79V4Bss6akGxX8U=;
- b=PdxHR0DU+Kj8LMgaEXWg34ZmZBuZ3CqhrxPgjRZuvVjioijDM9C+7Na0/8sfBVL+Z8XCNL
- jKDKpMQ76MgJ7TKdI8OmQPILNmxj645Cs9dMYR/nRCU0PpM6SX2GczRO/Zu/wq7PtwjPAZ
- b9InSsG10LWnHlFg3f8QxMRmgwBx4SM=
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1769417101; x=1800953101;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=s5WhHkpMJph3dnQm9bg/a8IisWZSLUAPtG1shYY9hhA=;
+ b=PEP0M52rn6fRQJ5luCBFVTY7xftM3P3de5Jii+/BY2nfnzoYPNy5trMQ
+ b9xPum76MelcaXRPdAnFRcJV7lRMUtWewpw1mq3OkCUVPMKUz4xaLn8E1
+ 0TGb966mU8iO+pKZSm2n8PXGPjvLtC7J0ZyYfbylCjCbUI8tQubAoBHq/
+ 3MAD4VywtBz7WNpNlFooyYIYucLsCLqfofRj+OHYncXE3u3HKSKhzaqbJ
+ 70Dj0rYBRP5JuBPAXExa0+Mnnwu3uKHRrVrHGwPcuHFtUZSwWJOLFKEiW
+ 9u7MJ3qBTwUSNjsgKYPjpNS4iRUhQvtUHWHo8KmClJFLmz1IuMVDdAHQ+
+ g==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=redhat.com
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=PdxHR0DU
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] ice: PTP: fix missing
- timestamps on E825 hardware
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=PEP0M52r
+Subject: [Intel-wired-lan] [PATCH iwl-next v2] ixgbe: fix unaligned u32
+ access in
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -141,232 +114,81 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
 X-Spamd-Result: default: False [0.79 / 15.00];
-	DMARC_POLICY_QUARANTINE(1.50)[redhat.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
+	MAILLIST(-0.20)[mailman];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	R_SPF_ALLOW(-0.20)[+mx];
-	MAILLIST(-0.20)[mailman];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	TO_DN_SOME(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:jacob.e.keller@intel.com,m:przemyslaw.korba@intel.com,m:netdev@vger.kernel.org,m:aleksandr.loktionov@intel.com,m:anthony.l.nguyen@intel.com,s:lists@lfdr.de];
-	FORGED_SENDER(0.00)[mschmidt@redhat.com,intel-wired-lan-bounces@osuosl.org];
-	ARC_NA(0.00)[];
 	MIME_TRACE(0.00)[0:+];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	RCVD_TLS_LAST(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[mail.gmail.com:mid,intel.com:email,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,osuosl.org:dkim];
-	RCPT_COUNT_FIVE(0.00)[6];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FROM_NEQ_ENVFROM(0.00)[mschmidt@redhat.com,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	ARC_NA(0.00)[];
+	TO_DN_SOME(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	NEURAL_HAM(-0.00)[-1.000];
+	RCPT_COUNT_FIVE(0.00)[5];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,intel.com:mid,intel.com:email];
+	FROM_NEQ_ENVFROM(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	MISSING_XM_UA(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	NEURAL_HAM(-0.00)[-1.000];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 10EBB8578E
+X-Rspamd-Queue-Id: DEDC485970
 X-Rspamd-Action: no action
 
-On Wed, Jan 21, 2026 at 8:01=E2=80=AFPM Jacob Keller <jacob.e.keller@intel.=
-com> wrote:
-> The E825 hardware currently has each PF handle the PFINT_TSYN_TX cause of
-> the miscellaneous OICR interrupt vector. The actual interrupt cause
-> underlying this is shared by all ports on the same quad:
->
->   =E2=94=8C=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=
-=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=
-=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=
-=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=
-=80=E2=94=80=E2=94=90
->   =E2=94=82                                 =E2=94=82
->   =E2=94=82   =E2=94=8C=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=90 =E2=
-=94=8C=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=90 =E2=94=8C=E2=94=80=E2=
-=94=80=E2=94=80=E2=94=80=E2=94=90 =E2=94=8C=E2=94=80=E2=94=80=E2=94=80=E2=
-=94=80=E2=94=90   =E2=94=82
->   =E2=94=82   =E2=94=82PF 0=E2=94=82 =E2=94=82PF 1=E2=94=82 =E2=94=82PF 2=
-=E2=94=82 =E2=94=82PF 3=E2=94=82   =E2=94=82
->   =E2=94=82   =E2=94=94=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=98 =E2=
-=94=94=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=98 =E2=94=94=E2=94=80=E2=
-=94=80=E2=94=80=E2=94=80=E2=94=98 =E2=94=94=E2=94=80=E2=94=80=E2=94=80=E2=
-=94=80=E2=94=98   =E2=94=82
->   =E2=94=82                                 =E2=94=82
->   =E2=94=94=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=
-=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=
-=E2=94=80=E2=96=B2=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=
-=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=
-=80=E2=94=80=E2=94=98
->                    =E2=94=82
->                    =E2=94=82
->   =E2=94=8C=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=
-=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=
-=E2=94=80=E2=94=BC=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=
-=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=
-=80=E2=94=80=E2=94=90
->   =E2=94=82             PHY QUAD            =E2=94=82
->   =E2=94=94=E2=94=80=E2=94=80=E2=94=80=E2=96=B2=E2=94=80=E2=94=80=E2=94=
-=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=96=B2=E2=94=80=E2=94=80=
-=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=96=B2=E2=94=80=E2=
-=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=96=B2=E2=94=
-=80=E2=94=80=E2=94=98
->       =E2=94=82        =E2=94=82        =E2=94=82        =E2=94=82
->   =E2=94=8C=E2=94=80=E2=94=80=E2=94=80=E2=94=BC=E2=94=80=E2=94=80=E2=94=
-=90 =E2=94=8C=E2=94=80=E2=94=80=E2=94=80=E2=94=B4=E2=94=80=E2=94=80=E2=94=
-=90 =E2=94=8C=E2=94=80=E2=94=80=E2=94=80=E2=94=BC=E2=94=80=E2=94=80=E2=94=
-=90 =E2=94=8C=E2=94=80=E2=94=80=E2=94=80=E2=94=BC=E2=94=80=E2=94=80=E2=94=
-=90
->   =E2=94=82Port 0=E2=94=82 =E2=94=82Port 1=E2=94=82 =E2=94=82Port 2=E2=94=
-=82 =E2=94=82Port 3=E2=94=82
->   =E2=94=94=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=
-=98 =E2=94=94=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=
-=98 =E2=94=94=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=
-=98 =E2=94=94=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=
-=98
->
-> If multiple PFs issue Tx timestamp requests near simultaneously, it is
-> possible that the correct PF will not be interrupted and will miss its
-> timestamp. Understanding why is somewhat complex.
->
-> Consider the following sequence of events:
->
->   CPU 0:
->   Send Tx packet on PF 0
->   ...
->   PF 0 enqueues packet with Tx request          CPU 1, PF1:
->   ...                                           Send Tx packet on PF1
->   ...                                           PF 1 enqueues packet with=
- Tx request
->
->   HW:
->   PHY Port 0 sends packet
->   PHY raises Tx timestamp event interrupt
->   MAC raises each PF interrupt
->
->   CPU 0, PF0:                                   CPU 1, PF1:
->   ice_misc_intr() checks for Tx timestamps      ice_misc_intr() checks fo=
-r Tx timestamp
->   Sees packet ready bit set                     Sees nothing available
->   ...                                           Exits
->   ...
->   ...
->   HW:
->   PHY port 1 sends packet
->   PHY interrupt ignored because not all packet timestamps read yet.
->   ...
->   Read timestamp, report to stack
->
-> Because the interrupt event is shared for all ports on the same quad, the
-> PHY will not raise a new interrupt for any PF until all timestamps are
-> read.
->
-> In the example above, the second timestamp comes in for port 1 before the
-> timestamp from port 0 is read. At this point, there is no longer an
-> interrupt thread running that will read the timestamps, because each PF h=
-as
-> checked and found that there was no work to do. Applications such as ptp4=
-l
-> will timeout after waiting a few milliseconds. Eventually, the watchdog
-> service task will re-check for all quads and notice that there are
-> outstanding timestamps, and issue a software interrupt to recover. Howeve=
-r,
-> by this point it is far too late, and applications have already failed.
->
-> All of this occurs because of the underlying hardware behavior. The PHY
-> cannot raise a new interrupt signal until all outstanding timestamps have
-> been read.
->
-> As a first step to fix this, switch the E825C hardware to the
-> ICE_PTP_TX_INTERRUPT_ALL mode. In this mode, only the clock owner PF will
-> respond to the PFINT_TSYN_TX cause. Other PFs disable this cause and will
-> not wake. In this mode, the clock owner will iterate over all ports and
-> handle timestamps for each connected port.
->
-> This matches the E822 behavior, and is a necessary but insufficient step =
-to
-> resolve the missing timestamps.
->
-> Even with use of the ICE_PTP_TX_INTERRUPT_ALL mode, we still sometimes mi=
-ss
-> a timestamp event. The ice_ptp_tx_tstamp_owner() does re-check the ready
-> bitmap, but does so before re-enabling the OICR interrupt vector. It also
-> only checks the ready bitmap, but not the software Tx timestamp tracker.
->
-> To avoid risk of losing a timestamp, refactor the logic to check both the
-> software Tx timestamp tracker bitmap *and* the hardware ready bitmap.
-> Additionally, do this outside of ice_ptp_process_ts() after we have alrea=
-dy
-> re-enabled the OICR interrupt.
->
-> Remove the checks from the ice_ptp_tx_tstamp(), ice_ptp_tx_tstamp_owner()=
-,
-> and the ice_ptp_process_ts() functions. This results in ice_ptp_tx_tstamp=
-()
-> being nothing more than a wrapper around ice_ptp_process_tx_tstamp() so w=
-e
-> can remove it.
->
-> Add the ice_ptp_tx_tstamps_pending() function which returns a boolean
-> indicating if there are any pending Tx timestamps. First, check the
-> software timestamp tracker bitmap. In ICE_PTP_TX_INTERRUPT_ALL mode, chec=
-k
-> *all* ports software trackers. If a tracker has outstanding timestamp
-> requests, return true. Additionally, check the PHY ready bitmap to confir=
-m
-> if the PHY indicates any outstanding timestamps.
->
-> In the ice_misc_thread_fn(), call ice_ptp_tx_tstamps_pending() just befor=
-e
-> returning from the IRQ thread handler. If it returns true, write to
-> PFINT_OICR to trigger a PFINT_OICR_TSYN_TX_M software interrupt. This wil=
-l
-> force the handler to interrupt again and complete the work even if the PH=
-Y
-> hardware did not interrupt for any reason.
->
-> This results in the following new flow for handling Tx timestamps:
->
-> 1) send Tx packet
-> 2) PHY captures timestamp
-> 3) PHY triggers MAC interrupt
-> 4) clock owner executes ice_misc_intr() with PFINT_OICR_TSYN_TX flag set
-> 5) ice_ptp_ts_irq() returns IRQ_WAKE_THREAD
-> 7) The interrupt thread wakes up and kernel calls ice_misc_intr_thread_fn=
-()
-> 8) ice_ptp_process_ts() is called to handle any outstanding timestamps
-> 9) ice_irq_dynamic_ena() is called to re-enable the OICR hardware interru=
-pt
->    cause
-> 10) ice_ptp_tx_tstamps_pending() is called to check if we missed any more
->     outstanding timestamps, checking both software and hardware indicator=
-s.
->
-> With this change, it should no longer be possible for new timestamps to
-> come in such a way that we lose an interrupt. If a timestamp comes in
-> before the ice_ptp_tx_tstamps_pending() call, it will be noticed by at
-> least one of the software bitmap check or the hardware bitmap check. If t=
-he
-> timestamp comes in *after* this check, it should cause a timestamp
-> interrupt as we have already read all timestamps from the PHY and the OIC=
-R
-> vector has been re-enabled.
->
-> Fixes: 7cab44f1c35f ("ice: Introduce ETH56G PHY model for E825C products"=
-)
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+ixgbe_host_interface_command() treats its buffer as a u32 array. The 
+local buffer we pass in was a union of byte-sized fields, which gives 
+it 1-byte alignment on the stack. On strict-align architectures this 
+can cause unaligned 32-bit accesses.
 
-I applied this patch to a RHEL 9.6 kernel and my colleague has tested it.
-He wrote:
-> Tested the build: kernel-5.14.0-570.81.1.iceptpstamps.el9 by running
-> G8273.2 noise generation test (7.1) for more than 4 hours -  have not
-> observed any issues. Packet rates normal and inter-message intervals
-> are regular. No delays, timeouts, failures.
+Add a u32 member to union ixgbe_hic_hdr2 so the object is 4-byte 
+aligned, and pass the u32 member when calling ixgbe_host_interface_command().
 
-You can add:
+No functional change on x86; prevents unaligned accesses on 
+architectures that enforce natural alignment.
+ 
+Fixes: 49425dfc7451 ("ixgbe: Add support for x550em_a 10G MAC type")
+Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Reviewed-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+---
+v1 -> v2 change title and concentrate on alignement issue
+---
+ drivers/net/ethernet/intel/ixgbe/ixgbe_type.h | 1 +
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
-Tested-by: Vitaly Grinberg <vgrinber@redhat.com>
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
+index 61f2ef6..eb5bf3b 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
+@@ -2798,6 +2798,7 @@ struct ixgbe_hic_hdr2_rsp {
+ };
+ 
+ union ixgbe_hic_hdr2 {
++	u32 buf[1];
+ 	struct ixgbe_hic_hdr2_req req;
+ 	struct ixgbe_hic_hdr2_rsp rsp;
+ };
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
+index 76d2fa3..4a0ccbf 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
+@@ -1228,7 +1228,7 @@ static int ixgbe_update_flash_X550(struct ixgbe_hw *hw)
+ 	buffer.req.buf_lenl = FW_SHADOW_RAM_DUMP_LEN;
+ 	buffer.req.checksum = FW_DEFAULT_CHECKSUM;
+ 
+-	status = ixgbe_host_interface_command(hw, &buffer, sizeof(buffer),
++	status = ixgbe_host_interface_command(hw, buffer.buf, sizeof(buffer),
+ 					      IXGBE_HI_COMMAND_TIMEOUT, false);
+ 	return status;
+ }
+-- 
+2.52.0
 
