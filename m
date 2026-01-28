@@ -2,97 +2,109 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id YDKaI+66eWnoygEAu9opvQ
+	id gDR9I0DVeWntzwEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 Jan 2026 08:29:50 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 Jan 2026 10:22:08 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7AAC29DBF9
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 Jan 2026 08:29:49 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 73C579EC0E
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 Jan 2026 10:22:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2199D4052C;
-	Wed, 28 Jan 2026 07:29:48 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2B35040895;
+	Wed, 28 Jan 2026 09:22:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 263j2xnhPaRz; Wed, 28 Jan 2026 07:29:47 +0000 (UTC)
+ id PHBuIq_Ib8x8; Wed, 28 Jan 2026 09:22:04 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 697EB404F2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 98ABC40893
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1769585387;
-	bh=cPiwWLDvghmCGt9oewTVK5ZkSP/BPQjzSlyP0s5Xx/0=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1769592124;
+	bh=2fjoNUbfOIM8UhUstTCpYZgfZ8OMpqLgrhdWkrlQ4T8=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=AaaqV89VoCvjmjANGG75N68mNIAL1Tcbep/DYfqttsynyehxhvx2bc49hQQeDglrr
-	 rJXfGbT33UJBqujJdr1ANH8T0IuuMvuiErC2+VKwX5YDLsBMt6zvXY2YMx+VlfKHs2
-	 CfOaj6X593s6HzD3IaRvI3EPsdszPvMrK9x9XoHDCUReI10pRlbdGwpsfzfj4mdf2Z
-	 nLS+1lyKAeWXYDwfZ0ll/vQJGRLDIRjDoTT0roJLVIgAHd8epl4EjjQauqowmukdiJ
-	 IDlSWlUirggx5ajTt7eFj1r29PZ+x6zYxfOPbAJ9WM7R2hzLKeiIzgrBCpeA2AJGgk
-	 mwrFdiTXwodPg==
+	b=yXu5Xluk7c90wHMEvP2lXGRXcrtvDMuGRaFfKedpcoXWFS35xSxx++HbSMQBsCE8q
+	 Xpmt3sLqR//Tz2O/pLb1G3ShYlYCMVEXza1RgwyoznvDBZBeM/OjvhEis1MQeCIli3
+	 hYphqlTqtMCbayuOXtbmGKPmE23WlTU4uSjD40OYiVr0ihTIbuEALJA46f7FsSEhw3
+	 UkZVighrCfUXxvwZQC4D2C6G8PUoX1caEnqaJhkCPMjnwdL3NBNlY3JXgJAINJMfzg
+	 +mIKhAdc0xYgIbJQc6ebLfe1fWfm8teS9GyeK4X6g9ZVm2aJD6OQWW5hwkHruSlqBm
+	 pI7ibEQ8g528g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 697EB404F2;
-	Wed, 28 Jan 2026 07:29:47 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 98ABC40893;
+	Wed, 28 Jan 2026 09:22:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 3A62B118
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Jan 2026 07:29:45 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 8AAEA1AD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Jan 2026 09:22:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 2938F40245
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Jan 2026 07:29:45 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6C40360722
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Jan 2026 09:22:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id I12VH_Y7cQd8 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 28 Jan 2026 07:29:44 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=49.212.198.91;
- helo=www2881.sakura.ne.jp; envelope-from=kohei@enjuk.jp; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 05C6F40024
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 05C6F40024
-Received: from www2881.sakura.ne.jp (www2881.sakura.ne.jp [49.212.198.91])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 05C6F40024
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Jan 2026 07:29:43 +0000 (UTC)
-Received: from ms-a2 (85.154.13.160.dy.iij4u.or.jp [160.13.154.85])
- (authenticated bits=0)
- by www2881.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 60S7TDIC049913
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 28 Jan 2026 16:29:14 +0900 (JST) (envelope-from kohei@enjuk.jp)
-From: Kohei Enju <kohei@enjuk.jp>
-To: takkozu@amazon.com
-Cc: aleksandr.loktionov@intel.com, andrew+netdev@lunn.ch,
- anthony.l.nguyen@intel.com, davem@davemloft.net, edumazet@google.com,
- enjuk@amazon.com, intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
- netdev@vger.kernel.org, pabeni@redhat.com, piotr.kwapulinski@intel.com,
- pmenzel@molgen.mpg.de, przemyslaw.kitszel@intel.com,
- Kohei Enju <kohei@enjuk.jp>
-Date: Wed, 28 Jan 2026 07:27:36 +0000
-Message-ID: <20260128072908.50245-1-kohei@enjuk.jp>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20260127085410.79645-8-takkozu@amazon.com>
-References: <20260127085410.79645-8-takkozu@amazon.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id GY-NDfabhCzs for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 28 Jan 2026 09:22:01 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C6B1D60657
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C6B1D60657
+Received: from sea.source.kernel.org (sea.source.kernel.org
+ [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C6B1D60657
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Jan 2026 09:22:01 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sea.source.kernel.org (Postfix) with ESMTP id 00E1F42E22;
+ Wed, 28 Jan 2026 09:22:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A0CBDC4CEF1;
+ Wed, 28 Jan 2026 09:21:57 +0000 (UTC)
+Date: Wed, 28 Jan 2026 09:21:55 +0000
+From: Simon Horman <horms@kernel.org>
+To: Brian Vazquez <brianvv@google.com>
+Cc: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>,
+ Brian Vazquez <brianvv.kernel@gmail.com>,
+ "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ David Decotigny <decot@google.com>, Li Li <boolli@google.com>,
+ "Singhai, Anjali" <anjali.singhai@intel.com>,
+ "Samudrala, Sridhar" <sridhar.samudrala@intel.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "Tantilov, Emil S" <emil.s.tantilov@intel.com>
+Message-ID: <aXnVM9MBRuXWgACz@horms.kernel.org>
+References: <20260123204058.651080-1-brianvv@google.com>
+ <IA3PR11MB8986BB2FDDBB664CB318FB15E593A@IA3PR11MB8986.namprd11.prod.outlook.com>
+ <aXj652w2_ogi6ysW@horms.kernel.org>
+ <CAMzD94T=VS8J5A1VZH_KriY7BMHf90rrGEK=4Jyuzc3SxHJhKA@mail.gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: a=rsa-sha256;
- bh=cPiwWLDvghmCGt9oewTVK5ZkSP/BPQjzSlyP0s5Xx/0=; 
- c=relaxed/relaxed; d=enjuk.jp;
- h=From:To:Subject:Date:Message-ID;
- s=rs20251215; t=1769585355; v=1;
- b=Ao6pv7wipYUxJGx2OOpfIlSMY6dOYa2Mna0t4f39SGgg7HJ5ip+6Xbxl5i0NIIxV
- v/3iGuW3XEC0GIwalC9Ng9BKaKRbPcpK4acRKah4OLAvtP9v/6tSy/dHLPxykUKu
- S2p00kY5ZG5wGsF+3zgIyikIiJkB7q6eVLX6Qcn131L4le6jq/knG2j2tHYSgI78
- xUVdzgMkYxeaDNdBcbw/bSCcxRgQliXfqx52l6WGaspMnSnTaRojD7CGM/3PeUHO
- 7forZjVeBhBinQEv1c5YK2pTlf9EiXgX/VowSc/FRtnyXlyn+mWOKK5o0NzlR+UO
- Qe/s2uVs6qDxdQ8LggW7WQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=enjuk.jp
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAMzD94T=VS8J5A1VZH_KriY7BMHf90rrGEK=4Jyuzc3SxHJhKA@mail.gmail.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1769592120;
+ bh=2fjoNUbfOIM8UhUstTCpYZgfZ8OMpqLgrhdWkrlQ4T8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=f03/7C7N5F6vtRxB7CndZoLyobtXPUCg6ICyN3DjS2ENDHcR2YY/6NPBMw2RhJDqe
+ xTtNVrHgp+cc98ai0UoIDj+9gkaJBCHajjYTEuxIBijx32xKg9oG5Aa+ccbDGP/C1N
+ WM4LzQA8z6/lQncvDI56B6yFkq25IZlcRnIGIVLBIFMqqytorNTBx9nHQV7yenJpYl
+ 0brQDtdVVvNsMCRgI92n1MqquU4CraHyyvYmu9H7nrNcnRwEmswdY6057wwP8R83zk
+ DvxcICzmKkplfwzjgISpC7K7lVD1ag64oRBNBQGcY14+c1Hjn0rT5jHCTukR4OPWi0
+ VSBiRdVAuYf1Q==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=enjuk.jp header.i=@enjuk.jp header.a=rsa-sha256
- header.s=rs20251215 header.b=Ao6pv7wi
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v5 3/3] igb: allow
- configuring RSS key via ethtool set_rxfh
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=f03/7C7N
+Subject: Re: [Intel-wired-lan] [iwl-net PATCH] idpf: change IRQ naming to
+ match netdev and ethtool queue numbering
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -108,75 +120,45 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [2.39 / 15.00];
+X-Spamd-Result: default: False [2.29 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
-	MID_CONTAINS_FROM(1.00)[];
-	R_MISSING_CHARSET(0.50)[];
-	MAILLIST(-0.20)[mailman];
+	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	MAILLIST(-0.20)[mailman];
 	R_SPF_ALLOW(-0.20)[+mx];
 	MIME_GOOD(-0.10)[text/plain];
-	DMARC_POLICY_SOFTFAIL(0.10)[enjuk.jp : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCPT_COUNT_TWELVE(0.00)[15];
-	FORGED_SENDER(0.00)[kohei@enjuk.jp,intel-wired-lan-bounces@osuosl.org];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[horms.kernel.org:mid,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
+	FREEMAIL_CC(0.00)[intel.com,gmail.com,davemloft.net,google.com,kernel.org,redhat.com,lists.osuosl.org,vger.kernel.org];
 	RCVD_TLS_LAST(0.00)[];
-	ARC_NA(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:brianvv@google.com,m:aleksandr.loktionov@intel.com,m:brianvv.kernel@gmail.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:decot@google.com,m:boolli@google.com,m:anjali.singhai@intel.com,m:sridhar.samudrala@intel.com,m:linux-kernel@vger.kernel.org,m:netdev@vger.kernel.org,m:emil.s.tantilov@intel.com,m:brianvvkernel@gmail.com,s:lists@lfdr.de];
+	TO_DN_EQ_ADDR_SOME(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[17];
+	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	MIME_TRACE(0.00)[0:+];
-	FORGED_RECIPIENTS(0.00)[m:takkozu@amazon.com,m:aleksandr.loktionov@intel.com,m:andrew+netdev@lunn.ch,m:anthony.l.nguyen@intel.com,m:davem@davemloft.net,m:edumazet@google.com,m:enjuk@amazon.com,m:kuba@kernel.org,m:netdev@vger.kernel.org,m:pabeni@redhat.com,m:piotr.kwapulinski@intel.com,m:pmenzel@molgen.mpg.de,m:przemyslaw.kitszel@intel.com,m:kohei@enjuk.jp,m:andrew@lunn.ch,s:lists@lfdr.de];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	TO_DN_SOME(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[toeplitz.py:url,rss_api.py:url,enjuk.jp:mid,enjuk.jp:email];
-	FROM_NEQ_ENVFROM(0.00)[kohei@enjuk.jp,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	MISSING_XM_UA(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
-	NEURAL_HAM(-0.00)[-1.000];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	ARC_NA(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	TO_DN_SOME(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	MID_RHS_MATCH_FROMTLD(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	RCVD_COUNT_SEVEN(0.00)[8]
-X-Rspamd-Queue-Id: 7AAC29DBF9
+	NEURAL_HAM(-0.00)[-1.000];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	RCVD_COUNT_SEVEN(0.00)[9]
+X-Rspamd-Queue-Id: 73C579EC0E
 X-Rspamd-Action: no action
 
-On Tue, 27 Jan 2026 17:54:10 +0900, Takashi Kozu wrote:
+On Tue, Jan 27, 2026 at 06:36:14PM -0500, Brian Vazquez wrote:
+> Hey Simon, last version is v3 it does have the Fixes tag now. Thanks!
 
-> Change igc_set_rxfh() to accept and save a userspace-provided
-> RSS key. When a key is provided, store it in the adapter and write the
-> E1000 registers accordingly.
-> 
-> This can be tested using `ethtool -X <dev> hkey <key>`.
-> 
-> Signed-off-by: Takashi Kozu <takkozu@amazon.com>
-
-Tested with Intel Corporation I350 Gigabit Network Connection and
-confirmed that toeplitz.py and test_rxfh_nl_set_key in rss_api.py
-succeeded.
-
- # tools/testing/selftests/drivers/net/hw/toeplitz.py | grep -E "^# Totals"
- # Totals: pass:12 fail:0 xfail:0 xpass:0 skip:0 error:0
-
- # tools/testing/selftests/drivers/net/hw/rss_api.py | grep test_rxfh_nl_set_key
- ok 6 rss_api.test_rxfh_nl_set_key
-
-Also checked that RSS hash key remains through admin down & up.
- # ethtool -X $DEV hkey be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef
- # ethtool -x $DEV | grep key -A 1
- RSS hash key:
- be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef
- # ip link set dev $DEV down && ip link set dev $DEV up
- # ethtool -x $DEV | grep key -A 1
- RSS hash key:
- be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef:be:ef
-
-Tested-by: Kohei Enju <kohei@enjuk.jp>
-
-Note: 
-Toeplitz test needs correct handling of setting skb->hash and its rss
-type, so I applied the patch below in advance.
-
-https://lore.kernel.org/intel-wired-lan/20260122134809.7765-1-kohei@enjuk.jp/
+Great, thanks.
+And sorry for not noticing that earlier.
