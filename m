@@ -2,67 +2,67 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id IEyNLnQ+emlB4wEAu9opvQ
+	id SEkRIXY+emlB4wEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 Jan 2026 17:51:00 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 Jan 2026 17:51:02 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A62AA63A1
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 Jan 2026 17:51:00 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 49073A63B3
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 Jan 2026 17:51:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C187E406F9;
-	Wed, 28 Jan 2026 16:50:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D74AC409E8;
+	Wed, 28 Jan 2026 16:50:45 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id fP-U2fANPiPA; Wed, 28 Jan 2026 16:50:43 +0000 (UTC)
+ id aKHD19lDStg5; Wed, 28 Jan 2026 16:50:45 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3C3A540985
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 59ACF408CB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1769619043;
-	bh=pDHfuYCK0UNwmqtINvEiJifU5q0+fusE4um+2kTBCkI=;
+	s=default; t=1769619045;
+	bh=w6nooq+EiSoyycTGff8CyD35huUV+/HElYZ7wUSHwrc=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=uavZYW4v7XBhW8ZHORENSsZ847M4fjnuUZNHLW/AgK2JRmLeZ/xMHmAI5QiQOjZRc
-	 8XmGiNcS9nZwhBE2lv1AAeqVu2o1ruKL0SBAgDAdEiGMERMPeg0ZCE39o7iPsU0CtE
-	 rjCgvTcPqHaqcT1x+GEtA/KHD6SqkAmrJGwDQd0rvGgU43bI/Ei4XW+F2WpXsDee4p
-	 BFLL6Lu1/S3CcLpLRuxtYgUBl6nyR1k3/OPuGLCvJzkCNfyS9dumYzh/3sk9FO7pW2
-	 IVLreLDDLqUIgEcpNxpW3ZKBlgwqt2CLvTuMDsUH0+i7iaIgtVbOWxBOtqXaOTcoWd
-	 aOzGcDOt5KUwg==
+	b=ilvorTWS0nZUcGKih1FnlzcXR1JCHNmnYPAHsHIgfXi8gsMVKLuJG2CkpersDauNk
+	 3km/Bp0JffbvqRWkp2P16TOneCCr1LtESpiwPN/iS1c1zsH3ioTa3KX1jFz3UlFrpR
+	 P70WR1ZJ0Fh4tdl7RE4F7mY/wlQGn+Vq+5U/C8O8AhBhSOaNa8lRApEjTUjMu1XSnO
+	 kPv88poitBjeIAbDFoL6E2386GhGYC6XQWOk6PcZ2aNOsiZBnDS8FWSRtj7B3TXaWo
+	 EIm0sgCvQk+dHKdn8npYGKUn+nzuaFYcmEOopRcQXFsalEvoja71k2+hErhO2MZDRf
+	 scuOcgdU1q4Vw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3C3A540985;
-	Wed, 28 Jan 2026 16:50:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 59ACF408CB;
+	Wed, 28 Jan 2026 16:50:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 3B2461AD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Jan 2026 16:50:37 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 44DE41AD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Jan 2026 16:50:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2F4B081121
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Jan 2026 16:50:35 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1799081106
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Jan 2026 16:50:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xpRsehqf_ANW for <intel-wired-lan@lists.osuosl.org>;
- Wed, 28 Jan 2026 16:50:34 +0000 (UTC)
+ id A4HoMEfl4wJY for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 28 Jan 2026 16:50:35 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
  client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
  envelope-from=mchehab+huawei@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A5ADF81106
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A5ADF81106
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 20D888110B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 20D888110B
 Received: from sea.source.kernel.org (sea.source.kernel.org
  [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A5ADF81106
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Jan 2026 16:50:34 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 20D888110B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Jan 2026 16:50:35 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 917F7441D3;
- Wed, 28 Jan 2026 16:50:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72557C4CEF1;
+ by sea.source.kernel.org (Postfix) with ESMTP id 179C240BB9;
+ Wed, 28 Jan 2026 16:50:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EBE43C4AF0C;
  Wed, 28 Jan 2026 16:50:34 +0000 (UTC)
 Received: from mchehab by mail.kernel.org with local (Exim 4.99.1)
  (envelope-from <mchehab+huawei@kernel.org>)
- id 1vl8kS-0000000DAz1-1wI7; Wed, 28 Jan 2026 17:50:32 +0100
+ id 1vl8kS-0000000DB0F-3O3I; Wed, 28 Jan 2026 17:50:32 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Jonathan Corbet <corbet@lwn.net>,
  Linux Doc Mailing List <linux-doc@vger.kernel.org>
@@ -71,8 +71,8 @@ Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, bpf@vger.kernel.org,
  netdev@vger.kernel.org, Peter Zijlstra <peterz@infradead.org>,
  Randy Dunlap <rdunlap@infradead.org>,
  Stephen Rothwell <sfr@canb.auug.org.au>
-Date: Wed, 28 Jan 2026 17:50:11 +0100
-Message-ID: <7a254f627ed79e2a7ffaf3e91bbb5ab269595d20.1769617841.git.mchehab+huawei@kernel.org>
+Date: Wed, 28 Jan 2026 17:50:12 +0100
+Message-ID: <1c649fb1db817040e1641a3f8980f15787725eec.1769617841.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <cover.1769617841.git.mchehab+huawei@kernel.org>
 References: <cover.1769617841.git.mchehab+huawei@kernel.org>
@@ -80,23 +80,23 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1769619034;
- bh=FAGo3vp1MYKDT8O2fN+VyX3S2nX5qeOzVDn265Hyrg0=;
+ d=kernel.org; s=k20201202; t=1769619035;
+ bh=E/NkbGhW79SHOexEJ6i7PkHNPXwMx9nBDdwcfT26Xts=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=iTNz+5IbtqRIFaEc3wxSMvLY4SGuhWXsaG89cnQ7zvyLdiQjiwGK7SyqAh736rE+N
- bq0nFWFbkQyIclENSlnsAslMX0nndJLWweiWGEq48jLK77CMmR2n4xjkMP4r6inXuY
- hYlDZHQhXwoqNzH11802AHQVgs/ggt7ggOEy54P9JTAlpf7HjSapRTZoAm7YI44Dx1
- tLaQM/QP4uoFa7DpygKbwfbNMMm28MDTuJ5ixH2QY3yYzx5O5b3ZdWmYPbxAyQ/Dop
- H8Yu30QB9FuZUfqgruAVZWYH7beCrBSDQq0FWP+Nivr0nFzBUuOCgTJUmBHVjBZC8m
- w+hyavb/Kdgcw==
+ b=jgEs8KLT+fSZYa8scXr97qocIE/yUTDBVKxLaLukMi1ByFu5mIxBSfoayfdkTbHU9
+ gvgHyPzicYKXhL1Fqtab7yXDC2reL52BB04G9w6xCCU4uxbWKsqeobFn9yoWmGQahZ
+ MDP2GsVGXADgVlA9PcbBI7USYzfFw76k3H3Tnu413mhONC/yhJTllDDDW3ipC/xze2
+ WBb+x9tqbnuAh5+4/UhzPRG3n5/sGcCNCzUDBvLEmbGHJTBfixcTvXb+71jdHEVbrM
+ tI+PvhWJ06HdUJgnMnZIpM7AQGuAQihMb/U5YsMiwcd3j5TDc9+VdVqfTk9PkR/C0H
+ YvxZSHqulIc0Q==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=iTNz+5Ib
-Subject: [Intel-wired-lan] [PATCH v2 13/25] docs: kdoc_parser: add support
- for LIST_HEAD
+ header.a=rsa-sha256 header.s=k20201202 header.b=jgEs8KLT
+Subject: [Intel-wired-lan] [PATCH v2 14/25] kdoc_parser: handle struct
+ member macro VIRTIO_DECLARE_FEATURES(name)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -120,7 +120,7 @@ X-Spamd-Result: default: False [2.29 / 15.00];
 	R_SPF_ALLOW(-0.20)[+mx:c];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,infradead.org:email];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,infradead.org:email,osuosl.org:dkim];
 	RCVD_TLS_LAST(0.00)[];
 	TAGGED_FROM(0.00)[huawei];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
@@ -145,31 +145,34 @@ X-Spamd-Result: default: False [2.29 / 15.00];
 	TAGGED_RCPT(0.00)[intel-wired-lan,huawei];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: 5A62AA63A1
+X-Rspamd-Queue-Id: 49073A63B3
 X-Rspamd-Action: no action
 
-Convert LIST_HEAD into struct list_head when handling its
-prototype.
+From: Randy Dunlap <rdunlap@infradead.org>
 
+Parse the macro VIRTIO_DECLARE_FEATURES(name) and expand it to its
+definition. These prevents one build warning:
+
+WARNING: include/linux/virtio.h:188 struct member 'VIRTIO_DECLARE_FEATURES(features' not described in 'virtio_device'
+
+Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Acked-by: Randy Dunlap <rdunlap@infradead.org>
-Tested-by: Randy Dunlap <rdunlap@infradead.org>
 ---
  tools/lib/python/kdoc/kdoc_parser.py | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/tools/lib/python/kdoc/kdoc_parser.py b/tools/lib/python/kdoc/kdoc_parser.py
-index 92b550189988..33710c4be145 100644
+index 33710c4be145..db140363104a 100644
 --- a/tools/lib/python/kdoc/kdoc_parser.py
 +++ b/tools/lib/python/kdoc/kdoc_parser.py
-@@ -219,6 +219,7 @@ var_xforms = [
-     (KernRe(r"__ro_after_init"), ""),
-     (KernRe(r'\s*__guarded_by\s*\([^\)]*\)', re.S), ""),
-     (KernRe(r'\s*__pt_guarded_by\s*\([^\)]*\)', re.S), ""),
-+    (KernRe(r"LIST_HEAD\(([\w_]+)\)"), r"struct list_head \1"),
-     (KernRe(r"(?://.*)$"), ""),
-     (KernRe(r"(?:/\*.*\*/)"), ""),
-     (KernRe(r";$"), ""),
+@@ -152,6 +152,7 @@ struct_xforms = [
+             struct_args_pattern + r'\)', re.S), r'\1 \2[]'),
+     (KernRe(r'DEFINE_DMA_UNMAP_ADDR\s*\(' + struct_args_pattern + r'\)', re.S), r'dma_addr_t \1'),
+     (KernRe(r'DEFINE_DMA_UNMAP_LEN\s*\(' + struct_args_pattern + r'\)', re.S), r'__u32 \1'),
++    (KernRe(r'VIRTIO_DECLARE_FEATURES\(([\w_]+)\)'), r'union { u64 \1; u64 \1_array[VIRTIO_FEATURES_U64S]; }'),
+ ]
+ #
+ # Struct regexes here are guaranteed to have the end delimiter matching
 -- 
 2.52.0
 
