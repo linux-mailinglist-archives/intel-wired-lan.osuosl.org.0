@@ -2,67 +2,66 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id sCRPHZIVe2n5BAIAu9opvQ
+	id gFrQIpwVe2n5BAIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:08:50 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:09:00 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BC796AD258
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:08:49 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B4E2AD2BF
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:09:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C9D4360865;
-	Thu, 29 Jan 2026 08:08:39 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BC26083DC5;
+	Thu, 29 Jan 2026 08:08:42 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id AiJPFMHowwc5; Thu, 29 Jan 2026 08:08:39 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id KoHpjYRzpRG6; Thu, 29 Jan 2026 08:08:42 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0F56F606F1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 36EEB83DBE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1769674119;
-	bh=OEGkfPKDZdkYhNu11qSkya82/XhDq8bLmoMtLjv0r+U=;
+	s=default; t=1769674122;
+	bh=RYq8d6gKWNzSfhIpEQ5CaasGiYqT2kt7/UwpM9NMmuM=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=N8DT609CKSy7TdsAUJ20P4m4i5Ez7JRPh5HmiphOoarR6jmhvVynymFQbFoeViNuU
-	 HNkSV70v+ysi9zEmmK2Gi34+r12MebqhtiOP1sRXLIBRrOlbWGikl2AyrwzKyuPdOR
-	 Oq/7in3VINvJBz5rz0gsjlPtvf9O+jNnXjHWjthrccqEKJXckGx1njIE4xleeFtuCt
-	 MgqB3nXD1UqGZWaaKy4tVEWulH3ZEgCxUBWpUyoUJFjlcYok/c57QDNTUEg/0/Wf+w
-	 bJjqqoXHT8a62AgSbiDyhJCJK0K+dDzwGA3F606Pj/njUJa8k28lDRghsaMt4YRN6I
-	 SmLBT10wRmx1A==
+	b=OGzHRPETRHYYiQETLgXoXTgkcDqZyvPlW0MqMdPFl8zR04j/AB9rKXTfdkKWZly+j
+	 aYmUhwBoK4nPj6FVkR2nCoJBwRjpz+qTSUHl7B+6Ft9ZGhQFy2eoqPx7rkKH0hZkS3
+	 wdk3a7vVeW7jOS+ypUfaVoMPb3CqZnqUDWdpMSUAk3OWLrGqx/vWilBJ1mw5IGu3zj
+	 shGz8uIHqzsGXTInnfUTYlNrmOgOjP9DywjYj6p/waxp6k+iVIAxTAiB0rJsH6xxa9
+	 h/91vssJRs0zBbCHmSewB056lxOwrCbaeyAyklaTnnxb9JqJeEcVtfkZf/j3tWA9uE
+	 h9IN85ufZ76nQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0F56F606F1;
-	Thu, 29 Jan 2026 08:08:39 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 36EEB83DBE;
+	Thu, 29 Jan 2026 08:08:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 0F05D1AD
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:34 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3EA4D118
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E972740B83
+ by smtp2.osuosl.org (Postfix) with ESMTP id EAA534035B
  for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id q3ua0BKOO9Mu for <intel-wired-lan@lists.osuosl.org>;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id jnLxW3aSOzSh for <intel-wired-lan@lists.osuosl.org>;
  Thu, 29 Jan 2026 08:08:32 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
- envelope-from=mchehab+huawei@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 2391F40B7F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2391F40B7F
-Received: from sea.source.kernel.org (sea.source.kernel.org
- [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 2391F40B7F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:31 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
+ helo=sea.source.kernel.org; envelope-from=mchehab+huawei@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 31E154030D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 31E154030D
+Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 31E154030D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:32 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 307154453E;
+ by sea.source.kernel.org (Postfix) with ESMTP id 41A5944551;
  Thu, 29 Jan 2026 08:08:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC7CAC2BCFB;
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E68C7C32781;
  Thu, 29 Jan 2026 08:08:30 +0000 (UTC)
 Received: from mchehab by mail.kernel.org with local (Exim 4.99.1)
  (envelope-from <mchehab+huawei@kernel.org>)
- id 1vlN4n-0000000ERNd-0XBz; Thu, 29 Jan 2026 09:08:29 +0100
+ id 1vlN4n-0000000ERNh-0eOz; Thu, 29 Jan 2026 09:08:29 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Jonathan Corbet <corbet@lwn.net>,
  Linux Doc Mailing List <linux-doc@vger.kernel.org>
@@ -71,8 +70,8 @@ Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, bpf@vger.kernel.org,
  linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
  Randy Dunlap <rdunlap@infradead.org>
-Date: Thu, 29 Jan 2026 09:08:08 +0100
-Message-ID: <168e559a46713f390c2984fc1c11e16e552ab0c1.1769673038.git.mchehab+huawei@kernel.org>
+Date: Thu, 29 Jan 2026 09:08:09 +0100
+Message-ID: <04552ce2ac1a426e74bf7353e1ba1586e2af4f36.1769673038.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <cover.1769673038.git.mchehab+huawei@kernel.org>
 References: <cover.1769673038.git.mchehab+huawei@kernel.org>
@@ -80,23 +79,23 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1769674110;
- bh=ceZVyyPX2HM3A215qLrOaX/Gfxk8tK5tZhLuxNFkn38=;
+ d=kernel.org; s=k20201202; t=1769674111;
+ bh=rCmGw1Wb+1Jckq+xhR2lN4gdNL9na4qiJFEWwkWiJR0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ClkZ5AacxK6NDrStNwCjyJvXg1qxbkYQbqzXHd0p6ie26FisfEYXRx1Fve4+WqsCG
- g6PjeE7mgn/fxMdcinSrXRkXqvTRcYI0aTI02MMrd+RO6nQWx2MvRMNg4gPatHCNBX
- XzdcND/d/AYxjkLtNpBaIIpfsFeSqBKNLk+ZckxxX6lS5EOZelaPTmqxP1daprU72v
- 7QQbYWRYMS1IH5ihm1Ok1VznBJ1gRad8Q4+8gf1Q4PlorofDvarbqBU3LWTIQhjIVW
- OpygAxI1pZEpFjmERWxyQAlrD81lwSnJxebh38jf7AfqxclrgiKrBM6qP1yxnT0qN1
- AQEpCw6tsVEDA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=IUAsCq5qj7DiIxihFXTCS1JgP1c4yGGiUCww/qZKGIPCTSyxdMq+eAMsid9MGZ4DC
+ RpdvbLFm2ssU03DL9ukwFVfGeTabsDkCSNjPNpbvcP/CvtIihKcWgMpjzuEQywSt80
+ h3kAKbpm1rr+cRlZfuRxabolUJ12tKi6lyPNtWNSUG/FLyB4ZxIrZRZ0V6NdvZeBdU
+ 08CtnRJG7Fxs6NmE4RVKOoyNhp6dY6v14omfHGlaytD1BashrOX8Z3Snr7aUgs7Rmf
+ zPjJ3h8P1OEN7y4S7XzrxynaOBumW/Rn9dEEENjcCR1R5QrzJyIiJLdF2MUVEr78LD
+ V+dmCTRqoiLDA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=ClkZ5Aac
-Subject: [Intel-wired-lan] [PATCH v3 17/30] docs: kdoc_re: don't recompile
- NextMatch regex every time
+ header.a=rsa-sha256 header.s=k20201202 header.b=IUAsCq5q
+Subject: [Intel-wired-lan] [PATCH v3 18/30] docs: kdoc_re: Change NestedMath
+ args replacement to \0
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -118,7 +117,7 @@ X-Spamd-Result: default: False [2.19 / 15.00];
 	MAILLIST(-0.20)[mailman];
 	R_SPF_ALLOW(-0.20)[+mx:c];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
 	TAGGED_FROM(0.00)[huawei];
@@ -131,7 +130,7 @@ X-Spamd-Result: default: False [2.19 / 15.00];
 	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	NEURAL_HAM(-0.00)[-1.000];
@@ -146,94 +145,62 @@ X-Spamd-Result: default: False [2.19 / 15.00];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,huawei];
 	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: BC796AD258
+X-Rspamd-Queue-Id: 5B4E2AD2BF
 X-Rspamd-Action: no action
 
-Store delimiters and its regex-compiled version as const vars.
+Future patches will allow parsing each argument instead of the
+hole set. Prepare for it by changing the replace all args from
+\1 to \0.
+
+No functional changes.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- tools/lib/python/kdoc/kdoc_re.py | 35 ++++++++++++++++++++------------
- 1 file changed, 22 insertions(+), 13 deletions(-)
+ tools/lib/python/kdoc/kdoc_parser.py | 2 +-
+ tools/lib/python/kdoc/kdoc_re.py     | 9 +++++----
+ 2 files changed, 6 insertions(+), 5 deletions(-)
 
+diff --git a/tools/lib/python/kdoc/kdoc_parser.py b/tools/lib/python/kdoc/kdoc_parser.py
+index db140363104a..4d52a00acfad 100644
+--- a/tools/lib/python/kdoc/kdoc_parser.py
++++ b/tools/lib/python/kdoc/kdoc_parser.py
+@@ -160,7 +160,7 @@ struct_xforms = [
+ # is allowed.
+ #
+ struct_nested_prefixes = [
+-    (re.compile(r'\bSTRUCT_GROUP\('), r'\1'),
++    (re.compile(r'\bSTRUCT_GROUP\('), r'\0'),
+ ]
+ 
+ #
 diff --git a/tools/lib/python/kdoc/kdoc_re.py b/tools/lib/python/kdoc/kdoc_re.py
-index 3f405addcc58..7b7ddc50ac36 100644
+index 7b7ddc50ac36..8933e1a62776 100644
 --- a/tools/lib/python/kdoc/kdoc_re.py
 +++ b/tools/lib/python/kdoc/kdoc_re.py
-@@ -99,6 +99,13 @@ class KernRe:
-         self.last_match = self.regex.search(string)
-         return self.last_match
+@@ -289,8 +289,9 @@ class NestedMatch:
+         It matches a regex that it is followed by a delimiter,
+         replacing occurrences only if all delimiters are paired.
  
-+    def finditer(self,  string):
-+        """
-+        Alias to re.finditer.
-+        """
-+
-+        return self.regex.finditer(string)
-+
-     def findall(self, string):
-         """
-         Alias to re.findall.
-@@ -134,6 +141,16 @@ class KernRe:
+-        if r'\1' is used, it works just like re: it places there the
+-        matched paired data with the delimiter stripped.
++        if r'\0' is used, it works on a similar way of using re.group(0):
++        it places the entire args of the matched paired data, with the
++        delimiter stripped.
  
-         return self.last_match.groups()
+         If count is different than zero, it will replace at most count
+         items.
+@@ -306,9 +307,9 @@ class NestedMatch:
+             # Value, ignoring start/end delimiters
+             value = line[end:pos - 1]
  
-+#: Nested delimited pairs (brackets and parenthesis)
-+DELIMITER_PAIRS = {
-+    '{': '}',
-+    '(': ')',
-+    '[': ']',
-+}
-+
-+#: compiled delimiters
-+RE_DELIM = KernRe(r'[\{\}\[\]\(\)]')
-+
+-            # replaces \1 at the sub string, if \1 is used there
++            # replaces \0 at the sub string, if \0 is used there
+             new_sub = sub
+-            new_sub = new_sub.replace(r'\1', value)
++            new_sub = new_sub.replace(r'\0', value)
  
- class NestedMatch:
-     """
-@@ -183,14 +200,6 @@ class NestedMatch:
-     #
-     #   FOO(arg1, arg2, arg3)
+             out += new_sub
  
--    DELIMITER_PAIRS = {
--        '{': '}',
--        '(': ')',
--        '[': ']',
--    }
--
--    RE_DELIM = re.compile(r'[\{\}\[\]\(\)]')
--
-     def _search(self, regex, line):
-         """
-         Finds paired blocks for a regex that ends with a delimiter.
-@@ -220,13 +229,13 @@ class NestedMatch:
-             escape = False
- 
-             d = line[offset - 1]
--            if d not in self.DELIMITER_PAIRS:
-+            if d not in DELIMITER_PAIRS:
-                 continue
- 
--            end = self.DELIMITER_PAIRS[d]
-+            end = DELIMITER_PAIRS[d]
-             stack.append(end)
- 
--            for match in self.RE_DELIM.finditer(line[offset:]):
-+            for match in RE_DELIM.finditer(line[offset:]):
-                 pos = match.start() + offset
- 
-                 d = line[pos]
-@@ -247,8 +256,8 @@ class NestedMatch:
-                     string_char = d
-                     continue
- 
--                if d in self.DELIMITER_PAIRS:
--                    end = self.DELIMITER_PAIRS[d]
-+                if d in DELIMITER_PAIRS:
-+                    end = DELIMITER_PAIRS[d]
- 
-                     stack.append(end)
-                     continue
 -- 
 2.52.0
 
