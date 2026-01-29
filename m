@@ -2,67 +2,66 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id QNx8L6kVe2kZBQIAu9opvQ
+	id 8LJKOqsVe2kZBQIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:09:13 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:09:15 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B4CEAD318
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:09:13 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 89CE9AD326
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:09:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9766783DDE;
-	Thu, 29 Jan 2026 08:08:49 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 469C583D72;
+	Thu, 29 Jan 2026 08:08:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5MjElCIrCzox; Thu, 29 Jan 2026 08:08:47 +0000 (UTC)
+ id omdDbJBlZyzL; Thu, 29 Jan 2026 08:08:49 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CB63B83DCF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 983D883DE2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1769674127;
-	bh=eDy6TlfrEA5o+6VdCht6Xxr6rLrggKzHcqHvfxvEOkc=;
+	s=default; t=1769674129;
+	bh=5og9an4vHprjI6axHzYabPB1Qo5Xo2uFcxZ07zGdC4s=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=7T2fcAcjhsX7NqJxt/Kv2D7Mr+kolppiT7yTQhpoY1RLsQ5KrckgI+fxS7Jcyp9Pq
-	 0METfWrkfuXKPj5+e/lV7Pc+RGMAeLlvCTYiYUqOd/NiRWlCtVgfgGIa03zvfE+LHj
-	 H9G+hwur2diJ8usY5PWJCYgr3kZq3LdnOX4tvTP2oEQriZCqmSvaZoTLyfS7tlRvxQ
-	 vBzQ1YCHsjrvbd0FOMg+w8CHD+UFLG1NZMgBiONTr/ykxov5srgNuDScbno+DjYBrz
-	 YzcX967Wzc80Dq/c5WyGIv0wS9F3UA2t/PjubxCzLCWIM16AgMJnJD+dOKln0+eVBn
-	 dC7aUMYy8JC6g==
+	b=HsEdNDBqN++fty2x/p9mSc0Iubapg5BV4cIFF3ziXVG46ZWqi2XN32EX2xeUT8jJD
+	 WXJryarowFIeBihwXk8az/zvEc9oKQEFs/HNiZEQjOLA3UE2Qb552ezAI5rlClqFVh
+	 5iyLPGAl5M8jPnlu7SbKhU4Mm8lmqxl2PDCXqtC44+FdnD8h8aTinfeCSZ1NhNxJGu
+	 Axmn26x0knMHMekHz2SRbld+4OOBHZ9l+HIAd4TPYkZy7jkFvnAULEmanPrPlAPE4g
+	 IvshinwSp8rG5b+XdSQJn9ZhvL6JDtdhM33wRKFe0JLtTdgT9j0AOwIIufw8kBevgS
+	 tZnaHWP3zkpIw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CB63B83DCF;
-	Thu, 29 Jan 2026 08:08:47 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 983D883DE2;
+	Thu, 29 Jan 2026 08:08:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 3E6F91AD
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:38 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 4F402118
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B18C040B89
+ by smtp4.osuosl.org (Postfix) with ESMTP id F322E40B8A
  for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id E5AIRJUhpMjO for <intel-wired-lan@lists.osuosl.org>;
+ id ub9MIm5RHgxw for <intel-wired-lan@lists.osuosl.org>;
  Thu, 29 Jan 2026 08:08:32 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
- envelope-from=mchehab+huawei@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 9D3A040B8C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9D3A040B8C
-Received: from sea.source.kernel.org (sea.source.kernel.org
- [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 9D3A040B8C
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
+ helo=sea.source.kernel.org; envelope-from=mchehab+huawei@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5418140B86
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5418140B86
+Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5418140B86
  for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:32 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 528614455D;
+ by sea.source.kernel.org (Postfix) with ESMTP id 555304455F;
  Thu, 29 Jan 2026 08:08:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2207DC2BC9E;
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 26799C2BCFC;
  Thu, 29 Jan 2026 08:08:31 +0000 (UTC)
 Received: from mchehab by mail.kernel.org with local (Exim 4.99.1)
  (envelope-from <mchehab+huawei@kernel.org>)
- id 1vlN4n-0000000ERO9-1VNv; Thu, 29 Jan 2026 09:08:29 +0100
+ id 1vlN4n-0000000EROD-1cdk; Thu, 29 Jan 2026 09:08:29 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Jonathan Corbet <corbet@lwn.net>,
  Linux Doc Mailing List <linux-doc@vger.kernel.org>
@@ -71,8 +70,8 @@ Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, bpf@vger.kernel.org,
  linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
  Randy Dunlap <rdunlap@infradead.org>
-Date: Thu, 29 Jan 2026 09:08:16 +0100
-Message-ID: <9d3d27d956b25921cf40410e59a17a86caef32f6.1769673038.git.mchehab+huawei@kernel.org>
+Date: Thu, 29 Jan 2026 09:08:17 +0100
+Message-ID: <4ca4e256922bc42ce1c86e70c20e6a35a599fcfd.1769673038.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <cover.1769673038.git.mchehab+huawei@kernel.org>
 References: <cover.1769673038.git.mchehab+huawei@kernel.org>
@@ -81,22 +80,22 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=kernel.org; s=k20201202; t=1769674111;
- bh=5IMb08zUAZZvfVWXPYkW/4qcvpNOxc4eEZSFARXvZuc=;
+ bh=HZIWPQtHuKRBHDG4lIuIJ9k4nhNjGP3jcqbI9/NYBFM=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=OdQsPwCU87ijJQAvR4bFQKGyfKuTiPXIrfP8nlxqb3ywYjSJv61k2ROvpdRebYQsQ
- ABZtUOiBDZCpHsKzaWLcBfp2ZXefQ+izcFxzYQ99yaj+nffM7X5FXlaGQVnAbK/CLp
- LmfjgelLDoPuEDMDekhHRjI6cipt3FcG1Wl3xHKoEJ2XI7mRm8ij5ewcMbHurgHpmS
- 0Pj2A7Lb+VIUKweKzqbb13O4Q68pi4Uvwjr+/shCizR50sNjLOybTe6OU+G+8DJejB
- 1dgaqR3yRPxd1r7i2FySvp2R2lxxpzqRa9h+nx8y3b9QCVM/dYVziKX6YVqt6lN/Gq
- ObnCqicRTDTqA==
+ b=GSjxV5N8m6DyFxui8ZZdGu4+xPizuar3wU0AtGMsI1qMuSXRq0l1WC9X+Zm3hRWAb
+ uHyt5mVPJxNtLtSoi/g5xBZ+XgycQK5IV5d3TCaY/cONDpBFpi5AZyMGEDMZSMAaS7
+ PvNQ9d8qwDoZkcH6vynHxk5dHtdrfMEC/byQCk12jutLU9F/f4tGSLoCiUvVb+ZNzT
+ 3plvFnws7sQ+qDOtrTZrwPZvo0lOixx671zZ3a8i3gmYGclELOt1gfZs/iCquZRctV
+ r9AB9hYU9TzKNAtgXBplJu0RrpHkoOish+Q/YVMq167JVSHF23onkBcndBpuq5xnaA
+ thMRLBM+FNnVg==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=OdQsPwCU
-Subject: [Intel-wired-lan] [PATCH v3 25/30] docs: kdoc_re: add a helper
- class to declare C function matches
+ header.a=rsa-sha256 header.s=k20201202 header.b=GSjxV5N8
+Subject: [Intel-wired-lan] [PATCH v3 26/30] docs: kdoc_parser: use the new
+ CFunction class
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -146,36 +145,89 @@ X-Spamd-Result: default: False [2.19 / 15.00];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,huawei];
 	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: 5B4CEAD318
+X-Rspamd-Queue-Id: 89CE9AD326
 X-Rspamd-Action: no action
 
-Add a more convenient class to match C functions and avoiding
-issues at the beginning and ending of NestedMatch inits.
+The match logic for transforms becomes a lot clearer if we use
+CFunction convenient alias class instead of NestedMatch.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- tools/lib/python/kdoc/kdoc_re.py | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ tools/lib/python/kdoc/kdoc_parser.py | 38 ++++++++++++++--------------
+ 1 file changed, 19 insertions(+), 19 deletions(-)
 
-diff --git a/tools/lib/python/kdoc/kdoc_re.py b/tools/lib/python/kdoc/kdoc_re.py
-index 5f455ffff7b2..a49b42e3d189 100644
---- a/tools/lib/python/kdoc/kdoc_re.py
-+++ b/tools/lib/python/kdoc/kdoc_re.py
-@@ -380,3 +380,14 @@ class NestedMatch:
-         """
+diff --git a/tools/lib/python/kdoc/kdoc_parser.py b/tools/lib/python/kdoc/kdoc_parser.py
+index d2eb93f9d489..50d57c6799bb 100644
+--- a/tools/lib/python/kdoc/kdoc_parser.py
++++ b/tools/lib/python/kdoc/kdoc_parser.py
+@@ -13,7 +13,7 @@ import sys
+ import re
+ from pprint import pformat
  
-         return f'NestedMatch("{self.regex.regex.pattern}")'
-+
-+
-+class CFunction(NestedMatch):
-+    r"""
-+    Variant of NestedMatch.
-+
-+    It overrides the init method to ensure that the regular expression will
-+    start with a ``\b`` and end with a C function delimiter (open parenthesis).
-+    """
-+    def __init__(self, regex):
-+        self.regex = KernRe(r"\b" + regex + r"\s*\(")
+-from kdoc.kdoc_re import NestedMatch, KernRe
++from kdoc.kdoc_re import CFunction, KernRe
+ from kdoc.kdoc_item import KdocItem
+ 
+ #
+@@ -119,22 +119,22 @@ struct_xforms = [
+     #
+     # As it doesn't properly match the end parenthesis on some cases.
+     #
+-    # So, a better solution was crafted: there's now a NestedMatch
++    # So, a better solution was crafted: there's now a CFunction
+     # class that ensures that delimiters after a search are properly
+     # matched. So, the implementation to drop STRUCT_GROUP() will be
+     # handled in separate.
+     #
+-    (NestedMatch(r'\bstruct_group\s*\('), r'\2'),
+-    (NestedMatch(r'\bstruct_group_attr\s*\('), r'\3'),
+-    (NestedMatch(r'\bstruct_group_tagged\s*\('), r'struct \1 { \3 } \2;'),
+-    (NestedMatch(r'\b__struct_group\s*\('), r'\4'),
++    (CFunction('struct_group'), r'\2'),
++    (CFunction('struct_group_attr'), r'\3'),
++    (CFunction('struct_group_tagged'), r'struct \1 { \3 } \2;'),
++    (CFunction('__struct_group'), r'\4'),
+ 
+     #
+     # Replace macros
+     #
+-    # TODO: use NestedMatch for FOO($1, $2, ...) matches
++    # TODO: use CFunction on all FOO($1, $2, ...) matches
+     #
+-    # it is better to also move those to the NestedMatch logic,
++    # it is better to also move those to the CFunction logic,
+     # to ensure that parentheses will be properly matched.
+     #
+     (KernRe(r'__ETHTOOL_DECLARE_LINK_MODE_MASK\s*\(([^\)]+)\)', re.S),
+@@ -185,17 +185,17 @@ function_xforms = [
+     (KernRe(r"DECL_BUCKET_PARAMS\s*\(\s*(\S+)\s*,\s*(\S+)\s*\)"), r"\1, \2"),
+     (KernRe(r"__no_context_analysis\s*"), ""),
+     (KernRe(r"__attribute_const__ +"), ""),
+-    (NestedMatch(r"__cond_acquires\s*\("), ""),
+-    (NestedMatch(r"__cond_releases\s*\("), ""),
+-    (NestedMatch(r"__acquires\s*\("), ""),
+-    (NestedMatch(r"__releases\s*\("), ""),
+-    (NestedMatch(r"__must_hold\s*\("), ""),
+-    (NestedMatch(r"__must_not_hold\s*\("), ""),
+-    (NestedMatch(r"__must_hold_shared\s*\("), ""),
+-    (NestedMatch(r"__cond_acquires_shared\s*\("), ""),
+-    (NestedMatch(r"__acquires_shared\s*\("), ""),
+-    (NestedMatch(r"__releases_shared\s*\("), ""),
+-    (NestedMatch(r"__attribute__\s*\("), ""),
++    (CFunction("__cond_acquires"), ""),
++    (CFunction("__cond_releases"), ""),
++    (CFunction("__acquires"), ""),
++    (CFunction("__releases"), ""),
++    (CFunction("__must_hold"), ""),
++    (CFunction("__must_not_hold"), ""),
++    (CFunction("__must_hold_shared"), ""),
++    (CFunction("__cond_acquires_shared"), ""),
++    (CFunction("__acquires_shared"), ""),
++    (CFunction("__releases_shared"), ""),
++    (CFunction("__attribute__"), ""),
+ ]
+ 
+ #
 -- 
 2.52.0
 
