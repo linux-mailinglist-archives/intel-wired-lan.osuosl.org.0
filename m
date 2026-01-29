@@ -2,66 +2,66 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id MKJ4Co8Ve2n5BAIAu9opvQ
+	id mIX1HpgVe2n5BAIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:08:47 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:08:56 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8DF09AD23A
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:08:46 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A1EEAD294
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:08:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B1BD560862;
-	Thu, 29 Jan 2026 08:08:37 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D629D83DB8;
+	Thu, 29 Jan 2026 08:08:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RoYkzDW-wbxO; Thu, 29 Jan 2026 08:08:37 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id FmDJGnlL4hIp; Thu, 29 Jan 2026 08:08:40 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3AED960857
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 521F583DA9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1769674117;
-	bh=ezFEmYdGUCtH29XaLF2XMXtghw47UZ/+5scY0X/Wi5k=;
+	s=default; t=1769674120;
+	bh=mL4S0XVBaBOArkBNG6/qtI08ouU+tMaeETAzeBmyGcE=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=w83jWedIEUdoyxN1LA9DMHn9tmCQ/o4DZ7uUsKuzp9ef0nnzE/geKq1yRtf0pIAav
-	 2i3L2uZY3y90UCYQa4Pf1dby+vH+O8ktcGqKAlpcEoKEyG0CYcLA12YTcbnJPZIrWC
-	 AOMPqbJzXdHRDaZ7n84CcH27vCeq3I+I+ZMf2Xzo1Uun/vfXcRsEIc7tCw6Hp915r6
-	 Nvjtac2xL7aUB3L7wEKfuuD+BpvQCx26ws1WF7ZvR6ie3BF8fUfiqXJWAK8PYg50KJ
-	 p/duoCSR5iLAFE5yBa/TbmAWW9hKZymfIV46sua9d68oJ01febPdg1jTP9eaz0cAPc
-	 M60XJIqXknWkw==
+	b=KX+OK1FrpvI+N+R2cK/uMsEQJZR4ZBJeuChIFS8szdJxqS1YZVSiW8BAAKRfEEUMd
+	 xBVS2o6EXKfBKgGzo/+mnwr84GsLrHb43DY1vbQGs6xfbKqPwOxWczOAGN+r7ZJnJW
+	 Dng4xL/yQUVbs7n9kqcmsNs4pF7WfEQlQgh8D1OzA3z9r4i2N6f6E8Z9eXsBOfsJeS
+	 qssmDuHFHE+LC3+sYHU5SE3fO+bdpsAX4OVSaRcSz3nYPTqY+lfruUv29XcQAXMq/R
+	 M3iXEXESATPxIrloASeaOWf+g6r/MOA0hmBHkJhjhNg42dBVO5k3sUlX6UVi7eMSWn
+	 fbVvR1zVpaRMA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3AED960857;
-	Thu, 29 Jan 2026 08:08:37 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 521F583DA9;
+	Thu, 29 Jan 2026 08:08:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 63053118
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:33 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 553FF1BD
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 894A260861
+ by smtp3.osuosl.org (Postfix) with ESMTP id AFC1760862
  for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id c3WAzAvqTAfj for <intel-wired-lan@lists.osuosl.org>;
+ id Vr1WhHWaDywL for <intel-wired-lan@lists.osuosl.org>;
  Thu, 29 Jan 2026 08:08:32 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
  helo=sea.source.kernel.org; envelope-from=mchehab+huawei@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 05169606F6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 05169606F6
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 19AB260715
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 19AB260715
 Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 05169606F6
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 19AB260715
  for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:31 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 190AF44529;
+ by sea.source.kernel.org (Postfix) with ESMTP id 180C944528;
  Thu, 29 Jan 2026 08:08:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BA308C2BCB2;
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BDF8BC2BCB1;
  Thu, 29 Jan 2026 08:08:30 +0000 (UTC)
 Received: from mchehab by mail.kernel.org with local (Exim 4.99.1)
  (envelope-from <mchehab+huawei@kernel.org>)
- id 1vlN4m-0000000ERMz-3W3o; Thu, 29 Jan 2026 09:08:28 +0100
+ id 1vlN4m-0000000ERN3-3ecl; Thu, 29 Jan 2026 09:08:28 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Jonathan Corbet <corbet@lwn.net>,
  Linux Doc Mailing List <linux-doc@vger.kernel.org>
@@ -70,8 +70,8 @@ Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, bpf@vger.kernel.org,
  linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
  Randy Dunlap <rdunlap@infradead.org>
-Date: Thu, 29 Jan 2026 09:07:58 +0100
-Message-ID: <1df8a82162411a720dfec076062263bc7cbbcfb7.1769673038.git.mchehab+huawei@kernel.org>
+Date: Thu, 29 Jan 2026 09:07:59 +0100
+Message-ID: <95b5345d74ad7c7e4898d022cb9195d0e2ac13cb.1769673038.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <cover.1769673038.git.mchehab+huawei@kernel.org>
 References: <cover.1769673038.git.mchehab+huawei@kernel.org>
@@ -80,22 +80,22 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=kernel.org; s=k20201202; t=1769674110;
- bh=LW3FWQWxnWgJD3Z8QjxOsIjqHu4vcqWf8FWt35UhM3s=;
+ bh=Fd24Q1nDNP9DgJx33rkWp9Vbgr/MiR1kgk0MwpCT/0I=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=IAFKwnn2WQ2LTQ+V2Q6bxCu1p/XmRfCkKxyrmaMY0/iIIK8zb9g61njzm/YtULJT2
- VE04xPo0K0jRcwe1wzCMhTt/HiiHk4To0HA5t7i/l5PuJKIC4pIUKaDLy5Qc1AUTjd
- QtiFiHcMEjLPFa5Nkg238OsY58LwWy0p56rUd14wBdWe/QvItPbNF3xGinJl60zO5Z
- NmMKteKPwesqWjRtpVvYwZVo3PR58s+RrFtF4dPEagC9OabwpinzbCNysJuq7LB+hj
- i2wKvNxjAA9JXTVY1BG1RckQo43m2+ftvaMG1Hp4pUK/WmyASxPbA/eFVARQVczxy/
- 0nH7pY5/StvRg==
+ b=EaJ+6SiKajBaKm7SB7w2zP1dvwODnIAER/meOLX7nxnn6gLxkEb/B0RrT71TbfR0o
+ 8+l/DWM0eX1DoNaxx9ftn4rvqpjh+HyHq5Apy/SfwhAY5jYvFFuuJRgMzi0h7hGLw2
+ q++w9Z3T0Hm17UiNNlfRvp7qcAwg0apFLthDKcxbw2inN6a3bp7vMS5H00xnLiJiqS
+ 3eB+ceE70/UwK8xFXR+iDhLaS0Wi5cILTXVA12VJU857y20Nyud2cMJkDm5EVYia1+
+ xoBl/eZLtd/F7Yc9GMgh78TMTlBc0MezOO6B56B0cuzn5sThkQJBjgWiXLQedg7gUF
+ 7PQDTIWFHAFog==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=IAFKwnn2
-Subject: [Intel-wired-lan] [PATCH v3 07/30] docs: kdoc_parser: fix variable
- regexes to work with size_t
+ header.a=rsa-sha256 header.s=k20201202 header.b=EaJ+6SiK
+Subject: [Intel-wired-lan] [PATCH v3 08/30] docs: kdoc_parser: fix the
+ default_value logic for variables
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -119,7 +119,7 @@ X-Spamd-Result: default: False [2.29 / 15.00];
 	R_SPF_ALLOW(-0.20)[+mx:c];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[infradead.org:email,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[infradead.org:email,osuosl.org:dkim];
 	RCVD_TLS_LAST(0.00)[];
 	TAGGED_FROM(0.00)[huawei];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
@@ -144,13 +144,12 @@ X-Spamd-Result: default: False [2.29 / 15.00];
 	TAGGED_RCPT(0.00)[intel-wired-lan,huawei];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: 8DF09AD23A
+X-Rspamd-Queue-Id: 4A1EEAD294
 X-Rspamd-Action: no action
 
-The regular expressions meant to pick variable types are too
-naive: they forgot that the type word may contain underlines.
+The indentation is wrong for the second regex, which causes
+problems on variables with defaults.
 
-Co-developed-by: Randy Dunlap <rdunlap@infradead.org>
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Acked-by: Randy Dunlap <rdunlap@infradead.org>
 Tested-by: Randy Dunlap <rdunlap@infradead.org>
@@ -159,26 +158,21 @@ Tested-by: Randy Dunlap <rdunlap@infradead.org>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/tools/lib/python/kdoc/kdoc_parser.py b/tools/lib/python/kdoc/kdoc_parser.py
-index 64165d8df84e..201c4f7298d7 100644
+index 201c4f7298d7..cbfdaba39494 100644
 --- a/tools/lib/python/kdoc/kdoc_parser.py
 +++ b/tools/lib/python/kdoc/kdoc_parser.py
-@@ -1027,14 +1027,14 @@ class KernelDoc:
- 
-         default_val = None
- 
--        r= KernRe(OPTIONAL_VAR_ATTR + r"\w.*\s+(?:\*+)?([\w_]+)\s*[\d\]\[]*\s*(=.*)?")
-+        r= KernRe(OPTIONAL_VAR_ATTR + r"[\w_]*\s+(?:\*+)?([\w_]+)\s*[\d\]\[]*\s*(=.*)?")
-         if r.match(proto):
-             if not declaration_name:
-                 declaration_name = r.group(1)
- 
+@@ -1035,9 +1035,9 @@ class KernelDoc:
              default_val = r.group(2)
          else:
--            r= KernRe(OPTIONAL_VAR_ATTR + r"(?:\w.*)?\s+(?:\*+)?(?:[\w_]+)\s*[\d\]\[]*\s*(=.*)?")
-+            r= KernRe(OPTIONAL_VAR_ATTR + r"(?:[\w_]*)?\s+(?:\*+)?(?:[\w_]+)\s*[\d\]\[]*\s*(=.*)?")
-         if r.match(proto):
-             default_val = r.group(1)
+             r= KernRe(OPTIONAL_VAR_ATTR + r"(?:[\w_]*)?\s+(?:\*+)?(?:[\w_]+)\s*[\d\]\[]*\s*(=.*)?")
+-        if r.match(proto):
+-            default_val = r.group(1)
  
++            if r.match(proto):
++                default_val = r.group(1)
+         if not declaration_name:
+            self.emit_msg(ln,f"{proto}: can't parse variable")
+            return
 -- 
 2.52.0
 
