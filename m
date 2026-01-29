@@ -2,76 +2,77 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id sCdRJ58Ve2n5BAIAu9opvQ
+	id uDYdNZQVe2n5BAIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:09:03 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:08:52 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F27AAD2DD
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:09:03 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B76EAD26F
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:08:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B56C660715;
-	Thu, 29 Jan 2026 08:08:51 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C1658606F6;
+	Thu, 29 Jan 2026 08:08:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kSft1Xzv6-Gb; Thu, 29 Jan 2026 08:08:51 +0000 (UTC)
+ id raRgm-n6522z; Thu, 29 Jan 2026 08:08:41 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F21AA60876
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 028666087A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1769674131;
-	bh=UdSVi0o1uq+l2JvN876bEU4Qi8OjzG7pK/mhhTmMvrU=;
+	s=default; t=1769674121;
+	bh=hVGbsW6/ltkzJJlnivkvlFUEnebKufQ79Z+mqE4+M/8=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=2ASQ8opz3/2oYyss1v4/v/M9emUdKlDHc0U5AOqWirbB8IAQU7nBNuYxMOo1geHVg
-	 8pq+4iqmSfSj6zM4GY4ChCgIOwfJ0Y9ZfXfE/WatM409NGNoM80sWu3x2/fpPo5WqB
-	 GSmv+QZ52JS0GsXPrMLWXkg9bOL+G0D1hqQLGjC/ks3MOsqU/mSOQ+ys0czxkvTq/O
-	 NO0WanMJ7xckyQAy3uTTR89kf4GgyWXGze1GdzmXYqk3cQ/587HD1cFhgyBYIoXIyI
-	 abWKxncF5EK6UqP6xHltmIFsu7Wy/pBabf/e2NEfZe2VrB/x3UV67bV3Pw1+cueRPJ
-	 bXACxC/AnYI9Q==
+	b=Urw2q93m77WvQe0o1lufl7VRFoIIYHepk1zCDRW7LCDPigbIAtbbUi/BabtMtxYGl
+	 E6XwJb0OBlmywcxx+MbCEK7dqjCf9CBdzkooP251H8SirUwxYqGzhu4DI3UxVJoZP8
+	 S1WkwEAwDjsdzZ3O3W91ioPWaFOFpBhmaI5igxF6qnrIwnex+vFByh+OkUd+4bxZ/B
+	 3YPXBWiiMRlgxTn6QkMyZ+7DJxKpJtjq6xGWCQ5e4KdBdAZLUCO/F/cvZtP8kiwZNv
+	 KdExhwqK5XAWyWMLbnMZ+fetcrbzJf4+rbDSOY6pNR2x+ULq42E5i95KcEbmpU5UZF
+	 MT/GpuAXogucQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F21AA60876;
-	Thu, 29 Jan 2026 08:08:50 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 028666087A;
+	Thu, 29 Jan 2026 08:08:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 0DE7D1AD
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:40 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 172F2118
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 52966606F6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:34 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2EE8B40B7F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id P6Cb8KMaKHSb for <intel-wired-lan@lists.osuosl.org>;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id kxNRVyeOOi9J for <intel-wired-lan@lists.osuosl.org>;
  Thu, 29 Jan 2026 08:08:32 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
- helo=tor.source.kernel.org; envelope-from=mchehab+huawei@kernel.org;
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
+ helo=sea.source.kernel.org; envelope-from=mchehab+huawei@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 5A1A760858
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5A1A760858
-Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 5A1A760858
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 2CF1440B82
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2CF1440B82
+Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2CF1440B82
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:31 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 4124960126;
+ by sea.source.kernel.org (Postfix) with ESMTP id 1BB234452C;
  Thu, 29 Jan 2026 08:08:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B783FC2BCAF;
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C08FBC2BCB4;
  Thu, 29 Jan 2026 08:08:30 +0000 (UTC)
 Received: from mchehab by mail.kernel.org with local (Exim 4.99.1)
  (envelope-from <mchehab+huawei@kernel.org>)
- id 1vlN4m-0000000ERNF-41KV; Thu, 29 Jan 2026 09:08:28 +0100
+ id 1vlN4m-0000000ERNJ-48s0; Thu, 29 Jan 2026 09:08:28 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Jonathan Corbet <corbet@lwn.net>,
  Linux Doc Mailing List <linux-doc@vger.kernel.org>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, bpf@vger.kernel.org,
+Cc: Randy Dunlap <rdunlap@infradead.org>, bpf@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, linux-hardening@vger.kernel.org,
  linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- Randy Dunlap <rdunlap@infradead.org>
-Date: Thu, 29 Jan 2026 09:08:02 +0100
-Message-ID: <ed3918b24518ee58bd92c6c2729fe0927d1bde95.1769673038.git.mchehab+huawei@kernel.org>
+ Stephen Rothwell <sfr@canb.auug.org.au>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Date: Thu, 29 Jan 2026 09:08:03 +0100
+Message-ID: <d044cc9f026908fff95e8ee6dddb0fff65152bcc.1769673038.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <cover.1769673038.git.mchehab+huawei@kernel.org>
 References: <cover.1769673038.git.mchehab+huawei@kernel.org>
@@ -80,22 +81,22 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=kernel.org; s=k20201202; t=1769674110;
- bh=+PHSHQk42n1s2eoXmKBeCEHsRg0AhUmcVaeG8R0cpiE=;
+ bh=YVVe7KRzqnppyn56cGxlJApAQyowTVAxdXTJwpP28d8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=maC+j0hnj48daFZ8ng1N2+Dhr0gXmdF5Aqm760IJ2bxebUBl3pXpyOaCZo5TOLpcn
- IkhsbrLqlgISNP7BK4HxZGS/wC52393Hqu752r7dwz2uwcE0UgsqEgf8I4w6QkpTvR
- zO5SBxLAC5X6LmYBUnqih4ID5SoZKccfIanf1ICyGDDg15aIQOQDcrhhJE0s0H4lhD
- 9LT10mZfR+Sdy4BSjUGvxct4kZ89OCUsXJ5hBwFlRyyKEUp5onfAw8iDMin87GMPqo
- OSvCg7qLVeNPWtAVEP2dQydfkutav+M6NUuiTA+lBI7silsWnPxs8sJUZAh0U81WzC
- ayaNzT6hHpUEg==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=U/6AzwnPbi0JtNsyush7PTt00zFhCG3tLQvlkFbZ9Jte2MVU70b/Do3DNn8kmsgMY
+ QSCqZ5Tg5wk9tsYUvgDxQTcdusyCYJaLWYsgkc8Pl7b7mtQzdUQ3xMJE/9xkPQRRi7
+ ynY8C8TEvEOIp22i2fGdZGbdracy1kisBHqd6cySZnGw+G8uv25w9APtgCy9OBlSPE
+ /trEApOqHAOlkp89lyOMFh8tfw6wevZ5OYaEKpdGk4EW90GJQBPCp+CcOZY3wvpMsq
+ 9lcsha0MOmxO/0Fpba5X34F29QCtR8kERubCjdwt907RoDJdKrB1fL2c83b9txCdiA
+ zxvRKXlRvI7VA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=maC+j0hn
-Subject: [Intel-wired-lan] [PATCH v3 11/30] docs: kdoc_parser: fix parser to
- support multi-word types
+ header.a=rsa-sha256 header.s=k20201202 header.b=U/6AzwnP
+Subject: [Intel-wired-lan] [PATCH v3 12/30] docs: kdoc_parser: ignore
+ context analysis and lock attributes
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -126,11 +127,11 @@ X-Spamd-Result: default: False [2.19 / 15.00];
 	ARC_NA(0.00)[];
 	FORGED_SENDER(0.00)[mchehab@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	TO_DN_SOME(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:corbet@lwn.net,m:linux-doc@vger.kernel.org,m:mchehab+huawei@kernel.org,m:bpf@vger.kernel.org,m:linux-hardening@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:netdev@vger.kernel.org,m:mchehab@kernel.org,m:rdunlap@infradead.org,s:lists@lfdr.de];
+	FORGED_RECIPIENTS(0.00)[m:corbet@lwn.net,m:linux-doc@vger.kernel.org,m:rdunlap@infradead.org,m:bpf@vger.kernel.org,m:linux-hardening@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:netdev@vger.kernel.org,m:mchehab@kernel.org,m:sfr@canb.auug.org.au,m:mchehab+huawei@kernel.org,s:lists@lfdr.de];
 	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns,osuosl.org:dkim,infradead.org:email];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[infradead.org:email,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	NEURAL_HAM(-0.00)[-1.000];
@@ -141,47 +142,84 @@ X-Spamd-Result: default: False [2.19 / 15.00];
 	MID_RHS_MATCH_FROM(0.00)[];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	RCPT_COUNT_SEVEN(0.00)[10];
+	RCPT_COUNT_SEVEN(0.00)[11];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,huawei];
 	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: 6F27AAD2DD
+X-Rspamd-Queue-Id: 6B76EAD26F
 X-Rspamd-Action: no action
 
-The regular expression currently expects a single word for the
-type, but it may be something like  "struct foo".
+From: Randy Dunlap <rdunlap@infradead.org>
 
-Add support for it.
+Drop all context analysis and lock (tracking) attributes to avoid
+kernel-doc warnings.
 
+Documentation/core-api/kref:328: ../include/linux/kref.h:72: WARNING: Invalid C declaration: Expected end of definition. [error at 96]
+  int kref_put_mutex (struct kref *kref, void (*release)(struct kref *kref), struct mutex *mutex) __cond_acquires(true# mutex)
+  ------------------------------------------------------------------------------------------------^
+Documentation/core-api/kref:328: ../include/linux/kref.h:94: WARNING: Invalid C declaration: Expected end of definition. [error at 92]
+  int kref_put_lock (struct kref *kref, void (*release)(struct kref *kref), spinlock_t *lock) __cond_acquires(true# lock)
+  --------------------------------------------------------------------------------------------^
+
+The regex is suggested by Mauro; mine was too greedy. Thanks.
+Updated context analysis and lock macros list provided by PeterZ. Thanks.
+
+Reported-by: Stephen Rothwell <sfr@canb.auug.org.au>
+Closes: https://lore.kernel.org/all/20260107161548.45530e1c@canb.auug.org.au/
+Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
+Reviewed-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Acked-by: Randy Dunlap <rdunlap@infradead.org>
-Tested-by: Randy Dunlap <rdunlap@infradead.org>
 ---
- tools/lib/python/kdoc/kdoc_parser.py | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ tools/lib/python/kdoc/kdoc_parser.py | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
 diff --git a/tools/lib/python/kdoc/kdoc_parser.py b/tools/lib/python/kdoc/kdoc_parser.py
-index 0b6cba442d72..21cc4e19a1e8 100644
+index 21cc4e19a1e8..92b550189988 100644
 --- a/tools/lib/python/kdoc/kdoc_parser.py
 +++ b/tools/lib/python/kdoc/kdoc_parser.py
-@@ -1026,7 +1026,7 @@ class KernelDoc:
+@@ -81,6 +81,8 @@ struct_xforms = [
+     (KernRe(r'\s*__aligned\s*\([^;]*\)', re.S), ' '),
+     (KernRe(r'\s*__counted_by\s*\([^;]*\)', re.S), ' '),
+     (KernRe(r'\s*__counted_by_(le|be)\s*\([^;]*\)', re.S), ' '),
++    (KernRe(r'\s*__guarded_by\s*\([^\)]*\)', re.S), ' '),
++    (KernRe(r'\s*__pt_guarded_by\s*\([^\)]*\)', re.S), ' '),
+     (KernRe(r'\s*__packed\s*', re.S), ' '),
+     (KernRe(r'\s*CRYPTO_MINALIGN_ATTR', re.S), ' '),
+     (KernRe(r'\s*__private', re.S), ' '),
+@@ -165,6 +167,16 @@ struct_nested_prefixes = [
+ # the start delimiter.
+ #
+ function_nested_prefixes = [
++    (re.compile(r"__cond_acquires\s*\("), ""),
++    (re.compile(r"__cond_releases\s*\("), ""),
++    (re.compile(r"__acquires\s*\("), ""),
++    (re.compile(r"__releases\s*\("), ""),
++    (re.compile(r"__must_hold\s*\("), ""),
++    (re.compile(r"__must_not_hold\s*\("), ""),
++    (re.compile(r"__must_hold_shared\s*\("), ""),
++    (re.compile(r"__cond_acquires_shared\s*\("), ""),
++    (re.compile(r"__acquires_shared\s*\("), ""),
++    (re.compile(r"__releases_shared\s*\("), ""),
+     (re.compile(r"__attribute__\s*\("), ""),
+ ]
  
-         default_val = None
+@@ -195,6 +207,7 @@ function_xforms = [
+     (KernRe(r"__(?:re)?alloc_size\s*\(\s*\d+\s*(?:,\s*\d+\s*)?\) +"), ""),
+     (KernRe(r"__diagnose_as\s*\(\s*\S+\s*(?:,\s*\d+\s*)*\) +"), ""),
+     (KernRe(r"DECL_BUCKET_PARAMS\s*\(\s*(\S+)\s*,\s*(\S+)\s*\)"), r"\1, \2"),
++    (KernRe(r"__no_context_analysis\s*"), ""),
+     (KernRe(r"__attribute_const__ +"), ""),
+ ]
  
--        r= KernRe(OPTIONAL_VAR_ATTR + r"[\w_]*\s+(?:\*+)?([\w_]+)\s*[\d\]\[]*\s*(=.*)?")
-+        r= KernRe(OPTIONAL_VAR_ATTR + r"\s*[\w_\s]*\s+(?:\*+)?([\w_]+)\s*[\d\]\[]*\s*(=.*)?")
-         if r.match(proto):
-             if not declaration_name:
-                 declaration_name = r.group(1)
-@@ -1037,7 +1037,7 @@ class KernelDoc:
-                                   r.groups(), proto)
- 
-         else:
--            r= KernRe(OPTIONAL_VAR_ATTR + r"(?:[\w_]*)?\s+(?:\*+)?(?:[\w_]+)\s*[\d\]\[]*\s*(=.*)?")
-+            r= KernRe(OPTIONAL_VAR_ATTR + r"(?:[\w_\s]*)?\s+(?:\*+)?(?:[\w_]+)\s*[\d\]\[]*\s*(=.*)?")
- 
-             if r.match(proto):
-                 default_val = r.group(1)
+@@ -204,6 +217,8 @@ function_xforms = [
+ var_xforms = [
+     (KernRe(r"__read_mostly"), ""),
+     (KernRe(r"__ro_after_init"), ""),
++    (KernRe(r'\s*__guarded_by\s*\([^\)]*\)', re.S), ""),
++    (KernRe(r'\s*__pt_guarded_by\s*\([^\)]*\)', re.S), ""),
+     (KernRe(r"(?://.*)$"), ""),
+     (KernRe(r"(?:/\*.*\*/)"), ""),
+     (KernRe(r";$"), ""),
 -- 
 2.52.0
 
