@@ -2,225 +2,108 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id eKCrHXsOe2nqAwIAu9opvQ
+	id +OmrNYoVe2n5BAIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 08:38:35 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:08:42 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 54A97ACCFE
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 08:38:34 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 900C5AD212
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:08:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 50F1883D37;
-	Thu, 29 Jan 2026 07:38:32 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E792F6086B;
+	Thu, 29 Jan 2026 08:08:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id hRT09-wtx_IR; Thu, 29 Jan 2026 07:38:31 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id e6xBRQTGQdQD; Thu, 29 Jan 2026 08:08:35 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B74D683D34
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4460860868
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1769672311;
-	bh=QlOjgDguRGcVsWF7dPqb13TCZSdsbqpl9d90v3fgNDc=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=25km32P+a4+w8+18NsQSpuE391B3arLwRsGqRNUD7pyavmXMT90TvD6FA8Bfx7p8+
-	 anu8Z0kYJHPhouWmGNAw52x0e4tH6qmofAU57a2o4MFaVE6pdYu2Jy0InNX6nrfMRO
-	 YgZg141h9k7B/wNHDDaaQ2wOTSHXDOJeTcFmLa6TNEy5xsPfxoxKi7PH5NYuRfmdbl
-	 ZFEdGkQ7b7JDYROfHRWfOfaf+eu66aUCwHoYdbt9wAaYK0/yNlbcfPwwAmoIivWuXX
-	 dZ65ehPb3NDwXkKAsbVghjfVmM2XNU5vO/14PqUDGzPFqliYkPlndfOlKfArX3BieR
-	 zQKLlP/L2S0ZA==
+	s=default; t=1769674115;
+	bh=g3sPmE4bsJmPYda+176UiOILnKENTPm8A2UGjRWJtvw=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=wFqTtFLrx0DvhjOKKNCWxL55AU5jvkIfN+Gky37yEj53+O96W0Fr2hRSgE9R9eB3L
+	 1Bwcf/7Dk4jnw+5jMsY3ADmR4UuAtvFELhpsWotO2AtY4kxVFDVnQbuATMfzI9bL2o
+	 0oWhpOxUpt+AQ4ASJg4GaHRQdDMMllgvjy6BQYAYQiDr5aOoh2JumQEz6F2ZXaKnmo
+	 VrOfcDHF2gj+A5cj9RXQ8hLXSjvZsM7MD0Wfz15v7PEOpXkUcMqDLfFjY4J51J+mvb
+	 H7VUcmxqIlkrMHgGSjXdrz433bL8dsHxsY1Q467acv9T0WwIxucx+D+GTIWHGrHAXB
+	 xLfh24JId//3g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B74D683D34;
-	Thu, 29 Jan 2026 07:38:31 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4460860868;
+	Thu, 29 Jan 2026 08:08:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 4DFADD3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 07:38:29 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 8D1031AD
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3C96E83D31
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 07:38:29 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 7CAFC40429
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1M_NJTWFEG9c for <intel-wired-lan@lists.osuosl.org>;
- Thu, 29 Jan 2026 07:38:28 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
- helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 2EC6483D30
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2EC6483D30
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 2EC6483D30
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 07:38:27 +0000 (UTC)
-X-CSE-ConnectionGUID: 8FxisyZCTLa5v4DQ11QNpA==
-X-CSE-MsgGUID: G3lJanw6TP+9ijCkf52mwg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11685"; a="58484200"
-X-IronPort-AV: E=Sophos;i="6.21,260,1763452800"; d="scan'208";a="58484200"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Jan 2026 23:38:27 -0800
-X-CSE-ConnectionGUID: LSnI1SpHSh6wOtJqyt1SCw==
-X-CSE-MsgGUID: 7NxjSL8mT6mKow0nGtTlZg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,260,1763452800"; d="scan'208";a="208923503"
-Received: from fmsmsx902.amr.corp.intel.com ([10.18.126.91])
- by fmviesa009.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Jan 2026 23:38:27 -0800
-Received: from FMSMSX902.amr.corp.intel.com (10.18.126.91) by
- fmsmsx902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.35; Wed, 28 Jan 2026 23:38:26 -0800
-Received: from fmsedg902.ED.cps.intel.com (10.1.192.144) by
- FMSMSX902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.35 via Frontend Transport; Wed, 28 Jan 2026 23:38:26 -0800
-Received: from CH1PR05CU001.outbound.protection.outlook.com (52.101.193.20) by
- edgegateway.intel.com (192.55.55.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.35; Wed, 28 Jan 2026 23:38:22 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=GiZUV0FIbfhupqtmjewN3S6sUySJ3Len4hLYzh4tPK54vNkguhGlgY9Ixcpj6KaKWTAeTdm/44fjSAVck9zDVyQvmrYemhvX8kc7R3gq9GdxMe1M64PD+BXltOmZDKmvomZ/kxOi6C0I60VXMa62tsfhs4X0T2XR7HDJnktmugSVtROFGMtFjFxVFJ0alOtL050YuiCUBlwqXgSeMujGa8MkrIWnuooDSCaskTFtkDRuS+4BjXmiRKh8b0E5tF5IUB0VhWCa0m89dCJ3q7jRs7orYiTaT2c84fzW0hw3rMMNRO018SOI9iQ4t+VTXEdkOdGuKNJNTzTuQVtOZdv8XQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=QlOjgDguRGcVsWF7dPqb13TCZSdsbqpl9d90v3fgNDc=;
- b=gtrlfFPFAEpbqUH5jg8LVrsDbZfYlu1VHt+OauAMKJyJjqrlcquKbzwTxst6hh8oyzXkCnudf8YAg1F14L104Kb53OdIY2gPcKEgJl0QPvUE49eFIJ9NrytJxN/+dadE0P2auOJhErv9DAT7zdBtgrXlQ/qWU3loWbQgKDjvKs0wBeTjPhmKal1vItYmDIEiF5sL3LOImj56Vvr7ZGRSRMTpe2L7xkcUjtm1FoQfx7v1eiENMpYdqC9Fe9y9JfQQ61WeSLLXIJ1NGlLSrjkj49Ur643SdPMAFzpqjWjfipOytV9CnyyiDAVNxMGshYwDbCtCdqId2LfP9wZMpSOSUA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from IA3PR11MB8986.namprd11.prod.outlook.com (2603:10b6:208:577::21)
- by IA0PR11MB8354.namprd11.prod.outlook.com (2603:10b6:208:48c::6)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.15; Thu, 29 Jan
- 2026 07:38:14 +0000
-Received: from IA3PR11MB8986.namprd11.prod.outlook.com
- ([fe80::395e:7a7f:e74c:5408]) by IA3PR11MB8986.namprd11.prod.outlook.com
- ([fe80::395e:7a7f:e74c:5408%3]) with mapi id 15.20.9542.010; Thu, 29 Jan 2026
- 07:38:14 +0000
-From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
-To: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-CC: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>
-Thread-Topic: [Intel-wired-lan] [PATCH iwl-next v2 1/1] e1000e: correct
- TIMINCA on ADP/TGP systems with wrong XTAL frequency
-Thread-Index: AQHcfvPJzQV532cu50SkZFqqREym77Vo5kZw
-Date: Thu, 29 Jan 2026 07:38:14 +0000
-Message-ID: <IA3PR11MB8986F9C0AAC40A8076B5F695E59EA@IA3PR11MB8986.namprd11.prod.outlook.com>
-References: <20260106100331.1576758-1-vitaly.lifshits@intel.com>
-In-Reply-To: <20260106100331.1576758-1-vitaly.lifshits@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: IA3PR11MB8986:EE_|IA0PR11MB8354:EE_
-x-ms-office365-filtering-correlation-id: c1830dde-de3a-4363-4204-08de5f095c81
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|366016|376014|7053199007|38070700021; 
-x-microsoft-antispam-message-info: =?us-ascii?Q?Jz+gxG2/J+H/pxTPA1c9B8muWPN3EYWDBZbnGKo/ovaVhvrQgPogjiNLuAPR?=
- =?us-ascii?Q?X+kfAi4fNjjuAYIX70fbMUvcYYWLRewLxcHG2BSnoiaZDy4iWONeLnDnBEWV?=
- =?us-ascii?Q?IwJlirIV3iuUHYPEw150BtsYuO0YukvfTMFvnFFTkq9FiQURY4TszyCTbBhP?=
- =?us-ascii?Q?dbI9jy+UGuDMPLA+Btkpta6dQBfk+oPCIQ57S+Zixqvm8rYljxt/XYIYe7S2?=
- =?us-ascii?Q?LQ3+/IdN4w42bT7jqmtcEArWqt5BOPFRmYMpSSQWziW4BI5HFIrbXcfi1ktU?=
- =?us-ascii?Q?bMwQeEuzjzL3zmeIsvaKRQVLgwGlgPvKZlqQCDj4c+VcARVkpWBOAtKrrZne?=
- =?us-ascii?Q?0I0ugWjR17AK3gQvSq04tUwHDuN087aZWou94e6uR8z2qta4oOMwMCxfmhDy?=
- =?us-ascii?Q?M2HnQ5uME8Md60WtRy6fiTuzfEnrjM3RPlgONBj9yMUxRhDqTbHccTetcGAB?=
- =?us-ascii?Q?UUYQRxuD5szthzcUs1HwG6JWjsAaxszK6zJJwhb+gdPM54jioQNjiiHxkOg/?=
- =?us-ascii?Q?EanugQQHU7Hj1ScBp6/i0xSXDwxNF71OA3EQEgz6dMPkcJCBp28Yq0D7xTwF?=
- =?us-ascii?Q?kQqxt+VsE7CKu/TnEtjwsvhna//6BTf2d1UYlI4kT09yNOtMsXyNujBpObYy?=
- =?us-ascii?Q?HQe66zRG6+nXD1gCNnNed/aJX3l/opKIwsxAYNu+ElMm/1p5alInoh6Q4dZp?=
- =?us-ascii?Q?u4lWmyISGj9N0B1694S0gmWAB7jAFqbzNmfvYKLxn1MKkjXJWtSokLbtq67T?=
- =?us-ascii?Q?5EprHvupD5dwsrP36qDtoy43c+fNQP7+FLE3zYATCT/GfpxRkpKDpDIkp0f0?=
- =?us-ascii?Q?0SfADtomsta6EzoJ8hkjX6elbQ+bOzNrLGueSMiBkvjRvhOgaL6YuINwtodp?=
- =?us-ascii?Q?oE5yvQIZ9C/2atGbafjvpvO4U4piW9KTTrvgCEabk+cNYCrdVLAhRWeRddHz?=
- =?us-ascii?Q?x3an/hkgH2s9kUghJVaiRqutP++uo/cHLMjRc/RMvw7Gce+F6zdqSbAKBUbw?=
- =?us-ascii?Q?e2jZfPXHQ327WzlJSZwqheroobVJ/KkkiuwZ7WkRnH/jK91FCiFRZHFB95jj?=
- =?us-ascii?Q?/7O5n4xVgU/faBMptwQPgwrRLQmSNKcPYjXveM3FptlgFeqIG4xHcvPhU9kN?=
- =?us-ascii?Q?TlFbYQz70wXfX4IUpbNxHTZ2AoykLrjSHT0+iE6lfreak70x54j8k60Kawd9?=
- =?us-ascii?Q?XwPKtWd9VZOX7ZF0Q8yxSOPrAR7qK17+K5t3T1Mou1QC93h4oXtsJiQuLqKh?=
- =?us-ascii?Q?cgHAsm6AR3B6Owv2TwLeTMWTVZU42+9xkSETV4KdfTGpEBcEBFX6mODb6Q6Z?=
- =?us-ascii?Q?0bfmhLqyAmJjZj7qprU65nkqKjRDjXzui/npptE30+0bqfsCR6OwLXw5V7/O?=
- =?us-ascii?Q?vlmmVogB0atTq+waGGUY2VvE44c02LyWNKHnEGX2Vd8KtYF+HHUou5/CC21r?=
- =?us-ascii?Q?zvt7mTH/152nNX7RtrHo07g++ovD6clRsjLFfBdDez97yCLU5Q2kZ+8PYxDs?=
- =?us-ascii?Q?RZj4QiwA0VUzs/qOirOdPMPi3FVtaotUYDPTjMucSYun7Z7w6ElY0gdZLm00?=
- =?us-ascii?Q?2j5o7LJRbFwxuLpo8p6R/SSGI68sYl4znv4CBHXeGfXqLsvdVa8uQr73o9Et?=
- =?us-ascii?Q?ekndWMulpTOTAR6iDersk80=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:IA3PR11MB8986.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(376014)(7053199007)(38070700021); DIR:OUT;
- SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?8akaWWv8uyDTEBBYJLgB/RlkasdqZ29k8qdwerurAmAaAA8oWNUuA5E47TOB?=
- =?us-ascii?Q?oFQweHx/Kh4Yze5t70xHe/hKg5NO3uL31L2ecQaLHz0Fuq9UAyuufxSAw3yS?=
- =?us-ascii?Q?Yhm+Gxp/jd751mg5Vc/xQ3cCosz7JQiiUxTMoKO2YXSH7cvCCM9LvQ/ahhJM?=
- =?us-ascii?Q?lxzOEwXN4yZ13YmYIJu7P+KTC6mzHmwAEOXRgtcyrzYiIJSF9UdZ1vjyqpoG?=
- =?us-ascii?Q?/3Aa2KeSevjeaM3BuYUI2WDkTzebf47Kh+6RIjFDYW1bAlE7+8vgrs7RoO/D?=
- =?us-ascii?Q?QKFEyQRmgLgJ1fCMmr75S8KIWVs03nYaleG0++t8N1BbfdHeIUGIgzQ2dpD5?=
- =?us-ascii?Q?/jW5PlBrT/Qb5KRG9B1NiMygsJbgxD2KLQoMJIujyqOYgWVp2Ole5Cz7xpKw?=
- =?us-ascii?Q?fqQEOKozUuvG18MBckwiYBBEi4chAtJbzB15NFtOTi1qHxZehk+4d02njFar?=
- =?us-ascii?Q?s9+MAMAXnnMMpHUlPi+jsfTuQ2c7uJ40ThbHFcjSmIgBb70bSIk+ypJKLfzt?=
- =?us-ascii?Q?etpWTJMq/jv8mCXeUett/dbDathEuCzNBh5ntZFe1s8pqTas/ioEo7wCUH2R?=
- =?us-ascii?Q?JnfXFp6nY71WuNQbENrLtS9noPTRDyMl6n1ScnAgbP56ZKA/frQs31ErV6Ol?=
- =?us-ascii?Q?qRXQovOAayAcldxq4wIjVZBNLpi5ddanAlnbCrrkiw6T3j8eQhdWcC4s9uec?=
- =?us-ascii?Q?I7X18tQxbnI4ZFYoTk/hc55m5CxBUvLKm8uSUItUxKXg3ybz3d5X0dYlSkUw?=
- =?us-ascii?Q?6rK2ccIeZ6+9ZpuMWaz9zZS6ITOo2tSsZFV9x6D1tybbkChErYUE7eNFvvqH?=
- =?us-ascii?Q?izbc34vnRpKzSOIXO3mD4ckN+y0X+1zrHprf/5xnDtKMuYtntXYwuVR3gRgF?=
- =?us-ascii?Q?oYaFfkaYBlM9roOD21e5aHYVg/cW+bXVGlzgCOQ02nXnrJiibFBDqzyEMH+K?=
- =?us-ascii?Q?wmufQrsjDRqVvO5G5AS3znIq3CpJBZvOjxbSr8h1IAzSOCHGk3lfqHUzeWc7?=
- =?us-ascii?Q?l3mMEUQWziRiqYpoqVThpV0WqbqK7IwSZdpLbOp1kfdQipivJnT20NH8BOnD?=
- =?us-ascii?Q?NcFwjR1NOvLqyTlDFvetqkqvkuQ/3zVzzVI9sAqeflMF6gBV0Zs+4IKmFSg6?=
- =?us-ascii?Q?AoZo//vk2OkJcqAcXhv3IUgaOKBq1QeQ8VBxqzc5fiVoeVdSl8LNuDdTzlxH?=
- =?us-ascii?Q?agnJDwjEKsNmxunuKc4aL2KP/T5OsAtRTZ5fhO/U3ePvutpKhoCe+EMJDYBH?=
- =?us-ascii?Q?a6DG7vSSVAp8yG8uF1lEcwC5WVrxKHQDhY2rWpwSOpaHeuNH9/0728Vg6J93?=
- =?us-ascii?Q?e7t+Hna2cF2oATHCTITlJ3WlecX948ELfsT324Nlzi27Qc8TdgURqdENOPn0?=
- =?us-ascii?Q?XiSphjS1Zp8WxXf2JqKNcfOODbePMBR88bej5WZFFSKqAw61qcMBpkMh+HaS?=
- =?us-ascii?Q?kDDMSBeazq92aD80m3Gp67luOUAxWQFPq8ODwWVb5ALNJsmI0/6YAYDqP8aD?=
- =?us-ascii?Q?EfIa9Em0GCcejo0M2pZI6m2149vWessLdknO2Nk2SszoDcsZP3OH10E2QrS+?=
- =?us-ascii?Q?7eJqQRZXpqBkJIQTuG3z4UFTx7/QgzD/MCIBYCuyV31WEmXy/pZIcL92V5fk?=
- =?us-ascii?Q?n7Yptt9Mr5i8r67PXpoF/1+XvUr2J+4/6HVAopgP2ExVjAEc4WcMfHK3zGLB?=
- =?us-ascii?Q?jk/yatZVVJhpSjgwWzeWYCVViB79N+lDhCf9OjY3/bnmWsDIw1TbntqvveKS?=
- =?us-ascii?Q?jSvMBTPnw1l7DoeWjzn7EiO6tH1NqFc=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id iRzskYrffXib for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 29 Jan 2026 08:08:31 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ envelope-from=mchehab+huawei@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 91A4140070
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 91A4140070
+Received: from sea.source.kernel.org (sea.source.kernel.org
+ [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 91A4140070
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:31 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sea.source.kernel.org (Postfix) with ESMTP id D4600444E1;
+ Thu, 29 Jan 2026 08:08:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A32AFC4CEF7;
+ Thu, 29 Jan 2026 08:08:30 +0000 (UTC)
+Received: from mchehab by mail.kernel.org with local (Exim 4.99.1)
+ (envelope-from <mchehab+huawei@kernel.org>)
+ id 1vlN4m-0000000ERMY-2ftW; Thu, 29 Jan 2026 09:08:28 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Jonathan Corbet <corbet@lwn.net>
+Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, Jakub Kicinski <kuba@kernel.org>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, Kees Cook <kees@kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Richard Cochran <richardcochran@gmail.com>, bpf@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-doc@vger.kernel.org,
+ linux-hardening@vger.kernel.org, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Randy Dunlap <rdunlap@infradead.org>,
+ Shuah Khan <skhan@linuxfoundation.org>,
+ Stanislav Fomichev <sdf@fomichev.me>
+Date: Thu, 29 Jan 2026 09:07:51 +0100
+Message-ID: <cover.1769673038.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB8986.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c1830dde-de3a-4363-4204-08de5f095c81
-X-MS-Exchange-CrossTenant-originalarrivaltime: 29 Jan 2026 07:38:14.3940 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: aARO2/XsrNqn6l2C2JYzaZ1xNZzKIczctytTbI5PeZjd+dOP9Uu3wmFpgo8XbJq31IWvrCNOacQe2azpKctGPofJIB6LXVbZRss6Zsa/4zU=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR11MB8354
-X-OriginatorOrg: intel.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1769672308; x=1801208308;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=14nEOnq03O/zKZVKUWnL9xg+JYK92g3V3TmbyeUzukE=;
- b=L+Zdq/tDeLFxvH6B+2QwxTQvgL13bISwoovyqCvUGdTxGABmSOemulSj
- gPW5gn9Oxjx7Vb1IpOdD0mQMsx7DIkeRQFtQ38tatlGNkQVN0jiKfnTQd
- GoQTlbemCzr+TgcEnOLsuSm+KCx7bI5LSF2TV/13zrU4qQkU7gcZrn4ym
- L0qWVZCf3w/5hdby0aPV8+Wukn7RgFnLonf08Kt+9+BcPTvHSaqE2wbXB
- GiOV02CPIQI/Lo3TJVVFDGxioAQiocCWAn9nVwkAN/Wd+1TAIF+PI0f7F
- +XQwsbLdkdSeyvsGmiRvRTWtkk5UbrkxwRKVF3ZHQWCmbOC0kkaGZlGnN
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ d=kernel.org; s=k20201202; t=1769674110;
+ bh=CpFZnCKsXaKpTRcH1wYRERdcRFhRq9xxZ9K2UwivETI=;
+ h=From:To:Cc:Subject:Date:From;
+ b=ojfk/quOeC6rlZ6ssOp/3ezqD86OPKPGp+gEq6gQjjU+aP/6zPZySdSfcS3dJpOrs
+ C3Pu8IIE64/3oJHlonHHs3TKQ8jBtzusidNS/7f8ctf13+hyyarNu3thYQ1F8m/n2H
+ ihhMgGrVjQtJiXhbytiy9ScvuaMoxsyshf3AnsruFw23OFM9j7X4LeApwfVgHKku56
+ ZNx0odlnA7Cp7H5y6xSUeCnn2HU8pEHw9p74iWb0JJEGyCHFKunQxLjNPPO+r0PvW/
+ +Wjnt+60lgN6+85zccoOnibHci40PVDKMCIGnJ23f9BLBHtpcHXoi7Cj6L8VSU/CCm
+ hyTdJUcLiT3Vg==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=L+Zdq/tD
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 1/1] e1000e: correct
- TIMINCA on ADP/TGP systems with wrong XTAL frequency
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=ojfk/quO
+Subject: [Intel-wired-lan] [PATCH v3 00/30] kernel-doc: make it parse new
+ functions and structs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -236,128 +119,198 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [0.29 / 15.00];
-	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
+X-Spamd-Result: default: False [2.19 / 15.00];
+	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+	SUSPICIOUS_RECIPS(1.50)[];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	R_SPF_ALLOW(-0.20)[+mx:c];
 	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+mx];
 	MIME_GOOD(-0.10)[text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:vitaly.lifshits@intel.com,s:lists@lfdr.de];
-	TO_DN_EQ_ADDR_SOME(0.00)[];
-	FORGED_SENDER(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
-	TO_DN_SOME(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
 	MIME_TRACE(0.00)[0:+];
+	TAGGED_FROM(0.00)[huawei];
+	RCPT_COUNT_TWELVE(0.00)[22];
+	FORGED_SENDER(0.00)[mchehab@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FROM_HAS_DN(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:corbet@lwn.net,m:mchehab+huawei@kernel.org,m:davem@davemloft.net,m:aleksander.lobakin@intel.com,m:ast@kernel.org,m:daniel@iogearbox.net,m:kuba@kernel.org,m:hawk@kernel.org,m:john.fastabend@gmail.com,m:kees@kernel.org,m:mchehab@kernel.org,m:richardcochran@gmail.com,m:bpf@vger.kernel.org,m:linux-doc@vger.kernel.org,m:linux-hardening@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:netdev@vger.kernel.org,m:gustavoars@kernel.org,m:rdunlap@infradead.org,m:skhan@linuxfoundation.org,m:sdf@fomichev.me,m:johnfastabend@gmail.com,s:lists@lfdr.de];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	ARC_NA(0.00)[];
+	FREEMAIL_CC(0.00)[kernel.org,davemloft.net,intel.com,iogearbox.net,gmail.com,vger.kernel.org,lists.osuosl.org,infradead.org,linuxfoundation.org,fomichev.me];
 	DKIM_TRACE(0.00)[osuosl.org:+];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
+	TO_DN_SOME(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	RCVD_COUNT_TWELVE(0.00)[14];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[mchehab@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	NEURAL_HAM(-0.00)[-1.000];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
-	RCPT_COUNT_THREE(0.00)[3];
+	BLOCKLISTDE_FAIL(0.00)[2600:3c0a:e001:78e:0:1991:8:25:query timed out];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	MISSING_XM_UA(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:email,osuosl.org:dkim,intel.com:email,IA3PR11MB8986.namprd11.prod.outlook.com:mid,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns]
-X-Rspamd-Queue-Id: 54A97ACCFE
+	TAGGED_RCPT(0.00)[intel-wired-lan,huawei];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	RCVD_COUNT_SEVEN(0.00)[10]
+X-Rspamd-Queue-Id: 900C5AD212
 X-Rspamd-Action: no action
 
 
+Hi Jon,
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
-> Of Vitaly Lifshits
-> Sent: Tuesday, January 6, 2026 11:04 AM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: Lifshits, Vitaly <vitaly.lifshits@intel.com>
-> Subject: [Intel-wired-lan] [PATCH iwl-next v2 1/1] e1000e: correct
-> TIMINCA on ADP/TGP systems with wrong XTAL frequency
->=20
-> On some Tiger Lake (TGP) and Alder Lake (ADP) platforms, the hardware
-> XTAL clock is incorrectly interpreted as 24 MHz instead of the actual
-> 38.4 MHz. This causes the PHC to run significantly faster than system
-> time, breaking PTP synchronization.
->=20
-> To mitigate this at runtime, measure PHC vs system time over ~1 ms
-> using cross-timestamps. If the PHC increment differs from system time
-> beyond the expected tolerance (currently >100 uSecs), reprogram
-> TIMINCA for the
-> 38.4 MHz profile and reinitialize the timecounter.
->=20
-> Tested on an affected system using phc_ctl:
-> Without fix:
-> sudo phc_ctl enp0s31f6 set 0.0 wait 10 get clock time: 16.000541250
-> (expected ~10s)
->=20
-> With fix:
-> sudo phc_ctl enp0s31f6 set 0.0 wait 10 get clock time: 9.984407212
-> (expected ~10s)
->=20
-> Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
-> ---
-> v2: avoid resetting the systim and rephrase commit message
-> v1: initial version
-> ---
->  drivers/net/ethernet/intel/e1000e/netdev.c | 80
-> ++++++++++++++++++++++
->  1 file changed, 80 insertions(+)
->=20
-> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c
-> b/drivers/net/ethernet/intel/e1000e/netdev.c
-> index 116f3c92b5bc..edb72054d0d9 100644
-> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
-> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-> @@ -3904,6 +3904,83 @@ static void e1000_flush_desc_rings(struct
-> e1000_adapter *adapter)
->  		e1000_flush_rx_ring(adapter);
->  }
->=20
-> +/**
-> + * e1000e_xtal_tgp_workaround - Adjust XTAL clock based on PHC and
-> +system
-> + * clock delta.
-> + *
-> + * Measures the time difference between the PHC (Precision Hardware
-> +Clock)
-> + * and the system clock over a 1 millisecond interval. If the delta
-> + * exceeds 100 microseconds, reconfigure the XTAL clock to 38.4 MHz.
-> + *
-> + * @adapter: Pointer to the private adapter structure  **/ static
-> void
-> +e1000e_xtal_tgp_workaround(struct e1000_adapter *adapter) {
-> +	s64 phc_delta, sys_delta, sys_start_ns, sys_end_ns, delta_ns;
+And the size grew again: it is now 31 patches...
 
-...
+This is still based on next-20260127.
 
->  /**
->   * e1000e_systim_reset - reset the timesync registers after a
-> hardware reset
->   * @adapter: board private structure
-> @@ -3955,6 +4032,9 @@ static void e1000e_systim_reset(struct
-> e1000_adapter *adapter)
->  		if (extack._msg)
->  			e_err("%s\n", extack._msg);
->  	}
-> +
-> +	if (hw->mac.type =3D=3D e1000_pch_adp || hw->mac.type =3D=3D
-> e1000_pch_tgp)
-> +		return e1000e_xtal_tgp_workaround(adapter);
+On this version, I created a new "CFunction" class, with is
+just an alias for "NestedMatch" class, meant to simplify the
+logic and maintainership for Linux Kernel macros that require
+transforms.
 
-Vitaly, does it compile? As far a can see the function is declared as void=
-=20
+With that, a transform list (for instance to cleanup structs)
+become a lot simpler and easier to understand:
 
->  }
->=20
->  /**
-> --
-> 2.34.1
+    #: Transforms for structs and unions
+    struct_xforms = [
+        (CFunction("__attribute__"), ' '),
+        (CFunction('__aligned'), ' '),
+        (CFunction('__counted_by'), ' '),
+        (CFunction('__counted_by_(le|be)'), ' '),
+        (CFunction('__guarded_by'), ' '),
+        (CFunction('__pt_guarded_by'), ' '),
+
+        (KernRe(r'\s*__packed\s*', re.S), ' '),
+        (KernRe(r'\s*CRYPTO_MINALIGN_ATTR', re.S), ' '),
+        (KernRe(r'\s*__private', re.S), ' '),
+        (KernRe(r'\s*__rcu', re.S), ' '),
+        (KernRe(r'\s*____cacheline_aligned_in_smp', re.S), ' '),
+        (KernRe(r'\s*____cacheline_aligned', re.S), ' '),
+
+        (CFunction('__cacheline_group_(begin|end)'), ''),
+
+        (CFunction('struct_group'), r'\2'),
+        (CFunction('struct_group_attr'), r'\3'),
+        (CFunction('struct_group_tagged'), r'struct \1 \2; \3'),
+        (CFunction('__struct_group'), r'\4'),
+
+        (CFunction('__ETHTOOL_DECLARE_LINK_MODE_MASK'), r'DECLARE_BITMAP(\1, __ETHTOOL_LINK_MODE_MASK_NBITS)'),
+        (CFunction('DECLARE_PHY_INTERFACE_MASK',), r'DECLARE_BITMAP(\1, PHY_INTERFACE_MODE_MAX)'),
+        (CFunction('DECLARE_BITMAP'), r'unsigned long \1[BITS_TO_LONGS(\2)]'),
+
+        (CFunction('DECLARE_HASHTABLE'), r'unsigned long \1[1 << ((\2) - 1)]'),
+        (CFunction('DECLARE_KFIFO'), r'\2 *\1'),
+        (CFunction('DECLARE_KFIFO_PTR'), r'\2 *\1'),
+        (CFunction('(?:__)?DECLARE_FLEX_ARRAY'), r'\1 \2[]'),
+        (CFunction('DEFINE_DMA_UNMAP_ADDR'), r'dma_addr_t \1'),
+        (CFunction('DEFINE_DMA_UNMAP_LEN'), r'__u32 \1'),
+        (CFunction('VIRTIO_DECLARE_FEATURES'), r'union { u64 \1; u64 \1_array[VIRTIO_FEATURES_U64S]; }'),
+    ]
+
+(that is the entire set of struct transforms).
+
+I also moved the transforms to a single separate module,
+placed at: tools/lib/python/kdoc/xforms_lists.py.
+
+As KernRe, CFunction and NestedMatch have a ".sub" method, a
+single transforms table can have all of them altogether.
+
+The first 15 patches on this series were co-developed with Randy,
+with came up after the original patch to support sparse annotations
+used by clang thread-safety-analysis.
+
+I ended helping identifying kernel-doc issues while help testing
+and addressing its and doing some changes to make the parser more
+reliable.
+
+After those, I added other patches to cleanup macro
+transforms.
+
+Even NestedMatch being more complex than KernRe, on my machine,
+parsing all files is 5% faster than before, because we're not
+parsing anymore macro definitions.
+
+Ah, due to the complexity of NestedMatch, I opted to write
+some unit tests to verify that the logic there is correct.
+We can use it to add other border cases.
+
+Using it is as easy as running:
+
+	$ tools/unittests/nested_match.py
+
+(I opted to create a separate directory for it, as this
+is not really documentation)
+
+---
+
+v3:
+- improved the unittest helper to allow adding in the future
+  a runner to create a test suite directly;
+- added unittest to tools/python library documentation;
+- improved comments at the new modules;
+- did several cleanups at the new logic;
+- added a fix for NestedMatch not remove ";" at the end,
+  mimicing the behavior of KernRe;
+- moved transforms to a separate module;
+- replaced all regexes to parse macros with the new CFunction
+  alias for NestedMatch.
+
+v2:
+- added 10 new patches adding support at NestedMatch
+  to properly group and replace arguments with \1, \2, ...
+
+Mauro Carvalho Chehab (28):
+  docs: kdoc_re: add support for groups()
+  docs: kdoc_re: don't go past the end of a line
+  docs: kdoc_parser: move var transformers to the beginning
+  docs: kdoc_parser: don't mangle with function defines
+  docs: kdoc_parser: add functions support for NestedMatch
+  docs: kdoc_parser: use NestedMatch to handle __attribute__ on
+    functions
+  docs: kdoc_parser: fix variable regexes to work with size_t
+  docs: kdoc_parser: fix the default_value logic for variables
+  docs: kdoc_parser: add some debug for variable parsing
+  docs: kdoc_parser: don't exclude defaults from prototype
+  docs: kdoc_parser: fix parser to support multi-word types
+  docs: kdoc_parser: add support for LIST_HEAD
+  docs: kdoc_re: properly handle strings and escape chars on it
+  docs: kdoc_re: better show KernRe() at documentation
+  docs: kdoc_re: don't recompile NextMatch regex every time
+  docs: kdoc_re: Change NestedMath args replacement to \0
+  docs: kdoc_re: make NextedMatch use KernRe
+  docs: kdoc_re: add support on NestedMatch for argument replacement
+  docs: python: add helpers to run unit tests
+  unittests: add tests for NestedMatch class
+  docs: kdoc_parser: better handle struct_group macros
+  docs: kdoc_re: fix a parse bug on struct page_pool_params
+  docs: kdoc_re: add a helper class to declare C function matches
+  docs: kdoc_parser: use the new CFunction class
+  docs: kdoc_parser: minimize differences with struct_group_tagged
+  docs: kdoc_parser: move transform lists to a separate file
+  docs: kdoc_re: don't remove the trailing ";" with NestedMatch
+  docs: xforms_lists.py: use CFuntion to handle all function macros
+
+Randy Dunlap (2):
+  docs: kdoc_parser: ignore context analysis and lock attributes
+  kdoc_parser: handle struct member macro VIRTIO_DECLARE_FEATURES(name)
+
+ Documentation/tools/kdoc_parser.rst   |   8 +
+ Documentation/tools/python.rst        |   2 +
+ Documentation/tools/unittest.rst      |  24 ++
+ tools/lib/python/kdoc/kdoc_files.py   |   3 +-
+ tools/lib/python/kdoc/kdoc_parser.py  | 182 ++------
+ tools/lib/python/kdoc/kdoc_re.py      | 215 +++++++---
+ tools/lib/python/kdoc/xforms_lists.py | 105 +++++
+ tools/lib/python/unittest_helper.py   | 348 +++++++++++++++
+ tools/unittests/nested_match.py       | 589 ++++++++++++++++++++++++++
+ 9 files changed, 1277 insertions(+), 199 deletions(-)
+ create mode 100644 Documentation/tools/unittest.rst
+ create mode 100644 tools/lib/python/kdoc/xforms_lists.py
+ create mode 100755 tools/lib/python/unittest_helper.py
+ create mode 100755 tools/unittests/nested_match.py
+
+-- 
+2.52.0
 
