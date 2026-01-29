@@ -2,66 +2,67 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id cJW1CJsVe2n5BAIAu9opvQ
+	id qDZDOKIVe2n5BAIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:08:59 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:09:06 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AEAAFAD2B1
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:08:58 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 71259AD2F9
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Jan 2026 09:09:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BF3F160896;
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6D04383DD8;
 	Thu, 29 Jan 2026 08:08:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9NvhFuXSLUTc; Thu, 29 Jan 2026 08:08:47 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id nrKKTXXzyDdg; Thu, 29 Jan 2026 08:08:46 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3723660893
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9505D83DD5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1769674127;
-	bh=osRDjTmkQOaz8sEP3Sr6ne2mZX9kmY2m1WYlgDacdLQ=;
+	s=default; t=1769674126;
+	bh=Qf0mhDXuGgvxgZB61QxmhrGQz1icMrc5GOk5uUew8JA=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=oiJzZDTI7cXU7Kz9QDgl2IuO7InY7Igccr8WNIgiTgCEAtbfqCTjQ0K4XFcbjjUxo
-	 gy38eedmQ3x70w/0lD0u27m8wM3lc/Qm4F+3KQcKA4HZ02qq4MGTZ9UzvLSkXW14bw
-	 4TWifO5adIzuVcuOojieySYwfYsZ/CJr1YIjGxcb7d47yCD6EvyNyhUWigyOEFkE9n
-	 oljoE6+cQlJFjiUYMr3PdqoSaxNC2I/0kCsptf830o6/1jDPkKtARqqDtNRx0wH57k
-	 3/zPLnXj8QDbcqyjfbTnmKtHNL2PJrZUbD39wSSjcJ/CmtoIUVFhdZq5XqfVcd9jlw
-	 4FDrncT77gF0A==
+	b=lUtj3V7nfnAuZ7mDq6yRdugZ/2fjaSUh4A03B7sMzWsfNygI9jT9jgBATMukgZLY6
+	 mJvXIsgGtrWmtcL+CVZAQWgUnXOdIGuUXAPy+Qf/k5geZO016gwm1ytGKh0gV9SNvJ
+	 5y73PRXytSU8hygwc9RLNmig9fCMIn3LkhH4OAlosZ7iIqLfaGFZ3oyOdz8oYDeJGc
+	 JLriivOgOJXv23dIFAN67mmVrQ+9lkRsH92EsJYQwC9CiX3JmpRzynuZFOPF34Y8f+
+	 3pB+FESPF7ohbDBHKNoevpuPXZJZrIObXBU4zErMb0l0lMXGnHlxvSXg03YOVQH1eV
+	 OT/leq13FvkzQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3723660893;
-	Thu, 29 Jan 2026 08:08:47 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9505D83DD5;
+	Thu, 29 Jan 2026 08:08:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 181AA1AD
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:38 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 5336A1AD
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C98A86085E
+ by smtp2.osuosl.org (Postfix) with ESMTP id 81A5F403C8
  for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id AaW18903srkg for <intel-wired-lan@lists.osuosl.org>;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ys4HjeFiOBgh for <intel-wired-lan@lists.osuosl.org>;
  Thu, 29 Jan 2026 08:08:32 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
- helo=sea.source.kernel.org; envelope-from=mchehab+huawei@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 2D20060856
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2D20060856
-Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2D20060856
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ envelope-from=mchehab+huawei@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 6FA7E40428
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6FA7E40428
+Received: from sea.source.kernel.org (sea.source.kernel.org
+ [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6FA7E40428
  for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Jan 2026 08:08:32 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 437BE44553;
+ by sea.source.kernel.org (Postfix) with ESMTP id 6E0AC44573;
  Thu, 29 Jan 2026 08:08:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F06D0C4AF10;
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE344C4AF0C;
  Thu, 29 Jan 2026 08:08:30 +0000 (UTC)
 Received: from mchehab by mail.kernel.org with local (Exim 4.99.1)
  (envelope-from <mchehab+huawei@kernel.org>)
- id 1vlN4n-0000000ERNp-0t7G; Thu, 29 Jan 2026 09:08:29 +0100
+ id 1vlN4n-0000000ERNt-10f1; Thu, 29 Jan 2026 09:08:29 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Jonathan Corbet <corbet@lwn.net>,
  Linux Doc Mailing List <linux-doc@vger.kernel.org>
@@ -69,9 +70,10 @@ Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, bpf@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, linux-hardening@vger.kernel.org,
  linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- Randy Dunlap <rdunlap@infradead.org>
-Date: Thu, 29 Jan 2026 09:08:11 +0100
-Message-ID: <fe4539f5573c62301fd1a94af5126266b023d4b8.1769673038.git.mchehab+huawei@kernel.org>
+ Randy Dunlap <rdunlap@infradead.org>,
+ Shuah Khan <skhan@linuxfoundation.org>
+Date: Thu, 29 Jan 2026 09:08:12 +0100
+Message-ID: <3f9d100e35fb68fea8446de8984dd2de1f9b4f22.1769673038.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <cover.1769673038.git.mchehab+huawei@kernel.org>
 References: <cover.1769673038.git.mchehab+huawei@kernel.org>
@@ -80,22 +82,22 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=kernel.org; s=k20201202; t=1769674111;
- bh=IMy+0Ya2RXQo7v/hj8y/wU7iFOGEnBMPK5mE8t6wErI=;
+ bh=JgAESjeyMdGBTP/DT74Q19UkIkpbBQsD4O6RYrpw4MQ=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=CVDoK7RV2De5lMoh9xFIjFW36Xn4xiO+ZCn9lNN83XJWKr7vlvmzvYVCvMc3GUAld
- Sdy6KYa7nHzCbYjuu3w7YHbw3wLoyozY1UZl54hlwCKezmMqqJOlI2qxgGz4ZSVBeG
- G8KIqX5PzQEHuN2F7JQkrV3i/C+dWyfps/nxxrvOrtSb5DawA0t0/NiGcO0MXaLN5F
- L50AO1wMZ8tzN3wUOjqebmi6TU8FtVXhg45aHHOlm41GiPQe/RxP84iS7eQY3qR/1F
- oWaekbBFNJHH8DERwfqpBkLqh46fyrhbBKkVfEed0EJZS1T/VyShSIBy1u14nqB4AU
- TEs0JQjjqrNEw==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=D2zyGueRbOPclnPG8XRPjw3lhO3DOAGl1Rn2G0LlMbcqOxo/UY8kBByIuhqQ4tf98
+ 9np/8OE76s9sFyo1IMRcrtsxEFJ5PlTc9FlK8guKUN8dt4bCMXNKniweFqzGAcDqaL
+ gztN0hEK2OEj0idEE3Gbp5J/CVyJwX0cNSOztv14ImKql7Qj7TE7ItsQqw64Box4HK
+ XRkkB7hWm9o0bmNIvBueyshxokO1tsQOOzk/eLa+qLkt9TU71ZO7TQ9XseRUj3M4UO
+ E7aPNlLyPcoQ+GFS1ov04likgEsZ2zDNwYMuohsFL/yfeMLz5M4v62PzwrkLpKF6LL
+ PCT1BLaIRaIBA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=CVDoK7RV
-Subject: [Intel-wired-lan] [PATCH v3 20/30] docs: kdoc_re: add support on
- NestedMatch for argument replacement
+ header.a=rsa-sha256 header.s=k20201202 header.b=D2zyGueR
+Subject: [Intel-wired-lan] [PATCH v3 21/30] docs: python: add helpers to run
+ unit tests
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -117,7 +119,7 @@ X-Spamd-Result: default: False [2.19 / 15.00];
 	MAILLIST(-0.20)[mailman];
 	R_SPF_ALLOW(-0.20)[+mx:c];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
 	TAGGED_FROM(0.00)[huawei];
@@ -126,11 +128,11 @@ X-Spamd-Result: default: False [2.19 / 15.00];
 	ARC_NA(0.00)[];
 	FORGED_SENDER(0.00)[mchehab@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	TO_DN_SOME(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:corbet@lwn.net,m:linux-doc@vger.kernel.org,m:mchehab+huawei@kernel.org,m:bpf@vger.kernel.org,m:linux-hardening@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:netdev@vger.kernel.org,m:mchehab@kernel.org,m:rdunlap@infradead.org,s:lists@lfdr.de];
+	FORGED_RECIPIENTS(0.00)[m:corbet@lwn.net,m:linux-doc@vger.kernel.org,m:mchehab+huawei@kernel.org,m:bpf@vger.kernel.org,m:linux-hardening@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:netdev@vger.kernel.org,m:mchehab@kernel.org,m:rdunlap@infradead.org,m:skhan@linuxfoundation.org,s:lists@lfdr.de];
 	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	NEURAL_HAM(-0.00)[-1.000];
@@ -141,133 +143,424 @@ X-Spamd-Result: default: False [2.19 / 15.00];
 	MID_RHS_MATCH_FROM(0.00)[];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	RCPT_COUNT_SEVEN(0.00)[10];
+	RCPT_COUNT_SEVEN(0.00)[11];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,huawei];
 	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: AEAAFAD2B1
+X-Rspamd-Queue-Id: 71259AD2F9
 X-Rspamd-Action: no action
 
-Currently, NestedMatch has very limited support for aguments
-replacement: it is all or nothing.
+While python internal libraries have support for unit tests, its
+output is not nice. Add a helper module to improve its output.
 
-Add support to allow replacing individual arguments as well.
+I wrote this module last year while testing some scripts I used
+internally. The initial skeleton was generated with the help of
+LLM tools, but it was higly modified to ensure that it will work
+as I would expect.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- tools/lib/python/kdoc/kdoc_re.py | 84 ++++++++++++++++++++++----------
- 1 file changed, 59 insertions(+), 25 deletions(-)
+ Documentation/tools/python.rst      |   2 +
+ Documentation/tools/unittest.rst    |  24 ++
+ tools/lib/python/unittest_helper.py | 348 ++++++++++++++++++++++++++++
+ 3 files changed, 374 insertions(+)
+ create mode 100644 Documentation/tools/unittest.rst
+ create mode 100755 tools/lib/python/unittest_helper.py
 
-diff --git a/tools/lib/python/kdoc/kdoc_re.py b/tools/lib/python/kdoc/kdoc_re.py
-index e34d55c25680..858cc688a58f 100644
---- a/tools/lib/python/kdoc/kdoc_re.py
-+++ b/tools/lib/python/kdoc/kdoc_re.py
-@@ -177,29 +177,6 @@ class NestedMatch:
-     will ignore the search string.
-     """
- 
--    # TODO: make NestedMatch handle multiple match groups
--    #
--    # Right now, regular expressions to match it are defined only up to
--    #       the start delimiter, e.g.:
--    #
--    #       \bSTRUCT_GROUP\(
--    #
--    # is similar to: STRUCT_GROUP\((.*)\)
--    # except that the content inside the match group is delimiter-aligned.
--    #
--    # The content inside parentheses is converted into a single replace
--    # group (e.g. r`\1').
--    #
--    # It would be nice to change such definition to support multiple
--    # match groups, allowing a regex equivalent to:
--    #
--    #   FOO\((.*), (.*), (.*)\)
--    #
--    # it is probably easier to define it not as a regular expression, but
--    # with some lexical definition like:
--    #
--    #   FOO(arg1, arg2, arg3)
--
-     def __init__(self, regex):
-         self.regex = KernRe(regex)
- 
-@@ -285,6 +262,59 @@ class NestedMatch:
- 
-             yield line[t[0]:t[2]]
- 
-+    @staticmethod
-+    def _split_args(all_args, delim=","):
+diff --git a/Documentation/tools/python.rst b/Documentation/tools/python.rst
+index 1444c1816735..3b7299161f20 100644
+--- a/Documentation/tools/python.rst
++++ b/Documentation/tools/python.rst
+@@ -11,3 +11,5 @@ Python libraries
+    feat
+    kdoc
+    kabi
++
++   unittest
+diff --git a/Documentation/tools/unittest.rst b/Documentation/tools/unittest.rst
+new file mode 100644
+index 000000000000..14a2b2a65236
+--- /dev/null
++++ b/Documentation/tools/unittest.rst
+@@ -0,0 +1,24 @@
++.. SPDX-License-Identifier: GPL-2.0
++
++===============
++Python unittest
++===============
++
++Checking consistency of python modules can be complex. Sometimes, it is
++useful to define a set of unit tests to help checking them.
++
++While the actual test implementation is usecase dependent, Python already
++provides a standard way to add unit tests by using ``import unittest``.
++
++Using such class, requires setting up a test suite. Also, the default format
++is a little bit ackward. To improve it and provide a more uniform way to
++report errors, some unittest classes and functions are defined.
++
++
++Unittest helper module
++======================
++
++.. automodule:: lib.python.unittest_helper
++   :members:
++   :show-inheritance:
++   :undoc-members:
+diff --git a/tools/lib/python/unittest_helper.py b/tools/lib/python/unittest_helper.py
+new file mode 100755
+index 000000000000..d2efb78d8561
+--- /dev/null
++++ b/tools/lib/python/unittest_helper.py
+@@ -0,0 +1,348 @@
++#!/usr/bin/env python3
++# SPDX-License-Identifier: GPL-2.0
++# Copyright(c) 2025-2026: Mauro Carvalho Chehab <mchehab@kernel.org>.
++#
++# pylint: disable=C0103,R0912,R0914,E1101
++
++"""
++Provides helper functions and classes execute python unit tests.
++
++Those help functions provide a nice colored output summary of each
++executed test and, when a test fails, it shows the different in diff
++format when running in verbose mode, like::
++
++    $ tools/unittests/nested_match.py -v
++    ...
++    Traceback (most recent call last):
++    File "/new_devel/docs/tools/unittests/nested_match.py", line 69, in test_count_limit
++        self.assertEqual(replaced, "bar(a); bar(b); foo(c)")
++        ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++    AssertionError: 'bar(a) foo(b); foo(c)' != 'bar(a); bar(b); foo(c)'
++    - bar(a) foo(b); foo(c)
++    ?       ^^^^
++    + bar(a); bar(b); foo(c)
++    ?       ^^^^^
++    ...
++
++It also allows filtering what tests will be executed via ``-k`` parameter.
++
++Typical usage is to do::
++
++    from unittest_helper import run_unittest
++    ...
++
++    if __name__ == "__main__":
++        run_unittest(__file__)
++
++If passing arguments is needed, on a more complex scenario, it can be
++used like on this example::
++
++    from unittest_helper import TestUnits, run_unittest
++    ...
++    env = {'sudo': ""}
++    ...
++    if __name__ == "__main__":
++        runner = TestUnits()
++        base_parser = runner.parse_args()
++        base_parser.add_argument('--sudo', action='store_true',
++                                help='Enable tests requiring sudo privileges')
++
++        args = base_parser.parse_args()
++
++        # Update module-level flag
++        if args.sudo:
++            env['sudo'] = "1"
++
++        # Run tests with customized arguments
++        runner.run(__file__, parser=base_parser, args=args, env=env)
++"""
++
++import argparse
++import atexit
++import os
++import re
++import unittest
++import sys
++
++from unittest.mock import patch
++
++
++class Summary(unittest.TestResult):
++    """
++    Overrides ``unittest.TestResult`` class to provide a nice colored
++    summary. When in verbose mode, displays actual/expected difference in
++    unified diff format.
++    """
++    def __init__(self, *args, **kwargs):
++        super().__init__(*args, **kwargs)
++
++        #: Dictionary to store organized test results.
++        self.test_results = {}
++
++        #: max length of the test names.
++        self.max_name_length = 0
++
++    def startTest(self, test):
++        super().startTest(test)
++        test_id = test.id()
++        parts = test_id.split(".")
++
++        # Extract module, class, and method names
++        if len(parts) >= 3:
++            module_name = parts[-3]
++        else:
++            module_name = ""
++        if len(parts) >= 2:
++            class_name = parts[-2]
++        else:
++            class_name = ""
++
++        method_name = parts[-1]
++
++        # Build the hierarchical structure
++        if module_name not in self.test_results:
++            self.test_results[module_name] = {}
++
++        if class_name not in self.test_results[module_name]:
++            self.test_results[module_name][class_name] = []
++
++        # Track maximum test name length for alignment
++        display_name = f"{method_name}:"
++
++        self.max_name_length = max(len(display_name), self.max_name_length)
++
++    def _record_test(self, test, status):
++        test_id = test.id()
++        parts = test_id.split(".")
++        if len(parts) >= 3:
++            module_name = parts[-3]
++        else:
++            module_name = ""
++        if len(parts) >= 2:
++            class_name = parts[-2]
++        else:
++            class_name = ""
++        method_name = parts[-1]
++        self.test_results[module_name][class_name].append((method_name, status))
++
++    def addSuccess(self, test):
++        super().addSuccess(test)
++        self._record_test(test, "OK")
++
++    def addFailure(self, test, err):
++        super().addFailure(test, err)
++        self._record_test(test, "FAIL")
++
++    def addError(self, test, err):
++        super().addError(test, err)
++        self._record_test(test, "ERROR")
++
++    def addSkip(self, test, reason):
++        super().addSkip(test, reason)
++        self._record_test(test, f"SKIP ({reason})")
++
++    def printResults(self):
 +        """
-+        Helper method to split comma-separated function arguments
-+        or struct elements, if delim is set to ";".
-+
-+        It returns a list of arguments that can be used later on by
-+        the sub() method.
++        Print results using colors if tty.
 +        """
-+        args = [all_args]
-+        stack = []
-+        arg_start = 0
-+        string_char = None
-+        escape = False
++        # Check for ANSI color support
++        use_color = sys.stdout.isatty()
++        COLORS = {
++            "OK":            "\033[32m",   # Green
++            "FAIL":          "\033[31m",   # Red
++            "SKIP":          "\033[1;33m", # Yellow
++            "PARTIAL":       "\033[33m",   # Orange
++            "EXPECTED_FAIL": "\033[36m",   # Cyan
++            "reset":         "\033[0m",    # Reset to default terminal color
++        }
++        if not use_color:
++            for c in COLORS:
++                COLORS[c] = ""
 +
-+        for idx, d in enumerate(all_args):
-+            if escape:
-+                escape = False
-+                continue
++        # Calculate maximum test name length
++        if not self.test_results:
++            return
++        try:
++            lengths = []
++            for module in self.test_results.values():
++                for tests in module.values():
++                    for test_name, _ in tests:
++                        lengths.append(len(test_name) + 1)  # +1 for colon
++            max_length = max(lengths) + 2  # Additional padding
++        except ValueError:
++            sys.exit("Test list is empty")
 +
-+            if string_char:
-+                if d == '\\':
-+                    escape = True
-+                elif d == string_char:
-+                    string_char = None
++        # Print results
++        for module_name, classes in self.test_results.items():
++            print(f"{module_name}:")
++            for class_name, tests in classes.items():
++                print(f"    {class_name}:")
++                for test_name, status in tests:
++                    # Get base status without reason for SKIP
++                    if status.startswith("SKIP"):
++                        status_code = status.split()[0]
++                    else:
++                        status_code = status
++                    color = COLORS.get(status_code, "")
++                    print(
++                        f"        {test_name + ':':<{max_length}}{color}{status}{COLORS['reset']}"
++                    )
++            print()
 +
-+                continue
++        # Print summary
++        print(f"\nRan {self.testsRun} tests", end="")
++        if hasattr(self, "timeTaken"):
++            print(f" in {self.timeTaken:.3f}s", end="")
++        print()
 +
-+            if d in ('"', "'"):
-+                string_char = d
-+                continue
++        if not self.wasSuccessful():
++            print(f"\n{COLORS['FAIL']}FAILED (", end="")
++            failures = getattr(self, "failures", [])
++            errors = getattr(self, "errors", [])
++            if failures:
++                print(f"failures={len(failures)}", end="")
++            if errors:
++                if failures:
++                    print(", ", end="")
++                print(f"errors={len(errors)}", end="")
++            print(f"){COLORS['reset']}")
 +
-+            if d in DELIMITER_PAIRS:
-+                end = DELIMITER_PAIRS[d]
 +
-+                stack.append(end)
-+                continue
++def flatten_suite(suite):
++    """Flatten test suite hierarchy."""
++    tests = []
++    for item in suite:
++        if isinstance(item, unittest.TestSuite):
++            tests.extend(flatten_suite(item))
++        else:
++            tests.append(item)
++    return tests
 +
-+            if stack and d == stack[-1]:
-+                stack.pop()
-+                continue
 +
-+            if d == delim and not stack:
-+                args.append(all_args[arg_start:idx].strip())
-+                arg_start = idx + 1
++class TestUnits:
++    """
++    Helper class to set verbosity level.
 +
-+        # Add the last argument (if any)
-+        last = all_args[arg_start:].strip()
-+        if last:
-+            args.append(last)
++    This class discover test files, import its unittest classes and
++    executes the test on it.
++    """
++    def parse_args(self):
++        """Returns a parser for command line arguments."""
++        parser = argparse.ArgumentParser(description="Test runner with regex filtering")
++        parser.add_argument("-v", "--verbose", action="count", default=1)
++        parser.add_argument("-f", "--failfast", action="store_true")
++        parser.add_argument("-k", "--keyword",
++                            help="Regex pattern to filter test methods")
++        return parser
 +
-+        return args
++    def run(self, caller_file=None, pattern=None,
++            suite=None, parser=None, args=None, env=None):
++        """
++        Execute all tests from the unity test file.
 +
-     def sub(self, sub, line, count=0):
-         """
-         This is similar to re.sub:
-@@ -310,9 +340,13 @@ class NestedMatch:
-             # Value, ignoring start/end delimiters
-             value = line[end:pos - 1]
- 
--            # replaces \0 at the sub string, if \0 is used there
-+            # replace arguments
-             new_sub = sub
--            new_sub = new_sub.replace(r'\0', value)
-+            if "\\" in sub:
-+                args = self._split_args(value)
++        It contains several optional parameters:
 +
-+                new_sub = re.sub(r'\\(\d+)',
-+                                 lambda m: args[int(m.group(1))], new_sub)
- 
-             out += new_sub
- 
++        ``caller_file``:
++            -  name of the file that contains test.
++
++               typical usage is to place __file__ at the caller test, e.g.::
++
++                    if __name__ == "__main__":
++                        TestUnits().run(__file__)
++
++        ``pattern``:
++            - optional pattern to match multiple file names. Defaults
++              to basename of ``caller_file``.
++
++        ``suite``:
++            - an unittest suite initialized by the caller using
++              ``unittest.TestLoader().discover()``.
++
++        ``parser``:
++            - an argparse parser. If not defined, this helper will create
++              one.
++
++        ``args``:
++            - an ``argparse.Namespace`` data filled by the caller.
++
++        ``env``:
++            - environment variables that will be passed to the test suite
++
++        At least ``caller_file`` or ``suite`` must be used, otherwise a
++        ``TypeError`` will be raised.
++        """
++        if not args:
++            if not parser:
++                parser = self.parse_args()
++            args = parser.parse_args()
++
++        if not caller_file and not suite:
++            raise TypeError("Either caller_file or suite is needed at TestUnits")
++
++        if env:
++            patcher = patch.dict(os.environ, env)
++            patcher.start()
++            # ensure it gets stopped after
++            atexit.register(patcher.stop)
++
++        verbose = args.verbose
++
++        if verbose >= 2:
++            unittest.TextTestRunner(verbosity=verbose).run = lambda suite: suite
++
++        # Load ONLY tests from the calling file
++        if not suite:
++            if not pattern:
++                pattern = caller_file
++
++            loader = unittest.TestLoader()
++            suite = loader.discover(start_dir=os.path.dirname(caller_file),
++                                    pattern=os.path.basename(caller_file))
++
++        # Flatten the suite for environment injection
++        tests_to_inject = flatten_suite(suite)
++
++        # Filter tests by method name if -k specified
++        if args.keyword:
++            try:
++                pattern = re.compile(args.keyword)
++                filtered_suite = unittest.TestSuite()
++                for test in tests_to_inject:  # Use the pre-flattened list
++                    method_name = test.id().split(".")[-1]
++                    if pattern.search(method_name):
++                        filtered_suite.addTest(test)
++                suite = filtered_suite
++            except re.error as e:
++                sys.stderr.write(f"Invalid regex pattern: {e}\n")
++                sys.exit(1)
++        else:
++            # Maintain original suite structure if no keyword filtering
++            suite = unittest.TestSuite(tests_to_inject)
++
++        if verbose >= 2:
++            resultclass = None
++        else:
++            resultclass = Summary
++
++        runner = unittest.TextTestRunner(verbosity=args.verbose,
++                                            resultclass=resultclass,
++                                            failfast=args.failfast)
++        result = runner.run(suite)
++        if resultclass:
++            result.printResults()
++
++        sys.exit(not result.wasSuccessful())
++
++
++def run_unittest(fname):
++    """
++    Basic usage of TestUnits class.
++
++    Use it when there's no need to pass any extra argument to the tests
++    with. The recommended way is to place this at the end of each
++    unittest module::
++
++        if __name__ == "__main__":
++            run_unittest(__file__)
++    """
++    TestUnits().run(fname)
 -- 
 2.52.0
 
